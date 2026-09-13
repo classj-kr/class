@@ -557,20 +557,13 @@ const EN = {
                     art: '01-soldier.webp',
                     emoji: '🎖️',
                     left: [
-                        "A child was given a birthday present —",
-                        "one long box.",
-                        "He lifted the lid and it was full of toy soldiers.",
-                        "There were twenty-five of them,",
-                        "cast out of melted tin —",
-                        "brothers made out of one old spoon."
+                        "A child was given a birthday present. It was one long box.",
+                        "He lifted the lid, and it was full of toy soldiers. There were twenty-five of them.",
+                        "They were cast out of melted tin from one old spoon, so they were all brothers."
                     ],
                     right: [
-                        "They wore blue coats and red trousers",
-                        "with muskets smartly on their shoulders.",
-                        "The child stood them in a row along the table.",
-                        "And the last one was rather different,",
-                        "because he had only one leg.",
-                        "\"Hullo? What is wrong with this one?\"",
+                        "They wore blue coats and red trousers, with muskets smartly on their shoulders. The child stood them in a row along the table.",
+                        "But the last one was different. He had only one leg! \"Hey? What is wrong with this one?\"",
                         "The child set him on his palm and looked at him."
                     ]
                 },
@@ -578,21 +571,14 @@ const EN = {
                     art: '01-soldier-2.webp',
                     emoji: '🎖️',
                     left: [
-                        "There had not been quite enough tin to finish him.",
-                        "He was the last one poured.",
-                        "And that soldier stood perfectly well.",
-                        "He stood upright on the one leg,",
-                        "and his face was braver than any of theirs.",
-                        "The child played a while and then went to bed,",
-                        "and only the toys were left in the room."
+                        "He was the last one poured, and there had not been quite enough tin to finish him.",
+                        "But he stood upright on his one leg, and his face was braver than any of theirs.",
+                        "The child played a while and then went to bed. Only the toys were left in the room."
                     ],
                     right: [
-                        "The toys went round the soldier teasing him.",
-                        "\"And what can you do on one leg?\"",
-                        "The soldier stood quite still.",
-                        "And the one who did not tease him was a paper dancer, standing with one leg raised.",
-                        "The soldier's eyes stayed on one place.",
-                        "He did not see any of the other toys at all."
+                        "The toys went round the soldier teasing him. \"And what can you do on one leg?\"",
+                        "The soldier did not answer. He stood quite still. His eyes stayed on one place at the far end of the table.",
+                        "He did not even see the other toys."
                     ]
                 }
             ]
@@ -605,42 +591,28 @@ const EN = {
                     art: '02-ballerina.webp',
                     emoji: '💃',
                     left: [
-                        "At the far end of the table stood a castle made of paper,",
-                        "with thin paper pasted over every window.",
-                        "In front of the castle they had made a little lake",
-                        "out of a piece of looking-glass.",
-                        "And in front of that stood the paper dancer,",
-                        "with her pink skirt standing out round her.",
-                        "Her sleeves were white and puffed,",
-                        "and there was a spangle at her waist."
+                        "At the far end of the table stood a castle made of paper, with thin paper pasted over every window.",
+                        "In front of it was a lake made out of a piece of looking-glass.",
+                        "And there stood a paper dancer. Her skirt was pink. Her sleeves were white and puffed, and a spangle shone at her waist."
                     ],
                     right: [
-                        "The dancer stood lightly on one foot,",
-                        "and the soldier could not take his eyes off her.",
-                        "Something turned over strangely in his chest.",
-                        "He had never felt anything like it.",
-                        "However noisy the table got, he did not hear it.",
-                        "And the soldier stood there a long while with his musket on his shoulder."
+                        "The dancer stood lightly on one foot. The soldier could not take his eyes off her. His heart beat strangely.",
+                        "He had never felt like this before. However noisy the table got, he did not hear it.",
+                        "He stood there a long while with his musket on his shoulder."
                     ]
                 },
                 {
                     art: '02-ballerina-2.webp',
                     emoji: '💃',
                     left: [
-                        "The soldier thought to himself,",
-                        "\"She has only one leg as well.\"",
-                        "\"Just like me.\"",
-                        "But it was not so.",
-                        "The dancer simply had the other leg lifted high behind her,",
-                        "and the soldier did not know it.",
-                        "\"Somebody like that might be a match for me.\""
+                        "The soldier thought to himself, \"She has only one leg too. Just like me.\"",
+                        "But it was not so. The dancer had her other leg lifted high behind her. The soldier did not know that.",
+                        "\"Somebody like her might be a match for me,\" he thought."
                     ],
                     right: [
-                        "But the dancer lived in a castle,",
-                        "and the soldier lived in a box with twenty-four others.",
-                        "\"Still, I should like to say good evening to her.\" And he hesitated a long while.",
-                        "The soldier hid himself behind a jack-in-the-box",
-                        "and watched the dancer all night."
+                        "But the dancer lived in a castle, and the soldier lived in a box with twenty-four others.",
+                        "He hesitated a long while. \"Still, I should like to say hello to her.\"",
+                        "But he did not dare go near her. He hid behind a jack-in-the-box and quietly watched the dancer."
                     ]
                 }
             ]
@@ -653,43 +625,26 @@ const EN = {
                     art: '03-fall.webp',
                     emoji: '🃏',
                     left: [
-                        "It got late, and midnight struck.",
-                        "And then the lid of the jack-in-the-box flew open,",
-                        "and out came a goblin in a black hat —",
-                        "a toy on a spring.",
-                        "\"You there, soldier!\"",
-                        "The goblin stretched his neck out."
+                        "It got late, and midnight struck. Then the lid of the jack-in-the-box flew open. Out came a goblin in a black hat, a toy on a spring.",
+                        "The goblin stretched his neck out. \"You there, soldier! Keep your eyes off what is not yours!\""
                     ],
                     right: [
-                        "\"Keep your eyes off what is not yours!\"",
-                        "The soldier pretended not to hear and looked straight ahead.",
-                        "The goblin flared up.",
-                        "\"We shall see about that tomorrow!\"",
-                        "And he went back down into the box.",
-                        "The room went quiet again,",
-                        "and the soldier stood there all night."
+                        "The soldier pretended not to hear and looked straight ahead. The goblin flared up. \"We shall see about that tomorrow!\"",
+                        "He went back down into the box, and the room went quiet again. The soldier stood there all night."
                     ]
                 },
                 {
                     art: '03-fall-2.webp',
                     emoji: '🃏',
                     left: [
-                        "It was the next morning.",
-                        "Somebody set the soldier on the windowsill.",
-                        "The window was standing wide open,",
-                        "and the soldier looked down at the street below,",
-                        "at the carriages and the people going by.",
-                        "And then a gust of wind came,",
-                        "and the soldier went straight out of the window —",
-                        "three floors down."
+                        "The next morning, the child set the soldier on the windowsill. The window was wide open.",
+                        "The soldier looked down at the street, at the carriages and people going by.",
+                        "Then a gust of wind came, and the soldier fell straight out of the window, three floors down."
                     ],
                     right: [
-                        "His musket went into the paving first,",
-                        "and he stuck there head down, propped on it.",
-                        "The child came running down and looked everywhere,",
-                        "and in the end he went back without finding him.",
-                        "And the soldier could not call out.",
-                        "He wanted to shout \"here I am\", and he could not."
+                        "His musket went into the paving first, and he stuck there head down, propped on it.",
+                        "The child came running down and looked everywhere, but he went back without finding him.",
+                        "\"Here I am!\" the soldier wanted to shout. But toys cannot talk in front of people, so he could not call out."
                     ]
                 }
             ]
@@ -702,42 +657,25 @@ const EN = {
                     art: '04-boat.webp',
                     emoji: '⛵',
                     left: [
-                        "Then the rain came down hard,",
-                        "and the water went rushing along the street.",
-                        "When it stopped, two boys came past.",
-                        "\"Look, there's a soldier here!\"",
-                        "And they picked him up.",
-                        "\"Let us sail him!\""
+                        "Soon the rain came pouring down, and the water went rushing along the street.",
+                        "When it stopped, two boys came past and saw the soldier. \"Look, there's a soldier here!\"",
+                        "They pulled him out. \"Let's give him a boat ride!\""
                     ],
                     right: [
-                        "The boys folded a boat out of newspaper",
-                        "and stood the soldier up inside it.",
-                        "Then they set it on the water in the gutter,",
-                        "and the paper boat went off like an arrow.",
-                        "The boys ran along beside it, clapping,",
-                        "and lost sight of it round a corner."
+                        "The boys folded a boat out of newspaper and stood the soldier up inside it. Then they set it on the water in the gutter.",
+                        "The paper boat went off like an arrow. The boys ran along beside it, clapping, but they lost sight of it round a corner."
                     ]
                 },
                 {
                     art: '04-boat-2.webp',
                     emoji: '⛵',
                     left: [
-                        "The water ran faster and faster.",
-                        "The boat spun round and round,",
-                        "and water came in over the side.",
-                        "The paper was going soft with it.",
-                        "And still the soldier stood upright,",
-                        "with his musket held just as it had been.",
-                        "He did not so much as blink.",
-                        "The water came up to his knees."
+                        "The water ran faster and faster. The boat spun round and round. Water came in over the side, and the paper was going soft.",
+                        "But the soldier still stood upright, with his musket on his shoulder. The water came up to his knees, but he did not so much as blink."
                     ],
                     right: [
-                        "\"Because I am a soldier.\"",
-                        "The boys' voices got further and further away,",
-                        "and at last there was no sound of them at all.",
-                        "Ahead of him was a dark opening,",
-                        "and the water was being sucked into it.",
-                        "The rushing sound got louder and louder."
+                        "\"Because I am a soldier,\" he said to himself.",
+                        "Ahead of him was a dark opening, and the water was being sucked into it. The rushing sound got louder and louder."
                     ]
                 }
             ]
@@ -750,43 +688,27 @@ const EN = {
                     art: '05-tunnel.webp',
                     emoji: '🐀',
                     left: [
-                        "The gutter ran on into a dark tunnel,",
-                        "and the boat was sucked into it.",
-                        "It was black on every side.",
-                        "He could not see anything at all.",
-                        "The soldier stood absolutely still,",
-                        "and the water echoed off the walls.",
-                        "And then a sound came from somewhere.",
-                        "A great rat appeared."
+                        "The gutter ran on into a dark tunnel, and the boat was sucked in. It was black on every side.",
+                        "He could not see anything. The soldier stood very still, and the water echoed off the walls.",
+                        "Then something squeaked. A great rat appeared."
                     ],
                     right: [
-                        "\"Pay the toll!\"",
-                        "\"Nobody passes here without paying!\"",
-                        "Instead of answering, the soldier gripped his musket,",
-                        "and the boat went past the rat like an arrow.",
-                        "The rat jumped into the water and came after him,",
-                        "and the squeaking followed along behind."
+                        "The rat stood in the way. \"Pay the toll! Nobody passes here without paying!\"",
+                        "Instead of answering, the soldier gripped his musket, and the boat went past the rat like an arrow.",
+                        "The rat jumped into the water and came after him, and the squeaking followed along behind."
                     ]
                 },
                 {
                     art: '05-tunnel-2.webp',
                     emoji: '🐀',
                     left: [
-                        "The rat shouted after him.",
-                        "\"Stop him! He has not paid!\"",
-                        "The water ran faster and faster,",
-                        "and away ahead it began to get light.",
-                        "That was where the tunnel ended.",
-                        "But the sound of it was not a good sound.",
-                        "It was the sound of water falling."
+                        "The rat shouted after him, \"Stop him! He has not paid!\"",
+                        "But the water ran faster, and the rat fell far behind. Far ahead, it began to get light. The tunnel was ending.",
+                        "Then a roar came from ahead. It was the sound of falling water."
                     ],
                     right: [
-                        "At the end of the tunnel the water went down like a waterfall,",
-                        "and the boat went straight over it.",
-                        "The soldier did not let go of his musket.",
-                        "His body went under the water.",
-                        "The paper boat had already gone soft and shapeless,",
-                        "and the sunlight moved on the surface above."
+                        "At the end of the tunnel the water went down like a waterfall. The boat went straight over it and fell into wide water.",
+                        "The paper boat had gone soft and shapeless. The water came up to his neck. But the soldier did not let go of his musket."
                     ]
                 }
             ]
@@ -799,19 +721,13 @@ const EN = {
                     art: '06-fish.webp',
                     emoji: '🐟',
                     left: [
-                        "The paper boat took in water and went down,",
-                        "and the soldier went down with it.",
-                        "Blue water closed round him on every side,",
-                        "and he went down and down.",
-                        "And then everything went dark in front of him.",
-                        "A great fish had opened its mouth."
+                        "The paper boat took in water and went down, and the soldier went down with it.",
+                        "Blue water closed round him, and he sank down and down.",
+                        "Then suddenly everything went dark. A great fish had opened its mouth."
                     ],
                     right: [
-                        "The soldier went straight down inside it.",
-                        "It was darker in there than in the tunnel,",
-                        "and very cramped besides.",
-                        "And still the soldier squared his shoulders,",
-                        "and the end of his musket touched the belly of the fish.",
+                        "The soldier went straight down inside it. It was darker in there than in the tunnel, and very cramped too.",
+                        "But the soldier squared his shoulders, and the end of his musket touched the belly of the fish.",
                         "\"Wherever I am, I am a soldier.\" He said it over to himself."
                     ]
                 },
@@ -819,20 +735,13 @@ const EN = {
                     art: '06-fish-2.webp',
                     emoji: '🐟',
                     left: [
-                        "The fish swam this way and that,",
-                        "and every time it moved the soldier moved with it.",
-                        "And then the fish stopped suddenly",
-                        "and was pulled straight upward.",
-                        "It had gone into a fisherman's net,",
-                        "and the fish was sold at the market."
+                        "The fish swam this way and that, and every time it moved, the soldier moved with it.",
+                        "Then the fish was caught in a fisherman's net. It wriggled as it was pulled up out of the water.",
+                        "The fish was sold at the market, and a maid bought it."
                     ],
                     right: [
-                        "It went into the kitchen of a house.",
-                        "A maid put the fish on the board",
-                        "and took a knife to open it up.",
-                        "And in that moment the maid cried out,",
-                        "because the knife had caught on something hard.",
-                        "\"Good gracious! However did a soldier get in here?\" Out of the fish had come the tin soldier."
+                        "In the kitchen, the maid put the fish on the board and took a knife to open it up.",
+                        "The knife caught on something hard. The maid cried out, \"Good gracious! How did a soldier get inside a fish?\""
                     ]
                 }
             ]
@@ -845,40 +754,28 @@ const EN = {
                     art: '07-return.webp',
                     emoji: '🏠',
                     left: [
-                        "The maid picked the soldier up in both hands,",
-                        "wiped the water off him and turned him about.",
-                        "\"He has only one leg.\"",
-                        "And the maid carried him through to a room.",
-                        "\"Come and look at this, young master!\"",
-                        "And, remarkably, it was a room he knew."
+                        "The maid picked the soldier up in both hands. She wiped the water off him and turned him about. \"He has only one leg.\"",
+                        "She carried him to the child's room. \"Come and look at this, young master!\"",
+                        "The soldier was amazed. Remarkably, it was a room he knew!"
                     ],
                     right: [
-                        "It was the very house the soldier had lived in.",
-                        "The window he had fallen out of was still there.",
-                        "The child came running and took him,",
-                        "\"But that's my soldier! Wherever have you been?\"",
-                        "and set him on the table",
-                        "in his old place beside his brothers."
+                        "It was the very house he had lived in. The window he had fallen out of was still there.",
+                        "The child came running and took him. \"That's my soldier! Where have you been?\"",
+                        "He set the soldier on the table, in his old place beside his brothers."
                     ]
                 },
                 {
                     art: '07-return-2.webp',
                     emoji: '🏠',
                     left: [
-                        "The soldier looked round him.",
-                        "The toys were all there as they had been,",
-                        "and the paper castle stood where it always had.",
-                        "And in front of it stood the paper dancer,",
-                        "still standing lightly on one foot.",
-                        "Something went warm in the soldier's chest."
+                        "The soldier looked round him. The toys were all there as they had been.",
+                        "The paper castle stood in its place, and in front of it stood the paper dancer.",
+                        "She was still standing lightly on one foot. Something went warm in the soldier's chest."
                     ],
                     right: [
-                        "They had met again after so long a way round.",
-                        "And he could not say one word.",
-                        "The soldier only looked at her,",
-                        "and she seemed to be looking back at him.",
-                        "Her skirt moved a little.",
-                        "And the two toys stood facing each other a long while."
+                        "They had met again after so long a way round. But he could not say one word.",
+                        "The soldier only looked at her, and she seemed to look back at him. Her skirt moved a little.",
+                        "The two toys stood facing each other a long while."
                     ]
                 }
             ]
@@ -891,39 +788,28 @@ const EN = {
                     art: '08-ending.webp',
                     emoji: '🔥',
                     left: [
-                        "And then a child came over.",
-                        "What was in his mind nobody could say.",
-                        "He picked the soldier up",
-                        "and tossed him into the fire.",
-                        "Perhaps it was the goblin's spite.",
-                        "The soldier's body went red hot."
+                        "Then a child came over. Nobody knew what he was thinking.",
+                        "He picked the soldier up and tossed him into the fire in the stove.",
+                        "Perhaps it was the goblin's spite. The soldier's body went red hot."
                     ],
                     right: [
-                        "He was burning all over,",
-                        "and still the soldier did not let go of his musket.",
-                        "His shoulders stayed square,",
-                        "and his eyes were turned toward the dancer.",
-                        "He never once looked away.",
-                        "And the tin began to melt."
+                        "He was burning all over, but the soldier did not let go of his musket.",
+                        "His shoulders stayed square, and his eyes were turned toward the dancer. He never once looked away.",
+                        "Little by little, the tin began to melt."
                     ]
                 },
                 {
                     art: '08-ending-2.webp',
                     emoji: '🔥',
                     left: [
-                        "And then the door opened and the wind came in,",
-                        "and the paper dancer lifted lightly off the table.",
-                        "She flew across and came down beside the soldier.",
-                        "The two of them lay together in the firelight.",
-                        "It was only a moment, and they were together."
+                        "The door opened and the wind came in. The paper dancer lifted lightly off the table.",
+                        "She flew down beside the soldier. The two of them lay together in the firelight.",
+                        "It was only for a moment, but they were together."
                     ],
                     right: [
-                        "It was the next morning.",
-                        "The maid cleared out the ashes from the stove,",
-                        "and she found something in them.",
-                        "There was a small tin heart,",
-                        "and beside it a spangle, burnt quite black.",
-                        "And the maid stood looking at the two of them for a long time."
+                        "The next morning, the maid cleared out the ashes from the stove. She found something in them.",
+                        "It was a small tin heart, and beside it a spangle, burnt quite black.",
+                        "The maid looked at the two of them for a long time."
                     ]
                 }
             ]
@@ -987,10 +873,11 @@ const EN = {
                     "Tin soldiers were the toys Andersen played with as a boy. In those days people melted down spoons to make them.",
                     "Of the twenty-five tin soldiers, only one had a single leg. The tin ran short and he was the last one poured. He was not badly made — he was made out of what was left.",
                     "The soldier believes the paper dancer has one leg too. In fact she simply had the other one raised high behind her. He took her for somebody like himself.",
-                    "He goes out of a window, along in a boat, through a drain and into the belly of a fish. And in all that time the soldier never makes a sound."
+                    "He goes out of a window, along in a boat, through a drain and into the belly of a fish. And in all that time the soldier never makes a sound. Standing with his musket and looking ahead was all a soldier could do."
                 ],
                 right: [
-                    "Where the soldier ends up is the room he started from. He went right round the world and came back to the same place.",
+                    "Where the soldier ends up is the room he started from. He went right round in a big circle and came back to the same place.",
+                    "What was left in the ashes was a tin heart and a burnt spangle. His body had melted away, but the shape of a heart was left.",
                     "Why do you think the soldier never said anything, right to the end?"
                 ]
             }
@@ -1015,7 +902,7 @@ const EN = {
             { word: 'pour', meaning: '붓다', sentence: 'He was the last one poured.' },
             { word: 'upright', meaning: '꼿꼿하게', sentence: 'He stood upright on the one leg.' },
             { word: 'tease', meaning: '놀리다', sentence: 'The toys went round the soldier teasing him.' },
-            { word: 'raised', meaning: '들어 올린', sentence: 'Standing with one leg raised.' }
+            { word: 'far end', meaning: '저편', sentence: 'His eyes stayed on one place at the far end of the table.' }
         ],
         '02-ballerina.webp': [
             { word: 'paste', meaning: '바르다, 붙이다', sentence: 'Thin paper pasted over every window.' },
@@ -1026,9 +913,9 @@ const EN = {
         ],
         '02-ballerina-2.webp': [
             { word: 'a match for', meaning: '~의 짝', sentence: 'Somebody like that might be a match for me.' },
-            { word: 'hesitate', meaning: '망설이다', sentence: 'And he hesitated a long while.' },
+            { word: 'hesitate', meaning: '망설이다', sentence: 'He hesitated a long while.' },
             { word: 'jack-in-the-box', meaning: '깜짝 상자', sentence: 'The soldier hid behind a jack-in-the-box.' },
-            { word: 'all night', meaning: '밤새', sentence: 'And watched the dancer all night.' }
+            { word: 'dare', meaning: '감히 ~하다', sentence: 'But he did not dare go near her.' }
         ],
         '03-fall.webp': [
             { word: 'strike', meaning: '(시각이) 되다', sentence: 'It got late, and midnight struck.' },
@@ -1038,11 +925,11 @@ const EN = {
             { word: 'flare up', meaning: '발끈하다', sentence: 'The goblin flared up.' }
         ],
         '03-fall-2.webp': [
-            { word: 'windowsill', meaning: '창턱', sentence: 'Somebody set the soldier on the windowsill.' },
+            { word: 'windowsill', meaning: '창턱', sentence: 'The child set the soldier on the windowsill.' },
             { word: 'gust', meaning: '한 줄기 바람', sentence: 'And then a gust of wind came.' },
             { word: 'paving', meaning: '길바닥', sentence: 'His musket went into the paving first.' },
             { word: 'prop', meaning: '받치다', sentence: 'He stuck there head down, propped on it.' },
-            { word: 'call out', meaning: '소리쳐 부르다', sentence: 'And the soldier could not call out.' }
+            { word: 'call out', meaning: '소리쳐 부르다', sentence: 'So he could not call out.' }
         ],
         '04-boat.webp': [
             { word: 'rush along', meaning: '콸콸 흐르다', sentence: 'The water went rushing along the street.' },
@@ -1053,7 +940,7 @@ const EN = {
         ],
         '04-boat-2.webp': [
             { word: 'spin', meaning: '빙글빙글 돌다', sentence: 'The boat spun round and round.' },
-            { word: 'go soft', meaning: '축축해지다', sentence: 'The paper was going soft with it.' },
+            { word: 'go soft', meaning: '축축해지다', sentence: 'The paper was going soft.' },
             { word: 'blink', meaning: '눈을 깜짝이다', sentence: 'He did not so much as blink.' },
             { word: 'opening', meaning: '구멍', sentence: 'Ahead of him was a dark opening.' },
             { word: 'suck in', meaning: '빨아들이다', sentence: 'The water was being sucked into it.' }
@@ -1070,26 +957,26 @@ const EN = {
             { word: 'go over', meaning: '넘어가다, 곤두박질치다', sentence: 'The boat went straight over it.' },
             { word: 'let go of', meaning: '놓다', sentence: 'The soldier did not let go of his musket.' },
             { word: 'shapeless', meaning: '흐물흐물한', sentence: 'The paper boat had gone soft and shapeless.' },
-            { word: 'surface', meaning: '수면', sentence: 'The sunlight moved on the surface above.' }
+            { word: 'come up to', meaning: '~까지 차오르다', sentence: 'The water came up to his neck.' }
         ],
         '06-fish.webp': [
             { word: 'take in', meaning: '(물을) 먹다', sentence: 'The paper boat took in water and went down.' },
             { word: 'close round', meaning: '감싸다', sentence: 'Blue water closed round him.' },
-            { word: 'cramped', meaning: '비좁은', sentence: 'And very cramped besides.' },
+            { word: 'cramped', meaning: '비좁은', sentence: 'It was darker in there than in the tunnel, and very cramped too.' },
             { word: 'square one’s shoulders', meaning: '어깨를 펴다', sentence: 'The soldier squared his shoulders.' },
             { word: 'say over', meaning: '되뇌다', sentence: 'He said it over to himself.' }
         ],
         '06-fish-2.webp': [
-            { word: 'net', meaning: '그물', sentence: "It had gone into a fisherman's net." },
+            { word: 'net', meaning: '그물', sentence: "The fish was caught in a fisherman's net." },
             { word: 'board', meaning: '도마', sentence: 'A maid put the fish on the board.' },
             { word: 'open up', meaning: '배를 가르다', sentence: 'And took a knife to open it up.' },
             { word: 'catch on', meaning: '걸리다', sentence: 'The knife had caught on something hard.' },
-            { word: 'good gracious', meaning: '어머나', sentence: 'Good gracious! However did a soldier get in here?' }
+            { word: 'good gracious', meaning: '어머나', sentence: 'Good gracious! How did a soldier get inside a fish?' }
         ],
         '07-return.webp': [
             { word: 'wipe off', meaning: '닦아 내다', sentence: 'Wiped the water off him.' },
             { word: 'turn about', meaning: '이리저리 살펴보다', sentence: 'And turned him about.' },
-            { word: 'remarkably', meaning: '놀랍게도', sentence: 'And, remarkably, it was a room he knew.' },
+            { word: 'remarkably', meaning: '놀랍게도', sentence: 'Remarkably, it was a room he knew!' },
             { word: 'the very', meaning: '바로 그', sentence: 'It was the very house he had lived in.' }
         ],
         '07-return-2.webp': [
@@ -1117,7 +1004,7 @@ const EN = {
             { word: 'badly made', meaning: '못 만든', sentence: 'He was not badly made.' },
             { word: 'take for', meaning: '~로 여기다', sentence: 'He took her for somebody like himself.' },
             { word: 'drain', meaning: '하수구', sentence: 'Through a drain and into the belly of a fish.' },
-            { word: 'right round', meaning: '온 바퀴 돌아', sentence: 'He went right round the world.' }
+            { word: 'right round', meaning: '온 바퀴 돌아', sentence: 'He went right round in a big circle.' }
         ]
     }
 };

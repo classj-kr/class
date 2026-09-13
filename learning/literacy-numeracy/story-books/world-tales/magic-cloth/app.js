@@ -565,41 +565,31 @@ const EN = {
                     art: '01-leaving.webp',
                     emoji: '✂️',
                     left: [
-                        "An old tailor pushed his spectacles up his nose.",
-                        "The thread kept missing the eye of the needle.",
+                        "An old tailor pushed up his spectacles. His thread kept missing the eye of the needle.",
                         "A tape measure hung round his neck.",
-                        "He had three sons.",
-                        "And one goat was all they had at home.",
-                        "The whole family lived off her milk.",
-                        "But things were getting harder and harder."
+                        "He had three sons and just one goat. The whole family lived off her milk.",
+                        "But the sons kept growing, and the tailor's eyes grew weaker. Things got harder and harder."
                     ],
                     right: [
                         "One day the father called his sons in.",
-                        "\"We shall all go hungry at this rate.\"",
-                        "\"Each of you must go and learn a trade.\"",
+                        "\"We shall all go hungry at this rate,\" he said. \"Each of you must go and learn a trade.\"",
                         "\"A craft in your hands keeps hunger away.\"",
-                        "The three sons nodded.",
-                        "And the next morning they packed their bundles."
+                        "The three sons nodded, and the next morning they packed their bundles."
                     ]
                 },
                 {
                     art: '01-leaving-2.webp',
                     emoji: '✂️',
                     left: [
-                        "At the edge of the village the road forked three ways.",
-                        "The eldest was to go to a carpenter.",
-                        "The second was to go to a miller.",
-                        "The youngest was to learn woodturning.",
-                        "Their father waved from the doorway.",
-                        "\"We shall meet again in a few years.\""
+                        "Their father came to the door to see them off.",
+                        "\"Let us meet again in a few years,\" he said. \"Take good care of yourselves.\"",
+                        "At the edge of the village, the road forked three ways.",
+                        "The eldest was to go to a carpenter, and the second was to go to a miller. The youngest was to learn woodturning."
                     ],
                     right: [
-                        "\"Take care of yourselves.\"",
-                        "The three brothers embraced one another in turn.",
-                        "And then each walked off down his own road.",
-                        "When they looked back their father was standing there still.",
-                        "And so a few years went by.",
-                        "Each of the three learned his trade."
+                        "The three brothers embraced one another. Then each walked off down his own road.",
+                        "When they looked back, their father was still standing there.",
+                        "And so a few years went by. Each of the three worked hard at his trade."
                     ]
                 }
             ]
@@ -612,41 +602,31 @@ const EN = {
                     art: '02-cloth.webp',
                     emoji: '🍽️',
                     left: [
-                        "The eldest learned the carpenter's trade well.",
-                        "His shoulders broadened and his hands grew thick.",
+                        "The eldest learned the carpenter's trade well. His shoulders broadened and his hands grew thick.",
                         "There was always sawdust settled in his hair.",
-                        "One day his master called him over.",
-                        "\"You may go home now.\"",
-                        "And the master gave him a white cloth."
+                        "One day his master called him over. \"You may go home now.\"",
+                        "And the master gave him a white tablecloth."
                     ],
                     right: [
-                        "To look at, it was a very ordinary piece of linen.",
-                        "\"What am I to use this for?\"",
-                        "\"Spread it out and say this to it.\"",
-                        "\"Spread yourself and set the table.\"",
-                        "The eldest set off, tilting his head over it.",
-                        "He could not quite believe it."
+                        "To look at, it was a very ordinary piece of cloth.",
+                        "\"What is this for?\" asked the eldest.",
+                        "His master said, \"Spread it out and say to it, 'Spread yourself and set the table.'\"",
+                        "The eldest set off, puzzled. He could not quite believe it."
                     ]
                 },
                 {
                     art: '02-cloth-2.webp',
                     emoji: '🍽️',
                     left: [
-                        "Walking a forest road, he grew hungry.",
-                        "And then the words came back to him.",
-                        "He spread the cloth on the grass.",
-                        "\"Spread yourself and set the table!\"",
-                        "And in that instant a marvellous thing happened.",
-                        "The cloth was covered in steaming food."
+                        "Walking along a forest road, he grew hungry. Then his master's words came back to him.",
+                        "He spread the cloth on the grass. \"Spread yourself and set the table!\"",
+                        "In that instant a marvellous thing happened. The cloth was covered in steaming food."
                     ],
                     right: [
-                        "There was meat and there was bread.",
-                        "There was even a bottle of wine set out.",
-                        "The eldest son's eyes went round.",
-                        "The steam curled up off the meat.",
-                        "And he fell on it without even washing his hands.",
-                        "\"How glad my father will be to see this!\"",
-                        "And he hurried on, delighted with himself."
+                        "There was meat and bread, and even a bottle of wine. The eldest son's eyes went round.",
+                        "Steam curled up off the meat. He fell on it without even washing his hands.",
+                        "\"How glad my father will be to see this!\" he said.",
+                        "He packed up the cloth. Then he hurried on, delighted."
                     ]
                 }
             ]
@@ -659,42 +639,29 @@ const EN = {
                     art: '03-inn.webp',
                     emoji: '🏮',
                     left: [
-                        "At sundown the eldest stopped at an inn.",
-                        "The landlord was a round-bellied man with an easy laugh.",
-                        "The guests ordered their suppers.",
-                        "Only the eldest ordered nothing at all.",
-                        "\"I have my own, thank you.\"",
-                        "And he spread out his cloth with a flourish."
+                        "At sundown the eldest stopped at an inn. The landlord was a round-bellied man with an easy laugh.",
+                        "The guests ordered their suppers, but the eldest ordered nothing.",
+                        "The landlord came over. \"Aren't you eating, sir?\"",
+                        "\"I have my own, thank you.\" And he spread out his cloth with a flourish."
                     ],
                     right: [
-                        "\"Spread yourself and set the table!\"",
-                        "And the board was loaded with food.",
-                        "The inn was turned upside down.",
-                        "The landlord's eyes were glittering.",
-                        "\"That is a wonderful thing, that is.\"",
-                        "And he would not leave the table.",
-                        "He kept fingering the linen."
+                        "\"Spread yourself and set the table!\" The board was loaded with food, and the whole inn went wild.",
+                        "The landlord's eyes glittered. \"That is a wonderful thing, that is.\"",
+                        "He would not leave the table, and he kept fingering the cloth."
                     ]
                 },
                 {
                     art: '03-inn-2.webp',
                     emoji: '🏮',
                     left: [
-                        "The landlord did not sleep that night.",
-                        "He went through his storeroom and found a cloth like it.",
-                        "The same colour and the same size.",
-                        "Then he crept into the room.",
-                        "The eldest was fast asleep.",
-                        "And the landlord quietly swapped the cloths over.",
+                        "The landlord did not sleep that night. He went through his storeroom and found a cloth just like it, the same colour and size.",
+                        "Then he crept into the room. The eldest was fast asleep, and the landlord quietly swapped the cloths over.",
                         "Next day the eldest left, knowing nothing about it."
                     ],
                     right: [
-                        "When he got home the whole family came out to the yard.",
-                        "The eldest proudly spread out the cloth.",
-                        "\"Spread yourself and set the table!\"",
-                        "And nothing whatever happened.",
-                        "He folded and unfolded it again and again.",
-                        "\"Spread yourself and set the table! Set it, I say!\""
+                        "When he got home, the whole family came out to the yard. The eldest proudly spread out the cloth.",
+                        "\"Spread yourself and set the table!\" But nothing happened at all.",
+                        "He folded and unfolded it again and again. \"Spread yourself and set the table! Set it, I say!\""
                     ]
                 }
             ]
@@ -707,40 +674,31 @@ const EN = {
                     art: '04-donkey.webp',
                     emoji: '🪙',
                     left: [
-                        "The next year the second son set out for home.",
-                        "He was white with flour from head to foot.",
-                        "The miller spoke to him as they parted.",
-                        "\"I have something to give you.\"",
-                        "And he led out a donkey.",
-                        "To look at, it was an ordinary donkey.",
-                        "\"And what can this fellow do?\""
+                        "The next year the second son finished learning the miller's trade. He was white with flour from head to foot.",
+                        "As they parted, the miller said, \"I have something to give you.\"",
+                        "He led out a donkey. To look at, it was an ordinary donkey.",
+                        "\"And what can this fellow do?\" asked the second son."
                     ],
                     right: [
-                        "\"Lay a sheet under him and say the word.\"",
-                        "\"Bricklebrit, that is the word.\" The second son tilted his head at it.",
-                        "But he did as he was told.",
-                        "And gold pieces came showering out of the donkey's mouth.",
-                        "The second son's eyes went round."
+                        "\"Lay a sheet under him and say, 'Bricklebrit.'\"",
+                        "The second son was puzzled, but he did as he was told.",
+                        "Gold pieces came showering out of the donkey's mouth! The second son's eyes went round."
                     ]
                 },
                 {
                     art: '04-donkey-2.webp',
                     emoji: '🪙',
                     left: [
-                        "Delighted, the second son drove the donkey along.",
-                        "At sundown he stopped at that same inn.",
-                        "The landlord welcomed him warmly.",
-                        "\"You must be worn out from the road.\"",
-                        "And the second son's tongue began to itch.",
-                        "\"This is no ordinary donkey, you know.\""
+                        "Delighted, the second son headed home with the donkey.",
+                        "At sundown he stopped at the very inn where his brother had stayed. The landlord welcomed him.",
+                        "\"You must be worn out from the road,\" said the landlord.",
+                        "The second son's tongue began to itch. \"This is no ordinary donkey, you know.\""
                     ],
                     right: [
-                        "And he poured out the gold in the yard to show them.",
-                        "The landlord could hardly see straight.",
-                        "That night the donkey in the stable was changed for another.",
-                        "And the second son too came home empty-handed.",
-                        "Their father only sighed.",
-                        "Neither son could lift his head."
+                        "He made it pour out gold in the yard. The landlord's eyes nearly popped out.",
+                        "That night the landlord swapped it for an ordinary donkey.",
+                        "He got home knowing nothing. He shouted and shouted, but no gold came. He too was empty-handed.",
+                        "Their father only sighed. Neither son could lift his head."
                     ]
                 }
             ]
@@ -753,42 +711,29 @@ const EN = {
                     art: '05-sack.webp',
                     emoji: '🎒',
                     left: [
-                        "Meanwhile the youngest was learning to turn wood.",
-                        "He had his brothers' news by letter.",
-                        "And the youngest thought it over.",
-                        "\"That same inn, both times.\"",
-                        "Something about it struck him.",
-                        "He turned it over in his mind as he worked the wood.",
-                        "The shavings piled up round his feet."
+                        "Meanwhile the youngest was still learning to turn wood.",
+                        "A letter told him his brothers had lost their gifts — both at the same inn.",
+                        "He thought it over as he worked. The shavings piled up round his feet.",
+                        "\"That same inn, both times,\" he thought. Something about it struck him."
                     ],
                     right: [
-                        "At last the day came for him to go home.",
-                        "His master gave him an old sack.",
-                        "\"There is a cudgel inside this.\"",
-                        "\"If ever anybody tries to take what is yours,\"",
-                        "\"call out: cudgel, out of the sack.\"",
-                        "\"And it will not stop until you say so.\""
+                        "At last the day came for him to go home. His master gave him an old sack.",
+                        "\"There is a cudgel inside,\" said his master. \"If anybody tries to take what is yours, call out, 'Cudgel, out of the sack!'\"",
+                        "\"It will not stop until you say, 'Cudgel, into the sack.'\""
                     ]
                 },
                 {
                     art: '05-sack-2.webp',
                     emoji: '🎒',
                     left: [
-                        "The youngest slung the sack over his shoulder.",
-                        "And then he smiled to himself.",
-                        "\"That comes at a very good time.\"",
-                        "He set off for the inn where his brothers had stayed.",
-                        "He chose that road on purpose.",
-                        "And he reached the inn about sundown."
+                        "The youngest slung the sack over his shoulder and smiled to himself. \"This comes at just the right time.\"",
+                        "He set off for the inn where his brothers had stayed. He chose that road on purpose.",
+                        "He reached the inn about sundown."
                     ],
                     right: [
-                        "The landlord welcomed him as warmly as ever.",
-                        "\"Come in, come in. There is room and plenty.\"",
-                        "The landlord's eyes went to the sack first.",
-                        "The youngest pretended not to notice.",
-                        "He took a room as calmly as anything.",
-                        "And kept the sack always within reach.",
-                        "Then supper was laid."
+                        "The landlord welcomed him as warmly as ever. \"Come in, come in. There's plenty of room.\"",
+                        "The landlord's eyes went to the sack first. The youngest pretended not to notice.",
+                        "He calmly took a room and kept the sack always within reach. Then supper was served."
                     ]
                 }
             ]
@@ -801,20 +746,14 @@ const EN = {
                     art: '06-cudgel.webp',
                     emoji: '🪵',
                     left: [
-                        "Over supper the youngest boasted on purpose.",
-                        "\"This sack, you mean?\"",
-                        "\"The most precious thing in the world is in it.\"",
-                        "\"Table cloths and donkeys are nothing to it.\"",
-                        "The landlord's ears went up.",
-                        "\"And whatever might that be?\""
+                        "The landlord kept glancing at the sack. So over supper the youngest boasted on purpose.",
+                        "\"This sack, you mean? The most precious thing in the world is in it. Tablecloths and donkeys are nothing to it.\"",
+                        "The landlord's ears went up. \"And whatever might that be?\""
                     ],
                     right: [
-                        "\"That I cannot tell you.\"",
-                        "The youngest patted the sack and went off to his room.",
-                        "The landlord lay awake waiting all night.",
-                        "After midnight he crept into the room.",
-                        "The youngest was snoring.",
-                        "Snore, snore.",
+                        "The youngest patted the sack. \"That I cannot tell you.\"",
+                        "Then he went off to his room. The landlord lay awake, waiting, and after midnight he crept into the room.",
+                        "The youngest was snoring. Snore, snore.",
                         "The landlord came up on tiptoe."
                     ]
                 },
@@ -822,21 +761,16 @@ const EN = {
                     art: '06-cudgel-2.webp',
                     emoji: '🪵',
                     left: [
-                        "The landlord reached out for the sack.",
-                        "And that was the moment.",
-                        "The youngest sat straight up and called out.",
+                        "The landlord reached out for the sack. At that very moment, the youngest sat straight up.",
                         "\"Cudgel, out of the sack!\"",
-                        "The sack flew open.",
-                        "Out sprang the cudgel.",
-                        "And it went tap, tap on the landlord's back.",
-                        "\"Ow! Ow!\""
+                        "The sack flew open, and out sprang the cudgel. It went tap, tap on the landlord's back.",
+                        "\"Ow! Ow!\" cried the landlord."
                     ],
                     right: [
                         "The landlord ran round and round the room.",
                         "Chairs went over and dishes rolled away.",
                         "And the cudgel followed him doggedly.",
-                        "The landlord shouted for mercy.",
-                        "\"It was all my fault!\"",
+                        "The landlord shouted for mercy. \"It was all my fault!\"",
                         "And still the cudgel did not stop."
                     ]
                 }
@@ -850,42 +784,29 @@ const EN = {
                     art: '07-return.webp',
                     emoji: '📦',
                     left: [
-                        "The landlord was driven out into the yard.",
-                        "The guests looked out of their windows at it.",
-                        "\"I am sorry! I shall give it all back!\"",
-                        "\"It is all in the storeroom!\"",
-                        "And only then did the youngest raise a hand.",
-                        "\"Cudgel, into the sack.\""
+                        "The landlord was driven out into the yard, and the guests looked out of their windows.",
+                        "The landlord begged, \"I'm sorry! I shall give it all back! It's all in the storeroom!\"",
+                        "Only then did the youngest raise his hand. \"Cudgel, into the sack.\""
                     ],
                     right: [
-                        "And in it went.",
-                        "The landlord sat down, gasping for breath.",
-                        "Then he opened the storeroom door.",
-                        "The cloth was inside, folded neatly.",
-                        "And the donkey was tied up at one side.",
-                        "His brothers' things, exactly as they had been."
+                        "In it went. The landlord sat down, gasping for breath.",
+                        "Then he opened the storeroom door. The cloth was inside, folded neatly.",
+                        "The donkey was tied up at one side. His brothers' things were just as they had been."
                     ]
                 },
                 {
                     art: '07-return-2.webp',
                     emoji: '📦',
                     left: [
-                        "The youngest gathered up both of them.",
-                        "The cloth went inside his coat.",
-                        "He took the donkey by the halter.",
-                        "And the sack stayed on his shoulder.",
-                        "\"Here is a present to show my brothers.\"",
-                        "The donkey gave a bray.",
-                        "The hooves went clip-clop along the morning road."
+                        "Next morning the youngest gathered up his brothers' things.",
+                        "The cloth went inside his coat, and he took the donkey by the halter. The sack stayed on his shoulder.",
+                        "\"Now I must hurry home,\" he said."
                     ],
                     right: [
-                        "Next morning the youngest set out.",
-                        "The landlord came out to the gate and bowed.",
-                        "\"I shall never do such a thing again.\"",
-                        "\"That would be as well.\"",
-                        "And the youngest smiled and patted the sack.",
-                        "The landlord went white.",
-                        "The sound alone made his back ache."
+                        "The landlord bowed at the gate. \"I shall never do such a thing again.\"",
+                        "\"That would be as well,\" said the youngest, smiling, and he patted the sack.",
+                        "The landlord went white. The sound alone made his back ache.",
+                        "The donkey gave a bray, and its hooves went clip-clop along the morning road."
                     ]
                 }
             ]
@@ -898,40 +819,28 @@ const EN = {
                     art: '08-ending.webp',
                     emoji: '🎉',
                     left: [
-                        "The youngest came into the village.",
-                        "They could see him leading the donkey from a long way off.",
+                        "The youngest came into the village. They could see him leading the donkey from a long way off.",
                         "The whole family ran out to the yard.",
-                        "Both his brothers came running too.",
-                        "\"That is our donkey!\"",
-                        "And the youngest took the cloth out of his coat."
+                        "The second brother's eyes went wide. \"That's my donkey!\"",
+                        "The youngest took the cloth out of his coat. \"I fetched this back as well.\""
                     ],
                     right: [
-                        "\"I fetched this back as well.\"",
-                        "His brothers only cleared their throats.",
-                        "The youngest spread the cloth in the middle of the yard.",
-                        "Their father came out on his stick.",
-                        "And the whole family stood round in a ring.",
-                        "\"Spread yourself and set the table!\"",
-                        "And the food came until the table legs bowed."
+                        "His brothers were ashamed and only cleared their throats.",
+                        "The youngest spread the cloth in the middle of the yard. Their father came out on his stick, and the whole family stood round in a ring.",
+                        "\"Spread yourself and set the table!\" The food came until the table legs bowed."
                     ]
                 },
                 {
                     art: '08-ending-2.webp',
                     emoji: '🎉',
                     left: [
-                        "And the donkey poured out gold beside it.",
+                        "\"Bricklebrit!\" cried the second son, and the donkey poured out gold.",
                         "The whole yard was glittering.",
-                        "The old tailor wiped his eyes.",
-                        "He took each of his sons by the hand.",
-                        "\"You have all learned well.\"",
-                        "That day the whole village came."
+                        "The old tailor wiped his eyes and took each son by the hand. \"You have all learned well.\""
                     ],
                     right: [
-                        "Everyone ate their fill.",
-                        "The children played about the yard.",
-                        "And the laughing went on late into the night.",
-                        "The sack was hung quietly under the eaves.",
-                        "There was never any need of it again.",
+                        "The whole village came and ate their fill. Laughter went on late into the night.",
+                        "The sack hung quietly under the eaves. It was never needed again.",
                         "And the three brothers lived well for a long, long time."
                     ]
                 }
@@ -1013,9 +922,9 @@ const EN = {
             { word: 'splendid', meaning: '훌륭한', sentence: 'All three are splendid.' }
         ],
         '01-leaving.webp': [
-            { word: 'tailor', meaning: '재봉사', sentence: 'An old tailor pushed his spectacles up.' },
+            { word: 'tailor', meaning: '재봉사', sentence: "An old tailor pushed up his spectacles." },
             { word: 'tape measure', meaning: '줄자', sentence: 'A tape measure hung round his neck.' },
-            { word: 'live off', meaning: '먹고살다', sentence: 'The family lived off her milk.' },
+            { word: 'live off', meaning: '먹고살다', sentence: "The whole family lived off her milk." },
             { word: 'trade', meaning: '기술', sentence: 'Each of you must go and learn a trade.' },
             { word: 'craft', meaning: '재주', sentence: 'A craft in your hands keeps hunger away.' }
         ],
@@ -1023,26 +932,26 @@ const EN = {
             { word: 'fork', meaning: '갈라지다', sentence: 'The road forked three ways.' },
             { word: 'carpenter', meaning: '목수', sentence: 'The eldest was to go to a carpenter.' },
             { word: 'miller', meaning: '방앗간 주인', sentence: 'The second was to go to a miller.' },
-            { word: 'embrace', meaning: '안다', sentence: 'The brothers embraced one another.' }
+            { word: 'embrace', meaning: '안다', sentence: "The three brothers embraced one another." }
         ],
         '02-cloth.webp': [
             { word: 'broaden', meaning: '넓어지다', sentence: 'His shoulders broadened.' },
             { word: 'sawdust', meaning: '톱밥', sentence: 'Sawdust settled in his hair.' },
-            { word: 'ordinary', meaning: '평범한', sentence: 'It was a very ordinary piece of linen.' },
-            { word: 'spread out', meaning: '펼치다', sentence: 'Spread it out and say this to it.' }
+            { word: 'ordinary', meaning: '평범한', sentence: "It was a very ordinary piece of cloth." },
+            { word: 'spread out', meaning: '펼치다', sentence: "Spread it out and say to it." }
         ],
         '02-cloth-2.webp': [
-            { word: 'come back to', meaning: '떠오르다', sentence: 'The words came back to him.' },
+            { word: 'come back to', meaning: '떠오르다', sentence: "His master's words came back to him." },
             { word: 'marvellous', meaning: '놀라운', sentence: 'A marvellous thing happened.' },
             { word: 'steaming', meaning: '김이 나는', sentence: 'The cloth was covered in steaming food.' },
-            { word: 'fall on', meaning: '달려들다', sentence: 'He fell on it without washing his hands.' },
-            { word: 'hurry on', meaning: '걸음을 재촉하다', sentence: 'And he hurried on.' }
+            { word: 'fall on', meaning: '달려들다', sentence: "He fell on it without even washing his hands." },
+            { word: 'hurry on', meaning: '걸음을 재촉하다', sentence: "Then he hurried on, delighted." }
         ],
         '03-inn.webp': [
             { word: 'landlord', meaning: '주막 주인', sentence: 'The landlord had an easy laugh.' },
             { word: 'flourish', meaning: '척 하는 몸짓', sentence: 'He spread out his cloth with a flourish.' },
             { word: 'board', meaning: '상', sentence: 'The board was loaded with food.' },
-            { word: 'finger', meaning: '만지작거리다', sentence: 'He kept fingering the linen.' }
+            { word: 'finger', meaning: '만지작거리다', sentence: "He kept fingering the cloth." }
         ],
         '03-inn-2.webp': [
             { word: 'storeroom', meaning: '창고', sentence: 'He went through his storeroom.' },
@@ -1052,30 +961,30 @@ const EN = {
             { word: 'unfold', meaning: '펴다', sentence: 'He folded and unfolded it again.' }
         ],
         '04-donkey.webp': [
-            { word: 'part', meaning: '헤어지다', sentence: 'The miller spoke as they parted.' },
-            { word: 'lead out', meaning: '끌고 나오다', sentence: 'And he led out a donkey.' },
+            { word: 'part', meaning: '헤어지다', sentence: "As they parted, the miller said." },
+            { word: 'lead out', meaning: '끌고 나오다', sentence: "He led out a donkey." },
             { word: 'sheet', meaning: '보자기', sentence: 'Lay a sheet under him.' },
             { word: 'shower out', meaning: '우수수 쏟아지다', sentence: 'Gold pieces came showering out.' }
         ],
         '04-donkey-2.webp': [
             { word: 'worn out', meaning: '고생한', sentence: 'You must be worn out from the road.' },
             { word: 'tongue itch', meaning: '입이 근질거리다', sentence: "His tongue began to itch." },
-            { word: 'pour out', meaning: '쏟아 놓다', sentence: 'He poured out the gold in the yard.' },
-            { word: 'empty-handed', meaning: '빈손으로', sentence: 'He came home empty-handed.' },
+            { word: 'pour out', meaning: '쏟아 놓다', sentence: "He made it pour out gold in the yard." },
+            { word: 'empty-handed', meaning: '빈손으로', sentence: "He too was empty-handed." },
             { word: 'sigh', meaning: '한숨 쉬다', sentence: 'Their father only sighed.' }
         ],
         '05-sack.webp': [
-            { word: 'turn wood', meaning: '나무를 깎다', sentence: 'The youngest was learning to turn wood.' },
+            { word: 'turn wood', meaning: '나무를 깎다', sentence: "The youngest was still learning to turn wood." },
             { word: 'strike', meaning: '짚이다', sentence: 'Something about it struck him.' },
             { word: 'shaving', meaning: '대팻밥', sentence: 'The shavings piled up round his feet.' },
-            { word: 'cudgel', meaning: '몽둥이', sentence: 'There is a cudgel inside this.' },
+            { word: 'cudgel', meaning: '몽둥이', sentence: "There is a cudgel inside." },
             { word: 'call out', meaning: '외치다', sentence: 'Call out: cudgel, out of the sack.' }
         ],
         '05-sack-2.webp': [
             { word: 'sling', meaning: '메다', sentence: 'He slung the sack over his shoulder.' },
             { word: 'on purpose', meaning: '일부러', sentence: 'He chose that road on purpose.' },
             { word: 'pretend', meaning: '~인 척하다', sentence: 'He pretended not to notice.' },
-            { word: 'within reach', meaning: '손이 닿는 곳에', sentence: 'He kept the sack within reach.' }
+            { word: 'within reach', meaning: '손이 닿는 곳에', sentence: "He kept the sack always within reach." }
         ],
         '06-cudgel.webp': [
             { word: 'boast', meaning: '큰소리치다', sentence: 'The youngest boasted on purpose.' },
@@ -1097,7 +1006,7 @@ const EN = {
             { word: 'neatly', meaning: '얌전히', sentence: 'The cloth was inside, folded neatly.' }
         ],
         '07-return-2.webp': [
-            { word: 'gather up', meaning: '챙기다', sentence: 'He gathered up both of them.' },
+            { word: 'gather up', meaning: '챙기다', sentence: "The youngest gathered up his brothers' things." },
             { word: 'halter', meaning: '고삐', sentence: 'He took the donkey by the halter.' },
             { word: 'bray', meaning: '히힝 울음', sentence: 'The donkey gave a bray.' },
             { word: 'as well', meaning: '~하는 게 좋다', sentence: 'That would be as well.' },
@@ -1112,8 +1021,8 @@ const EN = {
         '08-ending-2.webp': [
             { word: 'glitter', meaning: '반짝이다', sentence: 'The whole yard was glittering.' },
             { word: 'wipe', meaning: '훔치다', sentence: 'The old tailor wiped his eyes.' },
-            { word: 'eat one’s fill', meaning: '배불리 먹다', sentence: 'Everyone ate their fill.' },
-            { word: 'eaves', meaning: '처마', sentence: 'The sack was hung under the eaves.' }
+            { word: 'eat one’s fill', meaning: '배불리 먹다', sentence: "The whole village came and ate their fill." },
+            { word: 'eaves', meaning: '처마', sentence: "The sack hung quietly under the eaves." }
         ],
         'end.webp': [
             { word: 'splendid', meaning: '훌륭한', sentence: 'All three gifts were splendid.' },

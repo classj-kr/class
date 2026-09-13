@@ -566,12 +566,10 @@ const EN = {
                     art: '01-prince.webp',
                     emoji: '👑',
                     left: [
-                        "Long ago in a small country there was a prince,",
-                        "and he came in time to the age for marrying.",
+                        "Long ago in a small country there was a prince, and the time came for him to marry.",
                         "The king and queen began looking about for a bride.",
                         "But the prince wanted one thing in particular.",
-                        "\"I want to marry a real princess.\"",
-                        "\"If she is not real, I would rather not.\""
+                        "\"I want to marry a real princess. If she is not real, I would rather not marry at all.\""
                     ],
                     right: [
                         "So the prince set out to find one.",
@@ -579,27 +577,24 @@ const EN = {
                         "and went over mountains into far countries.",
                         "There were princesses everywhere —",
                         "in the big countries and the small ones.",
-                        "And every time, the prince had his hopes up."
+                        "Every time, the prince had his hopes up."
                     ]
                 },
                 {
                     art: '01-prince-2.webp',
                     emoji: '👑',
                     left: [
-                        "But when he met them there was always something not quite right.",
-                        "One princess walked oddly.",
-                        "One did not talk like a princess at all.",
+                        "But when he met them, there was always something not quite right.",
+                        "One princess walked oddly. One did not talk like a princess at all.",
                         "And one was not a princess in the first place.",
                         "The prince shook his head over every one of them.",
                         "And so some years went by."
                     ],
                     right: [
                         "In the end he came home empty-handed.",
-                        "His clothes were worn through and his shoes were finished.",
-                        "The prince sat at the window and sighed.",
-                        "\"Is there really no such thing as a real princess?\"",
-                        "The sky that day was heavy with cloud,",
-                        "and there was something in the wind."
+                        "His clothes were worn through and his shoes were worn out.",
+                        "The prince sat at the window and sighed. \"Is there really no such thing as a real princess?\"",
+                        "The sky was heavy with cloud that day, and the wind was wild."
                     ]
                 }
             ]
@@ -612,40 +607,28 @@ const EN = {
                     art: '02-storm.webp',
                     emoji: '⛈️',
                     left: [
-                        "That night a fearful storm came down.",
-                        "Lightning split the sky open, crack after crack.",
-                        "The rain came down as though it were being poured out of buckets,",
-                        "and the wind rattled the windows.",
-                        "Everybody in the castle had gone to bed,",
-                        "and the lamps had been put out one by one."
+                        "That night a fearful storm came down. Lightning split the sky open, crack after crack.",
+                        "The rain poured down as though out of buckets, and the wind rattled the windows.",
+                        "Everybody in the castle had gone to bed, and the lamps went out one by one."
                     ],
                     right: [
-                        "And then there was a banging at the castle gate,",
-                        "so mixed up with the thunder that you could hardly hear it.",
-                        "The old king went out with a candle.",
-                        "\"Who is there at this hour?\"",
-                        "The heavy gate creaked open,",
-                        "and the rain came driving in."
+                        "Then there was a banging at the castle gate, so mixed up with the thunder that you could hardly hear it.",
+                        "The old king went out with a candle. \"Who is there at this hour?\"",
+                        "The heavy gate creaked open, and the rain came driving in."
                     ]
                 },
                 {
                     art: '02-storm-2.webp',
                     emoji: '⛈️',
                     left: [
-                        "Outside the gate stood a young woman",
-                        "with water running off her from head to foot.",
-                        "Her hair was plastered to her face,",
-                        "water was pouring out of her shoes,",
-                        "and the rain dripped off the hem of her dress.",
-                        "She said, in a shaking voice,"
+                        "Outside the gate stood a young woman, with water running off her from head to foot.",
+                        "Her hair was plastered to her face, water was pouring out of her shoes, and the rain dripped off the hem of her dress.",
+                        "She spoke in a shaking voice."
                     ],
                     right: [
-                        "\"I am a princess.\"",
-                        "\"Would you give me a bed for one night?\"",
-                        "The king's eyes went round.",
-                        "\"A princess? At this hour?\"",
-                        "And still the king got her inside at once.",
-                        "You could hardly leave anybody standing out in rain like that."
+                        "\"I am a princess. Would you give me a bed for one night?\"",
+                        "The king's eyes went round. \"A princess? At this hour?\"",
+                        "But he brought her inside at once. Nobody could be left standing out in rain like that."
                     ]
                 }
             ]
@@ -658,40 +641,29 @@ const EN = {
                     art: '03-doubt.webp',
                     emoji: '💧',
                     left: [
-                        "The young woman stepped into the hall,",
-                        "and a puddle formed under her at once.",
-                        "She was in a dreadful state,",
-                        "with the water still running off her clothes.",
+                        "The young woman stepped into the hall, and a puddle formed under her at once.",
+                        "She was in a dreadful state, with water still running off her clothes.",
                         "Servants ran to fetch towels.",
-                        "And the prince came down at the sound of it."
+                        "The prince heard the noise and came down too."
                     ],
                     right: [
-                        "And he could not take his eyes off her.",
-                        "Wet through as she was, there was something about her.",
-                        "The prince's heart began to beat faster.",
-                        "\"Could it be, this time…\"",
-                        "The prince turned to his mother.",
-                        "He was about to say that a bed should be got ready quickly."
+                        "He could not take his eyes off her. Wet through as she was, there was something special about her.",
+                        "The prince's heart began to beat faster. \"Could it be, this time…\"",
+                        "He turned to his mother. He was about to ask her to get a bed ready quickly."
                     ]
                 },
                 {
                     art: '03-doubt-2.webp',
                     emoji: '💧',
                     left: [
-                        "The queen only stood watching with her arms folded.",
-                        "Her eyes were very sharp.",
-                        "\"A princess, in that state.\"",
-                        "\"We shall see about that.\"",
-                        "That is what the queen thought to herself.",
-                        "Out loud she was all sweetness."
+                        "The queen only stood watching with her arms folded. Her eyes were very sharp.",
+                        "She thought to herself, \"A princess, in that state? We shall see about that.\"",
+                        "But out loud she was all sweetness."
                     ],
                     right: [
-                        "\"What a journey you must have had.\"",
-                        "\"I shall see to your bed myself.\"",
-                        "And she went up to the guest room without another word.",
-                        "There was something behind that face,",
-                        "and the prince watched her go and wondered,",
-                        "because she was walking rather fast."
+                        "\"What a journey you must have had. I shall see to your bed myself.\"",
+                        "Then she went up to the guest room ahead of everyone. There was something behind that face.",
+                        "The prince watched her go and wondered, because she was walking rather fast."
                     ]
                 }
             ]
@@ -708,38 +680,28 @@ const EN = {
                         "shut the door firmly and turned back her sleeves.",
                         "She stripped every quilt and mattress off the bed",
                         "until there was nothing but the bare boards.",
-                        "And then she took something out of her pocket.",
-                        "It was one pea."
+                        "Then she took something out of her pocket. It was one pea."
                     ],
                     right: [
-                        "A very small, round pea.",
-                        "The queen put it in the middle of the bed.",
+                        "It was a very small, round pea. The queen put it in the middle of the bare boards.",
                         "\"A real princess will feel that.\"",
-                        "And then she called the servants.",
-                        "\"Bring me twenty mattresses.\"",
-                        "The servants looked at each other,",
-                        "because they thought they had misheard her."
+                        "Then she called the servants. \"Bring me twenty mattresses.\"",
+                        "The servants looked at each other. They thought they had misheard her."
                     ]
                 },
                 {
                     art: '04-pea-2.webp',
                     emoji: '🫛',
                     left: [
-                        "The servants carried in twenty mattresses",
-                        "and laid them one on top of another over the pea.",
-                        "Then she had them fetch eiderdown quilts —",
-                        "twenty of those as well,",
-                        "and they went on top of the mattresses.",
-                        "The bed came up almost to the ceiling,",
-                        "far higher than the doorway."
+                        "The servants carried in twenty mattresses and laid them one on top of another over the pea.",
+                        "Then the queen had them fetch eiderdown quilts — twenty of those as well — and they went on top of the mattresses.",
+                        "The bed came up almost to the ceiling, far higher than the doorway."
                     ],
                     right: [
                         "The servants brought a ladder and leaned it against the bed.",
-                        "\"However is she to get up there?\"",
-                        "one of them whispered.",
-                        "The queen turned her head as though she had not heard.",
-                        "\"There. That will do.\"",
-                        "And she went out of the room looking thoroughly pleased."
+                        "\"However is she to get up there?\" one of them whispered.",
+                        "The queen turned her head as though she had not heard. \"There. That will do.\"",
+                        "She went out of the room looking thoroughly pleased."
                     ]
                 }
             ]
@@ -752,44 +714,34 @@ const EN = {
                     art: '05-sleepless.webp',
                     emoji: '🌙',
                     left: [
-                        "The young woman was shown to the room.",
-                        "Her eyes went round at the sight of the bed.",
-                        "And still she said nothing at all,",
-                        "and climbed the ladder to the very top.",
-                        "The top of the quilts was higher than the windowsill.",
-                        "\"Sleep well.\"",
-                        "The queen shut the door",
-                        "and put her ear against it."
+                        "A servant showed the young woman to the guest room. Her eyes went round at the sight of the bed.",
+                        "But she said nothing and climbed the ladder to the top, higher than the windowsill.",
+                        "The queen called from the doorway, \"Sleep well.\"",
+                        "Then she shut the door and put her ear against it."
                     ],
                     right: [
-                        "The young woman lay down among the quilts.",
-                        "She ached all over with tiredness.",
-                        "And there was something hard pressing into her back.",
-                        "She turned this way and that,",
-                        "and every time, all forty layers rolled with her.",
-                        "\"Whatever is that?\"",
-                        "Whichever way she lay, that one spot pressed into her."
+                        "The young woman lay down among the quilts. She ached all over with tiredness.",
+                        "But something hard was pressing into her back.",
+                        "She turned this way and that, and every time, all forty layers rolled with her.",
+                        "\"Whatever is that?\" Whichever way she lay, that one spot pressed into her."
                     ]
                 },
                 {
                     art: '05-sleepless-2.webp',
                     emoji: '🌙',
                     left: [
-                        "She sat up and lifted the quilts one after another,",
-                        "and there was nothing to be found.",
-                        "She could hardly pull off twenty mattresses.",
+                        "She sat up and lifted the quilts one after another, but there was nothing to be found.",
+                        "She couldn't pull off twenty mattresses.",
                         "Outside the door the queen had her ear pressed to the wood.",
                         "\"She is turning over. She is turning over!\"",
                         "The queen very nearly clapped her hands."
                     ],
                     right: [
-                        "Outside the window it was still raining,",
-                        "and the night went on and on with no end to it.",
+                        "Outside it was still raining, and the night went on and on.",
                         "The young woman shut her eyes and opened them again.",
-                        "It was near cockcrow before the window began to go grey.",
-                        "She got herself down the ladder at last,",
-                        "with her legs shaking under her.",
-                        "And there was one hollow in the bed where she had turned all night."
+                        "Near cockcrow the window began to go grey.",
+                        "At last she climbed down the ladder, legs shaking.",
+                        "There was one hollow in the bed, where she had turned all night."
                     ]
                 }
             ]
@@ -802,19 +754,13 @@ const EN = {
                     art: '06-morning.webp',
                     emoji: '🍳',
                     left: [
-                        "Breakfast was laid,",
-                        "and the prince and the king sat down.",
-                        "The young woman came in rubbing her eyes,",
-                        "looking thoroughly worn out.",
-                        "The queen asked her sweetly,",
-                        "\"And did you sleep well last night?\""
+                        "Breakfast was laid, and the prince and the king sat down.",
+                        "The young woman came in rubbing her eyes, looking thoroughly worn out.",
+                        "The queen asked her sweetly, \"And did you sleep well last night?\""
                     ],
                     right: [
-                        "The young woman hesitated a moment.",
-                        "She did not want to tell a lie.",
-                        "\"To be honest, I did not sleep at all.\"",
-                        "\"There must have been something hard in the bed.\"",
-                        "\"I feel black and blue all over.\"",
+                        "The young woman hesitated a moment. She did not want to tell a lie.",
+                        "\"To be honest, I did not sleep at all. There must have been something hard in the bed. I feel black and blue all over.\"",
                         "The queen and the king caught each other's eye."
                     ]
                 },
@@ -822,21 +768,13 @@ const EN = {
                     art: '06-morning-2.webp',
                     emoji: '🍳',
                     left: [
-                        "The prince put down his spoon.",
-                        "\"Was the bed as uncomfortable as that?\"",
-                        "\"I am sorry. That is our fault.\"",
-                        "The young woman waved a hand.",
-                        "\"Not at all. I am grateful to have had a bed.\""
+                        "The prince put down his spoon. \"Was the bed as uncomfortable as that? I am sorry. That is our fault.\"",
+                        "The young woman waved a hand. \"Not at all. I am grateful to have had a bed.\""
                     ],
                     right: [
-                        "The queen got up quietly",
-                        "and went out of the room,",
-                        "and everybody watched her go, quite bewildered.",
-                        "Her footsteps went away down the corridor,",
-                        "and the breakfast table went silent.",
-                        "A little later the queen came back in",
-                        "with one hand closed tight,",
-                        "and a smile spreading over her face."
+                        "The queen got up quietly and went out of the room. Everybody watched her go, quite bewildered.",
+                        "Her footsteps went away toward the guest room, and the breakfast table went silent.",
+                        "A little later the queen came back in, with one hand closed tight and a smile spreading over her face."
                     ]
                 }
             ]
@@ -849,21 +787,15 @@ const EN = {
                     art: '07-reveal.webp',
                     emoji: '🔍',
                     left: [
-                        "The queen stood at the head of the table.",
-                        "\"Do you know what was under that bed?\"",
-                        "Everybody shook their heads,",
-                        "and the queen slowly opened her hand.",
-                        "There was something small and round on her palm.",
-                        "It was one little pea.",
-                        "\"I put it at the very bottom of the bed last night.\""
+                        "The queen stood at the head of the table. \"Do you know what was at the very bottom of that bed?\"",
+                        "Everybody shook their heads, and the queen slowly opened her hand.",
+                        "There was something small and round on her palm. It was one little pea."
                     ],
                     right: [
-                        "\"And I laid twenty mattresses on top of it.\"",
-                        "\"And twenty quilts on top of those.\"",
-                        "There was a murmur all round the table,",
-                        "and the young woman's eyes went round too.",
+                        "\"I put it there last night. I laid twenty mattresses on top of it, and twenty quilts on top of those.\"",
+                        "There was a murmur all round the table, and the young woman's eyes went round too.",
                         "\"That little thing?\"",
-                        "And the pea rolled about on her palm."
+                        "The pea rolled about on the queen's palm."
                     ]
                 },
                 {
@@ -871,21 +803,14 @@ const EN = {
                     emoji: '🔍',
                     left: [
                         "The queen turned to her son.",
-                        "\"Under twenty mattresses and twenty quilts.\"",
-                        "\"And she felt it all the same.\"",
-                        "\"There is nobody in the world with skin as fine as that.\"",
-                        "\"This lady is a real princess and no mistake.\"",
-                        "And the prince's face lit up."
+                        "\"Under twenty mattresses and twenty quilts, and she felt it all the same! There is nobody in the world with skin as fine as that. This lady is a real princess and no mistake.\"",
+                        "The prince's face lit up."
                     ],
                     right: [
-                        "Because the person he had searched so long for was in front of him.",
-                        "\"Will you marry me?\"",
-                        "The prince's voice shook a little.",
-                        "The room went as quiet as a stone,",
-                        "and the princess went pink.",
-                        "And then she quietly nodded.",
-                        "The king clapped his hands,",
-                        "and the laughter went right round the room."
+                        "The one he had searched for so long was right in front of him.",
+                        "\"Will you marry me?\" The prince's voice shook a little.",
+                        "The room went very quiet, and the princess went pink.",
+                        "Then she quietly nodded. The king clapped his hands, and laughter went right round the room."
                     ]
                 }
             ]
@@ -898,41 +823,29 @@ const EN = {
                     art: '08-ending.webp',
                     emoji: '🎉',
                     left: [
-                        "The wedding was settled that same day,",
-                        "and the news went out over the whole country.",
-                        "There was feasting at the castle for three days,",
-                        "and people danced in the streets.",
-                        "The prince did not sigh any more,",
-                        "and the princess slept soundly that night.",
-                        "\"Now I feel better.\""
+                        "The wedding was settled that same day, and the news went out over the whole country.",
+                        "There was feasting at the castle for three days, and people danced in the streets.",
+                        "The prince did not sigh any more."
                     ],
                     right: [
-                        "The princess put her face into the pillow.",
-                        "This time there was exactly one mattress.",
-                        "The queen was very fond of her son's wife,",
-                        "and the two of them got on well.",
-                        "And what became of that pea?",
-                        "It was not thrown away, but kept carefully.",
-                        "It was much too remarkable a pea to throw out."
+                        "The princess slept soundly that night, for this time there was just one mattress. \"Now I feel much better!\"",
+                        "The queen was very fond of her son's wife, and the two of them got on well.",
+                        "And what became of that pea? It was much too remarkable a pea to throw out."
                     ]
                 },
                 {
                     art: '08-ending-2.webp',
                     emoji: '🎉',
                     left: [
-                        "The pea was put into a glass case",
-                        "and set in a museum,",
-                        "sitting quietly on a small stand.",
+                        "The pea was put into a glass case and set in a museum, sitting quietly on a small stand.",
                         "People came crowding up in front of it.",
                         "\"That is the famous pea, they say.\"",
                         "\"And she felt a thing that size?\""
                     ],
                     right: [
-                        "The glass kept misting over,",
-                        "and the attendant had to keep wiping it with a handkerchief.",
-                        "Children pressed their noses to the glass to look in.",
-                        "The pea is probably still there now,",
-                        "unless somebody has taken it away.",
+                        "Children pressed their noses to the glass, so it kept misting over.",
+                        "The attendant had to keep wiping it with a handkerchief.",
+                        "The pea is probably still there — unless somebody took it.",
                         "And there — that is a true story."
                     ]
                 }
@@ -996,8 +909,8 @@ const EN = {
                 left: [
                     "This is among the shortest things Andersen wrote. And it has lasted nearly two hundred years all the same.",
                     "The prince travelled through country after country. There were plenty of princesses, and no way of knowing which were real — because if you ask, everybody says yes.",
-                    "Look again at the queen's test. She did not ask a question. What you ask about can be made up.",
-                    "She lays twenty mattresses and twenty quilts on one pea. Enough that nobody could possibly feel it."
+                    "Look again at the queen's test. She did not ask a question. An answer to a question can be made up.",
+                    "She lays twenty mattresses and twenty quilts on one pea — so many that surely nobody could feel it."
                 ],
                 right: [
                     "And the young woman says straight out that she did not sleep. She could have got through the morning by saying she slept beautifully.",
@@ -1029,7 +942,7 @@ const EN = {
         '02-storm.webp': [
             { word: 'fearful', meaning: '무서운', sentence: 'A fearful storm came down.' },
             { word: 'lightning', meaning: '번개', sentence: 'Lightning split the sky open.' },
-            { word: 'bucket', meaning: '양동이', sentence: 'As though it were poured out of buckets.' },
+            { word: 'bucket', meaning: '양동이', sentence: "The rain poured down as though out of buckets." },
             { word: 'rattle', meaning: '덜컹거리게 하다', sentence: 'The wind rattled the windows.' },
             { word: 'creak open', meaning: '삐걱 열리다', sentence: 'The heavy gate creaked open.' }
         ],
@@ -1059,14 +972,14 @@ const EN = {
             { word: 'mishear', meaning: '잘못 듣다', sentence: 'They thought they had misheard her.' }
         ],
         '04-pea-2.webp': [
-            { word: 'eiderdown', meaning: '오리털 이불', sentence: 'She had them fetch eiderdown quilts.' },
+            { word: 'eiderdown', meaning: '오리털 이불', sentence: "The queen had them fetch eiderdown quilts." },
             { word: 'doorway', meaning: '방문', sentence: 'Far higher than the doorway.' },
             { word: 'ladder', meaning: '사다리', sentence: 'The servants brought a ladder.' },
             { word: 'lean against', meaning: '기대어 놓다', sentence: 'And leaned it against the bed.' },
             { word: 'thoroughly', meaning: '아주', sentence: 'Looking thoroughly pleased.' }
         ],
         '05-sleepless.webp': [
-            { word: 'show to', meaning: '안내하다', sentence: 'She was shown to the room.' },
+            { word: 'show to', meaning: '안내하다', sentence: "A servant showed the young woman to the guest room." },
             { word: 'windowsill', meaning: '창턱', sentence: 'Higher than the windowsill.' },
             { word: 'ache', meaning: '아프다, 노곤하다', sentence: 'She ached all over with tiredness.' },
             { word: 'press into', meaning: '배기다', sentence: 'Something hard pressing into her back.' },
@@ -1076,7 +989,7 @@ const EN = {
             { word: 'sit up', meaning: '일어나 앉다', sentence: 'She sat up and lifted the quilts.' },
             { word: 'turn over', meaning: '뒤척이다', sentence: 'She is turning over!' },
             { word: 'clap one’s hands', meaning: '손뼉을 치다', sentence: 'The queen very nearly clapped her hands.' },
-            { word: 'cockcrow', meaning: '닭 울 무렵', sentence: 'It was near cockcrow.' },
+            { word: 'cockcrow', meaning: '닭 울 무렵', sentence: "Near cockcrow the window began to go grey." },
             { word: 'hollow', meaning: '옴폭 꺼진 자리', sentence: 'There was one hollow in the bed.' }
         ],
         '06-morning.webp': [
@@ -1095,7 +1008,7 @@ const EN = {
         '07-reveal.webp': [
             { word: 'palm', meaning: '손바닥', sentence: 'Something small and round on her palm.' },
             { word: 'pea', meaning: '완두콩', sentence: 'It was one little pea.' },
-            { word: 'the very bottom', meaning: '맨 밑', sentence: 'At the very bottom of the bed.' },
+            { word: 'the very bottom', meaning: '맨 밑', sentence: "Do you know what was at the very bottom of that bed?" },
             { word: 'murmur', meaning: '웅성거림', sentence: 'There was a murmur all round the table.' }
         ],
         '07-reveal-2.webp': [
@@ -1115,15 +1028,15 @@ const EN = {
         '08-ending-2.webp': [
             { word: 'glass case', meaning: '유리 상자', sentence: 'The pea was put into a glass case.' },
             { word: 'stand', meaning: '받침대', sentence: 'Sitting quietly on a small stand.' },
-            { word: 'mist over', meaning: '김이 서리다', sentence: 'The glass kept misting over.' },
+            { word: 'mist over', meaning: '김이 서리다', sentence: "Children pressed their noses to the glass, so it kept misting over." },
             { word: 'attendant', meaning: '지키는 사람', sentence: 'The attendant had to keep wiping it.' },
-            { word: 'unless', meaning: '~하지 않았다면', sentence: 'Unless somebody has taken it away.' }
+            { word: 'unless', meaning: '~하지 않았다면', sentence: "Unless somebody took it." }
         ],
         'end.webp': [
             { word: 'last', meaning: '남다, 이어지다', sentence: 'And it has lasted nearly two hundred years.' },
             { word: 'plenty of', meaning: '많은', sentence: 'There were plenty of princesses.' },
             { word: 'test', meaning: '시험', sentence: "Look again at the queen's test." },
-            { word: 'make up', meaning: '꾸며 내다', sentence: 'What you ask about can be made up.' },
+            { word: 'make up', meaning: '꾸며 내다', sentence: "An answer to a question can be made up." },
             { word: 'fair', meaning: '옳은, 공정한', sentence: 'Was that a fair test?' }
         ]
     }

@@ -564,16 +564,14 @@ const EN = {
                     art: '01-twister.webp',
                     emoji: '🌪️',
                     left: [
-                        "There was a little house in the middle of the Kansas prairie, and everything round it was grey.",
-                        "Dorothy lived there with Aunt Em and Uncle Henry.",
-                        "The only one who laughed and ran about was a little dog called Toto.",
-                        "That day, as always, Toto was circling round Dorothy's feet."
+                        "A little house stood in the middle of the Kansas prairie. Everything round it was grey.",
+                        "Dorothy lived there with Aunt Em and Uncle Henry. They worked so hard that they hardly ever smiled.",
+                        "Only her little dog Toto laughed and played. That day, as always, he was running round her feet."
                     ],
                     right: [
-                        "Then Uncle Henry looked at the sky and shouted.",
-                        "\"A cyclone!\"",
+                        "Then Uncle Henry looked at the sky and shouted, \"A cyclone!\"",
                         "Aunt Em threw open the cellar door and climbed down. Dorothy was about to follow when Toto shot under the bed.",
-                        "The moment she caught hold of him, the whole house lifted into the air. The floor swayed under her like a swing."
+                        "The moment she caught hold of him, the cyclone wrapped round the house. Up it went, and the floor swayed like a swing."
                     ]
                 },
                 {
@@ -585,9 +583,8 @@ const EN = {
                         "Toto gave no answer. He buried his face in Dorothy's lap, and she held him tight."
                     ],
                     right: [
-                        "How long it lasted, nobody could say. Dorothy fell asleep in the end.",
-                        "Bump!",
-                        "She woke at the noise. The house had come down on solid ground.",
+                        "How long it lasted, nobody could say. Little by little Dorothy got used to the rocking, and she fell asleep.",
+                        "Bump! The noise woke her up. The house had come down on solid ground.",
                         "She opened the door and the light dazzled her. There was no grey anywhere — everything was green and yellow."
                     ]
                 }
@@ -601,16 +598,15 @@ const EN = {
                     art: '02-munchkin.webp',
                     emoji: '👞',
                     left: [
-                        "People no taller than Dorothy came up to her, all in blue coats and blue hats.",
+                        "Munchkins, no taller than Dorothy, came up to her. They all wore blue coats and blue hats.",
                         "The little bells round their hats went tinkle, tinkle.",
-                        "Behind them stood an old woman dressed in white.",
+                        "Then an old woman dressed in white stepped out from behind them and bowed.",
                         "\"Thank you for putting an end to the Witch of the East.\""
                     ],
                     right: [
                         "\"Me? But I haven't done anything.\"",
-                        "\"Your house fell out of the sky, my dear.\"",
-                        "The old woman was the Witch of the North, and the people in blue were called Munchkins.",
-                        "All that showed from under the house was a pair of silver shoes.",
+                        "\"Your house fell out of the sky and landed right on her. Look!\"",
+                        "The old woman was the Witch of the North. Under the house, the Witch of the East was gone. Only her silver shoes were left.",
                         "\"They are yours now. Try them on.\""
                     ]
                 },
@@ -618,18 +614,16 @@ const EN = {
                     art: '02-munchkin-2.webp',
                     emoji: '👞',
                     left: [
-                        "Dorothy put the silver shoes on, and they fitted her exactly.",
-                        "\"I want to go back to Kansas.\"",
-                        "\"That is beyond even me.\"",
-                        "The Witch of the North took off her pointed hat and balanced it on her nose.",
+                        "Dorothy put the silver shoes on, and they fitted her exactly. \"But I want to go back to Kansas,\" she said.",
+                        "\"That is beyond even me. But wait — I'll ask the way.\"",
+                        "The Witch took off her pointed hat and balanced it on her nose.",
                         "The hat turned into a slate, and writing came up on it."
                     ],
                     right: [
-                        "\"Go to the Emerald City.\"",
-                        "\"A wizard called Oz lives there. He grants whatever is asked of him.\"",
-                        "\"There is only one road. Follow the yellow brick road and it will take you.\"",
-                        "Dorothy packed some bread and picked up Toto.",
-                        "The yellow bricks shone and shone in the sunlight."
+                        "The Witch read the writing out loud.",
+                        "\"Go to the Emerald City. A wizard called Oz lives there. He grants whatever is asked of him.\"",
+                        "\"Just follow the yellow brick road.\"",
+                        "Dorothy packed some bread and picked up Toto. The yellow bricks shone in the sunlight."
                     ]
                 }
             ]
@@ -643,35 +637,31 @@ const EN = {
                     emoji: '🌾',
                     left: [
                         "She was passing a cornfield when the scarecrow up on his pole gave her a wink.",
-                        "Dorothy rubbed her eyes.",
-                        "\"Hullo. Would you get me down?\"",
-                        "\"Goodness — it talks!\"",
-                        "She pulled out the pole, and the Scarecrow flopped over in a heap."
+                        "Dorothy rubbed her eyes. Then the Scarecrow spoke.",
+                        "\"Hello. Would you get me down?\"",
+                        "\"Goodness, you can talk!\" Dorothy pulled out the pole, and the Scarecrow flopped over in a heap."
                     ],
                     right: [
-                        "He got up and fell over again. His legs were straw and would not hold him.",
-                        "\"Never mind. It hurts, but I never know that it hurts.\"",
-                        "\"There is nothing but straw in my head. What I want is some brains.\"",
-                        "\"Then come to Oz with me!\"",
-                        "The Scarecrow wobbled as he walked, but he waved both arms about for joy."
+                        "He got up and fell over again, for his legs were only straw. \"Are you all right?\" asked Dorothy.",
+                        "\"Oh yes, I never feel pain. But my head is only straw, so I have no brains.\"",
+                        "\"Then come to Oz with me! He grants any wish.\"",
+                        "The Scarecrow wobbled as he walked, but he waved his arms for joy."
                     ]
                 },
                 {
                     art: '03-tinman.webp',
                     emoji: '🪓',
                     left: [
-                        "A strange sound came from deep in the wood.",
-                        "Creak… creak…",
-                        "A man made all of tin stood there frozen with an axe in his hands. The rain had rusted him and he could not move an inch.",
-                        "\"Oil… the oil can, over there…\"",
-                        "Dorothy oiled his neck and his arms and his legs."
+                        "A groaning sound came from deep in the wood. Dorothy went to look.",
+                        "A man made of tin stood frozen with an axe in his hands. The rain had rusted him.",
+                        "His lips moved just a little. \"Oil… the oil can, over there…\"",
+                        "Dorothy oiled his neck, his arms and his legs. Creak… creak…"
                     ],
                     right: [
-                        "The Tin Woodman threw both arms up and turned his head this way and that.",
-                        "\"Oh, that's the first time in a year!\"",
-                        "\"An enchantment turned every bit of me to tin.\"",
-                        "\"And there is nothing at all inside my chest.\"",
-                        "\"What I want is a heart.\""
+                        "His joints came loose. He threw both arms up and turned his head this way and that.",
+                        "\"I can move for the first time in a year!\"",
+                        "\"An enchantment turned every bit of me to tin, and my chest is empty. I want a heart.\"",
+                        "\"Then come to Oz with us!\" said Dorothy."
                     ]
                 }
             ]
@@ -684,18 +674,16 @@ const EN = {
                     art: '04-lion.webp',
                     emoji: '🦁',
                     left: [
-                        "\"ROAR!\"",
-                        "The wood rang with it, and out bounded an enormous lion.",
-                        "He knocked the Scarecrow head over heels.",
+                        "\"ROAR!\" The wood rang with it, and out bounded an enormous lion.",
+                        "He knocked the Scarecrow head over heels. He struck the Woodman with his claws, and down he crashed.",
                         "Then he opened his jaws wide at Toto.",
-                        "Dorothy sprang in front and slapped the Lion right on the nose."
+                        "Dorothy jumped in front and slapped the Lion right on the nose."
                     ],
                     right: [
-                        "\"You ought to be ashamed! Picking on someone smaller than you!\"",
-                        "The Lion rubbed his nose, and then great tears rolled down.",
-                        "\"You're right… the truth is I'm a coward.\"",
-                        "\"When I'm alone at night I'm too frightened to sleep.\"",
-                        "The great Lion sniffled, and everyone had a hard time keeping a straight face."
+                        "\"Shame on you! Picking on someone smaller!\"",
+                        "The Lion rubbed his nose, and big tears rolled down.",
+                        "\"You're right… I'm really a coward. At night I'm too scared to sleep alone.\"",
+                        "The great Lion sniffled. \"Come to Oz with us and ask for courage!\" said Dorothy."
                     ]
                 },
                 {
@@ -705,14 +693,14 @@ const EN = {
                         "The four of them set off together.",
                         "On the way they came to a ditch far too wide to jump.",
                         "So the Lion took them over one at a time on his back, in great bounds.",
-                        "\"Some coward — look at him jump!\"",
+                        "\"Some coward — look at him jump!\" laughed the Scarecrow.",
                         "The Lion went quite red in the face."
                     ],
                     right: [
-                        "By and by they came to a field full of scarlet flowers. The scent was so heavy that Dorothy began to yawn.",
+                        "Then came a field of scarlet flowers. The scent was so strong that Dorothy began to yawn.",
                         "\"Just a little… sleep…\"",
-                        "Down went Dorothy, and down went the Lion. It was a field where anyone who fell asleep never woke again.",
-                        "Straw and tin do not sleep. The Scarecrow and the Woodman hoisted the two of them up and ran the whole field."
+                        "Down went Dorothy and the Lion. Anyone who slept there never woke.",
+                        "But straw and tin can't sleep. The Scarecrow and the Woodman hoisted the two of them up and ran."
                     ]
                 }
             ]
@@ -725,15 +713,14 @@ const EN = {
                     art: '05-emerald.webp',
                     emoji: '💚',
                     left: [
-                        "Far off a green palace glittered. The gatekeeper took green spectacles out of a box and fastened a pair on each of them.",
+                        "Far off, a green city glittered. At the gate, the gatekeeper took green spectacles out of a box and put a pair on each of them.",
                         "\"Without these the glare would blind you.\"",
                         "With the spectacles on, the whole world was green. The roads, the houses, the clothes people wore, even the sky."
                     ],
                     right: [
-                        "Oz would see only one person a day. In front of Dorothy floated an enormous head and nothing else.",
-                        "It had no body and no arms at all. Yet outside, when they compared what they had seen, no two accounts agreed.",
-                        "\"I saw a beautiful lady with wings!\"",
-                        "\"Mine was a beast the size of a rhinoceros. The Lion says he saw a ball of fire!\""
+                        "Oz saw one visitor a day. To Dorothy he was a huge floating head with no body.",
+                        "Next, her friends saw him one by one. That evening they compared what they had seen. No two matched!",
+                        "The Scarecrow saw a lady with wings, the Woodman a beast as big as a rhino, the Lion a ball of fire."
                     ]
                 },
                 {
@@ -743,12 +730,11 @@ const EN = {
                         "Oz said the same thing to all four of them.",
                         "\"Go and put an end to the Witch of the West.\"",
                         "\"Do that, and I shall grant what you ask.\"",
-                        "So the four turned west. There was no yellow brick road that way.",
-                        "There was nothing for it but to walk straight into the sun."
+                        "So the four turned west. There was no yellow brick road that way, so they simply walked toward the setting sun."
                     ],
                     right: [
-                        "The Witch of the West had only one eye, and with it she could see for miles.",
-                        "First she sent a pack of wolves. The Woodman swung his axe round and round, and off they slunk.",
+                        "The one-eyed Witch of the West could see for miles. When she saw the four coming, she sent her animals.",
+                        "First came a pack of wolves. The Woodman swung his axe, and off they slunk.",
                         "Then came a flock of crows. The Scarecrow waved his arms about and they scattered, cawing."
                     ]
                 }
@@ -762,16 +748,16 @@ const EN = {
                     art: '06-monkeys.webp',
                     emoji: '🐒',
                     left: [
-                        "The Witch fetched her Golden Cap out of the cupboard and put it on.",
-                        "\"Ep-pe, pep-pe, kak-ke!\"",
-                        "The sky went dark, and a band of Winged Monkeys came sweeping down. They pulled the straw out of the Scarecrow and scattered it like a cloud.",
-                        "The Woodman was carried off by both arms. Dorothy could only crouch down with Toto in her arms."
+                        "The Witch fetched her Golden Cap out of the cupboard. \"Ep-pe, pep-pe, kak-ke!\"",
+                        "The sky went dark, and a band of Winged Monkeys came sweeping down.",
+                        "They pulled out the Scarecrow's straw and carried the Woodman off into the sky.",
+                        "Dorothy could only crouch down, holding Toto."
                     ],
                     right: [
-                        "Dorothy and the Lion were carried off to the Witch's castle, and Dorothy was set to work in the kitchen.",
-                        "\"If only I could get those silver shoes.\"",
-                        "The Witch was afraid of water and dared not touch her. So she laid an iron bar across the floor where Dorothy could not see it, and tripped her.",
-                        "Then she snatched up the shoe that had come off."
+                        "Dorothy and the Lion were taken to the castle. Dorothy had to work in the kitchen.",
+                        "\"If only I had those silver shoes!\" muttered the Witch.",
+                        "But she feared their magic, so she dared not touch Dorothy.",
+                        "So she tripped Dorothy with an iron bar and snatched up the shoe that came off."
                     ]
                 },
                 {
@@ -785,9 +771,9 @@ const EN = {
                     ],
                     right: [
                         "\"Water! Not water!\"",
-                        "The Witch melted away like a lump of sugar. In a moment there was nothing left on the floor but her brown hat.",
-                        "Everyone who had been shut up in that castle came running out, cheering. The Monkeys lifted the Woodman up out of the rocks.",
-                        "Dorothy stuffed the Scarecrow full of straw again, and hammered the dents out of the Woodman."
+                        "The Witch melted away like a lump of sugar. Only her brown hat was left.",
+                        "Dorothy let the Lion out of his cage and called the Monkeys with the Golden Cap.",
+                        "They brought back the Woodman. Dorothy stuffed the Scarecrow again and hammered out the Woodman's dents."
                     ]
                 }
             ]
@@ -800,34 +786,31 @@ const EN = {
                     art: '07-curtain.webp',
                     emoji: '🎭',
                     left: [
-                        "The four went back to the Emerald City.",
+                        "The four went back to the Emerald City and asked to see Oz.",
                         "\"You must keep your promise!\"",
-                        "But this time no great head appeared, and no beautiful lady either. The wide room was simply empty.",
+                        "But this time no great head appeared, and no lady either. The wide room was simply empty.",
                         "Then Toto took hold of a curtain in the corner and pulled. Behind it, crouching down, was a bald old man."
                     ],
                     right: [
-                        "\"Who are you?\"",
-                        "\"I… am Oz.\"",
-                        "He showed them the great paper head and the speaking trumpet.",
+                        "\"Who are you?\" asked Dorothy.",
+                        "\"I… am Oz,\" said the old man. He showed them the great paper head and the speaking trumpet.",
                         "\"I am no wizard. I came down here in a balloon.\"",
-                        "\"And people thought me such a great man that I let them believe it.\""
+                        "\"People thought I was a great man, so I let them believe it.\""
                     ]
                 },
                 {
                     art: '07-gifts.webp',
                     emoji: '🎁',
                     left: [
-                        "\"Then what about our wishes?\"",
+                        "\"Then what about our wishes?\" cried the Scarecrow.",
                         "The old man packed the Scarecrow's head with bran, and needles and pins mixed into it.",
                         "\"Now your thoughts will be as sharp as those pins.\"",
                         "Into the Woodman's chest he fitted a heart sewn out of silk."
                     ],
                     right: [
-                        "For the Lion he poured out a bowl of green liquid.",
-                        "\"Drink it down. That is courage.\"",
-                        "The Lion drank it off in great gulps and squared his chest.",
-                        "\"I'm not frightened of anything now!\"",
-                        "The truth is that the three of them had been clever and kind and brave from the very start. They were the only ones who did not know it."
+                        "For the Lion he poured a bowl of green drink. \"Drink it all. That is courage.\"",
+                        "The Lion gulped it down and squared his chest. \"Now I'm not afraid of anything!\"",
+                        "In truth, the three had been clever and kind and brave all along. They just didn't know it."
                     ]
                 }
             ]
@@ -840,33 +823,31 @@ const EN = {
                     art: '08-balloon.webp',
                     emoji: '🎈',
                     left: [
-                        "\"But what about me? I have to get to Kansas.\"",
+                        "\"But what about me?\" asked Dorothy. \"I have to get to Kansas.\"",
                         "\"Let us mend my balloon. I should like to go home myself.\"",
-                        "The two of them sewed lengths of silk together into an enormous balloon.",
+                        "The two of them sewed pieces of silk together into an enormous balloon.",
                         "On the day of the launch the whole city came out to watch."
                     ],
                     right: [
-                        "\"Make the Scarecrow your king!\"",
-                        "The old man climbed into the basket, and Dorothy was about to climb in after him when Toto took fright at the noise and jumped out of her arms.",
-                        "By the time she had caught him and turned round, the rope had snapped. The balloon rose into the sky with nobody in it but the old man.",
-                        "\"Dorothy! I don't know how to make it stop —\""
+                        "\"Make the Scarecrow your king!\" the old man called.",
+                        "He climbed into the basket. Dorothy was about to follow, but Toto took fright and jumped from her arms.",
+                        "She caught him — and the rope snapped! The balloon rose with only the old man in it.",
+                        "\"Dorothy! I don't know how to stop it!\""
                     ]
                 },
                 {
                     art: '08-home.webp',
                     emoji: '🏡',
                     left: [
-                        "Dorothy sat down where she was and cried. The Scarecrow crouched down beside her.",
-                        "\"Don't cry. They say a good witch named Glinda lives away in the South.\"",
-                        "\"A witch like that could send you home.\"",
-                        "So the four of them walked that long road too. Glinda looked down at Dorothy's silver shoes and smiled."
+                        "Dorothy sat down and cried. The Scarecrow sat beside her.",
+                        "\"Don't cry. Away in the South lives a good witch, Glinda. She can send you home.\"",
+                        "The four walked all the way there. Glinda looked at the silver shoes and smiled."
                     ],
                     right: [
-                        "\"Those shoes will carry you anywhere you wish.\"",
-                        "\"All this time? Then I need never have gone through any of it!\"",
-                        "\"And you would never have found three such friends.\"",
-                        "Dorothy hugged each of them in turn.",
-                        "Then she knocked her heels together three times. When she opened her eyes she was on the Kansas prairie."
+                        "\"Click your heels three times. The shoes will take you anywhere.\"",
+                        "\"All along? Then why did I go through all that?\"",
+                        "\"To meet three good friends.\"",
+                        "Dorothy hugged each friend in turn and clicked her heels. Whoosh — home!"
                     ]
                 }
             ]
@@ -879,7 +860,7 @@ const EN = {
             answer: 0
         },
         {
-            q: 'Why did the Munchkins thank Dorothy?',
+            q: 'Why did the Witch of the North thank Dorothy?',
             choices: ['She had brought them the silver shoes', 'She had walked the yellow brick road', 'Her house had come down on the Witch of the East'],
             answer: 2
         },
@@ -912,8 +893,8 @@ const EN = {
             q: 'Which reaction to this book does NOT fit?',
             wide: true,
             choices: [
-                "The Scarecrow and the Woodman hoisted the other two up and ran the field — straw and tin do not fall asleep.",
-                "Outside, no two of their accounts matched — Oz had appeared to each of them differently.",
+                "The Scarecrow and the Woodman hoisted the other two up and ran across the field — straw and tin cannot fall asleep.",
+                "That evening, no two of their stories matched — Oz had appeared to each of them differently.",
                 "Glinda said they would never have found three such friends — the long way round was not wasted.",
                 "The old man handed out bran, silk and a green drink — he finally supplied what the three had been missing."
             ],
@@ -930,7 +911,7 @@ const EN = {
                     "The Wonderful Wizard of Oz is counted as the first story an American wrote for American children. It came out about a hundred and twenty years ago.",
                     "Until then, nearly everything children read had crossed over from Europe. Baum built his story out of what American children already knew — a cyclone, a cornfield.",
                     "The Scarecrow goes for brains, the Woodman for a heart, the Lion for courage. And all the way there, each of them shows exactly what he says he lacks.",
-                    "The Scarecrow thinks of the plan, the Woodman weeps, the Lion clears the ditch."
+                    "The Scarecrow thinks of going to Glinda, the Woodman carries his sleeping friends out of the flower field, and the Lion clears the ditch with his friends on his back."
                 ],
                 right: [
                     "All Oz ever gave them was bran, silk and a green drink. Nothing new was added — they simply began, at last, to believe in what was already there. Dorothy's silver shoes had held that power from the very first day.",
@@ -947,8 +928,8 @@ const EN = {
             { word: 'look for', meaning: '찾다', sentence: 'She goes looking for the road home.' }
         ],
         '01-twister.webp': [
-            { word: 'prairie', meaning: '넓은 벌판', sentence: 'There was a little house in the middle of the Kansas prairie.' },
-            { word: 'cyclone', meaning: '회오리바람', sentence: 'Uncle Henry looked at the sky and shouted, "A cyclone!"' },
+            { word: 'prairie', meaning: '넓은 벌판', sentence: "A little house stood in the middle of the Kansas prairie." },
+            { word: 'cyclone', meaning: '회오리바람', sentence: "Uncle Henry looked at the sky and shouted, \"A cyclone!\"" },
             { word: 'cellar', meaning: '지하실', sentence: 'Aunt Em threw open the cellar door.' },
             { word: 'shoot under', meaning: '쏙 숨어 들어가다', sentence: 'Toto shot under the bed.' }
         ],
@@ -971,51 +952,51 @@ const EN = {
         '03-scarecrow.webp': [
             { word: 'scarecrow', meaning: '허수아비', sentence: 'The scarecrow up on his pole gave her a wink.' },
             { word: 'wink', meaning: '눈을 찡긋하다', sentence: 'He gave her a wink.' },
-            { word: 'straw', meaning: '짚', sentence: 'His legs were straw and would not hold him.' },
-            { word: 'brains', meaning: '지혜, 머리', sentence: 'What I want is some brains.' },
+            { word: 'straw', meaning: '짚', sentence: "His legs were only straw." },
+            { word: 'brains', meaning: '지혜, 머리', sentence: "My head is only straw, so I have no brains." },
             { word: 'wobble', meaning: '휘청거리다', sentence: 'The Scarecrow wobbled as he walked.' }
         ],
         '03-tinman.webp': [
             { word: 'creak', meaning: '끼익 소리가 나다', sentence: 'Creak… creak…' },
             { word: 'rust', meaning: '녹슬다', sentence: 'The rain had rusted him.' },
             { word: 'oil can', meaning: '기름통', sentence: 'The oil can, over there…' },
-            { word: 'enchantment', meaning: '요술, 마법', sentence: 'An enchantment turned every bit of me to tin.' }
+            { word: 'enchantment', meaning: '요술, 마법', sentence: "An enchantment turned every bit of me to tin." }
         ],
         '04-lion.webp': [
             { word: 'bound', meaning: '껑충 뛰어나오다', sentence: 'Out bounded an enormous lion.' },
             { word: 'head over heels', meaning: '데굴데굴', sentence: 'He knocked the Scarecrow head over heels.' },
             { word: 'jaws', meaning: '아가리', sentence: 'He opened his jaws wide at Toto.' },
-            { word: 'coward', meaning: '겁쟁이', sentence: 'The truth is I am a coward.' },
-            { word: 'sniffle', meaning: '훌쩍이다', sentence: 'The great Lion sniffled.' }
+            { word: 'coward', meaning: '겁쟁이', sentence: "I'm really a coward." },
+            { word: 'sniffle', meaning: '훌쩍이다', sentence: "The great Lion sniffled." }
         ],
         '04-poppy.webp': [
             { word: 'ditch', meaning: '구덩이, 도랑', sentence: 'They came to a ditch far too wide to jump.' },
-            { word: 'scarlet', meaning: '새빨간', sentence: 'They came to a field full of scarlet flowers.' },
-            { word: 'scent', meaning: '향기', sentence: 'The scent was so heavy that Dorothy began to yawn.' },
-            { word: 'hoist', meaning: '들쳐 업다', sentence: 'They hoisted the two of them up.' }
+            { word: 'scarlet', meaning: '새빨간', sentence: "Then came a field of scarlet flowers." },
+            { word: 'scent', meaning: '향기', sentence: "The scent was so strong that Dorothy began to yawn." },
+            { word: 'hoist', meaning: '들쳐 업다', sentence: "The Scarecrow and the Woodman hoisted the two of them up." }
         ],
         '05-emerald.webp': [
-            { word: 'gatekeeper', meaning: '문지기', sentence: 'The gatekeeper took green spectacles out of a box.' },
-            { word: 'spectacles', meaning: '안경', sentence: 'He fastened a pair of spectacles on each of them.' },
+            { word: 'gatekeeper', meaning: '문지기', sentence: "The gatekeeper took green spectacles out of a box." },
+            { word: 'spectacles', meaning: '안경', sentence: "With the spectacles on, the whole world was green." },
             { word: 'glare', meaning: '눈부신 빛', sentence: 'Without these the glare would blind you.' },
             { word: 'compare', meaning: '서로 견주어 보다', sentence: 'They compared what they had seen.' }
         ],
         '05-order.webp': [
-            { word: 'slink off', meaning: '꽁무니를 빼다', sentence: 'The Woodman swung his axe, and off they slunk.' },
+            { word: 'slink off', meaning: '꽁무니를 빼다', sentence: "The Woodman swung his axe, and off they slunk." },
             { word: 'flock', meaning: '떼', sentence: 'Then came a flock of crows.' },
             { word: 'caw', meaning: '까악까악 울다', sentence: 'They scattered, cawing.' }
         ],
         '06-monkeys.webp': [
             { word: 'fetch out', meaning: '꺼내다', sentence: 'The Witch fetched her Golden Cap out of the cupboard.' },
             { word: 'sweep down', meaning: '몰려 내려오다', sentence: 'A band of Winged Monkeys came sweeping down.' },
-            { word: 'trip', meaning: '넘어뜨리다', sentence: 'She laid an iron bar across the floor and tripped her.' },
-            { word: 'snatch up', meaning: '얼른 집어 들다', sentence: 'She snatched up the shoe that had come off.' }
+            { word: 'trip', meaning: '넘어뜨리다', sentence: "She tripped Dorothy with an iron bar." },
+            { word: 'snatch up', meaning: '얼른 집어 들다', sentence: "She snatched up the shoe that came off." }
         ],
         '06-water.webp': [
             { word: 'bucket', meaning: '물통', sentence: 'She caught up the bucket of water beside her.' },
             { word: 'fling', meaning: '확 끼얹다', sentence: 'She flung the whole of it over the Witch.' },
-            { word: 'melt away', meaning: '녹아내리다', sentence: 'The Witch melted away like a lump of sugar.' },
-            { word: 'dent', meaning: '찌그러진 곳', sentence: 'She hammered the dents out of the Woodman.' }
+            { word: 'melt away', meaning: '녹아내리다', sentence: "The Witch melted away like a lump of sugar." },
+            { word: 'dent', meaning: '찌그러진 곳', sentence: "Dorothy hammered out the Woodman's dents." }
         ],
         '07-curtain.webp': [
             { word: 'curtain', meaning: '커튼', sentence: 'Toto took hold of a curtain in the corner and pulled.' },
@@ -1032,13 +1013,13 @@ const EN = {
         '08-balloon.webp': [
             { word: 'mend', meaning: '고치다', sentence: 'Let us mend my balloon.' },
             { word: 'launch', meaning: '띄우기, 출발', sentence: 'On the day of the launch the whole city came out.' },
-            { word: 'take fright', meaning: '놀라다', sentence: 'Toto took fright at all the noise.' },
-            { word: 'snap', meaning: '툭 끊어지다', sentence: 'The rope had snapped.' }
+            { word: 'take fright', meaning: '놀라다', sentence: "Toto took fright and jumped from her arms." },
+            { word: 'snap', meaning: '툭 끊어지다', sentence: "The rope snapped!" }
         ],
         '08-home.webp': [
-            { word: 'away in the South', meaning: '남쪽 멀리에', sentence: 'Away in the South there lived a good witch named Glinda.' },
-            { word: 'in turn', meaning: '차례차례', sentence: 'Dorothy hugged each of them in turn.' },
-            { word: 'heel', meaning: '뒤꿈치', sentence: 'She knocked her heels together three times.' }
+            { word: 'away in the South', meaning: '남쪽 멀리에', sentence: "Away in the South lives a good witch, Glinda." },
+            { word: 'in turn', meaning: '차례차례', sentence: "Dorothy hugged each friend in turn." },
+            { word: 'heel', meaning: '뒤꿈치', sentence: "Click your heels three times." }
         ],
         'end.webp': [
             { word: 'count as', meaning: '~으로 손꼽히다', sentence: 'It is counted as the first story an American wrote for American children.' },

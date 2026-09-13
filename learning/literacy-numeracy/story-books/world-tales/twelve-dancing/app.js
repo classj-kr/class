@@ -571,22 +571,18 @@ const EN = {
                     art: '01-shoes.webp',
                     emoji: '👞',
                     left: [
-                        "There were twelve beds side by side in one room.",
-                        "It was the room where the king's twelve daughters slept together.",
-                        "They were all lovely and all fond of one another.",
-                        "There were twelve vases along the window.",
-                        "At night you could hear twelve people breathing evenly.",
-                        "Anybody would have said it was a quiet night's sleep."
+                        "Twelve beds stood side by side in one room.",
+                        "The king's twelve daughters slept there.",
+                        "They were lovely and fond of one another.",
+                        "Twelve vases stood by the window.",
+                        "At night you heard twelve people breathing evenly.",
+                        "Anyone would say they slept soundly."
                     ],
                     right: [
-                        "At night the door was locked firmly from outside,",
-                        "and the king kept the key himself.",
-                        "And every morning something odd had happened.",
-                        "The door was still locked,",
-                        "and the windows were still shut.",
-                        "And the shoes were worn right through.",
-                        "All twelve pairs full of holes,",
-                        "with the soles as thin as paper."
+                        "At night the door was locked from outside. The king kept the key himself.",
+                        "Every morning the door was still locked and the windows shut.",
+                        "Yet the princesses' shoes were worn right through.",
+                        "All twelve pairs had holes, and the soles were as thin as paper."
                     ]
                 },
                 {
@@ -594,20 +590,16 @@ const EN = {
                     emoji: '👞',
                     left: [
                         "The king could not make any sense of it.",
-                        "He had new shoes made for them, and it was the same.",
-                        "One night, and there were holes in them again.",
-                        "\"Where do you go all night?\"",
+                        "New shoes were no help. After one night they had holes again.",
+                        "He asked the princesses, \"Where do you go all night?\"",
                         "The princesses opened their eyes wide.",
-                        "\"But we slept in our room.\""
+                        "The eldest answered meekly, \"We slept in our room. The door was locked!\""
                     ],
                     right: [
-                        "\"And the door was locked.\"",
-                        "the eldest answered, meekly.",
-                        "And the king could ask no further.",
-                        "And still it did not sit easily with him.",
-                        "Night by night the shoe bill went up,",
-                        "and the shoemaker was sent for every day.",
-                        "\"Twelve more pairs, is it?\""
+                        "The king could ask no more, but it still did not sit easily with him.",
+                        "Night by night the shoe bill went up.",
+                        "The shoemaker was sent for every day.",
+                        "\"Twelve more pairs again?\" said the shoemaker."
                     ]
                 }
             ]
@@ -620,21 +612,16 @@ const EN = {
                     art: '02-decree.webp',
                     emoji: '📜',
                     left: [
-                        "At last the king put out word through the whole country.",
-                        "A herald read it out loud in the square.",
-                        "\"A reward to whoever finds out the princesses' secret.\"",
-                        "\"He shall marry one of them.\"",
+                        "At last the king put out word, and a herald read it out loud in the square.",
+                        "\"A reward to whoever finds out the princesses' secret! He shall marry one of them.\"",
                         "There was a murmur through the crowd.",
-                        "\"But he must find it out within three days.\""
+                        "\"But,\" the herald went on, \"he must find it in three days, or leave the country.\""
                     ],
                     right: [
-                        "\"And if he fails he must leave the country.\"",
-                        "It was not an easy bargain.",
-                        "And still there were plenty who came forward.",
+                        "It was not an easy bargain, but plenty came forward.",
                         "Princes from neighbouring countries came one after another.",
-                        "\"One night should do it.\"",
-                        "They all said it with their shoulders back.",
-                        "And not one of them got through that night."
+                        "\"One night should do it,\" they said, with their shoulders back.",
+                        "But not one of them found out the secret."
                     ]
                 },
                 {
@@ -643,17 +630,14 @@ const EN = {
                     left: [
                         "The first prince sat down outside the princesses' room.",
                         "He would keep watch with the door open.",
-                        "The eldest princess brought him out a cup of wine.",
+                        "The eldest princess brought him a cup of wine.",
                         "\"It is a long night. Do have this.\"",
-                        "The prince took it gratefully and drank.",
-                        "It smelled sweet.",
-                        "He did not leave a drop of it."
+                        "The prince drank it gratefully. It smelled sweet, and he did not leave a drop."
                     ],
                     right: [
-                        "And before long his eyes were closing.",
-                        "The prince slumped against his chair and slept like a log.",
-                        "When he woke the sun was high,",
-                        "and the shoes were worn through again.",
+                        "But soon his eyes began to close.",
+                        "He slumped against his chair and slept like a log.",
+                        "When he woke, the sun was high, and the shoes were worn through again.",
                         "It was the same with the second prince and the third.",
                         "Every one of them was sent away after three days."
                     ]
@@ -671,16 +655,15 @@ const EN = {
                         "About that time an old soldier came through that country.",
                         "He had been hurt in the war and could not fight any more.",
                         "He had nowhere to go and no money.",
-                        "Walking along the road he met an old woman with a load on her head.",
-                        "She was having a hard time of it,",
-                        "and the soldier went straight over."
+                        "On the road he met an old woman with a load on her head.",
+                        "She was having a hard time of it, so he hurried over."
                     ],
                     right: [
-                        "\"I shall carry that for you.\"",
-                        "And the soldier carried the old woman's load.",
+                        "\"I shall carry that for you,\" said the soldier,",
+                        "and he carried the old woman's load.",
                         "The two of them walked a long way together.",
                         "At the edge of a village the old woman stopped.",
-                        "\"Thank you. I shall tell you something for that.\" Her eyes were bright."
+                        "Her eyes were bright. \"Thank you. Let me tell you something in return.\""
                     ]
                 },
                 {
@@ -688,19 +671,14 @@ const EN = {
                     emoji: '🧥',
                     left: [
                         "\"Go to the castle and find out the princesses' secret.\"",
-                        "The soldier waved a hand.",
-                        "\"How should I do what princes could not?\"",
-                        "The old woman smiled.",
-                        "\"It is not difficult.\"",
-                        "\"Do not drink the wine the princesses bring you.\""
+                        "The soldier waved a hand. \"How can I do what the princes could not?\"",
+                        "The old woman smiled. \"It is not hard. Never drink the wine the princesses give you. Just pretend to drink it, and pour it away.\""
                     ],
                     right: [
-                        "\"Only pretend to drink it, and pour it away.\"",
-                        "And she took something out of her bundle —",
-                        "an old grey cloak.",
-                        "\"Put this on and nobody can see you.\"",
+                        "She took something out of her bundle — an old grey cloak.",
+                        "\"Put this on, and nobody can see you.\"",
                         "The soldier's eyes went round.",
-                        "And when he looked up, the old woman was already gone."
+                        "When he looked up, the old woman was already gone."
                     ]
                 }
             ]
@@ -713,19 +691,17 @@ const EN = {
                     art: '04-wine.webp',
                     emoji: '🍷',
                     left: [
-                        "The soldier went to the castle.",
+                        "The soldier went to the castle and stood before the king.",
                         "\"I should like to try.\"",
                         "The court laughed at him.",
                         "\"An old soldier, where princes have failed?\"",
-                        "And the king allowed it all the same.",
-                        "\"Try, then. Three days only.\""
+                        "But the king allowed it all the same. \"Try, then. Three days only.\""
                     ],
                     right: [
                         "In the evening the soldier was given good clothes",
-                        "and took up his place outside the princesses' room.",
-                        "It was late in the night",
-                        "when the eldest princess came out with a cup.",
-                        "\"To help you sleep comfortably.\"",
+                        "and took up his place outside the princesses' room, with the door open.",
+                        "Late in the night, the eldest princess came out with a cup.",
+                        "\"This will help you sleep well,\" she said.",
                         "The soldier took the cup."
                     ]
                 },
@@ -734,19 +710,17 @@ const EN = {
                     emoji: '🍷',
                     left: [
                         "The soldier remembered what the old woman had said.",
-                        "He put the cup to his mouth and only pretended to drink,",
-                        "and let the wine run away quietly down inside his collar.",
+                        "He put the cup to his lips and only pretended to drink.",
+                        "He let the wine run down inside his collar.",
                         "\"Very good. I am beginning to feel sleepy.\"",
-                        "And the soldier lay down",
-                        "and set to snoring loudly."
+                        "He lay down and set to snoring loudly."
                     ],
                     right: [
-                        "He did it very well.",
+                        "He was very good at pretending to sleep.",
                         "There was whispering in the room.",
                         "\"That one is asleep too.\"",
-                        "\"You see? What could an old soldier do.\"",
-                        "The soldier watched through half-shut eyes.",
-                        "Light came out through the crack of the door."
+                        "\"You see? What could an old soldier do?\"",
+                        "The soldier watched through the open door with half-shut eyes."
                     ]
                 }
             ]
@@ -763,34 +737,29 @@ const EN = {
                         "and took fine dresses out of the wardrobe.",
                         "Each of them put on new dancing shoes.",
                         "Only the youngest hung back.",
-                        "\"Sister, could we not leave it tonight?\"",
-                        "\"That soldier keeps worrying me.\""
+                        "\"Sister, could we not stay home tonight? That soldier keeps worrying me.\""
                     ],
                     right: [
-                        "The eldest laughed and waved a hand.",
-                        "\"Listen to him snoring. What is there to worry about?\"",
-                        "The eldest gave her own bed a tap,",
-                        "and the floor slid open.",
-                        "There was a long stair going down.",
-                        "And the princesses went down it one by one."
+                        "The eldest laughed and waved a hand. \"Listen to him snoring. What is there to worry about?\"",
+                        "The eldest gave her own bed a tap.",
+                        "The bed sank down, and the floor slid open.",
+                        "A long stair led down.",
+                        "The princesses went down it one by one."
                     ]
                 },
                 {
                     art: '05-trapdoor-2.webp',
                     emoji: '🚪',
                     left: [
-                        "The soldier got up at once",
-                        "and put on the cloak the old woman had given him.",
-                        "And he could not see his own hands.",
-                        "The soldier crept to the stair",
-                        "and followed just behind the youngest princess.",
-                        "And he trod on the hem of her dress.",
-                        "The youngest jumped in fright.",
+                        "The soldier got up at once and put on the old woman's cloak.",
+                        "Now he could not even see his own hands.",
+                        "He crept to the stair and followed just behind the youngest princess.",
+                        "But he trod on the hem of her dress, and she jumped in fright.",
                         "\"Sister, somebody pulled at my dress!\""
                     ],
                     right: [
                         "The eldest looked back.",
-                        "\"There is nobody there. It caught on a nail.\"",
+                        "\"There is nobody there. It must have caught on a nail.\"",
                         "The youngest kept looking behind her,",
                         "and the stair went on down.",
                         "The soldier followed with his breath held,",
@@ -807,22 +776,18 @@ const EN = {
                     art: '06-forests.webp',
                     emoji: '🌳',
                     left: [
-                        "At the bottom of the stair a remarkable place opened out.",
-                        "It was underground, and it was bright on every side.",
-                        "The first wood came into view,",
-                        "and every leaf on the trees was silver.",
-                        "They chimed whenever the wind moved.",
-                        "The soldier quietly broke off a branch.",
-                        "The silver leaves were cool in his hand,",
-                        "and he put it inside his coat."
+                        "Below the stair, a remarkable place opened out.",
+                        "It was underground, but bright all around.",
+                        "In the first wood every leaf was silver,",
+                        "and the leaves chimed in the wind.",
+                        "The soldier broke off a branch. Crack!",
+                        "He hid the silver branch inside his coat."
                     ],
                     right: [
-                        "There was a crack as it broke,",
-                        "and the youngest princess stopped.",
-                        "\"Sister — did you not hear a noise just then?\"",
-                        "\"Do not talk nonsense. Come along.\"",
-                        "The eldest did not even look back.",
-                        "The silver leaves crunched under their feet."
+                        "The youngest princess stopped.",
+                        "\"Sister, didn't you hear a noise just then?\"",
+                        "The eldest did not even look back. \"Don't talk nonsense. Come along.\"",
+                        "Fallen silver leaves crunched under their feet."
                     ]
                 },
                 {
@@ -831,20 +796,16 @@ const EN = {
                     left: [
                         "In the second wood the leaves were gold,",
                         "and the light off them dazzled you.",
-                        "The soldier broke off a branch here too,",
-                        "and again there was a crack.",
-                        "And again the youngest princess looked behind her.",
+                        "The soldier broke off a branch here too. Crack!",
+                        "Again the youngest princess looked behind her.",
                         "In the third wood the leaves were diamond."
                     ],
                     right: [
-                        "They shone like stars.",
-                        "The soldier broke off his last branch and put it away,",
-                        "and once again there was a sound.",
-                        "\"Sister, I am certain somebody is following us!\"",
-                        "Her sisters only laughed.",
-                        "The diamond leaves glittered under their feet.",
-                        "And the youngest walked slower and slower.",
-                        "\"Whatever has made you so frightened tonight.\""
+                        "The diamond leaves glittered like stars.",
+                        "The soldier broke off a last branch. Crack!",
+                        "\"I'm certain somebody is following us!\" cried the youngest.",
+                        "The eldest clicked her tongue. \"Why are you so scared tonight?\"",
+                        "The others laughed, but the youngest walked slower and slower."
                     ]
                 }
             ]
@@ -857,19 +818,15 @@ const EN = {
                     art: '07-ball.webp',
                     emoji: '🚣',
                     left: [
-                        "Beyond the woods there was a great lake,",
-                        "with the water as still as a mirror.",
-                        "Twelve small boats were waiting at the water's edge,",
-                        "with a young man sitting in each of them.",
-                        "The princesses got in, one to a boat,",
-                        "and the soldier climbed quietly into the youngest one's boat.",
+                        "Beyond the woods lay a great lake, its water as still as a mirror.",
+                        "Twelve boats waited at the water's edge, a young man in each.",
+                        "The princesses got in, one to a boat.",
+                        "The soldier climbed quietly into the youngest one's boat.",
                         "The young man rowing it tilted his head."
                     ],
                     right: [
-                        "\"Why is the boat so heavy tonight?\"",
-                        "\"Row as I may, it will not go.\"",
-                        "The youngest princess's face darkened.",
-                        "\"You see? I said something was wrong.\"",
+                        "\"Why is the boat so heavy tonight? No matter how hard I row, it won't go.\"",
+                        "The youngest princess's face darkened. \"You see? I said something was wrong.\"",
                         "The oars dragged heavily through the water,",
                         "and the waves slapped against the side of the boat."
                     ]
@@ -878,22 +835,18 @@ const EN = {
                     art: '07-ball-2.webp',
                     emoji: '🚣',
                     left: [
-                        "On the far side of the lake was a ballroom,",
-                        "with every window blazing with light",
-                        "and music coming out of it.",
-                        "The princesses ran in, delighted,",
-                        "and danced the whole night through,",
+                        "Across the lake was a ballroom.",
+                        "Every window was blazing with light, and music came out.",
+                        "The princesses ran in and danced the whole night through,",
                         "turning and turning and turning.",
-                        "The shoes wore down and wore down.",
-                        "The soldier watched it all from a corner."
+                        "The shoes wore down and wore down, and the soldier watched from a corner."
                     ],
                     right: [
-                        "He was thirsty, so he quietly took a cup as well.",
-                        "There were bits of shoe leather scattered on the floor.",
-                        "And still the princesses did not stop.",
-                        "It was near cockcrow before the ball ended.",
-                        "The princesses came back across in the boats,",
-                        "and their shoes already had holes in them."
+                        "The soldier was thirsty, so he quietly drank from a princess's cup.",
+                        "Bits of worn shoe leather lay scattered on the floor.",
+                        "Still the princesses did not stop.",
+                        "The ball ended only near cockcrow.",
+                        "They rowed back across the lake, their shoes already full of holes."
                     ]
                 }
             ]
@@ -906,40 +859,32 @@ const EN = {
                     art: '08-ending.webp',
                     emoji: '💎',
                     left: [
-                        "The soldier came up ahead of the princesses,",
-                        "took off the cloak and lay down again",
-                        "and started snoring.",
-                        "The princesses came back and saw it and were easy.",
+                        "The soldier ran up the stair ahead of the princesses.",
+                        "He took off the cloak, lay down again and started snoring.",
+                        "The princesses came back, saw him snoring and felt easy.",
                         "\"You see? He knows nothing at all.\"",
-                        "And the soldier followed them the second night and the third."
+                        "The soldier followed them the second night and the third."
                     ],
                     right: [
                         "He took in every place they went.",
-                        "And on the morning of the third day",
-                        "the soldier stood in front of the king.",
-                        "\"The princesses dance underground every night.\"",
-                        "The king frowned.",
-                        "\"Out of a locked room, every night?\""
+                        "On the morning of the third day, he stood before the king.",
+                        "\"Every night, the princesses dance underground.\"",
+                        "The king frowned. \"Out of a locked room, every night? Don't lie to me. Can you prove it?\""
                     ]
                 },
                 {
                     art: '08-ending-2.webp',
                     emoji: '💎',
                     left: [
-                        "\"Do not think of lying to me. Where is your proof?\"",
-                        "The soldier put a hand inside his coat",
-                        "and brought out three branches.",
-                        "The silver and the gold and the diamond flashed,",
-                        "and the room went into an uproar.",
-                        "\"There is a stair under the bed.\""
+                        "\"Here is my proof,\" said the soldier.",
+                        "He brought out three branches from inside his coat.",
+                        "Silver, gold and diamond flashed, and the room went into an uproar.",
+                        "\"And there is a stair under the bed,\" he added."
                     ],
                     right: [
-                        "And only then did the princesses hang their heads.",
-                        "There was no hiding it any more.",
-                        "The king gave the soldier the reward he had promised,",
-                        "and the soldier married the eldest princess.",
-                        "The stair underground was closed up that same day.",
-                        "And the princesses' shoes did not wear out any more."
+                        "The princesses were called in, and they hung their heads.",
+                        "The king gave the soldier his reward, and the soldier married the eldest princess.",
+                        "The stair was closed up that same day, and the shoes stopped wearing out."
                     ]
                 }
             ]
@@ -953,7 +898,7 @@ const EN = {
         },
         {
             q: 'Why did the princes all fail?',
-            choices: ['They ran away in the night', 'They drank the wine and fell asleep', 'They were sent home by the king'],
+            choices: ['They ran away in the night', 'They drank the wine and fell asleep', 'They got lost in the woods'],
             answer: 1
         },
         {
@@ -987,7 +932,7 @@ const EN = {
             choices: [
                 "He put the cup to his lips and let it run away behind his collar — he did exactly what the old woman had told him.",
                 "Only the youngest kept looking back — she was the one who felt someone was there.",
-                "He broke off a silver leaf and a gold one and pocketed them — he knew nobody would take his word for it.",
+                "He broke off a branch in each of the three woods and hid them in his coat — he knew nobody would take his word for it.",
                 "The king insisted it be solved within three days — he had kept the deadline short so that no one would suffer over it for long."
             ],
             answer: 3
@@ -1023,18 +968,18 @@ const EN = {
             { word: 'side by side', meaning: '나란히', sentence: 'Twelve beds side by side in one room.' },
             { word: 'fond of', meaning: '사이좋은', sentence: 'All fond of one another.' },
             { word: 'evenly', meaning: '고르게', sentence: 'Twelve people breathing evenly.' },
-            { word: 'sole', meaning: '밑창', sentence: 'With the soles as thin as paper.' },
+            { word: 'sole', meaning: '밑창', sentence: 'The soles were as thin as paper.' },
             { word: 'worn through', meaning: '닳아 구멍 난', sentence: 'The shoes were worn right through.' }
         ],
         '01-shoes-2.webp': [
             { word: 'make sense of', meaning: '이해하다', sentence: 'The king could not make any sense of it.' },
-            { word: 'meekly', meaning: '얌전히', sentence: 'the eldest answered, meekly.' },
+            { word: 'meekly', meaning: '얌전히', sentence: 'The eldest answered meekly.' },
             { word: 'sit easily', meaning: '마음이 놓이다', sentence: 'It did not sit easily with him.' },
             { word: 'shoe bill', meaning: '신발값', sentence: 'Night by night the shoe bill went up.' },
             { word: 'send for', meaning: '불러오다', sentence: 'The shoemaker was sent for every day.' }
         ],
         '02-decree.webp': [
-            { word: 'put out word', meaning: '알리다', sentence: 'The king put out word through the country.' },
+            { word: 'put out word', meaning: '알리다', sentence: 'At last the king put out word.' },
             { word: 'herald', meaning: '전령', sentence: 'A herald read it out loud in the square.' },
             { word: 'reward', meaning: '상', sentence: 'A reward to whoever finds out the secret.' },
             { word: 'murmur', meaning: '웅성거림', sentence: 'There was a murmur through the crowd.' },
@@ -1042,20 +987,20 @@ const EN = {
         ],
         '02-decree-2.webp': [
             { word: 'keep watch', meaning: '밤을 지키다', sentence: 'He would keep watch with the door open.' },
-            { word: 'gratefully', meaning: '고맙게', sentence: 'The prince took it gratefully.' },
-            { word: 'slump', meaning: '기대어 늘어지다', sentence: 'The prince slumped against his chair.' },
+            { word: 'gratefully', meaning: '고맙게', sentence: 'The prince drank it gratefully.' },
+            { word: 'slump', meaning: '기대어 늘어지다', sentence: 'He slumped against his chair.' },
             { word: 'sleep like a log', meaning: '곯아떨어지다', sentence: 'And slept like a log.' },
             { word: 'send away', meaning: '쫓아내다', sentence: 'Every one of them was sent away.' }
         ],
         '03-cloak.webp': [
             { word: 'load', meaning: '짐', sentence: 'An old woman with a load on her head.' },
             { word: 'have a hard time of it', meaning: '몹시 힘들어하다', sentence: 'She was having a hard time of it.' },
-            { word: 'carry', meaning: '들어 주다', sentence: 'The soldier carried the load.' },
+            { word: 'carry', meaning: '들어 주다', sentence: "He carried the old woman's load." },
             { word: 'bright', meaning: '반짝이는', sentence: 'Her eyes were bright.' }
         ],
         '03-cloak-2.webp': [
             { word: 'find out', meaning: '알아내다', sentence: 'Find out the princesses’ secret.' },
-            { word: 'pretend', meaning: '~하는 척하다', sentence: 'Only pretend to drink it.' },
+            { word: 'pretend', meaning: '~하는 척하다', sentence: 'Just pretend to drink it.' },
             { word: 'pour away', meaning: '몰래 버리다', sentence: 'And pour it away.' },
             { word: 'cloak', meaning: '망토', sentence: 'An old grey cloak.' },
             { word: 'go round', meaning: '휘둥그레지다', sentence: "The soldier's eyes went round." }
@@ -1081,7 +1026,7 @@ const EN = {
             { word: 'slide open', meaning: '스르르 열리다', sentence: 'And the floor slid open.' }
         ],
         '05-trapdoor-2.webp': [
-            { word: 'creep', meaning: '살금살금 가다', sentence: 'The soldier crept to the stair.' },
+            { word: 'creep', meaning: '살금살금 가다', sentence: 'He crept to the stair.' },
             { word: 'tread on', meaning: '밟다', sentence: 'And he trod on the hem of her dress.' },
             { word: 'hem', meaning: '치맛자락', sentence: 'The hem of her dress.' },
             { word: 'nail', meaning: '못', sentence: 'It caught on a nail.' },
@@ -1090,41 +1035,41 @@ const EN = {
         '06-forests.webp': [
             { word: 'open out', meaning: '펼쳐지다', sentence: 'A remarkable place opened out.' },
             { word: 'underground', meaning: '땅 밑의', sentence: 'It was underground.' },
-            { word: 'chime', meaning: '짤랑거리다', sentence: 'They chimed whenever the wind moved.' },
+            { word: 'chime', meaning: '짤랑거리다', sentence: 'The leaves chimed in the wind.' },
             { word: 'break off', meaning: '꺾다', sentence: 'The soldier broke off a branch.' },
             { word: 'crunch', meaning: '사각거리다', sentence: 'The silver leaves crunched under their feet.' }
         ],
         '06-forests-2.webp': [
             { word: 'dazzle', meaning: '눈부시게 하다', sentence: 'The light off them dazzled you.' },
             { word: 'diamond', meaning: '다이아몬드', sentence: 'In the third wood the leaves were diamond.' },
-            { word: 'certain', meaning: '틀림없는', sentence: 'I am certain somebody is following us!' },
-            { word: 'glitter', meaning: '반짝이다', sentence: 'The diamond leaves glittered.' }
+            { word: 'certain', meaning: '틀림없는', sentence: "I'm certain somebody is following us!" },
+            { word: 'glitter', meaning: '반짝이다', sentence: 'The diamond leaves glittered like stars.' }
         ],
         '07-ball.webp': [
-            { word: 'still', meaning: '잔잔한', sentence: 'The water as still as a mirror.' },
-            { word: 'water’s edge', meaning: '물가', sentence: "Twelve boats waiting at the water's edge." },
-            { word: 'row', meaning: '노를 젓다', sentence: 'Row as I may, it will not go.' },
+            { word: 'still', meaning: '잔잔한', sentence: 'Its water as still as a mirror.' },
+            { word: 'water’s edge', meaning: '물가', sentence: "Twelve boats waited at the water's edge." },
+            { word: 'row', meaning: '노를 젓다', sentence: "No matter how hard I row, it won't go." },
             { word: 'oar', meaning: '노', sentence: 'The oars dragged heavily through the water.' },
             { word: 'slap', meaning: '찰싹 때리다', sentence: 'The waves slapped against the boat.' }
         ],
         '07-ball-2.webp': [
-            { word: 'ballroom', meaning: '무도회장', sentence: 'On the far side of the lake was a ballroom.' },
-            { word: 'blazing', meaning: '환한', sentence: 'Every window blazing with light.' },
+            { word: 'ballroom', meaning: '무도회장', sentence: 'Across the lake was a ballroom.' },
+            { word: 'blazing', meaning: '환한', sentence: 'Every window was blazing with light.' },
             { word: 'the whole night through', meaning: '밤새', sentence: 'And danced the whole night through.' },
             { word: 'wear down', meaning: '닳다', sentence: 'The shoes wore down and wore down.' },
             { word: 'cockcrow', meaning: '닭 울 무렵', sentence: 'It was near cockcrow.' }
         ],
         '08-ending.webp': [
-            { word: 'ahead of', meaning: '~보다 먼저', sentence: 'The soldier came up ahead of the princesses.' },
-            { word: 'easy', meaning: '안심한', sentence: 'The princesses saw it and were easy.' },
+            { word: 'ahead of', meaning: '~보다 먼저', sentence: 'The soldier ran up the stair ahead of the princesses.' },
+            { word: 'easy', meaning: '안심한', sentence: 'The princesses saw him snoring and felt easy.' },
             { word: 'take in', meaning: '눈에 담다', sentence: 'He took in every place they went.' },
             { word: 'frown', meaning: '눈살을 찌푸리다', sentence: 'The king frowned.' }
         ],
         '08-ending-2.webp': [
-            { word: 'proof', meaning: '증거', sentence: 'Where is your proof?' },
-            { word: 'flash', meaning: '반짝이다', sentence: 'The silver and the gold flashed.' },
+            { word: 'proof', meaning: '증거', sentence: 'Here is my proof.' },
+            { word: 'flash', meaning: '반짝이다', sentence: 'Silver, gold and diamond flashed.' },
             { word: 'uproar', meaning: '술렁임', sentence: 'The room went into an uproar.' },
-            { word: 'hang one’s head', meaning: '고개를 숙이다', sentence: 'Only then did the princesses hang their heads.' },
+            { word: 'hang one’s head', meaning: '고개를 숙이다', sentence: 'The princesses hung their heads.' },
             { word: 'close up', meaning: '막아 버리다', sentence: 'The stair was closed up that same day.' }
         ],
         'end.webp': [

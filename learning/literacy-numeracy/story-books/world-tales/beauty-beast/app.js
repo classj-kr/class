@@ -555,38 +555,29 @@ const EN = {
                     art: '01-family.webp',
                     emoji: '📚',
                     left: [
-                        "Long ago in a port town there lived a great merchant, a rich man with several ships.",
-                        "He had three daughters,",
-                        "and there were always visitors coming and going in that house.",
-                        "The two elder girls talked of nothing but clothes and jewels,",
-                        "and hardly ever left the mirror."
+                        "Long ago in a port town there lived a great merchant. He was a rich man with many ships.",
+                        "He had three daughters, and visitors were always coming and going in that house.",
+                        "The two elder girls talked of nothing but clothes and jewels, and they hardly ever left the mirror."
                     ],
                     right: [
-                        "The youngest was called Belle,",
-                        "and Belle went about with a book under her arm.",
-                        "Her sisters found her tiresome.",
-                        "\"What good is all that reading?\"",
-                        "\"You'll never get married at this rate.\"",
-                        "And Belle only smiled. She read the same books over and over, until the corners of the pages went round with use."
+                        "The youngest was called Belle, and she always had a book under her arm.",
+                        "Her sisters found her tiresome. \"What good is all that reading? You'll never get married at this rate.\"",
+                        "But Belle only smiled. She read the same books until the corners of the pages went round."
                     ]
                 },
                 {
                     art: '01-family-2.webp',
                     emoji: '📚',
                     left: [
-                        "And then one year",
-                        "their father's ships were caught in a storm and every one of them went down. Nothing was left of the goods in his warehouse either,",
-                        "and they had to sell the big house and move out to the country.",
-                        "The family unpacked in an old cottage,",
-                        "and the two elder sisters sat down on the floor and cried."
+                        "Then one year a storm caught their father's ships, and every one of them went down.",
+                        "Nothing was left of the goods in his warehouse either. They had to sell the big house and move to the country.",
+                        "The family unpacked in an old cottage, and the two elder sisters sat on the floor and cried."
                     ],
                     right: [
-                        "There was only one room, so the three of them had to lie down side by side.",
-                        "\"However are we to live now!\"",
-                        "Only Belle said nothing and rolled up her sleeves.",
-                        "She lit the fire and baked the bread.",
-                        "Their father watched her doing it for a long while.",
-                        "And then he went out, without a word, to chop wood."
+                        "There was only one room, so the sisters slept side by side.",
+                        "\"How will we live now?\" the elder sisters wailed every day.",
+                        "But Belle rolled up her sleeves without a word. She lit the fire and baked bread.",
+                        "Their father watched her a long while. Then he took his axe and went out to chop wood."
                     ]
                 }
             ]
@@ -599,38 +590,29 @@ const EN = {
                     art: '02-rose.webp',
                     emoji: '🌹',
                     left: [
-                        "Some years later a message came to their father.",
-                        "One of the ships he had thought lost had come back in.",
-                        "So he had to set out on a long journey to find it,",
-                        "and with luck they might get on their feet again.",
-                        "The two elder sisters caught his sleeves."
+                        "Some years later, news came to their father. One of the ships he had thought lost had come back to port.",
+                        "With luck they might get on their feet again, so he had to set out on a long journey.",
+                        "The two elder sisters caught his sleeves and begged."
                     ],
                     right: [
-                        "\"A silk dress for me!\"",
-                        "\"A pearl necklace for me!\"",
-                        "Their father turned to his youngest.",
-                        "\"And what would you like, Belle?\"",
-                        "\"One rose would do me.\" That answer stayed with him a long time."
+                        "\"A silk dress for me!\" cried one.",
+                        "\"A pearl necklace for me!\" cried the other.",
+                        "Their father turned to his youngest. \"And what would you like, Belle?\"",
+                        "\"Just one rose,\" said Belle. \"There are no roses out here in the country.\" That answer stayed with him a long time."
                     ]
                 },
                 {
                     art: '02-rose-2.webp',
                     emoji: '🌹',
                     left: [
-                        "But when he got to the port the ship had already passed into other hands, and he had to turn back empty-handed.",
-                        "On the road home a snowstorm came down on him.",
-                        "He could not see the way,",
-                        "and as he led his horse about, a great door appeared in front of him.",
-                        "And the door swung open by itself."
+                        "But at the port the ship had already passed into other hands, and he had to turn back empty-handed.",
+                        "On the road home a snowstorm came down on him, and he could not see the way.",
+                        "As he led his horse about, a great gate appeared in front of him. It swung open by itself."
                     ],
                     right: [
-                        "It was an enormous castle.",
-                        "He went in, and there was not a soul in it.",
-                        "His footsteps rang down the corridor.",
-                        "And yet a fire was burning and a table was laid.",
-                        "He was hungry, so he ate, and slept there that night.",
-                        "Nobody appeared before morning.",
-                        "The candles burned quietly all night long."
+                        "It was an enormous castle. He went in, but there was not a soul in it. His footsteps rang down the corridor.",
+                        "And yet a fire was burning and a table was laid. He was hungry, so he ate and slept there that night.",
+                        "Nobody came, and the candles burned quietly all night long."
                     ]
                 }
             ]
@@ -643,40 +625,29 @@ const EN = {
                     art: '03-plucked.webp',
                     emoji: '❄️',
                     left: [
-                        "It was the next morning.",
-                        "Crossing the garden of the castle, he stopped.",
-                        "There were red roses in full bloom in a garden deep with snow.",
-                        "How that could be in midwinter he could not tell.",
-                        "The scent of them filled the whole garden,",
-                        "and he went toward them as though he were under a spell."
+                        "The next morning, as he crossed the castle garden, he stopped.",
+                        "Red roses were in full bloom in the deep snow. How that could be in midwinter he could not tell.",
+                        "The scent of them filled the whole garden, and he went toward them as if under a spell."
                     ],
                     right: [
-                        "A few red petals lay on the snow.",
-                        "And he remembered what Belle had asked for.",
-                        "\"Ah — this was what she wanted.\"",
-                        "He reached out and picked one rose.",
-                        "And at that moment a great voice came from behind him.",
-                        "\"I fed you and gave you a bed, and now you take my flowers as well!\""
+                        "A few red petals lay on the snow, and he remembered what Belle had asked for.",
+                        "\"Ah, this is what Belle wanted.\"",
+                        "He reached out and picked one rose. At that moment a great voice roared behind him.",
+                        "\"I fed you and gave you a bed, and now you take my flowers too!\""
                     ]
                 },
                 {
                     art: '03-plucked-2.webp',
                     emoji: '❄️',
                     left: [
-                        "He turned round, and an enormous shaggy creature was standing there.",
-                        "The merchant sank down where he stood.",
-                        "\"Spare me. It was a flower my youngest asked for, and I…\"",
-                        "The Beast looked down at him a long while.",
-                        "His breathing was as loud as wind.",
-                        "\"Then send me that daughter.\""
+                        "He turned round. An enormous shaggy creature stood there. It was the Beast, the master of the castle.",
+                        "The merchant sank down where he stood. \"Spare me! My youngest daughter asked for a flower, and I…\"",
+                        "The Beast looked down at him a long while, breathing like the wind."
                     ],
                     right: [
-                        "\"And if she does not come, you must come back yourself.\"",
-                        "The merchant carried the rose home inside his coat.",
-                        "His feet were heavy the whole way,",
-                        "and he did not know what to say to his daughter.",
-                        "When he opened the door Belle came running out.",
-                        "And he could not bring himself to look at her face."
+                        "\"Then send that daughter to me,\" said the Beast. \"If she does not come, you must come back yourself.\"",
+                        "Shaking, he promised, and he carried the rose home with heavy feet.",
+                        "When he opened the door, Belle came running out. He could not bring himself to look at her face."
                     ]
                 }
             ]
@@ -689,40 +660,30 @@ const EN = {
                     art: '04-belle.webp',
                     emoji: '🕯️',
                     left: [
-                        "Their father told them the whole thing, leaving nothing out.",
-                        "The room went quiet.",
-                        "The two elder sisters spoke first.",
-                        "\"It is your rose that did this!\"",
-                        "\"Whatever made you ask for a rose of all things.\""
+                        "Their father told them the whole thing, leaving nothing out. The room went quiet.",
+                        "The two elder sisters spoke first. \"This is all because of your rose!\"",
+                        "\"Why ask for a rose, of all things?\""
                     ],
                     right: [
-                        "Belle did not answer them at all.",
-                        "She only looked a long while at the rose in her father's hand.",
-                        "And then she quietly put on her coat.",
-                        "\"I shall go.\"",
-                        "Their father sprang up out of his chair,",
-                        "and the stick in his hand fell to the floor."
+                        "Belle did not answer them. She only looked a long while at the rose in her father's hand.",
+                        "Then she quietly lifted her head. \"I shall go.\"",
+                        "Their father sprang up out of his chair, and the stick in his hand fell to the floor."
                     ]
                 },
                 {
                     art: '04-belle-2.webp',
                     emoji: '🕯️',
                     left: [
-                        "\"You shall not! I gave the promise, so I must go.\"",
-                        "\"Father, it was I who asked for that flower.\"",
-                        "Belle's voice did not shake.",
-                        "Before dawn the next day she set off with her father,",
-                        "and they walked the snow road to the castle.",
-                        "The horse's hooves sank deep into it."
+                        "\"No!\" cried her father. \"I made the promise, so I must go.\"",
+                        "\"Father, it was I who asked for that flower.\" Belle's voice did not shake.",
+                        "Before dawn the next day she put on her coat and rode off with her father. The horse's hooves sank deep into the snow.",
+                        "At last they reached the castle."
                     ],
                     right: [
-                        "The great door opened without a sound,",
-                        "and warm air came out from inside.",
-                        "Her father could not let go of her hand.",
-                        "It kept shaking.",
-                        "\"Go home. I shall be all right.\"",
-                        "Belle managed a smile and went in alone.",
-                        "And the door shut quietly behind her."
+                        "The great door opened without a sound, and warm air came out.",
+                        "Her father could not let go of her hand. His hand kept shaking.",
+                        "Belle managed a smile. \"Go home, Father. I shall be all right.\"",
+                        "Then she went into the castle alone, and the door shut quietly behind her."
                     ]
                 }
             ]
@@ -735,40 +696,29 @@ const EN = {
                     art: '05-castle.webp',
                     emoji: '🏰',
                     left: [
-                        "Belle was treated in a way she had not expected.",
-                        "There was writing on a door.",
-                        "\"Belle's Room.\"",
-                        "She opened it, and the walls were solid with books.",
-                        "Shelves ran up to the ceiling, one after another.",
-                        "A sound came out of her before she could stop it."
+                        "Belle was treated in a way she had not expected. On one door was written \"Belle's Room.\"",
+                        "She opened it, and the walls were solid with books. Shelves ran all the way up to the ceiling.",
+                        "Belle gasped before she could stop herself."
                     ],
                     right: [
-                        "\"Good heavens. I have never seen so many books.\"",
-                        "There was a soft seat by the window,",
-                        "and the fire kept itself going.",
-                        "She never once saw who was doing the work.",
-                        "That night Belle fell asleep reading.",
-                        "And the fear in her went down a little."
+                        "\"Good heavens! I have never seen so many books,\" she said.",
+                        "There was a soft seat by the window, and the fire kept itself going. She never saw who was doing the work.",
+                        "That night Belle fell asleep reading, and her fear grew a little smaller."
                     ]
                 },
                 {
                     art: '05-castle-2.webp',
                     emoji: '🏰',
                     left: [
-                        "The Beast came to the table every evening.",
-                        "At first Belle could hardly get a word out to him.",
-                        "That great body barely fitted the chair.",
-                        "And the Beast did not know what to say either, and only cleared his throat.",
-                        "The fork kept slipping out of his hand.",
-                        "\"Was the book… good today?\""
+                        "The Beast came to the table every evening. At first Belle could hardly get a word out to him.",
+                        "His great body barely fitted the small chair. He did not know what to say either, and he only cleared his throat.",
+                        "The fork kept slipping out of his hand. \"Was the book… good today?\""
                     ],
                     right: [
-                        "\"Yes. I shall tell you about it when I finish.\"",
-                        "And so one day went by, and then another.",
-                        "Before long the two of them were talking late into the night.",
-                        "When Belle laughed, the Beast laughed with her.",
-                        "Belle thought his eyes were very sad.",
-                        "There seemed to be something else inside that frightening face."
+                        "Belle smiled a little. \"Yes. I shall tell you about it when I finish.\"",
+                        "One day went by, then another. Soon the two of them were talking late into the night.",
+                        "When Belle laughed, the Beast laughed too.",
+                        "Belle thought his eyes were very sad, as if something else lay inside that frightening face."
                     ]
                 }
             ]
@@ -781,41 +731,28 @@ const EN = {
                     art: '06-mirror.webp',
                     emoji: '🪞',
                     left: [
-                        "One day Belle found a hand mirror in her room.",
-                        "It showed whatever place you thought of.",
-                        "Belle thought of home.",
-                        "The room of the cottage came up in the glass.",
-                        "Her father was lying ill in bed,",
-                        "with the blanket half slipped off him.",
-                        "His face looked very thin."
+                        "One day Belle found a hand mirror in her room. It showed any place you thought of.",
+                        "Belle thought of home, and the room of the cottage came up in the glass.",
+                        "Her father was lying ill in bed, with the blanket half slipped off him. His face looked very thin."
                     ],
                     right: [
-                        "Belle stood holding the mirror a long time.",
-                        "She could see that her sisters were not sitting with him,",
-                        "and that the fire had gone out.",
-                        "That evening she told the Beast.",
-                        "She could not pick up her spoon at the table.",
-                        "\"My father is ill.\" Her voice caught."
+                        "Belle stood holding the mirror a long time. Her sisters were not sitting with him, and the fire had gone out.",
+                        "That evening she could not eat a thing.",
+                        "\"My father is ill,\" she told the Beast, and her voice caught. \"May I go home for a little while?\""
                     ]
                 },
                 {
                     art: '06-mirror-2.webp',
                     emoji: '🪞',
                     left: [
-                        "The Beast sat with his head down for a long while.",
-                        "His great hands shook a little.",
-                        "\"Then go to him.\"",
-                        "\"Only come back within seven days.\"",
-                        "\"I cannot bear it here without you.\"",
-                        "\"I promise.\""
+                        "The Beast sat with his head down for a long while. His great hands shook a little.",
+                        "\"Go to him,\" he said. \"Only come back within seven days. I cannot bear it here without you.\"",
+                        "Belle looked straight into his eyes. \"I promise.\""
                     ],
                     right: [
-                        "Belle said it looking straight into his eyes.",
-                        "The Beast gave her the mirror and a ring.",
-                        "Turn the ring, he said, and it would take her anywhere.",
-                        "Next morning Belle was standing in the yard of the cottage.",
-                        "Her father saw his daughter and got up out of his bed,",
-                        "with the tears standing in his eyes."
+                        "The Beast let her take the mirror, and he gave her a ring as well. \"Turn the ring, and it will take you anywhere.\"",
+                        "Next morning Belle turned the ring, and in a blink she was standing in the yard of the cottage.",
+                        "Her father, ill in bed, saw her with tears standing in his eyes."
                     ]
                 }
             ]
@@ -828,41 +765,28 @@ const EN = {
                     art: '07-late.webp',
                     emoji: '⏳',
                     left: [
-                        "Her father picked up noticeably the moment he saw Belle.",
-                        "In a few days he was up and out into the yard,",
-                        "and Belle stayed beside him, boiling him porridge and brewing his medicine.",
-                        "There was laughter in that house again after a long time.",
-                        "Her father would not let go of her hand.",
-                        "The sun lay well on the yard, day after day."
+                        "Her father picked up noticeably when he saw Belle. In a few days he was up and out in the yard.",
+                        "Belle stayed beside him, cooking porridge and brewing his medicine.",
+                        "There was laughter in the house again, and her father would not let go of her hand. Sunny days followed one after another."
                     ],
                     right: [
-                        "But the two elder sisters were not easy about it.",
-                        "Belle's ring and Belle's clothes kept catching their eyes.",
-                        "\"Stay a little longer. What are a few days?\"",
-                        "Every day they caught at her sleeve,",
-                        "and Belle liked being with her father and put it off, one day at a time.",
-                        "She did not notice that the seven days had gone."
+                        "But the sisters were not easy about it. They envied Belle's ring and fine clothes.",
+                        "To make her break her promise, they held her sleeve every day. \"Stay a little longer!\"",
+                        "Happy with her father, Belle put it off, one day at a time. The seven days went by."
                     ]
                 },
                 {
                     art: '07-late-2.webp',
                     emoji: '⏳',
                     left: [
-                        "And then, on the eighth night,",
-                        "Belle had a dream.",
-                        "She dreamed the Beast was lying in the rose garden of the castle.",
-                        "She thought she could hear him calling her.",
-                        "Belle woke straight up out of it.",
+                        "Then, on the night after the seventh day, Belle had a dream. The Beast was lying in the rose garden of the castle.",
+                        "She thought she could hear him calling her. Belle woke straight up out of it.",
                         "\"I have broken my promise!\""
                     ],
                     right: [
-                        "She looked into the mirror.",
-                        "Her hands were shaking.",
-                        "The Beast lay there in the glass.",
-                        "Belle turned the ring at once,",
-                        "and opened her eyes in the castle garden.",
-                        "She ran for the rose garden.",
-                        "Her heart felt fit to burst, and she never noticed she was barefoot."
+                        "She looked into the mirror with shaking hands. There lay the Beast in the glass.",
+                        "Belle turned the ring at once, and she opened her eyes in the castle garden.",
+                        "She ran to the rose garden. Her heart felt fit to burst, and she never noticed she was barefoot."
                     ]
                 }
             ]
@@ -875,40 +799,27 @@ const EN = {
                     art: '08-ending.webp',
                     emoji: '💗',
                     left: [
-                        "The Beast lay under the rose bushes,",
-                        "and his breathing was very small.",
-                        "Belle ran and put her arms round him.",
+                        "The Beast lay under the rose bushes, breathing very faintly. Belle ran and put her arms round him.",
                         "\"I am sorry. I am so late.\"",
-                        "The Beast just managed to open his eyes.",
-                        "His voice was as small as wind.",
-                        "There was white frost on his fur.",
-                        "\"The castle was too quiet without you.\""
+                        "The Beast just managed to open his eyes. There was white frost on his fur.",
+                        "\"The castle was too quiet without you,\" he whispered."
                     ],
                     right: [
-                        "\"I am not going anywhere now.\"",
-                        "Belle took his hand in both of hers.",
-                        "\"This is my home. I shall stay beside you.\"",
-                        "Her tears fell onto his fur,",
-                        "and only then did Belle know her own mind."
+                        "Belle took his hand in both of hers. \"I am not going anywhere now. This is my home. I shall stay beside you.\"",
+                        "Her tears fell onto his fur. Only then did Belle know her own mind."
                     ]
                 },
                 {
                     art: '08-ending-2.webp',
                     emoji: '💗',
                     left: [
-                        "The moment she said it, light poured into the garden.",
-                        "It dazzled her so that she could not see,",
-                        "and when it lifted Belle opened her eyes.",
-                        "Where the Beast had been, a young man was sitting.",
-                        "And there was something she knew about his eyes.",
-                        "They were the sad eyes she had sat opposite every evening.",
-                        "\"I am the master of this castle, and I was under a spell.\""
+                        "As she said it, light poured into the garden. When it lifted, a young man sat where the Beast had been.",
+                        "But Belle knew his eyes. They were the sad eyes she had sat opposite every evening."
                     ],
                     right: [
-                        "\"It could only be broken by somebody who looked past what I seemed to be.\"",
-                        "Lights came on in every window of the castle and people appeared.",
-                        "The whole place, stopped for so long, had woken at once.",
-                        "And Belle sent for her father and her sisters to come and live there."
+                        "\"I am the master here,\" he said.\"Only someone who looked past what I seemed to be could break my spell.\"",
+                        "Lights came on, and people appeared.",
+                        "Belle sent for her father and sisters, and the two lived happily ever after."
                     ]
                 }
             ]
@@ -1014,14 +925,14 @@ const EN = {
             { word: 'lay', meaning: '차려진', sentence: 'A fire was burning and a table was laid.' }
         ],
         '03-plucked.webp': [
-            { word: 'in full bloom', meaning: '활짝 핀', sentence: 'There were red roses in full bloom.' },
+            { word: 'in full bloom', meaning: '활짝 핀', sentence: 'Red roses were in full bloom.' },
             { word: 'midwinter', meaning: '한겨울', sentence: 'How that could be in midwinter he could not tell.' },
             { word: 'scent', meaning: '향기', sentence: 'The scent of them filled the whole garden.' },
             { word: 'petal', meaning: '꽃잎', sentence: 'A few red petals lay on the snow.' },
             { word: 'pick', meaning: '꺾다', sentence: 'He reached out and picked one rose.' }
         ],
         '03-plucked-2.webp': [
-            { word: 'shaggy', meaning: '털이 북슬북슬한', sentence: 'An enormous shaggy creature was standing there.' },
+            { word: 'shaggy', meaning: '털이 북슬북슬한', sentence: 'An enormous shaggy creature stood there.' },
             { word: 'sink down', meaning: '주저앉다', sentence: 'The merchant sank down where he stood.' },
             { word: 'spare', meaning: '살려 주다', sentence: 'Spare me.' },
             { word: 'bring oneself to', meaning: '차마 ~하다', sentence: 'He could not bring himself to look at her face.' }
@@ -1029,13 +940,13 @@ const EN = {
         '04-belle.webp': [
             { word: 'leave nothing out', meaning: '빼놓지 않다', sentence: 'He told them the whole thing, leaving nothing out.' },
             { word: 'of all things', meaning: '하필', sentence: 'A rose of all things.' },
-            { word: 'put on', meaning: '걸치다', sentence: 'She quietly put on her coat.' },
             { word: 'spring up', meaning: '벌떡 일어나다', sentence: 'Their father sprang up out of his chair.' }
         ],
         '04-belle-2.webp': [
             { word: 'shake', meaning: '떨리다', sentence: "Belle's voice did not shake." },
-            { word: 'before dawn', meaning: '새벽에', sentence: 'Before dawn the next day she set off.' },
-            { word: 'sink into', meaning: '푹푹 빠지다', sentence: "The horse's hooves sank deep into it." },
+            { word: 'before dawn', meaning: '새벽에', sentence: 'Before dawn the next day she rode off with her father.' },
+            { word: 'put on', meaning: '걸치다', sentence: 'She put on her coat.' },
+            { word: 'sink into', meaning: '푹푹 빠지다', sentence: "The horse's hooves sank deep into the snow." },
             { word: 'let go of', meaning: '손을 놓다', sentence: 'Her father could not let go of her hand.' },
             { word: 'manage a smile', meaning: '웃어 보이다', sentence: 'Belle managed a smile.' }
         ],
@@ -1060,8 +971,8 @@ const EN = {
         '06-mirror-2.webp': [
             { word: 'bear', meaning: '견디다', sentence: 'I cannot bear it here without you.' },
             { word: 'within', meaning: '~ 안에', sentence: 'Only come back within seven days.' },
-            { word: 'take anywhere', meaning: '어디로든 데려가다', sentence: 'Turn the ring and it would take her anywhere.' },
-            { word: 'stand in', meaning: '(눈물이) 그렁그렁하다', sentence: 'With the tears standing in his eyes.' }
+            { word: 'take anywhere', meaning: '어디로든 데려가다', sentence: 'Turn the ring, and it will take you anywhere.' },
+            { word: 'stand in', meaning: '(눈물이) 그렁그렁하다', sentence: 'He saw her with tears standing in his eyes.' }
         ],
         '07-late.webp': [
             { word: 'pick up', meaning: '기운을 차리다', sentence: 'Her father picked up noticeably.' },
@@ -1083,10 +994,10 @@ const EN = {
         ],
         '08-ending-2.webp': [
             { word: 'pour into', meaning: '쏟아지다', sentence: 'Light poured into the garden.' },
-            { word: 'lift', meaning: '걷히다', sentence: 'When it lifted Belle opened her eyes.' },
+            { word: 'lift', meaning: '걷히다', sentence: 'When it lifted, a young man sat where the Beast had been.' },
             { word: 'opposite', meaning: '마주 보고', sentence: 'The eyes she had sat opposite every evening.' },
-            { word: 'look past', meaning: '겉모습 너머를 보다', sentence: 'Somebody who looked past what I seemed to be.' },
-            { word: 'send for', meaning: '불러오다', sentence: 'Belle sent for her father and her sisters.' }
+            { word: 'look past', meaning: '겉모습 너머를 보다', sentence: 'Someone who looked past what I seemed to be.' },
+            { word: 'send for', meaning: '불러오다', sentence: 'Belle sent for her father and sisters.' }
         ],
         'end.webp': [
             { word: 'shape', meaning: '다듬다', sentence: 'The version Madame de Beaumont shaped for children.' },

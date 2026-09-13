@@ -573,9 +573,7 @@ const EN = {
                     ],
                     right: [
                         "In the evenings their grandmother told them stories about the world above the water.",
-                        "\"Great ships go about up there.\"",
-                        "\"Trees grow on the land.\"",
-                        "\"And people walk about on legs.\"",
+                        "\"Great ships sail up there,\" she said. \"Trees grow on the land, and people walk about on legs.\"",
                         "The youngest one's eyes shone every time."
                     ]
                 },
@@ -583,16 +581,14 @@ const EN = {
                     art: '01-palace-2.webp',
                     emoji: '🐚',
                     left: [
-                        "\"When you are fifteen you may go up and look.\"",
-                        "Year by year her sisters went up in turn, and came back down to tell her about it.",
-                        "\"There was a lighthouse, flashing.\"",
-                        "\"You could hear the bells right down in the water.\"",
+                        "\"When you turn fifteen, you may go up and look,\" said Grandmother.",
+                        "Her sisters went up in turn, one each year, and came back to tell about it.",
+                        "\"I saw a lighthouse flashing!\" said one. \"I heard bells ring under the water!\" said another.",
                         "The youngest could hardly bear the waiting."
                     ],
                     right: [
                         "So some years went by, and at last it was her turn.",
-                        "Her grandmother did her hair beautifully and set pearls in it.",
-                        "\"Take care up there.\"",
+                        "Her grandmother did her hair beautifully and set pearls in it. \"Take care up there.\"",
                         "Up and up the little mermaid went.",
                         "And she put her face gently out of the water."
                     ]
@@ -608,9 +604,8 @@ const EN = {
                     emoji: '⛵',
                     left: [
                         "A great ship lay in front of her, with lanterns burning bright along the rail.",
-                        "There was a party going on up on deck, and the music came out over the water.",
-                        "Among all the people stood one young man.",
-                        "It was his birthday, they said."
+                        "There was a party going on up on deck, and music came out over the water.",
+                        "Among the people stood a young prince. It was his birthday, and the party was for him."
                     ],
                     right: [
                         "The little mermaid could not take her eyes off him, and so the night wore on.",
@@ -624,8 +619,8 @@ const EN = {
                     emoji: '⛵',
                     left: [
                         "The ship went over hard, and one after another the people fell into the sea.",
-                        "The little mermaid searched for the young man, and caught sight of him between the waves.",
-                        "He had already lost consciousness, and his body was sinking slowly down."
+                        "The little mermaid looked for the prince and caught sight of him between the waves.",
+                        "He had already lost consciousness, and he was slowly sinking."
                     ],
                     right: [
                         "She swam to him with all her strength and got both arms under him.",
@@ -645,16 +640,15 @@ const EN = {
                     art: '03-rescue.webp',
                     emoji: '🏖️',
                     left: [
-                        "Far off she could see white sand. She swam slowly toward it and laid the young man carefully down.",
+                        "Far off she could see white sand. She swam slowly toward it and laid the prince carefully down.",
                         "Only when she saw his chest rise and fall did she breathe again.",
                         "For a long while she stayed there beside him.",
                         "Then voices came from further up the beach."
                     ],
                     right: [
                         "The little mermaid hid quickly behind a rock.",
-                        "A young woman came running down onto the sand, and at the sound of her the young man opened his eyes.",
-                        "He looked up at her.",
-                        "\"You saved me.\"",
+                        "A young woman came running down onto the sand, and at the sound of her the prince opened his eyes.",
+                        "He looked up at her and said, \"You saved me.\"",
                         "And the little mermaid, behind her rock, heard every word of it."
                     ]
                 },
@@ -662,18 +656,15 @@ const EN = {
                     art: '03-rescue-2.webp',
                     emoji: '🏖️',
                     left: [
-                        "She could not say a thing. She only went back down into the water.",
-                        "From that day her heart was strange to her. Even the singing she had loved would not come.",
-                        "Her sisters asked her anxiously,",
-                        "\"What is the matter, little sister?\""
+                        "The little mermaid could not come out from behind the rock. She only slipped quietly back into the water.",
+                        "From that day her heart felt strange. Even the singing she had loved would not come.",
+                        "Her sisters asked her anxiously, \"What is the matter, little sister?\""
                     ],
                     right: [
-                        "Instead of answering she went to her grandmother.",
-                        "\"How long do people live?\"",
-                        "\"Far less time than we do.\"",
-                        "\"Then why do I keep envying them?\"",
-                        "\"Because you want to walk on the land, I expect.\"",
-                        "That night the little mermaid made up her mind."
+                        "Instead of answering, she asked her grandmother, \"How long do people live?\"",
+                        "\"Far less time than we do,\" said Grandmother.",
+                        "Still, she kept envying people. She wanted to walk on the land beside the prince.",
+                        "That night the little mermaid made up her mind. She would go to the sea witch."
                     ]
                 }
             ]
@@ -687,36 +678,30 @@ const EN = {
                     emoji: '🌀',
                     left: [
                         "A witch lived at the far end of the sea, where nobody ever went.",
-                        "The little mermaid swam down to her. The black water turned in whirlpools,",
-                        "and coral like bones stood up along the way.",
-                        "Still she did not stop."
+                        "The little mermaid swam there. The black water turned in whirlpools.",
+                        "Coral like bones stood along the way. Still she did not stop."
                     ],
                     right: [
-                        "The witch was in a cave, her long hair drifting about her in the water.",
-                        "\"I knew you would come.\"",
-                        "\"It's legs you want, is it?\"",
-                        "The little mermaid nodded without speaking.",
-                        "\"Then there is a price to pay.\""
+                        "The witch was in a cave. Her long hair drifted about her in the water.",
+                        "The witch spoke first. \"I knew you would come. It's legs you want, is it?\"",
+                        "The little mermaid nodded without a word.",
+                        "\"Then there is a price to pay,\" said the witch."
                     ]
                 },
                 {
                     art: '04-witch-2.webp',
                     emoji: '🌀',
                     left: [
-                        "\"What shall I give you?\"",
-                        "\"Give me your voice.\"",
-                        "\"The loveliest voice in the sea.\"",
-                        "The little mermaid caught her breath.",
-                        "\"Then I shall not be able to speak?\"",
+                        "\"What shall I give you?\" asked the little mermaid.",
+                        "The witch grinned. \"Give me your voice — the loveliest voice in the sea.\"",
+                        "The little mermaid caught her breath. \"Then I won't be able to speak?\"",
                         "\"Never again.\""
                     ],
                     right: [
-                        "And the witch told her one thing more.",
-                        "\"Every step will hurt you.\"",
-                        "\"As though you walked on knives.\"",
-                        "The little mermaid stood thinking for a long time.",
-                        "Then she slowly spoke.",
-                        "\"Do it, then.\""
+                        "The witch went on. \"Every step will hurt, as though you walked on knives.\"",
+                        "\"If the prince marries someone else, you will turn to sea foam at the next sunrise.\"",
+                        "The little mermaid thought a long time. Then she said slowly, \"Do it.\"",
+                        "The witch took her voice and gave her a small potion."
                     ]
                 }
             ]
@@ -729,34 +714,30 @@ const EN = {
                     art: '05-legs.webp',
                     emoji: '👣',
                     left: [
-                        "The little mermaid came up to the surface and drank the potion. In that instant her whole body felt as though it had touched fire, and she fainted where she was.",
-                        "When she opened her eyes she was on the sand.",
-                        "Her tail was gone, clean gone, and in its place were two legs.",
-                        "She looked down at herself over and over."
+                        "She swam to the shore below the prince's palace. There she drank the potion.",
+                        "Her whole body felt as if it had touched fire, and she fainted.",
+                        "When she opened her eyes, she was on the sand. Her tail was gone, and in its place were two legs.",
+                        "She looked down at herself again and again."
                     ],
                     right: [
                         "When she tried to stand, her feet hurt terribly. It really was like standing on knives.",
-                        "And still she set her teeth and got up.",
-                        "Then footsteps came from further along the beach.",
-                        "She raised her head, and there stood the young man.",
-                        "\"Where have you come from?\""
+                        "Still she set her teeth and got up.",
+                        "Then she heard footsteps. She raised her head, and there stood the prince.",
+                        "He came up to her and asked, \"Where have you come from?\""
                     ]
                 },
                 {
                     art: '05-legs-2.webp',
                     emoji: '👣',
                     left: [
-                        "She could not answer. She opened her mouth and no sound came.",
-                        "The young man took her back to his palace and had fine clothes put on her.",
-                        "\"You cannot speak, it seems.\"",
-                        "\"But what clear eyes you have.\""
+                        "She could not answer. She opened her mouth, but no sound came.",
+                        "The prince looked at her closely. \"You cannot speak, it seems. But what clear eyes you have.\"",
+                        "He took her back to his palace and had fine clothes put on her."
                     ],
                     right: [
-                        "Every day the little mermaid danced. Her feet hurt, and she smiled and danced anyway.",
-                        "The prince kept her beside him always.",
-                        "\"She is my dearest friend.\"",
-                        "But that was all it was.",
-                        "For there was somebody the prince could not forget."
+                        "Every day the little mermaid danced. Her feet hurt, but she smiled and danced anyway.",
+                        "The prince kept her by his side. \"She is my dearest friend,\" he would say.",
+                        "But that was all. There was somebody else the prince could not forget."
                     ]
                 }
             ]
@@ -769,18 +750,13 @@ const EN = {
                     art: '06-wedding.webp',
                     emoji: '💍',
                     left: [
-                        "One day the prince said,",
-                        "\"I must go to the neighbouring country.\"",
-                        "\"There is talk of a marriage.\"",
-                        "\"But don't be troubled.\"",
-                        "\"There is somebody else in my heart.\"",
-                        "\"The one who saved me on the shore.\""
+                        "One day the prince said, \"I must go to the neighbouring country. There is talk of my marrying its princess.\"",
+                        "\"But don't be troubled — I will not marry her. There is somebody else in my heart: the one who saved me on the shore.\""
                     ],
                     right: [
-                        "The little mermaid's heart gave a great thump.",
-                        "'That was me.'",
-                        "But she could not say it. Not with her hands either — there was no way to get it across.",
-                        "In time the ship reached the other country, and the harbour was full of people waiting."
+                        "The little mermaid's heart gave a great thump. 'That was me!'",
+                        "But she could not say it, and there was no way to get it across with her hands either.",
+                        "She went on board the ship with the prince. In time it reached the other country, and the harbour was full of people waiting."
                     ]
                 },
                 {
@@ -789,15 +765,14 @@ const EN = {
                     left: [
                         "The princess of that country came forward, and at the sight of her face the prince stopped dead.",
                         "\"It was you!\"",
-                        "It was the very young woman from the shore.",
-                        "The prince was overjoyed.",
-                        "\"I have found you at last.\""
+                        "She was the very young woman from the shore.",
+                        "The prince was overjoyed. \"I have found you at last.\""
                     ],
                     right: [
-                        "The wedding was fixed that same day, and the whole country made a feast of it.",
-                        "The little mermaid was there too, standing quietly with a smile on her face.",
-                        "Nobody knew what was behind it.",
-                        "And so the night wore on."
+                        "The wedding was fixed that same day, and a great feast was held.",
+                        "After the feast, the prince and his bride set sail for his own country.",
+                        "The little mermaid was on board too, smiling quietly.",
+                        "Nobody knew what was in her heart, or that she would turn to sea foam at sunrise."
                     ]
                 }
             ]
@@ -810,17 +785,14 @@ const EN = {
                     art: '07-dagger.webp',
                     emoji: '🗡️',
                     left: [
-                        "It was the middle of the night when her sisters put their faces up through the waves.",
-                        "Their hair had all been cut short.",
-                        "\"We gave the witch our hair for this.\"",
-                        "One of them held out a knife that caught the light.",
+                        "It was the middle of the night when her sisters put their faces up through the waves. Their hair had all been cut short.",
+                        "\"We gave the witch our hair for this.\" One of them held out a knife that caught the light.",
                         "\"Stab the prince with this.\""
                     ],
                     right: [
-                        "\"It must be done before the sun comes up.\"",
-                        "\"When his blood falls on your feet, your legs will grow together into a tail again.\"",
-                        "\"Then you can come home to us.\"",
-                        "The little mermaid took the knife without a word and went into the tent.",
+                        "\"Do it before sunrise. If his blood falls on your feet, your legs will grow together into a tail again.\"",
+                        "\"Then you will not become foam, and you can come home.\"",
+                        "She took the knife without a word and went into the tent on deck.",
                         "The prince lay fast asleep, with his new bride beside him."
                     ]
                 },
@@ -852,33 +824,29 @@ const EN = {
                     art: '08-air.webp',
                     emoji: '💨',
                     left: [
-                        "The little mermaid threw herself into the sea.",
-                        "But she did not sink. She went light instead — light as a feather.",
-                        "Her body rose up and up, and the sunlight passed straight through her.",
-                        "\"Where is this?\""
+                        "The little mermaid threw herself into the sea, and her body began to melt into foam.",
+                        "But she did not sink. Instead she grew light — light as a feather.",
+                        "She rose up and up, and the sunlight passed straight through her.",
+                        "\"Where am I?\""
                     ],
                     right: [
-                        "The words came out of her before she knew it. Her voice had come back.",
-                        "All round her shining things were drifting — beings as light as the wind itself.",
-                        "\"We are the children of the air.\"",
-                        "\"We go about the world helping people.\"",
-                        "\"Come along with us.\""
+                        "The words came out before she knew it. Her voice had come back!",
+                        "All round her floated shining beings, as light as the wind itself.",
+                        "\"We are the children of the air,\" they said. \"We go about the world helping people. Come with us.\""
                     ]
                 },
                 {
                     art: '08-air-2.webp',
                     emoji: '💨',
                     left: [
-                        "The little mermaid looked down. Far below her lay the ship,",
-                        "and the prince had come out on deck and was looking all about him.",
-                        "\"Where can she have gone?\"",
-                        "The little mermaid became the wind and brushed past him.",
-                        "The prince's hair stirred a little."
+                        "The little mermaid looked down. Far below lay the ship.",
+                        "The prince stood on deck, looking all about. \"Where can she have gone?\"",
+                        "She became the wind and brushed past him. His hair stirred a little."
                     ],
                     right: [
-                        "He looked out at the sea for a long while. He half seemed to understand.",
-                        "And the little mermaid rose into the sky, side by side with the children of the air.",
-                        "Ever after, when the sea wind blew, people thought of her."
+                        "He gazed at the sea a long time, as if he half understood.",
+                        "She rose into the sky, side by side with the children of the air.",
+                        "Ever after, when the sea wind blew, the prince remembered the silent girl."
                     ]
                 }
             ]
@@ -892,7 +860,7 @@ const EN = {
         },
         {
             q: 'What did the little mermaid do during the storm?',
-            choices: ['She called her sisters for help', 'She held the young man’s head above the water all night', 'She swam back down to the palace'],
+            choices: ['She called her sisters for help', 'She held the prince’s head above the water all night', 'She swam back down to the palace'],
             answer: 1
         },
         {
@@ -965,8 +933,8 @@ const EN = {
         ],
         '01-palace-2.webp': [
             { word: 'in turn', meaning: '차례로', sentence: 'Her sisters went up in turn.' },
-            { word: 'lighthouse', meaning: '등대', sentence: 'There was a lighthouse, flashing.' },
-            { word: 'bear', meaning: '견디다', sentence: 'She could hardly bear the waiting.' },
+            { word: 'lighthouse', meaning: '등대', sentence: "I saw a lighthouse flashing!" },
+            { word: 'bear', meaning: '견디다', sentence: "The youngest could hardly bear the waiting." },
             { word: 'pearl', meaning: '진주', sentence: 'Her grandmother set pearls in her hair.' }
         ],
         '02-storm.webp': [
@@ -982,13 +950,13 @@ const EN = {
             { word: 'let go', meaning: '손을 놓다', sentence: 'And still she did not let go.' }
         ],
         '03-rescue.webp': [
-            { word: 'lay down', meaning: '눕히다', sentence: 'She laid the young man carefully down.' },
+            { word: 'lay down', meaning: '눕히다', sentence: "She laid the prince carefully down." },
             { word: 'rise and fall', meaning: '오르내리다', sentence: 'She saw his chest rise and fall.' },
             { word: 'behind', meaning: '~ 뒤에', sentence: 'She hid quickly behind a rock.' }
         ],
         '03-rescue-2.webp': [
             { word: 'anxiously', meaning: '걱정스레', sentence: 'Her sisters asked her anxiously.' },
-            { word: 'envy', meaning: '부러워하다', sentence: 'Why do I keep envying them?' },
+            { word: 'envy', meaning: '부러워하다', sentence: "She kept envying people." },
             { word: 'make up one’s mind', meaning: '마음을 정하다', sentence: 'The little mermaid made up her mind.' }
         ],
         '04-witch.webp': [
@@ -1002,8 +970,8 @@ const EN = {
             { word: 'as though', meaning: '~인 것처럼', sentence: 'As though you walked on knives.' }
         ],
         '05-legs.webp': [
-            { word: 'potion', meaning: '약', sentence: 'She came up to the surface and drank the potion.' },
-            { word: 'faint', meaning: '정신을 잃다', sentence: 'She fainted where she was.' },
+            { word: 'potion', meaning: '약', sentence: "There she drank the potion." },
+            { word: 'faint', meaning: '정신을 잃다', sentence: "Her whole body felt as if it had touched fire, and she fainted." },
             { word: 'in its place', meaning: '그 대신에', sentence: 'In its place were two legs.' },
             { word: 'set one’s teeth', meaning: '이를 악물다', sentence: 'She set her teeth and got up.' }
         ],
@@ -1042,9 +1010,9 @@ const EN = {
         ],
         '08-air-2.webp': [
             { word: 'brush past', meaning: '스치고 지나가다', sentence: 'She became the wind and brushed past him.' },
-            { word: 'stir', meaning: '살랑 흔들리다', sentence: "The prince's hair stirred a little." },
+            { word: 'stir', meaning: '살랑 흔들리다', sentence: "His hair stirred a little." },
             { word: 'side by side', meaning: '나란히', sentence: 'Side by side with the children of the air.' },
-            { word: 'ever after', meaning: '그 뒤로 줄곧', sentence: 'Ever after, when the sea wind blew, people thought of her.' }
+            { word: 'ever after', meaning: '그 뒤로 줄곧', sentence: "Ever after, when the sea wind blew, the prince remembered the silent girl." }
         ],
         'end.webp': [
             { word: 'hand over', meaning: '내주다', sentence: 'What she handed over was her voice.' },

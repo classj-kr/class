@@ -563,23 +563,18 @@ const EN = {
                     art: '01-spend.webp',
                     emoji: '💰',
                     left: [
-                        "Long ago in a certain town there lived a great merchant.",
-                        "He had so much money that he could have paved the whole street with silver.",
-                        "And then the merchant died,",
-                        "and everything went to his only son.",
-                        "The son was delighted.",
-                        "\"Now I may spend as I please.\"",
-                        "And he threw the doors of the store room wide open."
+                        "Long ago in a town there lived a great merchant.",
+                        "He was so rich he could have paved the street with silver.",
+                        "Then the merchant died, and everything went to his only son.",
+                        "\"Now I can spend all I like!\" said the son happily.",
+                        "He threw the doors of the store room wide open."
                     ],
                     right: [
                         "The son spent money like water.",
-                        "He had fine clothes made and bought new shoes,",
-                        "and stood a treat for people every day of the week.",
-                        "\"There is nobody like you!\"",
-                        "\"You'll stand us another today, won't you!\"",
-                        "People made a great deal of him,",
-                        "and he found it very pleasant to hear.",
-                        "And meanwhile the store room was emptying."
+                        "He bought fine clothes and new shoes.",
+                        "He stood a treat for people every day.",
+                        "People made a great deal of him. \"There's nobody like you! Treat us again today!\"",
+                        "He loved to hear it. But the store room was slowly emptying."
                     ]
                 },
                 {
@@ -588,17 +583,16 @@ const EN = {
                     left: [
                         "But a fortune has an end to it.",
                         "After a few years the store room was bare.",
-                        "He sold the house and he sold the furniture,",
-                        "and there were a few coins left, and no more.",
-                        "And his friends stopped coming, one after another.",
-                        "\"Now who was that again?\""
+                        "He sold the house and the furniture, and only a few coins were left.",
+                        "His friends stopped coming, one after another.",
+                        "When they passed him in the street, they said, \"Now who was that again?\""
                     ],
                     right: [
-                        "The son sat alone in an empty room.",
-                        "And then an old friend came to see him,",
+                        "The son rented a tiny attic room and lived there alone.",
+                        "Then an old friend came to see him,",
                         "carrying a great worn leather trunk.",
-                        "\"You may as well have this. You will want it for packing.\"",
-                        "\"Meaning I should pack and be off, I suppose.\" The son smiled rather bitterly."
+                        "\"Have this, at least,\" said the friend. \"You'll need it for packing.\"",
+                        "\"Pack up and go, you mean.\" The son smiled rather bitterly."
                     ]
                 }
             ]
@@ -613,40 +607,36 @@ const EN = {
                     left: [
                         "But there was nothing to pack,",
                         "because he had nothing at all.",
-                        "For something to do, the son climbed into the trunk and sat down.",
-                        "It was wide and soft enough to sit in comfortably.",
-                        "\"I shall be the luggage myself, then.\"",
-                        "And he stretched his legs out inside it."
+                        "The son laughed. \"I shall be the luggage myself, then.\"",
+                        "He climbed into the trunk and sat down.",
+                        "It was so wide and soft that he could stretch his legs out."
                     ],
                     right: [
-                        "For a joke he pressed the lock.",
-                        "There was a click.",
-                        "And in that instant the trunk went up into the air.",
-                        "\"Ah — what is happening!\"",
-                        "The son shut his eyes tight.",
-                        "The trunk went once round the room",
-                        "and then straight out up the chimney.",
-                        "The son held on to the edges with both hands."
+                        "For a joke he pressed the lock. There was a click.",
+                        "In that instant the trunk rose into the air.",
+                        "\"Whoa! What's happening?\"",
+                        "He shut his eyes tight and held on to the edges.",
+                        "The trunk flew once round the room.",
+                        "Then it shot straight up the chimney."
                     ]
                 },
                 {
                     art: '02-fly-2.webp',
                     emoji: '🧳',
                     left: [
-                        "The trunk went up above the clouds.",
-                        "Below him the town shrank to the size of a thumbnail,",
+                        "The trunk shot up above the clouds.",
+                        "Below, the town shrank to the size of a thumbnail,",
                         "and the river looked like a thread.",
-                        "The wind roared in his ears.",
-                        "At first the son was frightened,",
-                        "and gripped the edges in case he lost hold of them.",
-                        "And little by little he grew easier."
+                        "The wind whistled in his ears. At first he was scared.",
+                        "He gripped the edges in case he fell.",
+                        "But little by little he calmed down."
                     ],
                     right: [
-                        "\"This is rather fine, in fact.\"",
-                        "Lean forward and the trunk went forward.",
-                        "Lean to one side and it turned that way.",
-                        "The son went racing about the night sky, delighted with it.",
-                        "The stars looked near enough to touch.",
+                        "\"Why, this is rather fun!\" said the son.",
+                        "When he leaned forward, the trunk went forward.",
+                        "When he leaned to one side, it turned that way.",
+                        "He went racing about the sky, delighted.",
+                        "The clouds looked near enough to touch.",
                         "\"Now then. Where shall I go?\""
                     ]
                 }
@@ -669,9 +659,9 @@ const EN = {
                     ],
                     right: [
                         "The market was full of strange fruit and spices.",
-                        "The son asked the people going past about this and that.",
-                        "And then he noticed a high tower away in the distance.",
-                        "\"Who lives in that tower?\"",
+                        "The son asked people about this and that.",
+                        "Then he noticed a tall tower far away.",
+                        "\"Who lives in that tower?\" he asked a fruit seller.",
                         "The fruit seller dropped his voice",
                         "and even glanced round him first."
                     ]
@@ -680,19 +670,18 @@ const EN = {
                     art: '03-tower-2.webp',
                     emoji: '🕌',
                     left: [
-                        "\"That is where the princess is kept.\"",
+                        "\"That is where the princess is kept,\" he whispered.",
                         "\"A fortune teller gave out a prophecy, you see.\"",
-                        "\"That the princess would be made unhappy by love.\"",
-                        "\"So the king put her up in that tower.\"",
-                        "\"Where nobody can get to her.\""
+                        "\"He said the princess would be made unhappy by love.\"",
+                        "\"So the king put her in that tower, where nobody can get to her.\""
                     ],
                     right: [
                         "The son's eyes lit up.",
-                        "\"Nobody by land, at any rate.\"",
-                        "\"I beg your pardon?\"",
-                        "\"Nothing, nothing. Thank you.\"",
-                        "And the son moved off quickly.",
-                        "He waited only for the sun to go down."
+                        "\"Nobody by land, at any rate. But by sky…\" he muttered.",
+                        "\"What did you say?\" asked the fruit seller.",
+                        "\"Oh, nothing, nothing. Thank you.\"",
+                        "The son moved off quickly",
+                        "and waited for the sun to go down."
                     ]
                 }
             ]
@@ -714,32 +703,28 @@ const EN = {
                     ],
                     right: [
                         "He climbed over the sill and stepped softly in.",
-                        "There was one lamp burning in the room",
-                        "and books lying open here and there.",
+                        "A lamp burned, and books lay open everywhere.",
                         "The princess was asleep on a long couch.",
                         "She started awake at the sound of him.",
-                        "\"Wh-who are you!\" The princess pulled the blanket up.",
-                        "And the son quickly held up both hands."
+                        "\"Wh-who are you?\" She pulled up the blanket.",
+                        "The son quickly held up both hands."
                     ]
                 },
                 {
                     art: '04-window-2.webp',
                     emoji: '🌙',
                     left: [
-                        "He bowed at once.",
-                        "\"Do not be alarmed.\"",
-                        "\"I have come from the sky.\"",
-                        "The princess's eyes went round.",
-                        "\"From the sky?\"",
-                        "\"Indeed. I came on a cloud.\""
+                        "He bowed politely. \"Do not be alarmed. I have come from the sky.\"",
+                        "The princess's eyes went round. \"From the sky?\"",
+                        "\"Yes. I came on a cloud,\" he said.",
+                        "\"I have come a long way to see you, Princess.\""
                     ],
                     right: [
-                        "\"I have come a long way to see you.\"",
                         "The princess was more curious than frightened.",
-                        "He was the first visitor she had had since she was shut in the tower.",
-                        "\"Truly? What is it like up there?\"",
-                        "The son smiled",
-                        "and sat himself down on the windowsill."
+                        "He was her first visitor since she was shut in the tower.",
+                        "\"Really? Then you must know lots of wonderful stories!\"",
+                        "The son smiled and sat down on the windowsill.",
+                        "\"Then let me tell you one,\" he said."
                     ]
                 }
             ]
@@ -752,20 +737,17 @@ const EN = {
                     art: '05-story.webp',
                     emoji: '🔥',
                     left: [
-                        "And sitting there he began a story,",
-                        "about the kitchen things arguing among themselves.",
-                        "\"And the basket said this.\"",
-                        "\"That she was the most useful of the lot!\"",
-                        "\"And that put the saucepan's back up.\"",
-                        "\"And who is it that sits on the fire and puts up with it!\""
+                        "His story was about the kitchen things arguing among themselves.",
+                        "\"The basket said, 'I am the most useful of the lot!'\" he began.",
+                        "\"That put the saucepan's back up.\"",
+                        "\"'And who sits on the fire and puts up with it?' said the saucepan.\""
                     ],
                     right: [
-                        "\"And the matches said, very grandly,\"",
-                        "\"Without fire you can none of you do anything.\"",
+                        "\"And the matches said, very grandly, 'Without fire, none of you can do anything.'\"",
                         "The son did all the voices,",
-                        "and the princess laughed until she had to hold her sides.",
-                        "She could not remember when she had last laughed like that.",
-                        "The story went on until the lamp had burned right down."
+                        "and the princess laughed until she held her sides.",
+                        "She had not laughed like that for a long time.",
+                        "The stories went on until the lamp burned right down."
                     ]
                 },
                 {
@@ -773,11 +755,10 @@ const EN = {
                     emoji: '🔥',
                     left: [
                         "When the story ended, the window was already going grey.",
-                        "\"I must be going.\"",
-                        "The princess put out a hand quickly.",
-                        "\"You will come again tomorrow?\"",
-                        "\"Of course.\"",
-                        "And the son waved as he climbed over the sill."
+                        "The son stood up. \"I must be going now.\"",
+                        "The princess quickly held out her hand. \"You will come again tomorrow?\"",
+                        "\"Of course,\" he said.",
+                        "He climbed into the trunk waiting outside the window and waved."
                     ],
                     right: [
                         "After that he came to the tower every night,",
@@ -800,38 +781,34 @@ const EN = {
                     left: [
                         "One day the king and queen came up to the tower.",
                         "They wanted to know why the princess had grown so much brighter.",
-                        "And the princess could not hide it and told them.",
-                        "\"There is somebody who comes from the sky.\"",
-                        "\"And the stories he tells!\" Her face was shining with it."
+                        "The princess could not hide it, so she told them.",
+                        "Her face was shining. \"Someone comes to me from the sky.\"",
+                        "\"And he tells such wonderful stories!\""
                     ],
                     right: [
                         "The king frowned.",
-                        "The queen, though, was curious.",
-                        "\"He tells stories well, does he?\"",
-                        "\"We might hear one ourselves, perhaps.\"",
-                        "And in the end the king nodded.",
-                        "\"Bring the man here, then.\""
+                        "But the queen was curious.",
+                        "\"He tells stories so well?\" she said to the king.",
+                        "\"Perhaps we might hear one ourselves.\"",
+                        "In the end the king nodded. \"Bring the man here, then.\""
                     ]
                 },
                 {
                     art: '06-parents-2.webp',
                     emoji: '👑',
                     left: [
-                        "That evening the son went to the palace.",
-                        "The king and queen sat side by side,",
-                        "with the court standing round them.",
-                        "The son cleared his throat and began.",
-                        "This time it was a very long story,",
-                        "and the hall went as quiet as still water.",
-                        "The queen wiped her eyes.",
-                        "And the king slapped his knee."
+                        "That night the princess told the son.",
+                        "The next evening he went to the palace.",
+                        "The court stood round the king and queen.",
+                        "The son cleared his throat and began a very long story.",
+                        "The hall went as quiet as still water.",
+                        "At the end, the queen wiped her eyes."
                     ],
                     right: [
-                        "\"I have never seen a gift like it!\"",
-                        "\"Where should we find a better son-in-law!\"",
+                        "The king slapped his knee. \"I have never seen such a gift!\"",
+                        "\"My queen, where could we find a better son-in-law?\"",
                         "The wedding day was fixed there and then.",
-                        "The princess went pink,",
-                        "and the whole country set about getting ready for the feast.",
+                        "The princess blushed, and the whole country got ready for the feast.",
                         "The smell of baking filled the streets for days."
                     ]
                 }
@@ -845,21 +822,18 @@ const EN = {
                     art: '07-fireworks.webp',
                     emoji: '🎆',
                     left: [
-                        "It was the night before the wedding,",
-                        "and the whole city was keeping the feast.",
-                        "There were lamps along every street and drums beating.",
+                        "It was the night before the wedding.",
+                        "The whole city was keeping the feast, with lamps and drums in every street.",
                         "The son wanted to give the people a surprise.",
-                        "\"And if I am going to do it, it shall be from the sky.\"",
-                        "So he bought a great load of fireworks in the market,",
-                        "more than a cart could carry."
+                        "\"And I'll do it from the sky!\" he thought.",
+                        "He spent the last of his money on fireworks at the market."
                     ],
                     right: [
-                        "He spent the last of his money on them,",
-                        "loaded them into the trunk and went out to the wood.",
-                        "And then he went up in the trunk into the sky.",
+                        "He carried them to the wood and loaded them into the trunk.",
+                        "Then he flew up into the sky.",
                         "The city glittered below him.",
-                        "And the son lit the fireworks, one after another.",
-                        "The fuses burned down with a hiss."
+                        "The son lit the fireworks one after another,",
+                        "and the fuses burned down with a hiss."
                     ]
                 },
                 {
@@ -867,19 +841,17 @@ const EN = {
                     emoji: '🎆',
                     left: [
                         "The fireworks went off, bang after bang.",
-                        "Red and blue and yellow came pouring down the sky.",
+                        "Red, blue and yellow lights came pouring down.",
                         "People tipped their heads back and cheered.",
-                        "\"Whatever is that!\"",
-                        "\"The sky itself is blessing them!\"",
-                        "Children jumped about clapping,",
-                        "and the whole city was on its feet."
+                        "\"Whatever is that?\" \"The sky itself is blessing us!\"",
+                        "Children jumped about, clapping, and the whole city was on its feet."
                     ],
                     right: [
-                        "The son looked down at it, well pleased with himself.",
-                        "When the last firework had gone he brought the trunk down",
+                        "The son looked down, very pleased with himself.",
+                        "When the fireworks were gone, he brought the trunk down",
                         "and left it standing in a clearing in the wood.",
-                        "Then he went down into the town to see the feast.",
-                        "And he did not once look back."
+                        "He did not know that a few sparks were still glowing inside it.",
+                        "He went off to the feast without once looking back."
                     ]
                 }
             ]
@@ -902,30 +874,25 @@ const EN = {
                     right: [
                         "There was a burnt smell in the air.",
                         "In its place lay a heap of ashes.",
-                        "One firework had gone across and set it alight.",
-                        "The son sat down hard in front of it",
-                        "and put his hands through the ashes.",
-                        "There was nothing left at all.",
-                        "Only one piece of the lock, burnt black."
+                        "The sparks left inside had set it alight.",
+                        "The son sat down hard and put his hands through the ashes.",
+                        "Nothing was left but one piece of the lock, burnt black."
                     ]
                 },
                 {
                     art: '08-ending-2.webp',
                     emoji: '🌑',
                     left: [
-                        "There was no way of getting up to the tower now.",
-                        "He was the man who had come from the sky,",
-                        "and he could hardly walk to the palace on his own two feet.",
-                        "So the son left the city",
-                        "and went from place to place telling stories —",
-                        "in market squares and at the ends of villages."
+                        "Now there was no way to get up to the tower.",
+                        "A man from the sky could hardly walk to the palace on his own two feet.",
+                        "So the son left the city and went from place to place,",
+                        "telling stories in market squares and villages."
                     ],
                     right: [
-                        "People liked those stories very much.",
-                        "And the son always looked up at the sky.",
-                        "Meanwhile the princess waited, from that night on.",
-                        "She is at the tower window still, looking up.",
-                        "Waiting for the day a trunk comes up again between the clouds."
+                        "People loved his stories, but he always looked up at the sky.",
+                        "On the wedding day the princess waited, but nobody came.",
+                        "From that night on, she has sat at the tower window,",
+                        "waiting for a trunk to rise between the clouds."
                     ]
                 }
             ]
@@ -933,47 +900,47 @@ const EN = {
     ],
     quiz: [
         {
-            q: 'What did the old friend bring him?',
-            choices: ['A great worn leather trunk', 'A bag of money', 'A new coat'],
+            q: "What did the old friend bring him?",
+            choices: ["A great worn leather trunk", "A bag of money", "A new coat"],
             answer: 0
         },
         {
-            q: 'How did the trunk start to fly?',
-            choices: ['He wished it into the air', 'The friend told him the words', 'He pressed the lock while sitting in it'],
+            q: "How did the trunk start to fly?",
+            choices: ["He wished it into the air", "The friend told him the words", "He pressed the lock while sitting in it"],
             answer: 2
         },
         {
-            q: 'Why was the princess kept in a tower?',
-            choices: ['She had asked to be alone', 'A fortune teller said love would make her unhappy', 'The city was at war'],
+            q: "Why was the princess kept in a tower?",
+            choices: ["She had asked to be alone", "A fortune teller said love would make her unhappy", "The city was at war"],
             answer: 1
         },
         {
-            q: 'What did he tell the princess he was?',
-            choices: ['Somebody who had come from the sky', 'A merchant’s son', 'A servant of the king'],
+            q: "What did he tell the princess he was?",
+            choices: ["Somebody who had come from the sky", "A merchant’s son", "A servant of the king"],
             answer: 0
         },
         {
-            q: 'What was his story about?',
-            choices: ['The stars above the clouds', 'The tower and the fortune teller', 'Kitchen things arguing about who was most useful'],
+            q: "What was his story about?",
+            choices: ["The stars above the clouds", "The tower and the fortune teller", "Kitchen things arguing about who was most useful"],
             answer: 2
         },
         {
-            q: 'Why did the king agree to the marriage?',
-            choices: ['The man was rich', 'He was amazed at how well the man told stories', 'The queen insisted'],
+            q: "Why did the king agree to the marriage?",
+            choices: ["The man was rich", "He was amazed at how well the man told stories", "The queen insisted"],
             answer: 1
         },
         {
-            q: 'What happened to the trunk?',
-            choices: ['One of his own fireworks set it alight', 'Somebody stole it from the wood', 'It flew away by itself'],
+            q: "What happened to the trunk?",
+            choices: ["Sparks left from his own fireworks set it alight", "Somebody stole it from the wood", "It flew away by itself"],
             answer: 0
         },
         {
-            q: 'Which reaction to this book does NOT fit?',
+            q: "Which reaction to this book does NOT fit?",
             wide: true,
             choices: [
                 "His friend gave him an old trunk and said he would need it for packing — it meant it was time to go.",
-                "Sitting inside it he pressed the lock out of idleness — a thing done for no reason opened the road.",
-                "He spent every coin he had left on fireworks — wanting to astonish people came first.",
+                "Sitting inside it he pressed the lock just for a joke — a thing done for no reason opened the road.",
+                "He spent every coin he had left on fireworks — wanting to surprise people came first.",
                 "The princess still watches the sky from her tower window — she had worked out long ago that he never came from the sky at all."
             ],
             answer: 3
@@ -988,8 +955,8 @@ const EN = {
                 left: [
                     "Andersen liked putting a story inside a story. Here the matches and the saucepan have a conversation of their own.",
                     "The merchant's son spends everything he inherited. What is left is one old trunk. And that trunk flew.",
-                    "When he goes to see the princess he tells her a story — matches and pots and dishes all boasting at each other. He had nothing to bring, so he went with a story.",
-                    "Before the wedding he puts on a firework display, so the whole city will look up. And one of those fireworks lands on the trunk."
+                    "When he goes to see the princess he tells her a story — the matches, the saucepan and the basket all boasting at each other. He had nothing to bring, so he went with a story.",
+                    "Before the wedding he puts on a firework display, so the whole city will look up. And sparks left from those fireworks set the trunk on fire."
                 ],
                 right: [
                     "Once the trunk is burnt he cannot go up any more. The thing he did to show off is the thing that cut the road.",
@@ -1007,7 +974,7 @@ const EN = {
         '01-spend.webp': [
             { word: 'merchant', meaning: '장사꾼', sentence: 'There lived a great merchant.' },
             { word: 'pave', meaning: '덮다, 깔다', sentence: 'He could have paved the street with silver.' },
-            { word: 'store room', meaning: '곳간', sentence: 'He threw the doors of the store room open.' },
+            { word: 'store room', meaning: '곳간', sentence: 'He threw the doors of the store room wide open.' },
             { word: 'stand a treat', meaning: '한턱내다', sentence: 'He stood a treat for people every day.' },
             { word: 'make a great deal of', meaning: '떠받들다', sentence: 'People made a great deal of him.' }
         ],
@@ -1022,15 +989,15 @@ const EN = {
             { word: 'luggage', meaning: '짐', sentence: 'I shall be the luggage myself, then.' },
             { word: 'for a joke', meaning: '장난삼아', sentence: 'For a joke he pressed the lock.' },
             { word: 'click', meaning: '딸깍 소리', sentence: 'There was a click.' },
-            { word: 'chimney', meaning: '굴뚝', sentence: 'Straight out up the chimney.' },
-            { word: 'hold on to', meaning: '붙잡다', sentence: 'He held on to the edges.' }
+            { word: 'chimney', meaning: '굴뚝', sentence: 'Then it shot straight up the chimney.' },
+            { word: 'hold on to', meaning: '붙잡다', sentence: 'He shut his eyes tight and held on to the edges.' }
         ],
         '02-fly-2.webp': [
             { word: 'shrink', meaning: '작아지다', sentence: 'The town shrank to the size of a thumbnail.' },
-            { word: 'grip', meaning: '꽉 쥐다', sentence: 'He gripped the edges.' },
-            { word: 'in case', meaning: '~할까 봐', sentence: 'In case he lost hold of them.' },
-            { word: 'lean', meaning: '기울이다', sentence: 'Lean forward and the trunk went forward.' },
-            { word: 'race about', meaning: '달리다', sentence: 'He went racing about the night sky.' }
+            { word: 'grip', meaning: '꽉 쥐다', sentence: 'He gripped the edges in case he fell.' },
+            { word: 'in case', meaning: '~할까 봐', sentence: 'He gripped the edges in case he fell.' },
+            { word: 'lean', meaning: '기울이다', sentence: 'When he leaned forward, the trunk went forward.' },
+            { word: 'race about', meaning: '달리다', sentence: 'He went racing about the sky.' }
         ],
         '03-tower.webp': [
             { word: 'come into view', meaning: '나타나다', sentence: 'A strange city came into view.' },
@@ -1054,21 +1021,21 @@ const EN = {
             { word: 'start awake', meaning: '깜짝 놀라 깨다', sentence: 'She started awake at the sound of him.' }
         ],
         '04-window-2.webp': [
-            { word: 'bow', meaning: '고개를 숙이다', sentence: 'He bowed at once.' },
+            { word: 'bow', meaning: '고개를 숙이다', sentence: 'He bowed politely.' },
             { word: 'alarmed', meaning: '놀란', sentence: 'Do not be alarmed.' },
             { word: 'curious', meaning: '신기해하는', sentence: 'She was more curious than frightened.' },
             { word: 'shut in', meaning: '갇힌', sentence: 'Since she was shut in the tower.' }
         ],
         '05-story.webp': [
             { word: 'argue', meaning: '다투다', sentence: 'The kitchen things arguing among themselves.' },
-            { word: 'useful', meaning: '쓸모 있는', sentence: 'She was the most useful of the lot.' },
+            { word: 'useful', meaning: '쓸모 있는', sentence: 'I am the most useful of the lot.' },
             { word: 'put one’s back up', meaning: '발끈하게 하다', sentence: "That put the saucepan's back up." },
             { word: 'put up with', meaning: '참다', sentence: 'Who sits on the fire and puts up with it!' },
             { word: 'grandly', meaning: '콧대 높게', sentence: 'And the matches said, very grandly.' }
         ],
         '05-story-2.webp': [
             { word: 'go grey', meaning: '뿌옇게 밝아 오다', sentence: 'The window was already going grey.' },
-            { word: 'wave', meaning: '손을 흔들다', sentence: 'The son waved as he climbed over the sill.' },
+            { word: 'wave', meaning: '손을 흔들다', sentence: 'He climbed into the trunk waiting outside the window and waved.' },
             { word: 'make up', meaning: '지어내다', sentence: 'And made up something new each time.' },
             { word: 'count the hours', meaning: '손꼽아 기다리다', sentence: 'The princess counted the hours until he came.' }
         ],
@@ -1076,44 +1043,44 @@ const EN = {
             { word: 'brighter', meaning: '밝아진', sentence: 'Why the princess had grown so much brighter.' },
             { word: 'hide', meaning: '숨기다', sentence: 'The princess could not hide it.' },
             { word: 'frown', meaning: '눈살을 찌푸리다', sentence: 'The king frowned.' },
-            { word: 'perhaps', meaning: '~하면 어떨까', sentence: 'We might hear one ourselves, perhaps.' }
+            { word: 'perhaps', meaning: '~하면 어떨까', sentence: 'Perhaps we might hear one ourselves.' }
         ],
         '06-parents-2.webp': [
-            { word: 'court', meaning: '신하들', sentence: 'With the court standing round them.' },
+            { word: 'court', meaning: '신하들', sentence: 'The court stood round the king and queen.' },
             { word: 'as quiet as still water', meaning: '물을 끼얹은 듯 조용한', sentence: 'The hall went as quiet as still water.' },
-            { word: 'slap one’s knee', meaning: '무릎을 치다', sentence: 'And the king slapped his knee.' },
-            { word: 'son-in-law', meaning: '사윗감', sentence: 'Where should we find a better son-in-law!' },
+            { word: 'slap one’s knee', meaning: '무릎을 치다', sentence: 'The king slapped his knee.' },
+            { word: 'son-in-law', meaning: '사윗감', sentence: 'Where could we find a better son-in-law?' },
             { word: 'there and then', meaning: '그 자리에서', sentence: 'The wedding day was fixed there and then.' }
         ],
         '07-fireworks.webp': [
             { word: 'keep the feast', meaning: '잔치를 벌이다', sentence: 'The whole city was keeping the feast.' },
             { word: 'surprise', meaning: '놀랄 일', sentence: 'He wanted to give the people a surprise.' },
-            { word: 'firework', meaning: '불꽃', sentence: 'He bought a great load of fireworks.' },
+            { word: 'firework', meaning: '불꽃', sentence: 'He spent the last of his money on fireworks.' },
             { word: 'glitter', meaning: '반짝이다', sentence: 'The city glittered below him.' },
             { word: 'fuse', meaning: '심지', sentence: 'The fuses burned down with a hiss.' }
         ],
         '07-fireworks-2.webp': [
             { word: 'go off', meaning: '터지다', sentence: 'The fireworks went off, bang after bang.' },
             { word: 'tip one’s head back', meaning: '고개를 젖히다', sentence: 'People tipped their heads back and cheered.' },
-            { word: 'bless', meaning: '축복하다', sentence: 'The sky itself is blessing them!' },
+            { word: 'bless', meaning: '축복하다', sentence: 'The sky itself is blessing us!' },
             { word: 'clearing', meaning: '빈터', sentence: 'He left it standing in a clearing.' }
         ],
         '08-ending.webp': [
             { word: 'keep one’s face straight', meaning: '웃음을 참다', sentence: 'He could hardly keep his face straight.' },
             { word: 'burnt smell', meaning: '매캐한 냄새', sentence: 'There was a burnt smell in the air.' },
             { word: 'ashes', meaning: '재', sentence: 'In its place lay a heap of ashes.' },
-            { word: 'set alight', meaning: '불붙이다', sentence: 'One firework had set it alight.' },
-            { word: 'burnt black', meaning: '까맣게 탄', sentence: 'Only one piece of the lock, burnt black.' }
+            { word: 'set alight', meaning: '불붙이다', sentence: 'The sparks left inside had set it alight.' },
+            { word: 'burnt black', meaning: '까맣게 탄', sentence: 'One piece of the lock, burnt black.' }
         ],
         '08-ending-2.webp': [
             { word: 'on one’s own two feet', meaning: '제 발로', sentence: 'He could hardly walk there on his own two feet.' },
-            { word: 'market square', meaning: '장터', sentence: 'In market squares and at the ends of villages.' },
-            { word: 'look up at', meaning: '올려다보다', sentence: 'The son always looked up at the sky.' },
-            { word: 'from that night on', meaning: '그 밤 이후로', sentence: 'The princess waited, from that night on.' }
+            { word: 'market square', meaning: '장터', sentence: 'Telling stories in market squares and villages.' },
+            { word: 'look up at', meaning: '올려다보다', sentence: 'He always looked up at the sky.' },
+            { word: 'from that night on', meaning: '그 밤 이후로', sentence: 'From that night on, she has sat at the tower window.' }
         ],
         'end.webp': [
             { word: 'inherit', meaning: '물려받다', sentence: 'He spends everything he inherited.' },
-            { word: 'boast', meaning: '자랑하다', sentence: 'Matches and pots all boasting at each other.' },
+            { word: 'boast', meaning: '자랑하다', sentence: 'The saucepan and the basket all boasting at each other.' },
             { word: 'display', meaning: '벌이는 행사', sentence: 'He puts on a firework display.' },
             { word: 'show off', meaning: '자랑하다', sentence: 'The thing he did to show off.' },
             { word: 'cut', meaning: '끊다', sentence: 'The thing that cut the road.' }

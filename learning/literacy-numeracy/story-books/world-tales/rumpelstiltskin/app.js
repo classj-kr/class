@@ -567,40 +567,30 @@ const EN = {
                     art: '01-boast.webp',
                     emoji: '🌾',
                     left: [
-                        "The miller was poor, but there was nobody to touch him for boasting.",
-                        "Wherever he went he told people how fine he was,",
-                        "until they shook their heads at him.",
-                        "He had one daughter,",
-                        "a girl who was clever with her hands.",
-                        "And one day the miller met the king."
+                        "The miller was poor, but nobody could beat him at boasting.",
+                        "Wherever he went, he bragged about himself until people shook their heads at him.",
+                        "He had one daughter, a girl who was clever with her hands.",
+                        "One day the miller met the king."
                     ],
                     right: [
-                        "Standing in front of a great man, his tongue itched.",
-                        "He wanted to say something — anything.",
-                        "And out came a piece of nonsense.",
-                        "\"My daughter can spin straw into gold thread!\"",
-                        "He knew it was a mistake the moment he said it, and it was too late.",
-                        "Because the king's eyes had opened wide."
+                        "Standing in front of a great man, his tongue itched. He wanted to say something, anything.",
+                        "And out came a piece of nonsense: \"My daughter can spin straw into gold thread!\"",
+                        "He knew it was a mistake the moment he said it. But it was too late. The king's eyes had lit up."
                     ]
                 },
                 {
                     art: '01-boast-2.webp',
                     emoji: '🌾',
                     left: [
-                        "\"What a remarkable gift.\"",
-                        "\"Bring that daughter to me at once.\"",
-                        "The cold sweat came out on the miller's back.",
-                        "He could hardly say now that it had been a lie.",
-                        "He went home and told his daughter.",
-                        "And the blood went out of her face."
+                        "\"What a remarkable gift!\" said the king. \"Bring that daughter to me at once.\"",
+                        "A cold sweat broke out on the miller's back. He could hardly say now that it had been a lie.",
+                        "He went home and told his daughter everything. The blood drained from her face."
                     ],
                     right: [
-                        "\"Father, I have no such gift.\"",
-                        "\"What can be done? The king has said it.\"",
-                        "Next morning the girl was taken to the castle,",
-                        "and the gate shut behind her with a thud.",
-                        "She was frightened, and she could see no way out.",
-                        "And she could not begin to guess why her father had said such a thing."
+                        "\"Father, I have no such gift!\"",
+                        "\"What can I do?\" said her father. \"The king has spoken.\"",
+                        "Next morning the girl was taken to the castle, and the gate shut behind her with a thud.",
+                        "She was frightened and could see no way out. Why had her father said such a thing?"
                     ]
                 }
             ]
@@ -613,19 +603,13 @@ const EN = {
                     art: '02-straw.webp',
                     emoji: '🧺',
                     left: [
-                        "The girl was shown to a room.",
-                        "When the door opened, the straw was heaped up like a hill,",
-                        "very nearly to the ceiling.",
-                        "In the middle of it stood a spinning wheel.",
-                        "And the king said as he closed the door,",
-                        "\"Spin all this straw into gold thread by morning.\""
+                        "The girl was shown to a room. When the door opened, she saw straw heaped up like a hill, almost to the ceiling.",
+                        "In the middle stood a spinning wheel.",
+                        "As he closed the door, the king said, \"Spin all this straw into gold thread by morning. If you cannot, it will cost you your life.\""
                     ],
                     right: [
-                        "\"If you cannot, it will cost you your life.\"",
-                        "The door was locked from outside.",
-                        "The girl sat down hard in front of the wheel.",
-                        "There was no possible way she could know how to spin straw into gold.",
-                        "Try as she might, straw was straw.",
+                        "The door was locked from outside. The girl sat down hard in front of the wheel.",
+                        "She had no idea how to spin straw into gold. Try as she might, straw was straw.",
                         "And the girl burst into tears."
                     ]
                 },
@@ -633,20 +617,14 @@ const EN = {
                     art: '02-straw-2.webp',
                     emoji: '🧺',
                     left: [
-                        "How long she cried, who can say.",
-                        "And then something came slipping in under the door.",
-                        "The girl wiped her eyes, startled.",
-                        "It was a very small man",
-                        "in a pointed cap and a green coat,",
-                        "with a beard like thread moving in the wind.",
-                        "The little man tilted his head and asked,"
+                        "She cried for a long time. Then something came slipping in under the door.",
+                        "The girl wiped her eyes, startled. It was a very small man in a pointed cap and a green coat.",
+                        "His beard was like thread blowing in the wind. He tilted his head and asked,"
                     ],
                     right: [
                         "\"Why are you crying like that?\"",
-                        "The girl sniffed and told him what had happened.",
-                        "\"I cannot spin this straw into gold.\"",
-                        "The little man rubbed his hands together.",
-                        "\"Oh, that is nothing difficult.\"",
+                        "The girl sniffed and told him what had happened. \"I cannot spin this straw into gold.\"",
+                        "The little man rubbed his hands together. \"Oh, that is not difficult.\"",
                         "The girl's eyes went round."
                     ]
                 }
@@ -660,40 +638,30 @@ const EN = {
                     art: '03-little-man.webp',
                     emoji: '🎩',
                     left: [
-                        "\"I shall do it for you.\"",
-                        "The girl caught her breath.",
-                        "\"Truly? You can do it?\"",
-                        "\"And what will you give me for it?\"",
-                        "The girl looked at what she had on her.",
-                        "All she owned was one necklace."
+                        "\"I shall do it for you,\" said the little man.",
+                        "The girl caught her breath. \"Truly? You can do it?\"",
+                        "\"But what will you give me for it?\"",
+                        "The girl looked at what she had on. All she owned was one necklace."
                     ],
                     right: [
                         "\"I could give you this necklace.\"",
-                        "The little man took it and put it in his pocket,",
-                        "and sat down at the wheel.",
-                        "He worked the treadle with his small feet,",
-                        "and it began to whirr and whirr.",
-                        "Straw went in, and gold thread came out onto the spindle."
+                        "The little man put it in his pocket and sat down at the wheel.",
+                        "He worked the treadle with his small feet, and the wheel began to whirr and whirr.",
+                        "Straw went in, and gold thread came out, winding onto the spool."
                     ]
                 },
                 {
                     art: '03-little-man-2.webp',
                     emoji: '🎩',
                     left: [
-                        "The little man kept the wheel going all night.",
-                        "One spool after another filled up gold.",
-                        "The girl fell asleep beside him without meaning to,",
-                        "and when she opened her eyes the window was bright.",
-                        "There was not one stalk of straw left in the room.",
-                        "And the little man was gone."
+                        "The little man kept the wheel going all night. One spool after another filled up with gold.",
+                        "The girl fell asleep beside him without meaning to. When she opened her eyes, the window was bright.",
+                        "There was not one stalk of straw left in the room, and the little man was gone."
                     ],
                     right: [
-                        "When the king opened the door in the morning he stopped dead,",
-                        "because gold thread was heaped along the walls.",
-                        "\"I don't believe it!\"",
-                        "And the king was not grateful.",
-                        "He only became greedier.",
-                        "How fine it would be, he thought, to have that much gold every day."
+                        "When the king opened the door in the morning, he stopped dead. Gold thread was heaped along the walls.",
+                        "\"I don't believe it!\" he cried.",
+                        "But the king was not grateful. He only grew greedier. How fine it would be, he thought, to have that much gold every day!"
                     ]
                 }
             ]
@@ -706,20 +674,13 @@ const EN = {
                     art: '04-bigger.webp',
                     emoji: '🔒',
                     left: [
-                        "That evening the king took the girl to another room,",
-                        "twice as large as the one before,",
-                        "and full of straw again.",
-                        "\"Tonight you will fill this room.\"",
-                        "The door was locked once more.",
-                        "The girl sat down at the wheel and sighed,",
-                        "wondering whether the little man would come tonight as well."
+                        "That evening the king took the girl to another room, twice as large as the one before and full of straw.",
+                        "\"Tonight you will fill this room,\" he said, and the door was locked once more.",
+                        "The girl sat down at the wheel and sighed, wondering whether the little man would come again."
                     ],
                     right: [
-                        "And it was not long before",
-                        "the same little man came in under the door.",
-                        "\"And what will you give me this time?\"",
-                        "The girl took the ring off her finger and gave it to him.",
-                        "\"This ring is all I have left.\"",
+                        "Before long, the same little man came in under the door. \"And what will you give me this time?\"",
+                        "The girl took the ring off her finger. \"This ring is all I have left.\"",
                         "The little man pocketed the ring and sat down at the wheel."
                     ]
                 },
@@ -727,20 +688,13 @@ const EN = {
                     art: '04-bigger-2.webp',
                     emoji: '🔒',
                     left: [
-                        "That night too the wheel whirred until morning,",
-                        "and by dawn the room was full of gold thread.",
-                        "The king's face went red with it.",
-                        "He ran his hands over the gold and laughed.",
-                        "And still he was not satisfied.",
-                        "\"Do it once more tonight.\""
+                        "That night, too, the wheel whirred until morning, and by dawn the room was full of gold thread.",
+                        "The king's face went red with joy. He ran his hands over the gold and laughed. But still he was not satisfied.",
+                        "\"Do it once more tonight,\" he said. \"If you do, I shall make you my queen.\""
                     ],
                     right: [
-                        "\"And if you do, I shall make you my queen.\"",
-                        "The girl's fingertips shook.",
-                        "The room she was taken to on the third night was the size of a barn,",
-                        "and the straw in it was a mountain.",
-                        "The door shut and the girl was alone.",
-                        "The room was thick with the smell of straw."
+                        "The girl's fingertips shook. On the third night, she was taken to a room the size of a barn, with a mountain of straw in it.",
+                        "The door shut, and the girl was alone. The room was thick with the smell of straw."
                     ]
                 }
             ]
@@ -753,40 +707,28 @@ const EN = {
                     art: '05-promise.webp',
                     emoji: '🤲',
                     left: [
-                        "The little man appeared again.",
-                        "This time he seemed in no hurry at all.",
-                        "He held out a hand.",
-                        "\"And what will you give me this time?\"",
-                        "The girl opened both her hands to show him.",
-                        "\"I have truly nothing left to give.\""
+                        "The little man appeared again. This time he seemed in no hurry at all.",
+                        "He held out a hand. \"And what will you give me this time?\"",
+                        "The girl opened both her hands to show him. \"I truly have nothing left to give.\""
                     ],
                     right: [
-                        "The little man stroked his chin and thought.",
-                        "And then his eyes gleamed.",
-                        "\"Then let us do it this way.\"",
-                        "\"When you are queen, give me your first child.\"",
-                        "Everything went dark in front of the girl.",
-                        "And in the end she said that she would."
+                        "The little man stroked his chin and thought. Then his eyes gleamed.",
+                        "\"Then let us do it this way. When you are queen, give me your first child.\"",
+                        "Everything went dark in front of the girl. But if the straw was not spun into gold, she would lose her life. In the end, she said yes."
                     ]
                 },
                 {
                     art: '05-promise-2.webp',
                     emoji: '🤲',
                     left: [
-                        "The little man kept the wheel going all night.",
-                        "By morning the whole barn was gold.",
-                        "The king kept his word and made the girl his queen,",
-                        "and the whole country kept a feast.",
-                        "The miller went about with his shoulders back.",
-                        "The queen smiled outwardly, and her heart was heavy."
+                        "The little man kept the wheel going all night. By morning the whole room was gold.",
+                        "The king kept his word and made the girl his queen, and the whole country held a feast.",
+                        "The miller went about with his shoulders back. The queen smiled outwardly, but her heart was heavy."
                     ],
                     right: [
-                        "The promise she had made that night kept coming back to her.",
-                        "And as time went on she thought about it less.",
+                        "The promise she had made that night kept coming back to her. But as time went on, she thought about it less and less.",
                         "One year went by, and then another.",
-                        "The queen had a lovely child,",
-                        "and the whole palace was in an uproar over it.",
-                        "There were flowers all round the cradle."
+                        "Then the queen had a lovely baby girl. The whole palace was full of joy, and there were flowers all round the cradle."
                     ]
                 }
             ]
@@ -799,43 +741,28 @@ const EN = {
                     art: '06-baby.webp',
                     emoji: '👶',
                     left: [
-                        "The queen doted on that child",
-                        "and would not leave her side all day.",
-                        "She had forgotten the promise entirely.",
-                        "And then one night",
-                        "the candle in the room suddenly flickered,",
-                        "and the window opened by itself.",
-                        "The queen looked up.",
-                        "The little man was standing on the windowsill."
+                        "The queen doted on her child and stayed by her side all day. She had forgotten the promise entirely.",
+                        "Then one night, the candle in the room suddenly flickered, and the window opened by itself.",
+                        "The queen looked up. The little man was standing on the windowsill."
                     ],
                     right: [
-                        "The pointed cap and the green coat, just as before.",
-                        "\"I have come for what I was promised.\"",
-                        "The queen gathered the child up in her arms.",
-                        "\"No! I shall give you anything at all!\"",
-                        "The child stirred in her sleep,",
-                        "and the queen held her tighter."
+                        "He wore the same pointed cap and green coat. \"I have come for what I was promised,\" he said.",
+                        "The queen gathered the child up in her arms. \"No! I shall give you anything else at all!\"",
+                        "The child stirred in her sleep, and the queen held her tighter."
                     ]
                 },
                 {
                     art: '06-baby-2.webp',
                     emoji: '👶',
                     left: [
-                        "\"I shall give you every treasure in the kingdom.\"",
-                        "\"Only not the child.\"",
-                        "The little man shook his head.",
-                        "\"Gold is of no use to me whatever.\"",
-                        "The queen went down on her knees and wept.",
-                        "And the little man looked down at her for a long while."
+                        "\"I shall give you every treasure in the kingdom. Only not my child!\"",
+                        "The little man shook his head. \"Gold is of no use to me whatever.\"",
+                        "The queen went down on her knees and wept. The little man looked down at her for a long while."
                     ],
                     right: [
-                        "Then he held up three fingers.",
-                        "\"Very well. I shall give you three days.\"",
-                        "\"Guess my name within three days and we shall say no more about it.\"",
-                        "And with that he was gone.",
-                        "The queen did not sleep a wink all night.",
-                        "The window shut by itself,",
-                        "and the candle stood straight again."
+                        "Then he held up three fingers. \"Very well. I shall give you three days. Guess my name by then, and we shall say no more about it.\"",
+                        "And with that he was gone. The window shut by itself, and the candle stood straight again.",
+                        "The queen did not sleep a wink all night."
                     ]
                 }
             ]
@@ -848,41 +775,30 @@ const EN = {
                     art: '07-names.webp',
                     emoji: '📜',
                     left: [
-                        "Next day the queen sent messengers out in every direction",
-                        "to gather up every name in the country.",
-                        "The scrolls trailed down onto the floor.",
-                        "That night the little man appeared again,",
-                        "and the queen read out the names one by one.",
-                        "\"Caspar? Melchior? Balthasar?\"",
-                        "And every time he shook his head."
+                        "Next day the queen sent messengers all over the country to gather up every name they could find.",
+                        "The scrolls of names trailed down onto the floor.",
+                        "That night the little man appeared again, and the queen read out the names one by one.",
+                        "\"Caspar? Melchior? Balthasar?\""
                     ],
                     right: [
-                        "\"No. No indeed.\"",
-                        "The queen read out names until it was light,",
-                        "and not one of them was right.",
-                        "The little man went off cackling.",
-                        "\"I shall come again tomorrow.\"",
-                        "And the queen sat clutching her scrolls."
+                        "Every time, the little man shook his head. \"No. No indeed.\"",
+                        "The queen read out names until it was light, but not one of them was right.",
+                        "The little man went off cackling. \"I shall come again tomorrow!\"",
+                        "The queen sat clutching her scrolls."
                     ]
                 },
                 {
                     art: '07-names-2.webp',
                     emoji: '📜',
                     left: [
-                        "The next day she gathered the odd names.",
-                        "\"Ribsy? Muttonchops? Stringbean?\"",
-                        "And still he shook his head.",
-                        "\"No. No indeed.\"",
-                        "Now there was only one day left,",
-                        "and the queen sat up all night at the window."
+                        "The next day she gathered the odd names. That night she tried them out. \"Ribsy? Muttonchops? Stringbean?\"",
+                        "The little man still shook his head. \"No. No indeed.\"",
+                        "Now there was only one day left. The queen sat up all night at the window."
                     ],
                     right: [
-                        "It was the afternoon of the last day.",
-                        "One of the messengers came running in,",
-                        "still in his muddy boots.",
+                        "It was the afternoon of the last day. One of the messengers came running in, still in his muddy boots.",
                         "\"Your Majesty! I have seen the strangest thing!\"",
-                        "The queen sprang to her feet.",
-                        "\"Tell me at once.\""
+                        "The queen sprang to her feet. \"Tell me at once!\""
                     ]
                 }
             ]
@@ -895,40 +811,29 @@ const EN = {
                     art: '08-ending.webp',
                     emoji: '🔥',
                     left: [
-                        "\"I was going through the deep part of the wood.\"",
-                        "\"There was a fire lit outside a hut at the foot of a hill.\"",
-                        "\"And a very small man was hopping about in front of it.\"",
-                        "\"Hopping on one leg and singing, if you please.\"",
-                        "\"Today I bake, tomorrow I brew!\""
+                        "\"I went through the deep wood,\" said the messenger. \"There was a fire outside a hut.\"",
+                        "\"A very small man was hopping about in front of it on one leg, singing:\"",
+                        "\"Today I bake, tomorrow I brew! Soon the queen's child will be mine! And nobody knows my name is Rumpelstiltskin!\""
                     ],
                     right: [
-                        "\"And soon the queen's child is mine!\"",
-                        "\"And nobody knows my name is Rumpelstiltskin!\"",
-                        "The queen said that name over to herself again and again.",
-                        "She gave the messenger a great reward,",
-                        "and then she waited for the night to come.",
-                        "\"Rumpelstiltskin. Rumpelstiltskin.\"",
-                        "The laughter kept getting out of her."
+                        "The queen gave the messenger a great reward.",
+                        "Then she said the name over to herself again and again. \"Rumpelstiltskin. Rumpelstiltskin.\"",
+                        "She could not stop smiling as she waited for night to come."
                     ]
                 },
                 {
                     art: '08-ending-2.webp',
                     emoji: '🔥',
                     left: [
-                        "When night came the little man appeared.",
-                        "\"Now then. Let us hear the name.\"",
-                        "The queen kept a perfectly straight face.",
-                        "\"Might your name be Conrad?\"",
+                        "When night came, the little man appeared. \"Now then. Let us hear the name.\"",
+                        "The queen kept a perfectly straight face. \"Might your name be Conrad?\"",
                         "\"It is not.\"",
                         "\"Then is it Heinz?\""
                     ],
                     right: [
-                        "\"Nor that.\"",
-                        "And he was already reaching toward the child.",
-                        "And then the queen said, quietly,",
-                        "\"Might it be… Rumpelstiltskin?\"",
-                        "The little man leapt in the air and let out a shriek,",
-                        "and out of the door he went, and he never came back."
+                        "\"Nor that.\" He was already reaching toward the child.",
+                        "Then the queen said quietly, \"Might it be… Rumpelstiltskin?\"",
+                        "\"Who told you?\" shrieked the little man. He leapt in the air, ran out the door and never came back."
                     ]
                 }
             ]
@@ -974,10 +879,10 @@ const EN = {
             q: 'Which reaction to this book does NOT fit?',
             wide: true,
             choices: [
-                "The miller said his mouth itched in front of so great a man — the wish to boast came first.",
+                "The miller said his tongue itched in front of so great a man — the wish to boast came first.",
                 "The king saw the gold and, instead of thanking her, took her to a larger room — greed came first.",
                 "The little man said gold was no use to him — the child was what he had been after all along.",
-                "On the last night the queen began by guessing Konrad and Heinz — she still had not found out his real name."
+                "On the last night the queen began by guessing Conrad and Heinz — she still had not found out his real name."
             ],
             answer: 3
         }
@@ -1009,85 +914,85 @@ const EN = {
             { word: 'straight out of', meaning: '곧바로 ~에서', sentence: 'Comes straight out of that belief.' }
         ],
         '01-boast.webp': [
-            { word: 'boast', meaning: '허풍, 자랑', sentence: 'There was nobody to touch him for boasting.' },
-            { word: 'shake one’s head', meaning: '고개를 절레절레 흔들다', sentence: 'Until they shook their heads at him.' },
+            { word: 'boast', meaning: '허풍, 자랑', sentence: 'Nobody could beat him at boasting.' },
+            { word: 'shake one’s head', meaning: '고개를 절레절레 흔들다', sentence: 'Until people shook their heads at him.' },
             { word: 'one’s tongue itches', meaning: '입이 근질거리다', sentence: 'Standing in front of a great man, his tongue itched.' },
             { word: 'nonsense', meaning: '말도 안 되는 소리', sentence: 'And out came a piece of nonsense.' },
             { word: 'spin', meaning: '실을 잣다', sentence: 'My daughter can spin straw into gold thread!' }
         ],
         '01-boast-2.webp': [
             { word: 'gift', meaning: '재주', sentence: 'What a remarkable gift.' },
-            { word: 'cold sweat', meaning: '식은땀', sentence: "The cold sweat came out on the miller's back." },
+            { word: 'cold sweat', meaning: '식은땀', sentence: "A cold sweat broke out on the miller's back." },
             { word: 'hardly', meaning: '도무지 ~할 수 없다', sentence: 'He could hardly say now that it had been a lie.' },
             { word: 'thud', meaning: '쿵 소리', sentence: 'The gate shut behind her with a thud.' }
         ],
         '02-straw.webp': [
-            { word: 'heap up', meaning: '산더미처럼 쌓다', sentence: 'The straw was heaped up like a hill.' },
-            { word: 'ceiling', meaning: '천장', sentence: 'Very nearly to the ceiling.' },
-            { word: 'spinning wheel', meaning: '물레', sentence: 'In the middle of it stood a spinning wheel.' },
+            { word: 'heap up', meaning: '산더미처럼 쌓다', sentence: 'Straw heaped up like a hill.' },
+            { word: 'ceiling', meaning: '천장', sentence: 'Almost to the ceiling.' },
+            { word: 'spinning wheel', meaning: '물레', sentence: 'In the middle stood a spinning wheel.' },
             { word: 'cost one’s life', meaning: '목숨을 잃게 하다', sentence: 'It will cost you your life.' },
             { word: 'try as she might', meaning: '아무리 애를 써도', sentence: 'Try as she might, straw was straw.' }
         ],
         '02-straw-2.webp': [
             { word: 'slip in', meaning: '스르륵 들어오다', sentence: 'Something came slipping in under the door.' },
             { word: 'pointed cap', meaning: '뾰족한 모자', sentence: 'In a pointed cap and a green coat.' },
-            { word: 'tilt one’s head', meaning: '고개를 갸웃하다', sentence: 'The little man tilted his head.' },
-            { word: 'sniff', meaning: '훌쩍이다', sentence: 'The girl sniffed and told him.' },
+            { word: 'tilt one’s head', meaning: '고개를 갸웃하다', sentence: 'He tilted his head.' },
+            { word: 'sniff', meaning: '훌쩍이다', sentence: 'The girl sniffed and told him what had happened.' },
             { word: 'rub one’s hands', meaning: '손을 비비다', sentence: 'The little man rubbed his hands together.' }
         ],
         '03-little-man.webp': [
             { word: 'catch one’s breath', meaning: '숨을 삼키다', sentence: 'The girl caught her breath.' },
             { word: 'own', meaning: '가지다', sentence: 'All she owned was one necklace.' },
             { word: 'treadle', meaning: '발판', sentence: 'He worked the treadle with his small feet.' },
-            { word: 'whirr', meaning: '드르륵 소리 내다', sentence: 'It began to whirr and whirr.' }
+            { word: 'whirr', meaning: '드르륵 소리 내다', sentence: 'The wheel began to whirr and whirr.' }
         ],
         '03-little-man-2.webp': [
-            { word: 'spool', meaning: '실패', sentence: 'One spool after another filled up gold.' },
+            { word: 'spool', meaning: '실패', sentence: 'One spool after another filled up with gold.' },
             { word: 'stalk', meaning: '오라기, 줄기', sentence: 'There was not one stalk of straw left.' },
-            { word: 'stop dead', meaning: '멈춰 서다', sentence: 'The king stopped dead.' },
-            { word: 'grateful', meaning: '고마워하는', sentence: 'And the king was not grateful.' },
-            { word: 'greedy', meaning: '욕심 많은', sentence: 'He only became greedier.' }
+            { word: 'stop dead', meaning: '멈춰 서다', sentence: 'He stopped dead.' },
+            { word: 'grateful', meaning: '고마워하는', sentence: 'The king was not grateful.' },
+            { word: 'greedy', meaning: '욕심 많은', sentence: 'He only grew greedier.' }
         ],
         '04-bigger.webp': [
             { word: 'twice as large', meaning: '두 배는 넓은', sentence: 'Twice as large as the one before.' },
-            { word: 'sigh', meaning: '한숨 쉬다', sentence: 'The girl sat down and sighed.' },
-            { word: 'wonder whether', meaning: '~인지 궁금해하다', sentence: 'Wondering whether he would come tonight.' },
+            { word: 'sigh', meaning: '한숨 쉬다', sentence: 'The girl sat down at the wheel and sighed.' },
+            { word: 'wonder whether', meaning: '~인지 궁금해하다', sentence: 'Wondering whether the little man would come again.' },
             { word: 'pocket', meaning: '주머니에 넣다', sentence: 'The little man pocketed the ring.' }
         ],
         '04-bigger-2.webp': [
             { word: 'run one’s hands over', meaning: '손으로 쓸다', sentence: 'He ran his hands over the gold.' },
-            { word: 'satisfied', meaning: '만족한', sentence: 'And still he was not satisfied.' },
-            { word: 'barn', meaning: '창고', sentence: 'The room was the size of a barn.' },
+            { word: 'satisfied', meaning: '만족한', sentence: 'Still he was not satisfied.' },
+            { word: 'barn', meaning: '창고', sentence: 'A room the size of a barn.' },
             { word: 'thick with', meaning: '~으로 가득한', sentence: 'The room was thick with the smell of straw.' }
         ],
         '05-promise.webp': [
             { word: 'in no hurry', meaning: '느긋한', sentence: 'He seemed in no hurry at all.' },
             { word: 'hold out', meaning: '내밀다', sentence: 'He held out a hand.' },
             { word: 'stroke one’s chin', meaning: '턱을 쓰다듬다', sentence: 'The little man stroked his chin.' },
-            { word: 'gleam', meaning: '반짝이다', sentence: 'And then his eyes gleamed.' }
+            { word: 'gleam', meaning: '반짝이다', sentence: 'Then his eyes gleamed.' }
         ],
         '05-promise-2.webp': [
             { word: 'keep one’s word', meaning: '약속을 지키다', sentence: 'The king kept his word.' },
             { word: 'outwardly', meaning: '겉으로는', sentence: 'The queen smiled outwardly.' },
-            { word: 'keep coming back', meaning: '자꾸 떠오르다', sentence: 'The promise kept coming back to her.' },
+            { word: 'keep coming back', meaning: '자꾸 떠오르다', sentence: 'The promise she had made that night kept coming back to her.' },
             { word: 'cradle', meaning: '요람', sentence: 'There were flowers all round the cradle.' }
         ],
         '06-baby.webp': [
-            { word: 'dote on', meaning: '끔찍이 아끼다', sentence: 'The queen doted on that child.' },
-            { word: 'flicker', meaning: '흔들리다', sentence: 'The candle suddenly flickered.' },
+            { word: 'dote on', meaning: '끔찍이 아끼다', sentence: 'The queen doted on her child.' },
+            { word: 'flicker', meaning: '흔들리다', sentence: 'The candle in the room suddenly flickered.' },
             { word: 'by itself', meaning: '저절로', sentence: 'The window opened by itself.' },
-            { word: 'gather up', meaning: '끌어안다', sentence: 'The queen gathered the child up.' },
+            { word: 'gather up', meaning: '끌어안다', sentence: 'The queen gathered the child up in her arms.' },
             { word: 'stir', meaning: '뒤척이다', sentence: 'The child stirred in her sleep.' }
         ],
         '06-baby-2.webp': [
             { word: 'treasure', meaning: '보물', sentence: 'Every treasure in the kingdom.' },
             { word: 'of no use', meaning: '아무 소용 없는', sentence: 'Gold is of no use to me whatever.' },
             { word: 'go down on one’s knees', meaning: '무릎을 꿇다', sentence: 'The queen went down on her knees.' },
-            { word: 'not a wink', meaning: '한숨도 (못 자다)', sentence: 'She did not sleep a wink all night.' }
+            { word: 'not a wink', meaning: '한숨도 (못 자다)', sentence: 'The queen did not sleep a wink all night.' }
         ],
         '07-names.webp': [
-            { word: 'messenger', meaning: '심부름꾼', sentence: 'The queen sent messengers out.' },
-            { word: 'scroll', meaning: '두루마리', sentence: 'The scrolls trailed down onto the floor.' },
+            { word: 'messenger', meaning: '심부름꾼', sentence: 'The queen sent messengers all over the country.' },
+            { word: 'scroll', meaning: '두루마리', sentence: 'The scrolls of names trailed down onto the floor.' },
             { word: 'read out', meaning: '소리 내어 읽다', sentence: 'The queen read out the names one by one.' },
             { word: 'cackle', meaning: '낄낄 웃다', sentence: 'The little man went off cackling.' },
             { word: 'clutch', meaning: '움켜쥐다', sentence: 'The queen sat clutching her scrolls.' }
@@ -1099,17 +1004,17 @@ const EN = {
             { word: 'spring to one’s feet', meaning: '벌떡 일어나다', sentence: 'The queen sprang to her feet.' }
         ],
         '08-ending.webp': [
-            { word: 'hut', meaning: '오두막', sentence: 'A fire lit outside a hut.' },
+            { word: 'hut', meaning: '오두막', sentence: 'There was a fire outside a hut.' },
             { word: 'hop', meaning: '껑충껑충 뛰다', sentence: 'A very small man was hopping about.' },
             { word: 'brew', meaning: '삶다, 끓이다', sentence: 'Today I bake, tomorrow I brew!' },
-            { word: 'say over', meaning: '되뇌다', sentence: 'The queen said that name over to herself.' },
-            { word: 'reward', meaning: '상', sentence: 'She gave the messenger a great reward.' }
+            { word: 'say over', meaning: '되뇌다', sentence: 'She said the name over to herself.' },
+            { word: 'reward', meaning: '상', sentence: 'The queen gave the messenger a great reward.' }
         ],
         '08-ending-2.webp': [
             { word: 'a straight face', meaning: '시치미 뗀 얼굴', sentence: 'The queen kept a perfectly straight face.' },
             { word: 'reach toward', meaning: '손을 뻗다', sentence: 'He was already reaching toward the child.' },
-            { word: 'leap', meaning: '펄쩍 뛰다', sentence: 'The little man leapt in the air.' },
-            { word: 'shriek', meaning: '비명', sentence: 'And let out a shriek.' }
+            { word: 'leap', meaning: '펄쩍 뛰다', sentence: 'He leapt in the air.' },
+            { word: 'shriek', meaning: '비명', sentence: 'Shrieked the little man.' }
         ],
         'end.webp': [
             { word: 'lose one’s power', meaning: '힘을 잃다', sentence: 'Somebody losing their power once their name is guessed.' },

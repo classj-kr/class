@@ -554,15 +554,15 @@ const EN = {
                         "\"Mayor, you must do something!\"",
                         "The mayor sweated. He bought cats by the dozen from the next town,",
                         "and set traps in every alley.",
-                        "And none of it made the slightest difference."
+                        "But none of it made the slightest difference."
                     ],
                     right: [
                         "The councillors sat with their heads together.",
-                        "\"Shall we drive them into the river?\"",
-                        "\"Shall we set fires?\"",
-                        "\"And if the houses burn?\"",
+                        "\"Shall we drive them into the river?\" said one.",
+                        "\"Shall we set fires?\" said another.",
+                        "\"And what if the houses burn?\"",
                         "Nobody had an answer.",
-                        "And then there was a knock at the door."
+                        "Just then there was a knock at the door."
                     ]
                 }
             ]
@@ -579,7 +579,7 @@ const EN = {
                         "a coat made of scraps of cloth sewn together,",
                         "red and yellow and blue all mixed up in it.",
                         "There was a wooden pipe at his belt.",
-                        "\"You are having trouble with rats, I hear.\""
+                        "He bowed. \"You are having trouble with rats, I hear.\""
                     ],
                     right: [
                         "\"I shall get rid of them for you.\"",
@@ -594,19 +594,17 @@ const EN = {
                     art: '02-piper-2.webp',
                     emoji: '🎺',
                     left: [
-                        "And then he nodded quickly.",
-                        "\"Very well. A thousand it is.\"",
-                        "\"If you clear the rats I would give you twenty thousand.\"",
+                        "Then he nodded quickly.",
+                        "\"Very well. A thousand it is. If you clear the rats, I would give you twenty thousand!\"",
                         "The councillors clapped as well.",
-                        "\"You have given your word.\"",
-                        "the man said quietly."
+                        "\"You have given your word,\" the man said quietly."
                     ],
                     right: [
-                        "\"Of course. Of course I have.\"",
+                        "The mayor laughed. \"Of course. Of course I have.\"",
                         "The man walked straight out of the hall and stood in the middle of the square.",
                         "He raised the pipe slowly to his lips.",
                         "People crowded at every window.",
-                        "And then the first note sounded."
+                        "Then the first note sounded."
                     ]
                 }
             ]
@@ -645,11 +643,10 @@ const EN = {
                         "and at last it came to the river."
                     ],
                     right: [
-                        "But the man did not stop. He walked straight down to the water, still playing,",
-                        "and the rats went in after him as though they were spellbound.",
+                        "The man stood at the water's edge and kept on playing.",
+                        "The rats jumped straight into the river, as though they were spellbound.",
                         "The current carried them away downstream.",
-                        "After a long while the river was quiet again.",
-                        "There was not one rat left in the town, and the people cheered."
+                        "After a long while the river was quiet again. Not one rat was left in the town, and the people cheered."
                     ]
                 }
             ]
@@ -662,12 +659,10 @@ const EN = {
                     art: '04-refuse.webp',
                     emoji: '💰',
                     left: [
-                        "The man came back to the town hall.",
-                        "\"My payment, if you please.\"",
-                        "And the mayor's face went stiff.",
-                        "\"Well now… a thousand is rather a lot, is it not?\"",
-                        "\"You gave your word.\"",
-                        "\"You only played a pipe.\""
+                        "The man came back to the town hall. \"My payment, if you please.\"",
+                        "But the mayor's face went stiff.",
+                        "\"Well now… a thousand is rather a lot, is it not? You only played a pipe.\"",
+                        "\"You gave your word,\" said the man."
                     ],
                     right: [
                         "The councillors joined in from the side.",
@@ -683,18 +678,15 @@ const EN = {
                     emoji: '💰',
                     left: [
                         "\"A promise is a promise.\"",
-                        "\"Take it and have done!\"",
-                        "The mayor waved him away with both hands.",
+                        "The mayor waved him away with both hands. \"Take it and have done!\"",
                         "The man spoke in a low voice.",
-                        "\"I do not ask for my payment twice.\"",
-                        "\"Then I shall take something else.\""
+                        "\"I do not ask for my payment twice. Then I shall take something else.\""
                     ],
                     right: [
-                        "\"What did you say?\"",
+                        "\"What did you say?\" asked the mayor.",
                         "The man did not answer. He opened the door and went out.",
-                        "The mayor snorted behind his back.",
-                        "\"What a very odd fellow.\"",
-                        "And that evening the town kept a feast until late."
+                        "The mayor snorted behind his back. \"What a very odd fellow.\"",
+                        "That evening the town was so glad the rats were gone that it kept a feast until late."
                     ]
                 }
             ]
@@ -708,18 +700,17 @@ const EN = {
                     emoji: '🧒',
                     left: [
                         "It was the next morning. All the grown-ups had gone to church,",
-                        "and only the children were left in the streets.",
-                        "They were all playing ball, and it went bouncing off the walls.",
-                        "Then a sound came from the direction of the square.",
-                        "It was yesterday's pipe.",
-                        "But it did not sound the same as yesterday."
+                        "and only the children were left in the streets,",
+                        "playing ball. The ball went bouncing off the walls.",
+                        "Then a sound came from the square. It was yesterday's pipe,",
+                        "but it did not sound the same."
                     ],
                     right: [
                         "It was a bright, merry tune — the kind that gets into your feet.",
-                        "The children stopped their game dead.",
+                        "The children stopped their game dead and listened.",
                         "\"What's that noise?\"",
                         "\"It sounds like the best fun!\"",
-                        "And one after another they went running to the square."
+                        "One after another they went running to the square."
                     ]
                 },
                 {
@@ -730,12 +721,12 @@ const EN = {
                         "The line grew longer and longer,",
                         "until it was every child in the town.",
                         "Some had run out barefoot.",
-                        "But one child came along behind. He was lame, and had to work hard on his crutch."
+                        "But one child fell behind. He was lame, and had to work hard on his crutch."
                     ],
                     right: [
-                        "\"Wait for me! Wait!\"",
+                        "\"Wait for me! Wait!\" he called.",
                         "But nobody heard him. Every one of them was listening to the pipe.",
-                        "And the line went straight out of the town.",
+                        "The line went straight out of the town.",
                         "Just then the church bell rang,",
                         "and the grown-ups began to come outside."
                     ]
@@ -752,7 +743,7 @@ const EN = {
                     left: [
                         "The grown-ups stood frozen where they were. The streets were empty.",
                         "\"Where have our children gone?\"",
-                        "\"There — over that hill!\"",
+                        "Someone pointed. \"There — over that hill!\"",
                         "Everyone began to run at once.",
                         "But the children were already far away."
                     ],
@@ -760,7 +751,7 @@ const EN = {
                         "The line had come to the foot of a hill, green all over with grass.",
                         "The man stopped playing,",
                         "and the children stopped walking too.",
-                        "\"Where is this?\"",
+                        "\"Where is this?\" asked a child.",
                         "\"A little further and you will know.\""
                     ]
                 },
@@ -768,16 +759,15 @@ const EN = {
                     art: '06-mountain-2.webp',
                     emoji: '⛰️',
                     left: [
-                        "And then a sound came from behind them.",
+                        "Then a sound came from behind them.",
                         "Tap. Tap.",
                         "It was a crutch.",
                         "The child who had fallen behind had caught up at last, out of breath.",
-                        "\"Please… take me too.\"",
-                        "The man looked at him quietly."
+                        "\"Please… take me too.\""
                     ],
                     right: [
-                        "He looked down at him for a long while.",
-                        "And then he slowly bent his knees.",
+                        "The man looked down at him for a long while.",
+                        "Then he slowly bent his knees.",
                         "\"You came all this way on your own.\"",
                         "\"Yes. Everybody else had gone.\"",
                         "Something changed in the man's face,",
@@ -794,39 +784,29 @@ const EN = {
                     art: '07-return.webp',
                     emoji: '🔔',
                     left: [
-                        "\"I came for my payment.\"",
-                        "\"The grown-ups broke their word.\"",
-                        "The child tilted his head.",
-                        "\"So you were going to take us away?\"",
-                        "\"That was my intention.\"",
-                        "The man let out a long breath."
+                        "The man said to the boy, \"I came for my payment. The grown-ups broke their word.\"",
+                        "The child tilted his head. \"So you were going to take us away?\"",
+                        "The man let out a long breath. \"That was my intention.\""
                     ],
                     right: [
-                        "\"But watching you come along behind…\"",
-                        "\"I wonder what I thought I was doing.\"",
-                        "And just then people came running from far off.",
-                        "The mayor was at the front,",
-                        "so out of breath he could hardly speak.",
-                        "\"Please — please give them back!\""
+                        "\"But watching you come all this way… I wonder what I thought I was doing.\"",
+                        "Just then people came running from far off.",
+                        "The mayor was at the front, so out of breath he could hardly speak.",
+                        "He fell on his knees. \"Please — please give the children back!\""
                     ]
                 },
                 {
                     art: '07-return-2.webp',
                     emoji: '🔔',
                     left: [
-                        "Without a word the man held out a sack.",
-                        "The mayor counted a thousand gold pieces into it then and there,",
-                        "with his hands shaking.",
-                        "\"If only we had done this at the start.\"",
-                        "The man took the sack and swung it over his shoulder.",
-                        "And then he sent every child home."
+                        "The man held out a sack. The mayor had brought the gold, and counted a thousand pieces into it then and there.",
+                        "\"We should have paid at first,\" he sighed.",
+                        "The man swung the sack over his shoulder and sent the children home."
                     ],
                     right: [
-                        "In a moment the hillside was one great flood of crying.",
-                        "The man turned quietly away.",
-                        "And at the end of the road he looked back once.",
-                        "The child with the crutch was waving to him.",
-                        "And the man raised his hand as well."
+                        "Parents and children hugged, and the hillside was one great flood of crying.",
+                        "The man quietly turned away. At the end of the road he looked back once.",
+                        "The boy with the crutch was waving, and the man raised his hand too."
                     ]
                 }
             ]
@@ -958,7 +938,7 @@ const EN = {
             { word: 'keep a feast', meaning: '잔치를 벌이다', sentence: 'The town kept a feast until late.' }
         ],
         '05-children.webp': [
-            { word: 'bounce', meaning: '통통 튀다', sentence: 'It went bouncing off the walls.' },
+            { word: 'bounce', meaning: '통통 튀다', sentence: "The ball went bouncing off the walls." },
             { word: 'merry', meaning: '신나는', sentence: 'It was a bright, merry tune.' },
             { word: 'tune', meaning: '가락', sentence: 'It was a bright, merry tune.' },
             { word: 'dead', meaning: '뚝', sentence: 'The children stopped their game dead.' }
@@ -976,7 +956,7 @@ const EN = {
             { word: 'further', meaning: '더 멀리', sentence: 'A little further and you will know.' }
         ],
         '06-mountain-2.webp': [
-            { word: 'catch up', meaning: '따라잡다', sentence: 'The child had caught up at last.' },
+            { word: 'catch up', meaning: '따라잡다', sentence: "The child had caught up at last." },
             { word: 'out of breath', meaning: '숨이 찬', sentence: 'He caught up at last, out of breath.' },
             { word: 'bend one’s knees', meaning: '무릎을 굽히다', sentence: 'He slowly bent his knees.' },
             { word: 'lower', meaning: '내리다', sentence: 'And he lowered the pipe.' }
@@ -989,8 +969,8 @@ const EN = {
         ],
         '07-return-2.webp': [
             { word: 'sack', meaning: '자루', sentence: 'The man held out a sack.' },
-            { word: 'then and there', meaning: '그 자리에서', sentence: 'The mayor counted it then and there.' },
-            { word: 'swing over', meaning: '둘러메다', sentence: 'He swung it over his shoulder.' },
+            { word: 'then and there', meaning: '그 자리에서', sentence: "He counted a thousand pieces into it then and there." },
+            { word: 'swing over', meaning: '둘러메다', sentence: "The man swung the sack over his shoulder." },
             { word: 'flood', meaning: '바다, 홍수', sentence: 'The hillside was one great flood of crying.' },
             { word: 'look back', meaning: '돌아보다', sentence: 'He looked back once.' }
         ],

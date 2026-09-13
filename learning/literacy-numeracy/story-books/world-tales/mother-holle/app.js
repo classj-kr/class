@@ -564,21 +564,17 @@ const EN = {
                     art: '01-well.webp',
                     emoji: '🧵',
                     left: [
-                        "Before the sun was up there was the sound of a spinning wheel at the well.",
+                        "Before the sun was up, there was the sound of a spinning wheel at the well.",
                         "A girl was spinning thread there.",
-                        "There were two daughters in that house, and the work was always hers.",
-                        "One was the woman's own daughter.",
-                        "The other was the daughter of her sister, who had died.",
-                        "And she felt very differently about the two of them."
+                        "The girl's father had died, and she lived with her stepmother.",
+                        "Her stepmother had a daughter of her own.",
+                        "And the stepmother treated the two girls very differently."
                     ],
                     right: [
                         "Her own daughter could play all day and nobody minded.",
-                        "The other girl worked from before dawn until night —",
-                        "fetching the water, cooking the meals, sweeping the yard.",
-                        "The next job was waiting before the breakfast things were cleared.",
-                        "And after all that she had to sit at the well and spin.",
-                        "Her fingertips cracked and still she could not rest.",
-                        "And she never once complained about it."
+                        "But this girl worked from dawn until night, fetching the water, cooking the meals, sweeping the yard.",
+                        "After all that, she had to sit at the well and spin.",
+                        "Her fingertips cracked, but she never once complained."
                     ]
                 },
                 {
@@ -586,19 +582,16 @@ const EN = {
                     emoji: '🧵',
                     left: [
                         "That day too she was spinning at the well.",
-                        "After a long while her fingers began to hurt,",
-                        "and she saw blood on the spindle.",
-                        "There were red marks even on the thread.",
+                        "After a long while her fingertips cracked and bled.",
+                        "There was red blood on the spindle.",
                         "She dipped it in the well water to wash it off.",
-                        "And her hand slipped."
+                        "But her hand slipped."
                     ],
                     right: [
-                        "The spindle went straight down into the well.",
-                        "\"Oh no — it's gone in!\"",
-                        "She looked down into the well, hopping from foot to foot.",
-                        "Then she ran to her stepmother and told her.",
-                        "Her face had gone white.",
-                        "That spindle had been in the house a long time."
+                        "The spindle went straight down into the well!",
+                        "She looked into the well, hopping from foot to foot. \"Oh no — it's gone in!\"",
+                        "That spindle had been in the house a long time.",
+                        "Her face had gone white. She ran to her stepmother and told her."
                     ]
                 }
             ]
@@ -620,34 +613,27 @@ const EN = {
                     ],
                     right: [
                         "She looked down into the well for a long time.",
-                        "It was so deep and dark that she could not see the bottom,",
-                        "and look as she might, there was no sign of the spindle.",
-                        "The girl shut her eyes tight,",
-                        "and jumped into the well.",
-                        "Everything went black,",
-                        "and the wind roared in her ears."
+                        "It was so deep and dark that she could not see the bottom.",
+                        "Look as she might, there was no sign of the spindle.",
+                        "The girl shut her eyes tight and jumped into the well.",
+                        "Everything went black, and the wind roared in her ears."
                     ]
                 },
                 {
                     art: '02-fall-2.webp',
                     emoji: '🕳️',
                     left: [
-                        "Down and down she fell.",
-                        "She fell like that for a long while.",
+                        "Down and down she fell, for a long while.",
                         "And oddly enough she was not frightened.",
-                        "There was no feeling of going into water either.",
+                        "It did not feel like going into water either.",
                         "The girl opened her eyes carefully.",
-                        "Everything in front of her was bright."
+                        "Everything was bright. She was lying on the grass!"
                     ],
                     right: [
-                        "It was a wide meadow with the sun pouring down on it,",
-                        "and flowers all over the grass under her feet.",
-                        "There was no well anywhere.",
-                        "The sky and the ground were both strange to her.",
-                        "She brushed the grass off her clothes and got up",
-                        "and began to walk across the meadow.",
-                        "She had no idea which way to go,",
-                        "and a butterfly went fluttering ahead of her as though leading the way."
+                        "It was a wide meadow, with the sun pouring down and flowers all over the grass.",
+                        "There was no well anywhere. The sky and the ground were strange to her.",
+                        "She brushed the grass off her clothes, got up, and began to walk.",
+                        "A butterfly went fluttering ahead of her."
                     ]
                 }
             ]
@@ -663,9 +649,8 @@ const EN = {
                         "She had walked a good way when a voice came from somewhere.",
                         "\"Take me out! I shall burn to a cinder!\"",
                         "The girl stopped and looked about her.",
-                        "There was a baking oven beside the road,",
-                        "with smoke coming out through the crack of the door.",
-                        "She looked in, and it was full of bread."
+                        "Beside the road was an oven, with smoke coming out of its door.",
+                        "She looked in. It was full of bread, and the bread was calling out!"
                     ],
                     right: [
                         "The edges were already going brown.",
@@ -680,21 +665,18 @@ const EN = {
                     art: '03-bread-2.webp',
                     emoji: '🍞',
                     left: [
-                        "When the bread was all out the voice came again.",
-                        "\"Thank you. I was very nearly burnt black.\"",
-                        "The girl laid the loaves out neatly,",
-                        "blowing on her hands as she did it,",
-                        "and left space between them to cool.",
+                        "When the bread was all out, the loaves spoke together.",
+                        "\"Thank you. We were very nearly burnt black.\"",
+                        "The girl blew on her hands and laid the loaves out neatly,",
+                        "with space between them to cool.",
                         "The steam rose gently off the bread."
                     ],
                     right: [
                         "Then she dusted off her hands and walked on.",
-                        "A good smell came after her down the road,",
-                        "and the girl felt rather cheerful.",
-                        "Helping somebody had made her light.",
+                        "A good smell came after her down the road.",
+                        "Helping somebody had made her feel cheerful.",
                         "Strange as the place was, she was not frightened.",
-                        "The sun lay warm over the meadow,",
-                        "and the wind brought the smell of grass."
+                        "The sun lay warm over the meadow, and the wind brought the smell of grass."
                     ]
                 }
             ]
@@ -707,19 +689,16 @@ const EN = {
                     art: '04-apples.webp',
                     emoji: '🍎',
                     left: [
-                        "A little further on stood an apple tree,",
-                        "with its branches bent down almost to the ground.",
-                        "\"Please shake me.\"",
-                        "\"The fruit is so heavy my branches will break.\" The girl looked up toward the voice.",
-                        "Every branch was hung with red apples."
+                        "A little further on stood an apple tree. Its branches bent down almost to the ground.",
+                        "Then a voice came from over her head.",
+                        "\"Please shake me. The fruit is so heavy my branches will break.\"",
+                        "The girl looked up. Every branch was hung with red apples."
                     ],
                     right: [
-                        "And she went up to the tree,",
-                        "put both arms round the trunk and shook it hard.",
-                        "The apples came showering down,",
-                        "bouncing off her head and her shoulders.",
-                        "She shook until the tree was light again.",
-                        "Her arms ached and she did not stop.",
+                        "It was the tree asking! She went up to it.",
+                        "She put both arms round the trunk and shook hard.",
+                        "The apples came showering down, bouncing off her head and shoulders.",
+                        "She shook until the tree was light. Her arms ached, but she did not stop.",
                         "There were leaves all over her hair."
                     ]
                 },
@@ -731,15 +710,12 @@ const EN = {
                         "and piled them neatly on the grass.",
                         "She put the ones with worms in to one side.",
                         "The tree stretched out its branches as though it felt lighter,",
-                        "and the leaves stirred softly.",
-                        "\"That is better!\""
+                        "and the leaves stirred softly."
                     ],
                     right: [
-                        "\"Thank you. Go carefully on your way.\"",
-                        "The girl took one apple with her and walked on,",
-                        "and it was very sweet when she bit into it.",
-                        "Away across the meadow a small house came into sight,",
-                        "with smoke coming up from the chimney.",
+                        "\"That is better!\" said the tree. \"Thank you. Go carefully on your way.\"",
+                        "The tree gave her an apple, and she walked on. It was very sweet when she bit into it.",
+                        "Away across the meadow a small house came into sight, with smoke coming up from the chimney.",
                         "And she went toward it."
                     ]
                 }
@@ -754,39 +730,33 @@ const EN = {
                     emoji: '🛏️',
                     left: [
                         "At last the girl came to the little house.",
-                        "There was a very large old woman standing at the door,",
-                        "and the girl looked up to greet her.",
-                        "The old woman looked twice her size.",
-                        "And her teeth were so big that the girl started back.",
+                        "An old woman was standing at the door. She looked twice the girl's size.",
+                        "The girl looked up to greet her.",
+                        "But the old woman's teeth were so big that the girl started back.",
                         "The old woman laughed."
                     ],
                     right: [
-                        "It was not a frightening face at all.",
-                        "\"Don't be afraid. My name is Holle.\"",
-                        "\"Would you come and work for me?\"",
-                        "\"You only have to shake out the quilts well.\"",
-                        "\"When the feathers fly, it snows in the world below.\" The girl had not known that was how the snow came."
+                        "Her laughing face was not frightening at all.",
+                        "\"Don't be afraid. My name is Holle. Would you come and work for me?\"",
+                        "\"You only have to shake out the quilts well. When the feathers fly, it snows in the world below.\"",
+                        "The girl had never known that was how snow came."
                     ]
                 },
                 {
                     art: '05-holle-2.webp',
                     emoji: '🛏️',
                     left: [
-                        "The girl nodded.",
-                        "The house was clean and snug inside,",
-                        "and Mother Holle set out plenty of food for her",
-                        "and gave her a warm bed.",
-                        "The girl ate her fill for the first time in a long while,",
-                        "and fell asleep the moment she lay down.",
-                        "And from the next day she shook the quilts."
+                        "The girl nodded. The house was clean and snug inside.",
+                        "Mother Holle set out plenty of food for her.",
+                        "The girl ate her fill for the first time in a long while.",
+                        "She lay down in the warm bed and fell asleep at once.",
+                        "From the next day, she shook the quilts."
                     ],
                     right: [
-                        "She shook them hard at the window,",
-                        "and the feathers went flying like snowflakes.",
-                        "And every time, the snow came down thickly in the world below.",
-                        "The girl thought that was quite wonderful.",
-                        "She put her head out of the window and watched a long while,",
-                        "and far below the roofs were turning white."
+                        "She shook them hard at the window, and the feathers went flying like snowflakes.",
+                        "Every time, the snow came down thickly in the world below.",
+                        "The girl thought that was wonderful.",
+                        "She put her head out of the window and watched the roofs far below turn white."
                     ]
                 }
             ]
@@ -807,12 +777,11 @@ const EN = {
                         "\"You have a good pair of hands on you.\""
                     ],
                     right: [
-                        "And after a while something began to weigh on the girl.",
+                        "But after a while something began to weigh on the girl.",
                         "There was plenty to eat and the work was bearable.",
-                        "And still she kept thinking about home.",
-                        "She spoke up carefully.",
-                        "\"There is something I must say.\"",
-                        "\"I miss my home.\" Mother Holle stopped what she was doing."
+                        "Still, she kept thinking about home.",
+                        "She spoke up carefully. \"Mother Holle, I miss my home.\"",
+                        "Mother Holle stopped what she was doing."
                     ]
                 },
                 {
@@ -820,18 +789,16 @@ const EN = {
                     emoji: '✨',
                     left: [
                         "Mother Holle nodded.",
-                        "\"I thought as much.\"",
-                        "\"You have worked well, so you shall have your reward.\"",
+                        "\"I thought as much. You have worked well, so you shall have your reward.\"",
                         "She took the girl to a great door.",
-                        "\"Go through this door and you are home.\" The door swung slowly open."
+                        "\"Go through this door and you are home.\"",
+                        "The door swung slowly open."
                     ],
                     right: [
-                        "And the moment the girl passed through it,",
-                        "a shower of gold came down from above.",
+                        "The moment the girl passed through, a shower of gold came down from above.",
                         "The gold stuck to her from head to foot.",
-                        "\"And here is the spindle you lost.\"",
-                        "The girl stood at the well shining gold all over.",
-                        "It was the yard she knew."
+                        "Mother Holle handed her the spindle. \"And here is the spindle you lost.\"",
+                        "On the other side, the girl stood at the well, shining gold. It was her own yard."
                     ]
                 }
             ]
@@ -852,31 +819,27 @@ const EN = {
                     ],
                     right: [
                         "The lazy daughter sat down at the well.",
-                        "Spinning was too much bother,",
-                        "and she never touched the wheel at all.",
-                        "She pricked her finger on a thorn to get blood,",
-                        "smeared it on the spindle and dropped it in the well.",
-                        "Then she shut her eyes and jumped in after it.",
-                        "She was in a hurry for the gold."
+                        "Spinning was too much bother, so she never touched the wheel.",
+                        "She pricked her finger on a thorn and smeared the blood on the spindle, to make it look like work.",
+                        "Then she dropped it in the well and jumped in after it. She was in a hurry for the gold."
                     ]
                 },
                 {
                     art: '07-lazy-2.webp',
                     emoji: '😒',
                     left: [
-                        "Down in the meadow she came past the bread oven as well.",
+                        "She too opened her eyes in the meadow. On the road she came past the bread oven.",
                         "\"Take me out! I shall burn to a cinder!\"",
-                        "She held her nose and walked past.",
                         "There was a burnt smell coming out of the oven.",
-                        "\"Too hot. No thank you.\" And the bread burned black.",
-                        "A little further on she came to the apple tree."
+                        "She held her nose. \"Too hot. No thank you.\"",
+                        "She walked past, and the bread burned black."
                     ],
                     right: [
+                        "A little further on, the apple tree called to her.",
                         "\"Please shake me!\"",
-                        "And she did not even pretend to hear.",
-                        "\"Why should I shake it and tire my arms?\" And the apples stayed hanging where they were.",
-                        "She went off humming to herself,",
-                        "and the apple tree let its branches down again."
+                        "At first she did not even pretend to hear.",
+                        "Then she sniffed. \"Why should I shake it and tire my arms?\"",
+                        "She went off humming, and the apple tree let its branches down again."
                     ]
                 }
             ]
@@ -889,42 +852,33 @@ const EN = {
                     art: '08-ending.webp',
                     emoji: '🖤',
                     left: [
-                        "It was the same at Mother Holle's house.",
-                        "The first day she at least pretended to work hard,",
-                        "because she wanted the gold.",
-                        "And from the second day she slept late.",
-                        "She gave the quilt a few taps and left it,",
-                        "and a handful of feathers came out and no more.",
-                        "\"That will do.\"",
-                        "And down below the snow came and stopped and came again."
+                        "She came to Mother Holle's house too. Wanting the gold, she said yes to the work at once.",
+                        "The first day she pretended to work hard.",
+                        "But from the second day she slept late.",
+                        "She gave the quilt a few taps, and a handful of feathers came out.",
+                        "She yawned. \"That will do.\""
                     ],
                     right: [
+                        "Down below, the snow came and stopped and came again.",
                         "The dishes piled up and dust settled on the floor.",
-                        "Mother Holle did not say a word about it.",
-                        "The daughter sat at the window yawning even in the daytime.",
-                        "Mother Holle simply watched, quietly, for a few days.",
-                        "And then one day she took her to the door.",
-                        "The daughter was delighted — here it came at last."
+                        "Mother Holle did not say a word. She simply watched for a few days.",
+                        "Then one day she took the daughter to the door.",
+                        "The daughter was delighted. Here it came at last!"
                     ]
                 },
                 {
                     art: '08-ending-2.webp',
                     emoji: '🖤',
                     left: [
-                        "She stood in front of the door in high spirits.",
-                        "Now, she thought, it would be the gold's turn.",
-                        "Mother Holle said quietly,",
-                        "\"You shall have exactly what you have worked for.\"",
-                        "The daughter went straight through,",
-                        "with both hands held out wide in front of her."
+                        "She stood at the door in high spirits. Now the gold would come, she thought.",
+                        "Mother Holle said quietly, \"You shall have exactly what you have worked for.\"",
+                        "The daughter held out both hands and hurried through."
                     ],
                     right: [
-                        "And what came down was not gold.",
-                        "Black pitch came pouring over her head,",
-                        "and she stood at the well black from head to foot.",
-                        "And no amount of washing would ever get the pitch off.",
-                        "The cockerel by the house saw the state of her and crowed.",
-                        "\"Cock-a-doodle-doo, our dirty girl is home!\""
+                        "But it was not gold. Black pitch poured over her head.",
+                        "She stood at the well, black from head to foot.",
+                        "The cockerel saw the state of her and crowed, \"Our dirty girl is home!\"",
+                        "No amount of washing ever got the pitch off."
                     ]
                 }
             ]
@@ -986,13 +940,13 @@ const EN = {
                 art: 'end.webp',
                 left: [
                     "When Mother Holle shakes out her quilt, they say, it snows in the world below. That is what people in Germany used to say about snow.",
-                    "The elder girl jumps in after a spindle that fell down a well. She must have been frightened. She went to get back with her own hands what she had lost.",
+                    "The hard-working girl jumps in after the spindle that fell down the well. She must have been frightened. She wanted to get back what she had lost with her own hands.",
                     "The bread and the apple tree speak to her. Take me out, shake me down. And she stops what she is doing and does it.",
-                    "The younger girl hears the same words on the same road. And she walks straight past, because she is on her way to fetch some gold."
+                    "The lazy daughter hears the same words on the same road. But she walks straight past, because she is on her way to get gold."
                 ],
                 right: [
-                    "What Mother Holle was watching was not how well the quilts were shaken. It was what each of them had done on the way there.",
-                    "The younger girl wanted the gold. Why did she not get it?"
+                    "Mother Holle gave both girls the same work: shaking the quilts. What was different was how each of them did it.",
+                    "The lazy daughter wanted the gold. Why did she not get it?"
                 ]
             }
         ]
@@ -1009,10 +963,10 @@ const EN = {
             { word: 'spin', meaning: '실을 잣다', sentence: 'A girl was spinning thread there.' },
             { word: 'fetch', meaning: '길어 오다', sentence: 'Fetching the water, cooking the meals.' },
             { word: 'sweep', meaning: '쓸다', sentence: 'Sweeping the yard.' },
-            { word: 'complain', meaning: '군소리하다', sentence: 'She never once complained about it.' }
+            { word: 'complain', meaning: '군소리하다', sentence: 'She never once complained.' }
         ],
         '01-well-2.webp': [
-            { word: 'spindle', meaning: '물레가락', sentence: 'She saw blood on the spindle.' },
+            { word: 'spindle', meaning: '물레가락', sentence: 'There was red blood on the spindle.' },
             { word: 'dip', meaning: '담그다', sentence: 'She dipped it in the well water.' },
             { word: 'slip', meaning: '미끄러지다', sentence: 'And her hand slipped.' },
             { word: 'go white', meaning: '새하얗게 질리다', sentence: 'Her face had gone white.' }
@@ -1032,23 +986,23 @@ const EN = {
         ],
         '03-bread.webp': [
             { word: 'cinder', meaning: '숯덩이', sentence: 'I shall burn to a cinder!' },
-            { word: 'oven', meaning: '가마', sentence: 'There was a baking oven beside the road.' },
+            { word: 'oven', meaning: '가마', sentence: 'Beside the road was an oven.' },
             { word: 'loaf', meaning: '빵 덩이', sentence: 'She lifted the loaves out one by one.' },
             { word: 'paddle', meaning: '주걱', sentence: 'The girl found a paddle.' },
             { word: 'billow', meaning: '확 올라오다', sentence: 'Hot steam came billowing out.' }
         ],
         '03-bread-2.webp': [
-            { word: 'burnt black', meaning: '새까맣게 탄', sentence: 'I was very nearly burnt black.' },
-            { word: 'blow on', meaning: '호호 불다', sentence: 'Blowing on her hands as she did it.' },
+            { word: 'burnt black', meaning: '새까맣게 탄', sentence: 'We were very nearly burnt black.' },
+            { word: 'blow on', meaning: '호호 불다', sentence: 'The girl blew on her hands.' },
             { word: 'dust off', meaning: '툭툭 털다', sentence: 'She dusted off her hands.' },
-            { word: 'cheerful', meaning: '기분 좋은', sentence: 'The girl felt rather cheerful.' }
+            { word: 'cheerful', meaning: '기분 좋은', sentence: 'Helping somebody had made her feel cheerful.' }
         ],
         '04-apples.webp': [
             { word: 'bend down', meaning: '늘어지다', sentence: 'Its branches bent down almost to the ground.' },
             { word: 'shake', meaning: '흔들다', sentence: 'Please shake me.' },
             { word: 'trunk', meaning: '줄기', sentence: 'She put both arms round the trunk.' },
             { word: 'shower down', meaning: '우수수 떨어지다', sentence: 'The apples came showering down.' },
-            { word: 'bounce off', meaning: '부딪혀 튀다', sentence: 'Bouncing off her head and her shoulders.' }
+            { word: 'bounce off', meaning: '부딪혀 튀다', sentence: 'Bouncing off her head and shoulders.' }
         ],
         '04-apples-2.webp': [
             { word: 'pile', meaning: '쌓다', sentence: 'And piled them neatly on the grass.' },
@@ -1059,7 +1013,7 @@ const EN = {
         ],
         '05-holle.webp': [
             { word: 'greet', meaning: '인사하다', sentence: 'The girl looked up to greet her.' },
-            { word: 'twice one’s size', meaning: '두 배는 큰', sentence: 'The old woman looked twice her size.' },
+            { word: 'twice one’s size', meaning: '두 배는 큰', sentence: 'She looked twice the girl’s size.' },
             { word: 'start back', meaning: '흠칫 물러서다', sentence: 'The girl started back.' },
             { word: 'quilt', meaning: '이불', sentence: 'You only have to shake out the quilts.' },
             { word: 'feather', meaning: '깃털', sentence: 'When the feathers fly, it snows below.' }
@@ -1087,27 +1041,27 @@ const EN = {
             { word: 'light up', meaning: '번쩍하다', sentence: "The stepmother's eyes lit up." },
             { word: 'bother', meaning: '귀찮은 일', sentence: 'Spinning was too much bother.' },
             { word: 'prick', meaning: '찌르다', sentence: 'She pricked her finger on a thorn.' },
-            { word: 'smear', meaning: '묻히다', sentence: 'Smeared it on the spindle.' }
+            { word: 'smear', meaning: '묻히다', sentence: 'Smeared the blood on the spindle.' }
         ],
         '07-lazy-2.webp': [
-            { word: 'hold one’s nose', meaning: '코를 막다', sentence: 'She held her nose and walked past.' },
+            { word: 'hold one’s nose', meaning: '코를 막다', sentence: 'She held her nose.' },
             { word: 'burnt smell', meaning: '매캐한 냄새', sentence: 'There was a burnt smell coming out.' },
             { word: 'pretend to hear', meaning: '들은 척하다', sentence: 'She did not even pretend to hear.' },
             { word: 'tire', meaning: '아프게 하다, 지치게 하다', sentence: 'Why should I shake it and tire my arms?' },
             { word: 'let down', meaning: '늘어뜨리다', sentence: 'The apple tree let its branches down again.' }
         ],
         '08-ending.webp': [
-            { word: 'pretend', meaning: '~인 척하다', sentence: 'She at least pretended to work hard.' },
+            { word: 'pretend', meaning: '~인 척하다', sentence: 'She pretended to work hard.' },
             { word: 'sleep late', meaning: '늦잠 자다', sentence: 'From the second day she slept late.' },
             { word: 'tap', meaning: '툭툭 치다', sentence: 'She gave the quilt a few taps.' },
             { word: 'pile up', meaning: '쌓이다', sentence: 'The dishes piled up.' },
-            { word: 'yawn', meaning: '하품하다', sentence: 'She sat at the window yawning.' }
+            { word: 'yawn', meaning: '하품하다', sentence: 'She yawned.' }
         ],
         '08-ending-2.webp': [
-            { word: 'in high spirits', meaning: '신이 나서', sentence: 'She stood in front of the door in high spirits.' },
+            { word: 'in high spirits', meaning: '신이 나서', sentence: 'She stood at the door in high spirits.' },
             { word: 'work for', meaning: '일해서 얻다', sentence: 'Exactly what you have worked for.' },
-            { word: 'pitch', meaning: '송진', sentence: 'Black pitch came pouring over her head.' },
-            { word: 'no amount of', meaning: '아무리 ~해도', sentence: 'No amount of washing would get the pitch off.' },
+            { word: 'pitch', meaning: '송진', sentence: 'Black pitch poured over her head.' },
+            { word: 'no amount of', meaning: '아무리 ~해도', sentence: 'No amount of washing ever got the pitch off.' },
             { word: 'the state of', meaning: '~의 꼴', sentence: 'The cockerel saw the state of her.' }
         ],
         'end.webp': [

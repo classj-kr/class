@@ -549,27 +549,20 @@ const EN = {
                     emoji: '🌷',
                     left: [
                         "There was a woman who had no child. She lived alone in a big house, and an empty cradle still stood in the corner of one room.",
-                        "One day she went to see a magician.",
-                        "\"I don't mind how small.\"",
-                        "\"If only I had a child.\""
+                        "One day she went to see a magician. \"If only I had a child,\" she said. \"I don't mind how small.\""
                     ],
                     right: [
-                        "The magician said nothing, and handed her a single barley seed.",
-                        "She planted it in a pot and watered it.",
+                        "The magician said nothing, and handed her a single barley seed. She planted it in a pot and watered it.",
                         "By the next morning a shoot had come up.",
-                        "In a few days there was a great bud on it, shaped like a tulip.",
-                        "The woman kissed the flower, and the petals opened wide."
+                        "In a few days there was a great bud on it, shaped like a tulip. The woman kissed the flower, and the petals opened wide."
                     ]
                 },
                 {
                     art: '01-flower-2.webp',
                     emoji: '🌷',
                     left: [
-                        "Inside the flower sat a child, no taller than a thumb.",
-                        "\"Oh my goodness!\"",
-                        "The woman gave the child a name.",
-                        "\"You shall be Thumbelina.\"",
-                        "And the child smiled up at her."
+                        "Inside the flower sat a child, no taller than a thumb. The woman was amazed. \"Oh my goodness!\"",
+                        "She gave the child a name. \"You shall be Thumbelina.\" And the child smiled up at her."
                     ],
                     right: [
                         "The woman made her a bed out of a walnut shell, with a rose petal for a blanket and a violet petal for a pillow.",
@@ -587,18 +580,13 @@ const EN = {
                     art: '02-toad.webp',
                     emoji: '🐸',
                     left: [
-                        "One night the window had been left a little open, and a toad came hopping in through the gap — a great damp toad.",
-                        "She looked into the walnut bed.",
-                        "\"Just the wife for my son.\"",
-                        "And she carried Thumbelina out, bed and all."
+                        "One night the window was a little open. A toad came hopping in through the gap. It was a great damp toad.",
+                        "She looked into the walnut bed. \"Just the wife for my son.\"",
+                        "And she carried Thumbelina out through the window, bed and all."
                     ],
                     right: [
-                        "Thumbelina slept through the whole thing and knew nothing about it.",
-                        "The toad went to her mud house by the brook.",
-                        "\"Look here, my boy.\"",
-                        "The son toad sat with his mouth hanging open.",
-                        "\"Croak. Croak.\"",
-                        "It was all he could say."
+                        "Thumbelina slept on and knew nothing. The toad took her to her mud house by the brook and called her son. \"Look here, my boy.\"",
+                        "The son toad sat with his mouth hanging open. \"Croak. Croak.\" It was all he could say."
                     ]
                 },
                 {
@@ -606,16 +594,12 @@ const EN = {
                     emoji: '🐸',
                     left: [
                         "The toad picked out a broad leaf floating in the middle of the brook and set Thumbelina down on it.",
-                        "\"She can't run off from there.\"",
-                        "And away she went to get the house ready. Thumbelina was left alone on the leaf."
+                        "\"She can't run off from there.\" Then the toad went home to get ready for the wedding. Thumbelina was left alone on the leaf."
                     ],
                     right: [
-                        "By and by the morning sun came up.",
-                        "She opened her eyes, and there was water on every side of her.",
-                        "Thumbelina burst into tears.",
-                        "\"Mother, I want to go home.\"",
-                        "The tears fell onto the water.",
-                        "And just then something moved down below."
+                        "By and by the morning sun came up. Thumbelina opened her eyes, and there was water on every side of her.",
+                        "She burst into tears. \"Mother, I want to go home.\" Her tears fell onto the water.",
+                        "Just then something moved down below."
                     ]
                 }
             ]
@@ -628,32 +612,26 @@ const EN = {
                     art: '03-fish.webp',
                     emoji: '🐟',
                     left: [
-                        "Little fish came gathering round, one after another, all looking up at her.",
-                        "They had heard her crying from under the water.",
-                        "\"Let's help her.\"",
+                        "Little fish came gathering round, one after another. They had heard her crying from under the water.",
+                        "\"Let's help her,\" they whispered to each other.",
                         "The fish took hold of the stem of the leaf and began to gnaw at it with their small teeth."
                     ],
                     right: [
-                        "Nibble, nibble.",
-                        "After a long while the stem gave way, and the leaf began drifting slowly off.",
-                        "Thumbelina clapped her hands.",
-                        "\"Thank you, thank you!\"",
-                        "The brook carried the leaf along, and the toad's house fell further and further behind."
+                        "Nibble, nibble. After a long while the stem gave way, and the leaf began drifting slowly off.",
+                        "Thumbelina clapped her hands. \"Thank you, thank you!\"",
+                        "The leaf floated on, and the toad's house fell further and further behind."
                     ]
                 },
                 {
                     art: '03-fish-2.webp',
                     emoji: '🦋',
                     left: [
-                        "Then a white butterfly came flying and settled lightly on the leaf.",
-                        "Thumbelina undid her sash and tied one end of it to the butterfly.",
-                        "\"Will you come along with me?\"",
-                        "The butterfly waved its feelers, and opened its wings wide."
+                        "Then a white butterfly came flying and settled lightly on the leaf. \"Butterfly, will you come along with me?\"",
+                        "The butterfly waved its feelers. Thumbelina undid her sash. She tied one end to the leaf and the other end to the butterfly."
                     ],
                     right: [
-                        "The leaf went along much faster now, and the water shot past on either side.",
-                        "The brook grew wider and wider, and green meadows opened out on both banks.",
-                        "It was all new to Thumbelina — frightening and wonderful at once.",
+                        "The butterfly opened its wings and flew ahead, and the leaf went much faster. The water shot past on either side.",
+                        "The brook grew wider, and green meadows opened out on both banks. It was all new to Thumbelina.",
                         "As the sun climbed, the water glittered all over."
                     ]
                 }
@@ -667,73 +645,58 @@ const EN = {
                     art: '04-summer.webp',
                     emoji: '🪲',
                     left: [
-                        "Then a great shadow came over her. A beetle had come dropping down like an arrow.",
-                        "He snatched Thumbelina up and carried her into a tree.",
-                        "\"What a pretty little thing.\"",
-                        "And he called his friends over to show her off. The beetles came crowding in."
+                        "Suddenly a great shadow came over her. A beetle had come dropping down like an arrow. He snatched Thumbelina up and carried her into a tree.",
+                        "\"What a pretty little thing,\" he said, and he called his friends over to show her off."
                     ],
                     right: [
-                        "But every one of them shook his head.",
-                        "\"She has only two legs.\"",
-                        "\"And no feelers at all.\"",
-                        "\"She really is ugly.\"",
-                        "Hearing that, the beetle went and put Thumbelina down in the grass again."
+                        "The beetles came crowding in. But every one of them shook his head. \"She has only two legs. And no feelers at all. She really is ugly.\"",
+                        "Hearing that, the beetle changed his mind. He put Thumbelina down in the grass again and flew away."
                     ]
                 },
                 {
                     art: '04-summer-2.webp',
                     emoji: '🪲',
                     left: [
-                        "Thumbelina was left alone in the wide meadow, and she stayed there by herself all that summer.",
-                        "She wove a bed out of grass blades and got honey from the flowers. In the morning she drank the dew off a leaf.",
-                        "The butterflies and the birds soon became her friends, and in the afternoons she ran about catching dandelion seeds."
+                        "Thumbelina was left alone in the wide meadow, and she stayed there by herself all summer.",
+                        "She wove a bed out of grass and got honey from the flowers. In the morning she drank the dew off a leaf.",
+                        "The butterflies and birds became her friends. She ran about catching dandelion seeds."
                     ],
                     right: [
-                        "But autumn came soon enough. One by one the flowers withered and the birds went away.",
+                        "But autumn soon came. One by one the flowers withered, and the birds flew away to warm places.",
                         "Then the first snow fell, and Thumbelina pulled a dry leaf over herself.",
-                        "A single snowflake was bigger than she was.",
-                        "She was so cold that she could hardly take a step."
+                        "A single snowflake was bigger than she was. She was so cold that she could hardly take a step."
                     ]
                 }
             ]
         },
         {
             num: 5,
-            title: "Chapter 5 · The Field Mouse's House",
+            title: 'Chapter 5 · The Field Mouse\'s House',
             beats: [
                 {
                     art: '05-mouse.webp',
                     emoji: '🐀',
                     left: [
-                        "Wandering the fields, Thumbelina found a small burrow. She knocked with a shaking hand.",
-                        "\"Excuse me…\"",
-                        "A field mouse opened the door.",
-                        "\"Goodness, you poor little thing!\"",
-                        "\"Come in, come in.\""
+                        "Wandering the fields, Thumbelina found a small burrow. She knocked with a shaking hand. \"Excuse me…\"",
+                        "A field mouse opened the door. \"Goodness, you poor little thing! Come in, come in.\""
                     ],
                     right: [
-                        "Inside the burrow it was snug and warm, with grain stacked up to the ceiling. Thumbelina ate her fill for the first time in a long while.",
-                        "\"You can help me about the house.\"",
-                        "\"And tell me a story in the evenings.\"",
-                        "Thumbelina agreed. She had somewhere to spend the winter."
+                        "Inside the burrow it was snug and warm, with grain stacked up to the ceiling. Thumbelina ate her fill.",
+                        "\"Stay here for the winter,\" said the field mouse. \"Help me about the house, and tell me stories in the evenings.\"",
+                        "Thumbelina agreed. Now she had a place for the winter."
                     ]
                 },
                 {
                     art: '05-mouse-2.webp',
                     emoji: '🐀',
                     left: [
-                        "One day the field mouse spoke up, quite excited.",
-                        "\"My neighbour is coming to call.\"",
-                        "\"A very rich gentleman — the mole.\"",
-                        "In due course the mole arrived, dressed all in black. His eyes were so weak that he walked with a stick.",
-                        "And more than anything, he hated the sunlight."
+                        "One day the field mouse said, quite excited, \"My neighbour the mole is coming to call. He is a very rich gentleman.\"",
+                        "In due course the mole arrived, dressed all in black. His eyes were so weak that he walked with a stick. And more than anything, he hated sunlight."
                     ],
                     right: [
-                        "\"Underground is best.\"",
-                        "\"Sun, flowers — no use at all.\"",
-                        "The field mouse asked Thumbelina to sing, and the mole liked her singing very much indeed.",
-                        "\"I should like to marry this child.\"",
-                        "Thumbelina felt a weight settle on her chest."
+                        "As soon as he sat down, the mole began to boast. \"Underground is best. Sun and flowers are no use at all.\"",
+                        "The field mouse asked Thumbelina to sing, and the mole liked her singing very much. \"I should like to marry this child.\"",
+                        "Thumbelina's heart sank."
                     ]
                 }
             ]
@@ -746,75 +709,58 @@ const EN = {
                     art: '06-swallow.webp',
                     emoji: '🐦',
                     left: [
-                        "A few days later the mole showed them his own tunnels — long dark passages going on and on, and the smell of earth in her nose.",
-                        "Then her foot caught on something.",
-                        "A bird was lying there on the floor.",
-                        "\"A swallow. Dead, I suppose.\""
+                        "A few days later the mole showed them his own tunnels. Long dark passages went on and on, and the air smelled of earth.",
+                        "Then Thumbelina's foot caught on something. A bird was lying on the floor. \"A swallow,\" said the mole. \"Dead, I suppose.\""
                     ],
                     right: [
-                        "The mole gave it a shove with his foot.",
-                        "Thumbelina stopped where she stood. Her chest ached so that she could not bear it.",
-                        "She thought of the birds she had played with all summer.",
-                        "That night she went back to the tunnel in secret, carrying an armful of hay, and covered the swallow over.",
-                        "Then she laid her ear gently against its chest."
+                        "The mole gave it a shove with his foot. Thumbelina stopped. Her heart ached. She thought of the birds she had played with all summer.",
+                        "That night she went back to the tunnel in secret. She carried an armful of hay and covered the swallow.",
+                        "Then she laid her ear gently on its chest."
                     ]
                 },
                 {
                     art: '06-swallow-2.webp',
                     emoji: '🐦',
                     left: [
-                        "Thump. Thump.",
-                        "The heart was beating!",
-                        "\"He's alive!\"",
+                        "Thump, thump. The heart was beating! \"He's alive!\"",
                         "Thumbelina went back to that tunnel every day. She brought water to wet his beak and piled on more hay.",
-                        "And after many days the swallow opened his eyes."
+                        "After many days, the swallow opened his eyes."
                     ],
                     right: [
-                        "\"Thank you, little lady.\"",
-                        "\"I froze, and I fell.\"",
-                        "\"When spring comes I shall go away.\"",
-                        "\"Will you not come with me?\"",
-                        "Thumbelina shook her head.",
-                        "\"The field mouse has been good to me.\""
+                        "\"Thank you, little lady,\" said the swallow weakly. \"I froze in the cold, and I fell. When spring comes I shall fly away. Will you come with me?\"",
+                        "Thumbelina shook her head. \"The field mouse has been good to me.\""
                     ]
                 }
             ]
         },
         {
             num: 7,
-            title: "Chapter 7 · On the Swallow's Back",
+            title: 'Chapter 7 · On the Swallow\'s Back',
             beats: [
                 {
                     art: '07-flight.webp',
                     emoji: '☀️',
                     left: [
-                        "Before she knew it the winter was ending, and the wedding day had been set. Thumbelina's heart got heavier and heavier.",
-                        "Now she would live underground for the rest of her life, where there was no sun and no flowers.",
-                        "It seemed to her that if she sang, nobody would be there to hear it.",
-                        "\"If I could have just one more day.\""
+                        "When spring came, the swallow was strong again and flew out of the tunnel. Thumbelina waved goodbye.",
+                        "Meanwhile the field mouse had talked to the mole, and the wedding day had been set. Thumbelina would live underground for the rest of her life, with no sun and no flowers."
                     ],
                     right: [
-                        "At last it was the day before the wedding. Thumbelina went out of the burrow to look at the sun one last time.",
-                        "The light was pouring down over the barley field.",
-                        "And then a voice came from above her.",
-                        "\"Little lady!\"",
-                        "It was the swallow, strong again."
+                        "At last it was the day before the wedding. Thumbelina went out of the burrow to see the sun one last time. The light was pouring down over the barley field.",
+                        "Then a voice came from above her. \"Little lady!\" It was the swallow!"
                     ]
                 },
                 {
                     art: '07-flight-2.webp',
                     emoji: '☀️',
                     left: [
-                        "\"I am going to the warm countries now.\"",
-                        "\"This time, come with me.\"",
+                        "The swallow landed beside her. \"I am going to the warm countries now. This time, please come with me.\"",
                         "Thumbelina hesitated a moment. Then she slowly nodded.",
-                        "She climbed onto the swallow's back and tied herself on firmly with her sash."
+                        "She climbed onto the swallow's back and held on tight to his feathers."
                     ],
                     right: [
-                        "\"Hold tight!\"",
-                        "The swallow rose into the sky, and the meadow shrank to the size of her palm. They crossed forests and rivers and a wide sea.",
-                        "The wind grew warmer as they went, and the scent of flowers came to her.",
-                        "And at last, below them, an endless field of flowers opened out."
+                        "\"Hold tight!\" cried the swallow, and he rose into the sky.",
+                        "The meadow shrank to the size of her palm. They crossed forests and rivers and a wide sea. The wind grew warmer, and the scent of flowers came to her.",
+                        "At last, below them, an endless field of flowers opened out."
                     ]
                 }
             ]
@@ -827,33 +773,26 @@ const EN = {
                     art: '08-prince.webp',
                     emoji: '👑',
                     left: [
-                        "The swallow came down on a white pillar. Below it lay a great flower garden.",
-                        "\"Go and choose whichever flower you like.\"",
-                        "Thumbelina stepped lightly down into the garden and stopped in front of the largest white flower of all.",
+                        "The swallow came down on a white pillar. Below it lay a great flower garden. \"Choose a flower you would like to live in.\"",
+                        "Thumbelina stepped lightly down into the garden and stood in front of the largest white flower.",
                         "And then the flower moved."
                     ],
                     right: [
-                        "There was somebody among the petals — somebody exactly her own size.",
+                        "There was somebody among the petals, somebody just her own size.",
                         "He wore a small crown on his head, and on his back were dragonfly wings.",
-                        "The two of them looked at each other for a long while, and neither could find anything to say."
+                        "The two of them looked at each other for a long while, and neither could say a word."
                     ]
                 },
                 {
                     art: '08-prince-2.webp',
                     emoji: '👑',
                     left: [
-                        "\"I am the prince of this country.\"",
-                        "\"Our people live in the flowers, one to each.\"",
-                        "The prince held out his hand.",
-                        "\"Will you stay here with us?\"",
-                        "And heads came popping up out of flower after flower, everyone clapping to welcome her."
+                        "The prince held out his hand. \"I am the prince of this country. Our people live in the flowers. Will you stay here with us?\"",
+                        "Thumbelina nodded. Heads came popping up out of flower after flower, and everyone clapped."
                     ],
                     right: [
-                        "Somebody brought a pair of wings as a gift and fastened them to Thumbelina's back.",
-                        "And for the first time she flew up under her own power.",
-                        "The swallow watched her, well pleased.",
-                        "\"I shall be off now.\"",
-                        "And he flew away into the northern sky."
+                        "Somebody fastened a pair of wings to her back. For the first time she flew up under her own power.",
+                        "The swallow watched, well pleased. \"I shall be off now.\" And he flew away into the northern sky."
                     ]
                 }
             ]
@@ -921,7 +860,7 @@ const EN = {
                 ],
                 right: [
                     "And the one who carries her away at the end is that same swallow. What she did came back to her — though she had no way of knowing it would.",
-                    "With the wings the swallow gives her, she flies for the first time under her own power. Until then somebody had always carried her.",
+                    "With the wings she is given in the country of flowers, she flies for the first time under her own power. Until then somebody had always carried her.",
                     "Life with the mole would not have been all bad. Why do you think Thumbelina refused it?"
                 ]
             }
@@ -978,7 +917,7 @@ const EN = {
             { word: 'shake one’s head', meaning: '고개를 젓다', sentence: 'Every one of them shook his head.' }
         ],
         '04-summer-2.webp': [
-            { word: 'weave', meaning: '엮다', sentence: 'She wove a bed out of grass blades.' },
+            { word: 'weave', meaning: '엮다', sentence: 'She wove a bed out of grass.' },
             { word: 'dew', meaning: '이슬', sentence: 'She drank the dew off a leaf.' },
             { word: 'dandelion', meaning: '민들레', sentence: 'She ran about catching dandelion seeds.' },
             { word: 'wither', meaning: '시들다', sentence: 'One by one the flowers withered.' },
@@ -991,14 +930,14 @@ const EN = {
             { word: 'eat one’s fill', meaning: '배불리 먹다', sentence: 'Thumbelina ate her fill.' }
         ],
         '05-mouse-2.webp': [
-            { word: 'call', meaning: '놀러 오다', sentence: 'My neighbour is coming to call.' },
-            { word: 'mole', meaning: '두더지', sentence: 'A very rich gentleman — the mole.' },
+            { word: 'call', meaning: '놀러 오다', sentence: 'My neighbour the mole is coming to call.' },
+            { word: 'mole', meaning: '두더지', sentence: 'As soon as he sat down, the mole began to boast.' },
             { word: 'in due course', meaning: '이윽고', sentence: 'In due course the mole arrived.' },
             { word: 'weak', meaning: '어두운, 약한', sentence: 'His eyes were so weak that he walked with a stick.' }
         ],
         '06-swallow.webp': [
             { word: 'tunnel', meaning: '굴, 통로', sentence: 'The mole showed them his own tunnels.' },
-            { word: 'passage', meaning: '통로', sentence: 'Long dark passages going on and on.' },
+            { word: 'passage', meaning: '통로', sentence: 'Long dark passages went on and on.' },
             { word: 'swallow', meaning: '제비', sentence: 'A swallow. Dead, I suppose.' },
             { word: 'shove', meaning: '툭 밀다', sentence: 'The mole gave it a shove with his foot.' },
             { word: 'hay', meaning: '건초', sentence: 'She carried an armful of hay.' }
@@ -1016,7 +955,7 @@ const EN = {
         ],
         '07-flight-2.webp': [
             { word: 'hesitate', meaning: '망설이다', sentence: 'Thumbelina hesitated a moment.' },
-            { word: 'tie oneself on', meaning: '몸을 묶다', sentence: 'She tied herself on firmly with her sash.' },
+            { word: 'hold on tight', meaning: '꼭 붙잡다', sentence: 'She held on tight to his feathers.' },
             { word: 'shrink', meaning: '작아지다', sentence: 'The meadow shrank to the size of her palm.' },
             { word: 'scent', meaning: '향기', sentence: 'The scent of flowers came to her.' }
         ],
@@ -1028,7 +967,7 @@ const EN = {
         '08-prince-2.webp': [
             { word: 'hold out', meaning: '내밀다', sentence: 'The prince held out his hand.' },
             { word: 'pop up', meaning: '쏙 나오다', sentence: 'Heads came popping up out of flower after flower.' },
-            { word: 'fasten', meaning: '달아 주다', sentence: 'Somebody fastened them to her back.' },
+            { word: 'fasten', meaning: '달아 주다', sentence: 'Somebody fastened a pair of wings to her back.' },
             { word: 'under one’s own power', meaning: '스스로', sentence: 'For the first time she flew up under her own power.' }
         ],
         'end.webp': [

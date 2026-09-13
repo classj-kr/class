@@ -549,20 +549,13 @@ const EN = {
                     art: '01-spirit.webp',
                     emoji: '✨',
                     left: [
-                        "The woodcutter and his wife lived in a one-room cottage.",
-                        "It was a roof at the edge of the wood, and hardly more than that.",
-                        "They had almost nothing.",
-                        "And still the two of them got on well.",
-                        "Every morning the woodcutter took his axe into the wood,",
-                        "and his wife stayed home and cooked the porridge."
+                        "The woodcutter and his wife lived in a one-room cottage at the edge of the wood. It was hardly more than a roof.",
+                        "They had almost nothing, but the two of them got on well.",
+                        "Every morning the woodcutter took his axe into the wood, and his wife cooked porridge at home."
                     ],
                     right: [
-                        "That day too he went deep into the wood.",
-                        "A very large oak caught his eye.",
-                        "\"That one would keep us in firewood all winter.\"",
-                        "The woodcutter swung the axe up high.",
-                        "And just as he was about to bring it down,",
-                        "a small light flashed out from behind the tree.",
+                        "That day he went deep into the wood. A very large oak caught his eye. \"That would keep us in firewood all winter.\"",
+                        "He swung the axe up high. But just as he was about to bring it down, a small light flashed out from behind the tree.",
                         "The woodcutter froze with the axe in the air."
                     ]
                 },
@@ -570,22 +563,13 @@ const EN = {
                     art: '01-spirit-2.webp',
                     emoji: '✨',
                     left: [
-                        "Inside the light stood a very small person.",
-                        "Its hair was like leaves.",
-                        "It was the spirit of the wood.",
-                        "The spirit held out a hand and spoke.",
-                        "\"That tree is my house.\"",
-                        "\"Spare it, I beg you.\"",
-                        "The woodcutter was so startled that he put down the axe."
+                        "Inside the light stood a very small person with hair like leaves. It was the spirit of the wood.",
+                        "The spirit held out a hand. \"That tree is my house. Spare it, I beg you.\""
                     ],
                     right: [
-                        "\"I — I shall, then.\"",
-                        "\"There are other trees to cut.\"",
-                        "The woodcutter took a step back.",
-                        "His heart was thumping.",
-                        "He had never seen such a thing in his life.",
-                        "A green light shimmered about the spirit.",
-                        "\"I rub my eyes and it is still there.\""
+                        "The woodcutter was so startled that he put down the axe. \"Y-yes, of course. I can cut another tree.\"",
+                        "He took a step back. His heart was thumping. He had never seen such a thing in his life.",
+                        "He rubbed his eyes, but a green light still shimmered about the spirit."
                     ]
                 }
             ]
@@ -598,19 +582,12 @@ const EN = {
                     art: '02-wishes.webp',
                     emoji: '🌟',
                     left: [
-                        "The spirit smiled brightly.",
-                        "\"Thank you.\"",
-                        "\"In return I shall grant you three wishes.\"",
-                        "\"You have only to say what you want.\"",
-                        "The woodcutter could only blink.",
-                        "\"W-wishes, did you say?\""
+                        "The spirit smiled brightly. \"Thank you. In return I shall grant you three wishes. You have only to say what you want.\"",
+                        "The woodcutter could only blink. \"W-wishes, did you say?\""
                     ],
                     right: [
-                        "\"I did. But three, and no more.\"",
-                        "\"Think well before you spend them.\"",
-                        "The woodcutter opened his mouth to ask again.",
-                        "But the light was gone already.",
-                        "Only the sound of the wind was left in the wood.",
+                        "The spirit nodded. \"Yes. But only three, so think well before you spend them.\"",
+                        "The woodcutter opened his mouth to ask more. But the light was already gone. Only the sound of the wind was left.",
                         "The leaves stirred softly."
                     ]
                 },
@@ -618,20 +595,14 @@ const EN = {
                     art: '02-wishes-2.webp',
                     emoji: '🌟',
                     left: [
-                        "The woodcutter stood there a long while, staring.",
-                        "And then all at once he came to himself.",
-                        "\"Three wishes! Now here is a thing!\"",
-                        "\"I must tell my wife at once.\"",
-                        "He flung the axe down.",
-                        "And then he ran for home."
+                        "The woodcutter stood there a long while, staring. Then all at once he came to himself.",
+                        "\"Three wishes! I must tell my wife at once!\"",
+                        "He swung the axe onto his shoulder and ran for home."
                     ],
                     right: [
-                        "He did not feel the branches scratching his face.",
-                        "He was gasping for breath.",
-                        "He threw the cottage door open.",
-                        "\"Wife! Wife!\"",
-                        "His wife dropped her spoon in fright.",
-                        "\"Whatever is the matter?\""
+                        "He did not even feel the branches scratching his face. He was gasping for breath.",
+                        "He threw the cottage door open. \"Wife! Wife!\"",
+                        "His wife dropped her spoon in fright. \"Whatever is the matter?\""
                     ]
                 }
             ]
@@ -644,90 +615,62 @@ const EN = {
                     art: '03-table.webp',
                     emoji: '🍲',
                     left: [
-                        "The woodcutter told her, still panting.",
-                        "His wife heard him out and clapped her hands.",
-                        "\"Well I never! Such a thing to happen to us!\"",
-                        "\"Shall we ask for a big house?\"",
-                        "\"No — a lump of gold would be better!\"",
-                        "\"What good is a big house with no wood to heat it?\"",
-                        "\"Gold, then!\""
+                        "Still panting, the woodcutter told her everything. His wife heard him out and clapped her hands.",
+                        "\"Well I never! Shall we ask for a big house?\"",
+                        "The woodcutter shook his head. \"What good is a big house with no wood to heat it?\"",
+                        "\"Then a lump of gold!\" she said."
                     ],
                     right: [
-                        "\"And where would we carry gold? We should only be robbed.\"",
-                        "His wife walked up and down the room.",
-                        "The woodcutter waved a hand at her.",
-                        "\"Let us decide slowly.\"",
-                        "\"We shall think it over properly in the morning.\"",
-                        "So the two of them settled on supper first.",
-                        "Fill the stomach, and then think."
+                        "He waved the idea away. \"Where would we keep gold? We should only be robbed.\"",
+                        "His wife walked up and down the room, thinking. \"Let us not hurry,\" said the woodcutter. \"We can think it over in the morning.\"",
+                        "So they settled on supper first."
                     ]
                 },
                 {
                     art: '03-table-2.webp',
                     emoji: '🍲',
                     left: [
-                        "Two bowls of thin porridge went on the table.",
-                        "The same as every other day.",
-                        "The two of them sat down facing each other.",
-                        "The woodcutter picked up his spoon.",
-                        "The porridge was thin again today.",
-                        "And the woodcutter muttered without thinking."
+                        "Two bowls of thin porridge went on the table, the same as every day.",
+                        "The two of them sat down facing each other. The woodcutter picked up his spoon.",
+                        "The porridge was thin again today. The woodcutter muttered without thinking,"
                     ],
                     right: [
-                        "\"Ah, one string of sausage and I should want nothing more.\"",
-                        "And in that instant,",
-                        "there was a pop.",
-                        "A great sausage dropped onto the plate.",
-                        "The two of them froze with their spoons in the air.",
-                        "Steam curled up off it.",
-                        "The good smell filled the whole room."
+                        "\"Ah, if only I had a string of sausage!\"",
+                        "At that very moment, there was a pop! A great sausage dropped onto the table.",
+                        "The two of them froze with their spoons in the air. Steam curled up off it, and a good smell filled the room."
                     ]
                 }
             ]
         },
         {
             num: 4,
-            title: "Chapter 4 · The Wife's Fury",
+            title: 'Chapter 4 · The Wife\'s Fury',
             beats: [
                 {
                     art: '04-scold.webp',
                     emoji: '😤',
                     left: [
-                        "It was the wife who came to her senses first.",
-                        "Her face went red in a moment.",
-                        "\"Well I never!\"",
-                        "\"You spent a wish on a sausage?\"",
-                        "She sprang to her feet.",
-                        "\"With castles and gold to be had?\""
+                        "The wife came to her senses first. Her face went red in a moment. \"You spent a wish on a sausage?\"",
+                        "She sprang to her feet. \"When we could have had a big house? Or gold? A sausage! A sausage!\""
                     ],
                     right: [
-                        "\"A sausage? A sausage!\"",
-                        "The woodcutter went red too.",
-                        "\"It — it was a slip of the tongue.\"",
+                        "The woodcutter went red too. \"It was a slip of the tongue.\"",
                         "\"A slip? Whoever heard of such a slip!\"",
-                        "Her voice went higher and higher.",
-                        "The whole village might have heard it."
+                        "Her voice went higher and higher. The whole village might have heard it."
                     ]
                 },
                 {
                     art: '04-scold-2.webp',
                     emoji: '😤',
                     left: [
-                        "The woodcutter would not be beaten either.",
-                        "\"And what were you doing all the while!\"",
-                        "\"Sitting right there and saying nothing!\"",
-                        "His wife pointed a finger and gave it back to him.",
-                        "\"How was I to know!\"",
+                        "The woodcutter would not be beaten either. \"And what were you doing? You sat right there and said nothing!\"",
+                        "His wife pointed a finger and gave it back to him. \"How was I to know!\"",
                         "Their voices rang round the cottage."
                     ],
                     right: [
-                        "The pots rattled.",
-                        "The cat took fright and ran outside.",
-                        "And still his wife went on about the sausage.",
-                        "The woodcutter's ears were sore with it.",
-                        "His face grew harder and harder.",
-                        "There is an end to what a person can bear.",
-                        "His hands began to shake."
+                        "The pots rattled. The cat took fright and ran outside. And still his wife went on about the sausage.",
+                        "The woodcutter's ears were sore. There is an end to what a person can bear.",
+                        "His hands began to shake, and his ears rang."
                     ]
                 }
             ]
@@ -740,42 +683,27 @@ const EN = {
                     art: '05-nose.webp',
                     emoji: '🌭',
                     left: [
-                        "Still she would not stop.",
-                        "\"Sausage, sausage, sausage!\"",
-                        "\"I shall talk about that sausage all my life!\"",
-                        "The woodcutter's temper went straight to the top of his head.",
-                        "And he shouted out this:",
-                        "\"That wretched sausage!\""
+                        "Still she would not stop. \"Sausage, sausage, sausage! I shall talk about that sausage all my life!\"",
+                        "The woodcutter's temper went to the top of his head. He glared at the sausage on the table and shouted,"
                     ],
                     right: [
-                        "\"I wish it would stick to your nose!\"",
-                        "The words were hardly out before it happened.",
-                        "The sausage sprang up into the air.",
-                        "And it stuck fast to the end of her nose.",
-                        "The room went suddenly quiet.",
-                        "Neither of them was breathing."
+                        "\"That wretched sausage! I wish it would stick to your nose!\"",
+                        "The words were hardly out before it happened. The sausage sprang up into the air and stuck fast to the end of her nose.",
+                        "The room went suddenly quiet. Neither of them was breathing."
                     ]
                 },
                 {
                     art: '05-nose-2.webp',
                     emoji: '🌭',
                     left: [
-                        "His wife looked down her own face.",
-                        "The sausage was dangling off the end of her nose.",
-                        "\"Oh, look at the state of me!\"",
-                        "She took hold of it with both hands and pulled.",
-                        "It did not budge.",
-                        "The woodcutter came to help at once.",
-                        "The two of them strained together."
+                        "His wife looked down. The sausage was dangling off her nose. \"Oh, look at me!\"",
+                        "She took hold of it with both hands and pulled. It did not budge.",
+                        "The woodcutter ran to help, and the two of them strained together."
                     ],
                     right: [
-                        "She pulled backwards and he pulled forwards.",
-                        "A chair went over and a bowl rolled away.",
-                        "And the sausage stayed where it was.",
-                        "All it did was leave her nose red and swollen.",
-                        "And then his wife burst into tears.",
-                        "\"My nose! My nose!\"",
-                        "And the woodcutter did not know what to do."
+                        "She pulled backwards and he pulled forwards. A chair fell over and a bowl rolled away. But the sausage stayed where it was.",
+                        "Her nose only got red and swollen. His wife burst into tears. \"My nose! My nose!\"",
+                        "The woodcutter did not know what to do."
                     ]
                 }
             ]
@@ -788,41 +716,28 @@ const EN = {
                     art: '06-try.webp',
                     emoji: '🧈',
                     left: [
-                        "They tried every trick they could think of.",
-                        "First they rubbed butter on it.",
-                        "They thought it might slide off if it were slippery.",
-                        "It was no use at all.",
-                        "Next they poured cold water over it.",
-                        "That was no use either."
+                        "They tried every trick they could think of. First they rubbed butter on it.",
+                        "They thought it might slide off if it were slippery. But it was no use.",
+                        "Next they poured cold water over it. That was no use either."
                     ],
                     right: [
-                        "The woodcutter went to fetch a knife.",
-                        "\"You shall not! What if you cut my nose off!\"",
-                        "His wife shrieked at him.",
+                        "The woodcutter went to fetch a knife, and his wife shrieked at him. \"No! What if you cut my nose off?\"",
                         "So he put the knife back.",
-                        "The two of them stared blankly at each other.",
-                        "There was nothing left to try."
+                        "They stared blankly at each other. There was nothing left to try."
                     ]
                 },
                 {
                     art: '06-try-2.webp',
                     emoji: '🧈',
                     left: [
-                        "Worn out, they sank down onto the floor.",
-                        "They were too out of breath to speak.",
-                        "His wife held her nose and sniffed.",
-                        "\"How am I ever to go out like this?\"",
-                        "\"No market, and no seeing the neighbours.\"",
-                        "The woodcutter only cleared his throat."
+                        "Worn out, they sank down onto the floor. His wife held her nose and sniffed.",
+                        "\"How can I go out like this? I can't go to the market or see the neighbours.\"",
+                        "The woodcutter only cleared his throat. It had all come out of his own mouth."
                     ],
                     right: [
-                        "It had all come out of his own mouth, after all.",
-                        "The room went quiet.",
-                        "Only the fire crackled in the grate.",
-                        "Outside, the wind swept past the window.",
+                        "The room went quiet. Only the fire crackled in the grate. Outside, the wind swept past the window.",
                         "Neither of them could look at the other.",
-                        "After a long while the woodcutter spoke.",
-                        "\"We have one wish left.\" His voice was very low."
+                        "After a long while the woodcutter spoke in a low voice. \"We have one wish left.\""
                     ]
                 }
             ]
@@ -835,42 +750,25 @@ const EN = {
                     art: '07-last.webp',
                     emoji: '💛',
                     left: [
-                        "His wife raised her head, still holding her nose.",
-                        "\"So we do. One left.\"",
-                        "\"Then ask for the big house.\"",
-                        "\"Or the gold, that would do.\"",
-                        "\"My nose… I shall just live with it, I suppose.\"",
-                        "She made herself smile."
+                        "His wife raised her head, still holding her nose. \"So we do. One left. Then ask for the big house. Or the gold.\"",
+                        "She made herself smile. \"My nose… I shall just live with it, I suppose.\""
                     ],
                     right: [
-                        "The woodcutter looked at her face a long time.",
-                        "A face with a sausage hanging off the nose.",
-                        "She was smiling, and her eyes kept filling.",
-                        "Something rose in his throat.",
-                        "It hurt him to think of her living so all her life.",
-                        "What good was a big house then?",
-                        "\"No. That will not do.\""
+                        "The woodcutter looked at her face for a long time. A sausage hung from her nose. She was smiling, but her eyes kept filling.",
+                        "It hurt him to think of her living like that all her life. What good was a big house then?",
+                        "\"No,\" he said slowly. \"That will not do.\""
                     ]
                 },
                 {
                     art: '07-last-2.webp',
                     emoji: '💛',
                     left: [
-                        "\"What use would gold be to me,\"",
-                        "\"with you living like that?\"",
-                        "His wife clapped her hands.",
-                        "One hand caught the sausage and stopped short.",
-                        "She quickly put her hands down.",
-                        "\"Are you really sure?\"",
-                        "\"And the big house?\""
+                        "\"What use would gold be to me, with you living like that?\"",
+                        "His wife put her hands together in surprise, but one hand caught the sausage and stopped short. \"Are you really sure? What about the big house?\""
                     ],
                     right: [
-                        "The woodcutter shook his head.",
-                        "\"We have a house already.\"",
-                        "\"And you have only the one nose.\"",
-                        "His wife's eyes brimmed over.",
-                        "The woodcutter got to his feet.",
-                        "He looked up at the sky and quietly spoke the last wish."
+                        "The woodcutter shook his head. \"We have a house already. And you have only one nose.\"",
+                        "His wife's eyes brimmed over. The woodcutter got to his feet. He looked up at the sky and quietly spoke the last wish."
                     ]
                 }
             ]
@@ -884,41 +782,25 @@ const EN = {
                     emoji: '🍽️',
                     left: [
                         "\"Give my wife her own nose back.\"",
-                        "And at that the sausage dropped off.",
-                        "It rolled away across the plate.",
-                        "His wife felt at her nose in a hurry.",
-                        "It was her own nose, perfectly sound.",
-                        "\"Oh! It has come back!\"",
-                        "She jumped up and down."
+                        "At once the sausage dropped off and rolled across the table. His wife felt her nose. It was her own nose, perfectly sound.",
+                        "\"Oh! It has come back!\" She jumped up and down."
                     ],
                     right: [
-                        "She fetched a mirror and turned it this way and that.",
-                        "\"My nose is the prettiest of all!\"",
-                        "And then she stopped short.",
-                        "The wishes were all gone.",
-                        "No big house, and no gold.",
-                        "The two of them had nothing left at all.",
-                        "All three wishes had gone by."
+                        "She fetched a mirror and turned it this way and that. \"My nose is the prettiest of all!\"",
+                        "Then she stopped short. They had used up all three wishes. There would be no big house and no gold."
                     ]
                 },
                 {
                     art: '08-ending-2.webp',
                     emoji: '🍽️',
                     left: [
-                        "The house was the same and their goods were the same.",
-                        "On the table stood two bowls of thin porridge.",
-                        "The two of them sat down to it.",
-                        "And a strange thing happened.",
-                        "The table somehow looked like a feast.",
-                        "Because the sausage was still there on the plate."
+                        "The house was the same, and their goods were the same. They sat down again to two bowls of thin porridge.",
+                        "But somehow the table looked like a feast. Next to the porridge lay the sausage."
                     ],
                     right: [
-                        "His wife cut it in half.",
-                        "\"There. Half each.\"",
-                        "And the two of them shared the sausage between them.",
-                        "Halfway through they looked up and burst out laughing.",
-                        "\"This is better than the wishes.\"",
-                        "And that evening the laughing in the cottage did not stop."
+                        "His wife cut it in half. \"There. Half each.\"",
+                        "As they ate, they looked at each other and burst out laughing.",
+                        "\"This is better than wishes,\" said his wife. That evening the cottage was full of laughter."
                     ]
                 }
             ]
@@ -951,8 +833,8 @@ const EN = {
             answer: 2
         },
         {
-            q: 'Why did the woodcutter turn down the big house?',
-            choices: ['Robbers might come', 'They had a house already', 'There was no firewood'],
+            q: 'At supper, why did the woodcutter say no to a big house?',
+            choices: ['Robbers might come', 'There was no wood to heat it', 'His wife did not want one'],
             answer: 1
         },
         {
@@ -1021,7 +903,7 @@ const EN = {
         ],
         '02-wishes-2.webp': [
             { word: 'come to oneself', meaning: '정신이 들다', sentence: 'All at once he came to himself.' },
-            { word: 'fling', meaning: '팽개치다', sentence: 'He flung the axe down.' },
+            { word: 'swing', meaning: '휙 둘러메다', sentence: 'He swung the axe onto his shoulder.' },
             { word: 'scratch', meaning: '긁다', sentence: 'The branches scratching his face.' },
             { word: 'gasp for breath', meaning: '숨이 차다', sentence: 'He was gasping for breath.' },
             { word: 'in fright', meaning: '놀라서', sentence: 'His wife dropped her spoon in fright.' }
@@ -1029,7 +911,7 @@ const EN = {
         '03-table.webp': [
             { word: 'pant', meaning: '헐떡이다', sentence: 'He told her, still panting.' },
             { word: 'hear out', meaning: '끝까지 듣다', sentence: 'His wife heard him out.' },
-            { word: 'lump', meaning: '덩이', sentence: 'A lump of gold would be better.' },
+            { word: 'lump', meaning: '덩이', sentence: 'Then a lump of gold!' },
             { word: 'rob', meaning: '털다', sentence: 'We should only be robbed.' },
             { word: 'settle on', meaning: '~하기로 정하다', sentence: 'They settled on supper first.' }
         ],
@@ -1094,8 +976,8 @@ const EN = {
         '08-ending.webp': [
             { word: 'drop off', meaning: '툭 떨어지다', sentence: 'The sausage dropped off.' },
             { word: 'sound', meaning: '멀쩡한', sentence: 'It was her own nose, perfectly sound.' },
-            { word: 'this way and that', meaning: '이리저리', sentence: 'She turned the mirror this way and that.' },
-            { word: 'go by', meaning: '지나가다', sentence: 'All three wishes had gone by.' }
+            { word: 'this way and that', meaning: '이리저리', sentence: 'She fetched a mirror and turned it this way and that.' },
+            { word: 'use up', meaning: '다 써 버리다', sentence: 'They had used up all three wishes.' }
         ],
         '08-ending-2.webp': [
             { word: 'goods', meaning: '살림', sentence: 'Their goods were the same.' },

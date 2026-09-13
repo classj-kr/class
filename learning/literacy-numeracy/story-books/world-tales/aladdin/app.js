@@ -556,32 +556,29 @@ const EN = {
                     art: '01-stranger.webp',
                     emoji: '🧿',
                     left: [
-                        "Long ago, in a certain city, there lived a boy called Aladdin. His father had died when he was small, and he lived alone with his mother.",
-                        "They were very poor.",
-                        "And still Aladdin did nothing all day but play, and his mother sighed over him every time."
+                        "Long ago, in a certain city, there lived a boy called Aladdin. His father had died when he was small, so he lived alone with his mother.",
+                        "His mother spun thread late into the night just to buy bread.",
+                        "Still, Aladdin played in the streets all day, and his mother sighed over him every time."
                     ],
                     right: [
-                        "Then one day a stranger came to the house, dressed in the clothes of a far country.",
-                        "\"I am your uncle.\"",
-                        "\"I have come home after many years.\"",
-                        "Aladdin's mother tilted her head at that.",
-                        "Her husband had had no brothers."
+                        "Then one day a stranger stopped Aladdin in the street. He wore the clothes of a far country.",
+                        "\"You must be Aladdin,\" said the man. \"I am your uncle. I have come home after many years.\"",
+                        "Aladdin took the man home. But Aladdin's mother tilted her head.",
+                        "Her husband had never had a brother."
                     ]
                 },
                 {
                     art: '01-stranger-2.webp',
                     emoji: '🧿',
                     left: [
-                        "But the man paid for everything without blinking. He brought meat and fruit by the armful, and he bought Aladdin new clothes.",
-                        "\"Tomorrow we go somewhere good.\"",
-                        "\"You could be a rich man.\"",
-                        "Aladdin was so excited he hardly slept."
+                        "Still, the man paid for everything without blinking. He brought meat and fruit by the armful, and he bought Aladdin new clothes.",
+                        "\"Tomorrow let us go somewhere good,\" he said. \"There you could become a rich man.\"",
+                        "Aladdin was so excited he hardly slept that night."
                     ],
                     right: [
-                        "Next day the two of them went out beyond the city walls.",
-                        "They walked and walked. There were no houses and no people.",
-                        "At last they came to a bare rocky hillside, and the man stopped short.",
-                        "\"Here.\""
+                        "The next morning the two of them went out through the city gate. They walked and walked until there were no houses and no people.",
+                        "Around noon they came to a bare rocky hillside. The man walking ahead stopped short.",
+                        "\"Here it is. At last I have found it.\""
                     ]
                 }
             ]
@@ -594,37 +591,31 @@ const EN = {
                     art: '02-cave.webp',
                     emoji: '🕳️',
                     left: [
-                        "The man took a strange powder out of his robe and scattered it, muttering something like a spell.",
-                        "And the ground split open, and a white cloud of dust went up.",
-                        "There were steps leading down.",
-                        "\"There is an old lamp down there.\"",
-                        "\"Bring me that, and nothing else.\""
+                        "The man took a strange powder out of his robe and scattered it on the ground, muttering something like a spell.",
+                        "Rumble! The ground split open, and a cloud of dust went up.",
+                        "When the dust cleared, there were stone steps leading down under the ground."
                     ],
                     right: [
-                        "\"Whatever else you see, do not touch it.\"",
-                        "And he put a ring on Aladdin's finger.",
-                        "\"This ring will keep you safe.\"",
-                        "Aladdin went carefully down the steps. Below it was bright enough to dazzle him.",
-                        "Jewels lay heaped up like hills, and green and yellow lights moved on the walls."
+                        "\"There is an old lamp down there,\" said the man. \"Bring me only that. Touch nothing else.\"",
+                        "Then he put a ring on Aladdin's finger. \"This ring will keep you safe.\"",
+                        "Aladdin went carefully down the steps. Below, it was bright enough to dazzle him.",
+                        "Jewels lay heaped up like hills."
                     ]
                 },
                 {
                     art: '02-cave-2.webp',
                     emoji: '🕳️',
                     left: [
-                        "Aladdin looked about for the lamp. There it was in a corner, an old one.",
-                        "He put it inside his coat and turned back.",
-                        "On the way he dropped a few jewels into his pockets as well.",
-                        "At last he came to the bottom of the steps.",
-                        "\"Uncle, give me your hand!\""
+                        "Aladdin looked about for the lamp. He found it in a corner and put it in his coat.",
+                        "On the way back, he could not help it. He slipped a few jewels into his pockets.",
+                        "At the top of the steps, the last step was too high. \"Uncle, give me your hand!\""
                     ],
                     right: [
-                        "\"Hand up the lamp first!\"",
-                        "\"Let me up first and then I'll give it to you.\"",
-                        "And in that instant the man's face twisted.",
-                        "\"You wretched boy!\"",
-                        "He threw down his powder and the ground slammed shut.",
-                        "And Aladdin was sealed in."
+                        "\"Hand up the lamp first!\" said the man, holding out his hand.",
+                        "\"Pull me out first,\" said Aladdin. \"Then I'll give it to you.\"",
+                        "The man's face twisted. He wanted the lamp, not Aladdin.",
+                        "\"You wretched boy!\" He threw his powder, and the ground slammed shut.",
+                        "Aladdin was sealed in."
                     ]
                 }
             ]
@@ -637,37 +628,30 @@ const EN = {
                     art: '03-genie.webp',
                     emoji: '💍',
                     left: [
-                        "It was pitch dark in the cave, and Aladdin was shut up there for two days.",
-                        "He was hungry, and he was frightened.",
-                        "Without thinking, he rubbed his hands together hard.",
-                        "And the ring on his finger began to shine, and smoke came billowing up."
+                        "It was pitch dark in the cave. Aladdin shouted for his uncle, but no one answered.",
+                        "He was shut up there for two days, hungry and frightened.",
+                        "He rubbed his hands together hard as he prayed, and that rubbed the ring on his finger. Smoke came billowing up."
                     ],
                     right: [
-                        "\"You called, master?\"",
-                        "It was the genie of the ring.",
-                        "\"Get me out of here!\"",
+                        "Out of it came a genie — the genie of the ring. \"You called, master?\"",
+                        "\"Get me out of here and take me home!\" shouted Aladdin.",
                         "He shut his eyes, and when he opened them he was at home.",
-                        "His mother came running out barefoot.",
-                        "\"Where on earth have you been!\""
+                        "His mother ran out barefoot and hugged him. \"Where have you been for two days?\""
                     ]
                 },
                 {
                     art: '03-genie-2.webp',
                     emoji: '🪔',
                     left: [
-                        "But there was nothing in the house to eat.",
-                        "His mother fetched out the lamp Aladdin had brought back.",
-                        "\"We can clean this up and sell it, at least.\"",
-                        "And the moment she rubbed it with a cloth —",
-                        "Bang!",
+                        "Aladdin told his mother everything. But there was nothing in the house to eat.",
+                        "His mother fetched out the lamp Aladdin had brought back. \"Let's clean this and sell it, at least.\"",
+                        "The moment she rubbed it with a cloth — Bang!",
                         "A great cloud of smoke went up and filled the room."
                     ],
                     right: [
-                        "Out of the smoke came an enormous genie.",
-                        "\"Only say the word, master.\"",
-                        "His mother fell over backwards in fright, and Aladdin stepped forward.",
-                        "\"Give us something to eat.\"",
-                        "And a whole table was laid in front of them."
+                        "Out of the smoke came a genie so big that his head touched the ceiling. \"I am the genie of the lamp. Only say the word, master.\"",
+                        "His mother fell over backwards in fright. Aladdin stepped forward, shaking. \"G-give us something to eat.\"",
+                        "In a flash, a whole table was laid in front of them."
                     ]
                 }
             ]
@@ -680,37 +664,30 @@ const EN = {
                     art: '04-princess.webp',
                     emoji: '👸',
                     left: [
-                        "From that day there was plenty in Aladdin's house.",
-                        "Then one day there was a great noise in the street.",
-                        "\"The princess is passing!\"",
-                        "\"Shut your doors and go inside!\"",
-                        "Aladdin was far too curious for that, and he hid behind a wall."
+                        "From that day there was plenty in the house, for the genie brought whatever they needed.",
+                        "Then one day soldiers marched through the streets, shouting, \"The princess is passing! Shut your doors and go inside!\"",
+                        "But Aladdin was far too curious to go in. He hid behind a wall to see her face."
                     ],
                     right: [
-                        "The litter came by.",
-                        "And the curtain lifted, just for a moment.",
-                        "Aladdin stood frozen to the spot.",
+                        "Soon the litter carrying the princess came by. A breeze lifted its curtain, just for a moment.",
+                        "Aladdin saw her face and stood frozen to the spot.",
                         "That night he could not sleep at all.",
-                        "\"Mother, I want to ask you something.\"",
-                        "\"Would you tell them how I feel?\""
+                        "\"Mother, please help me,\" he said. \"Go to the sultan and tell him I want to marry the princess.\""
                     ]
                 },
                 {
                     art: '04-princess-2.webp',
                     emoji: '👸',
                     left: [
-                        "Next day his mother went to the palace carrying a tray of jewels —",
-                        "the ones Aladdin had brought out of the cave.",
-                        "The sultan's eyes went round at the sight of that tray.",
-                        "\"I have never seen jewels like these.\"",
-                        "\"Bring me this young man.\""
+                        "The next day his mother went to the palace carrying a tray of jewels — the very ones Aladdin had brought out of the cave.",
+                        "The sultan's eyes went round at the sight of them.",
+                        "\"I have never seen jewels like these,\" he said. \"Bring this young man to me.\""
                     ],
                     right: [
-                        "When Aladdin heard, he called the genie at once.",
-                        "\"I need good clothes and a horse.\"",
-                        "\"And a great many gifts.\"",
-                        "Next morning the front of the palace was crowded. A line of camels stretched away out of sight,",
-                        "and the whole city came out to watch."
+                        "When Aladdin heard, he rubbed the lamp and called the genie.",
+                        "\"I must go and see the sultan,\" he said. \"I need fine clothes, a horse, and a great many gifts.\"",
+                        "The next day the front of the palace was crowded. A line of camels stretched away out of sight.",
+                        "The whole city came out to watch."
                     ]
                 }
             ]
@@ -723,18 +700,15 @@ const EN = {
                     art: '05-palace.webp',
                     emoji: '🏯',
                     left: [
-                        "The sultan agreed to the marriage. He asked for only one thing.",
-                        "\"My daughter must have a palace to live in.\"",
-                        "\"Facing my own.\"",
-                        "Aladdin bowed his head.",
-                        "\"It shall be done.\""
+                        "The sultan agreed to the marriage, but he asked for one thing.",
+                        "\"My daughter must have a palace to live in,\" said the sultan. \"And it must stand facing my own.\"",
+                        "Aladdin bowed his head. \"It shall be done, Your Majesty.\""
                     ],
                     right: [
-                        "That night Aladdin rubbed the lamp.",
-                        "And in the morning the sultan opened his window to a blaze of light.",
-                        "The day before, that ground had been empty.",
-                        "Now an enormous palace stood there, with jewels set into every pillar.",
-                        "The sultan stayed at his window a long, long time."
+                        "That night Aladdin rubbed the lamp. \"Build a palace facing the sultan's by morning.\"",
+                        "In the morning the sultan opened his window to a blaze of light.",
+                        "Yesterday that ground was empty. Now a huge palace stood there, with jewels set into every pillar.",
+                        "The sultan stood staring for a long time."
                     ]
                 },
                 {
@@ -747,9 +721,8 @@ const EN = {
                         "And some years went by like that."
                     ],
                     right: [
-                        "But the magician in his far country heard the news as well — the very man who had shut Aladdin in the cave.",
-                        "\"So the boy is alive!\"",
-                        "\"And he will have the lamp.\"",
+                        "But the news reached a magician in a far country — the false uncle who had shut Aladdin in the cave.",
+                        "\"So the boy is alive!\" he cried. \"He must have the lamp.\"",
                         "The magician packed that same day and set out for the city."
                     ]
                 }
@@ -764,33 +737,28 @@ const EN = {
                     emoji: '🛒',
                     left: [
                         "The magician dressed himself as a pedlar and loaded a cart with new lamps, every one of them polished bright.",
-                        "Then he walked up and down in front of the palace calling out.",
-                        "\"New lamps for old!\"",
-                        "\"Free of charge!\""
+                        "Then he walked up and down in front of Aladdin's palace, calling out, \"New lamps for old! Free of charge!\""
                     ],
                     right: [
-                        "People going past laughed out loud, and children trailed along behind him.",
-                        "\"Did you ever hear such a fool?\"",
-                        "The noise carried right into the palace. As it happened, Aladdin had gone out hunting.",
-                        "The princess looked out of the window.",
-                        "\"There was that old lamp, wasn't there.\"",
-                        "And she sent a maid to fetch it."
+                        "People laughed out loud. \"What a fool!\" Children trailed along behind him.",
+                        "The noise carried into the palace. Aladdin was out hunting.",
+                        "The princess did not know a genie lived in the old lamp.",
+                        "\"Change our old lamp for a new one,\" she said, and she sent a maid to fetch it."
                     ]
                 },
                 {
                     art: '06-swap-2.webp',
                     emoji: '🛒',
                     left: [
-                        "The maid held out the old lamp. The magician took it quickly and tucked it away, handed over a new one, and turned to go.",
-                        "He went into a side street and rubbed the lamp hard.",
-                        "And the genie appeared.",
-                        "\"Move this palace. All of it.\""
+                        "The maid held out the old lamp. The magician took it quickly and tucked it away, and he handed over a new one.",
+                        "He went into an empty side street and rubbed the lamp hard. The genie appeared.",
+                        "\"Carry this palace far away beyond the desert, with the princess in it!\""
                     ],
                     right: [
-                        "That evening Aladdin came back from hunting.",
-                        "And there was nothing in front of him. The palace had vanished without a trace, and the princess had gone with it.",
-                        "When the sultan heard, he was beside himself.",
-                        "\"Find her within three days!\""
+                        "That evening Aladdin came back from hunting and could not believe his eyes.",
+                        "The palace had vanished without a trace, and the princess had gone with it.",
+                        "The sultan was beside himself. He sent for Aladdin.",
+                        "\"Find my daughter within three days!\" he roared. \"If you don't, you will be punished!\""
                     ]
                 }
             ]
@@ -804,17 +772,14 @@ const EN = {
                     emoji: '🐪',
                     left: [
                         "Aladdin did not know which way to turn. He wandered outside the city walls all night.",
-                        "And then he remembered the ring.",
-                        "He rubbed his finger,",
-                        "and the genie of the ring appeared.",
-                        "Aladdin asked at once, \"Where is the palace?\""
+                        "Then he remembered the ring on his finger. He rubbed it, and the genie of the ring appeared.",
+                        "\"Where is the palace?\" Aladdin asked at once."
                     ],
                     right: [
-                        "\"Far beyond the desert, master.\"",
-                        "\"Then send me there.\"",
-                        "He opened his eyes to sand on every side, and far off he could see the palace he knew.",
-                        "Aladdin waited until night fell.",
-                        "Then he went over the wall and found the princess's room."
+                        "\"Far beyond the desert, master,\" said the genie.",
+                        "\"Then take me there,\" said Aladdin.",
+                        "He shut his eyes and opened them to sand on every side. Far off stood the palace he knew.",
+                        "Aladdin waited until night fell. Then he went over the wall and tapped softly on the princess's window."
                     ]
                 },
                 {
@@ -822,17 +787,14 @@ const EN = {
                     emoji: '🐪',
                     left: [
                         "The princess burst into tears at the sight of him.",
-                        "\"However did you get here!\"",
-                        "\"That man has the lamp.\"",
-                        "\"He carries it inside his coat, always.\"",
-                        "Aladdin thought for a moment. Then he whispered something in her ear."
+                        "\"However did you get here?\" she cried. \"That magician has the lamp. He always carries it inside his coat.\"",
+                        "Aladdin thought for a moment. Then he gave her a small packet of sleeping powder from the genie of the ring."
                     ],
                     right: [
-                        "\"Have him invited to supper with you.\"",
-                        "And the next evening the princess offered the magician a cup.",
-                        "\"I have changed my mind about you.\"",
-                        "The magician was so pleased that he drank it straight down.",
-                        "There was a sleeping draught in that cup, and over he went."
+                        "\"Invite him to supper tomorrow,\" he whispered in her ear. \"Put this in his cup.\"",
+                        "The next evening the princess smiled and offered the magician a cup. \"I have changed my mind. I will stay here.\"",
+                        "Pleased, the magician drank it straight down.",
+                        "The sleeping draught worked, and he fell asleep."
                     ]
                 }
             ]
@@ -845,35 +807,28 @@ const EN = {
                     art: '08-return.webp',
                     emoji: '✨',
                     left: [
-                        "Aladdin took the lamp out of the magician's coat and rubbed it hard with a cloth.",
-                        "And the genie appeared again.",
-                        "\"It has been a long time, master.\"",
-                        "\"Put the palace back where it belongs.\"",
-                        "\"With the princess in it.\""
+                        "Aladdin took the lamp out of the magician's coat and rubbed it hard.",
+                        "The genie of the lamp appeared again. \"It has been a long time, master.\"",
+                        "\"Put the palace back where it belongs, with the princess in it,\" said Aladdin. \"Leave the magician here.\""
                     ],
                     right: [
-                        "Morning came, and the sultan opened his window as he always did.",
-                        "And there across from him stood the palace,",
-                        "on ground that had been bare for days.",
-                        "The sultan ran out barefoot.",
-                        "And there was his daughter at the door, smiling."
+                        "The next morning the sultan sadly opened his window, as he did every day.",
+                        "And there across from him stood the palace, on ground that had been bare for days!",
+                        "The sultan ran out barefoot. At the door stood his daughter, smiling."
                     ]
                 },
                 {
                     art: '08-return-2.webp',
                     emoji: '✨',
                     left: [
-                        "The magician was left out in the far desert.",
-                        "And Aladdin put the lamp away at the bottom of a chest.",
-                        "\"I don't suppose I shall need it now.\"",
-                        "The princess asked him,",
-                        "\"Will you really never use it?\""
+                        "The magician woke up alone in the desert and could only stamp his feet.",
+                        "Aladdin put the lamp away at the bottom of a chest. \"I won't need it now,\" he said.",
+                        "\"Will you really never use it again?\" asked the princess."
                     ],
                     right: [
-                        "\"Only if I truly have to.\"",
-                        "Aladdin kept the palace doors open from then on. He shared out grain and had broken houses mended.",
-                        "And people remembered his name for a long time afterwards.",
-                        "Not because of the lamp."
+                        "\"Only when I truly need it,\" said Aladdin.",
+                        "He kept his doors open, shared out grain and had broken houses mended.",
+                        "People remembered him for a long time afterwards, not for the lamp but for his kind heart."
                     ]
                 }
             ]
@@ -906,7 +861,7 @@ const EN = {
             answer: 0
         },
         {
-            q: 'How did the magician get the lamp back?',
+            q: 'How did the magician get hold of the lamp?',
             choices: ['He stole it while Aladdin slept', 'He bought it from a maid', 'He offered new lamps for old outside the palace'],
             answer: 2
         },
@@ -920,7 +875,7 @@ const EN = {
             wide: true,
             choices: [
                 "Told to hand up the lamp first, he said he would give it once he was out — at that moment something did not feel right.",
-                "The ring the sorcerer put on his finger was what got him out of the cave — his own gift undid his own plan.",
+                "The ring the magician put on his finger was what got him out of the cave — his own gift undid his own plan.",
                 "He could not speak for himself when he saw the princess — that is why he had to send his mother.",
                 "Aladdin put the lamp away at the bottom of a chest — he wanted to give the genie a long rest."
             ],
@@ -940,7 +895,7 @@ const EN = {
                     "The thing the magician handed over himself is the thing that undoes his whole plan."
                 ],
                 right: [
-                    "After Aladdin first sees the princess, he asks his mother to speak for him. He cannot go himself. At that point he was still nobody.",
+                    "After Aladdin first sees the princess, he asks his mother to speak for him. He does not dare to speak up himself. At that point he is still nobody.",
                     "At the end, Aladdin puts the lamp away at the bottom of a chest. Why do you think he did that?"
                 ]
             }
@@ -955,8 +910,8 @@ const EN = {
         ],
         '01-stranger.webp': [
             { word: 'sigh over', meaning: '한숨 쉬다', sentence: 'His mother sighed over him every time.' },
-            { word: 'stranger', meaning: '낯선 사람', sentence: 'One day a stranger came to the house.' },
-            { word: 'tilt one’s head', meaning: '고개를 갸웃하다', sentence: "Aladdin's mother tilted her head at that." }
+            { word: 'stranger', meaning: '낯선 사람', sentence: 'One day a stranger stopped Aladdin in the street.' },
+            { word: 'tilt one’s head', meaning: '고개를 갸웃하다', sentence: "Aladdin's mother tilted her head." }
         ],
         '01-stranger-2.webp': [
             { word: 'without blinking', meaning: '척척, 망설임 없이', sentence: 'The man paid for everything without blinking.' },
@@ -976,14 +931,14 @@ const EN = {
             { word: 'hand up', meaning: '위로 올려 주다', sentence: 'Hand up the lamp first!' },
             { word: 'twist', meaning: '일그러지다', sentence: "The man's face twisted." },
             { word: 'slam shut', meaning: '쿵 닫히다', sentence: 'The ground slammed shut.' },
-            { word: 'seal in', meaning: '가두다', sentence: 'And Aladdin was sealed in.' }
+            { word: 'seal in', meaning: '가두다', sentence: 'Aladdin was sealed in.' }
         ],
         '03-genie.webp': [
             { word: 'pitch dark', meaning: '캄캄한', sentence: 'It was pitch dark in the cave.' },
             { word: 'shut up', meaning: '갇힌', sentence: 'He was shut up there for two days.' },
-            { word: 'rub', meaning: '비비다, 문지르다', sentence: 'He rubbed his hands together hard.' },
+            { word: 'rub', meaning: '비비다, 문지르다', sentence: 'He rubbed his hands together hard as he prayed.' },
             { word: 'billow up', meaning: '뭉게뭉게 피어오르다', sentence: 'Smoke came billowing up.' },
-            { word: 'genie', meaning: '지니, 요정', sentence: 'It was the genie of the ring.' }
+            { word: 'genie', meaning: '지니, 요정', sentence: 'Out of it came the genie of the ring.' }
         ],
         '03-genie-2.webp': [
             { word: 'fetch out', meaning: '꺼내다', sentence: 'His mother fetched out the lamp.' },
@@ -993,7 +948,7 @@ const EN = {
         ],
         '04-princess.webp': [
             { word: 'plenty', meaning: '넉넉함', sentence: 'From that day there was plenty in the house.' },
-            { word: 'curious', meaning: '궁금해하는', sentence: 'Aladdin was far too curious for that.' },
+            { word: 'curious', meaning: '궁금해하는', sentence: 'He was far too curious to go in.' },
             { word: 'litter', meaning: '가마', sentence: 'The litter came by.' },
             { word: 'frozen to the spot', meaning: '그 자리에 얼어붙은', sentence: 'Aladdin stood frozen to the spot.' }
         ],
@@ -1005,7 +960,7 @@ const EN = {
         ],
         '05-palace.webp': [
             { word: 'agree to', meaning: '허락하다', sentence: 'The sultan agreed to the marriage.' },
-            { word: 'facing', meaning: '~ 맞은편의', sentence: 'Facing my own.' },
+            { word: 'facing', meaning: '~ 맞은편의', sentence: 'It must stand facing my own.' },
             { word: 'blaze', meaning: '눈부신 빛', sentence: 'The sultan opened his window to a blaze of light.' },
             { word: 'pillar', meaning: '기둥', sentence: 'Jewels set into every pillar.' }
         ],
@@ -1036,9 +991,9 @@ const EN = {
         ],
         '07-desert-2.webp': [
             { word: 'burst into tears', meaning: '울음을 터뜨리다', sentence: 'The princess burst into tears.' },
-            { word: 'whisper', meaning: '귓속말하다', sentence: 'He whispered something in her ear.' },
+            { word: 'whisper', meaning: '귓속말하다', sentence: 'He whispered in her ear.' },
             { word: 'offer', meaning: '권하다', sentence: 'The princess offered the magician a cup.' },
-            { word: 'sleeping draught', meaning: '잠이 오는 약', sentence: 'There was a sleeping draught in that cup.' }
+            { word: 'sleeping draught', meaning: '잠이 오는 약', sentence: 'The sleeping draught worked.' }
         ],
         '08-return.webp': [
             { word: 'belong', meaning: '제자리에 있다', sentence: 'Put the palace back where it belongs.' },
@@ -1049,7 +1004,7 @@ const EN = {
             { word: 'chest', meaning: '궤짝', sentence: 'Aladdin put the lamp away at the bottom of a chest.' },
             { word: 'share out', meaning: '나누어 주다', sentence: 'He shared out grain.' },
             { word: 'mend', meaning: '고치다', sentence: 'He had broken houses mended.' },
-            { word: 'afterwards', meaning: '그 뒤로', sentence: 'People remembered his name for a long time afterwards.' }
+            { word: 'afterwards', meaning: '그 뒤로', sentence: 'People remembered him for a long time afterwards.' }
         ],
         'end.webp': [
             { word: 'collection', meaning: '이야기 묶음', sentence: 'This story sits in the Arabian Nights, the collection.' },

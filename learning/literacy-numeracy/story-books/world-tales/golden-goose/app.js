@@ -565,11 +565,11 @@ const EN = {
                         "\"That boy is no use for anything.\""
                     ],
                     right: [
-                        "One day the eldest went into the wood to cut wood.",
+                        "One day the eldest son went into the wood to chop firewood.",
                         "His mother baked him good bread",
                         "and filled a jar with wine for him.",
-                        "\"It is hard work. You must eat properly.\"",
-                        "The eldest went off with his shoulders back.",
+                        "\"It is hard work,\" she said. \"Eat well.\"",
+                        "The eldest went off with a shrug.",
                         "The morning sun was slanting in among the trees."
                     ]
                 },
@@ -577,20 +577,18 @@ const EN = {
                     art: '01-eldest-2.webp',
                     emoji: '🪓',
                     left: [
-                        "The eldest put down his axe and sat.",
-                        "And then a small old man came up to him,",
+                        "Before starting work, the eldest put down his axe and sat down to eat.",
+                        "Then a small old man came up to him,",
                         "with a beard down to his waist.",
-                        "\"I am very hungry.\"",
-                        "\"Would you share a little with me?\"",
-                        "The eldest put both arms round his bread."
+                        "\"I am very hungry. Would you share a little with me?\"",
+                        "The eldest hugged his bread. \"I hardly have enough for myself!\""
                     ],
                     right: [
-                        "\"I have hardly enough for myself.\"",
-                        "The old man turned away without a word,",
-                        "and the eldest picked up his axe again.",
-                        "And at the very first stroke his hand slipped.",
-                        "The eldest hurt his arm,",
-                        "and he came home limping that day without one load of wood."
+                        "The old man turned away without a word.",
+                        "The eldest ate his fill alone and picked up his axe again.",
+                        "But at the very first stroke his hand slipped,",
+                        "and he hurt his arm.",
+                        "He came home limping that day without one load of wood."
                     ]
                 }
             ]
@@ -604,18 +602,16 @@ const EN = {
                     emoji: '🌲',
                     left: [
                         "Next day the second son went into the wood.",
-                        "He too took good bread and wine along.",
-                        "\"My brother was simply unlucky.\"",
-                        "The second son went humming down the road,",
-                        "and the shade of the trees was cool when he got there.",
-                        "After a while the old man appeared."
+                        "He too took good bread and wine.",
+                        "\"My brother was simply unlucky,\" he boasted.",
+                        "He went humming down the road,",
+                        "and the shade of the trees was cool when he got there."
                     ],
                     right: [
-                        "He was sitting in exactly the same place as the day before.",
-                        "\"I am very hungry.\"",
-                        "\"Would you share a little with me?\"",
+                        "Just as he began to chop, the same old man came up to him.",
+                        "\"I am very hungry. Would you share a little with me?\"",
                         "The second son waved him off with both hands.",
-                        "\"Out of the way. I am working here.\" The old man stood quietly where he was."
+                        "\"Out of the way! I am working here.\""
                     ]
                 },
                 {
@@ -631,12 +627,11 @@ const EN = {
                     ],
                     right: [
                         "The second son came home limping too.",
-                        "Now there were two brothers laid up side by side in the room,",
-                        "and their mother sighed over them.",
-                        "\"Whatever are we to do.\"",
-                        "There was groaning from the room, first one and then the other,",
-                        "and there was no firewood left at all.",
-                        "And then the youngest spoke up, carefully."
+                        "Now the two brothers were laid up side by side.",
+                        "Their mother sighed. \"Whatever shall we do?\"",
+                        "Groans came from the room, first one, then the other.",
+                        "No firewood was left.",
+                        "Then the youngest son spoke up, carefully."
                     ]
                 }
             ]
@@ -649,20 +644,19 @@ const EN = {
                     art: '03-share.webp',
                     emoji: '🍞',
                     left: [
-                        "\"I shall go and cut the wood.\"",
+                        "\"I shall go and cut the wood,\" said the youngest.",
                         "His brothers snorted under their blankets.",
                         "\"You? Can you even hold an axe?\"",
                         "His mother had no faith in it either,",
-                        "and there was nothing else for it.",
+                        "but there was nothing else for it.",
                         "\"Go on with you, then.\""
                     ],
                     right: [
-                        "His mother wrapped him up some hard, stale bread,",
-                        "and there was nothing to drink but sour beer.",
-                        "The youngest took it and set off in good spirits.",
-                        "\"That will do me nicely.\"",
-                        "When he got to the wood the birds were singing.",
-                        "The youngest rolled up his sleeves and looked over the trees."
+                        "His brothers had already taken the good bread and wine,",
+                        "so his mother packed hard, stale bread and sour beer.",
+                        "\"That will do me nicely,\" he said, and set off in good spirits.",
+                        "When he got to the wood, the birds were singing.",
+                        "He rolled up his sleeves and looked over the trees."
                     ]
                 },
                 {
@@ -670,19 +664,18 @@ const EN = {
                     emoji: '🍞',
                     left: [
                         "At midday the old man appeared again.",
-                        "\"I am very hungry.\"",
-                        "\"Would you share a little with me?\"",
+                        "\"I am very hungry. Would you share a little with me?\"",
                         "The youngest made room for him at once.",
-                        "\"It is nothing much, but sit down and eat with me if you like.\"",
+                        "\"It is nothing much, only hard bread, but please eat with me.\"",
                         "And he spread out his cloth."
                     ],
                     right: [
-                        "And the hard bread had turned into fine bread.",
+                        "But the hard bread had turned into fine bread!",
                         "The sour beer had turned into good sweet wine.",
                         "The youngest opened his eyes wide.",
                         "The old man only smiled.",
                         "The two of them sat side by side and ate their fill,",
-                        "and talked away comfortably as they did it."
+                        "and talked away happily as they did it."
                     ]
                 }
             ]
@@ -695,10 +688,8 @@ const EN = {
                     art: '04-goose.webp',
                     emoji: '🌳',
                     left: [
-                        "When they had finished the old man got up.",
-                        "\"You have a good heart.\"",
-                        "\"Cut down that tree over there.\"",
-                        "And he pointed at one old tree.",
+                        "When they had finished, the old man got up. \"You have a good heart.\"",
+                        "He pointed at an old tree. \"Cut down that tree.\"",
                         "\"There will be something good in the stump.\"",
                         "So the youngest set about cutting it."
                     ],
@@ -717,18 +708,18 @@ const EN = {
                     left: [
                         "There was a goose sitting inside the stump,",
                         "with every feather shining gold.",
-                        "\"Well I never — a goose like this!\"",
-                        "The youngest lifted her out in both hands,",
+                        "\"Well I never — a goose like this!\" cried the youngest.",
+                        "He lifted her out in both hands,",
                         "and the goose sat quietly in his arms.",
-                        "When he looked round, the old man was already gone."
+                        "When he looked round, the old man was gone."
                     ],
                     right: [
                         "The youngest carried the goose out of the wood.",
-                        "The sun was going down and it was getting dark.",
-                        "He decided to stop for the night at an inn.",
-                        "When he reached the door people stared at him,",
-                        "because the golden goose shone even in the half light.",
-                        "The youngest held her close."
+                        "The sun was going down, and it was getting dark.",
+                        "He decided to stop for the night at an inn nearby.",
+                        "At the door, people stared at him,",
+                        "for the golden goose shone even in the half light.",
+                        "He held her close."
                     ]
                 }
             ]
@@ -743,40 +734,36 @@ const EN = {
                     left: [
                         "The innkeeper had three daughters,",
                         "and their eyes went round at the golden feathers.",
-                        "It was after the youngest had gone in and fallen asleep.",
-                        "The eldest daughter crept over.",
+                        "The youngest fell asleep with the goose beside him.",
+                        "The eldest daughter crept into the room.",
                         "\"Just one. Shall I pull out just one?\"",
-                        "And she put her hand on a feather."
+                        "She put her hand on a feather."
                     ],
                     right: [
-                        "And her hand stuck fast.",
-                        "Pull as she might, it would not come away.",
-                        "She braced a foot against the wall and heaved.",
-                        "And still the hand did not move.",
-                        "\"Whatever is the matter?\"",
-                        "The second daughter came and pulled at her sister's arm in fright.",
-                        "And the second one's hand stuck to her sister's arm."
+                        "Her hand stuck fast. Pull as she might, it would not come away.",
+                        "She braced a foot against the wall and heaved. Nothing moved.",
+                        "The second daughter came in. \"Sister, what's wrong?\"",
+                        "She pulled at her sister's arm,",
+                        "and her own hand stuck to it."
                     ]
                 },
                 {
                     art: '05-stuck-2.webp',
                     emoji: '✋',
                     left: [
-                        "The third daughter came running and took hold of her sisters,",
-                        "and you can guess the rest.",
+                        "The third daughter came and grabbed her sisters.",
+                        "You can guess the rest.",
                         "The three of them hung there in a row.",
-                        "\"It won't come off! I tell you it won't come off!\"",
+                        "\"It won't come off! It won't come off!\" they cried.",
                         "The three sisters struggled all night,",
-                        "and the youngest slept soundly and knew nothing about it."
+                        "but the youngest slept soundly and knew nothing."
                     ],
                     right: [
-                        "Next morning the youngest woke up",
-                        "and went out of the room with the goose in his arms,",
+                        "Next morning the youngest went out with the goose in his arms,",
                         "with no idea what was trailing behind him.",
-                        "The three sisters were dragged along at a trot.",
-                        "Their skirts caught on the threshold",
-                        "and the three of them very nearly went over.",
-                        "\"Excuse me! Would you stop a moment!\" But the youngest did not hear."
+                        "The sisters were dragged along at a trot.",
+                        "Their skirts caught on the threshold, and they nearly fell over.",
+                        "\"Hey! Stop a moment!\" they cried, but he did not hear."
                     ]
                 }
             ]
@@ -789,21 +776,18 @@ const EN = {
                     art: '06-parade.webp',
                     emoji: '🎪',
                     left: [
-                        "The youngest walked down the village road with the goose in his arms",
+                        "The youngest walked down the village road with the goose,",
                         "and three sisters strung out behind him.",
-                        "People at the roadside laughed until they had to hold their sides.",
-                        "And then the priest saw it.",
-                        "\"Children, what a way to carry on!\"",
-                        "And he took hold of the last daughter."
+                        "People by the road laughed until they held their sides.",
+                        "Then the priest saw it. \"Girls, what a way to carry on!\"",
+                        "He grabbed the last daughter to pull her away."
                     ],
                     right: [
-                        "And the priest stuck fast as well.",
-                        "\"Wh-what is the meaning of this!\"",
-                        "The baker happened to be passing and pulled at the priest,",
+                        "But the priest stuck fast too. \"Wh-what is the meaning of this?\"",
+                        "A baker happened to be passing and pulled at the priest,",
                         "and the baker stuck too.",
-                        "The line got longer and longer,",
-                        "and there was flour flying everywhere.",
-                        "\"And what about my dough!\""
+                        "Flour flew up from his apron in a white cloud.",
+                        "\"And what about my dough?\" he wailed."
                     ]
                 },
                 {
@@ -812,19 +796,17 @@ const EN = {
                     left: [
                         "Two farmers came running from the fields.",
                         "\"Let us pull them apart!\"",
-                        "And the two of them stuck fast as well.",
+                        "But the two of them stuck fast as well.",
                         "Now the line was as long as the village street.",
-                        "When the youngest walked, the whole lot came stumbling after.",
-                        "\"Right! Turn right!\""
+                        "When the youngest walked, the whole lot came stumbling after."
                     ],
                     right: [
-                        "\"Keep in step, will you!\"",
-                        "People got their feet tangled and went down,",
-                        "and even going down their hands did not come loose.",
-                        "The youngest strode on with nothing but the goose.",
-                        "He had no idea what was going on behind him.",
-                        "Only the goose gave a squawk in his arms,",
-                        "and the youngest grinned at the sound of it."
+                        "Everyone at the back shouted.",
+                        "\"Right! Turn right!\" \"Keep in step, will you!\"",
+                        "Feet got tangled and people fell down,",
+                        "but even then their hands did not come loose.",
+                        "The youngest strode on, knowing nothing.",
+                        "When the goose squawked in his arms, he grinned."
                     ]
                 }
             ]
@@ -837,32 +819,28 @@ const EN = {
                     art: '07-princess.webp',
                     emoji: '😐',
                     left: [
-                        "About that time a king in that country had a great worry.",
+                        "About that time, a king in another land had a great worry.",
                         "His daughter had never once laughed since the day she was born.",
                         "The king sent for every kind of entertainer.",
                         "Clowns came, and acrobats came,",
-                        "and the princess did not move an eyebrow.",
-                        "At last the king put out word through the whole country."
+                        "but the princess did not move an eyebrow."
                     ],
                     right: [
-                        "\"Whoever makes my daughter laugh shall have a reward.\"",
-                        "A great many people came to the castle",
-                        "and put on funny clothes and did their tricks.",
-                        "And the princess's face stayed exactly as it was.",
-                        "The king sighed over it every day.",
-                        "\"If only she would laugh, just once.\""
+                        "At last the king put out word through the whole country:",
+                        "\"Whoever makes my daughter laugh shall have a reward!\"",
+                        "Crowds came in funny clothes to do their tricks.",
+                        "But the princess's face did not change.",
+                        "Every day the king sighed. \"If only she would laugh, just once.\""
                     ]
                 },
                 {
                     art: '07-princess-2.webp',
                     emoji: '😐',
                     left: [
-                        "And that day the strange procession came along the high road in front of the castle.",
-                        "In front walked a young man with a golden goose in his arms,",
-                        "and behind him people were strung out in a line,",
-                        "arms going one way and legs the other.",
-                        "Anybody would have laughed at the sight of it.",
-                        "And the princess happened to be standing at her window."
+                        "The youngest walked on and on until he reached that land.",
+                        "The strange procession came along the high road in front of the castle.",
+                        "A young man with a golden goose walked in front, and people trailed behind.",
+                        "The princess happened to be standing at her window."
                     ],
                     right: [
                         "The princess looked steadily at that procession,",
@@ -883,21 +861,18 @@ const EN = {
                     art: '08-ending.webp',
                     emoji: '😂',
                     left: [
-                        "The moment the princess laughed, something remarkable happened.",
+                        "The moment the princess laughed, something amazing happened.",
                         "All the stuck hands came away, one after another.",
                         "The three sisters were free, and so was the priest.",
-                        "The baker looked at his own hand,",
-                        "and the two farmers looked at each other.",
-                        "\"Now what in the world was all that?\""
+                        "The baker looked at his hand, and the farmers looked at each other.",
+                        "\"What in the world was all that?\""
                     ],
                     right: [
-                        "People stood staring at one another, bewildered.",
-                        "And then one by one they began to laugh.",
-                        "Everybody in the road laughed with them,",
-                        "and up at the castle window the princess was laughing still.",
-                        "The king heard it and came running out.",
-                        "It was the first laughter he had heard in years,",
-                        "and his own eyes went red with it."
+                        "People stared, bewildered, and then one by one they began to laugh.",
+                        "Everyone in the road laughed with them,",
+                        "and at her window the princess was still laughing.",
+                        "The king ran out. He had never heard his daughter laugh before,",
+                        "and his own eyes went red."
                     ]
                 },
                 {
@@ -905,20 +880,15 @@ const EN = {
                     emoji: '😂',
                     left: [
                         "The king sent for the youngest son.",
-                        "\"It was you who made my daughter laugh.\"",
-                        "\"You shall have your reward, as I promised. What would you like?\"",
-                        "The youngest looked down at the goose.",
-                        "The goose stretched out her neck,",
-                        "and her feathers shone in the morning sun.",
-                        "\"I should like to take this goose back to the wood.\""
+                        "\"You made my daughter laugh. You shall have your reward. What would you like?\"",
+                        "The youngest looked down at the goose in his arms.",
+                        "The goose stretched out her neck, and the youngest said,"
                     ],
                     right: [
-                        "\"She is not mine.\"",
-                        "The king laughed out loud and nodded.",
-                        "So the youngest went to the wood and let the goose go,",
-                        "and she opened her wings and flew away.",
-                        "And after that he lived very well at the castle.",
-                        "And in time his brothers came to see him differently."
+                        "\"Let me work at the castle. This goose must go back to the wood — she is not mine.\"",
+                        "The king laughed and nodded.",
+                        "He let the goose go in the wood and lived happily at the castle.",
+                        "His brothers came to see him differently."
                     ]
                 }
             ]
@@ -926,42 +896,42 @@ const EN = {
     ],
     quiz: [
         {
-            q: 'What did the two elder brothers do when the old man asked for food?',
-            choices: ['They both refused him', 'They both shared with him', 'They gave him wine only'],
+            q: "What did the two elder brothers do when the old man asked for food?",
+            choices: ["They both refused him", "They both shared with him", "They gave him wine only"],
             answer: 0
         },
         {
-            q: 'What did the youngest take with him into the wood?',
-            choices: ['Good bread and wine', 'Nothing at all', 'Hard stale bread and sour beer'],
+            q: "What did the youngest take with him into the wood?",
+            choices: ["Good bread and wine", "Nothing at all", "Hard stale bread and sour beer"],
             answer: 2
         },
         {
-            q: 'What happened to the youngest son’s food?',
-            choices: ['The old man took it away', 'It turned into fine bread and sweet wine', 'It ran out at once'],
+            q: "What happened to the youngest son’s food?",
+            choices: ["The old man took it away", "It turned into fine bread and sweet wine", "It ran out at once"],
             answer: 1
         },
         {
-            q: 'Where was the golden goose?',
-            choices: ['Inside a hollow tree stump', 'At the inn', 'In the castle garden'],
+            q: "Where was the golden goose?",
+            choices: ["Inside a hollow tree stump", "At the inn", "In the castle garden"],
             answer: 0
         },
         {
-            q: 'Why did the second daughter stick fast?',
-            choices: ['She touched a feather herself', 'She held the youngest son’s coat', 'She pulled at her sister’s arm'],
+            q: "Why did the second daughter stick fast?",
+            choices: ["She touched a feather herself", "She held the youngest son’s coat", "She pulled at her sister’s arm"],
             answer: 2
         },
         {
-            q: 'What made the princess laugh?',
-            choices: ['The clowns and acrobats', 'The string of people trailing after the goose', 'The golden feathers'],
+            q: "What made the princess laugh?",
+            choices: ["The clowns and acrobats", "The string of people trailing after the goose", "The golden feathers"],
             answer: 1
         },
         {
-            q: 'What did the youngest ask the king for?',
-            choices: ['To take the goose back to the wood', 'Gold and land', 'Nothing at all'],
+            q: "What did the youngest ask the king for?",
+            choices: ["To work at the castle", "Gold and land", "To keep the golden goose"],
             answer: 0
         },
         {
-            q: 'Which reaction to this book does NOT fit?',
+            q: "Which reaction to this book does NOT fit?",
             wide: true,
             choices: [
                 "With only hard bread and sour beer he still made room for the old man — sharing does not wait until you have plenty.",
@@ -1021,16 +991,16 @@ const EN = {
         '02-second-2.webp': [
             { word: 'swing', meaning: '휘두르다', sentence: 'He started swinging his axe again.' },
             { word: 'the wrong way', meaning: '엉뚱한 쪽으로', sentence: 'The tree came down the wrong way.' },
-            { word: 'laid up', meaning: '앓아누운', sentence: 'Two brothers laid up side by side.' },
-            { word: 'groan', meaning: '앓는 소리', sentence: 'There was groaning from the room.' },
-            { word: 'speak up', meaning: '입을 열다', sentence: 'And then the youngest spoke up.' }
+            { word: 'laid up', meaning: '앓아누운', sentence: 'The two brothers were laid up side by side.' },
+            { word: 'groan', meaning: '앓는 소리', sentence: 'Groans came from the room.' },
+            { word: 'speak up', meaning: '입을 열다', sentence: 'Then the youngest son spoke up.' }
         ],
         '03-share.webp': [
             { word: 'snort', meaning: '코웃음 치다', sentence: 'His brothers snorted under their blankets.' },
             { word: 'have faith in', meaning: '미더워하다', sentence: 'His mother had no faith in it either.' },
-            { word: 'stale', meaning: '딱딱하게 굳은', sentence: 'Some hard, stale bread.' },
-            { word: 'sour', meaning: '시어 버린', sentence: 'There was nothing to drink but sour beer.' },
-            { word: 'in good spirits', meaning: '기분 좋게', sentence: 'He set off in good spirits.' }
+            { word: 'stale', meaning: '딱딱하게 굳은', sentence: 'Hard, stale bread.' },
+            { word: 'sour', meaning: '시어 버린', sentence: 'Hard, stale bread and sour beer.' },
+            { word: 'in good spirits', meaning: '기분 좋게', sentence: 'And set off in good spirits.' }
         ],
         '03-share-2.webp': [
             { word: 'make room', meaning: '자리를 내주다', sentence: 'The youngest made room for him at once.' },
@@ -1048,14 +1018,14 @@ const EN = {
         '04-goose-2.webp': [
             { word: 'well I never', meaning: '세상에', sentence: 'Well I never — a goose like this!' },
             { word: 'lift out', meaning: '안아 올리다', sentence: 'He lifted her out in both hands.' },
-            { word: 'inn', meaning: '주막', sentence: 'He decided to stop for the night at an inn.' },
+            { word: 'inn', meaning: '주막', sentence: 'He decided to stop for the night at an inn nearby.' },
             { word: 'stare at', meaning: '쳐다보다', sentence: 'People stared at him.' },
             { word: 'half light', meaning: '어스름', sentence: 'The goose shone even in the half light.' }
         ],
         '05-stuck.webp': [
             { word: 'innkeeper', meaning: '주막 주인', sentence: 'The innkeeper had three daughters.' },
-            { word: 'creep over', meaning: '살금살금 다가가다', sentence: 'The eldest daughter crept over.' },
-            { word: 'stick fast', meaning: '딱 붙다', sentence: 'And her hand stuck fast.' },
+            { word: 'creep over', meaning: '살금살금 다가가다', sentence: 'The eldest daughter crept into the room.' },
+            { word: 'stick fast', meaning: '딱 붙다', sentence: 'Her hand stuck fast.' },
             { word: 'brace', meaning: '버티다', sentence: 'She braced a foot against the wall.' },
             { word: 'heave', meaning: '힘껏 당기다', sentence: 'She braced a foot and heaved.' }
         ],
@@ -1069,19 +1039,19 @@ const EN = {
         '06-parade.webp': [
             { word: 'strung out', meaning: '줄줄이 늘어선', sentence: 'Three sisters strung out behind him.' },
             { word: 'carry on', meaning: '행동하다, 굴다', sentence: 'What a way to carry on!' },
-            { word: 'priest', meaning: '신부님', sentence: 'And then the priest saw it.' },
-            { word: 'baker', meaning: '빵집 주인', sentence: 'The baker happened to be passing.' },
+            { word: 'priest', meaning: '신부님', sentence: 'Then the priest saw it.' },
+            { word: 'baker', meaning: '빵집 주인', sentence: 'A baker happened to be passing.' },
             { word: 'dough', meaning: '반죽', sentence: 'And what about my dough!' }
         ],
         '06-parade-2.webp': [
             { word: 'pull apart', meaning: '떼어 놓다', sentence: 'Let us pull them apart!' },
             { word: 'in step', meaning: '발을 맞추어', sentence: 'Keep in step, will you!' },
-            { word: 'tangled', meaning: '엉킨', sentence: 'People got their feet tangled.' },
+            { word: 'tangled', meaning: '엉킨', sentence: 'Feet got tangled.' },
             { word: 'come loose', meaning: '떨어지다', sentence: 'Their hands did not come loose.' },
-            { word: 'squawk', meaning: '꽥 소리', sentence: 'The goose gave a squawk.' }
+            { word: 'squawk', meaning: '꽥 소리', sentence: 'The goose squawked in his arms.' }
         ],
         '07-princess.webp': [
-            { word: 'worry', meaning: '걱정', sentence: 'A king in that country had a great worry.' },
+            { word: 'worry', meaning: '걱정', sentence: 'A king in another land had a great worry.' },
             { word: 'entertainer', meaning: '재주꾼', sentence: 'The king sent for every kind of entertainer.' },
             { word: 'acrobat', meaning: '곡예사', sentence: 'Clowns came, and acrobats came.' },
             { word: 'put out word', meaning: '알리다', sentence: 'The king put out word through the country.' },
@@ -1097,13 +1067,13 @@ const EN = {
         '08-ending.webp': [
             { word: 'come away', meaning: '떨어지다', sentence: 'All the stuck hands came away.' },
             { word: 'free', meaning: '자유로운', sentence: 'The three sisters were free.' },
-            { word: 'bewildered', meaning: '어리둥절한', sentence: 'People stood staring at one another, bewildered.' },
-            { word: 'go red', meaning: '눈가가 붉어지다', sentence: 'His own eyes went red with it.' }
+            { word: 'bewildered', meaning: '어리둥절한', sentence: 'People stared, bewildered.' },
+            { word: 'go red', meaning: '눈가가 붉어지다', sentence: 'His own eyes went red.' }
         ],
         '08-ending-2.webp': [
             { word: 'send for', meaning: '부르다', sentence: 'The king sent for the youngest son.' },
             { word: 'stretch out', meaning: '길게 빼다', sentence: 'The goose stretched out her neck.' },
-            { word: 'let go', meaning: '놓아주다', sentence: 'He went to the wood and let the goose go.' },
+            { word: 'let go', meaning: '놓아주다', sentence: 'He let the goose go in the wood.' },
             { word: 'see differently', meaning: '달리 보다', sentence: 'His brothers came to see him differently.' }
         ],
         'end.webp': [

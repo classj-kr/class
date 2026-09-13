@@ -569,17 +569,14 @@ const EN = {
                     art: '01-cow.webp',
                     emoji: '🐄',
                     left: [
-                        "Jack lived alone with his mother, and all they had in the world was one cow.",
-                        "Her name was Milky-white.",
-                        "But at some point she stopped giving milk, and things grew harder and harder. Everything worth selling had been sold already.",
-                        "One dry crust was all that was left in the cupboard."
+                        "Jack lived alone with his mother. All they had was one cow, Milky-white.",
+                        "They lived by selling her milk. But one day she stopped giving milk, and things grew harder and harder.",
+                        "Everything worth selling had been sold already. One dry crust was all that was left in the cupboard."
                     ],
                     right: [
-                        "One morning his mother called him.",
-                        "\"We shall have to sell Milky-white now.\"",
+                        "One morning his mother called him. \"We'll have to sell Milky-white now.\"",
                         "Jack hung his head.",
-                        "\"Get a good price for her.\"",
-                        "\"Our whole winter depends on it.\"",
+                        "\"Get a good price for her,\" she said. \"Our whole winter depends on it.\"",
                         "Jack took the rope without a word."
                     ]
                 },
@@ -587,16 +584,14 @@ const EN = {
                     art: '01-cow-2.webp',
                     emoji: '🐄',
                     left: [
-                        "Jack set off toward the market with Milky-white plodding along behind him.",
-                        "It was a long road. He was about half way when he saw a man standing at the roadside.",
-                        "The man wore a hat with a very wide brim.",
-                        "\"Taking your cow to be sold, I see.\""
+                        "Jack set off for the market. Milky-white came plodding along behind him.",
+                        "It was a long road. When he was about half way, he saw a man standing at the roadside.",
+                        "The man wore a hat with a very wide brim. He spoke first. \"Taking your cow to market, I see.\""
                     ],
                     right: [
-                        "\"Yes, I'm on my way to market.\"",
-                        "\"Would you not sell her to me instead?\"",
-                        "Jack looked up at him for a moment.",
-                        "\"And what would you give me?\"",
+                        "\"Yes, I'm on my way there,\" said Jack.",
+                        "\"Would you sell her to me instead?\" asked the man.",
+                        "Jack looked up at him for a moment. \"How much will you give me?\"",
                         "The man slowly opened his fist. Five beans lay in his palm."
                     ]
                 }
@@ -610,11 +605,9 @@ const EN = {
                     art: '02-beans.webp',
                     emoji: '🫘',
                     left: [
-                        "Jack's eyes went wide.",
-                        "\"Five beans?\"",
-                        "\"These are no ordinary beans.\"",
-                        "\"In a single night they grow as high as the sky.\"",
-                        "The beans caught the sunlight and glittered, and Jack felt his mind waver."
+                        "Jack's eyes went wide. \"Five beans?\"",
+                        "The man smiled. \"These are no ordinary beans. Plant them, and in a single night they grow as high as the sky.\"",
+                        "The beans caught the sunlight and glittered. Jack felt his mind waver."
                     ],
                     right: [
                         "In the end he handed Milky-white over and put the beans in his pocket. She looked back at him and gave a long moo.",
@@ -627,17 +620,16 @@ const EN = {
                     art: '02-beans-2.webp',
                     emoji: '🫘',
                     left: [
-                        "\"You traded our cow for beans!\"",
-                        "She flung the beans out of the window, and they scattered all over the yard.",
-                        "\"There will be no supper tonight!\"",
-                        "Jack lay down hungry and pulled the blanket over his head."
+                        "\"You traded our cow for beans!\" cried his mother.",
+                        "She flung the beans out of the window. They scattered all over the yard.",
+                        "\"And there will be no supper tonight!\"",
+                        "Jack went to bed hungry and pulled the blanket over his head."
                     ],
                     right: [
-                        "He tossed and turned for a long while.",
-                        "'I really have been a fool.'",
+                        "He tossed and turned for a long while. 'I really have been a fool.'",
                         "Then a sound came from outside the window.",
                         "Rustle, rustle. Rustle, rustle.",
-                        "It sounded for all the world like something growing. Jack drifted off to sleep listening to it."
+                        "It sounded like something growing. Jack drifted off to sleep listening to it."
                     ]
                 }
             ]
@@ -650,14 +642,14 @@ const EN = {
                     art: '03-beanstalk.webp',
                     emoji: '🌱',
                     left: [
-                        "Next morning the room was oddly dark. Jack opened the window and everything in front of him was green.",
-                        "An enormous stalk stood planted there, thick as a tower. One single leaf was the size of his bedroom door.",
-                        "\"It's the beanstalk!\""
+                        "Next morning the room was oddly dark. Jack opened the window, and all he could see was green.",
+                        "An enormous stalk stood planted there. One leaf alone was as big as a door.",
+                        "Jack gasped. \"The beans Mother threw have grown in one night!\""
                     ],
                     right: [
                         "Jack ran out into the yard barefoot. His mother was still asleep.",
-                        "He tipped his head right back and still could not see the top — the stalk went straight up into the clouds and vanished.",
-                        "Up close, the stems were twisted round one another like a ladder. It was made for climbing.",
+                        "He tipped his head back but could not see the top. The stalk went up into the clouds and vanished.",
+                        "Up close, the stems were twisted round one another like a ladder, just right for climbing.",
                         "Jack swallowed hard."
                     ]
                 },
@@ -670,10 +662,10 @@ const EN = {
                         "Still he did not stop."
                     ],
                     right: [
-                        "At last he climbed into the clouds. Everything went white and he could see nothing at all. Damp mist touched his face.",
-                        "He climbed a good while longer, and all at once the cloud broke open.",
-                        "A wide, level road ran away beneath his feet. This was the world above the clouds.",
-                        "Jack stood there a long time, looking all around him."
+                        "At last he climbed into the clouds. Everything went white, and damp mist touched his face.",
+                        "He climbed on, and all at once the clouds opened.",
+                        "A wide, level road ran beneath his feet. This was the world above the clouds.",
+                        "Jack stood there a long time, looking all around."
                     ]
                 }
             ]
@@ -686,17 +678,15 @@ const EN = {
                     art: '04-castle.webp',
                     emoji: '🏰',
                     left: [
-                        "At the end of the road stood an enormous castle with a door the size of a hillside.",
-                        "Jack went and stood in front of it. Even on tiptoe he could not reach the handle, and when he knocked, no sound came out at all.",
-                        "Then the door swung slowly open by itself, and an enormous woman put her head out."
+                        "Jack followed the road. At the end of it stood an enormous castle with a door as big as a hill.",
+                        "Even on tiptoe he could not reach the handle. So he banged on the door with his fist.",
+                        "Creak! The door swung slowly open, and an enormous woman put her head out."
                     ],
                     right: [
-                        "\"And what brings you here, child?\"",
-                        "\"I'm hungry.\"",
-                        "\"Could you spare me something to eat?\"",
-                        "The woman glanced about her and dropped her voice.",
-                        "\"My husband is a fearful man.\"",
-                        "\"But come in, all the same.\""
+                        "\"Child, what brings you here?\" she asked.",
+                        "Jack held his stomach. \"I'm hungry. Could you give me something to eat?\"",
+                        "The woman glanced about her. Then she dropped her voice.",
+                        "\"My husband is a fierce giant. But quick, come in.\""
                     ]
                 },
                 {
@@ -711,8 +701,8 @@ const EN = {
                         "Then all of a sudden the floor shook.",
                         "Boom. Boom. Boom.",
                         "The plates on the table rattled and danced.",
-                        "\"Goodness, he's back already!\"",
-                        "The woman swept Jack up in her arms and hid him quickly inside a great cooking pot."
+                        "\"Goodness, he's back already!\" cried the woman.",
+                        "She swept Jack up in her arms and quickly hid him inside a great cooking pot."
                     ]
                 }
             ]
@@ -725,18 +715,15 @@ const EN = {
                     art: '05-giant.webp',
                     emoji: '💰',
                     left: [
-                        "In strode the giant, so tall his head all but brushed the ceiling.",
-                        "He sniffed at the air.",
-                        "\"I smell a person in here.\"",
-                        "His wife waved the idea away.",
-                        "\"That will be what you ate yesterday.\""
+                        "In strode the giant. His head all but brushed the ceiling.",
+                        "He sniffed at the air. \"I smell a person in here!\"",
+                        "His wife waved her hand. \"That's only the meat I roasted this afternoon.\""
                     ],
                     right: [
-                        "The giant sat down looking unconvinced.",
-                        "\"Bring it, bring it, quick!\"",
-                        "He ate a whole ox and got through twenty loaves besides.",
-                        "Jack watched him eat through the crack under the lid of the pot.",
-                        "'My word — he'd swallow me in one.'"
+                        "The giant sat down looking unconvinced. \"Bring my supper, quick, quick!\"",
+                        "He ate a whole ox and twenty loaves besides.",
+                        "Jack peeped out through a crack under the lid of the pot.",
+                        "'Goodness — he could swallow me in one bite!'"
                     ]
                 },
                 {
@@ -751,9 +738,9 @@ const EN = {
                     ],
                     right: [
                         "One, two, three…",
-                        "Then he broke off in the middle and gave an enormous yawn. His head nodded, and soon he was snoring.",
-                        "Jack crept out of the pot.",
-                        "He got both arms round the sack of gold, and away he ran without once looking back."
+                        "Then he stopped counting. He gave an enormous yawn, and his head began to nod. Soon he was snoring.",
+                        "Jack crept out of the pot. He swept the coins back into the sack.",
+                        "Then he hugged it in both arms and ran without once looking back."
                     ]
                 }
             ]
@@ -766,34 +753,33 @@ const EN = {
                     art: '06-goose.webp',
                     emoji: '🪿',
                     left: [
-                        "Jack climbed down the beanstalk, and his mother's mouth fell open at the sight of the gold.",
+                        "Jack climbed down the beanstalk with the gold. His mother's mouth fell open when she saw it.",
                         "From that day the two of them were never hungry. But the gold went down little by little.",
-                        "Some months went by like that, and Jack climbed the beanstalk again."
+                        "Some months went by, and Jack climbed the beanstalk again."
                     ],
                     right: [
-                        "The woman opened the door to him with a sigh.",
+                        "The woman opened the door with a sigh.",
                         "\"You again. Do be careful.\"",
                         "And before long, there were the footsteps.",
                         "Boom. Boom. Boom.",
-                        "Jack got straight into the pot, and the giant sat down at the table."
+                        "Jack got straight into the pot. The giant strode in and sat down at the table."
                     ]
                 },
                 {
                     art: '06-goose-2.webp',
                     emoji: '🪿',
                     left: [
-                        "\"Fetch me the goose.\"",
-                        "His wife came carrying a goose and set her gently on the table.",
-                        "\"Now then. Lay.\"",
+                        "\"Fetch me the goose!\" shouted the giant.",
+                        "His wife carried in a goose and set her gently on the table.",
+                        "\"Now then. Lay,\" said the giant.",
                         "The goose hunched herself up.",
                         "Plop."
                     ],
                     right: [
                         "Down dropped an egg of solid gold. Inside the pot, Jack's mouth fell open.",
-                        "Before long the giant was snoring again. Jack slipped out and gathered the goose into his arms.",
+                        "Soon the giant, full from his supper, was snoring. Jack crept out and took the goose in his arms.",
                         "But the goose let out a squawk.",
-                        "The giant's eyes flew open.",
-                        "Jack ran for it without looking back."
+                        "The giant's eyes flew open — but Jack was already out of the door."
                     ]
                 }
             ]
@@ -806,27 +792,25 @@ const EN = {
                     art: '07-harp.webp',
                     emoji: '🎵',
                     left: [
-                        "Thanks to the goose, everything was easy now.",
-                        "But Jack began to wonder again.",
-                        "\"What else is there in that castle?\"",
-                        "His mother waved both hands to stop him.",
-                        "\"That's enough now.\"",
-                        "\"Just once more.\""
+                        "Jack carried the goose down the beanstalk. After that, life was easy for them.",
+                        "But Jack began to wonder again. \"What else is there in that castle?\"",
+                        "His mother waved both hands to stop him. \"That's enough now.\"",
+                        "But Jack would not give up. \"Just once more.\""
                     ],
                     right: [
-                        "And up the beanstalk he went after all. This time he got into the castle without the woman knowing and hid in the shadow behind the hearth.",
-                        "By and by the giant finished his supper and called out.",
-                        "\"Fetch me the harp.\"",
-                        "Out came a small harp with a face carved into it."
+                        "And up the beanstalk he went again. This time he slipped into the castle without the woman seeing him.",
+                        "He hid in the shadow behind the hearth.",
+                        "After supper the giant called out, \"Fetch me the harp!\"",
+                        "The woman brought a small harp with a face carved into it."
                     ]
                 },
                 {
                     art: '07-harp-2.webp',
                     emoji: '🎵',
                     left: [
-                        "\"Sing.\"",
+                        "\"Sing,\" the giant ordered.",
                         "The harp began to play all by itself. It was so lovely that Jack quite forgot himself listening to it.",
-                        "The giant's eyes slid shut, and soon he was snoring loud and deep.",
+                        "The giant's eyes slid shut, and soon he was snoring loudly.",
                         "Jack crept out from behind the hearth."
                     ],
                     right: [
@@ -847,34 +831,30 @@ const EN = {
                     art: '08-axe.webp',
                     emoji: '🪓',
                     left: [
-                        "Jack ran along the cloud road as hard as he could, with the footsteps close behind him.",
-                        "Boom!",
-                        "Boom!",
-                        "Boom!",
-                        "The cloud road shook with every one of them."
+                        "Jack ran along the cloud road as hard as he could. The giant's footsteps came close behind him.",
+                        "Boom! Boom! Boom!",
+                        "The cloud road shook with every step."
                     ],
                     right: [
-                        "Jack just reached the top of the beanstalk and slid straight down the stem.",
-                        "But the giant took hold of it too. The whole beanstalk swayed, and leaves came showering down.",
-                        "\"Mother — the axe!\"",
-                        "Jack shouted until his throat hurt, and his mother came running out with it."
+                        "At last Jack reached the top of the beanstalk and slid straight down the stem.",
+                        "But the giant grabbed the stem and came climbing down after him. The whole beanstalk swayed. Leaves came showering down.",
+                        "\"Mother — the axe!\" Jack shouted as loud as he could.",
+                        "His mother came running out with it."
                     ]
                 },
                 {
                     art: '08-axe-2.webp',
                     emoji: '🪓',
                     left: [
-                        "The moment his feet touched the ground he took the axe and swung at the stem with all his strength.",
-                        "Once. Twice. Three times.",
-                        "Crack.",
-                        "The stem split open and the beanstalk began to lean over. The giant scrambled back up into the clouds in a hurry."
+                        "Jack landed and grabbed the axe. He swung at the stem with all his strength.",
+                        "Once. Twice. Three times. Crack!",
+                        "The stem split open. The beanstalk began to lean over, and the giant scrambled back up into the clouds."
                     ],
                     right: [
-                        "And he never came down again.",
-                        "The beanstalk came down across the field with a crash you could feel through the whole village.",
-                        "That day Jack put the axe away.",
-                        "\"I think I've climbed enough.\"",
-                        "His mother gave him a pat on the shoulder."
+                        "He never came down again.",
+                        "The beanstalk crashed down across the field, and the whole village shook.",
+                        "Jack put down the axe. \"I'll never go to the giant's castle again.\"",
+                        "His mother patted him on the shoulder."
                     ]
                 }
             ]
@@ -938,7 +918,7 @@ const EN = {
                     "The story of a giant living above the clouds has been told in England for a very long time, and it was gathered into the shape we know about a hundred and forty years ago.",
                     "Jack traded a cow for a few beans. Anybody could see it was a bad bargain — which is exactly why his mother threw them out of the window.",
                     "And then those beans grew overnight. If she had not thrown them, no beanstalk would have grown by the window. Something done in anger opened the road.",
-                    "Jack climbed above the clouds three times. The first time he hid in fear, the second time he half knew his way, and the third time he went up meaning to take the harp."
+                    "Jack climbed above the clouds three times. The first time he hid in fear, the second time he half knew his way, and the third time he went up because he wanted to know what else was in the castle."
                 ],
                 right: [
                     "Look again at the giant's wife. She is the one who hid Jack. In the most dangerous house in the story, she was the one who kept him safe.",
@@ -961,7 +941,7 @@ const EN = {
             { word: 'depend on', meaning: '~에 달려 있다', sentence: 'Our whole winter depends on it.' }
         ],
         '01-cow-2.webp': [
-            { word: 'plod', meaning: '뚜벅뚜벅 걷다', sentence: 'Milky-white plodded along behind him.' },
+            { word: 'plod', meaning: '뚜벅뚜벅 걷다', sentence: "Milky-white came plodding along behind him." },
             { word: 'brim', meaning: '모자챙', sentence: 'The man wore a hat with a very wide brim.' },
             { word: 'fist', meaning: '주먹', sentence: 'The man slowly opened his fist.' },
             { word: 'palm', meaning: '손바닥', sentence: 'Five beans lay in his palm.' }
@@ -977,7 +957,7 @@ const EN = {
             { word: 'fling', meaning: '확 던지다', sentence: 'She flung the beans out of the window.' },
             { word: 'scatter', meaning: '흩어지다', sentence: 'They scattered all over the yard.' },
             { word: 'toss and turn', meaning: '뒤척이다', sentence: 'He tossed and turned for a long while.' },
-            { word: 'rustle', meaning: '사각사각 소리', sentence: 'Rustle, rustle. It sounded like something growing.' }
+            { word: 'rustle', meaning: '사각사각 소리', sentence: "Rustle, rustle. It sounded like something growing." }
         ],
         '03-beanstalk.webp': [
             { word: 'stalk', meaning: '줄기', sentence: 'An enormous stalk stood planted there.' },
@@ -993,7 +973,7 @@ const EN = {
         ],
         '04-castle.webp': [
             { word: 'tiptoe', meaning: '까치발', sentence: 'Even on tiptoe he could not reach the handle.' },
-            { word: 'swing open', meaning: '스르르 열리다', sentence: 'The door swung slowly open by itself.' },
+            { word: 'swing open', meaning: '스르르 열리다', sentence: "The door swung slowly open." },
             { word: 'glance about', meaning: '주위를 살피다', sentence: 'The woman glanced about her.' },
             { word: 'drop one’s voice', meaning: '목소리를 낮추다', sentence: 'She dropped her voice.' }
         ],
@@ -1001,7 +981,7 @@ const EN = {
             { word: 'tremendous', meaning: '어마어마한', sentence: 'The kitchen was tremendous.' },
             { word: 'cartwheel', meaning: '수레바퀴', sentence: 'A single plate was as wide as a cartwheel.' },
             { word: 'rattle', meaning: '달그락거리다', sentence: 'The plates on the table rattled and danced.' },
-            { word: 'sweep up', meaning: '번쩍 안아 올리다', sentence: 'The woman swept Jack up in her arms.' }
+            { word: 'sweep up', meaning: '번쩍 안아 올리다', sentence: "She swept Jack up in her arms." }
         ],
         '05-giant.webp': [
             { word: 'stride', meaning: '성큼 걷다', sentence: 'In strode the giant.' },
@@ -1017,7 +997,7 @@ const EN = {
             { word: 'snore', meaning: '코를 골다', sentence: 'Soon he was snoring.' }
         ],
         '06-goose.webp': [
-            { word: 'sigh', meaning: '한숨을 쉬다', sentence: 'The woman opened the door with a sigh.' },
+            { word: 'sigh', meaning: '한숨을 쉬다', sentence: "The woman opened the door with a sigh." },
             { word: 'footstep', meaning: '발소리', sentence: 'And before long, there were the footsteps.' }
         ],
         '06-goose-2.webp': [

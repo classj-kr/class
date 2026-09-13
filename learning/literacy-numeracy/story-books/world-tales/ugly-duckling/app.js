@@ -563,11 +563,9 @@ const EN = {
                         "But he did not look like the others at all. He was big, and he was grey all over."
                     ],
                     right: [
-                        "His neck was oddly long, and his feet were so large he kept tripping over them. And what came out of him was less a peep than a squawk.",
-                        "\"Goodness me, what is all this?\"",
-                        "The mother duck tilted her head one way and then the other.",
-                        "Then she gathered him up under her.",
-                        "\"Mine is mine, all the same.\""
+                        "His neck was oddly long, and his feet were so big he kept tripping over them. His voice was more a squawk than a peep.",
+                        "The mother duck tilted her head again and again. \"Goodness me, what is this?\"",
+                        "Then she tucked him in under her wing. \"Still, he's my baby all the same.\""
                     ]
                 }
             ]
@@ -587,12 +585,9 @@ const EN = {
                         "The duckling ducked quickly behind his mother."
                     ],
                     right: [
-                        "Then somebody came up and pecked him hard on the neck.",
-                        "\"Get away, you ugly duckling!\"",
+                        "Then one duck came up and pecked him hard on the neck. \"Get away, you ugly duckling!\"",
                         "Even his brothers and sisters turned their backs.",
-                        "\"You make us ashamed.\"",
-                        "And day by day his mother wore out too.",
-                        "\"I almost wish you had never…\""
+                        "\"You make us ashamed,\" they said."
                     ]
                 },
                 {
@@ -606,8 +601,8 @@ const EN = {
                     ],
                     right: [
                         "Every day was the same. He was pecked and shoved and laughed at, and at feeding time he was always last.",
-                        "Then one evening the duckling made up his mind.",
-                        "\"I can't live here.\"",
+                        "Even his mother grew more tired each day. \"If only you weren't here…\"",
+                        "Then one evening the duckling made up his mind. \"I can't live here.\"",
                         "And he squeezed out under the fence."
                     ]
                 }
@@ -644,10 +639,9 @@ const EN = {
                     ],
                     right: [
                         "An old woman with weak eyes lived there with a cat and a hen.",
-                        "The hen puffed out her chest.",
-                        "\"Can you lay eggs? I lay one every day.\"",
-                        "The cat arched his back and purred at him.",
-                        "Told he could do nothing at all, the duckling left that house too."
+                        "The hen puffed out her chest. \"Can you lay eggs? I lay one every day.\"",
+                        "The cat arched his back and purred. \"And you can't even do this, can you?\"",
+                        "Scolded every day, the duckling left that house too."
                     ]
                 }
             ]
@@ -666,22 +660,20 @@ const EN = {
                         "The duckling lifted his head."
                     ],
                     right: [
-                        "A line of white birds was flying over. Their necks were long and their wings were very wide.",
+                        "A line of white birds was flying over, with long necks and very wide wings.",
                         "They were so beautiful it stopped his breath.",
-                        "A sound came out of him before he knew it — a sound he had never heard himself make.",
-                        "But the birds had gone away into the distance.",
-                        "For a long time he looked up at the empty sky."
+                        "Before he knew it, he cried out in a voice he had never heard before.",
+                        "But the birds vanished into the distance, and for a long time he gazed at the empty sky."
                     ]
                 },
                 {
                     art: '04-swans-2.webp',
                     emoji: '🦢',
                     left: [
-                        "'What were those birds?'",
-                        "'Where are they going?'",
+                        "'What were those birds? Where are they going?'",
                         "He did not even know their name.",
-                        "And still he kept thinking about them. Every time he did, his chest went strange.",
-                        "Even asleep at night, those wings came back to him."
+                        "And still he kept thinking about them. Every time he did, his heart beat strangely.",
+                        "Even asleep at night, he saw those wings again."
                     ],
                     right: [
                         "The duckling sat down in the water and opened his own wings.",
@@ -700,17 +692,15 @@ const EN = {
                     art: '05-winter.webp',
                     emoji: '❄️',
                     left: [
-                        "Winter came. The wind cut like a knife, and the lake began to freeze inward from the edges.",
-                        "His feet ached with the cold and he kept shifting from one to the other.",
-                        "The duckling swam all night so as not to freeze in. But the ice kept closing in on him.",
-                        "The water he could swim in shrank to the size of a washtub."
+                        "Winter came. The wind cut like a knife, and the lake began to freeze from the edges.",
+                        "The duckling swam all night so as not to freeze in. His feet grew numb with cold.",
+                        "But the ice kept closing in on him, until his water shrank to the size of a washtub."
                     ],
                     right: [
-                        "Then one morning before dawn he could not move at all.",
-                        "The ice had caught him.",
-                        "The duckling shut his eyes.",
-                        "'So this is as far as I go.'",
-                        "And just then there were footsteps. A farmer happened to be passing along that road."
+                        "One morning before dawn, tired out, he stopped swimming for a moment.",
+                        "The water froze hard, and he was stuck in the ice.",
+                        "The duckling shut his eyes. 'So this is as far as I go.'",
+                        "Just then came footsteps. A farmer happened to be passing along that road."
                     ]
                 },
                 {
@@ -723,11 +713,11 @@ const EN = {
                         "And then the children came crowding over wanting to touch him."
                     ],
                     right: [
-                        "\"Come and look!\"",
-                        "The duckling took fright. He flapped up in a panic and went straight into the milk pail.",
-                        "\"Oh my goodness!\"",
-                        "The whole house was in an uproar.",
-                        "And the duckling shot out through the open door."
+                        "\"Come here!\" they cried.",
+                        "The duckling took fright, afraid of being teased again.",
+                        "He flapped up in a panic and fell straight into the milk pail.",
+                        "\"Oh my goodness!\" cried the farmer's wife.",
+                        "The whole house was in an uproar, and the duckling shot out through the open door."
                     ]
                 }
             ]
@@ -780,14 +770,12 @@ const EN = {
                         "The great swans came slowly toward him, and the duckling shrank down small.",
                         "But the swans did not peck him.",
                         "They bent their necks to him instead.",
-                        "\"Welcome.\"",
-                        "\"Come along with us.\""
+                        "\"Welcome! Come along with us.\""
                     ],
                     right: [
                         "The duckling could not get a word out. The tears simply came.",
                         "\"But I'm… the ugly duckling.\"",
-                        "\"And who told you that?\"",
-                        "One of the swans came up beside him, smiling.",
+                        "One of the swans came up beside him, smiling. \"And who told you that?\"",
                         "The swans swam on together, and he swam there among them."
                     ]
                 },
@@ -795,15 +783,14 @@ const EN = {
                     art: '07-swan-2.webp',
                     emoji: '🤍',
                     left: [
-                        "Children came running down to the pond and threw crumbs of bread on the water.",
-                        "\"Look — there's a new swan!\"",
+                        "Children came running to the pond and threw crumbs of bread on the water.",
+                        "\"Look, there's a new swan!\"",
                         "\"That one's the prettiest of all!\"",
-                        "The duckling put his face down into his wing. Nobody had ever called him pretty before."
+                        "The duckling hid his face in his wing. No one had called him pretty before."
                     ],
                     right: [
                         "And then a thought came to him.",
-                        "'Even when I was the ugly duckling…'",
-                        "'I was still me.'",
+                        "'Even when I was the ugly duckling… I was still me.'",
                         "The duckling opened his wings out wide.",
                         "And the sky that day was very clear."
                     ]
@@ -854,7 +841,7 @@ const EN = {
                 "The mother duck sat on the last big egg one more day — the late one was still hers.",
                 "At the sight of the white birds a sound came out of him he had never heard before — he was drawn to them before he knew their name.",
                 "All winter he chewed dry roots in the reeds and held on — his wings grew in that time, where nobody was watching.",
-                "The duckling flapped up and burst out of the farmer's door — it left of its own accord rather than impose any longer."
+                "The duckling flapped up and burst out of the farmer's door — he left because he did not want to trouble them any longer."
             ],
             answer: 3
         }
@@ -895,13 +882,13 @@ const EN = {
             { word: 'split open', meaning: '쩍 갈라지다', sentence: 'Next morning it split open at last.' },
             { word: 'beak', meaning: '부리', sentence: 'A beak pushed out of it.' },
             { word: 'waddle', meaning: '뒤뚱거리며 걷다', sentence: 'A duckling came waddling out.' },
-            { word: 'trip over', meaning: '~에 걸려 넘어지다', sentence: 'He kept tripping over his own feet.' },
-            { word: 'squawk', meaning: '꽥 소리', sentence: 'What came out of him was less a peep than a squawk.' }
+            { word: 'trip over', meaning: '~에 걸려 넘어지다', sentence: 'He kept tripping over them.' },
+            { word: 'squawk', meaning: '꽥 소리', sentence: 'His voice was more a squawk than a peep.' }
         ],
         '02-teased.webp': [
             { word: 'farmyard', meaning: '농장 마당', sentence: 'She took her ducklings out into the farmyard.' },
             { word: 'crowd round', meaning: '우르르 모여들다', sentence: 'The ducks came crowding round.' },
-            { word: 'peck', meaning: '쪼다', sentence: 'Somebody pecked him hard on the neck.' },
+            { word: 'peck', meaning: '쪼다', sentence: 'One duck pecked him hard on the neck.' },
             { word: 'turn one’s back', meaning: '등을 돌리다', sentence: 'Even his brothers turned their backs.' },
             { word: 'ashamed', meaning: '창피한', sentence: 'You make us ashamed.' }
         ],
@@ -923,13 +910,13 @@ const EN = {
             { word: 'gap', meaning: '틈', sentence: 'He squeezed in through a gap in the door.' },
             { word: 'puff out', meaning: '쭉 펴다', sentence: 'The hen puffed out her chest.' },
             { word: 'arch one’s back', meaning: '등을 세우다', sentence: 'The cat arched his back and purred.' },
-            { word: 'purr', meaning: '가르랑거리다', sentence: 'The cat arched his back and purred at him.' }
+            { word: 'purr', meaning: '가르랑거리다', sentence: 'The cat arched his back and purred.' }
         ],
         '04-swans.webp': [
             { word: 'drift about', meaning: '떠다니다', sentence: 'He drifted about on the water alone.' },
             { word: 'a line of', meaning: '줄지어 있는', sentence: 'A line of white birds was flying over.' },
             { word: 'stop one’s breath', meaning: '숨이 멎게 하다', sentence: 'They were so beautiful it stopped his breath.' },
-            { word: 'in the distance', meaning: '저 멀리', sentence: 'The birds had gone away into the distance.' }
+            { word: 'in the distance', meaning: '저 멀리', sentence: 'The birds vanished into the distance.' }
         ],
         '04-swans-2.webp': [
             { word: 'keep thinking about', meaning: '자꾸 생각나다', sentence: 'He kept thinking about them.' },
@@ -947,7 +934,7 @@ const EN = {
             { word: 'gather up', meaning: '품에 안다', sentence: 'The farmer gathered the duckling up in his arms.' },
             { word: 'thaw', meaning: '녹다', sentence: 'The frozen little body thawed bit by bit.' },
             { word: 'take fright', meaning: '겁이 나다', sentence: 'The duckling took fright.' },
-            { word: 'pail', meaning: '통', sentence: 'He went straight into the milk pail.' },
+            { word: 'pail', meaning: '통', sentence: 'He fell straight into the milk pail.' },
             { word: 'uproar', meaning: '난리', sentence: 'The whole house was in an uproar.' }
         ],
         '06-reflection.webp': [

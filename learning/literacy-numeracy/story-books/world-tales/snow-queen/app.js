@@ -561,13 +561,13 @@ const EN = {
                     art: '01-roses.webp',
                     emoji: '🌹',
                     left: [
-                        "Under the roofs of a certain city lived two children, Gerda and Kai. Their two houses stood side by side, so that the attic windows looked straight at each other.",
-                        "The children set a wooden box between the windows and planted roses in it. The roses came out well every year, and the two of them sat and played underneath.",
+                        "Under the roofs of a city lived two children, Gerda and Kai. Their houses stood side by side, and the attic windows looked straight at each other.",
+                        "The children planted roses in a wooden box between the windows and played underneath.",
                         "In winter the frost went white all over the window glass."
                     ],
                     right: [
-                        "\"Let's put a coin on it.\"",
-                        "A coin warmed at the stove and pressed to the glass melted a neat round hole, and the two of them looked at each other through it and laughed.",
+                        "\"Let's put a coin on it,\" said Kai.",
+                        "A coin warmed at the stove and pressed to the glass melted a round hole. The two of them looked at each other through it and laughed.",
                         "In the evenings their grandmother told them stories, and they sat side by side against her knee."
                     ]
                 },
@@ -582,10 +582,10 @@ const EN = {
                         "Kai put his face close to the glass, and it was cold against the tip of his nose."
                     ],
                     right: [
-                        "\"If she comes I shall melt her on the stove.\"",
+                        "\"If she comes, I shall melt her on the stove!\" Kai boasted.",
                         "That night the snow drove hard, and the wind rattled the window frame.",
-                        "Something touched the glass — a very large snowflake.",
-                        "And that snowflake grew and grew until it took the shape of a woman dressed all in white.",
+                        "Something touched the glass: a huge snowflake.",
+                        "It grew and took the shape of a woman in white.",
                         "Kai pulled the blanket over his head."
                     ]
                 }
@@ -605,12 +605,12 @@ const EN = {
                         "If a piece gets into your eye, everything looks ugly to you ever after."
                     ],
                     right: [
-                        "It was a summer's day.",
-                        "Kai suddenly cried out.",
-                        "\"Ow — something's got in my eye!\"",
+                        "One summer's day, Kai suddenly cried out.",
+                        "\"Ow! Something's got in my eye!\"",
                         "\"And something's pricking my chest!\"",
                         "Gerda looked into his eye.",
-                        "There was nothing to see at all."
+                        "But she could not see a thing.",
+                        "The bit of mirror was far too tiny."
                     ]
                 },
                 {
@@ -643,8 +643,8 @@ const EN = {
                     left: [
                         "It was the town square in winter, and the children were out on their sledges.",
                         "The game was to hook your rope to a passing carriage and get pulled along.",
-                        "Then a white sleigh came into the square — large, and as white as snow.",
-                        "\"I've never seen that one!\""
+                        "Then a white sleigh came into the square, large and as white as snow.",
+                        "Kai's eyes shone. \"I've never seen that one!\""
                     ],
                     right: [
                         "Kai got his rope hooked to it at once.",
@@ -658,17 +658,17 @@ const EN = {
                     art: '03-sleigh-2.webp',
                     emoji: '🛷',
                     left: [
-                        "Only after a long stretch of open country did the sleigh stop.",
-                        "A woman dressed in white stepped slowly down. She was dazzlingly beautiful, and somehow cold with it —",
-                        "there was not even breath on her face.",
-                        "\"Are you cold?\"",
-                        "She kissed Kai on the forehead, and in that instant his whole body turned to ice."
+                        "After a long stretch of open country, the sleigh stopped.",
+                        "A woman in white stepped down. It was the woman from the window!",
+                        "She was dazzlingly beautiful, but cold. Not even her breath showed.",
+                        "\"Are you cold?\" She kissed Kai on the forehead.",
+                        "His whole body turned to ice."
                     ],
                     right: [
-                        "She kissed him once more, and Kai forgot Gerda. He forgot his grandmother, and the attic, and the roses.",
-                        "He could not even bring the name Gerda to mind.",
+                        "She kissed him once more, and Kai forgot everything: Gerda, his grandmother, and the roses.",
+                        "He could not bring her name to mind.",
                         "\"Nothing frightens you now, does it?\"",
-                        "\"No. Nothing at all.\"",
+                        "\"No. Nothing at all,\" Kai answered.",
                         "And the sleigh went away northward."
                     ]
                 }
@@ -691,25 +691,23 @@ const EN = {
                     ],
                     right: [
                         "When spring came, Gerda set out. She put on her new red shoes and went down to the river.",
-                        "\"River, do you know where our Kai is?\"",
-                        "She took the shoes off and threw them into the water.",
-                        "\"Take these and tell me.\"",
-                        "But the shoes kept drifting back to her."
+                        "\"River, did you take Kai? I'll give you my shoes. Give him back!\"",
+                        "She threw the shoes into the water.",
+                        "But the shoes kept drifting back to her, as if the river did not have Kai."
                     ]
                 },
                 {
                     art: '04-journey-2.webp',
                     emoji: '👞',
                     left: [
-                        "So Gerda climbed into a boat moored at the bank. The rope slipped loose and the river carried the boat away.",
-                        "After a long drift it came to a garden full of flowers.",
+                        "To throw the shoes further, Gerda climbed into a boat moored at the bank. But the rope slipped loose, and the river carried the boat away.",
+                        "At last it came to a garden full of flowers.",
                         "An old woman came out leaning on a stick.",
-                        "\"Come in, come in, pretty child.\"",
-                        "And she kept Gerda there."
+                        "\"Come in, come in, pretty child.\""
                     ],
                     right: [
-                        "Every day she gave her good things to eat. And she hid every rose in that garden,",
-                        "in case Gerda should remember Kai.",
+                        "The old woman wanted to keep Gerda. She combed Gerda's hair and made her forget Kai.",
+                        "She hid every rose, in case Gerda should remember Kai.",
                         "But one day a single rose came up at the foot of the wall.",
                         "Gerda saw it and remembered him.",
                         "\"What have I been doing here!\""
@@ -743,19 +741,17 @@ const EN = {
                     art: '05-robber-2.webp',
                     emoji: '🗝️',
                     left: [
-                        "The room was full of animals — pigeons, and a reindeer as well.",
-                        "\"Tell me a story tonight.\"",
+                        "The room was full of animals: pigeons, and a reindeer as well.",
+                        "\"Tell me a story tonight,\" said the robber girl.",
                         "So Gerda told her about Kai.",
-                        "And up above them the pigeons cooed.",
+                        "Up above them the pigeons cooed.",
                         "\"We saw that boy.\""
                     ],
                     right: [
-                        "\"He was sitting in the Snow Queen's sleigh.\"",
-                        "\"They went north, to Lapland.\"",
-                        "The reindeer tied up in the corner lifted his head.",
-                        "\"Lapland is my home.\"",
+                        "\"He was in the Snow Queen's sleigh,\" said the pigeons. \"They went north, to Lapland.\"",
+                        "The reindeer in the corner lifted his head. \"Lapland is my home.\"",
                         "The robber girl said nothing for a long while.",
-                        "And before dawn the next day she quietly untied the reindeer's rope."
+                        "Before dawn she quietly untied the reindeer's rope."
                     ]
                 }
             ]
@@ -768,10 +764,10 @@ const EN = {
                     art: '06-reindeer.webp',
                     emoji: '🦌',
                     left: [
-                        "\"Carry this child to Lapland.\"",
-                        "the robber girl told the reindeer. Then she put her own boots on Gerda's feet and packed her a loaf and a piece of meat.",
-                        "\"You're not having my blanket.\"",
-                        "And as she said it she unwound the scarf from her own neck and wrapped it round Gerda's."
+                        "\"Carry this child to Lapland,\" the robber girl told the reindeer.",
+                        "Then she put her own boots on Gerda's bare feet and packed her a loaf and a piece of meat.",
+                        "\"You're not having my blanket,\" she grumbled.",
+                        "But she unwound the scarf from her own neck and wrapped it round Gerda's."
                     ],
                     right: [
                         "The reindeer began to run — through the wood and out onto the open country.",
@@ -784,19 +780,18 @@ const EN = {
                     art: '06-reindeer-2.webp',
                     emoji: '🦌',
                     left: [
-                        "On the way they stopped at two cottages — the Lapland woman's and the Finnish woman's.",
-                        "The reindeer, out of breath, begged them,",
-                        "\"Give this child some strength.\"",
-                        "\"The strength of ten people, if you can.\"",
+                        "They went past Lapland to the cottage of a Finnish woman.",
+                        "The reindeer, out of breath, begged her,",
+                        "\"Give this child the strength of ten people.\"",
                         "But the woman shook her head.",
                         "\"There is no strength I can give her.\""
                     ],
                     right: [
-                        "\"She has it already.\"",
+                        "\"She has it already,\" the woman went on.",
                         "\"She came all this way barefoot, did she not?\"",
                         "\"There is no stronger thing than that.\"",
                         "So the reindeer ran on over the snow.",
-                        "And at last something white showed far ahead of them.",
+                        "At last something white showed far ahead.",
                         "It was the palace of the Snow Queen."
                     ]
                 }
@@ -812,9 +807,8 @@ const EN = {
                     left: [
                         "The reindeer set Gerda down in front of the palace.",
                         "\"From here you go alone.\"",
-                        "Gerda walked in by herself. The wind went over her face like a knife, and the snow squeaked under her feet.",
-                        "There was no door and no one on guard.",
-                        "It was quite empty inside."
+                        "There was no door and no one on guard. The Snow Queen was far away.",
+                        "Gerda walked in by herself. The wind cut her face like a knife, and the snow squeaked under her feet."
                     ],
                     right: [
                         "Every room was nothing but ice.",
@@ -852,35 +846,35 @@ const EN = {
                     art: '08-home.webp',
                     emoji: '🌿',
                     left: [
-                        "The two of them went out of the palace hand in hand, and the reindeer was still waiting outside the door.",
-                        "The three of them ran south.",
+                        "The two of them went out of the palace hand in hand. The reindeer was still waiting outside.",
+                        "They rode on its back to the south.",
                         "The further they went, the thinner the snow got.",
-                        "And at last green grass began to show between the patches.",
-                        "\"Look at that!\""
+                        "At last green grass began to show.",
+                        "\"Look at that!\" Kai shouted."
                     ],
                     right: [
                         "After so long with nothing but white, the green made their eyes ache.",
-                        "On the way they met the robber girl again, grown a good deal taller.",
-                        "\"So you found him!\"",
-                        "The three of them looked at one another and laughed for a long while.",
-                        "They met the crow again too, and the road home felt short."
+                        "There the reindeer said goodbye and went home.",
+                        "On the way they met the robber girl, grown a good deal taller.",
+                        "\"So you found him!\" They all laughed.",
+                        "The road home felt short."
                     ]
                 },
                 {
                     art: '08-home-2.webp',
                     emoji: '🌿',
                     left: [
-                        "At last they came to the city where they had lived. The bells happened to be ringing.",
-                        "The two of them went up the attic stairs they knew so well, one step at a time,",
+                        "At last they came to their own city. The bells were ringing.",
+                        "They went up the attic stairs,",
                         "and the stairs creaked the way they always had.",
-                        "They opened the door, and everything was as it had been. Their grandmother sat at the window reading."
+                        "Everything was the same. Grandmother sat at the window reading."
                     ],
                     right: [
-                        "In the wooden box outside, the roses were in full bloom.",
-                        "The two of them sat down side by side on their chairs, as they always used to.",
-                        "And sitting there, they found they had grown a great deal taller.",
-                        "\"How big we've got.\"",
-                        "But inside they were just the same. The summer light came in at the window, and the roses stirred without a sound."
+                        "Outside, the roses were in full bloom.",
+                        "They sat side by side, as they always used to.",
+                        "\"How big we've got!\" Gerda laughed.",
+                        "But inside they were the same.",
+                        "The roses stirred without a sound."
                     ]
                 }
             ]
@@ -927,8 +921,8 @@ const EN = {
             wide: true,
             choices: [
                 "Kai called the roses worm-eaten and kicked the box over — after the splinter, everything looked ugly to him.",
-                "The Finn woman said she had no strength to give her — she could see Gerda already had it.",
-                "Gerda's hot tears melted the splinter in his chest — what undid that place was not any kind of reckoning.",
+                "The Finnish woman said she had no strength to give her — she could see Gerda already had it.",
+                "Gerda's hot tears melted the splinter in his chest — it was not clever thinking that set him free.",
                 "The robber girl untied the reindeer — she had meant to let Gerda go from the start."
             ],
             answer: 3
@@ -969,7 +963,7 @@ const EN = {
         '01-roses-2.webp': [
             { word: 'swarm', meaning: '떼 지어 몰려오다', sentence: 'The snowflakes come swarming like bees.' },
             { word: 'rattle', meaning: '덜컹거리다', sentence: 'The wind rattled the window frame.' },
-            { word: 'take the shape of', meaning: '~의 모습이 되다', sentence: 'It took the shape of a woman dressed in white.' }
+            { word: 'take the shape of', meaning: '~의 모습이 되다', sentence: "It took the shape of a woman in white." }
         ],
         '02-shard.webp': [
             { word: 'wicked', meaning: '못된', sentence: 'A wicked magician made a mirror.' },
@@ -1025,8 +1019,8 @@ const EN = {
             { word: 'violet', meaning: '보랏빛', sentence: 'Green and violet light rolling across it.' }
         ],
         '06-reindeer-2.webp': [
-            { word: 'out of breath', meaning: '숨을 몰아쉬는', sentence: 'The reindeer, out of breath, begged them.' },
-            { word: 'beg', meaning: '부탁하다', sentence: 'The reindeer begged them.' },
+            { word: 'out of breath', meaning: '숨을 몰아쉬는', sentence: "The reindeer, out of breath, begged her." },
+            { word: 'beg', meaning: '부탁하다', sentence: "The reindeer begged her." },
             { word: 'barefoot', meaning: '맨발로', sentence: 'She came all this way barefoot.' }
         ],
         '07-ice-palace.webp': [
@@ -1050,7 +1044,7 @@ const EN = {
         '08-home-2.webp': [
             { word: 'creak', meaning: '삐걱거리다', sentence: 'The stairs creaked the way they always had.' },
             { word: 'in full bloom', meaning: '활짝 핀', sentence: 'The roses were in full bloom.' },
-            { word: 'used to', meaning: '늘 ~하곤 했다', sentence: 'As they always used to.' },
+            { word: 'used to', meaning: '늘 ~하곤 했다', sentence: "As they always used to." },
             { word: 'stir', meaning: '흔들리다', sentence: 'The roses stirred without a sound.' }
         ],
         'end.webp': [

@@ -550,40 +550,29 @@ const EN = {
                     emoji: '🌹',
                     left: [
                         "In a very small country there lived a young prince.",
-                        "The country was so small it was hardly a dot on the map.",
-                        "And the prince had a generous heart,",
-                        "and everybody in that country was fond of him.",
-                        "In time the prince came to the age for marrying,",
-                        "and he decided to ask for the hand of the princess next door."
+                        "The country was so small it was hardly a dot on the map. But the prince had a generous heart,",
+                        "and everybody was fond of him.",
+                        "When he was old enough to marry, he decided to ask for the hand of the princess next door."
                     ],
                     right: [
                         "The prince had two treasures like nothing else in the world.",
-                        "One was a rose tree that grew on his father's grave.",
-                        "It flowered once in five years,",
-                        "and the scent of it made you forget your sorrows.",
-                        "The other was a small nightingale",
-                        "who could sing every song there was.",
-                        "The prince thought a great deal of those two."
+                        "One was a rose tree that grew on his father's grave. It flowered only once in five years,",
+                        "and its scent made you forget your sorrows.",
+                        "The other was a small nightingale who could sing every song there was. The prince loved them both."
                     ]
                 },
                 {
                     art: '01-prince-2.webp',
                     emoji: '🌹',
                     left: [
-                        "The prince put the rose into a silver box",
-                        "and the nightingale into a silver box as well.",
-                        "\"Nothing wrong with a present like that.\"",
-                        "He sent them off to the next country by messenger",
-                        "and waited for an answer.",
-                        "Meanwhile the palace in the next country was very large indeed."
+                        "The prince put the rose into a silver box and the nightingale into another silver box.",
+                        "\"She will surely like presents like these,\" he said.",
+                        "He sent a messenger with the boxes to the next country, and waited for an answer."
                     ],
                     right: [
-                        "It was hard to count how many pillars it had.",
-                        "And in it lived a princess",
-                        "who grew tired of whatever she looked at.",
-                        "\"Dull. Dull again.\"",
-                        "That day she was yawning in the courtyard,",
-                        "because everything there was to do had gone stale on her."
+                        "The palace in the next country was very large. It was hard to count how many pillars it had.",
+                        "In it lived a princess who grew tired of whatever she looked at. \"Dull. Dull again.\"",
+                        "That day she was yawning in the courtyard. Everything had gone stale on her."
                     ]
                 }
             ]
@@ -596,41 +585,30 @@ const EN = {
                     art: '02-gifts.webp',
                     emoji: '🎁',
                     left: [
-                        "The presents arrived at the palace,",
-                        "and the princess came running out, pleased.",
+                        "The presents arrived at the palace, and the princess came running out.",
                         "\"Presents! I hope they are big ones.\"",
-                        "A maid opened the silver box.",
-                        "Inside was one rose.",
-                        "And the princess clapped her hands."
+                        "A maid opened the first silver box. Inside was one rose.",
+                        "And the princess clapped her hands. \"Oh, how prettily it is made!\""
                     ],
                     right: [
-                        "\"Oh, how prettily it is made!\"",
-                        "And the messenger said, quickly,",
-                        "\"It is not made, Your Highness. It is a real flower.\"",
-                        "The princess's face went hard at once.",
-                        "\"What? A real one?\" Her voice went up."
+                        "The messenger said quickly, \"It is not made, Your Highness. It is a real flower.\"",
+                        "The princess's face went hard at once. Her voice went up.",
+                        "\"What? A real one?\""
                     ]
                 },
                 {
                     art: '02-gifts-2.webp',
                     emoji: '🎁',
                     left: [
-                        "The princess pushed the box away.",
-                        "\"Real flowers only wither.\"",
-                        "The maid opened the second box.",
-                        "The nightingale put her head out and sang,",
-                        "and the whole room filled with the loveliest sound.",
-                        "The maids stood listening, quite lost in it.",
-                        "And only the princess was unmoved."
+                        "The princess pushed the box away. \"Real flowers only wither.\"",
+                        "Then the maid opened the second box. The nightingale put her head out and sang, and the room filled with a lovely sound.",
+                        "The maids stood listening, quite lost in it. Only the princess was unmoved."
                     ],
                     right: [
-                        "\"Is this a real bird as well?\"",
-                        "\"It is, Your Highness.\"",
-                        "\"A live bird. How dull.\"",
-                        "And the princess opened the window and let the bird fly away.",
-                        "The maids made a sound of dismay,",
-                        "and the princess went straight into her room.",
-                        "The messenger went home empty-handed."
+                        "She asked the messenger, \"Is this a real bird too?\" \"It is, Your Highness,\" he said.",
+                        "\"A live bird. How dull.\" She opened the window and let the bird fly away.",
+                        "The maids made a sound of dismay.",
+                        "The princess marched off to her room, and the messenger went home empty-handed."
                     ]
                 }
             ]
@@ -643,45 +621,27 @@ const EN = {
                     art: '03-disguise.webp',
                     emoji: '🐖',
                     left: [
-                        "The news soon reached the prince.",
-                        "And rather than angry, he became curious.",
-                        "\"Whatever does that princess like, then?\"",
-                        "The prince decided to go and see for himself.",
-                        "Only he did not go as a prince,",
-                        "because then he would learn nothing.",
-                        "He changed into old clothes"
+                        "When the prince heard the news, rather than angry, he became curious. \"What does that princess like, then?\"",
+                        "He decided to go and see. But not as a prince, because then he would learn nothing.",
+                        "He put on old clothes and rubbed soot over his face. Then he walked to the palace next door."
                     ],
                     right: [
-                        "and rubbed soot over his face.",
-                        "And then he knocked at the palace gate.",
-                        "\"I have come looking for work.\"",
-                        "The gatekeeper looked him up and down.",
-                        "\"Have you done a day's work in your life?\"",
-                        "As it happened they had nobody to mind the pigs.",
-                        "The prince was taken on there and then,",
-                        "and nobody knew he was a prince."
+                        "He knocked at the gate. \"I have come looking for work.\"",
+                        "The gatekeeper looked him up and down. \"Have you ever worked?\"",
+                        "\"I will do any work you give me,\" said the prince. They had nobody to mind the pigs, so he was taken on there and then."
                     ]
                 },
                 {
                     art: '03-disguise-2.webp',
                     emoji: '🐖',
                     left: [
-                        "The prince was given a place in the back yard of the palace.",
-                        "The room was narrow and the ceiling was low.",
-                        "In the daytime he looked after the pigs,",
-                        "and the pigs took to him very quickly.",
-                        "They came crowding round grunting whenever he brought food.",
-                        "Grunt, grunt!",
-                        "And the prince did not mind the sound of it."
+                        "Nobody knew he was a prince. He was given a tiny room in the back yard of the palace. The ceiling was so low he could hardly stand up.",
+                        "In the daytime he looked after the pigs, and the pigs took to him very quickly."
                     ],
                     right: [
-                        "When the sun went down he went back to his room",
-                        "and sat down and lit a candle.",
-                        "He worked clay and carved little bells.",
-                        "Every night he made something.",
-                        "And after a few days one thing was finished.",
-                        "The prince held it up and smiled.",
-                        "\"Now let us see what she does.\""
+                        "They came crowding round grunting whenever he brought food. The prince did not mind.",
+                        "At night he lit a candle. He worked clay and carved little bells.",
+                        "After a few days, something was finished. He smiled. \"What will the princess say to this?\""
                     ]
                 }
             ]
@@ -694,41 +654,28 @@ const EN = {
                     art: '04-pot.webp',
                     emoji: '🍲',
                     left: [
-                        "What the prince had made was a little pot",
-                        "with bells all round the rim.",
-                        "He put water in it and lit a fire under it,",
-                        "and when the water boiled the bells began to ring.",
-                        "Tinkle, tinkle — a whole tune came out of it.",
-                        "And that was not all."
+                        "What the prince had made was a little pot with bells all round the rim.",
+                        "He put water in it and lit a fire under it. When the water boiled, the bells began to ring.",
+                        "Tinkle, tinkle! A whole tune came out of it. And that was not all."
                     ],
                     right: [
-                        "If you held a hand in the steam, something remarkable happened.",
-                        "Every kitchen in the town came up in front of your eyes.",
-                        "You could tell what was being cooked in every single house.",
-                        "\"That house is making pancakes today!\"",
-                        "The steam even carried the smell of it,",
-                        "and the prince sniffed at the air",
-                        "and laughed to himself."
+                        "If you held a hand in the steam, something wonderful happened. You could see every kitchen in the town and what was cooking there.",
+                        "The prince held his hand in the steam and laughed.",
+                        "\"That house is making pancakes today!\" He could even smell them."
                     ]
                 },
                 {
                     art: '04-pot-2.webp',
                     emoji: '🍲',
                     left: [
-                        "The sound of the pot carried over the wall.",
-                        "A maid going past heard it.",
-                        "\"Goodness, whatever is that?\"",
-                        "The maid ran and told the princess,",
-                        "and the princess stopped in the middle of a yawn.",
-                        "\"A pot that sings?\""
+                        "The sound of the pot carried over the wall. A maid passing by looked over it.",
+                        "The swineherd's pot was boiling, and it was singing!",
+                        "She ran to tell the princess. The princess stopped in the middle of a yawn. \"A pot that sings?\""
                     ],
                     right: [
-                        "The princess went out on the balcony and listened.",
-                        "The tinkling came up from far off,",
-                        "and the princess stamped her feet where she stood.",
-                        "\"I must have that thing!\"",
-                        "She sent a maid down to the back yard at once.",
-                        "\"Buy it, whatever the price.\""
+                        "The princess went out on the balcony and listened. Tinkle, tinkle, from far away.",
+                        "The princess stamped her feet. \"I must have that thing!\"",
+                        "She sent a maid down to the back yard at once. \"Buy it, whatever the price.\""
                     ]
                 }
             ]
@@ -741,40 +688,29 @@ const EN = {
                     art: '05-bargain.webp',
                     emoji: '💋',
                     left: [
-                        "The maid went down to the pigsty.",
-                        "\"What will you take for that pot?\"",
-                        "The swineherd pretended to think about it",
-                        "and then answered quite calmly,",
+                        "The maid went down to the pigsty. \"What will you take for that pot?\"",
+                        "The swineherd pretended to think about it, and then answered quite calmly,",
                         "\"Ten kisses from the princess.\"",
-                        "The maid could not believe her ears."
+                        "The maid could not believe her ears. \"W-what did you say?\""
                     ],
                     right: [
-                        "\"I — I beg your pardon?\"",
-                        "\"Ten. And I shall not take one less.\"",
-                        "The maid went back scarlet in the face",
-                        "and repeated it word for word.",
-                        "The princess stamped her foot.",
-                        "\"A swineherd! The impudence!\"",
-                        "And still she kept looking out of the window."
+                        "The swineherd did not even blink. \"Ten. Not one less.\"",
+                        "The maid went back scarlet in the face and told the princess every word.",
+                        "The princess stamped her foot. \"A swineherd! The impudence!\""
                     ]
                 },
                 {
                     art: '05-bargain-2.webp',
                     emoji: '💋',
                     left: [
-                        "\"It is beyond anything!\"",
-                        "\"Have him thrown out this minute!\"",
-                        "The princess slammed the door and went in.",
-                        "And that sound kept coming back to her,",
-                        "the tinkle, tinkle of it.",
-                        "The princess walked up and down her room."
+                        "\"It is beyond anything!\" The princess went into her room and slammed the door.",
+                        "But the tinkle, tinkle of the pot kept coming back to her. She walked up and down her room.",
+                        "At last she opened the door and called her maids. \"…Ten, was it? Only ten?\""
                     ],
                     right: [
-                        "And in the end she opened the door again.",
-                        "\"…Ten, was it? Exactly ten?\"",
-                        "The maids looked at one another.",
-                        "\"Your Highness, that is hardly—\"",
-                        "\"I have twenty maids. What is there to worry about?\" And the maids sighed."
+                        "The maids looked at one another. One of them said carefully, \"Your Highness, that is hardly—\"",
+                        "The princess cut her short. \"You can all stand round me and hide me. Come along, this minute!\"",
+                        "And the maids sighed."
                     ]
                 }
             ]
@@ -787,41 +723,28 @@ const EN = {
                     art: '06-kisses.webp',
                     emoji: '👗',
                     left: [
-                        "The princess went down to the back yard with her maids,",
-                        "and the pigs came crowding round grunting.",
-                        "The princess held her nose.",
+                        "The princess went down to the back yard with her maids. The pigs came crowding round grunting, and the princess held her nose.",
                         "\"Let us get it over with.\"",
-                        "The maids stood round in a ring",
-                        "and spread their skirts out wide.",
-                        "The skirts flapped in the wind."
+                        "The maids stood round in a ring and spread their skirts out wide. The skirts flapped in the wind."
                     ],
                     right: [
-                        "They had made a wall so that passersby could never look in.",
-                        "Only the pigs could see inside.",
-                        "The princess squeezed her eyes shut,",
-                        "and the maids counted out loud.",
-                        "\"One, two, three…\"",
-                        "\"…nine, ten!\""
+                        "They made a wall so that nobody passing by could look in. Only the pigs could see inside.",
+                        "The princess shut her eyes tight and kissed the swineherd. The maids counted out loud.",
+                        "\"One, two, three… nine, ten!\""
                     ]
                 },
                 {
                     art: '06-kisses-2.webp',
                     emoji: '👗',
                     left: [
-                        "And so the pot became the princess's.",
-                        "She ran to her room with it in her arms",
-                        "and played with it all day, boiling water.",
-                        "The bells never stopped ringing,",
-                        "and she held her hand in the steam as well.",
-                        "\"What will they be eating at the minister's house today!\""
+                        "And so the pot became the princess's. She ran to her room with it in her arms and boiled water in it all day.",
+                        "The bells never stopped ringing. She held her hand in the steam.",
+                        "\"What are they eating at the minister's house today? Oh, that house has nothing but porridge!\""
                     ],
                     right: [
-                        "\"Well I never — that house has nothing but porridge.\"",
-                        "The princess laughed until she had to hold her sides,",
-                        "and the maids laughed with her.",
-                        "That day the whole palace talked of nothing but the pot,",
-                        "and for a while it was very good fun.",
-                        "And even that did not last long."
+                        "The princess laughed until she had to hold her sides, and the maids laughed with her.",
+                        "That day the whole palace talked of nothing but the pot. It was great fun for a while.",
+                        "But even that did not last long."
                     ]
                 }
             ]
@@ -834,43 +757,28 @@ const EN = {
                     art: '07-rattle.webp',
                     emoji: '🎵',
                     left: [
-                        "After a few days the princess was bored again.",
-                        "And about then the swineherd finished something new.",
-                        "This time it was a rattle.",
-                        "Turn it, and out came every dance tune there is —",
-                        "waltzes and polkas and all.",
-                        "The sound carried over the wall,",
-                        "and the princess came running out onto the balcony again.",
-                        "Her toes started tapping by themselves."
+                        "After a few days, the princess was bored again. Just then the swineherd finished something new. This time it was a rattle.",
+                        "When you spun it round, out came every dance tune there is. Waltzes and polkas and all!",
+                        "The music carried over the wall."
                     ],
                     right: [
-                        "The princess quickly hid her feet.",
-                        "\"And what is that now!\"",
-                        "She sent a maid straight down.",
-                        "\"What do you want for that rattle?\"",
-                        "The swineherd was calm about it this time as well,",
-                        "and did not let go of the rattle."
+                        "The princess ran out onto the balcony. Her toes started tapping by themselves.",
+                        "She quickly hid her feet from the maids. \"And what is that now?\"",
+                        "She sent a maid down. \"What do you want for that rattle?\"",
+                        "The swineherd was calm again, and did not let go of the rattle."
                     ]
                 },
                 {
                     art: '07-rattle-2.webp',
                     emoji: '🎵',
                     left: [
-                        "\"This time it is a hundred.\"",
-                        "The maid took the message back.",
-                        "\"A hundred? That is beyond everything!\"",
-                        "The princess leapt in the air.",
-                        "And she was already gathering up her skirts.",
-                        "And down to the back yard the princess went.",
-                        "And the maids spread their skirts and stood round again."
+                        "\"This time it is a hundred kisses from the princess,\" he said.",
+                        "The maid took the message back. The princess leapt in the air. \"A hundred? That is beyond everything!\""
                     ],
                     right: [
-                        "\"One, two, three…\"",
-                        "The counting went on and on,",
-                        "and the pigs tilted their heads at it.",
-                        "\"…eighty-eight, eighty-nine.\"",
-                        "The maids' voices were getting smaller.",
-                        "And at that moment —"
+                        "But she was already gathering up her skirts. Down to the back yard she went, and the maids stood round her again.",
+                        "The princess began kissing the swineherd. \"One, two, three…\" The pigs tilted their heads.",
+                        "The maids' voices got smaller. \"…eighty-eight, eighty-nine.\" And then—"
                     ]
                 }
             ]
@@ -883,40 +791,28 @@ const EN = {
                     art: '08-ending.webp',
                     emoji: '⛈️',
                     left: [
-                        "Of all moments, the king looked out of his window.",
-                        "There was a crowd of people in the back yard,",
-                        "and the king straightened his spectacles.",
-                        "He could see what was going on between the skirts.",
-                        "The king's face went scarlet,",
-                        "and down the stairs he came in his slippers."
+                        "Of all moments, the king looked out of his window. There was a crowd in the back yard. The king straightened his spectacles.",
+                        "From his high window he could see inside the ring. The princess was kissing the swineherd!",
+                        "His face went scarlet, and he ran down the stairs in his slippers."
                     ],
                     right: [
-                        "\"What is the meaning of this, in a filthy pigsty!\"",
-                        "The maids scattered in fright,",
-                        "and only the princess and the swineherd were left standing there.",
-                        "The king's hands were shaking.",
-                        "\"Both of you — out of my country!\" And he had the gates shut and barred behind them."
+                        "The king burst into the back yard. \"What is the meaning of this, in a dirty pigsty?\"",
+                        "The maids scattered in fright. Only the princess and the swineherd were left. The king's hands were shaking.",
+                        "\"Both of you, out of my country!\" He drove them out and had the gates shut and barred behind them."
                     ]
                 },
                 {
                     art: '08-ending-2.webp',
                     emoji: '⛈️',
                     left: [
-                        "The gate shut behind her with a thud,",
-                        "and it began to rain.",
-                        "The princess sat down outside the gate and cried.",
-                        "\"What am I to do now?\"",
-                        "The rain ran down her face,",
-                        "and there was no sound at all from inside the castle."
+                        "The gate shut behind her with a thud, and it began to rain.",
+                        "The princess sat and cried. \"What will I do now?\"",
+                        "Meanwhile the swineherd went behind a tree. He washed the soot off his face in the rain and put on fine clothes."
                     ],
                     right: [
-                        "And then the swineherd went to the well and washed the soot off his face,",
-                        "and changed into fine clothes.",
-                        "And a young prince was standing in front of her.",
-                        "The princess knelt in the rain. \"Please forgive me. Don't leave me here.\"",
-                        "\"You would have nothing to do with a real rose or a real bird.\"",
-                        "\"What a pity for you.\"",
-                        "And with those words he went home to his own country."
+                        "Then a young prince stood before her. She knelt. \"Please forgive me. Don't leave me.\"",
+                        "He shook his head. \"You would have nothing to do with a real rose or a real bird. What a pity for you.\"",
+                        "And he went home."
                     ]
                 }
             ]
@@ -1003,7 +899,7 @@ const EN = {
             { word: 'sorrow', meaning: '슬픈 일', sentence: 'The scent made you forget your sorrows.' }
         ],
         '01-prince-2.webp': [
-            { word: 'messenger', meaning: '심부름꾼', sentence: 'He sent them off by messenger.' },
+            { word: 'messenger', meaning: '심부름꾼', sentence: 'He sent a messenger with the boxes.' },
             { word: 'pillar', meaning: '기둥', sentence: 'It was hard to count how many pillars it had.' },
             { word: 'grow tired of', meaning: '싫증 내다', sentence: 'She grew tired of whatever she looked at.' },
             { word: 'dull', meaning: '시시한', sentence: 'Dull. Dull again.' },
@@ -1030,7 +926,7 @@ const EN = {
             { word: 'take on', meaning: '뽑다', sentence: 'The prince was taken on there and then.' }
         ],
         '03-disguise-2.webp': [
-            { word: 'back yard', meaning: '뒷마당', sentence: 'A place in the back yard of the palace.' },
+            { word: 'back yard', meaning: '뒷마당', sentence: 'He was given a tiny room in the back yard of the palace.' },
             { word: 'take to', meaning: '따르다', sentence: 'The pigs took to him very quickly.' },
             { word: 'grunt', meaning: '꿀꿀거리다', sentence: 'They came crowding round grunting.' },
             { word: 'clay', meaning: '진흙', sentence: 'He worked clay and carved little bells.' },
@@ -1059,7 +955,7 @@ const EN = {
         ],
         '05-bargain-2.webp': [
             { word: 'beyond anything', meaning: '말도 안 되는', sentence: 'It is beyond anything!' },
-            { word: 'this minute', meaning: '당장', sentence: 'Have him thrown out this minute!' },
+            { word: 'this minute', meaning: '당장', sentence: 'Come along, this minute!' },
             { word: 'slam', meaning: '쾅 닫다', sentence: 'The princess slammed the door.' },
             { word: 'up and down', meaning: '이리저리', sentence: 'The princess walked up and down her room.' },
             { word: 'sigh', meaning: '한숨 쉬다', sentence: 'And the maids sighed.' }
@@ -1098,7 +994,7 @@ const EN = {
         ],
         '08-ending-2.webp': [
             { word: 'thud', meaning: '쿵 소리', sentence: 'The gate shut behind her with a thud.' },
-            { word: 'well', meaning: '우물', sentence: 'The swineherd went to the well.' },
+            { word: 'meanwhile', meaning: '그사이', sentence: 'Meanwhile the swineherd went behind a tree.' },
             { word: 'wash off', meaning: '씻어 내다', sentence: 'And washed the soot off his face.' },
             { word: 'have nothing to do with', meaning: '마다하다', sentence: 'You would have nothing to do with a real rose.' },
             { word: 'a pity', meaning: '딱한 일', sentence: 'What a pity for you.' }

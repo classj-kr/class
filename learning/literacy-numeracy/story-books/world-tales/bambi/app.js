@@ -563,17 +563,14 @@ const EN = {
                     art: '01-birth.webp',
                     emoji: '🦌',
                     left: [
-                        "Deep in the wood there was a place thick with undergrowth, so overgrown with fern that nobody could see into it.",
-                        "One summer morning a fawn was born there. His name was Bambi,",
-                        "and he had white spots all over him.",
-                        "His eyes were big and dark, and the tip of his nose was black and wet."
+                        "Deep in the wood there was a place thick with undergrowth. It was so overgrown with fern that nobody could see in.",
+                        "One summer morning a fawn was born there. His name was Bambi, and he had white spots all over him.",
+                        "His eyes were big and dark. The tip of his nose was black and wet."
                     ],
                     right: [
-                        "His legs were as thin as twigs. He tried to stand and kept sliding down again.",
-                        "His mother licked him all over, carefully.",
-                        "And after a long while Bambi got up.",
-                        "All four legs shook under him.",
-                        "His mother stood and watched him quietly.",
+                        "His legs were as thin as twigs. He tried to stand and kept slipping down. His mother licked him all over, gently.",
+                        "After a long while, Bambi stood up at last. All four legs shook under him.",
+                        "His mother watched him quietly.",
                         "The morning sun came in through the thicket."
                     ]
                 },
@@ -581,18 +578,14 @@ const EN = {
                     art: '01-birth-2.webp',
                     emoji: '🦌',
                     left: [
-                        "The news went round the wood very quickly, and one after another the neighbours came to look.",
-                        "The rabbit came first, twitching his nose as he peered in.",
-                        "\"Well I never — his eyes are open already!\"",
+                        "The news went round the wood very quickly, and the neighbours came one by one to look.",
+                        "The rabbit came first, twitching his nose as he peered in. \"Well, well! His eyes are open already!\"",
                         "The magpie chattered from a branch."
                     ],
                     right: [
                         "The squirrel ran up and down a tree to get a better look.",
-                        "Bambi heard every word of it,",
-                        "though he did not know yet what any of it meant.",
-                        "He only pressed himself close against his mother.",
-                        "The sun moved about between the leaves,",
-                        "and Bambi fell asleep where he was."
+                        "Bambi heard every word, but he did not know yet what any of it meant. He only pressed close against his mother.",
+                        "The sun flickered between the leaves, and Bambi fell asleep right there."
                     ]
                 }
             ]
@@ -605,39 +598,27 @@ const EN = {
                     art: '02-meadow.webp',
                     emoji: '🌾',
                     left: [
-                        "A few days later Bambi could walk quite well.",
-                        "One morning his mother said,",
-                        "\"Let us go to the meadow today.\"",
-                        "The two of them walked a narrow path, and the trees grew thinner and thinner.",
+                        "A few days later Bambi could walk quite well. One morning his mother said, \"Let us go to the meadow today.\"",
+                        "The two of them walked along a narrow path, and the trees grew thinner and thinner.",
                         "And then it opened out bright in front of them."
                     ],
                     right: [
-                        "There was a meadow going on and on,",
-                        "as though the whole sky had come down onto the ground.",
-                        "\"Oh — is the sky as wide as this?\"",
-                        "Bambi wanted to run straight out into it.",
-                        "But his mother stood in his way.",
-                        "\"Wait a moment.\""
+                        "A meadow went on and on, as though the whole sky had come down onto the ground.",
+                        "\"Oh!\" cried Bambi. \"Is the sky really this wide?\"",
+                        "Bambi wanted to run straight out into it. But his mother stood in his way. \"Wait a moment.\""
                     ]
                 },
                 {
                     art: '02-meadow-2.webp',
                     emoji: '🌾',
                     left: [
-                        "\"On the meadow you must always take care.\"",
-                        "\"It is not at all like the wood.\"",
-                        "\"Out there is nowhere to hide.\"",
-                        "His mother stood with her neck stretched up.",
-                        "\"First you stand still and you listen.\"",
-                        "\"And you smell what is on the wind.\""
+                        "\"On the meadow you must always take care,\" said his mother. \"Unlike the wood, out there is nowhere to hide.\"",
+                        "She stood with her neck stretched up. \"First you stand still and listen. You smell what is on the wind. Then you go out.\""
                     ],
                     right: [
-                        "\"And then you go out.\"",
-                        "Bambi nodded.",
-                        "And then he saw the meadow and forgot every word of it.",
+                        "Bambi nodded. But when he saw the meadow, he forgot every word of it.",
                         "He simply bolted out into it.",
-                        "His mother came out quickly after him,",
-                        "looking every way at once and not easy in her mind."
+                        "His mother hurried out after him. She looked every way at once, and she was not easy in her mind."
                     ]
                 }
             ]
@@ -650,40 +631,29 @@ const EN = {
                     art: '03-friends.webp',
                     emoji: '🌼',
                     left: [
-                        "There were other deer out on the meadow,",
-                        "and some of them Bambi's own age.",
-                        "One was a young doe called Faline,",
-                        "with a white mark on her throat.",
-                        "\"Hullo! Is it your first time out too?\"",
+                        "There were other deer out on the meadow, and some of them were Bambi's own age.",
+                        "One was a young doe called Faline, with a white mark on her throat.",
+                        "\"Hello! Is this your first time out too?\" she asked.",
                         "The two of them were friends in no time."
                     ],
                     right: [
-                        "They ran about the whole day long.",
-                        "\"Catch me!\"",
-                        "The grass had grown as high as Bambi himself,",
-                        "and it parted like water as they ran through it.",
-                        "Butterflies went up in front of them.",
-                        "The two of them never seemed to tire."
+                        "They ran about all day long. Faline raced ahead, calling, \"Catch me!\"",
+                        "The grass had grown as high as Bambi, and it parted like water as they ran through it.",
+                        "Butterflies flew up in surprise. The two of them never seemed to tire."
                     ]
                 },
                 {
                     art: '03-friends-2.webp',
                     emoji: '🌼',
                     left: [
-                        "There were plenty of neighbours on the meadow.",
-                        "The rabbit always had his ears up,",
-                        "and the smallest sound had him on his feet.",
-                        "The squirrel talked away from up in his tree.",
-                        "\"The acorns have come on nicely this year!\"",
-                        "And there was a young deer called Gobo."
+                        "There were plenty of neighbours on the meadow. The rabbit always had his ears up, and the smallest sound had him on his feet.",
+                        "The squirrel chattered in his tree. \"The acorns have come on nicely this year!\"",
+                        "There was a young deer called Gobo. He was not strong, and he was soon out of breath."
                     ],
                     right: [
-                        "He was not strong, and he was soon out of breath.",
-                        "\"Let's rest a minute, shall we?\"",
-                        "So Bambi and Faline slowed down,",
-                        "and the three of them lay down together in the grass.",
-                        "The sun warmed their backs.",
-                        "Bambi wished the days would go on like that."
+                        "\"Let's rest a minute, shall we?\" puffed Gobo.",
+                        "So Bambi and Faline slowed down, and the three of them lay down together in the grass.",
+                        "The sun warmed their backs. Bambi wished every day could be like this."
                     ]
                 }
             ]
@@ -696,19 +666,14 @@ const EN = {
                     art: '04-old-stag.webp',
                     emoji: '👑',
                     left: [
-                        "One day the meadow went suddenly quiet.",
-                        "Even the birds stopped singing.",
-                        "Every grown deer lifted its head.",
-                        "Something was walking out of the edge of the wood —",
-                        "an enormous stag, with antlers spread wide like branches,",
-                        "and grey all round his muzzle."
+                        "One day the meadow went suddenly quiet. Even the birds stopped singing.",
+                        "Every grown deer lifted its head. Something was walking out of the edge of the wood.",
+                        "It was an enormous stag, with antlers spread wide like branches and grey all round his muzzle."
                     ],
                     right: [
-                        "But there was no sound of his feet at all,",
-                        "and the grass did not move.",
-                        "Bambi watched, holding his breath.",
-                        "He had never seen a deer like that.",
-                        "\"Who is he?\"",
+                        "But his feet made no sound at all, and the grass did not move.",
+                        "Bambi watched, holding his breath. He had never seen a deer like that.",
+                        "\"Who is he?\" Bambi whispered to his mother.",
                         "Instead of answering, his mother only bowed her head."
                     ]
                 },
@@ -716,20 +681,14 @@ const EN = {
                     art: '04-old-stag-2.webp',
                     emoji: '👑',
                     left: [
-                        "The old stag stopped in front of Bambi",
-                        "and looked down at him for a long while.",
-                        "Bambi could not raise his head.",
-                        "At last the old stag spoke.",
-                        "\"Can you go about by yourself?\"",
+                        "The old stag stopped in front of Bambi and looked down at him for a long while. Bambi could not raise his head.",
+                        "At last the old stag spoke. \"Can you go about by yourself?\"",
                         "Bambi could not answer."
                     ],
                     right: [
                         "He had never left his mother's side.",
-                        "The old stag asked nothing more.",
-                        "He left those words and went off into the wood,",
-                        "as silently as he had come.",
-                        "From that day the question kept coming back to Bambi.",
-                        "He heard that voice even in his sleep."
+                        "The old stag asked nothing more. He went off into the wood, as silently as he had come.",
+                        "From that day the question kept coming back to Bambi. He heard that voice even in his sleep."
                     ]
                 }
             ]
@@ -743,19 +702,13 @@ const EN = {
                     emoji: '❄️',
                     left: [
                         "Summer went and autumn came, and the leaves turned red.",
-                        "And then one morning",
-                        "the whole wood had gone white.",
-                        "Bambi put his nose to the strange new stuff.",
-                        "\"It's cold!\"",
-                        "There was white all over the top of his nose."
+                        "Then one morning the whole wood had gone white. Bambi put his nose to the strange white stuff.",
+                        "\"Ow, it's cold!\" he cried.",
+                        "He jumped back in surprise. There was snow all over the top of his nose."
                     ],
                     right: [
-                        "He jumped back in surprise,",
-                        "and his mother smiled.",
-                        "\"That is snow. Winter has come.\"",
-                        "Bambi went bounding about over the snow,",
-                        "leaving a line of prints behind him.",
-                        "His mother laughed for the first time in a while.",
+                        "His mother smiled. \"That is snow. Winter has come.\"",
+                        "Bambi went bounding about over the snow, leaving a line of prints behind him.",
                         "It squeaked and crunched under his feet."
                     ]
                 },
@@ -763,20 +716,15 @@ const EN = {
                     art: '05-winter-2.webp',
                     emoji: '❄️',
                     left: [
-                        "But the winter went on far longer than he expected. The snow lay deeper and deeper.",
-                        "The grass was buried under it,",
-                        "and food became very hard to find.",
-                        "The deer stripped bark off the trees to eat,",
-                        "and Bambi pulled at the bark with his teeth too.",
-                        "It was bitter and hard, and he ate it anyway."
+                        "But the winter was longer than Bambi expected. The snow lay deeper and deeper.",
+                        "The grass was buried under it, and there was almost nothing to eat.",
+                        "The deer stripped bark off the trees to eat. Bambi pulled at the bark with his teeth too. It was bitter and hard, but he ate it anyway."
                     ],
                     right: [
-                        "His mother kept pushing her own share over to him.",
-                        "The bones of her back were beginning to show.",
-                        "\"What about you, Mother?\"",
-                        "\"I have had plenty.\"",
-                        "The nights in the wood were very quiet.",
-                        "Dry branches knocked together in the wind."
+                        "His mother kept pushing her own share over to him. The bones of her back began to show.",
+                        "\"What about you, Mother?\" asked Bambi.",
+                        "She shook her head. \"I am full.\"",
+                        "The nights in the wood were very quiet. Dry branches knocked together in the wind."
                     ]
                 }
             ]
@@ -789,41 +737,28 @@ const EN = {
                     art: '06-alone.webp',
                     emoji: '🌫️',
                     left: [
-                        "It was a winter morning, and Bambi and his mother were at the edge of the meadow.",
-                        "Then his mother's head went up suddenly.",
-                        "One ear turned.",
-                        "There was a noise beyond the meadow.",
-                        "It was people.",
-                        "His mother pushed Bambi toward the thicket.",
-                        "There were dogs barking in it too."
+                        "One winter morning, Bambi and his mother were at the edge of the meadow.",
+                        "Suddenly his mother's head went up, and one ear turned. There was a noise beyond the meadow.",
+                        "It was hunters, and there were dogs barking too. His mother pushed Bambi toward the thicket."
                     ],
                     right: [
-                        "\"Run!\"",
-                        "\"Run, and don't look back!\"",
-                        "And Bambi ran.",
-                        "He ran until he could hardly breathe.",
-                        "There were sounds behind him and he did not look round,",
-                        "because his mother had told him not to."
+                        "\"Run!\" cried his mother. \"Run, and don't look back!\"",
+                        "Bambi ran. He ran until he could hardly breathe.",
+                        "There were sounds behind him, but he did not look round, because his mother had told him not to."
                     ]
                 },
                 {
                     art: '06-alone-2.webp',
                     emoji: '🌫️',
                     left: [
-                        "The trees went past him on either side and the snow flew up.",
-                        "He had no idea how far he had run.",
-                        "There was no strength left in his legs at all.",
-                        "After a long while Bambi stopped",
-                        "and looked back."
+                        "The trees flashed past him on either side, and the snow flew up under his feet.",
+                        "He had no idea how far he had run. There was no strength left in his legs.",
+                        "At last Bambi stopped and looked back."
                     ],
                     right: [
-                        "His mother was not there.",
-                        "Bambi called for her.",
-                        "There was no answer at all.",
-                        "The snow came down quietly.",
-                        "Everything was white in every direction.",
-                        "Bambi stood there a long time.",
-                        "That night he spent alone for the first time, curled up in a thicket."
+                        "His mother was not there. Bambi called for her, but there was no answer.",
+                        "The snow came down quietly. Everything around him was white. Bambi stood there a long time.",
+                        "That night, for the first time, he slept alone, curled up in a thicket."
                     ]
                 }
             ]
@@ -836,39 +771,29 @@ const EN = {
                     art: '07-spring.webp',
                     emoji: '🌱',
                     left: [
-                        "The winter ended and the snow melted. Green shoots came up out of the ground",
-                        "and the wood turned green again.",
-                        "Bambi had grown a great deal too,",
-                        "and small antlers had come up on his head.",
-                        "One day on the meadow he met a face he knew.",
-                        "It was Faline."
+                        "The winter ended and the snow melted. Green shoots came up out of the ground, and the wood turned green again.",
+                        "Bambi had grown a great deal, and small antlers had come up on his head.",
+                        "One day on the meadow he met a face he knew. It was Faline."
                     ],
                     right: [
-                        "Faline had shot up too.",
-                        "\"How tall you've got!\"",
-                        "\"So have you. And Gobo came through the winter. He still puffs if he runs at all.\"",
-                        "The two of them walked along together for the first time in a long while.",
-                        "When Bambi told her about putting his nose into the snow, Faline laughed out loud."
+                        "Faline had shot up too. \"How tall you've got!\" she cried.",
+                        "\"So have you,\" said Bambi.",
+                        "\"And Gobo came through the winter,\" said Faline. \"He still puffs if he runs at all.\"",
+                        "The two walked together again. When Bambi told her about his nose in the snow, Faline laughed out loud."
                     ]
                 },
                 {
                     art: '07-spring-2.webp',
                     emoji: '🌱',
                     left: [
-                        "Faline started out onto the meadow.",
-                        "And Bambi stopped where he was.",
-                        "\"Wait a moment.\"",
-                        "Bambi stood with his neck stretched up",
-                        "and turned his ears one way and the other.",
-                        "And he smelled what was on the wind."
+                        "Faline started out onto the meadow, but Bambi stopped. \"Wait a moment.\"",
+                        "He stood with his neck stretched up and turned his ears one way and the other.",
+                        "He smelled what was on the wind."
                     ],
                     right: [
-                        "After a long while Bambi nodded.",
-                        "\"All right. We can go.\"",
-                        "Faline's eyes went round.",
-                        "\"When did you learn to do that?\"",
-                        "It was exactly what his mother had taught him.",
-                        "Bambi had not forgotten it."
+                        "After a long while Bambi nodded. \"All right. Now we can go.\"",
+                        "Faline's eyes went round. \"When did you learn to do that?\"",
+                        "\"My mother taught me,\" said Bambi. He had not forgotten a single thing she had taught him."
                     ]
                 }
             ]
@@ -881,39 +806,29 @@ const EN = {
                     art: '08-ending.webp',
                     emoji: '🌲',
                     left: [
-                        "It was an evening, and the wood was very still.",
-                        "The sun came slanting a long way in between the trees,",
-                        "and Bambi was walking alone.",
-                        "Then something was standing ahead of him.",
-                        "It was the old stag.",
-                        "\"Come with me.\""
+                        "One evening the wood was very still.",
+                        "The sun came slanting in between the trees, and Bambi was walking alone.",
+                        "Then he saw something standing ahead of him. It was the old stag.",
+                        "\"Come with me,\" said the old stag."
                     ],
                     right: [
-                        "The old stag walked away into the deep part of the wood, and Bambi followed him.",
-                        "There was no path at all.",
-                        "At last the old stag stopped.",
-                        "\"Look closely,\" he said, low.",
-                        "There were the prints of a person on the ground under their feet."
+                        "The old stag walked into the deep part of the wood, and Bambi followed. There was no path at all.",
+                        "At last the old stag stopped. \"Look closely,\" he said, low.",
+                        "On the ground at their feet were the footprints of a person."
                     ]
                 },
                 {
                     art: '08-ending-2.webp',
                     emoji: '🌲',
                     left: [
-                        "The old stag never taught him in words.",
-                        "He would only stop and lift his nose,",
-                        "and Bambi would lift his too.",
-                        "There was a strange smell mixed into the wind.",
-                        "The old stag turned quietly aside, and Bambi turned after him.",
-                        "They walked side by side like that for days."
+                        "The old stag never taught him in words. He just stopped and lifted his nose.",
+                        "Bambi did the same. There was a strange smell on the wind.",
+                        "The stag turned aside, and so did Bambi. They walked side by side like that for days."
                     ],
                     right: [
-                        "By and by it went dark all round them,",
-                        "and the old stag looked back at Bambi.",
-                        "\"You can go about by yourself now.\"",
-                        "And then he walked quietly away.",
-                        "His shape went out of sight between the trees.",
-                        "And Bambi walked the wood alone from then on."
+                        "One evening the old stag looked back at Bambi. \"You can go about by yourself now.\"",
+                        "Then he walked quietly away, and his shape went out of sight between the trees.",
+                        "From then on, Bambi walked the wood alone."
                     ]
                 }
             ]
@@ -976,7 +891,7 @@ const EN = {
                 left: [
                     "Felix Salten wrote this about a hundred years ago. It was written for grown-ups to begin with.",
                     "What Bambi's mother taught him was not how to run. It was how to stop first and listen.",
-                    "Even going out onto the meadow, she does not simply go. She stands a long while, listening and smelling, and only then puts a foot out. That is what living in a wood is.",
+                    "Even going out onto the meadow, she does not simply go. She stands a long while, listening and smelling, and only then puts a foot out. That is how to live in a wood.",
                     "When Bambi first sees the old stag, his mother says nothing at all. She only bows her head. That was enough to say who he was."
                 ],
                 right: [
@@ -1060,12 +975,12 @@ const EN = {
         ],
         '06-alone.webp': [
             { word: 'beyond', meaning: '~ 너머에', sentence: 'There was a noise beyond the meadow.' },
-            { word: 'bark', meaning: '짖다', sentence: 'There were dogs barking in it too.' },
+            { word: 'bark', meaning: '짖다', sentence: 'There were dogs barking too.' },
             { word: 'push toward', meaning: '~쪽으로 밀다', sentence: 'His mother pushed Bambi toward the thicket.' },
             { word: 'look back', meaning: '뒤돌아보다', sentence: "Run, and don't look back!" }
         ],
         '06-alone-2.webp': [
-            { word: 'either side', meaning: '양옆', sentence: 'The trees went past him on either side.' },
+            { word: 'either side', meaning: '양옆', sentence: 'The trees flashed past him on either side.' },
             { word: 'have no idea', meaning: '알 수 없다', sentence: 'He had no idea how far he had run.' },
             { word: 'call for', meaning: '부르다', sentence: 'Bambi called for her.' },
             { word: 'curl up', meaning: '몸을 웅크리다', sentence: 'Curled up in a thicket.' }
@@ -1080,7 +995,7 @@ const EN = {
             { word: 'start out', meaning: '나가려 하다', sentence: 'Faline started out onto the meadow.' },
             { word: 'one way and the other', meaning: '이쪽저쪽으로', sentence: 'He turned his ears one way and the other.' },
             { word: 'go round', meaning: '동그래지다', sentence: "Faline's eyes went round." },
-            { word: 'forget', meaning: '잊다', sentence: 'Bambi had not forgotten it.' }
+            { word: 'forget', meaning: '잊다', sentence: 'He had not forgotten a single thing.' }
         ],
         '08-ending.webp': [
             { word: 'still', meaning: '고요한', sentence: 'The wood was very still.' },

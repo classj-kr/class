@@ -529,16 +529,14 @@ const EN = {
                     art: '01-mirror.webp',
                     emoji: '🪞',
                     left: [
-                        "It was winter, and snow was falling. A queen sat sewing by the window, and she pricked her finger with the needle.",
-                        "Three drops of blood fell on the snow — three clear red points on all that white.",
-                        "\"A child as white as snow and as red as blood.\"",
-                        "\"How I should love a daughter like that.\""
+                        "It was winter. A queen sat sewing by the window, and she pricked her finger with the needle.",
+                        "Three drops of blood fell on the snow. Outside the snow went on piling softly.",
+                        "The queen said to herself, \"A child as white as snow and as red as blood. I wish I had a daughter like that.\""
                     ],
                     right: [
-                        "Outside the snow went on piling softly.",
-                        "And before long a daughter really was born, with skin as white as snow. They named her Snow White.",
-                        "But the queen died soon after. The king married again, and his new wife was very beautiful.",
-                        "Only her heart was not."
+                        "Before long a daughter really was born. Her skin was as white as snow, and her lips were as red as blood.",
+                        "They named her Snow White.",
+                        "But the queen died soon after. The king married again. His new wife was very beautiful, but her heart was not."
                     ]
                 },
                 {
@@ -547,12 +545,12 @@ const EN = {
                     left: [
                         "The new queen had a mirror that answered whatever she asked. Every day she asked it the same thing.",
                         "\"Mirror, mirror, who is fairest of all?\"",
-                        "\"You are the fairest, my queen.\"",
-                        "And the queen smiled to hear it. She felt better every time she looked."
+                        "The mirror answered, \"You are the fairest, my queen.\"",
+                        "And the queen smiled. She felt happy every time she looked."
                     ],
                     right: [
-                        "The years went by, and Snow White grew tall. People in the palace smiled when they saw her.",
-                        "That day the queen asked as usual, and the mirror gave a different answer.",
+                        "The years went by, and Snow White grew tall. Every day she grew lovelier.",
+                        "One day the queen asked as usual, but the mirror gave a different answer.",
                         "\"Snow White is fairest now.\"",
                         "The queen's face set hard, and the mirror trembled in her hand."
                     ]
@@ -574,22 +572,21 @@ const EN = {
                         "The next day he set out with her."
                     ],
                     right: [
-                        "\"Look at those flowers, my lady.\"",
+                        "He led her into the woods. \"Look at those flowers, my lady.\"",
                         "Snow White picked them as she walked.",
-                        "The path led deeper and deeper.",
+                        "The path went deeper.",
                         "At last the huntsman stopped.",
-                        "For a long while he stood there without speaking.",
-                        "Then he went down on his knees."
+                        "He stood there a long while. Then he went down on his knees.",
+                        "He could not bring himself to hurt her."
                     ]
                 },
                 {
                     art: '02-forest-2.webp',
                     emoji: '🌲',
                     left: [
-                        "\"Run, my lady. Run now.\"",
-                        "\"Go over these woods and far away.\"",
+                        "\"The queen ordered me to harm you,\" said the huntsman. \"Run, my lady! Go over these woods and far away.\"",
                         "\"You must never come back to the castle.\"",
-                        "Snow White did not understand. The huntsman left without looking back, and she was alone in the forest.",
+                        "The huntsman left without looking back. Snow White was alone in the forest.",
                         "The flowers dropped from her hand."
                     ],
                     right: [
@@ -609,7 +606,7 @@ const EN = {
                     emoji: '🏠',
                     left: [
                         "In the middle of the forest stood a little house. The door was open a crack.",
-                        "\"Hello? Is anybody home?\"",
+                        "Snow White called softly, \"Hello? Is anybody home?\"",
                         "Inside, everything was neat and tidy.",
                         "On the table were seven plates. Seven cups, and seven chairs."
                     ],
@@ -623,18 +620,15 @@ const EN = {
                     art: '03-dwarfs-2.webp',
                     emoji: '🏠',
                     left: [
-                        "When night came the door opened and seven dwarfs came home. They had been digging for gold in the mountain.",
+                        "At night the door opened. Seven dwarfs came home from digging gold in the mountain.",
                         "\"Someone has been sitting in my chair.\"",
                         "\"And someone has used my plate!\"",
-                        "They carried a lamp about the room.",
-                        "\"Someone is asleep in my bed!\"",
-                        "And all seven came crowding round."
+                        "One dwarf held up a lamp and shouted, \"Someone is asleep in my bed!\""
                     ],
                     right: [
-                        "After a while Snow White opened her eyes.",
-                        "She told them everything that had happened. The dwarfs looked at one another.",
-                        "\"Then stay here with us.\"",
-                        "From that day she cooked and washed, and when the dwarfs came home from the mine she went out to the door to meet them. She was like a mother to all seven."
+                        "And all seven came crowding round. They did not have the heart to wake her.",
+                        "In the morning Snow White told them everything. The dwarfs looked at one another. \"Then stay here with us.\"",
+                        "She cooked and washed. When the dwarfs went to the mine, they said, \"Never open the door to anyone.\""
                     ]
                 }
             ]
@@ -647,21 +641,17 @@ const EN = {
                     art: '04-disguise.webp',
                     emoji: '🧣',
                     left: [
-                        "The queen asked her mirror again.",
-                        "\"Snow White is in the forest.\"",
-                        "\"She lives with seven dwarfs.\"",
-                        "At her mirror the queen rubbed ashes into her face and dusted her hair white.",
-                        "Then she tried bending her back into a stoop.",
-                        "\"Fi-ine sashes for sa-ale!\"",
-                        "She cracked her voice until it sounded old."
+                        "The queen asked her mirror again. It answered, \"Snow White lives in the forest with seven dwarfs.\"",
+                        "The huntsman had tricked her! The queen ground her teeth.",
+                        "She rubbed ashes into her face, dusted her hair white and bent her back into a stoop.",
+                        "\"Fi-ine sashes for sa-ale!\" she croaked."
                     ],
                     right: [
-                        "The queen went into the forest and found the cottage, and knocked at the window.",
+                        "Dressed as an old pedlar woman, the queen went to the dwarfs' cottage and knocked at the window.",
                         "\"Fine sashes for sale!\"",
                         "Snow White opened the door a little way.",
-                        "\"An old pedlar woman.\"",
-                        "The sashes in the basket really were very pretty - woven silk, one in every colour.",
-                        "\"Shall I tie it for you? Come here, child.\""
+                        "The silk sashes in the basket were very pretty.",
+                        "\"Shall I tie one for you? Come here, child.\""
                     ]
                 },
                 {
@@ -669,16 +659,14 @@ const EN = {
                     emoji: '🧣',
                     left: [
                         "The queen pulled it tight. Snow White could not breathe, and down she fell. The queen went away laughing.",
-                        "In the evening the dwarfs came home and cut the sash away at once.",
-                        "Snow White drew a great breath.",
-                        "The dwarfs scolded her. \"Never open the door to a stranger.\""
+                        "In the evening the dwarfs found her and cut the sash away. Snow White drew a great breath.",
+                        "\"That old woman was the queen!\" they said. \"Never open the door to a stranger.\""
                     ],
                     right: [
-                        "A few days later a pedlar came again - this time selling combs.",
-                        "The beads set in the comb caught the light, and Snow White found herself at the window before she knew it.",
-                        "The old woman slipped the comb straight into her hair.",
-                        "Snow White dropped where she stood.",
-                        "Luckily the dwarfs came home early."
+                        "When the mirror said Snow White lived, the queen came back with a poisoned comb.",
+                        "The beads on the comb caught the light, and Snow White opened the door.",
+                        "The old woman stuck it in her hair, and Snow White fell.",
+                        "Luckily the dwarfs came home early and pulled it out."
                     ]
                 }
             ]
@@ -691,34 +679,32 @@ const EN = {
                     art: '05-apple.webp',
                     emoji: '🍎',
                     left: [
-                        "The queen went down to her cellar and chose an apple. One side was deep red and the other was white.",
+                        "When the comb failed, the queen went down to her cellar. She chose an apple, half red and half white.",
                         "She put the poison on the red side only. From the outside nothing showed at all.",
                         "\"This time it cannot fail.\"",
-                        "This time she tied a kerchief over her head, put on a worn old skirt and rubbed a little earth into her face."
+                        "Then she dressed as a farmer's wife, with earth on her face."
                     ],
                     right: [
-                        "\"Sweet apples for sale.\"",
-                        "\"I am not allowed to open the door.\"",
-                        "\"I made a promise.\"",
-                        "\"Then I shall pass it through the window.\"",
-                        "Snow White shook her head."
+                        "The queen went back to the cottage and knocked at the window. \"Sweet apples for sale!\"",
+                        "Snow White shook her head. \"I am not allowed to open the door. I promised the dwarfs.\"",
+                        "\"Then I shall pass one through the window.\"",
+                        "But Snow White would not take it."
                     ]
                 },
                 {
                     art: '05-apple-2.webp',
                     emoji: '🍎',
                     left: [
-                        "\"If you are afraid, let us share it, half each.\"",
-                        "The old woman cut the apple in two.",
+                        "The old woman cut the apple in two. \"If you are afraid, let us share it, half each.\"",
                         "Then she bit into the white half and chewed and swallowed it with relish.",
-                        "Only then did Snow White feel easy. She took the red half and bit into it deeply."
+                        "Only then did Snow White feel easy. She took the red half and bit into it."
                     ],
                     right: [
-                        "She sank slowly to the floor. The queen went home laughing, and at the castle she asked her mirror.",
+                        "The poisoned piece stuck in her throat. She sank slowly to the floor.",
+                        "The queen went home laughing and asked her mirror,",
                         "\"Mirror, mirror, who is fairest now?\"",
                         "\"You are the fairest, my queen.\"",
-                        "It was the answer she had waited so long to hear.",
-                        "And the queen laughed out loud."
+                        "At last! The queen laughed out loud."
                     ]
                 }
             ]
@@ -731,16 +717,14 @@ const EN = {
                     art: '06-glass-coffin.webp',
                     emoji: '💎',
                     left: [
-                        "The dwarfs came home. This time there was no sash to cut. There was no comb to find.",
+                        "The dwarfs came home and found Snow White on the floor. This time there was no sash to cut and no comb to pull out.",
                         "Nothing they tried was any use. For three days the seven of them wept.",
-                        "They did not go to the mine at all.",
-                        "\"We cannot put her in the ground.\""
+                        "They did not go to the mine at all."
                     ],
                     right: [
-                        "\"Not when she looks like this…\"",
-                        "So they made a coffin of glass and cut letters of gold into it.",
-                        "SNOW WHITE, DAUGHTER OF THE KING.",
-                        "They set it gently on the hilltop.",
+                        "She looked as if she were only asleep. \"We cannot put her in the ground. She is too lovely.\"",
+                        "So they made a coffin of glass. In gold letters they wrote: SNOW WHITE, THE KING'S DAUGHTER.",
+                        "They set it on the hilltop.",
                         "They planted flowers all around it, and one of them always stayed beside her."
                     ]
                 },
@@ -754,11 +738,11 @@ const EN = {
                         "Then one day there were hoofbeats, and a prince from far away came up the hill."
                     ],
                     right: [
-                        "He stood there a long while.",
-                        "\"Let me take her to my castle.\"",
-                        "The dwarfs shook their heads.",
-                        "\"She must not leave us.\"",
-                        "But the prince would not give way. In the end the dwarfs lifted the coffin themselves."
+                        "The prince stood by the coffin a long while.",
+                        "Then he asked the dwarfs, \"Let me take her to my castle.\"",
+                        "The dwarfs shook their heads. \"She must not leave us.\"",
+                        "But the prince would not give way. He asked again and again.",
+                        "In the end the dwarfs said yes."
                     ]
                 }
             ]
@@ -771,7 +755,7 @@ const EN = {
                     art: '07-awake.webp',
                     emoji: '👑',
                     left: [
-                        "The men carried the coffin down. The hill path was very steep, and the dwarfs followed behind.",
+                        "The prince's men carried the coffin down. The hill path was very steep, and the dwarfs followed behind.",
                         "Then the man in front stumbled on a stone. The coffin swung hard.",
                         "The lid jolted with a thud.",
                         "And the piece of apple came free from her throat."
@@ -781,25 +765,21 @@ const EN = {
                         "Even the birds had stopped.",
                         "Then Snow White opened her eyes.",
                         "\"How long… have I been asleep?\"",
-                        "All seven dwarfs came running. The whole hillside rang with laughter, and the seven of them held one another and cried."
+                        "All seven dwarfs came running. They held one another and cried, and then they laughed until the hillside rang."
                     ]
                 },
                 {
                     art: '07-awake-2.webp',
                     emoji: '👑',
                     left: [
-                        "Snow White put her arms round them.",
-                        "\"Thank you for everything.\"",
-                        "\"I shall never forget this house.\"",
-                        "The dwarfs waved to her.",
-                        "\"Come and see us whenever you like!\"",
-                        "She looked back again and again."
+                        "Snow White put her arms round them one by one. \"Thank you for everything. I shall never forget this house.\"",
+                        "The dwarfs waved to her. \"Come and see us any time!\"",
+                        "She went off with the prince, looking back again and again."
                     ],
                     right: [
-                        "Before long there was a feast at the castle, and all seven dwarfs were invited.",
-                        "Meanwhile the queen asked her mirror, and the mirror named Snow White once more.",
-                        "The queen left that place.",
-                        "And she never came back."
+                        "Soon there was a wedding at the prince's castle, and all seven dwarfs were invited.",
+                        "Meanwhile the queen asked her mirror, and it named Snow White once more.",
+                        "The queen ran from the palace in a rage and never came back."
                     ]
                 }
             ]
@@ -845,7 +825,7 @@ const EN = {
             q: 'Which reaction to this book does NOT fit?',
             wide: true,
             choices: [
-                "The queen came with a lace, then a comb, then an apple — each time she was caught out she picked something more convincing.",
+                "The queen came with a sash, then a comb, then an apple — each time she was caught out she picked something more convincing.",
                 "The huntsman left her alive in the wood — he had made up his mind not to do as he was told.",
                 "The dwarfs heard her out and asked her to stay with them — they saw she had nowhere else to go.",
                 "One of the dwarfs always kept watch beside the glass coffin — they knew she would wake and were waiting for her."
@@ -862,7 +842,7 @@ const EN = {
                 left: [
                     "The Brothers Grimm went from village to village writing down the stories people told them. Snow White was set down that way.",
                     "The queen came three times. First a sash, then a comb, and last of all an apple. Each time she chose something a little more believable.",
-                    "And all three times Snow White opened the door, though the dwarfs had told her again and again not to. Perhaps it was because she was alone so much of the day.",
+                    "Twice Snow White opened the door, and the last time she took the apple through the window, though the dwarfs had told her not to. Perhaps it was because she was alone so much of the day.",
                     "Look at the huntsman once more. He was the only one who did not do as he was told. That is where the story turns."
                 ],
                 right: [
@@ -909,18 +889,18 @@ const EN = {
         ],
         '03-dwarfs-2.webp': [
             { word: 'dwarf', meaning: '난쟁이', sentence: 'Seven dwarfs came home.' },
-            { word: 'mine', meaning: '광산, 굴', sentence: 'When the dwarfs came home from the mine.' },
+            { word: 'mine', meaning: '광산, 굴', sentence: "When the dwarfs went to the mine." },
             { word: 'crowd round', meaning: '우르르 몰려들다', sentence: 'And all seven came crowding round.' }
         ],
         '04-disguise.webp': [
-            { word: 'stoop', meaning: '구부정한 자세', sentence: 'She tried bending her back into a stoop.' },
-            { word: 'pedlar', meaning: '장사꾼', sentence: 'An old pedlar woman.' },
+            { word: 'stoop', meaning: '구부정한 자세', sentence: "She bent her back into a stoop." },
+            { word: 'pedlar', meaning: '장사꾼', sentence: "Dressed as an old pedlar woman." },
             { word: 'sash', meaning: '허리끈', sentence: 'Fine sashes for sale!' }
         ],
         '04-disguise-2.webp': [
             { word: 'pull tight', meaning: '꽉 조이다', sentence: 'The queen pulled it tight.' },
             { word: 'draw a breath', meaning: '숨을 쉬다', sentence: 'Snow White drew a great breath.' },
-            { word: 'catch the light', meaning: '빛에 반짝이다', sentence: 'The beads set in the comb caught the light.' },
+            { word: 'catch the light', meaning: '빛에 반짝이다', sentence: "The beads on the comb caught the light." },
             { word: 'stranger', meaning: '낯선 사람', sentence: 'Never open the door to a stranger.' }
         ],
         '05-apple.webp': [
@@ -938,7 +918,7 @@ const EN = {
         '06-glass-coffin.webp': [
             { word: 'be of use', meaning: '소용이 있다', sentence: 'Nothing they tried was any use.' },
             { word: 'weep', meaning: '울다', sentence: 'For three days the seven of them wept.' },
-            { word: 'coffin', meaning: '관', sentence: 'So they made a coffin of glass.' },
+            { word: 'coffin', meaning: '관', sentence: "So they made a coffin of glass." },
             { word: 'plant', meaning: '심다', sentence: 'They planted flowers all around it.' }
         ],
         '06-glass-coffin-2.webp': [

@@ -603,20 +603,17 @@ const EN = {
                     art: '01-hive.webp',
                     emoji: '🍯',
                     left: [
-                        "Inside a great tree there was a hive.",
-                        "It was home to thousands of honeybees.",
+                        "Inside a great tree there was a hive. It was home to thousands of honeybees.",
                         "Every room was packed with six-sided cells.",
-                        "One day a young bee woke up there.",
-                        "Her name was Maya.",
-                        "She was a bee with large eyes and a great deal of curiosity.",
+                        "One day a young bee woke up there. Her name was Maya.",
+                        "She had large eyes and a great deal of curiosity.",
                         "Cassandra, a teacher bee, took charge of her."
                     ],
                     right: [
-                        "She was an old bee with spectacles on her feelers.",
-                        "Cassandra told her the rules one by one.",
+                        "She was an old bee with spectacles on her feelers. She told Maya the rules one by one.",
                         "\"Gathering pollen is our work.\"",
-                        "\"And you must always be back before the sun goes down.\"",
-                        "\"Outside the hive is a dangerous place.\" And Maya did not quite feel the weight of it."
+                        "\"You must always be back before the sun goes down.\"",
+                        "\"Outside the hive is a dangerous place.\" But Maya did not really understand."
                     ]
                 },
                 {
@@ -624,10 +621,9 @@ const EN = {
                     emoji: '🍯',
                     left: [
                         "Maya put a foreleg straight up.",
-                        "\"What is out there, then?\"",
+                        "\"What is out there?\"",
                         "Cassandra straightened her spectacles.",
-                        "\"A honeybee does not ask such things.\"",
-                        "\"Flowers and the hive — that is all you need to know.\"",
+                        "\"A honeybee does not ask such things. Flowers and the hive — that is all you need to know.\"",
                         "Maya nodded her head."
                     ],
                     right: [
@@ -661,7 +657,7 @@ const EN = {
                         "There were poppies, and there were cornflowers.",
                         "Every one of them smelled different.",
                         "Dew glittered in the sunlight.",
-                        "\"So the world was as big as this!\" said Maya without meaning to say anything."
+                        "\"The world is so big!\" Maya cried out before she knew it."
                     ]
                 },
                 {
@@ -694,40 +690,36 @@ const EN = {
                     art: '03-grasshopper.webp',
                     emoji: '🦗',
                     left: [
-                        "Maya came down into the long grass.",
-                        "The blades stood up around her like green pillars.",
-                        "Then something sprang out at her.",
-                        "Maya jumped back in fright.",
+                        "Maya came down into the long grass. The blades stood up around her like green pillars.",
+                        "Then something sprang out at her. Maya jumped back in fright.",
                         "It was a green creature with very long legs.",
-                        "\"Who are you?\"",
-                        "\"And why do you jump about so noisily?\""
+                        "\"Who are you?\" Maya asked. \"And why do you jump about so noisily?\""
                     ],
                     right: [
                         "\"Because jumping is my work!\"",
                         "\"I am Peppi. A grasshopper,\" he said, sticking out his chest.",
-                        "He jumped three times while he was saying it.",
-                        "Every jump set the grass swaying.",
+                        "He jumped three times while he was saying it. Every jump set the grass swaying.",
                         "Maya felt as though her head were spinning.",
-                        "\"Could you not sit down and talk?\""
+                        "\"Can't you sit down and talk?\""
                     ]
                 },
                 {
                     art: '03-grasshopper-2.webp',
                     emoji: '🦗',
                     left: [
-                        "\"You are a bee out of the hive, are you not?\"",
+                        "\"You're a bee from the hive, aren't you?\" said Peppi.",
                         "\"How did you know that?\"",
-                        "\"You are covered in pollen, that is how.\"",
+                        "\"You are covered in pollen, that's how.\"",
                         "And Peppi laughed out loud.",
                         "\"So what will you do now?\"",
                         "Maya smiled instead of answering."
                     ],
                     right: [
-                        "\"I do not know. Look about a little longer.\"",
-                        "\"When you do not know the way home?\"",
-                        "\"Yes. It does not matter.\"",
+                        "\"Well, I'll look about a little longer,\" she said at last.",
+                        "\"But you don't know the way home!\"",
+                        "\"Yes. That's all right.\"",
                         "Peppi shook his head as if she were hopeless.",
-                        "And then he leapt away and was gone.",
+                        "Then he leapt away and was gone.",
                         "Maya watched after him a long time."
                     ]
                 }
@@ -741,19 +733,16 @@ const EN = {
                     art: '04-beetle.webp',
                     emoji: '🪲',
                     left: [
-                        "Maya set off again.",
-                        "She flew low along a dirt path.",
-                        "A beetle was struggling away up ahead.",
-                        "It was a dung beetle rolling a great ball.",
-                        "He wore a stiff collar round his neck.",
-                        "His face was red all over.",
-                        "The ball kept rolling back down on him.",
-                        "And Maya felt sorry for him."
+                        "Maya set off again and flew low along a dirt path.",
+                        "Up ahead, a beetle was struggling away.",
+                        "It was a dung beetle rolling a great ball. He wore a stiff collar round his neck.",
+                        "His face was red all over, because the ball kept rolling back down on him.",
+                        "Maya felt sorry for him."
                     ],
                     right: [
                         "Roll, roll.",
                         "And down it went again.",
-                        "\"Shall I help you?\"",
+                        "\"Shall I help you?\" Maya asked.",
                         "The beetle raised his head.",
                         "\"No need. This is my work,\" he said shortly."
                     ]
@@ -762,21 +751,17 @@ const EN = {
                     art: '04-beetle-2.webp',
                     emoji: '🪲',
                     left: [
-                        "\"My name is Kurt, since you ask.\"",
+                        "\"My name is Kurt,\" he said.",
                         "Kurt cleared his throat and pushed at the ball again.",
-                        "\"If a fellow hands his own work to somebody else,\"",
-                        "\"what sort of grown-up is that?\"",
+                        "\"If a fellow hands his own work to somebody else, what sort of grown-up is that?\"",
                         "It sounded a little gruff to Maya.",
                         "But she stayed and watched all the same."
                     ],
                     right: [
-                        "And Kurt got the ball up the slope at last.",
-                        "He was streaming with sweat and smiling.",
-                        "He never noticed his collar had gone crooked.",
-                        "And Maya could not help laughing.",
-                        "\"There. It can be done, you see.\"",
-                        "Maya kept those words a long while.",
-                        "\"I ought to do my own work too.\""
+                        "At last Kurt got the ball up the slope. He was streaming with sweat, but smiling.",
+                        "His collar had gone crooked, and Maya could not help laughing.",
+                        "\"There. It can be done, you see,\" said Kurt.",
+                        "Maya remembered those words. \"I ought to do my own work too,\" she thought."
                     ]
                 }
             ]
@@ -794,7 +779,7 @@ const EN = {
                         "Maya saw something glittering.",
                         "Fine threads were strung between the grass stems.",
                         "Dew hung on them and shone like jewels.",
-                        "\"Oh, how pretty that is.\""
+                        "\"Oh, how pretty!\" said Maya."
                     ],
                     right: [
                         "So Maya went closer.",
@@ -819,9 +804,8 @@ const EN = {
                         "The meadow was perfectly quiet.",
                         "And then somewhere she heard singing.",
                         "Somebody was coming towards her in hops.",
-                        "Green legs appeared above the grass.",
-                        "It was Peppi the grasshopper.",
-                        "And Maya called out, so glad to see him."
+                        "Green legs appeared above the grass. It was Peppi the grasshopper!",
+                        "\"Peppi!\" Maya called out, so glad to see him."
                     ]
                 }
             ]
@@ -835,7 +819,7 @@ const EN = {
                     emoji: '🤝',
                     left: [
                         "\"Well, what are you doing up there?\"",
-                        "\"Can you not see! Help me down!\"",
+                        "\"Can't you see? Help me!\"",
                         "Peppi came over at once.",
                         "\"Hold still now. Moving winds it tighter.\"",
                         "He snapped the threads with his back legs.",
@@ -844,10 +828,8 @@ const EN = {
                     right: [
                         "The silk was sticky on his feet.",
                         "\"Quickly, before the spider comes.\"",
-                        "And at last Maya was free of it.",
-                        "The two of them rolled over into the grass.",
-                        "Maya took a great breath.",
-                        "\"Thank you. Thank you truly.\"",
+                        "At last Maya was free. The two of them rolled over into the grass.",
+                        "Maya took a great breath. \"Thank you. Thank you so much.\"",
                         "\"That was nothing at all,\" said Peppi with a shrug."
                     ]
                 },
@@ -864,7 +846,7 @@ const EN = {
                     ],
                     right: [
                         "She thought of Kurt, and she thought of Peppi.",
-                        "\"There is not one creature that lives alone.\"",
+                        "\"Not one creature lives alone,\" she thought.",
                         "And then she thought of the hive.",
                         "And of Cassandra too.",
                         "Maya turned over a long time that night.",
@@ -881,41 +863,35 @@ const EN = {
                     art: '07-hornets.webp',
                     emoji: '⚡',
                     left: [
-                        "A few days went by.",
-                        "Maya was passing an old tree.",
-                        "There was a great hole in the trunk of it.",
-                        "Low voices came out of the hole.",
-                        "Maya pressed herself against the bark.",
-                        "She looked in, and there were hornets gathered inside.",
+                        "A few days went by. Maya was passing an old tree.",
+                        "There was a great hole in the trunk, and low voices came out of it.",
+                        "Maya pressed herself against the bark and looked in.",
+                        "Hornets were gathered inside!",
                         "They were several times the size of a honeybee."
                     ],
                     right: [
-                        "They were making some plan together.",
-                        "\"Tonight we attack the bee tree.\"",
-                        "\"Watch for the moment the door opens.\"",
-                        "Maya felt her breath stop.",
-                        "Her legs were shaking.",
+                        "They were making a plan together.",
+                        "\"Tonight we attack the bee tree,\" said one hornet. \"Watch for the moment the door opens.\"",
+                        "Maya felt her breath stop. Her legs were shaking.",
                         "A foot slipped on the bark.",
-                        "And Maya pressed herself flat again."
+                        "Quickly Maya pressed herself flat again."
                     ]
                 },
                 {
                     art: '07-hornets-2.webp',
                     emoji: '⚡',
                     left: [
-                        "\"I must tell them. This minute.\"",
+                        "\"I must tell them,\" Maya thought. \"This minute.\"",
                         "Maya let go of the tree.",
                         "And then she flew with all her strength.",
                         "Her wings felt as though they would break.",
                         "She was gasping for breath.",
-                        "And still Maya did not stop."
+                        "But still Maya did not stop."
                     ],
                     right: [
-                        "But she did not know which way to go.",
-                        "So Maya climbed high and looked all round.",
+                        "But which way was home? So Maya climbed high and looked all round.",
                         "Far off she saw a tree she knew.",
-                        "The sun was going down and down.",
-                        "Maya flew straight for it.",
+                        "The sun was going down and down. Maya flew straight for the tree.",
                         "The wind beat hard against her face.",
                         "\"A little further, a little further!\" And she set her teeth."
                     ]
@@ -950,9 +926,9 @@ const EN = {
                     emoji: '🐝',
                     left: [
                         "The bees dragged branches and logs to block the door.",
-                        "Then they stood packed close in front of it, shoulder to shoulder, and not one of them moved.",
+                        "Then they stood packed close in front of it, shoulder to shoulder.",
                         "At midnight the hornets came.",
-                        "The humming of them rang through the whole tree.",
+                        "Their humming rang through the tree.",
                         "The bees held their breath.",
                         "Maya was standing in the front rank."
                     ],
@@ -966,9 +942,10 @@ const EN = {
                     art: '08-ending-3.webp',
                     emoji: '🎉',
                     left: [
-                        "At that, the whole hive woke up at once. Doors opened room after room, and bees came pouring out. \"Maya saved us all!\" somebody called.",
-                        "The word passed from bee to bee, and in no time the doorway was packed.",
-                        "Then Cassandra came walking slowly out."
+                        "The cheer woke the whole hive. Doors opened, and bees came pouring out.",
+                        "\"Maya saved us all!\" somebody called.",
+                        "The word passed from bee to bee, and the doorway was packed.",
+                        "Then Cassandra came slowly out."
                     ],
                     right: [
                         "Cassandra stopped in front of Maya and hugged her tight. \"Well done, Maya.\"",
@@ -1021,7 +998,7 @@ const EN = {
                 "Cassandra told her bees do not ask such things — it only made Maya more curious.",
                 "Kurt refused her offer of help — he would not pass his own work to anyone else.",
                 "Maya said not one insect lives alone — that was when the hive came back to her mind.",
-                "The hornets circled a while and went away — they saw how many more bees there were and lost their nerve."
+                "The hornets pushed at the door a long while and went away — they saw how many more bees there were and lost their nerve."
             ],
             answer: 3
         }
@@ -1056,7 +1033,7 @@ const EN = {
         '01-hive.webp': [
             { word: 'hive', meaning: '벌집', sentence: 'Inside a great tree there was a hive.' },
             { word: 'cell', meaning: '칸', sentence: 'Every room was packed with six-sided cells.' },
-            { word: 'curiosity', meaning: '호기심', sentence: 'A bee with a great deal of curiosity.' },
+            { word: 'curiosity', meaning: '호기심', sentence: 'She had a great deal of curiosity.' },
             { word: 'feeler', meaning: '더듬이', sentence: 'Spectacles on her feelers.' },
             { word: 'pollen', meaning: '꽃가루', sentence: 'Gathering pollen is our work.' }
         ],
@@ -1100,7 +1077,7 @@ const EN = {
             { word: 'shortly', meaning: '퉁명스럽게', sentence: 'This is my work, he said shortly.' }
         ],
         '04-beetle-2.webp': [
-            { word: 'hand to', meaning: '미루다', sentence: 'If a fellow hands his work to somebody else.' },
+            { word: 'hand to', meaning: '미루다', sentence: 'If a fellow hands his own work to somebody else.' },
             { word: 'gruff', meaning: '무뚝뚝한', sentence: 'It sounded a little gruff to Maya.' },
             { word: 'slope', meaning: '언덕', sentence: 'Kurt got the ball up the slope.' },
             { word: 'crooked', meaning: '삐뚤어진', sentence: 'His collar had gone crooked.' },

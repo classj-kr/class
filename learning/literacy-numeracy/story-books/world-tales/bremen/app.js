@@ -555,16 +555,13 @@ const EN = {
                     art: '01-donkey.webp',
                     emoji: '🫏',
                     left: [
-                        "The donkey went out at dawn and did not come back until evening. He had carried loads for the mill for a very long time, and never missed a day.",
-                        "With sacks of grain on his back he went between the mill and the market,",
-                        "in snow and in rain alike.",
-                        "And his master had thought a great deal of him for it."
+                        "The donkey went out at dawn and came back in the evening. He had carried loads for the mill for many years without missing a day.",
+                        "With sacks of grain on his back, he went between the mill and the market, in snow and in rain.",
+                        "His master thought a great deal of him."
                     ],
                     right: [
-                        "But the years went by and the donkey grew old. His legs shook and his back ached,",
-                        "and he could not carry what he used to.",
-                        "One sack now meant stopping to rest several times over,",
-                        "and his master's face grew harder and harder.",
+                        "But the years went by, and the donkey grew old. His legs shook and his back ached. He could not carry what he used to.",
+                        "Even one sack meant stopping to rest several times, and his master's face grew harder.",
                         "One day, resting in the barn, he heard a voice outside the door."
                     ]
                 },
@@ -572,19 +569,14 @@ const EN = {
                     art: '01-donkey-2.webp',
                     emoji: '🫏',
                     left: [
-                        "\"He's no use to us now. Eating and nothing else.\"",
+                        "It was his master's voice. \"He's no use to us now. He does nothing but eat.\"",
                         "The donkey's ears went up, and something went cold in his chest.",
-                        "He could not sleep that night. If he stayed, something bad was going to happen.",
-                        "He turned it over all night and made up his mind.",
-                        "And before dawn he slipped quietly away."
+                        "He could not sleep that night. He turned it over and made up his mind, and before dawn he slipped quietly away."
                     ],
                     right: [
-                        "It was a bright moonlit night.",
-                        "He went out onto the high road without looking back.",
-                        "\"I shall go to Bremen. I can be a musician there.\"",
-                        "It was a big city, three days' walk away.",
-                        "The donkey cleared his throat and tried it out.",
-                        "\"Hee-haw!\" It was a fine loud sound, and it rang all through the wood."
+                        "It was a bright moonlit night. He went out onto the high road without looking back.",
+                        "As he walked, the donkey cleared his throat. \"Hee-haw!\" It was so loud that it rang all through the wood.",
+                        "\"That will do. I shall go to Bremen and be a musician.\" Bremen was a big city, three days' walk away."
                     ]
                 }
             ]
@@ -597,36 +589,28 @@ const EN = {
                     art: '02-dog.webp',
                     emoji: '🐕',
                     left: [
-                        "He had walked a long way when he saw something lying at the roadside.",
-                        "Close up, it was an old hunting dog.",
-                        "He was panting, and could barely lift his head. His coat had come out in patches and his sides were hollow.",
-                        "\"And what are you doing there?\""
+                        "He had walked a long way when he saw something lying at the roadside. It was an old hunting dog.",
+                        "The dog was panting and could barely lift his head. His coat had come out in patches, and his sides were hollow.",
+                        "\"And what are you doing there?\" asked the donkey."
                     ],
                     right: [
-                        "\"Don't ask. My master turned me out because I can't hunt any more.\"",
-                        "\"I haven't eaten since yesterday. So here I am, lying in the road.\"",
-                        "The donkey looked down at him for a long while.",
-                        "It did not feel like somebody else's trouble.",
-                        "It had been his own, only yesterday."
+                        "\"Don't ask,\" said the dog. \"My master turned me out because I can't hunt any more. I haven't eaten since yesterday.\"",
+                        "The donkey looked down at him for a long while. This was not somebody else's trouble. It was his own story."
                     ]
                 },
                 {
                     art: '02-dog-2.webp',
                     emoji: '🐕',
                     left: [
-                        "The donkey tapped the ground with a front hoof.",
-                        "\"Well then, this is lucky. Come to Bremen with me and be a musician.\"",
+                        "The donkey tapped the ground with a front hoof. \"This is lucky. Come to Bremen with me and be a musician.\"",
                         "\"Me? All I can do is bark.\"",
-                        "\"And what is that but singing? What a voice you have on you.\"",
+                        "\"But that is singing! What a loud voice you have!\"",
                         "The dog looked up at him, quite puzzled."
                     ],
                     right: [
-                        "And then he grinned.",
-                        "He pushed himself up slowly on his front legs.",
-                        "His legs shook, but he stood.",
+                        "Then he grinned. He pushed himself up slowly on his front legs. His legs shook, but he stood.",
                         "\"Woof, woof! Like that?\"",
-                        "\"Very good indeed. You shall have the drum.\"",
-                        "And the dog's tail went to and fro."
+                        "The donkey laughed. \"Very good indeed. You shall have the drum.\" The dog's tail went to and fro."
                     ]
                 }
             ]
@@ -639,35 +623,30 @@ const EN = {
                     art: '03-four.webp',
                     emoji: '🐈',
                     left: [
-                        "The two of them walked along together, and before long it was midday.",
-                        "There was a cat sitting on a stone wall by the road, with a face like thunder.",
-                        "He looked as though he had not eaten in three days,",
-                        "and his whiskers had come out in patches.",
-                        "\"And what is the matter with you?\""
+                        "The two of them walked on together, and before long it was midday.",
+                        "A cat was sitting on a stone wall by the road, with a face like thunder.",
+                        "He looked as though he had not eaten in three days, and his whiskers had come out in patches.",
+                        "\"And what is the matter with you?\" asked the donkey."
                     ],
                     right: [
-                        "\"My teeth have gone, so I can't catch mice, and I get nothing but scolding. I have nowhere to go now.\"",
-                        "\"Then come along with us. Nobody sings at night like you do.\"",
-                        "The cat blinked.",
-                        "He looked from one to the other of them for a while, then quietly put his tail up",
-                        "and stepped lightly down off the wall."
+                        "\"My teeth are worn, so I can't catch mice. I got nothing but scolding, and then I was turned out.\"",
+                        "\"Then come with us,\" said the donkey. \"Nobody sings at night like you.\"",
+                        "The cat blinked and looked from one to the other. Then he put his tail up and stepped lightly down off the wall."
                     ]
                 },
                 {
                     art: '03-four-2.webp',
                     emoji: '🐓',
                     left: [
-                        "The three of them were going through a village when they heard a cockerel on a wall, crowing fit to burst.",
-                        "The sun was high overhead, and they wondered what it was about.",
-                        "\"What are you crowing about at this hour?\"",
+                        "As the three of them went through a village, a cockerel on a wall was crowing fit to burst.",
+                        "The sun was already high, so they wondered what was wrong.",
+                        "\"What are you crowing about?\" asked the donkey.",
                         "\"They are putting me on the table tomorrow! So I mean to crow my fill while I can.\""
                     ],
                     right: [
-                        "\"A voice like that, and they want you for the table? Ridiculous.\"",
-                        "\"Come with us. With a voice like yours you will eat anywhere.\"",
-                        "The cockerel hesitated a moment.",
-                        "Then he beat his wings hard and came down off the wall.",
-                        "And now there were four of them walking side by side."
+                        "The donkey shook his head. \"A voice like that, and they want you for the table? Ridiculous. Come with us. With a voice like yours, you will eat anywhere.\"",
+                        "The cockerel hesitated a moment. Then he beat his wings and came down off the wall.",
+                        "Now there were four of them walking side by side."
                     ]
                 }
             ]
@@ -680,36 +659,29 @@ const EN = {
                     art: '04-light.webp',
                     emoji: '🌲',
                     left: [
-                        "The sun went down and night found the four of them in a wood. Bremen was still a long way off —",
-                        "far more than a day's walk.",
+                        "The sun went down, and night found the four of them in a wood. Bremen was still far more than a day's walk away.",
                         "The donkey and the dog settled themselves under a big tree.",
                         "The cat went up into the branches, and the cockerel flew higher still."
                     ],
                     right: [
-                        "From the top the cockerel looked all round him, out of habit. He had always done it where he slept.",
-                        "And then he called out suddenly.",
-                        "\"There, over there! I can see a light!\"",
-                        "\"Is it far?\"",
-                        "\"No — we could walk it!\""
+                        "From the top, the cockerel looked all round him, out of habit. Suddenly he called out, \"Over there! I can see a light!\"",
+                        "\"Is it far?\" asked the donkey from under the tree.",
+                        "\"No, we could walk it!\"",
+                        "They were hungry and cold. Where there was a light, there would be a house and food."
                     ]
                 },
                 {
                     art: '04-light-2.webp',
                     emoji: '🌲',
                     left: [
-                        "The four of them walked toward the light. Branches kept brushing their faces,",
-                        "and dry leaves crackled underfoot.",
-                        "After a long push through the trees the wood opened out.",
-                        "In the middle of a clearing stood a small cottage, with one window very bright.",
+                        "The four of them walked toward the light. Branches kept brushing their faces, and dry leaves crackled underfoot.",
+                        "At last the wood opened out. In the middle of a clearing stood a small cottage, with one window very bright.",
                         "The four of them crouched down and crept up to it."
                     ],
                     right: [
-                        "There was laughter coming from inside.",
-                        "But the windowsill was rather high.",
-                        "The cat and the cockerel had no chance at all.",
-                        "\"I shall look. The rest of you wait.\"",
-                        "The three of them waited up on their toes,",
-                        "and the donkey put his forefeet on the sill and looked in."
+                        "Laughter came from inside. But the windowsill was high, too high for the dog, the cat or the cockerel.",
+                        "The donkey was the tallest. \"I shall look,\" he said. \"The rest of you wait.\"",
+                        "He put his forefeet on the sill and looked in. The other three waited, up on their toes."
                     ]
                 }
             ]
@@ -722,39 +694,27 @@ const EN = {
                     art: '05-robbers.webp',
                     emoji: '🍖',
                     left: [
-                        "There were three men in the room, eating at a table loaded till it groaned —",
-                        "meat and bread and drink all over it.",
-                        "In the corner stood several heavy sacks.",
-                        "Anybody could see they were robbers.",
-                        "\"What can you see?\""
+                        "There were three men in the room, eating at a table loaded till it groaned with meat, bread and drink.",
+                        "In the corner stood several heavy sacks. Anybody could see they were robbers.",
+                        "\"What can you see?\" whispered the dog from below."
                     ],
                     right: [
-                        "\"A mountain of food.\"",
-                        "The donkey swallowed hard.",
-                        "\"There's enough there to fill all four of us.\"",
-                        "Down below, the three of them shifted from foot to foot,",
-                        "and their stomachs rumbled.",
-                        "\"Let us have a look too!\""
+                        "The donkey swallowed hard. \"A mountain of food! There's enough to fill all four of us.\"",
+                        "Down below, the three stamped their feet, and their stomachs rumbled. \"Let us have a look too!\""
                     ]
                 },
                 {
                     art: '05-robbers-2.webp',
                     emoji: '🍖',
                     left: [
-                        "The four of them gathered under the window with their heads together, working out how to get the men out.",
-                        "Should they knock at the door? Should they go round the back? They went back and forth.",
-                        "Nobody could think of anything good.",
-                        "And after a long while the donkey had an idea.",
-                        "\"What if we all used our voices at once?\""
+                        "The four of them put their heads together under the window, working out how to get the men out.",
+                        "Knock at the door? Go round the back? They went back and forth, but nobody had a good idea.",
+                        "At last the donkey had one. \"What if we all use our voices at once? They'll run away in fright!\""
                     ],
                     right: [
-                        "The four of them got into place straight away.",
-                        "The donkey put his forefeet on the sill,",
-                        "and the dog climbed onto his back.",
-                        "The cat climbed onto the dog and the cockerel onto the cat.",
-                        "Stacked up like that, they came out exactly level with the window.",
-                        "\"One, two, three!\"",
-                        "And the four of them took a great breath."
+                        "They got into place at once. The donkey put his forefeet on the sill, and the dog climbed onto his back.",
+                        "The cat climbed onto the dog, and the cockerel onto the cat. Stacked up, they were exactly level with the window.",
+                        "They took a great breath. \"One, two, three!\" whispered the donkey."
                     ]
                 }
             ]
@@ -767,36 +727,28 @@ const EN = {
                     art: '06-noise.webp',
                     emoji: '📣',
                     left: [
-                        "The four of them let go all together.",
-                        "\"HEE-HAW! WOOF! MIAOW! COCK-A-DOODLE-DOO!\"",
-                        "It was such a racket that the whole wood rang with it, and birds went up in fright.",
-                        "And then the four of them came straight through the window.",
-                        "The glass went in with a crash."
+                        "The four of them let go all together. \"HEE-HAW! WOOF! MIAOW! COCK-A-DOODLE-DOO!\"",
+                        "It was such a racket that the whole wood rang, and birds went up in fright.",
+                        "Then the four of them came tumbling in through the window. The glass broke with a crash."
                     ],
                     right: [
-                        "The robbers threw down their spoons and shot to their feet. Chairs went over and plates rolled off the table.",
-                        "\"M-monsters!\"",
-                        "\"Save yourselves!\"",
-                        "The three of them fell over one another getting out of the door —",
-                        "and never stopped for their shoes."
+                        "The robbers threw down their spoons and shot to their feet. Chairs went over, and plates rolled off the table.",
+                        "\"M-monsters!\" \"Help!\"",
+                        "The three of them bumped into one another as they ran out of the door. They did not even stop for their shoes."
                     ]
                 },
                 {
                     art: '06-noise-2.webp',
                     emoji: '📣',
                     left: [
-                        "The robbers ran off through the wood. Their footsteps went on for a while and then it was quiet.",
-                        "The four of them looked at each other.",
-                        "And without anybody suggesting it, they sat themselves down round the table.",
-                        "They were so hungry.",
-                        "And the four of them cleared everything on it."
+                        "The robbers ran off through the wood. Their footsteps went on for a while, then all was quiet.",
+                        "The four of them looked at each other. Then, without anybody suggesting it, they sat down round the table.",
+                        "They were so hungry that they cleared everything on it."
                     ],
                     right: [
-                        "For the first time in months they were full.",
-                        "The donkey patted his stomach and laughed.",
-                        "\"Now I feel more like myself.\"",
-                        "The four of them put out the light and each found a comfortable spot:",
-                        "the donkey on the dung heap in the yard, the dog behind the door, the cat by the hearth, and the cockerel up on the roof."
+                        "For the first time in months they were full. The donkey patted his stomach and laughed. \"Now I feel better.\"",
+                        "They put out the light and each found a comfortable spot.",
+                        "The donkey lay on the straw heap in the yard, the dog behind the door, the cat by the hearth, and the cockerel on the roof."
                     ]
                 }
             ]
@@ -809,39 +761,28 @@ const EN = {
                     art: '07-return.webp',
                     emoji: '🔥',
                     left: [
-                        "It was the middle of the night, and the robbers were muttering in the wood. The cottage had been dark for a good while.",
-                        "\"The light's out. Are we simply going to leave?\"",
-                        "\"Our sacks are still in there.\"",
-                        "\"You go and look.\"",
-                        "So in the end one of them crept back to the cottage."
+                        "In the middle of the night, the robbers were muttering in the wood. The cottage had been dark for a long time.",
+                        "\"The light's out,\" one said. \"Are we just going to leave? Our sacks are still in there!\"",
+                        "The captain pointed at one man. \"You go and look.\" So that robber crept back to the cottage."
                     ],
                     right: [
-                        "The kitchen was pitch dark. The robber felt his way to the hearth,",
-                        "because he needed an ember to light his lamp.",
-                        "And two embers glowed at him out of the dark.",
-                        "Delighted, he held his match up to them.",
-                        "But they were not embers. They were the cat's eyes,",
-                        "and the cat opened them wide in the dark."
+                        "The kitchen was pitch dark. The robber felt his way to the hearth. He needed an ember to light his candle.",
+                        "Two embers glowed at him out of the dark. Delighted, he held his candle up to them.",
+                        "But they were not embers. They were the cat's eyes, opening wide in the dark."
                     ]
                 },
                 {
                     art: '07-return-2.webp',
                     emoji: '🔥',
                     left: [
-                        "\"MIAOW!\"",
-                        "The cat went for his face with both front paws, and the robber ran screaming for the back door.",
-                        "But that was where the dog was lying.",
-                        "The dog took him hard by the leg.",
-                        "The robber leapt and went rolling out into the yard.",
-                        "And in the yard the donkey was waiting."
+                        "\"MIAOW!\" The cat went for his face with his claws, and the robber ran screaming for the back door.",
+                        "But the dog was lying by the door, and the dog took him hard by the leg.",
+                        "The robber leapt and went rolling out into the yard, where the donkey lay on the straw heap."
                     ],
                     right: [
-                        "The donkey let fly with both back hooves,",
-                        "and the robber went sailing over the wall.",
-                        "The noise woke the cockerel on the roof, and he called out.",
-                        "The robber landed hard and ran for it.",
-                        "\"COCK-A-DOODLE-DOO!\"",
-                        "And the whole wood was full of the sound."
+                        "The donkey let fly with both back hooves. The robber went sailing over the wall and landed hard.",
+                        "The noise woke the cockerel on the roof. \"COCK-A-DOODLE-DOO!\"",
+                        "The robber ran for it, and the whole wood was full of the sound."
                     ]
                 }
             ]
@@ -855,34 +796,27 @@ const EN = {
                     emoji: '🏡',
                     left: [
                         "The robber ran to his captain, shaking all over.",
-                        "\"That house is full of terrible things! A witch raked my face with her nails.\"",
-                        "\"There was a man with a knife at the door who stabbed me in the leg.\"",
-                        "\"And one with a club was waiting in the yard and knocked me flat.\""
+                        "\"That house is full of terrible things! A witch raked my face with her nails. A man with a knife stabbed me in the leg at the door.\"",
+                        "\"One with a club was waiting in the yard and knocked me flat. And a judge on the roof shouted, 'Take him away!'\""
                     ],
                     right: [
-                        "\"And there was a judge on the roof shouting for them to take me away!\"",
-                        "The captain shook his head slowly.",
-                        "\"Best leave that house alone.\"",
-                        "And the robbers never went near it again."
+                        "Really, they were only a cat, a dog, a donkey and a cockerel!",
+                        "The captain shook his head. \"Best leave that house alone.\"",
+                        "After that, the robbers never went near it again."
                     ]
                 },
                 {
                     art: '08-ending-2.webp',
                     emoji: '🏡',
                     left: [
-                        "Morning came, and the four of them went slowly round the cottage.",
-                        "The roof was sound and the kitchen was big.",
-                        "There was a well in the yard and a vegetable patch beside it,",
-                        "and dry straw stacked up in the shed.",
-                        "It was exactly the house for the four of them.",
-                        "\"Bremen can wait, I suppose.\""
+                        "In the morning the four of them looked round the cottage. The roof was sound, and the kitchen was big.",
+                        "There was a well and a vegetable patch in the yard, and dry straw in the shed.",
+                        "It was just right for the four of them."
                     ],
                     right: [
-                        "\"I like it better here.\"",
-                        "When the donkey said so, the other three all nodded.",
-                        "And the four of them lived in that house together for a long, long time.",
-                        "Every evening four voices went out over the wood,",
-                        "and people passing stopped to listen."
+                        "\"Bremen can wait,\" said the donkey. \"I like it better here.\" The other three all nodded.",
+                        "They lived there happily for a long, long time.",
+                        "Every evening their voices rang out, and people passing stopped to listen."
                     ]
                 }
             ]
@@ -992,11 +926,11 @@ const EN = {
         '03-four.webp': [
             { word: 'a face like thunder', meaning: '잔뜩 찌푸린 얼굴', sentence: 'A cat with a face like thunder.' },
             { word: 'whisker', meaning: '수염', sentence: 'His whiskers had come out in patches.' },
-            { word: 'scolding', meaning: '구박, 꾸중', sentence: 'I get nothing but scolding.' },
+            { word: 'scolding', meaning: '구박, 꾸중', sentence: 'I got nothing but scolding.' },
             { word: 'blink', meaning: '눈을 껌뻑이다', sentence: 'The cat blinked.' }
         ],
         '03-four-2.webp': [
-            { word: 'cockerel', meaning: '수탉', sentence: 'They heard a cockerel on a wall.' },
+            { word: 'cockerel', meaning: '수탉', sentence: 'A cockerel on a wall was crowing.' },
             { word: 'crow', meaning: '(닭이) 울다', sentence: 'Crowing fit to burst.' },
             { word: 'fit to burst', meaning: '목이 터져라', sentence: 'Crowing fit to burst.' },
             { word: 'one’s fill', meaning: '실컷', sentence: 'I mean to crow my fill while I can.' },
@@ -1012,7 +946,7 @@ const EN = {
             { word: 'open out', meaning: '트이다', sentence: 'The wood opened out.' },
             { word: 'clearing', meaning: '빈터', sentence: 'In the middle of a clearing stood a small cottage.' },
             { word: 'crouch', meaning: '몸을 낮추다', sentence: 'The four of them crouched down.' },
-            { word: 'windowsill', meaning: '창턱', sentence: 'But the windowsill was rather high.' }
+            { word: 'windowsill', meaning: '창턱', sentence: 'But the windowsill was high.' }
         ],
         '05-robbers.webp': [
             { word: 'groan', meaning: '휘다, 삐걱대다', sentence: 'A table loaded till it groaned.' },
@@ -1023,8 +957,8 @@ const EN = {
         '05-robbers-2.webp': [
             { word: 'work out', meaning: '궁리하다', sentence: 'Working out how to get the men out.' },
             { word: 'go back and forth', meaning: '말이 오가다', sentence: 'They went back and forth.' },
-            { word: 'stack up', meaning: '겹겹이 쌓다', sentence: 'Stacked up like that.' },
-            { word: 'level with', meaning: '~과 높이가 같은', sentence: 'They came out exactly level with the window.' }
+            { word: 'stack up', meaning: '겹겹이 쌓다', sentence: 'Stacked up, they were exactly level with the window.' },
+            { word: 'level with', meaning: '~과 높이가 같은', sentence: 'They were exactly level with the window.' }
         ],
         '06-noise.webp': [
             { word: 'let go', meaning: '내지르다', sentence: 'The four of them let go all together.' },
@@ -1042,7 +976,7 @@ const EN = {
         '07-return.webp': [
             { word: 'mutter', meaning: '수군거리다', sentence: 'The robbers were muttering in the wood.' },
             { word: 'feel one’s way', meaning: '더듬어 가다', sentence: 'The robber felt his way to the hearth.' },
-            { word: 'ember', meaning: '불씨', sentence: 'He needed an ember to light his lamp.' },
+            { word: 'ember', meaning: '불씨', sentence: 'He needed an ember to light his candle.' },
             { word: 'glow', meaning: '반짝이다', sentence: 'Two embers glowed at him out of the dark.' }
         ],
         '07-return-2.webp': [
@@ -1050,7 +984,7 @@ const EN = {
             { word: 'take by', meaning: '~를 물다', sentence: 'The dog took him hard by the leg.' },
             { word: 'let fly', meaning: '힘껏 차다', sentence: 'The donkey let fly with both back hooves.' },
             { word: 'sail over', meaning: '붕 날아가다', sentence: 'The robber went sailing over the wall.' },
-            { word: 'run for it', meaning: '냅다 달아나다', sentence: 'The robber landed hard and ran for it.' }
+            { word: 'run for it', meaning: '냅다 달아나다', sentence: 'The robber ran for it.' }
         ],
         '08-ending.webp': [
             { word: 'captain', meaning: '두목', sentence: 'The robber ran to his captain.' },
@@ -1062,8 +996,8 @@ const EN = {
         '08-ending-2.webp': [
             { word: 'sound', meaning: '튼튼한', sentence: 'The roof was sound.' },
             { word: 'well', meaning: '우물', sentence: 'There was a well in the yard.' },
-            { word: 'vegetable patch', meaning: '텃밭', sentence: 'A vegetable patch beside it.' },
-            { word: 'straw', meaning: '짚', sentence: 'Dry straw stacked up in the shed.' },
+            { word: 'vegetable patch', meaning: '텃밭', sentence: 'There was a well and a vegetable patch in the yard.' },
+            { word: 'straw', meaning: '짚', sentence: 'Dry straw in the shed.' },
             { word: 'stop to listen', meaning: '걸음을 멈추고 듣다', sentence: 'People passing stopped to listen.' }
         ],
         'end.webp': [

@@ -533,34 +533,29 @@ const EN = {
                     art: '01-statue.webp',
                     emoji: '🗽',
                     left: [
-                        "In the middle of the city stood a very tall column, and on top of it sat a statue.",
-                        "He was covered all over in gold leaf, so that he dazzled you when the sun came up, and two bright sapphires were set in his eyes.",
-                        "The red ruby in his sword hilt burned like an ember when the evening light caught it.",
-                        "Children going past the column would tip their heads right back."
+                        "In the middle of the city, on top of a very tall column, stood a statue.",
+                        "He was covered in gold leaf, and bright sapphires were set in his eyes.",
+                        "The red ruby in his sword hilt burned like an ember in the evening light.",
+                        "Children would tip their heads back. \"However did he get up there?\""
                     ],
                     right: [
-                        "\"However did he get up there?\"",
                         "People called him the Happy Prince.",
-                        "\"As lovely as that statue.\"",
-                        "\"He hasn't a care in the world, that one.\"",
-                        "The grown-ups looked up and said their piece too.",
-                        "And every time, the statue only went on looking quietly down at the city."
+                        "The grown-ups looked up and said, \"How lovely he is! He hasn't a care in the world.\"",
+                        "And every time, the statue only looked quietly down at the city."
                     ]
                 },
                 {
                     art: '01-statue-2.webp',
                     emoji: '🗽',
                     left: [
-                        "The prince sometimes remembered when he was alive.",
-                        "In those days he never left the inside of a high wall. There was always music in the garden and flowers in bloom, and he never once saw anything sad.",
-                        "\"That is why they all called me the Happy Prince.\""
+                        "When he was alive, the statue had been a prince.",
+                        "He lived inside a high wall, where there was always music and flowers in bloom. He never saw anything sad.",
+                        "\"That is why they called me the Happy Prince,\" he said to himself. \"I did not know what was outside the wall.\""
                     ],
                     right: [
-                        "\"I did not know what was outside the wall.\"",
-                        "But now that he was a statue he could see it all. The column was very high.",
+                        "But now that he was a statue high on the column, he could see it all.",
                         "Who went hungry, who was crying — it showed plainly in every alley.",
-                        "One day something fell from the prince's eye.",
-                        "It ran down his gold cheek. It was a tear."
+                        "One day something fell from the prince's eye. It ran down his gold cheek. It was a tear."
                     ]
                 }
             ]
@@ -573,11 +568,10 @@ const EN = {
                     art: '02-swallow.webp',
                     emoji: '🐦',
                     left: [
-                        "About that time a swallow came flying into the city. His friends had long since left for the warm countries.",
-                        "He had stayed playing with the reeds and got badly behind.",
-                        "His wings were heavy and he was hungry.",
-                        "\"I shall sleep here just for tonight.\"",
-                        "The swallow settled lightly at the statue's feet, folded up his legs and curled himself round."
+                        "About that time a swallow came flying into the city.",
+                        "His friends had long since left for warm countries. He had stayed playing with the reeds and fallen far behind.",
+                        "His wings were heavy and he was hungry. \"I shall sleep here just for tonight.\"",
+                        "He settled at the statue's feet and curled up."
                     ],
                     right: [
                         "He had his head under his wing and was just closing his eyes.",
@@ -592,18 +586,16 @@ const EN = {
                     art: '02-swallow-2.webp',
                     emoji: '🐦',
                     left: [
-                        "\"Why are you crying?\"",
-                        "the swallow asked, quite startled.",
-                        "\"Do you see that alley down there?\"",
+                        "\"Why are you crying?\" the swallow asked, quite startled.",
+                        "\"Do you see that alley down there?\" said the prince.",
                         "One window of an old house stood open.",
                         "A woman sat bent over her sewing, and her fingertips were worn raw where the needle went in."
                     ],
                     right: [
                         "On the bed by the window a child tossed about in a fever.",
                         "\"Mother, I'm thirsty. I want an orange.\"",
-                        "\"Just bear it a little longer.\"",
-                        "There was nothing but water in the house to give him.",
-                        "\"Swallow, take the ruby out of my sword and carry it to that house.\""
+                        "\"Just bear it a little longer,\" she said. She had nothing but water to give him.",
+                        "The prince said, \"Swallow, take the ruby out of my sword hilt and carry it to that house.\""
                     ]
                 }
             ]
@@ -623,11 +615,10 @@ const EN = {
                         "\"…which alley did you say it was?\""
                     ],
                     right: [
-                        "The prince smiled.",
-                        "The swallow pulled the ruby out with his beak and flew up hard. The roofs went by beneath him,",
-                        "and white steam came puffing out of the chimneys.",
-                        "He slipped in through the open window and laid the ruby down beside the thimble.",
-                        "The woman had fallen asleep with her sewing in her arms."
+                        "The prince smiled. The swallow pulled out the ruby with his beak and flew up hard.",
+                        "The roofs went by beneath him, and white steam puffed out of the chimneys.",
+                        "He slipped in through the open window and laid the ruby beside the thimble.",
+                        "The woman had fallen asleep over her sewing."
                     ]
                 },
                 {
@@ -637,14 +628,14 @@ const EN = {
                         "The swallow circled over the child and fanned him with his wings.",
                         "Whoosh, whoosh.",
                         "The hot forehead cooled, little by little.",
-                        "\"It doesn't feel hot any more.\"",
-                        "The child said it and drifted off to sleep."
+                        "\"It doesn't feel hot any more,\" the child murmured.",
+                        "Then he drifted off to sleep."
                     ],
                     right: [
-                        "\"Tomorrow they will be able to buy an orange.\"",
-                        "The swallow looked once more at the sleeping woman and went out through the window.",
-                        "\"How strange. It's so cold out, and I feel warm.\"",
-                        "\"That is because you did a good thing.\"",
+                        "\"Tomorrow you can buy an orange,\" the swallow whispered.",
+                        "Then he flew back to the prince.",
+                        "\"How strange,\" he said. \"It's so cold, and yet I feel warm.\"",
+                        "\"That is because you did a good thing,\" said the prince.",
                         "And the swallow slept very soundly that night."
                     ]
                 }
@@ -666,10 +657,9 @@ const EN = {
                     ],
                     right: [
                         "His fingers were so stiff the letters came out crooked.",
-                        "There was not one ember in the stove,",
-                        "and nothing to eat on the desk either.",
-                        "\"Take out one of my eyes.\"",
-                        "\"But then you won't be able to see.\"",
+                        "There was not one ember in the stove, and nothing to eat on the desk.",
+                        "\"Now that the ruby is gone, take out one of my eyes,\" said the prince.",
+                        "\"But then you won't be able to see!\" said the swallow.",
                         "\"Never mind. Go on.\""
                     ]
                 },
@@ -684,11 +674,11 @@ const EN = {
                         "Blue light moved across his palm."
                     ],
                     right: [
-                        "Next day he bought a bundle of firewood. He bought bread as well, and fresh paper.",
-                        "The fire roared up and the room was warm in no time.",
+                        "Next day he bought a bundle of firewood, bread and fresh paper.",
+                        "The fire roared up, and the room was soon warm.",
                         "\"Now the winter doesn't frighten me.\"",
-                        "With his hands thawed the writing came easily.",
-                        "The swallow watched it all and came back and told the prince."
+                        "With his hands thawed, the writing came easily.",
+                        "The swallow watched it all and went back to tell the prince."
                     ]
                 }
             ]
@@ -701,38 +691,33 @@ const EN = {
                     art: '05-eyes.webp',
                     emoji: '💧',
                     left: [
-                        "A few days later a child stood in the square, out selling matches.",
-                        "And she dropped every one of them into the gutter.",
-                        "The child sat down and burst into tears.",
-                        "People glanced at her as they went past and walked on.",
-                        "\"What shall I tell my mother…\"",
-                        "\"I'll be in trouble if I go back empty-handed.\""
+                        "The swallow kept putting off leaving.",
+                        "A few days later a girl was selling matches in the square.",
+                        "But she dropped them all in the gutter and burst into tears.",
+                        "People glanced at her and walked on.",
+                        "\"What shall I tell my mother? I'll be in trouble if I go back empty-handed.\""
                     ],
                     right: [
-                        "The prince said quietly,",
-                        "\"Swallow, take out my other eye.\"",
-                        "\"I can't. Then you won't see anything at all.\"",
+                        "\"Swallow, take out my other eye,\" the prince said quietly.",
+                        "The swallow jumped. \"I can't! Then you won't see anything at all.\"",
                         "\"Go on.\"",
-                        "The tears ran down the swallow's face.",
-                        "And still he did as he was told."
+                        "The tears ran down the swallow's face, but he did as he was told."
                     ]
                 },
                 {
                     art: '05-eyes-2.webp',
                     emoji: '💧',
                     left: [
-                        "The child ran off laughing with it in her hand, and the swallow came back to the statue.",
-                        "\"Now you cannot see.\"",
-                        "\"I shall not go. I shall be your eyes.\"",
-                        "From that day the swallow flew once round the city every day.",
-                        "\"And what did you see today?\""
+                        "The swallow flew down and dropped the sapphire into the girl's palm.",
+                        "She ran off laughing, holding it tight.",
+                        "The swallow came back to the statue. \"Now you cannot see. I shall not go. I shall be your eyes.\"",
+                        "From that day he flew once round the city every day."
                     ],
                     right: [
+                        "\"What did you see today?\" asked the prince.",
                         "\"A wren has hatched her chicks on a chimney pot.\"",
-                        "Then one day the swallow said this:",
-                        "\"The children in that alley go hungry every day.\"",
-                        "The prince said nothing for a long time. Then he spoke, quietly.",
-                        "\"Take the gold leaf off me, one sheet at a time, and carry it to them.\""
+                        "One day the swallow said, \"The children in that alley go hungry every day.\"",
+                        "The prince was quiet a long time. \"Take the gold leaf off me, one sheet at a time, and carry it to them.\""
                     ]
                 }
             ]
@@ -746,16 +731,15 @@ const EN = {
                     emoji: '🌨️',
                     left: [
                         "The swallow took the gold leaf off sheet by sheet and carried it away. He went to every hungry house and left it on the windowsill.",
-                        "The children's faces brightened from one day to the next.",
+                        "People bought bread with it, and the children's faces brightened day by day.",
                         "They ate their fill of bread and ran out into the alley.",
                         "\"I'm not hungry any more!\""
                     ],
                     right: [
-                        "The sound of children laughing came back into the streets.",
-                        "\"The child in that house laughed today for the first time.\"",
-                        "When the swallow told him so, the prince smiled quietly.",
-                        "And meanwhile not one sheet of gold was left, and the grey lead showed through.",
-                        "\"What has happened to that statue? It looks a fright.\""
+                        "The sound of children laughing came back to the streets.",
+                        "When the swallow told him, the prince smiled quietly.",
+                        "But soon not one sheet of gold was left, and the grey lead showed through.",
+                        "People passing by whispered, \"What has happened to that statue? It looks a fright.\""
                     ]
                 },
                 {
@@ -768,12 +752,12 @@ const EN = {
                         "and the lights of the city blurred one by one in front of him."
                     ],
                     right: [
-                        "\"Now I really must go.\"",
+                        "\"Now I really must go,\" said the swallow.",
                         "\"To the warm countries?\"",
                         "\"No. Somewhere much further.\"",
                         "The swallow gathered his last strength and kissed the prince on the cheek.",
-                        "And then he dropped at his feet.",
-                        "And at that moment something inside the statue cracked."
+                        "He fell at the prince's feet.",
+                        "Then something inside the statue cracked."
                     ]
                 }
             ]
@@ -786,17 +770,14 @@ const EN = {
                     art: '07-ending.webp',
                     emoji: '🔨',
                     left: [
-                        "The leaden heart had broken in two.",
-                        "It was that cold a night.",
-                        "Next morning the mayor came through the square with his councillors. He looked up at the column and stopped short.",
+                        "The leaden heart had broken in two. It was that cold a night.",
+                        "Next morning the mayor crossed the square with his councillors, looked up and stopped short.",
                         "\"What a state that thing is in! No ruby, and no eyes either.\"",
-                        "\"The gold has all come off as well, sir.\""
+                        "\"The gold has all come off as well, sir,\" said a councillor."
                     ],
                     right: [
-                        "\"He is little better than a beggar.\"",
-                        "\"We might melt him down and put up another.\"",
-                        "The councillors glanced at one another and nodded.",
-                        "\"And there's a dead bird as well.\"",
+                        "The mayor clicked his tongue. \"He is little better than a beggar. And there's a dead bird at his feet!\"",
+                        "The councillors glanced at one another. \"We might melt him down and put up another.\"",
                         "The mayor ordered the statue taken down there and then."
                     ]
                 },
@@ -804,18 +785,16 @@ const EN = {
                     art: '07-ending-2.webp',
                     emoji: '🔨',
                     left: [
-                        "The statue was put into the furnace. The molten metal bubbled and the hammers rang.",
-                        "But the leaden heart would not melt, however long they left it in.",
-                        "\"Why won't this melt? What a strange lump of lead.\"",
-                        "In the end the workmen threw it out."
+                        "The statue went into the furnace, and the molten metal bubbled.",
+                        "But the leaden heart would not melt.",
+                        "\"Why won't this lump melt?\" said the workmen.",
+                        "In the end they threw it on the rubbish heap where the dead swallow lay."
                     ],
                     right: [
-                        "It happened to land exactly where the dead swallow lay.",
-                        "And so the two most precious things in that city came to lie side by side.",
-                        "Long years afterwards the story was still told.",
-                        "\"Where did all that gold leaf go?\"",
+                        "So the two most precious things in the city lay side by side.",
+                        "Years later, someone asked, \"Where did all that gold leaf go?\"",
                         "\"Into the hands of the children in that alley.\"",
-                        "And only then did people nod."
+                        "Only then did people nod."
                     ]
                 }
             ]
@@ -912,8 +891,8 @@ const EN = {
             { word: 'swallow', meaning: '제비', sentence: 'A swallow came flying into the city.' },
             { word: 'long since', meaning: '벌써', sentence: 'His friends had long since left.' },
             { word: 'reed', meaning: '갈대', sentence: 'He had stayed playing with the reeds.' },
-            { word: 'fall behind', meaning: '늦어지다', sentence: 'He got badly behind.' },
-            { word: 'curl up', meaning: '몸을 말다', sentence: 'He curled himself round.' }
+            { word: 'fall behind', meaning: '늦어지다', sentence: "He had fallen far behind." },
+            { word: 'curl up', meaning: '몸을 말다', sentence: "He curled up." }
         ],
         '02-swallow-2.webp': [
             { word: 'startled', meaning: '깜짝 놀란', sentence: 'The swallow asked, quite startled.' },
@@ -925,8 +904,8 @@ const EN = {
         '03-ruby.webp': [
             { word: 'ache', meaning: '시리다, 아프다', sentence: 'His beak ached with it.' },
             { word: 'sheepishly', meaning: '슬그머니, 멋쩍게', sentence: 'He asked, a little sheepishly.' },
-            { word: 'chimney', meaning: '굴뚝', sentence: 'Steam came puffing out of the chimneys.' },
-            { word: 'thimble', meaning: '골무', sentence: 'He laid the ruby down beside the thimble.' }
+            { word: 'chimney', meaning: '굴뚝', sentence: "White steam puffed out of the chimneys." },
+            { word: 'thimble', meaning: '골무', sentence: "He laid the ruby beside the thimble." }
         ],
         '03-ruby-2.webp': [
             { word: 'circle', meaning: '맴돌다', sentence: 'The swallow circled over the child.' },
@@ -947,13 +926,13 @@ const EN = {
             { word: 'thaw', meaning: '녹다', sentence: 'With his hands thawed the writing came easily.' }
         ],
         '05-eyes.webp': [
-            { word: 'gutter', meaning: '도랑', sentence: 'She dropped every one of them into the gutter.' },
-            { word: 'burst into tears', meaning: '울음을 터뜨리다', sentence: 'The child burst into tears.' },
+            { word: 'gutter', meaning: '도랑', sentence: "She dropped them all in the gutter." },
+            { word: 'burst into tears', meaning: '울음을 터뜨리다', sentence: "She burst into tears." },
             { word: 'glance at', meaning: '힐끗 보다', sentence: 'People glanced at her and walked on.' },
             { word: 'empty-handed', meaning: '빈손으로', sentence: "I'll be in trouble if I go back empty-handed." }
         ],
         '05-eyes-2.webp': [
-            { word: 'run off', meaning: '달려가다', sentence: 'The child ran off laughing.' },
+            { word: 'run off', meaning: '달려가다', sentence: "She ran off laughing." },
             { word: 'wren', meaning: '굴뚝새', sentence: 'A wren has hatched her chicks on a chimney pot.' },
             { word: 'hatch', meaning: '새끼를 까다', sentence: 'A wren has hatched her chicks.' },
             { word: 'sheet', meaning: '(얇은) 장', sentence: 'Take the gold leaf off, one sheet at a time.' }
@@ -973,16 +952,16 @@ const EN = {
         ],
         '07-ending.webp': [
             { word: 'leaden', meaning: '납으로 된', sentence: 'The leaden heart had broken in two.' },
-            { word: 'mayor', meaning: '시장', sentence: 'The mayor came through the square.' },
-            { word: 'councillor', meaning: '신하, 의원', sentence: 'The mayor came with his councillors.' },
+            { word: 'mayor', meaning: '시장', sentence: "The mayor crossed the square." },
+            { word: 'councillor', meaning: '신하, 의원', sentence: "The mayor crossed the square with his councillors." },
             { word: 'beggar', meaning: '거지', sentence: 'He is little better than a beggar.' },
             { word: 'melt down', meaning: '녹이다', sentence: 'We might melt him down.' }
         ],
         '07-ending-2.webp': [
-            { word: 'furnace', meaning: '용광로', sentence: 'The statue was put into the furnace.' },
+            { word: 'furnace', meaning: '용광로', sentence: "The statue went into the furnace." },
             { word: 'molten', meaning: '녹아 흐르는', sentence: 'The molten metal bubbled.' },
-            { word: 'lump', meaning: '덩이', sentence: 'What a strange lump of lead.' },
-            { word: 'precious', meaning: '귀한', sentence: 'The two most precious things in that city.' }
+            { word: 'lump', meaning: '덩이', sentence: "Why won't this lump melt?" },
+            { word: 'precious', meaning: '귀한', sentence: "The two most precious things in the city." }
         ],
         'end.webp': [
             { word: 'sorrow', meaning: '슬픔', sentence: 'The prince knew nothing about sorrow.' },

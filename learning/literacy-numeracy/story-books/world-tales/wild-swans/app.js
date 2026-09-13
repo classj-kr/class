@@ -571,18 +571,17 @@ const EN = {
                     art: '01-family.webp',
                     emoji: '👑',
                     left: [
-                        "Eleven gold crowns shone in a row in the palace garden — one for each of eleven princes.",
+                        "Once there were eleven princes. As they ran about the palace garden, eleven gold crowns shone in a row.",
                         "The youngest of the family was a princess called Elisa.",
-                        "Their mother had died early. And still the twelve of them were very close.",
+                        "Their mother had died early, but the twelve of them were very close.",
                         "The brothers played with their sister the whole day long."
                     ],
                     right: [
                         "They carried her round the palace on their backs, turn and turn about.",
                         "They taught her her letters and sang to her.",
-                        "Elisa loved her brothers better than anything in the world.",
+                        "Elisa loved her brothers more than anything.",
                         "There was always laughter in that garden.",
-                        "They thought it would go on for a long time. But it did not.",
-                        "One day the air in the palace changed."
+                        "They thought it would go on for a long time. But it did not."
                     ]
                 },
                 {
@@ -596,12 +595,10 @@ const EN = {
                         "So she began telling the king things against them."
                     ],
                     right: [
-                        "\"Those children have no manners.\"",
-                        "\"The very sight of them gives me a headache.\"",
-                        "Bit by bit the king kept his distance from them.",
-                        "Elisa was sent away to a house in the country, and the brothers stayed at the palace.",
-                        "And from then on the queen had something dreadful in mind.",
-                        "Every night she muttered to herself, alone."
+                        "\"Those children have no manners. Just seeing them gives me a headache.\"",
+                        "Bit by bit the king kept his distance.",
+                        "Elisa was sent to a house in the country, and her brothers stayed at the palace.",
+                        "From then on the queen had something dreadful in mind, and every night she muttered to herself."
                     ]
                 }
             ]
@@ -632,19 +629,17 @@ const EN = {
                     art: '02-swans-2.webp',
                     emoji: '🦢',
                     left: [
-                        "Elisa heard the news at the house in the country.",
-                        "\"My brothers have been turned into swans?\"",
-                        "From that day she could not sleep.",
-                        "The year she turned fifteen she decided to go back to the palace.",
-                        "But the queen knew her and would not let her in."
+                        "Elisa heard the news at the house in the country. \"My brothers have been turned into swans?\"",
+                        "From that day on she could not sleep.",
+                        "Years passed. When she turned fifteen, she went back to the palace.",
+                        "But the queen rubbed dark juice on her face, so no one knew her. The king shook his head."
                     ],
                     right: [
-                        "\"That child is no daughter of mine.\"",
-                        "Elisa was put out of the palace gates. She had nowhere to go.",
+                        "\"That child is no daughter of mine,\" said the king.",
+                        "Elisa was put out of the palace gates, with nowhere to go.",
                         "So she made up her mind to find her brothers,",
-                        "and walked toward the sea, the way the swans had flown.",
-                        "However far it was did not matter.",
-                        "One pair of straw shoes and some dry bread was all she had."
+                        "and walked toward the sea, where the swans had flown.",
+                        "An old pair of straw shoes and some dry bread were all she had."
                     ]
                 }
             ]
@@ -657,38 +652,32 @@ const EN = {
                     art: '03-reunion.webp',
                     emoji: '🌊',
                     left: [
-                        "Elisa walked for days and days, through woods and over open country, living on the berries she could pick.",
+                        "Elisa walked for days and days, through woods and fields, living on berries she picked.",
                         "Her feet blistered and her clothes wore through.",
                         "At last she came to the sea, and the salt wind struck her face.",
-                        "There was a rocky island close in to the shore.",
-                        "Elisa sat down on it and waited for the sun."
+                        "She sat down on a rocky island by the shore to rest her tired legs."
                     ],
                     right: [
                         "It was just as the sun was going down.",
-                        "Something white came down out of the sky.",
-                        "Eleven swans.",
+                        "Something white came down out of the sky — eleven swans!",
                         "The sound of their wings was louder than the waves.",
                         "Elisa jumped to her feet. Her chest felt fit to burst.",
-                        "And the sun went into the water."
+                        "'Could they be my brothers?'"
                     ]
                 },
                 {
                     art: '03-reunion-2.webp',
                     emoji: '🌊',
                     left: [
-                        "The moment the sun went down, the feathers fell away.",
-                        "And there were her brothers.",
-                        "Elisa ran straight to them.",
-                        "\"Brother!\"",
+                        "The sun sank into the water, and at that moment the feathers fell away.",
+                        "And there were her brothers! Elisa ran straight to them.",
+                        "\"Brothers!\" she cried.",
                         "\"Elisa! However did you get here?\""
                     ],
                     right: [
-                        "Her brothers gathered her in.",
-                        "\"When the sun comes up we turn back into swans.\"",
-                        "\"We can only be ourselves at night.\"",
-                        "\"Our stepmother put this on us.\"",
-                        "Elisa held on to her brothers and cried for a long while.",
-                        "It had been years."
+                        "Her brothers gathered her in, and the eldest spoke.",
+                        "\"When the sun comes up, we turn back into swans. We can only be ourselves at night. Our stepmother put a spell on us.\"",
+                        "Elisa held on to her brothers and cried for a long while. It had been years."
                     ]
                 }
             ]
@@ -701,17 +690,15 @@ const EN = {
                     art: '04-nettles.webp',
                     emoji: '🌿',
                     left: [
-                        "The brothers laid Elisa in a great net and carried her over the sea as swans.",
+                        "All night the brothers wove a great net out of reeds.",
+                        "Next morning, as swans, they laid Elisa in the net and carried her over the sea.",
                         "They settled in a cave in a wood.",
-                        "That night Elisa dreamed.",
-                        "An old man in white came to her in the dream.",
+                        "That night an old man in white came to Elisa in a dream.",
                         "\"Do you want to save your brothers?\""
                     ],
                     right: [
-                        "\"Then make eleven shirts out of nettles and put them on.\"",
-                        "\"That will break the spell.\"",
-                        "\"But until the last one is done you must not say one word.\"",
-                        "\"If you speak, your brothers will die.\"",
+                        "\"Then make eleven shirts out of nettles and put them on your brothers. That will break the spell.\"",
+                        "\"But until the last one is done, you must not say one word. If you speak, your brothers will die.\"",
                         "Elisa woke and sat straight up."
                     ]
                 },
@@ -719,21 +706,17 @@ const EN = {
                     art: '04-nettles-2.webp',
                     emoji: '🌿',
                     left: [
-                        "There really were nettles growing in front of the cave. Elisa began pulling them at once.",
-                        "Her hands burned as though they had been in a fire, and the blisters came up straight away.",
-                        "The backs of her hands went red and swollen.",
-                        "And still she did not stop. She trod the stalks to draw out the fibre",
-                        "and began weaving the shirts with it.",
-                        "Green sap ran down over her feet."
+                        "There really were nettles by the cave, and Elisa pulled them at once.",
+                        "Her hands burned as if in a fire, blistered, and went red and swollen.",
+                        "Still she did not stop. She trod the stalks with bare feet, and green sap ran down.",
+                        "Then she drew out the fibre and began weaving shirts."
                     ],
                     right: [
-                        "At nightfall her brothers came back —",
-                        "swans turned men as the sun went down.",
-                        "\"Elisa, what have you done to your hands?\"",
+                        "At nightfall her brothers, men again, came into the cave.",
+                        "\"Elisa, what has happened to your hands?\"",
                         "Elisa did not answer. She only shook her head and worked on.",
-                        "And her brothers understood what it meant.",
-                        "\"This is for us.\"",
-                        "The eldest took her hands gently in his own."
+                        "Her brothers understood what it meant.",
+                        "The eldest took her hands gently in his own. \"This is because of us.\""
                     ]
                 }
             ]
@@ -753,8 +736,7 @@ const EN = {
                         "And even the hounds stopped barking."
                     ],
                     right: [
-                        "\"Who are you?\"",
-                        "\"And what are you doing in a place like this?\"",
+                        "\"Who are you? And what are you doing in a place like this?\"",
                         "Elisa could not answer anything at all.",
                         "She could only say it with her eyes.",
                         "There were tears standing in them,",
@@ -765,17 +747,14 @@ const EN = {
                     art: '05-king-2.webp',
                     emoji: '🐎',
                     left: [
-                        "The king looked into those eyes a long while.",
-                        "They were not the eyes of a bad person.",
+                        "The king looked into those eyes a long while. They were not the eyes of a bad person.",
                         "\"I cannot leave you here.\"",
                         "He set the girl on his horse and took her to his own castle.",
-                        "Elisa held her bundle of nettles tight against her."
+                        "Elisa held her bundle of nettles tight. It was the one thing she could not let go of."
                     ],
                     right: [
-                        "It was the one thing she could not let go of.",
-                        "At the castle they gave her fine clothes",
-                        "and set warm food in front of her.",
-                        "And still Elisa did not smile.",
+                        "At the castle they gave her fine clothes and set warm food in front of her.",
+                        "Still Elisa did not smile.",
                         "At night she shut herself in her room and wove.",
                         "She never once opened her mouth."
                     ]
@@ -790,17 +769,16 @@ const EN = {
                     art: '06-accused.webp',
                     emoji: '🗣️',
                     left: [
-                        "At the castle too, Elisa wove nettles every night, sitting alone behind a shut door.",
-                        "Then the nettles she had brought ran out.",
+                        "Many days went by. Then the nettles she had brought ran out,",
+                        "and the shirts were still far from done.",
                         "So she slipped out of the castle in the middle of the night",
                         "and gathered more in the fields outside.",
-                        "And somebody saw her do it."
+                        "But somebody saw her."
                     ],
                     right: [
                         "\"Where does that girl go every night?\"",
                         "The talk swelled quickly.",
-                        "\"She must be a witch.\"",
-                        "\"That is why she never speaks.\"",
+                        "\"She must be a witch. That is why she never speaks.\"",
                         "The muttering got louder and louder.",
                         "Elisa heard every word of it and could not open her mouth."
                     ]
@@ -809,18 +787,16 @@ const EN = {
                     art: '06-accused-2.webp',
                     emoji: '🗣️',
                     left: [
-                        "At last it reached the king's ears, and his men brought Elisa in.",
+                        "At last it reached the king's ears. His men dragged Elisa in and demanded,",
                         "\"What have you been doing at night?\"",
-                        "Elisa could not speak. One word and her brothers would die.",
-                        "She only shook her head.",
-                        "\"You see. She cannot even answer.\""
+                        "Elisa could not speak. One word and her brothers would die. She only shook her head.",
+                        "\"You see?\" said the king's men. \"She cannot even answer.\""
                     ],
                     right: [
                         "There was nothing the king could do.",
-                        "Elisa was shut up in a tower that same hour,",
-                        "and they threw her bundle of nettles in after her.",
-                        "\"Let her handle those all she likes.\" That is how they laughed at her.",
-                        "Only the king lay awake all that night."
+                        "Elisa was shut up in a tower, and they threw her bundle of nettles in after her.",
+                        "People laughed at her. \"Let her play with those all she likes!\"",
+                        "At dawn she would be punished in the square. The king lay awake all night."
                     ]
                 }
             ]
@@ -833,19 +809,17 @@ const EN = {
                     art: '07-finish.webp',
                     emoji: '🕯️',
                     left: [
-                        "Elisa thought it was just as well. The nettles were with her.",
-                        "Even shut in that room she did not stop her hands.",
-                        "She drew the fibre and wove all night.",
-                        "Ten shirts were finished,",
-                        "and only the last one was left.",
-                        "Her fingertips split and the blood came through."
+                        "Elisa thought it was just as well, for the nettles were with her.",
+                        "Even locked in, she did not stop working.",
+                        "All night she drew fibre and wove. Ten shirts were finished.",
+                        "Only the last one was left.",
+                        "Her fingertips split, and blood came through."
                     ],
                     right: [
-                        "But the window was already going grey.",
-                        "She had not managed to finish one sleeve.",
+                        "But the window was already going grey,",
+                        "and one sleeve was not yet finished.",
                         "The door opened and people came in.",
-                        "Elisa gathered the eleven shirts into her arms",
-                        "and was taken out to the square.",
+                        "Elisa hugged the eleven shirts and was taken out to the square.",
                         "Her hands never let go of the thread. She wove that sleeve as she walked."
                     ]
                 },
@@ -861,11 +835,10 @@ const EN = {
                     ],
                     right: [
                         "Elisa threw the shirts over them one by one.",
-                        "The moment a shirt touched, the feathers fell away,",
-                        "and one after another the swans became men.",
-                        "The princes came down into the square, and the crowd surged.",
-                        "\"What in the world is happening!\" The square was in an uproar.",
-                        "And only then did Elisa let out the breath she had been holding."
+                        "The moment a shirt touched, the feathers fell away, and the swans became men.",
+                        "The princes stood in the square. The crowd surged.",
+                        "\"What in the world?\" people cried.",
+                        "Only then did Elisa let out the breath she had been holding."
                     ]
                 }
             ]
@@ -879,18 +852,14 @@ const EN = {
                     emoji: '🤍',
                     left: [
                         "But the youngest brother was a little different.",
-                        "One arm was still a swan's wing,",
-                        "because the sleeve had not been finished.",
-                        "Elisa did not know where to put herself for shame.",
-                        "Her youngest brother laughed and shrugged,",
-                        "and the white wing caught the sunlight."
+                        "One arm was still a swan's wing, because the sleeve had not been finished.",
+                        "Elisa felt so sorry she did not know where to put herself.",
+                        "Her youngest brother laughed and shrugged, and the white wing shone in the sun."
                     ],
                     right: [
-                        "\"Never mind. This is quite good enough.\"",
-                        "\"Rather fine, don't you think?\"",
-                        "Only then did Elisa's mind rest.",
-                        "Now she was allowed to speak.",
-                        "And she said the words she had held in for so long.",
+                        "\"Never mind. This is quite good enough. Rather fine, don't you think?\"",
+                        "Only then did Elisa feel at ease. Now she was allowed to speak.",
+                        "She said the words she had held in for so long.",
                         "\"I have done nothing wrong.\""
                     ]
                 },
@@ -899,18 +868,14 @@ const EN = {
                     emoji: '🤍',
                     left: [
                         "The square went quiet.",
-                        "Her brothers told everything that had happened —",
-                        "the stepmother's spell, and why their sister could not speak.",
-                        "People hung their heads. They were ashamed of having called her a witch.",
-                        "And the king came over to Elisa."
+                        "Her brothers told everything: the stepmother's spell, and why their sister could not speak.",
+                        "People hung their heads, ashamed of having called her a witch.",
+                        "The king came over to Elisa."
                     ],
                     right: [
-                        "He took both her hands and bowed his head.",
-                        "\"I did not see who you were.\"",
-                        "There was a great feast at the castle that day.",
-                        "Twelve brothers and sisters sat down together,",
-                        "and Elisa laughed out loud for the first time in a long while.",
-                        "And she said everything she had not been able to say."
+                        "He took both her hands and bowed his head. \"I did not see who you were.\"",
+                        "There was a great feast, and the twelve sat side by side.",
+                        "Elisa laughed out loud at last and said all she had not been able to say."
                     ]
                 }
             ]
@@ -919,7 +884,7 @@ const EN = {
     quiz: [
         {
             q: 'Why did the queen want the children out of the way?',
-            choices: ['They were rude to her', 'She wanted the country for herself', 'The king had asked her to'],
+            choices: ['They had stolen from her', 'She wanted the country for herself', 'The king had asked her to'],
             answer: 1
         },
         {
@@ -943,8 +908,8 @@ const EN = {
             answer: 0
         },
         {
-            q: 'Where did Elisa finish most of the shirts?',
-            choices: ['In the cave in the wood', 'On the rocky island', 'In the tower she was shut up in'],
+            q: 'What did Elisa hold on to even when she was taken to the square?',
+            choices: ['A gold crown', 'A white feather', 'The shirts she was making'],
             answer: 2
         },
         {
@@ -999,7 +964,7 @@ const EN = {
         '01-family-2.webp': [
             { word: 'take', meaning: '맞이하다', sentence: 'The king took a new queen.' },
             { word: 'manners', meaning: '버릇, 예의', sentence: 'Those children have no manners.' },
-            { word: 'keep one’s distance', meaning: '멀리하다', sentence: 'The king kept his distance from them.' },
+            { word: 'keep one’s distance', meaning: '멀리하다', sentence: 'The king kept his distance.' },
             { word: 'have in mind', meaning: '마음에 품다', sentence: 'The queen had something dreadful in mind.' },
             { word: 'mutter', meaning: '중얼거리다', sentence: 'Every night she muttered to herself.' }
         ],
@@ -1013,7 +978,7 @@ const EN = {
             { word: 'turn into', meaning: '~이 되다', sentence: 'My brothers have been turned into swans?' },
             { word: 'put out', meaning: '내쫓다', sentence: 'Elisa was put out of the palace gates.' },
             { word: 'make up one’s mind', meaning: '마음을 정하다', sentence: 'She made up her mind to find her brothers.' },
-            { word: 'straw shoes', meaning: '짚신', sentence: 'One pair of straw shoes was all she had.' }
+            { word: 'straw shoes', meaning: '짚신', sentence: 'An old pair of straw shoes was all she had.' }
         ],
         '03-reunion.webp': [
             { word: 'blister', meaning: '물집이 잡히다', sentence: 'Her feet blistered.' },
@@ -1024,21 +989,21 @@ const EN = {
         '03-reunion-2.webp': [
             { word: 'fall away', meaning: '벗겨지다', sentence: 'The feathers fell away.' },
             { word: 'gather in', meaning: '끌어안다', sentence: 'Her brothers gathered her in.' },
-            { word: 'stepmother', meaning: '새어머니', sentence: 'Our stepmother put this on us.' },
+            { word: 'stepmother', meaning: '새어머니', sentence: 'Our stepmother put a spell on us.' },
             { word: 'hold on to', meaning: '붙들다', sentence: 'Elisa held on to her brothers.' }
         ],
         '04-nettles.webp': [
-            { word: 'net', meaning: '그물', sentence: 'They laid Elisa in a great net.' },
+            { word: 'net', meaning: '그물', sentence: 'They laid Elisa in the net.' },
             { word: 'settle', meaning: '자리를 잡다', sentence: 'They settled in a cave in a wood.' },
             { word: 'nettle', meaning: '쐐기풀', sentence: 'Make eleven shirts out of nettles.' },
             { word: 'break a spell', meaning: '마법을 풀다', sentence: 'That will break the spell.' }
         ],
         '04-nettles-2.webp': [
-            { word: 'burn', meaning: '따갑다', sentence: 'Her hands burned as though they had been in a fire.' },
-            { word: 'swollen', meaning: '부어오른', sentence: 'The backs of her hands went red and swollen.' },
-            { word: 'tread', meaning: '밟다', sentence: 'She trod the stalks to draw out the fibre.' },
-            { word: 'fibre', meaning: '실, 섬유', sentence: 'She trod the stalks to draw out the fibre.' },
-            { word: 'sap', meaning: '풀물, 즙', sentence: 'Green sap ran down over her feet.' }
+            { word: 'burn', meaning: '따갑다', sentence: 'Her hands burned as if in a fire.' },
+            { word: 'swollen', meaning: '부어오른', sentence: 'Her hands went red and swollen.' },
+            { word: 'tread', meaning: '밟다', sentence: 'She trod the stalks with bare feet.' },
+            { word: 'fibre', meaning: '실, 섬유', sentence: 'She drew out the fibre.' },
+            { word: 'sap', meaning: '풀물, 즙', sentence: 'Green sap ran down.' }
         ],
         '05-king.webp': [
             { word: 'neighbouring', meaning: '이웃의', sentence: 'The king of the neighbouring country came out hunting.' },
@@ -1061,14 +1026,14 @@ const EN = {
         '06-accused-2.webp': [
             { word: 'reach one’s ears', meaning: '귀에 들어가다', sentence: "It reached the king's ears." },
             { word: 'shut up', meaning: '가두다', sentence: 'Elisa was shut up in a tower.' },
-            { word: 'laugh at', meaning: '비웃다', sentence: 'That is how they laughed at her.' },
-            { word: 'lie awake', meaning: '잠을 못 이루다', sentence: 'Only the king lay awake all that night.' }
+            { word: 'laugh at', meaning: '비웃다', sentence: 'People laughed at her.' },
+            { word: 'lie awake', meaning: '잠을 못 이루다', sentence: 'The king lay awake all night.' }
         ],
         '07-finish.webp': [
             { word: 'just as well', meaning: '오히려 잘된', sentence: 'Elisa thought it was just as well.' },
             { word: 'split', meaning: '갈라지다', sentence: 'Her fingertips split.' },
             { word: 'go grey', meaning: '뿌옇게 밝아 오다', sentence: 'The window was already going grey.' },
-            { word: 'sleeve', meaning: '소매', sentence: 'She had not managed to finish one sleeve.' }
+            { word: 'sleeve', meaning: '소매', sentence: 'One sleeve was not yet finished.' }
         ],
         '07-finish-2.webp': [
             { word: 'point at', meaning: '손가락질하다', sentence: 'They pointed at her from every side.' },
@@ -1078,13 +1043,13 @@ const EN = {
         ],
         '08-ending.webp': [
             { word: 'shrug', meaning: '어깨를 으쓱하다', sentence: 'Her youngest brother laughed and shrugged.' },
-            { word: 'not know where to put oneself', meaning: '어쩔 줄 모르다', sentence: 'Elisa did not know where to put herself.' },
+            { word: 'not know where to put oneself', meaning: '어쩔 줄 모르다', sentence: 'She did not know where to put herself.' },
             { word: 'good enough', meaning: '이 정도면 훌륭한', sentence: 'This is quite good enough.' },
             { word: 'hold in', meaning: '참다', sentence: 'The words she had held in for so long.' }
         ],
         '08-ending-2.webp': [
             { word: 'hang one’s head', meaning: '고개를 숙이다', sentence: 'People hung their heads.' },
-            { word: 'ashamed', meaning: '부끄러운', sentence: 'They were ashamed of having called her a witch.' },
+            { word: 'ashamed', meaning: '부끄러운', sentence: 'Ashamed of having called her a witch.' },
             { word: 'bow one’s head', meaning: '고개를 숙이다', sentence: 'He took both her hands and bowed his head.' },
             { word: 'out loud', meaning: '소리 내어', sentence: 'Elisa laughed out loud.' }
         ],

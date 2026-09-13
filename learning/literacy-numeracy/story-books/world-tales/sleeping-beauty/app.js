@@ -538,11 +538,11 @@ const EN = {
                         "Then one spring a daughter was born at last, and the whole country was in an uproar."
                     ],
                     right: [
-                        "The bells rang all night long, and the king decided to hold a great feast.",
-                        "\"Invite every one of the fairies.\"",
-                        "There were thirteen fairies in that country.",
+                        "The bells rang all night, and the king decided to hold a great feast.",
+                        "\"Invite every one of the fairies,\" he said.",
+                        "There were thirteen fairies. Each had to eat from a golden plate.",
                         "But an official came to him looking troubled.",
-                        "\"There are only twelve golden plates, Your Majesty.\""
+                        "\"There are only twelve golden plates.\""
                     ]
                 },
                 {
@@ -559,7 +559,7 @@ const EN = {
                         "\"I give her beauty.\"",
                         "\"I give her a lovely voice.\"",
                         "\"I give her a kind heart.\"",
-                        "The hall was full of laughter."
+                        "With every gift, the hall was full of laughter."
                     ]
                 }
             ]
@@ -578,7 +578,7 @@ const EN = {
                         "It was the thirteenth fairy."
                     ],
                     right: [
-                        "\"And why was I not invited?\"",
+                        "She looked straight at the king. \"And why was I not invited?\"",
                         "The hall went dead quiet. The king could not say a word.",
                         "The fairy walked slowly forward and stood in front of the cradle.",
                         "For a long while she looked down at the child without speaking."
@@ -588,11 +588,9 @@ const EN = {
                     art: '02-curse-2.webp',
                     emoji: '🕯️',
                     left: [
-                        "\"I shall give her a gift as well.\"",
-                        "Her voice was cold.",
-                        "\"On the day the princess turns fifteen,\"",
-                        "\"she shall prick her finger on a spindle.\"",
-                        "\"And she shall fall down where she stands.\"",
+                        "\"I shall give her a gift as well,\" the fairy said coldly.",
+                        "\"On the day the princess turns fifteen, she shall prick her finger on a spindle.\"",
+                        "\"She shall fall down, and she shall die.\"",
                         "The queen screamed."
                     ],
                     right: [
@@ -630,7 +628,7 @@ const EN = {
                     emoji: '✨',
                     left: [
                         "That very day the king gave his order.",
-                        "\"Destroy every spindle in the kingdom.\"",
+                        "\"Destroy every spinning wheel in the kingdom.\"",
                         "Soldiers went from house to house, and the spinning wheels were carted away.",
                         "They were piled up in the square and burnt. The smoke went up for days."
                     ],
@@ -652,8 +650,8 @@ const EN = {
                     emoji: '🧵',
                     left: [
                         "At last it was the princess's fifteenth birthday.",
-                        "As it happened, the king and queen were away from the castle that day, and the princess wandered about it on her own. There was a great deal of it she had never seen.",
-                        "At the north end stood an old tower with a narrow stair going up. She climbed it one careful step at a time."
+                        "That day the king and queen were away, and the princess wandered about the castle on her own. There were many places she had never seen.",
+                        "At the north end stood an old tower with a narrow stair going up. She climbed it step by step."
                     ],
                     right: [
                         "There was thick dust on every step.",
@@ -667,16 +665,16 @@ const EN = {
                     emoji: '🧵',
                     left: [
                         "An old woman was sitting in the room, turning something round and round.",
-                        "\"What is that, grandmother?\"",
+                        "\"What is that, grandmother?\" asked the princess.",
                         "\"A spinning wheel, my dear. It spins the thread.\"",
-                        "The princess had never seen such a thing in her life. The thread came running out from under the old woman's fingers."
+                        "The wheels had all been burnt, so she had never seen one. The thread came running out from under her fingers."
                     ],
                     right: [
                         "\"Might I try it?\"",
-                        "\"Of course. Come and sit here.\"",
-                        "The princess reached out her hand. And in that moment the point of the spindle touched her finger.",
+                        "\"Of course. Come and sit here,\" said the old woman.",
+                        "The princess reached out her hand. At that moment the point of the spindle pricked her finger.",
                         "\"Oh!\"",
-                        "A tiny drop of blood came up. And down she fell, where she stood."
+                        "A tiny drop of blood came up. And down she fell."
                     ]
                 }
             ]
@@ -689,17 +687,17 @@ const EN = {
                     art: '05-sleep.webp',
                     emoji: '😴',
                     left: [
-                        "At that instant the whole castle came to a stop.",
-                        "In the kitchen the cook stopped, with the ladle still lifted in the air.",
-                        "The dog in the yard fell asleep lying down, and the pigeon on the roof stayed with its wings spread. Even the fire in the hearth stood still.",
-                        "The king had just come home, and it caught him too."
+                        "At that instant the whole castle came to a stop. Everyone fell asleep just where they were.",
+                        "The cook stopped with the ladle still lifted.",
+                        "The dog in the yard slept, and the pigeon on the roof kept its wings spread. Even the fire stood still.",
+                        "The king and queen had just come home."
                     ],
                     right: [
-                        "He fell asleep in the middle of stepping over the threshold.",
-                        "The wind dropped dead away.",
-                        "The fountain in the garden held its water standing straight up.",
-                        "Not one leaf stirred, and the castle went very quiet.",
-                        "Only the sound of even breathing was left. And so it would stay for a hundred years."
+                        "They fell asleep stepping over the threshold.",
+                        "The wind dropped. The fountain's water stood straight up.",
+                        "Not one leaf stirred.",
+                        "Only the sound of quiet breathing was left.",
+                        "And so it would stay for a hundred years."
                     ]
                 },
                 {
@@ -730,26 +728,24 @@ const EN = {
                     left: [
                         "It was the hundredth year when a prince happened to pass through that country. In the village he heard the tale of the hedge of thorns.",
                         "\"There's a castle in there?\"",
-                        "\"Plenty of men have tried to get in.\"",
-                        "\"Not one of them ever managed it.\""
+                        "An old man nodded. \"Plenty of men have tried to get in. Not one of them ever managed it.\""
                     ],
                     right: [
                         "The prince walked up to the hedge. The thorns were woven together in a thick tangle.",
-                        "He was reaching for his sword when the hedge parted of its own accord.",
-                        "One after another the thorns turned into flowers, and a path opened wide in front of him."
+                        "He was reaching for his sword when the hedge parted of its own accord. The hundred years were up that very day.",
+                        "One by one the thorns turned into flowers, and a path opened wide."
                     ]
                 },
                 {
                     art: '06-prince-2.webp',
                     emoji: '🌹',
                     left: [
-                        "The prince walked in along that path. The dog in the yard lay asleep, and in the kitchen the cook was standing with the ladle still in his hand.",
-                        "Dust lay thick over everything, and cobwebs hung from every candlestick.",
-                        "The prince walked quietly, went up the stairs, and opened one door after another."
+                        "The prince walked in along the path. The dog in the yard lay asleep. In the kitchen the cook stood with the ladle in his hand.",
+                        "Cobwebs hung from every candlestick.",
+                        "The prince walked quietly and opened one door after another. In every room, people were asleep."
                     ],
                     right: [
-                        "\"They are all asleep.\"",
-                        "In every room, people lay just as they had been.",
+                        "\"They are all asleep,\" the prince whispered.",
                         "At the north end stood an old tower with a narrow stair going up.",
                         "The prince climbed it slowly, one step at a time, and the stairs creaked under his feet."
                     ]
@@ -764,31 +760,32 @@ const EN = {
                     art: '07-wake.webp',
                     emoji: '🔔',
                     left: [
-                        "It was the room at the top of the tower. The door stood half open, and the morning sun came slanting in at the window.",
-                        "The princess lay asleep there, exactly as she had been a hundred years before. Only the dust on the windowsill told of the years.",
-                        "The prince stood in front of her for a long while.",
-                        "Then a sound came from somewhere in the castle."
+                        "At the top of the tower, the door stood half open. The morning sun came slanting in at the window.",
+                        "The princess lay asleep, just as she had a hundred years before. Only the dust on the windowsill told of the years.",
+                        "The prince stood there a long while.",
+                        "Then a sound came from somewhere."
                     ],
                     right: [
                         "Tick, tick, tick.",
                         "The clock that had stopped was going again. Downstairs, people were stirring.",
                         "The princess's fingers gave a twitch.",
-                        "And then she slowly opened her eyes.",
-                        "\"Have I slept a long time?\""
+                        "She slowly opened her eyes and looked at the prince.",
+                        "\"Have I slept a long time?\" she asked."
                     ]
                 },
                 {
                     art: '07-wake-2.webp',
                     emoji: '🔔',
                     left: [
-                        "The castle was waking up. The dog in the yard jumped to its feet and barked, and the cook set down his ladle.",
-                        "\"Now then — what was I doing?\"",
-                        "The fire in the hearth burned up again, and the pigeon went flapping off the roof.",
-                        "The king and queen opened their eyes too."
+                        "The castle woke up. The dog jumped to its feet and barked.",
+                        "The cook set down his ladle. \"Now, what was I doing?\"",
+                        "The fire in the hearth burned up again.",
+                        "The pigeon went flapping off the roof.",
+                        "The king and queen woke too."
                     ],
                     right: [
-                        "They looked at one another across the threshold, and the whole castle was full of voices.",
-                        "The hedge of thorns had gone, every bit of it. Only the roses were left where it had been.",
+                        "They looked at each other, and the castle was full of voices.",
+                        "The hedge of thorns was gone. Only the roses were left.",
                         "And that day there was a great feast in the castle."
                     ]
                 }
@@ -813,12 +810,12 @@ const EN = {
         },
         {
             q: 'What did the king order after the feast?',
-            choices: ['That every spindle in the kingdom be destroyed', 'That the tower be pulled down', 'That the princess never leave the castle'],
+            choices: ['That every spinning wheel in the kingdom be destroyed', 'That the tower be pulled down', 'That the princess never leave the castle'],
             answer: 0
         },
         {
             q: 'Why did the princess not know what a spinning wheel was?',
-            choices: ['She had never left her own room', 'The old woman had hidden it from her', 'They had all been burnt before she was born'],
+            choices: ['She had never left her own room', 'The old woman had hidden it from her', 'They had all been burnt when she was a baby'],
             answer: 2
         },
         {
@@ -899,14 +896,14 @@ const EN = {
             { word: 'catch hold of', meaning: '덥석 잡다', sentence: "The queen caught hold of the fairy's hand." }
         ],
         '03-softened-2.webp': [
-            { word: 'destroy', meaning: '없애다', sentence: 'Destroy every spindle in the kingdom.' },
+            { word: 'destroy', meaning: '없애다', sentence: "Destroy every spinning wheel in the kingdom." },
             { word: 'cart away', meaning: '수레로 실어 가다', sentence: 'The spinning wheels were carted away.' },
             { word: 'pile up', meaning: '쌓아 올리다', sentence: 'They were piled up in the square and burnt.' },
             { word: 'adore', meaning: '아주 좋아하다', sentence: 'Everybody adored her.' }
         ],
         '04-spindle.webp': [
             { word: 'wander about', meaning: '이리저리 돌아다니다', sentence: 'The princess wandered about the castle on her own.' },
-            { word: 'narrow', meaning: '좁은', sentence: 'An old tower with a narrow stair going up.' },
+            { word: 'narrow', meaning: '좁은', sentence: "An old tower with a narrow stair going up." },
             { word: 'rusty', meaning: '녹슨', sentence: 'A little door with a rusty key still in the lock.' },
             { word: 'creak', meaning: '삐걱 소리', sentence: 'She turned it, and it gave a creak.' }
         ],

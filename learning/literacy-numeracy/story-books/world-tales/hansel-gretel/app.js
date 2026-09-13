@@ -531,29 +531,25 @@ const EN = {
                     art: '01-pebbles.webp',
                     emoji: '🍬',
                     left: [
-                        "A woodcutter lived in a cottage at the edge of the forest, and he had two children, Hansel and Gretel.",
-                        "That year the harvest failed badly. A whole load of firewood was hardly worth a coin, and the bread came down to one slice a day. Before long even that was gone.",
-                        "Nothing but ashes were left in the hearth.",
-                        "One night the two of them could not sleep at all."
+                        "A woodcutter lived in a cottage at the edge of the forest with his two children, Hansel and Gretel, and their stepmother.",
+                        "That year the harvest failed badly.",
+                        "Firewood hardly sold, and bread went down to one slice a day, then none.",
+                        "Nothing but ashes were left in the hearth."
                     ],
                     right: [
-                        "They were far too hungry.",
-                        "Then voices came murmuring from the next room.",
-                        "\"We shall have to leave the children in the forest.\"",
-                        "It was their stepmother's voice.",
-                        "\"All four of us cannot starve together.\"",
-                        "The two held their breath and put their ears to the wall."
+                        "One night the two were too hungry to sleep.",
+                        "Then voices came murmuring from the next room. They held their breath and put their ears to the wall.",
+                        "It was their stepmother's voice. \"Let's leave the children in the forest. All four of us cannot starve.\""
                     ]
                 },
                 {
                     art: '01-pebbles-2.webp',
                     emoji: '🍬',
                     left: [
-                        "Their father shook his head.",
-                        "\"I could never do it.\"",
-                        "But there was no strength at all in his voice. Under the blanket Gretel began to cry.",
-                        "\"Hansel, what will become of us?\"",
-                        "Hansel took his sister's hand and held it tight."
+                        "Their father shook his head. \"I could never do it.\"",
+                        "But there was no strength in his voice, and in the end he gave in to her.",
+                        "Under the blanket Gretel began to cry. \"Hansel, what will become of us?\"",
+                        "Hansel held his sister's hand tight."
                     ],
                     right: [
                         "\"Don't worry. I have a plan.\"",
@@ -572,18 +568,15 @@ const EN = {
                     art: '02-back-home.webp',
                     emoji: '🌲',
                     left: [
-                        "Next morning all four set off into the forest.",
-                        "But Hansel kept falling behind.",
-                        "\"What are you dawdling for?\"",
-                        "\"I was looking at the cat on the roof.\"",
-                        "In truth he was dropping pebbles — one every few steps."
+                        "Next morning all four set off into the forest, but Hansel kept falling behind.",
+                        "\"What are you dawdling for?\" scolded the stepmother.",
+                        "\"I was looking at the cat on the roof,\" said Hansel.",
+                        "In truth he was dropping pebbles, one every few steps. Tock, tock."
                     ],
                     right: [
-                        "Tock. Tock.",
-                        "At last they came deep into the forest. The grown-ups gathered dry branches and built the children a fire.",
-                        "\"Wait here a little while.\"",
-                        "\"We shall come back for you soon.\"",
-                        "Far off they could hear an axe at work. The two fell asleep listening to it."
+                        "At last they came deep into the forest. The grown-ups built the children a fire of dry branches.",
+                        "\"Wait here a little while,\" said the stepmother. \"We shall come back for you soon.\"",
+                        "Far off they could hear an axe at work. They thought it was their father, and fell asleep listening."
                     ]
                 },
                 {
@@ -591,15 +584,14 @@ const EN = {
                     emoji: '🌲',
                     left: [
                         "When they opened their eyes it was pitch dark. The fire had gone out, and only ashes were left.",
-                        "They waited and waited, and nobody came. Gretel burst into tears.",
-                        "\"Hansel, what do we do now?\"",
-                        "\"Wait just a little longer.\""
+                        "They waited and waited, but nobody came. Gretel burst into tears. \"Hansel, what do we do now?\"",
+                        "\"Wait a little, until the moon comes up,\" said Hansel."
                     ],
                     right: [
                         "By and by the moon rose through the branches.",
-                        "And one by one the pebbles began to shine white. A whole road of them led away into the dark.",
-                        "\"Look — that's the way we came!\"",
-                        "The two followed it and walked all night long. It was near dawn when they knocked at their own door."
+                        "One by one the pebbles began to shine white, showing a road through the dark.",
+                        "\"Look, that's the way we came!\" cried Hansel.",
+                        "They walked all night, and near dawn they knocked at their own door."
                     ]
                 }
             ]
@@ -612,15 +604,15 @@ const EN = {
                     art: '03-breadcrumbs.webp',
                     emoji: '🍞',
                     left: [
-                        "Their father was overjoyed and hugged them again and again. But the bad harvest had not changed, and it was not long before they were starving once more.",
-                        "One night the same talk came again from the next room. Hansel meant to go out that night too.",
-                        "But the door was locked fast."
+                        "Their father was overjoyed and hugged them again and again. But the harvest was still bad, and soon they were starving once more.",
+                        "One night the same talk came from the next room. Hansel meant to go out for pebbles again.",
+                        "But their stepmother had locked the door fast."
                     ],
                     right: [
-                        "There was no getting out to the pebbles. Hansel lay awake thinking for a long while.",
-                        "In the morning he was given his slice of bread. He did not eat it — he put it in his pocket.",
-                        "Gretel saw him do it. She broke her own slice clean in two and pressed half of it into his hand.",
-                        "\"There's nothing else to try.\""
+                        "Hansel could not get out. He lay awake thinking for a long while.",
+                        "In the morning each child got a slice of bread. Hansel put his in his pocket.",
+                        "Gretel saw it. She broke her own slice in two and pressed half into his hand.",
+                        "\"This will have to do,\" Hansel whispered."
                     ]
                 },
                 {
@@ -652,7 +644,7 @@ const EN = {
                         "On the third morning a bird as white as snow came flying to them. It settled on a branch and sang in a lovely voice."
                     ],
                     right: [
-                        "\"Hansel, look at that bird.\"",
+                        "\"Hansel, look at that bird,\" said Gretel, pointing.",
                         "The bird went fluttering off ahead, and the two followed after it.",
                         "After a long walk they came to a clearing in the middle of the forest. And there stood the strangest house.",
                         "The two rubbed their eyes without meaning to."
@@ -662,14 +654,14 @@ const EN = {
                     art: '04-candy-house-2.webp',
                     emoji: '🏠',
                     left: [
-                        "The walls were made of gingerbread, the roof of snow-white sugar, and the windows of shining barley candy.",
-                        "\"This isn't a dream, is it?\"",
-                        "Hansel snapped off a piece of the wall, and Gretel gave the window frame a little lick.",
-                        "It was so sweet and so good. Sugar crumbs stuck all round their mouths."
+                        "The walls were made of gingerbread, the roof of white sugar, and the windows of shining barley candy.",
+                        "Gretel's mouth fell open. \"This isn't a dream, is it?\"",
+                        "Hansel snapped off a piece of the wall, and Gretel licked the window frame.",
+                        "It was so sweet! Sugar stuck all round their mouths."
                     ],
                     right: [
                         "After three days without food the two could hardly stop.",
-                        "\"Try this window!\"",
+                        "\"Try this window!\" cried Hansel.",
                         "Just then the door creaked open. Out came a little woman with a bent back.",
                         "She wore an enormous pair of spectacles.",
                         "\"Come in, come in, you hungry children.\""
@@ -691,10 +683,8 @@ const EN = {
                     ],
                     right: [
                         "The old woman dragged Hansel roughly out of his bed and shut him in the cage in the yard.",
-                        "\"When you are plump I shall let you out.\"",
-                        "Gretel she set to work.",
-                        "\"Fetch the water and cook the meals.\"",
-                        "\"Your brother has to be fed.\""
+                        "She licked her lips. \"When you are nice and plump, we shall see.\"",
+                        "Gretel she set to work. \"Fetch the water and cook the meals. Your brother must be fed and fattened.\""
                     ]
                 },
                 {
@@ -708,11 +698,9 @@ const EN = {
                         "But her eyes were very weak indeed, and Hansel noticed it at once."
                     ],
                     right: [
-                        "As it happened, an old chicken bone was lying about on the floor of the cage. Hansel picked it up and kept it hidden.",
-                        "\"Here you are.\"",
-                        "And he held out the bone instead.",
-                        "\"Still as thin as ever!\"",
-                        "The old woman clicked her tongue."
+                        "An old chicken bone was lying on the floor of the cage. Hansel picked it up and hid it.",
+                        "Instead of his finger, he held out the bone. \"Here you are.\"",
+                        "The old woman felt it and clicked her tongue. \"Still as thin as ever!\""
                     ]
                 }
             ]
@@ -726,33 +714,30 @@ const EN = {
                     emoji: '🔥',
                     left: [
                         "Some weeks went by like that, and the old woman would wait no longer.",
-                        "\"Today we shall bake bread.\"",
+                        "She called Gretel. \"Today we shall bake bread.\"",
                         "She heaped the great oven with logs and lit it. The flames roared up, and standing in front of it was enough to burn your face."
                     ],
                     right: [
-                        "\"Climb in and see whether it is hot inside.\"",
-                        "Gretel gave a start. There was a strange glitter in the old woman's eyes, and a shiver ran right down her back.",
-                        "'I must not get in there.'",
-                        "So Gretel put on an innocent face.",
-                        "\"I don't know how to get in.\""
+                        "The old woman pointed at the oven. \"Climb in and see whether it is hot inside.\"",
+                        "Gretel gave a start. There was a strange glitter in the old woman's eyes, and a shiver ran down her back.",
+                        "'I must not get in there,' she thought.",
+                        "So she put on an innocent face. \"I don't know how to get in.\""
                     ]
                 },
                 {
                     art: '06-oven-2.webp',
                     emoji: '🔥',
                     left: [
-                        "\"What a hopeless child you are!\"",
-                        "\"This is how it is done.\"",
-                        "The old woman crouched down and leaned in towards the oven. And that was the moment - Gretel gave her a hard shove in the back.",
-                        "The old woman went nose first into the oven mouth, and out billowed a great gust of black smoke.",
-                        "\"Ow, it stings! I cannot see a thing!\""
+                        "The old woman flew into a temper. \"What a hopeless child you are! This is how it is done.\"",
+                        "She crouched and leaned toward the oven. Then Gretel gave her a hard shove in the back.",
+                        "Her nose went into the oven mouth, and black smoke puffed out.",
+                        "\"Ow, it stings! I can't see!\""
                     ],
                     right: [
-                        "While the old woman was rubbing her eyes, Gretel shut the kitchen door and slid the bolt across.",
-                        "Then she ran out to the yard and threw the cage door wide open.",
-                        "\"You're out, Hansel!\"",
+                        "While the old woman rubbed her eyes, Gretel ran out of the kitchen and slid the bolt across the door.",
+                        "She ran to the yard and threw the cage door open. \"Hansel, come out!\"",
                         "Hansel came tumbling out. His legs had gone so stiff he could hardly stand.",
-                        "The two held on to each other for a long, long time."
+                        "The two held each other for a long time."
                     ]
                 }
             ]
@@ -766,8 +751,8 @@ const EN = {
                     emoji: '🦢',
                     left: [
                         "The two went slowly through the house. In a corner stood several chests.",
-                        "They lifted one of the lids. Inside were pearls and precious stones, right to the top.",
-                        "\"This would buy Father a whole winter.\"",
+                        "They lifted one of the lids. Inside were pearls and precious stones.",
+                        "Hansel's eyes shone. \"This will get us and Father through the winter.\"",
                         "They filled their pockets with as much as they could carry."
                     ],
                     right: [
@@ -780,16 +765,17 @@ const EN = {
                     art: '07-home-2.webp',
                     emoji: '🦢',
                     left: [
-                        "Just then a white duck came swimming up. Gretel sat down at the water's edge and asked her gently,",
-                        "\"Duck, could you carry us across?\"",
-                        "The duck nodded. The two of them together were too heavy, so she took them over on her back one at a time.",
+                        "Just then a white duck came swimming up.",
+                        "Gretel asked her gently, \"Duck, could you carry us across?\"",
+                        "The duck nodded. Both together were too heavy, so she took them one at a time.",
                         "On the far bank they saw a road they knew."
                     ],
                     right: [
-                        "\"That's our village!\"",
-                        "The two went racing down it, and far ahead the cottage came into sight.",
-                        "Their father was standing at the door. He had stood there every single day.",
-                        "The three of them held one another for a long while."
+                        "\"That's our village!\" cried Gretel.",
+                        "They raced on, and far ahead the cottage came into sight.",
+                        "Father was at the door, as he had been every day.",
+                        "Their stepmother had left the house.",
+                        "The three held each other for a long time."
                     ]
                 }
             ]
@@ -875,7 +861,7 @@ const EN = {
             { word: 'harvest', meaning: '수확, 농사', sentence: 'That year the harvest failed badly.' },
             { word: 'hearth', meaning: '아궁이, 벽난로 바닥', sentence: 'Nothing but ashes were left in the hearth.' },
             { word: 'murmur', meaning: '두런거리다', sentence: 'Voices came murmuring from the next room.' },
-            { word: 'starve', meaning: '굶주리다', sentence: 'All four of us cannot starve together.' }
+            { word: 'starve', meaning: '굶주리다', sentence: "All four of us cannot starve." }
         ],
         '01-pebbles-2.webp': [
             { word: 'pebble', meaning: '조약돌', sentence: 'The white pebbles glittered like silver coins.' },
@@ -896,9 +882,9 @@ const EN = {
         ],
         '03-breadcrumbs.webp': [
             { word: 'overjoyed', meaning: '뛸 듯이 기쁜', sentence: 'Their father was overjoyed.' },
-            { word: 'lock fast', meaning: '단단히 잠그다', sentence: 'But the door was locked fast.' },
-            { word: 'lie awake', meaning: '뜬눈으로 있다', sentence: 'Hansel lay awake thinking for a long while.' },
-            { word: 'press into', meaning: '쥐여 주다', sentence: 'She pressed half of it into his hand.' }
+            { word: 'lock fast', meaning: '단단히 잠그다', sentence: "Their stepmother had locked the door fast." },
+            { word: 'lie awake', meaning: '뜬눈으로 있다', sentence: "He lay awake thinking for a long while." },
+            { word: 'press into', meaning: '쥐여 주다', sentence: "She pressed half into his hand." }
         ],
         '03-breadcrumbs-2.webp': [
             { word: 'crumb', meaning: '부스러기', sentence: 'Hansel tore the bread into little crumbs.' },
@@ -923,11 +909,11 @@ const EN = {
             { word: 'lay out', meaning: '상을 차리다', sentence: 'The old woman laid out a whole table for them.' },
             { word: 'drag', meaning: '끌어내다', sentence: 'She dragged Hansel roughly out of his bed.' },
             { word: 'cage', meaning: '우리', sentence: 'She shut him in the cage in the yard.' },
-            { word: 'plump', meaning: '살이 오른', sentence: 'When you are plump I shall let you out.' },
+            { word: 'plump', meaning: '살이 오른', sentence: "When you are nice and plump, we shall see." },
             { word: 'fetch', meaning: '길어 오다, 가져오다', sentence: 'Fetch the water and cook the meals.' }
         ],
         '05-cage-2.webp': [
-            { word: 'hold out', meaning: '내밀다', sentence: 'Hold out your finger for me.' },
+            { word: 'hold out', meaning: '내밀다', sentence: "Hold out your finger for me." },
             { word: 'fatten', meaning: '살이 찌다', sentence: 'She wanted to feel whether he had fattened.' },
             { word: 'notice', meaning: '눈치채다', sentence: 'Hansel noticed it at once.' },
             { word: 'click one’s tongue', meaning: '혀를 차다', sentence: 'The old woman clicked her tongue.' }
@@ -936,11 +922,11 @@ const EN = {
             { word: 'oven', meaning: '화덕', sentence: 'She heaped the great oven with logs and lit it.' },
             { word: 'roar up', meaning: '활활 타오르다', sentence: 'The flames roared up.' },
             { word: 'give a start', meaning: '흠칫 놀라다', sentence: 'Gretel gave a start.' },
-            { word: 'shiver', meaning: '소름, 오싹함', sentence: 'A shiver ran right down her back.' }
+            { word: 'shiver', meaning: '소름, 오싹함', sentence: "A shiver ran down her back." }
         ],
         '06-oven-2.webp': [
             { word: 'hopeless', meaning: '답답한, 어쩔 수 없는', sentence: 'What a hopeless child you are!' },
-            { word: 'shove', meaning: '탁 밀다', sentence: 'Gretel gave her a hard shove in the back.' },
+            { word: 'shove', meaning: '탁 밀다', sentence: "Gretel gave her a hard shove in the back." },
             { word: 'bolt', meaning: '빗장', sentence: 'She slid the bolt across.' },
             { word: 'tumble out', meaning: '데굴데굴 굴러 나오다', sentence: 'Hansel came tumbling out.' },
             { word: 'stiff', meaning: '뻣뻣하게 굳은', sentence: 'His legs had gone so stiff he could hardly stand.' }

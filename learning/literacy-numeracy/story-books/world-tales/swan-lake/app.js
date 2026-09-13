@@ -563,22 +563,20 @@ const EN = {
                         "The village people danced, and the prince laughed among his friends."
                     ],
                     right: [
-                        "It was near sunset when his mother called him quietly aside.",
+                        "Near sunset his mother quietly called him aside.",
                         "\"You are a grown man now, and there is something to be done.\"",
-                        "\"Tomorrow we shall hold a ball.\"",
-                        "\"And there you will choose your bride.\"",
+                        "\"Tomorrow we shall hold a ball, and there you will choose your bride.\"",
                         "The prince's face went stiff.",
-                        "All the feeling of the feast went out of him at once."
+                        "All his joy in the feast was gone."
                     ]
                 },
                 {
                     art: '01-birthday-2.webp',
                     emoji: '🎂',
                     left: [
-                        "\"What does choosing mean, when it has been decided beforehand?\"",
+                        "The prince thought, \"What does choosing mean, when it has been decided beforehand?\"",
                         "The prince felt shut in. He could not hear the feast any more.",
-                        "He slipped quietly away",
-                        "and took his bow down from the wall.",
+                        "He slipped quietly away and took his bow down from the wall.",
                         "\"I shall get some air.\""
                     ],
                     right: [
@@ -642,19 +640,16 @@ const EN = {
                     art: '03-odette.webp',
                     emoji: '🦢',
                     left: [
-                        "\"My name is Odette.\"",
-                        "\"And all those swans are my friends.\"",
-                        "\"A man named Rothbart put a spell on us.\"",
+                        "\"My name is Odette. All those swans are my friends.\"",
+                        "\"A magician named Rothbart put a spell on us.\"",
                         "\"Since that day we are swans by daylight.\"",
                         "\"We can only be ourselves at night.\""
                     ],
                     right: [
-                        "The prince felt it heavy in his chest.",
-                        "\"Is there no way to break it?\"",
-                        "Odette lifted her head.",
-                        "\"There is one.\"",
-                        "\"Someone who has never loved another.\"",
-                        "\"If he swears his love to me alone, it breaks.\""
+                        "The prince felt a pain in his heart.",
+                        "\"Is there no way to break it?\" he asked.",
+                        "Odette lifted her head. \"There is one.\"",
+                        "\"Someone who has never loved another must swear his love to me alone. Then it breaks.\""
                     ]
                 },
                 {
@@ -663,18 +658,16 @@ const EN = {
                     left: [
                         "The prince took Odette's hand.",
                         "\"Then I shall be that person.\"",
-                        "\"There is a ball at the palace tomorrow night.\"",
-                        "\"Come to it.\"",
+                        "\"There is a ball at the palace tomorrow night. Come to it.\"",
                         "\"I shall swear it in front of them all.\"",
                         "Odette's eyes went wet."
                     ],
                     right: [
-                        "\"Will you truly?\"",
-                        "And just then a black shadow went over the wood,",
-                        "with the sound of great wings.",
-                        "Odette started back in fright.",
-                        "\"Be careful. He is watching.\"",
-                        "And the swans put their heads down under the water."
+                        "\"Will you truly?\" she asked.",
+                        "Just then a black shadow went over the wood, with the sound of great wings.",
+                        "Rothbart had heard their promise!",
+                        "Odette started back in fright. \"Be careful. He is watching.\"",
+                        "The swans put their heads under the water."
                     ]
                 }
             ]
@@ -751,21 +744,19 @@ const EN = {
                     art: '05-window-2.webp',
                     emoji: '💔',
                     left: [
-                        "In that instant a white shape went past outside the window.",
-                        "Everybody looked at it at once.",
-                        "Odette was clinging to the glass,",
-                        "beating on it with both hands,",
-                        "her face wet with tears.",
-                        "The blood went out of the prince's face.",
-                        "He turned to the lady in black. There was nobody there."
+                        "In that instant a white shape went past the window.",
+                        "Everybody turned to look.",
+                        "Odette was clinging to the glass, beating on it with both hands.",
+                        "Her face was wet with tears. The prince went white.",
+                        "He turned to the lady in black. She was gone."
                     ],
                     right: [
-                        "And the black cloak had gone with her.",
-                        "\"What… what have I done.\"",
-                        "The prince very nearly sank to the floor.",
+                        "And the man in the black cloak had gone with her.",
+                        "\"What… what have I done?\" the prince whispered.",
+                        "He very nearly sank to the floor.",
                         "Outside the window there was the sound of wings.",
                         "Beat, beat.",
-                        "And it went further and further away."
+                        "It went further and further away."
                     ]
                 }
             ]
@@ -789,8 +780,8 @@ const EN = {
                         "and Odette sat on a rock with her head down.",
                         "The prince went carefully toward her.",
                         "At his footsteps her shoulders drew in,",
-                        "and still she did not look up.",
-                        "\"I am sorry. I was deceived.\""
+                        "but she did not look up.",
+                        "\"I am sorry. I was deceived,\" he said."
                     ]
                 },
                 {
@@ -798,8 +789,7 @@ const EN = {
                     emoji: '🏃',
                     left: [
                         "Odette raised her head slowly.",
-                        "\"I know.\"",
-                        "\"He put my face on his daughter.\"",
+                        "\"I know. Rothbart put my face on his daughter.\"",
                         "\"But the promise is broken all the same.\"",
                         "Her voice shook.",
                         "\"Now we must be swans for ever.\""
@@ -823,18 +813,15 @@ const EN = {
                     art: '07-confront.webp',
                     emoji: '🌑',
                     left: [
-                        "Rothbart put himself between the two of them. Black feathers went flying everywhere",
-                        "and the wind came hard.",
+                        "Rothbart put himself between the two of them. Black feathers went flying everywhere, and the wind blew hard.",
                         "The swans wheeled over the water in fright, and the waves ran high.",
                         "The moonlight broke into pieces.",
-                        "\"Go home now, prince.\""
+                        "\"Go home now, prince,\" said Rothbart coldly."
                     ],
                     right: [
                         "The prince did not give ground.",
                         "He put himself in front of Odette instead.",
-                        "\"I was deceived.\"",
-                        "\"But one mistake\"",
-                        "\"does not make my heart a lie.\"",
+                        "\"I was deceived. But one mistake does not make my heart a lie.\"",
                         "His voice went straight through the wind."
                     ]
                 },
@@ -842,13 +829,10 @@ const EN = {
                     art: '07-confront-2.webp',
                     emoji: '🌑',
                     left: [
-                        "Odette came to the prince's side and stood there with him.",
-                        "The two of them took hands.",
-                        "The swans came up out of the water and stood round them,",
-                        "every one of them facing Rothbart.",
-                        "The black wings began to waver,",
-                        "and the feathers came away one by one.",
-                        "Rothbart cried out."
+                        "Odette came to the prince's side. The two of them took hands.",
+                        "The swans came up out of the water and stood round them, facing Rothbart.",
+                        "The black wings began to waver.",
+                        "Feathers fell one by one. Rothbart cried out."
                     ],
                     right: [
                         "But the sound got smaller and smaller.",
@@ -897,11 +881,10 @@ const EN = {
                     ],
                     right: [
                         "His chest was too full for words.",
-                        "The two of them stood side by side at the water,",
-                        "and the morning mist lifted off the lake.",
-                        "One by one the young women set off to find their homes.",
+                        "They stood side by side as the morning mist lifted off the lake.",
+                        "The young women set off to find their homes.",
                         "The prince and Odette stayed to the last,",
-                        "and the two of them looked out a long while over the morning lake."
+                        "looking out over the morning lake."
                     ]
                 }
             ]
@@ -947,7 +930,7 @@ const EN = {
             q: 'Which reaction to this book does NOT fit?',
             wide: true,
             choices: [
-                "The prince asked what a choice made from a list could mean — the ball stifled him.",
+                "The prince asked what choosing could mean when it was decided beforehand — the ball stifled him.",
                 "There was something sharp in the black-clad woman's smile and he missed it — he was going by the face.",
                 "The sun came up and nothing happened — the prince's heart had not been false after all.",
                 "Odette clung to the window and beat on the glass — she had arrived in time to stop the vow."
@@ -1008,15 +991,15 @@ const EN = {
             { word: 'level', meaning: '잔잔한, 고른', sentence: 'Her voice was as level as the water.' }
         ],
         '03-odette.webp': [
-            { word: 'spell', meaning: '마법', sentence: 'A man named Rothbart put a spell on us.' },
+            { word: 'spell', meaning: '마법', sentence: "A magician named Rothbart put a spell on us." },
             { word: 'by daylight', meaning: '낮에는', sentence: 'We are swans by daylight.' },
             { word: 'break', meaning: '풀다', sentence: 'Is there no way to break it?' },
-            { word: 'swear', meaning: '맹세하다', sentence: 'If he swears his love to me alone.' }
+            { word: 'swear', meaning: '맹세하다', sentence: "Swear his love to me alone." }
         ],
         '03-odette-2.webp': [
-            { word: 'ball', meaning: '무도회', sentence: 'There is a ball at the palace tomorrow night.' },
+            { word: 'ball', meaning: '무도회', sentence: "There is a ball at the palace tomorrow night." },
             { word: 'shadow', meaning: '그림자', sentence: 'A black shadow went over the wood.' },
-            { word: 'start back', meaning: '화들짝 물러서다', sentence: 'Odette started back in fright.' },
+            { word: 'start back', meaning: '화들짝 물러서다', sentence: "Odette started back in fright." },
             { word: 'watch', meaning: '지켜보다', sentence: 'Be careful. He is watching.' }
         ],
         '04-ball.webp': [
@@ -1075,7 +1058,7 @@ const EN = {
         '08-ending-2.webp': [
             { word: 'lie warm', meaning: '따뜻하게 닿다', sentence: 'The sunlight lay warm across them.' },
             { word: 'too full for words', meaning: '벅차서 말이 안 나오는', sentence: 'His chest was too full for words.' },
-            { word: 'lift', meaning: '걷히다', sentence: 'The morning mist lifted off the lake.' },
+            { word: 'lift', meaning: '걷히다', sentence: "The morning mist lifted off the lake." },
             { word: 'set off', meaning: '떠나다', sentence: 'The young women set off to find their homes.' }
         ],
         'end.webp': [

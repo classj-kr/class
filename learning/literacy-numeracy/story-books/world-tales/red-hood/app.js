@@ -541,11 +541,8 @@ const EN = {
                         "So everyone called her Little Red Riding Hood."
                     ],
                     right: [
-                        "One morning her mother called her over.",
-                        "\"Your grandmother is ill.\"",
-                        "\"Take her this basket.\"",
-                        "Inside were fresh-baked bread and milk.",
-                        "\"This will put the strength back in her.\"",
+                        "One morning her mother handed her a basket. Inside were fresh-baked bread and milk.",
+                        "\"Your grandmother is ill,\" said her mother. \"Take her this basket. It will put the strength back in her.\"",
                         "Little Red Riding Hood nodded firmly."
                     ]
                 },
@@ -553,12 +550,9 @@ const EN = {
                     art: '01-errand-2.webp',
                     emoji: '🧺',
                     left: [
-                        "At the door her mother said it once more.",
-                        "\"Keep to the big road.\"",
-                        "\"Don't go into the woods.\"",
-                        "\"And mind the basket.\"",
-                        "\"I will!\"",
-                        "And out she went, brave as anything."
+                        "At the door her mother warned her once more.",
+                        "\"Keep to the big road. Don't leave it and go into the woods. And mind the basket.\"",
+                        "\"I will!\" said Little Red Riding Hood, and out she went, brave as anything."
                     ],
                     right: [
                         "Grandmother's house was on the far side of the woods, beside the old mill.",
@@ -580,15 +574,14 @@ const EN = {
                         "She had walked a good while when someone spoke to her.",
                         "\"Good morning, Little Red Riding Hood.\"",
                         "She turned and saw a tall, long-legged wolf.",
-                        "But she was not afraid at all. She did not know that wolves were wicked."
+                        "But she was not afraid at all. She did not know that wolves were wicked.",
+                        "\"Good morning,\" she said."
                     ],
                     right: [
-                        "\"Good morning to you.\"",
-                        "\"And where are you off to?\"",
+                        "\"And where are you off to?\" asked the wolf.",
                         "\"To my grandmother's house.\"",
-                        "\"And whereabouts would that be?\"",
-                        "\"By the old mill, at the end of the woods.\"",
-                        "\"Where the three big oak trees stand.\"",
+                        "\"And where does she live?\"",
+                        "\"By the old mill, at the end of the woods, where the three big oak trees stand.\"",
                         "The wolf smiled to himself."
                     ]
                 },
@@ -596,16 +589,14 @@ const EN = {
                     art: '02-wolf-meets-2.webp',
                     emoji: '🌼',
                     left: [
-                        "The wolf pointed off to the side of the road.",
-                        "\"What lovely flowers over there.\"",
-                        "\"Wouldn't your grandmother like some?\"",
+                        "The wolf pointed to the side of the road.",
+                        "\"What lovely flowers over there! Wouldn't your grandmother like some?\"",
                         "Little Red Riding Hood turned to look. The meadow really was bright with them.",
                         "Yellow, blue and purple, everywhere she looked."
                     ],
                     right: [
-                        "\"Perhaps I'll pick just a few.\"",
-                        "But every time she picked one, a finer one seemed to grow further off.",
-                        "One more, and one more after that.",
+                        "\"Maybe I'll pick just a few.\" She stepped off the road and began to pick.",
+                        "Every time she picked one, a finer one seemed to grow further off.",
                         "Little by little she wandered away from the road. Her mother's words went clean out of her head.",
                         "And by then the wolf was nowhere to be seen."
                     ]
@@ -621,33 +612,30 @@ const EN = {
                     emoji: '🐺',
                     left: [
                         "The wolf cut straight through the woods and ran.",
-                        "Soon the old mill came into view. There stood the three big oaks in a row.",
-                        "\"This is the place, right enough.\"",
-                        "He caught his breath and stepped up to the door."
+                        "Soon the old mill came into view, and the three big oaks stood in a row.",
+                        "\"This is the place, all right.\"",
+                        "He caught his breath and stepped up to the door. Knock, knock."
                     ],
                     right: [
-                        "Knock, knock.",
-                        "\"Grandmother, it's me. Little Red Riding Hood.\"",
-                        "He made his voice as sweet as he could.",
-                        "\"Just pull the latch, dear.\"",
-                        "The door swung slowly open.",
-                        "Grandmother took one look at the wolf and hid herself in the wardrobe. The wolf never noticed, and in he strode."
+                        "He made his voice sweet. \"Grandmother, it's me, Little Red Riding Hood.\"",
+                        "\"Just pull the latch, dear,\" Grandmother called from inside.",
+                        "The wolf pulled the latch, and the door swung slowly open.",
+                        "Grandmother saw the wolf and quickly hid in the wardrobe. The wolf never noticed and strode in."
                     ]
                 },
                 {
                     art: '03-wolf-arrives-2.webp',
                     emoji: '🛏️',
                     left: [
-                        "The wolf looked about the room. There was a nightgown hanging on the peg.",
+                        "The wolf looked about the room. Grandmother's nightgown was hanging on a peg.",
                         "He pulled it on and tied a nightcap over his head.",
-                        "He even perched a pair of spectacles on his nose.",
-                        "Then he tucked his tail up under the hem."
+                        "He even perched her spectacles on his nose and tucked his tail up under the hem.",
+                        "He looked in the mirror and grinned."
                     ],
                     right: [
-                        "He looked in the glass and grinned.",
-                        "\"That should do nicely.\"",
-                        "Then he flopped down on the bed and drew the covers up to his chin.",
+                        "\"That should do nicely,\" he said.",
                         "He half closed the curtains, and the room went dim.",
+                        "Then he flopped down on the bed and drew the covers up to his chin.",
                         "The wolf shut his eyes and waited. Before long there were footsteps in the yard."
                     ]
                 }
@@ -661,16 +649,13 @@ const EN = {
                     art: '04-questions.webp',
                     emoji: '👀',
                     left: [
-                        "Little Red Riding Hood arrived with an armful of flowers.",
-                        "The door was standing a little open.",
-                        "\"Grandmother, I'm here.\"",
-                        "But no one answered.",
-                        "The room seemed strangely dark. A thin line of light came through the curtains."
+                        "Little Red Riding Hood arrived with an armful of flowers. The door was standing a little open.",
+                        "\"Grandmother, I'm here!\" she called.",
+                        "But no one answered. The room seemed strangely dark."
                     ],
                     right: [
-                        "Her grandmother was lying in the bed with her nightcap pulled low.",
-                        "Little Red Riding Hood set down the flowers and came closer.",
-                        "Something was not right.",
+                        "A thin line of light came through the curtains. Grandmother was lying in bed with her nightcap pulled low.",
+                        "Little Red Riding Hood set down the flowers and came closer. But Grandmother looked somehow strange.",
                         "\"Grandmother, are you feeling poorly?\""
                     ]
                 },
@@ -686,11 +671,10 @@ const EN = {
                         "\"All the better to hug you with.\""
                     ],
                     right: [
-                        "Little Red Riding Hood took a step back. A foot was sticking out from under the covers.",
+                        "Little Red Riding Hood took a step back. A hairy foot was sticking out from under the covers.",
                         "\"Then what a big mouth you have!\"",
-                        "The wolf threw off the blanket.",
-                        "\"All the better to eat you with!\"",
-                        "Little Red Riding Hood cried out, but it was no use."
+                        "The wolf threw off the blanket and jumped up. \"All the better to eat you with!\"",
+                        "She screamed, but it was no use. Gulp! The wolf swallowed her whole."
                     ]
                 }
             ]
@@ -710,9 +694,8 @@ const EN = {
                     ],
                     right: [
                         "Just then a huntsman happened to pass by. He always came along that road.",
-                        "\"What a snore Grandmother has on her today.\"",
-                        "\"Is she unwell, I wonder?\"",
-                        "He stopped and listened. Something was not right at all."
+                        "He stopped and listened.",
+                        "\"What a loud snore Grandmother has today!\" he said. \"Is she unwell, I wonder?\""
                     ]
                 },
                 {
@@ -721,14 +704,13 @@ const EN = {
                     left: [
                         "The huntsman looked in at the window. There in the bed lay the wolf, large as life.",
                         "\"So this is where you've got to!\"",
-                        "It was the wolf he had hunted for so long — the very one that had carried off the village sheep."
+                        "It was the wolf he had hunted for so long, the very one that had carried off the village sheep.",
+                        "He raised his gun, then lowered it again. Something had struck him."
                     ],
                     right: [
-                        "He raised his gun, then lowered it again. Something had struck him.",
-                        "\"But where is Grandmother?\"",
-                        "The wolf's belly was oddly round. And it was moving, too.",
-                        "The huntsman held the sill and looked a long while.",
-                        "\"She may be alive in there yet.\"",
+                        "\"But where is Grandmother?\" he wondered.",
+                        "The wolf's belly was oddly round, and it was wriggling! The huntsman held the sill and looked for a long while.",
+                        "\"She may still be alive in there,\" he said.",
                         "He rummaged in his bag and took out a pot of pepper."
                     ]
                 }
@@ -746,25 +728,21 @@ const EN = {
                         "He shook a little pepper right under the wolf's nose.",
                         "\"A—a—atchoo!\"",
                         "The wolf sneezed hard enough to shake the room, and out popped Little Red Riding Hood.",
-                        "\"Oh, it was so dark in there!\""
+                        "\"Oh, it was so dark in there!\" she cried."
                     ],
                     right: [
-                        "But Grandmother was nowhere to be seen.",
-                        "The huntsman searched the room this way and that.",
-                        "Then the wardrobe door rattled.",
-                        "The real grandmother was in there all along.",
-                        "\"My goodness, what a fright I had!\"",
-                        "The three of them looked at one another and laughed and laughed."
+                        "But Grandmother was nowhere to be seen. Then the wardrobe door rattled.",
+                        "They opened it, and out came the real grandmother. \"My goodness, what a fright I had!\"",
+                        "The three of them hugged one another. Meanwhile the wolf had gone back to sleep and was snoring again."
                     ]
                 },
                 {
                     art: '06-rescue-2.webp',
                     emoji: '🪨',
                     left: [
-                        "The three of them put their heads together and made a plan.",
-                        "They gathered stones from the yard — round, heavy ones.",
-                        "Little Red Riding Hood carried them in her apron.",
-                        "The wolf had dozed off again with his mouth hanging open, and one by one they rolled the stones in."
+                        "The three of them put their heads together and made a plan to teach the wolf a lesson.",
+                        "They picked up heavy, round stones in the yard, and Little Red Riding Hood carried them in her apron.",
+                        "The wolf was asleep with his mouth hanging open. One by one, they rolled the stones in."
                     ],
                     right: [
                         "Rumble, rumble. Down the stones went, one after another.",
@@ -783,34 +761,28 @@ const EN = {
                     art: '07-lesson.webp',
                     emoji: '🐺',
                     left: [
-                        "\"Oof, why is my belly so heavy?\"",
-                        "The wolf tried to stand and swayed. His belly hung down in front of him.",
-                        "He could barely take a step.",
-                        "Out of the door he went, waddling as he walked."
+                        "\"Oof, why is my belly so heavy?\" groaned the wolf.",
+                        "He tried to stand and swayed. His belly hung down in front of him.",
+                        "He could barely take a step. Out of the door he went, waddling as he walked, and into the woods."
                     ],
                     right: [
-                        "Then away into the woods, and he never came back again.",
-                        "The woods grew quiet once more. The birds began to sing again.",
-                        "Grandmother ate the bread and the milk with great appetite, and her strength came back to her at once.",
-                        "\"My granddaughter has saved us all.\"",
-                        "Little Red Riding Hood's face went quite pink."
+                        "The wolf never came back again. The woods were peaceful once more, and the birds began to sing again.",
+                        "Grandmother ate the bread and milk with a good appetite, and soon her strength came back.",
+                        "\"My granddaughter has saved us all,\" she said. Little Red Riding Hood's face went pink."
                     ]
                 },
                 {
                     art: '07-lesson-2.webp',
                     emoji: '🌼',
                     left: [
-                        "Little Red Riding Hood arranged the flowers she had brought, putting them one by one into the vase by the bed.",
-                        "\"Grandmother, I did a wrong thing.\"",
-                        "\"You told me not to go into the woods, and I…\"",
-                        "Grandmother took her hand and held it."
+                        "She arranged her flowers in the vase by the bed.",
+                        "\"Grandmother, I did wrong. Mother said not to go into the woods, but I…\"",
+                        "Grandmother held her hand tight. \"Now you know. That is enough.\""
                     ],
                     right: [
-                        "\"Knowing it is enough.\"",
                         "As the sun sank, Little Red Riding Hood set off home. This time she kept to the big road.",
-                        "On the way she saw the meadow of flowers again.",
-                        "She slowed down. And then she walked right past.",
-                        "\"Not today.\""
+                        "On the way she saw the meadow of flowers again. She slowed down, and then walked right past.",
+                        "\"Not today,\" she said."
                     ]
                 }
             ]
@@ -873,7 +845,7 @@ const EN = {
                 left: [
                     "This tale was written down twice. Charles Perrault put it on paper in France in 1697; the Brothers Grimm did the same in Germany in 1812.",
                     "In Perrault's version there is no huntsman, and the story ends there. The Grimms brought him in, and that is the ending most people know.",
-                    "The wolf never forces the door. He asks the way, and he is told. He knocks, and the latch is lifted.",
+                    "The wolf never forces the door. He asks the way, and he is told. He knocks, and he is told how to open the latch.",
                     "That is why the mother's words at the start matter so much — keep to the big road."
                 ],
                 right: [
@@ -894,7 +866,7 @@ const EN = {
             { word: 'hood', meaning: '(머리에 쓰는) 모자, 두건', sentence: 'Her grandmother had made her a hood.' },
             { word: 'sew', meaning: '바느질해 짓다', sentence: 'It was sewn from soft red cloth.' },
             { word: 'ill', meaning: '아픈', sentence: 'Your grandmother is ill.' },
-            { word: 'strength', meaning: '기운, 힘', sentence: 'This will put the strength back in her.' }
+            { word: 'strength', meaning: '기운, 힘', sentence: 'It will put the strength back in her.' }
         ],
         '01-errand-2.webp': [
             { word: 'keep to', meaning: '~에서 벗어나지 않다', sentence: 'Keep to the big road.' },
@@ -918,12 +890,12 @@ const EN = {
             { word: 'cut through', meaning: '가로지르다', sentence: 'The wolf cut straight through the woods.' },
             { word: 'come into view', meaning: '눈에 들어오다', sentence: 'Soon the old mill came into view.' },
             { word: 'latch', meaning: '문고리', sentence: 'Just pull the latch, dear.' },
-            { word: 'wardrobe', meaning: '옷장, 벽장', sentence: 'Grandmother hid herself in the wardrobe.' }
+            { word: 'wardrobe', meaning: '옷장, 벽장', sentence: 'Quickly hid in the wardrobe.' }
         ],
         '03-wolf-arrives-2.webp': [
-            { word: 'nightgown', meaning: '잠옷', sentence: 'There was a nightgown hanging on the peg.' },
-            { word: 'spectacles', meaning: '안경', sentence: 'He perched a pair of spectacles on his nose.' },
-            { word: 'hem', meaning: '옷자락', sentence: 'He tucked his tail up under the hem.' },
+            { word: 'nightgown', meaning: '잠옷', sentence: 'Grandmother\'s nightgown was hanging on a peg.' },
+            { word: 'spectacles', meaning: '안경', sentence: 'He even perched her spectacles on his nose.' },
+            { word: 'hem', meaning: '옷자락', sentence: 'Tucked his tail up under the hem.' },
             { word: 'dim', meaning: '어둑한', sentence: 'He half closed the curtains, and the room went dim.' }
         ],
         '04-questions.webp': [
@@ -932,7 +904,7 @@ const EN = {
         ],
         '04-questions-2.webp': [
             { word: 'all the better to', meaning: '더 잘 ~하려고', sentence: 'All the better to hear you with.' },
-            { word: 'stick out', meaning: '삐죽 나오다', sentence: 'A foot was sticking out from under the covers.' },
+            { word: 'stick out', meaning: '삐죽 나오다', sentence: 'A hairy foot was sticking out from under the covers.' },
             { word: 'throw off', meaning: '확 걷어차다', sentence: 'The wolf threw off the blanket.' }
         ],
         '05-snoring.webp': [
@@ -956,20 +928,20 @@ const EN = {
         ],
         '06-rescue-2.webp': [
             { word: 'put heads together', meaning: '머리를 맞대다', sentence: 'The three of them put their heads together.' },
-            { word: 'apron', meaning: '앞치마', sentence: 'She carried them in her apron.' },
-            { word: 'hang open', meaning: '헤벌리다', sentence: 'He had dozed off with his mouth hanging open.' },
+            { word: 'apron', meaning: '앞치마', sentence: 'Little Red Riding Hood carried them in her apron.' },
+            { word: 'hang open', meaning: '헤벌리다', sentence: 'The wolf was asleep with his mouth hanging open.' },
             { word: 'stir', meaning: '몸을 뒤척이다', sentence: 'At last the wolf stirred.' }
         ],
         '07-lesson.webp': [
-            { word: 'sway', meaning: '휘청하다', sentence: 'The wolf tried to stand and swayed.' },
+            { word: 'sway', meaning: '휘청하다', sentence: 'He tried to stand and swayed.' },
             { word: 'waddle', meaning: '뒤뚱뒤뚱 걷다', sentence: 'Out of the door he went, waddling as he walked.' },
-            { word: 'appetite', meaning: '입맛, 식욕', sentence: 'Grandmother ate the bread with great appetite.' }
+            { word: 'appetite', meaning: '입맛, 식욕', sentence: 'Grandmother ate the bread and milk with a good appetite.' }
         ],
         '07-lesson-2.webp': [
-            { word: 'arrange', meaning: '(꽃을) 꽂다', sentence: 'She arranged the flowers she had brought.' },
-            { word: 'vase', meaning: '꽃병', sentence: 'Putting them one by one into the vase by the bed.' },
-            { word: 'sink', meaning: '(해가) 지다', sentence: 'As the sun sank, she set off home.' },
-            { word: 'walk past', meaning: '그냥 지나치다', sentence: 'And then she walked right past.' }
+            { word: 'arrange', meaning: '(꽃을) 꽂다', sentence: 'She arranged her flowers in the vase by the bed.' },
+            { word: 'vase', meaning: '꽃병', sentence: 'She arranged her flowers in the vase by the bed.' },
+            { word: 'sink', meaning: '(해가) 지다', sentence: 'As the sun sank, Little Red Riding Hood set off home.' },
+            { word: 'walk past', meaning: '그냥 지나치다', sentence: 'Then walked right past.' }
         ],
         'end.webp': [
             { word: 'version', meaning: '판, 이야기의 형태', sentence: "In Perrault's version there is no huntsman." },

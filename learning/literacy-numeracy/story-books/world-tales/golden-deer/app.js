@@ -554,18 +554,17 @@ const EN = {
                     left: [
                         "This happened long ago in a great forest in India.",
                         "A herd of deer lived in that forest.",
-                        "It was a large herd, several hundred strong.",
+                        "There were hundreds of them.",
                         "And there was one deer who led them.",
-                        "His coat shone like gold.",
-                        "His antlers glittered silver.",
+                        "His coat shone like gold, and his antlers glittered silver.",
                         "People called him the Golden Deer."
                     ],
                     right: [
                         "The Golden Deer always walked at the front.",
                         "He found the water and the grazing first.",
-                        "When a young deer fell behind he slowed his pace.",
-                        "\"Come along in your own time.\"",
-                        "\"We leave nobody behind.\" The herd grew up hearing him say it."
+                        "When a young deer fell behind, he slowed down and said,",
+                        "\"Take your time. We leave nobody behind.\"",
+                        "The herd grew up hearing him say it."
                     ]
                 },
                 {
@@ -606,10 +605,10 @@ const EN = {
                         "The Golden Deer sprang up from his rock."
                     ],
                     right: [
-                        "\"Scatter, all of you! Run!\"",
+                        "\"Scatter, all of you! Run!\" he shouted.",
                         "The deer ran in every direction.",
                         "The thickets were torn to pieces.",
-                        "The young ones lost their mothers and wandered about.",
+                        "Fawns lost their mothers and wandered.",
                         "The whole forest was turned upside down.",
                         "The Golden Deer stayed behind and watched over the herd."
                     ]
@@ -626,12 +625,11 @@ const EN = {
                         "He licked their wounds and made them places to lie."
                     ],
                     right: [
-                        "As it grew light he said to himself,",
-                        "\"At this rate we shall all die.\"",
-                        "\"Being driven and injured is the worse thing.\"",
-                        "The Golden Deer made up his mind to something.",
-                        "And then he went out of the forest alone.",
-                        "He told nobody at all."
+                        "As it grew light, he said to himself,",
+                        "\"What if the hunters come again and drive us like this?\"",
+                        "\"At this rate the whole herd will be hurt.\"",
+                        "The Golden Deer made up his mind about something.",
+                        "Then, without telling anyone, he left the forest alone."
                     ]
                 }
             ]
@@ -654,29 +652,27 @@ const EN = {
                     right: [
                         "The Golden Deer walked straight in.",
                         "The soldiers levelled their spears at him.",
-                        "And still the deer did not stop.",
+                        "But the deer did not stop.",
                         "He walked right to the middle of the courtyard.",
-                        "The king stood up from his seat in astonishment.",
-                        "The cup fell out of his hand."
+                        "The king jumped up in surprise and snatched up his bow."
                     ]
                 },
                 {
                     art: '03-king-2.webp',
                     emoji: '👑',
                     left: [
-                        "\"How does a beast walk in here like a man?\"",
+                        "\"How can a beast walk in here like a man?\" cried the king.",
                         "The Golden Deer bowed his head.",
                         "\"I have come because I have something to say.\"",
-                        "When the deer spoke in human words the courtyard went still.",
-                        "The courtiers held their breath.",
-                        "\"My lord, I shall ask you one thing only.\""
+                        "When the deer spoke in human words, the courtyard went still.",
+                        "Even the courtiers held their breath."
                     ],
                     right: [
-                        "\"How many deer do you need in a day?\"",
-                        "The king quietly lowered his bow.",
-                        "\"One would be plenty.\"",
-                        "\"Then let us do it this way.\"",
-                        "\"One of us shall come to you each day, of our own accord.\" The courtyard stirred."
+                        "\"My lord, I shall ask you one thing only. How many deer do you need in a day?\"",
+                        "The king slowly lowered his bow. \"One would be plenty.\"",
+                        "\"Then let us do it this way,\" said the deer.",
+                        "\"One of us will come to you each day, of our own accord.\"",
+                        "The courtyard stirred."
                     ]
                 }
             ]
@@ -689,32 +685,29 @@ const EN = {
                     art: '04-promise.webp',
                     emoji: '🤝',
                     left: [
-                        "\"It is better than being driven and dying scattered.\"",
-                        "\"When you hunt, ten of us are hurt.\"",
-                        "\"One can save the other nine.\"",
+                        "\"That is better than being chased, scattered and hurt,\" the deer went on.",
+                        "\"When you hunt, ten of us are hurt. One can save the other nine.\"",
                         "The king said nothing for a long while.",
-                        "He had never heard such words in his life.",
-                        "\"You are saying I need not hunt at all.\""
+                        "He had never heard such words.",
+                        "\"So you mean I need not hunt at all?\""
                     ],
                     right: [
-                        "\"That is so.\"",
-                        "\"In return, do not trample the forest for sport.\"",
-                        "And the king slowly nodded his head.",
-                        "\"Very well. So let it be.\"",
-                        "The courtiers looked at one another.",
-                        "And the Golden Deer left the palace quietly."
+                        "\"That is so,\" said the deer. \"But in return, do not trample the forest.\"",
+                        "The king slowly nodded. \"Very well. So let it be.\"",
+                        "The courtiers looked at one another,",
+                        "and the Golden Deer quietly left the palace."
                     ]
                 },
                 {
                     art: '04-promise-2.webp',
                     emoji: '🤝',
                     left: [
-                        "The Golden Deer told the herd of it.",
+                        "The Golden Deer went back to the forest and told the herd.",
                         "For a long while none of them could speak.",
-                        "And then, one by one, they nodded.",
+                        "Then, one by one, they nodded.",
                         "\"That is the better way.\"",
                         "So the herd settled the order of turns.",
-                        "And from that day the deer went to the palace themselves."
+                        "From that day the deer went to the palace by themselves."
                     ],
                     right: [
                         "Nobody was driven any more.",
@@ -736,18 +729,15 @@ const EN = {
                     emoji: '🌿',
                     left: [
                         "Many days went by like that.",
-                        "One morning a deer's turn came round.",
-                        "She was a very young doe.",
-                        "Her eyes were large and her body slight.",
-                        "But her belly was round.",
-                        "She was close to bearing a fawn.",
-                        "The doe hesitated a long time.",
-                        "And then she came to the Golden Deer."
+                        "One morning, it was the turn of a very young doe,",
+                        "with large eyes and a slight body.",
+                        "But her belly was round. She was close to bearing a fawn.",
+                        "The doe hesitated a long time,",
+                        "and then she came to the Golden Deer."
                     ],
                     right: [
-                        "\"Might my turn be put off by only one day?\"",
-                        "\"I should like to go after the fawn is born.\"",
-                        "Her voice shook a little.",
+                        "In a shaking voice she asked, \"Could my turn be put off a little?\"",
+                        "\"I would like to go after my fawn is born.\"",
                         "The Golden Deer looked at her a long while.",
                         "The doe could not raise her head.",
                         "Only the wind moved in the forest."
@@ -759,19 +749,16 @@ const EN = {
                     left: [
                         "The Golden Deer looked round the herd.",
                         "\"Is there one who will go in her place today?\"",
-                        "The deer turned their heads away, every one.",
-                        "Not one of them came forward.",
-                        "The forest went very quiet.",
+                        "The deer turned their heads away. Not one of them came forward.",
+                        "Nobody would meet anybody's eyes.",
                         "The doe bowed her head again.",
                         "Dry leaves rustled under her feet."
                     ],
                     right: [
-                        "Nobody would meet anybody's eyes.",
-                        "\"I shall go.\"",
-                        "\"I should not have asked.\"",
-                        "And the doe made to walk away.",
-                        "Then the Golden Deer stepped in front of her.",
-                        "\"Wait a moment.\" His voice was quiet."
+                        "The forest went very quiet.",
+                        "\"I should not have asked,\" the doe said softly. \"I shall go.\"",
+                        "As she turned to walk away, the Golden Deer stepped in front of her.",
+                        "\"Wait a moment,\" he said quietly."
                     ]
                 }
             ]
@@ -786,17 +773,14 @@ const EN = {
                     left: [
                         "The Golden Deer quietly raised his head.",
                         "The morning light lay on his golden coat.",
-                        "\"Today I shall go.\"",
+                        "\"Today I shall go,\" he said.",
                         "A great stir went through the herd.",
-                        "An old deer came forward.",
-                        "\"You must not!\""
+                        "An old deer came forward."
                     ],
                     right: [
-                        "\"If our leader goes, what becomes of us!\"",
+                        "\"You must not! If our leader goes, what will become of us?\"",
                         "The Golden Deer smiled at him.",
-                        "\"And if I do not go, what then?\"",
-                        "\"That child must go instead.\"",
-                        "\"And the one inside her with her.\" The herd fell silent."
+                        "\"If I do not go, that child must go instead, and the little one inside her, too.\""
                     ]
                 },
                 {
@@ -804,17 +788,16 @@ const EN = {
                     emoji: '✨',
                     left: [
                         "Nobody could say any more.",
-                        "The doe sank down where she stood.",
-                        "\"You must not. I shall go.\"",
+                        "The doe sank down where she stood. \"No! I shall go.\"",
                         "The Golden Deer shook his head.",
-                        "\"Your share will be carried on by the child you bear.\"",
-                        "And the Golden Deer stepped onto the forest road."
+                        "\"Have your fawn and raise it well. That is your share.\"",
+                        "Then he stepped onto the forest road to the palace."
                     ],
                     right: [
-                        "He walked slowly, and he did not stop.",
+                        "He carried on walking slowly, and he did not stop.",
                         "The herd stood where they were and watched.",
                         "Not one of them could bar his way.",
-                        "The golden back grew smaller between the trees.",
+                        "His golden back grew smaller between the trees.",
                         "Not one bird sang in the forest.",
                         "And the doe wept for a long time."
                     ]
@@ -831,38 +814,31 @@ const EN = {
                     left: [
                         "That morning the palace courtyard was in a stir.",
                         "For there stood the deer of gold.",
-                        "A soldier ran to tell the king.",
-                        "And the king came out barefoot.",
-                        "\"Why have you come?\"",
-                        "\"This is not what was agreed.\""
+                        "A soldier ran to tell the king,",
+                        "and the king came running out barefoot."
                     ],
                     right: [
-                        "\"I never asked for you.\"",
-                        "The Golden Deer answered quietly.",
-                        "\"The deer whose turn it is today will soon be a mother.\"",
-                        "\"That is not one life but two.\"",
-                        "\"So I have come in her place.\" And the king could not go on."
+                        "The king, out of breath, asked, \"Why have you come?\"",
+                        "\"This is not what we agreed. I never thought the leader himself would come.\"",
+                        "The Golden Deer answered quietly, \"The deer whose turn it is will soon be a mother.\"",
+                        "\"That is not one life but two. So I have come in her place.\""
                     ]
                 },
                 {
                     art: '07-question-2.webp',
                     emoji: '❓',
                     left: [
-                        "For a long time the king could not speak.",
-                        "His hands were shaking.",
-                        "\"Are you not the leader of them?\"",
-                        "\"Could you not have sent another deer?\"",
+                        "For a long time the king could not speak. His hands shook.",
+                        "\"But you are their leader! Could you not have sent another deer?\"",
                         "The Golden Deer quietly shook his head.",
-                        "\"It is because I am the leader.\""
+                        "\"It is because I am the leader,\" he said.",
+                        "\"The load the herd must carry, the leader must carry first.\""
                     ],
                     right: [
-                        "\"If I do not carry it, who will?\"",
                         "The courtyard went as still as still water.",
-                        "The courtiers bowed their heads.",
-                        "The king's eyes reddened.",
+                        "The courtiers bowed their heads, and the king's eyes reddened.",
                         "\"I am ashamed,\" said the king in a low voice.",
-                        "And then he came slowly down from his seat.",
-                        "And stood face to face with the Golden Deer."
+                        "Slowly he walked up to the Golden Deer and stood face to face with him."
                     ]
                 }
             ]
@@ -883,11 +859,10 @@ const EN = {
                         "The courtiers caught their breath."
                     ],
                     right: [
-                        "\"From now on no deer will be killed in this land.\"",
-                        "\"Go home.\"",
+                        "\"From now on no deer will be killed in this land. Go home.\"",
                         "The courtiers stirred.",
                         "But the Golden Deer did not move.",
-                        "\"I shall ask one thing more.\"",
+                        "\"My lord, I shall ask one thing more.\"",
                         "The king raised his head."
                     ]
                 },
@@ -895,20 +870,16 @@ const EN = {
                     art: '08-ending-2.webp',
                     emoji: '🕊️',
                     left: [
-                        "\"The deer are safe now.\"",
-                        "\"Then what of the birds?\"",
-                        "\"And the fish, and the other creatures?\"",
-                        "The king said nothing for a moment.",
-                        "And then he smiled.",
-                        "\"Them I shall protect as well.\""
+                        "\"The deer are safe now,\" said the Golden Deer.",
+                        "\"But what of the birds? And the fish, and the other creatures?\"",
+                        "The king was silent for a moment. Then he smiled.",
+                        "\"I shall protect them too — every life in this land.\""
                     ],
                     right: [
-                        "\"I shall protect every life in this land.\"",
-                        "The Golden Deer bowed low.",
-                        "And then he went home to the forest.",
+                        "The Golden Deer bowed low and went home to the forest.",
                         "The herd came running out to meet him.",
-                        "From that day no hunter came into that forest.",
-                        "And the deer lived at peace for a long, long time."
+                        "From that day, no hunter came into that forest,",
+                        "and the deer lived in peace for a long, long time."
                     ]
                 }
             ]
@@ -916,42 +887,42 @@ const EN = {
     ],
     quiz: [
         {
-            q: 'What was the Golden Deer in the herd?',
-            choices: ['The youngest deer', 'The oldest deer', 'The leader'],
+            q: "What was the Golden Deer in the herd?",
+            choices: ["The youngest deer", "The oldest deer", "The leader"],
             answer: 2
         },
         {
-            q: 'Why did the king come to the forest?',
-            choices: ['To meet the deer', 'To hunt', 'To blow his horns'],
+            q: "Why did the king come to the forest?",
+            choices: ["To meet the deer", "To hunt", "To blow his horns"],
             answer: 1
         },
         {
-            q: 'What did the Golden Deer say at the palace?',
-            choices: ['One of us will come each day', 'Give up hunting', 'Protect our herd'],
+            q: "What did the Golden Deer say at the palace?",
+            choices: ["One of us will come each day", "Give up hunting", "Protect our herd"],
             answer: 0
         },
         {
-            q: 'What was the matter with the young doe whose turn came?',
-            choices: ['She was wounded', 'She was only a fawn', 'She was carrying a fawn'],
+            q: "What was the matter with the young doe whose turn came?",
+            choices: ["She was wounded", "She was only a fawn", "She was carrying a fawn"],
             answer: 2
         },
         {
-            q: 'Who went to the palace instead that day?',
-            choices: ['The old deer', 'The Golden Deer', 'The young doe'],
+            q: "Who went to the palace instead that day?",
+            choices: ["The old deer", "The Golden Deer", "The young doe"],
             answer: 1
         },
         {
-            q: 'What did the king say as he put down his bow?',
-            choices: ['That he was better than a man', 'That this was not agreed', 'That he should send another deer'],
+            q: "What did the king say as he put down his bow?",
+            choices: ["That the deer was better than a man", "That this was not what they agreed", "That the deer should have sent another deer"],
             answer: 0
         },
         {
-            q: 'What did the king promise to protect at the end?',
-            choices: ['Only the deer', 'Only birds and fish', 'Every life in the land'],
+            q: "What did the king promise to protect at the end?",
+            choices: ["Only the deer", "Only birds and fish", "Every life in the land"],
             answer: 2
         },
         {
-            q: 'Which reaction to this book does NOT fit?',
+            q: "Which reaction to this book does NOT fit?",
             wide: true,
             choices: [
                 "The golden deer offered one a day, going of their own accord — he was stopping the many who got hurt in the chase.",
@@ -1013,8 +984,8 @@ const EN = {
             { word: 'groan', meaning: '신음', sentence: 'There was groaning here and there.' },
             { word: 'tend', meaning: '돌보다', sentence: 'He tended the herd all night.' },
             { word: 'lick', meaning: '핥다', sentence: 'He licked their wounds.' },
-            { word: 'at this rate', meaning: '이대로는', sentence: 'At this rate we shall all die.' },
-            { word: 'drive', meaning: '쫓다', sentence: 'Being driven and injured is worse.' }
+            { word: 'at this rate', meaning: '이대로는', sentence: 'At this rate the whole herd will be hurt.' },
+            { word: 'drive', meaning: '쫓다', sentence: 'What if the hunters come again and drive us like this?' }
         ],
         '03-king.webp': [
             { word: 'astonished', meaning: '놀란', sentence: 'People were astonished at the sight.' },
@@ -1026,13 +997,13 @@ const EN = {
             { word: 'bow one’s head', meaning: '고개를 숙이다', sentence: 'The Golden Deer bowed his head.' },
             { word: 'still', meaning: '조용한', sentence: 'The courtyard went still.' },
             { word: 'plenty', meaning: '넉넉한', sentence: 'One would be plenty.' },
-            { word: 'of one’s own accord', meaning: '스스로', sentence: 'One shall come of our own accord.' },
+            { word: 'of one’s own accord', meaning: '스스로', sentence: 'One of us will come to you each day, of our own accord.' },
             { word: 'stir', meaning: '술렁이다', sentence: 'The courtyard stirred.' }
         ],
         '04-promise.webp': [
-            { word: 'scattered', meaning: '흩어져', sentence: 'Dying scattered.' },
+            { word: 'scattered', meaning: '흩어져', sentence: 'Being chased, scattered and hurt.' },
             { word: 'save', meaning: '살리다', sentence: 'One can save the other nine.' },
-            { word: 'trample', meaning: '짓밟다', sentence: 'Do not trample the forest for sport.' },
+            { word: 'trample', meaning: '짓밟다', sentence: 'Do not trample the forest.' },
             { word: 'so let it be', meaning: '그리하자', sentence: 'Very well. So let it be.' }
         ],
         '04-promise-2.webp': [
@@ -1042,10 +1013,10 @@ const EN = {
             { word: 'look back', meaning: '뒤를 돌아보다', sentence: 'The one who went did not look back.' }
         ],
         '05-doe.webp': [
-            { word: 'doe', meaning: '암사슴', sentence: 'She was a very young doe.' },
-            { word: 'slight', meaning: '가는', sentence: 'Her body was slight.' },
+            { word: 'doe', meaning: '암사슴', sentence: 'It was the turn of a very young doe.' },
+            { word: 'slight', meaning: '가는', sentence: 'With large eyes and a slight body.' },
             { word: 'bear', meaning: '낳다', sentence: 'She was close to bearing a fawn.' },
-            { word: 'put off', meaning: '미루다', sentence: 'Might my turn be put off?' },
+            { word: 'put off', meaning: '미루다', sentence: 'Could my turn be put off a little?' },
             { word: 'hesitate', meaning: '망설이다', sentence: 'The doe hesitated a long time.' }
         ],
         '05-doe-2.webp': [
@@ -1058,25 +1029,25 @@ const EN = {
         '06-walk.webp': [
             { word: 'lie on', meaning: '내려앉다', sentence: 'The morning light lay on his coat.' },
             { word: 'go through', meaning: '술렁이다', sentence: 'A great stir went through the herd.' },
-            { word: 'become of', meaning: '어떻게 되다', sentence: 'What becomes of us?' },
+            { word: 'become of', meaning: '어떻게 되다', sentence: 'What will become of us?' },
             { word: 'instead', meaning: '대신에', sentence: 'That child must go instead.' }
         ],
         '06-walk-2.webp': [
             { word: 'sink down', meaning: '주저앉다', sentence: 'The doe sank down where she stood.' },
-            { word: 'share', meaning: '몫', sentence: 'Your share will be carried on.' },
-            { word: 'carry on', meaning: '이어 가다', sentence: 'Carried on by the child you bear.' },
+            { word: 'share', meaning: '몫', sentence: 'That is your share.' },
+            { word: 'carry on', meaning: '이어 가다', sentence: 'He carried on walking slowly.' },
             { word: 'bar', meaning: '막다', sentence: 'Not one of them could bar his way.' },
             { word: 'weep', meaning: '울다', sentence: 'The doe wept for a long time.' }
         ],
         '07-question.webp': [
             { word: 'in a stir', meaning: '술렁이는', sentence: 'The courtyard was in a stir.' },
             { word: 'barefoot', meaning: '맨발로', sentence: 'The king came out barefoot.' },
-            { word: 'agree', meaning: '약속하다', sentence: 'This is not what was agreed.' },
+            { word: 'agree', meaning: '약속하다', sentence: 'This is not what we agreed.' },
             { word: 'in one’s place', meaning: '대신하여', sentence: 'I have come in her place.' }
         ],
         '07-question-2.webp': [
-            { word: 'shake', meaning: '떨리다', sentence: 'His hands were shaking.' },
-            { word: 'carry', meaning: '지다', sentence: 'If I do not carry it, who will?' },
+            { word: 'shake', meaning: '떨리다', sentence: 'His hands shook.' },
+            { word: 'carry', meaning: '지다', sentence: 'The leader must carry first.' },
             { word: 'as still as', meaning: '~처럼 조용한', sentence: 'The courtyard went as still as still water.' },
             { word: 'redden', meaning: '붉어지다', sentence: "The king's eyes reddened." },
             { word: 'ashamed', meaning: '부끄러운', sentence: 'I am ashamed.' }
@@ -1089,8 +1060,8 @@ const EN = {
         ],
         '08-ending-2.webp': [
             { word: 'safe', meaning: '안전한', sentence: 'The deer are safe now.' },
-            { word: 'what of', meaning: '~는 어찌합니까', sentence: 'Then what of the birds?' },
-            { word: 'protect', meaning: '지키다', sentence: 'I shall protect every life in this land.' },
+            { word: 'what of', meaning: '~는 어찌합니까', sentence: 'But what of the birds?' },
+            { word: 'protect', meaning: '지키다', sentence: 'I shall protect them too.' },
             { word: 'bow low', meaning: '깊이 고개를 숙이다', sentence: 'The Golden Deer bowed low.' }
         ],
         'end.webp': [

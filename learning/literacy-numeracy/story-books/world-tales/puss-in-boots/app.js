@@ -557,10 +557,9 @@ const EN = {
                         "He sat down where he stood."
                     ],
                     right: [
-                        "\"My brothers can work together, but…\"",
-                        "\"What am I to live on?\"",
-                        "The cat sat down beside him and looked quietly up at him.",
-                        "His tail swung slowly to and fro.",
+                        "\"My brothers can live off the mill and the donkey. But what am I to live on?\"",
+                        "Tears came into his eyes.",
+                        "The cat sat down beside him and looked quietly up at him. His tail swung slowly to and fro.",
                         "\"Don't cry, master.\""
                     ]
                 },
@@ -570,18 +569,14 @@ const EN = {
                     left: [
                         "The youngest son's head came up with a jerk.",
                         "\"You — you can talk!\"",
-                        "\"There is nothing to worry about, master.\"",
                         "The cat stood with his tail straight up.",
-                        "\"Only give me a sack.\"",
-                        "\"And a pair of boots.\""
+                        "\"There is nothing to worry about, master. Only give me a sack and a pair of boots.\""
                     ],
                     right: [
                         "\"And where would you be going in boots?\"",
                         "\"We shall see, shan't we.\"",
-                        "The youngest son turned out what money he had left and bought a pair of red leather boots.",
-                        "The cat pushed his feet into them and struck a pose in front of the mirror.",
-                        "\"A very good fit.\"",
-                        "And off he went down the road."
+                        "The youngest son turned out what money he had left and bought red leather boots.",
+                        "The cat pushed his feet in and struck a pose in front of the mirror. \"A very good fit.\" Then he put the sack on his shoulder and off he went."
                     ]
                 }
             ]
@@ -594,15 +589,14 @@ const EN = {
                     art: '02-gift.webp',
                     emoji: '🐇',
                     left: [
-                        "The cat went out to the fields and set his sack open on the ground with a few carrots inside it.",
-                        "Then he flattened himself down in the grass.",
-                        "By and by a rabbit went in. The cat pulled the string, and the sack drew tight.",
+                        "The cat went out to the fields and set his sack open with a few carrots inside.",
+                        "Then he flattened himself down in the grass, holding the string.",
+                        "By and by a rabbit smelled the carrots and went in. The cat pulled the string, and the sack drew tight.",
                         "He swung it up onto his shoulder."
                     ],
                     right: [
-                        "The cat went to the palace and bowed low to the gatekeeper.",
-                        "\"I have brought a present for His Majesty.\"",
-                        "\"It comes from the Marquis of Carabas.\"",
+                        "The cat went to the palace and bowed low before the king.",
+                        "\"I have brought a present for Your Majesty. It comes from the Marquis of Carabas.\"",
                         "The king tilted his head.",
                         "\"And who is the Marquis of Carabas?\""
                     ]
@@ -619,9 +613,8 @@ const EN = {
                     ],
                     right: [
                         "Some months went by, and the cat came to know everything that happened at the palace.",
-                        "One day he overheard this:",
-                        "\"The king drives down to the river tomorrow.\"",
-                        "\"And the princess is going with him.\"",
+                        "One day he overheard some courtiers whispering:",
+                        "\"Tomorrow the king drives down to the river, and the princess is going with him.\"",
                         "The cat's eyes gleamed."
                     ]
                 }
@@ -635,16 +628,15 @@ const EN = {
                     art: '03-river.webp',
                     emoji: '🌊',
                     left: [
-                        "The cat woke his master.",
+                        "The next morning the cat woke his master.",
                         "\"Today you are going swimming in the river.\"",
                         "\"What? Why, all of a sudden?\"",
-                        "\"Don't ask. Just do it.\"",
-                        "The youngest son could make nothing of it.",
-                        "But down to the river he went."
+                        "\"Don't ask. Just do as I say.\"",
+                        "The youngest son could make nothing of it, but down to the river he went."
                     ],
                     right: [
                         "He left his clothes on a rock and waded in to wash.",
-                        "And while he was in the water the cat hid the clothes, pushing them deep into the long grass.",
+                        "While he was in the water, the cat hid the clothes, pushing them deep into the long grass.",
                         "Away in the distance came the sound of a carriage.",
                         "The cat ran out into the road."
                     ]
@@ -653,17 +645,14 @@ const EN = {
                     art: '03-river-2.webp',
                     emoji: '🌊',
                     left: [
-                        "\"Help! Help, somebody!\"",
-                        "\"The Marquis has fallen in the river!\"",
-                        "The carriage pulled up short.",
-                        "\"The Marquis of Carabas?\"",
-                        "The king leaned out of the window, and his men went running down to the water."
+                        "\"Help! Help! The Marquis of Carabas has fallen in the river!\" the cat shouted at the top of his voice.",
+                        "The carriage pulled up short, and the king leaned out of the window. \"The Marquis of Carabas?\"",
+                        "At once he sent his men running down to the water."
                     ],
                     right: [
-                        "They pulled the youngest son out.",
-                        "\"A thief has taken his clothes!\"",
-                        "the cat announced at the top of his voice.",
-                        "The king had fine clothes brought out for him, and the youngest son put them on.",
+                        "They pulled the youngest son out of the river.",
+                        "\"A thief has taken his clothes!\" the cat said quickly.",
+                        "The king sent for fine clothes, and the youngest son put them on.",
                         "Somehow he really did look like a marquis."
                     ]
                 }
@@ -677,19 +666,15 @@ const EN = {
                     art: '04-fields.webp',
                     emoji: '🌾',
                     left: [
-                        "The king took him up into the carriage, in the seat beside the princess. The youngest son went red in the face.",
-                        "Meanwhile the cat had run on ahead.",
-                        "There were labourers working in a field by the road, and the cat went up to them.",
-                        "\"A carriage is coming along directly.\"",
-                        "\"They will ask you whose field this is.\""
+                        "The king took him into the carriage, beside the princess. The youngest son went red in the face.",
+                        "Meanwhile the cat ran on ahead to a field where labourers were working.",
+                        "\"The king's carriage is coming along directly,\" he told them."
                     ],
                     right: [
-                        "\"You will say it belongs to the Marquis of Carabas.\"",
-                        "The labourers blinked at him.",
-                        "\"And who is Carabas?\"",
-                        "The cat gave the ground a tap with one booted foot.",
-                        "\"There will be trouble if you don't.\"",
-                        "And off he ran to the next field."
+                        "\"If the king asks whose field this is, say it belongs to the Marquis of Carabas.\"",
+                        "The labourers blinked at him. \"And who is Carabas?\"",
+                        "The cat gave the ground a tap with one booted foot. \"There will be trouble if you don't.\"",
+                        "Then he ran on to the next field and said the same thing there."
                     ]
                 },
                 {
@@ -697,17 +682,14 @@ const EN = {
                     emoji: '🌾',
                     left: [
                         "The carriage came past the field.",
-                        "The king looked out of the window.",
-                        "\"Whose field is this?\"",
+                        "The king looked out of the window. \"Whose field is this?\"",
                         "\"It belongs to the Marquis of Carabas!\"",
-                        "The king nodded.",
-                        "\"Well, well. Most impressive.\""
+                        "The king nodded. \"Well, well. Most impressive.\""
                     ],
                     right: [
-                        "It was the same at the next field, and the one after that, and the meadows, and the woods.",
-                        "The king grew more astonished the further they went.",
-                        "\"Is the Marquis as rich as all that?\"",
-                        "The youngest son could not say a word. The princess gave him a sideways look, and he kept his eyes on the window."
+                        "It was the same at the next field and the one after — and at the meadows and the woods too.",
+                        "The king grew more astonished the further they went. \"Is the Marquis as rich as all that?\"",
+                        "The youngest son said nothing. The princess gave him a sideways look, but he kept his eyes on the window."
                     ]
                 }
             ]
@@ -721,16 +703,14 @@ const EN = {
                     emoji: '🏰',
                     left: [
                         "The carriage rolled along a wide road, and at the end of it stood an enormous castle.",
-                        "The king asked again.",
-                        "\"And whose castle is that?\"",
+                        "The king asked again, \"And whose castle is that?\"",
                         "This time too the youngest son had no answer.",
-                        "For that land had a real owner of its own."
+                        "The castle and all those fields had a real owner of their own."
                     ],
                     right: [
-                        "The master of the castle was a magician who could turn himself into anything at all.",
-                        "The cat had run on ahead of the carriage. His breath was gone, but he did not stop.",
-                        "In front of the castle gate he straightened his coat.",
-                        "Then he took hold of the great iron ring.",
+                        "The master of the castle was a magician who could turn himself into anything.",
+                        "The cat raced to get there before the carriage. He was out of breath, but he did not stop.",
+                        "At the gate he straightened his whiskers and took hold of the great iron ring.",
                         "Boom, boom, boom!"
                     ]
                 },
@@ -766,8 +746,8 @@ const EN = {
                         "The cat leapt straight up onto the top of a cupboard, every hair standing on end.",
                         "His heart was going like a drum.",
                         "But he made himself look perfectly calm, and even smoothed his whiskers.",
-                        "\"That gave you a fright, I think!\"",
-                        "\"Me? Not in the least.\""
+                        "\"That gave you a fright, I think!\" laughed the lion.",
+                        "\"M-me? Not in the least.\""
                     ]
                 }
             ]
@@ -788,10 +768,9 @@ const EN = {
                     ],
                     right: [
                         "\"A mouse? You think a mouse is difficult? Watch closely!\"",
-                        "His body shrank and shrank until he was a little mouse.",
-                        "The mouse went scurrying across the floorboards.",
-                        "The cat's eyes flashed. His paw came down like lightning.",
-                        "And the room went very quiet."
+                        "His body shrank and shrank until he was a little mouse, and the mouse went scurrying across the floorboards.",
+                        "Quick as lightning, the cat's paw came down.",
+                        "The room went very quiet, and the magician was never seen again."
                     ]
                 },
                 {
@@ -799,17 +778,15 @@ const EN = {
                     emoji: '🐁',
                     left: [
                         "The cat ran to the castle gate. The carriage was just arriving.",
-                        "He threw the doors wide with both hands.",
-                        "\"Welcome, Your Majesty!\"",
-                        "\"This is the castle of the Marquis of Carabas.\"",
+                        "He threw the doors wide with both paws.",
+                        "\"Welcome, Your Majesty! This is the castle of the Marquis of Carabas.\"",
                         "The king's mouth fell open."
                     ],
                     right: [
-                        "Inside, everything shone. A long table stood laid with a feast from end to end —",
-                        "the very feast the magician had ordered for himself.",
-                        "\"Do sit down and eat.\"",
-                        "The king could do nothing but marvel. The youngest son sat quietly.",
-                        "And beside him, the cat gave him a wink."
+                        "Inside, everything shone. A long table stood laid with a feast —",
+                        "the very feast the magician had made ready for his guests.",
+                        "The cat pulled out a chair. \"Do sit down and eat.\"",
+                        "The king could do nothing but marvel. The youngest son sat quietly, and the cat gave him a wink."
                     ]
                 }
             ]
@@ -828,10 +805,8 @@ const EN = {
                         "The princess smiled."
                     ],
                     right: [
-                        "\"I know you did.\"",
-                        "\"You can tell by the hands.\"",
-                        "His face went hot.",
-                        "\"Then why did you say nothing?\"",
+                        "\"I knew it. You can tell by the hands.\"",
+                        "His face went hot. \"Then why did you say nothing?\"",
                         "\"Your cat was working so very hard.\"",
                         "The two of them laughed for a long while."
                     ]
@@ -840,19 +815,15 @@ const EN = {
                     art: '07-wedding-2.webp',
                     emoji: '💐',
                     left: [
-                        "The king raised his glass.",
-                        "\"Marquis — I give my daughter into your care.\"",
-                        "The youngest son got to his feet.",
-                        "\"Your Majesty, there is something I must say.\"",
-                        "The cat gave a small cough. The youngest son said it anyway, and his voice shook a little."
+                        "The king raised his glass. \"Marquis — I give my daughter into your care.\"",
+                        "The youngest son stood up. \"Your Majesty, there is something I must say.\"",
+                        "The cat gave a small cough. The youngest son said it anyway."
                     ],
                     right: [
-                        "But he kept his eyes straight up.",
-                        "\"I am the miller's youngest son.\"",
-                        "The hall went quiet. After a long moment the king laughed.",
-                        "\"I knew. I knew the whole time.\"",
-                        "\"I only wanted to hear it from you.\"",
-                        "And the cat took off his boots and had a long afternoon nap."
+                        "\"I am not a marquis. I am the miller's youngest son,\" he said, his voice shaking.",
+                        "The hall went quiet. At last the king laughed.",
+                        "\"I knew. I only wanted to hear it from you.\"",
+                        "The cat took off his boots and had a long nap."
                     ]
                 }
             ]
@@ -875,8 +846,8 @@ const EN = {
             answer: 2
         },
         {
-            q: 'How did the fields come to belong to the Marquis?',
-            choices: ['The king gave them to him', 'The cat told the labourers what to answer', 'The magician handed them over'],
+            q: 'Why did the labourers say the fields belonged to the Marquis?',
+            choices: ['The Marquis had bought them','The cat told the labourers what to answer', 'The magician handed them over'],
             answer: 1
         },
         {
@@ -947,13 +918,13 @@ const EN = {
         '02-gift.webp': [
             { word: 'flatten oneself', meaning: '납작 엎드리다', sentence: 'He flattened himself down in the grass.' },
             { word: 'draw tight', meaning: '팽팽해지다', sentence: 'The cat pulled the string, and the sack drew tight.' },
-            { word: 'bow low', meaning: '허리를 굽히다', sentence: 'The cat bowed low to the gatekeeper.' },
+            { word: 'bow low', meaning: '허리를 굽히다', sentence: "The cat bowed low before the king." },
             { word: 'marquis', meaning: '후작', sentence: 'It comes from the Marquis of Carabas.' }
         ],
         '02-gift-2.webp': [
             { word: 'pheasant', meaning: '꿩', sentence: 'Rabbits one time, pheasants the next.' },
             { word: 'thoughtful', meaning: '마음 씀씀이가 좋은', sentence: 'What a thoughtful man he must be.' },
-            { word: 'overhear', meaning: '엿듣다', sentence: 'One day he overheard this.' },
+            { word: 'overhear', meaning: '엿듣다', sentence: "One day he overheard some courtiers whispering." },
             { word: 'gleam', meaning: '반짝이다', sentence: "The cat's eyes gleamed." }
         ],
         '03-river.webp': [
@@ -964,11 +935,11 @@ const EN = {
         '03-river-2.webp': [
             { word: 'pull up short', meaning: '급히 멈추다', sentence: 'The carriage pulled up short.' },
             { word: 'lean out', meaning: '몸을 내밀다', sentence: 'The king leaned out of the window.' },
-            { word: 'at the top of one’s voice', meaning: '큰 소리로', sentence: 'The cat announced at the top of his voice.' }
+            { word: 'at the top of one’s voice', meaning: '큰 소리로', sentence: "The cat shouted at the top of his voice." }
         ],
         '04-fields.webp': [
-            { word: 'labourer', meaning: '일꾼', sentence: 'There were labourers working in a field.' },
-            { word: 'directly', meaning: '곧', sentence: 'A carriage is coming along directly.' },
+            { word: 'labourer', meaning: '일꾼', sentence: "A field where labourers were working." },
+            { word: 'directly', meaning: '곧', sentence: "The king's carriage is coming along directly." },
             { word: 'blink', meaning: '눈을 껌뻑이다', sentence: 'The labourers blinked at him.' },
             { word: 'tap', meaning: '툭 구르다', sentence: 'The cat gave the ground a tap with one booted foot.' }
         ],
@@ -980,8 +951,8 @@ const EN = {
         ],
         '05-castle.webp': [
             { word: 'magician', meaning: '마법사', sentence: 'The master of the castle was a magician.' },
-            { word: 'owner', meaning: '주인', sentence: 'That land had a real owner of its own.' },
-            { word: 'straighten', meaning: '가다듬다', sentence: 'He straightened his coat.' },
+            { word: 'owner', meaning: '주인', sentence: "The castle and all those fields had a real owner of their own." },
+            { word: 'straighten', meaning: '가다듬다', sentence: "He straightened his whiskers." },
             { word: 'iron ring', meaning: '문고리', sentence: 'He took hold of the great iron ring.' }
         ],
         '05-castle-2.webp': [
@@ -995,7 +966,7 @@ const EN = {
             { word: 'mane', meaning: '갈기', sentence: 'A mane rose along his neck.' },
             { word: 'on end', meaning: '곤두선', sentence: 'Every hair standing on end.' },
             { word: 'whiskers', meaning: '수염', sentence: 'He even smoothed his whiskers.' },
-            { word: 'not in the least', meaning: '전혀 아닌', sentence: 'Me? Not in the least.' }
+            { word: 'not in the least', meaning: '전혀 아닌', sentence: "Not in the least." }
         ],
         '06-mouse.webp': [
             { word: 'to begin with', meaning: '애초에', sentence: 'A lion is large to begin with.' },
@@ -1004,7 +975,7 @@ const EN = {
             { word: 'scurry', meaning: '쪼르르 달리다', sentence: 'The mouse went scurrying across the floorboards.' }
         ],
         '06-mouse-2.webp': [
-            { word: 'throw wide', meaning: '활짝 열다', sentence: 'He threw the doors wide with both hands.' },
+            { word: 'throw wide', meaning: '활짝 열다', sentence: "He threw the doors wide with both paws." },
             { word: 'laid', meaning: '차려진', sentence: 'A long table stood laid with a feast.' },
             { word: 'marvel', meaning: '감탄하다', sentence: 'The king could do nothing but marvel.' },
             { word: 'wink', meaning: '눈을 찡긋하다', sentence: 'The cat gave him a wink.' }

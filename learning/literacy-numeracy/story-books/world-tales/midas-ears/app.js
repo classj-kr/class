@@ -584,12 +584,10 @@ const EN = {
                         "On the other side was Apollo."
                     ],
                     right: [
-                        "He was a god with hair that shone like gold.",
-                        "He carried a harp in his hands.",
-                        "People came crowding when they heard of it.",
-                        "Even the beasts of the wood pricked up their ears.",
+                        "He was a god with hair that shone like gold, and he carried a harp in his hands.",
+                        "People came crowding when they heard of it. Even the beasts of the wood pricked up their ears.",
                         "Among the onlookers was King Midas.",
-                        "\"Which of them will win?\""
+                        "His eyes shone. \"Which of them will win?\" he wondered."
                     ]
                 },
                 {
@@ -597,20 +595,17 @@ const EN = {
                     emoji: '🎵',
                     left: [
                         "Pan played his pipe first.",
-                        "It was so merry that people's feet moved by themselves.",
-                        "Their shoulders went up and down with it.",
+                        "It was so merry that people's feet moved by themselves, and their shoulders bounced.",
                         "Pan grew excited and leapt about.",
                         "When he finished, the clapping poured down.",
-                        "Then Apollo drew his hand across the harp.",
-                        "This time nobody moved at all."
+                        "Then Apollo played his harp. This time nobody moved at all."
                     ],
                     right: [
                         "It was so beautiful that they could not breathe.",
                         "Some of them were in tears.",
                         "When it ended there was a long silence.",
-                        "\"Both of them play so well.\"",
-                        "The people could not make up their minds.",
-                        "There was murmuring here and there."
+                        "At last there was murmuring here and there. \"Both of them play so well.\"",
+                        "The people could not make up their minds."
                     ]
                 }
             ]
@@ -625,9 +620,8 @@ const EN = {
                     left: [
                         "Now it was for the judge to decide.",
                         "The judge was the god of that mountain.",
-                        "He thought a moment, and then he raised a hand.",
-                        "It was Apollo's hand.",
-                        "\"The harp was the finer.\"",
+                        "He thought a moment, and then he raised Apollo's hand high.",
+                        "\"The harp was the finer,\" he said.",
                         "And all the onlookers nodded too."
                     ],
                     right: [
@@ -643,16 +637,14 @@ const EN = {
                     emoji: '⚖️',
                     left: [
                         "The mountain went quiet in an instant.",
-                        "Everyone stared at the king.",
-                        "\"What is that man saying?\"",
-                        "And still the king would not back down.",
+                        "Everyone stared at the king and whispered, \"What is that man saying?\"",
+                        "But the king would not back down.",
                         "\"That is how it sounded to my ears.\"",
                         "Apollo looked at the king steadily."
                     ],
                     right: [
                         "There was no expression at all on his face.",
-                        "\"If those are your ears,\"",
-                        "\"then a donkey's would suit you better.\"",
+                        "Apollo said quietly, \"If those are your ears, then a donkey's would suit you better.\"",
                         "The king did not know what he meant.",
                         "He only shrugged and went home.",
                         "That night nothing at all happened."
@@ -677,9 +669,8 @@ const EN = {
                     ],
                     right: [
                         "They were donkey's ears, and no mistake.",
-                        "\"Wh-what has happened to me!\"",
                         "The king very nearly shouted.",
-                        "He clapped both hands over his mouth.",
+                        "He clapped both hands over his mouth and whispered, \"Wh-what has happened to me?\"",
                         "Nobody could be allowed to see him like this.",
                         "The king did not know what to do."
                     ]
@@ -688,21 +679,17 @@ const EN = {
                     art: '03-ears-2.webp',
                     emoji: '🫏',
                     left: [
-                        "The king went through his wardrobe.",
-                        "He found a large pointed hat.",
-                        "He pulled it down hard over his head.",
-                        "It just about hid the ears.",
-                        "Only then did he open his door.",
-                        "He looked in the mirror again and again.",
-                        "And kept tugging the brim further down."
+                        "The king went through his wardrobe and found a large pointed hat.",
+                        "He pulled it down hard over his head. It just about hid the ears.",
+                        "He looked in the mirror again and again, and kept tugging the brim further down.",
+                        "Only then did he open his door."
                     ],
                     right: [
                         "From that day he never once took the hat off.",
-                        "He wore it while he ate.",
-                        "He wore it while he slept.",
-                        "His courtiers tilted their heads at it.",
+                        "He wore it while he ate. He wore it while he slept.",
+                        "His courtiers tilted their heads and whispered.",
                         "\"The king is very fond of that hat these days.\"",
-                        "\"Does he like it as much as all that?\" And nobody guessed the truth."
+                        "\"Does he like it as much as all that?\" Nobody guessed the truth."
                     ]
                 }
             ]
@@ -723,32 +710,27 @@ const EN = {
                         "The barber lifted it very carefully."
                     ],
                     right: [
-                        "And then he stood there frozen.",
-                        "His eyes went as round as plates.",
-                        "The hand holding the scissors began to shake.",
-                        "\"Th-these are…\"",
-                        "The king glared at him.",
-                        "\"Do not breathe a word of it.\""
+                        "And then he stood there frozen. His eyes went as round as plates.",
+                        "The hand holding the scissors began to shake. \"Th-these are…\"",
+                        "The king glared at him. \"Do not breathe a word of it.\"",
+                        "\"If you tell anyone, you shall be sorry.\""
                     ]
                 },
                 {
                     art: '04-barber-2.webp',
                     emoji: '✂️',
                     left: [
-                        "\"You are to tell nobody of this.\"",
-                        "\"If you tell, you shall be sorry for it.\"",
-                        "\"Yes, yes! I shall never tell a soul!\"",
                         "The barber bowed his head over and over.",
+                        "\"Yes, yes! I shall never tell a soul!\"",
                         "His hands shook so that he could hardly cut.",
-                        "He finished somehow and came outside."
+                        "Somehow he finished the haircut and came outside."
                     ],
                     right: [
                         "There was cold sweat down his back.",
                         "The road home had never seemed so long.",
-                        "And from that night it was strange.",
-                        "His mouth kept itching.",
+                        "And from that night it was strange. His mouth kept itching.",
                         "The words came up as far as his throat.",
-                        "The barber did nothing but clear it."
+                        "The barber kept clearing his throat."
                     ]
                 }
             ]
@@ -763,38 +745,31 @@ const EN = {
                     left: [
                         "The thought came to him even while he ate.",
                         "He would lift his spoon and see those ears.",
-                        "Lying down to sleep, they were clearer still.",
-                        "\"I want to say it.\"",
-                        "\"Just once, I want to say it.\"",
-                        "The barber pulled the blanket over his head."
+                        "When he lay down to sleep, they were clearer still.",
+                        "The barber pulled the blanket over his head.",
+                        "\"I want to say it,\" he muttered. \"Just once, I want to say it.\""
                     ],
                     right: [
                         "He held his mouth shut with both hands.",
-                        "His wife asked him anxiously,",
-                        "\"My dear, is something the matter?\"",
-                        "The barber only shook his head.",
-                        "The words were up in his throat.",
-                        "He pulled the blanket tighter.",
-                        "\"It — it is nothing at all.\" And he turned over."
+                        "His wife asked him anxiously, \"My dear, is something the matter?\"",
+                        "The barber only shook his head. The words were up in his throat.",
+                        "At last he answered, \"It — it is nothing at all.\" And he turned over."
                     ]
                 },
                 {
                     art: '05-itch-2.webp',
                     emoji: '🤐',
                     left: [
-                        "It was the same when a friend offered him a drink.",
-                        "The barber kept his mouth firmly shut.",
+                        "When a friend offered him a drink, the barber kept his mouth firmly shut.",
                         "One cup, he thought, and it would all come out.",
-                        "\"What is the matter with you lately?\"",
+                        "\"What is the matter with you lately?\" asked his friend.",
                         "\"Oh — nothing, nothing at all.\"",
-                        "And so a few months went by.",
-                        "The barber's face grew thin and drawn."
+                        "Months went by. The barber's face grew thin and drawn."
                     ],
                     right: [
                         "And yet his belly kept swelling.",
                         "It was as though the words were piling up inside it.",
-                        "\"I shall fall ill at this rate.\"",
-                        "\"What am I to do if I can tell nobody?\"",
+                        "The barber sighed. \"I shall fall ill at this rate. What can I do if I can tell nobody?\"",
                         "He tossed and turned all night.",
                         "The cock crowed and his eyes were still wide open."
                     ]
@@ -809,22 +784,16 @@ const EN = {
                     art: '06-hole.webp',
                     emoji: '🕳️',
                     left: [
-                        "One day the barber sat straight up.",
-                        "A good idea had come to him.",
-                        "\"He said tell no person.\"",
-                        "\"Then why not tell the ground?\"",
+                        "One day the barber sat straight up. A good idea had come to him.",
+                        "\"The king said I must tell no person,\" he said. \"Then why not tell the ground?\"",
                         "The barber took a spade and left the house.",
                         "He went down to the reeds by the river."
                     ],
                     right: [
-                        "He looked all around him.",
-                        "There was not a soul passing.",
-                        "So the barber dug.",
-                        "He made a good deep hole.",
-                        "And then he put his face right down into it.",
-                        "The smell of earth went up his nose.",
-                        "His heart was thumping.",
-                        "The barber took a great breath in."
+                        "He looked all around him. There was not a soul passing.",
+                        "So the barber dug, and he made a good deep hole.",
+                        "Then he put his face right down into it. The smell of earth went up his nose.",
+                        "His heart was thumping. He took a great breath in."
                     ]
                 },
                 {
@@ -832,22 +801,17 @@ const EN = {
                     emoji: '🕳️',
                     left: [
                         "And he shouted with all his voice.",
-                        "\"The king has donkey's ears!\"",
-                        "\"The king has donkey's ears, I tell you!\"",
+                        "\"The king has donkey's ears! The king has donkey's ears!\"",
                         "He shouted it over and over.",
-                        "And his swollen belly went quietly down.",
-                        "His chest felt as though it had opened.",
+                        "Then his swollen belly went quietly down, and his chest felt light.",
                         "The barber filled the hole in with earth."
                     ],
                     right: [
                         "He even stamped it down flat with his foot.",
-                        "His palms were thick with soil.",
-                        "He did not notice, and grinned to himself.",
+                        "His palms were thick with soil, but he did not notice. He grinned to himself.",
                         "\"Now nobody will ever know.\"",
                         "His step was light all the way home.",
-                        "That night the barber slept soundly.",
-                        "The flesh came back to his face.",
-                        "And his wife stopped worrying."
+                        "That night the barber slept soundly, and soon his face filled out again."
                     ]
                 }
             ]
@@ -860,13 +824,12 @@ const EN = {
                     art: '07-reeds.webp',
                     emoji: '🌾',
                     left: [
-                        "Before long, reeds grew on that spot.",
-                        "They shot up as tall as a person.",
+                        "Before long, reeds grew on that spot. They shot up as tall as a person.",
                         "Yellow ripe heads hung on them.",
                         "One day the wind came along the river.",
                         "The reeds rustled and swayed.",
                         "The heads lay over one way and rose again.",
-                        "And the water came in small quiet waves."
+                        "And the water came in small waves."
                     ],
                     right: [
                         "But there was something odd in the sound.",
@@ -884,17 +847,15 @@ const EN = {
                         "People came crowding down to the reeds.",
                         "Every time the wind blew, the same words came.",
                         "By now anybody could make them out.",
-                        "\"The king has donkey's ears?\"",
+                        "People chattered. \"The king has donkey's ears?\"",
                         "\"So that is why he wears that hat!\"",
                         "In less than a day it was all over the country."
                     ],
                     right: [
                         "In the market they talked of nothing else.",
                         "The children made a song of it and sang it.",
-                        "The barber heard it and went white.",
-                        "\"Oh, what am I to do.\"",
-                        "He locked his door and stayed inside.",
-                        "Outside, the children's singing came in at the window.",
+                        "The barber heard it and went white. \"Oh, what am I to do?\"",
+                        "He locked his door, but the children's singing still came in.",
                         "The barber covered both his ears."
                     ]
                 }
@@ -928,20 +889,14 @@ const EN = {
                     art: '08-ending-2.webp',
                     emoji: '👑',
                     left: [
-                        "The king walked out into the yard bare-headed.",
-                        "His donkey's ears were there for all to see.",
-                        "People started back in surprise.",
-                        "For a while nobody could say a word.",
-                        "It was the king who touched his ears first.",
-                        "\"They hear better than they look, you know.\""
+                        "The king walked out into the yard bare-headed, his donkey's ears there for all to see.",
+                        "People started back in surprise, and nobody said a word.",
+                        "Then the king touched his ears. \"They hear better than they look, you know.\""
                     ],
                     right: [
-                        "And then somebody burst out laughing.",
-                        "The laughter spread across the whole yard.",
-                        "And the king laughed with them.",
-                        "\"They all knew anyway. Why did I hide?\"",
-                        "That day the king's heart was very easy.",
-                        "And the barber opened his door at last.",
+                        "Then somebody burst out laughing, and the laughter spread across the yard.",
+                        "The king laughed with them. His heart felt light and easy.",
+                        "And at last the barber opened his door.",
                         "From that day on the king wore no hat."
                     ]
                 }
@@ -990,7 +945,7 @@ const EN = {
             choices: [
                 "The barber's face grew thin while his belly swelled — the unsaid thing felt as if it were piling up inside him.",
                 "Once he had shouted it into the ground his belly went down again — it was the saying of it that eased him.",
-                "The king walked out into the yard without his cap — with the whole country knowing, there was nothing left to hide.",
+                "The king walked out into the yard without his hat — with the whole country knowing, there was nothing left to hide.",
                 "Apollo said donkey's ears would suit him — he was giving the king fair warning in words he could understand."
             ],
             answer: 3
@@ -1004,13 +959,13 @@ const EN = {
                 art: 'end.webp',
                 left: [
                     "This story comes from Greece, and was written down more than two thousand years ago. Almost the same story is told in Korea.",
-                    "The king got donkey's ears because he raised the wrong hand in a contest. It was the price of not listening well.",
+                    "The king got donkey's ears because he took the wrong side in a contest. It was the price of not listening well.",
                     "The barber promises to say nothing. And then he can think of nothing else, eating or sleeping.",
                     "What made it so hard was not that the words were so grand. It was that he alone had to hold them."
                 ],
                 right: [
                     "He thought shouting it into the ground would be the end of it. And then reeds grew on that spot.",
-                    "Once the whole country knows, the king takes off his hat and walks out into the yard. With nothing left to hide, he is easier than he has been all along.",
+                    "Once the whole country knows, the king takes off his hat and walks out into the yard. With nothing left to hide, he feels more at ease than ever.",
                     "What should the barber have done from the start?"
                 ]
             }
@@ -1039,7 +994,7 @@ const EN = {
         ],
         '02-judgment.webp': [
             { word: 'judge', meaning: '심판', sentence: 'Now it was for the judge to decide.' },
-            { word: 'raise', meaning: '들어 올리다', sentence: 'He raised a hand.' },
+            { word: 'raise', meaning: '들어 올리다', sentence: "He raised Apollo's hand high." },
             { word: 'congratulations', meaning: '축하', sentence: 'Pan offered his congratulations.' },
             { word: 'spring to one’s feet', meaning: '벌떡 일어서다', sentence: 'King Midas sprang to his feet.' }
         ],
@@ -1125,7 +1080,7 @@ const EN = {
             { word: 'bare-headed', meaning: '모자를 쓰지 않고', sentence: 'The king walked out bare-headed.' },
             { word: 'start back', meaning: '뒷걸음질하다', sentence: 'People started back in surprise.' },
             { word: 'burst out laughing', meaning: '웃음을 터뜨리다', sentence: 'Somebody burst out laughing.' },
-            { word: 'easy', meaning: '마음이 편한', sentence: "The king's heart was very easy." }
+            { word: 'easy', meaning: '마음이 편한', sentence: 'His heart felt light and easy.' }
         ],
         'end.webp': [
             { word: 'write down', meaning: '글로 남기다', sentence: 'It was written down two thousand years ago.' },

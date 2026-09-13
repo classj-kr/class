@@ -573,8 +573,8 @@ const EN = {
                         "The war was over,",
                         "and a soldier was walking home.",
                         "He had a pack on his back and a sword at his side.",
-                        "His clothes were worn, and he walked briskly enough.",
-                        "Only there were just a few coins in his pocket.",
+                        "His clothes were worn, but he walked briskly.",
+                        "Still, he had only a few coins in his pocket.",
                         "There was a great tree standing beside the road."
                     ],
                     right: [
@@ -582,8 +582,8 @@ const EN = {
                         "and a chin so long it came down to her chest.",
                         "The old woman called out to him.",
                         "\"Would you like to make some money?\"",
-                        "The soldier stopped.",
-                        "\"And how would I do that?\" He shifted his pack on his shoulder."
+                        "The soldier stopped and shifted his pack.",
+                        "\"How would I do that?\""
                     ]
                 },
                 {
@@ -598,11 +598,11 @@ const EN = {
                         "The soldier's eyes lit up."
                     ],
                     right: [
-                        "\"And why would you tell me a thing like that?\"",
-                        "\"Only fetch me up my tinderbox.\"",
+                        "\"But why are you telling me this?\" asked the soldier.",
+                        "The old woman grinned. \"In return, just fetch me my tinderbox.\"",
                         "\"My grandmother left it down there.\"",
-                        "That sounded well enough to the soldier.",
-                        "\"That is nothing difficult.\" And he rolled up his sleeves."
+                        "That sounded easy enough to the soldier.",
+                        "\"That's no trouble at all,\" he said, and he rolled up his sleeves."
                     ]
                 }
             ]
@@ -617,10 +617,9 @@ const EN = {
                     left: [
                         "The old woman tied a rope round his waist",
                         "and handed him an apron as well.",
-                        "\"If a dog comes out, spread this on the floor and set him on it.\"",
-                        "\"Then he will be quiet enough.\"",
-                        "The soldier nodded and went down inside the tree.",
-                        "After a long way down his feet touched the bottom."
+                        "\"If a dog comes out, spread this on the floor and set him on it. Then he will be quiet.\"",
+                        "The soldier nodded and climbed down inside the tree.",
+                        "After a long way down, his feet touched the bottom."
                     ],
                     right: [
                         "There was a wide cave with three doors in a row.",
@@ -636,12 +635,10 @@ const EN = {
                     emoji: '🐕',
                     left: [
                         "The soldier did as the old woman had told him.",
-                        "He spread the apron out on the floor",
-                        "and lifted the dog up onto it.",
-                        "And the dog went quiet,",
-                        "and even wagged his tail.",
-                        "The eyes that had been blazing a moment before went mild.",
-                        "\"Well I never — she was right.\""
+                        "He spread the apron on the floor and lifted the dog onto it.",
+                        "At once the dog went quiet and even wagged his tail.",
+                        "His blazing eyes went mild.",
+                        "The soldier let out a big breath. \"Well, well — she was right!\""
                     ],
                     right: [
                         "The soldier opened the chest in the middle of the room.",
@@ -690,13 +687,11 @@ const EN = {
                         "And still he spread the apron and set the dog on it."
                     ],
                     right: [
-                        "And this one too went quiet.",
-                        "He opened the chest and it was brimming with gold.",
-                        "The soldier threw the silver away without a second thought",
-                        "and took all the gold he could carry on him.",
-                        "\"That will do. Now for the tinderbox.\"",
-                        "There was an old box lying in a corner.",
-                        "The soldier took that too and pulled on the rope."
+                        "This dog, too, went quiet.",
+                        "He opened the chest, and it was brimming with gold.",
+                        "He threw the silver away without a second thought and took the gold.",
+                        "\"That will do. Now for the tinderbox.\" An old box lay in a corner.",
+                        "He took it and shouted up, \"Grandmother, pull me up now!\""
                     ]
                 }
             ]
@@ -709,21 +704,17 @@ const EN = {
                     art: '04-quarrel.webp',
                     emoji: '😠',
                     left: [
-                        "The soldier came up out of the tree,",
-                        "and the daylight dazzled him.",
-                        "The old woman put out her hand at once.",
-                        "\"You have the tinderbox, I take it?\"",
-                        "The soldier held it and asked her,",
-                        "\"And what is this old box for, exactly?\"",
+                        "The old woman pulled the rope and lifted him out of the tree.",
+                        "The daylight dazzled him.",
+                        "At once she held out her hand. \"You have the tinderbox, I take it?\"",
+                        "The soldier held up the box. \"But what is this old box for?\"",
                         "The old woman's face went hard."
                     ],
                     right: [
-                        "\"That is no business of yours.\"",
-                        "\"Hand it over and be quick.\"",
+                        "\"That is no business of yours. Hand it over and be quick.\"",
                         "The soldier put the box behind his back.",
-                        "The old woman's hands began to shake.",
-                        "\"Give it to me, I say!\"",
-                        "\"Not unless you tell me.\"",
+                        "The old woman's hands began to shake. \"Give it to me, now!\"",
+                        "But the soldier stood firm. \"Not unless you tell me what it's for.\"",
                         "The two of them argued a long while."
                     ]
                 },
@@ -731,7 +722,7 @@ const EN = {
                     art: '04-quarrel-2.webp',
                     emoji: '😠',
                     left: [
-                        "The old woman would not say in the end,",
+                        "In the end, the old woman would not tell him,",
                         "and the soldier would not give way either.",
                         "\"Then I shall be on my way.\"",
                         "The soldier took the box and started walking.",
@@ -740,12 +731,10 @@ const EN = {
                     ],
                     right: [
                         "The soldier did not look back.",
-                        "His pockets were so heavy that he walked slowly, and he was in good spirits.",
-                        "The gold chinked with every step,",
-                        "and the soldier began to hum without meaning to.",
-                        "By sunset he came to a large town,",
-                        "with people crowding the streets.",
-                        "And the soldier stopped in front of the best inn there was."
+                        "His heavy pockets slowed him down, but he was happy.",
+                        "The gold chinked with every step, and he began to hum.",
+                        "By sunset he reached a large town with crowded streets.",
+                        "He stopped in front of the best inn there was."
                     ]
                 }
             ]
@@ -759,18 +748,17 @@ const EN = {
                     emoji: '🥂',
                     left: [
                         "The soldier took the best room in the inn.",
-                        "He had good clothes made and bought new boots,",
-                        "and stood a treat for everybody he met in the street.",
-                        "He gave gold away to anyone poor,",
-                        "and his friends multiplied overnight.",
-                        "\"I never met such a fine man in my life!\""
+                        "He had fine clothes made and bought new boots.",
+                        "He stood a treat for everybody he met",
+                        "and gave gold to the poor.",
+                        "His friends multiplied overnight.",
+                        "\"I never met such a fine man in my life!\" they said."
                     ],
                     right: [
-                        "People made a great deal of him,",
-                        "and the soldier went about with his shoulders back.",
-                        "And then one day he looked into his pocket.",
-                        "The gold had gone down faster than he expected.",
-                        "Before long there was not one coin left,",
+                        "People made a great deal of him, and he felt very proud.",
+                        "Then one day he looked into his pocket.",
+                        "The gold was going faster than he expected.",
+                        "Soon there was not one coin left,",
                         "and the innkeeper asked him for the rent."
                     ]
                 },
@@ -778,21 +766,18 @@ const EN = {
                     art: '05-town-2.webp',
                     emoji: '🥂',
                     left: [
-                        "The soldier had to give up his good room",
-                        "and move to a narrow attic under the roof.",
-                        "He sold his clothes, one thing after another.",
-                        "And his friends stopped coming.",
-                        "\"One doesn't see him about these days.\"",
-                        "\"Out of money, I hear.\"",
+                        "He gave up his good room and moved to a narrow attic under the roof.",
+                        "He sold his clothes one by one.",
+                        "His friends stopped coming and whispered about him.",
+                        "\"We never see him these days.\"",
+                        "\"He's out of money, I hear.\"",
                         "\"Now who was that again?\""
                     ],
                     right: [
-                        "Nobody came up the stairs any more.",
-                        "One night the soldier went to light a candle,",
-                        "and there was not a match in the place.",
-                        "And then he thought of that old box.",
-                        "The soldier went through his pack and took out the tinderbox",
-                        "and dusted it off.",
+                        "Nobody climbed the stairs to his attic.",
+                        "One night he went to light a candle, but he had no matches.",
+                        "Then he remembered that old box.",
+                        "He went through his pack, took out the tinderbox and dusted it off.",
                         "It was the box the old woman had wanted so badly."
                     ]
                 }
@@ -811,36 +796,32 @@ const EN = {
                         "the door burst open",
                         "and an enormous dog came striding in —",
                         "the one with eyes the size of teacups.",
-                        "\"You called?\""
+                        "\"You called?\" said the dog."
                     ],
                     right: [
-                        "The soldier very nearly went over backwards.",
-                        "And then he got hold of himself.",
+                        "The soldier nearly fell over backwards.",
+                        "Then he got hold of himself.",
                         "\"Bring me something to eat.\"",
-                        "And the dog had a whole table laid before he could blink.",
-                        "Only then did the soldier understand what the box was.",
-                        "\"Now I have nothing to worry about!\""
+                        "Before he could blink, the dog had a whole table laid.",
+                        "Now the soldier understood the secret of the box.",
+                        "\"I have nothing more to worry about!\""
                     ]
                 },
                 {
                     art: '06-summon-2.webp',
                     emoji: '✨',
                     left: [
-                        "The soldier tried it out this way and that.",
-                        "Strike it once and the first dog came.",
-                        "Strike it twice and the dog with eyes like millwheels came.",
-                        "Strike it three times and the dog with eyes like towers came.",
-                        "The soldier moved back into a good room",
-                        "and had new clothes made,",
-                        "and his friends came back one after another,",
-                        "every one of them as though they had seen him yesterday."
+                        "The soldier tried the box out this way and that.",
+                        "Strike it once, and the first dog came. Twice, and the second. Three times, and the dog with eyes like towers.",
+                        "The dogs brought him money from the chests in the cave.",
+                        "Soon he moved back into a good room and had new clothes made."
                     ],
                     right: [
-                        "\"You have no idea how we looked for you!\"",
-                        "\"I always said you were a fine fellow!\"",
-                        "The soldier heard that and laughed to himself.",
-                        "And then one day he heard a piece of news:",
-                        "that the princess of that country lived shut up in a copper castle."
+                        "His friends came back as though they had seen him yesterday.",
+                        "\"We looked everywhere for you! We knew you were a fine fellow!\"",
+                        "The soldier laughed to himself.",
+                        "Then one day he heard some news.",
+                        "The princess lived shut up in a copper castle. No one had seen her face."
                     ]
                 }
             ]
@@ -854,41 +835,33 @@ const EN = {
                     emoji: '🌾',
                     left: [
                         "The soldier grew very curious about the princess.",
-                        "\"If I could only see her face once.\"",
-                        "That night the soldier struck the box once",
-                        "and the first dog appeared.",
-                        "\"Bring me the princess, just for a little while.\"",
-                        "The dog went straight out of the window,",
-                        "and there was a clattering across the roofs."
+                        "\"If only I could see her face once.\"",
+                        "That night he struck the box once, and the first dog appeared.",
+                        "\"Bring me the princess for a little while.\"",
+                        "The dog leapt out the window, and there was a clattering across the roofs."
                     ],
                     right: [
-                        "The dog went over the roofs to the castle",
+                        "The dog ran over the roofs to the castle",
                         "and came back with the sleeping princess on his back.",
-                        "The soldier and the princess talked all night.",
-                        "It was the first she had ever heard of the world outside her castle.",
-                        "At dawn the dog carried her back again,",
-                        "and the princess believed she had dreamed it."
+                        "She woke up, rubbing her eyes, and talked with the soldier all night.",
+                        "At dawn the dog carried her back again.",
+                        "She was half asleep, so she believed she had dreamed it."
                     ]
                 },
                 {
                     art: '07-flour-2.webp',
                     emoji: '🌾',
                     left: [
-                        "Next day the princess told them about her dream,",
-                        "and the queen tilted her head over it.",
-                        "It did not sound to her like an ordinary dream,",
-                        "so she thought of a trick.",
-                        "She tied a small bag to the hem of the princess's dress,",
-                        "filled it with flour and made a hole in it.",
+                        "Next day the princess told the queen about her dream.",
+                        "The queen tilted her head. It did not sound like an ordinary dream, so she thought of a trick.",
+                        "She tied a small bag of flour to the hem of the princess's dress and made a hole in it.",
                         "\"Now we shall see where she goes.\""
                     ],
                     right: [
-                        "The queen did not sleep that night.",
-                        "And that night the dog came for the princess again.",
-                        "All the way, the flour trickled out",
-                        "and left a white line down the road.",
-                        "In the morning the soldiers followed the line,",
-                        "and it stopped outside an attic room at an inn."
+                        "That night the dog came for the princess again.",
+                        "All the way, the flour trickled out and left a white line down the road.",
+                        "In the morning the queen sent guards to follow the line.",
+                        "It stopped right outside the inn where the soldier was staying."
                     ]
                 }
             ]
@@ -901,42 +874,35 @@ const EN = {
                     art: '08-ending.webp',
                     emoji: '🐶',
                     left: [
-                        "The soldier was taken then and there",
-                        "and spent a night in prison.",
-                        "And he had left the tinderbox behind at the inn.",
-                        "The soldier looked out through the bars",
-                        "and caught sight of a child playing in the street.",
-                        "\"Boy — would you run an errand for me?\""
+                        "The soldier was taken then and there and locked in prison.",
+                        "Next morning he was to be punished in the square.",
+                        "And he had left the tinderbox behind at the inn!",
+                        "He looked out through the bars and saw a child playing in the street.",
+                        "\"Boy, would you run an errand for me?\""
                     ],
                     right: [
-                        "He asked him to fetch the box he had left at the inn.",
-                        "The child ran off, delighted with the job,",
-                        "and passed the box in through the bars.",
-                        "The soldier tucked it away inside his coat.",
-                        "\"Thank you, my lad.\"",
-                        "The child grinned and ran off.",
-                        "And next morning he was taken out to the square."
+                        "He asked the boy to fetch the box from the inn.",
+                        "The boy ran off, delighted, and passed the box in through the bars.",
+                        "The soldier tucked it away inside his coat. \"Thank you, my lad.\"",
+                        "The boy grinned and ran off.",
+                        "Next morning the soldier was led out to the square."
                     ]
                 },
                 {
                     art: '08-ending-2.webp',
                     emoji: '🐶',
                     left: [
-                        "The square was full of people.",
-                        "The king and the queen were sitting there too.",
-                        "And the soldier asked, quietly,",
-                        "\"Grant me one last wish.\"",
-                        "The king nodded,",
-                        "and the soldier took out the tinderbox and struck it three times.",
+                        "The square was full of people, and the king and queen sat there too.",
+                        "The soldier asked quietly, \"Grant me one last wish.\"",
+                        "The king nodded.",
+                        "The soldier took out the tinderbox and struck it three times.",
                         "Tap, tap, tap!"
                     ],
                     right: [
-                        "All three dogs appeared at once.",
-                        "They were so enormous and so loud that people fell over backwards.",
-                        "And then everybody burst out laughing,",
-                        "because the dogs were wagging their tails.",
-                        "The king was the first to get to his feet.",
-                        "And that day the soldier was given a feast instead of a punishment."
+                        "All three dogs appeared at once, and people fell over backwards.",
+                        "But the dogs just wagged their tails by the soldier.",
+                        "Everyone burst out laughing. The king laughed and set him free.",
+                        "He got a feast instead of a punishment."
                     ]
                 }
             ]
@@ -955,7 +921,7 @@ const EN = {
         },
         {
             q: 'What did the soldier do with the copper and silver?',
-            choices: ['He carried all three', 'He threw them away when he found gold', 'He left them for the old woman'],
+            choices: ['He carried all three', 'He threw each away when he found something better', 'He left them for the old woman'],
             answer: 1
         },
         {
@@ -1003,7 +969,7 @@ const EN = {
                     "When the money runs out his friends stop coming. When he is rich again they come back. And the soldier watches all that and says nothing about it."
                 ],
                 right: [
-                    "The person who helps him in prison is a child passing in the street. Not anybody powerful.",
+                    "The person who helps him in prison is a child playing in the street. Not anybody powerful.",
                     "The soldier could do anything at all with that box. So how did he end up in trouble?"
                 ]
             }
@@ -1018,7 +984,7 @@ const EN = {
         '01-witch.webp': [
             { word: 'pack', meaning: '배낭', sentence: 'He had a pack on his back.' },
             { word: 'worn', meaning: '낡은', sentence: 'His clothes were worn.' },
-            { word: 'briskly', meaning: '씩씩하게', sentence: 'He walked briskly enough.' },
+            { word: 'briskly', meaning: '씩씩하게', sentence: 'He walked briskly.' },
             { word: 'bent', meaning: '굽은', sentence: 'An old woman with a bent back.' },
             { word: 'chin', meaning: '턱', sentence: 'A chin so long it came down to her chest.' }
         ],
@@ -1026,7 +992,7 @@ const EN = {
             { word: 'hollow', meaning: '속이 빈', sentence: 'This tree is hollow inside.' },
             { word: 'chest', meaning: '궤짝', sentence: 'Every room has chests full of money.' },
             { word: 'light up', meaning: '반짝이다', sentence: "The soldier's eyes lit up." },
-            { word: 'tinderbox', meaning: '부싯깃 통', sentence: 'Only fetch me up my tinderbox.' },
+            { word: 'tinderbox', meaning: '부싯깃 통', sentence: 'Just fetch me my tinderbox.' },
             { word: 'roll up one’s sleeves', meaning: '소매를 걷어붙이다', sentence: 'And he rolled up his sleeves.' }
         ],
         '02-first-dog.webp': [
@@ -1037,9 +1003,9 @@ const EN = {
             { word: 'swallow hard', meaning: '침을 꿀꺽 삼키다', sentence: 'The soldier swallowed hard.' }
         ],
         '02-first-dog-2.webp': [
-            { word: 'wag', meaning: '흔들다', sentence: 'And even wagged his tail.' },
-            { word: 'blaze', meaning: '이글이글하다', sentence: 'The eyes that had been blazing.' },
-            { word: 'mild', meaning: '순한', sentence: 'The eyes went mild.' },
+            { word: 'wag', meaning: '흔들다', sentence: 'Even wagged his tail.' },
+            { word: 'blaze', meaning: '이글이글하다', sentence: 'His blazing eyes went mild.' },
+            { word: 'mild', meaning: '순한', sentence: 'His blazing eyes went mild.' },
             { word: 'copper', meaning: '구리, 동전', sentence: 'It was full of copper coins.' },
             { word: 'bulging', meaning: '두둑한', sentence: 'The soldier filled his pockets to bulging.' }
         ],
@@ -1068,7 +1034,7 @@ const EN = {
             { word: 'give way', meaning: '물러서다', sentence: 'The soldier would not give way either.' },
             { word: 'stamp one’s foot', meaning: '발을 구르다', sentence: 'The old woman stamped her foot.' },
             { word: 'chink', meaning: '짤랑거리다', sentence: 'The gold chinked with every step.' },
-            { word: 'hum', meaning: '콧노래를 부르다', sentence: 'The soldier began to hum.' },
+            { word: 'hum', meaning: '콧노래를 부르다', sentence: 'He began to hum.' },
             { word: 'inn', meaning: '여관', sentence: 'The best inn there was.' }
         ],
         '05-town.webp': [
@@ -1078,9 +1044,9 @@ const EN = {
             { word: 'rent', meaning: '방값', sentence: 'The innkeeper asked him for the rent.' }
         ],
         '05-town-2.webp': [
-            { word: 'give up', meaning: '내주다', sentence: 'The soldier had to give up his good room.' },
+            { word: 'give up', meaning: '내주다', sentence: 'He gave up his good room.' },
             { word: 'attic', meaning: '다락방', sentence: 'A narrow attic under the roof.' },
-            { word: 'go through', meaning: '뒤지다', sentence: 'The soldier went through his pack.' },
+            { word: 'go through', meaning: '뒤지다', sentence: 'He went through his pack.' },
             { word: 'dust off', meaning: '먼지를 털다', sentence: 'And dusted it off.' },
             { word: 'badly', meaning: '몹시', sentence: 'The box the old woman had wanted so badly.' }
         ],
@@ -1088,12 +1054,12 @@ const EN = {
             { word: 'flint', meaning: '부싯돌', sentence: 'The soldier struck the flint.' },
             { word: 'spark', meaning: '불꽃', sentence: 'The moment the spark flew.' },
             { word: 'burst open', meaning: '벌컥 열리다', sentence: 'The door burst open.' },
-            { word: 'get hold of oneself', meaning: '정신을 차리다', sentence: 'And then he got hold of himself.' },
+            { word: 'get hold of oneself', meaning: '정신을 차리다', sentence: 'Then he got hold of himself.' },
             { word: 'before one can blink', meaning: '눈 깜짝할 사이에', sentence: 'Before he could blink.' }
         ],
         '06-summon-2.webp': [
-            { word: 'try out', meaning: '시험해 보다', sentence: 'The soldier tried it out this way and that.' },
-            { word: 'strike', meaning: '치다', sentence: 'Strike it once and the first dog came.' },
+            { word: 'try out', meaning: '시험해 보다', sentence: 'The soldier tried the box out this way and that.' },
+            { word: 'strike', meaning: '치다', sentence: 'Strike it once, and the first dog came.' },
             { word: 'as though', meaning: '마치 ~인 듯', sentence: 'As though they had seen him yesterday.' },
             { word: 'shut up', meaning: '갇힌', sentence: 'The princess lived shut up in a copper castle.' }
         ],
@@ -1101,26 +1067,26 @@ const EN = {
             { word: 'curious', meaning: '궁금해하는', sentence: 'The soldier grew very curious.' },
             { word: 'clatter', meaning: '우당탕 소리', sentence: 'There was a clattering across the roofs.' },
             { word: 'sleeping', meaning: '잠든', sentence: 'He came back with the sleeping princess.' },
-            { word: 'dream', meaning: '꿈을 꾸다', sentence: 'The princess believed she had dreamed it.' }
+            { word: 'dream', meaning: '꿈을 꾸다', sentence: 'She believed she had dreamed it.' }
         ],
         '07-flour-2.webp': [
             { word: 'ordinary', meaning: '보통의', sentence: 'It did not sound like an ordinary dream.' },
             { word: 'trick', meaning: '꾀', sentence: 'So she thought of a trick.' },
             { word: 'hem', meaning: '옷자락', sentence: "She tied a bag to the hem of the dress." },
             { word: 'trickle out', meaning: '조금씩 새어 나오다', sentence: 'The flour trickled out.' },
-            { word: 'follow', meaning: '따라가다', sentence: 'The soldiers followed the line.' }
+            { word: 'follow', meaning: '따라가다', sentence: 'The queen sent guards to follow the line.' }
         ],
         '08-ending.webp': [
             { word: 'then and there', meaning: '그길로', sentence: 'The soldier was taken then and there.' },
-            { word: 'prison', meaning: '감옥', sentence: 'And spent a night in prison.' },
-            { word: 'bar', meaning: '창살', sentence: 'The soldier looked out through the bars.' },
+            { word: 'prison', meaning: '감옥', sentence: 'He was locked in prison.' },
+            { word: 'bar', meaning: '창살', sentence: 'He looked out through the bars.' },
             { word: 'run an errand', meaning: '심부름하다', sentence: 'Would you run an errand for me?' },
             { word: 'tuck away', meaning: '품에 넣다', sentence: 'The soldier tucked it away inside his coat.' }
         ],
         '08-ending-2.webp': [
             { word: 'grant', meaning: '들어주다', sentence: 'Grant me one last wish.' },
             { word: 'fall over backwards', meaning: '나자빠지다', sentence: 'People fell over backwards.' },
-            { word: 'burst out laughing', meaning: '웃음보를 터뜨리다', sentence: 'Everybody burst out laughing.' },
+            { word: 'burst out laughing', meaning: '웃음보를 터뜨리다', sentence: 'Everyone burst out laughing.' },
             { word: 'punishment', meaning: '벌', sentence: 'A feast instead of a punishment.' }
         ],
         'end.webp': [

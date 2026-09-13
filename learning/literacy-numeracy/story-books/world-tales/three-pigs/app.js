@@ -523,14 +523,12 @@ const EN = {
                     left: [
                         "Three little pigs grew up together in one small house.",
                         "But they grew and grew, and the house seemed to shrink. At night their feet bumped in bed. At the table their elbows knocked.",
-                        "One morning their mother sat all three of them down.",
-                        "\"It's time each of you built a house of your own.\""
+                        "One morning their mother sat all three of them down. \"It's time each of you built a house of your own.\""
                     ],
                     right: [
-                        "\"Build it strong.\"",
-                        "\"There is a wolf living near here.\"",
-                        "\"If the wind carries your house away, you'll be in real trouble.\"",
-                        "All three nodded. Their mother packed each of them a lunch. And off the three little pigs went."
+                        "\"There is a wolf living near here,\" she said again and again.",
+                        "\"So build it strong. If the wind carries your house away, you'll be in real trouble.\"",
+                        "All three nodded. Their mother packed each of them a lunch, and off the three little pigs went."
                     ]
                 },
                 {
@@ -538,16 +536,13 @@ const EN = {
                     emoji: '🐷',
                     left: [
                         "At the top of the hill the road split three ways. The brothers stopped there.",
-                        "\"I'll have mine up in no time.\"",
-                        "The eldest gave a shrug.",
-                        "\"Something easy for me too.\"",
-                        "The second one yawned a long yawn."
+                        "The eldest gave a shrug. \"I'll have mine up in no time.\"",
+                        "The second one yawned a long yawn. \"Something easy for me too.\""
                     ],
                     right: [
                         "But the youngest said nothing at all. He had been looking the hill up and down for a while now.",
                         "\"Which way does the wind come from?\"",
-                        "His two brothers giggled.",
-                        "\"There he goes again.\"",
+                        "His two brothers giggled. \"There he goes again.\"",
                         "And each of them took a different road."
                     ]
                 }
@@ -563,15 +558,12 @@ const EN = {
                     left: [
                         "The eldest went out to the wide fields. There he met a man selling straw.",
                         "\"I'll take some of that straw, please.\"",
-                        "He piled a whole cartful onto the hill.",
-                        "\"Right then. Let's get this up quick.\"",
+                        "He piled a whole cartful onto the hill. \"Right then. Let's get this up quick.\"",
                         "He leaned the bundles together, this way and that."
                     ],
                     right: [
-                        "Straw walls, straw roof. He wove the door out of straw as well.",
-                        "The house was finished before the sun went down.",
-                        "\"Ha! Half a day and it's done!\"",
-                        "The eldest flopped down in the shade and slept a long, lazy nap.",
+                        "Straw walls, straw roof. He wove the door out of straw as well. The house was finished before the sun went down.",
+                        "\"Ha! Half a day and it's done!\" The eldest flopped down in the shade and had a long, lazy nap.",
                         "But when the wind blew once, the walls swayed."
                     ]
                 },
@@ -579,16 +571,13 @@ const EN = {
                     art: '02-straw-2.webp',
                     emoji: '🌾',
                     left: [
-                        "The second pig came by and stared.",
-                        "\"Finished already?\"",
-                        "\"Of course. A house is no great thing.\"",
-                        "\"Then I'd better hurry up too.\"",
-                        "The two of them looked at each other and snickered."
+                        "The second pig came by and stared at the house. \"Finished already?\"",
+                        "\"Of course,\" said the eldest proudly. \"A house is no great thing.\"",
+                        "\"Then I'd better hurry up too,\" said the second pig."
                     ],
                     right: [
-                        "Just then they spotted the youngest, far off. He was hauling bricks, pushing a cart and groaning.",
-                        "Sweat dripped from his forehead. His brothers waved and shouted.",
-                        "\"Hey! Winter will come before you're done!\"",
+                        "The two of them looked at each other and snickered. Just then they spotted the youngest, far off. He was hauling bricks, pushing a cart and groaning.",
+                        "Sweat dripped from his forehead. His brothers waved and shouted, \"Hey! Winter will come before you're done!\"",
                         "The youngest only smiled."
                     ]
                 }
@@ -602,18 +591,13 @@ const EN = {
                     art: '03-sticks.webp',
                     emoji: '🌿',
                     left: [
-                        "The second pig went to the edge of the woods. He gathered up armfuls of fallen sticks.",
-                        "They looked far sturdier than straw.",
-                        "\"This will do well enough.\"",
-                        "In two days his house was up.",
-                        "\"Strong as anything.\"",
-                        "He gave the wall a little knock."
+                        "The second pig went to the edge of the woods. He gathered up armfuls of fallen sticks. They looked far sturdier than straw.",
+                        "He tied sticks together for the walls and laid more sticks across the roof, criss-cross. Through the gaps he could see the sky."
                     ],
                     right: [
-                        "Creak.",
-                        "A post leaned over, just a bit. The second pig looked the other way and pretended not to see.",
-                        "\"Ah, it's fine.\"",
-                        "He laid sticks across the roof too, criss-cross. Through the gaps he could see the sky."
+                        "In two days his house was up. \"Strong as anything.\"",
+                        "He gave the wall a little knock. Creak. A post leaned over, just a bit.",
+                        "The second pig looked the other way and pretended not to see. \"Ah, it's fine.\""
                     ]
                 },
                 {
@@ -621,16 +605,14 @@ const EN = {
                     emoji: '🧱',
                     left: [
                         "All that time the youngest was still building. He set the bricks down one at a time and spread mortar in between.",
-                        "He even stretched a string along to check that his rows were straight.",
-                        "His palms blistered, but he did not stop. The next brick had to go on before the mortar set.",
-                        "Then his two brothers came around."
+                        "He used a string to check that his rows were straight.",
+                        "His palms blistered, but he did not stop. The next brick had to go on before the mortar set. Then his brothers came by."
                     ],
                     right: [
-                        "They stood with folded arms and clicked their tongues.",
-                        "\"Not even half done?\"",
-                        "\"Come and help me, then.\"",
-                        "\"No thanks. We're finished already!\"",
-                        "Off they went, laughing, to play. The youngest said nothing and picked up another brick."
+                        "They stood with folded arms and clicked their tongues. \"Not even half done?\"",
+                        "The youngest waved them over. \"Come and help me, then.\"",
+                        "\"No thanks. We're finished already!\" Off they went, laughing, to play.",
+                        "The youngest said nothing and picked up another brick."
                     ]
                 }
             ]
@@ -643,30 +625,24 @@ const EN = {
                     art: '04-bricks.webp',
                     emoji: '🧱',
                     left: [
-                        "The youngest worked on for many days more. He built the walls thick and laid tiles on the roof.",
-                        "He set the chimney up straight and lit a fire to check that the smoke drew properly.",
-                        "He hung shutters at the windows and fitted a bar across the door.",
+                        "The youngest worked on for many days more. He built the walls thick and laid tiles on the roof. He set the chimney up straight.",
+                        "He lit a fire to check that the smoke went up well. He hung shutters at the windows and fitted a bar across the door.",
                         "Last of all he swept the yard clean."
                     ],
                     right: [
-                        "By the door he set a flat stone for a step.",
-                        "Wherever he pushed, the house did not budge. He gave the wall a kick.",
-                        "Not a sound.",
-                        "He sat on the step and looked at his house for a long while, as the sun slipped down behind the hill."
+                        "When it was done, he gave the wall a kick. Wherever he pushed, the house did not budge. Not a creak.",
+                        "He sat on the porch and looked at his house for a long while, as the sun slipped down behind the hill."
                     ]
                 },
                 {
                     art: '04-bricks-2.webp',
                     emoji: '🧱',
                     left: [
-                        "His brothers came to look again.",
-                        "\"Why go to all that trouble?\"",
-                        "\"What are the shutters for?\"",
-                        "\"And a bar on the door? Really?\"",
-                        "The youngest just smiled. Instead of answering, he ran his hand along the bar."
+                        "His brothers came to look again. They took turns asking questions.",
+                        "\"Why go to all that trouble?\" \"What are the shutters for?\" \"And a bar on the door? Really?\"",
+                        "The youngest just smiled and ran his hand along the bar. \"I only wanted it there.\""
                     ],
                     right: [
-                        "\"I only wanted it there.\"",
                         "His brothers shook their heads and went home.",
                         "That night the wind blew hard. The grass on the hill lay flat on one side.",
                         "The straw house shivered. The stick house creaked. Only the brick house was quiet.",
@@ -677,25 +653,19 @@ const EN = {
         },
         {
             num: 5,
-            title: "Chapter 5 · Huff! Puff!",
+            title: 'Chapter 5 · Huff! Puff!',
             beats: [
                 {
                     art: '05-blown-down.webp',
                     emoji: '🐺',
                     left: [
-                        "The next night, at last, the wolf came.",
-                        "He stood at the straw house and sniffed the air.",
-                        "\"Someone's in there.\"",
-                        "Knock, knock.",
-                        "The wolf banged on the door.",
+                        "The next night, at last, the wolf came. He stood at the straw house and sniffed the air. \"Someone's in there.\"",
+                        "Knock, knock! The wolf banged on the door.",
                         "\"Little pig, little pig, let me come in!\""
                     ],
                     right: [
-                        "The eldest sat straight up in bed.",
-                        "\"Not by the hair of my chinny-chin-chin!\"",
-                        "The wolf took a great deep breath.",
-                        "\"Then I'll huff, and I'll puff, and I'll blow your house in!\"",
-                        "\"Huff!\"",
+                        "The eldest sat straight up in bed. \"Not by the hair of my chinny-chin-chin!\"",
+                        "The wolf took a great deep breath. \"Then I'll huff, and I'll puff, and I'll blow your house in! Huff!\"",
                         "And away the straw house went, all in one go."
                     ]
                 },
@@ -703,59 +673,49 @@ const EN = {
                     art: '05-blown-down-2.webp',
                     emoji: '🐺',
                     left: [
-                        "Barefoot, the eldest ran all the way to his brother's house.",
-                        "\"Open up! The wolf!\"",
-                        "The two of them barred the door in a hurry.",
-                        "But it was not long before the wolf was there too.",
-                        "\"Little pig, little pig, let me come in!\"",
-                        "\"Not by the hair of our chinny-chin-chins!\""
+                        "Barefoot, the eldest ran all the way to his brother's house. \"Open up! The wolf!\"",
+                        "The second pig let him in, and the two of them barred the door in a hurry.",
+                        "But soon the wolf was there too. \"Little pig, little pig, let me come in!\"",
+                        "\"Not by the hair of our chinny-chin-chins!\" they shouted."
                     ],
                     right: [
-                        "\"Puuuff!\"",
-                        "A post tipped sideways.",
-                        "\"Puuuuff!\"",
-                        "Down came the stick house in a clatter. The two brothers ran without looking back.",
-                        "And there on the hill ahead they saw a light in the brick house window."
+                        "The wolf took a deep breath and blew. \"Puuuff!\" A post tipped sideways.",
+                        "\"Puuuuff!\" Down came the stick house in a clatter.",
+                        "The two brothers ran without looking back. There on the hill ahead they saw a light in the brick house window."
                     ]
                 }
             ]
         },
         {
             num: 6,
-            title: "Chapter 6 · The House That Wouldn't Move",
+            title: 'Chapter 6 · The House That Wouldn\'t Move',
             beats: [
                 {
                     art: '06-brick-house.webp',
                     emoji: '🧱',
                     left: [
-                        "The youngest threw the door wide open. His brothers came tumbling in.",
-                        "He dropped the bar into place at once and shut the shutters, clack, clack.",
-                        "\"There. Now we're all right.\"",
-                        "Soon there was a knocking at the door."
+                        "They banged on the door of the brick house. \"Open up! It's us!\"",
+                        "The youngest threw the door wide open, and his brothers came tumbling in.",
+                        "He dropped the bar into place at once and shut the shutters, clack, clack. \"There. Now we're all right.\"",
+                        "Soon the wolf knocked at the door."
                     ],
                     right: [
                         "\"Little pig, little pig, let me come in!\"",
-                        "\"Not by the hair of our chinny-chin-chins!\"",
-                        "The wolf took a great deep breath.",
-                        "\"Huff!\"",
-                        "But the house stood just as it was. Not one speck of dust stirred."
+                        "All three shouted together, \"Not by the hair of our chinny-chin-chins!\"",
+                        "The wolf took a great deep breath. \"Huff!\" But the house stood just as it was. Not one speck of dust stirred."
                     ]
                 },
                 {
                     art: '06-brick-house-2.webp',
                     emoji: '🐺',
                     left: [
-                        "\"Puuuff!\"",
-                        "The windows were fine.",
-                        "\"Puuuuuff!\"",
-                        "Not a single roof tile moved. The wolf's face turned bright red.",
-                        "He sat down hard in the middle of the yard."
+                        "\"Puuuff!\" The windows were fine.",
+                        "\"Puuuuuff!\" Not a single roof tile moved.",
+                        "The wolf's face turned bright red. He could hardly get his breath, and he sat down hard in the middle of the yard."
                     ],
                     right: [
-                        "He could hardly get his breath.",
-                        "Just then laughter came from inside the house. Three faces were pressed against the window, watching him.",
-                        "That made the wolf angrier than ever.",
-                        "\"You'll see about this.\"",
+                        "Just then laughter came from inside the house. Three faces were pressed to the cracks in the shutters, watching him.",
+                        "That made the wolf angrier than ever. \"You'll see about this.\"",
                         "And he slipped around to the back of the house."
                     ]
                 }
@@ -769,34 +729,27 @@ const EN = {
                     art: '07-chimney.webp',
                     emoji: '🔥',
                     left: [
-                        "The wolf climbed the wall and stood up on the roof.",
-                        "Then his eye fell on the chimney.",
-                        "\"In I go, then!\"",
-                        "And the youngest heard him say it. He ran straight to the fireplace.",
-                        "\"Bring me some firewood, quick!\""
+                        "The wolf climbed the wall and got up on the roof. Then his eye fell on the chimney. \"In I go, then!\"",
+                        "The youngest heard him say it. He ran straight to the fireplace. \"Bring me some firewood, quick!\""
                     ],
                     right: [
-                        "They heaped the wood on and got the fire roaring. Over it he hung a great pot and filled it up with water.",
+                        "He heaped the wood on and got the fire roaring. Over it he hung a great pot and filled it with water.",
                         "Before long the water was bubbling away. White steam went curling up the chimney.",
-                        "\"Stand back, both of you.\"",
-                        "The three brothers backed away toward the wall."
+                        "\"Stand back!\" The three brothers moved back against the wall."
                     ]
                 },
                 {
                     art: '07-chimney-2.webp',
                     emoji: '🐺',
                     left: [
-                        "Down the chimney the wolf came sliding.",
-                        "\"Got you now!\"",
-                        "But up from below came a blast of hot steam.",
-                        "\"Yeow! Hot!\"",
-                        "The wolf grabbed his backside and shot straight up, out of the chimney and into the air."
+                        "Down the chimney the wolf came sliding. \"Got you now!\"",
+                        "But up from below came a blast of hot steam. \"Yeow! Hot!\"",
+                        "The wolf grabbed his backside and scrambled back up the chimney as fast as he could."
                     ],
                     right: [
-                        "He rolled down the roof and landed in the yard with a thump. Round and round he hopped.",
-                        "Then off he ran to the woods, and never came back to that hill again.",
-                        "For a while the three brothers lived together in the brick house.",
-                        "And the next year the two elder ones built their houses over again."
+                        "He slipped, rolled off the roof and landed in the yard with a thump.",
+                        "He ran to the woods and never came back.",
+                        "The brothers lived together for a while. The next year the elder two built new houses."
                     ]
                 }
             ]
@@ -939,7 +892,7 @@ const EN = {
             { word: 'speck', meaning: '티끌', sentence: 'Not one speck of dust stirred.' }
         ],
         '06-brick-house-2.webp': [
-            { word: 'press', meaning: '바짝 대다', sentence: 'Three faces were pressed against the window.' },
+            { word: 'press', meaning: '바짝 대다', sentence: 'Three faces were pressed to the cracks in the shutters.' },
             { word: 'slip around', meaning: '슬그머니 돌아가다', sentence: 'He slipped around to the back of the house.' }
         ],
         '07-chimney.webp': [

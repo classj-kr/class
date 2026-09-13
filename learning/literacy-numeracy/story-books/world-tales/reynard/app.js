@@ -560,41 +560,28 @@ const EN = {
                     art: '01-court.webp',
                     emoji: '🦁',
                     left: [
-                        "The king of the forest kingdom was Noble the lion.",
-                        "He was a lion with a mane like gold.",
-                        "Every spring a great court was held.",
-                        "Anybody with a grievance could stand up and speak.",
-                        "This year too the beasts gathered in the wide meadow.",
-                        "From the smallest mouse to the biggest bear, they sat round in a ring."
+                        "The king of the forest was Noble the lion, a lion with a mane like gold.",
+                        "Every spring a great court was held. Anybody with a grievance could stand up and speak.",
+                        "This year, too, the beasts gathered in the wide meadow. From the smallest mouse to the biggest bear, they sat in a ring."
                     ],
                     right: [
-                        "The king took his place on a mossy rock.",
-                        "\"Now. Let anyone with something to say come forward.\"",
-                        "But one seat was empty.",
-                        "It was in the middle of the front row.",
-                        "It was the seat of Reynard the fox.",
-                        "The beasts exchanged looks with one another."
+                        "The king took his place on a mossy rock. \"Now, let anyone with something to say come forward.\"",
+                        "But one seat was empty, right in the middle of the front row.",
+                        "It was the seat of Reynard the fox. The beasts exchanged looks."
                     ]
                 },
                 {
                     art: '01-court-2.webp',
                     emoji: '🦁',
                     left: [
-                        "Isengrim the wolf sprang to his feet.",
-                        "He was a wolf in a battered helmet.",
-                        "\"My lord, hear me first.\"",
-                        "\"That fox has carried off every hen I had!\"",
-                        "The wolf thumped the ground with his forepaws.",
-                        "\"And that is not the half of it.\""
+                        "Isengrim the wolf sprang to his feet. He was a wolf in a battered helmet.",
+                        "\"My lord, hear me first!\" he cried. \"That fox has carried off every hen I had!\"",
+                        "The wolf thumped the ground with his forepaws. \"And that is not all. He made game of me in front of my own cubs.\""
                     ],
                     right: [
-                        "\"He made game of me in front of my own cubs.\"",
-                        "The beasts began to murmur.",
-                        "The king stroked his chin.",
-                        "\"Hm. That fox again.\"",
-                        "\"And it seems he has not come this year either.\"",
-                        "The one empty seat sat there on its own.",
-                        "The beasts kept glancing over at it."
+                        "The beasts began to murmur. The king stroked his chin.",
+                        "\"Hm. That fox again,\" he said. \"It seems he has not come this year either.\"",
+                        "The one empty seat sat there on its own, and the beasts kept glancing over at it."
                     ]
                 }
             ]
@@ -607,41 +594,27 @@ const EN = {
                     art: '02-accusations.webp',
                     emoji: '🐻',
                     left: [
-                        "When the wolf had finished, paws went up all round.",
-                        "Bruin the bear stood up first.",
-                        "His nose was swollen right up.",
-                        "\"Just look at me!\"",
-                        "\"I went for honey and came back like this.\"",
-                        "\"I was caught by the nose in a tree and nearly died of it.\""
+                        "When the wolf had finished, paws went up all round. Bruin the bear stood up first. His nose was swollen right up.",
+                        "\"Just look at me!\" he said. \"Last time the fox promised me honey, and I followed him. My nose got stuck in a tree, and I nearly died!\""
                     ],
                     right: [
-                        "Then Tibert the cat came forward.",
-                        "He had a bandage wound round his tail.",
-                        "\"I went to catch mice,\"",
-                        "\"and hung all night in a snare!\"",
-                        "The whole court went noisy at once.",
-                        "Every one of them held out an injury.",
-                        "The king brought a paw down with a thump."
+                        "Then Tibert the cat came forward, with a bandage wound round his tail.",
+                        "\"I believed the fox and went to catch mice,\" he said, \"and I hung all night in a snare!\"",
+                        "The whole court grew noisy. Every one of them held out an injury."
                     ]
                 },
                 {
                     art: '02-accusations-2.webp',
                     emoji: '🐻',
                     left: [
-                        "The hens came crowding out, clucking.",
-                        "The rabbit had a word to say, and so did the mole.",
+                        "The hens came crowding out, clucking. The rabbit had something to say, and so did the mole.",
                         "The whole forest was boiling over about the fox.",
-                        "The king raised a great paw.",
-                        "\"Quiet! Quiet there!\"",
-                        "And the court settled down at last."
+                        "The king raised a great paw. \"Quiet! Quiet there!\"",
+                        "At last the court settled down."
                     ],
                     right: [
-                        "The king drew his brows together.",
-                        "\"We must hear the fox himself as well.\"",
-                        "\"Fetch that fox here at once.\"",
-                        "\"Who will go?\"",
-                        "For a while nobody moved.",
-                        "None of them wanted anything to do with the fox."
+                        "The king drew his brows together. \"We must hear the fox himself as well. Fetch that fox here at once! Who will go?\"",
+                        "For a while nobody moved. None of them wanted anything to do with the fox."
                     ]
                 }
             ]
@@ -654,39 +627,28 @@ const EN = {
                     art: '03-bear.webp',
                     emoji: '🍯',
                     left: [
-                        "At last Bruin the bear got up.",
-                        "\"I shall go.\"",
-                        "\"A fellow my size will frighten him.\"",
-                        "The bear shrugged and set off into the forest.",
-                        "The fox's earth was at the foot of a hill.",
-                        "And the fox met him at the door, delighted."
+                        "At last Bruin the bear got up. \"I shall go. This time I will not be fooled. A fellow my size will frighten him.\"",
+                        "The bear shrugged and set off into the forest. The fox's earth was at the foot of a hill.",
+                        "The fox met him at the door, looking delighted."
                     ],
                     right: [
-                        "\"Well now, you have come at just the right time!\"",
-                        "The bear cleared his throat and said his piece.",
-                        "\"The king summons you. Come along.\"",
-                        "\"Of course, of course. I shall come.\"",
-                        "\"But before we go —\" and the fox dropped his voice."
+                        "\"Well now, you have come at just the right time!\" said the fox.",
+                        "The bear cleared his throat. \"The king summons you. Come along.\"",
+                        "\"Of course, of course. But before we go…\" The fox dropped his voice."
                     ]
                 },
                 {
                     art: '03-bear-2.webp',
                     emoji: '🍯',
                     left: [
-                        "\"That tree over there is full of honey.\"",
-                        "\"Do have some before we set off.\"",
-                        "And the bear forgot the court and everything else.",
-                        "He swallowed hard.",
-                        "There was a split in the great trunk.",
-                        "And the bear pushed his head into it."
+                        "\"That tree over there is full of honey,\" said the fox. \"Do have some before we set off.\"",
+                        "The bear forgot all about the court. He swallowed hard.",
+                        "A woodcutter had half split the great trunk and left a wedge in the split to hold it open. The bear pushed his head right in."
                     ],
                     right: [
-                        "Then the fox quietly pulled out the wedge.",
-                        "The split shut fast.",
-                        "\"Ow! You villain of a fox!\"",
-                        "The bear struggled, and it did no good at all.",
-                        "The fox went off to his earth humming.",
-                        "And the bees stung the bear's nose."
+                        "Then the fox quietly pulled out the wedge. Snap! The split shut tight on the bear's head.",
+                        "\"Ow! You villain of a fox!\" roared the bear.",
+                        "The bear struggled, but it did no good. The fox went off to his earth, humming, and the bees stung the bear's nose."
                     ]
                 }
             ]
@@ -699,40 +661,28 @@ const EN = {
                     art: '04-cat.webp',
                     emoji: '🐈',
                     left: [
-                        "The bear got himself free at last and came back.",
-                        "His nose was swollen worse than before.",
-                        "The king sighed.",
-                        "\"Somebody else had better go.\"",
-                        "Tibert the cat stepped forward.",
-                        "\"I am not so simple as a bear.\""
+                        "The bear got himself free at last and came back. His nose was more swollen than before.",
+                        "The king sighed. \"Somebody else had better go.\"",
+                        "Tibert the cat stepped forward. \"I am not so simple as a bear.\""
                     ],
                     right: [
-                        "The cat put his tail up and went into the forest.",
-                        "And this time too the fox met him smiling.",
-                        "\"Come in, come in. You are just in time.\"",
-                        "\"You would not believe the mice in that barn.\"",
-                        "The cat's eyes glittered.",
-                        "He had gone three days without eating."
+                        "The cat put his tail up and went into the forest. Once again the fox met him with a smile.",
+                        "\"Come in, come in! You are just in time,\" said the fox. \"You would not believe the mice in that barn.\"",
+                        "The cat's eyes glittered. He had not eaten for three days."
                     ]
                 },
                 {
                     art: '04-cat-2.webp',
                     emoji: '🐈',
                     left: [
-                        "\"I shall take just one, and then we go.\"",
-                        "The cat swallowed hard.",
-                        "And then he sprang into the barn.",
-                        "But there was a rope across the doorway.",
-                        "The noose caught him neatly round the neck.",
+                        "\"I shall catch just one, and then we go,\" said the cat. He swallowed hard and sprang into the barn.",
+                        "But a rope noose had been set in the doorway, and it caught him neatly round the neck.",
                         "\"Miaow! Help, somebody!\""
                     ],
                     right: [
-                        "The cat hung there swinging.",
-                        "The farmer came running out with a stick.",
-                        "And the fox turned away from the noise of it.",
-                        "\"Dear me. What a shame.\"",
-                        "And off he went for his afternoon nap.",
-                        "There was an uproar in the barn for a long while."
+                        "The cat hung there swinging. The farmer came running out with a stick.",
+                        "The fox turned away from the noise. \"Dear me. What a shame.\" And off he went for his afternoon nap.",
+                        "There was an uproar in the barn for a long while before the cat finally escaped and limped back."
                     ]
                 }
             ]
@@ -746,38 +696,27 @@ const EN = {
                     emoji: '🦡',
                     left: [
                         "Now nobody would go at all.",
-                        "Then Grimbart the badger stood up.",
-                        "He was a badger in a scholar's cap.",
-                        "\"I shall try.\"",
-                        "\"He is a relation of mine, after all.\"",
+                        "Then Grimbart the badger stood up. He was a badger in a scholar's cap.",
+                        "\"I shall try,\" he said. \"He is a relation of mine, after all.\"",
                         "And the badger went to the fox's earth."
                     ],
                     right: [
-                        "The fox was stretched out in front of it.",
-                        "\"Now what story about honey is coming?\"",
-                        "The badger waved a paw at him.",
-                        "\"That will not work on me.\"",
-                        "\"Reynard, this time you really must come,\" said the badger seriously."
+                        "The fox was stretched out in front of it. He grinned. \"Would you like some honey too, cousin?\"",
+                        "The badger waved a paw at him. \"That will not work on me,\" he said seriously. \"Reynard, this time you really must come.\""
                     ]
                 },
                 {
                     art: '05-badger-2.webp',
                     emoji: '🦡',
                     left: [
-                        "\"If you do not, the whole forest will come for you.\"",
-                        "\"The bear and the cat are both waiting their chance.\"",
-                        "The fox thought about it a long while.",
-                        "He scratched his chin with a forepaw.",
-                        "\"Hm. So that is how it stands.\"",
-                        "\"Very well. I shall come.\""
+                        "\"If you do not, the whole forest will come for you. The bear and the cat are both waiting their chance.\"",
+                        "The fox scratched his chin with a forepaw and thought for a long while.",
+                        "\"Hm. So that is how it stands,\" he said. \"Very well. I shall go and have my say.\""
                     ],
                     right: [
-                        "\"I shall go and have my say.\"",
-                        "And the badger was relieved.",
-                        "But there was a glint in the fox's eye.",
-                        "It was the eye of somebody with a plan.",
-                        "And the badger did not notice it.",
-                        "The two beasts set off side by side."
+                        "The badger was relieved.",
+                        "But there was a glint in the fox's eye. It was the eye of somebody with a plan.",
+                        "The badger did not notice it. The two of them set off side by side."
                     ]
                 }
             ]
@@ -790,39 +729,27 @@ const EN = {
                     art: '06-trial.webp',
                     emoji: '⚖️',
                     left: [
-                        "The next day the fox appeared in court.",
-                        "The beasts stirred at the sight of him.",
-                        "The wolf showed his teeth.",
-                        "The bear and the cat glared at him.",
-                        "And the fox did not tremble in the least.",
-                        "Instead he put on a very sorrowful face."
+                        "The next day the fox appeared in court. The beasts stirred at the sight of him.",
+                        "The wolf showed his teeth. The bear and the cat glared at him.",
+                        "But the fox did not tremble in the least. Instead he put on a very sorrowful face."
                     ],
                     right: [
-                        "He laid a forepaw on his chest and spoke.",
-                        "\"My lord, I have been wronged.\"",
-                        "\"They say all manner of things about me,\"",
-                        "\"and none of it is so.\"",
-                        "The king raised an eyebrow.",
-                        "\"Then how does the matter stand?\""
+                        "He laid a forepaw on his chest. \"My lord, I have been wronged. They say all sorts of things about me, but none of it is true.\"",
+                        "The king raised an eyebrow. \"Then what did happen?\""
                     ]
                 },
                 {
                     art: '06-trial-2.webp',
                     emoji: '⚖️',
                     left: [
-                        "\"I have been working on your behalf, my lord.\"",
-                        "\"There is a band of them plotting against you.\"",
+                        "\"I have been working on your behalf, my lord,\" said the fox. \"There is a band of them plotting against you.\"",
                         "The court went quiet.",
-                        "\"I have been following them in secret.\"",
-                        "\"That is why I could not come to court.\"",
-                        "The wolf gave a snort."
+                        "\"I have been following them in secret. That is why I could not come to court.\""
                     ],
                     right: [
-                        "\"How the lies do come pouring out!\"",
-                        "The fox did not so much as blink.",
-                        "\"And I know where they have hidden their treasure.\"",
-                        "At the word treasure the king's ears went up.",
-                        "\"Treasure, you say? Where is it?\" The wolf's words were forgotten already."
+                        "The wolf gave a snort. \"How the lies come pouring out!\"",
+                        "The fox did not so much as blink. \"And I know where they have hidden their treasure.\"",
+                        "At the word \"treasure\", the king's ears went up. \"Treasure, you say? Where is it?\" He seemed to have forgotten the wolf already."
                     ]
                 }
             ]
@@ -835,43 +762,28 @@ const EN = {
                     art: '07-treasure.webp',
                     emoji: '💰',
                     left: [
-                        "And the fox made up the place, smooth as anything.",
-                        "\"Past the eastern marsh there is a dry well.\"",
-                        "\"Under it lies a whole chest of gold.\"",
-                        "\"My father risked his life to find it out.\"",
-                        "The king's eyes flashed.",
-                        "\"Go there this instant!\""
+                        "The fox made up a place for the treasure, smooth as anything.",
+                        "\"Past the eastern marsh there is a dry well. Under it lies a whole chest of gold. My father risked his life to find it.\"",
+                        "The king's eyes flashed. \"Go there this instant!\""
                     ],
                     right: [
-                        "The wolf and the bear led the way.",
-                        "The beasts went streaming down to the marsh.",
-                        "But the marsh was a bog that swallowed their feet.",
-                        "There was floundering to be heard on every side.",
-                        "\"Ow! There is nothing here at all!\"",
-                        "The bear was plastered with mud.",
-                        "The wolf went in up to his waist."
+                        "The wolf and the bear led the way, and the beasts streamed down to the marsh.",
+                        "But the marsh was a bog that swallowed their feet. There was floundering on every side.",
+                        "\"Ow! There is nothing here at all!\" cried the bear. He was covered in mud, and the wolf sank in up to his waist."
                     ]
                 },
                 {
                     art: '07-treasure-2.webp',
                     emoji: '💰',
                     left: [
-                        "Meanwhile the fox quietly took himself off.",
-                        "He set out with a staff in his paw.",
-                        "\"I shall go on a pilgrimage, my lord!\"",
-                        "\"I am going to repent of my faults.\"",
-                        "The king nodded, well pleased.",
-                        "\"That is very proper. Go and come safely.\""
+                        "Meanwhile, the fox came before the king with a staff in his paw.",
+                        "\"My lord, I shall go on a pilgrimage!\" he said. \"I am going to walk a long way to repent of my faults.\"",
+                        "The king nodded, well pleased. \"That is very proper. Go, and come back safely.\""
                     ],
                     right: [
-                        "The fox bowed politely.",
-                        "And then he went over the hill and out of sight.",
-                        "The moment he was over it he threw the staff away.",
-                        "\"Well. Out of it again.\"",
-                        "The fox walked on, humming.",
-                        "The road ahead was bright.",
-                        "The sun warmed his back.",
-                        "And his tail swung of its own accord."
+                        "The fox bowed politely. Then he took himself off over the hill, and the moment he was out of sight, he threw the staff away.",
+                        "\"Phew! Out of trouble again,\" he said.",
+                        "He walked on, humming. The sun warmed his back, and his tail swung of its own accord."
                     ]
                 }
             ]
@@ -885,42 +797,30 @@ const EN = {
                     emoji: '🍂',
                     left: [
                         "The beasts searched the marsh until sundown.",
-                        "There was no gold, nor so much as a pebble.",
-                        "They never even found the dry well.",
-                        "And only then did they see they had been fooled.",
-                        "The wolf came back puffing with rage.",
-                        "He was mud from head to foot."
+                        "There was no gold, not so much as a pebble. They never even found the dry well.",
+                        "Only then did they see they had been fooled.",
+                        "The wolf came back puffing with rage, mud from head to foot."
                     ],
                     right: [
-                        "\"Let us fetch that fox back again!\"",
-                        "\"And this time I shall deal out the punishment!\"",
-                        "The king looked round the circle.",
-                        "\"Then who will go and bring him?\"",
-                        "Nobody came forward.",
-                        "They all studied their own toes."
+                        "\"Let us fetch that fox back!\" said the wolf. \"And this time, my lord, deal out the punishment he deserves!\"",
+                        "The king looked round the circle. \"Then who will go and bring him?\"",
+                        "Nobody came forward. They all studied their own toes."
                     ]
                 },
                 {
                     art: '08-ending-2.webp',
                     emoji: '🍂',
                     left: [
-                        "The bear felt his own nose.",
-                        "The cat hid his tail.",
+                        "The bear felt his nose. \"I — I… my nose still hurts.\"",
+                        "\"M-me too,\" muttered the cat, hiding his tail.",
                         "The badger looked the other way.",
-                        "Not one of them would speak first.",
-                        "Somebody cleared a throat and they all flinched.",
-                        "\"I — I have nothing to say.\"",
-                        "\"Nor I.\""
+                        "Last time was still fresh in their minds."
                     ],
                     right: [
-                        "Last time was still fresh in their minds.",
-                        "There was not a breath to be heard in the court.",
-                        "The king cleared his throat.",
-                        "\"That will do for today.\"",
-                        "And he brought the court to an end.",
-                        "The beasts went home one by one.",
-                        "And the dead leaves came drifting down in the forest.",
-                        "There was talk of that fox in the forest ever after."
+                        "When the king cleared his throat, they all flinched.",
+                        "\"That will do for today,\" said the king, and he brought the court to an end.",
+                        "The beasts went home, and petals came drifting down.",
+                        "And the fox stories never stopped."
                     ]
                 }
             ]
@@ -1001,9 +901,9 @@ const EN = {
             { word: 'mirror', meaning: '거울', sentence: 'It held up a mirror to the world of the time.' }
         ],
         '01-court.webp': [
-            { word: 'mane', meaning: '갈기', sentence: 'He was a lion with a mane like gold.' },
+            { word: 'mane', meaning: '갈기', sentence: 'A lion with a mane like gold.' },
             { word: 'court', meaning: '재판', sentence: 'Every spring a great court was held.' },
-            { word: 'grievance', meaning: '억울한 일', sentence: 'Anybody with a grievance could speak.' },
+            { word: 'grievance', meaning: '억울한 일', sentence: 'Anybody with a grievance could stand up and speak.' },
             { word: 'meadow', meaning: '풀밭', sentence: 'The beasts gathered in the wide meadow.' },
             { word: 'mossy', meaning: '이끼 낀', sentence: 'The king took his place on a mossy rock.' }
         ],
@@ -1016,13 +916,13 @@ const EN = {
         ],
         '02-accusations.webp': [
             { word: 'swollen', meaning: '퉁퉁 부은', sentence: 'His nose was swollen right up.' },
-            { word: 'bandage', meaning: '붕대', sentence: 'He had a bandage round his tail.' },
-            { word: 'snare', meaning: '덫', sentence: 'And hung all night in a snare.' },
+            { word: 'bandage', meaning: '붕대', sentence: 'With a bandage wound round his tail.' },
+            { word: 'snare', meaning: '덫', sentence: 'I hung all night in a snare.' },
             { word: 'injury', meaning: '다친 데', sentence: 'Every one of them held out an injury.' }
         ],
         '02-accusations-2.webp': [
             { word: 'cluck', meaning: '꼬꼬댁거리다', sentence: 'The hens came crowding out, clucking.' },
-            { word: 'boil over', meaning: '들끓다', sentence: 'The forest was boiling over about the fox.' },
+            { word: 'boil over', meaning: '들끓다', sentence: 'The whole forest was boiling over about the fox.' },
             { word: 'draw one’s brows together', meaning: '이마를 찌푸리다', sentence: 'The king drew his brows together.' },
             { word: 'fetch', meaning: '데려오다', sentence: 'Fetch that fox here at once.' },
             { word: 'have to do with', meaning: '얽히다', sentence: 'None of them wanted anything to do with the fox.' }
@@ -1035,7 +935,7 @@ const EN = {
             { word: 'drop one’s voice', meaning: '목소리를 낮추다', sentence: 'The fox dropped his voice.' }
         ],
         '03-bear-2.webp': [
-            { word: 'split', meaning: '틈', sentence: 'There was a split in the great trunk.' },
+            { word: 'split', meaning: '틈', sentence: 'Left a wedge in the split.' },
             { word: 'wedge', meaning: '쐐기', sentence: 'The fox quietly pulled out the wedge.' },
             { word: 'villain', meaning: '못된 놈', sentence: 'You villain of a fox!' },
             { word: 'struggle', meaning: '발버둥 치다', sentence: 'The bear struggled.' },
@@ -1048,7 +948,7 @@ const EN = {
             { word: 'glitter', meaning: '반짝하다', sentence: "The cat's eyes glittered." }
         ],
         '04-cat-2.webp': [
-            { word: 'noose', meaning: '올가미', sentence: 'The noose caught him round the neck.' },
+            { word: 'noose', meaning: '올가미', sentence: 'A rope noose had been set in the doorway.' },
             { word: 'swing', meaning: '대롱대롱 매달리다', sentence: 'The cat hung there swinging.' },
             { word: 'what a shame', meaning: '안됐군요', sentence: 'Dear me. What a shame.' },
             { word: 'uproar', meaning: '소동', sentence: 'There was an uproar in the barn.' }
@@ -1058,11 +958,11 @@ const EN = {
             { word: 'scholar', meaning: '학자', sentence: "A badger in a scholar's cap." },
             { word: 'relation', meaning: '친척', sentence: 'He is a relation of mine.' },
             { word: 'stretch out', meaning: '늘어지다', sentence: 'The fox was stretched out in front of it.' },
-            { word: 'seriously', meaning: '진지하게', sentence: 'Said the badger seriously.' }
+            { word: 'seriously', meaning: '진지하게', sentence: 'He said seriously.' }
         ],
         '05-badger-2.webp': [
-            { word: 'wait one’s chance', meaning: '벼르다', sentence: 'The bear and the cat are waiting their chance.' },
-            { word: 'scratch', meaning: '긁적이다', sentence: 'He scratched his chin.' },
+            { word: 'wait one’s chance', meaning: '벼르다', sentence: 'The bear and the cat are both waiting their chance.' },
+            { word: 'scratch', meaning: '긁적이다', sentence: 'The fox scratched his chin.' },
             { word: 'relieved', meaning: '마음이 놓인', sentence: 'The badger was relieved.' },
             { word: 'glint', meaning: '반짝임', sentence: "There was a glint in the fox's eye." }
         ],
@@ -1070,7 +970,7 @@ const EN = {
             { word: 'stir', meaning: '술렁이다', sentence: 'The beasts stirred at the sight of him.' },
             { word: 'glare', meaning: '노려보다', sentence: 'The bear and the cat glared at him.' },
             { word: 'tremble', meaning: '떨다', sentence: 'The fox did not tremble in the least.' },
-            { word: 'sorrowful', meaning: '슬픈', sentence: 'He put on a sorrowful face.' },
+            { word: 'sorrowful', meaning: '슬픈', sentence: 'He put on a very sorrowful face.' },
             { word: 'wrong', meaning: '억울하게 하다', sentence: 'My lord, I have been wronged.' }
         ],
         '06-trial-2.webp': [
@@ -1081,30 +981,30 @@ const EN = {
             { word: 'treasure', meaning: '보물', sentence: 'I know where they have hidden their treasure.' }
         ],
         '07-treasure.webp': [
-            { word: 'make up', meaning: '지어내다', sentence: 'The fox made up the place.' },
+            { word: 'make up', meaning: '지어내다', sentence: 'The fox made up a place for the treasure.' },
             { word: 'marsh', meaning: '늪', sentence: 'Past the eastern marsh there is a dry well.' },
             { word: 'chest', meaning: '궤짝', sentence: 'A whole chest of gold.' },
             { word: 'bog', meaning: '진창', sentence: 'The marsh was a bog.' },
             { word: 'flounder', meaning: '허우적대다', sentence: 'There was floundering on every side.' }
         ],
         '07-treasure-2.webp': [
-            { word: 'take oneself off', meaning: '자리를 뜨다', sentence: 'The fox quietly took himself off.' },
-            { word: 'staff', meaning: '지팡이', sentence: 'He set out with a staff in his paw.' },
+            { word: 'take oneself off', meaning: '자리를 뜨다', sentence: 'He took himself off over the hill.' },
+            { word: 'staff', meaning: '지팡이', sentence: 'The fox came before the king with a staff in his paw.' },
             { word: 'pilgrimage', meaning: '순례', sentence: 'I shall go on a pilgrimage.' },
-            { word: 'repent', meaning: '뉘우치다', sentence: 'I am going to repent of my faults.' },
+            { word: 'repent', meaning: '뉘우치다', sentence: 'To repent of my faults.' },
             { word: 'of its own accord', meaning: '절로', sentence: 'His tail swung of its own accord.' }
         ],
         '08-ending.webp': [
-            { word: 'sundown', meaning: '해질녘', sentence: 'They searched the marsh until sundown.' },
-            { word: 'pebble', meaning: '돌멩이', sentence: 'Nor so much as a pebble.' },
+            { word: 'sundown', meaning: '해질녘', sentence: 'The beasts searched the marsh until sundown.' },
+            { word: 'pebble', meaning: '돌멩이', sentence: 'Not so much as a pebble.' },
             { word: 'fool', meaning: '속이다', sentence: 'Only then did they see they had been fooled.' },
-            { word: 'deal out', meaning: '내리다', sentence: 'I shall deal out the punishment!' }
+            { word: 'deal out', meaning: '내리다', sentence: 'Deal out the punishment he deserves!' }
         ],
         '08-ending-2.webp': [
             { word: 'flinch', meaning: '움찔하다', sentence: 'They all flinched.' },
             { word: 'fresh', meaning: '생생한', sentence: 'Last time was still fresh in their minds.' },
             { word: 'bring to an end', meaning: '끝내다', sentence: 'He brought the court to an end.' },
-            { word: 'drift down', meaning: '사르르 떨어지다', sentence: 'The dead leaves came drifting down.' }
+            { word: 'drift down', meaning: '사르르 떨어지다', sentence: 'Petals came drifting down.' }
         ],
         'end.webp': [
             { word: 'collect', meaning: '따로 묶다', sentence: 'Whole books collect the tales of Reynard.' },

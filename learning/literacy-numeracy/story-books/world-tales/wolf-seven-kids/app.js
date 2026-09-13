@@ -542,33 +542,30 @@ const EN = {
                     art: '01-warning.webp',
                     emoji: '🐐',
                     left: [
-                        "In a cottage at the edge of the woods lived a mother goat, and she had seven little kids. The eldest was the tallest, and the youngest wore a bell round his neck.",
+                        "In a cottage at the edge of the woods lived a mother goat with seven little kids.",
+                        "The eldest was the tallest, and the youngest wore a bell round his neck.",
                         "All seven played in the yard the whole day long.",
-                        "Then one morning the cupboard was quite empty, and their mother had to go to market."
+                        "Then one morning the cupboard was quite empty, so Mother had to go to market."
                     ],
                     right: [
                         "She called all seven of them together.",
-                        "\"Today you must stay here on your own.\"",
-                        "\"You must watch out for the wolf.\"",
-                        "\"Never open the door to anyone.\"",
-                        "Seven pairs of eyes went round.",
-                        "\"But how will we know the wolf?\""
+                        "\"Today you must stay here on your own. Watch out for the wolf. Never open the door to anyone.\"",
+                        "Seven pairs of eyes went round. \"But how will we know the wolf?\""
                     ]
                 },
                 {
                     art: '01-warning-2.webp',
                     emoji: '🐐',
                     left: [
-                        "\"His voice is rough. Not soft like ours.\"",
-                        "\"And his feet are black. Ours are white.\"",
-                        "\"Watch for those two things, and you will know.\"",
-                        "\"Yes — we'll remember!\"",
-                        "All seven answered together, and the youngest gave his bell a ring as he nodded."
+                        "\"His voice is rough, not soft like ours. And his feet are black, but ours are white. Watch for those two things.\"",
+                        "All seven answered together, \"Yes, we'll remember!\"",
+                        "The youngest nodded, and his bell went ting-a-ling."
                     ],
                     right: [
-                        "Their mother hung the basket on her arm and went out. The seven hung at the window and waved and waved. When she was over the hill the house went quiet.",
-                        "The bar was fastened firmly across the door.",
-                        "And before long the seven were at their games again, the little bell ringing as they played."
+                        "Mother hung the basket on her arm and went out. The seven hung at the window and waved and waved.",
+                        "When she was over the hill, the house went quiet.",
+                        "Just as she had said, they fastened the bar firmly across the door.",
+                        "Soon they were playing again, the little bell ringing as they played."
                     ]
                 }
             ]
@@ -582,35 +579,29 @@ const EN = {
                     emoji: '🐺',
                     left: [
                         "It was not long before there was a sound at the door.",
-                        "Thump, thump.",
-                        "Someone was knocking hard.",
-                        "\"Children, Mother's home!\"",
-                        "\"Open the door for me now.\"",
+                        "Thump, thump. Someone was knocking hard.",
+                        "\"Children, Mother's home! Open the door for me now.\"",
                         "The seven stopped their game and looked at one another."
                     ],
                     right: [
                         "There was something rough about that voice. It was not their mother's voice at all.",
-                        "The eldest crept up close to the door.",
-                        "\"That isn't our mother's voice!\"",
-                        "\"Our mother's voice is never rough like that!\"",
-                        "\"You're not our mother!\""
+                        "The eldest crept up close to the door and shouted, \"That isn't our mother's voice! Hers is never rough like that!\"",
+                        "The others shouted too. \"You're not our mother!\""
                     ]
                 },
                 {
                     art: '02-first-try-2.webp',
                     emoji: '🐺',
                     left: [
-                        "Outside, the wolf stamped his feet.",
-                        "\"Clever little things.\"",
-                        "He paced about the yard for a good while. Think as he might, it was the voice that had betrayed him.",
-                        "Then he struck his knee.",
-                        "\"I shall simply mend my voice!\""
+                        "Outside, the wolf stamped his feet. \"Clever little things.\"",
+                        "He paced about the yard for a good while. It was the voice that had betrayed him.",
+                        "Then he slapped his knee. \"I'll just fix my voice!\""
                     ],
                     right: [
-                        "Off he went to the village, bought a piece of chalk at the shop, and swallowed it whole.",
+                        "Off he ran to the village, bought a piece of chalk at the shop, and swallowed it whole.",
                         "His throat tickled. The chalk dust caught in it and set him coughing.",
                         "\"Ahem. A-hem.\"",
-                        "His voice came out a good deal softer. And back to the woods he went."
+                        "His voice came out much softer. And back to the cottage he went."
                     ]
                 }
             ]
@@ -623,17 +614,15 @@ const EN = {
                     art: '03-disguise.webp',
                     emoji: '🥛',
                     left: [
-                        "\"Children, Mother's home.\"",
-                        "This time the voice was quite soft — nothing like before.",
-                        "The seven put their ears to the door.",
-                        "\"Oh — that does sound like Mother.\"",
+                        "The wolf knocked again. \"Children, Mother's home.\"",
+                        "This time the voice was quite soft, nothing like before.",
+                        "The seven put their ears to the door. \"Oh, that does sound like Mother.\"",
                         "But then the youngest put up his hand."
                     ],
                     right: [
                         "\"Then show us your feet.\"",
                         "The wolf laid his front paws on the windowsill. The fur on them was as black as coal, and all seven jumped back at once.",
-                        "\"It's the wolf! Go away!\"",
-                        "\"Our mother's feet are white as snow!\"",
+                        "\"It's the wolf! Go away! Our mother's feet are white as snow!\"",
                         "They shouted so loudly that the wolf backed off once more."
                     ]
                 },
@@ -641,11 +630,9 @@ const EN = {
                     art: '03-disguise-2.webp',
                     emoji: '🥛',
                     left: [
-                        "This time the wolf went to the mill.",
-                        "\"Put flour on my paws.\"",
-                        "The miller hesitated.",
-                        "\"And what would that be for?\"",
-                        "\"Never mind that. Do it, and be quick.\""
+                        "This time the wolf went to the mill. \"Put flour on my paws.\"",
+                        "The miller hesitated. \"And what would that be for?\"",
+                        "The wolf bared his teeth. \"Never mind that. Do it, and be quick.\""
                     ],
                     right: [
                         "The miller was afraid, and in the end he floured the paws white. The wolf came to the cottage a third time. He called in his soft voice and laid his paws on the sill.",
@@ -718,17 +705,15 @@ const EN = {
                     art: '05-mother-returns-2.webp',
                     emoji: '😢',
                     left: [
-                        "And just then the clock rattled.",
+                        "Just then the clock rattled, and a small voice called out.",
                         "\"Mother! Mother!\"",
                         "The youngest pushed open the door of the clock and clambered out. His mother ran and caught him up in her arms.",
                         "\"You're alive!\""
                     ],
                     right: [
-                        "Only then did he burst into tears.",
-                        "\"The wolf came.\"",
-                        "\"He fooled us with his voice and his feet.\"",
-                        "\"He's taken all my brothers.\"",
-                        "His mother thought for a long while. Then she went to the kitchen and fetched the pepper tin."
+                        "Only then did he burst into tears. \"The wolf came! He fooled us with his voice and his feet, and he swallowed everyone whole!\"",
+                        "His mother thought for a long while. \"If he swallowed them whole, they may still be alive.\"",
+                        "She went to the kitchen and fetched the pepper tin."
                     ]
                 }
             ]
@@ -741,17 +726,16 @@ const EN = {
                     art: '06-rescue.webp',
                     emoji: '🌶️',
                     left: [
-                        "The two of them crept outside. The wolf was still lying under the tree.",
+                        "Mother and the youngest crept outside. The wolf was lying under the tree by the yard.",
                         "Snore, snore.",
                         "He slept on with his belly heaped up like a hill, rising and falling as he breathed.",
                         "And then that belly gave a wriggle."
                     ],
                     right: [
-                        "\"They're still alive!\"",
-                        "Their mother took out the pepper tin. Her hands shook a little.",
-                        "\"Hold on tight here, my little one.\"",
-                        "She shook a little pepper right under the wolf's nose. A—a—atchoo! One head popped out, and then another, and another…",
-                        "Until all six were outside."
+                        "\"They're still alive!\" Mother whispered. \"Stay close behind me, my little one.\"",
+                        "She shook a little pepper right under the wolf's nose.",
+                        "A—a—atchoo! With every sneeze, a kid popped out of his mouth.",
+                        "At last all six were out."
                     ]
                 },
                 {
@@ -765,8 +749,9 @@ const EN = {
                     ],
                     right: [
                         "\"Children, go to the brook and bring me some stones.\"",
-                        "Off the seven of them scattered to the water's edge. They picked out good round stones and carried them back in their skirts. And all that while the wolf slept on.",
-                        "He had not the faintest idea what was happening."
+                        "Off the seven of them scattered to the water's edge.",
+                        "They picked out good round stones and carried them back in their arms.",
+                        "All that while the wolf slept on. He had not the faintest idea what was happening."
                     ]
                 }
             ]
@@ -779,15 +764,14 @@ const EN = {
                     art: '07-well.webp',
                     emoji: '🪨',
                     left: [
-                        "The wolf had dozed off again with his mouth hanging open, and the eight of them rolled the stones in one by one. The seven did not make a sound.",
+                        "The wolf had dozed off again with his mouth hanging open. Without a sound, the eight rolled the stones into his mouth one by one.",
                         "Rumble, rumble. Down the stones went, one after another. Then all eight hid behind a tree and held their breath.",
                         "At last the wolf stirred and woke."
                     ],
                     right: [
                         "The night had gone and the sun was high.",
                         "He began to stretch, and stopped short.",
-                        "\"Oof — why is my belly so heavy?\"",
-                        "\"And what a thirst I have.\"",
+                        "\"Oof! Why is my belly so heavy? And I'm so thirsty.\"",
                         "He set off toward the well, swaying with every step."
                     ]
                 },
@@ -795,16 +779,15 @@ const EN = {
                     art: '07-well-2.webp',
                     emoji: '🪨',
                     left: [
-                        "As he walked, something sounded inside him.",
-                        "Rattle, rattle.",
-                        "The wolf tilted his head.",
-                        "\"What are stones doing rattling in my belly?\"",
-                        "\"Whatever did I eat?\"",
+                        "As he walked, something sounded inside him. Rattle, rattle.",
+                        "The wolf tilted his head. \"Why is my belly rattling? What did I eat?\"",
                         "He gave his belly a thump or two."
                     ],
                     right: [
-                        "But his thirst drove him on to the well. Just as he bent down for a drink, that heavy belly swung forward and in he went — splash.",
-                        "Behind the tree the laughter burst out. The eight of them joined hands and danced round and round. And the wolf never came back again."
+                        "But his thirst drove him on to the well.",
+                        "As he bent down to drink, his heavy belly swung forward — splash! In he went.",
+                        "The eight laughed and danced hand in hand behind the tree.",
+                        "The wolf never came back again."
                     ]
                 }
             ]
@@ -837,7 +820,7 @@ const EN = {
             answer: 2
         },
         {
-            q: 'What did they put in the wolf’s belly?',
+            q: 'What did they roll into the wolf’s mouth?',
             choices: ['Flour', 'Stones', 'Plates'],
             answer: 1
         },
@@ -888,11 +871,11 @@ const EN = {
             { word: 'kid', meaning: '아기 염소', sentence: 'She had seven little kids.' },
             { word: 'cottage', meaning: '오두막', sentence: 'In a cottage at the edge of the woods lived a mother goat.' },
             { word: 'cupboard', meaning: '찬장', sentence: 'One morning the cupboard was quite empty.' },
-            { word: 'watch out for', meaning: '조심하다', sentence: 'You must watch out for the wolf.' }
+            { word: 'watch out for', meaning: '조심하다', sentence: 'Watch out for the wolf.' }
         ],
         '01-warning-2.webp': [
             { word: 'rough', meaning: '걸걸한, 거친', sentence: 'His voice is rough. Not soft like ours.' },
-            { word: 'bar', meaning: '빗장', sentence: 'The bar was fastened firmly across the door.' },
+            { word: 'bar', meaning: '빗장', sentence: 'They fastened the bar firmly across the door.' },
             { word: 'wave', meaning: '손을 흔들다', sentence: 'The seven hung at the window and waved.' }
         ],
         '02-first-try.webp': [
@@ -942,7 +925,7 @@ const EN = {
         '06-rescue.webp': [
             { word: 'heap up', meaning: '수북이 쌓이다', sentence: 'His belly heaped up like a hill.' },
             { word: 'wriggle', meaning: '꿈틀거리다', sentence: 'And then that belly gave a wriggle.' },
-            { word: 'pop out', meaning: '쏙 나오다', sentence: 'One head popped out, and then another.' }
+            { word: 'pop out', meaning: '쏙 나오다', sentence: 'A kid popped out of his mouth.' }
         ],
         '06-rescue-2.webp': [
             { word: 'cling', meaning: '매달리다', sentence: 'All seven clung to her at once.' },
@@ -952,7 +935,7 @@ const EN = {
         ],
         '07-well.webp': [
             { word: 'hang open', meaning: '헤벌리다', sentence: 'He had dozed off with his mouth hanging open.' },
-            { word: 'roll in', meaning: '굴려 넣다', sentence: 'They rolled the stones in one by one.' },
+            { word: 'roll in', meaning: '굴려 넣다', sentence: 'They rolled the stones into his mouth one by one.' },
             { word: 'hold one’s breath', meaning: '숨을 죽이다', sentence: 'All eight hid behind a tree and held their breath.' },
             { word: 'stir', meaning: '몸을 뒤척이다', sentence: 'At last the wolf stirred and woke.' },
             { word: 'sway', meaning: '휘청거리다', sentence: 'He set off toward the well, swaying with every step.' }
@@ -961,7 +944,7 @@ const EN = {
             { word: 'tilt', meaning: '갸웃하다', sentence: 'The wolf tilted his head.' },
             { word: 'thump', meaning: '툭툭 두드리다', sentence: 'He gave his belly a thump or two.' },
             { word: 'drive on', meaning: '몰아가다', sentence: 'But his thirst drove him on to the well.' },
-            { word: 'splash', meaning: '풍덩', sentence: 'In he went — splash.' }
+            { word: 'splash', meaning: '풍덩', sentence: 'His heavy belly swung forward — splash! In he went.' }
         ],
         'end.webp': [
             { word: 'make up', meaning: '지어내다', sentence: 'The Brothers Grimm did not make these stories up.' },

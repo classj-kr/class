@@ -563,43 +563,29 @@ const EN = {
                     art: '01-letter.webp',
                     emoji: '✉️',
                     left: [
-                        "In Genoa in Italy there lived a boy called Marco.",
-                        "He was thirteen years old.",
-                        "Things at home were very hard.",
-                        "The debts kept growing.",
-                        "So his mother went away to a distant country.",
-                        "It was Argentina, across the sea."
+                        "In Genoa, in Italy, there lived a boy called Marco. He was thirteen years old.",
+                        "Things at home were very hard. The debts kept growing.",
+                        "So his mother went away to a distant country, Argentina, across the sea. She would work there and send money home."
                     ],
                     right: [
-                        "She was to work there and send money home.",
-                        "At first a letter came every month.",
-                        "\"We are all well here, so do not worry.\"",
-                        "Marco read those letters over and over.",
-                        "His father took heart from them too.",
-                        "And then at some point the letters simply stopped.",
-                        "The whole family was sick with worry."
+                        "At first a letter came every month. \"We are all well here, so do not worry.\"",
+                        "Marco read those letters over and over. His father took heart from them too.",
+                        "But then, one day, the letters simply stopped. The whole family was sick with worry."
                     ]
                 },
                 {
                     art: '01-letter-2.webp',
                     emoji: '✉️',
                     left: [
-                        "A month went by, and then two.",
-                        "And still there was no word.",
-                        "His father wrote to one place after another.",
-                        "No answer came back from anywhere.",
-                        "All they had was the address of the house where she had worked.",
-                        "His father sighed every night.",
-                        "There was no money to go, and nobody to send."
+                        "A month went by, and then two. Still there was no word. His father wrote to one place after another.",
+                        "No answer came from anywhere. All they had was the address of the house where she had worked.",
+                        "His father sighed every night. There was no money to go, and nobody to send."
                     ],
                     right: [
-                        "Then Marco spoke.",
-                        "The supper table went quiet.",
-                        "His brother put down his spoon.",
-                        "\"I shall go and find her.\"",
-                        "His father was astonished.",
-                        "But Marco would not give way.",
-                        "He begged and begged for days."
+                        "Then Marco spoke up. \"I will go and find her.\"",
+                        "The supper table went quiet. His brother put down his spoon.",
+                        "His father was astonished. He shook his head. \"No, you cannot.\"",
+                        "But Marco would not give way. He begged and begged for days."
                     ]
                 }
             ]
@@ -612,43 +598,28 @@ const EN = {
                     art: '02-harbor.webp',
                     emoji: '🚢',
                     left: [
-                        "His father asked a favour of somebody he knew.",
-                        "They just managed to find the fare.",
-                        "Marco packed one small bundle.",
-                        "A few clothes and a photograph of his mother, and that was all.",
-                        "The morning of the sailing came.",
-                        "The port of Genoa was full of people.",
-                        "A great ship sounded her horn."
+                        "At last his father said yes. He asked a favour of a friend, and they just managed to find the fare.",
+                        "Marco packed one small bundle: a few clothes and a photograph of his mother.",
+                        "On the morning of the sailing, the port of Genoa was full of people. A great ship sounded her horn."
                     ],
                     right: [
-                        "Black smoke rose from the funnel.",
-                        "Booooo—",
-                        "The sound went right through you.",
-                        "A great many were leaving for South America.",
-                        "On the quay they were all weeping and waving.",
-                        "And Marco went up onto the deck."
+                        "Black smoke rose from the funnel. Booooo— The sound went right through you.",
+                        "A great many people were leaving for South America. On the quay they were all weeping and waving.",
+                        "Marco went up onto the deck."
                     ]
                 },
                 {
                     art: '02-harbor-2.webp',
                     emoji: '🚢',
                     left: [
-                        "His father waved from the quay.",
-                        "His face was hard to make out.",
-                        "And Marco shouted with all his voice.",
-                        "\"I shall bring Mother home, I promise!\"",
-                        "His father seemed to nod.",
-                        "The ship drew slowly out of the harbour.",
-                        "The houses grew smaller and smaller."
+                        "His father waved from the quay, but his face was hard to make out.",
+                        "Marco shouted as loud as he could. \"I will bring Mother home, I promise!\"",
+                        "His father seemed to nod. The ship drew slowly out of the harbour, and the houses grew smaller and smaller."
                     ],
                     right: [
-                        "And at last the land was gone.",
-                        "There was nothing in front of him but sea.",
-                        "A voyage of more than a month had begun.",
-                        "Marco held tight to the rail.",
-                        "He was not so much afraid as impatient.",
-                        "He took the photograph out of his coat.",
-                        "\"Only wait a little longer.\""
+                        "At last the land was gone. There was nothing ahead but sea. A voyage of more than a month had begun.",
+                        "Marco held tight to the rail. He was not so much afraid as impatient.",
+                        "He took the photograph out of his coat. \"Mother, wait just a little longer.\""
                     ]
                 }
             ]
@@ -661,41 +632,28 @@ const EN = {
                     art: '03-voyage.webp',
                     emoji: '🌊',
                     left: [
-                        "There was no room to put a foot down on that ship.",
-                        "Even the hold below was packed with people.",
-                        "Marco made himself a place in a corner of the deck.",
-                        "He slept with his bundle for a pillow.",
-                        "When the waves came he rolled this way and that.",
-                        "Some days he was too seasick to eat anything at all."
+                        "The ship was packed. Even the hold below was full of people.",
+                        "Marco made himself a place in a corner of the deck. He slept with his bundle for a pillow.",
+                        "When the waves came, he rolled this way and that. Some days he was too seasick to eat anything."
                     ],
                     right: [
-                        "He was often hungry as well.",
-                        "And Marco bore it.",
-                        "He could think of nothing but seeing his mother.",
-                        "At night he looked up at the sky.",
-                        "There were more stars than he had ever seen.",
-                        "\"Mother is looking at these stars too.\" Thinking that, he could bear it."
+                        "He was often hungry too, but Marco bore it. He could think of nothing but seeing his mother.",
+                        "At night he looked up at the sky. There were more stars than he had ever seen.",
+                        "\"Mother is looking at these stars too,\" he thought, and then he could bear it."
                     ]
                 },
                 {
                     art: '03-voyage-2.webp',
                     emoji: '🌊',
                     left: [
-                        "There were all sorts of people aboard.",
-                        "Farmers, and carpenters too.",
-                        "Every one of them leaving to look for work.",
-                        "They were sorry for Marco when they heard his story.",
-                        "One woman shared her bread with him.",
-                        "Marco thanked her again and again.",
-                        "\"A good boy. I hope he finds her.\""
+                        "There were all sorts of people aboard — farmers and carpenters, all leaving to look for work.",
+                        "They were sorry for Marco when they heard his story. One woman shared her bread with him, and Marco thanked her again and again.",
+                        "She stroked his hair. \"What a good boy. I do hope you find her.\""
                     ],
                     right: [
-                        "And so the days went by.",
-                        "Twenty-seven nights passed.",
-                        "One morning there was a stir on the deck.",
-                        "Land had come into sight.",
-                        "It was Buenos Aires.",
-                        "Marco gripped the rail and opened his eyes wide."
+                        "And so the days went by. Twenty-seven nights passed.",
+                        "One morning there was a stir on the deck. Land had come into sight!",
+                        "It was Buenos Aires. Marco gripped the rail and opened his eyes wide."
                     ]
                 }
             ]
@@ -708,40 +666,29 @@ const EN = {
                     art: '04-moved.webp',
                     emoji: '🏘️',
                     left: [
-                        "Marco came down off the ship.",
-                        "There was strange speech on every side.",
-                        "The streets were wide and the houses brightly painted.",
-                        "Marco took out the paper with the address on it.",
-                        "He asked his way from one person to the next.",
-                        "He had no words, so he used his hands."
+                        "Marco came down off the ship. There was strange speech on every side.",
+                        "The streets were wide and the houses brightly painted. Marco took out the paper with the address on it.",
+                        "He asked his way from one person to the next. He had no words, so he used his hands."
                     ],
                     right: [
-                        "The paper went soft with the sweat of his hand.",
-                        "At last he stood in front of the house.",
-                        "Marco caught his breath and knocked.",
-                        "His heart was thumping.",
-                        "And then the door opened.",
-                        "But it was a stranger who came out.",
-                        "\"Who are you looking for?\" And the words would not come."
+                        "The paper went soft with the sweat of his hand. At last he stood in front of the house.",
+                        "Marco caught his breath and knocked. His heart was thumping.",
+                        "The door opened, but a stranger came out. \"Who are you looking for?\"",
+                        "Marco could hardly get the words out."
                     ]
                 },
                 {
                     art: '04-moved-2.webp',
                     emoji: '🏘️',
                     left: [
-                        "Marco said his mother's name.",
-                        "And the man shook his head.",
-                        "\"Those people moved away long ago.\"",
-                        "\"They went to a city called Rosario.\"",
-                        "The strength went out of Marco's legs.",
-                        "\"And where is that?\""
+                        "At last Marco said his mother's name. The man shook his head.",
+                        "\"The family she worked for moved away. They went to a city called Rosario.\"",
+                        "The strength went out of Marco's legs. \"Where is that?\""
                     ],
                     right: [
-                        "\"More than three hundred kilometres north of here.\"",
-                        "Marco went through his pockets.",
-                        "There was hardly any money left.",
-                        "And still Marco lifted his head.",
-                        "\"I have come this far, after all.\" And he set off walking again."
+                        "\"More than three hundred kilometres north of here,\" said the man.",
+                        "Marco went through his pockets. There was hardly any money left.",
+                        "Still, Marco lifted his head. \"I have come this far, after all.\" And he set off walking again."
                     ]
                 }
             ]
@@ -754,20 +701,16 @@ const EN = {
                     art: '05-help.webp',
                     emoji: '🤝',
                     left: [
-                        "Marco made for Rosario.",
-                        "He walked, and got a lift, and walked again.",
-                        "The road went on without end.",
-                        "The plains stretched away to the edge of the sky.",
+                        "Marco made for Rosario. He walked, and got a lift, and walked again.",
+                        "The road went on without end. The plains stretched away to the edge of the sky.",
                         "Cattle moved in the grass far off.",
                         "And everywhere he went, strangers helped him."
                     ],
                     right: [
-                        "\"How far are you going?\"",
-                        "\"I am going to find my mother.\"",
-                        "And people stopped where they stood at that.",
-                        "\"We left our own country too, you know.\"",
-                        "And then they shared whatever they had.",
-                        "Every one of them had family left behind."
+                        "\"How far are you going?\" people asked.",
+                        "\"To Rosario,\" Marco answered. \"I am going to find my mother.\"",
+                        "People stopped where they stood. \"We left our own country too, you know.\"",
+                        "Then they shared whatever they had. Every one of them had family left behind."
                     ]
                 },
                 {
@@ -782,11 +725,9 @@ const EN = {
                         "And he kept their names in his heart."
                     ],
                     right: [
-                        "At night he looked at the stars and said the names over.",
-                        "And so he went on, mile after mile.",
+                        "At night he looked at the stars and said the names over. And so he went on, day after day.",
                         "The soles of his shoes wore through.",
-                        "His face went black with the sun.",
-                        "His clothes were thick with dust.",
+                        "His face was burned brown by the sun, and his clothes were thick with dust.",
                         "And still he did not stop walking."
                     ]
                 }
@@ -800,21 +741,15 @@ const EN = {
                     art: '06-again.webp',
                     emoji: '😔',
                     left: [
-                        "At last he reached Rosario.",
-                        "Marco went straight to the house.",
-                        "This time, he thought, there could be no mistake.",
-                        "And once again he was a step too late.",
-                        "\"That family moved on to Tucumán, they say.\"",
-                        "And Marco sat straight down where he stood.",
-                        "Everything went dark in front of him."
+                        "At last he reached Rosario. He went straight to the house, sure that this time he would find her.",
+                        "But once again he was a step too late. The person who opened the door said, \"That family moved on to Tucumán.\"",
+                        "Marco sat down right where he stood. Everything went dark in front of him."
                     ],
                     right: [
-                        "Pale dust rose about his feet.",
-                        "His throat burned and there was no water.",
-                        "\"And how far is Tucumán?\"",
-                        "\"Six hundred kilometres. Right up to the mountains.\"",
-                        "Marco could not get up for a long while.",
-                        "\"Perhaps I should turn back here.\" Even that came into his mind."
+                        "At last Marco asked, \"How far is Tucumán?\"",
+                        "\"Six hundred kilometres from here, right up by the mountains.\"",
+                        "Marco could not get up for a long while. His throat burned, and there was no water.",
+                        "'Perhaps I should turn back.' Even that thought came into his mind."
                     ]
                 },
                 {
@@ -847,44 +782,28 @@ const EN = {
                     art: '07-final.webp',
                     emoji: '⛰️',
                     left: [
-                        "Marco crossed the plains.",
-                        "He forded rivers and went over hills.",
-                        "He walked for days and days.",
-                        "His shoes wore through and his feet showed.",
-                        "The soles were blistered and every step hurt.",
-                        "He tripped on stones and fell more than once.",
-                        "There were scabs on his knees."
+                        "Marco crossed the plains. He forded rivers and went over hills.",
+                        "He walked for days and days. His shoes wore through, and his bare feet showed. The soles were blistered, and every step hurt.",
+                        "He tripped on stones and fell more than once. There were scabs on his knees."
                     ],
                     right: [
-                        "Some days he went the whole day without food.",
-                        "And then a line of mountains came into sight.",
-                        "It was the Andes.",
-                        "Marco took heart at the sight of them.",
-                        "\"Almost there. Only a little more.\"",
-                        "The sun was going down.",
-                        "And the sky had turned red."
+                        "Some days he went without food from morning till night. Then a line of mountains came into sight.",
+                        "It was the Andes. Marco took heart at the sight of them. \"Almost there. Only a little more.\"",
+                        "The sun was going down, and the sky had turned red."
                     ]
                 },
                 {
                     art: '07-final-2.webp',
                     emoji: '⛰️',
                     left: [
-                        "At last a few earth houses came into view.",
-                        "It was a small village.",
-                        "Marco walked on with the last of his strength.",
-                        "A woman hanging out washing turned round.",
-                        "And then her hands stopped.",
-                        "She looked hard at Marco.",
-                        "\"You… surely not.\"",
-                        "\"Are you the Italian woman's son?\""
+                        "At last a few earth houses came into view. Marco walked on with the last of his strength.",
+                        "A woman hanging out washing turned round. Without a word, Marco held out his mother's photograph.",
+                        "The woman looked from the photograph to Marco. \"You… are you this woman's son?\""
                     ],
                     right: [
-                        "Marco's heart hammered.",
-                        "The bundle dropped out of his hand.",
-                        "The woman picked it up for him quickly.",
+                        "Marco's heart hammered. The bundle dropped out of his hand, and the woman quickly picked it up for him.",
                         "\"You know my mother?\" Marco was out of breath.",
-                        "The woman's eyes went red.",
-                        "\"Come inside, quickly.\""
+                        "The woman's eyes went red. \"Come inside, quickly.\""
                     ]
                 }
             ]
@@ -897,42 +816,28 @@ const EN = {
                     art: '08-reunion.webp',
                     emoji: '💞',
                     left: [
-                        "The woman took Marco inside.",
-                        "There was a bed in a small room.",
-                        "And his mother was lying in it.",
-                        "Her face was as white as paper.",
-                        "She was very ill.",
-                        "She needed an operation.",
-                        "But she had let go of hope already."
+                        "The woman took Marco inside. In a small room there was a bed, and his mother was lying in it.",
+                        "Her face was as white as paper. She was very ill, and she needed an operation.",
+                        "But she had not heard from her family for so long that she had let go of hope. She would not have the operation."
                     ],
                     right: [
-                        "It was a long time since she had heard from her family.",
                         "Marco knelt down beside the bed.",
-                        "His voice shook.",
-                        "His mother's hand was very light.",
-                        "Marco took it in both of his.",
-                        "\"Mother, it is me. Marco.\""
+                        "His mother's hand was very light. Marco took it in both of his.",
+                        "\"Mother, it is me. Marco,\" he said, his voice shaking."
                     ]
                 },
                 {
                     art: '08-reunion-2.webp',
                     emoji: '💞',
                     left: [
-                        "His mother slowly opened her eyes.",
-                        "She looked at Marco for a long while.",
-                        "\"Marco…?\"",
-                        "\"However did you come all this way…\"",
-                        "Her words kept breaking off.",
-                        "And Marco only shook his head instead of answering."
+                        "His mother slowly opened her eyes and looked at Marco for a long while.",
+                        "\"Marco…? However did you come all this way…\"",
+                        "Her words kept breaking off. Marco only held her hand tight."
                     ],
                     right: [
-                        "The tears ran down his mother's face.",
-                        "The two of them held each other a long time.",
-                        "And from that day his mother took heart again.",
-                        "She had the operation and took her medicine.",
-                        "Little by little she grew stronger.",
-                        "And when the spring came round,",
-                        "the two of them took ship together and went home."
+                        "Tears ran down her face. They held each other a long time.",
+                        "From that day his mother took heart. She had the operation, and little by little she grew stronger.",
+                        "In spring the two of them took ship together and went home."
                     ]
                 }
             ]
@@ -941,7 +846,7 @@ const EN = {
     quiz: [
         {
             q: 'Why did the mother go so far away?',
-            choices: ['Because they were moving house', 'Because of a job offer', 'Because of the debts'],
+            choices: ['To move to a new house', 'To get over an illness', 'To earn money and send it home'],
             answer: 2
         },
         {
@@ -981,7 +886,7 @@ const EN = {
                 "At Rosario he sat down and thought of turning back — even Marco had a moment when he wanted to stop.",
                 "Everywhere he went people shared what they had — each of them had left family behind too.",
                 "His mother took heart only once she saw him — what was killing her was not the illness but having given up.",
-                "The father borrowed the passage money from an acquaintance — he had been in favour of sending Marco from the start."
+                "His father asked a friend for a favour to find the fare — he had been in favour of sending Marco from the start."
             ],
             answer: 3
         }
@@ -995,11 +900,11 @@ const EN = {
                 left: [
                     "This is one part of Cuore, a book by the Italian writer De Amicis. It came out about a hundred and forty years ago.",
                     "About the time Marco takes ship, a great many people were leaving Italy for South America to find work. None of that was invented.",
-                    "That is also why the letters stopped. In those days letters went by ship, and they took months.",
+                    "The letters stopped because the family his mother worked for had moved away. Letters went by ship, and once the address changed, they could not reach her.",
                     "Everywhere Marco goes he is one step behind. In Buenos Aires, and again in Rosario. Each time he asks the way and walks on."
                 ],
                 right: [
-                    "What saved his mother was not the medicine. It was that her son had come. That is what somebody who has let go of hope needs.",
+                    "What saved his mother was not medicine. It was that her son had come. That is what somebody who has let go of hope needs.",
                     "Where do you think Marco most wanted to give up?"
                 ]
             }
@@ -1025,7 +930,7 @@ const EN = {
             { word: 'beg', meaning: '조르다', sentence: 'He begged and begged for days.' }
         ],
         '02-harbor.webp': [
-            { word: 'favour', meaning: '부탁', sentence: 'His father asked a favour.' },
+            { word: 'favour', meaning: '부탁', sentence: "He asked a favour of a friend." },
             { word: 'fare', meaning: '뱃삯', sentence: 'They just managed to find the fare.' },
             { word: 'bundle', meaning: '보따리', sentence: 'Marco packed one small bundle.' },
             { word: 'funnel', meaning: '굴뚝', sentence: 'Black smoke rose from the funnel.' },
@@ -1039,10 +944,10 @@ const EN = {
             { word: 'impatient', meaning: '마음이 급한', sentence: 'He was not so much afraid as impatient.' }
         ],
         '03-voyage.webp': [
-            { word: 'hold', meaning: '짐칸', sentence: 'The hold below was packed with people.' },
+            { word: 'hold', meaning: '짐칸', sentence: "The hold below was full of people." },
             { word: 'pillow', meaning: '베개', sentence: 'He slept with his bundle for a pillow.' },
             { word: 'seasick', meaning: '멀미하는', sentence: 'He was too seasick to eat.' },
-            { word: 'bear', meaning: '참다', sentence: 'And Marco bore it.' }
+            { word: 'bear', meaning: '참다', sentence: "Marco bore it." }
         ],
         '03-voyage-2.webp': [
             { word: 'aboard', meaning: '배에', sentence: 'There were all sorts of people aboard.' },
@@ -1056,10 +961,10 @@ const EN = {
             { word: 'brightly painted', meaning: '알록달록한', sentence: 'The houses were brightly painted.' },
             { word: 'ask one’s way', meaning: '길을 묻다', sentence: 'He asked his way from one person to the next.' },
             { word: 'catch one’s breath', meaning: '숨을 고르다', sentence: 'Marco caught his breath and knocked.' },
-            { word: 'stranger', meaning: '낯선 사람', sentence: 'It was a stranger who came out.' }
+            { word: 'stranger', meaning: '낯선 사람', sentence: "A stranger came out." }
         ],
         '04-moved-2.webp': [
-            { word: 'move away', meaning: '이사 가다', sentence: 'Those people moved away long ago.' },
+            { word: 'move away', meaning: '이사 가다', sentence: "The family she worked for moved away." },
             { word: 'strength', meaning: '힘', sentence: "The strength went out of Marco's legs." },
             { word: 'go through', meaning: '뒤지다', sentence: 'Marco went through his pockets.' },
             { word: 'this far', meaning: '여기까지', sentence: 'I have come this far.' }
@@ -1106,12 +1011,12 @@ const EN = {
         '08-reunion.webp': [
             { word: 'as white as paper', meaning: '종잇장처럼 하얀', sentence: 'Her face was as white as paper.' },
             { word: 'operation', meaning: '수술', sentence: 'She needed an operation.' },
-            { word: 'let go of hope', meaning: '마음을 놓아 버리다', sentence: 'She had let go of hope already.' },
+            { word: 'let go of hope', meaning: '마음을 놓아 버리다', sentence: 'She had let go of hope.' },
             { word: 'kneel', meaning: '무릎을 꿇다', sentence: 'Marco knelt down beside the bed.' }
         ],
         '08-reunion-2.webp': [
             { word: 'break off', meaning: '끊기다', sentence: 'Her words kept breaking off.' },
-            { word: 'take heart', meaning: '마음을 고쳐먹다', sentence: 'His mother took heart again.' },
+            { word: 'take heart', meaning: '마음을 고쳐먹다', sentence: "His mother took heart." },
             { word: 'little by little', meaning: '조금씩', sentence: 'Little by little she grew stronger.' },
             { word: 'take ship', meaning: '배를 타다', sentence: 'The two of them took ship together.' }
         ],

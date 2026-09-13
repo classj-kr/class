@@ -570,31 +570,29 @@ const EN = {
                         "Anybody would have said it was a good place to be."
                     ],
                     right: [
-                        "And the fir tree was always out of sorts.",
-                        "\"Why am I so small?\"",
+                        "But the fir tree was always out of sorts.",
+                        "\"Why am I so small?\" he sighed.",
                         "The rabbits went hopping straight over the top of him,",
                         "and every time it made him cross.",
-                        "\"I want to grow quickly and be like those trees.\"",
-                        "The sunlight said to him, kindly,"
+                        "\"I want to grow up fast and be as tall as those trees!\""
                     ]
                 },
                 {
                     art: '01-small-2.webp',
                     emoji: '🌲',
                     left: [
-                        "\"This is the best time there is.\"",
-                        "And the wind stroked his branches and said,",
-                        "\"There is nothing so pleasant as being a young tree.\"",
+                        "The sunlight said kindly, \"This is the best time there is.\"",
+                        "The wind stroked his branches and said, \"There is nothing so pleasant as being a young tree.\"",
                         "The fir tree did not listen at all.",
                         "Year by year he grew a little taller,",
                         "and still the fir tree was not satisfied."
                     ],
                     right: [
-                        "\"I am still no higher than their feet.\"",
-                        "When spring came he went past spring; when summer came he went past summer.",
-                        "The fir tree was always waiting for the next thing.",
-                        "Three years went by like that.",
-                        "And in all that time he never once thought that now was good."
+                        "\"I am still down at their feet,\" he grumbled.",
+                        "Spring and summer went past, and he enjoyed none of it.",
+                        "He was always waiting for the next thing.",
+                        "Three years went by like that,",
+                        "and not once did he think that now was good."
                     ]
                 }
             ]
@@ -607,39 +605,37 @@ const EN = {
                     art: '02-felled.webp',
                     emoji: '🪓',
                     left: [
-                        "In the autumn people came into the wood —",
-                        "woodcutters with axes and saws.",
-                        "The wood rang with the sound of it,",
-                        "and the biggest and straightest trees were cut down.",
-                        "The branches were taken off and only the trunks were left,",
-                        "and the woodcutters loaded them onto carts."
+                        "In the autumn, people came into the wood.",
+                        "They were woodcutters with axes and saws.",
+                        "Thump! Thump! went the axes,",
+                        "and the biggest, straightest trees came crashing down.",
+                        "The branches were all cut off.",
+                        "They loaded only the trunks onto carts."
                     ],
                     right: [
-                        "The fir tree looked at the places where they had stood.",
-                        "It felt strange to have the wood so open.",
-                        "\"Where are those trees going?\"",
-                        "And a stork happened to fly down.",
-                        "\"I am on my way from the sea.\" The stork came down on his long legs."
+                        "The fir tree looked at the empty places where they had stood.",
+                        "The wood looked strangely bare. \"Where are those trees going?\"",
+                        "Just then a stork flew down and landed on his long legs.",
+                        "\"Mr Stork,\" the fir tree asked quickly, \"where do the cut trees go?\""
                     ]
                 },
                 {
                     art: '02-felled-2.webp',
                     emoji: '🪓',
                     left: [
-                        "\"I saw great ships out there.\"",
-                        "\"Masts so high they looked as though they touched the sky.\"",
-                        "\"Those trees become those masts.\"",
+                        "\"I have just come from the sea,\" said the stork.",
+                        "\"I saw great ships there, with masts so high they seemed to touch the sky.\"",
+                        "\"Those trees will become masts like that.\"",
                         "The fir tree's eyes opened wide.",
-                        "\"Masts?\"",
-                        "\"They go across the sea?\""
+                        "\"Masts? They will go across the sea?\""
                     ],
                     right: [
-                        "\"Indeed. To the ends of the earth.\"",
-                        "The stork opened his wings and flew off,",
-                        "and the fir tree stood there a long while.",
-                        "\"Oh — I want to be that one day!\"",
+                        "\"Yes,\" said the stork. \"To the ends of the earth.\"",
+                        "The stork flew away,",
+                        "but the fir tree stood thinking for a long time.",
+                        "\"Wow! I want to be a mast one day!\"",
                         "From that day he thought of nothing but the sea.",
-                        "Even the wind sounded like a mast to him."
+                        "Even the wind sounded like masts to him."
                     ]
                 }
             ]
@@ -652,38 +648,36 @@ const EN = {
                     art: '03-christmas.webp',
                     emoji: '🕯️',
                     left: [
-                        "When winter came the woodcutters came again.",
+                        "When winter came, the woodcutters came again.",
                         "This time they did not cut the big trees.",
-                        "They picked out only the small young ones,",
-                        "younger even than the fir tree himself.",
-                        "The fir tree thought that very odd.",
-                        "And some sparrows happened to settle on his branches."
+                        "They picked out only small young trees,",
+                        "some even younger than the fir tree.",
+                        "The fir tree thought that was odd.",
+                        "Just then some sparrows landed on his branches."
                     ],
                     right: [
-                        "\"And where do those trees go?\"",
-                        "The sparrows chattered at one another.",
+                        "\"Where do those little trees go?\" asked the fir tree.",
+                        "The sparrows chattered to one another.",
                         "\"We saw them in the village!\"",
-                        "\"We looked in through a window.\"",
-                        "The fir tree's ears went up,",
-                        "and the sparrows went on, delighted with themselves."
+                        "\"We looked in through a window!\"",
+                        "The fir tree listened hard,",
+                        "and the sparrows went on excitedly."
                     ]
                 },
                 {
                     art: '03-christmas-2.webp',
                     emoji: '🕯️',
                     left: [
-                        "\"Standing in the middle of a warm room.\"",
-                        "\"Hung all over with gold apples and candles!\"",
-                        "\"And people singing round them.\"",
+                        "\"They stand in the middle of a warm room,\" said the sparrows.",
+                        "\"They are hung all over with gold apples and candles!\"",
+                        "\"And people sing all round them.\"",
                         "The fir tree's heart began to beat faster.",
-                        "It sounded far better than a mast.",
-                        "\"That is it! I want to be that.\""
+                        "It sounded far better than being a mast."
                     ],
                     right: [
-                        "\"Come and take me, quickly, quickly!\"",
-                        "The wind went past and said,",
-                        "\"It is good right here, I tell you.\"",
-                        "And again the fir tree did not listen.",
+                        "\"That's it!\" cried the fir tree. \"Take me, quickly!\"",
+                        "The wind went past and said, \"It is good right here and now, I tell you.\"",
+                        "But again the fir tree did not listen.",
                         "So the winter went by,",
                         "and every day of it felt slow to him."
                     ]
@@ -698,22 +692,20 @@ const EN = {
                     art: '04-cut.webp',
                     emoji: '❄️',
                     left: [
-                        "The next winter came.",
-                        "It was a morning with the snow lying deep,",
-                        "and there was the sound of an axe close by.",
+                        "The next winter came. One morning the snow lay deep,",
+                        "and an axe rang out close by.",
                         "A woodcutter stopped in front of the fir tree.",
                         "\"This one will do nicely.\"",
-                        "The fir tree shook all over.",
-                        "It hurt, and it frightened him."
+                        "The fir tree shook all over. He was frightened,",
+                        "but his excitement was bigger than his fear."
                     ],
                     right: [
-                        "And the excitement was larger than the fear.",
-                        "\"At last it is my turn!\"",
-                        "The axe went into the base of him,",
-                        "and the fir tree came down on the snow.",
-                        "The white snow flew up round him,",
-                        "and what had lain on his branches came showering off.",
-                        "And the wood went very quiet."
+                        "\"At last it is my turn!\" thought the fir tree.",
+                        "Thunk! The axe bit into the base of his trunk.",
+                        "It hurt, and his head spun.",
+                        "He crashed down, and the white snow flew up.",
+                        "The snow on his branches came showering off,",
+                        "and the wood went very quiet."
                     ]
                 },
                 {
@@ -722,18 +714,17 @@ const EN = {
                     left: [
                         "The fir tree was loaded onto a cart,",
                         "and the cart went jolting away.",
-                        "The wood got further and further off,",
-                        "and his friends the trees got smaller.",
+                        "The wood and his tree friends grew smaller.",
                         "The fir tree never once looked back.",
-                        "He looked ahead and waited for the village.",
-                        "And at last there was smoke from a chimney."
+                        "He looked ahead, waiting for the village.",
+                        "At last he saw smoke rising from the chimneys."
                     ],
                     right: [
                         "The cart stopped in front of a house,",
                         "and people carried the fir tree inside.",
                         "The room was warm and bright,",
-                        "and the fir tree's chest swelled with it.",
-                        "This was certainly the room the sparrows had talked about,",
+                        "and the fir tree's heart swelled with joy.",
+                        "This was surely the room the sparrows had talked about,",
                         "and the candles would be lit before long."
                     ]
                 }
@@ -757,8 +748,8 @@ const EN = {
                     right: [
                         "And a great star went on the very top.",
                         "The fir tree's branches ached with the weight of it,",
-                        "and he was too happy to care.",
-                        "\"What is going to happen tonight?\"",
+                        "but he was too happy to care.",
+                        "\"What is going to happen tonight?\" he wondered.",
                         "The sun went down and the room grew dim,",
                         "and the fir tree waited, holding his breath."
                     ]
@@ -775,13 +766,12 @@ const EN = {
                         "The children went round and round the tree."
                     ],
                     right: [
-                        "They sang, and the presents were handed out.",
-                        "The fir tree thought there could be no better day than this.",
-                        "\"It will be like this tomorrow too.\"",
-                        "\"And the day after, and the day after that.\"",
-                        "A drop of candle wax fell off the end of a branch.",
-                        "And the fir tree did not understand.",
-                        "He thought that evening would go on for ever."
+                        "They sang songs and handed out presents.",
+                        "\"No day could be better!\" thought the fir tree.",
+                        "\"It will be the same tomorrow, and the day after.\"",
+                        "A drop of candle wax fell from a branch.",
+                        "He did not understand.",
+                        "He thought this evening would go on for ever."
                     ]
                 }
             ]
@@ -794,21 +784,19 @@ const EN = {
                     art: '06-attic.webp',
                     emoji: '📦',
                     left: [
-                        "But the feast was over in one night.",
-                        "Next morning people came in",
-                        "and took off the gold apples and the paper flowers.",
-                        "They took the star down off the top.",
-                        "Nothing was left on the branches but candle wax.",
-                        "Servants dragged the fir tree away,",
-                        "and dry needles came off him onto the floor."
+                        "But the party was over in one night.",
+                        "Next morning people took off the gold apples and paper flowers.",
+                        "They forgot the star on the very top, though.",
+                        "Servants dragged the fir tree away.",
+                        "Dry needles fell onto the floor, but nobody picked them up."
                     ],
                     right: [
-                        "Nobody picked them up.",
-                        "They carried him up the stairs and put him in a dark attic,",
-                        "among dusty boxes.",
-                        "And the fir tree was easy in his mind, even so.",
-                        "\"They will dress me again soon enough.\"",
-                        "\"And in the spring they will plant me in the garden, I expect.\" And so the fir tree waited."
+                        "They carried him up the stairs.",
+                        "They put him in a dark attic among dusty boxes.",
+                        "Even so, the fir tree was easy in his mind.",
+                        "\"They'll decorate me again soon,\" he thought.",
+                        "\"And in spring they will plant me in the garden, I expect.\"",
+                        "And he waited."
                     ]
                 },
                 {
@@ -816,18 +804,17 @@ const EN = {
                     emoji: '📦',
                     left: [
                         "But nobody came.",
-                        "One day went by, and then seven.",
+                        "A day went by, and then a whole week.",
                         "The attic was always dark and quiet,",
                         "and the fir tree grew thirstier and thirstier.",
                         "The needles came off his branches, one and then another.",
-                        "And one day two mice appeared."
+                        "Then one day two mice appeared."
                     ],
                     right: [
-                        "\"What is this? It smells of wood.\"",
-                        "The mice sat down at the foot of him.",
-                        "\"Where are you from? Do tell us about it.\"",
-                        "\"About the wood, I mean.\"",
-                        "And only then did the fir tree think of the wood.",
+                        "The mice sniffed. \"What is this? It smells of wood.\"",
+                        "They sat down at the foot of the fir tree.",
+                        "\"Where are you from? Tell us about the wood where you lived.\"",
+                        "Only then did the fir tree think of the wood.",
                         "Things he had forgotten came back to him one by one."
                     ]
                 }
@@ -849,24 +836,22 @@ const EN = {
                         "The mice listened with their eyes shining."
                     ],
                     right: [
-                        "\"There were rabbits as well.\"",
-                        "\"I was so small that they went hopping straight over me.\"",
-                        "\"How that used to make me cross.\"",
-                        "And the fir tree stopped in the middle of it,",
+                        "\"There were rabbits, too. I was so small they hopped right over me.\"",
+                        "\"How cross that used to make me…\"",
+                        "The fir tree stopped in the middle of it,",
                         "because something had turned over in him.",
-                        "Saying it out loud had put it in front of his eyes."
+                        "Saying it out loud had put that time in front of his eyes."
                     ]
                 },
                 {
                     art: '07-memory-2.webp',
                     emoji: '🐭',
                     left: [
-                        "\"That was… a good time.\"",
-                        "the fir tree said, quietly.",
-                        "\"Why did I not know it?\"",
-                        "He remembered how he had always been waiting for the next thing.",
-                        "The springs and the summers had simply gone past him.",
-                        "The mice went away when the story was over."
+                        "\"That was… a really good time,\" the fir tree said quietly.",
+                        "\"Why did I not see it then?\"",
+                        "He remembered how he had always waited for the next thing.",
+                        "The springs and summers had gone past him.",
+                        "When the story was over, the mice went away."
                     ],
                     right: [
                         "And they did not come again.",
@@ -896,31 +881,26 @@ const EN = {
                     ],
                     right: [
                         "The fir tree narrowed his eyes.",
-                        "In one corner of the yard green shoots were coming up,",
-                        "and a young tree was growing there.",
+                        "In a corner of the yard, green shoots were coming up.",
+                        "A young tree was growing there.",
                         "It was like looking at himself, long ago.",
-                        "The fir tree looked steadily at that tree",
-                        "and wondered whether it, too, wanted to grow up quickly."
+                        "He gazed at it. Did it want to grow up fast, too?"
                     ]
                 },
                 {
                     art: '08-ending-2.webp',
                     emoji: '🌱',
                     left: [
-                        "There were children playing in the yard.",
-                        "One of them picked something up.",
-                        "It was the star that had been on the top of the fir tree.",
-                        "The child pinned it to her chest.",
-                        "\"Isn't this pretty!\""
+                        "Children were playing in the yard.",
+                        "A girl picked something up from the top of the fir tree.",
+                        "It was the star from that Christmas night.",
+                        "She pinned it to her chest. \"Isn't this pretty!\""
                     ],
                     right: [
                         "The children laughed and ran about the yard.",
-                        "And the fir tree heard them.",
-                        "The sunlight was very warm.",
-                        "The fir tree closed his eyes and thought quietly,",
-                        "and something in him was strangely at rest.",
-                        "\"If I should ever grow again.\"",
-                        "\"Then I shall know today when I am in it.\""
+                        "The fir tree heard them. The sunlight was very warm.",
+                        "He closed his eyes, strangely at rest, and thought,",
+                        "\"If I ever grow again, I will know today when I am in it.\""
                     ]
                 }
             ]
@@ -983,7 +963,7 @@ const EN = {
                 left: [
                     "It looks like a Christmas story, and it is not a cheerful one. Andersen often ended things this way.",
                     "The fir tree is always waiting for what comes next — to grow tall, to be a mast on a ship, to be stood up in a room. The wood he was actually standing in never came into it.",
-                    "The sparrows tell him the wood is good and he does not listen. The sunlight and the wind go past him too.",
+                    "The sunlight and the wind tell him that now is the best time, and he does not listen.",
                     "That one evening with the candles lit was the best day of the fir tree's whole life. And even on that day he was thinking about tomorrow."
                 ],
                 right: [
@@ -1010,44 +990,44 @@ const EN = {
             { word: 'stroke', meaning: '쓰다듬다', sentence: 'The wind stroked his branches.' },
             { word: 'pleasant', meaning: '즐거운', sentence: 'There is nothing so pleasant as being a young tree.' },
             { word: 'satisfied', meaning: '만족한', sentence: 'The fir tree was not satisfied.' },
-            { word: 'go past', meaning: '지나치다', sentence: 'When spring came he went past spring.' }
+            { word: 'go past', meaning: '지나치다', sentence: 'Spring and summer went past.' }
         ],
         '02-felled.webp': [
             { word: 'woodcutter', meaning: '나무꾼', sentence: 'Woodcutters with axes and saws.' },
             { word: 'saw', meaning: '톱', sentence: 'Woodcutters with axes and saws.' },
-            { word: 'trunk', meaning: '줄기', sentence: 'Only the trunks were left.' },
-            { word: 'cart', meaning: '수레', sentence: 'They loaded them onto carts.' },
-            { word: 'stork', meaning: '황새', sentence: 'And a stork happened to fly down.' }
+            { word: 'trunk', meaning: '줄기', sentence: 'They loaded only the trunks onto carts.' },
+            { word: 'cart', meaning: '수레', sentence: 'They loaded only the trunks onto carts.' },
+            { word: 'stork', meaning: '황새', sentence: 'A stork flew down.' }
         ],
         '02-felled-2.webp': [
-            { word: 'mast', meaning: '돛대', sentence: 'Masts so high they touched the sky.' },
+            { word: 'mast', meaning: '돛대', sentence: 'Masts so high they seemed to touch the sky.' },
             { word: 'the ends of the earth', meaning: '세상 끝', sentence: 'To the ends of the earth.' },
             { word: 'think of nothing but', meaning: '~ 생각뿐이다', sentence: 'He thought of nothing but the sea.' }
         ],
         '03-christmas.webp': [
-            { word: 'pick out', meaning: '골라내다', sentence: 'They picked out only the small young ones.' },
-            { word: 'odd', meaning: '이상한', sentence: 'The fir tree thought that very odd.' },
-            { word: 'sparrow', meaning: '참새', sentence: 'Some sparrows settled on his branches.' },
-            { word: 'chatter', meaning: '재잘거리다', sentence: 'The sparrows chattered at one another.' }
+            { word: 'pick out', meaning: '골라내다', sentence: 'They picked out only small young trees.' },
+            { word: 'odd', meaning: '이상한', sentence: 'The fir tree thought that was odd.' },
+            { word: 'sparrow', meaning: '참새', sentence: 'Some sparrows landed on his branches.' },
+            { word: 'chatter', meaning: '재잘거리다', sentence: 'The sparrows chattered to one another.' }
         ],
         '03-christmas-2.webp': [
             { word: 'hung with', meaning: '~을 달고 있는', sentence: 'Hung all over with gold apples and candles.' },
             { word: 'beat faster', meaning: '두근거리다', sentence: "The fir tree's heart began to beat faster." },
-            { word: 'far better', meaning: '훨씬 좋은', sentence: 'It sounded far better than a mast.' },
+            { word: 'far better', meaning: '훨씬 좋은', sentence: 'It sounded far better than being a mast.' },
             { word: 'slow', meaning: '더딘', sentence: 'Every day of it felt slow to him.' }
         ],
         '04-cut.webp': [
-            { word: 'lie deep', meaning: '소복이 쌓이다', sentence: 'A morning with the snow lying deep.' },
+            { word: 'lie deep', meaning: '소복이 쌓이다', sentence: 'One morning the snow lay deep.' },
             { word: 'do nicely', meaning: '딱 좋다', sentence: 'This one will do nicely.' },
-            { word: 'excitement', meaning: '설렘', sentence: 'The excitement was larger than the fear.' },
-            { word: 'base', meaning: '밑동', sentence: 'The axe went into the base of him.' },
-            { word: 'shower off', meaning: '우수수 떨어지다', sentence: 'What had lain on his branches came showering off.' }
+            { word: 'excitement', meaning: '설렘', sentence: 'His excitement was bigger than his fear.' },
+            { word: 'base', meaning: '밑동', sentence: 'The axe bit into the base of his trunk.' },
+            { word: 'shower off', meaning: '우수수 떨어지다', sentence: 'The snow on his branches came showering off.' }
         ],
         '04-cut-2.webp': [
             { word: 'jolt', meaning: '덜컹거리다', sentence: 'The cart went jolting away.' },
             { word: 'look back', meaning: '뒤를 돌아보다', sentence: 'The fir tree never once looked back.' },
-            { word: 'chimney', meaning: '굴뚝', sentence: 'There was smoke from a chimney.' },
-            { word: 'swell', meaning: '부풀다', sentence: "The fir tree's chest swelled with it." }
+            { word: 'chimney', meaning: '굴뚝', sentence: 'He saw smoke rising from the chimneys.' },
+            { word: 'swell', meaning: '부풀다', sentence: "The fir tree's heart swelled with joy." }
         ],
         '05-decorated.webp': [
             { word: 'tub', meaning: '통', sentence: 'In a tub packed with sand.' },
@@ -1058,15 +1038,15 @@ const EN = {
         '05-decorated-2.webp': [
             { word: 'throw open', meaning: '활짝 열다', sentence: 'The doors were thrown open.' },
             { word: 'clap one’s hands', meaning: '손뼉을 치다', sentence: 'The children came running in, clapping their hands.' },
-            { word: 'hand out', meaning: '나누어 주다', sentence: 'The presents were handed out.' },
-            { word: 'candle wax', meaning: '촛농', sentence: 'A drop of candle wax fell off a branch.' },
-            { word: 'for ever', meaning: '영원히', sentence: 'He thought that evening would go on for ever.' }
+            { word: 'hand out', meaning: '나누어 주다', sentence: 'They sang songs and handed out presents.' },
+            { word: 'candle wax', meaning: '촛농', sentence: 'A drop of candle wax fell from a branch.' },
+            { word: 'for ever', meaning: '영원히', sentence: 'He thought this evening would go on for ever.' }
         ],
         '06-attic.webp': [
-            { word: 'take off', meaning: '떼어 내다', sentence: 'They took off the gold apples.' },
-            { word: 'needle', meaning: '바늘잎', sentence: 'Dry needles came off him onto the floor.' },
+            { word: 'take off', meaning: '떼어 내다', sentence: 'People took off the gold apples.' },
+            { word: 'needle', meaning: '바늘잎', sentence: 'Dry needles fell onto the floor.' },
             { word: 'drag', meaning: '끌다', sentence: 'Servants dragged the fir tree away.' },
-            { word: 'attic', meaning: '다락방', sentence: 'They put him in a dark attic.' },
+            { word: 'attic', meaning: '다락방', sentence: 'They put him in a dark attic among dusty boxes.' },
             { word: 'easy in one’s mind', meaning: '마음을 놓은', sentence: 'The fir tree was easy in his mind.' }
         ],
         '06-attic-2.webp': [
@@ -1079,7 +1059,7 @@ const EN = {
             { word: 'dew', meaning: '이슬', sentence: 'The dew stood shining on the leaves.' },
             { word: 'turn over', meaning: '(마음이) 이상해지다', sentence: 'Something had turned over in him.' },
             { word: 'out loud', meaning: '소리 내어', sentence: 'Saying it out loud.' },
-            { word: 'in front of one’s eyes', meaning: '눈앞에', sentence: 'It put it in front of his eyes.' }
+            { word: 'in front of one’s eyes', meaning: '눈앞에', sentence: 'Saying it out loud had put that time in front of his eyes.' }
         ],
         '07-memory-2.webp': [
             { word: 'go past', meaning: '지나가 버리다', sentence: 'The springs and summers had gone past him.' },
@@ -1093,10 +1073,10 @@ const EN = {
             { word: 'long ago', meaning: '옛날에', sentence: 'It was like looking at himself, long ago.' }
         ],
         '08-ending-2.webp': [
-            { word: 'pick up', meaning: '줍다', sentence: 'One of them picked something up.' },
-            { word: 'pin', meaning: '달다', sentence: 'The child pinned it to her chest.' },
-            { word: 'at rest', meaning: '편안한', sentence: 'Something in him was strangely at rest.' },
-            { word: 'know', meaning: '알아보다', sentence: 'Then I shall know today when I am in it.' }
+            { word: 'pick up', meaning: '줍다', sentence: 'A girl picked something up from the top of the fir tree.' },
+            { word: 'pin', meaning: '달다', sentence: 'She pinned it to her chest.' },
+            { word: 'at rest', meaning: '편안한', sentence: 'He closed his eyes, strangely at rest.' },
+            { word: 'know', meaning: '알아보다', sentence: 'I will know today when I am in it.' }
         ],
         'end.webp': [
             { word: 'cheerful', meaning: '즐거운', sentence: 'And it is not a cheerful one.' },

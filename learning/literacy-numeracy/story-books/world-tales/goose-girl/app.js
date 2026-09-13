@@ -562,33 +562,34 @@ const EN = {
                     art: '01-departure.webp',
                     emoji: '🐴',
                     left: [
-                        "The princess had lost her father early and lived alone with her mother. The castle was large and quiet, and the two of them were always together.",
-                        "Wherever they went, they went together.",
-                        "The year the princess turned seventeen, an offer of marriage came from a country very far away — three mountains away, they said."
+                        "The princess had lost her father early, so she lived alone with her mother.",
+                        "The castle was big and quiet, and the two were always together.",
+                        "When the princess turned seventeen, an offer of marriage came from a faraway land.",
+                        "It was three mountains away."
                     ],
                     right: [
                         "Her mother lay awake for nights on end,",
-                        "putting good clothes and silver dishes into the chest and taking them out again.",
-                        "The day before they left she went down to the stable",
-                        "and led out the white horse Falada herself.",
-                        "\"This horse understands what you say. If things are hard, tell him anything at all.\" The princess stroked his mane."
+                        "packing fine clothes and silver dishes again and again.",
+                        "The day before they left, she led the white horse Falada out of the stable.",
+                        "\"He understands what you say. Tell him when things are hard.\"",
+                        "The princess stroked his mane."
                     ]
                 },
                 {
                     art: '01-departure-2.webp',
                     emoji: '🐴',
                     left: [
-                        "It was the morning of the journey.",
-                        "Her mother took a white handkerchief out of her dress. She had embroidered it herself, in the night.",
-                        "\"Keep this next to you. If trouble comes, take it out and look at it, and think of it as your mother beside you.\" The princess put it deep inside her clothes."
+                        "On the morning of the journey, her mother took out a white handkerchief.",
+                        "She had embroidered it herself, all through the night.",
+                        "\"Keep this close. When trouble comes, look at it and think of me beside you.\"",
+                        "The princess tucked it deep inside her dress."
                     ],
                     right: [
-                        "The gates opened and the two of them set off. There was nobody with them but one maid,",
-                        "and for so long a road the baggage was slight.",
-                        "Her mother stood on at the gate.",
-                        "The princess slackened the reins and looked back, several times.",
-                        "Over the hill the castle was out of sight.",
-                        "From there on the road was strange to her."
+                        "The gates opened and the princess rode out on Falada.",
+                        "Only one maid rode with her, and they had little baggage.",
+                        "Her mother stayed at the gate.",
+                        "The princess slackened the reins and kept looking back.",
+                        "Over the hill the castle was out of sight, and the road was new to her."
                     ]
                 }
             ]
@@ -601,18 +602,16 @@ const EN = {
                     art: '02-stream.webp',
                     emoji: '💧',
                     left: [
-                        "By midday the sun was very hot. It was open country without a scrap of shade,",
-                        "and the princess could not bear her thirst.",
-                        "As it happened a stream ran below the road,",
-                        "and the sound of the water came up cool.",
-                        "\"Would you fetch me some water? I am sorry to ask.\""
+                        "By midday the sun was very hot, and there was not a scrap of shade.",
+                        "The princess could not bear her thirst.",
+                        "Just then she saw a stream below the road, and heard its cool sound.",
+                        "She asked the maid, \"I'm sorry to ask, but would you fetch me some water?\""
                     ],
                     right: [
-                        "The maid did not answer. She sat with her arms folded, playing with the reins.",
-                        "\"If you are thirsty you may go yourself. I shall not wait on you any longer.\"",
-                        "The princess stood blankly for a moment.",
-                        "She had not taken in what it meant.",
-                        "And still she went down to the stream alone, without a word."
+                        "The maid did not answer. She just folded her arms.",
+                        "\"If you are thirsty, go yourself. I shall not wait on you any longer.\"",
+                        "For a moment the princess could not take in what it meant.",
+                        "But without a word she got down from her horse and went to the stream alone."
                     ]
                 },
                 {
@@ -627,12 +626,10 @@ const EN = {
                         "\"Oh — no!\""
                     ],
                     right: [
-                        "The princess reached out, and it was already too late. The handkerchief went round the bend of the stream and was gone.",
-                        "She stood there with her wet hands up in the air.",
-                        "Somehow all the strength went out of her legs.",
-                        "It felt as though the thing that had been holding her together had gone downstream with it.",
-                        "Up on the bank the maid watched her.",
-                        "Something had changed in her eyes."
+                        "She reached out, but the handkerchief went round the bend and was gone.",
+                        "She stood there with her wet hands in the air.",
+                        "Her legs went weak, as if what held her together had gone too.",
+                        "The maid saw it all from the bank. Now the princess had nothing to help her."
                     ]
                 }
             ]
@@ -645,8 +642,8 @@ const EN = {
                     art: '03-swap.webp',
                     emoji: '👗',
                     left: [
-                        "The maid got down from the horse and came striding over. Even the way she walked was different.",
-                        "\"Take off your clothes. We shall swap with mine.\"",
+                        "The maid got down from her horse and came striding over. Even the way she walked was different.",
+                        "\"Take off your clothes. You'll swap them for mine.\"",
                         "\"What did you say?\"",
                         "\"From now on I am the princess. And you are my maid.\"",
                         "The princess could not get a word out."
@@ -669,11 +666,11 @@ const EN = {
                         "There was nothing else she could do."
                     ],
                     right: [
-                        "The dust came up white under the horse's hooves,",
+                        "Dust rose under the horse's hooves,",
                         "and the princess's shoes were soon thick with it.",
-                        "As the sun went down a castle came into sight, with flags flying and the gates thrown wide.",
-                        "People had come out along the road and were waving.",
-                        "And every one of them looked only at the woman on the horse."
+                        "As the sun went down, a castle came into sight.",
+                        "Flags were flying and the gates were thrown wide.",
+                        "People lined the road and waved — but only at the one on the horse."
                     ]
                 }
             ]
@@ -686,34 +683,32 @@ const EN = {
                     art: '04-geese.webp',
                     emoji: '🪿',
                     left: [
-                        "The young prince came out to meet them and held out his hand to the maid. The princess stood behind them,",
-                        "and nobody looked at her at all.",
-                        "\"And who is that?\"",
-                        "\"A servant I picked up on the road. Set her to whatever wants doing.\""
+                        "The young prince came out to meet them and held out his hand to the maid.",
+                        "The princess stood behind, and at last the prince turned. \"And who is that?\"",
+                        "The maid calmly answered, \"A servant I picked up on the road. Set her to whatever wants doing.\""
                     ],
                     right: [
-                        "The old king was crossing the courtyard and stopped. He looked at the princess a long while and tilted his head.",
-                        "\"I have never seen a servant with eyes like that. Let her mind the geese, then. She can help Conrad.\"",
-                        "So the princess was given a small room beside the barn,",
-                        "and the work began before dawn the next day."
+                        "The old king was crossing the courtyard. He stopped and looked at her a long while.",
+                        "\"I have never seen a servant with eyes like that,\" he said. \"Let her mind the geese and help Conrad, the goose boy.\"",
+                        "So she was given a small room beside the barn.",
+                        "The work began before dawn the next day."
                     ]
                 },
                 {
                     art: '04-geese-2.webp',
                     emoji: '🪿',
                     left: [
-                        "There was a boy called Conrad,",
-                        "with a face full of freckles and a straw hat pulled down over it.",
-                        "\"What's your name? Where are you from?\"",
-                        "The princess did not answer anything.",
-                        "\"What an odd one. Can't you talk either?\""
+                        "Conrad was a boy about her age.",
+                        "His face was full of freckles, and he always wore a straw hat pulled down low.",
+                        "\"What's your name?\" he asked. \"Where are you from?\"",
+                        "The princess did not answer.",
+                        "Conrad lifted the brim of his hat and looked into her face."
                     ],
                     right: [
-                        "Conrad lifted the brim of his hat to look into her face, and the princess turned away.",
+                        "\"What an odd one,\" he said. \"Can't you talk?\" She turned away.",
                         "Every morning they drove the geese out to the fields and came back at sundown.",
                         "Her hands cracked and her feet blistered.",
-                        "At night in the little room she thought about her mother.",
-                        "And still she bit down on her lip.",
+                        "At night she thought of her mother, but she bit her lip.",
                         "She had given her word."
                     ]
                 }
@@ -727,16 +722,16 @@ const EN = {
                     art: '05-falada.webp',
                     emoji: '🏰',
                     left: [
-                        "The maid, now the prince's bride, could not rest easy. There was no telling when that white horse might open his mouth,",
-                        "and the thought of it kept her awake at night.",
-                        "One day she asked the prince,",
-                        "\"Send that horse away. He was hurt carrying me here, and it grieves me to look at him.\""
+                        "The maid, now the prince's bride, could not rest easy.",
+                        "There was no telling when that white horse might speak.",
+                        "So she lied to the prince. \"That horse tried to throw me off on the way. Get rid of him.\"",
+                        "The prince believed her, and Falada lost his life."
                     ],
                     right: [
-                        "The news went through the princess like cold water. Falada was the only one in that castle who knew her.",
-                        "So she went to the gatekeeper and held out every coin she had.",
-                        "\"Please put that horse's head up over the gate, so that I can see it as I pass every morning.\"",
-                        "The gatekeeper hesitated, and then he nodded."
+                        "The princess's heart sank, and she grieved. Falada was the only one here who knew her.",
+                        "She went to the gatekeeper and held out every coin she had.",
+                        "\"Please hang Falada's head over the gate, so I can see him every morning.\"",
+                        "The gatekeeper hesitated, then nodded."
                     ]
                 },
                 {
@@ -767,11 +762,10 @@ const EN = {
                     art: '06-wind.webp',
                     emoji: '💨',
                     left: [
-                        "Out in the fields the princess would sit down in the grass and let her hair loose to comb it.",
-                        "It came pouring down golden in the sunlight, and every time he saw it Conrad wanted to touch it.",
-                        "\"Let me have one! Just one hair!\"",
-                        "He put out his hand,",
-                        "and the princess moved quickly out of the way."
+                        "Out in the fields, the princess would sit in the grass and let her hair loose to comb it.",
+                        "It came pouring down golden in the sunlight, and Conrad always wanted to touch it.",
+                        "\"Let me pull out one hair! Just one!\" said Conrad.",
+                        "He reached out, but she quickly moved away."
                     ],
                     right: [
                         "She shook her head hard. She would not give away so much as a hair of it.",
@@ -785,16 +779,15 @@ const EN = {
                     emoji: '💨',
                     left: [
                         "The straw hat went rolling over the hill, and Conrad went scrambling after it.",
-                        "By the time he got back with it the princess had her hair plaited again.",
-                        "And there was grass stain all over the hat.",
-                        "\"Not again!\"",
-                        "It happened so many times that in the end Conrad had had enough."
+                        "By the time he got back with it, the princess had her hair plaited again.",
+                        "There was grass stain all over the hat.",
+                        "Conrad stamped his feet. \"Not again!\""
                     ],
                     right: [
+                        "It happened again and again, until Conrad had had enough.",
                         "He went straight to the king.",
-                        "\"I can't work with her any more. She calls up the wind, she does.\"",
-                        "\"And she talks to that horse over the gate. It answers her back!\"",
-                        "And the king did not let that pass."
+                        "\"I can't work with her any more! She calls up the wind, and she talks to that horse over the gate. It even answers her!\"",
+                        "The king did not let that pass."
                     ]
                 }
             ]
@@ -824,17 +817,17 @@ const EN = {
                     art: '07-stove-2.webp',
                     emoji: '🔥',
                     left: [
+                        "The king left the room and shut the door behind him.",
                         "The princess went into the kitchen and opened the stove door.",
-                        "She knelt down and looked into the fire for a long time without saying anything.",
-                        "And then she managed to begin. The firelight moved across her face,",
-                        "and a log cracked and spat.",
-                        "\"I am the princess who was to be married into this country.\""
+                        "She knelt down and looked into the fire for a long time.",
+                        "A log cracked and spat.",
+                        "At last she began. \"I am the princess who was to marry into this country.\""
                     ],
                     right: [
-                        "Once it had started it did not stop.",
-                        "The handkerchief lost at the stream, the clothes changed out on the open road, Falada over the gate — she told all of it.",
-                        "The tears ran down her face the whole time she spoke.",
-                        "And when she had finished, her shoulders felt lighter.",
+                        "Once it had started, it did not stop.",
+                        "She told the stove everything: the lost handkerchief, the swapped clothes, Falada over the gate.",
+                        "Tears ran down her face.",
+                        "When she had finished, her shoulders felt lighter.",
                         "The king had been outside the door, hearing every word."
                     ]
                 }
@@ -848,37 +841,32 @@ const EN = {
                     art: '08-ending.webp',
                     emoji: '👑',
                     left: [
-                        "The next day there was a great feast at the castle. The princess was given fine clothes and told to sit in a high place,",
-                        "and the maid, who could make no sense of it, kept glancing sideways.",
+                        "The next day there was a great feast. The princess was given fine clothes and a high seat.",
+                        "The maid could make no sense of it and kept glancing sideways.",
                         "\"Why is the goose girl sitting up there?\"",
-                        "Her hand shook round her cup.",
-                        "And still she made herself lift her chin."
+                        "Her hand shook round her cup, but she made herself lift her chin."
                     ],
                     right: [
-                        "When the feast was well under way the king set down his glass and asked, as though in passing,",
-                        "\"Here is an interesting question. If a servant took her mistress's place, what punishment should she have?\"",
-                        "\"Such a person should be put out of the castle! And never let back in.\"",
-                        "the maid answered, loudly."
+                        "When the feast was well under way, the king set down his cup.",
+                        "\"Here is a question,\" he said. \"If a servant took her mistress's place, what punishment should she have?\"",
+                        "The maid answered loudly, \"Put her out of the castle! Never let her back in!\""
                     ]
                 },
                 {
                     art: '08-ending-2.webp',
                     emoji: '👑',
                     left: [
-                        "The great hall went quiet.",
-                        "\"Quite right. It shall be as you have said.\"",
-                        "The blood went out of the maid's face.",
-                        "Only then did she understand what had happened.",
-                        "And she left the castle that same day.",
-                        "The prince got up and came over to the princess."
+                        "The hall went quiet.",
+                        "The king looked straight at the maid. \"That servant is you. It shall be as you said.\"",
+                        "The maid went white, and she was sent out of the castle that same day.",
+                        "Then the prince came over to the princess."
                     ],
                     right: [
-                        "He had thought all along there was something familiar about her face.",
-                        "\"We passed each other under the gate any number of times.\"",
-                        "\"And you did not know me then.\"",
-                        "\"Why did you say nothing all this while?\"",
-                        "\"I gave my word. I may speak now, I think?\"",
-                        "And that day the princess laughed out loud for the first time."
+                        "The prince thought she looked familiar.",
+                        "\"We met at the gate any number of times,\" she said.",
+                        "\"Then why did you say nothing?\" he asked.",
+                        "\"I gave my word. May I speak now?\"",
+                        "And the princess laughed out loud for the first time."
                     ]
                 }
             ]
@@ -901,7 +889,7 @@ const EN = {
             answer: 2
         },
         {
-            q: 'Why did the maid want Falada sent away?',
+            q: 'Why did the maid really want Falada gone?',
             choices: ['The horse had thrown her', 'She was afraid the horse would speak', 'The prince did not like him'],
             answer: 1
         },
@@ -962,46 +950,46 @@ const EN = {
             { word: 'lose', meaning: '여의다', sentence: 'She had lost her father early.' },
             { word: 'offer of marriage', meaning: '혼담', sentence: 'An offer of marriage came from far away.' },
             { word: 'lie awake', meaning: '뜬눈으로 새우다', sentence: 'Her mother lay awake for nights on end.' },
-            { word: 'stable', meaning: '마구간', sentence: 'She went down to the stable.' },
+            { word: 'stable', meaning: '마구간', sentence: "She led the white horse Falada out of the stable." },
             { word: 'mane', meaning: '갈기', sentence: 'The princess stroked his mane.' }
         ],
         '01-departure-2.webp': [
             { word: 'handkerchief', meaning: '손수건', sentence: 'A white handkerchief.' },
             { word: 'embroider', meaning: '수를 놓다', sentence: 'She had embroidered it herself.' },
-            { word: 'baggage', meaning: '짐', sentence: 'The baggage was slight.' },
+            { word: 'baggage', meaning: '짐', sentence: "They had little baggage." },
             { word: 'slacken', meaning: '늦추다', sentence: 'The princess slackened the reins.' },
             { word: 'out of sight', meaning: '보이지 않는', sentence: 'Over the hill the castle was out of sight.' }
         ],
         '02-stream.webp': [
-            { word: 'a scrap of', meaning: '한 점의', sentence: 'Open country without a scrap of shade.' },
+            { word: 'a scrap of', meaning: '한 점의', sentence: "There was not a scrap of shade." },
             { word: 'bear', meaning: '견디다', sentence: 'She could not bear her thirst.' },
             { word: 'fetch', meaning: '떠 오다', sentence: 'Would you fetch me some water?' },
             { word: 'wait on', meaning: '시중들다', sentence: 'I shall not wait on you any longer.' },
-            { word: 'take in', meaning: '알아듣다', sentence: 'She had not taken in what it meant.' }
+            { word: 'take in', meaning: '알아듣다', sentence: "The princess could not take in what it meant." }
         ],
         '02-stream-2.webp': [
             { word: 'cup', meaning: '두 손을 모으다', sentence: 'The princess cupped both hands.' },
             { word: 'slip out', meaning: '스르르 미끄러지다', sentence: 'Something slipped out from inside her dress.' },
-            { word: 'bend', meaning: '물굽이', sentence: 'It went round the bend of the stream.' },
-            { word: 'hold together', meaning: '붙들어 주다', sentence: 'The thing that had been holding her together.' }
+            { word: 'bend', meaning: '물굽이', sentence: "The handkerchief went round the bend." },
+            { word: 'hold together', meaning: '붙들어 주다', sentence: "What held her together had gone too." }
         ],
         '03-swap.webp': [
             { word: 'stride', meaning: '성큼성큼 걷다', sentence: 'The maid came striding over.' },
-            { word: 'swap', meaning: '바꾸다', sentence: 'We shall swap with mine.' },
+            { word: 'swap', meaning: '바꾸다', sentence: "You'll swap them for mine." },
             { word: 'from now on', meaning: '이제부터', sentence: 'From now on I am the princess.' },
             { word: 'hand over', meaning: '건네주다', sentence: 'She handed over her clothes.' }
         ],
         '03-swap-2.webp': [
-            { word: 'hoof', meaning: '말발굽', sentence: "The dust came up under the horse's hooves." },
+            { word: 'hoof', meaning: '말발굽', sentence: "Dust rose under the horse's hooves." },
             { word: 'thick with', meaning: '~투성이인', sentence: 'Her shoes were soon thick with it.' },
             { word: 'come into sight', meaning: '보이기 시작하다', sentence: 'A castle came into sight.' },
-            { word: 'throw wide', meaning: '활짝 열다', sentence: 'The gates thrown wide.' }
+            { word: 'throw wide', meaning: '활짝 열다', sentence: "The gates were thrown wide." }
         ],
         '04-geese.webp': [
             { word: 'meet', meaning: '마중하다', sentence: 'The prince came out to meet them.' },
             { word: 'servant', meaning: '하인', sentence: 'A servant I picked up on the road.' },
             { word: 'want doing', meaning: '할 일이 있다', sentence: 'Set her to whatever wants doing.' },
-            { word: 'mind', meaning: '돌보다, 치다', sentence: 'Let her mind the geese, then.' }
+            { word: 'mind', meaning: '돌보다, 치다', sentence: "Let her mind the geese." }
         ],
         '04-geese-2.webp': [
             { word: 'freckle', meaning: '주근깨', sentence: 'A face full of freckles.' },
@@ -1012,8 +1000,8 @@ const EN = {
         ],
         '05-falada.webp': [
             { word: 'rest easy', meaning: '마음이 놓이다', sentence: 'The maid could not rest easy.' },
-            { word: 'there is no telling', meaning: '알 수 없다', sentence: 'There was no telling when that white horse might open his mouth.' },
-            { word: 'grieve', meaning: '마음 아프게 하다', sentence: 'It grieves me to look at him.' },
+            { word: 'there is no telling', meaning: '알 수 없다', sentence: "There was no telling when that white horse might speak." },
+            { word: 'grieve', meaning: '마음 아프게 하다', sentence: "The princess grieved." },
             { word: 'gatekeeper', meaning: '문지기', sentence: 'She went to the gatekeeper.' },
             { word: 'hesitate', meaning: '망설이다', sentence: 'The gatekeeper hesitated.' }
         ],
@@ -1032,7 +1020,7 @@ const EN = {
             { word: 'scramble after', meaning: '헐레벌떡 쫓다', sentence: 'Conrad went scrambling after it.' },
             { word: 'plait', meaning: '땋다', sentence: 'The princess had her hair plaited again.' },
             { word: 'grass stain', meaning: '풀물', sentence: 'There was grass stain all over the hat.' },
-            { word: 'have had enough', meaning: '참다못하다', sentence: 'In the end Conrad had had enough.' },
+            { word: 'have had enough', meaning: '참다못하다', sentence: "Conrad had had enough." },
             { word: 'let pass', meaning: '흘려듣다', sentence: 'And the king did not let that pass.' }
         ],
         '07-stove.webp': [
@@ -1055,10 +1043,10 @@ const EN = {
             { word: 'punishment', meaning: '벌', sentence: 'What punishment should she have?' }
         ],
         '08-ending-2.webp': [
-            { word: 'go quiet', meaning: '조용해지다', sentence: 'The great hall went quiet.' },
-            { word: 'familiar', meaning: '낯익은', sentence: 'There was something familiar about her face.' },
-            { word: 'any number of times', meaning: '몇 번이나', sentence: 'We passed each other any number of times.' },
-            { word: 'out loud', meaning: '소리 내어', sentence: 'The princess laughed out loud.' }
+            { word: 'go quiet', meaning: '조용해지다', sentence: "The hall went quiet." },
+            { word: 'familiar', meaning: '낯익은', sentence: "The prince thought she looked familiar." },
+            { word: 'any number of times', meaning: '몇 번이나', sentence: "We met at the gate any number of times." },
+            { word: 'out loud', meaning: '소리 내어', sentence: "The princess laughed out loud." }
         ],
         'end.webp': [
             { word: 'rare', meaning: '드문', sentence: 'A talking horse is a rare thing.' },

@@ -552,40 +552,29 @@ const EN = {
                     emoji: '📦',
                     left: [
                         "In Baghdad there lived a caliph named Chasid.",
-                        "He was kind-hearted and laughed easily.",
-                        "Above all he loved curious things.",
-                        "In the afternoons he rested over his water pipe.",
-                        "That day too he was drinking coffee in his garden.",
-                        "His vizier Mansor sat beside him."
+                        "He was kind and laughed easily. Above all he loved curious things.",
+                        "In the afternoons he liked to rest in his garden.",
+                        "That day he was drinking coffee there. His vizier Mansor sat beside him."
                     ],
                     right: [
-                        "Then a pedlar came to the gate with a pack on his back.",
+                        "Just then a pedlar came to the gate with a pack on his back.",
                         "He was a bent man with an odd sort of smile.",
-                        "\"I have brought something precious.\"",
-                        "The pedlar held out a small wooden box.",
-                        "\"Inside is a very rare powder.\"",
-                        "The caliph paid for it at once.",
-                        "He never turned down anything curious."
+                        "He held out a small wooden box. \"I have brought something precious. Inside is a very rare powder.\"",
+                        "The caliph paid for it at once. He never said no to anything curious."
                     ]
                 },
                 {
                     art: '01-powder-2.webp',
                     emoji: '📦',
                     left: [
-                        "When the pedlar had gone, they opened the box.",
-                        "Inside was a black powder.",
-                        "Beside it lay a single sheet of paper.",
-                        "It was covered in unfamiliar letters.",
-                        "Nobody in the palace could read them.",
-                        "So the caliph sent for a learned man."
+                        "When the pedlar had gone, they opened the box. Inside was a black powder.",
+                        "Beside it lay a sheet of paper, covered in unfamiliar letters.",
+                        "Nobody in the palace could read them. So the caliph sent for a learned man."
                     ],
                     right: [
-                        "The man studied it a long while, and then he spoke.",
-                        "\"These letters are very ancient.\"",
-                        "\"It says that if you smell the powder and say the word,\"",
-                        "\"you may turn into whatever beast you please.\"",
-                        "The caliph's eyes lit up.",
-                        "Mansor was somehow not easy about it."
+                        "The man studied it for a long time. \"These letters are very ancient,\" he said.",
+                        "\"It says: smell the powder and say 'Mutabor', and you will turn into any beast you like. You will even understand the speech of beasts.\"",
+                        "The caliph's eyes lit up. But Mansor was somehow not easy about it."
                     ]
                 }
             ]
@@ -598,41 +587,29 @@ const EN = {
                     art: '02-warning.webp',
                     emoji: '⚠️',
                     left: [
-                        "\"And you shall understand the speech of beasts!\"",
-                        "The caliph clapped his hands in delight.",
-                        "But there was small writing at the foot of the page.",
-                        "The learned man read that out too.",
-                        "\"There is one thing to beware of.\"",
-                        "\"If you laugh in the shape of a beast, you forget the word.\""
+                        "\"I can understand the speech of beasts!\" The caliph clapped his hands with joy.",
+                        "But at the bottom of the page there was some small writing.",
+                        "The learned man read that out too. \"There is one thing to beware of. If you laugh in the shape of a beast, you will forget the word.\""
                     ],
                     right: [
-                        "\"And then you can never be a person again.\"",
-                        "The room went quiet.",
-                        "Mansor looked worried.",
-                        "\"My lord, this is dangerous.\"",
-                        "\"You had far better leave it alone.\" And he pushed the box away."
+                        "\"Then you can never be a person again,\" he went on.",
+                        "The room went quiet. Mansor pushed the box away with a worried face.",
+                        "\"My lord, this is dangerous. You had better leave it alone.\""
                     ]
                 },
                 {
                     art: '02-warning-2.webp',
                     emoji: '⚠️',
                     left: [
-                        "The caliph let the words go past him.",
-                        "\"All I have to do is not laugh.\"",
-                        "\"Where is the difficulty in that?\"",
-                        "Mansor could say no more.",
-                        "The two of them set out early the next morning.",
-                        "They went to the pond behind the palace.",
-                        "And hid themselves behind the reeds."
+                        "But the caliph let the words go past him. \"All I have to do is not laugh. Where is the difficulty in that?\"",
+                        "Mansor could not stop him.",
+                        "Early the next morning the two of them went to the pond behind the palace. They hid behind the reeds."
                     ],
                     right: [
-                        "Two storks happened to be walking at the water's edge.",
-                        "They strode about on their long legs.",
-                        "\"Let us try those.\"",
-                        "The caliph opened the box.",
-                        "The black powder glittered in the morning sun.",
-                        "It had a sharp smell that stung the nose.",
-                        "Mansor quietly took a step back."
+                        "Two storks happened to be walking at the water's edge. They strode about on their long legs.",
+                        "\"Let us try those,\" the caliph whispered.",
+                        "He opened the box. The black powder glittered in the morning sun.",
+                        "It had a sharp smell that stung the nose, and Mansor stepped back a little."
                     ]
                 }
             ]
@@ -645,42 +622,29 @@ const EN = {
                     art: '03-storks.webp',
                     emoji: '🕊️',
                     left: [
-                        "The two of them held the powder to their noses.",
-                        "And then they said the word together.",
-                        "\"Mutabor!\"",
-                        "In an instant their bodies changed.",
-                        "Their legs shot out long.",
-                        "Their necks grew long and they turned white all over.",
-                        "Their mouths became sharp beaks."
+                        "The two of them held the powder to their noses and said the word together. \"Mutabor!\"",
+                        "In an instant their bodies changed. Their legs shot out long.",
+                        "Their necks grew long, and they turned white all over. Their mouths became sharp beaks."
                     ],
                     right: [
-                        "Before they knew it they were two storks.",
-                        "\"Well, this is a wonderful thing!\"",
-                        "The two storks tried walking by the water.",
-                        "Their steps went long and striding by themselves.",
-                        "They were so pleased they nearly laughed.",
-                        "Just then a frog gave a hop.",
-                        "And Mansor's beak fell open."
+                        "Before they knew it they were two storks. The caliph flapped his wings. \"How wonderful!\"",
+                        "They tried walking by the water. Their steps grew long all by themselves.",
+                        "Just then a frog gave a hop. Mansor now had a stork's body, so his beak snapped open all by itself."
                     ]
                 },
                 {
                     art: '03-storks-2.webp',
                     emoji: '🕊️',
                     left: [
-                        "Then some real storks came over.",
-                        "And to their astonishment they understood every word.",
-                        "\"How were the frogs this morning?\"",
-                        "\"Nothing special.\"",
-                        "The two storks listened closely.",
-                        "And then one of the birds began to dance."
+                        "Then some real storks came over and began to talk.",
+                        "\"How were the frogs this morning?\" asked one. \"Nothing special,\" said another.",
+                        "To their astonishment, the two storks understood every word. They listened closely.",
+                        "Then one of the real storks began to dance."
                     ],
                     right: [
-                        "It lifted one leg high and wobbled about.",
-                        "\"Well? What do you think of my dancing?\"",
-                        "There was never anything so funny to look at.",
-                        "And the two storks could not hold it in.",
-                        "\"Ha, ha, ha!\" The laughter burst out of them.",
-                        "They laughed until they held their sides."
+                        "It lifted one leg high and wobbled about. \"Well? What do you think of my dancing?\"",
+                        "It looked so funny that the two storks could not hold it in.",
+                        "\"Ha, ha, ha!\" They laughed until they held their sides."
                     ]
                 }
             ]
@@ -693,41 +657,30 @@ const EN = {
                     art: '04-forgot.webp',
                     emoji: '😱',
                     left: [
-                        "When the laughing stopped, the two storks froze.",
-                        "Mansor's face went white.",
-                        "\"My lord, you were not to laugh!\"",
-                        "And only then did the caliph come to himself.",
-                        "\"Quickly — let us say the word.\"",
-                        "But his beak would not open on it."
+                        "When the laughing stopped, the two storks froze. Mansor's face went white.",
+                        "\"My lord, we were not supposed to laugh!\"",
+                        "Only then did the caliph come to his senses. \"Quick, let us say the word!\"",
+                        "But nothing came out of his beak."
                     ],
                     right: [
-                        "\"The word… what was the word?\"",
-                        "Try as they might, it would not come.",
-                        "They could not even bring back the first letter.",
-                        "The two storks looked at each other.",
-                        "What the pond showed was storks still.",
-                        "Beaks and legs, exactly as before."
+                        "\"The word… the word… what was it?\" the caliph stammered.",
+                        "Try as they might, it would not come. They could not even bring back the first letter.",
+                        "The two storks looked at each other. In the pond there were still two storks, with the same beaks and legs as before."
                     ]
                 },
                 {
                     art: '04-forgot-2.webp',
                     emoji: '😱',
                     left: [
-                        "The two storks flew to the palace.",
-                        "They sat at a window and called to the courtiers.",
+                        "The two storks flew to the palace. They sat at a window, and the caliph called to the courtiers.",
                         "\"It is I! Your caliph!\"",
-                        "But to human ears it was only bird noise.",
-                        "Nothing but a hoarse clattering.",
-                        "The servants came running with brooms instead."
+                        "But to human ears it was only a hoarse clattering. The servants came running with brooms instead."
                     ],
                     right: [
-                        "\"Where did these birds get in!\"",
-                        "\"Drive them out, quickly!\"",
-                        "The two storks fled up onto the roof.",
-                        "From there they looked down over the market streets.",
-                        "Already there was talk of setting up another caliph.",
-                        "\"Those are my people down there.\"",
-                        "The caliph's voice was thick."
+                        "\"Where did these birds get in? Drive them out, quickly!\" the servants shouted.",
+                        "The two storks fled up onto the roof. Down in the market streets, people were whispering.",
+                        "They were already talking about choosing a new caliph.",
+                        "\"Those are my people,\" said the caliph, and his voice was thick."
                     ]
                 }
             ]
@@ -740,39 +693,29 @@ const EN = {
                     art: '05-owl.webp',
                     emoji: '🦉',
                     left: [
-                        "With nowhere to go, the two storks flew to the desert.",
-                        "After days of wandering they found an old building.",
-                        "The pillars had fallen and the roof was open to the sky.",
-                        "The two storks went inside.",
-                        "There was a sound of weeping in a dark room.",
-                        "A small owl sat huddled in the corner.",
-                        "Her eyes were very large and very sad."
+                        "With nowhere else to go, the two storks flew out over the desert.",
+                        "After days of wandering they found an old building. The pillars had fallen, and the roof was gone.",
+                        "From a dark room inside there came a sound of weeping.",
+                        "A small owl sat huddled in the corner, with large, sad eyes."
                     ],
                     right: [
-                        "\"Who is there?\"",
-                        "The owl hid her face behind a wing.",
-                        "Pale dust rose about their feet.",
+                        "When the storks came closer, the owl hid her face behind a wing. \"Who is there?\"",
                         "The two storks told her everything that had happened.",
-                        "The owl nodded her head.",
-                        "\"A magician did this to me as well.\""
+                        "The owl nodded. \"A magician did this to me as well.\""
                     ]
                 },
                 {
                     art: '05-owl-2.webp',
                     emoji: '🦉',
                     left: [
-                        "\"I am really the daughter of a king of India.\"",
-                        "\"A magician named Kaschnur made me like this.\"",
-                        "\"Because I would not marry him.\"",
-                        "The owl wiped her eyes.",
-                        "\"I have been alone here a long time.\""
+                        "\"I am really the daughter of a king of India,\" said the owl.",
+                        "\"A magician named Kaschnur made me like this, because I would not marry him.\"",
+                        "The owl wiped her eyes. \"I have been alone here for a long time.\""
                     ],
                     right: [
-                        "The two storks were sorry for her.",
-                        "And then the owl dropped her voice.",
-                        "\"But I have good news for you.\"",
-                        "\"That magician comes to this house tonight.\"",
-                        "\"He holds a meeting here with his fellows.\"",
+                        "The two storks felt sorry for her. Then the owl dropped her voice.",
+                        "\"But I have good news. That magician meets his fellows in this house tonight.\"",
+                        "\"When they meet, he likes to boast about his tricks. He may let your word slip out.\"",
                         "The two storks turned and looked at each other."
                     ]
                 }
@@ -786,41 +729,29 @@ const EN = {
                     art: '06-eavesdrop.webp',
                     emoji: '🌙',
                     left: [
-                        "The three of them hid behind a fallen wall.",
-                        "They did not make a sound of breathing.",
-                        "At midnight there were footsteps.",
-                        "A company in black clothes came in.",
-                        "The one who sat in the middle was Kaschnur.",
-                        "He had a pointed beard and a hard eye."
+                        "The three of them hid behind a fallen wall. They hardly dared to breathe.",
+                        "At midnight there were footsteps, and a company in black clothes came in.",
+                        "The one who sat in the middle was Kaschnur. He had a pointed beard and sharp, fierce eyes."
                     ],
                     right: [
-                        "The company sat round a low table.",
-                        "Each of them told what he had been doing.",
-                        "At last Kaschnur laughed out loud.",
-                        "\"My story will be the best of the lot.\"",
-                        "The two storks put their heads forward.",
-                        "This was not a thing to miss."
+                        "The company sat round a low table, and each one boasted about what he had done.",
+                        "At last Kaschnur laughed out loud. \"My story will be the best of the lot.\"",
+                        "The two storks leaned forward to listen. They could not miss this story."
                     ]
                 },
                 {
                     art: '06-eavesdrop-2.webp',
                     emoji: '🌙',
                     left: [
-                        "\"The caliph of Baghdad is wandering about as a stork.\"",
-                        "\"I dressed as a pedlar and sold him the powder.\"",
-                        "\"The word, you ask?\"",
-                        "\"Mutabor, of course.\"",
-                        "The company roared with laughter.",
-                        "Behind the wall the two storks opened their eyes wide."
+                        "\"The caliph of Baghdad is wandering about as a stork,\" said Kaschnur.",
+                        "\"I dressed as a pedlar and sold him the powder. The word, you ask? Why, Mutabor!\"",
+                        "The company roared with laughter. Behind the wall, the two storks opened their eyes wide."
                     ],
                     right: [
-                        "\"Mutabor! That was it!\"",
-                        "They very nearly cried it out.",
+                        "\"Mutabor! That was it!\" The storks very nearly cried it out.",
                         "The owl quickly put a wing over their beaks.",
-                        "The three of them waited for the meeting to end.",
-                        "At dawn the company scattered.",
-                        "The footsteps went away one by one.",
-                        "And only then did the three let out their breath."
+                        "At dawn the company scattered. Kaschnur lay down in the inner room and began to snore.",
+                        "Only then did the three let out their breath."
                     ]
                 }
             ]
@@ -833,41 +764,31 @@ const EN = {
                     art: '07-mutabor.webp',
                     emoji: '✨',
                     left: [
-                        "The two storks came outside.",
-                        "The eastern sky was slowly growing light.",
-                        "They stood side by side facing east.",
-                        "And then they cried it out together.",
-                        "\"Mutabor!\"",
-                        "The feathers melted away."
+                        "The two storks went outside. The eastern sky was slowly growing light.",
+                        "They stood side by side facing east, and cried out together. \"Mutabor!\"",
+                        "At once their feathers melted away."
                     ],
                     right: [
-                        "Their legs shrank and the beaks were gone.",
-                        "The two of them stood in their own shapes again.",
-                        "The caliph turned his own hands over and looked at them.",
-                        "Mansor sat straight down on the ground.",
-                        "\"We are saved, my lord!\" And the two of them embraced."
+                        "Their legs shrank and their beaks were gone. They stood in their own shapes again.",
+                        "The caliph turned his hands over and looked at them.",
+                        "Mansor sat right down on the ground. \"We are saved, my lord!\"",
+                        "And the two of them embraced."
                     ]
                 },
                 {
                     art: '07-mutabor-2.webp',
                     emoji: '✨',
                     left: [
-                        "But the owl was an owl still.",
-                        "The word had no power over that spell.",
-                        "The owl spoke quietly.",
-                        "\"Take me for your wife, and it is broken.\"",
-                        "The caliph thought a moment and then nodded.",
-                        "And in that instant the owl changed.",
-                        "The feathers were gone, and there stood a lovely young woman."
+                        "But the owl was still an owl. The word had no power over her spell.",
+                        "\"If you take me for your wife, the spell will be broken,\" she said quietly.",
+                        "The caliph thought for a moment and nodded. In that instant the owl changed.",
+                        "Her feathers were gone, and there stood a lovely young woman."
                     ],
                     right: [
-                        "She looked at her own hands a long while.",
-                        "\"I do not know how many years it has been.\"",
-                        "The three of them went to the room where the magician slept.",
-                        "Kaschnur was sound asleep.",
-                        "The three of them took hold of him.",
-                        "And Kaschnur was punished then and there.",
-                        "He could never harm anybody again."
+                        "She looked at her own hands for a long time. \"It has been so many years!\"",
+                        "Then the three of them went to the inner room. Kaschnur was still sound asleep.",
+                        "They tied him up tightly.",
+                        "Kaschnur was punished then and there. He could never harm anybody again."
                     ]
                 }
             ]
@@ -880,41 +801,27 @@ const EN = {
                     art: '08-ending.webp',
                     emoji: '🎉',
                     left: [
-                        "The three of them came back to Baghdad.",
-                        "At the city gate people stopped where they stood.",
-                        "\"The caliph is alive and come home!\"",
-                        "The news went round the whole city at once.",
-                        "The courtiers ran out to meet him.",
-                        "People poured into every street."
+                        "The three of them came back to Baghdad. At the city gate, people stopped where they stood.",
+                        "Someone shouted, \"The caliph has come home alive!\"",
+                        "The news went round the whole city at once. The courtiers ran out to meet him, and people poured into every street."
                     ],
                     right: [
-                        "They beat drums and threw flowers.",
-                        "The caliph told them all that had happened.",
-                        "He left out nothing about being a stork.",
-                        "The people laughed until they held their sides.",
-                        "And the caliph laughed along with them.",
-                        "It was quite safe to laugh now."
+                        "They beat drums and threw flowers. The caliph told them everything that had happened.",
+                        "He left out nothing about being a stork, and the people laughed until they held their sides.",
+                        "The caliph laughed along with them. It was safe to laugh now."
                     ]
                 },
                 {
                     art: '08-ending-2.webp',
                     emoji: '🎉',
                     left: [
-                        "Inside the palace the caliph brought out the box.",
-                        "The box with the black powder in it.",
-                        "He held it up for everyone to see.",
-                        "\"Put this at the back of the storeroom.\"",
-                        "\"And lock it up properly.\"",
-                        "\"One should not meddle with curious things.\""
+                        "In the palace, the caliph took out the box of black powder.",
+                        "\"Put this at the back of the storeroom and lock it up properly. One should not meddle with curious things.\""
                     ],
                     right: [
-                        "Mansor smiled to himself.",
-                        "The caliph cleared his throat.",
-                        "\"Yes, yes. I know.\"",
-                        "\"Did I not tell you so, my lord?\"",
-                        "The caliph went on loving curious stories ever after.",
-                        "Only, when the storks came into one,",
-                        "his face would turn a little red."
+                        "Mansor smiled. \"Did I not tell you so, my lord?\"",
+                        "The caliph cleared his throat. \"Yes, yes. I know.\"",
+                        "He still loved curious stories after that. But whenever storks came up, his face turned a little red."
                     ]
                 }
             ]
@@ -978,7 +885,7 @@ const EN = {
                     "A German writer named Hauff set this story in Arabia. It came out about two hundred years ago.",
                     "The caliph loved curious things. That is why he bought the black powder in the first place.",
                     "The word came with one condition: no laughing while he was a stork. The caliph thought nothing of it.",
-                    "And then one frog is enough to open his beak. The hard thing was not holding back from something great, but from something small."
+                    "And then one silly stork dance was enough to make him laugh. The hard thing was not holding back from something big. It was holding back from something small."
                 ],
                 right: [
                     "The place where he learned the word again was a meeting of magicians. He heard it from hiding.",
@@ -1002,14 +909,14 @@ const EN = {
             { word: 'precious', meaning: '귀한', sentence: 'I have brought something precious.' }
         ],
         '01-powder-2.webp': [
-            { word: 'unfamiliar', meaning: '낯선', sentence: 'It was covered in unfamiliar letters.' },
+            { word: 'unfamiliar', meaning: '낯선', sentence: 'Covered in unfamiliar letters.' },
             { word: 'learned', meaning: '글 아는', sentence: 'The caliph sent for a learned man.' },
             { word: 'ancient', meaning: '아주 오래된', sentence: 'These letters are very ancient.' },
             { word: 'light up', meaning: '반짝이다', sentence: "The caliph's eyes lit up." },
-            { word: 'not easy about', meaning: '마음이 놓이지 않는', sentence: 'Mansor was not easy about it.' }
+            { word: 'not easy about', meaning: '마음이 놓이지 않는', sentence: 'Mansor was somehow not easy about it.' }
         ],
         '02-warning.webp': [
-            { word: 'speech', meaning: '말', sentence: 'You shall understand the speech of beasts.' },
+            { word: 'speech', meaning: '말', sentence: 'I can understand the speech of beasts!' },
             { word: 'beware of', meaning: '조심하다', sentence: 'There is one thing to beware of.' },
             { word: 'shape', meaning: '모습', sentence: 'If you laugh in the shape of a beast.' },
             { word: 'leave alone', meaning: '그만두다', sentence: 'You had better leave it alone.' }
@@ -1018,8 +925,8 @@ const EN = {
             { word: 'let go past', meaning: '흘려듣다', sentence: 'The caliph let the words go past him.' },
             { word: 'difficulty', meaning: '어려움', sentence: 'Where is the difficulty in that?' },
             { word: 'stride', meaning: '성큼성큼 걷다', sentence: 'They strode about on their long legs.' },
-            { word: 'glitter', meaning: '반짝이다', sentence: 'The powder glittered in the sun.' },
-            { word: 'sting', meaning: '알싸하게 하다', sentence: 'A sharp smell that stung the nose.' }
+            { word: 'glitter', meaning: '반짝이다', sentence: 'The black powder glittered in the morning sun.' },
+            { word: 'sting', meaning: '알싸하게 하다', sentence: 'It had a sharp smell that stung the nose.' }
         ],
         '03-storks.webp': [
             { word: 'in an instant', meaning: '순식간에', sentence: 'In an instant their bodies changed.' },
@@ -1028,9 +935,9 @@ const EN = {
             { word: 'hop', meaning: '폴짝 뛰다', sentence: 'A frog gave a hop.' }
         ],
         '03-storks-2.webp': [
-            { word: 'astonishment', meaning: '놀라움', sentence: 'To their astonishment they understood.' },
+            { word: 'astonishment', meaning: '놀라움', sentence: 'To their astonishment, the two storks understood every word.' },
             { word: 'nothing special', meaning: '그저 그런', sentence: 'Nothing special.' },
-            { word: 'wobble', meaning: '뒤뚱거리다', sentence: 'It lifted one leg and wobbled about.' },
+            { word: 'wobble', meaning: '뒤뚱거리다', sentence: 'It lifted one leg high and wobbled about.' },
             { word: 'hold in', meaning: '참다', sentence: 'The two storks could not hold it in.' },
             { word: 'hold one’s sides', meaning: '배를 잡다', sentence: 'They laughed until they held their sides.' }
         ],
@@ -1038,28 +945,28 @@ const EN = {
             { word: 'freeze', meaning: '얼어붙다', sentence: 'The two storks froze.' },
             { word: 'go white', meaning: '하얗게 질리다', sentence: "Mansor's face went white." },
             { word: 'try as one might', meaning: '아무리 애써도', sentence: 'Try as they might, it would not come.' },
-            { word: 'bring back', meaning: '떠올리다', sentence: 'They could not bring back the first letter.' }
+            { word: 'bring back', meaning: '떠올리다', sentence: 'They could not even bring back the first letter.' }
         ],
         '04-forgot-2.webp': [
-            { word: 'courtier', meaning: '신하', sentence: 'They called to the courtiers.' },
-            { word: 'hoarse', meaning: '쉰', sentence: 'Nothing but a hoarse clattering.' },
-            { word: 'broom', meaning: '빗자루', sentence: 'The servants came with brooms.' },
+            { word: 'courtier', meaning: '신하', sentence: 'The caliph called to the courtiers.' },
+            { word: 'hoarse', meaning: '쉰', sentence: 'It was only a hoarse clattering.' },
+            { word: 'broom', meaning: '빗자루', sentence: 'The servants came running with brooms.' },
             { word: 'drive out', meaning: '쫓아내다', sentence: 'Drive them out, quickly!' },
-            { word: 'thick', meaning: '목이 잠긴', sentence: "The caliph's voice was thick." }
+            { word: 'thick', meaning: '목이 잠긴', sentence: 'His voice was thick.' }
         ],
         '05-owl.webp': [
             { word: 'wander', meaning: '헤매다', sentence: 'After days of wandering.' },
             { word: 'pillar', meaning: '기둥', sentence: 'The pillars had fallen.' },
-            { word: 'weep', meaning: '흐느끼다', sentence: 'There was a sound of weeping.' },
+            { word: 'weep', meaning: '흐느끼다', sentence: 'There came a sound of weeping.' },
             { word: 'huddle', meaning: '웅크리다', sentence: 'A small owl sat huddled in the corner.' },
             { word: 'magician', meaning: '마법사', sentence: 'A magician did this to me as well.' }
         ],
         '05-owl-2.webp': [
-            { word: 'daughter', meaning: '딸', sentence: 'I am the daughter of a king of India.' },
+            { word: 'daughter', meaning: '딸', sentence: 'I am really the daughter of a king of India.' },
             { word: 'marry', meaning: '시집가다', sentence: 'Because I would not marry him.' },
             { word: 'wipe', meaning: '닦다', sentence: 'The owl wiped her eyes.' },
             { word: 'drop one’s voice', meaning: '목소리를 낮추다', sentence: 'The owl dropped her voice.' },
-            { word: 'fellow', meaning: '패거리', sentence: 'He holds a meeting with his fellows.' }
+            { word: 'fellow', meaning: '패거리', sentence: 'That magician meets his fellows in this house tonight.' }
         ],
         '06-eavesdrop.webp': [
             { word: 'company', meaning: '무리', sentence: 'A company in black clothes came in.' },
@@ -1070,20 +977,20 @@ const EN = {
         '06-eavesdrop-2.webp': [
             { word: 'dress as', meaning: '~로 꾸미다', sentence: 'I dressed as a pedlar.' },
             { word: 'roar with laughter', meaning: '크게 웃다', sentence: 'The company roared with laughter.' },
-            { word: 'cry out', meaning: '소리를 지르다', sentence: 'They very nearly cried it out.' },
+            { word: 'cry out', meaning: '소리를 지르다', sentence: 'The storks very nearly cried it out.' },
             { word: 'scatter', meaning: '흩어지다', sentence: 'At dawn the company scattered.' },
             { word: 'let out one’s breath', meaning: '숨을 내쉬다', sentence: 'The three let out their breath.' }
         ],
         '07-mutabor.webp': [
             { word: 'side by side', meaning: '나란히', sentence: 'They stood side by side facing east.' },
-            { word: 'melt away', meaning: '사르르 사라지다', sentence: 'The feathers melted away.' },
+            { word: 'melt away', meaning: '사르르 사라지다', sentence: 'Their feathers melted away.' },
             { word: 'shrink', meaning: '줄어들다', sentence: 'Their legs shrank.' },
             { word: 'embrace', meaning: '얼싸안다', sentence: 'The two of them embraced.' }
         ],
         '07-mutabor-2.webp': [
-            { word: 'spell', meaning: '마법', sentence: 'The word had no power over that spell.' },
-            { word: 'break', meaning: '풀다', sentence: 'Take me for your wife, and it is broken.' },
-            { word: 'sound asleep', meaning: '곤히 잠든', sentence: 'Kaschnur was sound asleep.' },
+            { word: 'spell', meaning: '마법', sentence: 'The word had no power over her spell.' },
+            { word: 'break', meaning: '풀다', sentence: 'If you take me for your wife, the spell will be broken.' },
+            { word: 'sound asleep', meaning: '곤히 잠든', sentence: 'Kaschnur was still sound asleep.' },
             { word: 'punish', meaning: '벌하다', sentence: 'Kaschnur was punished then and there.' },
             { word: 'harm', meaning: '해치다', sentence: 'He could never harm anybody again.' }
         ],
@@ -1095,7 +1002,7 @@ const EN = {
         ],
         '08-ending-2.webp': [
             { word: 'storeroom', meaning: '창고', sentence: 'Put this at the back of the storeroom.' },
-            { word: 'lock up', meaning: '자물쇠를 채우다', sentence: 'And lock it up properly.' },
+            { word: 'lock up', meaning: '자물쇠를 채우다', sentence: 'Lock it up properly.' },
             { word: 'meddle with', meaning: '함부로 손대다', sentence: 'One should not meddle with curious things.' },
             { word: 'clear one’s throat', meaning: '헛기침하다', sentence: 'The caliph cleared his throat.' }
         ],
@@ -1103,7 +1010,7 @@ const EN = {
             { word: 'set in', meaning: '무대로 삼다', sentence: 'Hauff set this story in Arabia.' },
             { word: 'condition', meaning: '조건', sentence: 'The word came with one condition.' },
             { word: 'think nothing of', meaning: '대수롭지 않게 여기다', sentence: 'The caliph thought nothing of it.' },
-            { word: 'hold back from', meaning: '참다', sentence: 'Holding back from something small.' }
+            { word: 'hold back from', meaning: '참다', sentence: 'It was holding back from something small.' }
         ]
     }
 };

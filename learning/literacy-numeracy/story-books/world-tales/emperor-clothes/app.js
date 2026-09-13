@@ -524,35 +524,27 @@ const EN = {
                     art: '01-emperor.webp',
                     emoji: '👑',
                     left: [
-                        "The emperor changed his clothes once an hour. Clothes came before the business of the country, and if anyone mentioned a new outfit he forgot his dinner.",
-                        "His officials all knew it. His wardrobe took up a whole room — no, ten rooms.",
-                        "\"And how is this morning's coat?\""
+                        "The emperor changed his clothes once an hour. Clothes came before the business of the country.",
+                        "If anyone mentioned a new outfit, he forgot his dinner.",
+                        "His officials all knew it. His wardrobe took up a whole room. No, ten rooms!"
                     ],
                     right: [
-                        "The officials always gave the same answer.",
-                        "\"Quite magnificent, Your Majesty!\"",
-                        "\"Today's is finer than yesterday's.\"",
-                        "The emperor liked hearing it, and the running of the country came second.",
-                        "People talked about him behind his back.",
-                        "\"Where will the country end up at this rate?\""
+                        "Every day the emperor asked, \"How is this morning's coat?\"",
+                        "His officials always said, \"Quite magnificent, Your Majesty! Today's is finer than yesterday's.\"",
+                        "He loved hearing it, and the country came second. People talked about him behind his back. \"What will become of the country?\""
                     ]
                 },
                 {
                     art: '01-emperor-2.webp',
                     emoji: '👑',
                     left: [
-                        "One day two strangers arrived, one tall and one short.",
-                        "They said they were weavers.",
-                        "\"Our cloth is very special indeed.\"",
-                        "\"There is nothing like it in the world.\"",
-                        "The emperor leaned forward."
+                        "One day two strangers arrived, one tall and one short. They said they were weavers.",
+                        "\"Our cloth is very special indeed. There is nothing like it in the world.\"",
+                        "The emperor leaned forward. \"And what is so special about it?\""
                     ],
                     right: [
-                        "\"And what is so special about it?\"",
                         "The two of them dropped their voices.",
-                        "\"To anyone who is a fool…\"",
-                        "\"this cloth is invisible.\"",
-                        "\"And to anyone unfit for his post, as well.\"",
+                        "\"To anyone who is a fool, this cloth is invisible. And to anyone unfit for his post, as well.\"",
                         "The emperor's eyes went wide."
                     ]
                 }
@@ -566,33 +558,29 @@ const EN = {
                     art: '02-swindlers.webp',
                     emoji: '🧵',
                     left: [
-                        "The emperor slapped his knee.",
-                        "'If I only wear that coat…'",
-                        "'I shall know exactly which of them are fools.'",
+                        "The emperor slapped his knee. 'If I wear those clothes, I shall know exactly who is a fool!'",
                         "\"Begin the weaving at once!\"",
-                        "\"It will take a great deal of gold thread.\"",
-                        "\"You shall have as much as you like.\""
+                        "\"It will take a great deal of gold thread,\" said the two men.",
+                        "\"You shall have as much as you like,\" said the emperor."
                     ],
                     right: [
-                        "The two were given a room and two looms set up in it. They were given sacks of gold thread and armfuls of silk, and the emperor never grudged a bit of it.",
-                        "And where did all of it go? Straight into their own pockets.",
-                        "The two of them worked the empty looms busily, with nothing strung on them at all."
+                        "The two were given a room and two looms. They were given sacks of gold thread and armfuls of silk. The emperor never grudged a bit of it.",
+                        "But where did it all go? Straight into their own pockets.",
+                        "They worked the empty looms busily, with nothing strung on them at all."
                     ]
                 },
                 {
                     art: '02-swindlers-2.webp',
                     emoji: '🧵',
                     left: [
-                        "The two worked late into the night, and the looms went clack, clack, clack.",
-                        "The sound came out through the crack in the door, and people going past whispered about it.",
-                        "\"How fine that cloth must be!\"",
+                        "The two pretended to work late into the night, and the looms went clack, clack, clack.",
+                        "The sound came out through the crack in the door, and people going past whispered about it. \"How fine that cloth must be!\"",
                         "The talk spread through the whole country."
                     ],
                     right: [
-                        "But there was nothing on the looms. The empty frames turned and turned.",
-                        "The two men worked their hands in the air, pretending to draw out thread.",
-                        "They snipped at nothing with a pair of scissors.",
-                        "And their faces were perfectly serious."
+                        "But there was still not one thread on the looms. The empty frames turned and turned.",
+                        "The two men moved their hands in the air, pretending to put in thread.",
+                        "They snipped at nothing with a pair of scissors. And their faces were perfectly serious."
                     ]
                 }
             ]
@@ -605,35 +593,28 @@ const EN = {
                     art: '03-loom.webp',
                     emoji: '👓',
                     left: [
-                        "The emperor could not bear the suspense.",
-                        "And yet he did not go himself.",
+                        "The emperor could not bear the suspense. And yet he did not go himself.",
                         "'What if I cannot see it either?'",
-                        "\"I had better send a minister first.\"",
-                        "He sent for his old minister, who was said to be the cleverest man in the country."
+                        "So he sent for his old minister, who was said to be the cleverest man in the country.",
+                        "\"Go and look at the cloth, and come back and tell me.\""
                     ],
                     right: [
-                        "\"Go and look, and come back and tell me.\"",
-                        "The minister went into the room and straightened his spectacles. He went right up close to the loom.",
-                        "He opened his eyes as wide as they would go.",
-                        "He could see nothing at all, and the blood went out of his face.",
-                        "There was not one thread on that loom."
+                        "The minister went into the room. He straightened his spectacles and went right up close to the loom.",
+                        "He opened his eyes as wide as they would go. There was not one thread on that loom!",
+                        "The blood went out of his face."
                     ]
                 },
                 {
                     art: '03-loom-2.webp',
                     emoji: '👓',
                     left: [
-                        "'I cannot see it.'",
-                        "'Does that mean I am a fool?'",
-                        "'Or that I am unfit for my post?'",
-                        "\"Well, minister? What do you think?\"",
-                        "the two men asked. The minister swallowed hard, and a cold sweat ran down his back."
+                        "'I cannot see it. Does that mean I am a fool? Or that I am unfit for my post?'",
+                        "\"Well, minister? What do you think?\" the two men asked.",
+                        "The minister swallowed hard, and a cold sweat ran down his back."
                     ],
                     right: [
-                        "\"It is… quite magnificent.\"",
-                        "\"Such lovely colours.\"",
-                        "\"And the pattern — not a fault in it.\"",
-                        "The two men looked at each other and grinned. The minister walked out, and reported it all to the emperor exactly so.",
+                        "\"It is… quite magnificent. Such lovely colours. And the pattern has not a fault in it.\"",
+                        "The two men looked at each other and grinned. The minister walked out and went to the emperor.",
                         "\"It is as wonderful as they say, Your Majesty.\""
                     ]
                 }
@@ -647,36 +628,26 @@ const EN = {
                     art: '04-nobody.webp',
                     emoji: '🤐',
                     left: [
-                        "Next a young official went, and he could see nothing either. The sweat ran down his back.",
-                        "\"The pattern is quite new.\"",
-                        "\"And the colours dazzle the eye.\"",
-                        "And out he came, quickly.",
-                        "The two men were given more thread, and more gold went into their chest."
+                        "Next a young official went to look. He could see nothing either, and the sweat ran down his back.",
+                        "\"The pattern is quite new, and the colours dazzle the eye!\"",
+                        "He said that and hurried out. Then the two men said they needed more thread, and they got more gold thread."
                     ],
                     right: [
                         "At last the emperor went himself, with his officials trailing after him. The door was opened.",
-                        "The emperor looked at the loom.",
-                        "Everything went dark in front of him.",
-                        "With all his court watching, he could not let it show.",
-                        "'I cannot see it either!'"
+                        "The emperor looked at the loom, and everything went dark in front of him. 'I cannot see it either!'",
+                        "But with all his court watching, he could not let it show."
                     ]
                 },
                 {
                     art: '04-nobody-2.webp',
                     emoji: '🤐',
                     left: [
-                        "'Does that make me a fool? Am I unfit to be emperor?'",
-                        "'It cannot be. It simply cannot be!'",
-                        "The emperor nodded, hugely.",
-                        "\"Oh, it is beautiful!\"",
-                        "\"Everything they say of it is true.\""
+                        "'Does that make me a fool? Am I unfit to be emperor? It cannot be. It simply cannot be!'",
+                        "The emperor nodded, hugely. \"Oh, it is beautiful! Everything they say of it is true.\""
                     ],
                     right: [
-                        "And every official nodded along with him.",
-                        "\"Indeed!\"",
-                        "\"Magnificent!\"",
-                        "Not one of them could see a thing.",
-                        "And not one of them could say so, because the man beside him said he could.",
+                        "Every official nodded along with him. \"Indeed!\" \"Magnificent!\"",
+                        "Not one of them could see a thing. But not one of them could say so, because the man beside him said he could.",
                         "The room filled up with praise."
                     ]
                 }
@@ -692,35 +663,26 @@ const EN = {
                     left: [
                         "The day of the procession was fixed. The two men stayed up all night with sixteen candles burning.",
                         "They sewed at the air and snipped at the air with their scissors.",
-                        "When morning came they threw up both hands.",
-                        "\"It is finished!\"",
-                        "The emperor stood in front of the mirror."
+                        "When morning came, they threw up both hands. \"It is finished!\""
                     ],
                     right: [
-                        "The two of them dressed him.",
-                        "\"Here is the coat.\"",
-                        "\"And here are the trousers.\"",
-                        "\"You can hardly feel the weight of it, can you?\"",
-                        "\"No indeed. Light as a feather.\"",
-                        "And the emperor turned himself this way and that in front of the glass."
+                        "The emperor stood in front of the mirror, and the two of them dressed him.",
+                        "\"Here is the coat, and here are the trousers. You can hardly feel the weight of it, can you?\"",
+                        "\"No indeed. Light as a feather,\" said the emperor, and he turned this way and that in front of the mirror."
                     ]
                 },
                 {
                     art: '05-dressing-2.webp',
                     emoji: '🪡',
                     left: [
-                        "The emperor squared his shoulders and had a look down at his own feet.",
-                        "There was nothing in the mirror at all.",
-                        "And still the emperor smiled.",
-                        "\"It suits me very well.\"",
+                        "The emperor squared his shoulders and looked down at his own feet.",
+                        "There was nothing in the mirror at all. And still the emperor smiled. \"It suits me very well.\"",
                         "His officials applauded."
                     ],
                     right: [
-                        "\"We shall carry the train, Your Majesty.\"",
-                        "Four of them bent down and lifted the empty air with both hands.",
-                        "There was no train to lift.",
-                        "\"Now then. Out we go.\"",
-                        "And the doors were thrown open."
+                        "Four officials bowed low. \"We shall carry the train, Your Majesty.\"",
+                        "They lifted the empty air with both hands. There was no train to lift.",
+                        "\"Now then. Out we go,\" said the emperor, and the doors were thrown open."
                     ]
                 }
             ]
@@ -734,36 +696,27 @@ const EN = {
                     emoji: '📢',
                     left: [
                         "The streets were packed with people. The trumpets sounded, and out walked the emperor.",
-                        "The crowd caught its breath.",
-                        "And then they all called out together.",
-                        "\"Oh, how beautiful!\"",
-                        "\"Just look at that pattern!\""
+                        "The crowd caught its breath. Then everyone called out.",
+                        "\"Oh, how beautiful!\" \"Just look at that pattern!\""
                     ],
                     right: [
-                        "\"I've never seen clothes like it!\"",
-                        "\"There's an emperor for you!\"",
-                        "Not one person said they could see nothing. That would have made them a fool.",
-                        "People hung out of every window, and the procession went on.",
-                        "Behind it, four officials held up a train that was not there."
+                        "\"I've never seen clothes like it!\" \"There's an emperor for you!\"",
+                        "Nobody said they could see nothing, because that would make them a fool. People hung out of every window.",
+                        "The procession went on. Behind the emperor, four officials held up a train that was not there."
                     ]
                 },
                 {
                     art: '06-parade-2.webp',
                     emoji: '📢',
                     left: [
-                        "Then a small voice spoke. It was a child up on his father's shoulders.",
-                        "\"But the emperor hasn't got anything on!\"",
-                        "His father put a hand over his mouth at once.",
-                        "\"Hush. Don't say a word.\"",
+                        "Then a small voice spoke. It was a child up on his father's shoulders. \"But the emperor hasn't got anything on!\"",
+                        "His father put a hand over the child's mouth. \"Hush. Don't say a word.\"",
                         "But it was already too late."
                     ],
                     right: [
-                        "The man next to them had heard it.",
-                        "\"What did that child say?\"",
-                        "\"That he hasn't got anything on.\"",
-                        "The words went out through the crowd like a wave.",
-                        "\"The emperor hasn't got anything on!\"",
-                        "And the whole street was full of it."
+                        "The man next to them had heard it. \"What did that child say?\" \"That the emperor hasn't got anything on!\"",
+                        "The words went out through the crowd like a wave. \"The emperor hasn't got anything on!\"",
+                        "The whole street was full of it."
                     ]
                 }
             ]
@@ -777,33 +730,26 @@ const EN = {
                     emoji: '🚶',
                     left: [
                         "The emperor heard it too, and his face went hot.",
-                        "'That child is right.'",
-                        "'They knew. They all knew.'",
+                        "'That child is right. They knew. They all knew.'",
                         "He wanted to stop walking, and his legs stiffened under him."
                     ],
                     right: [
-                        "He wanted to turn round and run.",
-                        "But he did not. He drew himself up straighter instead.",
-                        "One step, and then another.",
-                        "Only the trumpets went on sounding.",
-                        "The procession went all the way to the end, with four officials behind him — still carrying a train that was not there."
+                        "He wanted to turn round and run. But he did not. He drew himself up straighter instead.",
+                        "One step, and then another. Only the trumpets went on sounding.",
+                        "The procession went all the way to the end. Behind him walked the four officials, still carrying a train that was not there."
                     ]
                 },
                 {
                     art: '07-ending-2.webp',
                     emoji: '🚶',
                     left: [
-                        "That night the palace was quiet. The two men were long gone, and the sacks of gold thread had gone with them.",
-                        "The emperor stood in front of his wardrobe and closed the doors one by one. The room grew dark.",
-                        "With all those clothes, there was not one he wanted to put on.",
-                        "In the morning he called his officials together."
+                        "That night the palace was quiet. The two men were long gone, and so were the sacks of gold thread.",
+                        "The emperor closed his wardrobe doors one by one. Of all those clothes, there was not one he wanted to wear."
                     ],
                     right: [
-                        "\"From now on we shall do it this way.\"",
-                        "\"If you can see a thing, say you can see it.\"",
-                        "\"If you cannot, say you cannot.\"",
-                        "The officials looked at one another, and somebody laughed quietly.",
-                        "And after that there was a great deal less false praise in that palace."
+                        "The next day he told his officials, \"From now on, if you see it, say so. If you don't, say that too.\"",
+                        "The officials looked at one another. Someone laughed quietly.",
+                        "After that there was much less false praise in the palace."
                     ]
                 }
             ]
@@ -821,18 +767,18 @@ const EN = {
             answer: 2
         },
         {
-            q: 'What did the minister actually see on the loom?',
-            choices: ['A pattern of gold and silk', 'Nothing — not one thread', 'Two men asleep'],
+            q: 'What did the minister say about the cloth?',
+            choices: ['That there was nothing on the loom', 'That it was magnificent', 'Nothing. He left without a word'],
             answer: 1
         },
         {
-            q: 'Why did nobody in the room say the truth?',
-            choices: ['Each thought only he could not see it', 'They had all been paid to lie', 'The emperor had forbidden it'],
+            q: 'What did the two men do the night before the procession?',
+            choices: ['They sewed at the air', 'They wove the cloth', 'They counted the gold thread'],
             answer: 0
         },
         {
-            q: 'What were the four officials doing behind the emperor?',
-            choices: ['Handing out gold thread', 'Sounding the trumpets', 'Carrying a train that was not there'],
+            q: 'What did the people in the street call out when the emperor first walked out?',
+            choices: ['That he had nothing on', 'Nothing at all', 'How beautiful his clothes were'],
             answer: 2
         },
         {
@@ -841,8 +787,8 @@ const EN = {
             answer: 1
         },
         {
-            q: 'What did the emperor do after he heard the child?',
-            choices: ['He walked the procession to the end', 'He ran back to the palace', 'He had the weavers arrested'],
+            q: 'What did the emperor do that night?',
+            choices: ['He closed his wardrobe doors', 'He counted the gold thread', 'He walked in another procession'],
             answer: 0
         },
         {
@@ -897,31 +843,31 @@ const EN = {
         ],
         '02-swindlers.webp': [
             { word: 'slap one’s knee', meaning: '무릎을 치다', sentence: 'The emperor slapped his knee.' },
-            { word: 'loom', meaning: '베틀', sentence: 'They were given a room and two looms.' },
+            { word: 'loom', meaning: '베틀', sentence: 'The two were given a room and two looms.' },
             { word: 'grudge', meaning: '아까워하다', sentence: 'The emperor never grudged a bit of it.' },
             { word: 'string', meaning: '실을 걸다', sentence: 'With nothing strung on them at all.' }
         ],
         '02-swindlers-2.webp': [
             { word: 'clack', meaning: '달그락 소리', sentence: 'The looms went clack, clack, clack.' },
             { word: 'whisper', meaning: '수군거리다', sentence: 'People going past whispered about it.' },
-            { word: 'pretend', meaning: '~하는 시늉을 하다', sentence: 'Pretending to draw out thread.' },
+            { word: 'pretend', meaning: '~하는 시늉을 하다', sentence: 'Pretending to put in thread.' },
             { word: 'snip', meaning: '싹둑 자르다', sentence: 'They snipped at nothing with a pair of scissors.' }
         ],
         '03-loom.webp': [
             { word: 'suspense', meaning: '궁금해 견디기 어려움', sentence: 'The emperor could not bear the suspense.' },
-            { word: 'minister', meaning: '대신', sentence: 'I had better send a minister first.' },
-            { word: 'spectacles', meaning: '안경', sentence: 'The minister straightened his spectacles.' },
+            { word: 'minister', meaning: '대신', sentence: 'He sent for his old minister.' },
+            { word: 'spectacles', meaning: '안경', sentence: 'He straightened his spectacles.' },
             { word: 'go out of one’s face', meaning: '얼굴이 하얗게 질리다', sentence: 'The blood went out of his face.' }
         ],
         '03-loom-2.webp': [
             { word: 'swallow hard', meaning: '침을 꿀꺽 삼키다', sentence: 'The minister swallowed hard.' },
             { word: 'cold sweat', meaning: '식은땀', sentence: 'A cold sweat ran down his back.' },
-            { word: 'fault', meaning: '흠, 나무랄 데', sentence: 'The pattern — not a fault in it.' },
+            { word: 'fault', meaning: '흠, 나무랄 데', sentence: 'The pattern has not a fault in it.' },
             { word: 'grin', meaning: '씩 웃다', sentence: 'The two men looked at each other and grinned.' }
         ],
         '04-nobody.webp': [
             { word: 'dazzle', meaning: '눈부시게 하다', sentence: 'The colours dazzle the eye.' },
-            { word: 'trail after', meaning: '줄줄이 따르다', sentence: 'His officials trailed after him.' },
+            { word: 'trail after', meaning: '줄줄이 따르다', sentence: 'With his officials trailing after him.' },
             { word: 'court', meaning: '조정, 신하들', sentence: 'With all his court watching.' },
             { word: 'let it show', meaning: '내색하다', sentence: 'He could not let it show.' }
         ],
@@ -960,12 +906,12 @@ const EN = {
         ],
         '07-ending-2.webp': [
             { word: 'long gone', meaning: '이미 떠난', sentence: 'The two men were long gone.' },
-            { word: 'one by one', meaning: '하나씩', sentence: 'He closed the doors one by one.' },
-            { word: 'from now on', meaning: '앞으로는', sentence: 'From now on we shall do it this way.' },
-            { word: 'false praise', meaning: '거짓 칭찬', sentence: 'There was a great deal less false praise.' }
+            { word: 'one by one', meaning: '하나씩', sentence: 'The emperor closed his wardrobe doors one by one.' },
+            { word: 'from now on', meaning: '앞으로는', sentence: 'From now on, if you see it, say so.' },
+            { word: 'false praise', meaning: '거짓 칭찬', sentence: 'There was much less false praise in the palace.' }
         ],
         'end.webp': [
-            { word: 'rework', meaning: '고쳐 쓰다', sentence: 'He reworked an old Spanish tale into it.' },
+            { word: 'rework', meaning: '고쳐 쓰다', sentence: 'He is said to have reworked an old Spanish tale into it.' },
             { word: 'swindler', meaning: '사기꾼', sentence: 'The swindlers added one very clever rule.' },
             { word: 'set out to', meaning: '~하려고 작정하다', sentence: 'The officials were not setting out to lie.' },
             { word: 'in the same position', meaning: '같은 처지인', sentence: 'None of them knew the others were in the same position.' },

@@ -568,43 +568,34 @@ const EN = {
                     art: '01-home.webp',
                     emoji: '🏡',
                     left: [
-                        "In a small country village in France there lived a boy called Rémi.",
+                        "In a small village in France lived a boy called Rémi.",
                         "He had curly hair and large eyes.",
-                        "Mother Barberin brought him up.",
-                        "The house was very poor.",
-                        "And the kitchen was always warm.",
-                        "A copper pot hung over the hearth.",
-                        "She was always gentle with Rémi.",
-                        "In the evening the pot smelled of boiling potatoes."
+                        "Mother Barberin brought him up. She was always gentle with Rémi.",
+                        "The house was very poor, but the kitchen was always warm.",
+                        "A copper pot hung over the hearth, smelling of potatoes."
                     ],
                     right: [
-                        "\"Have another one tonight.\"",
-                        "She always pushed her own share across to him.",
+                        "She always pushed her own share across to him. \"Have another one tonight.\"",
                         "In winter she sat him on her knee and told him stories.",
                         "That was the hour Rémi liked best.",
-                        "His father worked far away in Paris.",
-                        "He had not come home for years.",
-                        "Rémi could not really call his face to mind."
+                        "His father worked far away in Paris and had not come home for years.",
+                        "Rémi could not call his face to mind."
                     ]
                 },
                 {
                     art: '01-home-2.webp',
                     emoji: '🏡',
                     left: [
-                        "And then one day it came.",
-                        "She held Rémi tight in her arms.",
-                        "For a long while she said nothing.",
-                        "And then at last she spoke.",
-                        "\"The truth is, you are not a child I bore.\"",
-                        "Rémi did not understand what she meant."
+                        "Then one day news came from Paris.",
+                        "Rémi's father had been badly hurt at work, and there was no money left.",
+                        "That night Mother Barberin held Rémi tight.",
+                        "For a long while she said nothing. Then at last she spoke."
                     ],
                     right: [
-                        "\"You were left on the road, and we took you in.\"",
-                        "\"And now the time has come for you to know it.\"",
-                        "Rémi's lips only moved.",
+                        "\"The truth is, you are not a child I bore. You were left on the road, and we took you in.\"",
+                        "Rémi did not understand. His lips only moved.",
                         "There was a strange ache in his chest.",
-                        "The tears ran down her face.",
-                        "And Rémi held her hand tight."
+                        "Tears ran down her face, and Rémi held her hand tight."
                     ]
                 }
             ]
@@ -626,32 +617,28 @@ const EN = {
                     ],
                     right: [
                         "A white poodle and two small dogs.",
-                        "And a monkey sat on his shoulder.",
-                        "A little monkey in a red jacket.",
+                        "And on his shoulder sat a little monkey in a red jacket.",
+                        "The old man played his harp, and the dogs danced on their back legs.",
                         "The whole village came crowding round.",
-                        "Rémi squeezed in among them to watch.",
-                        "He had never seen such a show in his life."
+                        "Rémi squeezed in to watch. He had never seen such a show."
                     ]
                 },
                 {
                     art: '02-vitalis-2.webp',
                     emoji: '🎩',
                     left: [
-                        "When the show was over the old man looked at Rémi.",
+                        "When the show was over, the old man looked at Rémi.",
                         "He did not take his eyes off him for a long while.",
-                        "And then he talked with Mother Barberin.",
-                        "Rémi could not tell what they were saying.",
-                        "Their voices kept dropping lower.",
+                        "Then he talked with Mother Barberin, and their voices kept dropping lower.",
                         "She kept twisting the corner of her apron.",
-                        "And at last the old man stood in front of Rémi."
+                        "At last the old man stood in front of Rémi."
                     ],
                     right: [
                         "\"Well, my boy. Will you come along the road with me?\"",
-                        "Rémi turned to look at her.",
-                        "She was wiping her eyes.",
-                        "And then she slowly nodded.",
-                        "\"Go with him. It will be better so.\"",
-                        "And the next morning Rémi left the village."
+                        "Rémi turned to Mother Barberin. She was wiping her eyes.",
+                        "Then she slowly nodded.",
+                        "\"Go with him. We cannot feed you properly here. It will be better so.\"",
+                        "The next morning Rémi left the village."
                     ]
                 }
             ]
@@ -668,17 +655,14 @@ const EN = {
                         "They walked in the morning and performed in the afternoon.",
                         "At night they slept in barns or under trees.",
                         "When it rained they were soaked through.",
-                        "And still Rémi soon came to love the others.",
-                        "At night Capi slept pressed close against him."
+                        "But Rémi soon came to love the others. At night Capi the white poodle slept close to him."
                     ],
                     right: [
-                        "His fur was warm and Rémi never felt the cold.",
-                        "Capi the white poodle was very clever.",
-                        "He could even do sums with his forepaws.",
+                        "His fur was warm, and Rémi never felt the cold.",
+                        "Clever Capi could even do sums with his paws.",
                         "The little dogs Zerbino and Dolce had tricks of their own.",
-                        "Joli-Cœur the monkey took off his cap and bowed.",
-                        "And people burst out laughing every time.",
-                        "\"These are your brothers, you know.\""
+                        "Joli-Cœur the monkey took off his cap and bowed, and people laughed.",
+                        "The old man smiled. \"These are your brothers.\""
                     ]
                 },
                 {
@@ -693,14 +677,11 @@ const EN = {
                         "And still he did not let go of the strings."
                     ],
                     right: [
-                        "\"That is a better sound today.\"",
-                        "After a few months it began to come.",
-                        "The old man taught him his letters too.",
-                        "He wrote them in the dirt with a stick.",
+                        "After a few months the music began to come.",
+                        "The old man nodded. \"That is a better sound today.\"",
+                        "He taught Rémi his letters too, writing them in the dirt with a stick.",
                         "\"Learn it, and one day it will be of use.\"",
-                        "Rémi took that to heart.",
-                        "The road was hard and there was much to learn.",
-                        "And little by little Rémi grew."
+                        "Rémi took that to heart, and little by little he grew."
                     ]
                 }
             ]
@@ -723,9 +704,9 @@ const EN = {
                     right: [
                         "They lost the road and wandered in the woods.",
                         "Far off they heard wolves.",
-                        "The dogs growled low in their throats.",
+                        "The dogs stood back to back and growled low.",
                         "Rémi was frightened and held on to the old man's coat.",
-                        "\"Rémi, sit back to back with me,\" the old man said quietly."
+                        "\"Rémi, stay close to me,\" the old man said quietly."
                     ]
                 },
                 {
@@ -734,15 +715,13 @@ const EN = {
                     left: [
                         "The old man found a hollow under a tree.",
                         "He sat Rémi down in it.",
-                        "And then he took off his own coat.",
-                        "And laid it over Rémi.",
-                        "\"Are you not cold, grandfather?\"",
-                        "\"I am well enough.\""
+                        "Then he took off his own coat and laid it over Rémi.",
+                        "\"Aren't you cold, grandfather?\"",
+                        "\"I am all right.\""
                     ],
                     right: [
-                        "The dogs pressed themselves close too.",
-                        "Capi curled up at Rémi's feet.",
-                        "Joli-Cœur burrowed inside his coat.",
+                        "The dogs pressed close too. Capi curled up at Rémi's feet.",
+                        "Joli-Cœur burrowed under the coat with Rémi.",
                         "And so they all waited together for the morning.",
                         "The snow did not stop all night.",
                         "It was daylight before they found the road again."
@@ -758,42 +737,31 @@ const EN = {
                     art: '05-parting.webp',
                     emoji: '🕯️',
                     left: [
-                        "After that winter the old man coughed often.",
-                        "His walk grew noticeably slower.",
-                        "And still the performances did not stop.",
+                        "That winter the family grew smaller. Zerbino and Dolce were lost in the snow, and Joli-Cœur died of the cold.",
+                        "The old man coughed often, and his walk grew noticeably slower.",
                         "\"Do rest a while, grandfather.\"",
-                        "\"Rest, and we go hungry.\"",
-                        "He smiled and put the harp on his shoulder again."
+                        "\"Rest, and we go hungry.\" He smiled and took up the harp again."
                     ],
                     right: [
-                        "But his step kept faltering.",
-                        "Rémi took his arm quickly.",
-                        "It was a cold dawn in some city.",
-                        "The two of them had nowhere to sleep.",
-                        "They sat down under a wall.",
-                        "The old man took Rémi's hand.",
-                        "It was very cold.",
-                        "\"Rémi. Listen to me.\""
+                        "But his step kept faltering. Rémi quickly took his arm.",
+                        "It was a cold dawn in some city. They had nowhere to sleep, so they sat down under a wall.",
+                        "The old man took Rémi's hand. It was very cold."
                     ]
                 },
                 {
                     art: '05-parting-2.webp',
                     emoji: '🕯️',
                     left: [
-                        "\"Take good care of Capi.\"",
-                        "\"He will look after you.\"",
+                        "\"Rémi, listen to me. Take good care of Capi. He will look after you.\"",
                         "\"And wherever you are, do not stop singing.\"",
-                        "Rémi thought he understood what that meant.",
-                        "\"Grandfather, do not talk so.\"",
-                        "And the old man only smiled at him."
+                        "Rémi thought he understood. \"Grandfather, don't talk like that.\"",
+                        "But the old man only smiled."
                     ],
                     right: [
-                        "And then he quietly closed his eyes.",
-                        "Rémi held Capi and wept a long time.",
-                        "And Capi stretched out his neck and howled.",
-                        "The sun rose and people came and went in the street.",
-                        "From that day Rémi walked the road alone.",
-                        "With only Capi beside him."
+                        "Then he quietly closed his eyes.",
+                        "Rémi held Capi and wept a long time. Capi stretched out his neck and howled.",
+                        "The sun rose, and people came and went in the street.",
+                        "From that day Rémi walked the road alone, with only Capi beside him."
                     ]
                 }
             ]
@@ -808,41 +776,31 @@ const EN = {
                     left: [
                         "Rémi walked on with Capi.",
                         "He played the harp and just about earned their meals.",
-                        "One day he came to a river.",
-                        "It was a quiet bank with willows hanging over it.",
+                        "One day he came to a quiet river bank with willows hanging over it.",
                         "A cool wind came off the water.",
-                        "Rémi put his feet in and sat there a long while."
+                        "Rémi sat down by the river and played his harp."
                     ],
                     right: [
-                        "A boat was moored there.",
-                        "A boat with flowerpots in the windows.",
-                        "A lady was out on the deck.",
-                        "And beside her lay a pale child.",
-                        "A child who had been ill a long time.",
-                        "The lady called to Rémi.",
-                        "\"If you like, will you stay on our boat?\" And Rémi bowed his head."
+                        "A boat was moored there, with flowerpots in the windows.",
+                        "A lady was out on the deck. Beside her lay a pale child who had been ill a long time.",
+                        "The lady heard the harp and called to Rémi.",
+                        "\"Would you like to stay on our boat?\" Rémi bowed his head."
                     ]
                 },
                 {
                     art: '06-barge-2.webp',
                     emoji: '⛵',
                     left: [
-                        "Rémi went aboard.",
-                        "For the first time in a long while he slept under a roof.",
-                        "In the mornings he sat at the bow and played.",
-                        "The river went slowly by.",
-                        "The sick child loved the sound of it.",
-                        "\"Play it once more.\"",
-                        "And he put a hand out from under the blanket."
+                        "Rémi went aboard. For the first time in a long while he slept under a roof.",
+                        "In the mornings he sat at the bow and played, and the river went slowly by.",
+                        "The sick child loved the sound.",
+                        "He put a hand out from under the blanket. \"Play it once more.\""
                     ],
                     right: [
-                        "One day that child smiled for the first time.",
-                        "The lady's eyes filled.",
+                        "One day the child smiled for the first time. The lady's eyes filled.",
                         "\"That is your doing.\"",
-                        "And Rémi felt warm inside.",
-                        "It was as though he had a home of his own.",
-                        "And so the summer went by.",
-                        "Rémi had more days of laughing than not."
+                        "Rémi felt warm inside. It was as though he had a home of his own.",
+                        "And so the summer went by. Rémi laughed more and more."
                     ]
                 }
             ]
@@ -855,21 +813,16 @@ const EN = {
                     art: '07-mine.webp',
                     emoji: '⛏️',
                     left: [
-                        "When autumn came Rémi took to the road again.",
-                        "He wanted to make his own way.",
-                        "He walked a long time and came to a mining town.",
-                        "Black smoke rose from the chimneys.",
-                        "And Rémi got work there.",
-                        "The gallery ran deep under the ground.",
-                        "They went down by the light of a single lamp."
+                        "When autumn came, Rémi took to the road again. He wanted to make his own way.",
+                        "He came to a mining town where black smoke rose from the chimneys.",
+                        "Rémi got work there.",
+                        "The gallery ran deep under the ground. They went down by the light of one lamp."
                     ],
                     right: [
-                        "The air was close and water dripped from above.",
-                        "The miners chipped at the walls with picks.",
-                        "Clang, clang, clang.",
+                        "The air was close, and water dripped from above.",
+                        "The miners chipped at the walls with picks. Clang, clang, clang!",
                         "The sound rang round the tunnel.",
-                        "And then that day there was a strange noise.",
-                        "Water was pouring into the gallery.",
+                        "Then one day there was a strange noise. Water was pouring into the gallery!",
                         "The miners shouted."
                     ]
                 },
@@ -879,18 +832,15 @@ const EN = {
                     left: [
                         "\"Water! Get up top, quickly!\"",
                         "But the way was blocked already.",
-                        "Rémi and the miners were shut into a narrow tunnel.",
-                        "One lamp was all that was left.",
-                        "\"Everyone, sit with your backs to the wall!\"",
+                        "Rémi and the miners were shut into a narrow tunnel with one lamp.",
+                        "An old miner said calmly, \"Sit with your backs to the wall. Save your strength.\"",
                         "The time went by terribly slowly."
                     ],
                     right: [
-                        "They were hungry and shivering.",
-                        "Somebody began to sob.",
-                        "And then Rémi quietly sang.",
-                        "In the dark there was nothing but that sound.",
-                        "On the fourteenth day they heard picks.",
-                        "And the men threw their arms round one another."
+                        "They were hungry and shivering. Somebody began to sob.",
+                        "Then Rémi quietly sang. In the dark there was nothing but that sound.",
+                        "On the fourteenth day they heard picks coming through the rock.",
+                        "The men threw their arms round one another."
                     ]
                 }
             ]
@@ -903,21 +853,17 @@ const EN = {
                     art: '08-ending.webp',
                     emoji: '💫',
                     left: [
-                        "The rescuers broke through the wall.",
-                        "Rémi and the miners came out at last.",
+                        "The rescuers broke through the wall, and Rémi and the miners came out at last.",
                         "The sunlight was so bright he could not see.",
-                        "The whole town came out and clapped.",
-                        "Rémi stayed in that town a while.",
-                        "It took days just to wash the coal dust off his face.",
-                        "And Capi kept licking his cheek."
+                        "The whole town came out and clapped. Capi ran up and kept licking his cheek.",
+                        "Rémi stayed in that town a while. It took days to wash the coal dust off."
                     ],
                     right: [
-                        "And then he decided to walk on again.",
-                        "Capi and the harp were always with him.",
-                        "One day some strangers came looking for him.",
-                        "They had been searching for him for years, they said.",
-                        "Rémi had a mother and brothers of his own after all.",
-                        "For a long while he could not believe it."
+                        "Then he walked on again, with Capi and the harp.",
+                        "The story of the boy saved from the mine spread far.",
+                        "One day some people who had heard it came looking for him.",
+                        "They had been searching for him for years. Rémi had a mother and brothers!",
+                        "He could hardly believe it."
                     ]
                 },
                 {
@@ -925,19 +871,14 @@ const EN = {
                     emoji: '💫',
                     left: [
                         "Rémi went to live with his new family.",
-                        "But there was one thing he did first.",
-                        "He brought Mother Barberin to come and live with them.",
+                        "But first he brought Mother Barberin to come and live with them.",
                         "She looked at Rémi and wept a long time.",
-                        "And Capi was there too, of course.",
-                        "\"And where have you put the pot?\""
+                        "She had brought the copper pot too. \"Have another one tonight.\""
                     ],
                     right: [
-                        "One evening Rémi took out his harp.",
-                        "People sat round in the yard.",
-                        "\"My grandfather told me something.\"",
-                        "\"That wherever I was, I should not stop singing.\"",
-                        "And Rémi went on teaching children the harp ever after.",
-                        "With Capi always lying at his feet."
+                        "One evening Rémi took out his harp, and people sat round in the yard.",
+                        "\"Grandfather told me never to stop singing,\" he said.",
+                        "Rémi went on teaching children the harp ever after, with Capi at his feet."
                     ]
                 }
             ]
@@ -983,8 +924,8 @@ const EN = {
             q: 'Which reaction to this book does NOT fit?',
             wide: true,
             choices: [
-                "In the blizzard the old man took off his own coat and put it over him — he saw to Remi before himself.",
-                "Trapped in the mine shaft Remi began to sing quietly — it was the only thing left he could do.",
+                "In the blizzard the old man took off his own coat and put it over him — he saw to Rémi before himself.",
+                "Trapped in the mine, Rémi began to sing quietly — it was the only thing left he could do.",
                 "The first thing he did after finding his family was to fetch Mother Barberin — he had not forgotten who raised him.",
                 "She told him to go with the old musician — she wanted him to learn the harp."
             ],
@@ -999,7 +940,7 @@ const EN = {
                 art: 'end.webp',
                 left: [
                     "This story is Nobody's Boy, by the French writer Hector Malot. It came out about a hundred and fifty years ago.",
-                    "What old Vitalis taught Rémi was not only the harp. He wrote letters in the dirt with a stick.",
+                    "Old Vitalis taught Rémi more than the harp. He also wrote letters in the dirt with a stick.",
                     "Learn it, he said, and one day it will be of use. He taught what was of no use that day.",
                     "Look again at the family on the road: Capi, Zerbino, Dolce and Joli-Cœur. The old man called them Rémi's brothers."
                 ],
@@ -1047,7 +988,7 @@ const EN = {
             { word: 'perform', meaning: '공연하다', sentence: 'They performed in the afternoon.' },
             { word: 'barn', meaning: '헛간', sentence: 'They slept in barns.' },
             { word: 'soaked through', meaning: '흠뻑 젖은', sentence: 'When it rained they were soaked through.' },
-            { word: 'sums', meaning: '셈', sentence: 'He could do sums with his forepaws.' },
+            { word: 'sums', meaning: '셈', sentence: 'He could do sums with his paws.' },
             { word: 'trick', meaning: '재주', sentence: 'The little dogs had tricks of their own.' }
         ],
         '03-troupe-2.webp': [
@@ -1062,13 +1003,13 @@ const EN = {
             { word: 'blizzard', meaning: '눈보라', sentence: 'One night a blizzard caught them.' },
             { word: 'wander', meaning: '헤매다', sentence: 'They wandered in the woods.' },
             { word: 'growl', meaning: '으르렁거리다', sentence: 'The dogs growled low.' },
-            { word: 'back to back', meaning: '등을 맞대고', sentence: 'Sit back to back with me.' }
+            { word: 'back to back', meaning: '등을 맞대고', sentence: 'The dogs stood back to back.' }
         ],
         '04-snow-2.webp': [
             { word: 'hollow', meaning: '우묵한 곳', sentence: 'He found a hollow under a tree.' },
             { word: 'lay over', meaning: '덮어 주다', sentence: 'He laid it over Rémi.' },
             { word: 'curl up', meaning: '웅크리다', sentence: "Capi curled up at Rémi's feet." },
-            { word: 'burrow', meaning: '파고들다', sentence: 'Joli-Cœur burrowed inside his coat.' }
+            { word: 'burrow', meaning: '파고들다', sentence: 'Joli-Cœur burrowed under the coat.' }
         ],
         '05-parting.webp': [
             { word: 'cough', meaning: '기침하다', sentence: 'The old man coughed often.' },
@@ -1085,7 +1026,7 @@ const EN = {
         ],
         '06-barge.webp': [
             { word: 'earn', meaning: '벌다', sentence: 'He just about earned their meals.' },
-            { word: 'willow', meaning: '버드나무', sentence: 'A bank with willows hanging over it.' },
+            { word: 'willow', meaning: '버드나무', sentence: 'A river bank with willows hanging over it.' },
             { word: 'moor', meaning: '매어 두다', sentence: 'A boat was moored there.' },
             { word: 'pale', meaning: '창백한', sentence: 'Beside her lay a pale child.' },
             { word: 'call to', meaning: '부르다', sentence: 'The lady called to Rémi.' }
@@ -1119,7 +1060,7 @@ const EN = {
             { word: 'go to live with', meaning: '함께 지내다', sentence: 'Rémi went to live with his new family.' },
             { word: 'bring', meaning: '모셔 오다', sentence: 'He brought Mother Barberin to come and live with them.' },
             { word: 'ever after', meaning: '그 뒤로도', sentence: 'He went on teaching ever after.' },
-            { word: 'at one’s feet', meaning: '발치에', sentence: 'With Capi always lying at his feet.' }
+            { word: 'at one’s feet', meaning: '발치에', sentence: 'With Capi at his feet.' }
         ],
         'end.webp': [
             { word: 'come out', meaning: '나오다', sentence: 'It came out a hundred and fifty years ago.' },

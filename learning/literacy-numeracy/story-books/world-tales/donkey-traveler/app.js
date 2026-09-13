@@ -559,42 +559,30 @@ const EN = {
                     art: '01-trees.webp',
                     emoji: '🌳',
                     left: [
-                        "A young traveller was wandering the roads.",
-                        "A stick and a pack were all he had.",
-                        "He went from village to village helping with the work.",
-                        "That day he had eaten nothing since morning.",
-                        "His stomach kept rumbling at him.",
+                        "A young traveller was wandering the roads. A stick and a pack were all he had.",
+                        "He went from village to village, helping with the work.",
+                        "That day he had eaten nothing since morning. His stomach kept rumbling.",
                         "And the sun was already high overhead."
                     ],
                     right: [
-                        "The traveller came to a hill road he did not know.",
-                        "There was a tree on either side of it.",
-                        "The branches were bowed down with fruit.",
-                        "On one side the fruit was red.",
-                        "On the other side it was yellow.",
-                        "\"Well, here is luck!\"",
-                        "And the traveller swallowed hard."
+                        "The traveller came to a hill road he did not know. There was a tree on each side of it.",
+                        "The branches were bowed down with fruit. On one tree the fruit was red. On the other it was yellow.",
+                        "The traveller swallowed hard. \"Well, here is luck!\""
                     ]
                 },
                 {
                     art: '01-trees-2.webp',
                     emoji: '🌳',
                     left: [
-                        "The traveller picked one of the red ones.",
-                        "He bit into it and the sweet juice ran.",
-                        "\"Why, this is very good indeed!\"",
+                        "The traveller picked a red one. He bit into it, and sweet juice ran out.",
+                        "\"Why, this is very good!\"",
                         "So he picked a second and a third and ate those too.",
-                        "And then his head began to itch.",
-                        "He put a hand up and felt his ears."
+                        "Then suddenly his head began to itch. He put a hand up and felt his ears growing longer."
                     ],
                     right: [
-                        "And the ears were growing longer and longer.",
-                        "\"Here — what is happening to me!\"",
-                        "The traveller took hold of them and pulled.",
-                        "But they only grew longer still.",
-                        "Before long they were as long as his arm.",
-                        "The traveller was suddenly afraid.",
-                        "He was shaking to his fingertips."
+                        "\"Hey! What is happening to me?\"",
+                        "He took hold of his ears and pressed them down. But they only grew longer. Soon they were as long as his arm.",
+                        "The traveller was suddenly afraid. He was shaking to his fingertips."
                     ]
                 }
             ]
@@ -607,20 +595,14 @@ const EN = {
                     art: '02-donkey.webp',
                     emoji: '🫏',
                     left: [
-                        "And it was not only his ears.",
-                        "His hands and feet began to bend under him.",
-                        "Grey hair came up along his back.",
-                        "His spine curved and his face grew long.",
-                        "The traveller was standing there on four legs.",
-                        "He had turned into a donkey."
+                        "And it was not only his ears. His hands and feet began to bend.",
+                        "Grey hair came up along his back. His spine curved, and his face grew long.",
+                        "Now the traveller was standing on four legs. He had turned into a donkey."
                     ],
                     right: [
-                        "The traveller tried to shout.",
-                        "He opened his mouth wide.",
-                        "And all that came out was a bray.",
-                        "Try as he might, it would not turn into words.",
-                        "He looked at himself in a puddle.",
-                        "A donkey, and no mistake.",
+                        "He opened his mouth wide to shout, but all that came out was a bray.",
+                        "Try as he might, he could not make words.",
+                        "He looked at himself in a puddle. It was a donkey, no mistake.",
                         "A tear fell and shook the water."
                     ]
                 },
@@ -628,20 +610,14 @@ const EN = {
                     art: '02-donkey-2.webp',
                     emoji: '🫏',
                     left: [
-                        "Just then a cart came up the hill.",
-                        "It was a trader driving it.",
-                        "He saw the donkey and his eyes lit up.",
-                        "\"A donkey with no owner!\"",
-                        "\"Here is a piece of luck.\"",
-                        "The traveller tried to run."
+                        "Just then a cart came up the hill. A trader was driving it.",
+                        "When he saw the donkey, his eyes lit up. \"A donkey with no owner! Here is a piece of luck.\"",
+                        "The traveller tried to run away."
                     ],
                     right: [
-                        "But the four legs would not do as he told them.",
-                        "The trader got a halter round his neck.",
-                        "\"There. You are mine from now on.\"",
-                        "And he gave the rope a couple of tugs.",
-                        "So the traveller was harnessed to the cart.",
-                        "Cry as he might, it did no good.",
+                        "But his four legs would not do what he wanted. The trader got a halter round his neck.",
+                        "\"There. You are mine from now on.\" He gave the rope a couple of tugs.",
+                        "So the traveller was harnessed to the cart. Cry as he might, it did no good.",
                         "The load pressed down on his shoulders."
                     ]
                 }
@@ -655,40 +631,30 @@ const EN = {
                     art: '03-labor.webp',
                     emoji: '🧺',
                     left: [
-                        "From that day the traveller carried loads.",
-                        "They set off before the sun was up.",
+                        "From that day the traveller carried loads. They set off before the sun was up.",
                         "The cart was piled with sacks of grain.",
-                        "On the uphill roads his feet sank in.",
-                        "His back ached and his hooves split.",
-                        "And the trader took a switch to him the moment he slowed."
+                        "On the uphill roads his feet sank in. His back ached, and his hooves split.",
+                        "The trader took a switch to him the moment he slowed."
                     ],
                     right: [
                         "\"Get on there, will you!\" The switch came down on his back.",
-                        "The traveller could do nothing but bear it.",
-                        "\"I never knew, when I was a person.\"",
-                        "\"What hard work this was.\"",
-                        "The donkeys he passed on the road looked different to him now.",
-                        "Every one of them was under a heavy load."
+                        "He could do nothing but bear it.",
+                        "The traveller thought, 'When I was a person, I never knew this was such hard work.'",
+                        "Now the donkeys he passed on the road looked different to him. Every one of them carried a heavy load."
                     ]
                 },
                 {
                     art: '03-labor-2.webp',
                     emoji: '🧺',
                     left: [
-                        "At night he was tied up in the stable.",
-                        "He lay himself down on the dry straw.",
-                        "The traveller looked up at the stars through a crack in the door.",
-                        "He missed home, and he missed human speech.",
-                        "And then all at once he thought of that hill.",
-                        "There had been two trees."
+                        "At night he was tied up in the stable. He lay down on the dry straw.",
+                        "He looked up at the stars through a crack in the door. He missed home, and he missed human speech.",
+                        "Then all at once he remembered the two trees on that hill. He had eaten the red fruit and become this."
                     ],
                     right: [
-                        "He had eaten the red fruit and become this.",
                         "\"Then what would the yellow fruit do?\"",
-                        "The traveller would not let the thought go.",
-                        "He made up his mind to get back to that hill one day.",
-                        "From then on he pictured the road every night.",
-                        "He even counted how many steps it was."
+                        "The traveller would not let the thought go. He made up his mind to get back to that hill one day.",
+                        "From then on he pictured the road every night. He even counted how many steps it was to the hill."
                     ]
                 }
             ]
@@ -701,40 +667,30 @@ const EN = {
                     art: '04-escape.webp',
                     emoji: '🍋',
                     left: [
-                        "A few months went by like that.",
-                        "One day the trader turned onto a new road.",
+                        "A few months went by like that. One day the trader turned onto a new road.",
                         "The cart went rattling up a hill.",
-                        "And the traveller slowed his step.",
-                        "The look of the road either side was familiar.",
-                        "There stood the two trees."
+                        "Then the traveller slowed down. The road looked familiar.",
+                        "There stood the two trees!"
                     ],
                     right: [
-                        "The red fruit and the yellow, just as before.",
-                        "The traveller's heart began to thump.",
-                        "\"Now is the moment!\"",
-                        "He gave the halter a great pull.",
-                        "The trader went over backwards.",
-                        "And the rope came loose out of his hand."
+                        "The red fruit and the yellow fruit hung there, just as before. The traveller's heart began to thump.",
+                        "\"Now is my chance!\" He tossed his head and pulled the halter as hard as he could.",
+                        "The trader, who was holding it, fell off the cart. The rope came loose from his hand."
                     ]
                 },
                 {
                     art: '04-escape-2.webp',
                     emoji: '🍋',
                     left: [
-                        "\"Come back here, you!\"",
-                        "The donkey bolted up the hill.",
-                        "He went under the tree with the yellow fruit.",
-                        "He shook the branches until the fruit came down.",
-                        "And then he ate it, crunch and crunch.",
-                        "And in that instant his body changed."
+                        "\"Come back here, you!\" shouted the trader.",
+                        "But the donkey bolted up the hill to the tree with the yellow fruit.",
+                        "He shook the branches until the fruit came down. Then he ate it, crunch, crunch.",
+                        "In that instant his body began to change."
                     ],
                     right: [
-                        "The hair melted away.",
-                        "His ears shrank and his back straightened.",
-                        "The traveller was a person again.",
-                        "The trader backed away from him.",
-                        "\"A d-donkey turning into a man!\" And off he ran.",
-                        "He left the halter lying where it fell."
+                        "The hair melted away. His ears shrank, and his back straightened. The traveller was a person again!",
+                        "The trader backed away. \"A d-donkey turning into a man!\" He dropped the halter and ran.",
+                        "The traveller put a few yellow fruits in his coat."
                     ]
                 }
             ]
@@ -747,41 +703,28 @@ const EN = {
                     art: '05-innkeeper.webp',
                     emoji: '🏮',
                     left: [
-                        "The traveller went straight down to the village.",
-                        "For the first time in months he greeted people in words.",
+                        "The traveller went straight down to the village. For the first time in months, he greeted people in words.",
                         "He stopped at the inn and ordered a meal.",
-                        "People sat round him and asked for the story.",
-                        "So the traveller told them everything.",
-                        "\"Eat the red fruit and you turn into a donkey.\""
+                        "People sat round him and asked for his story. So he told them everything."
                     ],
                     right: [
-                        "\"Eat the yellow, and you come back a person.\"",
-                        "The people laughed and thought it a marvel.",
-                        "\"Is there really such a tree?\"",
-                        "But the innkeeper was another matter.",
-                        "His eyes opened wide.",
-                        "\"There is such a fruit, you say?\"",
-                        "And he quietly began to reckon it up."
+                        "\"Eat the red fruit on that hill, and you turn into a donkey. Eat the yellow, and you become a person again.\"",
+                        "The people laughed and thought it a marvel. \"Is there really such a tree?\"",
+                        "But the innkeeper was different. His eyes opened wide, and he quietly began to reckon it up."
                     ]
                 },
                 {
                     art: '05-innkeeper-2.webp',
                     emoji: '🏮',
                     left: [
-                        "The innkeeper could not sleep that night.",
-                        "He kept doing the sums over.",
-                        "\"If I only had that fruit.\"",
-                        "\"I could turn my guests into donkeys and sell them.\"",
-                        "\"And what does a donkey fetch these days?\"",
-                        "So he slipped out of the house."
+                        "The innkeeper could not sleep that night. He kept doing the sums over.",
+                        "'With that fruit, I could turn my guests into donkeys and sell them. And what does a donkey fetch these days!'",
+                        "So he slipped out of the house with a lantern and hurried up to the hill."
                     ],
                     right: [
-                        "He took a lantern and hurried up to the hill.",
-                        "The two trees stood there in the dark.",
-                        "\"Now which one was it?\"",
-                        "\"The red, was it not?\"",
-                        "The innkeeper ate the red fruit until he was full.",
-                        "It was too dark to see the colour properly."
+                        "The two trees stood there in the dark. He picked fruit after fruit, and soon he felt hungry.",
+                        "\"The yellow ones are safe to eat, they said.\"",
+                        "He took one and ate it, crunch, crunch. But it was a red one! It was too dark to see the colour properly."
                     ]
                 }
             ]
@@ -794,41 +737,31 @@ const EN = {
                     art: '06-transform.webp',
                     emoji: '😲',
                     left: [
-                        "It was the next morning.",
-                        "The inn was turned upside down.",
-                        "The innkeeper was not in the room where he slept.",
-                        "There was a great donkey standing there instead.",
-                        "His wife screamed.",
-                        "\"Husband! Husband, where are you?\"",
+                        "The next morning the inn was turned upside down. The innkeeper had not come home all night.",
+                        "Instead, a big donkey was standing at the gate.",
+                        "The innkeeper's wife screamed. \"Husband! Husband, where are you?\"",
                         "The donkey stamped a front hoof."
                     ],
                     right: [
                         "\"Hee-haw!\"",
-                        "His wife jumped back in fright.",
-                        "\"What has been going on here!\"",
-                        "The guests peered in through the gap in the door.",
-                        "Every one of them had round eyes.",
-                        "And the donkey only blinked."
+                        "His wife jumped back in fright. \"What is going on here?\"",
+                        "The guests peered in through the gap in the door. Their eyes grew round.",
+                        "The donkey only blinked."
                     ]
                 },
                 {
                     art: '06-transform-2.webp',
                     emoji: '😲',
                     left: [
-                        "The donkey went up to his wife.",
-                        "\"It is me — your husband!\"",
-                        "But the sound was only hee-haw.",
-                        "His wife picked up the broom.",
-                        "\"Where did this beast come in from!\"",
-                        "And the donkey was chased out into the yard."
+                        "The donkey went up to his wife and cried, \"It is me, your husband!\"",
+                        "But the only sound was \"Hee-haw!\"",
+                        "His wife picked up the broom. \"Where did this beast come from?\" And the donkey was chased out into the yard."
                     ],
                     right: [
-                        "He could do nothing but go round and round it.",
-                        "Not one of them knew him.",
-                        "And only then did the sorry feeling come.",
+                        "He could only walk round and round the yard. Nobody knew who he was.",
+                        "Only then did the sorry feeling come.",
                         "\"Why did I let myself be so greedy?\"",
-                        "Great tears fell from his eyes.",
-                        "He had no idea what to do now."
+                        "Big tears fell from his eyes. He had no idea what to do now."
                     ]
                 }
             ]
@@ -841,41 +774,28 @@ const EN = {
                     art: '07-return.webp',
                     emoji: '🤝',
                     left: [
-                        "The talk went round the village at once.",
-                        "\"The innkeeper has disappeared.\"",
-                        "\"And a donkey turned up out of nowhere.\"",
-                        "The traveller heard it too.",
-                        "He guessed what had happened straight away.",
+                        "The talk went round the village at once. \"The innkeeper has disappeared!\" \"And a donkey turned up out of nowhere!\"",
+                        "The traveller heard it too. He guessed what had happened straight away.",
                         "So he went to the inn."
                     ],
                     right: [
-                        "There was a donkey tied up in the yard.",
-                        "The traveller crouched down in front of him.",
-                        "\"Oh dear. You ate the red fruit.\"",
-                        "The donkey nodded his head hard.",
-                        "His eyes looked like they were begging.",
-                        "The traveller knew that feeling well.",
-                        "\"It happened to me too, you know.\""
+                        "A donkey was tied up in the yard. The traveller crouched down in front of him. \"Oh dear. You ate the red fruit.\"",
+                        "The donkey nodded hard. His eyes looked like they were begging.",
+                        "The traveller knew that feeling well. The same thing had happened to him."
                     ]
                 },
                 {
                     art: '07-return-2.webp',
                     emoji: '🤝',
                     left: [
-                        "The traveller took something out of his coat.",
-                        "It was one yellow fruit.",
-                        "He had kept it by, just in case.",
+                        "The traveller took something out of his coat. It was a yellow fruit he had kept from the hill, just in case.",
                         "\"Here. Eat this.\"",
-                        "The donkey took it and gulped it down.",
-                        "And in that instant the hair began to go.",
-                        "His ears shrank and his back straightened."
+                        "The donkey gulped it down. In that instant his hair began to go. His ears shrank, and his back straightened."
                     ],
                     right: [
-                        "The innkeeper was a person again.",
-                        "And he sat straight down on the ground.",
-                        "His wife ran over and threw her arms round him.",
-                        "\"Husband! Where have you been!\" And he hung his head.",
-                        "\"I was out of my senses for a while.\""
+                        "The innkeeper was a person again, and he sat right down on the ground.",
+                        "His wife ran over and threw her arms round him. \"Husband! Where have you been?\"",
+                        "The innkeeper hung his head. \"I was out of my senses for a while.\""
                     ]
                 }
             ]
@@ -888,19 +808,13 @@ const EN = {
                     art: '08-ending.webp',
                     emoji: '🎊',
                     left: [
-                        "The innkeeper could not lift his head for a long time.",
-                        "\"What… what a greedy thing I was going to do.\"",
-                        "\"To turn my own guests into donkeys.\"",
-                        "The people stood round and heard him say it.",
-                        "Not one of them scolded him.",
-                        "They all looked sorry for him."
+                        "For a long time the innkeeper could not lift his head.",
+                        "\"What a greedy thing I was going to do! I wanted to turn my own guests into donkeys.\"",
+                        "The people stood round and heard him. Not one of them scolded him. They all looked sorry for him."
                     ],
                     right: [
-                        "The innkeeper bowed to the traveller.",
-                        "\"Thank you. Thank you truly.\"",
-                        "And the traveller smiled at him.",
-                        "\"I have had a taste of it myself.\"",
-                        "\"Carrying loads is terribly hard work.\"",
+                        "The innkeeper bowed to the traveller. \"Thank you. Thank you truly.\"",
+                        "The traveller smiled. \"No need to thank me. I have had a taste of it myself. Carrying loads is terribly hard work.\"",
                         "And the people burst out laughing."
                     ]
                 },
@@ -908,20 +822,14 @@ const EN = {
                     art: '08-ending-2.webp',
                     emoji: '🎊',
                     left: [
-                        "That day there was a feast at the inn.",
-                        "The innkeeper laid the table with his own hands.",
+                        "That day there was a feast at the inn. The innkeeper laid the table with his own hands.",
                         "The traveller ate his fill.",
-                        "It was the first full supper he had had in a long while.",
-                        "The innkeeper kept bringing out another dish.",
-                        "Next morning the traveller took to the road again.",
-                        "And on his way he passed that hill."
+                        "Next morning the traveller took to the road again. On the way he passed that hill."
                     ],
                     right: [
-                        "The two trees were standing there as before.",
-                        "The traveller put a few yellow fruits in his pocket.",
+                        "The two trees stood there as before. The traveller picked a few more yellow fruits.",
                         "\"Somebody else may make the same mistake.\"",
-                        "And then he went on down the hill.",
-                        "The innkeeper was never greedy again."
+                        "Then he went on down the hill. And the innkeeper was never greedy again."
                     ]
                 }
             ]
@@ -1006,12 +914,12 @@ const EN = {
             { word: 'rumble', meaning: '꼬르륵거리다', sentence: 'His stomach kept rumbling.' },
             { word: 'overhead', meaning: '중천에', sentence: 'The sun was already high overhead.' },
             { word: 'bow down', meaning: '휘다', sentence: 'The branches were bowed down with fruit.' },
-            { word: 'swallow hard', meaning: '침을 삼키다', sentence: 'And the traveller swallowed hard.' }
+            { word: 'swallow hard', meaning: '침을 삼키다', sentence: 'The traveller swallowed hard.' }
         ],
         '01-trees-2.webp': [
-            { word: 'bite into', meaning: '베어 물다', sentence: 'He bit into it and the juice ran.' },
+            { word: 'bite into', meaning: '베어 물다', sentence: 'He bit into it, and sweet juice ran out.' },
             { word: 'itch', meaning: '근질거리다', sentence: 'His head began to itch.' },
-            { word: 'take hold of', meaning: '붙잡다', sentence: 'He took hold of them and pulled.' },
+            { word: 'take hold of', meaning: '붙잡다', sentence: 'He took hold of his ears and pressed them down.' },
             { word: 'fingertip', meaning: '손끝', sentence: 'He was shaking to his fingertips.' }
         ],
         '02-donkey.webp': [
@@ -1021,10 +929,10 @@ const EN = {
             { word: 'puddle', meaning: '물웅덩이', sentence: 'He looked at himself in a puddle.' }
         ],
         '02-donkey-2.webp': [
-            { word: 'trader', meaning: '장사꾼', sentence: 'It was a trader driving it.' },
+            { word: 'trader', meaning: '장사꾼', sentence: 'A trader was driving it.' },
             { word: 'halter', meaning: '고삐', sentence: 'The trader got a halter round his neck.' },
             { word: 'tug', meaning: '툭툭 당김', sentence: 'He gave the rope a couple of tugs.' },
-            { word: 'harness', meaning: '매다', sentence: 'He was harnessed to the cart.' },
+            { word: 'harness', meaning: '매다', sentence: 'The traveller was harnessed to the cart.' },
             { word: 'press down', meaning: '짓누르다', sentence: 'The load pressed down on his shoulders.' }
         ],
         '03-labor.webp': [
@@ -1038,39 +946,39 @@ const EN = {
             { word: 'stable', meaning: '마구간', sentence: 'At night he was tied up in the stable.' },
             { word: 'straw', meaning: '짚', sentence: 'He lay down on the dry straw.' },
             { word: 'crack', meaning: '문틈', sentence: 'Through a crack in the door.' },
-            { word: 'make up one’s mind', meaning: '마음먹다', sentence: 'He made up his mind to get back.' },
+            { word: 'make up one’s mind', meaning: '마음먹다', sentence: 'He made up his mind to get back to that hill.' },
             { word: 'picture', meaning: '떠올리다', sentence: 'He pictured the road every night.' }
         ],
         '04-escape.webp': [
             { word: 'rattle', meaning: '덜컹거리다', sentence: 'The cart went rattling up a hill.' },
-            { word: 'familiar', meaning: '눈에 익은', sentence: 'The road was familiar.' },
+            { word: 'familiar', meaning: '눈에 익은', sentence: 'The road looked familiar.' },
             { word: 'thump', meaning: '쿵쿵 뛰다', sentence: "The traveller's heart began to thump." },
-            { word: 'come loose', meaning: '풀려 나가다', sentence: 'The rope came loose out of his hand.' }
+            { word: 'come loose', meaning: '풀려 나가다', sentence: 'The rope came loose from his hand.' }
         ],
         '04-escape-2.webp': [
             { word: 'bolt', meaning: '내달리다', sentence: 'The donkey bolted up the hill.' },
             { word: 'shake', meaning: '흔들다', sentence: 'He shook the branches.' },
             { word: 'straighten', meaning: '펴지다', sentence: 'His back straightened.' },
-            { word: 'back away', meaning: '뒷걸음질하다', sentence: 'The trader backed away from him.' }
+            { word: 'back away', meaning: '뒷걸음질하다', sentence: 'The trader backed away.' }
         ],
         '05-innkeeper.webp': [
             { word: 'greet', meaning: '인사하다', sentence: 'He greeted people in words.' },
             { word: 'inn', meaning: '주막', sentence: 'He stopped at the inn.' },
-            { word: 'marvel', meaning: '신기한 일', sentence: 'The people thought it a marvel.' },
+            { word: 'marvel', meaning: '신기한 일', sentence: 'The people laughed and thought it a marvel.' },
             { word: 'reckon up', meaning: '셈하다', sentence: 'He quietly began to reckon it up.' }
         ],
         '05-innkeeper-2.webp': [
             { word: 'sums', meaning: '셈', sentence: 'He kept doing the sums over.' },
-            { word: 'fetch', meaning: '값이 나가다', sentence: 'What does a donkey fetch these days?' },
-            { word: 'slip out', meaning: '몰래 나가다', sentence: 'So he slipped out of the house.' },
-            { word: 'lantern', meaning: '등불', sentence: 'He took a lantern.' },
-            { word: 'properly', meaning: '제대로', sentence: 'Too dark to see the colour properly.' }
+            { word: 'fetch', meaning: '값이 나가다', sentence: 'What does a donkey fetch these days!' },
+            { word: 'slip out', meaning: '몰래 나가다', sentence: 'He slipped out of the house.' },
+            { word: 'lantern', meaning: '등불', sentence: 'With a lantern.' },
+            { word: 'properly', meaning: '제대로', sentence: 'It was too dark to see the colour properly.' }
         ],
         '06-transform.webp': [
             { word: 'turned upside down', meaning: '발칵 뒤집힌', sentence: 'The inn was turned upside down.' },
-            { word: 'scream', meaning: '소리를 지르다', sentence: 'His wife screamed.' },
+            { word: 'scream', meaning: '소리를 지르다', sentence: "The innkeeper's wife screamed." },
             { word: 'stamp', meaning: '구르다', sentence: 'The donkey stamped a front hoof.' },
-            { word: 'peer in', meaning: '들여다보다', sentence: 'The guests peered in.' },
+            { word: 'peer in', meaning: '들여다보다', sentence: 'The guests peered in through the gap in the door.' },
             { word: 'blink', meaning: '눈을 껌뻑이다', sentence: 'The donkey only blinked.' }
         ],
         '06-transform-2.webp': [
@@ -1086,28 +994,28 @@ const EN = {
             { word: 'beg', meaning: '애원하다', sentence: 'His eyes looked like they were begging.' }
         ],
         '07-return-2.webp': [
-            { word: 'just in case', meaning: '혹시 몰라', sentence: 'He had kept it by, just in case.' },
+            { word: 'just in case', meaning: '혹시 몰라', sentence: 'A yellow fruit he had kept from the hill, just in case.' },
             { word: 'gulp down', meaning: '허겁지겁 먹다', sentence: 'The donkey gulped it down.' },
-            { word: 'throw one’s arms round', meaning: '끌어안다', sentence: 'His wife threw her arms round him.' },
+            { word: 'throw one’s arms round', meaning: '끌어안다', sentence: 'His wife ran over and threw her arms round him.' },
             { word: 'out of one’s senses', meaning: '정신이 나간', sentence: 'I was out of my senses for a while.' }
         ],
         '08-ending.webp': [
-            { word: 'lift one’s head', meaning: '고개를 들다', sentence: 'He could not lift his head.' },
+            { word: 'lift one’s head', meaning: '고개를 들다', sentence: 'The innkeeper could not lift his head.' },
             { word: 'scold', meaning: '나무라다', sentence: 'Not one of them scolded him.' },
             { word: 'bow', meaning: '고개를 숙이다', sentence: 'The innkeeper bowed to the traveller.' },
             { word: 'have a taste of', meaning: '맛을 보다', sentence: 'I have had a taste of it myself.' }
         ],
         '08-ending-2.webp': [
             { word: 'feast', meaning: '잔치', sentence: 'That day there was a feast at the inn.' },
-            { word: 'lay the table', meaning: '상을 차리다', sentence: 'He laid the table with his own hands.' },
+            { word: 'lay the table', meaning: '상을 차리다', sentence: 'The innkeeper laid the table with his own hands.' },
             { word: 'eat one’s fill', meaning: '마음껏 먹다', sentence: 'The traveller ate his fill.' },
             { word: 'take to the road', meaning: '길을 나서다', sentence: 'The traveller took to the road again.' }
         ],
         'end.webp': [
             { word: 'dumpling', meaning: '만두', sentence: 'An innkeeper who feeds his guests dumplings.' },
-            { word: 'do a sum', meaning: '셈을 하다', sentence: 'The innkeeper did a different sum.' },
-            { word: 'work out', meaning: '궁리하다', sentence: 'He worked out how to sell them.' },
-            { word: 'all the same', meaning: '그런데도', sentence: 'The traveller feeds that man the fruit all the same.' }
+            { word: 'do a sum', meaning: '셈을 하다', sentence: 'The innkeeper heard that story and did a different sum.' },
+            { word: 'work out', meaning: '궁리하다', sentence: 'He worked out how to turn his guests into donkeys and sell them.' },
+            { word: 'all the same', meaning: '그런데도', sentence: 'The traveller feeds that man the yellow fruit all the same.' }
         ]
     }
 };

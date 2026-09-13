@@ -561,20 +561,19 @@ const EN = {
                     art: '01-port.webp',
                     emoji: '⛵',
                     left: [
-                        "Long ago in Baghdad there lived a young man called Sindbad. His father had been a great merchant, and he had inherited a good deal.",
-                        "Sindbad spent it on feasts, one after another,",
-                        "calling his friends in and setting good food in front of them.",
+                        "Long ago in Baghdad there lived a young man called Sindbad.",
+                        "His father had been a great merchant, and he had inherited a good deal.",
+                        "Every day he threw feasts for his friends.",
                         "Then one day he opened his store room.",
-                        "There were a few sacks rolling about in a corner.",
-                        "Sindbad stood in front of it a long while."
+                        "A few sacks lay in a corner. He stood and stared."
                     ],
                     right: [
                         "There was almost nothing left.",
-                        "And only then did he come to his senses.",
-                        "\"This will not do.\"",
+                        "Only then did he come to his senses.",
+                        "\"This will not do,\" he said.",
                         "He sold what was in the house and raised some money,",
-                        "and with it he bought goods to trade.",
-                        "In a far country, they said, they would be worth several times as much."
+                        "and he bought goods to trade.",
+                        "In a far country, people said, they would be worth much more."
                     ]
                 },
                 {
@@ -614,12 +613,11 @@ const EN = {
                         "After so long at sea, the men were glad of it."
                     ],
                     right: [
-                        "They all went ashore and stood on the ground.",
+                        "They all went ashore. Solid ground at last!",
                         "They hung out the washing and gathered sticks.",
-                        "It was the first ground they had felt in days.",
-                        "Then they lit a fire and cooked a meal,",
-                        "and the smoke went straight up into the sky.",
-                        "There was laughing for the first time in a long while,",
+                        "Then they lit a fire and cooked a meal.",
+                        "The smoke went straight up.",
+                        "Everyone laughed again,",
                         "and Sindbad ran about the place, delighted."
                     ]
                 },
@@ -635,12 +633,12 @@ const EN = {
                         "\"Get back aboard, quickly!\""
                     ],
                     right: [
-                        "The fire had startled the fish and it had turned over.",
-                        "The island went straight down under the water,",
-                        "and the men fell into the sea.",
-                        "Sindbad got hold of a wooden cask.",
-                        "The ship was already far away,",
-                        "and shout as he might, nobody heard him."
+                        "The fire had startled the fish.",
+                        "The island sank under the water.",
+                        "Men who were not aboard fell into the sea. Sindbad was one.",
+                        "He got hold of a wooden cask.",
+                        "The captain put up the sails in a hurry.",
+                        "Sindbad shouted, but the ship sailed away."
                     ]
                 }
             ]
@@ -654,15 +652,15 @@ const EN = {
                     emoji: '🥚',
                     left: [
                         "Sindbad held on to the cask and drifted all night.",
-                        "Next day the water pushed him up onto an island.",
-                        "When he had his strength back he walked inland.",
-                        "There was not the shadow of a person on it.",
-                        "He ate what fruit he could find and drank from a spring,",
-                        "and only then did he feel he might live."
+                        "Next day the waves pushed him onto an island.",
+                        "Rested, he walked inland.",
+                        "There was nobody there at all.",
+                        "He ate fruit from the trees and drank from a spring.",
+                        "At last he felt he might live."
                     ],
                     right: [
                         "After a long walk Sindbad stopped.",
-                        "In the middle of the island something white and round stood up out of the ground.",
+                        "In the middle of the island stood something white and round.",
                         "At first he took it for a great roof.",
                         "But there were no windows and no door.",
                         "Close up, it was an enormous egg.",
@@ -682,11 +680,11 @@ const EN = {
                     ],
                     right: [
                         "The bird settled quietly on the egg.",
+                        "The bird's feathers were the size of shields.",
                         "Its legs were as thick as tree trunks.",
-                        "Sindbad unwound his turban and tied himself to one of them.",
-                        "\"Only take me somewhere!\"",
-                        "The bird's feathers were the size of shields,",
-                        "and the ground shook when it breathed."
+                        "Sindbad thought, \"If it flies, I can leave too!\"",
+                        "Sindbad unwound his turban and tied himself to a leg.",
+                        "\"Take me anywhere!\""
                     ]
                 }
             ]
@@ -701,20 +699,18 @@ const EN = {
                     left: [
                         "In the morning the bird opened its wings,",
                         "and Sindbad was lifted into the air.",
-                        "The sea and the island grew smaller and smaller beneath him.",
-                        "The wind beat hard against his face,",
-                        "and Sindbad shut his eyes tight.",
+                        "The sea and the island grew small.",
+                        "The wind beat hard against his face.",
                         "He was afraid the turban would give way.",
-                        "After a long while the bird came down somewhere."
+                        "At last the bird came down somewhere."
                     ],
                     right: [
                         "Sindbad untied himself quickly.",
                         "The bird never saw him and flew off again.",
-                        "He looked about and found himself in a deep, narrow valley.",
-                        "Cliffs went up on both sides to the sky,",
-                        "and the sky itself was a thin strip overhead.",
-                        "The floor of it was covered in something that glittered.",
-                        "It was all diamonds."
+                        "He looked about. He was in a deep, narrow valley.",
+                        "Cliffs went up on both sides to the sky.",
+                        "The sky was a thin strip overhead.",
+                        "And something glittered at his feet."
                     ]
                 },
                 {
@@ -731,10 +727,9 @@ const EN = {
                     right: [
                         "\"If I could carry all of this…\"",
                         "Sindbad went at the jewels as fast as he could.",
-                        "And then his hands stopped.",
-                        "There was no way out of that valley anywhere.",
+                        "Then his hands stopped. There was no way out of the valley.",
                         "Sindbad sat down and thought for a long time.",
-                        "However many jewels he had, they were no use if he could not get out."
+                        "The jewels were no use if he could not get out."
                     ]
                 }
             ]
@@ -747,21 +742,20 @@ const EN = {
                     art: '05-meat.webp',
                     emoji: '🦅',
                     left: [
-                        "And then something dropped from above.",
-                        "It was a great piece of meat.",
-                        "And then another came down after it.",
-                        "Sindbad looked up at the top of the cliff.",
-                        "There were shapes of people moving up there.",
+                        "Then something dropped from above.",
+                        "It was a great piece of meat. Another came down.",
+                        "Up on the cliff, people were moving.",
                         "Sindbad narrowed his eyes.",
-                        "Merchants had thrown the meat down to get the jewels."
+                        "He remembered a story from Baghdad:",
+                        "people threw meat into a valley to get jewels."
                     ],
                     right: [
                         "When the meat landed, the jewels stuck fast to it.",
-                        "And then the eagles carried the meat back up,",
-                        "and the merchants picked the jewels off it.",
+                        "Eagles carried the meat up to their nests,",
+                        "and merchants picked the jewels off it.",
                         "Sindbad slapped his knee.",
-                        "\"I shall ride the meat up!\"",
-                        "And another piece came down with a thud."
+                        "\"I can hang on to the meat!\"",
+                        "Another piece came down with a thud."
                     ]
                 },
                 {
@@ -777,12 +771,11 @@ const EN = {
                     ],
                     right: [
                         "An eagle came down and took the meat in its claws,",
-                        "and up he went.",
-                        "The cliff went rushing past in front of his eyes.",
+                        "and up Sindbad went. The cliff rushed past his eyes.",
                         "Sindbad set his teeth and hung on.",
-                        "His hands went numb and his arms felt ready to come off.",
-                        "The wind roared in his ears,",
-                        "and when he looked down the valley was as thin as a thread."
+                        "His hands went numb and his arms hurt.",
+                        "The wind roared in his ears.",
+                        "Far below, the valley was as thin as a thread."
                     ]
                 }
             ]
@@ -795,19 +788,19 @@ const EN = {
                     art: '06-sea.webp',
                     emoji: '🏠',
                     left: [
-                        "The eagle set the meat down in its nest on the clifftop,",
-                        "and the merchants came running and shouting.",
-                        "And there was a person attached to the meat.",
+                        "The eagle set the meat down in its nest on the clifftop.",
+                        "The merchants came running and shouting to chase it away.",
+                        "And there was a person attached to the meat!",
                         "The merchants' eyes went round.",
-                        "\"I have never seen a man come up on the meat before!\" they said, laughing."
+                        "\"We have never seen a man come up with the meat!\" they said, laughing."
                     ],
                     right: [
-                        "Sindbad told them everything that had happened,",
-                        "and the merchants only looked at one another.",
-                        "Then Sindbad shared out his jewels among them.",
-                        "\"That is for showing me the way.\"",
-                        "The merchants took him as far as a ship,",
-                        "and so Sindbad was able to set off safely for home."
+                        "Sindbad told them his story.",
+                        "The merchants only looked at one another.",
+                        "Sindbad shared out his jewels among them.",
+                        "\"No jewels stuck to your meat because of me. Take these.\"",
+                        "The merchants gladly took him to a ship.",
+                        "He was able to set off safely for home."
                     ]
                 },
                 {
@@ -815,21 +808,17 @@ const EN = {
                     emoji: '🏠',
                     left: [
                         "Back in Baghdad, Sindbad became a very rich man.",
-                        "He bought a large house and had fine clothes made.",
-                        "People came in crowds to hear his story,",
-                        "and they were all amazed at the island that was a fish.",
-                        "He lived like that for a while,",
-                        "eating well every morning and sleeping late."
+                        "He bought a large house and fine clothes.",
+                        "People came in crowds to hear his story.",
+                        "They were all amazed at the island that was a fish.",
+                        "For a while he ate well and slept late."
                     ],
                     right: [
-                        "And after some months he began to itch again.",
-                        "At night the sound of the waves came back to him.",
-                        "His bed felt close and stuffy,",
-                        "and Sindbad took to leaving the window open.",
-                        "\"I keep thinking about the sound of the sea.\"",
-                        "So Sindbad packed his things",
-                        "and went aboard a ship again —",
-                        "this time one bound for further waters still."
+                        "But after some months he began to itch again.",
+                        "At night he heard the waves in his head. His bed felt stuffy.",
+                        "\"I keep thinking about the sound of the sea,\" Sindbad said.",
+                        "So he packed his things again.",
+                        "He went aboard a ship bound for seas further away."
                     ]
                 }
             ]
@@ -842,18 +831,16 @@ const EN = {
                     art: '07-old-man.webp',
                     emoji: '👴',
                     left: [
-                        "On this voyage too Sindbad lost his ship.",
-                        "He barely swam as far as an island,",
-                        "where the trees grew thick and a stream ran through.",
-                        "There was an old man sitting by the stream.",
-                        "It was the last thing he expected on so lonely an island.",
-                        "He was thin, and his legs were thin,",
-                        "and he did not look able to cross the stream alone."
+                        "This time a storm broke Sindbad's ship to pieces.",
+                        "He barely swam as far as an island.",
+                        "Trees grew thick there, and a stream ran through.",
+                        "An old man was sitting by the stream. It was the last thing he expected.",
+                        "The old man was very thin. He could not cross the stream alone."
                     ],
                     right: [
-                        "The old man pointed across to the other side.",
+                        "The old man did not say one word.",
+                        "He pointed across to the other side.",
                         "He seemed to be asking to be carried.",
-                        "He did not say one word.",
                         "Sindbad felt sorry for him",
                         "and readily offered his back.",
                         "The old man was lighter than he had expected."
@@ -889,41 +876,38 @@ const EN = {
                     art: '08-ending.webp',
                     emoji: '🍇',
                     left: [
-                        "One day Sindbad was taken past a vineyard.",
-                        "And there a good idea came to him.",
-                        "Sindbad picked a great many ripe grapes",
+                        "One day Sindbad was taken past a vineyard,",
+                        "and a good idea came to him.",
+                        "He picked a great many ripe grapes",
                         "and put them into a gourd he had hollowed out.",
-                        "After a few days they had turned to a sweet juice,",
-                        "strong enough to make you dizzy at the smell of it."
+                        "After a few days the grapes turned into strong wine.",
+                        "Just the smell made you dizzy."
                     ],
                     right: [
-                        "Sindbad made a show of drinking it with great enjoyment.",
-                        "The old man put out a hand and asked for some,",
+                        "Sindbad pretended to drink it and enjoy it.",
+                        "The old man held out a hand for it,",
                         "and Sindbad handed him the gourd.",
-                        "The old man drank it down without leaving a drop.",
+                        "The old man drank it all. Soon he was drunk.",
                         "Before long he went limp,",
-                        "and the legs round Sindbad's neck loosened."
+                        "and his legs round Sindbad's neck loosened."
                     ]
                 },
                 {
                     art: '08-ending-2.webp',
                     emoji: '🍇',
                     left: [
-                        "Sindbad got the old man off his shoulders at once",
+                        "Sindbad got the old man off his shoulders",
                         "and ran without looking back.",
-                        "He ran the whole way to the shore.",
-                        "As it happened a passing ship saw him and stopped,",
-                        "and he could see somebody waving.",
+                        "He ran all the way to the shore.",
+                        "A ship was passing. Sindbad waved both arms, and it stopped.",
                         "The sailors pulled him aboard."
                     ],
                     right: [
-                        "Sindbad lay on the deck and looked at the sky.",
-                        "His shoulders still ached,",
-                        "and the clouds went slowly over.",
-                        "\"Now I really must give this up.\"",
-                        "And so Sindbad came home to Baghdad.",
-                        "After that he lived quietly at home —",
-                        "and told the story of the sea to everybody who came."
+                        "Sindbad lay on the deck. His shoulders still ached.",
+                        "\"Now I really must give this up,\" he said.",
+                        "So Sindbad came home to Baghdad.",
+                        "He lived quietly after that,",
+                        "and told sea stories to everyone who came."
                     ]
                 }
             ]
@@ -962,7 +946,7 @@ const EN = {
         },
         {
             q: 'How did Sindbad get the old man off his shoulders?',
-            choices: ['He gave him the juice from the gourd', 'He ran into the stream', 'The sailors pulled him off'],
+            choices: ['He gave him the wine from the gourd', 'He carried him back across the stream', 'The sailors pulled him off'],
             answer: 0
         },
         {
@@ -972,7 +956,7 @@ const EN = {
                 "He looked into the storeroom and only then came to his senses — he moved when there was nothing left.",
                 "Seeing the jewels stick to the meat he slapped his knee — he turned the merchants' own method back to front.",
                 "Rich again, he was packing within months — why he first went to sea and why he went back were not the same.",
-                "Sinbad stopped in the middle of gathering jewels — taking what belonged to someone else's valley weighed on him."
+                "Sindbad stopped in the middle of gathering jewels — taking what belonged to someone else's valley weighed on him."
             ],
             answer: 3
         }
@@ -1008,8 +992,8 @@ const EN = {
             { word: 'inherit', meaning: '물려받다', sentence: 'He had inherited a good deal.' },
             { word: 'store room', meaning: '곳간', sentence: 'One day he opened his store room.' },
             { word: 'come to one’s senses', meaning: '정신이 들다', sentence: 'Only then did he come to his senses.' },
-            { word: 'raise money', meaning: '돈을 마련하다', sentence: 'He sold what was in the house and raised some money.' },
-            { word: 'goods', meaning: '물건', sentence: 'He bought goods to trade.' }
+            { word: 'raise money', meaning: '돈을 마련하다', sentence: "He sold what was in the house and raised some money." },
+            { word: 'goods', meaning: '물건', sentence: "He bought goods to trade." }
         ],
         '01-port-2.webp': [
             { word: 'harbour', meaning: '항구', sentence: 'Sindbad carried his goods down to the harbour.' },
@@ -1031,7 +1015,7 @@ const EN = {
             { word: 'cask', meaning: '나무통', sentence: 'Sindbad got hold of a wooden cask.' }
         ],
         '03-roc.webp': [
-            { word: 'drift', meaning: '떠다니다', sentence: 'He held on to the cask and drifted all night.' },
+            { word: 'drift', meaning: '떠다니다', sentence: "He held on to the cask and drifted all night." },
             { word: 'inland', meaning: '안쪽으로', sentence: 'He walked inland.' },
             { word: 'spring', meaning: '샘', sentence: 'And drank from a spring.' },
             { word: 'take for', meaning: '~인 줄 알다', sentence: 'At first he took it for a great roof.' }
@@ -1046,15 +1030,15 @@ const EN = {
         '04-valley.webp': [
             { word: 'beat against', meaning: '때리다', sentence: 'The wind beat hard against his face.' },
             { word: 'give way', meaning: '끊어지다', sentence: 'He was afraid the turban would give way.' },
-            { word: 'cliff', meaning: '절벽', sentence: 'Cliffs went up on both sides.' },
-            { word: 'strip', meaning: '띠', sentence: 'The sky was a thin strip overhead.' },
-            { word: 'glitter', meaning: '반짝이다', sentence: 'Covered in something that glittered.' }
+            { word: 'cliff', meaning: '절벽', sentence: "Cliffs went up on both sides." },
+            { word: 'strip', meaning: '띠', sentence: "The sky was a thin strip overhead." },
+            { word: 'glitter', meaning: '반짝이다', sentence: "Something glittered at his feet." }
         ],
         '04-valley-2.webp': [
             { word: 'fist', meaning: '주먹', sentence: 'A diamond the size of his fist.' },
             { word: 'ruby', meaning: '홍옥', sentence: 'Diamonds and rubies.' },
             { word: 'go at', meaning: '정신없이 달려들다', sentence: 'Sindbad went at the jewels as fast as he could.' },
-            { word: 'no use', meaning: '소용없는', sentence: 'They were no use if he could not get out.' }
+            { word: 'no use', meaning: '소용없는', sentence: "The jewels were no use if he could not get out." }
         ],
         '05-meat.webp': [
             { word: 'drop', meaning: '떨어지다', sentence: 'Something dropped from above.' },
@@ -1068,7 +1052,7 @@ const EN = {
             { word: 'claw', meaning: '발톱', sentence: 'An eagle took the meat in its claws.' },
             { word: 'set one’s teeth', meaning: '이를 악물다', sentence: 'Sindbad set his teeth and hung on.' },
             { word: 'numb', meaning: '저린', sentence: 'His hands went numb.' },
-            { word: 'roar', meaning: '쌩쌩 울다', sentence: 'The wind roared in his ears.' }
+            { word: 'roar', meaning: '쌩쌩 울다', sentence: "The wind roared in his ears." }
         ],
         '06-sea.webp': [
             { word: 'nest', meaning: '둥지', sentence: 'The eagle set the meat down in its nest.' },
@@ -1080,8 +1064,8 @@ const EN = {
             { word: 'in crowds', meaning: '몰려서', sentence: 'People came in crowds to hear his story.' },
             { word: 'amazed', meaning: '놀란', sentence: 'They were all amazed at the island that was a fish.' },
             { word: 'itch', meaning: '좀이 쑤시다', sentence: 'He began to itch again.' },
-            { word: 'stuffy', meaning: '답답한', sentence: 'His bed felt close and stuffy.' },
-            { word: 'bound for', meaning: '~으로 가는', sentence: 'One bound for further waters still.' }
+            { word: 'stuffy', meaning: '답답한', sentence: "His bed felt stuffy." },
+            { word: 'bound for', meaning: '~으로 가는', sentence: "A ship bound for seas further away." }
         ],
         '07-old-man.webp': [
             { word: 'barely', meaning: '겨우', sentence: 'He barely swam as far as an island.' },
@@ -1097,18 +1081,18 @@ const EN = {
             { word: 'drive about', meaning: '끌고 다니다', sentence: 'He was driven about like that for days.' }
         ],
         '08-ending.webp': [
-            { word: 'vineyard', meaning: '포도밭', sentence: 'Sindbad was taken past a vineyard.' },
-            { word: 'ripe', meaning: '잘 익은', sentence: 'Sindbad picked a great many ripe grapes.' },
+            { word: 'vineyard', meaning: '포도밭', sentence: "Sindbad was taken past a vineyard." },
+            { word: 'ripe', meaning: '잘 익은', sentence: "He picked a great many ripe grapes." },
             { word: 'gourd', meaning: '조롱박', sentence: 'A gourd he had hollowed out.' },
             { word: 'hollow out', meaning: '속을 파내다', sentence: 'A gourd he had hollowed out.' },
             { word: 'go limp', meaning: '몸이 늘어지다', sentence: 'Before long he went limp.' }
         ],
         '08-ending-2.webp': [
             { word: 'without looking back', meaning: '뒤도 돌아보지 않고', sentence: 'And ran without looking back.' },
-            { word: 'shore', meaning: '바닷가', sentence: 'He ran the whole way to the shore.' },
+            { word: 'shore', meaning: '바닷가', sentence: "He ran all the way to the shore." },
             { word: 'pull aboard', meaning: '끌어 올리다', sentence: 'The sailors pulled him aboard.' },
             { word: 'deck', meaning: '갑판', sentence: 'Sindbad lay on the deck.' },
-            { word: 'give up', meaning: '그만두다', sentence: 'Now I really must give this up.' }
+            { word: 'give up', meaning: '그만두다', sentence: "Now I really must give this up." }
         ],
         'end.webp': [
             { word: 'voyage', meaning: '항해', sentence: 'Only some of those voyages are in this book.' },

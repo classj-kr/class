@@ -563,40 +563,28 @@ const EN = {
                     art: '01-barefoot.webp',
                     emoji: '👣',
                     left: [
-                        "Karen went barefoot all summer long.",
-                        "It was a house with no money for shoes.",
-                        "And Karen was a child who laughed easily.",
-                        "The dirt road pricked at the soles of her feet.",
-                        "In winter she wore wooden clogs.",
-                        "The clogs were hard and her heels went red and swollen,",
-                        "and Karen never let it show."
+                        "Karen went barefoot all summer long. Her family had no money for shoes, but Karen still laughed easily.",
+                        "The dirt road pricked at the soles of her feet. In winter she wore wooden clogs.",
+                        "The clogs were hard, and her heels went red and swollen. But Karen never let it show."
                     ],
                     right: [
-                        "They went clack, clack as she walked,",
-                        "and the other children turned round at the sound.",
-                        "There was a kind woman in the village",
-                        "who sewed her a pair of shoes out of old rags —",
-                        "rough shoes pieced together out of red cloth.",
-                        "\"Oh, I have never had such pretty shoes!\" And Karen jumped up and down in them."
+                        "Clack, clack, went the clogs as she walked, and the other children turned round at the sound.",
+                        "A kind woman in the village sewed Karen a rough pair of shoes out of old red rags.",
+                        "\"Oh, I have never had such pretty shoes!\" cried Karen, and she jumped up and down in them."
                     ]
                 },
                 {
                     art: '01-barefoot-2.webp',
                     emoji: '👣',
                     left: [
-                        "Karen thought a great deal of those shoes.",
-                        "She walked carefully so as not to get dirt on them,",
-                        "and kept them by her pillow to look at before she slept.",
-                        "And a little while later her mother took to her bed.",
-                        "Karen sat up with her through the nights.",
-                        "And then Karen was left on her own."
+                        "Karen loved those shoes. She walked carefully so as not to get dirt on them, and kept them by her pillow at night.",
+                        "Then her mother took to her bed. Karen sat up with her through the nights.",
+                        "But her mother never got better, and Karen was left all alone."
                     ],
                     right: [
-                        "It was the day of her mother's burial,",
-                        "and Karen wore the red rag shoes to it,",
-                        "because they were the only shoes she had.",
-                        "People murmured about it.",
-                        "\"Red shoes, on a day like this.\" And Karen hung her head."
+                        "On the day of her mother's burial, Karen wore the red rag shoes. They were the only shoes she had.",
+                        "People murmured about it. \"Red shoes, on a day like this!\"",
+                        "Karen hung her head."
                     ]
                 }
             ]
@@ -609,40 +597,28 @@ const EN = {
                     art: '02-adopted.webp',
                     emoji: '🏡',
                     left: [
-                        "There was a lady passing through that village,",
-                        "an old lady with white hair and spectacles.",
-                        "She looked at Karen for a long while,",
-                        "sorry for so small and thin a child.",
-                        "\"Are you left all alone?\"",
-                        "And Karen nodded."
+                        "That day an old lady was passing by. She had white hair and spectacles.",
+                        "She looked at Karen for a long while and felt sorry for such a small, thin child.",
+                        "\"Are you left all alone?\" she asked. Karen nodded."
                     ],
                     right: [
-                        "\"Then come and live with me.\"",
-                        "So Karen went with her.",
-                        "The lady's house was warm and clean,",
-                        "with the fire always burning.",
-                        "The lady gave Karen good clothes,",
-                        "and taught her her letters and how to sew."
+                        "The lady took Karen's hand. \"Then come and live with me.\"",
+                        "So Karen went with her. The lady's house was warm and clean, and the fire was always burning.",
+                        "She gave Karen good clothes and taught her her letters and how to sew."
                     ]
                 },
                 {
                     art: '02-adopted-2.webp',
                     emoji: '🏡',
                     left: [
-                        "Only one thing did not sit well.",
-                        "The lady saw the red rag shoes.",
+                        "But one thing did not sit well with the lady. She looked at the red rag shoes and shook her head.",
                         "\"You will have no more need of these.\"",
-                        "And she put them into the fire.",
-                        "Karen's head went down.",
-                        "The red cloth was ashes in a moment."
+                        "She put them into the fire, and the red cloth was ashes in a moment."
                     ],
                     right: [
-                        "Karen stood there looking at it a long time.",
-                        "Something in her chest felt tight.",
-                        "That night Karen could not sleep,",
-                        "because the red shoes kept coming back to her.",
-                        "And she never forgot that colour afterwards.",
-                        "When she shut her eyes there was red behind them."
+                        "Karen stood there with her head down for a long time. Something in her chest felt tight.",
+                        "That night she could not sleep, because she kept thinking of the red shoes.",
+                        "She never forgot that colour. Whenever she shut her eyes, she saw red."
                     ]
                 }
             ]
@@ -655,41 +631,28 @@ const EN = {
                     art: '03-shop.webp',
                     emoji: '👠',
                     left: [
-                        "One day the lady took Karen out with her.",
-                        "There was a great occasion coming and they were to buy new shoes.",
-                        "The two of them went to the shoemaker's shop.",
-                        "There were shoes along every wall,",
-                        "and the smell of leather went right up your nose.",
-                        "The lady's eyes were very weak,",
-                        "and she could not see the display properly."
+                        "One day the lady took Karen out. A great occasion was coming, so they went to the shoemaker's to buy new shoes.",
+                        "There were shoes along every wall, and the shop smelled strongly of leather.",
+                        "The lady's eyes were very weak, and she could not see the display properly."
                     ],
                     right: [
-                        "\"Choose whichever pair you like.\"",
-                        "Karen looked at them one by one.",
-                        "The black shoes did not draw her at all,",
-                        "and nor did the brown ones.",
-                        "And then something on a shelf at the back caught her eye.",
-                        "A pair of red leather shoes."
+                        "\"Choose whichever pair you like,\" said the lady.",
+                        "Karen looked at them one by one. The black shoes did not draw her, and nor did the brown ones.",
+                        "Then something on a shelf at the back caught her eye. It was a pair of red leather shoes."
                     ]
                 },
                 {
                     art: '03-shop-2.webp',
                     emoji: '👠',
                     left: [
-                        "They were polished until they shone.",
-                        "Karen could not take her eyes off them.",
-                        "She thought of those red rag shoes,",
-                        "and carefully pointed at them.",
-                        "\"I shall have these.\"",
-                        "And the shoemaker smiled."
+                        "They were polished until they shone. Karen could not take her eyes off them.",
+                        "She remembered the red rag shoes that had burned. Carefully, she pointed at the new pair. \"I'd like these.\"",
+                        "The shoemaker smiled, as though he knew something."
                     ],
                     right: [
-                        "It was a smile as though he knew something.",
-                        "The lady paid, believing they were black.",
-                        "\"You have chosen well.\"",
-                        "And Karen held the shoes tight against her.",
-                        "Her heart beat all the way home.",
-                        "She could not wait to put them on."
+                        "The lady could not see well, so she paid for them thinking they were black. Karen did not tell her they were red.",
+                        "\"You have chosen well,\" said the lady. Karen held the shoes tight against her.",
+                        "Her heart pounded all the way home. She could not wait to put them on."
                     ]
                 }
             ]
@@ -702,39 +665,27 @@ const EN = {
                     art: '04-church.webp',
                     emoji: '⛪',
                     left: [
-                        "Sunday morning came,",
-                        "and Karen wore the shoes to church.",
-                        "When she came in, people turned to look,",
-                        "and every eye went to her feet.",
-                        "Karen felt her shoulders go back,",
-                        "and even sitting down she looked at nothing but her feet."
+                        "Sunday morning came, and Karen wore the shoes to church.",
+                        "When she came in, people turned to look, and every eye went to her feet.",
+                        "Karen felt her shoulders go back with pride. Even sitting down, she looked at nothing but her feet."
                     ],
                     right: [
-                        "She did not hear a word of what was said at the front.",
-                        "Her head was full of nothing but the red shoes.",
-                        "\"Where shall I wear them tomorrow?\"",
-                        "\"People will look again.\"",
-                        "She did not notice the service had ended,",
-                        "and only came to herself when everybody stood up."
+                        "She did not hear a word of what was said at the front. Her head was full of the red shoes.",
+                        "\"Where shall I wear them tomorrow?\" she thought. \"People will look at me again.\"",
+                        "She did not notice the service had ended. She only came to herself when everybody stood up."
                     ]
                 },
                 {
                     art: '04-church-2.webp',
                     emoji: '⛪',
                     left: [
-                        "It was the same when she got home.",
-                        "Karen polished the shoes and polished them again,",
-                        "rubbing at them with a cloth and looking at them,",
-                        "and she did not hear the lady calling.",
-                        "\"Karen, would you bring me some water.\"",
-                        "About that time the lady took to her bed."
+                        "It was the same at home. Karen rubbed at the shoes with a cloth, polishing them again and again.",
+                        "About that time the lady fell ill. Her cough was bad and her face was pale.",
+                        "\"Karen, please bring me some water,\" she called. But Karen did not even hear her."
                     ],
                     right: [
-                        "Her cough was bad and her face was pale.",
-                        "Neighbours came, worried about her.",
-                        "\"You must sit with her properly.\"",
-                        "And Karen answered without really listening.",
-                        "Her eyes were still on the shoes.",
+                        "Worried neighbours came to see the lady. \"You must sit with her properly,\" they told Karen.",
+                        "Karen answered without really listening. Her eyes were still on the shoes.",
                         "Her mind was somewhere else entirely."
                     ]
                 }
@@ -748,43 +699,29 @@ const EN = {
                     art: '05-dance.webp',
                     emoji: '💃',
                     left: [
-                        "That evening there was a feast in the village.",
-                        "Lamps were hung in the square and the musicians gathered.",
-                        "Karen looked out of the window,",
-                        "and her feet itched.",
-                        "The lady was asleep in her bed.",
-                        "Karen quietly put on the shoes",
-                        "and slipped out of the house.",
-                        "When she reached the square the music struck up."
+                        "That evening there was a feast in the village. Lamps hung in the square, and musicians gathered.",
+                        "Karen looked out of the window, and her feet itched.",
+                        "The lady was asleep in bed. Karen quietly put on the shoes and slipped out of the house.",
+                        "When she reached the square, the music struck up."
                     ],
                     right: [
-                        "And in that instant her feet began to move by themselves.",
-                        "Karen went round and round, delighted.",
-                        "People clapped for her,",
-                        "and Karen was more delighted still.",
-                        "Her skirt spun round like a top,",
-                        "and the lamps went past her eyes in a blur."
+                        "At that moment her feet began to move by themselves. Karen spun round and round, delighted.",
+                        "People clapped for her, and Karen was more delighted still.",
+                        "Her skirt spun like a top, and the lamps went past her eyes in a blur."
                     ]
                 },
                 {
                     art: '05-dance-2.webp',
                     emoji: '💃',
                     left: [
-                        "But when one tune ended her feet did not stop.",
-                        "And they did not stop after the second one either.",
-                        "\"What? What is happening?\"",
-                        "Karen tried to take hold of her own feet.",
-                        "\"Stop! Stop now!\"",
-                        "And the shoes would not listen."
+                        "But when the tune ended, her feet did not stop. After the second tune, they still did not stop.",
+                        "\"What? What is happening?\" Karen bent down and tried to take hold of her own feet.",
+                        "\"Stop! Stop now!\" But the shoes would not listen."
                     ],
                     right: [
-                        "They carried her out of the square.",
-                        "People stood back in surprise,",
-                        "and the shoes took her across the fields and toward the wood.",
-                        "They danced her along under the moon all night.",
-                        "Karen could hardly breathe,",
-                        "and branches brushed her face.",
-                        "And still her feet did not stop."
+                        "The shoes carried her out of the square. People stood back in surprise.",
+                        "Across the fields and into the wood she danced, all night under the moon.",
+                        "Karen was out of breath, and branches brushed her face. Still her feet did not stop."
                     ]
                 }
             ]
@@ -797,42 +734,28 @@ const EN = {
                     art: '06-stuck.webp',
                     emoji: '🌲',
                     left: [
-                        "Dawn came and the dancing did not stop.",
-                        "Her clothes were wet with dew and her hair was all undone.",
-                        "Karen took hold of a tree",
-                        "and pulled at the shoes with all her strength.",
-                        "But the shoes were stuck fast to her feet.",
-                        "Pull as she might, they did not move."
+                        "Dawn came, and still the dancing did not stop. Her clothes were wet with dew, and her hair was all undone.",
+                        "Karen grabbed a tree and held on. Then she pulled at the shoes with all her strength.",
+                        "But the shoes were stuck fast to her feet. Pull as she might, they did not move."
                     ],
                     right: [
-                        "And her feet started again by themselves.",
-                        "\"Please… I want to stop now.\"",
-                        "Karen was near to crying.",
-                        "The sun came up grey over the wood",
-                        "and the birds began to sing.",
-                        "And still her feet did not stop.",
-                        "The soles of them burned.",
-                        "And now Karen had no voice left."
+                        "The moment she let go of the tree, her feet started again. \"Please… I want to stop now,\" Karen sobbed.",
+                        "The sun rose pale over the wood, and the birds began to sing.",
+                        "Still her feet did not rest. The soles of them burned, and Karen had no voice left."
                     ]
                 },
                 {
                     art: '06-stuck-2.webp',
                     emoji: '🌲',
                     left: [
-                        "And only then did Karen think of the lady.",
-                        "That face, lying there in the bed, came back to her.",
-                        "\"And she is ill.\"",
-                        "\"What have I been doing?\"",
-                        "The tears came down.",
-                        "She remembered the voice asking for water,"
+                        "Only then did Karen think of the lady. That pale face lying in bed came back to her.",
+                        "\"She is ill, and what have I been doing?\"",
+                        "Tears ran down her cheeks. She remembered the voice asking for water."
                     ],
                     right: [
-                        "and how she had answered without listening.",
-                        "Karen could not bear the shame of it.",
-                        "\"I want to go back.\"",
-                        "\"I do not want these shoes any more.\"",
-                        "And her feet went on carrying her along,",
-                        "and the wood grew deeper."
+                        "She remembered, too, how she had answered without listening. Karen could not bear the shame of it.",
+                        "\"I want to go back,\" she cried. \"I do not want these shoes any more!\"",
+                        "But her feet went on carrying her along, and the wood grew deeper."
                     ]
                 }
             ]
@@ -845,41 +768,28 @@ const EN = {
                     art: '07-cottage.webp',
                     emoji: '🏚️',
                     left: [
-                        "The dancing carried her to a clearing in the wood,",
-                        "where a small cottage stood",
-                        "with smoke coming up from the chimney.",
-                        "A woodcutter's wife opened the door and came out",
-                        "with her hands thick with flour.",
-                        "\"Well now, you have been out all night.\""
+                        "The dancing carried her to a clearing in the wood, where a small cottage stood.",
+                        "Smoke was rising from the chimney. A woodcutter's wife opened the door and came out, her hands thick with flour.",
+                        "\"Oh dear, you have been out all night,\" she said."
                     ],
                     right: [
-                        "And the woman took hold of Karen,",
-                        "and her feet stopped for a moment.",
-                        "The woman sat her down on the doorstep",
-                        "and fetched her a bowl of warm water.",
-                        "Karen drank it straight down,",
-                        "and only then could she breathe again.",
-                        "Her hands were still shaking,",
-                        "and the woman took them in her own."
+                        "The woman held Karen tight in both arms, and her feet stopped for a moment.",
+                        "The woman sat her down on the doorstep and fetched her a bowl of warm water. Karen drank it straight down.",
+                        "At last she could breathe again. Her hands were still shaking, so the woman held them in her own."
                     ]
                 },
                 {
                     art: '07-cottage-2.webp',
                     emoji: '🏚️',
                     left: [
-                        "The woman looked down at the shoes.",
-                        "\"Do you truly want those shoes off?\"",
-                        "Karen nodded without hesitating.",
-                        "\"Yes. Truly.\"",
-                        "\"They do not look pretty to me at all now.\"",
-                        "And then something remarkable happened."
+                        "The woman looked down at the shoes. \"Do you truly want those shoes off?\"",
+                        "Karen nodded without hesitating. \"Yes, truly. They do not look pretty to me at all now.\"",
+                        "Then something remarkable happened."
                     ],
                     right: [
-                        "The shoes slid off her feet",
-                        "and dropped onto the grass.",
-                        "Karen looked down at her own feet.",
-                        "Bare, they felt lighter than before.",
-                        "\"Thank you.\" And the woman only smiled."
+                        "The shoes slid off her feet and dropped onto the grass. Thump!",
+                        "Karen looked down at her own feet. Bare, they felt lighter than before.",
+                        "\"Thank you,\" said Karen. The woman only smiled."
                     ]
                 }
             ]
@@ -892,43 +802,27 @@ const EN = {
                     art: '08-ending.webp',
                     emoji: '🕯️',
                     left: [
-                        "Karen walked home barefoot.",
-                        "The gravel hurt her feet,",
-                        "and her heart was lighter for all that.",
-                        "It was near midday",
-                        "when she saw a roof she knew.",
-                        "There was no smoke from the chimney.",
-                        "Karen walked faster.",
-                        "She opened the door and the room was quiet."
+                        "Karen walked home barefoot. The gravel hurt her feet, but her heart was lighter for all that.",
+                        "It was near midday when she saw a roof she knew. There was no smoke from the chimney.",
+                        "Karen walked faster. She opened the door, and the room was quiet."
                     ],
                     right: [
-                        "The lady was lying in her bed,",
-                        "and turned her head slowly at the sight of Karen.",
-                        "\"And where have you been all this time?\"",
-                        "Her voice was very small.",
-                        "The tears came up in Karen at once,",
-                        "and she went down on her knees beside the bed.",
-                        "\"I am sorry. I am so very sorry.\""
+                        "The lady was lying in bed. When she saw Karen, she slowly turned her head.",
+                        "\"Where have you been all this time?\" she asked. Her voice was very small.",
+                        "Tears rushed into Karen's eyes, and she went down on her knees beside the bed."
                     ]
                 },
                 {
                     art: '08-ending-2.webp',
                     emoji: '🕯️',
                     left: [
-                        "Karen knelt beside the bed.",
-                        "\"I am sorry.\"",
-                        "\"I shall stay with you now.\"",
-                        "The lady took Karen's hand",
-                        "and smiled quietly.",
-                        "\"You have come back. That is enough.\""
+                        "\"I am sorry, so very sorry,\" Karen said, kneeling by the bed. \"I will stay with you now.\"",
+                        "The lady took Karen's hand and smiled quietly. \"You have come back. That is enough.\""
                     ],
                     right: [
-                        "From that day Karen stayed at the lady's side.",
-                        "She brewed her medicine and made her porridge,",
-                        "and before long the lady was up out of bed.",
-                        "The two of them lived together a long, long time.",
-                        "The red shoes stayed where they were on the grass in the wood.",
-                        "And Karen never went to look for them again."
+                        "From then on, Karen brewed the lady's medicine and made her porridge.",
+                        "Soon the lady was well, and they lived together for years.",
+                        "The red shoes stayed in the wood. Karen never went to look for them again."
                     ]
                 }
             ]
@@ -936,7 +830,7 @@ const EN = {
     ],
     quiz: [
         {
-            q: 'What were Karen’s first shoes?',
+            q: 'What did the kind woman in the village make for Karen?',
             choices: ['Red shoes sewn out of old rags', 'Wooden clogs', 'Red leather shoes'],
             answer: 0
         },
@@ -990,7 +884,7 @@ const EN = {
                 art: 'end.webp',
                 left: [
                     "Andersen is said to have remembered the first new shoes he ever wore for a very long time. That memory became this story.",
-                    "Karen went barefoot all summer. The first shoes she ever wore were red ones a kind woman sewed for her out of rags.",
+                    "Karen went barefoot all summer. In winter she wore hard wooden clogs, until a kind woman sewed her red shoes out of rags.",
                     "She could choose the red leather shoes in the shop because the lady's eyes were too weak to see them. Karen knew that, and said nothing.",
                     "On the night she slipped out to the feast, her feet begin to move by themselves. She wanted to stop and could not."
                 ],
@@ -1014,48 +908,48 @@ const EN = {
             { word: 'prick', meaning: '따끔거리게 하다', sentence: 'The dirt road pricked at the soles of her feet.' },
             { word: 'clog', meaning: '나막신', sentence: 'In winter she wore wooden clogs.' },
             { word: 'swollen', meaning: '부은', sentence: 'Her heels went red and swollen.' },
-            { word: 'rag', meaning: '헝겊', sentence: 'Shoes out of old rags.' }
+            { word: 'rag', meaning: '헝겊', sentence: 'Shoes out of old red rags.' }
         ],
         '01-barefoot-2.webp': [
             { word: 'so as not to', meaning: '~하지 않도록', sentence: 'She walked carefully so as not to get dirt on them.' },
             { word: 'take to one’s bed', meaning: '몸져눕다', sentence: 'Her mother took to her bed.' },
             { word: 'sit up with', meaning: '곁에서 밤을 새우다', sentence: 'Karen sat up with her through the nights.' },
-            { word: 'burial', meaning: '장례', sentence: "It was the day of her mother's burial." },
+            { word: 'burial', meaning: '장례', sentence: "On the day of her mother's burial." },
             { word: 'murmur', meaning: '수군거리다', sentence: 'People murmured about it.' }
         ],
         '02-adopted.webp': [
-            { word: 'spectacles', meaning: '안경', sentence: 'An old lady with white hair and spectacles.' },
-            { word: 'sorry for', meaning: '안쓰러워하는', sentence: 'Sorry for so small and thin a child.' },
-            { word: 'letters', meaning: '글', sentence: 'And taught her her letters.' },
-            { word: 'sew', meaning: '바느질하다', sentence: 'And how to sew.' }
+            { word: 'spectacles', meaning: '안경', sentence: 'She had white hair and spectacles.' },
+            { word: 'sorry for', meaning: '안쓰러워하는', sentence: 'Felt sorry for such a small, thin child.' },
+            { word: 'letters', meaning: '글', sentence: 'Taught her her letters.' },
+            { word: 'sew', meaning: '바느질하다', sentence: 'How to sew.' }
         ],
         '02-adopted-2.webp': [
-            { word: 'sit well', meaning: '마음에 걸리지 않다', sentence: 'Only one thing did not sit well.' },
+            { word: 'sit well', meaning: '마음에 걸리지 않다', sentence: 'One thing did not sit well with the lady.' },
             { word: 'have need of', meaning: '필요하다', sentence: 'You will have no more need of these.' },
             { word: 'ashes', meaning: '재', sentence: 'The red cloth was ashes in a moment.' },
             { word: 'tight', meaning: '답답한', sentence: 'Something in her chest felt tight.' }
         ],
         '03-shop.webp': [
-            { word: 'occasion', meaning: '행사', sentence: 'There was a great occasion coming.' },
-            { word: 'leather', meaning: '가죽', sentence: 'The smell of leather.' },
+            { word: 'occasion', meaning: '행사', sentence: 'A great occasion was coming.' },
+            { word: 'leather', meaning: '가죽', sentence: 'The shop smelled strongly of leather.' },
             { word: 'weak', meaning: '어두운, 약한', sentence: "The lady's eyes were very weak." },
             { word: 'display', meaning: '진열장', sentence: 'She could not see the display properly.' },
-            { word: 'catch one’s eye', meaning: '눈에 들어오다', sentence: 'Something caught her eye.' }
+            { word: 'catch one’s eye', meaning: '눈에 들어오다', sentence: 'Something on a shelf at the back caught her eye.' }
         ],
         '03-shop-2.webp': [
             { word: 'polish', meaning: '윤을 내다', sentence: 'They were polished until they shone.' },
-            { word: 'point at', meaning: '가리키다', sentence: 'And carefully pointed at them.' },
-            { word: 'as though', meaning: '마치 ~인 듯', sentence: 'A smile as though he knew something.' },
+            { word: 'point at', meaning: '가리키다', sentence: 'She pointed at the new pair.' },
+            { word: 'as though', meaning: '마치 ~인 듯', sentence: 'The shoemaker smiled, as though he knew something.' },
             { word: 'can’t wait to', meaning: '어서 ~하고 싶다', sentence: 'She could not wait to put them on.' }
         ],
         '04-church.webp': [
             { word: 'turn to look', meaning: '돌아보다', sentence: 'People turned to look.' },
             { word: 'shoulders go back', meaning: '어깨가 으쓱해지다', sentence: 'Karen felt her shoulders go back.' },
             { word: 'service', meaning: '예배', sentence: 'She did not notice the service had ended.' },
-            { word: 'come to oneself', meaning: '정신이 들다', sentence: 'And only came to herself when everybody stood up.' }
+            { word: 'come to oneself', meaning: '정신이 들다', sentence: 'She only came to herself when everybody stood up.' }
         ],
         '04-church-2.webp': [
-            { word: 'rub at', meaning: '문지르다', sentence: 'Rubbing at them with a cloth.' },
+            { word: 'rub at', meaning: '문지르다', sentence: 'Karen rubbed at the shoes with a cloth.' },
             { word: 'pale', meaning: '핏기 없는', sentence: 'Her cough was bad and her face was pale.' },
             { word: 'sit with', meaning: '곁을 지키다', sentence: 'You must sit with her properly.' },
             { word: 'somewhere else', meaning: '딴 데에', sentence: 'Her mind was somewhere else entirely.' }
@@ -1068,8 +962,8 @@ const EN = {
             { word: 'in a blur', meaning: '어른어른', sentence: 'The lamps went past her eyes in a blur.' }
         ],
         '05-dance-2.webp': [
-            { word: 'tune', meaning: '곡', sentence: 'When one tune ended her feet did not stop.' },
-            { word: 'take hold of', meaning: '붙잡다', sentence: 'Karen tried to take hold of her own feet.' },
+            { word: 'tune', meaning: '곡', sentence: 'When the tune ended, her feet did not stop.' },
+            { word: 'take hold of', meaning: '붙잡다', sentence: 'Tried to take hold of her own feet.' },
             { word: 'stand back', meaning: '길을 비키다', sentence: 'People stood back in surprise.' },
             { word: 'brush', meaning: '스치다', sentence: 'Branches brushed her face.' }
         ],
@@ -1081,7 +975,7 @@ const EN = {
             { word: 'burn', meaning: '화끈거리다', sentence: 'The soles of them burned.' }
         ],
         '06-stuck-2.webp': [
-            { word: 'come back to', meaning: '떠오르다', sentence: 'That face came back to her.' },
+            { word: 'come back to', meaning: '떠오르다', sentence: 'That pale face lying in bed came back to her.' },
             { word: 'bear', meaning: '견디다', sentence: 'Karen could not bear the shame of it.' },
             { word: 'shame', meaning: '부끄러움', sentence: 'The shame of it.' },
             { word: 'carry along', meaning: '끌고 가다', sentence: 'Her feet went on carrying her along.' }
@@ -1089,7 +983,7 @@ const EN = {
         '07-cottage.webp': [
             { word: 'clearing', meaning: '빈터', sentence: 'A clearing in the wood.' },
             { word: 'woodcutter', meaning: '나무꾼', sentence: "A woodcutter's wife opened the door." },
-            { word: 'flour', meaning: '밀가루', sentence: 'With her hands thick with flour.' },
+            { word: 'flour', meaning: '밀가루', sentence: 'Her hands thick with flour.' },
             { word: 'doorstep', meaning: '문지방', sentence: 'The woman sat her down on the doorstep.' },
             { word: 'straight down', meaning: '단숨에', sentence: 'Karen drank it straight down.' }
         ],
@@ -1101,14 +995,14 @@ const EN = {
         ],
         '08-ending.webp': [
             { word: 'gravel', meaning: '자갈', sentence: 'The gravel hurt her feet.' },
-            { word: 'for all that', meaning: '그래도', sentence: 'And her heart was lighter for all that.' },
+            { word: 'for all that', meaning: '그래도', sentence: 'Her heart was lighter for all that.' },
             { word: 'midday', meaning: '한낮', sentence: 'It was near midday.' },
             { word: 'go down on one’s knees', meaning: '무릎을 꿇다', sentence: 'She went down on her knees beside the bed.' }
         ],
         '08-ending-2.webp': [
-            { word: 'kneel', meaning: '무릎을 꿇다', sentence: 'Karen knelt beside the bed.' },
+            { word: 'kneel', meaning: '무릎을 꿇다', sentence: 'Kneeling by the bed.' },
             { word: 'that is enough', meaning: '그것으로 됐다', sentence: 'You have come back. That is enough.' },
-            { word: 'brew', meaning: '달이다', sentence: 'She brewed her medicine.' },
+            { word: 'brew', meaning: '달이다', sentence: "Karen brewed the lady's medicine." },
             { word: 'look for', meaning: '찾다', sentence: 'Karen never went to look for them again.' }
         ],
         'end.webp': [

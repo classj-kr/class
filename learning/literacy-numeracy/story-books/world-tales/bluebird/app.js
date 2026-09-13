@@ -598,36 +598,29 @@ const EN = {
                     art: '01-eve.webp',
                     emoji: '🎄',
                     left: [
-                        "It was Christmas Eve, a night with the snow coming softly down.",
+                        "It was Christmas Eve, and the snow was coming softly down.",
                         "Tyltyl and Mytyl, a poor woodcutter's children, had already gone to bed.",
-                        "The room was small, so the two of them lay side by side, and there was only one blanket.",
-                        "And then in the middle of the night it went bright outside the window."
+                        "The room was small, so they lay side by side. There was only one blanket.",
+                        "Then in the middle of the night, it went bright outside the window."
                     ],
                     right: [
                         "Music came over the wall as well.",
-                        "\"What a noise. Nobody could sleep through that.\"",
-                        "Tyltyl sat up, rubbing his eyes.",
-                        "There was a grand party going on at the rich house next door.",
-                        "Every window was lit up,",
-                        "and you could hear people laughing all the way over here."
+                        "Tyltyl sat up, rubbing his eyes. \"What a noise! Nobody could sleep through that.\"",
+                        "At the window he saw a grand party at the rich house next door. Every window was lit up.",
+                        "He could hear people laughing all the way over here."
                     ]
                 },
                 {
                     art: '01-eve-2.webp',
                     emoji: '🎄',
                     left: [
-                        "\"Look at that. What a party.\"",
-                        "The bright light came in through their window,",
-                        "and good smells came in with it.",
-                        "Mytyl swallowed hard.",
+                        "Mytyl got up too and came to the window. \"Look at that. What a party!\"",
+                        "The bright light came in through the glass, and good smells came in with it. Mytyl swallowed hard.",
                         "The two of them stood pressed to the glass and could not look away."
                     ],
                     right: [
-                        "\"How lovely it would be to have a party like that.\"",
-                        "Mytyl said it in a very small voice.",
-                        "Tyltyl nodded without saying anything.",
-                        "The two of them stood there a long time,",
-                        "not even noticing how cold their feet were.",
+                        "\"How lovely it would be to have a party like that,\" Mytyl said in a very small voice.",
+                        "Tyltyl nodded without a word. They stood there a long time, not even noticing how cold their feet were.",
                         "By and by the sound of the party died away."
                     ]
                 }
@@ -641,35 +634,26 @@ const EN = {
                     art: '02-fairy.webp',
                     emoji: '✨',
                     left: [
-                        "Then there was a knock at the door.",
-                        "Tap, tap, tap.",
-                        "\"Who is it?\"",
-                        "\"An old woman from next door.\" They opened the door and there stood a woman with a bent back,",
-                        "leaning on a stick."
+                        "Then there was a knock at the door. Tap, tap, tap.",
+                        "\"Who is it?\" asked Tyltyl.",
+                        "\"An old woman from next door.\" They opened the door, and there stood a woman with a bent back, leaning on a stick."
                     ],
                     right: [
-                        "\"My daughter is ill and she wants to see the blue bird. Would you find it for her?\"",
-                        "The two of them hung back.",
-                        "\"We are only little. We aren't strong enough.\" Tyltyl scratched his head.",
-                        "The old woman shook her head.",
-                        "\"That is not so. You two could do it.\""
+                        "\"My daughter is ill, and she wants to see the blue bird,\" said the old woman. \"Would you find it for her?\"",
+                        "The two of them hung back. Tyltyl scratched his head. \"We are only little. We aren't strong enough.\"",
+                        "The old woman shook her head. \"That is not so. You two can do it.\""
                     ]
                 },
                 {
                     art: '02-fairy-2.webp',
                     emoji: '✨',
                     left: [
-                        "And in that moment the old woman changed.",
-                        "Light poured out of her hair — she was the Fairy of Light.",
-                        "The fairy held out a small green hat",
-                        "with one diamond set into it.",
-                        "The children's eyes went wide.",
-                        "\"Put this hat on and turn the diamond.\""
+                        "In that moment the old woman changed. Light poured out of her hair. She was the Fairy of Light!",
+                        "She held out a small green hat with one diamond set into it. The children's eyes went wide.",
+                        "\"Put on this hat and turn the diamond. Then you will see what things really are.\""
                     ],
                     right: [
-                        "\"Then you will see what things really are.\"",
-                        "Tyltyl turned the diamond, carefully.",
-                        "And in that instant the room went bright.",
+                        "Tyltyl put on the hat and carefully turned the diamond. In that instant the room went bright.",
                         "Everything in it began to stir.",
                         "The two of them hardly dared to breathe."
                     ]
@@ -684,18 +668,14 @@ const EN = {
                     art: '03-elements.webp',
                     emoji: '🔥',
                     left: [
-                        "Tylo the dog and Tylette the cat put on clothes like people and stood up on their hind legs.",
-                        "Water came rippling out of the water jar as the Spirit of Water.",
-                        "The clock and the saucepans came alive too.",
-                        "The Spirit of Fire came bouncing out of the stove,",
-                        "and the Spirit of Bread came out of the bread bin."
+                        "Tylo the dog and Tylette the cat stood up on their hind legs, dressed like people.",
+                        "The Spirit of Water came rippling out of the water jar. The clock and the saucepans came alive.",
+                        "The Spirit of Fire came bouncing out of the stove, and the Spirit of Bread came out of the bread bin."
                     ],
                     right: [
-                        "Out of the sugar jar came the Spirit of Sugar, one after another,",
-                        "all of them different sizes.",
-                        "\"Look, the room is full of them!\" Mytyl clapped her hands.",
-                        "The little room was crowded in no time.",
-                        "They all talked at once and there was no hearing anything.",
+                        "The Spirit of Sugar came out of the sugar bowl. The spirits were all different sizes.",
+                        "\"Look, the room is full of spirits!\" cried Mytyl, clapping her hands.",
+                        "They all talked at once, and no one could hear a thing.",
                         "Only Tylette narrowed her eyes in the corner."
                     ]
                 },
@@ -703,18 +683,14 @@ const EN = {
                     art: '03-elements-2.webp',
                     emoji: '🔥',
                     left: [
-                        "The Fairy of Light came forward and said,",
-                        "\"Let us go and find the blue bird. I shall show you the way.\"",
-                        "\"We shall come too!\"",
-                        "cried all the spirits together.",
-                        "So Tyltyl and Mytyl set out with the dog and the cat and all of them."
+                        "The Fairy of Light came forward. \"Let us go and find the blue bird. I shall show you the way.\"",
+                        "\"We shall come too!\" cried all the spirits together.",
+                        "So Tyltyl and Mytyl set out with the dog, the cat and the spirits."
                     ],
                     right: [
-                        "And that was how the long journey began.",
-                        "When they went out of the door the sky was thick with stars.",
+                        "That was how the long journey began. Outside, the sky was thick with stars.",
                         "Nobody knew what lay ahead.",
-                        "Tylo the dog went in front, wagging his tail.",
-                        "Only Tylette the cat walked behind with other ideas."
+                        "Tylo the dog went in front, wagging his tail. Only Tylette the cat walked behind, thinking her own thoughts."
                     ]
                 }
             ]
@@ -727,36 +703,29 @@ const EN = {
                     art: '04-memory.webp',
                     emoji: '🕰️',
                     left: [
-                        "After a long walk a great tree came up out of a thin mist.",
-                        "There was a board on the tree that said the Land of Memory.",
-                        "The mist was so thick they could hardly see ahead.",
-                        "The two of them took hands and walked in.",
-                        "And there their grandfather and grandmother, who had died, welcomed them gladly."
+                        "After a long walk, a great tree came up out of the mist.",
+                        "A board on the tree said \"The Land of Memory.\"",
+                        "The mist was so thick they could hardly see. The two of them held hands and walked in.",
+                        "There, their grandfather and grandmother, who had died, welcomed them gladly."
                     ],
                     right: [
-                        "\"Oh, come in, come in. How glad we are that you came.\"",
-                        "The children went straight into their arms,",
-                        "and their grandmother stroked their cheeks.",
-                        "\"How you have grown.\"",
-                        "\"Whenever you think of us, we can meet.\""
+                        "\"Oh, come in, come in! How glad we are that you came.\"",
+                        "The children ran into their arms. Their grandmother stroked their cheeks. \"How you have grown!\"",
+                        "Their grandfather smiled. \"Whenever you think of us, we can meet.\""
                     ]
                 },
                 {
                     art: '04-memory-2.webp',
                     emoji: '🕰️',
                     left: [
-                        "Their grandparents gave them a blue bird as a present.",
-                        "\"Perhaps this is the bird you are looking for.\"",
+                        "Their grandparents gave them a blue bird in a cage. \"Perhaps this is the bird you are looking for.\"",
                         "The children were overjoyed and took the cage in their arms.",
-                        "Their grandparents waved them off.",
-                        "\"Come and see us again.\""
+                        "Their grandparents waved them off. \"Come and see us again.\""
                     ],
                     right: [
-                        "But on the way back Tyltyl looked into the cage and stopped walking.",
-                        "The blue bird had turned quite black.",
-                        "\"This isn't the real blue bird.\" Their shoulders went down.",
-                        "And still they set off again.",
-                        "The Fairy of Light lit the road in front of them."
+                        "But on the way back, Tyltyl looked into the cage and stopped. The blue bird had turned quite black.",
+                        "\"This isn't the real blue bird,\" he said, and their shoulders dropped.",
+                        "Still, they set off again. The Fairy of Light lit the road in front of them."
                     ]
                 }
             ]
@@ -769,37 +738,29 @@ const EN = {
                     art: '05-night.webp',
                     emoji: '🌑',
                     left: [
-                        "The children gathered themselves up and went on to the Land of Night.",
-                        "It was pitch dark on every side.",
-                        "They could not see their own feet and walked with their hands out.",
-                        "There was a long row of great doors,",
-                        "and every time they opened one, something frightful came out.",
-                        "\"A monster! Run!\""
+                        "The children gathered themselves up and went on to the Land of Night. It was pitch dark on every side.",
+                        "They walked with their hands out.",
+                        "There was a long row of great doors. They opened them one by one to look for the blue bird.",
+                        "Each time, something frightful jumped out. \"A monster! Run!\""
                     ],
                     right: [
-                        "Red eyes flashed through the cracks of the doors.",
-                        "The two of them fled without looking where they went",
-                        "and ran into a wood.",
-                        "The trees were so tall they shut out the sky.",
-                        "But something worse was waiting in the wood.",
-                        "The trees had begun to move by themselves,",
-                        "and their roots came pulling up out of the ground."
+                        "Red eyes flashed through the cracks of the doors, and the children fled.",
+                        "They ran into a wood where the trees were so tall they shut out the sky.",
+                        "But something worse was waiting. The trees began to move, and their roots came pulling up out of the ground."
                     ]
                 },
                 {
                     art: '05-night-2.webp',
                     emoji: '🌑',
                     left: [
-                        "The angry trees and the animals closed round the children.",
-                        "\"Your father has cut down far too many trees in this wood!\"",
-                        "\"Let us give them what for today!\" The trees creaked and groaned.",
-                        "The wolf and the bear bared their teeth,",
-                        "and branches shut off the way out."
+                        "The angry trees and animals closed round the children.",
+                        "\"You are the woodcutter's children!\" creaked the trees. \"Your father has cut down too many of us! Let's teach you a lesson!\"",
+                        "The wolf and the bear bared their teeth, and branches shut off the way out."
                     ],
                     right: [
                         "Tyltyl and Mytyl were too frightened to move an inch.",
-                        "\"What do we do!\" Mytyl clung to her brother's arm.",
-                        "And the circle closed in tighter and tighter."
+                        "\"What do we do?\" Mytyl clung to her brother's arm.",
+                        "Step by step, the trees and animals came closer."
                     ]
                 }
             ]
@@ -812,39 +773,29 @@ const EN = {
                     art: '06-escape.webp',
                     emoji: '🌹',
                     left: [
-                        "\"Tyltyl — turn the diamond, quickly!\"",
-                        "The Fairy of Light's voice came from somewhere.",
-                        "Tyltyl turned the diamond with shaking hands, his eyes squeezed shut.",
-                        "His fingers slipped and it went round without catching, several times.",
-                        "And then the frightful wood was gone, as though it had never been."
+                        "Then the voice of the Fairy of Light came from somewhere. \"Tyltyl, turn the diamond, quickly!\"",
+                        "Tyltyl turned it with shaking hands, his eyes squeezed shut. His fingers slipped again and again.",
+                        "Then the frightful wood was gone, as though it had never been."
                     ],
                     right: [
-                        "When they came to themselves the two of them were standing in front of a quiet grave.",
-                        "Only the moonlight lay over it.",
+                        "When they came to themselves, they were standing in front of a quiet grave in the moonlight.",
                         "There was not even a cricket to be heard.",
-                        "They got their breath back at last.",
-                        "And somewhere a cricket started up again.",
-                        "The letters on the stone showed white in the moonlight."
+                        "At last they got their breath back, and somewhere a cricket started up again.",
+                        "The letters on the stone showed white."
                     ]
                 },
                 {
                     art: '06-escape-2.webp',
                     emoji: '🌹',
                     left: [
-                        "\"The dead might know about the blue bird.\"",
-                        "Tyltyl held his fear down",
-                        "and turned the diamond again.",
-                        "The grave slid open.",
-                        "And all that was there was one red rose in bloom."
+                        "\"The dead might know about the blue bird,\" Tyltyl whispered.",
+                        "He held his fear down and turned the diamond again.",
+                        "The grave slid open. But all that was there was one red rose in bloom."
                     ],
                     right: [
-                        "There was no blue bird anywhere.",
-                        "Only the scent of the rose came drifting out.",
-                        "There was nothing frightening in it at all.",
-                        "Their shoulders went down again.",
-                        "And still they could not give it up.",
-                        "The two of them set off for the next country.",
-                        "\"It will be in the next one.\""
+                        "There was no blue bird anywhere. Only the scent of the rose came drifting out, and there was nothing frightening at all.",
+                        "Their shoulders went down, but they did not give up. Tyltyl took Mytyl's hand. \"It will be in the next one.\"",
+                        "So they set off for the next country."
                     ]
                 }
             ]
@@ -857,39 +808,30 @@ const EN = {
                     art: '07-happiness.webp',
                     emoji: '🍰',
                     left: [
-                        "The next place they came to was the Land of Happiness.",
-                        "Everywhere there were good smells of food and the sound of laughing.",
-                        "\"This time we shall find it for certain!\"",
-                        "Fat people were dancing about,",
-                        "and every table was loaded until it overflowed.",
+                        "Next they came to the Land of Happiness. Everywhere there were good smells of food and laughter.",
+                        "Mytyl gave a jump. \"This time we shall find it for certain!\"",
+                        "Fat people were dancing, and every table was loaded until it overflowed.",
                         "The two of them held hands tightly."
                     ],
                     right: [
                         "The smell of roasting meat was everywhere.",
                         "But that food turned anyone who ate it into an idler.",
-                        "The children knew nothing of that and sat down at the table.",
-                        "There were fine things in front of them wherever they looked.",
-                        "They were just reaching for the food",
-                        "when Mytyl's mouth was already watering."
+                        "Not knowing this, the children sat down at a table full of good things.",
+                        "Mytyl's mouth was already watering, and they reached out for the food…"
                     ]
                 },
                 {
                     art: '07-happiness-2.webp',
                     emoji: '🍰',
                     left: [
-                        "\"Don't! Turn the diamond, quickly!\"",
-                        "The Fairy of Light came flying to them,",
-                        "and Tyltyl turned the diamond in a hurry.",
-                        "And the food went off like smoke.",
-                        "The fat people went with it,",
-                        "and the glittering tables were nowhere to be seen."
+                        "Just then the Fairy of Light came flying in. \"Don't! Turn the diamond, quickly!\"",
+                        "Tyltyl turned the diamond in a hurry, and the food went off like smoke.",
+                        "The fat people and the glittering tables were nowhere to be seen."
                     ],
                     right: [
-                        "\"Now I shall show you what happiness really is.\"",
-                        "Behind the Fairy of Light came a crowd of small merry children — and the children's own mother.",
-                        "Something turned over in their chests.",
-                        "It was a face that had always been there.",
-                        "\"Mother — were you here too?\""
+                        "\"Now I shall show you what happiness really is,\" said the Fairy of Light.",
+                        "A crowd of small, merry children appeared. They were the little happinesses of their own home. Behind them came the children's mother.",
+                        "Something turned over in their chests. \"Mother, were you here too?\""
                     ]
                 }
             ]
@@ -902,38 +844,29 @@ const EN = {
                     art: '08-future.webp',
                     emoji: '💙',
                     left: [
-                        "\"Take heart. Let us try the Land of the Future.\"",
+                        "There was no blue bird there either. \"Take heart,\" said the Fairy of Light. \"Let us try the Land of the Future.\"",
                         "The Fairy of Light led the way.",
-                        "That place was blue all over,",
-                        "and any number of babies were busy at something,",
-                        "each of them holding one thing in their hands.",
-                        "\"These babies will be born into the world very soon.\""
+                        "That place was blue all over. Any number of babies were busy there, each holding something."
                     ],
                     right: [
-                        "\"They are learning beforehand what they will do when they get there.\"",
-                        "The Fairy of Light explained it slowly.",
-                        "One baby was making medicine.",
-                        "Another was holding an enormous book.",
-                        "Mytyl walked carefully between them,",
-                        "and the babies waved at her as she went."
+                        "\"These babies will soon be born,\" the Fairy explained. \"They are learning beforehand what they will do in the world.\"",
+                        "One baby was making medicine. Another was holding an enormous book.",
+                        "Mytyl walked carefully between them, and the babies waved at her."
                     ]
                 },
                 {
                     art: '08-future-2.webp',
                     emoji: '💙',
                     left: [
-                        "\"Now then — time to leave for the Earth! On board with you!\"",
-                        "Old Father Time called out.",
+                        "Then Old Father Time called out, \"Time to leave for the Earth! On board with you!\"",
                         "The babies got into line and went aboard the ship one by one.",
-                        "The white sail filled with wind,",
-                        "and the ship slid away across the sky.",
+                        "The white sail filled with wind, and the ship slid away across the sky.",
                         "The children watched it go for a long while."
                     ],
                     right: [
-                        "And then they caught sight of a blue bird and reached out very carefully.",
-                        "But that bird too turned red almost at once.",
-                        "\"Not this one either…\" Tyltyl let it go without any strength in his hands.",
-                        "And the Fairy of Light patted his shoulder."
+                        "Then they caught sight of a blue bird and reached out very carefully. But that bird, too, soon turned red.",
+                        "\"Not this one either…\" Tyltyl sadly let it go.",
+                        "The Fairy of Light patted his shoulder. \"Now it is time to go home.\""
                     ]
                 }
             ]
@@ -947,38 +880,28 @@ const EN = {
                     emoji: '🐦',
                     left: [
                         "\"Tyltyl, Mytyl, wake up.\"",
-                        "At their mother's voice the two of them opened their eyes.",
-                        "Outside the window the snow lay white.",
+                        "At their mother's voice the two of them opened their eyes. Outside the window the snow lay white.",
                         "Had that whole long journey been a dream?",
-                        "The old woman from next door happened to be there,",
-                        "with a small bundle in her hand."
+                        "The old woman from next door happened to be there, with a small bundle in her hand."
                     ],
                     right: [
-                        "\"We're sorry. We could not find the blue bird.\"",
-                        "Tyltyl said it in a flat little voice,",
-                        "and Mytyl hung her head.",
-                        "And the old woman smiled.",
-                        "\"The blue bird? But there it is.\"",
-                        "And she pointed a finger at the cage."
+                        "\"I'm sorry,\" Tyltyl said in a flat little voice. \"We could not find the blue bird.\"",
+                        "Mytyl hung her head too.",
+                        "The old woman smiled and pointed at the cage. \"The blue bird? But there it is!\""
                     ]
                 },
                 {
                     art: '09-home-2.webp',
                     emoji: '🐦',
                     left: [
-                        "The two of them looked round at it.",
-                        "\"But that's the bird we've always had!\"",
-                        "The bird in the cage was sitting in the sunlight coming through the window.",
-                        "Until yesterday it had looked nothing but grey.",
-                        "Now its feathers shone blue."
+                        "The two of them looked round at it. The bird in the cage shone blue in the sunlight from the window.",
+                        "\"But that's our own bird!\"",
+                        "Until yesterday it had looked nothing but grey."
                     ],
                     right: [
-                        "The children gave the bird to the old woman,",
-                        "and her sick daughter saw it and got up out of her bed.",
-                        "And just then the bird flew up and away.",
-                        "\"Oh — the blue bird has flown!\"",
-                        "The two of them laughed and waved after it.",
-                        "Happiness had been beside them all along."
+                        "They gave the bird to the old woman. Soon her daughter got up out of her bed and came over, holding it.",
+                        "Then the bird flew away. \"Oh, the blue bird!\" she cried.",
+                        "The children waved. Happiness had been beside them all along."
                     ]
                 }
             ]
@@ -1103,8 +1026,8 @@ const EN = {
             { word: 'wag', meaning: '흔들다', sentence: 'Tylo went in front, wagging his tail.' }
         ],
         '04-memory.webp': [
-            { word: 'mist', meaning: '안개', sentence: 'A great tree came up out of a thin mist.' },
-            { word: 'board', meaning: '팻말', sentence: 'There was a board on the tree.' },
+            { word: 'mist', meaning: '안개', sentence: 'A great tree came up out of the mist.' },
+            { word: 'board', meaning: '팻말', sentence: 'A board on the tree said "The Land of Memory."' },
             { word: 'welcome', meaning: '맞아 주다', sentence: 'Their grandfather and grandmother welcomed them gladly.' },
             { word: 'stroke', meaning: '쓰다듬다', sentence: 'Their grandmother stroked their cheeks.' }
         ],
@@ -1123,7 +1046,7 @@ const EN = {
         ],
         '05-night-2.webp': [
             { word: 'close round', meaning: '둘러싸다', sentence: 'The angry trees closed round the children.' },
-            { word: 'cut down', meaning: '베어 내다', sentence: 'Your father has cut down too many trees.' },
+            { word: 'cut down', meaning: '베어 내다', sentence: 'Your father has cut down too many of us.' },
             { word: 'bare one’s teeth', meaning: '이를 드러내다', sentence: 'The wolf and the bear bared their teeth.' },
             { word: 'cling to', meaning: '매달리다', sentence: "Mytyl clung to her brother's arm." }
         ],
@@ -1135,11 +1058,11 @@ const EN = {
             { word: 'cricket', meaning: '풀벌레', sentence: 'There was not even a cricket to be heard.' }
         ],
         '06-escape-2.webp': [
-            { word: 'hold down', meaning: '꾹 참다', sentence: 'Tyltyl held his fear down.' },
+            { word: 'hold down', meaning: '꾹 참다', sentence: 'He held his fear down.' },
             { word: 'slide open', meaning: '스르르 열리다', sentence: 'The grave slid open.' },
             { word: 'in bloom', meaning: '피어 있는', sentence: 'One red rose in bloom.' },
             { word: 'scent', meaning: '향기', sentence: 'Only the scent of the rose came drifting out.' },
-            { word: 'give up', meaning: '포기하다', sentence: 'They could not give it up.' }
+            { word: 'give up', meaning: '포기하다', sentence: 'They did not give up.' }
         ],
         '07-happiness.webp': [
             { word: 'for certain', meaning: '틀림없이', sentence: 'This time we shall find it for certain!' },
@@ -1157,7 +1080,7 @@ const EN = {
         '08-future.webp': [
             { word: 'take heart', meaning: '기운을 내다', sentence: 'Take heart. Let us try the Land of the Future.' },
             { word: 'lead the way', meaning: '앞장서다', sentence: 'The Fairy of Light led the way.' },
-            { word: 'any number of', meaning: '수많은', sentence: 'Any number of babies were busy at something.' },
+            { word: 'any number of', meaning: '수많은', sentence: 'Any number of babies were busy there.' },
             { word: 'beforehand', meaning: '미리', sentence: 'They are learning beforehand what they will do.' }
         ],
         '08-future-2.webp': [
@@ -1170,7 +1093,7 @@ const EN = {
         '09-home.webp': [
             { word: 'happen to', meaning: '마침 ~하다', sentence: 'The old woman happened to be there.' },
             { word: 'bundle', meaning: '보따리', sentence: 'With a small bundle in her hand.' },
-            { word: 'flat', meaning: '풀 죽은', sentence: 'Tyltyl said it in a flat little voice.' },
+            { word: 'flat', meaning: '풀 죽은', sentence: 'Tyltyl said in a flat little voice.' },
             { word: 'hang one’s head', meaning: '고개를 숙이다', sentence: 'Mytyl hung her head.' }
         ],
         '09-home-2.webp': [

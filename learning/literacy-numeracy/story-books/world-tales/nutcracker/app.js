@@ -578,11 +578,10 @@ const EN = {
                         "\"Is it much longer?\""
                     ],
                     right: [
-                        "\"Just a little more patience.\"",
+                        "Their mother called through the door, \"Just a little more patience.\"",
                         "At last the doors were thrown open. Under the tree lay a heap of presents.",
-                        "Fritz got soldiers, and Marie got a new doll.",
-                        "Then their godfather came in. He made clocks,",
-                        "and every year he brought something remarkable."
+                        "Fritz got toy soldiers, and Marie got a new doll.",
+                        "Then their godfather came in. He made clocks, and every year he brought something remarkable."
                     ]
                 },
                 {
@@ -597,11 +596,10 @@ const EN = {
                     ],
                     right: [
                         "But Marie was looking at something else.",
-                        "There was a doll lying under the tree — a soldier in a red coat.",
-                        "His jaw opened and shut with a clack.",
-                        "He was made for cracking nuts.",
+                        "A doll lay under the tree — a soldier in a red coat.",
+                        "His jaw opened and shut with a clack. He was made for cracking nuts.",
                         "His face was rather comical.",
-                        "And still Marie liked him better than anything else there."
+                        "But Marie liked him best of all."
                     ]
                 }
             ]
@@ -621,12 +619,10 @@ const EN = {
                         "And he pushed it into the doll's mouth."
                     ],
                     right: [
-                        "\"Don't — it's much too big!\"",
-                        "Marie cried out, and Fritz bore down with all his weight.",
-                        "Crack.",
-                        "The doll's jaw broke.",
-                        "\"Well, he's no good.\"",
-                        "Fritz put him down and walked off."
+                        "Marie cried out, \"Don't — it's much too big!\"",
+                        "But Fritz bore down with all his weight.",
+                        "Crack. The doll's jaw broke.",
+                        "\"Well, he's no good,\" said Fritz. He put the doll down and walked off."
                     ]
                 },
                 {
@@ -635,15 +631,13 @@ const EN = {
                     left: [
                         "Marie picked the doll up carefully and tied her handkerchief round his jaw.",
                         "\"Does it hurt? I'll mend you.\"",
-                        "Her godfather saw her doing it and came over.",
-                        "\"There is a story about that doll.\""
+                        "Her godfather saw this. He came over and said softly, \"There is a story about that doll.\""
                     ],
                     right: [
-                        "\"They say he was a prince of a far country.\"",
-                        "\"And that the Mouse King put a spell on him and left him like that.\"",
-                        "\"They say the spell breaks if somebody stands by him.\"",
+                        "\"They say he was a prince of a far country. The Mouse King put a spell on him.\"",
+                        "\"The spell breaks if somebody stands by him.\"",
                         "Marie turned that over in her mind again and again.",
-                        "Late that night she laid the doll down under the tree and covered him with a little blanket."
+                        "That night she laid the doll under the tree and covered him with a little blanket."
                     ]
                 }
             ]
@@ -656,8 +650,8 @@ const EN = {
                     art: '03-midnight.webp',
                     emoji: '🕛',
                     left: [
-                        "That night Marie could not get to sleep at all. She crept out to the sitting room,",
-                        "and the floorboards were cold under her toes.",
+                        "That night Marie could not get to sleep. She kept worrying about the doll.",
+                        "So she crept out to the sitting room. The floor was cold under her toes.",
                         "The candles had nearly burned out and the tree stood dim in the dark.",
                         "Then the tall clock began to strike.",
                         "One, two, three…"
@@ -681,7 +675,7 @@ const EN = {
                         "The Nutcracker had got to his feet."
                     ],
                     right: [
-                        "\"Soldiers — fall in!\"",
+                        "\"Soldiers — fall in!\" cried the Nutcracker.",
                         "He drew a little sword, and Fritz's soldiers came scrambling into line.",
                         "Boom, boom, boom.",
                         "The drums sounded, and the toy cannon came rolling out.",
@@ -698,16 +692,15 @@ const EN = {
                     art: '04-battle.webp',
                     emoji: '⚔️',
                     left: [
-                        "The soldiers went forward one step at a time, and the cannon banged out sweets.",
-                        "Mice went over in rows where the sweets hit them.",
-                        "\"Hold your ground!\"",
-                        "But the mice kept on coming and coming. The soldiers fell one by one and the line got shorter.",
-                        "The Nutcracker went out in front."
+                        "The soldiers went forward step by step, and the cannon banged out sweets. Mice fell over in rows where the sweets hit them.",
+                        "The Nutcracker shouted, \"Hold your ground!\"",
+                        "But more and more mice came. The soldiers fell one by one.",
+                        "So the Nutcracker went out in front."
                     ],
                     right: [
-                        "And at last he stood face to face with the Mouse King.",
-                        "\"Come on, then!\"",
-                        "The two of them met with a clash, and the sound of sword against teeth rang round the room.",
+                        "At last he stood face to face with the Mouse King.",
+                        "The Mouse King showed his teeth. \"Come on, then!\"",
+                        "The two of them met with a clash. Sword hit teeth, and the sound rang round the room.",
                         "With his broken jaw the Nutcracker was driven back and back.",
                         "Marie could hardly watch."
                     ]
@@ -741,11 +734,10 @@ const EN = {
                     art: '05-prince.webp',
                     emoji: '🤴',
                     left: [
-                        "She opened her eyes to light on every side, and a sweet smell in the air.",
+                        "She opened her eyes to bright light and a sweet smell in the air.",
                         "Somebody was standing in front of her — a young man in a red coat.",
                         "There was something familiar about his face.",
-                        "\"You stood by me.\"",
-                        "\"And that is what broke the spell.\""
+                        "He bowed politely. \"You stood by me. That is what broke the spell.\""
                     ],
                     right: [
                         "\"Are you… the doll?\"",
@@ -759,10 +751,10 @@ const EN = {
                     art: '05-prince-2.webp',
                     emoji: '🤴',
                     left: [
-                        "Beyond the door was another world altogether. When she looked back the sitting room was far, far away.",
+                        "Beyond the door was another world altogether. When she looked back, the sitting room was far, far away.",
                         "Something crunched and glittered underfoot.",
                         "The road was strewn with sugar.",
-                        "\"We follow this road.\"",
+                        "The prince pointed ahead. \"We follow this road.\"",
                         "And the two of them walked side by side."
                     ],
                     right: [
@@ -791,10 +783,10 @@ const EN = {
                         "It was exactly like small bells."
                     ],
                     right: [
-                        "Marie stopped and listened. The sound changed a little with every branch that moved.",
+                        "Marie stopped and listened. The sound changed a little with every branch.",
                         "And then it began to snow.",
                         "But there was something odd about it.",
-                        "The snowflakes opened their arms like people and turned round and round, dancing.",
+                        "The snowflakes opened their arms like people and danced round and round.",
                         "Music came from somewhere, and the whole wood swayed with it."
                     ]
                 },
@@ -803,15 +795,13 @@ const EN = {
                     emoji: '❄️',
                     left: [
                         "The snowflakes drew back and opened a path, and the two of them went through.",
-                        "Where the wood ended there was a wide river.",
-                        "But what ran in it was not water.",
-                        "It was orange juice.",
-                        "A little boat was waiting at the bank — a boat made of a seashell,",
-                        "and two dolphins were harnessed to it."
+                        "Past the wood was a wide river. But it was not water.",
+                        "It was orange juice!",
+                        "A little boat made of a seashell waited at the bank, and two dolphins were harnessed to it."
                     ],
                     right: [
-                        "\"Do get in.\"",
-                        "The prince handed Marie into the boat.",
+                        "The prince held out his hand. \"Do get in.\"",
+                        "He helped Marie into the boat.",
                         "Flowers grew thick along both banks, and every one of them was made of sugar.",
                         "Marie dipped a fingertip in the river, licked it, and laughed.",
                         "A sweet smell went right up her nose."
@@ -846,20 +836,16 @@ const EN = {
                     art: '07-candy-2.webp',
                     emoji: '🍬',
                     left: [
-                        "There was a great feast in the square.",
-                        "Chocolate stamped its feet.",
-                        "Tea opened out a fan with a snap.",
-                        "Candy spun round and round and sprang into the air.",
-                        "And at the end the flowers came swaying out to dance.",
-                        "\"My hands hurt from clapping!\""
+                        "There was a great feast in the square. People from many lands danced in turn.",
+                        "The Chocolate people stamped their feet. The Tea people opened out fans with a snap.",
+                        "The Candy people spun round and sprang into the air.",
+                        "Last came the dancing flowers. Marie laughed. \"My hands hurt from clapping!\""
                     ],
                     right: [
-                        "When the feast was at its height the prince sat down beside her.",
+                        "When the feast was at its height, the prince sat down beside her.",
                         "\"Will you not stay here with me?\"",
-                        "Marie sat thinking for a moment. She thought of home,",
-                        "and of her mother's face, and of Fritz.",
-                        "And she thought of the doll she had laid down under the tree.",
-                        "\"I think I have to go back.\""
+                        "Marie thought for a moment. She thought of home, and of her mother's face, and of Fritz.",
+                        "Then she answered softly, \"I think I have to go back.\""
                     ]
                 }
             ]
@@ -897,12 +883,10 @@ const EN = {
                         "Marie sat straight up."
                     ],
                     right: [
-                        "\"Mother, last night —\"",
-                        "\"You must have been dreaming.\"",
-                        "Marie went looking for the doll at once.",
-                        "He was under the tree, exactly where she had left him.",
-                        "But the broken jaw was whole again,",
-                        "as though somebody had mended it without leaving a mark."
+                        "\"Mother, last night —\" Marie began.",
+                        "Her mother laughed. \"You must have been dreaming.\"",
+                        "Marie ran to the doll. He was under the tree, where she had left him.",
+                        "But his broken jaw was whole, as though somebody had mended it."
                     ]
                 }
             ]
@@ -941,7 +925,7 @@ const EN = {
         },
         {
             q: 'Why did Marie decide to go home?',
-            choices: ['She did not like the Land of Sweets', 'She thought of her mother, Fritz and the doll under the tree', 'The prince asked her to go'],
+            choices: ['She did not like the Land of Sweets', 'She thought of home, her mother and Fritz', 'The prince asked her to go'],
             answer: 1
         },
         {
@@ -949,7 +933,7 @@ const EN = {
             wide: true,
             choices: [
                 "Marie untied her handkerchief and bound up the broken jaw — she could not leave it as it was.",
-                "She pulled off the shoe she was wearing and threw it — she moved before she had thought about it.",
+                "She pulled off the slipper she was wearing and threw it — she moved before she had thought about it.",
                 "In the morning the broken jaw was whole again — the story never says outright what happened that night.",
                 "Fritz put the doll down and walked off — he was ashamed of breaking it and made himself scarce."
             ],
@@ -964,7 +948,7 @@ const EN = {
                 art: 'end.webp',
                 left: [
                     "Hoffmann wrote the story, and Tchaikovsky later turned it into ballet music. That is why so many people know it.",
-                    "The Nutcracker was the least impressive present of the lot — a doll with a stiff jaw and teeth missing. Nobody gave him a second look.",
+                    "The Nutcracker was the least impressive present of the lot — a doll with a stiff jaw and a comical face. Nobody gave him a second look.",
                     "Only Marie carried him about. She even tied her handkerchief round his jaw. And that is why she is the only one who sees what happens at night.",
                     "When the fight came, Marie did not hide. She pulled off her slipper and threw it. That one throw turned the whole thing."
                 ],
@@ -1068,9 +1052,9 @@ const EN = {
             { word: 'bow low', meaning: '고개를 깊이 숙이다', sentence: 'Every one of them bowed low.' }
         ],
         '07-candy-2.webp': [
-            { word: 'stamp', meaning: '발을 구르다', sentence: 'Chocolate stamped its feet.' },
-            { word: 'with a snap', meaning: '촤르르', sentence: 'Tea opened out a fan with a snap.' },
-            { word: 'spring', meaning: '폴짝 뛰다', sentence: 'Candy sprang into the air.' },
+            { word: 'stamp', meaning: '발을 구르다', sentence: 'The Chocolate people stamped their feet.' },
+            { word: 'with a snap', meaning: '촤르르', sentence: 'The Tea people opened out fans with a snap.' },
+            { word: 'spring', meaning: '폴짝 뛰다', sentence: 'The Candy people sprang into the air.' },
             { word: 'at its height', meaning: '무르익을 무렵', sentence: 'When the feast was at its height.' }
         ],
         '08-morning.webp': [
@@ -1082,7 +1066,7 @@ const EN = {
         '08-morning-2.webp': [
             { word: 'catch cold', meaning: '감기 들다', sentence: "You'll catch cold." },
             { word: 'sit straight up', meaning: '벌떡 일어나 앉다', sentence: 'Marie sat straight up.' },
-            { word: 'whole', meaning: '멀쩡한', sentence: 'The broken jaw was whole again.' },
+            { word: 'whole', meaning: '멀쩡한', sentence: 'His broken jaw was whole.' },
             { word: 'as though', meaning: '마치 ~인 것처럼', sentence: 'As though somebody had mended it.' }
         ],
         'end.webp': [

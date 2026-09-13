@@ -558,18 +558,19 @@ const EN = {
                     art: '01-ball.webp',
                     emoji: '🟡',
                     left: [
-                        "A golden ball caught the sun and shone until it dazzled you. It was the youngest princess's dearest thing.",
-                        "People said the sun himself paused a moment when he looked at her face.",
-                        "The king had several daughters, and the youngest was the loveliest of them.",
-                        "She kept that ball beside her pillow even when she slept."
+                        "The king had several daughters, and the youngest was the loveliest.",
+                        "People said even the sun paused a moment when he saw her face.",
+                        "Her dearest thing was a golden ball.",
+                        "In the sunlight it shone until it dazzled you.",
+                        "She even kept it beside her pillow when she slept."
                     ],
                     right: [
-                        "Behind the palace there was a deep wood,",
-                        "and in the middle of it an old pond.",
-                        "The water was so deep you could not see the bottom.",
-                        "Every day the princess played under the lime tree by that pond.",
-                        "The shade was cool and she liked the sound of the water.",
-                        "And often enough you could hear frogs."
+                        "Behind the palace lay a deep wood,",
+                        "and in the middle of it lay an old pond.",
+                        "The water was too deep to see the bottom.",
+                        "Every day the princess played under a lime tree by the pond.",
+                        "She liked the cool shade and the sound of the water.",
+                        "Frogs croaked, too."
                     ]
                 },
                 {
@@ -588,7 +589,7 @@ const EN = {
                         "There was a splash, and the ball was gone.",
                         "\"Oh no — my ball!\"",
                         "The princess sat down and burst into tears.",
-                        "Look as she might, the water was black underneath."
+                        "However hard she looked, the water was dark."
                     ]
                 }
             ]
@@ -611,8 +612,8 @@ const EN = {
                     right: [
                         "It was a frog with very large eyes.",
                         "The princess started back in fright.",
-                        "And then the frog spoke.",
-                        "\"Princess, why are you crying like that?\" His voice was quite dignified.",
+                        "Then the frog spoke in a quite dignified voice.",
+                        "\"Princess, why are you crying like that?\"",
                         "The princess forgot to cry and stared at him."
                     ]
                 },
@@ -621,17 +622,15 @@ const EN = {
                     emoji: '🐸',
                     left: [
                         "She wiped her eyes and answered.",
-                        "\"My ball has gone into the pond. It is too deep to get out.\"",
-                        "The frog blinked",
-                        "and tapped the water with one short forefoot.",
-                        "\"I could fetch it out for you.\""
+                        "\"My ball fell into the pond. It is too deep to get it out.\"",
+                        "The frog blinked and tapped the water with one short forefoot.",
+                        "\"I could fetch it out for you,\" he said. \"But first you must make me a promise.\""
                     ],
                     right: [
-                        "\"But you must make me a promise first.\"",
                         "The princess jumped to her feet.",
-                        "\"Anything at all. Jewels, a crown — anything!\"",
-                        "And the frog shook his head.",
-                        "\"I have no use for such things.\" The frog was in no hurry at all."
+                        "\"I will do anything! I will give you jewels, even my crown!\"",
+                        "But the frog slowly shook his head.",
+                        "\"I have no use for such things.\""
                     ]
                 }
             ]
@@ -644,20 +643,18 @@ const EN = {
                     art: '03-promise.webp',
                     emoji: '🤝',
                     left: [
-                        "The frog floated quietly on the water and said it slowly.",
-                        "\"Take me for your friend.\"",
-                        "\"Let me eat at your table.\"",
-                        "\"And let me sleep in your room.\"",
-                        "\"Do that, and I shall bring the ball up.\"",
-                        "The frog looked her straight in the face as he said it."
+                        "The frog floated quietly on the water and looked her straight in the face.",
+                        "\"Take me for your friend,\" he said.",
+                        "\"Let me eat at your table and sleep in your room.\"",
+                        "\"Do that, and I shall bring the ball up.\""
                     ],
                     right: [
                         "The princess laughed at him inwardly.",
-                        "How could a frog possibly get as far as the palace?",
+                        "How could a frog ever get as far as the palace?",
                         "It was a long walk from the pond to the palace,",
                         "and far too far for a frog's legs.",
-                        "The princess waved a hand.",
-                        "\"Very well, very well. Only fetch it, quickly.\""
+                        "She nodded without really listening.",
+                        "\"Yes, yes. Only fetch it, quickly.\""
                     ]
                 },
                 {
@@ -672,11 +669,10 @@ const EN = {
                         "and ran off without looking back."
                     ],
                     right: [
-                        "\"Princess — take me with you!\"",
-                        "the frog called after her.",
+                        "\"Princess, take me with you!\" the frog called after her.",
                         "But a frog's legs could not keep up.",
-                        "And the princess went straight back to the palace.",
-                        "By that night she had forgotten the frog entirely."
+                        "The princess went straight back to the palace,",
+                        "and by that night she had forgotten the frog entirely."
                     ]
                 }
             ]
@@ -697,30 +693,26 @@ const EN = {
                         "Tap, tap, tap."
                     ],
                     right: [
-                        "And a voice she knew came after it.",
-                        "\"Princess, open the door for me.\"",
+                        "Then came a voice she knew. \"Princess, open the door for me.\"",
                         "The princess dropped her spoon.",
-                        "And she walked toward the door",
-                        "with her heart thumping.",
-                        "Only now did yesterday come back to her."
+                        "Only now did yesterday come back to her.",
+                        "With her heart thumping, she walked to the door."
                     ]
                 },
                 {
                     art: '04-knock-2.webp',
                     emoji: '🚪',
                     left: [
-                        "She opened the door and went stiff where she stood.",
-                        "There was the frog sitting on the threshold.",
-                        "He seemed to have hopped all night.",
-                        "There was dirt all over him",
-                        "and dry grass stuck to his feet.",
-                        "The princess slammed the door and came back. The blood had gone out of her face.",
-                        "And outside there came the tapping again."
+                        "She opened the door and went stiff.",
+                        "The frog was sitting on the threshold.",
+                        "He had hopped all the way from the pond.",
+                        "Dirt covered him, and dry grass stuck to his feet.",
+                        "She slammed the door and came back, white in the face.",
+                        "Outside, the tapping began again."
                     ],
                     right: [
-                        "The hand that held her spoon shook.",
-                        "\"Whatever is the matter?\"",
-                        "asked her sister, beside her.",
+                        "She sat down, but her hands shook.",
+                        "\"Whatever is the matter?\" asked her sister, beside her.",
                         "The princess could not answer.",
                         "The whole family put their spoons down and looked at her.",
                         "The table went quiet."
@@ -743,13 +735,11 @@ const EN = {
                         "\"Is there a giant standing out there, perhaps?\" said the king, half joking."
                     ],
                     right: [
-                        "\"Not a giant… a frog.\"",
-                        "The king put down his spoon,",
-                        "and her sisters exchanged looks.",
-                        "There was nothing for it but to tell them about the day before.",
-                        "She told it all — dropping the ball, and the promise.",
-                        "Her face burned while she said it.",
-                        "Why ever had she promised such a thing?"
+                        "\"Not a giant…\" she said at last. \"A frog.\"",
+                        "The king put down his spoon, and her sisters exchanged looks.",
+                        "There was nothing for it but to tell them everything,",
+                        "from dropping the ball to the promise.",
+                        "Her face burned. Why had she promised such a thing?"
                     ]
                 },
                 {
@@ -758,16 +748,16 @@ const EN = {
                     left: [
                         "The king said nothing for a moment.",
                         "Then he stroked his beard once and spoke quietly.",
-                        "\"If you gave your word, must you not keep it?\"",
-                        "\"You do not turn your back on somebody who helped you when you were in trouble.\" His voice was low, and firm."
+                        "\"If you gave your word, you must keep it.\"",
+                        "\"Never turn your back on someone who helped you in trouble.\"",
+                        "His voice was low, but firm."
                     ],
                     right: [
-                        "The princess looked at her own feet.",
-                        "There was nothing she could say back.",
+                        "The princess looked down at her feet.",
                         "She knew her father was right.",
-                        "So in the end she went to the door again.",
-                        "She opened it, and the frog was sitting exactly where he had been.",
-                        "\"You may come in.\" And the frog hopped over the threshold."
+                        "So she went back to the door and opened it.",
+                        "The frog was still sitting there.",
+                        "\"You may come in,\" she said in a small voice."
                     ]
                 }
             ]
@@ -780,20 +770,19 @@ const EN = {
                     art: '06-dinner.webp',
                     emoji: '🍽️',
                     left: [
-                        "The frog came hopping in,",
-                        "climbed the chair and got right up onto the table,",
+                        "The frog came hopping in.",
+                        "He climbed the chair and got right up onto the table,",
                         "and picked his way carefully between the dishes.",
-                        "\"Push your plate over here, princess.\"",
-                        "\"We agreed to eat together, did we not.\" The frog blinked at her."
+                        "He blinked at her. \"Push your plate over here, Princess.\"",
+                        "\"We agreed to eat together, did we not?\""
                     ],
                     right: [
-                        "Wet footprints went across the tablecloth,",
-                        "and the princess screwed up her face.",
-                        "And still, with her father watching, she pushed the plate over.",
-                        "The frog ate with great enjoyment.",
-                        "The princess could not get a mouthful down.",
-                        "Her sisters were having trouble keeping straight faces.",
-                        "Only the king went on eating as if nothing were the matter."
+                        "Wet footprints dotted the tablecloth.",
+                        "The princess screwed up her face,",
+                        "but with her father watching, she pushed the plate over.",
+                        "The frog ate happily, but she could not eat a bite.",
+                        "Her sisters could hardly keep straight faces.",
+                        "Only the king ate calmly."
                     ]
                 },
                 {
@@ -802,17 +791,16 @@ const EN = {
                     left: [
                         "The frog patted his stomach.",
                         "\"That was excellent. Shall we go to bed now?\"",
-                        "\"I beg your pardon?\"",
-                        "The princess pushed back her chair and stood straight up.",
+                        "\"I beg your pardon?\" cried the princess.",
+                        "She pushed back her chair and jumped up.",
                         "Her face went scarlet."
                     ],
                     right: [
-                        "\"Sleep in the same room as a frog?\" she cried.",
+                        "She turned to the king. \"Sleep in the same room as a frog?\"",
                         "The king cleared his throat,",
-                        "and the princess had to shut her mouth.",
-                        "A promise was a promise.",
-                        "So in the end she picked the frog up with the tips of her fingers",
-                        "and went up the stairs holding him out at arm's length."
+                        "and the princess had to close her mouth. A promise was a promise.",
+                        "She picked up the frog with the tips of her fingers",
+                        "and went upstairs, holding him out at arm's length."
                     ]
                 }
             ]
@@ -825,43 +813,36 @@ const EN = {
                     art: '07-room.webp',
                     emoji: '🕯️',
                     left: [
-                        "The moment she was in her room the princess set the frog down —",
-                        "in a corner, a long way from her soft bed.",
-                        "\"Stay there. Do not come up here.\"",
-                        "The stone floor was cold enough to sting your hand.",
-                        "And she got in and pulled the blanket over her head.",
-                        "The frog said nothing.",
-                        "The room went very quiet."
+                        "In her room, she put the frog down in a corner on the stone floor,",
+                        "far from her soft bed. It was cold enough to sting your hand.",
+                        "\"Stay there. Don't you dare come up here.\"",
+                        "She pulled the blanket over her head.",
+                        "The frog said nothing, and the room went very quiet."
                     ],
                     right: [
-                        "The princess shut her eyes under the blanket,",
-                        "and the wind went past outside the window.",
-                        "But that corner would not leave her alone.",
-                        "She could not get to sleep.",
-                        "What her father had said kept coming back.",
-                        "\"You do not turn your back on somebody who helped you when you were in trouble.\""
+                        "The princess shut her eyes under the blanket.",
+                        "The wind blew past the window.",
+                        "But that corner would not leave her alone, and she could not get to sleep.",
+                        "Her father's words kept coming back to her:",
+                        "\"Never turn your back on someone who helped you in trouble.\""
                     ]
                 },
                 {
                     art: '07-room-2.webp',
                     emoji: '🕯️',
                     left: [
-                        "After a long while the princess sat up.",
-                        "She took a candle and went over to the corner.",
-                        "The frog was hunched down on the cold stone,",
-                        "and his small body was shaking a little.",
-                        "The floor was bitterly cold.",
-                        "And the feet that had come all the way from the pond were worn raw.",
-                        "The princess let out a breath,",
-                        "and gathered the frog up in both hands."
+                        "At last the princess sat up and took a candle to the corner.",
+                        "The frog was hunched down on the bitterly cold stone,",
+                        "his small body shaking.",
+                        "His feet were worn raw from the long way from the pond.",
+                        "The princess sighed and gathered him up in both hands."
                     ],
                     right: [
-                        "\"…I am sorry. A promise is a promise.\"",
-                        "The frog still said nothing,",
-                        "and she stroked his back gently with one finger.",
-                        "Then she set him down beside her pillow.",
-                        "Her palms were warm.",
-                        "And only then did the frog stretch himself out."
+                        "\"…I'm sorry,\" she whispered. \"A promise is a promise.\"",
+                        "The frog still said nothing.",
+                        "She stroked his back gently with one finger,",
+                        "then set him down softly beside her pillow.",
+                        "Only then did the frog stretch himself out."
                     ]
                 }
             ]
@@ -874,38 +855,34 @@ const EN = {
                     art: '08-ending.webp',
                     emoji: '✨',
                     left: [
-                        "And in that moment",
-                        "the room went as bright as noon.",
-                        "The princess covered her face with both hands against the glare.",
-                        "She thought something dreadful had happened.",
-                        "Only when the light went did she open her eyes again.",
+                        "In that moment, the room went as bright as noon.",
+                        "The princess covered her face against the glare.",
+                        "When the light faded, she opened her eyes again.",
                         "The air in the room had changed,",
                         "and the candle flickered all by itself."
                     ],
                     right: [
-                        "Where the frog had been, a young man was standing —",
-                        "a prince with clear eyes, finely dressed.",
-                        "\"I am the prince of the next country, and I was under a spell.\"",
-                        "\"It could only be broken by somebody who kept a promise to me.\" The princess could not find her voice.",
-                        "She only looked at the golden ball on the windowsill."
+                        "Where the frog had been stood a young man,",
+                        "a prince with clear eyes and fine clothes.",
+                        "\"I am a prince from the next kingdom, under a spell,\" he said.",
+                        "\"Only someone who kept a promise to me could break it.\"",
+                        "The princess could only look at the golden ball on the windowsill."
                     ]
                 },
                 {
                     art: '08-ending-2.webp',
                     emoji: '✨',
                     left: [
-                        "It was the next morning.",
-                        "A carriage drawn by eight white horses stopped in front of the palace.",
-                        "The driver was a man called Henry, who had served the prince since he was a boy —",
-                        "the man who, on the day the prince became a frog, had bound iron bands round his own chest for fear it would burst."
+                        "Next morning a carriage with eight white horses came.",
+                        "The driver, Henry, had served the prince since he was a boy.",
+                        "When the prince became a frog, Henry was so sad",
+                        "he bound iron bands round his chest so it would not burst."
                     ],
                     right: [
-                        "He had waited like that for years.",
-                        "As the carriage rolled along there came a crack, and then another, from behind.",
-                        "The prince asked in alarm,",
-                        "\"What is that breaking?\"",
-                        "\"The iron bands round my chest. I have no need of them now.\" And the carriage went on down the bright road.",
-                        "And the two of them lived happily together for a long time."
+                        "As they rode, something went crack, crack behind them.",
+                        "\"What broke?\" the prince asked in alarm.",
+                        "\"Only the bands round my chest,\" said Henry. \"I don't need them now.\"",
+                        "And the prince and princess lived happily ever after."
                     ]
                 }
             ]
@@ -913,47 +890,47 @@ const EN = {
     ],
     quiz: [
         {
-            q: 'What did the frog ask for in return?',
-            choices: ['Jewels and a crown', 'The golden ball itself', 'To be her friend, eat at her table and sleep in her room'],
+            q: "What did the frog ask for in return?",
+            choices: ["Jewels and a crown", "The golden ball itself", "To be her friend, eat at her table and sleep in her room"],
             answer: 2
         },
         {
-            q: 'Why did the princess promise so easily?',
-            choices: ['She liked the frog', 'She thought a frog could never reach the palace', 'Her father had told her to'],
+            q: "Why did the princess promise so easily?",
+            choices: ["She liked the frog", "She thought a frog could never reach the palace", "Her father had told her to"],
             answer: 1
         },
         {
-            q: 'What did the princess do once she had the ball back?',
-            choices: ['She ran off without looking back', 'She carried the frog home', 'She thanked him and stayed'],
+            q: "What did the princess do once she had the ball back?",
+            choices: ["She ran off without looking back", "She carried the frog home", "She thanked him and stayed"],
             answer: 0
         },
         {
-            q: 'What did the king say when he heard the story?',
-            choices: ['That she should send the frog away', 'That the frog could stay one night only', 'That a promise once given must be kept'],
+            q: "What did the king say when he heard the story?",
+            choices: ["That she should send the frog away", "That the frog could stay one night only", "That a promise once given must be kept"],
             answer: 2
         },
         {
-            q: 'What happened at the dinner table?',
-            choices: ['The frog would not come in', 'The frog ate from her plate and she could not eat at all', 'Her sisters chased the frog out'],
+            q: "What happened at the dinner table?",
+            choices: ["The frog would not come in", "The frog ate from her plate and she could not eat at all", "Her sisters chased the frog out"],
             answer: 1
         },
         {
-            q: 'Why did the princess get up in the night?',
-            choices: ['Her father’s words kept coming back to her', 'The frog was calling her', 'The candle had gone out'],
+            q: "Why did the princess get up in the night?",
+            choices: ["Her father’s words kept coming back to her", "The frog was calling her", "The candle had gone out"],
             answer: 0
         },
         {
-            q: 'What broke the spell?',
-            choices: ['A kiss', 'The golden ball', 'The princess keeping her promise'],
+            q: "What broke the spell?",
+            choices: ["A kiss", "The golden ball", "The princess keeping her promise"],
             answer: 2
         },
         {
-            q: 'Which reaction to this book does NOT fit?',
+            q: "Which reaction to this book does NOT fit?",
             wide: true,
             choices: [
                 "She offered him jewels and a crown — she assumed that was the sort of thing he would want.",
                 "She agreed to his terms readily enough — she was sure a frog could never make it as far as the palace.",
-                "Something snapped behind the carriage — the iron bands round Heinrich's chest were giving way at last.",
+                "Something snapped behind the carriage — the iron bands round Henry's chest were giving way at last.",
                 "The king went on eating calmly while the frog climbed onto the table — he had known all along that it was a prince."
             ],
             answer: 3
@@ -968,7 +945,7 @@ const EN = {
                 left: [
                     "This story stands first in the collection the Brothers Grimm gathered. They thought enough of it to put it at the front.",
                     "The promise the princess made to the frog cost her nothing. Fetch up the ball and I shall do anything — she said it easily because she had no intention of keeping it.",
-                    "And then the frog hops all night to get there. He was the one who had not forgotten.",
+                    "And then the frog hops all the way to the palace. He was the one who had not forgotten.",
                     "The king does not scold his daughter. He says one thing only: a word once given is kept."
                 ],
                 right: [
@@ -987,9 +964,9 @@ const EN = {
         ],
         '01-ball.webp': [
             { word: 'dazzle', meaning: '눈부시게 하다', sentence: 'It shone until it dazzled you.' },
-            { word: 'dearest', meaning: '가장 아끼는', sentence: "It was the princess's dearest thing." },
-            { word: 'pause', meaning: '걸음을 멈추다', sentence: 'The sun himself paused a moment.' },
-            { word: 'lime tree', meaning: '보리수', sentence: 'She played under the lime tree by that pond.' }
+            { word: 'dearest', meaning: '가장 아끼는', sentence: 'Her dearest thing was a golden ball.' },
+            { word: 'pause', meaning: '걸음을 멈추다', sentence: 'Even the sun paused a moment.' },
+            { word: 'lime tree', meaning: '보리수', sentence: 'The princess played under a lime tree by the pond.' }
         ],
         '01-ball-2.webp': [
             { word: 'flash', meaning: '반짝임', sentence: 'The ball flashed in the sunlight.' },
@@ -1001,7 +978,7 @@ const EN = {
             { word: 'slant down', meaning: '비껴들다', sentence: 'The evening sun slanted down through the leaves.' },
             { word: 'ripple', meaning: '일렁이다', sentence: 'And then the water rippled.' },
             { word: 'start back', meaning: '깜짝 놀라 물러서다', sentence: 'The princess started back in fright.' },
-            { word: 'dignified', meaning: '점잖은', sentence: 'His voice was quite dignified.' }
+            { word: 'dignified', meaning: '점잖은', sentence: 'The frog spoke in a quite dignified voice.' }
         ],
         '02-frog-2.webp': [
             { word: 'wipe', meaning: '닦다', sentence: 'She wiped her eyes and answered.' },
@@ -1028,28 +1005,28 @@ const EN = {
             { word: 'come back to', meaning: '떠오르다', sentence: 'Only now did yesterday come back to her.' }
         ],
         '04-knock-2.webp': [
-            { word: 'go stiff', meaning: '얼어붙다', sentence: 'She went stiff where she stood.' },
+            { word: 'go stiff', meaning: '얼어붙다', sentence: 'She opened the door and went stiff.' },
             { word: 'threshold', meaning: '문턱', sentence: 'The frog was sitting on the threshold.' },
-            { word: 'slam', meaning: '쾅 닫다', sentence: 'The princess slammed the door.' },
+            { word: 'slam', meaning: '쾅 닫다', sentence: 'She slammed the door.' },
             { word: 'stick to', meaning: '들러붙다', sentence: 'Dry grass stuck to his feet.' }
         ],
         '05-king.webp': [
             { word: 'frighten', meaning: '무섭게 하다', sentence: 'What has frightened you so?' },
             { word: 'half joking', meaning: '농담처럼', sentence: 'said the king, half joking.' },
             { word: 'nothing for it but to', meaning: '~하는 수밖에 없다', sentence: 'There was nothing for it but to tell them.' },
-            { word: 'burn', meaning: '화끈거리다', sentence: 'Her face burned while she said it.' }
+            { word: 'burn', meaning: '화끈거리다', sentence: 'Her face burned.' }
         ],
         '05-king-2.webp': [
             { word: 'stroke one’s beard', meaning: '수염을 쓸다', sentence: 'He stroked his beard once.' },
             { word: 'give one’s word', meaning: '약속하다', sentence: 'If you gave your word.' },
-            { word: 'turn one’s back on', meaning: '모른 척하다', sentence: 'You do not turn your back on somebody.' },
-            { word: 'firm', meaning: '단단한', sentence: 'His voice was low, and firm.' }
+            { word: 'turn one’s back on', meaning: '모른 척하다', sentence: 'Never turn your back on someone who helped you.' },
+            { word: 'firm', meaning: '단단한', sentence: 'His voice was low, but firm.' }
         ],
         '06-dinner.webp': [
             { word: 'pick one’s way', meaning: '조심조심 지나가다', sentence: 'He picked his way between the dishes.' },
-            { word: 'tablecloth', meaning: '상보', sentence: 'Wet footprints went across the tablecloth.' },
+            { word: 'tablecloth', meaning: '상보', sentence: 'Wet footprints dotted the tablecloth.' },
             { word: 'screw up one’s face', meaning: '인상을 찌푸리다', sentence: 'The princess screwed up her face.' },
-            { word: 'keep a straight face', meaning: '웃음을 참다', sentence: 'Her sisters had trouble keeping straight faces.' }
+            { word: 'keep a straight face', meaning: '웃음을 참다', sentence: 'Her sisters could hardly keep straight faces.' }
         ],
         '06-dinner-2.webp': [
             { word: 'pat', meaning: '두드리다', sentence: 'The frog patted his stomach.' },
@@ -1061,26 +1038,26 @@ const EN = {
             { word: 'sting', meaning: '시리게 하다', sentence: 'Cold enough to sting your hand.' },
             { word: 'leave alone', meaning: '가만두다', sentence: 'That corner would not leave her alone.' },
             { word: 'get to sleep', meaning: '잠들다', sentence: 'She could not get to sleep.' },
-            { word: 'keep coming back', meaning: '자꾸 떠오르다', sentence: 'What her father had said kept coming back.' }
+            { word: 'keep coming back', meaning: '자꾸 떠오르다', sentence: "Her father's words kept coming back to her." }
         ],
         '07-room-2.webp': [
             { word: 'sit up', meaning: '몸을 일으키다', sentence: 'The princess sat up.' },
-            { word: 'hunch down', meaning: '웅크리다', sentence: 'The frog was hunched down on the cold stone.' },
-            { word: 'bitterly', meaning: '몹시', sentence: 'The floor was bitterly cold.' },
+            { word: 'hunch down', meaning: '웅크리다', sentence: 'The frog was hunched down on the bitterly cold stone.' },
+            { word: 'bitterly', meaning: '몹시', sentence: 'The frog was hunched down on the bitterly cold stone.' },
             { word: 'worn raw', meaning: '헐어 벗겨진', sentence: 'His feet were worn raw.' },
-            { word: 'gather up', meaning: '감싸 올리다', sentence: 'She gathered the frog up in both hands.' }
+            { word: 'gather up', meaning: '감싸 올리다', sentence: 'The princess sighed and gathered him up in both hands.' }
         ],
         '08-ending.webp': [
             { word: 'as bright as noon', meaning: '대낮처럼 환한', sentence: 'The room went as bright as noon.' },
             { word: 'glare', meaning: '눈부신 빛', sentence: 'She covered her face against the glare.' },
             { word: 'flicker', meaning: '흔들리다', sentence: 'The candle flickered all by itself.' },
-            { word: 'under a spell', meaning: '마법에 걸린', sentence: 'I was under a spell.' }
+            { word: 'under a spell', meaning: '마법에 걸린', sentence: 'A prince from the next kingdom, under a spell.' }
         ],
         '08-ending-2.webp': [
-            { word: 'carriage', meaning: '마차', sentence: 'A carriage drawn by eight white horses.' },
-            { word: 'serve', meaning: '모시다', sentence: 'A man who had served the prince since he was a boy.' },
-            { word: 'iron band', meaning: '쇠테', sentence: 'He had bound iron bands round his own chest.' },
-            { word: 'burst', meaning: '터지다', sentence: 'For fear it would burst.' },
+            { word: 'carriage', meaning: '마차', sentence: 'A carriage with eight white horses.' },
+            { word: 'serve', meaning: '모시다', sentence: 'Henry had served the prince since he was a boy.' },
+            { word: 'iron band', meaning: '쇠테', sentence: 'He bound iron bands round his chest.' },
+            { word: 'burst', meaning: '터지다', sentence: 'So it would not burst.' },
             { word: 'in alarm', meaning: '놀라서', sentence: 'The prince asked in alarm.' }
         ],
         'end.webp': [

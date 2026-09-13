@@ -568,20 +568,20 @@ const EN = {
                     art: '01-porridge.webp',
                     emoji: '🐻',
                     left: [
-                        "There was a log house in a wood thick with birch trees, and three bears lived in it —",
-                        "Father Bear, Mother Bear and Baby Bear.",
-                        "Father Bear was very big indeed.",
+                        "In a wood thick with birch trees there was a log house.",
+                        "Three bears lived in it: Father Bear, Mother Bear and Baby Bear.",
+                        "Father Bear was very big.",
                         "Mother Bear was a little smaller.",
-                        "And Baby Bear was small and round.",
+                        "Baby Bear was small and round.",
                         "The three of them got on very well."
                     ],
                     right: [
-                        "There were three of everything in that house —",
-                        "three bowls, three chairs, three beds:",
+                        "There were three of everything in that house:",
+                        "three bowls, three chairs, three beds —",
                         "a big one, a middle one and a very small one.",
-                        "One morning Mother Bear made porridge",
-                        "and served it out steaming into the three bowls.",
-                        "She did not forget a spoonful of honey on each."
+                        "One morning Mother Bear made porridge.",
+                        "She served it out steaming into the three bowls,",
+                        "with a spoonful of honey on each."
                     ]
                 },
                 {
@@ -596,11 +596,11 @@ const EN = {
                     ],
                     right: [
                         "Mother Bear set the bowls out on the table.",
-                        "\"Let us go for a walk, then, until it cools.\"",
-                        "And the three of them went off into the wood together.",
-                        "But they forgot to lock the door.",
-                        "It was left standing a little open.",
-                        "And that was how the day's business began."
+                        "\"Let's go for a walk until it cools,\" she said.",
+                        "So the three went out into the wood.",
+                        "They shut the door, but they forgot to lock it.",
+                        "Soon it would be standing open.",
+                        "And that was how the day's trouble began."
                     ]
                 }
             ]
@@ -613,21 +613,19 @@ const EN = {
                     art: '02-door.webp',
                     emoji: '🚪',
                     left: [
-                        "About that time there was a child wandering in the wood,",
-                        "a child whose hair shone gold.",
-                        "She had come out that morning to pick flowers, and got lost.",
-                        "Trees this way and trees that way.",
-                        "However far she walked it looked like the same place.",
+                        "Around that time, a child was wandering in the wood.",
+                        "Her hair shone like gold.",
+                        "She had come out to pick flowers, and got lost.",
+                        "Trees this way, trees that way — every place looked the same.",
                         "Her legs ached and she was very hungry.",
                         "She was near to crying."
                     ],
                     right: [
-                        "\"Mother, I'm here!\"",
-                        "The wood did not answer her at all.",
-                        "And then she saw a roof between the trees.",
-                        "She ran toward it, glad of it.",
-                        "It was a pretty house built of logs.",
-                        "She knocked at the door.",
+                        "She called out loudly, \"Mother, I'm here!\"",
+                        "But the wood did not answer.",
+                        "Then she saw a roof between the trees.",
+                        "She ran toward it, glad of the sight.",
+                        "It was a pretty house made of logs. She knocked at the door.",
                         "\"Hello? Is anybody at home?\""
                     ]
                 },
@@ -636,20 +634,17 @@ const EN = {
                     emoji: '🚪',
                     left: [
                         "Call as she might, there was no answer.",
-                        "So she went up to the window and looked in.",
-                        "White steam was rising off the table.",
-                        "A good smell came out through the crack of the door,",
-                        "and her stomach rumbled.",
+                        "So she looked in through the window.",
+                        "White steam was rising from the table.",
+                        "A good smell came through the door, and her stomach rumbled.",
                         "It was hard to bear.",
-                        "She swallowed hard",
-                        "and gave the door a small push."
+                        "She swallowed and gave the door a little push."
                     ],
                     right: [
                         "The door swung open.",
-                        "\"Just a peep. Only a moment.\"",
+                        "\"I'll just take a peep,\" she said. \"Only for a moment.\"",
                         "She went in on tiptoe.",
-                        "A floorboard creaked under her,",
-                        "and she stopped dead where she was.",
+                        "A floorboard creaked, and she stopped dead.",
                         "Her heart was going pit-a-pat."
                     ]
                 }
@@ -663,40 +658,38 @@ const EN = {
                     art: '03-bowls.webp',
                     emoji: '🥣',
                     left: [
-                        "There were three bowls of porridge on the table —",
-                        "a big bowl, a middle bowl and a very small one.",
+                        "There were three bowls of porridge on the table:",
+                        "a big bowl, a middle bowl and a very small bowl.",
                         "She was too hungry to stop herself.",
-                        "First she took a spoonful from the biggest bowl,",
-                        "the one with the steam rolling off it.",
-                        "And straight away she had her mouth open, fanning it."
+                        "First she tried the biggest bowl, the one with the steam rolling off it.",
+                        "Straight away she had her mouth open, fanning it."
                     ],
                     right: [
-                        "\"Ugh, far too hot!\"",
+                        "\"Ugh, far too hot!\" she cried.",
                         "Next she tried the middle bowl.",
-                        "The moment the spoon went in her mouth",
-                        "her tongue went cold.",
+                        "As soon as the spoon was in her mouth, her tongue felt cold.",
                         "She screwed up her face.",
-                        "\"And this one is far too cold.\" That porridge had gone quite cold already."
+                        "\"And this one is far too cold!\"",
+                        "That porridge had already gone cold."
                     ]
                 },
                 {
                     art: '03-bowls-2.webp',
                     emoji: '🥣',
                     left: [
-                        "Last of all she tried the smallest bowl.",
-                        "Her eyes went round.",
-                        "\"Oh — that's just right!\"",
+                        "Last of all she tried the smallest bowl. Her eyes went round.",
+                        "\"Oh, that's just right!\"",
                         "It was neither hot nor cold.",
-                        "And she cleared the bowl out entirely,",
+                        "She cleared the bowl out entirely,",
                         "scraping the bottom with the spoon.",
-                        "Then she patted her stomach."
+                        "Then she patted her tummy."
                     ],
                     right: [
                         "\"That's better.\"",
-                        "She did not notice the porridge round her mouth,",
-                        "and wiped it off with the back of her hand.",
+                        "She did not notice the porridge round her mouth.",
+                        "She wiped it off with the back of her hand.",
                         "It never crossed her mind that it was Baby Bear's porridge.",
-                        "She left the empty bowl where it was and got up.",
+                        "She got up and left the empty bowl there.",
                         "It did not occur to her to clear it away."
                     ]
                 }
@@ -710,19 +703,19 @@ const EN = {
                     art: '04-chairs.webp',
                     emoji: '🪑',
                     left: [
-                        "With her stomach full she looked for somewhere to sit.",
-                        "There were three chairs by the fire —",
-                        "a big one, a middle one and a small one, again.",
+                        "With her tummy full, she looked for a place to sit.",
+                        "By the fire were three chairs: big, middle and small.",
                         "First she climbed the big chair.",
-                        "She got up onto it with some trouble, and her feet did not reach the floor.",
-                        "It was so high up that it made her dizzy.",
-                        "And the back was as hard as a plank."
+                        "Her feet did not reach the floor.",
+                        "It was so high up that it made her dizzy,",
+                        "and its back was as hard as a plank."
                     ],
                     right: [
-                        "\"Much too hard.\"",
+                        "\"Much too hard!\" she said.",
                         "So she moved to the middle chair.",
-                        "And the cushion was so soft that she sank right down into it.",
-                        "\"And this one is much too squashy.\" She only just got herself out of it and stood up."
+                        "But the cushion was so soft that she sank right down into it.",
+                        "\"And this one is much too squashy!\"",
+                        "She only just got out of it and stood up."
                     ]
                 },
                 {
@@ -730,17 +723,15 @@ const EN = {
                     emoji: '🪑',
                     left: [
                         "Then she sat down in the smallest chair.",
-                        "It took her exactly, and her back fitted the back of it.",
-                        "\"This one — just right!\"",
-                        "She swung her legs happily,",
-                        "her toes touching the floor and lifting again.",
+                        "It fitted her exactly, back and all.",
+                        "\"This one is just right!\"",
+                        "She swung her legs happily, her toes tapping the floor.",
                         "She rocked herself back and forth and even sang.",
                         "And that was the trouble."
                     ],
                     right: [
-                        "Creak. Creak.",
-                        "The chair kept making a noise.",
-                        "And then one leg snapped clean off.",
+                        "Creak! Creak! The chair kept making a noise.",
+                        "Then one leg snapped clean off.",
                         "Crash!",
                         "The chair went down under her,",
                         "and she landed hard on the floor.",
@@ -776,22 +767,20 @@ const EN = {
                     art: '05-beds-2.webp',
                     emoji: '🛏️',
                     left: [
-                        "She moved to the middle bed and lay down.",
-                        "This time the foot of it was far too soft,",
-                        "and she kept sliding down it.",
-                        "So she got up again,",
-                        "and struggled a good while with the blanket wound round her feet.",
+                        "She tried the middle bed next.",
+                        "This time the foot was far too soft, and she kept sliding down.",
+                        "She got up, fighting the blanket wound round her feet.",
                         "Last of all she lay down in the small bed.",
                         "The pillow smelled of grass.",
-                        "\"Like our pillow at home.\""
+                        "\"Just like my pillow at home.\""
                     ],
                     right: [
-                        "This time it was neither too high nor too low,",
-                        "and the blanket fitted her exactly.",
-                        "\"Just right…\"",
-                        "The sunlight coming in at the window was warm.",
-                        "She gave an enormous yawn.",
-                        "And there she fell fast asleep."
+                        "The head was not too high, and the foot did not sink.",
+                        "The blanket fitted her just right.",
+                        "\"Just right…\" she whispered.",
+                        "The sunlight from the window was warm.",
+                        "She gave an enormous yawn,",
+                        "and fell fast asleep right there."
                     ]
                 }
             ]
@@ -805,40 +794,39 @@ const EN = {
                     emoji: '🍯',
                     left: [
                         "About then the three bears finished their walk.",
-                        "\"The porridge will have cooled nicely by now.\"",
-                        "The three of them came home in good spirits.",
-                        "And the door was standing wide open.",
+                        "\"The porridge will have cooled nicely by now,\" said Mother Bear.",
+                        "They came home in good spirits.",
+                        "But the door was standing wide open!",
                         "Father Bear tilted his head.",
                         "\"I shut that when we went out.\""
                     ],
                     right: [
-                        "Baby Bear took hold of Mother Bear's arm.",
-                        "Father Bear looked at the table and stopped.",
-                        "There was a spoon standing in his bowl.",
-                        "Father Bear said in his deep voice,",
-                        "\"Who has been eating my porridge?\"",
-                        "Mother Bear straightened her spectacles and looked into her own bowl.",
-                        "There was a little less in it than there had been."
+                        "Scared, Baby Bear held Mother Bear's arm.",
+                        "Father Bear saw the table and stopped.",
+                        "A spoon was standing in his bowl.",
+                        "\"Who has been eating my porridge?\" he said in his deep voice.",
+                        "Mother Bear straightened her glasses and looked in hers.",
+                        "A little was gone."
                     ]
                 },
                 {
                     art: '06-return-2.webp',
                     emoji: '🍯',
                     left: [
-                        "\"Somebody has been eating mine as well.\"",
+                        "\"Somebody has been eating mine too,\" said Mother Bear.",
                         "Baby Bear ran to his own bowl.",
                         "There was nothing at all in it.",
                         "He even turned it upside down.",
                         "There were only spoon marks on the bottom,",
-                        "and not one drop of honey left."
+                        "and not one drop of honey was left."
                     ],
                     right: [
-                        "Baby Bear's lip began to come out.",
+                        "Baby Bear's lip began to stick out.",
                         "\"Somebody has eaten all of mine!\"",
                         "And he burst into tears.",
                         "Mother Bear patted his back.",
                         "The three of them looked at one another.",
-                        "Somebody had plainly been in that house."
+                        "Somebody had plainly been in their house."
                     ]
                 }
             ]
@@ -852,18 +840,17 @@ const EN = {
                     emoji: '💥',
                     left: [
                         "The three of them went over to the fire.",
-                        "The cushion of Father Bear's chair was crooked.",
-                        "\"Who has been sitting in my chair?\"",
+                        "The cushion on Father Bear's chair was crooked.",
+                        "\"Who has been sitting in my chair?\" he growled.",
                         "The middle of Mother Bear's chair had gone right down.",
-                        "\"Somebody has been sitting in mine as well.\"",
-                        "And Baby Bear looked toward his own chair."
+                        "\"Somebody has been sitting in mine too,\" she said."
                     ],
                     right: [
-                        "And there he went stiff where he stood.",
-                        "His eyes got rounder and rounder.",
-                        "The little chair lay on its side with a leg broken off.",
+                        "Baby Bear looked at his own chair and went stiff where he stood.",
+                        "His eyes grew wide.",
+                        "The little chair lay on its side, one leg broken off.",
                         "\"Somebody has broken my chair!\"",
-                        "And Baby Bear burst into tears again.",
+                        "Baby Bear burst into tears again.",
                         "Father Bear picked up the broken leg."
                     ]
                 },
@@ -872,20 +859,19 @@ const EN = {
                     emoji: '💥',
                     left: [
                         "Father Bear sniffed at the air.",
-                        "\"I think they are still in the house.\"",
+                        "\"I can smell them. They are still in the house.\"",
                         "The three of them held their breath.",
-                        "Baby Bear only blinked.",
-                        "And they went carefully up the stairs, keeping their feet quiet.",
-                        "The stairs creaked all the same.",
-                        "Baby Bear kept close behind Father Bear."
+                        "Baby Bear's fur was standing up, and he blinked and blinked.",
+                        "\"I'm frightened,\" he said.",
+                        "Mother Bear patted his back."
                     ],
                     right: [
-                        "His fur was standing up.",
-                        "Mother Bear patted his back.",
-                        "\"I'm frightened.\"",
-                        "\"I shall go first.\" And Father Bear stepped out in front.",
-                        "The three of them stood at the attic door.",
-                        "There was the sound of soft breathing inside."
+                        "Father Bear stepped out in front. \"I'll go first.\"",
+                        "They crept up the stairs, keeping their feet quiet.",
+                        "The stairs creaked all the same.",
+                        "Baby Bear kept close behind Father Bear.",
+                        "At last they stood at the attic door.",
+                        "Soft breathing came from inside."
                     ]
                 }
             ]
@@ -898,20 +884,18 @@ const EN = {
                     art: '08-ending.webp',
                     emoji: '👀',
                     left: [
-                        "The attic door swung open.",
-                        "Father Bear looked at his own bed.",
-                        "The blanket was all rumpled,",
-                        "and the pillow was crooked.",
-                        "\"Who has been lying in my bed?\"",
+                        "Father Bear gently opened the attic door.",
+                        "The blanket on his bed was all rumpled, and the pillow was crooked.",
+                        "\"Who has been lying in my bed?\" he said.",
                         "The foot of Mother Bear's bed was pressed down too,",
-                        "and the blanket pushed over to one side."
+                        "and the blanket was pushed over to one side."
                     ],
                     right: [
-                        "\"Somebody has been lying in mine as well.\"",
-                        "And then Baby Bear pointed at his own bed.",
+                        "\"Somebody has been lying in mine too,\" said Mother Bear.",
+                        "Then Baby Bear pointed at his own bed.",
                         "His small finger was shaking.",
-                        "\"There — they're still in it!\"",
-                        "All three of them looked into the little bed at once.",
+                        "\"Here… somebody is still in it!\"",
+                        "All three looked into the little bed at once.",
                         "Golden hair was showing above the blanket."
                     ]
                 },
@@ -919,17 +903,14 @@ const EN = {
                     art: '08-ending-2.webp',
                     emoji: '👀',
                     left: [
-                        "At the sound the child's eyes flew open.",
-                        "And there in front of her were three bears.",
-                        "She screamed and jumped up.",
-                        "\"Aaah!\"",
-                        "She kicked off the blanket and ran to the window,",
-                        "went straight out of it and rolled over on the grass."
+                        "At the sound, the child's eyes flew open. Three bears!",
+                        "\"Aaah!\" She kicked off the blanket and ran to the window.",
+                        "She jumped out and rolled over on the grass,",
+                        "then ran into the wood without looking back."
                     ],
                     right: [
-                        "And away she ran into the wood without once looking back.",
-                        "The three bears looked out of the window after her.",
-                        "And after a while Baby Bear spoke.",
+                        "The three bears looked out of the window.",
+                        "After a while Baby Bear spoke.",
                         "\"I think she was hungry.\"",
                         "She never went near that house again.",
                         "And the bears had to make a new chair."
@@ -946,7 +927,7 @@ const EN = {
         },
         {
             q: 'How did the child get into the house?',
-            choices: ['The door had been left open', 'She climbed in the window', 'Baby Bear let her in'],
+            choices: ['The door was not locked, so she pushed it open','She climbed in the window', 'Baby Bear let her in'],
             answer: 0
         },
         {
@@ -1024,14 +1005,14 @@ const EN = {
             { word: 'burn one’s tongue', meaning: '혀를 데다', sentence: "I've burnt my tongue!" },
             { word: 'in a hurry', meaning: '성미가 급한', sentence: 'What a hurry you are in.' },
             { word: 'fan', meaning: '부채질하다', sentence: 'He fanned it with his paw.' },
-            { word: 'stand open', meaning: '열린 채로 있다', sentence: 'It was left standing a little open.' }
+            { word: 'stand open', meaning: '열린 채로 있다', sentence: "Soon it would be standing open." }
         ],
         '02-door.webp': [
             { word: 'wander', meaning: '돌아다니다', sentence: 'A child wandering in the wood.' },
             { word: 'get lost', meaning: '길을 잃다', sentence: 'She had come out to pick flowers, and got lost.' },
             { word: 'ache', meaning: '아프다', sentence: 'Her legs ached.' },
             { word: 'near to crying', meaning: '울고 싶은', sentence: 'She was near to crying.' },
-            { word: 'glad of', meaning: '반가워서', sentence: 'She ran toward it, glad of it.' }
+            { word: 'glad of', meaning: '반가워서', sentence: "She ran toward it, glad of the sight." }
         ],
         '02-door-2.webp': [
             { word: 'call as she might', meaning: '아무리 불러도', sentence: 'Call as she might, there was no answer.' },
@@ -1047,7 +1028,7 @@ const EN = {
             { word: 'screw up one’s face', meaning: '얼굴을 찌푸리다', sentence: 'She screwed up her face.' }
         ],
         '03-bowls-2.webp': [
-            { word: 'just right', meaning: '딱 좋은', sentence: "Oh — that's just right!" },
+            { word: 'just right', meaning: '딱 좋은', sentence: "Oh, that's just right!" },
             { word: 'clear out', meaning: '싹 비우다', sentence: 'She cleared the bowl out entirely.' },
             { word: 'scrape', meaning: '긁다', sentence: 'Scraping the bottom with the spoon.' },
             { word: 'cross one’s mind', meaning: '생각이 나다', sentence: 'It never crossed her mind.' },
@@ -1061,7 +1042,7 @@ const EN = {
             { word: 'sink into', meaning: '푹 꺼지다', sentence: 'She sank right down into it.' }
         ],
         '04-chairs-2.webp': [
-            { word: 'take exactly', meaning: '딱 맞다', sentence: 'It took her exactly.' },
+            { word: "fit exactly", meaning: '딱 맞다', sentence: "It fitted her exactly." },
             { word: 'swing one’s legs', meaning: '다리를 흔들다', sentence: 'She swung her legs happily.' },
             { word: 'rock', meaning: '몸을 흔들다', sentence: 'She rocked herself back and forth.' },
             { word: 'snap off', meaning: '뚝 부러지다', sentence: 'One leg snapped clean off.' }
@@ -1074,7 +1055,7 @@ const EN = {
             { word: 'scramble down', meaning: '낑낑거리며 내려오다', sentence: 'She scrambled down off the bed.' }
         ],
         '05-beds-2.webp': [
-            { word: 'slide down', meaning: '미끄러지다', sentence: 'She kept sliding down it.' },
+            { word: 'slide down', meaning: '미끄러지다', sentence: "She kept sliding down." },
             { word: 'wind round', meaning: '감기다', sentence: 'The blanket wound round her feet.' },
             { word: 'smell of', meaning: '~ 냄새가 나다', sentence: 'The pillow smelled of grass.' },
             { word: 'yawn', meaning: '하품', sentence: 'She gave an enormous yawn.' }
@@ -1082,13 +1063,13 @@ const EN = {
         '06-return.webp': [
             { word: 'in good spirits', meaning: '기분 좋게', sentence: 'They came home in good spirits.' },
             { word: 'tilt one’s head', meaning: '고개를 갸웃하다', sentence: 'Father Bear tilted his head.' },
-            { word: 'deep voice', meaning: '굵은 목소리', sentence: 'Father Bear said in his deep voice.' },
-            { word: 'straighten', meaning: '고쳐 쓰다', sentence: 'Mother Bear straightened her spectacles.' }
+            { word: 'deep voice', meaning: '굵은 목소리', sentence: "He said in his deep voice." },
+            { word: 'straighten', meaning: '고쳐 쓰다', sentence: "Mother Bear straightened her glasses." }
         ],
         '06-return-2.webp': [
             { word: 'upside down', meaning: '뒤집어', sentence: 'He even turned it upside down.' },
             { word: 'mark', meaning: '자국', sentence: 'There were only spoon marks on the bottom.' },
-            { word: 'lip comes out', meaning: '입술이 삐죽 나오다', sentence: "Baby Bear's lip began to come out." },
+            { word: 'lip comes out', meaning: '입술이 삐죽 나오다', sentence: "Baby Bear's lip began to stick out." },
             { word: 'plainly', meaning: '분명히', sentence: 'Somebody had plainly been in that house.' }
         ],
         '07-broken.webp': [
@@ -1101,7 +1082,7 @@ const EN = {
             { word: 'sniff', meaning: '킁킁거리다', sentence: 'Father Bear sniffed at the air.' },
             { word: 'hold one’s breath', meaning: '숨을 죽이다', sentence: 'The three of them held their breath.' },
             { word: 'keep close behind', meaning: '바짝 붙다', sentence: 'Baby Bear kept close behind Father Bear.' },
-            { word: 'stand up', meaning: '곤두서다', sentence: 'His fur was standing up.' },
+            { word: 'stand up', meaning: '곤두서다', sentence: "Baby Bear's fur was standing up." },
             { word: 'step out in front', meaning: '앞으로 나서다', sentence: 'Father Bear stepped out in front.' }
         ],
         '08-ending.webp': [
@@ -1113,7 +1094,7 @@ const EN = {
         '08-ending-2.webp': [
             { word: 'fly open', meaning: '번쩍 뜨이다', sentence: "The child's eyes flew open." },
             { word: 'kick off', meaning: '걷어차다', sentence: 'She kicked off the blanket.' },
-            { word: 'roll over', meaning: '구르다', sentence: 'And rolled over on the grass.' },
+            { word: 'roll over', meaning: '구르다', sentence: "She rolled over on the grass." },
             { word: 'go near', meaning: '가까이 가다', sentence: 'She never went near that house again.' }
         ],
         'end.webp': [

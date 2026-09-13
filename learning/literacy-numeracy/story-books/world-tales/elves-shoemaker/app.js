@@ -524,35 +524,30 @@ const EN = {
                     art: '01-leather.webp',
                     emoji: '👞',
                     left: [
-                        "In the shoemaker's shop at the end of the lane the hammer went on late into the night. It was an old shoemaker beating out his leather.",
-                        "The whole town knew that shoes from that shop were easy on the feet.",
-                        "And still things kept getting harder, because he charged far too little.",
-                        "\"How can I take full price from somebody in difficulty?\""
+                        "Late at night, a hammer tapped away in the shoemaker's shop at the end of the lane.",
+                        "An old shoemaker was beating out his leather. Everyone in town knew his shoes were comfortable.",
+                        "But he charged far too little, so things got harder and harder."
                     ],
                     right: [
+                        "\"How can I take full price from somebody in difficulty?\" he always said.",
                         "Then one winter's day he searched the store room and found it quite bare.",
-                        "There was one single piece of leather left —",
-                        "enough for one pair of shoes.",
-                        "\"This is the last of it.\"",
-                        "His wife said it quietly."
+                        "There was only enough leather left for one pair of shoes.",
+                        "His wife said quietly, \"This is the last of it.\""
                     ]
                 },
                 {
                     art: '01-leather-2.webp',
                     emoji: '👞',
                     left: [
-                        "The shoemaker spread the last piece out on the bench. He measured it and marked it,",
-                        "and cut it out very carefully with his shears, wasting not a scrap.",
-                        "The night grew late while he worked and his eyes went dim. The candle burned low and the light wavered.",
+                        "The shoemaker spread the last piece out on the bench. He measured it and marked it.",
+                        "Then he cut it out carefully with his shears, wasting not a scrap.",
+                        "The night grew late, and his eyes went dim. The candle burned low and the light wavered.",
                         "He rubbed his eyes again and again."
                     ],
                     right: [
-                        "\"I shall stitch them in the morning.\"",
-                        "He laid the cut pieces out neatly on the bench.",
-                        "And then he blew out the candle.",
-                        "\"It will come right.\"",
-                        "His wife cleared away the cold porridge bowls and patted his shoulder.",
-                        "And the two of them went to bed."
+                        "\"I shall stitch them in the morning,\" said the shoemaker.",
+                        "He laid the cut pieces out neatly on the bench and blew out the candle.",
+                        "His wife patted his shoulder. \"It will come right.\" And the two of them went to bed."
                     ]
                 }
             ]
@@ -565,37 +560,29 @@ const EN = {
                     art: '02-shoes.webp',
                     emoji: '✨',
                     left: [
-                        "It was the next morning. The shoemaker rubbed his eyes and went to the bench.",
-                        "But the cut pieces were not there at all.",
-                        "In their place stood a pair of shoes — finished, every one of them.",
-                        "New shoes, with the smell of the leather still on them.",
-                        "The shoemaker could not believe his own eyes."
+                        "The next morning the shoemaker rubbed his eyes and went to the bench.",
+                        "But the cut pieces were gone. In their place stood a pair of shoes, already finished!",
+                        "They were new shoes, with the smell of the leather still on them. The shoemaker could not believe his eyes."
                     ],
                     right: [
-                        "He picked them up and carried them to the window.",
-                        "The stitching was so fine that not one stitch was out of line,",
-                        "and he could not even find where the thread ends had been hidden.",
-                        "\"I have never seen work like this in my life.\"",
-                        "\"Wife — come and look at this!\"",
-                        "And she came running and stood there stock still."
+                        "He picked them up and carried them to the window. The stitching was so fine that not one stitch was out of line.",
+                        "He could not even find where the thread ends were hidden.",
+                        "\"I have never seen work like this in my life! Wife, come and look!\"",
+                        "She came running and stood there stock still."
                     ]
                 },
                 {
                     art: '02-shoes-2.webp',
                     emoji: '✨',
                     left: [
-                        "A customer came in that morning. He looked at the shoes and his eyes went wide.",
-                        "\"I shall have to pay you more than that.\"",
-                        "He paid twice the price and went out.",
-                        "The shoemaker counted the money over, quite bewildered."
+                        "A customer came in that morning. He looked at the shoes, and his eyes went wide.",
+                        "\"I shall have to pay you more for these.\"",
+                        "He paid twice the price and went out. The shoemaker counted the money over, quite bewildered."
                     ],
                     right: [
-                        "\"Let us buy leather with this.\"",
-                        "This time he bought enough for two pairs.",
-                        "In the evening he cut it out and laid it on the bench.",
-                        "\"Surely it will not happen again.\"",
-                        "The two of them went to bed,",
-                        "and outside the window the snow came softly down."
+                        "\"Let us buy leather with this,\" said the shoemaker.",
+                        "This time he bought enough for two pairs. In the evening he cut it out and laid it on the bench.",
+                        "\"Surely it will not happen again,\" his wife murmured. Outside the window, the snow came softly down."
                     ]
                 }
             ]
@@ -608,18 +595,14 @@ const EN = {
                     art: '03-more.webp',
                     emoji: '🥾',
                     left: [
-                        "In the morning the two of them hurried to the bench.",
-                        "And there were the shoes again — two pairs standing side by side, finer than before.",
-                        "\"Good heavens.\"",
-                        "His wife looked at them for a long while.",
+                        "In the morning the two of them hurried to the bench. There were shoes again: two pairs side by side, finer than before.",
+                        "His wife looked at them for a long while. \"Good heavens.\"",
                         "They sold quickly that day too, and at a good price."
                     ],
                     right: [
-                        "The next day it was four pairs, and the day after that eight. Every morning there were new shoes standing in a row on the bench.",
-                        "Word of the shop went all round the district,",
-                        "and people came from villages a long way off.",
-                        "\"Their shoes don't hurt your feet, however far you walk.\"",
-                        "There was a queue outside from first thing in the morning."
+                        "They bought and cut out more leather with the money. The next day there were four pairs, then eight.",
+                        "Word of the shop went all round the district. People came from far away, and there was a queue outside from first thing.",
+                        "\"Their shoes don't hurt your feet, however far you walk.\""
                     ]
                 },
                 {
@@ -627,18 +610,12 @@ const EN = {
                     emoji: '🥾',
                     left: [
                         "Things soon came right for them. They bought a warm quilt, and his wife got a new apron.",
-                        "For the first time in a long while the two of them ate well and slept soundly.",
-                        "They did not have to work late into the night any more.",
-                        "But there was one thing they wondered about.",
-                        "\"Who on earth is making them?\""
+                        "For the first time in a long while, they ate well and slept soundly. They did not have to work late any more.",
+                        "But there was one thing they wondered about."
                     ],
                     right: [
-                        "the shoemaker said, putting down his spoon.",
-                        "\"We ought at least to say thank you, ought we not?\"",
-                        "His wife nodded.",
-                        "\"Let us watch tonight.\"",
-                        "\"And pretend to be asleep.\"",
-                        "So that is what they decided to do."
+                        "The shoemaker put down his spoon. \"Who on earth is making them? We ought at least to say thank you.\"",
+                        "His wife nodded. \"Then let us stay up tonight and watch. We can pretend to be asleep.\""
                     ]
                 }
             ]
@@ -651,37 +628,29 @@ const EN = {
                     art: '04-watching.webp',
                     emoji: '👀',
                     left: [
-                        "That night the two of them put out the candle and hid behind the wardrobe.",
-                        "Through a gap in the curtain they could see the bench plainly.",
+                        "That night they put out the candle and hid behind the wardrobe. Through a gap they could see the bench plainly.",
                         "His wife put a hand over her mouth in case her breathing gave them away.",
-                        "The room was so quiet that all they could hear was the clock ticking.",
-                        "They were holding their breath when the clock struck twelve."
+                        "All they could hear was the clock ticking. Then the clock struck twelve."
                     ],
                     right: [
-                        "And at that moment there was a stir at the door.",
-                        "Two little things no bigger than a hand slipped in,",
-                        "walked lightly across and climbed up the leg of the bench.",
-                        "They wore threads of clothes — very nearly nothing at all —",
-                        "in the middle of winter. And their feet were bare.",
-                        "His wife clapped her hand over her mouth."
+                        "Just then the door moved a little. Two tiny men, no bigger than a hand, slipped in and climbed up the leg of the bench.",
+                        "They had no clothes on at all. It was the middle of winter, and their feet were bare.",
+                        "His wife nearly cried out."
                     ]
                 },
                 {
                     art: '04-watching-2.webp',
                     emoji: '👀',
                     left: [
-                        "The two hopped onto the bench and took up the tools. They worked so fast the eye could hardly follow.",
-                        "\"Now then, in with the nails.\"",
-                        "Tap, tap. Tap, tap.",
-                        "\"And I shall polish them till they shine.\"",
-                        "Rub, rub. Buff, buff."
+                        "At once the two took up the tools. They worked so fast the eye could hardly follow.",
+                        "One picked up a hammer. \"Now then, in with the nails!\" Tap, tap. Tap, tap.",
+                        "The other picked up a cloth. \"And I shall polish them till they shine!\" Rub, rub."
                     ],
                     right: [
-                        "The pieces of leather turned into shoes in their hands,",
-                        "and they hummed away while they worked.",
-                        "By the time the sky outside began to go grey, every shoe was finished.",
-                        "They set them out in a neat row and slipped away through the crack in the door.",
-                        "The shoemaker stood where he was for a long time. His chest had gone warm."
+                        "In their little hands the leather quickly turned into shoes. They even hummed as they worked.",
+                        "By the time the sky went grey, every shoe was finished.",
+                        "They set them in a neat row and slipped away through the crack in the door.",
+                        "The shoemaker stood there a long time. His heart felt warm."
                     ]
                 }
             ]
@@ -694,37 +663,28 @@ const EN = {
                     art: '05-clothes.webp',
                     emoji: '🧵',
                     left: [
-                        "\"Did you see, wife? The state of their clothes.\"",
-                        "\"Out like that in the middle of winter — whatever shall we do.\"",
-                        "Her eyes went red.",
-                        "\"Let us do something for them.\"",
-                        "\"What if we made them clothes?\""
+                        "The shoemaker came out from behind the wardrobe. \"Did you see, wife? The state of their clothes!\"",
+                        "His wife wiped her eyes, which had gone red. \"Out like that in the middle of winter!\"",
+                        "\"Let us do something for them,\" said the shoemaker. \"What if we made them clothes?\" said his wife."
                     ],
                     right: [
-                        "The shoemaker slapped his knee. And from that day the two of them were very busy indeed.",
-                        "His wife's eyes shone as she picked out the cloth.",
-                        "She made two tiny jackets in red and green,",
-                        "and trousers, and caps as well.",
-                        "The buttons were the size of millet grains."
+                        "The shoemaker slapped his knee. From that day the two of them were very busy.",
+                        "His wife's eyes shone as she picked out the cloth. She made two tiny jackets in red and green.",
+                        "She made trousers and caps as well. The buttons were the size of millet grains."
                     ]
                 },
                 {
                     art: '05-clothes-2.webp',
                     emoji: '🧵',
                     left: [
-                        "The shoemaker was not idle either.",
-                        "He fetched the very best leather out of the store room",
-                        "and made shoes the size of a thumbnail.",
-                        "He unpicked the stitching and did it again more times than he could count.",
+                        "The shoemaker was not idle either. He fetched the very best leather from the store room.",
+                        "He made shoes the size of a thumbnail. He unpicked the stitching and did it again many times.",
                         "\"Those will do us no shame.\""
                     ],
                     right: [
-                        "It was Christmas Eve.",
-                        "The two of them cleared the bench right off,",
-                        "and instead of leather they laid out the clothes and the shoes side by side.",
-                        "\"Do you suppose it will startle them?\"",
-                        "\"They will love it.\"",
-                        "And they hid behind the wardrobe and blew out the candle."
+                        "It was Christmas Eve. The two of them cleared the bench. Instead of leather, they laid out the clothes and shoes side by side.",
+                        "\"Do you suppose it will startle them?\" asked his wife. \"They will love it,\" said the shoemaker with a smile.",
+                        "Then they blew out the candle and hid."
                     ]
                 }
             ]
@@ -737,39 +697,28 @@ const EN = {
                     art: '06-dance.webp',
                     emoji: '🎉',
                     left: [
-                        "At midnight the two little things came in and hopped up on the bench as they always did.",
-                        "But there was no leather.",
-                        "Instead there were little clothes, laid out side by side.",
-                        "The two stopped short and looked at each other.",
-                        "At first they only walked round them without daring to touch."
+                        "At midnight the two little men came in and hopped up on the bench as always.",
+                        "But there was no leather. Instead, little clothes lay side by side.",
+                        "The two stopped short and looked at each other. At first they only walked round them, without daring to touch."
                     ],
                     right: [
-                        "Then one of them carefully picked up a jacket and held it against himself.",
-                        "It fitted exactly.",
-                        "\"They're ours!\"",
-                        "The two of them jumped up and down with delight,",
-                        "and hurried into the clothes — the trousers, the caps, the shoes and all.",
-                        "Then they looked at each other and laughed until they had to hold their sides."
+                        "Then one of them carefully picked up a jacket and held it against himself. It fitted exactly. \"They're ours!\"",
+                        "They jumped up and down with delight. Then they hurried into the trousers, the caps and the shoes.",
+                        "They looked at each other and laughed until they held their sides."
                     ]
                 },
                 {
                     art: '06-dance-2.webp',
                     emoji: '🎉',
                     left: [
-                        "The two of them skipped about on the bench and took hands and danced round and round.",
-                        "They sang at the tops of their voices,",
-                        "so pleased with themselves that the bench shook.",
-                        "\"Now we are fine gentlemen!\"",
-                        "\"And all the shoes are made!\"",
-                        "\"So it is time for us to go!\""
+                        "The two of them skipped about on the bench. They took hands and danced round and round.",
+                        "They sang at the tops of their voices, so happy that the bench shook.",
+                        "\"Now we are fine gentlemen! The shoes are all made, so it is time for us to go!\""
                     ],
                     right: [
-                        "The two of them ran for the door,",
-                        "hopped over the threshold and out into the snowy yard.",
-                        "A line of small footprints was left across the white.",
-                        "The shoemaker and his wife pressed their faces to the window and looked at those footprints a long time.",
-                        "Soon fresh snow covered them over.",
-                        "And the two little ones never came back."
+                        "They hopped over the threshold and ran out into the snowy yard. A line of small footprints was left across the white.",
+                        "The shoemaker and his wife watched the footprints from the window for a long time.",
+                        "Soon fresh snow covered them. The little men never came back."
                     ]
                 }
             ]
@@ -782,39 +731,28 @@ const EN = {
                     art: '07-after.webp',
                     emoji: '🔨',
                     left: [
-                        "Morning came, and the bench was bare.",
-                        "His wife looked a little sorry about it.",
-                        "There was not so much as a thread end left on it.",
-                        "\"Did we do wrong?\"",
-                        "The shoemaker shook his head."
+                        "Morning came. There was not so much as a thread end left on the bench.",
+                        "His wife looked a little sad. \"Did we do wrong?\"",
+                        "The shoemaker shook his head. \"They had finished what they came to do, so they went.\""
                     ],
                     right: [
-                        "\"They had finished what they came to do.\"",
-                        "And he rolled up his sleeves.",
-                        "\"We can manage it ourselves now.\"",
+                        "Then he rolled up his sleeves. \"We can manage it ourselves now.\"",
                         "The two of them sat down side by side at the bench and spread out the leather.",
-                        "It had been a long time, and his hand was not what it had been.",
-                        "But between them they made one pair, slowly."
+                        "It had been a long time, and their hands were not what they had been. But slowly, they made one pair."
                     ]
                 },
                 {
                     art: '07-after-2.webp',
                     emoji: '🔨',
                     left: [
-                        "From that day the shop was running again.",
-                        "This time it was shoes the two of them had made,",
-                        "and the customers still came pushing in at the door.",
-                        "The sound of the hammer rang down the lane again.",
-                        "\"There's still no shop like it.\"",
-                        "And this time he charged a proper price."
+                        "From then on the shop was busy again, with shoes the two of them made.",
+                        "The hammer rang down the lane, and customers still came. \"There's still no shop like it!\"",
+                        "Now he charged a proper price, and they had enough."
                     ],
                     right: [
-                        "Though anyone in difficulty still got them cheap.",
-                        "And every winter, when it came round, his wife made a set of very small clothes",
-                        "and laid it quietly on the windowsill.",
-                        "In the morning it was always exactly where she had left it.",
-                        "And still she made one every year.",
-                        "\"In case they are cold again.\""
+                        "But anyone in difficulty still got them cheap.",
+                        "Each winter his wife made tiny clothes for the windowsill. By morning they were always still there.",
+                        "Still she made them every year. \"In case they are cold again.\""
                     ]
                 }
             ]
@@ -827,18 +765,18 @@ const EN = {
             answer: 0
         },
         {
-            q: 'What did the shoemaker do with the last piece of leather?',
-            choices: ['He sold it in the market', 'He put it away in the store room', 'He cut it out and left the pieces on the bench'],
+            q: 'What was on the bench the next morning?',
+            choices: ['The cut pieces of leather', 'Tiny clothes', 'A finished pair of shoes'],
             answer: 2
         },
         {
-            q: 'How did they know the work was not their own?',
-            choices: ['The shoes were the wrong size', 'Not one stitch was out of line and no thread ends showed', 'The leather smelled different'],
+            q: 'How did they find out who was making the shoes?',
+            choices: ['They slept at the bench', 'They hid behind the wardrobe', 'They listened to the clock'],
             answer: 1
         },
         {
             q: 'What did the two little ones wear when they came in?',
-            choices: ['Almost nothing, and no shoes at all', 'Red and green jackets', 'Long grey cloaks'],
+            choices: ['Nothing at all, not even shoes', 'Old aprons', 'New shoes'],
             answer: 0
         },
         {
@@ -852,18 +790,18 @@ const EN = {
             answer: 1
         },
         {
-            q: 'What did the wife do every winter afterwards?',
-            choices: ['She left a set of tiny clothes on the windowsill', 'She left leather on the bench', 'She kept the shop closed at night'],
+            q: 'Who made the shoes in the shop after that?',
+            choices: ['The shoemaker and his wife', 'The little men', 'The customers'],
             answer: 0
         },
         {
             q: 'Which reaction to this book does NOT fit?',
             wide: true,
             choices: [
-                "He charged so little that the shop went under — he could not bring himself to take full price from people in need.",
+                "He charged so little that they grew poor — he could not bring himself to take full price from people in need.",
                 "With one piece of leather left he still measured it, cut it and laid it out — he did not let go of his work even at the end.",
                 "Instead of leather the couple laid out clothes and little shoes — they could not watch them go barefoot through a winter.",
-                "The elves left a note on the workbench as they went — they did not simply vanish without a word."
+                "The little men left a note on the workbench as they went — they did not simply vanish without a word."
             ],
             answer: 3
         }
@@ -896,12 +834,12 @@ const EN = {
         ],
         '01-leather.webp': [
             { word: 'lane', meaning: '골목', sentence: "The shoemaker's shop at the end of the lane." },
-            { word: 'leather', meaning: '가죽', sentence: 'An old shoemaker beating out his leather.' },
+            { word: 'leather', meaning: '가죽', sentence: 'An old shoemaker was beating out his leather.' },
             { word: 'charge', meaning: '값을 받다', sentence: 'He charged far too little.' },
             { word: 'bare', meaning: '텅 빈', sentence: 'He searched the store room and found it quite bare.' }
         ],
         '01-leather-2.webp': [
-            { word: 'bench', meaning: '작업대', sentence: 'He spread the last piece out on the bench.' },
+            { word: 'bench', meaning: '작업대', sentence: 'The shoemaker spread the last piece out on the bench.' },
             { word: 'shears', meaning: '가위', sentence: 'He cut it out carefully with his shears.' },
             { word: 'scrap', meaning: '조각', sentence: 'Wasting not a scrap.' },
             { word: 'waver', meaning: '흔들리다', sentence: 'The candle burned low and the light wavered.' },
@@ -916,56 +854,56 @@ const EN = {
         '02-shoes-2.webp': [
             { word: 'customer', meaning: '손님', sentence: 'A customer came in that morning.' },
             { word: 'twice the price', meaning: '두 배 값', sentence: 'He paid twice the price.' },
-            { word: 'bewildered', meaning: '어리둥절한', sentence: 'He counted the money over, quite bewildered.' },
+            { word: 'bewildered', meaning: '어리둥절한', sentence: 'The shoemaker counted the money over, quite bewildered.' },
             { word: 'surely', meaning: '설마', sentence: 'Surely it will not happen again.' }
         ],
         '03-more.webp': [
-            { word: 'side by side', meaning: '나란히', sentence: 'Two pairs standing side by side.' },
+            { word: 'side by side', meaning: '나란히', sentence: 'Two pairs side by side.' },
             { word: 'district', meaning: '고을', sentence: 'Word of the shop went all round the district.' },
             { word: 'queue', meaning: '줄', sentence: 'There was a queue outside from first thing.' },
-            { word: 'however far', meaning: '아무리 멀리 ~해도', sentence: "They don't hurt your feet, however far you walk." }
+            { word: 'however far', meaning: '아무리 멀리 ~해도', sentence: "Their shoes don't hurt your feet, however far you walk." }
         ],
         '03-more-2.webp': [
             { word: 'come right', meaning: '나아지다, 펴지다', sentence: 'Things soon came right for them.' },
             { word: 'quilt', meaning: '이불', sentence: 'They bought a warm quilt.' },
             { word: 'apron', meaning: '앞치마', sentence: 'His wife got a new apron.' },
             { word: 'soundly', meaning: '푹', sentence: 'They ate well and slept soundly.' },
-            { word: 'pretend', meaning: '~인 척하다', sentence: 'And pretend to be asleep.' }
+            { word: 'pretend', meaning: '~인 척하다', sentence: 'We can pretend to be asleep.' }
         ],
         '04-watching.webp': [
-            { word: 'wardrobe', meaning: '옷장', sentence: 'They hid behind the wardrobe.' },
+            { word: 'wardrobe', meaning: '옷장', sentence: 'They put out the candle and hid behind the wardrobe.' },
             { word: 'plainly', meaning: '빤히', sentence: 'They could see the bench plainly.' },
             { word: 'give away', meaning: '들키게 하다', sentence: 'In case her breathing gave them away.' },
             { word: 'strike twelve', meaning: '열두 시를 치다', sentence: 'The clock struck twelve.' },
-            { word: 'bare', meaning: '맨~', sentence: 'And their feet were bare.' }
+            { word: 'bare', meaning: '맨~', sentence: 'Their feet were bare.' }
         ],
         '04-watching-2.webp': [
-            { word: 'take up', meaning: '집어 들다', sentence: 'They took up the tools.' },
+            { word: 'take up', meaning: '집어 들다', sentence: 'The two took up the tools.' },
             { word: 'polish', meaning: '광을 내다', sentence: 'I shall polish them till they shine.' },
-            { word: 'hum', meaning: '흥얼거리다', sentence: 'They hummed away while they worked.' },
-            { word: 'slip away', meaning: '쏙 사라지다', sentence: 'They slipped away through the crack in the door.' }
+            { word: 'hum', meaning: '흥얼거리다', sentence: 'They even hummed as they worked.' },
+            { word: 'slip away', meaning: '쏙 사라지다', sentence: 'Slipped away through the crack in the door.' }
         ],
         '05-clothes.webp': [
             { word: 'the state of', meaning: '~의 꼴', sentence: 'The state of their clothes.' },
-            { word: 'go red', meaning: '눈가가 붉어지다', sentence: 'Her eyes went red.' },
+            { word: 'go red', meaning: '눈가가 붉어지다', sentence: 'His wife wiped her eyes, which had gone red.' },
             { word: 'pick out', meaning: '고르다', sentence: "His wife's eyes shone as she picked out the cloth." },
             { word: 'millet', meaning: '좁쌀', sentence: 'The buttons were the size of millet grains.' }
         ],
         '05-clothes-2.webp': [
             { word: 'idle', meaning: '가만있는, 게으른', sentence: 'The shoemaker was not idle either.' },
-            { word: 'thumbnail', meaning: '엄지손톱', sentence: 'Shoes the size of a thumbnail.' },
+            { word: 'thumbnail', meaning: '엄지손톱', sentence: 'He made shoes the size of a thumbnail.' },
             { word: 'unpick', meaning: '뜯어내다', sentence: 'He unpicked the stitching and did it again.' },
             { word: 'startle', meaning: '놀라게 하다', sentence: 'Do you suppose it will startle them?' }
         ],
         '06-dance.webp': [
             { word: 'stop short', meaning: '멈칫하다', sentence: 'The two stopped short.' },
             { word: 'dare', meaning: '감히 ~하다', sentence: 'Without daring to touch.' },
-            { word: 'hold against', meaning: '몸에 대 보다', sentence: 'He held it against himself.' },
+            { word: 'hold against', meaning: '몸에 대 보다', sentence: 'Picked up a jacket and held it against himself.' },
             { word: 'fit', meaning: '맞다', sentence: 'It fitted exactly.' },
-            { word: 'hold one’s sides', meaning: '배를 잡고 웃다', sentence: 'They laughed until they had to hold their sides.' }
+            { word: 'hold one’s sides', meaning: '배를 잡고 웃다', sentence: 'They looked at each other and laughed until they held their sides.' }
         ],
         '06-dance-2.webp': [
-            { word: 'skip about', meaning: '팔짝팔짝 뛰다', sentence: 'They skipped about on the bench.' },
+            { word: 'skip about', meaning: '팔짝팔짝 뛰다', sentence: 'The two of them skipped about on the bench.' },
             { word: 'at the top of one’s voice', meaning: '큰 소리로', sentence: 'They sang at the tops of their voices.' },
             { word: 'threshold', meaning: '문지방', sentence: 'They hopped over the threshold.' },
             { word: 'footprint', meaning: '발자국', sentence: 'A line of small footprints was left across the white.' }
@@ -973,17 +911,17 @@ const EN = {
         '07-after.webp': [
             { word: 'thread end', meaning: '실밥', sentence: 'There was not so much as a thread end left.' },
             { word: 'do wrong', meaning: '잘못하다', sentence: 'Did we do wrong?' },
-            { word: 'roll up one’s sleeves', meaning: '소매를 걷다', sentence: 'And he rolled up his sleeves.' },
+            { word: 'roll up one’s sleeves', meaning: '소매를 걷다', sentence: 'He rolled up his sleeves.' },
             { word: 'manage', meaning: '해내다', sentence: 'We can manage it ourselves now.' }
         ],
         '07-after-2.webp': [
-            { word: 'ring', meaning: '울려 퍼지다', sentence: 'The sound of the hammer rang down the lane.' },
-            { word: 'a proper price', meaning: '제값', sentence: 'This time he charged a proper price.' },
+            { word: 'ring', meaning: '울려 퍼지다', sentence: 'The hammer rang down the lane.' },
+            { word: 'a proper price', meaning: '제값', sentence: 'He charged a proper price.' },
             { word: 'in difficulty', meaning: '딱한 처지의', sentence: 'Anyone in difficulty still got them cheap.' },
             { word: 'in case', meaning: '혹시 ~할까 봐', sentence: 'In case they are cold again.' }
         ],
         'end.webp': [
-            { word: 'little people', meaning: '작은 사람들', sentence: 'Tales about little people who help with the work.' },
+            { word: 'little people', meaning: '작은 사람들', sentence: 'Tales about little people who come in at night and help with the work.' },
             { word: 'out of nothing', meaning: '아무것도 없는 데서', sentence: 'They did not make something out of nothing.' },
             { word: 'ready', meaning: '준비된', sentence: 'There was something ready for it.' },
             { word: 'get round', meaning: '소문이 나다', sentence: 'The good prices came because word had got round.' },

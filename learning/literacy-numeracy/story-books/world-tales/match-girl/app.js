@@ -529,15 +529,13 @@ const EN = {
                     art: '01-street.webp',
                     emoji: '❄️',
                     left: [
-                        "It was the last day of the year. Snow had come down thick since morning and the streets were white all over.",
-                        "People hurried along with their faces buried in their scarves, every one of them on the way home to a warm house.",
+                        "It was the last day of the year. Snow had fallen thickly since morning, and the streets were white.",
+                        "People hurried along with their faces buried in their scarves. They were all going home to warm houses.",
                         "But one child was still out in the street, with an apronful of matches."
                     ],
                     right: [
                         "She had not sold a single box all day.",
-                        "\"Matches, please.\"",
-                        "she called, in a small voice.",
-                        "\"Won't you buy just one?\"",
+                        "\"Matches! Won't you buy just one?\" she called in a small voice.",
                         "But nobody turned round. They all went past her."
                     ]
                 },
@@ -546,14 +544,12 @@ const EN = {
                     emoji: '❄️',
                     left: [
                         "The child had no shoes.",
-                        "She had come out that morning in a pair of great slippers — her mother's, far too big for her feet.",
-                        "Crossing the road, she had lost them both getting out of the way of a carriage. One went into the snow and no amount of looking would find it."
+                        "She had come out that morning in a pair of great slippers. They were her mother's, far too big for her feet.",
+                        "Crossing the road, she lost them both getting out of the way of a carriage. One went into the snow, and she could not find it anywhere."
                     ],
                     right: [
-                        "The other one a boy going by snatched up.",
-                        "\"This will make a fine boat!\"",
-                        "And off he ran with it.",
-                        "So the match girl walked the snowy street barefoot, and her feet turned bright red with cold.",
+                        "A boy going by snatched up the other one. \"This will make a fine boat!\" he cried, and off he ran with it.",
+                        "So the match girl walked the snowy street barefoot. Her feet turned bright red with cold.",
                         "The snow kept getting in between her toes."
                     ]
                 }
@@ -575,7 +571,7 @@ const EN = {
                     right: [
                         "The match girl was very hungry. She had eaten nothing since the morning.",
                         "But she could not go home, because she had not sold one box.",
-                        "\"I shall be in trouble if I go back like this.\"",
+                        "\"Father will be angry if I go back like this,\" she thought.",
                         "She stepped away from the window and walked on."
                     ]
                 },
@@ -583,16 +579,14 @@ const EN = {
                     art: '02-window-2.webp',
                     emoji: '🪟',
                     left: [
-                        "Home was only an attic under the roof. There was a gap in the tiles and the wind came straight through it; they had stuffed straw in, and it made no difference.",
-                        "It was as cold in there as it was outside.",
-                        "So she turned into a narrow alley between two houses, where the wind did not reach so badly."
+                        "Home was only an attic under the roof. The wind blew straight in through a gap in the roof. They had stuffed straw in it, but that did not help.",
+                        "It was as cold in there as outside. So the child turned into a narrow alley between two houses, where the wind was not so strong."
                     ],
                     right: [
-                        "Inside the alley it was dark and quiet. Now and then laughter carried over from far off.",
-                        "The child put her back against the wall and huddled down.",
-                        "She pulled her knees up and tucked her feet inside them. Even so, her hands were too stiff to open properly.",
-                        "\"Perhaps I could light just one.\"",
-                        "And she felt inside her apron."
+                        "The alley was dark and quiet. Laughter came from far off.",
+                        "The child put her back against the wall and huddled down. She hugged her knees and tucked her feet in.",
+                        "Still, her hands were too stiff to open properly.",
+                        "\"They're for selling, but I could light just one.\" She felt in her apron."
                     ]
                 }
             ]
@@ -605,11 +599,9 @@ const EN = {
                     art: '03-stove.webp',
                     emoji: '🔥',
                     left: [
-                        "Her stiff hands shook so much she nearly dropped the match.",
-                        "She took one out and struck it against the wall.",
-                        "Ssst —",
-                        "A little flame went up, trembling. The child held both hands close to it.",
-                        "How warm it was.",
+                        "She took out one match. Her stiff hands shook so much that she nearly dropped it.",
+                        "She struck it against the wall. Ssst —",
+                        "A little flame went up, trembling. The child held both hands close to it. How warm it was!",
                         "\"Oh, that's warm.\""
                     ],
                     right: [
@@ -645,15 +637,14 @@ const EN = {
                     art: '04-feast.webp',
                     emoji: '🍽️',
                     left: [
-                        "Inside the room a table was laid, with fine dishes standing on a snow-white cloth.",
+                        "Inside the room a table was laid, with dishes on a snow-white cloth.",
                         "In the middle of it was a goose, roasted golden brown.",
-                        "It was steaming, and she could almost smell it. The child swallowed hard.",
-                        "\"If I could just have one piece of that goose.\""
+                        "Steam rose from it, and she could almost smell it. She swallowed hard.",
+                        "\"If I could just have one piece of that goose,\" she murmured, before she knew she had said it."
                     ],
                     right: [
-                        "she murmured, before she knew she had said it.",
                         "And then something extraordinary happened. The goose got up off its dish, with the carving knife still in its back.",
-                        "It came waddling across the floor toward her, the plate rattling at every step.",
+                        "It came waddling toward her, and the dishes on the table rattled at every step.",
                         "The child put out both hands."
                     ]
                 },
@@ -667,11 +658,9 @@ const EN = {
                         "The snow went on falling, and it lay white on her shoulders."
                     ],
                     right: [
-                        "A carriage passed the mouth of the alley, and the singing inside it faded away at once.",
-                        "Somewhere far off a bell rang out. The year was going.",
-                        "Every window was bright, and laughter came out of them.",
-                        "The child breathed on her stiff hands.",
-                        "Then she took out a third match and struck it on the wall."
+                        "A carriage passed the mouth of the alley, and the singing inside it faded away.",
+                        "Somewhere far off a bell rang. The year was ending, and laughter came from every bright window.",
+                        "The child breathed on her stiff hands. Then she took out a third match and struck it on the wall."
                     ]
                 }
             ]
@@ -701,17 +690,14 @@ const EN = {
                     art: '05-tree-2.webp',
                     emoji: '🌟',
                     left: [
-                        "Then one star fell, drawing a long streak of light behind it.",
-                        "And the child remembered what her grandmother used to say.",
-                        "\"When a star falls,\"",
-                        "\"somebody is going up to heaven.\"",
-                        "Her grandmother was gone. While she lived, she had always taken the child's frozen hands into both her own."
+                        "Then a star fell, leaving a long streak of light. The child remembered what her grandmother used to say.",
+                        "\"When a star falls, somebody is going up to heaven.\"",
+                        "Her grandmother was gone now. She used to hold the child's cold hands and say, \"Are you cold, my love?\""
                     ],
                     right: [
-                        "\"You're cold, my love, aren't you.\"",
                         "Her grandmother was the only one who had ever been kind to her. She had sat her on her lap and sung to her.",
-                        "\"Grandmother, I miss you.\"",
-                        "And she struck another match — this time several at once."
+                        "\"Grandmother, I miss you,\" the child whispered.",
+                        "Then she struck matches again — this time several at once."
                     ]
                 }
             ]
@@ -727,16 +713,13 @@ const EN = {
                         "Several matches flared up together, and the narrow alley went as bright as noon.",
                         "And somebody was standing in that light.",
                         "It was her grandmother. She could almost smell the smell that always came off her apron.",
-                        "\"Grandmother!\"",
-                        "The child jumped up and ran to her."
+                        "\"Grandmother!\" The child jumped up and ran to her."
                     ],
                     right: [
-                        "\"You won't disappear this time, will you?\"",
+                        "She caught hold of her grandmother's skirt. \"You won't disappear this time, will you?\"",
                         "Her grandmother was smiling, just as she always had.",
-                        "\"Take me with you.\"",
-                        "\"When the match goes out you go away.\"",
-                        "\"The stove did, and the goose, and the tree.\"",
-                        "And the child felt quickly through her apron."
+                        "\"Take me with you! When the match goes out, you will go away. The stove did, and the goose, and the tree.\"",
+                        "The child felt quickly through her apron."
                     ]
                 },
                 {
@@ -750,10 +733,9 @@ const EN = {
                     ],
                     right: [
                         "\"Say you won't go anywhere now.\"",
-                        "\"No, my love. Nowhere at all.\"",
-                        "And the two of them went up along the light, to a place with no snow and no wind, where nobody is cold or hungry.",
-                        "Her grandmother sang to her, very softly.",
-                        "And the child smiled the way she had not smiled in a long time."
+                        "Her grandmother nodded. \"No, my love. Not anywhere.\"",
+                        "Together they rose along the light, to a place with no snow or wind, where no one was cold or hungry.",
+                        "Her grandmother sang to her very softly, and the child smiled as she had not smiled in a long time."
                     ]
                 }
             ]
@@ -773,8 +755,7 @@ const EN = {
                     right: [
                         "The smile was still on her face.",
                         "Beside her lay a great scatter of matchsticks — a whole bundle of them, burned right down.",
-                        "\"Why was this child out here…\"",
-                        "\"Trying to warm herself, I suppose.\"",
+                        "\"Why was this child out here…\" someone said. \"Trying to warm herself, I suppose,\" said another.",
                         "That was all they said, and they went on."
                     ]
                 },
@@ -784,16 +765,12 @@ const EN = {
                     left: [
                         "Nobody knew what she had seen — the stove, the goose, the shining tree.",
                         "And least of all that she had met her grandmother.",
-                        "That evening somebody left a bunch of flowers in the alley. No one knew who.",
-                        "Children going past slowed down to look at them."
+                        "That evening someone left a bunch of flowers in the alley. Children going past slowed down to look."
                     ],
                     right: [
-                        "And so another year went by, and the next winter came.",
-                        "That day too the snow came down thick.",
-                        "A woman walking along the road suddenly stopped.",
-                        "There was a child at the roadside holding out matches.",
-                        "\"Come in here, child, and get warm.\"",
-                        "And the door was opened wide."
+                        "Next winter, the snow fell thick again.",
+                        "A woman on the road stopped. A child stood at the roadside, holding out matches.",
+                        "\"Come in and get warm, child,\" she said, opening her door wide."
                     ]
                 }
             ]
@@ -857,7 +834,7 @@ const EN = {
                     "Andersen made this story himself. His mother is said to have begged in the streets as a child, and he wrote it after hearing about that.",
                     "The girl strikes matches four times, and each time she sees something different: a stove, a table laid, a Christmas tree, and then her grandmother.",
                     "The first three are what the body wants — warmth and food. Only the last one is different, because a grandmother is not a thing.",
-                    "And that is exactly where she stops being careful with the matches and lights them all at once. She would burn everything she had to sell, if it would hold on to her."
+                    "And that is exactly where she stops being careful with the matches and lights them all at once. She would burn everything she had to sell, just to hold on to her grandmother."
                 ],
                 right: [
                     "There were plenty of people in that street. It is only that not one of them stopped walking. That is the part Andersen wanted to write down.",
@@ -875,13 +852,13 @@ const EN = {
         ],
         '01-street.webp': [
             { word: 'bury', meaning: '파묻다', sentence: 'People hurried along with their faces buried in their scarves.' },
-            { word: 'apronful', meaning: '앞치마 가득', sentence: 'One child was out in the street with an apronful of matches.' },
+            { word: 'apronful', meaning: '앞치마 가득', sentence: "One child was still out in the street, with an apronful of matches." },
             { word: 'turn round', meaning: '돌아보다', sentence: 'But nobody turned round.' }
         ],
         '01-street-2.webp': [
             { word: 'slipper', meaning: '슬리퍼', sentence: 'She had come out in a pair of great slippers.' },
             { word: 'get out of the way', meaning: '피하다', sentence: 'Getting out of the way of a carriage.' },
-            { word: 'snatch up', meaning: '냉큼 줍다', sentence: 'A boy going by snatched it up.' },
+            { word: 'snatch up', meaning: '냉큼 줍다', sentence: "A boy going by snatched up the other one." },
             { word: 'barefoot', meaning: '맨발로', sentence: 'She walked the snowy street barefoot.' },
             { word: 'toe', meaning: '발가락', sentence: 'The snow kept getting in between her toes.' }
         ],
@@ -894,7 +871,7 @@ const EN = {
         '02-window-2.webp': [
             { word: 'attic', meaning: '다락방', sentence: 'Home was only an attic under the roof.' },
             { word: 'stuff', meaning: '틀어막다', sentence: 'They had stuffed straw in.' },
-            { word: 'alley', meaning: '골목', sentence: 'She turned into a narrow alley.' },
+            { word: 'alley', meaning: '골목', sentence: "The child turned into a narrow alley." },
             { word: 'huddle down', meaning: '웅크리다', sentence: 'The child put her back against the wall and huddled down.' },
             { word: 'stiff', meaning: '곱은, 굳은', sentence: 'Her hands were too stiff to open properly.' }
         ],
@@ -916,12 +893,12 @@ const EN = {
             { word: 'golden brown', meaning: '노릇하게 구운', sentence: 'A goose, roasted golden brown.' },
             { word: 'murmur', meaning: '중얼거리다', sentence: 'She murmured, before she knew she had said it.' },
             { word: 'extraordinary', meaning: '놀라운', sentence: 'And then something extraordinary happened.' },
-            { word: 'waddle', meaning: '뒤뚱거리다', sentence: 'It came waddling across the floor toward her.' }
+            { word: 'waddle', meaning: '뒤뚱거리다', sentence: "It came waddling toward her." }
         ],
         '04-feast-2.webp': [
             { word: 'as if', meaning: '마치 ~인 듯', sentence: 'They were gone as if they had never been.' },
             { word: 'damp', meaning: '축축한', sentence: 'Nothing but a cold, damp wall.' },
-            { word: 'fade away', meaning: '멀어지다', sentence: 'The singing faded away at once.' },
+            { word: 'fade away', meaning: '멀어지다', sentence: "The singing inside it faded away." },
             { word: 'breathe on', meaning: '입김으로 녹이다', sentence: 'The child breathed on her stiff hands.' }
         ],
         '05-tree.webp': [
@@ -930,7 +907,7 @@ const EN = {
             { word: 'bough', meaning: '큰 가지', sentence: 'Shining ornaments swung at the ends of the boughs.' }
         ],
         '05-tree-2.webp': [
-            { word: 'streak', meaning: '빛줄기', sentence: 'Drawing a long streak of light behind it.' },
+            { word: 'streak', meaning: '빛줄기', sentence: "A star fell, leaving a long streak of light." },
             { word: 'used to', meaning: '늘 ~하곤 했다', sentence: 'What her grandmother used to say.' },
             { word: 'lap', meaning: '무릎', sentence: 'She had sat her on her lap and sung to her.' },
             { word: 'miss', meaning: '보고 싶다', sentence: 'Grandmother, I miss you.' }
@@ -955,13 +932,13 @@ const EN = {
         ],
         '07-morning-2.webp': [
             { word: 'least of all', meaning: '무엇보다도 특히', sentence: 'And least of all that she had met her grandmother.' },
-            { word: 'a bunch of', meaning: '한 다발의', sentence: 'Somebody left a bunch of flowers in the alley.' },
+            { word: 'a bunch of', meaning: '한 다발의', sentence: 'Someone left a bunch of flowers in the alley.' },
             { word: 'slow down', meaning: '걸음을 늦추다', sentence: 'Children going past slowed down to look.' },
-            { word: 'hold out', meaning: '내밀다', sentence: 'A child at the roadside holding out matches.' }
+            { word: 'hold out', meaning: '내밀다', sentence: "A child stood at the roadside, holding out matches." }
         ],
         'end.webp': [
             { word: 'beg', meaning: '구걸하다', sentence: 'His mother is said to have begged in the streets.' },
-            { word: 'hold on to', meaning: '붙잡다', sentence: 'If it would hold on to her.' },
+            { word: 'hold on to', meaning: '붙잡다', sentence: 'Just to hold on to her grandmother.' },
             { word: 'be careful with', meaning: '아끼다', sentence: 'She stops being careful with the matches.' },
             { word: 'plenty of', meaning: '많은', sentence: 'There were plenty of people in that street.' },
             { word: 'write down', meaning: '적다', sentence: 'That is the part Andersen wanted to write down.' }

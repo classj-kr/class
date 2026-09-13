@@ -581,20 +581,17 @@ const EN = {
                     art: '01-warning-2.webp',
                     emoji: '🐰',
                     left: [
-                        "\"Why not, Mother?\"",
-                        "Their mother's face went a little dark.",
-                        "\"Your father came to grief in that garden.\"",
-                        "\"He never came home again.\"",
+                        "\"Why not, Mother?\" asked Flopsy.",
+                        "Their mother's face grew sad.",
+                        "\"Your father came to grief in that garden. He never came home again.\"",
                         "The young rabbits held their breath.",
                         "\"Do you understand? You are never to go there.\""
                     ],
                     right: [
                         "The three of them nodded obediently.",
-                        "And Peter was looking somewhere else.",
-                        "When their mother had gone, the three went off to the fields.",
-                        "Only Peter stayed where he was,",
-                        "because his eyes kept going toward that garden.",
-                        "Being told had only made him more curious."
+                        "But Peter was looking somewhere else.",
+                        "When their mother had gone, Peter's eyes kept turning toward that garden.",
+                        "Being told not to go had only made him more curious."
                     ]
                 }
             ]
@@ -610,7 +607,7 @@ const EN = {
                         "The three of them went out into the fields",
                         "and picked blackberries along the lane",
                         "until their mouths were black all round.",
-                        "And in that time Peter ran the other way,",
+                        "Meanwhile Peter ran the other way,",
                         "straight to Mr McGregor's garden.",
                         "The garden was shut in by a wooden gate."
                     ],
@@ -627,22 +624,17 @@ const EN = {
                     art: '02-gate-2.webp',
                     emoji: '🥬',
                     left: [
-                        "\"Why, all of this is food!\"",
-                        "Peter's eyes went round.",
-                        "There were rows and rows of lettuces,",
+                        "\"Wow, all of this is food!\"",
+                        "Peter's eyes went round. There were rows and rows of lettuces,",
                         "and French beans, and radishes as well.",
-                        "Peter started on the lettuces,",
-                        "ate one whole plant and then another,",
-                        "and went on to the French beans."
+                        "Peter started on the lettuces. He ate one whole plant, then another,",
+                        "and then went on to the French beans."
                     ],
                     right: [
-                        "He ate those pods and all.",
-                        "And last of all he pulled up radishes and ate them.",
-                        "His stomach came up round.",
-                        "And then he began to feel rather odd.",
-                        "He had eaten a great deal too much.",
-                        "There were rumblings inside him,",
-                        "and Peter sat down and got up again."
+                        "He ate the beans, pods and all. Last of all he pulled up radishes and ate them.",
+                        "His tummy grew round and full.",
+                        "But then he began to feel rather odd. He had eaten far too much.",
+                        "There were rumblings inside him, and Peter sat down and got up again."
                     ]
                 }
             ]
@@ -655,22 +647,16 @@ const EN = {
                     art: '03-parsley.webp',
                     emoji: '🌿',
                     left: [
-                        "His stomach began to ache in earnest,",
-                        "and Peter rubbed it.",
-                        "\"A little parsley would put that right.\"",
-                        "His mother had said so once.",
-                        "So Peter went off to look for parsley,",
-                        "round toward the cucumber frame,",
-                        "sniffing at the smell of the leaves as he went."
+                        "His stomach began to ache in earnest, and Peter rubbed it.",
+                        "\"A little parsley would put that right,\" he thought.",
+                        "His mother had said so once. So Peter went off to look for parsley,",
+                        "round toward the cucumber patch, sniffing at the leaves as he went."
                     ],
                     right: [
-                        "And as he came round the corner,",
-                        "there was an enormous boot in front of him.",
-                        "He looked up, and it was Mr McGregor,",
-                        "down on his knees planting out cabbages",
-                        "with his hands thick with earth.",
-                        "The two of them looked straight at each other.",
-                        "And Peter froze where he stood."
+                        "But as he came round the corner, there was an enormous boot in front of him.",
+                        "He looked up. It was Mr McGregor,",
+                        "down on his knees planting out cabbages, with his hands covered in earth.",
+                        "The two of them looked straight at each other."
                     ]
                 },
                 {
@@ -685,12 +671,11 @@ const EN = {
                         "And Peter ran without looking back."
                     ],
                     right: [
-                        "Mr McGregor came after him waving a rake.",
+                        "Mr McGregor picked up a rake and came after him.",
                         "\"Come back here!\"",
                         "Peter ran for all he was worth.",
-                        "And then he lost the way back to the gate.",
-                        "He could not work out which direction it was in,",
-                        "because that garden was so very large."
+                        "But he could not work out which way the gate was,",
+                        "because the garden was so very large."
                     ]
                 }
             ]
@@ -704,18 +689,18 @@ const EN = {
                     emoji: '👞',
                     left: [
                         "Peter went straight into the cabbages",
-                        "and ran through between the great leaves.",
-                        "And one of his shoes came off,",
-                        "and there was no time to look for it.",
-                        "Then he cut across the potato bed,",
+                        "and ran on between the great leaves.",
+                        "One of his shoes came off,",
+                        "but there was no time to look for it.",
+                        "Then he cut across the potato bed",
                         "and lost the other shoe there."
                     ],
                     right: [
                         "Now he was barefoot,",
-                        "and in fact he could run rather better for it.",
+                        "and he could run even faster that way.",
                         "Behind him Mr McGregor's boots came thudding along.",
-                        "\"Where have you got to, you rascal!\"",
-                        "Peter's heart felt fit to burst,",
+                        "\"Where did you go, you rascal?\"",
+                        "Peter felt as if his heart would burst,",
                         "and his legs were getting heavier."
                     ]
                 },
@@ -725,10 +710,10 @@ const EN = {
                     left: [
                         "Peter looked for somewhere to hide.",
                         "He caught sight of a gooseberry bush",
-                        "with a net thrown over it,",
-                        "and he dived in underneath.",
-                        "He crouched down and held his breath.",
-                        "And then he found he could not move."
+                        "with a net over it to keep the birds off the berries.",
+                        "He dived in underneath and crouched down.",
+                        "But when he tried to move again,",
+                        "he found he was stuck."
                     ],
                     right: [
                         "The buttons of his jacket had caught in the net.",
@@ -757,12 +742,11 @@ const EN = {
                         "and twisted himself with the last of his strength."
                     ],
                     right: [
-                        "The buttons went, one after another,",
-                        "and Peter got himself out of the net.",
-                        "His blue jacket stayed hanging there in it.",
-                        "It was a pity, and there was no time to look back.",
-                        "And Peter ran again,",
-                        "with the sparrows cheering him on behind."
+                        "Pop! One button came off.",
+                        "Peter wriggled out of his jacket and slipped free.",
+                        "His blue jacket stayed hanging in the net.",
+                        "It was a pity, but there was no time to look back.",
+                        "Peter ran again, with the sparrows cheering him on behind."
                     ]
                 },
                 {
@@ -778,11 +762,10 @@ const EN = {
                     ],
                     right: [
                         "Peter got straight into it.",
-                        "And there was water standing in the bottom.",
-                        "The cold water soaked him through.",
-                        "He wanted to get out and he made himself stay,",
+                        "But there was water in the bottom, and the cold water soaked him through.",
+                        "He wanted to get out, but he made himself stay,",
                         "because there were footsteps outside.",
-                        "And the door creaked open."
+                        "Then the door creaked open."
                     ]
                 }
             ]
@@ -795,22 +778,17 @@ const EN = {
                     art: '06-can.webp',
                     emoji: '💦',
                     left: [
-                        "Mr McGregor came into the shed",
-                        "and turned over every flower pot, one by one.",
+                        "Mr McGregor came into the shed and turned over every flower pot, one by one.",
                         "Peter did not dare to breathe.",
-                        "And then his nose began to tickle.",
-                        "He tried very hard to hold it in.",
-                        "And he could not possibly hold it in.",
+                        "Then his nose began to tickle. He tried very hard to hold it in, but he just couldn't.",
                         "\"Atishoo!\"",
                         "Mr McGregor spun round."
                     ],
                     right: [
-                        "\"So that's where you are!\"",
-                        "An enormous hand came down toward the can.",
-                        "Peter went straight up out of it,",
-                        "and the watering can went over with a crash.",
-                        "\"Stop, will you!\"",
-                        "Water went everywhere."
+                        "An enormous hand reached for the can. \"So that's where you are!\"",
+                        "Peter shot straight up out of it.",
+                        "The watering can went over with a crash, and water went everywhere.",
+                        "\"Stop right there!\" shouted Mr McGregor."
                     ]
                 },
                 {
@@ -818,21 +796,17 @@ const EN = {
                     emoji: '💦',
                     left: [
                         "Peter made for the window.",
-                        "Flower pots came down all round with a clatter,",
-                        "and Mr McGregor caught his foot and went over.",
+                        "Flower pots came down all round with a clatter.",
+                        "Mr McGregor caught his foot on them and went over.",
                         "\"Oh, my back!\"",
-                        "And in that moment Peter went out of the window.",
+                        "In that moment Peter jumped out of the window.",
                         "Outside was the wide garden again."
                     ],
                     right: [
-                        "Peter ran, soaking wet,",
-                        "with the water dripping off his fur.",
-                        "And this time too he had no idea where the gate was.",
-                        "Peter stopped for a moment.",
-                        "He could hardly get his breath.",
-                        "And there was no resting.",
-                        "The footsteps were thudding away behind him,",
-                        "and Peter began to run again."
+                        "Peter ran on, soaking wet, with the water dripping off his fur.",
+                        "Once again he had no idea where the gate was.",
+                        "He stopped for a moment. He was so out of breath! But there was no time to rest.",
+                        "The footsteps were thudding along behind him, so Peter began to run again."
                     ]
                 }
             ]
@@ -845,20 +819,16 @@ const EN = {
                     art: '07-escape.webp',
                     emoji: '🚪',
                     left: [
-                        "Peter went along by the pond,",
-                        "where a few goldfish were swimming.",
-                        "And there was a white cat sitting on a stone,",
-                        "with only the tip of her tail moving.",
-                        "Peter simply went quietly past.",
-                        "It was better not to get mixed up with a cat.",
-                        "Peter kept his feet very quiet."
+                        "Peter went along by the pond, where a few goldfish were swimming.",
+                        "But a white cat was sitting on a stone, with only the tip of her tail moving.",
+                        "Peter crept past on quiet feet.",
+                        "It was better not to get mixed up with a cat."
                     ],
                     right: [
-                        "And he went along beside the wall.",
-                        "And then, away in front, he saw the wooden gate.",
-                        "Peter's eyes went wide.",
-                        "\"There it is!\"",
-                        "And Peter ran for it with everything he had,",
+                        "He went along beside the wall.",
+                        "Then, far ahead, he saw the wooden gate.",
+                        "Peter's eyes went wide. \"There it is!\"",
+                        "He ran for it with everything he had,",
                         "with the earth flying up under his feet."
                     ]
                 },
@@ -866,19 +836,19 @@ const EN = {
                     art: '07-escape-2.webp',
                     emoji: '🚪',
                     left: [
-                        "Behind him Mr McGregor came after him again,",
-                        "waving the rake and shouting.",
+                        "But Mr McGregor saw him running.",
+                        "He came after him again, waving the rake and shouting.",
                         "Peter did not look back once.",
-                        "The gap under the gate was in front of him.",
+                        "The gap under the gate was right in front of him.",
                         "He threw himself under it and out",
                         "and went rolling over on the grass of the field."
                     ],
                     right: [
                         "Then he got up and ran.",
-                        "He could hardly breathe and he did not stop.",
+                        "He could hardly breathe, but he did not stop.",
                         "He ran until he could see the fir tree.",
-                        "And when he reached the burrow his legs gave under him,",
-                        "and Peter went straight down.",
+                        "When he reached the burrow, his legs gave under him,",
+                        "and Peter fell down flat.",
                         "He could not get up again for some time."
                     ]
                 }
@@ -892,43 +862,29 @@ const EN = {
                     art: '08-ending.webp',
                     emoji: '🍵',
                     left: [
-                        "His mother came out of the burrow",
-                        "and sighed at the sight of him,",
-                        "wet through and with no shoes on.",
-                        "\"And where have you left your shoes and your jacket?\"",
-                        "Peter hung his head",
-                        "and fiddled with his toes.",
-                        "He could not answer at all.",
-                        "It was the second jacket he had lost that month."
+                        "His mother came out of the burrow and sighed at the sight of him.",
+                        "He was wet through, with no shoes and no jacket.",
+                        "\"Where have you left your shoes and your jacket?\"",
+                        "Peter hung his head and fiddled with his toes. He could not answer. It was the second jacket he had lost that month."
                     ],
                     right: [
-                        "His mother picked him up and put him to bed.",
-                        "Peter was not at all well that evening,",
-                        "and his mother made camomile tea.",
-                        "\"One spoonful, and then go to sleep.\"",
-                        "Peter drank it and fell asleep.",
-                        "The bitter smell went right up his nose."
+                        "His mother picked him up and put him to bed. Peter was not at all well that evening.",
+                        "She made camomile tea. \"One spoonful, and then go to sleep.\"",
+                        "The bitter smell went right up his nose.",
+                        "Peter made himself drink it, and then he fell asleep."
                     ]
                 },
                 {
                     art: '08-ending-2.webp',
                     emoji: '🍵',
                     left: [
-                        "Meanwhile the other three had their supper —",
-                        "bread and milk and blackberries.",
-                        "The three of them ate their fill.",
-                        "And Peter only got the smell of it,",
-                        "with his nose out over the top of the blanket.",
-                        "The blackberries smelled very sweet.",
-                        "It seemed a little hard, and there was no help for it.",
-                        "That is what not listening had cost him."
+                        "The other three had bread and milk and blackberries for supper, and they ate their fill.",
+                        "Peter only smelled the sweet blackberries from under his blanket.",
+                        "It seemed hard, but there was no help for it. He had not listened."
                     ],
                     right: [
-                        "It was the next morning.",
-                        "Mr McGregor put up a scarecrow",
-                        "to keep the crows off.",
-                        "And that scarecrow was wearing a small jacket,",
-                        "with a small shoe set on top of its head.",
+                        "The next morning, Mr McGregor put up a scarecrow to keep the crows off.",
+                        "It was wearing a small blue jacket, with a small shoe on its head.",
                         "They were the very ones Peter had left behind."
                     ]
                 }
@@ -992,7 +948,7 @@ const EN = {
                 left: [
                     "This story began in a letter Beatrix Potter sent to a child who was ill, about a hundred and twenty years ago.",
                     "Potter did not only write it — she painted the pictures herself. She kept rabbits for years and watched them closely, and the way they move in her pictures is exact.",
-                    "Peter eats lettuces, French beans and radishes in that garden. Then his stomach aches and he goes to look for parsley. And it is looking for the parsley that walks him into Mr McGregor.",
+                    "Peter eats lettuces, French beans and radishes in that garden. Then his stomach aches and he goes to look for parsley. And while he is looking for the parsley, he runs right into Mr McGregor.",
                     "Eating too much slowed him down, and being slow is what got him caught."
                 ],
                 right: [
@@ -1020,7 +976,7 @@ const EN = {
             { word: 'come to grief', meaning: '크게 혼나다, 화를 당하다', sentence: 'Your father came to grief in that garden.' },
             { word: 'hold one’s breath', meaning: '숨을 죽이다', sentence: 'The young rabbits held their breath.' },
             { word: 'obediently', meaning: '얌전히', sentence: 'The three of them nodded obediently.' },
-            { word: 'curious', meaning: '궁금해하는', sentence: 'Being told had only made him more curious.' }
+            { word: 'curious', meaning: '궁금해하는', sentence: "Being told not to go had only made him more curious." }
         ],
         '02-gate.webp': [
             { word: 'blackberry', meaning: '검은딸기', sentence: 'They picked blackberries along the lane.' },
@@ -1033,35 +989,35 @@ const EN = {
             { word: 'lettuce', meaning: '상추', sentence: 'There were rows and rows of lettuces.' },
             { word: 'French bean', meaning: '강낭콩', sentence: 'And French beans, and radishes.' },
             { word: 'radish', meaning: '무', sentence: 'He pulled up radishes and ate them.' },
-            { word: 'pod', meaning: '깍지', sentence: 'He ate those pods and all.' },
+            { word: 'pod', meaning: '깍지', sentence: "He ate the beans, pods and all." },
             { word: 'rumbling', meaning: '꾸르륵 소리', sentence: 'There were rumblings inside him.' }
         ],
         '03-parsley.webp': [
             { word: 'in earnest', meaning: '본격적으로', sentence: 'His stomach began to ache in earnest.' },
             { word: 'parsley', meaning: '파슬리', sentence: 'A little parsley would put that right.' },
             { word: 'put right', meaning: '낫게 하다', sentence: 'A little parsley would put that right.' },
-            { word: 'sniff at', meaning: '킁킁 맡다', sentence: 'Sniffing at the smell of the leaves.' },
+            { word: 'sniff at', meaning: '킁킁 맡다', sentence: "Sniffing at the leaves as he went." },
             { word: 'plant out', meaning: '심다', sentence: 'Down on his knees planting out cabbages.' }
         ],
         '03-parsley-2.webp': [
             { word: 'come to oneself', meaning: '정신을 차리다', sentence: 'Mr McGregor came to himself first.' },
-            { word: 'rake', meaning: '갈퀴', sentence: 'He came after him waving a rake.' },
+            { word: 'rake', meaning: '갈퀴', sentence: "Mr McGregor picked up a rake and came after him." },
             { word: 'for all one is worth', meaning: '죽을힘을 다해', sentence: 'Peter ran for all he was worth.' },
-            { word: 'work out', meaning: '갈피를 잡다', sentence: 'He could not work out which direction it was.' }
+            { word: 'work out', meaning: '갈피를 잡다', sentence: "He could not work out which way the gate was." }
         ],
         '04-chase.webp': [
             { word: 'cut across', meaning: '가로지르다', sentence: 'He cut across the potato bed.' },
             { word: 'come off', meaning: '벗겨지다', sentence: 'One of his shoes came off.' },
             { word: 'barefoot', meaning: '맨발인', sentence: 'Now he was barefoot.' },
             { word: 'thud', meaning: '쿵쿵 소리 내다', sentence: "Mr McGregor's boots came thudding along." },
-            { word: 'rascal', meaning: '이놈, 개구쟁이', sentence: 'Where have you got to, you rascal!' }
+            { word: 'rascal', meaning: '이놈, 개구쟁이', sentence: "Where did you go, you rascal?" }
         ],
         '04-chase-2.webp': [
             { word: 'gooseberry', meaning: '까치밥나무 열매', sentence: 'He caught sight of a gooseberry bush.' },
-            { word: 'net', meaning: '그물', sentence: 'With a net thrown over it.' },
-            { word: 'dive in', meaning: '뛰어들다', sentence: 'And he dived in underneath.' },
+            { word: 'net', meaning: '그물', sentence: "With a net over it." },
+            { word: 'dive in', meaning: '뛰어들다', sentence: "He dived in underneath." },
             { word: 'struggle', meaning: '버둥거리다', sentence: 'Peter struggled this way and that.' },
-            { word: 'squeeze shut', meaning: '꼭 감다', sentence: 'Peter squeezed his eyes shut.' }
+            { word: 'squeeze shut', meaning: '꼭 감다', sentence: "Peter squeezed his eyes shut." }
         ],
         '05-net.webp': [
             { word: 'sparrow', meaning: '참새', sentence: 'Three sparrows came flying down.' },
@@ -1075,19 +1031,19 @@ const EN = {
             { word: 'dim', meaning: '어둑한', sentence: 'It was dim in there.' },
             { word: 'watering can', meaning: '물뿌리개', sentence: 'He caught sight of a large watering can.' },
             { word: 'soak through', meaning: '흠뻑 젖게 하다', sentence: 'The cold water soaked him through.' },
-            { word: 'creak open', meaning: '삐걱 열리다', sentence: 'And the door creaked open.' }
+            { word: 'creak open', meaning: '삐걱 열리다', sentence: "Then the door creaked open." }
         ],
         '06-can.webp': [
             { word: 'turn over', meaning: '들춰 보다', sentence: 'He turned over every flower pot.' },
             { word: 'dare', meaning: '감히 ~하다', sentence: 'Peter did not dare to breathe.' },
             { word: 'tickle', meaning: '간질간질하다', sentence: 'His nose began to tickle.' },
-            { word: 'hold in', meaning: '참다', sentence: 'He tried hard to hold it in.' },
+            { word: 'hold in', meaning: '참다', sentence: "He tried very hard to hold it in." },
             { word: 'spin round', meaning: '홱 돌아서다', sentence: 'Mr McGregor spun round.' }
         ],
         '06-can-2.webp': [
             { word: 'make for', meaning: '~쪽으로 향하다', sentence: 'Peter made for the window.' },
             { word: 'clatter', meaning: '우당탕 소리', sentence: 'Flower pots came down with a clatter.' },
-            { word: 'catch one’s foot', meaning: '발이 걸리다', sentence: 'Mr McGregor caught his foot and went over.' },
+            { word: 'catch one’s foot', meaning: '발이 걸리다', sentence: "Mr McGregor caught his foot on them and went over." },
             { word: 'drip off', meaning: '뚝뚝 떨어지다', sentence: 'With the water dripping off his fur.' }
         ],
         '07-escape.webp': [
@@ -1104,15 +1060,15 @@ const EN = {
         ],
         '08-ending.webp': [
             { word: 'sigh at', meaning: '한숨을 쉬다', sentence: 'She sighed at the sight of him.' },
-            { word: 'wet through', meaning: '흠뻑 젖은', sentence: 'Wet through and with no shoes on.' },
+            { word: 'wet through', meaning: '흠뻑 젖은', sentence: "He was wet through, with no shoes and no jacket." },
             { word: 'hang one’s head', meaning: '고개를 푹 숙이다', sentence: 'Peter hung his head.' },
             { word: 'fiddle with', meaning: '만지작거리다', sentence: 'And fiddled with his toes.' },
-            { word: 'camomile', meaning: '캐모마일', sentence: 'His mother made camomile tea.' }
+            { word: 'camomile', meaning: '캐모마일', sentence: "She made camomile tea." }
         ],
         '08-ending-2.webp': [
-            { word: 'supper', meaning: '저녁', sentence: 'The other three had their supper.' },
-            { word: 'eat one’s fill', meaning: '배불리 먹다', sentence: 'The three of them ate their fill.' },
-            { word: 'no help for it', meaning: '어쩔 수 없는', sentence: 'And there was no help for it.' },
+            { word: 'supper', meaning: '저녁', sentence: "The other three had bread and milk and blackberries for supper." },
+            { word: 'eat one’s fill', meaning: '배불리 먹다', sentence: "They ate their fill." },
+            { word: 'no help for it', meaning: '어쩔 수 없는', sentence: "There was no help for it." },
             { word: 'scarecrow', meaning: '허수아비', sentence: 'Mr McGregor put up a scarecrow.' },
             { word: 'crow', meaning: '까마귀', sentence: 'To keep the crows off.' }
         ],

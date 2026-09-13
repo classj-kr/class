@@ -576,7 +576,7 @@ const EN = {
                         "Every night somebody was trampling the wheat.",
                         "In the morning it lay flattened.",
                         "The father called his sons in.",
-                        "\"Tonight you shall go out and watch it.\"",
+                        "\"From tonight, you shall take turns to watch it.\"",
                         "The eldest went first."
                     ]
                 },
@@ -584,22 +584,18 @@ const EN = {
                     art: '01-field-2.webp',
                     emoji: '🌾',
                     left: [
-                        "The eldest snored in the barn and came home.",
-                        "\"There was nothing there at all.\"",
-                        "The second was no better.",
-                        "And the wheat was trampled again.",
+                        "The eldest just snored in the barn and came home. \"There was nothing there.\"",
+                        "The second was no better, and the wheat was trampled again.",
                         "Now it was Ivan's turn.",
-                        "Ivan took a piece of bread and went out.",
+                        "He took a piece of bread and went out.",
                         "He sat in the middle of the field and stayed awake all night."
                     ],
                     right: [
-                        "He kept his eyes wide and watched every side.",
-                        "And at midnight it came.",
-                        "A mare appeared with a mane as white as snow.",
+                        "He kept his eyes wide open and watched every side.",
+                        "At midnight a mare appeared, with a mane as white as snow.",
                         "Her whole body glittered in the moonlight.",
-                        "Ivan held his breath.",
                         "The mare trampled the ears of wheat.",
-                        "And Ivan crouched low in the grass."
+                        "Ivan held his breath and crouched low in the grass."
                     ]
                 }
             ]
@@ -621,17 +617,16 @@ const EN = {
                     ],
                     right: [
                         "At last the mare stopped, panting.",
-                        "\"Let me go!\"",
-                        "\"And I shall give you something good for it.\"",
-                        "Only then did Ivan open his hands.",
-                        "\"Truly? You have promised.\" And the mare went off into the dark."
+                        "\"Let me go!\" she said. \"I shall give you something good for it.\"",
+                        "\"Truly? You have promised,\" said Ivan.",
+                        "Only then did he open his hands, and the mare went off into the dark."
                     ]
                 },
                 {
                     art: '02-pony-2.webp',
                     emoji: '🐴',
                     left: [
-                        "Before dawn the mare came back.",
+                        "Before dawn the next day, the mare came back.",
                         "She brought two splendid horses behind her.",
                         "Their manes shone like gold.",
                         "Ivan's mouth fell open.",
@@ -641,9 +636,9 @@ const EN = {
                     right: [
                         "He had two humps on his back.",
                         "His ears drooped almost to the ground.",
-                        "\"And what is this?\"",
+                        "\"And what is this?\" asked Ivan.",
                         "\"This one will be your true friend.\"",
-                        "The mare said that, and no more, and was gone.",
+                        "The mare said only that, and was gone.",
                         "The little horse looked steadily up at Ivan."
                     ]
                 }
@@ -657,12 +652,12 @@ const EN = {
                     art: '03-palace.webp',
                     emoji: '🏰',
                     left: [
-                        "His brothers could hardly see straight for the horses.",
+                        "When his brothers saw the horses, they grew greedy.",
                         "One night they led them away in secret.",
                         "They meant to sell them in the city.",
                         "Ivan found out at dawn.",
-                        "\"What shall I do! They have taken everything!\"",
-                        "The little horse pricked up his ears."
+                        "\"What shall I do? They have taken them all!\"",
+                        "Then the little horse pricked up his ears."
                     ],
                     right: [
                         "\"Get on my back.\"",
@@ -681,16 +676,14 @@ const EN = {
                         "It was a city of onion-shaped domes.",
                         "When they stood the horses in the market, a crowd gathered.",
                         "And the Tsar happened to be passing.",
-                        "His eyes went round.",
+                        "The Tsar stopped short.",
                         "\"I have never seen horses like these!\""
                     ],
                     right: [
                         "The Tsar bought them on the spot.",
-                        "But the horses would follow nobody.",
-                        "Only when Ivan came near did they grow quiet.",
+                        "But the horses would obey nobody. Only when Ivan came near did they grow calm.",
                         "\"Then you shall come into the palace too,\" said the Tsar, beckoning.",
-                        "And so Ivan became a groom in the stables.",
-                        "With the little horse beside him, of course."
+                        "So Ivan became a groom in the stables, with the little horse beside him."
                     ]
                 }
             ]
@@ -711,25 +704,23 @@ const EN = {
                         "Something lay on the ground and shone."
                     ],
                     right: [
-                        "It was a feather burning gold.",
-                        "It was a feather of the firebird.",
+                        "It was a feather burning gold — a feather of the firebird.",
                         "Ivan reached out for it.",
-                        "And the little horse shook his head.",
+                        "But the little horse shook his head.",
                         "\"Pick that up, and there will be trouble.\"",
-                        "The feather was as bright as a hand's breadth of day.",
-                        "And Ivan could not simply walk past it."
+                        "But the feather shone so beautifully.",
+                        "Ivan could not simply ride past it."
                     ]
                 },
                 {
                     art: '04-feather-2.webp',
                     emoji: '🪶',
                     left: [
-                        "\"How can I leave a thing as fine as this?\"",
-                        "Ivan put the feather inside his coat.",
-                        "The little horse sighed.",
-                        "\"Only do not blame me for it later.\"",
+                        "\"How can I leave a thing as fine as this?\" Ivan murmured.",
+                        "He put the feather inside his coat.",
+                        "The little horse sighed. \"Only do not blame me for it later.\"",
                         "Back at the palace his room was bright.",
-                        "One feather, and no need of a candle."
+                        "With one feather, he had no need of a candle."
                     ],
                     right: [
                         "The other servants saw it.",
@@ -749,20 +740,16 @@ const EN = {
                     art: '05-firebird.webp',
                     emoji: '🔥',
                     left: [
-                        "\"I picked it up in the forest.\"",
+                        "\"I picked it up in the forest,\" said Ivan.",
                         "The Tsar stroked his beard.",
-                        "\"If you have the feather, bring me the bird as well.\"",
-                        "\"And if it is not here in three days, you will be sorry.\"",
+                        "\"If you have the feather, bring me the bird too. If it is not here in three days, you will be sorry.\"",
                         "Everything went black in front of Ivan.",
                         "He went back to the stable and sat down."
                     ],
                     right: [
                         "But the little horse pricked up his ears.",
-                        "\"Now, what did I tell you.\"",
-                        "\"Never mind. Do not worry.\"",
-                        "\"Get a sack of wheat and some wine.\"",
-                        "Ivan did as he was told.",
-                        "And they waited for night to come."
+                        "\"Now, what did I tell you? But don't worry. Get a sack of wheat and some wine.\"",
+                        "Ivan did as he was told, and waited for night."
                     ]
                 },
                 {
@@ -772,15 +759,15 @@ const EN = {
                         "That night the two of them went to a high mountain.",
                         "There was a wide clearing at the top.",
                         "Ivan scattered the wheat all about.",
-                        "And poured the wine round evenly.",
+                        "He poured the wine into bowls.",
                         "Then he hid behind a tree.",
                         "At midnight the sky turned red."
                     ],
                     right: [
                         "The firebirds came down one after another.",
                         "Sparks flew off their wings.",
-                        "The birds pecked up the wheat.",
-                        "And soon the wine had them staggering.",
+                        "The birds pecked up the wheat and sipped the wine.",
+                        "Soon the wine had them staggering.",
                         "Ivan caught hold of one of them.",
                         "Sparks flew off his fingers."
                     ]
@@ -795,19 +782,18 @@ const EN = {
                     art: '06-princess.webp',
                     emoji: '🌙',
                     left: [
-                        "The Tsar clapped his hands at the firebird.",
+                        "When Ivan came back with the firebird, the Tsar clapped his hands.",
                         "But there was no end to his wanting.",
                         "A few days later he sent for Ivan again.",
-                        "\"They say the Moon Princess lives at the far edge of the sea.\"",
-                        "\"Bring her to me.\"",
-                        "And Ivan sighed all over again."
+                        "\"They say the Moon Princess lives at the far edge of the sea. Bring her to me.\"",
+                        "Ivan sighed all over again."
                     ],
                     right: [
                         "The little horse tapped the ground with a forehoof.",
                         "\"Bring a tent and some good food.\"",
-                        "So the two of them set off once more.",
+                        "So the two set off once more.",
                         "The little horse crossed mountains and sea in great strides.",
-                        "In three days they were at the shore.",
+                        "In three days they reached the shore.",
                         "The sound of the waves went on and on."
                     ]
                 },
@@ -815,22 +801,16 @@ const EN = {
                     art: '06-princess-2.webp',
                     emoji: '🌙',
                     left: [
-                        "Ivan pitched the tent on the sand.",
-                        "He laid out the good food inside it.",
-                        "And then he hid himself a good way off.",
-                        "When the moon rose, a lady came in silver.",
-                        "It was the Moon Princess.",
-                        "She came into the tent and sang.",
-                        "And Ivan quite lost himself in it."
+                        "Ivan pitched the tent on the sand, laid out the good food inside and hid a good way off.",
+                        "When the moon rose, a lady in silver appeared. It was the Moon Princess.",
+                        "She followed the smell of the food into the tent, tasted it, and began to sing.",
+                        "Ivan quite lost himself in her song."
                     ],
                     right: [
                         "It was a long while before he came to.",
-                        "Ivan took off his cap and stepped forward.",
-                        "\"The Tsar asks for the honour of meeting you.\"",
-                        "The princess smiled and came along with him.",
-                        "There was something she wanted to know.",
-                        "Her silver hem brushed over the sand.",
-                        "And the waves came in behind them."
+                        "He took off his cap and stepped forward. \"The Tsar asks to meet you.\"",
+                        "The princess smiled and came along. There was something she wanted to know.",
+                        "Her silver hem brushed over the sand, and the waves rolled in behind them."
                     ]
                 }
             ]
@@ -852,11 +832,9 @@ const EN = {
                     ],
                     right: [
                         "\"And what am I to do about that?\"",
-                        "\"Set up three cauldrons.\"",
-                        "\"Get into the boiling water and then the cold,\"",
-                        "\"and you will be young again.\"",
-                        "The Tsar half believed it.",
-                        "But being young again was too much to resist."
+                        "The princess answered, \"Set up three cauldrons: boiling milk, boiling water and cold water.\"",
+                        "\"Get into each in turn, and you will be young again.\"",
+                        "The Tsar half believed it, but being young again was too much to resist."
                     ]
                 },
                 {
@@ -864,18 +842,15 @@ const EN = {
                     emoji: '🫕',
                     left: [
                         "Three great cauldrons were set up in the yard.",
-                        "One boiled hard and one was cold as ice.",
-                        "The Tsar glanced sideways at Ivan.",
-                        "\"You shall get in first.\"",
+                        "The milk and the water boiled hard, and the third was cold as ice.",
+                        "The Tsar glanced sideways at Ivan. \"You shall get in first.\"",
                         "Ivan's legs went weak under him.",
-                        "Then the little horse came up beside him.",
-                        "And whispered in his ear."
+                        "Then the little horse came up and whispered in his ear."
                     ],
                     right: [
-                        "\"I shall cool the water. Do not be afraid.\"",
-                        "\"Shut your eyes and get in.\"",
-                        "Ivan took a great breath.",
-                        "And then he shut his eyes and jumped into the cauldron.",
+                        "\"I shall cool the water. Do not be afraid. Shut your eyes and get in.\"",
+                        "And the little horse blew hard into each cauldron.",
+                        "Ivan took a great breath, shut his eyes and jumped in.",
                         "Splash!",
                         "Everybody covered their eyes at once."
                     ]
@@ -891,42 +866,33 @@ const EN = {
                     emoji: '👑',
                     left: [
                         "Everybody held their breath.",
-                        "In a moment something rose out of the water.",
-                        "It was Ivan.",
-                        "But he had changed past knowing.",
-                        "He was a tall and handsome young man.",
-                        "People rubbed their eyes.",
-                        "\"Is that really the stable boy?\"",
+                        "In a moment something rose out of the water. It was Ivan!",
+                        "But he had changed past knowing: he was a tall, handsome young man.",
+                        "People rubbed their eyes. \"Is that really the stable boy?\"",
                         "And the princess clapped her hands."
                     ],
                     right: [
-                        "And the Tsar could not see straight either.",
-                        "\"I shall get in this minute!\"",
-                        "He threw off his clothes and jumped straight in.",
-                        "\"My lord, you must not!\"",
-                        "He would not listen to them.",
-                        "The water went up white.",
-                        "And the yard went suddenly quiet."
+                        "The Tsar was wild with envy. \"I shall get in this minute!\"",
+                        "He threw off his clothes.",
+                        "\"My lord, you must not!\" cried his servants, but he would not listen.",
+                        "He jumped straight in, and the water went up white.",
+                        "Then the yard went suddenly quiet."
                     ]
                 },
                 {
                     art: '08-ending-2.webp',
                     emoji: '👑',
                     left: [
-                        "But this time it was different.",
-                        "The little horse did not cool the water.",
-                        "The moment the Tsar put a foot in, he shrieked.",
-                        "\"Hot! It is hot, I tell you!\"",
-                        "And he scrambled out again in a hurry.",
-                        "His crown went rolling away across the yard."
+                        "But this time was different: the little horse did not cool the water.",
+                        "The moment the Tsar put a foot in, he shrieked. \"Hot! It's hot!\"",
+                        "He scrambled out in a hurry, and his crown went rolling away."
                     ],
                     right: [
-                        "\"Bah. I shall stay old as I am!\"",
-                        "The people laughed until they held their sides.",
-                        "The princess came over to stand by Ivan.",
-                        "The two of them stood side by side.",
-                        "And the little humpbacked horse stood beside them.",
-                        "And they lived happily for a long, long time."
+                        "\"Bah! I'll stay old!\" snorted the Tsar.",
+                        "The people laughed till they held their sides.",
+                        "The princess married young Ivan.",
+                        "The two stood side by side, the humpbacked horse beside them.",
+                        "And the three lived happily ever after."
                     ]
                 }
             ]
@@ -975,7 +941,7 @@ const EN = {
                 "Ivan sat out in the middle of the wheat all night — unlike his brothers he actually did as he was told.",
                 "The pony warned him that picking up the feather would bring trouble — Ivan did not listen.",
                 "The pony cooled the water in the cauldron — it was not the water that made Ivan young.",
-                "The king told Ivan to go in first — he was putting the young man ahead to keep him safe."
+                "The Tsar told Ivan to go in first — he was putting the young man ahead to keep him safe."
             ],
             answer: 3
         }
@@ -993,7 +959,7 @@ const EN = {
                     "And that pony always warns him first. Do not pick up the feather; get into the cauldron. Ivan listens to half of it and not the other half."
                 ],
                 right: [
-                    "Picking up the feather brought trouble on him. And that same trouble is what carried him to the palace.",
+                    "Picking up the feather brought trouble on him. And that same trouble is what carried him to the Moon Princess.",
                     "Should Ivan have done everything the little horse told him?"
                 ]
             }
@@ -1014,7 +980,7 @@ const EN = {
         '01-field-2.webp': [
             { word: 'snore', meaning: '코를 골다', sentence: 'The eldest snored in the barn.' },
             { word: 'stay awake', meaning: '밤을 새우다', sentence: 'He stayed awake all night.' },
-            { word: 'mare', meaning: '암말', sentence: 'A mare appeared with a white mane.' },
+            { word: 'mare', meaning: '암말', sentence: "A mare appeared, with a mane as white as snow." },
             { word: 'hold one’s breath', meaning: '숨을 죽이다', sentence: 'Ivan held his breath.' },
             { word: 'crouch', meaning: '몸을 낮추다', sentence: 'Ivan crouched low in the grass.' }
         ],
@@ -1052,7 +1018,7 @@ const EN = {
         ],
         '04-feather-2.webp': [
             { word: 'blame', meaning: '원망하다', sentence: 'Do not blame me for it later.' },
-            { word: 'candle', meaning: '촛불', sentence: 'No need of a candle.' },
+            { word: 'candle', meaning: '촛불', sentence: "He had no need of a candle." },
             { word: 'sure enough', meaning: '아니나 다를까', sentence: 'Sure enough it reached the Tsar.' },
             { word: 'send for', meaning: '부르다', sentence: 'The Tsar sent for Ivan.' }
         ],
@@ -1077,7 +1043,7 @@ const EN = {
         ],
         '06-princess-2.webp': [
             { word: 'pitch', meaning: '치다', sentence: 'Ivan pitched the tent on the sand.' },
-            { word: 'lose oneself', meaning: '넋을 잃다', sentence: 'Ivan quite lost himself in it.' },
+            { word: 'lose oneself', meaning: '넋을 잃다', sentence: "Ivan quite lost himself in her song." },
             { word: 'come to', meaning: '정신을 차리다', sentence: 'It was long before he came to.' },
             { word: 'hem', meaning: '옷자락', sentence: 'Her silver hem brushed over the sand.' }
         ],
@@ -1102,9 +1068,9 @@ const EN = {
         ],
         '08-ending-2.webp': [
             { word: 'shriek', meaning: '소리를 지르다', sentence: 'The moment he put a foot in, he shrieked.' },
-            { word: 'scramble out', meaning: '허둥지둥 나오다', sentence: 'He scrambled out again in a hurry.' },
+            { word: 'scramble out', meaning: '허둥지둥 나오다', sentence: "He scrambled out in a hurry." },
             { word: 'roll away', meaning: '데굴데굴 굴러가다', sentence: 'His crown went rolling away.' },
-            { word: 'side by side', meaning: '나란히', sentence: 'The two of them stood side by side.' }
+            { word: 'side by side', meaning: '나란히', sentence: "The two stood side by side." }
         ],
         'end.webp': [
             { word: 'verse', meaning: '시', sentence: 'Yershov wrote it in verse.' },

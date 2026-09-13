@@ -566,33 +566,28 @@ const EN = {
                     art: '01-palace.webp',
                     emoji: '🏯',
                     left: [
-                        "Long ago in China there was a palace built of porcelain.",
-                        "The pillars and the roof were porcelain too,",
-                        "and it was so beautiful that people came from far countries to look at it.",
-                        "Only it was so thin that you had to walk carefully.",
-                        "In the garden grew flowers with little silver bells on them.",
-                        "And behind the palace a great deep wood went on and on."
+                        "Long ago in China stood a palace built of porcelain.",
+                        "The pillars and the roof were porcelain too.",
+                        "People came from far countries to see it.",
+                        "It was so thin that you had to walk carefully.",
+                        "In the garden grew flowers with silver bells, and behind the palace was a deep wood."
                     ],
                     right: [
-                        "Beyond the wood was the sea.",
-                        "And in that wood lived one small bird.",
-                        "She sang so well that even the fishermen would stop working to listen.",
+                        "Beyond the wood was the sea. In that wood lived a small bird.",
+                        "She sang so well that fishermen stopped work to listen.",
                         "She was a nightingale — grey, and small.",
-                        "\"You forget your troubles listening to that.\"",
-                        "\"I don't suppose even our emperor has heard it.\""
+                        "The fishermen said, \"You forget your troubles listening to that.\"",
+                        "\"I bet even our emperor has never heard it.\""
                     ]
                 },
                 {
                     art: '01-palace-2.webp',
                     emoji: '🏯',
                     left: [
-                        "People from far countries saw the palace and wrote books about it,",
-                        "and the books went out to one country after another.",
-                        "And at last one of them came into the emperor's hands.",
-                        "The emperor turned the pages, well pleased.",
-                        "There was nothing but praise for the palace and for the garden,",
-                        "and the emperor felt very grand indeed.",
-                        "And then, at the end, he read this."
+                        "People from far countries saw the palace and wrote books about it.",
+                        "The books went from country to country, and one came into the emperor's hands.",
+                        "He read, well pleased. There was nothing but praise for the palace and garden.",
+                        "He felt very grand. Then, at the end, he read this."
                     ],
                     right: [
                         "\"The palace and the garden are fine, but the finest thing of all is the nightingale.\"",
@@ -613,40 +608,32 @@ const EN = {
                     emoji: '🔍',
                     left: [
                         "The emperor sent for an official at once.",
-                        "\"Bring me the nightingale by this evening.\"",
-                        "\"And if you do not, it will go badly for you.\"",
-                        "The official went white.",
-                        "He had never heard the word nightingale in his life.",
-                        "He turned the palace upside down looking,",
-                        "and stopped everybody he met to ask."
+                        "\"Bring me the nightingale by this evening. If you do not, it will go badly for you.\"",
+                        "The official went white. He had never heard the word nightingale in his life.",
+                        "He turned the palace upside down looking."
                     ],
                     right: [
-                        "But not one person knew.",
-                        "\"Would that be the noise a cow makes?\"",
-                        "\"Or a frog, perhaps?\" The official was frantic.",
-                        "The sun was already going down.",
-                        "Nobody in that palace had ever heard the singing.",
-                        "Nobody knew anything about the world outside the gates."
+                        "He stopped everybody he met to ask. But not one person knew.",
+                        "\"A nightingale? I've never heard of it.\"",
+                        "The official was frantic.",
+                        "The palace people never went into the wood.",
+                        "So nobody in the palace had ever heard the singing."
                     ]
                 },
                 {
                     art: '02-search-2.webp',
                     emoji: '🔍',
                     left: [
-                        "The sun went right down and still he had not found the bird.",
+                        "The sun went down and still he had not found the bird.",
                         "The official was hopping from foot to foot.",
-                        "And then a small voice came from the kitchen.",
-                        "It was a child who worked there.",
-                        "\"I know it.\"",
-                        "\"I hear it in the wood every night.\""
+                        "Then a small voice came from the kitchen. It was a girl who worked there.",
+                        "\"I know it,\" she said. \"I hear it in the wood every evening.\""
                     ],
                     right: [
-                        "The child carried food down to her mother by the sea every day,",
-                        "and had heard the singing going to and fro.",
-                        "She had always liked that sound.",
-                        "The official caught the child's hand.",
-                        "\"Then take me there, quickly!\" And he set off for the wood with the child in front.",
-                        "The other officials all came trailing after them."
+                        "Every evening she carried food to her mother, who lived by the sea.",
+                        "She heard the singing in the wood on her way to and fro.",
+                        "The official caught the girl's hand. \"Then take me there, quickly!\"",
+                        "He set off for the wood, and the other officials came trailing after them."
                     ]
                 }
             ]
@@ -659,39 +646,34 @@ const EN = {
                     art: '03-nightingale.webp',
                     emoji: '🌲',
                     left: [
-                        "The child took the officials into the wood,",
+                        "The girl took the officials into the wood,",
                         "a whole line of people in silk following behind.",
                         "On the way a cow mooed.",
-                        "\"Ah — that will be it!\"",
-                        "The child smiled and shook her head.",
-                        "\"That is a cow. We must go further.\""
+                        "One official clapped his hands. \"Ah — that will be it!\"",
+                        "The girl smiled and shook her head. \"That is a cow. We must go further.\""
                     ],
                     right: [
                         "Then a frog croaked.",
-                        "\"This time it must be!\"",
-                        "\"That is a frog.\"",
+                        "The officials' eyes lit up. \"This time it must be!\"",
+                        "The girl shook her head again. \"That is a frog.\"",
                         "The officials cleared their throats, rather put out.",
-                        "Their coats kept catching on branches and tearing,",
-                        "and their silk shoes were thick with mud."
+                        "Their coats kept catching on branches and tearing."
                     ]
                 },
                 {
                     art: '03-nightingale-2.webp',
                     emoji: '🌲',
                     left: [
-                        "At last the child stopped.",
-                        "\"Hush — there she is.\"",
-                        "There was a small bird on a low branch,",
-                        "a plain grey bird.",
-                        "\"What? That shabby little thing?\"",
+                        "At last the girl stopped. \"Hush — there she is.\"",
+                        "There was a small bird on a low branch, a plain grey bird.",
+                        "The officials stared. \"What? That shabby little thing?\"",
                         "And then the bird cleared her throat."
                     ],
                     right: [
-                        "And she began to sing.",
-                        "The whole wood went quiet.",
-                        "The officials stood frozen where they were,",
-                        "and one of them found himself crying.",
-                        "\"To think there was a sound like that in the world.\" The child smiled to herself."
+                        "She began to sing, and the whole wood went quiet.",
+                        "The officials stood frozen where they were, and one of them found himself crying.",
+                        "When the song ended, the official asked politely, \"Will you sing for the emperor this evening?\"",
+                        "The nightingale waited a moment, then nodded."
                     ]
                 }
             ]
@@ -704,13 +686,10 @@ const EN = {
                     art: '04-court.webp',
                     emoji: '🕯️',
                     left: [
-                        "The nightingale was invited to the palace.",
-                        "The little bird found the strange place rather frightening.",
-                        "That evening the palace was full of lamps,",
-                        "and the silver bells on the flowers went tinkle, tinkle.",
-                        "Everybody in the palace sat down together,",
-                        "and the nightingale took her place on a golden perch.",
-                        "And the little bird sang in front of the emperor."
+                        "Invited by the emperor, the nightingale flew to the palace.",
+                        "The strange place frightened her a little.",
+                        "That evening the palace was full of lamps, and the silver bells went tinkle, tinkle.",
+                        "Everybody sat down. The nightingale sat on a golden perch and sang for the emperor."
                     ],
                     right: [
                         "Some of the songs made you laugh and some of them made you cry.",
@@ -732,12 +711,9 @@ const EN = {
                     ],
                     right: [
                         "\"Your Majesty's tears are enough for me.\"",
-                        "From that day the nightingale lived at the palace,",
-                        "with a golden cage and people to wait on her.",
-                        "But when she went out, a thread was tied to her foot.",
-                        "That made the nightingale a little sad.",
-                        "She kept thinking of the branches in the wood,",
-                        "and she missed the smell of the wind."
+                        "From that day the nightingale lived at the palace, with a golden cage and people to wait on her.",
+                        "But when she went out, a thread was tied to her foot, and people held the end.",
+                        "That made her a little sad. She missed the branches in the wood."
                     ]
                 }
             ]
@@ -750,8 +726,7 @@ const EN = {
                     art: '05-machine.webp',
                     emoji: '💎',
                     left: [
-                        "One day a present came from a neighbouring country,",
-                        "a box wrapped in silk.",
+                        "One day a present came from a neighbouring country — a box wrapped in silk.",
                         "They lifted the lid and everybody gasped.",
                         "It was a mechanical bird covered all over in jewels,",
                         "exactly the size of the real one.",
@@ -771,18 +746,14 @@ const EN = {
                     emoji: '💎',
                     left: [
                         "They tried making the two birds sing together.",
-                        "And it would not fit at all,",
-                        "because the real bird sang it differently every time.",
-                        "\"That bird does as it pleases.\"",
-                        "\"The mechanical one is much better, surely.\"",
-                        "And people crowded round the mechanical bird."
+                        "But it would not fit at all, because the real bird sang differently every time.",
+                        "People grumbled. \"That bird does as it pleases. The mechanical one is much better.\"",
+                        "And they crowded round the mechanical bird."
                     ],
                     right: [
-                        "They heard the same song thirty-three times over,",
-                        "and nobody looked back at the window.",
-                        "And in that time the real nightingale flew out of it",
-                        "and went home to the wood.",
-                        "The emperor was angry and ordered her banished from the country.",
+                        "They heard the same song thirty-three times over.",
+                        "Nobody looked at the window. Meanwhile the real nightingale flew out of it, back to the wood.",
+                        "When the emperor found out, he was angry. He ordered her banished from the country.",
                         "The empty perch stayed where it was."
                     ]
                 }
@@ -807,9 +778,8 @@ const EN = {
                         "In the middle of the song there was a snap.",
                         "Then a grinding sound, and the song stopped.",
                         "A part inside the works had worn out.",
-                        "The palace people went white,",
-                        "and the emperor sent quickly for the clockmaker.",
-                        "The room was suddenly far too quiet."
+                        "The room was suddenly far too quiet. The palace people went white.",
+                        "The emperor quickly sent for the clockmaker."
                     ]
                 },
                 {
@@ -817,18 +787,15 @@ const EN = {
                     emoji: '⚙️',
                     left: [
                         "A very good clockmaker looked into it for a long while.",
-                        "He fitted a new little cog and oiled it,",
-                        "and he did get the sound going again.",
+                        "He fitted a new little cog and oiled it, and he got the sound going again.",
                         "But the clockmaker shook his head.",
-                        "\"The inside of it is badly worn.\""
+                        "\"The inside is badly worn. You must let it sing only once a year now.\""
                     ],
                     right: [
-                        "\"You must let it sing only once a year now.\"",
-                        "And there was nothing for it but to do as he said.",
-                        "From that day the palace was very quiet.",
-                        "The mechanical bird went into a glass case,",
-                        "and people kept glancing at the place where the song used to be.",
-                        "And still nobody thought of the bird in the wood."
+                        "There was nothing for it but to do as he said.",
+                        "The mechanical bird went into a glass case, and from that day the palace was very quiet.",
+                        "People kept glancing at the place where the song used to be.",
+                        "But still nobody thought of the bird in the wood."
                     ]
                 }
             ]
@@ -841,13 +808,11 @@ const EN = {
                     art: '07-illness.webp',
                     emoji: '🌑',
                     left: [
-                        "Some years went by after that.",
-                        "And the emperor fell ill and took to his bed.",
+                        "Some years went by. Then the emperor fell ill and took to his bed.",
                         "His face went white and thin.",
-                        "The palace people were already talking about the next emperor,",
-                        "and you could hear them whispering in the corridors.",
-                        "Nobody at all was left in the great room.",
-                        "The window stood open and only the moonlight came in."
+                        "People were already talking about the next emperor.",
+                        "You could hear them whispering in the corridors.",
+                        "Nobody was left in the great room. Only moonlight came in at the window."
                     ],
                     right: [
                         "The emperor could not move.",
@@ -864,10 +829,9 @@ const EN = {
                     left: [
                         "The emperor looked at the mechanical bird beside his bed.",
                         "The jewels glittered cold in the moonlight.",
-                        "\"Sing something for me.\"",
-                        "The mechanical bird made no sound at all,",
-                        "because there was nobody there to wind it.",
-                        "And the emperor closed his eyes."
+                        "\"Sing something for me,\" he said.",
+                        "But the mechanical bird made no sound, because there was nobody there to wind it.",
+                        "The emperor closed his eyes."
                     ],
                     right: [
                         "One thing after another came back to him.",
@@ -887,20 +851,16 @@ const EN = {
                     art: '08-ending.webp',
                     emoji: '🌅',
                     left: [
-                        "And then singing came in at the window,",
-                        "clear and lovely.",
+                        "And then singing came in at the window, clear and lovely.",
                         "The emperor just managed to turn his head.",
                         "There was a small grey bird on the windowsill.",
-                        "It was the nightingale, back from the wood.",
-                        "\"I have come to sing for you.\""
+                        "It was the nightingale, back from the wood."
                     ],
                     right: [
-                        "\"I heard that you were ill.\"",
-                        "And the nightingale sang the whole night through —",
-                        "songs with the wood in them, and the sea, and the morning.",
-                        "As he listened, the colour came back into the emperor's face,",
-                        "and by morning he could sit up in his bed.",
-                        "The morning sun came in at the window."
+                        "\"I heard that you were ill, so I have come to sing for you.\"",
+                        "The nightingale sang the whole night through — songs of the wood, the sea and the morning.",
+                        "As he listened, the colour came back into the emperor's face.",
+                        "By morning he could sit up, and the sun came in at the window."
                     ]
                 },
                 {
@@ -908,18 +868,13 @@ const EN = {
                     emoji: '🌅',
                     left: [
                         "The emperor held out a hand to the bird.",
-                        "\"I drove you away, and you came all the same.\"",
-                        "\"Will you live here in this palace?\"",
-                        "The nightingale tilted her head a little",
-                        "and answered quietly.",
-                        "\"I shall live in the wood and come now and then.\""
+                        "\"I drove you away, and you came all the same. Will you live here in the palace?\"",
+                        "The nightingale tilted her head and said quietly, \"I shall live in the wood and come now and then.\""
                     ],
                     right: [
-                        "\"That is better for both of us.\"",
-                        "\"Only promise me one thing.\"",
-                        "\"Keep it a secret that I come.\"",
-                        "And the nightingale flew away to the wood.",
-                        "And after that the emperor was well for a long, long time."
+                        "\"That is better for both of us. Only keep it a secret that I come.\"",
+                        "The emperor nodded, and the nightingale flew off to the wood.",
+                        "And the emperor stayed well for a long, long time."
                     ]
                 }
             ]
@@ -986,7 +941,7 @@ const EN = {
                     "The mechanical bird repeats one tune. And that is exactly why so many people preferred it: you always knew what you were going to get."
                 ],
                 right: [
-                    "When the machine stopped, nobody could mend it. What came back then was the nightingale at the window.",
+                    "When the machine wore out, nobody could mend it properly. What came back then was the nightingale at the window.",
                     "She will not live at the palace, and she asks him to keep her visits secret. She is saying she will not be the emperor's bird.",
                     "Why do you think the nightingale would not stay at the palace?"
                 ]
@@ -1004,11 +959,11 @@ const EN = {
             { word: 'porcelain', meaning: '도자기', sentence: 'A palace built of porcelain.' },
             { word: 'pillar', meaning: '기둥', sentence: 'The pillars and the roof were porcelain too.' },
             { word: 'nightingale', meaning: '밤꾀꼬리', sentence: 'She was a nightingale — grey, and small.' },
-            { word: 'fisherman', meaning: '고기잡이', sentence: 'Even the fishermen would stop working to listen.' }
+            { word: 'fisherman', meaning: '고기잡이', sentence: 'Fishermen stopped work to listen.' }
         ],
         '01-palace-2.webp': [
             { word: 'praise', meaning: '칭찬', sentence: 'There was nothing but praise for the palace.' },
-            { word: 'grand', meaning: '으쓱한, 대단한', sentence: 'The emperor felt very grand indeed.' },
+            { word: 'grand', meaning: '으쓱한, 대단한', sentence: 'He felt very grand.' },
             { word: 'tilt one’s head', meaning: '고개를 갸웃하다', sentence: 'The emperor tilted his head.' },
             { word: 'think as he might', meaning: '아무리 생각해도', sentence: 'Think as he might, he had never heard of it.' }
         ],
@@ -1020,7 +975,7 @@ const EN = {
         ],
         '02-search-2.webp': [
             { word: 'hop from foot to foot', meaning: '발을 동동 구르다', sentence: 'The official was hopping from foot to foot.' },
-            { word: 'to and fro', meaning: '오가며', sentence: 'She had heard the singing going to and fro.' },
+            { word: 'to and fro', meaning: '오가며', sentence: 'She heard the singing on her way to and fro.' },
             { word: 'set off for', meaning: '~로 향하다', sentence: 'He set off for the wood.' },
             { word: 'trail after', meaning: '우르르 따라가다', sentence: 'The other officials came trailing after them.' }
         ],
@@ -1037,16 +992,16 @@ const EN = {
             { word: 'frozen', meaning: '얼어붙은', sentence: 'The officials stood frozen where they were.' }
         ],
         '04-court.webp': [
-            { word: 'invite', meaning: '초대하다', sentence: 'The nightingale was invited to the palace.' },
+            { word: 'invite', meaning: '초대하다', sentence: 'Invited by the emperor, the nightingale flew to the palace.' },
             { word: 'lamp', meaning: '등불', sentence: 'The palace was full of lamps.' },
-            { word: 'perch', meaning: '횃대', sentence: 'The nightingale took her place on a golden perch.' },
+            { word: 'perch', meaning: '횃대', sentence: 'The nightingale sat on a golden perch.' },
             { word: 'as quiet as a stone', meaning: '쥐 죽은 듯 조용한', sentence: 'The palace was as quiet as a stone.' }
         ],
         '04-court-2.webp': [
             { word: 'reward', meaning: '상', sentence: 'He wanted to give her a gold chain as a reward.' },
             { word: 'wait on', meaning: '시중들다', sentence: 'With people to wait on her.' },
             { word: 'thread', meaning: '실', sentence: 'A thread was tied to her foot.' },
-            { word: 'miss', meaning: '그리워하다', sentence: 'She missed the smell of the wind.' }
+            { word: 'miss', meaning: '그리워하다', sentence: 'She missed the branches in the wood.' }
         ],
         '05-machine.webp': [
             { word: 'wrap', meaning: '싸다', sentence: 'A box wrapped in silk.' },
@@ -1058,7 +1013,7 @@ const EN = {
         '05-machine-2.webp': [
             { word: 'fit', meaning: '맞다', sentence: 'And it would not fit at all.' },
             { word: 'as one pleases', meaning: '제멋대로', sentence: 'That bird does as it pleases.' },
-            { word: 'crowd round', meaning: '몰려들다', sentence: 'People crowded round the mechanical bird.' },
+            { word: 'crowd round', meaning: '몰려들다', sentence: 'They crowded round the mechanical bird.' },
             { word: 'banish', meaning: '내쫓다', sentence: 'He ordered her banished from the country.' }
         ],
         '06-broken.webp': [

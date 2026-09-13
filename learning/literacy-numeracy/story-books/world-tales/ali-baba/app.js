@@ -532,15 +532,15 @@ const EN = {
                     emoji: '🪓',
                     left: [
                         "One axe and three donkeys.",
-                        "That was everything Ali Baba owned. His brother Cassim was the richest man in the same village — two brothers who lived very different lives.",
+                        "That was everything Ali Baba owned. His brother Cassim was the richest man in the village.",
                         "That day, as usual, Ali Baba went up the hill at dawn to cut wood.",
-                        "He was hard at work when a cloud of dust went up in the distance."
+                        "He was hard at work with his axe when a cloud of dust went up far away."
                     ],
                     right: [
-                        "Drumming, drumming.",
+                        "Clip-clop, clip-clop!",
                         "The sound of hooves came shaking the ground, closer and closer.",
                         "Ali Baba scrambled quickly up a tree.",
-                        "He held his breath and looked down: a whole troop of riders was coming."
+                        "He held his breath and looked down. A whole troop of riders was coming."
                     ]
                 },
                 {
@@ -548,15 +548,13 @@ const EN = {
                     emoji: '🪓',
                     left: [
                         "Ali Baba counted them on his fingers. There were forty of them.",
-                        "Every one had a cloth over his face,",
-                        "and every one carried a heavy sack on his back.",
+                        "Every one had a cloth over his face, and every one carried a heavy sack on his back.",
                         "Then a man who looked like the captain came forward and stood before a great rock."
                     ],
                     right: [
-                        "\"Open, Sesame!\"",
-                        "And the rock split apart. The thieves went in one behind another.",
-                        "A long while later they all came out empty-handed.",
-                        "\"Shut, Sesame!\"",
+                        "\"Open, Sesame!\" the captain shouted.",
+                        "And the rock split apart. The thieves went in one behind another. A long while later they all came out empty-handed.",
+                        "The captain shouted again, \"Shut, Sesame!\"",
                         "And the rock closed up without a seam."
                     ]
                 }
@@ -570,15 +568,14 @@ const EN = {
                     art: '02-treasure.webp',
                     emoji: '💰',
                     left: [
-                        "When the thieves were well away, Ali Baba climbed carefully down.",
+                        "When the thieves were gone, Ali Baba climbed carefully down.",
                         "He hung about behind the tree for a long while.",
-                        "Then he screwed up his courage and stood in front of the rock.",
+                        "Then he screwed up his courage and stood before the rock, saying the words over to himself.",
                         "\"O-open, Sesame.\"",
                         "And the rock really did split apart."
                     ],
                     right: [
-                        "Inside, the light dazzled him. Gold coins lay heaped up like hills,",
-                        "and there were silks and jewels besides.",
+                        "Inside, the light dazzled him. Gold coins lay heaped up like hills, and there were silks and jewels besides.",
                         "Ali Baba rubbed his eyes over and over.",
                         "\"Wherever did they get all this?\"",
                         "He stood there a long time."
@@ -588,18 +585,14 @@ const EN = {
                     art: '02-treasure-2.webp',
                     emoji: '💰',
                     left: [
-                        "Ali Baba decided to take only a little of the gold. He divided it into three sacks, loaded them on the donkeys,",
-                        "and heaped firewood on top.",
+                        "Ali Baba decided to take only a little of the gold. He divided it into three sacks, loaded them on the donkeys, and heaped firewood on top.",
                         "\"Shut, Sesame.\"",
                         "The rock closed again, and Ali Baba went down the hill without looking back."
                     ],
                     right: [
-                        "When he got home and untied the sacks, his wife's eyes went round.",
-                        "\"We must count all this.\"",
-                        "\"Never mind counting. Let us bury it.\"",
-                        "But his wife could not leave it alone.",
-                        "In the end she went to his brother's house to borrow a measure —",
-                        "the wooden bowl for measuring grain."
+                        "At home he untied the sacks, and his wife's eyes went round. \"I must count all this!\"",
+                        "Ali Baba waved his hand. \"Never mind counting. Let us bury it.\"",
+                        "But she had to know. There was too much to count coin by coin, so she went to Cassim's house to borrow a measure, a wooden bowl for grain."
                     ]
                 }
             ]
@@ -612,36 +605,32 @@ const EN = {
                     art: '03-brother.webp',
                     emoji: '🕯️',
                     left: [
-                        "Cassim's wife thought it very odd.",
-                        "\"What can a poor house have to measure?\"",
-                        "So she smeared a little wax on the bottom of the measure. Wax comes from a beehive, and worked soft in the fingers it will hold on to anything.",
-                        "Next day she turned it over when it came back.",
-                        "A gold coin was stuck fast in the wax.",
+                        "Cassim's wife thought it very odd. \"What can a poor house have to measure?\"",
+                        "So she smeared a little wax on the bottom of the measure. Wax sticks to anything.",
+                        "When the measure came back, she turned it over. A gold coin was stuck fast in the wax!",
                         "She ran straight to Cassim with it."
                     ],
                     right: [
-                        "\"Where has this gold come from!\"",
-                        "Ali Baba could not keep it back in the end. He told the whole thing, leaving nothing out.",
-                        "\"Then take me to that cave.\"",
-                        "\"Brother, you must not be greedy about this.\"",
-                        "But Cassim would not hear a word of it."
+                        "Cassim ran to his brother. \"Where did this gold come from?\"",
+                        "Ali Baba could not hide it. He told the whole thing, leaving nothing out.",
+                        "Cassim's eyes lit up. \"Where is that cave? Tell me now!\"",
+                        "\"Brother, you must not be greedy about this,\" said Ali Baba. But Cassim would not listen."
                     ]
                 },
                 {
                     art: '03-brother-2.webp',
                     emoji: '🕯️',
                     left: [
-                        "Next day Cassim went up the hill, and he took ten mules with him.",
+                        "Next day at dawn Cassim went up the hill, and he took ten mules with him.",
                         "\"Open, Sesame!\"",
                         "The rock split apart.",
-                        "Once inside, Cassim quite lost his head, and filled sack after sack to the brim with gold."
+                        "Once inside, Cassim quite lost his head, and he filled sack after sack to the brim with gold."
                     ],
                     right: [
-                        "\"That will do.\"",
-                        "But when he came to go out, the words would not come to him.",
-                        "\"Open, Barley!\"",
-                        "\"Open, Beans!\"",
-                        "The rock did not move.",
+                        "\"That will do,\" said Cassim with a big grin.",
+                        "But when he came to go out, he could not remember the words.",
+                        "\"Open, Barley! Open, Beans!\"",
+                        "He called out every grain he knew, but the rock did not move.",
                         "And while he stood there, the thieves came back."
                     ]
                 }
@@ -655,35 +644,32 @@ const EN = {
                     art: '04-chalk.webp',
                     emoji: '🚪',
                     left: [
-                        "Cassim never came home.",
-                        "Next day Ali Baba went up the hill. He found his brother at the cave and brought him home at last, and Cassim's wife sat down where she stood and wept.",
-                        "The house was in an uproar.",
-                        "And then Morgiana stepped forward."
+                        "Cassim did not come home. His wife ran to Ali Baba.",
+                        "Next day Ali Baba went to the cave. The thieves had caught Cassim, and he was dead. Ali Baba brought him home on a donkey.",
+                        "Cassim's wife sat down and wept. The house was in an uproar.",
+                        "Then Morgiana, the servant girl, stepped forward."
                     ],
                     right: [
-                        "She was a servant in his brother's house, and very quick indeed.",
-                        "\"If word of this gets about we are finished.\"",
-                        "\"Leave it to me.\"",
-                        "Morgiana held the funeral quietly and left the door exactly as it always was, as though nothing had happened.",
-                        "Not one neighbour guessed a thing."
+                        "\"If word of this gets about, the thieves will find us,\" said Morgiana. \"Leave it to me.\"",
+                        "She told the neighbours her master had died of an illness, and she held the funeral quietly.",
+                        "No one guessed about the cave.",
+                        "Then Ali Baba's family moved into Cassim's house."
                     ]
                 },
                 {
                     art: '04-chalk-2.webp',
                     emoji: '🚪',
                     left: [
-                        "Meanwhile the thieves had found the body gone.",
-                        "\"So somebody else knows about the cave.\"",
-                        "One of them went down into the village, going from house to house and asking about.",
-                        "At last he found the right one,",
-                        "and quietly put a chalk mark on the door."
+                        "Meanwhile the thieves saw that Cassim was gone from the cave.",
+                        "The captain ground his teeth. \"So somebody else knows about the cave.\"",
+                        "One thief went down to the village, going from house to house and asking about a recent funeral.",
+                        "At last he found it and put a chalk mark on the door."
                     ],
                     right: [
-                        "Next morning Morgiana came out to fetch water, and stopped dead at the sight of the mark.",
-                        "'What is that doing there?'",
-                        "Morgiana fetched a piece of chalk at once,",
-                        "and drew exactly the same mark on every door in the neighbourhood.",
-                        "Twenty houses, thirty houses."
+                        "Next morning Morgiana came out to fetch water. She stopped dead at the sight of the mark.",
+                        "'Someone wants to find our house,' she thought.",
+                        "Morgiana fetched a piece of chalk at once and drew the same mark on every door in the neighbourhood.",
+                        "Twenty houses, thirty houses!"
                     ]
                 }
             ]
@@ -696,18 +682,15 @@ const EN = {
                     art: '05-jars.webp',
                     emoji: '🏺',
                     left: [
-                        "That night the thieves went for nothing. The same mark was on every door in the place.",
-                        "\"Which house is it, then!\"",
-                        "In the end the captain went himself. This time he made no mark.",
-                        "He fixed the shape of the house firmly in his head instead."
+                        "That night the thieves went for nothing. The same mark was on every door.",
+                        "\"Which house is it, then?\" roared the captain.",
+                        "In the end the captain went himself. This time he made no mark. He fixed the shape of the house in his head instead."
                     ],
                     right: [
-                        "\"That will do it.\"",
                         "A few days later a guest came to Ali Baba's house, dressed as an oil merchant.",
-                        "\"Might I have a bed for one night?\"",
+                        "\"Might I have a bed for one night?\" he asked.",
                         "Ali Baba gave him a room readily enough.",
-                        "The guest set down great jars in the yard.",
-                        "There were forty of them."
+                        "The guest set down his great jars in the yard. There were forty of them."
                     ]
                 },
                 {
@@ -715,17 +698,13 @@ const EN = {
                     emoji: '🏺',
                     left: [
                         "The night grew late. Morgiana went to light the lamp and found the oil was gone.",
-                        "\"I shall take a little from the jars in the yard.\"",
-                        "She went up to one of them.",
-                        "And a voice came out of it.",
-                        "\"Captain — is it now?\""
+                        "'I shall take a little from the jars in the yard,' she thought.",
+                        "She went up to one of them, and a voice whispered from inside. \"Captain — is it now?\""
                     ],
                     right: [
-                        "Morgiana's breath stopped.",
-                        "But she kept her voice low and answered as if she were he.",
-                        "\"Not yet. Wait.\"",
-                        "\"Yes, captain.\"",
-                        "There was a man inside every jar.",
+                        "Morgiana's breath stopped. But she made her voice deep and answered as if she were the captain. \"Not yet. Wait.\"",
+                        "\"Yes, captain,\" came the answer.",
+                        "She went from jar to jar, and from each one came the same question.",
                         "Only one of them held any oil at all."
                     ]
                 }
@@ -739,37 +718,30 @@ const EN = {
                     art: '06-dance.webp',
                     emoji: '🔥',
                     left: [
-                        "Morgiana did not hurry. She went to the jar with the oil in it and drew off a great potful,",
-                        "and set it boiling in the kitchen.",
+                        "Morgiana did not hurry. She went to the jar with the oil in it, drew off a great potful, and set it boiling in the kitchen.",
                         "Bubble, bubble.",
-                        "The steam went up to the ceiling.",
-                        "Then she carried the pot out into the yard."
+                        "The steam went up to the ceiling. Then she carried the pot out into the yard."
                     ],
                     right: [
-                        "And she poured the hot oil into every jar.",
-                        "There was an uproar inside them.",
-                        "\"Aah — it's hot!\"",
-                        "The thieves came leaping out of the jars, hopping about, and went over the wall and away in every direction.",
-                        "The captain in his room heard the noise and slipped out by the back door."
+                        "She poured the hot oil into every jar.",
+                        "\"Ow! Hot, hot!\"",
+                        "The thieves leapt out of the jars, hopping about. They went over the wall and away in every direction.",
+                        "The captain heard the noise from his room and slipped out by the back door."
                     ]
                 },
                 {
                     art: '06-dance-2.webp',
                     emoji: '💃',
                     left: [
-                        "Next day the captain came back, this time dressed as a merchant.",
-                        "He made friends, little by little, with Ali Baba's son,",
-                        "and got himself invited to supper.",
-                        "But Morgiana, laying the table, saw his face.",
-                        "'I have seen that face somewhere.'"
+                        "Some time later the captain came back, this time dressed as a merchant.",
+                        "Little by little he made friends with Ali Baba's son, and he got himself invited to supper.",
+                        "But Morgiana, laying the table, saw his face. 'I have seen that face somewhere,' she thought."
                     ],
                     right: [
-                        "She thought hard, and then it came to her.",
-                        "At the meal, Morgiana asked leave to dance.",
-                        "Boom, boom, boom.",
-                        "She turned and turned to the drum,",
-                        "with a small dagger at her waist.",
-                        "The dance stopped dead in front of the guest, and her sleeve brushed his coat open."
+                        "She thought hard. Then it came to her. 'The oil merchant!'",
+                        "After supper Morgiana asked leave to dance, with a small dagger at her waist.",
+                        "Boom, boom, boom! She turned and turned to the drum.",
+                        "The dance stopped dead in front of the guest. With the tip of her dagger, she brushed his coat open."
                     ]
                 }
             ]
@@ -782,38 +754,29 @@ const EN = {
                     art: '07-revealed.webp',
                     emoji: '⚔️',
                     left: [
-                        "And in that instant they saw what was under his coat: a great sword hidden at his waist.",
-                        "\"Master — look at this man!\"",
-                        "Morgiana called out.",
-                        "\"This is the oil merchant from the other night.\"",
+                        "In that instant everyone saw a great sword hidden at his waist.",
+                        "\"Master, look at this sword!\" Morgiana cried. \"This is the oil merchant from the other night!\"",
                         "The room froze in a moment."
                     ],
                     right: [
-                        "The son dropped the cup he was holding.",
-                        "The captain sprang up and made for the door.",
-                        "But the doorway was packed with people —",
-                        "the neighbours, standing guard.",
-                        "Morgiana had called them in before she ever began to dance.",
-                        "And the captain was taken there and then."
+                        "The son dropped the cup he was holding. The captain sprang up and made for the door.",
+                        "But the doorway was packed with neighbours, standing guard.",
+                        "Morgiana had called them in before she began to dance.",
+                        "The captain was taken there and then."
                     ]
                 },
                 {
                     art: '07-revealed-2.webp',
                     emoji: '⚔️',
                     left: [
-                        "Ali Baba was silent for a long while.",
-                        "Then he looked at Morgiana.",
-                        "\"You have saved this whole house.\"",
-                        "\"You are no servant now.\"",
-                        "Morgiana shook her head.",
-                        "\"I only did what there was to do.\""
+                        "Ali Baba was silent for a long while. Then he looked at Morgiana.",
+                        "\"You have saved this whole house,\" he said. \"You are no servant now.\"",
+                        "Morgiana smiled shyly. \"I only did what I had to do.\""
                     ],
                     right: [
-                        "Some time later Ali Baba went back to the cave, and this time he took his son.",
-                        "The gold he brought out he shared evenly among the villagers.",
+                        "Later, Ali Baba went back to the cave with his son. He shared the gold evenly among the villagers.",
                         "With it they dug a well and mended the broken road.",
-                        "Only the words he told to nobody.",
-                        "They stayed a thing that one house alone knew."
+                        "But he told the magic words to nobody outside his family."
                     ]
                 }
             ]
@@ -847,7 +810,7 @@ const EN = {
         },
         {
             q: 'How did Morgiana show who the guest was?',
-            choices: ['Her dance brushed his coat open and showed the sword', 'She asked him his name', 'She found his chalk'],
+            choices: ['She brushed his coat open with her dagger and showed the sword', 'She asked him his name', 'She found his chalk'],
             answer: 0
         },
         {
@@ -877,7 +840,7 @@ const EN = {
                     "Ali Baba was not in the Arabian Nights to begin with. A Frenchman added it about three hundred years ago while translating the book.",
                     "Ali Baba was not a rich man. He cut wood and sold it. He only saw the thieves open that door because he had gone up the hill to cut wood.",
                     "'Open, Sesame' is very short. His brother forgot those few words and was shut in the cave. Ali Baba did not forget them because he had said them over to himself again and again.",
-                    "And it was not Ali Baba who sent his brother to that cave. His sister-in-law lent them a measure and waxed the bottom of it, and that is how she found out."
+                    "His sister-in-law lent them a measure with wax on the bottom, and a gold coin came back stuck to it. That is how his brother found out, and Ali Baba could hide it no longer."
                 ],
                 right: [
                     "The person who saves lives most often in this story is Morgiana, the servant — hearing the voice inside the jar, putting the same chalk mark on every house in the street.",
@@ -932,10 +895,10 @@ const EN = {
             { word: 'barley', meaning: '보리', sentence: 'Open, Barley!' }
         ],
         '04-chalk.webp': [
-            { word: 'weep', meaning: '울다', sentence: 'She sat down where she stood and wept.' },
+            { word: 'weep', meaning: '울다', sentence: "Cassim's wife sat down and wept." },
             { word: 'uproar', meaning: '발칵 뒤집힘', sentence: 'The house was in an uproar.' },
-            { word: 'get about', meaning: '소문이 나다', sentence: 'If word of this gets about we are finished.' },
-            { word: 'funeral', meaning: '장례', sentence: 'Morgiana held the funeral quietly.' }
+            { word: 'get about', meaning: '소문이 나다', sentence: 'If word of this gets about, the thieves will find us.' },
+            { word: 'funeral', meaning: '장례', sentence: 'She held the funeral quietly.' }
         ],
         '04-chalk-2.webp': [
             { word: 'ask about', meaning: '수소문하다', sentence: 'Going from house to house and asking about.' },
@@ -951,7 +914,7 @@ const EN = {
         ],
         '05-jars-2.webp': [
             { word: 'lamp', meaning: '등잔', sentence: 'Morgiana went to light the lamp.' },
-            { word: 'as if', meaning: '~인 것처럼', sentence: 'She answered as if she were he.' },
+            { word: 'as if', meaning: '~인 것처럼', sentence: 'She answered as if she were the captain.' },
             { word: 'hold', meaning: '담고 있다', sentence: 'Only one of them held any oil at all.' }
         ],
         '06-dance.webp': [
@@ -965,7 +928,7 @@ const EN = {
             { word: 'lay the table', meaning: '상을 차리다', sentence: 'Morgiana, laying the table, saw his face.' },
             { word: 'ask leave', meaning: '청하다', sentence: 'Morgiana asked leave to dance.' },
             { word: 'dagger', meaning: '단검', sentence: 'With a small dagger at her waist.' },
-            { word: 'brush open', meaning: '스치듯 젖히다', sentence: 'Her sleeve brushed his coat open.' }
+            { word: 'brush open', meaning: '스치듯 젖히다', sentence: 'She brushed his coat open.' }
         ],
         '07-revealed.webp': [
             { word: 'hidden', meaning: '숨겨진', sentence: 'A great sword hidden at his waist.' },
@@ -976,7 +939,7 @@ const EN = {
         ],
         '07-revealed-2.webp': [
             { word: 'servant', meaning: '하녀, 하인', sentence: 'You are no servant now.' },
-            { word: 'evenly', meaning: '고루', sentence: 'He shared it evenly among the villagers.' },
+            { word: 'evenly', meaning: '고루', sentence: 'He shared the gold evenly among the villagers.' },
             { word: 'dig a well', meaning: '우물을 파다', sentence: 'With it they dug a well.' },
             { word: 'mend', meaning: '고치다', sentence: 'And mended the broken road.' }
         ],
@@ -984,7 +947,7 @@ const EN = {
             { word: 'to begin with', meaning: '원래', sentence: 'Ali Baba was not in the Arabian Nights to begin with.' },
             { word: 'say over', meaning: '되뇌다', sentence: 'He had said them over to himself again and again.' },
             { word: 'sister-in-law', meaning: '형수', sentence: 'His sister-in-law lent them a measure.' },
-            { word: 'find out', meaning: '알아내다', sentence: 'And that is how she found out.' }
+            { word: 'find out', meaning: '알아내다', sentence: 'That is how his brother found out.' }
         ]
     }
 };

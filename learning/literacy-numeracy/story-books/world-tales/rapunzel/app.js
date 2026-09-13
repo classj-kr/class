@@ -567,37 +567,32 @@ const EN = {
                     art: '01-garden.webp',
                     emoji: '🌿',
                     left: [
-                        "A cradle stood finished. A young couple who had been a long time without a child were going to have one at last,",
-                        "and the two of them were beside themselves.",
-                        "They sewed baby clothes and tried out names and counted the days. A tiny set of clothes hung by the window.",
-                        "And then the wife began to lose her appetite."
+                        "A young couple had waited years for a child, and at last one was coming.",
+                        "They were beside themselves with joy. The husband carved a cradle out of wood.",
+                        "The wife sewed baby clothes and counted the days. Tiny clothes hung by the window.",
+                        "But then the wife began to lose her appetite."
                     ],
                     right: [
-                        "Behind the house there was a very high wall.",
-                        "Over the wall was the witch's garden, and nobody dared go near it.",
-                        "Every day the wife looked over that wall from her window.",
-                        "Green rampion was growing in the garden,",
-                        "and with the morning dew on it, it looked particularly good.",
-                        "\"I do so want some of that rampion.\""
+                        "Behind the house stood a very high wall.",
+                        "Over the wall was a witch's garden, and nobody dared go near it.",
+                        "Every day she gazed at it from her window.",
+                        "Green rampion grew there, fresh with morning dew.",
+                        "The wife said to her husband, \"I want some of that rampion so badly!\""
                     ]
                 },
                 {
                     art: '01-garden-2.webp',
                     emoji: '🌿',
                     left: [
-                        "The wife could hardly get her food down,",
-                        "and her face grew thinner every day.",
-                        "Her husband hesitated for days. He knew perfectly well whose garden it was, and he could think of nothing else to do.",
-                        "In the end he went over the wall on a moonless night.",
-                        "The wall was twice a grown man's height."
+                        "The wife could hardly get her food down. Her face grew thinner every day.",
+                        "Her husband hesitated for days. He knew it was the witch's garden, but he could see no other way.",
+                        "At last he climbed the wall on a moonless night. It was twice as tall as a man."
                     ],
                     right: [
-                        "He got over it and picked a handful of the green with shaking hands.",
-                        "There was a cool green smell off the leaves.",
-                        "He was turning to go, quickly,",
-                        "when a voice came from behind him.",
-                        "\"And what are you doing in another person's garden?\"",
-                        "He turned round, and there stood a witch in a purple cloak."
+                        "With shaking hands he picked a handful of the green. The leaves smelled cool and fresh.",
+                        "He turned to hurry home. Just then a voice spoke behind him.",
+                        "\"What are you doing in my garden?\"",
+                        "He turned round. There stood a witch in a purple cloak."
                     ]
                 }
             ]
@@ -610,39 +605,32 @@ const EN = {
                     art: '02-tower.webp',
                     emoji: '🗼',
                     left: [
-                        "The husband sank down where he stood",
-                        "and told her the whole of it.",
+                        "The husband sank down where he stood and told her everything.",
                         "\"My wife has taken to her bed for want of this green.\"",
-                        "The witch looked down at him a long while.",
-                        "And then she said something he had not expected.",
-                        "Her voice was quite quiet."
+                        "The witch looked down at him for a long while.",
+                        "Then, to his surprise, she spoke in a quiet voice."
                     ],
                     right: [
-                        "\"Take as much of it as you like. But give me the child when it is born.\"",
-                        "In his fright the husband said he would.",
-                        "There was no time to think about anything.",
-                        "Some while later a daughter was born.",
-                        "And that night the witch came, without a sound."
+                        "\"Take as much as you like. But when your child is born, give it to me.\"",
+                        "In his fright the husband said yes. He had no time to think.",
+                        "Some time later, a baby girl was born.",
+                        "That very night the witch came without a sound. Just as he had promised, she carried the baby away."
                     ]
                 },
                 {
                     art: '02-tower-2.webp',
                     emoji: '🗼',
                     left: [
-                        "The witch named the child Rapunzel — the name of the very green her mother had longed for.",
-                        "Rapunzel grew up in the witch's house.",
-                        "She never went short of food or clothes, and she was never once outside.",
-                        "The door was always locked.",
-                        "The year she turned twelve,",
-                        "the witch took her out into the middle of the wood."
+                        "The witch named the girl Rapunzel, after the green her mother had longed for.",
+                        "Rapunzel grew up in the witch's house. She never went short of food or clothes,",
+                        "but she had never once been outside. The door was always locked.",
+                        "The year she turned twelve, the witch took her deep into the wood."
                     ],
                     right: [
-                        "There stood a high tower.",
-                        "It had no door and no stairs — only one window at the top.",
+                        "There stood a tall tower. It had no door and no stairs, only one window at the top.",
                         "Rapunzel tipped her head right back to look up at it.",
-                        "\"From now on you will live here.\"",
-                        "\"This is the safest place there is.\"",
-                        "And Rapunzel could not say a word."
+                        "The witch said, \"From now on you will live up there. It is the safest place of all.\"",
+                        "Rapunzel could not say a word."
                     ]
                 }
             ]
@@ -655,20 +643,15 @@ const EN = {
                     art: '03-hair.webp',
                     emoji: '💇',
                     left: [
-                        "Rapunzel's hair had never once been cut,",
-                        "and by now it was as long as the tower was high.",
-                        "It shone gold.",
-                        "Combing it made her wrist ache.",
-                        "She kept it hooked over a peg by the window.",
-                        "It was the only way up and down that tower."
+                        "Rapunzel's hair had never once been cut, so by now it was as long as the tower was tall.",
+                        "It shone like gold. Combing it made her wrist ache.",
+                        "When she hooked it over a peg by the window and let it hang down, it made a strong rope.",
+                        "It was the only way up or down the tower."
                     ],
                     right: [
-                        "The witch came to the foot of the tower once a day,",
-                        "bringing food in a basket.",
-                        "And every time she called out,",
-                        "\"Rapunzel, Rapunzel, let down your hair!\"",
-                        "And Rapunzel let her hair down.",
-                        "And the witch climbed up it."
+                        "Once a day the witch came to the foot of the tower with food in a basket.",
+                        "Every time, she called out, \"Rapunzel, Rapunzel, let down your hair!\"",
+                        "Then Rapunzel let her hair fall, and the witch held on to it and climbed up."
                     ]
                 },
                 {
@@ -676,18 +659,14 @@ const EN = {
                     emoji: '💇',
                     left: [
                         "Rapunzel's days were always the same.",
-                        "In the morning she sat at the window and looked down at the wood, counting the birds going over and watching the clouds.",
-                        "And when she grew bored she sang.",
-                        "Not songs the witch had taught her — songs that came of themselves.",
-                        "The singing went out of the window and off through the wood, over the valley."
+                        "Each morning she sat at the window, counting birds and watching clouds.",
+                        "When she got bored, she sang. Nobody had taught her the songs. They came of themselves.",
+                        "Her singing floated out of the window, through the trees and far over the valley."
                     ],
                     right: [
-                        "It went between the trees and a long way off.",
-                        "And Rapunzel did not know it.",
-                        "It never occurred to her that anybody might hear.",
-                        "So a good many years went by.",
-                        "In all that time the only person she saw was the witch.",
-                        "And the only person she could talk to was the witch."
+                        "But Rapunzel did not know that. It never occurred to her that anybody might hear.",
+                        "The only person she ever saw or talked to was the witch.",
+                        "And so many years went by."
                     ]
                 }
             ]
@@ -700,40 +679,32 @@ const EN = {
                     art: '04-prince.webp',
                     emoji: '🐎',
                     left: [
-                        "One day a young prince came into the wood to hunt, and rode deep into it.",
-                        "And then he pulled up his horse and stopped.",
-                        "The wood seemed to have gone quiet,",
-                        "because from somewhere came the sound of singing.",
+                        "One day a young prince came into the wood to hunt. He rode deep among the trees.",
+                        "Suddenly he heard clear singing from somewhere. He pulled up his horse and listened.",
                         "The prince rode toward the sound. He had never heard anything so lovely."
                     ],
                     right: [
-                        "He pushed through the trees and came out into a clearing.",
-                        "And there stood a tower.",
-                        "The prince rode all the way round it.",
-                        "But look as he might, there was no door.",
+                        "He pushed through the trees and came out into a clearing. A tower stood there.",
+                        "The prince rode all the way round it. But look as he might, there was no door.",
                         "He tipped his head back and looked up at the window at the top.",
-                        "\"Who can be up there?\""
+                        "\"Who can be up there?\" he wondered."
                     ]
                 },
                 {
                     art: '04-prince-2.webp',
                     emoji: '🐎',
                     left: [
-                        "The prince watched from hiding for several days,",
-                        "crouched down behind a bush and waiting.",
-                        "He did not move even when the midges bit him.",
-                        "As the sun went down, somebody always came —",
-                        "a woman in a purple cloak.",
+                        "For several days the prince watched from hiding, crouched behind a bush.",
+                        "He did not move, even when the midges bit him.",
+                        "Each evening at sunset, a woman in a purple cloak came.",
                         "She stood at the foot of the tower and called out,",
                         "\"Rapunzel, Rapunzel, let down your hair!\""
                     ],
                     right: [
-                        "The prince heard it perfectly clearly.",
-                        "And he waited until the woman had gone —",
-                        "until the sun was quite down.",
-                        "The next evening, after she left, he went to the foot of the tower",
-                        "and called the same words in a low voice.",
-                        "His heart was beating hard."
+                        "Golden hair came tumbling down from the window, and the woman climbed up it.",
+                        "\"So that is how to get up!\" thought the prince. He held his breath until she had gone.",
+                        "The next evening, after the woman had left, he went to the foot of the tower.",
+                        "He called the same words in a low voice."
                     ]
                 }
             ]
@@ -746,38 +717,31 @@ const EN = {
                     art: '05-meeting.webp',
                     emoji: '👋',
                     left: [
-                        "The hair came sliding down. The prince took hold of it and climbed,",
-                        "and came over the sill into the room.",
-                        "And Rapunzel started back in fright.",
-                        "\"Wh-who are you?\" Her voice shook.",
-                        "Rapunzel had never seen a person other than the witch.",
-                        "Her heart was hammering."
+                        "The hair came sliding down. The prince climbed it and came over the sill into the room.",
+                        "Rapunzel started back in fright. She had never seen anyone but the witch.",
+                        "\"Wh-who are you?\" she asked. Her voice shook, and her heart was hammering."
                     ],
                     right: [
-                        "\"I am sorry to have frightened you. I came because I heard singing.\"",
-                        "\"My singing? Can it be heard outside?\"",
-                        "\"It carries right across the wood.\" At that, Rapunzel's face eased a little,",
-                        "and the step she had taken back came forward again."
+                        "\"I am sorry I frightened you,\" said the prince. \"I heard singing, so I came.\"",
+                        "\"My singing? Can people hear it outside?\"",
+                        "\"All the way across the wood.\" At that, Rapunzel's face eased a little,",
+                        "and she stepped forward again."
                     ]
                 },
                 {
                     art: '05-meeting-2.webp',
                     emoji: '👋',
                     left: [
-                        "The two of them sat facing each other until the sun went down.",
-                        "The prince told her about the world outside —",
-                        "how wide the sea is, how noisy a market day is.",
-                        "Rapunzel listened with her eyes shining.",
-                        "She could hardly believe such places were out beyond that wood.",
-                        "\"Might I see it one day, do you think?\""
+                        "The two of them sat talking until the sun went down. The prince told her about the world outside:",
+                        "how wide the sea is, and how noisy a market day is.",
+                        "Rapunzel listened with shining eyes. She could hardly believe such places lay beyond the wood.",
+                        "\"Could I see them one day too?\" she asked."
                     ],
                     right: [
-                        "\"May I come again tomorrow?\"",
-                        "\"Yes. Do come.\"",
-                        "And from that day the prince came every evening.",
-                        "Every time he brought a skein of silk thread,",
-                        "because Rapunzel had asked him to.",
-                        "And with it she began, in secret, to weave a ladder."
+                        "\"Of course. I will show you myself,\" said the prince. \"May I come again tomorrow?\"",
+                        "\"Yes, please come!\"",
+                        "From that day on he came every evening, and together they planned a way down from the tower.",
+                        "Every time he brought a skein of silk thread. With it, Rapunzel wove a ladder in secret."
                     ]
                 }
             ]
@@ -790,41 +754,31 @@ const EN = {
                     art: '06-caught.webp',
                     emoji: '✂️',
                     left: [
-                        "The ladder would not grow long. The tower was very high indeed,",
-                        "and Rapunzel joined thread to thread and knotted it, night after night.",
-                        "And then one day,",
-                        "when the knots were about half way,",
-                        "the witch came climbing up the hair as usual."
+                        "The ladder grew very slowly, because the tower was so high.",
+                        "Night after night, Rapunzel joined thread to thread and knotted it.",
+                        "When the ladder was about half way done, the witch came climbing up the hair as usual."
                     ],
                     right: [
-                        "And Rapunzel said, without thinking,",
-                        "\"Why are you so heavy coming up, grandmother?\"",
-                        "\"The prince comes up much more lightly.\"",
-                        "She clapped a hand over her mouth as she said it.",
-                        "It was already too late.",
+                        "Rapunzel said without thinking, \"Why are you so heavy when you climb up, Grandmother? The prince is much lighter.\"",
+                        "Then she clapped a hand over her mouth. But it was too late.",
                         "The witch's face went hard.",
-                        "\"So somebody has been here!\" Her voice rang round the room."
+                        "\"So somebody has been here!\" cried the witch. Her voice rang round the room."
                     ]
                 },
                 {
                     art: '06-caught-2.webp',
                     emoji: '✂️',
                     left: [
-                        "The witch took out her scissors on the spot",
-                        "and cut Rapunzel's hair off.",
+                        "The witch took out her scissors on the spot and cut off Rapunzel's hair. Snip, snip!",
                         "The golden hair heaped up on the floor.",
-                        "No sound would come out of Rapunzel.",
-                        "She only stood there with both hands clenched.",
-                        "And the witch took her far away to open country."
+                        "Rapunzel could not make a sound. She only stood there with both hands clenched.",
+                        "Then the witch took her far away to a wide, empty plain."
                     ],
                     right: [
-                        "It was a plain without one tree on it,",
-                        "and nothing but the wind going over it.",
-                        "\"You will live here alone.\"",
-                        "And she went back to the tower by herself.",
-                        "She fastened the cut hair firmly to the peg by the window",
-                        "and waited for evening.",
-                        "\"Let him come, then.\""
+                        "It was a plain without one tree on it. Only the wind blew across it.",
+                        "As she turned to go, the witch said, \"You will live here alone.\"",
+                        "She went back to the tower and fastened the cut hair firmly to the peg by the window.",
+                        "Then she waited for evening. \"Let him come, then,\" she said."
                     ]
                 }
             ]
@@ -837,39 +791,30 @@ const EN = {
                     art: '07-empty.webp',
                     emoji: '🌑',
                     left: [
-                        "That evening the prince came to the foot of the tower as he always did,",
-                        "knowing nothing about it.",
-                        "He was sure Rapunzel would be there,",
-                        "and he had a skein of silk inside his coat.",
-                        "\"Rapunzel, Rapunzel, let down your hair!\"",
-                        "And the hair came sliding down."
+                        "That evening the prince came to the tower as he always did. He knew nothing of what had happened.",
+                        "He was sure Rapunzel would be there, and he had a skein of silk inside his coat.",
+                        "\"Rapunzel, Rapunzel, let down your hair!\" he called.",
+                        "The hair came sliding down."
                     ],
                     right: [
-                        "He went up gladly.",
-                        "And it was not Rapunzel who was waiting for him.",
+                        "He climbed up gladly. But it was not Rapunzel waiting for him.",
                         "The witch stood there with her arms folded.",
-                        "\"That child is not here. You will never see her again.\"",
-                        "The prince went rigid.",
-                        "The strength went out of his hands and the ground swam under him."
+                        "\"That girl is not here,\" she said. \"You will never see her again.\"",
+                        "The prince went rigid. The strength went out of his hands, and the ground seemed to swim under him."
                     ]
                 },
                 {
                     art: '07-empty-2.webp',
                     emoji: '🌑',
                     left: [
-                        "The prince missed his footing and fell.",
-                        "Below the tower it was all thorn bushes,",
-                        "and the thorns caught his eyes so that he could hardly see.",
-                        "Everything went white and blurred.",
-                        "From that day he wandered the wood,",
-                        "with no idea at all where to go."
+                        "The prince missed his footing and fell. Below the tower there were only thorn bushes.",
+                        "The thorns scratched his eyes. Everything went blurred, and soon he could see nothing at all.",
+                        "From that day on he wandered through the wood, with no idea where to go."
                     ],
                     right: [
-                        "He felt his way along from tree to tree.",
-                        "He went over open country and through villages, wandering for years,",
-                        "and everywhere he asked people,",
-                        "\"Have you seen a young woman with golden hair?\" And nobody had.",
-                        "His clothes wore through and his shoes wore out."
+                        "He felt his way along from tree to tree. For years he wandered over fields and through villages.",
+                        "Everywhere he went, he asked, \"Have you seen a young woman with golden hair?\"",
+                        "But nobody had. His clothes wore thin, and his shoes wore out."
                     ]
                 }
             ]
@@ -882,39 +827,30 @@ const EN = {
                     art: '08-ending.webp',
                     emoji: '🌾',
                     left: [
-                        "Meanwhile Rapunzel was living out on the plain alone.",
-                        "She built a hut of earth and dug up greens to eat.",
+                        "Meanwhile, Rapunzel was living alone out on the plain. She built a hut of earth and dug up greens to eat.",
                         "In summer she wove grass to cover the roof.",
-                        "The very green her mother had longed for grew out there too,",
-                        "and Rapunzel felt strange every time she saw it.",
-                        "It made her think of a mother she had never seen."
+                        "Rampion grew there too, the green her mother had longed for.",
+                        "Whenever she saw it, she thought of the mother she had never seen."
                     ],
                     right: [
-                        "When she was lonely she sang, as she used to.",
-                        "She sang even with nobody to hear it.",
-                        "And then one day, after several years,",
-                        "somebody came stumbling toward her from far off —",
-                        "somebody with a stick.",
-                        "Coming straight toward the singing.",
-                        "And when he fell he got up and went on."
+                        "When she was lonely she sang, as she used to, even with nobody to hear.",
+                        "Several years went by. Then one day, somebody with a stick came stumbling toward her from far away.",
+                        "He had heard the singing and was heading straight for it. Whenever he fell, he got up and went on."
                     ]
                 },
                 {
                     art: '08-ending-2.webp',
                     emoji: '🌾',
                     left: [
-                        "Rapunzel stopped singing and looked that way.",
-                        "The person who came up was the prince.",
-                        "His eyes could not see.",
+                        "Rapunzel stopped singing and looked.",
+                        "The person who came up was the prince, and his eyes could not see.",
                         "Rapunzel ran and put her arms round him.",
-                        "And her hot tears fell on his two eyes."
+                        "Her hot tears fell on his eyes."
                     ],
                     right: [
-                        "And then something remarkable happened.",
-                        "The blur in front of him went clear.",
-                        "And the prince saw Rapunzel's face for the first time in years.",
-                        "The two of them took hands and walked off that plain together.",
-                        "And they lived a long, long time after that."
+                        "Then something remarkable happened. The blur in front of him went clear,",
+                        "and the prince saw Rapunzel's face for the first time in years.",
+                        "Hand in hand, they left the plain and lived together for many long years."
                     ]
                 }
             ]
@@ -960,10 +896,10 @@ const EN = {
             q: 'Which reaction to this book does NOT fit?',
             wide: true,
             choices: [
-                "Frightened, the husband promised the child that was coming — he had no room left to think.",
-                "Rapunzel asked without thinking why the old woman was so heavy — she had no idea it was something to hide.",
-                "Out on the moor she sang with nobody to hear her — it was the habit she had kept from the tower.",
-                "The witch tied the cut hair firmly to the hook at the window — she had left it there for Rapunzel to use again when she came back."
+                "Frightened, the husband promised the child that was coming — he had no time to think.",
+                "Rapunzel asked without thinking why Grandmother was so heavy — she had no idea it was something to hide.",
+                "Out on the plain she sang with nobody to hear her — it was the habit she had kept from the tower.",
+                "The witch tied the cut hair firmly to the peg by the window — she had left it there for Rapunzel to use again when she came back."
             ],
             answer: 3
         }
@@ -996,16 +932,16 @@ const EN = {
             { word: 'matter', meaning: '중요하다', sentence: 'Which is why hair matters so much.' }
         ],
         '01-garden.webp': [
-            { word: 'cradle', meaning: '요람', sentence: 'A cradle stood finished.' },
-            { word: 'beside oneself', meaning: '뛸 듯이 기쁜', sentence: 'The two of them were beside themselves.' },
+            { word: 'cradle', meaning: '요람', sentence: 'The husband carved a cradle out of wood.' },
+            { word: 'beside oneself', meaning: '뛸 듯이 기쁜', sentence: 'They were beside themselves with joy.' },
             { word: 'appetite', meaning: '입맛', sentence: 'The wife began to lose her appetite.' },
             { word: 'dare', meaning: '감히 ~하다', sentence: 'Nobody dared go near it.' },
-            { word: 'rampion', meaning: '라푼젤 나물', sentence: 'Green rampion was growing in the garden.' }
+            { word: 'rampion', meaning: '라푼젤 나물', sentence: 'Green rampion grew there.' }
         ],
         '01-garden-2.webp': [
-            { word: 'get down', meaning: '넘기다, 삼키다', sentence: 'She could hardly get her food down.' },
+            { word: 'get down', meaning: '넘기다, 삼키다', sentence: 'The wife could hardly get her food down.' },
             { word: 'hesitate', meaning: '망설이다', sentence: 'Her husband hesitated for days.' },
-            { word: 'moonless', meaning: '달 없는', sentence: 'He went over the wall on a moonless night.' },
+            { word: 'moonless', meaning: '달 없는', sentence: 'He climbed the wall on a moonless night.' },
             { word: 'handful', meaning: '한 줌', sentence: 'He picked a handful of the green.' },
             { word: 'cloak', meaning: '망토', sentence: 'There stood a witch in a purple cloak.' }
         ],
@@ -1013,40 +949,40 @@ const EN = {
             { word: 'sink down', meaning: '주저앉다', sentence: 'The husband sank down where he stood.' },
             { word: 'take to one’s bed', meaning: '앓아눕다', sentence: 'My wife has taken to her bed.' },
             { word: 'for want of', meaning: '~이 없어서', sentence: 'For want of this green.' },
-            { word: 'in one’s fright', meaning: '겁에 질려', sentence: 'In his fright the husband said he would.' }
+            { word: 'in one’s fright', meaning: '겁에 질려', sentence: 'In his fright the husband said yes.' }
         ],
         '02-tower-2.webp': [
-            { word: 'long for', meaning: '몹시 바라다', sentence: 'The very green her mother had longed for.' },
+            { word: 'long for', meaning: '몹시 바라다', sentence: 'The green her mother had longed for.' },
             { word: 'go short of', meaning: '모자라다', sentence: 'She never went short of food.' },
             { word: 'tip one’s head back', meaning: '고개를 젖히다', sentence: 'Rapunzel tipped her head right back.' },
-            { word: 'from now on', meaning: '이제부터', sentence: 'From now on you will live here.' }
+            { word: 'from now on', meaning: '이제부터', sentence: 'From now on you will live up there.' }
         ],
         '03-hair.webp': [
             { word: 'comb', meaning: '빗질하다', sentence: 'Combing it made her wrist ache.' },
-            { word: 'peg', meaning: '고리, 못', sentence: 'She kept it hooked over a peg.' },
-            { word: 'basket', meaning: '바구니', sentence: 'Bringing food in a basket.' },
+            { word: 'peg', meaning: '고리, 못', sentence: 'She hooked it over a peg by the window.' },
+            { word: 'basket', meaning: '바구니', sentence: 'With food in a basket.' },
             { word: 'let down', meaning: '내리다', sentence: 'Rapunzel, let down your hair!' }
         ],
         '03-hair-2.webp': [
-            { word: 'count', meaning: '세다', sentence: 'Counting the birds going over.' },
-            { word: 'come of oneself', meaning: '저절로 생겨나다', sentence: 'Songs that came of themselves.' },
-            { word: 'valley', meaning: '골짜기', sentence: 'Off through the wood, over the valley.' },
+            { word: 'count', meaning: '세다', sentence: 'Counting birds and watching clouds.' },
+            { word: 'come of oneself', meaning: '저절로 생겨나다', sentence: 'They came of themselves.' },
+            { word: 'valley', meaning: '골짜기', sentence: 'Far over the valley.' },
             { word: 'occur to', meaning: '떠오르다', sentence: 'It never occurred to her that anybody might hear.' }
         ],
         '04-prince.webp': [
-            { word: 'pull up', meaning: '고삐를 당겨 멈추다', sentence: 'He pulled up his horse and stopped.' },
+            { word: 'pull up', meaning: '고삐를 당겨 멈추다', sentence: 'He pulled up his horse and listened.' },
             { word: 'push through', meaning: '헤치고 나아가다', sentence: 'He pushed through the trees.' },
-            { word: 'clearing', meaning: '빈터', sentence: 'And came out into a clearing.' },
+            { word: 'clearing', meaning: '빈터', sentence: 'Came out into a clearing.' },
             { word: 'look as he might', meaning: '아무리 찾아도', sentence: 'Look as he might, there was no door.' }
         ],
         '04-prince-2.webp': [
             { word: 'from hiding', meaning: '숨어서', sentence: 'The prince watched from hiding.' },
-            { word: 'crouch', meaning: '몸을 낮추다', sentence: 'Crouched down behind a bush.' },
+            { word: 'crouch', meaning: '몸을 낮추다', sentence: 'Crouched behind a bush.' },
             { word: 'midge', meaning: '모기, 날벌레', sentence: 'Even when the midges bit him.' },
             { word: 'in a low voice', meaning: '목소리를 낮추어', sentence: 'He called the same words in a low voice.' }
         ],
         '05-meeting.webp': [
-            { word: 'sill', meaning: '창턱', sentence: 'He came over the sill into the room.' },
+            { word: 'sill', meaning: '창턱', sentence: 'Came over the sill into the room.' },
             { word: 'start back', meaning: '깜짝 놀라 물러서다', sentence: 'Rapunzel started back in fright.' },
             { word: 'hammer', meaning: '쿵쿵 뛰다', sentence: 'Her heart was hammering.' },
             { word: 'ease', meaning: '풀리다', sentence: "Rapunzel's face eased a little." }
@@ -1054,46 +990,46 @@ const EN = {
         '05-meeting-2.webp': [
             { word: 'market day', meaning: '장날', sentence: 'How noisy a market day is.' },
             { word: 'skein', meaning: '실타래', sentence: 'Every time he brought a skein of silk thread.' },
-            { word: 'in secret', meaning: '몰래', sentence: 'She began, in secret, to weave a ladder.' },
-            { word: 'ladder', meaning: '사다리', sentence: 'She began to weave a ladder.' }
+            { word: 'in secret', meaning: '몰래', sentence: 'Rapunzel wove a ladder in secret.' },
+            { word: 'ladder', meaning: '사다리', sentence: 'Rapunzel wove a ladder.' }
         ],
         '06-caught.webp': [
-            { word: 'join', meaning: '잇다', sentence: 'She joined thread to thread.' },
-            { word: 'knot', meaning: '매듭짓다', sentence: 'And knotted it, night after night.' },
-            { word: 'half way', meaning: '절반쯤', sentence: 'When the knots were about half way.' },
+            { word: 'join', meaning: '잇다', sentence: 'Rapunzel joined thread to thread.' },
+            { word: 'knot', meaning: '매듭짓다', sentence: 'Rapunzel joined thread to thread and knotted it.' },
+            { word: 'half way', meaning: '절반쯤', sentence: 'When the ladder was about half way done.' },
             { word: 'clap a hand over', meaning: '입을 막다', sentence: 'She clapped a hand over her mouth.' },
             { word: 'ring', meaning: '울리다', sentence: 'Her voice rang round the room.' }
         ],
         '06-caught-2.webp': [
             { word: 'on the spot', meaning: '그 자리에서', sentence: 'The witch took out her scissors on the spot.' },
             { word: 'heap up', meaning: '쌓이다', sentence: 'The golden hair heaped up on the floor.' },
-            { word: 'clench', meaning: '꼭 쥐다', sentence: 'She stood with both hands clenched.' },
+            { word: 'clench', meaning: '꼭 쥐다', sentence: 'She only stood there with both hands clenched.' },
             { word: 'plain', meaning: '벌판', sentence: 'It was a plain without one tree on it.' },
-            { word: 'fasten', meaning: '단단히 매다', sentence: 'She fastened the cut hair firmly to the peg.' }
+            { word: 'fasten', meaning: '단단히 매다', sentence: 'Fastened the cut hair firmly to the peg by the window.' }
         ],
         '07-empty.webp': [
-            { word: 'as he always did', meaning: '여느 때처럼', sentence: 'The prince came as he always did.' },
-            { word: 'arms folded', meaning: '팔짱을 낀', sentence: 'The witch stood with her arms folded.' },
+            { word: 'as he always did', meaning: '여느 때처럼', sentence: 'The prince came to the tower as he always did.' },
+            { word: 'arms folded', meaning: '팔짱을 낀', sentence: 'The witch stood there with her arms folded.' },
             { word: 'go rigid', meaning: '몸이 굳다', sentence: 'The prince went rigid.' },
-            { word: 'swim', meaning: '아득해지다', sentence: 'The ground swam under him.' }
+            { word: 'swim', meaning: '아득해지다', sentence: 'The ground seemed to swim under him.' }
         ],
         '07-empty-2.webp': [
             { word: 'miss one’s footing', meaning: '발을 헛디디다', sentence: 'The prince missed his footing and fell.' },
-            { word: 'thorn', meaning: '가시', sentence: 'Below the tower it was all thorn bushes.' },
-            { word: 'blurred', meaning: '뿌옇게 흐린', sentence: 'Everything went white and blurred.' },
+            { word: 'thorn', meaning: '가시', sentence: 'Below the tower there were only thorn bushes.' },
+            { word: 'blurred', meaning: '뿌옇게 흐린', sentence: 'Everything went blurred.' },
             { word: 'feel one’s way', meaning: '더듬어 가다', sentence: 'He felt his way along from tree to tree.' },
             { word: 'wear out', meaning: '닳다', sentence: 'His shoes wore out.' }
         ],
         '08-ending.webp': [
             { word: 'hut', meaning: '오두막, 흙집', sentence: 'She built a hut of earth.' },
-            { word: 'dig up', meaning: '캐다', sentence: 'And dug up greens to eat.' },
+            { word: 'dig up', meaning: '캐다', sentence: 'Dug up greens to eat.' },
             { word: 'as she used to', meaning: '예전처럼', sentence: 'When she was lonely she sang, as she used to.' },
-            { word: 'stumble', meaning: '비틀거리다', sentence: 'Somebody came stumbling toward her.' }
+            { word: 'stumble', meaning: '비틀거리다', sentence: 'Somebody with a stick came stumbling toward her.' }
         ],
         '08-ending-2.webp': [
             { word: 'come up', meaning: '가까이 오다', sentence: 'The person who came up was the prince.' },
-            { word: 'put one’s arms round', meaning: '끌어안다', sentence: 'Rapunzel put her arms round him.' },
-            { word: 'remarkable', meaning: '놀라운', sentence: 'And then something remarkable happened.' },
+            { word: 'put one’s arms round', meaning: '끌어안다', sentence: 'Rapunzel ran and put her arms round him.' },
+            { word: 'remarkable', meaning: '놀라운', sentence: 'Then something remarkable happened.' },
             { word: 'go clear', meaning: '환해지다', sentence: 'The blur in front of him went clear.' }
         ],
         'end.webp': [
