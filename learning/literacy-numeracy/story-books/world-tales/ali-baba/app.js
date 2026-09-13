@@ -837,13 +837,13 @@ const EN = {
             {
                 art: 'end.webp',
                 left: [
-                    "Ali Baba was not in the Arabian Nights to begin with. A Frenchman added it about three hundred years ago while translating the book.",
-                    "Ali Baba was not a rich man. He cut wood and sold it. He only saw the thieves open that door because he had gone up the hill to cut wood.",
-                    "'Open, Sesame' is very short. His brother forgot those few words and was shut in the cave. Ali Baba did not forget them because he had said them over to himself again and again.",
-                    "His sister-in-law lent them a measure with wax on the bottom, and a gold coin came back stuck to it. That is how his brother found out, and Ali Baba could hide it no longer."
+                    "Ali Baba was not in the Arabian Nights to begin with. A Frenchman added it about three hundred years ago.",
+                    "Ali Baba was a poor woodcutter. He only saw the thieves open that door because he had gone up the hill to cut wood.",
+                    "His brother forgot the words 'Open, Sesame' and was shut in the cave. Ali Baba had said them over to himself again and again.",
+                    "His sister-in-law lent them a measure with wax on the bottom, and a gold coin came back stuck to it. That is how his brother found out."
                 ],
                 right: [
-                    "The person who saves lives most often in this story is Morgiana, the servant — hearing the voice inside the jar, putting the same chalk mark on every house in the street.",
+                    "Morgiana, the servant, saves lives most often in this story.",
                     "How much should Ali Baba have taken out of that cave?"
                 ]
             }

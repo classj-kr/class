@@ -911,14 +911,12 @@ const EN = {
             {
                 art: 'end.webp',
                 left: [
-                    "Rapunzel is not a person's name. It is the name of a plant — the green that grew in the garden over the wall.",
-                    "Everything starts with that garden. The wife wanted the green badly, and her husband climbed the wall.",
-                    "And the child is named after the green as well. The plant's name ends up on a daughter.",
+                    "Rapunzel is not a person's name. It is the name of a plant, the green that grew in the garden over the wall.",
+                    "The wife wanted the green badly, and her husband climbed the wall. And the plant's name ends up on a daughter.",
                     "The tower had no door and no stairs. The only way in or out was Rapunzel's hair."
                 ],
                 right: [
-                    "What brought Rapunzel and the prince together was the singing. She sang because she was bored, and the sound went out of the tower.",
-                    "And it is that same singing that leads him back to her after years of wandering blind. What she did to pass the time in the tower became the road out in the end.",
+                    "Rapunzel sang because she was bored, and the prince heard her. Years later, that same singing leads him back to her.",
                     "Was the witch keeping Rapunzel safe, or keeping her shut in?"
                 ]
             }

@@ -586,8 +586,7 @@ const EN = {
                     ],
                     right: [
                         "The gates opened and the princess rode out on Falada.",
-                        "Only one maid rode with her, and they had little baggage.",
-                        "Her mother stayed at the gate.",
+                        "Only one maid rode with her, and they had little baggage. Her mother stayed at the gate.",
                         "The princess slackened the reins and kept looking back.",
                         "Over the hill the castle was out of sight, and the road was new to her."
                     ]
@@ -619,10 +618,8 @@ const EN = {
                     emoji: '💧',
                     left: [
                         "The princess cupped both hands and lifted the water.",
-                        "And as she bent down,",
-                        "something slipped out from inside her dress.",
-                        "It was the white handkerchief her mother had given her.",
-                        "The moment it touched the water it was carried away.",
+                        "As she bent down, something slipped out from inside her dress.",
+                        "It was the white handkerchief her mother had given her. The moment it touched the water it was carried away.",
                         "\"Oh — no!\""
                     ],
                     right: [
@@ -819,8 +816,7 @@ const EN = {
                     left: [
                         "The king left the room and shut the door behind him.",
                         "The princess went into the kitchen and opened the stove door.",
-                        "She knelt down and looked into the fire for a long time.",
-                        "A log cracked and spat.",
+                        "She knelt down and looked into the fire for a long time. A log cracked and spat.",
                         "At last she began. \"I am the princess who was to marry into this country.\""
                     ],
                     right: [
@@ -927,14 +923,14 @@ const EN = {
             {
                 art: 'end.webp',
                 left: [
-                    "A talking horse is a rare thing in the tales the Brothers Grimm collected. Falada goes on talking even after his death.",
-                    "The princess loses the handkerchief at the stream. Her mother had given it to her. And from that point the maid begins to get the better of her.",
-                    "The reason she says nothing while her place is taken is that she gave her word. Keeping that word is how she comes to be minding geese.",
+                    "A talking horse is a rare thing, and Falada talks even after his death.",
+                    "The princess loses her mother's handkerchief at the stream. From that point the maid begins to get the better of her.",
+                    "She says nothing while her place is taken because she gave her word. Keeping it is how she comes to be minding geese.",
                     "Falada speaks to her even from above the gate. It was for that one sentence every morning that she stopped under it."
                 ],
                 right: [
-                    "The king does not press her. He tells her to say it to the stove instead. What cannot be said to a person has to be sayable somewhere.",
-                    "Was the princess right to keep that promise all the way to the end?"
+                    "The king does not press her, so she tells the stove. Some things must be sayable somewhere.",
+                    "Was the princess right to keep that promise to the end?"
                 ]
             }
         ]

@@ -854,12 +854,12 @@ const EN = {
                 art: 'end.webp',
                 left: [
                     "Andersen was a poor shoemaker's son, and he was teased a great deal as a boy. This story came out of that time.",
-                    "The duckling was not ugly. He simply was not a duck. He was being measured on the ducks' own ruler, so of course he always came up short.",
-                    "His mother stood up for him at first. Then she could not stand it any longer and turned away too. That is the hardest place in the whole story.",
-                    "He was alone all that winter. And that is when he grew. It happened where nobody was watching."
+                    "The duckling was not ugly. He simply was not a duck. Measured on the ducks' own ruler, of course he always came up short.",
+                    "His mother stood up for him at first, then turned away too. That is the hardest place in the story.",
+                    "He was alone all that winter. And that is when he grew, where nobody was watching."
                 ],
                 right: [
-                    "He did not become a swan. He had been one from the beginning. What changed was that he finally had eyes to see the face in the water.",
+                    "He did not become a swan. He had been one from the beginning.",
                     "What became of the ducks who teased him? The story never says."
                 ]
             }

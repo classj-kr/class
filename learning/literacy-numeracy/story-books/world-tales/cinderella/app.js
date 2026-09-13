@@ -826,14 +826,14 @@ const EN = {
             {
                 art: 'end.webp',
                 left: [
-                    "Cinderella does not belong to one country. There are hundreds of stories like it all over the world. Korea's own Kongjwi Patjwi is one of them.",
-                    "The oldest was written down in China more than a thousand years ago. In that one too, the girl is found because of a single lost shoe.",
-                    "But why a shoe, and not a dress or a ring? Because only one person's foot fits it. Nobody has to argue — you simply try it on.",
-                    "The glass slipper first appears when Perrault wrote the story down in France. Before him it was a shoe sewn with gold thread."
+                    "Cinderella does not belong to one country. There are hundreds of stories like it, such as Korea's Kongjwi Patjwi.",
+                    "The oldest, from China, is over a thousand years old. There too, a single lost shoe finds the girl.",
+                    "Why a shoe? Only one person's foot fits it. Nobody has to argue — you simply try it on.",
+                    "The glass slipper came from Perrault in France. Before him it was a shoe sewn with gold thread."
                 ],
                 right: [
-                    "All Cinderella was given was the chance to go. The dancing and the gentle words were her own; the old woman did not dance for her.",
-                    "She knew that everything would vanish when the clock struck twelve, and she went anyway. Would you have gone?"
+                    "The dancing and the kind words were Cinderella's own.",
+                    "She knew everything would vanish at twelve, and she went anyway. Would you have gone?"
                 ]
             }
         ]

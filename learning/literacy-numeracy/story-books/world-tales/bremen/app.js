@@ -796,7 +796,7 @@ const EN = {
                     emoji: '🏡',
                     left: [
                         "The robber ran to his captain, shaking all over.",
-                        "\"That house is full of terrible things! A witch raked my face with her nails. A man with a knife stabbed me in the leg at the door.\"",
+                        "\"That house is full of terrible things! A witch raked my face with her nails. A man with a knife stabbed me in the leg.\"",
                         "\"One with a club was waiting in the yard and knocked me flat. And a judge on the roof shouted, 'Take him away!'\""
                     ],
                     right: [
@@ -835,7 +835,7 @@ const EN = {
         },
         {
             q: 'Why could the cat not catch mice?',
-            choices: ['He had grown too fat', 'His teeth had gone', 'He had hurt his paw'],
+            choices: ['He had grown too fat', 'His teeth were worn down', 'He had hurt his paw'],
             answer: 1
         },
         {
@@ -862,10 +862,10 @@ const EN = {
             q: 'Which reaction to this book does NOT fit?',
             wide: true,
             choices: [
-                "The donkey heard his master through the barn wall and lay awake all night — he saw that staying would be the end of him.",
-                "He told the hound that barking was singing — he gave the one skill left to him a new name.",
+                "The donkey heard his master outside the barn door and lay awake all night — he saw that staying would be the end of him.",
+                "He told the dog that barking was singing — he gave the one skill left to him a new name.",
                 "The robber spoke of a witch, a man with a knife, a judge on the roof — in the dark he had guessed at what happened to him.",
-                "The cock climbed to the treetop and looked all around — he was keeping watch to find the four a place to rest."
+                "The cockerel climbed to the treetop and looked all around — he was keeping watch to find the four a place to rest."
             ],
             answer: 3
         }
@@ -878,7 +878,7 @@ const EN = {
                 art: 'end.webp',
                 left: [
                     "There is a statue in Bremen of the four of them standing one on top of another. It comes from this story.",
-                    "All four are animals turned out for being old — the donkey, the dog, the cat and the cockerel. Every one of them was useful once.",
+                    "All four were thrown out as useless. The donkey, the dog and the cat had grown old, and the cockerel was going to be cooked for a feast. Every one of them was useful once.",
                     "And the four of them never do get to Bremen. They found a house on the way. What they met on the road turned out to be better than where they were going.",
                     "Look again at how they got rid of the robbers. They did not fight. They stood on one another and made a noise all at once."
                 ],
@@ -970,7 +970,7 @@ const EN = {
             { word: 'suggest', meaning: '먼저 말을 꺼내다', sentence: 'Without anybody suggesting it.' },
             { word: 'clear', meaning: '남김없이 먹다', sentence: 'The four of them cleared everything on it.' },
             { word: 'full', meaning: '배부른', sentence: 'For the first time in months they were full.' },
-            { word: 'dung heap', meaning: '두엄더미', sentence: 'The donkey on the dung heap in the yard.' },
+            { word: 'straw heap', meaning: '짚더미', sentence: 'The donkey lay on the straw heap in the yard.' },
             { word: 'hearth', meaning: '아궁이', sentence: 'The cat by the hearth.' }
         ],
         '07-return.webp': [

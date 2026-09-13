@@ -976,11 +976,11 @@ const EN = {
                 left: [
                     "In the first written version it is not a golden-haired girl who goes in but an old woman. It came out in England about a hundred and ninety years ago.",
                     "The child chose in the same order all three times: the big one, the middle one, the small one. And all three times the small one was right.",
-                    "The small one was right because she was the smallest. She was not picking the best thing. She was picking the thing that fitted her.",
-                    "She stops short when she sees the broken chair. And then she walks on past it, because nobody had seen her."
+                    "She was not picking the best thing. She was picking the thing that fitted her.",
+                    "She stops short when she sees the broken chair. Then she walks on past it, because nobody had seen her."
                 ],
                 right: [
-                    "The three bears are not fierce animals. They came home from a walk and looked at their own table. If anyone was startled, it was the bears.",
+                    "The three bears are not fierce animals. They just came home from a walk.",
                     "What should she have done about the broken chair?"
                 ]
             }

@@ -909,12 +909,11 @@ const EN = {
                 art: 'end.webp',
                 left: [
                     "The Wonderful Wizard of Oz is counted as the first story an American wrote for American children. It came out about a hundred and twenty years ago.",
-                    "Until then, nearly everything children read had crossed over from Europe. Baum built his story out of what American children already knew — a cyclone, a cornfield.",
-                    "The Scarecrow goes for brains, the Woodman for a heart, the Lion for courage. And all the way there, each of them shows exactly what he says he lacks.",
-                    "The Scarecrow thinks of going to Glinda, the Woodman carries his sleeping friends out of the flower field, and the Lion clears the ditch with his friends on his back."
+                    "Before it, nearly everything children read had crossed over from Europe. Baum used what American children knew — a cyclone, a cornfield.",
+                    "The Scarecrow wants brains, the Woodman a heart, the Lion courage. On the way, each of them shows exactly what he says he lacks — the Lion even clears the ditch with his friends on his back."
                 ],
                 right: [
-                    "All Oz ever gave them was bran, silk and a green drink. Nothing new was added — they simply began, at last, to believe in what was already there. Dorothy's silver shoes had held that power from the very first day.",
+                    "Oz added nothing to them. Dorothy's shoes had held their power from the very first day.",
                     "What is it that you already have and do not know about yet?"
                 ]
             }

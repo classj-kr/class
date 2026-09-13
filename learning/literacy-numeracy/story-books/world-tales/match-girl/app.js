@@ -831,13 +831,13 @@ const EN = {
             {
                 art: 'end.webp',
                 left: [
-                    "Andersen made this story himself. His mother is said to have begged in the streets as a child, and he wrote it after hearing about that.",
-                    "The girl strikes matches four times, and each time she sees something different: a stove, a table laid, a Christmas tree, and then her grandmother.",
-                    "The first three are what the body wants — warmth and food. Only the last one is different, because a grandmother is not a thing.",
-                    "And that is exactly where she stops being careful with the matches and lights them all at once. She would burn everything she had to sell, just to hold on to her grandmother."
+                    "Andersen is said to have written this after hearing that his mother had begged in the streets as a child.",
+                    "The girl strikes matches four times and sees a stove, a table laid, a Christmas tree, and then her grandmother.",
+                    "The first three are what the body wants. Only the last is different, because a grandmother is not a thing.",
+                    "This is the part where she stops being careful with the matches and lights them all at once, just to hold on to her grandmother."
                 ],
                 right: [
-                    "There were plenty of people in that street. It is only that not one of them stopped walking. That is the part Andersen wanted to write down.",
+                    "There were plenty of people in that street. Not one of them stopped.",
                     "What could the people who passed her have done?"
                 ]
             }

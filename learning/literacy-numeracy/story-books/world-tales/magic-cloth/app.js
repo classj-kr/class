@@ -674,9 +674,9 @@ const EN = {
                     art: '04-donkey.webp',
                     emoji: '🪙',
                     left: [
-                        "The next year the second son finished learning the miller's trade. He was white with flour from head to foot.",
+                        "The next year the second son finished learning to be a miller. He was white with flour.",
                         "As they parted, the miller said, \"I have something to give you.\"",
-                        "He led out a donkey. To look at, it was an ordinary donkey.",
+                        "He led out a donkey. It looked like an ordinary donkey.",
                         "\"And what can this fellow do?\" asked the second son."
                     ],
                     right: [

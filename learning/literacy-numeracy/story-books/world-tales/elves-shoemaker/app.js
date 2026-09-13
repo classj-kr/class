@@ -813,14 +813,14 @@ const EN = {
             {
                 art: 'end.webp',
                 left: [
-                    "Germany has a good many tales about little people who come in at night and help with the work. The Brothers Grimm wrote down one of them.",
-                    "The shoemaker was poor, but he was not idle. Even with one piece of leather left, he measured it and cut it out before he went to bed.",
-                    "What the elves worked on was that cut leather. They did not make something out of nothing. There was help because there was something ready for it.",
-                    "Look again at why the shoes sold so well. They were beautifully made — but the good prices came because word had got round."
+                    "The Brothers Grimm wrote down one of the German tales about little people who come in at night and help with the work.",
+                    "The shoemaker was poor, but not idle. With one piece of leather left, he still cut it out before bed.",
+                    "The elves worked on that cut leather. They did not make something out of nothing; there was something ready for it.",
+                    "The shoes got good prices because word had got round."
                 ],
                 right: [
-                    "Once they had money, the two of them set out to find who had been helping. And then they made them clothes. They found a way to pay it back.",
-                    "The elves took the clothes and never came again. Why do you think that was?"
+                    "They found a way to pay the elves back: clothes.",
+                    "The elves never came again. Why do you think that was?"
                 ]
             }
         ]

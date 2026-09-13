@@ -856,13 +856,13 @@ const EN = {
                 art: 'end.webp',
                 left: [
                     "Oscar Wilde made this story up to tell his own children, about a hundred and forty years ago.",
-                    "While he was alive, the prince knew nothing about sorrow, because he lived inside a wall. Only once he was a statue standing high up could he see the whole city.",
-                    "And once he could see it, he could not bear it. So he sends himself away piece by piece — the ruby in his sword, the sapphires in his eyes, and finally every sheet of gold on him.",
-                    "After he gives his eyes away the prince can see nothing at all. The swallow goes and looks for him and comes back and tells him."
+                    "While he was alive, the prince knew nothing about sorrow, because he lived inside a wall. Only as a statue could he see the whole city.",
+                    "And he could not bear it. So he sends himself away piece by piece — the ruby, the sapphires, and every sheet of gold.",
+                    "Without his eyes the prince can see nothing. The swallow looks for him and tells him."
                 ],
                 right: [
-                    "The swallow puts off going south one day at a time. Just today, just one more day. Those days piled up, and the winter came.",
-                    "The people pull the shabby statue down. What was it they could not see?"
+                    "The swallow puts off going south.",
+                    "The people pull the shabby statue down. What could they not see?"
                 ]
             }
         ]

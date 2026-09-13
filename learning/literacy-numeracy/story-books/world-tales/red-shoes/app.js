@@ -883,14 +883,12 @@ const EN = {
             {
                 art: 'end.webp',
                 left: [
-                    "Andersen is said to have remembered the first new shoes he ever wore for a very long time. That memory became this story.",
-                    "Karen went barefoot all summer. In winter she wore hard wooden clogs, until a kind woman sewed her red shoes out of rags.",
-                    "She could choose the red leather shoes in the shop because the lady's eyes were too weak to see them. Karen knew that, and said nothing.",
-                    "On the night she slipped out to the feast, her feet begin to move by themselves. She wanted to stop and could not."
+                    "Andersen, it is said, never forgot his first new shoes. That memory became this story.",
+                    "Karen went barefoot all summer, until a kind woman sewed her red shoes out of rags.",
+                    "In the shop, the lady's eyes were too weak to see the red leather shoes. Karen knew that, and said nothing. At the feast, her feet begin to move by themselves."
                 ],
                 right: [
-                    "The person who stops her is a woman in a cottage in the wood. She takes hold of her, sits her down and fetches her a bowl of water.",
-                    "The shoes stay where they fell in the grass, and Karen never goes back for them. She did not just take them off - she left them behind.",
+                    "A woman in the wood stopped her. Karen did not just take the shoes off - she left them behind.",
                     "What should Karen have said in that shop?"
                 ]
             }

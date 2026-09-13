@@ -915,14 +915,14 @@ const EN = {
             {
                 art: 'end.webp',
                 left: [
-                    "The story of a giant living above the clouds has been told in England for a very long time, and it was gathered into the shape we know about a hundred and forty years ago.",
-                    "Jack traded a cow for a few beans. Anybody could see it was a bad bargain — which is exactly why his mother threw them out of the window.",
-                    "And then those beans grew overnight. If she had not thrown them, no beanstalk would have grown by the window. Something done in anger opened the road.",
-                    "Jack climbed above the clouds three times. The first time he hid in fear, the second time he half knew his way, and the third time he went up because he wanted to know what else was in the castle."
+                    "The story of a giant above the clouds is old in England. It was gathered into the shape we know about a hundred and forty years ago.",
+                    "Anybody could see that a few beans for a cow was a bad bargain, so his mother threw them out of the window.",
+                    "And those beans grew overnight. Something done in anger opened the road.",
+                    "Jack climbed three times. The first time he hid in fear; the third time he went up because he wanted to know what else was there."
                 ],
                 right: [
-                    "Look again at the giant's wife. She is the one who hid Jack. In the most dangerous house in the story, she was the one who kept him safe.",
-                    "Was Jack right to climb up that third time? By then, after all, they had enough to live on."
+                    "The giant's wife is the one who kept Jack safe.",
+                    "Was Jack right to climb a third time, when they had enough to live on?"
                 ]
             }
         ]

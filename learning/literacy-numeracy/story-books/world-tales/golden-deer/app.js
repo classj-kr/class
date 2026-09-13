@@ -940,14 +940,12 @@ const EN = {
             {
                 art: 'end.webp',
                 left: [
-                    "This story comes from India. It is in a book that collects the old tales of the Buddha, and it is more than two thousand years old.",
-                    "Look again at what the Golden Deer offers the king. A hunt drives the herd and injures many. One a day, he says, and that will be enough.",
-                    "It is a sad sum, but it is the sum that hurts the herd least. He did what a leader could do.",
-                    "And then the turn falls to a deer carrying a fawn. When he asks who will go instead, nobody comes forward."
+                    "This story comes from India, from a book that collects the old tales of the Buddha. It is over two thousand years old.",
+                    "The Golden Deer offers the king one deer a day instead of a hunt that injures many. It is a sad sum, but it hurts the herd least.",
+                    "Then the turn falls to a deer carrying a fawn, and nobody comes forward to go instead."
                 ],
                 right: [
-                    "The Golden Deer goes himself, and not because he is kind. Because he is the leader, he says.",
-                    "And when the king spares the deer, the Golden Deer asks about the birds and the fish as well. He does not stop at saving his own herd.",
+                    "The Golden Deer goes himself, as the leader. Then he asks the king to spare the birds and fish too.",
                     "What do you think the king was ashamed of, hearing that?"
                 ]
             }

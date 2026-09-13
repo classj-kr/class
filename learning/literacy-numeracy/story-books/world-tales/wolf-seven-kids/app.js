@@ -848,13 +848,13 @@ const EN = {
             {
                 art: 'end.webp',
                 left: [
-                    "The Brothers Grimm did not make these stories up. They went from village to village and wrote down what the old people told them.",
+                    "The Brothers Grimm did not make these stories up. They wrote down what old people in the villages told them.",
                     "The wolf came three times, and each time he mended whatever had given him away. His voice was rough, so he swallowed chalk. His feet were black, so he floured them.",
-                    "Every time the trickster is caught, he becomes harder to catch. The kids checked everything they had been told to check — and were fooled all the same.",
-                    "Yet in the end the wolf fell into the well. Nobody pushed him. His own heavy belly carried him over."
+                    "Every time the trickster is caught, he becomes harder to catch. The kids checked everything — and were fooled all the same.",
+                    "Yet in the end the wolf fell into the well. His own heavy belly carried him over."
                 ],
                 right: [
-                    "The one who came through it was the youngest. He was small enough to fit inside the clock. In old tales the weakest one is often the one who survives.",
+                    "The youngest came through it. He was small enough to fit inside the clock. In old tales the weakest one often survives.",
                     "So what else should the seven little kids have checked?"
                 ]
             }

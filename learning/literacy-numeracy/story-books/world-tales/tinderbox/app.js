@@ -963,14 +963,14 @@ const EN = {
             {
                 art: 'end.webp',
                 left: [
-                    "This story was in the very first collection Andersen published. He was thirty.",
+                    "This story was in the very first collection Andersen published.",
                     "The soldier brought two things up out of that tree: money, and an old box. The money was the thing you could see. The box looked like nothing at all.",
-                    "And the box was the thing the old woman went on and on asking for. That is the point at which the soldier worked out what it was worth.",
-                    "When the money runs out his friends stop coming. When he is rich again they come back. And the soldier watches all that and says nothing about it."
+                    "But the old woman went on asking for the box. That is when the soldier worked out what it was worth.",
+                    "When the money runs out his friends stop coming. When he is rich again they come back. The soldier watches and says nothing."
                 ],
                 right: [
-                    "The person who helps him in prison is a child playing in the street. Not anybody powerful.",
-                    "The soldier could do anything at all with that box. So how did he end up in trouble?"
+                    "A child helps him, not anybody powerful.",
+                    "The soldier could do anything with that box. How did he end up in trouble?"
                 ]
             }
         ]

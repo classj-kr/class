@@ -935,15 +935,13 @@ const EN = {
             {
                 art: 'end.webp',
                 left: [
-                    "Andersen set this in a China he had never been to. He read about the palace in books and made the rest up.",
-                    "The emperor only learned about the nightingale in his own country by reading a book — one written down by somebody from far away.",
-                    "It is the kitchen child who finds the bird. She was the only person in that palace who knew the sound.",
-                    "The mechanical bird repeats one tune. And that is exactly why so many people preferred it: you always knew what you were going to get."
+                    "Andersen set this in a China he had never been to. He read about it in books and made the rest up.",
+                    "It is the kitchen child who finds the bird. The emperor had only read about it in a book.",
+                    "The mechanical bird repeats one tune. That is why so many people preferred it: you always knew what you would get."
                 ],
                 right: [
-                    "When the machine wore out, nobody could mend it properly. What came back then was the nightingale at the window.",
-                    "She will not live at the palace, and she asks him to keep her visits secret. She is saying she will not be the emperor's bird.",
-                    "Why do you think the nightingale would not stay at the palace?"
+                    "When the machine wore out, nobody could mend it. The nightingale came back.",
+                    "Why do you think she would not stay at the palace?"
                 ]
             }
         ]

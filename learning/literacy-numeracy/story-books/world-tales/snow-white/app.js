@@ -840,14 +840,14 @@ const EN = {
             {
                 art: 'end.webp',
                 left: [
-                    "The Brothers Grimm went from village to village writing down the stories people told them. Snow White was set down that way.",
-                    "The queen came three times. First a sash, then a comb, and last of all an apple. Each time she chose something a little more believable.",
-                    "Twice Snow White opened the door, and the last time she took the apple through the window, though the dwarfs had told her not to. Perhaps it was because she was alone so much of the day.",
-                    "Look at the huntsman once more. He was the only one who did not do as he was told. That is where the story turns."
+                    "The Brothers Grimm went from village to village writing down stories. Snow White was set down that way.",
+                    "The queen came three times — a sash, a comb, an apple. Each time she chose something a little more believable.",
+                    "Snow White opened the door though the dwarfs had told her not to. Perhaps she was alone too much.",
+                    "The huntsman was the only one who did not do as he was told. That is where the story turns."
                 ],
                 right: [
-                    "The mirror only ever told the truth. What the queen could not bear was not the mirror but the answer.",
-                    "The dwarfs did not turn Snow White out when they first found her — a stranger, asleep in their own house. Why do you think that was?"
+                    "The mirror only told the truth. What the queen could not bear was the answer.",
+                    "The dwarfs found Snow White asleep in their house and did not turn her out. Why?"
                 ]
             }
         ]

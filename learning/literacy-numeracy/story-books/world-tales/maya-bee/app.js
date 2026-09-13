@@ -605,8 +605,7 @@ const EN = {
                     left: [
                         "Inside a great tree there was a hive. It was home to thousands of honeybees.",
                         "Every room was packed with six-sided cells.",
-                        "One day a young bee woke up there. Her name was Maya.",
-                        "She had large eyes and a great deal of curiosity.",
+                        "One day a young bee named Maya woke up there. She had large eyes and a great deal of curiosity.",
                         "Cassandra, a teacher bee, took charge of her."
                     ],
                     right: [
@@ -733,8 +732,7 @@ const EN = {
                     art: '04-beetle.webp',
                     emoji: '🪲',
                     left: [
-                        "Maya set off again and flew low along a dirt path.",
-                        "Up ahead, a beetle was struggling away.",
+                        "Maya set off again and flew low along a dirt path. Up ahead, a beetle was struggling away.",
                         "It was a dung beetle rolling a great ball. He wore a stiff collar round his neck.",
                         "His face was red all over, because the ball kept rolling back down on him.",
                         "Maya felt sorry for him."
@@ -866,8 +864,7 @@ const EN = {
                         "A few days went by. Maya was passing an old tree.",
                         "There was a great hole in the trunk, and low voices came out of it.",
                         "Maya pressed herself against the bark and looked in.",
-                        "Hornets were gathered inside!",
-                        "They were several times the size of a honeybee."
+                        "Hornets were gathered inside! They were several times the size of a honeybee."
                     ],
                     right: [
                         "They were making a plan together.",
@@ -891,8 +888,7 @@ const EN = {
                     right: [
                         "But which way was home? So Maya climbed high and looked all round.",
                         "Far off she saw a tree she knew.",
-                        "The sun was going down and down. Maya flew straight for the tree.",
-                        "The wind beat hard against her face.",
+                        "The sun was going down and down. Maya flew straight for the tree, the wind beating hard against her face.",
                         "\"A little further, a little further!\" And she set her teeth."
                     ]
                 }
@@ -1010,14 +1006,13 @@ const EN = {
             {
                 art: 'end.webp',
                 left: [
-                    "A German writer named Waldemar Bonsels wrote this about a hundred and ten years ago. It follows one bee round a whole countryside.",
-                    "Maya leaves the hive. That is breaking the rule: a bee does not leave the swarm.",
-                    "What she meets out there is one insect after another. Peppi the grasshopper, Kurt the beetle, and a spider's web.",
-                    "Look again at what Kurt says. That you do not hand your own work to somebody else. Maya remembers it for a long time."
+                    "Waldemar Bonsels, a German, wrote this about a hundred and ten years ago. It follows one bee round a countryside.",
+                    "Maya breaks the rule: a bee does not leave the swarm.",
+                    "Kurt the beetle tells her that you do not hand your own work to somebody else."
                 ],
                 right: [
-                    "When she hears about the hornets she goes back — back to the swarm that will scold her for leaving. That is the hardest step in the story.",
-                    "Look at what Maya says to herself once the hornets withdraw — that her curiosity about the outside world was not wasted after all. The bee who broke the rule is the one who kept it.",
+                    "When she hears about the hornets, she goes back to the swarm that will scold her. That is the hardest step in the story.",
+                    "Her curiosity was not wasted: the bee who broke the rule saved the hive.",
                     "Was Maya right to leave the hive?"
                 ]
             }

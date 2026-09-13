@@ -907,13 +907,13 @@ const EN = {
             {
                 art: 'end.webp',
                 left: [
-                    "The Little Mermaid people know today ends differently from this one. What is in this book is closer to what Andersen wrote.",
-                    "What the little mermaid handed over to the sea witch was her voice. Of all things, her voice. Which is exactly why she can never say that she was the one who saved him.",
-                    "The prince takes the person who was beside him when he opened his eyes for his rescuer. The little mermaid was not there — she had to go back into the water.",
-                    "And it was not only the prince she wanted. She wanted to see the world above the water. That began on her fifteenth birthday, before she ever saw him."
+                    "The Little Mermaid people know today ends differently. This book is closer to what Andersen wrote.",
+                    "What the little mermaid handed over to the sea witch was her voice. Of all things, her voice. So she can never say that she saved him.",
+                    "When he wakes, the prince takes the girl beside him for his rescuer. The little mermaid had gone back into the water.",
+                    "And it was not only the prince she wanted. She wanted to see the world above the water, long before she saw him."
                 ],
                 right: [
-                    "Every step hurt her, and she danced anyway. Nobody knew about that pain. It is the quietest hurt in the whole story.",
+                    "Every step hurt her, and nobody knew.",
                     "What could the little mermaid have given up instead of her voice?"
                 ]
             }

@@ -907,14 +907,13 @@ const EN = {
             {
                 art: 'end.webp',
                 left: [
-                    "This is among the shortest things Andersen wrote. And it has lasted nearly two hundred years all the same.",
-                    "The prince travelled through country after country. There were plenty of princesses, and no way of knowing which were real — because if you ask, everybody says yes.",
-                    "Look again at the queen's test. She did not ask a question. An answer to a question can be made up.",
-                    "She lays twenty mattresses and twenty quilts on one pea — so many that surely nobody could feel it."
+                    "This is among the shortest things Andersen wrote, and it has lasted nearly two hundred years.",
+                    "The prince travelled far. There were plenty of princesses, but if you ask, everybody says they are real.",
+                    "Look at the queen's test. She did not ask a question, because an answer to a question can be made up.",
+                    "She laid twenty mattresses and twenty quilts on one pea."
                 ],
                 right: [
-                    "And the young woman says straight out that she did not sleep. She could have got through the morning by saying she slept beautifully.",
-                    "The pea is still in the museum, they say - and then the story tells you it really happened. That is Andersen keeping a straight face.",
+                    "The young woman says straight out that she did not sleep, when she could have lied.",
                     "Was that a fair test?"
                 ]
             }

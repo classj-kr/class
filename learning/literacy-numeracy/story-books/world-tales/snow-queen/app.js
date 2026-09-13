@@ -936,13 +936,13 @@ const EN = {
                 art: 'end.webp',
                 left: [
                     "This is the longest thing Andersen wrote. It comes in seven parts.",
-                    "Everything starts with the splinter from the broken mirror. Once it is in your eye, good things look hideous. That is the whole reason Kai changed.",
+                    "Everything starts with the splinter from the broken mirror. In your eye, it makes good things look hideous.",
                     "Kai did not turn into a bad boy. What he saw turned. That is why Gerda became hateful to him.",
                     "Gerda is not strong and she is not clever. She simply never stopped walking — giving her shoes to the river, riding on the back of a reindeer."
                 ],
                 right: [
-                    "In the Snow Queen's palace, Kai was fitting pieces of ice together to make a word. However he arranged them, it never came out. What solved it was Gerda's tears.",
-                    "A good many people helped Gerda along the way. Which of them do you think helped most?"
+                    "Kai tried to make a word from pieces of ice, but however he arranged them, it never came out. Gerda's tears solved it.",
+                    "Many people helped Gerda. Which of them helped most?"
                 ]
             }
         ]

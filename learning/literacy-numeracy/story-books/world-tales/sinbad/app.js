@@ -969,13 +969,11 @@ const EN = {
                 art: 'end.webp',
                 left: [
                     "Sindbad goes to sea seven times. Only some of those voyages are in this book.",
-                    "The reason he went the first time was that he had spent all his money. It was not because he liked adventures.",
-                    "And then he goes again after he is rich. And again after that. The reason he went the first time is not the reason he kept going.",
-                    "Look again at what he did in the valley. He did not invent anything new. He simply used the merchants' own method backwards."
+                    "He went the first time because he had spent all his money, not because he liked adventures. Then he kept going even after he was rich.",
+                    "In the valley he did not invent anything new. He used the merchants' own method backwards."
                 ],
                 right: [
-                    "The sea roads in the story are not all made up. Arab merchants of that time really did sail their ships as far as India and China.",
-                    "At the end Sindbad gives up the sea, and tells the story of it to everyone who calls on him instead. He stopped going and started telling.",
+                    "The sea roads are not all made up. At the end Sindbad stops sailing and starts telling.",
                     "Why do you think Sindbad kept going back to sea?"
                 ]
             }

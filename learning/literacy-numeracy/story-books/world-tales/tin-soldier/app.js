@@ -870,15 +870,14 @@ const EN = {
             {
                 art: 'end.webp',
                 left: [
-                    "Tin soldiers were the toys Andersen played with as a boy. In those days people melted down spoons to make them.",
-                    "Of the twenty-five tin soldiers, only one had a single leg. The tin ran short and he was the last one poured. He was not badly made — he was made out of what was left.",
-                    "The soldier believes the paper dancer has one leg too. In fact she simply had the other one raised high behind her. He took her for somebody like himself.",
-                    "He goes out of a window, along in a boat, through a drain and into the belly of a fish. And in all that time the soldier never makes a sound. Standing with his musket and looking ahead was all a soldier could do."
+                    "People once melted down spoons to make tin soldiers.",
+                    "One of the twenty-five soldiers had a single leg. He was not badly made — the tin ran short.",
+                    "He took the paper dancer for somebody like himself, with one leg. Her other leg was only raised behind her.",
+                    "Out of a window, through a drain and into the belly of a fish — the soldier never makes a sound."
                 ],
                 right: [
-                    "Where the soldier ends up is the room he started from. He went right round in a big circle and came back to the same place.",
-                    "What was left in the ashes was a tin heart and a burnt spangle. His body had melted away, but the shape of a heart was left.",
-                    "Why do you think the soldier never said anything, right to the end?"
+                    "He went right round in a big circle. In the ashes, only a tin heart was left.",
+                    "Why did the soldier never say anything?"
                 ]
             }
         ]

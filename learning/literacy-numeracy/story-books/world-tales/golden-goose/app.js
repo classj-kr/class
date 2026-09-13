@@ -949,14 +949,14 @@ const EN = {
             {
                 art: 'end.webp',
                 left: [
-                    "Whether or not you share your food with the old man in the wood — the whole story turns on that. The Brothers Grimm collected it.",
-                    "The two elder brothers meet the old man and will not share their bread and wine, because it would leave them less. The youngest shares, and he had less to start with.",
-                    "The golden goose was not something the youngest found. It was under the tree the old man pointed at.",
-                    "Look at the people stuck to that goose. Every one of them only touched one thing. They pulled at the person in front without knowing they would stick — and so the whole line grew."
+                    "Whether you share your food with the old man in the wood — the whole story turns on that.",
+                    "The two elder brothers will not share their bread, because it would leave them less. The youngest shares, and he had less to start with.",
+                    "The golden goose was under the tree the old man pointed at.",
+                    "The people stuck to the goose each only touched one thing, pulling at the person in front — and so the line grew."
                 ],
                 right: [
-                    "What made the princess laugh was not a performance. Nobody there was trying to be funny at all.",
-                    "At the end the youngest sends the goose back to the wood. Why do you think he did?"
+                    "What made her laugh was no performance.",
+                    "At the end the youngest sends the goose back. Why do you think he did?"
                 ]
             }
         ]

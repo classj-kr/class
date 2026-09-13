@@ -958,14 +958,14 @@ const EN = {
             {
                 art: 'end.webp',
                 left: [
-                    "This story comes from Greece, and was written down more than two thousand years ago. Almost the same story is told in Korea.",
+                    "This story comes from Greece, and was written down more than two thousand years ago. Korea tells almost the same story.",
                     "The king got donkey's ears because he took the wrong side in a contest. It was the price of not listening well.",
-                    "The barber promises to say nothing. And then he can think of nothing else, eating or sleeping.",
-                    "What made it so hard was not that the words were so grand. It was that he alone had to hold them."
+                    "The barber promises to say nothing, and then can think of nothing else.",
+                    "It was hard not because the words were so grand, but because he alone had to hold them."
                 ],
                 right: [
-                    "He thought shouting it into the ground would be the end of it. And then reeds grew on that spot.",
-                    "Once the whole country knows, the king takes off his hat and walks out into the yard. With nothing left to hide, he feels more at ease than ever.",
+                    "He thought shouting it into the ground would end it. Then reeds grew on that spot.",
+                    "Once everyone knows, the king takes off his hat. With nothing left to hide, he feels more at ease than ever.",
                     "What should the barber have done from the start?"
                 ]
             }

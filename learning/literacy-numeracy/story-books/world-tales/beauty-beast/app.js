@@ -880,14 +880,13 @@ const EN = {
             {
                 art: 'end.webp',
                 left: [
-                    "This story came out of France. The version that spread was the one Madame de Beaumont shaped for children about two hundred and seventy years ago.",
-                    "What the father picked was one rose. He did not steal a treasure. And of the three daughters, only the youngest had asked for it.",
-                    "The elder sisters asked for clothes and jewels. Belle asked for a flower. The cheapest request turned out to have the highest price.",
-                    "There was nothing missing from the Beast's castle. Only somebody to talk to. After Belle came, there was talk at the table every evening."
+                    "This story came from France. The best-known version is the one Madame de Beaumont shaped for children.",
+                    "The father picked only one rose, for Belle, the youngest. Her sisters asked for clothes and jewels. The cheapest request turned out to have the highest price.",
+                    "There was nothing missing from the Beast's castle, except somebody to talk to."
                 ],
                 right: [
-                    "Belle did not change her mind on any one day. It happened after a great many evenings. Seeing somebody differently takes time.",
-                    "The Beast let Belle go home, when she might never have come back. Why do you think he did?"
+                    "Seeing somebody differently takes time.",
+                    "The Beast let Belle go, though she might not come back. Why do you think he did?"
                 ]
             }
         ]

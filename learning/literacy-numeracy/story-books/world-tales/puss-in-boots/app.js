@@ -884,14 +884,14 @@ const EN = {
             {
                 art: 'end.webp',
                 left: [
-                    "Puss in Boots was written down by Perrault in France about three hundred years ago. A similar story had already been told in Italy before that.",
-                    "The youngest son inherited one cat. His brothers got the mill and the donkey. Anybody would have said he had the useless share.",
-                    "And the first thing the cat asked for was a sack and a pair of boots. Before any cleverness, he got hold of his tools.",
-                    "Look again at the presents sent to the king. They were not costly things — rabbits and pheasants. What mattered is that they arrived, day after day, without a gap."
+                    "Perrault wrote down Puss in Boots in France about three hundred years ago. It had been told in Italy before that.",
+                    "The youngest son inherited one cat. His brothers got the mill and the donkey. He had the useless share.",
+                    "The cat first asked for a sack and a pair of boots. Before any cleverness, he got hold of his tools.",
+                    "His presents to the king were not costly things — rabbits and pheasants. They arrived day after day, without a gap."
                 ],
                 right: [
-                    "At the end the youngest son says out loud that he is a miller's son. The king says he knew all along. Saying it in his own voice was the hardest part of the whole story.",
-                    "Was what the cat did right? He said there was something where there was nothing."
+                    "At the end the son says out loud he is a miller's son. The king knew all along.",
+                    "Was the cat right? He said there was something where there was nothing."
                 ]
             }
         ]

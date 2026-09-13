@@ -832,8 +832,7 @@ const EN = {
                     emoji: '🕯️',
                     left: [
                         "At last the princess sat up and took a candle to the corner.",
-                        "The frog was hunched down on the bitterly cold stone,",
-                        "his small body shaking.",
+                        "The frog was hunched down on the bitterly cold stone, his small body shaking.",
                         "His feet were worn raw from the long way from the pond.",
                         "The princess sighed and gathered him up in both hands."
                     ],

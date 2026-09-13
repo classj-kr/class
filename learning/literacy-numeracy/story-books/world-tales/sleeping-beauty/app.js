@@ -847,14 +847,14 @@ const EN = {
             {
                 art: 'end.webp',
                 left: [
-                    "Perrault's version and the Grimms' version are not the same. The one in this book is closer to the Grimms'.",
-                    "Everything begins with there being only twelve golden plates. That is the whole reason the thirteenth fairy was not invited. A very small thing brought on a very large one.",
-                    "The king burnt every spinning wheel in the kingdom. And still there was one at the top of the tower. He only thought he had got rid of them all.",
-                    "That is also why the princess had never seen one. If you sweep a dangerous thing entirely out of sight, the chance to recognise it goes with it."
+                    "Perrault's version and the Grimms' version are not the same. This book is closer to the Grimms'.",
+                    "There were only twelve golden plates, so the thirteenth fairy was not invited. A very small thing brought on a very large one.",
+                    "The king burnt every spinning wheel he could find. He only thought he had got rid of them all.",
+                    "So the princess had never seen one. Hide a danger away, and the chance to recognise it goes too."
                 ],
                 right: [
-                    "The twelfth fairy could not undo the curse. She could only change it. Even in front of something you cannot stop, there is usually something left that you can do.",
-                    "Instead of burning the spinning wheels, what else could the king have done?"
+                    "Even in front of something you cannot stop, the twelfth fairy changed the curse.",
+                    "What else could the king have done, instead of burning the wheels?"
                 ]
             }
         ]

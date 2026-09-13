@@ -853,15 +853,13 @@ const EN = {
             {
                 art: 'end.webp',
                 left: [
-                    "Andersen liked very small heroes. He puts a child the size of a thumb in the middle of the page and the whole world turns enormous around her.",
-                    "Thumbelina never once leaves a house on her own feet. The toad carries her off, the beetle snatches her up, the field mouse takes her in. She is always moved to somewhere somebody else has chosen.",
-                    "But there is one thing she decides for herself: she saves the wounded swallow. Nobody asked her to, and nobody was watching.",
-                    "The field mouse is not a wicked person. She got Thumbelina through the winter. She simply decided by herself what would be good for her."
+                    "Andersen liked very small heroes.",
+                    "The toad carries Thumbelina off. The field mouse takes her in — not a wicked person, but she decides for her.",
+                    "She decides one thing herself: to save the wounded swallow."
                 ],
                 right: [
-                    "And the one who carries her away at the end is that same swallow. What she did came back to her — though she had no way of knowing it would.",
-                    "With the wings she is given in the country of flowers, she flies for the first time under her own power. Until then somebody had always carried her.",
-                    "Life with the mole would not have been all bad. Why do you think Thumbelina refused it?"
+                    "At the end the same swallow carries her away. What she did came back to her.",
+                    "Why do you think Thumbelina refused the mole?"
                 ]
             }
         ]

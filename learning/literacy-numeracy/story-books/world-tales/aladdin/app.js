@@ -614,8 +614,7 @@ const EN = {
                         "\"Hand up the lamp first!\" said the man, holding out his hand.",
                         "\"Pull me out first,\" said Aladdin. \"Then I'll give it to you.\"",
                         "The man's face twisted. He wanted the lamp, not Aladdin.",
-                        "\"You wretched boy!\" He threw his powder, and the ground slammed shut.",
-                        "Aladdin was sealed in."
+                        "\"You wretched boy!\" He threw his powder, and the ground slammed shut. Aladdin was sealed in."
                     ]
                 }
             ]
@@ -889,14 +888,13 @@ const EN = {
             {
                 art: 'end.webp',
                 left: [
-                    "This story sits in the Arabian Nights, the collection Queen Scheherazade is said to have told over a thousand and one nights.",
-                    "But Aladdin was not in that collection to begin with. A Frenchman added it about three hundred years ago while translating the book, noting that he had heard it from a man from Syria.",
-                    "The first thing Aladdin was given was not the lamp but the ring — put on his finger by the magician, to keep him safe. And it is that ring that gets him out of the cave.",
-                    "The thing the magician handed over himself is the thing that undoes his whole plan."
+                    "This story sits in the Arabian Nights, the collection Queen Scheherazade told over a thousand and one nights.",
+                    "But Aladdin was not in that collection to begin with. A Frenchman added it about three hundred years ago while translating the book.",
+                    "The first thing Aladdin was given was not the lamp but the ring, from the magician himself. That ring gets him out of the cave. The thing the magician gave him undoes his whole plan."
                 ],
                 right: [
-                    "After Aladdin first sees the princess, he asks his mother to speak for him. He does not dare to speak up himself. At that point he is still nobody.",
-                    "At the end, Aladdin puts the lamp away at the bottom of a chest. Why do you think he did that?"
+                    "Aladdin first asks his mother to speak for him.",
+                    "At the end, Aladdin puts the lamp away in a chest. Why do you think he did that?"
                 ]
             }
         ]

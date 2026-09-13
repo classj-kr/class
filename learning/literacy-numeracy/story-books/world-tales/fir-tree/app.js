@@ -961,14 +961,13 @@ const EN = {
             {
                 art: 'end.webp',
                 left: [
-                    "It looks like a Christmas story, and it is not a cheerful one. Andersen often ended things this way.",
-                    "The fir tree is always waiting for what comes next — to grow tall, to be a mast on a ship, to be stood up in a room. The wood he was actually standing in never came into it.",
-                    "The sunlight and the wind tell him that now is the best time, and he does not listen.",
-                    "That one evening with the candles lit was the best day of the fir tree's whole life. And even on that day he was thinking about tomorrow."
+                    "It looks like a Christmas story, but it is not a cheerful one.",
+                    "The fir tree is always waiting for what comes next — to grow tall, to be a mast, to stand in a room. The wood he was standing in never came into it.",
+                    "The sunlight and the wind tell him that now is the best time. He does not listen. Even on his one evening with the candles lit, he was thinking about tomorrow."
                 ],
                 right: [
-                    "It is only once he is up in the attic that the fir tree thinks of the wood. And by then he has no roots.",
-                    "At the very end he shuts his eyes and thinks that if he ever grows again he will know today when he sees it. It took him a whole life to learn to look.",
+                    "Only up in the attic does the fir tree think of the wood. And by then he has no roots.",
+                    "At the very end he learns to look at today. It took him a whole life.",
                     "When could the fir tree have been happy?"
                 ]
             }
