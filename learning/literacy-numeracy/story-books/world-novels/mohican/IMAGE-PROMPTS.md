@@ -187,11 +187,15 @@ Tamenund: an extremely old Delaware leader, over a hundred, seated.
 | `images/story-11-a.webp` | A Delaware funeral: two graves side by side, women singing, the whole village standing in a circle, an old British officer at the edge with his hat off. |
 | `images/story-11-b.webp` | An older Mohican man standing alone at the edge of the clearing after everyone else has gone, and a very old leader seated behind him. |
 
-## 12장 · 그 뒤에 있었던 일 — 지금은 쓰지 않는 그림
-
-12장을 없애고 열한 장으로 줄였습니다. 아래 두 그림은 이제 책에 나오지 않습니다.
+## 해설 · 읽고 나서
 
 | 파일명 | 장면 |
 |---|---|
 | `images/story-12-a.webp` | A long line of families walking west along a winter road with carts and bundles, soldiers riding alongside — drawn soberly, no melodrama. |
-| `images/story-12-b.webp` | A present-day classroom: children at desks and an adult at the front pointing at a word list in a Native language on the board. |
+| `images/end.webp` | (그대로) |
+
+12장을 없애고 열한 장으로 줄이면서, 위 `story-12-a.webp` 는 해설(읽고 나서)로 옮겼습니다.
+서쪽으로 걸어서 옮겨진 이야기를 적은 대목 곁에 놓입니다. 파일 이름은 그대로 둡니다.
+
+`story-12-b.webp`(칠판 앞 오늘날 교실)는 버렸습니다. 그림 안에 글자를 그리라는 프롬프트라
+공통 지시문과 부딪쳤고, 실제로도 뜻 없는 글자꼴이 그려져 나왔습니다.

@@ -793,7 +793,7 @@ let CHAPTER_SEGS = CHS().map(ch => segsOf(ch.paras));
 const AFTERWORD = {
     title: '읽고 나서',
     emoji: '🏹',
-    art: ['end.webp'],
+    art: ['story-12-a.webp', 'end.webp'],
     paras: [
         `이 책의 제목은 『모히컨 족의 최후』입니다. 마지막이라는 말이 제목에 있습니다. 그러니 이 책은 처음부터 무엇이 끝나는 이야기인지를 알려 주고 시작합니다.`,
         `쓴 사람은 미국의 제임스 페니모어 쿠퍼입니다. 이 책은 그가 쓴 다섯 권짜리 이야기 가운데 하나입니다. 매의 눈이라는 사람이 젊을 때부터 늙을 때까지 나오는 이야기입니다.`,
