@@ -650,6 +650,8 @@ function fillPages(segs, caps, headHtml) {
 function paginateChapter(ch, chIndex) {
     const segs = CHAPTER_SEGS[chIndex];
     const arts = (ch.art && ch.art.length) ? ch.art : [];
+    // artAt: 그림마다 "몇째 문단 옆에 붙는다"를 적어 둔 것. 없으면 예전처럼 고르게 뿌린다.
+    const artAt = (ch.artAt && ch.artAt.length) ? ch.artAt : null;
     const { usable, headHeight, artHeight } = PROBE;
     const headHtml = `<h2>${T().label(ch.num)}${ch.title}</h2>`;
     const totalH = PROBE.measure(runHtml(segs, 0, segs.length));
@@ -660,6 +662,61 @@ function paginateChapter(ch, chIndex) {
         const caps = [];
         slots.forEach(kind => { caps.push(usable); caps.push(kind === 'img' ? underArt : usable); });
         return caps;
+    };
+
+    // 그 문단이 어느 펼침면에 놓였는지 찾는다.
+    const spreadOfPara = (p, ranges, n) => {
+        for (let s = 0; s < n; s++) {
+            const L = ranges[2 * s], R = ranges[2 * s + 1];
+            const a = L ? L[0] : (R ? R[0] : null);
+            const b = R ? R[1] : (L ? L[1] : null);
+            if (a == null || b == null) continue;
+            for (let i = a; i < b; i++) if (segs[i] && segs[i].paraIdx === p) return s;
+        }
+        return -1;
+    };
+
+    // 바라는 자리에 그림을 놓되, 겹치지 않고 차례가 뒤집히지 않게 민다.
+    const placeArts = (desired, n) => {
+        const pos = desired.slice();
+        for (let k = 0; k < pos.length; k++) {
+            let p = Math.max(0, Math.min(n - 1, pos[k]));
+            if (k > 0 && p <= pos[k - 1]) p = pos[k - 1] + 1;
+            pos[k] = p;
+        }
+        for (let k = pos.length - 1; k >= 0; k--) {
+            const cap = n - 1 - (pos.length - 1 - k);
+            if (pos[k] > cap) pos[k] = cap;
+            if (k > 0 && pos[k] <= pos[k - 1]) pos[k - 1] = pos[k] - 1;
+        }
+        const slots = new Array(n).fill('text');
+        pos.forEach(p => { if (p >= 0 && p < n) slots[p] = 'img'; });
+        return slots;
+    };
+
+    // 펼침면 수를 정해 놓고, 그 안에서 그림 자리를 잡는다.
+    // 그림을 옮기면 글이 다시 나뉘고, 그러면 문단이 놓인 쪽도 달라진다. 그래서 몇 번 되풀이한다.
+    const planFor = spreadCount => {
+        let slots = slotPlan(arts.length, Math.max(0, spreadCount - arts.length));
+        let caps = capsOf(slots);
+        let ranges = fillPages(segs, caps, headHtml);
+        if (artAt) {
+            for (let round = 0; round < 5; round++) {
+                const desired = arts.map((_, k) => {
+                    const p = artAt[k];
+                    const s = (p == null) ? -1 : spreadOfPara(p, ranges, spreadCount);
+                    return s < 0
+                        ? Math.min(spreadCount - 1, Math.round((k + 0.5) * spreadCount / arts.length))
+                        : s;
+                });
+                const next = placeArts(desired, spreadCount);
+                if (next.join() === slots.join()) break;
+                slots = next;
+                caps = capsOf(slots);
+                ranges = fillPages(segs, caps, headHtml);
+            }
+        }
+        return { slots, caps, ranges };
     };
 
     // 그림 한 장이 펼침면 하나를 쓴다. 거기서 시작해 글이 다 들어갈 때까지 펼침면을 늘린다.
@@ -673,9 +730,7 @@ function paginateChapter(ch, chIndex) {
         spreadCount++;
     }
 
-    let slots = slotPlan(arts.length, Math.max(0, spreadCount - arts.length));
-    let caps = capsOf(slots);
-    let ranges = fillPages(segs, caps, headHtml);
+    let { slots, caps, ranges } = planFor(spreadCount);
     for (let guard = 0; guard < 8; guard++) {
         // 한 쪽이라도 넘치면 펼침면을 늘려 다시 나눈다.
         // 마지막 쪽만 보면 안 된다 — 첫 쪽에는 장 제목이 얹히므로 그쪽이 먼저 넘칠 수 있다.
@@ -683,9 +738,7 @@ function paginateChapter(ch, chIndex) {
             PROBE.measure((n === 0 ? headHtml : '') + runHtml(segs, a, b)) > caps[n] + 0.25);
         if (!over || spreadCount >= maxSpreads) break;
         spreadCount++;
-        slots = slotPlan(arts.length, Math.max(0, spreadCount - arts.length));
-        caps = capsOf(slots);
-        ranges = fillPages(segs, caps, headHtml);
+        ({ slots, caps, ranges } = planFor(spreadCount));
     }
 
     const spreads = [];
