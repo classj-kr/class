@@ -143,7 +143,7 @@ The four horses: matched Arabian bays with a white one on the left.
 | 파일명 | 장면 |
 |---|---|
 | `images/story-06-a.webp` | A Roman training ground: a young man practising with a four-horse chariot on a bare oval track, an instructor watching. |
-| `images/story-06-b.webp` | An office in Antioch: a heavy man seated motionless in a wheeled chair with a great ledger open before him, a young man standing across the table reading it. |
+| `images/story-06-b.webp` | A shuttered merchant's house in Antioch: an old man motionless in a wheeled chair looking up at a travel-worn young man just shown in, a young woman at the old man's side who has plainly recognised the visitor. |
 
 ## 7장 · 시모니데스
 

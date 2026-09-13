@@ -115,7 +115,7 @@ Haydee: a young Greek woman with dark hair, in embroidered Greek dress.
 
 | 파일명 | 장면 |
 |---|---|
-| `images/story-04-a.webp` | Two prisoners seated on the stone floor of a cell, the old priest drawing names and lines on the flagstones with a piece of chalk, the young man leaning forward with a stricken face. |
+| `images/story-04-a.webp` | A cell by lamplight: the old priest seated on the stone floor counting something off on his fingers, the young man risen to his feet with his back against the wall, stricken, his breath gone. |
 | `images/story-04-b.webp` | The same cell later: the old man teaching, sheets of homemade paper spread out, a pen made from a fish bone, both men absorbed, a single shaft of light from a tiny high window. |
 
 ## 5장 · 몬테크리스토 섬
@@ -137,7 +137,7 @@ Haydee: a young Greek woman with dark hair, in embroidered Greek dress.
 | 파일명 | 장면 |
 |---|---|
 | `images/story-07-a.webp` | A shabby roadside inn: a priest in a black cassock holding up a large diamond by candlelight while a greedy innkeeper stares at it, unable to look away. |
-| `images/story-07-b.webp` | A Marseille quay in bright afternoon: a brand-new three-masted ship coming in under full sail with her name freshly painted on the bow, an old shipowner weeping on the dock, crowds cheering. |
+| `images/story-07-b.webp` | A Marseille quay in bright afternoon: a brand-new three-masted ship coming in under full sail with fresh paint and new canvas, an old shipowner weeping on the dock, crowds cheering. |
 
 ## 8장 · 몽테크리스토 백작
 
@@ -157,7 +157,7 @@ Haydee: a young Greek woman with dark hair, in embroidered Greek dress.
 
 | 파일명 | 장면 |
 |---|---|
-| `images/story-10-a.webp` | A grand chamber of the House of Peers: a young woman in Greek dress standing alone before the assembly holding up an old document, a general in medals rising white-faced from his seat. |
+| `images/story-10-a.webp` | A grand chamber of the House of Peers: a young woman in a plain black dress standing alone and unveiled before the assembly, an old folded deed held out in her hand, a general in medals half risen from his seat, white-faced. |
 | `images/story-10-b.webp` | A study late at night: a veiled woman letting her veil fall to reveal an older Mercedes, kneeling before a pale man in black who stands utterly still. |
 
 ## 11장 · 결투장의 아침
@@ -185,7 +185,7 @@ Haydee: a young Greek woman with dark hair, in embroidered Greek dress.
 
 | 파일명 | 장면 |
 |---|---|
-| `images/story-14-a.webp` | An empty prison cell shown to a visitor by lantern light: scratched writing covering one wall, a pale man in black standing before it with his hat in his hands. |
+| `images/story-14-a.webp` | An empty prison cell shown to a visitor by lantern light: one wall covered edge to edge with tiny scratched marks, a pale man in black standing before it with his hat in his hands, a bored guide holding the lantern. |
 | `images/story-14-b.webp` | A cave chamber on an island turned into a beautiful room: a door opening and a young woman standing alive in the light, a young man falling to his knees in the doorway. |
 
 ## 15장 · 기다리고 바라라

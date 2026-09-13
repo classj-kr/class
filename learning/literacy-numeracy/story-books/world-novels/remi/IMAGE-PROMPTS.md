@@ -101,7 +101,7 @@ Père Acquin: a broad gardener of fifty with earth under his nails.
 | 파일명 | 장면 |
 |---|---|
 | `images/story-01-a.webp` | A one-room cottage interior at night: a boy pretending to sleep on a straw bed while two adults talk low by the fire, a cow visible through an opening in the partition. |
-| `images/story-01-b.webp` | A doorway: a woman holding a boy against her, her face turned away, the boy's arms around her waist. |
+| `images/story-01-b.webp` | A cottage yard at evening: a limping man counting coins one by one into his palm while a tall old stranger waits at the gate with three dogs, and a boy watches from the doorway. |
 
 ## 2장 · 비탈리스
 
@@ -170,7 +170,7 @@ Père Acquin: a broad gardener of fifty with earth under his nails.
 
 | 파일명 | 장면 |
 |---|---|
-| `images/story-11-a.webp` | A canal-side cottage doorway: a small girl running out with both hands out, a boy dropping his bundle. |
+| `images/story-11-a.webp` | A small kitchen by lamplight: a boy stopped mid-song and a boy with a lowered violin staring at a little girl whose mouth has just opened on a sound, an aunt sinking onto a stool. |
 | `images/story-11-b.webp` | A canal bank at dusk: a small girl standing on the towpath waving, two boys already far along the water's edge. |
 
 ## 12장 · 찾는 사람

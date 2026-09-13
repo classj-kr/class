@@ -117,7 +117,7 @@ Mary Jane Wilks: a red-haired young woman of nineteen with an open kind face.
 | 파일명 | 장면 |
 |---|---|
 | `images/story-04-a.webp` | A whole two-storey frame house floating down a flooded river at night, tilted, dark windows; a canoe drawing alongside it. |
-| `images/story-04-b.webp` | A boy in ill-fitting girl's clothes and a bonnet sitting in a cottage kitchen while a sharp-eyed woman watches him thread a needle, plainly not fooled. |
+| `images/story-04-b.webp` | A boy in ill-fitting girl's clothes and a bonnet catching a tossed spool in a cottage kitchen with his knees wide apart, while a sharp-eyed woman watches him, plainly not fooled. |
 
 ## 5장 · 뗏목 위에서
 

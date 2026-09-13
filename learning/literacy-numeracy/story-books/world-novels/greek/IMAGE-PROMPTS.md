@@ -112,7 +112,7 @@ Narcissus: a beautiful young man, always alone in the frame.
 
 | 파일명 | 장면 |
 |---|---|
-| `images/story-03-a.webp` | A meadow of flowers with a basket tipped over and blossoms scattered, the grass unbroken, nobody there. |
+| `images/story-03-a.webp` | A flowering meadow cracking open as a chariot of four black horses rises out of the ground, a girl with an apron full of blossoms turning at the sound, her companions further off not yet looking. |
 | `images/story-03-b.webp` | A cracked dry plain that was once wheatland, a tall grey woman walking across it alone, farmers standing at the edge of a dead field. |
 
 ## 4편 · 이카로스의 날개

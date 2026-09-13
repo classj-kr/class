@@ -131,7 +131,7 @@ Constance: a young woman of twenty-five in a modest respectable dress.
 | 파일명 | 장면 |
 |---|---|
 | `images/story-06-a.webp` | An inn yard at dawn: three riders galloping out through the gate while the huge musketeer stays behind squaring up to a stranger, hand on hilt. |
-| `images/story-06-b.webp` | A country road: a rider looking back over his shoulder at a distant inn where a fight is starting without him, forcing himself to ride on, dust rising. |
+| `images/story-06-b.webp` | A country road at sunrise: a lone rider low over his horse's neck galloping away from a distant inn without looking back, empty fields all round him, dust rising behind. |
 
 ## 7장 · 이틀 반
 

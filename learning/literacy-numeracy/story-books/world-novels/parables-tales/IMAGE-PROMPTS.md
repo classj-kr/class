@@ -131,7 +131,7 @@ No title, no caption, no signature, no page number, no letters anywhere.
 | 파일명 | 장면 |
 |---|---|
 | `images/story-08-weeds.webp` | A worried farmer and field hand looking down at young wheat sprouts mixed with unfamiliar weeds in a sunlit field, warm morning light. |
-| `images/story-08-weeds-2.webp` | The same farmer calmly overseeing a golden harvest, wheat bundled separately from a smoldering pile of burned weeds nearby, warm harvest-time glow. |
+| `images/story-08-weeds-2.webp` | Harvest day in the same field: heavy-headed wheat carried toward the barn in armfuls while stiff empty-eared weeds are tied into a separate bundle, workers glancing at each other in surprise, warm harvest-time glow. |
 
 ## 이야기 9 · 땅에 묻은 한 달란트
 

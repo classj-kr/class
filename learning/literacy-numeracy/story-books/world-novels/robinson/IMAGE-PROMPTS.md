@@ -170,7 +170,7 @@ The parrot: a green parrot that appears from chapter 8 on.
 | 파일명 | 장면 |
 |---|---|
 | `images/story-11-a.webp` | A bearded man in goatskins lowering his musket and reaching out an open hand to raise a kneeling man to his feet; the kneeling man already half standing. Draw both men the same height and give both faces equal weight. |
-| `images/story-11-b.webp` | The two men sitting on opposite sides of a small fire in the evening, neither above the other, eating from the same dish. |
+| `images/story-11-b.webp` | Early morning on the beach: the rescued man digging with his bare hands to bury the men who came to kill him, the bearded man in goatskins standing a few steps away, saying nothing. |
 
 ## 12장 · 말을 나누다
 

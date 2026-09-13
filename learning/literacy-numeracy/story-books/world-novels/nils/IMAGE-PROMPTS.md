@@ -99,7 +99,7 @@ Ermenrich: a white stork with a red bill, nesting on a castle roof.
 | 파일명 | 장면 |
 |---|---|
 | `images/story-01-a.webp` | A Swedish farm kitchen on a Sunday morning: an open Bible on the table, a boy asleep over it, and behind him an open chest with a hand-high bearded figure in a wide hat rummaging inside. |
-| `images/story-01-b.webp` | The same room from floor level: the table legs like tree trunks, a chair towering, and a tiny boy standing in the middle of the floorboards looking up. |
+| `images/story-01-b.webp` | A hand-high bearded man in a wide hat springing free of a fallen butterfly net and striking a boy's cheek, the boy toppling backwards across the floorboards. |
 
 ## 2장 · 거위 등에 오르다
 

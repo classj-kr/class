@@ -134,7 +134,7 @@ No title, no caption, no signature, no page number, no letters anywhere.
 
 | 파일명 | 장면 |
 |---|---|
-| `images/story-08-ring.webp` | A close-up of an ornate engraved gold ring resting on a velvet cushion, soft candlelight, a wise young prince's silhouette blurred in the background, warm and reflective mood. |
+| `images/story-08-ring.webp` | A king on his throne leaning forward mid-command while the goldsmith kneeling before him spreads his hands in dismay, courtiers watching, warm lamplight. |
 | `images/story-08-ring-2.webp` | A king in celebratory royal robes amid a joyful victory feast, pausing mid-laugh to glance down at the ring on his hand, his triumphant smile softening into quiet humility, warm golden banquet hall lighting. |
 
 ## 이야기 9 · 방을 가득 채운 촛불

@@ -198,4 +198,4 @@ The Duke and Duchess: a handsome bored pair in expensive black and silver.
 | 파일명 | 장면 |
 |---|---|
 | `images/story-15-a.webp` | A bedroom with the shutters half open: a thin old man propped up in bed dictating to a notary, a priest and a young woman standing by. |
-| `images/story-15-b.webp` | A short round peasant on a stool at the bedside holding the old man's hand in both of his, crying, saying something. |
+| `images/story-15-b.webp` | A short round peasant on a stool at the bedside, in stockinged feet, crushing his hat in both hands as he leans forward crying and saying something to the old man. |

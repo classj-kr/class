@@ -101,7 +101,7 @@ The Jade Emperor: an elderly ruler on a jade throne who never looks confident.
 
 | 파일명 | 장면 |
 |---|---|
-| `images/story-01-a.webp` | A lone monk with a pack and a staff walking into an enormous empty desert, footprints behind him, no companions anywhere — the real journey. |
+| `images/story-01-a.webp` | A newborn monkey on a mountain summit standing upright on two legs, bowing low toward each of the four directions, two straight beams of light shooting from his eyes up through the clouds. |
 | `images/story-01-b.webp` | A great split boulder on a mountain summit with light pouring out of the crack, and a small monkey standing upright in it, eyes blazing. |
 
 ## 2장 · 원숭이 왕
@@ -130,7 +130,7 @@ The Jade Emperor: an elderly ruler on a jade throne who never looks confident.
 | 파일명 | 장면 |
 |---|---|
 | `images/story-05-a.webp` | A heavenly peach orchard: a monkey lying along a branch eating, cores dropping through the clouds below. |
-| `images/story-05-b.webp` | A wrecked banquet in heaven — overturned tables, spilled wine, immortals scattering — and one small figure going out through a gate with a jar under each arm. |
+| `images/story-05-b.webp` | A heavenly banquet eaten bare before the guests arrived — emptied dishes, a tipped wine jar, serving maids asleep across the floor — and one small figure going out through the gate with a jar under each arm. |
 
 ## 6장 · 손바닥 다섯 손가락
 
@@ -157,7 +157,7 @@ The Jade Emperor: an elderly ruler on a jade throne who never looks confident.
 
 | 파일명 | 장면 |
 |---|---|
-| `images/story-09-a.webp` | A village at night: a pig-headed man with a rake being confronted by a monkey on a rooftop, villagers peering from doorways. |
+| `images/story-09-a.webp` | A village bedroom at night: a pig-headed man with a rake reeling backwards from a monkey who has just thrown off the bride's quilt, the door splintering behind him. |
 | `images/story-09-b.webp` | A wide river crossing: all four travellers on the bank, the broad grim one shouldering the entire load while the others carry nothing. |
 
 ## 10장 · 백골 요괴
@@ -207,4 +207,4 @@ The Jade Emperor: an elderly ruler on a jade throne who never looks confident.
 | 파일명 | 장면 |
 |---|---|
 | `images/story-16-a.webp` | The four travellers walking away from the viewer along a mountain road, each one a completely different shape and gait, the luggage still on the last one's back. |
-| `images/story-16-b.webp` | A single monk walking alone across a desert at dawn, the way the real journey happened — the same composition as the first picture in the book, but at sunrise instead of noon. |
+| `images/story-16-b.webp` | A single monk walking alone across a desert at sunrise with a pack and a staff, footprints trailing behind him and no companions anywhere, the way the real journey happened. |

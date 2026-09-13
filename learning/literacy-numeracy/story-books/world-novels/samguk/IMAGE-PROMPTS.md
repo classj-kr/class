@@ -108,7 +108,7 @@ Sima Yi: a patient, watchful older general who never looks in a hurry.
 
 | 파일명 | 장면 |
 |---|---|
-| `images/story-01-a.webp` | A drought-cracked field with an abandoned village behind it, families with bundles walking away down the road, no soldiers anywhere. |
+| `images/story-01-a.webp` | A village yard beside a drought-cracked field: soldiers leading the last ox away to a tax officer's empty cart while a white-haired farmer sinks to the ground, neighbours watching from their doorways. |
 | `images/story-01-b.webp` | A crowd of ragged people with yellow cloths tied round their heads gathering at a crossroads, farming tools in their hands rather than weapons. |
 
 ## 2장 · 복숭아밭의 세 사람
@@ -164,7 +164,7 @@ Sima Yi: a patient, watchful older general who never looks in a hurry.
 
 | 파일명 | 장면 |
 |---|---|
-| `images/story-09-a.webp` | A large map of China laid out on a table with three regions marked in different colours, hands of three different people resting on it. |
+| `images/story-09-a.webp` | A city gate standing wide open: a governor walking out alone to hand over his province, the plain-faced lord waiting on horseback with his soldiers, officers watching from the wall above. |
 | `images/story-09-b.webp` | A formal hall in Jing province: a long-bearded governor turning away from a southern envoy who is still holding out a marriage proposal, the envoy's face hardening. |
 
 ## 10장 · 형주를 잃다

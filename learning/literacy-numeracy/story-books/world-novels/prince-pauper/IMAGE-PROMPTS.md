@@ -118,7 +118,7 @@ The Yorkshire man: a thin farmer with a quiet, steady, sorrowful face.
 
 | 파일명 | 장면 |
 |---|---|
-| `images/story-05-a.webp` | A jeering crowd in a lane parting before a tall swordsman who has stepped between them and a small ragged boy, his blade half drawn. |
+| `images/story-05-a.webp` | A jeering crowd in a lane backing away from a tall sunburnt soldier who has stepped between them and a small ragged boy, one hand resting on his sword hilt, the blade still sheathed. |
 | `images/story-05-b.webp` | A cheap inn room: a boy seated at the table with absurd dignity while the swordsman kneels and then sits down again, half amused, half indulgent. |
 
 ## 6장 · 왕이 된 톰
@@ -182,7 +182,7 @@ The Yorkshire man: a thin farmer with a quiet, steady, sorrowful face.
 | 파일명 | 장면 |
 |---|---|
 | `images/story-14-a.webp` | A council chamber: a boy king at the head of the table asking a question while grey-bearded councillors exchange uneasy looks. |
-| `images/story-14-b.webp` | A palace window at night, the young king alone looking out over the dark city rooftops. |
+| `images/story-14-b.webp` | A small private room in the palace: the young king, a scarred soldier in a fine cloak and a boy in a distinctive robe sitting close together talking and laughing, no attendants anywhere. |
 
 ## 15장 · 궁전 창문
 

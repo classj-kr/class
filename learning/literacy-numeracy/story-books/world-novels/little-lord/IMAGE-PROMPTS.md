@@ -162,7 +162,7 @@ Dougal: a huge deerhound that follows the Earl everywhere.
 
 | 파일명 | 장면 |
 |---|---|
-| `images/story-11-a.webp` | A New York grocery: the grocer thrusting an English newspaper at a shoeshine boy who has half risen from his box in astonishment. |
+| `images/story-11-a.webp` | A New York street corner: the grocer, still in his apron, thrusting an English newspaper at a shoeshine boy who has half risen from his box in astonishment. |
 | `images/story-11-b.webp` | A ship's deck crossing the Atlantic: the big grocer in an ill-fitting travelling coat gripping the rail, the shoeshine boy beside him, grey water. |
 
 ## 12장 · 밝혀지다
@@ -191,4 +191,4 @@ Dougal: a huge deerhound that follows the Earl everywhere.
 | 파일명 | 장면 |
 |---|---|
 | `images/story-15-a.webp` | The library late at night: the old man in his chair and the boy sitting on the footstool leaning against his knee, the hound asleep between them, the fire burnt low. |
-| `images/story-15-b.webp` | The castle seen from the dark park outside: one library window still lit, the rest of the great house in shadow, stars above. |
+| `images/story-15-b.webp` | The castle seen from the dark park outside: warm light now in windows all along the great house instead of the library alone, stars above. |

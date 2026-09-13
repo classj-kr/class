@@ -116,7 +116,7 @@ hands, kind eyes, always with books.
 
 | 파일명 | 장면 |
 |---|---|
-| `images/story-04-a.webp` | Four small scenes in one picture: a girl teaching children in a rich house, a girl reading aloud to a cross old lady, a girl at a battered piano, a girl at a school desk with a sketchbook. |
+| `images/story-04-a.webp` | A kitchen in complete disorder on the seventh day of doing no work: dishes stacked high, washing still hanging across the room, four sisters standing among it with nothing left to eat. |
 | `images/story-04-b.webp` | A riverside picnic in summer: young people with croquet mallets and a picnic basket spread on a rug, a quiet young tutor talking with the eldest sister a little apart from the rest. |
 
 ## 5장 · 타 버린 원고

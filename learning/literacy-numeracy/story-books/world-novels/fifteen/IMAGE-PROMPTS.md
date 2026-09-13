@@ -131,7 +131,7 @@ Evans: a weather-beaten sailor of thirty.
 
 | 파일명 | 장면 |
 |---|---|
-| `images/story-06-a.webp` | Boys drawing a map of their island on a large sheet, writing names along the coast, the lake in the middle. |
+| `images/story-06-a.webp` | Boys kneeling around a big sheet of paper spread on the cave floor, drawing the outline of their island on it with the lake in the middle, one of them pointing at a bay. |
 | `images/story-06-b.webp` | The cave turned into a home in winter: bunks along the wall, a ship's stove with a pipe through the rock, a shelf of a hundred books, boys reading by lamplight. |
 
 ## 7장 · 대장을 뽑다

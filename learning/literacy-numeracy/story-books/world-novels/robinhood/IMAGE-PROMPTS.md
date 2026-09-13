@@ -130,7 +130,7 @@ The Abbot of St Mary's: a smooth, comfortable churchman in rich vestments.
 
 | 파일명 | 장면 |
 |---|---|
-| `images/story-06-a.webp` | A castle chamber: a sour-faced sheriff dictating a proclamation, a clerk writing, soldiers waiting at the door. |
+| `images/story-06-a.webp` | A castle chamber: a sour-faced sheriff holding a slender arrow of silver and gold up to the window light for his officers to see, soldiers waiting at the door. |
 | `images/story-06-b.webp` | A crowded tournament field with butts set up, spectators' stands, soldiers standing in pairs along the edges, and among the crowd several men in beggar's and farmer's clothes not looking at each other. |
 
 ## 7장 · 황금 화살
@@ -166,7 +166,7 @@ The Abbot of St Mary's: a smooth, comfortable churchman in rich vestments.
 | 파일명 | 장면 |
 |---|---|
 | `images/story-11-a.webp` | A man walking through the forest wearing an entire horsehide as a cloak, the head and tail still attached, a sword at his hip. |
-| `images/story-11-b.webp` | A figure in that same horsehide raising a hunting horn to his lips at the edge of a clearing, seen from behind so the face is hidden. |
+| `images/story-11-b.webp` | Soldiers throwing down their spears and running, a huge man just cut loose from a tree rubbing his wrists, and a figure in the horsehide lowering a bow beside him. |
 
 ## 12장 · 매리언
 

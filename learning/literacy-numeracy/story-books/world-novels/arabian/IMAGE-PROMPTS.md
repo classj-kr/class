@@ -139,7 +139,7 @@ state robes by day.
 | 파일명 | 장면 |
 |---|---|
 | `images/story-06-a.webp` | A young man walking bent under an old man riding on his shoulders, the old man's legs locked round his neck, both of them on a jungle path. |
-| `images/story-06-b.webp` | The same beach later: a hollowed gourd lying on its side in the sand and a single set of footprints running away toward the sea. |
+| `images/story-06-b.webp` | The old man sprawled loose-limbed on the grass with an emptied gourd beside him, the young man standing straight for the first time in months, both hands at his freed throat. |
 
 ## 7편 · 하늘을 나는 나무 말
 
@@ -166,5 +166,5 @@ state robes by day.
 
 | 파일명 | 장면 |
 |---|---|
-| `images/story-10-a.webp` | A map-like spread showing routes converging on one city — from India, from Persia, from Egypt — drawn as caravans and ships, all heading toward a domed library. |
+| `images/story-10-a.webp` | A caravan halted for the night in the desert: one trader telling a story with both hands raised, the others leaning in around the fire, laden camels and a moored ship dark behind them. |
 | `images/story-10-b.webp` | Dawn in the palace chamber: a young woman standing with three children beside her, a king rising from his seat, the lamp guttering out. |

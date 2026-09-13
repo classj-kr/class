@@ -143,7 +143,7 @@ Tamenund: an extremely old Delaware leader, over a hundred, seated.
 | 파일명 | 장면 |
 |---|---|
 | `images/story-05-a.webp` | A small fire at night with four people around it, an older Mohican man speaking and the others listening. |
-| `images/story-05-b.webp` | A visual memory: a coastal river valley with a large village, then the same valley with fields and a European settlement and no village at all. |
+| `images/story-05-b.webp` | A wide coastal river valley in low evening light: ploughed fields, fences and a European farmstead standing where a large village once stood, the old riverside paths still faintly worn into the grass. |
 
 ## 6장 · 요새에 닿다
 
@@ -187,7 +187,9 @@ Tamenund: an extremely old Delaware leader, over a hundred, seated.
 | `images/story-11-a.webp` | A Delaware funeral: two graves side by side, women singing, the whole village standing in a circle, an old British officer at the edge with his hat off. |
 | `images/story-11-b.webp` | An older Mohican man standing alone at the edge of the clearing after everyone else has gone, and a very old leader seated behind him. |
 
-## 12장 · 그 뒤에 있었던 일
+## 12장 · 그 뒤에 있었던 일 — 지금은 쓰지 않는 그림
+
+12장을 없애고 열한 장으로 줄였습니다. 아래 두 그림은 이제 책에 나오지 않습니다.
 
 | 파일명 | 장면 |
 |---|---|

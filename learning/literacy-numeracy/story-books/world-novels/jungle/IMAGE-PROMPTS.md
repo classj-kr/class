@@ -120,7 +120,7 @@ Buldeo: a village hunter with an old matchlock gun and a big moustache.
 | 파일명 | 장면 |
 |---|---|
 | `images/story-04-a.webp` | A big brown bear teaching: a boy of nine sitting in front of him reciting, the bear's paw raised; forest floor, dappled light. |
-| `images/story-04-b.webp` | A boy and a black panther face to face very close, the boy looking straight into the panther's eyes and the panther looking slightly away. |
+| `images/story-04-b.webp` | A boy staring calmly into the eyes of a full-grown wolf that turns its head away from him, a black panther watching the two of them from a rock. |
 
 ## 5장 · 반다르로그
 
@@ -134,7 +134,7 @@ Buldeo: a village hunter with an old matchlock gun and a big moustache.
 | 파일명 | 장면 |
 |---|---|
 | `images/story-06-a.webp` | A ruined red sandstone city swallowed by jungle — collapsed domes, fig roots splitting the walls, a dry tank — swarming with monkeys. |
-| `images/story-06-b.webp` | An enormous rock python raising its head above a broken wall in moonlight, and every monkey in the courtyard gone absolutely still. |
+| `images/story-06-b.webp` | An enormous old rock python stretched along a warm rock beside his freshly shed skin, a black panther and a big brown bear speaking to him from a careful distance. |
 
 ## 7장 · 붉은 꽃
 
@@ -175,7 +175,7 @@ Buldeo: a village hunter with an old matchlock gun and a big moustache.
 
 | 파일명 | 장면 |
 |---|---|
-| `images/story-12-a.webp` | A hunter flat on his back on the ravine floor with a grey wolf standing over him, and a boy kneeling nearby with a knife and a tiger skin. |
+| `images/story-12-a.webp` | A hunter flat on his back on the ravine floor with a grey wolf standing over him, and a boy kneeling nearby working a tiger skin loose with his bare hands. |
 | `images/story-12-b.webp` | A closed village gate at sunset, figures on the wall above throwing stones, and a boy standing in the road below with a rolled skin over his shoulder, stones landing around him, not moving. |
 
 ## 13장 · 붉은 개

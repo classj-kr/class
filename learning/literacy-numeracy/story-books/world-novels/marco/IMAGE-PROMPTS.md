@@ -102,7 +102,7 @@ descent — draw them as individuals, competent and matter-of-fact.
 | 파일명 | 장면 |
 |---|---|
 | `images/story-02-a.webp` | The same kitchen at night: a boy standing and speaking, a father seated with his hands over his face, an older brother in the doorway. |
-| `images/story-02-b.webp` | A shipping office window with fares chalked on a board, a boy on tiptoe copying them onto a scrap of paper. |
+| `images/story-02-b.webp` | A quayside shipping office: a small boy at the counter asking a busy clerk about the cheapest passage while dockers push past him, a stub of pencil and a scrap of paper in his hand. |
 
 ## 3장 · 스물일곱 날
 
@@ -115,7 +115,7 @@ descent — draw them as individuals, competent and matter-of-fact.
 
 | 파일명 | 장면 |
 |---|---|
-| `images/story-04-a.webp` | A wide new avenue in Buenos Aires crowded with people and carriages, shop signs in Italian and Spanish, a small boy standing still in the middle of the pavement with a bag. |
+| `images/story-04-a.webp` | A wide new avenue in Buenos Aires crowded with people and carriages, new brick houses and scaffolding running away to the horizon, a small boy standing still in the middle of the pavement with a bag, looking up. |
 | `images/story-04-b.webp` | A train window looking out on the pampas: absolutely flat grassland to the horizon, no tree, no house, one line of telegraph poles. |
 
 ## 5장 · 코르도바
@@ -158,7 +158,7 @@ descent — draw them as individuals, competent and matter-of-fact.
 | 파일명 | 장면 |
 |---|---|
 | `images/story-10-a.webp` | A bedside: a doctor with a bag on one side, a boy holding a woman's hand on the other, the woman looking at the boy. |
-| `images/story-10-b.webp` | Weeks later: a woman in a shawl taking a few steps across a courtyard with a boy's arm under hers, sunlight on the tiles. |
+| `images/story-10-b.webp` | Weeks later in the same sickroom: a very thin woman in a shawl taking a few unsteady steps toward the window with her son's arm under hers, the shutters open at last and light on the floor. |
 
 ## 11장 · 돌아가는 길
 

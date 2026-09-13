@@ -138,14 +138,14 @@ Olinthus: a plain-dressed man of about forty, calm.
 | 파일명 | 장면 |
 |---|---|
 | `images/story-06-a.webp` | A night street near a temple: a crowd with torches converging on one spot, a young man standing in the middle of it plainly not knowing where he is. |
-| `images/story-06-b.webp` | A Roman basilica used as a court: magistrates on a raised bench, a crowd, and two accused men standing below — one bewildered, one calm. |
+| `images/story-06-b.webp` | A trial held in the open colonnaded forum: magistrates on a raised platform, the square packed with shouting townspeople and more watching from the rooftops, two accused men standing below — one bewildered, one calm. |
 
 ## 7장 · 니디아가 알아낸 것
 
 | 파일명 | 장면 |
 |---|---|
 | `images/story-07-a.webp` | A blind girl standing very still in a dark corridor of a large house with her head tilted, listening to something below the floor. |
-| `images/story-07-b.webp` | A cellar door with a grating: a hand passing water through it, a gaunt face on the other side. |
+| `images/story-07-b.webp` | A blind girl crouched at a barred cellar door whispering through the grating to a gaunt face on the other side, while a tall man in dark linen stops at the top of the stairs behind her. |
 
 ## 8장 · 원형 경기장
 
@@ -173,7 +173,7 @@ Olinthus: a plain-dressed man of about forty, calm.
 | 파일명 | 장면 |
 |---|---|
 | `images/story-11-a.webp` | A small boat on dark water at night with a handful of exhausted people aboard, and on the shore behind them a whole town going under grey. |
-| `images/story-11-b.webp` | Dawn on the same boat: two people asleep against the gunwale, and an empty place beside them with a flower basket left on the boards. |
+| `images/story-11-b.webp` | Dawn on the same boat: a young man and a young woman just waking and staring at the empty place beside them, where a blanket lies neatly folded on the boards by the gunwale. |
 
 ## 12장 · 천칠백 년 뒤
 

@@ -114,7 +114,7 @@ grotesque.
 | 파일명 | 장면 |
 |---|---|
 | `images/story-01-a.webp` | A conference room in 1880s Berlin: European men in frock coats around a huge map of Africa on a table, drawing straight lines across it; nobody from Africa present. |
-| `images/story-01-b.webp` | The great stone ruins of Great Zimbabwe under a wide sky, the mortarless walls curving away, drawn with the same awe a European cathedral would get. |
+| `images/story-01-b.webp` | An English quayside in the 1880s: a boy of about nineteen with one trunk climbing the gangway of a ship bound south, his family already turning back toward the town. |
 
 ## 2장 · 앨런 쿼터메인
 
@@ -128,7 +128,7 @@ grotesque.
 | 파일명 | 장면 |
 |---|---|
 | `images/story-03-a.webp` | A tattered piece of cloth on a table with a crude map drawn on it in faded ink — mountains, a road, a cross — a lamp and three heads bent over it. |
-| `images/story-03-b.webp` | A hunter's storeroom of ivory tusks stacked against a wall, the man standing among them not looking pleased about it. |
+| `images/story-03-b.webp` | A hunter's camp at dusk: a ragged stranger with cracked lips stumbling in out of the thorn scrub, the old hunter catching him as a folded scrap of cloth slips from his shirt. |
 
 ## 4장 · 움보파
 

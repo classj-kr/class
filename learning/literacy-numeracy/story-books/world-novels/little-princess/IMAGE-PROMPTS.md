@@ -119,7 +119,7 @@ Mr Carrisford: a gaunt, ill gentleman wrapped in shawls in a deep armchair.
 | 파일명 | 장면 |
 |---|---|
 | `images/story-04-a.webp` | A grand bedroom at evening: a small coal-smudged scullery maid asleep upright in an armchair with a coal box still in her hands, the room's owner standing quietly in the doorway not waking her. |
-| `images/story-04-b.webp` | Two girls sitting on the hearthrug together sharing a plate of cake by firelight, one in a fine dress and one in a maid's apron, both laughing. |
+| `images/story-04-b.webp` | A fine bedroom by firelight: a girl in a good dress telling a story with both hands, a small coal-smudged maid perched stiffly on the very edge of a chair listening, a wrapped piece of cake in her apron pocket. |
 
 ## 5장 · 열한 번째 생일
 

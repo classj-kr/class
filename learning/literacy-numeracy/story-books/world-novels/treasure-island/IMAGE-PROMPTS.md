@@ -140,7 +140,7 @@ sailcloth pinned together with brass buttons and twigs, wild hair and beard.
 | 파일명 | 장면 |
 |---|---|
 | `images/story-05-a.webp` | Three men around a candlelit study table in a country house: a boy, a neat doctor in a powdered wig, and a large excited squire, an old sea chart with three red crosses unrolled between them. |
-| `images/story-05-b.webp` | Close view of the treasure map itself spread on dark polished wood beside a broken wax seal and a worn account book: a rough island with three hills, soundings, and three red ink crosses, warm candlelight. |
+| `images/story-05-b.webp` | A boy sitting bolt upright in a strange grand bed near midnight, blankets thrown back, fists knotted in the sheet, a guttering candle throwing his shadow up the wall. |
 
 ## 6장 · 브리스톨의 외다리 요리사
 

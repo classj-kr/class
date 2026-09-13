@@ -169,7 +169,7 @@ Colonel Adye: a police officer in a dark uniform coat.
 | 파일명 | 장면 |
 |---|---|
 | `images/story-11-a.webp` | A study at night: a young doctor writing a short note very fast, glancing at the door. |
-| `images/story-11-b.webp` | A village wall in the morning with a handwritten notice pinned to it and villagers gathered in front of it, reading in silence. |
+| `images/story-11-b.webp` | A hall at the foot of a staircase: a window bursting inward in a shower of glass with nobody there, while a young doctor and a police officer stop dead on the stairs above. |
 
 ## 12장 · 언덕 위
 
