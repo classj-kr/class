@@ -3,10 +3,12 @@ import fs from "node:fs";
 import path from "node:path";
 import test from "node:test";
 
+import "./arithmetic-concept-boundary.test.ts";
+
 const root = process.cwd();
 const catalogSource = fs.readFileSync(path.join(root, "lib", "arithmetic-worksheets.ts"), "utf8");
 const catalogSection = catalogSource.match(
-  /export const highSchoolWorksheetCatalog[\s\S]*?\n\]\.map\(\(worksheet\) => \(\{ \.\.\.worksheet, track: worksheetTrack\(worksheet\.route\) \}\)\);/,
+  /export const highSchoolWorksheetCatalog[\s\S]*?\n\];/,
 )?.[0];
 
 assert.ok(catalogSection, "고등 학습지 목록을 찾을 수 없습니다.");

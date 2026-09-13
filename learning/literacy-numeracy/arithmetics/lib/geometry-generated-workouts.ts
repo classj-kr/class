@@ -89,7 +89,7 @@ export function createConicProblems(seed: number): GeometryChoiceItem[] {
     item("c3", "포물선의 계수 계산", `y^2=4qx,\\quad P(${p * t * t},${2 * p * t})`, `q=${p}`, [`q=${p + 1}`, `q=${p + 2}`, `q=${p + 3}`], "점 $P$를 지나는 포물선의 $q$는?"),
     item("c4", "타원의 중심 계산", `\\frac{x^2${signedTerm(-2 * h, "x")}${signedTerm(h * h)}}{${a2}}+\\frac{y^2${signedTerm(-2 * k, "y")}${signedTerm(k * k)}}{${b2}}=1`, `(${h},${k})`, [`(${-h},${-k})`, `(${k},${h})`, `(${-h},${k})`, `(${h},${-k})`, `(${-k},${h})`], "완전제곱식으로 고쳐 구한 중심은?"),
     item("c5", "타원의 이심률", `\\frac{x^2}{${a2}}+\\frac{y^2}{${b2}}=1,\\quad e=?`, `\\frac{\\sqrt{${c2}}}{${a}}`, [`\\frac{${b}}{${a}}`, `\\frac{${a}}{\\sqrt{${c2}}}`, `\\frac{\\sqrt{${c2}}}{${b}}`]),
-    item("c6", "쌍곡선의 점근선", `\\frac{x^2}{${a2}}-\\frac{y^2}{${b2}}=1`, `y=\\pm\\frac{${b}}{${a}}x`, [`y=\\pm\\frac{${a}}{${b}}x`, `y=\\pm${a}x`, `y=\\pm${b}x`]),
+    item("c6", "쌍곡선의 점근선 계산", `${b2}x^2${signedTerm(-2 * b2 * h, "x")}${signedTerm(b2 * h * h)}${signedTerm(-a2, "y^2")}${signedTerm(2 * a2 * k, "y")}${signedTerm(-a2 * k * k)}=${a2 * b2}`, `${shifted("y", k)}=\\pm${fractionLatex(b, a)}${shifted("x", h)}`, [`${shifted("y", k)}=\\pm${fractionLatex(a, b)}${shifted("x", h)}`, `${shifted("y", -k)}=\\pm${fractionLatex(b, a)}${shifted("x", -h)}`, `${shifted("y", k)}=\\pm${fractionLatex(b, a)}${shifted("x", -h)}`], "완전제곱식으로 고쳐 구한 두 점근선은?"),
     item("c7", "평행이동한 포물선의 준선", `x^2${signedTerm(-2 * h, "x")}${signedTerm(h * h)}=${-4 * p}${shifted("y", k)}`, `y=${k + p}`, [`y=${k - p}`, `x=${h + p}`, `x=${h - p}`, `y=${p}`, `y=${-p}`], "완전제곱식으로 고쳐 구한 준선은?"),
   ];
 }

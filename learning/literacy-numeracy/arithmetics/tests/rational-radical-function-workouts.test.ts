@@ -6,11 +6,18 @@ test("each set covers seven rational and radical function calculations", () => {
   for (let seed = 1; seed <= 100; seed += 1) {
     const problems = createRationalRadicalProblemSet(seed).problems;
     assert.deepEqual(problems.map(({ kind }) => kind), [
-      "rational-asymptotes", "rational-coefficient", "rational-value", "rational-equation",
-      "radical-endpoint", "radical-coefficient", "radical-equation",
+      "rational-asymptotes-from-general", "rational-coefficient", "rational-value", "rational-equation",
+      "radical-value", "radical-coefficient", "radical-equation",
     ]);
     assert.ok(problems.every(({ answer }) => answer.every(Number.isInteger)));
   }
+});
+
+test("점근선과 시작점을 식에서 바로 읽는 단순 개념형은 출제하지 않는다", () => {
+  const problems = createRationalRadicalProblemSet(20260912).problems;
+  assert.ok(!problems.some(({ kind }) => kind === ("rational-asymptotes" as never) || kind === ("radical-endpoint" as never)));
+  assert.match(problems[0].prompt, /분자를 분모로 나누어/);
+  assert.equal(problems[4].kind, "radical-value");
 });
 test("answer checking and review selection are exact", () => {
   assert.equal(sameRationalRadicalAnswer(["-2", "3"], [-2, 3]), true);

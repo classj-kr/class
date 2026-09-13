@@ -394,7 +394,7 @@ test("renders the unified arithmetic catalog and high-school worksheets", async 
   const hubResponse = await render("/arithmetic/high-school");
   assert.equal(hubResponse.status, 200);
   const hubHtml = await hubResponse.text();
-  assert.equal((hubHtml.match(/data-testid="worksheet-choice"/g) ?? []).length, 184);
+  assert.equal((hubHtml.match(/data-testid="worksheet-choice"/g) ?? []).length, 176);
   assert.match(hubHtml, /href="\/fraction"[^>]*data-testid="worksheet-choice"/);
   assert.match(hubHtml, /href="\/arithmetic\/high-school\/polynomial-add-subtract"/);
   assert.match(hubHtml, /href="\/arithmetic\/high-school\/factorization-rational"/);
@@ -424,6 +424,8 @@ test("renders the unified arithmetic catalog and high-school worksheets", async 
   );
   assert.doesNotMatch(hubHtml, /href="\/arithmetic\/high-school\/geometric-transformations"/);
   assert.match(hubHtml, /href="\/arithmetic\/high-school\/sets-propositions"/);
+  assert.match(hubHtml, /집합의 연산과 원소 개수/);
+  assert.doesNotMatch(hubHtml, /kind=construction-congruence/);
   assert.match(hubHtml, /href="\/arithmetic\/high-school\/derivative-practice"/);
   assert.match(hubHtml, /href="\/arithmetic\/high-school\/derivative-applications"/);
   assert.match(hubHtml, /href="\/arithmetic\/high-school\/polynomial-integrals"/);

@@ -192,8 +192,8 @@ test("오답 보충은 서로 다른 유형에서 최대 두 문제만 만든다
   assert.ok(reviews.every(({ difficulty }) => difficulty === "advanced"));
 });
 
-test("중학교 필수 목록 40개는 쉬운 유형을 통합하고 모두 연결된다", () => {
-  assert.equal(middleSchoolWorksheetCatalog.length, 40);
+test("중학교 반복 연산 목록 39개는 쉬운 유형과 개념 전용 유형을 분리하고 모두 연결된다", () => {
+  assert.equal(middleSchoolWorksheetCatalog.length, 39);
   assert.ok(middleSchoolWorksheetCatalog.every(({ route }) => route !== null));
   assert.equal(
     new Set(middleSchoolWorksheetCatalog.map(({ name }) => name)).size,
