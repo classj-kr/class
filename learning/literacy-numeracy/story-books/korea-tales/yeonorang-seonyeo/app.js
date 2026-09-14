@@ -204,7 +204,7 @@ const COVER = {
     title: "연오랑 세오녀",
     intro: [
         "연오랑 세오녀는 『삼국유사』에 실린 아주 오래된 이야기예요. 신라 아달라 임금 때, 그러니까 이천 년 가까이 전 이야기랍니다.",
-        "바닷가에 살던 부부가 바위를 타고 바다를 건너가고, 신라에서는 해와 달이 빛을 잃어요. 그 빛을 되찾는 것은 군사도 보물도 아니고 세오녀가 짠 비단 한 필이지요.",
+        "바닷가에 살던 부부가 바위를 타고 바다를 건너가고, 신라에서는 해와 달이 빛을 잃어요. 잃어버린 빛은 어떻게 되찾을 수 있을까요?",
         "해가 제일 먼저 뜨는 곳이라는 영일만의 이름이 이 이야기에서 나왔답니다."
     ]
 };
@@ -220,7 +220,7 @@ const EN = {
         title: "Yeono and Seo",
         intro: [
             "Yeono and Seo is a very old story written down in the Samguk Yusa. It is set in the reign of King Adalla of Silla, nearly two thousand years ago.",
-            "A couple ride a rock across the sea, and in Silla the sun and the moon lose their light. What brings the light back is not an army but one roll of silk.",
+            "A couple ride a rock across the sea, and in Silla the sun and the moon lose their light. How can the light be brought back?",
             "Yeongilman bay, said to be where the sun rises first, took its name from this story."
         ]
     },
@@ -451,8 +451,8 @@ const EN = {
             { w: "nearly", k: "가까이", s: "nearly two thousand years ago" },
             { w: "ride (ride)", k: "타다", s: "A couple ride a rock across the sea" },
             { w: "lose their light", k: "빛을 잃다", s: "the sun and the moon lose their light" },
-            { w: "brings ~ back", k: "되찾아 준다", s: "What brings the light back is not an army" },
-            { w: "a roll of silk", k: "비단 한 필", s: "not an army but one roll of silk" },
+            { w: "be brought back (bring)", k: "되찾다", s: "How can the light be brought back?" },
+            { w: "across the sea", k: "바다 건너", s: "A couple ride a rock across the sea" },
             { w: "took its name from ~ (take)", k: "~에서 이름이 나왔다", s: "took its name from this story" }
         ],
         "01-couple.webp": [

@@ -291,8 +291,8 @@ const COVER = {
     title: "임금님 귀는 당나귀 귀",
     intro: [
         "임금님 귀는 당나귀 귀는 우리나라에 실제로 전해 내려오는 이야기예요. 신라의 경문왕이 주인공이고, 고려 시대에 일연 스님이 쓴 삼국유사라는 책에 실려 오늘까지 전한답니다.",
-        "이야기 끝에 대나무를 베고 산수유를 심자 소리가 달라졌다는 대목이 있는데, 그것까지 삼국유사에 그대로 적혀 있어요. 천 년 전 사람들도 이 이야기를 하며 웃었던 셈이지요.",
-        "그리스에도 아주 닮은 이야기가 있어요. 미다스 왕의 귀가 당나귀 귀가 되고, 이발사가 땅에 구덩이를 파고 소리쳤더니 갈대가 그 말을 옮겼다는 이야기지요. 멀리 떨어진 두 나라에서 어떻게 같은 이야기가 나왔는지는 아직 아무도 모른답니다."
+        "삼국유사에는 이 이야기가 아주 자세히 적혀 있어요. 천 년 전 사람들도 이 이야기를 하며 웃었던 셈이지요.",
+        "그리스에도 아주 닮은 이야기가 있어요. 당나귀 귀를 갖게 된 미다스 왕 이야기지요. 멀리 떨어진 두 나라에서 어떻게 같은 이야기가 나왔는지는 아직 아무도 모른답니다."
     ]
 };
 
@@ -307,8 +307,8 @@ const EN = {
         title: "The King's Donkey Ears",
         intro: [
             "This story really is told in Korea. Its king is Gyeongmun of Silla, and it is in the Samguk Yusa, put together by the monk Iryeon.",
-            "The bamboo cut down and the cornel trees planted are in the Samguk Yusa too. People a thousand years ago laughed at this story.",
-            "Greece has one very like it. King Midas gets donkey ears, and a barber shouts into a hole, and the reeds carry his words."
+            "The Samguk Yusa tells it in close detail. People a thousand years ago laughed at this story.",
+            "Greece has one very like it, about King Midas and his donkey ears."
         ]
     },
     chapters: [
@@ -647,11 +647,11 @@ const EN = {
         "cover": [
             { w: "really is told (tell)", k: "실제로 전해진다", s: "This story really is told in Korea." },
             { w: "put together by ~", k: "~이 엮은", s: "the Samguk Yusa, put together by the monk Iryeon" },
-            { w: "cornel trees", k: "산수유 나무", s: "The bamboo cut down and the cornel trees planted" },
+            { w: "in close detail", k: "아주 자세히", s: "The Samguk Yusa tells it in close detail." },
             { w: "a thousand years ago", k: "천 년 전", s: "People a thousand years ago laughed at this story." },
-            { w: "very like it", k: "아주 닮은", s: "Greece has one very like it." },
-            { w: "barber", k: "이발사", s: "a barber shouts into a hole" },
-            { w: "reeds", k: "갈대", s: "the reeds carry his words" }
+            { w: "very like it", k: "아주 닮은", s: "Greece has one very like it" },
+            { w: "donkey ears", k: "당나귀 귀", s: "about King Midas and his donkey ears." },
+            { w: "laughed (laugh)", k: "웃었다", s: "People a thousand years ago laughed at this story." }
         ],
         "01-morning.webp": [
             { w: "hard-working", k: "부지런한", s: "He was good and hard-working" },
@@ -902,10 +902,8 @@ const AFTERWORD = {
    예문은 그 쪽에 나온 문장 그대로다. */
 const WORDS_KO = {
     "cover": [
-        { w: "대목", k: "이야기 가운데 어느 한 부분.", s: "산수유를 심자 소리가 달라졌다는 대목이 있는데" },
-        { w: "산수유", k: "노란 꽃이 피고 붉은 열매가 열리는 나무.", s: "대나무를 베고 산수유를 심자" },
-        { w: "이발사", k: "머리를 깎아 주는 사람.", s: "이발사가 땅에 구덩이를 파고 소리쳤더니" },
-        { w: "갈대", k: "물가에 자라는 키 큰 풀.", s: "갈대가 그 말을 옮겼다는 이야기지요." }
+        { w: "삼국유사", k: "고려 때 일연 스님이 옛이야기와 역사를 모아 쓴 책.", s: "삼국유사라는 책에 실려 오늘까지 전한답니다." },
+        { w: "셈", k: "어떻게 된 형편이나 까닭.", s: "천 년 전 사람들도 이 이야기를 하며 웃었던 셈이지요." }
     ],
     "01-morning.webp": [
         { w: "어질다", k: "마음이 너그럽고 착하다.", s: "어질고 부지런해 백성들이 잘 따랐지요." },

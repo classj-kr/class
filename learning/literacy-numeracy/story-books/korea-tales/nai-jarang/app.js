@@ -192,7 +192,7 @@ const COVER = {
     intro: [
         "나이 자랑은 지은이가 없는 구전 설화예요. 나이 겨루기, 상좌 다툼이라는 이름으로도 전해진답니다.",
         "옛날에는 나이가 곧 서열이었어요. 잔칫상에서 누가 윗자리에 앉느냐가 중요한 문제였고, 그래서 나이를 두고 겨루는 이야기가 여럿 생겼지요. 처음 만난 사람끼리 나이부터 묻는 우리 습관의 뿌리도 여기에 닿아 있답니다.",
-        "두꺼비는 우리 옛이야기에 자주 나오는 짐승이에요. 크지도 빠르지도 않고 생김새도 볼품없지만, 옛사람들은 두꺼비를 미련하게 그리지 않았어요. 오히려 진득하니 앉아 무언가를 알고 있는 쪽으로 그렸지요."
+        "두꺼비는 우리 옛이야기에 자주 나오는 짐승이에요. 크지도 빠르지도 않고 생김새도 볼품없지요. 여우와 사슴 사이에 앉은 두꺼비는 잔칫상 앞에서 무슨 말을 할까요?"
     ]
 };
 
@@ -208,7 +208,7 @@ const EN = {
         intro: [
             "Who Is the Oldest? is an old Korean tale with no known author. It is also told as The Contest of Ages or The Quarrel over the Top Seat.",
             "Age once decided rank. Who took the top seat at a feast mattered, so several tales grew up about arguing over age.",
-            "The toad turns up often in our tales. It is not big or fast or handsome, and yet the old people never drew it as slow-witted."
+            "The toad turns up often in our tales. It is not big or fast or handsome. Sitting between a fox and a deer at a feast, what will it say?"
         ]
     },
     chapters: [
@@ -429,7 +429,7 @@ const EN = {
             { w: "grew up (grow up)", k: "생겼다", s: "several tales grew up about arguing over age" },
             { w: "turns up (turn up)", k: "자주 나온다", s: "The toad turns up often in our tales." },
             { w: "handsome", k: "잘생긴", s: "It is not big or fast or handsome" },
-            { w: "slow-witted", k: "미련한", s: "the old people never drew it as slow-witted" }
+            { w: "between ~ and ...", k: "~와 … 사이에", s: "Sitting between a fox and a deer at a feast" }
         ],
         "01-feast.webp": [
             { w: "came together", k: "한자리에 모였다", s: "a fox, a deer and a toad came together" },
@@ -636,9 +636,7 @@ const WORDS_KO = {
     "cover": [
         { w: "서열", k: "나이나 지위에 따라 매기는 차례.", s: "옛날에는 나이가 곧 서열이었어요." },
         { w: "겨루다", k: "누가 더 나은지 다투다.", s: "나이를 두고 겨루는 이야기가 여럿 생겼지요." },
-        { w: "볼품없다", k: "겉모양이 초라하다.", s: "크지도 빠르지도 않고 생김새도 볼품없지만" },
-        { w: "미련하다", k: "어리석고 둔하다.", s: "옛사람들은 두꺼비를 미련하게 그리지 않았어요." },
-        { w: "진득하다", k: "조급해하지 않고 차분하다.", s: "오히려 진득하니 앉아 무언가를 알고 있는 쪽으로 그렸지요." }
+        { w: "볼품없다", k: "겉모양이 초라하다.", s: "크지도 빠르지도 않고 생김새도 볼품없지요." }
     ],
     "01-feast.webp": [
         { w: "차려입다", k: "옷을 잘 갖추어 입다.", s: "셋 다 아침부터 잔뜩 차려입고 왔지요." },

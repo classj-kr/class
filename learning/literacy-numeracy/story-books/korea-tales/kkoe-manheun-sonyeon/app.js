@@ -228,7 +228,7 @@ const COVER = {
     intro: [
         "꾀 많은 소년은 지은이가 없는 구전 설화예요. 어른들이 쩔쩔매는 어려운 문제를 아이가 풀어내는 이야기 갈래에 속한답니다.",
         "이야기에 나오는 세 가지 문제는 우리나라 옛이야기에 오래도록 되풀이해 나오는 것들이에요. 재로 새끼줄 꼬기, 굽은 구슬에 실 꿰기, 통나무의 위아래 가리기. 다른 이야기에도 이 문제들이 하나씩 흩어져 나오는데, 이 책에서는 셋을 한자리에 모았답니다.",
-        "굽은 구슬에 실을 꿰는 꾀는 옛 기록에도 남아 있어요. 개미 허리에 실을 매고 반대쪽 구멍에 꿀을 발라 두면 개미가 꿀 냄새를 따라 기어간다는 것이지요. 힘으로 되지 않는 일을 다른 생각으로 푸는 것이 이 이야기의 재미랍니다."
+        "나라의 어른들이 모두 고개를 저은 문제들이에요. 힘으로도 재주로도 안 되는 문제를 소년은 어떻게 풀었을까요? 책장을 넘기기 전에 먼저 한번 생각해 보세요."
     ]
 };
 
@@ -244,7 +244,7 @@ const EN = {
         intro: [
             "The Clever Boy is an oral tale with no known author. It belongs to the kind where a child solves what the grown-ups cannot.",
             "Its three riddles turn up again and again in old Korean tales. A rope of ash, a thread through a bent bead, the two ends of a log.",
-            "The ant-and-honey trick is in the old records too. Tie a thread to an ant and put honey at the far hole."
+            "The grown-ups at court all gave up. How will a boy solve them? Have a guess before you turn the page."
         ]
     },
     chapters: [
@@ -499,8 +499,8 @@ const EN = {
             { w: "riddles", k: "어려운 문제", s: "Its three riddles turn up again and again in old Korean tales." },
             { w: "turn up", k: "나온다", s: "Its three riddles turn up again and again" },
             { w: "bent", k: "굽은", s: "a thread through a bent bead" },
-            { w: "the old records", k: "옛 기록", s: "The ant-and-honey trick is in the old records too." },
-            { w: "the far hole", k: "반대쪽 구멍", s: "put honey at the far hole" }
+            { w: "gave up (give up)", k: "고개를 저었다, 포기했다", s: "The grown-ups at court all gave up." },
+            { w: "Have a guess", k: "짐작해 보세요", s: "Have a guess before you turn the page." }
         ],
         "01-boy.webp": [
             { w: "famous for ~", k: "~로 이름난", s: "a boy famous for his wits" },
@@ -630,7 +630,7 @@ const EN = {
         ],
         "after": [
             { w: "all over the world", k: "세계 곳곳에", s: "Tales of a child solving a hard problem are found all over the world." },
-            { w: "are stuck (stick)", k: "막혀 있다", s: "Where the grown-ups are all stuck, one child gives the answer." },
+            { w: "are stuck (stick)", k: "막혀 있다", s: "Where the grown-ups are stuck, a child answers." },
             { w: "learning", k: "학식", s: "What the child uses in those tales is not strength and not learning." },
             { w: "outside the frame", k: "틀 밖에서", s: "It is looking from outside the frame the asker set up." },
             { w: "cannot be solved", k: "풀 수 없다", s: "the problem of twisting ash into rope cannot be solved" },
@@ -645,7 +645,7 @@ const EN = {
             {
                 art: 'end.webp',
                 left: [
-                    "Tales of a child solving a hard problem are found all over the world. The shape is always the same. Where the grown-ups are all stuck, one child gives the answer.",
+                    "Tales of a child solving a hard problem are found all over the world. Where the grown-ups are stuck, a child answers. The ant trick is in old records too.",
                     "What the child uses in those tales is not strength and not learning. It is looking from outside the frame the asker set up.",
                     "Look again and the problem of twisting ash into rope cannot be solved. Ash will not stay in your hand. So the boy turned the order round.",
                     "He twisted the rope first and burned it afterwards. The problem stayed exactly the same; the order of doing it changed."
@@ -689,7 +689,7 @@ const AFTERWORD = {
         {
             art: 'end.webp',
             left: [
-                "어려운 문제를 아이가 푸는 이야기는 세계 곳곳에 있습니다. 어른들이 다 막힌 자리에서 아이 하나가 답을 내는 틀입니다.",
+                "어려운 문제를 아이가 푸는 이야기는 세계 곳곳에 있습니다. 개미로 구슬을 꿰는 꾀는 옛 기록에도 남아 있습니다.",
                 "그런 이야기에서 아이가 쓰는 것은 힘도 아니고 학식도 아닙니다. 문제를 낸 사람이 정해 놓은 틀 밖에서 보는 것입니다.",
                 "다시 보면 재로 새끼를 꼬라는 문제는 풀 수 없는 문제입니다. 재는 손에 잡히지 않으니까요. 소년은 그 순서를 뒤집었습니다.",
                 "새끼를 먼저 꼬고 나서 태운 것입니다. 문제는 그대로인데 하는 차례를 바꾼 것이지요."
@@ -714,7 +714,7 @@ const WORDS_KO = {
         { w: "되풀이하다", k: "같은 것을 자꾸 다시 하다.", s: "우리나라 옛이야기에 오래도록 되풀이해 나오는 것들이에요." },
         { w: "새끼줄", k: "짚을 꼬아 만든 줄.", s: "재로 새끼줄 꼬기, 굽은 구슬에 실 꿰기" },
         { w: "꿰다", k: "구멍에 실이나 줄을 넣어 통하게 하다.", s: "굽은 구슬에 실 꿰기" },
-        { w: "기록", k: "남기려고 적어 놓은 것.", s: "굽은 구슬에 실을 꿰는 꾀는 옛 기록에도 남아 있어요." }
+        { w: "재주", k: "무엇을 잘하는 솜씨.", s: "힘으로도 재주로도 안 되는 문제를 소년은 어떻게 풀었을까요?" }
     ],
     "01-boy.webp": [
         { w: "고을", k: "옛날의 마을이나 고장.", s: "옛날 어느 고을에 꾀 많기로 이름난 소년이 살았어요." },

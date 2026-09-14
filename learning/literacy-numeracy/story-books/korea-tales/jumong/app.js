@@ -290,7 +290,7 @@ const COVER = {
     intro: [
         "주몽 이야기는 삼국사기와 삼국유사에 실려 전해져요. 고구려를 연 첫 임금에 관한 이야기랍니다.",
         "주몽은 부여 말로 활을 잘 쏘는 사람이라는 뜻이라고 전해져요. 이름이 곧 별명이었던 셈이지요.",
-        "고구려 광개토대왕릉비에도 시조 이야기가 새겨져 있어요. 비석에는 주몽을 추모라고 적었는데, 강 앞에서 하늘의 아들이라 외치자 갈대가 이어지고 거북이 떠올라 길이 되었다고 새겨져 있답니다. 천오백 년 전에 세운 돌에 남아 있는 이야기예요.",
+        "고구려 광개토대왕릉비에도 시조 이야기가 새겨져 있어요. 비석에는 주몽을 추모라고 적었지요. 천육백 년 전에 세운 돌에 남아 있는 이야기예요.",
         "북부여에서 갈라져 나와 새 나라를 세우는 줄거리는 백제 건국 이야기로 그대로 이어져요. 주몽의 아들 온조가 남쪽으로 내려가 백제를 세우거든요."
     ]
 };
@@ -319,7 +319,7 @@ const EN = {
         intro: [
             "The story of Jumong is in the Samguk Sagi and the Samguk Yusa. It is about the first king of Goguryeo.",
             "Jumong is said to mean a good archer in the language of Buyeo. His name was really a nickname.",
-            "The story is carved on King Gwanggaeto's stele as well, a stone set up fifteen hundred years ago."
+            "The story is carved on King Gwanggaeto's stele as well, a stone set up sixteen hundred years ago."
         ]
     },
     chapters: [
@@ -668,7 +668,7 @@ const EN = {
             { w: "nickname", k: "별명", s: "His name was really a nickname." },
             { w: "is carved on ~ (carve)", k: "~에 새겨져 있다", s: "The story is carved on King Gwanggaeto's stele" },
             { w: "stele", k: "비석", s: "carved on King Gwanggaeto's stele" },
-            { w: "set up (set)", k: "세운", s: "a stone set up fifteen hundred years ago" }
+            { w: "set up (set)", k: "세운", s: "a stone set up sixteen hundred years ago" }
         ],
         "01-yuhwa.webp": [
             { w: "in the north", k: "북쪽 땅에", s: "Long ago in the north, in Buyeo, there was a king called Geumwa." },
@@ -918,8 +918,7 @@ const AFTERWORD = {
 const WORDS_KO = {
     "cover": [
         { w: "시조", k: "한 집안이나 나라의 첫 조상.", s: "고구려 광개토대왕릉비에도 시조 이야기가 새겨져 있어요." },
-        { w: "비석", k: "글을 새겨 세운 돌.", s: "비석에는 주몽을 추모라고 적었는데" },
-        { w: "갈대", k: "물가에 자라는 키 큰 풀.", s: "갈대가 이어지고 거북이 떠올라 길이 되었다고" },
+        { w: "비석", k: "글을 새겨 세운 돌.", s: "비석에는 주몽을 추모라고 적었지요." },
         { w: "줄거리", k: "이야기가 흘러가는 큰 흐름.", s: "새 나라를 세우는 줄거리는 백제 건국 이야기로 그대로 이어져요." },
         { w: "건국", k: "나라를 처음 세우는 것.", s: "백제 건국 이야기로 그대로 이어져요." }
     ],

@@ -295,8 +295,8 @@ const COVER = {
     intro: [
         "도깨비 감투는 지은이가 없는 구전 설화예요. 쓰면 몸이 보이지 않는 감투가 나오는 이야기랍니다.",
         "감투는 조선 시대에 어른 남자가 머리에 쓰던 작고 둥근 모자예요. 벼슬을 하면 쓸 수 있었기 때문에, 지금도 자리나 벼슬을 두고 감투를 쓴다는 말을 쓰지요.",
-        "전하는 고장마다 감투를 얻는 자리가 달라요. 도깨비가 그냥 주고 가는 이야기도 있고, 도깨비들이 노는 틈에 슬쩍 훔쳐 오는 이야기도 있지요. 이 책은 훔쳐 오는 쪽을 따랐답니다.",
-        "몸이 보이지 않게 해 주는 물건은 세계 곳곳의 이야기에 나와요. 그리스 신화의 하데스 투구, 독일 이야기의 요술 망토처럼요. 그런데 그 물건을 얻은 사람이 끝에 가서 잘되는 이야기는 드물답니다."
+        "몸이 보이지 않게 해 주는 물건은 세계 곳곳의 이야기에 나와요. 그리스 신화의 하데스 투구, 독일 이야기의 요술 망토처럼요.",
+        "그런 감투가 손에 들어온다면 여러분은 무엇을 하겠어요? 이 이야기의 주인공은 무엇을 하는지 지켜보세요."
     ]
 };
 
@@ -312,7 +312,7 @@ const EN = {
         intro: [
             "This is an oral tale with no known author. It has a cap in it that makes you invisible when you put it on.",
             "A gamtu was a small round cap men wore in Joseon days. Wearing one meant holding office, so even now to wear a cap means to have a post.",
-            "Things that make you invisible turn up all over the world. But it is rare for the one who gets such a thing to end well."
+            "Things that make you invisible turn up all over the world. What would you do with one? Watch what the man in this story does."
         ]
     },
     chapters: [
@@ -662,8 +662,8 @@ const EN = {
             { w: "holding office", k: "벼슬을 함", s: "Wearing one meant holding office" },
             { w: "a post", k: "자리, 벼슬", s: "even now to wear a cap means to have a post" },
             { w: "turn up", k: "나온다", s: "Things that make you invisible turn up all over the world." },
-            { w: "it is rare for ~", k: "~는 드물다", s: "But it is rare for the one who gets such a thing to end well." },
-            { w: "end well", k: "끝에 잘되다", s: "rare for the one who gets such a thing to end well" }
+            { w: "What would you do with ~?", k: "~이 있다면 무엇을 하겠어요?", s: "What would you do with one?" },
+            { w: "Watch what ~ does", k: "~이 무엇을 하는지 지켜보다", s: "Watch what the man in this story does." }
         ],
         "01-poor.webp": [
             { w: "For hard work", k: "부지런하기로는", s: "For hard work there was nobody in the village like him." },
@@ -918,7 +918,7 @@ const WORDS_KO = {
     "cover": [
         { w: "감투", k: "옛날 어른 남자가 머리에 쓰던 작고 둥근 모자.", s: "감투는 조선 시대에 어른 남자가 머리에 쓰던 작고 둥근 모자예요." },
         { w: "벼슬", k: "나라 일을 맡아보던 자리.", s: "벼슬을 하면 쓸 수 있었기 때문에" },
-        { w: "드물다", k: "흔하지 않다.", s: "그 물건을 얻은 사람이 끝에 가서 잘되는 이야기는 드물답니다." }
+        { w: "투구", k: "옛날 싸움할 때 머리를 지키려고 쓰던 쇠 모자.", s: "그리스 신화의 하데스 투구" }
     ],
     "01-poor.webp": [
         { w: "으뜸", k: "여럿 가운데 첫째.", s: "부지런하기로는 마을에서 으뜸이었지요." },

@@ -195,7 +195,7 @@ const COVER = {
     title: "황소가 된 농부",
     intro: [
         "황소가 된 농부는 지은이가 없는 구전 설화예요. 소가 된 게으름뱅이라는 이름으로 더 널리 알려져 있답니다.",
-        "우리 옛이야기에서 소는 성실함을 대표하는 짐승이에요. 새벽부터 밤까지 묵묵히 일하지요. 게으른 사람을 하필 소로 만든 것은, 가장 부지런한 짐승이 되어 봐야 부지런함이 무엇인지 안다는 뜻이 담긴 것이랍니다.",
+        "우리 옛이야기에서 소는 성실함을 대표하는 짐승이에요. 새벽부터 밤까지 묵묵히 일하지요. 그런데 일하기 싫어하는 농부가 하필 소가 되면 어떻게 될까요?",
         "게으름을 피우는 아이에게 어른들이 그러다 소 된다고 하는 말이 바로 이 이야기에서 나왔어요. 지금도 쓰이는 말이지요."
     ]
 };
@@ -211,7 +211,7 @@ const EN = {
         title: "The Farmer Who Became an Ox",
         intro: [
             "The Farmer Who Became an Ox is an old Korean tale with no known author. It is better known as The Lazy Man Who Turned into an Ox.",
-            "In our old stories the ox stands for hard work. Turning a lazy man into the most hard-working animal of all is the whole point of it.",
+            "In our old stories the ox stands for hard work. So what happens when a man who hates work becomes one?",
             "When grown-ups tell a lazy child you'll turn into an ox, this is the story the saying comes from."
         ]
     },
@@ -433,8 +433,8 @@ const EN = {
             { w: "better known as ~", k: "~으로 더 알려진", s: "It is better known as The Lazy Man Who Turned into an Ox." },
             { w: "lazy", k: "게으른", s: "The Lazy Man Who Turned into an Ox" },
             { w: "stands for ~ (stand)", k: "~을 나타낸다", s: "the ox stands for hard work" },
-            { w: "hard-working", k: "부지런한", s: "the most hard-working animal of all" },
-            { w: "the whole point", k: "바로 그 뜻", s: "is the whole point of it" },
+            { w: "hard work", k: "부지런함, 성실함", s: "the ox stands for hard work" },
+            { w: "hates (hate)", k: "싫어한다", s: "a man who hates work becomes one" },
             { w: "grown-ups", k: "어른들", s: "When grown-ups tell a lazy child you'll turn into an ox" },
             { w: "saying", k: "말, 속담", s: "this is the story the saying comes from" }
         ],
@@ -658,7 +658,7 @@ const WORDS_KO = {
     "cover": [
         { w: "성실함", k: "꾀부리지 않고 부지런한 것.", s: "우리 옛이야기에서 소는 성실함을 대표하는 짐승이에요." },
         { w: "묵묵히", k: "말없이 꾸준하게.", s: "새벽부터 밤까지 묵묵히 일하지요." },
-        { w: "하필", k: "다른 것도 많은데 왜 그것이.", s: "게으른 사람을 하필 소로 만든 것은" },
+        { w: "하필", k: "다른 것도 많은데 왜 그것이.", s: "농부가 하필 소가 되면 어떻게 될까요?" },
         { w: "게으름", k: "부지런하지 않고 자꾸 미루는 버릇.", s: "게으름을 피우는 아이에게" }
     ],
     "01-lazy.webp": [

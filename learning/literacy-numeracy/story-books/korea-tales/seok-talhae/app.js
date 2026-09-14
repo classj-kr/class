@@ -259,9 +259,8 @@ const COVER = {
     art: "cover.webp",
     title: "석탈해",
     intro: [
-        "석탈해 이야기는 삼국유사와 삼국사기에 함께 실려 전해져요. 신라의 네 번째 임금이 된 사람에 관한 이야기랍니다.",
+        "석탈해 이야기는 삼국유사와 삼국사기에 함께 실려 전해져요. 바다를 건너온 궤에서 나온 아이에 관한 이야기랍니다.",
         "탈해는 궤를 풀고 나왔다 해서 붙은 이름이라고 전해져요. 성인 석은 까치 작 자에서 새 조 자를 떼어 냈다고 하지요. 까치가 궤를 찾아 주었기 때문이랍니다.",
-        "신라에서는 박씨, 석씨, 김씨 세 집안이 번갈아 임금을 냈어요. 석탈해는 그 가운데 석씨 집안의 첫 임금이랍니다.",
         "바다에 떠내려온 궤에서 사람이 나오는 이야기는 제주도와 남해 여러 섬에도 비슷하게 남아 있어요. 바다 건너에서 온 사람을 그렇게 기억한 것으로 보는 학자들이 많지요."
     ]
 };
@@ -288,9 +287,8 @@ const EN = {
         art: "cover.webp",
         title: "Seok Talhae",
         intro: [
-            "The story of Seok Talhae is in both the Samguk Yusa and the Samguk Sagi. He became the fourth king of Silla.",
-            "Talhae is said to mean the one who came out of the chest. The name Seok comes from the word for magpie, because magpies found it.",
-            "In Silla the Bak, the Seok and the Kim families took turns giving kings. Seok Talhae was the first Seok king."
+            "The story of Seok Talhae is in both the Samguk Yusa and the Samguk Sagi. It is about a child who came across the sea in a chest.",
+            "Talhae is said to mean the one who came out of the chest. The name Seok comes from the word for magpie, because magpies found it."
         ]
     },
     chapters: [
@@ -600,11 +598,11 @@ const EN = {
     words: {
         "cover": [
             { w: "in both ~ and ~", k: "~와 ~에 함께", s: "in both the Samguk Yusa and the Samguk Sagi" },
-            { w: "the fourth king", k: "네 번째 임금", s: "He became the fourth king of Silla." },
+            { w: "came across the sea (come)", k: "바다를 건너왔다", s: "a child who came across the sea in a chest" },
             { w: "is said to mean ~", k: "~라는 뜻이라 한다", s: "Talhae is said to mean the one who came out of the chest." },
             { w: "chest", k: "궤", s: "the one who came out of the chest" },
             { w: "magpie", k: "까치", s: "The name Seok comes from the word for magpie, because magpies found it." },
-            { w: "took turns (take)", k: "번갈아 했다", s: "the Bak, the Seok and the Kim families took turns giving kings" }
+            { w: "It is about ~", k: "~에 관한 이야기다", s: "It is about a child" }
         ],
         "01-sea.webp": [
             { w: "over the sea", k: "바다 건너", s: "this happened in a country over the sea" },

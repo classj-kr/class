@@ -263,7 +263,7 @@ const COVER = {
     title: "연이와 버들 도령",
     intro: [
         "연이와 버들 도령은 지은이가 없는 구전 설화예요. 한겨울에 나물을 뜯어 오라는 심부름에서 이야기가 시작된답니다.",
-        "이 이야기에는 뼈살이꽃, 살살이꽃, 피살이꽃이라는 세 송이 꽃이 나와요. 쓰러진 사람을 되살리는 꽃이지요. 같은 꽃이 바리공주 이야기에도 나오는데, 죽은 사람을 되살리는 꽃으로 우리 옛이야기에 되풀이해 나온답니다.",
+        "이 이야기에는 세 송이 신기한 꽃이 나와요. 같은 꽃이 바리공주 이야기에도 나오는데, 그 꽃이 무슨 일을 하는지는 끝까지 읽어 보면 알게 된답니다.",
         "바위 문을 열면 그 안에 봄이 들어 있다는 생각은 우리 옛이야기에 자주 나와요. 겨울이 아무리 길어도 어딘가에 봄이 갇혀 있을 뿐이라고 여긴 것이지요."
     ]
 };
@@ -279,7 +279,7 @@ const EN = {
         title: "Yeoni and the Willow Boy",
         intro: [
             "This is an oral tale with no known author. It starts with an errand: go and pick greens in midwinter.",
-            "Three flowers come into it, one for bone, one for flesh and one for blood. They bring a fallen person back to life.",
+            "Three wondrous flowers come into it, the same ones found in another old Korean tale. What they do, you will see.",
             "Open a rock door and spring is inside. Old tales held that however long the winter, spring is only shut up somewhere."
         ]
     },
@@ -587,9 +587,9 @@ const EN = {
             { w: "errand", k: "심부름", s: "It starts with an errand" },
             { w: "greens", k: "나물", s: "go and pick greens in midwinter" },
             { w: "midwinter", k: "한겨울", s: "go and pick greens in midwinter" },
-            { w: "flesh", k: "살", s: "one for bone, one for flesh and one for blood" },
-            { w: "fallen", k: "쓰러진", s: "They bring a fallen person back to life." },
-            { w: "back to life", k: "되살아나게", s: "They bring a fallen person back to life." },
+            { w: "wondrous", k: "신기한", s: "Three wondrous flowers come into it" },
+            { w: "come into ~", k: "~에 나오다", s: "Three wondrous flowers come into it" },
+            { w: "the same ones", k: "같은 것", s: "the same ones found in another old Korean tale" },
             { w: "however long ~", k: "아무리 길어도", s: "however long the winter, spring is only shut up somewhere" },
             { w: "shut up", k: "갇힌", s: "spring is only shut up somewhere" }
         ],
@@ -723,7 +723,7 @@ const EN = {
             { w: "one at a time", k: "하나씩", s: "Yeoni laid the flowers on his chest, one at a time." },
             { w: "bent", k: "굽은", s: "At the white flower his bent body straightened." },
             { w: "straightened (straighten)", k: "반듯해졌다", s: "his bent body straightened" },
-            { w: "life came into", k: "생기가 들었다", s: "At the pink flower, life came into his cheeks." },
+            { w: "came back into", k: "생기가 돌아왔다", s: "the colour came back into his cheeks" },
             { w: "faint", k: "가느다란", s: "A breath came back, very thin, very faint." },
             { w: "Atchoo", k: "에취", s: "Atchoo!" },
             { w: "sat straight up (sit)", k: "벌떡 일어나 앉았다", s: "The Willow Boy sat straight up." },

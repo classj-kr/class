@@ -230,8 +230,8 @@ const COVER = {
     title: "도깨비 방망이",
     intro: [
         "도깨비 방망이는 지은이가 없는 구전 설화예요. 금 나와라 뚝딱, 은 나와라 뚝딱 하면 무엇이든 나오는 방망이가 나오는 이야기랍니다.",
-        "우리 도깨비는 방망이를 늘 지니고 다녀요. 그 방망이를 두드리면 원하는 것이 나온다고 했지요. 그런데 도깨비는 겁이 아주 많아서, 집이 무너지는 소리나 닭 우는 소리에 놀라 물건을 두고 달아나곤 한답니다.",
-        "개암은 개암나무에 열리는 작은 열매예요. 껍질이 아주 단단해서 이로 깨물면 딱 하고 큰 소리가 나지요. 하필 개암이 이야기에 나오는 것도 그 소리 때문이랍니다."
+        "우리 도깨비는 방망이를 늘 지니고 다녀요. 그 방망이를 두드리면 원하는 것이 나온다고 했지요.",
+        "개암은 개암나무에 열리는 작고 단단한 열매예요. 산에서 주운 개암 몇 알이 이 이야기에서 무슨 일을 벌이는지 눈여겨보세요."
     ]
 };
 
@@ -246,8 +246,8 @@ const EN = {
         title: "The Goblin's Club",
         intro: [
             "The Goblin's Club is an old Korean tale with no known author. Knock the club and say gold come out, and out it comes.",
-            "Korean goblins carry a club, and knocking it brings whatever they name. But they are easily frightened, and run off leaving their things behind.",
-            "A gaeam is a small hard hazelnut. Bite one and it cracks with a loud snap. That snap is why it is in the story."
+            "Korean goblins carry a club, and knocking it brings whatever they name.",
+            "A gaeam is a small hard hazelnut. Watch what a few of them get up to in this story."
         ]
     },
     chapters: [
@@ -502,10 +502,10 @@ const EN = {
             { w: "out it comes", k: "나온다", s: "and out it comes" },
             { w: "carry (carry)", k: "지니고 다니다", s: "Korean goblins carry a club" },
             { w: "whatever they name", k: "원하는 것", s: "knocking it brings whatever they name" },
-            { w: "easily frightened", k: "겁이 아주 많은", s: "But they are easily frightened" },
-            { w: "leaving ~ behind", k: "두고 가며", s: "run off leaving their things behind" },
             { w: "hazelnut", k: "개암", s: "A gaeam is a small hard hazelnut." },
-            { w: "cracks with a snap", k: "딱 하고 깨진다", s: "Bite one and it cracks with a loud snap." }
+            { w: "small hard", k: "작고 단단한", s: "a small hard hazelnut" },
+            { w: "Watch what ~", k: "무엇을 ~하는지 눈여겨보다", s: "Watch what a few of them get up to" },
+            { w: "get up to ~", k: "(무슨 일을) 벌이다", s: "Watch what a few of them get up to in this story." }
         ],
         "01-brothers.webp": [
             { w: "greedy", k: "욕심 많은", s: "The elder was greedy" },
@@ -734,7 +734,7 @@ const WORDS_KO = {
     "cover": [
         { w: "방망이", k: "무엇을 두드리는 굵은 막대.", s: "금 나와라 뚝딱, 은 나와라 뚝딱 하면 무엇이든 나오는 방망이가 나오는 이야기랍니다." },
         { w: "지니다", k: "몸에 늘 가지고 다니다.", s: "우리 도깨비는 방망이를 늘 지니고 다녀요." },
-        { w: "개암", k: "개암나무에 열리는 작고 단단한 열매.", s: "개암은 개암나무에 열리는 작은 열매예요." }
+        { w: "개암", k: "개암나무에 열리는 작고 단단한 열매.", s: "개암은 개암나무에 열리는 작고 단단한 열매예요." }
     ],
     "01-brothers.webp": [
         { w: "아우", k: "동생.", s: "형은 욕심이 많았고, 아우는 마음이 곱고 부지런했지요." },

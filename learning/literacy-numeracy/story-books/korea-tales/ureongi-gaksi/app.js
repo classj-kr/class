@@ -250,7 +250,7 @@ const COVER = {
     intro: [
         "우렁이 색시는 지은이가 없는 구전 설화예요. 논에서 주워 온 우렁이에서 색시가 나온다는 이야기라, 우렁 각시라는 이름으로도 전해진답니다.",
         "우렁이는 논이나 냇물에 사는 조그만 고둥이에요. 옛날에는 논에서 흔히 잡아 된장국을 끓여 먹었지요. 늘 보던 흔한 것에서 뜻밖의 것이 나온다는 발상이 이 이야기의 시작이랍니다.",
-        "이 이야기는 고장마다 끝이 다르게 전해요. 둘이 오래오래 함께 사는 이야기도 있고, 헤어지는 이야기도 있지요. 어느 쪽이든 총각이 사흘을 못 참았다는 대목만은 빠지지 않는답니다."
+        "이 이야기는 고장마다 끝이 다르게 전해요. 이 책의 총각과 색시에게는 어떤 일이 기다리고 있을까요?"
     ]
 };
 
@@ -266,7 +266,7 @@ const EN = {
         intro: [
             "This is an oral tale with no known author. A bride comes out of a snail picked up in a rice paddy.",
             "A pond snail is a small shellfish that lives in paddies and streams. People used to catch them there and make bean paste soup of them.",
-            "Districts end it differently. In some the two live on together, in some they part. Either way he cannot wait three days."
+            "Districts end it differently. What is waiting for the two in this book?"
         ]
     },
     chapters: [
@@ -551,7 +551,7 @@ const EN = {
             { w: "shellfish", k: "고둥, 조개류", s: "a small shellfish that lives in paddies and streams" },
             { w: "used to ~", k: "예전에는 ~했다", s: "People used to catch them there and make bean paste soup of them." },
             { w: "Districts", k: "고장마다", s: "Districts end it differently." },
-            { w: "part", k: "헤어지다", s: "In some the two live on together, in some they part." }
+            { w: "is waiting for ~ (wait)", k: "~을 기다리고 있다", s: "What is waiting for the two in this book?" }
         ],
         "01-field.webp": [
             { w: "the size of a palm", k: "손바닥만 한", s: "He had no parents and no brothers, and farmed a paddy the size of a palm." },

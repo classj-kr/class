@@ -605,8 +605,8 @@ const COVER = {
     intro: [
         "심청전은 지은이가 알려지지 않은 조선 후기 소설이에요. 판소리 심청가로 불리던 것이 글로 옮겨진 것이지요.",
         "이야기의 무대인 인당수는 황해도 앞바다에 있었다고 전해지는 물길이에요. 물살이 사납기로 이름나, 뱃사람들은 그 바다를 지날 때 제사를 지냈답니다.",
-        "사람을 제물로 바쳐 물길을 달랜다는 이야기는 아주 오래된 것이에요. 심청전은 그 옛 이야기를 뒤집어 놓았어요. 물에 빠진 사람이 죽지 않고 도로 살아 돌아오고, 그 힘으로 온 나라의 눈먼 사람이 눈을 뜨거든요.",
-        "판소리 심청가에서 가장 유명한 대목은 심 봉사가 눈을 뜨는 마지막 장면이에요. 소리꾼이 그 대목에 이르면 듣는 사람들이 다 같이 울었다고 전해진답니다."
+        "앞 못 보는 아버지 심 봉사가 눈을 뜨려면 공양미 삼백 석을 바쳐야 한대요. 가난한 집 딸 심청은 어떻게 할까요?",
+        "소리꾼이 심청가를 부르면 듣는 사람들이 다 같이 울었다고 전해진답니다."
     ]
 };
 
@@ -925,10 +925,10 @@ const EN = {
         emoji: '🪷',
         title: 'Simcheong the Devoted Daughter',
         intro: [
-            "This story was a song before it was a book. Simcheong-ga, sung as pansori by one singer with one drummer for three or four hours, came first.",
-            "There is no author. Singers sang it and sang it and changed it a little each time, so every old copy is different.",
-            "Indangsu, the sea where Simcheong throws herself in, is not invented. It is what people called a stretch of hard water off Baengnyeongdo in the West Sea.",
-            "If reading it makes you uncomfortable, that is right. We no longer think it beautiful for a daughter to give her life for her father."
+            "This story was a song before it was a book: Simcheong-ga, sung as pansori by one singer with one drummer.",
+            "There is no author. Singers changed it a little each time, so every old copy is different.",
+            "Indangsu, the sea in this story, is not invented. People gave that name to hard water off Baengnyeongdo in the West Sea.",
+            "Her blind father needs three hundred sacks of rice to see again, and Simcheong is poor. What will she do?"
         ]
     },
     chapters: [
@@ -1181,9 +1181,9 @@ const EN = {
             { w: "There is no author", k: "지은이가 없다", s: "There is no author" },
             { w: "changed it a little each time (change)", k: "그때마다 조금씩 고쳤다", s: "changed it a little each time" },
             { w: "is not invented (invent)", k: "지어낸 것이 아니다", s: "is not invented" },
-            { w: "a stretch of hard water", k: "물살이 센 자리", s: "a stretch of hard water" },
-            { w: "makes you uncomfortable (make)", k: "마음을 불편하게 한다", s: "If reading it makes you uncomfortable" },
-            { w: "no longer ~", k: "더는 ~않는다", s: "We no longer think it beautiful" }
+            { w: "hard water", k: "물살이 센 바다", s: "People gave that name to hard water" },
+            { w: "sacks of rice", k: "쌀 ~ 석", s: "three hundred sacks of rice" },
+            { w: "to see again", k: "다시 보려면", s: "needs three hundred sacks of rice to see again" }
         ],
         "ch1": [
             { w: "had come down in the world (come down)", k: "가세가 기울었다", s: "the household had come down in the world" },

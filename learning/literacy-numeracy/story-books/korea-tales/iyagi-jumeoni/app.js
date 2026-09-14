@@ -229,7 +229,7 @@ const COVER = {
     intro: [
         "이야기 주머니는 지은이가 없는 구전 설화예요. 이야기를 남에게 들려주지 않고 가두어 두면 어떻게 되는지를 다룬 이야기랍니다.",
         "옛날에는 이야기가 곧 재산이었어요. 책이 귀하던 시절이라 이야기는 사람의 입에서 입으로만 옮겨 다녔지요. 그러니 듣기만 하고 남에게 들려주지 않는 사람은, 이야기가 흘러가는 길을 막는 사람이었던 셈이에요.",
-        "이 이야기가 재미있는 것은 이야기 자신이 등장인물이 된다는 점이에요. 갇혀 지낸 이야기들이 화를 내고 말을 주고받지요. 이야기에 대한 이야기라, 옛사람들이 이야기를 어떻게 여겼는지가 그대로 담겨 있답니다."
+        "주머니 속에 갇힌 이야기들은 어떻게 되었을까요? 이야기에 대한 이야기라, 옛사람들이 이야기를 어떻게 여겼는지가 그대로 담겨 있답니다."
     ]
 };
 
@@ -245,7 +245,7 @@ const EN = {
         intro: [
             "The Bag of Stories is an old Korean tale with no known author. It is about what happens when you keep stories to yourself instead of telling them on.",
             "Stories were wealth once. Books were rare, so a story travelled only from mouth to mouth. Somebody who only listened was blocking the road a story travelled by.",
-            "What makes this one fun is that the stories themselves are characters. Shut in, they get angry and talk it over."
+            "And what becomes of stories shut up in a bag? This is a story about stories."
         ]
     },
     chapters: [
@@ -501,9 +501,9 @@ const EN = {
             { w: "rare", k: "귀한", s: "Books were rare" },
             { w: "from mouth to mouth", k: "입에서 입으로", s: "a story travelled only from mouth to mouth" },
             { w: "blocking (block)", k: "막는", s: "Somebody who only listened was blocking the road" },
-            { w: "characters", k: "등장인물", s: "the stories themselves are characters" },
-            { w: "Shut in", k: "갇혀서", s: "Shut in, they get angry and talk it over." },
-            { w: "talk it over", k: "말을 주고받다", s: "they get angry and talk it over" }
+            { w: "becomes of ~ (become)", k: "~은 어떻게 되다", s: "And what becomes of stories shut up in a bag?" },
+            { w: "shut up in ~", k: "~에 갇힌", s: "stories shut up in a bag" },
+            { w: "a story about stories", k: "이야기에 대한 이야기", s: "This is a story about stories." }
         ],
         "01-boy.webp": [
             { w: "young master", k: "도련님", s: "there lived a young master who loved stories" },
@@ -737,8 +737,7 @@ const WORDS_KO = {
     "cover": [
         { w: "가두다", k: "못 나가게 안에 두다.", s: "이야기를 남에게 들려주지 않고 가두어 두면" },
         { w: "재산", k: "가진 돈이나 값나가는 물건.", s: "옛날에는 이야기가 곧 재산이었어요." },
-        { w: "등장인물", k: "이야기에 나오는 인물.", s: "이야기 자신이 등장인물이 된다는 점이에요." },
-        { w: "갇히다", k: "안에 들어 밖으로 못 나오게 되다.", s: "갇혀 지낸 이야기들이 화를 내고 말을 주고받지요." }
+        { w: "갇히다", k: "안에 들어 밖으로 못 나오게 되다.", s: "주머니 속에 갇힌 이야기들은 어떻게 되었을까요?" }
     ],
     "01-boy.webp": [
         { w: "도련님", k: "결혼하지 않은 남의 집 아들을 높여 부르던 말.", s: "이야기를 무척 좋아하는 도련님이 살았습니다." },

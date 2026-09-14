@@ -226,10 +226,10 @@ const COVER = {
     art: "cover.webp",
     title: "구렁덩덩 신선비",
     intro: [
-        "구렁덩덩 신선비는 지은이가 없는 구전 설화예요. 구렁이로 태어난 신랑과 그를 찾아 나선 아내의 이야기랍니다.",
+        "구렁덩덩 신선비는 지은이가 없는 구전 설화예요. 구렁이로 태어난 신랑과 그에게 시집간 셋째 딸의 이야기랍니다.",
         "고을마다 이름이 조금씩 달라요. 구렁덩덩 새선비, 구렁덩덩 서선비, 구렁덩덩 신선부라고도 부르지요. 구렁덩덩은 구렁이를 소리 나는 대로 부른 말이랍니다.",
-        "짐승 모습으로 태어난 신랑이 허물을 벗고 사람이 되고, 금기를 어겨 사라지고, 아내가 먼 길을 걸어 되찾는 짜임은 세계 곳곳에 있어요. 유럽의 미녀와 야수, 큐피드와 프시케 이야기가 같은 갈래랍니다.",
-        "우리 이야기에서 눈여겨볼 것은 아내가 스스로 걸어서 찾아간다는 점이에요. 옛날에 전하던 이야기에서는 밭 가는 사람에게, 빨래하는 사람에게, 까치에게까지 길을 물어 가며 갑니다."
+        "짐승 모습으로 태어난 신랑 이야기는 세계 곳곳에 있어요. 유럽의 미녀와 야수, 큐피드와 프시케 이야기가 같은 갈래랍니다.",
+        "누구도 반기지 않던 구렁이 신랑에게는 어떤 비밀이 숨어 있을까요?"
     ]
 };
 
@@ -243,9 +243,9 @@ const EN = {
         art: "cover.webp",
         title: "The Snake Bridegroom",
         intro: [
-            "The Snake Bridegroom is an oral tale with no known author. A bridegroom is born a snake, and his wife sets out to find him.",
+            "The Snake Bridegroom is an oral tale with no known author. A bridegroom is born a snake. Who would ever marry him?",
             "Every district tells it with a slightly different name. Gureongdeongdeong is simply the sound of the word for a big snake.",
-            "A husband in animal shape, a rule broken, a long walk to win him back: Beauty and the Beast is the same kind of story."
+            "A husband in animal shape is told the world over; Beauty and the Beast is one. What secret does this snake keep?"
         ]
     },
     chapters: [
@@ -510,12 +510,12 @@ const EN = {
         "cover": [
             { w: "bridegroom", k: "신랑", s: "A bridegroom is born a snake" },
             { w: "oral tale", k: "구전 설화", s: "The Snake Bridegroom is an oral tale with no known author." },
-            { w: "sets out (set out)", k: "길을 나서다", s: "his wife sets out to find him" },
+            { w: "marry", k: "결혼하다", s: "Who would ever marry him?" },
             { w: "district", k: "고을", s: "Every district tells it with a slightly different name." },
             { w: "simply the sound of ~", k: "소리 나는 대로 부른 말", s: "Gureongdeongdeong is simply the sound of the word for a big snake." },
-            { w: "in animal shape", k: "짐승 모습으로", s: "A husband in animal shape, a rule broken" },
-            { w: "win him back", k: "되찾아 오다", s: "a long walk to win him back" },
-            { w: "the same kind of story", k: "같은 갈래", s: "Beauty and the Beast is the same kind of story" }
+            { w: "in animal shape", k: "짐승 모습으로", s: "A husband in animal shape is told the world over" },
+            { w: "the world over", k: "세계 곳곳에서", s: "is told the world over" },
+            { w: "secret", k: "비밀", s: "What secret does this snake keep?" }
         ],
         "01-birth.webp": [
             { w: "with no children", k: "아이 없는", s: "there lived an old woman with no children" },
@@ -735,9 +735,8 @@ const AFTERWORD = {
 const WORDS_KO = {
     "cover": [
         { w: "고을", k: "옛날의 마을이나 고장.", s: "고을마다 이름이 조금씩 달라요." },
-        { w: "허물", k: "뱀 같은 짐승이 벗어 놓은 껍질.", s: "짐승 모습으로 태어난 신랑이 허물을 벗고 사람이 되고" },
-        { w: "금기", k: "하면 안 된다고 정해 놓은 것.", s: "금기를 어겨 사라지고" },
-        { w: "짜임", k: "이야기가 얽혀 있는 틀.", s: "아내가 먼 길을 걸어 되찾는 짜임은 세계 곳곳에 있어요." },
+        { w: "시집가다", k: "여자가 결혼해 남편을 맞다.", s: "그에게 시집간 셋째 딸의 이야기랍니다." },
+        { w: "반기다", k: "오는 것을 기뻐하며 맞다.", s: "누구도 반기지 않던 구렁이 신랑에게는" },
         { w: "갈래", k: "같은 줄기에서 나뉜 무리.", s: "큐피드와 프시케 이야기가 같은 갈래랍니다." }
     ],
     "01-birth.webp": [

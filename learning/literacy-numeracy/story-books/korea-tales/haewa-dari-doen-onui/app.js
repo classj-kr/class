@@ -241,8 +241,8 @@ const COVER = {
     intro: [
         "해와 달이 된 오누이는 지은이가 없는 구전 설화예요. 우리나라 곳곳에서 전해 내려왔고, 옛이야기 가운데 가장 널리 알려진 것에 속한답니다.",
         "이 이야기는 왜 그렇게 되었는지를 풀어 주는 유래담이기도 해요. 해와 달이 어떻게 생겼는지, 수숫대가 왜 붉은지를 이야기 하나로 설명하지요.",
-        "짐승이 어머니나 할머니로 꾸미고 아이들을 노리는 이야기는 이웃 나라에도 있어요. 대만에는 호랑이가 할머니로 꾸미고 찾아오는 이야기가, 일본에는 도깨비에게 쫓긴 아이들이 하늘로 올라가는 이야기가 전한답니다.",
-        "고을마다 조금씩 달라요. 오누이가 아니라 세 남매인 이야기도 있고, 누이가 해가 되는 이야기과 오빠가 해가 되는 이야기가 함께 전해지지요."
+        "비슷한 이야기는 이웃 나라에도 있어요. 대만에는 호랑이가, 일본에는 도깨비가 아이들을 노리는 이야기가 전한답니다.",
+        "고을마다 조금씩 달라요. 오누이가 아니라 세 남매가 나오는 이야기도 전해지지요."
     ]
 };
 
@@ -258,7 +258,7 @@ const EN = {
         intro: [
             "This is an oral tale with no known author. It was told all over Korea and is among the best known of our old stories.",
             "It is a why-story as well. It explains how the sun and the moon came to be, and why sorghum stalks are red.",
-            "A beast dressing as a mother to get at children is told next door too. Taiwan has a tiger, Japan an ogre."
+            "Stories like it are told next door too. In Taiwan a tiger hunts the children; in Japan, an ogre."
         ]
     },
     chapters: [
@@ -529,9 +529,9 @@ const EN = {
             { w: "a why-story", k: "유래담", s: "It is a why-story as well." },
             { w: "came to be", k: "생겨났다", s: "It explains how the sun and the moon came to be, and why sorghum stalks are red." },
             { w: "sorghum stalks", k: "수숫대", s: "why sorghum stalks are red" },
-            { w: "get at ~", k: "노리다", s: "A beast dressing as a mother to get at children" },
-            { w: "next door", k: "이웃 나라에", s: "is told next door too" },
-            { w: "ogre", k: "도깨비 같은 것", s: "Taiwan has a tiger, Japan an ogre." }
+            { w: "hunts (hunt)", k: "노리다, 쫓다", s: "In Taiwan a tiger hunts the children" },
+            { w: "next door", k: "이웃 나라에", s: "Stories like it are told next door too." },
+            { w: "ogre", k: "도깨비 같은 것", s: "in Japan, an ogre." }
         ],
         "01-family.webp": [
             { w: "below a mountain", k: "산 밑에", s: "a brother and sister lived with their mother below a mountain" },
@@ -743,9 +743,9 @@ const WORDS_KO = {
     "cover": [
         { w: "유래담", k: "왜 그렇게 되었는지를 풀어 주는 이야기.", s: "왜 그렇게 되었는지를 풀어 주는 유래담이기도 해요." },
         { w: "수숫대", k: "수수의 줄기.", s: "수숫대가 왜 붉은지를 이야기 하나로 설명하지요." },
-        { w: "노리다", k: "잡으려고 기회를 엿보다.", s: "짐승이 어머니나 할머니로 꾸미고 아이들을 노리는 이야기는" },
+        { w: "노리다", k: "잡으려고 기회를 엿보다.", s: "일본에는 도깨비가 아이들을 노리는 이야기가 전한답니다." },
         { w: "고을", k: "옛날의 마을이나 고장.", s: "고을마다 조금씩 달라요." },
-        { w: "남매", k: "오라비와 누이.", s: "오누이가 아니라 세 남매인 이야기도 있고" }
+        { w: "남매", k: "오라비와 누이.", s: "오누이가 아니라 세 남매가 나오는 이야기도 전해지지요." }
     ],
     "01-family.webp": [
         { w: "오누이", k: "오빠와 누이.", s: "옛날 깊은 산 밑에 오누이가 어머니와 살았습니다." },

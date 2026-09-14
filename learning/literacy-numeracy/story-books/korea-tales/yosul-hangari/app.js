@@ -197,8 +197,8 @@ const COVER = {
     title: "요술 항아리",
     intro: [
         "요술 항아리는 지은이가 없는 구전 설화예요. 넣기만 하면 끝없이 나오는 그릇을 우리말로 화수분이라고 하는데, 지금도 돈이나 물건이 끝없이 나올 때 화수분 같다고 말한답니다.",
-        "이야기의 짜임은 세계 곳곳의 이야기와 닮았어요. 끝없이 나오는 그릇이나 맷돌을 욕심 많은 사람이 빼앗았다가 도리어 낭패를 본다는 뼈대지요. 북유럽에도 소금을 갈아 내는 맷돌 이야기가 전한답니다.",
-        "우리 옛이야기에서 욕심 많은 부자는 늘 같은 방식으로 벌을 받아요. 힘으로 빼앗은 물건이 도리어 자기를 괴롭히는 것이지요. 혹부리 영감이나 흥부와 놀부도 같은 짜임이랍니다."
+        "끝없이 나오는 그릇이나 맷돌 이야기는 세계 곳곳에 있어요. 북유럽에도 소금을 갈아 내는 맷돌 이야기가 전한답니다.",
+        "그런데 이런 보물이 생기면 탐내는 사람도 생기기 마련이에요. 욕심 많은 부자가 항아리에 눈독을 들이면 어떻게 될까요?"
     ]
 };
 
@@ -213,8 +213,8 @@ const EN = {
         title: "The Magic Jar",
         intro: [
             "The Magic Jar is an old Korean tale with no known author. A vessel that gives back endlessly is called a hwasubun in Korean, and people still use the word today.",
-            "The shape of the story turns up all over the world: a greedy person takes an endless jar or millstone and comes off worse for it.",
-            "In our tales a greedy rich man is always punished the same way. The thing he seized by force turns round and torments him."
+            "Stories of an endless jar or millstone turn up all over the world.",
+            "Treasure like that draws greedy eyes. What happens when a rich man wants the jar for himself?"
         ]
     },
     chapters: [
@@ -435,13 +435,13 @@ const EN = {
             { w: "with no known author", k: "지은이가 알려지지 않은", s: "an old Korean tale with no known author" },
             { w: "vessel", k: "그릇", s: "A vessel that gives back endlessly" },
             { w: "endlessly", k: "끝없이", s: "A vessel that gives back endlessly" },
-            { w: "turns up (turn up)", k: "나타난다", s: "The shape of the story turns up all over the world" },
-            { w: "greedy", k: "욕심 많은", s: "a greedy person takes an endless jar or millstone" },
+            { w: "turn up", k: "나타난다", s: "turn up all over the world" },
+            { w: "greedy", k: "욕심 많은", s: "Treasure like that draws greedy eyes." },
             { w: "millstone", k: "맷돌", s: "an endless jar or millstone" },
-            { w: "comes off worse", k: "도리어 낭패를 본다", s: "and comes off worse for it" },
-            { w: "is punished (punish)", k: "벌을 받는다", s: "a greedy rich man is always punished the same way" },
-            { w: "seized by force (seize)", k: "힘으로 빼앗은", s: "The thing he seized by force" },
-            { w: "torments (torment)", k: "괴롭힌다", s: "turns round and torments him" }
+            { w: "draws (draw)", k: "끌어들인다", s: "Treasure like that draws greedy eyes." },
+            { w: "treasure", k: "보물", s: "Treasure like that" },
+            { w: "for himself", k: "제 것으로", s: "wants the jar for himself" },
+            { w: "What happens when ~?", k: "~하면 어떻게 될까?", s: "What happens when a rich man wants the jar" }
         ],
         "01-dig.webp": [
             { w: "paddy", k: "논", s: "Their paddy and their field were the size of a hand." },

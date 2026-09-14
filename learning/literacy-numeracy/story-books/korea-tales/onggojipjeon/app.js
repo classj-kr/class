@@ -554,7 +554,7 @@ const COVER = {
         "옹고집전은 지은이가 알려지지 않은 조선 후기 소설이에요. 원래는 판소리로 불리던 것이 글로 옮겨진 것이랍니다.",
         "판소리 열두 마당 가운데 하나였지만 노래로 부르는 법은 끊기고 글만 남았어요. 이렇게 사설만 남은 판소리를 실전 판소리라고 부른답니다.",
         "고집이 세고 남의 말을 듣지 않는 사람을 옹고집이라 부르는 말이 여기서 나왔어요. 사람 이름이 그대로 낱말이 된 드문 경우지요.",
-        "짚으로 사람 모양을 만들어 부적을 붙이면 진짜 사람처럼 움직인다는 생각은 우리 옛이야기에 자주 나와요. 짚으로 만든 것이 사람 노릇을 한다는 이야기는 홍길동전에도 비슷하게 나온답니다."
+        "어느 날 옹고집 앞에 얼굴도 목소리도 똑같은 옹고집이 하나 더 나타나요. 둘 가운데 누가 진짜일까요? 그리고 또 하나의 옹고집은 어디서 왔을까요?"
     ]
 };
 
@@ -865,8 +865,8 @@ const EN = {
         title: 'The Tale of Onggojip',
         intro: [
             "The Tale of Onggojip is an old Korean story with no known author. It was once sung as pansori, but that song has been lost.",
-            "Of the twelve pansori pieces, only five are still sung today. This is one of the seven whose music is gone, so we can only read it.",
-            "It belongs to a family of stories in which a false person appears and argues that he is the real one. Here the false one is made out of straw.",
+            "Only five of the twelve pansori pieces are still sung. This is one of the seven whose music is gone.",
+            "One day a second Onggojip turns up, and both swear they are the real one. Which is it?",
             "Onggojip means a stubborn man of the Ong family. The name says what he is before the story starts."
         ]
     },
@@ -1074,9 +1074,9 @@ const EN = {
         "cover": [
             { w: "with no known author", k: "지은이가 알려지지 않은", s: "an old Korean story with no known author" },
             { w: "has been lost (lose)", k: "전하지 않는다", s: "but that song has been lost" },
-            { w: "are still sung (sing)", k: "아직 불린다", s: "only five are still sung today" },
-            { w: "belongs to ~ (belong)", k: "~에 속한다", s: "It belongs to a family of stories" },
-            { w: "argues that ~ (argue)", k: "~라고 우긴다", s: "a false person appears and argues that he is the real one" },
+            { w: "are still sung (sing)", k: "아직 불린다", s: "Only five of the twelve pansori pieces are still sung" },
+            { w: "turns up (turn up)", k: "나타난다", s: "One day a second Onggojip turns up" },
+            { w: "swear (swear)", k: "맹세하듯 우긴다", s: "both swear they are the real one" },
             { w: "stubborn", k: "고집 센", s: "Onggojip means a stubborn man of the Ong family" }
         ],
         "ch1": [

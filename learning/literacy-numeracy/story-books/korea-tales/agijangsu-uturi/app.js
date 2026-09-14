@@ -242,8 +242,8 @@ const COVER = {
     title: "아기장수 우투리",
     intro: [
         "아기장수 우투리는 지은이가 없는 옛이야기예요. 우리나라 곳곳에 조금씩 다른 모습으로 전해 오고, 용마못이나 용마바위라는 이름이 남은 자리마다 이 이야기가 따라옵니다.",
-        "겨드랑이에 날개를 달고 태어난 아이가 큰 장수가 되려다 그러지 못하는 이야기예요. 옛이야기 가운데 드물게 끝이 슬픈 이야기지요.",
-        "콩 한 알이 모자라 일이 어그러집니다. 그 한 알을 누가 먹었는지, 왜 한 해를 못 기다렸는지를 따라가 보세요."
+        "겨드랑이에 날개를 달고 태어난 아이가 주인공이에요. 이 아이는 자라서 큰 장수가 될 수 있을까요?",
+        "날개 달린 아기가 태어났다는 소문이 퍼지면 어떤 일이 벌어질까요? 조마조마한 마음으로 따라가 보세요."
     ]
 };
 
@@ -258,8 +258,8 @@ const EN = {
         title: "Uturi the Baby Warrior",
         intro: [
             "This is an old tale with no known author. It is told all over Korea, and follows every place named Dragon Horse Pond.",
-            "A child born with wings under his arms sets out to be a great warrior and does not get there. Few old tales end sadly like this.",
-            "One bean short, and it all goes wrong. Watch who ate that bean, and why one more year was too long to wait."
+            "Its hero is a child born with wings under his arms. Can he grow up to be a great warrior?",
+            "What happens when word of a winged baby gets out? Follow along and see."
         ]
     },
     chapters: [
@@ -528,11 +528,11 @@ const EN = {
         "cover": [
             { w: "all over Korea", k: "우리나라 곳곳에", s: "It is told all over Korea" },
             { w: "follows (follow)", k: "따라온다", s: "It is told all over Korea, and follows every place named Dragon Horse Pond." },
-            { w: "under his arms", k: "겨드랑이에", s: "A child born with wings under his arms" },
-            { w: "sets out to ~", k: "~이 되려 한다", s: "sets out to be a great warrior and does not get there" },
-            { w: "end sadly", k: "슬프게 끝나다", s: "Few old tales end sadly like this." },
-            { w: "one bean short", k: "콩 한 알이 모자라", s: "One bean short, and it all goes wrong." },
-            { w: "goes wrong", k: "어그러진다", s: "One bean short, and it all goes wrong." }
+            { w: "hero", k: "주인공", s: "Its hero is a child born with wings under his arms." },
+            { w: "under his arms", k: "겨드랑이에", s: "a child born with wings under his arms" },
+            { w: "winged", k: "날개 달린", s: "word of a winged baby" },
+            { w: "grow up to be ~", k: "자라서 ~이 되다", s: "Can he grow up to be a great warrior?" },
+            { w: "word gets out", k: "소문이 퍼지다", s: "What happens when word of a winged baby gets out?" }
         ],
         "01-birth.webp": [
             { w: "couple", k: "부부", s: "Long ago a poor couple lived in a mountain village." },
@@ -752,7 +752,7 @@ const WORDS_KO = {
     "cover": [
         { w: "장수", k: "군사를 이끄는 힘센 사람.", s: "아기장수 우투리는 지은이가 없는 옛이야기예요." },
         { w: "겨드랑이", k: "팔과 몸이 만나는 안쪽 자리.", s: "겨드랑이에 날개를 달고 태어난 아이가" },
-        { w: "어그러지다", k: "잘되어 가던 일이 틀어지다.", s: "콩 한 알이 모자라 일이 어그러집니다." }
+        { w: "소문", k: "사람들 입에서 입으로 퍼지는 말.", s: "날개 달린 아기가 태어났다는 소문이 퍼지면" }
     ],
     "01-birth.webp": [
         { w: "산골", k: "산속 깊이 들어앉은 마을.", s: "옛날 어느 산골에 가난한 부부가 살았습니다." },

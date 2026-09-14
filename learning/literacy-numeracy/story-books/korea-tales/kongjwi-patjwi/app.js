@@ -551,9 +551,9 @@ const COVER = {
     title: '콩쥐 팥쥐',
     intro: [
         "콩쥐 팥쥐는 지은이가 알려지지 않은 조선 후기 소설이에요. 전라도 전주 지방을 무대로 삼고 있답니다.",
-        "이 이야기는 세계 곳곳에 퍼져 있는 신데렐라형 이야기 가운데 하나예요. 잃어버린 신 한 짝으로 사람을 찾아낸다는 대목이 똑같이 나온답니다.",
+        "이 이야기는 세계 곳곳에 퍼져 있는 신데렐라형 이야기 가운데 하나예요. 어머니를 여읜 딸과 새어머니가 나오는 뼈대가 서로 닮았답니다.",
         "그 가운데 가장 오래된 것은 중국 당나라 때 책 유양잡조에 실린 섭한 이야기예요. 천이백 년쯤 전에 적힌 글이니 유럽의 신데렐라보다 팔백 년이나 앞선 셈이지요.",
-        "콩쥐를 돕는 것은 요정이 아니라 검은 소와 두꺼비와 참새 떼예요. 우리 옛이야기에서는 도움이 하늘에서 내려오지 않고 늘 논밭에서 걸어 나온답니다."
+        "그런데 콩쥐 이야기는 신데렐라와 똑같이 흘러가지는 않아요. 어디서부터 달라지는지 눈여겨보며 읽어 보세요."
     ]
 };
 
@@ -864,8 +864,8 @@ const EN = {
         title: 'Kongjwi and Patjwi',
         intro: [
             "Kongjwi and Patjwi is an old Korean story with no known author. It has been told in this country for a very long time.",
-            "If it feels familiar, you are right. A girl who loses her mother, a new mother and her daughter, hard work, a lost shoe. Stories built this way are found all over the world.",
-            "But ours is different in one place. It does not end at the wedding. What happens after that is the half most people do not know.",
+            "If it feels familiar, you are right. A girl who loses her mother, a new mother and her daughter. Stories built this way are found all over the world.",
+            "But ours does not go quite the same way. Watch for where it turns.",
             "Kongjwi means bean and Patjwi means red bean. The names of two ordinary things people grew in the yard."
         ]
     },
@@ -1073,9 +1073,9 @@ const EN = {
             { w: "with no known author", k: "지은이가 알려지지 않은", s: "an old Korean story with no known author" },
             { w: "familiar", k: "어디서 들어 본 듯한", s: "If it feels familiar, you are right" },
             { w: "are found (find)", k: "발견된다", s: "Stories built this way are found all over the world" },
-            { w: "in one place", k: "한 군데가", s: "But ours is different in one place" },
-            { w: "It does not end at ~ (end)", k: "~에서 끝나지 않는다", s: "It does not end at the wedding" },
-            { w: "the half most people do not know", k: "사람들이 잘 모르는 절반", s: "the half most people do not know" },
+            { w: "quite the same", k: "똑같이", s: "But ours does not go quite the same way." },
+            { w: "Watch for ~", k: "~을 눈여겨보다", s: "Watch for where it turns." },
+            { w: "turns (turn)", k: "달라지다, 방향이 바뀌다", s: "Watch for where it turns." },
             { w: "red bean", k: "팥", s: "Patjwi means red bean" }
         ],
         "ch1": [

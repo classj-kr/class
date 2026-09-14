@@ -211,9 +211,9 @@ const COVER = {
     title: "삼년 고개",
     intro: [
         "삼년 고개는 지은이가 없는 이야기예요. 어느 한 사람이 만든 것이 아니라 수백 년 동안 이 사람 저 사람의 입을 거치며 다듬어진 이야기지요. 이런 이야기를 구전 설화라고 부른답니다.",
-        "지은이가 없다 보니 정해진 원본도 없어요. 고을마다 고개 이름이 다르고, 넘어진 사람이 할머니인 이야기도, 꾀를 알려 주는 이가 나그네인 이야기도 남아 있답니다.",
+        "지은이가 없다 보니 정해진 원본도 없어요. 고을마다 고개 이름이 다르고, 넘어진 사람이 할머니인 이야기도 남아 있답니다.",
         "1979년부터 1988년까지 학자들이 전국의 마을을 돌며 어른들의 옛이야기를 녹음해 여든 권이 넘는 책으로 묶었어요. 한국구비문학대계라고 한답니다.",
-        "삼년 고개는 그 가운데 지혜담에 속해요. 힘이나 도술이 아니라 생각을 한 번 뒤집는 것만으로 답이 나오는 이야기지요."
+        "삼년 고개는 그 가운데 지혜담에 속해요. 넘어지면 삼 년밖에 못 산다는 고개에서 넘어졌다면, 어떻게 해야 할까요?"
     ]
 };
 
@@ -229,7 +229,7 @@ const EN = {
         intro: [
             "Three-Year Hill has no author. It was shaped over hundreds of years by one mouth after another. Stories like that are called folk tales.",
             "With no author there is no fixed original. The hill has a different name in every district; sometimes it is an old woman who falls.",
-            "It is a wisdom tale. Nobody uses strength or magic — one turn of thought is the whole answer."
+            "It is a wisdom tale. If you fell on a hill that leaves you three years to live, what would you do?"
         ]
     },
     chapters: [
@@ -468,8 +468,8 @@ const EN = {
             { w: "fixed original", k: "정해진 원본", s: "With no author there is no fixed original." },
             { w: "district", k: "고을", s: "The hill has a different name in every district" },
             { w: "a wisdom tale", k: "지혜담", s: "It is a wisdom tale." },
-            { w: "magic", k: "도술", s: "Nobody uses strength or magic" },
-            { w: "one turn of thought", k: "생각을 한 번 뒤집기", s: "one turn of thought is the whole answer" }
+            { w: "leaves you ~ (leave)", k: "~만 남겨 준다", s: "a hill that leaves you three years to live" },
+            { w: "what would you do?", k: "어떻게 하겠어요?", s: "what would you do?" }
         ],
         "01-pass.webp": [
             { w: "ordinary", k: "흔한", s: "It is not high and not low, an ordinary hill." },

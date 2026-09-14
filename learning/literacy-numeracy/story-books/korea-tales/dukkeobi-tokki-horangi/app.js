@@ -201,7 +201,7 @@ const COVER = {
     title: "두꺼비와 토끼와 호랑이",
     intro: [
         "두꺼비와 토끼와 호랑이는 지은이가 없는 구전 설화예요. 떡 내기라는 이름으로도 전해진답니다.",
-        "우리 옛이야기에는 셋이 겨루는 이야기가 유난히 많아요. 대개 가장 크고 힘센 쪽, 가장 빠른 쪽, 그리고 가장 작고 느린 쪽이 나오는데 이기는 것은 늘 마지막 하나지요. 듣는 아이가 자기를 어디에 놓고 들을지 생각해 보면 왜 그런 짜임이 되었는지 알 수 있답니다.",
+        "우리 옛이야기에는 셋이 겨루는 이야기가 유난히 많아요. 대개 가장 크고 힘센 쪽, 가장 빠른 쪽, 그리고 가장 작고 느린 쪽이 나오지요. 떡을 두고 벌이는 이 내기에서는 누가 이길까요?",
         "시루는 떡을 찌는 그릇이에요. 바닥에 구멍이 뚫려 있어서 솥 위에 얹고 김을 올려 떡을 쪄 냈지요. 잔칫날이나 고사를 지낼 때 쓰던 것이라 시루떡은 옛사람들에게 아주 귀한 음식이었답니다."
     ]
 };
@@ -217,7 +217,7 @@ const EN = {
         title: "The Toad, the Rabbit and the Tiger",
         intro: [
             "The Toad, the Rabbit and the Tiger is an old Korean tale with no known author. It is also told as The Rice Cake Bet.",
-            "Korean tales love a contest between three: the biggest and strongest, the fastest, and the smallest and slowest. The last one always wins.",
+            "Korean tales love a contest between three: the biggest and strongest, the fastest, and the smallest and slowest. Who will win this bet?",
             "A siru is the pot rice cake is steamed in. It has holes in the bottom and sits over a cauldron. Steamed cake was food for feast days."
         ]
     },
@@ -446,7 +446,7 @@ const EN = {
             { w: "a contest between three", k: "셋이 겨루기", s: "Korean tales love a contest between three" },
             { w: "the biggest and strongest", k: "가장 크고 힘센 쪽", s: "the biggest and strongest, the fastest" },
             { w: "the slowest", k: "가장 느린 쪽", s: "the smallest and slowest" },
-            { w: "always wins", k: "늘 이긴다", s: "The last one always wins." },
+            { w: "bet", k: "내기", s: "Who will win this bet?" },
             { w: "is steamed (steam)", k: "쪄 낸다", s: "the pot rice cake is steamed in" },
             { w: "holes", k: "구멍", s: "It has holes in the bottom" },
             { w: "cauldron", k: "솥", s: "sits over a cauldron" },
@@ -655,7 +655,7 @@ const AFTERWORD = {
 const WORDS_KO = {
     "cover": [
         { w: "겨루다", k: "누가 더 나은지 서로 다투다.", s: "우리 옛이야기에는 셋이 겨루는 이야기가 유난히 많아요." },
-        { w: "짜임", k: "이야기가 얽혀 있는 틀.", s: "왜 그런 짜임이 되었는지 알 수 있답니다." },
+        { w: "내기", k: "이긴 쪽이 무엇을 갖기로 하고 겨루는 일.", s: "떡을 두고 벌이는 이 내기에서는 누가 이길까요?" },
         { w: "시루", k: "떡을 쪄 내는 그릇.", s: "시루는 떡을 찌는 그릇이에요." },
         { w: "고사", k: "잘되기를 비는 뜻으로 지내는 제사.", s: "잔칫날이나 고사를 지낼 때 쓰던 것이라" }
     ],

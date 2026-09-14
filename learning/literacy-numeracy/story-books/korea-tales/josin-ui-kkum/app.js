@@ -205,7 +205,7 @@ const COVER = {
     title: "조신의 꿈",
     intro: [
         "조신의 꿈은 『삼국유사』에 실린 이야기예요. 낙산사라는 절에서 한 스님이 하룻밤 꾼 꿈 이야기랍니다.",
-        "바라던 사람을 얻어 사십 년을 함께 살고, 아이 다섯을 낳고, 가난에 쫓기고, 헤어지고. 그 모든 것이 눈을 떠 보니 하룻밤이었지요.",
+        "젊은 스님 조신에게는 남몰래 품은 소원이 하나 있었어요. 그 소원은 어떻게 되었을까요?",
         "뒷날 『구운몽』 같은 소설의 뿌리가 된 이야기예요. 꿈에서 깨어난 사람이 무엇을 하는지까지 보세요."
     ]
 };
@@ -221,7 +221,7 @@ const EN = {
         title: "Josin's Dream",
         intro: [
             "Josin's Dream is a story from the Samguk Yusa. It is the dream a monk had in one night at a temple called Naksansa.",
-            "He wins the woman he wanted, lives with her forty years, has five children, is driven by poverty, and parts from her. And he opens his eyes and it has been one night.",
+            "The young monk Josin has one secret wish. What becomes of it?",
             "It is the root of later novels like the Nine Cloud Dream. Watch what the man does after he wakes."
         ]
     },
@@ -449,10 +449,10 @@ const EN = {
         "cover": [
             { w: "monk", k: "스님", s: "the dream a monk had in one night" },
             { w: "temple", k: "절", s: "at a temple called Naksansa" },
-            { w: "wins (win)", k: "얻는다", s: "He wins the woman he wanted" },
-            { w: "is driven by ~ (drive)", k: "~에 쫓긴다", s: "is driven by poverty" },
-            { w: "poverty", k: "가난", s: "is driven by poverty" },
-            { w: "parts from ~ (part)", k: "헤어진다", s: "and parts from her" },
+            { w: "young", k: "젊은", s: "The young monk Josin has one secret wish." },
+            { w: "secret", k: "남몰래 품은", s: "one secret wish" },
+            { w: "wish", k: "소원", s: "The young monk Josin has one secret wish." },
+            { w: "becomes of ~ (become)", k: "~이 어떻게 되다", s: "What becomes of it?" },
             { w: "the root of ~", k: "~의 뿌리", s: "It is the root of later novels" },
             { w: "after he wakes", k: "깨어난 뒤에", s: "Watch what the man does after he wakes." }
         ],

@@ -244,9 +244,9 @@ const COVER = {
     title: "반쪽이",
     intro: [
         "반쪽이는 지은이가 없는 구전 설화예요. 눈도 하나, 팔도 하나, 다리도 하나인 아이가 주인공이랍니다.",
-        "몸이 반쪽인데 힘은 장사이고 꾀도 남다르다는 것이 이 이야기의 뼈대예요. 모자란 데가 있는 주인공이 멀쩡한 형들보다 앞서 나가는 이야기라, 옛날 아이들이 유난히 좋아했지요.",
-        "우리 옛이야기에는 이렇게 몸이 남과 다른 주인공이 여럿 나와요. 반쪽이도, 우렁이에서 나온 색시도, 구렁이로 태어난 신랑도 그렇지요. 겉모습으로 사람을 재지 말라는 이야기가 그만큼 많았던 것이랍니다.",
-        "고을마다 조금씩 달라요. 반쪽이가 끝에 온전한 몸이 되는 이야기도 있고, 반쪽인 채로 잘 사는 이야기도 있지요. 이 책은 뒤쪽을 따랐답니다."
+        "몸이 반쪽인데 힘은 장사이고 꾀도 남다르다는 것이 이 이야기의 뼈대예요. 옛날 아이들이 유난히 좋아한 이야기지요.",
+        "우리 옛이야기에는 이렇게 몸이 남과 다른 주인공이 여럿 나와요. 우렁이에서 나온 색시도, 구렁이로 태어난 신랑도 그렇지요.",
+        "몸이 반쪽인 막내가 멀쩡한 두 형 틈에서 어떤 일을 겪게 될까요? 반쪽이를 따라가 보세요."
     ]
 };
 
@@ -262,7 +262,7 @@ const EN = {
         intro: [
             "This is an oral tale with no known author. Its hero has one eye, one arm and one leg.",
             "Half a body, the strength of a giant, and quicker wits than anyone: that is the frame of it. Children loved this one.",
-            "Some districts have him whole at the end. In others he stays as he is and does well. This book follows the second."
+            "What will become of a half-bodied youngest son beside his two whole brothers? Follow him and see."
         ]
     },
     chapters: [
@@ -546,9 +546,9 @@ const EN = {
             { w: "the strength of a giant", k: "장사 같은 힘", s: "Half a body, the strength of a giant, and quicker wits" },
             { w: "wits", k: "꾀", s: "quicker wits than anyone" },
             { w: "frame", k: "뼈대", s: "that is the frame of it" },
-            { w: "whole", k: "온전한", s: "Some districts have him whole at the end." },
-            { w: "stays as he is", k: "반쪽인 채로 있다", s: "In others he stays as he is and does well." },
-            { w: "follows (follow)", k: "따랐다", s: "This book follows the second." }
+            { w: "What will become of ~?", k: "~은 어떻게 될까?", s: "What will become of a half-bodied youngest son" },
+            { w: "half-bodied", k: "몸이 반쪽인", s: "a half-bodied youngest son" },
+            { w: "whole", k: "멀쩡한", s: "beside his two whole brothers" }
         ],
         "01-carp.webp": [
             { w: "couple", k: "부부", s: "a couple lived with no children" },
@@ -779,8 +779,7 @@ const WORDS_KO = {
         { w: "장사", k: "힘이 아주 센 사람.", s: "몸이 반쪽인데 힘은 장사이고" },
         { w: "남다르다", k: "남과 다르게 뛰어나다.", s: "힘은 장사이고 꾀도 남다르다는 것이" },
         { w: "뼈대", k: "이야기의 큰 줄기.", s: "이 이야기의 뼈대예요." },
-        { w: "온전하다", k: "모자란 데 없이 성하다.", s: "반쪽이가 끝에 온전한 몸이 되는 이야기도 있고" },
-        { w: "고을", k: "옛날의 마을이나 고장.", s: "고을마다 조금씩 달라요." }
+        { w: "멀쩡하다", k: "흠 없이 온전하다.", s: "멀쩡한 두 형 틈에서 어떤 일을 겪게 될까요?" }
     ],
     "01-carp.webp": [
         { w: "혼인", k: "결혼.", s: "혼인한 지 십 년이 되도록 아이 소식이 없었어요." },

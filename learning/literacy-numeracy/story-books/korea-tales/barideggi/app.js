@@ -321,8 +321,8 @@ const COVER = {
     title: "바리데기",
     intro: [
         "바리데기는 지은이가 없는 옛이야기예요. 책이 아니라 굿에서 무당이 밤새 부르던 노래로 전해 왔지요. 지역마다 이름도 줄거리도 조금씩 다르답니다.",
-        "딸이라는 까닭으로 태어나자마자 버려진 일곱째 공주가, 병든 부모를 살리려고 산 사람이 못 가는 서천까지 다녀오는 이야기예요.",
-        "부모를 살리고 나서 바리데기가 무엇을 골랐는지까지 꼭 보세요. 이야기의 참뜻은 거기에 있답니다."
+        "딸이라는 까닭으로 태어나자마자 버려진 일곱째 공주가, 병든 부모를 살리려고 산 사람이 못 가는 서천으로 길을 떠나는 이야기예요.",
+        "자기를 버린 부모를 위해 왜 그 먼 길을 나설까요? 바리데기가 걷는 길을 끝까지 따라가 보세요."
     ]
 };
 
@@ -337,8 +337,8 @@ const EN = {
         title: "Barideggi",
         intro: [
             "This is an old tale with no known author. It came down not in a book but as a song a shaman sang all night at a rite.",
-            "A seventh princess is thrown away at birth for being a girl, and goes to Seocheon, where the living cannot go, to save her parents.",
-            "Watch what Barideggi chooses after she has saved them. The meaning of the story is there."
+            "A seventh princess is thrown away at birth for being a girl, and sets out for Seocheon, where the living cannot go, to save her parents.",
+            "Why would she go so far for the parents who threw her away? Follow her road to the very end."
         ]
     },
     chapters: [
@@ -693,8 +693,8 @@ const EN = {
             { w: "rite", k: "굿", s: "a song a shaman sang all night at a rite" },
             { w: "thrown away", k: "버려진", s: "A seventh princess is thrown away at birth" },
             { w: "at birth", k: "태어나자마자", s: "A seventh princess is thrown away at birth for being a girl" },
-            { w: "the living", k: "산 사람", s: "goes to Seocheon, where the living cannot go" },
-            { w: "The meaning", k: "참뜻", s: "The meaning of the story is there." }
+            { w: "sets out for ~ (set out)", k: "~로 길을 떠난다", s: "sets out for Seocheon" },
+            { w: "the living", k: "산 사람", s: "sets out for Seocheon, where the living cannot go" }
         ],
         "01-palace.webp": [
             { w: "wanted ~ very much", k: "몹시 바랐다", s: "The two of them wanted a son very much." },
@@ -948,8 +948,7 @@ const WORDS_KO = {
         { w: "굿", k: "무당이 신에게 비는 큰 의식.", s: "굿에서 무당이 밤새 부르던 노래로 전해 왔지요." },
         { w: "무당", k: "굿을 하며 신을 섬기는 사람.", s: "굿에서 무당이 밤새 부르던 노래로 전해 왔지요." },
         { w: "줄거리", k: "이야기가 흘러가는 큰 흐름.", s: "지역마다 이름도 줄거리도 조금씩 다르답니다." },
-        { w: "서천", k: "서쪽 끝에 있다는 저승 가까운 곳.", s: "산 사람이 못 가는 서천까지 다녀오는 이야기예요." },
-        { w: "참뜻", k: "진짜로 담겨 있는 뜻.", s: "이야기의 참뜻은 거기에 있답니다." }
+        { w: "서천", k: "서쪽 끝에 있다는 저승 가까운 곳.", s: "산 사람이 못 가는 서천으로 길을 떠나는 이야기예요." }
     ],
     "01-palace.webp": [
         { w: "궁", k: "임금이 사는 큰 집.", s: "온 궁이 숨을 죽였어요." },

@@ -196,8 +196,8 @@ const COVER = {
     title: "주인을 구한 누렁이",
     intro: [
         "주인을 구한 누렁이는 지은이가 없는 구전 설화예요. 오수의 의견(義犬), 곧 주인을 구한 개 이야기라는 이름으로 더 널리 알려져 있답니다.",
-        "이 이야기는 전북특별자치도 임실군 오수에 실제로 전해 내려와요. 오수(獒樹)라는 땅 이름은 개를 뜻하는 글자와 나무를 뜻하는 글자를 합친 말이지요. 마을에는 개를 기리는 비석과 무덤이 지금도 남아 있고, 해마다 개를 기리는 잔치도 열린답니다.",
-        "기록으로도 아주 오래된 이야기예요. 고려 시대에 엮인 책에 이미 실려 있으니, 적어도 칠백 년 넘게 전해져 온 셈이지요. 우리나라 의견 설화를 대표하는 이야기랍니다."
+        "이 이야기는 전북특별자치도 임실군 오수에 실제로 전해 내려와요. 오수라는 땅 이름이 어떻게 생겼는지도 이 이야기 속에 들어 있지요. 마을에서는 해마다 누렁이를 기리는 잔치가 열린답니다.",
+        "기록으로도 아주 오래된 이야기예요. 고려 시대에 엮인 책에 이미 실려 있으니, 적어도 팔백 년은 전해져 온 셈이지요. 우리나라 의견 설화를 대표하는 이야기랍니다."
     ]
 };
 
@@ -212,8 +212,8 @@ const EN = {
         title: "The Dog Who Saved His Master",
         intro: [
             "The Dog Who Saved His Master is an old Korean tale with no known author. It is better known as the righteous dog of Osu.",
-            "The story really belongs to Osu in Imsil. The place name joins the character for dog to the character for tree. A monument and a grave for the dog still stand there.",
-            "It is written down in a book put together in the Goryeo period, so it has been told for at least seven hundred years."
+            "The story really belongs to Osu in Imsil. The village still holds a festival for the dog every year.",
+            "It is written down in a book put together in the Goryeo period, so it has been told for at least eight hundred years."
         ]
     },
     chapters: [
@@ -434,11 +434,10 @@ const EN = {
             { w: "with no known author", k: "지은이가 알려지지 않은", s: "an old Korean tale with no known author" },
             { w: "better known as ~", k: "~으로 더 알려진", s: "It is better known as the righteous dog of Osu." },
             { w: "righteous", k: "의로운", s: "the righteous dog of Osu" },
-            { w: "belongs to ~ (belong)", k: "~에 전해 온다", s: "The story really belongs to Osu in Imsil." },
-            { w: "joins ~ to ... (join)", k: "합친다", s: "The place name joins the character for dog to the character for tree." },
-            { w: "monument", k: "비석", s: "A monument and a grave for the dog still stand there." },
+            { w: "belongs to ~ (belong)", k: "~에 전해 온다", s: "The story really belongs to Osu in Imsil" },
+            { w: "festival", k: "잔치", s: "The village still holds a festival for the dog every year." },
             { w: "was put together (put)", k: "엮였다", s: "a book put together in the Goryeo period" },
-            { w: "at least", k: "적어도", s: "it has been told for at least seven hundred years" }
+            { w: "at least", k: "적어도", s: "it has been told for at least eight hundred years" }
         ],
         "01-pair.webp": [
             { w: "district", k: "고을", s: "in a district called Osu lived a man named Kim" },
@@ -645,8 +644,7 @@ const AFTERWORD = {
    예문은 그 쪽에 나온 문장 그대로다. */
 const WORDS_KO = {
     "cover": [
-        { w: "기리다", k: "뜻깊게 여겨 오래 기억하다.", s: "마을에는 개를 기리는 비석과 무덤이 지금도 남아 있고" },
-        { w: "비석", k: "글을 새겨 세운 돌.", s: "개를 기리는 비석과 무덤이 지금도 남아 있고" },
+        { w: "기리다", k: "뜻깊게 여겨 오래 기억하다.", s: "마을에서는 해마다 누렁이를 기리는 잔치가 열린답니다." },
         { w: "기록", k: "남기려고 적어 놓은 것.", s: "기록으로도 아주 오래된 이야기예요." },
         { w: "엮다", k: "여러 글을 모아 책을 만들다.", s: "고려 시대에 엮인 책에 이미 실려 있으니" },
         { w: "대표하다", k: "여럿 가운데 앞세워 내보이다.", s: "우리나라 의견 설화를 대표하는 이야기랍니다." }

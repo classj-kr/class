@@ -262,8 +262,8 @@ const COVER = {
     intro: [
         "김수로 이야기는 삼국유사에 실린 가락국기라는 글에 전해져요. 가야를 연 첫 임금에 관한 이야기랍니다.",
         "이야기 속에서 사람들이 부르는 노래를 구지가라고 해요. 거북아 거북아 머리를 내어라 하고 시작하는 아주 짧은 노래인데, 우리나라에 글로 남은 노래 가운데 가장 오래된 것에 속한답니다.",
-        "가야는 하나로 뭉친 나라가 아니라 여섯 나라가 나란히 있던 곳이에요. 그래서 알도 여섯 개가 나오는 것이지요.",
-        "수로왕의 왕비 허황옥은 아유타국에서 배를 타고 왔다고 적혀 있어요. 바다 건너에서 온 왕비 이야기는 우리 옛 기록에서 아주 드문 경우랍니다."
+        "가야는 하나로 뭉친 나라가 아니라 여섯 나라가 나란히 있던 곳이에요. 어떻게 여섯 나라가 생겼는지도 이 이야기 속에 들어 있지요.",
+        "수로는 왕비를 누구로 맞았을까요? 아홉 마을 사람들 누구도 짐작하지 못한 대답이 기다린답니다."
     ]
 };
 
@@ -291,7 +291,7 @@ const EN = {
         intro: [
             "The story of Kim Suro is kept in the Record of Garak, a text inside the Samguk Yusa. It is about the first king of Gaya.",
             "The song the people sing in it is called the Song of Guji. It is among the oldest songs written down in Korea.",
-            "Gaya was not one country but six standing side by side. That is why six eggs come out of the box."
+            "Gaya was not one country but six standing side by side. How six came to be is in the story too."
         ]
     },
     chapters: [
@@ -607,7 +607,7 @@ const EN = {
             { w: "the first king", k: "첫 임금", s: "It is about the first king of Gaya." },
             { w: "written down", k: "글로 남은", s: "among the oldest songs written down in Korea" },
             { w: "side by side", k: "나란히", s: "Gaya was not one country but six standing side by side." },
-            { w: "That is why ~", k: "그래서 ~이다", s: "That is why six eggs come out of the box." }
+            { w: "came to be (come to be)", k: "생겨났다", s: "How six came to be is in the story too." }
         ],
         "01-gugan.webp": [
             { w: "below ~", k: "~ 아래쪽", s: "the land below the Nakdong River had no king" },
@@ -833,9 +833,8 @@ const AFTERWORD = {
    예문은 그 쪽에 나온 문장 그대로다. */
 const WORDS_KO = {
     "cover": [
-        { w: "왕비", k: "임금의 아내.", s: "수로왕의 왕비 허황옥은 아유타국에서 배를 타고 왔다고 적혀 있어요." },
-        { w: "기록", k: "남기려고 적어 놓은 것.", s: "바다 건너에서 온 왕비 이야기는 우리 옛 기록에서 아주 드문 경우랍니다." },
-        { w: "드물다", k: "흔하지 않다.", s: "우리 옛 기록에서 아주 드문 경우랍니다." }
+        { w: "왕비", k: "임금의 아내.", s: "수로는 왕비를 누구로 맞았을까요?" },
+        { w: "짐작하다", k: "어림잡아 헤아리다.", s: "아홉 마을 사람들 누구도 짐작하지 못한 대답이 기다린답니다." }
     ],
     "01-gugan.webp": [
         { w: "우두머리", k: "무리를 이끄는 사람.", s: "대신 아홉 우두머리가 저마다 마을을 이끌었지요." },

@@ -229,7 +229,7 @@ const COVER = {
     intro: [
         "아버지를 내다버린 지게는 지은이가 없는 구전 설화예요. 흔히 고려장 이야기라는 이름으로 전해진답니다.",
         "먼저 알아 둘 것이 있어요. 늙은 부모를 산에 두고 오는 풍습이 실제로 있었다는 기록은 어디에도 없습니다. 부모를 어떻게 모셔야 하는지 가르치려고 지어낸 이야기로 보지요. 옛날에 정말 그랬다고 오해하지 않아도 돼요.",
-        "지게는 등에 지고 짐을 나르던 우리나라 고유의 도구예요. 나무를 A자 모양으로 짜서 만들었지요. 이 이야기에서 지게는 짐을 나르는 물건이 아니라, 아들이 아버지에게 한 일을 그대로 되비추는 거울 노릇을 한답니다."
+        "지게는 등에 지고 짐을 나르던 우리나라 고유의 도구예요. 나무를 A자 모양으로 짜서 만들었지요. 아버지를 지고 산에 오른 지게는 산에서 내려올 때 어떻게 되었을까요?"
     ]
 };
 
@@ -245,7 +245,7 @@ const EN = {
         intro: [
             "This is an old Korean tale with no known author, usually told as a goryeojang story.",
             "One thing first: there is no record anywhere of a custom of leaving old parents on a mountain. It is taken as a made-up story meant to teach how parents should be cared for.",
-            "A jige is a Korean wooden carrying frame worn on the back. Here it is not a tool for loads but a mirror that shows a son what he has done."
+            "A jige is a Korean wooden carrying frame worn on the back. Watch what becomes of this one on the mountain."
         ]
     },
     chapters: [
@@ -502,8 +502,8 @@ const EN = {
             { w: "is taken as ~", k: "~으로 본다", s: "It is taken as a made-up story" },
             { w: "made-up (make)", k: "지어낸", s: "a made-up story meant to teach" },
             { w: "worn on the back (wear)", k: "등에 지는", s: "a Korean wooden carrying frame worn on the back" },
-            { w: "loads", k: "짐", s: "not a tool for loads but a mirror" },
-            { w: "mirror", k: "거울", s: "a mirror that shows a son what he has done" }
+            { w: "becomes of ~ (become)", k: "~이 어떻게 되다", s: "Watch what becomes of this one" },
+            { w: "on the mountain", k: "산에서", s: "Watch what becomes of this one on the mountain." }
         ],
         "01-old.webp": [
             { w: "worked the fields", k: "밭일을 했다", s: "The son worked the fields" },
@@ -729,8 +729,7 @@ const WORDS_KO = {
     "cover": [
         { w: "풍습", k: "오래전부터 이어 온 생활 습관.", s: "늙은 부모를 산에 두고 오는 풍습이 실제로 있었다는 기록은" },
         { w: "기록", k: "남기려고 적어 놓은 것.", s: "실제로 있었다는 기록은 어디에도 없습니다." },
-        { w: "고유", k: "그것에만 있는 것.", s: "지게는 등에 지고 짐을 나르던 우리나라 고유의 도구예요." },
-        { w: "되비추다", k: "거울처럼 그대로 다시 보여 주다.", s: "아들이 아버지에게 한 일을 그대로 되비추는 거울 노릇을 한답니다." }
+        { w: "고유", k: "그것에만 있는 것.", s: "지게는 등에 지고 짐을 나르던 우리나라 고유의 도구예요." }
     ],
     "01-old.webp": [
         { w: "내외", k: "남편과 아내.", s: "옛날 어느 마을에 아들 내외와 늙은 아버지가 함께 살았습니다." },

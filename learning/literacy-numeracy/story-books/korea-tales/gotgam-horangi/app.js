@@ -190,7 +190,7 @@ const COVER = {
     title: "곶감과 호랑이",
     intro: [
         "곶감과 호랑이도 지은이가 없는 구전 설화예요. 우리 호랑이 이야기 가운데 가장 널리 알려졌고, 고을에 따라 곶감 대신 감이나 엿이 나오기도 한답니다.",
-        "옛이야기 속 호랑이는 두 얼굴이에요. 산을 지키는 무서운 산신이기도 하고, 이 이야기처럼 어수룩하게 속는 웃음거리이기도 하지요. 뒤쪽을 바보 호랑이 이야기라고 부른답니다.",
+        "옛이야기 속 호랑이는 두 얼굴이에요. 산을 지키는 무서운 산신이기도 하고, 이 이야기처럼 어수룩한 웃음거리이기도 하지요. 뒤쪽을 바보 호랑이 이야기라고 부른답니다.",
         "조선 시대에 호랑이는 실제로 마을까지 내려오던 짐승이라, 나라에서 호랑이 잡는 군대를 따로 두었어요. 가장 무서운 짐승을 이야기 속에서 마음껏 놀리는 것이 옛사람들에게는 큰 즐거움이었지요.",
         "곶감은 감의 껍질을 벗겨 내고 말린 것이에요. 과자도 냉장고도 없던 시절의 귀한 단맛이었지요."
     ]
@@ -207,7 +207,7 @@ const EN = {
         title: "The Dried Persimmon and the Tiger",
         intro: [
             "The Dried Persimmon and the Tiger is another old Korean tale with no known author. It is the best known of all our tiger stories.",
-            "Tigers wear two faces in old stories: the fearsome mountain spirit, and the slow-witted creature that gets fooled. This is the second kind.",
+            "Tigers wear two faces in old stories: the fearsome mountain spirit, and the slow-witted figure of fun. This is the second kind.",
             "Tigers really did come down into villages then, so making fun of them was a great pleasure."
         ]
     },
@@ -425,7 +425,7 @@ const EN = {
             { w: "wear two faces", k: "두 얼굴을 가지다", s: "Tigers wear two faces in old stories" },
             { w: "fearsome", k: "무서운", s: "the fearsome mountain spirit" },
             { w: "spirit", k: "산신, 신령", s: "the fearsome mountain spirit" },
-            { w: "gets fooled", k: "속는다", s: "and the slow-witted creature that gets fooled." },
+            { w: "figure of fun", k: "웃음거리", s: "and the slow-witted figure of fun." },
             { w: "making fun of ~", k: "~을 놀리는 것", s: "so making fun of them was a great pleasure." }
         ],
         "01-hungry.webp": [
@@ -658,8 +658,8 @@ const WORDS_KO = {
     "cover": [
         { w: "고을", k: "옛날에 마을이나 지방을 이르던 말.", s: "고을에 따라 곶감 대신 감이나 엿이 나오기도 한답니다." },
         { w: "산신", k: "산을 지킨다고 믿던 신.", s: "산을 지키는 무서운 산신이기도 하고" },
-        { w: "어수룩하다", k: "좀 모자란 듯 순하다.", s: "이 이야기처럼 어수룩하게 속는 웃음거리이기도 하지요." },
-        { w: "웃음거리", k: "남이 보고 웃을 만한 일.", s: "어수룩하게 속는 웃음거리이기도 하지요." },
+        { w: "어수룩하다", k: "좀 모자란 듯 순하다.", s: "이 이야기처럼 어수룩한 웃음거리이기도 하지요." },
+        { w: "웃음거리", k: "남이 보고 웃을 만한 일.", s: "어수룩한 웃음거리이기도 하지요." },
         { w: "곶감", k: "껍질을 벗겨 말린 감.", s: "곶감은 감의 껍질을 벗겨 내고 말린 것이에요." }
     ],
     "01-hungry.webp": [

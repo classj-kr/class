@@ -554,7 +554,7 @@ const COVER = {
     intro: [
         "흥부전은 지은이가 알려지지 않은 조선 후기 소설이에요. 판소리 흥보가로 불리던 것이 글로 옮겨진 것이지요.",
         "판소리 다섯 마당은 춘향가, 심청가, 흥보가, 수궁가, 적벽가예요. 흥보가는 그 가운데 웃음이 가장 많은 마당이랍니다.",
-        "박은 옛날 집집마다 심던 덩굴 열매예요. 다 자라 속을 파내고 말리면 바가지가 되어 물을 뜨고 쌀을 담는 그릇이 되었지요. 흔한 살림살이였기 때문에 그 속에서 보물이 나온다는 이야기가 더 재미있었던 것이랍니다.",
+        "박은 옛날 집집마다 심던 덩굴 열매예요. 다 자라 속을 파내고 말리면 바가지가 되어 물을 뜨고 쌀을 담는 그릇이 되었지요. 이렇게 흔한 박이 이 이야기에서는 어떤 일을 벌일까요?",
         "제비는 봄에 왔다가 가을에 강남으로 떠나는 새예요. 옛사람들은 제비가 처마 밑에 집을 지으면 그 집에 복이 온다고 여겼답니다."
     ]
 };
@@ -867,7 +867,7 @@ const EN = {
         title: 'The Tale of Heungbu',
         intro: [
             "The Tale of Heungbu is an old Korean story with no known author. It began as a song.",
-            "Singers performed it as pansori, a kind of story-singing, under the name Heungbo-ga. The part where the brothers saw open the gourds is the most famous of all.",
+            "Singers performed it as pansori, a kind of story-singing, under the name Heungbo-ga. It is the funniest of the five great pansori songs.",
             "A gourd is a big round fruit. People grew them by the yard, sawed them in half, and dried the shells to make water dippers. Every poor house had one."
         ]
     },
@@ -1102,7 +1102,7 @@ const EN = {
             { w: "with no known author", k: "지은이가 알려지지 않은", s: "an old Korean story with no known author" },
             { w: "performed (perform)", k: "공연했다, 불렀다", s: "Singers performed it as pansori" },
             { w: "pansori", k: "판소리", s: "a kind of story-singing" },
-            { w: "saw open (saw)", k: "톱으로 켜다", s: "the brothers saw open the gourds" },
+            { w: "funniest (funny)", k: "가장 웃긴", s: "It is the funniest of the five great pansori songs." },
             { w: "gourd", k: "박", s: "A gourd is a big round fruit" },
             { w: "by the yard", k: "마당가에", s: "People grew them by the yard" },
             { w: "shell", k: "껍질", s: "dried the shells to make water dippers" },

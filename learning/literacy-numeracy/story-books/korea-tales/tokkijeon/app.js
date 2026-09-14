@@ -550,7 +550,7 @@ const COVER = {
     intro: [
         "토끼전은 지은이가 알려지지 않은 조선 시대 소설이에요. 별주부전, 토생원전, 수궁가 같은 여러 이름으로 불린답니다.",
         "이 이야기는 원래 판소리로 불리던 것이 글로 옮겨진 것이에요. 판소리 다섯 마당 가운데 수궁가가 바로 이 이야기지요. 그래서 문장에 노래하듯 늘어놓는 대목이 유난히 많답니다.",
-        "뿌리는 훨씬 오래되었어요. 삼국사기에 실린 구토 설화가 그것인데, 신라의 김춘추가 고구려에 붙잡혔을 때 이 이야기를 듣고 꾀를 내어 풀려났다고 적혀 있답니다.",
+        "뿌리는 훨씬 오래되었어요. 삼국사기에 실린 구토 설화가 그것인데, 고구려에 붙잡힌 신라의 김춘추가 이 이야기를 들었다고 적혀 있답니다.",
         "조선 후기에는 같은 이야기의 끝이 수십 가지로 갈렸어요. 부르는 소리꾼마다, 듣는 사람마다 바라는 것이 달랐기 때문이지요. 그래서 토끼전은 어느 책을 펴느냐에 따라 마지막 쪽이 다르답니다."
     ]
 };
@@ -862,10 +862,10 @@ const EN = {
         emoji: '🐢',
         title: 'The Tale of the Rabbit',
         intro: [
-            "The Tale of the Rabbit is a Joseon novel with no known author. It goes by several names: The Tale of Byeoljubu, The Tale of Master Rabbit, and Sugung-ga.",
-            "It was sung as pansori before it was written down. Of the five pansori pieces, Sugung-ga is this story, which is why the sentences so often run on in lists.",
-            "Its roots are much older. The History of the Three Kingdoms carries a short tale of a turtle and a rabbit, and says that Kim Chunchu of Silla, held prisoner in Goguryeo, heard it and talked his way out.",
-            "By the late Joseon period the same story had dozens of endings, so the last page depends on which book you open."
+            "The Tale of the Rabbit is a Joseon novel with no known author. It is also called The Tale of Byeoljubu and Sugung-ga.",
+            "It was sung as pansori before it was written down, which is why the sentences so often run on in lists.",
+            "Its roots are older still: the History of the Three Kingdoms carries a short tale of a turtle and a rabbit.",
+            "By the late Joseon period it had dozens of endings, so the last page depends on which book you open."
         ]
     },
     chapters: [
@@ -1068,11 +1068,11 @@ const EN = {
     words: {
         "cover": [
             { w: "with no known author", k: "지은이가 알려지지 않은", s: "a Joseon novel with no known author" },
-            { w: "It goes by several names", k: "여러 이름으로 불린다", s: "It goes by several names" },
+            { w: "is also called (call)", k: "~라고도 불린다", s: "It is also called The Tale of Byeoljubu and Sugung-ga." },
             { w: "was sung as pansori (sing)", k: "판소리로 불렸다", s: "It was sung as pansori before it was written down" },
             { w: "run on in lists (run on)", k: "늘어놓는다", s: "the sentences so often run on in lists" },
-            { w: "held prisoner (hold)", k: "붙잡혀 있던", s: "held prisoner in Goguryeo" },
-            { w: "talked his way out (talk)", k: "말로 풀려났다", s: "heard it and talked his way out" },
+            { w: "older still", k: "훨씬 더 오래된", s: "Its roots are older still" },
+            { w: "depends on ~ (depend)", k: "~에 따라 다르다", s: "the last page depends on which book you open" },
             { w: "dozens of endings", k: "수십 가지로 갈린 끝", s: "dozens of endings" }
         ],
         "ch1": [

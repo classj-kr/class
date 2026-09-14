@@ -196,8 +196,8 @@ const COVER = {
     title: "토끼의 재판",
     intro: [
         "토끼의 재판은 지은이가 없는 구전 설화예요. 은혜 모르는 호랑이라는 이름으로도 전해진답니다.",
-        "이 이야기의 뼈대는 세계 곳곳에 퍼져 있어요. 인도에는 우리에 갇힌 호랑이가, 유럽에는 함정에 빠진 늑대나 뱀이 나오는 이야기가 있는데, 갇힌 짐승을 풀어 준 사람이 도리어 위험에 빠지고 꾀 많은 동물이 구해 준다는 짜임은 똑같아요. 아주 오래전부터 여러 나라를 오가며 퍼진 이야기로 봅니다.",
-        "우리 옛이야기에서 토끼는 힘이 아니라 꾀로 이기는 동물이에요. 토끼전에서는 용왕을 속이고, 이 이야기에서는 호랑이를 속이지요. 몸집 작은 동물이 큰 짐승을 이기는 이야기를 옛사람들이 특히 좋아했답니다."
+        "이 이야기의 뼈대는 세계 곳곳에 퍼져 있어요. 인도에는 우리에 갇힌 호랑이가, 유럽에는 함정에 빠진 늑대나 뱀이 나오는 이야기가 있는데, 갇힌 짐승을 풀어 준 사람이 도리어 위험에 빠진다는 짜임은 똑같아요. 아주 오래전부터 여러 나라를 오가며 퍼진 이야기로 봅니다.",
+        "우리 옛이야기에서 토끼는 힘이 아니라 꾀를 쓰는 동물이에요. 억울한 나그네 앞에 나타난 조그만 토끼는 과연 무슨 판결을 내릴까요?"
     ]
 };
 
@@ -212,8 +212,8 @@ const EN = {
         title: "The Rabbit's Judgement",
         intro: [
             "The Rabbit's Judgement is an old Korean tale with no known author. It is also told as The Ungrateful Tiger.",
-            "Its bones turn up all over the world. India has a tiger in a cage; Europe has a wolf or a snake in a pit. The rescuer ends up in danger and a clever animal saves him.",
-            "In Korean tales the rabbit wins by wits, never by strength. Old people especially liked stories where a small animal beats a big one."
+            "Its bones turn up all over the world. India has a tiger in a cage; Europe has a wolf or a snake in a pit. Each time, the rescuer ends up in danger.",
+            "In Korean tales the rabbit uses wits, not strength. What will a small rabbit say when it is asked to judge?"
         ]
     },
     chapters: [
@@ -436,11 +436,11 @@ const EN = {
             { w: "bones", k: "뼈대", s: "Its bones turn up all over the world." },
             { w: "cage", k: "우리", s: "India has a tiger in a cage" },
             { w: "pit", k: "구덩이, 함정", s: "Europe has a wolf or a snake in a pit" },
-            { w: "rescuer", k: "구해 준 사람", s: "The rescuer ends up in danger" },
-            { w: "ends up ~ing (end up)", k: "도리어 ~하게 된다", s: "The rescuer ends up in danger" },
-            { w: "clever", k: "꾀 많은", s: "a clever animal saves him" },
-            { w: "by wits", k: "꾀로", s: "the rabbit wins by wits, never by strength" },
-            { w: "beats (beat)", k: "이긴다", s: "stories where a small animal beats a big one" }
+            { w: "rescuer", k: "구해 준 사람", s: "the rescuer ends up in danger" },
+            { w: "ends up ~ing (end up)", k: "도리어 ~하게 된다", s: "the rescuer ends up in danger" },
+            { w: "Each time", k: "그때마다", s: "Each time, the rescuer ends up in danger." },
+            { w: "wits", k: "꾀", s: "the rabbit uses wits, not strength" },
+            { w: "is asked to ~ (ask)", k: "~해 달라는 부탁을 받다", s: "when it is asked to judge" }
         ],
         "01-pit.webp": [
             { w: "traveller", k: "나그네", s: "A traveller was walking a mountain road" },

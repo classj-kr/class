@@ -293,9 +293,9 @@ const COVER = {
     art: "cover.webp",
     title: "팥죽 할멈과 호랑이",
     intro: [
-        "팥죽 할멈과 호랑이는 지은이가 없는 구전 설화예요. 밤과 자라와 개똥과 절구와 멍석과 지게가 차례로 나서서 호랑이를 골탕 먹이는 이야기랍니다.",
-        "부엌과 마당에 있던 물건들이 하나씩 힘을 보태는 짜임이 이 이야기의 재미예요. 하나하나는 보잘것없지만 자기가 있던 자리에서 할 수 있는 일을 하나씩 해내지요. 여럿이 힘을 모으는 이야기 가운데 우리나라에서 가장 널리 알려진 것이랍니다.",
-        "팥죽은 동짓날에 쑤어 먹던 음식이에요. 붉은색이 나쁜 것을 물리친다고 여겨, 동지에 팥죽을 쑤어 대문이나 담에 뿌리는 풍습이 있었지요. 호랑이를 물리치는 이야기에 하필 팥죽이 나오는 것도 그런 까닭일 거예요."
+        "팥죽 할멈과 호랑이는 지은이가 없는 구전 설화예요. 호랑이에게 잡아먹힐 뻔한 할머니가 가을까지만 기다려 달라고 비는 데서 이야기가 시작된답니다.",
+        "가을이 오면 할머니의 부엌과 마당에 밤과 자라와 개똥과 절구와 멍석과 지게가 하나씩 찾아와요. 하나하나는 보잘것없는 것들인데, 이들이 호랑이 앞에서 무엇을 할 수 있을까요?",
+        "팥죽은 동짓날에 쑤어 먹던 음식이에요. 붉은색이 나쁜 것을 물리친다고 여겨, 동지에 팥죽을 쑤어 대문이나 담에 뿌리는 풍습이 있었지요."
     ]
 };
 
@@ -309,8 +309,8 @@ const EN = {
         art: "cover.webp",
         title: "The Red Bean Porridge Granny",
         intro: [
-            "This is an oral tale with no known author. A chestnut, a turtle, a mortar, a mat and a carrying frame take on a tiger in turn.",
-            "The fun of it is that things from the kitchen and the yard each lend a hand. Each is small, and each does what it can where it stands.",
+            "This is an oral tale with no known author. A tiger is about to eat Granny, and she begs him to wait until autumn.",
+            "When autumn comes, a chestnut, a turtle, a mortar, a mat and a carrying frame turn up one by one. They are all small things. What could they do against a tiger?",
             "Red bean porridge was eaten at the winter solstice. Red was held to drive bad things off."
         ]
     },
@@ -656,12 +656,12 @@ const EN = {
        본문에 나온 꼴을 앞에 적고 기본형을 괄호에 넣는다. */
     words: {
         "cover": [
-            { w: "chestnut", k: "밤", s: "A chestnut, a turtle, a mortar, a mat and a carrying frame" },
-            { w: "mortar", k: "절구", s: "A chestnut, a turtle, a mortar, a mat" },
-            { w: "carrying frame", k: "지게", s: "a mat and a carrying frame take on a tiger in turn" },
-            { w: "take on ~", k: "맞서다", s: "take on a tiger in turn" },
-            { w: "lend a hand", k: "힘을 보태다", s: "things from the kitchen and the yard each lend a hand" },
-            { w: "where it stands", k: "제가 있던 자리에서", s: "each does what it can where it stands" },
+            { w: "chestnut", k: "밤", s: "a chestnut, a turtle, a mortar, a mat and a carrying frame" },
+            { w: "mortar", k: "절구", s: "a chestnut, a turtle, a mortar, a mat" },
+            { w: "carrying frame", k: "지게", s: "a mat and a carrying frame turn up one by one" },
+            { w: "is about to ~", k: "막 ~하려 한다", s: "A tiger is about to eat Granny" },
+            { w: "begs (beg)", k: "빈다", s: "she begs him to wait until autumn" },
+            { w: "one by one", k: "하나씩", s: "turn up one by one" },
             { w: "the winter solstice", k: "동지", s: "Red bean porridge was eaten at the winter solstice." },
             { w: "drive ~ off", k: "물리치다", s: "Red was held to drive bad things off." }
         ],

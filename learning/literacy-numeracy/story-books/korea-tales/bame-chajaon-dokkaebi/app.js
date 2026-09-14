@@ -196,7 +196,7 @@ const COVER = {
     intro: [
         "밤에 찾아온 도깨비는 지은이가 없는 구전 설화예요. 도깨비 씨름이라는 이름으로도 전해진답니다.",
         "우리 도깨비는 서양의 괴물과 아주 달라요. 뿔이 나고 힘은 세지만 무섭기보다 어수룩하지요. 씨름을 좋아하고, 메밀묵을 좋아하고, 심술은 부려도 사람을 해치지는 않아요. 옛사람들에게 도깨비는 두려운 존재라기보다 밤길에 만나는 짓궂은 이웃 같은 것이었답니다.",
-        "도깨비는 흔히 오래 쓰다 버린 물건에서 생긴다고 했어요. 빗자루, 절굿공이, 부지깽이처럼 사람 손을 오래 탄 것들이지요. 그래서 아침이 되면 도깨비가 있던 자리에 낡은 살림살이 하나가 남아 있곤 한답니다."
+        "캄캄한 밤길에 김 서방은 뿔 달린 사내에게 붙들려 씨름을 하게 돼요. 김 서방은 무사히 집에 돌아갈 수 있을까요?"
     ]
 };
 
@@ -212,7 +212,7 @@ const EN = {
         intro: [
             "The Goblin Who Came at Night is an old Korean tale with no known author. It is also told as The Goblin Wrestling Match.",
             "A Korean goblin is not like a Western monster. It has a horn and it is strong, but it is more foolish than frightening. It loves wrestling.",
-            "Goblins were said to grow out of old worn things — a broom, a pestle, a poker. So at dawn one shabby household object is often left where the goblin stood."
+            "On a pitch-dark road, Kim is caught by a horned stranger who wants to wrestle. Will he ever get home?"
         ]
     },
     chapters: [
@@ -434,12 +434,12 @@ const EN = {
             { w: "horn", k: "뿔", s: "It has a horn and it is strong" },
             { w: "foolish", k: "어수룩한", s: "it is more foolish than frightening" },
             { w: "frightening", k: "무서운", s: "more foolish than frightening" },
-            { w: "were said to ~", k: "~라고들 했다", s: "Goblins were said to grow out of old worn things" },
-            { w: "grow out of ~", k: "~에서 생기다", s: "grow out of old worn things" },
-            { w: "pestle", k: "절굿공이", s: "a broom, a pestle, a poker" },
-            { w: "poker", k: "부지깽이", s: "a broom, a pestle, a poker" },
-            { w: "shabby", k: "낡은", s: "one shabby household object is often left" },
-            { w: "household object", k: "살림살이", s: "one shabby household object" }
+            { w: "pitch-dark", k: "캄캄한", s: "On a pitch-dark road" },
+            { w: "is caught (catch)", k: "붙들린다", s: "Kim is caught by a horned stranger" },
+            { w: "horned", k: "뿔 달린", s: "a horned stranger" },
+            { w: "stranger", k: "낯선 사람", s: "caught by a horned stranger who wants to wrestle" },
+            { w: "Will he ever ~?", k: "과연 ~할 수 있을까?", s: "Will he ever get home?" },
+            { w: "get home", k: "집에 돌아가다", s: "Will he ever get home?" }
         ],
         "01-nightroad.webp": [
             { w: "inn", k: "주막", s: "He had had a drink at the inn" },
@@ -649,9 +649,7 @@ const WORDS_KO = {
         { w: "어수룩하다", k: "좀 모자란 듯 순하다.", s: "뿔이 나고 힘은 세지만 무섭기보다 어수룩하지요." },
         { w: "심술", k: "남을 괴롭히고 싶은 마음.", s: "심술은 부려도 사람을 해치지는 않아요." },
         { w: "짓궂다", k: "장난이 심해 남을 괴롭히다.", s: "밤길에 만나는 짓궂은 이웃 같은 것이었답니다." },
-        { w: "절굿공이", k: "절구에 넣고 찧는 굵은 방망이.", s: "빗자루, 절굿공이, 부지깽이처럼 사람 손을 오래 탄 것들이지요." },
-        { w: "부지깽이", k: "아궁이 불을 뒤적이는 막대.", s: "빗자루, 절굿공이, 부지깽이처럼" },
-        { w: "살림살이", k: "집에서 쓰는 여러 물건.", s: "도깨비가 있던 자리에 낡은 살림살이 하나가 남아 있곤 한답니다." }
+        { w: "붙들리다", k: "남에게 잡혀 못 가게 되다.", s: "뿔 달린 사내에게 붙들려 씨름을 하게 돼요." }
     ],
     "01-nightroad.webp": [
         { w: "주막", k: "옛날에 술과 밥을 팔고 재워 주던 집.", s: "주막에서 한잔 걸친 터라" },

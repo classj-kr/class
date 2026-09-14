@@ -258,9 +258,9 @@ const COVER = {
     art: "cover.webp",
     title: "푸른 구슬",
     intro: [
-        "푸른 구슬은 지은이가 없는 구전 설화예요. 개와 고양이가 잃어버린 구슬을 찾아오는 이야기라, 개와 고양이의 구슬 찾기라는 이름으로도 전해진답니다.",
+        "푸른 구슬은 지은이가 없는 구전 설화예요. 개와 고양이가 잃어버린 구슬을 찾아 나서는 이야기라, 개와 고양이의 구슬 찾기라는 이름으로도 전해진답니다.",
         "이 이야기는 왜 그렇게 되었는지를 풀어 주는 유래담이기도 해요. 우리 옛이야기는 이렇게 늘 보던 것에 까닭을 붙이기를 좋아한답니다.",
-        "잃어버린 보물을 짐승 둘이 짝을 지어 되찾아 오는 이야기는 우리나라뿐 아니라 중국과 일본, 멀리 유럽에도 전해요. 물을 건널 때 헤엄 못 치는 쪽이 업혀 간다는 대목까지 여러 나라 이야기에 똑같이 나온답니다."
+        "잃어버린 보물을 찾아 짐승 둘이 짝을 지어 길을 나서는 이야기는 우리나라뿐 아니라 중국과 일본, 멀리 유럽에도 전해요. 개와 고양이는 구슬을 무사히 찾아올 수 있을까요?"
     ]
 };
 
@@ -274,9 +274,9 @@ const EN = {
         art: "cover.webp",
         title: "The Blue Bead",
         intro: [
-            "This is an oral tale with no known author. A dog and a cat go and fetch back a bead that was lost.",
-            "It is a why-story too. Why the dog lives in the yard and the cat indoors, and why the two do not get on.",
-            "Two animals fetching back a lost treasure is told in China and Japan, and as far off as Europe."
+            "This is an oral tale with no known author. A dog and a cat set out to find a bead that was lost.",
+            "It is a why-story too: it explains how something we see every day came to be.",
+            "Two animals setting out after a lost treasure is told in China and Japan, and as far off as Europe. Will these two bring it home?"
         ]
     },
     chapters: [
@@ -578,12 +578,12 @@ const EN = {
        본문에 나온 꼴을 앞에 적고 기본형을 괄호에 넣는다. */
     words: {
         "cover": [
-            { w: "fetch back", k: "찾아오다", s: "A dog and a cat go and fetch back a bead that was lost." },
-            { w: "bead", k: "구슬", s: "fetch back a bead that was lost" },
-            { w: "a why-story", k: "유래담", s: "It is a why-story too." },
-            { w: "indoors", k: "방 안에서", s: "Why the dog lives in the yard and the cat indoors" },
-            { w: "get on", k: "사이가 좋다", s: "why the two do not get on" },
-            { w: "treasure", k: "보물", s: "Two animals fetching back a lost treasure" },
+            { w: "set out", k: "길을 나서다", s: "A dog and a cat set out to find a bead that was lost." },
+            { w: "bead", k: "구슬", s: "find a bead that was lost" },
+            { w: "a why-story", k: "유래담", s: "It is a why-story too" },
+            { w: "explains (explain)", k: "풀어 준다", s: "it explains how something we see every day came to be" },
+            { w: "came to be (come)", k: "그렇게 되었다", s: "how something we see every day came to be" },
+            { w: "treasure", k: "보물", s: "Two animals setting out after a lost treasure" },
             { w: "as far off as ~", k: "멀리 ~까지", s: "is told in China and Japan, and as far off as Europe" }
         ],
         "01-carp.webp": [

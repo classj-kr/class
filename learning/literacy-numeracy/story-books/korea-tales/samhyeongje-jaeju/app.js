@@ -229,9 +229,9 @@ const COVER = {
     art: "cover.webp",
     title: "삼형제의 재주",
     intro: [
-        "삼형제의 재주는 지은이가 없는 구전 설화예요. 형제가 각자 다른 재주를 익혀 와서, 그 셋을 모두 써야만 풀리는 일을 해내는 이야기랍니다.",
-        "이런 짜임의 이야기는 세계 곳곳에 있어요. 그림 형제가 모은 독일 이야기에도, 아라비아의 옛이야기에도 재주가 다른 형제들이 나오지요. 어느 나라 이야기든 마지막에 하는 말은 같아요. 누구의 재주가 가장 훌륭했는지는 정할 수 없다는 것이지요.",
-        "셋이라는 수가 여기서도 쓰였어요. 재주가 둘이면 겨루기가 되고, 넷이면 복잡해지지요. 셋일 때에만 서로 물고 물리며 어느 하나도 뺄 수 없는 이야기가 된답니다."
+        "삼형제의 재주는 지은이가 없는 구전 설화예요. 가난한 삼형제가 삼 년 동안 저마다 다른 재주를 배워 오는데, 그 가운데 하나는 형들이 웃음을 터뜨릴 만큼 쓸모없어 보이는 재주랍니다.",
+        "이런 짜임의 이야기는 세계 곳곳에 있어요. 그림 형제가 모은 독일 이야기에도, 아라비아의 옛이야기에도 재주가 다른 형제들이 나오지요.",
+        "셋이라는 수가 여기서도 쓰였어요. 옛이야기에는 셋이 유난히 자주 나오지요. 세 형제의 재주는 어디에 쓰이게 될까요?"
     ]
 };
 
@@ -245,9 +245,9 @@ const EN = {
         art: "cover.webp",
         title: "The Three Brothers' Skills",
         intro: [
-            "This is an oral tale with no known author. Each brother learns a different skill, and only all three together can do the job.",
+            "This is an oral tale with no known author. Each brother learns a different skill, and one skill looks so useless that the others laugh.",
             "Stories built this way are found everywhere. The Grimm brothers collected one, and Arabia has one of its own.",
-            "Three is the number that works. Two skills make a contest and four get tangled. Only three lock together so that none can be dropped."
+            "Three turns up in old tales again and again. What will these three skills be good for?"
         ]
     },
     chapters: [
@@ -511,10 +511,10 @@ const EN = {
             { w: "skill", k: "재주", s: "Each brother learns a different skill" },
             { w: "built this way (build)", k: "이런 짜임의", s: "Stories built this way are found everywhere." },
             { w: "collected (collect)", k: "모았다", s: "The Grimm brothers collected one" },
-            { w: "a contest", k: "겨루기", s: "Two skills make a contest and four get tangled." },
-            { w: "get tangled", k: "복잡해지다", s: "Two skills make a contest and four get tangled." },
-            { w: "lock together", k: "서로 물고 물린다", s: "Only three lock together so that none can be dropped." },
-            { w: "be dropped", k: "빠지다", s: "so that none can be dropped" }
+            { w: "useless", k: "쓸모없는", s: "one skill looks so useless that the others laugh" },
+            { w: "so ~ that ...", k: "너무 ~해서 …하다", s: "looks so useless that the others laugh" },
+            { w: "again and again", k: "자꾸자꾸", s: "Three turns up in old tales again and again." },
+            { w: "be good for ~", k: "~에 쓸모가 있다", s: "What will these three skills be good for?" }
         ],
         "01-brothers.webp": [
             { w: "mountain village", k: "산골 마을", s: "Long ago three brothers lived in a mountain village." },

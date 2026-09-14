@@ -257,8 +257,7 @@ const COVER = {
     intro: [
         "꽁지 닷발 주둥이 닷발은 지은이가 없는 구전 설화예요. 꼬리도 다섯 발, 부리도 다섯 발이나 되는 커다란 새가 나오는 이야기랍니다.",
         "발은 두 팔을 쭉 벌린 길이를 뜻하는 옛 단위로, 어른 키만 합니다. 닷발이면 어른 다섯을 눕혀 놓은 길이인 셈이지요.",
-        "우리 옛이야기에서 가장 무서운 짐승 축에 듭니다. 그런데도 아이들이 좋아하는 것은, 무서운 것을 끝내 이기고 돌아오기 때문이지요.",
-        "고을마다 달라요. 길에서 도움을 주고받아 잡기도, 혼자 함정을 놓아 잡기도 하지요. 죽은 괴물이 모기가 되었다는 이야기도 있답니다."
+        "우리 옛이야기에서 가장 무서운 짐승 축에 듭니다. 이 괴물이 하늘을 까맣게 덮은 날, 산골 집에는 무슨 일이 생겼을까요?"
     ]
 };
 
@@ -274,7 +273,7 @@ const EN = {
         intro: [
             "This is an oral tale with no known author. In it there is a huge bird with a tail five fathoms long and a beak as long again.",
             "A fathom is an old measure, the length of two arms spread wide, about as much as a grown person's height.",
-            "It is one of the most frightening creatures in our old tales. Children love it because it is beaten in the end."
+            "It is one of the most frightening creatures in our old tales. What happens on the day it darkens the sky?"
         ]
     },
     chapters: [
@@ -581,7 +580,7 @@ const EN = {
             { w: "measure", k: "재는 단위", s: "A fathom is an old measure" },
             { w: "spread wide", k: "쭉 벌린", s: "the length of two arms spread wide" },
             { w: "creatures", k: "짐승", s: "one of the most frightening creatures in our old tales" },
-            { w: "is beaten (beat)", k: "지고 만다", s: "Children love it because it is beaten in the end." }
+            { w: "darkens (darken)", k: "어둡게 덮다", s: "What happens on the day it darkens the sky?" }
         ],
         "01-mother.webp": [
             { w: "lived alone", k: "둘이 살았다", s: "a mother and her son lived alone in a mountain village" },
@@ -815,9 +814,7 @@ const WORDS_KO = {
     "cover": [
         { w: "발", k: "두 팔을 벌린 길이를 재던 옛 단위.", s: "발은 두 팔을 쭉 벌린 길이를 뜻하는 옛 단위로" },
         { w: "단위", k: "길이나 무게를 재는 기준.", s: "두 팔을 쭉 벌린 길이를 뜻하는 옛 단위로" },
-        { w: "축에 들다", k: "그런 무리에 끼다.", s: "우리 옛이야기에서 가장 무서운 짐승 축에 듭니다." },
-        { w: "함정", k: "짐승을 빠뜨리려고 파 놓은 구덩이.", s: "혼자 함정을 놓아 잡기도 하지요." },
-        { w: "고을", k: "옛날의 마을이나 고장.", s: "고을마다 달라요." }
+        { w: "축에 들다", k: "그런 무리에 끼다.", s: "우리 옛이야기에서 가장 무서운 짐승 축에 듭니다." }
     ],
     "01-mother.webp": [
         { w: "갓난아기", k: "태어난 지 얼마 안 된 아기.", s: "아버지는 아들이 갓난아기일 적에 세상을 떠났지요." },

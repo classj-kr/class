@@ -204,9 +204,9 @@ const COVER = {
     art: "cover.webp",
     title: "서동과 선화공주",
     intro: [
-        "서동과 선화공주는 『삼국유사』에 실린 이야기예요. 백제 무왕이 어릴 적 이름이 서동이었다고 전하지요.",
-        "마 캐는 가난한 아이가 노래 하나로 이웃 나라 공주를 아내로 맞고 임금까지 되는 이야기예요. 그 노래가 서동요인데, 우리 글로 남은 가장 오래된 노래랍니다.",
-        "노래가 사람을 움직이고 나라를 움직입니다. 그 힘이 어디서 오는지 따라가 보세요."
+        "서동과 선화공주는 『삼국유사』에 실린 이야기예요. 백제에서 마를 캐던 가난한 아이 서동이 주인공이지요.",
+        "서동은 이웃 나라 신라의 선화공주가 제일 곱다는 소문을 들어요. 가진 것 없는 아이에게 있는 것은 노래 하나뿐이지요. 그 노래가 서동요랍니다.",
+        "노래 하나로 무엇을 할 수 있을까요?"
     ]
 };
 
@@ -220,9 +220,9 @@ const EN = {
         art: "cover.webp",
         title: "Seodong and Princess Seonhwa",
         intro: [
-            "Seodong and Princess Seonhwa is a story from the Samguk Yusa. It says King Mu of Baekje was called Seodong as a boy.",
-            "A poor boy who digs yams wins a princess of the next kingdom with one song, and becomes a king. That song, the Seodongyo, is the oldest song written down in our own language.",
-            "A song moves people and moves a country. See where that power comes from."
+            "Seodong and Princess Seonhwa is a story from the Samguk Yusa. Its hero is Seodong, a poor boy who digs yams in Baekje.",
+            "He hears that Princess Seonhwa of Silla, the next kingdom, is the loveliest in the world. A boy with nothing has only a song. That song is the Seodongyo.",
+            "What can one song do?"
         ]
     },
     chapters: [
@@ -446,14 +446,14 @@ const EN = {
        본문에 나온 꼴을 앞에 적고 기본형을 괄호에 넣는다. */
     words: {
         "cover": [
-            { w: "It says ~", k: "~라고 전한다", s: "It says King Mu of Baekje was called Seodong as a boy." },
-            { w: "as a boy", k: "어릴 적", s: "was called Seodong as a boy" },
-            { w: "digs yams (dig)", k: "마를 캔다", s: "A poor boy who digs yams" },
-            { w: "wins (win)", k: "아내로 맞다", s: "wins a princess of the next kingdom with one song" },
-            { w: "the oldest ~", k: "가장 오래된", s: "is the oldest song written down in our own language" },
-            { w: "written down", k: "글로 남은", s: "the oldest song written down in our own language" },
-            { w: "moves (move)", k: "움직인다", s: "A song moves people and moves a country." },
-            { w: "where ~ comes from", k: "어디서 오는지", s: "See where that power comes from." }
+            { w: "hero", k: "주인공", s: "Its hero is Seodong" },
+            { w: "hears that ~ (hear)", k: "~라는 소문을 듣는다", s: "He hears that Princess Seonhwa of Silla" },
+            { w: "digs yams (dig)", k: "마를 캔다", s: "a poor boy who digs yams" },
+            { w: "the next kingdom", k: "이웃 나라", s: "Princess Seonhwa of Silla, the next kingdom" },
+            { w: "the loveliest (lovely)", k: "가장 고운", s: "is the loveliest in the world" },
+            { w: "with nothing", k: "가진 것 없는", s: "A boy with nothing has only a song." },
+            { w: "only", k: "~뿐", s: "has only a song" },
+            { w: "What can ~ do?", k: "~이 무엇을 할 수 있을까?", s: "What can one song do?" }
         ],
         "01-ma.webp": [
             { w: "widowed", k: "홀로 된", s: "a boy called Seodong lived with his widowed mother" },
