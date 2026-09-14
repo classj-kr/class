@@ -202,7 +202,7 @@ The Jade Emperor: an elderly ruler on a jade throne who never looks confident.
 | `images/story-15-a.webp` | Scriptures spread out to dry on flat rocks by a river, one scroll's corner torn away and stuck to the stone. |
 | `images/story-15-b.webp` | A monkey with one hand on his own forehead and an astonished face, the gold band simply gone; a monk beside him smiling. |
 
-## 16장 · 이 이야기를 어떻게 읽을까
+## 해설 · 읽고 나서 (16장이던 그림)
 
 | 파일명 | 장면 |
 |---|---|

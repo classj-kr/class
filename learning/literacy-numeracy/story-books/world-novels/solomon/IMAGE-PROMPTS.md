@@ -109,7 +109,7 @@ grotesque.
 | `images/cover.webp` (세로 2:3 비율) | A tall portrait-format cover: an ancient stone-paved road running down out of snow-capped mountains toward a green highland, cut into the cliff face and bridged across a gorge; five small travellers on it, the tallest of them ahead of the others looking down at the country below. The picture must bleed to all four edges: no white margin, no white border, no frame, no matting around the artwork. |
 | `images/end.webp` | An old hand-drawn map on a scrap of cloth lying on a table with a lamp beside it, one corner of the route deliberately smudged out. |
 
-## 1장 · 이 책을 읽기 전에
+## 1장 · 자로 그은 선
 
 | 파일명 | 장면 |
 |---|---|

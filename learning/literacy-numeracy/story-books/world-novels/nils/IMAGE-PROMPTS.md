@@ -129,7 +129,7 @@ Ermenrich: a white stork with a red bill, nesting on a castle roof.
 | `images/story-05-a.webp` | A hillside meadow crowded with wild animals — deer, hares, foxes, crows, geese — all keeping the truce, none hunting. |
 | `images/story-05-b.webp` | Cranes dancing in the middle of the meadow, wings half spread, necks up, the whole crowd of animals watching in silence. |
 
-## 6장 · 빙어 마을
+## 6장 · 비네타
 
 | 파일명 | 장면 |
 |---|---|
@@ -147,8 +147,8 @@ Ermenrich: a white stork with a red bill, nesting on a castle roof.
 
 | 파일명 | 장면 |
 |---|---|
-| `images/story-08-a.webp` | A great bronze equestrian statue stepping down off its plinth in a Stockholm square at night, the pavement cracking under the hoof. |
-| `images/story-08-b.webp` | A weathered wooden figurehead of a sailor standing in the middle of a quay blocking the bronze king's path, a tiny boy behind its foot. |
+| `images/story-08-a.webp` | A towering bronze statue of a king standing on foot, no horse, stepping down off its tall plinth and striding after a tiny running boy across a moonlit cobbled square in Karlskrona. |
+| `images/story-08-b.webp` | A small, weathered wooden statue of an old boatswain in a long coat, standing in front of a wooden church at night and blocking the bronze king's path, a tiny boy pressed behind its foot. |
 
 ## 9장 · 돌아가고 싶은 마음
 

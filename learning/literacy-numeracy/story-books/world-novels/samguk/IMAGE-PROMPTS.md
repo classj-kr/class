@@ -209,7 +209,7 @@ Sima Yi: a patient, watchful older general who never looks in a hurry.
 | `images/story-15-a.webp` | A palace banquet in a foreign capital: musicians playing, a group of guests weeping, and one man among them smiling and clapping. |
 | `images/story-15-b.webp` | A throne room where a new dynasty's emperor takes the seat while the old one steps down — drawn twice in the same frame, once for each dynasty, identical staging. |
 
-## 16장 · 왜 이 이야기가 남았나
+## 해설 · 읽고 나서 (16장이던 그림)
 
 | 파일명 | 장면 |
 |---|---|

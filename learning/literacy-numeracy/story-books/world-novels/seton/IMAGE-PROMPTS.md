@@ -143,7 +143,7 @@ about thirty-five; in the last story also as a boy and as an old man.
 | `images/story-07-a.webp` | A ruffed grouse cock drumming on a fallen log in spring woods, wings blurred with speed, ruff raised. |
 | `images/story-07-b.webp` | Winter woods after freezing rain: a hard glassy crust over the snow, and one grouse standing on top of it beside a small broken hole. |
 
-## 8편 · 시튼이라는 사람
+## 해설 · 읽고 나서 (8장이던 그림)
 
 | 파일명 | 장면 |
 |---|---|

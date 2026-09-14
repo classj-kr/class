@@ -166,7 +166,7 @@ The four horses: matched Arabian bays with a white one on the left.
 | `images/story-09-a.webp` | Nine four-horse chariots at the starting gates of a great oval hippodrome, the stands packed, the spina down the middle with turning posts at each end. |
 | `images/story-09-b.webp` | The inside turning post: two chariots locked side by side, one with iron spikes on its wheel hub, the other pulling a hand's breadth wider — the exact instant before the spiked wheel loses its bite. |
 
-## 10장 · 문둥이 골짜기
+## 10장 · 나병 환자들의 골짜기
 
 | 파일명 | 장면 |
 |---|---|

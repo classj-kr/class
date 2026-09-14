@@ -196,4 +196,4 @@ Mr Carrisford: a gaunt, ill gentleman wrapped in shawls in a deep armchair.
 | 파일명 | 장면 |
 |---|---|
 | `images/story-15-a.webp` | A bright room lined with books: a girl reading aloud to two friends and a little one curled against her, firelight, snow outside the window. |
-| `images/story-15-b.webp` | Seen from a lit window across a London square at night: the small dark attic window of the house opposite, empty now, one girl looking up at it from the warm side of the glass. |
+| `images/story-15-b.webp` | Seen from a lit upper window of a London terraced house at night: right beside it, across a narrow gap of sloping slate roof (the two houses share one wall), the small dark attic window of the house next door, empty now, one girl leaning a little out of the warm window to look at it. |
