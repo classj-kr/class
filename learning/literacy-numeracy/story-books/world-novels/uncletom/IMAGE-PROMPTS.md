@@ -211,4 +211,4 @@ appearance. Do not make him look like a monster.
 | 파일명 | 장면 |
 |---|---|
 | `images/story-15-a.webp` | A Kentucky farmyard: a young man handing out folded papers one by one to a crowd of people, some reading them, some holding them without moving. |
-| `images/story-15-b.webp` | A printing shop with stacks of a new book being bound, and a small woman in a plain bonnet standing among them looking at one copy. |
+| `images/story-15-b.webp` | A printing shop with stacks of a new book being bound, and a small woman in a plain bonnet standing among them looking at one copy. | 해설로 옮김
