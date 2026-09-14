@@ -280,7 +280,7 @@ const COVER = {
     title: '개구리 왕자',
     intro: [
         '독일의 그림 형제가 1812년에 펴낸 옛이야기 모음집의 맨 첫 번째 이야기예요.',
-        '한 번 한 약속을 지키느냐 마느냐가 이야기의 전부라고 할 만해요. 마법이 풀리는 순간도 그 약속과 이어져 있답니다.'
+        '한 번 한 약속을 지키느냐 마느냐가 이야기의 전부라고 할 만해요. 개구리와 약속한 공주는 그 약속을 지킬까요?'
     ]
 };
 
@@ -546,7 +546,7 @@ const EN = {
         title: 'The Frog Prince',
         intro: [
             "The very first story in the collection of old tales the Brothers Grimm published in Germany in 1812.",
-            "You could say the whole story is about whether a promise once given is kept. Even the moment the spell breaks is tied to that promise."
+            "You could say the whole story is about whether a promise once given is kept. Will the princess keep the one she makes to a frog?"
         ]
     },
     chapters: [
@@ -958,8 +958,8 @@ const EN = {
         'cover.webp': [
             { word: 'collection', meaning: '모음집', sentence: 'The collection of old tales the Brothers Grimm published in Germany in 1812.' },
             { word: 'promise', meaning: '약속', sentence: 'Whether a promise once given is kept.' },
-            { word: 'spell', meaning: '마법', sentence: 'The moment the spell breaks.' },
-            { word: 'be tied to', meaning: '~와 이어져 있다', sentence: 'Even the moment the spell breaks is tied to that promise.' }
+            { word: 'keep', meaning: '지키다', sentence: 'Will the princess keep the one she makes to a frog?' },
+            { word: 'make', meaning: '(약속을) 하다', sentence: 'The one she makes to a frog.' }
         ],
         '01-ball.webp': [
             { word: 'dazzle', meaning: '눈부시게 하다', sentence: 'It shone until it dazzled you.' },

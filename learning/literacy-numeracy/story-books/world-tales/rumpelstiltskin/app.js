@@ -288,8 +288,8 @@ function artFrame(src, emoji) {
 const COVER = {
     title: '이름을 맞혀 보시오',
     intro: [
-        '독일의 그림 형제가 모아 적은 옛이야기예요. 원래 제목은 룸펠슈틸츠헨이라는 난쟁이의 이름이랍니다.',
-        '유럽에는 이름을 알아맞히면 상대가 힘을 잃는다는 옛 믿음이 있었어요. 이 이야기의 마지막 장면이 바로 그 믿음에서 나온 것이랍니다.'
+        '독일의 그림 형제가 모아 적은 옛이야기예요.',
+        '짚으로 금실을 자아야 하는 방앗간 집 딸 앞에 수상한 작은 남자가 나타나요. 그 남자의 이름은 무엇일까요?'
     ]
 };
 
@@ -554,8 +554,8 @@ const EN = {
     cover: {
         title: 'Rumpelstiltskin',
         intro: [
-            "One of the old tales the Brothers Grimm collected in Germany. The title is simply the little man's name.",
-            "There was an old belief in Europe that if you guessed somebody's name, they lost their power over you. The last scene of this story comes straight out of that belief."
+            "One of the old tales the Brothers Grimm collected in Germany.",
+            "A miller's daughter must spin straw into gold, and a strange little man turns up to help. But who is he, and what does he want?"
         ]
     },
     chapters: [
@@ -908,10 +908,10 @@ const EN = {
     },
     words: {
         'cover.webp': [
-            { word: 'simply', meaning: '그저', sentence: "The title is simply the little man's name." },
-            { word: 'belief', meaning: '믿음', sentence: 'There was an old belief in Europe.' },
-            { word: 'guess', meaning: '알아맞히다', sentence: "If you guessed somebody's name." },
-            { word: 'straight out of', meaning: '곧바로 ~에서', sentence: 'Comes straight out of that belief.' }
+            { word: 'collect', meaning: '모으다', sentence: 'The old tales the Brothers Grimm collected in Germany.' },
+            { word: 'spin', meaning: '(실을) 잣다', sentence: "A miller's daughter must spin straw into gold." },
+            { word: 'strange', meaning: '이상한', sentence: 'A strange little man.' },
+            { word: 'turn up', meaning: '나타나다', sentence: 'A strange little man turns up to help.' }
         ],
         '01-boast.webp': [
             { word: 'boast', meaning: '허풍, 자랑', sentence: 'Nobody could beat him at boasting.' },

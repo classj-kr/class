@@ -280,7 +280,7 @@ const COVER = {
     title: '황금 거위',
     intro: [
         '독일의 그림 형제가 모아 적은 옛이야기예요. 막내가 주인공이 되는 옛이야기의 짜임을 잘 보여 준답니다.',
-        '거위에 손을 대면 떨어지지 않아 줄줄이 매달려 걷게 돼요. 웃지 않던 공주를 웃게 만드는 것이 바로 그 줄이랍니다.'
+        '막내가 숲에서 만난 황금 거위에는 놀라운 비밀이 있어요. 그 비밀이 어떤 일을 벌일지 따라가 보세요.'
     ]
 };
 
@@ -545,7 +545,7 @@ const EN = {
         title: 'The Golden Goose',
         intro: [
             "One of the old tales the Brothers Grimm collected in Germany. It shows very clearly the shape of an old story in which the youngest son is the hero.",
-            "Once you touch the goose you cannot let go, and people end up walking along in a string. It is that string which makes the princess who never laughed laugh at last."
+            "The golden goose the youngest son finds in the wood has an amazing secret. Follow along and see what that secret will start."
         ]
     },
     chapters: [
@@ -964,9 +964,9 @@ const EN = {
     words: {
         'cover.webp': [
             { word: 'youngest', meaning: '막내', sentence: 'An old story in which the youngest son is the hero.' },
-            { word: 'let go', meaning: '놓다', sentence: 'Once you touch the goose you cannot let go.' },
-            { word: 'in a string', meaning: '줄줄이', sentence: 'People end up walking along in a string.' },
-            { word: 'at last', meaning: '마침내', sentence: 'Makes the princess who never laughed laugh at last.' }
+            { word: 'find', meaning: '찾아내다, 만나다', sentence: 'The golden goose the youngest son finds in the wood.' },
+            { word: 'amazing', meaning: '놀라운', sentence: 'It has an amazing secret.' },
+            { word: 'follow along', meaning: '따라가다', sentence: 'Follow along and see what that secret will start.' }
         ],
         '01-eldest.webp': [
             { word: 'well built', meaning: '몸집이 좋은', sentence: 'The second was well built.' },

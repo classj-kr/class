@@ -273,7 +273,7 @@ const COVER = {
     title: '요술 소시지',
     intro: [
         '유럽 여러 나라에 전해 오는 옛이야기예요. 프랑스에서는 세 가지 소원이라는 제목으로, 영국에서는 소시지 이야기로 알려져 있답니다.',
-        '소원을 세 번 들어주겠다는 말에 신이 났다가, 결국 아무것도 얻지 못하는 부부의 이야기예요. 소원 세 번 가운데 둘이 홧김에 사라진답니다.'
+        '소원을 세 번 들어주겠다는 말에 신이 난 부부의 이야기예요. 두 사람은 소원 세 가지로 무엇을 얻게 될까요?'
     ]
 };
 
@@ -537,7 +537,7 @@ const EN = {
         title: 'The Three Wishes',
         intro: [
             "An old tale told all over Europe. In France it is known as The Three Wishes, and in England as the story of the sausage.",
-            "It is about a husband and wife who are promised three wishes and end up with nothing at all. Two of the three wishes go up in a temper."
+            "It is about a husband and wife who are promised three wishes. What will they get with them?"
         ]
     },
     chapters: [
@@ -877,8 +877,7 @@ const EN = {
         'cover.webp': [
             { word: 'be known as', meaning: '~로 알려지다', sentence: 'In France it is known as The Three Wishes.' },
             { word: 'sausage', meaning: '소시지', sentence: 'The story of the sausage.' },
-            { word: 'end up with', meaning: '결국 ~을 얻다', sentence: 'End up with nothing at all.' },
-            { word: 'temper', meaning: '화, 성질', sentence: 'Two of the three wishes go up in a temper.' }
+            { word: 'promise', meaning: '약속하다', sentence: 'A husband and wife who are promised three wishes.' }
         ],
         '01-spirit.webp': [
             { word: 'woodcutter', meaning: '나무꾼', sentence: 'The woodcutter and his wife lived in a cottage.' },

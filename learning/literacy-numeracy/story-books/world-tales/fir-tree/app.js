@@ -283,7 +283,7 @@ const COVER = {
     title: '전나무',
     intro: [
         '덴마크의 작가 한스 크리스티안 안데르센이 1844년에 펴낸 이야기예요.',
-        '숲에서 자라던 어린 전나무가 늘 다음 일만 기다리며 지내는 이야기랍니다. 지금 이 순간을 지나쳐 버린다는 것이 무엇인지 조용히 보여 주는 작품이에요.'
+        '숲에서 자라던 작은 전나무가 빨리 크고 싶어 늘 시무룩해하는 데서 이야기가 시작돼요. 어서 크고 싶은 전나무에게는 어떤 날들이 기다리고 있을까요?'
     ]
 };
 
@@ -550,7 +550,7 @@ const EN = {
         title: 'The Fir Tree',
         intro: [
             "Published by the Danish author Hans Christian Andersen in 1844.",
-            "It is about a young fir tree growing in the wood who spends the whole of his life waiting for the next thing. It shows very quietly what it is to walk past the moment you are actually in."
+            "It begins with a small fir tree in the wood who is never content, because all he wants is to be big. What days lie ahead for a tree in such a hurry to grow?"
         ]
     },
     chapters: [
@@ -975,9 +975,9 @@ const EN = {
     },
     words: {
         'cover.webp': [
-            { word: 'spend', meaning: '보내다', sentence: 'He spends the whole of his life waiting for the next thing.' },
-            { word: 'quietly', meaning: '조용히', sentence: 'It shows very quietly what it is.' },
-            { word: 'walk past', meaning: '지나쳐 버리다', sentence: 'To walk past the moment you are actually in.' }
+            { word: 'content', meaning: '만족한', sentence: 'A small fir tree who is never content.' },
+            { word: 'lie ahead', meaning: '앞에 기다리고 있다', sentence: 'What days lie ahead for a tree in such a hurry to grow?' },
+            { word: 'in a hurry', meaning: '서두르는', sentence: 'A tree in such a hurry to grow.' }
         ],
         '01-small.webp': [
             { word: 'fir tree', meaning: '전나무', sentence: 'In one corner of a wood stood a very small fir tree.' },

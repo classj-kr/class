@@ -283,7 +283,7 @@ const COVER = {
     title: '당나귀가 된 나그네',
     intro: [
         '유럽 여러 나라에 비슷한 형태로 전해 오는 옛이야기예요.',
-        '먹으면 당나귀가 되는 열매와 다시 사람으로 돌아오게 하는 열매가 나오는데, 이런 짜임은 옛이야기에서 흔히 볼 수 있어요. 욕심을 부린 사람이 스스로 판 함정에 빠지는 이야기랍니다.'
+        '배고픈 나그네가 낯선 언덕길에서 붉은 열매와 노란 열매가 달린 나무 두 그루를 만나요. 먹으면 신기한 일이 생기는 열매는 옛이야기에 흔하지요. 나그네는 어느 열매를 먹게 될까요?'
     ]
 };
 
@@ -547,7 +547,7 @@ const EN = {
         title: 'The Traveller Who Became a Donkey',
         intro: [
             "An old tale told in much the same shape all over Europe.",
-            "There is a fruit that turns you into a donkey and another that turns you back, and that pattern turns up often in old stories. It is a tale about a greedy man falling into the pit he dug himself."
+            "A hungry traveller comes to two trees on a strange hillside, one hung with red fruit and one with yellow. Old stories are full of fruit that does strange things. Which will he eat?"
         ]
     },
     chapters: [
@@ -905,9 +905,9 @@ const EN = {
     words: {
         'cover.webp': [
             { word: 'shape', meaning: '짜임', sentence: 'An old tale told in much the same shape all over Europe.' },
-            { word: 'turn up', meaning: '나타나다', sentence: 'That pattern turns up often in old stories.' },
-            { word: 'greedy', meaning: '욕심 많은', sentence: 'A greedy man falling into the pit he dug himself.' },
-            { word: 'pit', meaning: '구덩이', sentence: 'The pit he dug himself.' }
+            { word: 'hillside', meaning: '언덕', sentence: 'Two trees on a strange hillside.' },
+            { word: 'hung with', meaning: '~이 주렁주렁 달린', sentence: 'One hung with red fruit and one with yellow.' },
+            { word: 'be full of', meaning: '~이 가득하다', sentence: 'Old stories are full of fruit that does strange things.' }
         ],
         '01-trees.webp': [
             { word: 'wander', meaning: '떠돌다', sentence: 'A young traveller was wandering the roads.' },

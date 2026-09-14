@@ -294,7 +294,7 @@ const COVER = {
     title: '백조 왕자',
     intro: [
         '덴마크의 작가 한스 크리스티안 안데르센이 1838년에 펴낸 이야기예요. 북유럽에 오래전부터 전해 오던 옛이야기를 다시 쓴 작품이랍니다.',
-        '말을 한마디도 하지 못한 채 오빠들을 구해 내는 동생 엘리사의 이야기예요. 억울한 일을 겪으면서도 끝까지 자기가 해야 할 일을 놓지 않는 마음이 담겨 있습니다.'
+        '사이좋던 막내 엘리사와 열한 명의 오빠에게, 새 왕비가 들어오면서 무서운 일이 닥쳐요. 남매는 다시 함께 웃을 수 있을까요?'
     ]
 };
 
@@ -559,7 +559,7 @@ const EN = {
         title: 'The Wild Swans',
         intro: [
             "Published by the Danish author Hans Christian Andersen in 1838. He rewrote it from an old tale that had long been told in the north of Europe.",
-            "It is the story of Elisa, who saves her brothers without speaking a single word. It holds what it takes to keep hold of your own work while everybody is wrong about you."
+            "Elisa and her eleven brothers are as close as can be, until a new queen comes to the palace. Will they ever laugh together again?"
         ]
     },
     chapters: [
@@ -951,9 +951,8 @@ const EN = {
     words: {
         'cover.webp': [
             { word: 'rewrite', meaning: '다시 쓰다', sentence: 'He rewrote it from an old tale.' },
-            { word: 'without', meaning: '~ 없이', sentence: 'Saves her brothers without speaking a single word.' },
-            { word: 'keep hold of', meaning: '놓지 않다', sentence: 'To keep hold of your own work.' },
-            { word: 'be wrong about', meaning: '오해하다', sentence: 'While everybody is wrong about you.' }
+            { word: 'as close as can be', meaning: '더없이 사이좋은', sentence: 'Elisa and her eleven brothers are as close as can be.' },
+            { word: 'palace', meaning: '궁궐', sentence: 'Until a new queen comes to the palace.' }
         ],
         '01-family.webp': [
             { word: 'crown', meaning: '금관, 왕관', sentence: 'Eleven gold crowns shone in a row.' },

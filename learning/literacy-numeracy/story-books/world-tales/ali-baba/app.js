@@ -254,7 +254,7 @@ const COVER = {
     title: '알리바바와 40인의 도적',
     intro: [
         '아라비안나이트, 곧 천일야화에 실린 이야기예요. 알라딘과 같은 책에서 나왔답니다.',
-        '이 이야기에서 가장 크게 활약하는 사람은 알리바바가 아니라 하녀 모르지아나입니다. 힘이나 재산이 아니라 눈썰미와 침착함으로 위기를 넘기는 인물이 주인공 노릇을 하는 것이 이 이야기의 재미랍니다.'
+        '가난한 나무꾼 알리바바가 산에서 우연히 도둑 떼의 비밀을 엿보면서 이야기가 시작돼요. 그 비밀을 알게 된 알리바바네 집에는 어떤 일이 벌어질까요?'
     ]
 };
 
@@ -519,7 +519,7 @@ const EN = {
         title: 'Ali Baba and the Forty Thieves',
         intro: [
             "Also from the Arabian Nights, the thousand and one nights of tales.",
-            "The one who does most in this story is not Ali Baba but Morgiana, the servant. What makes it such good reading is that the person who carries it is somebody with neither strength nor money — only a sharp eye and a steady head."
+            "It begins when Ali Baba, a poor woodcutter, happens to see a band of robbers in the hills and learns their secret. What will happen to his household now that he knows it?"
         ]
     },
     chapters: [
@@ -851,10 +851,10 @@ const EN = {
     },
     words: {
         'cover.webp': [
-            { word: 'servant', meaning: '하녀', sentence: 'Morgiana, the servant.' },
-            { word: 'carry', meaning: '이끌어 가다', sentence: 'The person who carries it is somebody with neither strength nor money.' },
-            { word: 'sharp eye', meaning: '눈썰미', sentence: 'Only a sharp eye and a steady head.' },
-            { word: 'steady', meaning: '침착한', sentence: 'A steady head.' }
+            { word: 'woodcutter', meaning: '나무꾼', sentence: 'Ali Baba, a poor woodcutter.' },
+            { word: 'band', meaning: '떼, 무리', sentence: 'A band of robbers in the hills.' },
+            { word: 'secret', meaning: '비밀', sentence: 'He learns their secret.' },
+            { word: 'household', meaning: '집안 식구', sentence: 'What will happen to his household now that he knows it?' }
         ],
         '01-cave.webp': [
             { word: 'axe', meaning: '도끼', sentence: 'One axe and three donkeys.' },

@@ -299,7 +299,7 @@ const COVER = {
     title: '미다스 임금님의 귀',
     intro: [
         '아주 오래전 그리스에서 전해 오던 이야기예요. 미다스라는 임금님에 얽힌 이야기로, 로마의 시인 오비디우스가 이천 년 전에 글로 남겨 두었답니다.',
-        '비슷한 이야기가 우리나라를 비롯해 여러 나라에 전해져요. 아무리 감추어도 끝내 드러나고 마는 비밀에 대한 이야기랍니다.'
+        '비슷한 이야기가 우리나라를 비롯해 여러 나라에 전해져요. 임금님이 꼭꼭 감춘 비밀은 끝까지 지켜질까요?'
     ]
 };
 
@@ -564,7 +564,7 @@ const EN = {
         title: "King Midas's Ears",
         intro: [
             "This story comes down to us from ancient Greece. It is told of a king called Midas, and the Roman poet Ovid wrote it down two thousand years ago.",
-            "Much the same story is told in Korea and in many other countries. It is a story about a secret that comes out in the end, however well it is hidden."
+            "Much the same story is told in Korea and in many other countries. The king hides a secret very carefully. Can it be kept?"
         ]
     },
     chapters: [
@@ -975,8 +975,8 @@ const EN = {
         'cover.webp': [
             { word: 'come down to', meaning: '전해 내려오다', sentence: 'This story comes down to us from ancient Greece.' },
             { word: 'poet', meaning: '시인', sentence: 'The Roman poet Ovid wrote it down two thousand years ago.' },
-            { word: 'secret', meaning: '비밀', sentence: 'A secret that comes out in the end.' },
-            { word: 'however', meaning: '아무리 ~해도', sentence: 'However well it is hidden.' }
+            { word: 'secret', meaning: '비밀', sentence: 'The king hides a secret very carefully.' },
+            { word: 'keep', meaning: '지키다', sentence: 'Can it be kept?' }
         ],
         '01-contest.webp': [
             { word: 'contest', meaning: '겨루기', sentence: 'There was a music contest on a mountain.' },

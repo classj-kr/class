@@ -294,7 +294,7 @@ const COVER = {
     title: '춤추는 열두 공주',
     intro: [
         '독일의 그림 형제가 모아 적은 옛이야기예요. 원래 제목은 닳아 버린 무도화라는 뜻이랍니다.',
-        '밤마다 문이 잠겨 있는데도 신발이 닳아 있다는 수수께끼로 이야기가 시작돼요. 그 수수께끼를 푸는 사람은 왕자가 아니라 늙은 병사랍니다.'
+        '밤마다 문이 잠겨 있는데도 신발이 닳아 있다는 수수께끼로 이야기가 시작돼요. 과연 누가 그 수수께끼를 풀 수 있을까요?'
     ]
 };
 
@@ -559,7 +559,7 @@ const EN = {
         title: 'The Twelve Dancing Princesses',
         intro: [
             "One of the old tales the Brothers Grimm collected in Germany. Its original title means The Worn-Out Dancing Shoes.",
-            "It begins with a puzzle: the door is locked every night, and every morning the shoes are worn through. And the one who solves it is not a prince but an old soldier."
+            "It begins with a puzzle: the door is locked every night, and every morning the shoes are worn through. Who will be the one to solve it?"
         ]
     },
     chapters: [
@@ -962,7 +962,7 @@ const EN = {
             { word: 'worn-out', meaning: '닳아 버린', sentence: 'Its original title means The Worn-Out Dancing Shoes.' },
             { word: 'puzzle', meaning: '수수께끼', sentence: 'It begins with a puzzle.' },
             { word: 'worn through', meaning: '닳아 구멍이 난', sentence: 'Every morning the shoes are worn through.' },
-            { word: 'solve', meaning: '풀다', sentence: 'The one who solves it is not a prince but an old soldier.' }
+            { word: 'solve', meaning: '풀다', sentence: 'Who will be the one to solve it?' }
         ],
         '01-shoes.webp': [
             { word: 'side by side', meaning: '나란히', sentence: 'Twelve beds side by side in one room.' },

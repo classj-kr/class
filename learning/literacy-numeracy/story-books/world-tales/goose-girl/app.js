@@ -285,7 +285,7 @@ const COVER = {
     title: '거위지기 아가씨',
     intro: [
         '독일의 그림 형제가 1815년에 펴낸 옛이야기 모음집에 실린 이야기예요. 독일 곳곳에서 전해 내려오던 이야기를 모아 적은 것이랍니다.',
-        '자기 자리를 빼앗기고도 한마디 하지 못하던 공주가, 스스로 입을 열면서 이야기가 풀려요. 말할 수 있게 되는 것이 얼마나 큰 힘인지 보여 주는 이야기랍니다.'
+        '먼 길을 떠난 공주가 자기 자리를 빼앗기고도 한마디 하지 못해요. 공주는 제자리를 되찾을 수 있을까요?'
     ]
 };
 
@@ -550,7 +550,7 @@ const EN = {
         title: 'The Goose Girl',
         intro: [
             "In the collection of old tales the Brothers Grimm published in Germany in 1815. They wrote down stories that had been passed along all over the country.",
-            "A princess who cannot say a word while her place is taken from her — and the story opens up the moment she does speak. It shows how large a thing it is to be able to say what happened."
+            "A princess sets out on a long road, and her place is taken from her, but she cannot say a word. Will she ever get her place back?"
         ]
     },
     chapters: [
@@ -938,9 +938,9 @@ const EN = {
     words: {
         'cover.webp': [
             { word: 'pass along', meaning: '전해 오다', sentence: 'Stories that had been passed along all over the country.' },
-            { word: 'take from', meaning: '빼앗다', sentence: 'While her place is taken from her.' },
-            { word: 'open up', meaning: '풀리다', sentence: 'The story opens up the moment she does speak.' },
-            { word: 'large', meaning: '큰, 대단한', sentence: 'How large a thing it is to be able to say what happened.' }
+            { word: 'set out', meaning: '길을 떠나다', sentence: 'A princess sets out on a long road.' },
+            { word: 'say a word', meaning: '한마디 하다', sentence: 'But she cannot say a word.' },
+            { word: 'get back', meaning: '되찾다', sentence: 'Will she ever get her place back?' }
         ],
         '01-departure.webp': [
             { word: 'lose', meaning: '여의다', sentence: 'She had lost her father early.' },

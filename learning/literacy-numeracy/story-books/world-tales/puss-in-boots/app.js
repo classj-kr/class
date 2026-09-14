@@ -273,7 +273,7 @@ const COVER = {
     title: '장화 신은 고양이',
     intro: [
         '프랑스의 샤를 페로가 1697년에 펴낸 이야기집에 실린 이야기예요. 그보다 앞서 이탈리아에도 비슷한 이야기가 전해 오고 있었답니다.',
-        '가진 것 없는 막내가 꾀 많은 동물의 도움으로 신분이 바뀐다는 이야기는 옛사람들이 무척 좋아하던 짜임이었어요. 힘도 재산도 없는 사람이 오직 재치만으로 판을 뒤집는 것이 통쾌했기 때문이지요.'
+        '가난한 막내가 물려받은 것은 고양이 한 마리뿐이었어요. 그런데 그 고양이가 장화를 달라고 하네요. 대체 무엇을 하려는 걸까요?'
     ]
 };
 
@@ -539,7 +539,7 @@ const EN = {
         title: 'Puss in Boots',
         intro: [
             "In the book of tales Charles Perrault published in France in 1697. A very similar story had been told in Italy some time before that.",
-            "A youngest son with nothing of his own is lifted up in the world by a clever animal — people used to love that shape of story. There is real satisfaction in watching somebody with no power and no money turn the whole board over with nothing but his wits."
+            "A poor youngest son is left with nothing but a cat. Then the cat asks for a pair of boots. Whatever can he be planning?"
         ]
     },
     chapters: [
@@ -899,9 +899,9 @@ const EN = {
     words: {
         'cover.webp': [
             { word: 'similar', meaning: '비슷한', sentence: 'A very similar story had been told in Italy.' },
-            { word: 'lift up', meaning: '끌어올리다', sentence: 'A youngest son is lifted up in the world by a clever animal.' },
-            { word: 'satisfaction', meaning: '통쾌함', sentence: 'There is real satisfaction in watching.' },
-            { word: 'wits', meaning: '재치', sentence: 'With nothing but his wits.' }
+            { word: 'be left with', meaning: '~만 남다', sentence: 'A poor youngest son is left with nothing but a cat.' },
+            { word: 'a pair of', meaning: '한 켤레의', sentence: 'The cat asks for a pair of boots.' },
+            { word: 'plan', meaning: '꾸미다', sentence: 'Whatever can he be planning?' }
         ],
         '01-inherit.webp': [
             { word: 'miller', meaning: '방앗간 주인', sentence: 'A miller died, and he had three sons.' },

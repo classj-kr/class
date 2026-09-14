@@ -288,7 +288,7 @@ const COVER = {
     title: '라푼젤',
     intro: [
         '독일의 그림 형제가 모아 적은 옛이야기예요. 라푼젤은 원래 유럽에서 나물처럼 먹던 풀의 이름이랍니다.',
-        '아이의 이름이 어머니가 먹고 싶어 했던 그 풀에서 왔다는 것이 이야기의 시작이에요. 문도 계단도 없는 탑이 나오는데, 그래서 머리카락이 중요한 구실을 한답니다.'
+        '아이의 이름이 어머니가 먹고 싶어 했던 그 풀에서 왔다는 것이 이야기의 시작이에요. 문도 계단도 없는 탑이 나오는데, 그 탑에는 어떻게 드나들까요?'
     ]
 };
 
@@ -555,7 +555,7 @@ const EN = {
         title: 'Rapunzel',
         intro: [
             "One of the old tales the Brothers Grimm gathered in Germany. Rapunzel is really the name of a plant that used to be eaten as a green in Europe.",
-            "The story begins with a child being named after the plant her mother longed for. There is a tower in it with no door and no stairs — which is why hair matters so much."
+            "The story begins with a child being named after the plant her mother longed for. There is a tower in it with no door and no stairs — so how does anyone get in?"
         ]
     },
     chapters: [
@@ -927,7 +927,7 @@ const EN = {
             { word: 'gather', meaning: '모으다', sentence: 'The old tales the Brothers Grimm gathered in Germany.' },
             { word: 'green', meaning: '푸성귀, 나물', sentence: 'A plant that used to be eaten as a green in Europe.' },
             { word: 'long for', meaning: '몹시 바라다', sentence: 'The plant her mother longed for.' },
-            { word: 'matter', meaning: '중요하다', sentence: 'Which is why hair matters so much.' }
+            { word: 'get in', meaning: '들어가다', sentence: 'So how does anyone get in?' }
         ],
         '01-garden.webp': [
             { word: 'cradle', meaning: '요람', sentence: 'The husband carved a cradle out of wood.' },

@@ -292,7 +292,7 @@ const COVER = {
     title: '잭과 콩나무',
     intro: [
         '영국에서 오래전부터 입에서 입으로 전해 내려온 이야기예요. 1890년, 영국의 조지프 제이컵스가 여러 지방을 다니며 모은 옛이야기집에 실리면서 지금의 모습으로 널리 알려졌답니다.',
-        '가난한 소년이 하늘 위 낯선 세계로 올라갔다가 보물을 가지고 돌아온다는 이야기 짜임은 세계 여러 나라의 옛이야기에서 비슷하게 발견돼요. 아득히 높은 곳에 우리와 다른 세상이 있다고 믿었던 옛사람들의 상상이 담겨 있는 것이지요.'
+        '가난한 소년이 하늘 위 낯선 세계로 올라간다는 이야기 짜임은 세계 여러 나라의 옛이야기에서 비슷하게 발견돼요. 아득히 높은 곳에 우리와 다른 세상이 있다고 믿었던 옛사람들의 상상이 담겨 있는 것이지요.'
     ]
 };
 
@@ -557,7 +557,7 @@ const EN = {
         title: 'Jack and the Beanstalk',
         intro: [
             "Passed from mouth to mouth in England for a very long time. In 1890 Joseph Jacobs travelled the country collecting old tales, and the version in his book is the one everybody knows today.",
-            "A poor boy climbs into a strange world above the sky and comes home with a treasure — that shape turns up in old stories all over the world. It holds what people once imagined about a place high above us where everything is different."
+            "A poor boy climbs into a strange world above the sky — that shape turns up in old stories all over the world. It holds what people once imagined about a place high above us where everything is different."
         ]
     },
     chapters: [
@@ -931,7 +931,7 @@ const EN = {
         'cover.webp': [
             { word: 'from mouth to mouth', meaning: '입에서 입으로', sentence: 'Passed from mouth to mouth in England for a very long time.' },
             { word: 'collect', meaning: '모으다', sentence: 'Joseph Jacobs travelled the country collecting old tales.' },
-            { word: 'treasure', meaning: '보물', sentence: 'Comes home with a treasure.' },
+            { word: 'climb', meaning: '기어오르다', sentence: 'A poor boy climbs into a strange world above the sky.' },
             { word: 'imagine', meaning: '상상하다', sentence: 'What people once imagined about a place high above us.' }
         ],
         '01-cow.webp': [

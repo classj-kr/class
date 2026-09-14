@@ -284,7 +284,7 @@ const COVER = {
     title: '빨강 구두',
     intro: [
         '덴마크의 작가 한스 크리스티안 안데르센이 1845년에 펴낸 이야기예요. 안데르센이 어릴 적 처음 신어 본 새 구두를 자랑하다 꾸중을 들었던 기억에서 나온 이야기라고 합니다.',
-        '무언가에 마음을 온통 빼앗겼을 때 어떤 일이 벌어지는지 보여 주는 이야기예요. 카렌은 구두에서 눈을 떼지 못하다가, 정작 곁에 있던 사람을 놓치고 맙니다.'
+        '가난한 소녀 카렌이 빨간 구두 한 켤레에 마음을 온통 빼앗겨요. 그 마음이 카렌을 어디로 데려갈까요?'
     ]
 };
 
@@ -551,7 +551,7 @@ const EN = {
         title: 'The Red Shoes',
         intro: [
             "Published by the Danish author Hans Christian Andersen in 1845. It is said to have come out of his memory of showing off the first new shoes he ever wore, and being told off for it.",
-            "It shows what happens when your whole mind is taken up by one thing. Karen cannot take her eyes off the shoes, and misses the person who was beside her all along."
+            "A poor girl called Karen gives her whole heart to a pair of red shoes. Where will that take her?"
         ]
     },
     chapters: [
@@ -898,8 +898,8 @@ const EN = {
         'cover.webp': [
             { word: 'show off', meaning: '자랑하다', sentence: 'His memory of showing off the first new shoes he ever wore.' },
             { word: 'tell off', meaning: '꾸중하다', sentence: 'And being told off for it.' },
-            { word: 'take up', meaning: '사로잡다', sentence: 'When your whole mind is taken up by one thing.' },
-            { word: 'miss', meaning: '놓치다', sentence: 'Misses the person who was beside her all along.' }
+            { word: 'give one’s whole heart to', meaning: '~에 마음을 온통 쏟다', sentence: 'Karen gives her whole heart to a pair of red shoes.' },
+            { word: 'take', meaning: '데려가다', sentence: 'Where will that take her?' }
         ],
         '01-barefoot.webp': [
             { word: 'barefoot', meaning: '맨발로', sentence: 'Karen went barefoot all summer long.' },

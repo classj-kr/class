@@ -256,7 +256,7 @@ const COVER = {
     title: '피리 부는 사나이',
     intro: [
         '독일 하멜른이라는 마을에 오래도록 전해 온 이야기예요. 그림 형제도 자기들이 모은 전설집에 이 이야기를 실었습니다.',
-        '하멜른에는 지금도 이 전설을 새긴 옛 건물이 남아 있어요. 마을 사람들이 약속을 지키지 않았다는 대목만은 어느 판본에서나 똑같이 전해진답니다.'
+        '하멜른에는 지금도 이 전설을 새긴 옛 건물이 남아 있어요. 쥐 떼에 시달리던 마을에 낯선 피리꾼이 찾아오면서 이야기가 시작된답니다.'
     ]
 };
 
@@ -522,7 +522,7 @@ const EN = {
         title: 'The Pied Piper of Hamelin',
         intro: [
             "Told for a very long time in the German town of Hamelin. The Brothers Grimm put it into the book of legends they collected.",
-            "There are still old buildings in Hamelin with the legend carved on them. Whatever else changes between one version and another, the part where the townspeople break their promise is always the same."
+            "There are still old buildings in Hamelin with the legend carved on them. It begins when a stranger with a pipe comes to a town overrun by rats."
         ]
     },
     chapters: [
@@ -883,8 +883,8 @@ const EN = {
         'cover.webp': [
             { word: 'legend', meaning: '전설', sentence: 'The book of legends they collected.' },
             { word: 'carve', meaning: '새기다', sentence: 'Old buildings in Hamelin with the legend carved on them.' },
-            { word: 'version', meaning: '판', sentence: 'Between one version and another.' },
-            { word: 'break a promise', meaning: '약속을 어기다', sentence: 'The townspeople break their promise.' }
+            { word: 'stranger', meaning: '낯선 사람', sentence: 'A stranger with a pipe comes to a town.' },
+            { word: 'overrun', meaning: '(무엇이) 들끓는', sentence: 'A town overrun by rats.' }
         ],
         '01-rats.webp': [
             { word: 'multiply', meaning: '불어나다', sentence: 'The rats began to multiply.' },

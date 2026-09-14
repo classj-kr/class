@@ -293,7 +293,7 @@ const COVER = {
     title: '부싯깃 통',
     intro: [
         '덴마크의 작가 한스 크리스티안 안데르센이 1835년에 펴낸 첫 이야기책에 실린 작품이에요.',
-        '부싯깃 통은 옛날에 불을 붙일 때 쓰던 도구예요. 부싯돌을 쳐서 불꽃을 만들던 물건인데, 이 이야기에서는 그것이 마법 도구가 된답니다.'
+        '부싯깃 통은 옛날에 불을 붙일 때 쓰던 도구예요. 그런데 노파는 왜 하필 낡은 부싯깃 통을 찾아 달라고 할까요?'
     ]
 };
 
@@ -558,7 +558,7 @@ const EN = {
         title: 'The Tinderbox',
         intro: [
             "From the first book of stories the Danish author Hans Christian Andersen published, in 1835.",
-            "A tinderbox was what people used to make fire with in the old days — you struck the flint to get a spark. In this story it turns into something rather more than that."
+            "A tinderbox was what people used to make fire with in the old days — you struck the flint to get a spark. So why does an old woman want one so badly?"
         ]
     },
     chapters: [
@@ -979,7 +979,7 @@ const EN = {
         'cover.webp': [
             { word: 'flint', meaning: '부싯돌', sentence: 'You struck the flint to get a spark.' },
             { word: 'spark', meaning: '불꽃', sentence: 'To get a spark.' },
-            { word: 'rather more than', meaning: '~보다 훨씬 대단한', sentence: 'Something rather more than that.' }
+            { word: 'badly', meaning: '몹시', sentence: 'Why does an old woman want one so badly?' }
         ],
         '01-witch.webp': [
             { word: 'pack', meaning: '배낭', sentence: 'He had a pack on his back.' },

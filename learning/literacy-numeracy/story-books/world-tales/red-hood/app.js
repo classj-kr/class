@@ -257,7 +257,7 @@ const COVER = {
     title: '빨간 모자',
     intro: [
         '유럽에서 아주 오래전부터 입에서 입으로 전해 내려온 이야기예요. 지금 우리가 읽는 형태로 처음 책에 실린 것은 1697년, 프랑스의 샤를 페로가 펴낸 이야기집에서였답니다.',
-        '그로부터 백여 년 뒤, 독일의 그림 형제가 이 이야기를 다시 모아 자신들의 책에 실었어요. 페로가 적은 이야기는 늑대가 이기는 것으로 끝나지만, 그림 형제가 옮긴 이야기에는 지나가던 사냥꾼이 나타나 두 사람을 구해 냅니다.'
+        '그로부터 백여 년 뒤, 독일의 그림 형제가 이 이야기를 다시 모아 자신들의 책에 실었어요. 할머니 댁에 가던 빨간 모자 앞에 늑대가 나타나요. 빨간 모자는 무사히 갈 수 있을까요?'
     ]
 };
 
@@ -523,7 +523,7 @@ const EN = {
     cover: {
         title: 'Little Red Riding Hood',
         intro: [
-            "Written down in France by Charles Perrault in 1697, and again in Germany by the Brothers Grimm in 1812. In Perrault's telling the story ends darkly. The Grimms added the huntsman, and that is the ending most people know today."
+            "Written down in France by Charles Perrault in 1697, and again in Germany by the Brothers Grimm in 1812. On her way through the wood to Grandmother's house, a girl in a red hood meets a wolf. Will she get there safely?"
         ]
     },
     chapters: [
@@ -858,9 +858,9 @@ const EN = {
     words: {
         'cover.webp': [
             { word: 'write down', meaning: '받아 적다', sentence: 'Written down in France by Charles Perrault in 1697.' },
-            { word: 'darkly', meaning: '어둡게', sentence: "In Perrault's telling the story ends darkly." },
-            { word: 'huntsman', meaning: '사냥꾼', sentence: 'The Grimms added the huntsman.' },
-            { word: 'ending', meaning: '결말', sentence: 'That is the ending most people know today.' }
+            { word: 'on one’s way', meaning: '가는 길에', sentence: "On her way through the wood to Grandmother's house." },
+            { word: 'meet', meaning: '마주치다', sentence: 'A girl in a red hood meets a wolf.' },
+            { word: 'safely', meaning: '무사히', sentence: 'Will she get there safely?' }
         ],
         '01-errand.webp': [
             { word: 'hood', meaning: '(머리에 쓰는) 모자, 두건', sentence: 'Her grandmother had made her a hood.' },

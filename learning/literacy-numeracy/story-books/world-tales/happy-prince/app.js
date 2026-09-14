@@ -256,7 +256,7 @@ const COVER = {
     title: '행복한 왕자',
     intro: [
         '아일랜드의 작가 오스카 와일드가 1888년에 발표한 이야기예요.',
-        '와일드는 자기 아이들에게 들려주려고 이 이야기를 썼다고 합니다. 도시 한복판에 서 있는 동상이 사람들의 삶을 내려다본다는 설정 하나로, 가진 것을 나눈다는 것이 어떤 일인지를 조용히 보여 주는 이야기랍니다.'
+        '와일드는 자기 아이들에게 들려주려고 이 이야기를 썼다고 합니다. 도시 한복판 높은 곳에 서 있는 동상이 사람들의 삶을 내려다보면, 무엇이 보일까요?'
     ]
 };
 
@@ -521,7 +521,7 @@ const EN = {
         title: 'The Happy Prince',
         intro: [
             "Written by the Irish author Oscar Wilde and published in 1888.",
-            "Wilde is said to have made it up for his own children. With one idea — a statue in the middle of a city, looking down on how people live — it shows very quietly what it means to give away what you have."
+            "Wilde is said to have made it up for his own children. A statue stands high in the middle of a city, looking down on how people live. What does he see?"
         ]
     },
     chapters: [
@@ -872,7 +872,7 @@ const EN = {
             { word: 'make up', meaning: '지어내다', sentence: 'Wilde is said to have made it up for his own children.' },
             { word: 'statue', meaning: '동상', sentence: 'A statue in the middle of a city.' },
             { word: 'look down on', meaning: '내려다보다', sentence: 'Looking down on how people live.' },
-            { word: 'give away', meaning: '나누어 주다', sentence: 'What it means to give away what you have.' }
+            { word: 'high', meaning: '높이', sentence: 'A statue stands high in the middle of a city.' }
         ],
         '01-statue.webp': [
             { word: 'column', meaning: '기둥', sentence: 'In the middle of the city stood a very tall column.' },

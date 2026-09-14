@@ -275,7 +275,7 @@ const COVER = {
     title: '황금 사슴',
     intro: [
         '인도에서 아주 오래전부터 전해 오는 이야기예요. 부처의 전생 이야기를 모은 자타카라는 옛 책에 실려 있답니다.',
-        '사슴 무리를 이끄는 우두머리가 자기 목숨을 걸고 임금님 앞에 나서는 이야기예요. 인도와 동남아시아의 옛 그림과 조각에도 자주 등장한답니다.'
+        '어느 날 숲에 사냥이 시작돼요. 무리를 이끄는 사슴은 어떻게 할까요? 인도와 동남아시아의 옛 그림과 조각에도 자주 등장한답니다.'
     ]
 };
 
@@ -540,7 +540,7 @@ const EN = {
         title: 'The Golden Deer',
         intro: [
             "A story told in India from very ancient times. It is found in the Jataka, an old book that collects the tales of the Buddha's former lives.",
-            "It is about the leader of a herd of deer who stands before a king at the cost of his own life. He appears often in the old paintings and carvings of India and Southeast Asia."
+            "One day a hunt comes to the forest. What will the deer who leads the herd do? He appears often in the old paintings and carvings of India and Southeast Asia."
         ]
     },
     chapters: [
@@ -955,7 +955,7 @@ const EN = {
         'cover.webp': [
             { word: 'ancient', meaning: '아주 오래된', sentence: 'A story told in India from very ancient times.' },
             { word: 'herd', meaning: '무리', sentence: 'The leader of a herd of deer.' },
-            { word: 'at the cost of', meaning: '~을 걸고', sentence: 'At the cost of his own life.' },
+            { word: 'hunt', meaning: '사냥', sentence: 'One day a hunt comes to the forest.' },
             { word: 'carving', meaning: '조각', sentence: 'The old paintings and carvings of India and Southeast Asia.' }
         ],
         '01-forest.webp': [

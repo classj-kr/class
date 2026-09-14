@@ -247,7 +247,7 @@ const COVER = {
     title: '난쟁이와 구둣방',
     intro: [
         '독일의 그림 형제가 모아 펴낸 이야기집에 실린 짧은 이야기예요.',
-        '유럽에는 밤사이 몰래 집안일을 도와주는 작은 요정 이야기가 여러 나라에 전해집니다. 다만 그 요정들은 고맙다는 인사를 받으면 슬며시 떠나 버린다고 하지요. 이 이야기도 그런 규칙을 따르고 있답니다.'
+        '유럽에는 밤사이 몰래 집안일을 도와주는 작은 요정 이야기가 여러 나라에 전해집니다. 이 이야기는 가죽이 신발 한 켤레 지을 만큼만 남은 가난한 구두장이에게서 시작되지요.'
     ]
 };
 
@@ -512,7 +512,7 @@ const EN = {
         title: 'The Elves and the Shoemaker',
         intro: [
             "A short tale from the collection the Brothers Grimm gathered in Germany.",
-            "Many countries in Europe tell of little folk who come in at night and do the housework. But they are said to slip away for good once anybody thanks them. This story follows that rule too."
+            "Many countries in Europe tell of little folk who come in at night and do the housework. This one begins with a poor shoemaker who has leather left for just one more pair of shoes."
         ]
     },
     chapters: [
@@ -829,8 +829,8 @@ const EN = {
         'cover.webp': [
             { word: 'gather', meaning: '모으다', sentence: 'The collection the Brothers Grimm gathered in Germany.' },
             { word: 'little folk', meaning: '작은 요정들', sentence: 'Little folk who come in at night and do the housework.' },
-            { word: 'slip away', meaning: '슬며시 떠나다', sentence: 'They are said to slip away for good once anybody thanks them.' },
-            { word: 'for good', meaning: '영영', sentence: 'Slip away for good.' }
+            { word: 'shoemaker', meaning: '구두장이', sentence: 'This one begins with a poor shoemaker.' },
+            { word: 'leather', meaning: '가죽', sentence: 'He has leather left for just one more pair of shoes.' }
         ],
         '01-leather.webp': [
             { word: 'lane', meaning: '골목', sentence: "The shoemaker's shop at the end of the lane." },

@@ -288,7 +288,7 @@ const COVER = {
     title: '곱사등이 조랑말',
     intro: [
         '러시아의 작가 표트르 예르쇼프가 1834년에 지은 이야기예요. 열아홉 살에 쓴 작품이랍니다.',
-        '러시아 옛이야기에 자주 나오는 불새와 마법의 말이 함께 등장해요. 못생기고 작은 말이 사실은 가장 든든한 친구였다는 이야기랍니다.'
+        '러시아 옛이야기에 자주 나오는 불새와 마법의 말이 함께 등장해요. 등이 굽은 작은 조랑말은 어떤 말일까요?'
     ]
 };
 
@@ -552,7 +552,7 @@ const EN = {
         title: 'The Little Humpbacked Horse',
         intro: [
             "Written by the Russian poet Pyotr Yershov in 1834. He was nineteen years old when he wrote it.",
-            "The firebird and the magic horse of Russian folk tales are both in it. It is a story about an ugly little horse who turns out to be the truest friend of all."
+            "The firebird and the magic horse of Russian folk tales are both in it. And what kind of horse is the little one with a hump on his back?"
         ]
     },
     chapters: [
@@ -969,7 +969,7 @@ const EN = {
         'cover.webp': [
             { word: 'poet', meaning: '시인', sentence: 'Written by the Russian poet Pyotr Yershov in 1834.' },
             { word: 'folk tale', meaning: '옛이야기', sentence: 'The firebird and the magic horse of Russian folk tales.' },
-            { word: 'turn out to be', meaning: '알고 보니 ~이다', sentence: 'An ugly little horse who turns out to be the truest friend of all.' }
+            { word: 'hump', meaning: '혹, 굽은 등', sentence: 'The little one with a hump on his back.' }
         ],
         '01-field.webp': [
             { word: 'tangle', meaning: '헝클어짐', sentence: 'His hair all in a tangle.' },

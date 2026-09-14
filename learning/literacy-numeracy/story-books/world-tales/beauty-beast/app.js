@@ -278,7 +278,7 @@ const COVER = {
     title: '미녀와 야수',
     intro: [
         '프랑스에서 전해지던 이야기를 보몽 부인이 1756년에 아이들이 읽기 좋게 다시 쓴 작품이에요.',
-        '겉모습만 보고 사람을 판단하는 일에 대한 이야기랍니다. 야수의 성에서 지내는 동안 벨의 눈에 비친 야수가 조금씩 달라집니다.'
+        '장사꾼의 막내딸 벨과 무시무시한 모습의 야수가 나오는 이야기랍니다. 야수는 정말 겉모습처럼 무서운 존재일까요?'
     ]
 };
 
@@ -543,7 +543,7 @@ const EN = {
         title: 'Beauty and the Beast',
         intro: [
             "Madame de Beaumont's 1756 retelling, for children, of a story that had been told in France before her.",
-            "It is about judging people by how they look. As the days go by in the Beast's castle, what Beauty sees when she looks at him slowly changes."
+            "It is the story of Beauty, a merchant's youngest daughter, and a Beast who is frightening to look at. Is he really as fearsome as he looks?"
         ]
     },
     chapters: [
@@ -894,8 +894,8 @@ const EN = {
     words: {
         'cover.webp': [
             { word: 'retelling', meaning: '다시 쓴 이야기', sentence: "Madame de Beaumont's 1756 retelling, for children." },
-            { word: 'judge', meaning: '판단하다', sentence: 'It is about judging people by how they look.' },
-            { word: 'go by', meaning: '지나가다', sentence: "As the days go by in the Beast's castle." }
+            { word: 'merchant', meaning: '장사꾼', sentence: "Beauty, a merchant's youngest daughter." },
+            { word: 'fearsome', meaning: '무서운', sentence: 'Is he really as fearsome as he looks?' }
         ],
         '01-family.webp': [
             { word: 'merchant', meaning: '장사꾼', sentence: 'In a port town there lived a great merchant.' },

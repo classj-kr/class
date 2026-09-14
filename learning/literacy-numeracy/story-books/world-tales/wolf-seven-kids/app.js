@@ -530,7 +530,7 @@ const EN = {
         title: 'The Wolf and the Seven Little Kids',
         intro: [
             "In the collection the Brothers Grimm published in Germany in 1812. They did not invent it — they wrote down what village people told them.",
-            "The wolf comes three times, and each time he mends the very thing that gave him away. His voice was too rough, so he swallowed chalk; his paws were too dark, so he floured them. The trickster gets better at tricking every time he fails."
+            "Like Little Red Riding Hood, it has a wolf who pretends to be someone he is not. Will the seven little kids see through him?"
         ]
     },
     chapters: [
@@ -863,9 +863,8 @@ const EN = {
     words: {
         'cover.webp': [
             { word: 'invent', meaning: '지어내다', sentence: 'They did not invent it.' },
-            { word: 'mend', meaning: '고치다', sentence: 'Each time he mends the very thing that gave him away.' },
-            { word: 'give away', meaning: '들통나게 하다', sentence: 'The very thing that gave him away.' },
-            { word: 'trickster', meaning: '속임수꾼', sentence: 'The trickster gets better at tricking every time he fails.' }
+            { word: 'pretend', meaning: '~인 척하다', sentence: 'A wolf who pretends to be someone he is not.' },
+            { word: 'see through', meaning: '속임수를 알아채다', sentence: 'Will the seven little kids see through him?' }
         ],
         '01-warning.webp': [
             { word: 'kid', meaning: '아기 염소', sentence: 'She had seven little kids.' },

@@ -278,7 +278,7 @@ const COVER = {
     title: '브레멘 음악대',
     intro: [
         '독일의 그림 형제가 모아 적은 옛이야기예요. 브레멘은 독일 북쪽에 실제로 있는 도시랍니다.',
-        '나이가 들어 쫓겨날 처지가 된 짐승 넷이 길에서 만나 함께 길을 떠나요. 재미있게도 이 넷은 끝내 브레멘에 닿지 못한답니다.'
+        '나이가 들어 쫓겨날 처지가 된 짐승 넷이 길에서 만나 함께 브레멘으로 떠나요. 늙은 짐승 넷이 모여 무엇을 할 수 있을까요?'
     ]
 };
 
@@ -543,7 +543,7 @@ const EN = {
         title: 'The Bremen Town Musicians',
         intro: [
             "An old tale the Brothers Grimm collected in Germany. Bremen is a real city in the north of the country.",
-            "Four animals, all old enough to be turned out, meet on the road and set off together. The funny thing is that the four of them never reach Bremen at all."
+            "Four animals, all old enough to be turned out, meet on the road and set off together for Bremen. What can four old animals possibly do?"
         ]
     },
     chapters: [
@@ -894,7 +894,7 @@ const EN = {
             { word: 'collect', meaning: '모으다', sentence: 'An old tale the Brothers Grimm collected in Germany.' },
             { word: 'real', meaning: '실제의', sentence: 'Bremen is a real city in the north of the country.' },
             { word: 'turn out', meaning: '내쫓다', sentence: 'Four animals, all old enough to be turned out.' },
-            { word: 'reach', meaning: '닿다', sentence: 'The four of them never reach Bremen at all.' }
+            { word: 'set off', meaning: '길을 떠나다', sentence: 'They meet on the road and set off together for Bremen.' }
         ],
         '01-donkey.webp': [
             { word: 'load', meaning: '짐', sentence: 'He had carried loads for the mill.' },

@@ -251,7 +251,7 @@ const COVER = {
     title: '백설공주',
     intro: [
         '독일의 그림 형제가 1812년에 펴낸 이야기집에 실린 이야기예요. 그림 형제는 헤센 지방 사람들에게 들은 이야기를 받아 적었는데, 마을마다 조금씩 다른 이야기를 하나로 정리해 지금의 모습으로 다듬었답니다.',
-        '이야기에는 왕비가 세 번 공주를 찾아와요. 허리끈, 빗, 사과로 방법을 바꿔 가며 다가오지요. 이렇게 같은 일이 되풀이되면서 조금씩 위험해지는 구조는 옛이야기에서 자주 볼 수 있는 방식이에요.'
+        '이야기는 왕비가 거울에게 묻는 한마디에서 시작돼요. 거울의 대답을 들은 왕비는 무슨 일을 꾸밀까요? 숲으로 간 공주는 무사히 지낼 수 있을까요?'
     ]
 };
 
@@ -517,7 +517,7 @@ const EN = {
         title: 'Snow White',
         intro: [
             "One of the tales the Brothers Grimm published in Germany in 1812. They wrote down what people in Hessen told them, and shaped the many local versions into the one story we know.",
-            "The queen comes to the cottage three times — with a sash, a comb, and an apple. Each visit is a little more dangerous than the last. Old tales often build like that."
+            "It all begins with a question the queen asks her mirror. What will she do when she hears the answer? And will Snow White be safe in the forest?"
         ]
     },
     chapters: [
@@ -855,9 +855,8 @@ const EN = {
     words: {
         'cover.webp': [
             { word: 'local', meaning: '마을마다의', sentence: 'Shaped the many local versions into the one story we know.' },
-            { word: 'sash', meaning: '허리끈', sentence: 'With a sash, a comb, and an apple.' },
-            { word: 'dangerous', meaning: '위험한', sentence: 'Each visit is a little more dangerous than the last.' },
-            { word: 'build', meaning: '쌓아 가다', sentence: 'Old tales often build like that.' }
+            { word: 'mirror', meaning: '거울', sentence: 'A question the queen asks her mirror.' },
+            { word: 'safe', meaning: '무사한', sentence: 'Will Snow White be safe in the forest?' }
         ],
         '01-mirror.webp': [
             { word: 'prick', meaning: '찌르다', sentence: 'She pricked her finger with the needle.' },

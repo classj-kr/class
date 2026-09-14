@@ -272,7 +272,7 @@ const COVER = {
     title: '돼지치기 왕자',
     intro: [
         '덴마크의 작가 한스 크리스티안 안데르센이 1841년에 펴낸 이야기예요. 북유럽에 전해 오던 옛이야기를 바탕으로 새로 쓴 작품이랍니다.',
-        '진짜 장미와 진짜 밤꾀꼬리는 시큰둥해하면서, 소리 나는 장난감에는 눈이 뒤집히는 공주가 나와요. 무엇이 정말 귀한 것인지 묻는 이야기랍니다.'
+        '왕자가 세상에 둘도 없는 장미와 밤꾀꼬리를 공주에게 보내요. 공주는 그 선물을 반길까요? 무엇이 정말 귀한 것인지 묻는 이야기랍니다.'
     ]
 };
 
@@ -537,7 +537,7 @@ const EN = {
         title: 'The Swineherd',
         intro: [
             "Published by the Danish author Hans Christian Andersen in 1841. He built it on an old tale that had been told in the north of Europe.",
-            "There is a princess in it who cannot be bothered with a real rose or a real nightingale, and loses her head over a toy that makes a noise. It asks what is actually worth having."
+            "A prince sends a princess the rarest rose and nightingale in the world. Will she be pleased? It asks what is actually worth having."
         ]
     },
     chapters: [
@@ -887,8 +887,8 @@ const EN = {
     },
     words: {
         'cover.webp': [
-            { word: 'be bothered with', meaning: '~에 마음 쓰다', sentence: 'A princess who cannot be bothered with a real rose.' },
-            { word: 'lose one’s head', meaning: '정신을 못 차리다', sentence: 'Loses her head over a toy that makes a noise.' },
+            { word: 'rare', meaning: '드문, 귀한', sentence: 'The rarest rose and nightingale in the world.' },
+            { word: 'pleased', meaning: '기뻐하는', sentence: 'Will she be pleased?' },
             { word: 'worth', meaning: '가질 만한', sentence: 'It asks what is actually worth having.' }
         ],
         '01-prince.webp': [
