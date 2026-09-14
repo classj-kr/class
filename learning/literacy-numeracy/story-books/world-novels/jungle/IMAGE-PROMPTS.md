@@ -175,7 +175,7 @@ Buldeo: a village hunter with an old matchlock gun and a big moustache.
 
 | 파일명 | 장면 |
 |---|---|
-| `images/story-12-a.webp` | A hunter flat on his back on the ravine floor with a grey wolf standing over him, and a boy kneeling nearby working a tiger skin loose with his bare hands. |
+| `images/story-12-a.webp` | A hunter flat on his back on the ravine floor with a grey wolf standing over him, and a boy kneeling nearby working a tiger skin loose with a small knife. |
 | `images/story-12-b.webp` | A closed village gate at sunset, figures on the wall above throwing stones, and a boy standing in the road below with a rolled skin over his shoulder, stones landing around him, not moving. |
 
 ## 13장 · 붉은 개
