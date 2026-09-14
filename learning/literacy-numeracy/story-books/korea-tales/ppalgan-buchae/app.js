@@ -15,7 +15,7 @@ const CHAPTERS = [
                 right: [
                     "한숨 늘어지게 자고 일어나 보니 옆에 부채 두 자루가 놓여 있었어요. 아까까지는 분명히 없던 것이었지요.",
                     "하나는 새빨갛고, 하나는 새파랬습니다.",
-                    "\"이게 웬 떡이냐.\"",
+                    "\"이게 웬 떡이냐!\"",
                     "김 첨지는 사방을 둘러보았지만 아무도 없었답니다."
                 ]
             },
@@ -58,7 +58,7 @@ const CHAPTERS = [
                 emoji: "🎊",
                 left: [
                     "마침 마을 부잣집에서 큰 잔치가 열렸어요. 대문 밖까지 고기 냄새가 진동했지요.",
-                    "김 첨지는 구경꾼들 틈에 슬쩍 끼어들었습니다.",
+                    "김 첨지는 손님들 틈에 슬쩍 끼어들었습니다.",
                     "윗자리에 앉은 주인 영감이 배를 두드리며 껄껄 웃고 있었어요.",
                     "\"옳지, 저 영감이 딱이구나.\""
                 ],
@@ -153,7 +153,7 @@ const CHAPTERS = [
                 art: "09-play.webp",
                 emoji: "🪭",
                 left: [
-                    "빈 집 마당에 자리를 깔고 앉은 영감은 신이 났어요. 이제 이 부채로 무엇이든 할 수 있을 것 같았지요.",
+                    "이사 간 집 마당에 들어서자마자, 영감은 자리를 깔고 앉았어요. 이제 이 부채로 무엇이든 할 수 있을 것 같았지요.",
                     "\"어디 한번 볼까?\"",
                     "영감은 빨간 부채를 살랑살랑 부쳤습니다.",
                     "\"이제 이 부채는 내 것이렷다.\""
@@ -239,15 +239,15 @@ const CHAPTERS = [
                 left: [
                     "하늘 신하들이 밧줄을 풀어 주자 영감은 데굴데굴 굴러떨어졌어요.",
                     "마당 짚더미에 쿵 하고 박혔지요. 다행히 뼈는 부러지지 않았습니다.",
-                    "그런데 부채 두 자루는 어디론가 날아가 버렸답니다.",
+                    "그 와중에 부채 두 자루는 어디론가 날아가 버렸답니다.",
                     "짚더미에서 기어 나온 영감은 한참을 멍하니 앉아 있었지요."
                 ],
                 right: [
-                    "그 꼴을 본 김 첨지가 슬그머니 집 문서를 꺼냈어요. 얼굴이 화끈거렸거든요.",
+                    "소문을 듣고 찾아온 김 첨지가 슬그머니 집 문서를 꺼냈어요. 얼굴이 화끈거렸거든요.",
                     "\"이 집은 부채로 얻은 것이니 제 것이 아닙니다.\"",
                     "\"이 집은 도로 영감님 것입니다.\"",
                     "영감네 식구는 그날로 제 집에 돌아왔답니다.",
-                    "김 첨지는 그길로 나무를 하러 갔답니다."
+                    "김 첨지는 그길로 다시 나무를 하러 갔답니다."
                 ]
             }
         ],
@@ -349,7 +349,7 @@ const EN = {
                     left: [
                         "As it happened, a rich house in the village was holding a great feast.",
                         "The smell of meat came right out past the gate.",
-                        "Kim Cheomji slipped in among the onlookers.",
+                        "Kim Cheomji slipped in among the guests.",
                         "In the top seat the master of the house was laughing and patting his belly.",
                         { t: "\"That is the one. He will do nicely.\"", v: "man" }
                     ],
@@ -449,7 +449,7 @@ const EN = {
                     art: "09-play.webp",
                     emoji: "🪭",
                     left: [
-                        "The old man spread a mat in the empty yard and sat down, delighted.",
+                        "The moment he stepped into the yard of his new house, the old man spread a mat and sat down.",
                         "With this fan, he felt, he could do anything at all.",
                         { t: "\"Now then, let us see.\"", v: "old" },
                         "The old man waved the red fan gently.",
@@ -545,15 +545,15 @@ const EN = {
                         "The officials of heaven untied the rope and the old man fell.",
                         "He rolled over and thumped into a straw pile.",
                         "By good luck no bone was broken.",
-                        "But the two fans had blown away somewhere.",
+                        "In all the fuss, the two fans had blown away somewhere.",
                         "The old man crawled out of the straw and sat blankly a long while."
                     ],
                     right: [
-                        "Seeing the state of him, Kim Cheomji quietly took out the deed.",
+                        "Kim Cheomji, who had come on hearing the news, quietly took out the deed.",
                         "His own face was burning.",
                         { t: "\"I got this house with a fan, so it is not mine.\"", v: "man" },
                         { t: "\"This house is yours again, sir.\"", v: "man" },
-                        "The family came home that same day, and Kim Cheomji went to cut wood."
+                        "The family came home that same day, and Kim Cheomji went to cut wood again."
                     ]
                 }
             ]
@@ -565,7 +565,7 @@ const EN = {
         { q: "What did the rich man give up for the fans?", choices: ["All the rice in his store", "Whatever price was asked", "The tiled house, all of it"], answer: 2 },
         { q: "What did the officials of heaven notice?", choices: ["A pillar up through the cloud", "Two very large fans", "A fallen chopstick"], answer: 0 },
         { q: "What did heaven do with the risen nose?", choices: ["Tied it, thinking it a pillar", "Covered it over with cloud", "Left it alone and watched"], answer: 0 },
-        { q: "What did Kim Cheomji take out for the old man?", choices: ["The deed to the house", "The red fan", "The blue fan"], answer: 0 },
+        { q: "What did Kim Cheomji take out for the old man who fell onto the straw?", choices: ["The deed to the house", "The red fan", "The blue fan"], answer: 0 },
         {
             q: "Which reaction to this book does NOT fit?",
             wide: true,
@@ -625,8 +625,8 @@ const EN = {
         "04-feast.webp": [
             { w: "As it happened", k: "마침", s: "🎊 As it happened, a rich house in the village was holding a great feast." },
             { w: "right out past ~", k: "~ 밖까지", s: "The smell of meat came right out past the gate." },
-            { w: "slipped in (slip)", k: "슬쩍 끼어들었다", s: "Kim Cheomji slipped in among the onlookers." },
-            { w: "onlookers", k: "구경꾼", s: "slipped in among the onlookers" },
+            { w: "slipped in (slip)", k: "슬쩍 끼어들었다", s: "Kim Cheomji slipped in among the guests." },
+            { w: "among ~", k: "~ 틈에", s: "slipped in among the guests" },
             { w: "the top seat", k: "윗자리", s: "In the top seat the master of the house was laughing" },
             { w: "patting his belly", k: "배를 두드리며", s: "laughing and patting his belly" },
             { w: "He will do nicely", k: "저 사람이 딱이구나", s: "That is the one. He will do nicely." },
@@ -674,8 +674,8 @@ const EN = {
             { w: "near to tears", k: "울상이 되어", s: "His family walked out in a line, near to tears." }
         ],
         "09-play.webp": [
-            { w: "spread a mat", k: "자리를 깔았다", s: "The old man spread a mat in the empty yard" },
-            { w: "delighted", k: "신이 난", s: "sat down, delighted" },
+            { w: "The moment ~", k: "~하자마자", s: "The moment he stepped into the yard of his new house" },
+            { w: "spread a mat", k: "자리를 깔았다", s: "the old man spread a mat and sat down" },
             { w: "anything at all", k: "무엇이든", s: "With this fan, he felt, he could do anything at all." },
             { w: "gently", k: "살랑살랑", s: "The old man waved the red fan gently." },
             { w: "went stretching up (go)", k: "쭉쭉 뻗어 올라갔다", s: "And his own nose went stretching up." },
@@ -732,10 +732,10 @@ const EN = {
             { w: "thumped into ~", k: "쿵 하고 박혔다", s: "He rolled over and thumped into a straw pile." },
             { w: "straw pile", k: "짚더미", s: "He rolled over and thumped into a straw pile." },
             { w: "By good luck", k: "다행히", s: "By good luck no bone was broken." },
-            { w: "blown away (blow)", k: "날아가 버렸다", s: "But the two fans had blown away somewhere." },
+            { w: "blown away (blow)", k: "날아가 버렸다", s: "the two fans had blown away somewhere" },
             { w: "crawled out (crawl)", k: "기어 나왔다", s: "The old man crawled out of the straw" },
-            { w: "the state of him", k: "그 꼴", s: "Seeing the state of him, Kim Cheomji quietly took out the deed." },
-            { w: "deed", k: "집 문서", s: "Kim Cheomji quietly took out the deed." },
+            { w: "on hearing ~", k: "~을 듣고", s: "who had come on hearing the news" },
+            { w: "deed", k: "집 문서", s: "quietly took out the deed" },
             { w: "was burning", k: "화끈거렸다", s: "His own face was burning." }
         ],
         "after": [
@@ -775,7 +775,7 @@ const QUIZ = [
     { q: "부자는 부채를 얻으려고 무엇을 내주었나요?", choices: ["곳간의 쌀 전부", "값을 부르는 대로", "기와집을 통째로"], answer: 2 },
     { q: "하늘 신하들의 눈에 띈 것은 무엇인가요?", choices: ["구름을 뚫고 솟은 기둥", "커다란 부채 두 자루", "떨어진 젓가락 한 짝"], answer: 0 },
     { q: "하늘나라에서는 솟아오른 코를 어떻게 했나요?", choices: ["기둥인 줄 알고 묶었다", "구름으로 덮어 두었다", "그냥 두고 보았다"], answer: 0 },
-    { q: "김 첨지가 영감에게 꺼내 보인 것은 무엇인가요?", choices: ["집 문서", "빨간 부채", "파란 부채"], answer: 0 },
+    { q: "김 첨지가 짚더미 위로 굴러떨어진 영감에게 꺼내 보인 것은 무엇인가요?", choices: ["집 문서", "빨간 부채", "파란 부채"], answer: 0 },
     {
         q: "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
         wide: true,
@@ -847,7 +847,6 @@ const WORDS_KO = {
     ],
     "04-feast.webp": [
         { w: "진동하다", k: "냄새가 확 퍼지다.", s: "대문 밖까지 고기 냄새가 진동했지요." },
-        { w: "구경꾼", k: "구경하러 모인 사람.", s: "김 첨지는 구경꾼들 틈에 슬쩍 끼어들었습니다." },
         { w: "윗자리", k: "웃어른이 앉는 높은 자리.", s: "윗자리에 앉은 주인 영감이 배를 두드리며 껄껄 웃고 있었어요." },
         { w: "슬금슬금", k: "남몰래 슬며시 움직이는 모양.", s: "김 첨지는 슬금슬금 기둥 뒤로 물러났습니다." },
         { w: "눈여겨보다", k: "주의 깊게 살펴보다.", s: "아무도 기둥 뒤의 김 첨지를 눈여겨보지 않았어요." }
@@ -917,10 +916,9 @@ const WORDS_KO = {
     ],
     "14-fall.webp": [
         { w: "짚더미", k: "짚을 쌓아 놓은 무더기.", s: "마당 짚더미에 쿵 하고 박혔지요." },
-        { w: "꼴", k: "겉으로 드러난 모양새.", s: "그 꼴을 본 김 첨지가 슬그머니 집 문서를 꺼냈어요." },
         { w: "문서", k: "무엇을 적어 증거로 삼는 종이.", s: "슬그머니 집 문서를 꺼냈어요." },
         { w: "화끈거리다", k: "부끄러워 얼굴이 달아오르다.", s: "얼굴이 화끈거렸거든요." },
-        { w: "그길로", k: "그 자리에서 곧바로.", s: "김 첨지는 그길로 나무를 하러 갔답니다." }
+        { w: "그길로", k: "그 자리에서 곧바로.", s: "김 첨지는 그길로 다시 나무를 하러 갔답니다." }
     ],
     "after": [
         { w: "대뜸", k: "그 자리에서 곧.", s: "눈에 보이는 것이 대뜸 달라지는 것만큼" },

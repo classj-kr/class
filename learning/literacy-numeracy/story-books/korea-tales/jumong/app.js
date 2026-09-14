@@ -26,7 +26,7 @@ const CHAPTERS = [
                     "햇빛 한 줄기가 유화를 졸졸 따라다녔어요.",
                     "방을 옮겨도, 발을 내려도 소용이 없었지요.",
                     "구름이 껴도, 밤이 되어도 그 빛은 사라지지 않았습니다.",
-                    "궁녀들이 무서워 곁에도 가지 못했어요. 유화는 늘 혼자였답니다."
+                    "궁녀들이 무서워 곁에도 가지 못했어요. 그래서 유화는 늘 혼자였답니다."
                 ],
                 right: [
                     "얼마 뒤 유화가 무언가를 낳았습니다. 그런데 아이가 아니라 커다란 알이었어요.",
@@ -119,7 +119,7 @@ const CHAPTERS = [
                     "\"저런 일이나 하다 늙으라지.\"",
                     "왕자들이 마구간 앞을 지나며 비웃었어요. 그런데 주몽은 군말 없이 묵묵히 일했습니다.",
                     "대신 말 한 마리 한 마리를 유심히 살폈지요.",
-                    "어느 말이 잘 달리는지 하나하나 눈여겨보았답니다."
+                    "어느 말이 잘 달릴지 하나하나 눈여겨보았답니다."
                 ]
             },
             {
@@ -132,7 +132,7 @@ const CHAPTERS = [
                     "다른 사람들은 아무도 알아보지 못했답니다."
                 ],
                 right: [
-                    "주몽은 그 말의 혀 밑에 아주 가는 바늘을 꽂아 두었어요. 말은 먹이를 제대로 먹지 못해 비쩍 말라 갔지요.",
+                    "주몽은 그 말의 혀 밑에 아주 가는 바늘을 꽂아 두었어요. 말은 먹이를 제대로 먹지 못해 비쩍비쩍 말라 갔지요.",
                     "갈비뼈가 하나하나 드러났습니다.",
                     "\"저건 병든 말이로군.\"",
                     "사람들은 그 말을 거들떠보지도 않았답니다."
@@ -271,8 +271,8 @@ const CHAPTERS = [
                 ],
                 right: [
                     "\"유리로구나.\"",
-                    "주몽의 두 눈에 눈물이 그렁그렁 맺혔어요. 주몽은 아들의 어깨를 한참이나 붙잡고 있었지요.",
-                    "고구려는 그렇게 아들에게로 이어졌습니다.",
+                    "주몽의 두 눈에 눈물이 그렁그렁 맺혔어요. 주몽은 처음 보는 아들의 어깨를 한참이나 붙잡고 있었지요.",
+                    "고구려는 그렇게 아들 유리에게로 이어졌습니다.",
                     "유리는 뒷날 고구려의 두 번째 임금이 되었답니다."
                 ]
             }
@@ -289,7 +289,7 @@ const COVER = {
     title: "주몽",
     intro: [
         "주몽 이야기는 삼국사기와 삼국유사에 실려 전해져요. 고구려를 연 첫 임금에 관한 이야기랍니다.",
-        "주몽은 부여 말로 활을 잘 쏘는 사람이라는 뜻이라고 전해져요. 이름이 곧 별명이었던 셈이지요.",
+        "주몽은 북방의 부여 말로 활을 잘 쏘는 사람이라는 뜻이라고 전해져요. 이름이 곧 별명이었던 셈이지요.",
         "고구려 광개토대왕릉비에도 시조 이야기가 새겨져 있어요. 비석에는 주몽을 추모라고 적었지요. 천육백 년 전에 세운 돌에 남아 있는 이야기예요.",
         "북부여에서 갈라져 나와 새 나라를 세우는 줄거리는 백제 건국 이야기로 그대로 이어져요. 주몽의 아들 온조가 남쪽으로 내려가 백제를 세우거든요."
     ]
@@ -303,7 +303,7 @@ const HISTORY = {
         "고구려는 실제로 있었던 나라예요. 삼국사기는 기원전 37년에 섰다고 적고 있고, 서기 668년에 무너질 때까지 칠백 년 가까이 이어졌답니다.",
         "중국 지린성 지안에는 광개토대왕릉비가 지금도 서 있어요. 414년에 세운 높이 육 미터가 넘는 커다란 돌인데, 거기에 주몽이 강 앞에서 하늘의 아들이라 외치자 갈대가 이어지고 거북이 떠올랐다는 이야기가 새겨져 있지요. 삼국사기에는 자라와 물고기가 다리를 놓았다고 적혀 있으니, 같은 이야기가 조금씩 달리 전해진 셈이랍니다.",
         "고구려 무덤 벽화에는 말을 달리며 활을 쏘는 사람들이 자주 그려져 있어요. 뒤로 몸을 돌려 쏘는 그림도 있답니다. 활 잘 쏘는 사람을 으뜸으로 친 나라였던 것이지요.",
-        "주몽의 아들 온조는 남쪽으로 내려가 백제를 세웠어요. 그래서 백제 왕실도 스스로를 부여에서 나온 집안이라 여겼고, 한때는 나라 이름을 남부여라 부르기도 했답니다."
+        "온조는 주몽의 또 다른 아들로, 남쪽으로 내려가 백제를 세웠어요. 그래서 백제 왕실도 스스로를 부여에서 나온 집안이라 여겼고, 한때는 나라 이름을 남부여라 부르기도 했답니다."
     ]
 };
 
@@ -318,7 +318,7 @@ const EN = {
         title: "Jumong",
         intro: [
             "The story of Jumong is in the Samguk Sagi and the Samguk Yusa. It is about the first king of Goguryeo.",
-            "Jumong is said to mean a good archer in the language of Buyeo. His name was really a nickname.",
+            "Jumong is said to mean a good archer in the language of Buyeo in the north. His name was really a nickname.",
             "The story is carved on King Gwanggaeto's stele as well, a stone set up sixteen hundred years ago."
         ]
     },
@@ -620,8 +620,8 @@ const EN = {
                     right: [
                         { t: "\"So you are Yuri.\"", v: "man" },
                         "The tears stood in Jumong's eyes.",
-                        "Jumong held his son by the shoulders a long while.",
-                        "So Goguryeo passed on to the son.",
+                        "Jumong held the son he had never seen by the shoulders a long while.",
+                        "So Goguryeo passed on to his son Yuri.",
                         "Yuri became the second king of Goguryeo in time."
                     ]
                 }
@@ -633,9 +633,9 @@ const EN = {
         note: 'Everything up to here was the story. From here on it is what the records show.',
         paras: [
             "Goguryeo really existed. The Samguk Sagi says it was founded in 37 BC, and it lasted nearly seven hundred years, until it fell in the year 668.",
-            "At Ji'an in Jilin, in China, King Gwanggaeto's stele still stands. It is a stone over six metres high, set up in the year 414, and the story of Jumong calling out at the river is carved on it. There the reeds joined and a turtle rose; the Samguk Sagi says turtles and fish made the bridge. The same story came down a little differently.",
-            "Wall paintings in Goguryeo tombs often show people shooting from a galloping horse. Some show them turned right round, shooting backwards. It was a country that thought most of a good archer.",
-            "Jumong's son Onjo went south and founded Baekje. The royal house of Baekje also held that it came from Buyeo, and for a time the country was even called Nambuyeo, which means South Buyeo."
+            "At Ji'an in Jilin, in China, King Gwanggaeto's stele still stands. This stone, over six metres high and set up in 414, tells of Jumong calling out at the river. There the reeds joined and a turtle rose; the Samguk Sagi says turtles and fish made the bridge. The same story came down a little differently.",
+            "Wall paintings in Goguryeo tombs show people shooting from galloping horses, some even turned round to shoot backwards. Good archers were prized.",
+            "Onjo, another son of Jumong, went south and founded Baekje. Baekje's kings also said they came from Buyeo, and for a time called their country Nambuyeo, South Buyeo."
         ]
     },
     quiz: [
@@ -831,7 +831,7 @@ const EN = {
             { w: "out of place", k: "어긋난", s: "without a mark out of place" },
             { w: "join", k: "틈", s: "No join could be seen." },
             { w: "stood (stand)", k: "그렁그렁 맺혔다", s: "The tears stood in Jumong's eyes." },
-            { w: "passed on to ~", k: "이어졌다", s: "So Goguryeo passed on to the son." },
+            { w: "passed on to ~", k: "이어졌다", s: "So Goguryeo passed on to his son Yuri." },
             { w: "in time", k: "뒷날", s: "Yuri became the second king of Goguryeo in time." }
         ],
         "after": [
@@ -970,7 +970,7 @@ const WORDS_KO = {
     ],
     "08-needle.webp": [
         { w: "꼿꼿이", k: "굽지 않고 곧게.", s: "먹이를 먹을 때도 목을 꼿꼿이 세우고 있었습니다." },
-        { w: "비쩍", k: "몹시 마른 모양.", s: "말은 먹이를 제대로 먹지 못해 비쩍 말라 갔지요." },
+        { w: "비쩍비쩍", k: "자꾸 몹시 말라 가는 모양.", s: "말은 먹이를 제대로 먹지 못해 비쩍비쩍 말라 갔지요." },
         { w: "갈비뼈", k: "가슴을 둘러싸고 있는 뼈.", s: "갈비뼈가 하나하나 드러났습니다." },
         { w: "거들떠보다", k: "관심을 두고 쳐다보다.", s: "사람들은 그 말을 거들떠보지도 않았답니다." }
     ],

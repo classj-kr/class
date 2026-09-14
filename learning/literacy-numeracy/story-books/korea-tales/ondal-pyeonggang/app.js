@@ -108,7 +108,7 @@ const CHAPTERS = [
                 right: [
                     "임금의 얼굴이 시뻘게졌어요. 신하들이 숨을 죽였지요.",
                     "\"그리 가고 싶거든 나가거라!\"",
-                    "공주는 그 자리에서 일어나 절을 올렸습니다.",
+                    "공주는 서 있던 자리에서 아버지께 바로 큰절을 올렸어요.",
                     "그러고는 뒤도 돌아보지 않고 나갔답니다.",
                     "임금은 그제야 손을 뻗었지만 늦었지요."
                 ]
@@ -196,10 +196,10 @@ const CHAPTERS = [
                     "온달은 밤이 새도록 활을 당겼어요."
                 ],
                 right: [
-                    "손바닥이 터지고 아물기를 몇 번이나 했지요. 활시위에 살갗이 벗겨져 피가 났어요.",
-                    "밤마다 공주가 그 손에 약을 발라 주었습니다.",
+                    "활시위에 손바닥이 터지고 아물기를 몇 번이나 했지요. 밤마다 공주가 약을 발라 주었습니다.",
                     "\"바보라서 그런지 지겨운 줄을 모릅니다.\"",
-                    "온달이 씩 웃으며 말했지요."
+                    "온달이 씩 웃으며 말했지요.",
+                    "그렇게 둘이서 아무도 눈치채지 못하게 갈고닦은 지 십 년이 되던 해였어요."
                 ]
             },
             {
@@ -438,7 +438,7 @@ const EN = {
                     right: [
                         "The king's face went red. The officials held their breath.",
                         { t: "\"If you want to go so much, then go!\"", v: "old" },
-                        "The princess got up where she stood and bowed to him.",
+                        "Right where she stood, the princess made a deep bow to her father.",
                         "Then she went out without once looking back.",
                         "The king put out a hand then, and it was too late."
                     ]
@@ -535,11 +535,11 @@ const EN = {
                         "Ondal drew that bow till the night was through."
                     ],
                     right: [
-                        "His palms split and healed and split again.",
-                        "The bowstring took the skin off and drew blood.",
+                        "The bowstring split his palms, and they healed and split again.",
                         "Every night the princess put medicine on those hands.",
                         { t: "\"Being a fool, I suppose I never get tired of it.\"", v: "man" },
-                        "Ondal said it with a grin."
+                        "Ondal said it with a grin.",
+                        "So the two trained in secret until the tenth year came."
                     ]
                 },
                 {
@@ -724,6 +724,7 @@ const EN = {
             { w: "giving way", k: "물러서기", s: "There was no sign of her giving way." },
             { w: "held their breath (hold)", k: "숨을 죽였다", s: "The officials held their breath." },
             { w: "so much", k: "그리", s: "If you want to go so much, then go!" },
+            { w: "made a deep bow (make)", k: "큰절을 올렸다", s: "the princess made a deep bow to her father" },
             { w: "without once looking back", k: "뒤도 돌아보지 않고", s: "Then she went out without once looking back." },
             { w: "put out a hand", k: "손을 뻗었다", s: "The king put out a hand then, and it was too late." }
         ],
@@ -775,10 +776,10 @@ const EN = {
             { w: "how to hold a bow", k: "활 잡는 법", s: "And how to hold a bow, and how to ride." },
             { w: "did it over", k: "되풀이했다", s: "Teach Ondal one thing and he did it over ten times." },
             { w: "till the night was through", k: "밤이 새도록", s: "Ondal drew that bow till the night was through." },
-            { w: "split and healed", k: "터지고 아물었다", s: "His palms split and healed and split again." },
-            { w: "bowstring", k: "활시위", s: "The bowstring took the skin off and drew blood." },
-            { w: "took the skin off (take)", k: "살갗을 벗겼다", s: "The bowstring took the skin off and drew blood." },
-            { w: "get tired of ~", k: "지겨워하다", s: "Being a fool, I suppose I never get tired of it." }
+            { w: "bowstring", k: "활시위", s: "The bowstring split his palms" },
+            { w: "healed and split again", k: "아물고 또 터졌다", s: "and they healed and split again" },
+            { w: "get tired of ~", k: "지겨워하다", s: "Being a fool, I suppose I never get tired of it." },
+            { w: "in secret", k: "아무도 모르게", s: "So the two trained in secret until the tenth year came." }
         ],
         "12-hunt.webp": [
             { w: "was held (hold)", k: "열렸다", s: "a great hunt was held on the Nangnang hills" },
@@ -959,7 +960,7 @@ const WORDS_KO = {
         { w: "기색", k: "마음이 겉으로 드러난 낌새.", s: "물러설 기색이 없었어요." },
         { w: "시뻘게지다", k: "몹시 붉어지다.", s: "임금의 얼굴이 시뻘게졌어요." },
         { w: "숨을 죽이다", k: "소리 나지 않게 조용히 하다.", s: "신하들이 숨을 죽였지요." },
-        { w: "절을 올리다", k: "웃어른께 절을 하다.", s: "공주는 그 자리에서 일어나 절을 올렸습니다." }
+        { w: "큰절", k: "무릎을 꿇고 엎드려 하는 가장 공손한 절.", s: "아버지께 바로 큰절을 올렸어요." }
     ],
     "07-leave.webp": [
         { w: "가마", k: "사람이 메고 가던 옛날 탈것.", s: "비단옷도 가마도 궁에 두고서요." },
@@ -994,7 +995,7 @@ const WORDS_KO = {
     ],
     "11-study.webp": [
         { w: "되풀이하다", k: "같은 것을 자꾸 다시 하다.", s: "온달은 하나를 가르치면 열 번을 되풀이했습니다." },
-        { w: "활시위", k: "활에 걸어 당기는 줄.", s: "활시위에 살갗이 벗겨져 피가 났어요." },
+        { w: "활시위", k: "활에 걸어 당기는 줄.", s: "활시위에 손바닥이 터지고 아물기를 몇 번이나 했지요." },
         { w: "아물다", k: "상처가 나아 붙다.", s: "손바닥이 터지고 아물기를 몇 번이나 했지요." },
         { w: "지겹다", k: "싫증이 나 지긋지긋하다.", s: "바보라서 그런지 지겨운 줄을 모릅니다." }
     ],

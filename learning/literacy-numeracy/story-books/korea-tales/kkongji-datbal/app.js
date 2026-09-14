@@ -65,7 +65,7 @@ const CHAPTERS = [
                     "마을 사람들이 웅성거리며 물러섰어요.",
                     "\"그놈에게 끌려간 사람이 돌아온 적은 없다.\"",
                     "아들은 그 자리에서 지게를 벗어 마당에 던졌지요.",
-                    "\"제가 가서 어머니를 찾아 모셔오겠습니다.\""
+                    "\"제가 가서 어머니를 찾아 모셔 오겠습니다.\""
                 ]
             },
             {
@@ -130,7 +130,7 @@ const CHAPTERS = [
                 left: [
                     "이튿날은 밭 매는 노인을 만났어요. 허리가 굽어 괭이질이 자꾸 멈췄지요.",
                     "밭고랑은 끝이 보이지 않았습니다.",
-                    "아들은 말없이 옆 고랑에 앉아 괭이를 들었어요.",
+                    "아들은 말없이 옆 고랑에 서서 괭이를 들었어요.",
                     "노인이 그런 아들을 흘끔 보고는 아무 말도 하지 않았답니다."
                 ],
                 right: [
@@ -419,7 +419,7 @@ const EN = {
                         "Next day he met an old man weeding a field.",
                         "His back was bent and the hoe kept stopping.",
                         "There was no end in sight to the furrows.",
-                        "The son sat down in the next furrow without a word and took a hoe.",
+                        "The son stood in the next furrow without a word and took up a hoe.",
                         "The old man glanced at him and said nothing at all."
                     ],
                     right: [
@@ -549,7 +549,7 @@ const EN = {
     ],
     quiz: [
         { q: "What is Five-Fathom Tail, Five-Fathom Beak?", choices: ["A fox with a long tail", "A very big bird", "A snake that lives in water"], answer: 1 },
-        { q: "What does a fathom measure?", choices: ["The length of one step", "The width of a hand span", "The length of two arms spread"], answer: 2 },
+        { q: "About how long is a fathom?", choices: ["A grown-up's two arms spread wide", "One step of a grown-up", "A grown-up's hand span"], answer: 0 },
         { q: "What did the son pick up on the hill?", choices: ["A broken branch", "A pair of straw shoes", "One black feather"], answer: 2 },
         { q: "How did the son help the old woman?", choices: ["Trod the washing for her", "Weeded a whole field", "Made her straw shoes"], answer: 0 },
         { q: "Where did the old man say to put the club?", choices: ["Into the thing's wing", "Into the nest", "Down the thing's throat"], answer: 2 },
@@ -764,7 +764,7 @@ const EN = {
 
 const QUIZ = [
     { q: "꽁지 닷발 주둥이 닷발은 무엇인가요?", choices: ["꼬리가 긴 여우", "아주 커다란 새", "물속에 사는 뱀"], answer: 1 },
-    { q: "발이라는 말은 무엇을 재는 단위인가요?", choices: ["한 걸음의 길이", "손 한 뼘의 길이", "두 팔을 벌린 길이"], answer: 2 },
+    { q: "발이라는 말은 얼마쯤의 길이를 말하는가요?", choices: ["어른의 두 팔을 벌린 길이", "어른의 한 걸음 길이", "어른의 손 한 뼘 길이"], answer: 0 },
     { q: "아들이 뒷산에서 주워 든 것은 무엇인가요?", choices: ["부러진 나뭇가지", "짚신 한 켤레", "시커먼 깃털 하나"], answer: 2 },
     { q: "아들은 할머니를 어떻게 도왔나요?", choices: ["빨래를 밟아 주었다", "밭 하나를 다 매 주었다", "짚신을 만들어 주었다"], answer: 0 },
     { q: "노인은 몽둥이를 어디에 넣으라고 했나요?", choices: ["그놈 날개에", "둥지 속에", "그놈 목구멍에"], answer: 2 },
