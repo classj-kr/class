@@ -766,7 +766,7 @@ const EN = {
         { q: 'What made Nils human again?', choices: ['He met the tomte again and begged forgiveness', 'For the first time he thought what he could do as a human', 'He went to Lapland and came safely home'], answer: 1 },
         { q: 'Once he was human, what was the first thing Nils asked of his father?', choices: ['Mother, Father, I am sorry', 'Where have I been all this time', 'Let those geese go'], answer: 2 },
         { q: 'What did Nils lose once he was human again?', choices: ['The gift of flying on the clouds', 'All the memories of his childhood', 'Understanding what animals say'], answer: 2 },
-        { q: 'Which of these is NOT a fair thing to say after reading this book?', wide: true, choices: ['Seeing how Nils grabbed Morten’s neck as he flew up because he was worrying about the winter, one goose counted for that much in that house.', 'Seeing how Nils told Akka he did not know whether he wanted to be human again, he had forgotten his home and his mother.', 'Seeing how the price of being human again was losing Morten, Nils had to choose between being human and keeping his friend.', 'Seeing how a boy who tormented animals rode on an animal’s back and saw his whole country, there are things you can see only once you are small.'], answer: 1 }
+        { q: 'Which of these is NOT a fair thing to say after reading this book?', wide: true, choices: ['Seeing how Nils grabbed Morten’s neck as he flew up because he was worrying about the winter, one goose counted for that much in that house.', 'Seeing how Nils told Akka he did not know whether he wanted to be human again, he had forgotten his home and his mother.', 'Seeing how Nils heard that to be human again he would have to make one of his travelling friends small in his place, he had to choose between being human and keeping his friends.', 'Seeing how a boy who tormented animals rode on an animal’s back and saw his whole country, there are things you can see only once you are small.'], answer: 1 }
     ]
 };
 
@@ -1300,7 +1300,7 @@ const QUIZ = [
     { q: "닐스가 다시 사람이 된 계기는 무엇입니까?", choices: ["톰테를 다시 만나 잘못했다고 빌었기 때문에", "사람이면 무엇을 할 수 있는지 처음 생각해서", "라플란드까지 갔다가 무사히 돌아왔기 때문에"], answer: 1 },
     { q: "사람이 된 닐스가 아버지에게 제일 먼저 한 부탁은 무엇입니까?", choices: ["어머니 아버지 잘못했어요", "저는 그동안 어디 있었어요", "저 거위들을 놓아 주세요"], answer: 2 },
     { q: "사람이 된 뒤 닐스가 잃은 것은 무엇입니까?", choices: ["구름을 타고 나는 재주", "어릴 때의 기억 전부", "짐승의 말을 알아듣는 것"], answer: 2 },
-    { q: "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?", wide: true, choices: ["닐스가 날아오르는 모르텐의 목을 붙잡은 것이 겨울 살림 걱정이었던 것을 보면, 그 집에서 거위 한 마리가 그만큼 컸어.", "닐스가 아카에게 사람으로 돌아가고 싶은지 모르겠다고 한 것을 보면, 집과 어머니를 잊어버린 거야.", "사람으로 돌아가는 값이 모르텐을 잃는 것이었던 것을 보면, 닐스는 사람이 되는 것과 벗을 지키는 것 사이에서 골라야 했네.", "짐승 괴롭히기를 일삼던 아이가 짐승 등에 얹혀 나라를 돌아본 것을 보면, 작아져야 보이는 것이 있구나."], answer: 1 }
+    { q: "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?", wide: true, choices: ["닐스가 날아오르는 모르텐의 목을 붙잡은 것이 겨울 살림 걱정이었던 것을 보면, 그 집에서 거위 한 마리가 그만큼 컸어.", "닐스가 아카에게 사람으로 돌아가고 싶은지 모르겠다고 한 것을 보면, 집과 어머니를 잊어버린 거야.", "사람이 되려면 함께 다닌 벗 하나를 대신 작게 만들어야 한다는 말을 들은 것을 보면, 닐스는 사람이 되는 것과 벗을 지키는 것 사이에서 골라야 했네.", "짐승 괴롭히기를 일삼던 아이가 짐승 등에 얹혀 나라를 돌아본 것을 보면, 작아져야 보이는 것이 있구나."], answer: 1 }
 ];
 
 // 선지를 세로로 쌓으니 한 쪽에 열여섯 문항이 다 들어가지 않는다. 몇 개씩 나눠 싣는다.
