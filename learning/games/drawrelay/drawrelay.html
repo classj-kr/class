@@ -544,6 +544,7 @@
     lobby = ClassroomMultiplayerLobby.create({
       gameId: GAME_ID,
       initialMode: 'guest',
+      autoCreate: false,
       getPlayerName: () => /^[가-힣]{2,6}$/.test(savedName) ? savedName : "",
       minPlayers: 4,
       maxPlayers: 8,
@@ -565,6 +566,8 @@
       onPlayerLeftDuringGame: () => showToast("플레이어가 나가 대기실로 돌아갑니다."),
       onAbort: showAbort
     }).mount();
+
+    if (savedName) $("hostTab").addEventListener("click", () => lobby.createRoom());
   }
 
   window.addEventListener("DOMContentLoaded", init);
