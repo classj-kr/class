@@ -97,7 +97,7 @@ test('keyboard models use compact per-note Ogg multisamples with recorded range 
   assert.match(app, /KEYBOARD_SAMPLE_CACHE_LIMIT = 112/);
   assert.match(app, /range: \[21, 108\]/);
   assert.match(app, /state\.family === "keyboard"/);
-  assert.match(app, /\(state\.keyboardOctave \+ 1\) \* 12/);
+  assert.match(app, /const first = state\.keyboardStartMidi/);
 });
 
 test('plucked keyboards decay without an ADSR sustain stage', () => {
@@ -591,19 +591,21 @@ test('sample playback preserves attacks with per-file onset detection', () => {
 });
 
 test('pitched ranges align computer keys and hide shortcuts outside the range', () => {
-  assert.match(app, /state\.family === "keyboard"[\s\S]*?state\.keyboardOctave = 4/);
+  assert.match(app, /state\.family === "keyboard"[\s\S]*?state\.keyboardStartMidi = 60/);
   assert.match(app, /start \+ Math\.round\(\(end - start\) \* 0\.2\)/);
   assert.match(app, /key\.dataset\.shortcut = unavailable \? ""/);
 });
 
-test('uses left and right arrow keys for octave changes', () => {
-  assert.match(html, /id="octaveDown"[^>]*>←<\/button>/);
-  assert.match(html, /id="octaveUp"[^>]*>→<\/button>/);
-  assert.doesNotMatch(html, /id="octaveDown"[^>]*>−<\/button>|id="octaveUp"[^>]*>＋<\/button>/);
+test('moves the computer keyboard by white keys and by octaves', () => {
+  assert.match(html, /id="octaveDown"[^>]*>−8<\/button>/);
+  assert.match(html, /id="octaveUp"[^>]*>\+8<\/button>/);
+  assert.match(html, /id="whiteKeyDown"[^>]*>←<\/button>/);
+  assert.match(html, /id="whiteKeyUp"[^>]*>→<\/button>/);
+  assert.match(app, /function moveKeyboardByWhiteKey\(direction\)/);
   assert.match(app, /function changeKeyboardOctave\(delta\)/);
-  assert.match(app, /event\.code === "ArrowLeft" \? -1 : event\.code === "ArrowRight" \? 1 : 0/);
-  assert.match(app, /octaveDirection && tag !== "INPUT"/);
-  assert.match(app, /changeKeyboardOctave\(-1\)/);
+  assert.match(app, /keyboardDirection && tag !== "INPUT"/);
+  assert.match(app, /if \(event\.shiftKey\) changeKeyboardOctave\(keyboardDirection\)/);
+  assert.match(app, /elements\.keyboard\.addEventListener\("contextmenu"/);
   assert.match(app, /changeKeyboardOctave\(1\)/);
 });
 

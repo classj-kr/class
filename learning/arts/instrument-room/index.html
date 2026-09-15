@@ -7,11 +7,11 @@
     <title>악기</title>
     <meta name="description" content="최적화된 콘서트 그랜드 멀티샘플과 다양한 악기를 바로 연주하는 디지털 악기실">
     <link rel="preload" href="instrument-worklet-v2.js?v=20260824-fast-adsr" as="script">
-    <link rel="stylesheet" href="styles.css?v=20260910-key-geometry-v3">
+    <link rel="stylesheet" href="styles.css?v=20260915-keyboard-range-v1">
     <script src="instrument-core.js?v=20260824-physical-room" defer></script>
     <script src="instrument-details.js?v=20260905-recorder-v1" defer></script>
     <script src="korean-percussion-data.js?v=20260901-ad2-map-v2" defer></script>
-    <script src="app.js?v=20260910-upward-level-v5" defer></script>
+    <script src="app.js?v=20260915-keyboard-range-v1" defer></script>
 </head>
 <body>
     <div class="room-glow" aria-hidden="true"></div>
@@ -168,10 +168,12 @@
                     <small id="noteReadout" class="screen-reader-only" aria-live="polite">준비됨</small>
                     <div id="rangeLegend" class="range-legend hidden"><i></i><span id="rangeReadout"></span></div>
                     <button id="keySizeButton" class="key-size-button" type="button" aria-haspopup="dialog"><span>건반 크기</span><b id="keySizeReadout">100%</b></button>
-                    <div id="octaveControls" class="octave-controls" aria-label="컴퓨터 키보드 옥타브">
-                        <button id="octaveDown" type="button" aria-label="한 옥타브 내리기 (왼쪽 화살표 키)">←</button>
-                        <span>키보드 옥타브 <b id="octaveReadout">4</b></span>
-                        <button id="octaveUp" type="button" aria-label="한 옥타브 올리기 (오른쪽 화살표 키)">→</button>
+                    <div id="keyboardRangeControls" class="keyboard-range-controls" aria-label="컴퓨터 자판 음역 이동">
+                        <button id="octaveDown" class="octave-jump" type="button" aria-label="한 옥타브 내리기 (Shift+왼쪽 화살표 키)">−8</button>
+                        <button id="whiteKeyDown" type="button" aria-label="흰건반 한 칸 내리기 (왼쪽 화살표 키)">←</button>
+                        <span>자판 <b id="keyboardRangeReadout">C4–F5</b></span>
+                        <button id="whiteKeyUp" type="button" aria-label="흰건반 한 칸 올리기 (오른쪽 화살표 키)">→</button>
+                        <button id="octaveUp" class="octave-jump" type="button" aria-label="한 옥타브 올리기 (Shift+오른쪽 화살표 키)">+8</button>
                     </div>
                 </div>
                 <div id="keyboardViewport" class="keyboard-viewport">

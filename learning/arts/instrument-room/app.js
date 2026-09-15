@@ -127,6 +127,8 @@
         ["Semicolon", 16, ";"], ["Quote", 17, "'"]
     ];
     const DISPLAY_RANGE = { start: 21, end: 108 };
+    const WHITE_PITCH_CLASSES = new Set([0, 2, 4, 5, 7, 9, 11]);
+    const COMPUTER_KEY_SPAN = COMPUTER_KEYS[COMPUTER_KEYS.length - 1][1];
     const PIANO_WHITE_KEY_MM = { width: 23.5, length: 150 };
     const PIANO_BLACK_KEY_MM = { width: 13.7, length: 95 };
     const WHITE_KEY_LENGTH_SCALE = 0.726;
@@ -384,7 +386,7 @@
         guitarChord: "C",
         articulation: "finger",
         stringPreset: "clean",
-        keyboardOctave: 4,
+        keyboardStartMidi: 60,
         keyboardScale: 1,
         pixelsPerMm: CSS_PX_PER_MM,
         screenCalibrated: false,
@@ -449,7 +451,7 @@
             "visualFamily", "visualModel", "studioStage", "instrumentArtwork", "instrumentLayers", "scaleGuide", "scaleBar", "scaleValue", "scaleNote", "classicalRender", "machineDeck", "malletRender", "stringCanvas", "pianoControls", "keyboardPatchControls", "stringControls", "classicalControls", "classicalArticulationButtons", "classicalArticulationHint", "guitarFxControls", "drumControls", "drumSystemLabel", "drumSystemDescription", "drumResonanceLabel", "drumToneLabel", "sustainButton",
             "articulationButtons", "articulationHint", "soundPresetGroup", "soundPresetButtons", "soundPresetHint", "physicalStringControls", "toneSlider", "toneOutput", "muteSlider", "muteOutput", "pickSlider", "pickOutput",
             "driveSlider", "driveOutput", "drumResonanceSlider", "drumResonanceOutput", "drumToneSlider", "drumToneOutput",
-            "noteReadout", "rangeLegend", "rangeReadout", "keySizeButton", "keySizeReadout", "octaveControls", "octaveReadout", "octaveDown", "octaveUp", "keyboardViewport",
+            "noteReadout", "rangeLegend", "rangeReadout", "keySizeButton", "keySizeReadout", "keyboardRangeControls", "keyboardRangeReadout", "octaveDown", "whiteKeyDown", "whiteKeyUp", "octaveUp", "keyboardViewport",
             "keyboard", "chordSurface", "chordPads", "drumPads", "toast", "instrumentInfoButton", "instrumentDetailModal", "instrumentDetailDialog", "detailFamily", "detailTitle", "detailSubtitle", "detailPrevious", "detailNext", "detailClose", "detailArtworkFrame", "detailArtwork", "detailArtworkLayers", "detailArtworkFallback", "detailPartPicker", "detailFacts", "detailArticle",
             "keySizeModal", "keySizeDialog", "calibrationCard", "calibrationSlider", "calibrationStatus", "calibrationReset", "calibrationSave", "keyScaleSlider", "keyScaleOutput"
         ].forEach(function (id) { elements[id] = document.getElementById(id); });
@@ -959,8 +961,8 @@
     function preloadConcertGrandRange() {
         const config = sampledPianoConfig();
         if (!config) return Promise.resolve([]);
-        const first = (state.keyboardOctave + 1) * 12;
-        const last = first + COMPUTER_KEYS[COMPUTER_KEYS.length - 1][1];
+        const first = state.keyboardStartMidi;
+        const last = first + COMPUTER_KEY_SPAN;
         const anchors = new Set();
         for (let midi = first; midi <= last; midi += 1) anchors.add(concertGrandAnchor(midi, config));
         const ready = Promise.allSettled(Array.from(anchors).map(loadConcertGrandSample));
@@ -2000,7 +2002,7 @@
         const layout = core.keyboardLayout(DISPLAY_RANGE.start, DISPLAY_RANGE.end);
         const whiteWidth = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--key-width")) || 48;
         const blackWidth = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--black-width")) || 31;
-        const shortcutByMidi = new Map(COMPUTER_KEYS.map(function (entry) { return [(state.keyboardOctave + 1) * 12 + entry[1], entry[2]]; }));
+        const shortcutByMidi = new Map(COMPUTER_KEYS.map(function (entry) { return [state.keyboardStartMidi + entry[1], entry[2]]; }));
         elements.keyboard.innerHTML = "";
         elements.keyboard.style.width = (layout.whiteCount * whiteWidth) + "px";
         layout.notes.forEach(function (note) {
@@ -2028,18 +2030,23 @@
             key.addEventListener("lostpointercapture", releasePointer);
             elements.keyboard.appendChild(key);
         });
-        elements.octaveReadout.textContent = state.keyboardOctave;
+        elements.keyboardRangeReadout.textContent = core.noteLabel(state.keyboardStartMidi) + "–" + core.noteLabel(state.keyboardStartMidi + COMPUTER_KEY_SPAN);
+        const minimum = minimumKeyboardStart();
+        const maximum = maximumKeyboardStart();
+        elements.whiteKeyDown.disabled = state.keyboardStartMidi <= minimum;
+        elements.octaveDown.disabled = state.keyboardStartMidi - 12 < minimum;
+        elements.whiteKeyUp.disabled = state.keyboardStartMidi >= maximum;
+        elements.octaveUp.disabled = state.keyboardStartMidi + 12 > maximum;
         elements.rangeLegend.classList.remove("hidden");
         elements.rangeReadout.textContent = "연주 음역 " + core.noteLabel(range.start) + "–" + core.noteLabel(range.end);
         window.requestAnimationFrame(centerKeyboardOnComputerOctave);
     }
 
     function centerKeyboardOnComputerOctave() {
-        const range = currentPitchRange();
-        const centerMidi = Math.round((range.start + range.end) / 2);
+        const centerMidi = Math.round(state.keyboardStartMidi + COMPUTER_KEY_SPAN / 2);
         const target = elements.keyboard.querySelector('[data-midi="' + centerMidi + '"]');
         if (!target) return;
-        const desired = target.offsetLeft - elements.keyboardViewport.clientWidth * .5;
+        const desired = target.offsetLeft + target.offsetWidth * .5 - elements.keyboardViewport.clientWidth * .5;
         elements.keyboardViewport.scrollLeft = Math.max(0, desired);
     }
 
@@ -2265,7 +2272,7 @@
         elements.chordSurface.classList.toggle("hidden", !chords);
         elements.drumPads.classList.toggle("hidden", !drums);
         elements.drumPads.style.display = drums ? "grid" : "";
-        elements.octaveControls.classList.toggle("hidden", drums || chords);
+        elements.keyboardRangeControls.classList.toggle("hidden", drums || chords);
         elements.rangeLegend.classList.toggle("hidden", drums || chords);
         elements.keySizeButton.classList.toggle("hidden", drums || chords);
     }
@@ -2284,23 +2291,23 @@
         elements.drumControls.classList.toggle("hidden", instrument !== "drums");
         elements.guitarModeSwitch.classList.toggle("hidden", instrument !== "guitar");
         if (instrument === "bass") {
-            state.keyboardOctave = 2;
+            state.keyboardStartMidi = 36;
             state.articulation = "finger";
             elements.toneSlider.value = 58; elements.muteSlider.value = 8; elements.pickSlider.value = 34; elements.driveSlider.value = 6;
         } else if (instrument === "guitar") {
-            state.keyboardOctave = 3;
+            state.keyboardStartMidi = 48;
             state.articulation = "pick";
             state.stringPreset = "clean";
             elements.toneSlider.value = 69; elements.muteSlider.value = 5; elements.pickSlider.value = 24; elements.driveSlider.value = 12;
-        } else if (instrument === "piano") state.keyboardOctave = 4;
+        } else if (instrument === "piano") state.keyboardStartMidi = 60;
         if (state.family === "keyboard") {
-            state.keyboardOctave = 4;
+            state.keyboardStartMidi = 60;
         } else if (state.currentModel && Array.isArray(state.currentModel.range)) {
             const start = state.currentModel.range[0];
             const end = state.currentModel.range[1];
             const target = start + Math.round((end - start) * 0.2);
             const cMidi = Math.max(0, Math.min(108, Math.round(target / 12) * 12));
-            state.keyboardOctave = Math.max(0, Math.min(7, Math.round(cMidi / 12) - 1));
+            state.keyboardStartMidi = clampKeyboardStart(cMidi);
         }
         renderArticulations();
         syncRangeOutputs();
@@ -2341,12 +2348,43 @@
         updatePlaySurface();
     }
 
-    function changeKeyboardOctave(delta) {
-        const nextOctave = Math.max(0, Math.min(7, state.keyboardOctave + delta));
-        if (nextOctave === state.keyboardOctave) return;
-        state.keyboardOctave = nextOctave;
+    function isWhiteMidi(midi) {
+        return WHITE_PITCH_CLASSES.has(((midi % 12) + 12) % 12);
+    }
+
+    function minimumKeyboardStart() {
+        let midi = DISPLAY_RANGE.start;
+        while (!isWhiteMidi(midi)) midi += 1;
+        return midi;
+    }
+
+    function maximumKeyboardStart() {
+        let midi = DISPLAY_RANGE.end - COMPUTER_KEY_SPAN;
+        while (!isWhiteMidi(midi)) midi -= 1;
+        return midi;
+    }
+
+    function clampKeyboardStart(midi) {
+        return Math.max(minimumKeyboardStart(), Math.min(maximumKeyboardStart(), midi));
+    }
+
+    function setKeyboardStart(midi) {
+        const nextStart = clampKeyboardStart(midi);
+        if (nextStart === state.keyboardStartMidi) return;
+        allNotesOff();
+        state.keyboardStartMidi = nextStart;
         renderKeyboard();
         preloadConcertGrandRange();
+    }
+
+    function moveKeyboardByWhiteKey(direction) {
+        let nextStart = state.keyboardStartMidi + direction;
+        while (nextStart >= minimumKeyboardStart() && nextStart <= maximumKeyboardStart() && !isWhiteMidi(nextStart)) nextStart += direction;
+        setKeyboardStart(nextStart);
+    }
+
+    function changeKeyboardOctave(delta) {
+        setKeyboardStart(state.keyboardStartMidi + delta * 12);
     }
 
     function handleComputerKeyDown(event) {
@@ -2355,11 +2393,12 @@
         const tag = event.target && event.target.tagName;
         const textEntry = tag === "TEXTAREA" || tag === "SELECT" || (tag === "INPUT" && event.target.type !== "range");
         if (textEntry) return;
-        const octaveDirection = event.code === "ArrowLeft" ? -1 : event.code === "ArrowRight" ? 1 : 0;
+        const keyboardDirection = event.code === "ArrowLeft" ? -1 : event.code === "ArrowRight" ? 1 : 0;
         const octaveUnavailable = state.instrument === "drums" && !isPitchedPercussion() || state.instrument === "guitar" && state.guitarMode === "chords";
-        if (octaveDirection && tag !== "INPUT" && !octaveUnavailable && elements.keySizeModal.classList.contains("hidden")) {
+        if (keyboardDirection && tag !== "INPUT" && !octaveUnavailable && elements.keySizeModal.classList.contains("hidden")) {
             event.preventDefault();
-            changeKeyboardOctave(octaveDirection);
+            if (event.shiftKey) changeKeyboardOctave(keyboardDirection);
+            else moveKeyboardByWhiteKey(keyboardDirection);
             return;
         }
         if (event.code === "Space" && supportsPianoSustain()) {
@@ -2382,7 +2421,7 @@
         const mapping = COMPUTER_KEYS.find(function (item) { return item[0] === event.code; });
         if (!mapping) return;
         event.preventDefault();
-        const midi = (state.keyboardOctave + 1) * 12 + mapping[1];
+        const midi = state.keyboardStartMidi + mapping[1];
         if (!isPitchPlayable(midi)) {
             showToast("이 악기의 연주 음역 밖이에요.");
             return;
@@ -2450,7 +2489,11 @@
         [elements.toneSlider, elements.muteSlider, elements.pickSlider, elements.driveSlider, elements.drumResonanceSlider, elements.drumToneSlider]
             .forEach(function (slider) { slider.addEventListener("input", syncRangeOutputs); });
         elements.octaveDown.addEventListener("click", function () { changeKeyboardOctave(-1); });
+        elements.whiteKeyDown.addEventListener("click", function () { moveKeyboardByWhiteKey(-1); });
+        elements.whiteKeyUp.addEventListener("click", function () { moveKeyboardByWhiteKey(1); });
         elements.octaveUp.addEventListener("click", function () { changeKeyboardOctave(1); });
+        elements.keyboard.addEventListener("contextmenu", function (event) { event.preventDefault(); });
+        elements.keyboard.addEventListener("dragstart", function (event) { event.preventDefault(); });
         document.addEventListener("keydown", handleComputerKeyDown);
         document.addEventListener("keyup", handleComputerKeyUp);
         window.addEventListener("blur", allNotesOff);
