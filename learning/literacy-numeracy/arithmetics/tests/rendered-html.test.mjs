@@ -28,6 +28,17 @@ async function render(pathname = "/") {
   );
 }
 
+test("keeps worksheet actions visible at Chromebook viewport widths", async () => {
+  const css = await readFile(new URL("../app/globals.css", import.meta.url), "utf8");
+  const responsiveToolbar = css.match(
+    /@media screen and \(min-width: 621px\) and \(max-width: 1100px\) \{[\s\S]*?\n\}/,
+  )?.[0] ?? "";
+
+  assert.match(responsiveToolbar, /\.counting-toolbar\s*\{[\s\S]*?grid-template-rows:\s*44px auto;/);
+  assert.match(responsiveToolbar, /\.counting-toolbar \.toolbar\s*\{[\s\S]*?flex-wrap:\s*wrap;/);
+  assert.match(responsiveToolbar, /\.counting-toolbar \.button\s*\{[\s\S]*?flex:\s*1 1 112px;/);
+});
+
 test("renders the fraction conversion practice product", async () => {
   const response = await render("/fraction");
   assert.equal(response.status, 200);

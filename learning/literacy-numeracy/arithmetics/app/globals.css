@@ -9095,9 +9095,10 @@ main {
   justify-content: flex-end;
 }
 
-/* Keep every worksheet action reachable on iPad portrait without squeezing the
-   A4 sheet or letting the toolbar overflow off-screen. */
-@media screen and (min-width: 621px) and (max-width: 840px) {
+/* Keep every worksheet action reachable on Chromebook and tablet viewports.
+   ChromeOS display scaling often leaves a CSS viewport below the desktop
+   layout width even when the physical screen is wider. */
+@media screen and (min-width: 621px) and (max-width: 1100px) {
   .counting-toolbar {
     height: auto;
     min-height: 104px;
@@ -9109,12 +9110,23 @@ main {
   .counting-toolbar .toolbar {
     grid-column: 1 / -1;
     width: 100%;
+    min-width: 0;
     flex-wrap: wrap;
+    justify-content: center;
   }
 
   .counting-toolbar .button {
+    flex: 1 1 112px;
     min-height: 44px;
     white-space: nowrap;
+  }
+
+  .counting-toolbar .print-control {
+    flex: 1 1 112px;
+  }
+
+  .counting-toolbar .print-control > .button {
+    width: 100%;
   }
 }
 
