@@ -154,7 +154,11 @@ function createVoting({ pool, requireUser, requireTeacher, requireDatabase, teac
       );
       rows = legacy.rows;
     }
-    return rows.map((row) => ({
+    return rows.sort((left, right) => String(left.student_number).localeCompare(
+      String(right.student_number),
+      "ko",
+      { numeric: true }
+    )).map((row) => ({
       studentNumber: row.student_number,
       name: row.roster_name,
       status: row.voted ? "voted" : row.joined ? "ready" : "absent"

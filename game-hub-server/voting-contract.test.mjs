@@ -53,6 +53,7 @@ test("results preserve candidate-number order and show only rank and vote totals
   assert.match(voteAppSource, /setTimeout\(\(\) => openTeacherRoom\(code\), 2000\)/);
   assert.match(votingSource, /async function classParticipants/);
   assert.match(votingSource, /participants = isOwner \? await classParticipants\(room\) : null/);
+  assert.match(votingSource, /localeCompare[\s\S]*numeric: true/);
   assert.match(votingSource, /CREATE TABLE IF NOT EXISTS vote_room_participants/);
   assert.match(votingSource, /ON CONFLICT \(room_id, voter_user_id\) DO UPDATE SET updated_at=NOW\(\)/);
   assert.match(voteAppSource, /title:"투표 완료"/);
