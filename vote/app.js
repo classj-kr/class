@@ -6,7 +6,7 @@
   const teacherMode = params.get("mode") === "teacher";
   let teacherRoomPollTimer = null;
 
-  function show(view) { views.forEach((item) => item.classList.toggle("hidden", item !== view)); if (view !== $("ballotView")) document.body.classList.remove("result-mode"); }
+  function show(view) { views.forEach((item) => item.classList.toggle("hidden", item !== view)); if (view !== $("ballotView")) document.body.classList.remove("result-mode", "waiting-mode"); }
   function message(element, text, error = false) { element.textContent = text || ""; element.classList.toggle("error", error); }
   async function api(path, options = {}) {
     const response = await fetch(path, { credentials:"same-origin", ...options,
@@ -100,11 +100,12 @@
 
   function renderRoom(room, owner = false) {
     document.body.classList.toggle("result-mode", room.status === "closed");
+    document.body.classList.toggle("waiting-mode", owner && room.status === "open");
     $("roomCodeLabel").textContent = room.code; $("ballotTitle").textContent = room.title; $("ballotPositions").replaceChildren();
     $("ballotStatus").textContent = ""; $("submitBallot").classList.toggle("hidden", owner || room.status !== "open" || room.hasVoted);
     if (owner) {
       $("ballotGuide").textContent = room.status === "open"
-        ? `방번호 ${room.code} · ${room.voterTotal == null ? `현재 ${room.voterCount}명 투표` : `우리 반 ${room.voterTotal}명 중 ${room.voterCount}명 투표`}`
+        ? (room.voterTotal == null ? `현재 ${room.voterCount}명 투표` : `우리 반 ${room.voterTotal}명 중 ${room.voterCount}명 투표`)
         : `방번호 ${room.code} · ${room.voterTotal == null ? `총 ${room.voterCount}명 투표` : `우리 반 ${room.voterTotal}명 중 ${room.voterCount}명 투표`} · 마감`;
       if (room.status === "open") {
         const statusCard = document.createElement("article"); statusCard.className = "ballot-card vote-status-card";
