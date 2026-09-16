@@ -11,16 +11,13 @@
   <main class="shell">
     <a class="back" href="/">← 메인</a>
     <section class="card" aria-labelledby="pageTitle">
-      <div class="icon" aria-hidden="true">#</div>
-      <p class="eyebrow">CLASS ROOM</p>
       <h1 id="pageTitle">방번호 입력</h1>
-      <p class="lead">선생님이 알려 준 번호를 입력하면 알맞은 활동으로 바로 이동해요.</p>
       <form id="roomForm">
-        <label for="roomCode">방번호</label>
+        <label class="sr-only" for="roomCode">방번호</label>
         <input id="roomCode" inputmode="numeric" pattern="[0-9]*" maxlength="4" autocomplete="one-time-code" placeholder="0000" autofocus>
-        <button type="submit">입장하기</button>
+        <button type="submit">입장</button>
       </form>
-      <p id="status" class="status" role="status">학급 순위전과 투표방을 자동으로 찾아드려요.</p>
+      <p id="status" class="status" role="status"></p>
     </section>
   </main>
   <script src="app.js"></script>
