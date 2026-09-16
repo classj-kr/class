@@ -97,6 +97,49 @@ function createVoting({ pool, requireUser, requireTeacher, requireDatabase, teac
     return Number(row.roster_count) || Number(row.legacy_count) || 0;
   }
 
+  async function classParticipants(room) {
+    if (room.academic_year == null || room.grade == null || room.class_number == null) return [];
+    const params = [room.school_id, room.academic_year, room.grade, room.class_number, room.id];
+    const roster = await pool.query(
+      `SELECT s.student_number::TEXT AS student_number, s.roster_name,
+              EXISTS (
+                SELECT 1 FROM vote_ballots b
+                JOIN classroom_users u ON u.id=b.voter_user_id
+                WHERE b.room_id=$5
+                  AND (b.voter_user_id=s.user_id
+                    OR (s.student_email IS NOT NULL AND LOWER(s.student_email)=LOWER(u.email)))
+              ) AS voted
+       FROM school_students s
+       WHERE s.school_id=$1 AND s.academic_year=$2 AND s.grade=$3 AND s.class_number=$4
+       ORDER BY s.student_number`,
+      params
+    );
+    let rows = roster.rows;
+    if (!rows.length) {
+      const legacy = await pool.query(
+        `SELECT s.student_number::TEXT AS student_number, s.roster_name,
+                EXISTS (
+                  SELECT 1 FROM vote_ballots b
+                  JOIN classroom_users u ON u.id=b.voter_user_id
+                  WHERE b.room_id=$5
+                    AND (b.voter_user_id=s.user_id
+                      OR (s.student_email IS NOT NULL AND LOWER(s.student_email)=LOWER(u.email)))
+                ) AS voted
+         FROM classroom_students s
+         JOIN classroom_classes c ON c.id=s.class_id
+         WHERE c.school_id=$1 AND c.academic_year=$2 AND c.grade=$3 AND c.class_number=$4
+         ORDER BY s.student_number`,
+        params
+      );
+      rows = legacy.rows;
+    }
+    return rows.map((row) => ({
+      studentNumber: row.student_number,
+      name: row.roster_name,
+      voted: Boolean(row.voted)
+    }));
+  }
+
   async function findRoom(code) {
     const result = await pool.query(
       `SELECT r.*, u.display_name AS creator_name FROM vote_rooms r
@@ -146,6 +189,8 @@ function createVoting({ pool, requireUser, requireTeacher, requireDatabase, teac
       [room.id]
     );
     const voterTotal = await eligibleVoterCount(room);
+    const isOwner = String(room.creator_user_id) === String(user.id);
+    const participants = isOwner ? await classParticipants(room) : null;
     const selected = new Map(ownVotes.rows.map((row) => [String(row.position_id), String(row.candidate_id)]));
     const positions = [];
     for (const row of rows.rows) {
@@ -163,6 +208,7 @@ function createVoting({ pool, requireUser, requireTeacher, requireDatabase, teac
       creatorName: room.creator_name, createdAt: room.created_at, closedAt: room.closed_at,
       voterCount: Number(voterCountResult.rows[0]?.voter_count || 0),
       voterTotal,
+      ...(participants ? { participants } : {}),
       hasVoted: positions.length > 0 && positions.every((position) => position.selectedCandidateId), positions
     };
   }

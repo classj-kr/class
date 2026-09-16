@@ -50,6 +50,9 @@ test("results preserve candidate-number order and show only rank and vote totals
   assert.match(voteAppSource, /현재 \$\{room\.voterCount\}명 투표/);
   assert.match(voteAppSource, /투표 마감하고 결과 보기/);
   assert.match(voteAppSource, /우리 반 \$\{room\.voterTotal\}명 중 \$\{room\.voterCount\}명/);
-  assert.match(voteAppSource, /className = "turnout-bar"/);
   assert.match(voteAppSource, /setTimeout\(\(\) => openTeacherRoom\(code\), 2000\)/);
+  assert.match(votingSource, /async function classParticipants/);
+  assert.match(votingSource, /participants = isOwner \? await classParticipants\(room\) : null/);
+  assert.match(voteAppSource, /title:"참여자"/);
+  assert.match(voteAppSource, /title:"미참여자"/);
 });
