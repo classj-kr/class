@@ -31,12 +31,14 @@ app.disable("x-powered-by");
 app.set("trust proxy", 1);
 const server = http.createServer(app);
 const wss = new WebSocketServer({ server });
+const rooms = new Map();
 const classroomPlatform = createClassroomPlatform({
   databaseUrl: process.env.DATABASE_URL,
   googleClientId: process.env.GOOGLE_CLIENT_ID,
   teacherEmails: process.env.TEACHER_EMAILS,
   adminEmails: process.env.ADMIN_EMAILS,
-  nodeEnv: process.env.NODE_ENV
+  nodeEnv: process.env.NODE_ENV,
+  isLiveQuizRaceCode: (code) => rooms.has(`quizrace:${code}`)
 });
 
 const PORT = Number(process.env.PORT) || 10000;
@@ -379,7 +381,7 @@ const MULTIPLAYER_CONTENT_PATHS = Object.freeze({
 
 const FINISHER_GAMES = new Set(["coinweighing", "hanoitower", "sphinx", "slidingpuzzle", "nonogram"]);
 
-app.use(["/admin", "/schooladmin", "/arithmetic", "/fraction", "/api/arithmetic-race", "/classtools", "/learning", "/learn", "/notice", "/teacher"], classroomPlatform.requireSiteAccess);
+app.use(["/admin", "/schooladmin", "/arithmetic", "/fraction", "/api/arithmetic-race", "/classtools", "/learning", "/learn", "/notice", "/teacher", "/room", "/vote"], classroomPlatform.requireSiteAccess);
 app.use("/arithmetic", proxyToLearningApp(ARITHMETIC_PORT));
 app.use("/fraction", proxyToLearningApp(ARITHMETIC_PORT));
 app.use("/api/arithmetic-race", proxyToLearningApp(ARITHMETIC_PORT));
@@ -441,7 +443,7 @@ for (const [route, file] of [
   app.get(route, (req, res, next) => sendSiteHtml(req, res, path.join(SITE_ROOT, file), next));
 }
 
-const CLEAN_HTML_ROOTS = ["/admin", "/classboard", "/schooladmin", "/classtools", "/learning", "/notice", "/teacher"];
+const CLEAN_HTML_ROOTS = ["/admin", "/classboard", "/schooladmin", "/classtools", "/learning", "/notice", "/teacher", "/room", "/vote"];
 app.use((req, res, next) => {
   if (req.method !== "GET" && req.method !== "HEAD") return next();
 
@@ -493,11 +495,10 @@ app.use((req, res, next) => {
   });
 });
 
-for (const directory of ["admin", "classboard", "classtools", "css", "js", "learning", "notice", "schooladmin", "teacher"]) {
+for (const directory of ["admin", "classboard", "classtools", "css", "js", "learning", "notice", "schooladmin", "teacher", "room", "vote"]) {
   app.use(`/${directory}`, express.static(path.join(SITE_ROOT, directory), staticAssetOptions));
 }
 
-const rooms = new Map();
 const museumClasses = new Map();
 const parkClasses = new Map();
 const roomSnapshotFingerprints = new Map();
@@ -1995,6 +1996,10 @@ wss.on("connection", (socket, request) => {
         return;
       }
       if (existingRoom) {
+        safeSend(socket, { type: "ROOM_EXISTS", gameId, roomCode });
+        return;
+      }
+      if (gameId === "quizrace" && await classroomPlatform.hasVotingRoomCode(roomCode)) {
         safeSend(socket, { type: "ROOM_EXISTS", gameId, roomCode });
         return;
       }

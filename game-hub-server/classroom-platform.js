@@ -6,6 +6,7 @@ const { OAuth2Client } = require("google-auth-library");
 const { Pool } = require("pg");
 const { createReadingBank } = require("./reading-bank");
 const { createMetacognition } = require("./metacognition");
+const { createVoting } = require("./voting");
 
 const SESSION_COOKIE = "class_session";
 const GUEST_ACCESS_COOKIE = "class_guest_access";
@@ -1257,6 +1258,7 @@ function createClassroomPlatform(options = {}) {
       await pool.query("DELETE FROM multiplayer_room_snapshots WHERE expires_at <= NOW()");
       await readingBank.initialize();
       await metacognition.initialize();
+      await voting.initialize();
       databaseReady = true;
       initializationError = null;
       console.log("Classroom database is ready.");
@@ -1453,6 +1455,19 @@ function createClassroomPlatform(options = {}) {
     HttpError,
     asyncRoute
   });
+
+  const voting = createVoting({
+    pool,
+    requireUser,
+    requireTeacher,
+    requireDatabase,
+    teacherRegistration,
+    isLiveQuizRaceCode: options.isLiveQuizRaceCode,
+    HttpError,
+    asyncRoute
+  });
+
+  router.use("/vote", voting.router);
 
   // Every request under /learning, /admin, /classtools, etc. passes through
   // requireSiteAccess, which used to call getSiteAccessMode() fresh each
@@ -7903,7 +7918,8 @@ function createClassroomPlatform(options = {}) {
     saveFinisherRecord,
     saveMultiplayerRoomSnapshot,
     loadMultiplayerRoomSnapshot,
-    deleteMultiplayerRoomSnapshot
+    deleteMultiplayerRoomSnapshot,
+    hasVotingRoomCode: voting.hasRoomCode
   };
 }
 

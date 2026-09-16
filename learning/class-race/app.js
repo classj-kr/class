@@ -12,6 +12,8 @@
         resultScreen: document.getElementById("resultScreen"),
         joinPane: document.getElementById("joinPane"),
         createRaceLink: document.getElementById("createRaceLink"),
+        joinCode: document.getElementById("joinCode"),
+        joinButton: document.getElementById("joinBtn"),
         waitingPane: document.getElementById("waitingPane"),
         studentRoomCode: document.getElementById("studentRoomCode"),
         joinStatus: document.getElementById("joinStatus"),
@@ -403,6 +405,11 @@
         // 공용 대기실 스크립트가 참가 안내를 비우므로 여기서 다시 채운다.
         elements.joinStatus.textContent = "선생님이 알려 준 네 자리 학급 코드를 넣으세요.";
         revealCreateForTeacher();
+        const requestedRoom = new URLSearchParams(location.search).get("room")?.replace(/\D/g, "").slice(0, 4);
+        if (requestedRoom?.length === 4 && elements.joinCode && elements.joinButton) {
+            elements.joinCode.value = requestedRoom;
+            setTimeout(() => elements.joinButton.click(), 0);
+        }
     }
 
     elements.nextButton.addEventListener("click", goToNextQuestion);
