@@ -2,7 +2,7 @@ const express = require("express");
 
 const ROOM_CODE_LENGTH = 4;
 
-function createVoting({ pool, requireUser, requireTeacher, requireDatabase, teacherRegistration, isLiveQuizRaceCode, HttpError, asyncRoute }) {
+function createVoting({ pool, sessionUser, guestAccess, requireUser, requireTeacher, requireDatabase, teacherRegistration, isLiveQuizRaceCode, HttpError, asyncRoute }) {
   const router = express.Router();
 
   async function initialize() {
@@ -41,17 +41,31 @@ function createVoting({ pool, requireUser, requireTeacher, requireDatabase, teac
         room_id BIGINT NOT NULL REFERENCES vote_rooms(id) ON DELETE CASCADE,
         position_id BIGINT NOT NULL REFERENCES vote_positions(id) ON DELETE CASCADE,
         candidate_id BIGINT NOT NULL REFERENCES vote_candidates(id) ON DELETE CASCADE,
-        voter_user_id BIGINT NOT NULL REFERENCES classroom_users(id) ON DELETE CASCADE,
+        voter_user_id BIGINT REFERENCES classroom_users(id) ON DELETE CASCADE,
+        voter_key TEXT NOT NULL,
         created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
-        UNIQUE (room_id, position_id, voter_user_id)
+        UNIQUE (room_id, position_id, voter_key)
       )`,
+      `ALTER TABLE vote_ballots ADD COLUMN IF NOT EXISTS voter_key TEXT`,
+      `UPDATE vote_ballots SET voter_key='user:' || voter_user_id::TEXT WHERE voter_key IS NULL`,
+      `ALTER TABLE vote_ballots ALTER COLUMN voter_user_id DROP NOT NULL`,
+      `ALTER TABLE vote_ballots ALTER COLUMN voter_key SET NOT NULL`,
+      `ALTER TABLE vote_ballots DROP CONSTRAINT IF EXISTS vote_ballots_room_id_position_id_voter_user_id_key`,
+      `CREATE UNIQUE INDEX IF NOT EXISTS vote_ballots_voter_key_idx ON vote_ballots (room_id, position_id, voter_key)`,
       `CREATE TABLE IF NOT EXISTS vote_room_participants (
         room_id BIGINT NOT NULL REFERENCES vote_rooms(id) ON DELETE CASCADE,
-        voter_user_id BIGINT NOT NULL REFERENCES classroom_users(id) ON DELETE CASCADE,
+        voter_user_id BIGINT REFERENCES classroom_users(id) ON DELETE CASCADE,
+        voter_key TEXT NOT NULL,
         joined_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
         updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
-        PRIMARY KEY (room_id, voter_user_id)
+        PRIMARY KEY (room_id, voter_key)
       )`,
+      `ALTER TABLE vote_room_participants ADD COLUMN IF NOT EXISTS voter_key TEXT`,
+      `UPDATE vote_room_participants SET voter_key='user:' || voter_user_id::TEXT WHERE voter_key IS NULL`,
+      `ALTER TABLE vote_room_participants DROP CONSTRAINT IF EXISTS vote_room_participants_pkey`,
+      `ALTER TABLE vote_room_participants ALTER COLUMN voter_user_id DROP NOT NULL`,
+      `ALTER TABLE vote_room_participants ALTER COLUMN voter_key SET NOT NULL`,
+      `CREATE UNIQUE INDEX IF NOT EXISTS vote_room_participants_voter_key_idx ON vote_room_participants (room_id, voter_key)`,
       `CREATE INDEX IF NOT EXISTS vote_ballots_room_idx ON vote_ballots (room_id, candidate_id)`
     ]) await pool.query(statement);
   }
@@ -66,11 +80,11 @@ function createVoting({ pool, requireUser, requireTeacher, requireDatabase, teac
 
   async function studentScope(user) {
     const result = await pool.query(
-      `SELECT school_id, academic_year, grade, class_number FROM (
-         SELECT school_id, academic_year, grade, class_number, 1 AS priority FROM school_students
+      `SELECT school_id, academic_year, grade, class_number, voter_key FROM (
+         SELECT school_id, academic_year, grade, class_number, 'school:' || id::TEXT AS voter_key, 1 AS priority FROM school_students
          WHERE user_id = $1 OR (student_email IS NOT NULL AND LOWER(student_email) = LOWER($2))
          UNION ALL
-         SELECT c.school_id, c.academic_year, c.grade, c.class_number, 2 AS priority FROM classroom_students s
+         SELECT c.school_id, c.academic_year, c.grade, c.class_number, 'classroom:' || s.id::TEXT AS voter_key, 2 AS priority FROM classroom_students s
          JOIN classroom_classes c ON c.id = s.class_id
          WHERE s.user_id = $1 OR (s.student_email IS NOT NULL AND LOWER(s.student_email) = LOWER($2))
        ) memberships ORDER BY priority LIMIT 1`,
@@ -80,6 +94,43 @@ function createVoting({ pool, requireUser, requireTeacher, requireDatabase, teac
   }
 
   async function studentSchool(user) { return (await studentScope(user))?.school_id || null; }
+
+  async function votingActor(req) {
+    const user = await sessionUser(req);
+    if (user) return { user, guest: null };
+    const guest = guestAccess(req);
+    if (guest) return { user: null, guest };
+    throw new HttpError(401, "AUTH_REQUIRED", "학생 계정 또는 게스트로 먼저 들어와 주세요.");
+  }
+
+  async function guestScope(room, guest) {
+    if (room.academic_year == null || room.grade == null || room.class_number == null) return null;
+    const result = await pool.query(
+      `SELECT school_id, academic_year, grade, class_number, voter_key FROM (
+         SELECT s.school_id, s.academic_year, s.grade, s.class_number,
+                'school:' || s.id::TEXT AS voter_key, 1 AS priority
+         FROM school_students s
+         WHERE s.school_id=$1 AND s.academic_year=$2 AND s.grade=$3 AND s.class_number=$4
+           AND s.roster_name=$5
+         UNION ALL
+         SELECT c.school_id, c.academic_year, c.grade, c.class_number,
+                'classroom:' || s.id::TEXT AS voter_key, 2 AS priority
+         FROM classroom_students s
+         JOIN classroom_classes c ON c.id=s.class_id
+         WHERE c.school_id=$1 AND c.academic_year=$2 AND c.grade=$3 AND c.class_number=$4
+           AND s.roster_name=$5
+       ) matches ORDER BY priority`,
+      [room.school_id, room.academic_year, room.grade, room.class_number, guest.name]
+    );
+    return result.rows[0] || null;
+  }
+
+  async function voterScope(actor, room) {
+    const scope = actor.user ? await studentScope(actor.user) : await guestScope(room, actor.guest);
+    if (!scope) throw new HttpError(403, "STUDENT_REQUIRED", "우리 반 명단에 있는 이름으로 들어와 주세요.");
+    if (!studentMatchesRoom(scope, room)) throw new HttpError(403, "CLASS_MISMATCH", "우리 반에서 만든 투표만 참여할 수 있습니다.");
+    return scope;
+  }
 
   function studentMatchesRoom(scope, room) {
     if (!scope || String(scope.school_id) !== String(room.school_id)) return false;
@@ -111,17 +162,13 @@ function createVoting({ pool, requireUser, requireTeacher, requireDatabase, teac
       `SELECT s.student_number::TEXT AS student_number, s.roster_name,
               EXISTS (
                 SELECT 1 FROM vote_room_participants rp
-                JOIN classroom_users u ON u.id=rp.voter_user_id
                 WHERE rp.room_id=$5
-                  AND (rp.voter_user_id=s.user_id
-                    OR (s.student_email IS NOT NULL AND LOWER(s.student_email)=LOWER(u.email)))
+                  AND rp.voter_key='school:' || s.id::TEXT
               ) AS joined,
               EXISTS (
                 SELECT 1 FROM vote_ballots b
-                JOIN classroom_users u ON u.id=b.voter_user_id
                 WHERE b.room_id=$5
-                  AND (b.voter_user_id=s.user_id
-                    OR (s.student_email IS NOT NULL AND LOWER(s.student_email)=LOWER(u.email)))
+                  AND b.voter_key='school:' || s.id::TEXT
               ) AS voted
        FROM school_students s
        WHERE s.school_id=$1 AND s.academic_year=$2 AND s.grade=$3 AND s.class_number=$4
@@ -134,17 +181,13 @@ function createVoting({ pool, requireUser, requireTeacher, requireDatabase, teac
         `SELECT s.student_number::TEXT AS student_number, s.roster_name,
                 EXISTS (
                   SELECT 1 FROM vote_room_participants rp
-                  JOIN classroom_users u ON u.id=rp.voter_user_id
                   WHERE rp.room_id=$5
-                    AND (rp.voter_user_id=s.user_id
-                      OR (s.student_email IS NOT NULL AND LOWER(s.student_email)=LOWER(u.email)))
+                    AND rp.voter_key='classroom:' || s.id::TEXT
                 ) AS joined,
                 EXISTS (
                   SELECT 1 FROM vote_ballots b
-                  JOIN classroom_users u ON u.id=b.voter_user_id
                   WHERE b.room_id=$5
-                    AND (b.voter_user_id=s.user_id
-                      OR (s.student_email IS NOT NULL AND LOWER(s.student_email)=LOWER(u.email)))
+                    AND b.voter_key='classroom:' || s.id::TEXT
                 ) AS voted
          FROM classroom_students s
          JOIN classroom_classes c ON c.id=s.class_id
@@ -193,7 +236,7 @@ function createVoting({ pool, requireUser, requireTeacher, requireDatabase, teac
     return result.rowCount > 0;
   }
 
-  async function serializeRoom(room, user, includeResults) {
+  async function serializeRoom(room, actor, includeResults) {
     const rows = await pool.query(
       `SELECT p.id position_id, p.title position_title, c.id candidate_id, c.name candidate_name,
               COUNT(b.id)::INTEGER votes
@@ -204,17 +247,19 @@ function createVoting({ pool, requireUser, requireTeacher, requireDatabase, teac
        ORDER BY p.sort_order, p.id, c.sort_order, c.id`,
       [room.id]
     );
-    const ownVotes = await pool.query(
-      `SELECT position_id, candidate_id FROM vote_ballots WHERE room_id = $1 AND voter_user_id = $2`,
-      [room.id, user.id]
-    );
+    const ownVotes = actor.voterKey
+      ? await pool.query(
+        `SELECT position_id, candidate_id FROM vote_ballots WHERE room_id = $1 AND voter_key = $2`,
+        [room.id, actor.voterKey]
+      )
+      : { rows: [] };
     const voterCountResult = await pool.query(
-      `SELECT COUNT(DISTINCT voter_user_id)::INTEGER AS voter_count
+      `SELECT COUNT(DISTINCT voter_key)::INTEGER AS voter_count
        FROM vote_ballots WHERE room_id = $1`,
       [room.id]
     );
     const voterTotal = await eligibleVoterCount(room);
-    const isOwner = String(room.creator_user_id) === String(user.id);
+    const isOwner = actor.user && String(room.creator_user_id) === String(actor.user.id);
     const participants = isOwner ? await classParticipants(room) : null;
     const selected = new Map(ownVotes.rows.map((row) => [String(row.position_id), String(row.candidate_id)]));
     const positions = [];
@@ -240,14 +285,16 @@ function createVoting({ pool, requireUser, requireTeacher, requireDatabase, teac
 
   router.get("/me", asyncRoute(async (req, res) => {
     requireDatabase();
-    const user = await requireUser(req);
+    const actor = await votingActor(req);
+    if (!actor.user) return res.json({ name: actor.guest.name, isTeacher: false, isStudent: true, guest: true });
+    const user = actor.user;
     const [teacher, schoolId] = await Promise.all([teacherRegistration(user), studentSchool(user)]);
     res.json({ name: user.display_name, isTeacher: Boolean(teacher), isStudent: Boolean(schoolId) });
   }));
 
   router.get("/resolve/:code", asyncRoute(async (req, res) => {
     requireDatabase();
-    await requireUser(req);
+    await votingActor(req);
     const code = cleanCode(req.params.code);
     if (code.length !== ROOM_CODE_LENGTH) throw new HttpError(400, "INVALID_ROOM_CODE", "방번호 4자리를 입력해 주세요.");
     if (await hasQuizRaceCode(code)) return res.json({ type: "quizrace", href: `/learning/class-race/?room=${code}` });
@@ -310,7 +357,7 @@ function createVoting({ pool, requireUser, requireTeacher, requireDatabase, teac
         }
       }
       await client.query("COMMIT");
-      res.status(201).json({ room: await serializeRoom({ ...room, creator_name: user.display_name }, user, true) });
+      res.status(201).json({ room: await serializeRoom({ ...room, creator_name: user.display_name }, { user }, true) });
     } catch (error) {
       await client.query("ROLLBACK");
       throw error;
@@ -319,35 +366,33 @@ function createVoting({ pool, requireUser, requireTeacher, requireDatabase, teac
 
   router.get("/rooms/:code", asyncRoute(async (req, res) => {
     requireDatabase();
-    const user = await requireUser(req);
+    const actor = await votingActor(req);
     const code = cleanCode(req.params.code);
     if (code.length !== ROOM_CODE_LENGTH) throw new HttpError(400, "INVALID_ROOM_CODE", "방번호 4자리를 입력해 주세요.");
     const room = await findRoom(code);
     if (!room) throw new HttpError(404, "VOTE_ROOM_NOT_FOUND", "해당 방을 찾을 수 없습니다.");
-    const isOwner = String(room.creator_user_id) === String(user.id);
+    const isOwner = actor.user && String(room.creator_user_id) === String(actor.user.id);
     if (!isOwner) {
-      const scope = await studentScope(user);
-      if (!scope) throw new HttpError(403, "STUDENT_REQUIRED", "학생 계정으로 참여해 주세요.");
-      if (!studentMatchesRoom(scope, room)) throw new HttpError(403, "CLASS_MISMATCH", "우리 반에서 만든 투표만 참여할 수 있습니다.");
+      const scope = await voterScope(actor, room);
+      actor.voterKey = scope.voter_key;
       await pool.query(
-        `INSERT INTO vote_room_participants (room_id, voter_user_id)
-         VALUES ($1,$2)
-         ON CONFLICT (room_id, voter_user_id) DO UPDATE SET updated_at=NOW()`,
-        [room.id, user.id]
+        `INSERT INTO vote_room_participants (room_id, voter_user_id, voter_key)
+         VALUES ($1,$2,$3)
+         ON CONFLICT (room_id, voter_key) DO UPDATE SET updated_at=NOW()`,
+        [room.id, actor.user?.id || null, actor.voterKey]
       );
     }
-    res.json({ room: await serializeRoom(room, user, isOwner || room.status === "closed"), isOwner });
+    res.json({ room: await serializeRoom(room, actor, isOwner || room.status === "closed"), isOwner });
   }));
 
   router.post("/rooms/:code/ballots", asyncRoute(async (req, res) => {
     requireDatabase();
-    const user = await requireUser(req);
+    const actor = await votingActor(req);
     const room = await findRoom(cleanCode(req.params.code));
     if (!room) throw new HttpError(404, "VOTE_ROOM_NOT_FOUND", "해당 방을 찾을 수 없습니다.");
     if (room.status !== "open") throw new HttpError(409, "VOTE_ROOM_CLOSED", "마감된 투표입니다.");
-    const scope = await studentScope(user);
-    if (!scope) throw new HttpError(403, "STUDENT_REQUIRED", "학생 계정으로 참여해 주세요.");
-    if (!studentMatchesRoom(scope, room)) throw new HttpError(403, "CLASS_MISMATCH", "우리 반에서 만든 투표만 참여할 수 있습니다.");
+    const scope = await voterScope(actor, room);
+    actor.voterKey = scope.voter_key;
     const selections = (Array.isArray(req.body?.selections) ? req.body.selections : []).map((item) => ({
       positionId: parseId(item?.positionId), candidateId: parseId(item?.candidateId)
     }));
@@ -367,11 +412,11 @@ function createVoting({ pool, requireUser, requireTeacher, requireDatabase, teac
       await client.query("BEGIN");
       const lockedRoom = await client.query("SELECT status FROM vote_rooms WHERE id=$1 FOR UPDATE", [room.id]);
       if (lockedRoom.rows[0]?.status !== "open") throw new HttpError(409, "VOTE_ROOM_CLOSED", "마감된 투표입니다.");
-      const previous = await client.query(`SELECT 1 FROM vote_ballots WHERE room_id=$1 AND voter_user_id=$2 LIMIT 1`, [room.id, user.id]);
+      const previous = await client.query(`SELECT 1 FROM vote_ballots WHERE room_id=$1 AND voter_key=$2 LIMIT 1`, [room.id, actor.voterKey]);
       if (previous.rowCount) throw new HttpError(409, "ALREADY_VOTED", "이미 이 방에서 투표를 완료했습니다.");
       for (const selection of selections) {
-        await client.query(`INSERT INTO vote_ballots (room_id,position_id,candidate_id,voter_user_id) VALUES ($1,$2,$3,$4)`,
-          [room.id, selection.positionId, selection.candidateId, user.id]);
+        await client.query(`INSERT INTO vote_ballots (room_id,position_id,candidate_id,voter_user_id,voter_key) VALUES ($1,$2,$3,$4,$5)`,
+          [room.id, selection.positionId, selection.candidateId, actor.user?.id || null, actor.voterKey]);
       }
       await client.query("COMMIT");
       res.status(201).json({ ok: true });

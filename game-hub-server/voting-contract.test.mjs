@@ -31,7 +31,7 @@ test("voting is mounted, initialized, and served behind site access", () => {
 test("ballots require student membership and enforce one vote per position", () => {
   assert.match(votingSource, /STUDENT_REQUIRED/);
   assert.match(votingSource, /CLASS_MISMATCH/);
-  assert.match(votingSource, /UNIQUE \(room_id, position_id, voter_user_id\)/);
+  assert.match(votingSource, /UNIQUE \(room_id, position_id, voter_key\)/);
   assert.match(votingSource, /ALREADY_VOTED/);
   assert.match(votingSource, /INCOMPLETE_BALLOT/);
   assert.match(votingSource, /ROOM_CODE_LENGTH = 4/);
@@ -46,7 +46,7 @@ test("results preserve candidate-number order and show only rank and vote totals
   assert.match(voteAppSource, /기호 \$\{index \+ 1\}번/);
   assert.match(voteAppSource, /\$\{rank\}위 · \$\{candidate\.votes \|\| 0\}표/);
   assert.doesNotMatch(voteAppSource, /당선/);
-  assert.match(votingSource, /COUNT\(DISTINCT voter_user_id\)::INTEGER AS voter_count/);
+  assert.match(votingSource, /COUNT\(DISTINCT voter_key\)::INTEGER AS voter_count/);
   assert.match(voteAppSource, /현재 \$\{room\.voterCount\}명 투표/);
   assert.match(voteAppSource, /투표 마감하고 결과 보기/);
   assert.match(voteAppSource, /우리 반 \$\{room\.voterTotal\}명 중 \$\{room\.voterCount\}명/);
@@ -55,7 +55,9 @@ test("results preserve candidate-number order and show only rank and vote totals
   assert.match(votingSource, /participants = isOwner \? await classParticipants\(room\) : null/);
   assert.match(votingSource, /localeCompare[\s\S]*numeric: true/);
   assert.match(votingSource, /CREATE TABLE IF NOT EXISTS vote_room_participants/);
-  assert.match(votingSource, /ON CONFLICT \(room_id, voter_user_id\) DO UPDATE SET updated_at=NOW\(\)/);
+  assert.match(votingSource, /ON CONFLICT \(room_id, voter_key\) DO UPDATE SET updated_at=NOW\(\)/);
+  assert.match(votingSource, /const guest = guestAccess\(req\)/);
+  assert.match(votingSource, /async function guestScope/);
   assert.match(voteAppSource, /title:"투표 완료"/);
   assert.match(voteAppSource, /title:"준비"/);
   assert.match(voteAppSource, /title:"미참여"/);

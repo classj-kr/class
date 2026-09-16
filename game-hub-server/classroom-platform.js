@@ -1458,6 +1458,8 @@ function createClassroomPlatform(options = {}) {
 
   const voting = createVoting({
     pool,
+    sessionUser,
+    guestAccess,
     requireUser,
     requireTeacher,
     requireDatabase,
