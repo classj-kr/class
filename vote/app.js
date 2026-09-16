@@ -111,9 +111,13 @@
         const label = document.createElement("span"); label.textContent = room.voterTotal == null ? "현재 투표 완료" : `우리 반 ${room.voterTotal}명 중 ${room.voterCount}명 투표 완료`;
         const participantGrid = document.createElement("div"); participantGrid.className = "participant-grid";
         const participants = Array.isArray(room.participants) ? room.participants : [];
-        for (const group of [{ title:"참여자", rows:participants.filter((student) => student.voted) }, { title:"미참여자", rows:participants.filter((student) => !student.voted) }]) {
-          const column = document.createElement("section"); column.className = "participant-column";
-          const heading = document.createElement("h3"); heading.textContent = `${group.title} ${group.rows.length}명`;
+        for (const group of [
+          { title:"미참여", icon:"⚪", status:"absent", rows:participants.filter((student) => student.status === "absent") },
+          { title:"준비", icon:"🟡", status:"ready", rows:participants.filter((student) => student.status === "ready") },
+          { title:"투표 완료", icon:"🟢", status:"voted", rows:participants.filter((student) => student.status === "voted") }
+        ]) {
+          const column = document.createElement("section"); column.className = `participant-column is-${group.status}`;
+          const heading = document.createElement("h3"); heading.textContent = `${group.icon} ${group.title} ${group.rows.length}명`;
           const list = document.createElement("ul");
           if (!group.rows.length) { const empty = document.createElement("li"); empty.className = "participant-empty"; empty.textContent = "없음"; list.append(empty); }
           for (const student of group.rows) { const item = document.createElement("li"); item.textContent = `${student.studentNumber}번 ${student.name}`; list.append(item); }

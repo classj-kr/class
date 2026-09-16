@@ -45,6 +45,13 @@ function createVoting({ pool, requireUser, requireTeacher, requireDatabase, teac
         created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
         UNIQUE (room_id, position_id, voter_user_id)
       )`,
+      `CREATE TABLE IF NOT EXISTS vote_room_participants (
+        room_id BIGINT NOT NULL REFERENCES vote_rooms(id) ON DELETE CASCADE,
+        voter_user_id BIGINT NOT NULL REFERENCES classroom_users(id) ON DELETE CASCADE,
+        joined_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+        updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+        PRIMARY KEY (room_id, voter_user_id)
+      )`,
       `CREATE INDEX IF NOT EXISTS vote_ballots_room_idx ON vote_ballots (room_id, candidate_id)`
     ]) await pool.query(statement);
   }
@@ -103,6 +110,13 @@ function createVoting({ pool, requireUser, requireTeacher, requireDatabase, teac
     const roster = await pool.query(
       `SELECT s.student_number::TEXT AS student_number, s.roster_name,
               EXISTS (
+                SELECT 1 FROM vote_room_participants rp
+                JOIN classroom_users u ON u.id=rp.voter_user_id
+                WHERE rp.room_id=$5
+                  AND (rp.voter_user_id=s.user_id
+                    OR (s.student_email IS NOT NULL AND LOWER(s.student_email)=LOWER(u.email)))
+              ) AS joined,
+              EXISTS (
                 SELECT 1 FROM vote_ballots b
                 JOIN classroom_users u ON u.id=b.voter_user_id
                 WHERE b.room_id=$5
@@ -118,6 +132,13 @@ function createVoting({ pool, requireUser, requireTeacher, requireDatabase, teac
     if (!rows.length) {
       const legacy = await pool.query(
         `SELECT s.student_number::TEXT AS student_number, s.roster_name,
+                EXISTS (
+                  SELECT 1 FROM vote_room_participants rp
+                  JOIN classroom_users u ON u.id=rp.voter_user_id
+                  WHERE rp.room_id=$5
+                    AND (rp.voter_user_id=s.user_id
+                      OR (s.student_email IS NOT NULL AND LOWER(s.student_email)=LOWER(u.email)))
+                ) AS joined,
                 EXISTS (
                   SELECT 1 FROM vote_ballots b
                   JOIN classroom_users u ON u.id=b.voter_user_id
@@ -136,7 +157,7 @@ function createVoting({ pool, requireUser, requireTeacher, requireDatabase, teac
     return rows.map((row) => ({
       studentNumber: row.student_number,
       name: row.roster_name,
-      voted: Boolean(row.voted)
+      status: row.voted ? "voted" : row.joined ? "ready" : "absent"
     }));
   }
 
@@ -304,6 +325,12 @@ function createVoting({ pool, requireUser, requireTeacher, requireDatabase, teac
       const scope = await studentScope(user);
       if (!scope) throw new HttpError(403, "STUDENT_REQUIRED", "학생 계정으로 참여해 주세요.");
       if (!studentMatchesRoom(scope, room)) throw new HttpError(403, "CLASS_MISMATCH", "우리 반에서 만든 투표만 참여할 수 있습니다.");
+      await pool.query(
+        `INSERT INTO vote_room_participants (room_id, voter_user_id)
+         VALUES ($1,$2)
+         ON CONFLICT (room_id, voter_user_id) DO UPDATE SET updated_at=NOW()`,
+        [room.id, user.id]
+      );
     }
     res.json({ room: await serializeRoom(room, user, isOwner || room.status === "closed"), isOwner });
   }));
