@@ -23,6 +23,9 @@ test("voting is mounted, initialized, and served behind site access", () => {
   assert.match(platformSource, /router\.use\("\/vote", voting\.router\)/);
   assert.match(serverSource, /"\/room", "\/vote"/);
   assert.match(serverSource, /"room", "vote"/);
+  assert.match(platformSource, /requestPath === "\/room" \|\| requestPath\.startsWith\("\/room\/"\)/);
+  assert.match(platformSource, /requestPath === "\/vote" \|\| requestPath\.startsWith\("\/vote\/"\)/);
+  assert.match(platformSource, /requestPath === "\/learning\/class-race" \|\| requestPath\.startsWith\("\/learning\/class-race\/"\)/);
 });
 
 test("ballots require student membership and enforce one vote per position", () => {

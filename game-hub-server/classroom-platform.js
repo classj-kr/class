@@ -1800,7 +1800,14 @@ function createClassroomPlatform(options = {}) {
         // "/classtools/profile" *after* this middleware runs, so the browser's
         // follow-up request arrives here with the extension already stripped.
         // Both forms must be recognized or that redirect defeats this bypass.
-        const isAlwaysAllowed = requestPath === "/classtools/profile.html" || requestPath === "/classtools/profile";
+        const isAlwaysAllowed = requestPath === "/classtools/profile.html"
+          || requestPath === "/classtools/profile"
+          // 방번호 입구와 그 입구가 연결하는 두 활동은 메인에서 `always-open`으로
+          // 표시한다. 서버도 같은 예외를 알아야 학생을 다시 content=locked로
+          // 돌려보내지 않는다. 하위 CSS/JS 요청도 함께 허용한다.
+          || requestPath === "/room" || requestPath.startsWith("/room/")
+          || requestPath === "/vote" || requestPath.startsWith("/vote/")
+          || requestPath === "/learning/class-race" || requestPath.startsWith("/learning/class-race/");
         if (classId && requestPath && !isAlwaysAllowed) {
           const enabled = await pool.query(
             `SELECT 1 FROM classroom_content_enabled
