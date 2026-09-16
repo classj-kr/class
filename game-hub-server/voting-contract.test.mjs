@@ -61,4 +61,5 @@ test("results preserve candidate-number order and show only rank and vote totals
   assert.match(voteAppSource, /title:"투표 완료"/);
   assert.match(voteAppSource, /title:"준비"/);
   assert.match(voteAppSource, /title:"미참여"/);
+  assert.match(voteAppSource, /document\.body\.classList\.toggle\("result-mode", room\.status === "closed"\)/);
 });

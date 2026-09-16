@@ -6,7 +6,7 @@
   const teacherMode = params.get("mode") === "teacher";
   let teacherRoomPollTimer = null;
 
-  function show(view) { views.forEach((item) => item.classList.toggle("hidden", item !== view)); }
+  function show(view) { views.forEach((item) => item.classList.toggle("hidden", item !== view)); if (view !== $("ballotView")) document.body.classList.remove("result-mode"); }
   function message(element, text, error = false) { element.textContent = text || ""; element.classList.toggle("error", error); }
   async function api(path, options = {}) {
     const response = await fetch(path, { credentials:"same-origin", ...options,
@@ -99,6 +99,7 @@
   }
 
   function renderRoom(room, owner = false) {
+    document.body.classList.toggle("result-mode", room.status === "closed");
     $("roomCodeLabel").textContent = room.code; $("ballotTitle").textContent = room.title; $("ballotPositions").replaceChildren();
     $("ballotStatus").textContent = ""; $("submitBallot").classList.toggle("hidden", owner || room.status !== "open" || room.hasVoted);
     if (owner) {
