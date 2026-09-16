@@ -25,12 +25,9 @@
     </section>
 
     <section id="teacherView" class="hidden">
-      <div class="hero">
-        <h1>투표 만들기</h1>
-      </div>
       <form id="createForm" class="panel create-form">
         <label>투표 제목<input id="voteTitle" maxlength="80" placeholder="예: 2026학년도 전교 학생회 선거" required></label>
-        <div class="section-head"><h2>선출 항목</h2><button id="addPosition" class="secondary small" type="button">+ 항목 추가</button></div>
+        <div class="section-head actions-only"><button id="addPosition" class="secondary small" type="button">+ 항목 추가</button></div>
         <div id="positionList" class="position-list"></div>
         <button id="createButton" class="primary wide" type="submit">방 만들기</button>
         <p id="createStatus" class="status" role="status"></p>

@@ -14,7 +14,7 @@ label { display:grid; gap:8px; color:#ddd6fe; font-weight:800; }
 .primary,.secondary,.danger { border:0; border-radius:13px; padding:13px 18px; font-weight:900; color:white; }
 .primary { background:linear-gradient(135deg,#a78bfa,#7c3aed); box-shadow:0 10px 24px rgba(124,58,237,.3); } .primary:disabled { opacity:.5; cursor:not-allowed; }
 .secondary { background:#29314d; } .danger { background:#5f2531; } .small { padding:9px 13px; font-size:.9rem; } .wide { width:100%; min-height:55px; }
-.hero { margin-bottom:24px; } .create-form { display:grid; gap:24px; } .section-head { display:flex; align-items:center; justify-content:space-between; gap:14px; }
+.create-form { display:grid; gap:24px; } .section-head { display:flex; align-items:center; justify-content:space-between; gap:14px; } .section-head.actions-only { justify-content:flex-end; }
 .position-list { display:grid; gap:16px; } .position-editor { padding:20px; border:1px solid var(--line); border-radius:18px; background:rgba(9,13,26,.6); }
 .position-title-row { display:grid; grid-template-columns:1fr auto; align-items:end; gap:12px; } .candidate-inputs { display:grid; gap:9px; margin:16px 0 10px; }
 .candidate-row { display:grid; grid-template-columns:1fr 42px; gap:8px; } .candidate-row button { border:0; border-radius:10px; background:#3a2030; color:#fda4af; font-weight:900; }
