@@ -7,6 +7,7 @@ const path = require("node:path");
 const gamesRoot = path.resolve(__dirname, "..", "learning", "games");
 const expectedMultiplayerGames = [
     "avalon",
+    "baduk",
     "blokus",
     "clue",
     "codenames",
