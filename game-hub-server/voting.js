@@ -14,9 +14,15 @@ function createVoting({ pool, requireUser, requireTeacher, requireDatabase, teac
         school_id BIGINT NOT NULL REFERENCES classroom_schools(id),
         creator_user_id BIGINT NOT NULL REFERENCES classroom_users(id),
         status TEXT NOT NULL DEFAULT 'open' CHECK (status IN ('open', 'closed')),
+        academic_year INTEGER,
+        grade INTEGER,
+        class_number INTEGER,
         created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
         closed_at TIMESTAMPTZ
       )`,
+      `ALTER TABLE vote_rooms ADD COLUMN IF NOT EXISTS academic_year INTEGER`,
+      `ALTER TABLE vote_rooms ADD COLUMN IF NOT EXISTS grade INTEGER`,
+      `ALTER TABLE vote_rooms ADD COLUMN IF NOT EXISTS class_number INTEGER`,
       `CREATE INDEX IF NOT EXISTS vote_rooms_creator_idx ON vote_rooms (creator_user_id, created_at DESC)`,
       `CREATE TABLE IF NOT EXISTS vote_positions (
         id BIGSERIAL PRIMARY KEY,
@@ -51,19 +57,44 @@ function createVoting({ pool, requireUser, requireTeacher, requireDatabase, teac
     return Number.isSafeInteger(id) && id > 0 ? id : null;
   };
 
-  async function studentSchool(user) {
+  async function studentScope(user) {
     const result = await pool.query(
-      `SELECT school_id FROM (
-         SELECT school_id, 1 AS priority FROM school_students
+      `SELECT school_id, academic_year, grade, class_number FROM (
+         SELECT school_id, academic_year, grade, class_number, 1 AS priority FROM school_students
          WHERE user_id = $1 OR (student_email IS NOT NULL AND LOWER(student_email) = LOWER($2))
          UNION ALL
-         SELECT c.school_id, 2 AS priority FROM classroom_students s
+         SELECT c.school_id, c.academic_year, c.grade, c.class_number, 2 AS priority FROM classroom_students s
          JOIN classroom_classes c ON c.id = s.class_id
          WHERE s.user_id = $1 OR (s.student_email IS NOT NULL AND LOWER(s.student_email) = LOWER($2))
        ) memberships ORDER BY priority LIMIT 1`,
       [user.id, user.email || ""]
     );
-    return result.rows[0]?.school_id || null;
+    return result.rows[0] || null;
+  }
+
+  async function studentSchool(user) { return (await studentScope(user))?.school_id || null; }
+
+  function studentMatchesRoom(scope, room) {
+    if (!scope || String(scope.school_id) !== String(room.school_id)) return false;
+    if (room.academic_year == null || room.grade == null || room.class_number == null) return true;
+    return Number(scope.academic_year) === Number(room.academic_year)
+      && Number(scope.grade) === Number(room.grade)
+      && Number(scope.class_number) === Number(room.class_number);
+  }
+
+  async function eligibleVoterCount(room) {
+    if (room.academic_year == null || room.grade == null || room.class_number == null) return null;
+    const result = await pool.query(
+      `SELECT
+         (SELECT COUNT(*)::INTEGER FROM school_students s
+          WHERE s.school_id=$1 AND s.academic_year=$2 AND s.grade=$3 AND s.class_number=$4) AS roster_count,
+         (SELECT COUNT(*)::INTEGER FROM classroom_students s
+          JOIN classroom_classes c ON c.id=s.class_id
+          WHERE c.school_id=$1 AND c.academic_year=$2 AND c.grade=$3 AND c.class_number=$4) AS legacy_count`,
+      [room.school_id, room.academic_year, room.grade, room.class_number]
+    );
+    const row = result.rows[0] || {};
+    return Number(row.roster_count) || Number(row.legacy_count) || 0;
   }
 
   async function findRoom(code) {
@@ -109,6 +140,12 @@ function createVoting({ pool, requireUser, requireTeacher, requireDatabase, teac
       `SELECT position_id, candidate_id FROM vote_ballots WHERE room_id = $1 AND voter_user_id = $2`,
       [room.id, user.id]
     );
+    const voterCountResult = await pool.query(
+      `SELECT COUNT(DISTINCT voter_user_id)::INTEGER AS voter_count
+       FROM vote_ballots WHERE room_id = $1`,
+      [room.id]
+    );
+    const voterTotal = await eligibleVoterCount(room);
     const selected = new Map(ownVotes.rows.map((row) => [String(row.position_id), String(row.candidate_id)]));
     const positions = [];
     for (const row of rows.rows) {
@@ -124,6 +161,8 @@ function createVoting({ pool, requireUser, requireTeacher, requireDatabase, teac
     return {
       id: String(room.id), code: room.room_code.trim(), title: room.title, status: room.status,
       creatorName: room.creator_name, createdAt: room.created_at, closedAt: room.closed_at,
+      voterCount: Number(voterCountResult.rows[0]?.voter_count || 0),
+      voterTotal,
       hasVoted: positions.length > 0 && positions.every((position) => position.selectedCandidateId), positions
     };
   }
@@ -182,9 +221,9 @@ function createVoting({ pool, requireUser, requireTeacher, requireDatabase, teac
         const code = makeCode();
         if (await hasQuizRaceCode(code)) continue;
         const inserted = await client.query(
-          `INSERT INTO vote_rooms (room_code, title, school_id, creator_user_id) VALUES ($1,$2,$3,$4)
+          `INSERT INTO vote_rooms (room_code, title, school_id, creator_user_id, academic_year, grade, class_number) VALUES ($1,$2,$3,$4,$5,$6,$7)
            ON CONFLICT (room_code) DO NOTHING RETURNING *`,
-          [code, title, registration.school_id, user.id]
+          [code, title, registration.school_id, user.id, registration.academic_year, registration.grade, registration.class_number]
         );
         room = inserted.rows[0];
       }
@@ -216,9 +255,9 @@ function createVoting({ pool, requireUser, requireTeacher, requireDatabase, teac
     if (!room) throw new HttpError(404, "VOTE_ROOM_NOT_FOUND", "해당 방을 찾을 수 없습니다.");
     const isOwner = String(room.creator_user_id) === String(user.id);
     if (!isOwner) {
-      const schoolId = await studentSchool(user);
-      if (!schoolId) throw new HttpError(403, "STUDENT_REQUIRED", "학생 계정으로 참여해 주세요.");
-      if (String(schoolId) !== String(room.school_id)) throw new HttpError(403, "SCHOOL_MISMATCH", "우리 학교에서 만든 투표만 참여할 수 있습니다.");
+      const scope = await studentScope(user);
+      if (!scope) throw new HttpError(403, "STUDENT_REQUIRED", "학생 계정으로 참여해 주세요.");
+      if (!studentMatchesRoom(scope, room)) throw new HttpError(403, "CLASS_MISMATCH", "우리 반에서 만든 투표만 참여할 수 있습니다.");
     }
     res.json({ room: await serializeRoom(room, user, isOwner || room.status === "closed"), isOwner });
   }));
@@ -229,9 +268,9 @@ function createVoting({ pool, requireUser, requireTeacher, requireDatabase, teac
     const room = await findRoom(cleanCode(req.params.code));
     if (!room) throw new HttpError(404, "VOTE_ROOM_NOT_FOUND", "해당 방을 찾을 수 없습니다.");
     if (room.status !== "open") throw new HttpError(409, "VOTE_ROOM_CLOSED", "마감된 투표입니다.");
-    const schoolId = await studentSchool(user);
-    if (!schoolId) throw new HttpError(403, "STUDENT_REQUIRED", "학생 계정으로 참여해 주세요.");
-    if (String(schoolId) !== String(room.school_id)) throw new HttpError(403, "SCHOOL_MISMATCH", "우리 학교에서 만든 투표만 참여할 수 있습니다.");
+    const scope = await studentScope(user);
+    if (!scope) throw new HttpError(403, "STUDENT_REQUIRED", "학생 계정으로 참여해 주세요.");
+    if (!studentMatchesRoom(scope, room)) throw new HttpError(403, "CLASS_MISMATCH", "우리 반에서 만든 투표만 참여할 수 있습니다.");
     const selections = (Array.isArray(req.body?.selections) ? req.body.selections : []).map((item) => ({
       positionId: parseId(item?.positionId), candidateId: parseId(item?.candidateId)
     }));

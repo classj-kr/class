@@ -30,7 +30,7 @@ test("voting is mounted, initialized, and served behind site access", () => {
 
 test("ballots require student membership and enforce one vote per position", () => {
   assert.match(votingSource, /STUDENT_REQUIRED/);
-  assert.match(votingSource, /SCHOOL_MISMATCH/);
+  assert.match(votingSource, /CLASS_MISMATCH/);
   assert.match(votingSource, /UNIQUE \(room_id, position_id, voter_user_id\)/);
   assert.match(votingSource, /ALREADY_VOTED/);
   assert.match(votingSource, /INCOMPLETE_BALLOT/);
@@ -46,4 +46,10 @@ test("results preserve candidate-number order and show only rank and vote totals
   assert.match(voteAppSource, /기호 \$\{index \+ 1\}번/);
   assert.match(voteAppSource, /\$\{rank\}위 · \$\{candidate\.votes \|\| 0\}표/);
   assert.doesNotMatch(voteAppSource, /당선/);
+  assert.match(votingSource, /COUNT\(DISTINCT voter_user_id\)::INTEGER AS voter_count/);
+  assert.match(voteAppSource, /현재 \$\{room\.voterCount\}명 투표/);
+  assert.match(voteAppSource, /투표 마감하고 결과 보기/);
+  assert.match(voteAppSource, /우리 반 \$\{room\.voterTotal\}명 중 \$\{room\.voterCount\}명/);
+  assert.match(voteAppSource, /className = "turnout-bar"/);
+  assert.match(voteAppSource, /setTimeout\(\(\) => openTeacherRoom\(code\), 2000\)/);
 });

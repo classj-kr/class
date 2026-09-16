@@ -4,6 +4,7 @@
   const views = [$("loading"), $("joinView"), $("teacherView"), $("ballotView")];
   const params = new URLSearchParams(location.search);
   const teacherMode = params.get("mode") === "teacher";
+  let teacherRoomPollTimer = null;
 
   function show(view) { views.forEach((item) => item.classList.toggle("hidden", item !== view)); }
   function message(element, text, error = false) { element.textContent = text || ""; element.classList.toggle("error", error); }
@@ -69,12 +70,14 @@
   }
 
   async function openTeacherRoom(code) {
+    clearTimeout(teacherRoomPollTimer);
     show($("ballotView"));
-    try { const payload = await api(`/api/vote/rooms/${code}`); renderRoom(payload.room, true); }
+    try { const payload = await api(`/api/vote/rooms/${code}`); renderRoom(payload.room, true); if (payload.room.status === "open") teacherRoomPollTimer = setTimeout(() => openTeacherRoom(code), 2000); }
     catch (error) { message($("ballotStatus"), error.message, true); }
   }
 
   async function loadRooms() {
+    clearTimeout(teacherRoomPollTimer);
     const container = $("roomList"); container.innerHTML = '<p class="empty">투표방을 불러오는 중…</p>';
     try {
       const { rooms } = await api("/api/vote/rooms/mine"); container.replaceChildren();
@@ -99,8 +102,21 @@
     $("roomCodeLabel").textContent = room.code; $("ballotTitle").textContent = room.title; $("ballotPositions").replaceChildren();
     $("ballotStatus").textContent = ""; $("submitBallot").classList.toggle("hidden", owner || room.status !== "open" || room.hasVoted);
     if (owner) {
-      $("ballotGuide").textContent = `${room.status === "open" ? "진행 중" : "마감됨"} · 결과는 새로고침하면 갱신됩니다.`;
-      room.positions.forEach((position) => $("ballotPositions").append(resultBlock(position)));
+      $("ballotGuide").textContent = room.status === "open"
+        ? `방번호 ${room.code} · ${room.voterTotal == null ? `현재 ${room.voterCount}명 투표` : `우리 반 ${room.voterTotal}명 중 ${room.voterCount}명 투표`}`
+        : `방번호 ${room.code} · ${room.voterTotal == null ? `총 ${room.voterCount}명 투표` : `우리 반 ${room.voterTotal}명 중 ${room.voterCount}명 투표`} · 마감`;
+      if (room.status === "open") {
+        const statusCard = document.createElement("article"); statusCard.className = "ballot-card vote-status-card";
+        const count = document.createElement("strong"); count.textContent = room.voterTotal == null ? `${room.voterCount}명` : `${room.voterCount} / ${room.voterTotal}명`;
+        const label = document.createElement("span"); label.textContent = room.voterTotal == null ? "현재 투표 완료" : `우리 반 ${room.voterTotal}명 중 ${room.voterCount}명 투표 완료`;
+        const turnout = document.createElement("div"); turnout.className = "turnout-bar"; turnout.setAttribute("role", "progressbar"); turnout.setAttribute("aria-valuemin", "0"); turnout.setAttribute("aria-valuenow", String(room.voterCount)); if (room.voterTotal != null) turnout.setAttribute("aria-valuemax", String(room.voterTotal));
+        const fill = document.createElement("span"); fill.style.width = room.voterTotal > 0 ? `${Math.min(100, (room.voterCount / room.voterTotal) * 100)}%` : "0%"; turnout.append(fill);
+        const close = document.createElement("button"); close.type = "button"; close.className = "danger wide"; close.textContent = "투표 마감하고 결과 보기";
+        close.addEventListener("click", async () => { if (!confirm("이 투표를 마감하고 결과를 볼까요? 마감 후에는 새 표를 받을 수 없습니다.")) return; close.disabled = true; try { await api(`/api/vote/rooms/${room.id}/close`, { method:"POST" }); await openTeacherRoom(room.code); } catch (error) { message($("ballotStatus"), error.message, true); close.disabled = false; } });
+        statusCard.append(count, label, turnout, close); $("ballotPositions").append(statusCard);
+      } else {
+        room.positions.forEach((position) => $("ballotPositions").append(resultBlock(position)));
+      }
       const back = document.createElement("button"); back.type = "button"; back.className = "secondary wide"; back.textContent = "내 투표방 목록으로"; back.addEventListener("click", async () => { show($("teacherView")); await loadRooms(); }); $("ballotPositions").append(back); return;
     }
     if (room.hasVoted) { $("ballotGuide").textContent = "투표를 완료했습니다."; $("ballotPositions").innerHTML = '<div class="success"><h2>투표 완료</h2><p>소중한 한 표가 안전하게 제출되었습니다.</p></div>'; return; }
