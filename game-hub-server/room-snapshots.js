@@ -8,6 +8,7 @@ const TRANSIENT_ROOM_KEYS = new Set([
   "clients",
   "avalonTimer",
   "blokusTimer",
+  "chessTimer",
   "codenamesTimer",
   "drawrelayTimer",
   "expeditionTimer",

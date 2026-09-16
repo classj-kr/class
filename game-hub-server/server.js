@@ -13,6 +13,7 @@ const GemGuild = require("./gemguild");
 const CityChase = require("./citychase");
 const KingdomTrails = require("./kingdomtrails");
 const Blokus = require("./blokus");
+const Chess = require("./chess");
 const Honeycomb = require("./honeycomb");
 const DrawRelay = require("./drawrelay");
 const Expedition = require("./expedition");
@@ -315,6 +316,7 @@ const MAX_ROOM_PLAYERS = {
   setgame: 4,
   nimgame: 2,
   janggi: 2,
+  chess: 2,
   omok: 2,
   baduk: 2,
   connect6: 2,
@@ -350,6 +352,7 @@ const MULTIPLAYER_CONTENT_PATHS = Object.freeze({
   setgame: "/learning/games/setgame/setgame",
   nimgame: "/learning/games/nimgame/nimgame",
   janggi: "/learning/games/janggi/janggi",
+  chess: "/learning/games/chess/chess",
   omok: "/learning/games/omok/omok",
   baduk: "/learning/games/baduk/baduk",
   connect6: "/learning/games/connect6/connect6",
@@ -896,6 +899,40 @@ function scheduleBlokusTimeout(room) {
     blokusBroadcast(room);
   }, wait);
   room.blokusTimer.unref?.();
+}
+
+function chessBroadcast(room) {
+  if (!room?.chess) return;
+  const now = Date.now();
+  for (const [id, client] of room.clients) {
+    safeSend(client, {
+      type: "CHESS_STATE",
+      state: Chess.stateFor(room.chess, id, now)
+    });
+  }
+  scheduleChessTimeout(room);
+}
+
+function chessError(socket, message) {
+  safeSend(socket, { type: "CHESS_ERROR", message });
+}
+
+function scheduleChessTimeout(room) {
+  clearTimeout(room?.chessTimer);
+  const game = room?.chess;
+  if (!game || game.phase !== "playing" || !game.turnStartedAt || !game.position) return;
+  const remaining = game.clocks[game.position.turn];
+  if (!Number.isFinite(remaining)) return;
+  const expectedRevision = game.revision;
+  const wait = Math.max(50, game.turnStartedAt + remaining - Date.now());
+  room.chessTimer = setTimeout(() => {
+    if (rooms.get(roomKey(room.gameId, room.roomCode)) !== room) return;
+    if (game.phase !== "playing" || game.revision !== expectedRevision) return;
+    const result = Chess.timeout(game);
+    if (result.ok) chessBroadcast(room);
+    else scheduleChessTimeout(room);
+  }, wait);
+  room.chessTimer.unref?.();
 }
 
 function honeycombBroadcast(room) {
@@ -1976,6 +2013,7 @@ wss.on("connection", (socket, request) => {
         if (existingRoom.citychase) cityChaseBroadcast(existingRoom);
         if (existingRoom.kingdomtrails) kingdomTrailsBroadcast(existingRoom);
         if (existingRoom.blokus) blokusBroadcast(existingRoom);
+        if (existingRoom.chess) chessBroadcast(existingRoom);
         if (existingRoom.honeycomb) honeycombBroadcast(existingRoom);
         if (existingRoom.drawrelay) drawRelayBroadcast(existingRoom);
         if (existingRoom.expedition) expeditionBroadcast(existingRoom);
@@ -2043,6 +2081,9 @@ wss.on("connection", (socket, request) => {
       }
       if (gameId === "blokus") {
         room.blokus = Blokus.createGame(playerId, cleanToken(message.name, 12) || "방장");
+      }
+      if (gameId === "chess") {
+        room.chess = Chess.createGame(playerId, cleanToken(message.name, 12) || "방장");
       }
       if (gameId === "honeycomb") {
         room.honeycomb = Honeycomb.createGame(playerId, cleanToken(message.name, 12) || "방장");
@@ -2135,6 +2176,7 @@ wss.on("connection", (socket, request) => {
       if (room.citychase) cityChaseBroadcast(room);
       if (room.kingdomtrails) kingdomTrailsBroadcast(room);
       if (room.blokus) blokusBroadcast(room);
+      if (room.chess) chessBroadcast(room);
       if (room.honeycomb) honeycombBroadcast(room);
       if (room.drawrelay) drawRelayBroadcast(room);
       if (room.expedition) expeditionBroadcast(room);
@@ -2193,6 +2235,7 @@ wss.on("connection", (socket, request) => {
         if (room.citychase) cityChaseBroadcast(room);
         if (room.kingdomtrails) kingdomTrailsBroadcast(room);
         if (room.blokus) blokusBroadcast(room);
+        if (room.chess) chessBroadcast(room);
         if (room.honeycomb) honeycombBroadcast(room);
         if (room.drawrelay) drawRelayBroadcast(room);
         if (room.expedition) expeditionBroadcast(room);
@@ -2317,6 +2360,16 @@ wss.on("connection", (socket, request) => {
           return;
         }
         Blokus.addPlayer(room.blokus, playerId, cleanToken(message.name, 12) || `플레이어 ${room.blokus.players.length + 1}`);
+      }
+      if (room.chess) {
+        if (room.chess.phase !== "lobby") {
+          room.clients.delete(playerId);
+          socket.meta.roomKey = null;
+          socket.meta.role = null;
+          safeSend(socket, { type: "ERROR", message: "이미 시작한 대국입니다." });
+          return;
+        }
+        Chess.addPlayer(room.chess, playerId, cleanToken(message.name, 12) || "손님");
       }
       if (room.honeycomb) {
         if (room.honeycomb.phase !== "lobby") {
@@ -2581,6 +2634,7 @@ wss.on("connection", (socket, request) => {
       if (room.citychase) cityChaseBroadcast(room);
       if (room.kingdomtrails) kingdomTrailsBroadcast(room);
       if (room.blokus) blokusBroadcast(room);
+      if (room.chess) chessBroadcast(room);
       if (room.honeycomb) honeycombBroadcast(room);
       if (room.drawrelay) drawRelayBroadcast(room);
       if (room.expedition) expeditionBroadcast(room);
@@ -3999,6 +4053,50 @@ wss.on("connection", (socket, request) => {
       return;
     }
 
+    if (type === "CHESS_ACTION") {
+      const room = socket.meta.roomKey ? rooms.get(socket.meta.roomKey) : null;
+      const game = room?.chess;
+      const action = cleanToken(message.action, 30);
+      if (!room || !game) {
+        chessError(socket, "체스 방에 참가하지 않았습니다.");
+        return;
+      }
+
+      let result;
+      if (action === "START") {
+        result = playerId === room.hostId
+          ? Chess.startGame(game, cleanToken(message.timeControl, 20))
+          : { ok: false, error: "방장만 대국을 시작할 수 있습니다." };
+      } else if (action === "MOVE") {
+        result = Chess.move(
+          game,
+          playerId,
+          cleanToken(message.from, 2),
+          cleanToken(message.to, 2),
+          cleanToken(message.promotion, 1)
+        );
+      } else if (action === "RESIGN") {
+        result = Chess.resign(game, playerId);
+      } else if (action === "OFFER_DRAW") {
+        result = Chess.offerDraw(game, playerId);
+      } else if (action === "ACCEPT_DRAW") {
+        result = Chess.answerDraw(game, playerId, true);
+      } else if (action === "DECLINE_DRAW") {
+        result = Chess.answerDraw(game, playerId, false);
+      } else if (action === "REMATCH") {
+        result = Chess.requestRematch(game, playerId);
+      } else {
+        result = { ok: false, error: "알 수 없는 행동입니다." };
+      }
+
+      if (!result.ok) {
+        chessError(socket, result.error || "행동을 처리하지 못했습니다.");
+        return;
+      }
+      chessBroadcast(room);
+      return;
+    }
+
     if (type === "BLOKUS_ACTION") {
       const room = socket.meta.roomKey ? rooms.get(socket.meta.roomKey) : null;
       const game = room?.blokus;
@@ -4292,6 +4390,13 @@ wss.on("connection", (socket, request) => {
           Blokus.resetToLobby(currentRoom.blokus, "플레이어가 나가 게임을 중단하고 대기실로 돌아왔습니다.");
         }
       }
+      if (currentRoom.chess) {
+        if (currentRoom.chess.phase === "playing") {
+          Chess.resign(currentRoom.chess, playerId);
+        } else if (currentRoom.chess.phase === "lobby") {
+          Chess.removePlayer(currentRoom.chess, playerId);
+        }
+      }
       if (currentRoom.honeycomb) {
         const gameWasActive = currentRoom.honeycomb.phase !== "lobby";
         Honeycomb.removePlayer(currentRoom.honeycomb, playerId);
@@ -4439,6 +4544,7 @@ wss.on("connection", (socket, request) => {
       if (currentRoom.citychase) cityChaseBroadcast(currentRoom);
       if (currentRoom.kingdomtrails) kingdomTrailsBroadcast(currentRoom);
       if (currentRoom.blokus) blokusBroadcast(currentRoom);
+      if (currentRoom.chess) chessBroadcast(currentRoom);
       if (currentRoom.honeycomb) honeycombBroadcast(currentRoom);
       if (currentRoom.drawrelay) drawRelayBroadcast(currentRoom);
       if (currentRoom.expedition) expeditionBroadcast(currentRoom);

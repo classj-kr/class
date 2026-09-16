@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>체스</title>
+<link rel="stylesheet" href="../../../assets/network/multiplayer-lobby.css?v=20260906">
+<link rel="stylesheet" href="../../../assets/device-game.css">
+<link rel="stylesheet" href="styles.css?v=20260916">
+<script src="../../../assets/network/game-network.js?v=20260821"></script>
+<script src="../../../assets/network/multiplayer-lobby.js?v=20260906b"></script>
+<script src="../../../assets/sound/music-control.js?v=20260910-click-cache-1" defer></script>
+<script src="chess-rules.js"></script>
+<script src="chess-ui.js" defer></script>
+</head>
+<body>
+<main class="shell">
+  <section id="missingScreen" class="hidden missing-screen">
+    <h1 class="title">체스</h1>
+    <div class="panel"><strong>이름이 없습니다.</strong><p>이름 변경은 메인 화면에서만 가능합니다.</p><button class="btn primary" type="button" onclick="location.href='../../../'">메인 화면으로</button></div>
+  </section>
+
+  <section id="lobbyScreen" class="hidden lobby-screen" data-multiplayer-lobby>
+    <h1 class="title">CLASS CHESS</h1>
+    <div class="subtitle">체스 · 2명</div>
+    <div class="player-name">PLAYER · <strong id="savedName">-</strong></div>
+    <div class="tabs mp-lobby-tabs">
+      <button id="hostTab" class="tab" type="button">CREATE ROOM</button>
+      <button id="joinTab" class="tab" type="button">JOIN ROOM</button>
+    </div>
+    <section id="hostPane" class="panel mp-lobby-card hidden">
+      <div id="roomCode" class="room-code">----</div>
+      <div id="hostStatus" class="status">방을 만드는 중입니다.</div>
+      <label class="setting-row"><span>대국 시간</span><select id="timeControl">
+        <option value="bullet">빠르게 · 1분 + 매 수 1초</option>
+        <option value="quick" selected>기본 · 3분 + 매 수 2초</option>
+        <option value="relaxed">여유롭게 · 5분 + 매 수 3초</option>
+        <option value="untimed">친선 · 시간제한 없음</option>
+      </select></label>
+    </section>
+    <section id="joinPane" class="panel mp-lobby-card hidden">
+      <div class="join-row mp-lobby-row"><input id="joinCode" class="code-input" inputmode="numeric" maxlength="4" placeholder="ROOM CODE · 4 DIGITS"><button id="joinBtn" class="btn primary" type="button">JOIN</button></div>
+      <div id="joinStatus" class="status"></div>
+      <p id="guestTimeLabel" class="guest-time">방장이 선택한 시간을 불러오는 중입니다.</p>
+    </section>
+    <div id="lobbyPlayers" class="player-list"></div>
+    <p id="lobbyGuide" class="lobby-guide">상대방을 기다리는 중입니다.</p>
+    <section class="chat-card lobby-chat">
+      <div class="section-title">채팅</div>
+      <div id="lobbyChatLog" class="chat-log" aria-live="polite"><div class="chat-empty">아직 메시지가 없습니다.</div></div>
+      <div class="chat-row"><input id="lobbyChatInput" class="chat-input" maxlength="100" autocomplete="off" placeholder="메시지 입력"><button class="btn chat-send" type="button" data-chat-source="lobbyChatInput">보내기</button></div>
+    </section>
+    <div class="lobby-actions">
+      <button id="startBtn" class="btn primary" type="button" disabled>WAITING FOR PLAYERS</button>
+      <button id="rulesBtnLobby" class="btn" type="button">HOW TO PLAY</button>
+      <button id="leaveBtn" class="btn" type="button">메인 화면으로</button>
+    </div>
+  </section>
+
+  <section id="gameScreen" class="hidden game-screen">
+    <div class="board-column">
+      <div id="topPlayer" class="player-bar opponent"></div>
+      <div class="board-wrap"><div id="board" class="chessboard" role="grid" aria-label="체스판"></div></div>
+      <div id="bottomPlayer" class="player-bar mine"></div>
+    </div>
+    <aside class="game-side">
+      <div class="turn-card"><span id="connectionText">● 연결됨</span><strong id="turnText">대국 준비 중</strong><small id="timeModeText">기본 · 3+2</small></div>
+      <div id="notice" class="notice" aria-live="polite">서버에서 대국을 준비하고 있습니다.</div>
+      <div id="drawResponse" class="draw-response hidden"><p>상대방이 무승부를 제안했습니다.</p><div><button id="acceptDrawBtn" class="btn primary" type="button">수락</button><button id="declineDrawBtn" class="btn" type="button">거절</button></div></div>
+      <section class="captured-section"><div class="capture-card"><span>내가 잡은 말</span><div id="myCaptures" class="captures"></div></div><div class="capture-card"><span>상대가 잡은 말</span><div id="opponentCaptures" class="captures"></div></div></section>
+      <section class="moves-card"><div class="section-title">기보</div><div id="moveList" class="move-list"><div class="move-empty">아직 둔 수가 없습니다.</div></div></section>
+      <details class="chat-card game-chat"><summary>채팅 <span id="chatBadge" class="badge hidden">0</span></summary><div id="gameChatLog" class="chat-log"><div class="chat-empty">아직 메시지가 없습니다.</div></div><div class="chat-row"><input id="gameChatInput" class="chat-input" maxlength="100" autocomplete="off" placeholder="메시지 입력"><button class="btn chat-send" type="button" data-chat-source="gameChatInput">보내기</button></div></details>
+      <div class="game-actions"><button id="drawBtn" class="btn" type="button">무승부 제안</button><button id="resignBtn" class="btn danger" type="button">기권</button><button id="rematchBtn" class="btn primary hidden" type="button">재대국</button><button id="rulesBtnGame" class="btn" type="button">규칙 보기</button></div>
+    </aside>
+  </section>
+</main>
+
+<section id="rulesModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="rulesTitle"><div class="modal-box"><h2 id="rulesTitle">체스, 이렇게 해요!</h2><div class="howto-steps"><div><b>1</b>내 말을 눌러요</div><div><b>2</b>점으로 갈 곳을 봐요</div><div><b>3</b>갈 곳을 눌러요</div></div><p class="rule-tip">파란 점은 이동할 자리, 빨간 테두리는 상대 말을 잡는 자리예요.</p><div class="piece-guide" id="pieceGuide"></div><ul><li><strong>백</strong>이 먼저 두고 백과 흑이 한 수씩 번갈아 둡니다.</li><li>킹이 잡힐 위험에 놓이면 <strong>체크</strong>입니다. 피할 방법이 없으면 체크메이트로 패배합니다.</li><li>킹과 룩을 한 번에 움직이는 캐슬링, 폰의 앙파상과 승격도 자동으로 안내합니다.</li><li><code>3+2</code>는 각자 3분으로 시작하고 한 수를 둘 때마다 2초를 받는다는 뜻입니다.</li></ul><button id="closeRulesBtn" class="btn primary" type="button">확인</button></div></section>
+
+<section id="promotionModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="promotionTitle"><div class="modal-box promotion-box"><h2 id="promotionTitle">어떤 말로 승격할까요?</h2><div id="promotionChoices" class="promotion-choices"></div><button id="cancelPromotionBtn" class="btn" type="button">취소</button></div></section>
+
+<section id="abortModal" class="modal hidden" role="dialog" aria-modal="true"><div class="modal-box"><h2 id="abortTitle">게임 중단</h2><p id="abortMessage"></p><button class="btn primary" type="button" onclick="location.reload()">처음부터</button></div></section>
+<div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
+</body>
+</html>

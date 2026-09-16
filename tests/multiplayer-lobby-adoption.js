@@ -9,6 +9,7 @@ const expectedMultiplayerGames = [
     "avalon",
     "baduk",
     "blokus",
+    "chess",
     "clue",
     "codenames",
     "connect6",
