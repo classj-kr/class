@@ -10,15 +10,13 @@
 <body>
   <header class="topbar">
     <a href="/" class="back">← 메인</a>
-    <strong>우리 학교 투표</strong>
     <a id="teacherHome" href="/classtools/" class="back hidden">교직원 메뉴</a>
   </header>
   <main class="shell">
     <section id="loading" class="panel center"><div class="loader"></div><p>투표 화면을 준비하고 있어요.</p></section>
 
     <section id="joinView" class="panel narrow hidden">
-      <p class="eyebrow">STUDENT VOTE</p><h1>투표방 입장</h1>
-      <p class="muted">선생님이 알려 준 4자리 투표 방번호를 입력하세요.</p>
+      <h1>투표방 입장</h1>
       <form id="joinForm" class="join-form">
         <input id="joinCode" inputmode="numeric" maxlength="4" autocomplete="one-time-code" placeholder="0000" aria-label="투표 방번호">
         <button class="primary" type="submit">투표방 열기</button>
@@ -28,7 +26,7 @@
 
     <section id="teacherView" class="hidden">
       <div class="hero">
-        <div><p class="eyebrow">TEACHER</p><h1>투표 만들기</h1><p class="muted">선출 항목과 후보자를 입력하면 학생용 방번호가 만들어집니다.</p></div>
+        <h1>투표 만들기</h1>
       </div>
       <form id="createForm" class="panel create-form">
         <label>투표 제목<input id="voteTitle" maxlength="80" placeholder="예: 2026학년도 전교 학생회 선거" required></label>

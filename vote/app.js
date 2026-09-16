@@ -89,6 +89,7 @@
         const actions = document.createElement("div"); actions.className = "room-actions";
         const results = document.createElement("button"); results.className = "secondary small"; results.type = "button"; results.textContent = "현황·결과 보기"; results.addEventListener("click", () => openTeacherRoom(room.code)); actions.append(results);
         if (room.status === "open") { const close = document.createElement("button"); close.className = "danger small"; close.type = "button"; close.textContent = "투표 마감"; close.addEventListener("click", async () => { if (!confirm("이 투표를 마감할까요? 마감 후에는 새 표를 받을 수 없습니다.")) return; await api(`/api/vote/rooms/${room.id}/close`, { method:"POST" }); await loadRooms(); }); actions.append(close); }
+        const remove = document.createElement("button"); remove.className = "danger small"; remove.type = "button"; remove.textContent = "삭제"; remove.addEventListener("click", async () => { if (!confirm(`'${room.title}' 투표방과 모든 투표 기록을 삭제할까요?`)) return; try { await api(`/api/vote/rooms/${room.id}`, { method:"DELETE" }); await loadRooms(); } catch (error) { alert(error.message); } }); actions.append(remove);
         card.append(head, actions); container.append(card);
       }
     } catch (error) { container.innerHTML = `<p class="empty">${error.message}</p>`; }

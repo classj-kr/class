@@ -36,6 +36,9 @@ test("ballots require student membership and enforce one vote per position", () 
   assert.match(votingSource, /INCOMPLETE_BALLOT/);
   assert.match(votingSource, /ROOM_CODE_LENGTH = 4/);
   assert.match(votingSource, /hasQuizRaceCode/);
+  assert.match(votingSource, /router\.delete\("\/rooms\/:roomId"/);
+  assert.match(votingSource, /DELETE FROM vote_rooms/);
+  assert.match(votingSource, /creator_user_id=\$2/);
 });
 
 test("results preserve candidate-number order and show only rank and vote totals", () => {

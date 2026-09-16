@@ -278,6 +278,20 @@ function createVoting({ pool, requireUser, requireTeacher, requireDatabase, teac
     res.json({ ok: true, code: result.rows[0].room_code.trim() });
   }));
 
+  router.delete("/rooms/:roomId", asyncRoute(async (req, res) => {
+    requireDatabase();
+    const user = await requireTeacher(req);
+    const roomId = parseId(req.params.roomId);
+    const result = roomId && await pool.query(
+      `DELETE FROM vote_rooms
+       WHERE id=$1 AND creator_user_id=$2
+       RETURNING room_code`,
+      [roomId, user.id]
+    );
+    if (!result?.rowCount) throw new HttpError(404, "VOTE_ROOM_NOT_FOUND", "내가 만든 투표방을 찾을 수 없습니다.");
+    res.json({ ok: true, code: result.rows[0].room_code.trim() });
+  }));
+
   return { router, initialize, hasRoomCode };
 }
 
