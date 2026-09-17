@@ -8,13 +8,13 @@ const teacher=fs.readFileSync(path.join(__dirname,'..','public','teacher.html'),
 const cities=JSON.parse(fs.readFileSync(path.join(__dirname,'..','data','catalog','original-cities.json'),'utf8'));
 const panama=cities.find(x=>x.name==='파나마시티');
 assert.ok(panama,'파나마 도시 데이터 누락');
-const radius=1.10;
+const radius=2.60;
 const dist=(a,b)=>Math.hypot(a[0]-b[0],a[1]-b[1]);
 const atlantic=[699,559];
 const pacific=panama.originalSeaEntryCells[0];
 assert.ok(panama.originalSeaEntryCells.every(p=>dist(atlantic,p)>radius),'대서양 쪽에서 파나마 항구 반경에 들어옴');
 assert.ok(dist(pacific,pacific)<=radius,'태평양 항구 셀 접근 실패');
-assert.match(server,/const SEA_PORT_TOUCH_RADIUS_TILES = 1\.10;/);
+assert.match(server,/const SEA_PORT_TOUCH_RADIUS_TILES = 2\.60;/);
 assert.match(server,/nearestOriginalCityAccess\(player\)/);
 assert.match(server,/nearAny\(place\.originalSeaEntryPoints, SEA_PORT_TOUCH_RADIUS_TILES\)/);
 assert.match(server,/const touchRadiusTiles = fromSea \? SEA_PORT_TOUCH_RADIUS_TILES : LAND_PORT_TOUCH_RADIUS_TILES;/);

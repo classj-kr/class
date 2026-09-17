@@ -13,6 +13,7 @@ const GeoMotion = require('./public/js/geo-motion.js');
 const ClassroomStore = require('./lib/classroom-store.js');
 const MissionCatalog = require('./lib/mission-catalog.js');
 const Fatigue = require('./lib/fatigue.js');
+const NavGrid = require('./lib/nav-grid.js');
 const ArrivalZones = require('./lib/arrival-zones.js');
 const CompletionRewards = require('./lib/completion-rewards.js');
 const FinalQuiz = require('./lib/final-quiz.js');
@@ -52,8 +53,8 @@ const PORT_RADIUS = 2.15 * TILE;
 const LAND_GATE_RADIUS = 2.25 * TILE;
 // 항구 행동은 도시 근처가 아니라 원작의 실제 해상/육상 출입 셀에 닿았을 때만 허용한다.
 // 파나마처럼 좁은 지협 반대편 바다에서 항구 명령이 뜨는 것을 막는다.
-const SEA_PORT_TOUCH_RADIUS_TILES = 1.10;
-const LAND_PORT_TOUCH_RADIUS_TILES = 1.25;
+const SEA_PORT_TOUCH_RADIUS_TILES = 2.60;
+const LAND_PORT_TOUCH_RADIUS_TILES = 2.00;
 const SHORE_TRANSFER_RADIUS_TILES = 2.15;
 const SHORE_RETURN_RADIUS_TILES = 1.65;
 const MAX_MISSION_TITLE = 50;
@@ -1123,7 +1124,7 @@ function nearbyCatalogPort(player) {
   };
 }
 
-function nearCityLandPoint(player, place, radiusTiles = 1.35) {
+function nearCityLandPoint(player, place, radiusTiles = 2.00) {
   if (!player || player.mode !== 'land' || !place?.isOriginalCity) return false;
   const points = [
     ...(Array.isArray(place.originalLandEntryPoints) ? place.originalLandEntryPoints : []),
@@ -1133,7 +1134,7 @@ function nearCityLandPoint(player, place, radiusTiles = 1.35) {
   return points.some((point) => distanceXY(player.x, player.y, point.x, point.y) <= radiusTiles * TILE);
 }
 
-function nearestCityEntrance(player, radiusTiles = 1.35) {
+function nearestCityEntrance(player, radiusTiles = 2.00) {
   if (!player || player.mode !== 'land') return null;
   let best = null;
   let bestDistance = Infinity;
@@ -1175,7 +1176,7 @@ function arrivedAtOriginalCity(player, place) {
   }
   if (player.mode === 'land') {
     // 도시 마커 자체는 통행 불가 타일일 수 있으므로 원작 육상 출입 경계에 닿으면 도착으로 인정한다.
-    return nearAny(place.originalLandEntryPoints, LAND_PORT_TOUCH_RADIUS_TILES) || nearAny(place.originalMarkerPoints, 1.35);
+    return nearAny(place.originalLandEntryPoints, LAND_PORT_TOUCH_RADIUS_TILES) || nearAny(place.originalMarkerPoints, 2.00);
   }
   return false;
 }
@@ -1204,6 +1205,73 @@ function wrapDx(toX, fromX) {
 
 function terrainAtPixel(x, y) {
   return Terrain.terrainAtPixel(world, x, y);
+}
+
+let navGrid = null;
+function navGridReady() {
+  if (!navGrid) navGrid = NavGrid.buildNavGrid((cx, cy) => Terrain.terrainAtCell(world, cx, cy).type, WORLD_W, WORLD_H);
+  return navGrid;
+}
+
+function navIndexAtPixel(grid, mode, x, y, lenient = false) {
+  const bx = Math.floor(wrapX(x) / TILE / grid.block);
+  const by = Math.floor(Math.max(0, Math.min(WORLD_PIXEL_H - 1, y)) / TILE / grid.block);
+  return NavGrid.nearestPassable(grid, mode, bx, by, 24, lenient);
+}
+
+// 길찾기 칸의 한가운데가 육지일 수 있으므로, 칸 안에서 배가 실제로 떠 있을 수 있는 타일에 붙인다.
+function navIndexToPoint(grid, index, mode) {
+  const bx = index % grid.width;
+  const by = Math.floor(index / grid.width);
+  const centerX = (bx * grid.block + grid.block / 2) * TILE;
+  const centerY = (by * grid.block + grid.block / 2) * TILE;
+  let best = null;
+  let bestDistance = Infinity;
+  for (let ty = 0; ty < grid.block; ty += 1) {
+    for (let tx = 0; tx < grid.block; tx += 1) {
+      const px = ((bx * grid.block + tx) + 0.5) * TILE;
+      const py = ((by * grid.block + ty) + 0.5) * TILE;
+      if (py < TILE || py > WORLD_PIXEL_H - TILE) continue;
+      const terrain = terrainAtPixel(wrapX(px), py);
+      const fits = mode === 'sea' ? terrain.type === 'sea' : terrain.type !== 'sea';
+      if (!fits) continue;
+      const d = Math.hypot(px - centerX, py - centerY);
+      if (d < bestDistance) { bestDistance = d; best = { x: wrapX(px), y: py }; }
+    }
+  }
+  return best || {
+    x: wrapX(centerX),
+    y: Math.max(TILE, Math.min(WORLD_PIXEL_H - TILE, centerY))
+  };
+}
+
+// 곶이나 강 하구에 막히지 않도록 목적지까지 돌아가는 길을 미리 찾아 둔다.
+function planRoute(p, destination) {
+  p.route = null;
+  p.slideSign = 0;
+  const grid = navGridReady();
+  // 먼저 온전히 열린 물길로 찾고, 좁은 해협처럼 그런 길이 없으면 해안을 스치는 길도 허용한다.
+  let path = null;
+  const strictStart = navIndexAtPixel(grid, p.mode, p.x, p.y);
+  const strictGoal = navIndexAtPixel(grid, p.mode, destination.x, destination.y);
+  if (strictStart >= 0 && strictGoal >= 0 && strictStart !== strictGoal) {
+    path = NavGrid.findPath(grid, p.mode, strictStart, strictGoal, false);
+  }
+  if (!path) {
+    const looseStart = navIndexAtPixel(grid, p.mode, p.x, p.y, true);
+    const looseGoal = navIndexAtPixel(grid, p.mode, destination.x, destination.y, true);
+    if (looseStart >= 0 && looseGoal >= 0 && looseStart !== looseGoal) {
+      path = NavGrid.findPath(grid, p.mode, looseStart, looseGoal, true);
+    }
+  }
+  if (!path || path.length <= 2) {
+    p.target = destination;
+    return;
+  }
+  const waypoints = path.slice(1).map((index) => navIndexToPoint(grid, index, p.mode));
+  waypoints[waypoints.length - 1] = destination;
+  p.target = waypoints.shift();
+  p.route = waypoints;
 }
 
 function isSeaPixel(x, y) {
@@ -1411,6 +1479,7 @@ function playerForSocket(socket) {
 function stopPlayer(p) {
   p.input = { up: false, down: false, left: false, right: false };
   p.target = null;
+  p.route = null;
   p.moving = false;
   p.speedKmh = 0;
 }
@@ -1709,7 +1778,7 @@ io.on('connection', (socket) => {
     const x = Number(payload?.x);
     const y = Number(payload?.y);
     if (!Number.isFinite(x) || !Number.isFinite(y)) return;
-    p.target = { x: wrapX(x), y: Math.max(TILE, Math.min(WORLD_PIXEL_H - TILE, y)) };
+    planRoute(p, { x: wrapX(x), y: Math.max(TILE, Math.min(WORLD_PIXEL_H - TILE, y)) });
     p.input = { up: false, down: false, left: false, right: false };
     p.lastInputAt = Date.now();
     p.lastSeen = Date.now();
@@ -2404,11 +2473,18 @@ function movePlayer(p, dt) {
       p.x, p.y, p.target.x, p.target.y, WORLD_PIXEL_W, WORLD_PIXEL_H
     );
     targetDistance = targetMotion.distancePixels;
-    if (targetDistance < 4) {
-      p.target = null;
-      p.moving = false;
-      p.speedKmh = 0;
-      return;
+    if (targetDistance < (p.route && p.route.length ? TILE * 1.2 : 4)) {
+      p.target = p.route && p.route.length ? p.route.shift() : null;
+      if (!p.target) {
+        p.route = null;
+        p.moving = false;
+        p.speedKmh = 0;
+        return;
+      }
+      const nextMotion = GeoMotion.initialDirection(p.x, p.y, p.target.x, p.target.y, WORLD_PIXEL_W, WORLD_PIXEL_H);
+      targetDistance = nextMotion.distancePixels;
+      vx = nextMotion.x;
+      vy = nextMotion.y;
     }
     vx = targetMotion.x;
     vy = targetMotion.y;
@@ -2463,11 +2539,52 @@ function movePlayer(p, dt) {
     oy,
     WORLD_PIXEL_H
   );
-  const { moved, blockedTerrain } = moveWithTerrainCollision(p, mapDelta.x, mapDelta.y);
+  let { moved, blockedTerrain } = moveWithTerrainCollision(p, mapDelta.x, mapDelta.y);
+
+  // 해안에 막히면 곧바로 멈추지 말고 해안선을 따라 한쪽으로 비껴 나아간다.
+  if (!moved && p.target) {
+    const distanceToTarget = () => GeoMotion.initialDirection(p.x, p.y, p.target.x, p.target.y, WORLD_PIXEL_W, WORLD_PIXEL_H).distancePixels;
+    const before = distanceToTarget();
+    const preferredSign = p.slideSign === -1 ? -1 : 1;
+    const angles = [];
+    for (const magnitude of [Math.PI / 6, Math.PI / 3, Math.PI / 2]) {
+      angles.push(magnitude * preferredSign, magnitude * -preferredSign);
+    }
+    for (const angle of angles) {
+      const startX = p.x;
+      const startY = p.y;
+      const cos = Math.cos(angle);
+      const sin = Math.sin(angle);
+      const slideDelta = GeoMotion.localDeltaToMap(
+        (vx * cos - vy * sin) * step,
+        (vx * sin + vy * cos) * step,
+        oy,
+        WORLD_PIXEL_H
+      );
+      const slide = moveWithTerrainCollision(p, slideDelta.x, slideDelta.y);
+      blockedTerrain = slide.blockedTerrain || blockedTerrain;
+      if (slide.moved && distanceToTarget() < before - 0.05) {
+        moved = true;
+        p.slideSign = angle >= 0 ? 1 : -1;
+        break;
+      }
+      p.x = startX;
+      p.y = startY;
+    }
+  }
+  if (moved && !blockedTerrain) p.slideSign = 0;
+
+  // 길을 따라가다 막히면 한 번은 길을 다시 찾아 본다.
+  if (!moved && p.route && p.route.length && Date.now() - (p.lastRoutePlanAt || 0) > 1200) {
+    const destination = p.route[p.route.length - 1];
+    p.lastRoutePlanAt = Date.now();
+    planRoute(p, destination);
+    return;
+  }
 
   if (!moved) {
     p.speedKmh = 0;
-    if (p.target) p.target = null;
+    if (p.target) { p.target = null; p.route = null; }
     if (p.mode === 'land' && blockedTerrain?.type === 'sea') setNotice(p, '탐험대는 바다를 건널 수 없습니다. 항구로 돌아가 배를 이용하세요.');
     else if (p.mode === 'sea' && blockedTerrain?.type !== 'sea') setNotice(p, '육지입니다. 가까운 항구를 통해 입항하세요.');
   }
@@ -2522,6 +2639,12 @@ setInterval(() => {
 }, 1000 / SNAPSHOT_HZ).unref();
 
 setInterval(() => store.saveNow(), 5000).unref();
+
+setTimeout(() => {
+  const startedAt = Date.now();
+  navGridReady();
+  console.log(`항로 격자 준비 완료 (${Date.now() - startedAt}ms)`);
+}, 50).unref();
 
 server.listen(PORT, '127.0.0.1', () => {
   console.log(`CDS95 실시간 학습 서버 v76 · 지역사·특별 도시사 도서관: http://localhost:${PORT}`);
