@@ -862,14 +862,13 @@
             setStatus("teacherPasteStatus", "붙여넣은 텍스트가 없습니다.", "error");
             return;
         }
-        const lines = text.split("\n").map(l => l.trim()).filter(Boolean);
-        const parsed = lines.map(line => {
-            const parts = line.split("\t").map(p => p.trim());
+        const parsed = parseTsv(text).map(cells => {
+            const parts = cells.map(p => p.trim());
             if (parts.length < 1) return null;
-            
+
             const name = parts[0].replace(/\s+/g, "");
             if (!name) return null;
-            const email = (parts[1] && parts[1].includes("@")) ? parts[1].trim() : "";
+            const email = (parts[1] && parts[1].includes("@")) ? cleanEmail(parts[1]) : "";
             const grade = parts[2] ? Number(parts[2]) : (parts[1] && !parts[1].includes("@") ? Number(parts[1]) : null);
             const classNumber = parts[3] ? Number(parts[3]) : (parts[2] && !parts[1]?.includes("@") ? Number(parts[2]) : null);
 
@@ -1071,11 +1070,45 @@
         hint.innerHTML = [...fixedLeftChips, ...categoryChips, ...fixedRightChips].join("");
     }
 
+    // 엑셀·구글시트는 줄바꿈·탭·따옴표가 든 셀을 "..."로 감싸서 복사한다.
+    // 줄/탭으로만 자르면 따옴표가 값에 남고 셀 안 줄바꿈이 행을 쪼갠다.
+    function parseTsv(text) {
+        const rows = [];
+        let row = [], field = "", i = 0;
+        const src = text.replace(/\r\n?/g, "\n");
+        while (i < src.length) {
+            if (field === "" && src[i] === '"') {
+                i++;
+                while (i < src.length) {
+                    if (src[i] === '"') {
+                        if (src[i + 1] === '"') { field += '"'; i += 2; continue; }
+                        i++;
+                        break;
+                    }
+                    field += src[i++];
+                }
+                // 닫는 따옴표 뒤에 남은 글자는 그대로 붙인다.
+                while (i < src.length && src[i] !== "\t" && src[i] !== "\n") field += src[i++];
+                continue;
+            }
+            const ch = src[i++];
+            if (ch === "\t") { row.push(field); field = ""; }
+            else if (ch === "\n") { row.push(field); rows.push(row); row = []; field = ""; }
+            else field += ch;
+        }
+        row.push(field);
+        rows.push(row);
+        return rows.filter(r => r.some(c => c.trim()));
+    }
+
+    // 계정 칸: 따옴표·공백·줄바꿈·NBSP·보이지 않는 문자를 모두 걷어 낸다.
+    const cleanEmail = (v) => String(v || "").replace(/["'\s ​-‍﻿]/g, "").toLowerCase();
+
     window.parsePaste = function() {
         const raw = document.getElementById("pasteInput").value.trim();
         if (!raw) return setStatus("pasteStatus", "붙여넣을 데이터가 없습니다.", "error");
 
-        const lines = raw.split("\n").map(l => l.replace(/\r/g, "").split("\t"));
+        const lines = parseTsv(raw);
         if (lines.length < 2) return setStatus("pasteStatus", "최소 헤더 1행 + 데이터 1행이 필요합니다.", "error");
 
         const headers = lines[0].map(h => h.trim().toLowerCase().replace(/\s/g, ""));
@@ -1135,9 +1168,9 @@
             studentNumber: String(num).replace(/\s+/g, ""),
             rosterName: name.replace(/\s+/g, ""),
             gender: get(genderI) === "여" ? "여" : "남",
-            studentEmail: get(seI).toLowerCase().replace(/\s+/g, "") || null,
-            guardian1Email: get(g1I).toLowerCase().replace(/\s+/g, "") || null,
-            guardian2Email: get(g2I).toLowerCase().replace(/\s+/g, "") || null,
+            studentEmail: cleanEmail(get(seI)) || null,
+            guardian1Email: cleanEmail(get(g1I)) || null,
+            guardian2Email: cleanEmail(get(g2I)) || null,
             // 소속은 전부 customFields 한 곳에만 담는다. clubs/afterschool/shuttle을
             // 따로 보내던 것은 서버가 저장하지 않는 값이었다.
             customFields
