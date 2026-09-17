@@ -474,7 +474,13 @@
     const hub = cylinder(1.1, 1.3, 1.1, 32, MAT.sandstone, park, [0, .55, 0]);
     const globe = sphere(.8, new THREE.MeshStandardMaterial({ color: 0x7a9f63, roughness: .62, metalness: .08 }), park, [0, 4.1, 0], 32, 20);
     globe.userData.isQuizTrigger = true; quizObjects.push(globe);
-    const quizBadge = makeBadge('큐레이터 퀴즈', 3.4, "CURATOR'S CHALLENGE"); quizBadge.position.set(0, 5.7, 0); quizBadge.userData.faceCamera = true; quizBadge.userData.isQuizTrigger = true; park.add(quizBadge); quizObjects.push(quizBadge);
+    const quizBadge = makeBadge('확인 문제', 3.4, 'LEARNING CHECK'); quizBadge.position.set(0, 5.7, 0); quizBadge.userData.faceCamera = true; quizBadge.userData.isQuizTrigger = true; park.add(quizBadge); quizObjects.push(quizBadge);
+    // 간판의 글자 주변을 눌러도 쉽게 열리도록 보이지 않는 여유 클릭 영역을 둔다.
+    const quizHitArea = new THREE.Mesh(
+      new THREE.PlaneGeometry(4.6, 2.1),
+      new THREE.MeshBasicMaterial({ transparent: true, opacity: 0, depthWrite: false, side: THREE.DoubleSide })
+    );
+    quizHitArea.position.copy(quizBadge.position); quizHitArea.userData.faceCamera = true; quizHitArea.userData.isQuizTrigger = true; park.add(quizHitArea); quizObjects.push(quizHitArea);
 
     ZONES.forEach(zone => {
       loadZoneModel(zone);
@@ -672,8 +678,9 @@
   addEventListener('keydown', e => { keys[e.code] = true; if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'Space'].includes(e.code)) e.preventDefault(); });
   addEventListener('keyup', e => { keys[e.code] = false; });
   canvas.addEventListener('pointerdown', e => { dragging = true; dragStart = { x: e.clientX, y: e.clientY, moved: false }; canvas.classList.add('dragging'); canvas.setPointerCapture(e.pointerId); });
-  canvas.addEventListener('pointermove', e => { if (!dragging) return; const dx = e.movementX || 0, dy = e.movementY || 0; if (Math.abs(dx) + Math.abs(dy) > 2) dragStart.moved = true; yaw -= dx * .0032; pitch = Math.max(-1.35, Math.min(1.35, pitch - dy * .0028)); updateCamera(); });
-  canvas.addEventListener('pointerup', e => { if (!dragging) return; dragging = false; canvas.classList.remove('dragging'); if (dragStart && !dragStart.moved) { raycaster.setFromCamera(centerPointer, camera); const quizHit = raycaster.intersectObjects(quizObjects, true)[0]; if (quizHit) { startQuiz(); } else { const hit = raycaster.intersectObjects(zoneObjects, true)[0]; if (hit) { let o = hit.object; while (o && !o.userData.zone) o = o.parent; if (o) openDetail(o.userData.zone); } } } dragStart = null; });
+  canvas.addEventListener('pointermove', e => { if (!dragging) return; const dx = e.movementX || 0, dy = e.movementY || 0; yaw -= dx * .0032; pitch = Math.max(-1.35, Math.min(1.35, pitch - dy * .0028)); updateCamera(); });
+  canvas.addEventListener('pointerup', e => { if (!dragging) return; dragging = false; canvas.classList.remove('dragging'); if (dragStart && Math.hypot(e.clientX - dragStart.x, e.clientY - dragStart.y) < 10) { const rect = canvas.getBoundingClientRect(); centerPointer.set((e.clientX - rect.left) / rect.width * 2 - 1, -((e.clientY - rect.top) / rect.height) * 2 + 1); raycaster.setFromCamera(centerPointer, camera); const quizHit = raycaster.intersectObjects(quizObjects, true)[0]; if (quizHit) { startQuiz(); } else { const hit = raycaster.intersectObjects(zoneObjects, true)[0]; if (hit) { let o = hit.object; while (o && !o.userData.zone) o = o.parent; if (o) openDetail(o.userData.zone); } } } centerPointer.set(0, 0); dragStart = null; });
+  canvas.addEventListener('pointercancel', () => { dragging = false; dragStart = null; canvas.classList.remove('dragging'); centerPointer.set(0, 0); });
   addEventListener('resize', () => { camera.aspect = innerWidth / innerHeight; camera.updateProjectionMatrix(); renderer.setSize(innerWidth, innerHeight, false); renderer.setPixelRatio(Math.min(devicePixelRatio, MAX_PIXEL_RATIO)); });
 
   document.getElementById('detail-button').addEventListener('click', () => openDetail(activeZone));

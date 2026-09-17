@@ -355,14 +355,14 @@
     g.fillStyle=grad;g.fillRect(0,0,c.width,c.height);
     g.strokeStyle=complete?'#d5b565':'#806735';g.lineWidth=3;g.strokeRect(28,28,c.width-56,c.height-56);
     g.strokeStyle='rgba(211,177,101,.23)';g.lineWidth=1;g.strokeRect(48,48,c.width-96,c.height-96);
-    g.textAlign='center';g.fillStyle='#b89954';g.font='700 22px Georgia';g.letterSpacing='8px';g.fillText("CURATOR'S FINAL WALL",700,142);
+    g.textAlign='center';g.fillStyle='#b89954';g.font='700 22px Georgia';g.letterSpacing='8px';g.fillText('GALLERY CHECK',700,142);
     g.fillStyle='#eadcbf';g.font='700 82px serif';g.fillText(`${room.number}. ${room.title}`,700,282);
     g.fillStyle='#9f917e';g.font='32px sans-serif';g.fillText(room.subtitle,700,346);
     g.beginPath();g.arc(700,486,72,0,Math.PI*2);g.strokeStyle=complete?'#e1c778':'#9a7a3b';g.lineWidth=3;g.stroke();
     g.beginPath();g.arc(700,486,59,0,Math.PI*2);g.strokeStyle='rgba(211,177,101,.3)';g.lineWidth=2;g.stroke();
     g.fillStyle=complete?'#f0d88d':'#c6a55c';g.font='700 56px Georgia';g.fillText(complete?'✓':'M',700,505);
-    g.fillStyle=complete?'#dbc27c':'#d0b577';g.font='700 27px sans-serif';g.fillText(complete?'관찰 미션 완료':'관람을 마무리하는 5가지 도전',700,628);
-    g.fillStyle='#8d806d';g.font='24px sans-serif';g.fillText(complete?'클릭하면 다시 도전할 수 있어요':'가까이에서 클릭해 어린이 큐레이터 도전을 시작하세요',700,681);
+    g.fillStyle=complete?'#dbc27c':'#d0b577';g.font='700 27px sans-serif';g.fillText(complete?'확인 문제 완료':'관람 내용을 확인하는 5문제',700,628);
+    g.fillStyle='#8d806d';g.font='24px sans-serif';g.fillText(complete?'클릭하면 다시 풀 수 있어요':'가까이에서 클릭해 확인 문제를 풀어 보세요',700,681);
     const t=new THREE.CanvasTexture(c);t.encoding=THREE.sRGBEncoding;t.anisotropy=Math.min(8,renderer.capabilities.getMaxAnisotropy());t.userData={finaleTexture:true};return t;
   }
 
@@ -490,16 +490,16 @@
       const randomizedChoices=shuffledCopy(choices);
       return {...item,options:randomizedChoices.map(choice=>choice.label),answer:randomizedChoices.findIndex(choice=>choice.correct)};
     }));
-    document.getElementById('finale-kicker').textContent=`GALLERY ${room.number} · CURATOR'S FINAL WALL`;
-    document.getElementById('finale-title').textContent=`${room.title} · 관람의 마지막 장면`;
+    document.getElementById('finale-kicker').textContent=`GALLERY ${room.number} · GALLERY CHECK`;
+    document.getElementById('finale-title').textContent=`${room.title} · 확인 문제`;
     document.getElementById('finale-intro').textContent=`${ROOM_QUIZZES[room.id].intro} 작품 설명에서 찾을 수 있는 핵심 관찰 문제 3개와 제목·화가 확인 문제 2개가 무작위 순서로 출제됩니다.`;
     renderFinaleQuestion();
   }
 
   function showFinale(room) {
     window.ClassGameSfx?.play('card');keysClear();
-    document.getElementById('finale-kicker').textContent=`GALLERY ${room.number} · CURATOR'S FINAL WALL`;
-    document.getElementById('finale-title').textContent=`${room.title} · 관람의 마지막 장면`;
+    document.getElementById('finale-kicker').textContent=`GALLERY ${room.number} · GALLERY CHECK`;
+    document.getElementById('finale-title').textContent=`${room.title} · 확인 문제`;
     document.getElementById('finale-intro').textContent=`${ROOM_QUIZZES[room.id].intro} 작품 설명에서 찾을 수 있는 핵심 관찰 문제 3개와 제목·화가 확인 문제 2개가 무작위 순서로 출제됩니다.`;
     finaleQuizRoom=room;
     if(readFinaleProgress()[room.id])showFinaleCompletion(room);
@@ -751,9 +751,9 @@
     nearest=hit?hit.object:null;prompt.hidden=!nearest;
     if(nearest){
       const finaleRoom=nearest.userData.finaleRoom;
-      promptKicker.textContent=finaleRoom?'전시실 피날레':'작품 가까이';
-      promptTitle.textContent=finaleRoom?`${finaleRoom.title} · 관찰 미션`:nearest.userData.work.title;
-      promptAction.textContent=finaleRoom?'클릭해서 큐레이터 도전하기':'클릭해서 감상하기';
+      promptKicker.textContent=finaleRoom?'전시실 확인':'작품 가까이';
+      promptTitle.textContent=finaleRoom?`${finaleRoom.title} · 확인 문제`:nearest.userData.work.title;
+      promptAction.textContent=finaleRoom?'클릭해서 확인 문제 풀기':'클릭해서 감상하기';
     }
     for(const entry of remotePeople.values())entry.group.visible=entry.room===rooms[activeRoom].id&&!nearest;
   }
