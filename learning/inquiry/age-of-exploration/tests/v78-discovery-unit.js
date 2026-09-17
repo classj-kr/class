@@ -18,6 +18,9 @@ for (const item of discoveries) {
   assert.ok(REACHES.has(item.reach), `${item.name} 닿는 방법 오류: ${item.reach}`);
   assert.ok(Number.isFinite(item.lat) && item.lat >= -90 && item.lat <= 90, `${item.name} 위도 오류`);
   assert.ok(Number.isFinite(item.lon) && item.lon >= -180 && item.lon <= 180, `${item.name} 경도 오류`);
+  // 시험 대비에 꼭 필요한 정보라 오늘날 어느 나라인지 빠짐없이 적는다.
+  assert.ok(String(item.todayCountry || '').length >= 2, `${item.name} 오늘날 나라 누락`);
+  assert.ok(!/[A-Za-z]/.test(item.todayCountry), `${item.name} 오늘날 나라에 로마자가 섞임`);
   for (const field of ['in1520', 'text']) {
     const value = String(item[field] || '');
     assert.ok(value.length >= 20, `${item.name} ${field} 설명이 너무 짧음`);
@@ -34,4 +37,5 @@ const byReach = {};
 for (const item of discoveries) byReach[item.reach] = (byReach[item.reach] || 0) + 1;
 assert.ok(byReach.sea > 0 && byReach.land > 0, '바다에서만·뭍에서만 닿는 곳이 모두 있어야 함');
 
-console.log(JSON.stringify({ ok: true, discoveries: discoveries.length, byReach }));
+const countries = new Set(discoveries.map((d) => d.todayCountry));
+console.log(JSON.stringify({ ok: true, discoveries: discoveries.length, byReach, todayCountries: countries.size }));

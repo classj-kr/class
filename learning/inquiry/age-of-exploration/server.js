@@ -1841,7 +1841,7 @@ io.on('connection', (socket) => {
       setNotice(p, `발견! ${item.name}`);
       io.to(`teacher:${p.roomCode}`).emit('teacherEvent', { type:'discovery', name:p.name, discovery:item.name, at:Date.now() });
     }
-    ack({ ok:true, first, discovery:{ id:item.id, name:item.name, kind:item.kind, in1520:item.in1520, text:item.text }, found:found.length, total:RESOLVED_DISCOVERIES.length, self:publicPlayer(p) });
+    ack({ ok:true, first, discovery:{ id:item.id, name:item.name, kind:item.kind, todayCountry:item.todayCountry, in1520:item.in1520, text:item.text }, found:found.length, total:RESOLVED_DISCOVERIES.length, self:publicPlayer(p) });
   });
 
   socket.on('stop', () => {

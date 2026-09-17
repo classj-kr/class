@@ -439,8 +439,9 @@ function cityBooks(city){
   const books2=CDS95LibraryHistory.contextualBooks(catalogCity,result);
   const foundIds=Array.isArray(serverSelf?.discoveryIds)?serverSelf.discoveryIds:[];
   if(foundIds.length){
-    const sections=foundIds.map(id=>discoveryCatalog.get(id)).filter(Boolean).map(d=>({heading:d.name,text:`${d.in1520}
-${d.text}`}));
+    const sections=foundIds.map(id=>discoveryCatalog.get(id)).filter(Boolean).map(d=>({heading:d.name,text:`${d.kind}${d.todayCountry?` · 오늘날 ${d.todayCountry}`:''}
+${d.text}
+1520년에는 ${d.in1520}`}));
     if(sections.length)books2.unshift({id:'local-discoveries',title:`내가 찾은 것 · ${sections.length}곳`,author:'항해 기록',period:'내 항해 기록',category:'발견 기록',contextKind:'discoveries',intro:`지금까지 배와 탐험대가 찾은 곳입니다. 모두 ${serverSelf?.discoveryTotal||sections.length}곳 가운데 ${sections.length}곳을 찾았습니다.`,sections});
   }
   return books2;
@@ -509,7 +510,7 @@ function applyModeUI(){
 }
 
 async function ungzipResponse(url){const response=await fetch(url);if(!response.ok)throw new Error('지도 파일을 받지 못했습니다.');if(!('DecompressionStream' in window))throw new Error('최신 Chrome이 필요합니다.');const ds=new DecompressionStream('gzip');return await new Response(response.body.pipeThrough(ds)).arrayBuffer()}
-Promise.all([ungzipResponse('/learn/world-voyage/assets/maps/world.cds.gz?v=58'),ungzipResponse('/learn/world-voyage/assets/maps/natural-earth-land-mask-v59.bin.gz?v=61'),naturalMapOverview.decode(),shipAtlas.decode(),windCloudAtlas.decode(),fetch('/learn/world-voyage/api/mission-catalog?v=80').then(r=>{if(!r.ok)throw new Error('도시 목록을 받지 못했습니다.');return r.json()}),fetch('/learn/world-voyage/data/library-books.json?v=79').then(r=>{if(!r.ok)throw new Error('도서관 자료를 받지 못했습니다.');return r.json()})]).then(([buf,landMask,_map,_s,_w,catalog,books])=>{world=new Uint16Array(buf);if(world.length!==WW*WH)throw new Error('지도 크기 불일치');UW3Terrain.setNaturalEarthLandMask(new Uint8Array(landMask));mapCities=(catalog.places||[]).filter(p=>p.isOriginalCity&&p.displayOnMap&&p.cityPoint);cityCatalogById=new Map((catalog.places||[]).filter(p=>p.isOriginalCity).map(p=>[p.id,p]));libraryCatalog=books||{books:[]};discoveryCatalog=new Map((catalog.discoveries||[]).map(d=>[d.id,d]));discoveryPoints=(catalog.discoveries||[]).map(d=>({...d,x:((d.lon+180)/360)*SPAN,y:((90-d.lat)/180)*MAP_H}));assetsReady=true;loading.remove()}).catch(err=>{loading.textContent='불러오기 실패: '+err.message;console.error(err)});
+Promise.all([ungzipResponse('/learn/world-voyage/assets/maps/world.cds.gz?v=58'),ungzipResponse('/learn/world-voyage/assets/maps/natural-earth-land-mask-v59.bin.gz?v=61'),naturalMapOverview.decode(),shipAtlas.decode(),windCloudAtlas.decode(),fetch('/learn/world-voyage/api/mission-catalog?v=81').then(r=>{if(!r.ok)throw new Error('도시 목록을 받지 못했습니다.');return r.json()}),fetch('/learn/world-voyage/data/library-books.json?v=79').then(r=>{if(!r.ok)throw new Error('도서관 자료를 받지 못했습니다.');return r.json()})]).then(([buf,landMask,_map,_s,_w,catalog,books])=>{world=new Uint16Array(buf);if(world.length!==WW*WH)throw new Error('지도 크기 불일치');UW3Terrain.setNaturalEarthLandMask(new Uint8Array(landMask));mapCities=(catalog.places||[]).filter(p=>p.isOriginalCity&&p.displayOnMap&&p.cityPoint);cityCatalogById=new Map((catalog.places||[]).filter(p=>p.isOriginalCity).map(p=>[p.id,p]));libraryCatalog=books||{books:[]};discoveryCatalog=new Map((catalog.discoveries||[]).map(d=>[d.id,d]));discoveryPoints=(catalog.discoveries||[]).map(d=>({...d,x:((d.lon+180)/360)*SPAN,y:((90-d.lat)/180)*MAP_H}));assetsReady=true;loading.remove()}).catch(err=>{loading.textContent='불러오기 실패: '+err.message;console.error(err)});
 
 socket.on('connect',()=>{net.textContent='● 서버 연결';net.className='good'});
 socket.on('disconnect',()=>{net.textContent='● 재연결 중';net.className='bad';startChoicePending=false;pendingStartChoice=null;startChoiceRollback=null;for(const card of missionPanel.querySelectorAll('.missionChoiceCard')){card.disabled=false;card.classList.remove('isSelecting')}if(awaitingStartChoice()){missionFeedback.className='bad';missionFeedback.textContent='서버 연결이 끊겼습니다. 재연결 후 다시 선택하세요.'}});
@@ -520,7 +521,7 @@ socket.on('missionCleared',()=>{applyMissionState(null,null,false);showToast('�
 socket.on('missionProgress',data=>{applyMissionState(data?.mission||activeMission,data?.progress||missionProgress,false)});
 socket.on('classControl',applyClassSettings);
 function showDiscovery(item,found,total,first){
-  discoveryName.textContent=`${first?'발견! ':''}${item.name}`;discoveryKind.textContent=[item.kind,item.in1520].filter(Boolean).join(' · ');discoveryText.textContent=item.text||'';
+  discoveryName.textContent=`${first?'발견! ':''}${item.name}`;discoveryKind.textContent=[item.kind,item.todayCountry?`오늘날 ${item.todayCountry}`:''].filter(Boolean).join(' · ');discoveryText.textContent=[item.text,item.in1520?`1520년에는 ${item.in1520}`:''].filter(Boolean).join('\n\n');
   discoveryCount.textContent=`지금까지 찾은 것 ${found}곳 / 모두 ${total}곳`;
   discoveryView.classList.add('show');clearKeys();
 }
