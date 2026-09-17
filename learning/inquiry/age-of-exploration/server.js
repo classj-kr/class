@@ -115,6 +115,34 @@ function defaultArrivalRadiusTiles(source) {
   return byCategory[source?.category] || (source?.access === 'port' ? 3.1 : 6);
 }
 
+const DISCOVERY_RADIUS_TILES = 3.2;
+const RESOLVED_DISCOVERIES = MissionCatalog.DISCOVERIES.map((item) => {
+  const cell = MissionCatalog.latLonToCell(item.lat, item.lon);
+  return { ...item, x: wrapX(cell.x * TILE), y: Math.max(TILE, Math.min(WORLD_PIXEL_H - TILE, cell.y * TILE)) };
+});
+
+function discoveryListFor(roomCode, studentName) {
+  const room = store.room(roomCode);
+  room.discoveries[studentName] = Array.isArray(room.discoveries[studentName]) ? room.discoveries[studentName] : [];
+  return room.discoveries[studentName];
+}
+
+// 배나 탐험대가 가까이 가면 그 자리의 유적·지형을 알려 준다.
+function updateDiscoveries(p) {
+  if (!p || (p.mode !== 'sea' && p.mode !== 'land') || p.transition) return;
+  const found = discoveryListFor(p.roomCode, p.name);
+  for (const item of RESOLVED_DISCOVERIES) {
+    if (item.reach !== 'any' && item.reach !== p.mode) continue;
+    if (found.includes(item.id)) continue;
+    if (distanceXY(p.x, p.y, item.x, item.y) > DISCOVERY_RADIUS_TILES * TILE) continue;
+    found.push(item.id);
+    store.scheduleSave();
+    setNotice(p, `발견! ${item.name}`);
+    io.to(p.id).emit('discovery', { id: item.id, name: item.name, kind: item.kind, in1520: item.in1520, text: item.text, total: RESOLVED_DISCOVERIES.length, found: found.length });
+    io.to(`teacher:${p.roomCode}`).emit('teacherEvent', { type: 'discovery', name: p.name, discovery: item.name, at: Date.now() });
+  }
+}
+
 const CITY_ART_DIR = path.join(__dirname, 'public', 'assets', 'cities', '1520');
 
 function cityArtUrl(source) {
@@ -1461,6 +1489,8 @@ function publicPlayer(p, nowGameMinutes = classGameMinutes(p.roomCode)) {
     shipAnchorX: Number.isFinite(p.shipAnchorX) ? p.shipAnchorX : null,
     shipAnchorY: Number.isFinite(p.shipAnchorY) ? p.shipAnchorY : null,
     shipAnchorDir: Number.isInteger(p.shipAnchorDir) ? p.shipAnchorDir : 0,
+    discoveryIds: [...discoveryListFor(p.roomCode, p.name)],
+    discoveryTotal: RESOLVED_DISCOVERIES.length,
     fatigue: Math.round(Fatigue.clamp(p.fatigue) * 10) / 10,
     fatigueSpeedMultiplier: Math.round(Fatigue.speedMultiplier(p.fatigue) * 1000) / 1000,
     transition
@@ -2611,6 +2641,7 @@ setInterval(() => {
     for (const p of room.values()) {
       updateTimedTransition(p, classMinutes);
       movePlayer(p, dt);
+      updateDiscoveries(p);
       updateFatigue(p, dt);
       updateMissionProgress(roomCode, p);
     }

@@ -8,7 +8,8 @@ function emptyRoom() {
     activeMission: null,
     progress: {},
     settings: { paused: false, locked: false },
-    clock: { gameMinutes: 0 }
+    clock: { gameMinutes: 0 },
+    discoveries: {}
   };
 }
 
@@ -68,6 +69,11 @@ class ClassroomStore {
         room.activeMission = source?.activeMission || null;
         room.settings = { paused: false, locked: false, ...(source?.settings || {}) };
         room.clock = { gameMinutes: Number.isFinite(source?.clock?.gameMinutes) ? Math.max(0, source.clock.gameMinutes) : 0 };
+        if (source?.discoveries && typeof source.discoveries === 'object') {
+          for (const [studentName, ids] of Object.entries(source.discoveries)) {
+            if (Array.isArray(ids)) room.discoveries[studentName] = ids.filter((id) => typeof id === 'string').slice(0, 400);
+          }
+        }
 
         const activeMissionId = room.activeMission?.id;
         if (activeMissionId && source?.progress && typeof source.progress === 'object') {
@@ -92,6 +98,7 @@ class ClassroomStore {
     room.progress = room.progress && typeof room.progress === 'object' ? room.progress : {};
     room.settings = { paused: false, locked: false, ...(room.settings || {}) };
     room.clock = { gameMinutes: Number.isFinite(room.clock?.gameMinutes) ? Math.max(0, room.clock.gameMinutes) : 0 };
+    room.discoveries = room.discoveries && typeof room.discoveries === 'object' ? room.discoveries : {};
     delete room.missionHistory;
     delete room.journals;
     return room;

@@ -14,6 +14,7 @@ const PLACES = Object.freeze([...ORIGINAL_CITIES.filter((city) => !city.retired)
 const ITEMS = Object.freeze(loadJson('items.json'));
 const TEMPLATES = Object.freeze(loadJson('templates.json'));
 const READY_MISSIONS = Object.freeze(loadJson('ready-missions.json'));
+const DISCOVERIES = Object.freeze(loadJson('discoveries.json'));
 
 function latLonToCell(lat, lon) {
   return {
@@ -60,7 +61,8 @@ function publicCatalog() {
     }),
     items: ITEMS.map((item) => ({ ...item })),
     templates: TEMPLATES.map((template) => ({ ...template, needs: [...template.needs] })),
-    readyMissions: READY_MISSIONS.map((mission) => ({ ...mission }))
+    readyMissions: READY_MISSIONS.map((mission) => ({ ...mission })),
+    discoveries: DISCOVERIES.map((item) => ({ ...item }))
   };
 }
 
@@ -71,6 +73,7 @@ module.exports = {
   ITEMS,
   TEMPLATES,
   READY_MISSIONS,
+  DISCOVERIES,
   latLonToCell,
   placeCell,
   hasVerifiedSeaAccess,
