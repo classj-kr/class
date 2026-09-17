@@ -47,10 +47,7 @@ button, input { font: inherit; }
 .student-main { width: min(980px, calc(100% - 32px)); margin: 0 auto; padding: 32px 0 72px; }
 .view-heading h2 { margin: 7px 0 28px; font-family: Georgia, "Noto Serif KR", serif; font-size: clamp(2rem, 6vw, 3.6rem); letter-spacing: -.05em; }
 .student-pilot-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
-.practice-tabs { display: flex; gap: 8px; margin: 0 0 16px; }
 .practice-note { margin: -4px 0 18px; color: var(--muted); font-size: 12px; line-height: 1.6; }
-.tab { min-height: 40px; padding: 0 18px; border: 1px solid var(--line); border-radius: 8px; color: var(--muted); background: rgba(255, 253, 248, .9); cursor: pointer; font-weight: 850; }
-.tab.active { border-color: var(--green); color: #fff; background: var(--green); }
 .level-list { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
 .level-list.is-loading { opacity: .55; pointer-events: none; }
 .level-card { min-height: 132px; display: flex; flex-direction: column; align-items: flex-start; gap: 4px; padding: 16px; border: 1px solid rgba(112, 105, 83, .3); border-radius: 10px; color: var(--ink); background: rgba(255, 253, 248, .93); cursor: pointer; text-align: left; backdrop-filter: blur(4px); }
@@ -88,14 +85,6 @@ button, input { font: inherit; }
 .feedback { margin-top: 16px; padding: 15px 16px; border: 1px solid var(--line); border-radius: 13px; line-height: 1.65; font-size: 14px; }
 .feedback.is-correct { border-color: #9bc8a7; background: #edf7ee; }
 .feedback.is-wrong { border-color: #e0af98; background: #fff0e9; }
-.reading-aid { margin-top: 12px; display: grid; gap: 12px; }
-.reading-aid-block { padding: 14px 16px; border: 1px solid var(--line); border-radius: 13px; background: #fbfaf5; }
-.reading-aid-block h3 { margin: 0 0 8px; font-size: 12px; letter-spacing: .04em; color: var(--muted); }
-.reading-aid-block p { margin: 0; line-height: 1.75; font-size: 14px; }
-.vocab-list { margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 8px 16px; }
-.vocab-entry { display: flex; align-items: baseline; gap: 6px; font-size: 14px; }
-.vocab-word { font-weight: 700; color: #14513e; }
-.vocab-meaning { color: var(--muted); }
 .answer-actions { margin-top: 24px; }
 #answerStatus { color: var(--orange); font-size: 12px; }
 .completion-view { min-height: 60vh; display: grid; place-content: center; justify-items: center; text-align: center; }

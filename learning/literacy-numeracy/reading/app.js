@@ -2,7 +2,6 @@
   "use strict";
   const state = {
     items: [],
-    track: "ko",
     set: [],
     index: 0,
     score: 0,
@@ -34,25 +33,24 @@
     $("resultView").hidden = view !== "result";
   }
 
-  // 급 목록은 서버가 실제로 보낸 문항에서 뽑는다. 급 수를 바꿔도 여기를
-  // 고칠 필요가 없고, 문항이 없는 급이 빈 칸으로 남지도 않는다.
+  // 문항 목록을 받은 뒤에는 문항이 있는 급만 보여 준다.
   function renderLevels() {
     const list = $("levelList"); list.replaceChildren();
-    const items = state.items.filter((item) => item.track === state.track);
     LEVELS.forEach(({ level, skillFocus }) => {
-      const group = items.filter((item) => item.targetLevel === level);
+      const group = state.items.filter((item) => item.targetLevel === level);
+      if (state.items.length && !group.length) return;
       const labelled = group.find((item) => item.skillFocus) || {};
       const card = node("button", "level-card", ""); card.type = "button";
-      card.append(node("strong", "level-code", `${state.track === "en" ? "E" : "K"}${level}`));
+      card.append(node("strong", "level-code", `K${level}`));
       card.append(node("span", "level-focus", labelled.skillFocus || skillFocus));
       if (group.length) card.append(node("span", "level-count", `${group.length}문항`));
       card.addEventListener("click", () => startSet(level)); list.append(card);
     });
   }
 
-  // v3: 급 체계가 8단계에서 4단계로 바뀌어 예전 진행 기록은 맞지 않는다.
+  // v4: 문항을 통째로 새로 만들어 예전 진행 기록은 맞지 않는다.
   function deckStorageKey(level) {
-    return `reading-self-study-deck-v3:${state.track}:${level}`;
+    return `reading-self-study-deck-v4:ko:${level}`;
   }
 
   function loadDeckHistory(key) {
@@ -80,7 +78,7 @@
     list.classList.add("is-loading");
     let candidates;
     try {
-      const response = await fetch(`/api/reading/self-study?track=${state.track}&level=${level}`);
+      const response = await fetch(`/api/reading/self-study?track=ko&level=${level}`);
       if (!response.ok) throw new Error();
       candidates = (await response.json()).items || [];
     } catch (_) {
@@ -89,6 +87,10 @@
       return;
     }
     list.classList.remove("is-loading");
+    if (!candidates.length) {
+      list.replaceChildren(node("p", "empty-pilots", "이 급의 문제를 준비하고 있습니다."));
+      return;
+    }
     state.deckStorageKey = deckStorageKey(level);
     const drawn = window.ReadingQuestionDeck.draw(candidates, 5, loadDeckHistory(state.deckStorageKey));
     state.set = drawn.items;
@@ -99,13 +101,12 @@
 
   function renderQuestion() {
     const item = state.set[state.index]; state.answered = false; state.hadWrong = false;
-    const levelCode = `${item.track === "en" ? "E" : "K"}${item.targetLevel}`;
-    $("questionLevel").textContent = levelCode;
+    $("questionLevel").textContent = `K${item.targetLevel}`;
     $("questionProgress").textContent = `${state.index + 1} / ${state.set.length}`;
     $("questionTopic").textContent = item.topicTitle;
     $("progressFill").style.width = `${((state.index + 1) / state.set.length) * 100}%`;
     $("studentPassage").textContent = item.passageText; $("studentPrompt").textContent = item.promptText;
-    $("feedback").hidden = true; $("readingAid").hidden = true; $("answerStatus").textContent = "";
+    $("feedback").hidden = true; $("answerStatus").textContent = "";
     const choices = $("studentChoices"); choices.replaceChildren();
     shuffle(item.choices.map((choice, originalIndex) => ({ choice, originalIndex }))).forEach(({ choice, originalIndex }, index) => {
       const button = node("button", "student-choice", ""); button.type = "button";
@@ -139,24 +140,7 @@
     saveDeckHistory();
     [...$("studentChoices").children].forEach((button) => { const choiceIndex = Number(button.dataset.choiceIndex); button.disabled = true; if (choiceIndex === item.correctIndex) button.classList.add("correct"); else if (choiceIndex === index) button.classList.add("wrong"); });
     const feedback = $("feedback"); feedback.className = "feedback is-correct"; feedback.textContent = `정답 · ${item.explanation}`; feedback.hidden = false;
-    renderReadingAid(item);
     $("nextButton").textContent = state.index === state.set.length - 1 ? "결과 보기" : "다음 문제";
-  }
-
-  // 영어 지문에만 해석·중요 단어를 보여 준다. 국어 지문이거나, 아직 번역이
-  // 없는 영어 주제(신규 추가분)라면 조용히 숨긴다.
-  function renderReadingAid(item) {
-    const aid = $("readingAid");
-    if (item.track !== "en" || !item.translation) { aid.hidden = true; return; }
-    $("translationText").textContent = item.translation;
-    const vocabList = $("vocabList"); vocabList.replaceChildren();
-    (item.vocabulary || []).forEach(({ word, meaning }) => {
-      const entry = node("li", "vocab-entry", "");
-      entry.append(node("span", "vocab-word", word), node("span", "vocab-meaning", meaning));
-      vocabList.append(entry);
-    });
-    $("vocabBlock").hidden = !(item.vocabulary || []).length;
-    aid.hidden = false;
   }
 
   function next() { if (state.index + 1 < state.set.length) { state.index += 1; renderQuestion(); } else { $("resultTitle").textContent = `${state.score} / ${state.set.length}`; $("resultCopy").textContent = `정답 ${state.score}개 · 오답 ${state.set.length - state.score}개`; show("result"); } }
@@ -174,7 +158,6 @@
       // Level buttons remain usable and fetch their deck on demand.
     }
   }
-  document.querySelectorAll(".tab").forEach((tab) => tab.addEventListener("click", () => { state.track = tab.dataset.track; document.querySelectorAll(".tab").forEach((button) => button.classList.toggle("active", button === tab)); renderLevels(); }));
   $("backButton").addEventListener("click", () => show("dashboard")); $("restartButton").addEventListener("click", () => show("dashboard")); $("nextButton").addEventListener("click", () => {});
   // 공용 뒤로가기 단추(assets/site-back-navigation.js)가 눌리면 먼저 물어본다.
   // 목록 화면이 아니면 사이트 밖으로 나가지 않고 목록으로만 돌아간다.

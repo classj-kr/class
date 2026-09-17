@@ -16,19 +16,18 @@
     </header>
     <main class="student-main">
       <section id="dashboardView">
-        <div class="practice-tabs" role="tablist"><button class="tab active" data-track="ko" type="button">국어</button><button class="tab" data-track="en" type="button">영어</button></div>
         <div id="levelList" class="level-list"></div>
       </section>
       <section id="questionView" class="question-view" hidden>
         <div class="question-topline"><button id="backButton" class="text-button" type="button">← 자습 목록</button><span id="questionLevel" class="level-chip"></span></div>
         <div class="progress-copy"><strong id="questionProgress"></strong><span id="questionTopic"></span></div>
         <div class="progress-track"><div id="progressFill" class="progress-fill"></div></div>
-        <article class="reading-sheet"><div id="studentPassage" class="student-passage"></div><h2 id="studentPrompt" class="student-prompt"></h2><div id="studentChoices" class="student-choices"></div><div id="feedback" class="feedback" hidden></div><div id="readingAid" class="reading-aid" hidden><div class="reading-aid-block"><h3>해석</h3><p id="translationText"></p></div><div id="vocabBlock" class="reading-aid-block"><h3>중요 단어</h3><ul id="vocabList" class="vocab-list"></ul></div></div><div class="answer-actions"><span id="answerStatus" role="status"></span><button id="nextButton" class="button primary" type="button" disabled>정답 확인</button></div></article>
+        <article class="reading-sheet"><div id="studentPassage" class="student-passage"></div><h2 id="studentPrompt" class="student-prompt"></h2><div id="studentChoices" class="student-choices"></div><div id="feedback" class="feedback" hidden></div><div class="answer-actions"><span id="answerStatus" role="status"></span><button id="nextButton" class="button primary" type="button" disabled>정답 확인</button></div></article>
       </section>
       <section id="resultView" class="completion-view" hidden><h2 id="resultTitle"></h2><p id="resultCopy"></p><button id="restartButton" class="button primary" type="button">목록</button></section>
     </main>
   </div>
   <script src="./deck.js"></script>
-  <script src="./app.js?v=20260906-1"></script>
+  <script src="./app.js?v=20260917-1"></script>
 </body>
 </html>

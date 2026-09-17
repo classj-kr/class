@@ -4,7 +4,7 @@ const crypto = require("crypto");
 const express = require("express");
 const fs = require("fs");
 const path = require("path");
-const { createSelfStudyItems } = require("./data/reading-self-study-v2");
+const { createSelfStudyItems } = require("./data/reading-self-study-v3");
 
 const MIGRATION_NAMES = ["001-reading-bank", "002-reading-reviews", "003-reading-pilots"];
 const CHECKER_VERSION = "reading-bank-v1";
@@ -463,56 +463,23 @@ function createReadingBank(options = {}) {
     );
   }
 
-  // 자습 문항의 급 체계는 2026-08-06에 8단계에서 4단계로 바뀌었다.
-  // 옛 급의 학년 밴드를 새 급의 학년 밴드에 맞춰 접는다.
-  //   옛 1(초3~4)·2(초4~5)          → 새 1급 초3~4
-  //   옛 3(초5~6)                   → 새 2급 초5~6
-  //   옛 4(중1)·5(중2)              → 새 3급 중1~2
-  //   옛 6(중3)·7(고1)·8(고2~3)     → 새 4급 중3~고1
-  // 시드 문항은 검토를 거친 자료라 원본 급을 그대로 두고, 학생 화면으로 나갈
-  // 때만 접어 준다. 관리자 화면과 자동 점검은 지금도 1~8 척도를 쓰므로 이
-  // 변환은 이 라우트 안에만 둔다.
-  const SELF_STUDY_LEVEL_MAP = { 1: 1, 2: 1, 3: 2, 4: 3, 5: 3, 6: 4, 7: 4, 8: 4 };
-  const foldSeedLevel = (level) => SELF_STUDY_LEVEL_MAP[level] || level;
-
   // This route deliberately does not depend on the classroom database or a
   // teacher-created pilot.  It is the always-available practice shelf used by
   // the student reading page.
   //
-  // The underlying topic data is static (bundled at deploy time), so the
-  // ~900-item bank is built once per server process instead of on every
-  // request, and cached. That fixed the compute cost (~300ms -> ~6ms) but
-  // not the payload: the full bank serializes to ~1.5MB, and the dashboard
-  // only ever needs enough per item to draw four level cards (track, level,
-  // skill label, a count) -- it doesn't need passageText/choices/explanation
-  // for all 900 items just to show 4 buttons. Downloading and JSON-parsing
-  // that much data on every visit was the real remaining cause of the
-  // reading screen's slow first paint. So this route now serves two shapes:
+  // The bank is static (bundled at deploy time) and cached per process.
+  // The dashboard only needs enough per item to draw the level cards, so
+  // this route serves two shapes:
   //   GET /self-study                -> lightweight per-item summary
   //   GET /self-study?track=ko&level=1 -> full items, filtered to one deck
+  // 시드 문항(reading-bank-seed-v1.json)은 억지 오답이 섞여 있어 학생
+  // 자습에서는 뺐다. 관리자 화면의 시드 가져오기에는 그대로 쓰인다.
   let cachedSelfStudyItems = null;
   let cachedSummaryBody = null;
   const cachedLevelBodies = new Map();
 
-  function buildSelfStudyItems() {
-    const seed = JSON.parse(fs.readFileSync(SAMPLE_SEED_PATH, "utf8"));
-    const items = (seed.topics || []).flatMap((topic) => (topic.items || []).map((item) => ({
-      id: item.itemKey,
-      topicTitle: topic.title,
-      track: item.track,
-      targetLevel: foldSeedLevel(item.targetLevel),
-      questionType: item.questionType,
-      passageText: item.passageText,
-      promptText: item.promptText,
-      choices: item.choices,
-      correctIndex: item.correctIndex,
-      explanation: item.explanation
-    })));
-    return items.concat(createSelfStudyItems());
-  }
-
   function selfStudyItems() {
-    if (!cachedSelfStudyItems) cachedSelfStudyItems = buildSelfStudyItems();
+    if (!cachedSelfStudyItems) cachedSelfStudyItems = createSelfStudyItems();
     return cachedSelfStudyItems;
   }
 
@@ -635,9 +602,7 @@ function createReadingBank(options = {}) {
                   WHERE expires_at IS NOT NULL AND expires_at <= NOW()`)
     ]);
     const counts = statusResult.rows[0] || {};
-    const seed = loadSampleSeed();
-    const operational = createSelfStudyItems().length
-      + seed.topics.reduce((sum, topic) => sum + (topic.items || []).length, 0);
+    const operational = selfStudyItems().length;
     res.json({
       draft: Number(counts.draft_count || 0),
       autoChecked: Number(counts.checked_count || 0),
