@@ -149,11 +149,12 @@
   camera.rotation.order = 'YXZ';
   camera.position.set(0, 1.68, 6.5);
 
+  // 크롬북(내장 GPU)이 주 대상이라 픽셀 배율을 낮추고 그림자 계산은 끈다.
+  const MAX_PIXEL_RATIO = 1.25;
   const renderer = new THREE.WebGLRenderer({ canvas, antialias:true, powerPreference:'high-performance' });
-  renderer.setPixelRatio(Math.min(devicePixelRatio, 1.75));
+  renderer.setPixelRatio(Math.min(devicePixelRatio, MAX_PIXEL_RATIO));
   renderer.setSize(innerWidth, innerHeight, false);
-  renderer.shadowMap.enabled = true;
-  renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+  renderer.shadowMap.enabled = false;
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
   renderer.toneMappingExposure = 1.08;
   renderer.outputEncoding = THREE.sRGBEncoding;
@@ -249,6 +250,80 @@
     stone:new THREE.MeshStandardMaterial({color:0x8a8176,roughness:.72,metalness:.025})
   };
 
+  // 실제 조명은 픽셀마다 모든 광원을 계산해 무겁다. 실제 스포트라이트는 관람자 가까운
+  // 작품 몇 곳에만 옮겨 달고, 나머지 빛 번짐은 가산 합성 텍스처로 흉내 낸다.
+  function glowTexture(draw) {
+    const c=document.createElement('canvas');c.width=c.height=256;draw(c.getContext('2d'));
+    const t=new THREE.CanvasTexture(c);t.encoding=THREE.sRGBEncoding;return t;
+  }
+  const radialGlow=glowTexture(g=>{
+    const grad=g.createRadialGradient(128,128,0,128,128,128);
+    grad.addColorStop(0,'rgba(255,255,255,1)');grad.addColorStop(.4,'rgba(255,255,255,.5)');grad.addColorStop(1,'rgba(255,255,255,0)');
+    g.fillStyle=grad;g.fillRect(0,0,256,256);
+  });
+  const coveGlow=glowTexture(g=>{
+    const band=g.createLinearGradient(0,0,0,256);band.addColorStop(0,'rgba(255,255,255,.55)');band.addColorStop(1,'rgba(255,255,255,0)');
+    g.fillStyle=band;g.fillRect(0,0,256,256);
+    g.save();g.translate(128,0);g.scale(1,2);
+    const scallop=g.createRadialGradient(0,0,0,0,0,128);scallop.addColorStop(0,'rgba(255,255,255,.45)');scallop.addColorStop(1,'rgba(255,255,255,0)');
+    g.fillStyle=scallop;g.fillRect(-128,0,256,128);g.restore();
+  });
+  coveGlow.wrapS=THREE.RepeatWrapping;
+  const glowMaterialOptions={transparent:true,blending:THREE.AdditiveBlending,depthWrite:false,toneMapped:false,fog:false,polygonOffset:true,polygonOffsetFactor:-2,polygonOffsetUnits:-2};
+  function glowMaterial(map,color,opacity){return new THREE.MeshBasicMaterial({...glowMaterialOptions,map,color,opacity});}
+  const glowMaterials = {
+    floor:glowMaterial(radialGlow,0xffcf96,.16),
+    cove:glowMaterial(coveGlow,0xffd4a0,.42),
+    lamp:glowMaterial(radialGlow,0xffc56f,.3)
+  };
+  const ART_GLOW_OPACITY=.34;
+  const sharedMaterials=new Set([...Object.values(materials),...Object.values(glowMaterials)]);
+
+  const ART_LIGHT_POOL_SIZE=4;
+  const artLightAnchors=[];
+  const artLightPool=Array.from({length:ART_LIGHT_POOL_SIZE},()=>{
+    const light=new THREE.SpotLight(0xffd29a,0,8,Math.PI*.18,.48,1.8);scene.add(light,light.target);
+    return {light,anchor:null,level:0};
+  });
+  const artLightFocus=new THREE.Vector3();
+
+  function resetArtLights() {
+    artLightAnchors.length=0;
+    for(const slot of artLightPool){slot.anchor=null;slot.level=0;slot.light.intensity=0;}
+  }
+
+  function assignArtLight(slot,anchor) {
+    const light=slot.light;
+    slot.anchor=anchor;slot.level=0;
+    light.color.setHex(anchor.color);light.distance=anchor.distance;light.angle=anchor.angle;light.penumbra=anchor.penumbra;light.decay=anchor.decay;
+    light.position.copy(anchor.position);light.target.position.copy(anchor.target);
+  }
+
+  function updateArtLights(dt) {
+    // 시선 앞쪽 지점에서 가까운 작품에 조명을 몰아주고, 교체는 서서히 페이드한다.
+    artLightFocus.set(camera.position.x-Math.sin(yaw)*2.5,0,camera.position.z-Math.cos(yaw)*2.5);
+    const wanted=artLightAnchors
+      .map(anchor=>({anchor,dist:Math.hypot(anchor.target.x-artLightFocus.x,anchor.target.z-artLightFocus.z)}))
+      .sort((a,b)=>a.dist-b.dist).slice(0,ART_LIGHT_POOL_SIZE).map(item=>item.anchor);
+    const step=Math.min(1,dt*3);
+    for(const slot of artLightPool){
+      if(!slot.anchor)continue;
+      slot.level=wanted.includes(slot.anchor)?Math.min(1,slot.level+step):Math.max(0,slot.level-step);
+    }
+    for(const anchor of wanted){
+      if(artLightPool.some(slot=>slot.anchor===anchor))continue;
+      const free=artLightPool.find(slot=>!slot.anchor||slot.level===0&&!wanted.includes(slot.anchor));
+      if(!free)break;
+      if(free.anchor?.glow)free.anchor.glow.opacity=free.anchor.glowOpacity;
+      assignArtLight(free,anchor);
+    }
+    for(const slot of artLightPool){
+      const anchor=slot.anchor;
+      slot.light.intensity=anchor?anchor.intensity*slot.level:0;
+      if(anchor?.glow)anchor.glow.opacity=anchor.glowOpacity*(1-.7*slot.level);
+    }
+  }
+
   function mesh(box, mat, position, parent=gallery) {
     const m=new THREE.Mesh(new THREE.BoxGeometry(...box),mat);m.position.set(...position);m.castShadow=true;m.receiveShadow=true;parent.add(m);return m;
   }
@@ -306,9 +381,9 @@
     for(const side of [-1,1]){
       const lamp=mesh([.18,.28,.18],materials.darkBrass,[side*(panelW/2+.72),panelY+.45,z+.2],group);
       lamp.rotation.z=side*.12;
-      const glow=new THREE.PointLight(0xffc56f,18,4.2,2);glow.position.set(side*(panelW/2+.58),panelY+.15,z+1);gallery.add(glow);
+      const glow=new THREE.Mesh(new THREE.PlaneGeometry(1.7,2.3),glowMaterials.lamp);glow.position.set(side*(panelW/2+.72),panelY+.1,GALLERY_END+.17);group.add(glow);
     }
-    const wash=new THREE.SpotLight(0xffce84,42,8,Math.PI*.25,.75,1.5);wash.position.set(0,Math.min(shell.height-.35,panelY+2.1),z+2.5);wash.target.position.set(0,panelY,z);gallery.add(wash,wash.target);
+    artLightAnchors.push({position:new THREE.Vector3(0,Math.min(shell.height-.35,panelY+2.1),z+2.5),target:new THREE.Vector3(0,panelY,z),color:0xffce84,intensity:42,distance:8,angle:Math.PI*.25,penumbra:.75,decay:1.5});
   }
 
   function refreshFinaleWall() {
@@ -520,13 +595,10 @@
       const coveX=side*(width/2-1.48);
       const coveY=height-.46;
       const cove=mesh([.075,.055,length],new THREE.MeshBasicMaterial({color:0xffd49b,toneMapped:false}),[coveX,coveY,centerZ]);cove.castShadow=false;
-      for(let z=5;z>GALLERY_END;z-=4.8){
-        const wash=new THREE.SpotLight(0xffd4a0,18,5.2,Math.PI*.34,.8,1.55);
-        wash.position.set(coveX,coveY-.16,z);
-        wash.target.position.set(side*(width/2-.16),height-.95,z);
-        gallery.add(wash,wash.target);
-      }
+      const washH=2.3,wash=new THREE.Mesh(new THREE.PlaneGeometry(length,washH),glowMaterials.cove);
+      wash.position.set(side*(width/2-.15),wallSurfaceY+(height-1.05)/2-washH/2,centerZ);wash.rotation.y=-side*Math.PI/2;gallery.add(wash);
     }
+    coveGlow.repeat.set(length/4.8,1);
 
     const downlightMat=new THREE.MeshStandardMaterial({color:0x24211e,roughness:.62,metalness:.3});
     const lampMat=new THREE.MeshBasicMaterial({color:0xfff1d7,toneMapped:false});
@@ -534,11 +606,11 @@
       for(const x of [-1.45,1.45]){
         const ring=new THREE.Mesh(new THREE.CylinderGeometry(.115,.115,.035,24),downlightMat);ring.position.set(x,height-.295,z);gallery.add(ring);
         const lens=new THREE.Mesh(new THREE.CircleGeometry(.072,20),lampMat);lens.position.set(x,height-.316,z);lens.rotation.x=Math.PI/2;gallery.add(lens);
-        const light=new THREE.SpotLight(0xffe4bf,21,8,Math.PI*.23,.8,1.65);
-        light.position.set(x,height-.45,z);light.target.position.set(x,0,z);gallery.add(light,light.target);
+        const pool=new THREE.Mesh(new THREE.PlaneGeometry(4.4,4.4),glowMaterials.floor);pool.rotation.x=-Math.PI/2;pool.position.set(x,.006,z);gallery.add(pool);
       }
     }
-    const ambient=new THREE.HemisphereLight(0xe9dece,0x3a2a20,.82);gallery.add(ambient);
+    const ambient=new THREE.HemisphereLight(0xe9dece,0x3a2a20,1.1);gallery.add(ambient);
+    const fill=new THREE.DirectionalLight(0xffe2bd,.65);fill.position.set(0,height,centerZ+6);fill.target.position.set(0,0,centerZ);gallery.add(fill,fill.target);
     const entrance=new THREE.Group();gallery.add(entrance);
     const entryHeight=5;
     mesh([2.2,entryHeight,.5],materials.wallInset,[-(width/2-1.1),entryHeight/2,5.7],entrance);mesh([2.2,entryHeight,.5],materials.wallInset,[(width/2-1.1),entryHeight/2,5.7],entrance);mesh([width-4.4,1.15,.5],materials.wallInset,[0,entryHeight+.42,5.7],entrance);
@@ -552,8 +624,8 @@
     return new THREE.MeshStandardMaterial({color:palettes[index%palettes.length],roughness:.32,metalness:.28});
   }
 
-  function addSpotlight(x,y,z,side,index,target) {
-    const spot=new THREE.SpotLight(0xffd29a,62,8.2,Math.PI*.18,.48,1.8);spot.position.set(x-side*.85,Math.min(5.7,y+1.7),z+.05);spot.target=target;spot.castShadow=index%3===0;spot.shadow.mapSize.set(512,512);spot.shadow.bias=-.00015;gallery.add(spot,spot.target);
+  function addSpotlight(x,y,z,side,glow) {
+    artLightAnchors.push({position:new THREE.Vector3(x-side*.85,Math.min(5.7,y+1.7),z+.05),target:new THREE.Vector3(x,3.05,z),color:0xffd29a,intensity:62,distance:8.2,angle:Math.PI*.18,penumbra:.48,decay:1.8,glow,glowOpacity:ART_GLOW_OPACITY});
     const stem=mesh([.08,.08,.8],materials.brass,[x-side*.42,Math.min(5.78,y+1.82),z]);stem.rotation.z=side*Math.PI/2;
     const head=mesh([.24,.18,.34],materials.darkBrass,[x-side*.82,Math.min(5.68,y+1.75),z]);head.rotation.z=side*Math.PI/2;
   }
@@ -574,7 +646,9 @@
     const artMat=new THREE.MeshBasicMaterial({color:0xffffff,map:placeholderTexture(work.title),side:THREE.DoubleSide,toneMapped:false});
     const plane=new THREE.Mesh(new THREE.PlaneGeometry(display.w,display.h),artMat);plane.position.z=.255;plane.userData.work=work;plane.userData.room=rooms[activeRoom];plane.castShadow=true;group.add(plane);clickable.push(plane);loadArtTexture(work,artMat,plane,display.w/display.h,version,roomGallery);
     const label=makeLabel(work.title,work.artist,Math.min(2.3,display.w+border*2));label.position.set(0,-display.h/2-.42,.24);group.add(label);
-    const target=new THREE.Object3D();target.position.set(x,3.05,z);addSpotlight(x,3.12+display.h/2,z,side,index,target);
+    const glowMat=glowMaterial(radialGlow,0xffd29a,ART_GLOW_OPACITY);
+    const glow=new THREE.Mesh(new THREE.PlaneGeometry(display.w+1.6,display.h+2),glowMat);glow.position.set(0,.3,-.16);group.add(glow);
+    addSpotlight(x,3.12+display.h/2,z,side,glowMat);
   }
 
   function setRoom(index,instant=false) {
@@ -582,8 +656,8 @@
     setRoomMusic(index);
     activeRoom=index;clickable.length=0;sculptureObstacles.length=0;nearest=null;prompt.hidden=true;loadDone=0;loadTotal=rooms[index].works.length;
     loading.classList.remove('done');loadingBar.style.width='0';loadingText.textContent='0%';
-    finaleSurface=null;
-    if(gallery){scene.remove(gallery);gallery.traverse(o=>{if(o.geometry)o.geometry.dispose();if(o.material&&!Array.isArray(o.material)){if(o.material.map?.userData?.finaleTexture)o.material.map.dispose();o.material.dispose();}});}
+    finaleSurface=null;resetArtLights();
+    if(gallery){scene.remove(gallery);gallery.traverse(o=>{if(o.geometry)o.geometry.dispose();if(o.material&&!Array.isArray(o.material)&&!sharedMaterials.has(o.material)){if(o.material.map?.userData?.finaleTexture)o.material.map.dispose();o.material.dispose();}});}
     gallery=new THREE.Group();scene.add(gallery);const roomGallery=gallery,shell=buildShell(rooms[index]);
     addFinaleWall(rooms[index],shell);
     rooms[index].works.forEach((w,i)=>addFramedWork(w,i,i%2===0?-1:1,1-Math.floor(i/2)*5.15,shell.width,version,roomGallery));
@@ -691,7 +765,7 @@
     selfAvatar.visible=!nearest&&!modal.open&&!helpModal.open&&!finaleModal.open;
   }
 
-  function animate(){requestAnimationFrame(animate);const dt=Math.min(clock.getDelta(),.04);updateMovement(dt);updateFocus();updateSelfAvatar();sendPresence();renderer.render(scene,camera);}
+  function animate(){requestAnimationFrame(animate);const dt=Math.min(clock.getDelta(),.04);updateMovement(dt);updateArtLights(dt);updateFocus();updateSelfAvatar();sendPresence();renderer.render(scene,camera);}
 
   addEventListener('keydown',e=>{if(['ArrowUp','ArrowDown','ArrowRight','ArrowLeft','Space'].includes(e.code))e.preventDefault();keys[e.code]=true;if(e.code==='Escape'){if(finaleModal.open){window.ClassGameSfx?.play('click');finaleModal.close();}else if(modal.open){window.ClassGameSfx?.play('click');modal.close();}}if(e.code==='Enter'&&nearest&&!modal.open&&!finaleModal.open){if(nearest.userData.finaleRoom)showFinale(nearest.userData.finaleRoom);else showWork(nearest.userData.work,nearest.userData.room);}});
   addEventListener('keyup',e=>{keys[e.code]=false;});
@@ -699,7 +773,7 @@
   canvas.addEventListener('pointermove',e=>{if(!dragging||!pointerDown)return;const dx=e.clientX-pointerDown.lastX,dy=e.clientY-pointerDown.lastY;pointerDown.lastX=e.clientX;pointerDown.lastY=e.clientY;yaw-=dx*.0032;pitch=clamp(pitch-dy*.0025,-1.15,1.15);});
   canvas.addEventListener('pointerup',e=>{dragging=false;canvas.classList.remove('dragging');if(!pointerDown)return;const moved=Math.hypot(e.clientX-pointerDown.x,e.clientY-pointerDown.y);if(moved<8&&performance.now()-pointerDown.time<550){pointer.x=e.clientX/innerWidth*2-1;pointer.y=-(e.clientY/innerHeight)*2+1;raycaster.setFromCamera(pointer,camera);const hit=raycaster.intersectObjects(clickable,false).find(x=>x.distance<10);if(hit){if(hit.object.userData.finaleRoom)showFinale(hit.object.userData.finaleRoom);else showWork(hit.object.userData.work,hit.object.userData.room);}}pointerDown=null;});
   canvas.addEventListener('pointercancel',()=>{dragging=false;pointerDown=null;canvas.classList.remove('dragging');});
-  addEventListener('resize',()=>{camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight,false);renderer.setPixelRatio(Math.min(devicePixelRatio,1.75));});
+  addEventListener('resize',()=>{camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight,false);renderer.setPixelRatio(Math.min(devicePixelRatio,MAX_PIXEL_RATIO));});
   document.getElementById('modal-close').addEventListener('click',()=>modal.close());document.getElementById('help-button').addEventListener('click',()=>helpModal.showModal());document.getElementById('help-close').addEventListener('click',()=>helpModal.close());document.getElementById('finale-close').addEventListener('click',()=>finaleModal.close());
   finaleNext.addEventListener('click',()=>{finaleQuizIndex++;const total=finaleQuizQuestions.length;if(finaleQuizIndex>=total){if(finaleQuizCorrect===total)showFinaleCompletion(finaleQuizRoom,true);else showFinaleRetry(finaleQuizRoom);}else renderFinaleQuestion();});
   document.getElementById('finale-again').addEventListener('click',()=>startFinaleQuiz(finaleQuizRoom));

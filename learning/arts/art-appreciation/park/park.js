@@ -213,9 +213,14 @@
 
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, powerPreference: 'high-performance' });
   renderer.setSize(innerWidth, innerHeight, false);
-  renderer.setPixelRatio(Math.min(devicePixelRatio, 1.75));
+  // 크롬북(내장 GPU)이 주 대상이다. 장면이 움직이지 않으므로 햇빛 그림자는
+  // 모델을 불러올 때만 다시 굽고, 매 프레임 그림자 계산은 하지 않는다.
+  const MAX_PIXEL_RATIO = 1.25;
+  renderer.setPixelRatio(Math.min(devicePixelRatio, MAX_PIXEL_RATIO));
   renderer.shadowMap.enabled = true;
-  renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+  renderer.shadowMap.type = THREE.PCFShadowMap;
+  renderer.shadowMap.autoUpdate = false;
+  renderer.shadowMap.needsUpdate = true;
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
   renderer.toneMappingExposure = 1.05;
   renderer.outputEncoding = THREE.sRGBEncoding;
@@ -392,21 +397,20 @@
       model.position.y = 0.4 - scaledBounds.min.y - (zone.groundSink || 0);
 
       rootGroup.add(model);
+      renderer.shadowMap.needsUpdate = true;
     }, undefined, (err) => {
       console.error('Error loading 3D GLB model for zone:', zone.id, err);
     });
 
-    // Room 05-style Sculpture Spotlight & Rim Light
-    const spot = new THREE.SpotLight(0xffc77a, 140, Math.max(25, zone.realHeight * 2), Math.PI * 0.25, 0.6, 1.4);
-    spot.position.set(zone.position[0] - 3, Math.max(6, zone.realHeight * 0.75 + 3), zone.position[2] + 5);
-    spot.target.position.set(zone.position[0], Math.max(2, zone.realHeight * 0.4), zone.position[2]);
-    spot.castShadow = true;
-    spot.shadow.mapSize.set(512, 512);
-    park.add(spot, spot.target);
-
-    const rim = new THREE.PointLight(0xffd6a0, 25, Math.max(15, zone.realHeight * 1.5), 2);
-    rim.position.set(zone.position[0] + 3, Math.max(4, zone.realHeight * 0.6), zone.position[2] - 4);
-    park.add(rim);
+    // Room 05-style Sculpture Spotlight & Rim Light — 가까운 구역에만 조명 풀에서 배정한다.
+    zoneLightAnchors.push({
+      zone,
+      spotDistance: Math.max(25, zone.realHeight * 2),
+      spotPosition: new THREE.Vector3(zone.position[0] - 3, Math.max(6, zone.realHeight * 0.75 + 3), zone.position[2] + 5),
+      spotTarget: new THREE.Vector3(zone.position[0], Math.max(2, zone.realHeight * 0.4), zone.position[2]),
+      rimDistance: Math.max(15, zone.realHeight * 1.5),
+      rimPosition: new THREE.Vector3(zone.position[0] + 3, Math.max(4, zone.realHeight * 0.6), zone.position[2] - 4)
+    });
 
     // 3D 정보 라벨 (전시실 바닥 명패처럼 받침대 옆에 낮고 작게 배치해 관람 시야를 가리지 않도록)
     const label = makeLabel(zone.title, zone.size, 2.2);
@@ -417,6 +421,42 @@
 
     zoneObjects.push(rootGroup);
     park.add(rootGroup);
+  }
+
+  // 구역마다 스포트라이트·보조광을 두면 픽셀마다 18개 광원을 계산하게 된다.
+  // 광원 수를 고정한 작은 풀을 관람자 앞쪽의 가까운 구역에 옮겨 달고 서서히 페이드한다.
+  const ZONE_LIGHT_POOL_SIZE = 2;
+  const SPOT_INTENSITY = 140, RIM_INTENSITY = 25;
+  const zoneLightAnchors = [];
+  const zoneLightPool = Array.from({ length: ZONE_LIGHT_POOL_SIZE }, () => {
+    const spot = new THREE.SpotLight(0xffc77a, 0, 25, Math.PI * 0.25, 0.6, 1.4);
+    const rim = new THREE.PointLight(0xffd6a0, 0, 15, 2);
+    scene.add(spot, spot.target, rim);
+    return { spot, rim, anchor: null, level: 0 };
+  });
+  const zoneLightFocus = new THREE.Vector3();
+
+  function updateZoneLights(dt) {
+    zoneLightFocus.set(camera.position.x - Math.sin(yaw) * 6, 0, camera.position.z - Math.cos(yaw) * 6);
+    const wanted = zoneLightAnchors
+      .map(anchor => ({ anchor, dist: Math.hypot(anchor.zone.position[0] - zoneLightFocus.x, anchor.zone.position[2] - zoneLightFocus.z) }))
+      .sort((a, b) => a.dist - b.dist).slice(0, ZONE_LIGHT_POOL_SIZE).map(item => item.anchor);
+    const step = Math.min(1, dt * 2);
+    for (const slot of zoneLightPool) {
+      if (slot.anchor) slot.level = wanted.includes(slot.anchor) ? Math.min(1, slot.level + step) : Math.max(0, slot.level - step);
+    }
+    for (const anchor of wanted) {
+      if (zoneLightPool.some(slot => slot.anchor === anchor)) continue;
+      const free = zoneLightPool.find(slot => !slot.anchor || (slot.level === 0 && !wanted.includes(slot.anchor)));
+      if (!free) break;
+      free.anchor = anchor; free.level = 0;
+      free.spot.distance = anchor.spotDistance; free.spot.position.copy(anchor.spotPosition); free.spot.target.position.copy(anchor.spotTarget);
+      free.rim.distance = anchor.rimDistance; free.rim.position.copy(anchor.rimPosition);
+    }
+    for (const slot of zoneLightPool) {
+      slot.spot.intensity = slot.anchor ? SPOT_INTENSITY * slot.level : 0;
+      slot.rim.intensity = slot.anchor ? RIM_INTENSITY * slot.level : 0;
+    }
   }
 
   function makePark() {
@@ -621,7 +661,7 @@
   }
 
   function animate() {
-    requestAnimationFrame(animate); const dt = Math.min(clock.getDelta(), .05); updateMovement(dt);
+    requestAnimationFrame(animate); const dt = Math.min(clock.getDelta(), .05); updateMovement(dt); updateZoneLights(dt);
     park.children.forEach(o => { if (o.userData.faceCamera) o.lookAt(camera.position.x, o.position.y, camera.position.z); });
     compassArrow.style.transform = `rotate(${-yaw}rad)`; updateSelfAvatar(); sendPresence(); renderer.render(scene, camera);
   }
@@ -634,7 +674,7 @@
   canvas.addEventListener('pointerdown', e => { dragging = true; dragStart = { x: e.clientX, y: e.clientY, moved: false }; canvas.classList.add('dragging'); canvas.setPointerCapture(e.pointerId); });
   canvas.addEventListener('pointermove', e => { if (!dragging) return; const dx = e.movementX || 0, dy = e.movementY || 0; if (Math.abs(dx) + Math.abs(dy) > 2) dragStart.moved = true; yaw -= dx * .0032; pitch = Math.max(-1.35, Math.min(1.35, pitch - dy * .0028)); updateCamera(); });
   canvas.addEventListener('pointerup', e => { if (!dragging) return; dragging = false; canvas.classList.remove('dragging'); if (dragStart && !dragStart.moved) { raycaster.setFromCamera(centerPointer, camera); const quizHit = raycaster.intersectObjects(quizObjects, true)[0]; if (quizHit) { startQuiz(); } else { const hit = raycaster.intersectObjects(zoneObjects, true)[0]; if (hit) { let o = hit.object; while (o && !o.userData.zone) o = o.parent; if (o) openDetail(o.userData.zone); } } } dragStart = null; });
-  addEventListener('resize', () => { camera.aspect = innerWidth / innerHeight; camera.updateProjectionMatrix(); renderer.setSize(innerWidth, innerHeight, false); renderer.setPixelRatio(Math.min(devicePixelRatio, 1.5)); });
+  addEventListener('resize', () => { camera.aspect = innerWidth / innerHeight; camera.updateProjectionMatrix(); renderer.setSize(innerWidth, innerHeight, false); renderer.setPixelRatio(Math.min(devicePixelRatio, MAX_PIXEL_RATIO)); });
 
   document.getElementById('detail-button').addEventListener('click', () => openDetail(activeZone));
   document.getElementById('modal-close').addEventListener('click', () => detailModal.close());
