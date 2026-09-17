@@ -45,10 +45,10 @@ function waitFor(socket, event, predicate, timeout=8000) {
   const second=await emitAck(student,'missionInteract',{});
   if(!second.ok||second.progress.status!=='completed'||second.progress.cargoItemId!==null)throw new Error('물품 전달 완료 실패');
   const landed=await emitAck(student,'useCatalogPort',{placeId:'lisbon'});
-  if(!landed.ok||landed.self.mode!=='sea'||!landed.self.transition)throw new Error('카탈로그 항구 상륙 시작 실패');
-  await waitFor(student,'snapshot',s=>s.you.mode==='land'&&!s.you.transition,5000);
-  const embarked=await emitAck(student,'useCatalogPort',{placeId:'lisbon'});
-  if(!embarked.ok||embarked.self.mode!=='land'||!embarked.self.transition)throw new Error('카탈로그 항구 승선 시작 실패');
+  if(!landed.ok||landed.self.mode!=='sea'||!landed.self.transition)throw new Error('카탈로그 항구 입항 시작 실패');
+  await waitFor(student,'snapshot',s=>s.you.mode==='city'&&!s.you.transition,5000);
+  const embarked=await emitAck(student,'departCity',{});
+  if(!embarked.ok||embarked.self.mode!=='city'||!embarked.self.transition)throw new Error('도시에서 출항 시작 실패');
   await waitFor(student,'snapshot',s=>s.you.mode==='sea'&&!s.you.transition,5000);
   const ready=await emitAck(teacher,'teacherPublishGeneratedMission',{readyMissionId:'lisbon_niagara_survey'});
   if(!ready.ok||ready.mission.stages.length!==4||!ready.mission.atlasInstruction.includes('나이아가라 폭포'))throw new Error('기본 미션팩 생성 실패');

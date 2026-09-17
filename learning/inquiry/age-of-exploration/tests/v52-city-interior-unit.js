@@ -30,4 +30,7 @@ assert.match(student,/id="cityView"/);
 assert.match(student,/id="libraryView"/);
 assert.match(student,/#cityCard\{[^}]*aspect-ratio:3\/2/);
 assert.match(student,/const sceneSrc=serverSelf\.currentCityImage/);
+assert.match(server,/socket\.on\('departCity'/);
+assert.match(server,/actionLabel: player\.mode === 'sea' \? `\$\{place\.name\} 입항`/);
+assert.match(student,/id="departCityBtn"/);
 console.log(JSON.stringify({ok:true,cityImages:files.length,cities:live.length,ratio:'3:2',libraryBooks:books.books.length,entryExitTimeCost:0}));

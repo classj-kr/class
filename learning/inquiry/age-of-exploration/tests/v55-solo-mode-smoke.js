@@ -14,6 +14,8 @@ function ack(socket,event,payload={}){return new Promise((resolve,reject)=>{cons
   const sea=await once(student,'snapshot',snap=>snap.sessionMode==='solo'&&snap.you.mode==='sea'&&snap.portInteraction?.placeId==='lisbon');
   const landStart=await ack(student,'useCatalogPort',{placeId:'lisbon'});
   assert.equal(landStart.ok,true,landStart.error);
+  await once(student,'snapshot',x=>x.you.mode==='city'&&x.you.currentCityId==='lisbon'&&!x.you.transition,15000);
+  const walkOut=await ack(student,'leaveCity',{});assert.equal(walkOut.ok,true,walkOut.error);
   const land=await once(student,'snapshot',snap=>snap.you.mode==='land'&&snap.cityInteraction?.placeId==='lisbon');
   const entered=await ack(student,'enterCity',{placeId:'lisbon'});
   assert.equal(entered.ok,true,entered.error);

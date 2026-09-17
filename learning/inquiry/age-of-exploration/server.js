@@ -1084,8 +1084,8 @@ function nearbyCatalogPort(player) {
     kind: 'port',
     placeId: place.id,
     placeName: place.name,
-    actionLabel: player.mode === 'sea' ? `${place.name} 상륙` : `${place.name} 승선`,
-    nextMode: player.mode === 'sea' ? 'land' : 'sea',
+    actionLabel: player.mode === 'sea' ? `${place.name} 입항` : `${place.name} 승선`,
+    nextMode: player.mode === 'sea' ? 'city' : 'sea',
     canUse: true,
     shipPortId: player.shipPortId || null,
     shipPortName: RESOLVED_PLACES.get(String(player.shipPortId || ''))?.name || ''
@@ -1800,6 +1800,7 @@ io.on('connection', (socket) => {
     const room = roomForSocket(socket);
     const p = playerForSocket(socket);
     if (!p || p.mode !== 'city') return ack({ ok:false, error:'현재 도시에 있지 않습니다.' });
+    if (p.transition) return ack({ ok:false, error:'이동 수단 전환이 진행 중입니다.' });
     const place = currentCityForPlayer(p);
     if (!place) return ack({ ok:false, error:'현재 도시 정보를 찾지 못했습니다.' });
     const saved = p.cityReturnPoint;
@@ -1822,6 +1823,28 @@ io.on('connection', (socket) => {
     ack({ ok:false, error:'새 화면을 사용하려면 브라우저를 새로고침하세요.' });
   });
 
+  socket.on('departCity', (_payload, ack = () => {}) => {
+    const room = roomForSocket(socket);
+    const p = playerForSocket(socket);
+    if (!p || p.mode !== 'city') return ack({ ok:false, error:'현재 도시에 있지 않습니다.' });
+    const travel = arrivalRaceTravelGate(p); if (!travel.ok) return ack({ ok:false, error:travel.error });
+    if (p.transition) return ack({ ok:false, error:'이동 수단 전환이 이미 진행 중입니다.' });
+    const place = currentCityForPlayer(p);
+    if (!place) return ack({ ok:false, error:'현재 도시 정보를 찾지 못했습니다.' });
+    if (p.shipPortId !== place.id || !place.originalSeaEntryPoints?.length) {
+      return ack({ ok:false, error:`${place.name}에는 내 배가 정박해 있지 않습니다.` });
+    }
+    beginTimedTransition(p, {
+      kind:'portDeparture',
+      label:`${place.name} 출항 준비 중`,
+      durationGameMinutes:PORT_TRANSFER_GAME_MINUTES,
+      destinationMode:'sea', destinationPoint:safeHarborSpawn(room, place), lastCityIdAfter:place.id, shipPortIdAfter:place.id,
+      missionAfter:`${place.name}에서 항해`,
+      noticeAfter:`${place.name}에서 출항했습니다.`
+    });
+    p.cityReturnPoint = null;
+    ack({ ok:true, started:true, self:publicPlayer(p), port:place.name });
+  });
   socket.on('departPort', (_payload, ack = () => {}) => ack({ ok:false, error:'새 화면을 사용하려면 브라우저를 새로고침하세요.' }));
   socket.on('startLandExpedition', (_payload, ack = () => {}) => ack({ ok:false, error:'항구에서 상륙 명령을 사용하세요.' }));
   socket.on('returnToCity', (_payload, ack = () => {}) => ack({ ok:false, error:'도시 입구에서 도시 들어가기를 사용하세요.' }));
@@ -1981,15 +2004,16 @@ io.on('connection', (socket) => {
     const touchRadiusTiles = fromSea ? SEA_PORT_TOUCH_RADIUS_TILES : LAND_PORT_TOUCH_RADIUS_TILES;
     const near = entryPoints.some((point) => distanceXY(p.x, p.y, point.x, point.y) <= touchRadiusTiles * TILE);
     if (!near) return ack({ ok:false, error:`${place.name}에 더 가까이 이동하세요.` });
-    const destinationMode = fromSea ? 'land' : 'sea';
+    const destinationMode = fromSea ? 'city' : 'sea';
     const destinationPoint = fromSea ? safeLandSpawn(room, place) : safeHarborSpawn(room, place);
+    if (fromSea) p.cityReturnPoint = null;
     beginTimedTransition(p, {
-      kind:fromSea?'directDisembark':'directEmbark',
-      label:fromSea?`${place.name} 상륙 준비 중`:`${place.name} 승선 준비 중`,
+      kind:fromSea?'portEntry':'directEmbark',
+      label:fromSea?`${place.name} 입항 중`:`${place.name} 승선 준비 중`,
       durationGameMinutes:PORT_TRANSFER_GAME_MINUTES,
-      destinationMode, destinationPoint, lastCityIdAfter:place.id, shipPortIdAfter:place.id,
-      missionAfter:fromSea?`${place.name}에서 육상 탐험`:`${place.name}에서 항해`,
-      noticeAfter:fromSea?`${place.name}에 배를 정박하고 육상 탐험을 시작합니다.`:`${place.name}에 정박한 내 배에 승선했습니다.`
+      destinationMode, destinationPoint, cityIdAfter:fromSea ? place.id : null, lastCityIdAfter:place.id, shipPortIdAfter:place.id,
+      missionAfter:fromSea?`${place.name}에 정박`:`${place.name}에서 항해`,
+      noticeAfter:fromSea?`${place.name}에 입항했습니다. 배는 이 항구에 정박해 있습니다.`:`${place.name}에 정박한 내 배에 승선했습니다.`
     });
     ack({ ok:true, started:true, self:publicPlayer(p), port:place.name });
   });

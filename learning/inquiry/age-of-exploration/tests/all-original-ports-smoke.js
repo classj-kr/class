@@ -32,12 +32,12 @@ function ack(s,e,p={}){return new Promise((r,j)=>{const x=setTimeout(()=>j(new E
     const city=await once(s,'snapshot',x=>x.you.mode==='city'&&x.you.currentCityId===id,18000);
     assert.equal(city.you.currentCityName,name);
   }
-  const landStart=await ack(students[0],'startLandExpedition',{}); assert.equal(landStart.ok,true,landStart.error);
+  const landStart=await ack(students[0],'leaveCity',{}); assert.equal(landStart.ok,true,landStart.error);
   const land=await once(students[0],'snapshot',x=>x.you.mode==='land',18000); assert.equal(land.you.lastCityId,'lisbon');
   const landGate=await once(students[0],'snapshot',x=>x.you.mode==='land'&&x.portInteraction?.placeId==='lisbon');
   const back=await ack(students[0],'useCatalogPort',{placeId:landGate.portInteraction.placeId}); assert.equal(back.ok,true,back.error);
   const cityAgain=await once(students[0],'snapshot',x=>x.you.mode==='city'&&x.you.currentCityId==='lisbon',18000); assert.equal(cityAgain.you.currentCityName,'리스본');
-  const depart=await ack(students[0],'departPort',{}); assert.equal(depart.ok,true,depart.error);
+  const depart=await ack(students[0],'departCity',{}); assert.equal(depart.ok,true,depart.error);
   const sea=await once(students[0],'snapshot',x=>x.you.mode==='sea',18000); assert.equal(sea.you.lastCityId,'lisbon');
   console.log(JSON.stringify({ok:true,testedPorts:starts.map(x=>x[2]),landTransition:true,cityNames:true}));
   clearInterval(hb); teacher.disconnect(); students.forEach(s=>s.disconnect());

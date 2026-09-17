@@ -15,6 +15,8 @@ function ack(s,e,p={}){return new Promise((r,j)=>{const x=setTimeout(()=>j(new E
  const go=await ack(teacher,'teacherStartArrivalRace',{});assert.equal(go.ok,true,go.error);
  const sea=await once(student,'snapshot',x=>x.you.mode==='sea'&&x.portInteraction?.placeId==='lisbon');
  const landStart=await ack(student,'useCatalogPort',{placeId:sea.portInteraction.placeId});assert.equal(landStart.ok,true,landStart.error);
+ await once(student,'snapshot',x=>x.you.mode==='city'&&x.you.currentCityId==='lisbon'&&!x.you.transition,15000);
+ const walkOut=await ack(student,'leaveCity',{});assert.equal(walkOut.ok,true,walkOut.error);
  const land=await once(student,'snapshot',x=>x.you.mode==='land'&&x.cityInteraction?.placeId==='lisbon',15000);
  const enterAt=land.classGameMinutes;
  const entered=await ack(student,'enterCity',{placeId:'lisbon'});assert.equal(entered.ok,true,entered.error);assert.equal(entered.self.mode,'city');assert.equal(entered.self.transition,null);assert.match(entered.self.currentCityImage,/\/assets\/cities\/1520\/lisbon\.webp\?v=\d+$/);

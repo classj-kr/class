@@ -38,7 +38,7 @@ async function nextMatching(s,pred,timeout=6000){const end=Date.now()+timeout;wh
   const cityLater=await once(a,'snapshot');
   assert.ok(cityLater.classGameMinutes-cityClock>100,'class time must continue in city');
 
-  const depart=await ack(a,'departPort');
+  const depart=await ack(a,'departCity');
   assert.equal(depart.ok,true,depart.error);assert.ok(depart.self.transition);assert.equal(depart.self.mode,'city');
   const sea=await nextMatching(a,s=>s.you.mode==='sea'&&!s.you.transition,4000);
   assert.ok(sea.classGameMinutes>cityLater.classGameMinutes,'departure must consume time');
