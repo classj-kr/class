@@ -153,7 +153,7 @@
     "libraryRegion": "이베리아",
     "in1520": "포르투갈 왕국의 도읍 리스본",
     "todayCountry": "포르투갈",
-    "artKey": "eu-s-port"
+    "artKey": "landmark-lisbon"
   },
   {
     "id": "original_city_223",
@@ -891,7 +891,7 @@
     "libraryRegion": "",
     "in1520": "카스티야 왕국의 코르도바",
     "todayCountry": "스페인",
-    "artKey": "eu-s-in"
+    "artKey": "landmark-cordoba"
   },
   {
     "id": "original_city_217",
@@ -3860,7 +3860,7 @@
     "libraryRegion": "지중해",
     "in1520": "메디치 가문이 이끈 피렌체 공화국",
     "todayCountry": "이탈리아",
-    "artKey": "eu-s-in"
+    "artKey": "landmark-florence"
   },
   {
     "id": "original_city_193",
@@ -5973,7 +5973,7 @@
     "libraryRegion": "",
     "in1520": "신성 로마 제국의 자유 도시",
     "todayCountry": "독일",
-    "artKey": "eu-nw-in"
+    "artKey": "landmark-cologne"
   },
   {
     "id": "original_city_176",
@@ -6658,7 +6658,7 @@
     "libraryRegion": "",
     "in1520": "보헤미아 왕국의 도읍 프라하",
     "todayCountry": "체코",
-    "artKey": "eu-nw-in"
+    "artKey": "landmark-prague"
   },
   {
     "id": "original_city_170",
@@ -12908,7 +12908,7 @@
     "libraryRegion": "",
     "in1520": "킬와 술탄국 · 포르투갈에 조공",
     "todayCountry": "탄자니아",
-    "artKey": "swahili"
+    "artKey": "landmark-kilwa"
   },
   {
     "id": "original_city_118",
@@ -14613,7 +14613,7 @@
     "libraryRegion": "중근동·북아프리카",
     "in1520": "오스만 제국의 다마스쿠스",
     "todayCountry": "시리아",
-    "artKey": "ottoman"
+    "artKey": "landmark-damascus"
   },
   {
     "id": "original_city_104",
@@ -14961,7 +14961,7 @@
     "libraryRegion": "",
     "in1520": "오스만 제국의 보호를 받은 메디나",
     "todayCountry": "사우디아라비아",
-    "artKey": "arab-in"
+    "artKey": "landmark-medina"
   },
   {
     "id": "original_city_101",
@@ -19456,7 +19456,7 @@
     "libraryRegion": "",
     "in1520": "포르투갈 점령지 말라카",
     "todayCountry": "말레이시아",
-    "artKey": "sea-isle"
+    "artKey": "landmark-malacca"
   },
   {
     "id": "original_city_064",
@@ -19695,7 +19695,7 @@
     "libraryRegion": "",
     "in1520": "아유타야 왕국의 도읍",
     "todayCountry": "타이",
-    "artKey": "sea-bud"
+    "artKey": "landmark-ayutthaya"
   },
   {
     "id": "original_city_062",
@@ -22520,7 +22520,7 @@
     "originalName": "서안",
     "in1520": "명나라 서북의 큰 성벽 도시 서안",
     "todayCountry": "중국",
-    "artKey": "ming-in"
+    "artKey": "landmark-xian"
   },
   {
     "id": "original_city_040",
