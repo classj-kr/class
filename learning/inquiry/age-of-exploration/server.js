@@ -127,20 +127,20 @@ function discoveryListFor(roomCode, studentName) {
   return room.discoveries[studentName];
 }
 
-// 배나 탐험대가 가까이 가면 그 자리의 유적·지형을 알려 준다.
-function updateDiscoveries(p) {
-  if (!p || (p.mode !== 'sea' && p.mode !== 'land') || p.transition) return;
-  const found = discoveryListFor(p.roomCode, p.name);
+// 가까이 있는 유적·지형. 지나간다고 저절로 열리지 않고, 그 자리에서 눌러야 살펴본다.
+function nearbyDiscovery(p) {
+  if (!p || (p.mode !== 'sea' && p.mode !== 'land') || p.transition) return null;
+  let best = null;
+  let bestDistance = Infinity;
   for (const item of RESOLVED_DISCOVERIES) {
     if (item.reach !== 'any' && item.reach !== p.mode) continue;
-    if (found.includes(item.id)) continue;
-    if (distanceXY(p.x, p.y, item.x, item.y) > DISCOVERY_RADIUS_TILES * TILE) continue;
-    found.push(item.id);
-    store.scheduleSave();
-    setNotice(p, `발견! ${item.name}`);
-    io.to(p.id).emit('discovery', { id: item.id, name: item.name, kind: item.kind, in1520: item.in1520, text: item.text, total: RESOLVED_DISCOVERIES.length, found: found.length });
-    io.to(`teacher:${p.roomCode}`).emit('teacherEvent', { type: 'discovery', name: p.name, discovery: item.name, at: Date.now() });
+    const d = distanceXY(p.x, p.y, item.x, item.y);
+    if (d > DISCOVERY_RADIUS_TILES * TILE || d >= bestDistance) continue;
+    best = item;
+    bestDistance = d;
   }
+  if (!best) return null;
+  return { id: best.id, name: best.name, kind: best.kind, found: discoveryListFor(p.roomCode, p.name).includes(best.id) };
 }
 
 const CITY_ART_DIR = path.join(__dirname, 'public', 'assets', 'cities', '1520');
@@ -785,9 +785,20 @@ function sanitizeMission(payload, roomCode) {
 
 
 
+// 받침이 있는지 보고 조사를 골라 붙인다. "도시을(를)"처럼 적히지 않게 한다.
+function hasFinalConsonant(word) {
+  const text = String(word || '');
+  if (!text) return false;
+  const code = text.charCodeAt(text.length - 1) - 0xac00;
+  if (code < 0 || code > 11171) return false;
+  return code % 28 !== 0;
+}
+function josaEul(word) { return `${word}${hasFinalConsonant(word) ? '을' : '를'}`; }
+function josaEun(word) { return `${word}${hasFinalConsonant(word) ? '은' : '는'}`; }
+
 function catalogPlace(id, label = '지점') {
   const place = RESOLVED_PLACES.get(String(id || ''));
-  if (!place) throw new Error(`${label}을(를) 지명 목록에서 선택하세요.`);
+  if (!place) throw new Error(`${josaEul(label)} 지명 목록에서 선택하세요.`);
   return place;
 }
 
@@ -971,7 +982,7 @@ function buildStartChoiceSet(payload, roomCode) {
   const startOptions = starts.map((start) => {
     const config = { ...configBase };
     if (['transport', 'supply_landmark', 'sea_route'].includes(config.templateId)) config.sourcePlaceId = start.id;
-    if (config.targetPlaceId === start.id) throw new Error(`${start.name}은(는) 목적지와 같아 출발 도시로 사용할 수 없습니다.`);
+    if (config.targetPlaceId === start.id) throw new Error(`${josaEun(start.name)} 목적지와 같아 출발 도시로 사용할 수 없습니다.`);
     const mission = buildGeneratedMission({ ...config, title: commonTitle }, roomCode);
     mission.startPlace = {
       id:start.id,
@@ -1007,7 +1018,7 @@ function buildArrivalRace(payload, roomCode) {
   const starts = unique.map((id) => {
     const place = catalogPlace(id, '출발 도시');
     if (place.canEnterFromSea !== true) throw new Error('출발지는 항구 도시만 선택할 수 있습니다.');
-    if (place.id === target.id) throw new Error(`${place.name}은(는) 도착지와 같아 출발 도시로 사용할 수 없습니다.`);
+    if (place.id === target.id) throw new Error(`${josaEun(place.name)} 도착지와 같아 출발 도시로 사용할 수 없습니다.`);
     return place;
   });
   const targetMode = target.access === 'land' ? 'land' : 'sea';
@@ -1216,6 +1227,7 @@ function activeMissionState(roomCode, studentName, player = null) {
     progress: publicProgress(progress, mission),
     interaction: player && mission ? missionInteractionForPlayer(player, mission, progress) : null,
     cityInteraction: player ? cityInteractionForPlayer(player) : null,
+    discoveryInteraction: player ? nearbyDiscovery(player) : null,
     portInteraction: player ? nearbyCatalogPort(player) : null
   };
 }
@@ -1812,6 +1824,24 @@ io.on('connection', (socket) => {
     p.input = { up: false, down: false, left: false, right: false };
     p.lastInputAt = Date.now();
     p.lastSeen = Date.now();
+  });
+
+  socket.on('inspectDiscovery', (payload, ack = () => {}) => {
+    const p = playerForSocket(socket);
+    if (!p) return ack({ ok:false, error:'접속 상태가 아닙니다.' });
+    const item = RESOLVED_DISCOVERIES.find((entry) => entry.id === String(payload?.id || ''));
+    if (!item) return ack({ ok:false, error:'그런 곳을 찾지 못했습니다.' });
+    if (item.reach !== 'any' && item.reach !== p.mode) return ack({ ok:false, error: item.reach === 'sea' ? '배를 타고 가야 살펴볼 수 있습니다.' : '뭍에 내려서 가야 살펴볼 수 있습니다.' });
+    if (distanceXY(p.x, p.y, item.x, item.y) > DISCOVERY_RADIUS_TILES * TILE) return ack({ ok:false, error:`${item.name}에 더 가까이 가세요.` });
+    const found = discoveryListFor(p.roomCode, p.name);
+    const first = !found.includes(item.id);
+    if (first) {
+      found.push(item.id);
+      store.scheduleSave();
+      setNotice(p, `발견! ${item.name}`);
+      io.to(`teacher:${p.roomCode}`).emit('teacherEvent', { type:'discovery', name:p.name, discovery:item.name, at:Date.now() });
+    }
+    ack({ ok:true, first, discovery:{ id:item.id, name:item.name, kind:item.kind, in1520:item.in1520, text:item.text }, found:found.length, total:RESOLVED_DISCOVERIES.length, self:publicPlayer(p) });
   });
 
   socket.on('stop', () => {
@@ -2641,7 +2671,6 @@ setInterval(() => {
     for (const p of room.values()) {
       updateTimedTransition(p, classMinutes);
       movePlayer(p, dt);
-      updateDiscoveries(p);
       updateFatigue(p, dt);
       updateMissionProgress(roomCode, p);
     }

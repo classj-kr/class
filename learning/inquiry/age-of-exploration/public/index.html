@@ -83,7 +83,7 @@ button,input{font:inherit}button{border:1px solid var(--line);background:#17313b
 <div id="zoom"><button id="minus" aria-label="축소">−</button><button id="plus" aria-label="확대">＋</button><button id="home" aria-label="현재 임무 지점">⌂</button></div>
 <div id="bgmControl" class="unified-music-control locked" aria-label="배경음악 조절"><div class="unified-audio-group"><button id="bgmMuteBtn" class="unified-audio-toggle" type="button" aria-label="음악 음소거">♪</button><input id="bgmVolumeSlider" class="unified-audio-slider" type="range" min="0" max="1" step="0.01" aria-label="음악 음량"></div></div>
 <div id="pad"><button class="blank"></button><button data-dir="up">▲</button><button class="blank"></button><button data-dir="left">◀</button><button data-dir="stop">■</button><button data-dir="right">▶</button><button class="blank"></button><button data-dir="down">▼</button><button class="blank"></button></div>
-<div id="missionActionPrompt" class="actionPrompt panel"><span id="missionActionText"><b>행동</b></span><button id="cityActionBtn" hidden>도시 들어가기</button><button id="missionActionBtn" hidden>확인 Enter</button></div>
+<div id="missionActionPrompt" class="actionPrompt panel"><span id="missionActionText"><b>행동</b></span><button id="cityActionBtn" hidden>도시 들어가기</button><button id="discoveryActionBtn" hidden>살펴보기</button><button id="missionActionBtn" hidden>확인 Enter</button></div>
 <section id="cityView" aria-label="도시 내부">
   <div id="cityCard">
     <img id="cityScene" alt="도시 내부">
@@ -125,7 +125,7 @@ button,input{font:inherit}button{border:1px solid var(--line);background:#17313b
 <script src="/learn/world-voyage/js/ocean-current.js"></script>
 <script src="/learn/world-voyage/js/wind.js?v=77"></script>
 <script src="/learn/world-voyage/js/bgm.js?v=72"></script>
-<script src="/learn/world-voyage/js/library-history.js?v=77"></script>
+<script src="/learn/world-voyage/js/library-history.js?v=79"></script>
 <script>
 'use strict';
 const {WORLD_W:WW,WORLD_H:WH,TILE:TS,WORLD_PIXEL_W:SPAN,WORLD_PIXEL_H:MAP_H,SPEED:TERRAIN_SPEED,LABEL:TERRAIN_LABEL}=UW3Terrain;
@@ -135,7 +135,7 @@ const canvas=document.getElementById('game'),ctx=canvas.getContext('2d',{alpha:f
 const loading=document.getElementById('loading'),join=document.getElementById('join'),joinForm=document.getElementById('joinCard');
 const entryModes=document.getElementById('entryModes'),joinFields=document.getElementById('joinFields'),roomField=document.getElementById('roomField'),roomTypeField=document.getElementById('roomTypeField'),hostBar=document.getElementById('hostBar'),hostCode=document.getElementById('hostCode'),hostStartBtn=document.getElementById('hostStartBtn'),discoveryView=document.getElementById('discoveryView'),discoveryName=document.getElementById('discoveryName'),discoveryKind=document.getElementById('discoveryKind'),discoveryText=document.getElementById('discoveryText'),discoveryCount=document.getElementById('discoveryCount'),discoveryClose=document.getElementById('discoveryClose'),roomInput=document.getElementById('roomCode'),joinStartBtn=document.getElementById('joinStartBtn'),modeBackBtn=document.getElementById('modeBackBtn'),joinError=document.getElementById('joinError');
 const identity=document.getElementById('identity'),net=document.getElementById('net'),onlineEl=document.getElementById('online'),nearbyEl=document.getElementById('nearby'),onlineGroup=document.getElementById('onlineGroup'),nearbyGroup=document.getElementById('nearbyGroup'),coord=document.getElementById('coord'),clockGroup=document.getElementById('clockGroup'),clockEl=document.getElementById('clock'),speedValue=document.getElementById('speedValue'),terrainHud=document.getElementById('terrainHud'),currentHud=document.getElementById('currentHud'),windHud=document.getElementById('windHud'),fatigueValue=document.getElementById('fatigueValue'),fatigueFill=document.getElementById('fatigueFill'),modeHud=document.getElementById('modeHud'),missionEl=document.getElementById('mission'),messageLines=document.getElementById('messageLines');
-const missionActionPrompt=document.getElementById('missionActionPrompt'),missionActionText=document.getElementById('missionActionText'),missionActionBtn=document.getElementById('missionActionBtn'),cityActionBtn=document.getElementById('cityActionBtn');
+const missionActionPrompt=document.getElementById('missionActionPrompt'),missionActionText=document.getElementById('missionActionText'),missionActionBtn=document.getElementById('missionActionBtn'),cityActionBtn=document.getElementById('cityActionBtn'),discoveryActionBtn=document.getElementById('discoveryActionBtn');
 const cityView=document.getElementById('cityView'),cityScene=document.getElementById('cityScene'),cityTitle=document.getElementById('cityTitle'),cityInfo=document.getElementById('cityInfo'),libraryBtn=document.getElementById('libraryBtn'),leaveCityBtn=document.getElementById('leaveCityBtn'),departCityBtn=document.getElementById('departCityBtn'),libraryView=document.getElementById('libraryView'),libraryTitle=document.getElementById('libraryTitle'),libraryHint=document.getElementById('libraryHint'),libraryClose=document.getElementById('libraryClose'),bookList=document.getElementById('bookList'),bookTitle=document.getElementById('bookTitle'),bookMeta=document.getElementById('bookMeta'),bookIntro=document.getElementById('bookIntro'),bookSections=document.getElementById('bookSections'),messageWindow=document.getElementById('messageWindow');
 const missionPanel=document.getElementById('missionPanel'),missionToggle=document.getElementById('missionToggle'),missionBanner=document.getElementById('missionBanner'),missionTitle=document.getElementById('missionTitle'),missionMeta=document.getElementById('missionMeta'),missionInstructions=document.getElementById('missionInstructions'),missionTarget=document.getElementById('missionTarget'),missionFeedback=document.getElementById('missionFeedback'),missionClose=document.getElementById('missionClose');
 const pauseOverlay=document.getElementById('pauseOverlay'),lockTitle=document.getElementById('lockTitle'),lockDetail=document.getElementById('lockDetail'),transitionOverlay=document.getElementById('transitionOverlay'),transitionLabel=document.getElementById('transitionLabel'),transitionFill=document.getElementById('transitionFill');
@@ -198,7 +198,7 @@ const DESKTOP_MAP_ZOOM=1.0,MOBILE_MAP_ZOOM_PORTRAIT=.68,MOBILE_MAP_ZOOM_LANDSCAP
 function isPhoneMapView(){return (matchMedia('(pointer:coarse)').matches||innerWidth<=650)&&Math.min(innerWidth,innerHeight)<=650}
 function recommendedMapZoom(){if(!isPhoneMapView())return DESKTOP_MAP_ZOOM;return innerWidth>innerHeight?MOBILE_MAP_ZOOM_LANDSCAPE:MOBILE_MAP_ZOOM_PORTRAIT}
 function minimumMapZoom(){return isPhoneMapView()?MOBILE_MIN_ZOOM:DESKTOP_MIN_ZOOM}
-let world=null,assetsReady=false,discoveryCatalog=new Map(),discoveryQueue=[],joined=false,dpr=1,zoom=recommendedMapZoom(),zoomManuallyAdjusted=false,last=performance.now(),mode='sea',sessionMode='',entryMode='',roomType='race',isHost=false,chosenRoomType='',lastLocalBlock=0,lastNoticeSeq=0,roomCodeCurrent='',lastModeMessage=null,lastTerrainMessage=null,lastFatigueBand=0,mapCities=[];
+let world=null,assetsReady=false,discoveryCatalog=new Map(),discoveryPoints=[],discoveryInteraction=null,joined=false,dpr=1,zoom=recommendedMapZoom(),zoomManuallyAdjusted=false,last=performance.now(),mode='sea',sessionMode='',entryMode='',roomType='race',isHost=false,chosenRoomType='',lastLocalBlock=0,lastNoticeSeq=0,roomCodeCurrent='',lastModeMessage=null,lastTerrainMessage=null,lastFatigueBand=0,mapCities=[];
 let self=null,serverSelf=null,remote=new Map(),lastSnapshotAt=0,activeMission=null,missionProgress=null,missionInteraction=null,cityInteraction=null,portInteraction=null,classGameMinutes=0,clockAnchorGameMinutes=0,clockAnchorAt=performance.now(),classSettings={paused:false,locked:false};
 let libraryCatalog={books:[]},cityCatalogById=new Map(),renderedCityId='',openedBookId='',finalQuizSubmitting=false,dismissedFinalQuizMissionId='',lastFinalQuizRenderKey='',finalQuizSaveTimer=0;
 let bgmState={muted:false,volume:.6,unlocked:false};
@@ -484,11 +484,14 @@ function applyModeUI(){
   const missionVisible=!inCity&&!busy&&!!missionInteraction?.canInteract;
   const cityVisible=!inCity&&!busy&&!!cityInteraction?.canUse;
   const portVisible=!inCity&&!busy&&!!portInteraction;
+  const discoveryVisible=!inCity&&!busy&&!!discoveryInteraction;
   const missionReady=missionVisible&&interactionEnabled;
   const cityReady=cityVisible&&interactionEnabled;
   const portReady=portVisible&&portInteraction.canUse!==false&&interactionEnabled;
   const portBlocked=portVisible&&(portInteraction.canUse===false||!interactionEnabled);
-  missionActionPrompt.classList.toggle('show',missionVisible||cityVisible||portVisible);
+  missionActionPrompt.classList.toggle('show',missionVisible||cityVisible||portVisible||discoveryVisible);
+  discoveryActionBtn.hidden=!discoveryVisible;discoveryActionBtn.disabled=!discoveryVisible;
+  if(discoveryVisible)discoveryActionBtn.textContent=`${discoveryInteraction.name} 살펴보기`;
   cityActionBtn.hidden=!cityVisible;cityActionBtn.disabled=!cityReady;
   missionActionBtn.hidden=!(missionVisible||portVisible);missionActionBtn.disabled=false;
   if(missionVisible){missionActionText.innerHTML=`<b>${escapeHtml(missionInteraction.placeName)}</b>`;missionActionBtn.textContent=`${missionInteraction.actionLabel} Enter`;missionActionBtn.disabled=!missionReady;}
@@ -496,6 +499,7 @@ function applyModeUI(){
   else if(cityVisible){missionActionText.innerHTML=`<b>${escapeHtml(cityInteraction.placeName)}</b>`;}
   else if(portVisible&&portInteraction.canUse!==false){missionActionText.innerHTML=`<b>${escapeHtml(portInteraction.placeName)}</b>`;missionActionBtn.textContent=`${portInteraction.actionLabel} Enter`;missionActionBtn.disabled=!portReady;}
   else if(portBlocked){missionActionText.innerHTML=`<b>${escapeHtml(portInteraction.placeName)}</b> · ${escapeHtml(portInteraction.message||'이 항구에는 내 배가 없습니다.')}`;missionActionBtn.textContent='승선 불가';missionActionBtn.disabled=true;}
+  else if(discoveryVisible){missionActionText.innerHTML=`<b>${escapeHtml(discoveryInteraction.name)}</b>${discoveryInteraction.found?' · 이미 찾은 곳':''}`;}
   if(!self)return;
   const medal=missionProgress?.status==='completed'?`${medalText(missionProgress.finishRank)} `:'';
   identity.textContent=mode==='sea'?`${roomCodeCurrent} · ${medal}${self.name}의 배`:mode==='city'?`${roomCodeCurrent} · ${medal}${self.name} · ${serverSelf?.currentCityName||'도시'}`:`${roomCodeCurrent} · ${medal}${self.name} 탐험대`;
@@ -505,7 +509,7 @@ function applyModeUI(){
 }
 
 async function ungzipResponse(url){const response=await fetch(url);if(!response.ok)throw new Error('지도 파일을 받지 못했습니다.');if(!('DecompressionStream' in window))throw new Error('최신 Chrome이 필요합니다.');const ds=new DecompressionStream('gzip');return await new Response(response.body.pipeThrough(ds)).arrayBuffer()}
-Promise.all([ungzipResponse('/learn/world-voyage/assets/maps/world.cds.gz?v=58'),ungzipResponse('/learn/world-voyage/assets/maps/natural-earth-land-mask-v59.bin.gz?v=61'),naturalMapOverview.decode(),shipAtlas.decode(),windCloudAtlas.decode(),fetch('/learn/world-voyage/api/mission-catalog?v=78').then(r=>{if(!r.ok)throw new Error('도시 목록을 받지 못했습니다.');return r.json()}),fetch('/learn/world-voyage/data/library-books.json?v=78').then(r=>{if(!r.ok)throw new Error('도서관 자료를 받지 못했습니다.');return r.json()})]).then(([buf,landMask,_map,_s,_w,catalog,books])=>{world=new Uint16Array(buf);if(world.length!==WW*WH)throw new Error('지도 크기 불일치');UW3Terrain.setNaturalEarthLandMask(new Uint8Array(landMask));mapCities=(catalog.places||[]).filter(p=>p.isOriginalCity&&p.displayOnMap&&p.cityPoint);cityCatalogById=new Map((catalog.places||[]).filter(p=>p.isOriginalCity).map(p=>[p.id,p]));libraryCatalog=books||{books:[]};discoveryCatalog=new Map((catalog.discoveries||[]).map(d=>[d.id,d]));assetsReady=true;loading.remove()}).catch(err=>{loading.textContent='불러오기 실패: '+err.message;console.error(err)});
+Promise.all([ungzipResponse('/learn/world-voyage/assets/maps/world.cds.gz?v=58'),ungzipResponse('/learn/world-voyage/assets/maps/natural-earth-land-mask-v59.bin.gz?v=61'),naturalMapOverview.decode(),shipAtlas.decode(),windCloudAtlas.decode(),fetch('/learn/world-voyage/api/mission-catalog?v=78').then(r=>{if(!r.ok)throw new Error('도시 목록을 받지 못했습니다.');return r.json()}),fetch('/learn/world-voyage/data/library-books.json?v=79').then(r=>{if(!r.ok)throw new Error('도서관 자료를 받지 못했습니다.');return r.json()})]).then(([buf,landMask,_map,_s,_w,catalog,books])=>{world=new Uint16Array(buf);if(world.length!==WW*WH)throw new Error('지도 크기 불일치');UW3Terrain.setNaturalEarthLandMask(new Uint8Array(landMask));mapCities=(catalog.places||[]).filter(p=>p.isOriginalCity&&p.displayOnMap&&p.cityPoint);cityCatalogById=new Map((catalog.places||[]).filter(p=>p.isOriginalCity).map(p=>[p.id,p]));libraryCatalog=books||{books:[]};discoveryCatalog=new Map((catalog.discoveries||[]).map(d=>[d.id,d]));discoveryPoints=(catalog.discoveries||[]).map(d=>({...d,x:((d.lon+180)/360)*SPAN,y:((90-d.lat)/180)*MAP_H}));assetsReady=true;loading.remove()}).catch(err=>{loading.textContent='불러오기 실패: '+err.message;console.error(err)});
 
 socket.on('connect',()=>{net.textContent='● 서버 연결';net.className='good'});
 socket.on('disconnect',()=>{net.textContent='● 재연결 중';net.className='bad';startChoicePending=false;pendingStartChoice=null;startChoiceRollback=null;for(const card of missionPanel.querySelectorAll('.missionChoiceCard')){card.disabled=false;card.classList.remove('isSelecting')}if(awaitingStartChoice()){missionFeedback.className='bad';missionFeedback.textContent='서버 연결이 끊겼습니다. 재연결 후 다시 선택하세요.'}});
@@ -515,19 +519,26 @@ socket.on('missionStarted',data=>{applyMissionState(data?.mission||activeMission
 socket.on('missionCleared',()=>{applyMissionState(null,null,false);showToast('방장이 현재 미션을 종료했습니다.')});
 socket.on('missionProgress',data=>{applyMissionState(data?.mission||activeMission,data?.progress||missionProgress,false)});
 socket.on('classControl',applyClassSettings);
-socket.on('discovery',data=>{discoveryQueue.push(data);if(!discoveryView.classList.contains('show'))showNextDiscovery()});
-function showNextDiscovery(){
-  const item=discoveryQueue.shift();
-  if(!item){discoveryView.classList.remove('show');return}
-  discoveryName.textContent=`발견! ${item.name}`;discoveryKind.textContent=[item.kind,item.in1520].filter(Boolean).join(' · ');discoveryText.textContent=item.text||'';
-  discoveryCount.textContent=`지금까지 찾은 것 ${item.found}곳 / 모두 ${item.total}곳`;
+function showDiscovery(item,found,total,first){
+  discoveryName.textContent=`${first?'발견! ':''}${item.name}`;discoveryKind.textContent=[item.kind,item.in1520].filter(Boolean).join(' · ');discoveryText.textContent=item.text||'';
+  discoveryCount.textContent=`지금까지 찾은 것 ${found}곳 / 모두 ${total}곳`;
   discoveryView.classList.add('show');clearKeys();
 }
-discoveryClose.addEventListener('click',showNextDiscovery);
+discoveryClose.addEventListener('click',()=>discoveryView.classList.remove('show'));
+discoveryView.addEventListener('pointerdown',e=>{if(e.target===discoveryView)discoveryView.classList.remove('show')});
+function doDiscoveryAction(){
+  if(!discoveryInteraction)return;clearKeys();
+  socket.emit('inspectDiscovery',{id:discoveryInteraction.id},result=>{
+    if(!result?.ok){showToast(result?.error||'살펴보지 못했습니다.','warn');return}
+    if(result.self){serverSelf=result.self;self={...result.self}}
+    showDiscovery(result.discovery,result.found,result.total,result.first);
+  });
+}
+discoveryActionBtn.addEventListener('click',doDiscoveryAction);
 socket.on('snapshot',snap=>{
   if(!joined)return;
   serverSelf=snap.you;sessionMode=snap.sessionMode||sessionMode;roomType=snap.roomType||roomType;roomCodeCurrent=snap.roomLabel||roomCodeCurrent;syncClassClock(snap.classGameMinutes);
-  applyMissionState(snap.mission,snap.progress,false);missionInteraction=snap.interaction||null;cityInteraction=snap.cityInteraction||null;portInteraction=snap.portInteraction||null;applyClassSettings(snap.settings);
+  applyMissionState(snap.mission,snap.progress,false);missionInteraction=snap.interaction||null;cityInteraction=snap.cityInteraction||null;discoveryInteraction=snap.discoveryInteraction||null;portInteraction=snap.portInteraction||null;applyClassSettings(snap.settings);
   const previousMode=mode;mode=serverSelf.mode;if(previousMode!==mode){showToast(mode==='sea'?'배에 올라 항해를 시작했습니다.':mode==='land'?'탐험대가 육상 탐험을 시작했습니다.':'도시에 들어왔습니다.','system')}
   if(!self)self={...serverSelf};
   const ex=dxWrap(serverSelf.x,self.x),ey=serverSelf.y-self.y,err=Math.hypot(ex,ey);
@@ -649,7 +660,7 @@ function drawMap(cw,ch){
   const marker=stageMarker?{...stageMarker.point,radiusTiles:activeMission.markerMode==='area'?18:(stageMarker.radiusTiles||2.5),label:stageMarker.placeName,mode:stageMarker.mode}:activeMission?.target;
   const showMarker=marker&&(activeMission?.kind!=='staged'||activeMission.markerMode!=='hidden')&&(marker.mode==='any'||!marker.mode||marker.mode===mode||activeMission?.mode==='any');
   if(showMarker){const mx=(self.x+dxWrap(marker.x,self.x)-left)*zoom,my=(marker.y-top)*zoom;if(mx>-100&&mx<cw+100&&my>-100&&my<ch+100){ctx.save();ctx.strokeStyle=missionProgress?.status==='completed'?'#9fe1b0':'#ffdc79';ctx.fillStyle='#07141acc';ctx.lineWidth=3;ctx.beginPath();ctx.arc(mx,my,Math.max(10,(marker.radiusTiles||2)*TS*zoom),0,Math.PI*2);ctx.stroke();ctx.font='bold 12px "Malgun Gothic"';ctx.textAlign='center';ctx.fillRect(mx-78,my-31,156,19);ctx.fillStyle='#fff3c2';ctx.fillText(marker.label||'학습 지점',mx,my-17);ctx.restore()}}
-  drawCityLabels(cw,ch,left,top);
+  drawDiscoveryMarkers(cw,ch,left,top);drawCityLabels(cw,ch,left,top);
   return {left,top};
 }
 
@@ -694,6 +705,24 @@ function drawWindClouds(cw,ch,left,top,now=performance.now()){
     // 원작 스프라이트는 큰 구름 6프레임과 작은 구름 6프레임이다. 서로 섞지 않고 각각 순환한다.
     const small=hashUnit(cx,cy,67)>.58,sequenceBase=small?6:0,frameOffset=Math.floor(hashUnit(cx,cy,69)*WIND_CLOUD_SEQUENCE_FRAMES),frame=sequenceBase+(Math.floor(now/WIND_CLOUD_FRAME_MS)+frameOffset)%WIND_CLOUD_SEQUENCE_FRAMES,sx=(frame%2)*WIND_CLOUD_FRAME_W,sy=Math.floor(frame/2)*WIND_CLOUD_FRAME_H,scale=(small?.72:1.0)*(.72+hashUnit(cx,cy,71)*.58),w=150*scale*Math.max(.75,Math.min(1.22,zoom*.72)),h=w*(WIND_CLOUD_FRAME_H/WIND_CLOUD_FRAME_W),edgeFade=Math.pow(Math.max(0,Math.sin(Math.PI*phase)),.45);
     ctx.globalAlpha=(.22+.30*wind.strength)*edgeFade;ctx.drawImage(windCloudAtlas,sx,sy,WIND_CLOUD_FRAME_W,WIND_CLOUD_FRAME_H,Math.round(screen.x-w/2),Math.round(screen.y-h/2),Math.round(w),Math.round(h));
+  }
+  ctx.restore();
+}
+
+function drawDiscoveryMarkers(cw,ch,left,top){
+  if(!discoveryPoints.length||!self)return;
+  const found=new Set(Array.isArray(serverSelf?.discoveryIds)?serverSelf.discoveryIds:[]);
+  ctx.save();ctx.textAlign='center';ctx.textBaseline='bottom';ctx.font=`${zoom>=2.4?'bold 11px':'bold 9px'} "Malgun Gothic",sans-serif`;
+  for(const item of discoveryPoints){
+    const sx=(self.x+dxWrap(item.x,self.x)-left)*zoom,sy=(item.y-top)*zoom;
+    if(sx<-60||sx>cw+60||sy<-40||sy>ch+40)continue;
+    const done=found.has(item.id),size=done?3.5:4.2;
+    ctx.beginPath();ctx.moveTo(sx,sy-size);ctx.lineTo(sx+size,sy);ctx.lineTo(sx,sy+size);ctx.lineTo(sx-size,sy);ctx.closePath();
+    ctx.fillStyle=done?'#8fd6a5':'#f0c04a';ctx.strokeStyle='#07141a';ctx.lineWidth=1.5;ctx.fill();ctx.stroke();
+    if(zoom>=2.2){
+      ctx.fillStyle=done?'#b6ecc4':'#ffe3a0';ctx.strokeStyle='#07141a';ctx.lineWidth=3;
+      ctx.strokeText(item.name,Math.round(sx),Math.round(sy-8));ctx.fillText(item.name,Math.round(sx),Math.round(sy-8));
+    }
   }
   ctx.restore();
 }
