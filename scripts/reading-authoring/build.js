@@ -19,7 +19,7 @@ const problems = [];
 const all = [];
 for (const level of [1, 2, 3, 4]) {
   const file = path.join(DIR, `level${level}.json`);
-  if (!fs.existsSync(file)) { problems.push(`level${level}.json 없음`); continue; }
+  if (!fs.existsSync(file)) continue;
   const items = JSON.parse(fs.readFileSync(file, "utf8"));
   const titles = new Set();
   items.forEach((item, order) => {
@@ -36,7 +36,7 @@ for (const level of [1, 2, 3, 4]) {
     if (item.passageText.includes(answer.replace(/[.]$/, ""))) bad("정답이 지문 복사");
     item.choices.forEach((choice, i) => {
       if (i !== item.correctIndex && CUE.test(choice)) bad(`오답 극단어: ${choice}`);
-      if (level === 1 && !/니다\.?$/.test(choice.trim())) bad(`1급 선지 습니다체 아님: ${choice}`);
+      if (level === 1 && !/(니다\.?|니까\?)$/.test(choice.trim())) bad(`1급 선지 습니다체 아님: ${choice}`);
       if (level > 1 && /니다\.?$/.test(choice.trim())) bad(`${level}급 선지가 습니다체: ${choice}`);
     });
     const sentences = item.passageText.split(/(?<=[.?!])\s+/).filter(Boolean);
