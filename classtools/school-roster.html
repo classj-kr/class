@@ -70,7 +70,7 @@
         .tabs {
             display: flex;
             gap: 2px;
-            flex: 1 1 auto;
+            flex: 0 1 auto;
             min-width: 0;
             overflow-x: auto;
         }
@@ -146,12 +146,23 @@
             margin-bottom: 14px;
         }
         .filter-select {
-            padding: 8px 12px;
+            padding: 6px 10px;
             border: 1px solid var(--line);
             border-radius: 8px;
             background: var(--paper);
             color: var(--ink);
-            min-height: 44px;
+            min-height: 36px;
+        }
+        .top-actions { flex: 1 1 auto; min-width: 0; }
+        .top-actions .roster-toolbar { margin: 0; }
+        .tab-toolbar { display: none; }
+        .tab-toolbar.active { display: flex; }
+        .toolbar-desc { margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; flex: 0 1 auto; }
+        .toolbar-buttons { display: flex; gap: 8px; flex-wrap: wrap; margin-left: auto; }
+        @media (max-width: 1500px) { .toolbar-desc { display: none; } }
+        @media (max-width: 1150px) {
+            .top-bar { flex-wrap: wrap; }
+            .top-actions { order: 3; flex-basis: 100%; }
         }
         .paste-hint {
             font-size: 12px;
@@ -172,7 +183,7 @@
 
         .roster-table-wrap {
             overflow: auto;
-            max-height: calc(100vh - 240px);
+            max-height: calc(100vh - 150px);
             border: 1px solid var(--line);
             border-radius: 12px;
             background: var(--paper);
@@ -184,9 +195,11 @@
         }
         .roster-table th {
             background: var(--canvas);
-            color: var(--muted);
-            font-weight: 700;
-            font-size: 11px;
+            color: var(--ink, #1f2937);
+            font-weight: 800;
+            font-size: 12.5px;
+            z-index: 2;
+            box-shadow: inset 0 -1px 0 var(--line);
             text-align: left;
             padding: 8px 10px;
             border-bottom: 1px solid var(--line);
@@ -201,6 +214,31 @@
         }
         .roster-table tr:last-child td { border-bottom: none; }
         .roster-table tr:hover td { background: var(--brand-soft); }
+        /* 학생 명단 칸: 평소엔 글자처럼, 가리키거나 고칠 때만 입력창으로 보인다 */
+        #rosterBody td { padding: 2px 8px; }
+        #rosterBody tr.class-divider td {
+            padding: 7px 12px; background: var(--brand-soft); color: var(--brand);
+            font-weight: 800; font-size: 12.5px;
+            border-top: 2px solid var(--brand); border-bottom: 1px solid var(--line);
+        }
+        #rosterBody tr.class-divider:hover td { background: var(--brand-soft); }
+        #rosterBody tr.class-divider .count { color: var(--muted); font-weight: 600; margin-left: 6px; }
+        #rosterBody select.roster-cell-input { height: 28px; min-height: 0; padding: 0 4px !important; }
+        #rosterBody .delete-item-btn { min-height: 0; min-width: 0; height: 28px; width: 28px; padding: 0; }
+        #rosterBody .linked-badge { flex: none; white-space: nowrap; }
+        .roster-table .num-col { width: 1%; white-space: nowrap; }
+        .roster-table .email-col { min-width: 240px; }
+        .roster-table .guardian-col { min-width: 170px; }
+        .student-cell {
+            font: inherit; font-size: 13px; color: inherit;
+            padding: 3px 6px; border: 1px solid transparent; border-radius: 4px;
+            background: transparent;
+        }
+        .student-cell::placeholder { color: #c4c9c6; }
+        .student-cell:hover { border-color: #d1d5db; background: white; }
+        .student-cell:focus { border-color: var(--brand); background: white; outline: none; box-shadow: 0 0 0 2px var(--brand-soft); }
+        .student-cell.email { width: 100%; font-family: Consolas, "D2Coding", monospace; font-size: 12px; }
+        .student-cell.invalid { background: #fdecec; border-color: #f1b5b5; color: #a61b1b; }
         .linked-badge {
             display: inline-flex; align-items: center; gap: 3px;
             font-size: 11px; font-weight: 700;
@@ -404,6 +442,43 @@
         <button class="tab-btn" id="tab-teachers" onclick="switchTab('teachers')">👩‍🏫 교사 명단</button>
         <button class="tab-btn" id="tab-settings" onclick="switchTab('settings')">⚙️ 학교 설정</button>
     </nav>
+    <!-- 탭마다의 필터·버튼. 상단 바와 한 줄에 두어 명단이 한 화면에 더 들어오게 한다 -->
+    <div class="top-actions">
+        <div class="roster-toolbar tab-toolbar active" data-tab="roster">
+            <select class="filter-select" id="filterGrade" onchange="renderRosterTable()">
+                <option value="">전체 학년</option>
+                <option>1학년</option><option>2학년</option><option>3학년</option>
+                <option>4학년</option><option>5학년</option><option>6학년</option>
+            </select>
+            <select class="filter-select" id="filterClass" onchange="renderRosterTable()">
+                <option value="">전체 반</option>
+            </select>
+            <span class="status-msg" id="rosterStatus"></span>
+            <span class="card-desc toolbar-desc" id="rosterDesc">전교생 통합 명단 (수정은 학교 관리자만 가능)</span>
+            <div class="toolbar-buttons" id="rosterAdminActions">
+                <button class="btn btn-secondary btn-sm" id="downloadTemplateBtn" onclick="downloadExcelTemplate()">📊 엑셀 양식 다운로드</button>
+                <button class="btn btn-secondary btn-sm" id="pasteSectionBtn" onclick="togglePasteSection()">📥 붙여넣기로 입력</button>
+                <button class="btn btn-secondary btn-sm" id="addStudentBtn" onclick="addSingleStudent()" style="display:none;">+ 학생 추가</button>
+                <button class="btn btn-primary btn-sm" id="saveRosterBtn" onclick="saveRoster()" style="display:none;">💾 저장</button>
+            </div>
+        </div>
+        <div class="roster-toolbar tab-toolbar" data-tab="teachers">
+            <span class="card-desc toolbar-desc">교직원 통합 명단 (담임·전담·관리자 구분, 구글 계정 관리)</span>
+            <span class="status-msg" id="teacherRosterStatus"></span>
+            <div class="toolbar-buttons" id="teacherAdminActions">
+                <button class="btn btn-secondary btn-sm" id="toggleTeacherPasteBtn" onclick="toggleTeacherPasteSection()">📥 붙여넣기로 입력</button>
+                <button class="btn btn-secondary btn-sm" id="addTeacherBtn" onclick="addTeacherRow()">+ 교사 추가</button>
+                <button class="btn btn-primary btn-sm" id="saveTeacherRosterBtn" onclick="saveTeacherRoster()">💾 저장</button>
+            </div>
+        </div>
+        <div class="roster-toolbar tab-toolbar" data-tab="settings">
+            <span class="card-desc toolbar-desc" id="settingsDesc">명단 소속 열·결재선·특별실 설정 (변경은 학교 관리자만 가능)</span>
+            <span class="status-msg" id="settingsStatus"></span>
+            <div class="toolbar-buttons" id="settingsAdminActions">
+                <button class="btn btn-primary btn-sm" id="saveSettingsBtn" onclick="saveSettings()">💾 설정 저장</button>
+            </div>
+        </div>
+    </div>
     <div style="display:flex;align-items:center;gap:10px;flex:none;">
         <select class="year-select" id="yearSelect"></select>
         <div id="userInfo" style="font-size:12px;color:var(--muted);white-space:nowrap;"></div>
@@ -416,26 +491,6 @@
     <!-- 탭 1: 전교생 명단 -->
     <div class="panel active" id="panel-roster">
         <div class="card">
-            <!-- 필터·안내·버튼을 한 줄에. 탭 이름이 곧 제목이라 따로 두지 않는다 -->
-            <div class="roster-toolbar">
-                <select class="filter-select" id="filterGrade" onchange="renderRosterTable()">
-                    <option value="">전체 학년</option>
-                    <option>1학년</option><option>2학년</option><option>3학년</option>
-                    <option>4학년</option><option>5학년</option><option>6학년</option>
-                </select>
-                <select class="filter-select" id="filterClass" onchange="renderRosterTable()">
-                    <option value="">전체 반</option>
-                </select>
-                <span class="status-msg" id="rosterStatus"></span>
-                <span class="card-desc" id="rosterDesc" style="margin:0;">전교생 통합 명단 (수정은 학교 관리자만 가능)</span>
-                <div style="display:flex;gap:8px;flex-wrap:wrap;margin-left:auto;" id="rosterAdminActions">
-                    <button class="btn btn-secondary btn-sm" id="downloadTemplateBtn" onclick="downloadExcelTemplate()">📊 엑셀 양식 다운로드</button>
-                    <button class="btn btn-secondary btn-sm" id="pasteSectionBtn" onclick="togglePasteSection()">📥 붙여넣기로 입력</button>
-                    <button class="btn btn-secondary btn-sm" id="addStudentBtn" onclick="addSingleStudent()" style="display:none;">+ 학생 추가</button>
-                    <button class="btn btn-primary btn-sm" id="saveRosterBtn" onclick="saveRoster()" style="display:none;">💾 저장</button>
-                </div>
-            </div>
-
             <!-- 명단 테이블 -->
             <div class="roster-table-wrap">
                 <table class="roster-table" id="rosterTable">
@@ -473,19 +528,8 @@
     <!-- 탭 2: 교사 명단 -->
     <div class="panel" id="panel-teachers">
         <div class="card">
-            <!-- 안내·버튼을 한 줄에. 탭 이름이 곧 제목이라 따로 두지 않는다 -->
-            <div class="roster-toolbar">
-                <span class="card-desc" style="margin:0;">교직원 통합 명단 (담임·전담·관리자 구분, 구글 계정 관리)</span>
-                <span class="status-msg" id="teacherRosterStatus" style="margin-left:8px;"></span>
-                <div style="display:flex;gap:8px;flex-wrap:wrap;margin-left:auto;" id="teacherAdminActions">
-                    <button class="btn btn-secondary btn-sm" id="toggleTeacherPasteBtn" onclick="toggleTeacherPasteSection()">📥 붙여넣기로 입력</button>
-                    <button class="btn btn-secondary btn-sm" id="addTeacherBtn" onclick="addTeacherRow()">+ 교사 추가</button>
-                    <button class="btn btn-primary btn-sm" id="saveTeacherRosterBtn" onclick="saveTeacherRoster()">💾 저장</button>
-                </div>
-            </div>
-
             <!-- 붙여넣기 섹션 -->
-            <div class="paste-section" id="teacherPasteSection" style="display:none;margin-top:16px;">
+            <div class="paste-section" id="teacherPasteSection" style="display:none;margin-bottom:16px;">
                 <div class="card-desc" style="margin-bottom:8px;font-weight:bold;">
                     엑셀에서 아래 순서대로 탭(Tab) 구분된 데이터를 복사하여 붙여넣으세요:
                     <br><span style="color:var(--primary); font-size:12px;">성명 | 구글 계정 | 담당 학년 | 담당 반</span>
@@ -522,14 +566,6 @@
     <!-- 탭 3: 학교 설정 -->
     <div class="panel" id="panel-settings">
         <div class="card">
-            <!-- 안내·저장 버튼을 한 줄에. 탭 이름이 곧 제목이라 따로 두지 않는다 -->
-            <div class="roster-toolbar" style="margin-bottom:16px;">
-                <span class="card-desc" id="settingsDesc" style="margin:0;">명단 소속 열·결재선·특별실 설정 (변경은 학교 관리자만 가능)</span>
-                <span class="status-msg" id="settingsStatus" style="margin-left:8px;"></span>
-                <div style="margin-left:auto;" id="settingsAdminActions">
-                    <button class="btn btn-primary btn-sm" id="saveSettingsBtn" onclick="saveSettings()">💾 설정 저장</button>
-                </div>
-            </div>
             <!-- 안내 본문은 /school-setup 한 곳에만 둔다 -->
             <p class="card-desc" style="margin:0 0 16px;">🔐 학생 Google 로그인이 막히나요? <a href="/school-setup" target="_blank" rel="noopener">학교 도입 안내 보기</a> (Workspace 관리자에게 이 주소를 보내 주세요)</p>
             <div class="settings-grid">
@@ -665,6 +701,7 @@
         document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
         document.getElementById("panel-" + tab).classList.add("active");
         document.getElementById("tab-" + tab).classList.add("active");
+        document.querySelectorAll(".tab-toolbar").forEach(t => t.classList.toggle("active", t.dataset.tab === tab));
         if (tab === "roster") renderRosterTable();
         if (tab === "teachers") loadTeachers();
         if (tab === "settings") loadSettings();
@@ -967,11 +1004,12 @@
         });
 
         const headerHtmls = [
-            ...fixedLeft.map(h => `<th>${h}</th>`),
+            ...fixedLeft.map(h => `<th class="num-col">${h}</th>`),
             // 열 자체는 학교 설정의 목록에서 나오므로 여기서 지우지 않는다.
-            ...dynamicCols.map(c => `<th style="white-space:nowrap;padding:6px 8px;">${esc(c.name)}</th>`),
-            ...fixedRight.map(h => `<th>${h}</th>`),
-            ...(isSchoolAdmin ? [`<th>관리</th>`] : [])
+            ...dynamicCols.map(c => `<th class="num-col">${esc(c.name)}</th>`),
+            `<th class="email-col">${fixedRight[0]}</th>`,
+            ...fixedRight.slice(1).map(h => `<th class="guardian-col">${h}</th>`),
+            ...(isSchoolAdmin ? [`<th class="num-col">관리</th>`] : [])
         ];
 
         const thead = document.getElementById("rosterHead");
@@ -984,17 +1022,33 @@
             return;
         }
 
+        // 두 반 이상이 보일 때만 반이 바뀌는 자리에 소제목 줄을 넣는다.
+        const classKey = (s) => `${s.grade}-${s.class_number}`;
+        const classCounts = filtered.reduce((m, s) => m.set(classKey(s), (m.get(classKey(s)) || 0) + 1), new Map());
+        const showDividers = classCounts.size > 1;
+
         tbody.innerHTML = filtered.map((s, filteredIdx) => {
             const originalIndex = allStudents.indexOf(s);
+            const divider = showDividers && (filteredIdx === 0 || classKey(filtered[filteredIdx - 1]) !== classKey(s))
+                ? `<tr class="class-divider"><td colspan="${headerHtmls.length}">${esc(s.grade)}학년 ${esc(s.class_number)}반<span class="count">${classCounts.get(classKey(s))}명</span></td></tr>`
+                : "";
             const cf = s.custom_fields || s.customFields || {};
             const linkedBadge = s.user_id ? `<span class="linked-badge">✓ 연동</span>` : "";
 
             const cellInput = (field, value, width="100%", isCustom=false, key="", placeholder="") => {
-                if (!isSchoolAdmin) return esc(value ?? "");
+                const isEmail = /email$/.test(field);
+                const bad = isEmail && !isValidAccount(value);
+                if (!isSchoolAdmin) {
+                    return bad ? `<span class="student-cell invalid" title="계정 형식을 확인하세요">${esc(value)}</span>` : esc(value ?? "");
+                }
                 const onInputCode = isCustom
                     ? `updateStudentCustomField(${originalIndex}, '${esc(key)}', this.value)`
                     : `updateStudentField(${originalIndex}, '${field}', this.value)`;
-                return `<input class="roster-cell-input" style="width:${width};border:1px solid #d1d5db;border-radius:4px;padding:3px 6px;font:inherit;font-size:12px;background:white;" value="${esc(value ?? "")}" placeholder="${esc(placeholder)}" onchange="${onInputCode}">`;
+                const cls = `roster-cell-input student-cell${isEmail ? " email" : ""}${bad ? " invalid" : ""}`;
+                const style = isEmail ? "" : ` style="width:${width};"`;
+                const check = isEmail ? ` oninput="markAccountCell(this)"` : "";
+                const title = bad ? ` title="계정 형식을 확인하세요 (따옴표·공백·@ 누락)"` : "";
+                return `<input class="${cls}"${style} value="${esc(value ?? "")}" placeholder="${esc(placeholder)}"${title}${check} onchange="${onInputCode}">`;
             };
 
             // 갈래 열의 현재 값. 새 방식은 열 이름(동아리)을 키로 쓰고, 예전 명단은
@@ -1019,18 +1073,18 @@
             };
 
             const cells = [
-                `<td>${cellInput("grade", s.grade, "40px", false, "", "학년")}</td>`,
-                `<td>${cellInput("class_number", s.class_number, "40px", false, "", "반")}</td>`,
-                `<td>${cellInput("student_number", s.student_number, "45px", false, "", "번호")}</td>`,
-                `<td>${cellInput("roster_name", s.roster_name, "70px", false, "", "이름")}</td>`,
-                `<td>${cellInput("gender", s.gender, "40px", false, "", "남/여")}</td>`,
+                `<td>${cellInput("grade", s.grade, "36px", false, "", "학년")}</td>`,
+                `<td>${cellInput("class_number", s.class_number, "36px", false, "", "반")}</td>`,
+                `<td>${cellInput("student_number", s.student_number, "44px", false, "", "번호")}</td>`,
+                `<td>${cellInput("roster_name", s.roster_name, "76px", false, "", "이름")}</td>`,
+                `<td>${cellInput("gender", s.gender, "36px", false, "", "남/여")}</td>`,
                 ...dynamicCols.map(col => `<td>${cellSelect(col, categoryValue(s, cf, col), originalIndex)}</td>`),
-                `<td style="font-size:11px;">${cellInput("student_email", s.student_email, "140px")} ${linkedBadge}</td>`,
-                `<td style="font-size:11px;">${cellInput("guardian1_email", s.guardian1_email, "140px")}</td>`,
-                `<td style="font-size:11px;">${cellInput("guardian2_email", s.guardian2_email, "140px")}</td>`,
+                `<td><div style="display:flex;align-items:center;gap:6px;">${cellInput("student_email", s.student_email)}${linkedBadge}</div></td>`,
+                `<td>${cellInput("guardian1_email", s.guardian1_email)}</td>`,
+                `<td>${cellInput("guardian2_email", s.guardian2_email)}</td>`,
                 ...(isSchoolAdmin ? [`<td><button class="delete-item-btn" onclick="deleteStudentRow(${originalIndex})" title="삭제">🗑️</button></td>`] : [])
             ];
-            return `<tr>${cells.join("")}</tr>`;
+            return `${divider}<tr>${cells.join("")}</tr>`;
         }).join("");
     };
 
@@ -1193,6 +1247,18 @@
 
         document.getElementById("saveRosterBtn").style.display = "inline-flex";
         setStatus("pasteStatus", `✅ ${students.length}명 파싱 완료. 미리보기를 확인 후 저장 버튼을 눌러주세요.`, "ok");
+    };
+
+    // 비어 있으면 통과. 값이 있으면 따옴표·공백 없는 name@domain.tld 모양이어야 한다.
+    function isValidAccount(v) {
+        const s = String(v ?? "");
+        return !s || /^[^\s@"' ​-‍﻿]+@[^\s@"' ​-‍﻿]+\.[^\s@"' ​-‍﻿]+$/.test(s);
+    }
+
+    window.markAccountCell = function(input) {
+        const bad = !isValidAccount(input.value.trim());
+        input.classList.toggle("invalid", bad);
+        input.title = bad ? "계정 형식을 확인하세요 (따옴표·공백·@ 누락)" : "";
     };
 
     window.updateStudentField = function(idx, field, val) {
