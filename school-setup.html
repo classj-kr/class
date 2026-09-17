@@ -14,11 +14,10 @@
 .steps .key::before{left:10px}
 .en{color:var(--muted);font-weight:600;font-size:.9em}
 kbd{padding:1px 6px;border:1px solid #aeb8b2;border-bottom-width:2px;border-radius:6px;background:#fff;font:inherit;font-weight:800;font-size:.92em}
-.copy-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 </style></head><body>
 <header class="site-head"><div class="site-head-inner"><a class="brand brand-icon" href="/" aria-label="조이클래스 홈"><img src="/assets/icons/joyclass-j-favicon.svg" alt="" width="28" height="28"></a><nav aria-label="안내 메뉴"><a class="nav-link" href="/support">문의·권리 요청</a><a class="nav-link" href="/privacy">처리방침</a><a class="nav-link" href="/terms">이용약관</a></nav></div></header>
 <main><header class="lead"><h1>학교 도입 안내</h1><p class="small">학교 Google Workspace 관리자용 · 최초 1회 · 약 3분</p></header>
-<div class="layout"><aside class="toc"><strong>바로가기</strong><a href="#why">왜 필요한가요?</a><a href="#steps">설정 방법</a><a href="#check">확인</a><a href="#trouble">문제 해결</a><div class="copy-row" style="margin-top:12px"><button class="button secondary" type="button" id="copyGuide">안내문 전체 복사</button></div><p class="small" id="copyGuideStatus" role="status"></p><p class="small">담당자가 따로 있다면 이 페이지 주소<br><strong>joyclass.kr/school-setup</strong><br>을 보내 주세요.</p></aside><div class="content" id="guide">
+<div class="layout"><aside class="toc"><strong>바로가기</strong><a href="#why">왜 필요한가요?</a><a href="#steps">설정 방법</a><a href="#check">확인</a><a href="#trouble">문제 해결</a></aside><div class="content" id="guide">
 
 <section id="why"><h2>왜 필요한가요?</h2><p>학생 계정, 특히 <strong>18세 미만으로 지정된 계정</strong>은 학교 관리자가 허용하지 않은 외부 앱에 Google로 로그인할 수 없습니다. 학생이 조이클래스에서 Google 로그인을 누를 때 <em>“관리자가 차단함”</em> 같은 메시지가 뜬다면 아래 설정이 필요합니다.</p>
 <div class="notice"><strong>등록할 앱</strong><br>서비스: 조이클래스 (https://joyclass.kr)<br>OAuth 클라이언트 ID:
@@ -47,5 +46,5 @@ kbd{padding:1px 6px;border:1px solid #aeb8b2;border-bottom-width:2px;border-radi
 <script>
 (()=>{async function copy(text,statusId){const el=document.getElementById(statusId);try{await navigator.clipboard.writeText(text);el.textContent='복사했습니다.'}catch(_){el.textContent='복사하지 못했습니다. 직접 선택해 복사해 주세요.'}setTimeout(()=>{el.textContent=''},2500)}
 document.getElementById('copyClientId').addEventListener('click',()=>copy(document.getElementById('clientId').textContent.trim(),'copyClientIdStatus'));
-document.getElementById('copyGuide').addEventListener('click',()=>{const guide=document.getElementById('guide');const skip=[...guide.querySelectorAll('button,[role=status]')];skip.forEach(n=>{n.style.display='none'});const body=guide.innerText;skip.forEach(n=>{n.style.display=''});const text='[학교 관리자용] 조이클래스 학생 Google 로그인 허용 방법\n원문: https://joyclass.kr/school-setup\n\n'+body.replace(/\n{3,}/g,'\n\n').trim();copy(text,'copyGuideStatus')})})();
+})();
 </script></body></html>
