@@ -13,7 +13,7 @@ const finalQuiz = require(path.join(root, 'lib', 'final-quiz.js'));
 assert.equal(cities.length, 225, '원작 도시는 225곳이어야 한다');
 assert.equal(cities.filter((city) => city.hasLibrary).length, 40, '원작 자료의 역사적 도서관 표시는 40곳으로 보존한다');
 const liveCities = cities.filter((city) => !city.retired);
-assert.equal(catalog.version, 78);
+assert.equal(catalog.version, 79);
 assert.equal(catalog.libraryCityCount, liveCities.length);
 assert.equal(catalog.books.length, 109);
 assert.equal(catalog.sectionCount, catalog.books.reduce((sum, book) => sum + book.sections.length, 0));
@@ -62,7 +62,7 @@ assert.match(student, /return \{\.\.\.catalogCity,libraryRegion:libraryShelfForC
 assert.match(student, /libraryBtn\.hidden=false/);
 assert.match(student, /book\.shelves\.includes\(shelf\)/);
 assert.doesNotMatch(student, /이 도시는 원작 기준 도서관이 없습니다/);
-assert.match(student, /fetch\('\/learn\/world-voyage\/data\/library-books\.json\?v=78'/);
+assert.match(student, /fetch\('\/learn\/world-voyage\/data\/library-books\.json\?v=79'/);
 assert.match(server, /hasLibrary: true/);
 assert.match(server, /libraryRegion: FinalQuiz\.libraryShelfForCity\(place\)/);
 assert.match(server, /facilities: \[\.\.\.new Set/);
