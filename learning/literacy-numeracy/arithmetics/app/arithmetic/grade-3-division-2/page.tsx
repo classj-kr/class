@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import DivisionBracket, { blankDivisionBracketAnswer, divisionBracketAnswered, divisionBracketIsCorrect, type DivisionBracketAnswer } from "../../components/division-bracket";
 
 type PrintMode = "worksheet" | "answers" | "both";
 type Problem = { id: string; dividend: number; divisor: number; quotient: number; remainder: number; large: boolean };
@@ -59,7 +58,6 @@ function createProblemSet(seed: number): ProblemSet {
 export default function GradeThreeDivisionTwoPage() {
   const [questionSet, setQuestionSet] = useState(() => createProblemSet(INITIAL_SEED));
   const [answers, setAnswers] = useState<Record<string, Answer>>({});
-  const [bracketAnswers, setBracketAnswers] = useState<Record<string, DivisionBracketAnswer>>({});
   const [results, setResults] = useState<Record<string, boolean>>({});
   const [sheetScale, setSheetScale] = useState(0.6);
   const [printMenuOpen, setPrintMenuOpen] = useState(false);
@@ -74,8 +72,7 @@ export default function GradeThreeDivisionTwoPage() {
   }, []);
 
   const problems = useMemo(() => questionSet.columns.flat(), [questionSet]);
-  const completed = Object.values(answers).filter((answer) => answer.quotient || answer.remainder).length
-    + Object.values(bracketAnswers).filter(divisionBracketAnswered).length;
+  const completed = Object.values(answers).filter((answer) => answer.quotient || answer.remainder).length;
   const correct = Object.values(results).filter(Boolean).length;
 
   function updateAnswer(id: string, field: keyof Answer, value: string) {
@@ -89,37 +86,8 @@ export default function GradeThreeDivisionTwoPage() {
     });
   }
 
-  function updateBracketQuotient(problem: Problem, value: string) {
-    const digits = value.replace(/[^0-9]/g, "").slice(0, String(problem.quotient).length);
-    setBracketAnswers((current) => ({
-      ...current,
-      [problem.id]: { ...(current[problem.id] ?? blankDivisionBracketAnswer()), quotient: digits },
-    }));
-    setResults((current) => {
-      if (!(problem.id in current)) return current;
-      const next = { ...current };
-      delete next[problem.id];
-      return next;
-    });
-  }
-
-  function updateBracketRemainder(problem: Problem, value: string) {
-    const digit = value.replace(/[^0-9]/g, "").slice(0, String(problem.divisor).length);
-    setBracketAnswers((current) => ({
-      ...current,
-      [problem.id]: { ...(current[problem.id] ?? blankDivisionBracketAnswer()), remainder: digit },
-    }));
-    setResults((current) => {
-      if (!(problem.id in current)) return current;
-      const next = { ...current };
-      delete next[problem.id];
-      return next;
-    });
-  }
-
   function checkAll() {
     setResults(Object.fromEntries(problems.map((problem) => {
-      if (problem.large) return [problem.id, divisionBracketIsCorrect(bracketAnswers[problem.id], problem.quotient, problem.remainder)];
       const answer = answers[problem.id];
       return [problem.id, answer?.quotient === String(problem.quotient) && answer?.remainder === String(problem.remainder)];
     })));
@@ -127,7 +95,6 @@ export default function GradeThreeDivisionTwoPage() {
 
   function resetAnswers() {
     setAnswers({});
-    setBracketAnswers({});
     setResults({});
   }
 
@@ -150,25 +117,6 @@ export default function GradeThreeDivisionTwoPage() {
     const isCorrect = results[problem.id] === true;
     const resultBadge = !answerSheet && graded && <span className={`counting-result ${isCorrect ? "correct" : "wrong"}`} role="status">{isCorrect ? "맞음" : "틀림"}</span>;
 
-    if (problem.large) {
-      return (
-        <div className={`multiplication-question division-remainder-question division-bracket-question${graded ? isCorrect ? " is-correct" : " is-wrong" : ""}`} data-testid="division-remainder-question" key={problem.id}>
-          <DivisionBracket
-            id={problem.id}
-            dividend={problem.dividend}
-            divisor={problem.divisor}
-            quotient={problem.quotient}
-            remainder={problem.remainder}
-            answerSheet={answerSheet}
-            answer={bracketAnswers[problem.id]}
-            onQuotientChange={(value) => updateBracketQuotient(problem, value)}
-            onRemainderChange={(value) => updateBracketRemainder(problem, value)}
-          />
-          {resultBadge}
-        </div>
-      );
-    }
-
     const answer = answers[problem.id] ?? { quotient: "", remainder: "" };
     const quotientField = answerSheet
       ? <strong className="multiplication-static-answer division-remainder-static">{problem.quotient}</strong>
@@ -177,7 +125,7 @@ export default function GradeThreeDivisionTwoPage() {
       ? <strong className="multiplication-static-answer division-remainder-static division-remainder-static-small">{problem.remainder}</strong>
       : <input className="multiplication-input division-remainder-input division-remainder-input-small" type="text" inputMode="numeric" pattern="[0-9]*" maxLength={1} value={answer.remainder} onChange={(event) => updateAnswer(problem.id, "remainder", event.target.value)} aria-label={`${problem.id} 나머지`} />;
 
-    return (
+    const question = (
       <div className={`multiplication-question division-remainder-question${graded ? isCorrect ? " is-correct" : " is-wrong" : ""}`} data-testid="division-remainder-question" key={problem.id}>
         <strong>{problem.dividend}</strong><span>÷</span><strong>{problem.divisor}</strong><span>=</span>
         {quotientField}
@@ -186,6 +134,8 @@ export default function GradeThreeDivisionTwoPage() {
         {resultBadge}
       </div>
     );
+    // 두 줄 높이 칸의 윗줄에 왼쪽 문제와 같은 높이로 놓아 같은 줄에 맞춘다. 아랫줄은 풀이 공간.
+    return problem.large ? <div className="division-remainder-large-cell" key={problem.id}>{question}</div> : question;
   }
 
   function renderSheet(answerSheet: boolean) {

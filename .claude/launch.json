@@ -6,7 +6,7 @@
       "runtimeExecutable": "npm",
       "runtimeArgs": [
         "--prefix",
-        "learning/basics/arithmetics",
+        "learning/literacy-numeracy/arithmetics",
         "run",
         "dev"
       ],

@@ -1387,15 +1387,13 @@ test("renders the second grade-three division worksheet", async () => {
   assert.equal((html.match(/class="multiplication-input division-remainder-input division-remainder-input-small"/g) ?? []).length, 25);
   assert.equal((html.match(/class="multiplication-static-answer division-remainder-static"/g) ?? []).length, 25);
   assert.equal((html.match(/class="multiplication-static-answer division-remainder-static division-remainder-static-small"/g) ?? []).length, 25);
-  assert.equal((html.match(/maxLength="3"/g) ?? []).length, 22);
-  assert.equal((html.match(/maxLength="2"/g) ?? []).length, 3);
+  assert.equal((html.match(/maxLength="3"/g) ?? []).length, 25);
   assert.equal((html.match(/maxLength="1"/g) ?? []).length, 25);
-  assert.equal((html.match(/<span>÷<\/span>/g) ?? []).length, 40);
-  assert.equal((html.match(/<span>···<\/span>/g) ?? []).length, 40);
-  assert.equal((html.match(/class="division-bracket-ellipsis"/g) ?? []).length, 10);
-  assert.equal((html.match(/class="multiplication-question division-remainder-question division-bracket-question/g) ?? []).length, 10);
-  assert.equal((html.match(/class="division-bracket"/g) ?? []).length, 10);
-  assert.equal((html.match(/class="division-bracket-dividend"/g) ?? []).length, 10);
+  // 세 자리 ÷ 한 자리도 왼쪽과 같은 가로셈으로 통일한다.
+  assert.equal((html.match(/<span>÷<\/span>/g) ?? []).length, 50);
+  assert.equal((html.match(/<span>···<\/span>/g) ?? []).length, 50);
+  assert.equal((html.match(/class="division-remainder-large-cell"/g) ?? []).length, 10);
+  assert.doesNotMatch(html, /class="division-bracket/);
   assert.match(source, /Array\.from\(\{ length: 20 \}/);
   assert.match(source, /integer\(next, 11, 99\)/);
   assert.match(source, /shuffle\(\[2, 3, 4, 5, 6, 7, 8, 9\], next\)\.slice\(0, 5\)/);
@@ -1404,8 +1402,7 @@ test("renders the second grade-three division worksheet", async () => {
   assert.match(source, /<small>\/25 정답<\/small>/);
   assert.match(css, /\.division-remainder-columns\s*\{[\s\S]*?grid-template-columns:\s*repeat\(3,/);
   assert.match(css, /\.division-remainder-column-large\s*\{[\s\S]*?grid-template-rows:\s*repeat\(5,/);
-  assert.match(css, /\.division-bracket-dividend\s*\{[\s\S]*?border-top:\s*2px solid #17233c;/);
-  assert.match(css, /\.division-bracket-curve\s*\{[\s\S]*?border-radius:\s*0 100% 100% 0;/);
+  assert.match(css, /\.division-remainder-large-cell\s*\{[\s\S]*?grid-template-rows:\s*repeat\(2,/);
 });
 
 test("renders the third grade-three division worksheet in the workbook's four columns", async () => {
