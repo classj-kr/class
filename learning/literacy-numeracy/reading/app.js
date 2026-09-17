@@ -101,7 +101,6 @@
 
   function renderQuestion() {
     const item = state.set[state.index]; state.answered = false; state.hadWrong = false;
-    $("questionLevel").textContent = `K${item.targetLevel}`;
     $("questionProgress").textContent = `${state.index + 1} / ${state.set.length}`;
     $("questionTopic").textContent = item.topicTitle;
     $("progressFill").style.width = `${((state.index + 1) / state.set.length) * 100}%`;
@@ -158,7 +157,7 @@
       // Level buttons remain usable and fetch their deck on demand.
     }
   }
-  $("backButton").addEventListener("click", () => show("dashboard")); $("restartButton").addEventListener("click", () => show("dashboard")); $("nextButton").addEventListener("click", () => {});
+  $("restartButton").addEventListener("click", () => show("dashboard")); $("nextButton").addEventListener("click", () => {});
   // 공용 뒤로가기 단추(assets/site-back-navigation.js)가 눌리면 먼저 물어본다.
   // 목록 화면이 아니면 사이트 밖으로 나가지 않고 목록으로만 돌아간다.
   window.addEventListener("sitebackrequest", (event) => {

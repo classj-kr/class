@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f3efe4">
   <title>비문학 읽기</title>
-  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./style.css?v=20260917-3">
   <script src="../../../assets/sound/music-control.js?v=20260910-click-cache-1" defer></script>
 </head>
 <body>
@@ -19,7 +19,6 @@
         <div id="levelList" class="level-list"></div>
       </section>
       <section id="questionView" class="question-view" hidden>
-        <div class="question-topline"><button id="backButton" class="text-button" type="button">← 자습 목록</button><span id="questionLevel" class="level-chip"></span></div>
         <div class="progress-copy"><strong id="questionProgress"></strong><span id="questionTopic"></span></div>
         <div class="progress-track"><div id="progressFill" class="progress-fill"></div></div>
         <article class="reading-sheet"><div id="studentPassage" class="student-passage"></div><h2 id="studentPrompt" class="student-prompt"></h2><div id="studentChoices" class="student-choices"></div><div id="feedback" class="feedback" hidden></div><div class="answer-actions"><span id="answerStatus" role="status"></span><button id="nextButton" class="button primary" type="button" disabled>정답 확인</button></div></article>
@@ -28,6 +27,6 @@
     </main>
   </div>
   <script src="./deck.js"></script>
-  <script src="./app.js?v=20260917-1"></script>
+  <script src="./app.js?v=20260917-2"></script>
 </body>
 </html>

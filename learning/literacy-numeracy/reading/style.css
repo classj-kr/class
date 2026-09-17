@@ -37,7 +37,6 @@ button, input { font: inherit; }
 .button.primary { color: #fff; background: var(--green); }
 .button.secondary { color: var(--ink); border-color: var(--line); background: var(--white); }
 .button:disabled { opacity: .55; cursor: wait; }
-.text-button { border: 0; padding: 6px 0; color: var(--green); background: transparent; cursor: pointer; font-weight: 900; }
 .student-header { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 12px clamp(18px, 5vw, 72px); border-bottom: 1px solid rgba(77, 94, 78, .22); background: rgba(243, 239, 228, .9); backdrop-filter: blur(10px); }
 .student-header h1 { margin: 0; font-size: 1.25rem; }
 .student-header a { color: var(--green); font-size: 13px; font-weight: 900; text-decoration: none; }
@@ -61,9 +60,8 @@ button, input { font: inherit; }
 .student-pilot-card p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.55; }
 .student-pilot-meta { display: flex; align-items: center; justify-content: space-between; gap: 12px; color: var(--muted); font-size: 11px; }
 .empty-pilots { grid-column: 1 / -1; padding: 48px; border: 1px dashed var(--line); border-radius: 18px; color: var(--muted); text-align: center; line-height: 1.7; }
-.question-topline, .progress-copy, .answer-actions { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
-.level-chip { display: inline-flex; align-items: center; min-height: 30px; padding: 0 11px; border-radius: 99px; color: var(--green); background: var(--green-soft); font-size: 12px; font-weight: 950; }
-.progress-copy { margin-top: 25px; }
+.progress-copy, .answer-actions { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+@media (max-width: 1120px) { .progress-copy { margin-top: 36px; } }
 .progress-copy span { color: var(--muted); font-size: 12px; }
 .progress-track { height: 6px; margin: 10px 0 24px; overflow: hidden; border-radius: 99px; background: var(--paper-deep); }
 .progress-fill { height: 100%; border-radius: inherit; background: var(--orange); transition: width .25s ease; }
