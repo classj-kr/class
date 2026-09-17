@@ -12,11 +12,12 @@ const finalQuiz = require(path.join(root, 'lib', 'final-quiz.js'));
 
 assert.equal(cities.length, 225, '원작 도시는 225곳이어야 한다');
 assert.equal(cities.filter((city) => city.hasLibrary).length, 40, '원작 자료의 역사적 도서관 표시는 40곳으로 보존한다');
-assert.equal(catalog.version, 68);
-assert.equal(catalog.libraryCityCount, 225);
-assert.equal(catalog.books.length, 77);
-assert.equal(catalog.sectionCount, 385);
-assert.equal(catalog.collections.length, 9);
+const liveCities = cities.filter((city) => !city.retired);
+assert.equal(catalog.version, 78);
+assert.equal(catalog.libraryCityCount, liveCities.length);
+assert.equal(catalog.books.length, 109);
+assert.equal(catalog.sectionCount, catalog.books.reduce((sum, book) => sum + book.sections.length, 0));
+assert.equal(catalog.collections.length, 13);
 
 const common = catalog.books.filter((book) => book.shelves.includes('공통'));
 assert.equal(common.length, 5);
@@ -27,7 +28,7 @@ const kilwa = cities.find((city) => city.name === '킬와');
 assert.ok(kilwa, '킬와 도시 자료를 찾을 수 있어야 한다');
 assert.equal(kilwa.region, '동아프리카', '킬와의 실제 지역은 동아프리카여야 한다');
 
-for (const city of cities) {
+for (const city of liveCities) {
   const shelf = finalQuiz.libraryShelfForCity(city);
   assert.notEqual(shelf, '공통', `${city.name}에 지역 장서가 배정되지 않았다`);
   const collection = collectionByLabel.get(shelf);
@@ -39,8 +40,19 @@ for (const city of cities) {
   assert.equal(regional.length, 8, `${shelf} 지역 장서는 8권이어야 한다`);
   assert.equal(new Set([...regional, ...common].map((book) => book.id)).size, 13, `${city.name} 도서관은 13권이어야 한다`);
 }
-assert.equal(assigned.size, 225);
-assert.equal(catalog.collections.reduce((sum, collection) => sum + collection.cityIds.length, 0), 225);
+assert.equal(assigned.size, liveCities.length);
+assert.equal(catalog.collections.reduce((sum, collection) => sum + collection.cityIds.length, 0), liveCities.length);
+const shelfOf = (name) => finalQuiz.libraryShelfForCity(cities.find((city) => city.name === name));
+assert.equal(shelfOf('팀북투'), '서아프리카');
+assert.equal(shelfOf('킬와'), '동아프리카');
+assert.equal(shelfOf('말라카'), '동남아시아');
+assert.equal(shelfOf('모스크바'), '동유럽');
+assert.equal(shelfOf('카이로'), '중근동·북아프리카');
+for (const book of catalog.books) {
+  for (const text of [book.intro, ...book.sections.map((section) => section.text)]) {
+    if (book.shelves.some((shelf) => ['서아프리카', '동아프리카', '동남아시아', '동유럽'].includes(shelf))) assert.match(text.trim(), /\.$/, `${book.id}: 문장이 마침표로 끝나야 한다`);
+  }
+}
 
 assert.match(student, /const LIBRARY_SHELF_BY_REGION=Object\.freeze/);
 assert.match(student, /function libraryRegionLabelForCity\(city\)\{return String\(city\?\.region\|\|city\?\.libraryRegion\|\|'공통'\)\}/);
@@ -50,7 +62,7 @@ assert.match(student, /return \{\.\.\.catalogCity,libraryRegion:libraryShelfForC
 assert.match(student, /libraryBtn\.hidden=false/);
 assert.match(student, /book\.shelves\.includes\(shelf\)/);
 assert.doesNotMatch(student, /이 도시는 원작 기준 도서관이 없습니다/);
-assert.match(student, /fetch\('\/data\/library-books\.json\?v=68'/);
+assert.match(student, /fetch\('\/learn\/world-voyage\/data\/library-books\.json\?v=78'/);
 assert.match(server, /hasLibrary: true/);
 assert.match(server, /libraryRegion: FinalQuiz\.libraryShelfForCity\(place\)/);
 assert.match(server, /facilities: \[\.\.\.new Set/);
