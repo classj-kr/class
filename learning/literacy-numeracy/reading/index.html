@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f3efe4">
   <title>비문학 읽기</title>
-  <link rel="stylesheet" href="./style.css?v=20260917-3">
+  <link rel="stylesheet" href="./style.css?v=20260917-4">
   <script src="../../../assets/sound/music-control.js?v=20260910-click-cache-1" defer></script>
 </head>
 <body>
@@ -16,6 +16,10 @@
     </header>
     <main class="student-main">
       <section id="dashboardView">
+        <div id="trackSwitch" class="track-switch" hidden>
+          <button type="button" data-track="ko" aria-pressed="true">국어</button>
+          <button type="button" data-track="en" aria-pressed="false">영어</button>
+        </div>
         <div id="levelList" class="level-list"></div>
       </section>
       <section id="questionView" class="question-view" hidden>
@@ -27,6 +31,6 @@
     </main>
   </div>
   <script src="./deck.js"></script>
-  <script src="./app.js?v=20260917-2"></script>
+  <script src="./app.js?v=20260917-3"></script>
 </body>
 </html>
