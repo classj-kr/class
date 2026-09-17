@@ -441,6 +441,7 @@ app.use("/api", (_req, res, next) => {
 
 for (const [route, file] of [
   ["/privacy", "privacy.html"],
+  ["/school-setup", "school-setup.html"],
   ["/student-privacy", "student-privacy.html"],
   ["/support", "support.html"],
   ["/terms", "terms.html"],
