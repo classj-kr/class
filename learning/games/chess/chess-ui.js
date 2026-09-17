@@ -109,6 +109,30 @@ function buildSpecialGuide() {
   $("specialGuide").innerHTML = items.map(([name, art, text]) => `<div class="guide-piece">${art}<p><strong>${name}</strong> ${text}</p></div>`).join("");
 }
 
+function buildStateGuide() {
+  const hot = { mark: "attacked" };
+  const check = miniBoard(5, 5, {
+    "0,2": { piece: "bR" }, "1,2": hot, "2,2": hot, "3,2": hot,
+    "4,2": { piece: "wK", mark: "check" },
+    "4,1": { mark: "legal-empty" }, "4,3": { mark: "legal-empty" }, "3,1": { mark: "legal-empty" }, "3,3": { mark: "legal-empty" }
+  });
+  const mate = miniBoard(3, 5, {
+    "0,0": { piece: "wR" }, "0,1": hot, "0,3": hot, "0,4": hot,
+    "0,2": { piece: "bK", mark: "check" },
+    "1,1": { piece: "bP" }, "1,2": { piece: "bP" }, "1,3": { piece: "bP" }
+  }, 1);
+  const stale = miniBoard(3, 3, {
+    "0,0": { piece: "bK" }, "0,1": hot, "1,0": hot, "1,1": hot,
+    "2,1": { piece: "wQ" }, "2,2": { piece: "wK" }
+  }, 1, 44);
+  const items = [
+    ["체크(Check)", check, "킹이 공격받는 상태입니다. 다음 수에 킹을 옮기거나, 공격하는 말을 잡거나, 사이를 막아야 합니다."],
+    ["체크메이트(Checkmate)", mate, "체크를 풀 방법이 하나도 없습니다. 당한 쪽이 집니다."],
+    ["스테일메이트(Stalemate)", stale, "체크는 아닌데 둘 수 있는 수가 하나도 없습니다. 비깁니다."]
+  ];
+  $("stateGuide").innerHTML = items.map(([name, art, text]) => `<div class="guide-piece">${art}<p><strong>${name}</strong> ${text}</p></div>`).join("");
+}
+
 function rulesState() {
   if (!gameState) return ClassChessRules.createInitialState();
   return {
@@ -374,6 +398,7 @@ function sendAction(action) {
 function init() {
   buildPieceGuide();
   buildSpecialGuide();
+  buildStateGuide();
   lobby = ClassroomMultiplayerLobby.create({
     gameId: GAME_ID,
     initialMode: "host",

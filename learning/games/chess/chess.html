@@ -6,12 +6,12 @@
 <title>체스</title>
 <link rel="stylesheet" href="../../../assets/network/multiplayer-lobby.css?v=20260917">
 <link rel="stylesheet" href="../../../assets/device-game.css">
-<link rel="stylesheet" href="styles.css?v=20260917h">
+<link rel="stylesheet" href="styles.css?v=20260917j">
 <script src="../../../assets/network/game-network.js?v=20260821"></script>
 <script src="../../../assets/network/multiplayer-lobby.js?v=20260906b"></script>
 <script src="../../../assets/sound/music-control.js?v=20260910-click-cache-1" defer></script>
-<script src="chess-rules.js?v=20260917h"></script>
-<script src="chess-ui.js?v=20260917h" defer></script>
+<script src="chess-rules.js?v=20260917j"></script>
+<script src="chess-ui.js?v=20260917j" defer></script>
 </head>
 <body>
 <main class="shell">
@@ -75,7 +75,7 @@
   </section>
 </main>
 
-<section id="rulesModal" class="modal hidden" role="dialog" aria-modal="true" aria-label="규칙"><div class="modal-box"><div class="piece-guide" id="pieceGuide"></div><div class="piece-guide special-guide" id="specialGuide"></div><dl class="rule-list"><dt>순서</dt><dd>백이 먼저 두고, 백과 흑이 한 수씩 번갈아 둡니다.</dd><dt>체크(Check)</dt><dd>킹이 상대 말에게 공격받는 상태입니다. 체크를 받으면 다음 수에 반드시 풀어야 합니다. 킹을 옮기거나, 공격하는 말을 잡거나, 사이를 막습니다.</dd><dt>이기기</dt><dd><ul><li>체크메이트(Checkmate): 상대가 체크를 풀 방법이 없게 만듭니다.</li><li>상대가 기권합니다.</li><li>상대의 시간이 먼저 다 떨어집니다.</li></ul></dd><dt>비기기(Draw)</dt><dd><ul><li>스테일메이트(Stalemate): 체크는 아닌데 둘 수가 하나도 없습니다.</li><li>같은 판이 세 번 나옵니다.</li><li>50수 동안 양쪽 모두 폰을 움직이지 않고 말도 잡지 않습니다.</li><li>남은 말로는 체크메이트를 만들 수 없습니다.</li><li>두 사람이 비기기로 합의합니다.</li></ul></dd><dt>시간 3+2</dt><dd>각자 3분으로 시작하고, 한 수를 둘 때마다 2초씩 더 받습니다.</dd></dl><button id="closeRulesBtn" class="btn primary" type="button">확인</button></div></section>
+<section id="rulesModal" class="modal hidden" role="dialog" aria-modal="true" aria-label="규칙"><div class="modal-box"><div class="piece-guide" id="pieceGuide"></div><div class="piece-guide special-guide" id="specialGuide"></div><div class="piece-guide state-guide" id="stateGuide"></div><dl class="rule-list"><dt>순서</dt><dd>백이 먼저, 한 수씩 번갈아 둡니다.</dd><dt>이기기</dt><dd>체크메이트, 상대 기권, 상대 시간 다 떨어짐</dd><dt>그 밖에 비기기(Draw)</dt><dd>같은 판 세 번 · 50수 동안 폰 이동과 잡기 없음 · 체크메이트할 말 부족 · 서로 합의</dd><dt>시간 3+2</dt><dd>각자 3분, 한 수 둘 때마다 2초 더</dd></dl><button id="closeRulesBtn" class="btn primary" type="button">확인</button></div></section>
 
 <section id="promotionModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="promotionTitle"><div class="modal-box promotion-box"><h2 id="promotionTitle">어떤 말로 승격할까요?</h2><div id="promotionChoices" class="promotion-choices"></div><button id="cancelPromotionBtn" class="btn" type="button">취소</button></div></section>
 
