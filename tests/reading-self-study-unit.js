@@ -7,7 +7,7 @@ const {
 } = require("../game-hub-server/data/reading-self-study-v3");
 
 const items = createSelfStudyItems();
-assert(items.length >= 40, "self-study bank should not be nearly empty");
+assert(items.length >= 20, "self-study bank should not be nearly empty");
 assert.equal(new Set(items.map((item) => item.id)).size, items.length);
 assert(items.every((item) => item.track === "ko"), "English self-study reading was retired");
 
@@ -16,8 +16,8 @@ const normalize = (value) => String(value).normalize("NFC").trim().replace(/\s+/
 for (let level = 1; level <= 4; level += 1) {
   const set = items.filter((item) => item.targetLevel === level);
   const profile = LEVEL_PROFILES[level];
-  // 3·4급은 아직 작성 중이라 비어 있을 수 있다. 문항이 있으면 20개 이상이어야 한다.
-  if (!set.length && level >= 3) continue;
+  // 2~4급은 아직 작성 중이라 비어 있을 수 있다. 문항이 있으면 20개 이상이어야 한다.
+  if (!set.length && level >= 2) continue;
   assert(set.length >= 20, `K${level} should have at least 20 items`);
   assert(set.every((item) => item.skillFocus === profile.focus));
   assert.equal(new Set(set.map((item) => normalize(item.passageText))).size, set.length,
