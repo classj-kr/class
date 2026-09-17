@@ -129,8 +129,11 @@
     margin-top: 0 !important;
 }
 
-.shell:has(> [data-multiplayer-lobby].mp-lobby-compact:not(.hidden)),
-.app-shell:has(> [data-multiplayer-lobby].mp-lobby-compact:not(.hidden)) {
+/* 대기실이 보이는 동안에는 게임판 크기의 틀을 대기실에 맞춰 줄인다.
+   mp-lobby-fit 은 대기실 안 모양은 그대로 두고 틀 폭만 줄일 때 쓴다. */
+.shell:has(> [data-multiplayer-lobby]:is(.mp-lobby-compact, .mp-lobby-fit):not(.hidden)),
+.app-shell:has(> [data-multiplayer-lobby]:is(.mp-lobby-compact, .mp-lobby-fit):not(.hidden)),
+.game-shell:has(> [data-multiplayer-lobby]:is(.mp-lobby-compact, .mp-lobby-fit):not(.hidden)) {
     width: min(800px, 100%);
     min-height: 0;
 }
