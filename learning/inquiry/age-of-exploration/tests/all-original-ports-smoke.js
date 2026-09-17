@@ -2,7 +2,7 @@
 const { io } = require('socket.io-client');
 const assert = require('node:assert/strict');
 const BASE = process.env.TEST_URL || 'http://127.0.0.1:3000';
-const ROOM = `V27PORT${Date.now().toString(36).slice(-4)}`;
+const { openRaceRoom } = require('./_rooms');
 const starts = [
   ['lisbon','항구학생1','리스본'],
   ['london','항구학생2','런던'],
@@ -15,7 +15,7 @@ function ack(s,e,p={}){return new Promise((r,j)=>{const x=setTimeout(()=>j(new E
 (async()=>{
   const teacher=c(), students=starts.map(()=>c());
   await Promise.all([once(teacher,'connect'),...students.map(s=>once(s,'connect'))]);
-  const tj=await ack(teacher,'teacherJoin',{roomCode:ROOM,pin:'2468'}); assert.equal(tj.ok,true,tj.error);
+  const tj=await openRaceRoom(ack,teacher); const ROOM=tj.roomCode;
   const real=Date.now(),base=tj.classGameMinutes,rate=tj.clockRateHoursPerSecond;
   const hb=setInterval(()=>teacher.emit('teacherClockSync',{gameMinutes:base+(Date.now()-real)/1000*rate*60}),250);
   const pub=await ack(teacher,'teacherPublishArrivalRace',{targetPlaceId:'crimea_peninsula',startPlaceIds:starts.map(x=>x[0])}); assert.equal(pub.ok,true,pub.error);
@@ -34,8 +34,9 @@ function ack(s,e,p={}){return new Promise((r,j)=>{const x=setTimeout(()=>j(new E
   }
   const landStart=await ack(students[0],'leaveCity',{}); assert.equal(landStart.ok,true,landStart.error);
   const land=await once(students[0],'snapshot',x=>x.you.mode==='land',18000); assert.equal(land.you.lastCityId,'lisbon');
-  const landGate=await once(students[0],'snapshot',x=>x.you.mode==='land'&&x.portInteraction?.placeId==='lisbon');
-  const back=await ack(students[0],'useCatalogPort',{placeId:landGate.portInteraction.placeId}); assert.equal(back.ok,true,back.error);
+  // 육지에서 항구를 누르면 곧장 배에 오르므로, 도시로 돌아갈 때는 도시 입구(enterCity)를 쓴다.
+  const landGate=await once(students[0],'snapshot',x=>x.you.mode==='land'&&x.cityInteraction?.placeId==='lisbon');
+  const back=await ack(students[0],'enterCity',{placeId:landGate.cityInteraction.placeId}); assert.equal(back.ok,true,back.error);
   const cityAgain=await once(students[0],'snapshot',x=>x.you.mode==='city'&&x.you.currentCityId==='lisbon',18000); assert.equal(cityAgain.you.currentCityName,'리스본');
   const depart=await ack(students[0],'departCity',{}); assert.equal(depart.ok,true,depart.error);
   const sea=await once(students[0],'snapshot',x=>x.you.mode==='sea',18000); assert.equal(sea.you.lastCityId,'lisbon');

@@ -62,7 +62,9 @@ class ClassroomStore {
 
       const rooms = {};
       for (const [roomCode, source] of Object.entries(parsed.rooms)) {
+        if (!/^\d{4}$/.test(roomCode) || !source?.host?.tokenHash) continue;
         const room = emptyRoom();
+        room.host = { tokenHash: String(source.host.tokenHash), createdAt: Number(source.host.createdAt) || Date.now(), lastActiveAt: Number(source.host.lastActiveAt) || Date.now() };
         room.activeMission = source?.activeMission || null;
         room.settings = { paused: false, locked: false, ...(source?.settings || {}) };
         room.clock = { gameMinutes: Number.isFinite(source?.clock?.gameMinutes) ? Math.max(0, source.clock.gameMinutes) : 0 };

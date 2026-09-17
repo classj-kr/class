@@ -2,13 +2,13 @@
 const {io}=require('socket.io-client');
 const assert=require('node:assert/strict');
 const BASE=process.env.TEST_URL||'http://127.0.0.1:3000';
-const ROOM=String(Math.floor(100000+Math.random()*900000));
+const { openRaceRoom }=require('./_rooms');
 function c(){return io(BASE,{transports:['websocket'],forceNew:true,reconnection:false,timeout:7000});}
 function once(s,e,p=()=>true,t=15000){return new Promise((r,j)=>{const x=setTimeout(()=>{s.off(e,on);j(new Error(`timeout:${e}`));},t);function on(d){if(!p(d))return;clearTimeout(x);s.off(e,on);r(d)}s.on(e,on)});}
 function ack(s,e,p={}){return new Promise((r,j)=>{const x=setTimeout(()=>j(new Error(`ack:${e}`)),10000);s.emit(e,p,d=>{clearTimeout(x);r(d)})});}
 (async()=>{
  const teacher=c(),student=c();await Promise.all([once(teacher,'connect'),once(student,'connect')]);
- const tj=await ack(teacher,'teacherJoin',{roomCode:ROOM,pin:'2468'});assert.equal(tj.ok,true,tj.error);
+ const tj=await openRaceRoom(ack,teacher);const ROOM=tj.roomCode;
  const pub=await ack(teacher,'teacherPublishArrivalRace',{targetPlaceId:'gibraltar_strait',startPlaceIds:['lisbon','london','amsterdam','original_city_195']});assert.equal(pub.ok,true,pub.error);
  const join=await ack(student,'joinClass',{roomCode:ROOM,name:'도시학생'});assert.equal(join.ok,true,join.error);
  const choose=await ack(student,'chooseStartCity',{optionId:'lisbon'});assert.equal(choose.ok,true,choose.error);

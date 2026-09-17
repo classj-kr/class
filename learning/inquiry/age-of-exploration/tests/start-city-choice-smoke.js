@@ -2,7 +2,7 @@
 const { io } = require('socket.io-client');
 const assert = require('node:assert/strict');
 const BASE = process.env.TEST_URL || 'http://127.0.0.1:3000';
-const ROOM = `START${Date.now().toString(36).slice(-5)}`;
+const { openRaceRoom } = require('./_rooms');
 function connect(){return io(BASE,{transports:['websocket'],forceNew:true,reconnection:false,timeout:5000});}
 function once(s,e,t=7000){return new Promise((resolve,reject)=>{const timer=setTimeout(()=>reject(new Error(`timeout:${e}`)),t);s.once(e,d=>{clearTimeout(timer);resolve(d)});});}
 function ack(s,e,p={}){return new Promise((resolve,reject)=>{const timer=setTimeout(()=>reject(new Error(`ack:${e}`)),7000);s.emit(e,p,d=>{clearTimeout(timer);resolve(d)});});}
@@ -10,7 +10,7 @@ function dist(a,b){return Math.hypot(a.x-b.x,a.y-b.y);}
 (async()=>{
   const teacher=connect(),a=connect(),b=connect();
   await Promise.all([once(teacher,'connect'),once(a,'connect'),once(b,'connect')]);
-  const tj=await ack(teacher,'teacherJoin',{roomCode:ROOM,pin:'2468'});assert.equal(tj.ok,true,tj.error);
+  const tj=await openRaceRoom(ack,teacher);const ROOM=tj.roomCode;
   const baseReal=Date.now(),baseGame=tj.classGameMinutes,rate=tj.clockRateHoursPerSecond;
   const heartbeat=setInterval(()=>teacher.emit('teacherClockSync',{gameMinutes:baseGame+(Date.now()-baseReal)/1000*rate*60}),400);
   const pub=await ack(teacher,'teacherPublishStartChoices',{

@@ -1,8 +1,8 @@
 'use strict';
 const { io } = require('socket.io-client');
+const { openRaceRoom } = require('./_rooms');
 
 const BASE = process.env.TEST_URL || 'http://127.0.0.1:3000';
-const ROOM = `CAT${Date.now().toString(36).slice(-5)}`;
 
 function connect() {
   return io(BASE, { transports:['websocket'], reconnection:false, timeout:5000 });
@@ -24,8 +24,8 @@ function waitFor(socket, event, predicate, timeout=8000) {
 (async()=>{
   const teacher=connect(), student=connect();
   await Promise.all([waitFor(teacher,'connect',()=>true),waitFor(student,'connect',()=>true)]);
-  const tj=await emitAck(teacher,'teacherJoin',{roomCode:ROOM,pin:'2468'});
-  if(!tj.ok)throw new Error(tj.error);
+  const tj=await openRaceRoom(emitAck,teacher);
+  const ROOM=tj.roomCode;
   const clockStart=tj.classGameMinutes,clockReal=Date.now();
   const clockHeartbeat=setInterval(()=>teacher.emit('teacherClockSync',{gameMinutes:clockStart+(Date.now()-clockReal)/1000*tj.clockRateHoursPerSecond*60}),400);
   const pub=await emitAck(teacher,'teacherPublishGeneratedMission',{

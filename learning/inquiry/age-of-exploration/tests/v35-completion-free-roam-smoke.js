@@ -1,6 +1,7 @@
 'use strict';
 const { io } = require('socket.io-client');
 const assert = require('node:assert/strict');
+const { openRaceRoom } = require('./_rooms');
 const BASE = process.env.TEST_URL || 'http://127.0.0.1:3000';
 function connect(){return io(BASE,{transports:['websocket'],forceNew:true,reconnection:false,timeout:6000});}
 function once(s,e,p=()=>true,t=15000){return new Promise((resolve,reject)=>{const timer=setTimeout(()=>{s.off(e,on);reject(new Error(`timeout:${e}`));},t);function on(d){if(!p(d))return;clearTimeout(timer);s.off(e,on);resolve(d)}s.on(e,on);});}
@@ -9,7 +10,7 @@ function distance(a,b){return Math.hypot(a.x-b.x,a.y-b.y);}
 (async()=>{
   const teacher=connect(),student=connect();
   await Promise.all([once(teacher,'connect'),once(student,'connect')]);
-  const created=await ack(teacher,'teacherCreateClass',{pin:process.env.TEST_TEACHER_PIN||'2468'});assert.equal(created.ok,true,created.error);
+  const created=await openRaceRoom(ack,teacher);
   const joined=await ack(student,'joinClass',{roomCode:created.roomCode,name:'완료자'});assert.equal(joined.ok,true,joined.error);
   const published=await ack(teacher,'teacherPublishArrivalRace',{targetPlaceId:'bosporus',startPlaceIds:['istanbul','lisbon','london','havana']});assert.equal(published.ok,true,published.error);
   assert.equal((await ack(student,'chooseStartCity',{optionId:'istanbul'})).ok,true);

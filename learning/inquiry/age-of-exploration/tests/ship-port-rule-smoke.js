@@ -1,6 +1,7 @@
 'use strict';
 const { io } = require('socket.io-client');
 const assert = require('node:assert/strict');
+const { openRaceRoom } = require('./_rooms');
 const BASE = process.env.TEST_URL || 'http://127.0.0.1:3000';
 function client(){return io(BASE,{transports:['websocket'],forceNew:true,reconnection:false,timeout:7000});}
 function once(socket,event,predicate=()=>true,timeout=15000){return new Promise((resolve,reject)=>{const timer=setTimeout(()=>{socket.off(event,on);reject(new Error(`timeout:${event}`));},timeout);function on(data){if(!predicate(data))return;clearTimeout(timer);socket.off(event,on);resolve(data);}socket.on(event,on);});}
@@ -8,7 +9,7 @@ function ack(socket,event,payload={}){return new Promise((resolve,reject)=>{cons
 (async()=>{
   const teacher=client(),student=client();
   await Promise.all([once(teacher,'connect'),once(student,'connect')]);
-  const created=await ack(teacher,'teacherCreateClass',{pin:'2468'});assert.equal(created.ok,true,created.error);
+  const created=await openRaceRoom(ack,teacher);
   const room=created.roomCode;
   const baseReal=Date.now(),baseGame=created.classGameMinutes,rate=created.clockRateHoursPerSecond;
   const heartbeat=setInterval(()=>teacher.emit('teacherClockSync',{gameMinutes:baseGame+(Date.now()-baseReal)/1000*rate*60}),250);

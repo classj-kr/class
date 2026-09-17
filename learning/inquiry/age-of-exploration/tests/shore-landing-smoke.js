@@ -2,6 +2,7 @@
 
 const assert = require('node:assert/strict');
 const { io } = require('socket.io-client');
+const { joinFreeRoom } = require('./_rooms');
 
 const BASE = process.env.TEST_URL || 'http://127.0.0.1:3000';
 
@@ -35,9 +36,9 @@ function ack(socket, event, payload = {}) {
   const student = io(BASE, { transports: ['websocket'], forceNew: true, reconnection: false });
   const observer = io(BASE, { transports: ['websocket'], forceNew: true, reconnection: false });
   await Promise.all([once(student, 'connect'), once(observer, 'connect')]);
-  const joined = await ack(student, 'joinSolo', { name: '해안탐험가', school: '송화초', grade: 6 });
+  const joined = await joinFreeRoom(ack, student, '해안탐험가');
   assert.equal(joined.ok, true, joined.error);
-  const observedJoin = await ack(observer, 'joinSolo', { name: '배관찰자', school: '송화초', grade: 6 });
+  const observedJoin = await ack(observer, 'joinClass', { roomCode: joined.roomCode, name: '배관찰자' });
   assert.equal(observedJoin.ok, true, observedJoin.error);
 
   await once(student, 'snapshot', (snap) => snap.you.mode === 'sea' && !snap.you.transition);

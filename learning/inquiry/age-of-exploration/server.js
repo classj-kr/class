@@ -19,7 +19,6 @@ const FinalQuiz = require('./lib/final-quiz.js');
 const ARRIVAL_ZONES = require('./data/catalog/arrival-zones.json');
 
 const PORT = Number(process.env.PORT || 3000);
-const TEACHER_PIN = String(process.env.TEACHER_PIN || '2468');
 const { WORLD_W, WORLD_H, TILE, WORLD_PIXEL_W, WORLD_PIXEL_H, SPEED: TERRAIN_SPEED } = Terrain;
 const START = { x: 1181.5 * TILE, y: 356.5 * TILE };
 const LISBON = Object.freeze({
@@ -291,8 +290,8 @@ app.get('/health', (_req, res) => res.json({
   cityInteriorImageCount: MissionCatalog.ORIGINAL_CITIES.length,
   cityEntryExitGameMinutes: 0,
   libraryReading: true,
-  missionSystem: 'solo-free-exploration-or-teacher-start-gated-arrival-race',
-  soloExplorationMode: true,
+  missionSystem: 'host-created-rooms-free-voyage-or-arrival-race',
+  roomCodeDigits: 4,
   originalCityCount: MissionCatalog.ORIGINAL_CITIES.length,
   originalPortCityCount: MissionCatalog.ORIGINAL_CITIES.filter((place) => place.canEnterFromSea === true).length,
   originalCityAccessRule: '원작 도시표 기준 + 확정 오류 교정',
@@ -338,8 +337,8 @@ const teachers = new Map();
 const missionRuntime = new Map();
 const roomClocks = new Map();
 
-function isSoloRoom(roomCode) {
-  return typeof roomCode === 'string' && roomCode.startsWith('solo:');
+function isFreeRoom(roomCode) {
+  return store.room(roomCode).settings.roomType === 'free';
 }
 
 function clockForRoom(roomCode) {
@@ -356,7 +355,9 @@ function clockForRoom(roomCode) {
 
 function roomClockShouldRun(roomCode) {
   const roomState = store.room(roomCode);
-  if (isSoloRoom(roomCode)) return roomState.settings.paused !== true && (rooms.get(roomCode)?.size || 0) > 0;
+  if (roomState.settings.roomType === 'free') {
+    return roomState.settings.paused !== true && roomState.settings.started === true && (rooms.get(roomCode)?.size || 0) > 0;
+  }
   return roomState.settings.paused !== true && roomState.activeMission?.phase === 'running';
 }
 
@@ -464,35 +465,63 @@ function cleanRoom(value) {
     .slice(0, 10);
 }
 
-function cleanSoloCohort(payload) {
-  const school = String(payload?.school || '')
-    .normalize('NFKC')
-    .replace(/[\u0000-\u001f\u007f]/g, '')
-    .replace(/\s+/g, ' ')
-    .trim()
-    .slice(0, 80);
-  const grade = Number(payload?.grade);
-  if (!school || !Number.isInteger(grade) || grade < 1 || grade > 12) return null;
-  const key = crypto.createHash('sha256').update(`${school}\n${grade}`).digest('hex').slice(0, 24);
-  return { school, grade, key };
+
+
+const ROOM_IDLE_MS = 12 * 60 * 60 * 1000;
+
+function pruneIdleRooms(now = Date.now()) {
+  const hosted = new Set(teachers.values());
+  for (const [code, state] of Object.entries(store.state?.rooms || {})) {
+    if (rooms.get(code)?.size || hosted.has(code)) continue;
+    if (now - (Number(state?.host?.lastActiveAt) || 0) < ROOM_IDLE_MS) continue;
+    delete store.state.rooms[code];
+    roomClocks.delete(code);
+    clearMissionRuntime(code);
+  }
 }
 
-
 function generateClassCode() {
+  pruneIdleRooms();
   const used = new Set([
     ...rooms.keys(),
     ...teachers.values(),
     ...Object.keys(store.state?.rooms || {})
   ]);
   for (let i = 0; i < 2000; i += 1) {
-    const code = String(Math.floor(100000 + Math.random() * 900000));
+    const code = String(Math.floor(1000 + Math.random() * 9000));
     if (!used.has(code)) return code;
   }
-  throw new Error('사용 가능한 학급 코드를 만들지 못했습니다. 잠시 후 다시 시도하세요.');
+  throw new Error('지금은 새 방을 만들 수 없습니다. 잠시 후 다시 시도하세요.');
 }
 
 function isValidClassCode(value) {
-  return /^\d{6}$/.test(String(value || ''));
+  return /^\d{4}$/.test(String(value || ''));
+}
+
+function hashHostToken(token) {
+  return crypto.createHash('sha256').update(String(token || '')).digest('hex');
+}
+
+function roomExists(roomCode) {
+  return Boolean(store.state?.rooms?.[roomCode]?.host?.tokenHash);
+}
+
+function isRoomHost(roomCode, token) {
+  const expected = store.state?.rooms?.[roomCode]?.host?.tokenHash;
+  return Boolean(expected && token && hashHostToken(token) === expected);
+}
+
+function touchRoom(roomCode) {
+  const host = store.state?.rooms?.[roomCode]?.host;
+  if (host) host.lastActiveAt = Date.now();
+}
+
+function becomeHost(socket, roomCode) {
+  const previousRoom = teachers.get(socket.id);
+  if (previousRoom && previousRoom !== roomCode) socket.leave(`teacher:${previousRoom}`);
+  teachers.set(socket.id, roomCode);
+  socket.join(`teacher:${roomCode}`);
+  touchRoom(roomCode);
 }
 
 function cleanText(value, maxLength = MAX_MISSION_TEXT) {
@@ -527,14 +556,16 @@ function isStartChoiceSet(mission) {
 
 function arrivalRaceTravelGate(player) {
   if (!player) return { ok: false, error: '학생 접속 상태가 아닙니다.' };
-  if (player.sessionMode === 'solo' || isSoloRoom(player.roomCode)) {
-    return { ok: true, mission: null, progress: null, completed: false, solo: true };
+  if (isFreeRoom(player.roomCode)) {
+    return store.room(player.roomCode).settings.started
+      ? { ok: true, mission: null, progress: null, completed: false, free: true }
+      : { ok: false, error: '방장이 출발 버튼을 누를 때까지 기다리세요.' };
   }
   const mission = store.room(player.roomCode).activeMission;
-  if (!isArrivalRace(mission)) return { ok: false, error: '교사가 미션을 준비할 때까지 기다리세요.' };
+  if (!isArrivalRace(mission)) return { ok: false, error: '방장이 미션을 준비할 때까지 기다리세요.' };
   const progress = progressFor(player.roomCode, player.name, mission.id, false);
   if (!progress?.selectedStartPlaceId) return { ok: false, error: '먼저 출발 도시를 선택하세요.' };
-  if (mission.phase !== 'running') return { ok: false, error: '출발 준비 완료. 교사가 출발 버튼을 누를 때까지 기다리세요.' };
+  if (mission.phase !== 'running') return { ok: false, error: '출발 준비 완료. 방장이 출발 버튼을 누를 때까지 기다리세요.' };
   if (progress.finalQuizStatus === 'answering') return { ok: false, error: '도착지 최종 문제 3개를 먼저 풀어야 합니다.' };
   return { ok: true, mission, progress, completed: progress.status === 'completed' };
 }
@@ -1560,132 +1591,40 @@ function removePlayer(socket) {
   const room = rooms.get(roomCode);
   if (!room) return;
   const p = room.get(socket.id);
+  if (room.size === 1 && isFreeRoom(roomCode)) freezeClassClock(roomCode);
   room.delete(socket.id);
   socket.leave(`class:${roomCode}`);
   socket.data.roomCode = null;
-  socket.data.sessionMode = null;
-  if (room.size === 0) {
-    rooms.delete(roomCode);
-    if (p?.sessionMode === 'solo' || isSoloRoom(roomCode)) {
-      roomClocks.delete(roomCode);
-      delete store.state.rooms[roomCode];
-      store.scheduleSave();
-    }
-  }
-  if (p?.sessionMode !== 'solo') io.to(`teacher:${roomCode}`).emit('teacherEvent', { type: 'leave', name: p.name, at: Date.now() });
+  if (room.size === 0) rooms.delete(roomCode);
+  touchRoom(roomCode);
+  if (p) io.to(`teacher:${roomCode}`).emit('teacherEvent', { type: 'leave', name: p.name, at: Date.now() });
 }
 
 io.on('connection', (socket) => {
-  socket.on('joinSolo', (payload, ack = () => {}) => {
-    try {
-      removePlayer(socket);
-      const name = cleanName(payload?.name);
-      if (name.length < 2) return ack({ ok: false, error: '이름을 두 글자 이상 입력하세요.' });
-
-      const cohort = cleanSoloCohort(payload);
-      const roomCode = cohort
-        ? `solo:cohort:${cohort.key}`
-        : `solo:${socket.id}:${Date.now().toString(36)}`;
-      let room = rooms.get(roomCode);
-      if (!room) {
-        room = new Map();
-        rooms.set(roomCode, room);
-        const initialRoomState = store.room(roomCode);
-        initialRoomState.activeMission = null;
-        initialRoomState.progress = {};
-        initialRoomState.settings = { paused: false, locked: false };
-        initialRoomState.clock = { gameMinutes: 0 };
-        roomClocks.set(roomCode, {
-          baseGameMinutes: 0,
-          baseServerMs: Date.now(),
-          ownerSocketId: null,
-          lastTeacherSyncAt: 0
-        });
-      }
-      const roomState = store.room(roomCode);
-
-      const startPlace = RESOLVED_PLACES.get('lisbon');
-      const spawn = safeHarborSpawn(room, startPlace);
-      const classMinutes = classGameMinutes(roomCode);
-      const player = {
-        id: socket.id,
-        name,
-        roomCode,
-        sessionMode: 'solo',
-        soloCohortKey: cohort?.key || null,
-        x: spawn.x,
-        y: spawn.y,
-        dir: 2,
-        moving: false,
-        speedKmh: 0,
-        mode: 'sea',
-        mission: '개인 자유 탐험',
-        activeMissionId: null,
-        missionStatus: 'free',
-        transition: null,
-        terrain: 'sea',
-        input: { up: false, down: false, left: false, right: false },
-        target: null,
-        lastInputAt: Date.now(),
-        lastSeen: Date.now(),
-        noticeSeq: 0,
-        noticeText: '',
-        noticeAt: 0,
-        stageArrivalKey: null,
-        currentCityId: null,
-        cityReturnPoint: null,
-        lastCityId: startPlace?.id || 'lisbon',
-        shipPortId: startPlace?.id || 'lisbon',
-        shipAnchorX: null,
-        shipAnchorY: null,
-        shipAnchorDir: null,
-        shipLandingX: null,
-        shipLandingY: null,
-        fatigue: 0,
-        money: STARTING_MONEY,
-      };
-      room.set(socket.id, player);
-      socket.data.roomCode = roomCode;
-      socket.data.sessionMode = 'solo';
-      socket.join(`class:${roomCode}`);
-      ack({
-        ok: true,
-        sessionMode: 'solo',
-        sharedSolo: Boolean(cohort),
-        roomCode: '개인 탐험',
-        roomLabel: '개인 탐험',
-        self: publicPlayer(player, classMinutes),
-        classGameMinutes: classMinutes,
-        nearbyRadiusTiles: NEARBY_RADIUS / TILE,
-        settings: roomState.settings,
-        mission: null,
-        progress: null,
-        interaction: null,
-        cityInteraction: cityInteractionForPlayer(player),
-        portInteraction: nearbyCatalogPort(player)
-      });
-    } catch (error) {
-      console.error(error);
-      ack({ ok: false, error: '개인 탐험을 시작하는 중 오류가 발생했습니다.' });
-    }
-  });
-
   socket.on('joinClass', (payload, ack = () => {}) => {
     try {
       removePlayer(socket);
       const name = cleanName(payload?.name);
       const roomCode = cleanRoom(payload?.roomCode);
       if (name.length < 2) return ack({ ok: false, error: '이름을 두 글자 이상 입력하세요.' });
-      if (!isValidClassCode(roomCode)) return ack({ ok: false, error: '학급 코드는 교사가 만든 숫자 6자리 코드입니다.' });
+      if (!isValidClassCode(roomCode)) return ack({ ok: false, error: '방번호는 숫자 4자리입니다.' });
+      if (!roomExists(roomCode)) return ack({ ok: false, error: '그런 방이 없습니다. 방번호를 다시 확인하세요.' });
 
-      let room = rooms.get(roomCode);
+      const roomSettings = store.room(roomCode).settings;
+      const freeRoom = roomSettings.roomType === 'free';
+      const existingRoom = rooms.get(roomCode);
+      if (roomSettings.locked) return ack({ ok: false, error: '방장이 방 입장을 막았습니다.' });
+      if ((existingRoom?.size || 0) >= MAX_ROOM_PLAYERS) return ack({ ok: false, error: '이 방은 정원이 찼습니다.' });
+      if ([...(existingRoom?.values() || [])].some((p) => p.name === name)) return ack({ ok: false, error: '이 방에 같은 이름이 이미 있습니다.' });
+      let room = existingRoom;
       if (!room) {
         room = new Map();
         rooms.set(roomCode, room);
+        if (freeRoom) clockForRoom(roomCode).baseServerMs = Date.now();
       }
-      if (store.room(roomCode).settings.locked) return ack({ ok: false, error: '교사가 현재 수업방 입장을 잠갔습니다.' });
-      if (room.size >= MAX_ROOM_PLAYERS) return ack({ ok: false, error: '이 반은 현재 정원이 찼습니다.' });
-      if ([...room.values()].some((p) => p.name === name)) return ack({ ok: false, error: '같은 반에 동일한 이름이 이미 접속 중입니다.' });
+      const host = isRoomHost(roomCode, payload?.hostToken);
+      if (host) becomeHost(socket, roomCode);
+      touchRoom(roomCode);
 
       const classMinutes = classGameMinutes(roomCode);
       const activeMission = store.room(roomCode).activeMission;
@@ -1694,8 +1633,10 @@ io.on('connection', (socket) => {
       const savedRaceStart = isArrivalRace(activeMission) && savedProgress?.selectedStartPlaceId
         ? activeMission.startOptions.find((option) => option.startPlace?.id === savedProgress.selectedStartPlaceId)?.startPlace
         : null;
-      const spawnOrigin = savedRaceStart?.point || savedMission?.startPlace?.point || START;
-      const spawn = safeSpawn(room, spawnOrigin, 'sea');
+      const freeStart = freeRoom ? RESOLVED_PLACES.get('lisbon') : null;
+      const spawn = freeStart
+        ? safeHarborSpawn(room, freeStart)
+        : safeSpawn(room, savedRaceStart?.point || savedMission?.startPlace?.point || START, 'sea');
       const player = {
         id: socket.id,
         name,
@@ -1707,7 +1648,9 @@ io.on('connection', (socket) => {
         moving: false,
         speedKmh: 0,
         mode: 'sea',
-        mission: savedMission ? (activeMission?.phase === 'running' ? savedMission.title : '교사 출발 신호 대기') : activeMission ? '출발 도시 4곳 중 선택 대기 중' : '교사의 미션 대기 중',
+        mission: freeRoom
+          ? (roomSettings.started ? '자유 항해' : '방장의 출발 신호 대기')
+          : savedMission ? (activeMission?.phase === 'running' ? savedMission.title : '방장 출발 신호 대기') : activeMission ? '출발 도시 4곳 중 선택 대기 중' : '방장의 미션 대기 중',
         activeMissionId: activeMission?.id || null,
         missionStatus: savedProgress?.status || 'assigned',
         transition: null,
@@ -1722,8 +1665,8 @@ io.on('connection', (socket) => {
         stageArrivalKey: null,
         currentCityId: null,
         cityReturnPoint: null,
-        lastCityId: savedRaceStart?.id || null,
-        shipPortId: savedProgress?.shipPortId || savedRaceStart?.id || null,
+        lastCityId: freeStart?.id || savedRaceStart?.id || null,
+        shipPortId: freeStart?.id || savedProgress?.shipPortId || savedRaceStart?.id || null,
         shipAnchorX: null,
         shipAnchorY: null,
         shipAnchorDir: null,
@@ -1736,7 +1679,7 @@ io.on('connection', (socket) => {
       socket.data.roomCode = roomCode;
       socket.data.sessionMode = 'competition';
       socket.join(`class:${roomCode}`);
-      ack({ ok: true, sessionMode:'competition', roomLabel:`학급 ${roomCode}`, self: publicPlayer(player, classMinutes), classGameMinutes: classMinutes, roomCode, nearbyRadiusTiles: NEARBY_RADIUS / TILE, settings: store.room(roomCode).settings, ...activeMissionState(roomCode, name, player) });
+      ack({ ok: true, sessionMode:'competition', roomType: roomSettings.roomType || 'race', isHost: host, roomLabel:`방 ${roomCode}`, self: publicPlayer(player, classMinutes), classGameMinutes: classMinutes, roomCode, nearbyRadiusTiles: NEARBY_RADIUS / TILE, settings: store.room(roomCode).settings, ...activeMissionState(roomCode, name, player) });
       io.to(`teacher:${roomCode}`).emit('teacherEvent', { type: 'join', name, at: Date.now() });
     } catch (error) {
       console.error(error);
@@ -2259,29 +2202,44 @@ io.on('connection', (socket) => {
     ack({ ok: true, settings });
   });
 
-  socket.on('teacherCreateClass', (payload, ack = () => {}) => {
-    if (String(payload?.pin || '') !== TEACHER_PIN) return ack({ ok:false, error:'교사 PIN이 맞지 않습니다.' });
+  socket.on('createRoom', (payload, ack = () => {}) => {
     try {
+      const roomType = payload?.roomType === 'free' ? 'free' : 'race';
       const roomCode = generateClassCode();
-      const previousRoom = teachers.get(socket.id);
-      if (previousRoom) socket.leave(`teacher:${previousRoom}`);
-      teachers.set(socket.id, roomCode);
-      socket.join(`teacher:${roomCode}`);
-      const cleanSettings = store.setRoomSettings(roomCode, { paused:false, locked:false });
-      const classMinutes = claimTeacherClock(roomCode, socket.id);
-      ack({ ok:true, roomCode, classGameMinutes:classMinutes, clockRateHoursPerSecond:GAME_HOURS_PER_REAL_SECOND, mission:null, progress:[], settings:cleanSettings });
+      const hostToken = crypto.randomBytes(18).toString('base64url');
+      const roomState = store.room(roomCode);
+      roomState.host = { tokenHash: hashHostToken(hostToken), createdAt: Date.now(), lastActiveAt: Date.now() };
+      const cleanSettings = store.setRoomSettings(roomCode, { paused:false, locked:false, roomType, started:false });
+      becomeHost(socket, roomCode);
+      const classMinutes = roomType === 'race' ? claimTeacherClock(roomCode, socket.id) : classGameMinutes(roomCode);
+      ack({ ok:true, roomCode, hostToken, roomType, classGameMinutes:classMinutes, clockRateHoursPerSecond:GAME_HOURS_PER_REAL_SECOND, mission:null, progress:[], settings:cleanSettings });
     } catch (error) {
-      ack({ ok:false, error:error.message || '학급 코드를 만들지 못했습니다.' });
+      ack({ ok:false, error:error.message || '방을 만들지 못했습니다.' });
     }
+  });
+
+  socket.on('hostStartFree', (_payload, ack = () => {}) => {
+    const roomCode = teachers.get(socket.id);
+    if (!roomCode) return ack({ ok:false, error:'방장만 출발시킬 수 있습니다.' });
+    const roomState = store.room(roomCode);
+    if (roomState.settings.roomType !== 'free') return ack({ ok:false, error:'자유 항해 방이 아닙니다.' });
+    if (roomState.settings.started) return ack({ ok:true, settings:roomState.settings });
+    clockForRoom(roomCode).baseServerMs = Date.now();
+    const settings = store.setRoomSettings(roomCode, { started:true });
+    const room = rooms.get(roomCode);
+    if (room) for (const p of room.values()) {
+      p.mission = '자유 항해';
+      setNotice(p, '출발! 자유롭게 항해하세요.');
+    }
+    touchRoom(roomCode);
+    io.to(`class:${roomCode}`).emit('classControl', settings);
+    ack({ ok:true, settings });
   });
 
   socket.on('teacherJoin', (payload, ack = () => {}) => {
     const roomCode = cleanRoom(payload?.roomCode);
-    if (!isValidClassCode(roomCode) || String(payload?.pin || '') !== TEACHER_PIN) return ack({ ok:false, error:'숫자 6자리 학급 코드 또는 교사 PIN이 맞지 않습니다.' });
-    const previousRoom = teachers.get(socket.id);
-    if (previousRoom) socket.leave(`teacher:${previousRoom}`);
-    teachers.set(socket.id, roomCode);
-    socket.join(`teacher:${roomCode}`);
+    if (!isValidClassCode(roomCode) || !isRoomHost(roomCode, payload?.hostToken)) return ack({ ok:false, error:'방을 만든 사람만 현황판을 열 수 있습니다.' });
+    becomeHost(socket, roomCode);
     const cleanSettings = store.setRoomSettings(roomCode, { paused: false, locked: false });
     io.to(`class:${roomCode}`).emit('classControl', cleanSettings);
     const classMinutes = claimTeacherClock(roomCode, socket.id);
@@ -2546,17 +2504,17 @@ setInterval(() => {
   const now = Date.now();
   for (const [roomCode, room] of rooms) {
     const classMinutes = classGameMinutes(roomCode, now);
+    const freeRoom = isFreeRoom(roomCode);
     for (const p of room.values()) {
       const nearby = [];
       for (const other of room.values()) {
         if (other.id === p.id) continue;
-        const sameSoloCohort = Boolean(p.soloCohortKey && p.soloCohortKey === other.soloCohortKey);
-        if (sameSoloCohort || distance(p, other) <= NEARBY_RADIUS) nearby.push(publicPlayer(other, classMinutes));
+        if (freeRoom || distance(p, other) <= NEARBY_RADIUS) nearby.push(publicPlayer(other, classMinutes));
       }
       const missionState = activeMissionState(roomCode, p.name, p);
-      io.to(p.id).emit('snapshot', { serverTime: now, classGameMinutes: classMinutes, sessionMode:p.sessionMode || 'competition', sharedSolo:Boolean(p.soloCohortKey), roomLabel:p.sessionMode === 'solo' ? '개인 탐험' : `학급 ${roomCode}`, you: publicPlayer(p, classMinutes), nearby, online: room.size, settings: store.room(roomCode).settings, ...missionState });
+      io.to(p.id).emit('snapshot', { serverTime: now, classGameMinutes: classMinutes, sessionMode:'competition', roomType: freeRoom ? 'free' : 'race', roomLabel:`방 ${roomCode}`, you: publicPlayer(p, classMinutes), nearby, online: room.size, settings: store.room(roomCode).settings, ...missionState });
     }
-    if (!isSoloRoom(roomCode)) {
+    {
       const activeMission = store.room(roomCode).activeMission;
       io.to(`teacher:${roomCode}`).emit('teacherSnapshot', { serverTime: now, classGameMinutes: classMinutes, roomCode, players: [...room.values()].map((p) => publicPlayer(p, classMinutes)), mission: missionForTeacher(activeMission), progress: missionProgressList(roomCode, activeMission?.id), settings: store.room(roomCode).settings });
     }

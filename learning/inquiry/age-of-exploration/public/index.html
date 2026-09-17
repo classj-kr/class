@@ -14,7 +14,7 @@ button,input{font:inherit}button{border:1px solid var(--line);background:#17313b
 #loading,#join{background-image:linear-gradient(180deg,#06203970 0%,#07141ab8 52%,#07141adb 100%),url('./assets/ui/harbor-day-bg.png?v=63');background-size:cover;background-position:center center;background-repeat:no-repeat}#pauseOverlay,#transitionOverlay{background-image:linear-gradient(180deg,#020b14b8 0%,#07141adc 50%,#07141af0 100%),url('./assets/ui/harbor-night-bg.png?v=63');background-size:cover;background-position:center center;background-repeat:no-repeat}
 #loading{position:fixed;inset:0;z-index:50;display:grid;place-items:center;font-size:16px;padding:24px;text-align:center;backdrop-filter:blur(1px)}
 #join{position:fixed;inset:0;z-index:40;display:grid;place-items:center;padding:18px}
-#joinCard{width:min(94vw,640px);padding:24px;border-radius:14px;background:#0a2028ee;backdrop-filter:blur(3px)}h1{font-size:25px;margin:0 0 7px}#joinCard .joinIntro{font-size:13px;line-height:1.55;opacity:.88;margin:0 0 17px}.entryModes{display:grid;grid-template-columns:1fr 1fr;gap:12px}.entryMode{min-height:132px;padding:17px;text-align:left;background:#0b222a;border:2px solid #5f746b;transition:.12s}.entryMode:hover{border-color:#d3b66d;background:#14343e}.entryMode.selected{border-color:#f2cf78;background:#29483e;box-shadow:0 0 0 2px #f2cf7830 inset}.entryMode b{display:block;font-size:20px;color:#ffe3a0;margin-bottom:7px}.entryMode span{display:block;font-size:12px;line-height:1.55;color:#d4e4e1}.entryMode small{display:block;margin-top:9px;color:#a9cec7;font-size:10px}.joinFields{margin-top:14px;padding-top:3px;border-top:1px solid #4a625e}.joinFields[hidden],.field[hidden],.teacherEntryLink[hidden]{display:none!important}.field{display:grid;gap:6px;margin-top:12px}.field label,.fieldLabel{font-size:12px}.field input,.playerIdentity{width:100%;height:44px;border-radius:8px;border:1px solid #8e7b59;background:#071a22;color:#fff;padding:0 12px;font-size:16px}.playerIdentity{display:flex;align-items:center;color:#ffe3a0}.joinRow{display:grid;grid-template-columns:1fr 1fr;gap:10px}.primary{width:100%;margin-top:16px;background:#76572c;font-weight:800;font-size:16px}.secondary{width:100%;margin-top:8px;min-height:36px;background:#17313b;font-size:12px}.teacherEntryRow{display:flex;justify-content:flex-end;margin-top:8px}.teacherEntryLink{display:inline-flex;align-items:center;min-height:30px;padding:5px 10px;border:1px solid #6a776e;border-radius:7px;background:#10262e;color:#c7d8d5;font-size:11px;font-weight:800;text-decoration:none}.teacherEntryLink:hover{border-color:#d3b66d;background:#17343e;color:#ffe3a0}.error{color:var(--bad);min-height:20px;font-size:12px;margin-top:8px}
+#joinCard{width:min(94vw,640px);padding:24px;border-radius:14px;background:#0a2028ee;backdrop-filter:blur(3px)}h1{font-size:25px;margin:0 0 7px}#joinCard .joinIntro{font-size:13px;line-height:1.55;opacity:.88;margin:0 0 17px}.entryModes{display:grid;grid-template-columns:1fr 1fr;gap:12px}.entryMode{min-height:92px;padding:17px;text-align:center;background:#0b222a;border:2px solid #5f746b;transition:.12s}.entryMode:hover{border-color:#d3b66d;background:#14343e}.entryMode.selected{border-color:#f2cf78;background:#29483e;box-shadow:0 0 0 2px #f2cf7830 inset}.entryMode b{display:block;font-size:22px;color:#ffe3a0}.roomTypes{display:grid;grid-template-columns:1fr 1fr;gap:10px}.roomType{min-height:72px;padding:10px 12px;text-align:left;background:#0b222a;border:2px solid #5f746b}.roomType:hover{border-color:#d3b66d}.roomType.selected{border-color:#f2cf78;background:#29483e}.roomType b{display:block;font-size:16px;color:#ffe3a0}.roomType span{display:block;margin-top:3px;font-size:11px;color:#d4e4e1}#hostBar{position:fixed;left:50%;top:50%;z-index:58;transform:translate(-50%,-50%);display:flex;align-items:center;gap:14px;padding:10px 14px;border-radius:9px}#hostBar[hidden]{display:none}#hostBar b{font-size:24px;letter-spacing:.12em;color:#ffe3a0}#hostStartBtn{background:#76572c;font-weight:900;padding:0 18px}.entryMode span{display:block;font-size:12px;line-height:1.55;color:#d4e4e1}.entryMode small{display:block;margin-top:9px;color:#a9cec7;font-size:10px}.joinFields{margin-top:14px;padding-top:3px;border-top:1px solid #4a625e}.joinFields[hidden],.field[hidden]{display:none!important}.field{display:grid;gap:6px;margin-top:12px}.field label,.fieldLabel{font-size:12px}.field input,.playerIdentity{width:100%;height:44px;border-radius:8px;border:1px solid #8e7b59;background:#071a22;color:#fff;padding:0 12px;font-size:16px}.playerIdentity{display:flex;align-items:center;color:#ffe3a0}.joinRow{display:grid;grid-template-columns:1fr 1fr;gap:10px}.primary{width:100%;margin-top:16px;background:#76572c;font-weight:800;font-size:16px}.secondary{width:100%;margin-top:8px;min-height:36px;background:#17313b;font-size:12px}.error{color:var(--bad);min-height:20px;font-size:12px;margin-top:8px}
 #hud{position:fixed;left:12px;top:12px;z-index:7;border-radius:9px;padding:9px 12px;min-width:340px;max-width:80vw;font-size:12px;line-height:1.55;pointer-events:none}#hud b{font-size:14px;color:#fff0c8}.fatigueRow{display:flex;align-items:center;gap:7px;margin-top:2px}.fatigueTrack{width:120px;height:7px;border-radius:999px;overflow:hidden;background:#071a22;border:1px solid #6f745f}.fatigueFill{display:block;height:100%;width:0;background:#9fe1b0;transition:width .15s linear,background .15s linear}.good{color:var(--good)}.bad{color:var(--bad)}#mission{color:#f3d48d}#modeHud{font-weight:800;color:#bfe5f1}
 #zoom{position:fixed;right:12px;top:12px;z-index:8;display:flex;gap:6px}#zoom button{min-width:44px;font-size:18px}
 #pad{position:fixed;left:16px;bottom:16px;z-index:9;width:158px;height:158px;display:grid;grid-template:repeat(3,1fr)/repeat(3,1fr);gap:5px;opacity:.92}#pad button{min-width:0;min-height:0;border-radius:12px;font-size:23px}.blank{visibility:hidden}
@@ -53,19 +53,21 @@ button,input{font:inherit}button{border:1px solid var(--line);background:#17313b
 <div id="join">
   <form id="joinCard" class="panel">
     <h1>세계 항해·육상 탐험</h1>
-    <p class="joinIntro">탐험 방식을 먼저 선택하세요.</p>
     <div id="entryModes" class="entryModes">
-      <button type="button" class="entryMode" data-entry-mode="solo"><b>개인 탐험 모드</b><span>교사나 학급 코드 없이 세계지도를 자유롭게 탐험합니다.</span><small>바람·해류·도시·도서관 모두 작동</small></button>
-      <button type="button" class="entryMode" data-entry-mode="competition"><b>경쟁 모드</b><span>학급 코드로 접속해 친구들과 같은 미션을 수행하고 도착 순위를 겨룹니다.</span><small>교사가 미션과 출발을 관리</small></button>
+      <button type="button" class="entryMode" data-entry-mode="create"><b>방 만들기</b></button>
+      <button type="button" class="entryMode" data-entry-mode="join"><b>방 참가</b></button>
     </div>
     <div id="joinFields" class="joinFields" hidden>
+      <div id="roomTypeField" class="field" hidden><span class="fieldLabel">방 종류</span><div class="roomTypes">
+        <button type="button" class="roomType" data-room-type="free"><b>자유 항해</b><span>방장도 함께 돌아다닙니다</span></button>
+        <button type="button" class="roomType" data-room-type="race"><b>도착 경주</b><span>방장은 현황판으로 진행합니다</span></button>
+      </div></div>
       <div class="joinRow">
-        <div id="roomField" class="field" hidden><label for="roomCode">학급 코드</label><input id="roomCode" inputmode="numeric" pattern="[0-9]{6}" maxlength="6" autocomplete="off"></div>
+        <div id="roomField" class="field" hidden><label for="roomCode">방번호</label><input id="roomCode" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" autocomplete="off" placeholder="숫자 4자리"></div>
         <div class="field"><span class="fieldLabel">참가자</span><strong id="playerIdentity" class="playerIdentity" aria-live="polite"></strong></div>
       </div>
-      <button id="joinStartBtn" class="primary" type="submit">탐험 시작</button>
-      <button id="modeBackBtn" class="secondary" type="button">탐험 방식 다시 선택</button>
-      <div class="teacherEntryRow"><a id="teacherEntryLink" class="teacherEntryLink" href="/learn/world-voyage/teacher" hidden>교사용 페이지</a></div>
+      <button id="joinStartBtn" class="primary" type="submit">입장</button>
+      <button id="modeBackBtn" class="secondary" type="button">처음으로</button>
       <div id="joinError" class="error"></div>
     </div>
   </form>
@@ -77,7 +79,7 @@ button,input{font:inherit}button{border:1px solid var(--line);background:#17313b
     <span class="statusItem" title="게임 시간과 구면거리를 기준으로 계산한 실제 이동속력"><small>이동 속력</small><b id="speedValue">0 km/h</b></span>
     <span class="statusItem"><small>피로도</small><b id="fatigueValue">0%</b><span class="fatigueTrack"><span id="fatigueFill" class="fatigueFill"></span></span></span>
   </div>
-  <div class="statusSub"><b id="identity">접속 준비 중</b><span class="statusDivider">│</span><span id="net" class="bad">● 연결 중</span><span id="onlineGroup">같은 반 <b id="online">0</b>명</span><span id="nearbyGroup">근처 <b id="nearby">0</b>명</span><span id="soloGroup" hidden>개인 탐험</span><span class="statusDivider">│</span><span id="modeHud">항해</span><span id="terrainHud">바다 · 속도 100%</span><span class="statusDivider">│</span><span id="currentHud">잔잔한 해역</span><span class="statusDivider">│</span><span id="windHud">바람 확인 중</span><span class="statusDivider">│</span><span id="mission" class="grow">교사의 도착 미션을 기다리는 중</span></div>
+  <div class="statusSub"><b id="identity">접속 준비 중</b><span class="statusDivider">│</span><span id="net" class="bad">● 연결 중</span><span id="onlineGroup">같은 반 <b id="online">0</b>명</span><span id="nearbyGroup">근처 <b id="nearby">0</b>명</span><span class="statusDivider">│</span><span id="modeHud">항해</span><span id="terrainHud">바다 · 속도 100%</span><span class="statusDivider">│</span><span id="currentHud">잔잔한 해역</span><span class="statusDivider">│</span><span id="windHud">바람 확인 중</span><span class="statusDivider">│</span><span id="mission" class="grow">방장의 신호를 기다리는 중</span></div>
 </div>
 <div id="missionBanner" class="panel" aria-live="polite"></div>
 <div id="zoom"><button id="minus" aria-label="축소">−</button><button id="plus" aria-label="확대">＋</button><button id="home" aria-label="현재 임무 지점">⌂</button></div>
@@ -110,14 +112,14 @@ button,input{font:inherit}button{border:1px solid var(--line);background:#17313b
 
 <button id="missionToggle">학습 미션</button>
 <aside id="missionPanel" class="panel" aria-live="polite">
-  <h3 id="missionTitle">교사의 미션을 기다리는 중</h3>
+  <h3 id="missionTitle">방장의 미션을 기다리는 중</h3>
   <div id="missionMeta" class="missionMeta"></div>
   <p id="missionInstructions">미션이 배포되면 여기에 내용이 표시됩니다.</p>
   <div id="missionTarget"></div>
   <div id="missionFeedback"></div>
   <div class="missionActions"><button id="missionClose">접기</button></div>
 </aside>
-<div id="transitionOverlay"><div id="transitionCard"><div id="transitionLabel">입항 준비 중</div><div id="transitionBar"><div id="transitionFill"></div></div></div></div><div id="pauseOverlay"><div id="lockTitle">교사가 수업을 잠시 멈췄습니다.</div><span id="lockDetail" style="font-size:14px;font-weight:400">설명을 듣고 다시 시작할 때까지 기다리세요.</span></div>
+<div id="hostBar" class="panel" hidden><span>방번호 <b id="hostCode"></b></span><button id="hostStartBtn" type="button">모두 출발</button></div><div id="transitionOverlay"><div id="transitionCard"><div id="transitionLabel">입항 준비 중</div><div id="transitionBar"><div id="transitionFill"></div></div></div></div><div id="pauseOverlay"><div id="lockTitle">방장이 게임을 잠시 멈췄습니다.</div><span id="lockDetail" style="font-size:14px;font-weight:400">설명을 듣고 다시 시작할 때까지 기다리세요.</span></div>
 <div id="messageWindow" class="panel" aria-live="polite"><div id="messageHeader">항해 안내</div><div id="messageLines"><div class="guideLine system">서버에 접속한 뒤 안내 메시지가 여기에 표시됩니다.</div></div></div>
 <script src="/learn/world-voyage/socket.io/socket.io.js"></script>
 <script src="/learn/world-voyage/js/terrain.js?v=74"></script>
@@ -133,8 +135,8 @@ const START={x:1181.5*TS,y:356.5*TS};
 const SEA_BASE_SPEED=132,LAND_BASE_SPEED=96,CURRENT_TAIL_FACTOR=.40,CURRENT_STRONG_CORE_TAIL_FACTOR=.80,CURRENT_HEAD_FACTOR=.23,CURRENT_CROSS_FACTOR=.14,WIND_TAIL_FACTOR=1.00,WIND_HEAD_FACTOR=.65,SIMULATION_RATE=2;const GAME_HOURS_PER_REAL_SECOND=30;
 const canvas=document.getElementById('game'),ctx=canvas.getContext('2d',{alpha:false});
 const loading=document.getElementById('loading'),join=document.getElementById('join'),joinForm=document.getElementById('joinCard');
-const entryModes=document.getElementById('entryModes'),joinFields=document.getElementById('joinFields'),roomField=document.getElementById('roomField'),roomInput=document.getElementById('roomCode'),playerIdentity=document.getElementById('playerIdentity'),joinStartBtn=document.getElementById('joinStartBtn'),modeBackBtn=document.getElementById('modeBackBtn'),teacherEntryLink=document.getElementById('teacherEntryLink'),joinError=document.getElementById('joinError');
-const identity=document.getElementById('identity'),net=document.getElementById('net'),onlineEl=document.getElementById('online'),nearbyEl=document.getElementById('nearby'),onlineGroup=document.getElementById('onlineGroup'),nearbyGroup=document.getElementById('nearbyGroup'),soloGroup=document.getElementById('soloGroup'),coord=document.getElementById('coord'),clockGroup=document.getElementById('clockGroup'),clockEl=document.getElementById('clock'),speedValue=document.getElementById('speedValue'),terrainHud=document.getElementById('terrainHud'),currentHud=document.getElementById('currentHud'),windHud=document.getElementById('windHud'),fatigueValue=document.getElementById('fatigueValue'),fatigueFill=document.getElementById('fatigueFill'),modeHud=document.getElementById('modeHud'),missionEl=document.getElementById('mission'),messageLines=document.getElementById('messageLines');
+const entryModes=document.getElementById('entryModes'),joinFields=document.getElementById('joinFields'),roomField=document.getElementById('roomField'),roomTypeField=document.getElementById('roomTypeField'),hostBar=document.getElementById('hostBar'),hostCode=document.getElementById('hostCode'),hostStartBtn=document.getElementById('hostStartBtn'),roomInput=document.getElementById('roomCode'),playerIdentity=document.getElementById('playerIdentity'),joinStartBtn=document.getElementById('joinStartBtn'),modeBackBtn=document.getElementById('modeBackBtn'),joinError=document.getElementById('joinError');
+const identity=document.getElementById('identity'),net=document.getElementById('net'),onlineEl=document.getElementById('online'),nearbyEl=document.getElementById('nearby'),onlineGroup=document.getElementById('onlineGroup'),nearbyGroup=document.getElementById('nearbyGroup'),coord=document.getElementById('coord'),clockGroup=document.getElementById('clockGroup'),clockEl=document.getElementById('clock'),speedValue=document.getElementById('speedValue'),terrainHud=document.getElementById('terrainHud'),currentHud=document.getElementById('currentHud'),windHud=document.getElementById('windHud'),fatigueValue=document.getElementById('fatigueValue'),fatigueFill=document.getElementById('fatigueFill'),modeHud=document.getElementById('modeHud'),missionEl=document.getElementById('mission'),messageLines=document.getElementById('messageLines');
 const missionActionPrompt=document.getElementById('missionActionPrompt'),missionActionText=document.getElementById('missionActionText'),missionActionBtn=document.getElementById('missionActionBtn'),cityActionBtn=document.getElementById('cityActionBtn');
 const cityView=document.getElementById('cityView'),cityScene=document.getElementById('cityScene'),cityTitle=document.getElementById('cityTitle'),cityInfo=document.getElementById('cityInfo'),libraryBtn=document.getElementById('libraryBtn'),leaveCityBtn=document.getElementById('leaveCityBtn'),departCityBtn=document.getElementById('departCityBtn'),libraryView=document.getElementById('libraryView'),libraryTitle=document.getElementById('libraryTitle'),libraryHint=document.getElementById('libraryHint'),libraryClose=document.getElementById('libraryClose'),bookList=document.getElementById('bookList'),bookTitle=document.getElementById('bookTitle'),bookMeta=document.getElementById('bookMeta'),bookIntro=document.getElementById('bookIntro'),bookSections=document.getElementById('bookSections'),messageWindow=document.getElementById('messageWindow');
 const missionPanel=document.getElementById('missionPanel'),missionToggle=document.getElementById('missionToggle'),missionBanner=document.getElementById('missionBanner'),missionTitle=document.getElementById('missionTitle'),missionMeta=document.getElementById('missionMeta'),missionInstructions=document.getElementById('missionInstructions'),missionTarget=document.getElementById('missionTarget'),missionFeedback=document.getElementById('missionFeedback'),missionClose=document.getElementById('missionClose');
@@ -198,7 +200,7 @@ const DESKTOP_MAP_ZOOM=1.0,MOBILE_MAP_ZOOM_PORTRAIT=.68,MOBILE_MAP_ZOOM_LANDSCAP
 function isPhoneMapView(){return (matchMedia('(pointer:coarse)').matches||innerWidth<=650)&&Math.min(innerWidth,innerHeight)<=650}
 function recommendedMapZoom(){if(!isPhoneMapView())return DESKTOP_MAP_ZOOM;return innerWidth>innerHeight?MOBILE_MAP_ZOOM_LANDSCAPE:MOBILE_MAP_ZOOM_PORTRAIT}
 function minimumMapZoom(){return isPhoneMapView()?MOBILE_MIN_ZOOM:DESKTOP_MIN_ZOOM}
-let world=null,assetsReady=false,joined=false,dpr=1,zoom=recommendedMapZoom(),zoomManuallyAdjusted=false,last=performance.now(),mode='sea',sessionMode='',entryMode='',lastLocalBlock=0,lastNoticeSeq=0,roomCodeCurrent='',lastModeMessage=null,lastTerrainMessage=null,lastFatigueBand=0,mapCities=[];
+let world=null,assetsReady=false,joined=false,dpr=1,zoom=recommendedMapZoom(),zoomManuallyAdjusted=false,last=performance.now(),mode='sea',sessionMode='',entryMode='',roomType='race',isHost=false,chosenRoomType='',lastLocalBlock=0,lastNoticeSeq=0,roomCodeCurrent='',lastModeMessage=null,lastTerrainMessage=null,lastFatigueBand=0,mapCities=[];
 let self=null,serverSelf=null,remote=new Map(),lastSnapshotAt=0,activeMission=null,missionProgress=null,missionInteraction=null,cityInteraction=null,portInteraction=null,classGameMinutes=0,clockAnchorGameMinutes=0,clockAnchorAt=performance.now(),classSettings={paused:false,locked:false};
 let libraryCatalog={books:[]},cityCatalogById=new Map(),renderedCityId='',openedBookId='',finalQuizSubmitting=false,dismissedFinalQuizMissionId='',lastFinalQuizRenderKey='',finalQuizSaveTimer=0;
 let bgmState={muted:false,volume:.6,unlocked:false};
@@ -265,7 +267,7 @@ function vectorToDir(vx,vy){let a=Math.atan2(vx,-vy);if(a<0)a+=Math.PI*2;return 
 function pointDistance(point){if(!self)return 999;return Math.hypot(dxWrap(point.x,self.x),point.y-self.y)/TS}
 function fatigueMultiplier(value){const fatigue=Math.max(0,Math.min(100,Number(value)||0));if(fatigue<=60)return 1;const ratio=(fatigue-60)/40;return Math.max(.70,1-.30*Math.pow(ratio,1.35))}
 function syncClassClock(value){const n=Number(value);if(!Number.isFinite(n))return;classGameMinutes=n;clockAnchorGameMinutes=n;clockAnchorAt=performance.now()}
-function displayedGameMinutes(){const running=!classSettings.paused&&(sessionMode==='solo'||activeMission?.phase==='running');return clockAnchorGameMinutes+(running?(performance.now()-clockAnchorAt)/1000*GAME_HOURS_PER_REAL_SECOND*60:0)}
+function displayedGameMinutes(){const running=!classSettings.paused&&(roomType==='free'?classSettings.started===true:activeMission?.phase==='running');return clockAnchorGameMinutes+(running?(performance.now()-clockAnchorAt)/1000*GAME_HOURS_PER_REAL_SECOND*60:0)}
 const guideHistory=[];function addGuideMessage(text,kind='info'){const clean=String(text||'').trim();if(!clean)return;const last=guideHistory.at(-1);if(last?.text===clean&&Date.now()-last.at<800)return;guideHistory.push({text:clean,kind,at:Date.now()});while(guideHistory.length>4)guideHistory.shift();messageLines.replaceChildren(...guideHistory.map(entry=>{const line=document.createElement('div');line.className=`guideLine ${entry.kind||''}`;line.textContent=entry.text;return line}))}
 function showToast(text,kind='info'){addGuideMessage(text,kind)}
 function clearKeys(){for(const k in keys)keys[k]=false;socket.emit('stop')}
@@ -278,23 +280,23 @@ function currentStage(){if(activeMission?.kind!=='staged')return null;return act
 function awaitingStartChoice(){return activeMission?.kind==='arrivalRace'&&activeMission.phase!=='running'&&!missionProgress?.selectedStartPlaceId&&missionProgress?.status!=='completed'}
 function waitingForTeacherStart(){return activeMission?.kind==='arrivalRace'&&!!missionProgress?.selectedStartPlaceId&&activeMission.phase!=='running'&&missionProgress?.status!=='completed'}
 function missedTeacherStart(){return activeMission?.kind==='arrivalRace'&&activeMission.phase==='running'&&!missionProgress?.selectedStartPlaceId&&missionProgress?.status!=='completed'}
-function canTravelNow(){if(!joined||classSettings.paused||serverSelf?.transition)return false;if(sessionMode==='solo')return true;if(missionProgress?.finalQuizStatus==='answering')return false;return !!(activeMission?.kind==='arrivalRace'&&activeMission.phase==='running'&&missionProgress?.selectedStartPlaceId)}
+function canTravelNow(){if(!joined||classSettings.paused||serverSelf?.transition)return false;if(roomType==='free')return classSettings.started===true;if(missionProgress?.finalQuizStatus==='answering')return false;return !!(activeMission?.kind==='arrivalRace'&&activeMission.phase==='running'&&missionProgress?.selectedStartPlaceId)}
 function updateTravelLockOverlay(){
   if(!joined){pauseOverlay.classList.remove('show');return}
-  if(sessionMode==='solo'){pauseOverlay.classList.remove('show');return}
+  if(roomType==='free'){const waiting=!classSettings.paused&&!classSettings.started;const title=classSettings.paused?'방장이 게임을 잠시 멈췄습니다.':waiting?'출발 대기 중':'';lockTitle.textContent=title;lockDetail.textContent=waiting?(isHost?'친구들에게 방번호를 알려 주고, 모두 들어오면 "모두 출발"을 누르세요.':'방장이 출발 버튼을 누르면 모두 출발합니다.'):'';pauseOverlay.classList.toggle('show',!!title);if(title)clearKeys();return}
   let title='',detail='';
-  if(classSettings.paused){title='교사가 수업을 잠시 멈췄습니다.';detail='설명을 듣고 다시 시작할 때까지 기다리세요.'}
-  else if(!activeMission){title='미션 준비 중';detail='교사가 도착지와 출발 도시를 정할 때까지 기다리세요.'}
-  else if(waitingForTeacherStart()){title='출발 준비 완료';detail='교사가 출발 버튼을 누르면 모두 동시에 출발합니다.'}
-  else if(missedTeacherStart()){title='이미 출발한 미션입니다';detail='교사에게 다음 미션에 참여할 수 있도록 요청하세요.'}
-  else if(activeMission.kind==='arrivalRace'&&activeMission.phase!=='running'&&!awaitingStartChoice()){title='출발 대기 중';detail='교사의 출발 신호를 기다리세요.'}
+  if(classSettings.paused){title='방장이 게임을 잠시 멈췄습니다.';detail='다시 시작할 때까지 기다리세요.'}
+  else if(!activeMission){title='미션 준비 중';detail='방장이 도착지와 출발 도시를 정할 때까지 기다리세요.'}
+  else if(waitingForTeacherStart()){title='출발 준비 완료';detail='방장이 출발 버튼을 누르면 모두 동시에 출발합니다.'}
+  else if(missedTeacherStart()){title='이미 출발한 미션입니다';detail='방장에게 다음 미션에 참여할 수 있도록 요청하세요.'}
+  else if(activeMission.kind==='arrivalRace'&&activeMission.phase!=='running'&&!awaitingStartChoice()){title='출발 대기 중';detail='방장의 출발 신호를 기다리세요.'}
   lockTitle.textContent=title;lockDetail.textContent=detail;pauseOverlay.classList.toggle('show',!!title);if(title)clearKeys();
 }
 function setMissionPanelOpen(open){if(!open&&awaitingStartChoice())return;missionPanel.classList.toggle('show',open);missionToggle.classList.toggle('show',!open&&!!activeMission);if(open)clearKeys()}
-function updateMissionBanner(){if(!activeMission){missionBanner.className='panel show';missionBanner.textContent=sessionMode==='solo'?'개인 탐험 모드 · 자유롭게 세계를 탐험하세요':'교사의 미션 설정을 기다리는 중';return}const target=activeMission.targetPlace?.name||activeMission.title;if(awaitingStartChoice()){missionBanner.className='panel show';missionBanner.textContent=`공통 미션: ${target} 도착 · 출발 도시를 선택하세요`;return}const start=missionProgress?.selectedStartPlaceName||'출발지';if(missionProgress?.status==='completed'){const boost=formatSpeedBoost(completionBoost()),score=Number.isFinite(missionProgress?.finalCorrectCount)?` · ${missionProgress.finalCorrectCount}/3 정답`:'';missionBanner.className='panel show done';missionBanner.textContent=`${medalText(missionProgress.finishRank)} 미션 성공${score} · ${start} → ${target} · 이동속도 ${boost}배 자유 탐험`;return}if(missionProgress?.finalQuizStatus==='answering'){missionBanner.className='panel show';missionBanner.textContent=`${target} 도착 · 최종 문제 3개 풀이 중`;return}missionBanner.className='panel show';missionBanner.textContent=waitingForTeacherStart()?`출발 준비 완료 · ${start} → ${target} · 교사 신호 대기`:`미션: ${start} → ${target}`}
+function updateMissionBanner(){if(!activeMission){missionBanner.className='panel show';missionBanner.textContent=roomType==='free'?(classSettings.started?'자유 항해 · 세계를 자유롭게 돌아다니세요':'자유 항해 · 방장의 출발 신호를 기다리는 중'):'방장의 미션 설정을 기다리는 중';return}const target=activeMission.targetPlace?.name||activeMission.title;if(awaitingStartChoice()){missionBanner.className='panel show';missionBanner.textContent=`공통 미션: ${target} 도착 · 출발 도시를 선택하세요`;return}const start=missionProgress?.selectedStartPlaceName||'출발지';if(missionProgress?.status==='completed'){const boost=formatSpeedBoost(completionBoost()),score=Number.isFinite(missionProgress?.finalCorrectCount)?` · ${missionProgress.finalCorrectCount}/3 정답`:'';missionBanner.className='panel show done';missionBanner.textContent=`${medalText(missionProgress.finishRank)} 미션 성공${score} · ${start} → ${target} · 이동속도 ${boost}배 자유 탐험`;return}if(missionProgress?.finalQuizStatus==='answering'){missionBanner.className='panel show';missionBanner.textContent=`${target} 도착 · 최종 문제 3개 풀이 중`;return}missionBanner.className='panel show';missionBanner.textContent=waitingForTeacherStart()?`출발 준비 완료 · ${start} → ${target} · 방장 신호 대기`:`미션: ${start} → ${target}`}
 function missionConditionText(){if(!activeMission)return'';if(activeMission.kind==='staged'){const stage=currentStage();if(!stage)return'모든 단계 완료';return `${(missionProgress?.stageIndex||0)+1}/${activeMission.stages.length}단계 · ${stage.label}`;}if(activeMission.kind==='location')return `목표 지점: ${activeMission.target?.label||'학습 지점'} · 반경 ${activeMission.target?.radiusTiles||2}칸`;if(activeMission.kind==='terrain'){const t=activeMission.criteria?.terrainType;return `${TERRAIN_LABEL[t]||t} 지형에서 ${activeMission.criteria?.minDistanceTiles||0}칸 이동`;}return `총 ${activeMission.criteria?.minDistanceTiles||0}칸 이동 · 서로 다른 지형 ${activeMission.criteria?.minTerrainTypes||1}종`}
 function renderMission(){
-  if(!activeMission){missionTitle.textContent=sessionMode==='solo'?'개인 자유 탐험':'교사의 미션을 기다리는 중';missionInstructions.textContent=sessionMode==='solo'?'정해진 목적지 없이 바다와 육지를 자유롭게 탐험하세요.':'도착 미션이 배포되면 여기에 내용이 표시됩니다.';missionMeta.replaceChildren();missionTarget.textContent='';missionFeedback.textContent='';missionPanel.classList.remove('show','choiceRequired');missionToggle.classList.remove('show');missionClose.hidden=false;updateMissionBanner();return}
+  if(!activeMission){missionTitle.textContent=roomType==='free'?'자유 항해':'방장의 미션을 기다리는 중';missionInstructions.textContent=roomType==='free'?'정해진 목적지 없이 바다와 육지를 자유롭게 탐험하세요.':'도착 미션이 배포되면 여기에 내용이 표시됩니다.';missionMeta.replaceChildren();missionTarget.textContent='';missionFeedback.textContent='';missionPanel.classList.remove('show','choiceRequired');missionToggle.classList.remove('show');missionClose.hidden=false;updateMissionBanner();return}
   missionTitle.textContent=activeMission.title;missionInstructions.textContent=activeMission.instructions;missionMeta.replaceChildren();
   for(const text of [missionKindLabel(activeMission.kind),missionStatusText()]){const span=document.createElement('span');span.className='tag';span.textContent=text;missionMeta.append(span)}
   const mustChoose=awaitingStartChoice();missionPanel.classList.toggle('choiceRequired',mustChoose);missionClose.hidden=mustChoose;if(mustChoose){missionPanel.classList.add('show');missionToggle.classList.remove('show')}
@@ -317,10 +319,10 @@ function renderMission(){
     }else{
       const selected=missionProgress?.selectedStartPlaceName||'';
       const box=document.createElement('div');box.className='stageBox';
-      if(!selected&&activeMission.phase==='running') box.innerHTML=`<div class="stageNow">이번 미션은 이미 출발했습니다.</div><p>교사에게 다음 미션에 참여할 수 있도록 요청하세요.</p>`;
-      else box.innerHTML=`<div class="stageNow">${escapeHtml(selected||'선택한 도시')} → ${escapeHtml(target.name||'도착지')}</div><p>${missionProgress?.status==='completed'?`최종 문제 ${missionProgress?.finalCorrectCount??0}/3 정답으로 ${missionProgress?.finishRank||''}위가 확정되었습니다. 이동속도 ${formatSpeedBoost(completionBoost())}배로 세계를 자유롭게 탐험하세요.`:missionProgress?.finalQuizStatus==='answering'?'목적지에 도착했습니다. 최종 문제 3개를 모두 제출하면 완주합니다.':activeMission.phase==='running'?'도착지에 도착하면 최종 문제 3개가 시작됩니다. 정답 수가 순위의 첫 번째 기준입니다.':'출발 준비가 끝났습니다. 교사가 출발 버튼을 누를 때까지 기다리세요.'}</p><p class="tag">게임 지도에 정답 위치 표시 없음</p>`;
+      if(!selected&&activeMission.phase==='running') box.innerHTML=`<div class="stageNow">이번 미션은 이미 출발했습니다.</div><p>방장에게 다음 미션에 참여할 수 있도록 요청하세요.</p>`;
+      else box.innerHTML=`<div class="stageNow">${escapeHtml(selected||'선택한 도시')} → ${escapeHtml(target.name||'도착지')}</div><p>${missionProgress?.status==='completed'?`최종 문제 ${missionProgress?.finalCorrectCount??0}/3 정답으로 ${missionProgress?.finishRank||''}위가 확정되었습니다. 이동속도 ${formatSpeedBoost(completionBoost())}배로 세계를 자유롭게 탐험하세요.`:missionProgress?.finalQuizStatus==='answering'?'목적지에 도착했습니다. 최종 문제 3개를 모두 제출하면 완주합니다.':activeMission.phase==='running'?'도착지에 도착하면 최종 문제 3개가 시작됩니다. 정답 수가 순위의 첫 번째 기준입니다.':'출발 준비가 끝났습니다. 방장이 출발 버튼을 누를 때까지 기다리세요.'}</p><p class="tag">게임 지도에 정답 위치 표시 없음</p>`;
       missionTarget.append(box);
-      const completed=missionProgress?.status==='completed';missionFeedback.className=completed?'missionDone':'';missionFeedback.textContent=completed?`${medalText(missionProgress.finishRank)} 미션 성공 · ${missionProgress?.finalCorrectCount??0}/3 정답 · 이동속도 ${formatSpeedBoost(completionBoost())}배 자유 탐험`:!selected&&activeMission.phase==='running'?'참여 대기':missionProgress?.finalQuizStatus==='answering'?'최종 문제 풀이 중':activeMission.phase==='running'?'목적지로 이동 중':'교사 출발 신호 대기 중';
+      const completed=missionProgress?.status==='completed';missionFeedback.className=completed?'missionDone':'';missionFeedback.textContent=completed?`${medalText(missionProgress.finishRank)} 미션 성공 · ${missionProgress?.finalCorrectCount??0}/3 정답 · 이동속도 ${formatSpeedBoost(completionBoost())}배 자유 탐험`:!selected&&activeMission.phase==='running'?'참여 대기':missionProgress?.finalQuizStatus==='answering'?'최종 문제 풀이 중':activeMission.phase==='running'?'목적지로 이동 중':'방장 출발 신호 대기 중';
     }
   }else if(activeMission.kind==='startChoiceSet'){
     missionTarget.replaceChildren();
@@ -363,7 +365,7 @@ function chooseStartCity(optionId,placeId,cityName,selectedCard){
     }
     startChoicePending=false;pendingStartChoice=null;startChoiceRollback=null;serverSelf=result.self||serverSelf;if(result.self){self={...result.self};mode=result.self.mode}
     lastMissionRenderKey='';applyMissionState(result.mission,result.progress,false);
-    showToast(`${cityName} 선택 완료. 교사의 출발 신호를 기다리세요.`,'good');
+    showToast(`${cityName} 선택 완료. 방장의 출발 신호를 기다리세요.`,'good');
     missionPanel.classList.remove('show','choiceRequired');missionToggle.classList.add('show');updateTravelLockOverlay();
   });
 }
@@ -372,7 +374,8 @@ let lastMissionRenderKey='';
 function missionRenderKey(mission,progress){return [mission?.id||'',mission?.phase||'',progress?.selectedStartPlaceId||'',progress?.selectedStartPlaceName||'',progress?.status||'',progress?.finishRank||'',progress?.finalQuizStatus||'',progress?.finalCorrectCount??'',(progress?.finalQuizAnswers||[]).join(','),progress?.stageIndex||0,startChoicePending?pendingStartChoice?.optionId||'pending':''].join('|')}
 function mergePendingStartChoice(progress){if(!startChoicePending||!pendingStartChoice||progress?.selectedStartPlaceId)return progress;return {...(progress||{}),selectedStartPlaceId:pendingStartChoice.placeId,selectedStartPlaceName:pendingStartChoice.cityName,status:'assigned',statusLabel:'수행 전'}}
 function applyMissionState(mission,progress,announce=false){const changed=mission?.id&&mission?.id!==activeMission?.id,wasCompleted=missionProgress?.status==='completed';if(changed)dismissedFinalQuizMissionId='';activeMission=mission||null;missionProgress=mergePendingStartChoice(progress)||null;const justCompleted=!wasCompleted&&missionProgress?.status==='completed',renderKey=missionRenderKey(activeMission,missionProgress);if(renderKey!==lastMissionRenderKey){lastMissionRenderKey=renderKey;renderMission()}renderFinalQuiz();updateTravelLockOverlay();syncBackgroundMusic();if(justCompleted)showToast(`${medalText(missionProgress.finishRank)} 미션 성공! ${missionProgress?.finalCorrectCount??0}/3 정답 · 이동속도 ${formatSpeedBoost(completionBoost())}배 자유 탐험`,'good');if(announce&&activeMission){showToast(`새 수행 미션: ${activeMission.title}`);setMissionPanelOpen(true)}else if(changed&&activeMission)setMissionPanelOpen(true)}
-function applyClassSettings(next){const before=displayedGameMinutes();classSettings={...classSettings,...(next||{})};clockAnchorGameMinutes=before;clockAnchorAt=performance.now();classGameMinutes=before;updateTravelLockOverlay();if(classSettings.paused)clearKeys()}
+function applyClassSettings(next){const before=displayedGameMinutes();classSettings={...classSettings,...(next||{})};clockAnchorGameMinutes=before;clockAnchorAt=performance.now();classGameMinutes=before;updateHostBar();updateMissionBanner();updateTravelLockOverlay();if(classSettings.paused)clearKeys()}
+function updateHostBar(){hostBar.hidden=!(joined&&isHost&&roomType==='free'&&!classSettings.started)}
 function finalQuizOpen(){return finalQuizView.classList.contains('show')}
 function finalQuizAnswersFromForm(){return (missionProgress?.finalQuiz?.questions||[]).map((_,index)=>{const checked=finalQuizQuestions.querySelector(`input[name="finalQuiz${index}"]:checked`);return checked?Number(checked.value):null})}
 function updateFinalQuizSubmitState(){const answers=finalQuizAnswersFromForm(),complete=answers.length===3&&answers.every(Number.isInteger);finalQuizSubmit.disabled=finalQuizSubmitting||!complete;finalQuizStatus.textContent=finalQuizSubmitting?'제출하는 중…':complete?'세 문제를 모두 선택했습니다. 제출하면 답을 바꿀 수 없습니다.':'세 문제에 모두 답하세요.';finalQuizStatus.className=`finalQuizStatus ${complete?'good':'warn'}`}
@@ -471,7 +474,7 @@ function applyModeUI(){
     transitionLabel.textContent=tr.label||'이동 수단 전환 중';transitionFill.style.width=`${Math.round(progress*100)}%`;
   }
   // 항구·도시 상호작용은 미션 상태 DOM과 분리한다. 서버가 보내 준 근접 판정을
-  // 항상 화면에 보여 주고, 교사 시작 전/일시정지 때만 버튼을 비활성화한다.
+  // 항상 화면에 보여 주고, 방장 시작 전/일시정지 때만 버튼을 비활성화한다.
   const interactionEnabled=!inCity&&!busy&&!classSettings.paused&&travelAllowed;
   const missionVisible=!inCity&&!busy&&!!missionInteraction?.canInteract;
   const cityVisible=!inCity&&!busy&&!!cityInteraction?.canUse;
@@ -504,19 +507,19 @@ socket.on('disconnect',()=>{net.textContent='● 재연결 중';net.className='b
 socket.on('connect_error',()=>{net.textContent='● 연결 실패';net.className='bad'});
 socket.on('missionPublished',data=>applyMissionState(data?.mission,{status:'assigned',statusLabel:'수행 전'},true));
 socket.on('missionStarted',data=>{applyMissionState(data?.mission||activeMission,missionProgress,false);showToast('출발! 목적지를 향해 이동하세요.','good');clearKeys();updateTravelLockOverlay()});
-socket.on('missionCleared',()=>{applyMissionState(null,null,false);if(sessionMode!=='solo')showToast('교사가 현재 미션을 종료했습니다.')});
+socket.on('missionCleared',()=>{applyMissionState(null,null,false);showToast('방장이 현재 미션을 종료했습니다.')});
 socket.on('missionProgress',data=>{applyMissionState(data?.mission||activeMission,data?.progress||missionProgress,false)});
 socket.on('classControl',applyClassSettings);
 socket.on('snapshot',snap=>{
   if(!joined)return;
-  serverSelf=snap.you;sessionMode=snap.sessionMode||serverSelf?.sessionMode||sessionMode;roomCodeCurrent=snap.roomLabel||roomCodeCurrent;syncClassClock(snap.classGameMinutes);
+  serverSelf=snap.you;sessionMode=snap.sessionMode||sessionMode;roomType=snap.roomType||roomType;roomCodeCurrent=snap.roomLabel||roomCodeCurrent;syncClassClock(snap.classGameMinutes);
   applyMissionState(snap.mission,snap.progress,false);missionInteraction=snap.interaction||null;cityInteraction=snap.cityInteraction||null;portInteraction=snap.portInteraction||null;applyClassSettings(snap.settings);
   const previousMode=mode;mode=serverSelf.mode;if(previousMode!==mode){showToast(mode==='sea'?'배에 올라 항해를 시작했습니다.':mode==='land'?'탐험대가 육상 탐험을 시작했습니다.':'도시에 들어왔습니다.','system')}
   if(!self)self={...serverSelf};
   const ex=dxWrap(serverSelf.x,self.x),ey=serverSelf.y-self.y,err=Math.hypot(ex,ey);
   if(err>100||previousMode!==mode){self.x=serverSelf.x;self.y=serverSelf.y}else{self.x=wrapX(self.x+ex*.32);self.y+=ey*.32}
   self.dir=serverSelf.dir;self.name=serverSelf.name;self.finishRank=serverSelf.finishRank;self.missionCompleted=serverSelf.missionCompleted;self.speedBoostMultiplier=serverSelf.speedBoostMultiplier;self.shipPortId=serverSelf.shipPortId;self.shipPortName=serverSelf.shipPortName;self.shipAnchoredAtShore=serverSelf.shipAnchoredAtShore;self.shipAnchorX=serverSelf.shipAnchorX;self.shipAnchorY=serverSelf.shipAnchorY;self.shipAnchorDir=serverSelf.shipAnchorDir;
-  onlineEl.textContent=snap.online;nearbyEl.textContent=snap.nearby.length;const solo=sessionMode==='solo';onlineGroup.hidden=solo;nearbyGroup.hidden=solo;soloGroup.hidden=!solo;
+  onlineEl.textContent=snap.online;nearbyEl.textContent=snap.nearby.length;nearbyGroup.hidden=roomType==='free';
   if(serverSelf.noticeSeq>lastNoticeSeq){lastNoticeSeq=serverSelf.noticeSeq;if(serverSelf.noticeText)showToast(serverSelf.noticeText,serverSelf.noticeText.includes('완료')||serverSelf.noticeText.includes('도착')||serverSelf.noticeText.includes('입항')||serverSelf.noticeText.includes('보급')?'good':serverSelf.noticeText.includes('없')||serverSelf.noticeText.includes('떨어')?'warn':'info')}
   const seen=new Set();
   for(const p of snap.nearby){
@@ -529,33 +532,44 @@ socket.on('snapshot',snap=>{
 });
 
 function selectEntryMode(nextMode){
-  entryMode=nextMode;joinError.textContent='';joinFields.hidden=false;roomField.hidden=nextMode!=='competition';teacherEntryLink.hidden=nextMode!=='competition';joinStartBtn.textContent=nextMode==='solo'?'개인 탐험 시작':'경쟁 모드 입장';
+  entryMode=nextMode;joinError.textContent='';joinFields.hidden=false;roomField.hidden=nextMode!=='join';roomTypeField.hidden=nextMode!=='create';joinStartBtn.textContent=nextMode==='create'?'방 만들기':'입장';
   for(const button of entryModes.querySelectorAll('.entryMode'))button.classList.toggle('selected',button.dataset.entryMode===nextMode);
-  if(nextMode==='competition')roomInput.focus();
+  if(nextMode==='join')roomInput.focus();
 }
+function selectRoomType(next){chosenRoomType=next;joinError.textContent='';for(const button of roomTypeField.querySelectorAll('.roomType'))button.classList.toggle('selected',button.dataset.roomType===next)}
 for(const button of entryModes.querySelectorAll('.entryMode'))button.addEventListener('click',()=>selectEntryMode(button.dataset.entryMode));
-modeBackBtn.addEventListener('click',()=>{entryMode='';joinFields.hidden=true;teacherEntryLink.hidden=true;joinError.textContent='';for(const button of entryModes.querySelectorAll('.entryMode'))button.classList.remove('selected')});
+for(const button of roomTypeField.querySelectorAll('.roomType'))button.addEventListener('click',()=>selectRoomType(button.dataset.roomType));
+modeBackBtn.addEventListener('click',()=>{entryMode='';chosenRoomType='';joinFields.hidden=true;joinError.textContent='';for(const button of document.querySelectorAll('.entryMode,.roomType'))button.classList.remove('selected')});
+const hostTokenKey=code=>`uw3-host-${code}`;
+function readHostToken(code){try{return sessionStorage.getItem(hostTokenKey(code))||''}catch{return ''}}
+function saveHostToken(code,token){try{sessionStorage.setItem(hostTokenKey(code),token)}catch{}}
 function finishJoin(result){
-  joined=true;resetMapZoomForDevice();sessionMode=result.sessionMode||entryMode||'competition';roomCodeCurrent=result.roomLabel||result.roomCode||(sessionMode==='solo'?'개인 탐험':'경쟁 모드');self={...result.self};serverSelf={...result.self};syncClassClock(result.classGameMinutes);mode=result.self.mode;applyMissionState(result.mission,result.progress,false);missionInteraction=result.interaction||null;cityInteraction=result.cityInteraction||null;portInteraction=result.portInteraction||null;applyClassSettings(result.settings||{});join.style.display='none';joinError.textContent='';
-  if(sessionMode==='competition')localStorage.setItem('uw3-room',roomInput.value);guideHistory.length=0;
-  clockGroup.hidden=sessionMode==='solo';
-  onlineGroup.hidden=sessionMode==='solo';nearbyGroup.hidden=sessionMode==='solo';soloGroup.hidden=sessionMode!=='solo';
-  showToast(sessionMode==='solo'?'개인 탐험을 시작했습니다. 세계를 자유롭게 탐험하세요.':'같은 반 친구들과 연결되었습니다.','good');showToast(sessionMode==='solo'?'상단에서 위치·바람·해류 영향을 확인하세요.':'상단에서 날짜·위치·바람·해류 영향을 확인하세요.','system');applyModeUI();sendInput();
+  joined=true;resetMapZoomForDevice();sessionMode=result.sessionMode||'competition';roomType=result.roomType||'race';isHost=!!result.isHost;roomCodeCurrent=result.roomLabel||`방 ${result.roomCode||''}`;hostCode.textContent=result.roomCode||'';self={...result.self};serverSelf={...result.self};syncClassClock(result.classGameMinutes);mode=result.self.mode;applyMissionState(result.mission,result.progress,false);missionInteraction=result.interaction||null;cityInteraction=result.cityInteraction||null;portInteraction=result.portInteraction||null;applyClassSettings(result.settings||{});join.style.display='none';joinError.textContent='';
+  try{localStorage.setItem('uw3-room',result.roomCode||'')}catch{}guideHistory.length=0;
+  nearbyGroup.hidden=roomType==='free';
+  showToast(isHost?`방을 만들었습니다. 방번호 ${result.roomCode}`:`방에 들어왔습니다. 방번호 ${result.roomCode}`,'good');showToast('상단에서 날짜·위치·바람·해류 영향을 확인하세요.','system');updateHostBar();applyModeUI();sendInput();
+}
+function joinRoom(roomCode,name){
+  socket.emit('joinClass',{roomCode,name,hostToken:readHostToken(roomCode)},result=>{if(!result?.ok){joinError.textContent=result?.error||'입장하지 못했습니다.';return}finishJoin(result)});
 }
 joinForm.addEventListener('submit',e=>{
-  e.preventDefault();if(!assetsReady){joinError.textContent='지도를 불러오는 중입니다.';return}if(!entryMode){joinError.textContent='개인 탐험 모드 또는 경쟁 모드를 먼저 선택하세요.';return}
+  e.preventDefault();if(!assetsReady){joinError.textContent='지도를 불러오는 중입니다.';return}if(!entryMode){joinError.textContent='방 만들기 또는 방 참가를 먼저 고르세요.';return}
   const name=mainPlayerName;if(!/^[가-힣]{2,6}$/.test(name)){joinError.textContent='메인 화면에서 이름을 확인한 뒤 다시 열어 주세요.';return}
-  if(entryMode==='solo'){
-    joinError.textContent='개인 탐험을 준비하는 중…';socket.emit('joinSolo',{name,school:mainSchool,grade:mainGrade},result=>{if(!result?.ok){joinError.textContent=result?.error||'개인 탐험을 시작하지 못했습니다.';return}finishJoin(result)});return;
+  if(entryMode==='create'){
+    if(!chosenRoomType){joinError.textContent='방 종류를 먼저 고르세요.';return}
+    if(chosenRoomType==='race'){location.href='/learn/world-voyage/teacher?create=race';return}
+    joinError.textContent='방을 만드는 중…';
+    socket.emit('createRoom',{roomType:'free'},created=>{if(!created?.ok){joinError.textContent=created?.error||'방을 만들지 못했습니다.';return}saveHostToken(created.roomCode,created.hostToken);joinRoom(created.roomCode,name)});
+    return;
   }
-  const roomCode=roomInput.value.replace(/\D/g,'').slice(0,6);roomInput.value=roomCode;if(!/^\d{6}$/.test(roomCode)){joinError.textContent='교사 화면에 표시된 숫자 6자리 학급 코드를 입력하세요.';roomInput.focus();return}joinError.textContent='경쟁 모드 입장 중…';
-  socket.emit('joinClass',{roomCode,name},result=>{if(!result?.ok){joinError.textContent=result?.error||'입장하지 못했습니다.';return}finishJoin(result)});
+  const roomCode=roomInput.value.replace(/\D/g,'').slice(0,4);roomInput.value=roomCode;if(!/^\d{4}$/.test(roomCode)){joinError.textContent='방장에게 받은 방번호 4자리를 넣으세요.';roomInput.focus();return}joinError.textContent='입장 중…';
+  joinRoom(roomCode,name);
 });
-const savedRoom=localStorage.getItem('uw3-room')||'';roomInput.value=/^\d{6}$/.test(savedRoom)?savedRoom:'';
+hostStartBtn.addEventListener('click',()=>{hostStartBtn.disabled=true;socket.emit('hostStartFree',{},result=>{hostStartBtn.disabled=false;if(!result?.ok){showToast(result?.error||'출발하지 못했습니다.','warn');return}applyClassSettings(result.settings);showToast('출발! 자유롭게 항해하세요.','good')})});
+roomInput.addEventListener('input',()=>{roomInput.value=roomInput.value.replace(/\D/g,'').slice(0,4)});
+const savedRoom=(()=>{try{return localStorage.getItem('uw3-room')||''}catch{return ''}})();roomInput.value=/^\d{4}$/.test(savedRoom)?savedRoom:'';
 const mainEntryParams=new URLSearchParams(location.search);
 const mainPlayerName=String(mainEntryParams.get('name')||'').trim();
-const mainSchool=String(mainEntryParams.get('school')||'').normalize('NFKC').replace(/\s+/g,' ').trim().slice(0,80);
-const mainGrade=/^(?:[1-9]|1[0-2])$/.test(mainEntryParams.get('grade')||'')?Number(mainEntryParams.get('grade')):null;
 playerIdentity.textContent=/^[가-힣]{2,6}$/.test(mainPlayerName)?mainPlayerName:'이름을 확인할 수 없습니다';
 if(!/^[가-힣]{2,6}$/.test(mainPlayerName)){
   joinError.textContent='클래스 메인 화면에서 이름을 확인한 뒤 대항해시대를 다시 열어 주세요.';
@@ -773,7 +787,7 @@ function updateHud(){
   }else if(mode==='city'){currentHud.textContent='도시 체류 중';currentHud.className='';const outsideWind=CDS95Wind.windAtPixel(self.x,self.y,liveGameMinutes),outsideArrow=CDS95Wind.directionArrow(outsideWind.x,outsideWind.y);windHud.textContent=`바깥 바람: ${outsideWind.name} ${outsideArrow}`;windHud.className=''}
   else{currentHud.textContent='육상 이동';currentHud.className='';windHud.textContent='육상에서는 바람 영향 없음';windHud.className=''}
   fatigueValue.textContent=`${Math.round(fatigue)}%`;fatigueFill.style.width=`${fatigue}%`;fatigueFill.style.background=fatigue<60?'#9fe1b0':fatigue<80?'#f2cf78':'#ff9f94';
-  missionEl.textContent=classSettings.paused?(sessionMode==='solo'?'탐험 일시정지':'수업 일시정지'):!activeMission?(sessionMode==='solo'?'개인 자유 탐험':'교사의 미션 대기'):activeMission?.kind==='arrivalRace'&&!missionProgress?.selectedStartPlaceId?'출발 도시 4곳 중 하나를 선택하세요':activeMission?.kind==='arrivalRace'?`${activeMission.targetPlace?.name||activeMission.title} · ${missionProgress?.status==='completed'?`${medalText(missionProgress.finishRank)} 자유 탐험 · 속도×${formatSpeedBoost(completionBoost())}`:activeMission.phase==='running'?'이동 중':'출발 대기'}`:activeMission?.kind==='startChoiceSet'?'출발 도시를 선택하세요':activeMission?.kind==='staged'?`${activeMission.title} · ${currentStage()?.label||'완료'}`:activeMission?`${activeMission.title} · ${missionStatusText()}`:(serverSelf?.mission||'탐험 준비');
+  missionEl.textContent=classSettings.paused?'게임 일시정지':!activeMission?(roomType==='free'?(classSettings.started?'자유 항해':'방장의 출발 신호 대기'):'방장의 미션 대기'):activeMission?.kind==='arrivalRace'&&!missionProgress?.selectedStartPlaceId?'출발 도시 4곳 중 하나를 선택하세요':activeMission?.kind==='arrivalRace'?`${activeMission.targetPlace?.name||activeMission.title} · ${missionProgress?.status==='completed'?`${medalText(missionProgress.finishRank)} 자유 탐험 · 속도×${formatSpeedBoost(completionBoost())}`:activeMission.phase==='running'?'이동 중':'출발 대기'}`:activeMission?.kind==='startChoiceSet'?'출발 도시를 선택하세요':activeMission?.kind==='staged'?`${activeMission.title} · ${currentStage()?.label||'완료'}`:activeMission?`${activeMission.title} · ${missionStatusText()}`:(serverSelf?.mission||'탐험 준비');
   if(mode==='land'&&terrain!==lastTerrainMessage){lastTerrainMessage=terrain;const label=TERRAIN_LABEL[terrain]||terrain;showToast(`${label} 지형에 들어왔습니다.${effective<100?` 이동 속도는 ${effective}%입니다.`:''}`,effective<55?'warn':'system')}else if(mode!=='land')lastTerrainMessage=null;
   const fatigueBand=fatigue>=80?80:fatigue>=60?60:0;if(fatigueBand>lastFatigueBand)showToast(fatigueBand===60?'피로도가 60을 넘었습니다. 이제 이동 속도가 조금씩 느려집니다.':'피로가 많이 쌓였습니다. 도시에서 쉬어 가세요.','warn');lastFatigueBand=fatigueBand;
   applyModeUI();

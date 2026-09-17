@@ -2,6 +2,7 @@
 
 const assert = require('node:assert/strict');
 const { io } = require('socket.io-client');
+const { joinFreeRoom } = require('./_rooms');
 
 const url = process.env.TEST_URL || 'http://127.0.0.1:3000';
 function once(socket, event, predicate = () => true, timeout = 8000) {
@@ -32,7 +33,7 @@ function ack(socket, event, payload = {}) {
 (async () => {
   const student = io(url, { transports: ['websocket'], forceNew: true, reconnection: false });
   await once(student, 'connect');
-  const joined = await ack(student, 'joinSolo', { name: '속력검사' });
+  const joined = await joinFreeRoom(ack, student, '속력검사');
   assert.equal(joined.ok, true, joined.error);
   const initial = await once(student, 'snapshot', (snap) => snap.you.mode === 'sea');
 
@@ -40,7 +41,7 @@ function ack(socket, event, payload = {}) {
   const moving = await once(student, 'snapshot', (snap) => snap.you.moving && snap.you.speedKmh > 0);
   student.emit('input', { left: false });
   assert.ok(moving.you.speedKmh >= 2 && moving.you.speedKmh <= 20, `unexpected sailing speed: ${moving.you.speedKmh}`);
-  assert.ok(moving.classGameMinutes > initial.classGameMinutes, 'solo game clock must advance while sailing');
+  assert.ok(moving.classGameMinutes > initial.classGameMinutes, 'free-room game clock must advance while sailing');
 
   const stopped = await once(student, 'snapshot', (snap) => !snap.you.moving && snap.you.speedKmh === 0);
   assert.equal(stopped.you.speedKmh, 0);

@@ -3,7 +3,7 @@ const { io } = require('socket.io-client');
 const assert = require('node:assert/strict');
 
 const BASE = process.env.TEST_URL || 'http://127.0.0.1:3000';
-const PIN = process.env.TEST_TEACHER_PIN || '2468';
+const { openRaceRoom } = require('./_rooms');
 function connect() { return io(BASE, { transports: ['websocket'], forceNew: true, reconnection: false, timeout: 8000 }); }
 function once(socket, event, predicate = () => true, timeout = 25000) {
   return new Promise((resolve, reject) => {
@@ -28,8 +28,7 @@ function sleep(ms) { return new Promise((resolve) => setTimeout(resolve, ms)); }
   const students = [connect(), connect(), connect()];
   await Promise.all([once(teacher, 'connect'), ...students.map((student) => once(student, 'connect'))]);
 
-  const created = await ack(teacher, 'teacherCreateClass', { pin: PIN });
-  assert.equal(created.ok, true, created.error);
+  const created = await openRaceRoom(ack, teacher);
   const roomCode = created.roomCode;
 
   const published = await ack(teacher, 'teacherPublishArrivalRace', {

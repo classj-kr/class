@@ -3,7 +3,7 @@ const fs = require('node:fs');
 const { io } = require('socket.io-client');
 const assert = require('node:assert/strict');
 const url = process.env.TEST_URL || 'http://127.0.0.1:3000';
-const pin = process.env.TEST_TEACHER_PIN || '2468';
+const { openRaceRoom } = require('./_rooms');
 const stateFile = process.env.TEST_STATE_FILE;
 function connect(){return io(url,{transports:['websocket'],forceNew:true,reconnection:false});}
 function once(s,e,t=7000){return new Promise((resolve,reject)=>{const timer=setTimeout(()=>reject(new Error(`timeout:${e}`)),t);s.once(e,d=>{clearTimeout(timer);resolve(d)});});}
@@ -17,9 +17,9 @@ function forbiddenKeys(value,path='root',found=[]){
   return found;
 }
 (async()=>{
-  const room=`M${Date.now().toString(36).slice(-6)}`,teacher=connect(),student=connect();
+  const teacher=connect(),student=connect();
   await Promise.all([once(teacher,'connect'),once(student,'connect')]);
-  assert.equal((await ack(teacher,'teacherJoin',{roomCode:room,pin})).ok,true);
+  const room=(await openRaceRoom(ack,teacher)).roomCode;
   assert.equal((await ack(student,'joinClass',{roomCode:room,name:'최소상태학생'})).ok,true);
   const published=once(student,'missionPublished');
   const response=await ack(teacher,'teacherPublishMission',{kind:'exploration',mode:'sea',title:'자유 탐험',instructions:'주변 해안선을 살펴보며 이동하세요.',criteria:{minDistanceTiles:2,minTerrainTypes:1,requireReturnToCity:false}});

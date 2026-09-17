@@ -3,13 +3,13 @@
 const { io }=require('socket.io-client');
 const assert=require('node:assert/strict');
 const BASE=process.env.TEST_URL||'http://127.0.0.1:3000';
-const ROOM=`CRM${Date.now().toString(36).slice(-5)}`;
+const { openRaceRoom }=require('./_rooms');
 function connect(){return io(BASE,{transports:['websocket'],forceNew:true,reconnection:false,timeout:5000});}
 function once(s,e,p=()=>true,t=8000){return new Promise((res,rej)=>{const timer=setTimeout(()=>{s.off(e,on);rej(new Error(`timeout:${e}`));},t);function on(d){if(!p(d))return;clearTimeout(timer);s.off(e,on);res(d)}s.on(e,on)});}
 function ack(s,e,p={}){return new Promise((res,rej)=>{const timer=setTimeout(()=>rej(new Error(`ack:${e}`)),8000);s.emit(e,p,d=>{clearTimeout(timer);res(d)})});}
 (async()=>{
  const teacher=connect(),student=connect();await Promise.all([once(teacher,'connect'),once(student,'connect')]);
- const tj=await ack(teacher,'teacherJoin',{roomCode:ROOM,pin:'2468'});assert.equal(tj.ok,true,tj.error);
+ const tj=await openRaceRoom(ack,teacher);const ROOM=tj.roomCode;
  const real=Date.now(),game=tj.classGameMinutes,rate=tj.clockRateHoursPerSecond;const beat=setInterval(()=>teacher.emit('teacherClockSync',{gameMinutes:game+(Date.now()-real)/1000*rate*60}),350);
  const pub=await ack(teacher,'teacherPublishStartChoices',{readyMissionId:'istanbul_crimea_map',startPlaceIds:['sevastopol','istanbul','genoa']});assert.equal(pub.ok,true,pub.error);
  const join=await ack(student,'joinClass',{roomCode:ROOM,name:'크림테스트'});assert.equal(join.ok,true,join.error);
