@@ -216,7 +216,11 @@ const staticAssetOptions = {
   }
 };
 
-const SITE_BACK_SCRIPT_TAG = '<script data-site-back-navigation="true" src="/assets/site-back-navigation.js?v=20260910-back-button-1" defer></script>';
+// The navigation script is deferred, so hide legacy back links before first paint
+// to stop them flashing. visibility (not display) keeps their size measurable.
+const SITE_BACK_PENDING_TAG = '<script>if(window.self===window.top&&!["/","/index.html"].includes(location.pathname))document.documentElement.classList.add("site-back-pending")</script>'
+  + '<style>.site-back-pending :is(a.back,a.back-button,a.back-link,a.home,a.home-link,a.counting-back,a.catalog-back){visibility:hidden!important}</style>';
+const SITE_BACK_SCRIPT_TAG = `${SITE_BACK_PENDING_TAG}<script data-site-back-navigation="true" src="/assets/site-back-navigation.js?v=20260917-back-button-2" defer></script>`;
 const SITE_SFX_SCRIPT_TAG = '<script data-class-game-sfx="true" src="/assets/sound/game-sfx.js?v=20260912-feedback-scope-1" defer></script>';
 
 function sendSiteHtml(req, res, filepath, next) {

@@ -144,6 +144,7 @@
   const legacyStyle = document.createElement("style");
   legacyStyle.textContent = "[data-site-back-legacy]{display:none!important}[data-site-back-empty]{display:none!important}[data-site-back-spacer]{display:inline-block!important;visibility:hidden!important;pointer-events:none!important;width:44px!important;min-width:44px!important;height:44px!important;margin:0!important;padding:0!important;flex:0 0 44px!important}";
   document.head.append(legacyStyle);
+  document.documentElement.classList.remove("site-back-pending");
 
   const host = document.createElement("site-back-navigation");
   const shadow = host.attachShadow({ mode: "open" });
