@@ -58,8 +58,31 @@ function hideRules() { $("rulesModal").classList.add("hidden"); }
 function showGame() { $("lobbyScreen").classList.add("hidden"); $("gameScreen").classList.remove("hidden"); }
 
 function buildPieceGuide() {
-  const descriptions = { K: "공격을 피해야 해요", Q: "모든 방향으로 이동", R: "가로·세로 이동", B: "대각선 이동", N: "ㄴ자 모양 이동", P: "앞으로 이동" };
-  $("pieceGuide").innerHTML = ["K", "Q", "R", "B", "N", "P"].map(type => `<div class="guide-piece">${pieceSvg(`w${type}`)}<span><strong>${PIECE_NAMES[type]}</strong><small>${descriptions[type]}</small></span></div>`).join("");
+  const guide = {
+    K: { name: "킹(King)", text: "모든 방향으로 한 칸씩 갑니다. 공격받는 칸으로는 갈 수 없습니다.", at: [2, 2], steps: [[-1, -1], [-1, 0], [-1, 1], [0, -1], [0, 1], [1, -1], [1, 0], [1, 1]] },
+    Q: { name: "퀸(Queen)", text: "가로·세로·대각선으로, 막히지 않으면 몇 칸이든 갑니다.", at: [2, 2], rays: [[-1, -1], [-1, 0], [-1, 1], [0, -1], [0, 1], [1, -1], [1, 0], [1, 1]] },
+    R: { name: "룩(Rook)", text: "가로·세로로, 막히지 않으면 몇 칸이든 갑니다.", at: [2, 2], rays: [[-1, 0], [1, 0], [0, -1], [0, 1]] },
+    B: { name: "비숍(Bishop)", text: "대각선으로, 막히지 않으면 몇 칸이든 갑니다. 처음 칸과 같은 색 칸만 다닙니다.", at: [2, 2], rays: [[-1, -1], [-1, 1], [1, -1], [1, 1]] },
+    N: { name: "나이트(Knight)", text: "한쪽으로 두 칸, 옆으로 한 칸 떨어진 칸에 ㄴ자로 뜁니다. 사이에 있는 말을 넘어갑니다.", at: [2, 2], steps: [[-2, -1], [-2, 1], [-1, -2], [-1, 2], [1, -2], [1, 2], [2, -1], [2, 1]] },
+    P: { name: "폰(Pawn)", text: "앞으로 한 칸 갑니다. 처음 자리에서는 두 칸도 갑니다. 상대 말은 앞 대각선 한 칸에 있을 때만 잡습니다. 뒤로는 가지 못합니다.", at: [3, 2], steps: [[-1, 0], [-2, 0]], hits: [[-1, -1], [-1, 1]] }
+  };
+  const board = (type, g) => {
+    const marks = {};
+    for (const [dr, dc] of g.steps || []) marks[`${g.at[0] + dr},${g.at[1] + dc}`] = "legal-empty";
+    for (const [dr, dc] of g.rays || []) for (let k = 1; k < 5; k++) {
+      const r = g.at[0] + dr * k, c = g.at[1] + dc * k;
+      if (r >= 0 && r < 5 && c >= 0 && c < 5) marks[`${r},${c}`] = "legal-empty";
+    }
+    for (const [dr, dc] of g.hits || []) marks[`${g.at[0] + dr},${g.at[1] + dc}`] = "legal-capture";
+    let cells = "";
+    for (let r = 0; r < 5; r++) for (let c = 0; c < 5; c++) {
+      const mark = marks[`${r},${c}`] || "";
+      const piece = r === g.at[0] && c === g.at[1] ? pieceSvg(`w${type}`) : mark === "legal-capture" ? pieceSvg("bP") : "";
+      cells += `<span class="square ${(r + c) % 2 ? "light" : "dark"} ${mark}">${piece}</span>`;
+    }
+    return `<div class="guide-board" aria-hidden="true">${cells}</div>`;
+  };
+  $("pieceGuide").innerHTML = ["K", "Q", "R", "B", "N", "P"].map(type => `<div class="guide-piece">${board(type, guide[type])}<p><strong>${guide[type].name}</strong> ${guide[type].text}</p></div>`).join("");
 }
 
 function rulesState() {
