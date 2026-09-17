@@ -6,24 +6,28 @@ const cities=JSON.parse(fs.readFileSync(path.join(__dirname,'..','data','catalog
 const books=JSON.parse(fs.readFileSync(path.join(__dirname,'..','public','data','library-books.json'),'utf8'));
 const server=fs.readFileSync(path.join(__dirname,'..','server.js'),'utf8');
 const student=fs.readFileSync(path.join(__dirname,'..','public','index.html'),'utf8');
-const dir=path.join(__dirname,'..','public','assets','cities','original');
-const files=fs.readdirSync(dir).filter(x=>/^city_\d{3}\.png$/.test(x)).sort();
+const dir=path.join(__dirname,'..','public','assets','cities','1520');
+const live=cities.filter(c=>!c.retired);
+const keys=new Set(live.map(c=>c.artKey));
 assert.equal(cities.length,225);
-assert.equal(files.length,cities.length);
+assert.equal(keys.size,live.length,'도시마다 그림 이름이 하나씩');
+assert.ok(live.every(c=>/^[a-z0-9-]+$/.test(c.artKey||'')),'그림 이름은 영어 소문자');
+const files=fs.existsSync(dir)?fs.readdirSync(dir).filter(x=>x.endsWith('.webp')):[];
 for(const file of files){
+  assert.ok(keys.has(file.replace(/\.webp$/,'')),`${file}: 도시와 맞지 않는 그림`);
   const b=fs.readFileSync(path.join(dir,file));
-  assert.equal(b.toString('ascii',1,4),'PNG');
-  assert.equal(b.readUInt32BE(16),400);
-  assert.equal(b.readUInt32BE(20),320);
+  assert.equal(b.toString('ascii',8,12),'WEBP');
 }
+assert.ok(!fs.existsSync(path.join(__dirname,'..','public','assets','cities','original')),'원작 도시 그림은 쓰지 않음');
 assert.ok(Array.isArray(books.books)&&books.books.length>=20);
 assert.ok(books.books.every(b=>b.id&&b.title&&b.intro&&Array.isArray(b.sections)&&b.sections.length>=2));
 assert.match(server,/socket\.on\('enterCity'/);
 assert.match(server,/socket\.on\('leaveCity'/);
 assert.match(server,/cityEntryExitGameMinutes: 0/);
 assert.match(server,/currentCityImage:/);
+assert.match(server,/assets\/cities\/1520\//);
 assert.match(student,/id="cityView"/);
 assert.match(student,/id="libraryView"/);
-assert.match(student,/fetch\('\/data\/library-books\.json\?v=68'/);
-assert.match(student,/cityScene\.src=serverSelf\.currentCityImage/);
-console.log(JSON.stringify({ok:true,cityImages:files.length,size:'400x320',libraryBooks:books.books.length,entryExitTimeCost:0}));
+assert.match(student,/#cityCard\{[^}]*aspect-ratio:3\/2/);
+assert.match(student,/const sceneSrc=serverSelf\.currentCityImage/);
+console.log(JSON.stringify({ok:true,cityImages:files.length,cities:live.length,ratio:'3:2',libraryBooks:books.books.length,entryExitTimeCost:0}));

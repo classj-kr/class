@@ -115,9 +115,14 @@ function defaultArrivalRadiusTiles(source) {
   return byCategory[source?.category] || (source?.access === 'port' ? 3.1 : 6);
 }
 
-const ORIGINAL_CITY_IMAGE_INDEX = new Map(
-  MissionCatalog.ORIGINAL_CITIES.map((city, index) => [String(city.id), index])
-);
+const CITY_ART_DIR = path.join(__dirname, 'public', 'assets', 'cities', '1520');
+
+function cityArtUrl(source) {
+  if (!source?.isOriginalCity || !source.artKey) return null;
+  const file = path.join(CITY_ART_DIR, `${source.artKey}.webp`);
+  if (!fs.existsSync(file)) return null;
+  return `/learn/world-voyage/assets/cities/1520/${source.artKey}.webp?v=${Math.round(fs.statSync(file).mtimeMs)}`;
+}
 
 function resolveCatalog() {
   const byId = new Map();
@@ -189,13 +194,9 @@ function resolveCatalog() {
     const point = source.isOriginalCity
       ? (source.canEnterFromSea ? resolvedSeaPoint : resolvedLandPoint)
       : source.access === 'sea' ? seaPoint : source.access === 'land' ? landPoint : seaPoint;
-    const cityImageIndex = source.isOriginalCity ? ORIGINAL_CITY_IMAGE_INDEX.get(String(source.id)) : null;
     byId.set(source.id, {
       ...source,
-      cityImageIndex: Number.isInteger(cityImageIndex) ? cityImageIndex : null,
-      interiorImage: Number.isInteger(cityImageIndex)
-        ? `/assets/cities/original/city_${String(cityImageIndex).padStart(3, '0')}.png?v=55`
-        : null,
+      interiorImage: cityArtUrl(source),
       x: point.x,
       y: point.y,
       point,
@@ -248,7 +249,6 @@ function publicMissionCatalog() {
         seaPoint: resolved ? { x: resolved.seaPoint.x, y: resolved.seaPoint.y } : null,
         landPoint: resolved ? { x: resolved.landPoint.x, y: resolved.landPoint.y } : null,
         canEnterFromSea: resolved?.canEnterFromSea === true,
-        cityImageIndex: Number.isInteger(resolved?.cityImageIndex) ? resolved.cityImageIndex : null,
         interiorImage: resolved?.interiorImage || null,
         arrivalRadiusTiles: resolved?.arrivalRadiusTiles || null
       };
@@ -1132,8 +1132,7 @@ function cityInteractionForPlayer(player) {
     placeName: place.name,
     actionLabel: '도시 들어가기',
     canUse: true,
-    interiorImage: place.interiorImage,
-    cityImageIndex: place.cityImageIndex
+    interiorImage: place.interiorImage
   };
 }
 
@@ -1354,7 +1353,6 @@ function publicPlayer(p, nowGameMinutes = classGameMinutes(p.roomCode)) {
     currentCityId: p.currentCityId || null,
     currentCityName: currentCity?.name || '',
     currentCityRegion: currentCity?.region || '',
-    currentCityImageIndex: Number.isInteger(currentCity?.cityImageIndex) ? currentCity.cityImageIndex : null,
     currentCityImage: currentCity?.interiorImage || '',
     lastCityId: p.lastCityId || null,
     shipPortId: p.shipPortId || null,

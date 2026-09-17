@@ -1400,7 +1400,8 @@
     "hasLibrary": true,
     "libraryRegion": "이베리아",
     "in1520": "카스티야 왕국의 그라나다",
-    "todayCountry": "스페인"
+    "todayCountry": "스페인",
+    "artKey": "granada"
   },
   {
     "id": "original_city_213",
@@ -1910,7 +1911,7 @@
     "libraryRegion": "북유럽",
     "in1520": "프랑스 왕국의 도읍 파리",
     "todayCountry": "프랑스",
-    "artKey": "undefined-210"
+    "artKey": "paris"
   },
   {
     "id": "original_city_209",
@@ -3744,7 +3745,7 @@
     "originalName": "베니스",
     "in1520": "베네치아 공화국",
     "todayCountry": "이탈리아",
-    "artKey": "undefined-195"
+    "artKey": "venice"
   },
   {
     "id": "original_city_194",
@@ -3978,7 +3979,7 @@
     "libraryRegion": "",
     "in1520": "피렌체 공화국의 피사",
     "todayCountry": "이탈리아",
-    "artKey": "undefined-193"
+    "artKey": "pisa"
   },
   {
     "id": "original_city_192",
@@ -4240,7 +4241,7 @@
     "libraryRegion": "지중해",
     "in1520": "교황령의 로마",
     "todayCountry": "이탈리아",
-    "artKey": "undefined-191"
+    "artKey": "rome"
   },
   {
     "id": "original_city_190",
@@ -7511,7 +7512,7 @@
     "libraryRegion": "",
     "in1520": "모스크바 대공국의 도읍 모스크바",
     "todayCountry": "러시아",
-    "artKey": "undefined-164"
+    "artKey": "moscow"
   },
   {
     "id": "original_city_163",
@@ -8922,7 +8923,7 @@
     "libraryRegion": "지중해",
     "in1520": "오스만 제국의 아테네",
     "todayCountry": "그리스",
-    "artKey": "undefined-152"
+    "artKey": "athens"
   },
   {
     "id": "original_city_151",
@@ -9832,7 +9833,7 @@
     "libraryRegion": "중근동·북아프리카",
     "in1520": "오스만 제국이 막 차지한 카이로",
     "todayCountry": "이집트",
-    "artKey": "undefined-145"
+    "artKey": "cairo"
   },
   {
     "id": "original_city_144",
@@ -13780,7 +13781,7 @@
     "libraryRegion": "중근동·북아프리카",
     "in1520": "오스만 제국의 수도 이스탄불",
     "todayCountry": "튀르키예",
-    "artKey": "undefined-x"
+    "artKey": "istanbul"
   },
   {
     "id": "original_city_111",
@@ -14727,7 +14728,7 @@
     "libraryRegion": "중근동·북아프리카",
     "in1520": "오스만 제국의 예루살렘",
     "todayCountry": "이스라엘·팔레스타인",
-    "artKey": "undefined-104"
+    "artKey": "jerusalem"
   },
   {
     "id": "original_city_103",
@@ -15063,7 +15064,7 @@
     "libraryRegion": "중근동·북아프리카",
     "in1520": "오스만 제국의 보호를 받은 메카",
     "todayCountry": "사우디아라비아",
-    "artKey": "undefined-101"
+    "artKey": "mecca"
   },
   {
     "id": "original_city_100",
@@ -23089,7 +23090,7 @@
     "originalName": "북경",
     "in1520": "명나라 수도 북경",
     "todayCountry": "중국",
-    "artKey": "undefined-037"
+    "artKey": "beijing"
   },
   {
     "id": "original_city_036",
@@ -23330,7 +23331,7 @@
     "originalName": "한양",
     "in1520": "조선의 도읍 한양",
     "todayCountry": "대한민국",
-    "artKey": "undefined-035"
+    "artKey": "seoul"
   },
   {
     "id": "nagasaki",
@@ -24584,7 +24585,7 @@
     "originalName": "테노치티틀란",
     "in1520": "아즈텍 제국의 수도 테노치티틀란",
     "todayCountry": "멕시코",
-    "artKey": "undefined-025"
+    "artKey": "mexico-city"
   },
   {
     "id": "original_city_024",
@@ -27401,7 +27402,7 @@
     "libraryRegion": "",
     "in1520": "잉카 제국의 수도 쿠스코",
     "todayCountry": "페루",
-    "artKey": "undefined-002"
+    "artKey": "cusco"
   },
   {
     "id": "original_city_001",
@@ -27554,7 +27555,7 @@
     "libraryRegion": "",
     "in1520": "잉카 제국이 다스린 나스카 골짜기",
     "todayCountry": "페루",
-    "artKey": "undefined-001"
+    "artKey": "nazca"
   },
   {
     "id": "original_city_000",
