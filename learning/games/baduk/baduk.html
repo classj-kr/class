@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>바둑</title>
 <link rel="stylesheet" href="../../../assets/network/multiplayer-lobby.css?v=20260906">
-<link rel="stylesheet" href="baduk.css?v=20260917c">
+<link rel="stylesheet" href="baduk.css?v=20260917e">
 <link rel="stylesheet" href="../../../assets/device-game.css">
 <script src="../../../assets/network/game-network.js?v=20260821"></script>
 <script src="../../../assets/network/multiplayer-lobby.js?v=20260906b"></script>
@@ -25,8 +25,8 @@
   <section class="panel"><div class="board-frame"><div id="board" class="board" role="grid"></div></div><div id="gameStatus" class="game-status"></div><div class="actions"><button id="passBtn" class="secondary hidden" type="button">패스</button><button id="resignBtn" class="secondary" type="button">기권</button><span id="resultActions" class="hidden"><button id="rematchBtn" class="primary" type="button">재대국</button><button id="returnLobbyBtn" class="secondary" type="button">대기실</button></span></div></section>
 </section></main>
 
-<section id="rulesOverlay" class="overlay hidden" role="dialog" aria-modal="true"><div class="modal"><h2>바둑 규칙</h2><div id="rulesBody"></div><button id="closeRulesBtn" class="primary" type="button">확인</button></div></section>
+<section id="rulesOverlay" class="overlay hidden" role="dialog" aria-modal="true" aria-label="규칙"><div class="modal"><div id="rulesBody"></div><button id="closeRulesBtn" class="primary" type="button">확인</button></div></section>
 <section id="abortOverlay" class="overlay hidden" role="dialog" aria-modal="true"><div class="modal"><h2 id="abortTitle">연결 종료</h2><p id="abortMessage"></p><button class="primary" type="button" onclick="location.reload()">처음부터</button></div></section>
 <div id="toast" class="toast hidden" role="status"></div>
-<script src="baduk.js?v=20260917b"></script>
+<script src="baduk.js?v=20260917e"></script>
 </body></html>

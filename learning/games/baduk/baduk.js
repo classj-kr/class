@@ -208,36 +208,42 @@ function ruleDiagram(rows,caption){
     else if(ch==="b"||ch==="w")parts.push(`<circle class="rd-${ch.toUpperCase()} rd-next" cx="${x}" cy="${y}" r="12"/>`);
     else if(ch==="o")parts.push(`<circle class="rd-lib" cx="${x}" cy="${y}" r="5"/>`);
     else if(ch==="g")parts.push(`<circle class="rd-ghost" cx="${x}" cy="${y}" r="11"/>`);
+    else if(ch==="t")parts.push(`<rect class="rd-B" x="${x-6}" y="${y-6}" width="12" height="12"/>`);
     else if(ch==="x")parts.push(`<path class="rd-x" d="M${x-7} ${y-7}L${x+7} ${y+7}M${x+7} ${y-7}L${x-7} ${y+7}"/>`);
   }));
   return`<figure class="rule-fig"><svg viewBox="0 0 ${w} ${h}" width="${w}" height="${h}" role="img" aria-label="${caption}">${parts.join("")}</svg><figcaption>${caption}</figcaption></figure>`;
 }
 
 const RULE_GOALS=Object.freeze({
-  capture:`상대 돌을 먼저 <b>3개</b> 따내면 이겨요!`,
-  territory:`40수를 다 두면(또는 판이 꽉 차면) 점수를 세요. <b>내 돌 수 + 내 돌로만 둘러싼 빈 교차점(집) 수</b>가 더 많은 쪽이 이겨요!`,
-  standard:`<b>집</b>(내 돌로만 둘러싼 빈 교차점)을 더 많이 만들면 이겨요. 더 둘 곳이 없으면 <b>패스</b> 버튼을 누르세요. 두 사람이 연달아 패스하면 자동으로 <b>계가</b>(점수 세기)를 해요. 점수는 <b>내 돌 수 + 내 집 수</b>이고, 백은 나중에 두는 대신 <b>덤</b> 7.5점을 더 받아요.`
+  capture:`상대 돌을 먼저 3개 따내면 이깁니다.`,
+  territory:`40수를 다 두거나 판이 꽉 차면 점수를 셉니다. 점수는 내 돌 수 + 내 집 수이고, 많은 쪽이 이깁니다.`,
+  standard:`두 사람이 연달아 패스하면 점수를 셉니다(계가). 점수는 내 돌 수 + 내 집 수이고, 백은 나중에 두는 대신 덤 7.5점을 더 받습니다. 많은 쪽이 이깁니다.`
 });
+
+function ruleCard(figs,name,text){return`<div class="rule-card"><div class="rule-figs">${figs}</div><p><b>${name}</b> ${text}</p></div>`}
 
 function showRules(){
   const modeId=gameState?.mode||selectedMode,mode=MODES[modeId];
+  const cards=[
+    ruleCard(ruleDiagram([".....","..o..",".oBo.","..o..","....."],"활로 4개")+ruleDiagram([".....",".oo..","oBBo.",".oo..","....."],"두 돌의 활로 6개"),
+      "활로","돌 바로 위·아래·왼쪽·오른쪽의 빈 교차점(초록 점)입니다. 대각선은 활로가 아닙니다. 붙어 있는 돌은 한 덩어리로 활로를 함께 씁니다."),
+    ruleCard(ruleDiagram([".....","..W..",".WBw.","..W..","....."],"백이 마지막 활로에")+ruleDiagram([".....","..W..",".WgW.","..W..","....."],"흑 돌이 나감"),
+      "따내기","상대 돌의 활로를 모두 막으면 그 돌을 판에서 들어냅니다."),
+    ruleCard(ruleDiagram([".....","..W..",".WxW.","..W..","....."],"흑은 ✕에 못 둠"),
+      "착수금지","두자마자 활로가 하나도 없는 자리에는 못 둡니다. 그 수로 상대 돌을 따낼 수 있으면 둘 수 있습니다(패 그림 ①)."),
+    ruleCard(ruleDiagram([".....",".BW..","BWbW.",".BW..","....."],"① 흑이 백을 따냄")+ruleDiagram([".....",".BW..","BxBW.",".BW..","....."],"② 백은 ✕에 못 둠"),
+      "패","한 번 나왔던 판 모양이 다시 나오는 수는 둘 수 없습니다. 그래서 방금 따내진 자리에서 곧바로 되따낼 수 없고, 다른 곳에 한 수 둔 뒤에는 됩니다.")
+  ];
+  if(modeId!=="capture")cards.push(ruleCard(ruleDiagram([".BB..","BttB.",".BB..",".....","....."],"흑 6 + 집 2 = 8점"),
+    "집","내 돌로만 둘러싼 빈 교차점입니다. 그림의 네모 자리입니다."));
   $("rulesBody").innerHTML=`
-<p class="rule-goal">🎯 <b>${mode.name}</b> (${mode.size}×${mode.size})<br>${RULE_GOALS[modeId]}</p>
-<p class="rule-legend">그림 보는 법: <span style="color:#ff8b78">빨간 테두리</span> 돌 = 이번에 놓는 돌 · <span style="color:#5fd47b">초록 점</span> = 활로 · <span style="color:#ff8b78">✕</span> = 둘 수 없는 자리 · 점선 = 따낸 돌이 있던 자리</p>
-<ol class="rule-list">
-<li><b>착수</b> — 돌을 놓는 것을 "착수"라고 해요. <b>흑</b>(검은 돌)이 먼저, <b>백</b>(흰 돌)이 다음으로 한 개씩 번갈아 놓아요. 칸 안이 아니라 선과 선이 만나는 <b>교차점</b>에 놓아요.</li>
-<li><b>활로</b> — 돌 바로 옆(위·아래·왼쪽·오른쪽)에 있는 빈 교차점을 "활로"라고 해요. 돌이 숨 쉬는 <b>숨구멍</b>이에요. 대각선은 활로가 아니에요. 줄줄이 붙어 있는 돌들은 한 덩어리라서 활로를 함께 써요.
-<div class="rule-figs">${ruleDiagram([".....","..o..",".oBo.","..o..","....."],"초록 점 4개가 활로예요")}${ruleDiagram([".....",".oo..","oBBo.",".oo..","....."],"붙은 돌 2개는 활로 6개를 함께 써요")}</div></li>
-<li><b>따내기</b> — 상대 돌의 활로를 <b>모두</b> 막으면 그 돌을 잡아서 판에서 꺼내요. 이것을 "따낸다"고 해요.
-<div class="rule-figs">${ruleDiagram([".....","..W..",".WBw.","..W..","....."],"백이 흑의 마지막 활로에 두면…")}${ruleDiagram([".....","..W..",".WgW.","..W..","....."],"흑 돌을 따내요!")}</div></li>
-<li><b>착수금지</b> — 놓자마자 활로가 하나도 없는 자리에는 돌을 놓을 수 없어요. 이런 자리를 "착수금지점"이라고 해요.<br>👉 <b>단,</b> 그 돌을 놓아서 상대 돌을 따낼 수 있다면 놓아도 돼요. 따낸 자리가 새 활로가 되니까요. (아래 5번 첫 번째 그림)
-<div class="rule-figs">${ruleDiagram([".....","..W..",".WxW.","..W..","....."],"흑은 ✕ 자리에 둘 수 없어요")}</div></li>
-<li><b>패</b> — 서로 돌 하나씩을 번갈아 따낼 수 있는 모양을 "패"라고 해요. 계속 번갈아 따내면 게임이 끝나지 않겠죠? 그래서 <b>내 돌이 방금 따내졌다면, 곧바로 다시 따낼 수 없어요.</b> 다른 곳에 한 수를 둔 뒤에는 따낼 수 있어요. 이렇게 판 모양이 똑같이 되풀이되는 수를 막는 규칙을 <b>동형반복 금지</b>라고 해요.
-<div class="rule-figs">${ruleDiagram([".....",".BW..","BWbW.",".BW..","....."],"① 흑이 두면 백 1개를 따내요")}${ruleDiagram([".....",".BW..","BxBW.",".BW..","....."],"② 백은 ✕에 곧바로 되따낼 수 없어요")}</div>
-<p class="rule-tip">💡 <b>자충수</b>는 자기 돌의 활로를 스스로 막아 버리는 수예요. 규칙 위반은 아니라서 둘 수는 있지만, 내 돌이 잡히기 쉬워지니 조심하세요!</p></li>
-<li><b>초읽기</b> — 한 번에 <b>30초</b>씩 생각할 수 있어요. 10초 남으면 <span class="rule-yellow">노란색</span>, 5초 남으면 <span class="rule-red">빨간색</span>으로 알려 줘요. 시간이 다 지나면 상대 차례로 넘어가요.</li>
-<li><b>기권</b> — 기권 버튼을 누르면 그 판은 상대가 이겨요.</li>
-</ol>`;
+<div class="rule-grid">${cards.join("")}</div>
+<dl class="rule-list">
+<dt>순서</dt><dd>흑이 먼저, 한 개씩 번갈아 선과 선이 만나는 교차점에 놓습니다.</dd>
+<dt>${mode.name} (${mode.size}×${mode.size})</dt><dd>${RULE_GOALS[modeId]} 상대가 기권해도 이깁니다.</dd>
+<dt>자충수</dt><dd>자기 돌의 활로를 스스로 막는 수입니다. 규칙 위반은 아닙니다.</dd>
+<dt>초읽기</dt><dd>한 수에 30초입니다. 시간이 지나면 차례가 상대에게 넘어갑니다.</dd>
+</dl>`;
   $("rulesOverlay").classList.remove("hidden");
 }
 function showToast(message){clearTimeout(toastTimer);$("toast").textContent=message;$("toast").classList.remove("hidden");toastTimer=setTimeout(()=>$("toast").classList.add("hidden"),1800)}
