@@ -83,7 +83,7 @@ function miniBoard(rows, cols, cells, parity = 0, maxCell = 999) {
     const cell = cells[`${r},${c}`] || {};
     html += `<span class="square ${(r + c + parity) % 2 ? "light" : "dark"} ${cell.mark || ""} ${cell.ghost ? "ghost" : ""}">${cell.piece ? pieceSvg(cell.piece) : ""}</span>`;
   }
-  return `<div class="guide-board" style="grid-template-columns:repeat(${cols},1fr);aspect-ratio:${cols}/${rows};max-width:${cols * maxCell}px" aria-hidden="true">${html}</div>`;
+  return `<div class="guide-board" style="grid-template-columns:repeat(${cols},1fr);max-width:${cols * maxCell}px" aria-hidden="true">${html}</div>`;
 }
 
 function buildSpecialGuide() {
