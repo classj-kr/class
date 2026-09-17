@@ -87,7 +87,9 @@ a long braid in a worn white and indigo hanbok; at the end, a young queen in
 formal red and gold court robes with a high coiffure, but the same steady face.
 Blind Sim (her father, Sim Hakgyu): a thin middle-aged blind man in a shabby
 white hanbok, eyes closed or clouded, always feeling ahead with a stick or an
-outstretched hand. His face is gentle, anxious, easily ashamed.
+outstretched hand. His face is gentle, anxious, easily ashamed. His hair is
+ALWAYS tied in a sangtu - a small Korean topknot gathered on the very top of
+his head, at the crown - never a bun or knot at the back of the head.
 Lady Jang: a dignified older woman in fine deep-blue silk hanbok, kind and
 straight-backed.
 The monk: a shaven-headed monk in grey robes with a straw travelling hat.
@@ -201,7 +203,8 @@ sailors have gone silent behind him, caps in hand. Grey sea, wind, gulls.
 
 ```
 Wide 4:3 scene. A tiny room at night. The blind father lies asleep on the floor
-under a thin quilt. Beside him his daughter sits awake with her legs folded,
+under a thin quilt; his hair is tied in a sangtu topknot on the very top of his
+head (at the crown, never a bun at the back of the head). Beside him his daughter sits awake with her legs folded,
 holding his hand in both of hers, looking down at his face. The oil lamp has burnt
 low. Everything is warm brown and gold, and utterly quiet. Her face shows no tears
 - only attention.
@@ -213,7 +216,8 @@ low. Everything is warm brown and gold, and utterly quiet. Her face shows no tea
 Wide 4:3 scene. Dawn in the small room. A neatly set breakfast tray sits on the
 floor with a bowl of rice and a bowl of soup covered with a cloth. The girl stands
 at the side tying the sash of a clean jacket, half turned toward the sleeping
-figure of her father, her face composed. Cold blue-grey first light through the
+figure of her father (his hair in a sangtu topknot on the very top of his head,
+never a bun at the back), her face composed. Cold blue-grey first light through the
 paper door. Everything tidied and folded.
 ```
 
@@ -310,7 +314,8 @@ the raised hall, a small red-robed figure stands watching the crowd.
 ```
 Wide 4:3 scene. Among the tables. A young queen in full red and gold court robes
 has come down into the yard and dropped to her knees on the flagstones in front of
-one thin old blind man, gripping his hands, her mouth open but no sound coming,
+one thin old blind man (his white hair tied in a sangtu topknot on the very top
+of his head, never a bun at the back), gripping his hands, her mouth open but no sound coming,
 tears running. He has half risen, head tilted, his whole face a question. All
 around them people are standing up and turning to look. Blazing daylight.
 ```
@@ -321,7 +326,8 @@ around them people are standing up and turning to look. Blazing daylight.
 Wide 4:3 scene of pure release. The same spot a heartbeat later. The old man's
 eyes are wide open for the first time, staring straight at his daughter's face,
 his hands still in hers, his whole body arched back in shock and joy, tears
-streaming. A burst of white light seems to break across the courtyard. Behind
+streaming. His white hair is tied in a sangtu topknot on the very top of his
+head, never a bun at the back. A burst of white light seems to break across the courtyard. Behind
 them the whole crowd of guests is on its feet, arms raised, caps flying. Radiant.
 ```
 
@@ -334,7 +340,8 @@ them the whole crowd of guests is on its feet, arms raised, caps flying. Radiant
 ```
 Wide 4:3 scene. A sunny verandah years later. A healthy old man with clear open
 eyes sits on the wooden edge telling a story, hands shaping something in the air,
-laughing. A small child sits on the step below listening with her chin in her
+laughing. His white hair is tied in a sangtu topknot on the very top of his head,
+never a bun at the back. A small child sits on the step below listening with her chin in her
 hands. A woman's shadow falls from the doorway. Persimmon tree, blue sky, ordinary
 happiness.
 ```

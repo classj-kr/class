@@ -31,7 +31,7 @@ const CHAPTERS = [
             "순간 넓은 조정이 물속처럼 조용해졌습니다. 아니, 물속이었지만 그보다 더 조용했습니다. 기침 소리 하나 나지 않았습니다.",
             "용왕이 신하들의 얼굴을 하나하나 훑어보았습니다.<br>\"누가 가겠느냐?\"",
             "아무도 대답하지 않았습니다. 문어 승상<span class=\"gloss\">(승상·대감·장군은 모두 높은 벼슬 이름)</span>은 다리 여덟 개를 슬그머니 몸 아래로 말아 넣었고, 상어 장군은 갑자기 천장을 올려다보았습니다. 조기 대감은 눈을 껌뻑껌뻑하기만 했습니다. 다들 제 발끝만 내려다보았습니다.",
-            "\"어허, 대답이 없구나.\"<br>용왕의 목소리가 조금 높아졌습니다. 그제야 신하들이 하나둘 입을 열었습니다. 그런데 그것이 하나같이 남에게 미루는 말이었습니다. 듣고 있던 용왕의 손이 떨렸습니다."
+            "\"어허, 대답이 없구나!\"<br>용왕의 목소리가 조금 높아졌습니다. 그제야 신하들이 하나둘 입을 열었습니다. 그런데 그것이 하나같이 남에게 미루는 말이었습니다. 듣고 있던 용왕의 손이 떨렸습니다."
         ]
     },
     {
@@ -55,8 +55,8 @@ const CHAPTERS = [
             "자라는 그 말들을 못 들은 척하고 앞으로 걸어 나왔습니다. 걸음이 정말로 느렸습니다. 조정을 가로지르는 데만 한참이 걸렸습니다. 그래도 한 번도 멈추지 않았습니다.",
             "용왕 앞에 이르자 자라가 고개를 조아렸습니다.<br>\"신은 큰 벼슬을 한 적도 없고 이렇다 할 공을 세운 적도 없습니다. 그러나 신에게는 남들에게 없는 것이 두 가지 있습니다.\"",
             "\"무엇이냐?\"<br>\"하나는 등딱지입니다. 뭍에 올라도 몸이 마르지 않고, 위험을 만나면 머리와 다리를 안으로 넣을 수 있습니다. 다른 하나는 물과 뭍을 모두 다닐 수 있는 발입니다.\"",
-            "용왕이 자라를 오래 내려다보았습니다.<br>\"그동안 내가 너를 몰라보았구나.\"<br>\"신을 알아보고 말고 할 것이 무엇 있겠습니까. 다만 갈 수 있는 자가 가는 것이 마땅할 뿐입니다.\" 자라의 목소리는 처음부터 끝까지 한결같았습니다.",
-            "그러자 아까까지 못 간다던 대신들이 갑자기 말이 많아졌습니다.<br>\"과연 별주부요!\"<br>\"내 진작부터 저 사람이 보통이 아니라 생각했소.\"<br>자라는 고개를 돌리지 않았습니다. 누구도 자라와 눈을 마주치지 못했습니다.",
+            "용왕이 자라를 오래 내려다보았습니다.<br>\"그동안 내가 너를 몰라보았구나.\"<br>\"신을 알아보고 말고 할 것이 무엇 있겠습니까? 다만 갈 수 있는 자가 가는 것이 마땅할 뿐입니다.\" 자라의 목소리는 처음부터 끝까지 한결같았습니다.",
+            "그러자 아까까지 못 간다던 대신들이 갑자기 말이 많아졌습니다.<br>\"과연 별주부요!\"<br>\"내 진작부터 별주부가 보통이 아니라 생각했소.\"<br>자라는 고개를 돌리지 않았습니다. 누구도 자라와 눈을 마주치지 못했습니다.",
             "용왕이 물었습니다.<br>\"그래, 무엇이 필요하냐. 군사를 붙여 주랴? 보물을 지워 주랴?\"",
             "\"군사는 소용없습니다. 여럿이 가면 토끼가 먼저 달아납니다. 보물도 무겁기만 합니다.\"<br>\"그러면 무엇이 필요하냐.\"<br>\"토끼의 생김새를 그린 그림 한 장이면 됩니다.\" 자라가 잠시 생각하더니 대답했습니다.",
             "\"그림이라?\"<br>\"신은 평생 바닷속에서만 살아 토끼라는 것을 본 적이 없습니다. 산에 올라가서 아무나 붙들고 물을 수도 없는 노릇이니, 눈으로 알아볼 수 있어야 합니다.\"",
@@ -116,7 +116,7 @@ const CHAPTERS = [
             "토끼는 얼른 대답하지 못했습니다. 그러나 두 귀는 이미 자라 쪽으로 바짝 기울어 있었습니다. 가슴이 두근거려 말이 나오지 않았습니다.",
             "그때 머리 위 소나무 가지에서 까마귀 한 마리가 깍 하고 울었습니다.<br>\"토끼야, 가지 마라.\" 온 산이 울릴 만큼 큰 소리였습니다.",
             "토끼가 위를 올려다보았습니다.<br>\"너는 또 왜 참견이냐.\"<br>\"내가 그 바닷가에서 오래 살았다. 물에 사는 것들이 뭍에 올라오는 일은 없다. 하물며 벼슬을 주겠다고 기어 올라오는 일은 더더욱 없다.\"",
-            "자라의 등딱지 밑에서 식은땀이 흘렀습니다. 그러나 겉으로는 껄껄 웃었습니다.<br>\"저 새가 나를 시기하는 모양이오. 남이 잘되는 꼴을 못 보는 것이지.\" 말은 그렇게 했지만 목소리가 조금 높아졌습니다.",
+            "자라의 등딱지 밑에서 식은땀이 흘렀습니다. 그러나 겉으로는 껄껄 웃었습니다.<br>\"저 새가 나를 시기하는 모양이오. 남이 잘되는 꼴을 못 보는 것이지!\" 말은 그렇게 했지만 목소리가 조금 높아졌습니다.",
             "까마귀가 다시 울었습니다.<br>\"토끼야, 잘 생각해라. 저 짐승이 너에게 무엇을 얻으려 하는지 물어보아라. 세상에 까닭 없이 좋은 것을 주는 이는 없다.\" 까마귀는 가지 끝까지 내려와 앉았습니다.",
             "토끼가 잠시 망설였습니다. 그 순간 자라가 한 걸음 물러섰습니다.<br>\"정 그러면 그만두시오. 나도 여기까지 오느라 사흘을 기었소. 그대가 싫다면 다른 이를 찾아보겠소. 이 산에 슬기로운 짐승이 그대 하나뿐이겠소.\"",
             "그러고는 정말로 몸을 돌려 내려가기 시작했습니다. 걸음이 어찌나 느린지 열 걸음을 가는 데도 한참이 걸렸습니다. 일부러 그러는 것이었습니다.",
@@ -152,7 +152,7 @@ const CHAPTERS = [
             "토끼의 머릿속이 새하얘졌습니다. 소나무 가지에서 울던 까마귀 소리가 그제야 또렷하게 되살아났습니다. 세상에 까닭 없이 좋은 것을 주는 이는 없다던 그 말이었습니다.",
             "그러나 토끼는 산중에서 제 목숨을 지키며 살아온 짐승이었습니다. 다리가 후들거리는 그 순간에도 머리만은 무섭게 돌아갔습니다. 숨을 크게 한 번 골랐습니다.",
             "창끝이 목에 닿기 직전, 토끼가 갑자기 무릎을 치며 큰 소리로 웃었습니다.<br>\"아이고, 이런 낭패가 있나!\" 웃음소리가 대궐 안에 울렸습니다.",
-            "용왕이 손을 들어 군사를 멈춰 세웠습니다.<br>\"무엇이 낭패란 말이냐.\"",
+            "용왕이 손을 들어 군사를 멈춰 세웠습니다.<br>\"무엇이 낭패란 말이냐?\"",
             "\"대왕이시여, 진작 말씀을 하셨더라면 좋았을 것을. 소인의 간이 필요하셨다면 그저 그렇게 말씀하시면 될 일이 아니었습니까. 무엇하러 벼슬이니 무어니 하는 거짓말로 사람을 데려오셨습니까.\" 말하는 목소리가 조금도 떨리지 않았습니다.",
             "\"그게 무슨 말이냐.\"<br>\"소인의 간은 지금 뱃속에 없습니다.\"",
             "대궐 안이 술렁였습니다. 용왕의 눈썹이 꿈틀했습니다.<br>\"간이 없다니. 그런 짐승이 어디 있느냐.\" 대신들이 서로 얼굴을 쳐다보았습니다.",
@@ -176,11 +176,11 @@ const CHAPTERS = [
             "그날 저녁 수궁에서는 큰 잔치가 열렸습니다. 토끼는 윗자리에 앉아 진귀한 음식을 배가 터지도록 먹었습니다. 다만 술만은 한 방울도 입에 대지 않았습니다. 취하면 말이 헛나올 것을 알고 있었기 때문입니다.",
             "이튿날 새벽, 자라가 토끼를 등에 태우고 다시 물길을 올랐습니다. 둘 다 아무 말이 없었습니다. 물살을 가르는 소리만 났습니다.",
             "모래밭에 닿자 토끼가 등딱지에서 폴짝 뛰어내렸습니다. 그러고는 앞발로 흙을 몇 번 긁어 보고, 코를 실룩거려 풀 냄새를 맡아 보았습니다. 오랜만에 맡는 흙냄새였습니다.",
-            "\"별주부.\"<br>\"어서 가서 간을 가져오시오.\"<br>토끼가 씩 웃었습니다.<br>\"세상에 간을 꺼내 놓고 사는 짐승이 어디 있소.\"",
+            "별주부가 말했습니다.<br>\"어서 가서 간을 가져오시오.\"<br>토끼가 씩 웃었습니다.<br>\"세상에 간을 꺼내 놓고 사는 짐승이 어디 있소?\"",
             "자라가 그 자리에 굳어 버렸습니다. 토끼는 이미 열 걸음 밖에 있었습니다.<br>\"그대가 나를 속였으니 나도 그대를 속인 것이오. 이만하면 셈이 맞지 않소?\"<br>그러고는 산 쪽으로 껑충껑충 뛰어 사라졌습니다. 자라는 한 걸음도 쫓아가지 못했습니다.",
             "자라는 한나절이 넘도록 그 모래밭에 그대로 엎드려 있었습니다. 해가 기울고 물이 발끝까지 밀려와도 움직이지 않았습니다. 파도가 등딱지를 몇 번이나 넘어갔습니다.",
             "무슨 낯으로 수궁에 돌아간단 말입니까. 대왕은 여전히 자리에 누워 계신데 저는 빈손이었습니다. 게다가 대궐 한복판에서 거짓말쟁이가 되었습니다. 돌아갈 길이 물속에 있는데도 아득했습니다.",
-            "자라의 눈에서 눈물이 뚝뚝 떨어져 모래에 스몄습니다.<br>\"어머니께서 무슨 일이 있어도 거짓말은 하지 말라 하셨는데.\"",
+            "자라의 눈에서 눈물이 뚝뚝 떨어져 모래에 스몄습니다.<br>\"어머니께서 무슨 일이 있어도 거짓말은 하지 말라 하셨는데!\"",
             "그때 등 뒤에서 목소리가 들려왔습니다.<br>\"울지 마라.\" 낮고 느린 목소리였습니다.",
             "돌아보니 흰 옷을 입은 노인이 서 있었습니다. 수염이 가슴까지 내려오고 손에는 지팡이를 들고 있었습니다. 자라는 그 노인을 본 적이 없었지만, 어쩐지 낯설지가 않았습니다.",
             "\"뉘시옵니까.\"<br>\"네 임금의 침상에 한 번 다녀간 사람이다.\"",
@@ -189,7 +189,7 @@ const CHAPTERS = [
             "\"예?\"<br>\"큰 벼슬을 한 자들은 모두 못 간다 하였고, 아무 벼슬도 없던 네가 가겠다 하였다. 그것으로 되었다.\"",
             "노인이 품에서 조그만 뿌리 하나를 꺼내 자라 앞에 놓았습니다. 흙빛이 도는 늙은 산삼이었습니다.<br>\"이것을 달여 드시게 하여라. 사흘이면 일어나실 것이다.\" 잔뿌리에 흙이 그대로 묻어 있었습니다.",
             "자라가 고개를 들었을 때 노인은 이미 없었습니다. 모래밭에는 지팡이 자국만 몇 개 남아 있었습니다.",
-            "자라가 산삼을 등딱지 밑에 끼우고 물로 들어갔습니다. 사흘 뒤, 남해 용왕은 자리를 털고 일어났습니다. 궁 안이 오랜만에 웃음소리로 찼습니다.",
+            "자라가 산삼을 등딱지 밑에 끼우고 물로 들어갔습니다. 사흘 뒤, 남해 용왕은 자리를 털고 일어났습니다. 궁 안이 오랜만에 웃음소리로 가득 찼습니다.",
             "용왕은 자라에게 높은 벼슬을 내리려 했습니다. 그러나 자라는 사양했습니다.<br>\"신은 거짓말로 남을 속여 데려온 자입니다. 상을 받을 낯이 없습니다.\"<br>\"그 거짓말은 나를 위한 것이 아니었느냐.\"<br>\"그래도 거짓말은 거짓말입니다.\"",
             "용왕은 한참 만에 고개를 끄덕였습니다. 그러고는 자라를 조정 맨 앞자리에 앉히되 벼슬 이름은 붙이지 않았습니다. 벼슬 없이 앞자리에 앉은 신하는 수궁이 생긴 이래 처음이었습니다. 그 자리는 지금도 별주부 자리라 불린답니다.",
             "한편 산속의 토끼는 그 뒤로 물가에 얼씬도 하지 않았다고 합니다. 다만 누가 벼슬을 준다는 말을 꺼내기만 하면 귀를 착 눕히고 먼저 뒷걸음질을 쳤다지요."
@@ -672,7 +672,7 @@ const QUIZ = [
         choices: [
             "용왕이 잔치 끝에 병을 얻고 남의 간을 찾은 것을 보면, 윗자리의 병을 아랫것이 갚는 셈이구나.",
             "자라가 벼슬자리를 내세워 토끼를 꾄 것을 보면, 누구나 솔깃한 자리가 하나쯤 있네.",
-            "자라가 상을 사양하며 거짓말한 낯이 없다고 한 것을 보면, 시킨 일을 했어도 마음은 남는 거야.",
+            "대신들이 저마다 핑계를 대며 뭍에 가기를 미룬 것을 보면, 높은 자리에 있어도 어려운 일은 피하고 싶은가 봐.",
             "용왕이 토끼를 큰 상으로 대접한 것을 보면, 간을 받기 전에 먼저 예를 갖춘 거였겠다."
         ],
         answer: 3
@@ -746,12 +746,12 @@ const AFTERWORD = {
         `이 이야기가 겨눈 곳은 분명합니다. 용왕은 제 병을 고치자고 남의 배를 가르려 합니다. 신하들은 서로 미루기만 합니다. 자라 하나만 나섭니다. 그리고 그 자라도 결국 남을 속여야 임금을 살릴 수 있습니다. 위쪽 사람들이 하는 일이 대개 그렇다고 말하는 이야기입니다.`,
         `토끼가 이기는 방식도 눈여겨볼 만합니다. 힘으로 이기지 않습니다. 발이 빨라서 이기지도 않습니다. 말로 이깁니다. 간을 꺼내 놓고 다닌다는, 조금만 생각해 보면 말이 안 되는 소리를 온 수궁이 믿어 버립니다.`,
         `왜 믿었을까요. 믿고 싶었기 때문입니다. 용왕은 살고 싶었고, 신하들은 이 일이 어서 끝나기를 바랐습니다. 사람이 속는 것은 속이는 사람이 똑똑해서가 아니라 속는 쪽이 바라는 것이 있기 때문이라는 것을, 이 이야기가 웃으며 짚어 줍니다.`,
-        `토끼가 뭍으로 나가겠다고 마음먹은 대목도 다시 볼 만합니다. 애초에 토끼를 물로 끌어들인 것은 벼슬을 준다는 말이었습니다. 산속에서 잘 살던 토끼가 높은 자리를 준다는 말 한마디에 물속까지 따라 들어갔습니다. 속은 쪽에도 빌미가 있었던 셈입니다.`,
+        `토끼가 물속으로 따라가겠다고 마음먹은 대목도 다시 볼 만합니다. 애초에 토끼를 물로 끌어들인 것은 벼슬을 준다는 말이었습니다. 산속에서 잘 살던 토끼가 높은 자리를 준다는 말 한마디에 물속까지 따라 들어갔습니다. 속은 쪽에도 빌미가 있었던 셈입니다.`,
         `끝맺음은 책마다 다릅니다. 자라가 빈손으로 돌아가 벌을 받는 것도 있고, 바다에 뛰어드는 것도 있고, 이 책처럼 신선이 나타나 약을 주는 것도 있습니다. 부르는 사람이 듣는 사람의 얼굴을 보고 정했기 때문입니다. 어느 것이 원래 결말인지는 정할 수 없습니다.`,
-        `이 책이 신선을 부른 데는 까닭이 있습니다. 자라를 벌하기가 마땅치 않았기 때문입니다. 이 사람은 거짓말을 했지만 그 거짓말로 제 이익을 챙기지 않았습니다. 그렇다고 상을 주기도 어렵습니다. 그래서 벼슬 이름 없이 앞자리에 앉히는 것으로 끝냈습니다.`,
+        `이 책이 신선을 부른 데는 까닭이 있습니다. 자라를 벌하기가 마땅치 않았기 때문입니다. 자라는 거짓말을 했지만 그 거짓말로 제 이익을 챙기지 않았습니다. 그렇다고 상을 주기도 어렵습니다. 그래서 벼슬 이름 없이 앞자리에 앉히는 것으로 끝냈습니다.`,
         `자라가 한 거짓말은 용서받을 만한 것일까요? 남을 죽이러 가면서 한 거짓말입니다. 그런데 제 임금을 살리려고 한 것이기도 합니다. 자라 스스로는 상을 받을 낯이 없다고 했습니다. 여러분 생각은 어떻습니까.`,
         `토끼가 한 거짓말은 어떻습니까? 자라의 거짓말과 무엇이 다른지, 아니면 다를 것이 없는지 견주어 보십시오. 둘 다 살자고 한 거짓말입니다.`,
-        `용왕은 아무 벌도 받지 않았습니다. 남의 목숨을 가져다 제 병을 고치려 한 사람인데 그렇습니다. 이야기가 용왕을 벌하지 않은 까닭이 무엇일지, 그리고 벌했다면 이야기가 어떻게 달라졌을지 생각해 보십시오.`
+        `용왕은 아무 벌도 받지 않았습니다. 남의 목숨을 가져다 제 병을 고치려 한 자인데 그렇습니다. 이야기가 용왕을 벌하지 않은 까닭이 무엇일지, 그리고 벌했다면 이야기가 어떻게 달라졌을지 생각해 보십시오.`
     ]
 };
 
@@ -922,7 +922,7 @@ const EN = {
                 "When he reached the Dragon King the turtle bowed his head low.<br>\"Your servant has never held high rank and has never done anything that could be called a service. But your servant has two things that others have not.\"",
                 "\"And what are they?\"<br>\"One is this shell. On land my body will not dry, and if danger comes I can draw my head and legs inside. The other is feet that can go both in the water and on land.\"",
                 "The Dragon King looked down at him for a long time.<br>\"All this while I never knew you.\"<br>\"There is nothing to know or not know about your servant. Only, the one who can go is the one who ought to go.\" The turtle's voice was the same from the beginning to the end.",
-                "At that the officers who had all just said they could not go suddenly had a great deal to say.<br>\"Byeoljubu indeed!\"<br>\"I always thought there was something out of the common about that fellow.\"<br>The turtle did not turn his head. Not one of them could meet his eye.",
+                "At that the officers who had all just said they could not go suddenly had a great deal to say.<br>\"Byeoljubu indeed!\"<br>\"I always thought there was something out of the common about Byeoljubu.\"<br>The turtle did not turn his head. Not one of them could meet his eye.",
                 "The Dragon King asked,<br>\"Well then, what do you need? Shall I send soldiers with you? Shall I load you with treasure?\"",
                 "\"Soldiers are no use. If we go in numbers the rabbit runs first. Treasure is only heavy.\"<br>\"Then what do you need?\"<br>\"One picture with the rabbit's likeness drawn on it will do.\" The turtle thought a moment and then answered.",
                 "\"A picture?\"<br>\"Your servant has lived his whole life in the sea and has never seen the thing called a rabbit. I can hardly climb the hills and stop the first passer-by to ask. I must be able to know it by my eyes.\"",
@@ -1042,7 +1042,7 @@ const EN = {
                 "That evening there was a great feast in the sea palace. The rabbit sat at the head of the table and ate rare food until he was fit to burst. Only of the wine he did not touch one drop. He knew that a drunk man's words go astray.",
                 "Before dawn the next day the turtle took the rabbit on his back and went up the water road again. Neither of them said anything. There was only the sound of the water parting.",
                 "When they reached the sand the rabbit jumped down off the shell. Then he scratched at the earth a few times with his front paws and twitched his nose to smell the grass. It was a long time since he had smelled earth.",
-                "\"Byeoljubu.\"<br>\"Go quickly and fetch the liver.\"<br>The rabbit grinned.<br>\"Where is there a beast that lives with its liver taken out?\"",
+                "Byeoljubu spoke.<br>\"Go quickly and fetch the liver.\"<br>The rabbit grinned.<br>\"Where is there a beast that lives with its liver taken out?\"",
                 "The turtle froze where he stood. The rabbit was already ten paces off.<br>\"You deceived me, so I have deceived you. Does that not make us even?\"<br>And then he went bounding off toward the hills and was gone. The turtle could not follow one step.",
                 "For more than half a day the turtle was still lying flat on that sand. The sun went down and the water came up to his feet and he did not move. The waves went over his shell again and again.",
                 "With what face was he to go back to the sea palace? His king was still lying in his bed and he was empty-handed. And on top of that he had been made a liar in the middle of the court. The road back was under the water, and still it seemed far away.",
@@ -1127,7 +1127,7 @@ const EN = {
             { w: "swallowing a laugh (swallow)", k: "웃음을 참는", s: "the sound of somebody swallowing a laugh" },
             { w: "draw my head and legs inside (draw)", k: "머리와 다리를 안으로 넣다", s: "I can draw my head and legs inside" },
             { w: "the one who ought to go (ought)", k: "가야 마땅한 자", s: "the one who can go is the one who ought to go" },
-            { w: "out of the common", k: "보통이 아닌", s: "there was something out of the common about that fellow" },
+            { w: "out of the common", k: "보통이 아닌", s: "there was something out of the common about Byeoljubu" },
             { w: "meet his eye (meet)", k: "눈을 마주치다", s: "Not one of them could meet his eye" },
             { w: "load you with treasure (load)", k: "보물을 지워 주다", s: "Shall I load you with treasure?" },
             { w: "struck his knee (strike)", k: "무릎을 쳤다", s: "The Dragon King struck his knee" },
@@ -1286,7 +1286,7 @@ const EN = {
             choices: [
                 "The Dragon King fell ill after a feast and went looking for another's liver, so those below pay for what those above do.",
                 "The turtle tempted the rabbit with a post at court, so everyone has one offer that turns their head.",
-                "The turtle refused his reward, saying he had no face after lying, so doing as you are told still leaves something behind.",
+                "The ministers each found an excuse not to go on land, so even people in high places would rather dodge a hard job.",
                 "The Dragon King laid on a great table for the rabbit, so he meant to treat his guest properly before asking."
             ],
             answer: 3
@@ -1307,12 +1307,12 @@ const EN = {
             "What this story is aiming at is plain. The Dragon King would cut open somebody else's body to cure his own illness. The ministers do nothing but pass it along to each other. Only the turtle steps forward. And even that turtle can save his king only by deceiving somebody. It is a story that says this is mostly how the business of those at the top is done.",
             "The way the rabbit wins is worth noticing too. He does not win by strength. He does not win by being quick on his feet. He wins by talking. A claim that will not stand a moment's thought — that rabbits carry their livers about outside them — and the whole sea palace swallows it.",
             "Why did they believe it? Because they wanted to. The Dragon King wanted to live, and the ministers wanted the business over with. People are taken in not because the one deceiving them is clever but because the ones being deceived want something — and this story points that out with a laugh.",
-            "The place where the rabbit makes up his mind to leave is worth another look as well. What drew the rabbit into the water in the first place was the promise of an office. A rabbit living well enough in the hills followed a stranger under water at one word about a high place. There was something in the one deceived that gave the lie its hold.",
+            "The place where the rabbit makes up his mind to follow the turtle under the sea is worth another look as well. What drew the rabbit into the water in the first place was the promise of an office. A rabbit living well enough in the hills followed a stranger under water at one word about a high place. There was something in the one deceived that gave the lie its hold.",
             "The endings differ from book to book. In some the turtle goes back empty-handed and is punished, in some he throws himself into the sea, and in some, as here, an immortal appears and hands over a medicine. The singer decided by the faces in front of him. There is no settling which was the original ending.",
-            "There is a reason this book called in an immortal. It was awkward to punish the turtle. He told a lie, but he took nothing for himself by it. And it is hard to reward him either. So it ends by seating him at the front with no name of office.",
+            "There is a reason this book called in an immortal. It was awkward to punish the turtle. The turtle told a lie, but he took nothing for himself by it. And it is hard to reward him either. So it ends by seating him at the front with no name of office.",
             "Was the turtle's lie the kind that can be forgiven? It was a lie told on his way to kill somebody. And it was also told to save his king. The turtle himself said he had no face to take a reward. What do you think?",
             "And the rabbit's lie? Set it beside the turtle's and see what is different about it, or whether there is nothing different at all. Both were lies told to stay alive.",
-            "The Dragon King was never punished at all — a man who tried to take another's life to cure his own illness. Think about why the story does not punish him, and how the story would be different if it had."
+            "The Dragon King was never punished at all — one who tried to take another's life to cure his own illness. Think about why the story does not punish him, and how the story would be different if it had."
         ]
     }
 };

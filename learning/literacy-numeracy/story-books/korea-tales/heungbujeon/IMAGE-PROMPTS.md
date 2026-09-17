@@ -198,6 +198,9 @@ husband and wife kneel on either side of it working a long two-man saw back and
 forth, both leaning into it, sweat flying, mouths open in a work-song. The
 children crowd around in a ring, some plugging their ears, all wide-eyed. Bright
 midday, dust and sawdust in the sun.
+The gourd is a smooth, perfectly round white-green bottle gourd (Korean bak), not a ribbed pumpkin.
+Its stem end points straight at Heungbu's knees, and the saw cuts across the middle,
+halfway between the stem end and the far end.
 ```
 
 ### `story-03-b.webp` — 3장 — 박에서 쌀이 쏟아진다
@@ -208,6 +211,7 @@ it in an impossible flood, heaping across the whole yard. The children have thro
 themselves into it up to their waists, laughing and flinging handfuls in the air.
 The husband and wife stand holding each other's arms, crying openly. Golden light,
 white rice, motion everywhere.
+The split gourd halves are smooth round bottle-gourd shells with no stem or knob drawn on them.
 ```
 
 ### `story-03-c.webp` — 3장 — 목수들이 사흘 만에 새 집을 짓는다
