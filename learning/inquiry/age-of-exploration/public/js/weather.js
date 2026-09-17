@@ -17,7 +17,7 @@
     return (x>>>0)/4294967296;
   }
   function monthFromGameMinutes(gameMinutes){
-    const d=new Date(Date.UTC(1492,0,1)+Math.max(0,Number(gameMinutes)||0)*60000);
+    const d=new Date(Date.UTC(1520,0,1)+Math.max(0,Number(gameMinutes)||0)*60000);
     return d.getUTCMonth()+1;
   }
   function lonLatFromPixel(x,y){

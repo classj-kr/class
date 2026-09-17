@@ -6,8 +6,8 @@ const ROOM = `V27PORT${Date.now().toString(36).slice(-4)}`;
 const starts = [
   ['lisbon','항구학생1','리스본'],
   ['london','항구학생2','런던'],
-  ['original_city_195','항구학생3','베니스'],
-  ['original_city_035','항구학생4','한양']
+  ['original_city_195','항구학생3','베네치아'],
+  ['original_city_035','항구학생4','서울']
 ];
 function c(){ return io(BASE,{transports:['websocket'],forceNew:true,reconnection:false,timeout:7000}); }
 function once(s,e,p=()=>true,t=15000){return new Promise((r,j)=>{const x=setTimeout(()=>{s.off(e,on);j(new Error(`timeout:${e}`));},t);function on(d){if(!p(d))return;clearTimeout(x);s.off(e,on);r(d);}s.on(e,on);});}

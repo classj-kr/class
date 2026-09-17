@@ -8,13 +8,13 @@
   {
     "index": 1,
     "id": "original_city_223",
-    "name": "오포르토",
+    "name": "포르투",
     "file": "/assets/cities/original/city_001.png?v=55"
   },
   {
     "index": 2,
     "id": "original_city_222",
-    "name": "라코루냐",
+    "name": "아코루냐",
     "file": "/assets/cities/original/city_002.png?v=55"
   },
   {
@@ -44,7 +44,7 @@
   {
     "index": 7,
     "id": "original_city_217",
-    "name": "세빌리아",
+    "name": "세비야",
     "file": "/assets/cities/original/city_007.png?v=55"
   },
   {
@@ -80,7 +80,7 @@
   {
     "index": 13,
     "id": "original_city_211",
-    "name": "마요르카",
+    "name": "팔마",
     "file": "/assets/cities/original/city_013.png?v=55"
   },
   {
@@ -134,13 +134,13 @@
   {
     "index": 22,
     "id": "original_city_202",
-    "name": "브뤼즈",
+    "name": "브뤼허",
     "file": "/assets/cities/original/city_022.png?v=55"
   },
   {
     "index": 23,
     "id": "original_city_201",
-    "name": "앤트워프",
+    "name": "안트베르펜",
     "file": "/assets/cities/original/city_023.png?v=55"
   },
   {
@@ -176,7 +176,7 @@
   {
     "index": 29,
     "id": "original_city_195",
-    "name": "베니스",
+    "name": "베네치아",
     "file": "/assets/cities/original/city_029.png?v=55"
   },
   {
@@ -296,7 +296,7 @@
   {
     "index": 49,
     "id": "original_city_175",
-    "name": "스트라스부르크",
+    "name": "스트라스부르",
     "file": "/assets/cities/original/city_049.png?v=55"
   },
   {
@@ -326,7 +326,7 @@
   {
     "index": 54,
     "id": "original_city_170",
-    "name": "비엔나",
+    "name": "빈",
     "file": "/assets/cities/original/city_054.png?v=55"
   },
   {
@@ -338,13 +338,13 @@
   {
     "index": 56,
     "id": "original_city_168",
-    "name": "단치히",
+    "name": "그단스크",
     "file": "/assets/cities/original/city_056.png?v=55"
   },
   {
     "index": 57,
     "id": "original_city_167",
-    "name": "쾨니히스베르크",
+    "name": "칼리닌그라드",
     "file": "/assets/cities/original/city_057.png?v=55"
   },
   {
@@ -356,7 +356,7 @@
   {
     "index": 59,
     "id": "original_city_165",
-    "name": "노브고르트",
+    "name": "노브고로드",
     "file": "/assets/cities/original/city_059.png?v=55"
   },
   {
@@ -368,7 +368,7 @@
   {
     "index": 61,
     "id": "original_city_163",
-    "name": "키에프",
+    "name": "키이우",
     "file": "/assets/cities/original/city_061.png?v=55"
   },
   {
@@ -392,7 +392,7 @@
   {
     "index": 65,
     "id": "original_city_159",
-    "name": "비즈비",
+    "name": "비스뷔",
     "file": "/assets/cities/original/city_065.png?v=55"
   },
   {
@@ -428,7 +428,7 @@
   {
     "index": 71,
     "id": "original_city_153",
-    "name": "라구사",
+    "name": "두브로브니크",
     "file": "/assets/cities/original/city_071.png?v=55"
   },
   {
@@ -440,19 +440,19 @@
   {
     "index": 73,
     "id": "original_city_151",
-    "name": "살로니카",
+    "name": "테살로니키",
     "file": "/assets/cities/original/city_073.png?v=55"
   },
   {
     "index": 74,
     "id": "original_city_150",
-    "name": "간디아",
+    "name": "이라클리온",
     "file": "/assets/cities/original/city_074.png?v=55"
   },
   {
     "index": 75,
     "id": "original_city_149",
-    "name": "파마가스타",
+    "name": "파마구스타",
     "file": "/assets/cities/original/city_075.png?v=55"
   },
   {
@@ -464,7 +464,7 @@
   {
     "index": 77,
     "id": "original_city_147",
-    "name": "몬카스트로",
+    "name": "빌호로드드니스트로우스키",
     "file": "/assets/cities/original/city_077.png?v=55"
   },
   {
@@ -518,13 +518,13 @@
   {
     "index": 86,
     "id": "original_city_138",
-    "name": "아조레스",
+    "name": "폰타델가다",
     "file": "/assets/cities/original/city_086.png?v=55"
   },
   {
     "index": 87,
     "id": "original_city_137",
-    "name": "마디라",
+    "name": "푼샬",
     "file": "/assets/cities/original/city_087.png?v=55"
   },
   {
@@ -542,13 +542,13 @@
   {
     "index": 90,
     "id": "original_city_134",
-    "name": "베르데 곶",
+    "name": "다카르",
     "file": "/assets/cities/original/city_090.png?v=55"
   },
   {
     "index": 91,
     "id": "original_city_133",
-    "name": "시에라리온",
+    "name": "프리타운",
     "file": "/assets/cities/original/city_091.png?v=55"
   },
   {
@@ -560,7 +560,7 @@
   {
     "index": 93,
     "id": "original_city_131",
-    "name": "통북투",
+    "name": "팀북투",
     "file": "/assets/cities/original/city_093.png?v=55"
   },
   {
@@ -584,19 +584,19 @@
   {
     "index": 97,
     "id": "original_city_127",
-    "name": "산호르헤",
+    "name": "엘미나",
     "file": "/assets/cities/original/city_097.png?v=55"
   },
   {
     "index": 98,
     "id": "original_city_126",
-    "name": "이페",
+    "name": "일레이페",
     "file": "/assets/cities/original/city_098.png?v=55"
   },
   {
     "index": 99,
     "id": "original_city_125",
-    "name": "산토메",
+    "name": "상투메",
     "file": "/assets/cities/original/city_099.png?v=55"
   },
   {
@@ -608,7 +608,7 @@
   {
     "index": 101,
     "id": "original_city_123",
-    "name": "케이프",
+    "name": "케이프타운",
     "file": "/assets/cities/original/city_101.png?v=55"
   },
   {
@@ -620,13 +620,13 @@
   {
     "index": 103,
     "id": "original_city_121",
-    "name": "모잠비크",
+    "name": "모잠비크섬",
     "file": "/assets/cities/original/city_103.png?v=55"
   },
   {
     "index": 104,
     "id": "original_city_120",
-    "name": "짐바브웨",
+    "name": "그레이트짐바브웨",
     "file": "/assets/cities/original/city_104.png?v=55"
   },
   {
@@ -680,37 +680,37 @@
   {
     "index": 113,
     "id": "original_city_111",
-    "name": "카파",
+    "name": "페오도시야",
     "file": "/assets/cities/original/city_113.png?v=55"
   },
   {
     "index": 114,
     "id": "original_city_110",
-    "name": "타나",
+    "name": "아조우",
     "file": "/assets/cities/original/city_114.png?v=55"
   },
   {
     "index": 115,
     "id": "original_city_109",
-    "name": "시높",
+    "name": "시노프",
     "file": "/assets/cities/original/city_115.png?v=55"
   },
   {
     "index": 116,
     "id": "original_city_108",
-    "name": "트레비존드",
+    "name": "트라브존",
     "file": "/assets/cities/original/city_116.png?v=55"
   },
   {
     "index": 117,
     "id": "original_city_107",
-    "name": "앙고라",
+    "name": "앙카라",
     "file": "/assets/cities/original/city_117.png?v=55"
   },
   {
     "index": 118,
     "id": "original_city_106",
-    "name": "안티오키아",
+    "name": "안타키아",
     "file": "/assets/cities/original/city_118.png?v=55"
   },
   {
@@ -854,7 +854,7 @@
   {
     "index": 142,
     "id": "original_city_082",
-    "name": "시빌",
+    "name": "토볼스크",
     "file": "/assets/cities/original/city_142.png?v=55"
   },
   {
@@ -866,7 +866,7 @@
   {
     "index": 144,
     "id": "original_city_080",
-    "name": "카라코름",
+    "name": "하르호린",
     "file": "/assets/cities/original/city_144.png?v=55"
   },
   {
@@ -908,25 +908,25 @@
   {
     "index": 151,
     "id": "original_city_073",
-    "name": "카나놀",
+    "name": "칸누르",
     "file": "/assets/cities/original/city_151.png?v=55"
   },
   {
     "index": 152,
     "id": "calicut",
-    "name": "캘리컷",
+    "name": "코지코드",
     "file": "/assets/cities/original/city_152.png?v=55"
   },
   {
     "index": 153,
     "id": "original_city_071",
-    "name": "비자야나가르",
+    "name": "함피",
     "file": "/assets/cities/original/city_153.png?v=55"
   },
   {
     "index": 154,
     "id": "original_city_070",
-    "name": "코친",
+    "name": "코치",
     "file": "/assets/cities/original/city_154.png?v=55"
   },
   {
@@ -944,13 +944,13 @@
   {
     "index": 157,
     "id": "original_city_067",
-    "name": "캘커타",
+    "name": "콜카타",
     "file": "/assets/cities/original/city_157.png?v=55"
   },
   {
     "index": 158,
     "id": "original_city_066",
-    "name": "아바",
+    "name": "인와",
     "file": "/assets/cities/original/city_158.png?v=55"
   },
   {
@@ -962,7 +962,7 @@
   {
     "index": 160,
     "id": "original_city_064",
-    "name": "리골",
+    "name": "나콘시탐마랏",
     "file": "/assets/cities/original/city_160.png?v=55"
   },
   {
@@ -980,31 +980,31 @@
   {
     "index": 163,
     "id": "original_city_061",
-    "name": "유에",
+    "name": "후에",
     "file": "/assets/cities/original/city_163.png?v=55"
   },
   {
     "index": 164,
     "id": "original_city_060",
-    "name": "교도",
+    "name": "하이퐁",
     "file": "/assets/cities/original/city_164.png?v=55"
   },
   {
     "index": 165,
     "id": "original_city_059",
-    "name": "아친",
+    "name": "반다아체",
     "file": "/assets/cities/original/city_165.png?v=55"
   },
   {
     "index": 166,
     "id": "original_city_058",
-    "name": "파렌반",
+    "name": "팔렘방",
     "file": "/assets/cities/original/city_166.png?v=55"
   },
   {
     "index": 167,
     "id": "original_city_057",
-    "name": "반탐",
+    "name": "세랑",
     "file": "/assets/cities/original/city_167.png?v=55"
   },
   {
@@ -1016,7 +1016,7 @@
   {
     "index": 169,
     "id": "original_city_055",
-    "name": "브루나이",
+    "name": "반다르스리브가완",
     "file": "/assets/cities/original/city_169.png?v=55"
   },
   {
@@ -1028,115 +1028,115 @@
   {
     "index": 171,
     "id": "original_city_053",
-    "name": "암보이나",
+    "name": "암본",
     "file": "/assets/cities/original/city_171.png?v=55"
   },
   {
     "index": 172,
     "id": "original_city_052",
-    "name": "오문",
+    "name": "마카오",
     "file": "/assets/cities/original/city_172.png?v=55"
   },
   {
     "index": 173,
     "id": "original_city_051",
-    "name": "광주",
+    "name": "광저우",
     "file": "/assets/cities/original/city_173.png?v=55"
   },
   {
     "index": 174,
     "id": "original_city_050",
-    "name": "천주",
+    "name": "취안저우",
     "file": "/assets/cities/original/city_174.png?v=55"
   },
   {
     "index": 175,
     "id": "original_city_049",
-    "name": "복주",
+    "name": "푸저우",
     "file": "/assets/cities/original/city_175.png?v=55"
   },
   {
     "index": 176,
     "id": "original_city_048",
-    "name": "항주",
+    "name": "항저우",
     "file": "/assets/cities/original/city_176.png?v=55"
   },
   {
     "index": 177,
     "id": "original_city_047",
-    "name": "남경",
+    "name": "난징",
     "file": "/assets/cities/original/city_177.png?v=55"
   },
   {
     "index": 178,
     "id": "original_city_046",
-    "name": "무창",
+    "name": "우한",
     "file": "/assets/cities/original/city_178.png?v=55"
   },
   {
     "index": 179,
     "id": "original_city_045",
-    "name": "계림",
+    "name": "구이린",
     "file": "/assets/cities/original/city_179.png?v=55"
   },
   {
     "index": 180,
     "id": "original_city_044",
-    "name": "운남",
+    "name": "쿤밍",
     "file": "/assets/cities/original/city_180.png?v=55"
   },
   {
     "index": 181,
     "id": "original_city_043",
-    "name": "성도",
+    "name": "청두",
     "file": "/assets/cities/original/city_181.png?v=55"
   },
   {
     "index": 182,
     "id": "original_city_042",
-    "name": "감주",
+    "name": "장예",
     "file": "/assets/cities/original/city_182.png?v=55"
   },
   {
     "index": 183,
     "id": "original_city_041",
-    "name": "서안",
+    "name": "시안",
     "file": "/assets/cities/original/city_183.png?v=55"
   },
   {
     "index": 184,
     "id": "original_city_040",
-    "name": "개봉",
+    "name": "카이펑",
     "file": "/assets/cities/original/city_184.png?v=55"
   },
   {
     "index": 185,
     "id": "original_city_039",
-    "name": "제남",
+    "name": "지난",
     "file": "/assets/cities/original/city_185.png?v=55"
   },
   {
     "index": 186,
     "id": "original_city_038",
-    "name": "태원",
+    "name": "타이위안",
     "file": "/assets/cities/original/city_186.png?v=55"
   },
   {
     "index": 187,
     "id": "original_city_037",
-    "name": "북경",
+    "name": "베이징",
     "file": "/assets/cities/original/city_187.png?v=55"
   },
   {
     "index": 188,
     "id": "original_city_036",
-    "name": "요동",
+    "name": "다롄",
     "file": "/assets/cities/original/city_188.png?v=55"
   },
   {
     "index": 189,
     "id": "original_city_035",
-    "name": "한양",
+    "name": "서울",
     "file": "/assets/cities/original/city_189.png?v=55"
   },
   {
@@ -1154,7 +1154,7 @@
   {
     "index": 192,
     "id": "original_city_032",
-    "name": "쿄토",
+    "name": "교토",
     "file": "/assets/cities/original/city_192.png?v=55"
   },
   {
@@ -1166,7 +1166,7 @@
   {
     "index": 194,
     "id": "original_city_030",
-    "name": "산티아고",
+    "name": "산티아고데쿠바",
     "file": "/assets/cities/original/city_194.png?v=55"
   },
   {
@@ -1178,7 +1178,7 @@
   {
     "index": 196,
     "id": "original_city_028",
-    "name": "자메이카",
+    "name": "킹스턴",
     "file": "/assets/cities/original/city_196.png?v=55"
   },
   {
@@ -1196,7 +1196,7 @@
   {
     "index": 199,
     "id": "original_city_025",
-    "name": "테노치티틀란",
+    "name": "멕시코시티",
     "file": "/assets/cities/original/city_199.png?v=55"
   },
   {
@@ -1208,13 +1208,13 @@
   {
     "index": 201,
     "id": "original_city_023",
-    "name": "투라스칼라",
+    "name": "틀락스칼라",
     "file": "/assets/cities/original/city_201.png?v=55"
   },
   {
     "index": 202,
     "id": "original_city_022",
-    "name": "트라파",
+    "name": "틀라파",
     "file": "/assets/cities/original/city_202.png?v=55"
   },
   {
@@ -1238,13 +1238,13 @@
   {
     "index": 206,
     "id": "original_city_018",
-    "name": "과테말라",
+    "name": "과테말라시티",
     "file": "/assets/cities/original/city_206.png?v=55"
   },
   {
     "index": 207,
     "id": "original_city_017",
-    "name": "투르히요",
+    "name": "트루히요",
     "file": "/assets/cities/original/city_207.png?v=55"
   },
   {
@@ -1256,7 +1256,7 @@
   {
     "index": 209,
     "id": "original_city_015",
-    "name": "파나마",
+    "name": "파나마시티",
     "file": "/assets/cities/original/city_209.png?v=55"
   },
   {
@@ -1280,13 +1280,13 @@
   {
     "index": 213,
     "id": "original_city_011",
-    "name": "페르남부쿠",
+    "name": "헤시피",
     "file": "/assets/cities/original/city_213.png?v=55"
   },
   {
     "index": 214,
     "id": "original_city_010",
-    "name": "바이앙",
+    "name": "사우바도르",
     "file": "/assets/cities/original/city_214.png?v=55"
   },
   {

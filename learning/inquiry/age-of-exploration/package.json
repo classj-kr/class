@@ -22,7 +22,6 @@
     "test:load33": "node tests/33-student-smoke.js",
     "test:clock": "node tests/shared-clock-port-smoke.js",
     "test:fatigue": "node tests/fatigue-speed-smoke.js",
-    "test:status": "node tests/status-supplies-smoke.js",
     "test:current-visual": "node tests/current-visual-unit.js",
     "test:arrival-zones": "node tests/arrival-zones-unit.js",
     "test:start-lock": "node tests/v26-teacher-start-lock-smoke.js",

@@ -8,7 +8,7 @@
   const WORLD_PIXEL_W = 2500 * 16;
   const WORLD_PIXEL_H = 1250 * 16;
   const DEG = Math.PI / 180;
-  const GAME_EPOCH = Date.UTC(1492, 0, 1);
+  const GAME_EPOCH = Date.UTC(1520, 0, 1);
   const TAIL_FACTOR = 1.00;
   const HEAD_FACTOR = 0.65;
 

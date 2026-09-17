@@ -10,7 +10,7 @@ function loadJson(filename) {
 
 const ORIGINAL_CITIES = Object.freeze(loadJson('original-cities.json'));
 const LANDMARKS = Object.freeze(loadJson('places.json'));
-const PLACES = Object.freeze([...ORIGINAL_CITIES, ...LANDMARKS]);
+const PLACES = Object.freeze([...ORIGINAL_CITIES.filter((city) => !city.retired), ...LANDMARKS]);
 const ITEMS = Object.freeze(loadJson('items.json'));
 const TEMPLATES = Object.freeze(loadJson('templates.json'));
 const READY_MISSIONS = Object.freeze(loadJson('ready-missions.json'));

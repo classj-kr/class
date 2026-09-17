@@ -20,13 +20,13 @@ assert.equal(bgm.TRACKS.sailing_atlantic.label,'남대서양 항해');
 
 // 확정된 도시 오류
 const verde=byId.get('original_city_134');
-assert.equal(verde.name,'베르데 곶');
+assert.equal(verde.name,'다카르');
 assert.equal(verde.countryCode,'SN');
 assert.equal(verde.modernLocationName,'Cap-Vert / Dakar');
 assert.ok(Math.abs(verde.lat-14.7167)<1e-6&&Math.abs(verde.lon+17.4677)<1e-6);
 assert.equal(byId.get('original_city_124').name,'루안다');
-assert.equal(byId.get('original_city_107').name,'앙고라');
+assert.equal(byId.get('original_city_107').name,'앙카라');
 assert.equal(byId.get('original_city_191').canEnterFromSea,false,'로마는 원작상 내륙 도시');
 assert.equal(byId.get('original_city_101').canEnterFromSea,false,'메카는 원작상 내륙 도시');
 assert.equal(cities.filter(c=>c.canEnterFromSea).length,134);
-console.log(JSON.stringify({ok:true,bgm:'original-feel-regions',correctedCities:['베르데 곶','루안다','앙고라','로마','메카']}));
+console.log(JSON.stringify({ok:true,bgm:'original-feel-regions',correctedCities:['다카르','루안다','앙카라','로마','메카']}));

@@ -150,11 +150,14 @@
     "countryCode": "PT",
     "coordinateSource": "GeoNames",
     "hasLibrary": true,
-    "libraryRegion": "이베리아"
+    "libraryRegion": "이베리아",
+    "in1520": "포르투갈 왕국의 도읍 리스본",
+    "todayCountry": "포르투갈",
+    "artKey": "eu-s-port"
   },
   {
     "id": "original_city_223",
-    "name": "오포르토",
+    "name": "포르투",
     "nameEn": "",
     "continent": "",
     "region": "이베리아",
@@ -266,11 +269,15 @@
     "countryCode": "PT",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "originalName": "오포르토",
+    "in1520": "포르투갈 왕국의 포르투",
+    "todayCountry": "포르투갈",
+    "artKey": "eu-s-port"
   },
   {
     "id": "original_city_222",
-    "name": "라코루냐",
+    "name": "아코루냐",
     "nameEn": "",
     "continent": "",
     "region": "이베리아",
@@ -382,7 +389,11 @@
     "countryCode": "ES",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "originalName": "라코루냐",
+    "in1520": "카스티야 왕국의 코루냐",
+    "todayCountry": "스페인",
+    "artKey": "eu-s-port"
   },
   {
     "id": "original_city_221",
@@ -498,7 +509,10 @@
     "countryCode": "ES",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "카스티야 왕국의 빌바오",
+    "todayCountry": "스페인",
+    "artKey": "eu-s-port"
   },
   {
     "id": "original_city_220",
@@ -646,7 +660,10 @@
     "countryCode": "ES",
     "coordinateSource": "GeoNames",
     "hasLibrary": true,
-    "libraryRegion": "이베리아"
+    "libraryRegion": "이베리아",
+    "in1520": "카스티야 왕국의 톨레도",
+    "todayCountry": "스페인",
+    "artKey": "eu-s-in"
   },
   {
     "id": "original_city_219",
@@ -757,7 +774,10 @@
     "countryCode": "ES",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "아라곤 왕국의 도읍 사라고사",
+    "todayCountry": "스페인",
+    "artKey": "eu-s-in"
   },
   {
     "id": "original_city_218",
@@ -868,11 +888,14 @@
     "countryCode": "ES",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "카스티야 왕국의 코르도바",
+    "todayCountry": "스페인",
+    "artKey": "eu-s-in"
   },
   {
     "id": "original_city_217",
-    "name": "세빌리아",
+    "name": "세비야",
     "nameEn": "",
     "continent": "",
     "region": "이베리아",
@@ -1021,7 +1044,11 @@
     "countryCode": "ES",
     "coordinateSource": "GeoNames",
     "hasLibrary": true,
-    "libraryRegion": "이베리아"
+    "libraryRegion": "이베리아",
+    "originalName": "세빌리아",
+    "in1520": "카스티야 왕국 · 신대륙 무역의 중심지",
+    "todayCountry": "스페인",
+    "artKey": "eu-s-port"
   },
   {
     "id": "original_city_216",
@@ -1137,7 +1164,10 @@
     "countryCode": "ES",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "카스티야 왕국의 카디스",
+    "todayCountry": "스페인",
+    "artKey": "eu-s-port"
   },
   {
     "id": "original_city_215",
@@ -1253,7 +1283,10 @@
     "countryCode": "ES",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "카스티야 왕국의 말라가",
+    "todayCountry": "스페인",
+    "artKey": "eu-s-port"
   },
   {
     "id": "original_city_214",
@@ -1365,7 +1398,10 @@
     "countryCode": "ES",
     "coordinateSource": "GeoNames",
     "hasLibrary": true,
-    "libraryRegion": "이베리아"
+    "libraryRegion": "이베리아",
+    "in1520": "카스티야 왕국의 그라나다",
+    "todayCountry": "스페인",
+    "artKey": "landmark-granada"
   },
   {
     "id": "original_city_213",
@@ -1481,7 +1517,10 @@
     "countryCode": "ES",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "아라곤 연합의 발렌시아 왕국",
+    "todayCountry": "스페인",
+    "artKey": "eu-s-port"
   },
   {
     "id": "original_city_212",
@@ -1598,11 +1637,14 @@
     "countryCode": "ES",
     "coordinateSource": "GeoNames",
     "hasLibrary": true,
-    "libraryRegion": "이베리아"
+    "libraryRegion": "이베리아",
+    "in1520": "아라곤 연합의 바르셀로나",
+    "todayCountry": "스페인",
+    "artKey": "eu-s-port"
   },
   {
     "id": "original_city_211",
-    "name": "마요르카",
+    "name": "팔마",
     "nameEn": "",
     "continent": "",
     "region": "이베리아",
@@ -1714,7 +1756,11 @@
     "countryCode": "ES",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "originalName": "마요르카",
+    "in1520": "아라곤 연합의 마요르카 왕국",
+    "todayCountry": "스페인",
+    "artKey": "eu-s-port"
   },
   {
     "id": "original_city_210",
@@ -1862,7 +1908,10 @@
     "countryCode": "FR",
     "coordinateSource": "GeoNames",
     "hasLibrary": true,
-    "libraryRegion": "북유럽"
+    "libraryRegion": "북유럽",
+    "in1520": "프랑스 왕국의 도읍 파리",
+    "todayCountry": "프랑스",
+    "artKey": "landmark-paris"
   },
   {
     "id": "original_city_209",
@@ -1978,7 +2027,10 @@
     "countryCode": "FR",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "프랑스 왕국의 루앙",
+    "todayCountry": "프랑스",
+    "artKey": "eu-nw-port"
   },
   {
     "id": "original_city_208",
@@ -2089,7 +2141,10 @@
     "countryCode": "FR",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "프랑스 왕국의 투르",
+    "todayCountry": "프랑스",
+    "artKey": "eu-nw-in"
   },
   {
     "id": "original_city_207",
@@ -2205,7 +2260,10 @@
     "countryCode": "FR",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "브르타뉴 공국 · 프랑스 왕이 다스림",
+    "todayCountry": "프랑스",
+    "artKey": "eu-nw-port"
   },
   {
     "id": "original_city_206",
@@ -2321,7 +2379,10 @@
     "countryCode": "FR",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "프랑스 왕국의 보르도",
+    "todayCountry": "프랑스",
+    "artKey": "eu-nw-port"
   },
   {
     "id": "original_city_205",
@@ -2432,7 +2493,10 @@
     "countryCode": "FR",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "프랑스 왕국의 툴루즈",
+    "todayCountry": "프랑스",
+    "artKey": "eu-nw-in"
   },
   {
     "id": "original_city_204",
@@ -2543,7 +2607,10 @@
     "countryCode": "FR",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "프랑스 왕국의 리옹",
+    "todayCountry": "프랑스",
+    "artKey": "eu-nw-in"
   },
   {
     "id": "original_city_203",
@@ -2659,11 +2726,14 @@
     "countryCode": "FR",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "프랑스 왕국의 마르세유",
+    "todayCountry": "프랑스",
+    "artKey": "eu-s-port"
   },
   {
     "id": "original_city_202",
-    "name": "브뤼즈",
+    "name": "브뤼허",
     "nameEn": "",
     "continent": "",
     "region": "네덜란드",
@@ -2775,11 +2845,15 @@
     "countryCode": "BE",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "originalName": "브뤼즈",
+    "in1520": "합스부르크 가문의 플랑드르 백국",
+    "todayCountry": "벨기에",
+    "artKey": "eu-nw-port"
   },
   {
     "id": "original_city_201",
-    "name": "앤트워프",
+    "name": "안트베르펜",
     "nameEn": "",
     "continent": "",
     "region": "네덜란드",
@@ -2891,7 +2965,11 @@
     "countryCode": "BE",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "originalName": "앤트워프",
+    "in1520": "합스부르크 가문의 브라반트 공국",
+    "todayCountry": "벨기에",
+    "artKey": "eu-nw-port"
   },
   {
     "id": "amsterdam",
@@ -3008,7 +3086,10 @@
     "countryCode": "NL",
     "coordinateSource": "GeoNames",
     "hasLibrary": true,
-    "libraryRegion": "북유럽"
+    "libraryRegion": "북유럽",
+    "in1520": "합스부르크 가문의 홀란트 백국",
+    "todayCountry": "네덜란드",
+    "artKey": "eu-nw-port"
   },
   {
     "id": "original_city_199",
@@ -3119,7 +3200,10 @@
     "countryCode": "BE",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "합스부르크 가문의 브라반트 공국",
+    "todayCountry": "벨기에",
+    "artKey": "eu-nw-in"
   },
   {
     "id": "original_city_198",
@@ -3267,7 +3351,10 @@
     "countryCode": "IT",
     "coordinateSource": "GeoNames",
     "hasLibrary": true,
-    "libraryRegion": "지중해"
+    "libraryRegion": "지중해",
+    "in1520": "프랑스가 차지한 밀라노 공국",
+    "todayCountry": "이탈리아",
+    "artKey": "eu-s-in"
   },
   {
     "id": "original_city_197",
@@ -3378,7 +3465,10 @@
     "countryCode": "IT",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "사보이아 공국의 토리노",
+    "todayCountry": "이탈리아",
+    "artKey": "eu-s-in"
   },
   {
     "id": "genoa",
@@ -3495,11 +3585,14 @@
     "countryCode": "IT",
     "coordinateSource": "GeoNames",
     "hasLibrary": true,
-    "libraryRegion": "지중해"
+    "libraryRegion": "지중해",
+    "in1520": "제노바 공화국 · 프랑스가 보호",
+    "todayCountry": "이탈리아",
+    "artKey": "eu-s-port"
   },
   {
     "id": "original_city_195",
-    "name": "베니스",
+    "name": "베네치아",
     "nameEn": "",
     "continent": "",
     "region": "이탈리아",
@@ -3648,7 +3741,11 @@
     "countryCode": "IT",
     "coordinateSource": "GeoNames",
     "hasLibrary": true,
-    "libraryRegion": "지중해"
+    "libraryRegion": "지중해",
+    "originalName": "베니스",
+    "in1520": "베네치아 공화국",
+    "todayCountry": "이탈리아",
+    "artKey": "landmark-venice"
   },
   {
     "id": "original_city_194",
@@ -3760,7 +3857,10 @@
     "countryCode": "IT",
     "coordinateSource": "GeoNames",
     "hasLibrary": true,
-    "libraryRegion": "지중해"
+    "libraryRegion": "지중해",
+    "in1520": "메디치 가문이 이끈 피렌체 공화국",
+    "todayCountry": "이탈리아",
+    "artKey": "eu-s-in"
   },
   {
     "id": "original_city_193",
@@ -3876,7 +3976,10 @@
     "countryCode": "IT",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "피렌체 공화국의 피사",
+    "todayCountry": "이탈리아",
+    "artKey": "landmark-pisa"
   },
   {
     "id": "original_city_192",
@@ -3992,7 +4095,10 @@
     "countryCode": "IT",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "교황이 보호한 안코나 공화국",
+    "todayCountry": "이탈리아",
+    "artKey": "eu-s-port"
   },
   {
     "id": "original_city_191",
@@ -4132,7 +4238,10 @@
     "countryCode": "IT",
     "coordinateSource": "GeoNames",
     "hasLibrary": true,
-    "libraryRegion": "지중해"
+    "libraryRegion": "지중해",
+    "in1520": "교황령의 로마",
+    "todayCountry": "이탈리아",
+    "artKey": "landmark-rome"
   },
   {
     "id": "original_city_190",
@@ -4285,7 +4394,10 @@
     "countryCode": "IT",
     "coordinateSource": "GeoNames",
     "hasLibrary": true,
-    "libraryRegion": "지중해"
+    "libraryRegion": "지중해",
+    "in1520": "스페인 왕이 다스린 나폴리 왕국",
+    "todayCountry": "이탈리아",
+    "artKey": "eu-s-port"
   },
   {
     "id": "original_city_189",
@@ -4401,7 +4513,10 @@
     "countryCode": "IT",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "아라곤 연합의 사르데냐 왕국",
+    "todayCountry": "이탈리아",
+    "artKey": "eu-s-port"
   },
   {
     "id": "original_city_188",
@@ -4517,7 +4632,10 @@
     "countryCode": "IT",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "아라곤 연합의 시칠리아 왕국",
+    "todayCountry": "이탈리아",
+    "artKey": "eu-s-port"
   },
   {
     "id": "original_city_187",
@@ -4633,7 +4751,10 @@
     "countryCode": "IT",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "아라곤 연합의 시칠리아 왕국",
+    "todayCountry": "이탈리아",
+    "artKey": "eu-s-port"
   },
   {
     "id": "london",
@@ -4786,7 +4907,10 @@
     "countryCode": "GB",
     "coordinateSource": "GeoNames",
     "hasLibrary": true,
-    "libraryRegion": "북유럽"
+    "libraryRegion": "북유럽",
+    "in1520": "잉글랜드 왕국의 도읍 런던",
+    "todayCountry": "영국",
+    "artKey": "landmark-london"
   },
   {
     "id": "original_city_185",
@@ -4902,7 +5026,10 @@
     "countryCode": "GB",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "잉글랜드 왕국의 사우샘프턴",
+    "todayCountry": "영국",
+    "artKey": "eu-nw-port"
   },
   {
     "id": "original_city_184",
@@ -5018,7 +5145,10 @@
     "countryCode": "GB",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "잉글랜드 왕국의 브리스틀",
+    "todayCountry": "영국",
+    "artKey": "eu-nw-port"
   },
   {
     "id": "original_city_183",
@@ -5129,7 +5259,10 @@
     "countryCode": "GB",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "잉글랜드 왕국의 요크",
+    "todayCountry": "영국",
+    "artKey": "eu-nw-in"
   },
   {
     "id": "original_city_182",
@@ -5247,7 +5380,10 @@
     "countryCode": "GB",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "스코틀랜드 왕국의 도읍 에든버러",
+    "todayCountry": "영국",
+    "artKey": "eu-nw-port"
   },
   {
     "id": "original_city_181",
@@ -5363,7 +5499,10 @@
     "countryCode": "IE",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "잉글랜드 왕이 다스린 아일랜드",
+    "todayCountry": "아일랜드",
+    "artKey": "eu-nw-port"
   },
   {
     "id": "original_city_180",
@@ -5479,7 +5618,10 @@
     "countryCode": "DE",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "신성 로마 제국의 한자 도시",
+    "todayCountry": "독일",
+    "artKey": "eu-nw-port"
   },
   {
     "id": "original_city_179",
@@ -5595,7 +5737,10 @@
     "countryCode": "DE",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "한자 동맹의 으뜸 자유 도시",
+    "todayCountry": "독일",
+    "artKey": "eu-nw-port"
   },
   {
     "id": "original_city_178",
@@ -5711,7 +5856,10 @@
     "countryCode": "DE",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "신성 로마 제국의 한자 도시",
+    "todayCountry": "독일",
+    "artKey": "eu-nw-port"
   },
   {
     "id": "original_city_177",
@@ -5822,7 +5970,10 @@
     "countryCode": "DE",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "신성 로마 제국의 자유 도시",
+    "todayCountry": "독일",
+    "artKey": "eu-nw-in"
   },
   {
     "id": "original_city_176",
@@ -5933,11 +6084,14 @@
     "countryCode": "DE",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "신성 로마 제국의 자유 도시",
+    "todayCountry": "독일",
+    "artKey": "eu-nw-in"
   },
   {
     "id": "original_city_175",
-    "name": "스트라스부르크",
+    "name": "스트라스부르",
     "nameEn": "",
     "continent": "",
     "region": "독일",
@@ -6044,7 +6198,11 @@
     "countryCode": "FR",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "originalName": "스트라스부르크",
+    "in1520": "신성 로마 제국의 자유 도시 슈트라스부르크",
+    "todayCountry": "프랑스",
+    "artKey": "eu-nw-in"
   },
   {
     "id": "original_city_174",
@@ -6155,7 +6313,10 @@
     "countryCode": "DE",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "마그데부르크 대주교령의 한자 도시",
+    "todayCountry": "독일",
+    "artKey": "eu-nw-in"
   },
   {
     "id": "original_city_173",
@@ -6266,7 +6427,10 @@
     "countryCode": "DE",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "신성 로마 제국의 자유 도시",
+    "todayCountry": "독일",
+    "artKey": "eu-nw-in"
   },
   {
     "id": "original_city_172",
@@ -6377,7 +6541,10 @@
     "countryCode": "DE",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "신성 로마 제국의 자유 도시",
+    "todayCountry": "독일",
+    "artKey": "eu-nw-in"
   },
   {
     "id": "original_city_171",
@@ -6488,11 +6655,14 @@
     "countryCode": "CZ",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "보헤미아 왕국의 도읍 프라하",
+    "todayCountry": "체코",
+    "artKey": "eu-nw-in"
   },
   {
     "id": "original_city_170",
-    "name": "비엔나",
+    "name": "빈",
     "nameEn": "",
     "continent": "",
     "region": "독일",
@@ -6600,7 +6770,11 @@
     "countryCode": "AT",
     "coordinateSource": "GeoNames",
     "hasLibrary": true,
-    "libraryRegion": "북유럽"
+    "libraryRegion": "북유럽",
+    "originalName": "비엔나",
+    "in1520": "합스부르크 가문의 오스트리아 대공국",
+    "todayCountry": "오스트리아",
+    "artKey": "eu-nw-in"
   },
   {
     "id": "original_city_169",
@@ -6711,11 +6885,14 @@
     "countryCode": "CH",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "스위스 연방의 베른",
+    "todayCountry": "스위스",
+    "artKey": "eu-nw-in"
   },
   {
     "id": "original_city_168",
-    "name": "단치히",
+    "name": "그단스크",
     "nameEn": "",
     "continent": "",
     "region": "동유럽",
@@ -6827,11 +7004,15 @@
     "countryCode": "PL",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "originalName": "단치히",
+    "in1520": "폴란드 왕국의 자치 도시 단치히",
+    "todayCountry": "폴란드",
+    "artKey": "eu-nw-port"
   },
   {
     "id": "original_city_167",
-    "name": "쾨니히스베르크",
+    "name": "칼리닌그라드",
     "nameEn": "",
     "continent": "",
     "region": "동유럽",
@@ -6943,7 +7124,11 @@
     "countryCode": "RU",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "originalName": "쾨니히스베르크",
+    "in1520": "튜턴 기사단국의 쾨니히스베르크",
+    "todayCountry": "러시아",
+    "artKey": "eu-nw-port"
   },
   {
     "id": "original_city_166",
@@ -7059,11 +7244,14 @@
     "countryCode": "LV",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "리보니아 기사단 땅의 리가",
+    "todayCountry": "라트비아",
+    "artKey": "eu-nw-port"
   },
   {
     "id": "original_city_165",
-    "name": "노브고르트",
+    "name": "노브고로드",
     "nameEn": "",
     "continent": "",
     "region": "동유럽",
@@ -7170,7 +7358,11 @@
     "countryCode": "RU",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "originalName": "노브고르트",
+    "in1520": "모스크바 대공국의 노브고로드",
+    "todayCountry": "러시아",
+    "artKey": "rus"
   },
   {
     "id": "original_city_164",
@@ -7317,11 +7509,14 @@
     "countryCode": "RU",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "모스크바 대공국의 도읍 모스크바",
+    "todayCountry": "러시아",
+    "artKey": "landmark-moscow"
   },
   {
     "id": "original_city_163",
-    "name": "키에프",
+    "name": "키이우",
     "nameEn": "",
     "continent": "",
     "region": "동유럽",
@@ -7428,7 +7623,11 @@
     "countryCode": "UA",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "originalName": "키에프",
+    "in1520": "리투아니아 대공국의 키이우",
+    "todayCountry": "우크라이나",
+    "artKey": "rus"
   },
   {
     "id": "original_city_162",
@@ -7540,7 +7739,10 @@
     "countryCode": "PL",
     "coordinateSource": "GeoNames",
     "hasLibrary": true,
-    "libraryRegion": "북유럽"
+    "libraryRegion": "북유럽",
+    "in1520": "마조비아 공국의 도읍 바르샤바",
+    "todayCountry": "폴란드",
+    "artKey": "eu-nw-in"
   },
   {
     "id": "original_city_161",
@@ -7651,7 +7853,10 @@
     "countryCode": "HU",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "헝가리 왕국의 도읍 부다",
+    "todayCountry": "헝가리",
+    "artKey": "eu-nw-in"
   },
   {
     "id": "original_city_160",
@@ -7767,11 +7972,14 @@
     "countryCode": "SE",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "덴마크와 다투던 스웨덴의 스톡홀름",
+    "todayCountry": "스웨덴",
+    "artKey": "eu-nord"
   },
   {
     "id": "original_city_159",
-    "name": "비즈비",
+    "name": "비스뷔",
     "nameEn": "",
     "continent": "",
     "region": "북유럽",
@@ -7883,7 +8091,11 @@
     "countryCode": "SE",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "originalName": "비즈비",
+    "in1520": "덴마크 왕국의 비스뷔",
+    "todayCountry": "스웨덴",
+    "artKey": "eu-nord"
   },
   {
     "id": "original_city_158",
@@ -8000,7 +8212,10 @@
     "countryCode": "DK",
     "coordinateSource": "GeoNames",
     "hasLibrary": true,
-    "libraryRegion": "북유럽"
+    "libraryRegion": "북유럽",
+    "in1520": "덴마크 왕국의 도읍 코펜하겐",
+    "todayCountry": "덴마크",
+    "artKey": "eu-nord"
   },
   {
     "id": "original_city_157",
@@ -8116,7 +8331,10 @@
     "countryCode": "NO",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "덴마크 왕이 다스린 노르웨이 왕국",
+    "todayCountry": "노르웨이",
+    "artKey": "eu-nord"
   },
   {
     "id": "original_city_156",
@@ -8232,7 +8450,10 @@
     "countryCode": "NO",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "노르웨이 왕국 · 한자 상인들의 무역소",
+    "todayCountry": "노르웨이",
+    "artKey": "eu-nord"
   },
   {
     "id": "original_city_155",
@@ -8343,7 +8564,10 @@
     "countryCode": "RS",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "헝가리 왕국의 요새 도시",
+    "todayCountry": "세르비아",
+    "artKey": "eu-nw-in"
   },
   {
     "id": "original_city_154",
@@ -8454,11 +8678,14 @@
     "countryCode": "RO",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "오스만에 조공한 왈라키아 공국",
+    "todayCountry": "루마니아",
+    "artKey": "ottoman"
   },
   {
     "id": "original_city_153",
-    "name": "라구사",
+    "name": "두브로브니크",
     "nameEn": "",
     "continent": "",
     "region": "발칸",
@@ -8570,7 +8797,11 @@
     "countryCode": "HR",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "originalName": "라구사",
+    "in1520": "오스만에 조공한 라구사 공화국",
+    "todayCountry": "크로아티아",
+    "artKey": "eu-s-port"
   },
   {
     "id": "original_city_152",
@@ -8689,11 +8920,14 @@
     "countryCode": "GR",
     "coordinateSource": "GeoNames",
     "hasLibrary": true,
-    "libraryRegion": "지중해"
+    "libraryRegion": "지중해",
+    "in1520": "오스만 제국의 아테네",
+    "todayCountry": "그리스",
+    "artKey": "landmark-athens"
   },
   {
     "id": "original_city_151",
-    "name": "살로니카",
+    "name": "테살로니키",
     "nameEn": "",
     "continent": "",
     "region": "발칸",
@@ -8805,11 +9039,15 @@
     "countryCode": "GR",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "originalName": "살로니카",
+    "in1520": "오스만 제국의 셀라니크",
+    "todayCountry": "그리스",
+    "artKey": "ottoman"
   },
   {
     "id": "original_city_150",
-    "name": "간디아",
+    "name": "이라클리온",
     "nameEn": "",
     "continent": "",
     "region": "발칸",
@@ -8961,11 +9199,15 @@
     "countryCode": "GR",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "originalName": "간디아",
+    "in1520": "베네치아 공화국의 칸디아",
+    "todayCountry": "그리스",
+    "artKey": "eu-s-port"
   },
   {
     "id": "original_city_149",
-    "name": "파마가스타",
+    "name": "파마구스타",
     "nameEn": "",
     "continent": "",
     "region": "발칸",
@@ -9077,7 +9319,11 @@
     "countryCode": "CY",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "originalName": "파마가스타",
+    "in1520": "베네치아 공화국의 파마구스타",
+    "todayCountry": "키프로스",
+    "artKey": "eu-s-port"
   },
   {
     "id": "original_city_148",
@@ -9193,11 +9439,14 @@
     "countryCode": "BG",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "오스만 제국의 바르나",
+    "todayCountry": "불가리아",
+    "artKey": "ottoman"
   },
   {
     "id": "original_city_147",
-    "name": "몬카스트로",
+    "name": "빌호로드드니스트로우스키",
     "nameEn": "",
     "continent": "",
     "region": "발칸",
@@ -9309,7 +9558,11 @@
     "countryCode": "UA",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "originalName": "몬카스트로",
+    "in1520": "오스만 제국의 아케르만",
+    "todayCountry": "우크라이나",
+    "artKey": "ottoman"
   },
   {
     "id": "alexandria",
@@ -9426,7 +9679,10 @@
     "countryCode": "EG",
     "coordinateSource": "GeoNames",
     "hasLibrary": true,
-    "libraryRegion": "중근동·북아프리카"
+    "libraryRegion": "중근동·북아프리카",
+    "in1520": "오스만 제국의 항구 알렉산드리아",
+    "todayCountry": "이집트",
+    "artKey": "ottoman"
   },
   {
     "id": "original_city_145",
@@ -9574,7 +9830,10 @@
     "countryCode": "EG",
     "coordinateSource": "GeoNames",
     "hasLibrary": true,
-    "libraryRegion": "중근동·북아프리카"
+    "libraryRegion": "중근동·북아프리카",
+    "in1520": "오스만 제국이 막 차지한 카이로",
+    "todayCountry": "이집트",
+    "artKey": "landmark-cairo"
   },
   {
     "id": "original_city_144",
@@ -9685,7 +9944,10 @@
     "countryCode": "EG",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "오스만 제국의 아스완",
+    "todayCountry": "이집트",
+    "artKey": "ottoman"
   },
   {
     "id": "tripoli",
@@ -9801,7 +10063,10 @@
     "countryCode": "LY",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "스페인 점령지",
+    "todayCountry": "리비아",
+    "artKey": "maghreb"
   },
   {
     "id": "original_city_142",
@@ -9920,7 +10185,10 @@
     "countryCode": "TN",
     "coordinateSource": "GeoNames",
     "hasLibrary": true,
-    "libraryRegion": "중근동·북아프리카"
+    "libraryRegion": "중근동·북아프리카",
+    "in1520": "하프스 왕조의 수도",
+    "todayCountry": "튀니지",
+    "artKey": "maghreb"
   },
   {
     "id": "original_city_141",
@@ -10036,7 +10304,10 @@
     "countryCode": "DZ",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "바르바로스가 다스린 항구 · 앞바다에 스페인 요새",
+    "todayCountry": "알제리",
+    "artKey": "maghreb"
   },
   {
     "id": "original_city_140",
@@ -10152,7 +10423,10 @@
     "countryCode": "ES",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "포르투갈 점령지",
+    "todayCountry": "스페인",
+    "artKey": "maghreb"
   },
   {
     "id": "original_city_139",
@@ -10268,11 +10542,14 @@
     "countryCode": "MA",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "포르투갈이 부순 항구 안파의 폐허",
+    "todayCountry": "모로코",
+    "artKey": "maghreb"
   },
   {
     "id": "original_city_138",
-    "name": "아조레스",
+    "name": "폰타델가다",
     "nameEn": "",
     "continent": "",
     "region": "서아프리카",
@@ -10384,11 +10661,15 @@
     "countryCode": "PT",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "originalName": "아조레스",
+    "in1520": "포르투갈 식민지 아조레스 제도",
+    "todayCountry": "포르투갈",
+    "artKey": "atl-isle"
   },
   {
     "id": "original_city_137",
-    "name": "마디라",
+    "name": "푼샬",
     "nameEn": "",
     "continent": "",
     "region": "서아프리카",
@@ -10500,7 +10781,11 @@
     "countryCode": "PT",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "originalName": "마디라",
+    "in1520": "포르투갈 식민지 마데이라섬의 설탕 도시",
+    "todayCountry": "포르투갈",
+    "artKey": "atl-isle"
   },
   {
     "id": "original_city_136",
@@ -10616,7 +10901,10 @@
     "countryCode": "ES",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "스페인 식민지 카나리아 제도",
+    "todayCountry": "스페인",
+    "artKey": "atl-isle"
   },
   {
     "id": "original_city_135",
@@ -10732,11 +11020,14 @@
     "countryCode": "MR",
     "coordinateSource": "manual-historical",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "포르투갈 섬 요새와 무역소",
+    "todayCountry": "모리타니",
+    "artKey": "guinea"
   },
   {
     "id": "original_city_134",
-    "name": "베르데 곶",
+    "name": "다카르",
     "nameEn": "",
     "continent": "",
     "region": "서아프리카",
@@ -10848,11 +11139,15 @@
     "countryCode": "SN",
     "coordinateSource": "manual-historical",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "originalName": "베르데 곶",
+    "in1520": "졸로프 제국 땅 레부족 고기잡이 마을",
+    "todayCountry": "세네갈",
+    "artKey": "guinea"
   },
   {
     "id": "original_city_133",
-    "name": "시에라리온",
+    "name": "프리타운",
     "nameEn": "",
     "continent": "",
     "region": "서아프리카",
@@ -10964,7 +11259,11 @@
     "countryCode": "SL",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "originalName": "시에라리온",
+    "in1520": "템네족·불롬족 바닷가 마을",
+    "todayCountry": "시에라리온",
+    "artKey": "guinea"
   },
   {
     "id": "original_city_132",
@@ -11075,11 +11374,14 @@
     "countryCode": "ML",
     "coordinateSource": "manual-historical",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "송가이 제국의 소금 광산",
+    "todayCountry": "말리",
+    "artKey": "sahel"
   },
   {
     "id": "original_city_131",
-    "name": "통북투",
+    "name": "팀북투",
     "nameEn": "",
     "continent": "",
     "region": "서아프리카",
@@ -11186,7 +11488,11 @@
     "countryCode": "ML",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "originalName": "통북투",
+    "in1520": "송가이 제국의 학문 도시 팀북투",
+    "todayCountry": "말리",
+    "artKey": "landmark-timbuktu"
   },
   {
     "id": "original_city_130",
@@ -11297,7 +11603,10 @@
     "countryCode": "ML",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "송가이 제국의 수도",
+    "todayCountry": "말리",
+    "artKey": "sahel"
   },
   {
     "id": "original_city_129",
@@ -11408,7 +11717,10 @@
     "countryCode": "ML",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "송가이 제국의 상업 도시 젠네",
+    "todayCountry": "말리",
+    "artKey": "landmark-djenne"
   },
   {
     "id": "original_city_128",
@@ -11519,11 +11831,14 @@
     "countryCode": "NG",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "하우사족의 카노 왕국",
+    "todayCountry": "나이지리아",
+    "artKey": "sahel"
   },
   {
     "id": "original_city_127",
-    "name": "산호르헤",
+    "name": "엘미나",
     "nameEn": "",
     "continent": "",
     "region": "서아프리카",
@@ -11635,11 +11950,15 @@
     "countryCode": "GH",
     "coordinateSource": "manual-historical",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "originalName": "산호르헤",
+    "in1520": "에과푸 왕국 땅 · 포르투갈 성채와 무역소",
+    "todayCountry": "가나",
+    "artKey": "guinea"
   },
   {
     "id": "original_city_126",
-    "name": "이페",
+    "name": "일레이페",
     "nameEn": "",
     "continent": "",
     "region": "서아프리카",
@@ -11753,11 +12072,15 @@
     "countryCode": "NG",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "originalName": "이페",
+    "in1520": "요루바족의 이페 왕국",
+    "todayCountry": "나이지리아",
+    "artKey": "af-forest"
   },
   {
     "id": "original_city_125",
-    "name": "산토메",
+    "name": "상투메",
     "nameEn": "",
     "continent": "",
     "region": "서아프리카",
@@ -11869,7 +12192,11 @@
     "countryCode": "ST",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "originalName": "산토메",
+    "in1520": "포르투갈 식민지 · 설탕 농장 섬",
+    "todayCountry": "상투메프린시페",
+    "artKey": "atl-isle"
   },
   {
     "id": "original_city_124",
@@ -11985,11 +12312,14 @@
     "countryCode": "AO",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "콩고 왕국의 조개껍데기 돈 섬",
+    "todayCountry": "앙골라",
+    "artKey": "af-south"
   },
   {
     "id": "original_city_123",
-    "name": "케이프",
+    "name": "케이프타운",
     "nameEn": "",
     "continent": "",
     "region": "서아프리카",
@@ -12101,7 +12431,11 @@
     "countryCode": "ZA",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "originalName": "케이프",
+    "in1520": "코이코이족의 목초지",
+    "todayCountry": "남아프리카공화국",
+    "artKey": "landmark-cape-town"
   },
   {
     "id": "original_city_122",
@@ -12217,11 +12551,14 @@
     "countryCode": "MZ",
     "coordinateSource": "manual-historical",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "포르투갈 요새와 스와힐리 무역 마을",
+    "todayCountry": "모잠비크",
+    "artKey": "swahili"
   },
   {
     "id": "original_city_121",
-    "name": "모잠비크",
+    "name": "모잠비크섬",
     "nameEn": "",
     "continent": "",
     "region": "동아프리카",
@@ -12333,11 +12670,15 @@
     "countryCode": "MZ",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "originalName": "모잠비크",
+    "in1520": "포르투갈 요새와 배가 쉬어 가는 항구",
+    "todayCountry": "모잠비크",
+    "artKey": "swahili"
   },
   {
     "id": "original_city_120",
-    "name": "짐바브웨",
+    "name": "그레이트짐바브웨",
     "nameEn": "",
     "continent": "",
     "region": "동아프리카",
@@ -12444,7 +12785,11 @@
     "countryCode": "ZW",
     "coordinateSource": "manual-historical",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "originalName": "짐바브웨",
+    "in1520": "사람들이 떠난 돌 성터",
+    "todayCountry": "짐바브웨",
+    "artKey": "landmark-great-zimbabwe"
   },
   {
     "id": "original_city_119",
@@ -12560,7 +12905,10 @@
     "countryCode": "TZ",
     "coordinateSource": "manual-historical",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "킬와 술탄국 · 포르투갈에 조공",
+    "todayCountry": "탄자니아",
+    "artKey": "swahili"
   },
   {
     "id": "original_city_118",
@@ -12676,7 +13024,10 @@
     "countryCode": "TZ",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "잔지바르 섬 왕국 · 포르투갈에 조공",
+    "todayCountry": "탄자니아",
+    "artKey": "swahili"
   },
   {
     "id": "mombasa",
@@ -12792,7 +13143,10 @@
     "countryCode": "KE",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "몸바사 술탄국 · 포르투갈에 맞섬",
+    "todayCountry": "케냐",
+    "artKey": "swahili"
   },
   {
     "id": "original_city_116",
@@ -12908,7 +13262,10 @@
     "countryCode": "KE",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "포르투갈과 손잡은 말린디 술탄국",
+    "todayCountry": "케냐",
+    "artKey": "swahili"
   },
   {
     "id": "original_city_115",
@@ -13024,7 +13381,10 @@
     "countryCode": "SO",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "모가디슈 술탄국",
+    "todayCountry": "소말리아",
+    "artKey": "swahili"
   },
   {
     "id": "original_city_114",
@@ -13135,7 +13495,10 @@
     "countryCode": "ET",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "에티오피아 제국의 옛 도읍이자 성지",
+    "todayCountry": "에티오피아",
+    "artKey": "landmark-aksum"
   },
   {
     "id": "original_city_113",
@@ -13246,7 +13609,10 @@
     "countryCode": "SD",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "푼지 술탄국 땅 · 아직 도시가 없음",
+    "todayCountry": "수단",
+    "artKey": "nubia"
   },
   {
     "id": "istanbul",
@@ -13412,11 +13778,14 @@
     ],
     "naturalEarthNote": "보스포루스 유럽측 고정",
     "hasLibrary": true,
-    "libraryRegion": "중근동·북아프리카"
+    "libraryRegion": "중근동·북아프리카",
+    "in1520": "오스만 제국의 수도 이스탄불",
+    "todayCountry": "튀르키예",
+    "artKey": "landmark-istanbul"
   },
   {
     "id": "original_city_111",
-    "name": "카파",
+    "name": "페오도시야",
     "nameEn": "",
     "continent": "",
     "region": "흑해",
@@ -13528,11 +13897,15 @@
     "countryCode": "UA",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "originalName": "카파",
+    "in1520": "오스만 제국의 카파",
+    "todayCountry": "우크라이나",
+    "artKey": "ottoman"
   },
   {
     "id": "original_city_110",
-    "name": "타나",
+    "name": "아조우",
     "nameEn": "",
     "continent": "",
     "region": "흑해",
@@ -13644,11 +14017,15 @@
     "countryCode": "RU",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "originalName": "타나",
+    "in1520": "오스만 제국의 아자크",
+    "todayCountry": "러시아",
+    "artKey": "ottoman"
   },
   {
     "id": "original_city_109",
-    "name": "시높",
+    "name": "시노프",
     "nameEn": "",
     "continent": "",
     "region": "흑해",
@@ -13760,11 +14137,15 @@
     "countryCode": "TR",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "originalName": "시높",
+    "in1520": "오스만 제국의 시노페",
+    "todayCountry": "튀르키예",
+    "artKey": "ottoman"
   },
   {
     "id": "original_city_108",
-    "name": "트레비존드",
+    "name": "트라브존",
     "nameEn": "",
     "continent": "",
     "region": "흑해",
@@ -13876,11 +14257,15 @@
     "countryCode": "TR",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "originalName": "트레비존드",
+    "in1520": "오스만 제국의 트레비존드",
+    "todayCountry": "튀르키예",
+    "artKey": "ottoman"
   },
   {
     "id": "original_city_107",
-    "name": "앙고라",
+    "name": "앙카라",
     "nameEn": "Angora",
     "continent": "",
     "region": "근동",
@@ -13987,11 +14372,15 @@
     "countryCode": "TR",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "originalName": "앙고라",
+    "in1520": "오스만 제국의 앙고라",
+    "todayCountry": "튀르키예",
+    "artKey": "ottoman"
   },
   {
     "id": "original_city_106",
-    "name": "안티오키아",
+    "name": "안타키아",
     "nameEn": "",
     "continent": "",
     "region": "근동",
@@ -14105,7 +14494,11 @@
     "countryCode": "TR",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "originalName": "안티오키아",
+    "in1520": "오스만 제국의 안티오키아",
+    "todayCountry": "튀르키예",
+    "artKey": "ottoman"
   },
   {
     "id": "original_city_105",
@@ -14217,7 +14610,10 @@
     "countryCode": "SY",
     "coordinateSource": "GeoNames",
     "hasLibrary": true,
-    "libraryRegion": "중근동·북아프리카"
+    "libraryRegion": "중근동·북아프리카",
+    "in1520": "오스만 제국의 다마스쿠스",
+    "todayCountry": "시리아",
+    "artKey": "ottoman"
   },
   {
     "id": "original_city_104",
@@ -14329,7 +14725,10 @@
     "countryCode": "IL",
     "coordinateSource": "GeoNames",
     "hasLibrary": true,
-    "libraryRegion": "중근동·북아프리카"
+    "libraryRegion": "중근동·북아프리카",
+    "in1520": "오스만 제국의 예루살렘",
+    "todayCountry": "이스라엘·팔레스타인",
+    "artKey": "landmark-jerusalem"
   },
   {
     "id": "original_city_103",
@@ -14445,7 +14844,10 @@
     "countryCode": "LB",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "오스만 제국의 베이루트",
+    "todayCountry": "레바논",
+    "artKey": "ottoman"
   },
   {
     "id": "original_city_102",
@@ -14556,7 +14958,10 @@
     "countryCode": "SA",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "오스만 제국의 보호를 받은 메디나",
+    "todayCountry": "사우디아라비아",
+    "artKey": "arab-in"
   },
   {
     "id": "original_city_101",
@@ -14656,7 +15061,10 @@
     "countryCode": "SA",
     "coordinateSource": "GeoNames",
     "hasLibrary": true,
-    "libraryRegion": "중근동·북아프리카"
+    "libraryRegion": "중근동·북아프리카",
+    "in1520": "오스만 제국의 보호를 받은 메카",
+    "todayCountry": "사우디아라비아",
+    "artKey": "landmark-mecca"
   },
   {
     "id": "original_city_100",
@@ -14772,7 +15180,10 @@
     "countryCode": "YE",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "타히르 왕조의 아덴",
+    "todayCountry": "예멘",
+    "artKey": "arab-port"
   },
   {
     "id": "original_city_099",
@@ -14888,7 +15299,10 @@
     "countryCode": "OM",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "호르무즈 왕국 항구 · 포르투갈에 조공",
+    "todayCountry": "오만",
+    "artKey": "arab-port"
   },
   {
     "id": "original_city_098",
@@ -15004,7 +15418,10 @@
     "countryCode": "IQ",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "아랍 부족장이 다스린 바스라",
+    "todayCountry": "이라크",
+    "artKey": "arab-port"
   },
   {
     "id": "original_city_097",
@@ -15152,7 +15569,10 @@
     "countryCode": "IQ",
     "coordinateSource": "GeoNames",
     "hasLibrary": true,
-    "libraryRegion": "중근동·북아프리카"
+    "libraryRegion": "중근동·북아프리카",
+    "in1520": "사파비 왕조 페르시아의 바그다드",
+    "todayCountry": "이라크",
+    "artKey": "persia"
   },
   {
     "id": "original_city_096",
@@ -15268,7 +15688,10 @@
     "countryCode": "IR",
     "coordinateSource": "manual-historical",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "호르무즈 왕국 · 포르투갈에 조공",
+    "todayCountry": "이란",
+    "artKey": "arab-port"
   },
   {
     "id": "original_city_095",
@@ -15379,7 +15802,10 @@
     "countryCode": "IR",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "사파비 왕조 페르시아의 시라즈",
+    "todayCountry": "이란",
+    "artKey": "persia"
   },
   {
     "id": "original_city_094",
@@ -15527,7 +15953,10 @@
     "countryCode": "IR",
     "coordinateSource": "GeoNames",
     "hasLibrary": true,
-    "libraryRegion": "중근동·북아프리카"
+    "libraryRegion": "중근동·북아프리카",
+    "in1520": "사파비 왕조 페르시아의 이스파한",
+    "todayCountry": "이란",
+    "artKey": "persia"
   },
   {
     "id": "original_city_093",
@@ -15638,7 +16067,10 @@
     "countryCode": "IR",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "사파비 왕조 페르시아의 수도 타브리즈",
+    "todayCountry": "이란",
+    "artKey": "persia"
   },
   {
     "id": "original_city_092",
@@ -15786,7 +16218,10 @@
     "countryCode": "UZ",
     "coordinateSource": "GeoNames",
     "hasLibrary": true,
-    "libraryRegion": "중앙아시아"
+    "libraryRegion": "중앙아시아",
+    "in1520": "우즈베크족 샤이바니 왕조의 사마르칸트",
+    "todayCountry": "우즈베키스탄",
+    "artKey": "landmark-samarkand"
   },
   {
     "id": "original_city_091",
@@ -15897,7 +16332,10 @@
     "countryCode": "UZ",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "우즈베크족 샤이바니 왕조의 타슈켄트",
+    "todayCountry": "우즈베키스탄",
+    "artKey": "persia"
   },
   {
     "id": "original_city_090",
@@ -16008,7 +16446,10 @@
     "countryCode": "UZ",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "우즈베크계 호라즘 칸국의 땅",
+    "todayCountry": "우즈베키스탄",
+    "artKey": "persia"
   },
   {
     "id": "original_city_089",
@@ -16119,7 +16560,10 @@
     "countryCode": "AF",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "사파비 왕조 페르시아의 헤라트",
+    "todayCountry": "아프가니스탄",
+    "artKey": "persia"
   },
   {
     "id": "original_city_088",
@@ -16230,7 +16674,10 @@
     "countryCode": "AF",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "티무르의 후손 바부르가 다스린 카불",
+    "todayCountry": "아프가니스탄",
+    "artKey": "persia"
   },
   {
     "id": "original_city_087",
@@ -16341,7 +16788,10 @@
     "countryCode": "CN",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "야르칸드 칸국의 카슈가르",
+    "todayCountry": "중국",
+    "artKey": "tarim"
   },
   {
     "id": "original_city_086",
@@ -16452,7 +16902,10 @@
     "countryCode": "CN",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "만수르 칸이 다스린 투르판",
+    "todayCountry": "중국",
+    "artKey": "tarim"
   },
   {
     "id": "original_city_085",
@@ -16563,7 +17016,10 @@
     "countryCode": "CN",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "티베트 파그모두 왕조의 라사",
+    "todayCountry": "중국",
+    "artKey": "landmark-lhasa"
   },
   {
     "id": "original_city_084",
@@ -16674,7 +17130,10 @@
     "countryCode": "RU",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "아스트라한 칸국의 하지타르한",
+    "todayCountry": "러시아",
+    "artKey": "tatar"
   },
   {
     "id": "original_city_083",
@@ -16785,11 +17244,14 @@
     "countryCode": "RU",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "카잔 칸국의 수도 카잔",
+    "todayCountry": "러시아",
+    "artKey": "tatar"
   },
   {
     "id": "original_city_082",
-    "name": "시빌",
+    "name": "토볼스크",
     "nameEn": "",
     "continent": "",
     "region": "중앙아시아",
@@ -16896,7 +17358,11 @@
     "countryCode": "RU",
     "coordinateSource": "manual-historical",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "originalName": "시빌",
+    "in1520": "시비르 칸국 땅 · 도시는 아직 없음",
+    "todayCountry": "러시아",
+    "artKey": "tatar"
   },
   {
     "id": "original_city_081",
@@ -17007,11 +17473,14 @@
     "countryCode": "MN",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "오이라트 유목민의 초원 · 도시 없음",
+    "todayCountry": "몽골",
+    "artKey": "steppe"
   },
   {
     "id": "original_city_080",
-    "name": "카라코름",
+    "name": "하르호린",
     "nameEn": "",
     "continent": "",
     "region": "중앙아시아",
@@ -17118,7 +17587,11 @@
     "countryCode": "MN",
     "coordinateSource": "manual-historical",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "originalName": "카라코름",
+    "in1520": "몽골 초원 · 카라코룸은 옛터만 남음",
+    "todayCountry": "몽골",
+    "artKey": "steppe"
   },
   {
     "id": "original_city_079",
@@ -17266,7 +17739,10 @@
     "countryCode": "IN",
     "coordinateSource": "GeoNames",
     "hasLibrary": true,
-    "libraryRegion": "인도"
+    "libraryRegion": "인도",
+    "in1520": "로디 왕조의 옛 도읍 델리",
+    "todayCountry": "인도",
+    "artKey": "landmark-delhi"
   },
   {
     "id": "original_city_078",
@@ -17377,7 +17853,10 @@
     "countryCode": "PK",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "로디 왕조 델리 술탄국의 라호르",
+    "todayCountry": "파키스탄",
+    "artKey": "ind-n"
   },
   {
     "id": "original_city_077",
@@ -17524,7 +18003,10 @@
     "countryCode": "IN",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "구자라트 술탄국의 도읍",
+    "todayCountry": "인도",
+    "artKey": "ind-n"
   },
   {
     "id": "original_city_076",
@@ -17640,7 +18122,10 @@
     "countryCode": "IN",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "구자라트 술탄국의 항구",
+    "todayCountry": "인도",
+    "artKey": "ind-n"
   },
   {
     "id": "original_city_075",
@@ -17787,7 +18272,10 @@
     "countryCode": "IN",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "아딜 샤 왕조 비자푸르 술탄국의 도읍",
+    "todayCountry": "인도",
+    "artKey": "ind-n"
   },
   {
     "id": "original_city_074",
@@ -17903,11 +18391,14 @@
     "countryCode": "IN",
     "coordinateSource": "manual-historical",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "포르투갈 점령지 고아",
+    "todayCountry": "인도",
+    "artKey": "ind-s-port"
   },
   {
     "id": "original_city_073",
-    "name": "카나놀",
+    "name": "칸누르",
     "nameEn": "",
     "continent": "",
     "region": "인도",
@@ -18019,11 +18510,15 @@
     "countryCode": "IN",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "originalName": "카나놀",
+    "in1520": "콜라티리 왕국 카나놀 · 포르투갈 요새",
+    "todayCountry": "인도",
+    "artKey": "ind-s-port"
   },
   {
     "id": "calicut",
-    "name": "캘리컷",
+    "name": "코지코드",
     "nameEn": "",
     "continent": "",
     "region": "인도",
@@ -18135,11 +18630,15 @@
     "countryCode": "IN",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "originalName": "캘리컷",
+    "in1520": "자모린 왕의 캘리컷 · 포르투갈 요새와 무역소",
+    "todayCountry": "인도",
+    "artKey": "ind-s-port"
   },
   {
     "id": "original_city_071",
-    "name": "비자야나가르",
+    "name": "함피",
     "nameEn": "",
     "continent": "",
     "region": "인도",
@@ -18246,11 +18745,15 @@
     "countryCode": "IN",
     "coordinateSource": "manual-historical",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "originalName": "비자야나가르",
+    "in1520": "비자야나가르 제국의 도읍",
+    "todayCountry": "인도",
+    "artKey": "landmark-hampi"
   },
   {
     "id": "original_city_070",
-    "name": "코친",
+    "name": "코치",
     "nameEn": "",
     "continent": "",
     "region": "인도",
@@ -18362,7 +18865,11 @@
     "countryCode": "IN",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "originalName": "코친",
+    "in1520": "코친 왕국 · 포르투갈 요새와 무역소",
+    "todayCountry": "인도",
+    "artKey": "ind-s-port"
   },
   {
     "id": "original_city_069",
@@ -18478,7 +18985,10 @@
     "countryCode": "LK",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "코테 왕국 · 포르투갈 요새와 무역소",
+    "todayCountry": "스리랑카",
+    "artKey": "ind-s-port"
   },
   {
     "id": "original_city_068",
@@ -18589,11 +19099,14 @@
     "countryCode": "IN",
     "coordinateSource": "manual-historical",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "쿠트브 샤 왕조 골콘다 술탄국의 요새",
+    "todayCountry": "인도",
+    "artKey": "ind-n"
   },
   {
     "id": "original_city_067",
-    "name": "캘커타",
+    "name": "콜카타",
     "nameEn": "",
     "continent": "",
     "region": "인도",
@@ -18705,11 +19218,15 @@
     "countryCode": "IN",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "originalName": "캘커타",
+    "in1520": "벵골 술탄국의 강가 마을들",
+    "todayCountry": "인도",
+    "artKey": "ind-n"
   },
   {
     "id": "original_city_066",
-    "name": "아바",
+    "name": "인와",
     "nameEn": "",
     "continent": "",
     "region": "동남아시아",
@@ -18816,7 +19333,11 @@
     "countryCode": "MM",
     "coordinateSource": "manual-historical",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "originalName": "아바",
+    "in1520": "아바 왕국의 도읍 아바",
+    "todayCountry": "미얀마",
+    "artKey": "sea-bud"
   },
   {
     "id": "malacca",
@@ -18932,11 +19453,14 @@
     "countryCode": "MY",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "포르투갈 점령지 말라카",
+    "todayCountry": "말레이시아",
+    "artKey": "sea-isle"
   },
   {
     "id": "original_city_064",
-    "name": "리골",
+    "name": "나콘시탐마랏",
     "nameEn": "",
     "continent": "",
     "region": "동남아시아",
@@ -19048,7 +19572,11 @@
     "countryCode": "TH",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "originalName": "리골",
+    "in1520": "아유타야에 딸린 나라 리골",
+    "todayCountry": "타이",
+    "artKey": "sea-bud"
   },
   {
     "id": "original_city_063",
@@ -19164,7 +19692,10 @@
     "countryCode": "TH",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "아유타야 왕국의 도읍",
+    "todayCountry": "타이",
+    "artKey": "sea-bud"
   },
   {
     "id": "original_city_062",
@@ -19275,11 +19806,14 @@
     "countryCode": "KH",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "크메르 왕국의 강가 옛 도읍",
+    "todayCountry": "캄보디아",
+    "artKey": "sea-bud"
   },
   {
     "id": "original_city_061",
-    "name": "유에",
+    "name": "후에",
     "nameEn": "",
     "continent": "",
     "region": "동남아시아",
@@ -19393,11 +19927,15 @@
     "countryCode": "VN",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "originalName": "유에",
+    "in1520": "대월 레 왕조의 남쪽 고을 순화",
+    "todayCountry": "베트남",
+    "artKey": "viet"
   },
   {
     "id": "original_city_060",
-    "name": "교도",
+    "name": "하이퐁",
     "nameEn": "",
     "continent": "",
     "region": "동남아시아",
@@ -19509,11 +20047,15 @@
     "countryCode": "VN",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "originalName": "교도",
+    "in1520": "대월 레 왕조의 북쪽 바닷가 마을",
+    "todayCountry": "베트남",
+    "artKey": "viet"
   },
   {
     "id": "original_city_059",
-    "name": "아친",
+    "name": "반다아체",
     "nameEn": "",
     "continent": "",
     "region": "동남아시아",
@@ -19625,11 +20167,15 @@
     "countryCode": "ID",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "originalName": "아친",
+    "in1520": "새로 일어선 아체 술탄국의 항구",
+    "todayCountry": "인도네시아",
+    "artKey": "sea-isle"
   },
   {
     "id": "original_city_058",
-    "name": "파렌반",
+    "name": "팔렘방",
     "nameEn": "",
     "continent": "",
     "region": "동남아시아",
@@ -19741,11 +20287,15 @@
     "countryCode": "ID",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "originalName": "파렌반",
+    "in1520": "수마트라의 무역 항구 팔렘방",
+    "todayCountry": "인도네시아",
+    "artKey": "sea-isle"
   },
   {
     "id": "original_city_057",
-    "name": "반탐",
+    "name": "세랑",
     "nameEn": "",
     "continent": "",
     "region": "동남아시아",
@@ -19857,7 +20407,11 @@
     "countryCode": "ID",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "originalName": "반탐",
+    "in1520": "순다 왕국의 후추 항구 반텐",
+    "todayCountry": "인도네시아",
+    "artKey": "sea-isle"
   },
   {
     "id": "original_city_056",
@@ -19973,11 +20527,14 @@
     "countryCode": "ID",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "자와 동쪽의 이슬람 항구",
+    "todayCountry": "인도네시아",
+    "artKey": "sea-isle"
   },
   {
     "id": "original_city_055",
-    "name": "브루나이",
+    "name": "반다르스리브가완",
     "nameEn": "",
     "continent": "",
     "region": "동남아시아",
@@ -20089,7 +20646,11 @@
     "countryCode": "BN",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "originalName": "브루나이",
+    "in1520": "브루나이 술탄국의 물 위 도읍",
+    "todayCountry": "브루나이",
+    "artKey": "sea-isle"
   },
   {
     "id": "original_city_054",
@@ -20205,11 +20766,14 @@
     "countryCode": "ID",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "정향을 파는 테르나테 술탄국",
+    "todayCountry": "인도네시아",
+    "artKey": "sea-isle"
   },
   {
     "id": "original_city_053",
-    "name": "암보이나",
+    "name": "암본",
     "nameEn": "",
     "continent": "",
     "region": "동남아시아",
@@ -20321,11 +20885,15 @@
     "countryCode": "ID",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "originalName": "암보이나",
+    "in1520": "포르투갈 배가 들르는 향료 섬 마을",
+    "todayCountry": "인도네시아",
+    "artKey": "sea-isle"
   },
   {
     "id": "original_city_052",
-    "name": "오문",
+    "name": "마카오",
     "nameEn": "",
     "continent": "",
     "region": "동북아시아",
@@ -20437,11 +21005,15 @@
     "countryCode": "MO",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "originalName": "오문",
+    "in1520": "명나라 광둥의 작은 어촌",
+    "todayCountry": "중국",
+    "artKey": "ming-port"
   },
   {
     "id": "original_city_051",
-    "name": "광주",
+    "name": "광저우",
     "nameEn": "",
     "continent": "",
     "region": "동북아시아",
@@ -20590,11 +21162,15 @@
     "countryCode": "CN",
     "coordinateSource": "GeoNames",
     "hasLibrary": true,
-    "libraryRegion": "중국·조선"
+    "libraryRegion": "중국·조선",
+    "originalName": "광주",
+    "in1520": "명나라 광둥의 큰 무역 항구 광주",
+    "todayCountry": "중국",
+    "artKey": "ming-port"
   },
   {
     "id": "original_city_050",
-    "name": "천주",
+    "name": "취안저우",
     "nameEn": "",
     "continent": "",
     "region": "동북아시아",
@@ -20742,11 +21318,15 @@
     "countryCode": "CN",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "originalName": "천주",
+    "in1520": "명나라 푸젠의 옛 무역 항구 천주",
+    "todayCountry": "중국",
+    "artKey": "ming-port"
   },
   {
     "id": "original_city_049",
-    "name": "복주",
+    "name": "푸저우",
     "nameEn": "",
     "continent": "",
     "region": "동북아시아",
@@ -20858,11 +21438,15 @@
     "countryCode": "CN",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "originalName": "복주",
+    "in1520": "명나라 푸젠의 중심 도시 복주",
+    "todayCountry": "중국",
+    "artKey": "ming-port"
   },
   {
     "id": "original_city_048",
-    "name": "항주",
+    "name": "항저우",
     "nameEn": "",
     "continent": "",
     "region": "동북아시아",
@@ -21011,11 +21595,15 @@
     "countryCode": "CN",
     "coordinateSource": "GeoNames",
     "hasLibrary": true,
-    "libraryRegion": "중국·조선"
+    "libraryRegion": "중국·조선",
+    "originalName": "항주",
+    "in1520": "명나라 저장의 중심 도시 항주",
+    "todayCountry": "중국",
+    "artKey": "ming-port"
   },
   {
     "id": "original_city_047",
-    "name": "남경",
+    "name": "난징",
     "nameEn": "",
     "continent": "",
     "region": "동북아시아",
@@ -21164,11 +21752,15 @@
     "countryCode": "CN",
     "coordinateSource": "GeoNames",
     "hasLibrary": true,
-    "libraryRegion": "중국·조선"
+    "libraryRegion": "중국·조선",
+    "originalName": "남경",
+    "in1520": "명나라 둘째 수도 남경",
+    "todayCountry": "중국",
+    "artKey": "ming-in"
   },
   {
     "id": "original_city_046",
-    "name": "무창",
+    "name": "우한",
     "nameEn": "",
     "continent": "",
     "region": "동북아시아",
@@ -21311,11 +21903,15 @@
     "countryCode": "CN",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "originalName": "무창",
+    "in1520": "명나라 양쯔강 가의 큰 도시 무창",
+    "todayCountry": "중국",
+    "artKey": "ming-in"
   },
   {
     "id": "original_city_045",
-    "name": "계림",
+    "name": "구이린",
     "nameEn": "",
     "continent": "",
     "region": "동북아시아",
@@ -21422,11 +22018,15 @@
     "countryCode": "CN",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "originalName": "계림",
+    "in1520": "명나라 광시의 중심 도시 계림",
+    "todayCountry": "중국",
+    "artKey": "ming-in"
   },
   {
     "id": "original_city_044",
-    "name": "운남",
+    "name": "쿤밍",
     "nameEn": "",
     "continent": "",
     "region": "동북아시아",
@@ -21533,11 +22133,15 @@
     "countryCode": "CN",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "originalName": "운남",
+    "in1520": "명나라 윈난의 중심 도시 운남",
+    "todayCountry": "중국",
+    "artKey": "ming-in"
   },
   {
     "id": "original_city_043",
-    "name": "성도",
+    "name": "청두",
     "nameEn": "",
     "continent": "",
     "region": "동북아시아",
@@ -21645,11 +22249,15 @@
     "countryCode": "CN",
     "coordinateSource": "GeoNames",
     "hasLibrary": true,
-    "libraryRegion": "중국·조선"
+    "libraryRegion": "중국·조선",
+    "originalName": "성도",
+    "in1520": "명나라 쓰촨의 중심 도시 성도",
+    "todayCountry": "중국",
+    "artKey": "ming-in"
   },
   {
     "id": "original_city_042",
-    "name": "감주",
+    "name": "장예",
     "nameEn": "",
     "continent": "",
     "region": "동북아시아",
@@ -21756,11 +22364,15 @@
     "countryCode": "CN",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "originalName": "감주",
+    "in1520": "명나라 서쪽 끝 요새 도시 감주",
+    "todayCountry": "중국",
+    "artKey": "tarim"
   },
   {
     "id": "original_city_041",
-    "name": "서안",
+    "name": "시안",
     "nameEn": "",
     "continent": "",
     "region": "동북아시아",
@@ -21904,11 +22516,15 @@
     "countryCode": "CN",
     "coordinateSource": "GeoNames",
     "hasLibrary": true,
-    "libraryRegion": "중국·조선"
+    "libraryRegion": "중국·조선",
+    "originalName": "서안",
+    "in1520": "명나라 서북의 큰 성벽 도시 서안",
+    "todayCountry": "중국",
+    "artKey": "ming-in"
   },
   {
     "id": "original_city_040",
-    "name": "개봉",
+    "name": "카이펑",
     "nameEn": "",
     "continent": "",
     "region": "동북아시아",
@@ -22052,11 +22668,15 @@
     "countryCode": "CN",
     "coordinateSource": "GeoNames",
     "hasLibrary": true,
-    "libraryRegion": "중국·조선"
+    "libraryRegion": "중국·조선",
+    "originalName": "개봉",
+    "in1520": "명나라 허난의 중심 도시 개봉",
+    "todayCountry": "중국",
+    "artKey": "ming-in"
   },
   {
     "id": "original_city_039",
-    "name": "제남",
+    "name": "지난",
     "nameEn": "",
     "continent": "",
     "region": "동북아시아",
@@ -22199,11 +22819,15 @@
     "countryCode": "CN",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "originalName": "제남",
+    "in1520": "명나라 산둥의 중심 도시 제남",
+    "todayCountry": "중국",
+    "artKey": "ming-in"
   },
   {
     "id": "original_city_038",
-    "name": "태원",
+    "name": "타이위안",
     "nameEn": "",
     "continent": "",
     "region": "동북아시아",
@@ -22310,11 +22934,15 @@
     "countryCode": "CN",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "originalName": "태원",
+    "in1520": "명나라 북쪽의 성벽 도시 태원",
+    "todayCountry": "중국",
+    "artKey": "ming-in"
   },
   {
     "id": "original_city_037",
-    "name": "북경",
+    "name": "베이징",
     "nameEn": "",
     "continent": "",
     "region": "동북아시아",
@@ -22458,11 +23086,15 @@
     "countryCode": "CN",
     "coordinateSource": "GeoNames",
     "hasLibrary": true,
-    "libraryRegion": "중국·조선"
+    "libraryRegion": "중국·조선",
+    "originalName": "북경",
+    "in1520": "명나라 수도 북경",
+    "todayCountry": "중국",
+    "artKey": "landmark-beijing"
   },
   {
     "id": "original_city_036",
-    "name": "요동",
+    "name": "다롄",
     "nameEn": "",
     "continent": "",
     "region": "동북아시아",
@@ -22574,11 +23206,15 @@
     "countryCode": "CN",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "originalName": "요동",
+    "in1520": "명나라 요동 땅 바닷가 마을",
+    "todayCountry": "중국",
+    "artKey": "ming-port"
   },
   {
     "id": "original_city_035",
-    "name": "한양",
+    "name": "서울",
     "nameEn": "",
     "continent": "",
     "region": "동북아시아",
@@ -22691,7 +23327,11 @@
     "countryCode": "KR",
     "coordinateSource": "GeoNames",
     "hasLibrary": true,
-    "libraryRegion": "중국·조선"
+    "libraryRegion": "중국·조선",
+    "originalName": "한양",
+    "in1520": "조선의 도읍 한양",
+    "todayCountry": "대한민국",
+    "artKey": "landmark-seoul"
   },
   {
     "id": "nagasaki",
@@ -22807,7 +23447,10 @@
     "countryCode": "JP",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "오무라 가문 땅의 작은 어촌",
+    "todayCountry": "일본",
+    "artKey": "japan"
   },
   {
     "id": "original_city_033",
@@ -22923,11 +23566,14 @@
     "countryCode": "JP",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "상인들이 꾸려 가는 무역 항구",
+    "todayCountry": "일본",
+    "artKey": "japan"
   },
   {
     "id": "original_city_032",
-    "name": "쿄토",
+    "name": "교토",
     "nameEn": "",
     "continent": "",
     "region": "동북아시아",
@@ -23035,7 +23681,11 @@
     "countryCode": "JP",
     "coordinateSource": "GeoNames",
     "hasLibrary": true,
-    "libraryRegion": "일본"
+    "libraryRegion": "일본",
+    "originalName": "쿄토",
+    "in1520": "무로마치 막부와 천황이 있는 도읍",
+    "todayCountry": "일본",
+    "artKey": "landmark-kyoto"
   },
   {
     "id": "original_city_031",
@@ -23151,11 +23801,14 @@
     "countryCode": "DO",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "스페인 식민 도시",
+    "todayCountry": "도미니카공화국",
+    "artKey": "carib"
   },
   {
     "id": "original_city_030",
-    "name": "산티아고",
+    "name": "산티아고데쿠바",
     "nameEn": "",
     "continent": "",
     "region": "서인도제도",
@@ -23267,7 +23920,11 @@
     "countryCode": "CU",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "originalName": "산티아고",
+    "in1520": "스페인 식민 도시",
+    "todayCountry": "쿠바",
+    "artKey": "carib"
   },
   {
     "id": "havana",
@@ -23383,11 +24040,14 @@
     "countryCode": "CU",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "스페인 초기 정착지",
+    "todayCountry": "쿠바",
+    "artKey": "carib"
   },
   {
     "id": "original_city_028",
-    "name": "자메이카",
+    "name": "킹스턴",
     "nameEn": "",
     "continent": "",
     "region": "서인도제도",
@@ -23499,7 +24159,11 @@
     "countryCode": "JM",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "originalName": "자메이카",
+    "in1520": "타이노족 땅 · 스페인이 차지한 섬",
+    "todayCountry": "자메이카",
+    "artKey": "carib"
   },
   {
     "id": "original_city_027",
@@ -23615,7 +24279,10 @@
     "countryCode": "PR",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "스페인 초기 정착지 카파라 곁",
+    "todayCountry": "푸에르토리코(미국령)",
+    "artKey": "carib"
   },
   {
     "id": "original_city_026",
@@ -23731,11 +24398,14 @@
     "countryCode": "MX",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "토토낙족 땅 · 스페인이 막 세운 정착지 곁",
+    "todayCountry": "멕시코",
+    "artKey": "meso"
   },
   {
     "id": "original_city_025",
-    "name": "테노치티틀란",
+    "name": "멕시코시티",
     "nameEn": "",
     "continent": "",
     "region": "중앙아메리카",
@@ -23910,10 +24580,12 @@
     "modernLocationName": "Mexico City",
     "countryCode": "MX",
     "coordinateSource": "GeoNames",
-    "displayOffsetCellsX": -0.85,
-    "displayOffsetCellsY": -0.45,
     "hasLibrary": true,
-    "libraryRegion": "아메리카"
+    "libraryRegion": "아메리카",
+    "originalName": "테노치티틀란",
+    "in1520": "아즈텍 제국의 수도 테노치티틀란",
+    "todayCountry": "멕시코",
+    "artKey": "landmark-mexico-city"
   },
   {
     "id": "original_city_024",
@@ -23931,7 +24603,7 @@
     "isOriginalCity": true,
     "originalIndex": 24,
     "originalCitySize": 2,
-    "displayOnMap": true,
+    "displayOnMap": false,
     "category": "도시",
     "access": "land",
     "canEnterFromSea": false,
@@ -24092,14 +24764,13 @@
     "modernLocationName": "Mexico City",
     "countryCode": "MX",
     "coordinateSource": "GeoNames",
-    "displayOffsetCellsX": 0.85,
-    "displayOffsetCellsY": 0.45,
     "hasLibrary": true,
-    "libraryRegion": "아메리카"
+    "libraryRegion": "아메리카",
+    "retired": true
   },
   {
     "id": "original_city_023",
-    "name": "투라스칼라",
+    "name": "틀락스칼라",
     "nameEn": "",
     "continent": "",
     "region": "중앙아메리카",
@@ -24206,11 +24877,15 @@
     "countryCode": "MX",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "originalName": "투라스칼라",
+    "in1520": "스페인 편에 선 틀락스칼라 연맹",
+    "todayCountry": "멕시코",
+    "artKey": "meso"
   },
   {
     "id": "original_city_022",
-    "name": "트라파",
+    "name": "틀라파",
     "nameEn": "",
     "continent": "",
     "region": "중앙아메리카",
@@ -24317,7 +24992,11 @@
     "countryCode": "MX",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "originalName": "트라파",
+    "in1520": "아즈텍 제국에 공물 바치던 틀라파",
+    "todayCountry": "멕시코",
+    "artKey": "meso"
   },
   {
     "id": "original_city_021",
@@ -24428,7 +25107,10 @@
     "countryCode": "MX",
     "coordinateSource": "manual-historical",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "사포텍족의 신성한 도시 미틀라",
+    "todayCountry": "멕시코",
+    "artKey": "meso"
   },
   {
     "id": "original_city_020",
@@ -24544,7 +25226,10 @@
     "countryCode": "MX",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "요페족이 살던 바닷가",
+    "todayCountry": "멕시코",
+    "artKey": "meso"
   },
   {
     "id": "original_city_019",
@@ -24662,11 +25347,14 @@
     "countryCode": "MX",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "마야족 도시 티호",
+    "todayCountry": "멕시코",
+    "artKey": "meso"
   },
   {
     "id": "original_city_018",
-    "name": "과테말라",
+    "name": "과테말라시티",
     "nameEn": "",
     "continent": "",
     "region": "중앙아메리카",
@@ -24773,11 +25461,15 @@
     "countryCode": "GT",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "originalName": "과테말라",
+    "in1520": "마야 계통 포코맘족 땅",
+    "todayCountry": "과테말라",
+    "artKey": "meso"
   },
   {
     "id": "original_city_017",
-    "name": "투르히요",
+    "name": "트루히요",
     "nameEn": "",
     "continent": "",
     "region": "중앙아메리카",
@@ -24889,7 +25581,11 @@
     "countryCode": "HN",
     "coordinateSource": "manual-historical",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "originalName": "투르히요",
+    "in1520": "페치족 등 원주민 마을",
+    "todayCountry": "온두라스",
+    "artKey": "meso"
   },
   {
     "id": "original_city_016",
@@ -25007,11 +25703,14 @@
     "countryCode": "NI",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "수티아바족 마을",
+    "todayCountry": "니카라과",
+    "artKey": "meso"
   },
   {
     "id": "original_city_015",
-    "name": "파나마",
+    "name": "파나마시티",
     "nameEn": "",
     "continent": "",
     "region": "중앙아메리카",
@@ -25123,7 +25822,11 @@
     "countryCode": "PA",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "originalName": "파나마",
+    "in1520": "스페인이 막 세운 도시 파나마",
+    "todayCountry": "파나마",
+    "artKey": "carib"
   },
   {
     "id": "original_city_014",
@@ -25239,7 +25942,10 @@
     "countryCode": "CO",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "타이로나족 마을",
+    "todayCountry": "콜롬비아",
+    "artKey": "tupi"
   },
   {
     "id": "original_city_013",
@@ -25357,7 +26063,10 @@
     "countryCode": "VE",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "카케티오족 마을",
+    "todayCountry": "베네수엘라",
+    "artKey": "tupi"
   },
   {
     "id": "original_city_012",
@@ -25473,11 +26182,14 @@
     "countryCode": "VE",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "스페인 수도사들의 선교 마을",
+    "todayCountry": "베네수엘라",
+    "artKey": "tupi"
   },
   {
     "id": "original_city_011",
-    "name": "페르남부쿠",
+    "name": "헤시피",
     "nameEn": "",
     "continent": "",
     "region": "남동아메리카",
@@ -25589,11 +26301,15 @@
     "countryCode": "BR",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "originalName": "페르남부쿠",
+    "in1520": "카에테족 땅 · 포르투갈 교역소 가까이",
+    "todayCountry": "브라질",
+    "artKey": "tupi"
   },
   {
     "id": "original_city_010",
-    "name": "바이앙",
+    "name": "사우바도르",
     "nameEn": "",
     "continent": "",
     "region": "남동아메리카",
@@ -25705,7 +26421,11 @@
     "countryCode": "BR",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "originalName": "바이앙",
+    "in1520": "투피남바족 마을",
+    "todayCountry": "브라질",
+    "artKey": "tupi"
   },
   {
     "id": "rio",
@@ -25821,7 +26541,10 @@
     "countryCode": "BR",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "투피남바족 마을",
+    "todayCountry": "브라질",
+    "artKey": "landmark-rio-de-janeiro"
   },
   {
     "id": "buenos_aires",
@@ -25937,7 +26660,10 @@
     "countryCode": "AR",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "케란디족이 오가던 초원",
+    "todayCountry": "아르헨티나",
+    "artKey": "pampa"
   },
   {
     "id": "original_city_007",
@@ -26048,7 +26774,10 @@
     "countryCode": "CO",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "무이스카족의 도시 바카타",
+    "todayCountry": "콜롬비아",
+    "artKey": "andes"
   },
   {
     "id": "original_city_006",
@@ -26159,7 +26888,10 @@
     "countryCode": "EC",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "잉카 제국의 도시 키토",
+    "todayCountry": "에콰도르",
+    "artKey": "andes"
   },
   {
     "id": "original_city_005",
@@ -26275,7 +27007,10 @@
     "countryCode": "PE",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "잉카 제국의 바닷가 도시",
+    "todayCountry": "페루",
+    "artKey": "andes"
   },
   {
     "id": "original_city_004",
@@ -26393,7 +27128,10 @@
     "countryCode": "PE",
     "coordinateSource": "manual-historical",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "잉카 제국이 다스린 치무 옛 수도",
+    "todayCountry": "페루",
+    "artKey": "landmark-chan-chan"
   },
   {
     "id": "lima",
@@ -26511,7 +27249,10 @@
     "countryCode": "PE",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "잉카 제국이 다스린 리막 골짜기",
+    "todayCountry": "페루",
+    "artKey": "andes"
   },
   {
     "id": "original_city_002",
@@ -26658,7 +27399,10 @@
     "countryCode": "PE",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "잉카 제국의 수도 쿠스코",
+    "todayCountry": "페루",
+    "artKey": "landmark-cusco"
   },
   {
     "id": "original_city_001",
@@ -26808,7 +27552,10 @@
     "countryCode": "PE",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "잉카 제국이 다스린 나스카 골짜기",
+    "todayCountry": "페루",
+    "artKey": "landmark-nazca"
   },
   {
     "id": "original_city_000",
@@ -26919,6 +27666,9 @@
     "countryCode": "BO",
     "coordinateSource": "GeoNames",
     "hasLibrary": false,
-    "libraryRegion": ""
+    "libraryRegion": "",
+    "in1520": "잉카 제국의 높은 산골 · 마을 없음",
+    "todayCountry": "볼리비아",
+    "artKey": "andes"
   }
 ]

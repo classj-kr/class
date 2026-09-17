@@ -28,10 +28,10 @@ assert.match(paris[0].intro, /왕권/);
 const istanbul = History.cityHistoryBook(city('istanbul', '이스탄불', '흑해', '중근동·북아프리카'));
 assert.match(istanbul.intro, /보스포루스/);
 
-const hanyang = History.cityHistoryBook(city('original_city_035', '한양', '동북아시아', '중국·조선'));
+const hanyang = History.cityHistoryBook(city('original_city_035', '서울', '동북아시아', '중국·조선'));
 assert.match(hanyang.sections.map((section) => section.text).join(' '), /한강/);
 
-const ordinary = History.contextualBooks(city('original_city_223', '오포르토', '이베리아', '이베리아'), shelfBooks('이베리아'));
+const ordinary = History.contextualBooks(city('original_city_223', '포르투', '이베리아', '이베리아'), shelfBooks('이베리아'));
 assert.equal(ordinary[0].contextKind, 'regionHistory');
 assert.equal(ordinary.some((book) => book.contextKind === 'cityHistory'), false);
 assert.equal(ordinary.length, 13);

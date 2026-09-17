@@ -45,12 +45,6 @@ const PORT_ENTRY_GAME_MINUTES = 360;
 const PORT_TRANSFER_GAME_MINUTES = 240;
 const RETURN_CITY_GAME_MINUTES = 120;
 const STARTING_MONEY = 5000;
-const MAX_WATER = 100;
-const MAX_FOOD = 100;
-const WATER_PER_GAME_DAY_SEA = 1.2;
-const FOOD_PER_GAME_DAY_SEA = 1.0;
-const WATER_PER_GAME_DAY_LAND = 1.8;
-const FOOD_PER_GAME_DAY_LAND = 1.2;
 const TICK_HZ = 20;
 const SNAPSHOT_HZ = 10;
 const NEARBY_RADIUS = 34 * TILE;
@@ -325,7 +319,6 @@ app.get('/health', (_req, res) => res.json({
   fatigueMinSpeedPercent: Math.round(Fatigue.MIN_SPEED_MULTIPLIER * 100),
   topStatusBar: ['date','latitudeLongitude','speed','fatigue'],
   bottomGuideWindow: true,
-  suppliesConsumeWithSharedClock: false,
   persistedStudentState: ['selectedStartCity', 'shipPort', 'missionStatus', 'finishRank', 'completionTime'],
   teacherControls: true,
   persistenceFile: store.filePath
@@ -1315,44 +1308,6 @@ function updateFatigue(p, dt) {
   });
 }
 
-function supplyBand(value) {
-  const n = Math.max(0, Number(value) || 0);
-  if (n <= 0) return 0;
-  if (n <= 10) return 10;
-  if (n <= 25) return 25;
-  if (n <= 50) return 50;
-  return 100;
-}
-
-function updateSupplies(p, nowGameMinutes) {
-  const now = Math.max(0, Number(nowGameMinutes) || 0);
-  if (!Number.isFinite(p.lastSupplyGameMinutes)) p.lastSupplyGameMinutes = now;
-  const elapsedMinutes = Math.max(0, Math.min(1440, now - p.lastSupplyGameMinutes));
-  p.lastSupplyGameMinutes = now;
-  if (!arrivalRaceTravelGate(p).ok) return;
-  if (!(elapsedMinutes > 0) || p.mode === 'city') return;
-  const days = elapsedMinutes / 1440;
-  const inLand = p.mode === 'land';
-  const transitionFactor = p.transition ? 0.55 : 1;
-  const waterRate = inLand ? WATER_PER_GAME_DAY_LAND : WATER_PER_GAME_DAY_SEA;
-  const foodRate = inLand ? FOOD_PER_GAME_DAY_LAND : FOOD_PER_GAME_DAY_SEA;
-  p.water = Math.max(0, (Number(p.water) || 0) - waterRate * days * transitionFactor);
-  p.food = Math.max(0, (Number(p.food) || 0) - foodRate * days * transitionFactor);
-
-  const nextWaterBand = supplyBand(p.water);
-  const nextFoodBand = supplyBand(p.food);
-  if (nextWaterBand < (p.waterBand ?? 100)) {
-    if (nextWaterBand === 0) setNotice(p, '식수가 모두 떨어졌습니다. 가까운 항구에서 보급하세요.');
-    else setNotice(p, `식수가 ${nextWaterBand}% 이하입니다. 항구에서 보급하세요.`);
-  }
-  if (nextFoodBand < (p.foodBand ?? 100)) {
-    if (nextFoodBand === 0) setNotice(p, '식량이 모두 떨어졌습니다. 가까운 항구에서 보급하세요.');
-    else setNotice(p, `식량이 ${nextFoodBand}% 이하입니다. 항구에서 보급하세요.`);
-  }
-  p.waterBand = nextWaterBand;
-  p.foodBand = nextFoodBand;
-}
-
 function publicPlayer(p, nowGameMinutes = classGameMinutes(p.roomCode)) {
   const activeMission = store.room(p.roomCode).activeMission;
   const currentCity = currentCityForPlayer(p);
@@ -1690,11 +1645,6 @@ io.on('connection', (socket) => {
         shipLandingY: null,
         fatigue: 0,
         money: STARTING_MONEY,
-        water: MAX_WATER,
-        food: MAX_FOOD,
-        waterBand: 100,
-        foodBand: 100,
-        lastSupplyGameMinutes: classMinutes
       };
       room.set(socket.id, player);
       socket.data.roomCode = roomCode;
@@ -1783,11 +1733,6 @@ io.on('connection', (socket) => {
         shipLandingY: null,
         fatigue: 0,
         money: STARTING_MONEY,
-        water: MAX_WATER,
-        food: MAX_FOOD,
-        waterBand: 100,
-        foodBand: 100,
-        lastSupplyGameMinutes: classMinutes
       };
       room.set(socket.id, player);
       socket.data.roomCode = roomCode;
@@ -1880,7 +1825,6 @@ io.on('connection', (socket) => {
   });
 
   socket.on('departPort', (_payload, ack = () => {}) => ack({ ok:false, error:'새 화면을 사용하려면 브라우저를 새로고침하세요.' }));
-  socket.on('resupply', (_payload, ack = () => {}) => ack({ ok:false, error:'보급 기능은 항구 전환과 별도로 제공하지 않습니다.' }));
   socket.on('startLandExpedition', (_payload, ack = () => {}) => ack({ ok:false, error:'항구에서 상륙 명령을 사용하세요.' }));
   socket.on('returnToCity', (_payload, ack = () => {}) => ack({ ok:false, error:'도시 입구에서 도시 들어가기를 사용하세요.' }));
 
@@ -2009,11 +1953,6 @@ io.on('connection', (socket) => {
     const spawn = safeSpawn(room, startPlace.point, 'sea');
     setModeAt(p, 'sea', spawn);
     p.fatigue = 0;
-    p.water = MAX_WATER;
-    p.food = MAX_FOOD;
-    p.waterBand = 100;
-    p.foodBand = 100;
-    p.lastSupplyGameMinutes = classGameMinutes(p.roomCode);
     p.activeMissionId = activeMission.id;
     p.mission = isArrivalRace(activeMission) ? `${activeMission.targetPlace.name} 도착` : `${mission.title} · ${mission.stages?.[0]?.label || '출발 준비'}`;
     p.missionStatus = progress.status;
@@ -2161,7 +2100,6 @@ io.on('connection', (socket) => {
       if (progress.status !== 'completed') progress.status = 'inProgress';
       p.missionStatus = progress.status;
       p.mission = `${mission.targetPlace.name} 도착`;
-      p.lastSupplyGameMinutes = startMinutes;
       stopPlayer(p);
       setNotice(p, `출발! ${mission.targetPlace.name}을 향해 이동하세요.`);
       io.to(p.id).emit('missionProgress', { mission:missionForStudent(mission), progress:publicProgress(progress, mission) });
@@ -2575,7 +2513,6 @@ setInterval(() => {
     const classMinutes = classGameMinutes(roomCode);
     for (const p of room.values()) {
       updateTimedTransition(p, classMinutes);
-      updateSupplies(p, classMinutes);
       movePlayer(p, dt);
       updateFatigue(p, dt);
       updateMissionProgress(roomCode, p);

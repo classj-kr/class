@@ -19,10 +19,10 @@ for (const city of cities) {
   for (const [x, y] of city.originalLandEntryCells) assert.equal(isLand(x, y), true, `${city.name}: land entry is sea`);
 }
 const byName = new Map(cities.map((c) => [c.name, c]));
-assert.equal(byName.get('한양').canEnterFromSea, true);
-assert.equal(byName.get('북경').canEnterFromSea, false);
+assert.equal(byName.get('서울').canEnterFromSea, true);
+assert.equal(byName.get('베이징').canEnterFromSea, false);
 assert.equal(byName.get('카이로').canEnterFromSea, false);
 assert.equal(byName.get('리스본').canEnterFromSea, true);
 assert.equal(byName.get('런던').canEnterFromSea, true);
 assert.equal(byName.get('포토시').canEnterFromSea, false);
-console.log(JSON.stringify({ok:true,cities:225,seaAccessible:134,landOnly:91,hanyang:'sea+land',beijing:'land-only'}));
+console.log(JSON.stringify({ok:true,cities:225,seaAccessible:134,landOnly:91,seoul:'sea+land',beijing:'land-only'}));

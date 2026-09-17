@@ -7,9 +7,9 @@ const blockedDirectSeaAccess = new Set([
   '에든버러',
   '아테네',
   '튀니스',
-  '이페',
-  '안티오키아',
-  '유에',
+  '일레이페',
+  '안타키아',
+  '후에',
   '메리다',
   '레온',
   '코로',
@@ -46,7 +46,7 @@ for (const name of blockedDirectSeaAccess) {
   assert.equal(city?.access, 'land', `${name}: 공개 카탈로그에서 육상 도시여야 함`);
 }
 
-for (const name of ['런던', '세빌리아', '함부르크', '한양']) {
+for (const name of ['런던', '세비야', '함부르크', '서울']) {
   const city = effectiveCities.find((place) => place.name === name);
   assert.equal(city?.canEnterFromSea, true, `${name}: 실제 하항의 입항 기능은 유지되어야 함`);
 }

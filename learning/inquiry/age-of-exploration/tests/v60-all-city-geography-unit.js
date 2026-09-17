@@ -18,15 +18,15 @@ const byName=new Map(cities.map(c=>[c.name,c]));
 const expected={
   '리스본':[38.72509,-9.1498], '런던':[51.50853,-0.12574],
   '악숨':[14.12109,38.72337], '말라카':[2.196,102.2405],
-  '광주':[23.11667,113.25], '산티아고':[20.02287,-75.82171],
+  '광저우':[23.11667,113.25], '산티아고데쿠바':[20.02287,-75.82171],
   '찬찬':[-8.111,-79.075], '아르킨':[20.601,-16.472]
 };
 for(const [name,[lat,lon]] of Object.entries(expected)){
   const c=byName.get(name); assert.ok(c,name);
   assert.ok(Math.abs(c.lat-lat)<1e-5&&Math.abs(c.lon-lon)<1e-5,`${name} 실제 좌표`);
 }
-assert.notEqual(byName.get('테노치티틀란').displayOffsetCellsX,undefined);
-assert.notEqual(byName.get('멕시코').displayOffsetCellsX,undefined);
+assert.equal(byName.get('멕시코').retired,true);
+assert.equal(byName.get('멕시코시티').displayOffsetCellsX,undefined);
 const terrain=fs.readFileSync('public/js/terrain.js','utf8');
 assert.match(terrain,/function usesNaturalEarthMask\(\) \{[\s\S]*return true;/);
 assert.doesNotMatch(terrain,/p\.lon >= 20 && p\.lon <= 55/);

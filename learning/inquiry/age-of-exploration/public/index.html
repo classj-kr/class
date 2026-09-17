@@ -72,7 +72,7 @@ button,input{font:inherit}button{border:1px solid var(--line);background:#17313b
 </div>
 <div id="hud" class="panel">
   <div class="statusMain">
-    <span class="statusItem" id="clockGroup"><small>날짜</small><b id="clock">1492년 1월 1일 00:00</b></span>
+    <span class="statusItem" id="clockGroup"><small>날짜</small><b id="clock">1520년 1월 1일 00:00</b></span>
     <span class="statusItem"><small>위도·경도</small><b id="coord">위치 계산 중</b></span>
     <span class="statusItem" title="게임 시간과 구면거리를 기준으로 계산한 실제 이동속력"><small>이동 속력</small><b id="speedValue">0 km/h</b></span>
     <span class="statusItem"><small>피로도</small><b id="fatigueValue">0%</b><span class="fatigueTrack"><span id="fatigueFill" class="fatigueFill"></span></span></span>
@@ -123,9 +123,9 @@ button,input{font:inherit}button{border:1px solid var(--line);background:#17313b
 <script src="/learn/world-voyage/js/terrain.js?v=74"></script>
 <script src="/learn/world-voyage/js/geo-motion.js?v=75"></script>
 <script src="/learn/world-voyage/js/ocean-current.js"></script>
-<script src="/learn/world-voyage/js/wind.js"></script>
+<script src="/learn/world-voyage/js/wind.js?v=77"></script>
 <script src="/learn/world-voyage/js/bgm.js?v=72"></script>
-<script src="/learn/world-voyage/js/library-history.js?v=76"></script>
+<script src="/learn/world-voyage/js/library-history.js?v=77"></script>
 <script>
 'use strict';
 const {WORLD_W:WW,WORLD_H:WH,TILE:TS,WORLD_PIXEL_W:SPAN,WORLD_PIXEL_H:MAP_H,SPEED:TERRAIN_SPEED,LABEL:TERRAIN_LABEL}=UW3Terrain;
@@ -198,7 +198,7 @@ const DESKTOP_MAP_ZOOM=1.0,MOBILE_MAP_ZOOM_PORTRAIT=.68,MOBILE_MAP_ZOOM_LANDSCAP
 function isPhoneMapView(){return (matchMedia('(pointer:coarse)').matches||innerWidth<=650)&&Math.min(innerWidth,innerHeight)<=650}
 function recommendedMapZoom(){if(!isPhoneMapView())return DESKTOP_MAP_ZOOM;return innerWidth>innerHeight?MOBILE_MAP_ZOOM_LANDSCAPE:MOBILE_MAP_ZOOM_PORTRAIT}
 function minimumMapZoom(){return isPhoneMapView()?MOBILE_MIN_ZOOM:DESKTOP_MIN_ZOOM}
-let world=null,assetsReady=false,joined=false,dpr=1,zoom=recommendedMapZoom(),zoomManuallyAdjusted=false,last=performance.now(),mode='sea',sessionMode='',entryMode='',lastLocalBlock=0,lastNoticeSeq=0,roomCodeCurrent='',lastModeMessage=null,lastTerrainMessage=null,lastFatigueBand=0,lastWaterBand=100,lastFoodBand=100,mapCities=[];
+let world=null,assetsReady=false,joined=false,dpr=1,zoom=recommendedMapZoom(),zoomManuallyAdjusted=false,last=performance.now(),mode='sea',sessionMode='',entryMode='',lastLocalBlock=0,lastNoticeSeq=0,roomCodeCurrent='',lastModeMessage=null,lastTerrainMessage=null,lastFatigueBand=0,mapCities=[];
 let self=null,serverSelf=null,remote=new Map(),lastSnapshotAt=0,activeMission=null,missionProgress=null,missionInteraction=null,cityInteraction=null,portInteraction=null,classGameMinutes=0,clockAnchorGameMinutes=0,clockAnchorAt=performance.now(),classSettings={paused:false,locked:false};
 let libraryCatalog={books:[]},cityCatalogById=new Map(),renderedCityId='',openedBookId='',finalQuizSubmitting=false,dismissedFinalQuizMissionId='',lastFinalQuizRenderKey='',finalQuizSaveTimer=0;
 let bgmState={muted:false,volume:.6,unlocked:false};
@@ -458,7 +458,7 @@ function renderCityView(){
   if(mode!=='city'||!serverSelf?.currentCityId)return;
   const cityId=serverSelf.currentCityId,catalogCity=cityCatalogById.get(String(cityId)),regionLabel=libraryRegionLabelForCity(catalogCity);
   libraryBtn.hidden=false;libraryBtn.textContent=`도서관 · ${regionLabel}`;
-  if(renderedCityId!==cityId){renderedCityId=cityId;cityScene.src=serverSelf.currentCityImage||catalogCity?.interiorImage||'';cityScene.alt=`${serverSelf.currentCityName||'도시'} 내부`;cityTitle.textContent=serverSelf.currentCityName||'도시';cityInfo.textContent=[serverSelf.currentCityRegion,'도시 내부',`${regionLabel} 도서관`].filter(Boolean).join(' · ');openedBookId='';closeLibrary()}
+  if(renderedCityId!==cityId){renderedCityId=cityId;cityScene.src=serverSelf.currentCityImage||catalogCity?.interiorImage||'';cityScene.alt=`${serverSelf.currentCityName||'도시'} 내부`;cityTitle.textContent=serverSelf.currentCityName||'도시';cityInfo.textContent=catalogCity?.in1520?`1520년 ${catalogCity.in1520} · 오늘날 ${catalogCity.todayCountry}`:[serverSelf.currentCityRegion,'도시 내부',`${regionLabel} 도서관`].filter(Boolean).join(' · ');openedBookId='';closeLibrary()}
 }
 function applyModeUI(){
   const busy=!!serverSelf?.transition,travelAllowed=canTravelNow(),inCity=mode==='city';
@@ -496,7 +496,7 @@ function applyModeUI(){
 }
 
 async function ungzipResponse(url){const response=await fetch(url);if(!response.ok)throw new Error('지도 파일을 받지 못했습니다.');if(!('DecompressionStream' in window))throw new Error('최신 Chrome이 필요합니다.');const ds=new DecompressionStream('gzip');return await new Response(response.body.pipeThrough(ds)).arrayBuffer()}
-Promise.all([ungzipResponse('/learn/world-voyage/assets/maps/world.cds.gz?v=58'),ungzipResponse('/learn/world-voyage/assets/maps/natural-earth-land-mask-v59.bin.gz?v=61'),naturalMapOverview.decode(),shipAtlas.decode(),windCloudAtlas.decode(),fetch('/learn/world-voyage/api/mission-catalog?v=61').then(r=>{if(!r.ok)throw new Error('도시 목록을 받지 못했습니다.');return r.json()}),fetch('/learn/world-voyage/data/library-books.json?v=68').then(r=>{if(!r.ok)throw new Error('도서관 자료를 받지 못했습니다.');return r.json()})]).then(([buf,landMask,_map,_s,_w,catalog,books])=>{world=new Uint16Array(buf);if(world.length!==WW*WH)throw new Error('지도 크기 불일치');UW3Terrain.setNaturalEarthLandMask(new Uint8Array(landMask));mapCities=(catalog.places||[]).filter(p=>p.isOriginalCity&&p.displayOnMap&&p.cityPoint);cityCatalogById=new Map((catalog.places||[]).filter(p=>p.isOriginalCity).map(p=>[p.id,p]));libraryCatalog=books||{books:[]};assetsReady=true;loading.remove()}).catch(err=>{loading.textContent='불러오기 실패: '+err.message;console.error(err)});
+Promise.all([ungzipResponse('/learn/world-voyage/assets/maps/world.cds.gz?v=58'),ungzipResponse('/learn/world-voyage/assets/maps/natural-earth-land-mask-v59.bin.gz?v=61'),naturalMapOverview.decode(),shipAtlas.decode(),windCloudAtlas.decode(),fetch('/learn/world-voyage/api/mission-catalog?v=78').then(r=>{if(!r.ok)throw new Error('도시 목록을 받지 못했습니다.');return r.json()}),fetch('/learn/world-voyage/data/library-books.json?v=68').then(r=>{if(!r.ok)throw new Error('도서관 자료를 받지 못했습니다.');return r.json()})]).then(([buf,landMask,_map,_s,_w,catalog,books])=>{world=new Uint16Array(buf);if(world.length!==WW*WH)throw new Error('지도 크기 불일치');UW3Terrain.setNaturalEarthLandMask(new Uint8Array(landMask));mapCities=(catalog.places||[]).filter(p=>p.isOriginalCity&&p.displayOnMap&&p.cityPoint);cityCatalogById=new Map((catalog.places||[]).filter(p=>p.isOriginalCity).map(p=>[p.id,p]));libraryCatalog=books||{books:[]};assetsReady=true;loading.remove()}).catch(err=>{loading.textContent='불러오기 실패: '+err.message;console.error(err)});
 
 socket.on('connect',()=>{net.textContent='● 서버 연결';net.className='good'});
 socket.on('disconnect',()=>{net.textContent='● 재연결 중';net.className='bad';startChoicePending=false;pendingStartChoice=null;startChoiceRollback=null;for(const card of missionPanel.querySelectorAll('.missionChoiceCard')){card.disabled=false;card.classList.remove('isSelecting')}if(awaitingStartChoice()){missionFeedback.className='bad';missionFeedback.textContent='서버 연결이 끊겼습니다. 재연결 후 다시 선택하세요.'}});
@@ -752,7 +752,7 @@ function drawExplorerAt(p,isMine,cw,ch){const s=screenPoint(p.x,p.y,cw,ch);if(s.
 function drawCityMarker(p,isMine,cw,ch){const s=screenPoint(p.x,p.y,cw,ch);ctx.save();ctx.fillStyle=isMine?'#ffe49a':'#fff';ctx.strokeStyle='#4b321c';ctx.lineWidth=2;ctx.beginPath();ctx.arc(s.x,s.y,7,0,Math.PI*2);ctx.fill();ctx.stroke();ctx.restore();drawNameLabel(s.x,s.y-2,p.name,isMine,'입항 중')}
 function drawActor(p,isMine,cw,ch){if(p.mode==='city')return;if(p.missionCompleted||Number(p.finishRank)>0)drawFinishedUfoAt(p,isMine,cw,ch);else if(p.mode==='land')drawExplorerAt(p,isMine,cw,ch);else drawShipAt(p,isMine,cw,ch)}
 function drawPlayers(cw,ch){const now=performance.now(),mine={...self,mode,name:self.name,finishRank:missionProgress?.finishRank||serverSelf?.finishRank,speedBoostMultiplier:completionBoost()};for(const p of remote.values()){const t=Math.min(1,(now-p.received)/120);p.x=wrapX(p.fromX+dxWrap(p.targetX,p.fromX)*t);p.y=p.fromY+(p.targetY-p.fromY)*t;drawAnchoredShipAt(p,false,cw,ch)}drawAnchoredShipAt(mine,true,cw,ch);for(const p of remote.values())drawActor(p,false,cw,ch);drawActor(mine,true,cw,ch)}
-function formatGameDate(minutes){const base=Date.UTC(1492,0,1,0,0),d=new Date(base+Math.max(0,minutes||0)*60000);return `${d.getUTCFullYear()}년 ${d.getUTCMonth()+1}월 ${d.getUTCDate()}일 ${String(d.getUTCHours()).padStart(2,'0')}:${String(d.getUTCMinutes()).padStart(2,'0')}`}
+function formatGameDate(minutes){const base=Date.UTC(1520,0,1,0,0),d=new Date(base+Math.max(0,minutes||0)*60000);return `${d.getUTCFullYear()}년 ${d.getUTCMonth()+1}월 ${d.getUTCDate()}일 ${String(d.getUTCHours()).padStart(2,'0')}:${String(d.getUTCMinutes()).padStart(2,'0')}`}
 function formatSpeedKmh(value){const speed=Math.max(0,Number(value)||0);return `${speed>0&&speed<10?speed.toFixed(1):Math.round(speed)} km/h`}
 function updateHud(){
   if(!self)return;

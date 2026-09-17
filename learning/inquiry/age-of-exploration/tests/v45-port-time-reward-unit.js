@@ -6,7 +6,7 @@ const server=fs.readFileSync(path.join(__dirname,'..','server.js'),'utf8');
 const student=fs.readFileSync(path.join(__dirname,'..','public','index.html'),'utf8');
 const teacher=fs.readFileSync(path.join(__dirname,'..','public','teacher.html'),'utf8');
 const cities=JSON.parse(fs.readFileSync(path.join(__dirname,'..','data','catalog','original-cities.json'),'utf8'));
-const panama=cities.find(x=>x.name==='파나마');
+const panama=cities.find(x=>x.name==='파나마시티');
 assert.ok(panama,'파나마 도시 데이터 누락');
 const radius=1.10;
 const dist=(a,b)=>Math.hypot(a[0]-b[0],a[1]-b[1]);
