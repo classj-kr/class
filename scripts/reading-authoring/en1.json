@@ -1,0 +1,1354 @@
+[
+  {
+    "id": "E1-01",
+    "topicTitle": "고양이의 혀",
+    "questionType": "content_match",
+    "passageText": "Cats are meat eaters. Unlike people, they cannot taste sweet things. A cat's tongue does not have the right parts for sweet tastes. So a cookie does not taste sweet to a cat.",
+    "promptText": "윗글의 내용과 일치하는 것은?",
+    "choices": [
+      "고양이는 달콤한 음식을 먹어도 단 줄 모릅니다.",
+      "고양이의 혀에는 뒤쪽으로 휜 작은 가시가 많습니다.",
+      "고양이는 혀끝으로 물을 살짝 끌어올려 마십니다.",
+      "고양이는 혀로 털을 핥아 몸을 깨끗이 합니다."
+    ],
+    "correctIndex": 0,
+    "explanation": "'Unlike people, they cannot taste sweet things.'는 고양이가 사람과 달리 단맛을 느끼지 못한다는 뜻입니다. 그래서 과자를 먹어도 달게 느끼지 않는다고 했습니다. 혀의 작은 가시, 혀끝으로 물을 마시는 방법, 혀로 하는 털 손질은 맞는 사실이지만 이 글에는 나오지 않습니다.",
+    "translation": "고양이는 고기를 먹는 동물입니다. 사람과 달리 고양이는 단맛을 느끼지 못합니다. 고양이의 혀에는 단맛을 느끼는 부분이 제대로 갖추어져 있지 않습니다. 그래서 고양이는 과자를 먹어도 달다고 느끼지 않습니다.",
+    "vocab": [
+      {
+        "word": "meat eater",
+        "meaning": "고기를 먹는 동물"
+      },
+      {
+        "word": "unlike",
+        "meaning": "~와 달리"
+      },
+      {
+        "word": "taste",
+        "meaning": "맛을 느끼다; ~한 맛이 나다; 맛"
+      },
+      {
+        "word": "sweet",
+        "meaning": "단, 달콤한"
+      },
+      {
+        "word": "tongue",
+        "meaning": "혀"
+      },
+      {
+        "word": "right",
+        "meaning": "알맞은, 제대로 된"
+      }
+    ]
+  },
+  {
+    "id": "E1-02",
+    "topicTitle": "개의 코",
+    "questionType": "answerable_question",
+    "passageText": "When a dog sniffs, air goes into its nose through the front. When it breathes out, the air leaves through small slits on the sides. So its breath does not blow away the smells in front of it.",
+    "promptText": "윗글을 읽고 답할 수 있는 질문은?",
+    "choices": [
+      "개가 냄새를 맡을 때 내쉬는 숨은 어디로 나갑니까?",
+      "개의 코 무늬는 왜 개마다 서로 다릅니까?",
+      "개는 두 콧구멍으로 어떻게 냄새가 나는 쪽을 알아냅니까?",
+      "개의 코는 왜 대개 촉촉하게 젖어 있습니까?"
+    ],
+    "correctIndex": 0,
+    "explanation": "'When it breathes out, the air leaves through small slits on the sides.'는 개가 숨을 내쉬면 공기가 코 양옆의 작은 틈으로 나간다는 뜻입니다. 그래서 냄새를 맡을 때 내쉬는 숨이 어디로 나가는지는 답할 수 있습니다. 코 무늬가 개마다 다른 까닭, 두 콧구멍으로 냄새가 나는 쪽을 알아내는 방법, 코가 젖어 있는 까닭은 이 글에 나오지 않습니다.",
+    "translation": "개가 냄새를 맡을 때 공기는 코의 앞쪽으로 들어갑니다. 숨을 내쉴 때에는 코 양옆의 작은 틈으로 공기가 나갑니다. 그래서 개가 내쉰 숨이 코앞의 냄새를 날려 보내지 않습니다.",
+    "vocab": [
+      {
+        "word": "sniff",
+        "meaning": "냄새를 맡다, 코를 킁킁거리다"
+      },
+      {
+        "word": "through",
+        "meaning": "~을 통해"
+      },
+      {
+        "word": "breathe out",
+        "meaning": "숨을 내쉬다"
+      },
+      {
+        "word": "leave",
+        "meaning": "나가다, 떠나다"
+      },
+      {
+        "word": "slit",
+        "meaning": "가늘고 긴 틈"
+      },
+      {
+        "word": "side",
+        "meaning": "옆, 옆면"
+      },
+      {
+        "word": "breath",
+        "meaning": "숨, 입김"
+      },
+      {
+        "word": "blow away",
+        "meaning": "불어 날려 보내다"
+      }
+    ]
+  },
+  {
+    "id": "E1-03",
+    "topicTitle": "개구리의 피부",
+    "questionType": "not_mentioned",
+    "passageText": "Most frogs do not drink with their mouths. Water goes in through their skin, especially on the belly. Their skin feels wet and slippery. Many frogs take off their old skin and eat it.",
+    "promptText": "개구리의 피부에 대해 윗글에서 설명하지 않은 것은?",
+    "choices": [
+      "개구리는 피부로도 숨을 쉴 수 있습니다.",
+      "대부분의 개구리는 입이 아닌 피부로 물을 얻습니다.",
+      "개구리의 피부는 축축하고 미끌미끌합니다.",
+      "많은 개구리는 벗은 허물을 먹어 치웁니다."
+    ],
+    "correctIndex": 0,
+    "explanation": "'Water goes in through their skin, especially on the belly.'는 개구리의 몸에 물이 피부로, 특히 배 쪽 피부로 들어온다는 뜻입니다. 글에는 피부로 물을 얻는 것, 축축하고 미끌미끌한 피부, 벗은 허물을 먹는 것이 나옵니다. 개구리가 피부로도 숨을 쉬는 것은 맞는 사실이지만 이 글에는 나오지 않습니다.",
+    "translation": "대부분의 개구리는 입으로 물을 마시지 않습니다. 물은 피부를 통해, 특히 배 쪽 피부를 통해 몸으로 들어옵니다. 개구리의 피부는 만져 보면 축축하고 미끌미끌합니다. 많은 개구리는 낡은 허물을 벗겨 내고 그 허물을 먹습니다.",
+    "vocab": [
+      {
+        "word": "drink",
+        "meaning": "마시다"
+      },
+      {
+        "word": "go in",
+        "meaning": "안으로 들어가다"
+      },
+      {
+        "word": "through",
+        "meaning": "~을 통해"
+      },
+      {
+        "word": "especially",
+        "meaning": "특히"
+      },
+      {
+        "word": "belly",
+        "meaning": "배"
+      },
+      {
+        "word": "slippery",
+        "meaning": "미끌미끌한"
+      },
+      {
+        "word": "take off",
+        "meaning": "벗다, 벗겨 내다"
+      }
+    ]
+  },
+  {
+    "id": "E1-04",
+    "topicTitle": "토끼의 몸",
+    "questionType": "content_match",
+    "passageText": "A rabbit's eyes are on the sides of its head. So it can see almost all the way around. But it cannot see the spot right under its nose. It uses its whiskers and lips to find food there.",
+    "promptText": "윗글에서 알 수 있는 것은?",
+    "choices": [
+      "토끼는 코앞의 먹이를 수염과 입술로 찾습니다.",
+      "토끼의 앞니는 닳는 만큼 평생 계속 자라납니다.",
+      "토끼는 커다란 귀로 몸의 열을 밖으로 내보냅니다.",
+      "토끼는 뒷발로 땅을 쿵쿵 굴러 위험을 알립니다."
+    ],
+    "correctIndex": 0,
+    "explanation": "'It uses its whiskers and lips to find food there.'는 토끼가 눈으로 볼 수 없는 코 바로 밑의 먹이를 수염과 입술로 찾는다는 뜻입니다. 계속 자라는 앞니, 귀로 열을 내보내는 것, 뒷발로 위험을 알리는 것은 맞는 사실이지만 이 글에는 나오지 않습니다.",
+    "translation": "토끼의 눈은 머리 양옆에 붙어 있습니다. 그래서 토끼는 거의 온 둘레를 볼 수 있습니다. 하지만 코 바로 밑은 보지 못합니다. 그 자리에 있는 먹이는 수염과 입술로 찾습니다.",
+    "vocab": [
+      {
+        "word": "side",
+        "meaning": "옆, 옆면"
+      },
+      {
+        "word": "almost",
+        "meaning": "거의"
+      },
+      {
+        "word": "all the way around",
+        "meaning": "빙 둘러, 온 둘레를"
+      },
+      {
+        "word": "spot",
+        "meaning": "자리, 곳"
+      },
+      {
+        "word": "right under",
+        "meaning": "바로 밑에"
+      },
+      {
+        "word": "whisker",
+        "meaning": "(동물의) 수염"
+      },
+      {
+        "word": "lip",
+        "meaning": "입술"
+      }
+    ]
+  },
+  {
+    "id": "E1-05",
+    "topicTitle": "꽃밭의 나비",
+    "questionType": "content_match",
+    "passageText": "Butterflies need warm bodies to fly. On cool mornings, many of them sit in the sun with open wings. Their wings soak up the sun's heat. When their bodies are warm enough, they fly off to find flowers.",
+    "promptText": "윗글의 내용과 일치하는 것은?",
+    "choices": [
+      "나비는 몸이 따뜻해져야 날아오를 수 있습니다.",
+      "나비의 날개는 아주 작은 비늘로 덮여 있습니다.",
+      "나비는 발에 있는 감각 기관으로 맛을 봅니다.",
+      "나비는 번데기 시절을 거쳐 어른벌레가 됩니다."
+    ],
+    "correctIndex": 0,
+    "explanation": "'Butterflies need warm bodies to fly.'는 나비가 날려면 몸이 따뜻해야 한다는 뜻입니다. 그래서 쌀쌀한 아침에는 햇볕을 쬐어 몸을 데운 뒤에 날아간다고 했습니다. 날개의 작은 비늘, 발로 맛보기, 번데기 시절은 맞는 사실이지만 이 글에는 나오지 않습니다.",
+    "translation": "나비가 날려면 몸이 따뜻해야 합니다. 그래서 쌀쌀한 아침이면 많은 나비가 날개를 편 채 햇볕 아래 앉아 있습니다. 날개가 햇볕의 열을 받아들입니다. 몸이 충분히 따뜻해지면 나비는 꽃을 찾아 날아갑니다.",
+    "vocab": [
+      {
+        "word": "warm",
+        "meaning": "따뜻한"
+      },
+      {
+        "word": "cool",
+        "meaning": "서늘한, 쌀쌀한"
+      },
+      {
+        "word": "wing",
+        "meaning": "날개"
+      },
+      {
+        "word": "soak up",
+        "meaning": "빨아들이다, 흡수하다"
+      },
+      {
+        "word": "heat",
+        "meaning": "열"
+      },
+      {
+        "word": "enough",
+        "meaning": "충분히"
+      },
+      {
+        "word": "fly off",
+        "meaning": "날아가 버리다"
+      }
+    ]
+  },
+  {
+    "id": "E1-06",
+    "topicTitle": "마른 날의 달팽이",
+    "questionType": "vocabulary",
+    "passageText": "When the weather is dry, a snail goes into its shell. Then it seals the opening with a thin layer of dried slime. This keeps its body from drying out. When it rains, the snail comes out again.",
+    "promptText": "윗글에서 'seals'의 뜻으로 알맞은 것은?",
+    "choices": [
+      "틈이나 구멍을 막는 것입니다.",
+      "바닷가에 사는 물범입니다.",
+      "서류에 찍는 도장입니다.",
+      "약속을 확실히 하는 것입니다."
+    ],
+    "correctIndex": 0,
+    "explanation": "'Then it seals the opening with a thin layer of dried slime.'은 달팽이가 마른 점액으로 된 얇은 막으로 껍데기 입구를 막는다는 뜻입니다. 몸이 마르지 않도록 입구를 덮는 것이므로 여기서 'seals'는 틈이나 구멍을 막는다는 뜻입니다. 물범, 도장, 약속을 확실히 하는 것도 'seal'의 뜻이지만 이 글과는 맞지 않습니다.",
+    "translation": "날씨가 메마르면 달팽이는 껍데기 속으로 들어갑니다. 그런 다음 마른 점액으로 된 얇은 막으로 껍데기 입구를 꼭 막습니다. 이렇게 하면 몸이 마르지 않습니다. 비가 오면 달팽이는 다시 밖으로 나옵니다.",
+    "vocab": [
+      {
+        "word": "weather",
+        "meaning": "날씨"
+      },
+      {
+        "word": "dry",
+        "meaning": "마른, 메마른"
+      },
+      {
+        "word": "opening",
+        "meaning": "입구, 구멍"
+      },
+      {
+        "word": "layer",
+        "meaning": "막, 층"
+      },
+      {
+        "word": "slime",
+        "meaning": "끈적한 점액"
+      },
+      {
+        "word": "keep ~ from -ing",
+        "meaning": "~가 …하지 않게 하다"
+      },
+      {
+        "word": "dry out",
+        "meaning": "바싹 마르다"
+      },
+      {
+        "word": "come out",
+        "meaning": "밖으로 나오다"
+      }
+    ]
+  },
+  {
+    "id": "E1-07",
+    "topicTitle": "무당벌레가 몸을 지키는 법",
+    "questionType": "not_mentioned",
+    "passageText": "A ladybug has ways to stay safe. When it is in danger, it lets out a yellow liquid from its knees. The liquid tastes bad to birds. A ladybug may also lie still and play dead.",
+    "promptText": "무당벌레가 몸을 지키는 방법 가운데 윗글에서 설명하지 않은 것은?",
+    "choices": [
+      "무당벌레의 화려한 색은 새에게 먹지 말라는 신호입니다.",
+      "무당벌레는 다리 마디에서 노란 물을 내보냅니다.",
+      "무당벌레가 내보내는 노란 물은 새가 싫어하는 맛입니다.",
+      "무당벌레는 위험할 때 가만히 죽은 척하기도 합니다."
+    ],
+    "correctIndex": 0,
+    "explanation": "'The liquid tastes bad to birds.'는 무당벌레가 내보내는 물이 새에게 고약한 맛이 난다는 뜻입니다. 글에는 다리 마디에서 나오는 노란 물, 새가 싫어하는 그 물의 맛, 죽은 척하기가 나옵니다. 무당벌레의 화려한 색이 새에게 먹지 말라고 알리는 신호라는 것도 맞는 사실이지만 이 글에는 나오지 않습니다.",
+    "translation": "무당벌레에게는 몸을 지키는 방법이 있습니다. 위험에 처하면 무당벌레는 다리 마디에서 노란 물을 내보냅니다. 이 물은 새에게 고약한 맛이 납니다. 무당벌레는 꼼짝하지 않고 죽은 척하기도 합니다.",
+    "vocab": [
+      {
+        "word": "ladybug",
+        "meaning": "무당벌레"
+      },
+      {
+        "word": "stay safe",
+        "meaning": "안전하게 지내다"
+      },
+      {
+        "word": "in danger",
+        "meaning": "위험에 처한"
+      },
+      {
+        "word": "let out",
+        "meaning": "내보내다"
+      },
+      {
+        "word": "liquid",
+        "meaning": "액체, 물"
+      },
+      {
+        "word": "knee",
+        "meaning": "무릎, (곤충 다리의) 마디"
+      },
+      {
+        "word": "lie still",
+        "meaning": "꼼짝하지 않고 있다"
+      },
+      {
+        "word": "play dead",
+        "meaning": "죽은 척하다"
+      }
+    ]
+  },
+  {
+    "id": "E1-08",
+    "topicTitle": "귀뚜라미의 노래",
+    "questionType": "answerable_question",
+    "passageText": "A cricket's ears are not on its head. They are on its front legs, just below the knees. Male crickets sing to call females. The females hear the songs with their legs and walk toward the sound.",
+    "promptText": "윗글을 읽고 답할 수 있는 질문은?",
+    "choices": [
+      "암컷 귀뚜라미는 수컷의 노래를 들으면 어떻게 합니까?",
+      "수컷 귀뚜라미는 날개로 어떻게 소리를 냅니까?",
+      "귀뚜라미 소리는 기온에 따라 어떻게 달라집니까?",
+      "귀뚜라미는 추운 겨울을 어떤 모습으로 납니까?"
+    ],
+    "correctIndex": 0,
+    "explanation": "'The females hear the songs with their legs and walk toward the sound.'는 암컷이 다리로 노래를 듣고 소리가 나는 쪽으로 걸어간다는 뜻입니다. 그래서 암컷이 노래를 듣고 어떻게 하는지는 답할 수 있습니다. 날개로 소리를 내는 방법, 기온에 따라 달라지는 소리, 겨울을 나는 모습은 이 글에 나오지 않습니다.",
+    "translation": "귀뚜라미의 귀는 머리에 있지 않습니다. 귀는 앞다리의 무릎 바로 아래에 있습니다. 수컷 귀뚜라미는 암컷을 부르려고 노래합니다. 암컷은 다리로 그 노래를 듣고 소리가 나는 쪽으로 걸어갑니다.",
+    "vocab": [
+      {
+        "word": "cricket",
+        "meaning": "귀뚜라미"
+      },
+      {
+        "word": "front leg",
+        "meaning": "앞다리"
+      },
+      {
+        "word": "just below",
+        "meaning": "바로 아래에"
+      },
+      {
+        "word": "knee",
+        "meaning": "무릎"
+      },
+      {
+        "word": "male",
+        "meaning": "수컷"
+      },
+      {
+        "word": "female",
+        "meaning": "암컷"
+      },
+      {
+        "word": "toward",
+        "meaning": "~ 쪽으로"
+      }
+    ]
+  },
+  {
+    "id": "E1-09",
+    "topicTitle": "호박꽃",
+    "questionType": "not_mentioned",
+    "passageText": "A pumpkin plant has male flowers and female flowers. A female flower has a tiny pumpkin under its petals. Bees carry pollen from male flowers to female flowers. The male flowers usually open first.",
+    "promptText": "호박꽃에 대해 윗글에서 설명하지 않은 것은?",
+    "choices": [
+      "호박 수꽃은 암꽃보다 꽃줄기가 길고 가늡니다.",
+      "호박 암꽃의 꽃잎 밑에는 작은 호박이 붙어 있습니다.",
+      "벌이 호박 수꽃의 꽃가루를 암꽃으로 옮깁니다.",
+      "호박은 대개 수꽃이 암꽃보다 먼저 핍니다."
+    ],
+    "correctIndex": 0,
+    "explanation": "'A female flower has a tiny pumpkin under its petals.'는 암꽃의 꽃잎 밑에 아주 작은 호박이 달려 있다는 뜻입니다. 글에는 암꽃 밑의 작은 호박, 벌이 옮기는 꽃가루, 먼저 피는 수꽃이 나옵니다. 수꽃의 꽃줄기가 암꽃보다 길고 가는 것도 맞는 사실이지만 이 글에는 나오지 않습니다.",
+    "translation": "호박에는 수꽃과 암꽃이 따로 핍니다. 암꽃은 꽃잎 밑에 아주 작은 호박을 달고 있습니다. 벌은 수꽃의 꽃가루를 암꽃으로 옮겨 줍니다. 대개 수꽃이 먼저 핍니다.",
+    "vocab": [
+      {
+        "word": "pumpkin",
+        "meaning": "호박"
+      },
+      {
+        "word": "male flower",
+        "meaning": "수꽃"
+      },
+      {
+        "word": "female flower",
+        "meaning": "암꽃"
+      },
+      {
+        "word": "tiny",
+        "meaning": "아주 작은"
+      },
+      {
+        "word": "petal",
+        "meaning": "꽃잎"
+      },
+      {
+        "word": "carry",
+        "meaning": "옮기다, 나르다"
+      },
+      {
+        "word": "pollen",
+        "meaning": "꽃가루"
+      },
+      {
+        "word": "usually",
+        "meaning": "대개, 보통"
+      }
+    ]
+  },
+  {
+    "id": "E1-10",
+    "topicTitle": "올빼미의 사냥",
+    "questionType": "content_match",
+    "passageText": "Some owls have one ear higher than the other. A sound reaches the two ears a little differently. This helps the owl tell where a sound comes from. It can catch a mouse in the dark, even under snow.",
+    "promptText": "윗글에서 알 수 있는 것은?",
+    "choices": [
+      "어떤 올빼미는 두 귀의 높이가 서로 다릅니다.",
+      "올빼미는 고개를 뒤쪽까지 돌려 볼 수 있습니다.",
+      "올빼미는 날갯짓 소리를 거의 내지 않고 납니다.",
+      "올빼미는 소화하지 못한 뼈와 털을 뱉어 냅니다."
+    ],
+    "correctIndex": 0,
+    "explanation": "'Some owls have one ear higher than the other.'는 어떤 올빼미는 한쪽 귀가 다른 쪽보다 높이 달려 있다는 뜻입니다. 이 덕분에 소리가 어디에서 나는지 알아낸다고 했습니다. 고개를 뒤까지 돌리는 것, 소리 없이 나는 것, 뼈와 털을 뱉어 내는 것은 맞는 사실이지만 이 글에는 나오지 않습니다.",
+    "translation": "어떤 올빼미는 한쪽 귀가 다른 쪽 귀보다 높이 달려 있습니다. 그래서 같은 소리도 두 귀에 조금씩 다르게 들어옵니다. 이 덕분에 올빼미는 소리가 어디에서 나는지 알아낼 수 있습니다. 올빼미는 어둠 속에서도, 심지어 눈 밑에 숨은 쥐도 잡을 수 있습니다.",
+    "vocab": [
+      {
+        "word": "owl",
+        "meaning": "올빼미, 부엉이"
+      },
+      {
+        "word": "the other",
+        "meaning": "(둘 가운데) 다른 하나"
+      },
+      {
+        "word": "reach",
+        "meaning": "~에 이르다, 닿다"
+      },
+      {
+        "word": "differently",
+        "meaning": "다르게"
+      },
+      {
+        "word": "tell",
+        "meaning": "알아내다, 구별하다"
+      },
+      {
+        "word": "come from",
+        "meaning": "~에서 나오다"
+      },
+      {
+        "word": "even",
+        "meaning": "심지어, ~조차"
+      }
+    ]
+  },
+  {
+    "id": "E1-11",
+    "topicTitle": "코끼리의 피부",
+    "questionType": "vocabulary",
+    "passageText": "An elephant has thick skin, but bugs still bite it. When its back itches, the elephant rubs it against a tree trunk. Elephants also roll in mud. The dry mud helps keep bugs away.",
+    "promptText": "윗글에서 'trunk'의 뜻으로 알맞은 것은?",
+    "choices": [
+      "나무의 굵은 줄기입니다.",
+      "코끼리의 긴 코입니다.",
+      "사람 몸의 몸통입니다.",
+      "커다란 여행 가방입니다."
+    ],
+    "correctIndex": 0,
+    "explanation": "'When its back itches, the elephant rubs it against a tree trunk.'는 등이 가려우면 코끼리가 나무의 'trunk'에 등을 문지른다는 뜻입니다. 'tree trunk'는 나무의 굵은 줄기를 말하므로 여기서 'trunk'는 코끼리의 코가 아니라 나무줄기입니다. 코, 몸통, 여행 가방도 'trunk'의 뜻이지만 이 글과는 맞지 않습니다.",
+    "translation": "코끼리는 피부가 두껍지만 그래도 벌레에게 물립니다. 등이 가려우면 코끼리는 나무줄기에 등을 비빕니다. 코끼리는 진흙탕에서 뒹굴기도 합니다. 마른 진흙은 벌레가 가까이 오지 못하게 도와줍니다.",
+    "vocab": [
+      {
+        "word": "thick",
+        "meaning": "두꺼운"
+      },
+      {
+        "word": "bug",
+        "meaning": "벌레"
+      },
+      {
+        "word": "still",
+        "meaning": "그래도, 여전히"
+      },
+      {
+        "word": "bite",
+        "meaning": "물다"
+      },
+      {
+        "word": "itch",
+        "meaning": "가렵다"
+      },
+      {
+        "word": "rub A against B",
+        "meaning": "A를 B에 문지르다"
+      },
+      {
+        "word": "roll",
+        "meaning": "구르다, 뒹굴다"
+      },
+      {
+        "word": "keep ~ away",
+        "meaning": "~을 가까이 오지 못하게 하다"
+      }
+    ]
+  },
+  {
+    "id": "E1-12",
+    "topicTitle": "딱따구리",
+    "questionType": "answerable_question",
+    "passageText": "A woodpecker has a very long tongue. Inside its head, the tongue curls around the back of its skull. With it, the woodpecker pulls bugs out of holes in trees.",
+    "promptText": "윗글을 읽고 답할 수 있는 질문은?",
+    "choices": [
+      "딱따구리는 나무 구멍 속의 벌레를 어떻게 꺼내 먹습니까?",
+      "딱따구리는 나무를 세게 쪼아도 어떻게 견딥니까?",
+      "딱따구리는 나무줄기에 어떻게 몸을 버팁니까?",
+      "딱따구리는 봄에 왜 나무를 빠르게 두드립니까?"
+    ],
+    "correctIndex": 0,
+    "explanation": "'With it, the woodpecker pulls bugs out of holes in trees.'는 딱따구리가 긴 혀로 나무 구멍 속의 벌레를 끄집어낸다는 뜻입니다. 그래서 벌레를 어떻게 꺼내 먹는지는 답할 수 있습니다. 나무를 세게 쪼아도 견디는 방법, 나무줄기에 몸을 버티는 방법, 봄에 나무를 두드리는 까닭은 이 글에 나오지 않습니다.",
+    "translation": "딱따구리는 혀가 아주 깁니다. 머리 안에서 이 혀는 머리뼈 뒤쪽을 빙 둘러 감겨 있습니다. 딱따구리는 이 혀로 나무 구멍 속의 벌레를 끄집어냅니다.",
+    "vocab": [
+      {
+        "word": "woodpecker",
+        "meaning": "딱따구리"
+      },
+      {
+        "word": "tongue",
+        "meaning": "혀"
+      },
+      {
+        "word": "inside",
+        "meaning": "~의 안에서"
+      },
+      {
+        "word": "curl around",
+        "meaning": "~을 둘러 말리다"
+      },
+      {
+        "word": "the back of",
+        "meaning": "~의 뒤쪽"
+      },
+      {
+        "word": "skull",
+        "meaning": "머리뼈"
+      },
+      {
+        "word": "pull ~ out of",
+        "meaning": "…에서 ~을 끄집어내다"
+      },
+      {
+        "word": "bug",
+        "meaning": "벌레"
+      }
+    ]
+  },
+  {
+    "id": "E1-13",
+    "topicTitle": "소라게의 이사",
+    "questionType": "content_match",
+    "passageText": "A hermit crab has a soft belly that curls to one side. This curl helps it fit inside a spiral shell. Before it moves into a new shell, it feels the inside with its claws.",
+    "promptText": "윗글의 내용과 일치하는 것은?",
+    "choices": [
+      "소라게는 새 껍데기에 들기 전에 집게발로 속을 살핍니다.",
+      "소라게들은 크기대로 줄지어 차례로 껍데기를 바꾸기도 합니다.",
+      "어떤 소라게는 바다가 아닌 뭍에서 삽니다.",
+      "소라게는 몸이 자라면서 여러 번 허물을 벗습니다."
+    ],
+    "correctIndex": 0,
+    "explanation": "'Before it moves into a new shell, it feels the inside with its claws.'는 소라게가 새 껍데기로 옮기기 전에 집게발로 속을 더듬어 본다는 뜻입니다. 크기대로 줄지어 껍데기를 바꾸는 것, 뭍에서 사는 소라게, 허물벗기는 맞는 사실이지만 이 글에는 나오지 않습니다.",
+    "translation": "소라게의 배는 말랑하고 한쪽으로 휘어 말려 있습니다. 이렇게 휘어 있어서 나선 모양의 껍데기 속에 쏙 들어갈 수 있습니다. 새 껍데기로 옮기기 전에 소라게는 집게발로 껍데기 속을 더듬어 봅니다.",
+    "vocab": [
+      {
+        "word": "hermit crab",
+        "meaning": "소라게"
+      },
+      {
+        "word": "soft",
+        "meaning": "말랑한, 부드러운"
+      },
+      {
+        "word": "belly",
+        "meaning": "배"
+      },
+      {
+        "word": "curl",
+        "meaning": "휘어 말리다; 휘어 말린 모양"
+      },
+      {
+        "word": "fit inside",
+        "meaning": "~ 안에 꼭 맞게 들어가다"
+      },
+      {
+        "word": "spiral",
+        "meaning": "나선 모양의"
+      },
+      {
+        "word": "move into",
+        "meaning": "~로 옮겨 들어가다"
+      },
+      {
+        "word": "claw",
+        "meaning": "집게발"
+      }
+    ]
+  },
+  {
+    "id": "E1-14",
+    "topicTitle": "바다거북",
+    "questionType": "content_match",
+    "passageText": "Sea turtles lay their eggs in holes in the sand. The warmth of the sand decides if the babies are male or female. Warmer sand makes more females. Cooler sand makes more males.",
+    "promptText": "윗글에서 알 수 있는 것은?",
+    "choices": [
+      "모래가 따뜻할수록 암컷 바다거북이 더 많이 태어납니다.",
+      "바다거북은 태어난 바닷가 근처로 돌아와 알을 낳습니다.",
+      "갓 깨어난 바다거북은 주로 밤에 바다로 기어갑니다.",
+      "바다거북은 눈 옆으로 몸속의 소금을 내보냅니다."
+    ],
+    "correctIndex": 0,
+    "explanation": "'Warmer sand makes more females.'는 모래가 더 따뜻하면 암컷이 더 많이 나온다는 뜻입니다. 모래의 온도가 새끼의 암수를 정한다고 했습니다. 태어난 곳 근처로 돌아와 알을 낳는 것, 밤에 바다로 기어가는 것, 눈 옆으로 소금을 내보내는 것은 맞는 사실이지만 이 글에는 나오지 않습니다.",
+    "translation": "바다거북은 모래에 구덩이를 파고 알을 낳습니다. 새끼가 암컷이 될지 수컷이 될지는 모래가 얼마나 따뜻한지에 따라 정해집니다. 모래가 따뜻하면 암컷이 더 많이 나옵니다. 모래가 서늘하면 수컷이 더 많이 나옵니다.",
+    "vocab": [
+      {
+        "word": "sea turtle",
+        "meaning": "바다거북"
+      },
+      {
+        "word": "lay eggs",
+        "meaning": "알을 낳다"
+      },
+      {
+        "word": "warmth",
+        "meaning": "따뜻함, 온기"
+      },
+      {
+        "word": "decide",
+        "meaning": "정하다, 결정하다"
+      },
+      {
+        "word": "male",
+        "meaning": "수컷"
+      },
+      {
+        "word": "female",
+        "meaning": "암컷"
+      },
+      {
+        "word": "cooler",
+        "meaning": "더 서늘한"
+      }
+    ]
+  },
+  {
+    "id": "E1-15",
+    "topicTitle": "해마의 몸",
+    "questionType": "not_mentioned",
+    "passageText": "Seahorses are slow swimmers. They wrap their tails around seaweed so the water does not carry them away. Each eye can move by itself. They suck up tiny food with their long, tube-like mouths.",
+    "promptText": "해마의 몸에 대해 윗글에서 설명하지 않은 것은?",
+    "choices": [
+      "해마 수컷의 배에는 알을 품는 주머니가 있습니다.",
+      "해마는 꼬리로 바다풀을 감아 몸을 붙잡아 둡니다.",
+      "해마는 두 눈을 따로따로 움직일 수 있습니다.",
+      "해마는 대롱 같은 긴 입으로 작은 먹이를 빨아들입니다."
+    ],
+    "correctIndex": 0,
+    "explanation": "'Each eye can move by itself.'는 두 눈이 저마다 따로 움직인다는 뜻입니다. 글에는 꼬리로 바다풀을 감는 것, 두 눈을 따로 움직이는 것, 대롱 같은 긴 입으로 먹이를 빨아들이는 것이 나옵니다. 수컷의 배에 알을 품는 주머니가 있는 것도 맞는 사실이지만 이 글에는 나오지 않습니다.",
+    "translation": "해마는 헤엄을 느리게 칩니다. 해마는 물살에 떠밀려 가지 않도록 꼬리로 바다풀을 휘감습니다. 두 눈은 저마다 따로 움직일 수 있습니다. 해마는 대롱처럼 생긴 긴 입으로 작은 먹이를 빨아들입니다.",
+    "vocab": [
+      {
+        "word": "seahorse",
+        "meaning": "해마"
+      },
+      {
+        "word": "swimmer",
+        "meaning": "헤엄치는 동물"
+      },
+      {
+        "word": "wrap A around B",
+        "meaning": "A로 B를 감다"
+      },
+      {
+        "word": "seaweed",
+        "meaning": "바다풀, 해초"
+      },
+      {
+        "word": "carry away",
+        "meaning": "휩쓸어 가다"
+      },
+      {
+        "word": "by itself",
+        "meaning": "저 혼자, 따로"
+      },
+      {
+        "word": "suck up",
+        "meaning": "빨아들이다"
+      },
+      {
+        "word": "tube-like",
+        "meaning": "대롱 같은, 관 모양의"
+      }
+    ]
+  },
+  {
+    "id": "E1-16",
+    "topicTitle": "큰돌고래",
+    "questionType": "answerable_question",
+    "passageText": "A bottlenose dolphin has many teeth, and they all look alike. But it does not chew its food. It uses its teeth to grab fish. Then it swallows the fish whole, usually head first.",
+    "promptText": "윗글을 읽고 답할 수 있는 질문은?",
+    "choices": [
+      "돌고래의 이빨은 먹이를 먹을 때 무슨 일을 합니까?",
+      "돌고래는 소리로 어떻게 먹이를 찾아냅니까?",
+      "돌고래는 휘파람 소리로 서로를 어떻게 부릅니까?",
+      "돌고래는 잠을 자는 동안 어떻게 숨을 쉽니까?"
+    ],
+    "correctIndex": 0,
+    "explanation": "'It uses its teeth to grab fish.'는 큰돌고래가 이빨로 물고기를 붙잡는다는 뜻입니다. 그래서 먹이를 먹을 때 이빨이 하는 일은 답할 수 있습니다. 소리로 먹이를 찾는 방법, 휘파람 소리로 서로를 부르는 방법, 잠자는 동안 숨 쉬는 방법은 이 글에 나오지 않습니다.",
+    "translation": "큰돌고래는 이빨이 많은데, 모두 생김새가 비슷합니다. 하지만 큰돌고래는 먹이를 씹지 않습니다. 이빨은 물고기를 붙잡는 데 씁니다. 그런 다음 물고기를 대개 머리부터 통째로 삼킵니다.",
+    "vocab": [
+      {
+        "word": "bottlenose dolphin",
+        "meaning": "큰돌고래"
+      },
+      {
+        "word": "look alike",
+        "meaning": "생김새가 비슷하다"
+      },
+      {
+        "word": "chew",
+        "meaning": "씹다"
+      },
+      {
+        "word": "grab",
+        "meaning": "붙잡다"
+      },
+      {
+        "word": "swallow",
+        "meaning": "삼키다"
+      },
+      {
+        "word": "whole",
+        "meaning": "통째로"
+      },
+      {
+        "word": "usually",
+        "meaning": "대개, 보통"
+      },
+      {
+        "word": "head first",
+        "meaning": "머리부터"
+      }
+    ]
+  },
+  {
+    "id": "E1-17",
+    "topicTitle": "반려 뱀 돌보기",
+    "questionType": "vocabulary",
+    "passageText": "Many pet snakes eat only once every week or two. Owners often weigh their snakes on a small scale. If a snake keeps getting lighter, it may be sick. Then it is time to visit an animal doctor.",
+    "promptText": "윗글에서 'scale'의 뜻으로 알맞은 것은?",
+    "choices": [
+      "무게를 다는 저울입니다.",
+      "몸을 덮은 비늘입니다.",
+      "일이나 물건의 크기를 뜻하는 규모입니다.",
+      "음을 차례로 늘어놓은 음계입니다."
+    ],
+    "correctIndex": 0,
+    "explanation": "'Owners often weigh their snakes on a small scale.'은 뱀을 기르는 사람들이 작은 'scale'에 뱀을 올려 무게를 잰다는 뜻입니다. 무게를 재는 데 쓰는 것이므로 여기서 'scale'은 뱀의 비늘이 아니라 저울입니다. 비늘, 규모, 음계도 'scale'의 뜻이지만 이 글과는 맞지 않습니다.",
+    "translation": "반려 뱀은 한두 주에 한 번쯤만 먹이를 먹는 경우가 많습니다. 뱀을 기르는 사람들은 작은 저울로 뱀의 무게를 자주 잽니다. 뱀의 몸무게가 자꾸 줄어든다면 아픈 것일 수도 있습니다. 그럴 때에는 동물 병원에 가 보아야 합니다.",
+    "vocab": [
+      {
+        "word": "pet",
+        "meaning": "반려동물, 집에서 기르는"
+      },
+      {
+        "word": "once",
+        "meaning": "한 번"
+      },
+      {
+        "word": "every week or two",
+        "meaning": "한두 주마다"
+      },
+      {
+        "word": "owner",
+        "meaning": "주인, 기르는 사람"
+      },
+      {
+        "word": "weigh",
+        "meaning": "무게를 재다"
+      },
+      {
+        "word": "keep -ing",
+        "meaning": "계속 ~하다"
+      },
+      {
+        "word": "lighter",
+        "meaning": "더 가벼운"
+      },
+      {
+        "word": "animal doctor",
+        "meaning": "수의사"
+      }
+    ]
+  },
+  {
+    "id": "E1-18",
+    "topicTitle": "민들레꽃",
+    "questionType": "not_mentioned",
+    "passageText": "A dandelion flower closes at night. When the yellow flower is done, it stays closed for about a week or more. During this time, its stem grows taller. Then it opens as a white ball of seeds.",
+    "promptText": "민들레에 대해 윗글에서 설명하지 않은 것은?",
+    "choices": [
+      "민들레 씨는 솜털을 달고 바람에 실려 날아갑니다.",
+      "민들레꽃은 밤이 되면 꽃잎을 오므리고 닫힙니다.",
+      "꽃이 진 민들레는 여러 날 동안 닫혀 있습니다.",
+      "꽃이 진 뒤 닫혀 있는 동안 꽃줄기가 더 자랍니다."
+    ],
+    "correctIndex": 0,
+    "explanation": "'During this time, its stem grows taller.'는 꽃이 닫혀 있는 동안 꽃줄기가 더 길게 자란다는 뜻입니다. 글에는 밤에 닫히는 꽃, 꽃이 진 뒤 여러 날 닫혀 있는 것, 길어지는 꽃줄기가 나옵니다. 씨가 솜털을 달고 바람에 날아가는 것도 맞는 사실이지만 이 글에는 나오지 않습니다.",
+    "translation": "민들레꽃은 밤이 되면 오므라듭니다. 노란 꽃이 지고 나면 꽃은 일주일쯤, 또는 그보다 더 오래 닫힌 채로 있습니다. 그동안 꽃줄기가 더 길게 자랍니다. 그런 다음 꽃은 하얀 씨 뭉치가 되어 펼쳐집니다.",
+    "vocab": [
+      {
+        "word": "dandelion",
+        "meaning": "민들레"
+      },
+      {
+        "word": "close",
+        "meaning": "닫히다, 오므라들다"
+      },
+      {
+        "word": "be done",
+        "meaning": "끝나다"
+      },
+      {
+        "word": "stay closed",
+        "meaning": "닫힌 채로 있다"
+      },
+      {
+        "word": "about a week or more",
+        "meaning": "일주일쯤이나 그 이상"
+      },
+      {
+        "word": "during",
+        "meaning": "~ 동안"
+      },
+      {
+        "word": "stem",
+        "meaning": "줄기, 꽃줄기"
+      }
+    ]
+  },
+  {
+    "id": "E1-19",
+    "topicTitle": "소나무",
+    "questionType": "content_match",
+    "passageText": "Some pine cones stay shut for many years. A sticky glue called resin holds them closed. When a forest fire comes, the heat melts the resin. The cones open and drop their seeds on the burned ground.",
+    "promptText": "윗글의 내용과 일치하는 것은?",
+    "choices": [
+      "어떤 솔방울은 뜨거운 열을 받아야 벌어집니다.",
+      "소나무는 추운 겨울에도 푸른 잎을 달고 있습니다.",
+      "소나무 잎은 대개 몇 개씩 한데 묶여서 납니다.",
+      "많은 소나무의 씨에는 얇은 날개가 달려 있습니다."
+    ],
+    "correctIndex": 0,
+    "explanation": "'When a forest fire comes, the heat melts the resin.'은 산불이 나면 그 열이 송진을 녹인다는 뜻입니다. 그래야 닫혀 있던 솔방울이 벌어져 씨를 떨어뜨린다고 했습니다. 겨울에도 푸른 잎, 몇 개씩 묶여 나는 잎, 씨에 달린 날개는 맞는 사실이지만 이 글에는 나오지 않습니다.",
+    "translation": "어떤 솔방울은 여러 해 동안 닫힌 채로 있습니다. 송진이라는 끈적한 풀이 솔방울을 꽉 붙여 놓고 있기 때문입니다. 산불이 나면 그 열에 송진이 녹습니다. 그러면 솔방울이 벌어지면서 불탄 땅 위에 씨를 떨어뜨립니다.",
+    "vocab": [
+      {
+        "word": "pine cone",
+        "meaning": "솔방울"
+      },
+      {
+        "word": "stay shut",
+        "meaning": "닫힌 채로 있다"
+      },
+      {
+        "word": "sticky",
+        "meaning": "끈적한"
+      },
+      {
+        "word": "glue",
+        "meaning": "풀, 접착제"
+      },
+      {
+        "word": "resin",
+        "meaning": "송진, 나뭇진"
+      },
+      {
+        "word": "forest fire",
+        "meaning": "산불"
+      },
+      {
+        "word": "melt",
+        "meaning": "녹이다, 녹다"
+      },
+      {
+        "word": "burned",
+        "meaning": "불에 탄"
+      }
+    ]
+  },
+  {
+    "id": "E1-20",
+    "topicTitle": "토끼풀과 콩",
+    "questionType": "content_match",
+    "passageText": "Some plants seem to go to sleep at night. When it gets dark, they fold their leaves together. In the morning, the leaves open up again. Clover and many bean plants do this every day.",
+    "promptText": "윗글에서 알 수 있는 것은?",
+    "choices": [
+      "토끼풀은 날이 저물면 잎을 오므립니다.",
+      "식물의 잎에는 공기가 드나드는 작은 구멍이 있습니다.",
+      "콩은 뿌리에 사는 세균에게서 양분을 얻습니다.",
+      "토끼풀은 기는줄기를 뻗어 옆으로 퍼져 나갑니다."
+    ],
+    "correctIndex": 0,
+    "explanation": "'When it gets dark, they fold their leaves together.'는 날이 어두워지면 잎을 서로 포개어 접는다는 뜻이고, 토끼풀이 날마다 이렇게 한다고 했습니다. 잎에 난 작은 구멍, 콩뿌리에 사는 세균, 토끼풀의 기는줄기는 맞는 사실이지만 이 글에는 나오지 않습니다.",
+    "translation": "어떤 식물은 밤이 되면 잠을 자는 것처럼 보입니다. 날이 어두워지면 잎을 서로 포개어 접습니다. 아침이 되면 잎이 다시 펴집니다. 토끼풀과 많은 콩 종류가 날마다 이렇게 합니다.",
+    "vocab": [
+      {
+        "word": "seem to",
+        "meaning": "~인 것 같다, ~처럼 보이다"
+      },
+      {
+        "word": "go to sleep",
+        "meaning": "잠들다"
+      },
+      {
+        "word": "get dark",
+        "meaning": "어두워지다"
+      },
+      {
+        "word": "fold",
+        "meaning": "접다"
+      },
+      {
+        "word": "together",
+        "meaning": "함께, 서로 포개어"
+      },
+      {
+        "word": "open up",
+        "meaning": "펴지다, 열리다"
+      },
+      {
+        "word": "clover",
+        "meaning": "토끼풀, 클로버"
+      },
+      {
+        "word": "bean",
+        "meaning": "콩"
+      }
+    ]
+  },
+  {
+    "id": "E1-21",
+    "topicTitle": "숲속의 사슴",
+    "questionType": "vocabulary",
+    "passageText": "In a forest, you may hear a loud bark. It may not come from a dog. Some deer bark when they are scared. The sound warns other deer.",
+    "promptText": "윗글에서 'bark'의 뜻으로 알맞은 것은?",
+    "choices": [
+      "동물이 짖는 소리입니다.",
+      "나무의 껍질입니다.",
+      "돛이 달린 옛날 배입니다.",
+      "살갗이 벗겨지는 것입니다."
+    ],
+    "correctIndex": 0,
+    "explanation": "'It may not come from a dog. Some deer bark when they are scared.'는 그 소리가 개가 아니라 겁먹은 사슴에게서 나올 수도 있다는 뜻입니다. 동물이 내는 소리를 말하므로 여기서 'bark'는 짖는 소리입니다. 나무껍질, 돛단배, 살갗이 벗겨지는 것도 'bark'의 뜻이지만 이 글과는 맞지 않습니다.",
+    "translation": "숲에서 크게 짖는 소리가 들릴 때가 있습니다. 그 소리는 개가 낸 것이 아닐 수도 있습니다. 어떤 사슴은 겁이 나면 짖는 소리를 냅니다. 이 소리는 다른 사슴들에게 위험을 알립니다.",
+    "vocab": [
+      {
+        "word": "forest",
+        "meaning": "숲"
+      },
+      {
+        "word": "may",
+        "meaning": "~할지도 모른다"
+      },
+      {
+        "word": "loud",
+        "meaning": "(소리가) 큰"
+      },
+      {
+        "word": "come from",
+        "meaning": "~에서 나오다"
+      },
+      {
+        "word": "deer",
+        "meaning": "사슴(한 마리든 여러 마리든 꼴이 같다)"
+      },
+      {
+        "word": "scared",
+        "meaning": "겁먹은, 무서워하는"
+      },
+      {
+        "word": "warn",
+        "meaning": "위험을 알리다, 경고하다"
+      }
+    ]
+  },
+  {
+    "id": "E1-22",
+    "topicTitle": "바나나 송이",
+    "questionType": "content_match",
+    "passageText": "Bananas grow in big bunches. When they are young, they point down toward the ground. As they grow, they slowly bend and turn upward. That is why most bananas are curved.",
+    "promptText": "윗글의 내용과 일치하는 것은?",
+    "choices": [
+      "바나나는 자라면서 끝이 위로 휘어 올라갑니다.",
+      "바나나의 줄기처럼 보이는 것은 잎이 겹친 것입니다.",
+      "우리가 먹는 바나나에는 씨가 거의 없습니다.",
+      "잘 익은 바나나 껍질에는 검은 점이 생깁니다."
+    ],
+    "correctIndex": 0,
+    "explanation": "'As they grow, they slowly bend and turn upward.'는 바나나가 자라면서 천천히 휘어 위쪽을 향한다는 뜻입니다. 그래서 바나나가 휘어진 모양이 된다고 했습니다. 잎이 겹쳐 생긴 줄기, 거의 없는 씨, 껍질의 검은 점은 맞는 사실이지만 이 글에는 나오지 않습니다.",
+    "translation": "바나나는 커다란 송이로 열립니다. 어릴 때 바나나는 땅을 향해 아래로 뻗어 있습니다. 자라면서 바나나는 천천히 휘어져 위쪽을 향합니다. 그래서 바나나는 대부분 휘어진 모양입니다.",
+    "vocab": [
+      {
+        "word": "bunch",
+        "meaning": "송이, 다발"
+      },
+      {
+        "word": "point down",
+        "meaning": "아래를 향하다"
+      },
+      {
+        "word": "toward",
+        "meaning": "~ 쪽으로"
+      },
+      {
+        "word": "bend",
+        "meaning": "휘다, 구부러지다"
+      },
+      {
+        "word": "turn upward",
+        "meaning": "위쪽으로 향하다"
+      },
+      {
+        "word": "that is why",
+        "meaning": "그래서 ~이다, 그것이 ~한 까닭이다"
+      },
+      {
+        "word": "curved",
+        "meaning": "휘어진, 굽은"
+      }
+    ]
+  },
+  {
+    "id": "E1-23",
+    "topicTitle": "파인애플",
+    "questionType": "not_mentioned",
+    "passageText": "A pineapple does not grow on a tree. It grows in the middle of a short, spiky plant. Each plant makes one pineapple at a time. The leafy top of a pineapple can grow into a new plant.",
+    "promptText": "파인애플이 자라는 모습에 대해 윗글에서 설명하지 않은 것은?",
+    "choices": [
+      "파인애플은 꽃 여러 송이가 합쳐져 열매 하나가 됩니다.",
+      "파인애플은 나무가 아닌 키 작은 풀에서 열립니다.",
+      "파인애플 한 포기에는 한 번에 열매가 하나 열립니다.",
+      "파인애플 꼭대기의 잎 뭉치는 새 포기로 자랄 수 있습니다."
+    ],
+    "correctIndex": 0,
+    "explanation": "'Each plant makes one pineapple at a time.'은 한 포기에서 한 번에 파인애플이 하나 열린다는 뜻입니다. 글에는 키 작은 식물에서 열리는 것, 한 포기에 한 번에 하나씩 열리는 것, 꼭대기의 잎 뭉치가 새 포기로 자랄 수 있는 것이 나옵니다. 여러 꽃이 합쳐져 열매 하나가 되는 것도 맞는 사실이지만 이 글에는 나오지 않습니다.",
+    "translation": "파인애플은 나무에서 열리지 않습니다. 파인애플은 키가 작고 잎이 뾰족뾰족한 식물의 한가운데에서 자랍니다. 한 포기에서는 한 번에 파인애플이 하나씩 열립니다. 파인애플 꼭대기의 잎 뭉치는 자라서 새 포기가 될 수 있습니다.",
+    "vocab": [
+      {
+        "word": "pineapple",
+        "meaning": "파인애플"
+      },
+      {
+        "word": "in the middle of",
+        "meaning": "~의 한가운데에"
+      },
+      {
+        "word": "short",
+        "meaning": "키가 작은"
+      },
+      {
+        "word": "spiky",
+        "meaning": "뾰족뾰족한"
+      },
+      {
+        "word": "at a time",
+        "meaning": "한 번에"
+      },
+      {
+        "word": "leafy",
+        "meaning": "잎이 무성한"
+      },
+      {
+        "word": "top",
+        "meaning": "꼭대기"
+      },
+      {
+        "word": "grow into",
+        "meaning": "자라서 ~이 되다"
+      }
+    ]
+  },
+  {
+    "id": "E1-24",
+    "topicTitle": "눈 깜빡임",
+    "questionType": "content_match",
+    "passageText": "Grown-ups blink about fifteen times a minute. A blink is very fast. It takes less than half a second. Babies blink much less. They blink only a few times a minute.",
+    "promptText": "윗글에서 알 수 있는 것은?",
+    "choices": [
+      "어른은 아기보다 눈을 훨씬 자주 깜빡입니다.",
+      "눈을 깜빡이면 눈물이 눈 전체에 고루 퍼집니다.",
+      "화면을 오래 보면 눈을 덜 깜빡이게 됩니다.",
+      "눈앞으로 무언가 날아오면 저절로 눈이 감깁니다."
+    ],
+    "correctIndex": 0,
+    "explanation": "'Babies blink much less.'는 아기가 눈을 훨씬 덜 깜빡인다는 뜻입니다. 어른은 1분에 15번쯤 깜빡이지만 아기는 몇 번밖에 깜빡이지 않으니, 어른이 훨씬 자주 깜빡이는 셈입니다. 눈물을 고루 퍼뜨리는 것, 화면을 볼 때 덜 깜빡이는 것, 저절로 눈이 감기는 것은 맞는 사실이지만 이 글에는 나오지 않습니다.",
+    "translation": "어른은 1분에 15번쯤 눈을 깜빡입니다. 눈을 한 번 깜빡이는 일은 아주 빠릅니다. 0.5초도 채 걸리지 않습니다. 아기는 눈을 훨씬 덜 깜빡입니다. 1분에 겨우 몇 번만 깜빡입니다.",
+    "vocab": [
+      {
+        "word": "grown-up",
+        "meaning": "어른"
+      },
+      {
+        "word": "blink",
+        "meaning": "눈을 깜빡이다; 깜빡임"
+      },
+      {
+        "word": "about",
+        "meaning": "약, ~쯤"
+      },
+      {
+        "word": "a minute",
+        "meaning": "1분에"
+      },
+      {
+        "word": "take",
+        "meaning": "(시간이) 걸리다"
+      },
+      {
+        "word": "less than",
+        "meaning": "~보다 적게, ~ 미만"
+      },
+      {
+        "word": "half a second",
+        "meaning": "0.5초"
+      },
+      {
+        "word": "a few",
+        "meaning": "몇몇의, 약간의"
+      }
+    ]
+  },
+  {
+    "id": "E1-25",
+    "topicTitle": "우리 몸의 등뼈",
+    "questionType": "content_match",
+    "passageText": "Your backbone is made of many small bones. Between these bones are soft pads. The pads work like cushions when you run and jump. They also let you bend and twist your back.",
+    "promptText": "윗글의 내용과 일치하는 것은?",
+    "choices": [
+      "뼈 사이 말랑한 받침 덕분에 허리를 굽힐 수 있습니다.",
+      "사람은 저녁보다 아침에 키가 조금 더 큽니다.",
+      "등뼈 속으로는 뇌와 몸을 잇는 신경이 지나갑니다.",
+      "사람의 목뼈는 기린의 목뼈처럼 일곱 개입니다."
+    ],
+    "correctIndex": 0,
+    "explanation": "'They also let you bend and twist your back.'은 등뼈 사이의 말랑한 판 덕분에 허리를 굽히고 비틀 수 있다는 뜻입니다. 아침에 키가 조금 더 큰 것, 등뼈 속을 지나는 신경, 일곱 개인 목뼈는 맞는 사실이지만 이 글에는 나오지 않습니다.",
+    "translation": "등뼈는 작은 뼈 여러 개로 이루어져 있습니다. 이 뼈들 사이사이에는 말랑한 판이 있습니다. 이 판은 달리거나 뛸 때 방석처럼 충격을 받아 줍니다. 또 이 판 덕분에 허리를 굽히거나 비틀 수 있습니다.",
+    "vocab": [
+      {
+        "word": "backbone",
+        "meaning": "등뼈"
+      },
+      {
+        "word": "be made of",
+        "meaning": "~로 이루어져 있다"
+      },
+      {
+        "word": "between",
+        "meaning": "~ 사이에"
+      },
+      {
+        "word": "pad",
+        "meaning": "(충격을 받아 주는) 말랑한 판"
+      },
+      {
+        "word": "cushion",
+        "meaning": "방석, 쿠션"
+      },
+      {
+        "word": "jump",
+        "meaning": "뛰다, 뛰어오르다"
+      },
+      {
+        "word": "bend",
+        "meaning": "굽히다"
+      },
+      {
+        "word": "twist",
+        "meaning": "비틀다"
+      }
+    ]
+  },
+  {
+    "id": "E1-26",
+    "topicTitle": "눈 결정",
+    "questionType": "content_match",
+    "passageText": "Snow crystals come in many shapes. In some clouds, they grow into flat stars. In others, they grow into thin needles or short columns. Their shape depends on how cold and wet the air is.",
+    "promptText": "윗글의 내용과 일치하는 것은?",
+    "choices": [
+      "눈 결정의 모양은 공기의 온도와 습기에 따라 달라집니다.",
+      "눈 결정은 대개 육각형을 바탕으로 한 모양입니다.",
+      "눈은 대개 먼지 같은 작은 알갱이를 씨앗 삼아 생깁니다.",
+      "쌓인 눈은 소리를 잘 빨아들여 주위를 조용하게 합니다."
+    ],
+    "correctIndex": 0,
+    "explanation": "'Their shape depends on how cold and wet the air is.'는 눈 결정의 모양이 공기가 얼마나 차갑고 축축한지에 따라 정해진다는 뜻입니다. 육각형을 바탕으로 한 모양, 먼지 같은 알갱이에서 생기는 것, 소리를 빨아들이는 것은 맞는 사실이지만 이 글에는 나오지 않습니다.",
+    "translation": "눈 결정은 모양이 여러 가지입니다. 어떤 구름에서는 납작한 별 모양으로 자랍니다. 또 어떤 구름에서는 가느다란 바늘이나 짧은 기둥 모양으로 자랍니다. 눈 결정의 모양은 공기가 얼마나 차갑고 축축한지에 따라 달라집니다.",
+    "vocab": [
+      {
+        "word": "crystal",
+        "meaning": "결정"
+      },
+      {
+        "word": "come in",
+        "meaning": "(여러 모양·크기로) 나오다, 있다"
+      },
+      {
+        "word": "shape",
+        "meaning": "모양"
+      },
+      {
+        "word": "flat",
+        "meaning": "납작한"
+      },
+      {
+        "word": "needle",
+        "meaning": "바늘"
+      },
+      {
+        "word": "column",
+        "meaning": "기둥"
+      },
+      {
+        "word": "depend on",
+        "meaning": "~에 따라 달라지다"
+      },
+      {
+        "word": "wet",
+        "meaning": "축축한, 습한"
+      }
+    ]
+  },
+  {
+    "id": "E1-27",
+    "topicTitle": "무지개",
+    "questionType": "answerable_question",
+    "passageText": "A rainbow is really a full circle. From the ground, we see only the top part of it. The ground hides the rest. When the sun is high in the sky, we see an even smaller part.",
+    "promptText": "윗글을 읽고 답할 수 있는 질문은?",
+    "choices": [
+      "해가 높이 떠 있을 때 무지개는 어떻게 보입니까?",
+      "무지개는 왜 여러 가지 색으로 나뉘어 보입니까?",
+      "무지개는 왜 비가 막 그쳤을 때 잘 보입니까?",
+      "쌍무지개는 어떻게 두 줄로 겹쳐 생겨납니까?"
+    ],
+    "correctIndex": 0,
+    "explanation": "'When the sun is high in the sky, we see an even smaller part.'는 해가 하늘 높이 떠 있으면 무지개가 더 조금만 보인다는 뜻입니다. 그래서 해가 높을 때 무지개가 어떻게 보이는지는 답할 수 있습니다. 색이 나뉘어 보이는 까닭, 비가 막 그쳤을 때 잘 보이는 까닭, 쌍무지개가 생기는 방법은 이 글에 나오지 않습니다.",
+    "translation": "무지개는 사실 완전한 동그라미입니다. 땅에서는 그 가운데 윗부분만 볼 수 있습니다. 땅이 나머지 부분을 가립니다. 해가 하늘 높이 떠 있을 때에는 무지개가 그보다 더 조금만 보입니다.",
+    "vocab": [
+      {
+        "word": "rainbow",
+        "meaning": "무지개"
+      },
+      {
+        "word": "really",
+        "meaning": "사실은, 실제로"
+      },
+      {
+        "word": "full circle",
+        "meaning": "완전한 원"
+      },
+      {
+        "word": "top part",
+        "meaning": "윗부분"
+      },
+      {
+        "word": "hide",
+        "meaning": "가리다, 숨기다"
+      },
+      {
+        "word": "the rest",
+        "meaning": "나머지"
+      },
+      {
+        "word": "even smaller",
+        "meaning": "훨씬 더 작은"
+      }
+    ]
+  },
+  {
+    "id": "E1-28",
+    "topicTitle": "몸속의 시계",
+    "questionType": "answerable_question",
+    "passageText": "Your body has a clock inside it. The clock changes how warm your body is during the day. You are warmest in the late afternoon. You are coolest in the early morning, while you are still asleep.",
+    "promptText": "윗글을 읽고 답할 수 있는 질문은?",
+    "choices": [
+      "하루 가운데 몸이 가장 따뜻한 때는 언제입니까?",
+      "아침 햇빛은 몸속 시계를 어떻게 맞추어 줍니까?",
+      "사람은 하루에 몇 시간쯤 자야 합니까?",
+      "감기로 열이 날 때는 왜 몸이 으슬으슬 춥습니까?"
+    ],
+    "correctIndex": 0,
+    "explanation": "'You are warmest in the late afternoon.'은 우리 몸이 늦은 오후에 가장 따뜻하다는 뜻입니다. 그래서 하루 가운데 몸이 가장 따뜻한 때는 답할 수 있습니다. 아침 햇빛이 몸속 시계를 맞추는 방법, 알맞은 잠 시간, 열이 날 때 추운 까닭은 이 글에 나오지 않습니다.",
+    "translation": "우리 몸속에는 시계가 하나 있습니다. 이 시계는 하루 동안 몸의 열을 바꿉니다. 우리 몸은 늦은 오후에 가장 따뜻합니다. 가장 서늘한 때는 아직 잠들어 있는 이른 아침입니다.",
+    "vocab": [
+      {
+        "word": "inside",
+        "meaning": "~의 안에"
+      },
+      {
+        "word": "body heat",
+        "meaning": "몸의 열, 체온"
+      },
+      {
+        "word": "during the day",
+        "meaning": "하루 동안"
+      },
+      {
+        "word": "warmest",
+        "meaning": "가장 따뜻한"
+      },
+      {
+        "word": "late afternoon",
+        "meaning": "늦은 오후"
+      },
+      {
+        "word": "coolest",
+        "meaning": "가장 서늘한"
+      },
+      {
+        "word": "early morning",
+        "meaning": "이른 아침"
+      },
+      {
+        "word": "asleep",
+        "meaning": "잠든"
+      }
+    ]
+  }
+]

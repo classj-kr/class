@@ -1,0 +1,1354 @@
+[
+  {
+    "id": "E2-01",
+    "topicTitle": "사하라 사막의 여우",
+    "questionType": "content_match",
+    "passageText": "The fennec fox lives in the Sahara Desert in North Africa. During the day, the sand there can become hot enough to burn skin. The fennec fox has thick fur on the bottoms of its feet. This fur keeps its feet safe from the burning sand. The fur also helps the fox grip loose sand when it runs.",
+    "promptText": "사막여우에 대해 윗글에서 알 수 있는 것은?",
+    "choices": [
+      "발바닥 털 덕분에 푸석한 모래 위에서도 잘 달린다.",
+      "몸에 비해 큰 귀로 몸의 열을 밖으로 내보낸다.",
+      "여우 가운데 몸집이 가장 작은 종류로 꼽힌다.",
+      "물을 마시지 않고도 꽤 오래 지낼 수 있다."
+    ],
+    "correctIndex": 0,
+    "explanation": "윗글의 'The fur also helps the fox grip loose sand when it runs.'는 '이 털은 여우가 달릴 때 푸석한 모래를 잘 딛게 도와준다.'라는 뜻입니다. 큰 귀로 열을 내보내는 것, 몸집이 작은 것, 물을 마시지 않고 오래 지내는 것도 사막여우에 대한 사실이지만 이 글에는 나오지 않습니다.",
+    "translation": "사막여우는 북아프리카의 사하라 사막에 산다. 낮이 되면 그곳의 모래는 살갗을 델 만큼 뜨거워지기도 한다. 사막여우는 발바닥에 털이 두툼하게 나 있다. 이 털은 뜨겁게 달아오른 모래로부터 발을 지켜 준다. 또 여우가 달릴 때 푸석푸석한 모래를 잘 딛고 나아가게 도와준다.",
+    "vocab": [
+      {
+        "word": "fennec fox",
+        "meaning": "사막여우"
+      },
+      {
+        "word": "bottom",
+        "meaning": "밑바닥, 밑면"
+      },
+      {
+        "word": "keep ~ safe from",
+        "meaning": "~으로부터 …을 지키다"
+      },
+      {
+        "word": "burning",
+        "meaning": "타는 듯이 뜨거운"
+      },
+      {
+        "word": "grip",
+        "meaning": "(미끄러지지 않게) 꽉 딛다, 붙잡다"
+      },
+      {
+        "word": "loose",
+        "meaning": "(흙·모래가) 푸석푸석한, 헐거운"
+      }
+    ]
+  },
+  {
+    "id": "E2-02",
+    "topicTitle": "남극의 황제펭귄",
+    "questionType": "answerable_question",
+    "passageText": "Emperor penguins breed on sea ice in some of the coldest places on Earth. These places are hard for scientists to reach. So scientists look for penguin colonies in pictures taken by satellites. Often the birds are too small to see, but their droppings leave large brown stains on the white ice. By searching for these stains, scientists have found colonies that no one knew about.",
+    "promptText": "윗글을 읽고 답할 수 있는 질문은?",
+    "choices": [
+      "사람이 가기 힘든 곳의 펭귄 무리는 어떻게 찾아내는가?",
+      "황제펭귄은 겨울 추위를 어떻게 함께 견디는가?",
+      "과학자들은 바닷속 펭귄의 움직임을 어떻게 기록하는가?",
+      "수컷 펭귄은 알을 품는 동안 어떻게 굶주림을 견디는가?"
+    ],
+    "correctIndex": 0,
+    "explanation": "윗글의 'scientists look for penguin colonies in pictures taken by satellites'는 '과학자들은 인공위성이 찍은 사진에서 펭귄 무리를 찾는다.'라는 뜻이고, 똥이 얼음에 남긴 갈색 얼룩을 단서로 삼는다고 했으므로 이 질문에 답할 수 있습니다. 펭귄이 함께 추위를 견디는 방법, 바닷속 움직임을 기록하는 방법, 알을 품는 수컷이 굶주림을 견디는 방법은 이 글에 나오지 않습니다.",
+    "translation": "황제펭귄은 지구에서 가장 추운 곳 가운데 몇몇 곳의 바다 얼음 위에서 새끼를 낳아 기른다. 이런 곳은 과학자들이 가 닿기 어렵다. 그래서 과학자들은 인공위성이 찍은 사진에서 펭귄 무리를 찾는다. 사진에서 펭귄은 너무 작아 보이지 않을 때가 많지만, 펭귄의 똥은 하얀 얼음 위에 커다란 갈색 얼룩을 남긴다. 과학자들은 이 얼룩을 찾아서 아무도 몰랐던 펭귄 무리를 여럿 찾아냈다.",
+    "vocab": [
+      {
+        "word": "breed",
+        "meaning": "새끼를 낳아 기르다"
+      },
+      {
+        "word": "sea ice",
+        "meaning": "바다 얼음(바닷물이 언 것)"
+      },
+      {
+        "word": "reach",
+        "meaning": "(어떤 곳에) 가 닿다"
+      },
+      {
+        "word": "colony",
+        "meaning": "(동물의) 무리, 번식지"
+      },
+      {
+        "word": "satellite",
+        "meaning": "인공위성"
+      },
+      {
+        "word": "droppings",
+        "meaning": "(새나 동물의) 똥"
+      },
+      {
+        "word": "stain",
+        "meaning": "얼룩"
+      },
+      {
+        "word": "search for",
+        "meaning": "~을 찾다"
+      }
+    ]
+  },
+  {
+    "id": "E2-03",
+    "topicTitle": "열대 우림의 독개구리",
+    "questionType": "content_match",
+    "passageText": "Poison dart frogs live in the rainforests of Central and South America. In the wild, they eat tiny ants, mites, and other small bugs. Scientists believe the frogs get their poison from this food. In zoos, the frogs are fed different insects, such as fruit flies and crickets. As a result, poison dart frogs raised in zoos are not poisonous.",
+    "promptText": "독화살개구리에 대해 윗글에서 알 수 있는 것은?",
+    "choices": [
+      "동물원에서 기른 개구리는 몸에 독이 없다.",
+      "화려한 몸 색깔로 다른 동물에게 위험을 알린다.",
+      "종류에 따라 독의 세기가 크게 다르다.",
+      "올챙이를 등에 업어 물웅덩이로 옮기는 종류가 많다."
+    ],
+    "correctIndex": 0,
+    "explanation": "윗글의 'poison dart frogs raised in zoos are not poisonous'는 '동물원에서 자란 독화살개구리는 독이 없다.'라는 뜻입니다. 개구리의 독은 야생에서 먹는 작은 개미와 진드기에서 온다고 여겨지기 때문입니다. 화려한 색으로 위험을 알리는 것, 종류마다 다른 독의 세기, 올챙이를 업어 옮기는 것은 맞는 사실이지만 이 글에는 나오지 않습니다.",
+    "translation": "독화살개구리는 중앙아메리카와 남아메리카의 열대 우림에 산다. 야생에서는 아주 작은 개미와 진드기, 그 밖의 작은 벌레를 먹는다. 과학자들은 개구리가 이런 먹이에서 독을 얻는다고 본다. 동물원에서는 초파리나 귀뚜라미 같은 다른 곤충을 먹이로 준다. 그래서 동물원에서 자란 독화살개구리에게는 독이 없다.",
+    "vocab": [
+      {
+        "word": "poison dart frog",
+        "meaning": "독화살개구리"
+      },
+      {
+        "word": "in the wild",
+        "meaning": "야생에서"
+      },
+      {
+        "word": "mite",
+        "meaning": "진드기"
+      },
+      {
+        "word": "feed (fed)",
+        "meaning": "먹이를 주다"
+      },
+      {
+        "word": "fruit fly",
+        "meaning": "초파리"
+      },
+      {
+        "word": "as a result",
+        "meaning": "그 결과, 그래서"
+      },
+      {
+        "word": "poisonous",
+        "meaning": "독이 있는"
+      }
+    ]
+  },
+  {
+    "id": "E2-04",
+    "topicTitle": "인도의 계단 우물",
+    "questionType": "vocabulary",
+    "passageText": "Chand Baori is a very old stepwell in Rajasthan, India. About 3,500 narrow steps go down its three sides to the water at the bottom. In the dry season, people once walked down these steps to get water. The air near the bottom stays cooler than the air at the top. Today many visitors come to see it, and some artists come to draw its long rows of steps.",
+    "promptText": "윗글에서 'draw'의 뜻으로 알맞은 것은?",
+    "choices": [
+      "(그림이나 선을) 그리다.",
+      "(물 따위를) 퍼 올리다.",
+      "(사람들을) 끌어모으다.",
+      "(제비나 카드를) 뽑다."
+    ],
+    "correctIndex": 0,
+    "explanation": "윗글의 'some artists come to draw its long rows of steps'는 '어떤 화가들은 길게 줄지은 계단을 그리러 온다'라는 뜻입니다. 화가가 계단을 대상으로 하는 일이므로 여기서 draw는 '그리다'로 쓰였습니다. 우물 이야기라서 물을 퍼 올린다는 뜻을 떠올리기 쉽지만, 물을 긷는 일은 'get water'로 나타냈습니다. 사람을 끌어모으다, 제비를 뽑다도 draw의 뜻이지만 이 글의 뜻과는 다릅니다.",
+    "translation": "찬드 바오리는 인도 라자스탄주에 있는 아주 오래된 계단 우물입니다. 좁은 계단 약 3,500개가 세 면을 따라 바닥의 물까지 이어져 있습니다. 건기에는 옛날 사람들이 이 계단을 걸어 내려가 물을 길었습니다. 바닥 근처의 공기는 꼭대기의 공기보다 서늘하게 유지됩니다. 오늘날에는 많은 방문객이 이곳을 보러 오고, 어떤 화가들은 길게 줄지은 계단을 그리러 옵니다.",
+    "vocab": [
+      {
+        "word": "stepwell",
+        "meaning": "계단 우물(계단을 따라 물가까지 내려가는 우물)"
+      },
+      {
+        "word": "narrow",
+        "meaning": "좁은"
+      },
+      {
+        "word": "dry season",
+        "meaning": "건기, 비가 적게 오는 철"
+      },
+      {
+        "word": "get water",
+        "meaning": "물을 긷다"
+      },
+      {
+        "word": "row",
+        "meaning": "줄, 열"
+      },
+      {
+        "word": "visitor",
+        "meaning": "방문객"
+      }
+    ]
+  },
+  {
+    "id": "E2-05",
+    "topicTitle": "아프리카코끼리의 대화",
+    "questionType": "not_mentioned",
+    "passageText": "African elephants can talk with deep rumbling sounds, and some are too low for people to hear. These sounds travel through the ground as well as the air. The bottoms of an elephant's feet have special nerve cells that are very sensitive to shaking. With them, an elephant can pick up rumbles from far away. Elephants can even tell a family member's rumble from a stranger's.",
+    "promptText": "아프리카코끼리에 대해 윗글에서 설명하지 않은 것은?",
+    "choices": [
+      "코끝을 땅에 대어 떨림을 알아채기도 한다.",
+      "발바닥에 떨림을 잘 느끼는 신경 세포가 있다.",
+      "땅을 타고 전해지는 먼 곳의 소리를 알아챈다.",
+      "가족과 낯선 코끼리의 소리를 가려 들을 수 있다."
+    ],
+    "correctIndex": 0,
+    "explanation": "윗글에는 발바닥의 신경 세포('special nerve cells that are very sensitive to shaking', 흔들림에 아주 민감한 특별한 신경 세포), 땅을 타고 오는 먼 곳의 소리를 알아채는 것, 가족과 낯선 코끼리의 소리를 가려내는 것('tell a family member's rumble from a stranger's')이 나옵니다. 코끼리가 코끝을 땅에 대어 떨림을 느끼기도 한다는 것은 맞는 사실이지만 이 글에는 나오지 않습니다.",
+    "translation": "아프리카코끼리는 우르릉거리는 낮은 소리로 서로 이야기를 나눌 수 있는데, 어떤 소리는 너무 낮아서 사람 귀에는 들리지 않는다. 이 소리는 공기뿐 아니라 땅을 타고도 전해진다. 코끼리의 발바닥에는 흔들림에 아주 민감한 특별한 신경 세포가 있다. 코끼리는 이 세포로 먼 곳에서 오는 우르릉 소리를 알아챌 수 있다. 코끼리는 가족이 내는 소리와 낯선 코끼리가 내는 소리를 가려내기까지 한다.",
+    "vocab": [
+      {
+        "word": "rumbling",
+        "meaning": "우르릉거리는"
+      },
+      {
+        "word": "travel",
+        "meaning": "(소리·빛이) 전해지다, 나아가다"
+      },
+      {
+        "word": "as well as",
+        "meaning": "~뿐 아니라"
+      },
+      {
+        "word": "nerve cell",
+        "meaning": "신경 세포"
+      },
+      {
+        "word": "sensitive to",
+        "meaning": "~에 민감한"
+      },
+      {
+        "word": "pick up",
+        "meaning": "(소리·신호를) 알아채다, 잡아내다"
+      },
+      {
+        "word": "tell A from B",
+        "meaning": "A와 B를 가려내다"
+      },
+      {
+        "word": "stranger",
+        "meaning": "낯선 이"
+      }
+    ]
+  },
+  {
+    "id": "E2-06",
+    "topicTitle": "나무늘보의 털",
+    "questionType": "not_mentioned",
+    "passageText": "Sloths live high in the trees of Central and South American rainforests. Their fur has small cracks that hold rainwater. Tiny green living things called algae grow in these cracks and give the fur a green color. This green color may help sloths hide among the leaves from eagles. Small moths also live in sloth fur, and scientists think they help the algae grow.",
+    "promptText": "나무늘보에 대해 윗글에서 설명하지 않은 것은?",
+    "choices": [
+      "털에 자라는 초록 생물을 먹는다고 보는 학자도 있다.",
+      "털의 작은 틈에 빗물이 고인다.",
+      "중남미 열대 우림의 높은 나무 위에서 산다.",
+      "털 속에 작은 나방이 함께 살아간다."
+    ],
+    "correctIndex": 0,
+    "explanation": "윗글에는 중남미 열대 우림의 높은 나무에 산다는 것, 털의 틈에 빗물이 고인다는 것('Their fur has small cracks that hold rainwater.'), 털 속에 나방이 산다는 것('Small moths also live in sloth fur')이 나옵니다. 털에 자라는 작은 초록 생물을 나무늘보가 먹을 수도 있다고 보는 학자도 있지만 이 글에는 나오지 않습니다.",
+    "translation": "나무늘보는 중앙아메리카와 남아메리카 열대 우림의 높은 나무 위에서 산다. 나무늘보의 털에는 빗물이 고이는 작은 틈이 있다. 이 틈에서는 '조류'라고 하는 아주 작은 초록색 생물이 자라서 털을 초록빛으로 물들인다. 이 초록빛은 나무늘보가 나뭇잎 사이에 숨어 독수리의 눈을 피하는 데 도움이 될 수 있다. 나무늘보의 털 속에는 작은 나방도 사는데, 과학자들은 이 나방이 조류가 자라는 것을 돕는다고 본다.",
+    "vocab": [
+      {
+        "word": "sloth",
+        "meaning": "나무늘보"
+      },
+      {
+        "word": "crack",
+        "meaning": "갈라진 틈"
+      },
+      {
+        "word": "hold",
+        "meaning": "(물 따위를) 담아 두다"
+      },
+      {
+        "word": "algae",
+        "meaning": "조류(물속이나 축축한 곳에 사는 아주 작은 생물)"
+      },
+      {
+        "word": "among",
+        "meaning": "~ 사이에"
+      },
+      {
+        "word": "eagle",
+        "meaning": "독수리"
+      },
+      {
+        "word": "moth",
+        "meaning": "나방"
+      }
+    ]
+  },
+  {
+    "id": "E2-07",
+    "topicTitle": "연필이 태어난 곳",
+    "questionType": "content_match",
+    "passageText": "In the 1500s, people in Borrowdale, England, found a large amount of graphite in the ground. Local shepherds used the soft black lumps to mark their sheep. Soon people began cutting graphite into sticks for writing. But graphite made their hands dirty, so they wrapped the sticks in string or sheepskin. Later, the sticks were put inside wooden holders.",
+    "promptText": "연필에 대해 윗글에서 알 수 있는 것은?",
+    "choices": [
+      "손이 더러워지지 않게 흑연 막대를 감싸서 썼다.",
+      "연필심에는 이름과 달리 납이 들어 있지 않다.",
+      "요즘 연필심은 흑연에 점토를 섞어 만든다.",
+      "끝에 지우개가 달린 연필은 1800년대에 나왔다."
+    ],
+    "correctIndex": 0,
+    "explanation": "윗글의 'graphite made their hands dirty, so they wrapped the sticks in string or sheepskin'은 '흑연이 손을 더럽혀서 사람들이 막대를 끈이나 양가죽으로 감쌌다.'라는 뜻입니다. 연필심에 납이 없다는 것, 흑연에 점토를 섞는 것, 지우개 달린 연필이 나온 때는 맞는 사실이지만 이 글에는 나오지 않습니다.",
+    "translation": "1500년대에 잉글랜드 보로데일 사람들이 땅속에서 많은 흑연을 찾아냈다. 그 고장의 양치기들은 이 무르고 검은 덩어리로 자기 양에게 표시를 했다. 곧 사람들은 흑연을 막대 모양으로 잘라 글씨를 쓰기 시작했다. 하지만 흑연이 손에 묻어 더러워졌기 때문에, 사람들은 막대를 끈이나 양가죽으로 감쌌다. 뒤에는 이 막대를 나무로 된 대 안에 넣게 되었다.",
+    "vocab": [
+      {
+        "word": "graphite",
+        "meaning": "흑연"
+      },
+      {
+        "word": "shepherd",
+        "meaning": "양치기"
+      },
+      {
+        "word": "lump",
+        "meaning": "덩어리"
+      },
+      {
+        "word": "mark",
+        "meaning": "표시를 하다"
+      },
+      {
+        "word": "wrap",
+        "meaning": "감싸다"
+      },
+      {
+        "word": "sheepskin",
+        "meaning": "양가죽"
+      },
+      {
+        "word": "holder",
+        "meaning": "(물건을 끼우는) 대, 꽂이"
+      }
+    ]
+  },
+  {
+    "id": "E2-08",
+    "topicTitle": "지우개 달린 연필",
+    "questionType": "answerable_question",
+    "passageText": "In 1858, Hymen Lipman got a patent for a pencil with an eraser on one end. A patent lets its owner be the only seller of an invention for a time. Later, the owner of this patent took another pencil maker to court. But in 1875, the court said the patent was not valid. It said that just joining a pencil and an eraser was not a new invention.",
+    "promptText": "윗글을 읽고 답할 수 있는 질문은?",
+    "choices": [
+      "지우개 달린 연필을 두고 벌어진 다툼은 어떻게 끝났는가?",
+      "지우개는 어떤 원리로 연필 자국을 없애는가?",
+      "고무 지우개가 나오기 전에는 무엇으로 연필 자국을 지웠는가?",
+      "연필 끝의 지우개를 감싼 쇠고리는 무엇이라고 부르는가?"
+    ],
+    "correctIndex": 0,
+    "explanation": "윗글의 'in 1875, the court said the patent was not valid'는 '1875년에 법원은 그 특허가 효력이 없다고 판결했다.'라는 뜻이므로 이 질문에 답할 수 있습니다. 지우개가 자국을 없애는 원리, 고무 지우개 이전에 쓰던 것, 지우개를 감싼 쇠고리의 이름은 이 글에 나오지 않습니다.",
+    "translation": "1858년에 하이먼 리프먼은 한쪽 끝에 지우개가 달린 연필로 특허를 받았다. 특허가 있으면 그 특허를 가진 사람만 한동안 발명품을 팔 수 있다. 뒤에 이 특허를 가진 사람이 다른 연필 회사를 법원에 고소했다. 그러나 1875년에 법원은 그 특허가 효력이 없다고 판결했다. 연필과 지우개를 그저 붙여 놓은 것은 새로운 발명이 아니라는 것이었다.",
+    "vocab": [
+      {
+        "word": "patent",
+        "meaning": "특허(발명한 것을 혼자 만들어 팔 수 있는 권리)"
+      },
+      {
+        "word": "eraser",
+        "meaning": "지우개"
+      },
+      {
+        "word": "inventor",
+        "meaning": "발명한 사람"
+      },
+      {
+        "word": "owner",
+        "meaning": "가진 사람, 주인"
+      },
+      {
+        "word": "take ~ to court",
+        "meaning": "~을 법원에 고소하다"
+      },
+      {
+        "word": "valid",
+        "meaning": "(법적으로) 효력이 있는"
+      },
+      {
+        "word": "put ~ together",
+        "meaning": "~을 합치다"
+      },
+      {
+        "word": "exist",
+        "meaning": "있다, 존재하다"
+      }
+    ]
+  },
+  {
+    "id": "E2-09",
+    "topicTitle": "지퍼 이야기",
+    "questionType": "answerable_question",
+    "passageText": "For years after it was invented, the zipper was used mostly on boots and small bags. Clothing makers were slow to use it. In the 1930s, companies began selling children's clothes with zippers. They said zippers let young children get dressed on their own. Soon zippers also appeared on men's trousers, and fashion designers and magazines praised them as better than buttons.",
+    "promptText": "윗글을 읽고 답할 수 있는 질문은?",
+    "choices": [
+      "지퍼 달린 아이 옷은 어떤 점을 내세워 팔았는가?",
+      "지퍼의 이는 어떻게 서로 맞물려 잠기는가?",
+      "'지퍼'라는 이름은 어디에서 왔는가?",
+      "플라스틱으로 된 지퍼는 언제 처음 나왔는가?"
+    ],
+    "correctIndex": 0,
+    "explanation": "윗글의 'They said zippers let young children get dressed on their own.'은 '회사들은 지퍼가 있으면 어린아이도 혼자 옷을 입을 수 있다고 내세웠다.'라는 뜻이므로 이 질문에 답할 수 있습니다. 지퍼의 이가 맞물리는 방법, '지퍼'라는 이름이 생긴 곳, 플라스틱 지퍼가 나온 때는 이 글에 나오지 않습니다.",
+    "translation": "지퍼는 발명되고 나서 여러 해 동안 주로 장화와 작은 주머니에 쓰였다. 옷을 만드는 회사들은 지퍼를 쓰는 데 더뎠다. 1930년대에 들어 여러 회사가 지퍼 달린 어린이 옷을 팔기 시작했다. 회사들은 지퍼가 있으면 어린아이도 혼자 옷을 입을 수 있다고 말했다. 곧 남자 바지에도 지퍼가 달리기 시작했고, 많은 패션 기자들이 지퍼가 단추보다 낫다고 칭찬했다.",
+    "vocab": [
+      {
+        "word": "invent",
+        "meaning": "발명하다"
+      },
+      {
+        "word": "boots",
+        "meaning": "장화, 목이 긴 신"
+      },
+      {
+        "word": "be slow to",
+        "meaning": "~하는 데 더디다"
+      },
+      {
+        "word": "get dressed",
+        "meaning": "옷을 입다"
+      },
+      {
+        "word": "on one's own",
+        "meaning": "혼자서, 스스로"
+      },
+      {
+        "word": "appear",
+        "meaning": "나타나다, 쓰이기 시작하다"
+      },
+      {
+        "word": "trousers",
+        "meaning": "바지"
+      },
+      {
+        "word": "praise",
+        "meaning": "칭찬하다"
+      }
+    ]
+  },
+  {
+    "id": "E2-10",
+    "topicTitle": "런던 거리의 우산",
+    "questionType": "content_match",
+    "passageText": "In London in the mid-1700s, few men carried umbrellas. Many people thought umbrellas were only for women. But a man named Jonas Hanway carried one whenever it rained. People on the streets laughed at him. Carriage drivers were especially unhappy, because people with umbrellas did not need to pay for a ride on rainy days. In time, more and more men began to carry umbrellas too.",
+    "promptText": "우산에 대해 윗글에서 알 수 있는 것은?",
+    "choices": [
+      "마차를 모는 사람들은 우산 쓴 사람을 반기지 않았다.",
+      "옛날에는 비보다 햇볕을 가리는 데 우산을 많이 썼다.",
+      "옛 중국에서는 기름 먹인 종이로 우산을 만들었다.",
+      "요즘 우산살은 주로 쇠나 유리 섬유로 만든다."
+    ],
+    "correctIndex": 0,
+    "explanation": "윗글의 'Carriage drivers were especially unhappy, because people with umbrellas did not need to pay for a ride on rainy days.'는 '우산이 있는 사람은 비 오는 날 돈을 내고 마차를 탈 필요가 없어서 마차를 모는 사람들이 특히 못마땅해했다.'라는 뜻입니다. 햇볕 가리개로 쓰인 옛 우산, 기름종이 우산, 우산살의 재료는 맞는 사실이지만 이 글에는 나오지 않습니다.",
+    "translation": "1700년대 런던에서는 우산을 들고 다니는 남자가 드물었다. 많은 사람이 우산은 여자들만 쓰는 물건이라고 여겼다. 하지만 조너스 핸웨이라는 남자는 비가 올 때마다 우산을 들고 다녔다. 거리의 사람들은 그를 비웃었다. 특히 마차를 모는 사람들이 못마땅해했는데, 우산이 있는 사람은 비 오는 날 돈을 내고 마차를 탈 필요가 없었기 때문이다. 시간이 흐르자 우산을 들고 다니는 남자가 점점 늘어났다.",
+    "vocab": [
+      {
+        "word": "carry",
+        "meaning": "들고 다니다"
+      },
+      {
+        "word": "whenever",
+        "meaning": "~할 때마다"
+      },
+      {
+        "word": "laugh at",
+        "meaning": "~을 비웃다"
+      },
+      {
+        "word": "carriage",
+        "meaning": "마차"
+      },
+      {
+        "word": "especially",
+        "meaning": "특히"
+      },
+      {
+        "word": "pay for a ride",
+        "meaning": "돈을 내고 탈것을 타다"
+      },
+      {
+        "word": "in time",
+        "meaning": "시간이 흐르자, 머지않아"
+      },
+      {
+        "word": "more and more",
+        "meaning": "점점 더 많은"
+      }
+    ]
+  },
+  {
+    "id": "E2-11",
+    "topicTitle": "처음 나온 전자레인지",
+    "questionType": "not_mentioned",
+    "passageText": "The first microwave oven went on sale in 1947. It was made by a company that built radar equipment during World War II. The oven was about as tall as a refrigerator and weighed around 340 kilograms. It needed water pipes to keep its parts from getting too hot. Because it was so big and expensive, it was used mostly in restaurants, ships, and trains.",
+    "promptText": "처음 나온 전자레인지에 대해 윗글에서 설명하지 않은 것은?",
+    "choices": [
+      "주머니 속 과자가 녹은 일로 발명을 떠올렸다고 한다.",
+      "전쟁 때 레이더 장비를 만들던 회사에서 만들었다.",
+      "기계가 뜨거워지지 않도록 물로 식혀야 했다.",
+      "크고 비싸서 주로 식당이나 배, 기차에서 쓰였다."
+    ],
+    "correctIndex": 0,
+    "explanation": "윗글에는 레이더 장비를 만들던 회사가 만들었다는 것('made by a company that built radar equipment'), 물로 부품을 식혔다는 것('needed water pipes to keep its parts from getting too hot', 부품이 너무 뜨거워지지 않게 물 관이 있어야 했다), 크고 비싸서 식당·배·기차에서 주로 썼다는 것이 나옵니다. 주머니 속 과자가 녹은 일로 발명을 떠올렸다는 이야기는 널리 알려져 있지만 이 글에는 나오지 않습니다.",
+    "translation": "처음으로 전자레인지를 팔기 시작한 것은 1947년이다. 그 전자레인지는 제2차 세계 대전 때 레이더 장비를 만들던 회사가 만들었다. 이 전자레인지는 냉장고만큼 키가 컸고 무게가 340킬로그램쯤 되었다. 또 부품이 너무 뜨거워지지 않도록 물이 흐르는 관이 있어야 했다. 이렇게 크고 비쌌기 때문에 주로 식당이나 배, 기차에서 쓰였다.",
+    "vocab": [
+      {
+        "word": "microwave oven",
+        "meaning": "전자레인지"
+      },
+      {
+        "word": "go on sale",
+        "meaning": "팔리기 시작하다"
+      },
+      {
+        "word": "equipment",
+        "meaning": "장비"
+      },
+      {
+        "word": "refrigerator",
+        "meaning": "냉장고"
+      },
+      {
+        "word": "weigh",
+        "meaning": "무게가 ~이다"
+      },
+      {
+        "word": "keep A from B",
+        "meaning": "A가 B하지 않게 하다"
+      },
+      {
+        "word": "expensive",
+        "meaning": "비싼"
+      }
+    ]
+  },
+  {
+    "id": "E2-12",
+    "topicTitle": "아폴로 13호",
+    "questionType": "vocabulary",
+    "passageText": "In 1970, the Apollo 13 spacecraft was on its way to the Moon when an oxygen tank blew up. The three astronauts could no longer land. Instead, they swung around the far side of the Moon and headed back to Earth. At one point, they were about 400,000 kilometers away from home. This set a record for the farthest humans had traveled from Earth. The record lasted until 2026.",
+    "promptText": "윗글에서 'set'의 뜻으로 알맞은 것은?",
+    "choices": [
+      "(기록을) 새로 세우다.",
+      "(해나 달이) 지다.",
+      "(물건을 어디에) 놓다.",
+      "(시계나 알람을) 맞추다."
+    ],
+    "correctIndex": 0,
+    "explanation": "윗글의 'This set a new record for the farthest humans had ever traveled from Earth.'는 '이로써 사람이 지구에서 가장 멀리 간 기록을 새로 세웠다.'라는 뜻입니다. 뒤에 record(기록)가 오므로 여기서 set은 기록을 '세우다'라는 뜻입니다. 해나 달이 지다, 물건을 놓다, 시계를 맞추다도 set의 뜻이지만 이 글의 뜻과는 다릅니다.",
+    "translation": "1970년, 달로 가던 아폴로 13호 우주선에서 산소 탱크가 터졌다. 세 우주인은 더 이상 달에 내릴 수 없었다. 그 대신 그들은 달의 뒤쪽을 빙 돌아 지구로 되돌아왔다. 한때 그들은 지구에서 40만 킬로미터쯤 떨어진 곳에 있었다. 이로써 사람이 지구에서 가장 멀리 간 기록이 세워졌다. 이 기록은 2026년까지 깨지지 않았다.",
+    "vocab": [
+      {
+        "word": "spacecraft",
+        "meaning": "우주선"
+      },
+      {
+        "word": "on one's way to",
+        "meaning": "~으로 가는 길에"
+      },
+      {
+        "word": "oxygen tank",
+        "meaning": "산소 탱크"
+      },
+      {
+        "word": "blow up",
+        "meaning": "터지다, 폭발하다"
+      },
+      {
+        "word": "swing around",
+        "meaning": "~을 빙 돌다"
+      },
+      {
+        "word": "far side",
+        "meaning": "(달의) 뒤쪽 면"
+      },
+      {
+        "word": "head back",
+        "meaning": "되돌아가다"
+      },
+      {
+        "word": "set a record",
+        "meaning": "기록을 세우다"
+      }
+    ]
+  },
+  {
+    "id": "E2-13",
+    "topicTitle": "화성의 하늘",
+    "questionType": "content_match",
+    "passageText": "The sky on Mars looks very different from ours. During the day, it is usually a dusty yellowish-brown color. But around sunset, the sky near the Sun turns blue. Scientists say this happens because of the very fine dust floating in the Martian air. Robot rovers sent from Earth have taken photos of these unusual evenings.",
+    "promptText": "화성에 대해 윗글에서 알 수 있는 것은?",
+    "choices": [
+      "해가 질 무렵에는 해 둘레의 하늘이 푸르게 보인다.",
+      "땅이 붉은 것은 흙 속의 철이 녹슬었기 때문이다.",
+      "밤하늘에는 작은 위성 두 개가 떠 있다.",
+      "하루의 길이가 지구의 하루와 거의 같다."
+    ],
+    "correctIndex": 0,
+    "explanation": "윗글의 'around sunset, the sky near the Sun turns blue'는 '해 질 무렵이면 해 가까이의 하늘이 파랗게 변한다.'라는 뜻입니다. 붉은 흙의 까닭, 두 개의 위성, 하루의 길이는 화성에 대한 맞는 사실이지만 이 글에는 나오지 않습니다.",
+    "translation": "화성의 하늘은 우리가 보는 하늘과 무척 다르다. 낮에는 보통 먼지가 낀 듯한 누르스름한 갈색이다. 그런데 해 질 무렵이 되면 해 가까이의 하늘이 파랗게 변한다. 과학자들은 화성의 공기 속에 떠다니는 아주 고운 먼지 때문에 이런 일이 생긴다고 말한다. 지구에서 보낸 로봇 탐사차가 이런 신기한 저녁 하늘을 사진으로 찍었다.",
+    "vocab": [
+      {
+        "word": "dusty",
+        "meaning": "먼지가 낀, 뿌연"
+      },
+      {
+        "word": "yellowish-brown",
+        "meaning": "누르스름한 갈색의"
+      },
+      {
+        "word": "around sunset",
+        "meaning": "해 질 무렵에"
+      },
+      {
+        "word": "turn",
+        "meaning": "(색이) ~으로 변하다"
+      },
+      {
+        "word": "fine",
+        "meaning": "(가루가) 고운"
+      },
+      {
+        "word": "float",
+        "meaning": "떠다니다"
+      },
+      {
+        "word": "rover",
+        "meaning": "(행성) 탐사차"
+      },
+      {
+        "word": "unusual",
+        "meaning": "흔치 않은, 신기한"
+      }
+    ]
+  },
+  {
+    "id": "E2-14",
+    "topicTitle": "토성의 고리",
+    "questionType": "not_mentioned",
+    "passageText": "Saturn's rings spread very wide, but they are surprisingly thin. In many places, they are only about ten meters thick. They are made of countless pieces of ice and rock, from tiny grains of dust to chunks as big as houses. When Galileo first saw the rings through his telescope in 1610, he could not tell what they were. He thought Saturn might have two moons, one on each side.",
+    "promptText": "토성의 고리에 대해 윗글에서 설명하지 않은 것은?",
+    "choices": [
+      "큰 고리들 사이에 조각이 드문 넓은 틈이 있다.",
+      "고리는 넓게 펼쳐진 것에 비해 두께가 매우 얇다.",
+      "고리의 조각은 먼지 알갱이부터 집채만 한 것까지 있다.",
+      "갈릴레이는 처음에 고리를 고리로 알아보지 못했다."
+    ],
+    "correctIndex": 0,
+    "explanation": "윗글에는 고리가 넓은 데 비해 아주 얇다는 것('they are only about ten meters thick', 두께가 10미터쯤밖에 안 된다), 조각의 크기가 먼지 알갱이부터 집채만 한 것까지 있다는 것, 갈릴레이가 고리를 알아보지 못하고 위성 두 개로 여겼다는 것('he could not tell what they were')이 나옵니다. 고리 사이에 넓은 틈이 있다는 것은 맞는 사실이지만 이 글에는 나오지 않습니다.",
+    "translation": "토성의 고리는 아주 넓게 펼쳐져 있지만 놀랄 만큼 얇다. 많은 곳에서 고리의 두께는 10미터쯤밖에 되지 않는다. 고리는 아주 작은 먼지 알갱이부터 집채만 한 덩어리까지, 셀 수 없이 많은 얼음과 돌 조각으로 이루어져 있다. 1610년에 갈릴레이가 처음 망원경으로 고리를 보았을 때, 그는 그것이 무엇인지 알아보지 못했다. 그는 토성의 양쪽에 위성이 하나씩 있는 것이 아닐까 생각했다.",
+    "vocab": [
+      {
+        "word": "spread",
+        "meaning": "펼쳐져 있다"
+      },
+      {
+        "word": "surprisingly",
+        "meaning": "놀랄 만큼"
+      },
+      {
+        "word": "thick",
+        "meaning": "두께가 ~인, 두꺼운"
+      },
+      {
+        "word": "countless",
+        "meaning": "셀 수 없이 많은"
+      },
+      {
+        "word": "grain",
+        "meaning": "(모래·먼지 따위의) 알갱이"
+      },
+      {
+        "word": "chunk",
+        "meaning": "덩어리"
+      },
+      {
+        "word": "can't tell",
+        "meaning": "알아보지 못하다, 가려내지 못하다"
+      },
+      {
+        "word": "on each side",
+        "meaning": "양쪽에 하나씩"
+      }
+    ]
+  },
+  {
+    "id": "E2-15",
+    "topicTitle": "일곱째 행성 천왕성",
+    "questionType": "content_match",
+    "passageText": "Many moons in our solar system are named after figures from Greek and Roman myths. The moons of Uranus are different. Most are named after characters in plays by the English writer William Shakespeare. Titania and Oberon, the two largest, are the queen and king of the fairies in one of his plays. A few other moons take their names from a poem by Alexander Pope.",
+    "promptText": "천왕성에 대해 윗글에서 알 수 있는 것은?",
+    "choices": [
+      "큰 위성들의 이름을 영국 작가의 작품에서 따왔다.",
+      "자전축이 크게 기울어 옆으로 누운 채 돈다.",
+      "대기 속 메탄 때문에 청록색으로 보인다.",
+      "사람이 망원경으로 처음 찾아낸 행성이다."
+    ],
+    "correctIndex": 0,
+    "explanation": "윗글의 'Titania and Oberon, the two largest, are the queen and king of the fairies in one of his plays.'는 '가장 큰 두 위성인 티타니아와 오베론은 셰익스피어 희곡에 나오는 요정 여왕과 요정 왕이다.'라는 뜻입니다. 옆으로 누운 채 도는 것, 청록색으로 보이는 까닭, 망원경으로 처음 찾은 행성이라는 것은 맞는 사실이지만 이 글에는 나오지 않습니다.",
+    "translation": "태양계의 많은 위성은 그리스·로마 신화에 나오는 인물의 이름을 따서 지었다. 천왕성의 위성들은 다르다. 천왕성의 위성은 대부분 윌리엄 셰익스피어의 희곡에 나오는 인물의 이름을 땄다. 가장 큰 두 위성인 티타니아와 오베론은 셰익스피어의 한 희곡에 나오는 요정 여왕과 요정 왕이다. 몇몇 다른 위성은 알렉산더 포프의 시에서 이름을 따왔다.",
+    "vocab": [
+      {
+        "word": "solar system",
+        "meaning": "태양계"
+      },
+      {
+        "word": "be named after",
+        "meaning": "~의 이름을 따서 짓다"
+      },
+      {
+        "word": "figure",
+        "meaning": "(이야기 속) 인물"
+      },
+      {
+        "word": "myth",
+        "meaning": "신화"
+      },
+      {
+        "word": "character",
+        "meaning": "등장인물"
+      },
+      {
+        "word": "play",
+        "meaning": "희곡, 연극"
+      },
+      {
+        "word": "fairy",
+        "meaning": "요정"
+      },
+      {
+        "word": "take one's name from",
+        "meaning": "~에서 이름을 따오다"
+      }
+    ]
+  },
+  {
+    "id": "E2-16",
+    "topicTitle": "여덟째 행성 해왕성",
+    "questionType": "content_match",
+    "passageText": "Neptune is the farthest planet from the Sun, about 30 times farther from the Sun than Earth is. Because of this, it moves around the Sun very slowly. One full trip takes Neptune about 165 Earth years. Astronomers first spotted Neptune in 1846. Since then, it has gone around the Sun only once, finishing that first trip in 2011.",
+    "promptText": "해왕성에 대해 윗글에서 알 수 있는 것은?",
+    "choices": [
+      "발견된 뒤 해를 처음 한 바퀴 다 돈 것은 2011년이다.",
+      "망원경으로 보기 전에 계산으로 자리가 알려졌다.",
+      "태양계 행성 가운데 가장 센 바람이 분다.",
+      "가장 큰 위성은 해왕성이 자전하는 방향과 반대로 돈다."
+    ],
+    "correctIndex": 0,
+    "explanation": "윗글의 'it has gone around the Sun only once, finishing that first trip in 2011'은 '해왕성은 해를 겨우 한 바퀴 돌았고, 그 첫 바퀴를 2011년에 마쳤다.'라는 뜻입니다. 계산으로 먼저 자리가 알려진 것, 가장 센 바람, 거꾸로 도는 가장 큰 위성은 맞는 사실이지만 이 글에는 나오지 않습니다.",
+    "translation": "해왕성은 해에서 가장 먼 행성으로, 지구보다 30배쯤 멀리 떨어져 있다. 그래서 해왕성은 해 둘레를 아주 느리게 돈다. 해왕성이 해를 한 바퀴 다 도는 데에는 지구의 햇수로 약 165년이 걸린다. 천문학자들이 해왕성을 처음 찾아낸 것은 1846년이다. 그 뒤로 해왕성은 해를 겨우 한 바퀴 돌았는데, 그 첫 바퀴를 마친 것이 2011년이다.",
+    "vocab": [
+      {
+        "word": "farthest",
+        "meaning": "가장 먼"
+      },
+      {
+        "word": "~ times farther",
+        "meaning": "~배 더 먼"
+      },
+      {
+        "word": "because of this",
+        "meaning": "이 때문에"
+      },
+      {
+        "word": "trip",
+        "meaning": "(한 바퀴) 도는 길"
+      },
+      {
+        "word": "astronomer",
+        "meaning": "천문학자"
+      },
+      {
+        "word": "spot",
+        "meaning": "발견하다, 알아보다"
+      },
+      {
+        "word": "since then",
+        "meaning": "그 뒤로"
+      },
+      {
+        "word": "go around",
+        "meaning": "~의 둘레를 돌다"
+      }
+    ]
+  },
+  {
+    "id": "E2-17",
+    "topicTitle": "달에 두고 온 거울",
+    "questionType": "answerable_question",
+    "passageText": "Astronauts who visited the Moon left special mirrors on its surface. Scientists on Earth still shoot laser beams at these mirrors today. The light bounces off the mirrors, and its trip there and back takes about two and a half seconds. By timing this trip very carefully, scientists have found that the Moon is slowly drifting away from Earth. It moves about 3.8 centimeters farther each year.",
+    "promptText": "윗글을 읽고 답할 수 있는 질문은?",
+    "choices": [
+      "달은 해마다 지구에서 얼마나 더 멀어지는가?",
+      "달의 모양은 왜 날마다 달라 보이는가?",
+      "달에 남은 발자국은 왜 오래 사라지지 않는가?",
+      "달의 뒷면은 언제 처음 사진으로 찍혔는가?"
+    ],
+    "correctIndex": 0,
+    "explanation": "윗글의 'It moves about 3.8 centimeters farther each year.'는 '달은 해마다 3.8센티미터쯤 더 멀어진다.'라는 뜻이므로 이 질문에 답할 수 있습니다. 달의 모양이 바뀌는 까닭, 발자국이 오래 남는 까닭, 달의 뒷면을 처음 찍은 때는 이 글에 나오지 않습니다.",
+    "translation": "달에 다녀온 우주인들은 달 표면에 특별한 거울을 두고 왔다. 지구의 과학자들은 지금도 이 거울에 레이저 빛을 쏜다. 빛은 거울에 부딪혀 튕겨 나오는데, 달까지 갔다가 돌아오는 데 2.5초쯤 걸린다. 과학자들은 빛이 오가는 데 걸리는 시간을 아주 꼼꼼하게 재어, 달이 지구에서 천천히 멀어지고 있다는 것을 알아냈다. 달은 해마다 3.8센티미터쯤 더 멀어진다.",
+    "vocab": [
+      {
+        "word": "astronaut",
+        "meaning": "우주인"
+      },
+      {
+        "word": "surface",
+        "meaning": "표면, 겉면"
+      },
+      {
+        "word": "laser beam",
+        "meaning": "레이저 빛"
+      },
+      {
+        "word": "bounce off",
+        "meaning": "~에 부딪혀 튕겨 나오다"
+      },
+      {
+        "word": "time",
+        "meaning": "(걸리는 시간을) 재다"
+      },
+      {
+        "word": "drift away",
+        "meaning": "서서히 멀어지다"
+      },
+      {
+        "word": "farther",
+        "meaning": "더 멀리"
+      }
+    ]
+  },
+  {
+    "id": "E2-18",
+    "topicTitle": "아즈텍 사람들의 카카오",
+    "questionType": "not_mentioned",
+    "passageText": "Long before chocolate bars existed, the Aztecs of Mexico made a drink from cacao beans. They ground the beans and mixed them with water and spices such as chili pepper. Then they poured the drink from one cup into another to make thick foam on top. The drink tasted bitter, not sweet. It was served mostly to nobles, warriors, and rich traders.",
+    "promptText": "아즈텍 사람들과 카카오에 대해 윗글에서 설명하지 않은 것은?",
+    "choices": [
+      "카카오 콩을 물건값을 치르는 돈처럼 쓰기도 했다.",
+      "카카오 음료에 고추 같은 향신료를 넣었다.",
+      "음료를 이 잔 저 잔에 옮겨 부어 거품을 냈다.",
+      "카카오 음료는 주로 귀족이나 전사, 부자 상인이 마셨다."
+    ],
+    "correctIndex": 0,
+    "explanation": "윗글에는 고추 같은 향신료를 섞었다는 것('mixed them with water and spices such as chili pepper'), 잔에서 잔으로 옮겨 부어 거품을 냈다는 것, 주로 귀족과 전사, 부유한 상인에게 음료를 냈다는 것('served mostly to nobles, warriors, and rich traders')이 나옵니다. 아즈텍 사람들이 카카오 콩을 돈처럼 썼다는 것도 맞는 사실이지만 이 글에는 나오지 않습니다.",
+    "translation": "초콜릿 바가 생기기 훨씬 전에 멕시코의 아즈텍 사람들은 카카오 콩으로 음료를 만들었다. 그들은 콩을 빻아 물과 고추 같은 향신료에 섞었다. 그러고는 음료를 한 잔에서 다른 잔으로 옮겨 부어 위에 거품이 두껍게 일게 했다. 이 음료는 달지 않고 썼다. 음료는 주로 귀족과 전사, 부유한 상인들에게 냈다.",
+    "vocab": [
+      {
+        "word": "long before",
+        "meaning": "~보다 훨씬 전에"
+      },
+      {
+        "word": "exist",
+        "meaning": "있다, 존재하다"
+      },
+      {
+        "word": "grind (ground)",
+        "meaning": "빻다, 갈다"
+      },
+      {
+        "word": "spice",
+        "meaning": "향신료"
+      },
+      {
+        "word": "pour",
+        "meaning": "붓다"
+      },
+      {
+        "word": "foam",
+        "meaning": "거품"
+      },
+      {
+        "word": "bitter",
+        "meaning": "(맛이) 쓴"
+      },
+      {
+        "word": "serve",
+        "meaning": "(음식을) 내다, 차려 내다"
+      }
+    ]
+  },
+  {
+    "id": "E2-19",
+    "topicTitle": "유럽으로 건너간 감자",
+    "questionType": "cause",
+    "passageText": "Potatoes came to Europe from South America in the 1500s. At first, many Europeans did not want to eat them. Over time, however, more farmers began to grow them, and some historians say war was one reason. Soldiers often took or burned the grain stored in farmers' barns. But potatoes could stay hidden in the ground until the farmers needed them.",
+    "promptText": "윗글에서 유럽의 농민들이 감자를 많이 기르게 된 까닭으로 든 것은?",
+    "choices": [
+      "땅속에 있어서 군인들이 빼앗거나 태우기 어려웠다.",
+      "좁은 밭에서도 많은 양을 거둘 수 있었다.",
+      "서늘하고 거친 땅에서도 잘 자랐다.",
+      "몇몇 나라의 왕이 나서서 심기를 권했다."
+    ],
+    "correctIndex": 0,
+    "explanation": "윗글은 군인들이 곳간의 곡식을 빼앗거나 태웠지만 'potatoes could stay hidden in the ground until the farmers needed them', 곧 '감자는 농민이 필요할 때까지 땅속에 숨어 있을 수 있었다.'고 설명합니다. 좁은 땅에서 많이 거두는 것, 서늘한 땅에서 잘 자라는 것, 왕이 심기를 권한 것도 실제 까닭으로 꼽히지만 이 글에는 나오지 않습니다.",
+    "translation": "감자는 1500년대에 남아메리카에서 유럽으로 건너왔다. 처음에는 감자를 먹으려 하지 않는 유럽 사람이 많았다. 하지만 시간이 흐르면서 감자를 기르는 농민이 늘었는데, 어떤 역사학자들은 전쟁이 그 까닭 가운데 하나였다고 말한다. 군인들은 농민의 곳간에 쌓아 둔 곡식을 빼앗거나 불태우는 일이 많았다. 하지만 감자는 농민이 필요해서 캐낼 때까지 땅속에 숨은 채로 있을 수 있었다.",
+    "vocab": [
+      {
+        "word": "at first",
+        "meaning": "처음에는"
+      },
+      {
+        "word": "over time",
+        "meaning": "시간이 흐르면서"
+      },
+      {
+        "word": "historian",
+        "meaning": "역사학자"
+      },
+      {
+        "word": "one reason",
+        "meaning": "까닭 가운데 하나"
+      },
+      {
+        "word": "grain",
+        "meaning": "곡식"
+      },
+      {
+        "word": "barn",
+        "meaning": "곳간, 헛간"
+      },
+      {
+        "word": "stay hidden",
+        "meaning": "숨겨진 채로 있다"
+      }
+    ]
+  },
+  {
+    "id": "E2-20",
+    "topicTitle": "영국 사람들과 차",
+    "questionType": "cause",
+    "passageText": "In the 1700s, tea cost a lot in Britain because the government put a heavy tax on it. Because of this, many people bought tea from smugglers, who brought it into the country secretly and sold it for less. In 1784, the government cut the tax on tea sharply. Tea prices dropped, and smuggling nearly disappeared. After that, far more ordinary families could afford to drink tea.",
+    "promptText": "윗글에서 영국 사람들이 차를 즐겨 마시게 된 까닭으로 든 것은?",
+    "choices": [
+      "정부가 차에 매기던 무거운 세금을 낮추어 주었다.",
+      "포르투갈 출신 왕비가 궁중에 차 마시는 문화를 퍼뜨렸다.",
+      "영국 사람들이 인도에서 차나무를 기르기 시작했다.",
+      "오후에 차와 과자를 드는 모임이 유행했다."
+    ],
+    "correctIndex": 0,
+    "explanation": "윗글의 'In 1784, the government cut the tax on tea sharply.'는 '1784년에 정부가 차에 붙는 세금을 크게 낮추었다.'라는 뜻이고, 그 뒤 찻값이 내려 훨씬 많은 가정이 차를 마실 수 있었다고 합니다. 포르투갈에서 온 왕비, 인도의 차 농장, 오후의 차 모임도 차가 널리 퍼진 실제 까닭으로 꼽히지만 이 글에는 나오지 않습니다.",
+    "translation": "1700년대 영국에서는 정부가 차에 무거운 세금을 매겼기 때문에 찻값이 무척 비쌌다. 그래서 많은 사람이 밀수꾼에게서 차를 샀는데, 밀수꾼들은 몰래 차를 들여와 더 싸게 팔았다. 1784년에 정부는 차에 붙는 세금을 크게 낮추었다. 찻값이 내려가자 밀수는 거의 사라졌다. 그 뒤로 훨씬 많은 보통 가정이 차를 사서 마실 수 있게 되었다.",
+    "vocab": [
+      {
+        "word": "cost a lot",
+        "meaning": "값이 많이 들다, 비싸다"
+      },
+      {
+        "word": "tax",
+        "meaning": "세금"
+      },
+      {
+        "word": "smuggler",
+        "meaning": "밀수꾼"
+      },
+      {
+        "word": "secretly",
+        "meaning": "몰래"
+      },
+      {
+        "word": "for less",
+        "meaning": "더 싼 값에"
+      },
+      {
+        "word": "sharply",
+        "meaning": "크게, 급격히"
+      },
+      {
+        "word": "ordinary",
+        "meaning": "평범한, 보통의"
+      },
+      {
+        "word": "afford to",
+        "meaning": "(돈이 있어서) ~할 여유가 되다"
+      }
+    ]
+  },
+  {
+    "id": "E2-21",
+    "topicTitle": "영화관의 팝콘",
+    "questionType": "cause",
+    "passageText": "During World War II, sugar was hard to get in the United States. Much of it went to soldiers, and families could buy only a little. Candy makers could not produce as much candy as before, so movie theaters had less candy to sell. Theaters sold more popcorn instead, since popcorn did not need sugar. During the war, Americans ate about three times as much popcorn as before the war.",
+    "promptText": "윗글에서 미국 영화관에서 팝콘을 더 많이 팔게 된 까닭으로 든 것은?",
+    "choices": [
+      "전쟁으로 설탕이 귀해져 사탕이 모자랐다.",
+      "살림이 어려운 때에도 사 먹을 만큼 값이 쌌다.",
+      "소리 나는 영화가 나와 관객이 크게 늘었다.",
+      "옮겨 다니며 튀길 수 있는 기계가 발명되었다."
+    ],
+    "correctIndex": 0,
+    "explanation": "윗글은 전쟁 중에 설탕을 구하기 어려워 사탕이 줄었고, 'Theaters sold more popcorn instead, since popcorn did not need sugar.', 곧 '팝콘에는 설탕이 필요 없어서 영화관이 그 대신 팝콘을 더 많이 팔았다.'고 설명합니다. 싼 값, 소리 나는 영화, 옮겨 다니는 팝콘 기계도 팝콘이 영화관에 퍼진 실제 까닭으로 꼽히지만 이 글에는 나오지 않습니다.",
+    "translation": "제2차 세계 대전 동안 미국에서는 설탕을 구하기가 어려웠다. 설탕의 많은 양이 군인들에게 갔고, 가정에서는 조금밖에 살 수 없었다. 사탕을 만드는 회사들이 예전만큼 사탕을 만들지 못하자, 영화관에서도 팔 사탕이 줄었다. 그래서 영화관은 설탕이 필요 없는 팝콘을 그 대신 더 많이 팔았다. 미국 사람들은 전쟁 전보다 팝콘을 세 배쯤 더 먹었다.",
+    "vocab": [
+      {
+        "word": "hard to get",
+        "meaning": "구하기 어려운"
+      },
+      {
+        "word": "only a little",
+        "meaning": "조금밖에"
+      },
+      {
+        "word": "candy maker",
+        "meaning": "사탕 만드는 회사"
+      },
+      {
+        "word": "produce",
+        "meaning": "만들어 내다"
+      },
+      {
+        "word": "as much as before",
+        "meaning": "예전만큼"
+      },
+      {
+        "word": "instead",
+        "meaning": "그 대신"
+      },
+      {
+        "word": "since",
+        "meaning": "~이기 때문에"
+      },
+      {
+        "word": "three times as much",
+        "meaning": "세 배만큼"
+      }
+    ]
+  },
+  {
+    "id": "E2-22",
+    "topicTitle": "세계로 팔려 가는 바나나",
+    "questionType": "content_match",
+    "passageText": "For many years, most bananas shipped to other countries were a kind called Gros Michel. But a disease slowly spread and killed huge numbers of these plants. Farmers grew new banana plants from pieces of older ones, so the plants were almost exactly alike. That made it easy for the disease to spread. By the 1960s, growers had switched to another kind called Cavendish, which most stores sell today.",
+    "promptText": "바나나에 대해 윗글에서 알 수 있는 것은?",
+    "choices": [
+      "예전에 많이 팔리던 품종은 병 때문에 크게 줄었다.",
+      "바나나 나무는 사실 나무가 아니라 커다란 풀이다.",
+      "익어 갈수록 녹말이 당으로 바뀌어 단맛이 난다.",
+      "따뜻하고 비가 많은 열대 지방에서 잘 자란다."
+    ],
+    "correctIndex": 0,
+    "explanation": "윗글의 'But a disease slowly spread and killed huge numbers of these plants.'는 '그런데 병이 서서히 퍼져 이 바나나를 엄청나게 많이 죽였다.'라는 뜻입니다. 그래서 농민들은 캐번디시라는 다른 품종으로 바꾸었습니다. 바나나가 커다란 풀이라는 것, 익으면서 달아지는 것, 열대 지방에서 잘 자라는 것은 맞는 사실이지만 이 글에는 나오지 않습니다.",
+    "translation": "오랫동안 다른 나라로 실어 보내는 바나나는 대부분 '그로 미셸'이라는 품종이었다. 그런데 병이 서서히 퍼져 이 바나나를 엄청나게 많이 죽였다. 농민들은 오래된 그루의 한 부분을 떼어 새 그루로 길렀기 때문에, 그 바나나들은 거의 똑같았다. 그래서 병이 쉽게 퍼졌다. 1960년대에 이르러 농민들은 '캐번디시'라는 다른 품종으로 바꾸었는데, 오늘날 대부분의 가게에서 파는 바나나가 바로 이것이다.",
+    "vocab": [
+      {
+        "word": "ship",
+        "meaning": "(배 따위로) 실어 보내다"
+      },
+      {
+        "word": "kind",
+        "meaning": "종류, 품종"
+      },
+      {
+        "word": "disease",
+        "meaning": "병"
+      },
+      {
+        "word": "huge numbers of",
+        "meaning": "엄청나게 많은"
+      },
+      {
+        "word": "alike",
+        "meaning": "서로 닮은, 비슷한"
+      },
+      {
+        "word": "grower",
+        "meaning": "재배하는 사람, 농민"
+      },
+      {
+        "word": "switch to",
+        "meaning": "~으로 바꾸다"
+      }
+    ]
+  },
+  {
+    "id": "E2-23",
+    "topicTitle": "케첩이라는 이름",
+    "questionType": "vocabulary",
+    "passageText": "The word 'ketchup' probably comes from the name of a fish sauce from southern China. British traders tasted sauces like it in Asia. Back in Britain, cooks made their own versions with mushrooms, walnuts, or oysters. Tomato ketchup came later, in the early 1800s in the United States. Over time, it grew so popular that most people now think of ketchup as a tomato sauce.",
+    "promptText": "윗글에서 'grew'의 뜻으로 알맞은 것은?",
+    "choices": [
+      "(차츰) 어떤 상태가 되다.",
+      "(채소나 곡식을) 재배하다.",
+      "(아이가) 키가 크다.",
+      "(수염이나 머리카락을) 기르다."
+    ],
+    "correctIndex": 0,
+    "explanation": "윗글의 'Over time, it grew so popular that most people now think of ketchup as a tomato sauce.'는 '시간이 흐르면서 토마토케첩이 무척 인기를 얻게 되어, 이제 사람들 대부분은 케첩을 토마토 소스로 여긴다.'라는 뜻입니다. grew 뒤에 popular(인기 있는)가 오므로 여기서는 '(차츰) ~해지다'라는 뜻입니다. 채소를 재배하다, 키가 크다, 수염을 기르다도 grow의 뜻이지만 이 글의 뜻과는 다릅니다.",
+    "translation": "'케첩'이라는 낱말은 중국 남부에서 먹던 생선 소스의 이름에서 왔을 것이라고 한다. 영국 상인들은 아시아에서 이와 비슷한 소스를 맛보았다. 영국에서는 요리사들이 버섯이나 호두, 굴로 저마다의 케첩을 만들었다. 토마토케첩은 그보다 뒤인 1800년대 초에 미국에서 나왔다. 시간이 흐르면서 토마토케첩이 무척 인기를 얻게 되어, 이제 사람들 대부분은 케첩을 토마토 소스로 여긴다.",
+    "vocab": [
+      {
+        "word": "probably",
+        "meaning": "아마"
+      },
+      {
+        "word": "come from",
+        "meaning": "~에서 오다"
+      },
+      {
+        "word": "trader",
+        "meaning": "상인"
+      },
+      {
+        "word": "version",
+        "meaning": "(조금씩 다르게 만든) 것, 판"
+      },
+      {
+        "word": "walnut",
+        "meaning": "호두"
+      },
+      {
+        "word": "oyster",
+        "meaning": "굴"
+      },
+      {
+        "word": "grow",
+        "meaning": "(차츰) ~하게 되다"
+      },
+      {
+        "word": "think of A as B",
+        "meaning": "A를 B로 여기다"
+      }
+    ]
+  },
+  {
+    "id": "E2-24",
+    "topicTitle": "엘리자베스 타워의 시계",
+    "questionType": "vocabulary",
+    "passageText": "The Great Clock in London's Elizabeth Tower is very accurate. Many people call it Big Ben, but that is really the name of its biggest bell. Its keepers use a simple trick to adjust it. A small stack of old pennies sits on the clock's pendulum. If the clock runs a little slow, a keeper adds a penny. Each extra penny makes the clock gain about 0.4 seconds a day.",
+    "promptText": "윗글에서 'runs'의 뜻으로 알맞은 것은?",
+    "choices": [
+      "(시계나 기계가) 돌아가다.",
+      "(사람이나 동물이) 달리다.",
+      "(가게나 회사를) 운영하다.",
+      "(물이나 눈물이) 흐르다."
+    ],
+    "correctIndex": 0,
+    "explanation": "윗글의 'If the clock runs a little slow, a keeper adds a penny.'는 '시계가 조금 느리게 가면 관리인이 동전을 하나 더 올린다.'라는 뜻입니다. 여기서 runs는 시계가 '돌아가다, 가다'라는 뜻으로 쓰였습니다. 달리다, 운영하다, 흐르다도 run의 뜻이지만 이 글의 뜻과는 다릅니다.",
+    "translation": "런던 엘리자베스 타워의 큰 시계는 아주 정확하다. 많은 사람이 이 시계를 '빅 벤'이라고 부르지만, 사실 빅 벤은 이 시계탑에서 가장 큰 종의 이름이다. 시계를 돌보는 사람들은 간단한 방법으로 시계를 맞춘다. 시계의 추 위에는 옛날 동전 몇 개가 작게 쌓여 있다. 시계가 조금 느리게 가면 관리인이 동전을 하나 더 올린다. 동전이 하나 늘 때마다 시계는 하루에 0.4초쯤 빨라진다.",
+    "vocab": [
+      {
+        "word": "accurate",
+        "meaning": "정확한"
+      },
+      {
+        "word": "keeper",
+        "meaning": "관리인, 돌보는 사람"
+      },
+      {
+        "word": "adjust",
+        "meaning": "맞추다, 조절하다"
+      },
+      {
+        "word": "stack",
+        "meaning": "(차곡차곡 쌓은) 더미"
+      },
+      {
+        "word": "penny",
+        "meaning": "페니(영국의 작은 동전)"
+      },
+      {
+        "word": "pendulum",
+        "meaning": "(시계의) 추, 진자"
+      },
+      {
+        "word": "run",
+        "meaning": "(시계·기계가) 돌아가다, 가다"
+      },
+      {
+        "word": "gain",
+        "meaning": "(시계가) 빨라지다"
+      }
+    ]
+  },
+  {
+    "id": "E2-25",
+    "topicTitle": "다시 칠하는 에펠탑",
+    "questionType": "content_match",
+    "passageText": "About every seven years, workers repaint the Eiffel Tower, mostly by hand with brushes. The paint protects the iron from rust. The tower is not painted in just one color. Painters use three shades of the same color, from dark near the ground to light at the top. This makes the tower look like one even color against the sky.",
+    "promptText": "에펠탑에 대해 윗글에서 알 수 있는 것은?",
+    "choices": [
+      "탑의 아래쪽을 위쪽보다 짙은 색으로 칠한다.",
+      "1889년 파리 만국 박람회에 맞춰 세워졌다.",
+      "처음에는 20년 뒤에 허물 계획이었다.",
+      "더운 여름에는 쇠가 늘어나 조금 높아진다."
+    ],
+    "correctIndex": 0,
+    "explanation": "윗글의 'from dark near the ground to light at the top'은 '땅 가까이는 짙게, 꼭대기는 옅게'라는 뜻이므로 탑의 아래쪽을 더 짙은 색으로 칠한다는 것을 알 수 있습니다. 만국 박람회에 맞춰 세운 것, 20년 뒤에 허물 계획이었던 것, 여름에 탑이 조금 높아지는 것은 맞는 사실이지만 이 글에는 나오지 않습니다.",
+    "translation": "7년쯤마다 일꾼들이 에펠탑을 새로 칠하는데, 대부분 붓을 들고 손으로 칠한다. 페인트는 쇠가 녹스는 것을 막아 준다. 에펠탑은 한 가지 색으로만 칠하지 않는다. 칠하는 사람들은 같은 색을 세 가지 짙기로 나누어 쓰는데, 땅 가까이는 짙게, 꼭대기로 갈수록 옅게 칠한다. 이렇게 하면 하늘을 배경으로 볼 때 탑 전체가 고르게 한 가지 색으로 보인다.",
+    "vocab": [
+      {
+        "word": "repaint",
+        "meaning": "다시 칠하다"
+      },
+      {
+        "word": "by hand",
+        "meaning": "손으로"
+      },
+      {
+        "word": "protect A from B",
+        "meaning": "A를 B로부터 지키다"
+      },
+      {
+        "word": "rust",
+        "meaning": "녹"
+      },
+      {
+        "word": "shade",
+        "meaning": "(같은 색의) 짙고 옅은 정도, 색조"
+      },
+      {
+        "word": "even",
+        "meaning": "고른"
+      },
+      {
+        "word": "against the sky",
+        "meaning": "하늘을 배경으로"
+      }
+    ]
+  },
+  {
+    "id": "E2-26",
+    "topicTitle": "뉴욕의 자유의 여신상",
+    "questionType": "not_mentioned",
+    "passageText": "The Statue of Liberty looks solid and heavy, but its copper skin is only about 2.4 millimeters thick. That is about as thin as two coins stacked together. The thin skin is held up by a strong metal frame inside the statue. This frame was designed by Gustave Eiffel, the engineer who later built the Eiffel Tower. Visitors can climb stairs inside the statue up to its crown.",
+    "promptText": "자유의 여신상에 대해 윗글에서 설명하지 않은 것은?",
+    "choices": [
+      "프랑스가 미국에 우정의 선물로 보냈다.",
+      "겉을 덮은 구리판이 아주 얇다.",
+      "에펠탑을 지은 기술자가 속 뼈대를 설계했다.",
+      "계단을 올라 머리에 쓴 왕관까지 갈 수 있다."
+    ],
+    "correctIndex": 0,
+    "explanation": "윗글에는 구리로 된 겉면이 아주 얇다는 것('its copper skin is only about 2.4 millimeters thick', 구리 겉면의 두께가 2.4밀리미터쯤밖에 안 된다), 에펠탑을 지은 에펠이 안쪽 뼈대를 설계했다는 것, 계단으로 머리에 쓴 왕관까지 오를 수 있다는 것이 나옵니다. 프랑스가 미국에 선물로 보냈다는 것은 널리 알려진 사실이지만 이 글에는 나오지 않습니다.",
+    "translation": "자유의 여신상은 속이 꽉 차고 무거워 보이지만, 겉을 덮은 구리의 두께는 2.4밀리미터쯤밖에 되지 않는다. 이는 동전 두 개를 포갠 두께와 비슷하다. 이 얇은 겉면은 여신상 안쪽의 튼튼한 금속 뼈대가 떠받치고 있다. 이 뼈대는 뒷날 에펠탑을 지은 기술자 귀스타브 에펠이 설계했다. 방문객들은 여신상 안의 계단을 올라 머리에 쓴 왕관까지 갈 수 있다.",
+    "vocab": [
+      {
+        "word": "statue",
+        "meaning": "조각상"
+      },
+      {
+        "word": "solid",
+        "meaning": "속이 꽉 찬, 단단한"
+      },
+      {
+        "word": "copper",
+        "meaning": "구리"
+      },
+      {
+        "word": "hold up",
+        "meaning": "떠받치다"
+      },
+      {
+        "word": "frame",
+        "meaning": "뼈대, 틀"
+      },
+      {
+        "word": "design",
+        "meaning": "설계하다"
+      },
+      {
+        "word": "engineer",
+        "meaning": "기술자"
+      },
+      {
+        "word": "crown",
+        "meaning": "왕관"
+      }
+    ]
+  },
+  {
+    "id": "E2-27",
+    "topicTitle": "오랜 세월 쌓은 만리장성",
+    "questionType": "answerable_question",
+    "passageText": "The Great Wall of China is not one single wall made of stone. It was built by many rulers over more than 2,000 years, using whatever materials were nearby. In the dry deserts of the far west, there was little stone. So builders there stacked layers of gravel and sand between layers of reeds and branches. Some parts of these desert walls, built about 2,000 years ago, still stand today.",
+    "promptText": "윗글을 읽고 답할 수 있는 질문은?",
+    "choices": [
+      "돌이 드문 곳에서는 성벽을 무엇으로 쌓았는가?",
+      "만리장성은 무엇을 막으려고 쌓았는가?",
+      "만리장성은 왜 우주에서 맨눈으로 보기 어려운가?",
+      "만리장성을 모두 이으면 길이가 얼마나 되는가?"
+    ],
+    "correctIndex": 0,
+    "explanation": "윗글의 'builders there stacked layers of gravel and sand between layers of reeds and branches'는 '그곳의 일꾼들은 갈대와 나뭇가지 층 사이에 자갈과 모래 층을 쌓았다.'라는 뜻이므로 이 질문에 답할 수 있습니다. 만리장성을 쌓은 목적, 우주에서 잘 보이지 않는 까닭, 전체 길이는 이 글에 나오지 않습니다.",
+    "translation": "만리장성은 돌로 쌓은 하나의 성벽이 아니다. 만리장성은 2천 년이 넘는 동안 여러 왕이 가까이에서 구할 수 있는 재료로 쌓은 것이다. 서쪽 끝의 메마른 사막에는 돌이 드물었다. 그래서 그곳의 일꾼들은 갈대와 나뭇가지 층 사이사이에 자갈과 모래 층을 쌓아 올렸다. 약 2천 년 전에 쌓은 이 사막 성벽 가운데 일부는 오늘날까지 서 있다.",
+    "vocab": [
+      {
+        "word": "single",
+        "meaning": "단 하나의"
+      },
+      {
+        "word": "ruler",
+        "meaning": "통치자, 왕"
+      },
+      {
+        "word": "whatever",
+        "meaning": "어떤 ~이든"
+      },
+      {
+        "word": "nearby",
+        "meaning": "가까이에 있는"
+      },
+      {
+        "word": "stack",
+        "meaning": "쌓다"
+      },
+      {
+        "word": "layer",
+        "meaning": "층, 겹"
+      },
+      {
+        "word": "gravel",
+        "meaning": "자갈"
+      },
+      {
+        "word": "reed",
+        "meaning": "갈대"
+      }
+    ]
+  },
+  {
+    "id": "E2-28",
+    "topicTitle": "로마의 콜로세움",
+    "questionType": "answerable_question",
+    "passageText": "The Colosseum in ancient Rome had no roof. Still, the crowds could get shade on hot days. Workers spread a huge cloth cover called the velarium over many of the seats. Tall wooden poles on top of the outer wall held it up. Some historians believe sailors did this job, because they knew how to handle ropes and sails.",
+    "promptText": "윗글을 읽고 답할 수 있는 질문은?",
+    "choices": [
+      "경기장 위 가리개를 펼치는 일은 누가 맡았다고 보는가?",
+      "콜로세움은 왜 지금 한쪽 벽이 무너져 있는가?",
+      "콜로세움에는 관중이 몇 명쯤 들어갈 수 있었는가?",
+      "경기장 바닥 아래의 방들은 무엇에 쓰였는가?"
+    ],
+    "correctIndex": 0,
+    "explanation": "윗글의 'Some historians believe sailors did this job'은 '어떤 역사학자들은 선원들이 이 일을 맡았다고 본다.'라는 뜻이므로 이 질문에 답할 수 있습니다. 한쪽 벽이 무너진 까닭, 들어갈 수 있던 관중의 수, 바닥 아래 방의 쓰임은 이 글에 나오지 않습니다.",
+    "translation": "고대 로마의 콜로세움에는 지붕이 없었다. 그래도 더운 날 관중은 그늘에 있을 수 있었다. 일꾼들이 '벨라리움'이라는 커다란 천 가리개를 많은 자리 위로 펼쳤기 때문이다. 바깥벽 꼭대기에 세운 높은 나무 기둥들이 이 가리개를 떠받쳤다. 어떤 역사학자들은 밧줄과 돛을 다룰 줄 아는 선원들이 이 일을 맡았다고 본다.",
+    "vocab": [
+      {
+        "word": "crowd",
+        "meaning": "관중, 모인 사람들"
+      },
+      {
+        "word": "shade",
+        "meaning": "그늘"
+      },
+      {
+        "word": "spread",
+        "meaning": "펼치다"
+      },
+      {
+        "word": "cover",
+        "meaning": "덮개, 가리개"
+      },
+      {
+        "word": "pole",
+        "meaning": "기둥, 장대"
+      },
+      {
+        "word": "hold up",
+        "meaning": "떠받치다"
+      },
+      {
+        "word": "handle",
+        "meaning": "다루다"
+      },
+      {
+        "word": "sail",
+        "meaning": "돛"
+      }
+    ]
+  }
+]

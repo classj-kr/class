@@ -1,0 +1,1426 @@
+[
+  {
+    "id": "E3-01",
+    "topicTitle": "고대 이집트의 그림 문자",
+    "questionType": "content_match",
+    "passageText": "Ancient Egyptian hieroglyphs could be written in rows or in columns. The signs were placed in neat square groups instead of being lined up one by one. A row could run from left to right or from right to left, so readers needed a clue about where to begin. The clue was in the signs themselves. Signs shaped like people and animals in a line all faced the same way. A reader started from the side that those faces were looking toward. On the two sides of a doorway, the signs often faced opposite ways, so the two sides looked like mirror images of each other.",
+    "promptText": "윗글의 내용과 일치하는 것은?",
+    "choices": [
+      "줄 속의 사람이나 동물 모양 글자가 바라보는 쪽부터 읽는다.",
+      "로제타석에 새겨진 글을 견주어 글자의 뜻을 풀어냈다.",
+      "왕의 이름은 길쭉한 고리 모양의 테두리 안에 적었다.",
+      "물가에서 자라는 풀로 만든 파피루스에도 이 글자를 적었다.",
+      "빨리 적을 수 있게 모양을 줄인 흘림 글씨도 함께 썼다."
+    ],
+    "correctIndex": 0,
+    "explanation": "윗글의 'A reader started from the side that those faces were looking toward.'는 '읽는 사람은 그 얼굴들이 바라보는 쪽에서부터 읽기 시작했다'는 뜻입니다. 로제타석으로 글자를 풀어낸 일, 왕의 이름을 두른 테두리, 파피루스, 흘림 글씨는 모두 사실이지만 이 글에는 나오지 않습니다.",
+    "translation": "고대 이집트의 그림 문자는 가로줄로도 세로줄로도 쓸 수 있었다. 글자는 하나씩 늘어놓지 않고 가지런한 네모 묶음으로 모아 적었다. 가로줄은 왼쪽에서 오른쪽으로도, 오른쪽에서 왼쪽으로도 쓸 수 있었기 때문에, 읽는 사람에게는 어디서부터 읽을지 알려 주는 실마리가 필요했다. 그 실마리는 글자 안에 있었다. 한 줄 안에 있는 사람이나 동물 모양의 글자는 모두 같은 쪽을 향했다. 읽는 사람은 그 얼굴들이 바라보는 쪽에서부터 읽어 나갔다. 문의 양옆에서는 글자가 서로 반대쪽을 향하는 경우가 많아서, 두 쪽이 거울에 비친 모습처럼 보였다.",
+    "vocab": [
+      {
+        "word": "hieroglyph",
+        "meaning": "(고대 이집트의) 그림 문자"
+      },
+      {
+        "word": "column",
+        "meaning": "세로줄, 세로 단; 기둥"
+      },
+      {
+        "word": "instead of",
+        "meaning": "~ 대신에, ~하지 않고"
+      },
+      {
+        "word": "run",
+        "meaning": "(줄·길이) 이어지다, 뻗다; 달리다"
+      },
+      {
+        "word": "clue",
+        "meaning": "실마리, 단서"
+      },
+      {
+        "word": "face",
+        "meaning": "~ 쪽을 향하다; 얼굴"
+      },
+      {
+        "word": "look toward",
+        "meaning": "~ 쪽을 바라보다"
+      },
+      {
+        "word": "mirror image",
+        "meaning": "거울에 비친 모습, 좌우가 뒤바뀐 꼴"
+      }
+    ]
+  },
+  {
+    "id": "E3-02",
+    "topicTitle": "메소포타미아의 점토판",
+    "questionType": "answerable_question",
+    "passageText": "In ancient Mesopotamia, people wrote on small tablets of wet clay and let them dry. Many of these tablets were not stories but everyday records, such as loans and sales. A dried tablet was hard, but someone could still wet it and change a number. To stop this, writers sometimes wrapped a finished contract in a thin layer of clay, like an envelope. They wrote the same words, or a short version of them, on the outside and pressed their seals into it. If people later argued about the deal, a judge could break the envelope. Then he compared the outside with the copy that had stayed safe inside.",
+    "promptText": "윗글을 읽고 답할 수 있는 질문은?",
+    "choices": [
+      "약속을 적은 판을 남이 몰래 고치지 못하게 어떻게 했는가?",
+      "점토판의 글자가 쐐기 모양의 획으로 바뀐 까닭은 무엇인가?",
+      "오랫동안 잊힌 이 글자를 학자들은 어떻게 다시 읽어 냈는가?",
+      "글을 배우는 아이들은 어떤 곳에서 쓰기를 익혔는가?",
+      "점토에 글자를 눌러 찍는 도구는 무엇으로 만들었는가?"
+    ],
+    "correctIndex": 0,
+    "explanation": "윗글에 계약을 적은 판을 얇은 점토 봉투로 감싸고 겉에 같은 내용이나 줄인 내용을 적었다는 내용과, 'a judge could break the envelope'(재판관이 봉투를 깨뜨려 안의 것과 견줄 수 있었다)가 나옵니다. 글자가 쐐기 모양이 된 까닭, 학자들이 글자를 다시 읽어 낸 방법, 아이들이 글을 익힌 곳, 글자를 찍은 도구는 이 글에 나오지 않습니다.",
+    "translation": "고대 메소포타미아 사람들은 젖은 점토로 만든 작은 판에 글을 쓰고 그것을 말렸다. 이런 판 가운데 많은 것은 이야기가 아니라 돈을 빌려준 일이나 물건을 사고판 일 같은 생활 기록이었다. 마른 판은 단단했지만, 누군가 판을 다시 적셔 숫자를 고칠 수도 있었다. 이를 막으려고 글을 쓰는 사람들은 다 쓴 계약서를 얇은 점토로 봉투처럼 감싸기도 했다. 그리고 그 겉에 같은 내용이나 그것을 줄인 내용을 적고 도장을 눌러 찍었다. 나중에 사람들이 거래를 두고 다투면 재판관이 봉투를 깨뜨릴 수 있었다. 그런 다음 겉에 적힌 글을 안에 고스란히 남아 있던 글과 견주어 보았다.",
+    "vocab": [
+      {
+        "word": "tablet",
+        "meaning": "(글을 새기는) 판, 서판; 알약"
+      },
+      {
+        "word": "loan",
+        "meaning": "빌려준 돈, 빚"
+      },
+      {
+        "word": "press A into B",
+        "meaning": "A를 B에 눌러 찍다"
+      },
+      {
+        "word": "wrap A in B",
+        "meaning": "A를 B로 감싸다"
+      },
+      {
+        "word": "contract",
+        "meaning": "계약, 계약서"
+      },
+      {
+        "word": "seal",
+        "meaning": "도장, 인장"
+      },
+      {
+        "word": "argue about",
+        "meaning": "~을 두고 다투다"
+      },
+      {
+        "word": "compare A with B",
+        "meaning": "A를 B와 견주어 보다"
+      }
+    ]
+  },
+  {
+    "id": "E3-03",
+    "topicTitle": "잉카의 매듭 줄",
+    "questionType": "content_match",
+    "passageText": "The Inca Empire kept its records on knotted strings called quipus. A quipu had one thick main cord, and many thinner cords hung down from it. Knots on these cords stood for numbers. The kind of knot and its place on the cord showed its value. Knots for ones were tied farthest from the main cord, while knots for tens and hundreds were tied higher up. When a place had no knot at all, it meant zero. Some quipus also had a cord that recorded the total of a group of other cords. With these records, officials could keep track of people, crops, and animals across the empire.",
+    "promptText": "윗글에서 알 수 있는 것은?",
+    "choices": [
+      "여러 줄에 담긴 수를 더한 값을 매듭으로 한 줄에 따로 나타내기도 했다.",
+      "매듭 줄은 목화나 라마·알파카의 털을 여러 가닥 꼬아서 만들었다.",
+      "스페인 사람들이 들어온 뒤로 많은 매듭 줄이 사라졌다.",
+      "오늘날까지 남아 전하는 매듭 줄은 세계 여러 곳에 수백 개가 넘는다.",
+      "줄마다 색깔을 달리해 서로 다른 뜻을 나타내기도 했다."
+    ],
+    "correctIndex": 0,
+    "explanation": "윗글의 'Some quipus also had a cord that recorded the total of a group of other cords.'는 '어떤 키푸에는 다른 여러 줄의 합계를 기록한 줄도 있었다'는 뜻입니다. 줄의 재료, 스페인 사람들이 온 뒤 사라진 키푸, 오늘날 남은 키푸의 수, 색깔로 나타낸 뜻은 사실이지만 이 글에는 나오지 않습니다.",
+    "translation": "잉카 제국은 키푸라고 부르는 매듭 줄에 기록을 남겼다. 키푸에는 굵은 중심 줄이 하나 있고, 거기에 더 가는 줄이 여러 가닥 매달려 있었다. 이 줄에 묶은 매듭이 수를 나타냈다. 매듭의 종류와 줄에서 매듭이 놓인 자리가 그 값을 알려 주었다. 일의 자리 매듭은 중심 줄에서 가장 먼 곳에 묶고, 십의 자리와 백의 자리 매듭은 그보다 위쪽에 묶었다. 어떤 자리에 매듭이 하나도 없으면 0을 뜻했다. 어떤 키푸에는 다른 여러 줄에 담긴 수의 합계를 기록한 줄도 있었다. 관리들은 이런 기록으로 제국 곳곳의 사람과 곡식, 가축의 수를 꾸준히 파악할 수 있었다.",
+    "vocab": [
+      {
+        "word": "knotted",
+        "meaning": "매듭을 지은"
+      },
+      {
+        "word": "cord",
+        "meaning": "줄, 끈"
+      },
+      {
+        "word": "hang down",
+        "meaning": "아래로 늘어지다, 매달리다"
+      },
+      {
+        "word": "stand for",
+        "meaning": "~을 나타내다, ~을 뜻하다"
+      },
+      {
+        "word": "value",
+        "meaning": "(수의) 값; 가치"
+      },
+      {
+        "word": "tie",
+        "meaning": "(매듭을) 묶다, 매다"
+      },
+      {
+        "word": "keep track of",
+        "meaning": "~을 계속 파악하다, 놓치지 않고 기록하다"
+      },
+      {
+        "word": "official",
+        "meaning": "관리, 공무원"
+      }
+    ]
+  },
+  {
+    "id": "E3-04",
+    "topicTitle": "사막 길의 여관",
+    "questionType": "not_mentioned",
+    "passageText": "Along the old trade routes of Central Asia and the Middle East, merchants rested at inns called caravanserais. Many of them stood about a day's journey apart, so a camel caravan could reach a new one each evening. A caravanserai was usually a square building with high walls and only one large gate. The gate was locked at night to keep out thieves. Inside, there was an open courtyard where camels and horses could rest. Travelers slept in rooms around the courtyard, and many caravanserais had a well or a water tank. Some of these buildings still stand today, hundreds of years after they were built.",
+    "promptText": "윗글에서 설명하지 않은 것은?",
+    "choices": [
+      "상인들은 이곳에서 물건을 사고팔며 소식을 나누었다.",
+      "하루에 갈 수 있는 거리마다 하나씩 세운 곳이 많았다.",
+      "도둑이 들지 못하게 밤에는 문을 닫아걸었다.",
+      "가운데 뜰에서 낙타와 말이 쉬어 갈 수 있었다.",
+      "지은 지 수백 년이 지나 지금까지 남은 것도 있다."
+    ],
+    "correctIndex": 0,
+    "explanation": "윗글에는 하루 거리마다 세운 여관, 밤에 잠그는 문, 낙타와 말이 쉬는 가운데 뜰, 지금까지 남은 건물이 나옵니다. 상인들이 이곳에서 물건을 사고팔고 소식을 나눈 것도 사실이지만 이 글에는 나오지 않습니다. 글에는 'merchants rested at inns'(상인들이 여관에서 쉬었다)라고만 쓰여 있습니다.",
+    "translation": "중앙아시아와 서아시아의 옛 무역로를 따라가던 상인들은 캐러밴서라이라는 여관에서 쉬었다. 이런 여관은 대개 하루 길쯤 떨어져 있어서, 낙타 무리는 저녁마다 새 여관에 닿을 수 있었다. 캐러밴서라이는 보통 높은 담에 커다란 문이 하나뿐인 네모난 건물이었다. 밤에는 도둑이 들지 못하도록 그 문을 잠갔다. 안에는 낙타와 말이 쉴 수 있는 탁 트인 안뜰이 있었다. 여행자들은 안뜰을 둘러싼 방에서 잤고, 우물이나 물탱크를 갖춘 곳도 많았다. 이 건물들 가운데 몇몇은 지어진 지 수백 년이 지난 지금도 남아 있다.",
+    "vocab": [
+      {
+        "word": "trade route",
+        "meaning": "무역로, 장삿길"
+      },
+      {
+        "word": "merchant",
+        "meaning": "상인"
+      },
+      {
+        "word": "inn",
+        "meaning": "여관"
+      },
+      {
+        "word": "a day's journey",
+        "meaning": "하루에 갈 수 있는 거리, 하루 길"
+      },
+      {
+        "word": "caravan",
+        "meaning": "(사막을 함께 다니는) 상인 무리, 대상"
+      },
+      {
+        "word": "keep out",
+        "meaning": "못 들어오게 막다"
+      },
+      {
+        "word": "courtyard",
+        "meaning": "안뜰"
+      },
+      {
+        "word": "well",
+        "meaning": "우물"
+      }
+    ]
+  },
+  {
+    "id": "E3-05",
+    "topicTitle": "작은 섬에서 난 향신료",
+    "questionType": "vocabulary",
+    "passageText": "For a long time, nutmeg trees grew naturally only on the Banda Islands, a tiny group of islands in what is now Indonesia. A nutmeg tree takes several years to grow before it starts to bear fruit. Inside each fruit is a seed covered with a thin red net. The seed becomes the spice nutmeg, and the red net is dried to make another spice called mace. Traders carried both spices across the Indian Ocean, and their prices rose at each port along the way. By the time nutmeg reached Europe, it cost many times more than on the islands.",
+    "promptText": "윗글에서 'bear'의 뜻으로 알맞은 것은?",
+    "choices": [
+      "(열매나 꽃을) 맺다.",
+      "(아픔이나 괴로움을) 참다.",
+      "(무거운 것을) 떠받치다.",
+      "(아이를) 낳다.",
+      "(책임이나 비용을) 지다."
+    ],
+    "correctIndex": 0,
+    "explanation": "'A nutmeg tree takes several years to grow before it starts to bear fruit.'는 '육두구 나무는 열매를 맺기 시작하기까지 몇 해 동안 자란다'는 뜻입니다. bear 뒤에 fruit가 와서 '열매를 맺다'로 쓰였습니다. 참다, 떠받치다, 낳다, 지다도 bear의 뜻이지만 이 문장에는 맞지 않습니다.",
+    "translation": "오랫동안 육두구 나무는 지금의 인도네시아에 있는 작은 섬 무리인 반다 제도에서만 저절로 자랐다. 육두구 나무는 열매를 맺기 시작하기까지 몇 해 동안 자라야 한다. 열매 안에는 얇고 붉은 그물 같은 껍질에 싸인 씨가 들어 있다. 이 씨는 육두구라는 향신료가 되고, 붉은 그물 껍질은 말려서 메이스라는 또 다른 향신료로 만든다. 상인들은 두 향신료를 싣고 인도양을 건넜는데, 거쳐 가는 항구마다 값이 올랐다. 육두구가 유럽에 닿을 무렵에는 섬에서보다 몇 배나 비싸졌다.",
+    "vocab": [
+      {
+        "word": "grow naturally",
+        "meaning": "(사람이 심지 않아도) 저절로 자라다"
+      },
+      {
+        "word": "bear fruit",
+        "meaning": "열매를 맺다"
+      },
+      {
+        "word": "seed",
+        "meaning": "씨, 씨앗"
+      },
+      {
+        "word": "spice",
+        "meaning": "향신료"
+      },
+      {
+        "word": "port",
+        "meaning": "항구"
+      },
+      {
+        "word": "along the way",
+        "meaning": "가는 길에, 도중에"
+      },
+      {
+        "word": "by the time",
+        "meaning": "~할 무렵에는, ~할 때쯤에는"
+      },
+      {
+        "word": "many times more",
+        "meaning": "몇 배나 더"
+      }
+    ]
+  },
+  {
+    "id": "E3-06",
+    "topicTitle": "계절풍을 기다린 배",
+    "questionType": "vocabulary",
+    "passageText": "Sailors on the Indian Ocean learned long ago that the winds there change direction with the seasons. In summer, strong winds blow from the southwest toward India. In winter, the winds turn around and blow from the northeast. Many traders from Arabia and East Africa planned their voyages around this pattern. They sailed to India with the summer winds and went home with the winter winds. If they missed the right winds, they had to wait for months in a foreign port. So each year, when the winds began to pick up again, the harbors filled with ships getting ready to leave.",
+    "promptText": "윗글에서 'pick up'의 뜻으로 알맞은 것은?",
+    "choices": [
+      "(바람이) 점점 세지다.",
+      "(떨어진 물건을) 집어 들다.",
+      "(사람을) 차로 데리러 가다.",
+      "(외국어를) 저절로 익히다.",
+      "(라디오가 전파를) 잡다."
+    ],
+    "correctIndex": 0,
+    "explanation": "'when the winds began to pick up again'은 '바람이 다시 세지기 시작하면'이라는 뜻입니다. 여기서 pick up은 바람을 두고 한 말이라 '세지다'로 쓰였습니다. 집어 들다, 데리러 가다, 익히다, 전파를 잡다도 pick up의 뜻이지만 이 문장에는 맞지 않습니다.",
+    "translation": "인도양의 뱃사람들은 그곳 바람이 계절에 따라 방향을 바꾼다는 것을 오래전에 알게 되었다. 여름에는 남서쪽에서 인도 쪽으로 센 바람이 분다. 겨울이 되면 바람은 방향을 바꾸어 북동쪽에서 불어온다. 아라비아와 동아프리카의 많은 상인은 이 흐름에 맞추어 항해 계획을 세웠다. 이들은 여름 바람을 타고 인도로 가서 겨울 바람을 타고 집으로 돌아왔다. 알맞은 바람을 놓치면 낯선 나라의 항구에서 몇 달을 기다려야 했다. 그래서 해마다 바람이 다시 세지기 시작하면, 항구는 떠날 채비를 하는 배들로 가득 찼다.",
+    "vocab": [
+      {
+        "word": "direction",
+        "meaning": "방향"
+      },
+      {
+        "word": "turn around",
+        "meaning": "방향을 바꾸다, 돌아서다"
+      },
+      {
+        "word": "voyage",
+        "meaning": "항해, (배를 타고 가는) 긴 여행"
+      },
+      {
+        "word": "plan A around B",
+        "meaning": "B에 맞추어 A를 계획하다"
+      },
+      {
+        "word": "miss",
+        "meaning": "놓치다"
+      },
+      {
+        "word": "pick up",
+        "meaning": "(바람이) 세지다; 집어 들다; 데리러 가다"
+      },
+      {
+        "word": "get ready to",
+        "meaning": "~할 준비를 하다"
+      },
+      {
+        "word": "harbor",
+        "meaning": "항구, 항만"
+      }
+    ]
+  },
+  {
+    "id": "E3-07",
+    "topicTitle": "사하라를 건넌 소금",
+    "questionType": "content_match",
+    "passageText": "For centuries, camel caravans crossed the Sahara Desert carrying salt to the south. For a long time, much of this salt came from Taghaza, a mining town deep in the desert. There, workers dug large blocks of salt out of the ground, and a camel usually carried two of them. Salt was so common in Taghaza that people even built with it. In the 1350s, the traveler Ibn Battuta visited the town. He wrote that its houses and mosque were made of salt blocks, with roofs of camel skins. Nothing grew there, so all the food had to be brought in from outside.",
+    "promptText": "윗글에서 알 수 있는 것은?",
+    "choices": [
+      "소금을 캐던 사막 마을은 먹을거리를 바깥에서 들여왔다.",
+      "소금과 금을 같은 무게로 맞바꾸었다는 이야기가 전한다.",
+      "팀북투는 사막을 오가는 장사로 크게 번성한 도시였다.",
+      "지금도 낙타에 소금을 싣고 사막을 건너는 무리가 있다.",
+      "소금은 고기나 생선이 쉽게 상하지 않게 하는 데 쓰였다."
+    ],
+    "correctIndex": 0,
+    "explanation": "윗글의 'Nothing grew there, so all the food had to be brought in from outside.'는 '그곳에서는 아무것도 자라지 않아서 먹을 것을 모두 바깥에서 들여와야 했다'는 뜻입니다. 소금과 금을 맞바꾸었다는 이야기, 팀북투의 번성, 오늘날의 낙타 무리, 음식을 보관하는 데 쓴 소금은 사실이지만 이 글에는 나오지 않습니다.",
+    "translation": "수백 년 동안 낙타 무리는 사하라 사막을 건너 남쪽으로 소금을 실어 날랐다. 오랫동안 이 소금의 많은 양은 사막 깊숙한 곳의 광산 마을 타가자에서 났다. 그곳 일꾼들은 땅에서 커다란 소금 덩어리를 파냈고, 낙타 한 마리는 대개 두 덩어리를 실었다. 타가자에는 소금이 너무 흔해서 사람들은 소금으로 건물까지 지었다. 1350년대에 여행가 이븐 바투타가 이 마을을 찾았다. 그는 마을의 집과 이슬람 예배당이 소금 덩어리로 지어졌고 지붕은 낙타 가죽으로 덮여 있었다고 적었다. 그곳에서는 아무것도 자라지 않아서 먹을 것은 모두 바깥에서 들여와야 했다.",
+    "vocab": [
+      {
+        "word": "caravan",
+        "meaning": "(낙타 따위로 짐을 나르는) 상인 무리"
+      },
+      {
+        "word": "deep in",
+        "meaning": "~의 깊숙한 곳에"
+      },
+      {
+        "word": "block",
+        "meaning": "(네모난) 덩어리, 벽돌 모양의 덩이"
+      },
+      {
+        "word": "dig A out of B",
+        "meaning": "B에서 A를 파내다"
+      },
+      {
+        "word": "so ~ that ...",
+        "meaning": "너무 ~해서 …하다"
+      },
+      {
+        "word": "mosque",
+        "meaning": "이슬람 예배당, 모스크"
+      },
+      {
+        "word": "bring in",
+        "meaning": "들여오다, 가져오다"
+      }
+    ]
+  },
+  {
+    "id": "E3-08",
+    "topicTitle": "잉카의 태양 축제",
+    "questionType": "answerable_question",
+    "passageText": "Inti Raymi was the Inca festival in honor of the sun god, Inti. It was held in Cusco around the shortest day of the year there, in June. After the Spanish conquest, the festival was banned, but since 1944 it has been performed again, usually on June 24 each year. Today the ceremony moves through three places during the day. It begins at Qorikancha, where the Inca Temple of the Sun once stood. It then moves to the main square. The last and largest part takes place at Sacsayhuamán, an Inca fortress on a hill above Cusco. Most of the speeches are given in Quechua, the language of the Inca.",
+    "promptText": "윗글을 읽고 답할 수 있는 질문은?",
+    "choices": [
+      "오늘날의 의식은 어떤 곳들을 차례로 거쳐 가는가?",
+      "오늘날의 축제는 옛 모습을 되살리려고 무엇을 참고했는가?",
+      "잉카 시대의 태양 축제는 며칠 동안이나 이어졌는가?",
+      "잉카 사람들이 축제에서 태양신에게 바친 것은 무엇인가?",
+      "스페인 사람들이 이 축제를 금지한 까닭은 무엇인가?"
+    ],
+    "correctIndex": 0,
+    "explanation": "윗글에 'Today the ceremony moves through three places during the day.'(오늘날 의식은 하루 동안 세 곳을 거쳐 간다)라고 한 뒤 코리칸차, 도시의 중앙 광장, 삭사이와만을 차례로 듭니다. 옛 모습을 되살릴 때 참고한 것, 옛 축제가 이어진 날수, 태양신에게 바친 것, 스페인 사람들이 축제를 금지한 까닭은 이 글에 나오지 않습니다.",
+    "translation": "인티 라이미는 태양신 인티를 기리는 잉카의 축제였다. 이 축제는 쿠스코에서, 그곳에서 한 해 가운데 낮이 가장 짧은 6월의 어느 날 무렵에 열렸다. 스페인에 정복된 뒤 축제는 금지되었지만, 1944년부터 다시 치러지고 있으며 대개 해마다 6월 24일에 열린다. 오늘날 의식은 하루 동안 세 곳을 옮겨 가며 열린다. 의식은 잉카의 태양 신전이 있던 코리칸차에서 시작된다. 그다음에는 도시의 중앙 광장에서 이어진다. 마지막이자 가장 큰 순서는 쿠스코 위쪽 언덕에 있는 잉카의 요새 삭사이와만에서 펼쳐진다. 대사는 대부분 잉카 사람들의 말인 케추아어로 한다.",
+    "vocab": [
+      {
+        "word": "in honor of",
+        "meaning": "~을 기리어"
+      },
+      {
+        "word": "the shortest day of the year",
+        "meaning": "한 해 가운데 낮이 가장 짧은 날"
+      },
+      {
+        "word": "conquest",
+        "meaning": "정복"
+      },
+      {
+        "word": "ban",
+        "meaning": "금지하다"
+      },
+      {
+        "word": "perform",
+        "meaning": "(의식·공연을) 치르다, 공연하다"
+      },
+      {
+        "word": "move through",
+        "meaning": "~을 차례로 거쳐 가다"
+      },
+      {
+        "word": "fortress",
+        "meaning": "요새"
+      },
+      {
+        "word": "give a speech",
+        "meaning": "연설하다, (여러 사람 앞에서) 말하다"
+      }
+    ]
+  },
+  {
+    "id": "E3-09",
+    "topicTitle": "태국의 설날",
+    "questionType": "not_mentioned",
+    "passageText": "Songkran is the traditional Thai New Year, and it is celebrated in the middle of April. This is one of the hottest times of the year in Thailand. Many people use the holiday to travel back to their hometowns and visit their families. Young people gently pour scented water over the hands of their parents and grandparents to show respect. In return, the elders give them good wishes for the new year. People also go to temples and carry sand there to build small sand towers. In many places, statues of the Buddha are washed with water as well.",
+    "promptText": "송끄란에 대해 윗글에서 설명하지 않은 것은?",
+    "choices": [
+      "거리에서 사람들이 서로 물을 뿌리며 신나게 논다.",
+      "한 해 가운데 무척 더운 때에 맞이하는 명절이다.",
+      "고향에 돌아가 가족을 만나는 사람이 많다.",
+      "젊은이가 웃어른의 손에 향긋한 물을 부어 드린다.",
+      "절에 모래를 날라 작은 모래탑을 쌓는다."
+    ],
+    "correctIndex": 0,
+    "explanation": "윗글에는 무척 더운 4월 중순에 맞는 명절, 고향을 찾는 사람들, 웃어른의 손에 향긋한 물을 붓는 풍습, 절에 쌓는 모래탑이 나옵니다. 거리에서 서로 물을 뿌리며 노는 모습도 송끄란의 널리 알려진 풍경이지만 이 글에는 나오지 않습니다.",
+    "translation": "송끄란은 태국의 전통 설날로, 4월 중순에 쇤다. 이때는 태국에서 한 해 가운데 가장 더운 때에 속한다. 많은 사람이 이 명절에 고향으로 돌아가 가족을 만난다. 젊은이들은 웃어른을 공경하는 뜻으로 부모님과 조부모님의 손에 향긋한 물을 살며시 부어 드린다. 그러면 웃어른들은 새해를 맞는 그들에게 좋은 말로 복을 빌어 준다. 사람들은 절에도 찾아가 모래를 날라다 작은 모래탑을 쌓는다. 여러 곳에서 불상을 물로 씻어 드리기도 한다.",
+    "vocab": [
+      {
+        "word": "traditional",
+        "meaning": "전통의, 전통적인"
+      },
+      {
+        "word": "celebrate",
+        "meaning": "(명절·기념일을) 쇠다, 축하하다"
+      },
+      {
+        "word": "hometown",
+        "meaning": "고향"
+      },
+      {
+        "word": "scented",
+        "meaning": "향기가 나는"
+      },
+      {
+        "word": "show respect",
+        "meaning": "공경하는 마음을 나타내다"
+      },
+      {
+        "word": "in return",
+        "meaning": "그 답례로, 보답으로"
+      },
+      {
+        "word": "elder",
+        "meaning": "웃어른, 나이 든 사람"
+      },
+      {
+        "word": "as well",
+        "meaning": "또한, ~도"
+      }
+    ]
+  },
+  {
+    "id": "E3-10",
+    "topicTitle": "인더스강 가의 옛 도시들",
+    "questionType": "content_match",
+    "passageText": "About 4,500 years ago, large cities grew up along the Indus River in what is now Pakistan and India. Archaeologists have found that these cities, though hundreds of kilometers apart, used many of the same standards. Their baked bricks were usually made in the same shape, with a length twice the width and four times the thickness. Merchants in different cities weighed goods with stone cubes that followed one system of weights. In the smaller sizes, each weight was double the one before: 1, 2, 4, 8, and so on. Such shared rules suggest that the people of the region were closely connected, even though scholars still cannot read their writing.",
+    "promptText": "윗글에서 알 수 있는 것은?",
+    "choices": [
+      "인더스 도시의 작은 저울추는 차례로 무게가 두 배가 되었다.",
+      "인더스 도시들은 길과 하수도를 미리 계획해서 지었다.",
+      "인더스 도시들은 바다 건너 먼 지역과도 물건을 사고팔았다.",
+      "인더스 도시 사람들은 일찍부터 목화를 길러 옷감을 짰다.",
+      "인더스 도시들은 기원전 1900년 무렵부터 차츰 쇠퇴하였다."
+    ],
+    "correctIndex": 0,
+    "explanation": "윗글의 'In the smaller sizes, each weight was double the one before'는 '작은 추들은 앞의 것보다 무게가 두 배씩이었다'라는 뜻입니다. 계획해서 지은 길과 하수도, 바다 건너 교역, 목화 재배, 쇠퇴한 시기는 인더스 문명에 대한 사실이지만 이 글에는 나오지 않습니다.",
+    "translation": "약 4,500년 전, 지금의 파키스탄과 인도 땅을 흐르는 인더스강을 따라 큰 도시들이 생겨났다. 고고학자들은 이 도시들이 수백 킬로미터나 떨어져 있었는데도 여러 가지 같은 기준을 썼다는 것을 알아냈다. 구운 벽돌은 대개 같은 모양으로 만들어서, 길이가 너비의 두 배, 두께의 네 배였다. 여러 도시의 상인들은 한 가지 크기 체계를 따른 돌 정육면체로 물건의 무게를 달았다. 작은 추들은 앞의 것보다 무게가 두 배씩 늘어나 1, 2, 4, 8 하는 식으로 이어졌다. 학자들이 아직 이들의 글자를 읽지 못하지만, 이렇게 함께 쓴 규칙을 보면 이 지역 사람들이 서로 긴밀하게 이어져 있었던 것으로 보인다.",
+    "vocab": [
+      {
+        "word": "grow up",
+        "meaning": "(도시·마을이) 생겨나 커지다; 자라다"
+      },
+      {
+        "word": "archaeologist",
+        "meaning": "고고학자"
+      },
+      {
+        "word": "apart",
+        "meaning": "(거리가) 떨어져"
+      },
+      {
+        "word": "standard",
+        "meaning": "기준, 표준"
+      },
+      {
+        "word": "twice",
+        "meaning": "두 배; 두 번"
+      },
+      {
+        "word": "weigh",
+        "meaning": "무게를 달다"
+      },
+      {
+        "word": "and so on",
+        "meaning": "~ 등등, ~ 하는 식으로"
+      },
+      {
+        "word": "suggest",
+        "meaning": "(~임을) 보여 주다, 암시하다; 제안하다"
+      }
+    ]
+  },
+  {
+    "id": "E3-11",
+    "topicTitle": "마셜 제도의 막대 지도",
+    "questionType": "content_match",
+    "passageText": "Navigators in the Marshall Islands, in the Pacific Ocean, once made charts out of sticks. The sticks were cut from the stiff ribs of coconut palm leaves and tied together with coconut fiber. There were several kinds of these charts. One kind showed no real place at all. It was used for teaching young navigators how waves bend and meet as they pass around an island. Other kinds showed real groups of islands. Even on these charts, however, the distances between islands were not measured exactly. The most important information was how the waves changed near each island.",
+    "promptText": "윗글의 내용과 일치하는 것은?",
+    "choices": [
+      "실제 장소를 나타내지 않고 파도의 원리만 가르치는 데 쓴 지도도 있었다.",
+      "만든 사람 말고는 제대로 읽기 어려운 지도가 많았다.",
+      "항해자들은 지도를 배에 싣지 않고 머릿속에 외워 갔다.",
+      "작은 조개껍데기를 붙여 섬이 있는 자리를 나타냈다.",
+      "항해자들은 배 바닥에 누워 몸으로 파도의 흔들림을 느꼈다고 전한다."
+    ],
+    "correctIndex": 0,
+    "explanation": "윗글의 'One kind showed no real place at all. It was used for teaching young navigators ...'는 '어떤 종류는 실제 장소를 전혀 나타내지 않았고, 젊은 항해자에게 파도가 휘는 모습을 가르치는 데 쓰였다'는 뜻입니다. 만든 사람만 읽을 수 있던 지도, 외워 간 지도, 섬 자리를 나타낸 조개껍데기, 배 바닥에 누워 파도를 느낀 일은 사실이거나 그렇게 전하는 내용이지만 이 글에는 나오지 않습니다.",
+    "translation": "태평양 마셜 제도의 항해자들은 예전에 막대로 지도를 만들었다. 막대는 야자나무 잎의 뻣뻣한 잎줄기를 잘라 만들었고, 야자 껍질 섬유로 엮어 묶었다. 이런 지도에는 몇 가지 종류가 있었다. 어떤 종류는 실제 장소를 전혀 나타내지 않았다. 이 지도는 파도가 섬 하나를 돌아 지나가면서 어떻게 휘어지고 서로 만나는지를 젊은 항해자에게 가르치는 데 쓰였다. 다른 종류는 실제 섬 무리를 나타냈다. 하지만 이런 지도에서도 섬 사이의 거리는 정확하게 재어 나타내지 않았다. 가장 중요한 정보는 섬마다 그 가까이에서 파도가 어떻게 달라지는가였다.",
+    "vocab": [
+      {
+        "word": "navigator",
+        "meaning": "항해자, 길잡이"
+      },
+      {
+        "word": "chart",
+        "meaning": "(바다의) 지도, 해도"
+      },
+      {
+        "word": "stiff",
+        "meaning": "뻣뻣한, 딱딱한"
+      },
+      {
+        "word": "rib",
+        "meaning": "(잎의) 굵은 잎줄기; 갈비뼈"
+      },
+      {
+        "word": "coconut fiber",
+        "meaning": "야자 껍질 섬유"
+      },
+      {
+        "word": "not ~ at all",
+        "meaning": "전혀 ~ 않다"
+      },
+      {
+        "word": "bend",
+        "meaning": "휘어지다, 구부러지다"
+      },
+      {
+        "word": "pass around",
+        "meaning": "~을 돌아서 지나가다"
+      }
+    ]
+  },
+  {
+    "id": "E3-12",
+    "topicTitle": "옥수수밭에서 태어난 산",
+    "questionType": "answerable_question",
+    "passageText": "In 1943, a new volcano suddenly appeared in a cornfield in western Mexico. It was later named Paricutín, after a nearby village. The volcano grew very fast at first. Within a year, its cone of rock and ash was more than 300 meters tall. After that, it grew much more slowly, and by the time it stopped erupting in 1952, it had grown only about 90 meters more. Most of its lava did not pour out of the top. Instead, it flowed from openings near the base of the cone and spread slowly over the land. Thick ash also buried fields for kilometers around, so many farmers had to leave.",
+    "promptText": "윗글을 읽고 답할 수 있는 질문은?",
+    "choices": [
+      "화산의 용암은 주로 어느 곳에서 흘러나왔는가?",
+      "밭 한가운데에서 갑자기 화산이 생겨난 까닭은 무엇인가?",
+      "용암에 묻힌 마을에서 겉으로 드러난 채 남은 것은 무엇인가?",
+      "이 화산 가까이에 있는 다른 화산의 이름은 무엇인가?",
+      "분화가 끝난 뒤 사람들은 이 화산을 어떻게 이용하는가?"
+    ],
+    "correctIndex": 0,
+    "explanation": "윗글의 'Most of its lava did not pour out of the top. Instead, it flowed from openings near the base of the cone'은 '용암은 대부분 꼭대기가 아니라 봉우리 밑동 가까이의 틈에서 흘러나왔다'는 뜻입니다. 밭에 화산이 생겨난 까닭, 용암에 묻힌 마을에 남은 것, 가까운 다른 화산의 이름, 오늘날 이 화산을 이용하는 방법은 이 글에 나오지 않습니다.",
+    "translation": "1943년, 멕시코 서부의 한 옥수수밭에 갑자기 새 화산이 생겨났다. 이 화산에는 나중에 가까운 마을의 이름을 따서 파리쿠틴이라는 이름이 붙었다. 화산은 처음에 아주 빠르게 자랐다. 한 해 만에 돌과 재가 쌓인 봉우리가 300미터 넘게 높아졌다. 그 뒤로는 훨씬 느리게 자라서, 1952년에 분화가 멈출 때까지 90미터쯤 더 높아졌을 뿐이다. 용암은 대부분 꼭대기에서 쏟아져 나오지 않았다. 그 대신 봉우리 밑동 가까이의 틈에서 흘러나와 땅 위로 천천히 퍼졌다. 두꺼운 화산재도 둘레 몇 킬로미터의 밭을 덮어 버려서, 많은 농부가 그곳을 떠나야 했다.",
+    "vocab": [
+      {
+        "word": "appear",
+        "meaning": "나타나다, 생겨나다"
+      },
+      {
+        "word": "be named after",
+        "meaning": "~의 이름을 따서 이름이 붙다"
+      },
+      {
+        "word": "cone",
+        "meaning": "원뿔 모양의 봉우리"
+      },
+      {
+        "word": "within a year",
+        "meaning": "한 해 안에"
+      },
+      {
+        "word": "erupt",
+        "meaning": "(화산이) 분화하다, 터지다"
+      },
+      {
+        "word": "pour out of",
+        "meaning": "~에서 쏟아져 나오다"
+      },
+      {
+        "word": "base",
+        "meaning": "밑동, 아랫부분"
+      },
+      {
+        "word": "for kilometers around",
+        "meaning": "둘레 몇 킬로미터에 걸쳐"
+      }
+    ]
+  },
+  {
+    "id": "E3-13",
+    "topicTitle": "산호가 알을 낳는 밤",
+    "questionType": "content_match",
+    "passageText": "On the Great Barrier Reef, many kinds of coral release their eggs and sperm on the same few nights each year. This usually happens in late spring, a few days after a full moon, and only after the sun has gone down. Warming water, the moon, and the length of the day seem to work together as signals. Many corals release eggs and sperm packed together in tiny round bundles. These bundles float up to the surface, where they break apart. There, eggs from one coral can meet sperm from another coral of the same kind. From above, the water can look as if it is snowing upside down.",
+    "promptText": "윗글에서 알 수 있는 것은?",
+    "choices": [
+      "알과 정자를 작은 뭉치로 묶어 함께 내보내는 산호가 많다.",
+      "산호는 몸속에 사는 작은 조류에게서 양분을 얻는다.",
+      "바닷물이 지나치게 따뜻해지면 산호가 하얗게 변하기도 한다.",
+      "떨어져 나간 산호 조각이 새 무리로 자라기도 한다.",
+      "헤엄치던 산호 새끼는 바닥에 내려앉아 자리를 잡는다."
+    ],
+    "correctIndex": 0,
+    "explanation": "윗글의 'Many corals release eggs and sperm packed together in tiny round bundles.'는 '많은 산호가 알과 정자를 작고 둥근 뭉치로 한데 묶어 내보낸다'는 뜻입니다. 몸속 조류에게서 얻는 양분, 하얗게 변하는 산호, 조각으로 늘어나는 산호, 바닥에 자리 잡는 산호 새끼는 사실이지만 이 글에는 나오지 않습니다.",
+    "translation": "그레이트배리어리프에서는 여러 종류의 산호가 해마다 똑같은 며칠 밤에 알과 정자를 내보낸다. 이 일은 대개 늦봄, 보름달이 뜨고 며칠 뒤에, 그것도 해가 진 다음에 일어난다. 따뜻해지는 바닷물과 달, 낮의 길이가 함께 신호 노릇을 하는 것으로 보인다. 많은 산호는 알과 정자를 작고 둥근 뭉치로 한데 묶어 내보낸다. 이 뭉치는 물 위로 떠올라 거기서 풀어진다. 그곳에서 한 산호의 알이 같은 종류의 다른 산호에서 나온 정자를 만날 수 있다. 위에서 내려다보면 바닷속에서 눈이 거꾸로 올라가며 내리는 것처럼 보이기도 한다.",
+    "vocab": [
+      {
+        "word": "reef",
+        "meaning": "암초, 산호초"
+      },
+      {
+        "word": "release",
+        "meaning": "내보내다, 풀어놓다"
+      },
+      {
+        "word": "go down",
+        "meaning": "(해가) 지다; 내려가다"
+      },
+      {
+        "word": "signal",
+        "meaning": "신호"
+      },
+      {
+        "word": "bundle",
+        "meaning": "뭉치, 꾸러미"
+      },
+      {
+        "word": "float up",
+        "meaning": "(물 위로) 떠오르다"
+      },
+      {
+        "word": "break apart",
+        "meaning": "풀어지다, 산산이 흩어지다"
+      },
+      {
+        "word": "upside down",
+        "meaning": "거꾸로, 뒤집혀"
+      }
+    ]
+  },
+  {
+    "id": "E3-14",
+    "topicTitle": "쉬지 않고 바다를 건너는 새",
+    "questionType": "cause",
+    "passageText": "Every autumn, bar-tailed godwits fly from Alaska to New Zealand without stopping. The trip is more than 11,000 kilometers long and takes over a week. Unlike ducks, godwits cannot safely rest on the water, so they must keep flying the whole way. Before they leave, their bodies go through a surprising change. Organs that they will not need during the flight, such as the stomach and the gut, become much smaller. Their flight muscles and heart, on the other hand, grow larger. Losing weight in organs it does not need, while gaining stronger muscles, helps a godwit make the long journey.",
+    "promptText": "윗글에서 큰뒷부리도요가 먼 바다를 쉬지 않고 건널 수 있는 까닭으로 든 것은?",
+    "choices": [
+      "떠나기 전에, 날 때 쓰지 않는 몸속 기관을 작게 줄여 두기 때문이다.",
+      "떠나기 전에 몸무게의 절반 가까이를 지방으로 채워 두기 때문이다.",
+      "뒤에서 불어 주는 바람을 골라 타고 날아가기 때문이다.",
+      "길고 뾰족한 날개가 오래 날기에 알맞기 때문이다.",
+      "지방을 태울 때 생기는 물로 목마름을 견디기 때문이다."
+    ],
+    "correctIndex": 0,
+    "explanation": "윗글에 'Organs that they will not need during the flight ... become much smaller.'(날아가는 동안 필요 없는 기관이 훨씬 작아진다)라고 나오고, 필요 없는 기관의 무게를 덜어 내는 것이 먼 길을 가는 데 도움이 된다고 설명합니다. 지방으로 채운 몸, 뒷바람, 뾰족한 날개, 지방을 태워 얻는 물도 사실이지만 이 글에서 든 까닭은 아닙니다.",
+    "translation": "해마다 가을이면 큰뒷부리도요는 알래스카에서 뉴질랜드까지 한 번도 쉬지 않고 날아간다. 이 여행은 11,000킬로미터가 넘고, 일주일 넘게 걸린다. 오리와 달리 이 새는 물 위에서 안전하게 쉴 수 없어서 끝까지 날아가야 한다. 떠나기 전에 이 새의 몸에는 놀라운 변화가 일어난다. 위나 창자처럼 날아가는 동안 쓰지 않을 기관이 훨씬 작아진다. 반면에 날개를 움직이는 근육과 심장은 더 커진다. 필요 없는 기관의 무게를 덜어 내고 근육은 더 튼튼하게 만드는 것이 큰뒷부리도요가 먼 길을 가는 데 도움이 된다.",
+    "vocab": [
+      {
+        "word": "without stopping",
+        "meaning": "쉬지 않고, 멈추지 않고"
+      },
+      {
+        "word": "unlike",
+        "meaning": "~와 달리"
+      },
+      {
+        "word": "the whole way",
+        "meaning": "가는 내내, 끝까지"
+      },
+      {
+        "word": "go through",
+        "meaning": "(변화·일을) 겪다"
+      },
+      {
+        "word": "organ",
+        "meaning": "(몸의) 기관"
+      },
+      {
+        "word": "gut",
+        "meaning": "창자, 장"
+      },
+      {
+        "word": "on the other hand",
+        "meaning": "반면에, 다른 한편으로는"
+      },
+      {
+        "word": "make a journey",
+        "meaning": "여행하다, 먼 길을 가다"
+      }
+    ]
+  },
+  {
+    "id": "E3-15",
+    "topicTitle": "먼 바다로 떠나는 뱀장어",
+    "questionType": "answerable_question",
+    "passageText": "European eels spend most of their lives in rivers and lakes, but they are believed to breed far away in the Sargasso Sea. After many years in fresh water, an adult eel gets ready for this long trip. Its body changes in several ways. Its back grows darker and its belly turns silver, so it becomes harder to see in the open ocean. Its eyes also grow larger, which may help it see in the dark, deep water. At the same time, it stops eating. During the journey of thousands of kilometers, it lives on the fat stored in its body.",
+    "promptText": "윗글을 읽고 답할 수 있는 질문은?",
+    "choices": [
+      "먼 길을 떠날 무렵 뱀장어의 눈은 어떻게 달라지는가?",
+      "다 자란 뱀장어는 먼 바다의 알 낳는 곳을 어떻게 찾아가는가?",
+      "알에서 깬 새끼를 한때 다른 물고기로 여긴 까닭은 무엇인가?",
+      "유럽뱀장어의 수가 요즘 크게 줄어든 까닭은 무엇인가?",
+      "알을 낳은 뒤 어미 뱀장어는 어떻게 되는가?"
+    ],
+    "correctIndex": 0,
+    "explanation": "윗글의 'Its eyes also grow larger, which may help it see in the dark, deep water.'는 '눈도 커지는데, 이것이 어둡고 깊은 물속에서 보는 데 도움이 되는 것으로 보인다'는 뜻입니다. 알 낳는 곳을 찾아가는 방법, 새끼를 다른 물고기로 여긴 까닭, 수가 줄어든 까닭, 알을 낳은 뒤 어미의 삶은 이 글에 나오지 않습니다.",
+    "translation": "유럽뱀장어는 삶의 대부분을 강과 호수에서 보내지만, 멀리 떨어진 사르가소해에서 알을 낳는 것으로 여겨진다. 민물에서 여러 해를 보낸 어른 뱀장어는 이 먼 여행을 떠날 채비를 한다. 이때 몸이 여러 가지로 달라진다. 등은 더 짙어지고 배는 은빛으로 바뀌어, 넓은 바다에서 눈에 잘 띄지 않게 된다. 눈도 커지는데, 이것은 어둡고 깊은 바닷속에서 앞을 보는 데 도움이 되는 것으로 보인다. 그와 함께 뱀장어는 먹이를 먹지 않게 된다. 수천 킬로미터를 가는 동안 뱀장어는 몸에 쌓아 둔 지방으로 버틴다.",
+    "vocab": [
+      {
+        "word": "be believed to",
+        "meaning": "~하는 것으로 여겨지다"
+      },
+      {
+        "word": "breed",
+        "meaning": "알을 낳다, 새끼를 치다"
+      },
+      {
+        "word": "fresh water",
+        "meaning": "민물"
+      },
+      {
+        "word": "get ready for",
+        "meaning": "~할 채비를 하다"
+      },
+      {
+        "word": "belly",
+        "meaning": "배 (몸의 앞쪽 아랫부분)"
+      },
+      {
+        "word": "open ocean",
+        "meaning": "탁 트인 먼 바다"
+      },
+      {
+        "word": "live on",
+        "meaning": "~에 기대어 살다, ~으로 버티다"
+      },
+      {
+        "word": "store",
+        "meaning": "저장하다, 쌓아 두다"
+      }
+    ]
+  },
+  {
+    "id": "E3-16",
+    "topicTitle": "돌이 된 나무",
+    "questionType": "content_match",
+    "passageText": "Petrified wood is a fossil in which a tree has slowly turned into stone. It begins when a fallen tree is quickly buried under mud, sand, or volcanic ash. Being buried keeps out the air, so the wood rots very slowly. Groundwater carrying dissolved minerals then soaks into the wood. Over a long time, the minerals fill the tiny spaces in the wood and take the place of the wood itself. Because this happens little by little, the stone can keep the shape of the tree rings. Small amounts of other minerals, such as iron, can give the stone bright red and yellow colors.",
+    "promptText": "윗글의 내용과 일치하는 것은?",
+    "choices": [
+      "돌이 된 나무에서도 나이테의 모양을 알아볼 수 있다.",
+      "미국 애리조나에는 돌이 된 나무가 널린 국립 공원이 있다.",
+      "나무의 진이 굳은 호박 속에는 옛 곤충이 갇혀 있기도 하다.",
+      "돌이 된 나무를 매끄럽게 갈아 장식품으로 쓰기도 한다.",
+      "공룡이 나타나기 전 시대에 살던 나무의 화석도 있다."
+    ],
+    "correctIndex": 0,
+    "explanation": "윗글의 'the stone can keep the shape of the tree rings'는 '돌이 나이테 모양을 그대로 간직할 수 있다'는 뜻입니다. 애리조나의 국립 공원, 호박 속 곤충, 갈아서 만든 장식품, 공룡보다 오래된 나무 화석은 사실이지만 이 글에는 나오지 않습니다.",
+    "translation": "규화목은 나무가 천천히 돌로 바뀐 화석이다. 규화목은 쓰러진 나무가 진흙이나 모래, 화산재에 재빨리 묻히면서 만들어지기 시작한다. 땅에 묻히면 공기가 들어오지 못해서 나무가 아주 천천히 썩는다. 그다음 광물이 녹아 있는 지하수가 나무에 스며든다. 오랜 시간이 지나면서 광물은 나무 속의 작은 틈을 채우고, 나무 자체를 대신하게 된다. 이 일이 아주 조금씩 일어나기 때문에 돌이 나이테 모양까지 그대로 간직할 수 있다. 철 같은 다른 광물이 조금 섞이면 돌이 선명한 붉은빛이나 노란빛을 띠기도 한다.",
+    "vocab": [
+      {
+        "word": "petrified",
+        "meaning": "돌로 변한, 화석이 된"
+      },
+      {
+        "word": "fossil",
+        "meaning": "화석"
+      },
+      {
+        "word": "bury",
+        "meaning": "묻다, 파묻다"
+      },
+      {
+        "word": "rot",
+        "meaning": "썩다"
+      },
+      {
+        "word": "dissolved",
+        "meaning": "(물에) 녹아 있는"
+      },
+      {
+        "word": "soak into",
+        "meaning": "~에 스며들다"
+      },
+      {
+        "word": "take the place of",
+        "meaning": "~을 대신하다, ~의 자리를 차지하다"
+      },
+      {
+        "word": "little by little",
+        "meaning": "조금씩, 서서히"
+      }
+    ]
+  },
+  {
+    "id": "E3-17",
+    "topicTitle": "해달 어미와 새끼",
+    "questionType": "content_match",
+    "passageText": "A sea otter mother usually raises one pup at a time. A newborn pup has thick, fluffy fur that traps so much air that the pup floats like a cork. Because of this, it cannot dive under the water at first. The mother often carries the pup on her chest while she floats on her back. She spends many hours licking and fluffing its fur to keep it clean and full of air. When she dives for food, she leaves the pup bobbing on the surface. As the pup grows, its fluffy fur is replaced, and it slowly learns to dive and find food for itself.",
+    "promptText": "윗글에서 알 수 있는 것은?",
+    "choices": [
+      "갓 태어난 새끼는 털에 공기가 많아 물속으로 잠수하지 못한다.",
+      "해달은 성게를 먹어 바닷속 켈프 숲이 사라지지 않게 한다.",
+      "해달은 앞다리 밑의 늘어진 살 주머니에 먹이와 돌을 넣어 둔다.",
+      "해달은 잘 때 켈프를 몸에 감아 떠내려가지 않게 하기도 한다.",
+      "해달은 몸에 두꺼운 지방층이 없어 털로 체온을 지킨다."
+    ],
+    "correctIndex": 0,
+    "explanation": "윗글의 'A newborn pup has thick, fluffy fur that traps so much air that the pup floats like a cork. Because of this, it cannot dive'는 '갓 태어난 새끼는 털에 공기가 아주 많아 코르크처럼 떠서 잠수하지 못한다'는 뜻입니다. 켈프 숲을 지키는 해달, 앞다리 밑의 살 주머니, 켈프를 감고 자는 모습, 지방층 대신 털로 지키는 체온은 사실이지만 이 글에는 나오지 않습니다.",
+    "translation": "어미 해달은 대개 한 번에 새끼를 한 마리씩 기른다. 갓 태어난 새끼는 털이 두껍고 복슬복슬해서 그 속에 공기가 아주 많이 갇히기 때문에 코르크처럼 물에 둥둥 뜬다. 그래서 새끼는 처음에는 물속으로 잠수하지 못한다. 어미는 등을 대고 물에 뜬 채 새끼를 가슴 위에 올려 데리고 다니는 경우가 많다. 어미는 여러 시간 동안 새끼의 털을 핥고 부풀려서 털을 깨끗하게, 공기로 가득하게 유지한다. 먹이를 찾으러 잠수할 때에는 새끼를 물 위에 둥둥 떠 있게 두고 간다. 새끼가 자라면 복슬복슬한 털이 새 털로 바뀌고, 새끼는 조금씩 잠수하여 스스로 먹이를 찾는 법을 익힌다.",
+    "vocab": [
+      {
+        "word": "pup",
+        "meaning": "(해달·물개 따위의) 새끼"
+      },
+      {
+        "word": "at a time",
+        "meaning": "한 번에"
+      },
+      {
+        "word": "fluffy",
+        "meaning": "복슬복슬한, 보송보송한"
+      },
+      {
+        "word": "trap",
+        "meaning": "가두다"
+      },
+      {
+        "word": "float like a cork",
+        "meaning": "코르크처럼 둥둥 뜨다"
+      },
+      {
+        "word": "on one's back",
+        "meaning": "등을 대고 (누워)"
+      },
+      {
+        "word": "bob",
+        "meaning": "(물 위에서) 까닥까닥 떠 있다"
+      },
+      {
+        "word": "for oneself",
+        "meaning": "스스로, 혼자 힘으로"
+      }
+    ]
+  },
+  {
+    "id": "E3-18",
+    "topicTitle": "비버가 쌓는 둑",
+    "questionType": "cause",
+    "passageText": "Beavers build dams of sticks, mud, and stones across streams. The dam holds back the water and makes a deep pond behind it. In autumn, beavers cut many branches and push them into the mud at the bottom of the pond. When winter comes, the top of the pond freezes. But the water under the ice stays liquid because the pond is deep. So the beavers can swim under the ice to the stored branches and eat their bark. A shallow stream, however, might freeze all the way down, leaving them with no food.",
+    "promptText": "윗글에서 비버가 둑을 쌓는 까닭으로 든 것은?",
+    "choices": [
+      "겨울에 얼음 밑에서도 모아 둔 먹이를 꺼내 먹기 위해서이다.",
+      "집의 입구를 물속에 두어 적이 들어오지 못하게 하기 위해서이다.",
+      "무거운 나뭇가지를 물에 띄워 쉽게 옮기기 위해서이다.",
+      "땅 위에서는 느려서 위험할 때 물속으로 피하기 위해서이다.",
+      "물가를 넓혀 먹을 나무에 더 가까이 다가가기 위해서이다."
+    ],
+    "correctIndex": 0,
+    "explanation": "윗글에 둑이 만든 깊은 연못은 겨울에 윗부분만 얼고 'the water under the ice stays liquid'(얼음 밑의 물은 얼지 않는다)여서, 비버가 얼음 밑으로 헤엄쳐 가 모아 둔 나뭇가지를 먹을 수 있다고 나옵니다. 적을 막는 입구, 나뭇가지 옮기기, 몸을 피할 물, 나무에 가까이 가기도 비버가 둑을 쌓는 까닭으로 알려져 있지만 이 글에서 든 것은 아닙니다.",
+    "translation": "비버는 나뭇가지와 진흙, 돌로 개울을 가로지르는 둑을 쌓는다. 둑은 물을 막아 그 뒤에 깊은 연못을 만든다. 가을이 되면 비버는 나뭇가지를 많이 잘라 연못 바닥의 진흙에 꽂아 둔다. 겨울이 오면 연못의 윗부분이 언다. 하지만 연못이 깊어서 얼음 밑의 물은 얼지 않는다. 그래서 비버는 얼음 밑으로 헤엄쳐 가서 모아 둔 나뭇가지의 껍질을 먹을 수 있다. 반면에 얕은 개울은 바닥까지 꽁꽁 얼어서 비버가 먹을 것을 하나도 얻지 못할 수도 있다.",
+    "vocab": [
+      {
+        "word": "dam",
+        "meaning": "둑, 댐"
+      },
+      {
+        "word": "across",
+        "meaning": "~을 가로질러"
+      },
+      {
+        "word": "hold back",
+        "meaning": "(물 따위를) 막다, 가두다"
+      },
+      {
+        "word": "pond",
+        "meaning": "연못"
+      },
+      {
+        "word": "liquid",
+        "meaning": "액체 상태인; 액체"
+      },
+      {
+        "word": "bark",
+        "meaning": "나무껍질"
+      },
+      {
+        "word": "all the way down",
+        "meaning": "밑바닥까지"
+      },
+      {
+        "word": "leave A with B",
+        "meaning": "A에게 B만 남기다, A를 B한 처지로 만들다"
+      }
+    ]
+  },
+  {
+    "id": "E3-19",
+    "topicTitle": "오스트레일리아로 간 두꺼비",
+    "questionType": "cause",
+    "passageText": "In 1935, about a hundred cane toads were brought from Hawaii to Australia. Farmers hoped the toads would eat beetles that were damaging their sugar cane. The plan did not work well, and the toads began to spread across the country. At first, they spread about 10 kilometers a year, but later their spread became several times faster. To learn how the toads travel, scientists fitted some of them with tiny radio trackers. They found that toads often moved along roads and cleared paths at night. These open routes are easier to travel along than thick grass, so the toads could move farther each night.",
+    "promptText": "윗글에서 사탕수수두꺼비가 빠르게 퍼질 수 있었던 까닭으로 든 것은?",
+    "choices": [
+      "두꺼비가 밤에 풀숲보다 트인 길을 따라 더 멀리 나아가기 때문이다.",
+      "앞장선 두꺼비는 지치지 않고 오래 움직이는 힘이 더 좋기 때문이다.",
+      "앞장선 두꺼비는 더 자주 움직이고 방향을 덜 바꾸기 때문이다.",
+      "두꺼비가 덥고 높이가 낮은 땅이 이어진 지역으로 퍼져 나갔기 때문이다.",
+      "앞장선 두꺼비의 새끼는 뒤쪽 두꺼비의 새끼보다 빨리 자라기 때문이다."
+    ],
+    "correctIndex": 0,
+    "explanation": "윗글에 추적 장치를 단 두꺼비들이 'often moved along roads and cleared paths at night'(밤에 도로와 트인 길을 따라 자주 움직였다)라고 나오고, 그런 길은 풀숲보다 지나가기 쉬워 하룻밤에 더 멀리 갈 수 있었다고 설명합니다. 오래 움직이는 힘, 더 자주 움직이는 것, 덥고 낮은 땅이 이어진 지역, 빨리 자라는 새끼도 과학자들이 연구한 내용이지만 이 글에서 든 까닭은 아닙니다.",
+    "translation": "1935년, 사람들은 사탕수수두꺼비 100마리쯤을 하와이에서 오스트레일리아로 들여왔다. 농부들은 이 두꺼비가 사탕수수를 망치는 딱정벌레를 잡아먹어 주기를 바랐다. 그러나 계획은 뜻대로 되지 않았고, 두꺼비는 나라 곳곳으로 퍼져 나가기 시작했다. 처음에는 한 해에 10킬로미터쯤 퍼졌지만, 나중에는 그 빠르기가 몇 배로 빨라졌다. 두꺼비가 어떻게 옮겨 다니는지 알아보려고 과학자들은 몇몇 두꺼비에게 작은 무선 추적 장치를 달았다. 그 결과 두꺼비들이 밤에 도로나 풀과 나무를 걷어 낸 길을 따라 움직이는 일이 많다는 것을 알아냈다. 이런 트인 길은 무성한 풀숲보다 따라가기 쉬워서, 두꺼비는 밤마다 더 멀리 나아갈 수 있었다.",
+    "vocab": [
+      {
+        "word": "cane toad",
+        "meaning": "사탕수수두꺼비"
+      },
+      {
+        "word": "beetle",
+        "meaning": "딱정벌레"
+      },
+      {
+        "word": "damage",
+        "meaning": "해치다, 손상을 입히다"
+      },
+      {
+        "word": "work well",
+        "meaning": "잘 되다, 효과가 있다"
+      },
+      {
+        "word": "fit A with B",
+        "meaning": "A에 B를 달다"
+      },
+      {
+        "word": "radio tracker",
+        "meaning": "무선 추적 장치"
+      },
+      {
+        "word": "cleared path",
+        "meaning": "풀이나 나무를 걷어 낸 길"
+      },
+      {
+        "word": "hop",
+        "meaning": "깡충깡충 뛰다"
+      }
+    ]
+  },
+  {
+    "id": "E3-20",
+    "topicTitle": "멕시코만의 여름 바다",
+    "questionType": "answerable_question",
+    "passageText": "Each summer, a large area of water near the sea floor in the northern Gulf of Mexico has too little oxygen for most sea animals. People call it the dead zone. Every year in late July, a team of scientists sails across the area on a research ship. At many points along the way, they lower instruments into the water to measure how much oxygen there is. From these measurements, they draw a map and work out how big the zone is. Its size changes a lot from year to year. By comparing each new map with older ones, which go back to the 1980s, scientists can see long-term changes.",
+    "promptText": "윗글을 읽고 답할 수 있는 질문은?",
+    "choices": [
+      "과학자들은 산소가 모자란 바다의 크기를 어떻게 알아내는가?",
+      "멕시코만 바닥의 물에서 산소가 모자라게 되는 까닭은 무엇인가?",
+      "산소가 모자란 바다를 줄이려고 사람들은 무엇을 하고 있는가?",
+      "산소가 모자란 바다가 지금까지 가장 넓었던 해는 언제인가?",
+      "큰 폭풍이 지나가면 산소가 모자란 바다는 어떻게 달라지는가?"
+    ],
+    "correctIndex": 0,
+    "explanation": "윗글에 과학자들이 해마다 7월 말 연구선을 타고 여러 곳에서 산소의 양을 잰 뒤 'they draw a map and work out how big the zone is'(지도를 그려 그 구역이 얼마나 큰지 알아낸다)라고 나옵니다. 산소가 모자라게 되는 까닭, 이를 줄이려는 노력, 가장 넓었던 해, 폭풍이 지나간 뒤의 변화는 이 글에 나오지 않습니다.",
+    "translation": "해마다 여름이면 멕시코만 북쪽의 바닥 가까운 넓은 바다에는 대부분의 바다 동물이 살기에 산소가 너무 적어진다. 사람들은 이곳을 '죽음의 바다'라고 부른다. 해마다 7월 말이면 과학자들이 연구선을 타고 이 바다를 가로지른다. 가는 길의 여러 곳에서 과학자들은 측정 기구를 물속에 내려 산소가 얼마나 있는지 잰다. 이렇게 잰 값으로 지도를 그려 그 구역이 얼마나 큰지 알아낸다. 그 크기는 해마다 크게 달라진다. 과학자들은 새 지도를 1980년대까지 거슬러 올라가는 옛 지도들과 견주어 오랜 기간에 걸친 변화를 살펴볼 수 있다.",
+    "vocab": [
+      {
+        "word": "oxygen",
+        "meaning": "산소"
+      },
+      {
+        "word": "dead zone",
+        "meaning": "(산소가 모자라 생물이 살기 어려운) 죽음의 바다"
+      },
+      {
+        "word": "research ship",
+        "meaning": "연구선"
+      },
+      {
+        "word": "lower",
+        "meaning": "(아래로) 내리다"
+      },
+      {
+        "word": "instrument",
+        "meaning": "(측정) 기구"
+      },
+      {
+        "word": "work out",
+        "meaning": "알아내다, 계산해 내다"
+      },
+      {
+        "word": "go back to",
+        "meaning": "~까지 거슬러 올라가다"
+      },
+      {
+        "word": "long-term",
+        "meaning": "오랜 기간에 걸친, 장기적인"
+      }
+    ]
+  },
+  {
+    "id": "E3-21",
+    "topicTitle": "바닷물에 뿌리내린 숲",
+    "questionType": "not_mentioned",
+    "passageText": "Mangroves are trees that grow along warm coasts, where seawater often covers their roots twice a day. Salt harms most plants, but mangroves have ways to deal with it. Some kinds keep much of the salt out at their roots. Others take in salt water and push the extra salt out through their leaves. Because the mud they grow in has little air, some mangroves send up special roots that stick out of the mud like pencils. These roots help the trees get air. Among the roots under the water, many young fish hide from bigger fish.",
+    "promptText": "맹그로브에 대해 윗글에서 설명하지 않은 것은?",
+    "choices": [
+      "굵은 버팀뿌리를 뻗어 무른 진흙 위에 몸을 받치기도 한다.",
+      "뿌리에서 바닷물 속 소금이 들어오지 못하게 막기도 한다.",
+      "잎을 통해 몸속에 남는 소금을 밖으로 내보내기도 한다.",
+      "진흙 위로 뿌리를 내밀어 공기를 얻기도 한다.",
+      "물에 잠긴 뿌리 사이는 어린 물고기가 숨는 곳이 되기도 한다."
+    ],
+    "correctIndex": 0,
+    "explanation": "윗글에는 뿌리에서 소금을 막는 종류, 잎으로 소금을 내보내는 종류, 진흙 위로 내민 뿌리, 뿌리 사이에 숨는 어린 물고기가 나옵니다. 맹그로브가 굵은 버팀뿌리를 뻗어 무른 진흙 위에 몸을 받치는 것도 사실이지만 이 글에는 나오지 않습니다.",
+    "translation": "맹그로브는 따뜻한 바닷가를 따라 자라는 나무로, 그곳에서는 하루에 두 번쯤 바닷물이 뿌리를 덮는 일이 많다. 소금은 대부분의 식물에 해롭지만, 맹그로브에게는 소금을 다루는 방법이 있다. 어떤 종류는 뿌리에서 소금이 들어오는 것을 상당히 막는다. 또 어떤 종류는 바닷물을 빨아들인 뒤 남는 소금을 잎으로 내보낸다. 맹그로브가 자라는 진흙에는 공기가 적어서, 어떤 맹그로브는 연필처럼 진흙 위로 삐죽 솟는 특별한 뿌리를 내민다. 이 뿌리는 나무가 공기를 얻도록 돕는다. 물에 잠긴 뿌리 사이에서는 많은 어린 물고기가 큰 물고기를 피해 숨는다.",
+    "vocab": [
+      {
+        "word": "coast",
+        "meaning": "바닷가, 해안"
+      },
+      {
+        "word": "harm",
+        "meaning": "해치다, 해를 끼치다"
+      },
+      {
+        "word": "deal with",
+        "meaning": "~을 다루다, ~에 대처하다"
+      },
+      {
+        "word": "keep A out",
+        "meaning": "A가 들어오지 못하게 하다"
+      },
+      {
+        "word": "take in",
+        "meaning": "빨아들이다, 받아들이다"
+      },
+      {
+        "word": "send up",
+        "meaning": "위로 올려 보내다, 내밀다"
+      },
+      {
+        "word": "stick out of",
+        "meaning": "~ 밖으로 삐죽 나오다"
+      },
+      {
+        "word": "hide from",
+        "meaning": "~을 피해 숨다"
+      }
+    ]
+  },
+  {
+    "id": "E3-22",
+    "topicTitle": "스파르타의 공주",
+    "questionType": "content_match",
+    "passageText": "In the ancient Olympic Games, women could not compete, and married women were not even allowed to watch. Yet a Spartan princess named Kyniska became an Olympic champion. How was this possible? In the four-horse chariot race, the prize went to the owner of the horses, not to the driver. Kyniska raised fine horses, and she had a skilled driver race them for her. Her chariot won in 396 BC and again four years later. A statue of her was set up at Olympia, with words claiming that no other woman in Greece had won such a prize.",
+    "promptText": "윗글에서 알 수 있는 것은?",
+    "choices": [
+      "네 필 말이 끄는 전차 경주에서는 말 주인이 우승자가 되었다.",
+      "올림픽 우승자는 올리브 가지로 엮은 관을 받았다.",
+      "경기 기간에는 오가는 사람을 지키는 휴전 약속이 있었다.",
+      "미혼 여성들은 헤라 여신을 기리는 경기를 따로 열었다.",
+      "맨 처음 올림픽 경기는 짧은 거리를 달리는 경주였다고 전한다."
+    ],
+    "correctIndex": 0,
+    "explanation": "윗글의 'the prize went to the owner of the horses, not to the driver'는 '상은 말을 몬 사람이 아니라 말의 주인에게 돌아갔다'는 뜻입니다. 올리브 관, 휴전 약속, 헤라 여신을 기리는 경기, 첫 경기였던 달리기는 사실이거나 그렇게 전하는 내용이지만 이 글에는 나오지 않습니다.",
+    "translation": "고대 올림픽 경기에서 여성은 선수로 나설 수 없었고, 결혼한 여성은 경기를 구경하는 것조차 허락되지 않았다. 그런데도 키니스카라는 스파르타의 공주는 올림픽 우승자가 되었다. 어떻게 이런 일이 가능했을까? 네 필의 말이 끄는 전차 경주에서는 상이 말을 모는 사람이 아니라 말의 주인에게 돌아갔다. 키니스카는 좋은 말을 길렀고, 솜씨 좋은 마부에게 그 말을 몰아 경주하게 했다. 그녀의 전차는 기원전 396년에 우승했고, 4년 뒤에 다시 우승했다. 올림피아에는 그녀의 조각상이 세워졌고, 그리스에서 이런 상을 받은 여성은 그녀 말고는 없다고 밝히는 글이 새겨졌다.",
+    "vocab": [
+      {
+        "word": "be allowed to",
+        "meaning": "~하는 것이 허락되다"
+      },
+      {
+        "word": "champion",
+        "meaning": "우승자"
+      },
+      {
+        "word": "chariot",
+        "meaning": "(고대의) 전차, 말이 끄는 수레"
+      },
+      {
+        "word": "owner",
+        "meaning": "주인, 소유자"
+      },
+      {
+        "word": "raise",
+        "meaning": "(동물을) 기르다; 올리다"
+      },
+      {
+        "word": "have A do",
+        "meaning": "A에게 ~하게 하다"
+      },
+      {
+        "word": "set up",
+        "meaning": "세우다"
+      },
+      {
+        "word": "claim",
+        "meaning": "주장하다, 내세우다"
+      }
+    ]
+  },
+  {
+    "id": "E3-23",
+    "topicTitle": "마라톤 거리의 내력",
+    "questionType": "not_mentioned",
+    "passageText": "Today, every official marathon is 42.195 kilometers long, but this was not always so. At the first modern Olympics in Athens in 1896, the race was about 40 kilometers. For the next few Games, the distance changed from one Olympics to the next. At the 1908 London Olympics, the course began at Windsor Castle and ended in front of the royal box in the stadium. That route measured 42.195 kilometers. In 1921, this length became the official distance for the marathon. Since then, runners around the world have raced over exactly the same distance.",
+    "promptText": "마라톤에 대해 윗글에서 설명하지 않은 것은?",
+    "choices": [
+      "마라톤 경주는 승전 소식을 전하러 달렸다는 병사 이야기에서 비롯되었다.",
+      "1896년 아테네 대회의 마라톤 선수들은 40킬로미터쯤을 달렸다.",
+      "처음 몇 차례 올림픽에서는 대회마다 마라톤에서 달리는 거리가 달랐다.",
+      "1908년 런던 대회의 마라톤 경주는 윈저성에서 출발해 경기장에서 끝났다.",
+      "지금의 마라톤 거리는 1921년에 이르러 공식 거리로 정해졌다."
+    ],
+    "correctIndex": 0,
+    "explanation": "윗글에는 1896년 대회의 40킬로미터쯤 되는 거리, 대회마다 달랐던 거리, 윈저성에서 출발한 1908년 경주, 1921년에 정해진 공식 거리가 나옵니다. 마라톤 경주가 승전 소식을 전하러 달렸다는 병사 이야기에서 비롯되었다는 것도 널리 알려진 사실이지만 이 글에는 나오지 않습니다.",
+    "translation": "오늘날 공식 마라톤은 모두 42.195킬로미터를 달리지만, 처음부터 그랬던 것은 아니다. 1896년 아테네에서 열린 첫 근대 올림픽에서는 40킬로미터쯤을 달렸다. 그 뒤 몇 차례 대회에서도 달리는 거리는 올림픽마다 달라졌다. 1908년 런던 올림픽에서는 윈저성에서 출발해 경기장의 왕실 관람석 앞에서 끝나는 길을 달렸다. 그 길이 42.195킬로미터였다. 1921년, 이 길이가 마라톤의 공식 거리가 되었다. 그때부터 세계 곳곳의 선수들은 똑같은 거리를 달리고 있다.",
+    "vocab": [
+      {
+        "word": "official",
+        "meaning": "공식의, 공식적인"
+      },
+      {
+        "word": "not always",
+        "meaning": "늘 ~인 것은 아니다"
+      },
+      {
+        "word": "modern",
+        "meaning": "근대의, 현대의"
+      },
+      {
+        "word": "from one A to the next",
+        "meaning": "A마다, A가 바뀔 때마다"
+      },
+      {
+        "word": "course",
+        "meaning": "(경주의) 길, 코스"
+      },
+      {
+        "word": "royal box",
+        "meaning": "(경기장의) 왕실 관람석"
+      },
+      {
+        "word": "measure",
+        "meaning": "(길이·크기가) ~이다; 재다"
+      },
+      {
+        "word": "since then",
+        "meaning": "그때부터, 그 뒤로"
+      }
+    ]
+  },
+  {
+    "id": "E3-24",
+    "topicTitle": "병원 뜰에서 시작된 경기",
+    "questionType": "not_mentioned",
+    "passageText": "The Paralympic Games grew out of a small sports event at a hospital in England. During World War II, many soldiers badly injured their spines and could no longer walk. At Stoke Mandeville Hospital, a doctor named Ludwig Guttmann used sports to help these patients get stronger and feel hopeful again. On July 29, 1948, the day the London Olympics opened, he held an archery contest for 16 patients in wheelchairs. In 1960, about 400 athletes from 23 countries gathered in Rome for what is now called the first Paralympic Games. Today the Paralympics take place in the same city as the Olympics, shortly after them.",
+    "promptText": "패럴림픽에 대해 윗글에서 설명하지 않은 것은?",
+    "choices": [
+      "1952년에 네덜란드 선수들이 참가하며 국제 대회로 넓어졌다.",
+      "등뼈를 다쳐 걷지 못하게 된 군인들을 돕는 데서 출발했다.",
+      "런던 올림픽이 개막한 날에 휠체어 양궁 대회가 열렸다.",
+      "1960년 로마에서 열린 대회가 첫 패럴림픽으로 여겨진다.",
+      "요즘은 올림픽이 끝난 뒤 같은 도시에서 이어서 열린다."
+    ],
+    "correctIndex": 0,
+    "explanation": "윗글에는 등뼈를 다친 군인들을 돕는 데서 출발한 일, 런던 올림픽 개막일의 휠체어 양궁 대회, 1960년 로마 대회, 오늘날 올림픽이 끝난 뒤 같은 도시에서 열리는 것이 나옵니다. 1952년에 네덜란드 선수들이 참가하며 국제 대회로 넓어진 것도 사실이지만 이 글에는 나오지 않습니다.",
+    "translation": "패럴림픽은 영국의 한 병원에서 열린 작은 운동 경기에서 비롯되었다. 제2차 세계 대전 동안 많은 군인이 등뼈를 크게 다쳐 더는 걸을 수 없게 되었다. 스토크맨더빌 병원의 의사 루트비히 구트만은 이 환자들이 몸을 튼튼히 하고 다시 희망을 품도록 운동을 활용했다. 런던 올림픽이 막을 연 1948년 7월 29일, 그는 휠체어를 탄 환자 16명이 참가하는 양궁 대회를 열었다. 1960년에는 23개 나라에서 온 400명쯤의 선수가 로마에 모였는데, 이 대회를 오늘날 첫 패럴림픽이라고 부른다. 오늘날 패럴림픽은 올림픽이 끝나고 얼마 지나지 않아 같은 도시에서 열린다.",
+    "vocab": [
+      {
+        "word": "grow out of",
+        "meaning": "~에서 생겨나다, 비롯되다"
+      },
+      {
+        "word": "badly",
+        "meaning": "심하게, 크게"
+      },
+      {
+        "word": "backbone",
+        "meaning": "등뼈, 척추"
+      },
+      {
+        "word": "no longer",
+        "meaning": "더는 ~하지 않다"
+      },
+      {
+        "word": "patient",
+        "meaning": "환자"
+      },
+      {
+        "word": "archery",
+        "meaning": "양궁, 활쏘기"
+      },
+      {
+        "word": "athlete",
+        "meaning": "운동선수"
+      },
+      {
+        "word": "take place",
+        "meaning": "(행사가) 열리다"
+      }
+    ]
+  },
+  {
+    "id": "E3-25",
+    "topicTitle": "YMCA 체육관의 새 경기",
+    "questionType": "vocabulary",
+    "passageText": "In 1895, William G. Morgan was a physical education teacher at a YMCA in Massachusetts. Many of the businessmen in his classes were older, and they found basketball too rough. So Morgan made up a gentler indoor game. He borrowed a net from tennis and raised it to about 198 centimeters, just above the head of an average man. Players hit a ball back and forth over the net, and no one had to crash into anyone else. He first called the game Mintonette, but it was soon renamed volleyball. The game spread quickly to YMCAs across the country.",
+    "promptText": "윗글에서 'raised'의 뜻으로 알맞은 것은?",
+    "choices": [
+      "(물건을 위로) 높이 올리다.",
+      "(아이나 동물을) 기르다.",
+      "(돈이나 물건을) 모으다.",
+      "(문제나 의견을) 꺼내다.",
+      "(의심이나 걱정을) 불러일으키다."
+    ],
+    "correctIndex": 0,
+    "explanation": "'He borrowed a net from tennis and raised it to about 198 centimeters'는 '테니스 그물을 빌려 와 약 198센티미터 높이로 올렸다'는 뜻입니다. 올린 것이 그물이라 raised는 '높이 올리다'로 쓰였습니다. 기르다, 모으다, 꺼내다, 불러일으키다도 raise의 뜻이지만 이 문장에는 맞지 않습니다.",
+    "translation": "1895년, 윌리엄 G. 모건은 미국 매사추세츠주의 한 YMCA에서 체육을 가르치는 교사였다. 그의 수업을 듣는 회사원 가운데에는 나이 든 사람이 많았고, 그들은 농구가 너무 거칠다고 느꼈다. 그래서 모건은 더 부드러운 실내 경기를 지어냈다. 그는 테니스 그물을 빌려 와 보통 어른 남자의 머리 바로 위인 198센티미터쯤 높이로 올렸다. 선수들은 그물 너머로 공을 주고받았고, 누구도 다른 사람과 부딪칠 필요가 없었다. 그는 처음에 이 경기를 '민토넷'이라고 불렀지만, 곧 이름이 배구(발리볼)로 바뀌었다. 이 경기는 전국의 YMCA로 빠르게 퍼졌다.",
+    "vocab": [
+      {
+        "word": "physical education",
+        "meaning": "체육"
+      },
+      {
+        "word": "rough",
+        "meaning": "거친, 험한"
+      },
+      {
+        "word": "make up",
+        "meaning": "지어내다, 새로 만들어 내다"
+      },
+      {
+        "word": "borrow",
+        "meaning": "빌리다, 빌려 오다"
+      },
+      {
+        "word": "raise",
+        "meaning": "높이 올리다; 기르다; (돈을) 모으다"
+      },
+      {
+        "word": "average",
+        "meaning": "보통의, 평균의"
+      },
+      {
+        "word": "back and forth",
+        "meaning": "이리저리, 왔다 갔다"
+      },
+      {
+        "word": "crash into",
+        "meaning": "~와 세게 부딪치다"
+      }
+    ]
+  },
+  {
+    "id": "E3-26",
+    "topicTitle": "처음 만들어진 피아노",
+    "questionType": "content_match",
+    "passageText": "Around 1700, Bartolomeo Cristofori, an instrument maker in Florence, Italy, built the first piano. Before that, one of the most popular keyboard instruments was the harpsichord. In a harpsichord, pressing a key makes a small pick pluck a string. The sound is about the same whether the player presses the key gently or hard. In Cristofori's instrument, a small hammer struck the string instead. The hammer then fell back right away, so the string could keep ringing. Because the player's touch changed how hard the hammer hit, the new instrument could play both soft and loud sounds.",
+    "promptText": "윗글의 내용과 일치하는 것은?",
+    "choices": [
+      "줄을 친 망치가 곧바로 물러나서 줄이 계속 울릴 수 있었다.",
+      "피아노라는 이름은 '여리게'와 '세게'를 뜻하는 말에서 왔다.",
+      "오늘날 널리 쓰이는 피아노에는 건반이 88개 있다.",
+      "오늘날의 피아노는 쇠로 만든 틀이 줄의 큰 힘을 견딘다.",
+      "초기의 피아노는 지금보다 건반 수가 적고 소리도 작았다."
+    ],
+    "correctIndex": 0,
+    "explanation": "윗글의 'The hammer then fell back right away, so the string could keep ringing.'은 '망치가 곧바로 뒤로 물러나서 줄이 계속 울릴 수 있었다'는 뜻입니다. 피아노라는 이름의 뜻, 88개의 건반, 쇠로 만든 틀, 초기 피아노의 건반 수와 소리 크기는 사실이지만 이 글에는 나오지 않습니다.",
+    "translation": "1700년 무렵, 이탈리아 피렌체의 악기 제작자 바르톨로메오 크리스토포리가 첫 피아노를 만들었다. 그전에는 하프시코드가 가장 널리 쓰이던 건반 악기 가운데 하나였다. 하프시코드는 건반을 누르면 작은 채가 줄을 뜯는다. 그래서 연주자가 건반을 살살 누르든 세게 누르든 소리가 거의 같다. 크리스토포리의 악기에서는 줄을 뜯는 대신 작은 망치가 줄을 쳤다. 망치는 줄을 친 뒤 곧바로 뒤로 물러나서, 줄이 계속 울릴 수 있었다. 연주자의 손길에 따라 망치가 줄을 치는 세기가 달라졌기 때문에, 이 새 악기는 여린 소리와 센 소리를 모두 낼 수 있었다.",
+    "vocab": [
+      {
+        "word": "instrument maker",
+        "meaning": "악기 제작자"
+      },
+      {
+        "word": "keyboard instrument",
+        "meaning": "건반 악기"
+      },
+      {
+        "word": "pluck",
+        "meaning": "(줄을) 뜯다, 퉁기다"
+      },
+      {
+        "word": "whether A or B",
+        "meaning": "A이든 B이든"
+      },
+      {
+        "word": "strike",
+        "meaning": "치다, 때리다 (과거형 struck)"
+      },
+      {
+        "word": "fall back",
+        "meaning": "뒤로 물러나다"
+      },
+      {
+        "word": "right away",
+        "meaning": "곧바로, 즉시"
+      },
+      {
+        "word": "ring",
+        "meaning": "(소리가) 울리다"
+      }
+    ]
+  },
+  {
+    "id": "E3-27",
+    "topicTitle": "기름통으로 만든 악기",
+    "questionType": "answerable_question",
+    "passageText": "The steelpan comes from Trinidad and Tobago, and today it is made from oil drums. A maker first hammers the flat top of a drum into a smooth bowl. Next, the maker marks out the areas that will become notes and separates them with grooves. Then the side of the drum is cut to a certain length. High pans keep only a short side, while bass pans use the whole drum, so bass players often play several drums at once. The pan is then heated over a fire, which helps the metal hold its notes. After it cools, each note area is tuned with small hammers until it sounds right.",
+    "promptText": "윗글을 읽고 답할 수 있는 질문은?",
+    "choices": [
+      "낮은 음을 내는 팬은 높은 음 팬과 생김새가 어떻게 다른가?",
+      "사람들이 기름통으로 악기를 만들기 시작한 까닭은 무엇인가?",
+      "스틸팬을 치는 채의 끝은 무엇으로 감싸는가?",
+      "영국 통치자들이 거리 축제에서 북을 금지한 까닭은 무엇인가?",
+      "스틸팬 악단들은 해마다 어떤 대회에서 실력을 겨루는가?"
+    ],
+    "correctIndex": 0,
+    "explanation": "윗글의 'High pans keep only a short side, while bass pans use the whole drum'은 '높은 음 팬은 옆면을 짧게만 남기고, 낮은 음 팬은 통을 통째로 쓴다'는 뜻입니다. 기름통으로 악기를 만들기 시작한 까닭, 채 끝을 감싸는 재료, 북을 금지한 까닭, 악단들이 겨루는 대회는 이 글에 나오지 않습니다.",
+    "translation": "스틸팬은 트리니다드 토바고에서 생겨났고, 오늘날에는 기름통으로 만든다. 만드는 사람은 먼저 기름통의 평평한 윗면을 망치로 두드려 매끈한 그릇 모양으로 움푹하게 만든다. 다음으로 음이 될 자리를 나누어 표시하고, 그 사이에 홈을 내어 서로 떼어 놓는다. 그런 다음 통의 옆면을 알맞은 길이로 자른다. 높은 음 팬은 옆면을 짧게만 남기고, 낮은 음 팬은 통을 통째로 쓰기 때문에, 낮은 음을 맡은 연주자는 여러 개의 통을 한꺼번에 연주하는 경우가 많다. 그다음 팬을 불 위에서 달구는데, 이렇게 하면 쇠가 제 음을 더 잘 지키게 된다. 팬이 식으면 음 자리마다 작은 망치로 두드려 제 소리가 날 때까지 음을 맞춘다.",
+    "vocab": [
+      {
+        "word": "oil drum",
+        "meaning": "기름통, 드럼통"
+      },
+      {
+        "word": "hammer A into B",
+        "meaning": "A를 망치로 두드려 B 모양으로 만들다"
+      },
+      {
+        "word": "mark out",
+        "meaning": "(구역을) 나누어 표시하다"
+      },
+      {
+        "word": "groove",
+        "meaning": "(길게 판) 홈"
+      },
+      {
+        "word": "heat",
+        "meaning": "달구다, 뜨겁게 하다"
+      },
+      {
+        "word": "hold",
+        "meaning": "(상태를) 지키다, 유지하다"
+      },
+      {
+        "word": "tune",
+        "meaning": "(악기의) 음을 맞추다"
+      },
+      {
+        "word": "at once",
+        "meaning": "한꺼번에, 동시에"
+      }
+    ]
+  },
+  {
+    "id": "E3-28",
+    "topicTitle": "산호초의 앵무고기",
+    "questionType": "content_match",
+    "passageText": "At night, many kinds of parrotfish rest among the rocks and coral of the reef. Before going to sleep, some of them do something unusual. Special glands near their gills produce a clear slime, which slowly spreads around the fish. After a while, the fish is wrapped in a see-through bag, like a sleeping bag. In an experiment, scientists found that fish without this covering were attacked much more often by tiny blood-sucking animals. Making the bag uses some of the fish's energy, but it seems to be worth it. In the morning, the parrotfish breaks out of the bag and swims away.",
+    "promptText": "윗글에서 알 수 있는 것은?",
+    "choices": [
+      "어떤 앵무고기는 밤에 몸을 점액으로 감싸 작은 기생 동물을 막는다.",
+      "앵무고기는 산호를 갉아 먹고 갈아서 흰 모래를 만들어 낸다.",
+      "어떤 앵무고기는 자라면서 암컷에서 수컷으로 몸이 바뀐다.",
+      "앵무고기는 목 안쪽의 이빨로 먹은 산호 조각을 잘게 간다.",
+      "어떤 앵무고기는 몸길이가 1미터를 넘을 만큼 크게 자란다."
+    ],
+    "correctIndex": 0,
+    "explanation": "윗글은 잠들기 전 몸을 점액 주머니로 감싸는 앵무고기가 있고, 'fish without this covering were attacked much more often by tiny blood-sucking animals'(이 막이 없는 물고기는 피를 빠는 작은 동물에게 훨씬 더 자주 공격받았다)고 설명합니다. 흰 모래를 만드는 것, 암컷에서 수컷으로 바뀌는 것, 목 안쪽 이빨로 산호를 가는 것, 1미터가 넘게 자라는 종류는 사실이지만 이 글에는 나오지 않습니다.",
+    "translation": "밤이 되면 여러 종류의 앵무고기가 산호초의 바위와 산호 사이에서 쉰다. 잠들기 전에 그 가운데 몇몇은 색다른 일을 한다. 아가미 가까이에 있는 특별한 샘에서 투명하고 끈끈한 점액이 나와 물고기 둘레로 천천히 퍼진다. 얼마 뒤 물고기는 침낭 같은 투명한 주머니에 싸이게 된다. 한 실험에서 과학자들은 이 막이 없는 물고기가 피를 빠는 작은 동물에게 훨씬 더 자주 공격받는다는 것을 알아냈다. 주머니를 만드는 데에는 물고기의 에너지가 얼마간 들지만, 그만한 값어치가 있는 것으로 보인다. 아침이 되면 앵무고기는 주머니를 깨고 나와 헤엄쳐 간다.",
+    "vocab": [
+      {
+        "word": "rest",
+        "meaning": "쉬다"
+      },
+      {
+        "word": "gland",
+        "meaning": "(몸의) 샘, 분비샘"
+      },
+      {
+        "word": "gill",
+        "meaning": "아가미"
+      },
+      {
+        "word": "slime",
+        "meaning": "끈끈한 점액"
+      },
+      {
+        "word": "be wrapped in",
+        "meaning": "~에 싸이다"
+      },
+      {
+        "word": "blood-sucking",
+        "meaning": "피를 빠는"
+      },
+      {
+        "word": "worth it",
+        "meaning": "그만한 값어치가 있는"
+      },
+      {
+        "word": "break out of",
+        "meaning": "~을 깨고 나오다"
+      }
+    ]
+  }
+]
