@@ -129,7 +129,7 @@ const CHAPTERS = [
                 ],
                 right: [
                     "바리데기는 품에서 이름 적힌 종이를 꺼냈어요.",
-                    "\"이것을 넣어 주신 분이 어머니시지요.\"",
+                    "\"이것을 넣어 주신 분이 어머니시지요?\"",
                     "왕비가 소리 내어 울었습니다.",
                     "임금은 얼굴을 돌린 채 아무 말도 하지 못했어요.",
                     "바리데기가 조용히 말했답니다. \"약수는 제가 다녀오겠습니다.\""
@@ -243,7 +243,7 @@ const CHAPTERS = [
                     "바리데기가 궁에 닿았을 때, 궁 문에서 상여 두 채가 나오고 있었어요.",
                     "상여는 죽은 사람을 모시고 가는 가마예요.",
                     "\"누구의 상여입니까?\"",
-                    "\"임금님과 왕비님이시다. 어제 함께 눈을 감으셨지.\"",
+                    "\"임금님과 왕비님이시다. 며칠 전 함께 눈을 감으셨지.\"",
                     "바리데기는 상여 앞을 막아섰습니다."
                 ],
                 right: [
@@ -594,7 +594,7 @@ const EN = {
                         "When Barideggi reached the palace two biers were coming out of the gate.",
                         "A bier is what the dead are carried on.",
                         { t: "\"Whose biers are these?\"", v: "girl" },
-                        { t: "\"The king's and the queen's. They died together yesterday.\"", v: "man" },
+                        { t: "\"The king's and the queen's. They died together a few days ago.\"", v: "man" },
                         "Barideggi stood in the way of the biers."
                     ],
                     right: [
@@ -821,7 +821,7 @@ const EN = {
             { w: "reached (reach)", k: "닿았다", s: "When Barideggi reached the palace" },
             { w: "biers", k: "상여", s: "two biers were coming out of the gate" },
             { w: "are carried on (carry)", k: "모시고 간다", s: "A bier is what the dead are carried on." },
-            { w: "died together", k: "함께 눈을 감았다", s: "The king's and the queen's. They died together yesterday." },
+            { w: "died together", k: "함께 눈을 감았다", s: "The king's and the queen's. They died together a few days ago." },
             { w: "stood in the way of ~ (stand)", k: "앞을 막아섰다", s: "Barideggi stood in the way of the biers." },
             { w: "in mourning", k: "상복을 입고", s: "The six sisters, following in mourning, opened their eyes wide." },
             { w: "come back alive", k: "살아서 왔다", s: "She has come back alive." },
@@ -1030,7 +1030,7 @@ const WORDS_KO = {
     "13-funeral.webp": [
         { w: "상여", k: "죽은 사람을 모시고 가는 가마.", s: "상여는 죽은 사람을 모시고 가는 가마예요." },
         { w: "채", k: "가마나 집을 세는 말.", s: "궁 문에서 상여 두 채가 나오고 있었어요." },
-        { w: "눈을 감다", k: "세상을 떠나다.", s: "어제 함께 눈을 감으셨지." },
+        { w: "눈을 감다", k: "세상을 떠나다.", s: "며칠 전 함께 눈을 감으셨지." },
         { w: "막아서다", k: "앞을 가로막고 서다.", s: "바리데기는 상여 앞을 막아섰습니다." },
         { w: "상복", k: "초상 때 입는 옷.", s: "여섯 언니가 상복을 입고 뒤따르다 눈이 휘둥그레졌지요." },
         { w: "상여꾼", k: "상여를 메고 가는 사람.", s: "상여꾼들이 걸음을 멈췄지요." }
