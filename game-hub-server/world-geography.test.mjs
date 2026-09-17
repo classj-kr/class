@@ -17,7 +17,7 @@ vm.runInNewContext(dataSource, context, { filename: 'world-geography/data.js' })
 vm.runInNewContext(themeItemsSource, context, { filename: 'world-geography/theme-items.js' });
 
 const dataset = context.window.WORLD_GEOGRAPHY;
-const expectedThemes = ['world', 'coordinates', 'terrain', 'climate', 'population', 'region'];
+const expectedThemes = ['world', 'coordinates', 'terrain', 'climate', 'population', 'region', 'religion', 'resources'];
 assert.ok(dataset, 'World geography data must be exposed for the learning surface.');
 assert.deepEqual(Object.keys(dataset.themes), expectedThemes);
 
@@ -50,7 +50,7 @@ assert.match(dataSource, /본초 자오선/);
 assert.match(dataSource, /날짜변경선/);
 assert.match(dataSource, /북회귀선/);
 assert.match(dataSource, /남회귀선/);
-assert.match(app, /L\.imageOverlay\(MAP_IMAGE, WORLD_BOUNDS/);
+assert.match(app, /L\.imageOverlay\(MAP_IMAGE/);
 assert.match(app, /localStorage\.setItem\(PROGRESS_KEY/);
 assert.match(app, /reviewWrongQuestions/);
 assert.match(styles, /min-height:\s*44px/);
@@ -58,7 +58,8 @@ assert.match(styles, /1024|860px/);
 
 assert.match(atlasHtml, /id="themeLayerControls"[\s\S]*?id="themeItemCard"/);
 assert.doesNotMatch(atlasHtml, /speakThemeItem|설명 듣기/);
-assert.match(atlasHtml, /theme-items\.js\?v=20260903-3[\s\S]*?app\.js\?v=20260903-3/);
+assert.match(atlasHtml, /theme-items\.js\?v=20260903-3[\s\S]*?app\.js\?v=20260904-5/);
+assert.match(atlasHtml, /styles\.css\?v=20260917-1/);
 assert.match(atlasApp, /let activeCategory = "animal"/);
 assert.match(atlasApp, /activeCategory = categoryId/);
 assert.match(atlasApp, /setAttribute\("aria-pressed"/);
@@ -68,17 +69,19 @@ assert.doesNotMatch(atlasHtml, /class="topbar"|지리 지도|<strong>테마도�
 assert.match(atlasHtml, /class="map-back"/);
 assert.match(atlasStyles, /\.atlas-theme-strip \.theme-layer-controls/);
 assert.match(atlasStyles, /\.atlas-map-stage \.atlas-item-card/);
-assert.match(atlasStyles, /max-width:\s*860px/);
-assert.match(styles, /font-size:\s*clamp\(1\.35rem,\s*1\.7vw,\s*1\.6rem\)/);
+assert.match(atlasStyles, /\.atlas-layout[^}]*grid-template-rows:\s*minmax\(0,\s*1fr\)/);
+assert.match(atlasStyles, /\.atlas-map-stage[^}]*height:\s*100%/);
+assert.doesNotMatch(atlasStyles, /grid-template-rows:\s*62px\s+auto/);
+assert.match(styles, /\.concept-card h1[^}]*font-size:\s*1\.08rem/);
 assert.doesNotMatch(styles, /\.concept-card h1[^}]*font-family:\s*Georgia/);
 assert.match(app, /renderBaseMapCopies/);
 assert.match(app, /worldCopyIndex/);
-assert.match(app, /Math\.log2\(requiredScale\)/);
+assert.match(app, /Math\.log2\(size\.x \/ 360\)/);
 assert.match(app, /\[-90, -1000000\]/);
 assert.match(app, /L\.control\.zoom\(\{ position: "bottomright" \}\)/);
 assert.match(atlasApp, /renderBaseMapCopies/);
 assert.match(atlasApp, /worldCopyIndex/);
-assert.match(atlasApp, /Math\.log2\(requiredScale\)/);
+assert.match(atlasApp, /Math\.log2\(size\.x \/ 360\)/);
 assert.match(atlasApp, /\[-90, -1000000\]/);
 assert.match(atlasApp, /L\.control\.zoom\(\{ position: "bottomright" \}\)/);
 
