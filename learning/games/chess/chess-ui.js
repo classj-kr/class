@@ -67,22 +67,46 @@ function buildPieceGuide() {
     P: { name: "폰(Pawn)", text: "앞으로 한 칸 갑니다. 처음 자리에서는 두 칸도 갑니다. 상대 말은 앞 대각선 한 칸에 있을 때만 잡습니다. 뒤로는 가지 못합니다.", at: [3, 2], steps: [[-1, 0], [-2, 0]], hits: [[-1, -1], [-1, 1]] }
   };
   const board = (type, g) => {
-    const marks = {};
-    for (const [dr, dc] of g.steps || []) marks[`${g.at[0] + dr},${g.at[1] + dc}`] = "legal-empty";
-    for (const [dr, dc] of g.rays || []) for (let k = 1; k < 5; k++) {
-      const r = g.at[0] + dr * k, c = g.at[1] + dc * k;
-      if (r >= 0 && r < 5 && c >= 0 && c < 5) marks[`${r},${c}`] = "legal-empty";
-    }
-    for (const [dr, dc] of g.hits || []) marks[`${g.at[0] + dr},${g.at[1] + dc}`] = "legal-capture";
-    let cells = "";
-    for (let r = 0; r < 5; r++) for (let c = 0; c < 5; c++) {
-      const mark = marks[`${r},${c}`] || "";
-      const piece = r === g.at[0] && c === g.at[1] ? pieceSvg(`w${type}`) : mark === "legal-capture" ? pieceSvg("bP") : "";
-      cells += `<span class="square ${(r + c) % 2 ? "light" : "dark"} ${mark}">${piece}</span>`;
-    }
-    return `<div class="guide-board" aria-hidden="true">${cells}</div>`;
+    const cells = { [`${g.at[0]},${g.at[1]}`]: { piece: `w${type}` } };
+    const put = (r, c, mark) => { if (r >= 0 && r < 5 && c >= 0 && c < 5) cells[`${r},${c}`] = { ...cells[`${r},${c}`], mark }; };
+    for (const [dr, dc] of g.steps || []) put(g.at[0] + dr, g.at[1] + dc, "legal-empty");
+    for (const [dr, dc] of g.rays || []) for (let k = 1; k < 5; k++) put(g.at[0] + dr * k, g.at[1] + dc * k, "legal-empty");
+    for (const [dr, dc] of g.hits || []) cells[`${g.at[0] + dr},${g.at[1] + dc}`] = { piece: "bP", mark: "legal-capture" };
+    return miniBoard(5, 5, cells);
   };
   $("pieceGuide").innerHTML = ["K", "Q", "R", "B", "N", "P"].map(type => `<div class="guide-piece">${board(type, guide[type])}<p><strong>${guide[type].name}</strong> ${guide[type].text}</p></div>`).join("");
+}
+
+function miniBoard(rows, cols, cells, parity = 0, maxCell = 999) {
+  let html = "";
+  for (let r = 0; r < rows; r++) for (let c = 0; c < cols; c++) {
+    const cell = cells[`${r},${c}`] || {};
+    html += `<span class="square ${(r + c + parity) % 2 ? "light" : "dark"} ${cell.mark || ""} ${cell.ghost ? "ghost" : ""}">${cell.piece ? pieceSvg(cell.piece) : ""}</span>`;
+  }
+  return `<div class="guide-board" style="grid-template-columns:repeat(${cols},1fr);aspect-ratio:${cols}/${rows};max-width:${cols * maxCell}px" aria-hidden="true">${html}</div>`;
+}
+
+function buildSpecialGuide() {
+  const castling = '<div class="guide-row">'
+    + miniBoard(1, 8, { "0,4": { piece: "wK" }, "0,7": { piece: "wR" }, "0,6": { mark: "legal-empty" } })
+    + '<span class="guide-arrow" aria-hidden="true">→</span>'
+    + miniBoard(1, 8, { "0,6": { piece: "wK" }, "0,5": { piece: "wR" } })
+    + '</div>';
+  const enPassant = miniBoard(4, 3, {
+    "0,2": { piece: "bP", ghost: true },
+    "1,2": { mark: "legal-empty" },
+    "2,2": { piece: "bP", mark: "legal-capture" },
+    "2,1": { piece: "wP" }
+  }, 1, 40);
+  const promotion = miniBoard(3, 3, { "1,1": { piece: "wP" }, "0,1": { mark: "legal-empty" } }, 0, 40)
+    + '<span class="guide-arrow" aria-hidden="true">↓</span>'
+    + `<div class="guide-choices" aria-hidden="true" style="max-width:120px">${["Q", "R", "B", "N"].map(type => pieceSvg(`w${type}`)).join("")}</div>`;
+  const items = [
+    ["캐슬링(Castling)", castling, "킹이 룩 쪽으로 두 칸 가고, 룩이 킹을 넘어 바로 옆에 섭니다. 킹과 그 룩이 한 번도 움직이지 않았고, 사이가 비었고, 킹이 체크 상태가 아니며 지나가는 칸도 공격받지 않을 때만 됩니다."],
+    ["앙파상(En passant)", enPassant, "상대 폰이 처음 자리에서 두 칸 나와 내 폰 바로 옆에 서면, 바로 다음 수에만 그 폰이 지나간 칸으로 대각선 이동하며 잡습니다."],
+    ["승격(Promotion)", promotion, "폰이 맨 끝 줄에 닿으면 퀸·룩·비숍·나이트 가운데 하나로 바뀝니다."]
+  ];
+  $("specialGuide").innerHTML = items.map(([name, art, text]) => `<div class="guide-piece">${art}<p><strong>${name}</strong> ${text}</p></div>`).join("");
 }
 
 function rulesState() {
@@ -349,6 +373,7 @@ function sendAction(action) {
 
 function init() {
   buildPieceGuide();
+  buildSpecialGuide();
   lobby = ClassroomMultiplayerLobby.create({
     gameId: GAME_ID,
     initialMode: "host",
