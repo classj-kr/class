@@ -26,8 +26,8 @@
       source: 'https://portal.nrich.go.kr/', rights: '3D 모델 제공: 국가유산청 · CC BY 4.0',
       quizBank: [
         { q: '해치상을 옆으로 돌아가며 살펴보면, 몸 전체를 덮고 있는 무늬는 어떤 모양일까요?', options: ['둥글게 말린 소용돌이무늬', '곧게 뻗은 가로 줄무늬', '점을 촘촘히 새긴 무늬'], answer: 0, explain: '둥근 눈과 코, 갈기와 몸을 덮은 소용돌이무늬가 이어져 있어요.' },
-        { q: '해치는 어떤 일을 한다고 여긴 상상의 동물일까요?', options: ['옳고 그름을 가리고 불과 나쁜 기운을 막는다', '비와 바람을 다스려 농사를 돕는다', '바다를 지켜 배를 보호한다'], answer: 0, explain: '해치는 옳고 그름을 가리고 불과 나쁜 기운을 막는다고 여긴 수호 동물이에요. 그래서 궁궐 정문인 광화문 앞 좌우에 한 쌍으로 세웠어요.' },
-        { q: '작품판의 실제 크기 표를 보면, 해치상은 길이·너비·높이 중 어느 수치가 가장 클까요?', options: ['높이(3.507m)', '길이(2.756m)', '너비(1.862m)'], answer: 0, explain: '높이 350.7cm로 길이·너비보다 커요.' }
+        { q: '해치는 어떤 일을 한다고 여긴 상상의 동물일까요?', options: ['옳고 그름을 가리고 불과 나쁜 기운을 막는다', '비와 바람을 다스려 한 해 농사를 돕는다', '바닷길을 지켜 오가는 배를 보호한다'], answer: 0, explain: '해치는 옳고 그름을 가리고 불과 나쁜 기운을 막는다고 여긴 수호 동물이에요. 그래서 궁궐 정문인 광화문 앞 좌우에 한 쌍으로 세웠어요.' },
+        { q: '작품판의 실제 크기 표를 보면, 해치상은 길이·너비·높이 중 어느 수치가 가장 클까요?', options: ['높이', '길이', '너비'], answer: 0, explain: '높이 350.7cm로 길이·너비보다 커요.' }
       ]
     },
     {
@@ -44,7 +44,7 @@
       source: 'https://www.musee-rodin.fr/', rights: '3D 모델: Scan the World / Jonathan Beck · CC BY-SA 4.0',
       quizBank: [
         { q: '〈생각하는 사람〉은 어떤 재질로 만들어졌을까요? 표면의 색과 광택을 살펴보세요.', options: ['청동', '대리석', '무쇠'], answer: 0, explain: '단테의 신곡 속 시인의 모습을 청동으로 표현한 작품이에요.' },
-        { q: '〈생각하는 사람〉은 원래 어떤 작품의 일부로 구상되었을까요?', options: ['〈지옥의 문〉이라는 거대한 청동 문', '성당 제단을 꾸미는 대리석 장식', '궁전 정원 한가운데의 분수'], answer: 0, explain: '단테의 『신곡』을 바탕으로 한 거대한 청동 문 〈지옥의 문〉 위에서, 아래 세상을 내려다보며 생각에 잠긴 시인의 모습으로 처음 만들었어요.' },
+        { q: '〈생각하는 사람〉은 원래 어떤 작품의 일부로 구상되었을까요?', options: ['〈지옥의 문〉이라는 거대한 청동 문', '〈천국의 문〉이라는 성당 청동 문', '〈칼레의 시민〉이라는 기념비'], answer: 0, explain: '단테의 『신곡』을 바탕으로 한 거대한 청동 문 〈지옥의 문〉 위에서, 아래 세상을 내려다보며 생각에 잠긴 시인의 모습으로 처음 만들었어요.' },
         { q: '작품판의 정보를 보면, 이 대형 주조본은 몇 년에 만들어졌을까요?', options: ['1903년', '1850년', '1950년'], answer: 0, explain: '1903년 대형 주조본이에요.' }
       ]
     },
@@ -63,7 +63,7 @@
       quizBank: [
         { q: '다비드상을 아래에서 올려다보면, 몸 전체 비율에 비해 어느 부분이 유독 크게 조각되어 있나요?', options: ['머리와 오른손', '두 발과 무릎', '왼쪽 어깨와 팔꿈치'], answer: 0, explain: '아래에서 올려다볼 때 비율이 자연스럽게 보이도록 머리와 오른손을 약간 더 크게 조각했어요.' },
         { q: '다비드상은 어떤 재료로 조각되었을까요? 표면의 질감을 살펴보세요.', options: ['대리석', '청동', '화강암'], answer: 0, explain: '대리석으로 조각된 작품이에요.' },
-        { q: '작품판의 정보를 보면, 다비드상은 대략 언제 제작되었을까요?', options: ['1501~1504년', '1800년대', '고대 그리스 시대'], answer: 0, explain: '1501~1504년에 제작되었어요.' }
+        { q: '작품판의 정보를 보면, 다비드상은 대략 언제 제작되었을까요?', options: ['1501~1504년', '1401~1404년', '1601~1604년'], answer: 0, explain: '1501~1504년에 제작되었어요.' }
       ]
     },
     {
@@ -80,7 +80,7 @@
       source: 'https://collections.louvre.fr/', rights: '3D 모델: Scan the World / Jonathan Beck · CC BY-SA 4.0',
       quizBank: [
         { q: '밀로의 비너스를 자세히 둘러보면, 발견 당시부터 없었던 부분은 어디일까요?', options: ['양팔', '머리', '두 다리'], answer: 0, explain: '두 팔은 발견 당시부터 없었지만, 그 비어있는 공간 덕분에 더욱 완벽한 클래식 미의 상징이 되었어요.' },
-        { q: '밀로의 비너스는 대략 언제 만들어졌을까요?', options: ['기원전 150~125년경', '서기 1500년경', '20세기 초'], answer: 0, explain: '기원전 150~125년경에 만들어졌어요.' },
+        { q: '밀로의 비너스는 대략 언제 만들어졌을까요?', options: ['기원전 150~125년경', '기원전 450~425년경', '서기 100~125년경'], answer: 0, explain: '기원전 150~125년경에 만들어졌어요.' },
         { q: '밀로의 비너스는 어떤 재질로 조각되었을까요?', options: ['대리석', '청동', '화강암'], answer: 0, explain: '대리석으로 조각된 작품이에요.' }
       ]
     },
@@ -117,7 +117,7 @@
       quizBank: [
         { q: '발끝부터 꼬리까지 옆길을 따라 걸으며 살펴보면, 스핑크스의 몸 전체는 어떻게 만들어졌을까요?', options: ['바위산 하나를 통째로 깎아서', '큰 돌덩이를 하나하나 쌓아 올려서', '진흙 벽돌을 쌓고 겉을 칠해서'], answer: 0, explain: '석회암 바위산 하나를 통째로 깎아 만든 세계 최대 크기의 단일 석조 조각상이에요. 돌을 쌓아 올린 피라미드와는 만든 방법이 달라요.' },
         { q: '스핑크스는 어떤 두 존재가 결합된 모습일까요?', options: ['사자의 몸과 왕의 머리', '황소의 몸과 사람의 머리', '사자의 몸과 독수리의 머리'], answer: 0, explain: '사자의 몸과 왕의 머리가 결합된 고대 이집트의 거대한 수호상이에요.' },
-        { q: '작품판의 실제 크기 표를 보면, 스핑크스는 길이·너비·높이 중 어느 수치가 가장 클까요?', options: ['길이(73.5m)', '너비(19m)', '높이(20.22m)'], answer: 0, explain: '길이 73.5m로 너비·높이보다 훨씬 커요.' }
+        { q: '작품판의 실제 크기 표를 보면, 스핑크스는 길이·너비·높이 중 어느 수치가 가장 클까요?', options: ['길이', '너비', '높이'], answer: 0, explain: '길이 73.5m로 너비·높이보다 훨씬 커요.' }
       ]
     },
     {
@@ -153,7 +153,7 @@
       quizBank: [
         { q: '모아이 주위를 한 바퀴 돌아보면, 이 석상은 어느 쪽을 등지고 서 있을까요?', options: ['바다', '산', '마을'], answer: 0, explain: '모아이는 바다를 등지고 서서 섬 안의 마을과 사람들을 지켜보듯 서 있어요.' },
         { q: '작품판의 정보를 보면, 모아이 석상은 대략 무게가 얼마나 나갈까요?', options: ['약 14톤', '약 1톤', '약 100톤'], answer: 0, explain: '평균 무게가 약 14톤이에요.' },
-        { q: '모아이 석상은 어떤 돌로 만들어졌을까요?', options: ['화산재가 굳은 응회암', '대리석', '화강암'], answer: 0, explain: '대부분 라노 라라쿠 화산의 응회암을 깎아 만들었어요. 화산재가 굳어 생긴 돌이라 비교적 깎기 쉬웠어요.' }
+        { q: '모아이 석상은 어떤 돌로 만들어졌을까요?', options: ['응회암', '대리석', '화강암'], answer: 0, explain: '대부분 라노 라라쿠 화산의 응회암을 깎아 만들었어요. 화산재가 굳어 생긴 돌이라 비교적 깎기 쉬웠어요.' }
       ]
     },
     {
@@ -170,7 +170,7 @@
       source: 'https://www.britishmuseum.org/', rights: '자료: 영국박물관',
       quizBank: [
         { q: '황소 몸통 옆면을 따라가며 다리를 세어 보면, 람마수는 다리가 모두 몇 개일까요?', options: ['5개', '4개', '6개'], answer: 0, explain: '앞에서 보면 서 있는 모습, 옆에서 보면 걷는 모습이 되도록 다리를 하나 더 넣어 5개로 조각했어요.' },
-        { q: '람마수는 어떤 세 존재의 특징이 합쳐진 모습일까요?', options: ['사람 얼굴 · 독수리 날개 · 황소 몸', '사람 얼굴 · 사자 몸 · 날개 없음', '독수리 얼굴 · 사자 몸 · 날개'], answer: 0, explain: '사람의 얼굴, 독수리의 날개, 황소의 몸을 하고 있는 정교한 조각이에요.' },
+        { q: '람마수는 어떤 세 존재의 특징이 합쳐진 모습일까요?', options: ['사람 얼굴 · 독수리 날개 · 황소 몸', '사자 얼굴 · 독수리 날개 · 황소 몸', '사람 얼굴 · 날개 없는 황소 몸'], answer: 0, explain: '사람의 얼굴, 독수리의 날개, 황소의 몸을 하고 있는 정교한 조각이에요.' },
         { q: '람마수는 원래 어디를 지키던 조각일까요?', options: ['궁전으로 들어가는 문', '왕의 무덤 안쪽 방', '신전 지붕 꼭대기'], answer: 0, explain: '고대 아시리아 궁전의 문 양쪽에 서서 나쁜 기운이 들어오지 못하게 지키던 수호신이에요.' }
       ]
     }
@@ -547,10 +547,25 @@
   const PARK_STAMP_KEY = 'parkFinaleStampV1';
   function readParkStamp() { try { return localStorage.getItem(PARK_STAMP_KEY) === '1'; } catch (_) { return false; } }
   function writeParkStamp() { try { localStorage.setItem(PARK_STAMP_KEY, '1'); } catch (_) {} }
+  // 사진 보고 작품 맞히기: 공원의 다른 작품은 생김새가 너무 달라 사진만 봐도 답이 보인다.
+  // 작품마다 생김새가 닮은 다른 조각·유적 이름을 보기로 둔다.
+  const TITLE_DECOYS = {
+    haetae: ['영제교 천록', '불국사 돌사자'],
+    thinker: ['청동 시대', '아담'],
+    david: ['바쿠스', '죽어가는 노예'],
+    venus: ['카피톨리니의 비너스', '크니도스의 아프로디테'],
+    pieta: ['론다니니의 피에타', '애도'],
+    sphinx: ['아부심벨 신전', '타니스의 스핑크스'],
+    liberty: ['로도스의 거상', '조국의 어머니상'],
+    moai: ['올멕 거대 두상', '제주 돌하르방'],
+    lamassu: ['페르세폴리스 만국의 문', '날개 달린 사자상']
+  };
+  // 괄호 속 풀이(날개 달린 황소상)는 보기와 문제 머리에서 뺀다. 답을 알려 주기 때문이다.
+  const shortTitle = title => title.replace(/\s*\(.*\)$/, '');
   function buildImageQuestion(zone) {
-    const distractors = shuffledCopy(ZONES.filter(z => z.id !== zone.id).map(z => z.title)).slice(0, 2);
-    const options = shuffledCopy([zone.title, ...distractors]);
-    return { kind: 'image', image: zone.image, q: '이 사진은 어떤 작품일까요?', options, answer: options.indexOf(zone.title), explain: zone.docent, zoneTitle: zone.title };
+    const title = shortTitle(zone.title);
+    const options = shuffledCopy([title, ...shuffledCopy(TITLE_DECOYS[zone.id]).slice(0, 2)]);
+    return { kind: 'image', image: zone.image, q: '이 사진은 어떤 작품일까요?', options, answer: options.indexOf(title), explain: zone.docent, zoneTitle: zone.title };
   }
   function startQuiz() {
     const imageZones = shuffledCopy(ZONES).slice(0, 2);
@@ -576,7 +591,7 @@
     document.getElementById('finale-step').textContent = `QUESTION ${String(quizIndex + 1).padStart(2, '0')} / ${String(total).padStart(2, '0')}`;
     document.getElementById('finale-progress').style.width = `${quizIndex / total * 100}%`;
     document.getElementById('finale-total').textContent = `${quizCorrect} / ${total}`;
-    document.getElementById('finale-question').textContent = item.kind === 'image' ? item.q : `${item.zoneTitle} · ${item.q}`;
+    document.getElementById('finale-question').textContent = item.kind === 'image' ? item.q : `${shortTitle(item.zoneTitle)} · ${item.q}`;
     const artwork = document.getElementById('finale-artwork');
     artwork.hidden = !item.image;
     if (item.image) document.getElementById('finale-artwork-image').src = item.image;
