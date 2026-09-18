@@ -30,4 +30,11 @@ for (const animal of animals) {
   assert.ok(FREE_LICENSE.test(credit.license), `${animal.animal} 사진이 자유 이용이 아님: ${credit.license}`);
 }
 
+// 교사 현황판에서 동물 잡기를 고를 수 있어야 한다.
+const teacher = fs.readFileSync(path.join(__dirname, '..', 'public', 'teacher.html'), 'utf8');
+assert.match(teacher, /id="missionKind"/, '미션 종류를 고르는 칸이 있어야 한다');
+assert.match(teacher, /value="hunt">바다 동물 잡기/, '동물 잡기 선택지가 있어야 한다');
+assert.match(teacher, /payload\.huntAnimalId\s*=/, '고른 동물을 함께 보내야 한다');
+assert.match(teacher, /catalog\.seaAnimals/, '동물 목록을 받아 채워야 한다');
+
 console.log(JSON.stringify({ ok: true, animals: animals.length, regions: [...new Set(animals.map((a) => discoveries.get(a.placeId).name))].length }));
