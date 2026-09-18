@@ -233,7 +233,7 @@
             id: "hanja",
             title: "한자",
             subject: "한자",
-            scripts: ["/learning/literacy-numeracy/hanja-meaning/v2/quiz/race-data.js?v=20260909-1"],
+            scripts: ["/learning/literacy-numeracy/hanja-meaning/v2/quiz/race-data.js?v=20260918-quiz"],
             getBank() {
                 // 자료는 단계별 문제 풀기 화면에서 모아 둔 것이다.
                 // 고치려면 hanja-meaning/_build-race-data.js 를 다시 돌린다.
