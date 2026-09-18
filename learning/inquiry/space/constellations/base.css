@@ -189,7 +189,9 @@ body {
 
 .viewport-header-bar {
     position: absolute;
-    top: 70px;
+    /* Sit directly below the fixed global controls instead of leaving a
+       detached-looking gap above the simulator mode buttons. */
+    top: 44px;
     left: 20px;
     right: 20px;
     z-index: 10;

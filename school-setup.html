@@ -1,6 +1,8 @@
 <!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>학교 도입 안내</title><meta name="description" content="학교 Google Workspace에서 조이클래스 학생 로그인을 허용하는 방법"><link rel="stylesheet" href="/assets/legal.css">
 <style>
-.layout>*{min-width:0}
+.content{min-width:0}
+.content .setup-intro{padding:0;border:0;background:transparent}
+@media(max-width:1100px){.lead{padding-left:48px}}
 .client-id{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:10px 0 4px}
 .client-id code{flex:1 1 320px;min-width:0;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:#fff;font-family:Consolas,"D2Coding",monospace;font-size:.9rem;overflow-wrap:anywhere}
 .steps{margin:0;padding-left:0;list-style:none;counter-reset:step}
@@ -15,11 +17,10 @@
 .en{color:var(--muted);font-weight:600;font-size:.9em}
 kbd{padding:1px 6px;border:1px solid #aeb8b2;border-bottom-width:2px;border-radius:6px;background:#fff;font:inherit;font-weight:800;font-size:.92em}
 </style></head><body>
-<header class="site-head"><div class="site-head-inner"><a class="brand brand-icon" href="/" aria-label="조이클래스 홈"><img src="/assets/icons/joyclass-j-favicon.svg" alt="" width="28" height="28"></a></div></header>
 <main><header class="lead"><h1>학교 도입 안내</h1><p class="small">학교 Google Workspace 관리자용 · 최초 1회 · 약 3분</p></header>
-<div class="layout"><aside class="toc"><strong>바로가기</strong><a href="#why">왜 필요한가요?</a><a href="#steps">설정 방법</a><a href="#check">확인</a><a href="#trouble">문제 해결</a></aside><div class="content" id="guide">
+<div class="content" id="guide">
 
-<section id="why"><h2>왜 필요한가요?</h2><p>학생 계정, 특히 <strong>18세 미만으로 지정된 계정</strong>은 학교 관리자가 허용하지 않은 외부 앱에 Google로 로그인할 수 없습니다. 학생이 조이클래스에서 Google 로그인을 누를 때 <em>“관리자가 차단함”</em> 같은 메시지가 뜬다면 아래 설정이 필요합니다.</p>
+<section class="setup-intro"><p>학생 계정, 특히 <strong>18세 미만으로 지정된 계정</strong>은 학교 관리자가 허용하지 않은 외부 앱에 Google로 로그인할 수 없습니다. 학생이 조이클래스에서 Google 로그인을 누를 때 <em>“관리자가 차단함”</em> 같은 메시지가 뜬다면 아래 설정이 필요합니다.</p>
 <div class="notice"><strong>등록할 앱</strong><br>서비스: 조이클래스 (https://joyclass.kr)<br>OAuth 클라이언트 ID:
 <div class="client-id"><code id="clientId">40207792836-p4khj60t06rmcbaalh585fr2jvh84685.apps.googleusercontent.com</code><button class="button" type="button" id="copyClientId">복사</button></div><span class="small" id="copyClientIdStatus" role="status"></span></div>
 <p class="small">관리 콘솔 화면은 업데이트에 따라 메뉴 이름이 조금 다를 수 있습니다. 괄호 안 영문을 함께 참고해 주세요.</p></section>
@@ -42,7 +43,7 @@ kbd{padding:1px 6px;border:1px solid #aeb8b2;border-bottom-width:2px;border-radi
 <tr><td>일부 학생만 로그인이 안 됨</td><td>그 학생이 다른 조직 단위에 있을 가능성이 큽니다. 해당 조직 단위에도 같은 설정을 추가하거나 상위 조직에 적용</td></tr>
 </tbody></table></div><p class="small">그래도 해결되지 않으면 <a href="/support">문의·권리 요청</a>(로그인 필요) 또는 이메일 <a href="mailto:hwasong@korea.kr">hwasong@korea.kr</a>로 알려 주세요.</p></section>
 
-</div></div></main><footer><a href="/student-privacy">학생용 개인정보 안내</a> · <a href="/privacy">개인정보 처리방침</a> · <a href="/terms">이용약관</a> · <a href="/support">문의·권리 요청</a> · <a href="/school-setup">학교 도입 안내</a></footer>
+</div></main><footer><strong><a href="/school-setup">학교 관리자 설정 안내</a></strong> · <a href="/privacy">개인정보 처리방침</a> · <a href="/terms">이용약관</a> · <a href="/support">문의</a></footer>
 <script>
 (()=>{async function copy(text,statusId){const el=document.getElementById(statusId);try{await navigator.clipboard.writeText(text);el.textContent='복사했습니다.'}catch(_){el.textContent='복사하지 못했습니다. 직접 선택해 복사해 주세요.'}setTimeout(()=>{el.textContent=''},2500)}
 document.getElementById('copyClientId').addEventListener('click',()=>copy(document.getElementById('clientId').textContent.trim(),'copyClientIdStatus'));
