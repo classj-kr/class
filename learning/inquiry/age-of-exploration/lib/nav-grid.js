@@ -1,9 +1,10 @@
 'use strict';
 
-// 바닷길·육로를 찾기 위해 지도를 거친 격자로 줄여 둔다.
-// 한 칸은 지도 타일 BLOCK개이며, 칸이 모두 바다일 때만 배가 지날 수 있다고 본다.
-// 조금이라도 육지가 섞인 칸을 지나가게 하면 칸과 칸 사이에서 해안에 막힌다.
-const BLOCK = 2;
+// 바닷길·육로를 찾기 위한 격자. 지도 타일과 한 칸씩 그대로 맞춘다.
+// 예전에는 두 타일을 한 칸으로 묶었는데, 자연 지형 해안선을 씌운 뒤로는
+// 폭 한두 타일짜리 물길이 많아져서 "칸으로는 지날 수 있지만 배는 못 가는" 자리가
+// 생겼다. 그런 자리로 길을 내면 배가 막다른 주머니에 갇힌다(2026-09-18 수업에서 터짐).
+const BLOCK = 1;
 
 function buildNavGrid(terrainTypeAtCell, worldW, worldH) {
   const width = Math.ceil(worldW / BLOCK);
@@ -73,14 +74,32 @@ function deltaBx(grid, fromBx, toBx) {
   return d;
 }
 
-function findPath(grid, mode, startIndex, goalIndex, lenient = false, maxVisited = 900000) {
+// 길찾기는 한 번에 하나씩만 돌아가므로(노드는 한 줄로 일한다) 작업용 배열을 한 벌만 두고 돌려 쓴다.
+let scratchCache = null;
+function scratchFor(total) {
+  if (!scratchCache || scratchCache.total !== total) {
+    scratchCache = {
+      total,
+      cameFrom: new Int32Array(total),
+      gScore: new Float32Array(total),
+      closed: new Uint8Array(total)
+    };
+  }
+  return scratchCache;
+}
+
+function findPath(grid, mode, startIndex, goalIndex, lenient = false, maxVisited = 3200000) {
   if (startIndex < 0 || goalIndex < 0) return null;
   if (startIndex === goalIndex) return [goalIndex];
   const passable = passableArray(grid, mode, lenient);
   const total = grid.width * grid.height;
-  const cameFrom = new Int32Array(total).fill(-1);
-  const gScore = new Float32Array(total).fill(Infinity);
-  const closed = new Uint8Array(total);
+  const scratch = scratchFor(total);
+  const cameFrom = scratch.cameFrom;
+  const gScore = scratch.gScore;
+  const closed = scratch.closed;
+  cameFrom.fill(-1);
+  gScore.fill(Infinity);
+  closed.fill(0);
   const goalBx = goalIndex % grid.width;
   const goalBy = Math.floor(goalIndex / grid.width);
   const heuristic = (index) => {

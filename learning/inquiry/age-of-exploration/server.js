@@ -1336,8 +1336,9 @@ function navIndexToPoint(grid, index, mode) {
 function planRoute(p, destination) {
   p.route = null;
   p.slideSign = 0;
-  p.stuckSince = 0;
   p.skippedWaypoints = 0;
+  p.bestDistance = Infinity;
+  p.lastProgressAt = 0;
   const grid = navGridReady();
   // 먼저 온전히 열린 물길로 찾고, 좁은 해협처럼 그런 길이 없으면 해안을 스치는 길도 허용한다.
   let path = null;
@@ -2705,8 +2706,22 @@ function movePlayer(p, dt) {
   } else if (moved) {
     p.slideAwayMs = 0;
   }
-  if (moved) { p.stuckSince = 0; p.skippedWaypoints = 0; }
   if (moved && !blockedTerrain) p.slideSign = 0;
+
+  // 뭍에 옆으로 막힌 배는 제자리에서 떨면서도 "움직였다"가 된다.
+  // 그래서 얼마나 움직였나가 아니라 목적지에 가까워졌나로 막힘을 잰다.
+  if (p.target) {
+    const now = GeoMotion.initialDirection(p.x, p.y, p.target.x, p.target.y, WORLD_PIXEL_W, WORLD_PIXEL_H).distancePixels;
+    if (!Number.isFinite(p.bestDistance) || now < p.bestDistance - 2) {
+      p.bestDistance = now;
+      p.lastProgressAt = Date.now();
+    } else if (!p.lastProgressAt) {
+      p.lastProgressAt = Date.now();
+    }
+  } else {
+    p.bestDistance = Infinity;
+    p.lastProgressAt = 0;
+  }
 
   // 길을 따라가다 막혔을 때. 바닷길 격자는 두 칸을 한 덩이로 보기 때문에,
   // 좁은 곳에서는 격자로는 지날 수 있어도 실제로는 닿을 수 없는 지점이 나온다.
@@ -2719,24 +2734,28 @@ function movePlayer(p, dt) {
     else if (Date.now() - (p.lastRoutePlanAt || 0) > 3000) { p.lastRoutePlanAt = Date.now(); planRoute(p, p.target); }
   }
 
-  if (!moved && p.target) {
-    if (!p.stuckSince) p.stuckSince = Date.now();
-    const stuckMs = Date.now() - p.stuckSince;
-    if (stuckMs > 500) {
-      if (p.route && p.route.length) {
-        p.skippedWaypoints = (p.skippedWaypoints || 0) + 1;
-        p.stuckSince = Date.now();
-        if (p.skippedWaypoints > 10) {
-          const destination = p.route[p.route.length - 1];
-          p.route = null;
-          p.target = destination;
-          p.skippedWaypoints = 0;
-        } else {
-          p.target = p.route.shift();
+  if (p.target && p.lastProgressAt && Date.now() - p.lastProgressAt > 1500) {
+    p.lastProgressAt = Date.now();
+    p.bestDistance = Infinity;
+    if (p.route && p.route.length) {
+      // 이 지점은 실제로는 닿을 수 없는 자리다. 다음 지점을 본다.
+      p.skippedWaypoints = (p.skippedWaypoints || 0) + 1;
+      p.target = p.route.shift();
+      if (p.skippedWaypoints > 8) {
+        // 계속 못 나아가면 지금 자리에서 길을 새로 찾는다.
+        p.skippedWaypoints = 0;
+        const destination = p.route.length ? p.route[p.route.length - 1] : p.target;
+        if (Date.now() - (p.lastRoutePlanAt || 0) > 2000) {
+          p.lastRoutePlanAt = Date.now();
+          planRoute(p, destination);
         }
-      } else if (stuckMs > 3000) {
-        stopPlayer(p);
       }
+    } else if (Date.now() - (p.lastRoutePlanAt || 0) > 2000) {
+      // 길 없이 곧장 가다 막힌 것이니 한 번 길을 찾아 본다.
+      p.lastRoutePlanAt = Date.now();
+      planRoute(p, p.target);
+    } else {
+      stopPlayer(p);
     }
     return;
   }
