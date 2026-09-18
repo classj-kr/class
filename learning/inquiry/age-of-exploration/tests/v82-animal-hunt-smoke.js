@@ -27,6 +27,18 @@ const sleep=ms=>new Promise(r=>setTimeout(r,ms));
   const unknown=await ack(teacher,'teacherPublishArrivalRace',{targetPlaceId:place.id,startPlaceIds:['havana','lisbon','london','amsterdam'],huntAnimalId:'hunt-없는동물'});
   assert.equal(unknown.ok,false,'없는 동물은 거절해야 한다');
 
+  // 교사는 동물을 고르지 않는다. hunt 만 넘기면 게임이 골라 주고, 낼 때마다 바뀐다.
+  const picked=[];
+  for (let i=0;i<4;i+=1) {
+    const auto=await ack(teacher,'teacherPublishArrivalRace',{startPlaceIds:['havana','lisbon','london','amsterdam'],hunt:true});
+    assert.equal(auto.ok,true,auto.error);
+    assert.ok(auto.mission.hunt?.animalId,'게임이 동물을 골라야 한다');
+    assert.equal(auto.mission.targetPlace.name,auto.mission.hunt.region,'목적지는 그 동물이 사는 바다');
+    if (picked.length) assert.notEqual(auto.mission.hunt.animalId,picked[picked.length-1],'바로 앞과 같은 동물은 피해야 한다');
+    picked.push(auto.mission.hunt.animalId);
+  }
+  assert.ok(new Set(picked).size>=2,'낼 때마다 같은 동물만 나오면 안 된다');
+
   const published=await ack(teacher,'teacherPublishArrivalRace',{targetPlaceId:place.id,startPlaceIds:['havana','lisbon','london','amsterdam'],huntAnimalId:hunt.id});
   assert.equal(published.ok,true,published.error);
   assert.equal(published.mission.hunt.animal,'바다거북');

@@ -1166,9 +1166,21 @@ function huntTargetPlace(animal) {
   };
 }
 
+// 교사는 "동물 잡기"만 고르면 되고, 어떤 동물인지는 게임이 정한다.
+// 바로 앞 미션과 같은 동물은 피해서 수업마다 다른 곳으로 가게 한다.
+function pickSeaAnimal(roomCode) {
+  const all = [...RESOLVED_SEA_ANIMALS.values()];
+  const previous = store.room(roomCode).lastHuntAnimalId || '';
+  const pool = all.filter((item) => item.id !== previous);
+  const chosen = (pool.length ? pool : all)[Math.floor(Math.random() * (pool.length ? pool.length : all.length))];
+  store.room(roomCode).lastHuntAnimalId = chosen.id;
+  return chosen;
+}
+
 function buildArrivalRace(payload, roomCode) {
-  const requestedAnimal = payload?.huntAnimalId ? seaAnimalById(payload.huntAnimalId) : null;
+  let requestedAnimal = payload?.huntAnimalId ? seaAnimalById(payload.huntAnimalId) : null;
   if (payload?.huntAnimalId && !requestedAnimal) throw new Error('그런 동물을 찾지 못했습니다.');
+  if (!requestedAnimal && payload?.hunt === true) requestedAnimal = pickSeaAnimal(roomCode);
   const target = requestedAnimal ? huntTargetPlace(requestedAnimal) : catalogPlace(payload?.targetPlaceId, '도착 도시 또는 지형');
   const ids = Array.isArray(payload?.startPlaceIds) ? payload.startPlaceIds.map(String) : [];
   const unique = [...new Set(ids.filter(Boolean))];
