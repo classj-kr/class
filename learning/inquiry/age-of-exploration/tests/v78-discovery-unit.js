@@ -33,9 +33,26 @@ for (const item of discoveries) {
 }
 
 // 뭍에만 있는 유적을 바다 위에서 누르지 못하도록 갈래별로 닿는 방법이 갈려 있어야 한다.
+// 사진은 자유 이용 되는 것만 쓰고, 찍은 이와 이용 조건을 반드시 함께 적어 둔다.
+const fs = require('node:fs');
+const path = require('node:path');
+const credits = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', 'catalog', 'photo-credits.json'), 'utf8'));
+const photoDir = path.join(__dirname, '..', 'public', 'assets', 'landmarks');
+const FREE_LICENSE = /^(CC0|CC BY|Public domain|KOGL|Attribution|FAL)/i;
+let withPhoto = 0;
+for (const item of discoveries) {
+  if (!fs.existsSync(path.join(photoDir, `${item.id}.webp`))) continue;
+  withPhoto += 1;
+  const credit = credits[item.id];
+  assert.ok(credit, `${item.name} 사진의 출처가 적혀 있지 않음`);
+  assert.ok(FREE_LICENSE.test(credit.license), `${item.name} 사진이 자유 이용 조건이 아님: ${credit.license}`);
+  assert.ok(String(credit.author || '').length >= 2, `${item.name} 사진 찍은 이가 없음`);
+}
+assert.equal(withPhoto, discoveries.length, '발견 지점 사진이 빠진 곳이 있음');
+
 const byReach = {};
 for (const item of discoveries) byReach[item.reach] = (byReach[item.reach] || 0) + 1;
 assert.ok(byReach.sea > 0 && byReach.land > 0, '바다에서만·뭍에서만 닿는 곳이 모두 있어야 함');
 
 const countries = new Set(discoveries.map((d) => d.todayCountry));
-console.log(JSON.stringify({ ok: true, discoveries: discoveries.length, byReach, todayCountries: countries.size }));
+console.log(JSON.stringify({ ok: true, discoveries: discoveries.length, byReach, todayCountries: countries.size, photos: withPhoto }));
