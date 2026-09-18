@@ -626,6 +626,12 @@ if(!/^[가-힣]{2,6}$/.test(mainPlayerName)){
 }
 
 function sendInput(){if(canTravelNow())socket.emit('input',keys)}
+// 입력을 누를 때 한 번만 보내면, 그 한 번이 유실됐을 때 서버는 배가 멈춰 있다고 여긴다.
+// 화면만 앞서 가다가 스냅샷마다 제자리로 끌려오는 "오뚜기" 현상의 원인이다.
+// 키를 누르고 있는 동안에는 짧게 되풀이해 보내고, 다시 붙었을 때도 한 번 보낸다.
+function anyKeyHeld(){return !!(keys.up||keys.down||keys.left||keys.right)}
+setInterval(()=>{if(joined&&anyKeyHeld())sendInput()},250);
+socket.on('connect',()=>{if(joined&&anyKeyHeld())sendInput()});
 function setDir(dir,on){if(!canTravelNow()||(mode!=='sea'&&mode!=='land'))return;if(dir==='stop'){clearKeys();return}keys[dir]=on;sendInput()}
 for(const b of document.querySelectorAll('#pad button[data-dir]')){
   const dir=b.dataset.dir;if(dir==='stop'){b.addEventListener('click',()=>setDir('stop',true));continue}
