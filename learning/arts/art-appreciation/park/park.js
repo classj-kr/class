@@ -14,17 +14,16 @@
     const ZONES = [
     {
       id: 'haetae', order: '01', title: '광화문 해치상', short: '광화문 해치',
-      subtitle: '조선 · 국립문화유산연구원 3D 스캔 GLB', position: [9, 0, -17.75], arrival: [9, 1.62, -23.75], lookAt: [9, 1.8, -17.75],
+      subtitle: '조선 · 광화문', position: [9, 0, -17.75], arrival: [9, 1.62, -23.75], lookAt: [9, 1.8, -17.75],
       modelPath: '../museum/assets/models/gwanghwamun-haetae.glb', realHeight: 3.507, materialTint: 0x817d75, preserveMaterials: true,
       image: 'assets/haetae.jpg',
       facts: [['길이', '2.756m'], ['너비', '1.862m'], ['높이', '3.507m']],
       size: '길이 275.6cm x 너비 186.2cm x 높이 350.7cm',
-      scale: '국가유산청 3D 포토그래메트리 스캔 GLB 1:1',
-      note: '국가유산 3D 기록정보 정밀 실측 포토그래메트리 스캔',
+      note: '광화문 앞에 한 쌍으로 세워진 수호 동물 조각',
       docent: '광화문 앞 좌우에는 해치상이 한 쌍으로 서 있어요. 해치는 옳고 그름을 가리고 불과 나쁜 기운을 막는다고 여긴 상상의 수호 동물이에요.',
       caution: '사자와 비슷하지만 상상의 동물이며 머리의 뿔과 몸의 갈기 표현이 특징입니다.',
       look: '옆으로 돌아가며 둥근 눈과 코, 갈기와 몸을 덮은 소용돌이무늬가 어떻게 이어지는지 살펴보세요.',
-      source: 'https://portal.nrich.go.kr/', rights: '국가유산청 3D 포토그래메트리 스캔 GLB',
+      source: 'https://portal.nrich.go.kr/', rights: '3D 모델 제공: 국가유산청 · CC BY 4.0',
       quizBank: [
         { q: '해치상을 옆으로 돌아가며 살펴보면, 몸 전체를 덮고 있는 무늬는 어떤 모양일까요?', options: ['둥글게 말린 소용돌이무늬', '가로로 곧게 뻗은 줄무늬', '작은 물방울무늬'], answer: 0, explain: '둥근 눈과 코, 갈기와 몸을 덮은 소용돌이무늬가 이어져 있어요.' },
         { q: '광화문 앞에는 해치상이 몇 마리가 짝을 이루어 서 있을까요?', options: ['두 마리(한 쌍)', '한 마리', '네 마리'], answer: 0, explain: '광화문 앞 좌우에는 해치상이 한 쌍으로 서 있어요.' },
@@ -33,17 +32,16 @@
     },
     {
       id: 'thinker', order: '02', title: '생각하는 사람', short: '생각하는 사람',
-      subtitle: '오귀스트 로댕 · Scan the World 3D 스캔 GLB', position: [-7.5, 0, -19.5], arrival: [-7.5, 1.62, -26.5], lookAt: [-7.5, 2.5, -19.5],
+      subtitle: '오귀스트 로댕 · 1903년', position: [-7.5, 0, -19.5], arrival: [-7.5, 1.62, -26.5], lookAt: [-7.5, 2.5, -19.5],
       modelPath: '../museum/assets/models/thinker.glb', realHeight: 1.89, materialColor: 0x38271d, metalness: 0.78, roughness: 0.3,
       image: '../museum/assets/artworks/d01.webp',
       facts: [['높이', '1.89m'], ['재질', '청동 주조본'], ['제작', '1903년']],
       size: '높이 189cm (대형 청동 주조본 기준)',
-      scale: 'Scan the World 3D 정밀 스캔 GLB 실물 크기',
-      note: '로댕 미술관 소장 원작 Scan the World 3D 스캔',
+      note: '로댕 미술관 소장 작품',
       docent: '온몸의 근육에 힘을 준 채 깊이 생각하는 사람을 입체로 표현했어요.',
       caution: '단테의 신곡에 나오는 지옥의 문 위에서 인간을 관조하는 시인의 모습을 청동으로 표현했습니다.',
       look: '정면과 옆면을 오가며 팔·등·다리가 만드는 큰 덩어리를 비교해 보세요.',
-      source: 'https://www.musee-rodin.fr/', rights: 'Public Domain · Scan the World 3D 스캔 GLB',
+      source: 'https://www.musee-rodin.fr/', rights: '3D 모델: Scan the World / Jonathan Beck · CC BY-SA 4.0',
       quizBank: [
         { q: '〈생각하는 사람〉은 어떤 재질로 만들어졌을까요? 표면의 색과 광택을 살펴보세요.', options: ['청동', '흰 대리석', '나무'], answer: 0, explain: '단테의 신곡 속 시인의 모습을 청동으로 표현한 작품이에요.' },
         { q: '〈생각하는 사람〉은 원래 어떤 작품 위에 놓일 조각으로 구상되었을까요?', options: ['단테의 신곡 속 지옥의 문 위', '교회 제단 장식', '왕궁 정원의 분수'], answer: 0, explain: '단테의 신곡에 나오는 지옥의 문 위에서 인간을 관조하는 시인의 모습을 표현했어요.' },
@@ -52,17 +50,16 @@
     },
     {
       id: 'david', order: '03', title: '다비드상', short: '다비드상',
-      subtitle: '미켈란젤로 · Scan the World 3D 스캔 GLB', position: [19.375, 0, -6.875], arrival: [19.375, 1.62, -23.875], lookAt: [19.375, 5, -6.875],
+      subtitle: '미켈란젤로 · 1501–1504년', position: [19.375, 0, -6.875], arrival: [19.375, 1.62, -23.875], lookAt: [19.375, 5, -6.875],
       modelPath: '../museum/assets/models/david.glb', realHeight: 5.17, materialColor: 0xded8cc, roughness: 0.55,
       image: '../museum/assets/artworks/d02.jpg',
       facts: [['높이', '5.17m'], ['재질', '대리석'], ['제작', '1501-1504년']],
       size: '높이 5.17m (좌대 제외 실측)',
-      scale: 'Scan the World 3D 정밀 스캔 GLB 실물 크기',
-      note: '피렌체 아카데미아 미술관 원작 Scan the World 3D 스캔',
+      note: '피렌체 아카데미아 미술관 소장',
       docent: '싸움을 시작하기 전 집중한 다윗을 사람보다 세 배 가까이 크게 조각했어요.',
       caution: '아래에서 올려다볼 때 비율이 자연스럽게 보이도록 머리와 오른손을 약간 더 크게 조각했습니다.',
       look: '커다란 머리와 손이 아래에서 올려다볼 때 자연스럽게 보이는지 살펴보세요.',
-      source: 'https://www.galleriaaccademiafirenze.it/', rights: 'Public Domain · Scan the World 3D 스캔 GLB',
+      source: 'https://www.galleriaaccademiafirenze.it/', rights: '3D 모델: Scan the World / Jonathan Beck · CC BY-SA 4.0',
       quizBank: [
         { q: '다비드상을 아래에서 올려다보면, 몸 전체 비율에 비해 어느 부분이 유독 크게 조각되어 있나요?', options: ['머리와 오른손', '발과 무릎', '귀와 코'], answer: 0, explain: '아래에서 올려다볼 때 비율이 자연스럽게 보이도록 머리와 오른손을 약간 더 크게 조각했어요.' },
         { q: '다비드상은 어떤 재료로 조각되었을까요? 표면의 질감을 살펴보세요.', options: ['대리석', '청동', '화강암'], answer: 0, explain: '대리석으로 조각된 작품이에요.' },
@@ -71,17 +68,16 @@
     },
     {
       id: 'venus', order: '04', title: '밀로의 비너스', short: '밀로의 비너스',
-      subtitle: '알렉산드로스 추정 · Scan the World 3D 스캔 GLB', position: [-19.375, 0, -6.875], arrival: [-19.375, 1.62, -23.875], lookAt: [-19.375, 2.2, -6.875],
+      subtitle: '알렉산드로스 추정 · 기원전 150–125년경', position: [-19.375, 0, -6.875], arrival: [-19.375, 1.62, -23.875], lookAt: [-19.375, 2.2, -6.875],
       modelPath: '../museum/assets/models/venus-de-milo.glb', realHeight: 2.04, materialColor: 0xd9d2c5, roughness: 0.58,
       image: '../museum/assets/artworks/d05.jpg',
       facts: [['높이', '2.04m'], ['재질', '대리석'], ['제작', '기원전 150-125년경']],
       size: '높이 204cm',
-      scale: 'Scan the World 루브르 3D 스캔 GLB 실물 크기',
-      note: '루브르 박물관 소장 원작 Scan the World 3D 스캔',
+      note: '루브르 박물관 소장',
       docent: '몸의 무게를 한쪽 다리에 싣고 상체를 반대로 틀어 부드러운 S자 균형을 만들었어요.',
       caution: '두 팔은 발견 당시부터 없었지만, 그 비어있는 공간 덕분에 더욱 완벽한 클래식 미의 상징이 되었습니다.',
       look: '어깨와 골반이 서로 어느 방향으로 기울었는지 비교해 보세요.',
-      source: 'https://collections.louvre.fr/', rights: 'Public Domain · Scan the World 3D 스캔 GLB',
+      source: 'https://collections.louvre.fr/', rights: '3D 모델: Scan the World / Jonathan Beck · CC BY-SA 4.0',
       quizBank: [
         { q: '밀로의 비너스를 자세히 둘러보면, 발견 당시부터 없었던 부분은 어디일까요?', options: ['양팔', '머리', '두 다리'], answer: 0, explain: '두 팔은 발견 당시부터 없었지만, 그 비어있는 공간 덕분에 더욱 완벽한 클래식 미의 상징이 되었어요.' },
         { q: '밀로의 비너스는 대략 언제 만들어졌을까요?', options: ['기원전 150~125년경', '서기 1500년경', '20세기 초'], answer: 0, explain: '기원전 150~125년경에 만들어졌어요.' },
@@ -90,17 +86,16 @@
     },
     {
       id: 'pieta', order: '05', title: '피에타상', short: '피에타상',
-      subtitle: '미켈란젤로 · Scan the World 3D 스캔 GLB', position: [0, 0, -21.25], arrival: [0, 1.62, -29.25], lookAt: [0, 2.5, -21.25],
+      subtitle: '미켈란젤로 · 1498–1499년', position: [0, 0, -21.25], arrival: [0, 1.62, -29.25], lookAt: [0, 2.5, -21.25],
       modelPath: '../museum/assets/models/pieta.glb', realHeight: 1.75, materialColor: 0xdbd5c8, roughness: 0.56,
       image: '../museum/assets/artworks/d06.jpg',
       facts: [['높이', '1.75m'], ['너비', '1.95m'], ['재질', '대리석']],
       size: '높이 1.75m x 너비 1.95m',
-      scale: 'Scan the World 3D 스캔 GLB 실물 크기',
-      note: '바티칸 성 베드로 대성당 소장 원작 Scan the World 3D 스캔',
+      note: '바티칸 성 베드로 대성당 소장',
       docent: '마리아가 죽은 예수를 안고 있는 슬픈 순간을 하나의 안정된 삼각형으로 묶었어요.',
       caution: '미켈란젤로가 자신의 이름을 마리아 옷띠에 직접 조각한 유일한 작품입니다.',
       look: '머리에서 넓은 옷자락까지 이어지는 삼각형 구도를 찾아보세요.',
-      source: 'https://www.museivaticani.va/', rights: 'Public Domain · Scan the World 3D 스캔 GLB',
+      source: 'https://www.museivaticani.va/', rights: '3D 모델: Scan the World / Jonathan Beck · CC BY-SA 4.0',
       quizBank: [
         { q: '미켈란젤로가 이 작품에 자신의 서명을 유일하게 직접 새겨 넣은 곳은 어디일까요?', options: ['마리아의 옷띠', '예수의 발바닥', '받침대 뒷면'], answer: 0, explain: '미켈란젤로가 자신의 이름을 마리아 옷띠에 직접 조각한 유일한 작품이에요.' },
         { q: '피에타상은 누가 누구를 안고 있는 모습을 표현했을까요?', options: ['마리아가 죽은 예수를 안고 있는 모습', '예수가 아기를 안고 있는 모습', '두 천사가 서로 안고 있는 모습'], answer: 0, explain: '마리아가 죽은 예수를 안고 있는 슬픈 순간을 표현했어요.' },
@@ -109,17 +104,16 @@
     },
     {
       id: 'sphinx', order: '06', title: '기자의 대스핑크스', short: '대스핑크스',
-      subtitle: '고대 이집트 기원전 2500년경 · 3D 포토그래메트리 스캔', position: [0, 0, 50], arrival: [40, 1.62, 50], lookAt: [0, 10, 50], modelRotation: [0, Math.PI, 0], collisionSize: [24.2, 44.5],
+      subtitle: '고대 이집트 · 기원전 2500년경', position: [0, 0, 50], arrival: [40, 1.62, 50], lookAt: [0, 10, 50], modelRotation: [0, Math.PI, 0], collisionSize: [24.2, 44.5],
       modelPath: 'assets/models/sphinx.glb', realHeight: 20.22, preserveMaterials: true,
       image: 'assets/sphinx.jpg',
       facts: [['길이', '73.5m'], ['너비', '19m'], ['높이', '20.22m']],
       size: '길이 73.5m x 너비 19m x 높이 20.22m',
-      scale: '실측 1:1 포토그래메트리 스캔 GLB',
-      note: '고대 이집트 기자 고원 실측 3D 스캔 데이터',
-      docent: '사자의 몸과 왕의 머리가 결합된 고대 이집트의 거대한 수호상입니다. 석회암 바위산 하나를 통째로 깎아 만든 실제 크기 20m를 체험해 보세요.',
+      note: '이집트 기자 고원에 있는 석회암 조각',
+      docent: '사자의 몸과 왕의 머리가 결합된 고대 이집트의 거대한 수호상입니다. 석회암 바위산 하나를 통째로 깎아 만들었어요.',
       caution: '세계 최대 크기의 단일 석조 조각상입니다.',
       look: '발끝에서 꼬리까지 옆길을 따라 걸어보세요.',
-      source: 'https://giza.fas.harvard.edu/', rights: '3D 포토그래메트리 스캔 · CC Attribution',
+      source: 'https://giza.fas.harvard.edu/', rights: '자료: Harvard Giza Project',
       quizBank: [
         { q: '발끝부터 꼬리까지 옆길을 따라 걸으며 살펴보면, 스핑크스의 몸 전체는 무엇으로 만들어졌을까요?', options: ['석회암 바위산 하나를 통째로 깎아서', '작은 돌을 여러 개 쌓아서', '청동을 녹여 부어서'], answer: 0, explain: '석회암 바위산 하나를 통째로 깎아 만든 세계 최대 크기의 단일 석조 조각상이에요.' },
         { q: '스핑크스는 어떤 두 존재가 결합된 모습일까요?', options: ['사자의 몸과 왕(파라오)의 머리', '독수리의 날개와 사람의 다리', '물고기의 꼬리와 말의 머리'], answer: 0, explain: '사자의 몸과 왕의 머리가 결합된 고대 이집트의 거대한 수호상이에요.' },
@@ -128,17 +122,16 @@
     },
     {
       id: 'liberty', order: '07', title: '자유의 여신상', short: '자유의 여신상',
-      subtitle: '프레데리크 바르톨디 1886 · 3D 포토그래메트리 스캔', position: [52, 0, 0], arrival: [52, 1.62, -58], lookAt: [52, 46, 0], modelRotation: [0, Math.PI, 0],
+      subtitle: '프레데리크 바르톨디 · 1886년', position: [52, 0, 0], arrival: [52, 1.62, -58], lookAt: [52, 46, 0], modelRotation: [0, Math.PI, 0],
       modelPath: 'assets/models/statue-of-liberty.glb', realHeight: 46.05, preserveMaterials: true,
       image: 'assets/liberty.jpg',
       facts: [['조각상 높이', '46.05m'], ['받침대', '46.94m'], ['총 높이', '92.99m']],
       size: '조각상 46.05m (받침대 제외)',
-      scale: '실측 1:1 포토그래메트리 스캔 GLB',
       note: '미국 국립공원관리청(NPS) 공식 실측 수치',
-      docent: '미국 뉴욕의 상징인 자유의 여신상입니다. 조각상 본체만 46m의 실제 크기를 3D 공간에서 올려다보세요.',
+      docent: '미국 뉴욕의 상징인 자유의 여신상입니다. 조각상 본체만 46m에 이르는 크기와 전체 비례를 살펴보세요.',
       caution: '겉표면 동판이 산화되어 청록색으로 변했습니다.',
       look: '발밑에서 횃불 끝까지 올려다본 뒤 뒤로 멀리 물러나 전체 비례를 확인하세요.',
-      source: 'https://www.nps.gov/stli/', rights: '3D 포토그래메트리 스캔 · CC Attribution',
+      source: 'https://www.nps.gov/stli/', rights: '자료: 미국 국립공원관리청',
       quizBank: [
         { q: '가까이 다가가 표면을 살펴보면, 자유의 여신상은 지금 무슨 색일까요?', options: ['청록색', '황금색', '새하얀색'], answer: 0, explain: '구리로 만든 겉면이 오랜 세월 공기 중 산소와 만나 청록색 녹으로 덮였어요.' },
         { q: '작품판의 정보표를 보면, 조각상 높이와 받침대를 합친 총 높이는 몇 m일까요?', options: ['92.99m', '46.05m', '150m'], answer: 0, explain: '조각상 46.05m와 받침대 46.94m를 합친 총 높이가 92.99m예요.' },
@@ -147,17 +140,16 @@
     },
     {
       id: 'moai', order: '08', title: '이스터섬 모아이 석상', short: '모아이 석상',
-      subtitle: '칠레 라파누이 1250-1500년경 · 3D 포토그래메트리 스캔', position: [0, 0, 14], arrival: [0, 1.62, 6], lookAt: [0, 3, 14],
+      subtitle: '칠레 라파누이 · 1250–1500년경', position: [0, 0, 14], arrival: [0, 1.62, 6], lookAt: [0, 3, 14],
       modelPath: 'assets/models/moai.glb', realHeight: 4.0, preserveMaterials: true, modelRotation: [0.2198, -0.0040, -0.0370], groundSink: 0.45,
       image: 'assets/moai.jpg',
       facts: [['평균 높이', '약 4.0m'], ['무게', '약 14톤'], ['재질', '현무암']],
       size: '높이 약 4.0m (평균 크기 기준)',
-      scale: '실측 1:1 포토그래메트리 스캔 GLB',
-      note: '라파누이 국립공원 유적 3D 스캔',
-      docent: '태평양 이스터섬에 우뚝 선 모아이 석상입니다. 돌출된 긴 코와 커다란 턱의 3D 입체 구조를 오가며 감상해 보세요.',
+      note: '라파누이 국립공원 유적',
+      docent: '태평양 이스터섬에 우뚝 선 모아이 석상입니다. 돌출된 긴 코와 커다란 턱, 길게 늘어진 귓불을 여러 방향에서 살펴보세요.',
       caution: '모아이는 바다를 등지고 섬 내부의 마을을 바라보고 있습니다.',
-      look: '우뚝 솟은 턱선과 귓볼의 묵직한 3D 형태를 살펴보세요.',
-      source: 'https://whc.unesco.org/en/list/715/', rights: '3D 포토그래메트리 스캔 · CC Attribution',
+      look: '우뚝 솟은 턱선과 길게 늘어진 귓불의 모양을 비교해 보세요.',
+      source: 'https://whc.unesco.org/en/list/715/', rights: '자료: UNESCO 세계유산센터',
       quizBank: [
         { q: '모아이 주위를 한 바퀴 돌아보면, 이 석상은 어느 쪽을 등지고 서 있을까요?', options: ['바다', '산', '마을'], answer: 0, explain: '모아이는 바다를 등지고 서서 섬 안의 마을과 사람들을 지켜보듯 서 있어요.' },
         { q: '작품판의 정보를 보면, 모아이 석상은 대략 무게가 얼마나 나갈까요?', options: ['약 14톤', '약 1톤', '약 100톤'], answer: 0, explain: '평균 무게가 약 14톤이에요.' },
@@ -166,17 +158,16 @@
     },
     {
       id: 'lamassu', order: '09', title: '람마수 (날개 달린 황소상)', short: '람마수 황소상',
-      subtitle: '고대 아시리아 기원전 8세기 · 3D 포토그래메트리 스캔', position: [0, 0, -13.75], arrival: [0, 1.62, 0.25], lookAt: [0, 2.5, -13.75],
+      subtitle: '고대 아시리아 · 기원전 8세기', position: [0, 0, -13.75], arrival: [0, 1.62, 0.25], lookAt: [0, 2.5, -13.75],
       modelPath: 'assets/models/lamassu.glb', realHeight: 4.4, preserveMaterials: true,
       image: 'assets/lamassu.jpg',
       facts: [['높이', '4.4m'], ['길이', '4.4m'], ['재질', '석회암']],
       size: '높이 4.4m x 길이 4.4m',
-      scale: '실측 1:1 포토그래메트리 스캔 GLB',
-      note: '대영박물관 소장 유물 3D 스캔',
-      docent: '고대 아시리아 궁전 문을 지키던 수호신입니다. 사람의 얼굴, 독수리의 날개, 황소의 몸을 하고 있는 정교한 3D 입체 조각을 둘러보세요.',
+      note: '대영박물관 소장 유물',
+      docent: '고대 아시리아 궁전 문을 지키던 수호신입니다. 사람의 얼굴, 독수리의 날개, 황소의 몸이 결합된 모습을 둘러보세요.',
       caution: '앞에서 볼 때는 서 있고 옆에서 볼 때는 걷는 것처럼 보이도록 발을 5개로 조각했습니다.',
       look: '황소 몸통의 옆면을 따라가며 5번째 발과 독수리 날개 조각을 확인해 보세요.',
-      source: 'https://www.britishmuseum.org/', rights: '3D 포토그래메트리 스캔 · CC Attribution',
+      source: 'https://www.britishmuseum.org/', rights: '자료: 영국박물관',
       quizBank: [
         { q: '황소 몸통 옆면을 따라가며 다리를 세어 보면, 람마수는 다리가 모두 몇 개일까요?', options: ['5개', '4개', '6개'], answer: 0, explain: '앞에서 보면 서 있는 모습, 옆에서 보면 걷는 모습이 되도록 다리를 하나 더 넣어 5개로 조각했어요.' },
         { q: '람마수는 어떤 세 존재의 특징이 합쳐진 모습일까요?', options: ['사람 얼굴 · 독수리 날개 · 황소 몸', '사자 얼굴 · 매의 발톱 · 말의 몸', '뱀의 몸 · 새의 머리 · 사람의 팔'], answer: 0, explain: '사람의 얼굴, 독수리의 날개, 황소의 몸을 하고 있는 정교한 조각이에요.' },
@@ -194,7 +185,6 @@
   const currentZone = document.getElementById('current-zone');
   const compassArrow = document.getElementById('compass-arrow');
   const detailModal = document.getElementById('detail-modal');
-  const helpModal = document.getElementById('help-modal');
   const finaleModal = document.getElementById('finale-modal');
   const finaleOptions = document.getElementById('finale-options');
   const finaleNext = document.getElementById('finale-next');
@@ -275,7 +265,7 @@
     const forwardX = -Math.sin(yaw), forwardZ = -Math.cos(yaw);
     selfAvatar.position.set(camera.position.x + forwardX * 1.05, -.12, camera.position.z + forwardZ * 1.05);
     selfAvatar.rotation.y = yaw;
-    selfAvatar.visible = !detailModal.open && !helpModal.open;
+    selfAvatar.visible = !detailModal.open && !finaleModal.open;
   }
 
   const textureLoader = new THREE.TextureLoader();
@@ -531,14 +521,14 @@
     ZONES.forEach(z => z.tab.classList.toggle('active', z === zone));
     currentZone.textContent = zone ? zone.short : '중앙 광장';
     if (!zone) { measurePanel.hidden = true; return; }
-    measurePanel.hidden = false; measureKicker.textContent = `ZONE ${zone.order} · ACTUAL 3D SCAN`; measureTitle.textContent = zone.title;
+    measurePanel.hidden = false; measureKicker.textContent = `ZONE ${zone.order}`; measureTitle.textContent = zone.title;
     measureFacts.innerHTML = zone.facts.map(f => `<div><dt>${f[0]}</dt><dd>${f[1]}</dd></div>`).join('');
     measureNote.textContent = zone.note;
   }
   function openDetail(zone) {
     if (!zone) return;
     document.getElementById('modal-image').src = zone.image || '';
-    document.getElementById('modal-kicker').textContent = `ZONE ${zone.order} · REAL 3D SCAN`;
+    document.getElementById('modal-kicker').textContent = `ZONE ${zone.order}`;
     document.getElementById('modal-title').textContent = zone.title;
     document.getElementById('modal-subtitle').textContent = zone.subtitle;
     document.getElementById('modal-facts').innerHTML = zone.facts.map(f => `<div><dt>${f[0]}</dt><dd>${f[1]}</dd></div>`).join('');
@@ -636,7 +626,7 @@
   }
   function updateCamera() { camera.rotation.y = yaw; camera.rotation.x = pitch; }
   function updateMovement(dt) {
-    if (detailModal.open || helpModal.open || finaleModal.open) return;
+    if (detailModal.open || finaleModal.open) return;
     const forward = (keys.KeyW || keys.ArrowUp ? 1 : 0) - (keys.KeyS || keys.ArrowDown ? 1 : 0);
     const strafe = (keys.KeyD || keys.ArrowRight ? 1 : 0) - (keys.KeyA || keys.ArrowLeft ? 1 : 0);
     tmpDirection.set(-Math.sin(yaw), 0, -Math.cos(yaw)); tmpRight.set(Math.cos(yaw), 0, -Math.sin(yaw));
@@ -685,8 +675,6 @@
 
   document.getElementById('detail-button').addEventListener('click', () => openDetail(activeZone));
   document.getElementById('modal-close').addEventListener('click', () => detailModal.close());
-  document.getElementById('help-button').addEventListener('click', () => helpModal.showModal());
-  document.getElementById('help-close').addEventListener('click', () => helpModal.close());
   document.getElementById('quiz-button').addEventListener('click', () => startQuiz());
   document.getElementById('finale-close').addEventListener('click', () => finaleModal.close());
   finaleNext.addEventListener('click', () => { quizIndex++; if (quizIndex >= quizQuestions.length) { if (quizCorrect === quizQuestions.length) showQuizCompletion(); else showQuizRetry(); } else renderQuizQuestion(); });

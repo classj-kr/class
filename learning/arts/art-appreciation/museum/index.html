@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#0b0a09">
   <title>미술 감상</title>
-  <link rel="stylesheet" href="styles.css?v=20260807-1">
+  <link rel="stylesheet" href="styles.css?v=20260918-cleanup-1">
   <script src="../../../../assets/sound/music-control.js?v=20260910-click-cache-1" defer></script>
 </head>
 <body>
@@ -23,7 +23,6 @@
         <strong id="room-title">인물</strong>
         <span id="room-count">12 WORKS</span>
       </div>
-      <button class="help-button" id="help-button" type="button" aria-label="관람 방법 보기" data-sfx="click">?</button>
     </header>
 
     <nav class="room-tabs" id="room-tabs" aria-label="전시실 선택"></nav>
@@ -60,7 +59,6 @@
       <button class="modal-close" id="modal-close" type="button" aria-label="닫기" data-sfx="click">×</button>
       <div class="modal-image-wrap">
         <img id="modal-image" alt="">
-        <span id="modal-type">PAINTING</span>
       </div>
       <article>
         <p class="modal-room" id="modal-room"></p>
@@ -101,23 +99,11 @@
       </article>
     </dialog>
 
-    <dialog class="help-modal" id="help-modal">
-      <button class="modal-close" id="help-close" type="button" aria-label="닫기" data-sfx="click">×</button>
-      <p class="eyebrow">HOW TO EXPLORE</p>
-      <h2>천천히 걸으며 감상해요</h2>
-      <div class="help-grid">
-        <div><b>01</b><strong>걷기와 달리기</strong><p>WASD 또는 방향키로 움직이고, Shift를 함께 누르면 더 빠르게 달려요.</p></div>
-        <div><b>02</b><strong>둘러보기</strong><p>마우스를 누른 채 움직이면 360도로 볼 수 있어요.</p></div>
-        <div><b>03</b><strong>감상하기</strong><p>빛나는 작품을 클릭하면 자세한 이야기가 열려요.</p></div>
-      </div>
-    </dialog>
-
     <dialog class="finale-modal" id="finale-modal" aria-labelledby="finale-title">
       <button class="modal-close" id="finale-close" type="button" aria-label="닫기" data-sfx="click">×</button>
       <div class="finale-ornament" aria-hidden="true"><span>M</span></div>
       <p class="eyebrow" id="finale-kicker">GALLERY CHECK</p>
       <h2 id="finale-title">확인 문제</h2>
-      <p class="finale-intro" id="finale-intro"></p>
       <div class="finale-status">
         <span id="finale-step">QUESTION 01 / 05</span>
         <i><b id="finale-progress"></b></i>
@@ -126,7 +112,6 @@
       <section class="finale-question" id="finale-question-wrap">
         <figure class="finale-artwork" id="finale-artwork" hidden>
           <img id="finale-artwork-image" alt="문제 작품">
-          <figcaption>작품을 자세히 보고 답을 골라보세요</figcaption>
         </figure>
         <p id="finale-question"></p>
         <div class="finale-options" id="finale-options"></div>
@@ -149,6 +134,6 @@
   <script src="vendor/three.min.js"></script>
   <script src="vendor/GLTFLoader.js"></script>
   <script src="art-data.js?v=20260807-4"></script>
-  <script src="museum.js?v=20260917-check-2"></script>
+  <script src="museum.js?v=20260918-class-finishers-1"></script>
 </body>
 </html>

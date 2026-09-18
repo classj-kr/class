@@ -15,6 +15,7 @@ const JOIN_CODE_ALPHABET = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
 const AUTH_FAILURE_LIMIT = 30;
 const AUTH_FAILURE_WINDOW_MS = 15 * 60 * 1000;
 const AUTH_FAILURE_MAX_ENTRIES = 5000;
+const MUSEUM_COMPLETION_ROOM_IDS = new Set(["portrait", "nature", "story", "shape", "space"]);
 const EDUCATION_AUTHORITIES = Object.freeze([
   { name: "교육부", institutionCode: "MOE", officeCode: "", locationName: "중앙행정기관" },
   { name: "서울특별시교육청", institutionCode: "EDU-B10", officeCode: "B10", locationName: "서울특별시" },
@@ -73,6 +74,23 @@ function koreanCalendarParts(now = new Date()) {
   }).formatToParts(now);
   const values = Object.fromEntries(parts.map((part) => [part.type, part.value]));
   return { year: Number(values.year), month: Number(values.month), day: Number(values.day) };
+}
+
+function koreanRecordStamp(now = new Date()) {
+  const parts = new Intl.DateTimeFormat("en-CA", {
+    timeZone: "Asia/Seoul",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    hourCycle: "h23"
+  }).formatToParts(now);
+  const values = Object.fromEntries(parts.map((part) => [part.type, part.value]));
+  return {
+    date: `${values.year}-${values.month}-${values.day}`,
+    time: `${values.hour}:${values.minute}`
+  };
 }
 
 function avatarChangeWindow(now = new Date()) {
@@ -551,6 +569,18 @@ function createClassroomPlatform(options = {}) {
       )`,
       `CREATE INDEX IF NOT EXISTS game_finisher_records_lookup_idx
         ON game_finisher_records (record_date, game_id, finished_time, player_name)`,
+      `CREATE TABLE IF NOT EXISTS museum_completion_records (
+        record_date DATE NOT NULL,
+        class_id BIGINT NOT NULL REFERENCES classroom_classes(id) ON DELETE CASCADE,
+        room_id TEXT NOT NULL,
+        user_id BIGINT NOT NULL REFERENCES classroom_users(id) ON DELETE CASCADE,
+        player_name TEXT NOT NULL,
+        finished_time CHAR(5) NOT NULL,
+        created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+        PRIMARY KEY (record_date, class_id, room_id, user_id)
+      )`,
+      `CREATE INDEX IF NOT EXISTS museum_completion_records_lookup_idx
+        ON museum_completion_records (record_date, class_id, room_id, finished_time, player_name)`,
       `CREATE TABLE IF NOT EXISTS multiplayer_room_snapshots (
         room_key TEXT PRIMARY KEY,
         game_id TEXT NOT NULL,
@@ -2580,6 +2610,63 @@ function createClassroomPlatform(options = {}) {
       classKey: `${registration.school_name}|${teacherYear}|${registration.grade}|${registration.class_number}`
     });
     res.json({ ticket, expiresAt, scope: "class" });
+  }));
+
+  async function listMuseumCompletionRecords(date, classId, roomId) {
+    const result = await pool.query(
+      `SELECT player_name AS name, finished_time AS time
+       FROM museum_completion_records
+       WHERE record_date = $1::date AND class_id = $2 AND room_id = $3
+       ORDER BY finished_time ASC, player_name ASC`,
+      [date, classId, roomId]
+    );
+    return result.rows;
+  }
+
+  router.get("/museum/completions", asyncRoute(async (req, res) => {
+    const user = await requireUser(req);
+    const roomId = String(req.query?.roomId || "").trim();
+    if (!MUSEUM_COMPLETION_ROOM_IDS.has(roomId)) {
+      throw new HttpError(400, "VALID_MUSEUM_ROOM_REQUIRED", "Choose a valid museum room.");
+    }
+    const classId = await userClassId(user);
+    if (!classId) {
+      throw new HttpError(403, "CLASS_MEMBERSHIP_REQUIRED", "Join your class before viewing museum completions.");
+    }
+    const { date } = koreanRecordStamp();
+    const records = await listMuseumCompletionRecords(date, classId, roomId);
+    res.json({ date, roomId, scope: "class", records });
+  }));
+
+  router.post("/museum/completions", asyncRoute(async (req, res) => {
+    const user = await requireUser(req);
+    const roomId = String(req.body?.roomId || "").trim();
+    if (!MUSEUM_COMPLETION_ROOM_IDS.has(roomId)) {
+      throw new HttpError(400, "VALID_MUSEUM_ROOM_REQUIRED", "Choose a valid museum room.");
+    }
+    const membership = await studentMembership(user.id);
+    if (!membership) {
+      throw new HttpError(403, "STUDENT_REQUIRED", "Only students on the class roster can record a museum completion.");
+    }
+    const classId = await userClassId(user);
+    if (!classId) {
+      throw new HttpError(403, "CLASS_MEMBERSHIP_REQUIRED", "Join your class before recording a museum completion.");
+    }
+    const { date, time } = koreanRecordStamp();
+    await pool.query(
+      `INSERT INTO museum_completion_records
+         (record_date, class_id, room_id, user_id, player_name, finished_time)
+       VALUES ($1::date, $2, $3, $4, $5, $6)
+       ON CONFLICT (record_date, class_id, room_id, user_id) DO NOTHING`,
+      [date, classId, roomId, user.id, membership.name, time]
+    );
+    await pool.query(
+      `DELETE FROM museum_completion_records
+       WHERE record_date < $1::date - 13`,
+      [date]
+    );
+    const records = await listMuseumCompletionRecords(date, classId, roomId);
+    res.json({ date, roomId, scope: "class", records });
   }));
 
 

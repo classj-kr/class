@@ -110,7 +110,7 @@ assert.doesNotMatch(museumJs, /question:'[^']*(한글 제목|영어 제목)/, 'q
 assert.match(museumJs, /observations\[0\],\s*observations\[1\],\s*observations\[2\]/, 'every finale must include three observation questions');
 assert.match(museumJs, /imageWorkIds\.has\(question\.workId\)/, 'observation questions must exclude the image-question artworks');
 assert.match(museumJs, /options:\[correct,\.\.\.distractors\]/, 'image questions must restore four-choice answer construction');
-assert.match(museumJs, /핵심 관찰 문제 3개/, 'the finale instructions must explain the three description-based questions');
+assert.doesNotMatch(museumJs, /핵심 관찰 문제 3개|정답이라고 생각하는 장면을 골라보세요/, 'the finale must start with the question instead of redundant instructions');
 assert.match(museumJs, /다섯 문제를 모두 맞혀야/, 'the retry message must explain the perfect-score stamp rule');
 
 const observationMapSource = museumJs.match(/const OBSERVATION_WORK_IDS = \{([\s\S]*?)\n  \};/);

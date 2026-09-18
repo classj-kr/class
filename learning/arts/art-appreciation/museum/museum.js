@@ -16,7 +16,6 @@
   const promptAction = document.getElementById('prompt-action');
   const progressEl = document.getElementById('room-progress');
   const modal = document.getElementById('art-modal');
-  const helpModal = document.getElementById('help-modal');
   const finaleModal = document.getElementById('finale-modal');
   const finaleQuestionWrap = document.getElementById('finale-question-wrap');
   const finaleComplete = document.getElementById('finale-complete');
@@ -48,7 +47,6 @@
 
   const ROOM_QUIZZES = {
     portrait:{
-      intro:'얼굴과 자세, 빛을 얼마나 세심하게 보았는지 문제은행으로 확인해 보세요.',
       questions:[
         {q:'〈진주 귀걸이를 한 소녀〉의 얼굴을 드러내는 빛은 주로 어느 쪽에서 올까요?',options:['화면 왼쪽 위','화면 오른쪽 아래','인물의 등 뒤'],answer:0,explain:'왼쪽 위에서 들어온 빛이 이마와 뺨, 진주를 차례로 밝혀요.'},
         {q:'윤두서의 〈자화상〉에서 화면의 긴장을 가장 강하게 만드는 부분은 무엇일까요?',options:['화려한 배경','정면을 응시하는 눈','손에 든 책'],answer:1,explain:'몸과 배경을 거의 생략하고 정면의 눈빛에 정신과 기운을 집중했어요.'},
@@ -65,7 +63,6 @@
       ]
     },
     nature:{
-      intro:'빛과 계절, 자연을 표현한 붓질 속에서 발견한 것을 되짚어 보세요.',
       questions:[
         {q:'반 고흐의 〈별이 빛나는 밤〉에서 밤하늘의 움직임을 만드는 핵심은 무엇일까요?',options:['곧고 얇은 격자','소용돌이치는 붓질','가늘고 촘촘한 빗금 무늬'],answer:1,explain:'굽이치며 반복되는 붓질이 별빛과 하늘 전체를 움직이는 것처럼 보여 줘요.'},
         {q:'모네의 〈수련〉 연작은 주로 어디를 바라본 시점일까요?',options:['하늘 높이 위쪽','멀리 있는 산 정상','가까운 연못 수면'],answer:2,explain:'연못을 내려다보며 물 위 수련과 하늘의 반사를 한 화면에 담았어요.'},
@@ -82,7 +79,6 @@
       ]
     },
     story:{
-      intro:'장면 속 인물과 시선, 사건의 앞뒤를 떠올리며 무작위로 뽑힌 이야기 단서를 다시 찾아보세요.',
       questions:[
         {q:'신윤복의 〈단오풍정〉에서 여러 장면을 차례로 살피게 하는 시선의 흐름은 무엇일까요?',options:['한가운데의 완전한 대칭','위아래를 오가는 지그재그','한 점에 멈춘 원'],answer:1,explain:'그네와 냇가의 여러 무리가 지그재그로 이어지며 화면 곳곳을 보게 해요.'},
         {q:'〈아담의 창조〉에서 가장 큰 긴장을 만드는 작은 공간은 어디일까요?',options:['두 손가락 사이','구름 아래의 산','화면 양끝의 벽'],answer:0,explain:'거의 닿을 듯 남겨 둔 손가락 사이의 틈이 생명이 전해질 순간을 강조해요.'},
@@ -99,7 +95,6 @@
       ]
     },
     shape:{
-      intro:'선과 색, 반복과 변형이 어떻게 생각으로 바뀌었는지 문제은행으로 확인해 보세요.',
       questions:[
         {q:'몬드리안의 화면을 나누는 두 가지 기본 방향은 무엇일까요?',options:['수직과 수평','나선과 물결','원과 타원'],answer:0,explain:'수직·수평의 검은 선과 기본색 면만으로 비대칭의 균형을 만들었어요.'},
         {q:'쇠라의 〈그랑드 자트 섬의 일요일 오후〉에서 멀리 볼수록 하나의 색처럼 섞이는 것은?',options:['작은 색점','굵은 연필선','금속 조각'],answer:0,explain:'서로 다른 순수한 색점을 나란히 찍어 관람자의 눈에서 색이 섞이게 했어요.'},
@@ -116,7 +111,6 @@
       ]
     },
     space:{
-      intro:'커다란 그림 속 원근과 겹겹의 공간이 만드는 깊이를 몸으로 경험했는지 확인해 보세요.',
       questions:[
         {q:'〈최후의 만찬〉의 원근선이 모이는 중심은 어디일까요?',options:['예수의 머리 뒤','왼쪽 문 끝','식탁 아래'],answer:0,explain:'벽과 천장의 선이 예수의 머리 뒤 소실점으로 모여 중심과 깊이를 함께 만들어요.'},
         {q:'렘브란트의 〈야경〉에서 많은 인물 사이의 깊이와 움직임을 만드는 핵심은?',options:['강한 빛과 어둠의 대비','모두 같은 자세와 크기','배경을 밝은 노란색으로 칠하기'],answer:0,explain:'선택적으로 비추는 빛이 앞뒤 인물을 나누고, 어둠 속에서 행렬이 나아오는 느낌을 만들어요.'},
@@ -339,6 +333,7 @@
   }
 
   const FINALE_PROGRESS_KEY = 'museumFinaleRoomsV2';
+  const museumCompletionState = new Map();
 
   function readFinaleProgress() {
     try{return JSON.parse(localStorage.getItem(FINALE_PROGRESS_KEY)||'{}')||{};}catch(_){return {};}
@@ -348,21 +343,79 @@
     try{localStorage.setItem(FINALE_PROGRESS_KEY,JSON.stringify(progress));}catch(_){}
   }
 
+  function setMuseumCompletionState(room,state) {
+    museumCompletionState.set(room.id,state);
+    if(finaleSurface?.userData?.finaleRoom?.id===room.id)refreshFinaleWall();
+  }
+
+  async function loadMuseumCompletions(room) {
+    if(!museumCompletionState.has(room.id))setMuseumCompletionState(room,{status:'loading',records:[]});
+    try{
+      const response=await fetch(`/api/museum/completions?roomId=${encodeURIComponent(room.id)}`,{cache:'no-store',credentials:'same-origin'});
+      if(response.status===401||response.status===403){setMuseumCompletionState(room,{status:'unavailable',records:[]});return;}
+      if(!response.ok)throw new Error(`Museum completions ${response.status}`);
+      const data=await response.json();
+      const records=Array.isArray(data.records)?data.records.map(item=>({name:String(item.name||'').trim(),time:String(item.time||'').trim()})).filter(item=>item.name):[];
+      setMuseumCompletionState(room,{status:'ready',records});
+    }catch(error){
+      console.warn('Museum completion list unavailable:',error);
+      setMuseumCompletionState(room,{status:'error',records:[]});
+    }
+  }
+
+  async function registerMuseumCompletion(room) {
+    try{
+      const response=await fetch('/api/museum/completions',{
+        method:'POST',credentials:'same-origin',headers:{'Content-Type':'application/json'},body:JSON.stringify({roomId:room.id})
+      });
+      if(response.status===401||response.status===403){setMuseumCompletionState(room,{status:'unavailable',records:[]});return;}
+      if(!response.ok)throw new Error(`Museum completion ${response.status}`);
+      const data=await response.json();
+      const records=Array.isArray(data.records)?data.records.map(item=>({name:String(item.name||'').trim(),time:String(item.time||'').trim()})).filter(item=>item.name):[];
+      setMuseumCompletionState(room,{status:'ready',records});
+    }catch(error){
+      console.warn('Museum completion could not be recorded:',error);
+      setMuseumCompletionState(room,{status:'error',records:[]});
+    }
+  }
+
   function finaleTexture(room) {
     const c=document.createElement('canvas');c.width=1400;c.height=860;const g=c.getContext('2d');
     const complete=Boolean(readFinaleProgress()[room.id]);
+    const completion=museumCompletionState.get(room.id)||{status:'loading',records:[]};
     const grad=g.createRadialGradient(700,300,20,700,390,760);grad.addColorStop(0,complete?'#382b17':'#282017');grad.addColorStop(1,'#0c0b09');
     g.fillStyle=grad;g.fillRect(0,0,c.width,c.height);
     g.strokeStyle=complete?'#d5b565':'#806735';g.lineWidth=3;g.strokeRect(28,28,c.width-56,c.height-56);
     g.strokeStyle='rgba(211,177,101,.23)';g.lineWidth=1;g.strokeRect(48,48,c.width-96,c.height-96);
-    g.textAlign='center';g.fillStyle='#b89954';g.font='700 22px Georgia';g.letterSpacing='8px';g.fillText('GALLERY CHECK',700,142);
-    g.fillStyle='#eadcbf';g.font='700 82px serif';g.fillText(`${room.number}. ${room.title}`,700,282);
-    g.fillStyle='#9f917e';g.font='32px sans-serif';g.fillText(room.subtitle,700,346);
-    g.beginPath();g.arc(700,486,72,0,Math.PI*2);g.strokeStyle=complete?'#e1c778':'#9a7a3b';g.lineWidth=3;g.stroke();
-    g.beginPath();g.arc(700,486,59,0,Math.PI*2);g.strokeStyle='rgba(211,177,101,.3)';g.lineWidth=2;g.stroke();
-    g.fillStyle=complete?'#f0d88d':'#c6a55c';g.font='700 56px Georgia';g.fillText(complete?'✓':'M',700,505);
-    g.fillStyle=complete?'#dbc27c':'#d0b577';g.font='700 27px sans-serif';g.fillText(complete?'확인 문제 완료':'확인 문제',700,628);
-    g.fillStyle='#8d806d';g.font='24px sans-serif';g.fillText(complete?'클릭하면 다시 풀 수 있어요':'가까이에서 클릭해 확인 문제를 풀어 보세요',700,681);
+    g.textAlign='center';g.fillStyle='#b89954';g.font='700 19px Georgia';g.letterSpacing='7px';g.fillText('GALLERY CHECK',700,105);
+    g.fillStyle='#eadcbf';g.font='700 64px serif';g.fillText(`${room.number}. ${room.title}`,700,192);
+    g.fillStyle='#9f917e';g.font='27px sans-serif';g.fillText(room.subtitle,700,238);
+    g.strokeStyle='rgba(211,177,101,.32)';g.lineWidth=1;g.beginPath();g.moveTo(120,278);g.lineTo(1280,278);g.stroke();
+    g.fillStyle='#d0b577';g.font='700 28px sans-serif';g.fillText('오늘의 우리 반 완료',700,328);
+    if(completion.status==='ready'){
+      g.fillStyle='#8d806d';g.font='20px sans-serif';g.fillText(`${completion.records.length}명`,700,360);
+      if(completion.records.length===0){
+        g.fillStyle='#9f917e';g.font='25px sans-serif';g.fillText('아직 오늘 완료한 친구가 없습니다.',700,514);
+      }else{
+        const visible=completion.records.slice(0,30),columns=6,cardW=190,cardH=48,gapX=14,gapY=10;
+        const totalW=columns*cardW+(columns-1)*gapX,startX=(c.width-totalW)/2;
+        visible.forEach((record,index)=>{
+          const col=index%columns,row=Math.floor(index/columns),x=startX+col*(cardW+gapX),y=392+row*(cardH+gapY);
+          g.fillStyle='rgba(213,181,101,.075)';g.fillRect(x,y,cardW,cardH);
+          g.strokeStyle='rgba(213,181,101,.22)';g.strokeRect(x+.5,y+.5,cardW-1,cardH-1);
+          g.textAlign='left';g.fillStyle='#e8dbc0';g.font='700 22px sans-serif';g.fillText(record.name.slice(0,8),x+14,y+31);
+          g.textAlign='right';g.fillStyle='#907f64';g.font='17px sans-serif';g.fillText(record.time.slice(0,5),x+cardW-12,y+30);
+        });
+        g.textAlign='center';
+        if(completion.records.length>visible.length){g.fillStyle='#9f917e';g.font='18px sans-serif';g.fillText(`외 ${completion.records.length-visible.length}명`,700,704);}
+      }
+    }else{
+      g.fillStyle='#9f917e';g.font='25px sans-serif';
+      const message=completion.status==='unavailable'?'우리 반 로그인 후 명단이 표시됩니다.':completion.status==='error'?'명단을 잠시 불러올 수 없습니다.':'우리 반 명단을 불러오는 중…';
+      g.fillText(message,700,514);
+    }
+    g.textAlign='center';g.fillStyle=complete?'#dbc27c':'#c6a55c';g.font='700 23px sans-serif';
+    g.fillText(complete?'✓ 확인 문제 완료 · 클릭하면 다시 풀 수 있어요':'확인 문제 풀기 · 벽을 클릭하세요',700,784);
     const t=new THREE.CanvasTexture(c);t.encoding=THREE.sRGBEncoding;t.anisotropy=Math.min(8,renderer.capabilities.getMaxAnisotropy());t.userData={finaleTexture:true};return t;
   }
 
@@ -400,6 +453,7 @@
 
   function showFinaleCompletion(room,newlyCompleted=false) {
     const progress=readFinaleProgress();progress[room.id]=true;writeFinaleProgress(progress);refreshFinaleWall();
+    if(newlyCompleted)void registerMuseumCompletion(room);
     finaleQuestionWrap.hidden=true;finaleComplete.hidden=false;
     document.querySelector('.curator-stamp').hidden=false;
     document.getElementById('finale-step').textContent='GALLERY COMPLETE';
@@ -428,7 +482,7 @@
     finaleArtwork.hidden=!item.image;
     if(item.image){finaleArtworkImage.src=item.image;}else{finaleArtworkImage.removeAttribute('src');}
     finaleNext.textContent=finaleQuizIndex===finaleQuizQuestions.length-1?'결과 보기':'다음 관찰로';
-    finaleFeedback.textContent='정답이라고 생각하는 장면을 골라보세요.';finaleFeedback.className='finale-feedback';
+    finaleFeedback.textContent='';finaleFeedback.className='finale-feedback';
     document.getElementById('finale-step').textContent=`QUESTION ${String(finaleQuizIndex+1).padStart(2,'0')} / ${String(finaleQuizQuestions.length).padStart(2,'0')}`;
     document.getElementById('finale-progress').style.width=`${finaleQuizIndex/finaleQuizQuestions.length*100}%`;
     document.getElementById('finale-total').textContent=`${completedFinaleCount()} / ${rooms.length} ROOMS`;
@@ -492,7 +546,6 @@
     }));
     document.getElementById('finale-kicker').textContent=`GALLERY ${room.number} · GALLERY CHECK`;
     document.getElementById('finale-title').textContent=`${room.title} · 확인 문제`;
-    document.getElementById('finale-intro').textContent=`${ROOM_QUIZZES[room.id].intro} 작품 설명에서 찾을 수 있는 핵심 관찰 문제 3개와 제목·화가 확인 문제 2개가 무작위 순서로 출제됩니다.`;
     renderFinaleQuestion();
   }
 
@@ -500,7 +553,6 @@
     window.ClassGameSfx?.play('card');keysClear();
     document.getElementById('finale-kicker').textContent=`GALLERY ${room.number} · GALLERY CHECK`;
     document.getElementById('finale-title').textContent=`${room.title} · 확인 문제`;
-    document.getElementById('finale-intro').textContent=`${ROOM_QUIZZES[room.id].intro} 작품 설명에서 찾을 수 있는 핵심 관찰 문제 3개와 제목·화가 확인 문제 2개가 무작위 순서로 출제됩니다.`;
     finaleQuizRoom=room;
     if(readFinaleProgress()[room.id])showFinaleCompletion(room);
     else startFinaleQuiz(room);
@@ -660,6 +712,7 @@
     if(gallery){scene.remove(gallery);gallery.traverse(o=>{if(o.geometry)o.geometry.dispose();if(o.material&&!Array.isArray(o.material)&&!sharedMaterials.has(o.material)){if(o.material.map?.userData?.finaleTexture)o.material.map.dispose();o.material.dispose();}});}
     gallery=new THREE.Group();scene.add(gallery);const roomGallery=gallery,shell=buildShell(rooms[index]);
     addFinaleWall(rooms[index],shell);
+    void loadMuseumCompletions(rooms[index]);
     rooms[index].works.forEach((w,i)=>addFramedWork(w,i,i%2===0?-1:1,1-Math.floor(i/2)*5.15,shell.width,version,roomGallery));
     camera.position.set(0,1.68,6.35);yaw=0;pitch=-.015;velocity.set(0,0,0);camera.rotation.set(pitch,yaw,0);
     document.getElementById('room-kicker').textContent='GALLERY '+rooms[index].number;
@@ -717,7 +770,6 @@
   function showWork(work,room){
     window.ClassGameSfx?.play('card');
     document.getElementById('modal-image').src=work.image;document.getElementById('modal-image').alt=work.title;
-    document.getElementById('modal-type').textContent=work.type==='sculpture'?'SCULPTURE':work.type==='mural'?'MURAL':'PAINTING';
     document.getElementById('modal-room').textContent=`GALLERY ${room.number} · ${room.title}`;document.getElementById('modal-title').textContent=work.title;
     const englishTitle=document.getElementById('modal-title-en');englishTitle.textContent=work.englishTitle||'';englishTitle.hidden=!work.englishTitle;
     const tags=document.getElementById('modal-tags');tags.replaceChildren(...(work.tags||[]).map(label=>{const tag=document.createElement('span');tag.textContent=label;return tag;}));tags.hidden=!work.tags?.length;
@@ -734,7 +786,7 @@
   function keysClear(){Object.keys(keys).forEach(k=>keys[k]=false);velocity.set(0,0,0);}
 
   function updateMovement(dt){
-    if(modal.open||helpModal.open||finaleModal.open)return;
+    if(modal.open||finaleModal.open)return;
     let f=(keys.KeyW||keys.ArrowUp?1:0)-(keys.KeyS||keys.ArrowDown?1:0),s=(keys.KeyD||keys.ArrowRight?1:0)-(keys.KeyA||keys.ArrowLeft?1:0);
     tmpDirection.set(-Math.sin(yaw),0,-Math.cos(yaw));tmpRight.set(Math.cos(yaw),0,-Math.sin(yaw));
     const wish=new THREE.Vector3().addScaledVector(tmpDirection,f).addScaledVector(tmpRight,s);if(wish.lengthSq()>0)wish.normalize();
@@ -762,7 +814,7 @@
     const forwardX=-Math.sin(yaw),forwardZ=-Math.cos(yaw);
     selfAvatar.position.set(camera.position.x+forwardX*1.05,-.12,camera.position.z+forwardZ*1.05);
     selfAvatar.rotation.y=yaw;
-    selfAvatar.visible=!nearest&&!modal.open&&!helpModal.open&&!finaleModal.open;
+    selfAvatar.visible=!nearest&&!modal.open&&!finaleModal.open;
   }
 
   function animate(){requestAnimationFrame(animate);const dt=Math.min(clock.getDelta(),.04);updateMovement(dt);updateArtLights(dt);updateFocus();updateSelfAvatar();sendPresence();renderer.render(scene,camera);}
@@ -774,11 +826,12 @@
   canvas.addEventListener('pointerup',e=>{dragging=false;canvas.classList.remove('dragging');if(!pointerDown)return;const moved=Math.hypot(e.clientX-pointerDown.x,e.clientY-pointerDown.y);if(moved<8&&performance.now()-pointerDown.time<550){pointer.x=e.clientX/innerWidth*2-1;pointer.y=-(e.clientY/innerHeight)*2+1;raycaster.setFromCamera(pointer,camera);const hit=raycaster.intersectObjects(clickable,false).find(x=>x.distance<10);if(hit){if(hit.object.userData.finaleRoom)showFinale(hit.object.userData.finaleRoom);else showWork(hit.object.userData.work,hit.object.userData.room);}}pointerDown=null;});
   canvas.addEventListener('pointercancel',()=>{dragging=false;pointerDown=null;canvas.classList.remove('dragging');});
   addEventListener('resize',()=>{camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight,false);renderer.setPixelRatio(Math.min(devicePixelRatio,MAX_PIXEL_RATIO));});
-  document.getElementById('modal-close').addEventListener('click',()=>modal.close());document.getElementById('help-button').addEventListener('click',()=>helpModal.showModal());document.getElementById('help-close').addEventListener('click',()=>helpModal.close());document.getElementById('finale-close').addEventListener('click',()=>finaleModal.close());
+  document.getElementById('modal-close').addEventListener('click',()=>modal.close());document.getElementById('finale-close').addEventListener('click',()=>finaleModal.close());
   finaleNext.addEventListener('click',()=>{finaleQuizIndex++;const total=finaleQuizQuestions.length;if(finaleQuizIndex>=total){if(finaleQuizCorrect===total)showFinaleCompletion(finaleQuizRoom,true);else showFinaleRetry(finaleQuizRoom);}else renderFinaleQuestion();});
   document.getElementById('finale-again').addEventListener('click',()=>startFinaleQuiz(finaleQuizRoom));
-  for(const d of [modal,helpModal,finaleModal])d.addEventListener('click',e=>{if(e.target===d){window.ClassGameSfx?.play('click');d.close();}});
+  for(const d of [modal,finaleModal])d.addEventListener('click',e=>{if(e.target===d){window.ClassGameSfx?.play('click');d.close();}});
   document.querySelectorAll('.touch-controls button').forEach(b=>{const k=b.dataset.key;b.addEventListener('pointerdown',e=>{e.preventDefault();keys[k]=true;});b.addEventListener('pointerup',()=>keys[k]=false);b.addEventListener('pointercancel',()=>keys[k]=false);});
 
   buildTabs();setRoom(0);connectClassPresence();animate();
+  setInterval(()=>{if(document.visibilityState==='visible')void loadMuseumCompletions(rooms[activeRoom]);},30000);
 })();
