@@ -1350,5 +1350,993 @@
         "meaning": "돛"
       }
     ]
+  },
+  {
+    "id": "E2-29",
+    "topicTitle": "아프리카의 하마",
+    "questionType": "content_match",
+    "passageText": "Hippos have no sweat glands at all. What people call hippo sweat is a thick oily liquid that the skin makes. The liquid spreads over the whole body like a coat. It soaks up the sunlight that would burn the skin. It also kills germs, so a hippo's wounds hardly ever get infected. Hippos lie in the river all day, but their backs are still out in the sun.",
+    "promptText": "하마에 대해 윗글에서 알 수 있는 것은?",
+    "choices": [
+      "이 액체는 온몸에 퍼져 옷처럼 덮는다.",
+      "이 액체는 나올 때는 색이 없다가 곧 붉어진다.",
+      "하마의 뻣뻣한 털은 입 둘레와 귀와 꼬리에만 나 있다.",
+      "하마의 살갗은 두께가 몇 센티미터나 된다."
+    ],
+    "correctIndex": 0,
+    "explanation": "윗글의 'The liquid spreads over the whole body like a coat.'는 '이 액체는 온몸에 퍼져 옷처럼 덮는다.'라는 뜻입니다. 이 액체가 나올 때는 색이 없다가 붉어진다는 것, 털이 입 둘레와 귀와 꼬리에만 나 있다는 것, 살갗이 몇 센티미터나 두껍다는 것도 하마에 대한 사실이지만 이 글에는 나오지 않습니다.",
+    "translation": "하마에게는 땀을 내는 샘이 아예 없다. 사람들이 하마의 땀이라고 부르는 것은 살갗이 내보내는 걸쭉하고 기름진 액체이다. 이 액체는 온몸에 퍼져 옷처럼 덮는다. 살갗을 태울 만한 햇빛은 이 액체가 빨아들인다. 또 이 액체는 세균을 죽여서 하마의 상처는 좀처럼 곪지 않는다. 하마는 온종일 강에 잠겨 있지만, 등은 여전히 햇볕에 드러나 있다.",
+    "vocab": [
+      {
+        "word": "sweat gland",
+        "meaning": "땀샘"
+      },
+      {
+        "word": "oily",
+        "meaning": "기름진, 기름기가 있는"
+      },
+      {
+        "word": "spread over",
+        "meaning": "~에 넓게 퍼지다"
+      },
+      {
+        "word": "coat",
+        "meaning": "덮개, 겉을 덮는 층"
+      },
+      {
+        "word": "soak up",
+        "meaning": "빨아들이다"
+      },
+      {
+        "word": "burn",
+        "meaning": "태우다, 데게 하다"
+      },
+      {
+        "word": "get infected",
+        "meaning": "(상처가) 곪다, 덧나다"
+      },
+      {
+        "word": "be out in the sun",
+        "meaning": "햇볕에 드러나 있다"
+      }
+    ]
+  },
+  {
+    "id": "E2-30",
+    "topicTitle": "북극의 순록",
+    "questionType": "content_match",
+    "passageText": "The layer behind a reindeer's eye shines gold in summer. In winter it turns deep blue. No other mammal is known to do this. Scientists in Norway studied reindeer eyes from both seasons. A blue layer sends less light back out of the eye. So in winter a reindeer sees less clearly, but its eyes catch the tiny bit of light in the long Arctic night.",
+    "promptText": "순록에 대해 윗글에서 알 수 있는 것은?",
+    "choices": [
+      "겨울에는 여름보다 덜 또렷하게 본다.",
+      "사람 눈에 안 보이는 자외선까지 볼 수 있다.",
+      "걸을 때 발에서 딱딱 소리가 난다.",
+      "암컷과 수컷 모두 뿔이 자란다."
+    ],
+    "correctIndex": 0,
+    "explanation": "윗글의 'So in winter a reindeer sees less clearly, but its eyes catch the tiny bit of light in the long Arctic night.'는 '그래서 겨울 순록은 사물을 덜 또렷하게 보지만, 긴 북극의 밤에 남은 아주 적은 빛까지 받아들인다.'라는 뜻입니다. 자외선을 볼 수 있다는 것, 걸을 때 발에서 소리가 난다는 것, 암수 모두 뿔이 난다는 것도 순록에 대한 사실이지만 이 글에는 나오지 않습니다.",
+    "translation": "여름에 순록의 눈 안쪽 막은 금빛으로 빛난다. 겨울이 되면 그 막이 짙은 푸른빛으로 바뀐다. 이렇게 막의 빛깔이 바뀌는 젖먹이동물은 아직 순록 말고는 알려지지 않았다. 노르웨이의 과학자들이 두 계절에 걸쳐 순록의 눈을 살펴보았다. 푸른 막은 눈 밖으로 되돌려 보내는 빛이 적다. 그래서 겨울 순록은 사물을 덜 또렷하게 보지만, 긴 북극의 밤에 남은 아주 적은 빛까지 받아들인다.",
+    "vocab": [
+      {
+        "word": "layer",
+        "meaning": "막, 켜, 층"
+      },
+      {
+        "word": "shine",
+        "meaning": "빛나다"
+      },
+      {
+        "word": "turn",
+        "meaning": "(어떤 빛깔·상태로) 바뀌다"
+      },
+      {
+        "word": "mammal",
+        "meaning": "젖먹이동물, 포유류"
+      },
+      {
+        "word": "send back",
+        "meaning": "되돌려 보내다"
+      },
+      {
+        "word": "clearly",
+        "meaning": "또렷하게"
+      },
+      {
+        "word": "catch",
+        "meaning": "(빛 따위를) 붙잡다, 받아들이다"
+      },
+      {
+        "word": "Arctic",
+        "meaning": "북극의"
+      }
+    ]
+  },
+  {
+    "id": "E2-31",
+    "topicTitle": "중국 산속의 판다",
+    "questionType": "not_mentioned",
+    "passageText": "A giant panda's hand has five fingers and one more part that works like a thumb. It is not a real finger. It is a wrist bone that grew long. The bone has no joint, so the panda cannot bend it. Even so, the panda can press a bamboo stalk against its fingers and hold it. Fossils show that pandas had this bone six million years ago.",
+    "promptText": "판다에 대해 윗글에서 설명하지 않은 것은?",
+    "choices": [
+      "손으로 잡은 대나무의 겉껍질을 이로 벗겨 낸다.",
+      "엄지처럼 쓰이는 부분은 손목뼈가 길어진 것이다.",
+      "그 뼈는 마디가 없어 구부릴 수 없다.",
+      "600만 년 전 판다에게도 이 뼈가 있었다."
+    ],
+    "correctIndex": 0,
+    "explanation": "윗글은 엄지처럼 쓰이는 것이 길어진 손목뼈라는 것, 마디가 없어 구부릴 수 없다는 것, 600만 년 전 판다에게도 이 뼈가 있었다는 것을 말합니다. 'the panda can press a bamboo stalk against its fingers and hold it'은 '판다는 대나무 줄기를 손가락에 대고 눌러 붙잡을 수 있다'라는 뜻으로, 붙잡는 데까지만 이야기합니다. 겉껍질을 이로 벗겨 낸다는 것은 사실이지만 이 글에는 나오지 않습니다.",
+    "translation": "자이언트판다의 손에는 손가락 다섯 개 말고도 엄지처럼 쓰이는 부분이 하나 더 있다. 그것은 진짜 손가락이 아니다. 길게 자란 손목뼈이다. 이 뼈에는 마디가 없어서 판다는 그것을 구부리지 못한다. 그래도 판다는 대나무 줄기를 다른 손가락에 대고 눌러 붙잡을 수 있다. 화석을 보면 600만 년 전 판다에게도 이 뼈가 있었다.",
+    "vocab": [
+      {
+        "word": "work like",
+        "meaning": "~처럼 구실하다"
+      },
+      {
+        "word": "real",
+        "meaning": "진짜의"
+      },
+      {
+        "word": "wrist",
+        "meaning": "손목"
+      },
+      {
+        "word": "joint",
+        "meaning": "관절, 마디"
+      },
+      {
+        "word": "bend",
+        "meaning": "구부리다"
+      },
+      {
+        "word": "even so",
+        "meaning": "그렇다 해도"
+      },
+      {
+        "word": "press A against B",
+        "meaning": "A를 B에 대고 누르다"
+      },
+      {
+        "word": "fossil",
+        "meaning": "화석"
+      }
+    ]
+  },
+  {
+    "id": "E2-32",
+    "topicTitle": "오스트레일리아의 웜뱃",
+    "questionType": "answerable_question",
+    "passageText": "Wombats live in Australia and dig long tunnels. They are the only animals that leave cube-shaped droppings. People once thought the shape came from a square opening, but that was wrong. The answer lies in the wombat's gut. Some parts of the gut wall are stiff and other parts are stretchy. As the gut squeezes, the stiff and stretchy parts press at different speeds, and corners slowly appear.",
+    "promptText": "윗글을 읽고 답할 수 있는 질문은?",
+    "choices": [
+      "웜뱃의 똥은 몸속 어느 곳에서 모양이 잡히는가?",
+      "웜뱃의 똥은 왜 네모난 꼴이라야 좋은가?",
+      "웜뱃의 새끼주머니는 어느 쪽을 향해 열려 있는가?",
+      "웜뱃은 밤에 주로 무엇을 뜯어 먹는가?"
+    ],
+    "correctIndex": 0,
+    "explanation": "윗글은 'The answer lies in the wombat's gut.'이라고 한 뒤, 창자 벽의 단단한 자리와 잘 늘어나는 자리가 서로 다른 빠르기로 눌러 모서리가 생긴다고 설명합니다. 그래서 똥의 모양이 몸속 어디에서 잡히는지 답할 수 있습니다. 네모난 똥이 어떤 점에서 좋은지, 새끼주머니가 어느 쪽으로 열리는지, 무엇을 먹는지는 이 글에 나오지 않습니다.",
+    "translation": "웜뱃은 오스트레일리아에 살며 긴 굴을 판다. 네모난 똥을 누는 짐승은 웜뱃뿐이다. 사람들은 한때 똥구멍이 네모나서 그런 모양이 나온다고 여겼지만, 그것은 틀린 생각이었다. 답은 웜뱃의 창자에 있다. 창자 벽은 어떤 자리는 단단하고 어떤 자리는 잘 늘어난다. 창자가 조일 때 단단한 자리와 잘 늘어나는 자리가 서로 다른 빠르기로 눌러서, 모서리가 차츰 생겨난다.",
+    "vocab": [
+      {
+        "word": "dig",
+        "meaning": "(땅을) 파다"
+      },
+      {
+        "word": "droppings",
+        "meaning": "짐승의 똥"
+      },
+      {
+        "word": "opening",
+        "meaning": "뚫린 자리, 구멍"
+      },
+      {
+        "word": "lie in",
+        "meaning": "~에 있다, ~에 달려 있다"
+      },
+      {
+        "word": "gut",
+        "meaning": "창자"
+      },
+      {
+        "word": "stiff",
+        "meaning": "뻣뻣한, 단단한"
+      },
+      {
+        "word": "stretchy",
+        "meaning": "잘 늘어나는"
+      },
+      {
+        "word": "squeeze",
+        "meaning": "조이다, 짜다"
+      }
+    ]
+  },
+  {
+    "id": "E2-33",
+    "topicTitle": "아홀로틀이라는 도롱뇽",
+    "questionType": "content_match",
+    "passageText": "The axolotl is a salamander that lives in Mexico. Most salamanders lose their gills as they grow and then move onto land. The axolotl never leaves the water. It keeps its feathery gills for its whole life. Long ago its home was a pair of wide lakes. Today, in the wild, it is found in one place only: a set of canals near Mexico City.",
+    "promptText": "아홀로틀에 대해 윗글에서 알 수 있는 것은?",
+    "choices": [
+      "야생에 남은 곳은 멕시코시티 곁의 한 곳뿐이다.",
+      "잘려 나간 다리를 다시 자라게 할 수 있다.",
+      "세계 여러 실험실에서 길러 연구에 쓰인다.",
+      "이 이름은 아스텍 사람들의 말에서 왔다."
+    ],
+    "correctIndex": 0,
+    "explanation": "윗글의 'Today, in the wild, it is found in one place only: a set of canals near Mexico City.'는 '오늘날 야생에서 아홀로틀이 사는 곳은 멕시코시티 가까이의 물길 한 곳뿐이다.'라는 뜻입니다. 다리를 다시 자라게 하는 것, 실험실에서 길러 연구에 쓰이는 것, 이름이 아스텍 사람들의 말에서 왔다는 것도 사실이지만 이 글에는 나오지 않습니다.",
+    "translation": "아홀로틀은 멕시코에 사는 도롱뇽이다. 대개 도롱뇽은 자라면서 아가미를 잃고 뭍으로 올라간다. 그러나 아홀로틀은 물을 떠나지 않는다. 깃털처럼 생긴 아가미를 한평생 지닌 채 살아간다. 옛날에 아홀로틀이 살던 곳은 넓은 호수 두 곳이었다. 오늘날 야생에서 아홀로틀이 사는 곳은 멕시코시티 가까이에 있는 물길 한 곳뿐이다.",
+    "vocab": [
+      {
+        "word": "salamander",
+        "meaning": "도롱뇽"
+      },
+      {
+        "word": "gill",
+        "meaning": "아가미"
+      },
+      {
+        "word": "move onto land",
+        "meaning": "뭍으로 올라가다"
+      },
+      {
+        "word": "feathery",
+        "meaning": "깃털처럼 생긴"
+      },
+      {
+        "word": "whole life",
+        "meaning": "한평생"
+      },
+      {
+        "word": "in the wild",
+        "meaning": "야생에서"
+      },
+      {
+        "word": "canal",
+        "meaning": "물길, 수로"
+      }
+    ]
+  },
+  {
+    "id": "E2-34",
+    "topicTitle": "아프리카의 바오바브나무",
+    "questionType": "not_mentioned",
+    "passageText": "For most of the year a baobab tree has no leaves. Its bare branches look like roots reaching up, so people call it the upside-down tree. Its flowers open after dark, and bats come to drink from them. Each flower lasts a single night. The fruit dries hard while it still hangs on the branch, and people crack it open to eat the white powder inside.",
+    "promptText": "바오바브나무에 대해 윗글에서 설명하지 않은 것은?",
+    "choices": [
+      "굵은 줄기 속에 많은 물을 담아 둔다.",
+      "가지가 뿌리처럼 보여 거꾸로 선 나무라 불린다.",
+      "밤에 핀 꽃에 박쥐가 찾아와 꿀을 빤다.",
+      "열매는 가지에 달린 채로 단단하게 마른다."
+    ],
+    "correctIndex": 0,
+    "explanation": "윗글은 헐벗은 가지가 뿌리처럼 보여 거꾸로 선 나무라 불린다는 것, 날이 저문 뒤 핀 꽃에 박쥐가 찾아온다는 것, 열매가 가지에 달린 채 단단하게 마른다는 것을 말합니다. 굵은 줄기에 물을 담아 둔다는 것은 바오바브나무에 대해 잘 알려진 사실이지만 이 글에는 나오지 않습니다.",
+    "translation": "바오바브나무는 한 해의 거의 내내 잎이 없다. 헐벗은 가지가 마치 뿌리를 하늘로 뻗은 것처럼 보여서, 사람들은 이 나무를 거꾸로 선 나무라고 부른다. 꽃은 날이 저문 뒤에 피고, 박쥐가 찾아와 꿀을 빤다. 꽃 한 송이는 하룻밤이면 진다. 열매는 가지에 달린 채로 단단하게 마르고, 사람들은 그것을 쪼개어 속에 든 하얀 가루를 먹는다.",
+    "vocab": [
+      {
+        "word": "bare",
+        "meaning": "헐벗은, 잎이 없는"
+      },
+      {
+        "word": "reach up",
+        "meaning": "위로 뻗다"
+      },
+      {
+        "word": "upside-down",
+        "meaning": "거꾸로 된"
+      },
+      {
+        "word": "after dark",
+        "meaning": "날이 저문 뒤에"
+      },
+      {
+        "word": "last",
+        "meaning": "(얼마 동안) 계속되다"
+      },
+      {
+        "word": "hang on",
+        "meaning": "~에 매달려 있다"
+      },
+      {
+        "word": "crack open",
+        "meaning": "쪼개어 열다"
+      },
+      {
+        "word": "powder",
+        "meaning": "가루"
+      }
+    ]
+  },
+  {
+    "id": "E2-35",
+    "topicTitle": "바닐라라는 난초",
+    "questionType": "answerable_question",
+    "passageText": "Vanilla comes from the seed pods of an orchid. In Mexico, wild insects carry its pollen from flower to flower. Farms in other lands had the plants but got no pods at all. In 1841, on a French island in the Indian Ocean, a twelve-year-old boy named Edmond Albius showed how to move the pollen by hand with a thin stick. Growers still do it the same way today.",
+    "promptText": "윗글을 읽고 답할 수 있는 질문은?",
+    "choices": [
+      "꽃가루를 손으로 옮기는 방법은 누가 알아냈는가?",
+      "바닐라를 유럽에 처음 가져간 사람은 누구인가?",
+      "바닐라 꼬투리는 왜 딴 뒤에 오래 두어야 하는가?",
+      "바닐라 밭에서 꼬투리는 어떻게 거두어들이는가?"
+    ],
+    "correctIndex": 0,
+    "explanation": "윗글은 'a twelve-year-old boy named Edmond Albius showed how to move the pollen by hand with a thin stick'이라고 하여, 손으로 꽃가루를 옮기는 방법을 알아낸 사람이 누구인지 밝힙니다. 바닐라를 유럽에 처음 가져간 사람, 꼬투리를 딴 뒤 오래 두는 까닭, 꼬투리를 거두어들이는 방법은 이 글에 나오지 않습니다.",
+    "translation": "바닐라는 난초의 씨가 든 꼬투리에서 얻는다. 멕시코에서는 들에 사는 벌레들이 이 꽃에서 저 꽃으로 꽃가루를 옮겨 준다. 다른 나라의 농장에서는 나무는 있어도 꼬투리가 하나도 열리지 않았다. 1841년, 인도양의 한 프랑스 섬에서 에드몽 알비우스라는 열두 살 소년이 가는 막대로 꽃가루를 손수 옮기는 법을 보여 주었다. 재배하는 사람들은 오늘날에도 그 방법을 쓴다.",
+    "vocab": [
+      {
+        "word": "seed pod",
+        "meaning": "씨가 든 꼬투리"
+      },
+      {
+        "word": "orchid",
+        "meaning": "난초"
+      },
+      {
+        "word": "pollen",
+        "meaning": "꽃가루"
+      },
+      {
+        "word": "from flower to flower",
+        "meaning": "이 꽃에서 저 꽃으로"
+      },
+      {
+        "word": "not ~ at all",
+        "meaning": "하나도 ~ 않다"
+      },
+      {
+        "word": "by hand",
+        "meaning": "손으로"
+      },
+      {
+        "word": "grower",
+        "meaning": "재배하는 사람"
+      }
+    ]
+  },
+  {
+    "id": "E2-36",
+    "topicTitle": "단풍나무에서 얻는 시럽",
+    "questionType": "content_match",
+    "passageText": "Maple syrup begins as sap, a thin liquid that is almost all water. The sap does not run all year. It moves in early spring, when the nights still fall below freezing and the days climb above it. That swing in temperature pushes the sap up and down inside the tree. Farmers boil the sap for hours until most of the water is gone.",
+    "promptText": "메이플 시럽에 대해 윗글에서 알 수 있는 것은?",
+    "choices": [
+      "밤에 얼고 낮에 풀리는 철에만 수액이 흐른다.",
+      "시럽 1리터를 얻는 데 수액 40리터쯤이 든다.",
+      "세계 메이플 시럽의 대부분은 퀘벡에서 난다.",
+      "시럽은 빛깔이 옅을수록 맛이 부드럽다."
+    ],
+    "correctIndex": 0,
+    "explanation": "윗글의 'It moves in early spring, when the nights still fall below freezing and the days climb above it.'은 '수액은 이른 봄, 밤에는 아직 영하로 떨어지고 낮에는 영상으로 올라가는 때에 움직인다.'라는 뜻입니다. 시럽 한 통을 얻는 데 드는 수액의 양, 퀘벡에서 많이 난다는 것, 빛깔에 따른 맛의 차이도 사실이지만 이 글에는 나오지 않습니다.",
+    "translation": "메이플 시럽은 수액에서 시작되는데, 수액은 거의 물이나 다름없이 묽은 액체이다. 수액이 한 해 내내 흐르는 것은 아니다. 수액은 이른 봄, 밤에는 아직 영하로 떨어지고 낮에는 영상으로 올라가는 때에 움직인다. 이렇게 오르내리는 온도가 나무 속에서 수액을 위아래로 밀어 준다. 농부들은 물기가 거의 날아갈 때까지 몇 시간 동안 수액을 끓인다.",
+    "vocab": [
+      {
+        "word": "sap",
+        "meaning": "나무의 수액"
+      },
+      {
+        "word": "run",
+        "meaning": "흐르다"
+      },
+      {
+        "word": "below freezing",
+        "meaning": "영하로"
+      },
+      {
+        "word": "climb",
+        "meaning": "(수치가) 올라가다"
+      },
+      {
+        "word": "swing",
+        "meaning": "큰 오르내림, 변화"
+      },
+      {
+        "word": "push up and down",
+        "meaning": "위아래로 밀어 올리고 내리다"
+      },
+      {
+        "word": "boil",
+        "meaning": "끓이다"
+      },
+      {
+        "word": "be gone",
+        "meaning": "사라지다, 없어지다"
+      }
+    ]
+  },
+  {
+    "id": "E2-37",
+    "topicTitle": "아마존의 큰 수련",
+    "questionType": "vocabulary",
+    "passageText": "The giant water lily of the Amazon has leaves more than two meters wide. Under each leaf is a web of thick ribs filled with air. Because of them, one leaf can bear the weight of a small child. In 1849 an English gardener grew the first of these plants to flower in Britain. He later copied the pattern of ribs when he designed a huge glass building.",
+    "promptText": "윗글에서 'bear'의 뜻으로 알맞은 것은?",
+    "choices": [
+      "(무게를) 떠받치다.",
+      "(아이를) 낳다.",
+      "(나무가 열매를) 맺다.",
+      "(고통을) 참고 견디다."
+    ],
+    "correctIndex": 0,
+    "explanation": "윗글에서 'one leaf can bear the weight of a small child'는 '잎 한 장이 어린아이의 무게를 떠받칠 수 있다'라는 뜻입니다. 바로 앞에서 잎 아래에 공기가 든 두꺼운 잎맥이 그물처럼 얽혀 있다고 했으므로, 여기서는 무게를 버티어 받친다는 뜻으로 쓰였습니다. 'bear'에는 아이를 낳다, 열매를 맺다, 고통을 참다라는 뜻도 있지만 이 글에는 맞지 않습니다.",
+    "translation": "아마존의 큰 수련은 잎의 너비가 2미터가 넘는다. 잎 아래에는 공기가 든 두꺼운 잎맥이 그물처럼 얽혀 있다. 그 덕분에 잎 한 장이 어린아이의 무게를 떠받칠 수 있다. 1849년 한 영국 정원사가 영국에서 처음으로 이 수련의 꽃을 피워 냈다. 그는 나중에 커다란 유리 건물을 설계할 때 이 잎맥의 얼개를 본떴다.",
+    "vocab": [
+      {
+        "word": "water lily",
+        "meaning": "수련"
+      },
+      {
+        "word": "rib",
+        "meaning": "갈비뼈처럼 뻗은 뼈대, 잎맥"
+      },
+      {
+        "word": "be filled with",
+        "meaning": "~로 가득 차 있다"
+      },
+      {
+        "word": "bear",
+        "meaning": "(무게를) 떠받치다, 견디다"
+      },
+      {
+        "word": "weight",
+        "meaning": "무게"
+      },
+      {
+        "word": "gardener",
+        "meaning": "정원사"
+      },
+      {
+        "word": "copy",
+        "meaning": "본뜨다, 그대로 따라 하다"
+      },
+      {
+        "word": "design",
+        "meaning": "설계하다"
+      }
+    ]
+  },
+  {
+    "id": "E2-38",
+    "topicTitle": "높은 산의 수염수리",
+    "questionType": "vocabulary",
+    "passageText": "The bearded vulture lives in high mountains and eats mostly bones. A bone that is too big to swallow does not stop it. The bird carries the bone high into the air and drops it onto a flat rock below. The bone breaks, and the vulture swallows the pieces and the marrow inside. Young birds may need years of practice before they can do this well.",
+    "promptText": "윗글에서 'drops'의 뜻으로 알맞은 것은?",
+    "choices": [
+      "(쥐고 있던 것을) 떨어뜨리다.",
+      "(수나 값이) 줄어들다.",
+      "(타고 가던 사람을) 내려 주다.",
+      "(하던 일을) 그만두다."
+    ],
+    "correctIndex": 0,
+    "explanation": "윗글의 'The bird carries the bone high into the air and drops it onto a flat rock below.'는 '이 새는 뼈를 하늘 높이 물고 올라가 아래의 판판한 바위에 떨어뜨린다.'라는 뜻입니다. 바로 뒤에 뼈가 깨진다고 했으므로, 여기서는 쥐고 있던 것을 아래로 놓아 버린다는 뜻으로 쓰였습니다. 'drop'에는 수나 값이 줄다, 사람을 내려 주다, 하던 일을 그만두다라는 뜻도 있지만 이 글에는 맞지 않습니다.",
+    "translation": "수염수리는 높은 산에 살며 주로 뼈를 먹는다. 통째로 삼키기에 너무 큰 뼈라고 해서 물러서지 않는다. 이 새는 뼈를 하늘 높이 물고 올라가 아래의 판판한 바위에 떨어뜨린다. 뼈가 깨지면 수염수리는 그 조각과 속의 골수를 삼킨다. 어린 새는 이 일을 제대로 해내기까지 여러 해 동안 익혀야 하기도 한다.",
+    "vocab": [
+      {
+        "word": "bearded vulture",
+        "meaning": "수염수리"
+      },
+      {
+        "word": "mostly",
+        "meaning": "주로, 대개"
+      },
+      {
+        "word": "too ~ to",
+        "meaning": "너무 ~해서 …할 수 없는"
+      },
+      {
+        "word": "swallow",
+        "meaning": "삼키다"
+      },
+      {
+        "word": "drop",
+        "meaning": "떨어뜨리다"
+      },
+      {
+        "word": "flat",
+        "meaning": "판판한, 평평한"
+      },
+      {
+        "word": "marrow",
+        "meaning": "골수"
+      },
+      {
+        "word": "practice",
+        "meaning": "익히기, 연습"
+      }
+    ]
+  },
+  {
+    "id": "E2-39",
+    "topicTitle": "붙였다 떼는 쪽지",
+    "questionType": "answerable_question",
+    "passageText": "Under a microscope, the glue on a sticky note looks like a field of tiny round balls. When you press the note down, only a few of the balls touch the paper. The balls are not crushed when the note is pulled off. They keep their round shape, so they can grip again. That is why one note can be stuck down again and again.",
+    "promptText": "윗글을 읽고 답할 수 있는 질문은?",
+    "choices": [
+      "쪽지를 떼어 낼 때 풀 알갱이는 어떻게 되는가?",
+      "쪽지에서 풀이 발린 자리는 어디인가?",
+      "이 풀은 왜 동그란 알갱이 모양으로 만드는가?",
+      "쪽지를 여러 번 붙였다 떼면 붙는 힘은 어떻게 되는가?"
+    ],
+    "correctIndex": 0,
+    "explanation": "윗글의 'The balls are not crushed when the note is pulled off. They keep their round shape'는 '쪽지를 떼어 낼 때 알갱이가 짓눌리지 않고 동그란 모양을 그대로 지닌다'는 뜻입니다. 풀이 발려 있는 자리, 알갱이 모양으로 만드는 까닭, 여러 번 붙였다 뗐을 때의 붙는 힘은 이 글에 나오지 않습니다.",
+    "translation": "현미경으로 보면 붙였다 떼는 쪽지의 풀은 아주 작고 동그란 알갱이가 깔린 들판처럼 보인다. 쪽지를 눌러 붙이면 그 알갱이 가운데 몇 개만 종이에 닿는다. 쪽지를 떼어 낼 때 이 알갱이들은 짓눌리지 않는다. 동그란 모양을 그대로 지니고 있어서 다시 붙잡을 수 있다. 그래서 쪽지 한 장을 붙였다 떼기를 몇 번이고 되풀이할 수 있다.",
+    "vocab": [
+      {
+        "word": "under a microscope",
+        "meaning": "현미경으로 보면"
+      },
+      {
+        "word": "field",
+        "meaning": "들판"
+      },
+      {
+        "word": "press down",
+        "meaning": "눌러 붙이다"
+      },
+      {
+        "word": "be crushed",
+        "meaning": "짓눌리다"
+      },
+      {
+        "word": "pull off",
+        "meaning": "떼어 내다"
+      },
+      {
+        "word": "keep one's shape",
+        "meaning": "제 모양을 그대로 지니다"
+      },
+      {
+        "word": "grip",
+        "meaning": "붙잡다, 꽉 쥐다"
+      },
+      {
+        "word": "stick down",
+        "meaning": "눌러 붙이다"
+      }
+    ]
+  },
+  {
+    "id": "E2-40",
+    "topicTitle": "1783년 베르사유의 하늘",
+    "questionType": "content_match",
+    "passageText": "In 1783 two French brothers sent up a balloon that rose on hot air. The king and queen watched at Versailles. Before risking a person, they wanted to know whether animals could breathe high in the sky. So they put a sheep, a duck, and a rooster in a basket under the balloon. The balloon landed in a wood three kilometres away, and all three animals came down alive.",
+    "promptText": "윗글에서 알 수 있는 것은?",
+    "choices": [
+      "기구는 3킬로미터쯤 떨어진 숲에 내려앉았다.",
+      "기구는 여덟 분쯤 하늘에 떠 있었다.",
+      "양에게는 '몽토시엘'이라는 이름이 있었다.",
+      "기구를 띄우려고 짚과 양털을 태웠다."
+    ],
+    "correctIndex": 0,
+    "explanation": "윗글의 'The balloon landed in a wood three kilometres away, and all three animals came down alive.'는 '기구는 3킬로미터쯤 떨어진 숲에 내려앉았고, 세 짐승은 모두 살아서 땅으로 내려왔다.'라는 뜻입니다. 하늘에 떠 있던 시간, 양에게 붙어 있던 이름, 짚과 양털을 태워 기구를 띄웠다는 것도 사실이지만 이 글에는 나오지 않습니다.",
+    "translation": "1783년 프랑스의 두 형제가 더운 공기로 떠오르는 기구를 하늘로 올려 보냈다. 임금과 왕비가 베르사유에서 그 모습을 지켜보았다. 사람을 태우는 모험을 하기에 앞서, 형제는 짐승이 높은 하늘에서도 숨을 쉴 수 있는지 알고 싶었다. 그래서 양과 오리와 수탉을 기구 아래에 매단 바구니에 태웠다. 기구는 3킬로미터쯤 떨어진 숲에 내려앉았고, 세 짐승은 모두 살아서 땅으로 내려왔다.",
+    "vocab": [
+      {
+        "word": "send up",
+        "meaning": "위로 올려 보내다"
+      },
+      {
+        "word": "rise",
+        "meaning": "떠오르다, 올라가다"
+      },
+      {
+        "word": "risk",
+        "meaning": "~을 위험에 내맡기다"
+      },
+      {
+        "word": "whether",
+        "meaning": "~인지 아닌지"
+      },
+      {
+        "word": "breathe",
+        "meaning": "숨 쉬다"
+      },
+      {
+        "word": "rooster",
+        "meaning": "수탉"
+      },
+      {
+        "word": "land",
+        "meaning": "내려앉다, 착륙하다"
+      },
+      {
+        "word": "alive",
+        "meaning": "살아 있는"
+      }
+    ]
+  },
+  {
+    "id": "E2-41",
+    "topicTitle": "두 장 사이에 낀 막",
+    "questionType": "content_match",
+    "passageText": "Safety glass is not always a single sheet. A thin layer of clear plastic is held between two panes of glass. When the glass is hit, the broken pieces stay on the plastic instead of flying about. Making this glass was slow work, and for years it cost too much for ordinary buyers. Its first big use came in the First World War, in the eyepieces of gas masks.",
+    "promptText": "이 유리에 대해 윗글에서 알 수 있는 것은?",
+    "choices": [
+      "만드는 데 시간이 오래 걸려 값이 비쌌다.",
+      "프랑스의 한 화학자가 우연히 알아낸 것이다.",
+      "'트리플렉스'라는 이름을 달고 팔려 나갔다.",
+      "오늘날 자동차 앞 유리를 이 방법으로 만든다."
+    ],
+    "correctIndex": 0,
+    "explanation": "윗글의 'Making this glass was slow work, and for years it cost too much for ordinary buyers.'는 '이 유리를 만드는 일은 더뎌서, 여러 해 동안 보통 사람이 사기에는 값이 너무 비쌌다.'라는 뜻입니다. 프랑스의 화학자가 우연히 알아냈다는 것, 트리플렉스라는 이름으로 팔렸다는 것, 오늘날 자동차 앞 유리를 이렇게 만든다는 것도 사실이지만 이 글에는 나오지 않습니다.",
+    "translation": "안전유리가 늘 한 장짜리 유리인 것은 아니다. 맑은 플라스틱 얇은 막이 유리판 두 장 사이에 끼워져 있다. 유리가 부딪쳐 깨져도 조각들은 사방으로 튀지 않고 그 막에 붙어 있다. 이 유리를 만드는 일은 더뎌서, 여러 해 동안 보통 사람이 사기에는 값이 너무 비쌌다. 이 유리가 처음 크게 쓰인 것은 1차 세계 대전 때 방독면의 렌즈로였다.",
+    "vocab": [
+      {
+        "word": "single sheet",
+        "meaning": "한 장짜리"
+      },
+      {
+        "word": "clear",
+        "meaning": "맑은, 속이 비치는"
+      },
+      {
+        "word": "be held between",
+        "meaning": "~ 사이에 끼워져 있다"
+      },
+      {
+        "word": "pane",
+        "meaning": "판유리 한 장"
+      },
+      {
+        "word": "instead of",
+        "meaning": "~하지 않고, ~ 대신에"
+      },
+      {
+        "word": "fly about",
+        "meaning": "사방으로 흩어져 날다"
+      },
+      {
+        "word": "ordinary",
+        "meaning": "보통의, 여느"
+      },
+      {
+        "word": "eyepiece",
+        "meaning": "눈에 대는 렌즈 부분"
+      }
+    ]
+  },
+  {
+    "id": "E2-42",
+    "topicTitle": "런던 거리의 첫 신호기",
+    "questionType": "content_match",
+    "passageText": "The first traffic signal in the world stood in London in 1868, before cars were on the roads. Horses and carriages filled the streets near Parliament, and people found it hard to cross. A tall post with two arms on it was put up. A police officer turned the arms by hand to stop or let through the traffic. At night, red and green gas lamps were lit instead.",
+    "promptText": "런던의 첫 신호기에 대해 윗글에서 알 수 있는 것은?",
+    "choices": [
+      "경찰관 한 사람이 손으로 팔을 움직였다.",
+      "가스가 새어 터지는 바람에 곧 치워졌다.",
+      "전기로 켜는 신호등은 미국에서 먼저 쓰였다.",
+      "노란불은 한참 뒤에야 신호에 더해졌다."
+    ],
+    "correctIndex": 0,
+    "explanation": "윗글의 'A police officer turned the arms by hand to stop or let through the traffic.'은 '경찰관 한 사람이 손으로 팔을 돌려 오가는 것을 세우기도 하고 지나가게 하기도 했다.'라는 뜻입니다. 가스가 새어 터진 일, 전기 신호등이 미국에서 먼저 쓰인 것, 노란불이 나중에 더해진 것도 사실이지만 이 글에는 나오지 않습니다.",
+    "translation": "세계에서 가장 먼저 세워진 교통 신호기는 1868년 런던에 있었고, 그때는 아직 길에 자동차가 없었다. 국회의사당 가까운 거리는 말과 마차로 붐벼서 사람들이 길을 건너기 어려웠다. 그래서 팔이 둘 달린 높은 기둥을 세웠다. 경찰관 한 사람이 손으로 그 팔을 돌려 오가는 것을 세우기도 하고 지나가게 하기도 했다. 밤에는 그 대신 빨간빛과 초록빛 가스등을 켰다.",
+    "vocab": [
+      {
+        "word": "traffic signal",
+        "meaning": "교통 신호기"
+      },
+      {
+        "word": "carriage",
+        "meaning": "마차"
+      },
+      {
+        "word": "find it hard to",
+        "meaning": "~하기 어려워하다"
+      },
+      {
+        "word": "cross",
+        "meaning": "(길을) 건너다"
+      },
+      {
+        "word": "post",
+        "meaning": "기둥"
+      },
+      {
+        "word": "by hand",
+        "meaning": "손으로"
+      },
+      {
+        "word": "let through",
+        "meaning": "지나가게 하다"
+      },
+      {
+        "word": "be lit",
+        "meaning": "불이 켜지다"
+      }
+    ]
+  },
+  {
+    "id": "E2-43",
+    "topicTitle": "마추픽추를 지을 때",
+    "questionType": "not_mentioned",
+    "passageText": "Machu Picchu sits high in the mountains of Peru, where heavy rain falls for months. The builders dug deep before they laid a single wall. Under the ground they packed layers of crushed stone and gravel so that rainwater could sink away. Narrow channels were cut in the stone to carry water off the open squares. Much of the work at Machu Picchu is buried and cannot be seen.",
+    "promptText": "마추픽추에 대해 윗글에서 설명하지 않은 것은?",
+    "choices": [
+      "다듬은 돌을 빈틈없이 맞물려 쌓은 벽이 있다.",
+      "벽을 세우기에 앞서 땅을 깊이 파 내려갔다.",
+      "땅 밑에 깬 돌과 자갈을 겹겹이 다졌다.",
+      "마추픽추가 있는 곳에는 여러 달 비가 많이 내린다."
+    ],
+    "correctIndex": 0,
+    "explanation": "윗글은 벽을 쌓기 전에 땅을 깊이 판 것, 땅 밑에 깬 돌과 자갈을 켜켜이 다진 것, 마추픽추가 있는 곳에 여러 달 비가 많이 내린다는 것을 말합니다. 다듬은 돌을 빈틈없이 맞물려 쌓은 벽이 있다는 것은 마추픽추에서 잘 알려진 사실이지만 이 글에는 나오지 않습니다.",
+    "translation": "마추픽추는 페루의 높은 산속에 자리 잡고 있는데, 그곳에는 여러 달 동안 비가 많이 내린다. 이곳을 지은 사람들은 벽을 한 줄도 쌓기 전에 땅부터 깊이 팠다. 그리고 땅 밑에 깬 돌과 자갈을 켜켜이 다져 넣어 빗물이 스며들어 빠지게 했다. 열린 마당에서 물을 빼내려고 돌에 좁은 도랑도 새겼다. 마추픽추에서 이루어진 일의 많은 부분은 땅에 묻혀 있어 눈에 보이지 않는다.",
+    "vocab": [
+      {
+        "word": "lay",
+        "meaning": "(벽돌·돌을) 놓아 쌓다"
+      },
+      {
+        "word": "pack",
+        "meaning": "단단히 다져 넣다"
+      },
+      {
+        "word": "layer",
+        "meaning": "켜, 층"
+      },
+      {
+        "word": "crushed stone",
+        "meaning": "깬 돌"
+      },
+      {
+        "word": "gravel",
+        "meaning": "자갈"
+      },
+      {
+        "word": "sink away",
+        "meaning": "스며들어 빠지다"
+      },
+      {
+        "word": "channel",
+        "meaning": "물길, 도랑"
+      },
+      {
+        "word": "be buried",
+        "meaning": "묻히다"
+      }
+    ]
+  },
+  {
+    "id": "E2-44",
+    "topicTitle": "시드니 항구의 흰 건물",
+    "questionType": "answerable_question",
+    "passageText": "The roof of the Sydney Opera House is covered with more than a million tiles. They were made in Sweden and came in two kinds, one shiny and one dull. Mixed together, they keep the roof from glaring in the sun. Workers did not stick the tiles on one by one. They set them into large panels on the ground, and cranes lifted the finished panels onto the roof.",
+    "promptText": "윗글을 읽고 답할 수 있는 질문은?",
+    "choices": [
+      "지붕의 타일은 어떤 방법으로 붙였는가?",
+      "지붕의 휘어진 면은 어떻게 똑같은 꼴로 만들었는가?",
+      "이 건물을 지을 돈은 어떻게 마련했는가?",
+      "이 건물을 짓는 데 몇 해가 걸렸는가?"
+    ],
+    "correctIndex": 0,
+    "explanation": "윗글은 'They set them into large panels on the ground, and cranes lifted the finished panels onto the roof.'라고 하여, 타일을 하나씩 붙이지 않고 땅에서 큰 판에 붙인 뒤 기중기로 통째로 올렸다고 밝힙니다. 휜 곡면을 똑같은 꼴로 만든 방법, 공사에 든 돈을 마련한 방법, 짓는 데 걸린 햇수는 이 글에 나오지 않습니다.",
+    "translation": "시드니 오페라 하우스의 지붕은 백만 장이 넘는 타일로 덮여 있다. 타일은 스웨덴에서 만들어졌고, 반들반들한 것과 윤이 없는 것 두 가지가 있었다. 두 가지를 섞어 붙여서 지붕이 햇빛에 번쩍이지 않게 했다. 일꾼들은 타일을 하나씩 붙이지 않았다. 땅에서 큰 판에 타일을 붙인 다음, 기중기로 그 판을 통째로 지붕에 올렸다.",
+    "vocab": [
+      {
+        "word": "be covered with",
+        "meaning": "~로 덮여 있다"
+      },
+      {
+        "word": "come in",
+        "meaning": "(어떤 종류로) 나오다"
+      },
+      {
+        "word": "shiny",
+        "meaning": "반들반들한"
+      },
+      {
+        "word": "dull",
+        "meaning": "윤이 없는, 무광의"
+      },
+      {
+        "word": "keep A from -ing",
+        "meaning": "A가 ~하지 못하게 하다"
+      },
+      {
+        "word": "glare",
+        "meaning": "눈부시게 번쩍이다"
+      },
+      {
+        "word": "one by one",
+        "meaning": "하나씩 차례로"
+      },
+      {
+        "word": "panel",
+        "meaning": "판, 널"
+      }
+    ]
+  },
+  {
+    "id": "E2-45",
+    "topicTitle": "무른 땅에 세운 도시",
+    "questionType": "content_match",
+    "passageText": "Venice stands on soft mud, not solid ground. Workers drove millions of wooden poles down until they reached a hard layer of clay. On top of the poles they laid flat wooden boards, and on the boards they set blocks of stone that water cannot soak into. The brick walls of the city rise from those stone blocks. Under one church alone there are more than a million poles.",
+    "promptText": "베네치아에 대해 윗글에서 알 수 있는 것은?",
+    "choices": [
+      "말뚝 위에 나무판을 깔고 그 위에 돌을 놓았다.",
+      "진흙 속에는 공기가 닿지 않아 나무가 썩지 않는다.",
+      "물에 잘 견디는 오리나무와 낙엽송을 골라 썼다.",
+      "물이 크게 불면 가장 낮은 광장부터 잠긴다."
+    ],
+    "correctIndex": 0,
+    "explanation": "윗글의 'On top of the poles they laid flat wooden boards, and on the boards they set blocks of stone that water cannot soak into.'는 '말뚝 위에 판판한 나무판을 깔고, 그 나무판 위에 물이 스며들지 않는 돌덩이를 올렸다.'라는 뜻입니다. 진흙 속에 공기가 닿지 않아 나무가 썩지 않는다는 것, 물에 잘 견디는 나무를 골라 썼다는 것, 물이 크게 불면 낮은 광장부터 잠긴다는 것도 사실이지만 이 글에는 나오지 않습니다.",
+    "translation": "베네치아는 단단한 땅이 아니라 무른 진흙 위에 서 있다. 일꾼들은 단단한 찰흙 층에 닿을 때까지 나무 말뚝 수백만 개를 박아 내렸다. 말뚝 위에는 판판한 나무판을 깔고, 그 나무판 위에 물이 스며들지 않는 돌덩이를 올렸다. 도시의 벽돌 벽은 그 돌덩이 위에서 솟아오른다. 성당 한 채 아래에만 말뚝이 백만 개가 넘게 박혀 있다.",
+    "vocab": [
+      {
+        "word": "stand on",
+        "meaning": "~ 위에 서 있다"
+      },
+      {
+        "word": "solid ground",
+        "meaning": "단단한 땅"
+      },
+      {
+        "word": "drive",
+        "meaning": "(말뚝 따위를) 박아 넣다"
+      },
+      {
+        "word": "pole",
+        "meaning": "말뚝, 기둥"
+      },
+      {
+        "word": "layer of clay",
+        "meaning": "찰흙 층"
+      },
+      {
+        "word": "lay",
+        "meaning": "깔다, 놓다"
+      },
+      {
+        "word": "soak into",
+        "meaning": "~에 스며들다"
+      },
+      {
+        "word": "rise from",
+        "meaning": "~에서 솟아오르다"
+      }
+    ]
+  },
+  {
+    "id": "E2-46",
+    "topicTitle": "두 번째 행성 금성",
+    "questionType": "content_match",
+    "passageText": "Venus turns on its axis more slowly than any other planet. One turn takes about 243 Earth days, but one trip around the Sun takes only about 225 days. So one spin of Venus takes longer than its whole year. Venus also spins the other way from Earth. If you could stand on its surface, you would see the Sun rise in the west.",
+    "promptText": "금성에 대해 윗글에서 알 수 있는 것은?",
+    "choices": [
+      "그곳에 서면 해가 서쪽에서 떠오를 것이다.",
+      "태양계에서 겉면이 가장 뜨거운 행성이다.",
+      "땅의 이름을 대부분 여자 이름에서 따왔다.",
+      "새벽이나 저녁 하늘에서 아주 밝게 보인다."
+    ],
+    "correctIndex": 0,
+    "explanation": "윗글의 'If you could stand on its surface, you would see the Sun rise in the west.'는 '금성의 땅에 서 있을 수 있다면 해가 서쪽에서 떠오르는 것을 보게 될 것이다.'라는 뜻입니다. 겉면이 가장 뜨겁다는 것, 땅의 이름을 여자 이름에서 따왔다는 것, 새벽과 저녁에 밝게 보인다는 것도 사실이지만 이 글에는 나오지 않습니다.",
+    "translation": "금성은 다른 어느 행성보다 느리게 스스로 돈다. 한 바퀴 도는 데 지구의 날로 243일쯤 걸리는데, 해를 한 바퀴 도는 데는 225일쯤밖에 걸리지 않는다. 그래서 금성이 제자리에서 한 바퀴 도는 데는 그곳의 한 해보다 긴 시간이 걸린다. 또 금성은 지구와 반대 방향으로 돈다. 만약 금성의 땅에 서 있을 수 있다면, 해가 서쪽에서 떠오르는 것을 보게 될 것이다.",
+    "vocab": [
+      {
+        "word": "turn on its axis",
+        "meaning": "축을 중심으로 돌다, 자전하다"
+      },
+      {
+        "word": "planet",
+        "meaning": "행성"
+      },
+      {
+        "word": "trip around",
+        "meaning": "~을 한 바퀴 도는 일"
+      },
+      {
+        "word": "spin",
+        "meaning": "빙빙 돌다"
+      },
+      {
+        "word": "the other way",
+        "meaning": "반대 방향으로"
+      },
+      {
+        "word": "surface",
+        "meaning": "겉면, 표면"
+      },
+      {
+        "word": "rise",
+        "meaning": "(해가) 뜨다"
+      }
+    ]
+  },
+  {
+    "id": "E2-47",
+    "topicTitle": "우주 정거장의 살림",
+    "questionType": "answerable_question",
+    "passageText": "On the space station, water is far too heavy to send up from Earth every week. So almost nothing is thrown away. Machines catch the damp air that the crew breathes out and the sweat that dries from their skin. Other machines clean the water from the toilet. In 2023 the station set a new record: 98 out of every 100 drops were used again.",
+    "promptText": "윗글을 읽고 답할 수 있는 질문은?",
+    "choices": [
+      "정거장에서 다시 쓰는 물은 얼마나 되는가?",
+      "정거장은 하루에 지구를 몇 바퀴 도는가?",
+      "우주에서는 왜 물방울이 둥글게 떠다니는가?",
+      "정거장에 필요한 산소는 어떻게 얻는가?"
+    ],
+    "correctIndex": 0,
+    "explanation": "윗글은 'In 2023 the station set a new record: 98 out of every 100 drops were used again.'이라고 하여, 물 백 방울 가운데 아흔여덟 방울을 다시 썼다고 밝힙니다. 그래서 다시 쓰는 물이 얼마나 되는지 답할 수 있습니다. 정거장이 하루에 지구를 도는 횟수, 물방울이 둥글게 떠다니는 까닭, 산소를 얻는 방법은 이 글에 나오지 않습니다.",
+    "translation": "우주 정거장에서 쓸 물을 주마다 지구에서 실어 올리기에는 물이 너무 무겁다. 그래서 그곳에서는 버리는 것이 거의 없다. 기계들이 승무원이 내쉰 숨 속의 축축한 기운과 살갗에서 마른 땀을 모은다. 다른 기계는 화장실에서 나온 물을 깨끗하게 만든다. 2023년에 정거장은 새로운 기록을 세웠다. 물 백 방울 가운데 아흔여덟 방울을 다시 쓴 것이다.",
+    "vocab": [
+      {
+        "word": "far too",
+        "meaning": "너무나, 지나치게"
+      },
+      {
+        "word": "throw away",
+        "meaning": "버리다"
+      },
+      {
+        "word": "damp",
+        "meaning": "축축한"
+      },
+      {
+        "word": "crew",
+        "meaning": "승무원들"
+      },
+      {
+        "word": "breathe out",
+        "meaning": "숨을 내쉬다"
+      },
+      {
+        "word": "sweat",
+        "meaning": "땀"
+      },
+      {
+        "word": "set a record",
+        "meaning": "기록을 세우다"
+      },
+      {
+        "word": "out of",
+        "meaning": "~ 가운데"
+      }
+    ]
+  },
+  {
+    "id": "E2-48",
+    "topicTitle": "먼 북쪽 섬의 창고",
+    "questionType": "not_mentioned",
+    "passageText": "On a cold island in Norway there is a store for seeds. A tunnel runs deep into a mountain, and the rock around it stays frozen all year. Countries send boxes of seeds there and can take them back whenever they wish. In 2015 seeds went out for the first time. A seed bank in Syria had to leave its city because of war and asked for its boxes back.",
+    "promptText": "이 씨앗 창고에 대해 윗글에서 설명하지 않은 것은?",
+    "choices": [
+      "세계에서 온 씨앗이 백만 가지가 넘게 들어 있다.",
+      "산속 깊이 뻗은 굴 둘레의 바위가 늘 얼어 있다.",
+      "맡긴 나라는 씨앗을 언제든 도로 찾아갈 수 있다.",
+      "2015년에 처음으로 씨앗을 꺼내 간 일이 있었다."
+    ],
+    "correctIndex": 0,
+    "explanation": "윗글은 산속 깊이 뻗은 굴과 한 해 내내 얼어 있는 둘레의 바위, 맡긴 나라가 언제든 씨앗을 찾아갈 수 있다는 것, 2015년에 처음으로 씨앗을 꺼내 간 일을 이야기합니다. 이곳에 씨앗이 백만 가지가 넘게 들어 있다는 것도 사실이지만 이 글에는 나오지 않습니다.",
+    "translation": "노르웨이의 추운 섬에 씨앗을 보관하는 창고가 있다. 굴이 산속 깊이 뻗어 있고, 그 둘레의 바위는 한 해 내내 얼어 있다. 여러 나라가 씨앗 상자를 이곳으로 보내고, 원할 때면 언제든 도로 찾아갈 수 있다. 2015년에 처음으로 씨앗이 이곳에서 나갔다. 시리아의 한 씨앗 은행이 전쟁 때문에 도시를 떠나야 해서 자기네 상자를 돌려 달라고 한 것이다.",
+    "vocab": [
+      {
+        "word": "store",
+        "meaning": "저장고, 창고"
+      },
+      {
+        "word": "run",
+        "meaning": "(길·굴이) 뻗어 있다"
+      },
+      {
+        "word": "frozen",
+        "meaning": "얼어붙은"
+      },
+      {
+        "word": "take back",
+        "meaning": "도로 가져가다"
+      },
+      {
+        "word": "whenever",
+        "meaning": "~할 때면 언제든"
+      },
+      {
+        "word": "go out",
+        "meaning": "밖으로 나가다"
+      },
+      {
+        "word": "seed bank",
+        "meaning": "씨앗 은행"
+      },
+      {
+        "word": "because of",
+        "meaning": "~ 때문에"
+      }
+    ]
   }
 ]

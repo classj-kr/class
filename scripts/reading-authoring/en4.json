@@ -1402,5 +1402,1017 @@
         "meaning": "(자연스럽게) 익히다, 배우다"
       }
     ]
+  },
+  {
+    "id": "E4-29",
+    "topicTitle": "넘어지지 않는 자전거",
+    "questionType": "not_mentioned",
+    "passageText": "A bicycle that is rolling along will pick itself up after a sideways push, with nobody touching the handlebars. Two explanations were long offered for this. One put it down to the spin of the wheels, which resists tipping. The other pointed to the front wheel, which meets the ground behind the steering axis, trails behind, and swings back into line. In 2011 engineers built a machine to test both at once. Extra wheels turning the other way took the spin out, and the point where the front wheel met the ground was moved ahead of the axis. Knocked sideways, the machine still steered itself upright. Neither old cause, the team decided, is needed; what did the work was where the machine carried its weight and how far the steering axis leaned. A rider does much the same without thinking, turning the handlebars toward the side of the fall.",
+    "promptText": "윗글에서 설명하지 않은 것은?",
+    "choices": [
+      "The trick works over a range of speeds and fails outside it.",
+      "One old account put the recovery down to the spin of the wheels.",
+      "Extra wheels turning the other way took the spin out of the test.",
+      "The front wheel was set to meet the ground ahead of the steering axis.",
+      "Where the weight sat and how the steering leaned did the work."
+    ],
+    "correctIndex": 0,
+    "explanation": "자전거가 스스로 균형을 잡는 것은 어느 정도 속도 범위 안에서만 되고 그보다 느리거나 빠르면 넘어지지만, 이 글에는 속도에 관한 이야기가 나오지 않습니다. 옛 설명 가운데 하나가 바퀴 도는 힘을 들었다는 것, 거꾸로 도는 바퀴를 덧달아 도는 효과를 없앴다는 것, 앞바퀴가 조향축보다 앞에서 땅에 닿게 했다는 것, 사람이 넘어지는 쪽으로 핸들을 튼다는 것은 모두 이 글에서 설명했습니다.",
+    "translation": "굴러가는 자전거는 아무도 핸들을 잡고 있지 않아도 옆에서 밀린 뒤 스스로 몸을 일으킨다. 이에 대해 오랫동안 두 가지 설명이 쓰였다. 하나는 바퀴가 도는 힘이 기울어짐을 버티기 때문이라고 보았다. 다른 하나는 앞바퀴를 들었는데, 조향축보다 뒤쪽에서 땅에 닿아 끌려오다가 스스로 제자리로 돌아온다는 것이었다. 2011년에 공학자들은 두 가지를 한꺼번에 시험할 기계를 만들었다. 거꾸로 도는 바퀴를 덧달아 도는 효과를 없앴고, 앞바퀴가 땅에 닿는 자리를 조향축보다 앞으로 옮겼다. 옆에서 툭 쳐도 기계는 여전히 스스로 방향을 틀어 몸을 세웠다. 연구진은 옛 까닭 가운데 어느 것도 꼭 있어야 하는 것은 아니라고 보았고, 제 몫을 한 것은 무게가 놓인 자리와 조향축이 기운 정도라고 했다. 사람이 자전거를 탈 때도 생각 없이 같은 일을 하는데, 넘어지는 쪽으로 핸들을 트는 것이다.",
+    "vocab": [
+      {
+        "word": "handlebars",
+        "meaning": "(자전거의) 핸들"
+      },
+      {
+        "word": "put A down to B",
+        "meaning": "A를 B의 탓으로 돌리다"
+      },
+      {
+        "word": "spin",
+        "meaning": "도는 힘, 회전"
+      },
+      {
+        "word": "resist",
+        "meaning": "버티다, 저항하다"
+      },
+      {
+        "word": "steering axis",
+        "meaning": "조향축, 핸들이 돌아가는 축"
+      },
+      {
+        "word": "trail",
+        "meaning": "뒤에서 끌려오다"
+      },
+      {
+        "word": "take out",
+        "meaning": "없애다, 빼내다"
+      },
+      {
+        "word": "lean",
+        "meaning": "기울기; 기울다"
+      }
+    ]
+  },
+  {
+    "id": "E4-30",
+    "topicTitle": "까닭 없이 밀리는 길",
+    "questionType": "content_match",
+    "passageText": "In 2008 a team in Japan asked twenty-two drivers to circle a ring of road two hundred and thirty metres around, holding about thirty kilometres an hour and keeping even gaps. The road had no junction, no signal and no narrow point. For less than a minute the line of cars held. Then, because no driver can hold a speed exactly, the gaps began to differ, one car braked a little harder than needed, and a crowded stretch appeared out of nothing. When the researchers repeated the run with fewer cars on the same track, the uneven gaps evened out again and no crowding lasted. With all twenty-two cars the crowding always returned. The lesson drawn was that a road can be loaded past the point where small mistakes can be absorbed.",
+    "promptText": "윗글의 내용과 일치하는 것은?",
+    "choices": [
+      "Whether the crowding faded away depended on how many cars shared the track.",
+      "A wave of braking travels backward through a queue at a fairly steady speed.",
+      "Leaving a longer gap in front lets a driver soak up a wave of braking.",
+      "Signals on a slip road let cars join a motorway one at a time.",
+      "Rain makes drivers leave longer gaps, so a road carries fewer cars."
+    ],
+    "correctIndex": 0,
+    "explanation": "차를 줄여 다시 달리게 하자 어긋난 간격이 다시 고르게 펴지고 몰림이 이어지지 않았다고 한 뒤, 'With all twenty-two cars the crowding always returned'(스물두 대를 모두 넣으면 몰림은 늘 되살아났다)라고 했습니다. 두 문장을 이으면 몰림이 사라지느냐 마느냐가 주로 위의 차 수에 달렸음을 알 수 있습니다. 브레이크의 물결이 뒤로 번져 가는 속도, 앞차와 간격을 넓게 두는 일, 진입로의 신호등, 비 오는 날 줄어드는 통행량은 모두 사실이지만 이 글에는 나오지 않습니다.",
+    "translation": "2008년에 일본의 한 연구진이 운전자 스물두 명에게 둘레 230미터짜리 원형 주로를 시속 30킬로미터쯤으로, 앞뒤 간격을 고르게 유지하며 돌게 했다. 그 길에는 갈림길도, 신호도, 좁아지는 곳도 없었다. 줄은 1분이 채 안 되는 동안만 그대로 유지되었다. 그러다 어떤 운전자도 속도를 똑같이 지킬 수는 없기 때문에 간격이 어긋나기 시작했고, 한 대가 필요 이상으로 세게 브레이크를 밟자 아무것도 없던 자리에 차가 몰린 구간이 생겼다. 연구진이 같은 주로에서 차 수를 줄여 다시 달리게 하자 어긋난 간격은 다시 고르게 펴졌고 몰림은 이어지지 않았다. 스물두 대를 모두 넣으면 몰림은 늘 되살아났다. 여기서 얻은 교훈은, 길에 차가 일정 수를 넘게 실리면 작은 실수를 받아 낼 여유가 사라진다는 것이다.",
+    "vocab": [
+      {
+        "word": "junction",
+        "meaning": "갈림길, 교차로"
+      },
+      {
+        "word": "gap",
+        "meaning": "간격, 틈"
+      },
+      {
+        "word": "brake",
+        "meaning": "브레이크를 밟다"
+      },
+      {
+        "word": "stretch",
+        "meaning": "(길의) 구간"
+      },
+      {
+        "word": "out of nothing",
+        "meaning": "난데없이, 아무것도 없던 데서"
+      },
+      {
+        "word": "even out",
+        "meaning": "고르게 되다, 평평해지다"
+      },
+      {
+        "word": "absorb",
+        "meaning": "받아 내다, 흡수하다"
+      },
+      {
+        "word": "slip road",
+        "meaning": "(고속도로의) 진입로"
+      }
+    ]
+  },
+  {
+    "id": "E4-31",
+    "topicTitle": "일부러 찌그러지게 만든 차",
+    "questionType": "content_match",
+    "passageText": "Until the middle of the last century, carmakers sold strength as safety: the stiffer the body, the better. An engineer at a German firm argued the opposite. In a crash, he said, a body that refuses to bend passes the whole shock straight to the people inside. He divided the car into three parts: a hard middle cage for the passengers, with a softer end at the front and another at the back, both built to fold. Folding stretches out the time the car takes to come to rest, and a longer stop means a gentler force on the people inside. His employer applied for a patent in 1951. No car built this way left the factory until 1959, though. Today the idea is taken for granted, and the crumpled front of a wreck is read as a sign that the design did its work.",
+    "promptText": "윗글의 내용과 일치하는 것은?",
+    "choices": [
+      "Years passed between the patent for the folding body and the first car built with it.",
+      "The company that designed the three-point seat belt let its rivals use it without payment.",
+      "Head restraints were added to seats to cut neck injuries in crashes from behind.",
+      "New models have to pass crash tests before they may be sold in many countries.",
+      "Modern cars are shaped so that the engine is pushed under the floor in a crash."
+    ],
+    "correctIndex": 0,
+    "explanation": "'His employer applied for a patent in 1951'(그가 다니던 회사는 1951년에 특허를 출원했다)이라고 한 뒤, 이 방식으로 만든 차가 공장에서 나온 것은 1959년이었다고 했습니다. 두 해를 이으면 특허와 첫 차 사이에 여러 해가 걸렸음을 알 수 있습니다. 세 점식 안전띠를 만든 회사가 특허를 거저 내준 일, 머리 받침, 충돌 시험 의무, 충돌 때 엔진이 바닥 아래로 밀려 내려가게 만든 설계는 모두 사실이지만 이 글에는 나오지 않습니다.",
+    "translation": "지난 세기 중반까지 자동차 회사들은 튼튼함을 곧 안전이라고 팔았다. 차체가 단단할수록 좋다는 것이었다. 독일 회사의 한 기술자는 정반대를 주장했다. 충돌할 때 휘지 않으려는 차체는 충격을 고스란히 안에 탄 사람에게 넘긴다는 것이었다. 그는 차를 세 부분으로 나누었다. 사람이 타는 가운데는 단단한 우리처럼 만들고, 앞뒤 끝은 접히도록 만든 것이다. 접히면 차가 멈추기까지 걸리는 시간이 늘어나고, 멈추는 데 시간이 더 걸리면 몸에 걸리는 힘이 그만큼 부드러워진다. 그가 다니던 회사는 1951년에 특허를 출원했다. 그런데 이 방식으로 만든 차가 공장에서 나온 것은 1959년에 이르러서였다. 오늘날 이 생각은 당연한 것이 되었고, 사고 난 차의 찌그러진 앞부분은 설계가 제 몫을 했다는 표시로 읽힌다.",
+    "vocab": [
+      {
+        "word": "stiff",
+        "meaning": "단단한, 뻣뻣한"
+      },
+      {
+        "word": "refuse to",
+        "meaning": "~하지 않으려 하다"
+      },
+      {
+        "word": "cage",
+        "meaning": "우리처럼 단단히 둘러싼 칸"
+      },
+      {
+        "word": "fold",
+        "meaning": "접히다"
+      },
+      {
+        "word": "come to rest",
+        "meaning": "멈추어 서다"
+      },
+      {
+        "word": "apply for",
+        "meaning": "신청하다, (특허를) 출원하다"
+      },
+      {
+        "word": "take for granted",
+        "meaning": "당연하게 여기다"
+      },
+      {
+        "word": "wreck",
+        "meaning": "사고로 부서진 차, 잔해"
+      }
+    ]
+  },
+  {
+    "id": "E4-32",
+    "topicTitle": "건물 속에 매달린 쇠공",
+    "questionType": "answerable_question",
+    "passageText": "A tower in Taipei that rises more than five hundred metres has a strange guest near its top. A ball of steel weighing six hundred and sixty tonnes, built up from dozens of welded plates, hangs in the space between the eighty-seventh and ninety-second floors. It hangs on long cables, and when wind pushes the building one way, the ball lags and swings the other way, dragging the motion out of the tower. Hydraulic cylinders at the ball's base soak up what is left of the swing. The ball can travel a metre and a half at most. It has never had to go that far. Because it sits on an observation floor, visitors can walk around it and watch it move during a storm.",
+    "promptText": "윗글을 읽고 답할 수 있는 질문은?",
+    "choices": [
+      "What takes up the swing that the ball leaves behind?",
+      "Why was the ball hung near the top rather than lower down?",
+      "What is done to keep the cables from wearing through?",
+      "How much would the tower sway without the ball?",
+      "When was the tower itself finished and opened?"
+    ],
+    "correctIndex": 0,
+    "explanation": "'Hydraulic cylinders at the ball's base soak up what is left of the swing'(공 아래쪽의 유압 장치가 남은 흔들림을 받아 낸다)이라고 했으므로 공이 미처 없애지 못한 흔들림을 무엇이 맡는지는 답할 수 있습니다. 공을 왜 아래쪽이 아니라 꼭대기 가까이에 매달았는지, 줄이 닳지 않게 무엇을 하는지, 공이 없다면 탑이 얼마나 흔들릴지, 탑이 언제 완공되었는지는 이 글에 나오지 않습니다.",
+    "translation": "타이베이에 있는 높이 500미터가 넘는 탑에는 꼭대기 가까이에 이상한 손님이 하나 있다. 87층과 92층 사이 빈 공간에는 무게 660톤짜리 강철 공이 매달려 있는데, 강판 수십 장을 용접해 쌓아 만든 것이다. 공은 긴 줄에 매달려 있어서, 바람이 건물을 한쪽으로 밀면 공은 한 박자 늦게 반대쪽으로 흔들리며 건물의 움직임을 빼앗아 간다. 공 아래쪽의 유압 장치가 남은 흔들림을 받아 낸다. 공이 움직일 수 있는 거리는 많아야 1.5미터다. 지금까지 그렇게까지 움직인 적은 없다. 공이 전망대 층 안에 자리하고 있어서, 찾아온 사람들은 공 둘레를 걸으며 폭풍이 칠 때 공이 움직이는 모습을 볼 수 있다.",
+    "vocab": [
+      {
+        "word": "guest",
+        "meaning": "손님"
+      },
+      {
+        "word": "weld",
+        "meaning": "용접하다"
+      },
+      {
+        "word": "lag",
+        "meaning": "뒤처지다, 한 박자 늦다"
+      },
+      {
+        "word": "drag out of",
+        "meaning": "~에서 끌어내다, 빼내다"
+      },
+      {
+        "word": "hydraulic",
+        "meaning": "기름의 힘으로 움직이는, 유압의"
+      },
+      {
+        "word": "soak up",
+        "meaning": "빨아들이다, 흡수하다"
+      },
+      {
+        "word": "at most",
+        "meaning": "많아야, 기껏해야"
+      },
+      {
+        "word": "observation floor",
+        "meaning": "전망대 층"
+      }
+    ]
+  },
+  {
+    "id": "E4-33",
+    "topicTitle": "날개 끝이 꺾인 비행기",
+    "questionType": "cause",
+    "passageText": "Under a wing the air is at higher pressure than the air above, and at the tip the air from the two sides meets. The air curls around the end and trails behind the aircraft as a spinning tube. Setting that tube spinning costs energy, and the engines have to supply it. In the 1970s an engineer at NASA proposed a small fin standing up at the tip to break up the curl. Flight tests on a large tanker aircraft measured several per cent less drag in the cruise, and airlines began bolting the fins onto wings already built. Yet many short-range aircraft still fly without them. The fin and the stronger wing it needs add weight that has to be carried on every flight, and on short hops that weight costs more than the fin saves.",
+    "promptText": "윗글에서 날개 끝 장치를 달지 않은 비행기가 많은 까닭으로 든 것은?",
+    "choices": [
+      "The added weight of the fin and its wing costs more than it saves.",
+      "Short flights spend little of their time at cruising height.",
+      "A longer and more slender wing can cut the same amount of drag without a tip device.",
+      "Airports set a limit on how wide a wing may be when parked at a gate.",
+      "A lightly loaded wing makes a weaker curl at the tip to begin with."
+    ],
+    "correctIndex": 0,
+    "explanation": "'The fin and the stronger wing it needs add weight that has to be carried on every flight'(지느러미와 그것을 받치느라 튼튼해진 날개의 무게는 비행마다 싣고 다녀야 한다)이라고 하고, 가까운 거리에서는 그 무게가 지느러미가 아껴 주는 것보다 더 든다고 했습니다. 짧은 비행은 순항 높이에서 보내는 시간이 적다는 것, 더 길고 가는 날개로도 같은 만큼 항력을 줄일 수 있다는 것, 공항의 날개 폭 제한, 가볍게 실은 날개일수록 끝의 소용돌이가 약하다는 것도 모두 사실이지만 이 글에는 나오지 않습니다.",
+    "translation": "날개 아래쪽의 공기는 위쪽보다 더 세게 눌리고, 날개 끝에서 양쪽 공기가 만난다. 공기는 날개 끝을 돌아 감기면서 비행기 뒤로 소용돌이 기둥이 되어 끌려간다. 그 기둥을 돌리는 데는 힘이 들고, 그 힘은 엔진이 내야 한다. 1970년대에 미국 항공 우주국의 한 기술자가 이 감김을 흩뜨리려고 날개 끝에 세워 붙이는 작은 지느러미를 내놓았다. 커다란 급유기로 한 비행 시험에서 순항 중 항력이 몇 퍼센트 줄어드는 것이 측정되었고, 항공사들은 이미 만들어 놓은 날개에 이 지느러미를 덧붙이기 시작했다. 그런데도 가까운 거리를 오가는 비행기 가운데에는 이것을 달지 않은 것이 많다. 지느러미와 그것을 받치느라 튼튼해진 날개의 무게는 비행마다 싣고 다녀야 하는데, 가까운 거리를 오갈 때는 그 무게가 지느러미가 아껴 주는 것보다 더 들기 때문이다.",
+    "vocab": [
+      {
+        "word": "curl",
+        "meaning": "감기다, 소용돌이치다"
+      },
+      {
+        "word": "trail behind",
+        "meaning": "뒤로 끌려가다"
+      },
+      {
+        "word": "drag",
+        "meaning": "항력, 공기가 잡아끄는 힘"
+      },
+      {
+        "word": "fin",
+        "meaning": "지느러미 모양의 작은 날개"
+      },
+      {
+        "word": "cruise",
+        "meaning": "순항, 일정한 높이와 속도로 나는 구간"
+      },
+      {
+        "word": "bolt onto",
+        "meaning": "볼트로 덧붙이다"
+      },
+      {
+        "word": "tip",
+        "meaning": "(날개의) 끝"
+      },
+      {
+        "word": "hop",
+        "meaning": "짧은 거리의 비행"
+      }
+    ]
+  },
+  {
+    "id": "E4-34",
+    "topicTitle": "스스로 아무는 콘크리트",
+    "questionType": "content_match",
+    "passageText": "Concrete cracks as it ages, and once a crack is open, water and air reach the steel bars inside. The steel rusts, swells and pushes the crack wider. A researcher in Delft chose bacteria that leave limestone behind as they feed, and shut their spores, with their food, inside clay beads a few millimetres across, so that mixing would not wake them. A crack that reaches a bead lets water in; the spores revive and turn the food to stone, which grows across the gap. Openings up to about eight tenths of a millimetre have been closed this way. In a warm laboratory a crack can be closed in about three weeks, while outdoors, in colder weather, it takes longer. Dry concrete keeps the spores alive for decades.",
+    "promptText": "윗글의 내용과 일치하는 것은?",
+    "choices": [
+      "Cold slows the repair down, and the spores can lie waiting for years.",
+      "The bacteria were found in lakes where the water is strongly alkaline.",
+      "A liquid form of the same treatment can be sprayed onto cracks already open.",
+      "Concrete made this way costs about twice as much as ordinary concrete.",
+      "The same bacteria are used to bind loose sand into a solid block."
+    ],
+    "correctIndex": 0,
+    "explanation": "'while outdoors, in colder weather, it takes longer'(바깥의 추운 날씨에서는 더 오래 걸린다)라고 하고, 마른 콘크리트 속에서 홀씨가 수십 년을 살아 있다고 했습니다. 두 문장을 이으면 추울수록 더디고, 부은 지 여러 해가 지난 뒤에도 메워질 수 있음을 알 수 있습니다. 이 세균을 찾아낸 곳, 같은 처리를 액체로 만들어 갈라진 틈에 뿌려 쓰는 방법, 값이 갑절쯤 든다는 것, 같은 세균으로 모래를 굳힌다는 것은 모두 사실이지만 이 글에는 나오지 않습니다.",
+    "translation": "콘크리트는 나이를 먹으며 갈라지고, 틈이 한번 벌어지면 물과 공기가 속에 든 철근에 닿는다. 철근은 녹슬며 부풀어 올라 틈을 더 벌린다. 델프트의 한 연구자는 먹이를 먹으면서 석회암을 남기는 세균을 골라, 그 홀씨와 먹이를 함께 지름 몇 밀리미터짜리 점토 알갱이 속에 가두었다. 섞는 동안에 세균이 깨어나지 않게 하려는 것이었다. 틈이 알갱이까지 닿으면 물이 들어오고, 잠들어 있던 홀씨가 깨어나 먹이를 돌로 바꾸며, 그 돌이 틈을 가로질러 자란다. 이런 방식으로 0.8밀리미터쯤까지 벌어진 틈을 메운 일이 있다. 따뜻한 실험실에서는 세 주쯤이면 틈이 메워지지만, 바깥의 추운 날씨에서는 더 오래 걸린다. 마른 콘크리트 속에서 홀씨는 수십 년을 살아 있다.",
+    "vocab": [
+      {
+        "word": "crack",
+        "meaning": "갈라지다; 갈라진 틈"
+      },
+      {
+        "word": "rust",
+        "meaning": "녹슬다"
+      },
+      {
+        "word": "swell",
+        "meaning": "부풀다, 불어나다"
+      },
+      {
+        "word": "bead",
+        "meaning": "작은 알갱이, 구슬"
+      },
+      {
+        "word": "spore",
+        "meaning": "홀씨, 포자"
+      },
+      {
+        "word": "revive",
+        "meaning": "되살아나다"
+      },
+      {
+        "word": "limestone",
+        "meaning": "석회암, 석회석"
+      },
+      {
+        "word": "let in",
+        "meaning": "들어오게 하다, 안으로 들이다"
+      }
+    ]
+  },
+  {
+    "id": "E4-35",
+    "topicTitle": "사람을 찾아오는 모기",
+    "questionType": "not_mentioned",
+    "passageText": "A mosquito that bites is always a female; she needs the protein in blood to form her eggs. She does not find you by chance. From about ten metres away she picks up the rise in carbon dioxide that a breathing body leaves in the air, and turns to fly up the trail. Closer in she begins to use her eyes, steering toward dark shapes that stand against a pale background. In the last stretch, a handspan or so from the skin, warmth finally counts, along with the smells that sweat leaves behind. Without the gas to start her off, the dark shape alone would not draw her. It is the order in which the signals arrive, one handing her over to the next, that brings her to a landing.",
+    "promptText": "윗글에서 설명하지 않은 것은?",
+    "choices": [
+      "The gas is picked up by sense organs beside the mosquito's mouth.",
+      "Dark shapes against a pale background draw her in close.",
+      "Warmth comes into play just before she reaches the skin.",
+      "It is the female that takes blood, and she needs it for her eggs.",
+      "The dark shape alone does not draw her without the gas."
+    ],
+    "correctIndex": 0,
+    "explanation": "모기가 이산화탄소를 알아채는 곳은 입 옆에 붙은 감각 기관이라는 것이 사실이지만, 이 글에는 무엇으로 알아채는지가 나오지 않습니다. 밝은 배경 앞의 어두운 형체를 보고 가까이 다가온다는 것, 따뜻함은 살갗에 닿기 직전에야 끼어든다는 것, 피를 빠는 쪽은 암컷이며 알을 만들려고 그런다는 것, 이산화탄소가 먼저 이끌어 주지 않으면 어두운 형체만으로는 암컷을 끌어당기지 못한다는 것은 모두 이 글에서 설명했습니다.",
+    "translation": "사람을 무는 모기는 모두 암컷이다. 알을 만드는 데 피 속의 단백질이 필요하기 때문이다. 암컷은 우연히 사람을 찾아내는 것이 아니다. 10미터쯤 떨어진 곳에서 숨 쉬는 몸이 공기 중에 남긴 이산화탄소의 높아진 농도를 알아채고, 그 자취를 거슬러 날아온다. 가까워지면 이번에는 눈을 쓰기 시작해, 밝은 배경 앞에 서 있는 어두운 형체 쪽으로 방향을 잡는다. 살갗에서 한 뼘쯤 떨어진 마지막 구간에 이르러서야 따뜻함이, 그리고 땀이 남긴 냄새가 끼어든다. 이산화탄소가 먼저 이끌어 주지 않으면 어두운 형체만으로는 암컷을 끌어당기지 못한다. 앞의 신호가 뒤의 신호에게 넘겨주듯 차례로 이어지는 그 순서가 암컷을 내려앉게 한다.",
+    "vocab": [
+      {
+        "word": "protein",
+        "meaning": "단백질"
+      },
+      {
+        "word": "pick up",
+        "meaning": "알아채다, 감지하다"
+      },
+      {
+        "word": "trail",
+        "meaning": "자취, 냄새가 남긴 길"
+      },
+      {
+        "word": "count",
+        "meaning": "중요하다, 셈에 들다"
+      },
+      {
+        "word": "steer toward",
+        "meaning": "~쪽으로 방향을 잡다"
+      },
+      {
+        "word": "handspan",
+        "meaning": "한 뼘"
+      },
+      {
+        "word": "stretch",
+        "meaning": "(이어진) 구간, 구역"
+      },
+      {
+        "word": "hand over",
+        "meaning": "넘겨주다"
+      }
+    ]
+  },
+  {
+    "id": "E4-36",
+    "topicTitle": "바다 밑 기름을 두고 벌인 입찰",
+    "questionType": "not_mentioned",
+    "passageText": "Nobody can see how much oil lies under a patch of seabed. Before an auction each company sends out its own surveyors, and the estimates that come back scatter around the true figure, some above it and some below. The block goes to whoever bids most, which is usually whoever guessed highest, and the highest guess sits above the truth more often than not. So the very act of winning carries bad news about a company's own estimate. Three petroleum engineers wrote this up in 1971, after years of poor returns on blocks their industry had fought hardest for. Their advice was to offer below one's own figure, and lower still when more rivals are in the room. Economists later ran the same kind of auction with students bidding for a jar of coins. The average winning bid came to more than the coins were worth.",
+    "promptText": "윗글에서 설명하지 않은 것은?",
+    "choices": [
+      "The same trap has been found in bidding for baseball players and for whole companies.",
+      "The winning company is usually the one whose surveyors guessed highest.",
+      "The advice was to offer below one's own figure, and lower still when more rivals bid.",
+      "The average winning bid topped what the coins were worth.",
+      "The estimates that come back sit both above and below the true amount."
+    ],
+    "correctIndex": 0,
+    "explanation": "같은 함정이 야구 선수를 데려오는 계약이나 회사를 통째로 사들이는 일에서도 확인되었지만, 이 글에는 다른 분야의 이야기가 나오지 않습니다. 대개 가장 높게 어림한 회사가 낙찰받는다는 것, 자기 어림값보다 낮게 써내고 경쟁자가 많을수록 더 깎으라는 조언, 평균 낙찰가가 동전을 모은 값보다 높았다는 것, 추정치가 참값의 위아래로 흩어진다는 것은 모두 이 글에서 설명했습니다.",
+    "translation": "바다 밑 어느 구역에 기름이 얼마나 묻혀 있는지는 아무도 볼 수 없다. 입찰에 앞서 회사마다 저마다 조사원을 내보내고, 돌아오는 추정치는 참값을 둘러싸고 흩어져 어떤 것은 위로, 어떤 것은 아래로 벗어난다. 구역은 가장 많이 써낸 쪽에게 돌아가는데, 그쪽은 대개 가장 높게 어림잡은 쪽이고, 가장 높은 어림은 참값보다 위에 있는 경우가 더 많다. 그러니 낙찰되었다는 사실 자체가 제 추정치에 대한 나쁜 소식을 안고 있다. 석유 기술자 세 사람이 1971년에 이 이야기를 정리했는데, 업계가 가장 치열하게 다투었던 구역에서 여러 해 동안 벌이가 시원치 않았던 끝이었다. 이들의 조언은 자기가 어림한 값보다 낮게 써내고, 경쟁자가 많을수록 더 많이 깎으라는 것이었다. 훗날 경제학자들은 학생들에게 동전이 든 병을 놓고 같은 경매를 시켜 보았다. 평균 낙찰가는 병에 든 동전을 모은 값보다 높았다.",
+    "vocab": [
+      {
+        "word": "seabed",
+        "meaning": "바다 밑, 해저"
+      },
+      {
+        "word": "surveyor",
+        "meaning": "조사원, 측량 기사"
+      },
+      {
+        "word": "estimate",
+        "meaning": "추정치, 어림값"
+      },
+      {
+        "word": "scatter",
+        "meaning": "흩어지다"
+      },
+      {
+        "word": "block",
+        "meaning": "구획, (바다 밑) 광구"
+      },
+      {
+        "word": "bid",
+        "meaning": "값을 써내다; 입찰"
+      },
+      {
+        "word": "returns",
+        "meaning": "수익, 벌이"
+      },
+      {
+        "word": "more often than not",
+        "meaning": "대개, 열에 예닐곱은"
+      }
+    ]
+  },
+  {
+    "id": "E4-37",
+    "topicTitle": "햄버거 값으로 재는 것",
+    "questionType": "answerable_question",
+    "passageText": "In 1986 a British magazine printed a table nobody expected to last. It lined up the price of one hamburger in a string of countries, converted each into dollars, and asked which currencies looked dear and which looked cheap. The piece was meant to poke fun at the heavy language of exchange-rate economics. Readers took it seriously, and the table has been worked out afresh ever since, now twice a year. Its weakness is well known to its own authors. Much of what you pay for a burger is rent for the shop and wages for the staff, and neither can be shipped abroad to even the price out. Poorer countries have cheaper rent and cheaper labour, so their burgers look underpriced whatever their currency is doing. In 2011 the magazine added a second table that allows for how rich each country is.",
+    "promptText": "윗글을 읽고 답할 수 있는 질문은?",
+    "choices": [
+      "What did the magazine add to the comparison in 2011?",
+      "How is a country picked for a place in the table?",
+      "Why does a cheap burger mean a cheap currency?",
+      "How many countries does the table cover today?",
+      "Which currency has come out cheapest over the years?"
+    ],
+    "correctIndex": 0,
+    "explanation": "'In 2011 the magazine added a second table that allows for how rich each country is'(2011년에 잡지는 나라마다 얼마나 잘사는지를 감안한 두 번째 표를 덧붙였다)라고 했으므로 2011년에 무엇을 더했는지는 답할 수 있습니다. 어떤 기준으로 나라를 골라 표에 넣는지, 햄버거가 싸면 왜 그 나라 돈이 싼 것이 되는지, 오늘날 몇 나라를 다루는지, 어느 나라 돈이 가장 싸게 나왔는지는 이 글에 나오지 않습니다.",
+    "translation": "1986년에 영국의 한 잡지가 오래갈 줄 몰랐던 표 하나를 실었다. 여러 나라의 햄버거 한 개 값을 나란히 놓고 각각 달러로 바꾼 다음, 어느 나라 돈이 비싸 보이고 어느 나라 돈이 싸 보이는지를 물은 표였다. 환율 경제학의 무거운 말투를 놀리려고 만든 글이었다. 그런데 독자들이 진지하게 받아들였고, 그 뒤로 이 표는 줄곧 새로 계산되어 나왔으며 지금은 한 해 두 번씩 나온다. 이 표의 약점은 만드는 사람들 자신이 잘 안다. 햄버거 값에는 가게 임대료와 일하는 사람의 품삯이 크게 들어 있는데, 이 둘은 값을 고르게 맞추려고 외국으로 실어 보낼 수가 없다. 가난한 나라는 임대료도 품삯도 싸기 때문에, 그 나라 돈이 어떤 상태든 햄버거는 싸 보인다. 2011년에 잡지는 나라마다 얼마나 잘사는지를 감안한 두 번째 표를 덧붙였다.",
+    "vocab": [
+      {
+        "word": "line up",
+        "meaning": "나란히 놓다"
+      },
+      {
+        "word": "convert",
+        "meaning": "바꾸다, 환산하다"
+      },
+      {
+        "word": "dear",
+        "meaning": "비싼"
+      },
+      {
+        "word": "currency",
+        "meaning": "화폐, 통화"
+      },
+      {
+        "word": "exchange rate",
+        "meaning": "환율"
+      },
+      {
+        "word": "rent",
+        "meaning": "임대료, 세"
+      },
+      {
+        "word": "even out",
+        "meaning": "고르게 맞추다"
+      },
+      {
+        "word": "allow for",
+        "meaning": "~을 감안하다, 고려하다"
+      }
+    ]
+  },
+  {
+    "id": "E4-38",
+    "topicTitle": "모두의 것을 모두가 쓸 때",
+    "questionType": "not_mentioned",
+    "passageText": "A famous essay of 1968 described a pasture open to all. Each herder keeps the whole gain from an extra animal, while the cost of the thinner grass is spread over everyone, so the animals keep coming until the grass is gone. The essay was read as proof that such land must be fenced off and sold, or else run by a government. Decades later a political scientist went and looked. In Swiss mountain meadows, Japanese village woods and Spanish irrigation ditches there were arrangements that had held for hundreds of years. The users had written their own rules on who could take what. They watched one another, and the watchers were chosen from among themselves. Punishment for breaking a rule started small and grew heavier with each repeat. In 2009 that work won the Nobel Memorial Prize in Economics.",
+    "promptText": "윗글에서 설명하지 않은 것은?",
+    "choices": [
+      "The users had a cheap way of settling quarrels among themselves.",
+      "Those who watched over the rules were drawn from the users.",
+      "Punishment grew heavier each time the same rule was broken again.",
+      "The essay was taken as proof that such land must be sold or state-run.",
+      "Arrangements in Swiss meadows had held for hundreds of years."
+    ],
+    "correctIndex": 0,
+    "explanation": "이런 마을에서는 다툼이 생겼을 때 돈과 시간을 크게 들이지 않고 풀 자리가 마련되어 있었다는 것이 함께 꼽히는 조건이지만, 이 글에는 다툼을 어떻게 풀었는지가 나오지 않습니다. 지켜보는 사람을 쓰는 사람들 가운데에서 뽑았다는 것, 같은 규칙을 다시 어길수록 벌이 무거워졌다는 것, 1968년의 글이 그런 땅은 팔거나 나라가 맡아야 한다는 증거로 읽혔다는 것, 스위스 산속 목초지의 방식이 수백 년 동안 이어졌다는 것은 모두 이 글에서 설명했습니다.",
+    "translation": "1968년의 유명한 글 하나는 누구나 들어갈 수 있는 목초지를 그렸다. 가축을 한 마리 더 들이면 그 이득은 주인이 통째로 가져가지만 풀이 줄어드는 손해는 모두에게 나뉘므로, 풀이 다 없어질 때까지 가축은 계속 늘어난다. 이 글은 그런 땅은 울타리를 쳐서 팔아 버리거나 아니면 정부가 맡아 다스려야 한다는 증거로 읽혔다. 수십 년 뒤 한 정치학자가 직접 찾아가 보았다. 스위스 산속 목초지, 일본 마을의 숲, 에스파냐의 물길에는 수백 년 동안 유지되어 온 방식들이 있었다. 쓰는 사람들이 누가 무엇을 얼마나 가져갈 수 있는지를 스스로 정해 놓고 있었다. 서로를 지켜보았고, 지켜보는 사람도 자기들 가운데에서 뽑았다. 규칙을 어겼을 때의 벌은 처음에는 가볍다가 되풀이될수록 무거워졌다. 이 연구는 2009년에 노벨 경제학상을 받았다.",
+    "vocab": [
+      {
+        "word": "pasture",
+        "meaning": "목초지, 풀밭"
+      },
+      {
+        "word": "herder",
+        "meaning": "가축을 치는 사람"
+      },
+      {
+        "word": "fence off",
+        "meaning": "울타리를 쳐서 막다"
+      },
+      {
+        "word": "run by",
+        "meaning": "~이 맡아 다스리는"
+      },
+      {
+        "word": "meadow",
+        "meaning": "풀밭, 목초지"
+      },
+      {
+        "word": "irrigation ditch",
+        "meaning": "물길, 논밭에 물을 대는 도랑"
+      },
+      {
+        "word": "arrangement",
+        "meaning": "(일을 꾸려 가는) 방식, 약속"
+      },
+      {
+        "word": "hold",
+        "meaning": "유지되다, 버티다"
+      }
+    ]
+  },
+  {
+    "id": "E4-39",
+    "topicTitle": "남극 위 하늘의 구멍",
+    "questionType": "not_mentioned",
+    "passageText": "In 1985 three British scientists reported that the air above their Antarctic station held far less ozone each spring than it once had, and had been losing it for years. Their instrument was an old one, pointed at the sky from the ground. A satellite had been watching the same air since 1978. Its program, though, had been set to treat any reading below a certain level as a fault, so the very low numbers over the pole were put aside as suspect. Once their paper appeared, the stored numbers were looked at again and the loss was there in them too. Two years later governments agreed to cut back the chemicals blamed for it. The ozone layer over Antarctica is now expected to return to its old state some time in the 2060s.",
+    "promptText": "윗글에서 설명하지 않은 것은?",
+    "choices": [
+      "The thinning lets more of the sun's harmful rays reach the ground.",
+      "A satellite program had been set to treat very low readings as faults.",
+      "The scientists who reported it were using an old instrument on the ground.",
+      "Governments agreed two years later to cut back the chemicals.",
+      "A return to the old state is not expected before the 2060s."
+    ],
+    "correctIndex": 0,
+    "explanation": "오존이 얇아지면 해로운 자외선이 더 많이 땅에 닿는다는 것이 이 이야기와 늘 함께 나오는 사실이지만, 이 글에는 그것이 왜 문제가 되는지가 나오지 않습니다. 인공위성 프로그램이 아주 낮은 값을 고장으로 보도록 맞춰져 있었다는 것, 보고한 과학자들이 땅에서 쓰던 오래된 장비를 썼다는 것, 두 해 뒤 각국이 그 화학 물질을 줄이기로 했다는 것, 예전 상태로 돌아오는 시기가 2060년대로 예상된다는 것은 모두 이 글에서 설명했습니다.",
+    "translation": "1985년에 영국 과학자 세 사람이, 남극 관측소 위쪽 공기에 든 오존이 봄마다 예전보다 훨씬 적으며 여러 해에 걸쳐 줄어 왔다고 알렸다. 그들이 쓴 장비는 땅에서 하늘을 향해 세워 둔 오래된 것이었다. 인공위성은 1978년부터 같은 하늘을 지켜보고 있었다. 그런데 그 처리 프로그램은 어떤 값보다 낮은 측정값은 고장으로 보라고 맞춰져 있었기 때문에, 남극 위의 아주 낮은 수치들은 의심스러운 것으로 제쳐 두어졌다. 논문이 나오고 나서야 쌓여 있던 수치들을 다시 들여다보았고, 거기에도 그 감소가 그대로 남아 있었다. 두 해 뒤 각국 정부는 원인으로 지목된 화학 물질을 줄여 나가기로 합의했다. 남극 위의 오존층이 예전 상태로 돌아오는 때는 2060년대 어느 무렵으로 예상된다.",
+    "vocab": [
+      {
+        "word": "ozone",
+        "meaning": "오존"
+      },
+      {
+        "word": "instrument",
+        "meaning": "측정 장비, 기구"
+      },
+      {
+        "word": "treat A as B",
+        "meaning": "A를 B로 여기다"
+      },
+      {
+        "word": "fault",
+        "meaning": "고장, 오류"
+      },
+      {
+        "word": "put aside",
+        "meaning": "제쳐 두다, 밀어 두다"
+      },
+      {
+        "word": "suspect",
+        "meaning": "의심스러운"
+      },
+      {
+        "word": "blame for",
+        "meaning": "~의 원인으로 지목하다"
+      },
+      {
+        "word": "layer",
+        "meaning": "층"
+      }
+    ]
+  },
+  {
+    "id": "E4-40",
+    "topicTitle": "끝내지 못한 일",
+    "questionType": "answerable_question",
+    "passageText": "The story starts in a Berlin cafe, where a professor noticed that a waiter could recite every unpaid order but forgot them as soon as the bill was paid. One of his students carried the idea into the laboratory. In 1927 she gave about thirty people some twenty short puzzles and handicrafts, each a few minutes long. Each person was allowed to finish half of them; the other half she stopped at the moment the person seemed most absorbed. Afterwards she asked what they had been doing, and the unfinished jobs came back more readily. Textbooks repeated the finding for the rest of the century. When later researchers gathered the studies that followed hers, the gap in recall had almost vanished. What has survived is different: an unfinished job keeps tugging at the attention, and people go back to it as soon as they get the chance.",
+    "promptText": "윗글을 읽고 답할 수 있는 질문은?",
+    "choices": [
+      "About how many short tasks was each person given?",
+      "Why does an unfinished job keep tugging at the attention?",
+      "How did she decide when someone was most absorbed?",
+      "How were the people for the study chosen?",
+      "How long after her study were the later ones gathered?"
+    ],
+    "correctIndex": 0,
+    "explanation": "'she gave about thirty people some twenty short puzzles and handicrafts'(서른 명쯤에게 짧은 퍼즐과 손일을 스무 가지쯤 시켰다)라고 했으므로 한 사람에게 몇 가지를 시켰는지는 답할 수 있습니다. 끝내지 못한 일이 왜 자꾸 마음을 잡아끄는지, 가장 몰두한 때를 어떻게 알아보았는지, 참가할 사람을 어떻게 골랐는지, 뒤의 연구들을 얼마 만에 모았는지는 이 글에 나오지 않습니다.",
+    "translation": "이야기는 베를린의 한 카페에서 시작된다. 어느 교수가, 웨이터는 아직 값을 치르지 않은 주문을 줄줄 외우다가 계산이 끝나는 순간 그것을 잊어버린다는 것을 알아챘다. 그의 제자 한 사람이 이 실마리를 실험실로 가져갔다. 1927년에 그 제자는 서른 명쯤에게 몇 분짜리 짧은 퍼즐과 손일을 스무 가지쯤 시켰다. 사람마다 그 절반은 끝까지 하게 두었고, 나머지 절반은 가장 몰두한 듯 보이는 순간에 멈추게 했다. 그러고 나서 무엇을 했는지 물었더니 끝내지 못한 일이 더 쉽게 떠올랐다. 교과서들은 이 결과를 20세기가 끝날 때까지 되풀이해 실었다. 뒷사람들이 그 뒤에 나온 연구들을 모아 보았을 때 기억의 차이는 거의 사라져 있었다. 살아남은 것은 다른 쪽이다. 끝내지 못한 일은 자꾸 마음을 잡아끌고, 사람들은 기회가 오는 대로 그 일로 돌아간다.",
+    "vocab": [
+      {
+        "word": "recite",
+        "meaning": "줄줄 외다, 읊다"
+      },
+      {
+        "word": "come back",
+        "meaning": "(기억이) 되살아나다, 다시 떠오르다"
+      },
+      {
+        "word": "carry into",
+        "meaning": "~로 가지고 들어가다"
+      },
+      {
+        "word": "handicraft",
+        "meaning": "손으로 하는 작업"
+      },
+      {
+        "word": "absorbed",
+        "meaning": "몰두한, 푹 빠진"
+      },
+      {
+        "word": "tug at",
+        "meaning": "잡아끌다"
+      },
+      {
+        "word": "recall",
+        "meaning": "기억해 냄; 기억해 내다"
+      }
+    ]
+  },
+  {
+    "id": "E4-41",
+    "topicTitle": "손가락으로 낸 박자",
+    "questionType": "not_mentioned",
+    "passageText": "A student at Stanford built a game out of two chairs and a table. One player was handed a list of tunes that everybody knows, 'Happy Birthday' and a national anthem and that sort of thing, chose one, and tapped out its rhythm with a finger. The other player had to name it. Before each turn the tapper was asked how likely the listener was to get it right, and the usual answer was about one in two. Out of a hundred and twenty tunes, three were named. The difference between those two numbers has an ordinary cause. While the finger moves, the tapper hears the whole tune, words and all; the listener hears a run of taps with nothing behind them. Knowing a thing makes it hard to picture not knowing it.",
+    "promptText": "윗글에서 설명하지 않은 것은?",
+    "choices": [
+      "Writers meet the same trouble with words their readers do not know.",
+      "The tapper guessed the listener would get it about half the time.",
+      "Three tunes out of a hundred and twenty were named.",
+      "The tapper hears the tune in full while the finger moves.",
+      "The tunes came from a list of songs that most people know."
+    ],
+    "correctIndex": 0,
+    "explanation": "글 쓰는 사람도 읽는 이가 모르는 낱말을 두고 같은 어려움을 겪지만, 이 글에는 이 일이 글쓰기에서 어떻게 나타나는지가 나오지 않습니다. 두드리는 쪽이 상대가 맞힐 가능성을 절반쯤으로 보았다는 것, 백스무 곡 가운데 세 곡이 맞혀졌다는 것, 손가락이 움직이는 동안 두드리는 사람 머릿속에서는 노래 전체가 울린다는 것, 누구나 아는 노래 목록에서 골랐다는 것은 모두 이 글에서 설명했습니다.",
+    "translation": "스탠퍼드의 한 학생이 의자 둘과 탁자 하나로 놀이를 하나 만들었다. 한 사람에게는 생일 축하 노래나 국가처럼 누구나 아는 노래 목록을 주고, 그 가운데 하나를 골라 손가락으로 그 가락의 박자를 두드리게 했다. 다른 사람은 그 노래를 알아맞혀야 했다. 두드리기 전마다 두드리는 사람에게 상대가 맞힐 가능성이 얼마나 되겠느냐고 물었는데, 대개 둘에 하나쯤이라고 답했다. 노래 백스무 곡 가운데 이름이 맞혀진 것은 세 곡이었다. 이 차이에는 평범한 까닭이 있다. 손가락이 움직이는 동안 두드리는 사람의 머릿속에서는 가사까지 붙은 노래 전체가 울리지만, 듣는 사람에게는 아무것도 붙어 있지 않은 두드림만 들린다. 무언가를 알고 나면 모르는 상태를 떠올리기가 어려워진다.",
+    "vocab": [
+      {
+        "word": "hand",
+        "meaning": "건네주다"
+      },
+      {
+        "word": "tune",
+        "meaning": "가락, 곡"
+      },
+      {
+        "word": "anthem",
+        "meaning": "국가, 찬가"
+      },
+      {
+        "word": "tap out",
+        "meaning": "두드려 내다"
+      },
+      {
+        "word": "turn",
+        "meaning": "차례"
+      },
+      {
+        "word": "a run of",
+        "meaning": "줄지어 이어지는"
+      },
+      {
+        "word": "tap",
+        "meaning": "가볍게 두드리는 소리"
+      },
+      {
+        "word": "picture",
+        "meaning": "머릿속에 그리다, 떠올리다"
+      }
+    ]
+  },
+  {
+    "id": "E4-42",
+    "topicTitle": "여럿이 듣고 있을 때",
+    "questionType": "not_mentioned",
+    "passageText": "In 1968 two psychologists sat students in separate rooms and let them talk over an intercom, one at a time. Partway through, one of the voices, which was really a recording, began to sound as though its owner were having a fit. Of the students who believed nobody else could hear it, about eight in ten went for help before the fit was over. Of those who believed four others were listening too, about three in ten did. Since no one could see anybody else, embarrassment could not explain the drop. The researchers took it to mean that the duty to act had been split among everyone it fell on. The study had been prompted by a newspaper account of neighbours who watched a murder and did nothing, an account later shown to be mostly wrong.",
+    "promptText": "윗글에서 설명하지 않은 것은?",
+    "choices": [
+      "Those who took part were told afterwards that the emergency was staged.",
+      "About three in ten of those who thought four others were listening helped.",
+      "The students were kept where they could not see one another.",
+      "A newspaper account that started the research was later found wrong.",
+      "The duty to help was read as being split among those who heard it."
+    ],
+    "correctIndex": 0,
+    "explanation": "이런 실험에서는 끝난 뒤 참가자에게 사실은 꾸며 낸 상황이었다고 알려 주는 것이 원칙이지만, 이 글에는 그 이야기가 나오지 않습니다. 넷이 더 듣는다고 믿은 학생 가운데 열에 셋쯤이 도우러 갔다는 것, 서로를 볼 수 없게 했다는 것, 연구의 계기가 된 신문 기사가 뒷날 사실이 아니었음이 밝혀졌다는 것, 나서야 할 책임이 사람 수만큼 갈라진 것으로 보았다는 것은 모두 이 글에서 설명했습니다.",
+    "translation": "1968년에 심리학자 두 사람이 학생들을 따로따로 방에 앉히고 인터폰으로 한 사람씩 돌아가며 이야기하게 했다. 도중에 목소리 하나가, 사실은 녹음이었는데, 발작을 일으킨 것처럼 들리기 시작했다. 그 소리를 들을 사람이 자기밖에 없다고 믿은 학생은 열에 여덟쯤이 발작이 끝나기 전에 도움을 청하러 나갔다. 다른 네 사람도 함께 듣고 있다고 믿은 학생은 열에 셋쯤이었다. 서로를 볼 수 없었으니 창피함으로는 이 줄어듦을 설명할 수 없다. 연구자들은 이것을 나서야 할 책임이 그것을 나눠 진 사람 수만큼 갈라진 것으로 보았다. 이 연구는 이웃들이 살인을 보고도 아무것도 하지 않았다는 신문 기사에서 비롯되었는데, 그 기사는 뒷날 대부분 사실이 아닌 것으로 밝혀졌다.",
+    "vocab": [
+      {
+        "word": "intercom",
+        "meaning": "인터폰, 구내 통화 장치"
+      },
+      {
+        "word": "partway through",
+        "meaning": "도중에"
+      },
+      {
+        "word": "fit",
+        "meaning": "발작"
+      },
+      {
+        "word": "embarrassment",
+        "meaning": "창피함, 쑥스러움"
+      },
+      {
+        "word": "drop",
+        "meaning": "줄어듦, 감소"
+      },
+      {
+        "word": "split among",
+        "meaning": "여럿에게 나뉘다, 갈라 맡다"
+      },
+      {
+        "word": "prompt",
+        "meaning": "~하게 만들다, 계기가 되다"
+      },
+      {
+        "word": "account",
+        "meaning": "이야기, 보도"
+      }
+    ]
+  },
+  {
+    "id": "E4-43",
+    "topicTitle": "파랑을 둘로 나눈 말",
+    "questionType": "not_mentioned",
+    "passageText": "Russian has no single word that covers what English calls blue. Lighter shades are goluboy and darker ones siniy, and the two are kept as far apart as pink is from red in English. In 2007 researchers put three squares on a screen, one above and two below, and asked which of the lower pair matched the one on top. Russian speakers answered faster when the lower squares fell on opposite sides of the goluboy and siniy line than when both lay on the same side. English speakers, shown the same squares, gained nothing from that line. The head start disappeared when the Russian speakers had to hold a string of numbers in mind at the same time. Holding a shape in mind instead left the head start untouched.",
+    "promptText": "윗글에서 설명하지 않은 것은?",
+    "choices": [
+      "The difference was larger when the two shades were hard to tell apart.",
+      "Holding a row of numbers in mind wiped out the Russian advantage.",
+      "English speakers shown the same squares gained nothing from the split.",
+      "People were asked which of two lower squares matched the one above.",
+      "Russian keeps its lighter and darker blues as separate colours."
+    ],
+    "correctIndex": 0,
+    "explanation": "두 빛깔이 비슷해서 가려내기 어려울수록 차이가 더 크게 나타났다는 것이 이 연구에서 함께 밝혀진 사실이지만, 이 글에는 빛깔이 얼마나 비슷할 때 차이가 커지는지가 나오지 않습니다. 숫자를 외우게 했을 때 앞섬이 사라졌다는 것, 영어 사용자들은 같은 네모에서 아무 이득도 얻지 못했다는 것, 아래 두 네모 가운데 어느 것이 위의 것과 같은지 물었다는 것, 러시아어가 옅은 파랑과 짙은 파랑을 서로 다른 색으로 다룬다는 것은 모두 이 글에서 설명했습니다.",
+    "translation": "러시아어에는 영어의 blue에 해당하는 낱말이 하나로 있지 않다. 옅은 쪽은 goluboy, 짙은 쪽은 siniy이고, 이 둘은 영어에서 분홍과 빨강이 갈리는 만큼이나 서로 다른 색으로 다루어진다. 2007년에 연구자들은 화면에 네모 세 개를 띄웠다. 위에 하나, 아래에 둘을 놓고 아래 둘 가운데 어느 것이 위의 것과 같은 색인지 물었다. 러시아어를 쓰는 사람들은 아래 두 네모가 goluboy와 siniy의 경계 양쪽에 걸쳐 있을 때가 둘 다 같은 쪽에 있을 때보다 더 빨리 답했다. 같은 네모를 본 영어 사용자들은 그 경계가 있었을 자리에서 아무 이득도 얻지 못했다. 러시아어 사용자들이 숫자 몇 개를 동시에 외우고 있어야 할 때는 이 앞섬이 사라졌다. 도형을 외우게 했을 때는 그대로 남아 있었다.",
+    "vocab": [
+      {
+        "word": "shade",
+        "meaning": "빛깔의 짙고 옅은 정도, 색조"
+      },
+      {
+        "word": "as far apart as",
+        "meaning": "~만큼이나 멀리 떨어진"
+      },
+      {
+        "word": "match",
+        "meaning": "맞아떨어지다, 같다"
+      },
+      {
+        "word": "head start",
+        "meaning": "앞서 나감, 남보다 빠른 출발"
+      },
+      {
+        "word": "hold in mind",
+        "meaning": "머릿속에 담아 두다"
+      },
+      {
+        "word": "a string of",
+        "meaning": "줄지어 이어진"
+      },
+      {
+        "word": "untouched",
+        "meaning": "건드려지지 않은, 그대로인"
+      }
+    ]
+  },
+  {
+    "id": "E4-44",
+    "topicTitle": "저절로 생겨난 손짓말",
+    "questionType": "not_mentioned",
+    "passageText": "A school for deaf children opened in Managua in 1977 with about fifty pupils; six years later two schools held some four hundred. The lessons were in spoken Spanish and lip-reading, and hardly any of the children got anywhere with them. The teachers did not supervise the yard, the corridors or the buses home. There the children put their home-made gestures side by side, borrowed from each other, and within a few years were signing a language none of them had brought with them. In 1986 a linguist was invited from abroad to describe it, and she found something she had not looked for. The youngest pupils were signing a version with more grammar in it than their elders used, and the elders never caught up. Nobody had planned any of it.",
+    "promptText": "윗글에서 설명하지 않은 것은?",
+    "choices": [
+      "Deaf children in the country had lived far apart before the school opened.",
+      "The first lessons tried to teach spoken Spanish and the reading of lips.",
+      "Much of the signing took shape away from the classroom.",
+      "The schools together held some four hundred pupils by the sixth year.",
+      "A language researcher was brought in from abroad to describe it."
+    ],
+    "correctIndex": 0,
+    "explanation": "학교가 생기기 전에는 귀가 들리지 않는 아이들이 서로 떨어져 지냈다는 것이 이 이야기의 배경으로 자주 나오지만, 이 글에는 학교가 서기 전의 형편이 나오지 않습니다. 말하기와 입술 읽기로 가르쳤다는 것, 손짓말이 교실 바깥에서 자리를 잡았다는 것, 학생 수가 몇 해 만에 수백 명에 이르렀다는 것, 바깥에서 언어학자를 불러왔다는 것은 모두 이 글에서 설명했습니다.",
+    "translation": "1977년에 마나과에 귀가 들리지 않는 아이들을 위한 학교가 문을 열었는데 학생은 쉰 명쯤이었고, 여섯 해 뒤에는 학교 두 곳에 사백 명쯤이 다녔다. 수업은 에스파냐어 말하기와 입술 읽기로 이루어졌지만, 그것으로 뭔가를 해낸 아이는 거의 없었다. 선생들이 지켜보지 않은 곳은 운동장과 복도와 집으로 가는 버스였다. 거기서 아이들은 저마다 집에서 만들어 쓰던 몸짓을 나란히 놓고 서로에게서 빌려 왔고, 몇 해 지나지 않아 아무도 가지고 오지 않았던 하나의 말로 이야기하게 되었다. 1986년에 이 말을 기록해 달라며 바깥에서 언어학자를 불러왔는데, 그 학자는 찾으려 하지 않았던 것을 발견했다. 가장 어린 아이들이 손위 아이들보다 문법이 더 갖춰진 형태로 이야기하고 있었고, 손위 아이들은 끝내 그것을 따라잡지 못했다. 이 가운데 어느 것도 누가 계획한 것이 아니었다.",
+    "vocab": [
+      {
+        "word": "deaf",
+        "meaning": "귀가 들리지 않는"
+      },
+      {
+        "word": "lip-reading",
+        "meaning": "입술 읽기, 독순"
+      },
+      {
+        "word": "get anywhere with",
+        "meaning": "~으로 성과를 내다"
+      },
+      {
+        "word": "corridor",
+        "meaning": "복도"
+      },
+      {
+        "word": "side by side",
+        "meaning": "나란히"
+      },
+      {
+        "word": "sign",
+        "meaning": "손짓말로 이야기하다"
+      },
+      {
+        "word": "elder",
+        "meaning": "손위 사람, 연장자"
+      },
+      {
+        "word": "linguist",
+        "meaning": "언어학자"
+      }
+    ]
+  },
+  {
+    "id": "E4-45",
+    "topicTitle": "먼 행군길의 음식",
+    "questionType": "not_mentioned",
+    "passageText": "In 1795 the French government offered twelve thousand francs to anyone who could keep food fit to eat on a long march. A confectioner spent years on the problem. Pack the food into glass jars, seal them with cork and wax, and hold them in boiling water for a measured time — that was his answer. He collected the money in 1810, on condition that he printed the method for anyone to copy. He was sure that the air was to blame and that shutting it out was the whole of the trick. Half a century passed before Pasteur showed that living things too small to see were doing the damage. By then the method had crossed the Channel and moved from glass to metal, which stood up better to a ship's hold.",
+    "promptText": "윗글에서 설명하지 않은 것은?",
+    "choices": [
+      "The heat had to reach every part of the jar for the method to work.",
+      "The prize was won on condition that the method be printed for anyone.",
+      "The inventor was sure that the air was to blame for the spoiling.",
+      "Pasteur showed the real cause about fifty years later.",
+      "Metal stood up to a ship's hold better than glass did."
+    ],
+    "correctIndex": 0,
+    "explanation": "이 방법이 통하려면 열이 병 속 구석구석까지 닿아야 하지만, 이 글에는 열이 어디까지 닿아야 하는지가 나오지 않습니다. 방법을 인쇄해 내놓는다는 조건으로 상금을 받았다는 것, 음식을 상하게 하는 것이 공기라고 믿었다는 것, 참된 까닭을 파스퇴르가 반세기쯤 뒤에 밝혔다는 것, 금속이 유리보다 배의 짐칸에서 더 잘 견뎠다는 것은 모두 이 글에서 설명했습니다.",
+    "translation": "1795년에 프랑스 정부는 먼 행군길에서도 먹을 수 있는 상태로 음식을 지키는 사람에게 1만 2천 프랑을 주겠다고 내걸었다. 한 과자 장인이 여러 해를 이 문제에 매달렸다. 음식을 유리병에 담고 코르크와 밀랍으로 막은 다음 재어 둔 시간만큼 끓는 물에 담가 두는 것, 그것이 그의 답이었다. 그는 1810년에 상금을 받았는데, 누구나 따라 할 수 있도록 그 방법을 인쇄해 내놓는다는 조건이었다. 그는 음식이 상하는 것은 공기 탓이며 공기를 막는 것이 비결의 전부라고 믿었다. 눈에 보이지 않을 만큼 작은 생물이 그 일을 한다는 것을 파스퇴르가 밝히기까지는 반세기가 걸렸다. 그때쯤 이 방법은 해협을 건너가 유리에서 금속으로 옮겨 갔는데, 금속이 배의 짐칸에서 더 잘 견뎠기 때문이다.",
+    "vocab": [
+      {
+        "word": "fit to eat",
+        "meaning": "먹을 수 있는 상태의"
+      },
+      {
+        "word": "confectioner",
+        "meaning": "과자 만드는 사람"
+      },
+      {
+        "word": "seal",
+        "meaning": "막다, 봉하다"
+      },
+      {
+        "word": "wax",
+        "meaning": "밀랍"
+      },
+      {
+        "word": "on condition that",
+        "meaning": "~한다는 조건으로"
+      },
+      {
+        "word": "be to blame",
+        "meaning": "~의 탓이다, 책임이 있다"
+      },
+      {
+        "word": "stand up to",
+        "meaning": "~을 견뎌 내다"
+      },
+      {
+        "word": "hold",
+        "meaning": "(배의) 짐칸"
+      }
+    ]
+  },
+  {
+    "id": "E4-46",
+    "topicTitle": "이천 년 전에 만든 물건",
+    "questionType": "answerable_question",
+    "passageText": "In 1901 sponge divers working off a small Greek island brought up a lump of corroded bronze from an ancient wreck. Within a year an archaeologist spotted a gear wheel in it, but half a century passed before it was studied in earnest. X-rays, and later a scanner wheeled into the Athens museum in 2005, showed some thirty gears packed inside and thousands of letters cut into the faces of the lump. A handle on the side, turned by hand, drove the whole thing. One dial followed the sun and the moon across the sky. Another laid out the nineteen-year period after which the moon's phases fall on the same dates again, and a third counted off the four-year cycle of the Greek games. Nothing like it is known from anywhere else in the ancient world.",
+    "promptText": "윗글을 읽고 답할 수 있는 질문은?",
+    "choices": [
+      "What did the third of the dials keep count of?",
+      "How was a reading taken off the dials?",
+      "How deep was the wreck lying when it was found?",
+      "How were the teeth of the gears cut so finely?",
+      "Which Greek town is thought to have made it?"
+    ],
+    "correctIndex": 0,
+    "explanation": "'a third counted off the four-year cycle of the Greek games'(또 다른 눈금판은 그리스 경기가 열리는 4년 주기를 세었다)라고 했으므로 셋째 눈금판이 무엇을 세었는지는 답할 수 있습니다. 눈금판을 어떻게 읽었는지, 난파선이 얼마나 깊은 곳에 있었는지, 톱니를 어떻게 그렇게 곱게 깎았는지, 그리스의 어느 고을에서 만들었다고 보는지는 이 글에 나오지 않습니다.",
+    "translation": "1901년에 그리스의 작은 섬 앞바다에서 일하던 해면 잠수부들이 옛 난파선에서 부식된 청동 덩어리 하나를 건져 올렸다. 한 해도 지나지 않아 고고학자가 그 속에서 톱니바퀴를 알아보았지만, 이것을 본격적으로 연구하기까지는 반세기가 걸렸다. 엑스선 촬영과, 2005년에 아테네의 박물관 안까지 들여온 주사 장치가 그 속에 톱니바퀴가 서른 개쯤 들어차 있고 겉면에 글자가 수천 자 새겨져 있다는 것을 보여 주었다. 옆에 달린 손잡이를 손으로 돌리면 이 전체가 움직였다. 한 눈금판은 해와 달이 하늘을 지나가는 길을 따라갔다. 다른 눈금판은 달의 모양이 같은 날짜로 돌아오는 19년 주기를 펼쳐 놓았고, 또 다른 눈금판은 그리스 경기가 열리는 4년 주기를 세었다. 이와 같은 물건은 옛 세계 어디에서도 알려진 것이 없다.",
+    "vocab": [
+      {
+        "word": "sponge diver",
+        "meaning": "해면을 따는 잠수부"
+      },
+      {
+        "word": "corroded",
+        "meaning": "부식된, 삭은"
+      },
+      {
+        "word": "wreck",
+        "meaning": "난파선"
+      },
+      {
+        "word": "work out",
+        "meaning": "알아내다, 밝혀내다"
+      },
+      {
+        "word": "gear",
+        "meaning": "톱니바퀴"
+      },
+      {
+        "word": "dial",
+        "meaning": "눈금판"
+      },
+      {
+        "word": "phase",
+        "meaning": "(달의) 모양, 위상"
+      },
+      {
+        "word": "count off",
+        "meaning": "하나씩 세어 나가다"
+      }
+    ]
+  },
+  {
+    "id": "E4-47",
+    "topicTitle": "긴 항해가 부르던 병",
+    "questionType": "vocabulary",
+    "passageText": "On a warship in 1747 a surgeon picked twelve sailors who were down with scurvy, gave them all the same food and bedding, and split them into six pairs. Each pair got a different remedy: cider, vinegar, seawater, dilute acid, a paste of herbs, and two oranges with a lemon a day. The fruit ran out after six days. By then one of the two who had eaten the fruit was back on duty and the other was well enough to nurse the rest. The surgeon's account came out six years later, yet the navy did not send lemon juice to its ships for more than another forty years. Nobody knew what in the fruit did the work until the 1930s. Later the navy moved to limes from the West Indies, which turned out to hold far less of whatever it was.",
+    "promptText": "윗글에서 'hold'와 뜻이 가장 가까운 것은?",
+    "choices": [
+      "to have inside, to contain",
+      "the space below a ship's deck",
+      "to keep a firm grip on",
+      "to go on being true",
+      "to keep a person in custody"
+    ],
+    "correctIndex": 0,
+    "explanation": "'limes from the West Indies, which turned out to hold far less of whatever it was'(서인도 제도의 라임에는 그것이 훨씬 적게 들어 있는 것으로 드러났다)에서 hold는 '속에 지니고 있다, 담고 있다'라는 뜻입니다. hold는 '배의 짐칸', '꽉 붙잡다', '계속 그러하다', '가두어 두다'라는 뜻으로도 쓰이지만, 과일 속에 무엇이 얼마나 들어 있는지를 말하는 이 문장에는 맞지 않습니다.",
+    "translation": "1747년, 한 군함에서 외과의가 괴혈병으로 누워 있던 선원 열두 명을 골라 모두에게 같은 음식과 같은 잠자리를 주고 두 사람씩 여섯 짝으로 나누었다. 짝마다 다른 처방을 받았다. 사과주, 식초, 바닷물, 묽은 산, 약초를 갠 것, 그리고 날마다 오렌지 두 개와 레몬 한 개였다. 과일은 엿새 만에 떨어졌다. 그때 그 짝 가운데 한 사람은 이미 근무에 복귀해 있었고, 다른 한 사람은 나머지를 돌볼 만큼 회복해 있었다. 그의 기록은 여섯 해 뒤에 나왔지만, 해군이 배에 레몬즙을 보낸 것은 그로부터 사십 년이 더 지나서였다. 과일 속의 무엇이 그 일을 하는지는 1930년대까지 밝혀지지 않았다. 뒷날 해군은 서인도 제도의 라임으로 바꾸었는데, 라임에는 그것이 훨씬 적게 들어 있는 것으로 드러났다.",
+    "vocab": [
+      {
+        "word": "surgeon",
+        "meaning": "외과의, 군의관"
+      },
+      {
+        "word": "scurvy",
+        "meaning": "괴혈병"
+      },
+      {
+        "word": "remedy",
+        "meaning": "치료법, 처방"
+      },
+      {
+        "word": "cider",
+        "meaning": "사과주"
+      },
+      {
+        "word": "dilute",
+        "meaning": "묽은, 묽게 한"
+      },
+      {
+        "word": "paste",
+        "meaning": "개어 놓은 것, 반죽"
+      },
+      {
+        "word": "account",
+        "meaning": "기록, 보고"
+      },
+      {
+        "word": "back on duty",
+        "meaning": "근무에 복귀한"
+      }
+    ]
+  },
+  {
+    "id": "E4-48",
+    "topicTitle": "지구의 나이를 잰 사람",
+    "questionType": "vocabulary",
+    "passageText": "To date the Earth, a young American began by measuring the lead in a meteorite. His first results were worthless: lead was in the dust, in the glassware, on his own hands. He built a laboratory with filtered air where everything was washed and washed again, and in 1953 he reached a figure close to four and a half billion years. The metal he had fought stayed on his mind. Comparing deep ocean water with surface water, and old ice with new, he set out to trace the climb of lead in the world around us. The trail led him to the fuel that cars were burning. He spent the rest of his working life fighting the lead in that fuel, and the industry that paid for much of the research in his field.",
+    "promptText": "윗글에서 'trace'와 뜻이 가장 가까운 것은?",
+    "choices": [
+      "to follow the course of something",
+      "a very small amount of a substance",
+      "to copy a drawing through thin paper",
+      "a mark left behind by something",
+      "a line drawn by a recording machine"
+    ],
+    "correctIndex": 0,
+    "explanation": "'he set out to trace the climb of lead in the world around us'(둘레 세상에서 납이 늘어난 자취를 따라가 보기로 했다)에서 trace는 '자취를 따라가다, 경로를 밝히다'라는 뜻입니다. trace는 '아주 적은 양', '얇은 종이를 대고 베끼다', '남은 자국', '기록 장치가 그린 선'이라는 뜻으로도 쓰이지만, 바닷물과 얼음을 견주어 납이 어디에서 왔는지 밝히는 이 문장에는 맞지 않습니다.",
+    "translation": "지구의 나이를 알아내려고 한 젊은 미국인이 운석 속의 납을 재기 시작했다. 첫 결과는 쓸모가 없었다. 납은 먼지에도, 유리 기구에도, 제 손에도 묻어 있었다. 그는 공기를 걸러 내고 모든 것을 씻고 또 씻는 실험실을 지었고, 1953년에 45억 년에 가까운 값을 얻었다. 그가 싸워야 했던 그 금속은 그의 머릿속을 떠나지 않았다. 깊은 바닷물과 표층 바닷물을, 오래된 얼음과 새 얼음을 견주어 그는 우리 둘레에서 납이 늘어난 자취를 따라가 보기로 했다. 그 자취는 자동차가 태우던 연료로 이어졌다. 그는 남은 평생을 그 연료 속의 납과 싸우는 데, 그리고 자기 분야 연구비의 상당 부분을 대던 업계에 맞서는 데 썼다.",
+    "vocab": [
+      {
+        "word": "date",
+        "meaning": "연대를 재다, 나이를 밝히다"
+      },
+      {
+        "word": "meteorite",
+        "meaning": "운석"
+      },
+      {
+        "word": "worthless",
+        "meaning": "쓸모없는"
+      },
+      {
+        "word": "glassware",
+        "meaning": "유리로 만든 실험 기구"
+      },
+      {
+        "word": "filtered",
+        "meaning": "걸러 낸"
+      },
+      {
+        "word": "figure",
+        "meaning": "값, 수치"
+      },
+      {
+        "word": "set out to",
+        "meaning": "~하기로 나서다"
+      },
+      {
+        "word": "field",
+        "meaning": "분야, 연구 영역"
+      }
+    ]
   }
 ]
