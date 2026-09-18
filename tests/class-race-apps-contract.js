@@ -11,14 +11,11 @@ const vm = require("node:vm");
 
 const root = path.join(__dirname, "..");
 const appsSource = fs.readFileSync(path.join(root, "learning", "class-race", "apps.js"), "utf8");
-const serverSource = fs.readFileSync(path.join(root, "game-hub-server", "server.js"), "utf8");
+// 한 판에 낼 수 있는 문제 수는 서버(quizrace.js)가 정한다. 여기에 다시 적지 않고 읽어 온다.
+const { MAX_QUESTIONS } = require(path.join(root, "game-hub-server", "quizrace.js"));
+assert.ok(Number.isInteger(MAX_QUESTIONS) && MAX_QUESTIONS > 0, "서버에서 한 판의 문제 수 상한을 찾지 못했다.");
 
-// 한 판에 낼 수 있는 문제 수는 서버가 정한다. 여기에 다시 적지 않고 읽어 온다.
-const maxMatch = serverSource.match(/QUIZRACE_MAX_QUESTIONS = (\d+)/);
-assert.ok(maxMatch, "서버에서 한 판의 문제 수 상한을 찾지 못했다.");
-const MAX_QUESTIONS = Number(maxMatch[1]);
-
-// 서버가 문제를 받아 줄 때 쓰는 잣대(quizraceCleanQuestion)와 같은 값이어야 한다.
+// 서버가 문제를 받아 줄 때 쓰는 잣대(quizrace.js 의 cleanQuestion)와 같은 값이어야 한다.
 const LIMITS = { id: 80, category: 40, prompt: 120, sentence: 400, choice: 120 };
 const ID_PATTERN = /^[a-z0-9_:-]+$/i;
 

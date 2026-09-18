@@ -9,10 +9,10 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
-    <link rel="stylesheet" href="styles.css?v=20260909-2">
+    <link rel="stylesheet" href="styles.css?v=20260918-5">
     <script src="/assets/network/game-network.js?v=20260821" defer></script>
     <script src="/assets/network/multiplayer-lobby.js" defer></script>
-    <script src="app.js?v=20260909-3" defer></script>
+    <script src="app.js?v=20260918-5" defer></script>
 </head>
 <body>
     <div class="page-shell">
@@ -41,8 +41,16 @@
 
                 <div id="waitingPane" class="hidden">
                     <p class="room-badge">학급 코드 <strong id="studentRoomCode">----</strong></p>
+                    <div class="me-card">
+                        <span id="myAvatar" class="race-avatar is-large" aria-hidden="true"></span>
+                        <div class="me-card-text">
+                            <strong id="myName"></strong>
+                            <span id="myTeamBadge" class="team-badge hidden"></span>
+                        </div>
+                    </div>
+                    <div id="myTeamBox" class="my-team hidden" aria-label="우리 모둠"></div>
                     <h2>선생님의 시작을 기다리고 있어요</h2>
-                    <div id="lobbyPlayers" class="mp-lobby-players player-list" aria-label="참가 학생"></div>
+                    <div id="classmateList" class="player-list" aria-label="참가 학생"></div>
                     <p id="lobbyGuide" class="lobby-status">학급에 연결하는 중입니다.</p>
                     <button id="leaveClassButton" class="text-button" type="button">← 학급에서 나가기</button>
                 </div>
@@ -50,8 +58,14 @@
 
             <section id="quizScreen" class="hidden" aria-labelledby="questionText">
                 <div class="quiz-status">
-                    <div><span id="quizModeLabel"></span> · 문제 <strong><span id="questionNumber">1</span>/<span id="questionTotal">10</span></strong></div>
-                    <div>점수 <strong><span id="currentScore">0</span>점</strong></div>
+                    <div class="quiz-status-me">
+                        <span id="quizAvatar" class="race-avatar is-small" aria-hidden="true"></span>
+                        <span><span id="quizModeLabel"></span> · 문제 <strong><span id="questionNumber">1</span>/<span id="questionTotal">10</span></strong></span>
+                    </div>
+                    <div class="quiz-status-score">
+                        <span id="liveRank" class="live-rank"></span>
+                        <span>점수 <strong id="scoreBox"><span id="currentScore">0</span>점</strong></span>
+                    </div>
                 </div>
                 <div class="progress-track" aria-hidden="true"><span id="progressFill"></span></div>
 
@@ -62,6 +76,7 @@
                     <div id="choiceList" class="choice-list" aria-label="답 선택"></div>
 
                     <div id="feedback" class="feedback hidden" aria-live="polite">
+                        <span id="streakBadge" class="streak-badge hidden"></span>
                         <h3 id="feedbackTitle"></h3>
                         <p id="correctAnswer" class="correct-answer"></p>
                         <p id="explanation" class="explanation"></p>
@@ -77,10 +92,11 @@
                     <span>/ <span id="finalTotal">10</span></span>
                 </div>
                 <p id="resultMessage" class="result-message"></p>
-                <p class="lead">정답 수가 같으면 먼저 마친 학생이 앞서요.</p>
+                <p id="rankRule" class="lead">처음에 맞힌 문제만 점수가 돼요. 점수가 같으면 먼저 마친 학생이 앞서요.</p>
 
                 <div class="rank-area">
                     <div id="myRankCard" class="my-rank-card">순위를 집계하고 있어요.</div>
+                    <div id="teamRankCard" class="my-rank-card team-rank-card hidden"></div>
                     <h3>학급 순위</h3>
                     <ol id="classRankingList" class="ranking-list"></ol>
                     <p id="rankingWaiting" class="ranking-waiting"></p>

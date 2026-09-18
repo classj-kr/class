@@ -6,13 +6,16 @@
     <meta name="theme-color" content="#24150c">
     <title>학급 순위전 · 교사용</title>
     <link rel="stylesheet" href="/assets/network/multiplayer-lobby.css">
-    <link rel="stylesheet" href="styles.css?v=20260909-2">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+    <link rel="stylesheet" href="styles.css?v=20260918-5">
     <script src="/assets/network/game-network.js?v=20260821" defer></script>
     <script src="/assets/network/multiplayer-lobby.js" defer></script>
     <script src="apps.js?v=20260909-1" defer></script>
-    <script src="teacher.js?v=20260909-1" defer></script>
+    <script src="teacher.js?v=20260918-6" defer></script>
 </head>
-<body>
+<body class="teacher-page">
     <div class="page-shell">
         <nav class="topbar" aria-label="페이지 이동">
             <div class="topbar-links">
@@ -42,6 +45,18 @@
                 </div>
                 <p id="rangeSummary" class="range-summary">앱을 고르면 문제 수가 여기에 나옵니다.</p>
 
+                <span class="step-label">3. 누구끼리 겨룰까요?</span>
+                <div class="range-row">
+                    <label><input type="radio" name="raceMode" value="solo" checked> 개인전</label>
+                    <label><input type="radio" name="raceMode" value="team"> 모둠전</label>
+                    <select id="teamSize" aria-label="모둠 인원" disabled>
+                        <option value="3">3명씩</option>
+                        <option value="4" selected>4명씩</option>
+                        <option value="5">5명씩</option>
+                    </select>
+                    <button id="shuffleTeamsButton" class="secondary-button hidden" type="button">모둠 다시 섞기</button>
+                </div>
+
                 <span id="savedName" class="hidden">교사</span>
                 <div id="hostPane" class="room-card">
                     <span>학급 코드</span>
@@ -53,38 +68,54 @@
                 <div class="counts">
                     <div><span>참가 학생</span><strong id="lobbyStudentCount">0명</strong></div>
                     <div><span>출제 문항</span><strong id="questionCountLabel">-</strong></div>
-                    <div><span>순위 기준</span><strong>정답 수 · 시간</strong></div>
+                    <div><span>순위 기준</span><strong id="rankRuleLabel">처음 맞힌 수</strong></div>
                 </div>
 
-                <div id="lobbyPlayers" class="mp-lobby-players player-list" aria-label="참가 학생"></div>
+                <div id="lobbyRoster" class="lobby-roster" aria-label="참가 학생"></div>
                 <p id="lobbyGuide" class="lobby-status">학생 참가를 기다리는 중입니다.</p>
                 <button id="teacherStartButton" class="primary-button main-button" type="button" disabled>학생 참가 대기</button>
                 <p id="teacherNotice" class="notice" role="status" aria-live="polite"></p>
             </section>
 
-            <section id="racePanel" class="panel hidden" aria-labelledby="raceTitle">
-                <div class="race-heading">
-                    <div>
-                        <p class="kicker">학급 코드 <strong id="raceRoomCode">----</strong></p>
-                        <h2 id="raceTitle">학급 순위</h2>
-                        <p id="raceSubject" class="lead"></p>
+            <section id="racePanel" class="board hidden" aria-labelledby="raceTitle">
+                <header class="board-bar">
+                    <div class="board-title">
+                        <p class="board-code">학급 코드 <strong id="raceRoomCode">----</strong></p>
+                        <h2 id="raceTitle">학급 순위전</h2>
+                        <p id="raceSubject" class="board-subject"></p>
                     </div>
-                    <span id="racePhaseBadge" class="phase-badge">진행 중</span>
+                    <div id="raceToasts" class="race-toasts" aria-live="polite"></div>
+                    <div class="board-clock" aria-label="지난 시간">
+                        <strong id="raceClock">0:00</strong>
+                        <span id="raceProgress">0명 도착 / 0명</span>
+                    </div>
+                    <div class="board-actions">
+                        <button id="endRaceButton" class="primary-button" type="button">경기 끝내기</button>
+                        <button id="resetRaceButton" class="secondary-button" type="button">새 순위전 준비</button>
+                    </div>
+                </header>
+
+                <div id="raceTrack" class="race-track" aria-label="경기장"></div>
+
+                <div id="finishArea" class="finish-area hidden">
+                    <div id="podium" class="podium" aria-label="시상대"></div>
+                    <div class="finish-columns">
+                        <section class="board-card missed-card" aria-labelledby="missedTitle">
+                            <h3 id="missedTitle">반 전체가 많이 틀린 문제</h3>
+                            <p class="board-card-note">처음 고른 답을 셌어요.</p>
+                            <ol id="missedBoard" class="missed-board"></ol>
+                            <p id="missedEmpty" class="board-card-note hidden">처음부터 모두 맞혔어요. 틀린 문제가 없습니다.</p>
+                        </section>
+                        <section class="board-card" aria-labelledby="finalRankTitle">
+                            <h3 id="finalRankTitle">최종 순위</h3>
+                            <p class="board-card-note">점수가 같으면 먼저 다 푼 쪽이 앞서요.</p>
+                            <ol id="teamRankingList" class="ranking-list team-ranking-list hidden" aria-label="모둠 순위"></ol>
+                            <ol id="teacherRankingList" class="ranking-list" aria-label="학급 순위"></ol>
+                        </section>
+                    </div>
                 </div>
 
-                <div class="counts">
-                    <div><span>전체 학생</span><strong id="raceTotalCount">0명</strong></div>
-                    <div><span>완료</span><strong id="raceFinishedCount">0명</strong></div>
-                    <div><span>풀이 중</span><strong id="racePlayingCount">0명</strong></div>
-                </div>
-
-                <ol id="teacherRankingList" class="ranking-list" aria-label="학급 순위"></ol>
-                <p id="emptyRanking" class="empty-ranking">아직 완료한 학생이 없습니다.</p>
-                <p id="raceNotice" class="ranking-waiting"></p>
-
-                <div class="teacher-actions">
-                    <button id="resetRaceButton" class="primary-button" type="button">새 순위전 준비</button>
-                </div>
+                <p id="raceNotice" class="board-notice" role="status" aria-live="polite"></p>
             </section>
         </main>
     </div>

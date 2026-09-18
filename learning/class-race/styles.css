@@ -565,3 +565,803 @@ body {
     .join-row { grid-template-columns: 1fr; }
     .result-actions > * { width: 100%; }
 }
+
+/* ── 아바타 ─────────────────────────────────────────
+   학생 아바타는 640px 전신 그림이다. 잘라 내지 않고 발을 바닥에 맞춰 세운다. */
+.race-avatar {
+    position: relative;
+    display: inline-grid;
+    flex: none;
+    width: 48px;
+    height: 48px;
+    place-items: center;
+    font-size: 15px;
+}
+
+.race-avatar img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: 50% 100%;
+    filter: drop-shadow(0 2px 2px rgba(40, 20, 5, 0.28));
+}
+
+/* 아바타가 없는 학생은 이름 끝 두 글자 동그라미 */
+.race-avatar.is-initial {
+    border-radius: 50%;
+    background: linear-gradient(180deg, #8a5a33, #5a3016);
+    color: #fff5dc;
+    font-weight: 900;
+    letter-spacing: -0.04em;
+}
+
+.race-avatar.is-tiny { width: 28px; height: 28px; font-size: 11px; }
+.race-avatar.is-small { width: 34px; height: 34px; font-size: 12px; }
+.race-avatar.is-medium { width: 64px; height: 64px; font-size: 18px; }
+.race-avatar.is-standing { width: 72px; height: 72px; font-size: 21px; }
+.race-avatar.is-large { width: 124px; height: 124px; font-size: 34px; }
+.race-avatar.is-podium { width: clamp(110px, 12vw, 170px); height: clamp(110px, 12vw, 170px); font-size: 40px; }
+.race-avatar.is-podium-mini { width: clamp(52px, 5vw, 76px); height: clamp(52px, 5vw, 76px); font-size: 17px; }
+
+/* ── 학생 대기실 ──────────────────────────────────── */
+#waitingPane { text-align: center; }
+#waitingPane .player-list { justify-content: center; }
+
+.me-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin: 14px 0 8px;
+}
+
+.me-card .race-avatar { animation: idle-bob 2.4s ease-in-out infinite; }
+
+.me-card-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+}
+
+.me-card-text strong { font-size: 26px; letter-spacing: -0.03em; }
+
+.team-badge {
+    padding: 4px 14px;
+    border-radius: 999px;
+    background: var(--team, var(--brown));
+    color: #fff;
+    font-weight: 900;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
+}
+
+.my-team {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px;
+    max-width: 520px;
+    margin: 6px auto 16px;
+    padding: 10px 12px;
+    border: 2px dashed var(--team, var(--line));
+    border-radius: 10px;
+    background: color-mix(in srgb, var(--team, #d2a454) 9%, #fffdf7);
+    color: var(--muted-ink);
+    font-weight: 800;
+}
+
+.my-team-mate {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--ink);
+    font-size: 14px;
+    font-weight: 800;
+}
+
+.player-list .mp-lobby-player.has-team { border-left: 5px solid var(--team); }
+
+/* ── 학생 문제 화면 ──────────────────────────────── */
+.quiz-status { flex-wrap: wrap; }
+
+.quiz-status-me {
+    display: flex;
+    min-width: 0;
+    align-items: center;
+    gap: 8px;
+}
+
+.quiz-status-score {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.live-rank {
+    padding: 2px 10px;
+    border-radius: 999px;
+    background: rgba(255, 240, 210, 0.14);
+    color: #ffe7b0;
+    font-size: 14px;
+}
+
+.live-rank:empty { display: none; }
+.live-rank.is-team { box-shadow: inset 5px 0 0 var(--team); padding-left: 14px; }
+
+#scoreBox { display: inline-block; }
+#scoreBox.pop { animation: score-pop 520ms ease-out; }
+
+.streak-badge {
+    display: inline-block;
+    margin-bottom: 8px;
+    padding: 4px 14px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #ff9a2e, #e5482c);
+    color: #fff;
+    font-weight: 900;
+}
+
+.streak-badge.pop { animation: pop-in 520ms cubic-bezier(0.3, 1.6, 0.5, 1); }
+
+.choice-button.is-pending {
+    border-color: var(--gold);
+    background: #fff4dc;
+    animation: pending-pulse 0.7s ease-in-out infinite alternate;
+}
+
+.choice-button.shake { animation: shake 420ms ease-out; }
+
+.start-flash {
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    display: grid;
+    place-items: center;
+    color: #fff5dc;
+    font-size: clamp(72px, 16vw, 220px);
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    text-shadow: 0 6px 0 #5a3016, 0 14px 34px rgba(0, 0, 0, 0.5);
+    pointer-events: none;
+    animation: start-flash 1100ms ease-out forwards;
+}
+
+.team-rank-card { margin-top: 8px; box-shadow: inset 6px 0 0 var(--team, var(--gold)); }
+.ranking-row.has-team { box-shadow: inset 6px 0 0 var(--team); }
+
+/* ── 교사: 준비 화면 ─────────────────────────────── */
+.teacher-page .page-shell { width: min(100% - 24px, 1180px); }
+body.is-board .page-shell { width: min(100% - 24px, 1900px); padding-top: 10px; }
+
+/* 사이트 공용 뒤로가기 단추(왼쪽 위 44px 원)가 덮지 않게 자리를 비운다.
+   좁은 화면에서는 위를, 경기장은 세로 자리가 아까우니 제목 왼쪽을 비운다. */
+@media (max-width: 1300px) {
+    .page-shell { padding-top: 58px; }
+}
+
+.board-bar { padding-left: 40px; }
+
+.lobby-roster {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 8px;
+    margin-top: 16px;
+}
+
+.roster-card {
+    display: flex;
+    width: 86px;
+    flex-direction: column;
+    align-items: center;
+}
+
+.roster-card .race-avatar { animation: idle-bob 2.6s ease-in-out infinite; }
+.roster-card:nth-child(3n + 1) .race-avatar { animation-delay: -0.9s; }
+.roster-card:nth-child(3n + 2) .race-avatar { animation-delay: -1.7s; }
+.roster-card.is-new { animation: pop-in 560ms cubic-bezier(0.3, 1.5, 0.5, 1); }
+
+.roster-name {
+    max-width: 100%;
+    overflow: hidden;
+    font-size: 14px;
+    font-weight: 800;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.lobby-roster.is-team {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 12px;
+}
+
+.roster-team {
+    padding: 8px 10px 10px;
+    border: 2px solid var(--team);
+    border-radius: 10px;
+    background: color-mix(in srgb, var(--team) 9%, #fffdf7);
+}
+
+.roster-team h3 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0 0 6px;
+    font-size: 16px;
+}
+
+.roster-team h3::before {
+    content: "";
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--team);
+}
+
+.roster-team-members { display: flex; flex-wrap: wrap; gap: 4px; }
+.roster-team .roster-card { width: 66px; }
+.roster-team .race-avatar.is-standing { width: 60px; height: 60px; }
+
+/* ── 교사: 경기장 ────────────────────────────────── */
+.board {
+    position: relative;
+    padding: clamp(12px, 1.4vw, 22px);
+    border: 2px solid var(--gold);
+    border-radius: 12px;
+    background: var(--paper);
+    box-shadow: 0 18px 46px rgba(25, 12, 5, 0.32);
+}
+
+.board-bar {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr) auto auto;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 14px;
+}
+
+.board-title h2 { margin: 0; font-size: clamp(22px, 2.2vw, 34px); letter-spacing: -0.03em; }
+.board-code { margin: 0; color: #91602d; font-size: 14px; font-weight: 900; }
+.board-code strong { font-family: Georgia, serif; font-size: 20px; letter-spacing: 0.1em; }
+.board-subject { margin: 2px 0 0; color: var(--muted-ink); font-size: clamp(14px, 1.2vw, 18px); font-weight: 800; }
+
+.board-clock {
+    min-width: 150px;
+    padding: 6px 18px 8px;
+    border-radius: 10px;
+    background: var(--brown-dark);
+    color: #ffe7b0;
+    text-align: center;
+}
+
+.board-clock strong {
+    display: block;
+    font: 900 clamp(32px, 3.4vw, 54px) / 1.05 Georgia, serif;
+    font-variant-numeric: tabular-nums;
+}
+
+.board-clock span { font-size: 13px; font-weight: 800; }
+.board-actions { display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end; }
+.board-notice { min-height: 20px; margin: 10px 0 0; color: var(--muted-ink); font-weight: 800; text-align: center; }
+
+.race-track {
+    --lane-h: clamp(48px, calc((100vh - 250px) / var(--rows, 1) - 6px), 104px);
+    display: grid;
+    grid-template-columns: repeat(var(--cols, 1), minmax(0, 1fr));
+    grid-template-rows: repeat(var(--rows, 1), var(--lane-h));
+    grid-auto-flow: column;
+    gap: 6px 16px;
+}
+
+.race-track.is-team { --lane-h: clamp(72px, calc((100vh - 250px) / var(--rows, 1) - 8px), 132px); gap: 8px 16px; }
+
+.lane {
+    /* 아바타 머리 위에 왕관 자리를 남긴다. 왕관이 윗 레인에 걸치면 남의 것처럼 보인다. */
+    --av: calc(var(--lane-h) * 0.76);
+    --rw: var(--av);
+    display: grid;
+    grid-template-columns: clamp(76px, 8vw, 140px) minmax(0, 1fr) clamp(40px, 3.4vw, 60px);
+    min-width: 0;
+    border: 1px solid #dcc59b;
+    border-left: 6px solid var(--team, #c8a266);
+    border-radius: 8px;
+    background: linear-gradient(180deg, #fffcf4, #f4e5c6);
+    transition: background 400ms ease, box-shadow 400ms ease;
+}
+
+.lane.is-team {
+    --rw: calc(var(--av) + (var(--members, 1) - 1) * var(--av) * 0.52);
+    background: linear-gradient(180deg, color-mix(in srgb, var(--team) 8%, #fffcf4), color-mix(in srgb, var(--team) 16%, #f4e5c6));
+}
+
+.lane.is-done { background: linear-gradient(180deg, #fff8dc, #f6dd97); box-shadow: inset 0 0 0 1px #e7c25a; }
+.lane.is-left { opacity: 0.6; }
+
+.lane-label {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 8px;
+}
+
+.lane-name {
+    overflow: hidden;
+    font-size: clamp(14px, calc(var(--lane-h) * 0.28), 24px);
+    line-height: 1.15;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.lane-sub {
+    overflow: hidden;
+    color: var(--muted-ink);
+    font-size: clamp(11px, calc(var(--lane-h) * 0.17), 14px);
+    font-weight: 800;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.lane-score {
+    display: grid;
+    place-items: center;
+    color: #6b3d18;
+    font: 900 clamp(18px, calc(var(--lane-h) * 0.38), 34px) / 1 Georgia, serif;
+    font-variant-numeric: tabular-nums;
+}
+
+.lane-track { position: relative; min-width: 0; margin: 0 4px; }
+
+/* 한 칸 = 한 문제. 눈금은 레일 위에, 결승선은 레일 끝에 */
+.lane-rail {
+    position: absolute;
+    left: calc(var(--rw) / 2);
+    right: calc(var(--rw) / 2);
+    bottom: 5px;
+    height: 7px;
+    border-radius: 4px;
+    background-color: rgba(90, 48, 22, 0.14);
+    background-image: linear-gradient(90deg, rgba(90, 48, 22, 0.5) 0 2px, transparent 2px);
+    background-size: calc(100% / var(--steps, 10)) 100%;
+}
+
+.lane-finish {
+    position: absolute;
+    top: 4px;
+    bottom: 4px;
+    right: calc(var(--rw) / 2 - 5px);
+    width: 10px;
+    border-radius: 2px;
+    background: repeating-conic-gradient(#2b1b12 0 25%, #fffaf0 0 50%) 0 0 / 10px 10px;
+    opacity: 0.7;
+}
+
+.lane.is-done .lane-finish { opacity: 1; box-shadow: 0 0 12px rgba(242, 194, 48, 0.9); }
+
+.runner,
+.team-pack {
+    position: absolute;
+    bottom: 5px;
+    left: calc(var(--pos, 0) * (100% - var(--rw)));
+    width: var(--rw);
+    height: var(--av);
+    transition: left 780ms cubic-bezier(0.22, 0.9, 0.3, 1.15);
+}
+
+.runner { z-index: 1; }
+
+.runner-body {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    transform-origin: 50% 100%;
+}
+
+.race-avatar.is-runner { width: 100%; height: 100%; font-size: calc(var(--av) * 0.3); }
+.race-avatar.is-runner.is-initial { width: 78%; height: 78%; margin: 11% 11% 0; }
+
+.runner-body.hop { animation: hop 640ms cubic-bezier(0.3, 0.7, 0.4, 1); }
+.runner-body.stumble { animation: stumble 560ms ease-out; }
+.runner-body.stumble > .race-avatar { animation: dim 560ms ease-out; }
+.runner-body.nod { animation: nod 420ms ease-out; }
+
+/* 세 문제 넘게 잇달아 맞히면 발밑에 불꽃 */
+.runner-fx {
+    position: absolute;
+    left: 6%;
+    right: 6%;
+    bottom: -6px;
+    z-index: 0;
+    height: 52%;
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 300ms ease;
+}
+
+.runner.on-fire .runner-fx {
+    opacity: 1;
+    background: radial-gradient(ellipse at 50% 100%, rgba(255, 214, 90, 0.95) 0, rgba(255, 128, 32, 0.75) 36%, rgba(255, 70, 20, 0) 72%);
+    filter: blur(2px);
+    animation: flicker 0.26s ease-in-out infinite alternate;
+}
+
+.runner-streak {
+    position: absolute;
+    top: -4px;
+    right: -10px;
+    z-index: 3;
+    padding: 1px 6px;
+    border-radius: 999px;
+    background: #f06a1f;
+    color: #fff;
+    font-size: clamp(10px, calc(var(--av) * 0.16), 13px);
+    font-weight: 900;
+    white-space: nowrap;
+}
+
+.runner-streak:empty { display: none; }
+.team-pack .runner-streak { top: auto; bottom: -2px; right: -4px; }
+
+.runner.is-done::before {
+    content: "";
+    position: absolute;
+    left: 6%;
+    right: 6%;
+    bottom: -4px;
+    height: 9px;
+    border-radius: 50%;
+    background: radial-gradient(ellipse, #ffd966, rgba(255, 217, 102, 0));
+}
+
+.runner.is-left { opacity: 0.4; filter: grayscale(1); }
+
+.runner-crown {
+    position: absolute;
+    top: calc(var(--av) * -0.27);
+    left: 50%;
+    z-index: 3;
+    display: none;
+    width: calc(var(--av) * 0.4);
+    max-width: 46px;
+    transform: translateX(-50%);
+    animation: crown-bob 1.3s ease-in-out infinite;
+}
+
+.runner-crown svg { display: block; width: 100%; filter: drop-shadow(0 2px 2px rgba(80, 40, 0, 0.35)); }
+.runner.is-leader > .runner-crown,
+.team-pack.is-leader > .runner-crown { display: block; }
+
+.runner-pop {
+    position: absolute;
+    top: -2px;
+    left: 50%;
+    z-index: 4;
+    color: var(--green);
+    font-size: clamp(16px, calc(var(--av) * 0.3), 26px);
+    font-weight: 900;
+    text-shadow: 0 1px 0 #fff, 0 0 6px #fff;
+    pointer-events: none;
+    animation: float-up 900ms ease-out forwards;
+}
+
+/* 덩어리 너비는 가장 큰 모둠 기준. 모둠원이 적으면 앞(오른쪽)으로 붙인다. */
+.team-pack-runners { display: flex; height: 100%; justify-content: flex-end; }
+
+.team-pack .runner {
+    position: relative;
+    left: auto;
+    bottom: auto;
+    width: var(--av);
+    flex: none;
+    transition: none;
+}
+
+.team-pack .runner + .runner { margin-left: calc(var(--av) * -0.48); }
+
+/* 전광판 알림: 제목과 시계 사이 빈자리에 두 줄까지. 레인을 가리지 않는다. */
+.race-toasts {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    pointer-events: none;
+}
+
+.race-toast {
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding: 6px 18px;
+    border: 2px solid rgba(255, 231, 176, 0.5);
+    border-radius: 999px;
+    background: rgba(43, 27, 18, 0.93);
+    color: #fff5dc;
+    font-size: clamp(15px, 1.25vw, 22px);
+    font-weight: 900;
+    box-shadow: 0 8px 22px rgba(20, 10, 3, 0.35);
+    animation: toast-in 420ms cubic-bezier(0.2, 0.9, 0.3, 1.3);
+    transition: opacity 400ms ease, transform 400ms ease;
+}
+
+.race-toast.is-finish { border-color: #f2c230; }
+.race-toast.is-fire { background: linear-gradient(90deg, #d8471f, #f0851f); border-color: #ffd28a; }
+.race-toast.is-lead { color: #ffd966; }
+.race-toast.is-leaving { opacity: 0; transform: translateY(-10px); }
+
+/* ── 교사: 끝난 뒤 ───────────────────────────────── */
+.podium {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: end;
+    gap: clamp(8px, 1.4vw, 20px);
+    max-width: 980px;
+    margin: 6px auto 22px;
+}
+
+.podium-place { display: flex; min-width: 0; flex-direction: column; align-items: center; }
+
+.podium-stage {
+    display: flex;
+    max-width: 100%;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+.podium-stage strong { max-width: 100%; overflow: hidden; font-size: clamp(18px, 2vw, 30px); text-overflow: ellipsis; white-space: nowrap; }
+.podium-stage span { color: var(--muted-ink); font-size: clamp(13px, 1.1vw, 17px); font-weight: 800; }
+.podium-place[style*="--team"] .podium-stage strong { display: inline-flex; align-items: center; gap: 8px; }
+.podium-place[style*="--team"] .podium-stage strong::before {
+    content: "";
+    width: 0.6em;
+    height: 0.6em;
+    flex: none;
+    border-radius: 50%;
+    background: var(--team);
+}
+
+.podium-team-faces { display: flex; justify-content: center; }
+.podium-team-faces .race-avatar + .race-avatar { margin-left: calc(clamp(52px, 5vw, 76px) * -0.3); }
+
+.podium-block {
+    display: grid;
+    width: 100%;
+    place-items: start center;
+    padding-top: 10px;
+    border-radius: 10px 10px 0 0;
+    color: rgba(255, 255, 255, 0.95);
+    font: 900 clamp(34px, 3.6vw, 56px) / 1 Georgia, serif;
+    text-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
+    transform-origin: 50% 100%;
+}
+
+.place-1 .podium-block { height: clamp(110px, 15vh, 170px); background: linear-gradient(180deg, #f5cf55, #c9962b); }
+.place-2 .podium-block { height: clamp(80px, 11vh, 125px); background: linear-gradient(180deg, #dfe3e8, #9aa3ad); }
+.place-3 .podium-block { height: clamp(58px, 8vh, 90px); background: linear-gradient(180deg, #e6ae80, #a86a3c); }
+.podium-place.is-empty .podium-block { opacity: 0.25; }
+.place-1 .race-avatar.is-podium { width: clamp(130px, 14vw, 200px); height: clamp(130px, 14vw, 200px); }
+
+.podium.is-rising .podium-block { animation: rise-block 720ms cubic-bezier(0.2, 0.9, 0.3, 1.1) both; }
+.podium.is-rising .podium-stage { animation: drop-in 760ms cubic-bezier(0.3, 1.45, 0.5, 1) both; }
+.podium.is-rising .place-3 .podium-block { animation-delay: 0s; }
+.podium.is-rising .place-2 .podium-block { animation-delay: 0.15s; }
+.podium.is-rising .place-1 .podium-block { animation-delay: 0.3s; }
+.podium.is-rising .place-3 .podium-stage { animation-delay: 0.5s; }
+.podium.is-rising .place-2 .podium-stage { animation-delay: 0.85s; }
+.podium.is-rising .place-1 .podium-stage { animation-delay: 1.2s; }
+
+.finish-columns {
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+    gap: 16px;
+    align-items: start;
+}
+
+.board-card {
+    padding: 16px 18px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: #fffdf7;
+}
+
+.board-card h3 { margin: 0; font-size: clamp(18px, 1.6vw, 24px); }
+.board-card-note { margin: 2px 0 12px; color: var(--muted-ink); font-size: 13px; font-weight: 800; }
+
+.missed-board { display: grid; gap: 14px; margin: 0; padding: 0; list-style: none; }
+.missed-board > li { padding: 12px 14px; border-left: 5px solid #b67a37; border-radius: 6px; background: #f9eedb; }
+.missed-head { margin: 0; color: #8d5524; font-size: 13px; font-weight: 900; }
+.missed-sentence { margin: 4px 0 10px; font-size: clamp(17px, 1.5vw, 22px); font-weight: 900; line-height: 1.45; word-break: keep-all; }
+.missed-bars { display: grid; gap: 6px; }
+
+.missed-bar {
+    display: grid;
+    grid-template-columns: minmax(0, 13em) minmax(0, 1fr) 3.4em;
+    align-items: center;
+    gap: 10px;
+    font-weight: 800;
+}
+
+.missed-choice { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.missed-track { height: 16px; border-radius: 8px; background: rgba(90, 48, 22, 0.1); overflow: hidden; }
+
+.missed-fill {
+    display: block;
+    width: calc(var(--share, 0) * 100%);
+    height: 100%;
+    border-radius: 8px;
+    background: #c9583f;
+    transform-origin: 0 50%;
+    animation: grow-bar 900ms cubic-bezier(0.2, 0.8, 0.3, 1) both;
+}
+
+.missed-bar.is-answer { color: #155734; }
+.missed-bar.is-answer .missed-fill { background: var(--green); }
+.missed-count { color: var(--muted-ink); text-align: right; font-variant-numeric: tabular-nums; }
+.missed-explanation { margin: 8px 0 0; color: var(--muted-ink); font-size: 14px; line-height: 1.6; word-break: keep-all; }
+
+.board-card .ranking-list + .ranking-list { margin-top: 12px; }
+.ranking-row.team-row { grid-template-columns: 52px minmax(0, 1fr) auto; box-shadow: inset 6px 0 0 var(--team); }
+.ranking-row.has-face .rank-name { display: flex; align-items: center; gap: 8px; }
+
+.confetti {
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.confetti span {
+    position: absolute;
+    top: -24px;
+    left: var(--x);
+    width: 10px;
+    height: 16px;
+    border-radius: 2px;
+    opacity: 0;
+    animation: confetti var(--fall) cubic-bezier(0.25, 0.6, 0.5, 1) var(--delay) forwards;
+}
+
+/* ── 움직임 ─────────────────────────────────────── */
+@keyframes hop {
+    0% { transform: translateY(0) scale(1, 1); }
+    16% { transform: translateY(0) scale(1.12, 0.86); }
+    44% { transform: translateY(-36%) scale(0.94, 1.08); }
+    70% { transform: translateY(0) scale(1.1, 0.9); }
+    85% { transform: translateY(-6%) scale(0.98, 1.02); }
+    100% { transform: none; }
+}
+
+@keyframes stumble {
+    0% { transform: none; }
+    15% { transform: translateX(-5px) rotate(-14deg); }
+    35% { transform: translateX(5px) rotate(10deg); }
+    55% { transform: translateX(-3px) rotate(-6deg); }
+    75% { transform: translateX(2px) rotate(3deg); }
+    100% { transform: none; }
+}
+
+@keyframes dim {
+    0%, 100% { filter: none; }
+    30% { filter: grayscale(0.8) brightness(0.85); }
+}
+
+@keyframes nod {
+    0%, 100% { transform: none; }
+    40% { transform: translateY(-8%); }
+}
+
+@keyframes flicker {
+    from { transform: scale(0.94, 0.9); opacity: 0.85; }
+    to { transform: scale(1.06, 1.12); opacity: 1; }
+}
+
+@keyframes crown-bob {
+    0%, 100% { transform: translate(-50%, 0) rotate(-4deg); }
+    50% { transform: translate(-50%, -4px) rotate(4deg); }
+}
+
+@keyframes float-up {
+    0% { opacity: 0; transform: translate(-50%, 6px) scale(0.7); }
+    20% { opacity: 1; transform: translate(-50%, -6px) scale(1.15); }
+    100% { opacity: 0; transform: translate(-50%, -34px) scale(1); }
+}
+
+@keyframes idle-bob {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-4px); }
+}
+
+@keyframes pop-in {
+    0% { opacity: 0; transform: scale(0.3) translateY(12px); }
+    100% { opacity: 1; transform: none; }
+}
+
+@keyframes score-pop {
+    0% { transform: scale(1); }
+    35% { transform: scale(1.5); color: #9ff0b8; }
+    100% { transform: scale(1); }
+}
+
+@keyframes pending-pulse {
+    from { box-shadow: 0 0 0 0 rgba(210, 164, 84, 0.2); }
+    to { box-shadow: 0 0 0 6px rgba(210, 164, 84, 0.35); }
+}
+
+@keyframes shake {
+    0%, 100% { transform: none; }
+    20% { transform: translateX(-8px); }
+    40% { transform: translateX(7px); }
+    60% { transform: translateX(-5px); }
+    80% { transform: translateX(3px); }
+}
+
+@keyframes start-flash {
+    0% { opacity: 0; transform: scale(0.4); }
+    25% { opacity: 1; transform: scale(1.08); }
+    45% { transform: scale(1); }
+    78% { opacity: 1; }
+    100% { opacity: 0; transform: scale(1.35); }
+}
+
+@keyframes toast-in {
+    from { opacity: 0; transform: translateY(14px) scale(0.85); }
+    to { opacity: 1; transform: none; }
+}
+
+@keyframes rise-block {
+    from { transform: scaleY(0); }
+    to { transform: none; }
+}
+
+@keyframes drop-in {
+    0% { opacity: 0; transform: translateY(-90px); }
+    100% { opacity: 1; transform: none; }
+}
+
+@keyframes grow-bar {
+    from { transform: scaleX(0); }
+    to { transform: none; }
+}
+
+@keyframes confetti {
+    0% { opacity: 1; transform: translate(0, 0) rotate(0); }
+    100% { opacity: 0.9; transform: translate(var(--drift), 110vh) rotate(var(--spin)); }
+}
+
+@media (max-width: 900px) {
+    .race-track,
+    .race-track.is-team {
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-rows: none;
+        grid-auto-rows: var(--lane-h);
+        grid-auto-flow: row;
+    }
+
+    .board-bar { grid-template-columns: minmax(0, 1fr) auto; }
+    .race-toasts { grid-column: 1 / -1; order: 5; }
+    .board-actions { grid-column: 1 / -1; justify-content: flex-start; }
+    .finish-columns { grid-template-columns: minmax(0, 1fr); }
+    .missed-bar { grid-template-columns: minmax(0, 8em) minmax(0, 1fr) 3em; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .runner,
+    .team-pack { transition: none; }
+
+    .race-avatar,
+    .runner-body,
+    .runner-fx,
+    .runner-crown,
+    .roster-card,
+    .podium .podium-block,
+    .podium .podium-stage,
+    .missed-fill,
+    .race-toast,
+    .start-flash { animation: none !important; }
+}
