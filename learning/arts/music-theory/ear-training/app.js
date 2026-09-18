@@ -768,7 +768,7 @@
             groups.push([bass].concat(hand));
         });
 
-        /* 조를 먼저 심는다 — 으뜸화음 한 번, 한 박 쉬고 진행. */
+        /* 으뜸화음은 진행 앞에 붙이지 않는다. 조가 궁금하면 「조 확인」으로 따로 듣는다. */
         const home = numeralNotes(tonic, item.minor ? "i" : "I");
         const homeGroup = [bassSeat(home, null, false).midi]
             .concat(leadVoicing(home, null).map(note => note.midi));
@@ -779,7 +779,7 @@
             ask: session.reveal
                 ? keyName(tonic, item.minor) + " — 로마숫자로 적어 보세요"
                 : session.drill.ask,
-            playback: { groups: [homeGroup, []].concat(groups), beat: 1.05 },
+            playback: { groups: groups, beat: 1.05 },
             chordsPlay: { groups: groups, beat: 1.9 },
             homePlay: { groups: [homeGroup], beat: 1.2 },
             slots: { symbols: item.chords.slice(), columns: columns, given: preset.given ? 1 : 0 },

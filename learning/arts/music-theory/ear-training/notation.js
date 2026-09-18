@@ -111,13 +111,17 @@
      * 오선과 자리표를 함께 두고, 대신 임시표를 촘촘히 붙여 자리를 아낀다.
      * 되돌려 주는 width는 오선 눈금으로 잰 길이다.
      */
-    /* 오선에 붙이는 조표. 자리표 뒤에 임시표를 제자리대로 놓는다. */
-    function signatureMarks(count, sharp, from) {
+    /*
+     * 오선에 붙이는 조표. 자리표 뒤에 임시표를 제자리대로 놓는다. 낮은음자리표 오선에는
+     * 같은 음이름을 두 옥타브(열네 자리) 아래에 붙인다 — 높은음자리표의 B4 자리가
+     * 낮은음자리표에서는 B2다.
+     */
+    function signatureMarks(count, sharp, from, drop) {
         const seats = sharp ? SHARP_SEATS : FLAT_SEATS;
         const step = markWidth(sharp ? MARKS.sharp : MARKS.flat) + 0.5;
         const group = make("g", { class: "sheet-ink sheet-signature" });
         for (let mark = 0; mark < count; mark += 1) {
-            group.append(accidentalNode(sharp ? 1 : -1, from + (mark + 1) * step, yFor(seats[mark])));
+            group.append(accidentalNode(sharp ? 1 : -1, from + (mark + 1) * step, yFor(seats[mark] - (drop || 0))));
         }
         return { node: group, width: count * step };
     }
@@ -232,12 +236,62 @@
     const CLEF_SPIRAL = 0.63;
 
     /*
-     * 낮은음자리표는 두 점이 F선을 감싼다. 먹은 F선에서 반 칸 위부터 세 칸쯤
-     * 아래까지 뻗으므로, 기준점을 먹 높이의 14% 자리로 잡는다.
+     * 낮은음자리표(F 자리표)는 두 점이 F선 바로 위 칸과 바로 아래 칸에 하나씩 앉는다.
+     * 그래서 두 점의 한가운데가 F선이고, 두 점 사이가 꼭 한 칸이다. 높은음자리표처럼
+     * 먹 높이의 비율로 앉히면 글꼴마다 어긋나므로(윈도 글꼴은 한 칸 아래로 내려앉아
+     * 가운데 줄 D를 감쌌다) 캔버스에 찍어 두 점을 직접 찾는다. 두 점은 글리프의
+     * 맨 오른쪽에 떨어져 있는 먹 기둥이다.
      */
     const F_LINE_ABS = 3 * 7 + 3;   /* 낮은음자리표가 가리키는 F3 */
-    const BASS_CLEF_H = STEP_Y * 7.1;
-    const BASS_CLEF_ANCHOR = 0.14;
+    let bassFit;
+
+    function bassClefFit() {
+        if (bassFit !== undefined) return bassFit;
+        /* 못 재면 윈도(Segoe UI Symbol)에서 잰 값으로 앉힌다. */
+        bassFit = { height: STEP_Y * 5.8, anchor: 0.43 };
+        const ink = inkBox(BASS_CLEF_GLYPH);
+        if (!ink) return bassFit;
+        const size = PROBE_SIZE * 3;
+        const baseline = PROBE_SIZE * 2;
+        let data;
+        try {
+            const canvas = document.createElement("canvas");
+            canvas.width = size;
+            canvas.height = size;
+            const context = canvas.getContext("2d", { willReadFrequently: true });
+            context.font = PROBE_SIZE + "px " + glyphFont;
+            context.fillText(BASS_CLEF_GLYPH, PROBE_SIZE, baseline);
+            data = context.getImageData(0, 0, size, size).data;
+        } catch (error) { return bassFit; }
+        const inked = (x, y) => data[(y * size + x) * 4 + 3] > 100;
+        const columnInked = x => {
+            for (let y = 0; y < size; y += 1) if (inked(x, y)) return true;
+            return false;
+        };
+        let right = size - 1;
+        while (right >= 0 && !columnInked(right)) right -= 1;
+        let left = right;
+        while (left > 0 && columnInked(left - 1)) left -= 1;
+        /* 점 기둥에서 먹이 있는 줄을 모아, 끊긴 데서 두 덩어리로 나눈다. */
+        const blobs = [];
+        for (let y = 0; y < size; y += 1) {
+            let hit = false;
+            for (let x = left; x <= right && !hit; x += 1) hit = inked(x, y);
+            if (!hit) continue;
+            const last = blobs[blobs.length - 1];
+            if (last && last.bottom === y - 1) last.bottom = y;
+            else blobs.push({ top: y, bottom: y });
+        }
+        if (blobs.length !== 2) return bassFit;
+        const upper = (blobs[0].top + blobs[0].bottom) / 2;
+        const lower = (blobs[1].top + blobs[1].bottom) / 2;
+        const middle = (upper + lower) / 2;
+        bassFit = {
+            height: ink.height * (STEP_Y * 2) / (lower - upper),
+            anchor: (ink.ascent - (baseline - middle)) / ink.height
+        };
+        return bassFit;
+    }
 
     function oneClef(char, x, height, anchor, at) {
         const ink = inkBox(char);
@@ -251,7 +305,8 @@
     }
 
     function bassClefNode(x) {
-        return oneClef(BASS_CLEF_GLYPH, x, BASS_CLEF_H, BASS_CLEF_ANCHOR, yFor(F_LINE_ABS));
+        const fit = bassClefFit();
+        return oneClef(BASS_CLEF_GLYPH, x, fit.height, fit.anchor, yFor(F_LINE_ABS));
     }
 
     /*
@@ -390,6 +445,7 @@
         }
         if (signWidth) {
             svg.append(signatureMarks(sign.count, sign.sharp, COLUMN_X - 6).node);
+            if (grand) svg.append(signatureMarks(sign.count, sign.sharp, COLUMN_X - 6, 14).node);
         }
 
         const alters = signatureAlters(sign);
