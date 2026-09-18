@@ -58,6 +58,18 @@
 
     let lobby = null;
 
+    // 새로고침해도 같은 방·같은 앱으로 돌아오게 이 탭에만 적어 둔다(탭을 닫으면 사라진다).
+    const ROOM_KEY = "classRaceTeacherRoom";
+    const APP_KEY = "classRaceTeacherApp";
+
+    function remember(key, value) {
+        try { sessionStorage.setItem(key, value); } catch (_) {}
+    }
+
+    function recall(key) {
+        try { return sessionStorage.getItem(key) || ""; } catch (_) { return ""; }
+    }
+
     // ── 준비 화면: 앱·범위 ────────────────────────────────
     function rangeMode() {
         return document.querySelector('input[name="rangeMode"]:checked')?.value || "random";
@@ -147,6 +159,7 @@
     async function selectApp(appId) {
         if (state.loading) return;
         state.appId = appId;
+        remember(APP_KEY, appId);
         state.bank = null;
         state.loading = true;
         renderAppGrid();
@@ -207,6 +220,7 @@
     }
 
     function syncLobby(snapshot) {
+        if (snapshot?.connected && snapshot.roomCode) remember(ROOM_KEY, snapshot.roomCode);
         elements.lobbyStudentCount.textContent = `${currentStudentCount()}명`;
         elements.raceRoomCode.textContent = snapshot?.roomCode || elements.roomCode.textContent || "----";
         syncStartButton();
@@ -864,6 +878,8 @@
         renderAppGrid();
         updateRangeSummary();
         syncModeControls(null);
+        const savedApp = recall(APP_KEY);
+        if (savedApp && registry.get(savedApp)) selectApp(savedApp);
 
         if (!window.ClassroomMultiplayerLobby || !window.ClassroomNetwork) {
             elements.teacherNotice.textContent = "학급 서버를 불러오지 못했습니다. 잠시 후 다시 시도하세요.";
@@ -877,6 +893,9 @@
             minPlayers: 2,
             maxPlayers: 61,
             ids: { startButton: "teacherStartButtonUnused", playerList: "teacherLobbyChipsUnused" },
+            // 새로고침해도 학생들이 들어와 있는 방을 그대로 이어 쓴다.
+            keepRoomOnReload: true,
+            getPreferredRoomCode: () => recall(ROOM_KEY),
             onStateChange: syncLobby,
             onServerMessage: handleServerMessage,
             onPlayerLeftDuringGame: () => {},

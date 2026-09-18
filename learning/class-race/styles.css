@@ -861,6 +861,7 @@ body.is-board .page-shell { width: min(100% - 24px, 1900px); padding-top: 10px; 
     --av: calc(var(--lane-h) * 0.76);
     --rw: var(--av);
     display: grid;
+    /* 점수 칸 너비를 고정해야 레인마다 결승선이 한 줄로 선다. 개인전은 정수, 모둠전은 3.25 같은 소수. */
     grid-template-columns: clamp(76px, 8vw, 140px) minmax(0, 1fr) clamp(40px, 3.4vw, 60px);
     min-width: 0;
     border: 1px solid #dcc59b;
@@ -872,6 +873,7 @@ body.is-board .page-shell { width: min(100% - 24px, 1900px); padding-top: 10px; 
 
 .lane.is-team {
     --rw: calc(var(--av) + (var(--members, 1) - 1) * var(--av) * 0.52);
+    grid-template-columns: clamp(100px, 11vw, 190px) minmax(0, 1fr) clamp(60px, 5.6vw, 96px);
     background: linear-gradient(180deg, color-mix(in srgb, var(--team) 8%, #fffcf4), color-mix(in srgb, var(--team) 16%, #f4e5c6));
 }
 
@@ -888,7 +890,8 @@ body.is-board .page-shell { width: min(100% - 24px, 1900px); padding-top: 10px; 
 
 .lane-name {
     overflow: hidden;
-    font-size: clamp(14px, calc(var(--lane-h) * 0.28), 24px);
+    /* 노트북처럼 좁은 화면에서도 '빨강 모둠'이 잘리지 않게 화면 너비로도 줄인다. */
+    font-size: clamp(13px, min(calc(var(--lane-h) * 0.28), 1.7vw), 24px);
     line-height: 1.15;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -905,9 +908,10 @@ body.is-board .page-shell { width: min(100% - 24px, 1900px); padding-top: 10px; 
 
 .lane-score {
     display: grid;
+    padding: 0 6px 0 2px;
     place-items: center;
     color: #6b3d18;
-    font: 900 clamp(18px, calc(var(--lane-h) * 0.38), 34px) / 1 Georgia, serif;
+    font: 900 clamp(17px, min(calc(var(--lane-h) * 0.34), 2vw), 32px) / 1 Georgia, serif;
     font-variant-numeric: tabular-nums;
 }
 

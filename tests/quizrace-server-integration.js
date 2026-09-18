@@ -119,10 +119,10 @@ async function run() {
 
     try {
         await waitForServer(server);
-        const host = await connectClient();
+        let host = await connectClient();
         clients.push(host);
         await host.waitFor((message) => message.type === "CONNECTED", "교사 연결");
-        host.send({ type: "CREATE_ROOM", gameId: "quizrace", roomCode: ROOM, name: "교사" });
+        host.send({ type: "CREATE_ROOM", gameId: "quizrace", roomCode: ROOM, name: "교사", clientToken: "teacher-tab-token" });
         await host.waitFor((message) => message.type === "ROOM_CREATED", "방 생성");
         await host.waitFor((message) => message.type === "QUIZRACE_STATE" && message.state.phase === "lobby", "초기 상태");
 
@@ -252,6 +252,24 @@ async function run() {
         assert.deepEqual(afterEnd.review.map((row) => row.index), [1]);
         assert.ok(teamEnd.state.teamRankings.every((team) => !("exact" in team)) && teamEnd.state.teams.every((team) => !("exact" in team)), "정렬용 값은 밖으로 보내지 않습니다.");
         assert.equal(teamEnd.state.rankings.length, 4, "끝낸 뒤에는 모든 학생이 순위에 들어가야 합니다.");
+
+        // 교사 화면 새로고침: '떠남'(4000)이 아니라 '잠깐 끊김'으로 닫고, 같은 탭 표로 같은 방 번호를 다시 열면 방을 되찾는다.
+        host.socket.close(4005, "PAGE_RELOAD");
+        await new Promise((resolve) => setTimeout(resolve, 200));
+        host = await connectClient();
+        clients.push(host);
+        await host.waitFor((message) => message.type === "CONNECTED", "교사 다시 연결");
+        host.send({ type: "CREATE_ROOM", gameId: "quizrace", roomCode: ROOM, name: "교사", clientToken: "teacher-tab-token" });
+        await host.waitFor((message) => message.type === "ROOM_RESUMED", "교사 방 되찾기");
+        const resumedBoard = await host.waitFor((message) => message.type === "QUIZRACE_STATE" && message.state.sessionId === teamSession, "되찾은 경기장");
+        assert.equal(resumedBoard.state.phase, "ended");
+        assert.equal(resumedBoard.state.participants.length, 4, "새로고침 뒤에도 학생들이 그대로 있어야 합니다.");
+        // 다른 탭(표가 다름)은 같은 번호로 방을 가로채지 못한다.
+        const stranger = await connectClient();
+        clients.push(stranger);
+        await stranger.waitFor((message) => message.type === "CONNECTED", "다른 탭 연결");
+        stranger.send({ type: "CREATE_ROOM", gameId: "quizrace", roomCode: ROOM, name: "교사", clientToken: "other-tab-token" });
+        await stranger.waitFor((message) => message.type === "ROOM_EXISTS", "다른 탭 거절");
 
         host.send({ type: "QUIZRACE_ACTION", action: "RESET" });
         const resetState = await host.waitFor((message) => message.type === "QUIZRACE_STATE" && message.state.phase === "lobby" && message.state.questionCount === 0 && message.state.sessionId === "", "초기화 상태");

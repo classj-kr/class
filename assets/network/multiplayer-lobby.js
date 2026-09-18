@@ -79,7 +79,16 @@
             this.connected = false;
             this.started = false;
             this.mounted = false;
-            this._boundBeforeUnload = () => this.destroy();
+            this._boundBeforeUnload = () => {
+                // keepRoomOnReload: 교사 화면을 새로고침해도 방을 이어 쓴다. '떠남'(4000) 대신
+                // '잠깐 끊김'으로 닫아 두면 서버가 2분 동안 방을 남겨 두고, 새 화면이 같은 방 번호로 되찾는다.
+                if (this.options.keepRoomOnReload && this.role === "host" && this.connected && this.socket) {
+                    this.intentionalClose = true;
+                    try { this.socket.close(4005, "PAGE_RELOAD"); } catch (_) {}
+                    return;
+                }
+                this.destroy();
+            };
             this._boundSiteBack = event => {
                 if (!this.started) return;
                 event.preventDefault();
@@ -234,7 +243,9 @@
             this.started = false;
             this.connected = false;
             this.hostCreateAttempts = 0;
-            this.roomCode = window.ClassroomNetwork.generateRoomCode(4);
+            // 새로고침 전 방 번호를 넘겨받으면 그 번호로 다시 연다(같은 탭이면 서버가 원래 방을 돌려준다).
+            const preferred = String(this.options.getPreferredRoomCode?.() || "").replace(/\D/g, "");
+            this.roomCode = preferred.length === 4 ? preferred : window.ClassroomNetwork.generateRoomCode(4);
             if (this.elements.roomCode) this.elements.roomCode.textContent = "----";
             if (this.elements.hostStatus) this.elements.hostStatus.textContent = "방을 만드는 중입니다.";
             this._connect(this._roomRequest("CREATE_ROOM", this.roomCode));
@@ -356,6 +367,19 @@
                     const action = this.pendingAction;
                     this.pendingAction = null;
                     this._sendRaw(action);
+                }
+                // 새로 연 화면이 원래 있던 방으로 되돌아왔다(서버의 ROOM_RESUMED). 방을 막 연 것처럼 화면을 맞춘다.
+                if (message.resumed && !this.connected && this.roomCode) {
+                    this.connected = true;
+                    this.players = { [this.myId]: { name: this.playerName } };
+                    this._attachAvatar();
+                    if (this.role === "host") {
+                        if (this.elements.roomCode) this.elements.roomCode.textContent = this.roomCode;
+                        if (this.elements.hostStatus) this.elements.hostStatus.textContent = "참가자를 기다리는 중입니다.";
+                    } else {
+                        this._setStatus(`방 ${this.roomCode}에 입장했습니다.`);
+                    }
+                    this.render();
                 }
                 this._emitState();
                 return;
