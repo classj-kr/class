@@ -8,6 +8,16 @@
     ['경상남도', 35.25, 128.25], ['대구광역시', 35.8714, 128.6014], ['울산광역시', 35.5384, 129.3114], ['부산광역시', 35.1796, 129.0756],
     ['제주특별자치도', 33.37, 126.53]
   ];
+  const metropolitanLabels = new Map([
+    ['11', { name: '서울', lat: 37.5665, lng: 126.9780 }],
+    ['26', { name: '부산', lat: 35.1796, lng: 129.0756 }],
+    ['27', { name: '대구', lat: 35.8714, lng: 128.6014 }],
+    ['28', { name: '인천', lat: 37.4563, lng: 126.7052 }],
+    ['29', { name: '광주', lat: 35.1595, lng: 126.8526 }],
+    ['30', { name: '대전', lat: 36.3504, lng: 127.3845 }],
+    ['31', { name: '울산', lat: 35.5384, lng: 129.3114 }],
+    ['36', { name: '세종', lat: 36.48, lng: 127.289 }]
+  ]);
   let municipalityLabels = [];
 
   const modal = document.querySelector('#placeModal');
@@ -106,8 +116,13 @@
 
       const grouped = new Map();
       raw.forEach((label) => {
-        if (label.code.startsWith("11")) {
-          grouped.set(`seoul-${label.code}`, { name: label.name, latTotal: label.lat, lngTotal: label.lng, count: 1, kind: "district" });
+        const metropolitanCode = label.code === "47720" ? "27" : label.code.slice(0, 2);
+        const metropolitanLabel = metropolitanLabels.get(metropolitanCode);
+        if (metropolitanLabel) {
+          grouped.set(`metropolitan-${metropolitanCode}`, {
+            ...metropolitanLabel,
+            kind: "metropolitan"
+          });
           return;
         }
         const subdividedCity = label.name.match(/^(.+시)\s+.+구$/u);
@@ -120,7 +135,7 @@
         group.count += 1;
         grouped.set(displayName, group);
       });
-      municipalityLabels = Array.from(grouped.values(), (group) => ({
+      municipalityLabels = Array.from(grouped.values(), (group) => group.kind === "metropolitan" ? group : ({
         name: group.name,
         lat: group.latTotal / group.count,
         lng: group.lngTotal / group.count,
