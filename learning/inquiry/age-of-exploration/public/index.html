@@ -208,8 +208,10 @@ function updateBgmControl(state){
   bgmControl.classList.toggle('locked',!state.unlocked);bgmMuteBtn.textContent=state.muted?'×':'♪';bgmMuteBtn.classList.toggle('is-muted',state.muted);bgmMuteBtn.setAttribute('aria-label',state.muted?'음악 켜기':'음악 음소거');bgmMuteBtn.setAttribute('aria-pressed',state.muted?'true':'false');bgmVolumeSlider.value=state.muted?'0':String(volume);bgmVolumeSlider.setAttribute('aria-valuetext',stateLabel);bgmVolumeSlider.title=`음악 ${stateLabel}`;
 }
 function waitingForVoyageStart(){
+  // 방 종류를 봐야 한다. 옛 개인 모드를 없앤 뒤로는 모든 방이 competition 이라,
+  // 미션이 없는 자유 항해 방에서 음악이 '출항 준비'에 영영 묶여 있었다.
   if(!joined)return true;
-  if(sessionMode!=='competition')return false;
+  if(roomType==='free')return classSettings.started!==true;
   if(missionProgress?.status==='completed')return false;
   if(missionProgress?.finalQuizStatus==='answering')return true;
   return !activeMission||activeMission.phase!=='running';

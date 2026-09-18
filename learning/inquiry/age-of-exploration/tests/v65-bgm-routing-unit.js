@@ -25,4 +25,14 @@ assert.equal(bgm.seaTrack({lat:25,lon:-45}),'sailing_indian_ocean');
 assert.equal(bgm.resolveTrack({joined:false}),'voyage_preparation');
 assert.equal(bgm.resolveTrack({joined:true,waitingForStart:true,mode:'sea',position:{lat:20,lon:-45}}),'voyage_preparation');
 assert.equal(bgm.resolveTrack({joined:true,mode:'land'}),'land_expedition');
+
+// 음악이 상황에 따라 바뀌려면 방 종류를 봐야 한다. 자유 항해 방에는 미션이 없다.
+const fs=require('node:fs');
+const student=fs.readFileSync(require('node:path').join(__dirname,'..','public','index.html'),'utf8');
+assert.match(student,/function waitingForVoyageStart\(\)\{[\s\S]*?roomType==='free'\)return classSettings\.started!==true/);
+assert.doesNotMatch(student,/if\(sessionMode!=='competition'\)return false;/, '없앤 개인 모드로 음악을 가르면 안 된다');
+assert.match(student,/syncBackgroundMusic\(\);/);
+// 자유 항해 방에서 출발한 뒤에는 항해곡이 나와야 한다.
+assert.equal(bgm.resolveTrack({joined:true,waitingForStart:false,mode:'sea',position:{lat:38,lon:-9}}),'sailing_near_europe');
+assert.equal(bgm.resolveTrack({joined:true,waitingForStart:false,mode:'city',city:{region:'이베리아',countryCode:'PT'}}),'city_iberia');
 console.log('v65 BGM routing ok');
