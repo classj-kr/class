@@ -27,6 +27,8 @@ function ack(s,e,p={}){return new Promise((r,j)=>{const x=setTimeout(()=>j(new E
   assert.equal(entered.ok,true,entered.error);
   const inCity=await once(sailor,'snapshot',x=>x.you.mode==='city'&&x.you.currentCityId==='lisbon'&&!x.you.transition);
   assert.equal(inCity.cityLandmarks.length,1,'리스본 명소는 한 곳');
+  const multi=landmarks.reduce((acc,x)=>{acc[x.cityId]=(acc[x.cityId]||0)+1;return acc},{});
+  assert.ok(Object.values(multi).filter(n=>n>1).length>=10,'명소가 둘 이상인 도시가 충분히 있어야 한다');
   assert.equal(inCity.cityLandmarks[0].name,'벨렝탑');
   assert.equal(inCity.cityLandmarks[0].found,false,'아직 보기 전이다');
 
@@ -67,9 +69,8 @@ function ack(s,e,p={}){return new Promise((r,j)=>{const x=setTimeout(()=>j(new E
   assert.equal(docked.ok,true,docked.error);
   const istanbul=await once(student,'snapshot',x=>x.you.mode==='city'&&x.you.currentCityId==='istanbul'&&!x.you.transition);
   const names=istanbul.cityLandmarks.map(x=>x.name);
-  assert.equal(names.length,2,`이스탄불 명소는 두 곳이어야 한다: ${names.join(',')}`);
-  assert.ok(names.includes('아야 소피아'));
-  assert.ok(names.includes('블루 모스크가 설 자리'));
+  assert.ok(names.length>=3,`이스탄불에는 명소가 여럿 있어야 한다: ${names.join(',')}`);
+  for(const want of ['아야 소피아','톱카프 궁전','테오도시우스 성벽','블루 모스크가 설 자리']) assert.ok(names.includes(want),`이스탄불 명소에 ${want} 없음`);
   const later=await ack(student,'inspectLandmark',{id:'lm-blue-mosque-later'});
   assert.equal(later.ok,true,later.error);
   assert.equal(later.landmark.status,'later');
