@@ -83,7 +83,7 @@ button,input{font:inherit}button{border:1px solid var(--line);background:#17313b
 <div id="zoom"><button id="minus" aria-label="축소">−</button><button id="plus" aria-label="확대">＋</button><button id="home" aria-label="현재 임무 지점">⌂</button></div>
 <div id="bgmControl" class="unified-music-control locked" aria-label="배경음악 조절"><div class="unified-audio-group"><button id="bgmMuteBtn" class="unified-audio-toggle" type="button" aria-label="음악 음소거">♪</button><input id="bgmVolumeSlider" class="unified-audio-slider" type="range" min="0" max="1" step="0.01" aria-label="음악 음량"></div></div>
 <div id="pad"><button class="blank"></button><button data-dir="up">▲</button><button class="blank"></button><button data-dir="left">◀</button><button data-dir="stop">■</button><button data-dir="right">▶</button><button class="blank"></button><button data-dir="down">▼</button><button class="blank"></button></div>
-<div id="missionActionPrompt" class="actionPrompt panel"><span id="missionActionText"><b>행동</b></span><button id="cityActionBtn" hidden>도시 들어가기</button><button id="discoveryActionBtn" hidden>살펴보기</button><button id="huntActionBtn" hidden>잡기</button><button id="missionActionBtn" hidden>확인 Enter</button></div>
+<div id="missionActionPrompt" class="actionPrompt panel"><span id="missionActionText"><b>행동</b></span><button id="cityActionBtn" hidden>도시 들어가기</button><button id="discoveryActionBtn" hidden>살펴보기</button><button id="huntActionBtn" hidden>만나기</button><button id="missionActionBtn" hidden>확인 Enter</button></div>
 <section id="cityView" aria-label="도시 내부">
   <div id="cityCard">
     <img id="cityScene" alt="도시 내부">
@@ -490,7 +490,7 @@ function applyModeUI(){
   const missionVisible=!inCity&&!busy&&!!missionInteraction?.canInteract;
   const cityVisible=!inCity&&!busy&&!!cityInteraction?.canUse;
   const portVisible=!inCity&&!busy&&!!portInteraction;
-  const huntVisible=!inCity&&!busy&&!!huntInteraction&&!huntInteraction.caught&&huntInteraction.withinReach;
+  const huntVisible=!inCity&&!busy&&!!huntInteraction&&!huntInteraction.met&&huntInteraction.withinReach;
   const discoveryVisible=!inCity&&!busy&&!!discoveryInteraction&&!huntVisible;
   const missionReady=missionVisible&&interactionEnabled;
   const cityReady=cityVisible&&interactionEnabled;
@@ -499,7 +499,7 @@ function applyModeUI(){
   missionActionPrompt.classList.toggle('show',missionVisible||cityVisible||portVisible||discoveryVisible);
   discoveryActionBtn.hidden=!discoveryVisible;discoveryActionBtn.disabled=!discoveryVisible;
   huntActionBtn.hidden=!huntVisible;huntActionBtn.disabled=!huntVisible;
-  if(huntVisible)huntActionBtn.textContent=`${huntInteraction.animal} 잡기`;
+  if(huntVisible)huntActionBtn.textContent=`${huntInteraction.animal} 만나기`;
   if(discoveryVisible)discoveryActionBtn.textContent=`${discoveryInteraction.name} 살펴보기`;
   cityActionBtn.hidden=!cityVisible;cityActionBtn.disabled=!cityReady;
   missionActionBtn.hidden=!(missionVisible||portVisible);missionActionBtn.disabled=false;
@@ -562,16 +562,16 @@ function openLandmark(index){
   });
 }
 landmarkBtn.addEventListener('click',()=>{if(landmarkQueue.length)openLandmark(0)});
-function doCatchAnimal(){
+function doMeetAnimal(){
   if(!huntInteraction)return;clearKeys();
-  socket.emit('catchAnimal',{},result=>{
-    if(!result?.ok){showToast(result?.error||'잡지 못했습니다.','warn');return}
+  socket.emit('meetAnimal',{},result=>{
+    if(!result?.ok){showToast(result?.error||'만나지 못했습니다.','warn');return}
     if(result.self){serverSelf=result.self;self={...result.self}}
-    showDiscovery({name:result.animal.name,kind:'바다 동물',todayCountry:result.animal.region,text:result.animal.text,image:result.animal.image,imageCredit:result.animal.imageCredit,in1520:''},0,0,!result.already,'잡았다! ');
+    showDiscovery({name:result.animal.name,kind:`바다 동물 · ${result.animal.region}`,todayCountry:'',text:result.animal.text,image:result.animal.image,imageCredit:result.animal.imageCredit,in1520:''},0,0,!result.already,'만났다! ');
     discoveryCount.textContent='';
   });
 }
-huntActionBtn.addEventListener('click',doCatchAnimal);
+huntActionBtn.addEventListener('click',doMeetAnimal);
 discoveryNext.addEventListener('click',()=>{if(landmarkQueue.length)openLandmark((landmarkIndex+1)%landmarkQueue.length)});
 socket.on('snapshot',snap=>{
   if(!joined)return;
@@ -754,7 +754,7 @@ function drawWindClouds(cw,ch,left,top,now=performance.now()){
 }
 
 function drawHuntAnimal(cw,ch,left,top){
-  if(!huntInteraction||!self||huntInteraction.caught)return;
+  if(!huntInteraction||!self||huntInteraction.met)return;
   const sx=(self.x+dxWrap(huntInteraction.x,self.x)-left)*zoom,sy=(huntInteraction.y-top)*zoom;
   if(sx<-80||sx>cw+80||sy<-60||sy>ch+60)return;
   const t=performance.now()/1000;

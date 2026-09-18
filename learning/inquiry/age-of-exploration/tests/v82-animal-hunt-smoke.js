@@ -1,5 +1,5 @@
 'use strict';
-// 동물 잡기 경주. 참가자마다 자기 동물이 따로 있고, 그 동물을 잡아야 최종 문제로 넘어간다.
+// 동물 만나기 경주. 참가자마다 자기 동물이 따로 있고, 그 동물을 만나야 최종 문제로 넘어간다.
 const {io}=require('socket.io-client');
 const assert=require('node:assert/strict');
 const BASE=process.env.TEST_URL||'http://127.0.0.1:3000';
@@ -59,7 +59,7 @@ const sleep=ms=>new Promise(r=>setTimeout(r,ms));
   for (const {socket} of players) {
     const snap=await once(socket,'snapshot',x=>x.huntInteraction);
     assert.equal(snap.huntInteraction.animal,'바다거북');
-    assert.equal(snap.huntInteraction.caught,false);
+    assert.equal(snap.huntInteraction.met,false);
     seen.push({x:snap.huntInteraction.x,y:snap.huntInteraction.y});
   }
   assert.ok(seen[0].x!==seen[1].x||seen[0].y!==seen[1].y,'참가자마다 동물이 따로 있어야 한다');
@@ -73,33 +73,33 @@ const sleep=ms=>new Promise(r=>setTimeout(r,ms));
   const away=Math.hypot(second.huntInteraction.x-homeX,second.huntInteraction.y-homeY)/TILE;
   assert.ok(away<=hunt.roamRadiusTiles+2,`동물이 사는 바다를 벗어나면 안 된다: ${Math.round(away)}칸`);
 
-  // 멀리서는 못 잡는다.
-  const tooFar=await ack(players[0].socket,'catchAnimal',{});
-  assert.equal(tooFar.ok,false,'멀리서 잡히면 안 된다');
+  // 멀리서는 못 만난다.
+  const tooFar=await ack(players[0].socket,'meetAnimal',{});
+  assert.equal(tooFar.ok,false,'멀리서 만나지면 안 된다');
   assert.match(tooFar.error,/가까이/);
 
-  // 동물 곁으로 가서 잡으면 최종 문제로 넘어간다.
+  // 동물 곁으로 가면 만날 수 있고, 만나면 최종 문제로 넘어간다.
   let caught=null;
   for (let i=0;i<70;i+=1) {
     const snap=await once(players[0].socket,'snapshot',x=>x.huntInteraction);
-    if (snap.huntInteraction.withinReach) { caught=await ack(players[0].socket,'catchAnimal',{}); break; }
+    if (snap.huntInteraction.withinReach) { caught=await ack(players[0].socket,'meetAnimal',{}); break; }
     // 학생이 이따금 동물 쪽을 다시 찍는 정도로만 쫓는다.
     players[0].socket.emit('setTarget',{x:snap.huntInteraction.x,y:snap.huntInteraction.y});
     await sleep(1200);
   }
-  assert.ok(caught?.ok,'동물 곁에 닿으면 잡을 수 있어야 한다');
+  assert.ok(caught?.ok,'동물 곁에 닿으면 만날 수 있어야 한다');
   assert.equal(caught.already,false);
   assert.equal(caught.animal.name,'바다거북');
-  assert.ok(caught.animal.text.length>40,'잡으면 그 동물 설명이 나와야 한다');
+  assert.ok(caught.animal.text.length>40,'만나면 그 동물 설명이 나와야 한다');
   assert.match(caught.animal.image,/\/assets\/landmarks\/hunt-sea-turtle\.webp\?v=\d+$/,'그 지형이 아니라 동물 사진이 나와야 한다');
   assert.ok(caught.animal.imageCredit.startsWith('사진 '),'사진 출처를 함께 보여 줘야 한다');
 
   const quiz=await once(players[0].socket,'snapshot',x=>x.progress?.finalQuizStatus==='answering');
-  assert.equal(quiz.progress.finalQuizStatus,'answering','잡으면 최종 문제가 열려야 한다');
+  assert.equal(quiz.progress.finalQuizStatus,'answering','만나면 최종 문제가 열려야 한다');
 
   // 다른 참가자의 동물은 그대로 남아 있다.
   const other=await once(players[1].socket,'snapshot',x=>x.huntInteraction);
-  assert.equal(other.huntInteraction.caught,false,'남의 동물까지 잡히면 안 된다');
+  assert.equal(other.huntInteraction.met,false,'남의 동물까지 만난 것이 되면 안 된다');
 
   console.log(JSON.stringify({ok:true,animal:'바다거북',perPlayerAnimals:true,roams:true,farRejected:true,quizOpened:true}));
   teacher.disconnect();a.disconnect();b.disconnect();

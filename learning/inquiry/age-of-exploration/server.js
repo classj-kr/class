@@ -189,9 +189,10 @@ function nearbyDiscovery(p) {
   return { id: best.id, name: best.name, kind: best.kind, found: discoveryListFor(p.roomCode, p.name).includes(best.id) };
 }
 
-// 동물 잡기 경주. 참가자마다 자기 동물이 따로 있고, 정해진 바다 안을 어슬렁거린다.
+// 동물 만나기 경주. 참가자마다 자기 동물이 따로 있고, 정해진 바다 안을 어슬렁거린다.
+// 잡는 것이 아니라 만나서 살펴보는 것이다 — 한 반이 고래를 서른 마리 잡을 수는 없다.
 // 아이콘끼리 겹쳐도 그냥 두는데, 애초에 학생은 자기 동물만 본다.
-const CATCH_RADIUS_TILES = 3.0;
+const MEET_RADIUS_TILES = 3.0;
 const ANIMAL_SPEED_RATIO = 0.22;
 const ANIMAL_TURN_PER_SECOND = 1.1;
 const ANIMAL_CALM_TILES = 9;
@@ -229,17 +230,17 @@ function huntStateFor(roomCode, studentName, animal) {
   if (!state || state.animalId !== animal.id) {
     const radius = animal.roamRadiusTiles * TILE;
     const spot = randomSeaNear(animal.homeX, animal.homeY, radius * 0.8);
-    state = { animalId: animal.id, x: spot.x, y: spot.y, heading: Math.random() * Math.PI * 2, caught: false };
+    state = { animalId: animal.id, x: spot.x, y: spot.y, heading: Math.random() * Math.PI * 2, met: false };
     room.hunts[studentName] = state;
   }
   return state;
 }
 
 function moveSeaAnimal(state, animal, dt, player = null) {
-  if (state.caught) return;
+  if (state.met) return;
   state.heading += (Math.random() - 0.5) * ANIMAL_TURN_PER_SECOND * dt;
   // 배가 가까이 오면 눈치채지 못한 듯 느릿느릿 움직인다.
-  // 안 그러면 끝까지 꼬리잡기만 되어서 아이들이 영영 못 잡는다.
+  // 안 그러면 끝까지 꼬리잡기만 되어서 아이들이 영영 못 만난다.
   let ratio = ANIMAL_SPEED_RATIO;
   if (player) {
     const gap = distanceXY(player.x, player.y, state.x, state.y) / TILE;
@@ -274,8 +275,8 @@ function huntInteractionFor(p) {
     region: animal.placeName,
     x: Math.round(state.x),
     y: Math.round(state.y),
-    caught: state.caught === true,
-    withinReach: distance <= CATCH_RADIUS_TILES * TILE,
+    met: state.met === true,
+    withinReach: distance <= MEET_RADIUS_TILES * TILE,
     distanceTiles: Math.round(distance / TILE)
   };
 }
@@ -1147,8 +1148,8 @@ function buildStartChoiceSet(payload, roomCode) {
   };
 }
 
-// 동물 잡기 경주의 목적지는 도시 목록이 아니라 지도 위 지형(발견 지점)이다.
-// 도착 판정을 동물을 잡았는지로 하므로 도착 반경은 쓰지 않는다.
+// 동물 만나기 경주의 목적지는 도시 목록이 아니라 지도 위 지형(발견 지점)이다.
+// 도착 판정을 동물을 만났는지로 하므로 도착 반경은 쓰지 않는다.
 function huntTargetPlace(animal) {
   const place = RESOLVED_DISCOVERIES.find((item) => item.id === animal.placeId);
   if (!place) throw new Error(`${animal.placeName}을 지도에서 찾지 못했습니다.`);
@@ -1166,35 +1167,49 @@ function huntTargetPlace(animal) {
   };
 }
 
-// 교사는 "동물 잡기"만 고르면 되고, 어떤 동물인지는 게임이 정한다.
+// 교사는 "동물 만나기"만 고르면 되고, 어떤 동물인지는 게임이 정한다.
+// 아무거나 고르면 대서양에서 출발했는데 북태평양 동물이 걸려 한 차시에 못 끝낸다.
+// 그래서 출발 도시에서 가까운 바다부터 추리고, 그 가운데서 고른다.
 // 바로 앞 미션과 같은 동물은 피해서 수업마다 다른 곳으로 가게 한다.
-function pickSeaAnimal(roomCode) {
+function pickSeaAnimal(roomCode, starts = []) {
   const all = [...RESOLVED_SEA_ANIMALS.values()];
   const previous = store.room(roomCode).lastHuntAnimalId || '';
-  const pool = all.filter((item) => item.id !== previous);
-  const chosen = (pool.length ? pool : all)[Math.floor(Math.random() * (pool.length ? pool.length : all.length))];
+  const points = starts.map((place) => place.seaPoint).filter(Boolean);
+  let pool = all;
+  if (points.length) {
+    const withDistance = all.map((animal) => ({
+      animal,
+      distance: Math.min(...points.map((point) => distanceXY(point.x, point.y, animal.homeX, animal.homeY)))
+    })).sort((a, b) => a.distance - b.distance);
+    pool = withDistance.slice(0, 3).map((item) => item.animal);
+  }
+  const fresh = pool.filter((item) => item.id !== previous);
+  const source = fresh.length ? fresh : pool;
+  const chosen = source[Math.floor(Math.random() * source.length)];
   store.room(roomCode).lastHuntAnimalId = chosen.id;
   return chosen;
 }
 
 function buildArrivalRace(payload, roomCode) {
-  let requestedAnimal = payload?.huntAnimalId ? seaAnimalById(payload.huntAnimalId) : null;
-  if (payload?.huntAnimalId && !requestedAnimal) throw new Error('그런 동물을 찾지 못했습니다.');
-  if (!requestedAnimal && payload?.hunt === true) requestedAnimal = pickSeaAnimal(roomCode);
-  const target = requestedAnimal ? huntTargetPlace(requestedAnimal) : catalogPlace(payload?.targetPlaceId, '도착 도시 또는 지형');
   const ids = Array.isArray(payload?.startPlaceIds) ? payload.startPlaceIds.map(String) : [];
   const unique = [...new Set(ids.filter(Boolean))];
   if (unique.length !== 4) throw new Error('서로 다른 출발 도시 4곳을 선택하세요.');
   const starts = unique.map((id) => {
     const place = catalogPlace(id, '출발 도시');
     if (place.canEnterFromSea !== true) throw new Error('출발지는 항구 도시만 선택할 수 있습니다.');
-    if (place.id === target.id) throw new Error(`${josaEun(place.name)} 도착지와 같아 출발 도시로 사용할 수 없습니다.`);
     return place;
   });
+  let requestedAnimal = payload?.huntAnimalId ? seaAnimalById(payload.huntAnimalId) : null;
+  if (payload?.huntAnimalId && !requestedAnimal) throw new Error('그런 동물을 찾지 못했습니다.');
+  if (!requestedAnimal && payload?.hunt === true) requestedAnimal = pickSeaAnimal(roomCode, starts);
+  const target = requestedAnimal ? huntTargetPlace(requestedAnimal) : catalogPlace(payload?.targetPlaceId, '도착 도시 또는 지형');
+  for (const place of starts) {
+    if (place.id === target.id) throw new Error(`${josaEun(place.name)} 도착지와 같아 출발 도시로 사용할 수 없습니다.`);
+  }
   const huntAnimal = requestedAnimal;
   const targetMode = target.access === 'land' ? 'land' : 'sea';
   const targetPoint = huntAnimal ? target.seaPoint : pointForMode(target, targetMode);
-  const title = cleanText(payload?.title, MAX_MISSION_TITLE) || (huntAnimal ? `${target.name}의 ${huntAnimal.animal} 잡기` : `${target.name} 도착 미션`);
+  const title = cleanText(payload?.title, MAX_MISSION_TITLE) || (huntAnimal ? `${target.name}의 ${huntAnimal.animal} 만나기` : `${target.name} 도착 미션`);
   return {
     hunt: huntAnimal ? { animalId: huntAnimal.id, animal: huntAnimal.animal, region: huntAnimal.placeName } : null,
     id: `arrival-race-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 8)}`,
@@ -1203,7 +1218,7 @@ function buildArrivalRace(payload, roomCode) {
     mode: 'any',
     title,
     instructions: huntAnimal
-      ? `${target.name}에서 ${huntAnimal.animal}을 찾아 잡은 뒤 최종 문제 3개를 모두 제출하면 완주합니다. 출발 도시 네 곳 중 하나를 선택하세요.`
+      ? `${target.name}에서 ${josaEul(huntAnimal.animal)} 찾아 만난 뒤 최종 문제 3개를 모두 제출하면 완주합니다. 출발 도시 네 곳 중 하나를 선택하세요.`
       : `${target.name}에 도착한 뒤 최종 문제 3개를 모두 제출하면 완주합니다. 출발 도시 네 곳 중 하나를 선택하세요.`,
     atlasInstruction: '',
     markerMode: 'hidden',
@@ -2023,23 +2038,23 @@ io.on('connection', (socket) => {
     ack({ ok:true, first, discovery:{ id:item.id, name:item.name, kind:item.kind, todayCountry:item.todayCountry, in1520:item.in1520, text:item.text, image:landmarkArtUrl(item.id), imageCredit:photoCreditFor(item.id) }, found:found.length, total:FOUND_TOTAL, self:publicPlayer(p) });
   });
 
-  socket.on('catchAnimal', (payload, ack = () => {}) => {
+  socket.on('meetAnimal', (payload, ack = () => {}) => {
     const p = playerForSocket(socket);
     if (!p) return ack({ ok:false, error:'접속 상태가 아닙니다.' });
     const mission = store.room(p.roomCode).activeMission;
-    if (!isArrivalRace(mission) || !mission.hunt) return ack({ ok:false, error:'동물을 잡는 미션이 아닙니다.' });
+    if (!isArrivalRace(mission) || !mission.hunt) return ack({ ok:false, error:'동물을 만나는 미션이 아닙니다.' });
     const animal = seaAnimalById(mission.hunt.animalId);
     if (!animal) return ack({ ok:false, error:'그런 동물을 찾지 못했습니다.' });
-    if (p.mode !== 'sea') return ack({ ok:false, error:'배를 타고 있어야 잡을 수 있습니다.' });
+    if (p.mode !== 'sea') return ack({ ok:false, error:'배를 타고 있어야 만날 수 있습니다.' });
     const progress = progressFor(p.roomCode, p.name, mission.id, false);
     if (!progress) return ack({ ok:false, error:'미션 진행 기록을 찾지 못했습니다.' });
     const state = huntStateFor(p.roomCode, p.name, animal);
-    if (state.caught) return ack({ ok:true, already:true, animal:{ name:animal.animal, region:animal.placeName, text:animal.text, image:landmarkArtUrl(animal.id) || landmarkArtUrl(animal.placeId), imageCredit:photoCreditFor(animal.id) || photoCreditFor(animal.placeId) } });
-    if (distanceXY(p.x, p.y, state.x, state.y) > CATCH_RADIUS_TILES * TILE) return ack({ ok:false, error:`${animal.animal}에 더 가까이 붙으세요.` });
-    state.caught = true;
+    if (state.met) return ack({ ok:true, already:true, animal:{ name:animal.animal, region:animal.placeName, text:animal.text, image:landmarkArtUrl(animal.id) || landmarkArtUrl(animal.placeId), imageCredit:photoCreditFor(animal.id) || photoCreditFor(animal.placeId) } });
+    if (distanceXY(p.x, p.y, state.x, state.y) > MEET_RADIUS_TILES * TILE) return ack({ ok:false, error:`${animal.animal}에 더 가까이 가세요.` });
+    state.met = true;
     store.scheduleSave();
-    setNotice(p, `${animal.animal}을 잡았습니다!`);
-    io.to(`teacher:${p.roomCode}`).emit('teacherEvent', { type:'catch', name:p.name, discovery:animal.animal, at:Date.now() });
+    setNotice(p, `${josaEul(animal.animal)} 만났습니다!`);
+    io.to(`teacher:${p.roomCode}`).emit('teacherEvent', { type:'meet', name:p.name, discovery:animal.animal, at:Date.now() });
     beginFinalQuiz(p.roomCode, p, mission, progress);
     ack({ ok:true, already:false, animal:{ name:animal.animal, region:animal.placeName, text:animal.text, image:landmarkArtUrl(animal.id) || landmarkArtUrl(animal.placeId), imageCredit:photoCreditFor(animal.id) || photoCreditFor(animal.placeId) }, self:publicPlayer(p) });
   });
@@ -2644,9 +2659,9 @@ function updateMissionProgress(roomCode, p) {
           { worldPixelWidth: WORLD_PIXEL_W, worldPixelHeight: WORLD_PIXEL_H, tile: TILE }
         );
     if (activeMission.hunt) {
-      // 동물 경주는 지점에 닿는 것만으로는 안 되고, 동물을 찾아 잡아야 한다.
+      // 동물 경주는 지점에 닿는 것만으로는 안 되고, 동물을 찾아 만나야 한다.
       const state = huntStateFor(roomCode, p.name, seaAnimalById(activeMission.hunt.animalId));
-      if (state?.caught) beginFinalQuiz(roomCode, p, activeMission, progress);
+      if (state?.met) beginFinalQuiz(roomCode, p, activeMission, progress);
       return;
     }
     if (arrived) beginFinalQuiz(roomCode, p, activeMission, progress);

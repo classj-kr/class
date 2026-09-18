@@ -1,5 +1,5 @@
 'use strict';
-// 동물 잡기 자료. 사진은 자유 이용 되는 것만 쓰고 출처를 적어 둔다.
+// 동물 만나기 자료. 사진은 자유 이용 되는 것만 쓰고 출처를 적어 둔다.
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
@@ -33,10 +33,12 @@ for (const animal of animals) {
 // 교사 현황판에서 동물 잡기를 고를 수 있어야 한다.
 const teacher = fs.readFileSync(path.join(__dirname, '..', 'public', 'teacher.html'), 'utf8');
 assert.match(teacher, /id="missionKind"/, '미션 종류를 고르는 칸이 있어야 한다');
-assert.match(teacher, /value="hunt">바다 동물 잡기/, '동물 잡기 선택지가 있어야 한다');
+assert.match(teacher, /value="hunt">바다 동물 만나기/, '동물 만나기 선택지가 있어야 한다');
+// 잡는 것이 아니라 만나는 것이다. 한 반이 고래를 서른 마리 잡을 수는 없다.
+assert.doesNotMatch(teacher, /동물 잡기/, '잡기라는 말이 남아 있으면 안 된다');
 assert.match(teacher, /payload\.hunt\s*=\s*true/, '동물 잡기라고 알려야 한다');
 // 교사가 동물을 고르지 않는다. 게임이 알아서 고른다.
 assert.doesNotMatch(teacher, /id="huntAnimal"/, '교사가 동물을 고르는 칸이 있으면 안 된다');
-assert.match(teacher, /알아서 고릅니다/, '동물은 게임이 고른다고 알려야 한다');
+assert.match(teacher, /만날 동물과 바다는 게임이 알아서 고릅니다/, '동물은 게임이 고른다고 알려야 한다');
 
 console.log(JSON.stringify({ ok: true, animals: animals.length, regions: [...new Set(animals.map((a) => discoveries.get(a.placeId).name))].length }));
