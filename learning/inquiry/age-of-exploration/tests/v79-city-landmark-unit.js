@@ -38,12 +38,29 @@ for (const item of later) {
   assert.ok(Number(item.built.slice(0, 4)) > 1520, `${item.name} 은 1520년 뒤에 세워진 것이 아님`);
 }
 
-// 그림 요청문에 1520년 뒤 건물을 그리라고 시키는 곳이 없어야 한다.
 const fs = require('node:fs');
+// 그림 요청문에 1520년 뒤 건물을 그리라고 시키는 곳이 없어야 한다.
 const prompts = fs.readFileSync(require('node:path').join(__dirname, '..', 'CITY-ART-PROMPTS.md'), 'utf8');
 for (const word of ['포탈라궁을', '타지마할을', '성 바실리 대성당을', '베르사유 궁전을']) {
   assert.ok(!prompts.includes(`건물 ${word}`), `그림 요청문이 ${word} 그리라고 시킴`);
 }
+
+// 사진은 자유 이용이 되는 것만 쓰고, 이름을 밝히는 조건이 붙은 것은 출처를 같이 적어 둔다.
+const path = require('node:path');
+const credits = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', 'catalog', 'photo-credits.json'), 'utf8'));
+const photoDir = path.join(__dirname, '..', 'public', 'assets', 'landmarks');
+const FREE_LICENSE = /^(CC0|CC BY|Public domain|KOGL)/i;
+let withPhoto = 0;
+for (const item of landmarks) {
+  const file = path.join(photoDir, `${item.id}.webp`);
+  if (!fs.existsSync(file)) continue;
+  withPhoto += 1;
+  const credit = credits[item.id];
+  assert.ok(credit, `${item.name} 사진의 출처가 적혀 있지 않음`);
+  assert.ok(FREE_LICENSE.test(credit.license), `${item.name} 사진이 자유 이용 조건이 아님: ${credit.license}`);
+  assert.ok(String(credit.author || '').length >= 2, `${item.name} 사진 찍은 이가 없음`);
+}
+assert.equal(withPhoto, landmarks.length, '명소 사진이 빠진 곳이 있음');
 
 const byCity = {};
 for (const item of landmarks) byCity[item.cityId] = (byCity[item.cityId] || 0) + 1;
@@ -53,5 +70,6 @@ console.log(JSON.stringify({
   standing: landmarks.length - later.length,
   later: later.length,
   cities: Object.keys(byCity).length,
-  foundTotal: catalog.DISCOVERIES.length + landmarks.length
+  foundTotal: catalog.DISCOVERIES.length + landmarks.length,
+  photos: withPhoto
 }));

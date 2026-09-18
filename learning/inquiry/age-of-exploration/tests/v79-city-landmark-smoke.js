@@ -38,7 +38,8 @@ function ack(s,e,p={}){return new Promise((r,j)=>{const x=setTimeout(()=>j(new E
   assert.equal(opened.landmark.todayCountry,'포르투갈');
   assert.equal(opened.landmark.built,'1514~1519년');
   assert.ok(opened.landmark.text.length>40,'설명이 와야 한다');
-  assert.ok(Object.hasOwn(opened.landmark,'image'),'사진 자리가 있어야 한다');
+  assert.match(opened.landmark.image,/\/assets\/landmarks\/lm-belem-tower\.webp\?v=\d+$/,'오늘날 사진이 와야 한다');
+  assert.match(opened.landmark.imageCredit,/^사진 .+ · .+ · 위키미디어 공용$/,'사진 출처를 함께 보여 줘야 한다');
   assert.equal(opened.total,discoveries.length+landmarks.length);
   assert.ok(opened.self.discoveryIds.includes(belem.id),'찾은 목록에 들어가야 한다');
 
@@ -74,6 +75,9 @@ function ack(s,e,p={}){return new Promise((r,j)=>{const x=setTimeout(()=>j(new E
   assert.equal(later.landmark.status,'later');
   assert.match(later.landmark.text,/1609년/,'언제 세워지는지 적혀 있어야 한다');
   assert.equal(later.landmark.built,'1609~1616년');
+  // 1520년에 없던 건물도 오늘날 사진은 보여 준다.
+  assert.match(later.landmark.image,/\/assets\/landmarks\/lm-blue-mosque-later\.webp\?v=\d+$/);
+  assert.ok(later.landmark.imageCredit.startsWith('사진 '));
 
   console.log(JSON.stringify({ok:true,city:'리스본',landmark:opened.landmark.name,built:opened.landmark.built,found:opened.found,total:opened.total,blockedOutsideCity:true,istanbul:names}));
   sailor.disconnect();teacher.disconnect();student.disconnect();

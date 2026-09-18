@@ -15,7 +15,11 @@ TARGET = APP / 'public' / 'assets' / 'landmarks'
 SIZE = (1200, 800)
 
 landmarks = json.loads((APP / 'data' / 'catalog' / 'city-landmarks.json').read_text(encoding='utf-8'))
+discoveries = json.loads((APP / 'data' / 'catalog' / 'discoveries.json').read_text(encoding='utf-8'))
 names = {item['id']: item['name'] for item in landmarks}
+# 지도 위 발견 지점도 같은 폴더에 사진을 둘 수 있다. 다만 없다고 빠진 것으로 세지는 않는다.
+optional = {item['id']: item['name'] for item in discoveries}
+names_all = {**optional, **names}
 
 TARGET.mkdir(parents=True, exist_ok=True)
 if not SOURCE.exists():
@@ -27,7 +31,7 @@ for src in sorted(SOURCE.iterdir()):
     if src.suffix.lower() not in ('.png', '.webp', '.jpg', '.jpeg'):
         continue
     key = src.stem.lower()
-    if key not in names:
+    if key not in names_all:
         unknown.append(src.name)
         continue
     out = TARGET / f'{key}.webp'
@@ -40,9 +44,10 @@ for src in sorted(SOURCE.iterdir()):
         im = im.crop(((w - nw) // 2, 0, (w - nw) // 2 + nw, h))
     else:
         nh = w * SIZE[1] // SIZE[0]
-        im = im.crop((0, (h - nh) // 2, w, (h - nh) // 2 + nh))
+        top = (h - nh) // 3
+        im = im.crop((0, top, w, top + nh))
     im.resize(SIZE, Image.LANCZOS).save(out, 'WEBP', quality=82, method=6)
-    done.append(f'{names[key]} ({out.stat().st_size // 1024}KB)')
+    done.append(f'{names_all[key]} ({out.stat().st_size // 1024}KB)')
 
 have = {p.stem for p in TARGET.glob('*.webp')}
 missing = [names[k] for k in names if k not in have]

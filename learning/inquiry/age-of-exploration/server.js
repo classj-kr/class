@@ -131,6 +131,14 @@ for (const item of MissionCatalog.CITY_LANDMARKS) {
 const LANDMARK_BY_ID = new Map(MissionCatalog.CITY_LANDMARKS.map((item) => [item.id, item]));
 const FOUND_TOTAL = RESOLVED_DISCOVERIES.length + MissionCatalog.CITY_LANDMARKS.length;
 const LANDMARK_ART_DIR = path.join(__dirname, 'public', 'assets', 'landmarks');
+// 사진은 위키미디어 공용에서 자유 이용이 되는 것만 가져왔다. 대부분 이름을 밝히는 조건이 붙어 있어 함께 내려보낸다.
+const PHOTO_CREDITS = JSON.parse(fs.readFileSync(path.join(__dirname, 'data', 'catalog', 'photo-credits.json'), 'utf8'));
+
+function photoCreditFor(id) {
+  const credit = PHOTO_CREDITS[id];
+  if (!credit) return '';
+  return `사진 ${credit.author} · ${credit.license} · 위키미디어 공용`;
+}
 
 function landmarkArtUrl(id) {
   try {
@@ -154,7 +162,8 @@ function publicLandmark(item) {
   return {
     id: item.id, name: item.name, kind: item.kind, status: item.status,
     todayCountry: item.todayCountry, built: item.built || '',
-    in1520: item.in1520, text: item.text, image: landmarkArtUrl(item.id)
+    in1520: item.in1520, text: item.text,
+    image: landmarkArtUrl(item.id), imageCredit: photoCreditFor(item.id)
   };
 }
 
@@ -1879,7 +1888,7 @@ io.on('connection', (socket) => {
       setNotice(p, `발견! ${item.name}`);
       io.to(`teacher:${p.roomCode}`).emit('teacherEvent', { type:'discovery', name:p.name, discovery:item.name, at:Date.now() });
     }
-    ack({ ok:true, first, discovery:{ id:item.id, name:item.name, kind:item.kind, todayCountry:item.todayCountry, in1520:item.in1520, text:item.text }, found:found.length, total:FOUND_TOTAL, self:publicPlayer(p) });
+    ack({ ok:true, first, discovery:{ id:item.id, name:item.name, kind:item.kind, todayCountry:item.todayCountry, in1520:item.in1520, text:item.text, image:landmarkArtUrl(item.id), imageCredit:photoCreditFor(item.id) }, found:found.length, total:FOUND_TOTAL, self:publicPlayer(p) });
   });
 
   socket.on('inspectLandmark', (payload, ack = () => {}) => {
