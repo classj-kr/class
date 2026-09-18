@@ -1336,6 +1336,8 @@ function navIndexToPoint(grid, index, mode) {
 function planRoute(p, destination) {
   p.route = null;
   p.slideSign = 0;
+  p.stuckSince = 0;
+  p.skippedWaypoints = 0;
   const grid = navGridReady();
   // 먼저 온전히 열린 물길로 찾고, 좁은 해협처럼 그런 길이 없으면 해안을 스치는 길도 허용한다.
   let path = null;
@@ -1855,7 +1857,7 @@ io.on('connection', (socket) => {
       left: payload?.left === true,
       right: payload?.right === true
     };
-    if (p.input.up || p.input.down || p.input.left || p.input.right) p.target = null;
+    if (p.input.up || p.input.down || p.input.left || p.input.right) { p.target = null; p.route = null; }
     p.lastInputAt = Date.now();
     p.lastSeen = Date.now();
   });
@@ -2609,9 +2611,10 @@ function movePlayer(p, dt) {
       targetDistance = nextMotion.distancePixels;
       vx = nextMotion.x;
       vy = nextMotion.y;
+    } else {
+      vx = targetMotion.x;
+      vy = targetMotion.y;
     }
-    vx = targetMotion.x;
-    vy = targetMotion.y;
   }
 
   const len = Math.hypot(vx, vy);
@@ -2665,13 +2668,15 @@ function movePlayer(p, dt) {
   );
   let { moved, blockedTerrain } = moveWithTerrainCollision(p, mapDelta.x, mapDelta.y);
 
-  // 해안에 막히면 곧바로 멈추지 말고 해안선을 따라 한쪽으로 비껴 나아간다.
+  // 해안에 막히면 해안선을 따라 돈다. 예전에는 "목적지에 가까워질 때만" 비껴 갔는데,
+  // 만 안쪽이나 섬 사이처럼 한동안 멀어져야 빠져나오는 곳에서 배가 얼어붙었다.
+  // 이제는 한쪽 방향을 정해 벽을 따라 계속 돌고, 너무 오래 돌면 길을 다시 찾는다.
   if (!moved && p.target) {
     const distanceToTarget = () => GeoMotion.initialDirection(p.x, p.y, p.target.x, p.target.y, WORLD_PIXEL_W, WORLD_PIXEL_H).distancePixels;
     const before = distanceToTarget();
     const preferredSign = p.slideSign === -1 ? -1 : 1;
     const angles = [];
-    for (const magnitude of [Math.PI / 6, Math.PI / 3, Math.PI / 2]) {
+    for (const magnitude of [Math.PI / 6, Math.PI / 3, Math.PI / 2, (Math.PI * 2) / 3, (Math.PI * 5) / 6]) {
       angles.push(magnitude * preferredSign, magnitude * -preferredSign);
     }
     for (const angle of angles) {
@@ -2687,22 +2692,52 @@ function movePlayer(p, dt) {
       );
       const slide = moveWithTerrainCollision(p, slideDelta.x, slideDelta.y);
       blockedTerrain = slide.blockedTerrain || blockedTerrain;
-      if (slide.moved && distanceToTarget() < before - 0.05) {
+      if (slide.moved) {
         moved = true;
         p.slideSign = angle >= 0 ? 1 : -1;
+        if (distanceToTarget() >= before - 0.05) p.slideAwayMs = (p.slideAwayMs || 0) + dt * 1000;
+        else p.slideAwayMs = 0;
         break;
       }
       p.x = startX;
       p.y = startY;
     }
+  } else if (moved) {
+    p.slideAwayMs = 0;
   }
+  if (moved) { p.stuckSince = 0; p.skippedWaypoints = 0; }
   if (moved && !blockedTerrain) p.slideSign = 0;
 
-  // 길을 따라가다 막히면 한 번은 길을 다시 찾아 본다.
-  if (!moved && p.route && p.route.length && Date.now() - (p.lastRoutePlanAt || 0) > 1200) {
-    const destination = p.route[p.route.length - 1];
-    p.lastRoutePlanAt = Date.now();
-    planRoute(p, destination);
+  // 길을 따라가다 막혔을 때. 바닷길 격자는 두 칸을 한 덩이로 보기 때문에,
+  // 좁은 곳에서는 격자로는 지날 수 있어도 실제로는 닿을 수 없는 지점이 나온다.
+  // 그 자리에서 배를 얼려 두면 안 되므로 다음 지점으로 건너뛰고,
+  // 그래도 계속 막히면 길을 버려 학생이 손으로 몰 수 있게 놓아 준다.
+  // 벽을 20초 넘게 따라 돌면 그 지점은 포기하고 다음 지점을 본다.
+  if (moved && (p.slideAwayMs || 0) > 20000) {
+    p.slideAwayMs = 0;
+    if (p.route && p.route.length) p.target = p.route.shift();
+    else if (Date.now() - (p.lastRoutePlanAt || 0) > 3000) { p.lastRoutePlanAt = Date.now(); planRoute(p, p.target); }
+  }
+
+  if (!moved && p.target) {
+    if (!p.stuckSince) p.stuckSince = Date.now();
+    const stuckMs = Date.now() - p.stuckSince;
+    if (stuckMs > 500) {
+      if (p.route && p.route.length) {
+        p.skippedWaypoints = (p.skippedWaypoints || 0) + 1;
+        p.stuckSince = Date.now();
+        if (p.skippedWaypoints > 10) {
+          const destination = p.route[p.route.length - 1];
+          p.route = null;
+          p.target = destination;
+          p.skippedWaypoints = 0;
+        } else {
+          p.target = p.route.shift();
+        }
+      } else if (stuckMs > 3000) {
+        stopPlayer(p);
+      }
+    }
     return;
   }
 
