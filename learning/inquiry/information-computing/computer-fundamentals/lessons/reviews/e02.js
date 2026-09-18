@@ -3,10 +3,10 @@
     // e02 차시의 다시 쓴 문항. 같은 번호가 여럿이면 뒤엣것이 살아남는다.
     (window.COMPUTER_REVIEWED_QUESTIONS = window.COMPUTER_REVIEWED_QUESTIONS || []).push(
         ["e02", 0, {
-            text: "과제 제출란은 PowerPoint 문서(.pptx)를 요구합니다. 파일 정보가 다음과 같을 때 제출할 실제 문서는 무엇입니까?",
-            options: ["발표자료.pptx.exe — 형식: 응용 프로그램", "발표자료.pptx.lnk — 형식: 바로가기", "발표자료.pptx — 형식: PowerPoint 문서", "발표자료.pptx.zip — 형식: 압축 파일"],
+            text: "과제 제출란은 PowerPoint 문서(.pptx)를 요구합니다. 파일 이름이 다음과 같을 때 제출할 실제 문서는 무엇입니까?",
+            options: ["발표자료.pptx.exe", "발표자료.pptx.lnk", "발표자료.최종.pptx", "발표자료.pptx.zip"],
             answer: 2, concept: "Extension and File Type",
-            explanation: "실제 확장자는 파일 이름의 마지막 점 뒤에 있는 부분입니다. ‘발표자료.pptx’는 마지막 확장자와 파일 정보가 PowerPoint 문서로 일치합니다."
+            explanation: "실제 확장자는 파일 이름의 마지막 점 뒤에 있는 부분입니다. ‘발표자료.최종.pptx’는 마지막 확장자가 .pptx인 PowerPoint 문서이고, 나머지는 실행 파일(.exe)·바로가기(.lnk)·압축 파일(.zip)입니다."
         }],
         ["e02", 2, {
             text: "‘보고서.pdf’가 처음에는 브라우저로 열렸습니다. PDF 기본 앱을 문서 앱으로 바꾼 뒤 같은 자리의 같은 파일을 여니 문서 앱으로 열렸습니다. 바뀐 것은?",
