@@ -21,6 +21,9 @@
   let activeSoundGameRounds = [];
 
   const soundPattern = (sound) => sound.replaceAll("_", "").replace(/^-/, "");
+  // 소리가 똑같은 낱말은 '들은 단어 고르기'에서 정답이 둘이 되므로 함께 보기로 내지 않는다.
+  const soundAlikeGroups = [["pair", "pear"], ["right", "write"], ["which", "witch"]];
+  const soundsAlike = (a, b) => soundAlikeGroups.some((group) => group.includes(a) && group.includes(b));
   const focusFitsWord = (word, focus) => {
     const parts = focus.replace(/^-/, "").split("_").filter(Boolean);
     let cursor = 0;
@@ -80,11 +83,23 @@
     const lessonWords = lesson.words.filter((word) => data.wordBank[word]?.picture);
     if (!lessonWords.length) return [];
     const targets = shuffledTargets(lessonWords, lesson.questionCount || Math.min(8, lessonWords.length));
+    const allPictureWords = Object.keys(data.wordBank).filter((word) => data.wordBank[word]?.picture);
     return targets.map((answer, index) => {
       const sound = focusForAnswer(lesson, answer, index);
-      const earlierDistractors = picturedWords.filter((word) => word !== answer && !lesson.words.includes(word));
-      const allPictureWords = Object.keys(data.wordBank).filter((word) => data.wordBank[word]?.picture && word !== answer && !lesson.words.includes(word));
-      const distractors = shuffle([...new Set([...earlierDistractors, ...allPictureWords])]).slice(0, 3);
+      // 오늘 배운 글자가 든 보기가 정답 하나뿐이면 듣지 않고 글자만 보고도 고른다.
+      // 같은 글자가 든 낱말을 먼저 채우고, 오늘 낱말 하나와 다른 차시 낱말을 섞어 '오늘 본 낱말 고르기'도 막는다.
+      const fits = (word) => Boolean(sound) && focusFitsWord(word, sound);
+      const farLength = (word) => Math.abs(word.length - answer.length) > 1 ? 1 : 0;
+      // 같은 글자가 든 낱말, 길이가 비슷한 낱말 순으로 (sort는 같은 값끼리 순서를 지킨다)
+      const rank = (words) => [...words].sort((a, b) => (Number(fits(b)) - Number(fits(a))) || (farLength(a) - farLength(b)));
+      const usable = (word) => word !== answer && !soundsAlike(word, answer);
+      const outsideLesson = (word) => usable(word) && !lesson.words.includes(word);
+      const sameLesson = rank(shuffle(lessonWords.filter(usable)));
+      const learnedFirst = [...shuffle(picturedWords.filter(outsideLesson)), ...shuffle(allPictureWords.filter((word) => outsideLesson(word) && !picturedWords.includes(word)))];
+      const outside = rank(learnedFirst);
+      const firstPicks = [sameLesson[0], outside[0]].filter(Boolean);
+      const rest = rank(shuffle([...sameLesson.slice(1), ...outside.slice(1)]));
+      const distractors = [...new Set([...firstPicks, ...rest])].slice(0, 3);
       return { sound, answer, choices: [answer, ...distractors] };
     });
   }
