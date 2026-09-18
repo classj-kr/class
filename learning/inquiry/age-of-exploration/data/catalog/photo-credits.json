@@ -1780,5 +1780,269 @@
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
     "source": "https://commons.wikimedia.org/wiki/File:Ponte_Vecchio_from_Ponte_alle_Grazie.jpg"
+  },
+  "bering_strait": {
+    "author": "NASA/GSFC/JPL/MISR-Team",
+    "license": "Public domain",
+    "licenseUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Bering_Strait.jpeg"
+  },
+  "strait-of-dover": {
+    "author": "No machine-readable author provided. NormanEinstein assumed (based on copyright ",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:Strait_of_Dover_map.png"
+  },
+  "rhine-river": {
+    "author": "Lucazzitto",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Middle_Bridge,_Basel,_Switzerland.JPG"
+  },
+  "volga-river": {
+    "author": "Alexxx1979",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Yaroslavl._Volga_River._Cathedral_of_the_Dormition_P5212700_2200.jpg"
+  },
+  "alps": {
+    "author": "Terra (EOS AM-1) satellite",
+    "license": "Public domain",
+    "licenseUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Alps_2007-03-13_10.10UTC_1px-250m.jpg"
+  },
+  "danube_delta": {
+    "author": "European Space Agency",
+    "license": "Attribution",
+    "licenseUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Danube_Delta_ESA23450088.jpeg"
+  },
+  "black-sea": {
+    "author": "The SeaWiFS Project",
+    "license": "Public domain",
+    "licenseUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:The_Danube_Spills_into_the_Black_Sea.jpg"
+  },
+  "niagara_falls": {
+    "author": "Saffron Blaze",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:3Falls_Niagara.jpg"
+  },
+  "caspian-sea": {
+    "author": "Jeff Schmaltz, MODIS Rapid Response Team, NASA/GSFC",
+    "license": "Public domain",
+    "licenseUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Caspian_Sea_from_orbit.jpg"
+  },
+  "rocky-mountains": {
+    "author": "Hogs555",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Sneffelsrange.JPG"
+  },
+  "appalachian-mountains": {
+    "author": "J Guth",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Blue_Ridge_Parkway_Sunset_(43691100).jpeg"
+  },
+  "japanese_archipelago": {
+    "author": "SeaWiFS Project, NASA/Goddard Space Flight Center, and ORBIMAGE",
+    "license": "Public domain",
+    "licenseUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Satellite_View_of_Japan_1999.jpg"
+  },
+  "gibraltar_strait": {
+    "author": "NASA",
+    "license": "Public domain",
+    "licenseUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:STS059-238-074_Strait_of_Gibraltar.jpg"
+  },
+  "tibetan-plateau": {
+    "author": "NASA",
+    "license": "Public domain",
+    "licenseUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Himalaya_composite.jpg"
+  },
+  "nile_delta": {
+    "author": "NASA",
+    "license": "Public domain",
+    "licenseUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Nile_delta_landsat_false_color.jpg"
+  },
+  "mississippi_mouth": {
+    "author": "National Park Service",
+    "license": "Public domain",
+    "licenseUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Mississippi_River_Watershed_Map_North_America.png"
+  },
+  "himalayas": {
+    "author": "NASA Landsat image",
+    "license": "Public domain",
+    "licenseUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Himalayas_and_allied_ranges_NASA_Landsat_showing_the_eight_thousanders,_annotated_with_major_rivers.jpg"
+  },
+  "indus-river": {
+    "author": "Heavyrunner",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Nanga_Parbat_Indus_Gorge.jpg"
+  },
+  "persian-gulf": {
+    "author": "NASA",
+    "license": "Public domain",
+    "licenseUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:PersianGulf_vue_satellite_du_golfe_persique.jpg"
+  },
+  "strait-of-hormuz": {
+    "author": "MODIS Land Rapid Response Team, NASA GSFC",
+    "license": "Public domain",
+    "licenseUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Strait_of_Hormuz_and_Musandam_Peninsula_(MODIS_2018-12-10).jpg"
+  },
+  "sahara": {
+    "author": "Project Apollo Archive",
+    "license": "Public domain",
+    "licenseUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Sahara_real_color.jpg"
+  },
+  "hawaiian_islands": {
+    "author": "Jacques Descloitres",
+    "license": "Public domain",
+    "licenseUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Hawaje-NoRedLine.jpg"
+  },
+  "deccan-plateau": {
+    "author": "PadFoot2008",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Deccan,_India.png"
+  },
+  "mekong-river": {
+    "author": "Bjørn Christian Tørrissen",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Mekong-River-Near-Luang-Prabang.jpg"
+  },
+  "panama_isthmus": {
+    "author": "알 수 없음",
+    "license": "Public domain",
+    "licenseUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:IsthmusOfPanama.png"
+  },
+  "malacca_strait": {
+    "author": "Derives from png uploaded by User:Wolrd blank map",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Strait_of_Malacca_highlighted.png"
+  },
+  "malay_archipelago": {
+    "author": "Galelio",
+    "license": "Public domain",
+    "licenseUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Location_Malay_Archipelago.png"
+  },
+  "great_rift_valley": {
+    "author": "USGS",
+    "license": "Public domain",
+    "licenseUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Tectonical_map_of_East_Africa.png"
+  },
+  "cape_good_hope": {
+    "author": "Diego Delso",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Playa_Dias,_Cape_Point,_Sud%C3%A1frica,_2018-07-23,_DD_103.jpg"
+  },
+  "pampas": {
+    "author": "Alex Pereira",
+    "license": "Public domain",
+    "licenseUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:SerraGeralI.jpg"
+  },
+  "cape-horn": {
+    "author": "알 수 없음",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:CapeHorn.jpg"
+  },
+  "drake-passage": {
+    "author": "GMT (OMC) base map modified by Giovanni Fattori",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:Drake_passage_en.png"
+  },
+  "bosporus": {
+    "author": "Astronaut photograph ISS008-E-21752",
+    "license": "Public domain",
+    "licenseUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Istanbul_and_Bosporus_big.jpg"
+  },
+  "crimea_peninsula": {
+    "author": "Andy Shustykevych",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Southern_coast_of_Crimea_(Panorama)_-_panoramio.jpg"
+  },
+  "andes": {
+    "author": "Alexander Gerst",
+    "license": "CC BY-SA 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Andes_-_Anden_-_29526977937.jpg"
+  },
+  "philippine_archipelago": {
+    "author": "Vyacheslav Argenberg",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Palawan,_Puerto_Princesa_Runway,_Antonio_Bautista_Air_Base,_PAF,_Philippines.jpg"
+  },
+  "aleutian_islands": {
+    "author": "NASA Earth Observatory images by Joshu…",
+    "license": "Public domain",
+    "licenseUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Umnak_oli_2014123_lrg.jpg"
+  },
+  "aegean_islands": {
+    "author": "NASA",
+    "license": "Public domain",
+    "licenseUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:ISS-59_Aegean_Sea,_Greece_and_Italy_with_Sicily.jpg"
+  },
+  "yellow-river": {
+    "author": "NASA Earth Observatory images by Laure…",
+    "license": "Public domain",
+    "licenseUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Building_Up_the_Yellow_River_Delta.jpeg"
+  },
+  "mississippi-river": {
+    "author": "U.S. Fish and Wildlife Service - Midwe…",
+    "license": "Public domain",
+    "licenseUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Mississippi_River_Bluff_(22154759891).jpg"
+  },
+  "red-sea": {
+    "author": "European Space Agency",
+    "license": "Attribution",
+    "licenseUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Deep_blue_Red_Sea_reefs.jpg"
+  },
+  "caribbean-sea": {
+    "author": "European Union, Copernicus Sentinel-2…",
+    "license": "Attribution",
+    "licenseUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:The_San_Bernardo_Archipelago_in_the_Caribbean_Sea_(Copernicus_2024-01-13).jpg"
+  },
+  "patagonia": {
+    "author": "GerthMichael",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:Patagonia_1.jpg"
+  },
+  "amazon_mouth": {
+    "author": "Coordenação-Geral de Observação da Terra",
+    "license": "CC BY-SA 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Amazon_River_mouth_on_the_Atlantic.jpg"
   }
 }
