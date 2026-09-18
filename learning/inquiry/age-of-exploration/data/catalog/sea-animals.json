@@ -1,0 +1,74 @@
+[
+  {
+    "id": "hunt-cod",
+    "placeId": "grand-banks-cod",
+    "region": "그랜드뱅크스 대구 어장",
+    "animal": "대구",
+    "todayCountry": "캐나다 앞바다",
+    "roamRadiusTiles": 55,
+    "text": "찬 물살과 더운 물살이 만나는 얕은 바다에 플랑크톤이 몰려 대구가 떼로 삽니다. 1497년 카보트가 다녀온 뒤 유럽 어선이 몰려들었고, 소금에 절이고 말린 대구는 오래 두고 먹을 수 있어 먼바다 항해의 식량이 되었습니다. 배 한 척이 여름 한 철에 수만 마리를 잡아 갔습니다."
+  },
+  {
+    "id": "hunt-fur-seal",
+    "placeId": "aleutian_islands",
+    "region": "알류샨 열도",
+    "animal": "물개",
+    "todayCountry": "미국",
+    "roamRadiusTiles": 60,
+    "text": "북태평양의 찬 바다에 사는 물개로, 두꺼운 속털이 있어 얼음물에서도 얼지 않습니다. 여름이면 몇십만 마리가 같은 바위섬으로 돌아와 새끼를 낳습니다. 우나간 사람들은 물개 가죽으로 배와 옷을 지어 썼습니다."
+  },
+  {
+    "id": "hunt-marine-iguana",
+    "placeId": "galapagos-islands",
+    "region": "갈라파고스 제도",
+    "animal": "바다이구아나",
+    "todayCountry": "에콰도르",
+    "roamRadiusTiles": 40,
+    "text": "세상에서 바닷물에 들어가 먹이를 찾는 유일한 도마뱀입니다. 바위에 붙은 해초를 뜯어 먹고, 몸이 식으면 검은 바위에 엎드려 햇볕을 쬡니다. 짠물을 마시게 되므로 콧구멍으로 소금을 내뿜습니다."
+  },
+  {
+    "id": "hunt-humpback",
+    "placeId": "drake-passage",
+    "region": "드레이크 해협",
+    "animal": "혹등고래",
+    "todayCountry": "칠레·남극 사이 공해",
+    "roamRadiusTiles": 70,
+    "text": "몸길이 15미터가 넘는 고래로, 여름에는 남극 바다에서 크릴을 먹고 겨울에는 따뜻한 바다로 수천 킬로미터를 옮겨 갑니다. 여럿이 함께 거품으로 그물을 쳐서 물고기를 몰아 한꺼번에 삼킵니다. 수컷이 부르는 긴 노래는 수십 킬로미터 밖까지 퍼집니다."
+  },
+  {
+    "id": "hunt-manta",
+    "placeId": "great-barrier-reef",
+    "region": "그레이트배리어리프",
+    "animal": "만타가오리",
+    "todayCountry": "오스트레일리아",
+    "roamRadiusTiles": 55,
+    "text": "날개를 편 너비가 7미터에 이르는 큰 가오리로, 물을 들이켜 플랑크톤만 걸러 먹습니다. 이빨로 무는 일이 없고 꼬리에 독침도 없습니다. 몸 아래쪽 무늬가 저마다 달라서, 사람 지문처럼 한 마리 한 마리를 가려낼 수 있습니다."
+  },
+  {
+    "id": "hunt-dugong",
+    "placeId": "red-sea",
+    "region": "홍해",
+    "animal": "듀공",
+    "todayCountry": "이집트·수단·사우디아라비아·예멘",
+    "roamRadiusTiles": 55,
+    "text": "얕은 바다의 해초를 뜯어 먹고 사는 젖먹이 동물로, 하루에 수십 킬로그램씩 먹습니다. 물 밖으로 고개를 내밀고 새끼를 안고 있는 모습 때문에 옛 뱃사람들이 인어로 잘못 본 것으로 봅니다. 헤엄이 느려서 사람 손을 많이 탔습니다."
+  },
+  {
+    "id": "hunt-sea-turtle",
+    "placeId": "caribbean-sea",
+    "region": "카리브해",
+    "animal": "바다거북",
+    "todayCountry": "중앙아메리카와 서인도 제도 여러 나라",
+    "roamRadiusTiles": 60,
+    "text": "먼바다를 수천 킬로미터 헤엄쳐 다니다가, 알을 낳을 때는 자기가 태어난 바로 그 모래밭으로 돌아옵니다. 땅의 자기장을 길잡이로 삼는 것으로 봅니다. 1520년 무렵 이 바다에는 거북이 헤아릴 수 없이 많아, 배가 지나가기 어렵다고 적은 기록이 있을 정도였습니다."
+  },
+  {
+    "id": "hunt-nutmeg-pigeon",
+    "placeId": "banda-islands",
+    "region": "반다 제도",
+    "animal": "육두구비둘기",
+    "todayCountry": "인도네시아",
+    "roamRadiusTiles": 35,
+    "text": "육두구 열매를 통째로 삼키고 씨를 다른 섬에 떨어뜨려, 이 나무를 섬에서 섬으로 퍼뜨리는 새입니다. 육두구는 이 작은 섬 몇 개에서만 자라서 유럽에서 같은 무게의 금만큼 값이 나갔습니다. 새 한 마리가 향신료 무역의 뿌리인 셈입니다."
+  }
+]

@@ -189,6 +189,97 @@ function nearbyDiscovery(p) {
   return { id: best.id, name: best.name, kind: best.kind, found: discoveryListFor(p.roomCode, p.name).includes(best.id) };
 }
 
+// 동물 잡기 경주. 참가자마다 자기 동물이 따로 있고, 정해진 바다 안을 어슬렁거린다.
+// 아이콘끼리 겹쳐도 그냥 두는데, 애초에 학생은 자기 동물만 본다.
+const CATCH_RADIUS_TILES = 3.0;
+const ANIMAL_SPEED_RATIO = 0.22;
+const ANIMAL_TURN_PER_SECOND = 1.1;
+const ANIMAL_CALM_TILES = 9;
+const RESOLVED_SEA_ANIMALS = new Map(MissionCatalog.SEA_ANIMALS.map((item) => {
+  const place = MissionCatalog.DISCOVERIES.find((d) => d.id === item.placeId);
+  const cell = MissionCatalog.latLonToCell(place.lat, place.lon);
+  return [item.id, {
+    ...item,
+    placeName: place.name,
+    homeX: wrapX(cell.x * TILE),
+    homeY: Math.max(TILE, Math.min(WORLD_PIXEL_H - TILE, cell.y * TILE))
+  }];
+}));
+
+function seaAnimalById(id) {
+  return RESOLVED_SEA_ANIMALS.get(String(id || '')) || null;
+}
+
+// 동물이 뭍에 오르지 않도록 바다 타일에서만 자리를 잡는다.
+function randomSeaNear(x, y, radiusPixels) {
+  for (let tries = 0; tries < 40; tries += 1) {
+    const angle = Math.random() * Math.PI * 2;
+    const distance = Math.sqrt(Math.random()) * radiusPixels;
+    const nx = wrapX(x + Math.cos(angle) * distance);
+    const ny = Math.max(TILE, Math.min(WORLD_PIXEL_H - TILE, y + Math.sin(angle) * distance));
+    if (terrainAtPixel(nx, ny).type === 'sea') return { x: nx, y: ny };
+  }
+  return { x: wrapX(x), y };
+}
+
+function huntStateFor(roomCode, studentName, animal) {
+  const room = store.room(roomCode);
+  room.hunts = room.hunts && typeof room.hunts === 'object' ? room.hunts : {};
+  let state = room.hunts[studentName];
+  if (!state || state.animalId !== animal.id) {
+    const radius = animal.roamRadiusTiles * TILE;
+    const spot = randomSeaNear(animal.homeX, animal.homeY, radius * 0.8);
+    state = { animalId: animal.id, x: spot.x, y: spot.y, heading: Math.random() * Math.PI * 2, caught: false };
+    room.hunts[studentName] = state;
+  }
+  return state;
+}
+
+function moveSeaAnimal(state, animal, dt, player = null) {
+  if (state.caught) return;
+  state.heading += (Math.random() - 0.5) * ANIMAL_TURN_PER_SECOND * dt;
+  // 배가 가까이 오면 눈치채지 못한 듯 느릿느릿 움직인다.
+  // 안 그러면 끝까지 꼬리잡기만 되어서 아이들이 영영 못 잡는다.
+  let ratio = ANIMAL_SPEED_RATIO;
+  if (player) {
+    const gap = distanceXY(player.x, player.y, state.x, state.y) / TILE;
+    if (gap <= ANIMAL_CALM_TILES) ratio *= 0.22;
+    else if (gap <= ANIMAL_CALM_TILES * 2) ratio *= 0.55;
+  }
+  const speed = SEA_BASE_SPEED * ratio;
+  const radius = animal.roamRadiusTiles * TILE;
+  for (let attempt = 0; attempt < 6; attempt += 1) {
+    const delta = GeoMotion.localDeltaToMap(Math.cos(state.heading) * speed * dt, Math.sin(state.heading) * speed * dt, state.y, WORLD_PIXEL_H);
+    const nx = wrapX(state.x + delta.x);
+    const ny = Math.max(TILE, Math.min(WORLD_PIXEL_H - TILE, state.y + delta.y));
+    const insideHome = distanceXY(nx, ny, animal.homeX, animal.homeY) <= radius;
+    if (insideHome && terrainAtPixel(nx, ny).type === 'sea') { state.x = nx; state.y = ny; return; }
+    // 뭍이나 사는 곳 바깥이면 방향을 틀어 본다.
+    state.heading += Math.PI / 3 + Math.random() * 0.6;
+  }
+}
+
+function huntInteractionFor(p) {
+  const mission = store.room(p.roomCode).activeMission;
+  if (!isArrivalRace(mission) || !mission.hunt || p.mode !== 'sea' || p.transition) return null;
+  const animal = seaAnimalById(mission.hunt.animalId);
+  if (!animal) return null;
+  const progress = progressFor(p.roomCode, p.name, mission.id, false);
+  if (!progress || progress.status === 'completed' || progress.finalQuizStatus === 'answering') return null;
+  const state = huntStateFor(p.roomCode, p.name, animal);
+  const distance = distanceXY(p.x, p.y, state.x, state.y);
+  return {
+    animalId: animal.id,
+    animal: animal.animal,
+    region: animal.placeName,
+    x: Math.round(state.x),
+    y: Math.round(state.y),
+    caught: state.caught === true,
+    withinReach: distance <= CATCH_RADIUS_TILES * TILE,
+    distanceTiles: Math.round(distance / TILE)
+  };
+}
+
 const CITY_ART_DIR = path.join(__dirname, 'public', 'assets', 'cities', '1520');
 
 function cityArtUrl(source) {
@@ -1056,8 +1147,29 @@ function buildStartChoiceSet(payload, roomCode) {
   };
 }
 
+// 동물 잡기 경주의 목적지는 도시 목록이 아니라 지도 위 지형(발견 지점)이다.
+// 도착 판정을 동물을 잡았는지로 하므로 도착 반경은 쓰지 않는다.
+function huntTargetPlace(animal) {
+  const place = RESOLVED_DISCOVERIES.find((item) => item.id === animal.placeId);
+  if (!place) throw new Error(`${animal.placeName}을 지도에서 찾지 못했습니다.`);
+  return {
+    id: place.id,
+    name: place.name,
+    category: place.kind || '자연',
+    region: place.todayCountry || '',
+    continent: '',
+    atlasHint: '',
+    access: 'sea',
+    arrivalRadiusTiles: animal.roamRadiusTiles,
+    seaPoint: { x: place.x, y: place.y },
+    landPoint: { x: place.x, y: place.y }
+  };
+}
+
 function buildArrivalRace(payload, roomCode) {
-  const target = catalogPlace(payload?.targetPlaceId, '도착 도시 또는 지형');
+  const requestedAnimal = payload?.huntAnimalId ? seaAnimalById(payload.huntAnimalId) : null;
+  if (payload?.huntAnimalId && !requestedAnimal) throw new Error('그런 동물을 찾지 못했습니다.');
+  const target = requestedAnimal ? huntTargetPlace(requestedAnimal) : catalogPlace(payload?.targetPlaceId, '도착 도시 또는 지형');
   const ids = Array.isArray(payload?.startPlaceIds) ? payload.startPlaceIds.map(String) : [];
   const unique = [...new Set(ids.filter(Boolean))];
   if (unique.length !== 4) throw new Error('서로 다른 출발 도시 4곳을 선택하세요.');
@@ -1067,16 +1179,20 @@ function buildArrivalRace(payload, roomCode) {
     if (place.id === target.id) throw new Error(`${josaEun(place.name)} 도착지와 같아 출발 도시로 사용할 수 없습니다.`);
     return place;
   });
+  const huntAnimal = requestedAnimal;
   const targetMode = target.access === 'land' ? 'land' : 'sea';
-  const targetPoint = pointForMode(target, targetMode);
-  const title = cleanText(payload?.title, MAX_MISSION_TITLE) || `${target.name} 도착 미션`;
+  const targetPoint = huntAnimal ? target.seaPoint : pointForMode(target, targetMode);
+  const title = cleanText(payload?.title, MAX_MISSION_TITLE) || (huntAnimal ? `${target.name}의 ${huntAnimal.animal} 잡기` : `${target.name} 도착 미션`);
   return {
+    hunt: huntAnimal ? { animalId: huntAnimal.id, animal: huntAnimal.animal, region: huntAnimal.placeName } : null,
     id: `arrival-race-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 8)}`,
     roomCode,
     kind: 'arrivalRace',
     mode: 'any',
     title,
-    instructions: `${target.name}에 도착한 뒤 최종 문제 3개를 모두 제출하면 완주합니다. 출발 도시 네 곳 중 하나를 선택하세요.`,
+    instructions: huntAnimal
+      ? `${target.name}에서 ${huntAnimal.animal}을 찾아 잡은 뒤 최종 문제 3개를 모두 제출하면 완주합니다. 출발 도시 네 곳 중 하나를 선택하세요.`
+      : `${target.name}에 도착한 뒤 최종 문제 3개를 모두 제출하면 완주합니다. 출발 도시 네 곳 중 하나를 선택하세요.`,
     atlasInstruction: '',
     markerMode: 'hidden',
     targetPlace: {
@@ -1275,6 +1391,7 @@ function activeMissionState(roomCode, studentName, player = null) {
     cityInteraction: player ? cityInteractionForPlayer(player) : null,
     discoveryInteraction: player ? nearbyDiscovery(player) : null,
     cityLandmarks: player ? cityLandmarksFor(player) : [],
+    huntInteraction: player ? huntInteractionFor(player) : null,
     portInteraction: player ? nearbyCatalogPort(player) : null
   };
 }
@@ -1894,6 +2011,27 @@ io.on('connection', (socket) => {
     ack({ ok:true, first, discovery:{ id:item.id, name:item.name, kind:item.kind, todayCountry:item.todayCountry, in1520:item.in1520, text:item.text, image:landmarkArtUrl(item.id), imageCredit:photoCreditFor(item.id) }, found:found.length, total:FOUND_TOTAL, self:publicPlayer(p) });
   });
 
+  socket.on('catchAnimal', (payload, ack = () => {}) => {
+    const p = playerForSocket(socket);
+    if (!p) return ack({ ok:false, error:'접속 상태가 아닙니다.' });
+    const mission = store.room(p.roomCode).activeMission;
+    if (!isArrivalRace(mission) || !mission.hunt) return ack({ ok:false, error:'동물을 잡는 미션이 아닙니다.' });
+    const animal = seaAnimalById(mission.hunt.animalId);
+    if (!animal) return ack({ ok:false, error:'그런 동물을 찾지 못했습니다.' });
+    if (p.mode !== 'sea') return ack({ ok:false, error:'배를 타고 있어야 잡을 수 있습니다.' });
+    const progress = progressFor(p.roomCode, p.name, mission.id, false);
+    if (!progress) return ack({ ok:false, error:'미션 진행 기록을 찾지 못했습니다.' });
+    const state = huntStateFor(p.roomCode, p.name, animal);
+    if (state.caught) return ack({ ok:true, already:true, animal:{ name:animal.animal, region:animal.placeName, text:animal.text, image:landmarkArtUrl(animal.id) || landmarkArtUrl(animal.placeId), imageCredit:photoCreditFor(animal.id) || photoCreditFor(animal.placeId) } });
+    if (distanceXY(p.x, p.y, state.x, state.y) > CATCH_RADIUS_TILES * TILE) return ack({ ok:false, error:`${animal.animal}에 더 가까이 붙으세요.` });
+    state.caught = true;
+    store.scheduleSave();
+    setNotice(p, `${animal.animal}을 잡았습니다!`);
+    io.to(`teacher:${p.roomCode}`).emit('teacherEvent', { type:'catch', name:p.name, discovery:animal.animal, at:Date.now() });
+    beginFinalQuiz(p.roomCode, p, mission, progress);
+    ack({ ok:true, already:false, animal:{ name:animal.animal, region:animal.placeName, text:animal.text, image:landmarkArtUrl(animal.id) || landmarkArtUrl(animal.placeId), imageCredit:photoCreditFor(animal.id) || photoCreditFor(animal.placeId) }, self:publicPlayer(p) });
+  });
+
   socket.on('inspectLandmark', (payload, ack = () => {}) => {
     const p = playerForSocket(socket);
     if (!p) return ack({ ok:false, error:'접속 상태가 아닙니다.' });
@@ -2196,6 +2334,7 @@ io.on('connection', (socket) => {
       const mission = buildArrivalRace(payload, roomCode);
       const waitingAtMinutes = freezeClassClock(roomCode);
       clearMissionRuntime(roomCode);
+      store.room(roomCode).hunts = {};
       store.setActiveMission(roomCode, mission);
       const room = rooms.get(roomCode);
       if (room) {
@@ -2492,6 +2631,12 @@ function updateMissionProgress(roomCode, p) {
           ARRIVAL_ZONES[target.id] || null,
           { worldPixelWidth: WORLD_PIXEL_W, worldPixelHeight: WORLD_PIXEL_H, tile: TILE }
         );
+    if (activeMission.hunt) {
+      // 동물 경주는 지점에 닿는 것만으로는 안 되고, 동물을 찾아 잡아야 한다.
+      const state = huntStateFor(roomCode, p.name, seaAnimalById(activeMission.hunt.animalId));
+      if (state?.caught) beginFinalQuiz(roomCode, p, activeMission, progress);
+      return;
+    }
     if (arrived) beginFinalQuiz(roomCode, p, activeMission, progress);
     return;
   }
@@ -2786,10 +2931,14 @@ setInterval(() => {
   const dt = SIMULATION_RATE / TICK_HZ;
   for (const [roomCode, room] of rooms) {
     const classMinutes = classGameMinutes(roomCode);
+    const mission = store.room(roomCode).activeMission;
+    const huntAnimal = isArrivalRace(mission) && mission.hunt ? seaAnimalById(mission.hunt.animalId) : null;
     for (const p of room.values()) {
       updateTimedTransition(p, classMinutes);
       movePlayer(p, dt);
       updateFatigue(p, dt);
+      // 동물은 참가자마다 따로 있고, 시계가 멈춰 있으면 함께 쉰다.
+      if (huntAnimal && roomClockShouldRun(roomCode)) moveSeaAnimal(huntStateFor(roomCode, p.name, huntAnimal), huntAnimal, dt, p);
       updateMissionProgress(roomCode, p);
     }
   }

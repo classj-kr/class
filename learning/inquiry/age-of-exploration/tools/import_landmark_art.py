@@ -16,7 +16,9 @@ SIZE = (1200, 800)
 
 landmarks = json.loads((APP / 'data' / 'catalog' / 'city-landmarks.json').read_text(encoding='utf-8'))
 discoveries = json.loads((APP / 'data' / 'catalog' / 'discoveries.json').read_text(encoding='utf-8'))
+sea_animals = json.loads((APP / 'data' / 'catalog' / 'sea-animals.json').read_text(encoding='utf-8'))
 names = {item['id']: item['name'] for item in landmarks}
+names.update({item['id']: item['animal'] for item in sea_animals})
 # 지도 위 발견 지점도 같은 폴더에 사진을 둘 수 있다. 다만 없다고 빠진 것으로 세지는 않는다.
 optional = {item['id']: item['name'] for item in discoveries}
 names_all = {**optional, **names}

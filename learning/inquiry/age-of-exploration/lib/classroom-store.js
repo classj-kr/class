@@ -9,7 +9,8 @@ function emptyRoom() {
     progress: {},
     settings: { paused: false, locked: false },
     clock: { gameMinutes: 0 },
-    discoveries: {}
+    discoveries: {},
+    hunts: {}
   };
 }
 
