@@ -68,6 +68,15 @@ for (const [lessonIndex, lesson] of lessons.entries()) {
     questions += 1;
     const character = lesson.characters.find((item) => item.character === question.target);
     if (!character) { errors.push(`${slug}: 문제 목표 글자가 카드에 없습니다.`); continue; }
+    // 같은 소리 다른 한자 낱말이 없는 글자의 훈음 고르기 문제: 보기 넷이 서로 다른 훈음이고 정답이 목표 글자의 훈음
+    if (question.type === 'huneum') {
+      const huTarget = lesson.characters.find((item) => item.character === question.target);
+      const huRight = (huTarget?.hunEum || []).map((item) => `${item.hun} ${item.eum}`)[0];
+      if (question.options.length !== 4 || new Set(question.options.map((option) => option[0])).size !== 4) errors.push(`${slug} ${question.target}: 훈음 보기는 서로 다른 넷이어야 합니다.`);
+      if (question.options[question.answer]?.[0] !== huRight) errors.push(`${slug} ${question.target}: 정답이 목표 글자의 훈음이 아닙니다.`);
+      if (!question.note.startsWith(`‘${question.target}’`)) errors.push(`${slug} ${question.target}: 훈음 문제 해설은 목표 글자로 시작해야 합니다.`);
+      continue;
+    }
     const leastOptions = fewExamples[question.target] ? 3 : 4;
     if (question.options.length !== 4 && question.options.length !== leastOptions) {
       errors.push(`${slug} ${question.target}: 보기가 ${leastOptions}개가 아닙니다.`);

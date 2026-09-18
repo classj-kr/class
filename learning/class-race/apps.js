@@ -233,7 +233,7 @@
             id: "hanja",
             title: "한자",
             subject: "한자",
-            scripts: ["/learning/literacy-numeracy/hanja-meaning/v2/quiz/race-data.js?v=20260918-quiz"],
+            scripts: ["/learning/literacy-numeracy/hanja-meaning/v2/quiz/race-data.js?v=20260918-quiz2"],
             getBank() {
                 // 자료는 단계별 문제 풀기 화면에서 모아 둔 것이다.
                 // 고치려면 hanja-meaning/_build-race-data.js 를 다시 돌린다.
@@ -245,7 +245,7 @@
                     questions.set(entry.id, {
                         id: entry.id,
                         category: `${entry.stage}단계 · ${entry.target}(${entry.reading})`.slice(0, 40),
-                        prompt: "낱말 넷 가운데 하나를 고르세요.",
+                        prompt: "보기 넷 가운데 하나를 고르세요.",
                         sentence: entry.prompt,
                         choices: [...entry.words],
                         answer: entry.answer,

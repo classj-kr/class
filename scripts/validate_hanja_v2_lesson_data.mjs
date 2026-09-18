@@ -15,6 +15,15 @@ for (const [lessonIndex, lesson] of lessons.entries()) {
     errors.push(`${lesson.term}: 문제가 구성 글자 수보다 많습니다.`);
   }
   for (const [questionIndex, question] of lesson.questions.entries()) {
+    // 같은 소리 다른 한자 낱말이 없는 글자의 훈음 고르기 문제: 보기 넷이 서로 다른 훈음이고 정답이 목표 글자의 훈음
+    if (question.type === 'huneum') {
+      const huTarget = lesson.characters.find((item) => item.character === question.target);
+      const huRight = (huTarget?.hunEum || []).map((item) => `${item.hun} ${item.eum}`)[0];
+      if (question.options.length !== 4 || new Set(question.options.map((option) => option[0])).size !== 4) errors.push(`${lesson.term} Q${questionIndex + 1}: 훈음 보기는 서로 다른 넷이어야 합니다.`);
+      if (question.options[question.answer]?.[0] !== huRight) errors.push(`${lesson.term} Q${questionIndex + 1}: 정답이 목표 글자의 훈음이 아닙니다.`);
+      if (!question.note.startsWith(`‘${question.target}’`)) errors.push(`${lesson.term} Q${questionIndex + 1}: 훈음 문제 해설은 목표 글자로 시작해야 합니다.`);
+      continue;
+    }
     // 우리말에서 쓰이는 낱말이 둘뿐인 글자는 보기를 셋까지만 채울 수 있다
     const leastOptions = fewExamples[question.target] ? 3 : 4;
     if (question.options.length !== 4 && question.options.length !== leastOptions) {

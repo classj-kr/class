@@ -17,6 +17,9 @@ const stages = fs.readdirSync(quizRoot)
 
 const questions = [];
 const problems = [];
+// 순위전은 예문 없이 낱말만 보여 준다. 흔한 다른 한자 표기 때문에 뜻이 갈리는 문항은 뺀다(단계 문제에는 그대로 둔다).
+const excluded = new Set(JSON.parse(fs.readFileSync(path.join(__dirname, "race-exclude.json"), "utf8")).items.map((item) => `${item.target}|${item.answer}`));
+let skipped = 0;
 
 for (const stage of stages) {
   const file = path.join(quizRoot, stage, "index.html");
@@ -49,6 +52,7 @@ for (const stage of stages) {
       problems.push(`${stage}단계 ${index + 1}번: 보기 낱말이 비었거나 겹친다`);
       return;
     }
+    if (excluded.has(`${item.target}|${correct[0].word}`)) { skipped += 1; return; }
     questions.push({
       id: `hj-${Number(stage)}-${index + 1}`,
       stage: Number(stage),
@@ -79,4 +83,4 @@ const body = [
 
 fs.writeFileSync(outFile, body);
 const stageCount = new Set(questions.map((question) => question.stage)).size;
-console.log(`\n${stageCount}단계 · ${questions.length}문항 → ${path.relative(process.cwd(), outFile)}`);
+console.log(`\n${stageCount}단계 · ${questions.length}문항 (예문 없이 뜻이 갈려 뺀 문항 ${skipped}) → ${path.relative(process.cwd(), outFile)}`);

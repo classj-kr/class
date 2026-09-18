@@ -75,7 +75,8 @@ function createQuizPage(stage) {
     return {
       target: question.target,
       reading,
-      prompt: `${question.target}(${reading})${subjectParticle(reading)} 들어가지 않은 말은?`,
+      // 같은 소리 다른 한자 낱말이 없는 글자는 훈음을 고르는 문제(type: 'huneum')로 낸다.
+      prompt: question.type === 'huneum' ? `${question.target}의 훈과 음으로 알맞은 것은?` : `${question.target}(${reading})${subjectParticle(reading)} 들어가지 않은 말은?`,
       note: question.note,
       options: question.options.map((option, optionIndex) => ({
         word: option[0],
