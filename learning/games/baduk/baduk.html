@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="../../../assets/device-game.css">
 <script src="../../../assets/network/game-network.js?v=20260821"></script>
 <script src="../../../assets/network/multiplayer-lobby.js?v=20260906b"></script>
+<script src="../../../assets/sound/music-control.js?v=20260910-click-cache-1" defer></script>
 </head>
 <body><main class="shell">
 <section id="missingScreen" class="panel hidden"><h1>이름이 없습니다</h1><p>이름 변경은 메인 화면에서만 가능합니다.</p><button class="primary" type="button" onclick="location.href='../../../'">메인 화면으로</button></section>
@@ -24,6 +25,8 @@
   <header class="panel"><div class="row spread"><div>ROOM <strong id="gameRoomCode">----</strong> · <strong id="modeName"></strong></div><div class="row"><button id="rulesBtnGame" class="secondary" type="button">규칙</button><button id="leaveBtnGame" class="secondary" type="button">메인 화면</button></div></div><div class="players"><div id="blackCard" class="player"><span class="sample black"></span><span><small>흑 · 선공</small><br><strong id="blackName">-</strong> · 잡은 돌 <b id="blackCaptured">0</b></span></div><div id="whiteCard" class="player"><span class="sample white"></span><span><small>백 · 후공</small><br><strong id="whiteName">-</strong> · 잡은 돌 <b id="whiteCaptured">0</b></span></div></div><div class="turn-area"><div id="turnBanner" class="turn-banner">대국 준비 중</div><div id="turnClock" class="clock">30</div></div></header>
   <section class="panel"><div class="board-frame"><div id="board" class="board" role="grid"></div></div><div id="gameStatus" class="game-status"></div><div class="actions"><button id="passBtn" class="secondary hidden" type="button">패스</button><button id="resignBtn" class="secondary" type="button">기권</button><span id="resultActions" class="hidden"><button id="rematchBtn" class="primary" type="button">재대국</button><button id="returnLobbyBtn" class="secondary" type="button">대기실</button></span></div></section>
 </section></main>
+
+<audio id="bgm" src="/learning/games/baduk/assets/sound/baduk-bgm.ogg" loop preload="auto"></audio>
 
 <section id="rulesOverlay" class="overlay hidden" role="dialog" aria-modal="true" aria-label="규칙"><div class="modal"><div id="rulesBody"></div><button id="closeRulesBtn" class="primary" type="button">확인</button></div></section>
 <section id="abortOverlay" class="overlay hidden" role="dialog" aria-modal="true"><div class="modal"><h2 id="abortTitle">연결 종료</h2><p id="abortMessage"></p><button class="primary" type="button" onclick="location.reload()">처음부터</button></div></section>
