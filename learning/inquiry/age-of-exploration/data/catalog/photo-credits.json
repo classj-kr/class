@@ -47,14 +47,8 @@
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.en",
     "source": "https://commons.wikimedia.org/wiki/File:Italy_-_Pisa_-_Leaning_Tower.jpg"
   },
-  "lm-rome-colosseum-vatican": {
-    "author": "FeaturedPics",
-    "license": "CC BY-SA 4.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "source": "https://commons.wikimedia.org/wiki/File:Colosseo_2020.jpg"
-  },
   "lm-tower-of-london": {
-    "author": "[Duncan]",
+    "author": "[Duncan] from Nottingham, UK",
     "license": "CC BY 2.0",
     "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
     "source": "https://commons.wikimedia.org/wiki/File:Tower_of_London_from_the_Shard_(8515883950).jpg"
@@ -78,7 +72,7 @@
     "source": "https://commons.wikimedia.org/wiki/File:Karl%C5%AFv_most_Praha,_Star%C3%A9_M%C4%9Bsto_20170810_007.jpg"
   },
   "lm-moscow-kremlin": {
-    "author": "Pavel Kazachkov",
+    "author": "Pavel Kazachkov from Moscow, Russia",
     "license": "CC BY 2.0",
     "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
     "source": "https://commons.wikimedia.org/wiki/File:Moscow_Kremlin_(8281675670).jpg"
@@ -120,13 +114,13 @@
     "source": "https://commons.wikimedia.org/wiki/File:Elmina_Castle_-_Ghana.jpg"
   },
   "lm-table-mountain": {
-    "author": "Danie van der Merwe",
+    "author": "Danie van der Merwe from Cape Town, South Africa",
     "license": "CC BY 2.0",
     "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
     "source": "https://commons.wikimedia.org/wiki/File:Table_Mountain_DanieVDM.jpg"
   },
   "lm-great-zimbabwe": {
-    "author": "Andrew Moore",
+    "author": "Andrew Moore from Johannesburg, South Africa",
     "license": "CC BY-SA 2.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
     "source": "https://commons.wikimedia.org/wiki/File:Conical_Tower_-_Great_Enclosure_III_(33736918448).jpg"
@@ -137,12 +131,6 @@
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
     "source": "https://commons.wikimedia.org/wiki/File:Hagia_Sophia_(228968325).jpeg"
   },
-  "lm-jerusalem-shrines": {
-    "author": "Ludvig14",
-    "license": "CC BY-SA 4.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "source": "https://commons.wikimedia.org/wiki/File:Jerusalem_DomeoftheRock_J65_(cropped).JPG"
-  },
   "lm-kaaba": {
     "author": "Richard Mortel",
     "license": "CC BY 2.0",
@@ -150,7 +138,7 @@
     "source": "https://commons.wikimedia.org/wiki/File:The_Ka%27ba,_Great_Mosque_of_Mecca,_Saudi_Arabia_(4).jpg"
   },
   "lm-samarkand-madrasa": {
-    "author": "Gustavo Jeronimo",
+    "author": "Registan_-_Gusjer.jpg: Gustavo Jeronimo from Aranjuez, Spain derivative work: Mr",
     "license": "CC BY 2.0",
     "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
     "source": "https://commons.wikimedia.org/wiki/File:RegistanSquare_Samarkand.jpg"
@@ -234,7 +222,7 @@
     "source": "https://commons.wikimedia.org/wiki/File:Saint_Basil%27s_Cathedral_in_Moscow.jpg"
   },
   "lm-blue-mosque-later": {
-    "author": "Pedro Szekely",
+    "author": "Pedro Szekely from Los Angeles, USA",
     "license": "CC BY-SA 2.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
     "source": "https://commons.wikimedia.org/wiki/File:Istanbul_(34223582516)_(cropped).jpg"
@@ -312,19 +300,19 @@
     "source": "https://commons.wikimedia.org/wiki/File:Wonder_Lake_and_Denali.jpg"
   },
   "valaam-monastery": {
-    "author": "Пресс-служба Президента Российской Фед…",
+    "author": "Пресс-служба Президента Российской Федерации",
     "license": "CC BY 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
     "source": "https://commons.wikimedia.org/wiki/File:Valaam_Monastery_(2017-07-11).jpg"
   },
   "sognefjord": {
-    "author": "en:User:Worldtraveller",
+    "author": "en:User:Worldtraveller,",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
     "source": "https://commons.wikimedia.org/wiki/File:Sognefjord,_Norway.jpg"
   },
   "hvalsey-church": {
-    "author": "Number 57",
+    "author": "Number 57 at English Wikipedia",
     "license": "CC0",
     "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
     "source": "https://commons.wikimedia.org/wiki/File:Hvalsey_Church.jpg"
@@ -336,13 +324,13 @@
     "source": "https://commons.wikimedia.org/wiki/File:Falu_koppargruva_July_2017_01.jpg"
   },
   "ural-mountains": {
-    "author": "ugraland",
+    "author": "ugraland [1] from Moscow, Russia",
     "license": "CC BY 2.0",
     "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
     "source": "https://commons.wikimedia.org/wiki/File:Landscape_view_in_Circumpolar_Urals.jpg"
   },
   "iona-abbey": {
-    "author": "Reading Tom",
+    "author": "Reading Tom from Reading, UK",
     "license": "CC BY 2.0",
     "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
     "source": "https://commons.wikimedia.org/wiki/File:Iona_Abbey_(45322644484).jpg"
@@ -354,7 +342,7 @@
     "source": "https://commons.wikimedia.org/wiki/File:%D0%A1%D0%B5%D1%80%D0%B3%D0%B8%D0%B5%D0%B2_%D0%9F%D0%BE%D1%81%D0%B0%D0%B4._%D0%A2%D1%80%D0%BE%D0%B8%D1%86%D0%B5-%D0%A1%D0%B5%D1%80%D0%B3%D0%B8%D0%B5%D0%B2%D0%B0_%D0%BB%D0%B0%D0%B2%D1%80%D0%B0._1.jpg"
   },
   "klyuchevskaya-volcano": {
-    "author": "Tamten",
+    "author": "Tamten at cs.wikipedia",
     "license": "Public domain",
     "licenseUrl": "",
     "source": "https://commons.wikimedia.org/wiki/File:Klju%C4%8Devskaja_za_v%C3%BDchodu_slunce.jpg"
@@ -366,7 +354,7 @@
     "source": "https://commons.wikimedia.org/wiki/File:Baltis_amber_road.jpg"
   },
   "giants-causeway": {
-    "author": "code poet on flickr",
+    "author": "code poet on flickr.",
     "license": "CC BY-SA 2.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
     "source": "https://commons.wikimedia.org/wiki/File:Causeway-code_poet-4.jpg"
@@ -384,7 +372,7 @@
     "source": "https://commons.wikimedia.org/wiki/File:Zesp%C3%B3%C5%82_Zamku_Krzy%C5%BCackiego_MALBORK_01.jpg"
   },
   "lake-baikal": {
-    "author": "Jacques Descloitres, MODIS Land Rapid…",
+    "author": "Jacques Descloitres, MODIS Land Rapid Response Team, NASA/GSFC",
     "license": "Public domain",
     "licenseUrl": "",
     "source": "https://commons.wikimedia.org/wiki/File:Baikal.A2001296.0420.250m-NASA.jpg"
@@ -402,7 +390,7 @@
     "source": "https://commons.wikimedia.org/wiki/File:Skellig_Michael03(js).jpg"
   },
   "lanse-aux-meadows": {
-    "author": "Dylan Kereluk",
+    "author": "Dylan Kereluk from White Rock, Canada",
     "license": "CC BY 2.0",
     "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
     "source": "https://commons.wikimedia.org/wiki/File:Authentic_Viking_recreation.jpg"
@@ -492,25 +480,25 @@
     "source": "https://commons.wikimedia.org/wiki/File:4748.1099_Menhire,_bis_zu_4_Meter_hoch,_von_OstnachWest_in_1167_Meter_Langen_Alignements_(Granit-Steinreihen)_in_einem_Halbkreis_endend_Le_M%C3%A9nec,_Carnac,_Departement_Morbihan,_Bretagne_Steffen_Heilfort.jpg"
   },
   "great-st-bernard-pass": {
-    "author": "Hagai Agmon-Snir حچاي اچمون-سنير חגי א…",
+    "author": "Hagai Agmon-Snir حچاي اچمون-سنير חגי אגמון-שניר",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
     "source": "https://commons.wikimedia.org/wiki/File:GreatStBernardPassAugust232023_03.jpg"
   },
   "postojna-cave": {
-    "author": "Ivan Ivankovic",
+    "author": "Ivan Ivankovic from Dubrovnik, Croatia",
     "license": "CC BY 2.0",
     "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
     "source": "https://commons.wikimedia.org/wiki/File:Postojna_(22206343750).jpg"
   },
   "grand-banks-cod": {
-    "author": "Treeman",
+    "author": "Treeman 18:57, 13 July 2006 (UTC)",
     "license": "CC BY 2.5",
     "licenseUrl": "https://creativecommons.org/licenses/by/2.5",
     "source": "https://commons.wikimedia.org/wiki/File:Grand_Banks.png"
   },
   "aral-sea": {
-    "author": "National Aeronautics and Space Adminis…",
+    "author": "National Aeronautics and Space Administration (NASA), collage by Dylan240.",
     "license": "Public domain",
     "licenseUrl": "",
     "source": "https://commons.wikimedia.org/wiki/File:Aral_Sea_1964_vs._August_25,_2026.png"
@@ -534,7 +522,7 @@
     "source": "https://commons.wikimedia.org/wiki/File:Yellowstone_National_Park_(WY,_USA),_Old_Faithful_Geyser_--_2022_--_2599.jpg"
   },
   "carrara-marble": {
-    "author": "Carrarino",
+    "author": "L'autore sono io Utente:Carrarino",
     "license": "CC BY 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
     "source": "https://commons.wikimedia.org/wiki/File:Carrara.PNG"
@@ -570,7 +558,7 @@
     "source": "https://commons.wikimedia.org/wiki/File:Mount_Elbrus_(cropped).jpg"
   },
   "madara-rider": {
-    "author": "No machine-readable author provided. D…",
+    "author": "No machine-readable author provided. Dom2002 assumed (based on copyright claims)",
     "license": "Public domain",
     "licenseUrl": "",
     "source": "https://commons.wikimedia.org/wiki/File:JE%C5%B9DZIEC_Z_MADARY.JPG"
@@ -600,7 +588,7 @@
     "source": "https://commons.wikimedia.org/wiki/File:Issykkul_plyag.jpg"
   },
   "kunya-urgench": {
-    "author": "Atilin",
+    "author": "The original uploader was Atilin at French Wikipedia.",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
     "source": "https://commons.wikimedia.org/wiki/File:Urgench.jpg"
@@ -618,7 +606,7 @@
     "source": "https://commons.wikimedia.org/wiki/File:Derbent_city._Dagestan.jpg"
   },
   "baekdu-mountain": {
-    "author": "Laika ac",
+    "author": "Laika ac from USA",
     "license": "CC BY-SA 2.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
     "source": "https://commons.wikimedia.org/wiki/File:Laika_ac_Mt._Paekdu_(7998657081).jpg"
@@ -756,7 +744,7 @@
     "source": "https://commons.wikimedia.org/wiki/File:Delphi,_Greece_-_panoramio.jpg"
   },
   "pico-mountain": {
-    "author": "Wo st 01 (There are 682 Pictures in my…",
+    "author": "Wo st 01 (There are 682 Pictures in my Category) See also Toolserver",
     "license": "CC BY-SA 3.0 de",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.en",
     "source": "https://commons.wikimedia.org/wiki/File:2010-08-09_Ponta_do_Pico_01.jpg"
@@ -780,7 +768,7 @@
     "source": "https://commons.wikimedia.org/wiki/File:Mt_Etna_and_Catania1.jpg"
   },
   "mycenae": {
-    "author": "Andy Hay",
+    "author": "Andy Hay from UK",
     "license": "CC BY 2.0",
     "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
     "source": "https://commons.wikimedia.org/wiki/File:Path_upto_the_Lion_Gate,_Mycenae_(28693130016).jpg"
@@ -810,7 +798,7 @@
     "source": "https://commons.wikimedia.org/wiki/File:Cliff_Palace-Colorado-Mesa_Verde_NP.jpg"
   },
   "cape-st-vincent": {
-    "author": "Husond",
+    "author": "The original uploader was Husond at English Wikipedia.",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
     "source": "https://commons.wikimedia.org/wiki/File:SaoVicente.JPG"
@@ -840,7 +828,7 @@
     "source": "https://commons.wikimedia.org/wiki/File:Canyon_River_Tree_(165872763).jpeg"
   },
   "chaco-canyon": {
-    "author": "Greg Willis",
+    "author": "Greg Willis from Denver, CO, usa",
     "license": "CC BY-SA 2.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
     "source": "https://commons.wikimedia.org/wiki/File:Chaco_Culture_NHP_(8023723138).jpg"
@@ -906,7 +894,7 @@
     "source": "https://commons.wikimedia.org/wiki/File:Itsukushima_Shrine_Torii_Gate_(13890465459).jpg"
   },
   "baalbek": {
-    "author": "Lodo",
+    "author": "Lodo from Moscow, Russia",
     "license": "CC BY-SA 2.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
     "source": "https://commons.wikimedia.org/wiki/File:Temple_of_Bacchus,_Baalbek,_Lebanon_(49890013476).jpg"
@@ -918,7 +906,7 @@
     "source": "https://commons.wikimedia.org/wiki/File:Hallasan_Above.jpg"
   },
   "leptis-magna": {
-    "author": "joepyrek",
+    "author": "joepyrek from Richmond, Va, USA",
     "license": "CC BY-SA 2.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
     "source": "https://commons.wikimedia.org/wiki/File:Leptis_Magna_(29)_(8288918733).jpg"
@@ -930,7 +918,7 @@
     "source": "https://commons.wikimedia.org/wiki/File:Ishtar_Gate.jpg"
   },
   "sakurajima": {
-    "author": "TANAKA Juuyoh",
+    "author": "TANAKA Juuyoh (talk)",
     "license": "CC BY 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
     "source": "https://commons.wikimedia.org/wiki/File:Sakurajima55.jpg"
@@ -972,7 +960,7 @@
     "source": "https://commons.wikimedia.org/wiki/File:Huangshan_pic_4.jpg"
   },
   "suez-isthmus": {
-    "author": "Jacques Descloitres, MODIS Rapid Respo…",
+    "author": "Jacques Descloitres, MODIS Rapid Response Team, NASA/sh",
     "license": "Public domain",
     "licenseUrl": "",
     "source": "https://commons.wikimedia.org/wiki/File:Nile_River_and_delta_from_orbit.jpg"
@@ -1032,7 +1020,7 @@
     "source": "https://commons.wikimedia.org/wiki/File:Map_of_Tassili_n%27Ajjer_and_surroundings-en.jpg"
   },
   "prayag-confluence": {
-    "author": "L1CENSET0K1LL",
+    "author": "L1CENSET0K1LL at English Wikipedia",
     "license": "Public domain",
     "licenseUrl": "",
     "source": "https://commons.wikimedia.org/wiki/File:NorthIndiaCircuit_250.jpg"
@@ -1086,7 +1074,7 @@
     "source": "https://commons.wikimedia.org/wiki/File:Save_the_sundarbans_20.jpg"
   },
   "nile-second-cataract": {
-    "author": "Mark Dingemanse",
+    "author": "The original uploader was Mark Dingemanse at English Wikipedia.",
     "license": "CC BY 2.5",
     "licenseUrl": "https://creativecommons.org/licenses/by/2.5",
     "source": "https://commons.wikimedia.org/wiki/File:Nubia_today.png"
@@ -1110,7 +1098,7 @@
     "source": "https://commons.wikimedia.org/wiki/File:Chichen_Itza_3.jpg"
   },
   "ajanta-caves": {
-    "author": "No machine-readable author provided. S…",
+    "author": "No machine-readable author provided. Soman assumed (based on copyright claims).",
     "license": "CC BY 2.5",
     "licenseUrl": "https://creativecommons.org/licenses/by/2.5",
     "source": "https://commons.wikimedia.org/wiki/File:Ajanta_(63).jpg"
@@ -1212,7 +1200,7 @@
     "source": "https://commons.wikimedia.org/wiki/File:Shwedagon_Pagoda_2017.jpg"
   },
   "my-son-sanctuary": {
-    "author": "Chainwit",
+    "author": "Chainwit.",
     "license": "CC BY 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
     "source": "https://commons.wikimedia.org/wiki/File:2024_-_M%E1%BB%B9_S%C6%A1n_Group_B,_C_and_D_-_img_23.jpg"
@@ -1224,13 +1212,13 @@
     "source": "https://commons.wikimedia.org/wiki/File:Jemen1988-022_hg.jpg"
   },
   "house-of-taga": {
-    "author": "CT Snow",
+    "author": "CT Snow from Hsinchu, Taiwan",
     "license": "CC BY 2.0",
     "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
     "source": "https://commons.wikimedia.org/wiki/File:Latte_stones_at_Taga_House,_Tinian.jpg"
   },
   "copan": {
-    "author": "Adalberto Hernandez Vega",
+    "author": "Adalberto Hernandez Vega from Copan Ruinas, Honduras",
     "license": "CC BY 2.0",
     "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
     "source": "https://commons.wikimedia.org/wiki/File:Copan_sculpture.jpg"
@@ -1266,7 +1254,7 @@
     "source": "https://commons.wikimedia.org/wiki/File:Mount_Mayon_Cagsawa_field_view_close-up_(Busay,_Daraga,_Albay;_04-21-2023).jpg"
   },
   "lake-chad": {
-    "author": "Jeff Schmaltz, MODIS Land Rapid Respon…",
+    "author": "Jeff Schmaltz, MODIS Land Rapid Response Team, NASA GSFC",
     "license": "Public domain",
     "licenseUrl": "",
     "source": "https://commons.wikimedia.org/wiki/File:Lake_Chad_(MODIS_2018-06-07).jpg"
@@ -1296,7 +1284,7 @@
     "source": "https://commons.wikimedia.org/wiki/File:Lalibela,_san_giorgio,_esterno_24.jpg"
   },
   "masaya-volcano": {
-    "author": "No machine-readable author provided. T…",
+    "author": "No machine-readable author provided. Tabla assumed (based on copyright claims).",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
     "source": "https://commons.wikimedia.org/wiki/File:Volcan_Masaya2.jpg"
@@ -1308,19 +1296,19 @@
     "source": "https://commons.wikimedia.org/wiki/File:Lake_tana.jpg"
   },
   "brihadisvara-thanjavur": {
-    "author": "Original: Rainer Halama",
+    "author": "Original: Rainer Halama Derivative work: UnpetitproleX",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
     "source": "https://commons.wikimedia.org/wiki/File:Brihadisvara_Temple_during_Maha_Shivaratri-WUS03611_(edit).jpg"
   },
   "trinidad-pitch-lake": {
-    "author": "Alexander Z",
+    "author": "Alexander Z.",
     "license": "Public domain",
     "licenseUrl": "",
     "source": "https://commons.wikimedia.org/wiki/File:Trinidad_pitch_lake_ENG.png"
   },
   "adams-bridge": {
-    "author": "This Image was created by User:PlaneMa…",
+    "author": "This Image was created by User:PlaneMad. If you are using the image under the cr",
     "license": "CC BY-SA 2.5",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.5",
     "source": "https://commons.wikimedia.org/wiki/File:Adams_Bridge_aerial.jpg"
@@ -1398,13 +1386,13 @@
     "source": "https://commons.wikimedia.org/wiki/File:Lobo_marino_(Zalophus_californianus_wollebaeki),_Punta_Pitt,_isla_de_San_Crist%C3%B3bal,_islas_Gal%C3%A1pagos,_Ecuador,_2015-07-24,_DD_11.JPG"
   },
   "lake-victoria": {
-    "author": "Earth Science and Remote Sensing Unit,…",
+    "author": "Earth Science and Remote Sensing Unit, Lyndon B. Johnson Space Center",
     "license": "Public domain",
     "licenseUrl": "",
     "source": "https://commons.wikimedia.org/wiki/File:ISS042-E-263206_-_View_of_Earth.jpg"
   },
   "chimborazo": {
-    "author": "Dick Culbert",
+    "author": "Dick Culbert from Gibsons, B.C., Canada",
     "license": "CC BY 2.0",
     "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
     "source": "https://commons.wikimedia.org/wiki/File:Chimborazo,_aspecto_norte,_Ecuador._(26354503702).jpg"
@@ -1440,7 +1428,7 @@
     "source": "https://commons.wikimedia.org/wiki/File:Aerial_view_of_the_Congo_River_near_Kisangani.jpg"
   },
   "krakatoa-island": {
-    "author": "Lithograph: Parker &amp; Coward, Britain",
+    "author": "Lithograph: Parker &amp; Coward, Britain;",
     "license": "Public domain",
     "licenseUrl": "",
     "source": "https://commons.wikimedia.org/wiki/File:Krakatoa_eruption_lithograph.jpg"
@@ -1470,7 +1458,7 @@
     "source": "https://commons.wikimedia.org/wiki/File:Besakih_Bali_Indonesia_Pura-Besakih-02.jpg"
   },
   "komodo-island": {
-    "author": "jon hanson",
+    "author": "jon hanson from London",
     "license": "CC BY-SA 2.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
     "source": "https://commons.wikimedia.org/wiki/File:Komodo_Island_north_aerial.jpg"
@@ -1488,7 +1476,7 @@
     "source": "https://commons.wikimedia.org/wiki/File:Paracas_Candelabra_-_Ica,_Peru.jpg"
   },
   "qeswachaka-bridge": {
-    "author": "CREDIT: Photo courtesy of Rutahsa Adve…",
+    "author": "CREDIT: Photo courtesy of Rutahsa Adventures www.rutahsa.com - uploaded with per",
     "license": "CC BY-SA 1.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/1.0",
     "source": "https://commons.wikimedia.org/wiki/File:IRB-6-BringingDeckMat-KC603-8.jpg"
@@ -1536,7 +1524,7 @@
     "source": "https://commons.wikimedia.org/wiki/File:Ha%CA%BBamonga.jpg"
   },
   "namib-desert": {
-    "author": "Jeff Schmaltz, MODIS Land Rapid Respon…",
+    "author": "Jeff Schmaltz, MODIS Land Rapid Response Team, NASA GSFC",
     "license": "Public domain",
     "licenseUrl": "",
     "source": "https://commons.wikimedia.org/wiki/File:Namib_desert_MODIS.jpg"
@@ -1584,7 +1572,7 @@
     "source": "https://commons.wikimedia.org/wiki/File:Priroda_Aotearoe.jpg"
   },
   "tongariro-volcano": {
-    "author": "Phil Whitehouse",
+    "author": "Phil Whitehouse from London, United Kingdom",
     "license": "CC BY 2.0",
     "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
     "source": "https://commons.wikimedia.org/wiki/File:Tongariro_National_Park_2_(261409200).jpg"
@@ -1596,7 +1584,7 @@
     "source": "https://commons.wikimedia.org/wiki/File:Perito_Moreno_Glacier_2023.jpg"
   },
   "strait-of-magellan": {
-    "author": "Jacques Descloitres, MODIS Rapid Respo…",
+    "author": "Jacques Descloitres, MODIS Rapid Response Team, NASA/GSFC",
     "license": "Public domain",
     "licenseUrl": "",
     "source": "https://commons.wikimedia.org/wiki/File:StraitOfMagellan.jpg"
@@ -1650,7 +1638,7 @@
     "source": "https://commons.wikimedia.org/wiki/File:Reed_boat_of_floating_islands_on_Lake_Titicaka.jpg"
   },
   "saint-helena": {
-    "author": "This image was taken by the NASA Exped…",
+    "author": "This image was taken by the NASA Expedition 19 crew.",
     "license": "Public domain",
     "licenseUrl": "",
     "source": "https://commons.wikimedia.org/wiki/File:Saint_Helena_Island.jpg"
@@ -1662,7 +1650,7 @@
     "source": "https://commons.wikimedia.org/wiki/File:Adansonia_grandidieri04.jpg"
   },
   "salar-de-uyuni": {
-    "author": "Luca Galuzzi (Lucag), edit by Trialsan…",
+    "author": "Luca Galuzzi (Lucag), edit by Trialsanderrors",
     "license": "CC BY-SA 2.5",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.5",
     "source": "https://commons.wikimedia.org/wiki/File:Piles_of_Salt_Salar_de_Uyuni_Bolivia_Luca_Galuzzi_2006_a.jpg"
@@ -1672,5 +1660,125 @@
     "license": "CC0",
     "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
     "source": "https://commons.wikimedia.org/wiki/File:Bermuda_(UK)_image_number_108_Horseshoe_Bay_beach_space_between_rock_formations.jpg"
+  },
+  "lm-rome-colosseum": {
+    "author": "FeaturedPics",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Colosseo_2020.jpg"
+  },
+  "lm-rome-st-peters": {
+    "author": "Alvesgaspar",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Basilica_di_San_Pietro_in_Vaticano_September_2015-1a.jpg"
+  },
+  "lm-rome-pantheon": {
+    "author": "NikonZ7II",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Pantheon_(Rome)_-_Right_side_and_front.jpg"
+  },
+  "lm-rome-forum": {
+    "author": "This Photo was taken by Wolfgang Morod…",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Foro_Romano_Musei_Capitolini_Roma.jpg"
+  },
+  "lm-jerusalem-dome": {
+    "author": "Ludvig14",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Jerusalem_DomeoftheRock_J65_(cropped).JPG"
+  },
+  "lm-jerusalem-sepulchre": {
+    "author": "Gerd Eichmann",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Church_of_the_Holy_Sepulchre_by_Gerd_Eichmann_(cropped).jpg"
+  },
+  "lm-jerusalem-western-wall": {
+    "author": "Golasso",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Westernwall2.jpg"
+  },
+  "lm-topkapi-palace": {
+    "author": "Carlos Delgado",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Topkap%C4%B1_-_01.jpg"
+  },
+  "lm-theodosian-walls": {
+    "author": "Apaleutos25",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Theodosian_Walls_of_Constantinople.jpg"
+  },
+  "lm-al-azhar": {
+    "author": "Wildoo78",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Mosqu%C3%A9e_Al-Azhar.jpg"
+  },
+  "lm-cairo-citadel": {
+    "author": "Ahmed Al.Badawy",
+    "license": "CC BY-SA 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Flickr_-_HuTect_ShOts_-_Citadel_of_Salah_El.Din_and_Masjid_Muhammad_Ali_%D9%82%D9%84%D8%B9%D8%A9_%D8%B5%D9%84%D8%A7%D8%AD_%D8%A7%D9%84%D8%AF%D9%8A%D9%86_%D8%A7%D9%84%D8%A3%D9%8A%D9%88%D8%A8%D9%8A_%D9%88%D9%85%D8%B3%D8%AC%D8%AF_%D9%85%D8%AD%D9%85%D8%AF_%D8%B9%D9%84%D9%8A_-_Cairo_-_Egypt_-_17_04_2010_(4).jpg"
+  },
+  "lm-temple-of-heaven": {
+    "author": "Shujianyang",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Temple_of_Heaven_20160323_01.jpg"
+  },
+  "lm-sungnyemun": {
+    "author": "DoulosCore",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Sungnyemun_Gate,_front,_2013.jpg"
+  },
+  "lm-jongmyo": {
+    "author": "문화재청",
+    "license": "KOGL Type 1",
+    "licenseUrl": "http://www.kogl.or.kr/info/licenseType1.do",
+    "source": "https://commons.wikimedia.org/wiki/File:Jeongjeon,_Jongmyo_(Autumn,_2012).jpg"
+  },
+  "lm-kiyomizudera": {
+    "author": "Jordy Meow",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Kiyomizu.jpg"
+  },
+  "lm-ginkakuji": {
+    "author": "Oilstreet",
+    "license": "CC BY 2.5",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.5",
+    "source": "https://commons.wikimedia.org/wiki/File:Ginkakuji_Kyoto03-r.jpg"
+  },
+  "lm-sainte-chapelle": {
+    "author": "Didier B (Sam67fr)",
+    "license": "CC BY-SA 2.5",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.5",
+    "source": "https://commons.wikimedia.org/wiki/File:Sainte_Chapelle_-_Upper_level_1.jpg"
+  },
+  "lm-westminster-abbey": {
+    "author": "Antiquary",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Westminster_Abbey,_Westminster.jpg"
+  },
+  "lm-doge-palace": {
+    "author": "Didier Descouens",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:(Venice)_Doge%27s_Palace_and_campanile_of_St._Mark%27s_Basilica_facing_the_sea.jpg"
+  },
+  "lm-ponte-vecchio": {
+    "author": "Ingo Mehling",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Ponte_Vecchio_from_Ponte_alle_Grazie.jpg"
   }
 }

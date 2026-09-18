@@ -7,7 +7,7 @@ import json
 import sys
 from pathlib import Path
 
-from PIL import Image
+from PIL import Image, ImageFilter
 
 APP = Path(__file__).resolve().parent.parent
 SOURCE = APP.parents[2] / 'references' / 'landmark-art'
@@ -39,14 +39,25 @@ for src in sorted(SOURCE.iterdir()):
         continue
     im = Image.open(src).convert('RGB')
     w, h = im.size
-    if w * SIZE[1] > h * SIZE[0]:
-        nw = h * SIZE[0] // SIZE[1]
-        im = im.crop(((w - nw) // 2, 0, (w - nw) // 2 + nw, h))
+    if w / h < 1.2:
+        # 탑이나 첨탑처럼 세로로 긴 사진은 잘라 내면 꼭대기나 밑동이 날아간다.
+        # 사진을 통째로 담고, 남는 자리는 같은 사진을 흐리게 깔아 메운다.
+        back = im.resize(SIZE, Image.LANCZOS).filter(ImageFilter.GaussianBlur(28))
+        back = Image.blend(back, Image.new('RGB', SIZE, (10, 20, 26)), 0.35)
+        scale = min(SIZE[0] / w, SIZE[1] / h)
+        front = im.resize((max(1, int(w * scale)), max(1, int(h * scale))), Image.LANCZOS)
+        back.paste(front, ((SIZE[0] - front.width) // 2, (SIZE[1] - front.height) // 2))
+        canvas = back
     else:
-        nh = w * SIZE[1] // SIZE[0]
-        top = (h - nh) // 3
-        im = im.crop((0, top, w, top + nh))
-    im.resize(SIZE, Image.LANCZOS).save(out, 'WEBP', quality=82, method=6)
+        if w * SIZE[1] > h * SIZE[0]:
+            nw = h * SIZE[0] // SIZE[1]
+            im = im.crop(((w - nw) // 2, 0, (w - nw) // 2 + nw, h))
+        else:
+            nh = w * SIZE[1] // SIZE[0]
+            top = (h - nh) // 3
+            im = im.crop((0, top, w, top + nh))
+        canvas = im.resize(SIZE, Image.LANCZOS)
+    canvas.save(out, 'WEBP', quality=82, method=6)
     done.append(f'{names_all[key]} ({out.stat().st_size // 1024}KB)')
 
 have = {p.stem for p in TARGET.glob('*.webp')}
