@@ -1271,29 +1271,31 @@ button:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
         overflow-y: auto;
     }
 
-    /* 칸과 로마숫자 판이 줄을 많이 쓰므로 줄 사이를 좁혀 한 화면에 넣는다. */
-    #drillScreen.is-slots { grid-template-columns: minmax(0, 1fr) auto; row-gap: 7px; }
-    #drillScreen.is-slots .ask,
-    #drillScreen.is-slots .staff-wrap,
-    #drillScreen.is-slots .play-row,
-    #drillScreen.is-slots .help-row { grid-column: 1 / -1; }
+    /*
+     * 칸과 로마숫자 판은 오선 오른쪽에 둔다. 오선 아래로 쌓으면 크롬북(1366×620)에서
+     * 건반이 화면 밖으로 150px 밀려난다. 반반으로 나누는 까닭: 왼쪽은 악보(421px)가,
+     * 오른쪽은 단조 로마숫자 일곱(442px)이 한 줄에 들어가야 짝이 안 깨진다.
+     * 되짚는 말과 다음 문제 단추는 판 아래 빈자리에 둔다.
+     */
+    #drillScreen.is-slots { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); row-gap: 7px; }
     #drillScreen.is-slots #slotWrap {
-        grid-column: 1 / -1;
-        grid-row: 6;
+        grid-column: 2;
+        grid-row: 2 / span 2;
+        align-content: center;
         max-height: none;
         overflow: visible;
     }
-    #drillScreen.is-slots #keyboardWrap { grid-row: 7; }
-    #drillScreen.is-slots .feedback { grid-column: 1; grid-row: 8; align-self: center; }
-    #drillScreen.is-slots #nextButton { grid-column: 2; grid-row: 8; }
+    #drillScreen.is-slots .feedback { grid-column: 2; grid-row: 4; align-self: center; }
+    #drillScreen.is-slots #nextButton { grid-column: 2; grid-row: 5; }
 
-    #drillScreen.is-keys { grid-template-columns: minmax(0, 1fr); }
+    /* 되짚는 말과 다음 문제 단추는 한 줄에 나란히 둔다 — 한 칸에 겹치면 단추가 정답 글을 가린다. */
+    #drillScreen.is-keys { grid-template-columns: minmax(0, 1fr) auto; }
     #drillScreen.is-keys .ask,
     #drillScreen.is-keys .staff-wrap,
     #drillScreen.is-keys .play-row,
-    #drillScreen.is-keys .help-row,
-    #drillScreen.is-keys .feedback,
-    #drillScreen.is-keys #nextButton { grid-column: 1; }
+    #drillScreen.is-keys .help-row { grid-column: 1 / -1; }
+    #drillScreen.is-keys .feedback { grid-column: 1; }
+    #drillScreen.is-keys #nextButton { grid-column: 2; }
 
     #drillScreen #rhythmWrap { grid-column: 1 / -1; grid-row: 3; }
     #drillScreen #gridWrap,
@@ -1318,6 +1320,24 @@ button:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
     #lessonScreen #lessonKeysLabel { grid-column: 1 / -1; grid-row: 3; }
     #lessonScreen .free-keys { grid-column: 1 / -1; grid-row: 4; }
     #lessonScreen .lesson-actions { grid-column: 1 / -1; grid-row: 5; }
+}
+
+/*
+ * 크롬북(1366×620)은 세로가 짧아 큰보표 문제(텐션 화음)에서 건반이 40px까지 밀려났다.
+ * 문제 화면의 줄 사이·위 여백·단추 높이를 줄여 건반과 다음 문제 단추까지 한 화면에 넣는다.
+ */
+@media (min-width: 900px) and (max-height: 700px) {
+    .shell { padding-top: 12px; }
+    #drillScreen,
+    #drillScreen.is-slots { row-gap: 6px; }
+    #drillScreen .drill-bar { padding-top: 4px; padding-bottom: 4px; }
+    #drillScreen .staff-wrap { padding: 6px; }
+    #drillScreen .replay-button { min-height: 46px; }
+    #drillScreen #nextButton { min-height: 44px; }
+    #drillScreen .keyboard-wrap { gap: 4px; }
+    /* 보기가 열아홉(15도까지)이면 일곱 줄이 되어 오른쪽 칸이 왼쪽보다 길어진다. */
+    #drillScreen .choices { gap: 6px; }
+    #drillScreen .choice { min-height: 44px; }
 }
 
 /* 세로로 긴 화면(아이패드 세로)에서는 한 칸으로 쌓이므로 글칸을 더 줄여야 한다. */
