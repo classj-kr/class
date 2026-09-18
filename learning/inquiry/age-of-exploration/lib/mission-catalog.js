@@ -15,6 +15,7 @@ const ITEMS = Object.freeze(loadJson('items.json'));
 const TEMPLATES = Object.freeze(loadJson('templates.json'));
 const READY_MISSIONS = Object.freeze(loadJson('ready-missions.json'));
 const DISCOVERIES = Object.freeze(loadJson('discoveries.json'));
+const CITY_LANDMARKS = Object.freeze(loadJson('city-landmarks.json'));
 
 function latLonToCell(lat, lon) {
   return {
@@ -62,7 +63,8 @@ function publicCatalog() {
     items: ITEMS.map((item) => ({ ...item })),
     templates: TEMPLATES.map((template) => ({ ...template, needs: [...template.needs] })),
     readyMissions: READY_MISSIONS.map((mission) => ({ ...mission })),
-    discoveries: DISCOVERIES.map((item) => ({ ...item }))
+    discoveries: DISCOVERIES.map((item) => ({ ...item })),
+    cityLandmarks: CITY_LANDMARKS.map((item) => ({ ...item }))
   };
 }
 
@@ -74,6 +76,7 @@ module.exports = {
   TEMPLATES,
   READY_MISSIONS,
   DISCOVERIES,
+  CITY_LANDMARKS,
   latLonToCell,
   placeCell,
   hasVerifiedSeaAccess,

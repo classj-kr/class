@@ -56,8 +56,10 @@ for (const book of catalog.books) {
 
 assert.match(student, /const LIBRARY_SHELF_BY_REGION=Object\.freeze/);
 assert.match(student, /function libraryRegionLabelForCity\(city\)\{return String\(city\?\.region\|\|city\?\.libraryRegion\|\|'공통'\)\}/);
-assert.match(student, /libraryBtn\.textContent=`도서관 · \$\{regionLabel\}`/);
-assert.doesNotMatch(student, /libraryBtn\.textContent=`도서관 · \$\{shelf\}`/);
+// 도시 단추는 좁은 화면에서 잘리지 않게 '도서관'만 쓰고, 어느 지역 도서관인지는 열린 창 제목에서 보여 준다.
+assert.match(student, /libraryBtn\.textContent='도서관'/);
+assert.match(student, /libraryTitle\.textContent=`\$\{serverSelf\?\.currentCityName\|\|'도시'\} 도서관 · \$\{regionLabel\}`/);
+assert.doesNotMatch(student, /libraryTitle\.textContent=`[^`]*\$\{shelfLabel\}`/);
 assert.match(student, /return \{\.\.\.catalogCity,libraryRegion:libraryShelfForCity\(catalogCity\),hasLibrary:true\}/);
 assert.match(student, /libraryBtn\.hidden=false/);
 assert.match(student, /book\.shelves\.includes\(shelf\)/);

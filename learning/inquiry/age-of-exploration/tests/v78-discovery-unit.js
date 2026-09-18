@@ -7,7 +7,7 @@ assert.ok(Array.isArray(discoveries) && discoveries.length >= 200, '발견 지�
 assert.equal(new Set(discoveries.map((d) => d.id)).size, discoveries.length, '발견 지점 ID 중복');
 assert.equal(new Set(discoveries.map((d) => d.name)).size, discoveries.length, '발견 지점 이름 중복');
 
-const KINDS = new Set(['자연', '종교 성지', '유적', '기술·산업', '옛 도시터']);
+const KINDS = new Set(['자연', '종교 성지', '유적', '기술·산업', '옛 도시터', '아직 없는 곳']);
 const REACHES = new Set(['sea', 'land', 'any']);
 // 지어낸 것(유니콘·인어 등)은 넣지 않는다. 실제로 있던 곳만 다룬다.
 // '용'처럼 다른 낱말에 섞여 드는 글자는 넣지 않는다(소용돌이·이용 등).

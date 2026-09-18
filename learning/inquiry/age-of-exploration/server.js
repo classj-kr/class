@@ -121,6 +121,43 @@ const RESOLVED_DISCOVERIES = MissionCatalog.DISCOVERIES.map((item) => {
   return { ...item, x: wrapX(cell.x * TILE), y: Math.max(TILE, Math.min(WORLD_PIXEL_H - TILE, cell.y * TILE)) };
 });
 
+// 도시 안의 명소. 도시마다 대표 건물 하나(또는 둘)를 두고, 1520년에 아직 없던 건물은 '아직 없는 곳'으로 적는다.
+const CITY_LANDMARKS_BY_CITY = new Map();
+for (const item of MissionCatalog.CITY_LANDMARKS) {
+  const list = CITY_LANDMARKS_BY_CITY.get(item.cityId) || [];
+  list.push(item);
+  CITY_LANDMARKS_BY_CITY.set(item.cityId, list);
+}
+const LANDMARK_BY_ID = new Map(MissionCatalog.CITY_LANDMARKS.map((item) => [item.id, item]));
+const FOUND_TOTAL = RESOLVED_DISCOVERIES.length + MissionCatalog.CITY_LANDMARKS.length;
+const LANDMARK_ART_DIR = path.join(__dirname, 'public', 'assets', 'landmarks');
+
+function landmarkArtUrl(id) {
+  try {
+    const file = path.join(LANDMARK_ART_DIR, `${id}.webp`);
+    const stat = fs.statSync(file);
+    return `/learn/world-voyage/assets/landmarks/${id}.webp?v=${Math.floor(stat.mtimeMs)}`;
+  } catch {
+    return null;
+  }
+}
+
+function cityLandmarksFor(p) {
+  if (!p || p.mode !== 'city' || !p.currentCityId || p.transition) return [];
+  const list = CITY_LANDMARKS_BY_CITY.get(p.currentCityId) || [];
+  if (!list.length) return [];
+  const found = discoveryListFor(p.roomCode, p.name);
+  return list.map((item) => ({ id: item.id, name: item.name, kind: item.kind, status: item.status, found: found.includes(item.id) }));
+}
+
+function publicLandmark(item) {
+  return {
+    id: item.id, name: item.name, kind: item.kind, status: item.status,
+    todayCountry: item.todayCountry, built: item.built || '',
+    in1520: item.in1520, text: item.text, image: landmarkArtUrl(item.id)
+  };
+}
+
 function discoveryListFor(roomCode, studentName) {
   const room = store.room(roomCode);
   room.discoveries[studentName] = Array.isArray(room.discoveries[studentName]) ? room.discoveries[studentName] : [];
@@ -1228,6 +1265,7 @@ function activeMissionState(roomCode, studentName, player = null) {
     interaction: player && mission ? missionInteractionForPlayer(player, mission, progress) : null,
     cityInteraction: player ? cityInteractionForPlayer(player) : null,
     discoveryInteraction: player ? nearbyDiscovery(player) : null,
+    cityLandmarks: player ? cityLandmarksFor(player) : [],
     portInteraction: player ? nearbyCatalogPort(player) : null
   };
 }
@@ -1502,7 +1540,7 @@ function publicPlayer(p, nowGameMinutes = classGameMinutes(p.roomCode)) {
     shipAnchorY: Number.isFinite(p.shipAnchorY) ? p.shipAnchorY : null,
     shipAnchorDir: Number.isInteger(p.shipAnchorDir) ? p.shipAnchorDir : 0,
     discoveryIds: [...discoveryListFor(p.roomCode, p.name)],
-    discoveryTotal: RESOLVED_DISCOVERIES.length,
+    discoveryTotal: FOUND_TOTAL,
     fatigue: Math.round(Fatigue.clamp(p.fatigue) * 10) / 10,
     fatigueSpeedMultiplier: Math.round(Fatigue.speedMultiplier(p.fatigue) * 1000) / 1000,
     transition
@@ -1841,7 +1879,24 @@ io.on('connection', (socket) => {
       setNotice(p, `발견! ${item.name}`);
       io.to(`teacher:${p.roomCode}`).emit('teacherEvent', { type:'discovery', name:p.name, discovery:item.name, at:Date.now() });
     }
-    ack({ ok:true, first, discovery:{ id:item.id, name:item.name, kind:item.kind, todayCountry:item.todayCountry, in1520:item.in1520, text:item.text }, found:found.length, total:RESOLVED_DISCOVERIES.length, self:publicPlayer(p) });
+    ack({ ok:true, first, discovery:{ id:item.id, name:item.name, kind:item.kind, todayCountry:item.todayCountry, in1520:item.in1520, text:item.text }, found:found.length, total:FOUND_TOTAL, self:publicPlayer(p) });
+  });
+
+  socket.on('inspectLandmark', (payload, ack = () => {}) => {
+    const p = playerForSocket(socket);
+    if (!p) return ack({ ok:false, error:'접속 상태가 아닙니다.' });
+    const item = LANDMARK_BY_ID.get(String(payload?.id || ''));
+    if (!item) return ack({ ok:false, error:'그런 명소를 찾지 못했습니다.' });
+    if (p.mode !== 'city' || p.currentCityId !== item.cityId) return ack({ ok:false, error:`${josaEun(item.name)} 그 도시 안에서만 볼 수 있습니다.` });
+    const found = discoveryListFor(p.roomCode, p.name);
+    const first = !found.includes(item.id);
+    if (first) {
+      found.push(item.id);
+      store.scheduleSave();
+      setNotice(p, `명소 · ${item.name}`);
+      io.to(`teacher:${p.roomCode}`).emit('teacherEvent', { type:'landmark', name:p.name, discovery:item.name, at:Date.now() });
+    }
+    ack({ ok:true, first, landmark:publicLandmark(item), found:found.length, total:FOUND_TOTAL, self:publicPlayer(p) });
   });
 
   socket.on('stop', () => {

@@ -4,6 +4,9 @@ const assert=require('node:assert/strict');
 const BASE=process.env.TEST_URL||'http://127.0.0.1:3000';
 const { joinFreeRoom }=require('./_rooms');
 const discoveries=require('../data/catalog/discoveries.json');
+// 찾을 곳은 지도 위 발견 지점과 도시 안 명소를 합쳐 센다.
+const landmarks=require('../data/catalog/city-landmarks.json');
+const FOUND_TOTAL=discoveries.length+landmarks.length;
 const TILE=16,WORLD_W=2500,WORLD_H=1250;
 function connect(){return io(BASE,{transports:['websocket'],forceNew:true,reconnection:false,timeout:7000});}
 function once(s,e,p=()=>true,t=40000){return new Promise((r,j)=>{const x=setTimeout(()=>{s.off(e,on);j(new Error(`timeout:${e}`));},t);function on(d){if(!p(d))return;clearTimeout(x);s.off(e,on);r(d)}s.on(e,on)});}
@@ -19,7 +22,7 @@ const pixel=(d)=>({x:((d.lon+180)/360)*WORLD_W*TILE,y:((90-d.lat)/180)*WORLD_H*T
   const start=await once(sailor,'snapshot',x=>x.you.mode==='sea');
   assert.equal(start.discoveryInteraction,null,'출발 지점에서는 살펴볼 곳이 없어야 한다');
   assert.deepEqual(start.you.discoveryIds,[],'처음에는 찾은 곳이 없어야 한다');
-  assert.equal(start.you.discoveryTotal,discoveries.length,'발견 지점 수가 목록과 달라진다');
+  assert.equal(start.you.discoveryTotal,FOUND_TOTAL,'찾을 곳 수가 목록과 달라진다');
 
   // 멀리 있는 곳은 눌러도 열리지 않는다.
   const cape=discoveries.find(d=>d.id==='cape-st-vincent');
@@ -42,7 +45,7 @@ const pixel=(d)=>({x:((d.lon+180)/360)*WORLD_W*TILE,y:((90-d.lat)/180)*WORLD_H*T
   assert.equal(opened.discovery.name,cape.name);
   assert.ok(opened.discovery.text.length>40,'설명이 와야 한다');
   assert.equal(opened.found,1);
-  assert.equal(opened.total,discoveries.length);
+  assert.equal(opened.total,FOUND_TOTAL);
   assert.deepEqual(opened.self.discoveryIds,[cape.id]);
 
   // 두 번째로 누르면 설명은 다시 열리되 새로 찾은 것으로 세지 않는다.

@@ -1,0 +1,55 @@
+"""references/landmark-art 의 명소 사진을 게임용 3:2 WebP로 바꿔 public/assets/landmarks 에 넣는다.
+
+파일 이름은 city-landmarks.json 의 id 와 같아야 한다(보기: lm-belem-tower.jpg).
+사진은 마음대로 써도 되는 것만 쓴다. 출처와 이용 조건은 credits.json 에 적어 둔다.
+"""
+import json
+import sys
+from pathlib import Path
+
+from PIL import Image
+
+APP = Path(__file__).resolve().parent.parent
+SOURCE = APP.parents[2] / 'references' / 'landmark-art'
+TARGET = APP / 'public' / 'assets' / 'landmarks'
+SIZE = (1200, 800)
+
+landmarks = json.loads((APP / 'data' / 'catalog' / 'city-landmarks.json').read_text(encoding='utf-8'))
+names = {item['id']: item['name'] for item in landmarks}
+
+TARGET.mkdir(parents=True, exist_ok=True)
+if not SOURCE.exists():
+    print(f'사진 폴더가 없습니다: {SOURCE}')
+    sys.exit(1)
+
+unknown, done = [], []
+for src in sorted(SOURCE.iterdir()):
+    if src.suffix.lower() not in ('.png', '.webp', '.jpg', '.jpeg'):
+        continue
+    key = src.stem.lower()
+    if key not in names:
+        unknown.append(src.name)
+        continue
+    out = TARGET / f'{key}.webp'
+    if out.exists() and out.stat().st_mtime >= src.stat().st_mtime:
+        continue
+    im = Image.open(src).convert('RGB')
+    w, h = im.size
+    if w * SIZE[1] > h * SIZE[0]:
+        nw = h * SIZE[0] // SIZE[1]
+        im = im.crop(((w - nw) // 2, 0, (w - nw) // 2 + nw, h))
+    else:
+        nh = w * SIZE[1] // SIZE[0]
+        im = im.crop((0, (h - nh) // 2, w, (h - nh) // 2 + nh))
+    im.resize(SIZE, Image.LANCZOS).save(out, 'WEBP', quality=82, method=6)
+    done.append(f'{names[key]} ({out.stat().st_size // 1024}KB)')
+
+have = {p.stem for p in TARGET.glob('*.webp')}
+missing = [names[k] for k in names if k not in have]
+print(f'새로 넣음: {", ".join(done) or "없음"}')
+print(f'게임에 들어간 사진: {len(have)}/{len(names)}')
+if missing:
+    print(f'아직 없는 곳 {len(missing)}: {", ".join(missing[:8])}{" …" if len(missing) > 8 else ""}')
+if unknown:
+    print(f'이름이 명소 목록과 맞지 않는 파일: {", ".join(unknown)}')
+    sys.exit(1)
