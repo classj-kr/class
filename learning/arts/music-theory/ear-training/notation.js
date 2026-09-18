@@ -79,30 +79,15 @@
     }
 
     /*
-     * 덧줄. 큰보표에서는 가온다 쪽에서 두 오선 사이에만 덧줄을 긋고, 아래 오선보다
-     * 낮은 음은 아래 오선에서 세어 긋는다.
+     * 덧줄. 음이 앉은 오선에서 세어 긋는다. 두 오선 사이의 가온다(C4)는 위 오선에
+     * 앉으면 위 오선 아래 덧줄, 아래 오선에 앉으면 아래 오선 위 덧줄이다.
      */
-    function ledgerLines(letterAbs, grand) {
+    function ledgerLines(letterAbs, lower) {
         const lines = [];
-        const middle = E4_ABS - 2;                 /* C4 */
-        const bassTop = BASS_TOP_ABS;              /* A3 */
-        const bassBottom = BASS_TOP_ABS - 8;       /* G2 */
-        if (letterAbs > F5_ABS) {
-            for (let position = F5_ABS + 2; position <= letterAbs; position += 2) lines.push(position);
-            return lines;
-        }
-        if (!grand) {
-            for (let position = middle; position >= letterAbs; position -= 2) lines.push(position);
-            return lines;
-        }
-        if (letterAbs === middle) return [middle];
-        if (letterAbs < middle && letterAbs > bassTop) {
-            for (let position = middle; position >= letterAbs; position -= 2) lines.push(position);
-            return lines;
-        }
-        if (letterAbs < bassBottom) {
-            for (let position = bassBottom - 2; position >= letterAbs; position -= 2) lines.push(position);
-        }
+        const top = lower ? BASS_TOP_ABS : F5_ABS;
+        const bottom = top - 8;
+        for (let position = top + 2; position <= letterAbs; position += 2) lines.push(position);
+        for (let position = bottom - 2; position >= letterAbs; position -= 2) lines.push(position);
         return lines;
     }
 
@@ -116,12 +101,13 @@
      * 같은 음이름을 두 옥타브(열네 자리) 아래에 붙인다 — 높은음자리표의 B4 자리가
      * 낮은음자리표에서는 B2다.
      */
-    function signatureMarks(count, sharp, from, drop) {
+    function signatureMarks(count, sharp, from, lower) {
         const seats = sharp ? SHARP_SEATS : FLAT_SEATS;
         const step = markWidth(sharp ? MARKS.sharp : MARKS.flat) + 0.5;
         const group = make("g", { class: "sheet-ink sheet-signature" });
         for (let mark = 0; mark < count; mark += 1) {
-            group.append(accidentalNode(sharp ? 1 : -1, from + (mark + 1) * step, yFor(seats[mark] - (drop || 0))));
+            const y = lower ? yLow(seats[mark] - 14) : yFor(seats[mark]);
+            group.append(accidentalNode(sharp ? 1 : -1, from + (mark + 1) * step, y));
         }
         return { node: group, width: count * step };
     }
@@ -306,15 +292,22 @@
 
     function bassClefNode(x) {
         const fit = bassClefFit();
-        return oneClef(BASS_CLEF_GLYPH, x, fit.height, fit.anchor, yFor(F_LINE_ABS));
+        return oneClef(BASS_CLEF_GLYPH, x, fit.height, fit.anchor, yLow(F_LINE_ABS));
     }
 
     /*
-     * 큰보표. 아래 오선의 첫째 줄은 A3이다. 위 오선 첫째 줄 E4에서 넉 자리 아래이므로,
-     * 가온다(C4)가 두 오선의 정확히 가운데 덧줄 자리에 온다.
+     * 큰보표. 아래 오선의 다섯째 줄은 A3이다. 음높이대로 이어 붙이면 위 오선 첫째 줄 E4와
+     * 두 칸밖에 안 떨어져 한 덩어리로 보이므로, 아래 오선을 GRAND_GAP만큼 더 내려 둔다.
+     * 그래서 음높이와 자리가 이어지지 않는다 — 어느 오선에 앉는 음인지 알아야 y가 나온다.
      */
     const BASS_TOP_ABS = 3 * 7 + 5;                    /* A3 */
-    const BASS_TOP_Y = yFor(BASS_TOP_ABS);
+    const GRAND_GAP = STEP_Y * 4;
+
+    function yLow(letterAbs) {
+        return yFor(letterAbs) + GRAND_GAP;
+    }
+
+    const BASS_TOP_Y = yLow(BASS_TOP_ABS);
     const BASS_BOTTOM_Y = BASS_TOP_Y + STEP_Y * 8;
     const BASS_CLEF_BOTTOM = BASS_BOTTOM_Y + STEP_Y * 2;
 
@@ -378,6 +371,20 @@
         });
     }
 
+    /*
+     * 한 칸의 음을 낮은 음부터 늘어놓고 어느 오선에 앉을지 정한다. 큰보표에서는 칸마다
+     * 가장 낮은 음 하나가 왼손(아래 오선)이다 — 화음 진행의 베이스와 텐션 화음의 뿌리음이
+     * 그렇다. 음높이로 가르면 오른손이 가온다 아래로 내려갈 때 화음이 두 오선으로 찢어진다.
+     */
+    function placeColumn(column, grand) {
+        return column.notes.slice()
+            .sort((a, b) => a.letterAbs - b.letterAbs)
+            .map((note, index) => {
+                const lower = grand && index === 0;
+                return { note: note, lower: lower, y: lower ? yLow(note.letterAbs) : yFor(note.letterAbs) };
+            });
+    }
+
     function render(columns, options) {
         const settings = options || {};
         /* 악보는 어느 화면에서나 같은 크기여야 하므로 눈금 배율을 하나로 못 박는다. */
@@ -404,12 +411,12 @@
          */
         let top = CLEF_TOP;
         let bottom = grand ? BASS_CLEF_BOTTOM : CLEF_BOTTOM;
-        columns.forEach(column => {
-            if (!column) return;
-            column.notes.forEach(note => {
-                const y = yFor(note.letterAbs);
-                top = Math.min(top, y - 13);
-                bottom = Math.max(bottom, y + 8);
+        const placed = columns.map(column => column && placeColumn(column, grand));
+        placed.forEach(seats => {
+            if (!seats) return;
+            seats.forEach(seat => {
+                top = Math.min(top, seat.y - 13);
+                bottom = Math.max(bottom, seat.y + 8);
             });
         });
 
@@ -445,7 +452,7 @@
         }
         if (signWidth) {
             svg.append(signatureMarks(sign.count, sign.sharp, COLUMN_X - 6).node);
-            if (grand) svg.append(signatureMarks(sign.count, sign.sharp, COLUMN_X - 6, 14).node);
+            if (grand) svg.append(signatureMarks(sign.count, sign.sharp, COLUMN_X - 6, true).node);
         }
 
         const alters = signatureAlters(sign);
@@ -461,19 +468,23 @@
                 class: "sheet-ink sheet-column" + (column.mark ? " is-" + column.mark : ""),
                 "data-column": index
             });
-            const sorted = column.notes.slice().sort((a, b) => a.letterAbs - b.letterAbs);
+            const seats = placed[index];
             const drawnLedgers = new Set();
             let shift = 0;
-            sorted.forEach((note, noteIndex) => {
-                const y = yFor(note.letterAbs);
-                ledgerLines(note.letterAbs, grand).forEach(position => {
-                    if (drawnLedgers.has(position)) return;
-                    drawnLedgers.add(position);
-                    group.append(make("line", { class: "sheet-ledger", x1: x - 11, y1: yFor(position), x2: x + 11, y2: yFor(position) }));
+            seats.forEach((seat, noteIndex) => {
+                const note = seat.note;
+                const y = seat.y;
+                const lineY = seat.lower ? yLow : yFor;
+                ledgerLines(note.letterAbs, seat.lower).forEach(position => {
+                    const ledgerY = lineY(position);
+                    if (drawnLedgers.has(ledgerY)) return;
+                    drawnLedgers.add(ledgerY);
+                    group.append(make("line", { class: "sheet-ledger", x1: x - 11, y1: ledgerY, x2: x + 11, y2: ledgerY }));
                 });
-                /* 바로 아래 음과 2도로 붙으면 음표머리를 옆으로 비킨다. */
-                const previous = sorted[noteIndex - 1];
-                shift = previous && note.letterAbs - previous.letterAbs === 1 && shift === 0 ? 15 : 0;
+                /* 같은 오선에서 바로 아래 음과 2도로 붙으면 음표머리를 옆으로 비킨다. */
+                const previous = seats[noteIndex - 1];
+                shift = previous && previous.lower === seat.lower
+                    && note.letterAbs - previous.note.letterAbs === 1 && shift === 0 ? 15 : 0;
                 group.append(wholeHead(x + shift, y));
                 if (note.accidental !== (alters[note.letter] || 0)) {
                     group.append(accidentalNode(note.accidental, x + shift - HEAD_RX - 3, y));
