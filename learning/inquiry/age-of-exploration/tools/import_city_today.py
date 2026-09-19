@@ -1,7 +1,8 @@
-"""art-source/city-today 의 도시 오늘날 사진을 게임용 3:2 WebP로 바꿔 public/assets/city-today 에 넣는다.
+"""도시 오늘날 사진 폴더(public/assets/city-today) 하나만 쓴다.
 
+사진을 이 폴더에 바로 넣으면(jpg·png·webp) 그 자리에서 게임 규격(3:2, 1200x800 WebP)으로 맞추고 원래 파일은 지운다.
 파일 이름은 original-cities.json 의 artKey 와 같아야 한다(보기: mexico-city.jpg).
-사진은 마음대로 써도 되는 것만 쓴다. 출처와 이용 조건은 credits.json 에 적어 둔다.
+사진은 마음대로 써도 되는 것만 쓴다. 출처와 이용 조건은 data/catalog 의 credits 파일(city-photo-credits.json, photo-credits.json)에 적는다.
 """
 import json
 import sys
@@ -10,8 +11,8 @@ from pathlib import Path
 from PIL import Image, ImageFilter
 
 APP = Path(__file__).resolve().parent.parent
-SOURCE = APP / 'art-source' / 'city-today'
 TARGET = APP / 'public' / 'assets' / 'city-today'
+SOURCE = TARGET
 SIZE = (1200, 800)
 
 cities = json.loads((APP / 'data' / 'catalog' / 'original-cities.json').read_text(encoding='utf-8'))
@@ -19,12 +20,8 @@ names = {c['artKey']: c['name'] for c in cities if c.get('artKey') and not c.get
 names_all = dict(names)
 
 TARGET.mkdir(parents=True, exist_ok=True)
-if not SOURCE.exists():
-    print(f'사진 폴더가 없습니다: {SOURCE}')
-    sys.exit(1)
-
 unknown, done = [], []
-for src in sorted(SOURCE.iterdir()):
+for src in sorted(SOURCE.iterdir(), key=lambda p: (p.suffix.lower() == '.webp', p.name)):
     if src.suffix.lower() not in ('.png', '.webp', '.jpg', '.jpeg'):
         continue
     key = src.stem.lower()
@@ -32,9 +29,10 @@ for src in sorted(SOURCE.iterdir()):
         unknown.append(src.name)
         continue
     out = TARGET / f'{key}.webp'
-    if out.exists() and out.stat().st_mtime >= src.stat().st_mtime:
-        continue
-    im = Image.open(src).convert('RGB')
+    with Image.open(src) as opened:
+        if src == out and opened.size == SIZE:
+            continue
+        im = opened.convert('RGB')
     w, h = im.size
     if w / h < 1.2:
         # 탑이나 첨탑처럼 세로로 긴 사진은 잘라 내면 꼭대기나 밑동이 날아간다.
@@ -55,11 +53,13 @@ for src in sorted(SOURCE.iterdir()):
             im = im.crop((0, top, w, top + nh))
         canvas = im.resize(SIZE, Image.LANCZOS)
     canvas.save(out, 'WEBP', quality=82, method=6)
+    if src != out:
+        src.unlink()
     done.append(f'{names_all[key]} ({out.stat().st_size // 1024}KB)')
 
 have = {p.stem for p in TARGET.glob('*.webp')}
 missing = [names[k] for k in names if k not in have]
-print(f'새로 넣음: {", ".join(done) or "없음"}')
+print(f'규격으로 맞춤: {", ".join(done) or "없음"}')
 print(f'게임에 들어간 사진: {len(have)}/{len(names)}')
 if missing:
     print(f'아직 없는 곳 {len(missing)}: {", ".join(missing[:8])}{" …" if len(missing) > 8 else ""}')
