@@ -18,6 +18,7 @@ const styles = read("styles.css");
 const app = read("app.js");
 const sources = {
   terrain: read("data/terrain-data.js"),
+  transport: read("data/transport-lines.js"),
   borders: read("data/borders.js"),
   tiles: read("data/relief-tiles.js"),
   geo: read("data/geo-data.js"),
@@ -115,7 +116,7 @@ assert.match(styles, /@media \(max-width: 1050px\)[\s\S]*?\.study-layout \{ disp
 assert.match(styles, /\.principle-button \{[^}]*min-height:\s*44px/s);
 
 const sandbox = { window: {}, document: { addEventListener() {} } };
-for (const key of ["terrain", "geo", "questions", "principles", "heritageData", "heritage", "travelData", "travel"]) vm.runInNewContext(sources[key], sandbox);
+for (const key of ["terrain", "transport", "geo", "questions", "principles", "heritageData", "heritage", "travelData", "travel"]) vm.runInNewContext(sources[key], sandbox);
 const dataset = sandbox.window.KOREA_GEOGRAPHY;
 assert.deepEqual(Object.keys(dataset.themes), THEME_KEYS);
 assert.deepEqual(THEME_KEYS.map((key) => dataset.themes[key].label), TAB_LABELS);
@@ -132,6 +133,22 @@ for (const name of ["태백산맥", "개마고원", "호남평야", "철원 용�
   assert.ok(terrain.annotations.some((item) => item.name === name), `${name} 이름표가 없습니다.`);
 }
 assert.ok(terrain.annotations.filter((item) => item.note).length >= 53, "지형 설명이 빠졌습니다.");
+
+// 교통 탭: 손으로 그린 축 대신 실제 노선(오픈스트리트맵)을 그린다. 간선 고속 국도 8개와 고속 철도 3개에는 이름표.
+const network = sandbox.window.KOREA_TRANSPORT;
+const majorRoads = network.expressways.filter((road) => road.major).map((road) => road.name);
+assert.deepEqual([...majorRoads].sort(), ["경부", "남해", "동해", "서해안", "영동", "중부", "중앙", "호남"].map((name) => `${name} 고속 국도`).sort());
+assert.deepEqual([...network.railways.filter((rail) => rail.kind === "highspeed").map((rail) => rail.name)].sort(), ["경부고속선", "수서평택고속선", "호남고속선"]);
+assert.ok(network.railways.filter((rail) => rail.kind === "main").length >= 15, "간선 철도가 빠졌습니다.");
+for (const item of [...network.expressways, ...network.railways]) {
+  assert.ok(item.lines.length && item.lines.every((line) => line.length >= 2 && line.every(([lat, lng]) => lat > 33 && lat < 38.7 && lng > 124.5 && lng < 130)), `${item.name} 선이 이상합니다.`);
+}
+const transportTheme = dataset.themes.transport;
+assert.ok(transportTheme.network && !transportTheme.lines, "교통 탭은 실제 노선을 그린다.");
+assert.equal(transportTheme.annotations.filter((item) => item.kind === "road").length, 8);
+assert.match(app, /function drawTransportNetwork/);
+assert.ok(dataset.questions.filter((question) => question.topic === "transport").length >= 9, "교통 문제가 모자랍니다.");
+assert.ok(exists("tools/build_transport.mjs"));
 
 assert.equal(riverData.features.length, 12, "한반도 주요 하천 중심선 자료가 완전해야 합니다.");
 
