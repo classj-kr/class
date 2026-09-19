@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node server.js",
-    "postinstall": "npm --node-options=--max-old-space-size=384 --prefix ../learning/literacy-numeracy/arithmetics ci --include=dev && npm --node-options=--max-old-space-size=384 --prefix ../learning/literacy-numeracy/arithmetics run build && npm --prefix ../learning/inquiry/age-of-exploration ci --omit=dev",
+    "postinstall": "node render-postinstall.mjs",
     "build:reading-seed": "node ../scripts/build-reading-seed.js"
   },
   "dependencies": {
