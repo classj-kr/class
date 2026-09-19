@@ -4,10 +4,12 @@
 (function () {
   "use strict";
 
-  const data = window.KOREAN_MUSEUM_DATA;
+  const relics = window.KOREA_HERITAGE;
   const dataset = window.KOREA_GEOGRAPHY;
-  if (!data || !dataset) return;
-  const relics = data.relicsMaster;
+  if (!relics || !dataset) return;
+  const photoOf = (relic) => `heritage/${relic.photo || `${relic.id}.jpg`}?v=20260731-3`;
+  // 목록·말풍선에 붙이는 곳 이름: 관련 장소가 없으면(그림·책처럼 한 곳에 매이지 않는 것) 지금 있는 곳
+  const placeOf = (relic) => relic.location || relic.museum;
 
   const ERAS = [
     { key: "prehistoric", label: "선사·고조선", color: "#a16207" },
@@ -21,22 +23,19 @@
   const eraOf = (key) => ERAS.find((era) => era.key === key) || ERAS[0];
   let activeEra = "all";
 
-  // ───────────── 핀 그림(유물마다 따로 그린 작은 그림, 없으면 갈래 그림) ─────────────
-  const RELIC_SPECIFIC_SVG_MAP = {
+  // ───────────── 핀 그림(유물마다 따로 그린 작은 그림) ─────────────
+  const PIN_SVG = {
     p01: `<svg viewBox="0 0 36 36"><path d="M8 7 Q18 4 28 7 L24 27 Q18 33 18 33 Q18 33 12 27 Z" fill="url(#p01g)" stroke="#fff" stroke-width="1.5"/><path d="M11 12 L25 12 M12 17 L24 17 M14 22 L22 22 M16 27 L20 27" stroke="#fef08a" stroke-width="1.5" stroke-dasharray="2 2"/><ellipse cx="18" cy="7" rx="10" ry="2" fill="#92400e" stroke="#fff" stroke-width="1"/><defs><linearGradient id="p01g" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#ea580c"/><stop offset="100%" stop-color="#78350f"/></linearGradient></defs></svg>`,
     p02: `<svg viewBox="0 0 36 36"><rect x="9" y="15" width="4" height="15" rx="1" fill="#64748b" stroke="#fff" stroke-width="1.2"/><rect x="23" y="15" width="4" height="15" rx="1" fill="#64748b" stroke="#fff" stroke-width="1.2"/><path d="M4 14 C4 11 18 9 32 11 C32 14 18 16 4 14 Z" fill="url(#p02g)" stroke="#fff" stroke-width="1.5"/><defs><linearGradient id="p02g" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#cbd5e1"/><stop offset="100%" stop-color="#475569"/></linearGradient></defs></svg>`,
     p03: `<svg viewBox="0 0 36 36"><path d="M18 2 C20 7 24 11 25 16 C26 21 21 24 18 26 C15 24 10 21 11 16 C12 11 16 7 18 2 Z" fill="url(#p03g)" stroke="#fff" stroke-width="1.5"/><line x1="18" y1="2" x2="18" y2="31" stroke="#a7f3d0" stroke-width="1.5"/><rect x="16" y="26" width="4" height="5" fill="#f59e0b" stroke="#fff" stroke-width="1"/><circle cx="18" cy="32" r="2" fill="#fbbf24"/><defs><linearGradient id="p03g" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#34d399"/><stop offset="100%" stop-color="#047857"/></linearGradient></defs></svg>`,
-    p04: `<svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="7" fill="url(#p04g)" stroke="#fff" stroke-width="1.5"/><path d="M18 3 L18 11 M18 25 L18 33 M3 18 L11 18 M25 18 L33 18 M7 7 L13 13 M23 23 L29 29 M7 29 L13 23 M23 13 L29 7" stroke="#6ee7b7" stroke-width="2.5" stroke-linecap="round"/><circle cx="18" cy="4" r="3" fill="#f59e0b" stroke="#fff" stroke-width="1"/><circle cx="18" cy="32" r="3" fill="#f59e0b" stroke="#fff" stroke-width="1"/><circle cx="4" cy="18" r="3" fill="#f59e0b" stroke="#fff" stroke-width="1"/><circle cx="32" cy="18" r="3" fill="#f59e0b" stroke="#fff" stroke-width="1"/><circle cx="8" cy="8" r="2.5" fill="#fbbf24"/><circle cx="28" cy="28" r="2.5" fill="#fbbf24"/><circle cx="8" cy="28" r="2.5" fill="#fbbf24"/><circle cx="28" cy="8" r="2.5" fill="#fbbf24"/><defs><linearGradient id="p04g" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#059669"/><stop offset="100%" stop-color="#064e3b"/></linearGradient></defs></svg>`,
     p05: `<svg viewBox="0 0 36 36"><path d="M18 3 L28 19 C30 25 24 32 18 32 C12 32 6 25 8 19 Z" fill="url(#p05g)" stroke="#fff" stroke-width="1.5"/><path d="M18 3 L18 32 M18 3 L12 19 M18 3 L24 19 M12 19 L18 32 M24 19 L18 32" stroke="#fef08a" stroke-width="1" opacity="0.6"/><defs><linearGradient id="p05g" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#a16207"/><stop offset="100%" stop-color="#451a03"/></linearGradient></defs></svg>`,
     p06: `<svg viewBox="0 0 36 36"><path d="M11 6 L25 6 L23 13 Q29 20 23 30 L13 30 Q7 20 13 13 Z" fill="url(#p06g)" stroke="#fff" stroke-width="1.5"/><path d="M5 18 C5 14 9 14 11 16 M31 18 C31 14 27 14 25 16" stroke="#fde68a" stroke-width="3" fill="none" stroke-linecap="round"/><ellipse cx="18" cy="6" rx="7" ry="2" fill="#78350f" stroke="#fff" stroke-width="1"/><defs><linearGradient id="p06g" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#d97706"/><stop offset="100%" stop-color="#78350f"/></linearGradient></defs></svg>`,
     p07: `<svg viewBox="0 0 36 36"><path d="M4 16 Q18 4 32 16 Q26 30 18 30 Q10 30 4 16 Z" fill="url(#p07g)" stroke="#fff" stroke-width="1.5"/><circle cx="14" cy="17" r="2.5" fill="#0f172a" stroke="#fff" stroke-width="1"/><circle cx="22" cy="17" r="2.5" fill="#0f172a" stroke="#fff" stroke-width="1"/><defs><linearGradient id="p07g" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#64748b"/><stop offset="100%" stop-color="#1e293b"/></linearGradient></defs></svg>`,
     p08: `<svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="14" fill="url(#p08g)" stroke="#fff" stroke-width="1.5"/><circle cx="18" cy="18" r="10" fill="none" stroke="#a7f3d0" stroke-width="1.5" stroke-dasharray="2 2"/><circle cx="14" cy="14" r="2.5" fill="#fbbf24" stroke="#fff" stroke-width="1"/><circle cx="22" cy="14" r="2.5" fill="#fbbf24" stroke="#fff" stroke-width="1"/><defs><linearGradient id="p08g" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#059669"/><stop offset="100%" stop-color="#022c22"/></linearGradient></defs></svg>`,
     p09: `<svg viewBox="0 0 36 36"><path d="M18 2 L21 11 L21 24 L18 28 L15 24 L15 11 Z" fill="url(#p09g)" stroke="#fff" stroke-width="1.5"/><line x1="18" y1="2" x2="18" y2="34" stroke="#ecfdf5" stroke-width="1.5"/><rect x="16" y="28" width="4" height="6" fill="#d97706"/><defs><linearGradient id="p09g" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#10b981"/><stop offset="100%" stop-color="#047857"/></linearGradient></defs></svg>`,
-    p10: `<svg viewBox="0 0 36 36"><rect x="4" y="22" width="28" height="9" rx="1.5" fill="#78350f" stroke="#fff" stroke-width="1.5"/><rect x="8" y="14" width="20" height="8" rx="1" fill="#b45309" stroke="#fff" stroke-width="1.5"/><rect x="13" y="7" width="10" height="7" rx="1" fill="#fef08a" stroke="#fff" stroke-width="1.5"/></svg>`,
     p11: `<svg viewBox="0 0 36 36"><path d="M18 3 L2 29 L34 29 Z" fill="url(#p11g)" stroke="#fff" stroke-width="1.5"/><path d="M18 3 L18 29 M10 16 L26 16" stroke="#fde68a" stroke-width="1.5"/><rect x="14" y="21" width="8" height="8" fill="#451a03" stroke="#fff" stroke-width="1"/><defs><linearGradient id="p11g" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#d97706"/><stop offset="100%" stop-color="#78350f"/></linearGradient></defs></svg>`,
     g01: `<svg viewBox="0 0 36 36"><rect x="3" y="3" width="30" height="30" rx="4" fill="url(#g01g)" stroke="#fff" stroke-width="1.5"/><path d="M8 26 Q18 18 28 26 M14 20 L8 14 M22 14 L30 10 M14 14 L6 10" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" fill="none"/><circle cx="22" cy="11" r="3" fill="#fde68a"/><defs><linearGradient id="g01g" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#ef4444"/><stop offset="100%" stop-color="#7f1d1d"/></linearGradient></defs></svg>`,
     g02: `<svg viewBox="0 0 36 36"><rect x="10" y="3" width="16" height="30" rx="2" fill="url(#g02g)" stroke="#fff" stroke-width="1.5"/><path d="M14 8 L22 8 M14 13 L22 13 M14 18 L22 18 M14 23 L22 23 M14 28 L22 28" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="3 2"/><defs><linearGradient id="g02g" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#475569"/><stop offset="100%" stop-color="#0f172a"/></linearGradient></defs></svg>`,
-    g03: `<svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="14" fill="url(#g03g)" stroke="#fff" stroke-width="1.5"/><path d="M18 8 C13 13 13 20 18 22 M15 22 L10 29 M18 22 L18 29 M21 22 L26 29" stroke="#fef08a" stroke-width="2.5" stroke-linecap="round" fill="none"/><circle cx="21" cy="13" r="2" fill="#fef08a"/><defs><linearGradient id="g03g" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#f87171"/><stop offset="100%" stop-color="#991b1b"/></linearGradient></defs></svg>`,
     g04: `<svg viewBox="0 0 36 36"><path d="M11 4 L25 4 L23 32 L13 32 Z" fill="url(#g04g)" stroke="#fff" stroke-width="1.5"/><line x1="18" y1="7" x2="18" y2="29" stroke="#94a3b8" stroke-width="2" stroke-dasharray="3 2"/><defs><linearGradient id="g04g" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#64748b"/><stop offset="100%" stop-color="#1e293b"/></linearGradient></defs></svg>`,
     g05: `<svg viewBox="0 0 36 36"><rect x="2" y="25" width="32" height="7" fill="#64748b" stroke="#fff" stroke-width="1.2"/><rect x="6" y="19" width="24" height="6" fill="#475569" stroke="#fff" stroke-width="1.2"/><rect x="10" y="13" width="16" height="6" fill="#334155" stroke="#fff" stroke-width="1.2"/><rect x="14" y="7" width="8" height="6" fill="#1e293b" stroke="#fff" stroke-width="1.2"/><rect x="16" y="3" width="4" height="4" fill="#fde68a" stroke="#fff" stroke-width="1"/></svg>`,
     g06: `<svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="14" fill="url(#g06g)" stroke="#fff" stroke-width="1.5"/><path d="M10 14 C10 7 26 7 26 14 C26 21 10 21 10 28 M8 22 C16 30 28 22 28 22" stroke="#e9d5ff" stroke-width="2.5" fill="none" stroke-linecap="round"/><defs><linearGradient id="g06g" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#7e22ce"/><stop offset="100%" stop-color="#3b0764"/></linearGradient></defs></svg>`,
@@ -55,9 +54,7 @@
     s07: `<svg viewBox="0 0 36 36"><rect x="5" y="22" width="26" height="10" rx="1" fill="#7c2d12" stroke="#fff" stroke-width="1.5"/><rect x="9" y="14" width="18" height="8" rx="1" fill="#ea580c" stroke="#fff" stroke-width="1.5"/><rect x="13" y="7" width="10" height="7" rx="1" fill="#fdba74" stroke="#fff" stroke-width="1.5"/><rect x="15" y="24" width="6" height="8" fill="#fef08a" stroke="#fff" stroke-width="1"/></svg>`,
     s08: `<svg viewBox="0 0 36 36"><path d="M4 31 L32 31 L26 24 L10 24 Z" fill="#1e293b"/><rect x="13" y="4" width="10" height="20" fill="url(#s08g)" stroke="#fff" stroke-width="1.5"/><defs><linearGradient id="s08g" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#64748b"/><stop offset="100%" stop-color="#334155"/></linearGradient></defs></svg>`,
     s09: `<svg viewBox="0 0 36 36"><rect x="13" y="4" width="10" height="28" rx="2" fill="url(#s09g)" stroke="#fff" stroke-width="1.5"/><line x1="18" y1="8" x2="18" y2="28" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="3 2"/><defs><linearGradient id="s09g" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#475569"/><stop offset="100%" stop-color="#1e293b"/></linearGradient></defs></svg>`,
-    s10: `<svg viewBox="0 0 36 36"><polygon points="18,3 27,8 27,28 18,33 9,28 9,8" fill="url(#s10g)" stroke="#fff" stroke-width="1.5"/><path d="M18 12 L18 4 M14 7 L22 7" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/><defs><linearGradient id="s10g" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#94a3b8"/><stop offset="100%" stop-color="#334155"/></linearGradient></defs></svg>`,
     s11: `<svg viewBox="0 0 36 36"><path d="M11 14 C11 4 25 4 25 14 L27 28 C27 32 9 32 9 28 Z" fill="url(#s11g)" stroke="#fff" stroke-width="1.5"/><circle cx="18" cy="4" r="3" fill="#78350f"/><path d="M13 23 Q18 27 23 23" stroke="#fde68a" stroke-width="2.5" fill="none"/><defs><linearGradient id="s11g" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#f59e0b"/><stop offset="100%" stop-color="#92400e"/></linearGradient></defs></svg>`,
-    s12: `<svg viewBox="0 0 36 36"><polygon points="18,3 30,10 30,26 18,33 6,26 6,10" fill="url(#s12g)" stroke="#fff" stroke-width="1.5"/><line x1="18" y1="3" x2="18" y2="33" stroke="#78350f" stroke-width="1.5"/><line x1="6" y1="10" x2="30" y2="26" stroke="#78350f" stroke-width="1.5"/><defs><linearGradient id="s12g" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#fbbf24"/><stop offset="100%" stop-color="#d97706"/></linearGradient></defs></svg>`,
     s13: `<svg viewBox="0 0 36 36"><path d="M10 32 L26 32 M12 27 L24 27 M14 16 L22 16 L22 27 L14 27 Z" fill="#ca8a04" stroke="#fff" stroke-width="1.5"/><polygon points="18,4 28,11 8,11" fill="#854d0e" stroke="#fff" stroke-width="1.5"/></svg>`,
     s14: `<svg viewBox="0 0 36 36"><circle cx="12" cy="13" r="4.5" fill="#f59e0b" stroke="#fff" stroke-width="1"/><circle cx="24" cy="13" r="4.5" fill="#f59e0b" stroke="#fff" stroke-width="1"/><path d="M7 30 C7 20 17 20 17 30 Z M19 30 C19 20 29 20 29 30 Z" fill="url(#s14g)" stroke="#fff" stroke-width="1.5"/><defs><linearGradient id="s14g" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#eab308"/><stop offset="100%" stop-color="#854d0e"/></linearGradient></defs></svg>`,
     s15: `<svg viewBox="0 0 36 36"><path d="M3 31 L16 31 M5 24 L14 24 M7 17 L12 17" stroke="#ea580c" stroke-width="3"/><path d="M20 31 L33 31 M22 24 L31 24 M24 17 L29 17" stroke="#fdba74" stroke-width="3"/></svg>`,
@@ -74,14 +71,9 @@
     j01: `<svg viewBox="0 0 36 36"><rect x="5" y="4" width="26" height="28" rx="3" fill="url(#j01g)" stroke="#fff" stroke-width="1.5"/><text x="12" y="18" font-size="12" font-weight="bold" fill="#fff">ㄱ</text><text x="20" y="27" font-size="12" font-weight="bold" fill="#fde68a">ㅏ</text><defs><linearGradient id="j01g" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#6366f1"/><stop offset="100%" stop-color="#1e1b4b"/></linearGradient></defs></svg>`,
     j02: `<svg viewBox="0 0 36 36"><rect x="6" y="20" width="24" height="12" rx="2" fill="url(#j02g)" stroke="#fff" stroke-width="1.5"/><circle cx="12" cy="11" r="5" fill="#60a5fa" stroke="#fff" stroke-width="1"/><circle cx="24" cy="11" r="5" fill="#60a5fa" stroke="#fff" stroke-width="1"/><defs><linearGradient id="j02g" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#2563eb"/><stop offset="100%" stop-color="#1e3a8a"/></linearGradient></defs></svg>`,
     j03: `<svg viewBox="0 0 36 36"><rect x="4" y="6" width="28" height="24" rx="3" fill="url(#j03g)" stroke="#fff" stroke-width="1.5"/><path d="M6 26 Q13 13 20 21 Q25 10 30 26 Z" fill="#fbcfe8"/><defs><linearGradient id="j03g" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#ec4899"/><stop offset="100%" stop-color="#831843"/></linearGradient></defs></svg>`,
-    j04: `<svg viewBox="0 0 36 36"><path d="M4 32 L32 32 L32 20 L4 20 Z" fill="#334155" stroke="#fff" stroke-width="1.5"/><path d="M13 32 A5 5 0 0 1 23 32 Z" fill="#0f172a"/><path d="M6 20 L18 11 L30 20 Z" fill="#ef4444" stroke="#fff" stroke-width="1.5"/><path d="M9 11 L18 4 L27 11 Z" fill="#b91c1c" stroke="#fff" stroke-width="1.5"/></svg>`,
-    j05: `<svg viewBox="0 0 36 36"><path d="M4 32 A14 14 0 0 1 32 32 Z" fill="none" stroke="#ef4444" stroke-width="3.5"/><path d="M11 20 L18 13 L25 20 Z" fill="#ef4444" stroke="#fff" stroke-width="1.5"/></svg>`,
     j06: `<svg viewBox="0 0 36 36"><path d="M2 18 L18 7 L34 18 L30 18 L30 31 L6 31 L6 18 Z" fill="url(#j06g)" stroke="#fff" stroke-width="1.5"/><path d="M5 11 L18 2 L31 11 Z" fill="#991b1b" stroke="#fff" stroke-width="1.5"/><defs><linearGradient id="j06g" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#ef4444"/><stop offset="100%" stop-color="#7f1d1d"/></linearGradient></defs></svg>`,
     j07: `<svg viewBox="0 0 36 36"><rect x="4" y="5" width="28" height="26" rx="3" fill="url(#j07g)" stroke="#fff" stroke-width="1.5"/><circle cx="23" cy="15" r="6" fill="#c7d2fe"/><circle cx="11" cy="20" r="4" fill="#c7d2fe"/><defs><linearGradient id="j07g" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#6366f1"/><stop offset="100%" stop-color="#1e1b4b"/></linearGradient></defs></svg>`,
     j08: `<svg viewBox="0 0 36 36"><rect x="5" y="5" width="26" height="26" rx="3" fill="#0f172a" stroke="#fff" stroke-width="1.5"/><circle cx="18" cy="18" r="9" fill="none" stroke="#60a5fa" stroke-dasharray="3 2"/><circle cx="18" cy="13" r="1.5" fill="#fff"/><circle cx="23" cy="18" r="1.5" fill="#fff"/><circle cx="14" cy="22" r="1.5" fill="#fff"/></svg>`,
-    j09: `<svg viewBox="0 0 36 36"><rect x="5" y="4" width="26" height="28" rx="3" fill="url(#j09g)" stroke="#fff" stroke-width="1.5"/><path d="M13 8 L21 13 L18 22 L23 27 L16 27 Z" fill="#c7d2fe"/><defs><linearGradient id="j09g" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#4f46e5"/><stop offset="100%" stop-color="#312e81"/></linearGradient></defs></svg>`,
-    j10: `<svg viewBox="0 0 36 36"><ellipse cx="18" cy="18" rx="15" ry="11" fill="url(#j10g)" stroke="#fff" stroke-width="1.5"/><ellipse cx="12" cy="18" rx="5" ry="7" fill="#60a5fa"/><ellipse cx="24" cy="18" rx="5" ry="7" fill="#60a5fa"/><defs><linearGradient id="j10g" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#2563eb"/><stop offset="100%" stop-color="#1e3a8a"/></linearGradient></defs></svg>`,
-    j11: `<svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="13" fill="none" stroke="#60a5fa" stroke-width="2.5"/><ellipse cx="18" cy="18" rx="13" ry="5" fill="none" stroke="#fbbf24" stroke-width="2.5"/><ellipse cx="18" cy="18" rx="5" ry="13" fill="none" stroke="#fbbf24" stroke-width="2.5"/></svg>`,
     j12: `<svg viewBox="0 0 36 36"><rect x="12" y="6" width="12" height="20" fill="url(#j12g)" stroke="#fff" stroke-width="1.5"/><rect x="8" y="26" width="20" height="6" fill="#475569" stroke="#fff" stroke-width="1.5"/><defs><linearGradient id="j12g" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#3b82f6"/><stop offset="100%" stop-color="#1d4ed8"/></linearGradient></defs></svg>`,
     j13: `<svg viewBox="0 0 36 36"><path d="M4 16 A14 14 0 0 0 32 16 Z" fill="url(#j13g)" stroke="#fff" stroke-width="1.5"/><line x1="18" y1="16" x2="26" y2="6" stroke="#fde68a" stroke-width="3" stroke-linecap="round"/><defs><linearGradient id="j13g" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#2563eb"/><stop offset="100%" stop-color="#1e3a8a"/></linearGradient></defs></svg>`,
     j14: `<svg viewBox="0 0 36 36"><rect x="6" y="5" width="24" height="26" rx="3" fill="#1e3a8a" stroke="#fff" stroke-width="1.5"/><circle cx="13" cy="13" r="2.5" fill="#fde68a"/><circle cx="23" cy="13" r="2.5" fill="#60a5fa"/><circle cx="18" cy="23" r="2.5" fill="#ef4444"/></svg>`,
@@ -96,91 +88,12 @@
     l03: `<svg viewBox="0 0 36 36"><rect x="4" y="6" width="7" height="24" fill="#6366f1" stroke="#fff" stroke-width="1"/><rect x="11" y="6" width="7" height="24" fill="#4f46e5" stroke="#fff" stroke-width="1"/><rect x="18" y="6" width="7" height="24" fill="#6366f1" stroke="#fff" stroke-width="1"/><rect x="25" y="6" width="7" height="24" fill="#4f46e5" stroke="#fff" stroke-width="1"/></svg>`,
     l04: `<svg viewBox="0 0 36 36"><rect x="4" y="6" width="28" height="24" rx="3" fill="url(#l04g)" stroke="#fff" stroke-width="1.5"/><line x1="18" y1="6" x2="18" y2="22" stroke="#fbcfe8" stroke-width="2.5"/><circle cx="18" cy="25" r="3.5" fill="#fbcfe8"/><defs><linearGradient id="l04g" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#ec4899"/><stop offset="100%" stop-color="#831843"/></linearGradient></defs></svg>`,
     m01: `<svg viewBox="0 0 36 36"><path d="M6 32 L6 8 L30 8 L30 32 L23 32 L23 20 A5 5 0 0 0 13 20 L13 32 Z" fill="url(#m01g)" stroke="#fff" stroke-width="1.5"/><defs><linearGradient id="m01g" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#38bdf8"/><stop offset="100%" stop-color="#0284c7"/></linearGradient></defs></svg>`,
-    m02: `<svg viewBox="0 0 36 36"><rect x="9" y="4" width="18" height="28" fill="#f8fafc" stroke="#fff" stroke-width="1.5"/><path d="M14 23 Q18 19 22 23 L22 29 L14 29 Z" fill="#ef4444"/></svg>`,
     m03: `<svg viewBox="0 0 36 36"><rect x="5" y="9" width="26" height="23" fill="url(#m03g)" stroke="#fff" stroke-width="1.5"/><path d="M9 15 A4 4 0 0 1 17 15 Z M19 15 A4 4 0 0 1 27 15 Z" fill="#bae6fd"/><defs><linearGradient id="m03g" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0369a1"/><stop offset="100%" stop-color="#075985"/></linearGradient></defs></svg>`,
     m04: `<svg viewBox="0 0 36 36"><rect x="10" y="5" width="16" height="26" rx="2.5" fill="url(#m04g)" stroke="#fff" stroke-width="1.5"/><text x="18" y="21" font-size="10" font-weight="bold" fill="#ef4444" text-anchor="middle">和</text><defs><linearGradient id="m04g" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#64748b"/><stop offset="100%" stop-color="#1e293b"/></linearGradient></defs></svg>`,
     m05: `<svg viewBox="0 0 36 36"><rect x="5" y="4" width="26" height="28" fill="#f8fafc" stroke="#1e293b" stroke-width="1.5"/><rect x="8" y="7" width="20" height="5" fill="#0284c7"/><line x1="8" y1="16" x2="28" y2="16" stroke="#64748b" stroke-width="2"/><line x1="8" y1="21" x2="28" y2="21" stroke="#64748b" stroke-width="2"/><line x1="8" y1="26" x2="22" y2="26" stroke="#64748b" stroke-width="2"/></svg>`,
     m06: `<svg viewBox="0 0 36 36"><polygon points="18,5 3,12 33,12" fill="#0284c7" stroke="#fff" stroke-width="1.5"/><rect x="5" y="12" width="26" height="18" fill="#bae6fd"/><line x1="9" y1="12" x2="9" y2="30" stroke="#fff" stroke-width="2"/><line x1="15" y1="12" x2="15" y2="30" stroke="#fff" stroke-width="2"/><line x1="21" y1="12" x2="21" y2="30" stroke="#fff" stroke-width="2"/><line x1="27" y1="12" x2="27" y2="30" stroke="#fff" stroke-width="2"/></svg>`,
     m07: `<svg viewBox="0 0 36 36"><rect x="6" y="4" width="24" height="28" rx="2.5" fill="url(#m07g)" stroke="#fff" stroke-width="1.5"/><text x="18" y="21" font-size="11" font-weight="bold" fill="#fff" text-anchor="middle">3·1</text><defs><linearGradient id="m07g" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#6366f1"/><stop offset="100%" stop-color="#312e81"/></linearGradient></defs></svg>`
   };
-
-  function getRelicCategoryInfo(relic) {
-    const title = relic.title || "";
-    const id = relic.id || "";
-    const customSvg = RELIC_SPECIFIC_SVG_MAP[id] || null;
-
-    // 1. 과학 기구 (첨성대, 자격루, 천상열차, 앙부일구, 측우기, 혼천시계, 칠정산, 거중기)
-    if (/첨성대|자격루|천상열차|앙부일구|측우기|혼천|칠정산|거중기/u.test(title)) {
-      return { category: "science", icon: "🔭", relicSvg: customSvg, label: "과학·천문", bg: "linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%)", border: "#60a5fa", shadow: "rgba(37, 99, 235, 0.65)" };
-    }
-
-    // 2. 석탑 / 목탑 (석탑, 목탑)
-    if (/석탑|목탑/u.test(title)) {
-      return { category: "pagoda", icon: "🛕", relicSvg: customSvg, label: "석탑·목탑", bg: "linear-gradient(135deg, #7c2d12 0%, #ea580c 100%)", border: "#fdba74", shadow: "rgba(234, 88, 12, 0.65)" };
-    }
-
-    // 3. 불상 / 석등 (본존불|은진미륵|이불병좌상|석등|마애삼존불)
-    if (/불상|불|미륵|석등|이불병좌상/u.test(title)) {
-      return { category: "buddha", icon: "🪷", relicSvg: customSvg, label: "불상·석등", bg: "linear-gradient(135deg, #854d0e 0%, #eab308 100%)", border: "#fef08a", shadow: "rgba(234, 179, 8, 0.65)" };
-    }
-
-    // 4. 비석 / 금석문 (비|비문|순수비|순교비|임신서기석|유묵|척화비)
-    if (/비|비문|순수비|순교비|서기석|유묵|척화비/u.test(title)) {
-      return { category: "stele", icon: "📜", relicSvg: customSvg, label: "비석·금석문", bg: "linear-gradient(135deg, #1e293b 0%, #475569 100%)", border: "#cbd5e1", shadow: "rgba(71, 85, 105, 0.65)" };
-    }
-
-    // 5. 무기 / 동검 / 방울 / 갑옷 / 거울 (동검, 칠지도, 무기, 갑옷, 팔주령, 거울)
-    if (/동검|칠지도|갑옷|방울|팔주령|거울|다뉴세문경/u.test(title)) {
-      return { category: "weapon", icon: "⚔️", relicSvg: customSvg, label: "동검·무기·의례구", bg: "linear-gradient(135deg, #064e3b 0%, #10b981 100%)", border: "#6ee7b7", shadow: "rgba(16, 185, 129, 0.65)" };
-    }
-
-    // 6. 도자기 / 향로 / 매병 / 항아리 (청자, 백자, 분청사기, 향로, 달항아리)
-    if (/청자|백자|분청사기|향로|달항아리|그릇|병/u.test(title)) {
-      return { category: "celadon", icon: "🏺", relicSvg: customSvg, label: "도자기·향로", bg: "linear-gradient(135deg, #134e4a 0%, #14b8a6 100%)", border: "#99f6e4", shadow: "rgba(20, 184, 166, 0.65)" };
-    }
-
-    // 7. 금관 / 왕실 공예 / 장신구 / 범종 (금관, 관식, 주령구, 범종, 에밀레종)
-    if (/금관|관식|주령구|종|에밀레종/u.test(title)) {
-      if (/종|에밀레종/u.test(title)) {
-        return { category: "bell", icon: "🔔", relicSvg: customSvg, label: "범종·공예", bg: "linear-gradient(135deg, #92400e 0%, #f59e0b 100%)", border: "#fde68a", shadow: "rgba(245, 158, 11, 0.65)" };
-      }
-      return { category: "crown", icon: "👑", relicSvg: customSvg, label: "금관·왕실공예", bg: "linear-gradient(135deg, #b45309 0%, #f59e0b 100%)", border: "#fde68a", shadow: "rgba(245, 158, 11, 0.65)" };
-    }
-
-    // 8. 서책 / 대장경 / 지도 / 문서 (해례본, 대장경, 직지, 실록, 지도, 선언서, 독립신문, 다라니경, 서명문)
-    if (/해례본|대장경|직지|실록|지도|선언서|신문|다라니경|서명문/u.test(title)) {
-      return { category: "book", icon: "📚", relicSvg: customSvg, label: "기록유산·지도·서책", bg: "linear-gradient(135deg, #312e81 0%, #6366f1 100%)", border: "#c7d2fe", shadow: "rgba(99, 102, 241, 0.65)" };
-    }
-
-    // 9. 궁궐 / 성문 / 근대 건축 / 독도 (숭례문, 흥인지문, 경복궁, 화성, 석조전, 독립문, 독도, 무량수전, 참성단, 청사)
-    if (/숭례문|흥인지문|경복궁|화성|석조전|독립문|청사|독도|무량수전|참성단/u.test(title)) {
-      if (/독도/u.test(title)) {
-        return { category: "nature", icon: "🏝️", relicSvg: customSvg, label: "자연·영토", bg: "linear-gradient(135deg, #0369a1 0%, #38bdf8 100%)", border: "#bae6fd", shadow: "rgba(56, 189, 248, 0.65)" };
-      }
-      return { category: "palace", icon: "🏯", relicSvg: customSvg, label: "궁궐·성문·건축", bg: "linear-gradient(135deg, #991b1b 0%, #ef4444 100%)", border: "#fca5a5", shadow: "rgba(239, 68, 68, 0.65)" };
-    }
-
-    // 10. 무덤 / 고분 / 벽화 (무덤, 왕릉, 고분, 벽화, 장군총, 사신도, 수렵도, 천마도, 벽돌)
-    if (/무덤|왕릉|고분|벽화|장군총|사신도|수렵도|천마도|벽돌|묘/u.test(title)) {
-      return { category: "tomb", icon: "🎨", relicSvg: customSvg, label: "고분·무덤·벽화", bg: "linear-gradient(135deg, #581c87 0%, #9333ea 100%)", border: "#e9d5ff", shadow: "rgba(147, 51, 234, 0.65)" };
-    }
-
-    // 11. 회화 / 미술 (산수화, 몽유도원도, 인왕제색도, 씨름도, 단오풍정, 고사관수도)
-    if (/도|화|그림/u.test(title)) {
-      return { category: "art", icon: "🖼️", relicSvg: customSvg, label: "회화·미술", bg: "linear-gradient(135deg, #831843 0%, #ec4899 100%)", border: "#fbcfe8", shadow: "rgba(236, 72, 153, 0.65)" };
-    }
-
-    // 12. 토기 / 석기 / 움집 / 고인돌 (토기, 돌, 움집, 주먹도끼, 돌칼, 고인돌)
-    if (/토기|돌|움집|주먹도끼|돌칼|고인돌/u.test(title)) {
-      if (/고인돌|움집/u.test(title)) {
-        return { category: "dolmen", icon: "🪨", relicSvg: customSvg, label: "고인돌·움집", bg: "linear-gradient(135deg, #78350f 0%, #a16207 100%)", border: "#fef08a", shadow: "rgba(161, 98, 7, 0.65)" };
-      }
-      return { category: "pottery", icon: "🏺", relicSvg: customSvg, label: "토기·석기", bg: "linear-gradient(135deg, #92400e 0%, #d97706 100%)", border: "#fde68a", shadow: "rgba(217, 119, 6, 0.65)" };
-    }
-
-    // Default fallback
-    return { category: "general", icon: "🏛️", relicSvg: customSvg, label: "유물·유적", bg: "linear-gradient(135deg, #78350f 0%, #d97706 100%)", border: "#fbbf24", shadow: "rgba(245, 158, 11, 0.65)" };
-  }
 
   // ───────────── 지도 ─────────────
   let entries = [];
@@ -189,15 +102,14 @@
     entries = [];
     const links = L.layerGroup().addTo(group);
     relics.filter(inScope).forEach((relic) => {
-      const info = getRelicCategoryInfo(relic);
       const color = eraOf(relic.eraCategory).color;
       const icon = L.divIcon({
         className: "relic-pin-wrapper",
-        html: `<span class="relic-pin" style="--era:${color}">${info.relicSvg || `<span class="relic-pin-emoji">${info.icon}</span>`}</span>`,
+        html: `<span class="relic-pin" style="--era:${color}">${PIN_SVG[relic.id]}</span>`,
         iconSize: [40, 40], iconAnchor: [20, 20]
       });
       const marker = L.marker([relic.lat, relic.lng], { icon, pane: "studyMarkers", title: relic.title, riseOnHover: true })
-        .bindTooltip(`<strong>${relic.title}</strong><small>${info.label} · ${relic.location}</small>`, { direction: "top", offset: [0, -18], className: "relic-tooltip" })
+        .bindTooltip(`<strong>${relic.title}</strong><small>${placeOf(relic)}</small>`, { direction: "top", offset: [0, -18], className: "relic-tooltip" })
         .on("click", () => openRelic(relic))
         .addTo(group);
       entries.push({ relic, marker, origin: L.latLng(relic.lat, relic.lng) });
@@ -206,8 +118,8 @@
   }
 
   // 가까운 핀끼리 묶는다. 앞선 핀을 씨앗으로 삼아 씨앗에서 44px 안에 든 핀만 같은 묶음이 된다(줄줄이 이어 붙어 한 덩어리가 되지 않게).
-  // 일곱 개까지는 둥글게 벌려 놓고 원래 자리를 점선으로 잇는다. 더 많으면 개수 동그라미 하나로 모으고, 누르면 그곳을 확대한다.
-  const RING_LIMIT = 7;
+  // 아홉 개까지는 둥글게 벌려 놓고 원래 자리를 점선으로 잇는다(국립중앙박물관 한 자리에 아홉 점). 더 많으면 개수 동그라미 하나로 모으고, 누르면 그곳을 확대한다.
+  const RING_LIMIT = 9;
   function spreadOverlaps(map, links, group) {
     links.clearLayers();
     const points = entries.map((entry) => map.latLngToLayerPoint(entry.origin));
@@ -291,7 +203,7 @@
         button.type = "button";
         button.className = "relic-button";
         button.style.setProperty("--era", era.color);
-        button.append(api.element("span", "", relic.title), api.element("small", "", relic.location));
+        button.append(api.element("span", "", relic.title), api.element("small", "", placeOf(relic)));
         button.addEventListener("click", () => {
           api.map.flyTo([relic.lat, relic.lng], Math.max(api.map.getZoom(), 10), { duration: 0.6 });
           openRelic(relic);
@@ -307,24 +219,20 @@
   function openRelic(relic) {
     const dialog = $("relicDialog");
     if (!dialog) return;
-    const info = getRelicCategoryInfo(relic);
     const image = $("relicImage");
-    image.src = data.makeArtifactTextureSVG(relic.id);
+    image.src = photoOf(relic);
     image.alt = `${relic.title} 사진`;
-    $("relicEra").textContent = `${relic.era} · ${info.label}`;
+    $("relicEra").textContent = relic.era;
     $("relicEra").style.setProperty("--era", eraOf(relic.eraCategory).color);
     $("relicTitle").textContent = relic.title;
-    $("relicTitleEn").textContent = relic.titleEn || "";
-    $("relicLocation").textContent = relic.location;
-    $("relicMuseum").textContent = relic.museum;
+    for (const key of ["location", "museum"]) {
+      const cell = $(key === "location" ? "relicLocation" : "relicMuseum");
+      cell.textContent = relic[key];
+      cell.parentElement.hidden = !relic[key];
+    }
     $("relicDocent").textContent = relic.docent;
-    $("relicContext").textContent = relic.context || "";
-    $("relicTip").textContent = cleanExamTip(relic.examTip);
+    $("relicContext").textContent = relic.context;
     if (!dialog.open) dialog.showModal();
-  }
-
-  function cleanExamTip(examTip) {
-    return String(examTip || "").replace(/^📌\s*\[내신\/수능 핵심\]\s*/, "").replace(/^📌\s*/, "").trim();
   }
 
   document.addEventListener("DOMContentLoaded", () => {
@@ -367,10 +275,10 @@
     return {
       ...baseQuestion(relic, "inference"),
       prompt: profile.question,
-      stimulus: { type: "image", title: "자료", src: data.makeArtifactTextureSVG(relic.id), alt: "문제에 나온 유물·유적 사진", text: source },
+      stimulus: { type: "image", title: "자료", src: photoOf(relic), alt: "문제에 나온 유물·유적 사진", text: source },
       options: profile.options.slice(),
       answer: 0,
-      hint: `이 자료와 관련된 곳: ${hideAnswerNames(relic.location, profile.hide)}`,
+      hint: `이 자료와 관련된 곳: ${hideAnswerNames(placeOf(relic), profile.hide)}`,
       explanation: `제시된 자료는 ${relic.title}입니다. ${profile.explanation}`
     };
   }
@@ -429,18 +337,19 @@
     const title = relic.title;
     if (id === "p05") return HISTORICAL_PROFILES.paleolithic;
     if (["p01", "p11"].includes(id)) return HISTORICAL_PROFILES.neolithic;
-    if (["p02", "p03", "p04", "p06", "p07", "p08"].includes(id)) return HISTORICAL_PROFILES.bronze;
+    if (["p02", "p03", "p06", "p07", "p08"].includes(id)) return HISTORICAL_PROFILES.bronze;
     if (id === "p09") return HISTORICAL_PROFILES.earlyIron;
     if (id.startsWith("g")) return HISTORICAL_PROFILES.goguryeo;
     if (id.startsWith("b") || title.includes("칠지도")) return HISTORICAL_PROFILES.baekje;
     if (id === "a01") return HISTORICAL_PROFILES.gaya;
-    if (["s01", "s04", "s05", "s06", "s07", "s08", "s09", "s10", "s16"].includes(id)) return HISTORICAL_PROFILES.silla;
+    if (id === "s16") return HISTORICAL_PROFILES.hou;
+    if (["s01", "s04", "s05", "s06", "s07", "s08", "s09"].includes(id)) return HISTORICAL_PROFILES.silla;
     if (["s13", "s14", "s17"].includes(id)) return HISTORICAL_PROFILES.balhae;
     if (id.startsWith("s")) return HISTORICAL_PROFILES.unifiedSilla;
     if (id.startsWith("k")) return HISTORICAL_PROFILES.goryeo;
     if (["j01", "j02", "j03", "j12", "j13", "j14"].includes(id)) return HISTORICAL_PROFILES.sejong;
-    if (["j04", "j06", "j07", "j08", "j18", "j20"].includes(id)) return HISTORICAL_PROFILES.earlyJoseon;
-    if (["j09", "j10", "j11", "j15", "j17", "l01", "l02", "l03", "l04"].includes(id)) return HISTORICAL_PROFILES.lateJoseon;
+    if (["j06", "j07", "j08", "j18", "j20"].includes(id)) return HISTORICAL_PROFILES.earlyJoseon;
+    if (["j15", "j17", "l01", "l02", "l03", "l04"].includes(id)) return HISTORICAL_PROFILES.lateJoseon;
     if (id === "m04") return HISTORICAL_PROFILES.daewongun;
     if (["m01", "m05"].includes(id)) return HISTORICAL_PROFILES.independenceClub;
     if (title.includes("3·1") || title.includes("임시정부")) return HISTORICAL_PROFILES.marchFirst;
@@ -486,6 +395,11 @@
       options: ["낙동강 유역의 철을 주변 국가와 왜에 수출하였다.", "한강 유역을 차지하고 북한산에 순수비를 세웠다.", "중국 남조와 교류하며 웅진으로 천도하였다.", "철기병을 앞세워 만주와 요동 지역으로 영토를 넓혔다."],
       explanation: "가야는 풍부한 철을 생산해 낙랑·왜 등과 교역했습니다.",
       hide: ["가야"]
+    },
+    hou: {
+      question: "이 자료로 알 수 있는 5세기 무렵의 사실로 옳은 것은?",
+      options: ["고구려가 신라에 큰 영향력을 미쳤다.", "신라가 한강 유역을 차지하고 북한산에 순수비를 세웠다.", "신라가 당과 손잡고 백제를 무너뜨렸다.", "고구려가 살수에서 수의 군대를 크게 물리쳤다."],
+      explanation: "고구려에서 광개토대왕을 기려 만든 그릇이 신라 무덤에서 나온 것은 5세기에 고구려가 신라에 큰 영향을 미쳤음을 보여 줍니다."
     },
     silla: {
       question: "이 자료가 속한 나라의 정치·사회 모습으로 옳은 것은?",
@@ -557,7 +471,7 @@
   };
 
   function getContextSentences(relic) {
-    const text = String(relic.context || relic.docent || "").trim();
+    const text = String(relic.context).trim();
     const sentences = text.match(/[^.!?]+[.!?]?/g)
       ?.map(sentence => sentence.trim())
       .filter(Boolean) || [];

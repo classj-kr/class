@@ -234,13 +234,27 @@ for (const [topic, patterns] of Object.entries(essentialCoverage)) {
 }
 
 // 유물·유적: 사진은 우리 폴더에, 핀은 지형 바탕이 깔린 곳(동경 90~180, 북위 0~66.5)에, 문제는 유물마다 하나.
-const relics = sandbox.window.KOREAN_MUSEUM_DATA.relicsMaster;
+const relics = sandbox.window.KOREA_HERITAGE;
 assert.ok(relics.length >= 60, "유물·유적이 빠졌습니다.");
+const relicPhotos = relics.map((relic) => relic.photo || `${relic.id}.jpg`);
 for (const relic of relics) {
-  const image = sandbox.window.KOREAN_MUSEUM_DATA.makeArtifactTextureSVG(relic.id).replace(/\?.*$/, "");
+  const image = `heritage/${relic.photo || `${relic.id}.jpg`}`;
   assert.ok(exists(image), `${relic.title} 사진(${image})이 없습니다.`);
   assert.ok(relic.lng > 90 && relic.lng < 180 && relic.lat > 0 && relic.lat < 66.5, `${relic.title} 핀이 지도 바탕 밖에 있습니다.`);
+  // 설명 창에는 시대·제목·장소·설명 두 문단만. 영어 제목, 암기 메모, 쓰지 않는 칸(노선·지정 번호·유물별 문제)은 두지 않는다.
+  assert.deepEqual(Object.keys(relic).filter((key) => !["id", "title", "eraCategory", "era", "lat", "lng", "location", "museum", "docent", "context", "photo"].includes(key)), [], `${relic.title}에 쓰지 않는 칸이 있습니다.`);
+  assert.ok(relic.location || relic.museum, `${relic.title}의 장소가 비었습니다.`);
+  assert.notEqual(relic.location, relic.museum, `${relic.title}의 관련 장소와 지금 있는 곳이 같습니다.`);
+  assert.doesNotMatch(`${relic.title}${relic.museum}`, /\(|제\d+호|&/, `${relic.title}: 괄호 설명·옛 지정 번호는 빼야 합니다.`);
+  const sentences = (text) => text.match(/[^.!?]+[.!?]/g).map((sentence) => sentence.trim());
+  const docentSentences = new Set(sentences(relic.docent));
+  assert.ok(sentences(relic.context).every((sentence) => !docentSentences.has(sentence)), `${relic.title}: 두 문단에 같은 문장이 있습니다.`);
+  assert.doesNotMatch(relic.docent + relic.context, /시험에서|내신|수능|구분해야|설명하면 안|지도 표시는|!/, `${relic.title}: 책 밖 목소리가 섞였습니다.`);
 }
+// 쓰지 않는 사진을 폴더에 두지 않는다.
+assert.deepEqual(fs.readdirSync(new URL(`${base}heritage/`, root)).filter((name) => name !== "SOURCES.md").sort(), [...relicPhotos].sort());
+assert.doesNotMatch(html, /relicTitleEn|relicTip/);
+assert.doesNotMatch(sources.heritage, /getRelicCategoryInfo|examTip|titleEn/);
 const heritage = dataset.themes.heritage;
 assert.ok(heritage.draw && heritage.panel && heritage.buildQuestions, "유물·유적 탭이 지도·옆 칸·문제를 모두 갖춰야 합니다.");
 const heritageQuestions = heritage.buildQuestions("all");
