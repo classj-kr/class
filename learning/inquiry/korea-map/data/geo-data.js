@@ -121,11 +121,6 @@
         { name: "직선 기선(대략)", kind: "baseline", color: "#1c6fa8", coords: [[37.0, 125.7], [36.6, 125.55], [36.1, 126.0], [35.65, 126.1], [34.7, 125.2], [34.07, 125.1], [33.95, 126.6], [34.0, 127.3], [34.35, 128.3], [34.55, 128.75], [35.0, 129.1]] }
       ],
       markers: [
-        { name: "극북 유원진", note: "북위 43° 온성군", lat: 43.00, lng: 129.87, color: "#b8322f", icon: "北" },
-        { name: "극서 마안도", note: "동경 124° 압록강 하구 비단섬", lat: 39.80, lng: 124.18, color: "#b8322f", icon: "西" },
-        { name: "극동 독도", note: "동경 131° 52′, 해가 가장 먼저 뜬다", lat: 37.24, lng: 131.87, color: "#b8322f", icon: "東" },
-        { name: "극남 마라도", note: "북위 33° 06′", lat: 33.12, lng: 126.27, color: "#b8322f", icon: "南" },
-        { name: "이어도", note: "수중 암초, 해양 과학 기지", lat: 32.12, lng: 125.18, color: "#1c6fa8", icon: "礁" },
         { name: "울릉도", note: "독도까지 87.4km", lat: 37.50, lng: 130.87, color: "#1c6fa8", icon: "島" },
         { name: "백령도", note: "서해 최북단 섬", lat: 37.96, lng: 124.65, color: "#1c6fa8", icon: "島" }
       ],
@@ -136,11 +131,10 @@
       ],
       features: [
         { name: "독도", icon: "東", color: "#b8322f", lat: 37.24, lng: 131.87, zoom: 8, note: "동도·서도로 된 화산섬, 극동" },
-        { name: "마라도·이어도", icon: "南", color: "#b8322f", lat: 32.7, lng: 125.8, zoom: 7, note: "극남 섬과 수중 암초의 차이" },
+        { name: "마라도", icon: "南", color: "#b8322f", lat: 33.12, lng: 126.27, zoom: 9, note: "극남, 북위 33° 06′" },
+        { name: "이어도", icon: "礁", color: "#1c6fa8", lat: 32.12, lng: 125.18, zoom: 8, note: "마라도 남서쪽 149km의 수중 암초, 해양 과학 기지(영토가 아니다)" },
         { name: "마안도", icon: "西", color: "#b8322f", lat: 39.80, lng: 124.18, zoom: 8, note: "압록강 하구의 극서" },
-        { name: "유원진", icon: "北", color: "#b8322f", lat: 43.00, lng: 129.87, zoom: 8, note: "두만강 가의 극북" },
-        { name: "서·남해 직선 기선", icon: "線", color: "#1c6fa8", lat: 35.0, lng: 125.9, zoom: 7, note: "가장 바깥 섬을 이어 긋는다" },
-        { name: "표준 경선 135°", icon: "時", color: "#7a5630", lat: 36.5, lng: 135.0, zoom: 6, note: "일본 아카시를 지나는 경선" }
+        { name: "유원진", icon: "北", color: "#b8322f", lat: 43.00, lng: 129.87, zoom: 8, note: "두만강 가의 극북" }
       ]
     },
 
@@ -161,19 +155,7 @@
       rivers: true,
       minorRivers: true,
       profile: true,
-      featureMarkers: false,
-      annotations: terrainAnnotations(),
-      features: [
-        { name: "백두산·개마고원", icon: "▲", color: "#75481f", lat: 41.60, lng: 128.02, zoom: 7, note: "한반도에서 가장 높고 험준한 북부 산지" },
-        { name: "한강 수계", icon: "水", color: "#176f9e", lat: 37.62, lng: 127.27, zoom: 8, note: "북한강·남한강 합류와 임진강의 하구 연결" },
-        { name: "태백산맥", icon: "▲", color: "#8b5a2b", lat: 37.25, lng: 128.72, zoom: 8, note: "동해안 가까이 뻗은 1차 산맥" },
-        { name: "감입 곡류·카르스트", icon: "曲", color: "#6b5b3e", lat: 37.08, lng: 128.42, zoom: 9, note: "영월·단양의 하천 중상류 지형" },
-        { name: "철원 용암 대지", icon: "火", color: "#bd5b34", lat: 38.20, lng: 127.25, zoom: 9, note: "골짜기를 메운 용암, 논농사 평탄지" },
-        { name: "동해안 석호", icon: "湖", color: "#277a8f", lat: 37.80, lng: 128.90, zoom: 9, note: "사주가 만을 막아 생긴 호수" },
-        { name: "서해안 간척지", icon: "灣", color: "#277a8f", lat: 35.82, lng: 126.55, zoom: 9, note: "새만금·시화의 갯벌 매립" },
-        { name: "낙동강 삼각주", icon: "△", color: "#2377b7", lat: 35.10, lng: 128.93, zoom: 10, note: "하구에 쌓인 퇴적 평야" },
-        { name: "제주 화산 지형", icon: "火", color: "#bd5b34", lat: 33.38, lng: 126.53, zoom: 9, note: "순상 화산, 오름, 용암 동굴, 주상 절리" }
-      ]
+      annotations: terrainAnnotations()
     },
 
     climate: {
@@ -289,12 +271,8 @@
       ],
       features: [
         { name: "수도권", icon: "◎", color: "#7b4ab0", lat: 37.53, lng: 127.05, zoom: 9, note: "인구 절반, 통근권이 경기·인천으로 확대" },
-        { name: "1기 신도시", icon: "新", color: "#2f8a76", lat: 37.45, lng: 126.95, zoom: 10, note: "분당·일산·평촌·산본·중동" },
-        { name: "세종", icon: "🏛", color: "#2f8a76", lat: 36.48, lng: 127.29, zoom: 11, note: "행정 기능 이전, 젊은 인구 전입" },
-        { name: "혁신 도시", icon: "移", color: "#2f8a76", lat: 36.12, lng: 128.10, zoom: 8, note: "공공 기관 지방 이전, 김천·나주·원주 등" },
         { name: "부산·울산권", icon: "●", color: "#3b7fa8", lat: 35.37, lng: 129.05, zoom: 9, note: "항만·공업 기반 대도시권, 남초 공업 도시" },
-        { name: "전남 농산어촌", icon: "↘", color: "#cf6a4a", lat: 34.90, lng: 126.85, zoom: 8, note: "고령화·여초·인구 감소" },
-        { name: "안산·화성", icon: "多", color: "#7b4ab0", lat: 37.30, lng: 126.85, zoom: 10, note: "산업 단지, 외국인 근로자 다수" }
+        { name: "전남 농산어촌", icon: "↘", color: "#cf6a4a", lat: 34.90, lng: 126.85, zoom: 8, note: "고령화·여초·인구 감소" }
       ]
     },
 
@@ -351,9 +329,7 @@
         { name: "울산 공업", icon: "🏭", color: "#b64f3e", lat: 35.54, lng: 129.31, zoom: 10, note: "자동차·조선·석유 화학" },
         { name: "거제 조선", icon: "船", color: "#b64f3e", lat: 34.88, lng: 128.62, zoom: 10, note: "대형 조선소, 남초 공업 도시" },
         { name: "여수·광양", icon: "⚙", color: "#b64f3e", lat: 34.85, lng: 127.68, zoom: 10, note: "석유 화학과 제철" },
-        { name: "대덕 연구개발", icon: "⌁", color: "#2f8a76", lat: 36.39, lng: 127.36, zoom: 11, note: "연구 기관과 첨단 기업 집적" },
-        { name: "태백 탄전", icon: "炭", color: "#4b6b3a", lat: 37.16, lng: 128.99, zoom: 9, note: "폐광 뒤 관광·카지노로 전환" },
-        { name: "고리·월성 원전", icon: "原", color: "#5b53aa", lat: 35.5, lng: 129.4, zoom: 9, note: "동남 해안의 냉각수 입지" }
+        { name: "대덕 연구개발", icon: "⌁", color: "#2f8a76", lat: 36.39, lng: 127.36, zoom: 11, note: "연구 기관과 첨단 기업 집적" }
       ]
     },
 
@@ -393,10 +369,7 @@
       ],
       features: [
         { name: "경부축", icon: "軸", color: "#d28a18", lat: 36.35, lng: 127.38, zoom: 7, note: "서울~대전~대구~부산을 잇는 국토의 간선" },
-        { name: "오송역", icon: "驛", color: "#d28a18", lat: 36.62, lng: 127.33, zoom: 10, note: "경부·호남 고속 철도가 갈라지는 역" },
-        { name: "부산항", icon: "港", color: "#2f6fb3", lat: 35.10, lng: 129.04, zoom: 11, note: "가장 큰 컨테이너 항만, 국제 물류의 관문" },
-        { name: "광양항", icon: "港", color: "#2f6fb3", lat: 34.90, lng: 127.72, zoom: 10, note: "제철소와 맞붙은 항만" },
-        { name: "인천 국제공항", icon: "✈", color: "#1b7f8f", lat: 37.46, lng: 126.44, zoom: 10, note: "영종도, 여객·화물이 가장 많은 공항" }
+        { name: "오송역", icon: "驛", color: "#d28a18", lat: 36.62, lng: 127.33, zoom: 10, note: "경부·호남 고속 철도가 갈라지는 역" }
       ]
     },
 
@@ -423,7 +396,6 @@
       ],
       regionFill: true,
       provinceNames: true,
-      featureMarkers: false,
       annotations: [
         ...regionAnnotations(),
         { name: "관서(평안도)", kind: "tradition", lat: 39.7, lng: 125.6 },
@@ -440,15 +412,6 @@
         { name: "금강산 관광 지구", kind: "city", lat: 38.66, lng: 128.10, minZoom: 8 },
         { name: "나선 경제 특구", kind: "city", lat: 42.35, lng: 130.40, minZoom: 7 },
         { name: "신의주 특별 행정구", kind: "city", lat: 40.10, lng: 124.40, minZoom: 8 }
-      ],
-      features: [
-        { name: "북한", icon: "北", color: "#4b3a2a", lat: 40.0, lng: 127.0, zoom: 6, note: "산지·대륙성 기후·밭농사·광물·개방 지구" },
-        { name: "수도권", icon: "首", color: "#8e5bc4", lat: 37.55, lng: 127.00, zoom: 8, note: "중추 관리·첨단 산업·최대 인구" },
-        { name: "강원권", icon: "山", color: "#4c9a5f", lat: 37.45, lng: 128.35, zoom: 8, note: "영동·영서, 폐광 지역의 관광 전환" },
-        { name: "충청권", icon: "交", color: "#2f8a9a", lat: 36.45, lng: 127.35, zoom: 8, note: "교통 결절·행정·연구·서해안 중화학" },
-        { name: "호남권", icon: "田", color: "#d9a520", lat: 35.25, lng: 126.95, zoom: 8, note: "평야·간척·여수 광양 공업·생태 관광" },
-        { name: "영남권", icon: "工", color: "#d9713a", lat: 35.65, lng: 128.75, zoom: 8, note: "남동 임해 공업·내륙 공업·문화 유산" },
-        { name: "제주권", icon: "火", color: "#c94f4f", lat: 33.38, lng: 126.53, zoom: 9, note: "화산 지형·관광·감귤·국제 자유 도시" }
       ]
     }
   };

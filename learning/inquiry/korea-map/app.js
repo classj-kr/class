@@ -257,11 +257,6 @@
         const name = normalizeProvinceName(feature.properties && feature.properties.name);
         const region = regionStyleFor(name);
         layer.bindTooltip(region ? `${name} · ${region.region}` : name, { sticky: true, className: "province-tooltip" });
-        layer.on("click", () => {
-          if (!fillByRegion || !region) return;
-          const regionFeature = (theme.features || []).find((item) => item.name === region.region);
-          if (regionFeature) focusFeature(regionFeature);
-        });
       }
     }).addTo(group);
   }

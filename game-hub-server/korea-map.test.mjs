@@ -181,7 +181,11 @@ assert.equal(riverData.features.length, 12, "한반도 주요 하천 중심선 �
 
 for (const [themeKey, theme] of Object.entries(dataset.themes).filter(([key]) => BANK_KEYS.includes(key))) {
   assert.ok(!theme.title && !theme.summary && Array.isArray(theme.points) && theme.points.length, `${themeKey}: 요점은 있고, 탭 이름을 되풀이하는 제목·설명 문장은 없어야 합니다.`);
-  assert.ok(Array.isArray(theme.features) && theme.features.length, `${themeKey} 필수 지점이 없습니다.`);
+  // 필수 지점은 지도 이름표·표지·요점과 겹치지 않는 것만 둔다(지형·행정구역은 없다).
+  for (const feature of theme.features || []) {
+    assert.ok(!(theme.annotations || []).some((item) => item.name === feature.name), `${themeKey} 필수 지점 ${feature.name}이 지도 이름표와 겹칩니다.`);
+    assert.ok(!(theme.markers || []).some((item) => item.name.includes(feature.name) && Math.abs(item.lat - feature.lat) < 0.05), `${themeKey} 필수 지점 ${feature.name}이 지도 표지와 겹칩니다.`);
+  }
   assert.ok(Array.isArray(theme.principles) && theme.principles.length, `${themeKey} 핵심 원리가 없습니다.`);
   for (const principle of theme.principles) {
     assert.ok(principle.title && principle.explanation.length >= 40, `${themeKey} 원리 설명이 불완전합니다.`);
