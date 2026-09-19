@@ -47,22 +47,25 @@ const { rivers } = context.window.GLOBE_DATA;
 for (const river of rivers.features) {
   assert.ok(labels.features.some((f) => f.properties.kind === 'river' && f.properties.name === river.properties.name), `${river.properties.name} needs a name label.`);
 }
-const kinds = new Set(['mountain', 'plateau', 'plain', 'basin', 'desert', 'river', 'peninsula', 'other', 'peak', 'sea', 'country']);
+const kinds = new Set(['mountain', 'plateau', 'plain', 'basin', 'desert', 'river', 'lake', 'peninsula', 'cape', 'island', 'other', 'peak', 'sea', 'strait', 'country', 'current']);
 const names = new Set();
 for (const feature of labels.features) {
-  const { name, kind, tier } = feature.properties;
+  const { name, kind, tier, key } = feature.properties;
+  assert.equal(key, `${kind}:${name}`, `${name}: every label needs its key for the info panel.`);
   const [lng, lat] = feature.geometry.coordinates;
   assert.ok(kinds.has(kind), `${name}: unknown kind ${kind}`);
   assert.ok([1, 2, 3, 4].includes(tier), `${name}: bad tier`);
   assert.ok(Math.abs(lng) <= 180 && Math.abs(lat) <= 85, `${name}: position must be drawable on the globe.`);
   // Natural Earth의 소리만 옮긴 이름이 새어 들어오지 않았는지 본다.
   assert.doesNotMatch(name, /(^|\s)(플래투|마운틴스?|레인지|로우랜드|플레인|업랜드|데저트|페닌슐라|코디렐라|디프레션|하이랜즈?|힐스)/, `${name}: transliterated English name.`);
-  if (kind !== 'sea' && kind !== 'river') {
+  if (kind !== 'sea' && kind !== 'river' && kind !== 'current') {
     assert.ok(!names.has(`${kind}:${name}`), `${name}: duplicated label.`);
     names.add(`${kind}:${name}`);
   }
 }
-for (const name of ['히말라야산맥', '티베트고원', '한반도', '태백산맥', '소백산맥', '동해', '황해', '대한민국', '나일강', '창장강', '한강', '낙동강']) {
+for (const name of ['히말라야산맥', '티베트고원', '한반도', '태백산맥', '소백산맥', '동해', '황해', '대한민국', '나일강', '창장강', '한강', '낙동강',
+  '갈라파고스 제도', '바하마 제도', '카보베르데', '카보베르데 제도', '몰디브', '싱가포르', '독도', '울릉도', '제주도', '마젤란 해협', '티에라델푸에고섬',
+  '호르무즈 해협', '베링 해협', '수에즈 운하', '바이칼호', '오대호', '희망봉', '혼곶', '쿠로시오 해류', '동한 난류', '북한 한류']) {
   assert.ok(labels.features.some((f) => f.properties.name === name), `Missing label ${name}.`);
 }
 
@@ -78,5 +81,49 @@ for (const feature of labels.features.filter((f) => f.properties.kind === 'count
   assert.ok(flag && flags[flag], `${name} needs a flag in the sheet.`);
 }
 assert.match(app, /flags\.png\?v=\$\{FLAG_VERSION\}/, 'The flag sheet needs a version so the year-long image cache does not keep an old one.');
+// 설명 창의 큰 국기도 나라마다 있어야 한다.
+for (const feature of labels.features.filter((f) => f.properties.flag)) {
+  assert.ok(fs.existsSync(new URL(`data/flags/${feature.properties.flag}.webp`, root)), `${feature.properties.name} needs a big flag for the info panel.`);
+}
+
+// 날짜 변경선은 180도 경선 그대로가 아니라 꺾인 실제 선이어야 한다.
+const { dateLine, currents } = context.window.GLOBE_DATA;
+assert.ok(dateLine.geometry.coordinates.flat().some(([lng]) => Math.abs(lng) < 179), 'The date line must bend around islands, not follow 180° exactly.');
+
+// 해류: 난류·한류가 정해져 있고, 날짜 변경선에서 끊겨 있어(지구를 가로지르는 선이 없어)야 한다.
+for (const current of currents.features) {
+  assert.equal(typeof current.properties.warm, 'boolean', `${current.properties.name} must be warm or cold.`);
+  for (const part of current.geometry.coordinates) {
+    for (let i = 1; i < part.length; i += 1) {
+      assert.ok(Math.abs(part[i][0] - part[i - 1][0]) < 90, `${current.properties.name} must be split at the date line.`);
+    }
+  }
+}
+
+// 누르면 칠할 모양: 모양마다 그 이름표가 있어야 한다.
+const shapes = JSON.parse(read('data/shapes.json'));
+const labelKeys = new Set(labels.features.map((f) => f.properties.key));
+for (const key of Object.keys(shapes)) assert.ok(labelKeys.has(key), `${key}: shape without a label.`);
+for (const key of ['country:대한민국', 'peninsula:한반도', 'sea:태평양', 'island:갈라파고스 제도', 'lake:바이칼호', 'mountain:태백산맥']) {
+  assert.ok(shapes[key], `${key} needs a shape to light up.`);
+}
+
+// 설명 창: 이름표마다 설명이 있고, 사진은 자유 이용 조건이며 파일과 찍은 이가 있어야 한다.
+const info = JSON.parse(read('data/info.json'));
+const infoKeys = new Set([...labelKeys, ...['적도', '북회귀선', '남회귀선', '북극권', '남극권', '본초 자오선', '날짜 변경선', '북극점', '남극점'].map((name) => `grid:${name}`)]);
+const missingInfo = [...infoKeys].filter((key) => !info[key]);
+assert.deepEqual(missingInfo, [], 'Every label needs an explanation.');
+for (const [key, entry] of Object.entries(info)) {
+  assert.ok(infoKeys.has(key), `${key}: explanation without a label.`);
+  assert.ok(entry.where && entry.text?.length >= 2 && entry.exam?.length >= 2, `${key}: needs where, two paragraphs and exam points.`);
+  for (const line of [entry.where, ...entry.text, ...entry.exam]) {
+    assert.doesNotMatch(line, /알아봅시다|여러분/, `${key}: no voice outside the book.`);
+  }
+  if (!entry.photo) continue;
+  assert.match(entry.photo.license, /^(CC0|CC BY|CC-BY|Public domain|PD|Attribution|FAL)/i, `${key}: photo must be freely licensed.`);
+  assert.doesNotMatch(entry.photo.license, /\bN[CD]\b/, `${key}: no NC/ND photos.`);
+  assert.ok(entry.photo.author && entry.photo.page, `${key}: photo needs its author and source page.`);
+  assert.ok(fs.existsSync(new URL(entry.photo.src, root)), `${key}: photo file missing.`);
+}
 
 console.log('Globe contract passed.');

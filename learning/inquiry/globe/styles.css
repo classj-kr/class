@@ -124,14 +124,22 @@ html, body {
 
 .layer-bar button[aria-pressed="true"] .swatch { background: var(--swatch); }
 
+/* 해류 단추 동그라미는 난류(붉은)·한류(푸른) 반반 */
+.layer-bar .swatch-current { border-color: #ff6b57 #3fa2ff #3fa2ff #ff6b57; }
+.layer-bar button[aria-pressed="true"] .swatch-current { background: linear-gradient(135deg, #ff6b57 50%, #3fa2ff 50%); }
+
 .pole-mark {
   display: flex;
   align-items: center;
   gap: 5px;
+  padding: 0;
+  border: 0;
+  background: none;
   color: #f3f6fa;
+  font: inherit;
   font-size: 12px;
   white-space: nowrap;
-  pointer-events: none;
+  cursor: pointer;
 }
 
 /* 흰 얼음 위에서도 읽히도록 글자 밑에 어두운 바탕을 깐다. */
@@ -158,6 +166,203 @@ html, body {
 
 .maplibregl-ctrl-attrib.maplibregl-compact {
   margin: 0 max(10px, env(safe-area-inset-right)) 0 0;
+}
+
+/* 점으로 된 곳(산꼭대기·곶·해협 …)을 누르면 그 자리가 퍼지는 고리로 깜빡인다. */
+.pulse-mark {
+  position: relative;
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(12, 14, 18, 0.85);
+  border-radius: 50%;
+  background: var(--pulse);
+  pointer-events: none;
+}
+
+.pulse-mark::before,
+.pulse-mark::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border: 3px solid var(--pulse);
+  border-radius: 50%;
+  animation: pulse-ring 1.8s ease-out infinite;
+}
+
+.pulse-mark::after { animation-delay: 0.9s; }
+
+@keyframes pulse-ring {
+  from { transform: scale(1); opacity: 0.9; }
+  to { transform: scale(4.2); opacity: 0; }
+}
+
+/* 설명 창: 넓은 화면은 왼쪽(뒤로 가기 단추 아래), 좁은 화면은 아래에서 올라오는 판 */
+.info-panel {
+  position: fixed;
+  z-index: 4;
+  top: calc(max(10px, env(safe-area-inset-top)) + 58px);
+  left: max(12px, env(safe-area-inset-left));
+  width: min(380px, 42vw);
+  max-height: calc(100vh - max(10px, env(safe-area-inset-top)) - max(10px, env(safe-area-inset-bottom)) - 130px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: rgba(12, 20, 32, 0.92);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+  animation: panel-in 0.22s ease-out;
+}
+
+.info-panel[hidden] { display: none; }
+
+@keyframes panel-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
+}
+
+.info-close {
+  position: sticky;
+  top: 8px;
+  float: right;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  margin: 8px 8px -52px 0;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: rgba(12, 20, 32, 0.85);
+  color: var(--text);
+  cursor: pointer;
+}
+
+.info-close svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+}
+
+.info-close:focus-visible { outline: 3px solid #60a5fa; outline-offset: 2px; }
+
+.info-photo { margin: 0; }
+
+.info-photo img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border-radius: 15px 15px 0 0;
+  background: #1b2a3d;
+}
+
+.info-photo figcaption {
+  padding: 6px 16px 0;
+  color: var(--muted);
+  font-size: 13.5px;
+}
+
+.info-body { padding: 10px 18px 16px; }
+
+.info-panel:not(:has(.info-photo:not([hidden]))) .info-body { padding-top: 16px; }
+
+.info-kind {
+  margin: 0 56px 2px 0;
+  color: var(--muted);
+  font-size: 13.5px;
+}
+
+.info-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 52px 6px 0;
+  font-size: 22px;
+  line-height: 1.3;
+}
+
+.info-flag {
+  flex: none;
+  height: 30px;
+  width: auto;
+  border-radius: 3px;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.25);
+}
+
+.info-flag[hidden] { display: none; }
+
+.info-where {
+  margin: 0 0 12px;
+  color: #cfe3f7;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.info-text p {
+  margin: 0 0 10px;
+  font-size: 15.5px;
+  line-height: 1.7;
+  word-break: keep-all;
+}
+
+.info-text .info-empty { color: var(--muted); }
+
+.info-exam-box {
+  margin: 14px 0 10px;
+  padding: 10px 14px 4px;
+  border-left: 3px solid #ffd166;
+  border-radius: 4px;
+  background: rgba(255, 209, 102, 0.08);
+}
+
+.info-exam-box[hidden] { display: none; }
+
+.info-exam-box h3 {
+  margin: 0 0 6px;
+  color: #ffd166;
+  font-size: 14px;
+}
+
+.info-exam {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.info-exam li {
+  margin-bottom: 6px;
+  font-size: 14.5px;
+  line-height: 1.55;
+  word-break: keep-all;
+}
+
+.info-credit {
+  margin: 12px 0 0;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.info-credit a { color: var(--muted); text-decoration: none; }
+.info-credit a:hover { text-decoration: underline; }
+
+@media (max-width: 640px) {
+  .info-panel {
+    top: auto;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: auto;
+    max-height: 58vh;
+    max-height: 58dvh;
+    border-radius: 16px 16px 0 0;
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  .info-title { font-size: 20px; }
 }
 
 @media (max-width: 640px) {

@@ -5,6 +5,7 @@
 
 국기 그림은 만들 때만 flagcdn.com(Flagpedia, 공개 자료)에서 받고, 사이트는 묶은 그림만 쓴다.
 화면 높이 14픽셀에 맞춰 두 배(28픽셀)로 그리고, 흰 국기도 보이도록 모양을 따라 어두운 테두리를 두른다.
+나라 이름을 누르면 뜨는 설명 창에는 큰 국기(data/flags/<코드>.webp, 가로 160픽셀)를 따로 쓴다.
 """
 
 import json
@@ -28,13 +29,27 @@ def flag_codes():
     return sorted(set(re.findall(r'"flag":"([a-z]{2})"', source)))
 
 
-def download(code):
+def download(code, size="h80"):
     CACHE.mkdir(parents=True, exist_ok=True)
-    file = CACHE / f"{code}.png"
+    file = CACHE / f"{code}-{size}.png" if size != "h80" else CACHE / f"{code}.png"
     if not file.exists():
-        request = urllib.request.Request(f"https://flagcdn.com/h80/{code}.png", headers={"User-Agent": "Mozilla/5.0"})
+        request = urllib.request.Request(f"https://flagcdn.com/{size}/{code}.png", headers={"User-Agent": "Mozilla/5.0"})
         file.write_bytes(urllib.request.urlopen(request).read())
     return Image.open(file).convert("RGBA")
+
+
+def save_big_flags(codes):
+    folder = ROOT / "data/flags"
+    folder.mkdir(exist_ok=True)
+    for old in folder.glob("*.webp"):
+        if old.stem not in codes:
+            old.unlink()
+    total = 0
+    for code in codes:
+        out = folder / f"{code}.webp"
+        download(code, "w160").save(out, "WEBP", lossless=True, method=6)
+        total += out.stat().st_size
+    print(f"큰 국기 {len(codes)}개, {total / 1024:.0f}KB")
 
 
 def framed(flag):
@@ -70,6 +85,7 @@ def main():
     (ROOT / "data/flags.json").write_text(json.dumps(placements, separators=(",", ":")), encoding="utf-8")
     size = (ROOT / "data/flags.png").stat().st_size
     print(f"국기 {len(codes)}개, 그림 {sheet.width}×{sheet.height}, {size / 1024:.0f}KB")
+    save_big_flags(codes)
 
 
 if __name__ == "__main__":

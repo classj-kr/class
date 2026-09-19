@@ -44,5 +44,9 @@ __pycache__/
 /fix*.js
 /insert_*.js
 /update_*.js
-/references/
+/references/*
+!/references/moe/
+/references/moe/*
+!/references/moe/2022-revised-curriculum/
+!/references/moe/2022-revised-curriculum/**
 /learning/literacy-numeracy/story-books/금성애니메이션스캔본/

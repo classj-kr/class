@@ -6,6 +6,7 @@
     "build": "npm --prefix game-hub-server install",
     "start": "npm --prefix game-hub-server start",
     "test:math-ox": "node --test tests/math-ox-data.test.js",
+    "test:curriculum": "node tests/curriculum-reference-contract.js && node tests/science-lab-curriculum-contract.js",
     "test:body-explorer": "node --test tests/circulation-contract.js tests/digestion-contract.js tests/respiration-contract.js tests/nervous-contract.js tests/immune-contract.js tests/movement-contract.js tests/excretion-contract.js tests/temperature-contract.js tests/body-explorer-atlas-contract.js tests/body-explorer-viewport-contract.js tests/body-explorer-classroom-contract.js && node tests/circulation-server-integration.js && node tests/digestion-server-integration.js && node tests/respiration-server-integration.js && node tests/nervous-server-integration.js && node tests/immune-server-integration.js && node tests/movement-server-integration.js && node tests/excretion-server-integration.js && node tests/temperature-server-integration.js"
   },
   "engines": {
