@@ -40,7 +40,7 @@ test("keeps worksheet actions visible at Chromebook viewport widths", async () =
 });
 
 test("renders the fraction conversion practice product", async () => {
-  const response = await render("/fraction");
+  const response = await render("/arithmetic/grade-3-fraction-2");
   assert.equal(response.status, 200);
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
 
@@ -50,7 +50,7 @@ test("renders the fraction conversion practice product", async () => {
   assert.match(html, /가분수를 대분수로/);
   assert.match(html, /전체 채점/);
   assert.match(html, />인쇄<\/button>/);
-  assert.match(html, /문제지 번호\s*(?:<!-- -->)?20260720/);
+  assert.match(html, /문제지\s*(?:<!-- -->)?20260720/);
   assert.match(html, /aria-label="A4 분수 변환 문제지"/);
   assert.match(html, /aria-label="A4 분수 변환 전체 답지"/);
   assert.equal((html.match(/data-testid="question-card"/g) ?? []).length, 16);
@@ -70,7 +70,7 @@ test("renders the learning index and arithmetic catalog in workbook order", asyn
   assert.equal((indexHtml.match(/data-testid="worksheet-choice"/g) ?? []).length, 184);
   assert.equal((indexHtml.match(/class="worksheet-grade"/g) ?? []).length, 184);
   assert.doesNotMatch(indexHtml, /data-testid="learning-area-card"/);
-  assert.match(indexHtml, /href="\/fraction"[^>]*data-testid="worksheet-choice"/);
+  assert.match(indexHtml, /href="\/arithmetic\/grade-3-fraction-2"[^>]*data-testid="worksheet-choice"/);
   assert.match(indexHtml, /href="\/arithmetic\/high-school\/trigonometric-derivatives-2"[^>]*data-testid="worksheet-choice"/);
   assert.match(indexCss, /@font-face[\s\S]*?STIXTwoMath-Regular\.woff2/);
 
@@ -119,7 +119,7 @@ test("renders the learning index and arithmetic catalog in workbook order", asyn
   assert.match(catalogHtml, /worksheet-grade[^>]*>\(대수\)<\/small>/);
   assert.match(catalogHtml, /worksheet-grade[^>]*>\(미적1\)<\/small>/);
   assert.match(catalogHtml, /worksheet-grade[^>]*>\(미적2\)<\/small>/);
-  assert.match(catalogHtml, /href="\/fraction"[^>]*data-testid="worksheet-choice"/);
+  assert.match(catalogHtml, /href="\/arithmetic\/grade-3-fraction-2"[^>]*data-testid="worksheet-choice"/);
   assert.match(catalogHtml, /href="\/arithmetic\/counting-1"[^>]*data-testid="worksheet-choice"/);
   assert.match(catalogHtml, /href="\/arithmetic\/add-subtract-1"[^>]*data-testid="worksheet-choice"/);
   assert.match(catalogHtml, /href="\/arithmetic\/add-subtract-2"[^>]*data-testid="worksheet-choice"/);
@@ -406,7 +406,7 @@ test("renders the unified arithmetic catalog and high-school worksheets", async 
   assert.equal(hubResponse.status, 200);
   const hubHtml = await hubResponse.text();
   assert.equal((hubHtml.match(/data-testid="worksheet-choice"/g) ?? []).length, 176);
-  assert.match(hubHtml, /href="\/fraction"[^>]*data-testid="worksheet-choice"/);
+  assert.match(hubHtml, /href="\/arithmetic\/grade-3-fraction-2"[^>]*data-testid="worksheet-choice"/);
   assert.match(hubHtml, /href="\/arithmetic\/high-school\/polynomial-add-subtract"/);
   assert.match(hubHtml, /href="\/arithmetic\/high-school\/factorization-rational"/);
   assert.match(hubHtml, /href="\/arithmetic\/high-school\/exponents-radicals"/);
@@ -762,7 +762,7 @@ test("keeps every race-ready worksheet connected to grading and score reading", 
   const selectorsBlock = controllerSource.match(/const questionSelectors = \[([\s\S]*?)\n\];/)?.[1] ?? "";
   const selectors = [...selectorsBlock.matchAll(/"(\.[^"]+)"/g)].map((match) => match[1]);
 
-  assert.equal(routes.length, 64);
+  assert.equal(routes.length, 65);
   assert.ok(selectors.includes(".multiplication-five-question"));
   assert.ok(selectors.includes(".clock-question"));
   assert.ok(selectors.includes(".division-story-problem"));
@@ -2358,7 +2358,7 @@ test("keeps the desktop worksheet in one two-column viewport", async () => {
 });
 
 test("shows only right or wrong after grading", async () => {
-  const pageSource = await readFile(new URL("../app/fraction/page.tsx", import.meta.url), "utf8");
+  const pageSource = await readFile(new URL("../app/arithmetic/grade-3-fraction-2/page.tsx", import.meta.url), "utf8");
 
   assert.match(pageSource, /result\.correct \? "맞음" : "틀림"/);
   assert.doesNotMatch(pageSource, /function Explanation|풀이 보기|풀이 닫기|result\.message|explain-button/);
@@ -2376,7 +2376,7 @@ test("uses soft green and red row shading for arithmetic grading", async () => {
 });
 
 test("opens the browser print dialog without creating a download", async () => {
-  const pageSource = await readFile(new URL("../app/fraction/page.tsx", import.meta.url), "utf8");
+  const pageSource = await readFile(new URL("../app/arithmetic/grade-3-fraction-2/page.tsx", import.meta.url), "utf8");
 
   assert.match(pageSource, /window\.print\(\)/);
   assert.match(pageSource, /dataset\.printMode = mode/);

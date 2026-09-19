@@ -224,7 +224,7 @@ const staticAssetOptions = {
 // to stop them flashing. visibility (not display) keeps their size measurable.
 const SITE_BACK_PENDING_TAG = '<script>if(window.self===window.top&&!["/","/index.html"].includes(location.pathname))document.documentElement.classList.add("site-back-pending")</script>'
   + '<style>.site-back-pending :is(a.back,a.back-button,a.back-link,a.home,a.home-link,a.counting-back,a.catalog-back){visibility:hidden!important}</style>';
-const SITE_BACK_SCRIPT_TAG = `${SITE_BACK_PENDING_TAG}<script data-site-back-navigation="true" src="/assets/site-back-navigation.js?v=20260917-back-button-2" defer></script>`;
+const SITE_BACK_SCRIPT_TAG = `${SITE_BACK_PENDING_TAG}<script data-site-back-navigation="true" src="/assets/site-back-navigation.js?v=20260920-fraction-path" defer></script>`;
 const SITE_SFX_SCRIPT_TAG = '<script data-class-game-sfx="true" src="/assets/sound/game-sfx.js?v=20260912-feedback-scope-1" defer></script>';
 
 function sendSiteHtml(req, res, filepath, next) {
@@ -401,9 +401,13 @@ const MULTIPLAYER_CONTENT_PATHS = Object.freeze({
 
 const FINISHER_GAMES = new Set(["coinweighing", "hanoitower", "sphinx", "slidingpuzzle", "nonogram"]);
 
-app.use(["/admin", "/schooladmin", "/arithmetic", "/fraction", "/api/arithmetic-race", "/classtools", "/learning", "/learn", "/notice", "/teacher", "/room", "/vote"], classroomPlatform.requireSiteAccess);
+// 3학년 분수②는 예전에 /fraction 에 따로 있었다. 옛 주소로 온 사람은 연산 목록 안의 새 자리로 보낸다.
+app.use("/fraction", (req, res) => {
+  const query = req.originalUrl.indexOf("?");
+  res.redirect(301, "/arithmetic/grade-3-fraction-2" + (query >= 0 ? req.originalUrl.slice(query) : ""));
+});
+app.use(["/admin", "/schooladmin", "/arithmetic", "/api/arithmetic-race", "/classtools", "/learning", "/learn", "/notice", "/teacher", "/room", "/vote"], classroomPlatform.requireSiteAccess);
 app.use("/arithmetic", proxyToLearningApp(ARITHMETIC_PORT));
-app.use("/fraction", proxyToLearningApp(ARITHMETIC_PORT));
 app.use("/api/arithmetic-race", proxyToLearningApp(ARITHMETIC_PORT));
 // 한능검 기출은 정적 페이지가 되었다. 예전 주소로 온 사람은 새 자리로 보낸다.
 app.use("/hanguksa", (req, res) => res.redirect(301, "/learning/inquiry/korean-history/"));

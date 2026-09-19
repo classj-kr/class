@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { createQuestionSet, validateQuestionSet } from "../app/fraction-engine.ts";
+import { createQuestionSet, validateQuestionSet } from "../lib/grade-three-fraction-two.ts";
 
 test("generates deterministic and valid 16-question sets", () => {
   for (const seed of [0, 1, 20260720, 0xffffffff]) {

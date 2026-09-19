@@ -1,13 +1,12 @@
 "use client";
 
 import { useEffect, useMemo, useState, type ReactNode } from "react";
-import Link from "next/link";
 import {
   createQuestionSet,
   type FractionQuestion,
   type FractionQuestionSet,
-} from "../fraction-engine";
-import { moveBetweenFractionAnswerInputs } from "../components/fraction-answer-navigation";
+} from "../../../lib/grade-three-fraction-two";
+import { moveBetweenFractionAnswerInputs } from "../../components/fraction-answer-navigation";
 
 type Answer = {
   whole?: string;
@@ -415,7 +414,6 @@ export default function Home() {
     [questionSet],
   );
 
-  const attempted = Object.keys(results).length;
   const correct = Object.values(results).filter((result) => result.correct).length;
   const filled = Object.values(answers).filter((answer) =>
     [answer.whole, answer.numerator, answer.denominator].some(Boolean),
@@ -531,56 +529,24 @@ export default function Home() {
   }
 
   return (
-    <main>
-      <div className="screen-toolbar">
-      <header className="site-header">
-        <Link className="brand" href="/" aria-label="기초연산 홈으로">
-          <span className="brand-mark" aria-hidden="true">½</span>
-          <span>분수 변환</span>
-        </Link>
-        <span className="grade-badge">3학년 · 16문제</span>
-      </header>
-
-      <section className="control-panel" aria-label="문제지 도구">
-        <div className="progress-copy" id="progress-summary">
-          <span className="progress-label">현재 진행</span>
-          <strong>{correct}<small>/16 정답</small></strong>
-          <span>{attempted ? `${attempted}문제 확인함` : "답을 입력하고 확인해 보세요"}</span>
-        </div>
-        <div className="progress-track" aria-label={`16문제 중 ${correct}문제 정답`}>
-          <span style={{ width: `${(correct / 16) * 100}%` }} />
-        </div>
+    <main className="counting-page fraction-convert-page">
+      <div className="counting-toolbar">
+        <a className="counting-back" href="/arithmetic" aria-label="연산 목록으로 돌아가기">←</a>
+        <div className="counting-progress"><strong>{correct}<small>/16 정답</small></strong></div>
         <div className="toolbar">
           <button className="button secondary" type="button" onClick={newSet}>새 문제</button>
-          <button className="button ghost" type="button" onClick={resetAnswers}>다시 풀기</button>
+          <button className="button ghost" type="button" onClick={resetAnswers}>다시 쓰기</button>
           <div className="print-control">
-            <button
-              className="button ghost print-button"
-              type="button"
-              aria-expanded={printMenuOpen}
-              aria-haspopup="menu"
-              onClick={() => setPrintMenuOpen((open) => !open)}
-            >
-              인쇄
-            </button>
-            {printMenuOpen && (
-              <div className="print-menu" role="menu" aria-label="인쇄할 자료 선택">
-                <button type="button" role="menuitem" onClick={() => printMaterials("worksheet")}>문제지만 인쇄</button>
-                <button type="button" role="menuitem" onClick={() => printMaterials("answers")}>답지만 인쇄</button>
-                <button type="button" role="menuitem" onClick={() => printMaterials("both")}>문제지+답지 인쇄</button>
-              </div>
-            )}
+            <button className="button ghost print-button" type="button" aria-expanded={printMenuOpen} aria-haspopup="menu" onClick={() => setPrintMenuOpen((open) => !open)}>인쇄</button>
+            {printMenuOpen && <div className="print-menu" role="menu" aria-label="인쇄 자료 선택">
+              <button type="button" role="menuitem" onClick={() => printMaterials("worksheet")}>문제지만 인쇄</button>
+              <button type="button" role="menuitem" onClick={() => printMaterials("answers")}>답지만 인쇄</button>
+              <button type="button" role="menuitem" onClick={() => printMaterials("both")}>문제지+답지 인쇄</button>
+            </div>}
           </div>
           <button className="button primary" type="button" onClick={checkAll}>전체 채점</button>
         </div>
-        <div className="set-meta">
-          <span>문제지 번호 {questionSet.seed}</span>
-          <span>작성 {filled}/16</span>
-        </div>
-      </section>
-
       </div>
-
       <div
         className="a4-stage worksheet-stage"
         style={{ width: 794 * sheetScale, height: 1123 * sheetScale }}

@@ -43,7 +43,7 @@ const readyRoutes: Record<string, string> = {
   "3나눗셈②": "/arithmetic/grade-3-division-2",
   "3나눗셈③": "/arithmetic/grade-3-division-3",
   "3분수①": "/arithmetic/grade-3-fraction-1",
-  "3분수②": "/fraction",
+  "3분수②": "/arithmetic/grade-3-fraction-2",
   "3무게,들이": "/arithmetic/grade-3-measurement",
   "3분수③": "/arithmetic/grade-3-fraction-3",
   "4숫자읽기": "/arithmetic/grade-4-number-reading",

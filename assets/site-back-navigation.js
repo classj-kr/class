@@ -5,7 +5,7 @@
   if (["/", "/index.html"].includes(location.pathname)) return;
 
   const GLOBAL_CONTENT_ACCESS_POLL_MS = 5000;
-  const GLOBAL_CONTENT_ROOTS = ["/learning", "/learn", "/arithmetic", "/fraction", "/hanguksa"];
+  const GLOBAL_CONTENT_ROOTS = ["/learning", "/learn", "/arithmetic", "/hanguksa"];
   const shouldMonitorGlobalContentAccess = GLOBAL_CONTENT_ROOTS.some(root =>
     location.pathname === root || location.pathname.startsWith(`${root}/`));
   let globalContentAccessCheckInFlight = false;
