@@ -53,6 +53,26 @@
     return items;
   }
 
+  // 교통 이름표: 간선 고속 국도와 고속 철도 이름을 가장 긴 줄기의 가운데에 단다(transport-lines.js, 먼저 불러온다).
+  const RAIL_NAMES = { "경부고속선": "경부 고속 철도", "호남고속선": "호남 고속 철도", "수서평택고속선": "수서평택 고속 철도" };
+  function transportAnnotations() {
+    const data = window.KOREA_TRANSPORT;
+    if (!data) return [];
+    const middleOf = (lines) => {
+      const longest = lines.reduce((best, line) => (line.length > best.length ? line : best), lines[0]);
+      return longest[Math.floor(longest.length / 2)];
+    };
+    const roads = data.expressways.filter((road) => road.major).map((road) => {
+      const [lat, lng] = middleOf(road.lines);
+      return { name: road.name, text: `${road.name}(${road.ref})`, kind: "road", lat, lng, minZoom: 7 };
+    });
+    const rails = data.railways.filter((rail) => rail.kind === "highspeed").map((rail) => {
+      const [lat, lng] = middleOf(rail.lines);
+      return { name: RAIL_NAMES[rail.name] || rail.name, kind: "rail", lat, lng, minZoom: 7 };
+    });
+    return [...rails, ...roads];
+  }
+
   const themes = {
     territory: {
       label: "국토",
@@ -328,7 +348,7 @@
     transport: {
       label: "교통",
       title: "교통망과 사람·물자의 흐름",
-      summary: "간선 교통축은 수도권에서 뻗어 나가 큰 도시들을 잇습니다. 교통수단마다 유리한 거리와 화물이 다르고, 교통이 좋아지면 도시와 산업의 자리도 바뀝니다.",
+      summary: "실제 고속 국도·철도 노선입니다. 간선 교통축은 수도권에서 뻗어 나가 큰 도시들을 잇습니다. 교통수단마다 유리한 거리와 화물이 다르고, 교통이 좋아지면 도시와 산업의 자리도 바뀝니다. 노선에 손을 대면 이름이 나옵니다.",
       points: [
         "경부축(경부선 철도·경부 고속 국도·경부 고속 철도)이 국토의 간선이고, 인구와 산업이 이 축을 따라 모여 있다.",
         "도로는 문 앞까지 바로 가서 가까운 거리에 유리하고, 철도는 시간을 잘 지키고 안전하며 한 번에 많이 나른다.",
@@ -337,18 +357,17 @@
         "고속 철도는 통근권을 넓히지만, 지방의 손님과 소비가 대도시로 빨려 드는 빨대 효과를 만들기도 한다."
       ],
       legend: [
-        { label: "간선 교통축(대략)", color: "#d28a18" },
+        { label: "고속 국도", color: "#e8740c" },
+        { label: "고속 철도", color: "#c62828" },
+        { label: "일반 철도", color: "#37474f" },
         { label: "항만", color: "#2f6fb3" },
         { label: "공항", color: "#1b7f8f" }
       ],
-      lines: [
-        { name: "경부축(경부선·고속도로·고속철)", kind: "transport", coords: [[37.57, 126.98], [37.26, 127.03], [36.81, 127.15], [36.35, 127.38], [36.12, 128.11], [35.87, 128.60], [35.86, 129.22], [35.54, 129.31], [35.18, 129.08]], color: "#d28a18" },
-        { name: "호남축", kind: "transport", coords: [[36.81, 127.15], [36.62, 127.33], [36.45, 127.12], [35.95, 126.96], [35.57, 126.86], [35.16, 126.85], [35.02, 126.71], [34.81, 126.39]], color: "#d5a13f" },
-        { name: "영동축", kind: "transport", coords: [[37.57, 126.98], [37.34, 127.92], [37.68, 128.72], [37.75, 128.88]], color: "#d5a13f" },
-        { name: "서해안축", kind: "transport", coords: [[37.46, 126.70], [36.78, 126.45], [36.33, 126.61], [35.97, 126.71], [34.81, 126.39]], color: "#d5a13f" },
-        { name: "중앙축", kind: "transport", coords: [[37.57, 126.98], [37.34, 127.92], [37.13, 128.19], [36.81, 128.62], [36.57, 128.73], [35.97, 128.94], [35.86, 129.22]], color: "#d5a13f" },
-        { name: "남해축", kind: "transport", coords: [[34.81, 126.39], [34.95, 127.49], [34.94, 127.70], [35.18, 128.11], [35.23, 128.68], [35.18, 129.08]], color: "#d5a13f" }
-      ],
+      network: true,
+      markersAlways: true,
+      featureMarkers: false,
+      bounds: [[33.1, 125.1], [38.65, 129.6]],
+      annotations: transportAnnotations(),
       markers: [
         { name: "부산항", note: "가장 큰 컨테이너 항만", lat: 35.10, lng: 129.04, color: "#2f6fb3", icon: "港" },
         { name: "인천항", note: "수도권의 바다 관문", lat: 37.46, lng: 126.61, color: "#2f6fb3", icon: "港" },

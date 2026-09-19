@@ -560,6 +560,26 @@
     });
   }
 
+  // 교통 탭의 실제 노선(data/transport-lines.js). 일반 철도는 검은 선에 흰 점선(철도 기호), 고속 국도는 주황(간선은 굵게), 고속 철도는 진홍.
+  function drawTransportNetwork(group, interactive) {
+    const data = window.KOREA_TRANSPORT;
+    if (!data) return;
+    const tip = (path, text) => { if (interactive) path.bindTooltip(text, { sticky: true, className: "study-tooltip" }); };
+    data.railways.filter((rail) => rail.kind !== "highspeed").forEach((rail) => rail.lines.forEach((line) => {
+      L.polyline(line, { pane: "themeLines", color: "#37474f", weight: 3.2, opacity: 0.9, interactive: false }).addTo(group);
+      tip(L.polyline(line, { pane: "themeLines", color: "#ffffff", weight: 1.5, dashArray: "6 6", opacity: 0.95, interactive }).addTo(group), `${rail.name}(철도)`);
+    }));
+    data.expressways.forEach((road) => road.lines.forEach((line) => {
+      const weight = road.major ? 3.4 : 2;
+      L.polyline(line, { pane: "themeLines", color: "#ffffff", weight: weight + 2, opacity: 0.85, interactive: false }).addTo(group);
+      tip(L.polyline(line, { pane: "themeLines", color: "#e8740c", weight, opacity: 0.95, lineCap: "round", lineJoin: "round", interactive }).addTo(group), `${road.name}(${road.ref}번)`);
+    }));
+    data.railways.filter((rail) => rail.kind === "highspeed").forEach((rail) => rail.lines.forEach((line) => {
+      L.polyline(line, { pane: "themeLines", color: "#ffffff", weight: 5.5, opacity: 0.85, interactive: false }).addTo(group);
+      tip(L.polyline(line, { pane: "themeLines", color: "#c62828", weight: 3.2, opacity: 0.95, lineCap: "round", lineJoin: "round", interactive }).addTo(group), `${rail.name}(고속 철도)`);
+    }));
+  }
+
   function textIcon(className, text) {
     return L.divIcon({ className: `${className.split(" ")[0]}-wrapper`, html: `<span class="${className}">${text}</span>`, iconSize: [0, 0] });
   }
@@ -578,6 +598,7 @@
     // 문제 지도는 답하기 전에는 바탕(지형·하천)만 그린다. 구역·등온선·교통축이 답을 드러내기 때문이다.
     if ((theme.rivers || opts.baseOnly) && majorRivers) drawMajorRivers(map, group, interactive);
     if (theme.minorRivers && !opts.baseOnly) drawMinorRivers(map, group, interactive);
+    if (theme.network && !opts.baseOnly) drawTransportNetwork(group, interactive);
     if (opts.baseOnly) return;
 
     (theme.meridians || []).forEach((meridian) => {
@@ -615,13 +636,13 @@
     const facilityMarkers = (theme.markers || []).map((marker) => {
       const node = createStudyMarker({ ...marker, size: 26 }, false, interactive);
       if (interactive) node.bindTooltip(`${marker.name} · ${marker.note}`, { direction: "top", offset: [0, -12], className: "study-tooltip" });
-      return { node, minZoom: marker.minZoom || 7 };
+      return { node, minZoom: marker.minZoom || (theme.markersAlways ? 6 : 7) };
     });
     if (facilityMarkers.length) {
       setZoomSync(map, "markers", () => {
         const zoom = map.getZoom();
         facilityMarkers.forEach(({ node, minZoom }) => {
-          if ((map !== mainMap || mapDetailsVisible) && zoom >= minZoom) { if (!group.hasLayer(node)) group.addLayer(node); }
+          if ((map !== mainMap || mapDetailsVisible || theme.markersAlways) && zoom >= minZoom) { if (!group.hasLayer(node)) group.addLayer(node); }
           else if (group.hasLayer(node)) group.removeLayer(node);
         });
       });
