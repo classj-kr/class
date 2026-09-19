@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#123c46">
   <title>국내 지도</title>
   <link rel="stylesheet" href="vendor/leaflet/leaflet.css">
-  <link rel="stylesheet" href="styles.css?v=20260920-7">
+  <link rel="stylesheet" href="styles.css?v=20260920-8">
 </head>
 <body>
   <div class="app-shell">
@@ -32,6 +32,8 @@
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 19l5-8 4 4 3-6 6 10"/><circle cx="3" cy="19" r="1.4"/><circle cx="21" cy="19" r="1.4"/></svg>단면도
         </button>
         <div class="map-key" id="mapKey" aria-live="polite"></div>
+        <button class="map-credit" id="creditButton" type="button" aria-label="지도 자료 출처" aria-expanded="false" aria-controls="creditText">i</button>
+        <p class="map-credit-text" id="creditText" hidden>지도 자료: Copernicus DEM(© DLR, © Airbus, EU·ESA) · Mapzen · © OpenStreetMap 기여자 · Natural Earth · geoBoundaries</p>
         <section class="profile-panel" id="profilePanel" hidden aria-label="단면도">
           <button type="button" class="profile-close" id="profileClose" aria-label="단면도 닫기">×</button>
           <p class="profile-hint" id="profileHint"></p>
@@ -58,17 +60,6 @@
           <details class="principle-guide" id="principleGuide">
             <summary><span>핵심 원리</span><strong id="principleCount"></strong></summary>
             <div class="principle-list" id="principleList" aria-label="주제별 핵심 원리"></div>
-          </details>
-          <details class="source-guide">
-            <summary>출제 기준·자료 출처</summary>
-            <p>교육과정과 평가원 출제 방향을 기준으로 시험 필수 내용을 구성했습니다. 문제 수는 학습 범위에 따라 달라집니다.</p>
-            <ul>
-              <li><a href="https://csatcdn.kice.re.kr/resources/pdf/guideline.pdf" target="_blank" rel="noopener noreferrer">한국교육과정평가원 수능 출제 지침</a></li>
-              <li><a href="https://ncic.go.kr/board/B0024.cs?act=read&amp;bwrId=2015&amp;m=10&amp;pageIndex=6&amp;pageUnit=15" target="_blank" rel="noopener noreferrer">국가교육과정정보센터 사회과 교육과정</a></li>
-              <li><a href="https://data.kma.go.kr/normals/info1.do" target="_blank" rel="noopener noreferrer">기상청 1991~2020 기후평년값</a></li>
-              <li><a href="https://registry.opendata.aws/copernicus-dem/" target="_blank" rel="noopener noreferrer">지형 높이: Copernicus DEM GLO-30</a> · <a href="https://registry.opendata.aws/terrain-tiles/" target="_blank" rel="noopener noreferrer">Terrain Tiles</a></li>
-              <li><a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">강 줄기: OpenStreetMap</a> · <a href="https://www.naturalearthdata.com/" target="_blank" rel="noopener noreferrer">국경: Natural Earth</a></li>
-            </ul>
           </details>
         </section>
 
@@ -186,18 +177,18 @@
   </dialog>
 
   <script src="vendor/leaflet/leaflet.js"></script>
-  <script src="data/terrain-data.js?v=20260920-7"></script>
-  <script src="data/borders.js?v=20260920-7"></script>
-  <script src="data/relief-tiles.js?v=20260920-7"></script>
-  <script src="data/transport-lines.js?v=20260920-7"></script>
-  <script src="data/geo-data.js?v=20260920-7"></script>
-  <script src="data/questions.js?v=20260920-7"></script>
-  <script src="data/principles.js?v=20260920-7"></script>
-  <script src="data/heritage-data.js?v=20260920-7"></script>
-  <script src="heritage.js?v=20260920-7"></script>
-  <script src="data/travel-data.js?v=20260920-7"></script>
-  <script src="travel.js?v=20260920-7"></script>
+  <script src="data/terrain-data.js?v=20260920-8"></script>
+  <script src="data/borders.js?v=20260920-8"></script>
+  <script src="data/relief-tiles.js?v=20260920-8"></script>
+  <script src="data/transport-lines.js?v=20260920-8"></script>
+  <script src="data/geo-data.js?v=20260920-8"></script>
+  <script src="data/questions.js?v=20260920-8"></script>
+  <script src="data/principles.js?v=20260920-8"></script>
+  <script src="data/heritage-data.js?v=20260920-8"></script>
+  <script src="heritage.js?v=20260920-8"></script>
+  <script src="data/travel-data.js?v=20260920-8"></script>
+  <script src="travel.js?v=20260920-8"></script>
   <script src="climate-graph.js?v=20260906-1"></script>
-  <script src="app.js?v=20260920-7"></script>
+  <script src="app.js?v=20260920-8"></script>
 </body>
 </html>

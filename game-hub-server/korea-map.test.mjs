@@ -45,8 +45,10 @@ assert.match(html, /id="profileButton"[^>]*hidden/);
 assert.match(html, /id="profilePanel"[^>]*hidden/);
 assert.match(html, /id="featureGuide"/);
 assert.match(html, /id="principleGuide"/);
-assert.match(html, /출제 기준·자료 출처/);
-assert.match(html, /Copernicus DEM/);
+// 옆 칸에 출제 기준·출처 목록 같은 안내 상자를 두지 않는다. 지도 자료 출처는 쓰는 조건이라 ⓘ 단추 안에 접어 둔다.
+assert.doesNotMatch(html, /출제 기준|source-guide/);
+assert.match(html, /id="creditText" hidden>지도 자료: Copernicus DEM[^<]*OpenStreetMap[^<]*geoBoundaries/);
+assert.match(app, /attributionControl: false/);
 assert.doesNotMatch(html, /conceptKicker|section-kicker/);
 assert.doesNotMatch(styles, /\.section-kicker/);
 assert.doesNotMatch(sources.geo, /kicker:/);

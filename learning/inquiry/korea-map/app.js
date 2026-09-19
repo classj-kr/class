@@ -95,10 +95,9 @@
   function createBaseMap(elementId, options) {
     const map = L.map(elementId, {
       center: [38.05, 127.65], zoom: 6, minZoom: 5, maxZoom: 12,
-      zoomControl: true, attributionControl: true, preferCanvas: true, ...options
+      zoomControl: true, attributionControl: false, preferCanvas: true, ...options
     });
-    const attribution = 'Copernicus DEM(© DLR, © Airbus, EU·ESA) · Mapzen · © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> · Natural Earth';
-    L.tileLayer(RELIEF_URL, { minNativeZoom: 3, maxNativeZoom: 6, attribution }).addTo(map);
+    L.tileLayer(RELIEF_URL, { minNativeZoom: 3, maxNativeZoom: 6 }).addTo(map);
     L.tileLayer(RELIEF_URL, { minZoom: 7, minNativeZoom: 7, maxNativeZoom: 9, bounds: DETAIL_BOUNDS }).addTo(map);
     new SparseTileLayer(RELIEF_URL, { minZoom: 10, minNativeZoom: 10, maxNativeZoom: 11, bounds: DETAIL_BOUNDS }).addTo(map);
     [["themeZones", 420, true], ["borderLines", 430, false], ["themeLines", 450, true], ["themeLabels", 580, false],
@@ -165,6 +164,12 @@
     $("#reviewWrong").addEventListener("click", reviewWrongQuestions);
     $("#focusClose").addEventListener("click", clearFeatureFocus);
     $("#labelToggle").addEventListener("click", toggleMapDetails);
+    // 지도 자료 출처는 자료를 쓰는 조건이라 없앨 수 없어 ⓘ 단추 안에 접어 둔다.
+    $("#creditButton").addEventListener("click", () => {
+      const open = $("#creditText").hidden;
+      $("#creditText").hidden = !open;
+      $("#creditButton").setAttribute("aria-expanded", String(open));
+    });
     $("#profileButton").addEventListener("click", () => (profile.active ? stopProfile() : startProfile()));
     $("#profileClose").addEventListener("click", stopProfile);
     mainMap.on("click", (event) => { if (profile.active) addProfilePoint(event); });
