@@ -418,8 +418,7 @@
   }
 
   // 항목·원리를 누르면 개념 카드 안의 초점 상자에 내용을 보여 준다. 닫으면 전국 보기로 돌아간다.
-  function showFocusPanel(kicker, title, body) {
-    $("#focusKicker").textContent = kicker;
+  function showFocusPanel(title, body) {
     $("#focusTitle").textContent = title;
     $("#focusBody").replaceChildren(...(Array.isArray(body) ? body : [body]));
     $("#featureFocus").hidden = false;
@@ -446,7 +445,7 @@
       body.push(holder);
       body.push(element("p", "focus-note", "1991~2020년 평년값을 반올림한 학습용 자료입니다."));
     }
-    showFocusPanel(themes[currentTheme].label, feature.name, body);
+    showFocusPanel(feature.name, body);
   }
 
   function showPrinciple(principle, activeButton) {
@@ -458,7 +457,7 @@
       principle.steps.forEach((step) => list.append(element("li", "", step)));
       body.push(list);
     }
-    showFocusPanel("핵심 원리", principle.title, body);
+    showFocusPanel(principle.title, body);
     if (principle.focus) {
       mainMap.flyTo([principle.focus.lat, principle.focus.lng], principle.focus.zoom || 8, { duration: 0.45 });
       const marker = L.circleMarker([principle.focus.lat, principle.focus.lng], {
