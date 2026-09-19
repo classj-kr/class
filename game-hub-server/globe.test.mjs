@@ -42,7 +42,12 @@ const context = { window: {} };
 vm.runInNewContext(read('data/globe-data.js'), context);
 const { labels, borders } = context.window.GLOBE_DATA;
 assert.ok(borders.features.length > 100, 'Country borders must be present.');
-const kinds = new Set(['mountain', 'plateau', 'plain', 'basin', 'desert', 'peninsula', 'other', 'peak', 'sea', 'country']);
+// 강: 줄기(선)마다 이름표(점)가 하나 이상 있어야 한다.
+const { rivers } = context.window.GLOBE_DATA;
+for (const river of rivers.features) {
+  assert.ok(labels.features.some((f) => f.properties.kind === 'river' && f.properties.name === river.properties.name), `${river.properties.name} needs a name label.`);
+}
+const kinds = new Set(['mountain', 'plateau', 'plain', 'basin', 'desert', 'river', 'peninsula', 'other', 'peak', 'sea', 'country']);
 const names = new Set();
 for (const feature of labels.features) {
   const { name, kind, tier } = feature.properties;
@@ -52,12 +57,12 @@ for (const feature of labels.features) {
   assert.ok(Math.abs(lng) <= 180 && Math.abs(lat) <= 85, `${name}: position must be drawable on the globe.`);
   // Natural Earth의 소리만 옮긴 이름이 새어 들어오지 않았는지 본다.
   assert.doesNotMatch(name, /(^|\s)(플래투|마운틴스?|레인지|로우랜드|플레인|업랜드|데저트|페닌슐라|코디렐라|디프레션|하이랜즈?|힐스)/, `${name}: transliterated English name.`);
-  if (kind !== 'sea') {
+  if (kind !== 'sea' && kind !== 'river') {
     assert.ok(!names.has(`${kind}:${name}`), `${name}: duplicated label.`);
     names.add(`${kind}:${name}`);
   }
 }
-for (const name of ['히말라야산맥', '티베트고원', '한반도', '태백산맥', '소백산맥', '동해', '황해', '대한민국']) {
+for (const name of ['히말라야산맥', '티베트고원', '한반도', '태백산맥', '소백산맥', '동해', '황해', '대한민국', '나일강', '창장강', '한강', '낙동강']) {
   assert.ok(labels.features.some((f) => f.properties.name === name), `Missing label ${name}.`);
 }
 

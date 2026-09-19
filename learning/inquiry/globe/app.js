@@ -5,7 +5,8 @@ const BASE = new URL(".", location.href).href;
 const TILE_VERSION = 2;
 const FLAG_VERSION = 1;
 const HOME = { center: [127.5, 30], lat: 30 };
-const SETTINGS_KEY = "joyclass-globe-layers-v1";
+// 켜고 끄는 항목이 늘면 판을 올린다(옛 저장값에는 새 항목이 없어 꺼진 채로 보이므로).
+const SETTINGS_KEY = "joyclass-globe-layers-v2";
 
 // 바탕 그림은 1픽셀이 약 2.5km. 적도에서 5단 조각이 화면 1픽셀과 맞고, 그보다 조금만 더 키운다.
 const MAX_EQUATOR_ZOOM = 5.25;
@@ -21,6 +22,7 @@ const KINDS = [
   { id: "plain", label: "평원", color: "#c9f2b0" },
   { id: "basin", label: "분지", color: "#a9e6ff" },
   { id: "desert", label: "사막", color: "#ffe28a" },
+  { id: "river", label: "강", color: "#7cc8ff" },
   { id: "peninsula", label: "반도", color: "#ffffff" },
   { id: "other", label: "기타 지형", color: "#ffc2d1" },
   { id: "peak", label: "높은 산", color: "#ff9d7a" },
@@ -30,7 +32,7 @@ const BACKDROPS = [
   { id: "country", label: "나라", color: "#f5f5f5" },
   { id: "grid", label: "위선·경선", color: "#ffd166" },
 ];
-const DEFAULT_ON = new Set(["mountain", "plateau", "plain", "basin", "desert", "peninsula", "other", "peak", "sea", "grid"]);
+const DEFAULT_ON = new Set(["mountain", "plateau", "plain", "basin", "desert", "river", "peninsula", "other", "peak", "sea", "grid"]);
 
 const enabled = loadSettings();
 
@@ -109,11 +111,26 @@ function buildStyle() {
     },
     paint: {
       "text-color": kindColor,
-      "text-halo-color": ["match", ["get", "kind"], "sea", "rgba(6, 30, 58, 0.9)", "rgba(12, 14, 18, 0.88)"],
+      "text-halo-color": ["match", ["get", "kind"], ["sea", "river"], "rgba(6, 30, 58, 0.92)", "rgba(12, 14, 18, 0.88)"],
       "text-halo-width": 1.5,
       "text-halo-blur": 0.3,
     },
-  })).reverse(); // 1단이 맨 위에 와야 자리를 먼저 차지한다.
+  }));
+  const riverLineLayers = [1, 2, 3, 4].map((tier) => ({
+    id: `river-lines-${tier}`,
+    type: "line",
+    source: "rivers",
+    minzoom: TIER_ZOOM[tier],
+    filter: ["==", ["get", "tier"], tier],
+    layout: { visibility: visibility("river"), "line-join": "round", "line-cap": "round" },
+    paint: {
+      "line-color": "#6cc4ff",
+      "line-width": ["interpolate", ["linear"], ["zoom"], 1, tier === 1 ? 1.2 : 0.9, 5, tier === 1 ? 2.2 : 1.6],
+      "line-opacity": 0.9,
+    },
+  }));
+  // 자리를 먼저 차지하는 순서(위가 먼저): 1단 이름표 → 위선·경선 숫자 → 2단 → 3단 → 4단
+  const layer = (list, tier) => list[tier - 1];
 
   return {
     version: 8,
@@ -131,6 +148,7 @@ function buildStyle() {
       },
       labels: { type: "geojson", data: data.labels },
       borders: { type: "geojson", data: data.borders },
+      rivers: { type: "geojson", data: data.rivers },
       grid: { type: "geojson", data: buildGrid() },
       gridLabels: { type: "geojson", data: { type: "FeatureCollection", features: [] } },
     },
@@ -166,6 +184,7 @@ function buildStyle() {
           "line-dasharray": ["match", ["get", "special"], "equator", ["literal", [1, 0]], "prime", ["literal", [1, 0]], ["literal", [4, 3]]],
         },
       },
+      ...riverLineLayers,
       {
         id: "borders",
         type: "line",
@@ -173,8 +192,9 @@ function buildStyle() {
         layout: { visibility: visibility("country") },
         paint: { "line-color": "rgba(255, 255, 255, 0.72)", "line-width": 0.9 },
       },
-      ...labelLayers.slice(0, 3),
-      // 위선·경선 숫자는 1단 이름표 다음 차례로 자리를 잡는다.
+      layer(labelLayers, 4),
+      layer(labelLayers, 3),
+      layer(labelLayers, 2),
       {
         id: "grid-labels",
         type: "symbol",
@@ -193,7 +213,7 @@ function buildStyle() {
           "text-halo-width": 1.4,
         },
       },
-      labelLayers[3],
+      layer(labelLayers, 1),
     ],
   };
 }
@@ -300,7 +320,11 @@ function refreshZoomRules() {
   // 지도 프로그램은 최소 배율만 위도에 맞춰 옮겨 주고, 최대 배율은 최소 배율보다 작게 둘 수 없다(극 가까이).
   const maxZoom = Math.max(MAX_EQUATOR_ZOOM + shift, map.getMinZoom());
   if (Math.abs(map.getMaxZoom() - maxZoom) > 0.01) map.setMaxZoom(maxZoom);
-  for (const tier of [2, 3, 4]) map.setLayerZoomRange(`labels-${tier}`, Math.max(0, TIER_ZOOM[tier] + shift), 24);
+  for (const tier of [2, 3, 4]) {
+    for (const id of [`labels-${tier}`, `river-lines-${tier}`]) {
+      map.setLayerZoomRange(id, Math.max(0, TIER_ZOOM[tier] + shift), 24);
+    }
+  }
   map.setLayerZoomRange("grid-fine", Math.max(0, FINE_GRID_ZOOM + shift), 24);
   document.getElementById("zoomIn").disabled = map.getZoom() >= maxZoom - 0.01;
   document.getElementById("zoomOut").disabled = map.getZoom() <= wholeGlobeZoom() + shift + 0.01;
@@ -387,6 +411,9 @@ function applyLayerFilters() {
   if (enabled.has("country")) loadFlags();
   for (const id of ["grid-coarse", "grid-fine", "grid-special", "grid-labels"]) {
     map.setLayoutProperty(id, "visibility", visibility("grid"));
+  }
+  for (const tier of [1, 2, 3, 4]) {
+    map.setLayoutProperty(`river-lines-${tier}`, "visibility", visibility("river"));
   }
   refreshGridLabels();
 }

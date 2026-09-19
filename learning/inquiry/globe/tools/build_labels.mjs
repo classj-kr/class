@@ -310,6 +310,10 @@ const KOREA_RIVERS = {
   "Yalu": ["압록강", 4], "Tumen": ["두만강", 4], "Han": ["한강", 4], "Namhan": ["한강", 4], "Nakdong": ["낙동강", 4],
 };
 const inKorea = ([x, y]) => x > 124 && x < 131 && y > 33 && y < 43.5;
+// 강 이름이 다른 이름표와 한 점에 겹치는 곳은 줄기 위 다른 자리로 옮긴다. [[경도, 위도], ...]
+const RIVER_LABEL_AT = {
+  "낙동강": [[128.45, 35.62]], // 가운데 자리는 소백산맥 이름표와 겹친다
+};
 
 // 바다 이름: Natural Earth 한글 이름을 쓰되 고칠 것만 고치고, 뺄 것은 뺀다.
 const MARINE_FIX = {
@@ -416,6 +420,43 @@ function labelPoint(geometries) {
 
 const round = (value) => Math.round(value * 100) / 100;
 
+// 선을 단순하게(더글러스-포이커). 0.02도는 약 2km로, 가장 크게 키워도 화면 1픽셀이 안 된다.
+function simplify(line, tolerance = 0.02) {
+  if (line.length < 3) return line;
+  const keep = new Uint8Array(line.length);
+  keep[0] = keep[line.length - 1] = 1;
+  const stack = [[0, line.length - 1]];
+  while (stack.length) {
+    const [a, b] = stack.pop();
+    let farthest = -1;
+    let distance = tolerance * tolerance;
+    for (let i = a + 1; i < b; i += 1) {
+      const d = segDistSq(line[i][0], line[i][1], line[a], line[b]);
+      if (d > distance) { distance = d; farthest = i; }
+    }
+    if (farthest >= 0) {
+      keep[farthest] = 1;
+      stack.push([a, farthest], [farthest, b]);
+    }
+  }
+  return line.filter((_, i) => keep[i]);
+}
+
+const pathLength = (line) => line.slice(1).reduce((sum, p, i) => sum + Math.hypot(p[0] - line[i][0], p[1] - line[i][1]), 0);
+
+function pointAlong(line, distance) {
+  let left = distance;
+  for (let i = 1; i < line.length; i += 1) {
+    const step = Math.hypot(line[i][0] - line[i - 1][0], line[i][1] - line[i - 1][1]);
+    if (step >= left) {
+      const t = step ? left / step : 0;
+      return [line[i - 1][0] + (line[i][0] - line[i - 1][0]) * t, line[i - 1][1] + (line[i][1] - line[i - 1][1]) * t];
+    }
+    left -= step;
+  }
+  return line[line.length - 1];
+}
+
 // 끝과 끝이 닿는 구간을 이어 긴 줄기로 만든다(강 이름은 줄기를 따라 놓이므로 짧게 끊겨 있으면 이름이 안 들어간다).
 function joinLines(lines) {
   const key = ([x, y]) => `${x},${y}`;
@@ -467,7 +508,7 @@ async function buildRivers() {
   return [...rivers].map(([name, { tier, parts }]) => ({
     type: "Feature",
     properties: { name, tier },
-    geometry: { type: "MultiLineString", coordinates: joinLines(parts) },
+    geometry: { type: "MultiLineString", coordinates: joinLines(parts).map((line) => simplify(line)) },
   }));
 }
 const point = (lng, lat, properties) => ({
@@ -538,12 +579,23 @@ async function main() {
   const lines = await neFile("ne_50m_admin_0_boundary_lines_land");
   const borders = lines.features.map((feature) => {
     const parts = feature.geometry.type === "LineString" ? [feature.geometry.coordinates] : feature.geometry.coordinates;
-    const slim = parts.map((part) => part.map(([x, y]) => [round(x), round(y)])
-      .filter((p, i, all) => i === 0 || p[0] !== all[i - 1][0] || p[1] !== all[i - 1][1]));
+    const slim = parts.map((part) => simplify(part.map(([x, y]) => [round(x), round(y)])
+      .filter((p, i, all) => i === 0 || p[0] !== all[i - 1][0] || p[1] !== all[i - 1][1])));
     return { type: "Feature", properties: {}, geometry: { type: "MultiLineString", coordinates: slim } };
   });
 
   const rivers = await buildRivers();
+  // 강 이름은 가장 긴 줄기 위에 가로로 놓는다(줄기를 따라 놓는 방식은 지구본에서 글자가 그려지지 않는다).
+  // 긴 강(경위도로 25도 넘게 흐르는 강)은 1/3, 2/3 자리 두 군데에 적는다.
+  for (const river of rivers) {
+    const longest = river.geometry.coordinates.reduce((a, b) => (pathLength(b) > pathLength(a) ? b : a));
+    const total = pathLength(longest);
+    const stops = total > 25 ? [1 / 3, 2 / 3] : [1 / 2];
+    const spots = RIVER_LABEL_AT[river.properties.name] || stops.map((stop) => pointAlong(longest, total * stop));
+    for (const [lng, lat] of spots) {
+      labels.push(point(lng, lat, { name: river.properties.name, kind: "river", tier: river.properties.tier }));
+    }
+  }
   const data = {
     labels: { type: "FeatureCollection", features: labels },
     borders: { type: "FeatureCollection", features: borders },
@@ -553,7 +605,7 @@ async function main() {
   fs.mkdirSync(path.dirname(out), { recursive: true });
   fs.writeFileSync(out, `// tools/build_labels.mjs 로 만든 파일. 직접 고치지 말 것.\nwindow.GLOBE_DATA = ${JSON.stringify(data)};\n`);
   const count = (kind) => labels.filter((f) => f.properties.kind === kind).length;
-  console.log(`이름표 ${labels.length}개 (산지 ${count("mountain")}, 고원 ${count("plateau")}, 평원 ${count("plain")}, 분지 ${count("basin")}, 사막 ${count("desert")}, 반도 ${count("peninsula")}, 그 밖 ${count("other")}, 산 ${count("peak")}, 바다 ${count("sea")}, 나라 ${count("country")})`);
+  console.log(`이름표 ${labels.length}개 (산지 ${count("mountain")}, 고원 ${count("plateau")}, 평원 ${count("plain")}, 분지 ${count("basin")}, 사막 ${count("desert")}, 강 ${count("river")}, 반도 ${count("peninsula")}, 그 밖 ${count("other")}, 산 ${count("peak")}, 바다 ${count("sea")}, 나라 ${count("country")})`);
   console.log(`강 ${rivers.length}개: ${rivers.map((f) => `${f.properties.name}(${f.geometry.coordinates.length}줄기)`).join(" ")}`);
   console.log(`국경 ${borders.length}줄, ${(fs.statSync(out).size / 1024).toFixed(0)}KB`);
 }
