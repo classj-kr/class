@@ -12,7 +12,7 @@ const retryBanks = [
   ['속담', 'learning/literacy-numeracy/proverbs/app.js', /다시 생각하고 다른 답을 골라보세요/],
   ['한자성어', 'learning/literacy-numeracy/classical-chinese-idioms/app.js', /다른 답을 골라보세요/],
   ['어휘', 'learning/literacy-numeracy/vocabulary/app.js', /다시 생각하고 다른 그림을 골라보세요/],
-  ['한국 문화유산', 'learning/inquiry/korean-museum/treasure-map.js', /다시 생각하고 다른 답을 골라보세요/],
+  ['국내 지도(지리·유물·유적)', 'learning/inquiry/korea-map/app.js', /다시 생각하고 다른 답을 골라보세요/],
   ['주기율표', 'learning/inquiry/periodic-table/app.js', /다시 생각하고 다른 답을 골라보세요/],
   ['지진파와 진앙', 'learning/inquiry/science-lab/earthquake/app.js', /다시 생각하고 다른 답을 골라보세요/],
   ['용해도', 'learning/inquiry/science-lab/solubility/app.js', /다시 생각하고 다른 답을 골라보세요/],

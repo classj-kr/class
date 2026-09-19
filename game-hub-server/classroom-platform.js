@@ -629,6 +629,20 @@ function createClassroomPlatform(options = {}) {
         updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
         PRIMARY KEY (class_id, content_path)
       )`,
+      // The four domestic-map apps were merged into /learning/inquiry/korea-map.
+      // A class that had any of the old paths open gets the merged app open.
+      // The old rows are removed in the same statement, so this runs once and
+      // cannot re-open the map after a teacher closes it later.
+      `WITH moved AS (
+         DELETE FROM classroom_content_enabled
+         WHERE content_path IN ('/learning/inquiry/korean-museum', '/learning/inquiry/korea-travel-map',
+                                '/learning/inquiry/korea-geography', '/learning/inquiry/korea-terrain')
+         RETURNING class_id, updated_by
+       )
+       INSERT INTO classroom_content_enabled (class_id, content_path, updated_by, updated_at)
+       SELECT DISTINCT ON (class_id) class_id, '/learning/inquiry/korea-map', updated_by, NOW()
+       FROM moved
+       ON CONFLICT (class_id, content_path) DO NOTHING`,
       `CREATE TABLE IF NOT EXISTS classroom_schedules (
         id BIGSERIAL PRIMARY KEY,
         class_id BIGINT NOT NULL REFERENCES classroom_classes(id) ON DELETE CASCADE,

@@ -228,6 +228,23 @@ assert.match(app, /createBaseMap: \(elementId, options\) => createBaseMap\(eleme
 assert.match(server, /for \(const folder of \["relief", "dem", "heritage", "travel"\]\)[\s\S]*?`\/learning\/inquiry\/korea-map\/\$\{folder\}`/);
 assert.ok(server.indexOf("/learning/inquiry/korea-map/${folder}") < server.indexOf("classroomPlatform.requireSiteAccess)"), "지도 조각은 로그인 확인보다 앞에서 내보내야 합니다.");
 
+// 옛 네 앱(유물·유적·체험·관광·지리·지형도)은 없어졌다. 옛 주소는 서버가 맞는 탭으로 보내고,
+// 옛 주소를 켜 두었던 반은 새 주소가 켜지도록 한 번 옮긴다(옛 줄을 지워 다시 켜지지 않게).
+for (const [oldFolder, tab] of [["korean-museum", "#heritage"], ["korea-travel-map", "#travel"], ["korea-geography", ""], ["korea-terrain", "#terrain"]]) {
+  assert.ok(!fs.existsSync(new URL(`learning/inquiry/${oldFolder}/`, root)), `${oldFolder} 폴더가 남아 있습니다.`);
+  assert.ok(server.includes(`["${oldFolder}", "${tab}"]`), `${oldFolder} 옛 주소를 국내 지도로 보내야 합니다.`);
+}
+assert.match(server, /app\.use\(`\/learning\/inquiry\/\$\{oldFolder\}`, \(_req, res\) => res\.redirect\(301, `\/learning\/inquiry\/korea-map\/\$\{tab\}`\)\)/);
+assert.ok(server.indexOf("${oldFolder}`, (_req, res)") < server.indexOf("classroomPlatform.requireSiteAccess)"), "옛 주소 보내기는 로그인 확인보다 앞이어야 합니다.");
+const platform = fs.readFileSync(new URL("game-hub-server/classroom-platform.js", root), "utf8");
+assert.match(platform, /WITH moved AS \(\s*DELETE FROM classroom_content_enabled\s*WHERE content_path IN \('\/learning\/inquiry\/korean-museum', '\/learning\/inquiry\/korea-travel-map',\s*'\/learning\/inquiry\/korea-geography', '\/learning\/inquiry\/korea-terrain'\)\s*RETURNING class_id, updated_by\s*\)\s*INSERT INTO classroom_content_enabled[\s\S]*?'\/learning\/inquiry\/korea-map'[\s\S]*?ON CONFLICT \(class_id, content_path\) DO NOTHING/);
+// 세계 지리는 국내 지도에 둔 Leaflet을 함께 쓴다.
+const worldHtml = fs.readFileSync(new URL("learning/inquiry/world-geography/index.html", root), "utf8");
+assert.match(worldHtml, /\.\.\/korea-map\/vendor\/leaflet\/leaflet\.js/);
+// 사이트 공통 흐름: 오답이면 다시 고르게 하고, 처음 고른 답으로 기록한다.
+assert.match(app, /다시 생각하고 다른 답을 골라보세요/);
+assert.match(app, /const firstTry = !session\.answers\[session\.index\]/);
+
 assert.ok(exists("tools/build_relief.py") && exists("tools/build_borders.py") && exists("tools/build_dem.py"), "자료를 다시 만드는 도구가 필요합니다.");
 
 console.log(`Korea map contract passed (${THEME_KEYS.length} themes, ${dataset.questions.length} questions, ${Object.values(counts).reduce((a, b) => a + b, 0)} relief tiles).`);

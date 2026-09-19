@@ -1107,21 +1107,35 @@
     $("#answerOptions").replaceChildren(fragment);
   }
 
+  // 오답을 고르면 정답·해설·위치는 보여 주지 않고 그 보기만 막아 다시 고르게 한다(사이트 공통 흐름).
+  // 기록과 점수는 처음 고른 답으로 남긴다.
   function answerQuestion(selectedIndex) {
     if (session.answered) return;
-    session.answered = true;
     const question = session.questions[session.index];
     const correct = selectedIndex === question.answer;
-    session.answers[session.index] = { selectedIndex, correct };
-    recordAnswer(question, correct);
-    $$("#answerOptions .answer-button").forEach((button, index) => {
+    const firstTry = !session.answers[session.index];
+    if (firstTry) {
+      session.answers[session.index] = { selectedIndex, correct };
+      recordAnswer(question, correct);
+    }
+    const buttons = $$("#answerOptions .answer-button");
+    if (!correct) {
+      buttons[selectedIndex].disabled = true;
+      buttons[selectedIndex].classList.add("is-wrong");
+      $("#feedbackTitle").textContent = "다시 생각하고 다른 답을 골라보세요.";
+      $("#feedbackExplanation").textContent = "";
+      $("#answerFeedback").classList.add("is-wrong");
+      $("#answerFeedback").hidden = false;
+      return;
+    }
+    session.answered = true;
+    buttons.forEach((button, index) => {
       button.disabled = true;
       if (index === question.answer) button.classList.add("is-correct");
-      if (index === selectedIndex && !correct) button.classList.add("is-wrong");
     });
-    $("#feedbackTitle").textContent = correct ? "정답입니다" : `정답은 ${question.answer + 1}번입니다`;
+    $("#feedbackTitle").textContent = firstTry ? "정답입니다" : "정답입니다 · 기록에는 처음 고른 답이 남아요";
     $("#feedbackExplanation").textContent = question.explanation;
-    $("#answerFeedback").classList.toggle("is-wrong", !correct);
+    $("#answerFeedback").classList.remove("is-wrong");
     $("#answerFeedback").hidden = false;
     $("#nextQuestion").disabled = false;
     $("#showHint").disabled = true;

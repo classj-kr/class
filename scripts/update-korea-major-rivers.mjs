@@ -1,6 +1,6 @@
 import fs from "node:fs/promises";
 
-const riverFile = new URL("../learning/inquiry/korea-geography/data/major-rivers.geojson", import.meta.url);
+const riverFile = new URL("../learning/inquiry/korea-map/data/major-rivers.geojson", import.meta.url);
 const supplementalRivers = new Map([
   [2899525, "압록강"],
   [6970997, "두만강"],

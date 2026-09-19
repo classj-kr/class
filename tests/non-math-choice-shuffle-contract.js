@@ -13,7 +13,7 @@ const checks = [
   ['속담', 'learning/literacy-numeracy/proverbs/app.js', /shuffle\(\[correctIndex, \.\.\.distractors\]\)/],
   ['한자성어', 'learning/literacy-numeracy/classical-chinese-idioms/idioms-core.js', /const options = shuffle\(\[idiom, \.\.\.wrong\]/],
   ['대항해시대', 'learning/inquiry/age-of-exploration/lib/final-quiz.js', /function shuffledQuestion\(source\)/],
-  ['한국 문화유산', 'learning/inquiry/korean-museum/treasure-map.js', /const randomizedOptions = shuffledCopy\(/],
+  ['국내 지도(지리·유물·유적)', 'learning/inquiry/korea-map/app.js', /const shuffled = shuffle\(question\.options\.map/],
   ['주기율표', 'learning/inquiry/periodic-table/app.js', /const options = \[correctEl, \.\.\.wrongOpts\]\.sort/],
   ['지진파와 진앙', 'learning/inquiry/science-lab/earthquake/app.js', /shuffleQuizOptions\(card\)/],
   ['용해도', 'learning/inquiry/science-lab/solubility/app.js', /shuffleQuizOptions\(card\)/],

@@ -37,8 +37,8 @@ assert.doesNotMatch(
 
 assert.match(
   html,
-  /href="learning\/inquiry\/korean-museum\/"[\s\S]*?<strong>유물·유적<\/strong><small>\(Artifacts &amp; Sites\)<\/small>/,
-  "The museum menu must use the concise artifacts-and-sites label.",
+  /href="learning\/inquiry\/korea-map\/"[\s\S]*?<strong>국내 지도<\/strong><small>\(Korea Maps\)<\/small>/,
+  "Artifacts, trips, geography and the relief map are tabs of one concise Korea Maps menu item.",
 );
 assert.doesNotMatch(
   html,

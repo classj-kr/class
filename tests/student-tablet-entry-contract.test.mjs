@@ -12,9 +12,7 @@ test("student entry screens do not repeat the menu name in decorative headers", 
     ["learning/literacy-numeracy/metacognition/index.html", /class="page-(?:title|sub)"/],
     ["learning/inquiry/information-computing/typing/index.html", /<h1>타자연습<\/h1>/],
     ["learning/inquiry/science-lab/index.html", /<h1>과학 실험실<\/h1>/],
-    ["learning/inquiry/korean-museum/index.html", /class="brand-title"/],
-    ["learning/inquiry/korea-travel-map/index.html", /<h1>국내 여행 지도<\/h1>/],
-    ["learning/inquiry/korea-geography/index.html", /<h1>한국지리 수능<\/h1>/],
+    ["learning/inquiry/korea-map/index.html", /<h1>국내 지도<\/h1>|class="brand-title"/],
     ["learning/inquiry/periodic-table/index.html", /class="app-title"/],
     ["learning/inquiry/human-body/index.html", /class="(?:sim-title-group|hub-hero)"/],
   ];
@@ -51,7 +49,6 @@ test("phonics prioritizes the next lesson at Chromebook and iPad widths", () => 
 test("shared student entry controls retain tablet-sized touch targets", () => {
   assert.match(read("learning/literacy-numeracy/story-books/lobby.css"), /\.back-link\s*\{[^}]*min-height:\s*44px/s);
   assert.match(read("learning/literacy-numeracy/reading/style.css"), /\.student-header a\s*\{[^}]*min-height:\s*44px/s);
-  assert.match(read("learning/inquiry/korean-museum/styles.css"), /\.home-link\s*\{[^}]*min-height:\s*44px/s);
-  assert.match(read("learning/inquiry/korea-geography/styles.css"), /\.back-link,[\s\S]*?min-height:\s*44px/s);
+  assert.match(read("learning/inquiry/korea-map/styles.css"), /\.back-link,[\s\S]*?min-height:\s*44px/s);
   assert.match(read("learning/inquiry/periodic-table/styles.css"), /\.home-btn\s*\{[^}]*min-height:\s*44px/s);
 });

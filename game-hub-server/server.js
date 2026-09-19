@@ -313,19 +313,19 @@ app.get("/math-learning-banner.webp", (_req, res) => {
     ),
   );
 });
-// Travel-map photos are requested by an <img> after the gated page opens.
-// Serve this immutable asset directory before requireSiteAccess so a session
-// check cannot turn an image response into login HTML.
-app.use(
-  "/learning/inquiry/korea-travel-map/images",
-  express.static(path.join(SITE_ROOT, "learning", "inquiry", "korea-travel-map", "images"), staticAssetOptions),
-);
-// The Korea map app loads relief/height tiles and photos the same way.
+// The Korea map app loads relief/height tiles and photos after the gated page opens.
+// Serve these immutable folders before requireSiteAccess so a session check
+// cannot turn an image response into login HTML.
 for (const folder of ["relief", "dem", "heritage", "travel"]) {
   app.use(
     `/learning/inquiry/korea-map/${folder}`,
     express.static(path.join(SITE_ROOT, "learning", "inquiry", "korea-map", folder), staticAssetOptions),
   );
+}
+// The four domestic-map apps became tabs of /learning/inquiry/korea-map. Old links
+// land on the matching tab; the geography app keeps its own #theme fragment.
+for (const [oldFolder, tab] of [["korean-museum", "#heritage"], ["korea-travel-map", "#travel"], ["korea-geography", ""], ["korea-terrain", "#terrain"]]) {
+  app.use(`/learning/inquiry/${oldFolder}`, (_req, res) => res.redirect(301, `/learning/inquiry/korea-map/${tab}`));
 }
 const MAX_ROOM_PLAYERS = {
   setgame: 4,

@@ -5,7 +5,7 @@ const html = fs.readFileSync(new URL('../index.html', import.meta.url), 'utf8');
 const groups = [...html.matchAll(/<details class="worksheet-group" data-access-group="([^"]+)">[\s\S]*?<\/details>/g)];
 const groupByName = new Map(groups.map((match) => [match[1], match[0]]));
 
-for (const groupName of ['story-books', 'grammar', 'vocabulary', 'information-computing', 'korea-maps', 'world-maps', 'space-observation', 'arts-appreciation', 'arts-experience', 'music-theory']) {
+for (const groupName of ['story-books', 'grammar', 'vocabulary', 'information-computing', 'world-maps', 'space-observation', 'arts-appreciation', 'arts-experience', 'music-theory']) {
   assert.ok(groupByName.has(groupName), `Missing disclosure menu: ${groupName}`);
 }
 
@@ -16,19 +16,14 @@ assert.ok(
   'Story books must remain in the literacy and numeracy section.',
 );
 
-const koreaMaps = groupByName.get('korea-maps') || '';
-assert.ok(koreaMaps, 'The domestic-map tools must be grouped in one disclosure menu.');
-assert.match(koreaMaps, /<strong>국내 지도<\/strong><small>\(Korea Maps\)<\/small>/);
-assert.match(koreaMaps, /data-content-paths="learning\/inquiry\/korean-museum\/\|learning\/inquiry\/korea-travel-map\/\|learning\/inquiry\/korea-geography\/\|learning\/inquiry\/korea-terrain\/"/);
-assert.doesNotMatch(koreaMaps, /한국지리 수능|Korean Geography CSAT/);
-for (const [href, label, englishLabel] of [
-  ['learning/inquiry/korean-museum/', '유물·유적', 'Artifacts &amp; Sites'],
-  ['learning/inquiry/korea-travel-map/', '체험·관광', 'Experiences &amp; Tourism'],
-  ['learning/inquiry/korea-geography/', '지리', 'Geography'],
-  ['learning/inquiry/korea-terrain/', '지형도', 'Topographic Map'],
-]) {
-  assert.match(koreaMaps, new RegExp(`href="${href}"[^>]*data-access-parent="korea-maps"[\\s\\S]*?<strong>${label}<\\/strong><small>\\(${englishLabel}\\)<\\/small>`));
-}
+// 국내 지도는 네 앱(유물·유적·체험·관광·지리·지형도)을 주제 탭으로 합친 한 앱이라 묶음 메뉴가 아니라 링크 하나다.
+assert.ok(!groupByName.has('korea-maps'), 'The domestic-map tools are one app now, not a disclosure menu.');
+assert.match(html, /<a href="learning\/inquiry\/korea-map\/" data-requires-player="true">\s*<span class="worksheet-copy"><strong>국내 지도<\/strong><small>\(Korea Maps\)<\/small>/);
+assert.doesNotMatch(html, /href="learning\/inquiry\/(?:korean-museum|korea-travel-map|korea-geography|korea-terrain)\//);
+assert.ok(
+  html.indexOf('href="learning/inquiry/korea-map/"') > html.indexOf('aria-labelledby="exploration-title"'),
+  'Korea Maps stays in the subject-inquiry section.',
+);
 
 const worldMaps = groupByName.get('world-maps') || '';
 assert.ok(worldMaps, 'The world-map tools must be grouped in one disclosure menu.');
