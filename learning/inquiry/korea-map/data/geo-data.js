@@ -53,14 +53,17 @@
     return items;
   }
 
-  // 교통 이름표: 간선 고속 국도와 고속 철도 이름을 가장 긴 줄기의 가운데에 단다(transport-lines.js, 먼저 불러온다).
+  // 교통 이름표: 간선 고속 국도와 고속 철도 이름을 노선 가운데쯤에 단다(transport-lines.js, 먼저 불러온다).
   const RAIL_NAMES = { "경부고속선": "경부 고속 철도", "호남고속선": "호남 고속 철도", "수서평택고속선": "수서평택 고속 철도" };
   function transportAnnotations() {
     const data = window.KOREA_TRANSPORT;
     if (!data) return [];
+    // 노선 전체 점의 한가운데에서 가장 가까운 노선 위 점
     const middleOf = (lines) => {
-      const longest = lines.reduce((best, line) => (line.length > best.length ? line : best), lines[0]);
-      return longest[Math.floor(longest.length / 2)];
+      const points = lines.flat();
+      const lat = points.reduce((sum, point) => sum + point[0], 0) / points.length;
+      const lng = points.reduce((sum, point) => sum + point[1], 0) / points.length;
+      return points.reduce((best, point) => (Math.hypot(point[0] - lat, point[1] - lng) < Math.hypot(best[0] - lat, best[1] - lng) ? point : best));
     };
     const roads = data.expressways.filter((road) => road.major).map((road) => {
       const [lat, lng] = middleOf(road.lines);

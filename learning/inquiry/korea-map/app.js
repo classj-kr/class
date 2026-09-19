@@ -561,23 +561,26 @@
   }
 
   // 교통 탭의 실제 노선(data/transport-lines.js). 일반 철도는 검은 선에 흰 점선(철도 기호), 고속 국도는 주황(간선은 굵게), 고속 철도는 진홍.
+  // 노선이 여러 토막이라 테두리를 한꺼번에 먼저 깔고 색선을 나중에 그린다(토막마다 번갈아 그리면 이음매를 테두리가 덮는다).
   function drawTransportNetwork(group, interactive) {
     const data = window.KOREA_TRANSPORT;
     if (!data) return;
-    const tip = (path, text) => { if (interactive) path.bindTooltip(text, { sticky: true, className: "study-tooltip" }); };
-    data.railways.filter((rail) => rail.kind !== "highspeed").forEach((rail) => rail.lines.forEach((line) => {
-      L.polyline(line, { pane: "themeLines", color: "#37474f", weight: 3.2, opacity: 0.9, interactive: false }).addTo(group);
-      tip(L.polyline(line, { pane: "themeLines", color: "#ffffff", weight: 1.5, dashArray: "6 6", opacity: 0.95, interactive }).addTo(group), `${rail.name}(철도)`);
-    }));
-    data.expressways.forEach((road) => road.lines.forEach((line) => {
-      const weight = road.major ? 3.4 : 2;
-      L.polyline(line, { pane: "themeLines", color: "#ffffff", weight: weight + 2, opacity: 0.85, interactive: false }).addTo(group);
-      tip(L.polyline(line, { pane: "themeLines", color: "#e8740c", weight, opacity: 0.95, lineCap: "round", lineJoin: "round", interactive }).addTo(group), `${road.name}(${road.ref}번)`);
-    }));
-    data.railways.filter((rail) => rail.kind === "highspeed").forEach((rail) => rail.lines.forEach((line) => {
-      L.polyline(line, { pane: "themeLines", color: "#ffffff", weight: 5.5, opacity: 0.85, interactive: false }).addTo(group);
-      tip(L.polyline(line, { pane: "themeLines", color: "#c62828", weight: 3.2, opacity: 0.95, lineCap: "round", lineJoin: "round", interactive }).addTo(group), `${rail.name}(고속 철도)`);
-    }));
+    const rails = data.railways.filter((rail) => rail.kind !== "highspeed");
+    const fast = data.railways.filter((rail) => rail.kind === "highspeed");
+    const layers = [
+      [rails, () => ({ color: "#37474f", weight: 3.2, opacity: 0.9 }), () => ({ color: "#ffffff", weight: 1.5, dashArray: "6 6", opacity: 0.95 }), (rail) => `${rail.name}(철도)`],
+      [data.expressways, (road) => ({ color: "#ffffff", weight: (road.major ? 3.4 : 2) + 2, opacity: 0.85 }), (road) => ({ color: "#e8740c", weight: road.major ? 3.4 : 2, opacity: 0.95 }), (road) => `${road.name}(${road.ref}번)`],
+      [fast, () => ({ color: "#ffffff", weight: 5.5, opacity: 0.85 }), () => ({ color: "#c62828", weight: 3.2, opacity: 0.95 }), (rail) => `${rail.name}(고속 철도)`]
+    ];
+    layers.forEach(([items, under, over, label]) => {
+      items.forEach((item) => item.lines.forEach((line) => {
+        L.polyline(line, { pane: "themeLines", lineCap: "round", lineJoin: "round", interactive: false, ...under(item) }).addTo(group);
+      }));
+      items.forEach((item) => item.lines.forEach((line) => {
+        const path = L.polyline(line, { pane: "themeLines", lineCap: "round", lineJoin: "round", interactive, ...over(item) }).addTo(group);
+        if (interactive) path.bindTooltip(label(item), { sticky: true, className: "study-tooltip" });
+      }));
+    });
   }
 
   function textIcon(className, text) {
