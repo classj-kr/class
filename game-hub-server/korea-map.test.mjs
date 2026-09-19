@@ -265,9 +265,17 @@ for (const place of travelData.places) {
   assert.ok(photo && exists(photo.src.replace(/\?.*$/, "")), `${place.name} 사진이 없습니다.`);
   assert.ok(place.categories.length && place.categories.every((key) => categoryKeys.has(key)), `${place.name} 종류가 잘못되었습니다.`);
   assert.ok(place.lat > 32 && place.lat < 39.5 && place.lng > 124 && place.lng < 132, `${place.name} 좌표가 경로 계산 범위 밖입니다.`);
-  assert.ok(place.description && place.mission && /^https?:\/\//.test(place.officialUrl), `${place.name} 설명이 불완전합니다.`);
+  assert.ok(place.description && /^https?:\/\//.test(place.officialUrl), `${place.name} 설명이 불완전합니다.`);
+  assert.ok(!("season" in place || "weather" in place || "reservation" in place), `${place.name}: 정보 없는 계절·날씨·예약 칸은 두지 않는다.`);
 }
 assert.equal(dataset.themes.travel.practice, false);
+// 여러 곳에 똑같이 찍힌 설명 문장·관찰 미션은 두지 않는다(그 장소만의 말이 아니다).
+const travelSentences = {};
+for (const place of travelData.places) for (const sentence of place.description.match(/[^.!?]+[.!?]?/g).map((item) => item.trim())) travelSentences[sentence] = (travelSentences[sentence] || 0) + 1;
+assert.deepEqual(Object.entries(travelSentences).filter(([, count]) => count > 1).map(([sentence]) => sentence), []);
+const travelMissions = travelData.places.map((place) => place.mission).filter(Boolean);
+assert.equal(new Set(travelMissions).size, travelMissions.length, "똑같은 관찰 미션이 여러 곳에 있습니다.");
+assert.ok(Object.values(travelData.photos).every((photo) => !/verify|Bing/i.test(photo.author + photo.license)), "사진 출처에 작업 메모나 검색 엔진 이름을 쓰지 않는다.");
 assert.match(sources.travel, /\/api\/travel\/route\?destinationLat=/);
 assert.doesNotMatch(sources.travel, /school\.name|schoolName|\/api\/auth\/me|\/api\/teacher\/profile/, "학교 이름은 첫 화면에만 쓴다.");
 assert.match(html, /우리 학교/);

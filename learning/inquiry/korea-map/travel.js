@@ -1,4 +1,4 @@
-// 체험·관광 탭: 전국 체험학습 장소를 종류별 핀으로 놓고, 누르면 사진·배울 거리·관찰 미션·우리 학교에서 가는 길을 보여 준다.
+// 체험·관광 탭: 전국 체험학습 장소를 종류별 핀으로 놓고, 누르면 사진·설명·관찰 미션·우리 학교에서 가는 길을 보여 준다.
 // 자료는 data/travel-data.js, 사진은 travel/. 학교 이름은 어디에도 쓰지 않고 "우리 학교"라고만 쓴다.
 (function () {
   "use strict";
@@ -152,13 +152,9 @@
       badge.textContent = CATEGORY_LABEL[key] || key;
       return badge;
     }));
-    $("placeFacts").replaceChildren(...[`🗓️ ${place.season}`, `☔ ${place.weather}`, `🎟️ ${place.reservation}`].map((text) => {
-      const span = document.createElement("span");
-      span.textContent = text;
-      return span;
-    }));
     $("placeDescription").textContent = place.description;
     $("placeMission").textContent = place.mission;
+    $("placeMissionBlock").hidden = !place.mission;
     renderPhoto(place);
     if (!dialog.open) dialog.showModal();
     loadRoute(place, map);
@@ -186,7 +182,7 @@
     source.href = photo.page;
     source.target = "_blank";
     source.rel = "noopener noreferrer";
-    source.textContent = `사진: ${photo.author || "출처"}`;
+    source.textContent = photo.author ? `사진: ${photo.author}` : "사진 출처";
     credit.append(source);
     if (photo.license) credit.append(` · ${photo.license}`);
   }

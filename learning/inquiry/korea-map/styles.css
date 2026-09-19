@@ -252,10 +252,10 @@ button { cursor: pointer; }
 .place-badges { display: flex; flex-wrap: wrap; gap: 6px; }
 .place-badge { padding: 4px 10px; border-radius: 999px; color: var(--ink); background: color-mix(in srgb, var(--ink) 12%, #fff); font-size: 12px; font-weight: 850; }
 .place-site { min-height: 44px; display: inline-flex; align-items: center; margin-top: 10px; padding: 0 14px; border: 1px solid #b9d5ca; border-radius: 999px; color: #1e665b; background: #edf5ef; font-size: 13px; font-weight: 850; text-decoration: none; }
-.place-facts { display: flex; flex-wrap: wrap; gap: 7px; margin: 12px 0 4px; }
-.place-facts span { padding: 6px 9px; border: 1px solid #d8dfd9; border-radius: 10px; background: #fff; color: #4a6364; font-size: 12px; font-weight: 800; }
 .place-body h3 { margin: 16px 0 6px; color: var(--deep); font-size: 15px; }
 .place-body p { margin: 0; }
+.place-description { margin-top: 14px !important; }
+#placeMissionBlock[hidden] { display: none; }
 .place-mission { padding: 12px 14px; border: 1px solid #efc57e; border-radius: 12px; background: #fff0d6; }
 .practice-launch[hidden] { display: none; }
 
