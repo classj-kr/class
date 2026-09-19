@@ -173,11 +173,7 @@
     hideDone: document.getElementById("hide-done"),
     onlyWrong: document.getElementById("only-wrong"),
     reset: document.getElementById("reset"),
-    btnScrollTop: document.getElementById("btn-scroll-top"),
-    statTotal: document.getElementById("stat-total"),
-    statSolved: document.getElementById("stat-solved"),
-    statWrong: document.getElementById("stat-wrong"),
-    statRate: document.getElementById("stat-rate")
+    btnScrollTop: document.getElementById("btn-scroll-top")
   };
 
   /* ── 기록 관리 ── */
@@ -232,20 +228,6 @@
     } catch (err) {
       /* 저장이 막혀 있어도 무방 */
     }
-  }
-
-  /* ── 상단 통계 바 갱신 ── */
-  function updateGlobalStats() {
-    const total = DATA.questions.length;
-    const solved = Object.keys(state.done).length;
-    const wrongCount = Object.values(state.done).filter((v) => v === "wrong").length;
-    const rightCount = solved - wrongCount;
-    const rate = solved > 0 ? Math.round((rightCount / solved) * 100) : 0;
-
-    if (els.statTotal) els.statTotal.textContent = total;
-    if (els.statSolved) els.statSolved.textContent = solved;
-    if (els.statWrong) els.statWrong.textContent = wrongCount;
-    if (els.statRate) els.statRate.textContent = rate + "%";
   }
 
   /* ── 고르기 UI 빌드 ── */
@@ -445,7 +427,6 @@
   function markDone(question, card, right) {
     state.done[question.id] = right ? "right" : "wrong";
     saveDone();
-    updateGlobalStats();
     card.classList.add("is-done");
     card.classList.toggle("is-wrong", !right);
     card.querySelector(".item-mark").textContent = right ? "맞음" : "틀림";
@@ -583,7 +564,6 @@
       if (els.moreWrap) els.moreWrap.hidden = true;
       updateCount([], 0);
       buildDashboard();
-      updateGlobalStats();
       return;
     }
 
@@ -620,7 +600,6 @@
     }
 
     updateCount(items, toShow.length);
-    updateGlobalStats();
   }
 
   /* ── 스크롤 감지 및 맨 위로 버튼 ── */
@@ -646,7 +625,6 @@
     buildEraTabs();
     buildExamSelect();
     buildDashboard();
-    updateGlobalStats();
     initScrollTop();
 
     if (els.eraTabs) {
@@ -724,7 +702,6 @@
       if (!window.confirm("지금까지 푼 기록을 모두 지울까요?")) return;
       state.done = {};
       saveDone();
-      updateGlobalStats();
       render();
     });
 

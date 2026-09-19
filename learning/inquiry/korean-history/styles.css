@@ -94,15 +94,6 @@ body {
   padding: 12px 76px 10px;
   text-align: center;
 }
-.header-inner {
-  max-width: 1080px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 28px;
-}
-
 .header-title {
   margin: 0;
   font-size: clamp(1.35rem, 2vw, 1.65rem);
@@ -110,44 +101,6 @@ body {
   letter-spacing: -0.02em;
   color: #ffffff;
   white-space: nowrap;
-}
-
-/* 통계 바 */
-.stats-bar {
-  display: inline-flex;
-  align-items: center;
-  gap: 14px;
-  background: rgba(15, 23, 42, 0.8);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 999px;
-  padding: 5px 18px;
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-}
-.stat-item {
-  display: flex;
-  align-items: baseline;
-  gap: 6px;
-}
-.stat-label {
-  font-size: 0.8rem;
-  color: var(--text-muted);
-  font-weight: 500;
-}
-.stat-num {
-  font-size: 1.08rem;
-  font-weight: 700;
-  color: #ffffff;
-  font-feature-settings: "tnum";
-}
-.stat-num--highlight {
-  color: var(--gold-light);
-}
-.stat-divider {
-  width: 1px;
-  height: 12px;
-  background: rgba(255, 255, 255, 0.15);
 }
 
 /* ── 메인 컨테이너 ── */
@@ -797,8 +750,6 @@ main {
 /* ── 반응형 최적화 ── */
 @media (max-width: 768px) {
   .app-header { padding: 18px 12px 12px; }
-  .header-inner { flex-direction: column; gap: 8px; }
-  .stats-bar { gap: 12px; padding: 6px 16px; }
   .picker { padding: 12px 14px; }
   .picker-label { flex-basis: 100%; margin-bottom: -4px; }
   .picker-row { flex-wrap: wrap; gap: 6px; }
@@ -812,8 +763,6 @@ main {
 
 @media (max-width: 480px) {
   .header-title { font-size: 1.5rem; }
-  .stat-divider { display: none; }
-  .stats-bar { border-radius: var(--radius-md); }
   .era-tabs { gap: 4px; }
   .era-tab { padding: 5px 9px; font-size: 0.82rem; }
   .choices { gap: 5px; }
