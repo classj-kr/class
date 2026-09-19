@@ -19,12 +19,13 @@ assert.ok(
 const koreaMaps = groupByName.get('korea-maps') || '';
 assert.ok(koreaMaps, 'The domestic-map tools must be grouped in one disclosure menu.');
 assert.match(koreaMaps, /<strong>국내 지도<\/strong><small>\(Korea Maps\)<\/small>/);
-assert.match(koreaMaps, /data-content-paths="learning\/inquiry\/korean-museum\/\|learning\/inquiry\/korea-travel-map\/\|learning\/inquiry\/korea-geography\/"/);
+assert.match(koreaMaps, /data-content-paths="learning\/inquiry\/korean-museum\/\|learning\/inquiry\/korea-travel-map\/\|learning\/inquiry\/korea-geography\/\|learning\/inquiry\/korea-terrain\/"/);
 assert.doesNotMatch(koreaMaps, /한국지리 수능|Korean Geography CSAT/);
 for (const [href, label, englishLabel] of [
   ['learning/inquiry/korean-museum/', '유물·유적', 'Artifacts &amp; Sites'],
   ['learning/inquiry/korea-travel-map/', '체험·관광', 'Experiences &amp; Tourism'],
   ['learning/inquiry/korea-geography/', '지리', 'Geography'],
+  ['learning/inquiry/korea-terrain/', '입체 지형', '3D Terrain'],
 ]) {
   assert.match(koreaMaps, new RegExp(`href="${href}"[^>]*data-access-parent="korea-maps"[\\s\\S]*?<strong>${label}<\\/strong><small>\\(${englishLabel}\\)<\\/small>`));
 }
