@@ -10,6 +10,7 @@ import {
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { spawnSync } from "node:child_process";
+import { pruneRenderArtifact } from "./render-prune.mjs";
 
 const SCRIPT_DIR = path.dirname(fileURLToPath(import.meta.url));
 const ARITHMETIC_DIR = path.resolve(SCRIPT_DIR, "../learning/literacy-numeracy/arithmetics");
@@ -134,6 +135,11 @@ function main() {
     "--no-audit",
     "--no-fund",
   ]);
+
+  if (process.env.RENDER === "true") {
+    const { removedBytes, removedTargets } = pruneRenderArtifact();
+    console.log(`[deploy] Removed ${removedTargets} development-only paths (${(removedBytes / 1024 / 1024).toFixed(1)} MB) before upload.`);
+  }
 }
 
 const isDirectRun = process.argv[1]
