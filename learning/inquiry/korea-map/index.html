@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#123c46">
   <title>국내 지도</title>
   <link rel="stylesheet" href="vendor/leaflet/leaflet.css">
-  <link rel="stylesheet" href="styles.css?v=20260919-5">
+  <link rel="stylesheet" href="styles.css?v=20260920-1">
 </head>
 <body>
   <div class="app-shell">
@@ -19,6 +19,7 @@
       <button class="theme-tab" type="button" data-theme="transport" aria-pressed="false"><span>🚆</span> 교통</button>
       <button class="theme-tab" type="button" data-theme="region" aria-pressed="false"><span>🧭</span> 행정구역</button>
       <button class="theme-tab" type="button" data-theme="heritage" aria-pressed="false"><span>🏛️</span> 유물·유적</button>
+      <button class="theme-tab" type="button" data-theme="travel" aria-pressed="false"><span>🎡</span> 체험·관광</button>
     </nav>
 
     <main class="study-layout">
@@ -128,6 +129,33 @@
     </section>
   </dialog>
 
+  <dialog class="place-dialog" id="placeDialog" aria-labelledby="placeName">
+    <button type="button" class="relic-close" id="placeClose" aria-label="장소 설명 닫기">×</button>
+    <section class="place-side">
+      <figure class="place-photo">
+        <img id="placePhoto" alt="" hidden>
+        <span class="place-photo-fallback" id="placePhotoFallback" aria-hidden="true"></span>
+        <figcaption id="placeCredit"></figcaption>
+      </figure>
+      <div class="place-route">
+        <p class="route-ends"><span class="route-dot is-school"></span>우리 학교 <span class="route-arrow" aria-hidden="true">→</span> <span class="route-dot is-place"></span>이곳</p>
+        <p class="route-status" id="routeStatus"></p>
+        <div id="placeRouteMap" aria-label="우리 학교에서 이곳까지 자동차 길"></div>
+      </div>
+    </section>
+    <section class="place-body">
+      <p class="place-region"><span id="placeEmoji" aria-hidden="true"></span> <span id="placeRegion"></span></p>
+      <h2 id="placeName"></h2>
+      <div class="place-badges" id="placeCategories"></div>
+      <a class="place-site" id="placeSite" href="#" target="_blank" rel="noopener noreferrer">공식 누리집 ↗</a>
+      <div class="place-facts" id="placeFacts"></div>
+      <h3>이곳에서는 무엇을 배울까요?</h3>
+      <p id="placeDescription"></p>
+      <h3>관찰 미션</h3>
+      <p class="place-mission" id="placeMission"></p>
+    </section>
+  </dialog>
+
   <dialog class="result-dialog" id="resultDialog" aria-labelledby="resultTitle">
     <div class="result-visual" id="resultVisual">0/0</div>
     <h2 id="resultTitle">연습 완료</h2>
@@ -158,15 +186,17 @@
   </dialog>
 
   <script src="vendor/leaflet/leaflet.js"></script>
-  <script src="data/terrain-data.js?v=20260919-5"></script>
-  <script src="data/borders.js?v=20260919-5"></script>
-  <script src="data/relief-tiles.js?v=20260919-5"></script>
-  <script src="data/geo-data.js?v=20260919-5"></script>
-  <script src="data/questions.js?v=20260919-5"></script>
-  <script src="data/principles.js?v=20260919-5"></script>
-  <script src="data/heritage-data.js?v=20260919-5"></script>
-  <script src="heritage.js?v=20260919-5"></script>
+  <script src="data/terrain-data.js?v=20260920-1"></script>
+  <script src="data/borders.js?v=20260920-1"></script>
+  <script src="data/relief-tiles.js?v=20260920-1"></script>
+  <script src="data/geo-data.js?v=20260920-1"></script>
+  <script src="data/questions.js?v=20260920-1"></script>
+  <script src="data/principles.js?v=20260920-1"></script>
+  <script src="data/heritage-data.js?v=20260920-1"></script>
+  <script src="heritage.js?v=20260920-1"></script>
+  <script src="data/travel-data.js?v=20260920-1"></script>
+  <script src="travel.js?v=20260920-1"></script>
   <script src="climate-graph.js?v=20260906-1"></script>
-  <script src="app.js?v=20260919-5"></script>
+  <script src="app.js?v=20260920-3"></script>
 </body>
 </html>

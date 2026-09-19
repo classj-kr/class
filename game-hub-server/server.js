@@ -320,6 +320,13 @@ app.use(
   "/learning/inquiry/korea-travel-map/images",
   express.static(path.join(SITE_ROOT, "learning", "inquiry", "korea-travel-map", "images"), staticAssetOptions),
 );
+// The Korea map app loads relief/height tiles and photos the same way.
+for (const folder of ["relief", "dem", "heritage", "travel"]) {
+  app.use(
+    `/learning/inquiry/korea-map/${folder}`,
+    express.static(path.join(SITE_ROOT, "learning", "inquiry", "korea-map", folder), staticAssetOptions),
+  );
+}
 const MAX_ROOM_PLAYERS = {
   setgame: 4,
   nimgame: 2,

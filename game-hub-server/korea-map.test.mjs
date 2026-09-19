@@ -25,14 +25,17 @@ const sources = {
   principles: read("data/principles.js"),
   heritageData: read("data/heritage-data.js"),
   heritage: read("heritage.js"),
+  travelData: read("data/travel-data.js"),
+  travel: read("travel.js"),
 };
+const server = fs.readFileSync(new URL("game-hub-server/server.js", root), "utf8");
 const riverData = JSON.parse(read("data/major-rivers.geojson"));
 
 // 화면: 주제 탭은 사회과부도 차례대로, 광고 같은 머리글(kicker) 없이.
-const THEME_KEYS = ["territory", "terrain", "climate", "population", "industry", "transport", "region", "heritage"];
-const TAB_LABELS = ["국토", "지형", "기후", "인구·도시", "산업", "교통", "행정구역", "유물·유적"];
-// 지리 문제은행(questions.js)을 쓰는 주제. 유물·유적은 문제를 그때그때 만든다.
-const BANK_KEYS = THEME_KEYS.filter((key) => key !== "heritage");
+const THEME_KEYS = ["territory", "terrain", "climate", "population", "industry", "transport", "region", "heritage", "travel"];
+const TAB_LABELS = ["국토", "지형", "기후", "인구·도시", "산업", "교통", "행정구역", "유물·유적", "체험·관광"];
+// 지리 문제은행(questions.js)을 쓰는 주제. 유물·유적은 문제를 그때그때 만들고, 체험·관광은 문제가 없다.
+const BANK_KEYS = THEME_KEYS.filter((key) => !["heritage", "travel"].includes(key));
 const tabs = [...html.matchAll(/data-theme="([a-z]+)"[^>]*><span>[^<]*<\/span> ([^<]+)<\/button>/g)].map((match) => [match[1], match[2]]);
 assert.deepEqual(tabs, THEME_KEYS.map((key, index) => [key, TAB_LABELS[index]]));
 assert.match(html, /<title>국내 지도<\/title>/);
@@ -112,7 +115,7 @@ assert.match(styles, /@media \(max-width: 1050px\)[\s\S]*?\.study-layout \{ disp
 assert.match(styles, /\.principle-button \{[^}]*min-height:\s*44px/s);
 
 const sandbox = { window: {}, document: { addEventListener() {} } };
-for (const key of ["terrain", "geo", "questions", "principles", "heritageData", "heritage"]) vm.runInNewContext(sources[key], sandbox);
+for (const key of ["terrain", "geo", "questions", "principles", "heritageData", "heritage", "travelData", "travel"]) vm.runInNewContext(sources[key], sandbox);
 const dataset = sandbox.window.KOREA_GEOGRAPHY;
 assert.deepEqual(Object.keys(dataset.themes), THEME_KEYS);
 assert.deepEqual(THEME_KEYS.map((key) => dataset.themes[key].label), TAB_LABELS);
@@ -203,6 +206,27 @@ for (const question of heritageQuestions) {
 assert.match(app, /theme\.buildQuestions\(\)/);
 assert.match(app, /stimulus\.type === "image"/);
 assert.doesNotMatch(html + sources.heritage, /한능검 실전|GALLERY|찾으시는 유물/);
+
+// 체험·관광: 장소마다 사진이 우리 폴더에 있고, 경로는 우리 서버에 묻고, 학교 이름은 보여 주지 않는다("우리 학교"만).
+const travelData = sandbox.window.KOREA_TRAVEL;
+assert.ok(travelData.places.length >= 300, "체험·관광 장소가 빠졌습니다.");
+assert.equal(new Set(travelData.places.map((place) => place.id)).size, travelData.places.length, "장소 이름표(id)가 겹칩니다.");
+const categoryKeys = new Set(travelData.categories.map((category) => category.key));
+for (const place of travelData.places) {
+  const photo = travelData.photos[place.id];
+  assert.ok(photo && exists(photo.src.replace(/\?.*$/, "")), `${place.name} 사진이 없습니다.`);
+  assert.ok(place.categories.length && place.categories.every((key) => categoryKeys.has(key)), `${place.name} 종류가 잘못되었습니다.`);
+  assert.ok(place.lat > 32 && place.lat < 39.5 && place.lng > 124 && place.lng < 132, `${place.name} 좌표가 경로 계산 범위 밖입니다.`);
+  assert.ok(place.description && place.mission && /^https?:\/\//.test(place.officialUrl), `${place.name} 설명이 불완전합니다.`);
+}
+assert.equal(dataset.themes.travel.practice, false);
+assert.match(sources.travel, /\/api\/travel\/route\?destinationLat=/);
+assert.doesNotMatch(sources.travel, /school\.name|schoolName|\/api\/auth\/me|\/api\/teacher\/profile/, "학교 이름은 첫 화면에만 쓴다.");
+assert.match(html, /우리 학교/);
+assert.match(app, /createBaseMap: \(elementId, options\) => createBaseMap\(elementId, options\)/);
+// 지형 조각과 사진은 로그인 확인 전에 내보낸다(세션이 끊겨도 그림 자리에 로그인 쪽이 오지 않게).
+assert.match(server, /for \(const folder of \["relief", "dem", "heritage", "travel"\]\)[\s\S]*?`\/learning\/inquiry\/korea-map\/\$\{folder\}`/);
+assert.ok(server.indexOf("/learning/inquiry/korea-map/${folder}") < server.indexOf("classroomPlatform.requireSiteAccess)"), "지도 조각은 로그인 확인보다 앞에서 내보내야 합니다.");
 
 assert.ok(exists("tools/build_relief.py") && exists("tools/build_borders.py") && exists("tools/build_dem.py"), "자료를 다시 만드는 도구가 필요합니다.");
 

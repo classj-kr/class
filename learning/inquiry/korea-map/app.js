@@ -11,7 +11,7 @@
   const regionOfProvince = dataset.regionOfProvince || [];
   const borders = window.KOREA_BORDERS || { mdl: [], national: [] };
   const terrainRivers = (window.TERRAIN_DATA && window.TERRAIN_DATA.rivers) || { features: [] };
-  const THEME_ORDER = ["territory", "terrain", "climate", "population", "industry", "transport", "region", "heritage"];
+  const THEME_ORDER = ["territory", "terrain", "climate", "population", "industry", "transport", "region", "heritage", "travel"];
   const KOREA_BOUNDS = L.latLngBounds([[32.95, 123.85], [43.15, 131.35]]);
   // 지형 바탕(tools/build_relief.py): 3~6단은 동아시아 둘레, 7~9단은 한반도 둘레, 10~11단은 남북한 땅에 닿는 칸만 있다.
   const RELIEF_URL = "relief/{z}/{x}/{y}.webp?v=20260919-1";
@@ -59,6 +59,7 @@
     get map() { return mainMap; },
     element: (tag, className, text) => element(tag, className, text),
     setZoomSync: (map, key, handler) => setZoomSync(map, key, handler),
+    createBaseMap: (elementId, options) => createBaseMap(elementId, options),
     refresh() {
       drawThemeOnMap(mainMap, mainThemeLayer, themes[currentTheme], { interactive: true });
       updatePracticeButton();
@@ -318,6 +319,7 @@
     $("#conceptPoints").hidden = !theme.points.length;
     $("#themeExtra").replaceChildren(...(theme.panel ? [theme.panel(themeApi)] : []));
     $("#startMixed").hidden = !!theme.buildQuestions;
+    $(".practice-launch").hidden = theme.practice === false;
     clearFeatureFocus(false);
     stopProfile();
     mainMap.closePopup();
@@ -570,6 +572,7 @@
     clearZoomSync(map, "riverWidth");
     clearZoomSync(map, "markers");
     clearZoomSync(map, "heritage");
+    clearZoomSync(map, "travel");
     group.clearLayers();
     if (theme.draw && map === mainMap && !opts.baseOnly) theme.draw(map, group, themeApi);
     // 문제 지도는 답하기 전에는 바탕(지형·하천)만 그린다. 구역·등온선·교통축이 답을 드러내기 때문이다.
@@ -676,6 +679,9 @@
         else if (group.hasLayer(marker)) group.removeLayer(marker);
       });
       declutter(entries);
+      // 확대·축소 움직임이 끝난 뒤 자리가 조금 바뀌므로 한 번 더 잰다.
+      clearTimeout(entries.declutterTimer);
+      entries.declutterTimer = setTimeout(() => declutter(entries), 120);
     });
   }
 
@@ -692,7 +698,7 @@
     const placed = [];
     nodes.forEach((node, index) => {
       const box = boxes[index];
-      const hit = placed.some((other) => box.left < other.right + 4 && box.right > other.left - 4 && box.top < other.bottom + 2 && box.bottom > other.top - 2);
+      const hit = placed.some((other) => box.left < other.right + 6 && box.right > other.left - 6 && box.top < other.bottom + 3 && box.bottom > other.top - 3);
       if (hit) node.style.visibility = "hidden";
       else placed.push(box);
     });
@@ -1261,7 +1267,7 @@
 
   function fillRecord() {
     const progress = readProgress();
-    const rows = THEME_ORDER.filter((key) => themes[key]).map((key) => {
+    const rows = THEME_ORDER.filter((key) => themes[key] && themes[key].practice !== false).map((key) => {
       const ids = themes[key].questionIds ? themes[key].questionIds() : questions.filter((question) => question.topic === key).map((question) => question.id);
       const stats = ids.reduce((acc, id) => {
         const item = progress.items[id];
