@@ -4520,9 +4520,8 @@ const clueTimeoutTimer = setInterval(() => {
 }, 1000);
 clueTimeoutTimer.unref?.();
 
-classroomPlatform.initialize().finally(() => {
-  server.listen(PORT, "0.0.0.0", () => {
-    console.log(`Classroom Game Hub listening on port ${PORT}`);
-    console.log("Finisher records use the classroom PostgreSQL database.");
-  });
+server.listen(PORT, "0.0.0.0", () => {
+  console.log(`Classroom Game Hub listening on port ${PORT}`);
+  console.log("Finisher records use the classroom PostgreSQL database.");
+  void classroomPlatform.initialize();
 });
