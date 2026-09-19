@@ -287,6 +287,8 @@
             "use strict";
 
             const APP_ORIGIN = "https://joyclass.kr";
+            // classj.kr 로 옮기는 동안에는 두 주소 모두 그대로 연다.
+            const APP_ORIGINS = [APP_ORIGIN, "https://classj.kr"];
             const isLocal = ["localhost", "127.0.0.1"].includes(location.hostname);
             const loginView = document.querySelector("#loginView");
             const loginMessage = document.querySelector("#loginMessage");
@@ -633,7 +635,7 @@
             });
 
             async function start() {
-                if (!isLocal && location.origin !== APP_ORIGIN) {
+                if (!isLocal && !APP_ORIGINS.includes(location.origin)) {
                     location.replace(`${APP_ORIGIN}/admin/`);
                     return;
                 }

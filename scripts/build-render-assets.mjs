@@ -71,7 +71,7 @@ export function buildRenderAssets({ repositoryRoot = REPOSITORY_ROOT, outputDire
     fileCount,
   };
   writeFileSync(path.join(outputDirectory, "__asset-manifest.json"), `${JSON.stringify(manifest)}\n`);
-  writeFileSync(path.join(outputDirectory, "index.html"), "<!doctype html><meta charset=\"utf-8\"><title>JoyClass assets</title><p>JoyClass static assets</p>\n");
+  writeFileSync(path.join(outputDirectory, "index.html"), "<!doctype html><meta charset=\"utf-8\"><title>ClassJ assets</title><p>ClassJ static assets</p>\n");
   return manifest;
 }
 

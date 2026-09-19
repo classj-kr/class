@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Joyclass</title>
+    <title>ClassJ</title>
     <link rel="icon" href="favicon.ico">
-    <meta name="description" content="조이클래스- 기초학력 eBook, 교육행정 업무 지원">
-    <meta property="og:title" content="조이클래스">
-    <meta property="og:site_name" content="조이클래스">
-    <meta property="og:description" content="조이클래스- 기초학력 eBook, 교육행정 업무 지원">
+    <meta name="description" content="클래스제이- 기초학력 eBook, 교육행정 업무 지원">
+    <meta property="og:title" content="클래스제이">
+    <meta property="og:site_name" content="클래스제이">
+    <meta property="og:description" content="클래스제이- 기초학력 eBook, 교육행정 업무 지원">
     <meta property="og:url" content="https://joyclass.kr/">
     <meta property="og:type" content="website">
     <link rel="canonical" href="https://joyclass.kr/">
@@ -16,8 +16,8 @@
         {
             "@context": "https://schema.org",
             "@type": "WebSite",
-            "name": "조이클래스",
-            "alternateName": "Joyclass",
+            "name": "클래스제이",
+            "alternateName": "ClassJ",
             "url": "https://joyclass.kr/"
         }
     </script>
@@ -25,8 +25,8 @@
         {
             "@context": "https://schema.org",
             "@type": "Organization",
-            "name": "조이클래스",
-            "alternateName": "Joyclass",
+            "name": "클래스제이",
+            "alternateName": "ClassJ",
             "url": "https://joyclass.kr/"
         }
     </script>
@@ -1334,9 +1334,11 @@
             'use strict';
 
             const APP_ORIGIN = 'https://joyclass.kr';
+            // classj.kr 로 옮기는 동안에는 두 주소 모두 그대로 연다.
+            const APP_ORIGINS = [APP_ORIGIN, 'https://classj.kr'];
             const KOREAN_NAME_PATTERN = /^[가-힣]{2,6}$/;
             const isLocal = ['localhost', '127.0.0.1', ''].includes(location.hostname) || location.protocol === 'file:';
-            const isRenderApp = location.origin === APP_ORIGIN;
+            const isRenderApp = APP_ORIGINS.includes(location.origin);
             const authTitle = document.getElementById('authTitle');
             const authMessage = document.getElementById('authMessage');
             const authStatus = document.getElementById('authStatus');

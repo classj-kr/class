@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: joyclass
+    name: classj
     runtime: node
     plan: free
     buildCommand: npm --prefix game-hub-server install
@@ -23,7 +23,7 @@ services:
       - key: TEACHER_PIN
         sync: false
   - type: web
-    name: joyclass-assets
+    name: classj-assets
     runtime: static
     buildCommand: node scripts/build-render-assets.mjs
     staticPublishPath: .render-assets

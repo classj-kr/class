@@ -10,7 +10,7 @@ const curriculumSource = fs.readFileSync(path.join(root, "curriculum.js"), "utf8
 const app = fs.readFileSync(path.join(root, "app.js"), "utf8");
 const hub = fs.readFileSync(path.join(__dirname, "..", "index.html"), "utf8");
 
-assert.match(html, /<title>문장 고르기 \| Joyclass<\/title>/);
+assert.match(html, /<title>문장 고르기 \| ClassJ<\/title>/);
 assert.match(html, /2022 개정 국어과 성취기준/);
 assert.doesNotMatch(html, /교육과정 원문|course-intro/);
 assert.match(html, /id="courseScreen"/);
