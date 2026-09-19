@@ -27,12 +27,12 @@ kbd{padding:1px 6px;border:1px solid #aeb8b2;border-bottom-width:2px;border-radi
 
 <section id="steps"><h2>설정 방법</h2><ol class="steps">
 <li><h3>Google 관리 콘솔 접속</h3><p><a href="https://admin.google.com/" target="_blank" rel="noopener">admin.google.com</a>에 <strong>학교 최고 관리자 계정</strong>으로 로그인합니다.</p></li>
-<li><h3>API 제어 메뉴로 이동</h3><p>왼쪽 메뉴에서 <strong>보안</strong> <span class="en">(Security)</span> → <strong>액세스 및 데이터 제어</strong> <span class="en">(Access and data control)</span> → <strong>API 제어</strong> <span class="en">(API controls)</span>를 누릅니다.</p></li>
-<li><h3>타사 앱 관리 화면 열기</h3><p><strong>앱 액세스 제어</strong> <span class="en">(App access control)</span> 항목에서 <kbd>타사 앱 액세스 관리</kbd> <span class="en">(Manage Third-Party App Access)</span>를 누릅니다.</p></li>
+<li><h3>API 관리 메뉴로 이동</h3><p>왼쪽 메뉴에서 <strong>보안</strong> <span class="en">(Security)</span> → <strong>액세스 및 데이터 제어</strong>(또는 액세스 및 데이터 관리) → <strong>API 관리</strong> <span class="en">(또는 API 제어 / API controls)</span>를 누릅니다.</p></li>
+<li><h3>서드 파티 앱 관리 화면 열기</h3><p><strong>앱 액세스 제어</strong> <span class="en">(App access control)</span> 항목에서 <kbd>서드 파티 앱 액세스 관리</kbd> <span class="en">(Manage Third-Party App Access)</span>를 누릅니다.</p></li>
 <li><h3>앱 추가</h3><p><strong>구성된 앱</strong> <span class="en">(Configured apps)</span> 목록 위의 <kbd>앱 추가</kbd> <span class="en">(Add app)</span>를 누르고, <strong>OAuth 앱 이름 또는 클라이언트 ID</strong> <span class="en">(OAuth App Name Or Client ID)</span>를 선택합니다.</p></li>
 <li><h3>클라이언트 ID로 검색 후 선택</h3><ul><li>검색창에 위 <strong>클라이언트 ID 전체</strong>를 붙여넣고 <kbd>검색</kbd> <span class="en">(Search)</span>을 누릅니다. 이름으로 검색하면 비슷한 앱이 섞일 수 있으니 ID로 검색해 주세요.</li><li>결과에 <strong>조이클래스(Joyclass)</strong> 앱이 나오면 <kbd>선택</kbd> <span class="en">(Select)</span>을 누릅니다.</li><li>클라이언트 ID 목록에서 <code>40207792836-p4kh…</code>로 시작하는 ID에 체크하고 <kbd>선택</kbd>을 누릅니다.</li></ul></li>
 <li><h3>적용 대상(조직 단위) 지정</h3><ul><li><strong>모든 학생 허용:</strong> 최상위 조직(학교 도메인 전체) 또는 학생 조직 단위를 선택합니다.</li><li><strong>특정 학년·반만 허용:</strong> 해당 조직 단위(예: <code>학생/6학년</code>)를 선택합니다.</li></ul><p>선택 후 <kbd>계속</kbd> <span class="en">(Continue)</span>을 누릅니다.</p></li>
-<li class="key"><h3>⭐ 액세스 권한: ‘신뢰할 수 있음’ 선택</h3><p><strong>신뢰할 수 있음</strong> <span class="en">(Trusted)</span>을 선택합니다.</p><p>⚠️ <strong>제한됨</strong> <span class="en">(Limited)</span>으로 두면 18세 미만 학생 계정은 로그인이 막힐 수 있습니다.</p><p><kbd>계속</kbd>을 누르고, 검토 화면에서 내용을 확인한 뒤 <kbd>완료</kbd> <span class="en">(Finish)</span>를 누릅니다.</p></li>
+<li class="key"><h3>⭐ 액세스 권한: ‘신뢰할 수 있음’ 선택</h3><p><strong>신뢰할 수 있음</strong> <span class="en">(Trusted)</span>을 선택합니다.</p><p>⚠️ <strong>제한됨</strong> <span class="en">(Limited)</span>으로 두면 18세 미만 학생 계정은 로그인이 막힐 수 있습니다.</p><p>화면 하단의 <kbd>구성</kbd> <span class="en">(Configure)</span> 또는 <kbd>저장</kbd>을 눌러 설정을 완료합니다.</p></li>
 </ol></section>
 
 <section id="check"><h2>확인</h2><ul><li><strong>구성된 앱</strong> 목록에 조이클래스가 추가되고 액세스 권한이 <strong>‘신뢰할 수 있음’</strong>으로 표시되는지 확인합니다.</li><li>설정이 반영되기까지 <strong>보통 몇 분, 길게는 최대 24시간</strong>이 걸릴 수 있습니다.</li><li>학생 계정으로 <a href="/">joyclass.kr</a>에 접속해 Google 로그인이 되는지 확인합니다.</li></ul></section>
@@ -41,7 +41,7 @@ kbd{padding:1px 6px;border:1px solid #aeb8b2;border-bottom-width:2px;border-radi
 <tr><td>클라이언트 ID로 검색해도 앱이 안 나옴</td><td>ID를 앞뒤 공백 없이 <code>.apps.googleusercontent.com</code>까지 전부 붙여넣었는지 확인</td></tr>
 <tr><td>설정했는데도 “관리자가 차단함” 메시지가 뜸</td><td>① 학생 계정이 선택한 조직 단위에 속해 있는지 ② 권한이 ‘신뢰할 수 있음’인지 확인한 뒤 잠시 후 다시 시도</td></tr>
 <tr><td>일부 학생만 로그인이 안 됨</td><td>그 학생이 다른 조직 단위에 있을 가능성이 큽니다. 해당 조직 단위에도 같은 설정을 추가하거나 상위 조직에 적용</td></tr>
-</tbody></table></div><p class="small">그래도 해결되지 않으면 <a href="/support">문의·권리 요청</a>(로그인 필요) 또는 이메일 <a href="mailto:hwasong@korea.kr">hwasong@korea.kr</a>로 알려 주세요.</p></section>
+</tbody></table></div><p class="small">그래도 해결되지 않으면 <a href="/support">문의·권리 요청</a>(로그인 필요)으로 알려 주세요.</p></section>
 
 </div></main><footer><strong><a href="/school-setup">학교 관리자 설정 안내</a></strong> · <a href="/privacy">개인정보 처리방침</a> · <a href="/terms">이용약관</a> · <a href="/support">문의</a></footer>
 <script>
