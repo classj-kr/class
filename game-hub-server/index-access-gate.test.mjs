@@ -127,7 +127,7 @@ const runtime = createRuntime(
     [voyageLink],
     [voyageLink],
     [groupSummary],
-    { location: { href: 'https://joyclass.kr/' } },
+    { location: { href: 'https://classj.kr/' } },
     /^[가-힣]{2,6}$/,
 );
 

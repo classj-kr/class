@@ -22,6 +22,7 @@ const Codenames = require("./codenames");
 const Dobble = require("./dobble");
 const Quizrace = require("./quizrace");
 const { createClassroomPlatform } = require("./classroom-platform");
+const { redirectLegacyHosts } = require("./canonical-host");
 const {
   clientMatchesToken,
   restoreRoom,
@@ -61,6 +62,8 @@ function isSameRequestOrigin(req, origin) {
     return false;
   }
 }
+
+app.use(redirectLegacyHosts);
 
 app.use((req, res, next) => {
   res.setHeader("Content-Security-Policy", "base-uri 'self'; object-src 'none'; frame-ancestors 'self'");

@@ -9,16 +9,16 @@
     <meta property="og:title" content="클래스제이">
     <meta property="og:site_name" content="클래스제이">
     <meta property="og:description" content="클래스제이- 기초학력 eBook, 교육행정 업무 지원">
-    <meta property="og:url" content="https://joyclass.kr/">
+    <meta property="og:url" content="https://classj.kr/">
     <meta property="og:type" content="website">
-    <link rel="canonical" href="https://joyclass.kr/">
+    <link rel="canonical" href="https://classj.kr/">
     <script type="application/ld+json">
         {
             "@context": "https://schema.org",
             "@type": "WebSite",
             "name": "클래스제이",
             "alternateName": "ClassJ",
-            "url": "https://joyclass.kr/"
+            "url": "https://classj.kr/"
         }
     </script>
     <script type="application/ld+json">
@@ -27,7 +27,7 @@
             "@type": "Organization",
             "name": "클래스제이",
             "alternateName": "ClassJ",
-            "url": "https://joyclass.kr/"
+            "url": "https://classj.kr/"
         }
     </script>
     <style>
@@ -1333,12 +1333,10 @@
         (() => {
             'use strict';
 
-            const APP_ORIGIN = 'https://joyclass.kr';
-            // classj.kr 로 옮기는 동안에는 두 주소 모두 그대로 연다.
-            const APP_ORIGINS = [APP_ORIGIN, 'https://classj.kr'];
+            const APP_ORIGIN = 'https://classj.kr';
             const KOREAN_NAME_PATTERN = /^[가-힣]{2,6}$/;
             const isLocal = ['localhost', '127.0.0.1', ''].includes(location.hostname) || location.protocol === 'file:';
-            const isRenderApp = APP_ORIGINS.includes(location.origin);
+            const isRenderApp = location.origin === APP_ORIGIN;
             const authTitle = document.getElementById('authTitle');
             const authMessage = document.getElementById('authMessage');
             const authStatus = document.getElementById('authStatus');
