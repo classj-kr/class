@@ -25,7 +25,7 @@ for (const [href, label, englishLabel] of [
   ['learning/inquiry/korean-museum/', '유물·유적', 'Artifacts &amp; Sites'],
   ['learning/inquiry/korea-travel-map/', '체험·관광', 'Experiences &amp; Tourism'],
   ['learning/inquiry/korea-geography/', '지리', 'Geography'],
-  ['learning/inquiry/korea-terrain/', '입체 지형', '3D Terrain'],
+  ['learning/inquiry/korea-terrain/', '지형도', 'Topographic Map'],
 ]) {
   assert.match(koreaMaps, new RegExp(`href="${href}"[^>]*data-access-parent="korea-maps"[\\s\\S]*?<strong>${label}<\\/strong><small>\\(${englishLabel}\\)<\\/small>`));
 }

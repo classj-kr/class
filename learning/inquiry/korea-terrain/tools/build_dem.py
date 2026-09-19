@@ -1,4 +1,4 @@
-"""한반도 입체 지형용 높이 조각(tiles/{z}/{x}/{y}.webp)을 만든다.
+"""한반도 지형도용 높이 조각(tiles/{z}/{x}/{y}.webp)을 만든다.
 
     pip install tifffile imagecodecs scipy
     python tools/build_dem.py

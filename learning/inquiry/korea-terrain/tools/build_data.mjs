@@ -1,4 +1,4 @@
-// 입체 지형의 이름표·강 자료(data/terrain-data.js)를 만든다.
+// 지형도의 이름표·강 자료(data/terrain-data.js)를 만든다.
 //
 //   node tools/build_data.mjs
 //
