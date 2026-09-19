@@ -768,22 +768,22 @@
     movementAnimationToken += 1;
     movementAnimating = animateMove;
     state = nextState;
-      gameMusicTrack = 0;
-      syncMusic(state.phase);
     actionPending = false;
     placementMode = null;
     trickNode = null;
     if (state.phase === "lobby") {
+      gameMusicTrack = 0;
+      syncMusic(state.phase);
       movementAnimating = false;
       if (lobby.snapshot().started) {
         $("gameScreen").classList.add("hidden");
         $("lobbyScreen").classList.remove("hidden");
         lobby.returnToLobby();
-    syncMusic(state.phase);
       }
       renderTeamSeats();
       return;
     }
+    syncMusic(state.phase);
     if (previousPhase !== "setup" && state.phase === "setup") {
       setupSelection = { gem1: null, gem2: null, undercover: null };
       activeSecret = "gem1";
@@ -814,11 +814,11 @@
   function showAbort({ title, message }) {
     $("abortTitle").textContent = title;
     $("abortMessage").textContent = message;
-    $("bgm").addEventListener("ended", advanceGameMusic);
     $("abortOverlay").classList.remove("hidden");
   }
 
   function init() {
+    $("bgm").addEventListener("ended", advanceGameMusic);
     renderScenery();
     renderLots();
     drawBoard();
