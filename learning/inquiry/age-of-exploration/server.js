@@ -2763,7 +2763,7 @@ function moveWithTerrainCollision(p, deltaX, deltaY) {
       const nx = wrapX(rawX);
       const ny = Math.max(TILE, Math.min(WORLD_PIXEL_H - TILE, rawY));
       const nextTerrain = terrainAtPixel(nx, ny);
-      const allowed = p.mode === 'sea' ? nextTerrain.type === 'sea' : nextTerrain.type !== 'sea';
+      const allowed = p.mode === 'sea' ? nextTerrain.type === 'sea' : nextTerrain.type !== 'sea' && nextTerrain.passable !== false;
       if (!allowed) {
         blockedTerrain = nextTerrain;
         continue;
@@ -2963,7 +2963,8 @@ function movePlayer(p, dt) {
   if (!moved) {
     p.speedKmh = 0;
     if (p.target) { p.target = null; p.route = null; }
-    if (p.mode === 'land' && blockedTerrain?.type === 'sea') setNotice(p, '탐험대는 바다를 건널 수 없습니다. 항구로 돌아가 배를 이용하세요.');
+    if (blockedTerrain?.type === 'ice') setNotice(p, p.mode === 'sea' ? '얼음 바다입니다. 너무 추워 바다가 얼어붙었고, 1520년의 나무배로는 얼음을 뚫고 지나갈 수 없습니다.' : '얼음으로 덮인 땅입니다. 너무 추워 더 나아갈 수 없습니다.');
+    else if (p.mode === 'land' && blockedTerrain?.type === 'sea') setNotice(p, '탐험대는 바다를 건널 수 없습니다. 항구로 돌아가 배를 이용하세요.');
     else if (p.mode === 'sea' && blockedTerrain?.type !== 'sea') setNotice(p, '육지입니다. 가까운 항구를 통해 입항하세요.');
   }
 
@@ -2979,7 +2980,16 @@ function movePlayer(p, dt) {
       ? previousSpeedKmh * 0.55 + instantSpeedKmh * 0.45
       : instantSpeedKmh;
     recordMovement(p, movedPixels);
+    if (p.mode === 'sea') warnNearIce(p);
   }
+}
+
+// 얼음 바다 두 도 앞에서 미리 알린다. 막힌 뒤에야 알면 아이들은 왜 멈췄는지 모른다.
+function warnNearIce(p) {
+  const lat = 90 - (p.y / WORLD_PIXEL_H) * 180;
+  const lon = (wrapX(p.x) / WORLD_PIXEL_W) * 360 - 180;
+  if (lat >= Terrain.iceLimitNorth(lon) - 2) setNotice(p, '바다가 점점 차가워지고 얼음 조각이 떠다닙니다. 조금만 더 가면 바다가 얼어붙어 배가 나아갈 수 없습니다.');
+  else if (lat <= Terrain.iceLimitSouth(lon) + 2) setNotice(p, '남쪽 바다가 얼음처럼 차갑습니다. 조금만 더 가면 얼음 바다라 배가 나아갈 수 없습니다.');
 }
 
 setInterval(() => {

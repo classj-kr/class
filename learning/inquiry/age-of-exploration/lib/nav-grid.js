@@ -16,6 +16,7 @@ function buildNavGrid(terrainTypeAtCell, worldW, worldH) {
   for (let by = 0; by < height; by += 1) {
     for (let bx = 0; bx < width; bx += 1) {
       let seaCount = 0;
+      let blockedCount = 0;
       let tiles = 0;
       for (let ty = 0; ty < BLOCK; ty += 1) {
         for (let tx = 0; tx < BLOCK; tx += 1) {
@@ -23,14 +24,16 @@ function buildNavGrid(terrainTypeAtCell, worldW, worldH) {
           const cy = by * BLOCK + ty;
           if (cx >= worldW || cy >= worldH) continue;
           tiles += 1;
-          if (terrainTypeAtCell(cx, cy) === 'sea') seaCount += 1;
+          const type = terrainTypeAtCell(cx, cy);
+          if (type === 'sea') seaCount += 1;
+          else if (type === 'ice') blockedCount += 1;
         }
       }
       const index = by * width + bx;
       sea[index] = tiles && seaCount === tiles ? 1 : 0;
-      land[index] = tiles && seaCount === 0 ? 1 : 0;
+      land[index] = tiles && seaCount === 0 && blockedCount === 0 ? 1 : 0;
       seaAny[index] = seaCount > 0 ? 1 : 0;
-      landAny[index] = seaCount < tiles ? 1 : 0;
+      landAny[index] = seaCount + blockedCount < tiles ? 1 : 0;
     }
   }
   return { width, height, sea, land, seaAny, landAny, block: BLOCK };

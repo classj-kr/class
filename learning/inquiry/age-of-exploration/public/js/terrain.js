@@ -31,7 +31,8 @@
     forest: '숲·밀림',
     desert: '사막',
     mountain: '산악',
-    highMountain: '고산'
+    highMountain: '고산',
+    ice: '얼음 바다'
   });
 
   const RIVER_FAMILIES = new Set([60, 61, 62, 68, 88, 92, 97]);
@@ -190,16 +191,46 @@
     return neighbors.some(([dx, dy]) => !isLandAt(world, cx + dx, cy + dy));
   }
 
+  // 1520년의 나무배는 북극·남극의 얼음 바다를 지날 수 없었다(북동 항로는 1878년, 북서 항로는 1906년에야 뚫렸다).
+  // 바다는 북위 70도부터 막고, 멕시코 만류로 덜 어는 노르웨이 앞바다만 74도까지 연다.
+  // 시베리아 앞바다 항로가 70~77도를 지나므로 80도에서 막으면 꼼수 항로가 그대로 열린다.
+  // 남쪽은 62도부터 막는다(혼곶 56도·드레이크 해협 58도는 지난다). 땅은 80도부터 얼음이다.
+  const ICE = Object.freeze({ north: 70, northAtlantic: 74, atlanticWest: -45, atlanticEast: 60, south: -62, landNorth: 80 });
+
+  // 얼음 가장자리는 자로 그은 줄이 아니라 들쭉날쭉하다. 경도에 따라 ±0.8도 안에서 부드럽게 흔든다.
+  // 가장 많이 물러나도 북위 71도라, 72도가 넘는 벨로트 해협·타이미르반도 앞바다(북서·북동 항로)는 그대로 막힌다.
+  function iceWobble(lon) {
+    const r = lon * Math.PI / 180;
+    return 0.5 * Math.sin(r * 7) + 0.3 * Math.sin(r * 23 + 1.1);
+  }
+
+  function iceLimitNorth(lon) {
+    return (lon >= ICE.atlanticWest && lon <= ICE.atlanticEast ? ICE.northAtlantic : ICE.north) + iceWobble(lon);
+  }
+
+  function iceLimitSouth(lon) {
+    return ICE.south - iceWobble(lon + 40);
+  }
+
+  function isIceAt(lon, lat, sea) {
+    if (lat <= iceLimitSouth(lon)) return true;
+    return lat >= (sea ? iceLimitNorth(lon) : ICE.landNorth);
+  }
+
+  const ICE_TERRAIN = Object.freeze({ type: 'ice', multiplier: 0, passable: false });
+
   function terrainAtCell(world, cx, cy) {
     cx = wrapCellX(Math.floor(cx));
     cy = Math.floor(cy);
     const value = cellValue(world, cx, cy);
-    if (!isLandAt(world, cx, cy)) return { type: 'sea', multiplier: SPEED.sea, passable: true };
+    const { lon, lat } = lonLat(cx, cy);
+    const land = isLandAt(world, cx, cy);
+    if (isIceAt(lon, lat, !land)) return ICE_TERRAIN;
+    if (!land) return { type: 'sea', multiplier: SPEED.sea, passable: true };
 
     const tileId = value & 0x3fff;
     const family = tileId >> 7;
     const special = (value & 0x8000) !== 0;
-    const { lon, lat } = lonLat(cx, cy);
 
     if (special) return { type: isCoastalLand(world, cx, cy) ? 'coast' : 'plain', multiplier: isCoastalLand(world, cx, cy) ? SPEED.coast : SPEED.plain, passable: true };
     if (RIVER_FAMILIES.has(family)) return { type: 'river', multiplier: SPEED.river, passable: true };
@@ -217,6 +248,6 @@
 
   return Object.freeze({
     WORLD_W, WORLD_H, TILE, WORLD_PIXEL_W, WORLD_PIXEL_H,
-    SPEED, LABEL, HIGH_MOUNTAIN_FAMILIES, NAVIGABLE_SEA_CORRIDORS, wrapCellX, wrapPixelX, cellValue, setNaturalEarthLandMask, navigableSeaCorridorAtCell, terrainAtCell, terrainAtPixel, lonLat
+    SPEED, LABEL, ICE, HIGH_MOUNTAIN_FAMILIES, NAVIGABLE_SEA_CORRIDORS, iceLimitNorth, iceLimitSouth, isIceAt, wrapCellX, wrapPixelX, cellValue, setNaturalEarthLandMask, navigableSeaCorridorAtCell, terrainAtCell, terrainAtPixel, lonLat
   });
 }));

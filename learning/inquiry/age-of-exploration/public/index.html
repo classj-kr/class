@@ -120,7 +120,7 @@ button,input{font:inherit}button{border:1px solid var(--line);background:#17313b
 <div id="discoveryView"><div id="discoveryCard"><h2 id="discoveryName">발견!</h2><div id="discoveryKind"></div><img id="discoveryImage" alt="" hidden><div id="discoveryCredit" hidden></div><div id="discoveryText"></div><div id="discoveryCount"></div><div id="discoveryButtons"><button id="discoveryNext" type="button" hidden>다음 명소</button><button id="discoveryClose" type="button">계속 탐험하기</button></div></div></div><div id="hostBar" class="panel" hidden><span>방번호 <b id="hostCode"></b></span><button id="hostStartBtn" type="button">모두 출발</button></div><div id="transitionOverlay"><div id="transitionCard"><div id="transitionLabel">입항 준비 중</div><div id="transitionBar"><div id="transitionFill"></div></div></div></div><div id="pauseOverlay"><div id="lockTitle">방장이 게임을 잠시 멈췄습니다.</div><span id="lockDetail" style="font-size:14px;font-weight:400">설명을 듣고 다시 시작할 때까지 기다리세요.</span></div>
 <div id="messageWindow" class="panel" aria-live="polite"><div id="messageHeader">항해 안내</div><div id="messageLines"><div class="guideLine system">서버에 접속한 뒤 안내 메시지가 여기에 표시됩니다.</div></div></div>
 <script src="/learn/world-voyage/socket.io/socket.io.js"></script>
-<script src="/learn/world-voyage/js/terrain.js?v=74"></script>
+<script src="/learn/world-voyage/js/terrain.js?v=76"></script>
 <script src="/learn/world-voyage/js/geo-motion.js?v=75"></script>
 <script src="/learn/world-voyage/js/ocean-current.js"></script>
 <script src="/learn/world-voyage/js/wind.js?v=77"></script>
@@ -706,9 +706,10 @@ function movePrediction(dt){
   const step=baseSpeed*mult*fatigueMult*completionMult*windMult*dt;
   let driftEast=0,driftSouth=0;if(mode==='sea'){const flow=CDS95Current.currentAtPixel(ox,oy),alignment=vx*flow.x+vy*flow.y,localTailFactor=Number.isFinite(flow.tailFactor)?flow.tailFactor:CURRENT_TAIL_FACTOR,factor=CDS95Current.movementFactor(alignment,localTailFactor,CURRENT_HEAD_FACTOR,CURRENT_CROSS_FACTOR),driftSpeed=SEA_BASE_SPEED*factor*flow.strength*completionMult;driftEast=flow.x*driftSpeed*dt;driftSouth=flow.y*driftSpeed*dt}
   const delta=CDS95GeoMotion.localDeltaToMap(vx*step+driftEast,vy*step+driftSouth,oy,MAP_H),substeps=Math.max(1,Math.ceil(Math.max(Math.abs(delta.x),Math.abs(delta.y))/(TS*.45))),stepX=delta.x/substeps,stepY=delta.y/substeps;let blocked=null,moved=false;
-  for(let i=0;i<substeps;i++){const px=self.x,py=self.y,tries=[[px+stepX,py+stepY]];if(Math.abs(stepX)>.001&&Math.abs(stepY)>.001)tries.push([px+stepX,py],[px,py+stepY]);let advanced=false;for(const [rx,ry] of tries){const nx=wrapX(rx),ny=Math.max(TS,Math.min(MAP_H-TS,ry)),next=terrainAtPixel(nx,ny),allowed=mode==='sea'?next.type==='sea':next.type!=='sea';if(!allowed){blocked=next;continue}self.x=nx;self.y=ny;advanced=true;moved=true;break}if(!advanced)break}
+  for(let i=0;i<substeps;i++){const px=self.x,py=self.y,tries=[[px+stepX,py+stepY]];if(Math.abs(stepX)>.001&&Math.abs(stepY)>.001)tries.push([px+stepX,py],[px,py+stepY]);let advanced=false;for(const [rx,ry] of tries){const nx=wrapX(rx),ny=Math.max(TS,Math.min(MAP_H-TS,ry)),next=terrainAtPixel(nx,ny),allowed=mode==='sea'?next.type==='sea':next.type!=='sea'&&next.passable!==false;if(!allowed){blocked=next;continue}self.x=nx;self.y=ny;advanced=true;moved=true;break}if(!advanced)break}
   if(moved){self.dir=vectorToDir(vx,vy);return}
-  if(mode==='land'&&blocked?.type==='sea')localBlock('탐험대는 바다로 들어갈 수 없습니다.');
+  if(blocked?.type==='ice')localBlock(mode==='sea'?'얼음 바다입니다. 1520년의 나무배로는 얼음을 뚫고 지나갈 수 없습니다.':'얼음으로 덮인 땅입니다. 너무 추워 더 나아갈 수 없습니다.');
+  else if(mode==='land'&&blocked?.type==='sea')localBlock('탐험대는 바다로 들어갈 수 없습니다.');
 }
 function drawMap(cw,ch){
   ctx.fillStyle='#07141a';ctx.fillRect(0,0,cw,ch);if(!self)return null;
@@ -716,6 +717,7 @@ function drawMap(cw,ch){
   drawNaturalEarthLayer(cw,ch,left,top);
   drawSeaSurface(cw,ch,left,top);
   drawOceanCurrents(cw,ch,left,top);
+  drawIceLayer(cw,ch,left,top);
   drawWindClouds(cw,ch,left,top);
   const stageMarker=activeMission?.kind==='staged'?currentStage():null;
   const marker=stageMarker?{...stageMarker.point,radiusTiles:activeMission.markerMode==='area'?18:(stageMarker.radiusTiles||2.5),label:stageMarker.placeName,mode:stageMarker.mode}:activeMission?.target;
@@ -723,6 +725,29 @@ function drawMap(cw,ch){
   if(showMarker){const mx=(self.x+dxWrap(marker.x,self.x)-left)*zoom,my=(marker.y-top)*zoom;if(mx>-100&&mx<cw+100&&my>-100&&my<ch+100){ctx.save();ctx.strokeStyle=missionProgress?.status==='completed'?'#9fe1b0':'#ffdc79';ctx.fillStyle='#07141acc';ctx.lineWidth=3;ctx.beginPath();ctx.arc(mx,my,Math.max(10,(marker.radiusTiles||2)*TS*zoom),0,Math.PI*2);ctx.stroke();ctx.font='bold 12px "Malgun Gothic"';ctx.textAlign='center';ctx.fillRect(mx-78,my-31,156,19);ctx.fillStyle='#fff3c2';ctx.fillText(marker.label||'학습 지점',mx,my-17);ctx.restore()}}
   drawDiscoveryMarkers(cw,ch,left,top);drawHuntAnimal(cw,ch,left,top);drawCityLabels(cw,ch,left,top);
   return {left,top};
+}
+
+// 얼음 바다(북위 70도, 노르웨이 앞바다 74도, 남위 62도 너머). 1520년의 나무배가 못 가는 곳을 눈으로 보여 준다.
+// 칸마다 지형을 묻는 일이 무거워서, 화면에 들어온 칸만 한 번씩 계산해 둔다.
+let ICE_CELLS=null;
+// 칸 종류를 한 번만 계산해 둔다: 1 기타, 2 얼음, 3 바다.
+function iceCellKind(cx,cy){if(!ICE_CELLS)ICE_CELLS=new Uint8Array(WW*WH);const i=cy*WW+cx;if(!ICE_CELLS[i]){const t=terrainAtPixel(cx*TS+TS/2,cy*TS+TS/2).type;ICE_CELLS[i]=t==='ice'?2:t==='sea'?3:1}return ICE_CELLS[i]}
+function iceHash(cx,cy){let h=(cx*374761393+cy*668265263)|0;h=(h^(h>>>13))*1274126177|0;return (h^(h>>>16))>>>0}
+function drawIceLayer(cw,ch,left,top){
+  if(!world)return;const ICE=UW3Terrain.ICE,rowLat=cy=>90-(cy+.5)/WH*180,BAND=1.6;
+  const cy0=Math.max(0,Math.floor(top/TS)),cy1=Math.min(WH-1,Math.ceil((top+ch/zoom)/TS)),cx0=Math.floor(left/TS),cx1=Math.ceil((left+cw/zoom)/TS),cell=TS*zoom;
+  const floes=[];let any=false;ctx.save();ctx.fillStyle='#e3eef4';ctx.beginPath();
+  for(let cy=cy0;cy<=cy1;cy++){const lat=rowLat(cy);if(lat<ICE.north-1-BAND&&lat>ICE.south+1+BAND)continue;const sy=(cy*TS-top)*zoom;
+    for(let cx=cx0;cx<=cx1;cx++){const wx=((cx%WW)+WW)%WW,kind=iceCellKind(wx,cy),sx=(cx*TS-left)*zoom;
+      if(kind===2){ctx.rect(sx,sy,cell+.6,cell+.6);any=true;continue}
+      if(kind!==3)continue;const lon=wx/WW*360-180,gapN=UW3Terrain.iceLimitNorth(lon)-lat,gapS=lat-UW3Terrain.iceLimitSouth(lon),gap=Math.min(gapN,gapS);
+      if(gap>0&&gap<BAND){const h=iceHash(wx,cy);if(h%100<60*(1-gap/BAND))floes.push([sx+(h%7)/7*cell,sy+((h>>3)%7)/7*cell,cell*(.35+(h%5)/10)])}}}
+  if(any)ctx.fill();
+  // 얼음 위 금과 그늘: 밋밋한 면이 아니라 얼음판으로 보이게
+  if(any&&cell>3){ctx.strokeStyle='rgba(120,160,185,.35)';ctx.lineWidth=1;ctx.beginPath();for(let cy=cy0;cy<=cy1;cy++){const lat=rowLat(cy);if(lat<ICE.north-1&&lat>ICE.south+1)continue;for(let cx=cx0;cx<=cx1;cx++){const wx=((cx%WW)+WW)%WW;if(iceCellKind(wx,cy)!==2)continue;const h=iceHash(wx,cy);if(h%11)continue;const sx=(cx*TS-left)*zoom,sy=(cy*TS-top)*zoom;ctx.moveTo(sx,sy+cell*.3);ctx.lineTo(sx+cell*2.2,sy+cell*.9)}}ctx.stroke()}
+  if(floes.length){ctx.fillStyle='rgba(236,244,248,.92)';ctx.strokeStyle='rgba(110,150,175,.5)';ctx.lineWidth=1;for(const [x,y,r] of floes){ctx.beginPath();ctx.moveTo(x,y-r*.6);ctx.lineTo(x+r*.7,y-r*.2);ctx.lineTo(x+r*.5,y+r*.5);ctx.lineTo(x-r*.4,y+r*.6);ctx.lineTo(x-r*.7,y);ctx.closePath();ctx.fill();ctx.stroke()}}
+  if(any){const lon=((self.x/SPAN)*360+540)%360-180,edgeN=((90-UW3Terrain.iceLimitNorth(lon))/180*MAP_H-top)*zoom,edgeS=((90-UW3Terrain.iceLimitSouth(lon))/180*MAP_H-top)*zoom;ctx.font='bold 14px "Malgun Gothic"';ctx.textAlign='center';ctx.fillStyle='#4f7085';if(edgeN>24&&edgeN<ch)ctx.fillText('얼음 바다 · 1520년의 배로는 갈 수 없음',cw/2,edgeN-12);if(edgeS>0&&edgeS<ch-24)ctx.fillText('얼음 바다 · 1520년의 배로는 갈 수 없음',cw/2,edgeS+24)}
+  ctx.restore();
 }
 
 function drawSeaSurface(cw,ch,left,top,now=performance.now()){

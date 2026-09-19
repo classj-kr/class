@@ -31,7 +31,9 @@ assert.ok(Object.entries(Terrain.SPEED).every(([, speed]) => speed > 0));
 const terrainSource = fs.readFileSync(path.join(__dirname, '..', 'public', 'js', 'terrain.js'), 'utf8');
 const server = fs.readFileSync(path.join(__dirname, '..', 'server.js'), 'utf8');
 const client = fs.readFileSync(path.join(__dirname, '..', 'public', 'index.html'), 'utf8');
-assert.ok(!terrainSource.includes('passable: false'));
+// 산은 모두 지나갈 수 있다. 막는 곳은 얼음 바다(북극·남극) 하나뿐이다(2026-09-20).
+assert.equal((terrainSource.match(/passable: false/g) || []).length, 1);
+assert.match(terrainSource, /ICE_TERRAIN = Object\.freeze\(\{ type: 'ice', multiplier: 0, passable: false \}\)/);
 assert.ok(!server.includes('높은 산맥은 통과할 수 없습니다'));
 assert.ok(!client.includes('높은 산맥은 통과할 수 없습니다'));
 assert.ok(server.includes("nextTerrain.type !== 'sea'"));
