@@ -11,3 +11,6 @@ Thumbs.db
 
 runtime/*
 !runtime/.gitkeep
+
+# 그림·사진 원본(용량이 커서 git에 올리지 않는다. 게임이 쓰는 WebP만 public/assets에 올린다)
+art-source/

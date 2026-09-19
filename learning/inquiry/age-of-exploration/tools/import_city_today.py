@@ -1,4 +1,4 @@
-"""references/city-today 의 도시 오늘날 사진을 게임용 3:2 WebP로 바꿔 public/assets/city-today 에 넣는다.
+"""art-source/city-today 의 도시 오늘날 사진을 게임용 3:2 WebP로 바꿔 public/assets/city-today 에 넣는다.
 
 파일 이름은 original-cities.json 의 artKey 와 같아야 한다(보기: mexico-city.jpg).
 사진은 마음대로 써도 되는 것만 쓴다. 출처와 이용 조건은 credits.json 에 적어 둔다.
@@ -10,7 +10,7 @@ from pathlib import Path
 from PIL import Image, ImageFilter
 
 APP = Path(__file__).resolve().parent.parent
-SOURCE = APP.parents[2] / 'references' / 'city-today'
+SOURCE = APP / 'art-source' / 'city-today'
 TARGET = APP / 'public' / 'assets' / 'city-today'
 SIZE = (1200, 800)
 

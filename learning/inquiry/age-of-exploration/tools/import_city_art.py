@@ -1,4 +1,4 @@
-"""references/city-art 의 도시 그림을 게임용 3:2 WebP로 바꿔 public/assets/cities/1520 에 넣는다."""
+"""art-source/city-art 의 도시 그림을 게임용 3:2 WebP로 바꿔 public/assets/cities/1520 에 넣는다."""
 import json
 import sys
 from pathlib import Path
@@ -6,7 +6,7 @@ from pathlib import Path
 from PIL import Image
 
 APP = Path(__file__).resolve().parent.parent
-SOURCE = APP.parents[2] / 'references' / 'city-art'
+SOURCE = APP / 'art-source' / 'city-art'
 TARGET = APP / 'public' / 'assets' / 'cities' / '1520'
 SIZE = (1200, 800)
 
