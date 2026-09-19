@@ -55,7 +55,7 @@ scholar's cap.
 
 | 파일명 | 장면 |
 |---|---|
-| `images/01-court.webp` | A woodland clearing court where a crowned lion sits on a mossy throne surrounded by animals in medieval dress, one conspicuous empty seat in the front row, autumn light. 〔이 쪽에 실린 글 (1/16) — 그림에 글자는 넣지 마세요. 왼쪽: 숲속 나라의 임금님은 사자 노블이었습니다. 갈기가 금빛으로 빛나는 사자였지요. 해마다 봄이 되면 큰 재판이 열렸습니다. 억울한 일이 있으면 누구나 말할 수 있었지요. 올해도 넓은 풀밭에 짐승들이 모였습니다. 작은 쥐부터 커다란 곰까지 빙 둘러앉았지요. / 오른쪽: 임금님이 이끼 낀 바위에 올라앉았습니다. 자, 할 말이 있는 자는 나오너라. 그런데 딱 한 자리가 비어 있었지요. 앞줄 가운데 자리였습니다.〕 |
+| `images/01-court.webp` | A woodland clearing court where a crowned lion sits on a mossy throne surrounded by animals in medieval dress, one conspicuous empty seat in the front row, autumn light. 〔이 쪽에 실린 글 (1/16) — 그림에 글자는 넣지 마세요. 왼쪽: 숲속 나라의 임금님은 사자 노블이었습니다. 갈기가 금빛으로 빛나는 사자였지요. 해마다 가을이 되면 큰 재판이 열렸습니다. 억울한 일이 있으면 누구나 말할 수 있었지요. 올해도 넓은 풀밭에 짐승들이 모였습니다. 작은 쥐부터 커다란 곰까지 빙 둘러앉았지요. / 오른쪽: 임금님이 이끼 낀 바위에 올라앉았습니다. 자, 할 말이 있는 자는 나오너라. 그런데 딱 한 자리가 비어 있었지요. 앞줄 가운데 자리였습니다.〕 |
 | `images/01-court-2.webp` | An angry grey wolf in a dented helmet standing to accuse before a lion king in a woodland court, animals murmuring around, comic and lively. 〔이 쪽에 실린 글 (2/16) — 그림에 글자는 넣지 마세요. 왼쪽: 늑대 이젠그림이 벌떡 일어났습니다. 찌그러진 투구를 쓴 늑대였지요. 임금님, 제 말씀부터 들어 주십시오. 저 여우가 제 집 닭을 다 물어 갔습니다! / 오른쪽: 제 새끼들 앞에서 저를 놀리기까지 했지요. 짐승들이 웅성거렸습니다. 임금님은 턱을 쓰다듬었지요. 흠, 또 그 여우로군.〕 |
 
 ## 2장 · 쏟아지는 고발
