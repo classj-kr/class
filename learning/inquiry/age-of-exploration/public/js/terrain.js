@@ -196,7 +196,13 @@
   // 시베리아 앞바다 항로가 70~77도를 지나므로 80도에서 막으면 꼼수 항로가 그대로 열린다.
   // 남쪽은 62도부터 막는다(혼곶 56도·드레이크 해협 58도는 지난다). 땅은 80도부터 얼음이다.
   // 노르웨이 앞바다(서경 35도~동경 50도)는 74도, 그 밖은 70도. 사이 15도는 부드럽게 이어 얼음 벽처럼 꺾이지 않게 한다.
-  const ICE = Object.freeze({ north: 70, northAtlantic: 74, rampWest: -50, fullWest: -35, fullEast: 50, rampEast: 65, south: -62, landNorth: 80 });
+  // 얼음은 계절에 따라 움직인다. 아래 값은 가장 많이 녹는 한여름 기준이고(지형이 늘 'ice'인 곳),
+  // 그보다 남쪽은 겨울에만 어는 바다라 계절에 따라 막았다 열었다 한다.
+  // 여름에도 북극을 가로지르는 길(타이미르반도 앞 77.7도, 캐나다 북쪽 섬 사이)은 막힌 채로 둔다.
+  const ICE = Object.freeze({ north: 71.5, northAtlantic: 80, rampWest: -50, fullWest: -35, fullEast: 50, rampEast: 65, south: -65, landNorth: 80 });
+  // 겨울에 가장 많이 어는 때의 경계와, 얼음이 가장 많은 날·가장 적은 날(북극은 3월 중순·9월 중순, 남극은 그 반대).
+  const ICE_WINTER = Object.freeze({ north: 65, northAtlantic: 72, south: -60 });
+  const ICE_DAYS = Object.freeze({ northMaxIce: 74, southMaxIce: 263 });
 
   // 얼음 가장자리는 자로 그은 줄이 아니라 들쭉날쭉하다. 경도에 따라 ±0.8도 안에서 부드럽게 흔든다.
   // 가장 많이 물러나도 북위 71도라, 72도가 넘는 벨로트 해협·타이미르반도 앞바다(북서·북동 항로)는 그대로 막힌다.
@@ -223,6 +229,38 @@
   function isIceAt(lon, lat, sea) {
     if (lat <= iceLimitSouth(lon)) return true;
     return lat >= (sea ? iceLimitNorth(lon) : ICE.landNorth);
+  }
+
+  // 게임 날짜(1520년 1월 1일부터 흐른 분)를 그해의 며칠째인지로 바꾼다.
+  function dayOfYear(gameMinutes) {
+    const date = new Date(Date.UTC(1520, 0, 1) + Math.max(0, Number(gameMinutes) || 0) * 60000);
+    return (Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate()) - Date.UTC(date.getUTCFullYear(), 0, 1)) / 86400000 + 1;
+  }
+
+  // 얼음이 가장 많은 날 0, 가장 적은 날 1. 봄가을에는 그 사이 값으로 천천히 움직인다.
+  function seasonOpenness(day, maxIceDay) {
+    const t = (((Number(day) || 0) - maxIceDay) % 365 + 365) % 365;
+    return (1 - Math.cos(2 * Math.PI * t / 365)) / 2;
+  }
+
+  function iceLimitNorthAt(lon, day) {
+    if (!Number.isFinite(day)) return iceLimitNorth(lon);
+    const weight = atlanticWeight(lon);
+    const winter = ICE_WINTER.north + (ICE_WINTER.northAtlantic - ICE_WINTER.north) * weight;
+    const summer = ICE.north + (ICE.northAtlantic - ICE.north) * weight;
+    return winter + (summer - winter) * seasonOpenness(day, ICE_DAYS.northMaxIce) + iceWobble(lon);
+  }
+
+  function iceLimitSouthAt(lon, day) {
+    if (!Number.isFinite(day)) return iceLimitSouth(lon);
+    const open = seasonOpenness(day, ICE_DAYS.southMaxIce);
+    return ICE_WINTER.south + (ICE.south - ICE_WINTER.south) * open - iceWobble(lon + 40);
+  }
+
+  // 그날 그 자리가 얼어 있는가. 뭍은 계절과 상관없이 80도부터 얼음이다.
+  function isIceAtDay(lon, lat, sea, day) {
+    if (!sea) return lat >= ICE.landNorth || lat <= iceLimitSouthAt(lon, day);
+    return lat >= iceLimitNorthAt(lon, day) || lat <= iceLimitSouthAt(lon, day);
   }
 
   const ICE_TERRAIN = Object.freeze({ type: 'ice', multiplier: 0, passable: false });
@@ -256,6 +294,6 @@
 
   return Object.freeze({
     WORLD_W, WORLD_H, TILE, WORLD_PIXEL_W, WORLD_PIXEL_H,
-    SPEED, LABEL, ICE, HIGH_MOUNTAIN_FAMILIES, NAVIGABLE_SEA_CORRIDORS, iceLimitNorth, iceLimitSouth, isIceAt, wrapCellX, wrapPixelX, cellValue, setNaturalEarthLandMask, navigableSeaCorridorAtCell, terrainAtCell, terrainAtPixel, lonLat
+    SPEED, LABEL, ICE, ICE_WINTER, ICE_DAYS, HIGH_MOUNTAIN_FAMILIES, NAVIGABLE_SEA_CORRIDORS, iceLimitNorth, iceLimitSouth, isIceAt, iceLimitNorthAt, iceLimitSouthAt, isIceAtDay, dayOfYear, seasonOpenness, wrapCellX, wrapPixelX, cellValue, setNaturalEarthLandMask, navigableSeaCorridorAtCell, terrainAtCell, terrainAtPixel, lonLat
   });
 }));

@@ -16,16 +16,40 @@ Terrain.setNaturalEarthLandMask(new Uint8Array(maskBuffer.buffer, maskBuffer.byt
 const cellOf = (lat, lon) => [Math.floor((lon + 180) / 360 * Terrain.WORLD_W), Math.floor((90 - lat) / 180 * Terrain.WORLD_H)];
 const typeAt = (lat, lon) => Terrain.terrainAtCell(world, ...cellOf(lat, lon)).type;
 
-// 얼음이어야 하는 곳
-for (const [name, lat, lon] of [['바렌츠해 북쪽', 76, 40], ['척치해', 71.5, -165], ['보퍼트해', 71, -140], ['랍테프해', 76, 125], ['배핀만 북쪽', 74, -65], ['웨들해', -70, -40], ['북극점 둘레', 88, 0]]) {
-  assert.equal(typeAt(lat, lon), 'ice', `${name}은 얼음 바다여야 함`);
+// 한여름에도 얼어 있는 곳(지형에 박아 둔 얼음)
+for (const [name, lat, lon] of [['랍테프해', 78, 125], ['타이미르반도 앞', 78, 100], ['척치해 북쪽', 72.5, -165], ['배핀만 북쪽', 74, -65], ['웨들해', -70, -40], ['북극점 둘레', 88, 0]]) {
+  assert.equal(typeAt(lat, lon), 'ice', `${name}은 한여름에도 얼음이어야 함`);
 }
-// 열려 있어야 하는 곳(발견 지점·항로)
-for (const [name, lat, lon] of [['노르카프 앞바다', 71.3, 25.8], ['로포텐 앞바다', 68.2, 12.5], ['베링 해협', 65.8, -169], ['드레이크 해협', -58, -65], ['혼곶 앞바다', -56.3, -67.3], ['덴마크 해협', 66, -26], ['백해', 65.5, 36]]) {
+// 여름이면 배가 갈 수 있는 곳(지형은 바다, 계절로만 막힌다)
+for (const [name, lat, lon] of [['바렌츠해 76도', 76, 40], ['노르카프 앞바다', 71.3, 25.8], ['베링 해협', 65.8, -169], ['백해', 65.5, 36], ['드레이크 해협', -58, -65], ['혼곶 앞바다', -56.3, -67.3], ['덴마크 해협', 66, -26]]) {
   assert.equal(typeAt(lat, lon), 'sea', `${name}은 배가 지나야 함`);
 }
-const ice = Terrain.terrainAtCell(world, ...cellOf(80, 0));
+const ice = Terrain.terrainAtCell(world, ...cellOf(82, 0));
 assert.equal(ice.passable, false, '얼음은 지나갈 수 없음');
+
+// 계절: 한여름(9월 중순)에는 열리고 한겨울(3월 중순)에는 언다.
+const SUMMER = 256;
+const WINTER = 74;
+const frozen = (lat, lon, day) => Terrain.isIceAtDay(lon, lat, true, day);
+// 백해처럼 안쪽으로 파고든 만은 실제로 겨울에 얼지만, 위도 띠로 가르는 지금 방식으로는 담지 못한다.
+for (const [name, lat, lon] of [['바렌츠해 76도', 76, 40], ['베링 해협', 65.8, -169]]) {
+  assert.equal(frozen(lat, lon, SUMMER), false, `${name}은 한여름에는 열려야 함`);
+  assert.equal(frozen(lat, lon, WINTER), true, `${name}은 한겨울에는 얼어야 함`);
+}
+for (const [name, lat, lon] of [['노르카프 앞바다', 71.3, 25.8], ['드레이크 해협', -58, -65], ['리스본 앞바다', 38.7, -9.5]]) {
+  assert.equal(frozen(lat, lon, SUMMER), false, `${name}은 한여름에 열려 있어야 함`);
+  assert.equal(frozen(lat, lon, WINTER), false, `${name}은 한겨울에도 열려 있어야 함`);
+}
+// 스발바르 앞바다는 한여름에만 갈 수 있다(바렌츠가 1596년에 여름에 80도까지 갔다).
+assert.equal(frozen(79, 15, SUMMER), false, '스발바르 앞바다는 한여름에는 열려야 함');
+assert.equal(frozen(79, 15, WINTER), true, '스발바르 앞바다는 한겨울에는 얼어야 함');
+// 여름 경계가 겨울 경계보다 북쪽이어야 한다(봄가을은 그 사이).
+for (const lon of [-160, -60, 0, 30, 90, 150]) {
+  assert.ok(Terrain.iceLimitNorthAt(lon, SUMMER) > Terrain.iceLimitNorthAt(lon, WINTER) + 3, `경도 ${lon}: 여름이 겨울보다 많이 녹아야 함`);
+  assert.ok(Terrain.iceLimitSouthAt(lon, 51) < Terrain.iceLimitSouthAt(lon, 263) - 3, `경도 ${lon}: 남극도 여름에 더 녹아야 함`);
+}
+assert.equal(Math.round(Terrain.dayOfYear(0)), 1, '1520년 1월 1일은 1일째');
+assert.equal(Math.round(Terrain.dayOfYear(366 * 24 * 60)), 1, '한 해 뒤도 1일째(1520년은 윤년)');
 
 const grid = NavGrid.buildNavGrid((cx, cy) => Terrain.terrainAtCell(world, cx, cy).type, Terrain.WORLD_W, Terrain.WORLD_H);
 const route = (a, b) => {
@@ -46,8 +70,11 @@ assert.ok(!northwest || Math.min(...northwest.map((index) => 90 - (Math.floor(in
 const server = fs.readFileSync(path.join(root, 'server.js'), 'utf8');
 assert.match(server, /blockedTerrain\?\.type === 'ice'/, '얼음에 막히면 알려야 함');
 assert.match(server, /function warnNearIce/, '얼음 앞에서 미리 알려야 함');
+assert.match(server, /function seasonalIceAt/, '계절 얼음을 서버가 막아야 함');
+assert.match(server, /얼음이 녹는 여름을 기다리거나/, '계절 얼음에 막히면 까닭을 알려야 함');
 const page = fs.readFileSync(path.join(root, 'public', 'index.html'), 'utf8');
 assert.match(page, /function drawIceLayer/, '학생 지도에 얼음을 그려야 함');
-assert.match(page, /terrain\.js\?v=77/, '지형 파일 버전을 올려야 함');
+assert.match(page, /isIceAtDay/, '학생 화면도 계절 얼음을 그려야 함');
+assert.match(page, /terrain\.js\?v=78/, '지형 파일 버전을 올려야 함');
 
 console.log(`v84 polar ice unit ok · 북동 항로 우회 최북 ${maxLat.toFixed(1)}° · 최남 ${minLat.toFixed(1)}°`);

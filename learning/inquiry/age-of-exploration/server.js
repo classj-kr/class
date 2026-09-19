@@ -2744,6 +2744,8 @@ function updateMissionProgress(roomCode, p) {
 }
 
 function moveWithTerrainCollision(p, deltaX, deltaY) {
+  const seasonDay = p.mode === 'sea' ? seasonDayFor(p) : null;
+  const trappedLat = seasonDay === null ? null : seasonalIceAt(p.x, p.y, seasonDay);
   const maxSubstep = TILE * 0.45;
   const substeps = Math.max(1, Math.ceil(Math.max(Math.abs(deltaX), Math.abs(deltaY)) / maxSubstep));
   const stepX = deltaX / substeps;
@@ -2763,9 +2765,17 @@ function moveWithTerrainCollision(p, deltaX, deltaY) {
       const nx = wrapX(rawX);
       const ny = Math.max(TILE, Math.min(WORLD_PIXEL_H - TILE, rawY));
       const nextTerrain = terrainAtPixel(nx, ny);
-      const allowed = p.mode === 'sea' ? nextTerrain.type === 'sea' : nextTerrain.type !== 'sea' && nextTerrain.passable !== false;
+      let allowed = p.mode === 'sea' ? nextTerrain.type === 'sea' : nextTerrain.type !== 'sea' && nextTerrain.passable !== false;
+      if (allowed && seasonDay !== null) {
+        const frozenLat = seasonalIceAt(nx, ny, seasonDay);
+        // 얼음이 내려와 배를 가둔 때에는 적도 쪽으로 빠져나가는 것만 허용한다.
+        if (frozenLat !== null && !(trappedLat !== null && Math.abs(frozenLat) < Math.abs(trappedLat))) {
+          allowed = false;
+          blockedTerrain = { type: 'seasonIce', season: true };
+        }
+      }
       if (!allowed) {
-        blockedTerrain = nextTerrain;
+        blockedTerrain = blockedTerrain || nextTerrain;
         continue;
       }
       p.x = nx;
@@ -2963,6 +2973,7 @@ function movePlayer(p, dt) {
   if (!moved) {
     p.speedKmh = 0;
     if (p.target) { p.target = null; p.route = null; }
+    if (blockedTerrain?.type === 'seasonIce') setNotice(p, '이 계절에는 바다가 얼어붙었습니다. 얼음이 녹는 여름을 기다리거나 남쪽으로 돌아가세요.');
     if (blockedTerrain?.type === 'ice') setNotice(p, p.mode === 'sea' ? '얼음 바다입니다. 너무 추워 바다가 얼어붙었고, 1520년의 나무배로는 얼음을 뚫고 지나갈 수 없습니다.' : '얼음으로 덮인 땅입니다. 너무 추워 더 나아갈 수 없습니다.');
     else if (p.mode === 'land' && blockedTerrain?.type === 'sea') setNotice(p, '탐험대는 바다를 건널 수 없습니다. 항구로 돌아가 배를 이용하세요.');
     else if (p.mode === 'sea' && blockedTerrain?.type !== 'sea') setNotice(p, '육지입니다. 가까운 항구를 통해 입항하세요.');
@@ -2984,12 +2995,25 @@ function movePlayer(p, dt) {
   }
 }
 
+// 계절에 따라 얼었다 녹는 바다. 여름에는 스발바르 앞바다(북위 80도)까지 열리고, 겨울에는 베링 해협까지 언다.
+// 지형(terrain)에 박아 둔 얼음은 한여름에도 얼어 있는 곳이라, 그 사이 바다를 여기서 날짜로 가른다.
+function seasonDayFor(p) {
+  return Terrain.dayOfYear(classGameMinutes(p.roomCode));
+}
+
+function seasonalIceAt(x, y, day) {
+  const lat = 90 - (y / WORLD_PIXEL_H) * 180;
+  const lon = (wrapX(x) / WORLD_PIXEL_W) * 360 - 180;
+  return Terrain.isIceAtDay(lon, lat, true, day) ? lat : null;
+}
+
 // 얼음 바다 두 도 앞에서 미리 알린다. 막힌 뒤에야 알면 아이들은 왜 멈췄는지 모른다.
 function warnNearIce(p) {
   const lat = 90 - (p.y / WORLD_PIXEL_H) * 180;
   const lon = (wrapX(p.x) / WORLD_PIXEL_W) * 360 - 180;
-  if (lat >= Terrain.iceLimitNorth(lon) - 2) setNotice(p, '바다가 점점 차가워지고 얼음 조각이 떠다닙니다. 조금만 더 가면 바다가 얼어붙어 배가 나아갈 수 없습니다.');
-  else if (lat <= Terrain.iceLimitSouth(lon) + 2) setNotice(p, '남쪽 바다가 얼음처럼 차갑습니다. 조금만 더 가면 얼음 바다라 배가 나아갈 수 없습니다.');
+  const day = seasonDayFor(p);
+  if (lat >= Terrain.iceLimitNorthAt(lon, day) - 2) setNotice(p, '바다가 점점 차가워지고 얼음 조각이 떠다닙니다. 조금만 더 가면 바다가 얼어붙어 배가 나아갈 수 없습니다.');
+  else if (lat <= Terrain.iceLimitSouthAt(lon, day) + 2) setNotice(p, '남쪽 바다가 얼음처럼 차갑습니다. 조금만 더 가면 얼음 바다라 배가 나아갈 수 없습니다.');
 }
 
 setInterval(() => {
