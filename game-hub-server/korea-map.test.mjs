@@ -50,6 +50,7 @@ assert.match(html, /id="principleGuide"/);
 assert.doesNotMatch(html, /출제 기준|source-guide/);
 // 뒤로 가기는 사이트 공통 단추 하나만. 앱이 따로 두지 않고, 탭 줄 왼쪽에 그 자리를 비운다.
 assert.doesNotMatch(html, /map-back|학습 메뉴로 돌아가기/);
+assert.match(html, /<h1 class="visually-hidden" id="conceptTitle"><\/h1>/);
 assert.match(styles, /\.theme-tabs \{[^}]*padding: 6px 12px 6px 58px/);
 assert.doesNotMatch(sources.heritage + sources.travel, /summary:|title: "(유물·유적으로 보는 한국사|전국 체험학습 장소)"/);
 assert.doesNotMatch(sources.heritage, /삼국 시대"|통일 신라·발해/);
@@ -179,7 +180,7 @@ assert.ok(exists("tools/build_regions.mjs"));
 assert.equal(riverData.features.length, 12, "한반도 주요 하천 중심선 자료가 완전해야 합니다.");
 
 for (const [themeKey, theme] of Object.entries(dataset.themes).filter(([key]) => BANK_KEYS.includes(key))) {
-  assert.ok(theme.title && !theme.summary && Array.isArray(theme.points) && theme.points.length, `${themeKey} 개념 설명이 불완전합니다(제목 밑 설명 문장은 두지 않는다).`);
+  assert.ok(!theme.title && !theme.summary && Array.isArray(theme.points) && theme.points.length, `${themeKey}: 요점은 있고, 탭 이름을 되풀이하는 제목·설명 문장은 없어야 합니다.`);
   assert.ok(Array.isArray(theme.features) && theme.features.length, `${themeKey} 필수 지점이 없습니다.`);
   assert.ok(Array.isArray(theme.principles) && theme.principles.length, `${themeKey} 핵심 원리가 없습니다.`);
   for (const principle of theme.principles) {

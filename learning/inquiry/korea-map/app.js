@@ -325,8 +325,8 @@
       }
     });
     if ((location.hash || "").replace("#", "") !== themeKey) history.replaceState(null, "", `#${themeKey}`);
-    $("#conceptTitle").textContent = theme.title || "";
-    $("#conceptTitle").hidden = !theme.title;
+    // 제목은 탭 이름으로 이미 보이므로 화면에는 그리지 않고, 화면 읽기 프로그램에만 탭 이름을 알린다.
+    $("#conceptTitle").textContent = theme.label;
     $("#conceptPoints").replaceChildren(...theme.points.map((text) => element("div", "concept-point", text)));
     $("#conceptPoints").hidden = !theme.points.length;
     $("#themeExtra").replaceChildren(...(theme.panel ? [theme.panel(themeApi)] : []));
