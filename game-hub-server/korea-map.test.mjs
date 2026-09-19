@@ -23,12 +23,16 @@ const sources = {
   geo: read("data/geo-data.js"),
   questions: read("data/questions.js"),
   principles: read("data/principles.js"),
+  heritageData: read("data/heritage-data.js"),
+  heritage: read("heritage.js"),
 };
 const riverData = JSON.parse(read("data/major-rivers.geojson"));
 
 // 화면: 주제 탭은 사회과부도 차례대로, 광고 같은 머리글(kicker) 없이.
-const THEME_KEYS = ["territory", "terrain", "climate", "population", "industry", "transport", "region"];
-const TAB_LABELS = ["국토", "지형", "기후", "인구·도시", "산업", "교통", "행정구역"];
+const THEME_KEYS = ["territory", "terrain", "climate", "population", "industry", "transport", "region", "heritage"];
+const TAB_LABELS = ["국토", "지형", "기후", "인구·도시", "산업", "교통", "행정구역", "유물·유적"];
+// 지리 문제은행(questions.js)을 쓰는 주제. 유물·유적은 문제를 그때그때 만든다.
+const BANK_KEYS = THEME_KEYS.filter((key) => key !== "heritage");
 const tabs = [...html.matchAll(/data-theme="([a-z]+)"[^>]*><span>[^<]*<\/span> ([^<]+)<\/button>/g)].map((match) => [match[1], match[2]]);
 assert.deepEqual(tabs, THEME_KEYS.map((key, index) => [key, TAB_LABELS[index]]));
 assert.match(html, /<title>국내 지도<\/title>/);
@@ -107,8 +111,8 @@ assert.match(app, /const PROGRESS_KEY = "joyclass-korea-geography-progress-v2"/)
 assert.match(styles, /@media \(max-width: 1050px\)[\s\S]*?\.study-layout \{ display: flex; flex-direction: column; \}/);
 assert.match(styles, /\.principle-button \{[^}]*min-height:\s*44px/s);
 
-const sandbox = { window: {} };
-for (const key of ["terrain", "geo", "questions", "principles"]) vm.runInNewContext(sources[key], sandbox);
+const sandbox = { window: {}, document: { addEventListener() {} } };
+for (const key of ["terrain", "geo", "questions", "principles", "heritageData", "heritage"]) vm.runInNewContext(sources[key], sandbox);
 const dataset = sandbox.window.KOREA_GEOGRAPHY;
 assert.deepEqual(Object.keys(dataset.themes), THEME_KEYS);
 assert.deepEqual(THEME_KEYS.map((key) => dataset.themes[key].label), TAB_LABELS);
@@ -128,7 +132,7 @@ assert.ok(terrain.annotations.filter((item) => item.note).length >= 53, "지형 
 
 assert.equal(riverData.features.length, 12, "한반도 주요 하천 중심선 자료가 완전해야 합니다.");
 
-for (const [themeKey, theme] of Object.entries(dataset.themes)) {
+for (const [themeKey, theme] of Object.entries(dataset.themes).filter(([key]) => BANK_KEYS.includes(key))) {
   assert.ok(theme.title && theme.summary && Array.isArray(theme.points) && theme.points.length, `${themeKey} 개념 설명이 불완전합니다.`);
   assert.ok(Array.isArray(theme.features) && theme.features.length, `${themeKey} 필수 지점이 없습니다.`);
   assert.ok(Array.isArray(theme.principles) && theme.principles.length, `${themeKey} 핵심 원리가 없습니다.`);
@@ -144,7 +148,7 @@ const stimulusTypes = new Set();
 for (const question of dataset.questions) {
   assert.ok(!ids.has(question.id), `중복 문항 ID: ${question.id}`);
   ids.add(question.id);
-  assert.ok(THEME_KEYS.includes(question.topic), `${question.id}의 주제가 잘못되었습니다.`);
+  assert.ok(BANK_KEYS.includes(question.topic), `${question.id}의 주제가 잘못되었습니다.`);
   assert.ok(["basic", "advanced"].includes(question.difficulty), `${question.id}의 난이도가 잘못되었습니다.`);
   assert.ok(question.prompt && question.hint, `${question.id}의 발문 또는 단서가 없습니다.`);
   assert.equal(question.options.length, 5, `${question.id}는 5지선다여야 합니다.`);
@@ -159,7 +163,7 @@ for (const question of dataset.questions) {
     stimulusTypes.add(question.stimulus.type);
   }
 }
-for (const topic of THEME_KEYS) {
+for (const topic of BANK_KEYS) {
   assert.ok(dataset.questions.some((question) => question.topic === topic), `${topic}의 문항이 없습니다.`);
 }
 for (const type of ["table", "bars", "pyramid"]) assert.ok(stimulusTypes.has(type), `${type} 자료 해석 문항이 필요합니다.`);
@@ -177,6 +181,28 @@ for (const [topic, patterns] of Object.entries(essentialCoverage)) {
   const corpus = JSON.stringify({ theme: dataset.themes[topic], questions: dataset.questions.filter((question) => question.topic === topic) });
   for (const pattern of patterns) assert.match(corpus, pattern, `${topic} 필수 개념 ${pattern}이 빠졌습니다.`);
 }
+
+// 유물·유적: 사진은 우리 폴더에, 핀은 지형 바탕이 깔린 곳(동경 90~180, 북위 0~66.5)에, 문제는 유물마다 하나.
+const relics = sandbox.window.KOREAN_MUSEUM_DATA.relicsMaster;
+assert.ok(relics.length >= 60, "유물·유적이 빠졌습니다.");
+for (const relic of relics) {
+  const image = sandbox.window.KOREAN_MUSEUM_DATA.makeArtifactTextureSVG(relic.id).replace(/\?.*$/, "");
+  assert.ok(exists(image), `${relic.title} 사진(${image})이 없습니다.`);
+  assert.ok(relic.lng > 90 && relic.lng < 180 && relic.lat > 0 && relic.lat < 66.5, `${relic.title} 핀이 지도 바탕 밖에 있습니다.`);
+}
+const heritage = dataset.themes.heritage;
+assert.ok(heritage.draw && heritage.panel && heritage.buildQuestions, "유물·유적 탭이 지도·옆 칸·문제를 모두 갖춰야 합니다.");
+const heritageQuestions = heritage.buildQuestions("all");
+assert.equal(heritageQuestions.length, relics.length, "한 판은 고른 시대의 유물 전부여야 합니다.");
+assert.deepEqual(new Set(heritageQuestions.map((question) => question.id)), new Set(heritage.questionIds()));
+for (const question of heritageQuestions) {
+  assert.ok(question.prompt && question.hint && question.explanation, `${question.id} 문항이 불완전합니다.`);
+  assert.ok(question.options.length >= 4 && new Set(question.options).size === question.options.length, `${question.id} 보기가 모자라거나 겹칩니다.`);
+  assert.ok(question.focus && Number.isFinite(question.focus.lat), `${question.id}에 답한 뒤 보여 줄 자리가 없습니다.`);
+}
+assert.match(app, /theme\.buildQuestions\(\)/);
+assert.match(app, /stimulus\.type === "image"/);
+assert.doesNotMatch(html + sources.heritage, /한능검 실전|GALLERY|찾으시는 유물/);
 
 assert.ok(exists("tools/build_relief.py") && exists("tools/build_borders.py") && exists("tools/build_dem.py"), "자료를 다시 만드는 도구가 필요합니다.");
 

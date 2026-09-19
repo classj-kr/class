@@ -11,7 +11,7 @@
   const regionOfProvince = dataset.regionOfProvince || [];
   const borders = window.KOREA_BORDERS || { mdl: [], national: [] };
   const terrainRivers = (window.TERRAIN_DATA && window.TERRAIN_DATA.rivers) || { features: [] };
-  const THEME_ORDER = ["territory", "terrain", "climate", "population", "industry", "transport", "region"];
+  const THEME_ORDER = ["territory", "terrain", "climate", "population", "industry", "transport", "region", "heritage"];
   const KOREA_BOUNDS = L.latLngBounds([[32.95, 123.85], [43.15, 131.35]]);
   // 지형 바탕(tools/build_relief.py): 3~6단은 동아시아 둘레, 7~9단은 한반도 둘레, 10~11단은 남북한 땅에 닿는 칸만 있다.
   const RELIEF_URL = "relief/{z}/{x}/{y}.webp?v=20260919-1";
@@ -53,6 +53,17 @@
     loadProvinceBoundaries();
     loadMajorRivers();
   }
+
+  // 주제가 직접 그리는 표지·옆 칸(heritage.js 등)에 넘기는 도구
+  const themeApi = {
+    get map() { return mainMap; },
+    element: (tag, className, text) => element(tag, className, text),
+    setZoomSync: (map, key, handler) => setZoomSync(map, key, handler),
+    refresh() {
+      drawThemeOnMap(mainMap, mainThemeLayer, themes[currentTheme], { interactive: true });
+      updatePracticeButton();
+    }
+  };
 
   // ───────────── 지도 만들기 ─────────────
   // {단: {x: [[y 처음, y 끝]]}} → {단: Set("x/y")}
@@ -304,6 +315,9 @@
     $("#conceptTitle").textContent = theme.title;
     $("#conceptSummary").textContent = theme.summary;
     $("#conceptPoints").replaceChildren(...theme.points.map((text) => element("div", "concept-point", text)));
+    $("#conceptPoints").hidden = !theme.points.length;
+    $("#themeExtra").replaceChildren(...(theme.panel ? [theme.panel(themeApi)] : []));
+    $("#startMixed").hidden = !!theme.buildQuestions;
     clearFeatureFocus(false);
     stopProfile();
     mainMap.closePopup();
@@ -555,7 +569,9 @@
     clearZoomSync(map, "minorRivers");
     clearZoomSync(map, "riverWidth");
     clearZoomSync(map, "markers");
+    clearZoomSync(map, "heritage");
     group.clearLayers();
+    if (theme.draw && map === mainMap && !opts.baseOnly) theme.draw(map, group, themeApi);
     // 문제 지도는 답하기 전에는 바탕(지형·하천)만 그린다. 구역·등온선·교통축이 답을 드러내기 때문이다.
     if ((theme.rivers || opts.baseOnly) && majorRivers) drawMajorRivers(map, group, interactive);
     if (theme.minorRivers && !opts.baseOnly) drawMinorRivers(map, group, interactive);
@@ -846,13 +862,20 @@
   }
 
   // ───────────── 문제 풀이 ─────────────
+  // 유물·유적처럼 문제를 그때그때 만드는 주제는 buildQuestions로 받는다. 섞어 풀기는 지리 문제은행만 섞는다.
   function poolFor(mode) {
     if (mode === "mixed") return questions;
     if (mode === "review") {
       const items = readProgress().items;
-      return questions.filter((question) => items[question.id] && items[question.id].wrong);
+      return allQuestions().filter((question) => items[question.id] && items[question.id].wrong);
     }
+    const theme = themes[currentTheme];
+    if (theme && theme.buildQuestions) return theme.buildQuestions();
     return questions.filter((question) => question.topic === currentTheme);
+  }
+
+  function allQuestions() {
+    return questions.concat(...Object.values(themes).filter((theme) => theme.buildQuestions).map((theme) => theme.buildQuestions("all")));
   }
 
   function updatePracticeButton() {
@@ -860,7 +883,7 @@
     const label = themes[currentTheme]?.label || "현재 주제";
     $("#startPractice").textContent = `${label} 문제 ${pool.length}개 풀기`;
     $("#startPractice").disabled = pool.length === 0;
-    $("#startMixed").textContent = `전 주제 섞어 풀기 (${questions.length}문제)`;
+    $("#startMixed").textContent = `지리 주제 섞어 풀기 (${questions.length}문제)`;
   }
 
   // 한 판은 그 주제의 문제 전부다. 수를 미리 자르지 않는다. 중간에 닫아도 문제별 기록은 남는다.
@@ -1026,6 +1049,14 @@
     }
 
     if (stimulus.type === "pyramid") card.append(buildPyramid(stimulus));
+    if (stimulus.type === "image") {
+      const image = document.createElement("img");
+      image.className = "stimulus-image";
+      image.src = stimulus.src;
+      image.alt = stimulus.alt || "";
+      card.append(image);
+    }
+    if (stimulus.text) card.append(element("p", "stimulus-text", stimulus.text));
     if (stimulus.note) card.append(element("p", "stimulus-note", stimulus.note));
     container.append(card);
   }
@@ -1230,8 +1261,8 @@
 
   function fillRecord() {
     const progress = readProgress();
-    const rows = THEME_ORDER.map((key) => {
-      const ids = questions.filter((question) => question.topic === key).map((question) => question.id);
+    const rows = THEME_ORDER.filter((key) => themes[key]).map((key) => {
+      const ids = themes[key].questionIds ? themes[key].questionIds() : questions.filter((question) => question.topic === key).map((question) => question.id);
       const stats = ids.reduce((acc, id) => {
         const item = progress.items[id];
         if (!item) return acc;

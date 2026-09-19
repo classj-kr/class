@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#123c46">
   <title>국내 지도</title>
   <link rel="stylesheet" href="vendor/leaflet/leaflet.css">
-  <link rel="stylesheet" href="styles.css?v=20260919-3">
+  <link rel="stylesheet" href="styles.css?v=20260919-5">
 </head>
 <body>
   <div class="app-shell">
@@ -18,6 +18,7 @@
       <button class="theme-tab" type="button" data-theme="industry" aria-pressed="false"><span>🏭</span> 산업</button>
       <button class="theme-tab" type="button" data-theme="transport" aria-pressed="false"><span>🚆</span> 교통</button>
       <button class="theme-tab" type="button" data-theme="region" aria-pressed="false"><span>🧭</span> 행정구역</button>
+      <button class="theme-tab" type="button" data-theme="heritage" aria-pressed="false"><span>🏛️</span> 유물·유적</button>
     </nav>
 
     <main class="study-layout">
@@ -48,6 +49,7 @@
             <div id="focusBody"></div>
           </aside>
           <div class="concept-points" id="conceptPoints"></div>
+          <div id="themeExtra"></div>
           <details class="feature-guide" id="featureGuide">
             <summary><span>필수 지점</span><strong id="featureCount"></strong></summary>
             <div class="feature-list" id="featureList" aria-label="지도 필수 지점"></div>
@@ -109,6 +111,23 @@
     </div>
   </dialog>
 
+  <dialog class="relic-dialog" id="relicDialog" aria-labelledby="relicTitle">
+    <button type="button" class="relic-close" id="relicClose" aria-label="유물 설명 닫기">×</button>
+    <figure class="relic-photo"><img id="relicImage" alt=""></figure>
+    <section class="relic-body">
+      <span class="relic-era" id="relicEra"></span>
+      <h2 id="relicTitle"></h2>
+      <p class="relic-title-en" id="relicTitleEn"></p>
+      <dl class="relic-meta">
+        <div><dt>관련 장소</dt><dd id="relicLocation"></dd></div>
+        <div><dt>지금 있는 곳</dt><dd id="relicMuseum"></dd></div>
+      </dl>
+      <p id="relicDocent"></p>
+      <p id="relicContext"></p>
+      <p class="relic-tip" id="relicTip"></p>
+    </section>
+  </dialog>
+
   <dialog class="result-dialog" id="resultDialog" aria-labelledby="resultTitle">
     <div class="result-visual" id="resultVisual">0/0</div>
     <h2 id="resultTitle">연습 완료</h2>
@@ -139,13 +158,15 @@
   </dialog>
 
   <script src="vendor/leaflet/leaflet.js"></script>
-  <script src="data/terrain-data.js?v=20260919-3"></script>
-  <script src="data/borders.js?v=20260919-3"></script>
-  <script src="data/relief-tiles.js?v=20260919-3"></script>
-  <script src="data/geo-data.js?v=20260919-3"></script>
-  <script src="data/questions.js?v=20260919-3"></script>
-  <script src="data/principles.js?v=20260919-3"></script>
+  <script src="data/terrain-data.js?v=20260919-5"></script>
+  <script src="data/borders.js?v=20260919-5"></script>
+  <script src="data/relief-tiles.js?v=20260919-5"></script>
+  <script src="data/geo-data.js?v=20260919-5"></script>
+  <script src="data/questions.js?v=20260919-5"></script>
+  <script src="data/principles.js?v=20260919-5"></script>
+  <script src="data/heritage-data.js?v=20260919-5"></script>
+  <script src="heritage.js?v=20260919-5"></script>
   <script src="climate-graph.js?v=20260906-1"></script>
-  <script src="app.js?v=20260919-3"></script>
+  <script src="app.js?v=20260919-5"></script>
 </body>
 </html>
