@@ -131,7 +131,7 @@ const dataset = sandbox.window.KOREA_GEOGRAPHY;
 // 주제 이름표가 이미 부르는 곳(대구 분지 등)의 지역명은 그리지 않는다 — 먼저 놓이는 지역명이 주제 이름표를 가린다.
 const provinceNames = [...dataset.provinceLabels].map(([name]) => name);
 assert.ok(provinceNames.every((name) => !dataset.cityLabels.some(([city]) => city === name)), "도 이름과 도시 이름이 겹칩니다.");
-assert.deepEqual(dataset.provinceLabels.filter(([, lat]) => lat > 38.3).map(([name]) => name).sort(), ["강원", "양강", "자강", "평남", "평북", "함남", "함북", "황남", "황북"]);
+assert.deepEqual([...dataset.provinceLabels.filter(([, lat]) => lat > 38.3).map(([name]) => name)].sort(), ["강원", "양강", "자강", "평남", "평북", "함남", "함북", "황남", "황북"]);
 assert.match(app, /if \(hide\.has\(name\) \|\| namedByTheme\(name, lat, lng\)\) return;[\s\S]*if \(hide\.has\(name\) \|\| namedByTheme\(name, lat, lng\)\) return;/);
 assert.deepEqual(Object.keys(dataset.themes), THEME_KEYS);
 assert.deepEqual(THEME_KEYS.map((key) => dataset.themes[key].label), TAB_LABELS);
