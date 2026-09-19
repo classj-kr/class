@@ -676,15 +676,17 @@
     clearZoomSync(map, "labels");
     group.clearLayers();
     const entries = [];
+    // 주제 이름표가 이미 그 자리를 부르면(대구 분지, 행정 중심 세종) 지역명은 그리지 않는다. 먼저 놓이는 지역명이 주제 이름표를 가리기 때문이다.
+    const namedByTheme = (name, lat, lng) => (opts.annotations || []).some((annotation) => annotation.name.includes(name) && Math.abs(annotation.lat - lat) < 0.15 && Math.abs(annotation.lng - lng) < 0.18);
     if (opts.admin) {
       provinceLabels.forEach(([name, lat, lng]) => {
-        if (hide.has(name)) return;
+        if (hide.has(name) || namedByTheme(name, lat, lng)) return;
         entries.push({ marker: L.marker([lat, lng], { icon: textIcon("admin-label", name), pane: "adminLabels", interactive: false }), minZoom: opts.adminMinZoom || 6, detailOnly: true });
       });
     }
     if (opts.city) {
       cityLabels.forEach(([name, lat, lng, minZoom]) => {
-        if (hide.has(name)) return;
+        if (hide.has(name) || namedByTheme(name, lat, lng)) return;
         entries.push({ marker: L.marker([lat, lng], { icon: textIcon("city-label", name), pane: "adminLabels", interactive: false }), minZoom: minZoom || 7, detailOnly: true });
       });
     }

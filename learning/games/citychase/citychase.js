@@ -10,6 +10,10 @@
     alarm: "assets/secret-alarm.png",
     shop: "assets/shop-building.png"
   });
+  const MUSIC = Object.freeze({
+    lobby: "assets/music/citychase-lobby.ogg",
+    game: ["assets/music/citychase-game-1.ogg", "assets/music/citychase-game-2.ogg"]
+  });
   const $ = id => document.getElementById(id);
   const savedName = String(localStorage.getItem(NAME_KEY) || "").trim();
 
@@ -23,6 +27,7 @@
   let setupSelection = { gem1: null, gem2: null, undercover: null };
   let movementAnimating = false;
   let movementAnimationToken = 0;
+  let gameMusicTrack = 0;
 
   function myId() { return lobby?.snapshot().myId || ""; }
   function me() { return state?.players.find(player => player.id === myId()) || null; }
@@ -57,6 +62,26 @@
 
   function playSfx(name) {
     window.ClassGameSfx?.play(name);
+  }
+
+  function syncMusic(phase) {
+    const audio = $("bgm");
+    if (!audio) return;
+    const isLobby = phase === "lobby";
+    const track = isLobby ? MUSIC.lobby : MUSIC.game[gameMusicTrack];
+    if (audio.dataset.track === track) return;
+
+    audio.dataset.track = track;
+    audio.loop = isLobby;
+    audio.src = track;
+    audio.load();
+    audio.play().catch(() => {});
+  }
+
+  function advanceGameMusic() {
+    if (!state || state.phase === "lobby") return;
+    gameMusicTrack = (gameMusicTrack + 1) % MUSIC.game.length;
+    syncMusic(state.phase);
   }
 
   function actionEffect(action, previousState, nextState) {
@@ -743,6 +768,8 @@
     movementAnimationToken += 1;
     movementAnimating = animateMove;
     state = nextState;
+      gameMusicTrack = 0;
+      syncMusic(state.phase);
     actionPending = false;
     placementMode = null;
     trickNode = null;
@@ -752,6 +779,7 @@
         $("gameScreen").classList.add("hidden");
         $("lobbyScreen").classList.remove("hidden");
         lobby.returnToLobby();
+    syncMusic(state.phase);
       }
       renderTeamSeats();
       return;
@@ -786,6 +814,7 @@
   function showAbort({ title, message }) {
     $("abortTitle").textContent = title;
     $("abortMessage").textContent = message;
+    $("bgm").addEventListener("ended", advanceGameMusic);
     $("abortOverlay").classList.remove("hidden");
   }
 
