@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
         summer: { label: '여름', hint: '6월 21일', dec: TILT_REAL, colour: '#ea580c', ink: '#c2410c' },
         winter: { label: '겨울', hint: '12월 21일', dec: -TILT_REAL, colour: '#0284c7', ink: '#0369a1' },
     };
-    const TILTS = [0, 23.44, 45];
+    const TILTS = [0, 23.44];
     const SPOTS = {
         summer: { label: '여름 자리', hint: '북반구가 태양 쪽으로', sign: 1 },
         winter: { label: '겨울 자리', hint: '북반구가 태양 반대쪽으로', sign: -1 },
@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
             controlArea.innerHTML = pickRow('계절', 'season', Object.entries(SEASONS).map(([k, v]) => ({ value: k, label: v.label, hint: v.hint })), state.season, 3);
         } else {
             controlArea.innerHTML =
-                pickRow('자전축의 기울기', 'tilt', TILTS.map(t => ({ value: String(t), label: t === 0 ? '0°' : t === TILT_REAL ? '23.5°' : '45°', hint: t === 0 ? '기울지 않음' : t === TILT_REAL ? '실제 지구' : '더 많이 기울면' })), state.tilt, 3) +
+                pickRow('자전축의 기울기', 'tilt', TILTS.map(t => ({ value: String(t), label: t === 0 ? '0°' : '23.5°', hint: t === 0 ? '기울지 않음' : '실제 지구' })), state.tilt, 2) +
                 pickRow('지구의 자리', 'spot', Object.entries(SPOTS).map(([k, v]) => ({ value: k, label: v.label, hint: v.hint })), state.spot, 2);
         }
         controlArea.querySelectorAll('[data-pick]').forEach(group => {
@@ -158,10 +158,11 @@ document.addEventListener('DOMContentLoaded', () => {
             const SX = 110, SY = HY, stickH = 30;
             const dir = q.az > 0 ? -1 : 1;         // shadow falls away from the sun
             // a low sun throws a long shadow; it stops at the edge of the picture
-            const shadowLen = Math.min(dir < 0 ? SX - 16 : 440 - SX, stickH / Math.tan(Math.max(3, q.alt) * D2R));
+            const shadowRatio = 1 / Math.tan(q.alt * D2R);
+            const shadowLen = Math.min(dir < 0 ? SX - 16 : 440 - SX, stickH * shadowRatio);
             out += `<line class="shadow" x1="${SX}" y1="${SY - 1}" x2="${(SX + dir * shadowLen).toFixed(1)}" y2="${SY - 1}"/>`;
             out += `<line class="stick" x1="${SX}" y1="${SY}" x2="${SX}" y2="${SY - stickH}"/>`;
-            out += `<text class="alt-text" x="${SX}" y="${SY - stickH - 6}" text-anchor="middle">그림자 ${(shadowLen / stickH).toFixed(1)}배</text>`;
+            out += `<text class="alt-text" x="${SX}" y="${SY - stickH - 6}" text-anchor="middle">그림자 ${shadowRatio > 100 ? '100배 이상' : `${shadowRatio.toFixed(1)}배`}</text>`;
         }
         out += `<text class="sky-text" x="24" y="46">${hourText(hour)}</text>`;
         out += `<text class="sky-text" x="24" y="60">${q.alt > 0 ? `태양 높이 ${Math.round(q.alt)}°` : hour < 12 ? '해 뜨기 전' : '해 진 뒤'}</text>`;
@@ -295,10 +296,11 @@ document.addEventListener('DOMContentLoaded', () => {
             const hour = pathHour(a, state.progress);
             const q = sunAt(hour, a.season.dec);
             return `<div class="data-row"><span class="data-name">계절</span><span class="data-val">${a.season.label} (${a.season.hint}) · 서울</span></div>` +
-                `<div class="data-row"><span class="data-name">해 뜨고 지는 시각</span><span class="data-val">${hourText(a.rise)} ~ ${hourText(a.set)} · 낮 ${a.len.toFixed(1)}시간</span></div>` +
-                `<div class="data-row"><span class="data-name">남중 고도</span><span class="data-val">${a.noon.toFixed(1)}° = 90° − 위도 37.5° ${a.season.dec >= 0 ? '+' : '−'} ${Math.abs(a.season.dec).toFixed(1)}°</span></div>` +
+                `<div class="data-row"><span class="data-name">모형의 일출·일몰</span><span class="data-val">${hourText(a.rise)} ~ ${hourText(a.set)} · 낮 ${a.len.toFixed(1)}시간</span></div>` +
+                `<div class="data-row"><span class="data-name">남중 고도</span><span class="data-val">${a.noon.toFixed(1)}°</span></div>` +
                 `<div class="data-row"><span class="data-name">지금</span><span class="data-val">${hourText(hour)} · ${q.alt > 0 ? `높이 ${q.alt.toFixed(0)}°` : '지평선 아래'}</span></div>` +
-                `<div class="data-row match"><span class="data-name">정오 그림자</span><span class="data-val">1 m 막대에 ${a.shadow.toFixed(2)} m</span></div>`;
+                `<div class="data-row match"><span class="data-name">정오 그림자</span><span class="data-val">1 m 막대에 ${a.shadow.toFixed(2)} m</span></div>` +
+                `<p>태양이 가장 높을 때를 12시로 놓은 모형이며 실제 시계 시각과 다릅니다. 긴 그림자는 화면에 맞춰 줄여 그리지만 표시값은 막대 길이에 대한 실제 비율입니다.</p>`;
         }
         return `<div class="data-row"><span class="data-name">자전축</span><span class="data-val">${state.tilt === TILT_REAL ? '23.5' : state.tilt}° 기울어진 채 공전</span></div>` +
             `<div class="data-row"><span class="data-name">${a.spot.label}</span><span class="data-val">남중 고도 ${a.noon.toFixed(1)}° · 낮 ${a.len.toFixed(1)}시간</span></div>` +

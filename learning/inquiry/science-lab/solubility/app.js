@@ -27,8 +27,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const saltDose = document.getElementById('saltDose');
     const saltCrystalGroup = document.getElementById('saltCrystalGroup');
     const saltDoseValue = document.getElementById('saltDoseValue');
-    const particles = document.getElementById('particles');
-    const particleLegend = document.getElementById('particleLegend');
 
     const points = [[0, 35.7], [20, 36], [40, 36.5], [60, 37.3], [80, 38.4], [100, 39.8]];
     let prediction = null;
@@ -82,32 +80,10 @@ document.addEventListener('DOMContentLoaded', () => {
         return g;
     }
 
-    // Percent-of-beaker-box bounds that stay inside the water body: the
-    // surface sits at y=94 of the 320-tall viewBox (29.4%), so nothing may
-    // drift above ~33% or it visibly floats in the air gap above the water.
-    const WATER_LEFT_MIN = 14;
-    const WATER_LEFT_MAX = 86;
-    const WATER_TOP_MIN = 33;
-    const WATER_TOP_MAX = 88;
-
-    function scheduleWander(span, delayMs) {
-        dissolveTimers.push(setTimeout(() => {
-            const currentLeft = parseFloat(span.style.left);
-            const currentTop = parseFloat(span.style.top);
-            const nextLeft = Math.max(WATER_LEFT_MIN, Math.min(WATER_LEFT_MAX, currentLeft + (Math.random() - .5) * 26));
-            const nextTop = Math.max(WATER_TOP_MIN, Math.min(WATER_TOP_MAX, currentTop + (Math.random() - .5) * 26));
-            span.style.left = `${nextLeft.toFixed(1)}%`;
-            span.style.top = `${nextTop.toFixed(1)}%`;
-            scheduleWander(span, 2600 + Math.random() * 2400);
-        }, delayMs));
-    }
-
     function animateDissolve(dissolved, remaining) {
         clearDissolveTimers();
         dissolvingGroup.innerHTML = '';
         sedimentGroup.innerHTML = '';
-        particles.innerHTML = '';
-        particleLegend.hidden = true;
 
         beaker.classList.remove('mixed', 'stirring');
         void beaker.offsetWidth;
@@ -141,50 +117,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }, startMs));
         });
 
-        // Ion count is driven purely by how much actually dissolved — not by
-        // how many crystal-pile slots happen to be left over after reserving
-        // some for the undissolved remainder (that made a *smaller* leftover
-        // amount produce *more* visible ions than a *larger* dissolved
-        // amount, since the two used unrelated scales). Ions spawn at random
-        // spots across the settled pile's footprint, independent of any
-        // specific crystal's own animation.
-        if (dissolved > 0) {
-            particleLegend.hidden = false;
-            const ionPairs = Math.min(14, Math.max(4, Math.round(dissolved / 3)));
-            for (let i = 0; i < ionPairs; i += 1) {
-                const spawnDelay = 200 + Math.random() * 1300;
-                dissolveTimers.push(setTimeout(() => {
-                    const originX = 120 + (Math.random() - .5) * 160;
-                    const originY = 260 + Math.random() * 30;
-                    const leftPct = (originX / 240) * 100;
-                    const topPct = (originY / 320) * 100;
-                    for (const isSodium of [true, false]) {
-                        const span = document.createElement('span');
-                        span.className = `particle ion ${isSodium ? 'sodium-ion' : 'chloride-ion'}`;
-                        span.textContent = isSodium ? 'Na⁺' : 'Cl⁻';
-                        span.style.left = `${(leftPct + (Math.random() - .5) * 3).toFixed(1)}%`;
-                        span.style.top = `${(topPct + (Math.random() - .5) * 3).toFixed(1)}%`;
-                        span.style.setProperty('--delay', `${(Math.random() * 4).toFixed(2)}s`);
-                        particles.appendChild(span);
-
-                        // Ions appear right where a crystal dissolved, pause
-                        // briefly, then diffuse out to a spot spread through
-                        // the water — not stay clumped at the bottom.
-                        const targetLeft = WATER_LEFT_MIN + Math.random() * (WATER_LEFT_MAX - WATER_LEFT_MIN);
-                        const targetTop = WATER_TOP_MIN + Math.random() * (WATER_TOP_MAX - WATER_TOP_MIN);
-                        const diffuseDelay = 260 + Math.random() * 300;
-                        dissolveTimers.push(setTimeout(() => {
-                            span.style.left = `${targetLeft.toFixed(1)}%`;
-                            span.style.top = `${targetTop.toFixed(1)}%`;
-                        }, diffuseDelay));
-                        // Once diffusion settles, keep drifting gently forever
-                        // — dissolved ions never actually stop moving in water.
-                        scheduleWander(span, diffuseDelay + 3400 + Math.random() * 1500);
-                    }
-                }, spawnDelay));
-            }
-        }
-
         dissolveTimers.push(setTimeout(() => {
             beaker.classList.remove('stirring');
             dissolvingGroup.innerHTML = '';
@@ -210,7 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
         amountMinLabel.textContent = `${grams(minimum)} g`;
         amountMaxLabel.textContent = `${grams(upper)} g`;
         amountGuide.textContent = `${temperatureRange.value}℃에서 녹는 양의 근처만 조절합니다.`;
-        solubilityBadge.textContent = `용해도 ${grams(maximum)} g`;
+        solubilityBadge.textContent = `최대로 녹는 양 ${grams(maximum)} g`;
         renderCurve();
         renderData();
     }
@@ -220,7 +152,7 @@ document.addEventListener('DOMContentLoaded', () => {
        온도를 100도나 올려도 4.1 g밖에 더 녹지 않는다는 것이 이 실험에서
        보여 주려는 사실입니다. */
     const G = { x0: 52, x1: 424, y0: 140, y1: 26 };
-    const S_LO = 34, S_HI = 41;
+    const S_LO = 30, S_HI = 44;
     const gx = t => G.x0 + (t / 100) * (G.x1 - G.x0);
     const gy = g => G.y0 - ((g - S_LO) / (S_HI - S_LO)) * (G.y0 - G.y1);
 
@@ -229,7 +161,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const amount = Number(amountRange.value);
         const maximum = solubilityAt(temperature);
         let out = '';
-        for (let g = S_LO; g <= S_HI; g += 1) {
+        for (let g = S_LO; g <= S_HI; g += 2) {
             const y = gy(g);
             out += `<line class="grid-line" x1="${G.x0}" y1="${y.toFixed(1)}" x2="${G.x1}" y2="${y.toFixed(1)}"/>`;
             out += `<text class="axis-text" x="${G.x0 - 6}" y="${(y + 3).toFixed(1)}" text-anchor="end">${g}</text>`;
@@ -286,8 +218,6 @@ document.addEventListener('DOMContentLoaded', () => {
         saltDose.classList.remove('poured');
         sedimentGroup.innerHTML = '';
         dissolvingGroup.innerHTML = '';
-        particles.innerHTML = '';
-        particleLegend.hidden = true;
         stageCaption.textContent = '온도와 소금의 양을 정하세요.';
     }
 
@@ -306,6 +236,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const mercuryHeight = 4 + (temperature / 100) * 164;
         mercuryRect.setAttribute('y', String(180 - mercuryHeight));
         mercuryRect.setAttribute('height', String(mercuryHeight));
+        renderCurve();
+        renderData();
         const warmth = temperature / 100;
         waterStopTop.setAttribute('stop-color', `rgb(${Math.round(110 + 70 * warmth)}, ${Math.round(200 - 15 * warmth)}, ${Math.round(235 - 25 * warmth)})`);
         waterStopBottom.setAttribute('stop-color', `rgb(${Math.round(60 + 50 * warmth)}, ${Math.round(150 - 15 * warmth)}, ${Math.round(195 - 35 * warmth)})`);
@@ -319,6 +251,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const remaining = Math.max(0, amount - maximum);
         const actual = remaining < .05 ? 'all' : 'some';
 
+        document.getElementById('massBefore').textContent = `${grams(100 + amount)} g`;
+        document.getElementById('massAfter').textContent = `${grams(100 + amount)} g`;
         saltDose.classList.add('poured');
         animateDissolve(dissolved, remaining);
         dissolvedValue.textContent = `${grams(dissolved)} g`;
@@ -331,10 +265,10 @@ document.addEventListener('DOMContentLoaded', () => {
             : prediction === actual ? '예상이 맞았습니다.' : '예상과 다른 결과입니다.';
         if (actual === 'all') {
             stageCaption.textContent = `${temperature}℃의 물 100 g에 소금 ${grams(amount)} g이 모두 녹았습니다.`;
-            explanation.textContent = `녹은 소금은 눈에 보이지 않을 만큼 작은 나트륨 이온과 염화 이온으로 물속에 흩어져 있습니다. 이 이온들은 소금 알갱이 안에도 원래 있던 것이라 물과 반응해 새로운 물질이 된 게 아닙니다. 화면의 색깔 있는 원은 이해를 돕기 위한 확대 그림이고, 실제로는 보이지 않습니다. 바닥에 남은 소금 결정도 없습니다.`;
+            explanation.textContent = `소금이 녹아 눈에 보이는 소금 결정은 없습니다. 소금이 없어진 것은 아닙니다. 흘리거나 증발하지 않으면 물과 소금을 합한 무게는 녹이기 전후 모두 ${grams(100 + amount)} g입니다.`;
         } else {
             stageCaption.textContent = `${temperature}℃에서 ${grams(maximum)} g까지 녹고 ${grams(remaining)} g이 바닥에 남았습니다.`;
-            explanation.textContent = `녹은 만큼은 눈에 안 보이는 이온이 되어 물속에 흩어졌고, 이 온도에서 더 녹을 수 있는 양을 넘은 나머지는 원래 모습 그대로 눈에 보이는 소금 결정으로 바닥에 남았습니다.`;
+            explanation.textContent = `이 온도에서 녹을 수 있는 양을 넘은 소금은 바닥에 남습니다. 남은 소금까지 포함한 전체 무게는 넣기 전후 모두 ${grams(100 + amount)} g입니다.`;
         }
     }
 

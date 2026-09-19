@@ -83,16 +83,12 @@ document.addEventListener('DOMContentLoaded', () => {
             top: '#6ec8eb', topOpacity: .5, bottom: '#3c96c3', bottomOpacity: .62 },
         lemon: { label: '레몬즙', type: 'acid', appearance: '노란색 · 불투명',
             top: '#f2d64e', topOpacity: .86, bottom: '#dfb636', bottomOpacity: .92 },
-        saltwater: { label: '소금물', type: 'neutral', appearance: '무색 · 투명',
-            top: '#6ec8eb', topOpacity: .5, bottom: '#3c96c3', bottomOpacity: .62 },
-        sugarwater: { label: '설탕물', type: 'neutral', appearance: '무색 · 투명',
-            top: '#6ec8eb', topOpacity: .5, bottom: '#3c96c3', bottomOpacity: .62 },
         soap: { label: '비눗물', type: 'base', appearance: '흰색 · 불투명',
             top: '#f5f7f8', topOpacity: .82, bottom: '#dfe6e8', bottomOpacity: .88 },
         cleaner: { label: '유리세정제', type: 'base', appearance: '파란색 · 투명',
             top: '#6fb8f2', topOpacity: .5, bottom: '#2f7dcf', bottomOpacity: .65 },
     };
-    const TYPE_LABEL = { acid: '산성', base: '염기성', neutral: '중성' };
+    const TYPE_LABEL = { acid: '산성', base: '염기성' };
 
     // "은/는" varies with whether the preceding syllable has a batchim
     // (final consonant) — 식초는 vs 소금물은. Every solution label gets
@@ -121,20 +117,19 @@ document.addEventListener('DOMContentLoaded', () => {
         clearResult();
     }
 
-    /* --------------------------------- 산성·중성·염기성 분류 띠와 표 */
+    /* --------------------------------- 산성·염기성 분류 띠와 표 */
     /* 초등 6학년에서 배우는 것은 pH 숫자가 아니라 지시약으로 무리를 나누는
-       일입니다. 그래서 눈금이 아니라 세 칸에 용액을 늘어놓고, 지금 고른 것을
+       일입니다. 그래서 눈금이 아니라 두 칸에 용액을 늘어놓고, 지금 고른 것을
        도드라지게 합니다. */
     const ZONES = [
         { type: 'acid',    name: '산성',   hint: '푸른 리트머스 → 붉게', fill: '#fee2e2', text: '#b91c1c' },
-        { type: 'neutral', name: '중성',   hint: '두 종이 모두 그대로',   fill: '#f1f5f9', text: '#334155' },
         { type: 'base',    name: '염기성', hint: '붉은 리트머스 → 푸르게', fill: '#dbeafe', text: '#1d4ed8' },
     ];
 
     function renderBand() {
         const X0 = 18, W = 424, TOP = 30, H = 96;
         const zoneW = W / ZONES.length;
-        let out = `<text class="band-title" x="${X0}" y="18">지시약으로 나누어 본 여섯 가지 용액</text>`;
+        let out = `<text class="band-title" x="${X0}" y="18">지시약으로 나누어 본 네 가지 용액</text>`;
         ZONES.forEach((z, i) => {
             const x = X0 + i * zoneW;
             out += `<rect class="zone-band" x="${x}" y="${TOP}" width="${zoneW - 4}" height="${H}" rx="9" fill="${z.fill}"/>`;
@@ -149,7 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 out += `<text class="sol-name${isNow ? ' now' : ''}" x="${x + (zoneW - 4) / 2}" y="${cy + 14}" text-anchor="middle">${d.label}</text>`;
             });
         });
-        out += `<text class="band-note" x="${X0}" y="${TOP + H + 18}">겉보기 색이나 투명한 정도로는 나눌 수 없습니다 — 식초와 소금물은 둘 다 무색투명하지만 무리가 다릅니다.</text>`;
+        out += `<text class="band-note" x="${X0}" y="${TOP + H + 18}">용액의 색만으로 판단하지 않고 리트머스 종이의 변화를 확인합니다.</text>`;
         graphGroup.innerHTML = out;
     }
 
@@ -158,7 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
             dataNote.innerHTML =
                 `<div class="data-row"><span class="data-name">고른 용액</span><span class="data-val">아직 고르지 않았습니다</span></div>` +
                 `<div class="data-row"><span class="data-name">알아볼 것</span><span class="data-val">리트머스 종이 두 장이 어떻게 바뀌는지</span></div>` +
-                `<div class="data-row"><span class="data-name">나누는 무리</span><span class="data-val">산성 · 중성 · 염기성</span></div>`;
+                `<div class="data-row"><span class="data-name">나누는 무리</span><span class="data-val">산성 · 염기성</span></div>`;
             return;
         }
         const d = SOLUTIONS[selectedSolution];
@@ -246,8 +241,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 explanation.textContent = `${data.label}${particle} 산성이라 푸른 리트머스 종이가 붉게 변하고, 붉은 리트머스 종이는 그대로입니다.`;
             } else if (type === 'base') {
                 explanation.textContent = `${data.label}${particle} 염기성이라 붉은 리트머스 종이가 푸르게 변하고, 푸른 리트머스 종이는 그대로입니다.`;
-            } else {
-                explanation.textContent = `${data.label}${particle} 중성이라 두 리트머스 종이 색이 모두 변하지 않습니다.`;
             }
         }, 780));
     }

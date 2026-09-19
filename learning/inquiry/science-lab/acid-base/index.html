@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#f1f5f9">
     <title>과학 실험실</title>
-    <meta name="description" content="리트머스 종이로 여러 용액의 산성·염기성·중성을 확인하는 초등 과학 모의실험">
+    <meta name="description" content="리트머스 종이로 여러 용액의 산성·염기성을 확인하는 초등 과학 모의실험">
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
     <link rel="stylesheet" href="styles.css?v=5">
     <link rel="stylesheet" href="acid-visual.css?v=8">
@@ -37,8 +37,6 @@
                     <div class="solution-buttons">
                         <button type="button" data-solution="vinegar">식초</button>
                         <button type="button" data-solution="lemon">레몬즙</button>
-                        <button type="button" data-solution="saltwater">소금물</button>
-                        <button type="button" data-solution="sugarwater">설탕물</button>
                         <button type="button" data-solution="soap">비눗물</button>
                         <button type="button" data-solution="cleaner">유리세정제</button>
                     </div>
@@ -49,7 +47,6 @@
                     <div class="prediction-buttons three">
                         <button type="button" data-prediction="acid">산성</button>
                         <button type="button" data-prediction="base">염기성</button>
-                        <button type="button" data-prediction="neutral">중성</button>
                     </div>
                 </fieldset>
 
@@ -129,7 +126,6 @@
             <div class="meaning-body">
                 <p><strong>산성</strong> 푸른 리트머스 종이를 붉게 변화시키는 성질입니다.</p>
                 <p><strong>염기성</strong> 붉은 리트머스 종이를 푸르게 변화시키는 성질입니다.</p>
-                <p><strong>중성</strong> 두 리트머스 종이 색을 모두 변화시키지 않는 성질입니다.</p>
             </div>
         </section>
 
@@ -162,34 +158,24 @@
                     <p class="answer-explanation" hidden>염기성 용액은 붉은 리트머스 종이를 푸르게 변화시킵니다.</p>
                 </article>
 
-                <article class="quiz-card" data-answer="a">
-                    <h3>중성 용액에 리트머스 종이(붉은색·푸른색)를 담그면?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q3" value="a"> 둘 다 색이 변하지 않는다.</label>
-                        <label><input type="radio" name="q3" value="b"> 둘 다 보라색이 된다.</label>
-                        <label><input type="radio" name="q3" value="c"> 붉은 종이만 변한다.</label>
-                        <label><input type="radio" name="q3" value="d"> 푸른 종이만 변한다.</label>
-                    </div>
-                    <button class="answer-button" type="button">정답 확인</button>
-                    <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>중성 용액은 리트머스 종이의 색을 변화시키지 않습니다.</p>
-                </article>
+                <article class="quiz-card" data-answer="b"><h3>푸른 리트머스 종이는 그대로이고 붉은 리트머스 종이가 푸르게 변했다. 이 용액의 성질은?</h3>
+    <div class="quiz-options"><label><input type="radio" name="q3" value="a"> 산성이다.</label>
+<label><input type="radio" name="q3" value="b"> 염기성이다.</label>
+<label><input type="radio" name="q3" value="c"> 용액의 색만으로 정한다.</label>
+<label><input type="radio" name="q3" value="d"> 붉은 종이의 변화는 판단에 쓸 수 없다.</label></div>
+    <button class="answer-button" type="button">정답 확인</button><p class="answer-result" aria-live="polite"></p>
+    <p class="answer-explanation" hidden>붉은 리트머스 종이를 푸르게 변화시키는 용액은 염기성입니다. 두 종이의 변화를 함께 확인합니다.</p></article>
 
-                <article class="quiz-card" data-answer="a">
-                    <h3>다음 중 산성 용액은 무엇인가?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q4" value="a"> 식초</label>
-                        <label><input type="radio" name="q4" value="b"> 비눗물</label>
-                        <label><input type="radio" name="q4" value="c"> 유리세정제</label>
-                        <label><input type="radio" name="q4" value="d"> 소금물</label>
-                    </div>
-                    <button class="answer-button" type="button">정답 확인</button>
-                    <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>식초는 대표적인 산성 용액입니다.</p>
-                </article>
+                <article class="quiz-card" data-answer="a"><h3>산성·염기성 용액을 안전하게 구별하는 방법은?</h3>
+    <div class="quiz-options"><label><input type="radio" name="q4" value="a"> 리트머스 종이의 색 변화를 확인한다.</label>
+<label><input type="radio" name="q4" value="b"> 직접 맛을 본다.</label>
+<label><input type="radio" name="q4" value="c"> 맨손으로 만져 본다.</label>
+<label><input type="radio" name="q4" value="d"> 서로 섞고 냄새를 맡는다.</label></div>
+    <button class="answer-button" type="button">정답 확인</button><p class="answer-result" aria-live="polite"></p>
+    <p class="answer-explanation" hidden>지시약의 색 변화를 이용합니다. 용액을 맛보거나 만지지 않으며, 생활용 세정제를 함부로 섞지 않습니다.</p></article>
             </div>
         </details>
     </main>
-    <script src="app.js?v=17"></script>
+    <script src="app.js?v=18"></script>
 </body>
 </html>

@@ -61,7 +61,7 @@
                 <input id="r2Range" type="range" min="5" max="50" step="5" value="20">
 
                 <fieldset class="prediction-field">
-                    <legend>합성 저항 예상 (R₁ 하나일 때와 비교)</legend>
+                    <legend>전체 저항의 크기 비교 (R₁ 하나일 때보다)</legend>
                     <div class="prediction-buttons three">
                         <button type="button" data-prediction="bigger">커진다</button>
                         <button type="button" data-prediction="smaller">작아진다</button>
@@ -76,7 +76,7 @@
                     <p id="resultEmpty">조건을 정하고 측정해 보세요.</p>
                     <div id="resultContent" hidden>
                         <div class="result-numbers">
-                            <article><span>합성 저항</span><strong id="resultR">30 Ω</strong></article>
+                            <article><span>전체 저항 비교</span><strong id="resultR">-</strong></article>
                             <article><span>전체 전류</span><strong id="resultI">0.20 A</strong></article>
                         </div>
                         <p class="prediction-result" id="predictionResult"></p>
@@ -111,7 +111,7 @@
             <h2>실험 결과의 의미</h2>
             <div class="meaning-body">
                 <p><strong>옴의 법칙</strong> 전류는 전압에 비례하고 저항에 반비례합니다. I = V / R</p>
-                <p><strong>직렬연결</strong> 합성 저항은 R₁ + R₂ 로 커지고, 두 저항에 같은 전류가 흐릅니다.</p>
+                <p><strong>직렬연결</strong> 전체 저항은 각 저항보다 커지고, 두 저항에 같은 전류가 흐릅니다.</p>
                 <p><strong>병렬연결</strong> 합성 저항은 각 저항보다 작아지고, 두 저항에 같은 전압이 걸립니다.</p>
             </div>
         </section>
@@ -132,18 +132,13 @@
                     <p class="answer-explanation" hidden>I = V / R = 12 / 4 = 3 A 입니다.</p>
                 </article>
 
-                <article class="quiz-card" data-answer="a">
-                    <h3>10 Ω과 20 Ω을 직렬로 연결하면 합성 저항은?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q2" value="a"> 30 Ω</label>
-                        <label><input type="radio" name="q2" value="b"> 6.7 Ω</label>
-                        <label><input type="radio" name="q2" value="c"> 15 Ω</label>
-                        <label><input type="radio" name="q2" value="d"> 200 Ω</label>
-                    </div>
-                    <button class="answer-button" type="button">정답 확인</button>
-                    <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>직렬연결의 합성 저항은 각 저항의 합입니다. 10 + 20 = 30 Ω.</p>
-                </article>
+                <article class="quiz-card" data-answer="a"><h3>저항 두 개를 직렬로 연결했을 때 알맞은 설명은?</h3>
+    <div class="quiz-options"><label><input type="radio" name="q2" value="a"> 두 저항에 같은 세기의 전류가 흐른다.</label>
+<label><input type="radio" name="q2" value="b"> 전류가 두 갈래로 나뉜다.</label>
+<label><input type="radio" name="q2" value="c"> 각 저항에 걸리는 전압은 저항값과 관계없이 같다.</label>
+<label><input type="radio" name="q2" value="d"> 전체 저항은 각 저항보다 작다.</label></div>
+    <button class="answer-button" type="button">정답 확인</button><p class="answer-result" aria-live="polite"></p>
+    <p class="answer-explanation" hidden>직렬연결은 전류가 흐르는 길이 하나이므로 두 저항에 같은 전류가 흐릅니다. 전체 저항은 각 저항보다 큽니다.</p></article>
 
                 <article class="quiz-card" data-answer="c">
                     <h3>저항을 병렬로 연결하면 합성 저항은?</h3>
@@ -158,21 +153,16 @@
                     <p class="answer-explanation" hidden>병렬연결은 전류가 흐를 길이 늘어나므로 합성 저항이 각각의 저항보다 작아집니다.</p>
                 </article>
 
-                <article class="quiz-card" data-answer="d">
-                    <h3>전압–전류 그래프에서 기울기가 나타내는 것은?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q4" value="a"> 저항의 크기</label>
-                        <label><input type="radio" name="q4" value="b"> 전력</label>
-                        <label><input type="radio" name="q4" value="c"> 전하량</label>
-                        <label><input type="radio" name="q4" value="d"> 저항의 역수 (1/R)</label>
-                    </div>
-                    <button class="answer-button" type="button">정답 확인</button>
-                    <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>I = V/R 이므로 가로축이 전압, 세로축이 전류일 때 기울기는 1/R 입니다. 저항이 클수록 그래프가 완만해집니다.</p>
-                </article>
+                <article class="quiz-card" data-answer="d"><h3>가로축이 전압, 세로축이 전류인 그래프에서 같은 전압일 때 전류가 더 큰 저항은?</h3>
+    <div class="quiz-options"><label><input type="radio" name="q4" value="a"> 저항이 더 크다.</label>
+<label><input type="radio" name="q4" value="b"> 저항은 언제나 같다.</label>
+<label><input type="radio" name="q4" value="c"> 전류만으로 비교할 수 없다.</label>
+<label><input type="radio" name="q4" value="d"> 저항이 더 작다.</label></div>
+    <button class="answer-button" type="button">정답 확인</button><p class="answer-result" aria-live="polite"></p>
+    <p class="answer-explanation" hidden>같은 전압에서 저항이 작을수록 전류가 큽니다. 같은 눈금의 그래프에서 저항이 작을수록 선이 더 가파릅니다.</p></article>
             </div>
         </details>
     </main>
-    <script src="app.js?v=3"></script>
+    <script src="app.js?v=4"></script>
 </body>
 </html>

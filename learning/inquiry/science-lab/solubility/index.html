@@ -66,6 +66,7 @@
                             <article><span>녹은 소금</span><strong id="dissolvedValue">0 g</strong></article>
                             <article><span>남은 소금</span><strong id="remainingValue">0 g</strong></article>
                         </div>
+                        <div class="result-numbers"><article><span>넣기 전 물＋소금</span><strong id="massBefore">-</strong></article><article><span>넣은 뒤 전체</span><strong id="massAfter">-</strong></article></div><p class="explanation">무게 비교 모형: 용기 무게 제외, 남은 소금 포함. 흘리거나 증발하지 않는 조건입니다.</p>
                         <p class="prediction-result" id="predictionResult"></p>
                         <p class="explanation" id="elementaryExplanation"></p>
                     </div>
@@ -73,7 +74,7 @@
             </section>
 
             <section class="panel beaker-stage" aria-label="소금 용해 관찰 화면">
-                <div class="stage-heading"><h2>관찰</h2><span id="solubilityBadge">용해도 36 g</span></div>
+                <div class="stage-heading"><h2>관찰</h2><span id="solubilityBadge">최대로 녹는 양 36 g</span></div>
                 <div class="apparatus">
                     <div class="salt-dose" id="saltDose" aria-label="넣을 소금의 양">
                         <strong>넣을 소금</strong>
@@ -118,7 +119,6 @@
                             <line class="tick" x1="198" y1="197" x2="218" y2="197"/>
                             <text class="tick-label" x="194" y="193">50</text>
                         </svg>
-                        <div class="particles" id="particles" aria-hidden="true"></div>
                         <div class="thermometer-wrap" aria-label="온도계">
                         <svg class="thermometer-svg" viewBox="0 0 50 240" aria-hidden="true">
                             <defs>
@@ -144,11 +144,6 @@
                         </div>
                     </div>
                 </div>
-                <p class="particle-legend" id="particleLegend" hidden>
-                    <span><span class="legend-dot sodium-ion"></span>나트륨 이온 (Na⁺)</span>
-                    <span><span class="legend-dot chloride-ion"></span>염화 이온 (Cl⁻)</span>
-                    <span class="legend-note">이온은 실제로는 눈에 안 보일 만큼 작아요 — 이해를 돕기 위해 확대해 그린 모형입니다</span>
-                </p>
                 <svg class="graph-svg" viewBox="0 0 460 190" aria-hidden="true">
                     <g id="graphGroup"></g>
                 </svg>
@@ -161,8 +156,8 @@
         <section class="panel meaning-panel">
             <h2>실험 결과의 의미</h2>
             <div class="meaning-body">
-                <p><strong>용해</strong> 소금이 사라지는 것이 아니라 작은 입자로 물속에 고르게 퍼집니다.</p>
-                <p><strong>용해도</strong> 일정한 온도에서 물 100 g에 최대로 녹는 소금의 양입니다.</p>
+                <p><strong>용해</strong> 소금이 물에 녹아 눈에 보이지 않게 됩니다. 녹이기 전후의 전체 무게를 비교하면 소금이 없어진 것이 아님을 알 수 있습니다.</p>
+                <p><strong>최대로 녹는 양</strong> 일정한 온도에서 물 100 g에 최대로 녹는 소금의 양입니다.</p>
                 <p>소금은 물의 온도가 높아져도 녹는 양이 조금만 증가합니다.</p>
             </div>
         </section>
@@ -170,18 +165,13 @@
         <details class="quiz-section" aria-labelledby="quiz-title">
             <summary class="quiz-heading"><h2 id="quiz-title">확인 문제</h2><span>4문제</span></summary>
             <div class="quiz-grid">
-                <article class="quiz-card" data-answer="a">
-                    <h3>소금이 모두 녹으면 어떻게 되는가?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q1" value="a"> 녹아서 눈에 안 보인다.</label>
-                        <label><input type="radio" name="q1" value="b"> 물과 반응해 새로운 물질로 변해 있다.</label>
-                        <label><input type="radio" name="q1" value="c"> 비커 바닥에 가라앉아 모여 있다.</label>
-                        <label><input type="radio" name="q1" value="d"> 물 위로 떠올라 공기 중에 퍼져 있다.</label>
-                    </div>
-                    <button class="answer-button" type="button">정답 확인</button>
-                    <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>녹은 소금은 사라진 것이 아니라 눈에 보이지 않을 만큼 작은 입자(나트륨 이온과 염화 이온)로 물속에 고르게 퍼집니다. 이 이온들은 소금 알갱이 안에도 원래 있던 것이라, 물과 반응해서 새로운 물질이 생긴 게 아닙니다.</p>
-                </article>
+                <article class="quiz-card" data-answer="a"><h3>소금이 모두 녹은 뒤에도 소금이 없어진 것이 아님을 확인하는 방법은?</h3>
+    <div class="quiz-options"><label><input type="radio" name="q1" value="a"> 물과 소금을 합한 무게를 녹이기 전후 비교한다.</label>
+<label><input type="radio" name="q1" value="b"> 용액의 색만 살펴본다.</label>
+<label><input type="radio" name="q1" value="c"> 비커 바닥에 소금이 있는지만 본다.</label>
+<label><input type="radio" name="q1" value="d"> 용액을 맛본다.</label></div>
+    <button class="answer-button" type="button">정답 확인</button><p class="answer-result" aria-live="polite"></p>
+    <p class="answer-explanation" hidden>흘리거나 증발하지 않았다면 녹이기 전 물과 소금의 무게를 합한 값은 녹인 뒤의 무게와 같습니다. 실험 용액은 맛보지 않습니다.</p></article>
 
                 <article class="quiz-card" data-answer="c">
                     <h3>20℃의 물 100 g에 소금이 최대 36 g 녹는다. 소금 38 g을 넣으면 바닥에 녹지 않고 남는 소금은 몇 g인가?</h3>
@@ -224,6 +214,6 @@
             </div>
         </details>
     </main>
-    <script src="app.js?v=21"></script>
+    <script src="app.js?v=22"></script>
 </body>
 </html>

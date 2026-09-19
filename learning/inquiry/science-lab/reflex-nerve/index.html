@@ -5,173 +5,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#f1f5f9">
     <title>과학 실험실</title>
-    <meta name="description" content="자극이 지나가는 길을 따라가며 의식적 반응과 무조건 반사의 반응 시간을 재고 자 낙하 실험으로 확인하는 중학교 과학 모의실험">
+    <meta name="description" content="중학교 3학년 자극의 전달 경로와 의식적 반응·무조건 반사를 비교하는 모형">
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
     <link rel="stylesheet" href="styles.css?v=5">
     <link rel="stylesheet" href="reflex-visual.css?v=5">
     <link rel="stylesheet" href="quiz.css?v=3">
+<style>
+  .experiment-layout{grid-template-columns:minmax(260px,360px) minmax(0,1fr)}
+  .scope-choices{display:grid;gap:8px;margin:12px 0}.scope-choices button,.step-button{padding:12px;border:1px solid #94a3b8;border-radius:10px;background:#fff;color:#0f172a;font:inherit;cursor:pointer;min-height:44px}
+  .scope-choices button[aria-pressed="true"]{background:#e0f2fe;border-color:#0284c7;font-weight:700}
+  .scope-svg{display:block;width:100%;max-width:620px;margin:auto}.scope-note{line-height:1.7;color:#475569}.scope-route{padding-left:26px;line-height:2}.scope-route li[aria-current="step"]{background:#e0f2fe;font-weight:700}.run-row{display:flex;gap:8px;flex-wrap:wrap}.run-row button{flex:1}.step-button:disabled{opacity:.5;cursor:default}
+  @media(max-width:820px){.experiment-layout{grid-template-columns:1fr}}
+  </style>
 </head>
-<body>
-    <main>
-        <header class="page-header">
-            <div class="title-row">
-                <a href="../">← 과학 실험실</a>
-                <h1>자극의 전달과 반사</h1>
-            </div>
-            <div class="grade-tags"><span>중학교 3학년</span><span>생명과학</span></div>
-        </header>
-
-        <ol class="method-steps" aria-label="실험 방법">
-            <li>어떤 반응인지 고릅니다.</li>
-            <li>신경의 종류와 지나는 거리를 정합니다.</li>
-            <li>자극을 주고 신호가 지나는 길을 따라갑니다.</li>
-            <li>반응 시간과 자가 떨어진 거리를 확인합니다.</li>
-        </ol>
-
-        <div class="experiment-layout">
-            <section class="panel control-panel" aria-labelledby="control-title">
-                <h2 id="control-title">실험 조건</h2>
-                <p class="water-standard">반응 시간 = 신경 전도 + 시냅스 + 중추 처리 + 근육 수축</p>
-
-                <fieldset class="pick-field">
-                    <legend>반응의 종류</legend>
-                    <div class="pick-buttons">
-                        <button type="button" data-path="conscious">의식적 반응<small>떨어지는 자 잡기 · 대뇌</small></button>
-                        <button type="button" data-path="pupil">동공 반사<small>밝은 빛 · 연수</small></button>
-                        <button type="button" data-path="knee">무릎 반사<small>무릎 두드리기 · 척수</small></button>
-                    </div>
-                </fieldset>
-
-                <fieldset class="pick-field">
-                    <legend>신경의 종류</legend>
-                    <div class="pick-buttons cols3">
-                        <button type="button" data-nerve="thick">말이집<small>100 m/s</small></button>
-                        <button type="button" data-nerve="thin">가는 말이집<small>20 m/s</small></button>
-                        <button type="button" data-nerve="bare">민말이집<small>2 m/s</small></button>
-                    </div>
-                </fieldset>
-
-                <div class="range-heading">
-                    <label for="lengthRange">신경이 지나는 거리</label>
-                    <output id="lengthOutput" for="lengthRange">1.5 m</output>
-                </div>
-                <input id="lengthRange" type="range" min="0.5" max="2" step="0.1" value="1.5">
-                <div class="range-scale" aria-hidden="true"><span>0.5m</span><span>1.25m</span><span>2m</span></div>
-
-                <fieldset class="prediction-field">
-                    <legend>반응 시간이 0.1초보다 어떨까요?</legend>
-                    <div class="prediction-buttons three">
-                        <button type="button" data-prediction="longer">길다</button>
-                        <button type="button" data-prediction="same">비슷하다</button>
-                        <button type="button" data-prediction="shorter">짧다</button>
-                    </div>
-                </fieldset>
-
-                <div class="run-row">
-                    <button class="run-button" id="checkBtn" type="button">자극 주기</button>
-                    <button class="reset-button" id="resetBtn" type="button">처음으로</button>
-                </div>
-
-                <section class="result-box" aria-labelledby="result-title" aria-live="polite">
-                    <h3 id="result-title">관찰 결과</h3>
-                    <p id="resultEmpty">조건을 정하고 자극을 주어 보세요.</p>
-                    <div id="resultContent" hidden>
-                        <div class="result-numbers">
-                            <article><span>반응 시간</span><strong id="valueA">-</strong></article>
-                            <article><span>자가 떨어진 거리</span><strong id="valueB">-</strong></article>
-                        </div>
-                        <p class="prediction-result" id="predictionResult"></p>
-                        <p class="explanation" id="elementaryExplanation"></p>
-                    </div>
-                </section>
-            </section>
-
-            <section class="panel nerve-stage" aria-label="관찰 화면">
-                <div class="stage-heading"><h2>관찰</h2><span id="stageBadge">-</span></div>
-                <p class="stage-verdict" id="stageVerdict"></p>
-
-                <div class="stage-views">
-                    <svg class="main-svg" viewBox="0 0 460 214" aria-hidden="true">
-                        <g id="mainGroup"></g>
-                    </svg>
-                    <svg class="graph-svg" viewBox="0 0 460 196" aria-hidden="true">
-                        <g id="graphGroup"></g>
-                    </svg>
-                </div>
-
-                <div class="stage-readout" id="stageReadout"></div>
-                <p class="stage-note" id="stageNote"></p>
-                <p class="stage-caption" id="stageCaption">신호가 지나는 길을 눈으로 따라가 보세요. 대뇌를 거치면 그만큼 늦어집니다.</p>
-                <div class="data-note" id="dataNote"></div>
-            </section>
-        </div>
-
-        <section class="panel meaning-panel">
-            <h2>실험 결과의 의미</h2>
-            <div class="meaning-body">
-                <p><strong>자극이 가는 길</strong> 감각 기관 → 감각 신경 → 중추 → 운동 신경 → 반응 기관 순서로 신호가 전달됩니다.</p>
-                <p><strong>무조건 반사</strong> 대뇌를 거치지 않고 척수나 연수에서 바로 명령이 나옵니다. 그래서 훨씬 빠르고, 위험할 때 몸을 지켜 줍니다.</p>
-                <p><strong>말이집</strong> 말이집이 있는 신경은 신호가 껑충껑충 뛰어 전달되어 훨씬 빠릅니다. 말이집이 없으면 아주 느립니다.</p>
-            </div>
-        </section>
-
-        <details class="quiz-section" aria-labelledby="quiz-title">
-            <summary class="quiz-heading"><h2 id="quiz-title">확인 문제</h2><span>4문제</span></summary>
-            <div class="quiz-grid">
-                <article class="quiz-card" data-answer="b">
-                    <h3>무조건 반사가 의식적 반응보다 빠른 까닭은?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q1" value="a"> 신경이 더 굵어서</label>
-                        <label><input type="radio" name="q1" value="b"> 대뇌를 거치지 않아서</label>
-                        <label><input type="radio" name="q1" value="c"> 자극이 더 세서</label>
-                        <label><input type="radio" name="q1" value="d"> 근육이 더 빨리 움직여서</label>
-                    </div>
-                    <button class="answer-button" type="button">정답 확인</button>
-                    <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>무조건 반사는 척수나 연수에서 바로 명령이 나옵니다. 대뇌에서 생각하는 시간이 빠지기 때문에 훨씬 빠릅니다.</p>
-                </article>
-
-                <article class="quiz-card" data-answer="c">
-                    <h3>자극이 전달되는 순서로 알맞은 것은?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q2" value="a"> 중추 → 감각 기관 → 반응 기관</label>
-                        <label><input type="radio" name="q2" value="b"> 반응 기관 → 중추 → 감각 기관</label>
-                        <label><input type="radio" name="q2" value="c"> 감각 기관 → 감각 신경 → 중추 → 운동 신경 → 반응 기관</label>
-                        <label><input type="radio" name="q2" value="d"> 감각 기관 → 운동 신경 → 중추 → 감각 신경 → 반응 기관</label>
-                    </div>
-                    <button class="answer-button" type="button">정답 확인</button>
-                    <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>감각 기관이 자극을 받아들이고, 감각 신경이 중추로 전달합니다. 중추가 내린 명령은 운동 신경을 따라 반응 기관으로 갑니다.</p>
-                </article>
-
-                <article class="quiz-card" data-answer="a">
-                    <h3>떨어지는 자를 20 cm쯤에서 잡았다면 반응 시간은?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q3" value="a"> 약 0.2초</label>
-                        <label><input type="radio" name="q3" value="b"> 약 2초</label>
-                        <label><input type="radio" name="q3" value="c"> 약 0.02초</label>
-                        <label><input type="radio" name="q3" value="d"> 약 1초</label>
-                    </div>
-                    <button class="answer-button" type="button">정답 확인</button>
-                    <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>자유 낙하 거리는 s = ½gt²입니다. 0.2 m를 넣으면 t = √(2 × 0.2 ÷ 9.8) ≈ 0.2초가 나옵니다.</p>
-                </article>
-
-                <article class="quiz-card" data-answer="d">
-                    <h3>다음 중 무조건 반사가 아닌 것은?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q4" value="a"> 뜨거운 것에 손이 저절로 움츠러든다</label>
-                        <label><input type="radio" name="q4" value="b"> 밝은 곳에서 동공이 작아진다</label>
-                        <label><input type="radio" name="q4" value="c"> 무릎을 치면 다리가 올라간다</label>
-                        <label><input type="radio" name="q4" value="d"> 신호등이 파란불로 바뀌자 길을 건넌다</label>
-                    </div>
-                    <button class="answer-button" type="button">정답 확인</button>
-                    <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>신호를 보고 판단해서 건너는 것은 대뇌가 결정하는 의식적 반응입니다. 나머지는 대뇌를 거치지 않는 무조건 반사입니다.</p>
-                </article>
-            </div>
-        </details>
-    </main>
-    <script src="app.js?v=9"></script>
-</body>
-</html>
+<body><main data-curriculum-standards="9과20-02">
+    <header class="page-header"><div class="title-row"><a href="../">← 과학 실험실</a><h1>자극의 전달과 반사</h1></div><div class="grade-tags"><span>중학교 3학년</span></div></header>
+    <ol class="method-steps" aria-label="실험 방법"><li>반응의 종류를 고릅니다.</li><li>판단에 대뇌가 관여하는지 예상합니다.</li><li>자극이 전달되는 경로를 차례로 확인합니다.</li><li>반응의 중추와 결과를 비교합니다.</li></ol>
+    <div class="experiment-layout"><section class="panel control-panel" aria-labelledby="control-title"><h2 id="control-title">실험 조건</h2><fieldset><legend>반응의 종류</legend><div class="scope-choices"><button data-path="conscious" type="button">신호를 보고 손 들기</button><button data-path="pupil" type="button">밝은 빛에 동공 작아지기</button><button data-path="knee" type="button">무릎 반사</button></div></fieldset>
+  <fieldset><legend>이 반응을 일으킬 때 대뇌의 판단이 필요한가요?</legend><div class="scope-choices"><button data-prediction="yes" type="button">필요하다</button><button data-prediction="no" type="button">필요하지 않다</button></div></fieldset>
+  <div class="run-row"><button class="run-button" id="checkBtn" type="button">자극 주기</button><button class="step-button" id="nextBtn" type="button" disabled>다음 단계</button><button class="step-button" id="resetBtn" type="button">처음으로</button></div>
+      <section class="result-box" aria-live="polite"><h3>관찰 결과</h3><p id="resultEmpty">조건을 정하고 확인해 보세요.</p><div id="resultContent" hidden><p id="predictionResult" class="prediction-result"></p><p id="elementaryExplanation" class="explanation"></p></div></section>
+    </section><section class="panel" aria-label="관찰 화면"><div class="stage-heading"><h2>관찰</h2><span id="stageBadge"></span></div><svg class="scope-svg" viewBox="0 0 480 180" role="img" aria-label="선택한 반응의 자극과 결과"><g id="mainGroup"></g></svg><ol class="scope-route" id="routeList"></ol><p class="scope-note">전달 순서를 살펴보는 모형입니다. 단계 수나 화면 진행 속도는 실제 신경 수·반응 시간을 나타내지 않습니다.</p><p class="stage-caption" id="stageCaption" aria-live="polite"></p></section></div>
+    <section class="panel meaning-panel"><h2>실험 결과의 의미</h2><div class="meaning-body"><p><strong>의식적 반응</strong> 대뇌가 자극을 판단한 뒤 명령을 내립니다.</p><p><strong>무조건 반사</strong> 대뇌의 의식적인 판단 없이 일어납니다. 무릎 반사의 중추는 척수, 동공 반사의 중추는 중간뇌입니다.</p><p>대뇌의 판단 없이 반응한다고 해서 자극에 관한 정보가 대뇌에 전혀 전달되지 않는 것은 아닙니다.</p></div></section>
+    <details class="quiz-section" aria-labelledby="quiz-title"><summary class="quiz-heading"><h2 id="quiz-title">확인 문제</h2><span>4문제</span></summary><div class="quiz-grid"><article class="quiz-card" data-answer="a"><h3>무조건 반사의 특징은?</h3>
+    <div class="quiz-options"><label><input type="radio" name="q1" value="a"> 대뇌의 의식적인 판단 없이 일어난다.</label>
+<label><input type="radio" name="q1" value="b"> 매번 생각하고 결정해야 한다.</label>
+<label><input type="radio" name="q1" value="c"> 감각 신경이 필요 없다.</label>
+<label><input type="radio" name="q1" value="d"> 반응 기관이 없다.</label></div>
+    <button class="answer-button" type="button">정답 확인</button><p class="answer-result" aria-live="polite"></p>
+    <p class="answer-explanation" hidden>무조건 반사는 대뇌의 의식적인 판단 없이 일어나며, 반응에 따라 척수나 뇌의 다른 부분이 중추가 됩니다.</p></article>
+<article class="quiz-card" data-answer="c"><h3>자극이 전달되는 순서로 알맞은 것은?</h3>
+    <div class="quiz-options"><label><input type="radio" name="q2" value="a"> 운동 신경 → 감각 기관 → 중추</label>
+<label><input type="radio" name="q2" value="b"> 반응 기관 → 중추 → 감각 기관</label>
+<label><input type="radio" name="q2" value="c"> 감각 기관 → 감각 신경 → 중추 → 운동 신경 → 반응 기관</label>
+<label><input type="radio" name="q2" value="d"> 감각 기관 → 운동 신경 → 중추 → 감각 신경</label></div>
+    <button class="answer-button" type="button">정답 확인</button><p class="answer-result" aria-live="polite"></p>
+    <p class="answer-explanation" hidden>감각 신경은 자극을 중추로, 운동 신경은 중추의 명령을 반응 기관으로 전달합니다.</p></article>
+<article class="quiz-card" data-answer="b"><h3>무릎 반사의 중추는?</h3>
+    <div class="quiz-options"><label><input type="radio" name="q3" value="a"> 대뇌</label>
+<label><input type="radio" name="q3" value="b"> 척수</label>
+<label><input type="radio" name="q3" value="c"> 홍채</label>
+<label><input type="radio" name="q3" value="d"> 망막</label></div>
+    <button class="answer-button" type="button">정답 확인</button><p class="answer-result" aria-live="polite"></p>
+    <p class="answer-explanation" hidden>무릎 반사의 중추는 척수입니다. 동공 반사의 중추인 중간뇌와 구별합니다.</p></article>
+<article class="quiz-card" data-answer="d"><h3>의식적 반응의 예는?</h3>
+    <div class="quiz-options"><label><input type="radio" name="q4" value="a"> 밝은 곳에서 동공이 작아진다.</label>
+<label><input type="radio" name="q4" value="b"> 뜨거운 물체에 닿은 손을 움츠린다.</label>
+<label><input type="radio" name="q4" value="c"> 무릎 아래를 두드리면 다리가 올라간다.</label>
+<label><input type="radio" name="q4" value="d"> 신호를 보고 판단하여 손을 든다.</label></div>
+    <button class="answer-button" type="button">정답 확인</button><p class="answer-result" aria-live="polite"></p>
+    <p class="answer-explanation" hidden>신호를 보고 판단하여 손을 드는 것은 대뇌가 관여하는 의식적 반응입니다.</p></article></div></details>
+    </main><script src="../grade-quiz.js?v=1"></script><script src="app.js?v=30"></script></body></html>

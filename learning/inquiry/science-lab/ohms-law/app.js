@@ -341,7 +341,7 @@ document.addEventListener('DOMContentLoaded', () => {
         out += `
         <g transform="translate(180, 8)" filter="url(#compDrop)">
             <rect width="240" height="22" rx="11" fill="#ecfdf5" stroke="#10b981" stroke-width="1.2"/>
-            <text x="120" y="15.5" text-anchor="middle" fill="#065f46" font-size="12" font-weight="900" font-family="Pretendard, monospace">합성 R: ${a.R.toFixed(1)} Ω · 기울기 ${(1 / a.R).toFixed(3)} A/V</text>
+            <text x="120" y="15.5" text-anchor="middle" fill="#065f46" font-size="12" font-weight="900" font-family="Pretendard, monospace">${wiring === 'series' ? '전체 전류: R₁만일 때보다 작음' : '전체 전류: R₁만일 때보다 큼'}</text>
         </g>`;
 
         // R1 alone for comparison
@@ -386,13 +386,13 @@ document.addEventListener('DOMContentLoaded', () => {
         renderGraph();
     }
 
-    function clearResult() { resultEmpty.hidden = false; resultContent.hidden = true; }
+    function clearResult() { resultEmpty.hidden = false; resultContent.hidden = true; stageCaption.textContent = '조건을 정하고 측정해 보세요. 전체 저항은 크고 작음으로 비교합니다.'; }
 
     function check() {
         const a = analyse();
         resultEmpty.hidden = true;
         resultContent.hidden = false;
-        resultR.textContent = `${a.R.toFixed(1)} Ω`;
+        resultR.textContent = wiring === 'series' ? 'R₁보다 큼' : 'R₁보다 작음';
         resultI.textContent = `${a.I.toFixed(2)} A`;
 
         const actual = a.R > R1() ? 'bigger' : a.R < R1() ? 'smaller' : 'same';
@@ -401,10 +401,10 @@ document.addEventListener('DOMContentLoaded', () => {
             : prediction === actual ? '예상이 맞았습니다.' : '예상과 다른 결과입니다.';
 
         if (wiring === 'series') {
-            stageCaption.textContent = `직렬이라 합성 저항이 ${R1()} + ${R2()} = ${a.R.toFixed(0)} Ω 이고, 전류는 ${a.I.toFixed(2)} A 입니다.`;
+            stageCaption.textContent = `직렬연결에서는 전체 저항이 각 저항보다 커집니다. 전체 전류는 ${a.I.toFixed(2)} A입니다.`;
             explanation.textContent = `직렬연결에서는 전류가 흐를 길이 하나뿐이라 두 저항에 같은 ${a.I.toFixed(2)} A가 흐르고, 전압은 저항에 비례해 ${a.v1.toFixed(2)} V와 ${a.v2.toFixed(2)} V로 나뉩니다. 두 전압을 더하면 전원 전압 ${V().toFixed(1)} V가 됩니다.`;
         } else {
-            stageCaption.textContent = `병렬이라 합성 저항이 ${a.R.toFixed(1)} Ω 으로 각 저항보다 작고, 전류는 ${a.I.toFixed(2)} A 입니다.`;
+            stageCaption.textContent = `병렬연결에서는 전체 저항이 각 저항보다 작아집니다. 전체 전류는 ${a.I.toFixed(2)} A입니다.`;
             explanation.textContent = `병렬연결에서는 두 저항에 같은 ${V().toFixed(1)} V가 걸리고, 전류는 ${a.i1.toFixed(2)} A와 ${a.i2.toFixed(2)} A로 나뉘어 흐른 뒤 합쳐집니다. 길이 늘어난 셈이므로 합성 저항은 가장 작은 저항보다도 작아집니다.`;
         }
     }
