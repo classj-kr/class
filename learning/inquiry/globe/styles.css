@@ -1,0 +1,140 @@
+:root {
+  --space: #0b1522;
+  --panel: rgba(12, 20, 32, 0.8);
+  --line: rgba(255, 255, 255, 0.18);
+  --text: #e9eef5;
+  --muted: #93a1b2;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  background: var(--space);
+  color: var(--text);
+  font-family: Pretendard, "Noto Sans KR", "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
+}
+
+#globe {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at 50% 45%, #13243a 0%, var(--space) 70%);
+}
+
+#globe:focus { outline: none; }
+
+.view-controls {
+  position: fixed;
+  top: max(10px, env(safe-area-inset-top));
+  right: max(10px, env(safe-area-inset-right));
+  z-index: 3;
+  display: grid;
+  gap: 8px;
+}
+
+.view-controls button {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--panel);
+  color: var(--text);
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.view-controls button:disabled { opacity: 0.4; cursor: default; }
+.view-controls button:not(:disabled):active { transform: scale(0.95); }
+.view-controls button:focus-visible,
+.layer-bar button:focus-visible { outline: 3px solid #60a5fa; outline-offset: 2px; }
+
+.view-controls svg {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.layer-bar {
+  position: fixed;
+  left: 50%;
+  bottom: max(10px, env(safe-area-inset-bottom));
+  z-index: 3;
+  transform: translateX(-50%);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  width: max-content;
+  max-width: calc(100vw - 24px);
+  padding: 6px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--panel);
+  backdrop-filter: blur(8px);
+}
+
+.layer-bar .divider {
+  width: 1px;
+  height: 22px;
+  margin: 0 2px;
+  background: var(--line);
+}
+
+.layer-bar button {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  height: 34px;
+  padding: 0 12px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--muted);
+  font: inherit;
+  font-size: 14px;
+  white-space: nowrap;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.layer-bar button[aria-pressed="true"] {
+  border-color: rgba(255, 255, 255, 0.42);
+  background: rgba(255, 255, 255, 0.13);
+  color: var(--text);
+}
+
+.layer-bar .swatch {
+  flex: none;
+  width: 10px;
+  height: 10px;
+  border: 2px solid var(--swatch);
+  border-radius: 50%;
+}
+
+.layer-bar button[aria-pressed="true"] .swatch { background: var(--swatch); }
+
+/* 출처 표시는 오른쪽 위 단추 셋 아래에 둔다. */
+.maplibregl-ctrl-top-right {
+  top: calc(max(10px, env(safe-area-inset-top)) + 160px);
+}
+
+.maplibregl-ctrl-attrib.maplibregl-compact {
+  margin: 0 max(10px, env(safe-area-inset-right)) 0 0;
+}
+
+@media (max-width: 640px) {
+  .layer-bar { gap: 5px; padding: 5px; }
+  .layer-bar button { height: 32px; padding: 0 10px; font-size: 13.5px; }
+  .layer-bar .divider { display: none; }
+}
