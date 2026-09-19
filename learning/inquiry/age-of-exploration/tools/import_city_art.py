@@ -23,8 +23,11 @@ for src in sorted(SOURCE.iterdir()):
         unknown.append(src.name)
         continue
     out = TARGET / f'{key}.webp'
+    # 원본을 게임 폴더에 그대로 복사해 둔 경우(1536x1024)도 있으니, 시각만 보지 말고 규격도 본다.
     if out.exists() and out.stat().st_mtime >= src.stat().st_mtime:
-        continue
+        with Image.open(out) as current:
+            if current.size == SIZE:
+                continue
     im = Image.open(src).convert('RGB')
     w, h = im.size
     if w * SIZE[1] > h * SIZE[0]:
