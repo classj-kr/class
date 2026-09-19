@@ -1,4 +1,4 @@
-/* Apparatus: a battery-and-bulb circuit, plus an electromagnet rig. */
+/* Apparatus: a battery-and-bulb circuit, plus an electromagnet comparison rig. */
 
 .mode-switch { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 4px 0 18px; }
 .mode {
@@ -46,7 +46,16 @@
 
 .prediction-buttons.three { grid-template-columns: repeat(3, 1fr); }
 .range-scale { grid-template-columns: repeat(3, 1fr); }
-#magnetControls .range-scale { grid-template-columns: repeat(4, 1fr); }
+.range-scale.two { grid-template-columns: repeat(2, 1fr); }
+.range-scale.four { grid-template-columns: repeat(4, 1fr); }
+.direction-field { margin-top: 18px; }
+.comparison-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.comparison-actions .toggle-button { margin-top: 0; }
+.comparison-actions .toggle-button.selected {
+    border-color: var(--primary);
+    background: var(--primary-light);
+    color: #0369a1;
+}
 
 .toggle-button {
     width: 100%;
@@ -100,7 +109,8 @@
 
 .battery-body { fill: #1c2e38; stroke: rgba(56, 189, 248, 0.6); stroke-width: 1.4; rx: 4px; }
 .battery-cap { fill: #f59e0b; rx: 1px; }
-.battery-label { fill: #ffffff; font-size: 13px; font-weight: 900; }
+.battery-label { fill: #334155; font-size: 13px; font-weight: 900; }
+.battery-sign { fill: #f8fafc; font-size: 13px; font-weight: 950; }
 
 .bulb-glass { stroke: rgba(255, 255, 255, 0.85); stroke-width: 1.6; }
 .bulb-base { fill: #7e8d94; stroke: rgba(220, 235, 240, 0.5); stroke-width: 1; rx: 2px; }
@@ -110,9 +120,58 @@
 .bulb-caption { fill: #334155; font-size: 13px; font-weight: 850; }
 
 .core { fill: #5c6c74; stroke: rgba(220, 235, 240, 0.6); stroke-width: 1.3; }
+.core.off { fill: #37454c; opacity: 0.72; }
 .coil { stroke: #ea8a3a; stroke-width: 3.6; fill: none; stroke-linecap: round; filter: drop-shadow(0 0 2px rgba(234, 138, 58, 0.5)); }
+.coil.off { stroke: #7c6351; filter: none; opacity: 0.65; }
 .clip { fill: #cbd5e1; stroke: rgba(255, 255, 255, 0.6); stroke-width: 0.9; }
 .stage-label { fill: var(--muted); font-size: 13px; font-weight: 850; }
+.stage-mask { fill: #ffffff; }
+.switch-contact { fill: #64748b; stroke: #cbd5e1; stroke-width: 1.2; }
+.switch-blade { stroke: #f59e0b; stroke-width: 4; stroke-linecap: round; }
+.switch-blade.closed { stroke: #16a34a; }
+.pole-label { stroke: rgba(255,255,255,.8); stroke-width: 1.2; }
+.pole-label.north, .permanent.north { fill: #ef4444; }
+.pole-label.south, .permanent.south { fill: #2563eb; }
+.pole-label.off { fill: #64748b; }
+.pole-text { fill: #ffffff; font-size: 13px; font-weight: 950; }
+.permanent { stroke: rgba(255,255,255,.7); stroke-width: 1.2; }
+
+.use-examples {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px solid var(--line);
+}
+.use-examples strong { color: var(--ink); margin-right: 4px; }
+.use-examples span {
+    padding: 6px 9px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    color: var(--muted);
+    font-size: 13px;
+    font-weight: 750;
+    background: rgba(255,255,255,.7);
+}
+.curriculum-note {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 14px;
+    margin: 18px 0;
+    padding: 14px 16px;
+    border: 1px solid rgba(56,189,248,.28);
+    border-radius: 14px;
+    background: rgba(56,189,248,.06);
+    color: var(--muted);
+    font-size: 13px;
+}
+.curriculum-note strong { color: var(--ink); }
+
+@media (max-width: 560px) {
+    .comparison-actions { grid-template-columns: 1fr; }
+}
 
 @media (prefers-reduced-motion: reduce) {
     .current { animation: none; }

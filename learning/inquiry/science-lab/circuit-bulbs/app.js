@@ -1,16 +1,18 @@
 document.addEventListener('DOMContentLoaded', () => {
     const modeButtons = [...document.querySelectorAll('[data-mode]')];
-    const wiringButtons = [...document.querySelectorAll('[data-wiring]')];
+    const circuitButtons = [...document.querySelectorAll('[data-circuit]')];
+    const directionButtons = [...document.querySelectorAll('[data-direction]')];
     const predictionButtons = [...document.querySelectorAll('[data-prediction]')];
-    const bulbControls = document.getElementById('bulbControls');
+    const circuitControls = document.getElementById('circuitControls');
     const magnetControls = document.getElementById('magnetControls');
-    const bulbRange = document.getElementById('bulbRange');
-    const bulbOutput = document.getElementById('bulbOutput');
-    const removeBtn = document.getElementById('removeBtn');
-    const batteryRange = document.getElementById('batteryRange');
-    const batteryOutput = document.getElementById('batteryOutput');
+    const circuitBatteryRange = document.getElementById('circuitBatteryRange');
+    const circuitBatteryOutput = document.getElementById('circuitBatteryOutput');
+    const magnetBatteryRange = document.getElementById('magnetBatteryRange');
+    const magnetBatteryOutput = document.getElementById('magnetBatteryOutput');
     const coilRange = document.getElementById('coilRange');
     const coilOutput = document.getElementById('coilOutput');
+    const powerBtn = document.getElementById('powerBtn');
+    const compareBtn = document.getElementById('compareBtn');
     const checkBtn = document.getElementById('checkBtn');
     const resultEmpty = document.getElementById('resultEmpty');
     const resultContent = document.getElementById('resultContent');
@@ -24,170 +26,139 @@ document.addEventListener('DOMContentLoaded', () => {
     const stageBadge = document.getElementById('stageBadge');
     const circuitGroup = document.getElementById('circuitGroup');
 
-    let mode = 'bulb';
-    let wiring = 'series';
-    let removed = false;
+    let mode = 'circuit';
+    let circuitClosed = true;
+    let magnetDirection = 'forward';
+    let magnetPower = true;
+    let comparePermanent = false;
     let prediction = null;
 
-    const bulbCount = () => Number(bulbRange.value);
-
-    // Circuit analysis with identical bulbs of resistance R across an EMF V.
-    // Series: I = V/(nR) so each bulb dissipates V²/(n²R) — brightness falls
-    // as 1/n². Parallel: every branch sees the full V, so each bulb stays at
-    // V²/R no matter how many are added, while the total current rises with n.
-    // Everything the picture shows is read off these two facts.
-    function analyse() {
-        const n = bulbCount();
-        if (wiring === 'series') {
-            const open = removed;                       // one gap breaks the only path
-            return {
-                lit: open ? 0 : n,
-                brightnessEach: open ? 0 : 1 / (n * n),
-                totalCurrent: open ? 0 : 1 / n,
-                branchCurrent: open ? 0 : 1 / n,
-                broken: open,
-            };
-        }
-        const active = removed ? n - 1 : n;             // each branch is independent
+    function circuitState() {
+        const batteries = Number(circuitBatteryRange.value);
         return {
-            lit: active,
-            brightnessEach: active > 0 ? 1 : 0,
-            totalCurrent: active,
-            branchCurrent: active > 0 ? 1 : 0,
-            broken: false,
+            batteries,
+            closed: circuitClosed,
+            lit: circuitClosed,
+            brightness: circuitClosed ? batteries : 0,
+            comparison: !circuitClosed ? '꺼짐' : batteries === 1 ? '기준' : '더 밝음',
         };
     }
 
     function magnetState() {
-        const batteries = Number(batteryRange.value);
+        const batteries = Number(magnetBatteryRange.value);
         const turns = Number(coilRange.value);
-        // Field strength of a solenoid goes as N·I, and with a fixed coil the
-        // current follows the battery count, so strength ∝ turns × batteries.
-        const strength = (batteries * turns) / 50;
-        return { batteries, turns, strength, clips: Math.min(12, Math.round(strength)) };
+        const strength = magnetPower ? (batteries * turns) / 50 : 0;
+        const leftPole = !magnetPower ? '—' : magnetDirection === 'forward' ? 'S' : 'N';
+        const rightPole = !magnetPower ? '—' : magnetDirection === 'forward' ? 'N' : 'S';
+        return {
+            batteries, turns, power: magnetPower, direction: magnetDirection,
+            strength, clips: Math.min(12, Math.round(strength)), leftPole, rightPole,
+        };
     }
 
     const bulbSVG = (x, y, on, brightness) => {
-        const glow = on ? `<circle cx="${x}" cy="${y}" r="${(16 + 26 * Math.sqrt(brightness)).toFixed(1)}" fill="url(#bulbGlow)" opacity="${(0.25 + 0.75 * brightness).toFixed(2)}"/>` : '';
+        const visualBrightness = Math.min(1.65, brightness);
+        const glow = on
+            ? `<circle cx="${x}" cy="${y}" r="${(25 + 22 * visualBrightness).toFixed(1)}" fill="url(#bulbGlow)" opacity="${(0.5 + 0.25 * visualBrightness).toFixed(2)}"/>`
+            : '';
         return glow +
-            `<circle class="bulb-glass" cx="${x}" cy="${y}" r="15" fill="${on ? `rgba(255,225,150,${(0.25 + 0.6 * brightness).toFixed(2)})` : 'rgba(150,165,172,.18)'}"/>` +
-            `<path class="bulb-filament${on ? '' : ' off'}" d="M${x - 6},${y + 3} L${x - 2},${y - 4} L${x + 2},${y + 4} L${x + 6},${y - 3}"/>` +
-            `<rect class="bulb-base" x="${x - 7}" y="${y + 14}" width="14" height="7" rx="2"/>`;
+            `<circle class="bulb-glass" cx="${x}" cy="${y}" r="18" fill="${on ? `rgba(255,225,150,${(0.28 + 0.35 * visualBrightness).toFixed(2)})` : 'rgba(150,165,172,.18)'}"/>` +
+            `<path class="bulb-filament${on ? '' : ' off'}" d="M${x - 7},${y + 3} L${x - 2},${y - 5} L${x + 2},${y + 5} L${x + 7},${y - 3}"/>` +
+            `<rect class="bulb-base" x="${x - 8}" y="${y + 17}" width="16" height="8" rx="2"/>`;
     };
 
-    const batterySVG = (x, y, count = 1) => {
+    const batterySVG = (x, y, count = 1, direction = 'forward') => {
         let out = '';
-        for (let i = 0; i < count; i += 1) {
-            const bx = x + i * 30;
-            out += `<rect class="battery-body" x="${bx - 12}" y="${y - 11}" width="24" height="22" rx="3"/>` +
-                   `<rect class="battery-cap" x="${bx - 3}" y="${y - 15}" width="6" height="4" rx="1"/>`;
+        for (let index = 0; index < count; index += 1) {
+            const bx = x + index * 34;
+            out += `<rect class="battery-body" x="${bx - 13}" y="${y - 12}" width="26" height="24" rx="4"/>` +
+                `<rect class="battery-cap" x="${bx - 3}" y="${y - 17}" width="6" height="5" rx="1"/>` +
+                `<text class="battery-sign" x="${bx}" y="${y + 4}" text-anchor="middle">${direction === 'forward' ? '+' : '−'}</text>`;
         }
         return out;
     };
 
-    function renderBulbCircuit() {
-        const n = bulbCount();
-        const a = analyse();
-        const dur = t => `style="animation-duration:${t.toFixed(2)}s"`;
-        let out = '';
-
-        if (wiring === 'series') {
-            const L = 70, R = 410, T = 80, B = 225;
-            // one continuous loop, with the battery sitting on the left side
-            const loop = `M${L},140 L${L},${T} L${R},${T} L${R},${B} L${L},${B} L${L},160`;
-            out += `<path class="wire${a.broken ? ' dead' : ''}" d="${loop}"/>`;
-            if (!a.broken && a.totalCurrent > 0) {
-                out += `<path class="current" d="${loop}" ${dur(1 / a.totalCurrent)}/>`;
-            }
-            out += batterySVG(L, 150);
-            out += `<text class="battery-label" x="${L - 34}" y="154">전지</text>`;
-            for (let i = 0; i < n; i += 1) {
-                const x = L + ((R - L) * (i + 1)) / (n + 1);
-                const isGone = removed && i === n - 1;
-                if (isGone) {
-                    out += `<circle class="bulb-missing" cx="${x}" cy="${T}" r="15" fill="none"/>` +
-                           `<text class="bulb-caption" x="${x}" y="${T + 40}" text-anchor="middle">빠짐</text>`;
-                } else {
-                    out += bulbSVG(x, T, !a.broken && a.lit > 0, a.brightnessEach);
-                }
-            }
-            out += `<text class="stage-label" x="240" y="262" text-anchor="middle">${a.broken ? '길이 끊어져 전류가 흐르지 못합니다' : '전구가 한 줄로 이어져 있습니다'}</text>`;
+    function renderCircuit() {
+        const state = circuitState();
+        const left = 74, right = 390, top = 72, bottom = 226;
+        const switchLeft = 175, switchRight = 225;
+        const fullLoop = `M${left},138 L${left},${top} L${right},${top} L${right},${bottom} L${left},${bottom} L${left},162`;
+        let out = `<path class="wire${state.closed ? '' : ' dead'}" d="${fullLoop}"/>`;
+        if (state.closed) {
+            out += `<path class="current" d="${fullLoop}" style="animation-duration:${state.batteries === 2 ? '.58s' : '1s'}"/>`;
+            out += `<line class="switch-blade closed" x1="${switchLeft}" y1="${bottom}" x2="${switchRight}" y2="${bottom}"/>`;
         } else {
-            const LR = 160, RR = 380, TOP = 60, BOT = 240;
-            const ys = n === 1 ? [150] : n === 2 ? [100, 200] : [80, 150, 220];
-            // battery out to the left rail, and back from the right rail
-            const lead = `M70,138 L70,40 L${LR},40 L${LR},${TOP}`;
-            const ret = `M70,162 L70,260 L${RR},260 L${RR},${BOT}`;
-            out += `<path class="wire" d="${lead}"/><path class="wire" d="${ret}"/>`;
-            out += `<path class="wire" d="M${LR},${TOP} L${LR},${BOT}"/>`;
-            out += `<path class="wire" d="M${RR},${TOP} L${RR},${BOT}"/>`;
-            if (a.totalCurrent > 0) {
-                out += `<path class="current" d="${lead}" ${dur(1 / a.totalCurrent)}/>`;
-                out += `<path class="current" d="${ret}" ${dur(1 / a.totalCurrent)}/>`;
-            }
-            ys.forEach((y, i) => {
-                const isGone = removed && i === n - 1;
-                const branch = `M${LR},${y} L${RR},${y}`;
-                out += `<path class="wire${isGone ? ' dead' : ''}" d="${branch}"/>`;
-                if (!isGone && a.branchCurrent > 0) {
-                    // each branch carries the same current whatever n is
-                    out += `<path class="current" d="${branch}" ${dur(1 / a.branchCurrent)}/>`;
-                }
-                const x = (LR + RR) / 2;
-                if (isGone) {
-                    out += `<circle class="bulb-missing" cx="${x}" cy="${y}" r="15" fill="none"/>` +
-                           `<text class="bulb-caption" x="${x}" y="${y + 40}" text-anchor="middle">빠짐</text>`;
-                } else {
-                    out += bulbSVG(x, y, a.brightnessEach > 0, a.brightnessEach);
-                }
-            });
-            out += batterySVG(70, 150);
-            out += `<text class="battery-label" x="36" y="154">전지</text>`;
-            out += `<text class="stage-label" x="270" y="286" text-anchor="middle">전구마다 전류가 흐르는 길이 따로 있습니다</text>`;
+            out += `<rect class="stage-mask" x="${switchLeft - 6}" y="${bottom - 9}" width="${switchRight - switchLeft + 12}" height="18"/>`;
+            out += `<circle class="switch-contact" cx="${switchLeft}" cy="${bottom}" r="4"/>`;
+            out += `<circle class="switch-contact" cx="${switchRight}" cy="${bottom}" r="4"/>`;
+            out += `<line class="switch-blade" x1="${switchLeft}" y1="${bottom - 3}" x2="${switchRight - 7}" y2="${bottom - 28}"/>`;
         }
+        out += batterySVG(left, 150, state.batteries);
+        out += `<text class="battery-label" x="${left + (state.batteries - 1) * 17}" y="190" text-anchor="middle">전지 ${state.batteries}개 직렬연결</text>`;
+        out += bulbSVG(285, top, state.lit, state.brightness);
+        out += `<text class="stage-label" x="285" y="120" text-anchor="middle">${state.lit ? state.comparison : '불이 켜지지 않음'}</text>`;
+        out += `<text class="stage-label" x="230" y="266" text-anchor="middle">${state.closed ? '끊어진 곳 없이 이어진 회로' : '스위치가 열려 끊어진 회로'}</text>`;
         circuitGroup.innerHTML = out;
     }
 
+    function poleLabel(x, y, pole, active) {
+        const className = !active ? 'pole-label off' : pole === 'N' ? 'pole-label north' : 'pole-label south';
+        return `<g><circle class="${className}" cx="${x}" cy="${y}" r="15"/><text class="pole-text" x="${x}" y="${y + 5}" text-anchor="middle">${pole}</text></g>`;
+    }
+
     function renderMagnet() {
-        const m = magnetState();
-        let out = '';
-        const coreX = 190, coreY = 150, coreW = 150, coreH = 26;
-        out += batterySVG(70, 250, m.batteries);
-        out += `<text class="battery-label" x="60" y="288">전지 ${m.batteries}개</text>`;
-        const lead = `M70,239 L70,150 L${coreX - 14},150`;
-        const ret = `M${70 + (m.batteries - 1) * 30},261 L${70 + (m.batteries - 1) * 30},290 L${coreX + coreW + 20},290 L${coreX + coreW + 20},176`;
-        out += `<path class="wire" d="${lead}"/><path class="wire" d="${ret}"/>`;
-        out += `<path class="current" d="${lead}" style="animation-duration:${(1 / m.batteries).toFixed(2)}s"/>`;
-        out += `<path class="current" d="${ret}" style="animation-duration:${(1 / m.batteries).toFixed(2)}s"/>`;
-        out += `<rect class="core" x="${coreX}" y="${coreY - coreH / 2}" width="${coreW}" height="${coreH}" rx="5"/>`;
-        // number of drawn turns tracks the coil setting
-        const loops = Math.round(m.turns / 16);
-        let coil = '';
-        for (let i = 0; i < loops; i += 1) {
-            const x = coreX + 8 + (i * (coreW - 16)) / Math.max(1, loops - 1);
-            coil += `<path class="coil" d="M${x.toFixed(1)},${coreY - coreH / 2 - 7} Q${(x + 7).toFixed(1)},${coreY} ${x.toFixed(1)},${coreY + coreH / 2 + 7}"/>`;
+        const state = magnetState();
+        const coreX = 170, coreY = comparePermanent ? 92 : 132, coreW = 155, coreH = 26;
+        let out = batterySVG(55, 236, state.batteries, state.direction);
+        out += `<text class="battery-label" x="${55 + (state.batteries - 1) * 17}" y="272" text-anchor="middle">${state.direction === 'forward' ? '＋ → −' : '− → ＋'}</text>`;
+        const lead = `M55,219 L55,${coreY} L${coreX - 18},${coreY}`;
+        const returnX = 55 + (state.batteries - 1) * 34;
+        const ret = `M${returnX},248 L${returnX},286 L${coreX + coreW + 18},286 L${coreX + coreW + 18},${coreY + 18}`;
+        out += `<path class="wire${state.power ? '' : ' dead'}" d="${lead}"/><path class="wire${state.power ? '' : ' dead'}" d="${ret}"/>`;
+        if (state.power) {
+            const duration = (1 / state.batteries).toFixed(2);
+            out += `<path class="current" d="${lead}" style="animation-duration:${duration}s"/>`;
+            out += `<path class="current" d="${ret}" style="animation-duration:${duration}s"/>`;
         }
-        out += coil;
-        out += `<text class="stage-label" x="${coreX + coreW / 2}" y="${coreY - 34}" text-anchor="middle">코일 ${m.turns}번 감음</text>`;
-        // clips cling to the tip, more of them as the field gets stronger
-        for (let i = 0; i < m.clips; i += 1) {
-            const col = i % 4, row = Math.floor(i / 4);
-            const cx = coreX + coreW + 12 + col * 13;
-            const cy = coreY - 13 + row * 13;
-            out += `<rect class="clip" x="${cx}" y="${cy}" width="9" height="5" rx="2"/>`;
+        out += `<rect class="core${state.power ? '' : ' off'}" x="${coreX}" y="${coreY - coreH / 2}" width="${coreW}" height="${coreH}" rx="5"/>`;
+        const loops = Math.round(state.turns / 16);
+        for (let index = 0; index < loops; index += 1) {
+            const x = coreX + 8 + (index * (coreW - 16)) / Math.max(1, loops - 1);
+            out += `<path class="coil${state.power ? '' : ' off'}" d="M${x.toFixed(1)},${coreY - coreH / 2 - 7} Q${(x + 7).toFixed(1)},${coreY} ${x.toFixed(1)},${coreY + coreH / 2 + 7}"/>`;
         }
-        out += `<text class="stage-label" x="${coreX + coreW + 34}" y="${coreY + 46}" text-anchor="middle">클립 ${m.clips}개</text>`;
+        out += poleLabel(coreX - 22, coreY, state.leftPole, state.power);
+        out += poleLabel(coreX + coreW + 22, coreY, state.rightPole, state.power);
+        out += `<text class="stage-label" x="${coreX + coreW / 2}" y="${coreY - 35}" text-anchor="middle">전자석 · 코일 ${state.turns}번</text>`;
+        for (let index = 0; index < state.clips; index += 1) {
+            const x = coreX + coreW + 45 + (index % 4) * 12;
+            const y = coreY - 14 + Math.floor(index / 4) * 12;
+            out += `<rect class="clip" x="${x}" y="${y}" width="8" height="5" rx="2"/>`;
+        }
+        out += `<text class="stage-label" x="390" y="${coreY + 50}" text-anchor="middle">클립 ${state.clips}개</text>`;
+        if (comparePermanent) {
+            const y = 205;
+            out += `<text class="stage-label" x="${coreX + coreW / 2}" y="174" text-anchor="middle">영구자석 · 전원 없이도 자성 유지</text>`;
+            out += `<rect class="permanent north" x="${coreX}" y="${y - 13}" width="${coreW / 2}" height="26" rx="5"/>`;
+            out += `<rect class="permanent south" x="${coreX + coreW / 2}" y="${y - 13}" width="${coreW / 2}" height="26" rx="5"/>`;
+            out += poleLabel(coreX - 22, y, 'N', true) + poleLabel(coreX + coreW + 22, y, 'S', true);
+            for (let index = 0; index < 6; index += 1) {
+                const x = coreX + coreW + 45 + (index % 3) * 12;
+                const cy = y - 8 + Math.floor(index / 3) * 12;
+                out += `<rect class="clip" x="${x}" y="${cy}" width="8" height="5" rx="2"/>`;
+            }
+        }
         circuitGroup.innerHTML = out;
     }
 
     function render() {
-        if (mode === 'bulb') {
-            renderBulbCircuit();
-            stageBadge.textContent = wiring === 'series' ? '직렬연결' : '병렬연결';
+        if (mode === 'circuit') {
+            const state = circuitState();
+            renderCircuit();
+            stageBadge.textContent = `전지 ${state.batteries}개 · ${state.closed ? '이어짐' : '끊어짐'}`;
         } else {
+            const state = magnetState();
             renderMagnet();
-            const m = magnetState();
-            stageBadge.textContent = `전지 ${m.batteries}개 · 코일 ${m.turns}번`;
+            stageBadge.textContent = `${state.power ? `${state.leftPole}극–${state.rightPole}극` : '전원 꺼짐'} · 전지 ${state.batteries}개`;
         }
     }
 
@@ -200,79 +171,85 @@ document.addEventListener('DOMContentLoaded', () => {
         resultEmpty.hidden = true;
         resultContent.hidden = false;
         if (mode === 'magnet') {
-            const m = magnetState();
-            resultLabelA.textContent = '전자석의 세기';
-            resultLabelB.textContent = '붙은 클립';
-            resultA.textContent = `${m.strength.toFixed(1)}`;
-            resultB.textContent = `${m.clips}개`;
-            predictionResult.textContent = '전지와 코일 수를 바꾸며 세기를 비교해 보세요.';
-            explanation.textContent = `전지 ${m.batteries}개와 코일 ${m.turns}번을 곱한 만큼 세집니다. 전지를 늘리거나 코일을 더 감으면 클립이 더 많이 붙습니다.`;
-            stageCaption.textContent = `전자석에 클립이 ${m.clips}개 붙었습니다.`;
+            const state = magnetState();
+            resultLabelA.textContent = '붙은 클립';
+            resultLabelB.textContent = '양 끝의 극';
+            resultA.textContent = `${state.clips}개`;
+            resultB.textContent = state.power ? `${state.leftPole} · ${state.rightPole}` : '없음';
+            predictionResult.textContent = state.power
+                ? '전지 방향을 바꾸면 세기는 그대로이고 두 극이 서로 바뀝니다.'
+                : '전원을 끄자 전자석의 자성이 거의 사라졌습니다.';
+            explanation.textContent = state.power
+                ? `전지 ${state.batteries}개, 코일 ${state.turns}번에서 클립 ${state.clips}개가 붙습니다. 전지를 늘리면 더 세지고, 전지 방향을 바꾸면 ${state.leftPole}극과 ${state.rightPole}극의 위치가 바뀝니다.`
+                : `전류가 흐르지 않아 클립이 붙지 않습니다.${comparePermanent ? ' 아래 영구자석은 전원 없이도 클립을 계속 끌어당깁니다.' : ' 영구자석과 비교 버튼을 눌러 차이를 확인해 보세요.'}`;
+            stageCaption.textContent = state.power
+                ? `전자석의 왼쪽은 ${state.leftPole}극, 오른쪽은 ${state.rightPole}극이고 클립 ${state.clips}개가 붙었습니다.`
+                : '전원을 끄자 전자석에서 클립이 떨어졌습니다.';
             return;
         }
-        const n = bulbCount();
-        const a = analyse();
-        resultLabelA.textContent = '전구 하나의 밝기';
-        resultLabelB.textContent = '전체 전류';
-        resultA.textContent = `${Math.round(a.brightnessEach * 100)}%`;
-        resultB.textContent = `${a.totalCurrent.toFixed(2)}배`;
-
-        const actual = a.brightnessEach < 1 ? 'dimmer' : a.brightnessEach > 1 ? 'brighter' : 'same';
+        const state = circuitState();
+        resultLabelA.textContent = '회로 상태';
+        resultLabelB.textContent = '전구 밝기';
+        resultA.textContent = state.closed ? '이어짐' : '끊어짐';
+        resultB.textContent = state.comparison;
+        const actual = state.batteries === 2 && state.closed ? 'brighter' : state.batteries === 1 && state.closed ? 'same' : 'dimmer';
         predictionResult.textContent = !prediction
             ? '다음에는 결과를 먼저 예상해 보세요.'
             : prediction === actual ? '예상이 맞았습니다.' : '예상과 다른 결과입니다.';
-
-        if (a.broken) {
-            stageCaption.textContent = '직렬연결에서 전구 하나를 빼자 모든 전구가 꺼졌습니다.';
-            explanation.textContent = '직렬연결은 전류가 흐르는 길이 하나뿐이라, 한 곳이 끊어지면 전체 회로가 끊겨 모두 꺼집니다.';
-        } else if (wiring === 'series') {
-            stageCaption.textContent = `직렬로 ${n}개를 연결하니 전구 하나의 밝기가 ${Math.round(a.brightnessEach * 100)}%입니다.`;
-            // 밝기는 전류의 제곱을 따라가지만, 초등 과정에서는 "줄어든 만큼 다시
-            // 한 번 더 줄어든다"로 풀어 씁니다.
-            explanation.textContent = n === 1
-                ? '전구가 하나뿐이라 전지의 힘을 그대로 받습니다. 이때의 밝기를 100%로 삼고 다른 경우와 견주어 봅니다.'
-                : `직렬연결은 전류가 흐르는 길이 하나뿐이라, 전구를 ${n}개 이으면 전류가 ${n}분의 1로 줄어듭니다. ` +
-                  `밝기는 전류가 줄어든 만큼 한 번 더 줄어들어 ${n * n}분의 1, 곧 ${Math.round(a.brightnessEach * 100)}%가 됩니다.`;
-        } else if (removed) {
-            stageCaption.textContent = `병렬연결에서 하나를 빼도 나머지 ${a.lit}개는 그대로 켜져 있습니다.`;
-            explanation.textContent = '병렬연결은 전구마다 전류가 흐르는 길이 따로 있어, 하나를 빼도 나머지 밝기가 변하지 않습니다.';
+        if (!state.closed) {
+            explanation.textContent = '전선이 한 곳이라도 끊어지면 전류가 한 바퀴 돌아 전지로 되돌아갈 수 없어 전구가 켜지지 않습니다.';
+            stageCaption.textContent = '스위치가 열려 회로가 끊어졌으므로 전구가 꺼졌습니다.';
+        } else if (state.batteries === 1) {
+            explanation.textContent = '전지, 전선, 전구가 끊어진 곳 없이 이어져 전구가 켜졌습니다. 이 밝기를 비교의 기준으로 삼습니다.';
+            stageCaption.textContent = '전지 한 개를 연결한 회로에서 전구가 기준 밝기로 켜졌습니다.';
         } else {
-            stageCaption.textContent = `병렬로 ${n}개를 연결해도 전구 하나의 밝기는 100% 그대로입니다.`;
-            explanation.textContent = `병렬연결에서는 전구마다 전지에 그대로 이어져 있어 밝기가 변하지 않습니다. 대신 전체 전류가 ${n}배로 늘어 전지가 더 빨리 닳습니다.`;
+            explanation.textContent = '전지 두 개를 같은 방향으로 직렬연결하면 전기 작용이 더 커져 전지 한 개일 때보다 전구가 밝아집니다.';
+            stageCaption.textContent = '전지 두 개를 직렬연결하자 전구가 더 밝아졌습니다.';
         }
     }
 
     modeButtons.forEach(button => button.addEventListener('click', () => {
         mode = button.dataset.mode;
         modeButtons.forEach(item => item.classList.toggle('selected', item === button));
-        bulbControls.hidden = mode !== 'bulb';
+        circuitControls.hidden = mode !== 'circuit';
         magnetControls.hidden = mode !== 'magnet';
         clearResult();
-        stageCaption.textContent = mode === 'bulb'
-            ? '연결 방법과 전구 수를 바꾸며 밝기를 비교해 보세요.'
-            : '전지 수와 코일 감은 수를 바꾸며 전자석의 세기를 비교해 보세요.';
+        stageCaption.textContent = mode === 'circuit'
+            ? '전지 한 개와 두 개를 직렬로 연결했을 때의 밝기를 비교해 보세요.'
+            : '전지 수와 방향을 바꾸고 전원을 꺼 보며 전자석의 성질을 관찰하세요.';
         render();
     }));
-    wiringButtons.forEach(button => button.addEventListener('click', () => {
-        wiring = button.dataset.wiring;
-        wiringButtons.forEach(item => item.classList.toggle('selected', item === button));
+    circuitButtons.forEach(button => button.addEventListener('click', () => {
+        circuitClosed = button.dataset.circuit === 'closed';
+        circuitButtons.forEach(item => item.classList.toggle('selected', item === button));
         render(); clearResult();
     }));
-    bulbRange.addEventListener('input', () => {
-        bulbOutput.textContent = `${bulbRange.value}개`;
+    directionButtons.forEach(button => button.addEventListener('click', () => {
+        magnetDirection = button.dataset.direction;
+        directionButtons.forEach(item => item.classList.toggle('selected', item === button));
+        render(); clearResult();
+    }));
+    circuitBatteryRange.addEventListener('input', () => {
+        circuitBatteryOutput.textContent = `${circuitBatteryRange.value}개`;
         render(); clearResult();
     });
-    removeBtn.addEventListener('click', () => {
-        removed = !removed;
-        removeBtn.classList.toggle('active', removed);
-        removeBtn.textContent = removed ? '전구 다시 끼우기' : '전구 하나 빼기';
-        render(); clearResult();
-    });
-    [batteryRange, coilRange].forEach(el => el.addEventListener('input', () => {
-        batteryOutput.textContent = `${batteryRange.value}개`;
+    [magnetBatteryRange, coilRange].forEach(element => element.addEventListener('input', () => {
+        magnetBatteryOutput.textContent = `${magnetBatteryRange.value}개`;
         coilOutput.textContent = `${coilRange.value}번`;
         render(); clearResult();
     }));
+    powerBtn.addEventListener('click', () => {
+        magnetPower = !magnetPower;
+        powerBtn.classList.toggle('active', !magnetPower);
+        powerBtn.textContent = magnetPower ? '전원 끄기' : '전원 켜기';
+        render(); clearResult();
+    });
+    compareBtn.addEventListener('click', () => {
+        comparePermanent = !comparePermanent;
+        compareBtn.classList.toggle('selected', comparePermanent);
+        compareBtn.textContent = comparePermanent ? '영구자석 숨기기' : '영구자석과 비교';
+        render(); clearResult();
+    });
     predictionButtons.forEach(button => button.addEventListener('click', () => {
         prediction = button.dataset.prediction;
         predictionButtons.forEach(item => item.classList.toggle('selected', item === button));
@@ -288,7 +265,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         optionGroup.append(...options);
     }
-
     document.querySelectorAll('.quiz-card').forEach(card => {
         shuffleQuizOptions(card);
         const answerButton = card.querySelector('.answer-button');
@@ -303,24 +279,34 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             const correct = selected.value === card.dataset.answer;
             card.dataset.state = correct ? 'correct' : 'incorrect';
-            answerResult.textContent = correct ? '맞았습니다.' : '다시 생각해 보세요.';
+            answerResult.textContent = correct ? '맞았습니다.' : '다시 생각하고 다른 답을 골라보세요.';
             answerExplanation.hidden = !correct;
-            if (!correct) {
-                selected.checked = false;
-                selected.disabled = true;
-                answerResult.textContent = '다시 생각하고 다른 답을 골라보세요.';
-            }
+            if (!correct) { selected.checked = false; selected.disabled = true; }
         });
     });
 
     window.__circuitModel = {
-        analyse, magnetState,
-        setBulbs(n) { bulbRange.value = String(n); bulbOutput.textContent = `${n}개`; render(); },
-        setWiring(w) { wiring = w; wiringButtons.forEach(b => b.classList.toggle('selected', b.dataset.wiring === w)); render(); },
-        setRemoved(v) { if (removed !== v) removeBtn.click(); },
-        setMode(m) { document.querySelector(`[data-mode="${m}"]`).click(); },
-        setMagnet(b, t) { batteryRange.value = String(b); coilRange.value = String(t); batteryRange.dispatchEvent(new Event('input')); },
-        state: () => ({ mode, wiring, n: bulbCount(), removed }),
+        circuitState, magnetState,
+        setMode(nextMode) { document.querySelector(`[data-mode="${nextMode}"]`).click(); },
+        setCircuit(batteries, closed = true) {
+            circuitBatteryRange.value = String(batteries);
+            circuitBatteryOutput.textContent = `${batteries}개`;
+            document.querySelector(`[data-circuit="${closed ? 'closed' : 'open'}"]`).click();
+        },
+        setMagnet(batteries, turns, direction = 'forward', power = true) {
+            magnetBatteryRange.value = String(batteries);
+            coilRange.value = String(turns);
+            magnetBatteryOutput.textContent = `${batteries}개`;
+            coilOutput.textContent = `${turns}번`;
+            magnetDirection = direction;
+            magnetPower = power;
+            directionButtons.forEach(item => item.classList.toggle('selected', item.dataset.direction === direction));
+            powerBtn.classList.toggle('active', !power);
+            powerBtn.textContent = power ? '전원 끄기' : '전원 켜기';
+            render(); clearResult();
+        },
+        setPermanentComparison(visible) { if (comparePermanent !== visible) compareBtn.click(); },
+        state: () => ({ mode, circuitClosed, magnetDirection, magnetPower, comparePermanent }),
     };
 
     render();

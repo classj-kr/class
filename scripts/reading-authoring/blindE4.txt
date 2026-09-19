@@ -1,0 +1,335 @@
+[E4-01] 윗글의 내용과 일치하는 것은?
+1. The corner squares use a ratio picked because it rarely shows up in print.
+2. A blank margin around the code helps a scanner see where the code begins.
+3. Rows of alternating dark and light squares help a scanner measure the grid.
+4. Choosing more protection turns the same message into a bigger, more crowded code.
+5. Each corner square is seven small squares wide, in large and small codes alike.
+
+[E4-02] 윗글을 읽고 답할 수 있는 질문은?
+1. What happens to a sound wave when it meets its opposite?
+2. Below roughly what pitch does noise canceling work best?
+3. How many hours can the battery keep noise canceling on?
+4. What material are the soft ear cushions usually made of?
+5. How does the chip make a sound that cancels the noise?
+
+[E4-03] 윗글에서 설명하지 않은 것은?
+1. A very small timing mistake can cause a large position error.
+2. Uncorrected clock errors would soon make locations useless.
+3. Engineers adjust the satellite clocks before sending them into space.
+4. Without correction, the satellite clocks would run ahead each day.
+5. Each satellite carries atomic clocks that keep very steady time.
+
+[E4-04] 윗글의 내용과 일치하는 것은?
+1. Many models have built-in front lights for reading in the dark.
+2. Pages change fairly slowly, so the screen is poorly suited to video.
+3. A thin sheet of tiny switches behind the capsules controls each dot.
+4. Some color versions place a thin color filter over the black-and-white layer.
+5. The screen may briefly turn black to clear away faint leftover images.
+
+[E4-05] 윗글에서 배터리의 수명을 줄이는 원인으로 든 것은?
+1. Letting the battery drain down to zero again and again
+2. Using or charging the battery in very hot places
+3. Charging the battery while it is below freezing
+4. Leaving the battery at a full charge for many hours
+5. Storing a phone for months with a dead battery
+
+[E4-06] 윗글을 읽고 답할 수 있는 질문은?
+1. How loud must an alarm be to wake a sleeping person?
+2. About how long should a smoke alarm be kept before it is replaced?
+3. What kind of battery do most smoke alarms use?
+4. Which kind of sensor reacts faster to a slow, smoky fire?
+5. Where in a room should a smoke alarm be placed?
+
+[E4-07] 윗글에서 설명하지 않은 것은?
+1. Eating quickly or drinking fizzy drinks can set off hiccups.
+2. The sound of a hiccup comes from the vocal cords closing suddenly.
+3. Hiccups lasting more than 48 hours may need medical attention.
+4. The reason humans hiccup has not yet been clearly explained.
+5. Unborn babies can hiccup while they are still inside their mothers.
+
+[E4-08] 윗글의 내용과 일치하는 것은?
+1. Wrinkles tend to form in much the same pattern each time a finger gets wet.
+2. Wrinkles can start to appear after about five minutes in warm water.
+3. Wrinkled fingers gave no advantage when the objects being moved were dry.
+4. The wrinkling happens because nerves make blood vessels under the skin narrow.
+5. The wrinkles smooth out again fairly soon after the skin has dried.
+
+[E4-09] 윗글을 읽고 답할 수 있는 질문은?
+1. How does the brain blend smells with tastes to make flavor?
+2. Why does food seem bland when a person has a stuffy nose?
+3. Roughly how often are the cells of a taste bud replaced?
+4. How many taste buds does a typical adult tongue have?
+5. At what age does the number of taste buds begin to drop?
+
+[E4-10] 윗글의 중심 내용으로 알맞은 것은?
+1. Muscles become less sore once they get used to a new exercise.
+2. Regular exercise helps build stronger and larger muscles over time.
+3. Soreness after exercise usually peaks a day or two after the workout.
+4. Stretching before exercise does little to prevent later soreness.
+5. Muscles that stretch while working are especially likely to get sore.
+
+[E4-11] 윗글의 중심 내용으로 알맞은 것은?
+1. Motion sickness is often explained as a mismatch between what the eyes and ears sense.
+2. Knowing in advance how a vehicle will move helps prevent motion sickness.
+3. Children are more likely than adults to suffer from motion sickness.
+4. Reading in a moving car can make motion sickness worse.
+5. Astronauts can also develop motion sickness during space flight.
+
+[E4-12] 윗글에서 설명하지 않은 것은?
+1. Tears leave the eye through small openings near the nose side.
+2. Tears contain substances that help kill some kinds of bacteria.
+3. Chopping onions gives off a gas that irritates the eyes.
+4. Crying from strong emotion may be unique to human beings.
+5. A thin layer of tears constantly keeps the eye's surface wet.
+
+[E4-13] 윗글의 내용과 일치하는 것은?
+1. Offering money for accurate answers did not remove the effect of the number.
+2. Guesses about Gandhi's age at death shifted after people saw absurd numbers.
+3. Bids rose when people had just written down high final digits of their ID numbers.
+4. Experts were swayed by a number that most of them did not name as a factor.
+5. Judges' sentences were pulled toward numbers they had rolled on dice.
+
+[E4-14] 윗글을 읽고 답할 수 있는 질문은?
+1. How many students took part in the mug experiment?
+2. Does the same effect appear in young children?
+3. Do experienced traders show this effect as strongly as students?
+4. In what year were the results of the mug study published?
+5. What was the store price of the mugs used in the study?
+
+[E4-15] 윗글의 중심 내용으로 알맞은 것은?
+1. Getting enough sleep after studying helps the brain keep what it learned.
+2. The feeling of knowing material well can be a poor guide to real learning.
+3. Pulling facts out of memory strengthens them more than reading them again.
+4. Forgetting tends to happen fastest in the first days after learning something.
+5. Mixing different kinds of problems in one session often improves later recall.
+
+[E4-16] 윗글에서 기본값이 사람들의 선택에 큰 영향을 주는 까닭으로 든 것은?
+1. People tend to see the preset option as a recommendation.
+2. Changing an option takes time and effort that people avoid.
+3. Giving up the preset option can feel like losing something.
+4. Many people skip the fine print on the forms they fill out.
+5. Some people do not realize that they are able to change it.
+
+[E4-17] 윗글에서 'interest'와 뜻이 가장 가까운 것은?
+1. money paid on a loan
+2. a favorite pastime
+3. curiosity
+4. a share in a business
+5. benefit or advantage
+
+[E4-18] 윗글에서 회사들이 값을 올리지 않고 양을 줄이는 까닭으로 든 것은?
+1. A price just above a familiar round number can make an item seem far pricier.
+2. Reprinting price labels and advertisements costs businesses money.
+3. Shoppers may see a price rise as unfair and switch to other brands.
+4. Keeping the same price helps a product stay competitive with rival brands.
+5. Smaller packages can be advertised as a healthier choice.
+
+[E4-19] 윗글에서 설명하지 않은 것은?
+1. A quick calculation can estimate how long money takes to double.
+2. Interest that has been earned goes on to earn interest itself.
+3. Money owed on a loan can grow in the same way if it is not paid.
+4. Beginning to save at a younger age can lead to much larger savings.
+5. Cutting the interest rate in half roughly doubles the waiting time.
+
+[E4-20] 윗글을 읽고 답할 수 있는 질문은?
+1. Why does a gravity assist barely change the planet's own orbit?
+2. How fast was Voyager 2 moving when it passed Jupiter?
+3. How much fuel did Voyager 2 carry when it was launched?
+4. How close to Neptune did Voyager 2 fly during its visit?
+5. How long did Voyager 2 take to travel from Earth to Neptune?
+
+[E4-21] 윗글에서 설명하지 않은 것은?
+1. Some bones grow weaker because they no longer carry weight.
+2. Spinal discs expand in space, so astronauts become a bit taller.
+3. Fluid moving toward the head can make the face look swollen.
+4. Crew members exercise about two hours a day to limit these changes.
+5. Changes in the eyes can make it harder for some astronauts to see.
+
+[E4-22] 윗글의 내용과 일치하는 것은?
+1. The error came from a testing tool that had been put together wrongly.
+2. Later instruments for the telescope had the correction built into them.
+3. The fix used small mirrors shaped to make up for the original error.
+4. The first repair mission needed five spacewalks to finish its work.
+5. The flaw produced a kind of blur known as spherical aberration.
+
+[E4-23] 윗글에서 설명하지 않은 것은?
+1. A forger whom Newton pursued had once openly criticized the Mint.
+2. Newton helped run a large project to replace England's worn silver coins.
+3. Newton personally gathered proof against people who made fake coins.
+4. Newton spent roughly the final three decades of his life at the Mint.
+5. Many expected Newton's post at the Mint to involve little real work.
+
+[E4-24] 윗글의 내용과 일치하는 것은?
+1. Curie was able to drive the vehicles and fix them when they broke down.
+2. About twenty vehicles were turned into X-ray units under Curie's direction.
+3. Wealthy supporters gave cars that were then turned into X-ray units.
+4. Curie also helped set up about two hundred fixed X-ray rooms in hospitals.
+5. The X-ray vehicles came to be known by the nickname 'little Curies.'
+
+[E4-25] 윗글에서 'current'와 뜻이 가장 가까운 것은?
+1. a flow of water
+2. a general trend
+3. commonly accepted
+4. belonging to the present
+5. a flow of electricity
+
+[E4-26] 윗글을 읽고 답할 수 있는 질문은?
+1. How many people on La Gomera can whistle Silbo today?
+2. Why can a whistle be heard farther away than a shout?
+3. How are the sounds of Spanish changed into whistles?
+4. In what year did Silbo become required in island schools?
+5. How far across a valley can a Silbo message travel?
+
+[E4-27] 윗글에서 설명하지 않은 것은?
+1. The code used around the world is different in some ways from the early one.
+2. The first official telegraph message in the U.S. was a line from the Bible.
+3. A count of printing type helped show how common letters were.
+4. The emergency call SOS was picked because it is easy to send.
+5. Letters that appear more often were given shorter signals.
+
+[E4-28] 윗글에서 'live'와 뜻이 가장 가까운 것은?
+1. not yet exploded
+2. make one's home
+3. in person
+4. still burning
+5. carrying electric current
+
+[E4-29] 윗글에서 설명하지 않은 것은?
+1. The trick works over a range of speeds and fails outside it.
+2. Where the weight sat and how the steering leaned did the work.
+3. The front wheel was set to meet the ground ahead of the steering axis.
+4. Extra wheels turning the other way took the spin out of the test.
+5. One old account put the recovery down to the spin of the wheels.
+
+[E4-30] 윗글의 내용과 일치하는 것은?
+1. Rain makes drivers leave longer gaps, so a road carries fewer cars.
+2. A wave of braking travels backward through a queue at a fairly steady speed.
+3. Whether the crowding faded away depended on how many cars shared the track.
+4. Leaving a longer gap in front lets a driver soak up a wave of braking.
+5. Signals on a slip road let cars join a motorway one at a time.
+
+[E4-31] 윗글의 내용과 일치하는 것은?
+1. Modern cars are shaped so that the engine is pushed under the floor in a crash.
+2. Head restraints were added to seats to cut neck injuries in crashes from behind.
+3. The company that designed the three-point seat belt let its rivals use it without payment.
+4. Years passed between the patent for the folding body and the first car built with it.
+5. New models have to pass crash tests before they may be sold in many countries.
+
+[E4-32] 윗글을 읽고 답할 수 있는 질문은?
+1. How much would the tower sway without the ball?
+2. What is done to keep the cables from wearing through?
+3. When was the tower itself finished and opened?
+4. Why was the ball hung near the top rather than lower down?
+5. What takes up the swing that the ball leaves behind?
+
+[E4-33] 윗글에서 날개 끝 장치를 달지 않은 비행기가 많은 까닭으로 든 것은?
+1. The added weight of the fin and its wing costs more than it saves.
+2. A longer and more slender wing can cut the same amount of drag without a tip device.
+3. A lightly loaded wing makes a weaker curl at the tip to begin with.
+4. Airports set a limit on how wide a wing may be when parked at a gate.
+5. Short flights spend little of their time at cruising height.
+
+[E4-34] 윗글의 내용과 일치하는 것은?
+1. The bacteria were found in lakes where the water is strongly alkaline.
+2. Cold slows the repair down, and the spores can lie waiting for years.
+3. Concrete made this way costs about twice as much as ordinary concrete.
+4. The same bacteria are used to bind loose sand into a solid block.
+5. A liquid form of the same treatment can be sprayed onto cracks already open.
+
+[E4-35] 윗글에서 설명하지 않은 것은?
+1. Dark shapes against a pale background draw her in close.
+2. It is the female that takes blood, and she needs it for her eggs.
+3. The gas is picked up by sense organs beside the mosquito's mouth.
+4. Warmth comes into play just before she reaches the skin.
+5. The dark shape alone does not draw her without the gas.
+
+[E4-36] 윗글에서 설명하지 않은 것은?
+1. The winning company is usually the one whose surveyors guessed highest.
+2. The estimates that come back sit both above and below the true amount.
+3. The advice was to offer below one's own figure, and lower still when more rivals bid.
+4. The average winning bid topped what the coins were worth.
+5. The same trap has been found in bidding for baseball players and for whole companies.
+
+[E4-37] 윗글을 읽고 답할 수 있는 질문은?
+1. Why does a cheap burger mean a cheap currency?
+2. What did the magazine add to the comparison in 2011?
+3. How many countries does the table cover today?
+4. How is a country picked for a place in the table?
+5. Which currency has come out cheapest over the years?
+
+[E4-38] 윗글에서 설명하지 않은 것은?
+1. Punishment grew heavier each time the same rule was broken again.
+2. Arrangements in Swiss meadows had held for hundreds of years.
+3. Those who watched over the rules were drawn from the users.
+4. The users had a cheap way of settling quarrels among themselves.
+5. The essay was taken as proof that such land must be sold or state-run.
+
+[E4-39] 윗글에서 설명하지 않은 것은?
+1. The thinning lets more of the sun's harmful rays reach the ground.
+2. A satellite program had been set to treat very low readings as faults.
+3. The scientists who reported it were using an old instrument on the ground.
+4. A return to the old state is not expected before the 2060s.
+5. Governments agreed two years later to cut back the chemicals.
+
+[E4-40] 윗글을 읽고 답할 수 있는 질문은?
+1. How did she decide when someone was most absorbed?
+2. Why does an unfinished job keep tugging at the attention?
+3. About how many short tasks was each person given?
+4. How long after her study were the later ones gathered?
+5. How were the people for the study chosen?
+
+[E4-41] 윗글에서 설명하지 않은 것은?
+1. The tapper guessed the listener would get it about half the time.
+2. Writers meet the same trouble with words their readers do not know.
+3. The tapper hears the tune in full while the finger moves.
+4. Three tunes out of a hundred and twenty were named.
+5. The tunes came from a list of songs that most people know.
+
+[E4-42] 윗글에서 설명하지 않은 것은?
+1. A newspaper account that started the research was later found wrong.
+2. The duty to help was read as being split among those who heard it.
+3. About three in ten of those who thought four others were listening helped.
+4. The students were kept where they could not see one another.
+5. Those who took part were told afterwards that the emergency was staged.
+
+[E4-43] 윗글에서 설명하지 않은 것은?
+1. People were asked which of two lower squares matched the one above.
+2. Holding a row of numbers in mind wiped out the Russian advantage.
+3. Russian keeps its lighter and darker blues as separate colours.
+4. The difference was larger when the two shades were hard to tell apart.
+5. English speakers shown the same squares gained nothing from the split.
+
+[E4-44] 윗글에서 설명하지 않은 것은?
+1. Deaf children in the country had lived far apart before the school opened.
+2. The schools together held some four hundred pupils by the sixth year.
+3. A language researcher was brought in from abroad to describe it.
+4. Much of the signing took shape away from the classroom.
+5. The first lessons tried to teach spoken Spanish and the reading of lips.
+
+[E4-45] 윗글에서 설명하지 않은 것은?
+1. The inventor was sure that the air was to blame for the spoiling.
+2. Pasteur showed the real cause about fifty years later.
+3. Metal stood up to a ship's hold better than glass did.
+4. The heat had to reach every part of the jar for the method to work.
+5. The prize was won on condition that the method be printed for anyone.
+
+[E4-46] 윗글을 읽고 답할 수 있는 질문은?
+1. How was a reading taken off the dials?
+2. Which Greek town is thought to have made it?
+3. How deep was the wreck lying when it was found?
+4. How were the teeth of the gears cut so finely?
+5. What did the third of the dials keep count of?
+
+[E4-47] 윗글에서 'hold'와 뜻이 가장 가까운 것은?
+1. the space below a ship's deck
+2. to keep a person in custody
+3. to have inside, to contain
+4. to keep a firm grip on
+5. to go on being true
+
+[E4-48] 윗글에서 'trace'와 뜻이 가장 가까운 것은?
+1. to follow the course of something
+2. a mark left behind by something
+3. a very small amount of a substance
+4. to copy a drawing through thin paper
+5. a line drawn by a recording machine

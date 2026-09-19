@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#123c46">
   <title>한국지리</title>
   <link rel="stylesheet" href="../korean-museum/vendor/leaflet/leaflet.css">
-  <link rel="stylesheet" href="styles.css?v=20260906-2">
+  <link rel="stylesheet" href="styles.css?v=20260918-core">
 </head>
 <body>
   <div class="app-shell">
@@ -24,7 +24,7 @@
         <div id="map" role="application" aria-label="한국지리 학습 지도"></div>
         <a class="map-back" href="../../../" aria-label="학습 메뉴로 돌아가기">←</a>
         <button class="map-progress" id="progressButton" type="button" aria-label="학습 기록 보기"><span>누적</span><strong id="progressScore">0 / 0</strong></button>
-        <button class="map-toggle" id="labelToggle" type="button" aria-pressed="false">이름 가리기</button>
+        <button class="map-toggle" id="labelToggle" type="button" aria-pressed="false">세부 정보 보기</button>
         <div class="map-key" id="mapKey" aria-live="polite"></div>
       </section>
 
@@ -40,10 +40,22 @@
             <div id="focusBody"></div>
           </aside>
           <div class="concept-points" id="conceptPoints"></div>
-          <div class="feature-list" id="featureList" aria-label="지도 핵심 지점"></div>
+          <details class="feature-guide" id="featureGuide">
+            <summary><span>필수 지점</span><strong id="featureCount"></strong></summary>
+            <div class="feature-list" id="featureList" aria-label="지도 필수 지점"></div>
+          </details>
           <details class="principle-guide" id="principleGuide">
             <summary><span>핵심 원리</span><strong id="principleCount"></strong></summary>
             <div class="principle-list" id="principleList" aria-label="주제별 핵심 원리"></div>
+          </details>
+          <details class="source-guide">
+            <summary>출제 기준·자료 출처</summary>
+            <p>교육과정과 평가원 출제 방향을 기준으로 시험 필수 내용을 구성했습니다. 문제 수는 학습 범위에 따라 달라집니다.</p>
+            <ul>
+              <li><a href="https://csatcdn.kice.re.kr/resources/pdf/guideline.pdf" target="_blank" rel="noopener noreferrer">한국교육과정평가원 수능 출제 지침</a></li>
+              <li><a href="https://ncic.go.kr/board/B0024.cs?act=read&amp;bwrId=2015&amp;m=10&amp;pageIndex=6&amp;pageUnit=15" target="_blank" rel="noopener noreferrer">국가교육과정정보센터 사회과 교육과정</a></li>
+              <li><a href="https://data.kma.go.kr/normals/info1.do" target="_blank" rel="noopener noreferrer">기상청 1991~2020 기후평년값</a></li>
+            </ul>
           </details>
         </section>
 
@@ -117,10 +129,10 @@
   </dialog>
 
   <script src="../korean-museum/vendor/leaflet/leaflet.js"></script>
-  <script src="data.js?v=20260906-1"></script>
+  <script src="data.js?v=20260918-core"></script>
   <script src="questions.js?v=20260918-quiz"></script>
-  <script src="principles.js?v=20260906-1"></script>
+  <script src="principles.js?v=20260918-core"></script>
   <script src="climate-graph.js?v=20260906-1"></script>
-  <script src="app.js?v=20260906-4"></script>
+  <script src="app.js?v=20260918-core"></script>
 </body>
 </html>

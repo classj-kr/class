@@ -433,9 +433,16 @@
     "청진": { name: "청진", lat: 41.79, lng: 129.78, note: "관북 동해안", temp: [-5.5, -3.2, 1.8, 7.6, 12.5, 16.3, 20.0, 21.5, 17.3, 11.0, 3.5, -3.2], rain: [10, 12, 20, 40, 55, 80, 150, 170, 90, 45, 25, 12] }
   };
 
+  const SOURCES = [
+    { organization: "한국교육과정평가원", label: "대학수학능력시험 출제 지침", url: "https://csatcdn.kice.re.kr/resources/pdf/guideline.pdf" },
+    { organization: "국가교육과정정보센터", label: "사회과 교육과정", url: "https://ncic.go.kr/board/B0024.cs?act=read&bwrId=2015&m=10&pageIndex=6&pageUnit=15" },
+    { organization: "기상청", label: "1991~2020 기후평년값", url: "https://data.kma.go.kr/normals/info1.do" }
+  ];
+
   window.KOREA_GEOGRAPHY = {
     themes,
     stations,
+    sources: SOURCES,
     cityLabels: CITY_LABELS,
     provinceLabels: PROVINCE_LABELS,
     regionOfProvince: REGION_OF_PROVINCE,

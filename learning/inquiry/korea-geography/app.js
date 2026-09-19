@@ -24,7 +24,7 @@
   let currentTheme = "terrain";
   let provinceFeatures = [];
   let majorRivers = null;
-  let namesHidden = false;
+  let mapDetailsVisible = false;
   let session = { questions: [], answers: [], index: 0, answered: false, mode: "theme" };
   let mainMap, questionMap;
   let mainBoundaryLayer, mainThemeLayer, mainLabelLayer;
@@ -100,7 +100,7 @@
     $("#finishPractice").addEventListener("click", () => $("#resultDialog").close());
     $("#reviewWrong").addEventListener("click", reviewWrongQuestions);
     $("#focusClose").addEventListener("click", clearFeatureFocus);
-    $("#labelToggle").addEventListener("click", toggleNames);
+    $("#labelToggle").addEventListener("click", toggleMapDetails);
     $("#progressButton").addEventListener("click", openRecord);
     $("#closeRecord").addEventListener("click", () => $("#recordDialog").close());
     $("#retryWrong").addEventListener("click", () => { $("#recordDialog").close(); startPractice("review"); });
@@ -226,10 +226,18 @@
     if (!themes[themeKey]) return;
     currentTheme = themeKey;
     const theme = themes[themeKey];
+    let activeTab = null;
     $$(".theme-tab").forEach((button) => {
       const active = button.dataset.theme === themeKey;
       button.classList.toggle("is-active", active);
       button.setAttribute("aria-pressed", String(active));
+      if (active) activeTab = button;
+    });
+    if (activeTab) requestAnimationFrame(() => {
+      const tabs = activeTab.closest(".theme-tabs");
+      if (tabs && tabs.scrollWidth > tabs.clientWidth) {
+        tabs.scrollTo({ left: activeTab.offsetLeft - (tabs.clientWidth - activeTab.offsetWidth) / 2, behavior: "smooth" });
+      }
     });
     if ((location.hash || "").replace("#", "") !== themeKey) history.replaceState(null, "", `#${themeKey}`);
     $("#conceptKicker").textContent = theme.kicker;
@@ -240,6 +248,8 @@
     renderFeatureButtons(theme.features || []);
     renderPrinciples(theme.principles || []);
     renderLegend(theme.legend || []);
+    mapDetailsVisible = false;
+    syncMapDetailsButton();
     drawThemeOnMap(mainMap, mainThemeLayer, theme, { interactive: true });
     drawLabels(mainMap, mainLabelLayer, { admin: true, city: true, annotations: theme.annotations || [] });
     drawBoundaries(mainMap, mainBoundaryLayer, true);
@@ -248,6 +258,10 @@
   }
 
   function renderFeatureButtons(features) {
+    const guide = $("#featureGuide");
+    guide.hidden = !features.length;
+    guide.open = false;
+    $("#featureCount").textContent = `${features.length}개`;
     const fragment = document.createDocumentFragment();
     features.forEach((feature) => {
       const button = document.createElement("button");
@@ -292,7 +306,7 @@
     $("#focusTitle").textContent = title;
     $("#focusBody").replaceChildren(...(Array.isArray(body) ? body : [body]));
     $("#featureFocus").hidden = false;
-    if (window.innerWidth <= 820) $("#featureFocus").scrollIntoView({ block: "nearest", behavior: "smooth" });
+    if (window.innerWidth <= 1050) $("#featureFocus").scrollIntoView({ block: "nearest", behavior: "smooth" });
   }
 
   function clearFeatureFocus(refit = true) {
@@ -338,11 +352,15 @@
     }
   }
 
-  function toggleNames() {
-    namesHidden = !namesHidden;
-    $("#map").classList.toggle("names-hidden", namesHidden);
-    $("#labelToggle").setAttribute("aria-pressed", String(namesHidden));
-    $("#labelToggle").textContent = namesHidden ? "이름 보이기" : "이름 가리기";
+  function syncMapDetailsButton() {
+    $("#labelToggle").setAttribute("aria-pressed", String(mapDetailsVisible));
+    $("#labelToggle").textContent = mapDetailsVisible ? "세부 정보 닫기" : "세부 정보 보기";
+  }
+
+  function toggleMapDetails() {
+    mapDetailsVisible = !mapDetailsVisible;
+    syncMapDetailsButton();
+    mainMap.fire("zoomend");
   }
 
   // ───────────── 지도 층 그리기 ─────────────
@@ -457,10 +475,10 @@
     (theme.circles || []).forEach((city) => {
       const radius = 3 + Math.sqrt(city.pop) * 0.8;
       const circle = L.circleMarker([city.lat, city.lng], { pane: "themeZones", radius, color: "#5a2f8f", weight: 1.2, fillColor: "#8e5bc4", fillOpacity: 0.42, interactive }).addTo(group);
-      if (interactive) circle.bindTooltip(`${city.name} 약 ${city.pop}만 명`, { sticky: true, className: "study-tooltip" });
+      if (interactive) circle.bindTooltip(`${city.name} · 원 크기는 학습용 상대 규모`, { sticky: true, className: "study-tooltip" });
     });
 
-    // 시설·자원 표지는 전국 배율에서는 겹치므로 한 단계 확대했을 때부터 보인다.
+    // 시설·자원 표지는 세부 정보를 열고 확대했을 때만 보인다. 문제 지도에서는 정답 공개 뒤 모두 사용할 수 있다.
     const facilityMarkers = (theme.markers || []).map((marker) => {
       const node = createStudyMarker({ ...marker, size: 26 }, false, interactive);
       if (interactive) node.bindTooltip(`${marker.name} · ${marker.note}`, { direction: "top", offset: [0, -12], className: "study-tooltip" });
@@ -470,7 +488,7 @@
       setZoomSync(map, "markers", () => {
         const zoom = map.getZoom();
         facilityMarkers.forEach(({ node, minZoom }) => {
-          if (zoom >= minZoom) { if (!group.hasLayer(node)) group.addLayer(node); }
+          if ((map !== mainMap || mapDetailsVisible) && zoom >= minZoom) { if (!group.hasLayer(node)) group.addLayer(node); }
           else if (group.hasLayer(node)) group.removeLayer(node);
         });
       });
@@ -497,13 +515,13 @@
     if (opts.admin) {
       provinceLabels.forEach(([name, lat, lng]) => {
         if (hide.has(name)) return;
-        entries.push({ marker: L.marker([lat, lng], { icon: textIcon("admin-label", name), pane: "adminLabels", interactive: false }), minZoom: opts.adminMinZoom || 6 });
+        entries.push({ marker: L.marker([lat, lng], { icon: textIcon("admin-label", name), pane: "adminLabels", interactive: false }), minZoom: opts.adminMinZoom || 6, detailOnly: true });
       });
     }
     if (opts.city) {
       cityLabels.forEach(([name, lat, lng, minZoom]) => {
         if (hide.has(name)) return;
-        entries.push({ marker: L.marker([lat, lng], { icon: textIcon("city-label", name), pane: "adminLabels", interactive: false }), minZoom: minZoom || 7 });
+        entries.push({ marker: L.marker([lat, lng], { icon: textIcon("city-label", name), pane: "adminLabels", interactive: false }), minZoom: minZoom || 7, detailOnly: true });
       });
     }
     (opts.annotations || []).forEach((annotation) => {
@@ -515,8 +533,8 @@
     });
     setZoomSync(map, "labels", () => {
       const zoom = map.getZoom();
-      entries.forEach(({ marker, minZoom }) => {
-        if (zoom >= minZoom) { if (!group.hasLayer(marker)) group.addLayer(marker); }
+      entries.forEach(({ marker, minZoom, detailOnly }) => {
+        if ((map !== mainMap || mapDetailsVisible || !detailOnly) && zoom >= minZoom) { if (!group.hasLayer(marker)) group.addLayer(marker); }
         else if (group.hasLayer(marker)) group.removeLayer(marker);
       });
     });
