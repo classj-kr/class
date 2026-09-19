@@ -2,7 +2,7 @@ import * as maplibregl from "./vendor/maplibre-gl-6.10.0/maplibre-gl.mjs";
 
 const data = window.GLOBE_DATA;
 const BASE = new URL(".", location.href).href;
-const TILE_VERSION = 1;
+const TILE_VERSION = 2;
 const HOME = { center: [127.5, 30], lat: 30 };
 const SETTINGS_KEY = "joyclass-globe-layers-v1";
 
@@ -54,6 +54,19 @@ map.addControl(new maplibregl.AttributionControl({ compact: true, customAttribut
 
 renderLayerBar();
 bindViewControls();
+
+// 극점은 글자 이름표 층(위도 85도까지)에 놓을 수 없어 따로 붙인다. 지구 뒤편으로 가면 숨는다.
+const poleMarks = [
+  { lngLat: [0, 90], text: "북위 90°(북극점)" },
+  { lngLat: [0, -90], text: "남위 90°(남극점)" },
+].map(({ lngLat, text }) => {
+  const element = document.createElement("div");
+  element.className = "pole-mark";
+  element.innerHTML = `<span class="pole-dot" aria-hidden="true"></span><span>${text}</span>`;
+  return new maplibregl.Marker({ element, anchor: "left", offset: [-5, 0], opacityWhenCovered: "0" })
+    .setLngLat(lngLat)
+    .addTo(map);
+});
 
 let ready = false;
 map.on("load", () => {
@@ -283,10 +296,11 @@ function equatorZoom() {
 
 function refreshZoomRules() {
   const shift = latitudeShift();
-  const maxZoom = MAX_EQUATOR_ZOOM + shift;
+  // 지도 프로그램은 최소 배율만 위도에 맞춰 옮겨 주고, 최대 배율은 최소 배율보다 작게 둘 수 없다(극 가까이).
+  const maxZoom = Math.max(MAX_EQUATOR_ZOOM + shift, map.getMinZoom());
   if (Math.abs(map.getMaxZoom() - maxZoom) > 0.01) map.setMaxZoom(maxZoom);
-  for (const tier of [2, 3, 4]) map.setLayerZoomRange(`labels-${tier}`, TIER_ZOOM[tier] + shift, 24);
-  map.setLayerZoomRange("grid-fine", FINE_GRID_ZOOM + shift, 24);
+  for (const tier of [2, 3, 4]) map.setLayerZoomRange(`labels-${tier}`, Math.max(0, TIER_ZOOM[tier] + shift), 24);
+  map.setLayerZoomRange("grid-fine", Math.max(0, FINE_GRID_ZOOM + shift), 24);
   document.getElementById("zoomIn").disabled = map.getZoom() >= maxZoom - 0.01;
   document.getElementById("zoomOut").disabled = map.getZoom() <= wholeGlobeZoom() + shift + 0.01;
 }
@@ -322,6 +336,7 @@ function visibility(id) {
 
 function applyLayerFilters() {
   for (const tier of [1, 2, 3, 4]) map.setFilter(`labels-${tier}`, labelFilter(tier));
+  for (const mark of poleMarks) mark.getElement().hidden = !enabled.has("grid");
   map.setLayoutProperty("borders", "visibility", visibility("country"));
   for (const id of ["grid-coarse", "grid-fine", "grid-special", "grid-labels"]) {
     map.setLayoutProperty(id, "visibility", visibility("grid"));

@@ -124,6 +124,33 @@ html, body {
 
 .layer-bar button[aria-pressed="true"] .swatch { background: var(--swatch); }
 
+.pole-mark {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #f3f6fa;
+  font-size: 12px;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+/* 흰 얼음 위에서도 읽히도록 글자 밑에 어두운 바탕을 깐다. */
+.pole-mark span:last-child {
+  padding: 1px 7px;
+  border-radius: 999px;
+  background: rgba(12, 20, 32, 0.78);
+}
+
+.pole-mark[hidden] { display: none; }
+
+.pole-dot {
+  width: 10px;
+  height: 10px;
+  border: 2px solid rgba(12, 14, 18, 0.85);
+  border-radius: 50%;
+  background: #ffffff;
+}
+
 /* 출처 표시는 오른쪽 위 단추 셋 아래에 둔다. */
 .maplibregl-ctrl-top-right {
   top: calc(max(10px, env(safe-area-inset-top)) + 160px);
