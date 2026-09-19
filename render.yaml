@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: songhwaplay
+    name: joyclass
     runtime: node
     plan: free
     buildCommand: npm --prefix game-hub-server install
@@ -23,7 +23,7 @@ services:
       - key: TEACHER_PIN
         sync: false
   - type: web
-    name: songhwaplay-assets
+    name: joyclass-assets
     runtime: static
     buildCommand: node scripts/build-render-assets.mjs
     staticPublishPath: .render-assets
