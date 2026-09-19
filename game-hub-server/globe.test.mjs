@@ -61,4 +61,17 @@ for (const name of ['히말라야산맥', '티베트고원', '한반도', '태�
   assert.ok(labels.features.some((f) => f.properties.name === name), `Missing label ${name}.`);
 }
 
+// 나라 이름 앞 국기: 국기 코드가 있는 나라는 모두 묶음 그림에 자리가 있어야 하고, 분쟁지 등에는 국기를 달지 않는다.
+const flags = JSON.parse(read('data/flags.json'));
+assert.ok(fs.existsSync(new URL('data/flags.png', root)), 'Flag sheet image is missing.');
+for (const feature of labels.features.filter((f) => f.properties.kind === 'country')) {
+  const { name, flag } = feature.properties;
+  if (['서사하라', '포클랜드 제도', '누벨칼레도니'].includes(name)) {
+    assert.equal(flag, undefined, `${name} must not carry a flag.`);
+    continue;
+  }
+  assert.ok(flag && flags[flag], `${name} needs a flag in the sheet.`);
+}
+assert.match(app, /flags\.png\?v=\$\{FLAG_VERSION\}/, 'The flag sheet needs a version so the year-long image cache does not keep an old one.');
+
 console.log('Globe contract passed.');

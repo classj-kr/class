@@ -252,6 +252,8 @@ const MARINE_SKIP = new Set([
 
 // 나라 이름은 세계지리 앱 자료를 그대로 쓴다. 나라가 아닌 것은 뺀다.
 const COUNTRY_SKIP = new Set(["남극", "소말릴란드", "북키프로스", "프랑스령 남방"]);
+// 국기를 달지 않는 곳: 영유권 분쟁지(서사하라, 포클랜드 제도)와 쓰는 깃발이 둘인 프랑스령(누벨칼레도니).
+const NO_FLAG = new Set(["EH", "FK", "NC"]);
 
 async function neFile(name) {
   fs.mkdirSync(CACHE, { recursive: true });
@@ -397,9 +399,11 @@ async function main() {
     if (COUNTRY_SKIP.has(country.name)) continue;
     const area = country.area || 0;
     let tier = area > 1500000 ? 1 : area > 400000 ? 2 : area > 80000 ? 3 : 4;
-    if (country.name === "대한민국") tier = 2;
+    if (country.name === "대한민국") tier = 1; // 우리나라는 "나라"를 켜면 늘 보이게
     const [lat, lng] = country.label;
-    labels.push(point(lng, lat, { name: country.name, kind: "country", tier }));
+    const properties = { name: country.name, kind: "country", tier };
+    if (!NO_FLAG.has(country.iso)) properties.flag = country.iso.toLowerCase();
+    labels.push(point(lng, lat, properties));
   }
 
   const lines = await neFile("ne_50m_admin_0_boundary_lines_land");

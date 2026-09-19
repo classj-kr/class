@@ -3,6 +3,7 @@ import * as maplibregl from "./vendor/maplibre-gl-6.10.0/maplibre-gl.mjs";
 const data = window.GLOBE_DATA;
 const BASE = new URL(".", location.href).href;
 const TILE_VERSION = 2;
+const FLAG_VERSION = 1;
 const HOME = { center: [127.5, 30], lat: 30 };
 const SETTINGS_KEY = "joyclass-globe-layers-v1";
 
@@ -96,7 +97,7 @@ function buildStyle() {
     minzoom: TIER_ZOOM[tier],
     filter: labelFilter(tier),
     layout: {
-      "text-field": ["case", ["==", ["get", "kind"], "peak"], ["concat", "▲ ", ["get", "name"]], ["get", "name"]],
+      "text-field": labelText(false),
       "text-font": LABEL_FONT,
       "text-size": ["match", ["get", "kind"], "country", [ "match", ["get", "tier"], 1, 15, 14], "sea", 13, "peak", 12.5, ["match", ["get", "tier"], 1, 15, 2, 14, 13]],
       "text-letter-spacing": ["match", ["get", "kind"], "sea", 0.12, "country", 0.06, 0.02],
@@ -325,6 +326,51 @@ function fitWholeGlobe(animate) {
   else map.jumpTo(view);
 }
 
+// 국기 그림을 받은 뒤에는 나라 이름 앞에 국기를 붙인다(국기가 없는 곳은 이름만).
+function labelText(withFlags) {
+  const plain = ["case", ["==", ["get", "kind"], "peak"], ["concat", "▲ ", ["get", "name"]], ["get", "name"]];
+  if (!withFlags) return ["format", plain, {}];
+  return [
+    "case",
+    ["all", ["==", ["get", "kind"], "country"], ["has", "flag"]],
+    ["format", ["image", ["concat", "flag-", ["get", "flag"]]], {}, "\u2009", {}, ["get", "name"], {}],
+    ["format", plain, {}],
+  ];
+}
+
+// 국기 그림은 "나라"를 처음 켤 때 한 번만 받는다.
+let flagsState = "none";
+async function loadFlags() {
+  if (flagsState !== "none") return;
+  flagsState = "loading";
+  try {
+    const [placements, image] = await Promise.all([
+      fetch(`${BASE}data/flags.json?v=${FLAG_VERSION}`).then((response) => response.json()),
+      new Promise((resolve, reject) => {
+        const img = new Image();
+        img.onload = () => resolve(img);
+        img.onerror = reject;
+        img.src = `${BASE}data/flags.png?v=${FLAG_VERSION}`;
+      }),
+    ]);
+    const canvas = document.createElement("canvas");
+    canvas.width = image.width;
+    canvas.height = image.height;
+    const context = canvas.getContext("2d", { willReadFrequently: true });
+    context.drawImage(image, 0, 0);
+    for (const [code, { x, y, width, height, pixelRatio }] of Object.entries(placements)) {
+      const id = `flag-${code}`;
+      if (map.hasImage(id)) continue;
+      const pixels = context.getImageData(x, y, width, height);
+      map.addImage(id, { width, height, data: new Uint8Array(pixels.data.buffer) }, { pixelRatio });
+    }
+    for (const tier of [1, 2, 3, 4]) map.setLayoutProperty(`labels-${tier}`, "text-field", labelText(true));
+    flagsState = "ready";
+  } catch (_) {
+    flagsState = "none"; // 다음에 "나라"를 켤 때 다시 받는다. 그동안 이름만 보인다.
+  }
+}
+
 function labelFilter(tier) {
   const kinds = [...KINDS, ...BACKDROPS].map((k) => k.id).filter((id) => enabled.has(id) && id !== "grid");
   return ["all", ["==", ["get", "tier"], tier], ["in", ["get", "kind"], ["literal", kinds]]];
@@ -338,6 +384,7 @@ function applyLayerFilters() {
   for (const tier of [1, 2, 3, 4]) map.setFilter(`labels-${tier}`, labelFilter(tier));
   for (const mark of poleMarks) mark.getElement().hidden = !enabled.has("grid");
   map.setLayoutProperty("borders", "visibility", visibility("country"));
+  if (enabled.has("country")) loadFlags();
   for (const id of ["grid-coarse", "grid-fine", "grid-special", "grid-labels"]) {
     map.setLayoutProperty(id, "visibility", visibility("grid"));
   }
