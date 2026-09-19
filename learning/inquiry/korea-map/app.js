@@ -325,12 +325,14 @@
       }
     });
     if ((location.hash || "").replace("#", "") !== themeKey) history.replaceState(null, "", `#${themeKey}`);
-    $("#conceptTitle").textContent = theme.title;
-    $("#conceptSummary").textContent = theme.summary;
+    $("#conceptTitle").textContent = theme.title || "";
+    $("#conceptTitle").hidden = !theme.title;
     $("#conceptPoints").replaceChildren(...theme.points.map((text) => element("div", "concept-point", text)));
     $("#conceptPoints").hidden = !theme.points.length;
     $("#themeExtra").replaceChildren(...(theme.panel ? [theme.panel(themeApi)] : []));
     $("#startMixed").hidden = !!theme.buildQuestions;
+    // 행정구역 탭은 시·도 이름이 늘 보이므로 지역명 단추가 필요 없다.
+    $("#labelToggle").hidden = !!theme.provinceNames;
     $(".practice-launch").hidden = theme.practice === false;
     clearFeatureFocus(false);
     stopProfile();
@@ -469,7 +471,6 @@
 
   function syncMapDetailsButton() {
     $("#labelToggle").setAttribute("aria-pressed", String(mapDetailsVisible));
-    $("#labelToggle").textContent = mapDetailsVisible ? "세부 정보 닫기" : "세부 정보 보기";
   }
 
   function toggleMapDetails() {
@@ -647,7 +648,7 @@
       if (interactive) circle.bindTooltip(`${city.name} · 원 크기는 학습용 상대 규모`, { sticky: true, className: "study-tooltip" });
     });
 
-    // 시설·자원 표지는 세부 정보를 열고 확대했을 때만 보인다. 문제 지도에서는 정답 공개 뒤 모두 사용할 수 있다.
+    // 시설·자원 표지는 확대했을 때(7단부터, 교통 탭은 6단부터) 보인다. 문제 지도에서는 정답 공개 뒤에 보인다.
     const facilityMarkers = (theme.markers || []).map((marker) => {
       const node = createStudyMarker({ ...marker, size: 26 }, false, interactive);
       if (interactive) node.bindTooltip(`${marker.name} · ${marker.note}`, { direction: "top", offset: [0, -12], className: "study-tooltip" });
@@ -657,7 +658,7 @@
       setZoomSync(map, "markers", () => {
         const zoom = map.getZoom();
         facilityMarkers.forEach(({ node, minZoom }) => {
-          if ((map !== mainMap || mapDetailsVisible || theme.markersAlways) && zoom >= minZoom) { if (!group.hasLayer(node)) group.addLayer(node); }
+          if (zoom >= minZoom) { if (!group.hasLayer(node)) group.addLayer(node); }
           else if (group.hasLayer(node)) group.removeLayer(node);
         });
       });

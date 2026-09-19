@@ -11,8 +11,8 @@
 
   const ERAS = [
     { key: "prehistoric", label: "선사·고조선", color: "#a16207" },
-    { key: "three_kingdoms", label: "삼국 시대", color: "#dc2626" },
-    { key: "unified_silla", label: "통일 신라·발해", color: "#7c3aed" },
+    { key: "three_kingdoms", label: "삼국", color: "#dc2626" },
+    { key: "unified_silla", label: "남북국", color: "#7c3aed" },
     { key: "goryeo", label: "고려", color: "#0d9488" },
     { key: "joseon", label: "조선", color: "#2563eb" },
     { key: "modern", label: "근현대", color: "#be185d" }
@@ -396,7 +396,7 @@
       prompt: "다음 유물·유적을 만들어진 시기가 이른 것부터 순서대로 바르게 나열한 것은?",
       options,
       answer: 0,
-      hint: "선사·고조선 → 삼국 → 통일 신라·발해 → 고려 → 조선 → 근현대 순서입니다. 보기의 유물이 어느 시대 것인지부터 가려 보세요.",
+      hint: "선사·고조선 → 삼국 → 남북국 → 고려 → 조선 → 근현대 순서입니다. 보기의 유물이 어느 시대 것인지부터 가려 보세요.",
       explanation: chronological.map((item) => `${item.title}(${item.era})`).join(" → ")
     };
   }
@@ -566,8 +566,6 @@
 
   dataset.themes.heritage = {
     label: "유물·유적",
-    title: "유물·유적으로 보는 한국사",
-    summary: "시험에 자주 나오는 유물·유적을 만들어진 곳이나 지금 있는 곳에 놓았습니다. 같은 시대의 유물이 어느 지역에 모여 있는지 함께 보세요.",
     points: [],
     legend: ERAS.map((era) => ({ label: era.label, color: era.color })),
     features: [],

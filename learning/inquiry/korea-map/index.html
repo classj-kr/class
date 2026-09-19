@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#123c46">
   <title>국내 지도</title>
   <link rel="stylesheet" href="vendor/leaflet/leaflet.css">
-  <link rel="stylesheet" href="styles.css?v=20260920-13">
+  <link rel="stylesheet" href="styles.css?v=20260920-17">
 </head>
 <body>
   <div class="app-shell">
@@ -25,9 +25,8 @@
     <main class="study-layout">
       <section class="map-stage" aria-label="국내 지도 주제 지도">
         <div id="map" role="application" aria-label="국내 지도"></div>
-        <a class="map-back" href="../../../" aria-label="학습 메뉴로 돌아가기">←</a>
         <button class="map-progress" id="progressButton" type="button" aria-label="학습 기록 보기"><span>누적</span><strong id="progressScore">0 / 0</strong></button>
-        <button class="map-toggle" id="labelToggle" type="button" aria-pressed="false">세부 정보 보기</button>
+        <button class="map-toggle" id="labelToggle" type="button" aria-pressed="false">지역명</button>
         <button class="map-tool" id="profileButton" type="button" aria-pressed="false" hidden>
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 19l5-8 4 4 3-6 6 10"/><circle cx="3" cy="19" r="1.4"/><circle cx="21" cy="19" r="1.4"/></svg>단면도
         </button>
@@ -44,7 +43,6 @@
       <aside class="study-panel">
         <section class="concept-card" aria-labelledby="conceptTitle">
           <h1 id="conceptTitle"></h1>
-          <p id="conceptSummary"></p>
           <aside class="feature-focus" id="featureFocus" aria-live="polite" hidden>
             <button class="focus-close" id="focusClose" type="button" aria-label="닫고 전국 보기">×</button>
             <span id="focusKicker"></span>
@@ -177,19 +175,19 @@
   </dialog>
 
   <script src="vendor/leaflet/leaflet.js"></script>
-  <script src="data/terrain-data.js?v=20260920-13"></script>
-  <script src="data/borders.js?v=20260920-13"></script>
-  <script src="data/relief-tiles.js?v=20260920-13"></script>
-  <script src="data/transport-lines.js?v=20260920-13"></script>
-  <script src="data/regions.js?v=20260920-13"></script>
-  <script src="data/geo-data.js?v=20260920-13"></script>
-  <script src="data/questions.js?v=20260920-13"></script>
-  <script src="data/principles.js?v=20260920-13"></script>
-  <script src="data/heritage-data.js?v=20260920-13"></script>
-  <script src="heritage.js?v=20260920-13"></script>
-  <script src="data/travel-data.js?v=20260920-13"></script>
-  <script src="travel.js?v=20260920-13"></script>
+  <script src="data/terrain-data.js?v=20260920-17"></script>
+  <script src="data/borders.js?v=20260920-17"></script>
+  <script src="data/relief-tiles.js?v=20260920-17"></script>
+  <script src="data/transport-lines.js?v=20260920-17"></script>
+  <script src="data/regions.js?v=20260920-17"></script>
+  <script src="data/geo-data.js?v=20260920-17"></script>
+  <script src="data/questions.js?v=20260920-17"></script>
+  <script src="data/principles.js?v=20260920-17"></script>
+  <script src="data/heritage-data.js?v=20260920-17"></script>
+  <script src="heritage.js?v=20260920-17"></script>
+  <script src="data/travel-data.js?v=20260920-17"></script>
+  <script src="travel.js?v=20260920-17"></script>
   <script src="climate-graph.js?v=20260906-1"></script>
-  <script src="app.js?v=20260920-13"></script>
+  <script src="app.js?v=20260920-17"></script>
 </body>
 </html>
