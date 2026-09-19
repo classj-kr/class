@@ -48,6 +48,6 @@ assert.match(server, /blockedTerrain\?\.type === 'ice'/, '얼음에 막히면 �
 assert.match(server, /function warnNearIce/, '얼음 앞에서 미리 알려야 함');
 const page = fs.readFileSync(path.join(root, 'public', 'index.html'), 'utf8');
 assert.match(page, /function drawIceLayer/, '학생 지도에 얼음을 그려야 함');
-assert.match(page, /terrain\.js\?v=76/, '지형 파일 버전을 올려야 함');
+assert.match(page, /terrain\.js\?v=77/, '지형 파일 버전을 올려야 함');
 
 console.log(`v84 polar ice unit ok · 북동 항로 우회 최북 ${maxLat.toFixed(1)}° · 최남 ${minLat.toFixed(1)}°`);

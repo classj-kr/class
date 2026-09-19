@@ -192,10 +192,11 @@
   }
 
   // 1520년의 나무배는 북극·남극의 얼음 바다를 지날 수 없었다(북동 항로는 1878년, 북서 항로는 1906년에야 뚫렸다).
-  // 바다는 북위 70도부터 막고, 멕시코 만류로 덜 어는 노르웨이 앞바다만 74도까지 연다.
+  // 바다는 북위 70도부터 막고, 멕시코 만류로 덜 어는 노르웨이 앞바다만 74도까지 연다(사이는 부드럽게).
   // 시베리아 앞바다 항로가 70~77도를 지나므로 80도에서 막으면 꼼수 항로가 그대로 열린다.
   // 남쪽은 62도부터 막는다(혼곶 56도·드레이크 해협 58도는 지난다). 땅은 80도부터 얼음이다.
-  const ICE = Object.freeze({ north: 70, northAtlantic: 74, atlanticWest: -45, atlanticEast: 60, south: -62, landNorth: 80 });
+  // 노르웨이 앞바다(서경 35도~동경 50도)는 74도, 그 밖은 70도. 사이 15도는 부드럽게 이어 얼음 벽처럼 꺾이지 않게 한다.
+  const ICE = Object.freeze({ north: 70, northAtlantic: 74, rampWest: -50, fullWest: -35, fullEast: 50, rampEast: 65, south: -62, landNorth: 80 });
 
   // 얼음 가장자리는 자로 그은 줄이 아니라 들쭉날쭉하다. 경도에 따라 ±0.8도 안에서 부드럽게 흔든다.
   // 가장 많이 물러나도 북위 71도라, 72도가 넘는 벨로트 해협·타이미르반도 앞바다(북서·북동 항로)는 그대로 막힌다.
@@ -204,8 +205,15 @@
     return 0.5 * Math.sin(r * 7) + 0.3 * Math.sin(r * 23 + 1.1);
   }
 
+  function atlanticWeight(lon) {
+    if (lon >= ICE.fullWest && lon <= ICE.fullEast) return 1;
+    if (lon > ICE.fullEast && lon < ICE.rampEast) return (ICE.rampEast - lon) / (ICE.rampEast - ICE.fullEast);
+    if (lon < ICE.fullWest && lon > ICE.rampWest) return (lon - ICE.rampWest) / (ICE.fullWest - ICE.rampWest);
+    return 0;
+  }
+
   function iceLimitNorth(lon) {
-    return (lon >= ICE.atlanticWest && lon <= ICE.atlanticEast ? ICE.northAtlantic : ICE.north) + iceWobble(lon);
+    return ICE.north + (ICE.northAtlantic - ICE.north) * atlanticWeight(lon) + iceWobble(lon);
   }
 
   function iceLimitSouth(lon) {
