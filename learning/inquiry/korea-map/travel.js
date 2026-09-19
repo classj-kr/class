@@ -246,7 +246,7 @@
   dataset.themes.travel = {
     label: "체험·관광",
     title: "전국 체험학습 장소",
-    summary: `전국 체험학습 장소 ${places.length}곳을 종류별로 모았습니다. 핀을 누르면 사진과 배울 거리, 관찰 미션, 우리 학교에서 가는 길이 나옵니다.`,
+    summary: `전국 체험학습 장소 ${places.length}곳을 종류별로 모았습니다.`,
     points: [],
     legend: data.categories.map((category) => ({ label: category.label, color: COLORS[category.key][1] })),
     features: [],

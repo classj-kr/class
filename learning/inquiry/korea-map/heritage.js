@@ -567,7 +567,7 @@
   dataset.themes.heritage = {
     label: "유물·유적",
     title: "유물·유적으로 보는 한국사",
-    summary: "시험에 자주 나오는 유물·유적을 만들어진 곳이나 지금 있는 곳에 놓았습니다. 시대를 고르고 핀을 누르면 사진과 설명이 나옵니다. 가까이 모인 핀은 둥글게 벌려 놓고 원래 자리를 점선으로 이었습니다.",
+    summary: "시험에 자주 나오는 유물·유적을 만들어진 곳이나 지금 있는 곳에 놓았습니다. 같은 시대의 유물이 어느 지역에 모여 있는지 함께 보세요.",
     points: [],
     legend: ERAS.map((era) => ({ label: era.label, color: era.color })),
     features: [],

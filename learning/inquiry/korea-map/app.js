@@ -970,7 +970,7 @@
       caption.textContent = "기온은 꺾은선(왼쪽 눈금 ℃), 강수량은 막대(오른쪽 눈금 mm)입니다.";
       return;
     }
-    caption.textContent = question.hint ? "단서 보기를 누르면 글 단서가 나옵니다." : "답을 고르면 지도에 관련 위치가 표시됩니다.";
+    caption.textContent = "";
     setReliefTone(questionMap, theme);
     drawThemeOnMap(questionMap, questionThemeLayer, theme, { interactive: false, skipFeatures: true, baseOnly: true });
     drawQuestionLabels(question, theme, false);

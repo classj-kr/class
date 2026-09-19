@@ -309,6 +309,7 @@ dialog::backdrop { background: rgba(9, 30, 36, 0.68); backdrop-filter: blur(3px)
 .question-graph svg { display: block; width: 100%; height: auto; }
 .question-map-caption { padding: 8px 12px; color: #405e65; background: #eef5f3; font-size: 12px; font-weight: 750; text-align: center; line-height: 1.4; }
 .question-map-caption.is-hint { color: #83500e; background: #fbf1da; }
+.question-map-caption:empty { display: none; }
 
 .answer-feedback { margin: 0 24px 14px; padding: 11px 14px; border-radius: 10px; background: #eef5f2; }
 .answer-feedback.is-wrong { background: #fff1ef; }
