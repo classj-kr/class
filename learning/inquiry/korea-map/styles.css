@@ -80,6 +80,8 @@ button { cursor: pointer; }
 .map-key { position: absolute; z-index: 600; left: 12px; bottom: 14px; max-width: min(560px, calc(100% - 64px)); display: flex; flex-wrap: wrap; gap: 6px; padding: 7px; border: 1px solid rgba(18, 60, 70, 0.14); border-radius: 12px; background: rgba(255, 255, 255, 0.9); box-shadow: var(--shadow); backdrop-filter: blur(8px); }
 .key-item { display: inline-flex; align-items: center; gap: 5px; min-height: 28px; padding: 3px 7px; border-radius: 7px; color: #314e54; font-size: 12px; font-weight: 750; }
 .key-swatch { width: 16px; height: 7px; border: 2px solid var(--swatch); border-radius: 999px; background: color-mix(in srgb, var(--swatch) 25%, transparent); }
+.key-swatch--circle { width: 12px; height: 12px; }
+.key-swatch--dash { height: 0; border-width: 2px 0 0; border-style: dashed; border-radius: 0; background: none; }
 /* 높이별 색 막대: tools/build_relief.py 의 색과 같다(0·200·500·1000·1500·2000m를 같은 간격으로) */
 .key-relief { gap: 7px; }
 .relief-sea { padding: 2px 6px; border-radius: 5px; color: #1f4f73; background: #9cc9ea; font-size: 12px; }

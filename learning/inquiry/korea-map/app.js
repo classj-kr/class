@@ -392,7 +392,7 @@
         return node;
       }
       node.className = "key-item";
-      node.innerHTML = `<span class="key-swatch" style="--swatch:${item.color}" aria-hidden="true"></span>${item.label}`;
+      node.innerHTML = `<span class="key-swatch${item.shape ? ` key-swatch--${item.shape}` : ""}" style="--swatch:${item.color}" aria-hidden="true"></span>${item.label}`;
       return node;
     }));
   }
@@ -638,8 +638,8 @@
 
     (theme.circles || []).forEach((city) => {
       const radius = 3 + Math.sqrt(city.pop) * 0.8;
-      const circle = L.circleMarker([city.lat, city.lng], { pane: "themeZones", radius, color: "#5a2f8f", weight: 1.2, fillColor: "#8e5bc4", fillOpacity: 0.42, interactive }).addTo(group);
-      if (interactive) circle.bindTooltip(`${city.name} · 원 크기는 학습용 상대 규모`, { sticky: true, className: "study-tooltip" });
+      const circle = L.circleMarker([city.lat, city.lng], { pane: "themeZones", radius, color: "#3d4f5b", weight: 1.2, fillColor: "#5f7482", fillOpacity: 0.42, interactive }).addTo(group);
+      if (interactive) circle.bindTooltip(`${city.name} 약 ${city.pop}만 명`, { sticky: true, className: "study-tooltip" });
     });
 
     // 시설·자원 표지는 확대했을 때(7단부터, 교통 탭은 6단부터) 보인다. 문제 지도에서는 정답 공개 뒤에 보인다.

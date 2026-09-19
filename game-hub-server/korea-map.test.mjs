@@ -127,6 +127,23 @@ assert.match(styles, /\.principle-button \{[^}]*min-height:\s*44px/s);
 const sandbox = { window: {}, document: { addEventListener() {} } };
 for (const key of ["terrain", "transport", "regions", "geo", "questions", "principles", "heritageData", "heritage", "travelData", "travel"]) vm.runInNewContext(sources[key], sandbox);
 const dataset = sandbox.window.KOREA_GEOGRAPHY;
+// 범례: 지도에 칠한 색은 모두 범례에 있고, 범례의 색(과 모양)은 서로 다르며, 지도에 없는 색은 범례에 없다.
+// 선마다 이름이 붙은 경선, 글자가 곧 설명인 이름표(신도시·혁신 도시)는 범례에 넣지 않는다.
+for (const [key, theme] of Object.entries(dataset.themes)) {
+  if (theme.draw) continue;
+  const legend = (theme.legend || []).filter((item) => item.color);
+  const legendColors = new Set(legend.map((item) => item.color));
+  assert.equal(new Set(legend.map((item) => `${item.color}/${item.shape || ""}`)).size, legend.length, `${key} 범례에 같은 색이 둘 있습니다.`);
+  const drawn = [...(theme.rivers ? [{ color: "#087eaf" }] : []), ...(theme.zones || []), ...(theme.lines || []), ...(theme.isolines || []), ...(theme.markers || []), ...(theme.featureMarkers === false ? [] : theme.features || [])].map((item) => item.color);
+  for (const color of drawn) assert.ok(legendColors.has(color), `${key}: 범례에 없는 색 ${color}이 지도에 있습니다.`);
+  if (!theme.network && !theme.regionFill) {
+    const extra = legend.filter((item) => !drawn.includes(item.color) && item.shape !== "circle");
+    assert.equal(extra.length, 0, `${key}: 지도에 없는 범례가 있습니다(${extra.map((item) => item.label).join(", ")}).`);
+  }
+}
+assert.match(app, /bindTooltip\(`\$\{city\.name\} 약 \$\{city\.pop\}만 명`/);
+assert.match(app, /color: "#087eaf", weight, opacity/, "하천 범례 색이 강 색과 달라졌습니다.");
+
 // 지역명(단추로 켜는 도·도시 이름): 도 이름과 도시 이름이 겹치지 않고(제주), 북한 아홉 도가 다 있다(강원도 포함).
 // 주제 이름표가 이미 부르는 곳(대구 분지 등)의 지역명은 그리지 않는다 — 먼저 놓이는 지역명이 주제 이름표를 가린다.
 const provinceNames = [...dataset.provinceLabels].map(([name]) => name);
