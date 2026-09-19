@@ -11,6 +11,11 @@
   const regionOfProvince = dataset.regionOfProvince || [];
   const borders = window.KOREA_BORDERS || { mdl: [], national: [] };
   const terrainRivers = (window.TERRAIN_DATA && window.TERRAIN_DATA.rivers) || { features: [] };
+  // 북한 도 경계(data/regions.js). 남한 시·도 경계(provinces-topo.json)와 함께 그린다.
+  const northFeatures = ((window.KOREA_REGIONS && window.KOREA_REGIONS.north) || []).map((province) => ({
+    type: "Feature", properties: { name: province.name, north: true },
+    geometry: { type: "MultiPolygon", coordinates: province.rings.map((ring) => [ring.map(([lat, lng]) => [lng, lat])]) }
+  }));
   const THEME_ORDER = ["territory", "terrain", "climate", "population", "industry", "transport", "region", "heritage", "travel"];
   const KOREA_BOUNDS = L.latLngBounds([[32.95, 123.85], [43.15, 131.35]]);
   // 지형 바탕(tools/build_relief.py): 3~6단은 동아시아 둘레, 7~9단은 한반도 둘레, 10~11단은 남북한 땅에 닿는 칸만 있다.
@@ -228,20 +233,20 @@
 
   function drawBoundaries(map, group, interactive) {
     group.clearLayers();
-    if (!provinceFeatures.length) return;
+    if (!provinceFeatures.length && !northFeatures.length) return;
     const theme = themes[map === mainMap ? currentTheme : questionThemeKey()] || {};
     const fillByRegion = !!theme.regionFill;
     if (!fillByRegion && map.getZoom() > 9) return;
-    L.geoJSON({ type: "FeatureCollection", features: provinceFeatures }, {
+    L.geoJSON({ type: "FeatureCollection", features: [...provinceFeatures, ...northFeatures] }, {
       interactive,
       pane: "overlayPane",
       style(feature) {
         const name = normalizeProvinceName(feature.properties && feature.properties.name);
         const region = fillByRegion ? regionStyleFor(name) : null;
         return {
-          color: region ? region.color : "#527681",
+          color: region ? "#43565c" : "#527681",
           weight: interactive ? 1.25 : 1.1,
-          opacity: region ? 0.9 : 0.78,
+          opacity: region ? 0.7 : 0.78,
           fillColor: region ? region.color : "#fff8db",
           fillOpacity: region ? 0.28 : 0.08,
           lineJoin: "round"
@@ -266,8 +271,10 @@
     return question ? question.topic : currentTheme;
   }
 
+  // 경계 파일(2018년)의 옛 이름을 지금 이름으로. 북한 강원도는 "강원도(북)"라 건드리지 않는다.
   function normalizeProvinceName(name) {
-    return String(name || "").replace("강원도", "강원특별자치도").replace("전라북도", "전북특별자치도");
+    const value = String(name || "");
+    return value === "강원도" ? "강원특별자치도" : value === "전라북도" ? "전북특별자치도" : value;
   }
 
   function topologyToFeatures(topology) {
@@ -336,7 +343,7 @@
     syncMapDetailsButton();
     setReliefTone(mainMap, theme);
     drawThemeOnMap(mainMap, mainThemeLayer, theme, { interactive: true });
-    drawLabels(mainMap, mainLabelLayer, { admin: true, city: true, annotations: theme.annotations || [] });
+    drawLabels(mainMap, mainLabelLayer, { admin: !theme.provinceNames, city: !theme.provinceNames, annotations: theme.annotations || [] });
     drawBoundaries(mainMap, mainBoundaryLayer, true);
     fitKorea(mainMap);
     updatePracticeButton();
@@ -714,7 +721,7 @@
     });
   }
 
-  const KIND_RANK = { sea: 0, range: 1, peak: 2, plateau: 3, river: 4 };
+  const KIND_RANK = { sea: 0, province: 0, range: 1, peak: 2, plateau: 3, river: 4 };
   function labelRank(annotation) {
     return (annotation.minZoom || 5) * 10 + (KIND_RANK[annotation.kind] ?? 5);
   }

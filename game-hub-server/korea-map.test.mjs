@@ -19,6 +19,7 @@ const app = read("app.js");
 const sources = {
   terrain: read("data/terrain-data.js"),
   transport: read("data/transport-lines.js"),
+  regions: read("data/regions.js"),
   borders: read("data/borders.js"),
   tiles: read("data/relief-tiles.js"),
   geo: read("data/geo-data.js"),
@@ -118,7 +119,7 @@ assert.match(styles, /@media \(max-width: 1050px\)[\s\S]*?\.study-layout \{ disp
 assert.match(styles, /\.principle-button \{[^}]*min-height:\s*44px/s);
 
 const sandbox = { window: {}, document: { addEventListener() {} } };
-for (const key of ["terrain", "transport", "geo", "questions", "principles", "heritageData", "heritage", "travelData", "travel"]) vm.runInNewContext(sources[key], sandbox);
+for (const key of ["terrain", "transport", "regions", "geo", "questions", "principles", "heritageData", "heritage", "travelData", "travel"]) vm.runInNewContext(sources[key], sandbox);
 const dataset = sandbox.window.KOREA_GEOGRAPHY;
 assert.deepEqual(Object.keys(dataset.themes), THEME_KEYS);
 assert.deepEqual(THEME_KEYS.map((key) => dataset.themes[key].label), TAB_LABELS);
@@ -151,6 +152,24 @@ assert.equal(transportTheme.annotations.filter((item) => item.kind === "road").l
 assert.match(app, /function drawTransportNetwork/);
 assert.ok(dataset.questions.filter((question) => question.topic === "transport").length >= 9, "교통 문제가 모자랍니다.");
 assert.ok(exists("tools/build_transport.mjs"));
+
+// 행정구역: 북한 도 경계 11곳(9개 도와 평양·남포)과 남한 시·군 이름, 시·도 전체 이름. 북한도 권역 색으로 칠한다.
+const regionData = sandbox.window.KOREA_REGIONS;
+assert.equal(regionData.north.length, 11);
+for (const name of ["평안북도", "평안남도", "자강도", "양강도", "함경북도", "함경남도", "강원도(북)", "황해북도", "황해남도", "평양직할시", "남포특별시"]) {
+  assert.ok(regionData.north.some((item) => item.name === name && item.rings.length), `${name} 경계가 없습니다.`);
+}
+const counties = regionData.counties.map(([name]) => name);
+assert.ok(counties.length >= 150 && counties.every((name) => /(시|군)$/.test(name)), "시·군 이름표가 이상합니다.");
+for (const name of ["수원시", "안산시", "고양시", "청주시", "창원시", "군위군", "울릉군"]) assert.ok(counties.includes(name), `${name}이 빠졌습니다.`);
+const regionTheme = dataset.themes.region;
+assert.equal(regionTheme.label, "행정구역");
+assert.ok(regionTheme.provinceNames && regionTheme.regionFill);
+assert.equal(regionTheme.annotations.filter((item) => item.kind === "province").length, 28);
+assert.ok(sources.geo.indexOf('{ region: "북한"') < sources.geo.indexOf('{ region: "강원권"'), "북한 권역이 강원권보다 먼저 걸려야 강원도(북)이 강원권으로 칠해지지 않습니다.");
+assert.match(app, /features: \[\.\.\.provinceFeatures, \.\.\.northFeatures\]/);
+assert.match(app, /value === "강원도" \? "강원특별자치도"/);
+assert.ok(exists("tools/build_regions.mjs"));
 
 assert.equal(riverData.features.length, 12, "한반도 주요 하천 중심선 자료가 완전해야 합니다.");
 

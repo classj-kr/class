@@ -157,6 +157,9 @@ button { cursor: pointer; }
 .geo-annotation--sea { color: #2b6fa8; font-size: 17px; font-style: italic; letter-spacing: 0.4em; }
 .geo-annotation.is-clickable { cursor: pointer; }
 .geo-annotation--road { color: #b4540a; font-size: 12px; }
+.geo-annotation--province { color: #233f47; font-size: 13px; letter-spacing: 0.04em; }
+.geo-annotation--county { color: #4a5f64; font-size: 11px; font-weight: 800; }
+.geo-annotation--county::before { content: "•"; margin-right: 3px; }
 .geo-annotation--rail { color: #a51d1d; font-size: 12px; }
 .geo-annotation.is-clickable:hover { text-decoration: underline; text-underline-offset: 3px; }
 .border-label { position: absolute; transform: translate(-50%, 8px); color: #b3261e; font-size: 11px; font-weight: 900; white-space: nowrap; paint-order: stroke fill; -webkit-text-stroke: 3px rgba(255, 255, 255, 0.95); }

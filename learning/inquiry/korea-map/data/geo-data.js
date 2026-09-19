@@ -26,7 +26,9 @@
   ];
 
   // 권역 색: 시도 경계 파일의 시도 이름으로 칠한다.
+  // 북한은 한 권역으로 칠한다. "강원도(북)"가 남한 강원권보다 먼저 걸리도록 맨 앞에 둔다.
   const REGION_OF_PROVINCE = [
+    { region: "북한", color: "#8d7b68", match: ["평안", "자강", "양강", "함경", "황해", "평양", "남포", "강원도(북)"] },
     { region: "수도권", color: "#8e5bc4", match: ["서울", "인천", "경기"] },
     { region: "강원권", color: "#4c9a5f", match: ["강원"] },
     { region: "충청권", color: "#2f8a9a", match: ["충청", "대전", "세종"] },
@@ -74,6 +76,23 @@
       return { name: RAIL_NAMES[rail.name] || rail.name, kind: "rail", lat, lng, minZoom: 7 };
     });
     return [...rails, ...roads];
+  }
+
+  // 행정구역 이름표: 시·도 전체 이름(남 17, 북 11)과 8단부터 보이는 남한 시·군 이름(regions.js, 먼저 불러온다).
+  const SOUTH_PROVINCES = [
+    ["서울특별시", 37.57, 126.98], ["부산광역시", 35.18, 129.08], ["대구광역시", 35.87, 128.60], ["인천광역시", 37.46, 126.70],
+    ["광주광역시", 35.16, 126.85], ["대전광역시", 36.35, 127.38], ["울산광역시", 35.54, 129.31], ["세종특별자치시", 36.56, 127.26],
+    ["경기도", 37.35, 127.20], ["강원특별자치도", 37.65, 128.25], ["충청북도", 36.75, 127.75], ["충청남도", 36.48, 126.82],
+    ["전북특별자치도", 35.75, 127.12], ["전라남도", 34.88, 126.82], ["경상북도", 36.36, 128.72], ["경상남도", 35.25, 128.25],
+    ["제주특별자치도", 33.38, 126.53]
+  ];
+  function regionAnnotations() {
+    const regions = window.KOREA_REGIONS || { north: [], counties: [] };
+    return [
+      ...SOUTH_PROVINCES.map(([name, lat, lng]) => ({ name, kind: "province", lat, lng, minZoom: 6 })),
+      ...regions.north.map((province) => ({ name: province.name, kind: "province", lat: province.center[0], lng: province.center[1], minZoom: 6 })),
+      ...regions.counties.map(([name, lat, lng]) => ({ name, kind: "county", lat, lng, minZoom: 8 }))
+    ];
   }
 
   const themes = {
@@ -398,6 +417,8 @@
       title: "시·도와 권역, 전통 지역 이름",
       summary: "시·도 경계를 권역별 색으로 칠했습니다. 북한부터 제주까지 권역마다 자연환경이 산업과 도시로 어떻게 이어지는지 읽고, 전통 지역 이름(관서·관북·관동·해서·기호·호서·호남·영남)도 위치와 함께 익히세요.",
       points: [
+        "남한의 시·도는 17개다. 특별시 1(서울), 광역시 6(부산·대구·인천·광주·대전·울산), 특별자치시 1(세종), 특별자치도 3(제주·강원·전북), 도 6(경기·충북·충남·전남·경북·경남).",
+        "북한은 평안남·북도, 자강도, 양강도, 함경남·북도, 강원도, 황해남·북도의 9개 도와 평양직할시, 남포·라선 특별시 등으로 나뉜다.",
         "북한: 산지가 많고 관북은 대륙성 기후. 밭농사(옥수수·감자), 무연탄·철광석·마그네사이트, 수력 발전. 나선·개성·금강산 개방 지구.",
         "수도권: 인구·중추 관리·첨단 산업 집중. 과밀 해소를 위해 세종·혁신 도시로 기능 분산. 충청권은 교통 결절과 이전 공장·연구 기능.",
         "강원권: 태백산맥이 영동·영서를 나눔. 폐광 지역은 관광·카지노, 고랭지·목축·풍력·스키로 전환.",
@@ -411,10 +432,14 @@
         { label: "호남권", color: "#d9a520" },
         { label: "영남권", color: "#d9713a" },
         { label: "제주권", color: "#c94f4f" },
+        { label: "북한", color: "#8d7b68" },
         { label: "전통 지역명", color: "#4b3a2a" }
       ],
       regionFill: true,
+      provinceNames: true,
+      featureMarkers: false,
       annotations: [
+        ...regionAnnotations(),
         { name: "관서(평안도)", kind: "tradition", lat: 39.7, lng: 125.6 },
         { name: "관북(함경도)", kind: "tradition", lat: 40.9, lng: 128.8 },
         { name: "해서(황해도)", kind: "tradition", lat: 38.35, lng: 125.85 },
