@@ -22,3 +22,58 @@ services:
         sync: false
       - key: TEACHER_PIN
         sync: false
+  - type: web
+    name: songhwaplay-assets
+    runtime: static
+    buildCommand: node scripts/build-render-assets.mjs
+    staticPublishPath: .render-assets
+    autoDeployTrigger: commit
+    buildFilter:
+      paths:
+        - scripts/build-render-assets.mjs
+        - assets/**/*.avif
+        - assets/**/*.gif
+        - assets/**/*.ico
+        - assets/**/*.jpeg
+        - assets/**/*.jpg
+        - assets/**/*.m4a
+        - assets/**/*.mp3
+        - assets/**/*.mp4
+        - assets/**/*.ogg
+        - assets/**/*.png
+        - assets/**/*.svg
+        - assets/**/*.wav
+        - assets/**/*.webm
+        - assets/**/*.webp
+        - assets/**/*.woff
+        - assets/**/*.woff2
+        - classtools/assets/avatars/**
+        - learning/**/*.avif
+        - learning/**/*.bin
+        - learning/**/*.geojson
+        - learning/**/*.gif
+        - learning/**/*.glb
+        - learning/**/*.gltf
+        - learning/**/*.ico
+        - learning/**/*.jpeg
+        - learning/**/*.jpg
+        - learning/**/*.m4a
+        - learning/**/*.mp3
+        - learning/**/*.mp4
+        - learning/**/*.ogg
+        - learning/**/*.otf
+        - learning/**/*.png
+        - learning/**/*.svg
+        - learning/**/*.ttf
+        - learning/**/*.wav
+        - learning/**/*.webm
+        - learning/**/*.webp
+        - learning/**/*.woff
+        - learning/**/*.woff2
+    headers:
+      - path: /*
+        name: Access-Control-Allow-Origin
+        value: "*"
+      - path: /*
+        name: Cache-Control
+        value: public, max-age=86400
