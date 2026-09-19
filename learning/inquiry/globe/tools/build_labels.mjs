@@ -237,6 +237,80 @@ const PEAKS = [
   ["한라산", 1947, 4, 126.533, 33.362],
 ];
 
+// 강: Natural Earth는 한 강을 구간마다 다른 이름으로 나눠 둔다(창장강 = 퉈퉈·퉁톈·진사·창장).
+// 구간 이름 → [우리말 강 이름, tier]. 같은 우리말 이름끼리 한 줄기로 잇는다.
+const RIVERS = {
+  "Nile": ["나일강", 1], "El Bahr el Abyad": ["나일강", 1], "Bahr el Jebel": ["나일강", 1],
+  "Albert Nile": ["나일강", 1], "Victoria Nile": ["나일강", 1],
+  "Amazonas": ["아마존강", 1],
+  "Chang Jiang": ["창장강", 1], "Yangtze": ["창장강", 1], "Jinsha": ["창장강", 1], "Tongtian": ["창장강", 1], "Tuotuo": ["창장강", 1],
+  "Mississippi": ["미시시피강", 1],
+  "Huang": ["황허강", 2],
+  "Mekong": ["메콩강", 2], "Lancang": ["메콩강", 2], "Za": ["메콩강", 2],
+  "Ganges": ["갠지스강", 2],
+  "Indus": ["인더스강", 2],
+  "Volga": ["볼가강", 2],
+  "Danube": ["도나우강", 2], "Donau": ["도나우강", 2],
+  "Ob": ["오비강", 2],
+  "Yenisey": ["예니세이강", 2],
+  "Lena": ["레나강", 2],
+  "Amur": ["아무르강", 2], "Heilong Jiang": ["아무르강", 2],
+  "Congo": ["콩고강", 2], "Lualaba": ["콩고강", 2],
+  "Niger": ["니제르강", 2],
+  "Zambezi": ["잠베지강", 2],
+  "Paraná": ["파라나강", 2],
+  "Mackenzie": ["매켄지강", 2],
+  "Missouri": ["미주리강", 2],
+  "Brahmaputra": ["브라마푸트라강", 3], "Yarlung": ["브라마푸트라강", 3], "Dihang": ["브라마푸트라강", 3],
+  "Euphrates": ["유프라테스강", 3], "Firat": ["유프라테스강", 3], "Al Furat": ["유프라테스강", 3],
+  "Tigris": ["티그리스강", 3], "Dicle": ["티그리스강", 3],
+  "Rhein": ["라인강", 3], "Rhin": ["라인강", 3], "Rhine": ["라인강", 3],
+  "Dnipro": ["드니프로강", 3], "Dnepre": ["드니프로강", 3],
+  "Irtysh": ["이르티시강", 3], "Ertis": ["이르티시강", 3], "Ertix": ["이르티시강", 3],
+  "Orange": ["오렌지강", 3],
+  "Murray": ["머리강", 3],
+  "Orinoco": ["오리노코강", 3],
+  "Yukon": ["유콘강", 3],
+  "St. Lawrence": ["세인트로렌스강", 3],
+  "Colorado": ["콜로라도강", 3], // 아르헨티나의 같은 이름 강은 RIVER_WEST_OF로 뺀다
+  "Rio Grande": ["리오그란데강", 3],
+  "Ayeyarwady": ["이라와디강", 3],
+  "Ohio": ["오하이오강", 3],
+  "Abay": ["청나일강", 3], "El Bahr el Azraq": ["청나일강", 3],
+  "Madeira": ["마데이라강", 3],
+  "São  Francisco": ["상프란시스쿠강", 3],
+  "Salween": ["살윈강", 4], "Nu": ["살윈강", 4],
+  "Xi": ["시장강", 4],
+  "Darling": ["달링강", 4],
+  "Syr Darya": ["시르다리야강", 4],
+  "Amu  Darya": ["아무다리야강", 4],
+  "Elbe": ["엘베강", 4],
+  "Seine": ["센강", 4],
+  "Thames": ["템스강", 4],
+  "Rhône": ["론강", 4],
+  "Po": ["포강", 4],
+  "Don": ["돈강", 4],
+  "Vistula": ["비스와강", 4],
+  "Oder": ["오데르강", 4],
+  "Kolyma": ["콜리마강", 4],
+  "Songhua": ["쑹화강", 4],
+  "Liao": ["랴오허강", 4],
+  "Tarim": ["타림강", 4],
+  "Limpopo": ["림포포강", 4],
+  "Sénégal": ["세네갈강", 4],
+  "Tocantins": ["토칸칭스강", 4],
+  "Uruguay": ["우루과이강", 4],
+  "Magdalena": ["마그달레나강", 4],
+  "Fraser": ["프레이저강", 4],
+  "Jordan": ["요르단강", 4],
+};
+const RIVER_WEST_OF = { "Colorado": -100 };
+// 한반도 강은 50m 자료에 없어 10m 자료에서 가져온다.
+const KOREA_RIVERS = {
+  "Yalu": ["압록강", 4], "Tumen": ["두만강", 4], "Han": ["한강", 4], "Namhan": ["한강", 4], "Nakdong": ["낙동강", 4],
+};
+const inKorea = ([x, y]) => x > 124 && x < 131 && y > 33 && y < 43.5;
+
 // 바다 이름: Natural Earth 한글 이름을 쓰되 고칠 것만 고치고, 뺄 것은 뺀다.
 const MARINE_FIX = {
   "Laccadive Sea": "라카디브해",
@@ -341,6 +415,61 @@ function labelPoint(geometries) {
 }
 
 const round = (value) => Math.round(value * 100) / 100;
+
+// 끝과 끝이 닿는 구간을 이어 긴 줄기로 만든다(강 이름은 줄기를 따라 놓이므로 짧게 끊겨 있으면 이름이 안 들어간다).
+function joinLines(lines) {
+  const key = ([x, y]) => `${x},${y}`;
+  const pool = lines.map((line) => line.map(([x, y]) => [round(x), round(y)]));
+  let merged = true;
+  while (merged) {
+    merged = false;
+    for (let i = 0; i < pool.length && !merged; i += 1) {
+      for (let j = 0; j < pool.length && !merged; j += 1) {
+        if (i === j) continue;
+        const a = pool[i];
+        const b = pool[j];
+        if (key(a[a.length - 1]) === key(b[0])) pool[i] = a.concat(b.slice(1));
+        else if (key(a[a.length - 1]) === key(b[b.length - 1])) pool[i] = a.concat(b.slice(0, -1).reverse());
+        else continue;
+        pool.splice(j, 1);
+        merged = true;
+      }
+    }
+  }
+  return pool.map((line) => line.filter((p, i) => i === 0 || p[0] !== line[i - 1][0] || p[1] !== line[i - 1][1]));
+}
+
+async function buildRivers() {
+  const rivers = new Map();
+  const add = (name, tier, geometry) => {
+    const parts = geometry.type === "LineString" ? [geometry.coordinates] : geometry.coordinates;
+    if (!rivers.has(name)) rivers.set(name, { tier, parts: [] });
+    rivers.get(name).parts.push(...parts.filter((part) => part.length > 1));
+  };
+  for (const feature of (await neFile("ne_50m_rivers_lake_centerlines")).features) {
+    const entry = RIVERS[feature.properties.name];
+    if (!entry || !feature.geometry) continue;
+    const west = RIVER_WEST_OF[feature.properties.name];
+    const first = feature.geometry.type === "LineString" ? feature.geometry.coordinates[0] : feature.geometry.coordinates[0][0];
+    if (west !== undefined && first[0] > west) continue;
+    add(entry[0], entry[1], feature.geometry);
+  }
+  for (const feature of (await neFile("ne_10m_rivers_lake_centerlines")).features) {
+    const entry = KOREA_RIVERS[feature.properties.name];
+    if (!entry || !feature.geometry) continue;
+    const parts = feature.geometry.type === "LineString" ? [feature.geometry.coordinates] : feature.geometry.coordinates;
+    if (!parts.flat().some(inKorea)) continue;
+    add(entry[0], entry[1], feature.geometry);
+  }
+  const wanted = new Set([...Object.values(RIVERS), ...Object.values(KOREA_RIVERS)].map(([name]) => name));
+  const missing = [...wanted].filter((name) => !rivers.has(name));
+  if (missing.length) throw new Error(`자료에 없는 강: ${missing.join(", ")}`);
+  return [...rivers].map(([name, { tier, parts }]) => ({
+    type: "Feature",
+    properties: { name, tier },
+    geometry: { type: "MultiLineString", coordinates: joinLines(parts) },
+  }));
+}
 const point = (lng, lat, properties) => ({
   type: "Feature",
   properties,
@@ -414,15 +543,18 @@ async function main() {
     return { type: "Feature", properties: {}, geometry: { type: "MultiLineString", coordinates: slim } };
   });
 
+  const rivers = await buildRivers();
   const data = {
     labels: { type: "FeatureCollection", features: labels },
     borders: { type: "FeatureCollection", features: borders },
+    rivers: { type: "FeatureCollection", features: rivers },
   };
   const out = path.join(ROOT, "data/globe-data.js");
   fs.mkdirSync(path.dirname(out), { recursive: true });
   fs.writeFileSync(out, `// tools/build_labels.mjs 로 만든 파일. 직접 고치지 말 것.\nwindow.GLOBE_DATA = ${JSON.stringify(data)};\n`);
   const count = (kind) => labels.filter((f) => f.properties.kind === kind).length;
   console.log(`이름표 ${labels.length}개 (산지 ${count("mountain")}, 고원 ${count("plateau")}, 평원 ${count("plain")}, 분지 ${count("basin")}, 사막 ${count("desert")}, 반도 ${count("peninsula")}, 그 밖 ${count("other")}, 산 ${count("peak")}, 바다 ${count("sea")}, 나라 ${count("country")})`);
+  console.log(`강 ${rivers.length}개: ${rivers.map((f) => `${f.properties.name}(${f.geometry.coordinates.length}줄기)`).join(" ")}`);
   console.log(`국경 ${borders.length}줄, ${(fs.statSync(out).size / 1024).toFixed(0)}KB`);
 }
 
