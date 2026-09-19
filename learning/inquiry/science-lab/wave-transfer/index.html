@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="styles.css?v=5">
     <link rel="stylesheet" href="wave-visual.css?v=5">
     <link rel="stylesheet" href="quiz.css?v=3">
+    <link rel="stylesheet" href="../exam-scope.css?v=1">
 </head>
 <body>
     <main>
@@ -18,12 +19,12 @@
                 <a href="../">← 과학 실험실</a>
                 <h1>파동의 전달</h1>
             </div>
-            <div class="grade-tags"><span>중학교 2학년</span><span>물리</span></div>
+            <div class="grade-tags"><span>중학교 2학년</span><span>과학</span></div>
         </header>
 
         <ol class="method-steps" aria-label="실험 방법">
             <li>줄이나 용수철의 한쪽 끝을 잡습니다.</li>
-            <li>매질의 팽팽함과 흔드는 빠르기를 정합니다.</li>
+            <li>흔드는 빠르기와 크기를 바꾸어 봅니다.</li>
             <li>한쪽 끝을 규칙적으로 흔듭니다.</li>
             <li>파장을 재고 기준 파장 20 cm와 견줍니다.</li>
         </ol>
@@ -31,7 +32,7 @@
         <div class="experiment-layout">
             <section class="panel control-panel" aria-labelledby="control-title">
                 <h2 id="control-title">실험 조건</h2>
-                <p class="water-standard">기준 조건은 팽팽함 20 cm/s, 진동수 1.0 Hz, 파장 20 cm입니다</p>
+                <p class="water-standard">매질의 진동과 파동의 진행 방향을 비교합니다</p>
 
                 <fieldset class="mode-field">
                     <legend>파동의 종류</legend>
@@ -42,7 +43,7 @@
                 </fieldset>
 
                 <div class="range-heading">
-                    <label for="speedRange">매질의 팽팽함 (파동의 속력)</label>
+                    <label for="speedRange">모형의 전달 빠르기</label>
                     <output id="speedOutput" for="speedRange">20 cm/s</output>
                 </div>
                 <input id="speedRange" type="range" min="10" max="30" step="2" value="20">
@@ -115,7 +116,7 @@
             <div class="meaning-body">
                 <p><strong>매질은 제자리</strong> 파동을 따라 이동하는 것은 에너지이고, 매질의 물질은 제자리에서 진동만 합니다.</p>
                 <p><strong>속력은 매질이 정한다</strong> 아무리 빠르게 흔들어도 속력은 그대로이고, 대신 파장이 짧아집니다.</p>
-                <p><strong>v = f λ</strong> 속력은 진동수와 파장의 곱입니다. 속력이 같으면 진동수와 파장은 반비례합니다.</p>
+                <p><strong>소리의 높낮이와 크기</strong> 진동수가 클수록 높은 소리, 진폭이 클수록 큰 소리가 납니다. 파동의 진동과 진행을 구별합니다.</p>
             </div>
         </section>
 
@@ -123,17 +124,17 @@
             <summary class="quiz-heading"><h2 id="quiz-title">확인 문제</h2><span>4문제</span></summary>
             <div class="quiz-grid">
                 <article class="quiz-card" data-answer="c">
-                    <h3>같은 줄에서 진동수를 2배로 하면 파장은?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q1" value="a"> 2배가 된다</label>
-                        <label><input type="radio" name="q1" value="b"> 변하지 않는다</label>
-                        <label><input type="radio" name="q1" value="c"> 반으로 줄어든다</label>
-                        <label><input type="radio" name="q1" value="d"> 4배가 된다</label>
-                    </div>
-                    <button class="answer-button" type="button">정답 확인</button>
-                    <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>같은 매질에서는 속력이 일정합니다. v = f λ에서 v가 그대로인데 f가 2배가 되면 λ는 반으로 줄어듭니다.</p>
-                </article>
+<h3>같은 소리굽쇠가 더 큰 진폭으로 진동하면 소리는?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q1" value="a"> 더 작아진다.</label>
+<label><input type="radio" name="q1" value="b"> 더 낮아진다.</label>
+<label><input type="radio" name="q1" value="c"> 더 커진다.</label>
+<label><input type="radio" name="q1" value="d"> 소리가 전달되지 않는다.</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>진폭은 소리의 크기와 관련됩니다. 소리의 높낮이는 진동수와 관련됩니다.</p>
+</article>
 
                 <article class="quiz-card" data-answer="b">
                     <h3>파동이 지나갈 때 매질의 물질은 어떻게 될까요?</h3>
@@ -148,18 +149,18 @@
                     <p class="answer-explanation" hidden>파동을 따라 이동하는 것은 에너지입니다. 줄에 매단 점은 제자리에서 위아래로 진동할 뿐 오른쪽으로 가지 않습니다.</p>
                 </article>
 
-                <article class="quiz-card" data-answer="d">
-                    <h3>파동의 속력을 빠르게 하려면 어떻게 해야 할까요?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q3" value="a"> 더 빠르게 흔든다</label>
-                        <label><input type="radio" name="q3" value="b"> 더 크게 흔든다</label>
-                        <label><input type="radio" name="q3" value="c"> 더 오래 흔든다</label>
-                        <label><input type="radio" name="q3" value="d"> 줄을 더 팽팽하게 한다</label>
-                    </div>
-                    <button class="answer-button" type="button">정답 확인</button>
-                    <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>속력은 매질이 정합니다. 흔드는 빠르기나 크기를 바꿔도 속력은 그대로이고, 줄의 팽팽함처럼 매질의 상태를 바꾸어야 달라집니다.</p>
-                </article>
+                <article class="quiz-card" data-answer="a">
+<h3>진동수가 더 큰 소리는?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q3" value="a"> 더 높은 소리이다.</label>
+<label><input type="radio" name="q3" value="b"> 반드시 더 큰 소리이다.</label>
+<label><input type="radio" name="q3" value="c"> 반드시 더 작은 소리이다.</label>
+<label><input type="radio" name="q3" value="d"> 매질 없이만 전달된다.</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>진동수가 클수록 높은 소리입니다. 진폭과 진동수의 역할을 구별합니다.</p>
+</article>
 
                 <article class="quiz-card" data-answer="a">
                     <h3>진동 방향과 진행 방향이 나란한 파동은?</h3>
@@ -176,6 +177,8 @@
             </div>
         </details>
     </main>
-    <script src="app.js?v=5"></script>
+    <script src="app.js?v=e041e7b64240"></script>
+    <script src="../curriculum-map.js?v=2ffe762f2206"></script>
+    <script src="../exam-scope.js?v=849f3853d47f"></script>
 </body>
 </html>

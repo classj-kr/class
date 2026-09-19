@@ -5,27 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#f1f5f9">
     <title>과학 실험실</title>
-    <meta name="description" content="유리관 양쪽에서 확산하는 두 기체가 만나는 위치로 그레이엄 법칙을 확인하고, 기체 발생 반응의 부피를 재는 중학교 과학 모의실험">
+    <meta name="description" content="확산 현상을 관찰하고 입자가 스스로 움직임을 설명하는 중학교 과학 모의실험">
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
     <link rel="stylesheet" href="styles.css?v=6">
     <link rel="stylesheet" href="diff-visual.css?v=6">
     <link rel="stylesheet" href="quiz.css?v=4">
+    <link rel="stylesheet" href="../exam-scope.css?v=1">
 </head>
 <body>
     <main>
         <header class="page-header">
             <div class="title-row">
                 <a href="../">← 과학 실험실</a>
-                <h1>입자의 확산과 기체 발생</h1>
+                <h1>입자의 확산</h1>
             </div>
-            <div class="grade-tags"><span>중학교 1학년</span><span>화학</span></div>
+            <div class="grade-tags"><span>중학교 1학년</span><span>과학</span></div>
         </header>
 
         <ol class="method-steps" aria-label="실험 방법">
             <li>유리관 양쪽 끝에 두 물질을 동시에 놓습니다.</li>
             <li>온도를 정합니다.</li>
             <li>흰 고리가 어디에 생길지 예상합니다.</li>
-            <li>기체 발생 반응의 부피도 재어 봅니다.</li>
+            <li>입자가 움직인다는 증거를 설명합니다.</li>
         </ol>
 
         <div class="experiment-layout">
@@ -34,11 +35,11 @@
 
                 <div class="mode-switch" role="group" aria-label="실험 선택">
                     <button type="button" class="mode selected" data-mode="diff">확산</button>
-                    <button type="button" class="mode" data-mode="gas">기체 발생</button>
+
                 </div>
 
                 <div id="diffControls">
-                    <p class="water-standard">관 길이 40 cm · 암모니아(17) ↔ 염화수소(36.5)</p>
+                    <p class="water-standard">관 길이 40 cm · 암모니아 ↔ 염화수소</p>
 
                     <div class="range-heading">
                         <label for="tempRange">온도</label>
@@ -102,7 +103,7 @@
                     <div id="resultContent" hidden>
                         <div class="result-numbers">
                             <article><span id="labelA">고리 위치</span><strong id="valueA">-</strong></article>
-                            <article><span id="labelB">이동 거리의 비</span><strong id="valueB">-</strong></article>
+                            <article><span id="labelB">이동 비교</span><strong id="valueB">-</strong></article>
                         </div>
                         <p class="prediction-result" id="predictionResult"></p>
                         <p class="explanation" id="elementaryExplanation"></p>
@@ -131,8 +132,8 @@
             <h2>실험 결과의 의미</h2>
             <div class="meaning-body">
                 <p><strong>확산</strong> 입자가 스스로 움직여 골고루 퍼지는 현상입니다.</p>
-                <p><strong>그레이엄 법칙</strong> 분자량이 작을수록 빠르게 확산합니다. 확산 속도는 분자량의 제곱근에 반비례합니다.</p>
-                <p><strong>기체 발생</strong> 반응이 빨라지는 조건(농도·표면적)은 속도만 바꾸고, 최종 기체의 양은 한계 반응물의 양으로 정해집니다.</p>
+                <p><strong>입자 운동의 증거</strong> 직접 섞지 않아도 물질이 퍼지는 현상으로 입자가 스스로 움직이고 있음을 알 수 있습니다.</p>
+                <p><strong>안전과 모형의 한계</strong> 유해 기체를 직접 만들거나 냄새 맡지 마세요. 화면의 색은 보이지 않는 기체를 구별하기 위한 것이며, 시간과 경계는 관찰을 돕는 단순화된 모형입니다.</p>
             </div>
         </section>
 
@@ -140,59 +141,61 @@
             <summary class="quiz-heading"><h2 id="quiz-title">확인 문제</h2><span>4문제</span></summary>
             <div class="quiz-grid">
                 <article class="quiz-card" data-answer="a">
-                    <h3>암모니아(17)와 염화수소(36.5)를 관 양쪽에서 동시에 확산시키면 흰 고리는?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q1" value="a"> 염화수소 쪽에 더 가깝게 생긴다</label>
-                        <label><input type="radio" name="q1" value="b"> 암모니아 쪽에 더 가깝게 생긴다</label>
-                        <label><input type="radio" name="q1" value="c"> 정확히 가운데에 생긴다</label>
-                        <label><input type="radio" name="q1" value="d"> 생기지 않는다</label>
-                    </div>
-                    <button class="answer-button" type="button">정답 확인</button>
-                    <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>분자량이 작은 암모니아가 더 빨리 확산해 더 멀리 가므로, 만나는 지점은 염화수소 쪽에 가깝습니다.</p>
-                </article>
-
-                <article class="quiz-card" data-answer="c">
-                    <h3>확산 속도와 분자량의 관계는?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q2" value="a"> 분자량에 비례한다</label>
-                        <label><input type="radio" name="q2" value="b"> 분자량과 관계없다</label>
-                        <label><input type="radio" name="q2" value="c"> 분자량의 제곱근에 반비례한다</label>
-                        <label><input type="radio" name="q2" value="d"> 분자량의 제곱에 비례한다</label>
-                    </div>
-                    <button class="answer-button" type="button">정답 확인</button>
-                    <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>기체 분자의 평균 속력은 √(T/M) 에 비례하므로, 확산 속도는 분자량의 제곱근에 반비례합니다.</p>
-                </article>
+<h3>모형에서 흰 고리가 염화수소 쪽에 가깝게 생겼다면?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q1" value="a"> 암모니아가 더 멀리 이동했다.</label>
+<label><input type="radio" name="q1" value="b"> 입자는 모두 멈춰 있었다.</label>
+<label><input type="radio" name="q1" value="c"> 관 전체가 흰 고리이다.</label>
+<label><input type="radio" name="q1" value="d"> 염화수소만 이동했다.</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>양쪽 물질이 이동해 만났습니다. 가운데보다 염화수소 쪽에 가까우므로 암모니아 쪽에서 이동한 거리가 더 깁니다.</p>
+</article>
 
                 <article class="quiz-card" data-answer="b">
-                    <h3>온도를 높이면 흰 고리가 생기는 위치는?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q3" value="a"> 암모니아 쪽으로 옮겨간다</label>
-                        <label><input type="radio" name="q3" value="b"> 그대로이고 생기는 시간만 빨라진다</label>
-                        <label><input type="radio" name="q3" value="c"> 염화수소 쪽으로 옮겨간다</label>
-                        <label><input type="radio" name="q3" value="d"> 고리가 사라진다</label>
-                    </div>
-                    <button class="answer-button" type="button">정답 확인</button>
-                    <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>온도는 두 기체의 속도를 같은 비율로 높이므로 거리의 비는 변하지 않습니다. 위치는 그대로이고 더 빨리 만납니다.</p>
-                </article>
+<h3>가만히 둔 향수의 냄새가 주변으로 퍼지는 현상이 뒷받침하는 것은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q2" value="a"> 입자는 움직이지 않는다.</label>
+<label><input type="radio" name="q2" value="b"> 입자가 스스로 움직인다.</label>
+<label><input type="radio" name="q2" value="c"> 기체는 질량이 없다.</label>
+<label><input type="radio" name="q2" value="d"> 공기에는 입자가 없다.</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>확산 현상은 물질을 이루는 입자가 스스로 움직이고 있음을 보여 줍니다.</p>
+</article>
+
+                <article class="quiz-card" data-answer="c">
+<h3>같은 물질의 온도를 높일 때 입자 운동은 일반적으로?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q3" value="a"> 완전히 멈춘다.</label>
+<label><input type="radio" name="q3" value="b"> 입자가 모두 사라진다.</label>
+<label><input type="radio" name="q3" value="c"> 더 활발해진다.</label>
+<label><input type="radio" name="q3" value="d"> 항상 같은 방향으로만 움직인다.</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>온도가 높아지면 입자 운동이 더 활발해집니다. 모형의 정해진 이동 시간은 실제 측정값이 아닙니다.</p>
+</article>
 
                 <article class="quiz-card" data-answer="d">
-                    <h3>탄산칼슘을 가루로 만들면 어떻게 되는가?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q4" value="a"> 최종 기체의 양이 늘어난다</label>
-                        <label><input type="radio" name="q4" value="b"> 반응이 일어나지 않는다</label>
-                        <label><input type="radio" name="q4" value="c"> 최종 기체의 양이 줄어든다</label>
-                        <label><input type="radio" name="q4" value="d"> 반응이 빨라지지만 최종 기체의 양은 같다</label>
-                    </div>
-                    <button class="answer-button" type="button">정답 확인</button>
-                    <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>표면적이 넓어지면 반응 속도만 빨라집니다. 최종 기체의 양은 반응물의 양으로 정해지므로 변하지 않습니다.</p>
-                </article>
+<h3>확산 모형의 색깔 띠를 해석한 설명으로 옳은 것은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q4" value="a"> 실제 모든 기체의 색이다.</label>
+<label><input type="radio" name="q4" value="b"> 입자의 실제 크기이다.</label>
+<label><input type="radio" name="q4" value="c"> 기체가 벽처럼 끊긴다는 뜻이다.</label>
+<label><input type="radio" name="q4" value="d"> 물질의 이동을 보기 쉽게 나타낸 것이다.</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>모형은 보이지 않는 입자의 이동을 단순화합니다. 실제 기체의 색이나 날카로운 경계를 나타내는 것은 아닙니다.</p>
+</article>
             </div>
         </details>
     </main>
-    <script src="app.js?v=5"></script>
+    <script src="app.js?v=501ea94c412b"></script>
+    <script src="../curriculum-map.js?v=2ffe762f2206"></script>
+    <script src="../exam-scope.js?v=849f3853d47f"></script>
 </body>
 </html>

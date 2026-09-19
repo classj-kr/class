@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
         water: { label: '물', hint: '유전율 80', er: 80, cls: 'di-water' },
     };
 
-    const state = { mode: 'field', left: 'p2', right: 'p2', spot: 'mid', volt: 'v1k', part: 'e', area: 'a10', gap: 'g1', diel: 'air', progress: 0, prediction: null };
+    const state = { mode: 'field', left: 'p2', right: 'p2', spot: 'mid', volt: 'v1k', part: 'e', area: 'a10', gap: 'g1', diel: 'air', charge: 'store', progress: 0, prediction: null };
     let running = false, frameId = 0, lastStamp = 0;
 
     const clamp = (v, lo, hi) => Math.min(hi, Math.max(lo, v));
@@ -136,9 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const verdict = v < 1e6 ? 'slow' : v < 1e7 ? 'mid' : 'fast';
             return { kind: 'accel', V, pt, E, F, a, v, vClassic, t, KE, eV, verdict };
         }
-        const A = AREAS[state.area].A, d = GAPS[state.gap].d, er = DIELS[state.diel].er;
-        const C = E0 * er * A / d, Q = C * V_BAT, E = V_BAT / d, U = 0.5 * C * V_BAT * V_BAT;
-        return { kind: 'cap', A, d, er, C, Q, E, U, verdict: C < 100e-12 ? 'small' : C < 1e-9 ? 'mid' : 'big' };
+        return {kind:'cap',phase:state.charge,verdict:state.charge};
     }
     const runSeconds = () => state.mode === 'field' ? 4 : state.mode === 'accel' ? 5 : 5;
 
@@ -155,7 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function buildControls() {
         if (state.mode === 'field') controlArea.innerHTML = pickRow('왼쪽 전하', 'left', opts(LEFTS), state.left, 2) + pickRow('오른쪽 전하', 'right', opts(RIGHTS), state.right, 3) + pickRow('+1 nC 시험 전하 자리', 'spot', opts(SPOTS), state.spot, 3);
         else if (state.mode === 'accel') controlArea.innerHTML = pickRow('두 판 사이 전압 (간격 2 cm)', 'volt', opts(VOLTS), state.volt, 3) + pickRow('입자', 'part', opts(PARTS), state.part, 3);
-        else controlArea.innerHTML = pickRow('판 넓이', 'area', opts(AREAS), state.area, 2) + pickRow('판 간격', 'gap', opts(GAPS), state.gap, 3) + pickRow('판 사이 물질', 'diel', opts(DIELS), state.diel, 4);
+        else controlArea.innerHTML = pickRow('에너지 관찰', 'charge', [{value:'store',label:'전원으로 충전'},{value:'release',label:'충전된 축전기로 플래시 작동'}], state.charge, 2);
         controlArea.querySelectorAll('[data-pick]').forEach(group => {
             group.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
                 state[group.dataset.pick] = button.dataset.value;
@@ -168,13 +166,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const PRED_F = [{ value: 'left', label: '왼쪽으로 밀림' }, { value: 'zero', label: '힘이 0 (그 자리)' }, { value: 'right', label: '오른쪽으로 밀림' }];
     const PRED_A = [{ value: 'slow', label: '초속 1,000 km 아래' }, { value: 'mid', label: '초속 1,000~10,000 km' }, { value: 'fast', label: '초속 10,000 km 넘게' }];
-    const PRED_C = [{ value: 'small', label: '100 pF 아래' }, { value: 'mid', label: '100~1,000 pF' }, { value: 'big', label: '1,000 pF (1 nF) 넘게' }];
+    const PRED_C = [{value:'store',label:'전기 에너지를 저장한다'},{value:'release',label:'저장 에너지를 빛·열로 전환한다'},{value:'none',label:'에너지가 무에서 생긴다'}];
 
     function buildPrediction() {
         const list = state.mode === 'field' ? PRED_F : state.mode === 'accel' ? PRED_A : PRED_C;
         predictionLegend.textContent = state.mode === 'field' ? `왼쪽 ${LEFTS[state.left].label}, 오른쪽 ${RIGHTS[state.right].label} — ${SPOTS[state.spot].label}에 놓은 + 시험 전하는?`
             : state.mode === 'accel' ? `${VOLTS[state.volt].label}로 2 cm 가속한 ${PARTS[state.part].label}의 속력은?`
-                : `${AREAS[state.area].label} 판, 간격 ${GAPS[state.gap].label}, 사이에 ${DIELS[state.diel].label} — 전기 용량은?`;
+                : '이 상황에서 축전기의 에너지는 어떻게 되나요?';
         predictionArea.className = 'prediction-buttons three';
         predictionArea.innerHTML = list.map(o => `<button type="button" data-prediction="${o.value}">${o.label}</button>`).join('');
         predictionArea.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
@@ -321,51 +319,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function renderCap(a) {
-        const p = state.progress, area = AREAS[state.area], gap = GAPS[state.gap], di = DIELS[state.diel];
-        const XL = 200, XR = XL + gap.px, h = area.h, YT = CY - h / 2, YB = CY + h / 2;
-        let out = '';
-        // battery on the left; one wire from + to the left plate, one from − to the right plate
-        out += `<path class="wire" d="M60,${CY - 14} L60,${YT - 18} L${XL + 2},${YT - 18} L${XL + 2},${YT - 10}"/>`;
-        out += `<path class="wire" d="M60,${CY + 14} L60,${YB + 30} L${XR + 2},${YB + 30} L${XR + 2},${YB + 10}"/>`;
-        out += `<line class="battery-long" x1="46" y1="${CY - 14}" x2="74" y2="${CY - 14}"/><line class="battery-short" x1="52" y1="${CY - 6}" x2="68" y2="${CY - 6}"/><line class="battery-long" x1="46" y1="${CY + 6}" x2="74" y2="${CY + 6}"/><line class="battery-short" x1="52" y1="${CY + 14}" x2="68" y2="${CY + 14}"/>`;
-        out += `<text class="small-label" x="88" y="${CY + 4}">전지 9 V</text><text class="charge-text" style="font-size:12.5px;font-weight:900" x="80" y="${CY - 10}">+</text><text class="charge-text" style="font-size:12.5px;font-weight:900" x="80" y="${CY + 18}">−</text>`;
-        // the capacitor
-        out += `<rect class="dielectric ${di.cls}" x="${XL + 4}" y="${YT}" width="${gap.px - 4}" height="${h}"/>`;
-        out += `<rect class="cap-plate" x="${XL}" y="${YT - 10}" width="4" height="${h + 20}"/><rect class="cap-plate" x="${XR}" y="${YT - 10}" width="4" height="${h + 20}"/>`;
-        const nQ = clamp(Math.round(6 + 8 * Math.log10(a.Q / 4e-10)), 4, 34), shown = Math.round(nQ * ease(p));
-        for (let i = 0; i < shown; i += 1) { const y = YT + 6 + (h - 12) * (i + 0.5) / nQ; out += `<circle class="q-pos" cx="${XL - 4}" cy="${y.toFixed(1)}" r="2.2"/><circle class="q-neg" cx="${XR + 8}" cy="${y.toFixed(1)}" r="2.2"/>`; }
-        const nE = clamp(Math.round(a.E / 2250), 2, 12);
-        if (p > 0.3) for (let i = 0; i < nE; i += 1) { const y = YT + 8 + (h - 16) * (i + 0.5) / nE; out += arrow(XL + 6, y, XR - 3, y, 'uniform-line', 'field-arrow', 2.5); }
-        out += `<text class="small-label" x="${(XL + XR) / 2 + 2}" y="${YB + 22}" text-anchor="middle">${di.label} · ${gap.label}</text>`;
-        out += `<text class="small-label" x="${XL - 10}" y="${CY - 22}" text-anchor="end">판 ${area.label}</text>`;
-        // readouts
-        const RX = 316;
-        out += `<text class="trait-text" x="${RX}" y="52">전기 용량 C = ε₀·εr·A/d</text>`;
-        out += `<text class="gen-text" style="fill:#d97706" x="${RX}" y="70">${fmtC(a.C)}</text>`;
-        out += `<text class="trait-text" x="${RX}" y="92">쌓인 전하 Q = CV</text><text class="gen-text" style="fill:#dc2626" x="${RX}" y="108">${fmtQ(a.Q * ease(p))}</text>`;
-        out += `<text class="trait-text" x="${RX}" y="130">판 사이 전기장 V/d</text><text class="trait-text" style="fill:#97dad3" x="${RX}" y="144">${fmtN(a.E)} V/m</text>`;
-        out += `<text class="trait-text" x="${RX}" y="166">저장 에너지 ½CV²</text><text class="trait-text" style="fill:#059669" x="${RX}" y="180">${fmtU(a.U * ease(p) * ease(p))}</text>`;
-        const VERD = { small: '100 pF 아래', mid: '100~1,000 pF', big: '1 nF 넘게' };
-        out += `<text class="verdict-text" fill="#d97706" x="20" y="16">${state.progress >= 1 ? `${area.label} · ${gap.label} · ${di.label}: ${fmtC(a.C)} — ${VERD[a.verdict]}, 전하 ${fmtQ(a.Q)}` : `${area.label} · ${gap.label} · ${di.label}`}</text>`;
-        out += `<text class="note-text" x="20" y="208">ε₀ = 8.85×10⁻¹² F/m. 판이 넓을수록·간격이 좁을수록·유전율이 클수록 같은 전압에서 전하가 더 쌓입니다</text>`;
-        return out;
+        const p=ease(state.progress),stored=a.phase==='store'?p:1-p;
+        let out='<rect x="115" y="60" width="12" height="125" fill="#8aa7b5"/><rect x="225" y="60" width="12" height="125" fill="#8aa7b5"/>';
+        for(let i=0;i<Math.round(stored*5);i++)out+='<text x="93" y="'+(85+i*22)+'" fill="#c54b50">+</text><text x="247" y="'+(85+i*22)+'" fill="#317cb0">−</text>';
+        out+='<text class="part-label" x="20" y="25">'+(a.phase==='store'?'충전: 에너지를 저장':'방전: 저장 에너지를 이용')+'</text>';
+        out+='<circle cx="350" cy="120" r="28" fill="'+(a.phase==='release'&&p>.1?'#f7cc63':'#cbd5e1')+'"/><text class="note-text" x="312" y="178">플래시 모형</text>';return out;
     }
 
     function graphCap(a) {
-        const X0 = 70, X1 = 420, Y = 44, H = 20;
-        const xOf = C => X0 + clamp((Math.log10(C) + 11) / 4, 0, 1) * (X1 - X0);   // 10 pF … 100 nF
-        let out = `<text class="axis-title" x="20" y="18">같은 판·간격에서 사이 물질만 바꾸면 — 전기 용량은 유전율에 비례 (로그 눈금)</text>`;
-        [[1e-11, '10 pF'], [1e-10, '100 pF'], [1e-9, '1 nF'], [1e-8, '10 nF'], [1e-7, '100 nF']].forEach(([C, lab]) => { const x = xOf(C); out += `<line class="grid-line" x1="${x.toFixed(1)}" y1="${Y - 8}" x2="${x.toFixed(1)}" y2="${Y + 4 * (H + 6)}"/><text class="axis-text" x="${x.toFixed(1)}" y="${Y + 4 * (H + 6) + 14}" text-anchor="middle">${lab}</text>`; });
-        [[1e-10, '#dc2626'], [1e-9, '#dc2626']].forEach(([C, col]) => { out += `<line class="ref-line" style="stroke:${col}" x1="${xOf(C).toFixed(1)}" y1="${Y - 8}" x2="${xOf(C).toFixed(1)}" y2="${Y + 4 * (H + 6)}"/>`; });
-        Object.entries(DIELS).forEach(([k, di], i) => {
-            const C = E0 * di.er * a.A / a.d, y = Y + i * (H + 6), w = xOf(C) - X0;
-            out += `<rect class="dielectric ${di.cls}" style="opacity:${k === state.diel ? 1 : 0.55}" x="${X0}" y="${y}" width="${w.toFixed(1)}" height="${H}" rx="3"/>`;
-            if (k === state.diel) out += `<rect class="bar-now" x="${X0}" y="${y}" width="${w.toFixed(1)}" height="${H}" rx="3"/>`;
-            out += `<text class="trait-text" x="${X0 - 6}" y="${y + H / 2 + 4}" text-anchor="end">${di.label} ${di.er >= 2 ? di.er : 1}</text>`;
-            out += `<text class="trait-text" x="${(X0 + w + 6).toFixed(1)}" y="${y + H / 2 + 4}">${fmtC(C)}</text>`;
-        });
-        out += `<text class="small-label" x="20" y="${Y + 4 * (H + 6) + 32}">붉은 점선이 예상 보기의 경계(100 pF, 1 nF)입니다. 넓이를 4배로 하면 4배, 간격을 반으로 하면 2배가 됩니다.</text>`;
-        return out;
+        return '<text class="axis-title" x="30" y="35">축전기의 에너지 전환</text><text class="note-text" x="30" y="80">충전: 외부 전원 → 축전기의 저장 에너지</text><text class="note-text" x="30" y="120">방전: 저장 에너지 → 빛·열 등</text><text class="note-text" x="30" y="160">전기 용량·저장량의 정량 계산은 하지 않습니다</text>';
     }
 
     function noteFor(a) {
@@ -381,10 +343,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 `<div class="data-row"><span class="data-name">운동 에너지</span><span class="data-val">qV = ${fmtN(a.eV)} eV = ${fmtSci(a.KE, 2)} J (질량과 무관)</span></div>` +
                 `<div class="data-row match"><span class="data-name">최종 속력</span><span class="data-val">${fmtV(a.v)} (${fmtSci(a.v, 2)} m/s, 빛의 ${fmtN(a.v / C_LIGHT * 100, a.v / C_LIGHT < 0.01 ? 2 : 1)} %) · 걸린 시간 ${fmtN(a.t * 1e9, 2)} ns</span></div>`;
         }
-        return `<div class="data-row"><span class="data-name">전기 용량</span><span class="data-val">C = ε₀·εr·A/d = 8.85×10⁻¹² × ${DIELS[state.diel].er >= 2 ? DIELS[state.diel].er : 1} × ${a.A} ÷ ${a.d} = ${fmtC(a.C)}</span></div>` +
-            `<div class="data-row"><span class="data-name">쌓인 전하</span><span class="data-val">Q = CV = ${fmtC(a.C)} × 9 V = ${fmtQ(a.Q)}</span></div>` +
-            `<div class="data-row"><span class="data-name">전기장·에너지</span><span class="data-val">E = V/d = ${fmtN(a.E)} V/m · U = ½CV² = ${fmtU(a.U)}</span></div>` +
-            `<div class="data-row match"><span class="data-name">판정</span><span class="data-val">${a.verdict === 'small' ? '100 pF 아래' : a.verdict === 'mid' ? '100~1,000 pF' : '1 nF 넘게'}</span></div>`;
+        return '<p>분리된 전하와 에너지 저장·방출을 정성적으로 비교합니다. 전하 수·밝기는 설명용 모형이며 실제 장치의 에너지량이나 방전 시간은 계산하지 않습니다.</p>';
     }
 
     function render() {
@@ -395,7 +354,7 @@ document.addEventListener('DOMContentLoaded', () => {
         stageBadge.textContent = a.kind === 'field' ? `${LEFTS[state.left].label} · ${RIGHTS[state.right].label} · ${SPOTS[state.spot].label}` : a.kind === 'accel' ? `${PARTS[state.part].label} · ${VOLTS[state.volt].label}` : `${AREAS[state.area].label} · ${GAPS[state.gap].label} · ${DIELS[state.diel].label}`;
         methodHint.textContent = a.kind === 'field' ? '전기장은 + 전하에서 나와 − 전하로 들어가고, 세기는 거리의 제곱에 반비례합니다'
             : a.kind === 'accel' ? '전위차 V를 지난 전하 q는 qV만큼의 운동 에너지를 얻습니다'
-                : '전기 용량은 판 넓이에 비례, 간격에 반비례, 유전율에 비례합니다';
+                : '축전기는 에너지를 저장하고 방전할 때 다른 형태로 전환합니다';
         dataNote.innerHTML = noteFor(a);
         return a;
     }
@@ -442,12 +401,8 @@ document.addEventListener('DOMContentLoaded', () => {
             s += `전위차 ${fmtN(V)} V를 지나며 받은 일은 qV = ${fmtN(a.eV)} eV로 질량과 상관없고, 이것이 모두 운동 에너지가 되어 속력은 √(2qV/m) = ${fmtV(a.v)}입니다. `;
             s += state.part === 'e' ? `같은 전압에서 양성자보다 43배 빠른 것은 질량이 1,836분의 1이기 때문입니다.${a.v / C_LIGHT > 0.1 ? ' 빛 속력의 10 %를 넘어 상대성 효과로 실제 속력은 고전 계산보다 조금 작으며, 여기서는 그 값을 썼습니다.' : ''}` : state.part === 'p' ? `전자보다 1,836배 무거워 같은 에너지로도 속력은 43배 느립니다.` : `전하가 두 배라 에너지는 양성자의 두 배지만 질량이 네 배라 속력은 양성자보다 느립니다.`;
         } else {
-            const di = DIELS[state.diel];
-            labelA.textContent = '전기 용량'; valueA.textContent = fmtC(a.C);
-            labelB.textContent = '9 V에서 쌓인 전하'; valueB.textContent = fmtQ(a.Q);
-            s = `판 넓이 ${a.A} m², 간격 ${fmtN(a.d * 1000, 1)} mm, 사이에 ${di.label}(유전율 ${di.er >= 2 ? di.er : 1})${eul(di.label)} 넣으면 C = ε₀·εr·A/d = ${fmtC(a.C)}입니다. 9 V 전지에 이으면 Q = CV = ${fmtQ(a.Q)}가 판에 쌓이고, 판 사이 전기장은 9 V ÷ ${fmtN(a.d * 1000, 1)} mm = ${fmtN(a.E)} V/m, 저장된 에너지는 ½CV² = ${fmtU(a.U)}입니다. `;
-            s += di.er >= 2 ? `${di.label}의 분자들이 전기장 방향으로 정렬해 판의 전기장을 일부 상쇄하므로, 같은 9 V를 유지하려면 판에 ${di.er}배의 전하가 더 쌓여야 합니다. 그래서 전기 용량이 공기일 때의 ${di.er}배입니다. ` : `공기의 유전율은 1이나 다름없어 진공과 같습니다. `;
-            s += a.verdict === 'small' ? '손바닥만 한 판으로는 100 pF도 안 되는 작은 용량이라, 실용 축전기는 얇은 유전체를 겹겹이 말아 만듭니다.' : a.verdict === 'mid' ? '수백 pF은 라디오 동조 회로 같은 데 쓰이는 크기입니다.' : '1 nF을 넘는 용량은 판이 넓거나 유전율이 큰 물질 덕분입니다. 물은 유전율이 80이나 되지만 전기가 조금 통해 실제 축전기에는 쓰지 못합니다.';
+            labelA.textContent='과정';valueA.textContent=a.phase==='store'?'충전':'방전';labelB.textContent='에너지';valueB.textContent=a.phase==='store'?'저장':'빛·열로 전환';
+            s='충전할 때 외부 전원의 에너지가 축전기에 저장되고, 방전할 때 저장된 에너지가 다른 형태로 전환됩니다. 플래시 등의 이용 사례를 에너지 관점에서 설명합니다.';
         }
         predictionResult.textContent = !state.prediction ? '다음에는 결과를 먼저 예상해 보세요.'
             : state.prediction === a.verdict ? '예상이 맞았습니다.' : '예상과 다른 결과입니다.';

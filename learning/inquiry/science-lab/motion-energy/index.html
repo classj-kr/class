@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="styles.css?v=5">
     <link rel="stylesheet" href="motion-visual.css?v=5">
     <link rel="stylesheet" href="quiz.css?v=3">
+    <link rel="stylesheet" href="../exam-scope.css?v=1">
 </head>
 <body>
     <main>
@@ -18,7 +19,7 @@
                 <a href="../">← 과학 실험실</a>
                 <h1>빗면 운동과 역학적 에너지</h1>
             </div>
-            <div class="grade-tags"><span>중학교 3학년</span><span>물리</span></div>
+            <div class="grade-tags"><span>중학교 3학년</span><span>과학</span></div>
         </header>
 
         <ol class="method-steps" aria-label="실험 방법">
@@ -82,7 +83,7 @@
         <section class="panel meaning-panel">
             <h2>실험 결과의 의미</h2>
             <div class="meaning-body">
-                <p><strong>등가속도 운동</strong> 빗면 위 수레는 중력의 빗면 방향 성분이 계속 밀어 속력이 일정하게 늘어납니다. 같은 시간마다 찍은 점 사이 거리가 1 : 3 : 5 : 7로 벌어지고, 속력–시간 그래프는 곧은 직선이 됩니다.</p>
+                <p><strong>속력이 증가하는 운동</strong> 수레가 빗면을 내려올 때 같은 시간 간격으로 기록한 점 사이가 점점 벌어집니다. 속력–시간 그래프에서는 속력이 커지는 모습을 확인합니다.</p>
                 <p><strong>등속 운동</strong> 마찰이 없는 평평한 곳에 들어서면 운동 방향으로 미는 힘이 없어 속력이 그대로 유지됩니다. 점 사이 거리가 똑같아지고 그래프는 수평선이 됩니다.</p>
                 <p><strong>역학적 에너지 보존</strong> 마찰이 없으면 위치 에너지(9.8 × 질량 × 높이)와 운동 에너지(½ × 질량 × 속력²)의 합은 어느 지점에서나 같습니다. 내려가면 위치 에너지가 운동 에너지로, 올라가면 그 반대로 바뀔 뿐입니다.</p>
                 <p><strong>질량은 상관없다</strong> 공이 오를 수 있는 높이는 처음 놓은 높이로만 정해집니다. 2 kg 공은 에너지가 두 배지만 들어 올리는 데도 두 배가 들어, 1 kg 공과 똑같은 높이까지 오릅니다.</p>
@@ -92,18 +93,18 @@
         <details class="quiz-section" aria-labelledby="quiz-title">
             <summary class="quiz-heading"><h2 id="quiz-title">확인 문제</h2><span>4문제</span></summary>
             <div class="quiz-grid">
-                <article class="quiz-card" data-answer="b">
-                    <h3>빗면을 내려오는 수레를 0.1초마다 찍었습니다. 점 사이 거리는 어떻게 될까요?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q1" value="a"> 모두 같다</label>
-                        <label><input type="radio" name="q1" value="b"> 일정하게 늘어난다</label>
-                        <label><input type="radio" name="q1" value="c"> 점점 줄어든다</label>
-                        <label><input type="radio" name="q1" value="d"> 늘었다 줄었다 한다</label>
-                    </div>
-                    <button class="answer-button" type="button">정답 확인</button>
-                    <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>속력이 일정하게 늘어나므로 같은 시간 동안 가는 거리도 일정하게 늘어납니다. 첫 구간부터 1 : 3 : 5 : 7의 비로 벌어집니다.</p>
-                </article>
+                <article class="quiz-card" data-answer="c">
+<h3>빗면을 내려오는 수레를 같은 시간 간격으로 찍었더니 점 사이가 점점 벌어졌습니다. 알 수 있는 것은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q1" value="a"> 속력이 감소한다.</label>
+<label><input type="radio" name="q1" value="b"> 멈춰 있다.</label>
+<label><input type="radio" name="q1" value="c"> 속력이 증가한다.</label>
+<label><input type="radio" name="q1" value="d"> 질량이 증가한다.</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>같은 시간 동안 이동한 거리가 길어지므로 속력이 증가한 것입니다.</p>
+</article>
 
                 <article class="quiz-card" data-answer="c">
                     <h3>수레가 마찰이 없는 평평한 곳에 들어섰습니다. 속력은 어떻게 될까요?</h3>
@@ -146,6 +147,8 @@
             </div>
         </details>
     </main>
-    <script src="app.js?v=5"></script>
+    <script src="app.js?v=ed8ab707f19f"></script>
+    <script src="../curriculum-map.js?v=2ffe762f2206"></script>
+    <script src="../exam-scope.js?v=849f3853d47f"></script>
 </body>
 </html>

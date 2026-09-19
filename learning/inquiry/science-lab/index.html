@@ -7,11 +7,19 @@
     <title>과학 실험</title>
     <meta name="description" content="물리, 화학, 생명과학, 지구과학의 주제별·학교급별 실험 목록">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="grade-navigation.css?v=1">
 </head>
 <body>
     <main>
         <a class="back-link" href="../../../">← 학습 메뉴</a>
 
+        <section class="grade-navigation" aria-label="학년별 시험 대비">
+            <h1>과학 실험 · 학년별 시험 대비</h1>
+            <div class="grade-choices" role="group" aria-label="학년 선택"><button type="button" data-grade="전체" aria-pressed="true">전체</button><button type="button" data-grade="초3" aria-pressed="false">초3</button><button type="button" data-grade="초4" aria-pressed="false">초4</button><button type="button" data-grade="초5" aria-pressed="false">초5</button><button type="button" data-grade="초6" aria-pressed="false">초6</button><button type="button" data-grade="중1" aria-pressed="false">중1</button><button type="button" data-grade="중2" aria-pressed="false">중2</button><button type="button" data-grade="중3" aria-pressed="false">중3</button><button type="button" data-grade="고1" aria-pressed="false">고1</button><button type="button" data-grade="고2" aria-pressed="false">고2</button><button type="button" data-grade="고3" aria-pressed="false">고3</button></div>
+            <label class="course-choice" hidden>고등학교 과목 <select id="courseSelect"><option value="">전체 과목</option></select></label>
+            <p id="gradeCount" role="status">전체 102개 실험</p>
+            <p class="placement-note">학년은 이 앱의 편성 기준입니다. 교육과정은 학년군으로 제시되므로 학교·교과서의 진도와 시험 범위를 확인하세요. 고2·고3은 수강 과목으로도 고를 수 있습니다.</p>
+        </section>
         <section class="catalog" aria-label="주제별 실험 목록">
             <section class="subject-section physics" id="physics">
                 <header class="subject-heading">
@@ -21,82 +29,82 @@
                 <div class="topic-list">
                     <article class="topic-row"><h4>빛과 상</h4><div class="level-matrix">
                     <div class="level-cell elementary">
-                        <a class="level-entry available" data-level="elementary" href="light-shadow/"><b>초5</b><span>빛의 직진과 그림자</span></a>
+                        <a class="level-entry available" data-level="elementary" data-grades="초5" data-standards="6과02-01 6과02-02" href="light-shadow/"><b>초5</b><span>빛의 직진·반사·굴절과 그림자</span></a>
                     </div>
                     <div class="level-cell middle">
-                        <a class="level-entry available" data-level="middle" href="refraction/"><b>중2</b><span>빛의 반사와 굴절</span></a>
+                        <a class="level-entry available" data-level="middle" data-grades="중2" data-standards="9과10-01" href="refraction/"><b>중2</b><span>빛의 반사와 굴절</span></a>
                     </div>
                     <div class="level-cell high">
-                        <a class="level-entry available" data-level="high" href="lens-image/"><b>고2~3</b><span>렌즈와 상</span></a>
-                        <a class="level-entry available" data-level="high" href="photoelectric/"><b>고2~3</b><span>광전 효과와 물질파</span></a>
+                        <a class="level-entry available" data-level="high" data-grades="고2 고3" data-standards="12물리03-02" href="lens-image/"><b>고2~3</b><span>렌즈와 상<small class="course-label">물리학</small></span></a>
+                        <a class="level-entry available" data-level="high" data-grades="고2 고3" data-standards="12물리03-03 12물리03-04 12전자02-04 12전자03-04" href="photoelectric/"><b>고2~3</b><span>광전 효과와 물질파<small class="course-label">물리학 · 전자기와 양자</small></span></a>
                     </div>
                 </div></article>
                     <article class="topic-row"><h4>소리와 파동</h4><div class="level-matrix">
                     <div class="level-cell elementary">
-                        <a class="level-entry available" data-level="elementary" href="sound-vibration/"><b>초3</b><span>소리와 진동</span></a>
+                        <a class="level-entry available" data-level="elementary" data-grades="초3" data-standards="4과07-01 4과07-02 4과07-03" href="sound-vibration/"><b>초3</b><span>소리와 진동</span></a>
                     </div>
                     <div class="level-cell middle">
-                        <a class="level-entry available" data-level="middle" href="wave-transfer/"><b>중2</b><span>파동의 전달</span></a>
+                        <a class="level-entry available" data-level="middle" data-grades="중2" data-standards="9과10-04" href="wave-transfer/"><b>중2</b><span>파동의 전달</span></a>
                     </div>
                     <div class="level-cell high">
-                        <a class="level-entry available" data-level="high" href="interference/"><b>고2~3</b><span>파동의 간섭과 정상파</span></a>
+                        <a class="level-entry available" data-level="high" data-grades="고2 고3" data-standards="12물리03-01 12역학03-04 12역학03-05" href="interference/"><b>고2~3</b><span>파동의 간섭과 정상파<small class="course-label">물리학 · 역학과 에너지</small></span></a>
                     </div>
                 </div></article>
                     <article class="topic-row"><h4>힘과 운동</h4><div class="level-matrix">
                     <div class="level-cell elementary">
-                        <a class="level-entry available" data-level="elementary" href="lever-balance/"><b>초3</b><span>지레로 물체 들어 올리기</span></a>
-                        <a class="level-entry available" data-level="elementary" href="speed/"><b>초6</b><span>빠르기 비교와 속력</span></a>
+                        <a class="level-entry available" data-level="elementary" data-grades="초3" data-standards="4과01-03 4과01-04" href="lever-balance/"><b>초3</b><span>지레로 물체 들어 올리기</span></a>
+                        <a class="level-entry available" data-level="elementary" data-grades="초6" data-standards="6과10-01 6과10-02" href="speed/"><b>초6</b><span>빠르기 비교와 속력</span></a>
                     </div>
                     <div class="level-cell middle">
-                        <a class="level-entry available" data-level="middle" href="force-motion/"><b>중1</b><span>속력과 힘의 평형</span></a>
-                        <a class="level-entry available" data-level="middle" href="motion-energy/"><b>중3</b><span>빗면 운동과 역학적 에너지</span></a>
+                        <a class="level-entry available" data-level="middle" data-grades="중1" data-standards="9과05-01 9과05-02 9과05-03" href="force-motion/"><b>중1</b><span>속력과 힘의 평형</span></a>
+                        <a class="level-entry available" data-level="middle" data-grades="중3" data-standards="9과19-01 9과19-03 9과19-04" href="motion-energy/"><b>중3</b><span>빗면 운동과 역학적 에너지</span></a>
                     </div>
                     <div class="level-cell high">
-                        <a class="level-entry available" data-level="high" href="gravity-motion/"><b>고1</b><span>중력과 운동 — 낙하·궤도·충격</span></a>
-                        <a class="level-entry available" data-level="high" href="torque/"><b>고2~3</b><span>돌림힘과 평형</span></a>
-                        <a class="level-entry available" data-level="high" href="collision/"><b>고2~3</b><span>운동량 보존과 충돌</span></a>
+                        <a class="level-entry available" data-level="high" data-grades="고1" data-standards="10통과1-03-03 10통과1-03-04" href="gravity-motion/"><b>고1</b><span>중력과 운동 — 낙하·충격<small class="course-label">통합과학1</small></span></a>
+                        <a class="level-entry available" data-level="high" data-grades="고2 고3" data-standards="12물리01-01" href="torque/"><b>고2~3</b><span>돌림힘과 평형<small class="course-label">물리학</small></span></a>
+                        <a class="level-entry available" data-level="high" data-grades="고2 고3" data-standards="12물리01-03" href="collision/"><b>고2~3</b><span>운동량 보존과 충돌<small class="course-label">물리학</small></span></a>
                     </div>
                 </div></article>
                     <article class="topic-row"><h4>전기와 자기</h4><div class="level-matrix">
                     <div class="level-cell elementary">
-                        <a class="level-entry available" data-level="elementary" href="magnets/"><b>초4</b><span>자석의 힘과 나침반</span></a>
-                        <a class="level-entry available" data-level="elementary" data-standards="6과15-01 6과15-02 6과15-03" href="circuit-bulbs/"><b>초6</b><span>전기 회로와 전자석</span></a>
+                        <a class="level-entry available" data-level="elementary" data-grades="초4" data-standards="4과09-01 4과09-02" href="magnets/"><b>초4</b><span>자석의 힘과 나침반</span></a>
+                        <a class="level-entry available" data-level="elementary" data-grades="초6" data-standards="6과15-01 6과15-02 6과15-03" href="circuit-bulbs/"><b>초6</b><span>전기 회로와 전자석</span></a>
                     </div>
                     <div class="level-cell middle">
-                        <a class="level-entry available" data-level="middle" data-standards="9과14-02 9과14-03" href="ohms-law/"><b>중2</b><span>전류·전압·저항 — 직렬·병렬</span></a>
+                        <a class="level-entry available" data-level="middle" data-grades="중2" data-standards="9과14-02 9과14-03" href="ohms-law/"><b>중2</b><span>전류·전압·저항 — 직렬·병렬</span></a>
                     </div>
                     <div class="level-cell high">
-                        <a class="level-entry available" data-level="high" href="electric-field/"><b>고2~3</b><span>전기장·전위·축전기</span></a>
-                        <a class="level-entry available" data-level="high" href="induction/"><b>고2~3</b><span>전자기 유도와 직류 회로</span></a>
-                        <a class="level-entry available" data-level="high" href="semiconductor-relativity/"><b>고2~3</b><span>다이오드와 특수 상대성 이론</span></a>
-                        <a class="level-entry available" data-level="high" href="motor-magnet/"><b>고2~3</b><span>전동기와 자성체</span></a>
+                        <a class="level-entry available" data-level="high" data-grades="고2 고3" data-standards="12전자01-01 12전자01-06" href="electric-field/"><b>고2~3</b><span>전기장·전위·축전기<small class="course-label">전자기와 양자</small></span></a>
+                        <a class="level-entry available" data-level="high" data-grades="고2 고3" data-standards="12물리02-06 12물리02-02 12전자01-05 12전자01-06" href="induction/"><b>고2~3</b><span>전자기 유도와 직류 회로<small class="course-label">전자기와 양자 · 물리학</small></span></a>
+                        <a class="level-entry available" data-level="high" data-grades="고2 고3" data-standards="12물리03-05 12물리03-06" href="semiconductor-relativity/"><b>고2~3</b><span>다이오드와 특수 상대성 이론<small class="course-label">물리학</small></span></a>
+                        <a class="level-entry available" data-level="high" data-grades="고2 고3" data-standards="12물리02-04 12물리02-05 12전자01-03 12전자01-04" href="motor-magnet/"><b>고2~3</b><span>전동기와 자성체<small class="course-label">물리학 · 전자기와 양자</small></span></a>
                     </div>
                 </div></article>
                     <article class="topic-row"><h4>열</h4><div class="level-matrix">
                     <div class="level-cell elementary">
-                        <a class="level-entry available" data-level="elementary" href="heat-transfer/"><b>초5</b><span>온도 측정과 열의 이동</span></a>
+                        <a class="level-entry available" data-level="elementary" data-grades="초5" data-standards="6과07-01 6과07-02 6과07-03 6과07-04" href="heat-transfer/"><b>초5</b><span>온도 측정과 열의 이동</span></a>
                     </div>
                     <div class="level-cell middle">
-                        <a class="level-entry available" data-level="middle" href="specific-heat/"><b>중1</b><span>비열과 열팽창</span></a>
+                        <a class="level-entry available" data-level="middle" data-grades="중1" data-standards="9과03-03" href="specific-heat/"><b>중1</b><span>비열과 열팽창</span></a>
                     </div>
                     <div class="level-cell high">
-                        <a class="level-entry available" data-level="high" href="energy-heat/"><b>고2~3</b><span>역학적 에너지와 열</span></a>
-                        <a class="level-entry available" data-level="high" href="heat-engine/"><b>고2~3</b><span>열기관의 효율과 열펌프</span></a>
+                        <a class="level-entry available" data-level="high" data-grades="고2 고3" data-standards="12물리01-04 12물리01-05 12역학02-03" href="energy-heat/"><b>고2~3</b><span>역학적 에너지와 열<small class="course-label">물리학 · 역학과 에너지</small></span></a>
+                        <a class="level-entry available" data-level="high" data-grades="고2 고3" data-standards="12역학02-04" href="heat-engine/"><b>고2~3</b><span>열기관의 효율과 열펌프<small class="course-label">역학과 에너지</small></span></a>
                     </div>
                 </div></article>
                     <article class="topic-row"><h4>에너지와 발전</h4><div class="level-matrix">
                     <div class="level-cell elementary empty" aria-hidden="true"><span class="empty-mark">—</span></div>
                     <div class="level-cell middle empty" aria-hidden="true"><span class="empty-mark">—</span></div>
                     <div class="level-cell high">
-                        <a class="level-entry available" data-level="high" href="energy-conversion/"><b>고1</b><span>발전과 에너지 전환</span></a>
+                        <a class="level-entry available" data-level="high" data-grades="고1" data-standards="10통과2-02-05 10통과2-02-06" href="energy-conversion/"><b>고1</b><span>발전과 에너지 전환<small class="course-label">통합과학2</small></span></a>
                     </div>
                 </div></article>
                     <article class="topic-row"><h4>밀도와 압력</h4><div class="level-matrix">
                     <div class="level-cell elementary">
-                        <a class="level-entry available" data-level="elementary" href="weight-compare/"><b>초3</b><span>물체의 무게 비교</span></a>
+                        <a class="level-entry available" data-level="elementary" data-grades="초3" data-standards="4과01-03 4과05-01" href="weight-compare/"><b>초3</b><span>물체의 무게 비교</span></a>
                     </div>
                     <div class="level-cell middle">
-                        <a class="level-entry available" data-level="middle" href="density-buoyancy/"><b>중2</b><span>밀도·부력·기체 압력</span></a>
+                        <a class="level-entry available" data-level="middle" data-grades="중2" data-standards="9과08-01 9과05-02 9과06-01 9과06-02" href="density-buoyancy/"><b>중2</b><span>밀도·부력·기체 압력</span></a>
                     </div>
                     <div class="level-cell high empty" aria-hidden="true"><span class="empty-mark">—</span></div>
                 </div></article>
@@ -104,7 +112,7 @@
                     <div class="level-cell elementary empty" aria-hidden="true"><span class="empty-mark">—</span></div>
                     <div class="level-cell middle empty" aria-hidden="true"><span class="empty-mark">—</span></div>
                     <div class="level-cell high">
-                        <a class="level-entry available" data-level="high" href="measurement/"><b>고1</b><span>자연의 규모와 측정 단위</span></a>
+                        <a class="level-entry available" data-level="high" data-grades="고1" data-standards="10통과1-01-01 10통과1-01-02 10통과1-01-03 10과탐1-01-02" href="measurement/"><b>고1</b><span>자연의 규모와 측정 단위<small class="course-label">통합과학1 · 과학탐구실험1</small></span></a>
                     </div>
                 </div></article>
                 </div>
@@ -118,73 +126,72 @@
                 <div class="topic-list">
                     <article class="topic-row"><h4>물질의 성질과 분리</h4><div class="level-matrix">
                     <div class="level-cell elementary">
-                        <a class="level-entry available" data-level="elementary" href="mixture-separation/"><b>초5</b><span>물질 분류와 혼합물 분리</span></a>
+                        <a class="level-entry available" data-level="elementary" data-grades="초5" data-standards="6과05-01 6과05-02" href="mixture-separation/"><b>초5</b><span>물질 분류와 혼합물 분리</span></a>
                     </div>
                     <div class="level-cell middle">
-                        <a class="level-entry available" data-level="middle" href="separation-methods/"><b>중2</b><span>거름·증류·크로마토그래피</span></a>
+                        <a class="level-entry available" data-level="middle" data-grades="중2" data-standards="9과08-02 9과08-03" href="separation-methods/"><b>중2</b><span>거름·증류·크로마토그래피</span></a>
                     </div>
                     <div class="level-cell high empty" aria-hidden="true"><span class="empty-mark">—</span></div>
                 </div></article>
                     <article class="topic-row"><h4>상태 변화와 입자</h4><div class="level-matrix">
                     <div class="level-cell elementary">
-                        <a class="level-entry available" data-level="elementary" href="state-change/"><b>초4</b><span>물의 상태 변화</span></a>
-                        <a class="level-entry available" data-level="elementary" href="gases/"><b>초4</b><span>기체 만들기와 공기의 무게</span></a>
+                        <a class="level-entry available" data-level="elementary" data-grades="초4" data-standards="4과10-01 4과10-02 4과10-03" href="state-change/"><b>초4</b><span>물의 상태 변화</span></a>
+                        <a class="level-entry available" data-level="elementary" data-grades="초4" data-standards="4과15-01 4과15-02 4과15-03" href="gases/"><b>초4</b><span>기체의 성질과 부피 변화</span></a>
                     </div>
                     <div class="level-cell middle">
-                        <a class="level-entry available" data-level="middle" href="diffusion/"><b>중1</b><span>입자의 확산과 기체 발생</span></a>
+                        <a class="level-entry available" data-level="middle" data-grades="중1" data-standards="9과04-01" href="diffusion/"><b>중1</b><span>입자의 확산</span></a>
                     </div>
                     <div class="level-cell high empty" aria-hidden="true"><span class="empty-mark">—</span></div>
                 </div></article>
                     <article class="topic-row"><h4>용해도</h4><div class="level-matrix">
                     <div class="level-cell elementary">
-                        <a class="level-entry available" data-level="elementary" href="solubility/"><b>초5</b><span>물의 온도와 소금의 용해</span></a>
+                        <a class="level-entry available" data-level="elementary" data-grades="초5" data-standards="6과03-01 6과03-02" href="solubility/"><b>초5</b><span>물의 온도와 소금의 용해</span></a>
                     </div>
                     <div class="level-cell middle">
-                        <a class="level-entry available" data-level="middle" href="solubility-curve/"><b>중2</b><span>용해도 곡선 읽기</span></a>
+                        <a class="level-entry available" data-level="middle" data-grades="중2" data-standards="9과08-01 9과08-03" href="solubility-curve/"><b>중2</b><span>용해도 곡선 읽기</span></a>
+                        <a class="level-entry available" data-level="middle" data-grades="중2" data-standards="9과08-03" href="recrystallise/"><b>중2</b><span>냉각과 결정 석출량</span></a>
                     </div>
-                    <div class="level-cell high">
-                        <a class="level-entry available" data-level="high" href="recrystallise/"><b>고2~3</b><span>냉각과 결정 석출량</span></a>
-                    </div>
+                    <div class="level-cell high empty" aria-hidden="true"><span class="empty-mark">—</span></div>
                 </div></article>
                     <article class="topic-row"><h4>원소와 이온</h4><div class="level-matrix">
                     <div class="level-cell elementary empty" aria-hidden="true"><span class="empty-mark">—</span></div>
                     <div class="level-cell middle">
-                        <a class="level-entry available" data-level="middle" href="flame-ions/"><b>중2</b><span>불꽃 반응과 이온의 이동</span></a>
+                        <a class="level-entry available" data-level="middle" data-grades="중2" data-standards="9과11-01 9과11-04" href="flame-ions/"><b>중2</b><span>불꽃 반응과 이온의 이동</span></a>
                     </div>
                     <div class="level-cell high">
-                        <a class="level-entry available" data-level="high" href="periodic-bonding/"><b>고1</b><span>주기율표와 화학 결합</span></a>
-                        <a class="level-entry available" data-level="high" href="molecule-shape/"><b>고2~3</b><span>분자 구조와 극성</span></a>
+                        <a class="level-entry available" data-level="high" data-grades="고1" data-standards="10통과1-02-03 10통과1-02-04" href="periodic-bonding/"><b>고1</b><span>주기율표와 화학 결합<small class="course-label">통합과학1</small></span></a>
+                        <a class="level-entry available" data-level="high" data-grades="고2 고3" data-standards="12화학02-02 12화학02-03 12화학02-04" href="molecule-shape/"><b>고2~3</b><span>분자 구조와 극성<small class="course-label">화학</small></span></a>
                     </div>
                 </div></article>
                     <article class="topic-row"><h4>산과 염기</h4><div class="level-matrix">
                     <div class="level-cell elementary">
-                        <a class="level-entry available" data-level="elementary" href="acid-base/"><b>초6</b><span>용액의 성질과 지시약</span></a>
+                        <a class="level-entry available" data-level="elementary" data-grades="초6" data-standards="6과09-01 6과09-02" href="acid-base/"><b>초6</b><span>용액의 성질과 지시약</span></a>
                     </div>
                     <div class="level-cell middle empty" aria-hidden="true"><span class="empty-mark">—</span></div>
                     <div class="level-cell high">
-                        <a class="level-entry available" data-level="high" href="neutralization/"><b>고1</b><span>산·염기의 성질과 중화</span></a>
-                        <a class="level-entry available" data-level="high" href="titration/"><b>고2~3</b><span>중화 적정</span></a>
+                        <a class="level-entry available" data-level="high" data-grades="고2 고3" data-standards="12화학04-01 12화학04-03" href="neutralization/"><b>고2~3</b><span>산·염기의 성질과 중화<small class="course-label">화학</small></span></a>
+                        <a class="level-entry available" data-level="high" data-grades="고2 고3" data-standards="12반응01-03 12반응01-04" href="titration/"><b>고2~3</b><span>중화 적정<small class="course-label">화학반응의 세계</small></span></a>
                     </div>
                 </div></article>
                     <article class="topic-row"><h4>화학 반응</h4><div class="level-matrix">
                     <div class="level-cell elementary empty" aria-hidden="true"><span class="empty-mark">—</span></div>
                     <div class="level-cell middle">
-                        <a class="level-entry available" data-level="middle" href="mass-ratio/"><b>중3</b><span>질량 관계와 발열·흡열 반응</span></a>
+                        <a class="level-entry available" data-level="middle" data-grades="중3" data-standards="9과16-02 9과16-03 9과16-04 9과16-06" href="mass-ratio/"><b>중3</b><span>질량 관계와 발열·흡열 반응</span></a>
                     </div>
                     <div class="level-cell high">
-                        <a class="level-entry available" data-level="high" href="mole/"><b>고2~3</b><span>몰과 양적 관계·몰 농도</span></a>
-                        <a class="level-entry available" data-level="high" href="rate-equilibrium/"><b>고2~3</b><span>반응 열·속도·평형</span></a>
+                        <a class="level-entry available" data-level="high" data-grades="고2 고3" data-standards="12화학01-02 12화학01-03 12화학04-02" href="mole/"><b>고2~3</b><span>몰과 양적 관계·몰 농도<small class="course-label">화학</small></span></a>
+                        <a class="level-entry available" data-level="high" data-grades="고2 고3" data-standards="12화학03-01 12화학03-02 12화학03-04 12물에04-03 12물에04-04" href="rate-equilibrium/"><b>고2~3</b><span>반응 열·속도·평형<small class="course-label">화학 · 물질과 에너지</small></span></a>
                     </div>
                 </div></article>
                     <article class="topic-row"><h4>산화·환원</h4><div class="level-matrix">
                     <div class="level-cell elementary">
-                        <a class="level-entry available" data-level="elementary" href="burning-conditions/"><b>초6</b><span>연소의 조건</span></a>
+                        <a class="level-entry available" data-level="elementary" data-grades="초6" data-standards="6과14-02 6과14-03" href="burning-conditions/"><b>초6</b><span>연소의 조건</span></a>
                     </div>
                     <div class="level-cell middle">
-                        <a class="level-entry available" data-level="middle" href="combustion/"><b>중3</b><span>금속의 산화와 질량 보존</span></a>
+                        <a class="level-entry available" data-level="middle" data-grades="중3" data-standards="9과16-01 9과16-03" href="combustion/"><b>중3</b><span>금속의 산화와 질량 보존</span></a>
                     </div>
                     <div class="level-cell high">
-                        <a class="level-entry available" data-level="high" href="redox/"><b>고2~3</b><span>산화·환원과 전기 분해</span></a>
+                        <a class="level-entry available" data-level="high" data-grades="고2 고3" data-standards="12반응02-01 12반응02-03 12반응02-04" href="redox/"><b>고2~3</b><span>산화·환원과 전기 분해<small class="course-label">화학반응의 세계</small></span></a>
                     </div>
                 </div></article>
                 </div>
@@ -198,91 +205,89 @@
                 <div class="topic-list">
                     <article class="topic-row"><h4>동물과 식물의 생활</h4><div class="level-matrix">
                     <div class="level-cell elementary">
-                        <a class="level-entry available" data-level="elementary" href="living-things/"><b>초3</b><span>동물과 식물, 사는 곳과 몸</span></a>
+                        <a class="level-entry available" data-level="elementary" data-grades="초3" data-standards="4과02-01 4과02-02 4과03-01 4과03-02" href="living-things/"><b>초3</b><span>동물과 식물, 사는 곳과 몸</span></a>
                     </div>
                     <div class="level-cell middle empty" aria-hidden="true"><span class="empty-mark">—</span></div>
                     <div class="level-cell high empty" aria-hidden="true"><span class="empty-mark">—</span></div>
                 </div></article>
                     <article class="topic-row"><h4>작은 생물</h4><div class="level-matrix">
                     <div class="level-cell elementary">
-                        <a class="level-entry available" data-level="elementary" href="microbes/"><b>초4</b><span>곰팡이와 세균 기르기</span></a>
+                        <a class="level-entry available" data-level="elementary" data-grades="초4" data-standards="4과12-01" href="microbes/"><b>초4</b><span>곰팡이와 세균 기르기</span></a>
                     </div>
                     <div class="level-cell middle empty" aria-hidden="true"><span class="empty-mark">—</span></div>
                     <div class="level-cell high empty" aria-hidden="true"><span class="empty-mark">—</span></div>
                 </div></article>
                     <article class="topic-row"><h4>세포</h4><div class="level-matrix">
                     <div class="level-cell elementary">
-                        <a class="level-entry available" data-level="elementary" href="microscope/"><b>초6</b><span>현미경과 세포 관찰</span></a>
+                        <a class="level-entry available" data-level="elementary" data-grades="초6" data-standards="6과11-01 6과11-02" href="microscope/"><b>초6</b><span>현미경과 세포 관찰</span></a>
                     </div>
-                    <div class="level-cell middle">
-                        <a class="level-entry available" data-level="middle" href="cell-osmosis/"><b>중1</b><span>동물세포와 식물세포</span></a>
-                    </div>
+                    <div class="level-cell middle empty" aria-hidden="true"><span class="empty-mark">—</span></div>
                     <div class="level-cell high">
-                        <a class="level-entry available" data-level="high" href="cell-membrane/"><b>고1</b><span>세포막과 확산·삼투</span></a>
-                        <a class="level-entry available" data-level="high" href="cell-division/"><b>고2~3</b><span>체세포 분열과 감수 분열</span></a>
+                        <a class="level-entry available" data-level="high" data-grades="고2 고3" data-standards="12세포01-05" href="cell-osmosis/"><b>고2~3</b><span>세포막 수송과 삼투<small class="course-label">세포와 물질대사</small></span></a>
+                        <a class="level-entry available" data-level="high" data-grades="고1" data-standards="10통과1-03-05" href="cell-membrane/"><b>고1</b><span>세포막과 확산·삼투<small class="course-label">통합과학1</small></span></a>
+                        <a class="level-entry available" data-level="high" data-grades="고2 고3" data-standards="12생과03-01 12생과03-02" href="cell-division/"><b>고2~3</b><span>체세포 분열과 감수 분열<small class="course-label">생명과학</small></span></a>
                     </div>
                 </div></article>
                     <article class="topic-row"><h4>식물</h4><div class="level-matrix">
                     <div class="level-cell elementary">
-                        <a class="level-entry available" data-level="elementary" href="seed-germination/"><b>초3</b><span>씨의 발아와 식물의 구조</span></a>
+                        <a class="level-entry available" data-level="elementary" data-grades="초3" data-standards="4과04-02 4과04-03" href="seed-germination/"><b>초3</b><span>씨의 발아와 식물의 자람</span></a>
                     </div>
                     <div class="level-cell middle">
-                        <a class="level-entry available" data-level="middle" href="photosynthesis/"><b>중2</b><span>광합성</span></a>
+                        <a class="level-entry available" data-level="middle" data-grades="중2" data-standards="9과12-01 9과12-02 9과12-03" href="photosynthesis/"><b>중2</b><span>광합성</span></a>
                     </div>
                     <div class="level-cell high">
-                        <a class="level-entry available" data-level="high" href="energy-metabolism/"><b>고2~3</b><span>광합성과 세포 호흡</span></a>
+                        <a class="level-entry available" data-level="high" data-grades="고2 고3" data-standards="12세포02-02 12세포03-02 12세포03-03 12세포03-04" href="energy-metabolism/"><b>고2~3</b><span>광합성과 세포 호흡<small class="course-label">세포와 물질대사</small></span></a>
                     </div>
                 </div></article>
                     <article class="topic-row"><h4>우리 몸</h4><div class="level-matrix">
                     <div class="level-cell elementary">
-                        <a class="level-entry available" data-level="elementary" href="body-organs/"><b>초5</b><span>우리 몸의 기관</span></a>
+                        <a class="level-entry available" data-level="elementary" data-grades="초5" data-standards="6과04-01 6과04-02 6과04-03" href="body-organs/"><b>초5</b><span>우리 몸의 기관</span></a>
                     </div>
                     <div class="level-cell middle">
-                        <a class="level-entry available" data-level="middle" href="body-systems/"><b>중2</b><span>소화·순환·호흡·배설</span></a>
-                        <a class="level-entry available" data-level="middle" href="nutrient-detection/"><b>중2</b><span>영양소 검출 실험</span></a>
+                        <a class="level-entry available" data-level="middle" data-grades="중2" data-standards="9과13-02 9과13-03 9과13-04 9과13-05" href="body-systems/"><b>중2</b><span>소화·순환·호흡·배설</span></a>
+                        <a class="level-entry available" data-level="middle" data-grades="중2" data-standards="9과13-01" href="nutrient-detection/"><b>중2</b><span>영양소 검출 실험</span></a>
                     </div>
                     <div class="level-cell high">
-                        <a class="level-entry available" data-level="high" href="homeostasis/"><b>고2~3</b><span>항상성 — 혈당과 체온</span></a>
-                        <a class="level-entry available" data-level="high" href="immune/"><b>고2~3</b><span>면역·백신·혈액형과 수혈</span></a>
-                        <a class="level-entry available" data-level="high" href="enzyme/"><b>고2~3</b><span>효소 반응과 조건</span></a>
+                        <a class="level-entry available" data-level="high" data-grades="고2 고3" data-standards="12생과02-04" href="homeostasis/"><b>고2~3</b><span>항상성 — 혈당과 체온<small class="course-label">생명과학</small></span></a>
+                        <a class="level-entry available" data-level="high" data-grades="고2 고3" data-standards="12생과02-05 12생과02-06 12생과02-07" href="immune/"><b>고2~3</b><span>면역·백신·혈액형 판정<small class="course-label">생명과학</small></span></a>
+                        <a class="level-entry available" data-level="high" data-grades="고2 고3" data-standards="12세포02-03 12세포02-04" href="enzyme/"><b>고2~3</b><span>효소 반응과 조건<small class="course-label">세포와 물질대사</small></span></a>
                     </div>
                 </div></article>
                     <article class="topic-row"><h4>자극과 반응</h4><div class="level-matrix">
-                    <div class="level-cell elementary">
-                        <a class="level-entry available" data-level="elementary" href="senses/"><b>초5</b><span>감각 기관의 반응</span></a>
-                    </div>
+                    <div class="level-cell elementary empty" aria-hidden="true"><span class="empty-mark">—</span></div>
                     <div class="level-cell middle">
-                        <a class="level-entry available" data-level="middle" href="reflex-nerve/"><b>중3</b><span>자극의 전달과 반사</span></a>
+                        <a class="level-entry available" data-level="middle" data-grades="중3" data-standards="9과20-01 9과20-02" href="senses/"><b>중3</b><span>감각 기관의 반응</span></a>
+                        <a class="level-entry available" data-level="middle" data-grades="중3" data-standards="9과20-01 9과20-02" href="reflex-nerve/"><b>중3</b><span>자극의 전달과 반사</span></a>
                     </div>
                     <div class="level-cell high">
-                        <a class="level-entry available" data-level="high" href="neuron/"><b>고2~3</b><span>흥분 전도와 시냅스</span></a>
+                        <a class="level-entry available" data-level="high" data-grades="고2 고3" data-standards="12생과02-01 12생과02-02" href="neuron/"><b>고2~3</b><span>흥분 전도와 시냅스<small class="course-label">생명과학</small></span></a>
                     </div>
                 </div></article>
                     <article class="topic-row"><h4>유전</h4><div class="level-matrix">
                     <div class="level-cell elementary empty" aria-hidden="true"><span class="empty-mark">—</span></div>
                     <div class="level-cell middle">
-                        <a class="level-entry available" data-level="middle" href="pea-genetics/"><b>중3</b><span>완두 교배와 유전 법칙</span></a>
+                        <a class="level-entry available" data-level="middle" data-grades="중3" data-standards="9과21-04" href="pea-genetics/"><b>중3</b><span>완두 교배와 유전 법칙</span></a>
                     </div>
                     <div class="level-cell high">
-                        <a class="level-entry available" data-level="high" href="dna-gel/"><b>고2~3</b><span>DNA 추출과 유전 자료 분석</span></a>
+                        <a class="level-entry available" data-level="high" data-grades="고2 고3" data-standards="12유전01-05 12유전03-03 12유전03-04" href="dna-gel/"><b>고2~3</b><span>DNA 추출과 유전 자료 분석<small class="course-label">생물의 유전</small></span></a>
                     </div>
                 </div></article>
                     <article class="topic-row"><h4>진화</h4><div class="level-matrix">
                     <div class="level-cell elementary empty" aria-hidden="true"><span class="empty-mark">—</span></div>
                     <div class="level-cell middle empty" aria-hidden="true"><span class="empty-mark">—</span></div>
                     <div class="level-cell high">
-                        <a class="level-entry available" data-level="high" href="natural-selection/"><b>고1</b><span>자연 선택 — 부리와 털 색</span></a>
-                        <a class="level-entry available" data-level="high" href="phylogeny/"><b>고2~3</b><span>생물의 분류와 계통수</span></a>
+                        <a class="level-entry available" data-level="high" data-grades="고1" data-standards="10통과2-01-02" href="natural-selection/"><b>고1</b><span>자연 선택 — 부리와 털 색<small class="course-label">통합과학2</small></span></a>
+                        <a class="level-entry available" data-level="high" data-grades="고2 고3" data-standards="12생과03-04 12생과03-05" href="phylogeny/"><b>고2~3</b><span>생물의 분류와 계통수<small class="course-label">생명과학</small></span></a>
                     </div>
                 </div></article>
                     <article class="topic-row"><h4>생태계</h4><div class="level-matrix">
                     <div class="level-cell elementary">
-                        <a class="level-entry available" data-level="elementary" href="life-cycle/"><b>초3</b><span>동물의 한살이와 먹이 관계</span></a>
-                        <a class="level-entry available" data-level="elementary" href="living-environment/"><b>초4</b><span>강낭콩 기르기와 먹이 그물</span></a>
+                        <a class="level-entry available" data-level="elementary" data-grades="초3" data-standards="4과04-01 4과04-03 4과14-02" href="life-cycle/"><b>초3</b><span>동물의 한살이와 먹이 관계</span></a>
+                        <a class="level-entry available" data-level="elementary" data-grades="초4" data-standards="4과04-02 4과14-01 4과14-02 4과14-03" href="living-environment/"><b>초4</b><span>강낭콩 기르기와 먹이 관계</span></a>
                     </div>
                     <div class="level-cell middle empty" aria-hidden="true"><span class="empty-mark">—</span></div>
                     <div class="level-cell high">
-                        <a class="level-entry available" data-level="high" href="population/"><b>고2~3</b><span>개체군 성장과 군집 조사</span></a>
+                        <a class="level-entry available" data-level="high" data-grades="고2 고3" data-standards="12생과01-07" href="population/"><b>고2~3</b><span>개체군 성장과 방형구 조사<small class="course-label">생명과학</small></span></a>
                     </div>
                 </div></article>
                 </div>
@@ -296,94 +301,96 @@
                 <div class="topic-list">
                     <article class="topic-row"><h4>암석과 지층</h4><div class="level-matrix">
                     <div class="level-cell elementary">
-                        <a class="level-entry available" data-level="elementary" href="rock-layers/"><b>초5</b><span>암석·광물·지층·화석</span></a>
+                        <a class="level-entry available" data-level="elementary" data-grades="초5" data-standards="6과01-01 6과01-02 6과01-03" href="rock-layers/"><b>초5</b><span>지층·퇴적암·화석</span></a>
                     </div>
                     <div class="level-cell middle">
-                        <a class="level-entry available" data-level="middle" href="minerals-rocks/"><b>중2</b><span>광물과 암석 분류</span></a>
+                        <a class="level-entry available" data-level="middle" data-grades="중2" data-standards="9과09-02 9과09-03" href="minerals-rocks/"><b>중2</b><span>광물과 암석 분류</span></a>
                     </div>
                     <div class="level-cell high">
-                        <a class="level-entry available" data-level="high" href="geologic-time/"><b>고1</b><span>지질 시대와 생물 다양성</span></a>
-                        <a class="level-entry available" data-level="high" href="rock-age/"><b>고2~3</b><span>지질 구조와 절대 연령</span></a>
-                        <a class="level-entry available" data-level="high" href="metamorphism/"><b>고2~3</b><span>변성 작용과 변성암</span></a>
+                        <a class="level-entry available" data-level="high" data-grades="고1" data-standards="10통과2-01-01" href="geologic-time/"><b>고1</b><span>지질 시대와 생물 다양성<small class="course-label">통합과학2</small></span></a>
+                        <a class="level-entry available" data-level="high" data-grades="고2 고3" data-standards="12지구02-01" href="rock-age/"><b>고2~3</b><span>지질 구조와 절대 연령<small class="course-label">지구과학</small></span></a>
+                        <a class="level-entry available" data-level="high" data-grades="고2 고3" data-standards="12지구02-04" href="metamorphism/"><b>고2~3</b><span>변성 작용과 변성암<small class="course-label">지구과학</small></span></a>
                     </div>
                 </div></article>
                     <article class="topic-row"><h4>화산</h4><div class="level-matrix">
                     <div class="level-cell elementary">
-                        <a class="level-entry available" data-level="elementary" href="volcano-model/"><b>초4</b><span>화산 분출 모형과 분출물</span></a>
+                        <a class="level-entry available" data-level="elementary" data-grades="초4" data-standards="4과11-02" href="volcano-model/"><b>초4</b><span>화산 분출 모형과 분출물</span></a>
                     </div>
                     <div class="level-cell middle empty" aria-hidden="true"><span class="empty-mark">—</span></div>
                     <div class="level-cell high">
-                        <a class="level-entry available" data-level="high" href="magma/"><b>고2~3</b><span>마그마의 점성과 화산 분출</span></a>
+                        <a class="level-entry available" data-level="high" data-grades="고2 고3" data-standards="12지구02-03 12지시01-04" href="magma/"><b>고2~3</b><span>마그마의 점성과 화산 분출<small class="course-label">지구과학 · 지구시스템과학</small></span></a>
                     </div>
                 </div></article>
                     <article class="topic-row"><h4>지진</h4><div class="level-matrix">
                     <div class="level-cell elementary empty" aria-hidden="true"><span class="empty-mark">—</span></div>
                     <div class="level-cell middle">
-                        <a class="level-entry available" data-level="middle" href="plate-tectonics/"><b>중2</b><span>지진과 판의 이동</span></a>
+                        <a class="level-entry available" data-level="middle" data-grades="중2" data-standards="9과09-05" href="plate-tectonics/"><b>중2</b><span>지진과 판의 이동</span></a>
                     </div>
                     <div class="level-cell high">
-                        <a class="level-entry available" data-level="high" href="earthquake/"><b>고2~3</b><span>지진파와 진앙</span></a>
+                        <a class="level-entry available" data-level="high" data-grades="고2 고3" data-standards="12지시01-05" href="earthquake/"><b>고2~3</b><span>지진파와 진앙<small class="course-label">지구시스템과학</small></span></a>
                     </div>
                 </div></article>
                     <article class="topic-row"><h4>지구 시스템</h4><div class="level-matrix">
                     <div class="level-cell elementary empty" aria-hidden="true"><span class="empty-mark">—</span></div>
                     <div class="level-cell middle empty" aria-hidden="true"><span class="empty-mark">—</span></div>
                     <div class="level-cell high">
-                        <a class="level-entry available" data-level="high" href="earth-system/"><b>고1</b><span>지구 시스템의 상호작용</span></a>
+                        <a class="level-entry available" data-level="high" data-grades="고1" data-standards="10통과1-03-01 10통과2-02-03" href="earth-system/"><b>고1</b><span>지구 시스템의 상호작용<small class="course-label">통합과학1 · 통합과학2</small></span></a>
                     </div>
                 </div></article>
                     <article class="topic-row"><h4>날씨</h4><div class="level-matrix">
                     <div class="level-cell elementary">
-                        <a class="level-entry available" data-level="elementary" href="weather-watch/"><b>초5</b><span>기온·바람·구름 관측</span></a>
+                        <a class="level-entry available" data-level="elementary" data-grades="초5" data-standards="6과06-01 6과06-02 6과06-03" href="weather-watch/"><b>초5</b><span>기온·바람·구름 관측</span></a>
                     </div>
                     <div class="level-cell middle">
-                        <a class="level-entry available" data-level="middle" href="weather-front/"><b>중3</b><span>기압과 바람·일기도와 전선</span></a>
+                        <a class="level-entry available" data-level="middle" data-grades="중3" data-standards="9과17-04" href="weather-front/"><b>중3</b><span>기압과 바람·일기도와 전선</span></a>
                     </div>
                     <div class="level-cell high">
-                        <a class="level-entry available" data-level="high" href="air-stability/"><b>고2~3</b><span>기상 자료와 대기 안정도</span></a>
-                        <a class="level-entry available" data-level="high" href="typhoon/"><b>고2~3</b><span>태풍과 엘니뇨</span></a>
+                        <a class="level-entry available" data-level="high" data-grades="고2 고3" data-standards="12지시03-03" href="air-stability/"><b>고2~3</b><span>기상 자료와 대기 안정도<small class="course-label">지구시스템과학</small></span></a>
+                        <a class="level-entry available" data-level="high" data-grades="고2 고3" data-standards="12지구01-04 12지구01-05" href="typhoon/"><b>고2~3</b><span>태풍과 엘니뇨<small class="course-label">지구과학</small></span></a>
                     </div>
                 </div></article>
                     <article class="topic-row"><h4>물과 해양</h4><div class="level-matrix">
                     <div class="level-cell elementary">
-                        <a class="level-entry available" data-level="elementary" href="land-sea/"><b>초3</b><span>육지와 바다, 바닷물과 민물</span></a>
-                        <a class="level-entry available" data-level="elementary" href="water-cycle/"><b>초4</b><span>물의 순환과 지표 변화</span></a>
+                        <a class="level-entry available" data-level="elementary" data-grades="초3" data-standards="4과06-01 4과06-02 4과06-03" href="land-sea/"><b>초3</b><span>육지와 바다, 바닷물과 민물</span></a>
+                        <a class="level-entry available" data-level="elementary" data-grades="초4" data-standards="4과10-02 4과10-03" href="water-cycle/"><b>초4</b><span>증발·응결과 물의 순환</span></a>
                     </div>
                     <div class="level-cell middle">
-                        <a class="level-entry available" data-level="middle" href="seawater/"><b>중3</b><span>수온·염분과 해수 순환</span></a>
+                        <a class="level-entry available" data-level="middle" data-grades="중3" data-standards="9과18-02" href="seawater/"><b>중3</b><span>수온 분포와 염분</span></a>
                     </div>
                     <div class="level-cell high">
-                        <a class="level-entry available" data-level="high" href="ocean-circulation/"><b>고2~3</b><span>대기 대순환과 해수의 순환</span></a>
-                        <a class="level-entry available" data-level="high" href="ocean-layers/"><b>고2~3</b><span>해수의 수온·염분·밀도</span></a>
+                        <a class="level-entry available" data-level="high" data-grades="고2 고3" data-standards="12지시02-01" href="ocean-circulation/"><b>고2~3</b><span>대기 대순환과 해수의 순환<small class="course-label">지구시스템과학</small></span></a>
+                        <a class="level-entry available" data-level="high" data-grades="고2 고3" data-standards="12지구01-01 12지구01-02" href="ocean-layers/"><b>고2~3</b><span>해수의 수온·염분·밀도<small class="course-label">지구과학</small></span></a>
                     </div>
                 </div></article>
                     <article class="topic-row"><h4>달과 태양계</h4><div class="level-matrix">
                     <div class="level-cell elementary">
-                        <a class="level-entry available" data-level="elementary" href="night-sky/"><b>초4</b><span>달의 모양과 북극성 찾기</span></a>
-                        <a class="level-entry available" data-level="elementary" href="moon-phases/"><b>초6</b><span>달의 모양 변화</span></a>
-                        <a class="level-entry available" data-level="elementary" href="seasons/"><b>초6</b><span>계절이 생기는 까닭</span></a>
+                        <a class="level-entry available" data-level="elementary" data-grades="초4" data-standards="4과13-01 4과13-03" href="night-sky/"><b>초4</b><span>달의 모양과 북극성 찾기</span></a>
+                        <a class="level-entry available" data-level="elementary" data-grades="초6" data-standards="6과13-01 6과13-02 6과13-03 6과12-02" href="seasons/"><b>초6</b><span>계절이 생기는 까닭</span></a>
                     </div>
                     <div class="level-cell middle">
-                        <a class="level-entry available" data-level="middle" href="apparent-motion/"><b>중1</b><span>달과 별의 겉보기 운동</span></a>
+                        <a class="level-entry available" data-level="middle" data-grades="중1" data-standards="9과07-04" href="moon-phases/"><b>중1</b><span>달의 모양 변화</span></a>
+                        <a class="level-entry available" data-level="middle" data-grades="중1" data-standards="9과07-03" href="apparent-motion/"><b>중1</b><span>달과 별의 겉보기 운동</span></a>
                     </div>
                     <div class="level-cell high">
-                        <a class="level-entry available" data-level="high" href="planet-motion/"><b>고2~3</b><span>행성의 겉보기 운동과 식</span></a>
+                        <a class="level-entry available" data-level="high" data-grades="고2 고3" data-standards="12지구03-01" href="planet-motion/"><b>고2~3</b><span>행성의 겉보기 운동과 식<small class="course-label">지구과학</small></span></a>
                     </div>
                 </div></article>
                     <article class="topic-row"><h4>별과 우주</h4><div class="level-matrix">
                     <div class="level-cell elementary empty" aria-hidden="true"><span class="empty-mark">—</span></div>
                     <div class="level-cell middle">
-                        <a class="level-entry available" data-level="middle" href="stars-universe/"><b>중2</b><span>별의 밝기와 우주 팽창</span></a>
+                        <a class="level-entry available" data-level="middle" data-grades="중2" data-standards="9과15-01 9과15-02 9과15-03" href="stars-universe/"><b>중2</b><span>별의 밝기와 우주 팽창</span></a>
                     </div>
                     <div class="level-cell high">
-                        <a class="level-entry available" data-level="high" href="star-elements/"><b>고1</b><span>핵융합과 원소의 기원</span></a>
-                        <a class="level-entry available" data-level="high" href="stars/"><b>고2~3</b><span>별의 스펙트럼과 HR도</span></a>
-                        <a class="level-entry available" data-level="high" href="galaxy-hubble/"><b>고2~3</b><span>은하의 분류와 허블 법칙</span></a>
+                        <a class="level-entry available" data-level="high" data-grades="고1" data-standards="10통과1-02-02 10통과2-02-04" href="star-elements/"><b>고1</b><span>핵융합과 원소의 기원<small class="course-label">통합과학1 · 통합과학2</small></span></a>
+                        <a class="level-entry available" data-level="high" data-grades="고2 고3" data-standards="12지구03-02 12지구03-03 12행우02-02" href="stars/"><b>고2~3</b><span>별의 스펙트럼과 HR도<small class="course-label">지구과학 · 행성우주과학</small></span></a>
+                        <a class="level-entry available" data-level="high" data-grades="고2 고3" data-standards="12지구03-04 12지구03-05 12행우03-04" href="galaxy-hubble/"><b>고2~3</b><span>은하의 분류와 허블 법칙<small class="course-label">지구과학 · 행성우주과학</small></span></a>
                     </div>
                 </div></article>
                 </div>
             </section>
         </section>
     </main>
+    <script src="curriculum-map.js?v=2ffe762f2206"></script>
+    <script src="grade-navigation.js?v=e135a059e2e3"></script>
 </body>
 </html>

@@ -113,7 +113,7 @@ function drawModel(g) {
     g.appendChild(el('text', { x: 268, y: 24, class: 'small-label' }, '진짜 화산에서 나오는 것'));
     const kinds = [
         ['기체', '화산 가스', 'gas-bubble', '모형의 거품이 이것입니다'],
-        ['액체', '용암', 'foam-flow', '1000 ℃가 넘게 뜨겁습니다'],
+        ['액체', '용암', 'foam-flow', '매우 뜨겁고 위험합니다'],
         ['고체', '화산재와 암석 조각', 'ash-bit', '잘게 부서져 하늘로 날립니다'],
     ];
     kinds.forEach(([stateName, name, cls, note], i) => {
@@ -122,7 +122,7 @@ function drawModel(g) {
         g.appendChild(el('text', { x: 298, y: y - 4, class: 'part-label' }, `${stateName} — ${name}`));
         g.appendChild(el('text', { x: 298, y: y + 9, class: 'tiny-label' }, note));
     });
-    g.appendChild(el('text', { x: 268, y: 200, class: 'note-text' }, '모형의 거품은 만져도 차갑습니다'));
+    g.appendChild(el('text', { x: 268, y: 200, class: 'note-text' }, '모형의 거품은 용암처럼 뜨겁지 않습니다'));
 }
 
 function drawGraph(g) {
@@ -216,7 +216,7 @@ function explain(a) {
     s += `식초 ${a.vin} mL에 딱 맞는 소다는 ${fmt(a.match, 1)} g입니다. `;
 
     s += `진짜 화산에서는 세 가지가 한꺼번에 나옵니다. 기체인 화산 가스, 액체인 용암, 그리고 고체인 화산재와 암석 조각입니다. `;
-    s += `모형의 거품은 그중 화산 가스와 용암을 흉내 낸 것입니다. 다만 이 거품은 만져도 차갑고 진짜 용암은 1000 ℃가 넘습니다. 모형은 터지는 모습만 보여 줄 뿐입니다.`;
+    s += `모형의 거품은 그중 화산 가스와 용암을 흉내 낸 것입니다. 다만 이 거품은 용암처럼 뜨겁지 않고 진짜 용암은 매우 뜨겁습니다. 모형은 터지는 모습만 보여 줄 뿐입니다.`;
     $('elementaryExplanation').textContent = s;
 }
 

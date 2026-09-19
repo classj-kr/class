@@ -476,7 +476,7 @@ function explain(a) {
                 : `세포질에서 만든 NADH 2개를 글리세롤 인산 셔틀로 들여보내면 FADH₂로 바뀌어 3개 몫밖에 못 하므로 모두 30개가 됩니다. 셔틀 하나 차이로 ATP 2개가 갈립니다.`;
             s += ` 포도당 1분자에 든 2870 kJ 가운데 ATP에 담기는 몫은 ${fmt(plan.total * ATP_KJ, 0)} kJ, 곧 ${fmt(plan.total * ATP_KJ / GLUCOSE_KJ * 100, 1)}%이고 나머지는 열로 흩어집니다.`;
         } else {
-            s = `산소가 없으면 전자전달계가 멈춥니다. NADH를 넘길 곳이 없어지면 해당 과정도 곧 멎으므로, 세포는 피루브산을 젖산으로 바꾸면서 NADH를 되살려 해당 과정만 겨우 돌립니다. 그래서 남는 ATP는 ${plan.total}개뿐입니다. `;
+            s = `산소가 없으면 전자전달계가 멈춥니다. NADH의 산화가 막혀 NAD⁺가 부족해지면 해당 과정이 지속되지 못하므로, 세포는 피루브산을 젖산으로 바꾸면서 NADH를 산화하여 NAD⁺를 재생하고 해당 과정만 겨우 돌립니다. 그래서 남는 ATP는 ${plan.total}개뿐입니다. `;
             s += `포도당이 끝까지 분해되지 않았으므로 에너지가 사라진 것은 아닙니다. 2870 kJ 가운데 ${fmt(2 * LACTATE_KJ, 0)} kJ, 곧 ${fmt(2 * LACTATE_KJ / GLUCOSE_KJ * 100, 1)}%가 젖산 두 분자 속에 그대로 갇혀 있습니다.`;
         }
         $('elementaryExplanation').textContent = s;

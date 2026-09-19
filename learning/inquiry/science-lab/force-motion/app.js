@@ -218,11 +218,8 @@ document.addEventListener('DOMContentLoaded', () => {
         massOutput.textContent = `${a.m} kg`;
         startOutput.textContent = `${a.v0.toFixed(1)} m/s`;
         stageBadge.textContent = `${a.floorName} · ${MOTION_NAME[a.motion]}`;
-        dataNote.innerHTML =
-            `<div class="data-row"><span class="data-name">최대 마찰력</span><span class="data-val">${a.floorName} ${a.mu} × 무게 ${a.weight} N = ${fmt(a.fMax)} N</span></div>` +
-            `<div class="data-row"><span class="data-name">지금 마찰력</span><span class="data-val">${fmt(a.friction)} N ${a.motion === 'rest' ? '(미는 힘만큼만 생깁니다)' : '(미끄러지는 중이라 최대 마찰력)'}</span></div>` +
-            `<div class="data-row"><span class="data-name">알짜힘</span><span class="data-val">${a.F} − ${fmt(a.friction)} = ${fmt(a.net)} N</span></div>` +
-            `<div class="data-row match"><span class="data-name">가속도</span><span class="data-val">${fmt(a.net)} N ÷ ${a.m} kg = ${a.accel.toFixed(2)} m/s²</span></div>`;
+        dataNote.innerHTML = '<p>미는 힘: ' + a.F + ' N · 마찰력: ' + fmt(a.friction) + ' N</p>' +
+            '<p>알짜힘: ' + fmt(a.net) + ' N · ' + MOTION_NAME[a.motion] + '</p>';
         return { a, st };
     }
 
@@ -268,16 +265,7 @@ document.addEventListener('DOMContentLoaded', () => {
         predictionResult.textContent = !prediction
             ? '다음에는 결과를 먼저 예상해 보세요.'
             : prediction === a.motion ? '예상이 맞았습니다.' : '예상과 다른 결과입니다.';
-        let s = `${a.floorName} 바닥에서 최대 마찰력은 ${a.mu} × ${a.weight} N = ${fmt(a.fMax)} N 입니다. `;
-        if (a.motion === 'rest') {
-            s += `미는 힘 ${a.F} N은 이보다 크지 않아 상자가 움직이지 않습니다. 이때 마찰력은 미는 힘과 똑같은 ${fmt(a.friction)} N 만 생겨 알짜힘이 0이 됩니다.`;
-        } else {
-            s += `미는 힘 ${a.F} N 에서 마찰력 ${fmt(a.fMax)} N을 빼면 알짜힘은 ${fmt(a.net)} N, 가속도는 ${fmt(a.net)} ÷ ${a.m} = ${a.accel.toFixed(2)} m/s² 입니다. `;
-            if (a.motion === 'constant') s += `알짜힘이 0 이라 처음 속력 ${fmt(a.v0)} m/s를 그대로 지키며 ${st.x.toFixed(1)} m를 갔습니다. 힘이 평형이어도 멈추지 않는다는 점이 중요합니다.`;
-            else if (a.motion === 'faster') s += `${a.endTime.toFixed(1)} 초 만에 ${st.x.toFixed(1)} m를 지나며 속력이 ${fmt(a.v0)} m/s 에서 ${st.v.toFixed(1)} m/s로 커졌습니다.`;
-            else if (a.reachedEnd) s += `느려지기는 했지만 멈추기 전에 ${st.x.toFixed(1)} m 끝에 닿았습니다.`;
-            else s += `${a.endTime.toFixed(1)} 초 뒤 ${st.x.toFixed(1)} m를 가고 멈췄습니다.`;
-        }
+        const s = Math.abs(a.net) < 1e-9 ? '서로 반대 방향의 힘이 같은 크기여서 힘의 평형을 이룹니다. 멈춰 있던 물체는 멈춰 있고, 움직이던 물체는 같은 속력으로 움직입니다.' : '알짜힘이 작용하면 물체의 운동이 변합니다. 미는 힘과 마찰력의 화살표를 비교해 보세요.';
         explanation.textContent = s;
     }
 

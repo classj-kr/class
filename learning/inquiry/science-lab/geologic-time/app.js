@@ -57,7 +57,6 @@ document.addEventListener('DOMContentLoaded', () => {
         perm: { label: '페름기 말', age: 252, loss: 96, cause: '시베리아에서 대규모 화산이 터져 기후가 더워지고 바다가 산성이 되었습니다', victims: '삼엽충 완전 멸종, 바다 생물 대부분', recovery: '약 1,000만 년 넘게' },
         tri: { label: '트라이아스기 말', age: 201, loss: 80, cause: '대규모 화산 활동으로 기후가 바뀌었습니다', victims: '많은 양서류·파충류, 조개류', recovery: '수백만 년' },
         cret: { label: '백악기 말', age: 66, loss: 76, cause: '소행성이 멕시코 칙술루브에 떨어져 어둠과 추위가 왔고 화산 활동도 겹쳤습니다', victims: '공룡(새 빼고)·익룡·암모나이트', recovery: '약 1,000만 년' },
-        now: { label: '지금 (인류 시대)', age: 0, loss: 1, cause: '사람이 서식지를 파괴하고 남획하며 외래종을 옮기고 기후를 바꾸고 있습니다', victims: '1500년 이후 기록된 약 900종 (도도, 여행비둘기 …)', recovery: '—', threatened: 28, rate: '자연 속도의 100~1,000배' },
     };
     // marine diversity through time, drawn as a shape from the fossil record (relative)
     const DIVERSITY_CURVE = [[541, 0.05], [520, 0.2], [500, 0.3], [470, 0.45], [446, 0.5], [444, 0.3], [430, 0.4], [400, 0.5], [373, 0.5], [371, 0.35], [340, 0.45], [300, 0.5], [260, 0.55], [253, 0.55], [251, 0.14], [240, 0.2], [220, 0.35], [202, 0.4], [200, 0.28], [180, 0.35], [150, 0.45], [100, 0.6], [67, 0.7], [65, 0.45], [50, 0.55], [20, 0.8], [0, 1.0]];
@@ -415,7 +414,7 @@ document.addEventListener('DOMContentLoaded', () => {
             labelA.textContent = '실제'; valueA.textContent = fmtAge(ev.age);
             labelB.textContent = '1년 달력으로'; valueB.textContent = dateText(day, day > 363);
             s = `${ev.label}${pEun(ev.label)} ${fmtAge(ev.age)}의 일입니다. 46억 년을 1년으로 줄이면 하루가 1,260만 년, 한 시간이 52.5만 년이므로 이 일은 ${dateText(day, day > 363)}에 놓입니다. `;
-            if (a.verdict === 'early' || a.verdict === 'mid') s += `달력의 앞 열 달 반, 곧 지구 역사의 대부분인 선캄브리아 시대에는 세균 같은 작은 생물뿐이었습니다. 산소가 늘고 핵 있는 세포가 생기는 데만 수십억 년이 걸렸습니다. `;
+            if (a.verdict === 'early' || a.verdict === 'mid') s += `달력의 앞 열 달 반, 곧 지구 역사의 대부분인 선캄브리아 시대에는 오랫동안 미생물이 주를 이루었지만 후기에 다세포 생물도 나타났습니다. 산소가 늘고 핵 있는 세포가 생기는 데만 수십억 년이 걸렸습니다. `;
             else if (a.verdict === 'late') s += `껍데기와 뼈를 가진 동물이 갑자기 늘어난 고생대의 시작이 11월 18일, 공룡의 중생대 시작이 12월 12일입니다. 우리가 아는 큰 생물들의 역사는 달력의 마지막 한 달 반에 몰려 있습니다. `;
             else s += `공룡이 사라진 신생대의 시작이 12월 26일이고, 사람 속은 12월 31일 저녁 6시 40분, 호모 사피엔스는 밤 11시 26분에야 나타납니다. 사람의 역사는 지구 역사의 마지막 한 시간도 되지 않습니다. `;
             s += `${ev.what}. 지질 시대는 이렇게 화석에 남은 생물의 큰 변화를 기준으로 나눕니다.`;

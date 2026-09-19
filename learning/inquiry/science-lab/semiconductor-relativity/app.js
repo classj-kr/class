@@ -125,12 +125,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 `${o.label}${o.hint ? `<small>${o.hint}</small>` : ''}</button>`).join('') +
             `</div></fieldset>`;
     }
-    const opts = table => Object.entries(table).map(([k, v]) => ({ value: k, label: v.label, hint: v.hint }));
+    const opts = table => Object.entries(table).map(([k, v]) => ({ value: k, label: v.label }));
 
     function buildControls() {
         if (state.mode === 'diode') controlArea.innerHTML = pickRow('전원 전압 (p쪽 기준)', 'volt', opts(VOLTS), state.volt, 5) + pickRow('다이오드 온도', 'temp', opts(TEMPS), state.temp, 2);
         else if (state.mode === 'muon') controlArea.innerHTML = pickRow('뮤온의 속력', 'mspeed', opts(SPEEDS_M), state.mspeed, 4) + pickRow('뮤온이 생긴 높이', 'height', opts(HEIGHTS), state.height, 3);
-        else controlArea.innerHTML = pickRow('속력', 'espeed', opts(SPEEDS_E), state.espeed, 5) + pickRow('물체', 'body', opts(BODIES), state.body, 3);
+        else controlArea.innerHTML = pickRow('속력', 'espeed', opts(SPEEDS_E), state.espeed, 5);
         controlArea.querySelectorAll('[data-pick]').forEach(group => {
             group.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
                 state[group.dataset.pick] = button.dataset.value;
@@ -146,16 +146,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const PRED_E = [{ value: 'same', label: '거의 같음 (10 % 안)' }, { value: 'bit', label: '조금 큼 (10~100 %)' }, { value: 'much', label: '두 배 넘게' }];
 
     function buildPrediction() {
-        const list = state.mode === 'diode' ? PRED_D : state.mode === 'muon' ? PRED_M : PRED_E;
-        predictionLegend.textContent = state.mode === 'diode' ? `${VOLTS[state.volt].label}(${VOLTS[state.volt].hint}), ${TEMPS[state.temp].label}일 때 전류는?`
-            : state.mode === 'muon' ? `${HEIGHTS[state.height].label} 위에서 생긴 ${SPEEDS_M[state.mspeed].label}의 뮤온 1,000개 가운데 지표에 닿는 것은?`
-                : `${SPEEDS_E[state.espeed].label}로 움직이는 ${BODIES[state.body].label}의 운동 에너지는 ½mv²에 견줘?`;
-        predictionArea.className = 'prediction-buttons three';
-        predictionArea.innerHTML = list.map(o => `<button type="button" data-prediction="${o.value}">${o.label}</button>`).join('');
-        predictionArea.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
-            state.prediction = button.dataset.prediction;
-            predictionArea.querySelectorAll('button').forEach(b => b.classList.toggle('selected', b === button));
-        }));
+        const list = state.mode === 'diode' ? PRED_D : state.mode === 'muon' ? [{value:'yes',label:'지상에서 더 길게 측정'}, {value:'no',label:'지상에서 더 짧게 측정'}] : [{value:'yes',label:'운동 방향 길이가 짧아짐'}, {value:'no',label:'운동 방향 길이가 길어짐'}];
+        predictionLegend.textContent = state.mode === 'diode' ? '전류의 흐름을 예상하세요.' : state.mode === 'muon' ? '지상에서 측정한 뮤온의 수명은 고유 수명에 비해?' : '정지 관측자가 측정한 우주선의 길이는 고유 길이에 비해?';
+        predictionArea.innerHTML=list.map(o=>'<button type="button" data-prediction="'+o.value+'">'+o.label+'</button>').join('');
+        predictionArea.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{state.prediction=b.dataset.prediction;predictionArea.querySelectorAll('button').forEach(x=>x.classList.toggle('selected',x===b));}));
     }
 
     /* ----------------------------------------------------------- visuals */
@@ -214,7 +208,6 @@ document.addEventListener('DOMContentLoaded', () => {
         else out += `<text class="small-label" x="${mid}" y="${JY + JH + 24}" text-anchor="middle">${on ? '공핍층이 두꺼워져 운반자가 못 건넘' : '공핍층: 운반자가 없는 띠'}</text>`;
         out += `<text class="trait-text" x="${JX}" y="158">양단 ${on ? `${fmtN(a.Vd, 2)} V` : '—'} · 공핍층 ${on ? `${fmtN(wDraw / 14 * 100)} %` : '100 %'} (0 V일 때 기준)</text>`;
         out += `<text class="trait-text" x="${JX}" y="174">I₀ = ${fmtI(a.I0)} · V_T = kT/q = ${fmtN(a.VT * 1000, 1)} mV (${a.T} K)</text>`;
-        out += `<text class="trait-text" style="fill:#d97706" x="${JX}" y="190">${on ? `I = I₀(e^(${fmtN(a.Vd, 2)}/${fmtN(a.VT, 4)}) − 1) = ${fmtI(a.I)}` : '전압을 걸면 쇼클리 식으로 전류가 나옵니다'}</text>`;
         const VERD = { well: '잘 흐름', some: '조금 흐름', none: '거의 안 흐름' };
         out += `<text class="verdict-text" fill="#d97706" x="20" y="16">${p >= 1 ? `${VOLTS[state.volt].label} ${VOLTS[state.volt].hint} · ${a.T} K: ${fmtI(a.I)} — ${VERD[a.verdict]}` : `${VOLTS[state.volt].label} ${VOLTS[state.volt].hint} · ${TEMPS[state.temp].label}`}</text>`;
         out += `<text class="note-text" x="20" y="208">규소 다이오드, 실온 I₀ = 1 pA (대략) · 뜨거워지면 I₀ ∝ T³e^(−Eg/kT), Eg = 1.12 eV · 노란 점은 전류의 방향</text>`;
@@ -223,7 +216,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function graphDiode(a) {
         const X0 = 60, X1 = 420, Y0 = 150, Y1 = 40, VA = -2, VB = 1, IM = 20e-3, xOf = v => X0 + (v - VA) / (VB - VA) * (X1 - X0), yOf = i => Y0 - clamp(i, -IM * 0.08, IM) / IM * (Y0 - Y1);
-        let out = `<text class="axis-title" x="${X0}" y="18">다이오드의 전압–전류 곡선 (쇼클리 식) — 노란 점이 지금의 작동점</text>`;
+        let out = `<text class="axis-title" x="${X0}" y="18">다이오드의 전압–전류 모형 — 노란 점이 지금의 작동점</text>`;
         [-2, -1, 0, 0.5, 1].forEach(v => { out += `<line class="grid-line" x1="${xOf(v).toFixed(1)}" y1="${Y1}" x2="${xOf(v).toFixed(1)}" y2="${Y0}"/><text class="axis-text" x="${xOf(v).toFixed(1)}" y="${Y0 + 14}" text-anchor="${v === -2 ? 'start' : 'middle'}">${v} V</text>`; });
         [0, 5, 10, 15, 20].forEach(i => { out += `<line class="grid-line" x1="${X0}" y1="${yOf(i * 1e-3).toFixed(1)}" x2="${X1}" y2="${yOf(i * 1e-3).toFixed(1)}"/><text class="axis-text" x="${X0 - 5}" y="${(yOf(i * 1e-3) + 3.5).toFixed(1)}" text-anchor="end">${i} mA</text>`; });
         out += `<line class="axis" x1="${X0}" y1="${yOf(0).toFixed(1)}" x2="${X1}" y2="${yOf(0).toFixed(1)}"/><line class="axis" x1="${xOf(0).toFixed(1)}" y1="${Y1}" x2="${xOf(0).toFixed(1)}" y2="${Y0}"/>`;
@@ -239,102 +232,20 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function renderMuon(a) {
-        const p = state.progress, TOP = 40, GND = 176, cols = [[38, 'without', a.fNewton, 1], [246, 'with', a.fRel, a.g]], CW = 150;
-        let out = '';
-        cols.forEach(([x, kind, f, g]) => {
-            out += `<rect class="column" x="${x}" y="${TOP}" width="${CW}" height="${GND - TOP}" rx="4"/><rect class="ground" x="${x}" y="${GND}" width="${CW}" height="8"/><rect class="detector" x="${x + CW / 2 - 22}" y="${GND - 6}" width="44" height="6" rx="2"/>`;
-            out += `<text class="small-label" x="${x + CW / 2}" y="${TOP - 6}" text-anchor="middle">${kind === 'without' ? '시간 지연이 없다면' : `시간 지연을 넣으면 (γ = ${fmtN(g, 2)})`}</text>`;
-            // 60 muons start at the top; each decays after its own proper lifetime (exponential), stretched by γ in ground time
-            const front = TOP + (GND - TOP - 6) * p, alive0 = 60; let alive = 0;
-            for (let i = 0; i < alive0; i += 1) {
-                const life = -Math.log(1 - rnd(i + (kind === 'with' ? 500 : 0)) * 0.999) * TAU * g, yDeath = TOP + (GND - TOP - 6) * clamp(life / a.tGround, 0, 1);
-                const y = Math.min(front, yDeath), dead = front > yDeath + 0.01, xx = x + 10 + rnd(i + 300) * (CW - 20);
-                if (!dead) alive += 1;
-                out += `<circle class="muon${dead ? ' dead' : ''}" cx="${xx.toFixed(1)}" cy="${y.toFixed(1)}" r="${dead ? 2 : 2.6}"/>`;
-            }
-            const fNow = Math.exp(-(a.tGround * p) / (TAU * g));
-            out += `<text class="trait-text" style="fill:${kind === 'with' ? '#d97706' : '#334155'}" x="${x + 6}" y="${GND - 12}">${cnt(fNow)}개 남음 / 1,000개</text>`;
-        });
-        // clocks in the middle
-        const CX = 215, hand = (cy, frac) => `<line class="clock-hand" x1="${CX}" y1="${cy}" x2="${(CX + 10 * Math.sin(frac * 2 * Math.PI)).toFixed(1)}" y2="${(cy - 10 * Math.cos(frac * 2 * Math.PI)).toFixed(1)}"/>`;
-        out += `<circle class="clock" cx="${CX}" cy="76" r="13"/>${hand(76, p * a.tGround / 10e-6)}<text class="small-label" x="${CX}" y="56" text-anchor="middle">지상 시계</text><text class="small-label" x="${CX}" y="101" text-anchor="middle">${fmtN(a.tGround * 1e6 * p, 1)} μs</text>`;
-        out += `<circle class="clock" cx="${CX}" cy="136" r="13"/>${hand(136, p * a.tMuon / 10e-6)}<text class="small-label" x="${CX}" y="119" text-anchor="middle">뮤온 시계</text><text class="small-label" x="${CX}" y="161" text-anchor="middle">${fmtN(a.tMuon * 1e6 * p, 2)} μs</text>`;
-        out += `<text class="small-label" x="${CX}" y="${TOP - 6}" text-anchor="middle">높이 ${HEIGHTS[state.height].label}</text>`;
-        const VERD = { few: '거의 다 붕괴', some: '일부 닿음', many: '많이 닿음' };
-        out += `<text class="verdict-text" fill="#d97706" x="20" y="16">${p >= 1 ? `${SPEEDS_M[state.mspeed].label} 뮤온, ${HEIGHTS[state.height].label}: 1,000개 중 ${cnt(a.fRel)}개 도착 — ${VERD[a.verdict]}` : `${SPEEDS_M[state.mspeed].label} 뮤온이 ${HEIGHTS[state.height].label}에서 떨어지는 중`}</text>`;
-        out += `<text class="note-text" x="20" y="208">정지 수명 2.2 μs · 남는 비율 e^(−t/2.2 μs), 뮤온 시계 t = 지상 시계 ÷ γ · 1963년 실험과 같은 셈</text>`;
-        return out;
+        const p=state.progress, clock=(x,phase,label)=>'<circle cx="'+x+'" cy="100" r="38" fill="#edf4fb" stroke="#4e6578"/><line x1="'+x+'" y1="100" x2="'+(x+30*Math.sin(phase))+'" y2="'+(100-30*Math.cos(phase))+'" stroke="#d97706" stroke-width="4"/><text x="'+x+'" y="162" text-anchor="middle" fill="#334155">'+label+'</text>';
+        return clock(125,p*12,'지상 시계')+clock(330,p*12/a.g,'운동하는 뮤온 시계')+'<text x="20" y="25" fill="#334155">지상 관측자의 관점 · 시간 흐름 비교 모형</text>';
     }
 
-    function graphMuon(a) {
-        const X0 = 60, X1 = 420, Y0 = 150, Y1 = 40, DM = 20000, xOf = d => X0 + d / DM * (X1 - X0), yOf = f => Y0 - clamp(f, 0, 1) * (Y0 - Y1);
-        let out = `<text class="axis-title" x="${X0}" y="18">높이에 따라 지표에 닿는 뮤온의 비율 — ${SPEEDS_M[state.mspeed].label}일 때, 점선은 시간 지연이 없을 때</text>`;
-        [0, 5000, 10000, 15000, 20000].forEach(d => { out += `<line class="grid-line" x1="${xOf(d).toFixed(1)}" y1="${Y1}" x2="${xOf(d).toFixed(1)}" y2="${Y0}"/><text class="axis-text" x="${xOf(d).toFixed(1)}" y="${Y0 + 14}" text-anchor="${d === 0 ? 'start' : 'middle'}">${d / 1000} km</text>`; });
-        [0, 0.3, 0.5, 1].forEach(f => { out += `<line class="grid-line" x1="${X0}" y1="${yOf(f).toFixed(1)}" x2="${X1}" y2="${yOf(f).toFixed(1)}"/><text class="axis-text" x="${X0 - 5}" y="${(yOf(f) + 3.5).toFixed(1)}" text-anchor="end">${f * 100} %</text>`; });
-        out += `<line class="axis" x1="${X0}" y1="${Y0}" x2="${X1}" y2="${Y0}"/><line class="axis" x1="${X0}" y1="${Y1}" x2="${X0}" y2="${Y0}"/>`;
-        let dR = '', dN = '';
-        for (let d = 0; d <= DM + 1e-9; d += 250) { const t = d / a.v; dR += `${dR ? 'L' : 'M'}${xOf(d).toFixed(1)},${yOf(Math.exp(-t / a.g / TAU)).toFixed(1)} `; dN += `${dN ? 'L' : 'M'}${xOf(d).toFixed(1)},${yOf(Math.exp(-t / TAU)).toFixed(1)} `; }
-        out += `<path class="trace faint" style="stroke:#97dad3" d="${dN}"/><path class="trace" style="stroke:#d97706" d="${dR}"/>`;
-        const dNow = a.d * state.progress;
-        out += `<line class="marker" x1="${xOf(a.d).toFixed(1)}" y1="${Y1}" x2="${xOf(a.d).toFixed(1)}" y2="${Y0}"/>`;
-        out += `<circle fill="#d97706" stroke="#fff" cx="${xOf(dNow).toFixed(1)}" cy="${yOf(Math.exp(-dNow / a.v / a.g / TAU)).toFixed(1)}" r="4.5"/>`;
-        out += `<text class="small-label" style="fill:#d97706" x="${(xOf(a.d) + (a.d > 15000 ? -6 : 6)).toFixed(1)}" y="${Y1 + 12}" text-anchor="${a.d > 15000 ? 'end' : 'start'}">${HEIGHTS[state.height].label}: ${fmtN(a.fRel * 100, a.fRel < 0.01 ? 2 : 1)} % (없다면 ${a.fNewton < 1e-4 ? '0.00' : fmtN(a.fNewton * 100, 2)} %)</text>`;
-        out += `<text class="axis-title" x="${(X0 + X1) / 2}" y="${Y0 + 30}" text-anchor="middle">뮤온이 생긴 높이 — 한 수명 동안 가는 거리 v·γ·2.2 μs = ${fmtN(a.reach / 1000, 2)} km</text>`;
-        return out;
-    }
+    function graphMuon(a) { return '<text x="20" y="50" fill="#334155">시간 지연은 관측자 사이의 시간 간격 비교입니다.</text><text x="20" y="95" fill="#334155">자신과 함께 움직이는 시계의 고유 시간은 변하지 않습니다.</text>'; }
 
     function renderEnergy(a) {
-        const p = state.progress, { g, b, body } = a, L0 = 150, L = L0 / g, Y = 62;
-        let out = `<text class="small-label" x="20" y="36">정지한 우주선 100 m (점선) · 같은 우주선이 ${SPEEDS_E[state.espeed].label}로 지나갈 때 (파랑)</text>`;
-        out += `<rect class="ship-rest" x="20" y="${Y - 14}" width="${L0}" height="28" rx="8"/><text class="small-label" x="${20 + L0 / 2}" y="${Y + 3.5}" text-anchor="middle">100 m</text>`;
-        out += `<text class="small-label" style="fill:#0284c7" x="${20 + L0 + 12}" y="${Y + 3.5}">지나갈 때 ${fmtN(100 / g, 1)} m = 100 ÷ ${fmtN(g, 2)} · 높이는 그대로</text>`;
-        const sx = 20 + (440 - 20 - L) * ease(p);
-        out += `<rect class="ship" x="${sx.toFixed(1)}" y="${Y + 26}" width="${L.toFixed(1)}" height="28" rx="${Math.min(8, L / 2).toFixed(1)}"/>`;
-        // energy bars
-        const BY = 152, BX = 150, SC = 60, wN = SC, wR = Math.min(270, SC * a.ratio), grow = ease(p);
-        out += `<text class="trait-text" x="20" y="${BY - 12}">½mv² (뉴턴)</text><rect class="bar-newton" x="${BX}" y="${BY - 20}" width="${(wN * grow).toFixed(1)}" height="12" rx="2"/><text class="small-label" x="${BX + wN * grow + 6}" y="${BY - 10}">${fmtE(a.kNewton * grow, body.unit)}</text>`;
-        out += `<text class="trait-text" x="20" y="${BY + 10}">(γ − 1)mc² (상대론)</text><rect class="bar-rel" x="${BX}" y="${BY + 2}" width="${(wR * grow).toFixed(1)}" height="12" rx="2"/><text class="small-label" style="fill:#dc2626" x="${Math.min(BX + wR * grow + 6, 366).toFixed(1)}" y="${BY + 12}">${fmtE(a.kRel * grow, body.unit)}${wR >= 270 ? ' …' : ''}</text>`;
-        out += `<text class="trait-text" x="20" y="${BY + 34}">γ = 1/√(1 − ${b}²) = ${fmtN(g, 3)} · 상대론 ÷ 뉴턴 = ${fmtN(a.ratio, 2)}배 · 정지 에너지 mc² = ${fmtE(body.mc2, body.unit)}</text>`;
-        const VERD = { same: '거의 같음', bit: '조금 큼', much: '두 배 넘게' };
-        out += `<text class="verdict-text" fill="#d97706" x="20" y="16">${p >= 1 ? `${SPEEDS_E[state.espeed].label} ${body.label}: ${fmtN(100 / g, 1)} m · ${fmtE(a.kRel, body.unit)} · 뉴턴 식의 ${fmtN(a.ratio, 1)}배 — ${VERD[a.verdict]}` : `${SPEEDS_E[state.espeed].label} · ${body.label}`}</text>`;
-        out += `<text class="note-text" x="20" y="208">길이는 운동 방향만 L = L₀/γ로 줄고 폭은 그대로. 운동 에너지 = (γ − 1)mc², 느릴 때 ½mv²과 같아짐</text>`;
-        return out;
+        const moving=260/a.g;
+        return '<text x="20" y="35" fill="#334155">고유 길이 (우주선과 함께 측정)</text><rect x="40" y="50" width="260" height="35" rx="10" fill="#a0bacb"/><text x="20" y="123" fill="#334155">지나가는 우주선의 운동 방향 길이</text><rect x="40" y="140" width="'+moving+'" height="35" rx="10" fill="#d97706"/><text x="20" y="208" fill="#334155">높이는 같고, 운동 방향만 짧게 측정됩니다.</text>';
     }
 
-    function graphEnergy(a) {
-        const X0 = 60, X1 = 420, Y0 = 150, Y1 = 40, KM = 8, xOf = bb => X0 + bb * (X1 - X0), yOf = k => Y0 - clamp(k, 0, KM) / KM * (Y0 - Y1);
-        let out = `<text class="axis-title" x="${X0}" y="18">속력에 따른 운동 에너지 (mc²의 배수) — 점선 ½mv², 실선 (γ − 1)mc²</text>`;
-        [0, 0.2, 0.4, 0.6, 0.8, 1].forEach(bb => { out += `<line class="grid-line" x1="${xOf(bb).toFixed(1)}" y1="${Y1}" x2="${xOf(bb).toFixed(1)}" y2="${Y0}"/><text class="axis-text" x="${xOf(bb).toFixed(1)}" y="${Y0 + 14}" text-anchor="${bb === 0 ? 'start' : 'middle'}">${bb === 1 ? 'c' : `${bb}c`}</text>`; });
-        [0, 2, 4, 6, 8].forEach(k => { out += `<line class="grid-line" x1="${X0}" y1="${yOf(k).toFixed(1)}" x2="${X1}" y2="${yOf(k).toFixed(1)}"/><text class="axis-text" x="${X0 - 5}" y="${(yOf(k) + 3.5).toFixed(1)}" text-anchor="end">${k} mc²</text>`; });
-        out += `<line class="axis" x1="${X0}" y1="${Y0}" x2="${X1}" y2="${Y0}"/><line class="axis" x1="${X0}" y1="${Y1}" x2="${X0}" y2="${Y0}"/>`;
-        let dN = '', dR = '';
-        for (let bb = 0; bb <= 0.9995; bb += 0.005) { dN += `${dN ? 'L' : 'M'}${xOf(bb).toFixed(1)},${yOf(0.5 * bb * bb).toFixed(1)} `; const k = gamma(bb) - 1; if (k <= KM * 1.02) dR += `${dR ? 'L' : 'M'}${xOf(bb).toFixed(1)},${yOf(k).toFixed(1)} `; }
-        out += `<path class="trace faint" style="stroke:#97dad3" d="${dN}"/><path class="trace" style="stroke:#ff7a59" d="${dR}"/>`;
-        const kk = a.g - 1;
-        out += `<line class="marker" x1="${xOf(a.b).toFixed(1)}" y1="${Y1}" x2="${xOf(a.b).toFixed(1)}" y2="${Y0}"/><circle fill="#d97706" stroke="#fff" cx="${xOf(a.b).toFixed(1)}" cy="${yOf(kk).toFixed(1)}" r="4.5"/><circle fill="#97dad3" stroke="#fff" cx="${xOf(a.b).toFixed(1)}" cy="${yOf(0.5 * a.b * a.b).toFixed(1)}" r="3.5"/>`;
-        out += `<text class="small-label" style="fill:#d97706" x="${(xOf(a.b) + (a.b > 0.7 ? -8 : 8)).toFixed(1)}" y="${(clamp(yOf(kk), Y1 + 12, Y0) - 6).toFixed(1)}" text-anchor="${a.b > 0.7 ? 'end' : 'start'}">${SPEEDS_E[state.espeed].label}: ${fmtN(kk, kk < 0.1 ? 3 : 2)} mc² (뉴턴 ${fmtN(0.5 * a.b * a.b, 3)} mc²)</text>`;
-        out += `<text class="axis-title" x="${(X0 + X1) / 2}" y="${Y0 + 30}" text-anchor="middle">속력 — 광속에 다가갈수록 에너지가 한없이 치솟아 광속을 넘지 못합니다</text>`;
-        return out;
-    }
+    function graphEnergy(a) { return '<text x="20" y="50" fill="#334155">속력을 바꾸어 두 길이를 비교하세요.</text><text x="20" y="95" fill="#334155">그림은 측정 길이 모형이며 사진의 모습이 아닙니다.</text>'; }
 
-    function noteFor(a) {
-        if (a.kind === 'diode') {
-            return `<div class="data-row"><span class="data-name">회로</span><span class="data-val">전원 ${VOLTS[state.volt].label} (${VOLTS[state.volt].hint}) — 저항 100 Ω — 규소 다이오드, ${a.T} K</span></div>` +
-                `<div class="data-row"><span class="data-name">쇼클리 식</span><span class="data-val">I₀ = ${fmtI(a.I0)}, V_T = ${fmtN(a.VT * 1000, 1)} mV → 다이오드 양단 ${fmtN(a.Vd, 3)} V에서 I = ${fmtI(a.I)}</span></div>` +
-                `<div class="data-row"><span class="data-name">공핍층</span><span class="data-val">0 V일 때에 견줘 ${fmtN(Math.sqrt(Math.max(0, 1 - a.Vd / V_BI)) * 100)} % 두께 (√(1 − V/0.7 V), 대략)</span></div>` +
-                `<div class="data-row match"><span class="data-name">판정</span><span class="data-val">${{ well: '잘 흐름 (1 mA 넘게)', some: '조금 흐름 (1 μA ~ 1 mA)', none: '거의 안 흐름 (1 μA 아래)' }[a.verdict]}</span></div>`;
-        }
-        if (a.kind === 'muon') {
-            return `<div class="data-row"><span class="data-name">지상에서 잰 시간</span><span class="data-val">${HEIGHTS[state.height].label} ÷ ${SPEEDS_M[state.mspeed].label} = ${fmtN(a.tGround * 1e6, 1)} μs (수명 2.2 μs의 ${fmtN(a.tGround / TAU, 1)}배)</span></div>` +
-                `<div class="data-row"><span class="data-name">뮤온의 시간</span><span class="data-val">${fmtN(a.tGround * 1e6, 1)} ÷ γ ${fmtN(a.g, 2)} = ${fmtN(a.tMuon * 1e6, 2)} μs (수명의 ${fmtN(a.tMuon / TAU, 2)}배)</span></div>` +
-                `<div class="data-row"><span class="data-name">남는 비율</span><span class="data-val">e^(−${fmtN(a.tMuon / TAU, 2)}) = ${fmtN(a.fRel * 100, a.fRel < 0.01 ? 3 : 1)} % — 시간 지연이 없다면 e^(−${fmtN(a.tGround / TAU, 1)}) = ${a.fNewton < 1e-6 ? '0.0000…' : fmtN(a.fNewton * 100, 4)} %</span></div>` +
-                `<div class="data-row match"><span class="data-name">판정</span><span class="data-val">${{ few: '거의 다 붕괴 (1 % 아래)', some: '일부 닿음 (1~30 %)', many: '많이 닿음 (30 % 넘게)' }[a.verdict]}</span></div>`;
-        }
-        return `<div class="data-row"><span class="data-name">γ</span><span class="data-val">1 ÷ √(1 − ${a.b}²) = ${fmtN(a.g, 3)}</span></div>` +
-            `<div class="data-row"><span class="data-name">길이</span><span class="data-val">100 m ÷ ${fmtN(a.g, 3)} = ${fmtN(100 / a.g, 1)} m (운동 방향만)</span></div>` +
-            `<div class="data-row"><span class="data-name">운동 에너지</span><span class="data-val">(γ − 1)mc² = ${fmtE(a.kRel, a.body.unit)} / ½mv² = ${fmtE(a.kNewton, a.body.unit)} → ${fmtN(a.ratio, 3)}배</span></div>` +
-            `<div class="data-row match"><span class="data-name">판정</span><span class="data-val">${{ same: '거의 같음 (10 % 안)', bit: '조금 큼 (10~100 %)', much: '두 배 넘게' }[a.verdict]}</span></div>`;
-    }
+    function noteFor(a) { return a.kind==='diode' ? '<p>순방향과 역방향에서 전류가 다르게 흐릅니다. 그래프는 소자 특성의 모형값입니다.</p>' : a.kind==='muon' ? '<p>지상 관측자가 잰 움직이는 뮤온의 수명은 고유 수명보다 깁니다.</p>' : '<p>우주선과 함께 측정한 고유 길이와 정지 관측자가 측정한 길이를 비교합니다.</p>'; }
 
     function render() {
         const a = analyse();
@@ -343,8 +254,8 @@ document.addEventListener('DOMContentLoaded', () => {
         liftProse();
         stageBadge.textContent = a.kind === 'diode' ? `${VOLTS[state.volt].label} · ${TEMPS[state.temp].label}` : a.kind === 'muon' ? `${SPEEDS_M[state.mspeed].label} · ${HEIGHTS[state.height].label}` : `${SPEEDS_E[state.espeed].label} · ${BODIES[state.body].label}`;
         methodHint.textContent = a.kind === 'diode' ? '순방향 전압은 공핍층을 얇게 해 전류를 흘리고, 역방향은 두껍게 해 막습니다'
-            : a.kind === 'muon' ? '움직이는 시계는 γ배 느리게 갑니다. 뮤온의 수명이 그만큼 늘어납니다'
-                : '움직이는 물체는 γ분의 1로 짧아지고, 운동 에너지는 (γ − 1)mc²';
+            : a.kind === 'muon' ? '지상에서 잰 뮤온의 수명은 고유 수명보다 깁니다'
+                : '운동 방향의 길이는 고유 길이보다 짧게 측정됩니다';
         dataNote.innerHTML = noteFor(a);
         return a;
     }
@@ -372,37 +283,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function finish() {
-        const a = render();
-        resultEmpty.hidden = true;
-        resultContent.hidden = false;
-        let s = '';
-        if (a.kind === 'diode') {
-            labelA.textContent = '전류'; valueA.textContent = fmtI(a.I);
-            labelB.textContent = '다이오드 양단'; valueB.textContent = `${fmtN(a.Vd, 2)} V`;
-            s = `${a.T} K에서 V_T = kT/q = ${fmtN(a.VT * 1000, 1)} mV이고 새는 전류 I₀는 ${fmtI(a.I0)}입니다. 전원 ${VOLTS[state.volt].label}를 저항 100 Ω과 다이오드에 걸면 다이오드 양단에는 ${fmtN(a.Vd, 2)} V가 걸리고, 쇼클리 식 I = I₀(e^(V/V_T) − 1)로 전류는 ${fmtI(a.I)}입니다. `;
-            if (a.Vs < 0) s += `역방향이라 p쪽에 −극이 걸려 양공은 −극으로, 전자는 +극으로 끌려가 접합에서 멀어지고, 공핍층은 0 V일 때의 ${fmtN(a.W * 100)} %로 두꺼워집니다. 경계를 건널 운반자가 없으니 열로 생긴 극소수만 흘러 사실상 끊깁니다.${a.T === 400 ? ' 다만 뜨거우면 열로 생기는 운반자가 늘어 새는 전류가 실온의 십만 배가 됩니다.' : ''}`;
-            else if (a.verdict === 'none') s += `순방향이지만 ${fmtN(a.Vd, 2)} V는 규소 접합의 전위 장벽 0.6~0.7 V에 한참 못 미쳐, 장벽을 넘는 전자와 양공이 아주 적습니다. 공핍층은 조금 얇아졌지만 아직 대부분이 남아 전류는 μA도 안 됩니다. 다이오드는 이렇게 "켜지는 전압" 아래에서는 거의 꺼진 것과 같습니다.`;
-            else if (a.verdict === 'some') s += `순방향 전압이 켜지는 전압에 가까워져 장벽을 넘는 운반자가 늘고 공핍층은 ${fmtN(a.W * 100)} %로 얇아졌습니다. 전류가 지수 함수로 늘기 시작하는 중간 단계라 μA에서 mA 사이입니다.${a.T === 400 ? ' 뜨거워서 실온보다 훨씬 낮은 전압에서 이만큼 흐릅니다.' : ''}`;
-            else s += `순방향 전압이 켜지는 전압을 넘어 공핍층이 거의 사라지고, 전자는 n에서 p로, 양공은 p에서 n으로 경계를 건너 재결합하며 전류가 잘 흐릅니다. 전압을 조금만 더 올려도 전류가 e배씩 뛰므로 실제 회로에서는 100 Ω 같은 저항이 전류를 정해 줍니다. 여기서도 다이오드 양단은 ${fmtN(a.Vd, 2)} V에 머물고 나머지 ${fmtN(a.Vs - a.Vd, 2)} V는 저항이 맡습니다.`;
-        } else if (a.kind === 'muon') {
-            labelA.textContent = '지표 도착'; valueA.textContent = `1,000개 중 ${cnt(a.fRel)}개`;
-            labelB.textContent = '뮤온의 시간'; valueB.textContent = `${fmtN(a.tMuon * 1e6, 2)} μs`;
-            s = `${HEIGHTS[state.height].label}를 ${SPEEDS_M[state.mspeed].label}로 내려오는 데 지상 시계로는 ${fmtN(a.tGround * 1e6, 1)} μs가 걸립니다. 수명 2.2 μs의 ${fmtN(a.tGround / TAU, 1)}배라, 시간 지연이 없다면 e^(−${fmtN(a.tGround / TAU, 1)})로 1,000개 중 ${a.fNewton * 1000 < 0.01 ? '0.01개도' : `${fmtN(a.fNewton * 1000, 2)}개만`} 닿아야 합니다. `;
-            s += `그러나 γ = ${fmtN(a.g, 2)}${ra(fmtN(a.g, 2))} 뮤온 자신의 시계로는 ${fmtN(a.tMuon * 1e6, 2)} μs밖에 안 흘러, e^(−${fmtN(a.tMuon / TAU, 2)}) = ${fmtN(a.fRel * 100, a.fRel < 0.01 ? 3 : 1)} %, 곧 ${a.fRel * 1000 < 0.005 ? '사실상 0개' : `${cnt(a.fRel)}개`}가 닿습니다. `;
-            if (a.verdict === 'many') s += `뮤온이 보기에는 자기 시계는 그대로이고 대기 두께가 ${fmtN(a.d / a.g / 1000, 2)} km로 줄어든 것입니다. 지표에서 뮤온이 1분에 손바닥마다 하나꼴로 검출되는 것이 이 시간 지연의 증거이고, 1963년 프리시와 스미스가 산꼭대기와 해수면에서 세어 확인했습니다.`;
-            else if (a.verdict === 'some') s += `일부만 닿지만 시간 지연이 없을 때보다 ${a.fNewton > 0 ? `${fmtN(a.fRel / a.fNewton >= 1e6 ? 1e6 : a.fRel / a.fNewton)}배${a.fRel / a.fNewton >= 1e6 ? ' 넘게' : ''}` : '헤아릴 수 없이'} 많습니다. 속력을 더 높이거나 높이를 낮추면 닿는 비율이 급히 오릅니다.`;
-            else s += `이 속력에서는 γ가 작아 수명이 별로 늘지 않고, 뮤온은 몇백 m를 가다 대부분 붕괴합니다. 실제 우주선 뮤온이 지표까지 닿는 것은 그 속력이 0.99c를 넘기 때문입니다.`;
-        } else {
-            labelA.textContent = '우주선 길이'; valueA.textContent = `${fmtN(100 / a.g, 1)} m`;
-            labelB.textContent = '운동 에너지'; valueB.textContent = fmtE(a.kRel, a.body.unit);
-            s = `${SPEEDS_E[state.espeed].label}에서 γ = 1/√(1 − ${a.b}²) = ${fmtN(a.g, 3)}입니다. 100 m 우주선은 지나가는 방향으로 100 ÷ ${fmtN(a.g, 3)} = ${fmtN(100 / a.g, 1)} m로 줄어 보이고 높이와 폭은 그대로입니다. ${a.body.label}의 운동 에너지는 (γ − 1)mc² = ${fmtE(a.kRel, a.body.unit)}로, 뉴턴 식 ½mv² = ${fmtE(a.kNewton, a.body.unit)}의 ${fmtN(a.ratio, 2)}배입니다. `;
-            if (a.verdict === 'same') s += `광속의 10 %만 해도 γ는 1.005라 두 식의 차이가 1 %도 안 됩니다. 일상의 속력에서 뉴턴 식이 잘 맞는 까닭이고, 길이 수축도 0.5 %뿐이라 알아챌 수 없습니다.`;
-            else if (a.verdict === 'bit') s += `광속의 절반쯤부터 두 식이 눈에 띄게 갈라집니다. 뉴턴 식은 속력의 제곱으로만 늘지만 상대론 식은 γ와 함께 더 빨리 늡니다.`;
-            else s += `광속에 가까워지면 같은 속력을 내는 데 뉴턴 식보다 몇 배, 몇십 배의 에너지가 들고, 광속에 이르려면 무한한 에너지가 필요합니다. 그래서 가속기는 입자에 에너지를 아무리 넣어도 속력은 광속 바로 아래에서 더 오르지 않고 에너지(질량)만 늡니다.${a.body.unit === 'eV' ? ` ${a.body.label} ${fmtE(a.kRel, a.body.unit)}는 ${a.body.label === '전자' ? '작은 가속기' : '큰 가속기'} 수준입니다.` : ''}`;
-        }
-        predictionResult.textContent = !state.prediction ? '다음에는 결과를 먼저 예상해 보세요.'
-            : state.prediction === a.verdict ? '예상이 맞았습니다.' : '예상과 다른 결과입니다.';
-        explanation.textContent = s;
+        const a=render();resultEmpty.hidden=true;resultContent.hidden=false;
+        labelA.textContent=a.kind==='diode'?'전류':a.kind==='muon'?'지상에서 잰 수명':'운동 방향 길이';
+        valueA.textContent=a.kind==='diode'?fmtI(a.I):a.kind==='muon'?'고유 수명보다 김':'고유 길이보다 짧음';
+        labelB.textContent='비교 기준';valueB.textContent=a.kind==='diode'?'순방향 / 역방향':'함께 움직이는 관측자';
+        const answer=a.kind==='diode'?a.verdict:'yes';
+        predictionResult.textContent=!state.prediction?'다음에는 먼저 예상해 보세요.':state.prediction===answer?'예상이 맞았습니다.':'예상과 다른 결과입니다.';
+        explanation.textContent=a.kind==='diode'?'다이오드는 전압의 방향에 따라 전류가 다르게 흘러 정류에 이용됩니다.':a.kind==='muon'?'지상에서 빠르게 움직이는 뮤온의 수명을 관측하면 고유 수명보다 길게 측정됩니다.':'운동 방향 길이는 고유 길이보다 짧게 측정됩니다. 운동에 수직인 방향은 수축하지 않습니다.';
     }
 
     function settingsChanged() {
@@ -422,7 +309,7 @@ document.addEventListener('DOMContentLoaded', () => {
         checkBtn.textContent = state.mode === 'diode' ? '전압 걸기' : state.mode === 'muon' ? '뮤온 떨어뜨리기' : '우주선 보내기';
         stageCaption.textContent = state.mode === 'diode' ? '왼쪽은 전원·저항·다이오드 회로, 오른쪽은 다이오드 속 p-n 접합입니다. 가운데 점선 띠가 전하 운반자가 없는 공핍층입니다.'
             : state.mode === 'muon' ? '왼쪽은 시간 지연이 없을 때, 오른쪽은 있을 때 같은 뮤온 무리가 떨어지는 모습입니다. 흐려진 점은 붕괴한 뮤온이고, 가운데 두 시계가 지상과 뮤온의 시간입니다.'
-                : '위는 정지한 우주선과 지나가는 우주선의 길이, 아래는 뉴턴 식과 상대론 식의 운동 에너지 막대입니다.';
+                : '정지 관측자가 측정한 운동 방향 길이와 고유 길이를 비교하는 모형입니다. 사진의 모습과는 다릅니다.';
         settingsChanged();
     }));
     checkBtn.addEventListener('click', startRun);

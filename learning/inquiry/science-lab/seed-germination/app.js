@@ -165,8 +165,6 @@ document.addEventListener('DOMContentLoaded', () => {
         { key: null,    name: '모두 갖춤' },
         { key: 'water', name: '물만 빼면' },
         { key: 'warm',  name: '온도만 낮추면' },
-        { key: 'air',   name: '공기만 막으면' },
-        { key: 'light', name: '빛만 없애면' },
     ];
     const wouldGerminate = key => {
         const c = { water: true, warm: true, air: true, light: true };
@@ -175,7 +173,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     // which row matches what is set right now
     function currentCase() {
-        const off = ['water', 'warm', 'air', 'light'].filter(k => !conditions[k]);
+        const off = ['water', 'warm'].filter(k => !conditions[k]);
         if (off.length === 0) return null;
         return off.length === 1 ? off[0] : 'other';
     }
@@ -202,14 +200,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function renderData() {
-        const need = ['water', 'warm', 'air'];
+        const need = ['water', 'warm'];
         const missing = need.filter(k => !conditions[k]).map(k => COND_LABELS[k].name);
         const days = (progress * TOTAL_DAYS).toFixed(1);
         dataNote.innerHTML =
-            ['water', 'warm', 'air', 'light'].map(k =>
+            ['water', 'warm'].map(k =>
                 `<div class="data-row"><span class="data-name">${COND_LABELS[k].name}</span>` +
                 `<span class="data-val">${conditions[k] ? COND_LABELS[k].on : COND_LABELS[k].off}</span></div>`).join('') +
-            `<div class="data-row"><span class="data-name">싹트는 데 필요한 것</span><span class="data-val">물 · 알맞은 온도 · 공기 (빛은 필요 없음)</span></div>` +
+            `<div class="data-row"><span class="data-name">싹트는 데 필요한 것</span><span class="data-val">물 · 알맞은 온도 (나머지 조건은 같게 둠)</span></div>` +
             `<div class="data-row${germinates() ? ' match' : ''}"><span class="data-name">지금 모자란 것</span>` +
             `<span class="data-val">${missing.length ? missing.join(' · ') : '없음 — 세 가지가 다 갖추어졌습니다'}</span></div>` +
             `<div class="data-row"><span class="data-name">지난 날수</span><span class="data-val">${germinates() ? `${days}일째 · ${stageName(progress)}` : '변화 없음'}</span></div>`;
@@ -248,7 +246,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const joined = joinAnd(missing);
             const last = missing[missing.length - 1];
             stageCaption.textContent = `${joined}${subjectParticle(last)} 없어서 씨가 싹트지 않았습니다.`;
-            explanation.textContent = `씨가 싹트려면 물, 알맞은 온도, 공기가 모두 있어야 합니다. 지금은 ${joined}${subjectParticle(last)} 없습니다.`;
+            explanation.textContent = `이 실험은 다른 조건을 같게 두고 물과 온도를 비교합니다. 지금은 ${joined}${subjectParticle(last)} 없습니다.`;
             updateLiveResult();
             render();
             return;
@@ -257,10 +255,10 @@ document.addEventListener('DOMContentLoaded', () => {
         growing = true;
         growButton.textContent = '자라는 중…';
         stageCaption.textContent = conditions.light
-            ? '물·온도·공기가 모두 갖추어져 씨가 싹트고 있습니다.'
+            ? '물과 알맞은 온도가 갖추어져 씨가 싹트고 있습니다.'
             : '빛이 없어도 씨는 싹틉니다. 다만 잎이 초록색이 되지 못합니다.';
         explanation.textContent = conditions.light
-            ? '물, 알맞은 온도, 공기가 모두 있어 씨가 싹텄습니다. 뿌리가 먼저 나와 물을 빨아들이고, 줄기가 자라 잎을 펼칩니다.'
+            ? '물과 알맞은 온도가 갖추어진 조건에서 씨가 싹텄습니다. 뿌리와 싹, 잎이 나타나는 모습을 순서대로 관찰합니다.'
             : '빛은 싹트는 데 필요한 조건이 아니므로 씨는 싹텄습니다. 다만 빛을 못 받아 잎이 노랗고 줄기만 가늘고 길게 자랍니다.';
         if (rafId === null) { lastT = null; rafId = requestAnimationFrame(frame); }
     }

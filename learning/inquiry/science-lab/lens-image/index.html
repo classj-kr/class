@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#f1f5f9">
     <title>과학 실험실</title>
-    <meta name="description" content="볼록 렌즈와 오목 렌즈에서 작도한 세 광선이 만나는 곳을 렌즈 공식으로 확인하고 실상과 허상을 구별하는 고등학교 과학 모의실험">
+    <meta name="description" content="볼록 렌즈와 오목 렌즈에서 작도한 세 광선이 만나는 곳을 광선의 경로로 관찰하고 실상과 허상을 구별하는 고등학교 과학 모의실험">
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
     <link rel="stylesheet" href="styles.css?v=6">
     <link rel="stylesheet" href="lens-visual.css?v=6">
     <link rel="stylesheet" href="quiz.css?v=4">
+    <link rel="stylesheet" href="../exam-scope.css?v=1">
 </head>
 <body>
     <main>
@@ -18,20 +19,20 @@
                 <a href="../">← 과학 실험실</a>
                 <h1>렌즈와 상</h1>
             </div>
-            <div class="grade-tags"><span>고등학교 2~3학년</span><span>물리</span></div>
+            <div class="grade-tags"><span>고등학교 2~3학년</span><span>물리학</span></div>
         </header>
 
         <ol class="method-steps" aria-label="실험 방법">
             <li>렌즈의 종류와 초점 거리를 고릅니다.</li>
             <li>물체를 렌즈에서 얼마나 떨어뜨릴지 정합니다.</li>
             <li>세 광선을 작도해 만나는 곳을 찾습니다.</li>
-            <li>렌즈 공식으로 계산한 값과 견줍니다.</li>
+            <li>빛이 실제로 모이는지, 상이 바로 서는지 비교합니다.</li>
         </ol>
 
         <div class="experiment-layout">
             <section class="panel control-panel" aria-labelledby="control-title">
                 <h2 id="control-title">실험 조건</h2>
-                <p class="water-standard">1/a + 1/b = 1/f · 배율 m = b/a</p>
+                <p class="water-standard">광선을 따라 상의 위치·방향·크기를 관찰합니다</p>
 
                 <fieldset class="pick-field">
                     <legend>렌즈의 종류</legend>
@@ -74,8 +75,8 @@
                     <p id="resultEmpty">렌즈와 거리를 정하고 작도해 보세요.</p>
                     <div id="resultContent" hidden>
                         <div class="result-numbers">
-                            <article><span>상까지의 거리 b</span><strong id="valueA">-</strong></article>
-                            <article><span>배율</span><strong id="valueB">-</strong></article>
+                            <article><span>상의 성질</span><strong id="valueA">-</strong></article>
+                            <article><span>크기 비교</span><strong id="valueB">-</strong></article>
                         </div>
                         <p class="prediction-result" id="predictionResult"></p>
                         <p class="explanation" id="elementaryExplanation"></p>
@@ -96,7 +97,7 @@
                     </svg>
                 </div>
 
-                <p class="stage-caption" id="stageCaption">세 광선은 렌즈 공식이 맞을 때만 한 점에서 만납니다.</p>
+                <p class="stage-caption" id="stageCaption">렌즈를 지난 광선과 그 연장선이 만나는 곳을 관찰합니다.</p>
                 <div class="data-note" id="dataNote"></div>
             </section>
         </div>
@@ -104,69 +105,71 @@
         <section class="panel meaning-panel">
             <h2>실험 결과의 의미</h2>
             <div class="meaning-body">
-                <p><strong>렌즈 공식</strong> 1/a + 1/b = 1/f 입니다. 작도한 세 광선이 만나는 곳이 바로 이 식이 주는 자리입니다.</p>
-                <p><strong>실상과 허상</strong> b가 양수면 빛이 실제로 모인 실상이라 스크린에 비칩니다. b가 음수면 빛이 모인 것처럼 보일 뿐인 허상이라 스크린에 비치지 않습니다.</p>
-                <p><strong>오목 렌즈</strong> 초점 거리가 음수여서 어떤 위치에 두어도 항상 작고 바로 선 허상만 생깁니다.</p>
+                <p><strong>광선 작도</strong> 렌즈를 지난 빛이 모이는 곳을 찾습니다. 상의 위치·방향·크기는 광선 경로를 비교하여 판단합니다.</p>
+                <p><strong>실상과 허상</strong> 실제 빛이 모이면 실상으로 스크린에 맺힙니다. 퍼지는 광선의 연장선이 만나는 것처럼 보이면 허상이며 스크린에 맺히지 않습니다.</p>
+                <p><strong>오목 렌즈</strong> 실제 물체를 보면 빛을 퍼뜨려 물체보다 작고 바로 선 허상이 보입니다.</p>
             </div>
         </section>
 
         <details class="quiz-section" aria-labelledby="quiz-title">
             <summary class="quiz-heading"><h2 id="quiz-title">확인 문제</h2><span>4문제</span></summary>
             <div class="quiz-grid">
-                <article class="quiz-card" data-answer="b">
-                    <h3>초점 거리 10 cm인 볼록 렌즈에서 물체가 30 cm 떨어져 있으면 b는?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q1" value="a"> 10 cm</label>
-                        <label><input type="radio" name="q1" value="b"> 15 cm</label>
-                        <label><input type="radio" name="q1" value="c"> 30 cm</label>
-                        <label><input type="radio" name="q1" value="d"> 40 cm</label>
-                    </div>
-                    <button class="answer-button" type="button">정답 확인</button>
-                    <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>1/30 + 1/b = 1/10 이므로 1/b = 1/10 − 1/30 = 2/30 이고 b = 15 cm 입니다.</p>
-                </article>
-
                 <article class="quiz-card" data-answer="c">
-                    <h3>볼록 렌즈에서 물체를 초점 안쪽에 두면?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q2" value="a"> 작은 실상이 생긴다</label>
-                        <label><input type="radio" name="q2" value="b"> 거꾸로 선 실상이 생긴다</label>
-                        <label><input type="radio" name="q2" value="c"> 크고 바로 선 허상이 생긴다</label>
-                        <label><input type="radio" name="q2" value="d"> 아무 상도 생기지 않는다</label>
-                    </div>
-                    <button class="answer-button" type="button">정답 확인</button>
-                    <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>a가 f보다 작으면 b가 음수가 됩니다. 빛이 실제로 모이지 않고 퍼져 나가므로, 물체 쪽에 크고 바로 선 허상이 보입니다. 돋보기가 이 원리입니다.</p>
-                </article>
+<h3>볼록 렌즈가 만든 실상을 확인하는 방법은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q1" value="a"> 렌즈를 없앤다.</label>
+<label><input type="radio" name="q1" value="b"> 물체만 본다.</label>
+<label><input type="radio" name="q1" value="c"> 빛이 모이는 곳에 스크린을 놓는다.</label>
+<label><input type="radio" name="q1" value="d"> 빛을 모두 가린다.</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>실상은 빛이 실제로 모여 맺히므로 스크린으로 확인할 수 있습니다.</p>
+</article>
 
                 <article class="quiz-card" data-answer="a">
-                    <h3>오목 렌즈로 만든 상의 특징은?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q3" value="a"> 언제나 작고 바로 선 허상</label>
-                        <label><input type="radio" name="q3" value="b"> 언제나 크고 거꾸로 선 실상</label>
-                        <label><input type="radio" name="q3" value="c"> 거리에 따라 실상도 허상도 된다</label>
-                        <label><input type="radio" name="q3" value="d"> 상이 생기지 않는다</label>
-                    </div>
-                    <button class="answer-button" type="button">정답 확인</button>
-                    <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>오목 렌즈는 초점 거리가 음수입니다. 그래서 b는 어떤 a에서도 음수가 되고, 배율도 항상 1보다 작습니다.</p>
-                </article>
+<h3>볼록 렌즈의 초점 안쪽에 물체를 놓고 들여다보면?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q2" value="a"> 크고 바로 선 허상이 보인다.</label>
+<label><input type="radio" name="q2" value="b"> 작고 거꾸로 선 실상만 생긴다.</label>
+<label><input type="radio" name="q2" value="c"> 빛이 없어져 보이지 않는다.</label>
+<label><input type="radio" name="q2" value="d"> 항상 같은 크기로 보인다.</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>굴절한 빛이 퍼져 나가며, 그 연장선이 만나는 곳에 크고 바로 선 허상이 보입니다. 돋보기에 이용합니다.</p>
+</article>
+
+                <article class="quiz-card" data-answer="b">
+<h3>오목 렌즈로 가까운 실제 물체를 보았을 때 상의 특징은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q3" value="a"> 항상 거꾸로 보인다.</label>
+<label><input type="radio" name="q3" value="b"> 작고 바로 선 허상이다.</label>
+<label><input type="radio" name="q3" value="c"> 스크린에 맺히는 큰 실상이다.</label>
+<label><input type="radio" name="q3" value="d"> 빛이 한 점에 실제로 모인다.</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>오목 렌즈는 빛을 퍼뜨립니다. 광선의 연장선을 따라가면 작고 바로 선 허상이 생깁니다.</p>
+</article>
 
                 <article class="quiz-card" data-answer="d">
-                    <h3>물체를 볼록 렌즈의 초점에 정확히 놓으면?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q4" value="a"> 렌즈에 상이 맺힌다</label>
-                        <label><input type="radio" name="q4" value="b"> 물체와 같은 크기의 상이 생긴다</label>
-                        <label><input type="radio" name="q4" value="c"> 아주 작은 상이 생긴다</label>
-                        <label><input type="radio" name="q4" value="d"> 굴절한 빛이 나란해져 상이 생기지 않는다</label>
-                    </div>
-                    <button class="answer-button" type="button">정답 확인</button>
-                    <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>a = f 이면 1/b = 1/f − 1/a = 0 이 되어 b가 무한대입니다. 굴절한 광선들이 서로 나란해져 어디에서도 만나지 않습니다.</p>
-                </article>
+<h3>물체를 볼록 렌즈의 초점에 놓으면 렌즈를 지난 빛은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q4" value="a"> 가까운 한 점으로 모인다.</label>
+<label><input type="radio" name="q4" value="b"> 사라진다.</label>
+<label><input type="radio" name="q4" value="c"> 렌즈 안에서 멈춘다.</label>
+<label><input type="radio" name="q4" value="d"> 서로 나란히 나아간다.</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>초점에서 나온 빛은 렌즈를 지난 뒤 서로 나란히 나아가므로 가까운 스크린에 뚜렷한 상이 맺히지 않습니다.</p>
+</article>
             </div>
         </details>
     </main>
-    <script src="app.js?v=5"></script>
+    <script src="app.js?v=a03460e52ea6"></script>
+    <script src="../curriculum-map.js?v=2ffe762f2206"></script>
+    <script src="../exam-scope.js?v=849f3853d47f"></script>
 </body>
 </html>

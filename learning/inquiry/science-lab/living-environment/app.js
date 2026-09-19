@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /* ------------------------------------------------------------ models */
     function analyseBean(s = state) {
-        const cond = { light: s.light, water: s.water, warm: s.warm };
+        const cond = { light: s.light, water: s.water, warm: true };
         const mine = beanProfile(cond), base = beanProfile(STANDARD);
         const same = cond.light && cond.water && cond.warm;
         const finalCm = heightAt(BEAN_DAYS, mine.maxCm);
@@ -134,8 +134,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (state.mode === 'bean') {
             controlArea.innerHTML =
                 pickRow('햇빛', 'light', [{ value: 'true', label: '햇빛이 드는 곳' }, { value: 'false', label: '어두운 상자 속' }], state.light, 2) +
-                pickRow('물', 'water', [{ value: 'true', label: '날마다 물을 줌' }, { value: 'false', label: '물을 주지 않음' }], state.water, 2) +
-                pickRow('온도', 'warm', [{ value: 'true', label: '따뜻한 곳 25 ℃' }, { value: 'false', label: '차가운 곳 5 ℃' }], state.warm, 2);
+                pickRow('물', 'water', [{ value: 'true', label: '날마다 물을 줌' }, { value: 'false', label: '물을 주지 않음' }], state.water, 2);
         } else {
             controlArea.innerHTML =
                 pickRow(`${EVENT_MONTH}달째에 일어나는 일`, 'event', Object.entries(EVENTS).map(([k, v]) => ({ value: k, label: v.label, hint: v.hint })), state.event, 2);

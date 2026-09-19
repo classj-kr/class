@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="styles.css?v=7">
     <link rel="stylesheet" href="galaxy-visual.css?v=8">
     <link rel="stylesheet" href="quiz.css?v=5">
+    <link rel="stylesheet" href="../exam-scope.css?v=1">
 </head>
 <body>
     <main>
@@ -18,7 +19,7 @@
                 <a href="../">← 과학 실험실</a>
                 <h1>은하의 분류와 허블 법칙</h1>
             </div>
-            <div class="grade-tags"><span>고등학교 2~3학년</span><span>지구과학</span></div>
+            <div class="grade-tags"><span>고등학교 2~3학년</span><span>지구과학</span><span>행성우주과학</span></div>
         </header>
 
         <ol class="method-steps" aria-label="실험 방법">
@@ -87,8 +88,8 @@
             <h2>실험 결과의 의미</h2>
             <div class="meaning-body">
                 <p><strong>허블의 은하 분류</strong> 허블은 은하를 생김새로 나누었습니다. 타원 은하(E0~E7)는 나선팔 없이 매끈하고 납작한 정도로 번호를 붙이며, 붉고 늙은 별이 많고 가스가 적습니다. 나선 은하는 팽대부가 크고 팔이 촘촘히 감긴 Sa부터 팽대부가 작고 팔이 느슨한 Sc까지 나뉘고, 가운데 막대가 있으면 막대 나선 은하(SBa~SBc)입니다. 나선팔에는 가스가 많아 푸른 젊은 별이 태어납니다. 어느 쪽에도 안 드는 것이 불규칙 은하입니다. 이 표는 진화 순서가 아니라 생김새의 정리입니다.</p>
-                <p><strong>적색 이동과 후퇴 속도</strong> 멀어지는 천체의 빛은 파장이 늘어나 스펙트럼 선이 붉은 쪽으로 밀립니다. 밀린 비율 z = Δλ ÷ λ₀가 적색 이동이고, 느릴 때는 후퇴 속도 v ≈ cz입니다. z가 커지면 상대성 이론의 식 v/c = [(1+z)² − 1] ÷ [(1+z)² + 1]을 써야 하며, 퀘이사는 z가 1을 넘어 광속의 절반 넘는 속도로 멀어집니다. 사실 이 속도는 천체가 공간을 달리는 것이 아니라 공간 자체가 늘어난 결과입니다.</p>
-                <p><strong>허블 법칙과 우주의 나이</strong> 은하까지 거리 d와 후퇴 속도 v는 v = H₀d로 비례합니다. 기울기 H₀는 오늘날 약 70 km/s/Mpc이고, 그 역수 1/H₀ ≈ 140억 년이 팽창이 시작된 뒤 흐른 시간의 어림값입니다. 가까운 은하들은 서로 끌어당기는 고유 운동이 팽창 속도만큼 커서 기울기를 믿을 수 없고, 먼 은하단까지 써야 법칙이 드러납니다.</p>
+                <p><strong>적색 이동과 후퇴 속도</strong> 스펙트럼 선의 상대적인 파장 변화 z = Δλ/λ₀를 비교합니다. 우주의 팽창에 의해 빛의 파장이 길어지는 우주론적 적색편이가 나타납니다. 작은 적색편이에서는 v ≈ cz를 사용할 수 있지만, 큰 우주론적 적색편이를 특수상대론의 도플러 식으로 바꾸어 실제 후퇴 속도라고 해석하지 않습니다. 먼 천체의 거리와 후퇴 속도에는 우주론 모형이 필요합니다.</p>
+                <p><strong>허블 법칙과 우주의 나이</strong> 은하까지 거리 d와 후퇴 속도 v는 v = H₀d로 비례합니다. 이 모형의 비교 기준 H₀는 70 km/s/Mpc이고, 그 역수 1/H₀ ≈ 140억 년이 팽창이 시작된 뒤 흐른 시간의 어림값입니다. 가까운 은하들은 서로 끌어당기는 고유 운동이 팽창 속도만큼 커서 기울기를 믿을 수 없고, 먼 은하단까지 써야 법칙이 드러납니다.</p>
                 <p><strong>허블의 1929년 값</strong> 허블은 세페이드 변광성의 밝기 눈금이 틀려 거리를 실제의 7분의 1로 잰 탓에 H₀ ≈ 500 km/s/Mpc을 얻었습니다. 그러면 우주 나이가 20억 년으로 지구(46억 년)보다 젊다는 모순이 생겼고, 이 문제는 눈금을 바로잡으며 풀렸습니다. 값이 틀려도 "멀수록 빨리 멀어진다"는 법칙 자체는 옳았습니다.</p>
             </div>
         </section>
@@ -132,7 +133,7 @@
                     </div>
                     <button class="answer-button" type="button">정답 확인</button>
                     <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>거리 d를 속도 v로 나눈 시간 d/v = 1/H₀가 은하들이 한 점에서 출발해 지금 자리까지 오는 데 걸린 시간입니다. H₀가 클수록 빨리 멀어진 것이니 걸린 시간, 곧 우주 나이는 짧아집니다. 70 km/s/Mpc이면 약 140억 년입니다.</p>
+                    <p class="answer-explanation" hidden>거리 d를 속도 v로 나눈 시간 d/v = 1/H₀는 현재의 팽창률로 만든 시간 척도입니다. 은하들이 공간 속의 한 점에서 폭발해 퍼졌다는 뜻은 아니며 정확한 우주 나이는 팽창 역사를 고려해야 합니다. H₀가 클수록 빨리 멀어진 것이니 걸린 시간, 곧 우주 나이는 짧아집니다. 70 km/s/Mpc이면 약 140억 년입니다.</p>
                 </article>
 
                 <article class="quiz-card" data-answer="d">
@@ -150,6 +151,8 @@
             </div>
         </details>
     </main>
-    <script src="app.js?v=11"></script>
+    <script src="app.js?v=c5460cb1fbe2"></script>
+    <script src="../curriculum-map.js?v=2ffe762f2206"></script>
+    <script src="../exam-scope.js?v=849f3853d47f"></script>
 </body>
 </html>

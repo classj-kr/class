@@ -5,27 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#f1f5f9">
     <title>과학 실험실</title>
-    <meta name="description" content="같은 높이에서 놓은 공과 던진 공이 언제 땅에 닿는지 견주고, 아주 높은 산에서 점점 빠르게 던진 대포알이 어디까지 가는지 실제 중력으로 계산해 궤도가 되는 속력을 찾고, 달걀을 여러 바닥에 떨어뜨려 멈추는 시간에 따라 힘이 얼마나 달라지는지 확인하는 고등학교 통합과학 모의실험">
+    <meta name="description" content="자유 낙하와 수평으로 던진 물체의 운동을 비교하고 충격 시간과 평균 힘의 관계를 확인하는 통합과학 모형">
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
     <link rel="stylesheet" href="styles.css?v=7">
     <link rel="stylesheet" href="gravity-visual.css?v=7">
     <link rel="stylesheet" href="quiz.css?v=5">
+    <link rel="stylesheet" href="../exam-scope.css?v=1">
 </head>
 <body>
     <main>
         <header class="page-header">
             <div class="title-row">
                 <a href="../">← 과학 실험실</a>
-                <h1>중력과 운동 — 떨어지는 공, 던진 공, 안전</h1>
+                <h1>중력과 운동 — 낙하·충격</h1>
             </div>
-            <div class="grade-tags"><span>고등학교 1학년</span><span>물리</span></div>
+            <div class="grade-tags"><span>고등학교 1학년</span><span>통합과학1</span></div>
         </header>
 
         <ol class="method-steps" aria-label="실험 방법">
-            <li>두 공 떨어뜨리기, 뉴턴의 대포알, 달걀 떨어뜨리기 가운데 하나를 고릅니다.</li>
-            <li>높이·속력·방향, 던지는 속력, 바닥의 종류를 정합니다.</li>
-            <li>어느 공이 먼저 닿을지, 대포알이 어디까지 갈지, 달걀이 받는 힘이 무게의 몇 배일지 예상합니다.</li>
-            <li>시작해서 공과 대포알의 길, 달걀이 받는 힘을 확인합니다. 공기 저항은 없다고 봅니다.</li>
+            <li>두 공 떨어뜨리기와 달걀 떨어뜨리기 가운데 하나를 고릅니다.</li>
+            <li>높이·속력·방향과 바닥의 종류를 정합니다.</li>
+            <li>어느 공이 먼저 닿을지, 어느 바닥에서 평균 충격력이 작은지 예상합니다.</li>
+            <li>시작해서 공의 길과 달걀이 받는 힘을 확인합니다. 공기 저항은 없다고 봅니다.</li>
         </ol>
 
         <div class="experiment-layout">
@@ -36,7 +37,7 @@
                     <legend>실험 종류</legend>
                     <div class="mode-buttons three">
                         <button type="button" data-mode="drop">두 공 떨어뜨리기<small>놓은 공과 던진 공</small></button>
-                        <button type="button" data-mode="orbit">뉴턴의 대포알<small>얼마나 빨라야 돌까</small></button>
+
                         <button type="button" data-mode="impact">달걀 떨어뜨리기<small>어느 바닥이 안전할까</small></button>
                     </div>
                 </fieldset>
@@ -88,8 +89,8 @@
             <div class="meaning-body">
                 <p><strong>중력과 낙하</strong> 지구 근처의 물체는 무게와 상관없이 1초마다 속력이 9.8 m/s씩 빨라지며 떨어집니다(공기 저항이 없을 때). 놓은 공과 옆으로 던진 공의 세로 운동은 완전히 같아서 같은 높이에서 출발하면 동시에 땅에 닿습니다. 던진 공은 그 시간 동안 옆으로도 일정한 속력으로 나아갈 뿐입니다. 위로 던지면 올라가는 시간이 더해져 늦게, 아래로 던지면 처음부터 내려가는 속력이 있어 일찍 닿습니다.</p>
                 <p><strong>가로와 세로는 따로 본다</strong> 중력은 아래로만 당기므로 옆 방향 속력은 바뀌지 않습니다. 던진 물체의 운동은 "옆으로 일정하게 + 아래로 점점 빠르게"를 합친 것이고, 그래서 길이 포물선이 됩니다. 옆으로 간 거리는 옆 방향 속력에 떨어지는 시간을 곱한 값입니다.</p>
-                <p><strong>뉴턴의 대포알과 인공위성</strong> 아주 높은 산에서 점점 빠르게 던지면 더 멀리 가서 떨어지고, 어느 속력이 되면 떨어지는 만큼 지면이 둥글게 멀어져 영원히 땅에 닿지 않습니다. 이것이 궤도입니다. 400 km 높이에서는 약 7.7 km/s로, 국제 우주 정거장이 그 높이에서 92분마다 지구를 한 바퀴 돕니다. 달도 지구를 향해 계속 떨어지고 있지만 옆으로 빠르게 움직여 한 달에 한 번 돕니다. 더 빠르면 길쭉한 타원이 되고, 약 11 km/s를 넘으면 지구를 떠납니다.</p>
-                <p><strong>충격량과 안전</strong> 움직이던 물체가 멈출 때 받는 힘과 시간을 곱한 값(충격량)은 운동량의 변화와 같아서 어떤 바닥에 떨어져도 같습니다. 그러니 멈추는 시간이 길어질수록 받는 힘은 작아집니다. 에어백, 안전띠, 매트, 헬멧의 푹신한 속, 무릎을 굽히며 착지하는 것은 모두 멈추는 시간을 늘려 힘을 줄이는 방법입니다.</p>
+                <p><strong>달의 운동</strong> 달은 지구의 중력을 받아 운동 방향이 계속 바뀌면서 지구 주위를 공전합니다.</p>
+                <p><strong>충격량과 안전</strong> 움직이던 물체가 멈출 때 받는 힘과 시간을 곱한 값(충격량)은 운동량의 변화와 같아서 같은 조건에서 튀어 오르지 않고 정지하면 같습니다. 그러니 멈추는 시간이 길어질수록 받는 평균 힘은 작아집니다. 에어백, 안전띠, 매트, 헬멧의 푹신한 속, 무릎을 굽히며 착지하는 것은 모두 멈추는 시간을 늘려 힘을 줄이는 방법입니다.</p>
             </div>
         </section>
 
@@ -109,18 +110,18 @@
                     <p class="answer-explanation" hidden>옆으로 던진 속력은 세로 운동에 아무 영향을 주지 않습니다. 두 공의 세로 운동은 똑같이 정지에서 시작해 9.8 m/s²로 빨라지므로 같은 높이에서 출발하면 동시에 닿습니다.</p>
                 </article>
 
-                <article class="quiz-card" data-answer="c">
-                    <h3>달은 지구의 중력을 받는데 왜 지구로 떨어지지 않을까요?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q2" value="a"> 달은 너무 멀어 중력을 받지 않기 때문에</label>
-                        <label><input type="radio" name="q2" value="b"> 달이 지구를 밀어내기 때문에</label>
-                        <label><input type="radio" name="q2" value="c"> 계속 떨어지고 있지만 옆으로 빠르게 움직여 떨어지는 만큼 지면이 둥글게 멀어지기 때문에</label>
-                        <label><input type="radio" name="q2" value="d"> 달에는 무게가 없기 때문에</label>
-                    </div>
-                    <button class="answer-button" type="button">정답 확인</button>
-                    <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>달도 뉴턴의 대포알처럼 지구를 향해 계속 떨어지고 있습니다. 다만 옆으로 충분히 빨라서 떨어진 만큼 지구 표면이 둥글게 멀어져 영원히 땅에 닿지 않고 돕니다.</p>
-                </article>
+                <article class="quiz-card" data-answer="b">
+<h3>지구 주위를 공전하는 달에 대한 설명으로 옳은 것은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q2" value="a"> 중력을 전혀 받지 않는다.</label>
+<label><input type="radio" name="q2" value="b"> 지구의 중력을 받아 운동 방향이 계속 바뀐다.</label>
+<label><input type="radio" name="q2" value="c"> 중력은 달을 멈춰 세우기만 한다.</label>
+<label><input type="radio" name="q2" value="d"> 달은 스스로 빛을 내서 돈다.</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>달은 지구의 중력을 받으며 운동 방향이 계속 바뀌어 공전합니다.</p>
+</article>
 
                 <article class="quiz-card" data-answer="a">
                     <h3>자동차 에어백이 다치는 것을 줄여 주는 까닭은?</h3>
@@ -150,6 +151,8 @@
             </div>
         </details>
     </main>
-    <script src="app.js?v=11"></script>
+    <script src="app.js?v=89077b5288a9"></script>
+    <script src="../curriculum-map.js?v=2ffe762f2206"></script>
+    <script src="../exam-scope.js?v=849f3853d47f"></script>
 </body>
 </html>

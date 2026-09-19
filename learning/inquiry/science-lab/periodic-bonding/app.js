@@ -139,7 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const PRED_ELEMENTS = [
         { value: 'cation', label: '전자를 잃어 양이온(+)이 된다' },
         { value: 'anion', label: '전자를 얻어 음이온(−)이 된다' },
-        { value: 'none', label: '이온이 되지 않는다 (그대로 있거나 전자를 함께 씀)' },
+        { value: 'none', label: '이 모형에서는 이온으로 나타내지 않음' },
     ];
     const PRED_RATIO = [{ value: '1:1', label: '1 : 1' }, { value: '1:2', label: '1 : 2' }, { value: '2:1', label: '2 : 1' }];
     const PRED_PAIRS = [{ value: 'p1', label: '1쌍' }, { value: 'p2', label: '2쌍' }, { value: 'p3', label: '3쌍' }];
@@ -233,7 +233,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 out += `<text class="big-text" fill="#d97706" x="${IONX}" y="166" text-anchor="middle">${el.sym}</text>`;
                 out += `<text class="small-label" x="${IONX}" y="182" text-anchor="middle">${el.why === 'noble' ? '그대로 안정' : '공유 결합으로 감'}</text>`;
             }
-            out += `<text class="verdict-text" fill="#d97706" x="20" y="16">${el.name} → ${el.ion ? `${el.ion.sym} (전자 ${Math.abs(a.change)}개 ${lost ? '잃음' : '얻음'})` : el.why === 'noble' ? '이온이 되지 않음 (이미 가득 참)' : '이온이 되지 않음 (전자를 함께 씀)'}</text>`;
+            out += `<text class="verdict-text" fill="#d97706" x="20" y="16">${el.name} → ${el.ion ? `${el.ion.sym} (전자 ${Math.abs(a.change)}개 ${lost ? '잃음' : '얻음'})` : el.why === 'noble' ? '이 모형에서 안정한 원자 상태' : '이 모형에서 공유 결합으로 다룸'}</text>`;
         } else {
             out += `<text class="verdict-text" fill="#d97706" x="20" y="16">${el.name} (${el.sym}) · 원자 번호 ${el.z} · ${el.period}주기 ${el.group}족</text>`;
         }
@@ -500,10 +500,10 @@ document.addEventListener('DOMContentLoaded', () => {
             if (a.verdict === 'cation') {
                 s += `바깥 전자 ${v}개를 잃으면 남는 배치가 비활성 기체 ${el.ion.noble}과 같아지므로 ${el.ion.sym}이 됩니다. `;
                 s += sameIon ? `같은 세로줄(${el.group}족)의 ${sameIon}도 바깥 전자가 ${v}개여서 모두 +${v} 이온이 됩니다. `
-                    : `같은 세로줄(${el.group}족)의 ${sib}도 바깥 전자가 ${v}개이지만, 원자가 작아 전자를 놓기 어려워 이온이 되지 않고 전자를 함께 씁니다. `;
+                    : `같은 세로줄(${el.group}족)의 ${sib}도 바깥 전자가 ${v}개이지만, 원자가 작아 전자를 놓기 어려워 이 모형에서는 단원자 이온으로 나타내지 않고 전자를 함께 씁니다. `;
                 if (el.kind === '알칼리 금속') s += `알칼리 금속은 물과 만나 수소 기체를 내며 반응하는데, 아래로 갈수록(Li < Na < K) 바깥 전자가 핵에서 멀어 더 쉽게 잃으므로 반응이 더 셉니다. `;
                 else if (el.kind === '알칼리 토금속') s += `2족은 전자 두 개를 잃어야 하므로 1족보다는 반응이 덜 격렬하지만, 마찬가지로 아래로 갈수록 반응이 세집니다. `;
-                else s += `알루미늄은 전자 세 개까지 잃는 금속입니다. 4개를 잃는 것은 너무 힘들어 그 옆의 규소부터는 이온이 되지 않습니다. `;
+                else s += `알루미늄은 전자 세 개까지 잃는 금속입니다. 규소는 이 모형에서 단원자 이온 대신 공유 결합의 예로 다룹니다. `;
             } else if (a.verdict === 'anion') {
                 s += `바깥 전자가 ${v}개라 ${8 - v}개만 더 있으면 비활성 기체 ${el.ion.noble}과 같은 배치가 되므로, 전자를 얻어 ${el.ion.sym}이 됩니다. 같은 세로줄(${el.group}족)의 ${sameIon}도 바깥 전자가 ${v}개여서 같은 이온이 됩니다. `;
                 if (el.kind === '할로젠') s += `할로젠은 전자 하나만 얻으면 되어 금속과 잘 반응해 소금 같은 물질을 만들고, 위로 갈수록(F > Cl) 반응이 더 셉니다. `;
@@ -513,7 +513,7 @@ document.addEventListener('DOMContentLoaded', () => {
             } else if (el.why === 'h') {
                 s += `수소는 전자가 하나뿐이어서 1족에 있지만 금속이 아닙니다. 하나를 잃기도, 하나를 얻어 헬륨 배치를 만들기도 하지만, 보통은 다른 원자와 전자를 함께 쓰는 공유 결합을 합니다(H₂, H₂O). 산에서는 전자를 잃은 H⁺로 있습니다. `;
             } else {
-                s += `바깥 전자가 ${v}개라 ${8 - v}개를 얻기도 ${v}개를 잃기도 힘듭니다. 그래서 이온이 되지 않고 다른 원자와 전자를 함께 쓰는 공유 결합을 합니다${el.sym === 'C' ? '(다이아몬드, 이산화 탄소, 생명체의 몸)' : el.sym === 'Si' ? '(모래·유리·반도체)' : ''}. `;
+                s += `바깥 전자가 ${v}개라 ${8 - v}개를 얻기도 ${v}개를 잃기도 힘듭니다. 그래서 이 모형에서는 단원자 이온으로 나타내지 않고 다른 원자와 전자를 함께 쓰는 공유 결합을 합니다${el.sym === 'C' ? '(다이아몬드, 이산화 탄소, 생명체의 몸)' : el.sym === 'Si' ? '(모래·유리·반도체)' : ''}. `;
             }
             s += `주기율표에서 세로줄이 같으면 바깥 전자 수가 같고, 그래서 성질이 닮습니다.`;
         } else {

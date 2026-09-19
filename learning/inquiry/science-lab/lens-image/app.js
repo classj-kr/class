@@ -127,51 +127,17 @@ document.addEventListener('DOMContentLoaded', () => {
         if (a.parallel) {
             out += `<text class="warn-text" x="20" y="208">물체가 초점에 있어 굴절한 빛이 나란해집니다 — 상이 생기지 않습니다</text>`;
         } else if (!onScreen) {
-            out += `<text class="warn-text" x="20" y="208">상이 화면 밖에 생깁니다 — b = ${a.b.toFixed(1)} cm, 배율 ${Math.abs(a.m).toFixed(1)}배</text>`;
+            out += `<text class="warn-text" x="20" y="208">상이 화면 밖에 생깁니다 — 물체의 위치를 바꾸어 보세요</text>`;
         } else {
-            out += `<text class="read-text" x="20" y="208">b = ${a.b.toFixed(1)} cm · 배율 ${Math.abs(a.m).toFixed(2)}배 · ${a.kind === 'real' ? '거꾸로 선 실상' : '바로 선 허상'}</text>`;
+            out += `<text class="read-text" x="20" y="208">${a.kind === 'real' ? '거꾸로 선 실상' : '바로 선 허상'}</text>`;
         }
         mainGroup.innerHTML = out;
     }
 
     function renderGraph(a) {
-        const gx = v => GRAPH.x0 + (v / GRAPH.aMax) * (GRAPH.x1 - GRAPH.x0);
-        const gy = v => (GRAPH.y0 + GRAPH.y1) / 2 - (v / GRAPH.bMax) * ((GRAPH.y0 - GRAPH.y1) / 2);
-        let out = '';
-        [-60, -30, 0, 30, 60].forEach(v => {
-            out += `<line class="grid-line" x1="${GRAPH.x0}" y1="${gy(v).toFixed(1)}" x2="${GRAPH.x1}" y2="${gy(v).toFixed(1)}"/>`;
-            out += `<text class="axis-text" x="${GRAPH.x0 - 6}" y="${(gy(v) + 3).toFixed(1)}" text-anchor="end">${v}</text>`;
-        });
-        [0, 15, 30, 45, 60].forEach(v => {
-            out += `<text class="axis-text" x="${gx(v).toFixed(1)}" y="${GRAPH.y0 + 14}" text-anchor="middle">${v}</text>`;
-        });
-        out += `<line class="axis" x1="${GRAPH.x0}" y1="${GRAPH.y0}" x2="${GRAPH.x1}" y2="${GRAPH.y0}"/>`;
-        out += `<line class="axis" x1="${GRAPH.x0}" y1="${GRAPH.y0}" x2="${GRAPH.x0}" y2="${GRAPH.y1}"/>`;
-        out += `<line class="zero-line" x1="${GRAPH.x0}" y1="${gy(0).toFixed(1)}" x2="${GRAPH.x1}" y2="${gy(0).toFixed(1)}"/>`;
-        out += `<text class="axis-title" x="${((GRAPH.x0 + GRAPH.x1) / 2).toFixed(1)}" y="${GRAPH.y0 + 32}" text-anchor="middle">물체 거리 a (cm)</text>`;
-        out += `<text class="axis-title" x="22" y="18">상 거리 b (cm)</text>`;
-
-        if (a.f > 0) {
-            out += `<line class="asym-line" x1="${gx(a.f).toFixed(1)}" y1="${GRAPH.y1}" x2="${gx(a.f).toFixed(1)}" y2="${GRAPH.y0}"/>`;
-            out += `<text class="asym-text" x="${(gx(a.f) + 5).toFixed(1)}" y="${GRAPH.y1 + 10}">a = f ${a.f} cm</text>`;
-        }
-        // the curve, split at the asymptote so the two branches are not joined
-        const branch = (from, to) => {
-            const pts = [];
-            for (let v = from; v <= to + 1e-9; v += 0.25) {
-                const b = analyse(a.f, v).b;
-                if (!isFinite(b) || Math.abs(b) > GRAPH.bMax) continue;
-                pts.push(`${gx(v).toFixed(1)},${gy(b).toFixed(1)}`);
-            }
-            return pts.length > 1 ? `<path class="trace" d="M${pts.join('L')}"/>` : '';
-        };
-        if (a.f > 0) { out += branch(0.25, a.f - 0.25); out += branch(a.f + 0.25, GRAPH.aMax); }
-        else out += branch(0.25, GRAPH.aMax);
-        if (isFinite(a.b) && Math.abs(a.b) <= GRAPH.bMax) {
-            out += `<circle class="trace-dot" cx="${gx(a.a).toFixed(1)}" cy="${gy(a.b).toFixed(1)}" r="5" fill="#d97706"/>`;
-        }
-        out += `<text class="axis-text" x="${GRAPH.x1 - 4}" y="${(gy(0) - 6).toFixed(1)}" text-anchor="end">b &gt; 0 실상 · b &lt; 0 허상</text>`;
-        graphGroup.innerHTML = out;
+        graphGroup.innerHTML = '<text x="20" y="40" fill="#0f172a" font-size="16">광선이 실제로 만나면 실상</text>' +
+            '<text x="20" y="80" fill="#0f172a" font-size="16">광선의 연장선이 만나 보이면 허상</text>' +
+            '<text x="20" y="120" fill="#0f172a" font-size="16">물체의 위치를 바꾸며 상의 방향과 크기를 비교하세요.</text>';
     }
 
     function render() {
@@ -181,15 +147,8 @@ document.addEventListener('DOMContentLoaded', () => {
         focusOutput.textContent = `${Math.abs(a.f)} cm`;
         distOutput.textContent = `${a.a} cm`;
         stageBadge.textContent = a.parallel ? '상이 생기지 않음'
-            : `${a.kind === 'real' ? '실상' : '허상'} · ${Math.abs(a.m).toFixed(2)}배`;
-        dataNote.innerHTML = a.parallel
-            ? `<div class="data-row"><span class="data-name">렌즈 공식</span><span class="data-val">1/${a.a} + 1/b = 1/${sf(a.f)} → 1/b = 0</span></div>` +
-              `<div class="data-row match"><span class="data-name">결과</span><span class="data-val">b가 무한대라 상이 생기지 않습니다</span></div>`
-            : `<div class="data-row"><span class="data-name">렌즈 공식</span><span class="data-val">1/${a.a} + 1/b = 1/${sf(a.f)}</span></div>` +
-              `<div class="data-row"><span class="data-name">상 거리</span><span class="data-val">b = ${a.a}×${sf(a.f)} ÷ (${a.a}−${sf(a.f)}) = ${a.b.toFixed(2)} cm</span></div>` +
-              `<div class="data-row"><span class="data-name">배율</span><span class="data-val">m = b/a = ${a.b.toFixed(2)} ÷ ${a.a} = ${a.m.toFixed(3)}</span></div>` +
-              `<div class="data-row"><span class="data-name">상의 크기</span><span class="data-val">${OBJ_CM} cm × ${Math.abs(a.m).toFixed(2)} = ${(OBJ_CM * Math.abs(a.m)).toFixed(2)} cm</span></div>` +
-              `<div class="data-row match"><span class="data-name">상의 종류</span><span class="data-val">${a.kind === 'real' ? '실상 · 거꾸로 · 스크린에 비침' : '허상 · 바로 · 스크린에 비치지 않음'}</span></div>`;
+            : `${a.kind === 'real' ? '실상' : '허상'}`;
+        dataNote.innerHTML = '<p>' + (a.parallel ? '광선이 나란히 나아갑니다.' : a.kind === 'real' ? '거꾸로 선 실상 · 스크린에 맺힙니다.' : '바로 선 허상 · 스크린에 맺히지 않습니다.') + '</p>';
         return a;
     }
 
@@ -197,26 +156,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const a = render();
         resultEmpty.hidden = true;
         resultContent.hidden = false;
-        valueA.textContent = a.parallel ? '무한대' : `${a.b.toFixed(1)} cm`;
-        valueB.textContent = a.parallel ? '—' : `${Math.abs(a.m).toFixed(2)}배`;
+        valueA.textContent = a.parallel ? '광선 나란함' : a.kind === 'real' ? '실상' : '허상';
+        valueB.textContent = a.parallel ? '—' : Math.abs(Math.abs(a.m) - 1) < 1e-8 ? '같은 크기' : a.magnified ? '물체보다 큼' : '물체보다 작음';
         predictionResult.textContent = !prediction ? '다음에는 결과를 먼저 예상해 보세요.'
             : prediction === a.kind ? '예상이 맞았습니다.' : '예상과 다른 결과입니다.';
-        let s = `1/${a.a} + 1/b = 1/${sf(a.f)}을 풀면 b = ${a.a}×${sf(a.f)} ÷ (${a.a}−${sf(a.f)}) = ${a.b.toFixed(2)} cm 입니다. `;
-        if (a.parallel) {
-            s = `물체를 초점에 정확히 놓았습니다. 1/b = 1/${sf(a.f)} − 1/${a.a} = 0이 되어 b가 무한대입니다. ` +
-                `렌즈를 지난 세 광선이 서로 나란해져 어디에서도 만나지 않으므로 상이 생기지 않습니다. ` +
-                `물체를 조금만 더 멀리 옮기면 아주 먼 곳에 큰 실상이 생깁니다.`;
-        } else if (a.kind === 'real') {
-            s += `b가 양수이므로 빛이 렌즈 뒤 ${a.b.toFixed(1)} cm 에서 실제로 모입니다. 스크린을 대면 비치는 실상이고, 거꾸로 서 있습니다. `;
-            s += `배율은 ${a.b.toFixed(2)} ÷ ${a.a} = ${Math.abs(a.m).toFixed(2)}배라 ${a.magnified ? '물체보다 큽니다' : '물체보다 작습니다'}. `;
-            s += `작도한 세 광선이 정확히 그 점에서 만나는 것이 렌즈 공식이 맞다는 증거입니다.`;
-        } else {
-            s += `b가 음수이므로 빛이 실제로 모이지 않습니다. 굴절한 광선을 뒤로 이어야 만나므로 허상이고, 바로 서 있습니다. `;
-            s += `배율은 ${Math.abs(a.m).toFixed(2)}배로 ${a.magnified ? '물체보다 크게 보입니다. 돋보기가 이렇게 씁니다' : '물체보다 작게 보입니다'}. `;
-            s += a.f < 0
-                ? `오목 렌즈는 초점 거리가 음수라 물체를 어디에 두어도 늘 이런 상만 생깁니다.`
-                : `물체가 초점 ${a.f} cm 안쪽에 있기 때문입니다.`;
-        }
+        const s = a.parallel ? '렌즈를 지난 빛이 나란히 나아가므로 가까운 스크린에 상이 맺히지 않습니다.' : a.kind === 'real' ? '렌즈를 지난 빛이 실제로 모여 거꾸로 선 실상이 생깁니다. 스크린으로 확인할 수 있습니다.' : '렌즈를 지난 빛이 퍼져 나갑니다. 광선의 연장선이 만나는 것처럼 보이는 곳에 바로 선 허상이 보입니다.';
         explanation.textContent = s;
     }
 
@@ -233,7 +177,7 @@ document.addEventListener('DOMContentLoaded', () => {
         lens = button.dataset.lens;
         lensButtons.forEach(item => item.classList.toggle('selected', item === button));
         stageCaption.textContent = lens === 'convex'
-            ? '세 광선은 렌즈 공식이 맞을 때만 한 점에서 만납니다.'
+            ? '렌즈를 지난 광선과 그 연장선이 만나는 곳을 관찰합니다.'
             : '오목 렌즈에서는 광선이 퍼지므로 뒤로 이어야 만납니다.';
         changed();
     }));

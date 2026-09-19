@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function analyse(T = temp(), S = salt(), W = wind()) {
         const rho = RHO0 * (1 - ALPHA * (T - T0) + BETA * (S - S0));
         const mixed = 20 + 8 * W;                       // metres the wind can stir
-        const verdict = rho > MEAN_RHO + 0.3 ? 'heavier' : rho < MEAN_RHO - 0.3 ? 'lighter' : 'same';
+        const verdict = S > 35 ? 'heavier' : S < 35 ? 'lighter' : 'same';
         // A thermocline needs a warm surface over cold deep water. Where the
         // surface is already as cold, the column is even or slightly inverted.
         const thermo = T - DEEP_T > 2 ? 'normal' : DEEP_T - T > 2 ? 'inverse' : 'weak';
@@ -89,18 +89,6 @@ document.addEventListener('DOMContentLoaded', () => {
             body += `<path class="swirl" d="M${cx - r},${(SEA.top + r + 3).toFixed(1)} a${r},${r} 0 1 1 ${r * 0.7},${r * 0.5}">` +
                     `<animateTransform attributeName="transform" type="rotate" from="0 ${cx} ${(SEA.top + r + 3).toFixed(1)}" ` +
                     `to="360 ${cx} ${(SEA.top + r + 3).toFixed(1)}" dur="${(6 - a.W * 0.4).toFixed(1)}s" repeatCount="indefinite"/></path>`;
-        }
-        // heavy water sinking, light water staying up
-        const px = SEA.x1 - 34;
-        if (a.verdict === 'heavier') {
-            body += `<circle class="parcel" cx="${px}" cy="${SEA.top + 12}" r="7" fill="#5aa8d8">` +
-                    `<animate attributeName="cy" values="${SEA.top + 12};${SEA.bottom - 10}" dur="4s" repeatCount="indefinite"/>` +
-                    `<animate attributeName="opacity" values="1;1;0" dur="4s" repeatCount="indefinite"/></circle>`;
-        } else if (a.verdict === 'lighter') {
-            body += `<circle class="parcel" cx="${px}" cy="${SEA.top + 20}" r="7" fill="#ffd8a8">` +
-                    `<animate attributeName="cy" values="${SEA.top + 26};${SEA.top + 12};${SEA.top + 26}" dur="3s" repeatCount="indefinite"/></circle>`;
-        } else {
-            body += `<circle class="parcel" cx="${px}" cy="${SEA.top + 40}" r="7" fill="#bcd8e0"/>`;
         }
         out += `<g clip-path="url(#seaClip)">${body}</g>`;
         out += `<rect class="sea-frame" x="${SEA.x0}" y="${SEA.top}" width="${SEA.x1 - SEA.x0}" height="${SEA.bottom - SEA.top}"/>`;
@@ -148,7 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
         out += `<text class="note-text" x="${BX}" y="${BY + 32 + SALTS.length * 14 + 8}">염분이 달라져도 비율은 그대로입니다</text>`;
 
         out += `<text class="part-label" x="20" y="24">${a.place.label} · 수온 ${a.T} ℃ · 염분 ${a.S} psu</text>`;
-        out += `<text class="read-text" x="20" y="208">밀도 ${a.rho.toFixed(2)} kg/m³ — ${VERDICT[a.verdict]}</text>`;
+        out += `<text class="read-text" x="20" y="208">바닷물 1 kg의 염류 ${a.S} g</text>`;
         mainGroup.innerHTML = out;
     }
 
@@ -202,34 +190,16 @@ document.addEventListener('DOMContentLoaded', () => {
         tempOutput.textContent = `${a.T} ℃`;
         saltOutput.textContent = `${a.S} psu`;
         windOutput.textContent = `${a.W} 단계`;
-        stageBadge.textContent = `${a.place.label} · 밀도 ${a.rho.toFixed(2)}`;
-        dataNote.innerHTML =
-            `<div class="data-row"><span class="data-name">밀도</span><span class="data-val">${RHO0} × (1 − 0.00017×(${a.T}−10) + 0.00076×(${a.S}−35)) = ${a.rho.toFixed(2)} kg/m³</span></div>` +
-            `<div class="data-row"><span class="data-name">평균과 비교</span><span class="data-val">평균 ${MEAN_RHO} kg/m³보다 ${(a.rho - MEAN_RHO).toFixed(2)}만큼 ${a.rho >= MEAN_RHO ? '큽니다' : '작습니다'}</span></div>` +
-            `<div class="data-row"><span class="data-name">혼합층</span><span class="data-val">바람 ${a.W} 단계 → 20 + 8×${a.W} = ${a.mixed} m</span></div>` +
-            `<div class="data-row"><span class="data-name">염화 나트륨</span><span class="data-val">${a.S} g × 77.7% = ${a.grams[0].toFixed(2)} g — 염분이 달라도 비율은 그대로</span></div>` +
-            `<div class="data-row match"><span class="data-name">결과</span><span class="data-val">${VERDICT[a.verdict]}</span></div>`;
+        stageBadge.textContent = `${a.place.label} · 염분 ${a.S}`;
+        dataNote.innerHTML='<p>바닷물 1 kg에 녹은 염류: '+a.S+' g · 염화 나트륨: '+a.grams[0].toFixed(2)+' g</p><p>염류의 구성 비율은 대체로 일정합니다. 바람에 따른 층 두께는 이 모형의 예시값입니다.</p>';
         return a;
     }
 
     function check() {
-        const a = render();
-        resultEmpty.hidden = true;
-        resultContent.hidden = false;
-        valueA.textContent = `${a.rho.toFixed(2)} kg/m³`;
-        valueB.textContent = `${a.mixed} m`;
-        predictionResult.textContent = !prediction ? '다음에는 결과를 먼저 예상해 보세요.'
-            : prediction === a.verdict ? '예상이 맞았습니다.' : '예상과 다른 결과입니다.';
-        const colder = analyse(Math.max(0, a.T - 10), a.S, a.W);
-        const saltier = analyse(a.T, Math.min(38, a.S + 2), a.W);
-        let s = `수온 ${a.T} ℃, 염분 ${a.S} psu인 바닷물의 밀도는 ${a.rho.toFixed(2)} kg/m³입니다. `;
-        s += `평균 ${MEAN_RHO} kg/m³보다 ${SENTENCE[a.verdict]}. `;
-        s += `수온만 ${Math.max(0, a.T - 10)} ℃로 낮추면 ${colder.rho.toFixed(2)}, 염분만 ${Math.min(38, a.S + 2)} psu로 높이면 ${numIga(saltier.rho.toFixed(2))} 됩니다. `;
-        s += `차갑고 짤수록 무거워진다는 뜻입니다. `;
-        s += `바람이 ${a.W} 단계이므로 물이 섞이는 혼합층은 ${a.mixed} m까지이고, `;
-        s += THERMO_WHY[a.thermo];
-        s += `녹아 있는 염류는 모두 ${a.S} g이지만, 그 가운데 염화 나트륨이 77.7%인 ${a.grams[0].toFixed(2)} g이라는 비율은 어느 바다에서나 같습니다.`;
-        explanation.textContent = s;
+        const a=render();resultEmpty.hidden=true;resultContent.hidden=false;
+        valueA.textContent=a.S+' g';valueB.textContent=a.mixed+' m (모형)';
+        predictionResult.textContent=!prediction?'다음에는 먼저 예상해 보세요.':prediction===a.verdict?'예상이 맞았습니다.':'예상과 다른 결과입니다.';
+        explanation.textContent='바닷물 1 kg에 녹은 염류의 양은 '+a.S+' g입니다. 염분이 달라도 주된 염류의 구성 비율은 대체로 일정합니다. 바람이 강할수록 표층 물이 깊게 섞일 수 있습니다. '+THERMO_WHY[a.thermo];
     }
 
     function changed() {

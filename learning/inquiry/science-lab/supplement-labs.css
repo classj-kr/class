@@ -1,0 +1,12 @@
+.curriculum-supplement{margin:24px 0;padding:20px!important;color:#173f50;background:#fff;border:1px solid #bfd0d8;border-radius:14px}
+.curriculum-supplement h2{font-size:19px;margin:0 0 14px;line-height:1.5}
+.supplement-controls{display:flex;gap:12px;flex-wrap:wrap}
+.supplement-controls fieldset{padding:8px;border:1px solid #c5d4dc;border-radius:9px;min-width:0;max-width:100%}
+.supplement-controls legend{font-size:13px;padding:0 5px;font-weight:700}
+.supplement-controls button,.supplement-reset{font:inherit;font-size:13px;line-height:1.5;border:1px solid #c5d4dc;background:#f8fafc;border-radius:7px;padding:7px 10px;margin:3px;color:#173f50;cursor:pointer}
+.supplement-controls button[aria-pressed=true]{background:#205c68;color:white;border-color:#205c68}
+.supplement-controls button:focus-visible,.supplement-reset:focus-visible{outline:3px solid #d97706;outline-offset:2px}
+.curriculum-supplement svg{display:block;width:100%;max-width:560px;height:auto;margin:14px auto}
+.supplement-observation{font-size:15px;line-height:1.75;background:#eff6f7;padding:12px;border-radius:8px}
+.supplement-note{font-size:12px;line-height:1.7;color:#526b76;margin:8px 0}
+@media(max-width:500px){.curriculum-supplement{padding:14px!important}.supplement-controls{display:block}.supplement-controls fieldset{margin-bottom:9px}}

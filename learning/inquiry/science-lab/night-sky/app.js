@@ -131,7 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (state.mode === 'moon') {
             controlArea.innerHTML = pickRow('음력 날짜', 'day', DAYS.map(d => ({ value: String(d.day), label: d.label, hint: d.name })), state.day, 3);
         } else {
-            controlArea.innerHTML = pickRow('계절', 'season', Object.entries(SEASONS).map(([k, v]) => ({ value: k, label: v.label, hint: v.hint })), state.season, 4);
+            controlArea.innerHTML = '<p>북두칠성의 국자 끝 두 별을 이용해 북극성을 찾아보세요.</p>';
         }
         controlArea.querySelectorAll('[data-pick]').forEach(group => {
             group.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
@@ -244,7 +244,7 @@ document.addEventListener('DOMContentLoaded', () => {
         out += `<text class="sky-text" x="24" y="36">${hourText(hour)}</text>`;
         out += `<text class="sky-text" x="24" y="50">저녁 9시부터 ${Math.round(15 * (hour - STAR_START))}° 돌았음</text>`;
         const phiNow = polar({ ra: 12.5, dec: 56 }, state.season, hour).phi;
-        out += `<text class="verdict-text" style="fill:#0f172a" x="20" y="16">${a.season.label} 저녁 9시 → 북두칠성은 북극성 ${SIDE[a.verdict]} · 지금은 ${SIDE[side(phiNow)]}</text>`;
+        out += `<text class="verdict-text" style="fill:#0f172a" x="20" y="16">모형의 저녁 9시 → 북두칠성은 북극성 ${SIDE[a.verdict]} · 지금은 ${SIDE[side(phiNow)]}</text>`;
         return out;
     }
 
@@ -272,20 +272,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // how far the sky has turned against the clock, at 15° an hour
     function graphStars(a) {
-        const G = { x0: 62, x1: 424, y0: 152, y1: 26 };
-        const gx = h => G.x0 + ((h - STAR_START) / (STAR_END - STAR_START)) * (G.x1 - G.x0);
-        const gy = deg => G.y0 - (deg / 90) * (G.y0 - G.y1);
-        let out = '';
-        [30, 60, 90].forEach(deg => { out += `<line class="grid-line" x1="${G.x0}" y1="${gy(deg)}" x2="${G.x1}" y2="${gy(deg)}"/><text class="axis-text" x="${G.x0 - 6}" y="${gy(deg) + 3}" text-anchor="end">${deg}°</text>`; });
-        for (let h = STAR_START; h <= STAR_END; h += 2) out += `<text class="axis-text" x="${gx(h).toFixed(1)}" y="${G.y0 + 14}" text-anchor="${h === STAR_START ? 'start' : 'middle'}">${hourText(h)}</text>`;
-        out += `<line class="axis" x1="${G.x0}" y1="${G.y0}" x2="${G.x1}" y2="${G.y0}"/><line class="axis" x1="${G.x0}" y1="${G.y0}" x2="${G.x0}" y2="${G.y1}"/>`;
-        out += `<text class="axis-title" x="${G.x0 + 4}" y="${G.y1 - 8}">북극성을 중심으로 돈 각도</text>`;
-        const hour = starHour(state.progress);
-        out += `<path class="trace-done" d="M${gx(STAR_START)},${gy(0)} L${gx(STAR_END)},${gy(90)}"/>`;
-        out += `<path class="trace" style="stroke:#d97706" d="M${gx(STAR_START)},${gy(0)} L${gx(hour).toFixed(1)},${gy(15 * (hour - STAR_START)).toFixed(1)}"/>`;
-        out += `<circle class="trace-dot" cx="${gx(hour).toFixed(1)}" cy="${gy(15 * (hour - STAR_START)).toFixed(1)}" r="5" fill="#d97706"/>`;
-        out += `<text class="note-text" x="${G.x0 + 8}" y="${G.y1 + 14}">한 시간에 15° — 하루 24시간이면 360°, 한 바퀴</text>`;
-        return out;
+        return '<text x="20" y="50" fill="#334155" font-size="16">① 북두칠성의 국자 끝 두 별을 찾습니다.</text>' + '<text x="20" y="90" fill="#334155" font-size="16">② 두 별 사이 거리의 약 다섯 배를 연장합니다.</text>' + '<text x="20" y="130" fill="#334155" font-size="16">③ 북극성을 찾아 북쪽 방향을 확인합니다.</text>';
     }
 
     function noteFor(a) {
@@ -298,22 +285,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 `<div class="data-row"><span class="data-name">저녁 7시</span><span class="data-val">${WHERE[a.verdict]}</span></div>` +
                 `<div class="data-row match"><span class="data-name">이 밤</span><span class="data-val">${a.rise ? `${hourText(a.rise)} 뜸` : a.visibleAtStart ? '해 질 때 이미 떠 있음' : '뜨지 않음'}${a.set ? ` · ${hourText(a.set)} 짐` : ''} · 보인 시간 ${a.seen.toFixed(1)}시간</span></div>`;
         }
-        const hour = starHour(state.progress);
-        return `<div class="data-row"><span class="data-name">계절</span><span class="data-val">${a.season.label} (${a.season.hint})</span></div>` +
-            `<div class="data-row"><span class="data-name">저녁 9시</span><span class="data-val">북두칠성은 북극성 ${SIDE[a.verdict]}</span></div>` +
-            `<div class="data-row"><span class="data-name">지금</span><span class="data-val">${hourText(hour)} · ${Math.round(15 * (hour - STAR_START))}° 돌았음</span></div>` +
-            `<div class="data-row"><span class="data-name">새벽 3시</span><span class="data-val">북두칠성은 북극성 ${SIDE[side(a.endPhi)]} (${a.turned}° 돈 뒤)</span></div>` +
-            `<div class="data-row match"><span class="data-name">북극성</span><span class="data-val">밤새 그 자리 — 북쪽 하늘 ${LAT}° 높이</span></div>`;
+        return '<p>북두칠성의 모양과 북극성의 위치를 비교하세요. 시간·위치는 모형의 예시입니다.</p>';
     }
 
     function render() {
         const a = analyse();
         renderMain(a);
         graphGroup.innerHTML = a.kind === 'moon' ? graphMoon(a) : graphStars(a);
-        stageBadge.textContent = a.kind === 'moon' ? `음력 ${a.info.label}` : `${a.season.label} 저녁`;
+        stageBadge.textContent = a.kind === 'moon' ? `음력 ${a.info.label}` : '북극성 찾기';
         methodHint.textContent = state.mode === 'moon'
             ? '달의 모양은 약 한 달을 주기로 초승달 → 상현달 → 보름달 → 하현달 → 그믐달로 바뀝니다'
-            : '북극성은 늘 북쪽 한자리에 있고, 다른 별들은 그 둘레를 한 시간에 15°씩 돕니다';
+            : '북두칠성의 국자 끝 두 별을 이어 북극성을 찾아보세요';
         dataNote.innerHTML = noteFor(a);
         return a;
     }
@@ -368,10 +350,7 @@ document.addEventListener('DOMContentLoaded', () => {
         valueB.textContent = `북극성 ${SIDE[side(a.endPhi)]}`;
         predictionResult.textContent = !state.prediction ? '다음에는 결과를 먼저 예상해 보세요.'
             : state.prediction === a.verdict ? '예상이 맞았습니다.' : '예상과 다른 결과입니다.';
-        explanation.textContent =
-            `${a.season.label} 저녁 9시에 북두칠성은 북극성의 ${SIDE[a.verdict]}에 있습니다. 국자 끝 두 별 사이를 다섯 배 늘리면 어느 계절에나 북극성이 나옵니다. ` +
-            `밤이 깊어지자 별들이 북극성을 중심으로 한 시간에 15°씩 시계 반대 방향으로 돌아, 새벽 3시에는 ${a.turned}° 돌아 북극성의 ${SIDE[side(a.endPhi)]}에 있습니다. ` +
-            `북극성만 제자리인 것은 지구가 도는 축이 그쪽을 향하기 때문이고, 계절마다 저녁 자리가 다른 것은 지구가 태양 둘레를 돌기 때문입니다.`;
+        explanation.textContent = "국자 끝 두 별 사이를 약 다섯 배 연장하면 북극성을 찾을 수 있습니다. 북극성은 북쪽 방향을 알아보는 데 이용합니다. 화면의 위치는 관측 예시입니다.";
     }
 
     function settingsChanged() {

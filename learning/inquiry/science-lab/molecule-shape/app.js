@@ -372,7 +372,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (a.kind === 'shape') {
             const { m } = a;
             return `<div class="data-row"><span class="data-name">분자</span><span class="data-val">${m.name} ${m.formula} — 중심 원자 ${m.diatomic ? '없음(두 원자)' : m.center}</span></div>` +
-                `<div class="data-row"><span class="data-name">전자쌍</span><span class="data-val">결합 ${m.bondPairs}쌍 · 비공유 ${m.lonePairs}쌍${m.order === 2 ? ' (이중 결합은 하나로 셈)' : ''}</span></div>` +
+                `<div class="data-row"><span class="data-name">전자쌍</span><span class="data-val">결합 영역 ${m.bondPairs}개 · 비공유 전자쌍 ${m.lonePairs}쌍${m.order === 2 ? ' (이중 결합도 한 영역)' : ''}</span></div>` +
                 `<div class="data-row"><span class="data-name">배치</span><span class="data-val">${m.diatomic ? '두 점은 언제나 한 직선' : `${m.bondPairs + m.lonePairs}쌍 → ${m.bondPairs + m.lonePairs === 2 ? '직선' : m.bondPairs + m.lonePairs === 3 ? '평면 삼각' : '정사면체'} 배치`}</span></div>` +
                 `<div class="data-row match"><span class="data-name">모양·결합각</span><span class="data-val">${m.shape}${m.angle !== null ? ` · ${m.angle}°` : ''}</span></div>`;
         }
@@ -435,7 +435,7 @@ document.addEventListener('DOMContentLoaded', () => {
             labelB.textContent = '결합각'; valueB.textContent = m.angle !== null ? `${m.angle}°` : '없음 (두 원자)';
             if (m.diatomic) s = `${m.name} ${m.formula}${eunF(m.formula)} 원자가 둘뿐입니다. 두 점은 언제나 한 직선 위에 있으므로 모양은 직선형이고 결합각은 따로 없습니다. 전자쌍 반발은 중심 원자에 셋 이상의 전자쌍이 있을 때 모양을 정합니다.`;
             else {
-                s = `${m.name} ${m.formula}의 중심 원자 ${m.center} 둘레에는 결합 전자쌍 ${m.bondPairs}쌍${m.order === 2 ? '(이중 결합은 한 자리로 셉니다)' : ''}과 비공유 전자쌍 ${m.lonePairs}쌍, 모두 ${total}쌍이 있습니다. 전자쌍은 서로 밀어내므로 ${total === 2 ? '정반대 방향으로 벌어져 직선(180°)' : total === 3 ? '평면에서 120°씩 벌어진 삼각형' : '정사면체 꼭짓점 방향(109.5°)'}으로 배치됩니다. `;
+                s = `${m.name} ${m.formula}의 중심 원자 ${m.center} 둘레에는 결합 영역 ${m.bondPairs}개${m.order === 2 ? '(이중 결합은 한 자리로 셉니다)' : ''}과 비공유 전자쌍 ${m.lonePairs}쌍, 모두 ${total}개의 전자 영역이 있습니다. 전자쌍은 서로 밀어내므로 ${total === 2 ? '정반대 방향으로 벌어져 직선(180°)' : total === 3 ? '평면에서 120°씩 벌어진 삼각형' : '정사면체 꼭짓점 방향(109.5°)'}으로 배치됩니다. `;
                 s += m.lonePairs ? `그 가운데 ${m.lonePairs}자리를 비공유 전자쌍이 차지합니다. 비공유 전자쌍은 한 원자에만 붙어 있어 더 넓게 퍼지므로 결합 전자쌍을 조금 더 밀어내고, 원자만 보면 ${m.shape}이 되며 결합각은 ${m.angle}°로 109.5°보다 좁습니다.` : `모두 결합 전자쌍이라 원자들도 그 방향에 놓여 ${m.shape}, 결합각 ${m.angle}°입니다.`;
             }
         } else if (a.kind === 'polar') {

@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="styles.css?v=6">
     <link rel="stylesheet" href="scope-visual.css?v=6">
     <link rel="stylesheet" href="quiz.css?v=4">
+    <link rel="stylesheet" href="../exam-scope.css?v=1">
 </head>
 <body>
     <main>
@@ -18,7 +19,7 @@
                 <a href="../">← 과학 실험실</a>
                 <h1>현미경과 세포 관찰</h1>
             </div>
-            <div class="grade-tags"><span>초등 6학년</span><span>생명과학</span></div>
+            <div class="grade-tags"><span>초등 6학년</span><span>과학</span></div>
         </header>
 
         <ol class="method-steps" aria-label="실험 방법">
@@ -37,9 +38,9 @@
                     <legend>무엇을 볼까요</legend>
                     <div class="pick-buttons cols4">
                         <button type="button" data-spec="onion">양파 표피<small>0.35 mm</small></button>
-                        <button type="button" data-spec="cheek">입안 상피<small>0.06 mm</small></button>
+
                         <button type="button" data-spec="stoma">잎의 기공<small>0.02 mm</small></button>
-                        <button type="button" data-spec="para">짚신벌레<small>0.2 mm</small></button>
+
                     </div>
                 </fieldset>
 
@@ -116,25 +117,25 @@
             <div class="meaning-body">
                 <p><strong>배율은 곱셈입니다</strong> 접안렌즈가 10배이고 대물렌즈가 40배라면 10 × 40 = 400배로 보입니다. 0.02 mm짜리 기공도 400배로 보면 8 mm가 되어 눈으로 알아볼 수 있습니다.</p>
                 <p><strong>크게 볼수록 좁게 보입니다</strong> 배율을 올리면 보이는 범위가 그만큼 좁아집니다. 대물렌즈를 4배에서 40배로 바꾸면 보이는 범위가 10분의 1로 줄어듭니다. 그래서 낮은 배율로 먼저 찾아 가운데에 놓은 다음 배율을 올려야 합니다.</p>
-                <p><strong>크게 볼수록 어두워집니다</strong> 같은 빛을 더 넓게 펼쳐 보는 셈이라 배율이 높을수록 어두워집니다. 배율이 10배가 되면 밝기는 100분의 1이 되므로, 높은 배율에서는 조리개를 열어 빛을 더 들여야 합니다.</p>
+                <p><strong>밝기 조절</strong> 관찰 화면이 어두우면 현미경의 조명과 조리개 등을 알맞게 조절합니다. 실제 밝기는 배율뿐 아니라 렌즈와 조명 조건에도 영향을 받습니다.</p>
             </div>
         </section>
 
         <details class="quiz-section" aria-labelledby="quiz-title">
             <summary class="quiz-heading"><h2 id="quiz-title">확인 문제</h2><span>4문제</span></summary>
             <div class="quiz-grid">
-                <article class="quiz-card" data-answer="c">
-                    <h3>접안렌즈 15배, 대물렌즈 40배로 보면 몇 배일까요?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q1" value="a"> 55배</label>
-                        <label><input type="radio" name="q1" value="b"> 155배</label>
-                        <label><input type="radio" name="q1" value="c"> 600배</label>
-                        <label><input type="radio" name="q1" value="d"> 400배</label>
-                    </div>
-                    <button class="answer-button" type="button">정답 확인</button>
-                    <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>배율은 두 렌즈의 배율을 더하는 것이 아니라 곱합니다. 15 × 40 = 600배입니다.</p>
-                </article>
+                <article class="quiz-card" data-answer="b">
+<h3>식물을 이루는 기본 단위는?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q1" value="a"> 기관 전체만</label>
+<label><input type="radio" name="q1" value="b"> 세포</label>
+<label><input type="radio" name="q1" value="c"> 흙 알갱이</label>
+<label><input type="radio" name="q1" value="d"> 물방울</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>식물은 세포로 이루어져 있습니다. 현미경으로 식물 세포를 관찰하며 핵·세포막·세포벽의 이름을 익힙니다.</p>
+</article>
 
                 <article class="quiz-card" data-answer="b">
                     <h3>현미경으로 볼 때 왜 낮은 배율부터 시작할까요?</h3>
@@ -159,7 +160,7 @@
                     </div>
                     <button class="answer-button" type="button">정답 확인</button>
                     <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>배율이 높아지면 같은 빛이 더 넓게 퍼져 어두워집니다. 조리개를 열거나 빛을 더 모아 주어야 잘 보입니다.</p>
+                    <p class="answer-explanation" hidden>화면이 어두울 때는 조명과 조리개를 알맞게 조절하여 관찰하기 좋게 맞춥니다.</p>
                 </article>
 
                 <article class="quiz-card" data-answer="d">
@@ -172,11 +173,13 @@
                     </div>
                     <button class="answer-button" type="button">정답 확인</button>
                     <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>식물 세포는 세포막 바깥에 단단한 세포벽이 있어 모양이 반듯하게 유지됩니다. 그래서 벽돌을 나란히 쌓은 것처럼 보입니다. 세포벽이 없는 입안 상피 세포는 둥글고 제각각입니다.</p>
+                    <p class="answer-explanation" hidden>식물 세포는 세포막 바깥에 단단한 세포벽이 있어 모양이 반듯하게 유지됩니다. 그래서 벽돌을 나란히 쌓은 것처럼 보입니다.</p>
                 </article>
             </div>
         </details>
     </main>
-    <script src="app.js?v=4"></script>
+    <script src="app.js?v=c74f3f1e6a46"></script>
+    <script src="../curriculum-map.js?v=2ffe762f2206"></script>
+    <script src="../exam-scope.js?v=849f3853d47f"></script>
 </body>
 </html>

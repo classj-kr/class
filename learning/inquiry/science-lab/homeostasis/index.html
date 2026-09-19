@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="styles.css?v=6">
     <link rel="stylesheet" href="homeo-visual.css?v=7">
     <link rel="stylesheet" href="quiz.css?v=4">
+    <link rel="stylesheet" href="../exam-scope.css?v=1">
 </head>
 <body>
     <main>
@@ -87,9 +88,9 @@
             <h2>실험 결과의 의미</h2>
             <div class="meaning-body">
                 <p><strong>되먹임 조절</strong> 몸속 값이 정해진 범위를 벗어나면 그것을 감지한 곳이 반대 방향으로 되돌리는 반응을 일으킵니다(음성 되먹임). 혈당이 오르면 인슐린이, 내리면 글루카곤이 나오고, 체온이 오르면 땀과 넓어진 혈관이, 내리면 떨림과 좁아진 혈관이 맞섭니다. 값이 돌아오면 반응도 멎습니다. 이렇게 안팎이 바뀌어도 속을 일정하게 지키는 것이 항상성입니다.</p>
-                <p><strong>혈당 조절</strong> 식사 뒤 혈당이 오르면 이자의 β세포가 인슐린을 내어 근육·간·지방 세포가 포도당을 들이고 간이 글리코젠으로 저장하게 하고, 굶어 혈당이 내리면 α세포가 글루카곤을 내어 간이 글리코젠을 포도당으로 꺼내게 합니다. 포도당 75 g을 마시고 2시간 뒤 혈당이 140 mg/dL 아래면 정상, 140~199면 당뇨 전 단계, 200 이상이면 당뇨로 봅니다. 인슐린이 나오지 않는 1형과 인슐린이 잘 듣지 않는 2형 당뇨는 이 시험에서 갈립니다.</p>
-                <p><strong>체온 조절</strong> 몸은 쉴 때 80 W쯤의 열을 내고, 이 열을 피부로 내보내 37 ℃를 지킵니다. 더우면 피부 혈관이 넓어져 열을 내보내고 땀 1 g이 증발하며 2.4 kJ을 빼앗아 갑니다(땀 600 W까지). 추우면 혈관이 좁아져 열을 아끼고 떨림으로 300 W 넘게 더 냅니다. 사람 몸 70 kg을 1 ℃ 바꾸는 데 245 kJ이 들므로, 200 W가 어긋나면 한 시간에 3 ℃쯤 바뀝니다. 땀을 못 내면 더운 날 운동에 열사병이, 술이나 마취로 떨지 못하면 추운 날 저체온증이 옵니다.</p>
-                <p><strong>물의 양 조절</strong> 몸속 물 40 L의 진하기(삼투압, 약 285 mOsm/kg)가 오르면 뇌하수체가 항이뇨 호르몬을 내어 콩팥이 물을 다시 빨아들여 오줌이 적고 진해지고 목이 마릅니다. 물을 많이 마셔 진하기가 내리면 호르몬이 줄어 오줌이 많고 옅어집니다. 오줌의 양은 1분에 0.5 mL에서 10 mL 넘게, 진하기는 60에서 1,200 mOsm/kg까지 스무 배 넘게 바뀌어 몸속 물의 진하기를 1~2 % 안에서 지킵니다.</p>
+                <p><strong>혈당 조절</strong> 혈당이 오르면 이자의 β세포에서 분비된 인슐린이 혈당을 낮추는 작용에 관여합니다. 혈당이 내려가면 α세포의 글루카곤이 간에서 포도당을 혈액으로 내보내는 작용에 관여합니다. 화면은 분비·작용 조건에 따른 차이를 비교하는 가상 모형이며 질병의 진단·유형 판별·치료 결정을 위한 자료가 아닙니다.</p>
+                <p><strong>체온 조절</strong> 몸은 열의 생성과 방출을 조절하여 체온을 일정한 범위로 유지합니다. 더울 때 땀의 증발과 피부 혈관 확장이 열 방출에 기여하고, 추울 때 떨림과 피부 혈관 수축 등이 작용합니다. 화면의 열량·체온·시간은 가상 조건이며 사람의 체온 변화를 예측하지 않습니다.</p>
+                <p><strong>물의 양 조절</strong> 체내 수분이 부족해 삼투압이 높아지면 시상 하부가 관여하는 조절로 갈증이 생기고, 뇌하수체 후엽에서 방출되는 항이뇨 호르몬이 콩팥의 물 재흡수를 늘립니다. 물이 충분할 때와 비교하여 오줌 양의 변화를 살핍니다. 표시량은 가상 값입니다.</p>
             </div>
         </section>
 
@@ -109,31 +110,31 @@
                     <p class="answer-explanation" hidden>혈당이 오르면 β세포의 인슐린이 근육·지방 세포에 포도당을 들이고 간이 글리코젠으로 저장하게 해 혈당을 내립니다. 글루카곤은 혈당이 내렸을 때 나옵니다.</p>
                 </article>
 
-                <article class="quiz-card" data-answer="d">
-                    <h3>포도당 75 g을 마시고 2시간 뒤 혈당이 230 mg/dL이었습니다. 어떻게 봐야 할까요?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q2" value="a"> 정상이다</label>
-                        <label><input type="radio" name="q2" value="b"> 인슐린이 너무 많이 나왔다</label>
-                        <label><input type="radio" name="q2" value="c"> 물을 적게 마셨다</label>
-                        <label><input type="radio" name="q2" value="d"> 인슐린이 부족하거나 잘 듣지 않아 혈당이 내려오지 못한 당뇨 상태다</label>
-                    </div>
-                    <button class="answer-button" type="button">정답 확인</button>
-                    <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>정상이면 2시간 뒤 140 아래로 내려옵니다. 200 이상이면 인슐린이 나오지 않거나(1형) 잘 듣지 않아(2형) 포도당이 세포로 들어가지 못하는 당뇨로 봅니다.</p>
-                </article>
+                <article class="quiz-card" data-answer="b">
+<h3>인슐린의 분비나 작용이 감소했을 때를 비교하는 목적은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q2" value="a"> 모형 수치만으로 질병 유형을 확진한다.</label>
+<label><input type="radio" name="q2" value="b"> 혈당 조절에서 인슐린의 역할을 알아본다.</label>
+<label><input type="radio" name="q2" value="c"> 의료용 주사량을 결정한다.</label>
+<label><input type="radio" name="q2" value="d"> 모든 호르몬이 같은 작용임을 확인한다.</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>같은 조건에서 인슐린의 분비·작용을 달리하여 혈당 변화의 경향을 비교합니다. 가상 모형으로 진단하거나 치료를 결정하지 않습니다.</p>
+</article>
 
                 <article class="quiz-card" data-answer="a">
-                    <h3>더운 날 운동하는데 땀을 낼 수 없다면 체온은?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q3" value="a"> 운동으로 낸 열을 내보낼 길이 없어 한 시간에 몇 ℃씩 올라 열사병이 온다</label>
-                        <label><input type="radio" name="q3" value="b"> 땀이 없으니 몸이 시원해진다</label>
-                        <label><input type="radio" name="q3" value="c"> 혈관이 좁아져 체온이 유지된다</label>
-                        <label><input type="radio" name="q3" value="d"> 떨림이 시작되어 체온이 내려간다</label>
-                    </div>
-                    <button class="answer-button" type="button">정답 확인</button>
-                    <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>공기가 35 ℃면 피부로 내보낼 수 있는 열이 거의 없어 땀의 증발이 유일한 길입니다. 운동으로 300 W 넘게 내는 열이 그대로 쌓여 한 시간에 3~4 ℃씩 오릅니다.</p>
-                </article>
+<h3>땀이 증발할 때 체온 조절에 기여하는 방식은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q3" value="a"> 열을 방출하는 데 도움을 준다.</label>
+<label><input type="radio" name="q3" value="b"> 몸에 열을 무조건 더한다.</label>
+<label><input type="radio" name="q3" value="c"> 혈당만 높인다.</label>
+<label><input type="radio" name="q3" value="d"> 피부와 무관하다.</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>땀의 증발은 열을 빼앗아 몸의 열 방출에 기여합니다. 실제 효과는 습도 등 여러 조건에 따라 달라집니다.</p>
+</article>
 
                 <article class="quiz-card" data-answer="c">
                     <h3>짠 음식을 많이 먹은 뒤 몸에서 일어나는 일은?</h3>
@@ -150,6 +151,8 @@
             </div>
         </details>
     </main>
-    <script src="app.js?v=10"></script>
+    <script src="app.js?v=f6cbd9f40ea7"></script>
+    <script src="../curriculum-map.js?v=2ffe762f2206"></script>
+    <script src="../exam-scope.js?v=849f3853d47f"></script>
 </body>
 </html>

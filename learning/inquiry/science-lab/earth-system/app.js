@@ -294,7 +294,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let out = '';
         out += `<rect class="box air" x="20" y="28" width="420" height="38" rx="5"/>`;
         out += `<text class="box-text" x="230" y="45" text-anchor="middle">대기의 탄소 ${gt(A)} (${ppm(A)} ppm)</text>`;
-        out += `<text class="box-sub" x="230" y="59" text-anchor="middle">산업화 전 ${gt(C_PRE)} (${ppm(C_PRE)} ppm) · 지금 ${gt(C_NOW)} (${ppm(C_NOW)} ppm)</text>`;
+        out += `<text class="box-sub" x="230" y="59" text-anchor="middle">산업화 전 ${gt(C_PRE)} (${ppm(C_PRE)} ppm) · 모형 초기값 ${gt(C_NOW)} (${ppm(C_NOW)} ppm)</text>`;
         out += `<rect class="box landbox" x="20" y="118" width="170" height="72" rx="5"/>`;
         out += `<text class="box-text" x="105" y="136" text-anchor="middle">숲과 흙 ${gt(LAND_C)}</text>`;
         out += `<text class="box-sub" style="fill:#059669" x="105" y="152" text-anchor="middle">더 거두는 양 한 해 ${gt(sinkLand)}</text>`;
@@ -349,21 +349,22 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function noteFor(a) {
+        const warning = '<p>저장량·유출입량은 고정된 예시입니다. 현재 관측값이나 실제 미래 예측이 아니며, 체류 시간은 평균적 추정치입니다.</p>';
         if (a.kind === 'spheres') {
             const { ph } = a;
-            return `<div class="data-row"><span class="data-name">현상</span><span class="data-val">${ph.label} — ${ph.lines.join(' ')}</span></div>` +
+            return warning + `<div class="data-row"><span class="data-name">현상</span><span class="data-val">${ph.label} — ${ph.lines.join(' ')}</span></div>` +
                 `<div class="data-row"><span class="data-name">주는 권 → 받는 권</span><span class="data-val">${state.progress > 0 ? `${SPHERES[ph.from].label} → ${SPHERES[ph.to].label}` : '따라가 보면 나옵니다'}</span></div>` +
                 `<div class="data-row"><span class="data-name">옮겨 가는 것</span><span class="data-val">${state.progress > 0 ? ph.carry : '?'}</span></div>` +
                 `<div class="data-row match"><span class="data-name">실제 예</span><span class="data-val">${ph.example.join(' ')}</span></div>`;
         }
         if (a.kind === 'water') {
             const { r, tau } = a;
-            return `<div class="data-row"><span class="data-name">든 물</span><span class="data-val">${r.label} ${fmtVol(r.volume)} (${r.volume.toLocaleString('ko-KR')}천 km³)</span></div>` +
+            return warning + `<div class="data-row"><span class="data-name">든 물</span><span class="data-val">${r.label} ${fmtVol(r.volume)} (${r.volume.toLocaleString('ko-KR')}천 km³)</span></div>` +
                 `<div class="data-row"><span class="data-name">나가는 길</span><span class="data-val">${r.note}${r.out ? ` · 한 해 ${r.out}천 km³` : ' · 대표값'}</span></div>` +
                 `<div class="data-row"><span class="data-name">머무는 시간</span><span class="data-val">${r.out ? `${r.volume.toLocaleString('ko-KR')} ÷ ${r.out} = ${tau < 1 ? `${tau.toFixed(3)}년 = ` : ''}${fmtTime(tau)}` : fmtTime(tau)}</span></div>` +
                 `<div class="data-row match"><span class="data-name">지구 전체</span><span class="data-val">증발 ${FLUX.evapSea} + ${FLUX.evapLand} = ${FLUX.evapSea + FLUX.evapLand}천 km³ = 강수 ${FLUX.rainSea} + ${FLUX.rainLand} · 바다 → 육지 → 강물 ${FLUX.runoff}천 km³</span></div>`;
         }
-        return `<div class="data-row"><span class="data-name">대기</span><span class="data-val">지금 ${gt(C_NOW)} (${ppm(C_NOW)} ppm) · 산업화 전 ${gt(C_PRE)} (${ppm(C_PRE)} ppm)</span></div>` +
+        return warning + `<div class="data-row"><span class="data-name">대기</span><span class="data-val">모형 초기값 ${gt(C_NOW)} (${ppm(C_NOW)} ppm) · 산업화 전 ${gt(C_PRE)} (${ppm(C_PRE)} ppm)</span></div>` +
             `<div class="data-row"><span class="data-name">자연의 순환</span><span class="data-val">광합성 ${gt(NAT_LAND)} = 호흡·분해 ${gt(NAT_LAND)} · 바다 녹아듦 ${gt(NAT_SEA)} = 내놓음 ${gt(NAT_SEA)} (한 해)</span></div>` +
             `<div class="data-row"><span class="data-name">사람</span><span class="data-val">화석 연료 ${a.em.label}: 한 해 ${gt(a.em.E)} · 바다와 숲이 더 거둠: 지금 한 해 ${gt(a.sinkNow)} (여분의 ${(K_SINK * 100).toFixed(1)} %)</span></div>` +
             `<div class="data-row match"><span class="data-name">50년 뒤</span><span class="data-val">${gt(a.end)} (${ppm(a.end)} ppm) — 지금보다 ${a.change >= 0 ? '+' : '−'}${Math.round(Math.abs(a.change) * 100)} %</span></div>`;
@@ -426,14 +427,14 @@ document.addEventListener('DOMContentLoaded', () => {
             labelA.textContent = '든 물'; valueA.textContent = fmtVol(r.volume);
             labelB.textContent = '모두 바뀌는 데'; valueB.textContent = fmtTime(tau);
             s = `${r.label}에는 물이 ${fmtVol(r.volume)} 들어 있고, ${r.out ? `한 해 ${r.out}천 km³가 ${r.how} 나갑니다(들어오는 양도 같습니다)` : `${r.how} 나갑니다`}. `;
-            s += r.out ? `든 양을 한 해 드나드는 양으로 나누면 ${fmtTime(tau)} — 그 시간이 지나면 지금 있는 물이 모두 새 물로 바뀝니다. ` : `${r.label}는 곳마다 달라 한 숫자로 재기 어렵지만, 대표값으로 ${fmtTime(tau)}쯤 머뭅니다. `;
+            s += r.out ? `든 양을 한 해 드나드는 양으로 나누면 ${fmtTime(tau)} — 평균적인 체류 시간의 추정치이며 모든 물이 그 시간에 완전히 교체되는 것은 아닙니다. ` : `${r.label}는 곳마다 달라 한 숫자로 재기 어렵지만, 대표값으로 ${fmtTime(tau)}쯤 머뭅니다. `;
             if (r.cat === 'days') s += `양이 적고 드나듦이 많아 아주 빨리 바뀝니다. 그래서 공기 속 물에 섞인 오염 물질은 곧 비로 씻겨 내립니다. `;
             else if (r.cat === 'years') s += `대기보다는 훨씬 오래, 바다보다는 훨씬 짧게 머무는 중간 자리입니다. `;
             else s += `양이 엄청 많은데 드나듦은 그 아주 작은 부분이라 아주 오래 머뭅니다. 그래서 바다·지하수·빙하에 들어간 것은 오랫동안 남고, 빙하 속 공기로 옛 기후를 알 수 있습니다. `;
             s += `물 순환 전체를 보면 한 해 증발 ${FLUX.evapSea + FLUX.evapLand}천 km³ = 강수 ${FLUX.rainSea + FLUX.rainLand}천 km³로 같고, 바다에서 증발한 물 가운데 ${FLUX.runoff}천 km³가 육지에 내려 강물이 되어 돌아옵니다. 이 모든 순환을 움직이는 에너지는 태양에서 옵니다.`;
         } else {
             const { em } = a;
-            labelA.textContent = '지금 대기'; valueA.textContent = `${gt(C_NOW)} (${ppm(C_NOW)} ppm)`;
+            labelA.textContent = '모형 초기 대기'; valueA.textContent = `${gt(C_NOW)} (${ppm(C_NOW)} ppm)`;
             labelB.textContent = '50년 뒤'; valueB.textContent = `${gt(a.end)} (${ppm(a.end)} ppm)`;
             s = `자연의 큰 순환 — 광합성 ${gt(NAT_LAND)}과 호흡·분해 ${gt(NAT_LAND)}, 바다와 대기가 주고받는 ${gt(NAT_SEA)} — 은 서로 거의 같아 균형을 이룹니다. 사람이 화석 연료를 태워 더하는 양은 그보다 훨씬 적지만 한쪽으로만 쌓입니다. 바다와 숲은 대기에 쌓인 여분(산업화 전보다 많은 양)에 비례해 더 거두는데, 지금은 한 해 약 ${gt(a.sinkNow)}입니다. `;
             if (state.emit === 'zero') s += `배출을 멈추면 더하는 양은 0이고 거두는 양만 남아 대기의 탄소는 천천히 줄어, 50년 뒤 ${gt(a.end)}(${ppm(a.end)} ppm)이 됩니다. 그래도 산업화 전 ${gt(C_PRE)}까지는 훨씬 더 오래 걸립니다. `;
@@ -444,7 +445,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         predictionResult.textContent = !state.prediction ? '다음에는 결과를 먼저 예상해 보세요.'
             : state.prediction === a.verdict ? '예상이 맞았습니다.' : '예상과 다른 결과입니다.';
-        explanation.textContent = s;
+        explanation.textContent = s + (a.kind === 'carbon' ? ' 화면의 배출량·흡수식으로 계산한 가상 시나리오이며, 실제 미래 농도나 감축 목표를 예측하지 않습니다.' : '');
     }
 
     function settingsChanged() {

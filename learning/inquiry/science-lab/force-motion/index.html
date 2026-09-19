@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#f1f5f9">
     <title>과학 실험실</title>
-    <meta name="description" content="나무 상자를 밀며 미는 힘과 마찰력의 평형, 알짜힘과 가속도, 속력-시간 그래프를 확인하는 중학교 과학 모의실험">
+    <meta name="description" content="나무 상자를 밀며 미는 힘과 마찰력의 평형, 알짜힘과 운동 변화, 속력-시간 그래프를 확인하는 중학교 과학 모의실험">
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
     <link rel="stylesheet" href="styles.css?v=5">
     <link rel="stylesheet" href="force-visual.css?v=5">
     <link rel="stylesheet" href="quiz.css?v=3">
+    <link rel="stylesheet" href="../exam-scope.css?v=1">
 </head>
 <body>
     <main>
@@ -18,7 +19,7 @@
                 <a href="../">← 과학 실험실</a>
                 <h1>속력과 힘의 평형</h1>
             </div>
-            <div class="grade-tags"><span>중학교 1학년</span><span>물리</span></div>
+            <div class="grade-tags"><span>중학교 1학년</span><span>과학</span></div>
         </header>
 
         <ol class="method-steps" aria-label="실험 방법">
@@ -114,7 +115,7 @@
             <div class="meaning-body">
                 <p><strong>힘의 평형</strong> 알짜힘이 0이면 멈춰 있던 것은 계속 멈춰 있고, 움직이던 것은 같은 속력으로 계속 갑니다.</p>
                 <p><strong>마찰력</strong> 멈춰 있을 때의 마찰력은 미는 힘만큼만 생깁니다. 미는 힘이 최대 마찰력을 넘어야 움직이기 시작합니다.</p>
-                <p><strong>알짜힘과 가속도</strong> 알짜힘이 0이 아니면 속력이 변합니다. 같은 힘이라도 무거울수록 속력이 천천히 변합니다.</p>
+                <p><strong>알짜힘과 운동 변화</strong> 알짜힘이 0이 아니면 속력이 변합니다. 같은 힘이라도 무거울수록 속력이 천천히 변합니다.</p>
             </div>
         </section>
 
@@ -148,17 +149,17 @@
                 </article>
 
                 <article class="quiz-card" data-answer="d">
-                    <h3>같은 힘으로 밀 때 질량이 2배인 상자의 가속도는?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q3" value="a"> 2배가 된다</label>
-                        <label><input type="radio" name="q3" value="b"> 그대로이다</label>
-                        <label><input type="radio" name="q3" value="c"> 4배가 된다</label>
-                        <label><input type="radio" name="q3" value="d"> 절반보다 작아진다</label>
-                    </div>
-                    <button class="answer-button" type="button">정답 확인</button>
-                    <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>질량이 2배가 되면 무게도 2배가 되어 마찰력까지 커집니다. 그래서 가속도는 절반보다도 더 작아집니다.</p>
-                </article>
+<h3>멈춰 있는 상자가 밀어도 움직이지 않을 때, 수평 방향 힘에 대한 설명은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q3" value="a"> 미는 힘만 작용한다.</label>
+<label><input type="radio" name="q3" value="b"> 힘이 전혀 없다.</label>
+<label><input type="radio" name="q3" value="c"> 마찰력은 언제나 더 크다.</label>
+<label><input type="radio" name="q3" value="d"> 미는 힘과 마찰력이 평형을 이룬다.</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>움직이지 않는 상자에는 서로 반대 방향의 미는 힘과 마찰력이 같은 크기로 작용하여 평형을 이룹니다.</p>
+</article>
 
                 <article class="quiz-card" data-answer="a">
                     <h3>속력-시간 그래프가 가로로 평평한 직선이면 어떤 운동일까요?</h3>
@@ -175,6 +176,8 @@
             </div>
         </details>
     </main>
-    <script src="app.js?v=8"></script>
+    <script src="app.js?v=f98b325ba846"></script>
+    <script src="../curriculum-map.js?v=2ffe762f2206"></script>
+    <script src="../exam-scope.js?v=849f3853d47f"></script>
 </body>
 </html>

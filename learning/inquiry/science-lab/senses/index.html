@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#f1f5f9">
     <title>과학 실험실</title>
-    <meta name="description" content="떨어지는 자를 잡아 반응 시간을 재고, 눈·귀·피부·코·혀 가운데 어느 감각이 빠른지 견주어 보는 초등 과학 모의실험">
+    <meta name="description" content="감각 기관에서 신경계를 거쳐 근육으로 전달되는 자극과 반응의 경로를 관찰하는 중학교 모형">
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
     <link rel="stylesheet" href="styles.css?v=6">
     <link rel="stylesheet" href="sense-visual.css?v=6">
     <link rel="stylesheet" href="quiz.css?v=5">
+    <link rel="stylesheet" href="../exam-scope.css?v=1">
 </head>
 <body>
     <main>
@@ -18,20 +19,20 @@
                 <a href="../">← 과학 실험실</a>
                 <h1>감각 기관의 반응</h1>
             </div>
-            <div class="grade-tags"><span>초등 5학년</span><span>생명과학</span></div>
+            <div class="grade-tags"><span>중학교 3학년</span><span>과학</span></div>
         </header>
 
         <ol class="method-steps" aria-label="실험 방법">
             <li>어느 감각으로 신호를 받을지 고릅니다.</li>
             <li>지금 몸 상태를 고릅니다.</li>
             <li>자를 떨어뜨려 잡습니다.</li>
-            <li>잡힌 눈금으로 반응 시간을 구합니다.</li>
+            <li>감각 기관 → 신경계 → 근육의 경로를 설명합니다.</li>
         </ol>
 
         <div class="experiment-layout">
             <section class="panel control-panel" aria-labelledby="control-title">
                 <h2 id="control-title">실험 조건</h2>
-                <p class="water-standard">30 cm 자를 떨어뜨려 잡는 방법으로 잽니다</p>
+                <p class="water-standard">가상 관찰 자료입니다. 실제 반응 시간을 측정하거나 감각별 빠르기를 순위 매기는 앱이 아닙니다.</p>
 
                 <fieldset class="pick-field">
                     <legend>어느 감각으로 알아챌까요</legend>
@@ -105,9 +106,9 @@
         <section class="panel meaning-panel">
             <h2>실험 결과의 의미</h2>
             <div class="meaning-body">
-                <p><strong>신호가 지나가는 길</strong> 자극을 감각 기관이 받으면 신경이 그 소식을 뇌로 보내고, 뇌가 판단해 다시 신경으로 근육에 명령을 내립니다. 이 모든 일이 0.2초 안에 일어나지만, 아무리 빨라도 0은 될 수 없습니다.</p>
-                <p><strong>감각마다 빠르기가 다릅니다</strong> 살갗에 닿는 느낌과 소리가 가장 빠르고 눈이 그다음입니다. 냄새와 맛은 훨씬 느립니다. 냄새 알갱이가 코 속까지 퍼지고 맛 물질이 침에 녹는 데 시간이 걸리기 때문입니다.</p>
-                <p><strong>떨어진 거리로 시간을 잽니다</strong> 떨어지는 물체는 시간이 두 배가 되면 거리가 네 배가 됩니다. 그래서 자가 떨어진 거리만 읽으면 몇 초가 걸렸는지 거꾸로 알아낼 수 있습니다.</p>
+                <p><strong>신호가 지나가는 길</strong> 감각 기관이 자극을 받아들이면 감각 신경을 통해 중추 신경계로 전달됩니다. 의식적인 반응에서는 대뇌의 판단 뒤 운동 신경을 거쳐 근육이 반응합니다.</p>
+                <p><strong>감각 기관과 자극</strong> 눈은 빛, 귀는 소리, 피부는 접촉 등의 자극을 받아들입니다. 코와 혀는 화학 물질을 감지합니다. 알 수 없는 물질을 직접 맛보거나 냄새 맡지 마세요.</p>
+                <p><strong>관찰 자료의 해석</strong> 같은 조건에서 자를 잡는 실험을 반복하면 반응에 걸리는 시간이 달라질 수 있습니다. 사람·상태·실험 방법에 따라 달라지므로 한 값이나 감각의 순서를 보편적인 사실로 외우지 않습니다.</p>
             </div>
         </section>
 
@@ -127,47 +128,49 @@
                     <p class="answer-explanation" hidden>감각 기관이 먼저 받아들이고, 신경이 뇌로 전하고, 뇌가 정한 명령이 다시 신경을 타고 근육으로 갑니다. 뇌를 거치므로 아무리 빨라도 시간이 조금은 걸립니다.</p>
                 </article>
 
-                <article class="quiz-card" data-answer="d">
-                    <h3>떨어지는 자를 잡았더니 눈금이 두 배로 길어졌습니다. 반응 시간은?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q2" value="a"> 두 배가 되었다</label>
-                        <label><input type="radio" name="q2" value="b"> 네 배가 되었다</label>
-                        <label><input type="radio" name="q2" value="c"> 그대로이다</label>
-                        <label><input type="radio" name="q2" value="d"> 두 배보다 조금 짧게 늘었다</label>
-                    </div>
-                    <button class="answer-button" type="button">정답 확인</button>
-                    <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>거리가 네 배여야 시간이 두 배입니다. 거리가 두 배뿐이라면 시간은 두 배까지는 안 늘고 1.4배쯤 늘어난 것입니다. 떨어지는 물체는 점점 빨라지기 때문입니다.</p>
-                </article>
-
                 <article class="quiz-card" data-answer="a">
-                    <h3>냄새와 맛으로 신호를 알아채면 왜 훨씬 느릴까요?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q3" value="a"> 냄새 알갱이가 퍼지고 맛 물질이 녹는 데 시간이 걸려서</label>
-                        <label><input type="radio" name="q3" value="b"> 코와 혀에는 신경이 없어서</label>
-                        <label><input type="radio" name="q3" value="c"> 뇌가 냄새를 싫어해서</label>
-                        <label><input type="radio" name="q3" value="d"> 코와 혀가 뇌에서 멀어서</label>
-                    </div>
-                    <button class="answer-button" type="button">정답 확인</button>
-                    <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>빛과 소리는 곧바로 닿지만 냄새와 맛은 물질이 실제로 코와 혀에 도착해 퍼지고 녹아야 느낄 수 있습니다. 그 준비 시간 때문에 훨씬 느립니다.</p>
-                </article>
+<h3>같은 조건의 자 잡기 실험에서 잡힌 눈금이 더 길었다면?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q2" value="a"> 반응까지 시간이 더 오래 걸렸다.</label>
+<label><input type="radio" name="q2" value="b"> 반응이 반드시 더 빨랐다.</label>
+<label><input type="radio" name="q2" value="c"> 신경이 없어졌다.</label>
+<label><input type="radio" name="q2" value="d"> 근육의 길이가 늘었다.</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>같은 높이와 조건에서 더 멀리 떨어진 뒤 잡았으므로 반응까지 시간이 더 오래 걸린 것으로 해석합니다.</p>
+</article>
 
                 <article class="quiz-card" data-answer="c">
-                    <h3>졸리거나 딴생각할 때 반응이 느려지는 까닭은?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q4" value="a"> 감각 기관이 망가져서</label>
-                        <label><input type="radio" name="q4" value="b"> 신경이 짧아져서</label>
-                        <label><input type="radio" name="q4" value="c"> 뇌가 판단하는 데 시간이 더 걸려서</label>
-                        <label><input type="radio" name="q4" value="d"> 근육에 힘이 빠져서</label>
-                    </div>
-                    <button class="answer-button" type="button">정답 확인</button>
-                    <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>감각 기관과 신경은 그대로입니다. 느려지는 곳은 뇌입니다. 신호를 알아채고 결정하는 데 시간이 더 걸리므로 반응 시간이 길어집니다. 자동차 운전에서 졸음이 위험한 까닭도 이것입니다.</p>
-                </article>
+<h3>빛 자극을 받아들이는 감각 기관은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q3" value="a"> 코</label>
+<label><input type="radio" name="q3" value="b"> 혀</label>
+<label><input type="radio" name="q3" value="c"> 눈</label>
+<label><input type="radio" name="q3" value="d"> 귀</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>눈이 빛 자극을 받아들입니다. 귀는 소리, 코와 혀는 화학 물질에 의한 자극을 받아들입니다.</p>
+</article>
+
+                <article class="quiz-card" data-answer="b">
+<h3>한 번 잰 반응 시간만으로 모든 사람의 반응 속도를 단정하면 안 되는 까닭은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q4" value="a"> 사람은 자극을 받지 못해서</label>
+<label><input type="radio" name="q4" value="b"> 조건과 사람에 따라 달라 반복 관찰이 필요해서</label>
+<label><input type="radio" name="q4" value="c"> 신경은 매번 사라져서</label>
+<label><input type="radio" name="q4" value="d"> 반응에는 시간이 전혀 걸리지 않아서</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>반응 시간은 개인과 상태, 실험 방법 등에 따라 달라집니다. 같은 조건에서 반복하여 자료를 비교해야 합니다.</p>
+</article>
             </div>
         </details>
     </main>
-    <script src="app.js?v=12"></script>
+    <script src="app.js?v=feb255f564be"></script>
+    <script src="../curriculum-map.js?v=2ffe762f2206"></script>
+    <script src="../exam-scope.js?v=849f3853d47f"></script>
 </body>
 </html>

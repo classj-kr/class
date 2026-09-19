@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="styles.css?v=5">
     <link rel="stylesheet" href="semi-visual.css?v=6">
     <link rel="stylesheet" href="quiz.css?v=3">
+    <link rel="stylesheet" href="../exam-scope.css?v=1">
 </head>
 <body>
     <main>
@@ -22,9 +23,9 @@
         </header>
 
         <ol class="method-steps" aria-label="실험 방법">
-            <li>다이오드, 시간 지연, 길이 수축과 에너지 가운데 하나를 고릅니다.</li>
+            <li>다이오드, 시간 지연, 길이 수축 가운데 하나를 고릅니다.</li>
             <li>전압과 온도, 뮤온의 속력과 높이, 물체의 속력을 정합니다.</li>
-            <li>전류가 얼마나 흐를지, 뮤온이 얼마나 닿을지, 에너지가 뉴턴 식보다 얼마나 클지 예상합니다.</li>
+            <li>전류의 흐름, 시간 지연, 운동 방향의 길이 변화를 예상합니다.</li>
             <li>시작해서 회로 속 전자의 흐름, 떨어지는 뮤온, 줄어드는 우주선을 확인합니다.</li>
         </ol>
 
@@ -37,7 +38,7 @@
                     <div class="mode-buttons three">
                         <button type="button" data-mode="diode">다이오드<small>어느 쪽으로 흐르나</small></button>
                         <button type="button" data-mode="muon">시간 지연<small>뮤온이 닿을까</small></button>
-                        <button type="button" data-mode="energy">길이 수축·에너지<small>뉴턴 식과 견주기</small></button>
+                        <button type="button" data-mode="energy">길이 수축<small>운동 방향 길이 비교</small></button>
                     </div>
                 </fieldset>
                 <div id="controlArea"></div>
@@ -86,10 +87,10 @@
         <section class="panel meaning-panel">
             <h2>실험 결과의 의미</h2>
             <div class="meaning-body">
-                <p><strong>p-n 접합과 정류</strong> 양공이 많은 p형과 전자가 많은 n형 반도체를 붙이면 경계에서 전자와 양공이 만나 사라지고, 운반자가 없는 공핍층이 생겨 전류를 막습니다. p쪽에 +극을 거는 순방향에서는 공핍층이 얇아져 규소 다이오드는 0.6~0.7 V 근처부터 전류가 급히 늘고, 역방향에서는 공핍층이 두꺼워져 pA~nA의 새는 전류만 흐릅니다. 전류는 쇼클리 식 I = I₀(e^(V/V_T) − 1)을 따르며, V_T = kT/q는 실온에서 25.9 mV입니다. 온도가 오르면 I₀가 크게 늘어 다이오드가 새기 시작합니다. 이렇게 한쪽으로만 흘리는 성질이 정류이고, 교류를 직류로 바꾸는 바탕입니다.</p>
-                <p><strong>시간 지연과 뮤온</strong> 움직이는 시계는 γ = 1/√(1 − v²/c²)배 느리게 갑니다. 우주선이 대기 위 10 km 남짓에서 만드는 뮤온은 수명이 2.2 μs뿐이라 광속으로 가도 660 m밖에 못 가야 하지만, 0.99c의 뮤온은 γ ≈ 7이라 우리가 보기에 수명이 15 μs로 늘어나 지표까지 닿습니다. 뮤온이 보기에는 자기 시계는 그대로이고 대기의 두께가 1/γ로 줄어든 것입니다. 지표에서 뮤온이 잔뜩 검출되는 것이 시간 지연의 직접 증거입니다.</p>
-                <p><strong>길이 수축</strong> 움직이는 물체는 운동 방향의 길이가 L = L₀/γ로 줄어 보이고, 운동에 수직인 방향은 그대로입니다. 0.9c에서는 길이가 44 %로, 0.99c에서는 14 %로 줄지만, 일상의 속력에서는 γ가 1과 거의 같아 알아챌 수 없습니다.</p>
-                <p><strong>질량·에너지 동등성</strong> 운동 에너지는 ½mv²이 아니라 (γ − 1)mc²이고, 느릴 때만 둘이 같습니다. 광속에 가까워지면 γ가 한없이 커져 아무리 에너지를 넣어도 광속을 넘지 못합니다. 정지한 물체도 E₀ = mc²의 에너지를 지니며, 핵융합에서 줄어든 질량이 이 식대로 에너지가 됩니다.</p>
+                <p><strong>p-n 접합과 정류</strong> p형과 n형 반도체를 접합한 다이오드는 순방향에서 전류가 잘 흐르고 역방향에서는 거의 흐르지 않습니다. 이 성질을 교류의 정류에 이용합니다. 실제 전류는 전압·온도·소자에 따라 달라집니다.</p>
+                <p><strong>시간 지연과 뮤온</strong> 관측자에 대해 빠르게 움직이는 시계의 시간 간격은 그 시계와 함께 움직이며 잰 시간 간격보다 길게 측정됩니다. 빠르게 움직이는 뮤온의 관측은 시간 지연을 설명하는 사례입니다.</p>
+                <p><strong>길이 수축</strong> 관측자에 대해 움직이는 물체의 운동 방향 길이는 물체와 함께 움직이는 관측자가 잰 고유 길이보다 짧게 측정됩니다. 운동에 수직인 방향은 수축하지 않습니다. 그림은 사진이 아니라 측정 길이를 나타낸 모형입니다.</p>
+                <p><strong>질량·에너지 동등성</strong> 진공에서 빛의 속력은 광원의 운동이나 관성계에 관계없이 같습니다. 질량이 있는 물체를 광속까지 가속할 수는 없습니다. 여기서는 시간 지연·길이 수축을 정성적으로 비교합니다.</p>
             </div>
         </section>
 
@@ -109,47 +110,49 @@
                     <p class="answer-explanation" hidden>p쪽에 +극을 걸면 접합의 전위 장벽이 낮아지고 공핍층이 얇아져 n형의 전자와 p형의 양공이 경계를 건너 재결합하며 전류가 흐릅니다. 역방향에서는 장벽이 높아지고 공핍층이 두꺼워져 거의 흐르지 않습니다.</p>
                 </article>
 
-                <article class="quiz-card" data-answer="c">
-                    <h3>수명이 2.2 μs뿐인 뮤온이 10 km 위에서 지표까지 닿는 까닭은?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q2" value="a"> 뮤온이 광속보다 빠르기 때문에</label>
-                        <label><input type="radio" name="q2" value="b"> 대기 속에서 새 뮤온이 계속 생기기 때문에</label>
-                        <label><input type="radio" name="q2" value="c"> 빠르게 움직이는 뮤온의 시계가 느리게 가서 수명이 길어지기 때문에</label>
-                        <label><input type="radio" name="q2" value="d"> 뮤온이 붕괴하지 않는 입자이기 때문에</label>
-                    </div>
-                    <button class="answer-button" type="button">정답 확인</button>
-                    <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>0.99c로 움직이는 뮤온은 γ ≈ 7이라 지상에서 보면 수명이 15 μs로 늘어나 4 km 넘게 갑니다. 뮤온이 보기에는 대기가 1/7로 얇아진 것입니다. 시간 지연이 없다면 10 km를 지나며 거의 다 붕괴해야 합니다.</p>
-                </article>
-
                 <article class="quiz-card" data-answer="a">
-                    <h3>0.9c로 지나가는 우주선은 어떻게 보일까요?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q3" value="a"> 나아가는 방향의 길이만 약 44 %로 줄어 보인다</label>
-                        <label><input type="radio" name="q3" value="b"> 모든 방향이 똑같이 줄어 보인다</label>
-                        <label><input type="radio" name="q3" value="c"> 나아가는 방향으로 길어 보인다</label>
-                        <label><input type="radio" name="q3" value="d"> 크기는 그대로이고 시계만 빨라진다</label>
-                    </div>
-                    <button class="answer-button" type="button">정답 확인</button>
-                    <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>길이 수축 L = L₀/γ는 운동 방향에만 일어납니다. 0.9c에서 γ = 2.29이므로 길이는 1/2.29 ≈ 44 %가 되고, 높이와 폭은 그대로입니다. 우주선 안 사람은 자기 우주선이 멀쩡하고 오히려 밖의 세상이 줄어 보입니다.</p>
-                </article>
+<h3>빠르게 움직이는 뮤온을 지상에서 관측하는 경우, 시간 지연으로 설명할 수 있는 것은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q2" value="a"> 뮤온에 대한 수명이 더 길게 측정된다.</label>
+<label><input type="radio" name="q2" value="b"> 뮤온이 빛보다 빨라진다.</label>
+<label><input type="radio" name="q2" value="c"> 모든 관측자의 시간이 없어진다.</label>
+<label><input type="radio" name="q2" value="d"> 뮤온의 고유 수명이 무한대이다.</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>지상 관측자는 움직이는 뮤온의 수명을 고유 수명보다 길게 측정합니다. 뮤온과 함께 움직이는 관측자가 잰 고유 수명 자체가 바뀌는 것은 아닙니다.</p>
+</article>
 
-                <article class="quiz-card" data-answer="d">
-                    <h3>물체의 속력이 광속에 가까워질수록 운동 에너지는?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q4" value="a"> ½mv²대로 광속에서 ½mc²이 된다</label>
-                        <label><input type="radio" name="q4" value="b"> 일정한 값에 머문다</label>
-                        <label><input type="radio" name="q4" value="c"> 오히려 줄어든다</label>
-                        <label><input type="radio" name="q4" value="d"> 한없이 커져서 광속에는 결코 이르지 못한다</label>
-                    </div>
-                    <button class="answer-button" type="button">정답 확인</button>
-                    <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>운동 에너지 (γ − 1)mc²에서 γ = 1/√(1 − v²/c²)는 v가 c에 다가가면 한없이 커집니다. 0.99c에서는 뉴턴 식의 12배, 0.999c에서는 43배이고, 광속에 이르려면 무한한 에너지가 필요하므로 질량이 있는 물체는 광속을 넘지 못합니다.</p>
-                </article>
+                <article class="quiz-card" data-answer="b">
+<h3>관측자에 대해 빠르게 움직이는 우주선의 길이는 어떻게 측정될까요?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q3" value="a"> 모든 방향이 똑같이 줄어든다.</label>
+<label><input type="radio" name="q3" value="b"> 운동 방향만 짧아진다.</label>
+<label><input type="radio" name="q3" value="c"> 운동에 수직인 방향만 짧아진다.</label>
+<label><input type="radio" name="q3" value="d"> 항상 길어진다.</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>길이 수축은 운동 방향에서 나타납니다. 우주선과 함께 움직이는 관측자가 잰 고유 길이와 비교하는 것입니다.</p>
+</article>
+
+                <article class="quiz-card" data-answer="c">
+<h3>특수 상대성 이론의 빛에 대한 설명으로 옳은 것은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q4" value="a"> 광원이 움직이면 진공 광속이 달라진다.</label>
+<label><input type="radio" name="q4" value="b"> 모든 물체가 쉽게 광속을 넘는다.</label>
+<label><input type="radio" name="q4" value="c"> 진공 광속은 관성계에 관계없이 같다.</label>
+<label><input type="radio" name="q4" value="d"> 빛은 질량 있는 공과 같은 방식으로 속력이 더해진다.</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>진공에서 빛의 속력은 광원의 운동이나 관성계에 관계없이 일정하다는 광속 불변 원리를 따릅니다.</p>
+</article>
             </div>
         </details>
     </main>
-    <script src="app.js?v=7"></script>
+    <script src="app.js?v=71602e880629"></script>
+    <script src="../curriculum-map.js?v=2ffe762f2206"></script>
+    <script src="../exam-scope.js?v=849f3853d47f"></script>
 </body>
 </html>

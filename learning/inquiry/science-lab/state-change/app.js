@@ -20,7 +20,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const waterSurface = document.getElementById('waterSurface');
     const iceClipRect = document.getElementById('iceClipRect');
     const bubbleGroup = document.getElementById('bubbleGroup');
-    const particleGroup = document.getElementById('particleGroup');
 
     let prediction = null;
 
@@ -32,135 +31,6 @@ document.addEventListener('DOMContentLoaded', () => {
         return 'liquid';
     }
 
-    // Particle-arrangement model: the actual teaching point behind states of
-    // matter. Solid/liquid have nearly the same (high) density, so they
-    // settle into a small, tightly-packed band at the *bottom* of the frame
-    // — same as how the real water/ice sits at the bottom of the beaker, not
-    // floating mid-air. Gas is far less dense, so the same particles spread
-    // through the *entire* frame, including the space that sat empty above
-    // the settled band — matching the "부피가 크게 늘어난다" quiz answer
-    // below with an actual size difference, not just a repositioning.
-    const PARTICLE_RADIUS = 6;
-    const FRAME_SETTLED = { x: 20, y: 128, width: 140, height: 34 };
-    const FRAME_GAS = { x: 6, y: 6, width: 168, height: 168 };
-    const boundsOf = frame => ({
-        minX: frame.x + PARTICLE_RADIUS,
-        maxX: frame.x + frame.width - PARTICLE_RADIUS,
-        minY: frame.y + PARTICLE_RADIUS,
-        maxY: frame.y + frame.height - PARTICLE_RADIUS,
-    });
-    const particleBasePositions = [];
-    let particleTimerIds = []; // one setTimeout id per particle, so switching
-    let particleModes = [];    // one mode per particle — only the particles
-                                // whose mode actually changes get reset below
-
-    const STATE_MOTION = {
-        // Grid spacing in the settled band works out to ~18 units against a
-        // 12-unit-wide dot. Solid is a fast, tiny jiggle — barely moves, so
-        // it reads as rigid/vibrating-in-place. Liquid needs to read as
-        // *flowing*, not just "solid but a bit looser": it moves almost as
-        // often as solid (not the slow, rare hops it had before, which just
-        // looked like a calmer solid) but travels much further each time and
-        // glides there smoothly, so neighbors visibly drift past each other.
-        // Gas drops the lattice and roams the *whole* frame independently of
-        // any "home" position.
-        solid: { amplitude: 1, minDelay: 200, maxDelay: 420, duration: .22, clampRadius: 1.4 },
-        liquid: { amplitude: 9, minDelay: 380, maxDelay: 760, duration: .85, clampRadius: 11 },
-        gas: { amplitude: 0, minDelay: 260, maxDelay: 600, duration: .5, clampRadius: 0 },
-    };
-
-    function initParticles() {
-        const bounds = boundsOf(FRAME_SETTLED);
-        const cols = 8;
-        const rows = 2;
-        const stepX = (bounds.maxX - bounds.minX) / (cols - 1);
-        const stepY = rows > 1 ? (bounds.maxY - bounds.minY) / (rows - 1) : 0;
-        for (let r = 0; r < rows; r += 1) {
-            for (let c = 0; c < cols; c += 1) {
-                particleBasePositions.push({
-                    x: bounds.minX + c * stepX,
-                    y: bounds.minY + r * stepY,
-                });
-            }
-        }
-        particleGroup.innerHTML = particleBasePositions
-            .map(p => `<circle cx="${p.x}" cy="${p.y}" r="${PARTICLE_RADIUS}" data-ox="0" data-oy="0"></circle>`)
-            .join('');
-        particleTimerIds = new Array(particleBasePositions.length).fill(null);
-        particleModes = new Array(particleBasePositions.length).fill(null);
-        // The frame itself is a fixed constant (see the markup) sized for
-        // gas's full extent — it never resizes. Ice, water and steam can all
-        // coexist at once (freezing/melting sit at 0℃, boiling/condensing at
-        // 100℃), so growing the box for a "medium" mixed state would have no
-        // single right size; instead the same box always holds all of it,
-        // and only which particles are assigned to the cramped settled
-        // corner vs. roaming the whole box changes.
-    }
-
-    function scheduleParticle(circle, base, mode, index) {
-        const params = STATE_MOTION[mode];
-        const bounds = boundsOf(mode === 'gas' ? FRAME_GAS : FRAME_SETTLED);
-        const move = () => {
-            let nx;
-            let ny;
-            if (mode === 'gas') {
-                const targetX = bounds.minX + Math.random() * (bounds.maxX - bounds.minX);
-                const targetY = bounds.minY + Math.random() * (bounds.maxY - bounds.minY);
-                nx = targetX - base.x;
-                ny = targetY - base.y;
-            } else {
-                const prevX = parseFloat(circle.getAttribute('data-ox') || '0');
-                const prevY = parseFloat(circle.getAttribute('data-oy') || '0');
-                // Clamp to the mode's own wander radius *and* to the frame
-                // bounds — a corner particle wandering its full radius must
-                // not be pushed outside the visible box.
-                const loX = Math.max(-params.clampRadius, bounds.minX - base.x);
-                const hiX = Math.min(params.clampRadius, bounds.maxX - base.x);
-                const loY = Math.max(-params.clampRadius, bounds.minY - base.y);
-                const hiY = Math.min(params.clampRadius, bounds.maxY - base.y);
-                nx = Math.max(loX, Math.min(hiX, prevX + (Math.random() - .5) * params.amplitude * 2));
-                ny = Math.max(loY, Math.min(hiY, prevY + (Math.random() - .5) * params.amplitude * 2));
-            }
-            circle.setAttribute('data-ox', String(nx));
-            circle.setAttribute('data-oy', String(ny));
-            circle.style.transition = `transform ${params.duration}s ease-in-out`;
-            circle.style.transform = `translate(${nx.toFixed(1)}px, ${ny.toFixed(1)}px)`;
-            particleTimerIds[index] = setTimeout(move, params.minDelay + Math.random() * (params.maxDelay - params.minDelay));
-        };
-        move();
-    }
-
-    // Which of the (16) particles show as gas vs. solid vs. liquid, driven
-    // directly by the same continuous iceFraction/boilFraction that drive
-    // the beaker's water level — not a single instantaneous switch. At
-    // exactly 0℃ or 100℃ (or anywhere mid-freeze/mid-boil) this naturally
-    // shows a real mix of both arrangements at once, matching how ice+water
-    // and water+steam genuinely coexist during the transition, instead of
-    // every dot flipping together the moment a threshold is crossed.
-    function particleModeFor(index, total, ice, boil) {
-        const gasCount = Math.round(boil * total);
-        if (index < gasCount) return 'gas';
-        const remaining = total - gasCount;
-        const solidCount = Math.round(ice * remaining);
-        return index < gasCount + solidCount ? 'solid' : 'liquid';
-    }
-
-    function updateParticles(ice, boil) {
-        const total = particleBasePositions.length;
-        [...particleGroup.children].forEach((circle, i) => {
-            const mode = particleModeFor(i, total, ice, boil);
-            if (mode === particleModes[i]) return;
-            particleModes[i] = mode;
-            if (particleTimerIds[i]) clearTimeout(particleTimerIds[i]);
-            circle.setAttribute('data-ox', '0');
-            circle.setAttribute('data-oy', '0');
-            scheduleParticle(circle, particleBasePositions[i], mode, i);
-        });
-    }
-
-    // A handful of bubble circles inside the clipped water area, created once
-    // so their rise animation stays continuous across slider moves — only
-    // whether they're visible (state-gas) changes.
     function createBubbles() {
         const bounds = { xMin: 40, xMax: 200, yMin: 235, yMax: 292 };
         const count = 7;
@@ -194,7 +64,6 @@ document.addEventListener('DOMContentLoaded', () => {
         beaker.classList.add(`state-${state}`);
 
         renderPhaseVisuals();
-        updateParticles(iceFraction, boilFraction);
         renderHeatCurve(temp);
         renderData(temp, state);
     }
@@ -267,9 +136,9 @@ document.addEventListener('DOMContentLoaded', () => {
             `<div class="data-row match"><span class="data-name">지금 상태</span><span class="data-val">${STATE_LABEL[state]}</span></div>` +
             `<div class="data-row"><span class="data-name">녹는점 · 어는점</span><span class="data-val">0℃ — 얼음과 물이 함께 있는 온도</span></div>` +
             `<div class="data-row"><span class="data-name">끓는점</span><span class="data-val">100℃ — 물과 수증기가 함께 있는 온도</span></div>` +
-            `<div class="data-row"><span class="data-name">얼음이 다 녹는 데</span><span class="data-val">${meltMin.toFixed(1)}분 (온도는 0℃ 그대로)</span></div>` +
-            `<div class="data-row"><span class="data-name">물이 다 끓는 데</span><span class="data-val">${boilMin.toFixed(1)}분 (온도는 100℃ 그대로)</span></div>` +
-            `<div class="data-row"><span class="data-name">둘을 견주면</span><span class="data-val">끓는 데 ${(boilMin / meltMin).toFixed(1)}배 더 오래 걸립니다</span></div>`;
+            `<div class="data-row"><span class="data-name">모형에서 녹는 시간</span><span class="data-val">${meltMin.toFixed(1)}분 (온도는 0℃ 그대로)</span></div>` +
+            `<div class="data-row"><span class="data-name">모형에서 끓는 시간</span><span class="data-val">${boilMin.toFixed(1)}분 (온도는 100℃ 그대로)</span></div>` +
+            `<div class="data-row"><span class="data-name">이 모형의 비교</span><span class="data-val">끓는 데 ${(boilMin / meltMin).toFixed(1)}배 더 오래 걸립니다</span></div>`;
     }
 
     // Temperature sets the *rate* of freezing/boiling, not how much has
@@ -359,7 +228,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         renderPhaseVisuals();
-        updateParticles(iceFraction, boilFraction);
         setTimeout(tickPhaseChange, 150);
     }
 
@@ -390,10 +258,10 @@ document.addEventListener('DOMContentLoaded', () => {
             explanation.textContent = '끓는 동안에는 계속 열을 가해도 온도가 100℃에 머무르고, 그 열은 물을 기체로 바꾸는 데 쓰입니다.';
         } else if (state === 'solid') {
             stageCaption.textContent = `${temp}℃에서 물은 고체인 얼음 상태입니다.`;
-            explanation.textContent = '0℃보다 낮은 온도에서 물은 단단한 얼음이 됩니다. 모양은 그릇을 따르지 않고 자기 모습을 유지합니다. 온도가 0℃보다 얼마나 낮은지는 어는 속도만 바꿀 뿐입니다 — -1℃든 -10℃든 결국 다 얼지만, -10℃일수록 더 빨리 얼어붙습니다.';
+            explanation.textContent = '물은 얼어 단단한 얼음이 됩니다. 얼음은 액체인 물과 달리 담는 그릇에 따라 모양이 쉽게 달라지지 않습니다.';
         } else if (state === 'gas') {
             stageCaption.textContent = `${temp}℃에서 물은 기체인 수증기 상태입니다.`;
-            explanation.textContent = '100℃보다 높은 온도에서 물은 기체가 되어 부피가 크게 늘어나고 눈에 잘 보이지 않을 만큼 퍼집니다. 온도가 100℃보다 얼마나 높은지는 끓는 속도만 바꿀 뿐입니다 — 101℃든 110℃든 결국 다 증발하지만, 110℃일수록 더 빨리 증발합니다.';
+            explanation.textContent = '수증기는 눈에 보이지 않는 기체입니다. 끓는 물 위에서 보이는 흰 김은 작은 물방울입니다. 물은 끓지 않을 때에도 표면에서 수증기로 변할 수 있습니다.';
         } else {
             stageCaption.textContent = `${temp}℃에서 물은 액체 상태입니다.`;
             explanation.textContent = '0℃와 100℃ 사이에서 물은 흐르는 액체이며, 담는 그릇에 따라 모양이 바뀝니다.';
@@ -441,7 +309,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    initParticles();
     createBubbles();
     syncControls();
     clearResult();

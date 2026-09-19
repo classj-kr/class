@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="styles.css?v=5">
     <link rel="stylesheet" href="titration-visual.css?v=5">
     <link rel="stylesheet" href="quiz.css?v=3">
+    <link rel="stylesheet" href="../exam-scope.css?v=1">
 </head>
 <body>
     <main>
@@ -18,7 +19,7 @@
                 <a href="../">← 과학 실험실</a>
                 <h1>중화 적정</h1>
             </div>
-            <div class="grade-tags"><span>고등학교 2~3학년</span><span>화학</span></div>
+            <div class="grade-tags"><span>고등학교 2~3학년</span><span>화학반응의 세계</span></div>
         </header>
 
         <ol class="method-steps" aria-label="실험 방법">
@@ -113,8 +114,8 @@
         <section class="panel meaning-panel">
             <h2>실험 결과의 의미</h2>
             <div class="meaning-body">
-                <p><strong>당량점 부피</strong> 산의 몰수와 염기의 몰수가 같아지는 지점입니다. nMV = n′M′V′ 로 구합니다.</p>
-                <p><strong>당량점 pH</strong> 강산과 강염기는 7이지만, 약산을 강염기로 적정하면 생긴 염이 가수 분해해 7보다 커지고, 강산을 약염기로 적정하면 7보다 작아집니다.</p>
+                <p><strong>당량점 부피</strong> 산과 염기가 반응식의 양적 비율에 맞게 반응한 지점입니다. 이 모형의 일양성자산과 일가 염기에서는 몰수가 같습니다. nMV = n′M′V′ 로 구합니다.</p>
+                <p><strong>당량점 pH</strong> 25 ℃에서 강산과 강염기는 약 7이지만, 약산을 강염기로 적정하면 생긴 염이 가수 분해해 7보다 커지고, 강산을 약염기로 적정하면 7보다 작아집니다.</p>
                 <p><strong>지시약 고르기</strong> 지시약의 변색 범위가 pH가 급격히 뛰는 구간 안에 들어와야 당량점을 정확히 알 수 있습니다.</p>
             </div>
         </section>
@@ -161,21 +162,23 @@
                     <p class="answer-explanation" hidden>당량점이 8보다 큰 쪽에 있으므로 변색 범위가 8.3~10.0인 페놀프탈레인이 알맞습니다. 메틸오렌지는 3.1~4.4라 당량점보다 훨씬 먼저 변해 버립니다.</p>
                 </article>
 
-                <article class="quiz-card" data-answer="d">
-                    <h3>중화점과 당량점이 다를 수 있는 까닭은?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q4" value="a"> 부피를 잘못 재서</label>
-                        <label><input type="radio" name="q4" value="b"> 온도가 달라서</label>
-                        <label><input type="radio" name="q4" value="c"> 물이 증발해서</label>
-                        <label><input type="radio" name="q4" value="d"> 생긴 염이 가수 분해해 pH가 7이 아니기 때문</label>
-                    </div>
-                    <button class="answer-button" type="button">정답 확인</button>
-                    <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>당량점은 몰수가 같아지는 지점이고, pH 7이 되는 지점은 따로입니다. 약산이나 약염기가 끼면 당량점의 pH가 7에서 벗어납니다.</p>
-                </article>
+                <article class="quiz-card" data-answer="b">
+<h3>약산과 강염기의 적정에서 당량점의 pH가 25 ℃에서 7보다 클 수 있는 까닭은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q4" value="a"> 당량점은 무조건 pH 7이어서 불가능하다.</label>
+<label><input type="radio" name="q4" value="b"> 생긴 염의 음이온이 물과 반응하여 OH⁻를 만들기 때문이다.</label>
+<label><input type="radio" name="q4" value="c"> 반응이 전혀 없기 때문이다.</label>
+<label><input type="radio" name="q4" value="d"> 지시약이 모든 염기를 없애기 때문이다.</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>당량점은 반응식의 양적 관계로 정합니다. 아세트산 이온의 가수 분해로 당량점의 용액이 염기성을 나타낼 수 있습니다.</p>
+</article>
             </div>
         </details>
     </main>
-    <script src="app.js?v=4"></script>
+    <script src="app.js?v=27c285337e52"></script>
+    <script src="../curriculum-map.js?v=2ffe762f2206"></script>
+    <script src="../exam-scope.js?v=849f3853d47f"></script>
 </body>
 </html>

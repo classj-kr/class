@@ -1,6 +1,6 @@
 # 과학 실험실 × 2022 개정 교육과정 전수조사
 
-> 이 문서와 아래 전수표는 **1차 교정 전 조사 스냅샷**입니다. 이후 6개 앱을 기본·심화 구분 없이 학년별 시험 범위에 맞춰 수정했습니다. 현재 변경 내용과 검증 결과는 [1차 교정 기록](<E:/webprojects/class/docs/science-lab-audit-2026-09-20/correction-batch-1.md>)을 확인하세요. 아래 오류·범위조정 건수는 수정 전 집계입니다.
+> 이 문서 아래는 **교정 전 조사 스냅샷**입니다. 학년별 시험 대비 교정과 현재 판정은 [현재 결과 요약](<E:/webprojects/class/docs/science-lab-audit-2026-09-20/current-summary.md>)과 [검증 기록](<E:/webprojects/class/docs/science-lab-audit-2026-09-20/current-verification.md>)을 확인하세요. 아래 오류·범위조정 건수는 수정 전 집계입니다.
 
 조사일: 2026-09-20. **현재 앱이 교육과정을 빠짐없이, 학년 수준에 맞게 구현했다고 볼 수 없다.** 앱 수나 제목만으로 판단하지 않고, 카탈로그의 102개 앱 모두에서 HTML·JS의 조작, 결과, 설명, 퀴즈를 대조했다. 별책 9 과학 원문의 성취기준 473개와 탐구활동 261개를 역방향 표에 빠짐없이 넣었다.
 
@@ -112,18 +112,20 @@
 - 새 [보고서 생성/검증 스크립트](<E:/webprojects/class/scripts/build_science_audit_report.cjs>)는 자료 무결성을 검사한다. 수작업 판정의 교육학적 타당성을 자동으로 증명하는 테스트는 아니다.
 - 성취기준은 본문 구간만 세었다. 해설의 중복 코드·범위 표기를 별도 기준으로 세지 않았다. 3575행 해설의 `10과탐02-01-03` 표기는 본문 `10과탐2-01-03`과 관련된 표기이므로 새 기준으로 추가하지 않았다.
 
-워크스페이스 루트에서 실행:
+위 검증 결과는 교정 전 조사 시점의 기록이다. 현재 소스는 변경되었으므로 옛 `build_science_audit_report.cjs --check`는 소스 해시 불일치를 보고하는 것이 정상이다. 옛 스냅샷을 다시 생성해 덮어쓰지 않는다.
+
+현재 교정본은 워크스페이스 루트에서 검사한다:
 
 ```powershell
-node scripts/build_science_audit_report.cjs --check
+npm run test:science-audit
 ```
 
-소스 변경 후에는 자동 재생성만으로 감사 결과가 갱신되지 않는다. 변경된 앱의 수작업 판정을 먼저 재검토한 뒤 다음 순서로 갱신한다.
+추후 소스 변경 시 현재 수작업 판정 파일을 먼저 검토하고 현재 생성물만 갱신한다:
 
 ```powershell
-node scripts/audit_science_curriculum.cjs
-node scripts/build_science_audit_report.cjs
-node scripts/build_science_audit_report.cjs --check
+node scripts/sync-science-catalog.cjs --apply
+node scripts/build-current-science-audit.cjs --refresh
+npm run test:science-audit
 ```
 
-교육부 원문 파일과 앱 파일 자체는 이번 작업에서 변경하거나 삭제하지 않았다.
+당시 조사에서는 원문과 앱을 변경하지 않았다. 이후 교정에서는 앱을 수정했으며, 교육부 원문 파일은 변경·삭제하지 않았다. 현재 변경과 검증 범위는 문서 상단의 현재 결과 링크를 따른다.

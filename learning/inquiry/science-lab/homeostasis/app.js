@@ -71,8 +71,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const MEALS = { meal: { label: '밥 한 끼', hint: '포도당 75 g, 천천히', tau: 35, cond: '먹으면', condEx: '먹고 운동하면', ja: '먹자' }, drink: { label: '단 음료', hint: '포도당 75 g, 빨리', tau: 22, cond: '마시면', condEx: '마시고 운동하면', ja: '마시자' } };
     const BODIES = {
         normal: { label: '정상', hint: '인슐린 잘 나오고 잘 듦', who: '정상 몸이', SI: 0.02, beta: 0.3, ex: 0 },
-        t1: { label: '인슐린이 안 나옴', hint: '1형 당뇨', who: '인슐린이 안 나오는 몸이', SI: 0.02, beta: 0, ex: 0 },
-        t2: { label: '인슐린이 잘 안 듦', hint: '2형 당뇨', who: '인슐린이 잘 안 듣는 몸이', SI: 0.004, beta: 0.09, ex: 0 },
+        t1: { label: '인슐린이 안 나옴', hint: '분비 감소 조건', who: '인슐린이 안 나오는 몸이', SI: 0.02, beta: 0, ex: 0 },
+        t2: { label: '인슐린이 잘 안 듦', hint: '작용 감소 조건', who: '인슐린이 잘 안 듣는 몸이', SI: 0.004, beta: 0.09, ex: 0 },
         exercise: { label: '정상 + 식후 운동', hint: '근육이 스스로 포도당 씀', who: '정상 몸이', SI: 0.02, beta: 0.3, ex: 0.5 },
     };
     const G_BASE = 90, G_VOL = 150, P1 = 0.02, TAU_I = 10, G_END = 180, G_DOSE = 75;
@@ -209,7 +209,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    const PRED_G = [{ value: 'normal', label: '140 아래로 돌아옴 (정상)' }, { value: 'elevated', label: '140~199에 머묾' }, { value: 'high', label: '200 넘게 높음' }];
+    const PRED_G = [{ value: 'normal', label: '140 미만 (모형 비교 구간)' }, { value: 'elevated', label: '140~199에 머묾' }, { value: 'high', label: '200 넘게 높음' }];
     const PRED_T = [{ value: 'hold', label: '36~37.5 ℃ 유지' }, { value: 'rise', label: '38 ℃ 넘게 오름' }, { value: 'drop', label: '35.5 ℃ 아래로 내림' }];
     const PRED_W = [{ value: 'much', label: '오줌이 많고 옅음' }, { value: 'little', label: '오줌이 적고 진함' }, { value: 'usual', label: '평소와 비슷' }];
 
@@ -259,9 +259,9 @@ document.addEventListener('DOMContentLoaded', () => {
         out += `<text class="gen-text prose" x="0" y="0">혈당 ${Math.round(G)} mg/dL</text>`;
         out += `<text class="trait-text prose" x="0" y="0">먹은 뒤 ${Math.round(t)}분</text>`;
         out += `<text class="trait-text prose" style="fill:#059669" x="0" y="0">인슐린 ${Math.round(I)} (평소 0)</text>`;
-        const VERD = { normal: '정상', elevated: '당뇨 전 단계 범위', high: '당뇨 범위' };
+        const VERD = { normal: '낮은 비교 구간', elevated: '중간 비교 구간', high: '높은 비교 구간' };
         out += `<text class="verdict-text" fill="#d97706" x="20" y="16">${state.progress >= 1 ? `${MEALS[state.meal].label} · ${b.label}: 최고 ${Math.round(run.peak)} → 2시간 뒤 ${a.g120} — ${VERD[a.verdict]}` : `${MEALS[state.meal].label} · ${b.label} (${b.hint})`}</text>`;
-        out += `<text class="note-text" x="20" y="208">포도당 75 g 부하 검사 기준: 2시간 뒤 140 미만 정상 · 140~199 당뇨 전 단계 · 200 이상 당뇨</text>`;
+        out += `<text class="note-text" x="20" y="208">가상 모형의 비교 구간이며 진단 기준으로 사용하지 않습니다</text>`;
         return out;
     }
 
@@ -270,7 +270,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const { run } = a;
         const X0 = 50, X1 = 430, Y0 = 150, Y1 = 40, GMAX = 350;
         const xOf = tt => X0 + tt / G_END * (X1 - X0), yOf = g => Y0 - clamp(g, 0, GMAX) / GMAX * (Y0 - Y1);
-        let out = `<text class="axis-title" x="${X0}" y="18">혈당–시간 — 초록 띠가 정상 범위(70~140), 점선은 정상 몸이 밥을 먹었을 때</text>`;
+        let out = `<text class="axis-title" x="${X0}" y="18">혈당–시간 — 초록 띠는 모형의 비교 구간, 점선은 정상 몸이 밥을 먹었을 때</text>`;
         out += `<rect class="band" x="${X0}" y="${yOf(140).toFixed(1)}" width="${X1 - X0}" height="${(yOf(70) - yOf(140)).toFixed(1)}"/>`;
         [0, 100, 200, 300].forEach(g => { out += `<line class="grid-line" x1="${X0}" y1="${yOf(g).toFixed(1)}" x2="${X1}" y2="${yOf(g).toFixed(1)}"/><text class="axis-text" x="${X0 - 6}" y="${(yOf(g) + 3.5).toFixed(1)}" text-anchor="end">${g}</text>`; });
         out += `<line class="ref-line" style="stroke:#ff7a59" x1="${X0}" y1="${yOf(200).toFixed(1)}" x2="${X1}" y2="${yOf(200).toFixed(1)}"/>`;
@@ -327,7 +327,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const { run } = a;
         const X0 = 50, X1 = 430, Y0 = 150, Y1 = 40;
         const xOf = m => X0 + m / (T_HOURS * 60) * (X1 - X0), yOf = tc => Y0 - (clamp(tc, 32, 42) - 32) / 10 * (Y0 - Y1);
-        let out = `<text class="axis-title" x="${X0}" y="18">체온–시간 — 초록 띠가 정상 범위, 점선은 정상 몸일 때</text>`;
+        let out = `<text class="axis-title" x="${X0}" y="18">체온–시간 — 초록 띠는 모형의 비교 구간, 점선은 정상 몸일 때</text>`;
         out += `<rect class="band" x="${X0}" y="${yOf(37.5).toFixed(1)}" width="${X1 - X0}" height="${(yOf(36) - yOf(37.5)).toFixed(1)}"/>`;
         [32, 34, 36, 38, 40, 42].forEach(tc => { out += `<line class="grid-line" x1="${X0}" y1="${yOf(tc).toFixed(1)}" x2="${X1}" y2="${yOf(tc).toFixed(1)}"/><text class="axis-text" x="${X0 - 6}" y="${(yOf(tc) + 3.5).toFixed(1)}" text-anchor="end">${tc}</text>`; });
         for (let m = 0; m <= 60; m += 10) out += `<text class="axis-text" x="${xOf(m).toFixed(1)}" y="${Y0 + 14}" text-anchor="middle">${m}</text>`;
@@ -387,25 +387,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function noteFor(a) {
-        if (a.kind === 'glucose') {
-            const { run } = a, b = BODIES[state.body];
-            return `<div class="data-row"><span class="data-name">먹은 것</span><span class="data-val">${MEALS[state.meal].label} — 포도당 75 g, ${MEALS[state.meal].tau}분쯤에 가장 빨리 흡수됨</span></div>` +
-                `<div class="data-row"><span class="data-name">몸</span><span class="data-val">${b.label}: 인슐린 분비 ${b.beta === 0 ? '없음' : b.beta < 0.2 ? '적음' : '정상'} · 인슐린 효과 ${b.SI < 0.01 ? '약함(정상의 5분의 1)' : '정상'}${b.ex ? ' · 운동으로 근육이 인슐린 없이도 포도당 씀' : ''}</span></div>` +
-                `<div class="data-row"><span class="data-name">혈당</span><span class="data-val">최고 ${Math.round(run.peak)} mg/dL (${run.tPeak}분) · 2시간 뒤 ${a.g120}</span></div>` +
-                `<div class="data-row match"><span class="data-name">판정</span><span class="data-val">${a.verdict === 'normal' ? '140 미만 — 정상' : a.verdict === 'elevated' ? '140~199 — 당뇨 전 단계 범위' : '200 이상 — 당뇨 범위'} (포도당 부하 검사 기준)</span></div>`;
-        }
-        if (a.kind === 'temp') {
-            const { run } = a, w = WEATHERS[state.weather], s = STATES[state.bstate], last = run.t.length - 1;
-            return `<div class="data-row"><span class="data-name">날씨</span><span class="data-val">${w.label} (${w.hint}) · 몸이 내는 열 ${BASAL_W + w.ex} W</span></div>` +
-                `<div class="data-row"><span class="data-name">몸</span><span class="data-val">${s.label} — 땀 ${s.sweat ? '최대 600 W' : '못 냄'} · 떨림 ${s.shiver ? '최대 350 W' : '못 함'} · 피부 혈관 조절</span></div>` +
-                `<div class="data-row"><span class="data-name">1시간 뒤</span><span class="data-val">체온 ${run.end.toFixed(1)} ℃ · 만드는 열 ${Math.round(run.make[last])} W · 내보내는 열 ${Math.round(run.loss[last])} W</span></div>` +
-                `<div class="data-row match"><span class="data-name">열용량</span><span class="data-val">70 kg 몸을 1 ℃ 바꾸는 데 245 kJ — 200 W가 어긋나면 1시간에 약 3 ℃</span></div>`;
-        }
-        const { run } = a, it = INTAKES[state.intake], last = run.t.length - 1;
-        return `<div class="data-row"><span class="data-name">한 일</span><span class="data-val">${it.label}${it.water ? ` — 물 ${it.water} L (몸속 물 40 L의 2.5 %)` : it.salt ? ` — 소금 5 g = 녹은 알갱이 ${it.salt} mOsm` : ''}</span></div>` +
-            `<div class="data-row"><span class="data-name">진하기</span><span class="data-val">${Math.min(...run.osm).toFixed(1)} ~ ${Math.max(...run.osm).toFixed(1)} mOsm/kg (평소 285)</span></div>` +
-            `<div class="data-row"><span class="data-name">1시간 뒤 오줌</span><span class="data-val">1분에 ${a.flow60.toFixed(1)} mL · ${fmtN(a.uosm60)} mOsm/kg</span></div>` +
-            `<div class="data-row match"><span class="data-name">3시간 동안</span><span class="data-val">오줌 ${fmtN(run.bladder[last])} mL${run.drank[last] ? ` · 목말라 마신 물 ${fmtN(run.drank[last] * 1000)} mL` : ''}</span></div>`;
+        return '<p>수치·시간·비교 구간은 학습을 위한 가상 설정입니다. 실제 검사값·진단·치료 지침이 아닙니다.</p><p>조건을 하나씩 바꾸어 혈당, 체온, 물의 양을 조절하는 음성 되먹임을 비교합니다. 인슐린·글루카곤·항이뇨 호르몬의 역할을 구별하세요.</p>';
     }
 
     function render() {
@@ -447,40 +429,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function finish() {
-        const a = render();
-        resultEmpty.hidden = true;
-        resultContent.hidden = false;
-        let s = '';
-        if (a.kind === 'glucose') {
-            const { run } = a, b = BODIES[state.body], m = MEALS[state.meal];
-            labelA.textContent = '최고 혈당'; valueA.textContent = `${Math.round(run.peak)} mg/dL (${run.tPeak}분)`;
-            labelB.textContent = '2시간 뒤'; valueB.textContent = `${a.g120} mg/dL`;
-            s = `${m.label}(포도당 75 g)를 ${m.ja} 혈당이 ${run.tPeak}분에 ${Math.round(run.peak)} mg/dL까지 올랐고, 2시간 뒤 ${a.g120} mg/dL이 되었습니다. `;
-            if (state.body === 'normal' || state.body === 'exercise') s += `혈당이 오르자 이자의 β세포가 인슐린을 내어 근육·지방 세포가 포도당을 들이고 간이 글리코젠으로 저장했습니다. 혈당이 내려오면 인슐린도 줄고, 90 아래로 내려가면 글루카곤이 나와 간이 포도당을 꺼내므로 90 근처에 머뭅니다. ${state.body === 'exercise' ? '운동하는 근육은 인슐린 없이도 포도당을 써서 봉우리가 더 낮았습니다. ' : ''}${m.tau < 30 ? '단 음료는 빨리 흡수되어 봉우리가 높고 급합니다. ' : ''}`;
-            else if (state.body === 't1') s += `이자가 인슐린을 내지 못해 세포가 포도당을 들이지 못했습니다. 혈당은 간이 조금씩 거두는 만큼만 천천히 내려와 2시간 뒤에도 200을 넘었습니다(1형 당뇨). 인슐린 주사가 필요합니다. `;
-            else s += `인슐린은 나왔지만 세포가 잘 반응하지 않아(인슐린 저항) 포도당이 천천히만 들어갔습니다. 봉우리가 높고 2시간 뒤에도 140~199 사이에 머물렀습니다(2형 당뇨 범위). 운동과 식사 조절이 인슐린이 잘 듣게 도와줍니다. `;
-            s += `포도당 75 g을 마신 뒤 2시간 혈당으로 정상(140 미만)·당뇨 전 단계(140~199)·당뇨(200 이상)를 가르는 것이 포도당 부하 검사입니다.`;
-        } else if (a.kind === 'temp') {
-            const { run } = a, w = WEATHERS[state.weather], s2 = STATES[state.bstate], last = run.t.length - 1;
-            labelA.textContent = '1시간 뒤 체온'; valueA.textContent = `${run.end.toFixed(1)} ℃`;
-            labelB.textContent = '열 수지'; valueB.textContent = `${Math.round(run.make[last])} W 만들고 ${Math.round(run.loss[last])} W 내보냄`;
-            s = `${w.label}(${w.hint})에서 ${s2.adj} ${Math.round(run.make[last])} W를 만들고 ${Math.round(run.loss[last])} W를 내보내 1시간 뒤 ${run.end.toFixed(1)} ℃가 되었습니다. `;
-            if (a.verdict === 'hold') s += state.weather === 'cold' ? `추위에 피부 혈관이 좁아져 열을 아끼고, 체온이 36.8 ℃ 아래로 내려가자 떨림이 ${Math.round(run.shiver[last])} W를 더 내어 빼앗기는 열을 메웠습니다. ` : state.weather === 'hot' ? `공기가 35 ℃라 피부로 내보낼 수 있는 열은 거의 없지만, 땀 ${Math.round(run.sweat[last])} W가 증발하며 운동으로 낸 열을 거두어 체온이 ${run.end.toFixed(1)} ℃ 안팎에서 멈췄습니다. ` : `쉴 때 내는 80 W가 피부로 그대로 빠져나가 균형을 이룹니다. `;
-            else if (a.verdict === 'rise') s += `땀을 낼 수 없으니 운동으로 낸 300 W 넘는 열이 갈 데가 없어 그대로 쌓였습니다. 245 kJ이 1 ℃이므로 한 시간에 4 ℃ 넘게 올라 열사병(40 ℃ 이상)에 이릅니다. 더운 날 물을 충분히 마셔야 하는 까닭입니다. `;
-            else s += `떨림이 없으니 젖은 옷과 바람으로 빼앗기는 ${Math.round(run.loss[last])} W를 80 W로는 메울 수 없어 체온이 계속 내려갔고 저체온증(35 ℃ 아래) 범위에 들어섰습니다. 술을 마시면 혈관이 넓어지고 떨림이 둔해져 추운 날 더 위험합니다. `;
-            s += `체온 조절은 몸이 만드는 열과 내보내는 열의 저울질이며, 땀·떨림·혈관이 그 저울을 맞추는 손입니다.`;
-        } else {
-            const { run } = a, it = INTAKES[state.intake], last = run.t.length - 1;
-            labelA.textContent = '1시간 뒤 오줌'; valueA.textContent = `1분에 ${a.flow60.toFixed(1)} mL`;
-            labelB.textContent = '진하기'; valueB.textContent = `${fmtN(a.uosm60)} mOsm/kg`;
-            if (state.intake === 'water') s = `맹물 1 L를 마시자 몸속 물 40 L가 옅어져 진하기가 ${Math.min(...run.osm).toFixed(1)} mOsm/kg까지 내렸습니다. 뇌하수체가 항이뇨 호르몬을 거의 내지 않아 콩팥이 물을 붙잡지 않았고, 오줌이 1분에 ${Math.max(...run.flow).toFixed(0)} mL 가까이 옅게(${fmtN(Math.min(...run.uosm))} mOsm/kg) 나와 두 시간쯤 만에 남은 물을 다 내보냈습니다. `;
-            else if (state.intake === 'salt') s = `소금 5 g이 흡수되어 몸속 물이 ${Math.max(...run.osm).toFixed(1)} mOsm/kg까지 진해졌습니다. 뇌하수체가 항이뇨 호르몬을 많이 내어 콩팥이 물을 다시 빨아들였고, 오줌은 1분에 ${Math.min(...run.flow).toFixed(1)} mL로 줄며 ${fmtN(Math.max(...run.uosm))} mOsm/kg까지 진해졌습니다. 갈증 중추가 켜져 물을 ${fmtN(run.drank[last] * 1000)} mL 마시게 했고, 물이 들어오며 진하기가 천천히 돌아왔습니다. `;
-            else s = `아무것도 마시지 않았습니다. 진하기 285 mOsm/kg에서 항이뇨 호르몬이 알맞게 나와 오줌이 1분에 ${a.flow60.toFixed(1)} mL, ${fmtN(a.uosm60)} mOsm/kg로 평소대로 나왔습니다. 마시지 않는 동안 숨과 피부로도 물이 조금씩 빠져 진하기가 ${Math.max(...run.osm).toFixed(1)}까지 천천히 올랐고, 그만큼 오줌이 조금씩 줄고 진해졌습니다. `;
-            s += `오줌의 양과 진하기를 스무 배 넘게 바꾸어 몸속 물의 진하기를 1~2 % 안에서 지키는 것이 콩팥과 항이뇨 호르몬의 되먹임입니다.`;
-        }
-        predictionResult.textContent = !state.prediction ? '다음에는 결과를 먼저 예상해 보세요.'
-            : state.prediction === a.verdict ? '예상이 맞았습니다.' : '예상과 다른 결과입니다.';
-        explanation.textContent = s;
+        const a=render();resultEmpty.hidden=true;resultContent.hidden=false;
+        labelA.textContent='관찰';valueA.textContent=a.kind==='glucose'?'혈당 조절':a.kind==='temp'?'체온 조절':'몸속 조건 조절';
+        labelB.textContent='핵심';valueB.textContent='음성 되먹임';
+        predictionResult.textContent=!state.prediction?'다음에는 변화를 먼저 예상해 보세요.':state.prediction===a.verdict?'이 모형의 예상이 맞았습니다.':'이 모형의 결과와 다릅니다.';
+        explanation.textContent='일정한 범위를 벗어나는 변화에 반대 방향의 조절 반응이 일어나 항상성 유지에 기여합니다. 조건에 따라 조절이 충분하지 않을 수도 있습니다. 곡선과 수치는 가상 모형이며 질병의 진단·유형 구별이나 치료 결정을 위해 사용하지 않습니다.';
     }
 
     function settingsChanged() {

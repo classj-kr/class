@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#f1f5f9">
     <title>과학 실험실</title>
-    <meta name="description" content="구멍 난 막으로 나뉜 두 칸에 산소 알갱이를 다른 수로 넣고 온도를 바꾸어 20초 뒤 양쪽 수가 얼마나 같아지는지 재고, 적혈구를 맹물·소금물 0.9 %·설탕물 0.9 %·설탕물 10 %·포도당 5 %·소금물 3 %에 넣어 무게 비율이 아니라 녹은 알갱이 수가 물의 방향을 정하는 것을 확인하는 고등학교 통합과학 모의실험">
+    <meta name="description" content="막을 통한 확산과 비투과성 용질의 농도 차이에 따른 물의 이동을 비교하는 통합과학 학습 모형">
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
     <link rel="stylesheet" href="styles.css?v=5">
     <link rel="stylesheet" href="membrane-visual.css?v=6">
     <link rel="stylesheet" href="quiz.css?v=3">
+    <link rel="stylesheet" href="../exam-scope.css?v=1">
 </head>
 <body>
     <main>
@@ -18,13 +19,13 @@
                 <a href="../">← 과학 실험실</a>
                 <h1>세포막과 물질 이동 — 확산과 삼투</h1>
             </div>
-            <div class="grade-tags"><span>고등학교 1학년</span><span>생명과학</span></div>
+            <div class="grade-tags"><span>고등학교 1학년</span><span>통합과학1</span></div>
         </header>
 
         <ol class="method-steps" aria-label="실험 방법">
             <li>알갱이가 막을 건너 퍼지는 확산을 볼지, 세포에 물이 드나드는 삼투를 볼지 고릅니다.</li>
-            <li>확산은 양쪽 알갱이 수와 온도를, 삼투는 적혈구를 담글 용액을 정합니다.</li>
-            <li>20초 뒤 양쪽 수가 어떻게 될지, 세포가 부풀지 쪼그라들지 예상합니다.</li>
+            <li>확산은 양쪽 알갱이 수와 온도를, 삼투는 동물 세포 모형 밖의 용질 농도을 정합니다.</li>
+            <li>가상 시간 20초 뒤 양쪽 수가 어떻게 될지, 세포가 부풀지 쪼그라들지 예상합니다.</li>
             <li>시작해서 알갱이가 건너가는 모습과 세포의 크기 변화를 확인합니다.</li>
         </ol>
 
@@ -45,7 +46,7 @@
                     <div class="prediction-buttons" id="predictionArea"></div>
                 </fieldset>
                 <div class="run-row">
-                    <button class="run-button" id="checkBtn" type="button">20초 흘려 보기</button>
+                    <button class="run-button" id="checkBtn" type="button">모형 실행</button>
                     <button class="reset-button" id="resetBtn" type="button">처음으로</button>
                 </div>
                 <section class="result-box" aria-labelledby="result-title" aria-live="polite">
@@ -86,9 +87,9 @@
             <h2>실험 결과의 의미</h2>
             <div class="meaning-body">
                 <p><strong>확산</strong> 알갱이는 저마다 아무 방향으로나 제멋대로 움직입니다. 그런데 진한 쪽에는 알갱이가 많아 막을 건너는 수도 많고 옅은 쪽에서 건너오는 수는 적으므로, 전체로 보면 진한 쪽에서 옅은 쪽으로 옮겨 가 결국 양쪽이 같아집니다. 같아진 뒤에도 알갱이는 계속 오가지만 건너는 수가 서로 같아 더 변하지 않습니다. 온도가 높으면 알갱이가 빨라지고 물이 덜 끈끈해 더 빨리 퍼집니다. 허파에서 산소가 피로, 이산화 탄소가 피에서 허파로 옮겨 가는 것이 확산입니다.</p>
-                <p><strong>세포막은 골라서 통과시킨다</strong> 세포막은 산소·이산화 탄소·물처럼 작은 알갱이는 그냥 지나가게 하지만, 소금·설탕처럼 물에 녹은 알갱이는 막 단백질의 도움 없이는 통과시키지 않습니다. 그래서 세포 안팎에 녹은 알갱이의 진하기가 다르면 알갱이 대신 물이 움직입니다.</p>
-                <p><strong>삼투</strong> 막을 지날 수 있는 물이, 녹은 알갱이가 진한 쪽으로 옮겨 가는 것이 삼투입니다. 세포를 맹물에 넣으면 물이 세포 안으로 들어와 부풀고, 진한 소금물에 넣으면 물이 빠져나가 쪼그라듭니다. 세포 안과 같은 진하기(소금물 0.9 %)에서는 드나드는 물이 같아 크기가 변하지 않습니다. 중요한 것은 알갱이의 종류가 아니라 수여서, 설탕물 10 %도 소금물 0.9 %와 같은 효과를 냅니다.</p>
-                <p><strong>그램이 아니라 알갱이 수</strong> 소금물 0.9 %와 설탕물 0.9 %는 무게 비율이 같지만, 설탕 알갱이는 소금 알갱이보다 6배 무겁고 소금은 물에서 두 알갱이로 갈라지므로 알갱이 수는 11배나 다릅니다. 그래서 적혈구는 설탕물 0.9 %에서는 터지고, 설탕물 10 %나 포도당 5 %에서는 소금물 0.9 %에서처럼 그대로입니다. 병원 수액이 소금물 0.9 % 또는 포도당 5 %인 까닭이고, 배추를 소금에 절이면 물이 빠지는 까닭도 같습니다.</p>
+                <p><strong>세포막은 골라서 통과시킨다</strong> 세포막은 물질의 종류에 따라 통과하는 정도가 다릅니다. 산소와 이산화 탄소는 막을 통과할 수 있으며 물의 이동에는 막 단백질도 관여할 수 있습니다. 이 모형은 용질이 통과하지 못하고 물이 통과하는 조건을 따로 정해 비교합니다.</p>
+                <p><strong>삼투</strong> 물을 통과시키고 특정 용질을 통과시키지 않는 막을 사이에 두면, 물은 대체로 그 용질의 농도가 낮은 쪽에서 높은 쪽으로 순이동합니다. 동물 세포 모형에서 밖이 더 옅으면 부풀고, 밖이 더 진하면 줄어드는 모습을 비교합니다. 두 방향의 물 이동 자체가 멈춘다는 뜻은 아닙니다.</p>
+                <p><strong>그램이 아니라 알갱이 수</strong> 물질 이동은 막의 투과성, 농도 차이 등 조건에 따라 달라집니다. 화면은 막을 통과하지 못하는 같은 용질로 비교한 모형입니다. 실제 세포의 수송 과정이나 의료용 용액·수액의 선택을 설명하는 모형이 아닙니다.</p>
             </div>
         </section>
 
@@ -109,46 +110,48 @@
                 </article>
 
                 <article class="quiz-card" data-answer="a">
-                    <h3>소금물 0.9 %에서는 그대로인 적혈구가 설탕물 0.9 %에서는 부풀어 터집니다. 까닭은?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q2" value="a"> 무게는 같아도 설탕물에는 녹은 알갱이 수가 훨씬 적어, 세포 안이 더 진하기 때문에</label>
-                        <label><input type="radio" name="q2" value="b"> 설탕이 세포 안으로 들어가 세포를 부풀리기 때문에</label>
-                        <label><input type="radio" name="q2" value="c"> 설탕물이 소금물보다 더 진하기 때문에</label>
-                        <label><input type="radio" name="q2" value="d"> 설탕이 세포막을 녹이기 때문에</label>
-                    </div>
-                    <button class="answer-button" type="button">정답 확인</button>
-                    <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>삼투를 정하는 것은 녹은 알갱이의 수입니다. 설탕 알갱이는 소금보다 6배 무겁고 갈라지지 않아, 같은 9 g에 든 알갱이 수가 소금물의 11분의 1입니다. 세포 안이 더 진하니 물이 안으로 들어와 터집니다.</p>
-                </article>
-
-                <article class="quiz-card" data-answer="d">
-                    <h3>병원에서 혈관에 넣는 링거액을 소금물 0.9 %로 맞추는 까닭은?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q3" value="a"> 소금이 병균을 죽이기 때문에</label>
-                        <label><input type="radio" name="q3" value="b"> 맹물은 너무 차갑기 때문에</label>
-                        <label><input type="radio" name="q3" value="c"> 0.9 %가 가장 싸기 때문에</label>
-                        <label><input type="radio" name="q3" value="d"> 세포 안과 진하기가 같아 적혈구가 부풀거나 쪼그라들지 않기 때문에</label>
-                    </div>
-                    <button class="answer-button" type="button">정답 확인</button>
-                    <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>0.9 % 소금물은 세포 속과 녹은 알갱이의 수가 같아 물이 드나드는 양이 같습니다. 맹물이면 적혈구가 터지고, 진한 소금물이면 쪼그라듭니다.</p>
-                </article>
+<h3>용질은 통과하지 못하고 물은 통과하는 막으로 둘러싸인 세포의 바깥이 더 진할 때는?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q2" value="a"> 물이 밖으로 더 많이 나간다.</label>
+<label><input type="radio" name="q2" value="b"> 물이 반드시 안으로만 들어간다.</label>
+<label><input type="radio" name="q2" value="c"> 용질이 모두 사라진다.</label>
+<label><input type="radio" name="q2" value="d"> 물의 이동이 처음부터 없다.</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>비투과성 용질의 농도 차이 때문에 물이 세포 밖으로 순이동할 수 있습니다. 실제 결과는 막의 성질과 조건에 따라 달라집니다.</p>
+</article>
 
                 <article class="quiz-card" data-answer="b">
-                    <h3>배추에 소금을 뿌려 두면 물이 빠져나와 축 늘어지는 까닭은?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q4" value="a"> 소금이 배추 세포 안으로 들어가 세포를 밀어내기 때문에</label>
-                        <label><input type="radio" name="q4" value="b"> 밖이 더 진해져 세포 속의 물이 진한 바깥으로 옮겨 가기 때문에</label>
-                        <label><input type="radio" name="q4" value="c"> 소금이 세포벽을 녹이기 때문에</label>
-                        <label><input type="radio" name="q4" value="d"> 소금이 배추를 뜨겁게 하기 때문에</label>
-                    </div>
-                    <button class="answer-button" type="button">정답 확인</button>
-                    <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>소금은 세포막을 지나지 못하지만 물은 지납니다. 바깥이 진해지면 물이 진한 쪽으로 빠져나가 세포가 쪼그라들고 배추가 늘어집니다.</p>
-                </article>
+<h3>양쪽 농도가 같아져 순이동이 거의 없을 때 알갱이는?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q3" value="a"> 모두 움직임을 멈춘다.</label>
+<label><input type="radio" name="q3" value="b"> 양쪽으로 계속 움직인다.</label>
+<label><input type="radio" name="q3" value="c"> 막으로 변한다.</label>
+<label><input type="radio" name="q3" value="d"> 한 방향으로만 이동한다.</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>평형에서도 알갱이는 계속 움직입니다. 두 방향의 이동량이 평균적으로 같아 전체 양이 거의 변하지 않습니다.</p>
+</article>
+
+                <article class="quiz-card" data-answer="c">
+<h3>물질 이동 실험에서 세포막의 역할을 설명한 것은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q4" value="a"> 모든 물질을 같은 정도로 통과시킨다.</label>
+<label><input type="radio" name="q4" value="b"> 어떤 물질도 통과시키지 않는다.</label>
+<label><input type="radio" name="q4" value="c"> 물질에 따라 통과하는 정도가 다르다.</label>
+<label><input type="radio" name="q4" value="d"> 농도와 관계없이 물을 한 방향으로만 보낸다.</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>세포막의 선택적 투과성과 안팎 조건을 함께 고려해야 합니다.</p>
+</article>
             </div>
         </details>
     </main>
-    <script src="app.js?v=10"></script>
+    <script src="app.js?v=5c1965f7afb6"></script>
+    <script src="../curriculum-map.js?v=2ffe762f2206"></script>
+    <script src="../exam-scope.js?v=849f3853d47f"></script>
 </body>
 </html>

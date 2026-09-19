@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="styles.css?v=6">
     <link rel="stylesheet" href="buoy-visual.css?v=6">
     <link rel="stylesheet" href="quiz.css?v=4">
+    <link rel="stylesheet" href="../exam-scope.css?v=1">
 </head>
 <body>
     <main>
@@ -18,7 +19,7 @@
                 <a href="../">← 과학 실험실</a>
                 <h1>밀도·부력·기체 압력</h1>
             </div>
-            <div class="grade-tags"><span>중학교 2학년</span><span>물리</span></div>
+            <div class="grade-tags"><span>중학교 2학년</span><span>과학</span></div>
         </header>
 
         <ol class="method-steps" aria-label="실험 방법">
@@ -71,7 +72,7 @@
                 </div>
 
                 <div id="gasControls" hidden>
-                    <p class="water-standard">기준: 50 mL에서 100 kPa · 온도 일정 · 기체 입자 수 일정</p>
+                    <p class="water-standard">기준 부피 50 mL · 온도 일정 · 기체 입자 수 일정</p>
 
                     <div class="range-heading">
                         <label for="gasVolRange">기체의 부피</label>
@@ -122,8 +123,8 @@
             <h2>실험 결과의 의미</h2>
             <div class="meaning-body">
                 <p><strong>밀도</strong> 단위 부피당 질량입니다. ρ = m / V</p>
-                <p><strong>뜨는 조건</strong> 물체의 밀도가 액체보다 작으면 뜨고, 크면 가라앉습니다. 뜰 때 잠긴 부피의 비율은 두 밀도의 비와 같습니다.</p>
-                <p><strong>보일 법칙</strong> 온도가 일정할 때 기체의 압력과 부피의 곱은 일정합니다. P V = 일정</p>
+                <p><strong>뜨는 조건</strong> 물체의 밀도가 액체보다 작으면 뜨고, 크면 가라앉습니다. </p>
+                <p><strong>압력과 부피</strong> 온도와 기체의 양이 일정할 때 부피가 줄면 압력이 커집니다. 좁은 공간에서 입자가 벽에 충돌하는 횟수가 많아지기 때문입니다.</p>
             </div>
         </section>
 
@@ -143,18 +144,18 @@
                     <p class="answer-explanation" hidden>ρ = m / V = 80 / 100 = 0.8 g/cm³ 입니다.</p>
                 </article>
 
-                <article class="quiz-card" data-answer="c">
-                    <h3>밀도 0.8 g/cm³인 물체를 물(1.0)에 넣으면 잠기는 부피의 비율은?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q2" value="a"> 20 %</label>
-                        <label><input type="radio" name="q2" value="b"> 100 %</label>
-                        <label><input type="radio" name="q2" value="c"> 80 %</label>
-                        <label><input type="radio" name="q2" value="d"> 뜨지 않는다</label>
-                    </div>
-                    <button class="answer-button" type="button">정답 확인</button>
-                    <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>뜬 물체는 부력과 무게가 같아지므로, 잠긴 부피의 비율이 물체 밀도와 액체 밀도의 비인 0.8/1.0 = 80 %가 됩니다.</p>
-                </article>
+                <article class="quiz-card" data-answer="b">
+<h3>밀도가 0.8 g/cm³인 균일한 물체를 물(1.0 g/cm³)에 넣으면?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q2" value="a"> 가라앉는다.</label>
+<label><input type="radio" name="q2" value="b"> 일부가 물 위로 뜬다.</label>
+<label><input type="radio" name="q2" value="c"> 반드시 물에 녹는다.</label>
+<label><input type="radio" name="q2" value="d"> 질량이 없어진다.</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>이 모형에서는 물체의 밀도가 물보다 작으므로 일부가 물 위로 뜹니다.</p>
+</article>
 
                 <article class="quiz-card" data-answer="a">
                     <h3>물에 가라앉던 물체가 소금물에서는 뜰 수 있는 까닭은?</h3>
@@ -169,21 +170,23 @@
                     <p class="answer-explanation" hidden>액체의 밀도가 커지면 같은 부피가 밀어내는 액체의 무게가 커져 부력이 늘어나므로 뜰 수 있습니다.</p>
                 </article>
 
-                <article class="quiz-card" data-answer="d">
-                    <h3>온도가 일정할 때 기체의 부피를 절반으로 줄이면 압력은?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q4" value="a"> 절반이 된다</label>
-                        <label><input type="radio" name="q4" value="b"> 변하지 않는다</label>
-                        <label><input type="radio" name="q4" value="c"> 4배가 된다</label>
-                        <label><input type="radio" name="q4" value="d"> 2배가 된다</label>
-                    </div>
-                    <button class="answer-button" type="button">정답 확인</button>
-                    <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>P V 가 일정하므로 부피가 절반이 되면 압력은 2배가 됩니다.</p>
-                </article>
+                <article class="quiz-card" data-answer="c">
+<h3>온도와 기체의 양을 일정하게 하고 부피를 줄이면 압력은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q4" value="a"> 작아진다.</label>
+<label><input type="radio" name="q4" value="b"> 항상 같다.</label>
+<label><input type="radio" name="q4" value="c"> 커진다.</label>
+<label><input type="radio" name="q4" value="d"> 반드시 0이 된다.</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>기체 입자가 더 좁은 공간에서 벽에 더 자주 충돌하므로 압력이 커집니다.</p>
+</article>
             </div>
         </details>
     </main>
-    <script src="app.js?v=10"></script>
+    <script src="app.js?v=8ec7fb55d228"></script>
+    <script src="../curriculum-map.js?v=2ffe762f2206"></script>
+    <script src="../exam-scope.js?v=849f3853d47f"></script>
 </body>
 </html>

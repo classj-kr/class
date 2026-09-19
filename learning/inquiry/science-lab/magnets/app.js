@@ -170,7 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const PRED_FORCE = [{ value: 'stick', label: '끌려가 붙는다' }, { value: 'push', label: '밀려난다' }, { value: 'still', label: '움직이지 않는다' }];
-    const PRED_COMPASS = [{ value: 'toS', label: '자석의 S극 쪽' }, { value: 'toN', label: '자석의 N극 쪽' }, { value: 'north', label: '북쪽' }];
+    const PRED_COMPASS = [{ value: 'toS', label: '자석 때문에 방향 변화' }, { value: 'toN', label: '바늘이 사라짐' }, { value: 'north', label: '북쪽' }];
 
     function buildPrediction() {
         const list = state.mode === 'force' ? PRED_FORCE : PRED_COMPASS;
@@ -224,7 +224,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const ax1 = ax0 + dir * mag;
             out += `<line class="force-arrow" x1="${ax0.toFixed(1)}" y1="${ay}" x2="${ax1.toFixed(1)}" y2="${ay}"/>`;
             out += `<path class="force-head" d="M${ax1.toFixed(1)},${ay} l${(-dir * 9).toFixed(1)},-5 l0,10 z"/>`;
-            out += `<text class="small-label" style="fill:#d97706" x="${((ax0 + ax1) / 2).toFixed(1)}" y="${ay - 8}" text-anchor="middle">${F > 0 ? '끌어당김' : '밀어냄'} ${Math.abs(F).toFixed(2)} N</text>`;
+            out += `<text class="small-label" style="fill:#d97706" x="${((ax0 + ax1) / 2).toFixed(1)}" y="${ay - 8}" text-anchor="middle">${F > 0 ? '끌어당김' : '밀어냄'}</text>`;
         }
         // gap marker
         if (q.gap > 0.002) {
@@ -236,7 +236,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         const VERD = { stick: '끌려가 붙는다', push: '밀려난다', still: '움직이지 않는다' };
         out += `<text class="verdict-text" fill="#d97706" x="20" y="16">${f.label} · ${state.gap} cm → ${VERD[a.verdict]}</text>`;
-        out += `<text class="note-text" x="20" y="34">바닥 마찰: ${FRICTION.toFixed(2)} N보다 센 힘이어야 움직입니다 · 지난 시간 ${q.t.toFixed(1)}초</text>`;
+        out += `<text class="note-text" x="20" y="34">움직이지 않을 때에는 거리를 줄여 비교해 보세요</text>`;
         return out;
     }
 
@@ -276,11 +276,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const MAG_SCALE = 14;
         const toPxField = (x, y) => ({ x: CX + x * MAG_SCALE, y: CY + y * MAG_SCALE });
         let out = '';
-        // field lines of the magnet (stable, fixed scale)
-        [-1.6, -0.9, 0, 0.9, 1.6].forEach(dy => {
-            const pts = fieldLine(2.3, dy, toPxField);
-            if (pts.length > 2) out += `<path class="field-line" d="M${pts.map(q => `${q.x.toFixed(1)},${q.y.toFixed(1)}`).join('L')}"/>`;
-        });
         // the magnet, N pole to the right (stable, fixed size: 63px x 20px)
         const MW = MAG_LEN * 100 * MAG_SCALE, MH = 20;
         out += barMagnet(CX - MW / 2, CY - MH / 2, MW, MH, 'S', 'N');
@@ -319,10 +314,9 @@ document.addEventListener('DOMContentLoaded', () => {
         // north marker
         out += `<text class="north-text" x="428" y="36" text-anchor="middle">북 ↑</text>`;
         out += `<text class="note-text" x="428" y="52" text-anchor="middle">위쪽이 북쪽</text>`;
-        const VERD = { toS: '자석의 S극 쪽', north: '북쪽' };
+        const VERD = { toS: '자석 때문에 방향 변화', north: '북쪽' };
         out += `<text class="verdict-text" fill="var(--primary)" x="20" y="18">${a.place.label} ${state.dist} cm → 바늘 N극은 ${VERD[a.verdict]}</text>`;
-        out += `<text class="note-text" x="20" y="36">여기서 자석의 힘은 지구의 ${a.ratio >= 10 ? Math.round(a.ratio) : a.ratio.toFixed(1)}배</text>`;
-        out += `<text class="note-text" x="20" y="206">옅은 선: 자석의 힘이 뻗어 나가는 길 · 작은 나침반: 다른 자리에 놓았을 때</text>`;
+        out += `<text class="note-text" x="20" y="206">작은 나침반: 다른 자리에 놓았을 때의 바늘 방향</text>`;
         return out;
     }
 
@@ -348,60 +342,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // how strong the pull or push is at each gap, with the friction it must beat
-    function graphForce(a) {
-        const q = forceAtProgress(a, state.progress);
-        const gMax = 8, fMax = 1.5;
-        const gx = cm => GRAPH.x0 + (cm / gMax) * (GRAPH.x1 - GRAPH.x0);
-        const gy = f => GRAPH.y0 - Math.min(1, f / fMax) * (GRAPH.y0 - GRAPH.y1);
-        let out = graphFrame(
-            [0, 2, 4, 6, 8].map(c => [`${c} cm`, gx(c)]),
-            [0.5, 1.0, 1.5].map(f => [`${f.toFixed(1)} N`, gy(f)]),
-            '떨어진 거리', '힘의 세기');
-        const pts = [];
-        for (let cm = 0.6; cm <= gMax + 1e-9; cm += 0.1) pts.push(`${gx(cm).toFixed(1)},${gy(Math.abs(forceAt(cm / 100, state.facing))).toFixed(1)}`);
-        out += `<path class="trace" style="stroke:#d97706" d="M${pts.join('L')}"/>`;
-        out += `<line class="friction-line" x1="${GRAPH.x0}" y1="${gy(FRICTION).toFixed(1)}" x2="${GRAPH.x1}" y2="${gy(FRICTION).toFixed(1)}"/>`;
-        out += `<text class="friction-text" x="${GRAPH.x1 - 4}" y="${(gy(FRICTION) - 5).toFixed(1)}" text-anchor="end">마찰 ${FRICTION.toFixed(2)} N — 이보다 세야 움직임</text>`;
-        out += `<circle class="trace-dot" cx="${gx(Math.max(0.6, q.gap * 100)).toFixed(1)}" cy="${gy(Math.abs(q.F)).toFixed(1)}" r="5" fill="#d97706"/>`;
-        out += `<text class="note-text" x="${GRAPH.x0 + 8}" y="${GRAPH.y1 + 14}">${a.f.right === null ? '쇠못을 끄는 힘' : a.f0 > 0 ? '끌어당기는 힘' : '밀어내는 힘'} — 가까울수록 세고 멀어지면 빠르게 약해집니다</text>`;
-        return out;
-    }
+    function graphForce(a) { return '<text x="20" y="50" fill="#334155" font-size="16">가까이 놓을 때와 멀리 놓을 때를 비교하세요.</text><text x="20" y="90" fill="#334155" font-size="16">같은 극: 밀어냄 / 다른 극: 끌어당김</text>'; }
 
     // the magnet's pull on the needle against the Earth's, at the three distances
-    function graphCompass(a) {
-        const rows = DISTS.map(d => {
-            const ang = a.place.angle * Math.PI / 180;
-            const b = fieldAt(d * Math.cos(ang), d * Math.sin(ang));
-            return { d, ratio: Math.hypot(b.bx, b.by + EARTH) / EARTH };
-        });
-        const max = Math.max(...rows.map(r => r.ratio), 2) * 1.08;
-        const gx = v => GRAPH.x0 + (Math.log10(1 + v) / Math.log10(1 + max)) * (GRAPH.x1 - GRAPH.x0);
-        let out = graphFrame([[0, gx(0)], [1, gx(1)], [10, gx(10)], [100, gx(100)]].filter(t => t[0] <= max), [], '지구의 힘을 1로 했을 때 자석의 힘 (칸이 갈수록 촘촘해짐)', '');
-        rows.forEach((r, i) => {
-            const y = GRAPH.y1 + 24 + i * 32;
-            const chosen = r.d === state.dist;
-            out += `<text class="bar-text" fill="${chosen ? '#d97706' : '#334155'}" x="${GRAPH.x0}" y="${y - 9}">${a.place.label} ${r.d} cm — 지구의 ${r.ratio >= 10 ? Math.round(r.ratio) : r.ratio.toFixed(1)}배${r.ratio < 0.5 ? ' → 북쪽을 가리킴' : ' → 자석 쪽으로 돌아감'}</text>`;
-            out += `<rect class="bar" x="${GRAPH.x0}" y="${y - 4}" width="${Math.max(2, gx(r.ratio) - GRAPH.x0).toFixed(1)}" height="11" rx="3" fill="${chosen ? '#d97706' : '#6f8f8d'}" opacity=".85"/>`;
-        });
-        out += `<line class="friction-line" x1="${gx(1).toFixed(1)}" y1="${GRAPH.y1 + 8}" x2="${gx(1).toFixed(1)}" y2="${GRAPH.y0}"/>`;
-        out += `<text class="friction-text" x="${(gx(1) + 4).toFixed(1)}" y="${GRAPH.y0 - 6}">지구의 힘과 같음</text>`;
-        return out;
-    }
+    function graphCompass(a) { return '<text x="20" y="50" fill="#334155" font-size="16">나침반 바늘도 자석입니다.</text><text x="20" y="90" fill="#334155" font-size="16">같은 극은 밀고, 다른 극은 끌어당깁니다.</text><text x="20" y="130" fill="#334155" font-size="16">자석을 멀리한 뒤 바늘 방향을 다시 확인하세요.</text>'; }
 
-    function noteFor(a) {
-        if (a.kind === 'force') {
-            const q = forceAtProgress(a, state.progress);
-            return `<div class="data-row"><span class="data-name">마주 보는 것</span><span class="data-val">${a.f.label} (${a.f.hint})</span></div>` +
-                `<div class="data-row"><span class="data-name">처음 힘</span><span class="data-val">${state.gap} cm에서 ${Math.abs(a.f0).toFixed(2)} N ${a.f0 > 0 ? '끌어당김' : '밀어냄'}</span></div>` +
-                `<div class="data-row"><span class="data-name">바닥 마찰</span><span class="data-val">${FRICTION.toFixed(2)} N — ${Math.abs(a.f0) > FRICTION ? '자석의 힘이 더 세서 움직임' : '자석의 힘이 못 이겨 그대로'}</span></div>` +
-                `<div class="data-row"><span class="data-name">지금</span><span class="data-val">${q.t.toFixed(1)}초 · 거리 ${(q.gap * 100).toFixed(1)} cm · 힘 ${Math.abs(q.F).toFixed(2)} N</span></div>` +
-                `<div class="data-row match"><span class="data-name">${SIM_SECONDS}초 뒤</span><span class="data-val">${a.verdict === 'stick' ? '붙음' : a.verdict === 'push' ? `${(a.moved * 100).toFixed(1)} cm 밀려나 ${(a.end.gap * 100).toFixed(1)} cm에서 멈춤` : '그대로'}</span></div>`;
-        }
-        return `<div class="data-row"><span class="data-name">나침반 자리</span><span class="data-val">${a.place.label} · 자석 가운데에서 ${state.dist} cm</span></div>` +
-            `<div class="data-row"><span class="data-name">자석의 힘</span><span class="data-val">지구의 ${a.ratio >= 10 ? Math.round(a.ratio) : a.ratio.toFixed(2)}배</span></div>` +
-            `<div class="data-row"><span class="data-name">바늘 방향</span><span class="data-val">${(() => { const deg = ((a.needle * 180 / Math.PI) + 90 + 360) % 360; return `북쪽에서 ${deg <= 180 ? '오른쪽' : '왼쪽'}으로 ${Math.round(deg <= 180 ? deg : 360 - deg)}°`; })()}</span></div>` +
-            `<div class="data-row match"><span class="data-name">가리키는 곳</span><span class="data-val">${a.verdict === 'north' ? '북쪽 — 지구가 큰 자석' : '자석의 S극 쪽 — 다른 극에 끌림'}</span></div>`;
-    }
+    function noteFor(a) { return a.kind === 'force' ? '<p>' + a.f.label + ' · 처음 거리 ' + state.gap + ' cm</p><p>거리를 바꾸며 움직임을 비교하세요.</p>' : '<p>' + a.place.label + ' · 자석 가운데에서 ' + state.dist + ' cm</p><p>그림에 나타난 바늘의 N극 방향을 관찰하세요.</p>'; }
 
     function render() {
         const a = analyse();
@@ -445,36 +391,21 @@ document.addEventListener('DOMContentLoaded', () => {
         resultEmpty.hidden = true;
         resultContent.hidden = false;
         if (a.kind === 'force') {
-            labelA.textContent = '결과'; labelB.textContent = '처음 힘';
+            labelA.textContent = '결과'; labelB.textContent = '힘의 방향';
             valueA.textContent = a.verdict === 'stick' ? '붙었다' : a.verdict === 'push' ? `${(a.moved * 100).toFixed(1)} cm 밀려남` : '움직이지 않음';
-            valueB.textContent = `${Math.abs(a.f0).toFixed(2)} N`;
+            valueB.textContent = a.f0 > 0 ? "끌어당김" : "밀어냄";
             predictionResult.textContent = !state.prediction ? '다음에는 결과를 먼저 예상해 보세요.'
                 : state.prediction === a.verdict ? '예상이 맞았습니다.' : '예상과 다른 결과입니다.';
-            let s = '';
-            if (a.f.right === null) {
-                s = a.verdict === 'stick'
-                    ? `쇠못은 자석의 어느 극에나 끌려 붙습니다. 자석 가까이 가면 못이 잠깐 자석처럼 되어 자석과 다른 극으로 마주하기 때문입니다. ${state.gap} cm에서 ${a.f0.toFixed(2)} N으로 끌려 붙었습니다.`
-                    : `쇠못도 자석에 끌리지만 ${state.gap} cm에서는 힘이 ${a.f0.toFixed(2)} N밖에 되지 않아 바닥 마찰 ${FRICTION.toFixed(2)} N을 이기지 못했습니다. 못이 자석에 붙지 않는 것이 아니라, 멀어서 힘이 약해진 것입니다. 거리를 줄여 보세요.`;
-            } else if (a.f0 > 0) {
-                s = a.verdict === 'stick'
-                    ? `${a.f.left}극과 ${a.f.right}극은 다른 극이어서 서로 끌어당깁니다. ${state.gap} cm에서 ${a.f0.toFixed(2)} N이던 힘이 가까워질수록 더 세져 결국 붙었습니다.`
-                    : `다른 극이어서 끌어당기지만 ${state.gap} cm에서는 ${a.f0.toFixed(2)} N으로 마찰 ${FRICTION.toFixed(2)} N을 이기지 못해 움직이지 않았습니다.`;
-            } else {
-                s = a.verdict === 'push'
-                    ? `${a.f.left}극과 ${a.f.right}극은 같은 극이어서 서로 밀어냅니다. ${state.gap} cm에서 ${Math.abs(a.f0).toFixed(2)} N으로 밀려 ${(a.moved * 100).toFixed(1)} cm 물러난 뒤, 멀어져 힘이 약해지자 마찰 때문에 ${(a.end.gap * 100).toFixed(1)} cm에서 멈췄습니다.`
-                    : `같은 극이어서 밀어내지만 ${state.gap} cm에서는 힘이 ${Math.abs(a.f0).toFixed(2)} N으로 마찰 ${FRICTION.toFixed(2)} N보다 약해 움직이지 않았습니다. 가까이 놓으면 밀려납니다.`;
-            }
+            const s = (a.f.right === null ? '쇠못은 자석의 어느 극에도 끌립니다. ' : a.f0 > 0 ? '다른 극끼리는 끌어당깁니다. ' : '같은 극끼리는 밀어냅니다. ') + '움직임은 자석과의 거리와 바닥의 상태에 따라 달라집니다. 거리를 줄이고 늘려 비교해 보세요.';
             explanation.textContent = s;
             return;
         }
-        labelA.textContent = '바늘 N극'; labelB.textContent = '자석의 힘';
-        valueA.textContent = a.verdict === 'north' ? '북쪽' : '자석의 S극 쪽';
-        valueB.textContent = `지구의 ${a.ratio >= 10 ? Math.round(a.ratio) : a.ratio.toFixed(1)}배`;
+        labelA.textContent = '바늘 N극'; labelB.textContent = '관찰 조건';
+        valueA.textContent = a.verdict === 'north' ? '북쪽' : '자석 때문에 방향 변화';
+        valueB.textContent = `${state.dist} cm 거리`;
         predictionResult.textContent = !state.prediction ? '다음에는 결과를 먼저 예상해 보세요.'
             : state.prediction === a.verdict ? '예상이 맞았습니다.' : '예상과 다른 결과입니다.';
-        let s = `${a.place.label} ${state.dist} cm에 놓은 나침반에는 자석의 힘이 지구의 ${a.ratio >= 10 ? Math.round(a.ratio) : a.ratio.toFixed(1)}배로 미칩니다. `;
-        if (a.verdict === 'north') s += `자석에서 이렇게 멀면 자석의 힘이 지구의 힘보다 약해져 바늘은 거의 북쪽을 가리킵니다. 자석이 없어도 바늘이 북쪽을 가리키는 것은 지구가 커다란 자석이기 때문입니다.`;
-        else s += `바늘도 자석이어서 N극이 다른 극인 자석의 S극 쪽으로 돌아갑니다. 자석 둘레 어디에 놓아도 바늘은 자석의 힘이 뻗어 나가는 길을 따라 놓입니다. 자석을 치우면 다시 북쪽으로 돌아갑니다.`;
+        const s = '나침반 바늘도 자석입니다. N극은 가까운 S극에 끌리고 N극과는 밀어냅니다. 위치에 따라 바늘이 향하는 방향이 다르므로 그림을 관찰하세요. 주변 자석의 영향이 작아지면 바늘의 N극은 대체로 북쪽을 향합니다.';
         explanation.textContent = s;
     }
 

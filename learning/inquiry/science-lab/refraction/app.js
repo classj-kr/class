@@ -74,6 +74,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function render() {
+        angleRange.max = dir === 'out' ? '40' : '85';
+        if (+angleRange.value > +angleRange.max) angleRange.value = angleRange.max;
         const s = solve();
         const m = MEDIA[medium];
         // The medium always occupies the lower half; only where the light
@@ -82,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const outSgn = -inSgn;                 // side the refracted ray leaves to
 
         mediumZone.setAttribute('fill', m.fill);
-        mediumLabel.textContent = `${m.name} (n = ${m.n.toFixed(2)})`;
+        mediumLabel.textContent = m.name;
         angleOutput.textContent = `${s.theta1}°`;
         stageBadge.textContent = dir === 'in' ? `공기 → ${m.name}` : `${m.name} → 공기`;
 
@@ -120,15 +122,10 @@ document.addEventListener('DOMContentLoaded', () => {
         arcs += `<path class="angle-arc reflected" d="${arcPath(0, s.theta1, inSgn, 1)}"/>`;
         if (!s.total) {
             arcs += `<path class="angle-arc refracted" d="${arcPath(0, s.theta2, outSgn, 1)}"/>`;
-            arcs += `<text class="angle-text" fill="#15803d" x="${(P.x + ARC_R * Math.sin(rad(s.theta2 / 2)) + 8).toFixed(1)}" y="${(P.y + outSgn * (ARC_R + 10) * Math.cos(rad(s.theta2 / 2))).toFixed(1)}">${s.theta2.toFixed(1)}°</text>`;
         }
         arcGroup.innerHTML = arcs;
 
-        criticalNote.textContent = s.critical === null
-            ? ''
-            : s.total
-                ? `임계각 ${s.critical.toFixed(1)}°보다 크게 입사해 전반사가 일어납니다.`
-                : `이 방향의 임계각은 ${s.critical.toFixed(1)}° 입니다. 그보다 크게 입사하면 전반사가 일어납니다.`;
+        criticalNote.textContent = '입사각과 반사각은 법선을 기준으로 비교합니다.';
     }
 
     function clearResult() { resultEmpty.hidden = false; resultContent.hidden = true; }
@@ -139,27 +136,20 @@ document.addEventListener('DOMContentLoaded', () => {
         resultEmpty.hidden = true;
         resultContent.hidden = false;
         resultReflect.textContent = `${s.reflect}°`;
-        resultRefract.textContent = s.total ? '없음 (전반사)' : `${s.theta2.toFixed(1)}°`;
+        resultRefract.textContent = s.theta1 === 0 ? '꺾이지 않음' : dir === 'in' ? '법선 쪽' : '법선에서 멀어짐';
 
-        const actual = s.total ? 'none' : s.theta2 < s.theta1 ? 'smaller' : s.theta2 > s.theta1 ? 'larger' : 'smaller';
+        const actual = s.theta1 === 0 ? 'same' : dir === 'in' ? 'smaller' : 'larger';
         predictionResult.textContent = !prediction
             ? '다음에는 결과를 먼저 예상해 보세요.'
             : prediction === actual ? '예상이 맞았습니다.'
             : (s.theta1 === 0 ? '입사각이 0°이면 꺾이지 않고 그대로 지나갑니다.' : '예상과 다른 결과입니다.');
 
-        if (s.total) {
-            stageCaption.textContent = `입사각 ${s.theta1}°는 임계각 ${s.critical.toFixed(1)}°보다 커서 빛이 모두 반사됩니다.`;
-            explanation.textContent = `굴절률이 큰 ${m.name}(n=${m.n})에서 공기(n=1.00)로 나갈 때, sin θ₂ = n₁ sin θ₁ / n₂가 1을 넘어 굴절 광선이 존재할 수 없습니다. 그래서 빛이 전부 되돌아오는 전반사가 일어납니다.`;
-        } else if (s.theta1 === 0) {
-            stageCaption.textContent = '수직으로 입사하면 꺾이지 않고 그대로 지나갑니다.';
-            explanation.textContent = '입사각이 0°이면 sin θ₁ = 0 이므로 굴절각도 0°가 되어 빛이 꺾이지 않습니다. 반사각도 0°입니다.';
-        } else if (dir === 'in') {
-            stageCaption.textContent = `공기에서 ${m.name}(으)로 들어가며 ${s.theta1}° → ${s.theta2.toFixed(1)}°로 법선 쪽으로 꺾였습니다.`;
-            explanation.textContent = `1.00 × sin ${s.theta1}° = ${m.n} × sin ${s.theta2.toFixed(1)}°가 성립합니다. 굴절률이 큰 매질에서는 빛이 느려져 법선 쪽으로 꺾이므로 굴절각이 입사각보다 작습니다. 반사각은 언제나 입사각과 같은 ${s.reflect}°입니다.`;
+        if (s.theta1 === 0) {
+            stageCaption.textContent = '수직으로 입사하면 꺾이지 않고 나아갑니다.';
         } else {
-            stageCaption.textContent = `${m.name}에서 공기로 나가며 ${s.theta1}° → ${s.theta2.toFixed(1)}°로 법선에서 멀어졌습니다.`;
-            explanation.textContent = `${m.n} × sin ${s.theta1}° = 1.00 × sin ${s.theta2.toFixed(1)}°가 성립합니다. 굴절률이 작은 매질로 나가면 법선에서 멀어지므로 굴절각이 입사각보다 큽니다. 임계각 ${s.critical.toFixed(1)}°를 넘으면 전반사가 일어납니다.`;
+            stageCaption.textContent = dir === 'in' ? '공기에서 물질로 들어가며 법선 쪽으로 꺾입니다.' : '물질에서 공기로 나가며 법선에서 멀어집니다.';
         }
+        explanation.textContent = '반사각은 입사각과 같습니다. 굴절은 서로 다른 물질의 경계에서 빛의 진행 방향이 달라지는 현상입니다.';
     }
 
     mediumButtons.forEach(button => button.addEventListener('click', () => {

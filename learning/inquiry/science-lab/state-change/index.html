@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="styles.css?v=5">
     <link rel="stylesheet" href="state-visual.css?v=9">
     <link rel="stylesheet" href="quiz.css?v=3">
+    <link rel="stylesheet" href="../exam-scope.css?v=1">
 </head>
 <body>
     <main>
@@ -18,7 +19,7 @@
                 <a href="../">← 과학 실험실</a>
                 <h1>물의 상태 변화</h1>
             </div>
-            <div class="grade-tags"><span>초등 4학년</span><span>화학</span></div>
+            <div class="grade-tags"><span>초등 4학년</span><span>과학</span></div>
         </header>
 
         <ol class="method-steps" aria-label="실험 방법">
@@ -67,14 +68,6 @@
             <section class="panel beaker-stage" aria-label="물의 상태 관찰 화면">
                 <div class="stage-heading"><h2>관찰</h2><span>어는점 0℃ · 끓는점 100℃</span></div>
                 <div class="apparatus">
-                    <div class="particle-model" aria-label="물 입자 모형">
-                        <div class="particle-model-title">입자 배열 모형 <span class="zoom-badge">확대</span></div>
-                        <svg class="particle-svg" viewBox="0 0 180 180" aria-hidden="true">
-                            <rect class="particle-frame" x="6" y="6" width="168" height="168" rx="8"/>
-                            <g id="particleGroup"></g>
-                        </svg>
-                        <p class="particle-note">실제 물 분자는 눈에 안 보일 만큼 작아요 — 배열을 보여주기 위한 모형입니다</p>
-                    </div>
                     <div class="beaker" id="beaker">
                         <svg class="beaker-svg" viewBox="0 0 240 320" aria-hidden="true">
                             <defs>
@@ -152,10 +145,11 @@
 
         <section class="panel meaning-panel">
             <h2>실험 결과의 의미</h2>
+<p>보통의 대기압을 가정한 모형입니다. 실제 어는 온도와 끓는 온도는 조건에 따라 달라질 수 있습니다.</p>
             <div class="meaning-body">
                 <p><strong>녹는점(어는점)</strong> 고체가 액체로, 액체가 고체로 바뀌는 온도로 물은 0℃입니다.</p>
                 <p><strong>끓는점</strong> 액체가 기체로 바뀌는 온도로 물은 100℃입니다.</p>
-                <p>상태가 바뀌어도 물(H₂O)이라는 사실은 그대로입니다 — 다른 물질로 변하는 것이 아닙니다.</p>
+                <p>젖은 물체가 마르는 것은 물이 수증기로 변하기 때문입니다. 차가운 컵 바깥에는 공기 중 수증기가 물로 변해 맺힐 수 있습니다. 상태가 바뀌어도 물이라는 사실은 그대로입니다 — 다른 물질로 변하는 것이 아닙니다.</p>
             </div>
         </section>
 
@@ -198,24 +192,26 @@
                     </div>
                     <button class="answer-button" type="button">정답 확인</button>
                     <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>모양과 상태는 바뀌지만, 물(H₂O)이라는 물질의 종류는 바뀌지 않습니다.</p>
+                    <p class="answer-explanation" hidden>모양과 상태는 바뀌지만, 물이라는 물질의 종류는 바뀌지 않습니다.</p>
                 </article>
 
-                <article class="quiz-card" data-answer="a">
-                    <h3>물이 수증기(기체)가 되면 부피는 어떻게 되는가?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q4" value="a"> 크게 늘어난다.</label>
-                        <label><input type="radio" name="q4" value="b"> 줄어든다.</label>
-                        <label><input type="radio" name="q4" value="c"> 그대로다.</label>
-                        <label><input type="radio" name="q4" value="d"> 없어진다.</label>
-                    </div>
-                    <button class="answer-button" type="button">정답 확인</button>
-                    <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>기체가 된 물은 입자 사이 거리가 멀어져 부피가 크게 늘어납니다.</p>
-                </article>
+                <article class="quiz-card" data-answer="b">
+<h3>차가운 컵 바깥에 맺힌 물방울은 어디에서 왔을까요?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q4" value="a"> 컵 안의 물이 유리를 뚫고 나왔다.</label>
+<label><input type="radio" name="q4" value="b"> 공기 중 수증기가 물로 변했다.</label>
+<label><input type="radio" name="q4" value="c"> 유리가 녹았다.</label>
+<label><input type="radio" name="q4" value="d"> 공기가 모두 얼었다.</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>컵 주위 공기 중 수증기가 차가운 컵 표면에서 물로 변해 물방울이 됩니다.</p>
+</article>
             </div>
         </details>
     </main>
-    <script src="app.js?v=11"></script>
+    <script src="app.js?v=2310c94e14f7"></script>
+    <script src="../curriculum-map.js?v=2ffe762f2206"></script>
+    <script src="../exam-scope.js?v=849f3853d47f"></script>
 </body>
 </html>

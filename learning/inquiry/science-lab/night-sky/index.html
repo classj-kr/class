@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="styles.css?v=6">
     <link rel="stylesheet" href="sky-visual.css?v=7">
     <link rel="stylesheet" href="quiz.css?v=4">
+    <link rel="stylesheet" href="../exam-scope.css?v=1">
 </head>
 <body>
     <main>
@@ -18,7 +19,7 @@
                 <a href="../">← 과학 실험실</a>
                 <h1>달의 모양과 북극성 찾기</h1>
             </div>
-            <div class="grade-tags"><span>초등 4학년</span><span>지구과학</span></div>
+            <div class="grade-tags"><span>초등 4학년</span><span>과학</span></div>
         </header>
 
         <ol class="method-steps" aria-label="실험 방법">
@@ -85,25 +86,25 @@
                 <p><strong>달의 모양 변화</strong> 달은 음력 초하루에는 보이지 않다가 초승달, 상현달, 보름달, 하현달, 그믐달 차례로 모양이 바뀌고 약 30일 뒤 다시 처음으로 돌아옵니다. 그래서 같은 날짜의 달은 다음 달에도 비슷한 모양입니다.</p>
                 <p><strong>달이 보이는 곳</strong> 초승달은 저녁 서쪽 하늘에 잠깐 보이다 지고, 상현달은 저녁에 남쪽 하늘에 있으며, 보름달은 해가 질 때 동쪽에서 떠 밤새 하늘을 가로지릅니다. 하현달은 한밤이 되어야 동쪽에서 떠 새벽에 남쪽 하늘에 있습니다. 달도 해처럼 동쪽에서 떠 서쪽으로 집니다.</p>
                 <p><strong>북극성 찾기</strong> 북두칠성 국자 끝 두 별 사이를 다섯 배 늘리면 북극성이 있습니다. 카시오페이아자리에서도 찾을 수 있습니다. 북극성은 늘 북쪽에 있어 방향을 알려 줍니다.</p>
-                <p><strong>별이 도는 까닭</strong> 밤 동안 별들은 북극성을 중심으로 한 시간에 15°씩, 시계 반대 방향으로 돕니다. 별이 움직이는 것이 아니라 지구가 하루에 한 바퀴 돌기 때문입니다. 계절마다 저녁에 보이는 별자리가 다른 것도 지구가 태양 둘레를 돌기 때문입니다.</p>
+                <p><strong>별자리 관찰</strong> 별을 선으로 이어 별자리의 모양을 비교하고 북극성을 찾아 방향을 알아봅니다. 이 화면은 한 관측 장소의 예시이며 실제 보이는 위치와 시각은 날짜·장소에 따라 다릅니다.</p>
             </div>
         </section>
 
         <details class="quiz-section" aria-labelledby="quiz-title">
             <summary class="quiz-heading"><h2 id="quiz-title">확인 문제</h2><span>4문제</span></summary>
             <div class="quiz-grid">
-                <article class="quiz-card" data-answer="c">
-                    <h3>음력 15일 저녁 7시, 보름달은 어느 쪽 하늘에 있을까요?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q1" value="a"> 서쪽 하늘</label>
-                        <label><input type="radio" name="q1" value="b"> 머리 위 남쪽 하늘</label>
-                        <label><input type="radio" name="q1" value="c"> 동쪽 하늘</label>
-                        <label><input type="radio" name="q1" value="d"> 보이지 않는다</label>
-                    </div>
-                    <button class="answer-button" type="button">정답 확인</button>
-                    <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>보름달은 해가 질 무렵 동쪽에서 떠서 한밤에 남쪽 하늘 높이 있다가 새벽에 서쪽으로 집니다. 저녁 7시에는 동쪽에 낮게 떠 있습니다.</p>
-                </article>
+                <article class="quiz-card" data-answer="b">
+<h3>보름달은 보통 해가 질 무렵 어느 쪽에서 떠오를까요?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q1" value="a"> 서쪽</label>
+<label><input type="radio" name="q1" value="b"> 동쪽</label>
+<label><input type="radio" name="q1" value="c"> 항상 머리 바로 위</label>
+<label><input type="radio" name="q1" value="d"> 북쪽 땅속</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>보름달은 대체로 해가 질 무렵 동쪽에서 떠오릅니다. 정확한 시각은 날짜와 관측 장소에 따라 달라집니다.</p>
+</article>
 
                 <article class="quiz-card" data-answer="a">
                     <h3>초승달을 볼 수 있는 때와 곳은?</h3>
@@ -131,21 +132,23 @@
                     <p class="answer-explanation" hidden>국자 그릇 끝의 두 별을 이어 그 거리의 다섯 배만큼 늘리면 북극성이 나옵니다. 북극성은 아주 밝은 별은 아니지만 늘 북쪽에 있어 찾아 둘 값어치가 있습니다.</p>
                 </article>
 
-                <article class="quiz-card" data-answer="b">
-                    <h3>저녁 9시에 북극성 위에 있던 북두칠성이 새벽 3시에는 어디에 있을까요?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q4" value="a"> 그 자리 그대로</label>
-                        <label><input type="radio" name="q4" value="b"> 북극성의 왼쪽(서쪽)으로 돌아가 있다</label>
-                        <label><input type="radio" name="q4" value="c"> 북극성의 오른쪽(동쪽)으로 돌아가 있다</label>
-                        <label><input type="radio" name="q4" value="d"> 북극성이 북두칠성 자리로 옮겨 간다</label>
-                    </div>
-                    <button class="answer-button" type="button">정답 확인</button>
-                    <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>별은 북극성을 중심으로 한 시간에 15°씩 시계 반대 방향으로 돕니다. 6시간이면 90°이므로 위에 있던 북두칠성은 왼쪽으로 옮겨 갑니다. 북극성만은 거의 움직이지 않습니다.</p>
-                </article>
+                <article class="quiz-card" data-answer="c">
+<h3>북극성을 찾아 알 수 있는 것은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q4" value="a"> 내일 비가 올 양</label>
+<label><input type="radio" name="q4" value="b"> 달의 실제 크기</label>
+<label><input type="radio" name="q4" value="c"> 북쪽 방향</label>
+<label><input type="radio" name="q4" value="d"> 별의 실제 거리</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>북극성은 북쪽 하늘에서 찾을 수 있어 방향을 알아보는 데 이용합니다.</p>
+</article>
             </div>
         </details>
     </main>
-    <script src="app.js?v=6"></script>
+    <script src="app.js?v=9c0b21cd9cce"></script>
+    <script src="../curriculum-map.js?v=2ffe762f2206"></script>
+    <script src="../exam-scope.js?v=849f3853d47f"></script>
 </body>
 </html>

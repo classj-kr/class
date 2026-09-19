@@ -144,7 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (m === 'distill') {
             const sch = schedule(mix);
             // more than one substance left behind means the leftover is still a mixture
-            const verdict = mix.residue && !mix.residue.pure ? 'partial' : 'full';
+            const verdict = mix.id === 'waterEthanol' || (mix.residue && !mix.residue.pure) ? 'partial' : 'full';
             return { mix, verdict, sch };
         }
         const sorted = [...mix.parts].sort((a, b) => b.rf - a.rf);
@@ -218,82 +218,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* -------------------------------------------------------- distillation */
-    function renderDistill(a, p) {
-        const sch = a.sch, t = p * sch.total, T = tempAt(t, sch);
-        const FL = { cx: 96, cy: 132, r: 33, neckY: 74 };
-        const RC = { x0: 292, x1: 356, top: 138, bottom: 196 };
-        let out = '';
-
-        const collected = a.mix.parts.map(part => collectedAt(part, t, sch));
-        const totalOut = collected.reduce((s, v) => s + v, 0);
-        const startVol = a.mix.parts.reduce((s, x) => s + x.frac, 0);
-        const leftFrac = Math.max(0, startVol - totalOut) / startVol;
-
-        // flask contents shrinking as the run goes on
-        const liqTop = FL.cy + FL.r - (2 * FL.r - 6) * leftFrac;
-        if (leftFrac > 0.01) {
-            out += `<path class="liquid" fill="#0284c7" opacity=".5" d="M${FL.cx - Math.sqrt(Math.max(0, FL.r * FL.r - (liqTop - FL.cy) ** 2))},${liqTop.toFixed(1)} ` +
-                   `A${FL.r} ${FL.r} 0 0 0 ${FL.cx + Math.sqrt(Math.max(0, FL.r * FL.r - (liqTop - FL.cy) ** 2))},${liqTop.toFixed(1)} Z"/>`;
-        }
-        if (a.mix.residue && totalOut > 0.05) {
-            out += `<rect class="residue" fill="${a.mix.residue.colour}" opacity=".9" x="${FL.cx - 16}" y="${FL.cy + FL.r - 7}" ` +
-                   `width="32" height="${(5 * Math.min(1, totalOut / 0.6)).toFixed(1)}" rx="2"/>`;
-        }
-        out += `<circle class="glass" cx="${FL.cx}" cy="${FL.cy}" r="${FL.r}"/>`;
-        out += `<path class="glass-thin" d="M${FL.cx - 9},${FL.cy - FL.r + 4} L${FL.cx - 9},${FL.neckY} M${FL.cx + 9},${FL.cy - FL.r + 4} L${FL.cx + 9},${FL.neckY}"/>`;
-
-        // boiling only while the temperature sits on a plateau
-        const boiling = sch.segs.some(s => s.kind === 'boil' && t >= s.t0 && t <= s.t1);
-        if (boiling) {
-            for (let i = 0; i < 6; i += 1) {
-                const bx = FL.cx - 20 + ((i * 37) % 40);
-                const by = FL.cy + FL.r - 8 - ((i * 23 + Math.floor(t * 60)) % 30);
-                if (by > liqTop) out += `<circle class="bubble" cx="${bx}" cy="${by}" r="${2 + (i % 3) * 0.6}"/>`;
-            }
-        }
-
-        // burner
-        out += `<rect class="burner" x="${FL.cx - 13}" y="188" width="26" height="10" rx="3"/>`;
-        out += `<path class="flame" d="M${FL.cx - 9},188 Q${FL.cx},${168 - (boiling ? 4 : 0)} ${FL.cx + 9},188 Z"/>`;
-        out += `<path class="flame inner" d="M${FL.cx - 4},188 Q${FL.cx},176 ${FL.cx + 4},188 Z"/>`;
-
-        // thermometer in the neck, reading the vapour temperature
-        const tf = Math.max(0, Math.min(1, (T - 20) / 100));
-        out += `<rect class="therm-tube" x="${FL.cx - 3}" y="40" width="7" height="46" rx="3.5"/>`;
-        out += `<rect class="therm-fill" x="${FL.cx - 1.5}" y="${(82 - 40 * tf).toFixed(1)}" width="4" height="${(40 * tf + 4).toFixed(1)}" rx="2"/>`;
-        out += `<text class="read-text" x="${FL.cx + 12}" y="46">${T.toFixed(0)} ℃</text>`;
-
-        // condenser sloping down to the receiver
-        out += `<path class="glass-thin" d="M${FL.cx + 9},78 L280,120 M${FL.cx + 9},92 L280,134"/>`;
-        for (let i = 0; i < 6; i += 1) {
-            const f = i / 5, x = FL.cx + 9 + (280 - FL.cx - 9) * f;
-            out += `<line class="glass-thin" x1="${x.toFixed(1)}" y1="${(78 + 42 * f).toFixed(1)}" x2="${(x + 3).toFixed(1)}" y2="${(92 + 42 * f).toFixed(1)}"/>`;
-        }
-        out += `<text class="part-label" x="196" y="76" text-anchor="middle">냉각기</text>`;
-        if (boiling) out += `<path class="vapour" d="M${FL.cx + 12},84 L272,126"/>`;
-
-        // the receiver filling with whatever is coming over right now
-        const cap = RC.bottom - RC.top - 6;
-        let stack = 0;
-        a.mix.parts.forEach((part, i) => {
-            const h = cap * (collected[i] / startVol);
-            if (h > 0.4) {
-                out += `<rect class="liquid" fill="${part.colour}" opacity=".72" x="${RC.x0 + 3}" y="${(RC.bottom - 3 - stack - h).toFixed(1)}" ` +
-                       `width="${RC.x1 - RC.x0 - 6}" height="${h.toFixed(1)}" rx="2"/>`;
-                stack += h;
-            }
-        });
-        out += `<path class="glass" fill="none" d="M${RC.x0},${RC.top} L${RC.x0},${RC.bottom} L${RC.x1},${RC.bottom} L${RC.x1},${RC.top}"/>`;
-        out += `<text class="part-label" x="${(RC.x0 + RC.x1) / 2}" y="${RC.bottom + 14}" text-anchor="middle">받은 액체</text>`;
-
-        out += `<text class="part-label" x="368" y="52">받은 것</text>`;
-        a.mix.parts.forEach((part, i) => {
-            out += `<text class="note-text" x="368" y="${70 + i * 16}">${part.n} ${(collected[i] * 100).toFixed(0)} %</text>`;
-        });
-        const ry = 70 + a.mix.parts.length * 16 + 12;
-        out += `<text class="part-label" x="368" y="${ry}">남은 것</text>`;
-        out += `<text class="note-text" x="368" y="${ry + 18}">${a.mix.residue ? a.mix.residue.n : '없음'}</text>`;
-        return out;
+    function renderDistill(a,p) {
+        const started=p>.2,alcohol=a.mix.id==='waterEthanol';
+        return '<rect x="45" y="75" width="115" height="110" rx="8" fill="#bdd8e7"/><path d="M103 75 V50 H290 V115" fill="none" stroke="#7893a0" stroke-width="8"/><rect x="255" y="125" width="90" height="60" rx="8" fill="'+(started?'#a4c6e0':'#edf4f7')+'"/><text class="part-label" x="55" y="210">'+a.mix.label+'</text><text class="part-label" x="185" y="35">증기 → 냉각</text><text class="note-text" x="265" y="205">받은 액체</text><text class="note-text" x="20" y="65">'+(started?(alcohol?'에탄올 비율이 높아진 혼합 액체':'물은 기화·응결, 녹아 있던 소금은 남음'):'기화한 물질을 냉각해 받을 준비')+'</text>';
     }
 
     /* ----------------------------------------------------- chromatography */
@@ -391,29 +318,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function graphDistill(a) {
-        const sch = a.sch, t = progress() * sch.total;
-        const gx = s => GRAPH.x0 + (s / sch.total) * (GRAPH.x1 - GRAPH.x0);
-        const gy = T => GRAPH.y0 - (T / 120) * (GRAPH.y0 - GRAPH.y1);
-        let out = '';
-        const yTicks = [0, 40, 78, 100, 120].map(v => [v, gy(v)]);
-        const xTicks = [0, 0.25, 0.5, 0.75, 1].map(f => [(f * sch.total).toFixed(0), gx(f * sch.total)]);
-        out += graphFrame(xTicks, yTicks, '시간 (초)', '온도 (℃)');
-        a.mix.parts.forEach(part => {
-            out += `<line class="pore-line" x1="${GRAPH.x0}" y1="${gy(part.bp).toFixed(1)}" x2="${GRAPH.x1}" y2="${gy(part.bp).toFixed(1)}"/>`;
-            out += `<text class="pore-text" x="${GRAPH.x1 - 4}" y="${(gy(part.bp) - 5).toFixed(1)}" text-anchor="end">${part.n} 끓는점 ${part.bp} ℃</text>`;
-        });
-        const line = (t1, cls) => {
-            const pts = [];
-            for (let i = 0; i <= 90; i += 1) {
-                const s = (t1 * i) / 90;
-                pts.push(`${gx(s).toFixed(1)},${gy(tempAt(s, sch)).toFixed(1)}`);
-            }
-            return `<path class="${cls}" d="M${pts.join('L')}"/>`;
-        };
-        out += line(sch.total, 'trace-done');
-        if (t > 0) out += line(t, 'trace');
-        out += `<circle class="trace-dot" cx="${gx(t).toFixed(1)}" cy="${gy(tempAt(t, sch)).toFixed(1)}" r="5" fill="#d97706"/>`;
-        return out;
+        return '<text class="axis-title" x="30" y="30">증류 관찰의 핵심</text><text class="note-text" x="30" y="70">기화 → 냉각 → 응결한 액체를 받음</text><text class="note-text" x="30" y="110">혼합물은 끓는 동안 온도가 변할 수 있음</text><text class="note-text" x="30" y="150">한 번에 두 순물질로 완전히 분리한다고 단정하지 않음</text>';
     }
 
     function graphChroma(a) {
@@ -475,11 +380,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 `<div class="data-row match"><span class="data-name">결과</span><span class="data-val">${VERDICT[a.verdict]}</span></div>`;
         }
         if (mode === 'distill') {
-            const t = progress() * a.sch.total;
-            return `<div class="data-row"><span class="data-name">지금 온도</span><span class="data-val">${tempAt(t, a.sch).toFixed(0)} ℃ (${a.sch.total.toFixed(1)} 초 가운데 ${t.toFixed(1)} 초)</span></div>` +
-                a.mix.parts.map(part =>
-                    `<div class="data-row"><span class="data-name">${part.n}</span><span class="data-val">끓는점 ${part.bp} ℃ · 지금까지 ${(collectedAt(part, t, a.sch) * 100).toFixed(0)} % 나옴</span></div>`).join('') +
-                `<div class="data-row match"><span class="data-name">결과</span><span class="data-val">${VERDICT[a.verdict]}</span></div>`;
+            return '<p>기화와 응결로 성분을 분리하는 정성 모형입니다. 실제 온도·시간·수율은 계산하지 않습니다. 물과 에탄올은 함께 기화하며 한 번의 증류로 순수 에탄올만 얻는 것은 아닙니다. 가열은 교사의 안전 지도 아래 수행합니다.</p>';
         }
         const rise = (168 - 56) * progress();
         return `<div class="data-row"><span class="data-name">용매가 간 거리</span><span class="data-val">${rise.toFixed(0)} 칸</span></div>` +
@@ -539,17 +440,8 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
         if (mode === 'distill') {
-            valueB.textContent = a.mix.parts.map(x => x.n).join(', ');
-            const order = a.mix.parts.map(x => `${x.n} ${x.bp} ℃`).join(', ');
-            let s = `끓는점은 ${order} 입니다. 끓는점이 낮은 것부터 차례로 끓어 나옵니다. `;
-            s += `끓는 동안에는 넣어 준 열이 모두 상태를 바꾸는 데 쓰여 온도가 오르지 않고 그래프가 평평해집니다. `;
-            s += a.mix.residue
-                ? `플라스크에는 ${iga(a.mix.residue.n)} 남습니다. `
-                : `두 물질이 모두 차례로 나와 플라스크에는 남는 것이 없습니다. `;
-            s += a.verdict === 'partial'
-                ? `다만 남은 것이 여러 물질의 혼합물이라 한 번의 증류로는 완전히 나뉘지 않습니다.`
-                : `그래서 완전히 나눌 수 있습니다.`;
-            explanation.textContent = s;
+            valueB.textContent=a.mix.id==='waterEthanol'?'에탄올 비율이 높아진 액체':'응결한 물';
+            explanation.textContent=a.mix.id==='waterEthanol'?'에탄올이 더 잘 기화하는 성질을 이용하여 처음 혼합물보다 에탄올 비율이 높은 액체를 얻을 수 있습니다. 두 성분이 함께 기화하므로 순수한 에탄올과 물이 차례로 완전히 나오는 것은 아닙니다.':'물은 기화한 뒤 냉각되어 받는 용기에 모이고, 녹아 있던 비휘발성 성분은 원래 용기에 남습니다. 이 모형은 용매와 남는 성분의 분리를 나타내며 실제 장치의 완벽한 회수율을 보장하지 않습니다.';
             return;
         }
         valueB.textContent = `${a.mix.parts.length}가지 색소`;
@@ -585,7 +477,7 @@ document.addEventListener('DOMContentLoaded', () => {
         stageCaption.textContent = mode === 'filter'
             ? '무엇이 걸러지고 무엇이 그대로 빠져나가는지 보세요.'
             : mode === 'distill'
-                ? '온도가 멈춰 있는 구간에서만 액체가 나옵니다.'
+                ? '기화한 물질을 냉각해 액체로 받습니다. 혼합물의 온도는 변할 수 있습니다.'
                 : '용매가 올라간 만큼 성분도 같은 비율로 올라갑니다.';
         settingsChanged();
     }));

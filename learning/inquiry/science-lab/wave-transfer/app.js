@@ -151,7 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const spanText = fits ? `파장 ${a.lambda.toFixed(1)} cm` : `파장 ${a.lambda.toFixed(1)} cm — 화면보다 깁니다`;
         out += `<text class="span-text" x="${((X0 + spanEnd) / 2).toFixed(1)}" y="153" text-anchor="middle">${spanText}</text>`;
 
-        out += `<text class="read-text" x="${X0}" y="178">v = ${a.f.toFixed(2)} Hz × ${a.lambda.toFixed(1)} cm = ${a.v.toFixed(0)} cm/s</text>`;
+        out += `<text class="read-text" x="${X0}" y="178">파동은 진행하지만 매질은 제자리에서 진동합니다</text>`;
         out += `<text class="note-text" x="${X0}" y="196">진폭을 ${amp().toFixed(1)} cm로 바꿔도 파장과 속력은 그대로입니다.</text>`;
         const tail = capNote || (mode === 'longitudinal'
             ? '빽빽한 곳이 밀, 성긴 곳이 소입니다.'
@@ -207,11 +207,7 @@ document.addEventListener('DOMContentLoaded', () => {
         freqOutput.textContent = `${a.f.toFixed(2)} Hz`;
         ampOutput.textContent = `${amp().toFixed(1)} cm`;
         stageBadge.textContent = `${mode === 'transverse' ? '횡파' : '종파'} · 파장 ${a.lambda.toFixed(1)} cm`;
-        dataNote.innerHTML =
-            `<div class="data-row"><span class="data-name">파장</span><span class="data-val">λ = v ÷ f = ${a.v} ÷ ${a.f.toFixed(2)} = ${a.lambda.toFixed(1)} cm</span></div>` +
-            `<div class="data-row"><span class="data-name">주기</span><span class="data-val">T = 1 ÷ f = ${a.period.toFixed(2)} 초에 한 번 진동</span></div>` +
-            `<div class="data-row"><span class="data-name">진폭</span><span class="data-val">${amp().toFixed(1)} cm — 에너지의 크기만 정하고 파장과 속력은 바꾸지 못합니다</span></div>` +
-            `<div class="data-row match"><span class="data-name">확인</span><span class="data-val">f × λ = ${a.f.toFixed(2)} × ${a.lambda.toFixed(1)} = ${(a.f * a.lambda).toFixed(0)} cm/s = v</span></div>`;
+        dataNote.innerHTML = '<p>진동수: ' + a.f.toFixed(2) + ' Hz · 진폭: ' + amp().toFixed(1) + ' cm</p><p>소리는 진동수가 클수록 높고, 진폭이 클수록 큽니다.</p>';
         return a;
     }
 
@@ -226,13 +222,7 @@ document.addEventListener('DOMContentLoaded', () => {
         predictionResult.textContent = !prediction
             ? '다음에는 결과를 먼저 예상해 보세요.'
             : prediction === a.verdict ? '예상이 맞았습니다.' : '예상과 다른 결과입니다.';
-        let s = `${a.v} cm/s로 달리는 파동을 ${a.f.toFixed(2)} Hz로 흔들었으므로 파장은 ${a.v} ÷ ${a.f.toFixed(2)} = ${a.lambda.toFixed(1)} cm 입니다. `;
-        s += `${VERDICT[a.verdict]}는 결과입니다. `;
-        if (a.verdict === 'same') s += `기준과 진동수나 팽팽함이 달라도 v ÷ f가 같으면 파장은 같습니다. `;
-        s += `흔드는 진폭을 ${amp().toFixed(1)} cm로 바꿔도 파장과 속력은 달라지지 않습니다. `;
-        s += mode === 'transverse'
-            ? `줄 위의 빨간 점은 위아래로만 진동하고 오른쪽으로 옮겨 가지 않습니다. 이동하는 것은 에너지입니다.`
-            : `용수철의 빨간 고리는 앞뒤로만 진동하고 제자리를 지킵니다. 빽빽한 곳과 성긴 곳이 오른쪽으로 옮겨 갑니다.`;
+        const s = mode === 'transverse' ? '줄의 빨간 점은 위아래로 진동합니다. 파동이 오른쪽으로 진행해도 줄의 각 부분은 함께 오른쪽으로 이동하지 않습니다.' : '용수철의 빨간 고리는 앞뒤로 진동합니다. 빽빽한 곳과 성긴 곳이 이동하며 파동이 전달됩니다.';
         explanation.textContent = s;
     }
 

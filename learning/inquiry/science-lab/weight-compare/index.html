@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="styles.css?v=5">
     <link rel="stylesheet" href="weight-visual.css?v=5">
     <link rel="stylesheet" href="quiz.css?v=4">
+    <link rel="stylesheet" href="../exam-scope.css?v=1">
 </head>
 <body>
     <main>
@@ -18,7 +19,7 @@
                 <a href="../">← 과학 실험실</a>
                 <h1>물체의 무게 비교</h1>
             </div>
-            <div class="grade-tags"><span>초등 3학년</span><span>물리</span></div>
+            <div class="grade-tags"><span>초등 3학년</span><span>과학</span></div>
         </header>
 
         <ol class="method-steps" aria-label="실험 방법">
@@ -74,7 +75,7 @@
                     <div id="resultContent" hidden>
                         <div class="result-numbers">
                             <article><span>덩어리의 무게</span><strong id="valueA">-</strong></article>
-                            <article><span>1 cm짜리 하나의 무게</span><strong id="valueB">-</strong></article>
+                            <article><span>비교할 나무 무게</span><strong id="valueB">-</strong></article>
                         </div>
                         <p class="prediction-result" id="predictionResult"></p>
                         <p class="explanation" id="elementaryExplanation"></p>
@@ -103,8 +104,8 @@
             <h2>실험 결과의 의미</h2>
             <div class="meaning-body">
                 <p><strong>같은 크기라도 무게가 다릅니다</strong> 똑같이 생긴 덩어리라도 무엇으로 만들었느냐에 따라 무게가 아주 다릅니다. 코르크 덩어리는 손에 얹은 줄도 모를 만큼 가볍고, 같은 크기의 철 덩어리는 서른 배가 넘게 무겁습니다.</p>
-                <p><strong>한 변이 2배면 무게는 8배</strong> 덩어리의 한 변을 2배로 늘리면 가로·세로·높이가 모두 2배가 되므로 속을 채운 양은 2 × 2 × 2 = 8배가 됩니다. 그래서 무게도 8배가 됩니다. 3배로 늘리면 27배입니다.</p>
-                <p><strong>뜨고 가라앉는 것은 크기와 상관없습니다</strong> 아무리 큰 통나무도 뜨고, 아주 작은 쇠못도 가라앉습니다. 뜨느냐 가라앉느냐는 크기가 아니라 같은 크기일 때 물보다 무거운지 가벼운지가 정합니다.</p>
+                <p><strong>같은 재료의 크기 비교</strong> 같은 재료로 만든 속이 찬 덩어리는 크기가 커질수록 무거워집니다. 저울의 표시를 읽고 무게를 비교합니다.</p>
+                <p><strong>관찰과 비교</strong> 이 모형의 덩어리는 속이 찬 물체입니다. 물에 넣은 결과도 관찰할 수 있지만 무게는 저울로 비교합니다. 모양이나 속이 빈 정도가 다른 실제 물체에 그대로 적용하지 않습니다.</p>
             </div>
         </section>
 
@@ -112,17 +113,17 @@
             <summary class="quiz-heading"><h2 id="quiz-title">확인 문제</h2><span>4문제</span></summary>
             <div class="quiz-grid">
                 <article class="quiz-card" data-answer="c">
-                    <h3>한 변이 1 cm인 덩어리를 한 변 2 cm로 키우면 무게는?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q1" value="a"> 2배</label>
-                        <label><input type="radio" name="q1" value="b"> 4배</label>
-                        <label><input type="radio" name="q1" value="c"> 8배</label>
-                        <label><input type="radio" name="q1" value="d"> 그대로</label>
-                    </div>
-                    <button class="answer-button" type="button">정답 확인</button>
-                    <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>가로도 2배, 세로도 2배, 높이도 2배가 됩니다. 2 × 2 × 2 = 8이므로 속이 8배로 늘어나 무게도 8배가 됩니다.</p>
-                </article>
+<h3>같은 재료의 속이 찬 덩어리를 더 크게 만들면 무게는?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q1" value="a"> 가벼워진다.</label>
+<label><input type="radio" name="q1" value="b"> 변하지 않는다.</label>
+<label><input type="radio" name="q1" value="c"> 무거워진다.</label>
+<label><input type="radio" name="q1" value="d"> 없어진다.</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>같은 재료라면 크기가 큰 덩어리가 더 무겁습니다. 무게는 저울로 비교할 수 있습니다.</p>
+</article>
 
                 <article class="quiz-card" data-answer="b">
                     <h3>아주 커다란 통나무를 물에 넣으면 어떻게 될까요?</h3>
@@ -150,21 +151,23 @@
                     <p class="answer-explanation" hidden>쇠는 같은 크기의 물보다 훨씬 무겁습니다. 못이 아무리 작아도 그 점은 달라지지 않으므로 가라앉습니다.</p>
                 </article>
 
-                <article class="quiz-card" data-answer="d">
-                    <h3>나무 덩어리가 물에 뜰 때 절반쯤 잠기는 까닭은?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q4" value="a"> 나무가 물을 빨아들여서</label>
-                        <label><input type="radio" name="q4" value="b"> 물이 밀어 올리는 힘이 없어서</label>
-                        <label><input type="radio" name="q4" value="c"> 나무가 물보다 무거워서</label>
-                        <label><input type="radio" name="q4" value="d"> 같은 크기일 때 나무가 물의 절반쯤 무게라서</label>
-                    </div>
-                    <button class="answer-button" type="button">정답 확인</button>
-                    <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>물에 뜬 물체는 자기 무게만큼의 물을 밀어냅니다. 나무는 같은 크기의 물의 절반쯤 무게이므로 절반만 잠기면 자기 무게만큼의 물을 밀어내게 되어 거기서 멈춥니다.</p>
-                </article>
+                <article class="quiz-card" data-answer="b">
+<h3>같은 크기의 나무와 철 덩어리의 무게를 비교하는 방법은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q4" value="a"> 색만 비교한다.</label>
+<label><input type="radio" name="q4" value="b"> 저울의 표시를 비교한다.</label>
+<label><input type="radio" name="q4" value="c"> 손으로 보기만 한다.</label>
+<label><input type="radio" name="q4" value="d"> 크기가 같으므로 재지 않는다.</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>같은 크기라도 재료에 따라 무게가 다를 수 있습니다. 저울을 이용하면 무게를 비교할 수 있습니다.</p>
+</article>
             </div>
         </details>
     </main>
-    <script src="app.js?v=4"></script>
+    <script src="app.js?v=85c94b5e942e"></script>
+    <script src="../curriculum-map.js?v=2ffe762f2206"></script>
+    <script src="../exam-scope.js?v=849f3853d47f"></script>
 </body>
 </html>

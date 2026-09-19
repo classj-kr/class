@@ -5,33 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#f1f5f9">
     <title>과학 실험실</title>
-    <meta name="description" content="바닷물의 수온 연직 분포와 염분비 일정 법칙을 확인하고 수온·염분으로 밀도를 구해 심층 순환을 알아보는 중학교 과학 모의실험">
+    <meta name="description" content="바닷물의 수온 연직 분포와 염분·염류의 비율을 확인하는 중학교 과학 모의실험">
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
     <link rel="stylesheet" href="styles.css?v=5">
     <link rel="stylesheet" href="sea-visual.css?v=5">
     <link rel="stylesheet" href="quiz.css?v=3">
+    <link rel="stylesheet" href="../exam-scope.css?v=1">
 </head>
 <body>
     <main>
         <header class="page-header">
             <div class="title-row">
                 <a href="../">← 과학 실험실</a>
-                <h1>수온·염분과 해수 순환</h1>
+                <h1>수온 분포와 염분</h1>
             </div>
-            <div class="grade-tags"><span>중학교 3학년</span><span>지구과학</span></div>
+            <div class="grade-tags"><span>중학교 3학년</span><span>과학</span></div>
         </header>
 
         <ol class="method-steps" aria-label="실험 방법">
             <li>바다의 위치를 고릅니다.</li>
             <li>표층 수온과 염분을 정합니다.</li>
             <li>바람의 세기를 바꾸며 혼합층을 봅니다.</li>
-            <li>밀도를 구해 가라앉을지 뜰지 확인합니다.</li>
+            <li>염분과 수온의 연직 분포를 확인합니다.</li>
         </ol>
 
         <div class="experiment-layout">
             <section class="panel control-panel" aria-labelledby="control-title">
                 <h2 id="control-title">실험 조건</h2>
-                <p class="water-standard">밀도는 수온이 낮을수록, 염분이 높을수록 커집니다</p>
+                <p class="water-standard">염분과 수온의 분포를 구별하여 관찰합니다</p>
 
                 <fieldset class="pick-field">
                     <legend>바다의 위치</legend>
@@ -64,11 +65,11 @@
                 <div class="range-scale" aria-hidden="true"><span>없음</span><span>보통</span><span>강함</span></div>
 
                 <fieldset class="prediction-field">
-                    <legend>이 바닷물의 밀도는 평균보다 어떨까요?</legend>
+                    <legend>이 바닷물 1 kg의 염류량은 기준 35 g보다 어떨까요?</legend>
                     <div class="prediction-buttons three">
-                        <button type="button" data-prediction="heavier">크다 (가라앉는다)</button>
+                        <button type="button" data-prediction="heavier">많다</button>
                         <button type="button" data-prediction="same">비슷하다</button>
-                        <button type="button" data-prediction="lighter">작다 (뜬다)</button>
+                        <button type="button" data-prediction="lighter">적다</button>
                     </div>
                 </fieldset>
 
@@ -82,7 +83,7 @@
                     <p id="resultEmpty">조건을 정하고 결과를 확인해 보세요.</p>
                     <div id="resultContent" hidden>
                         <div class="result-numbers">
-                            <article><span>밀도</span><strong id="valueA">-</strong></article>
+                            <article><span>염류량 (바닷물 1 kg)</span><strong id="valueA">-</strong></article>
                             <article><span>혼합층 두께</span><strong id="valueB">-</strong></article>
                         </div>
                         <p class="prediction-result" id="predictionResult"></p>
@@ -117,7 +118,7 @@
             <div class="meaning-body">
                 <p><strong>혼합층</strong> 바람이 바닷물을 섞어 주는 깊이까지는 수온이 같습니다. 바람이 셀수록 이 층이 두꺼워집니다.</p>
                 <p><strong>염분비 일정 법칙</strong> 바다마다 염분은 달라도 녹아 있는 염류의 비율은 어디서나 같습니다. 그래서 하나만 재면 나머지도 알 수 있습니다.</p>
-                <p><strong>심층 순환</strong> 차갑고 짠 바닷물은 밀도가 커서 가라앉습니다. 극지방에서 가라앉은 물이 깊은 바다를 따라 아주 천천히 돕니다.</p>
+                <p><strong>자료와 모형</strong> 바람이 강하면 표층이 더 깊게 섞여 혼합층이 두꺼워질 수 있습니다. 화면의 온도·층 두께는 개념을 위한 예시이며 실제 해양 관측값은 아닙니다.</p>
             </div>
         </section>
 
@@ -150,18 +151,18 @@
                     <p class="answer-explanation" hidden>염분이 달라도 녹아 있는 염류끼리의 비율은 언제나 같습니다. 이것을 염분비 일정 법칙이라고 합니다.</p>
                 </article>
 
-                <article class="quiz-card" data-answer="a">
-                    <h3>가라앉아 심층 순환을 일으키는 바닷물은?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q3" value="a"> 차갑고 염분이 높은 물</label>
-                        <label><input type="radio" name="q3" value="b"> 따뜻하고 염분이 낮은 물</label>
-                        <label><input type="radio" name="q3" value="c"> 따뜻하고 염분이 높은 물</label>
-                        <label><input type="radio" name="q3" value="d"> 얕은 곳의 물이면 모두</label>
-                    </div>
-                    <button class="answer-button" type="button">정답 확인</button>
-                    <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>수온이 낮을수록, 염분이 높을수록 밀도가 큽니다. 밀도가 큰 물이 아래로 가라앉아 깊은 바다의 흐름을 만듭니다.</p>
-                </article>
+                <article class="quiz-card" data-answer="c">
+<h3>바닷물의 표층에서 바람에 의해 물이 잘 섞이는 층은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q3" value="a"> 핵</label>
+<label><input type="radio" name="q3" value="b"> 맨틀</label>
+<label><input type="radio" name="q3" value="c"> 혼합층</label>
+<label><input type="radio" name="q3" value="d"> 오존층</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>혼합층에서는 바람에 의해 바닷물이 섞여 깊이에 따른 수온 차이가 비교적 작습니다.</p>
+</article>
 
                 <article class="quiz-card" data-answer="d">
                     <h3>수온 약층에서 수온은 깊어질수록?</h3>
@@ -178,6 +179,8 @@
             </div>
         </details>
     </main>
-    <script src="app.js?v=13"></script>
+    <script src="app.js?v=161e437af09a"></script>
+    <script src="../curriculum-map.js?v=2ffe762f2206"></script>
+    <script src="../exam-scope.js?v=849f3853d47f"></script>
 </body>
 </html>

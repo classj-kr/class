@@ -1,0 +1,13 @@
+[hidden]{display:none!important}
+.grade-navigation{margin:20px 0;padding:20px;border:1px solid #cbd5e1;border-radius:14px;background:#fff;color:#172f3b}
+.grade-navigation h1{font-size:21px;margin:0 0 14px}
+.grade-choices{display:flex;flex-wrap:wrap;gap:8px}
+.grade-choices button,.course-choice select{font:inherit;padding:8px 12px;border:1px solid #a8bcc6;border-radius:8px;background:white;color:#172f3b;cursor:pointer}
+.grade-choices button[aria-pressed=true]{background:#174f60;color:white;border-color:#174f60}
+.grade-choices button:focus-visible,.course-choice select:focus-visible{outline:3px solid #db8600;outline-offset:3px}
+.course-choice{display:flex;align-items:center;flex-wrap:wrap;gap:12px;margin-top:14px}
+.course-label{display:block;margin-top:4px;font-size:11px;line-height:1.5;color:#53636e;font-weight:500;white-space:normal}
+.placement-note{font-size:12px;line-height:1.7;color:#53636e;margin-bottom:0}
+.grade-filtered .level-matrix{grid-template-columns:1fr}
+.grade-filtered .column-labels{display:none}
+.grade-filtered .level-cell{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr))}

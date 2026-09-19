@@ -125,7 +125,7 @@ function drawScene(g) {
         }
     }
     g.appendChild(el('text', { x: TANK.x + TANK.w / 2, y: 208, 'text-anchor': 'middle', class: 'small-label' },
-        a.floats ? `물 위에 뜹니다 · ${Math.round(a.sunk * 100)}%만 잠김` : '바닥까지 가라앉습니다'));
+        a.floats ? '물 위에 뜹니다' : '바닥까지 가라앉습니다'));
     g.appendChild(el('text', { x: 444, y: 22, 'text-anchor': 'end', class: 'small-label' }, '물에 넣어 보면'));
     g.appendChild(el('text', { x: 444, y: 40, 'text-anchor': 'end', class: 'read-text', style: a.floats ? '' : 'fill:#ea580c' },
         a.floats ? '뜬다' : '가라앉는다'));
@@ -173,7 +173,7 @@ function drawGraph(g) {
         g.appendChild(el('text', { x: x0 + 110, y: 175.5, class: 'legend-text', style: 'fill:#bed2e1' }, '같은 크기의 나무'));
     }
     g.appendChild(el('text', { x: x1 - 2, y: 175.5, 'text-anchor': 'end', class: 'legend-text', style: 'fill:#475569' },
-        '한 변이 2배면 무게는 8배'));
+        '같은 재료의 크기와 무게 비교'));
     g.appendChild(el('text', { x: (x0 + x1) / 2, y: 191, 'text-anchor': 'middle', class: 'axis-title' }, '덩어리 한 변의 길이 — 세로는 무게 (g)'));
 }
 
@@ -190,15 +190,13 @@ function updateReadout() {
     const a = analyse();
     $('stageBadge').textContent = `${a.mat.name} ${a.size} cm 덩어리`;
     $('valueA').textContent = `${grams(a.weight)} g`;
-    $('valueB').textContent = `${fmt(a.mat.per, 2)} g`;
+    $('valueB').textContent = `${grams(a.ref)} g`;
     const rows = [
-        ['1 cm짜리가 몇 개 들었나', `${a.volume}개`, false],
-        ['1 cm짜리 하나의 무게', `${fmt(a.mat.per, 2)} g · ${a.mat.hint}`, false],
-        ['나무 4 cm와 견주면', Math.abs(a.diff) < 0.005 ? '똑같습니다'
-            : `${grams(Math.abs(a.diff))} g ${a.diff > 0 ? '더 무겁습니다' : '더 가볍습니다'}`, Math.abs(a.diff) < 0.005],
-        ['같은 크기의 나무보다', `${fmt(a.timesWood, 2)}배`, false],
-        ['같은 크기의 물보다', `${fmt(a.mat.per / WATER, 2)}배`, a.floats],
-        ['물에 넣으면', a.floats ? `뜨고 ${Math.round(a.sunk * 100)}%가 물에 잠깁니다` : '가라앉습니다', a.floats],
+        ['재료', a.mat.name, false],
+        ['덩어리의 무게', grams(a.weight) + ' g', false],
+        ['비교할 나무의 무게', grams(a.ref) + ' g', false],
+        ['무게 비교', Math.abs(a.diff) < 0.005 ? '같음' : a.diff > 0 ? '나무보다 무거움' : '나무보다 가벼움', true],
+        ['물에 넣은 결과', a.floats ? '뜸' : '가라앉음', false],
     ];
     $('dataNote').innerHTML = rows.map(([n, v, m]) =>
         `<div class="data-row${m ? ' match' : ''}"><span class="data-name">${n}</span><span class="data-val">${v}</span></div>`).join('');
@@ -219,21 +217,7 @@ function explain(a) {
         $('predictionResult').className = 'prediction-result';
     }
 
-    let s = `${eun(a.mat.name)} 1 cm짜리 하나가 ${fmt(a.mat.per, 2)} g입니다. 한 변이 ${a.size} cm인 덩어리 속에는 1 cm짜리가 ${a.size} × ${a.size} × ${a.size} = ${a.volume}개 들어 있으므로, 무게는 ${fmt(a.mat.per, 2)} × ${a.volume} = ${grams(a.weight)} g입니다. `;
-    if (a.size > 1) {
-        s += `한 변을 1 cm에서 ${a.size} cm로 늘렸더니 무게가 ${a.volume}배가 되었습니다. 길이는 ${a.size}배인데 가로·세로·높이가 모두 늘어나기 때문입니다. `;
-    }
-    s += Math.abs(a.diff) < 0.005
-        ? `저울 오른쪽의 나무 4 cm 덩어리와 무게가 똑같아 저울이 수평이 됩니다. `
-        : `저울에 올리면 나무 4 cm 덩어리(${grams(a.ref)} g)보다 ${grams(Math.abs(a.diff))} g ${a.diff > 0 ? '무거워 왼쪽으로 기웁니다' : '가벼워 오른쪽으로 기웁니다'}. `;
-
-    if (a.floats) {
-        s += `물에 넣으면 뜹니다. 같은 크기의 물과 견주면 무게가 ${fmt(a.mat.per, 2)}배밖에 안 되기 때문입니다. `;
-        s += `뜬 물체는 자기 무게만큼의 물을 밀어내는 깊이까지만 잠기므로 ${Math.round(a.sunk * 100)}%가 물에 잠기고 나머지는 물 위로 나옵니다. `;
-    } else {
-        s += `물에 넣으면 가라앉습니다. 같은 크기의 물보다 ${fmt(a.mat.per, 2)}배나 무겁기 때문입니다. `;
-    }
-    s += `여기서 꼭 기억할 것이 있습니다. 덩어리를 아무리 크게 만들어도 뜨고 가라앉는 것은 달라지지 않습니다. 커지면 무거워지지만 밀어내는 물도 똑같이 많아지기 때문입니다. 그래서 커다란 통나무도 뜨고 아주 작은 쇠못도 가라앉습니다.`;
+    const s = '같은 크기라도 재료에 따라 무게가 다릅니다. 같은 재료는 크기가 커질수록 무거워집니다. 저울의 표시를 비교하고 g 단위로 읽어 보세요.';
     $('elementaryExplanation').textContent = s;
 }
 

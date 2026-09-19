@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
         nolymph: { label: '림프구 없는 몸', hint: '후천 면역 못 함' },
     };
     const DOSES = { small: { label: '조금 들어옴', hint: '100마리', dose: 100 }, large: { label: '많이 들어옴', hint: '100만 마리', dose: 1e6 } };
-    const SHOTS = { none: { label: '접종 안 함', hint: '기억 세포 없음', n: 0 }, one: { label: '1회 접종', hint: '한 번만', n: 1 }, two: { label: '2회 접종', hint: '3주 간격', n: 2 } };
+    const SHOTS = { none: { label: '접종 안 함', hint: '기억 세포 없음', n: 0 }, one: { label: '1회 접종', hint: '한 번만', n: 1 }, two: { label: '2회 접종', hint: '가상 추가 노출', n: 2 } };
     const WHENS = { m1: { label: '한 달 뒤 만남', hint: '30일 뒤', gap: 30 }, m6: { label: '여섯 달 뒤 만남', hint: '180일 뒤', gap: 180 } };
     const V_DOSE = 1e5;
     const ABO = ['A', 'B', 'AB', 'O'];
@@ -403,21 +403,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function noteFor(a) {
-        if (a.kind === 'infect' || a.kind === 'vaccine') {
-            const { run } = a, rel = d => d === null ? '-' : dayWord(d - (run.infectDay || 0));
-            const head = a.kind === 'infect'
-                ? `<div class="data-row"><span class="data-name">조건</span><span class="data-val">${INFECTS[state.infect].label} (${INFECTS[state.infect].hint}) · 병원체 ${DOSES[state.dose].hint} · 8시간마다 2배</span></div>`
-                : `<div class="data-row"><span class="data-name">조건</span><span class="data-val">${SHOTS[state.shot].label} · ${WHENS[state.when].label.replace(' 만남', '')} 병원체 10만 마리를 만남 · 만난 날 항체 ${fmtA(a.Aat)}</span></div>`;
-            return head +
-                `<div class="data-row"><span class="data-name">병원체</span><span class="data-val">가장 많을 때 ${fmtGerms(run.peak)} (${rel(run.peakDay)}) · ${run.clearDay !== null ? `${rel(run.clearDay)} 사라짐` : '3주 뒤에도 남음'}</span></div>` +
-                `<div class="data-row"><span class="data-name">항체</span><span class="data-val">${run.protectDay !== null ? `${rel(run.protectDay)} 막는 문턱(1) 넘음` : '문턱(1)에 못 미침'} · 가장 높을 때 ${fmtA(run.maxA)}</span></div>` +
-                `<div class="data-row match"><span class="data-name">앓은 기간</span><span class="data-val">${run.sick > 0 ? `${run.sick.toFixed(1)}일 (${rel(run.firstSick)}~${fmtDay(run.lastSick - (run.infectDay || 0))}일째)` : '열이 나지 않음'} — 병원체 1만 마리 넘는 동안</span></div>`;
-        }
-        const donorAg = [...ANTIGENS[a.d], 'D'], recipAb = [...ANTIBODIES[a.r], ...(state.rh === 'second' ? ['D'] : [])];
-        return `<div class="data-row"><span class="data-name">주는 적혈구</span><span class="data-val">${a.d}형 Rh⁺ — 응집원 ${donorAg.join('·')}</span></div>` +
-            `<div class="data-row"><span class="data-name">받는 혈장</span><span class="data-val">${a.r}형 ${state.rh === 'same' ? 'Rh⁺' : 'Rh⁻'} — 응집소 ${recipAb.length ? recipAb.map(x => `항${x}`).join('·') : '없음'}${state.rh === 'first' ? ' (항D는 아직 없음)' : ''}</span></div>` +
-            `<div class="data-row"><span class="data-name">짝이 맞는 것</span><span class="data-val">${a.hits.length || a.rhClump ? [...a.hits, ...(a.rhClump ? ['D'] : [])].map(x => `항${x} ↔ 응집원 ${x}`).join(', ') : '없음'}</span></div>` +
-            `<div class="data-row match"><span class="data-name">결과</span><span class="data-val">${a.verdict === 'ok' ? '응집 없음' : a.verdict === 'clump' ? '응집 — 적혈구가 뭉쳐 혈관을 막음' : '이번엔 응집 없음, 항D 응집소 생김 → 다음 Rh⁺ 수혈은 위험'}</span></div>`;
+        return '<p>수치·시간·증상 기준은 면역 기억을 설명하기 위해 정한 가상 값입니다. 실제 감염 기간이나 백신 접종 일정·효과를 예측하지 않습니다.</p><p>선천 면역과 후천 면역의 역할, 같은 항원에 재노출될 때 항체 반응의 차이를 비교하세요.</p>';
     }
 
     function render() {
@@ -426,8 +412,8 @@ document.addEventListener('DOMContentLoaded', () => {
         graphGroup.innerHTML = a.kind === 'blood' ? graphBlood(a) : graphImmune(a);
         liftProse();
         stageBadge.textContent = a.kind === 'infect' ? `${INFECTS[state.infect].label} · ${DOSES[state.dose].label}` : a.kind === 'vaccine' ? `${SHOTS[state.shot].label} · ${WHENS[state.when].label}` : `${a.d}형 → ${a.r}형 · ${RHS[state.rh].label}`;
-        methodHint.textContent = a.kind === 'infect' ? '처음 만난 병원체에는 항체가 나오기까지 닷새쯤 걸립니다'
-            : a.kind === 'vaccine' ? '백신은 앓지 않고 기억 세포를 만들어 둡니다'
+        methodHint.textContent = a.kind === 'infect' ? '면역 기억에 따른 항체 반응의 차이를 관찰하는 가상 모형입니다'
+            : a.kind === 'vaccine' ? '백신은 항원에 대한 면역 반응과 기억을 유도합니다'
                 : '받는 사람의 응집소가 주는 적혈구의 응집원을 붙잡으면 뭉칩니다';
         dataNote.innerHTML = noteFor(a);
         return a;
@@ -456,50 +442,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function finish() {
-        const a = render();
-        resultEmpty.hidden = true;
-        resultContent.hidden = false;
-        let s = '';
-        if (a.kind === 'infect' || a.kind === 'vaccine') {
-            const { run } = a, rel = d => fmtDay(d - (run.infectDay || 0)), relW = d => dayWord(d - (run.infectDay || 0));
-            labelA.textContent = '앓은 기간'; valueA.textContent = run.sick > 0 ? `${run.sick.toFixed(1)}일` : '열 안 남';
-            labelB.textContent = '병원체가 사라진 때'; valueB.textContent = run.clearDay !== null ? `${rel(run.clearDay)}일째` : '3주 안에 못 없앰';
-            const tail = ' 처음 반응은 느리고 두 번째 반응은 빠르고 큰 것, 그것이 면역 기억입니다.';
-            if (a.kind === 'infect') {
-                const dose = DOSES[state.dose].hint;
-                if (state.infect === 'nolymph') s = `림프구가 없는 몸에 병원체 ${dose}가 들어왔습니다. 큰포식세포가 하루에 절반 가까이 잡아먹었지만 8시간마다 두 배로 늘어나는 병원체를 따라잡지 못했고, 항체는 하나도 만들어지지 않았습니다. 병원체는 ${fmtGerms(run.peak)}까지 늘어 3주 내내 열이 났습니다. 후천 면역이 없으면 가벼운 감염도 이기지 못하는 까닭입니다.`;
-                else {
-                    const primary = state.infect !== 'same';
-                    s = state.infect === 'other' ? `다른 병을 앓고 남은 기억 세포는 이 병원체의 항원을 알아보지 못합니다. 그래서 처음 걸린 것과 똑같이 진행됐습니다. ` : state.infect === 'same' ? `두 달 전에 같은 병원체를 앓아 기억 세포와 항체 ${fmtA(run.A[0])}${pIga(fmtA(run.A[0]))} 남아 있었습니다. ` : '';
-                    s += `병원체 ${dose}가 들어와 8시간마다 두 배로 늘었습니다. `;
-                    if (primary) s += `큰포식세포만으로는 막지 못해 ${run.firstSick !== null ? `${relW(run.firstSick)}부터 열이 났고, ` : ''}${rel(run.peakDay)}일째 ${fmtGerms(run.peak)}까지 늘었습니다. B 림프구가 형질 세포로 자라 항체를 내기까지 닷새 안팎이 걸려 ${run.protectDay !== null ? `${rel(run.protectDay)}일째에야` : '늦게'} 항체가 막는 문턱을 넘었고, 그 뒤 병원체가 빠르게 줄어 ${rel(run.clearDay)}일째 사라졌습니다. 앓은 기간은 ${run.sick.toFixed(1)}일이고, 이제 기억 세포가 남았습니다.`;
-                    else if (run.maxA <= run.A[0] * 1.05) s += `남아 있던 항체만으로도 병원체가 늘어나지 못했습니다. 기억 세포가 나설 틈도 없이 병원체는 ${fmtGerms(run.peak)}를 넘지 못하고 ${rel(run.clearDay)}일째 모두 사라져 열이 나지 않았습니다.`;
-                    else s += `기억 세포가 하루 반 만에 형질 세포로 바뀌어 처음보다 열 배 넘는 항체(최고 ${fmtA(run.maxA)})를 냈습니다. ${run.sick > 0 ? `그래도 한 번에 ${dose}가 들어와 ${run.sick.toFixed(1)}일쯤 열이 났지만, ` : `병원체는 ${fmtGerms(run.peak)}를 넘지 못해 열이 나지 않았고, `}${rel(run.clearDay)}일째 모두 사라졌습니다.`;
-                }
-            } else {
-                const gap = WHENS[state.when].gap;
-                if (a.n === 0) s = `백신을 맞지 않은 몸이 ${gap}일 뒤 병원체 10만 마리를 만났습니다. 기억 세포가 없어 처음 걸린 것과 똑같이 항체가 나오기까지 닷새 넘게 걸렸고, 병원체는 ${fmtGerms(run.peak)}까지 늘어 ${run.sick.toFixed(1)}일 앓았습니다. ${rel(run.clearDay)}일째에야 병원체가 사라졌습니다.`;
-                else if (a.n === 1) s = gap <= 30
-                    ? `한 번 맞은 뒤 30일에는 항체가 아직 ${fmtA(a.Aat)}${roOf(fmtA(a.Aat))} 문턱(1) 위에 있었습니다. 병원체 10만 마리가 들어왔지만 항체가 곧바로 붙잡고 기억 세포도 하루 반 만에 항체를 더 내어 ${relW(run.clearDay)} 사라졌습니다. ${sickWord(run.sick)}`
-                    : `한 번 맞고 여섯 달이 지나 항체는 ${fmtA(a.Aat)}까지 줄었습니다(항체 반감기 3주). 기억 세포는 남아 있어 하루 반 만에 항체를 쏟아냈지만, 그 사이 병원체가 ${fmtGerms(run.peak)}까지 늘어 ${run.sick.toFixed(1)}일 앓았습니다. 그래도 맞지 않은 몸보다 훨씬 짧습니다. 몇 주 뒤 한 번 더 맞아 두라고 하는 까닭이 여기 있습니다.`;
-                else s = `두 번 맞아 기억 세포가 늘고 오래 사는 형질 세포가 많아져 ${gap}일 뒤에도 항체가 ${fmtA(a.Aat)}${roOf(fmtA(a.Aat))} 문턱(1) 위에 있었습니다. 병원체 10만 마리가 들어왔지만 늘어나지 못하고 ${relW(run.clearDay)} 사라졌습니다. ${sickWord(run.sick)} 추가 접종은 항체를 오래 높게 남기는 방법입니다.`;
-            }
-            if (!(a.kind === 'infect' && state.infect === 'nolymph')) s += tail;
-        } else {
-            const abList = ANTIBODIES[a.r].map(x => `항${x}`).join('·') || '없음', agList = ANTIGENS[a.d].join('·') || '없음';
-            labelA.textContent = '결과'; valueA.textContent = a.verdict === 'ok' ? '응집 없음' : a.verdict === 'clump' ? '응집' : '괜찮지만 항D 생김';
-            labelB.textContent = '까닭'; valueB.textContent = a.hits.length ? `항${a.hits[0]} 응집소 ↔ 응집원 ${a.hits[0]}` : a.rhClump ? '항D 응집소 ↔ 응집원 D' : state.rh === 'first' ? '응집원 D를 처음 봄' : '짝이 맞는 응집소 없음';
-            if (a.verdict === 'clump') {
-                if (a.hits.length) s = `${a.r}형 혈장에는 ${abList} 응집소가 있고 ${a.d}형 적혈구에는 응집원 ${agList}가 있어, 만나는 즉시 항${a.hits[0]} 응집소가 응집원 ${a.hits[0]}를 붙잡아 적혈구가 뭉쳤습니다(응집). 뭉친 덩어리가 작은 혈관을 막고 적혈구가 터져 매우 위험합니다. `;
-                else s = `ABO는 맞았지만 받는 사람은 Rh⁻이면서 전에 Rh⁺ 피를 받은 적이 있어 항D 응집소가 이미 만들어져 있었습니다. 이번 Rh⁺ 적혈구의 응집원 D와 만나 곧바로 응집했습니다. `;
-                if (a.hits.length && a.rhClump) s += `Rh도 맞지 않아 항D 응집소까지 응집원 D를 붙잡았습니다. `;
-                s += `수혈 전에 두 피를 조금 섞어 뭉치는지 보는 교차 시험을 꼭 하는 까닭입니다.`;
-            } else if (a.verdict === 'sensitize') s = `${!ANTIGENS[a.d].length ? `${a.d}형 적혈구에는 응집원 A·B가 없어` : !ANTIBODIES[a.r].length ? `${a.r}형 혈장에는 응집소가 없어` : `${a.d}형 적혈구의 응집원(${agList})을 ${a.r}형 혈장의 응집소(${abList})가 붙잡을 수 없어`} ABO로는 뭉치지 않았습니다. 그러나 Rh⁻인 받는 사람의 림프구가 처음 본 응집원 D를 항원으로 알아보고 항D 응집소를 만들기 시작했습니다. 이번 수혈은 무사해 보이지만 기억 세포가 남아, 다음에 Rh⁺ 피를 받으면 바로 응집합니다. Rh⁻ 어머니가 Rh⁺ 아기를 가졌을 때도 같은 일이 일어나 둘째 아기가 위험해질 수 있어 미리 항D 주사를 맞습니다.`;
-            else s = `${!ANTIGENS[a.d].length && !ANTIBODIES[a.r].length ? `${a.d}형 적혈구에는 응집원이, ${a.r}형 혈장에는 응집소가 없어 만날 것이 없었습니다.` : !ANTIGENS[a.d].length ? `${a.d}형 적혈구에는 응집원이 없어 ${a.r}형 혈장의 응집소(${abList})가 붙잡을 것이 없었습니다.` : !ANTIBODIES[a.r].length ? `${a.r}형 혈장에는 응집소가 없어 ${a.d}형 적혈구의 응집원(${agList})을 붙잡을 것이 없었습니다.` : `${a.d}형 적혈구의 응집원(${agList})을 ${a.r}형 혈장의 응집소(${abList})가 붙잡을 수 없었습니다.`} 적혈구는 뭉치지 않고 그대로 흘렀습니다. 둘 다 Rh⁺여서 응집원 D도 문제가 되지 않습니다. ${ANTIGENS[a.d].length === 0 ? 'O형 적혈구에는 응집원이 없어 누구에게나 줄 수 있습니다. ' : ''}${ANTIBODIES[a.r].length === 0 ? 'AB형 혈장에는 응집소가 없어 누구의 적혈구든 받을 수 있습니다. ' : ''}응집은 받는 사람의 응집소와 주는 사람의 응집원이 짝이 맞을 때만 일어납니다.`;
-        }
-        predictionResult.textContent = !state.prediction ? '다음에는 결과를 먼저 예상해 보세요.'
-            : state.prediction === a.verdict ? '예상이 맞았습니다.' : '예상과 다른 결과입니다.';
-        explanation.textContent = s;
+        const a=render();resultEmpty.hidden=true;resultContent.hidden=false;
+        labelA.textContent='모형의 반응';valueA.textContent=a.kind==='vaccine'?'백신 노출 조건 비교':state.infect==='same'?'같은 항원 재노출':'처음 항원 노출 등';
+        labelB.textContent='관찰 대상';valueB.textContent='항체와 병원체 곡선';
+        predictionResult.textContent=!state.prediction?'다음에는 모형의 결과를 먼저 예상해 보세요.':state.prediction===a.verdict?'이 가상 모형의 예상이 맞았습니다.':'이 가상 모형의 결과와 다릅니다.';
+        explanation.textContent='특정 항원에 대한 면역 기억은 같은 항원에 다시 노출될 때 더 빠르고 강한 반응에 기여할 수 있습니다. B 림프구가 형질 세포로 분화하면 항체를 분비합니다. 그림의 수치·기간은 가상 조건이며 실제 감염, 접종 일정, 수혈이나 치료 결정을 위한 자료가 아닙니다.';
     }
 
     function settingsChanged() {

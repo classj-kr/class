@@ -128,45 +128,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         mainGroup.innerHTML = out;
 
-        // where each fluid's float/sink boundary lies against object density
-        const rhoMax = 3;
-        let g = '';
-        for (let k = 0; k <= 3; k += 1) {
-            const y = GRAPH.y0 - (k / 3) * (GRAPH.y0 - GRAPH.y1);
-            g += `<line class="grid-line" x1="${GRAPH.x0}" y1="${y}" x2="${GRAPH.x1}" y2="${y}"/>`;
-            g += `<text class="axis-text" x="${GRAPH.x0 - 6}" y="${y + 3}" text-anchor="end">${(k * 100 / 3).toFixed(0)}</text>`;
-        }
-        for (let r = 0; r <= rhoMax; r += 0.5) {
-            g += `<text class="axis-text" x="${gx(r, 0, rhoMax)}" y="${GRAPH.y0 + 16}" text-anchor="middle">${r.toFixed(1)}</text>`;
-        }
-        g += `<line class="axis" x1="${GRAPH.x0}" y1="${GRAPH.y0}" x2="${GRAPH.x1}" y2="${GRAPH.y0}"/>`;
-        g += `<line class="axis" x1="${GRAPH.x0}" y1="${GRAPH.y0}" x2="${GRAPH.x0}" y2="${GRAPH.y1}"/>`;
-        g += `<text class="axis-title" x="${(GRAPH.x0 + GRAPH.x1) / 2}" y="${GRAPH.y0 + 32}" text-anchor="middle">물체의 밀도 (g/cm³)</text>`;
-        g += `<text class="axis-title" x="${GRAPH.x0}" y="${GRAPH.y1 - 4}">잠긴 비율 (%)</text>`;
-        // submerged fraction against object density: rises to 100% at the
-        // fluid's density and stays there once it sinks
-        const pts = [];
-        for (let k = 0; k <= 120; k += 1) {
-            const r = (rhoMax * k) / 120;
-            const pct = Math.min(1, r / b.rhoFl) * 100;
-            pts.push(`${gx(r, 0, rhoMax).toFixed(1)},${gy(pct, 100).toFixed(1)}`);
-        }
-        g += `<path class="curve" d="M${pts.join('L')}"/>`;
-        g += `<line class="float-line" x1="${gx(b.rhoFl, 0, rhoMax)}" y1="${GRAPH.y0}" x2="${gx(b.rhoFl, 0, rhoMax)}" y2="${GRAPH.y1}"/>`;
-        g += `<text class="axis-text" x="${gx(b.rhoFl, 0, rhoMax) + 4}" y="${GRAPH.y0 - 6}" style="fill:#059669">${f.name} ${b.rhoFl.toFixed(2)}</text>`;
-        const px = gx(Math.min(rhoMax, b.rhoObj), 0, rhoMax), py = gy(b.frac * 100, 100);
-        g += `<line class="op-guide" x1="${px}" y1="${GRAPH.y0}" x2="${px}" y2="${py.toFixed(1)}"/>`;
-        g += `<circle class="op-point" cx="${px}" cy="${py.toFixed(1)}" r="5"/>`;
-        const flip = px > (GRAPH.x0 + GRAPH.x1) / 2;
-        g += `<text class="op-text" x="${(px + (flip ? -9 : 9)).toFixed(1)}" y="${Math.max(GRAPH.y1 - 4, py - 9).toFixed(1)}"${flip ? ' text-anchor="end"' : ''}>${(b.frac * 100).toFixed(0)}% 잠김</text>`;
-        graphGroup.innerHTML = g;
-
-        const equal = Math.abs(b.buoyN - b.weightN) < 1e-9;
-        dataNote.innerHTML =
-            `<div class="data-row"><span class="data-name">물체의 밀도</span><span class="data-val">${mass()} g ÷ ${vol()} cm³ = ${b.rhoObj.toFixed(3)} g/cm³</span></div>` +
-            `<div class="data-row"><span class="data-name">잠긴 부피</span><span class="data-val">${b.vSub.toFixed(1)} cm³ (${(b.frac * 100).toFixed(0)}%)</span></div>` +
-            `<div class="data-row${equal ? ' match' : ''}"><span class="data-name">부력 vs 무게</span><span class="data-val">${b.buoyN.toFixed(3)} N ${equal ? '=' : '<'} ${b.weightN.toFixed(3)} N${equal ? ' (평형)' : ''}</span></div>`;
-
+        graphGroup.innerHTML = '<text x="20" y="50" fill="#334155" font-size="16">물체와 액체의 밀도를 비교하세요.</text><text x="20" y="90" fill="#334155" font-size="16">물체의 밀도가 더 작으면 뜹니다.</text>';
+        dataNote.innerHTML = '<p>질량 ' + mass() + ' g ÷ 부피 ' + vol() + ' cm³ = 밀도 ' + b.rhoObj.toFixed(3) + ' g/cm³</p><p>액체의 밀도: ' + b.rhoFl.toFixed(2) + ' g/cm³</p>';
         stageBadge.textContent = `${f.name} · ${b.state === 'float' ? '뜸' : b.state === 'neutral' ? '중성 부력' : '가라앉음'}`;
         massOutput.textContent = `${mass()} g`;
         volOutput.textContent = `${vol()} cm³`;
@@ -190,44 +153,13 @@ document.addEventListener('DOMContentLoaded', () => {
         out += `<rect class="plunger" x="${(BX0 + BX1) / 2 - 5}" y="${Math.max(10, gasTop - 46).toFixed(1)}" width="10" height="${Math.max(2, gasTop - 14 - Math.max(10, gasTop - 46)).toFixed(1)}" rx="3"/>`;
         out += `<path class="syringe-body" fill="none" d="M${BX0},${BTOP} L${BX0},${BBOT} L${BX1},${BBOT} L${BX1},${BTOP}"/>`;
         out += `<text class="zone-label" x="${BX1 + 12}" y="${(gasTop + gasH / 2).toFixed(1)}">기체 ${v} mL</text>`;
-        out += `<text class="pressure-text" x="${BX1 + 12}" y="${(gasTop + gasH / 2 + 20).toFixed(1)}">${p.toFixed(0)} kPa</text>`;
+        out += `<text class="pressure-text" x="${BX1 + 12}" y="${(gasTop + gasH / 2 + 20).toFixed(1)}">${v < V0 ? "기준보다 높은 압력" : "기준 압력"}</text>`;
         out += `<text class="axis-text" x="${(BX0 + BX1) / 2}" y="252" text-anchor="middle">입자 수는 그대로, 공간만 좁아집니다</text>`;
         mainGroup.innerHTML = out;
 
-        const pMax = 550;
-        let g = '';
-        for (let k = 0; k <= 5; k += 1) {
-            const y = GRAPH.y0 - (k / 5) * (GRAPH.y0 - GRAPH.y1);
-            g += `<line class="grid-line" x1="${GRAPH.x0}" y1="${y}" x2="${GRAPH.x1}" y2="${y}"/>`;
-            g += `<text class="axis-text" x="${GRAPH.x0 - 6}" y="${y + 3}" text-anchor="end">${((pMax * k) / 5).toFixed(0)}</text>`;
-        }
-        for (let vv = 10; vv <= 50; vv += 10) {
-            g += `<text class="axis-text" x="${gx(vv, 8, 54)}" y="${GRAPH.y0 + 14}" text-anchor="middle">${vv}</text>`;
-        }
-        g += `<line class="axis" x1="${GRAPH.x0}" y1="${GRAPH.y0}" x2="${GRAPH.x1}" y2="${GRAPH.y0}"/>`;
-        g += `<line class="axis" x1="${GRAPH.x0}" y1="${GRAPH.y0}" x2="${GRAPH.x0}" y2="${GRAPH.y1}"/>`;
-        g += `<text class="axis-title" x="${(GRAPH.x0 + GRAPH.x1) / 2}" y="${GRAPH.y0 + 30}" text-anchor="middle">부피 (mL)</text>`;
-        g += `<text class="axis-title" x="${GRAPH.x0}" y="${GRAPH.y1 - 4}">압력 (kPa)</text>`;
-        const pts = [];
-        for (let k = 0; k <= 120; k += 1) {
-            const vv = 10 + (44 * k) / 120;
-            pts.push(`${gx(vv, 8, 54).toFixed(1)},${gy(Math.min(pMax, pressureOf(vv)), pMax).toFixed(1)}`);
-        }
-        g += `<path class="curve" d="M${pts.join('L')}"/>`;
-        const px = gx(v, 8, 54), py = gy(Math.min(pMax, p), pMax);
-        g += `<line class="op-guide" x1="${px}" y1="${GRAPH.y0}" x2="${px}" y2="${py.toFixed(1)}"/>`;
-        g += `<line class="op-guide" x1="${GRAPH.x0}" y1="${py.toFixed(1)}" x2="${px}" y2="${py.toFixed(1)}"/>`;
-        g += `<circle class="op-point" cx="${px}" cy="${py.toFixed(1)}" r="5"/>`;
-        const flip = px > (GRAPH.x0 + GRAPH.x1) / 2;
-        g += `<text class="op-text" x="${(px + (flip ? -9 : 9)).toFixed(1)}" y="${Math.max(GRAPH.y1 - 4, py - 9).toFixed(1)}"${flip ? ' text-anchor="end"' : ''}>${v} mL, ${p.toFixed(0)} kPa</text>`;
-        graphGroup.innerHTML = g;
-
-        dataNote.innerHTML =
-            `<div class="data-row"><span class="data-name">압력 × 부피</span><span class="data-val">${p.toFixed(1)} kPa × ${v} mL = ${(p * v).toFixed(0)}</span></div>` +
-            `<div class="data-row match"><span class="data-name">기준값</span><span class="data-val">${P0} kPa × ${V0} mL = ${P0 * V0} (언제나 같습니다)</span></div>` +
-            `<div class="data-row"><span class="data-name">부피 변화</span><span class="data-val">기준의 ${(v / V0).toFixed(2)}배 → 압력은 ${(p / P0).toFixed(2)}배</span></div>`;
-
-        stageBadge.textContent = `${v} mL · ${p.toFixed(0)} kPa`;
+        graphGroup.innerHTML = '<text x="20" y="50" fill="#334155" font-size="16">온도와 기체의 양을 일정하게 합니다.</text><text x="20" y="90" fill="#334155" font-size="16">부피 감소 → 압력 증가</text><text x="20" y="130" fill="#334155" font-size="16">부피 증가 → 압력 감소</text>';
+        dataNote.innerHTML = '<p>부피: ' + v + ' mL</p><p>입자 수는 그대로입니다. 부피를 줄이면 벽과의 충돌이 잦아집니다.</p>';
+        stageBadge.textContent = v + ' mL · ' + (v < V0 ? '기준보다 높은 압력' : '기준 압력');
         gasVolOutput.textContent = `${v} mL`;
     }
 
@@ -241,9 +173,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const b = buoyancy();
             const f = FLUIDS[fluid];
             labelA.textContent = '물체의 밀도';
-            labelB.textContent = b.state === 'float' ? '잠긴 정도' : '결과';
+            labelB.textContent = '결과';
             valueA.textContent = `${b.rhoObj.toFixed(2)} g/cm³`;
-            valueB.textContent = b.state === 'float' ? `${(b.frac * 100).toFixed(0)} %`
+            valueB.textContent = b.state === 'float' ? '뜸'
                 : b.state === 'neutral' ? '액체 속에 떠 있음' : '가라앉음';
             if (b.state === 'neutral') {
                 predictionResult.textContent = '두 밀도가 같아 뜨지도 가라앉지도 않습니다.';
@@ -252,19 +184,15 @@ document.addEventListener('DOMContentLoaded', () => {
                     ? '다음에는 결과를 먼저 예상해 보세요.'
                     : prediction === b.state ? '예상이 맞았습니다.' : '예상과 다른 결과입니다.';
             }
-            explanation.textContent = b.state === 'float'
-                ? `물체의 밀도 ${b.rhoObj.toFixed(2)}가 ${f.name}의 밀도 ${f.rho.toFixed(2)}보다 작아 뜹니다. 뜬 물체는 부력과 무게가 같아지는 깊이까지만 잠기므로, 잠긴 비율이 두 밀도의 비인 ${b.rhoObj.toFixed(2)} ÷ ${f.rho.toFixed(2)} = ${(b.frac * 100).toFixed(0)} %가 됩니다. 부력 ${b.buoyN.toFixed(3)} N과 무게 ${b.weightN.toFixed(3)} N이 정확히 같습니다.`
-                : b.state === 'neutral'
-                ? `물체의 밀도가 ${f.name}의 밀도 ${wa(f.rho.toFixed(2))} 정확히 같습니다. 완전히 잠긴 상태에서 부력 ${b.buoyN.toFixed(3)} N과 무게 ${b.weightN.toFixed(3)} N이 같아지므로, 바닥에 닿지 않고 액체 속 어디에서든 그대로 머무릅니다. 이것을 중성 부력이라고 합니다.`
-                : `물체의 밀도 ${b.rhoObj.toFixed(2)}가 ${f.name}의 밀도 ${f.rho.toFixed(2)}보다 커서 가라앉습니다. 완전히 잠겨도 부력은 ${b.buoyN.toFixed(3)} N 뿐이어서 무게 ${b.weightN.toFixed(3)} N을 못 이기고, 나머지 ${b.normalN.toFixed(3)} N은 바닥이 받쳐 줍니다.`;
+            explanation.textContent = b.state === 'float' ? '물체의 밀도가 액체보다 작아 뜹니다.' : b.state === 'neutral' ? '물체와 액체의 밀도가 같아 액체 속에 머무릅니다.' : '물체의 밀도가 액체보다 커서 가라앉습니다.';
         } else {
             const v = gasVol(), p = pressureOf(v);
             labelA.textContent = '기체의 압력';
-            labelB.textContent = '압력 × 부피';
-            valueA.textContent = `${p.toFixed(0)} kPa`;
-            valueB.textContent = `${(p * v).toFixed(0)}`;
-            predictionResult.textContent = '부피를 줄이면 압력이 그만큼 커집니다.';
-            explanation.textContent = `온도가 일정하면 P V가 일정합니다. 부피를 기준 ${V0} mL 의 ${(v / V0).toFixed(2)}배인 ${v} mL로 줄이면 압력은 ${(p / P0).toFixed(2)}배인 ${p.toFixed(0)} kPa이 됩니다. 입자 수는 그대로인데 공간이 좁아져 벽에 부딪히는 횟수가 늘어난 것입니다.`;
+            labelB.textContent = '기체의 양';
+            valueA.textContent = v < V0 ? "기준보다 높음" : "기준과 같음";
+            valueB.textContent = "일정";
+            predictionResult.textContent = '부피를 줄이면 압력이 커집니다.';
+            explanation.textContent = "온도와 기체의 양이 일정할 때, 부피를 줄이면 입자가 벽에 더 자주 충돌하므로 압력이 커집니다.";
         }
     }
 

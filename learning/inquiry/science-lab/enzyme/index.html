@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="styles.css?v=7">
     <link rel="stylesheet" href="enzyme-visual.css?v=7">
     <link rel="stylesheet" href="quiz.css?v=6">
+    <link rel="stylesheet" href="../exam-scope.css?v=1">
 </head>
 <body>
     <main>
@@ -18,7 +19,7 @@
                 <a href="../">← 과학 실험실</a>
                 <h1>효소 반응과 조건</h1>
             </div>
-            <div class="grade-tags"><span>고등학교 2~3학년</span><span>생명과학</span></div>
+            <div class="grade-tags"><span>고등학교 2~3학년</span><span>세포와 물질대사</span></div>
         </header>
 
         <ol class="method-steps" aria-label="실험 방법">
@@ -127,9 +128,9 @@
         <section class="panel meaning-panel">
             <h2>실험 결과의 의미</h2>
             <div class="meaning-body">
-                <p><strong>Vmax와 Km</strong> 기질을 아무리 넣어도 넘지 못하는 속도가 Vmax이고, 그 절반의 속도를 내는 기질 농도가 Km입니다. Km이 작을수록 기질을 꽉 붙잡는 효소입니다.</p>
-                <p><strong>억제제 두 가지</strong> 경쟁적 억제제는 활성 부위를 두고 기질과 다투므로 기질을 많이 넣으면 밀려납니다. 그래서 Km만 오르고 Vmax는 그대로입니다. 비경쟁적 억제제는 다른 자리에 붙어 효소 모양을 바꾸므로 기질을 아무리 넣어도 소용이 없고 Vmax가 내려갑니다.</p>
-                <p><strong>온도와 pH</strong> 온도가 오르면 처음에는 빨라지지만 어느 선을 넘으면 단백질이 풀려 버립니다. 이 변화는 되돌릴 수 없어서 온도를 다시 낮춰도 속도가 돌아오지 않습니다. pH는 벗어나도 되돌아오면 다시 일합니다.</p>
+                <p><strong>Vmax와 Km</strong> 기질을 아무리 넣어도 넘지 못하는 속도가 Vmax이고, 그 절반의 속도를 내는 기질 농도가 Km입니다. 이 속도식에서 Km이 작으면 최대 속도의 절반에 도달하는 기질 농도가 낮습니다. Km을 모든 경우의 결합 친화도와 같다고 해석하지 않습니다.</p>
+                <p><strong>억제제 두 가지</strong> 경쟁적 억제제는 활성 부위를 두고 기질과 다투므로 기질을 많이 넣으면 밀려납니다. 그래서 Km만 오르고 Vmax는 그대로입니다. 이 모형의 순수 비경쟁적 억제제는 다른 자리에 붙어 효소 모양을 바꾸므로 기질을 아무리 넣어도 소용이 없고 Vmax가 내려갑니다.</p>
+                <p><strong>온도와 pH</strong> 온도가 오르면 처음에는 빨라지지만 어느 선을 넘으면 단백질이 풀려 버립니다. 높은 열에 의한 변성이 회복되지 않는 경우를 모형으로 나타냅니다. pH가 크게 벗어난 경우에도 변성이나 비가역적 활성 감소가 일어날 수 있으므로 언제나 회복된다고 단정하지 않습니다.</p>
             </div>
         </section>
 
@@ -150,7 +151,7 @@
                 </article>
 
                 <article class="quiz-card" data-answer="c">
-                    <h3>70 ℃에 두었던 효소를 다시 37 ℃로 옮기면?</h3>
+                    <h3>이 모형에서 높은 열로 비가역적으로 변성된 효소의 온도를 다시 낮추면?</h3>
                     <div class="quiz-options">
                         <label><input type="radio" name="q2" value="a"> 곧바로 원래 속도로 돌아온다</label>
                         <label><input type="radio" name="q2" value="b"> 절반쯤 돌아온다</label>
@@ -175,21 +176,23 @@
                     <p class="answer-explanation" hidden>펩신은 위산 속 pH 2에서 가장 잘 일하도록 만들어진 효소입니다. 중성에서는 활성 부위 모양이 흐트러져 거의 멈춥니다.</p>
                 </article>
 
-                <article class="quiz-card" data-answer="d">
-                    <h3>Km이 작은 효소는 어떤 효소일까요?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q4" value="a"> 최고 속도가 빠른 효소</label>
-                        <label><input type="radio" name="q4" value="b"> 열에 강한 효소</label>
-                        <label><input type="radio" name="q4" value="c"> 억제제를 잘 막는 효소</label>
-                        <label><input type="radio" name="q4" value="d"> 기질이 적어도 잘 붙잡는 효소</label>
-                    </div>
-                    <button class="answer-button" type="button">정답 확인</button>
-                    <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>Km은 절반 속도를 내는 데 필요한 기질 농도입니다. 적은 기질로도 절반 속도에 이른다면 그만큼 기질과 잘 결합한다는 뜻이고, 최고 속도와는 별개입니다.</p>
-                </article>
+                <article class="quiz-card" data-answer="b">
+<h3>이 앱의 속도식에서 Km은 무엇을 뜻하나요?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q4" value="a"> 효소의 질량</label>
+<label><input type="radio" name="q4" value="b"> 최대 속도의 절반이 되는 기질 농도</label>
+<label><input type="radio" name="q4" value="c"> 모든 조건에서 결합 친화도 그 자체</label>
+<label><input type="radio" name="q4" value="d"> 최대 반응 속도</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>Km은 이 속도식에서 반응 속도가 Vmax의 절반이 되는 기질 농도입니다. 결합 친화도와 무조건 같은 값으로 해석하지 않습니다.</p>
+</article>
             </div>
         </details>
     </main>
-    <script src="app.js?v=6"></script>
+    <script src="app.js?v=ab4e281f4cee"></script>
+    <script src="../curriculum-map.js?v=2ffe762f2206"></script>
+    <script src="../exam-scope.js?v=849f3853d47f"></script>
 </body>
 </html>

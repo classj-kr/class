@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="styles.css?v=5">
     <link rel="stylesheet" href="photo-visual.css?v=5">
     <link rel="stylesheet" href="quiz.css?v=3">
+    <link rel="stylesheet" href="../exam-scope.css?v=1">
 </head>
 <body>
     <main>
@@ -18,7 +19,7 @@
                 <a href="../">← 과학 실험실</a>
                 <h1>광합성</h1>
             </div>
-            <div class="grade-tags"><span>중학교 2학년</span><span>생명과학</span></div>
+            <div class="grade-tags"><span>중학교 2학년</span><span>과학</span></div>
         </header>
 
         <ol class="method-steps" aria-label="실험 방법">
@@ -31,7 +32,7 @@
         <div class="experiment-layout">
             <section class="panel control-panel" aria-labelledby="control-title">
                 <h2 id="control-title">실험 조건</h2>
-                <p class="water-standard">광합성량은 1분 동안 나온 산소 기포 수로 잽니다</p>
+                <p class="water-standard">같은 장치에서 기포 수로 광합성의 상대적인 정도를 비교합니다</p>
 
                 <div class="range-heading">
                     <label for="lightRange">빛의 세기</label>
@@ -140,18 +141,18 @@
                     <p class="answer-explanation" hidden>빛이 충분해지면 더 이상 빛이 제한 요인이 아니고, 이산화탄소나 온도가 광합성량을 결정하게 됩니다.</p>
                 </article>
 
-                <article class="quiz-card" data-answer="d">
-                    <h3>온도를 45 ℃ 이상으로 높이면 광합성량은?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q3" value="a"> 계속 늘어난다</label>
-                        <label><input type="radio" name="q3" value="b"> 변하지 않는다</label>
-                        <label><input type="radio" name="q3" value="c"> 조금씩 늘어난다</label>
-                        <label><input type="radio" name="q3" value="d"> 효소가 망가져 급격히 줄어든다</label>
-                    </div>
-                    <button class="answer-button" type="button">정답 확인</button>
-                    <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>광합성은 효소가 관여하는 반응이라 온도가 너무 높으면 효소가 변성되어 광합성량이 급격히 떨어집니다.</p>
-                </article>
+                <article class="quiz-card" data-answer="b">
+<h3>빛의 영향을 알아보는 광합성 실험에서 같게 해야 할 조건은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q3" value="a"> 빛만 같게 하고 다른 것은 모두 바꾼다.</label>
+<label><input type="radio" name="q3" value="b"> 식물의 양·이산화탄소·온도 등 빛 이외의 조건</label>
+<label><input type="radio" name="q3" value="c"> 온도만 마음대로 바꾼다.</label>
+<label><input type="radio" name="q3" value="d"> 검정말의 종류를 매번 바꾼다.</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>한 요인의 영향을 알아보려면 그 요인만 바꾸고 다른 조건을 같게 해야 합니다.</p>
+</article>
 
                 <article class="quiz-card" data-answer="a">
                     <h3>검정말에서 나오는 기포의 성분은?</h3>
@@ -163,11 +164,13 @@
                     </div>
                     <button class="answer-button" type="button">정답 확인</button>
                     <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>광합성으로 만들어져 나오는 기체는 산소입니다. 그래서 기포 수로 광합성량을 잴 수 있습니다.</p>
+                    <p class="answer-explanation" hidden>광합성으로 만들어져 나오는 기체는 산소입니다. 기포 크기 등이 일정한 조건에서 기포 수로 상대적인 광합성 정도를 비교할 수 있습니다.</p>
                 </article>
             </div>
         </details>
     </main>
-    <script src="app.js?v=9"></script>
+    <script src="app.js?v=5ef3d2da7fdc"></script>
+    <script src="../curriculum-map.js?v=2ffe762f2206"></script>
+    <script src="../exam-scope.js?v=849f3853d47f"></script>
 </body>
 </html>

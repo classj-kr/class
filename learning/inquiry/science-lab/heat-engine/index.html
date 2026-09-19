@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="styles.css?v=6">
     <link rel="stylesheet" href="engine-visual.css?v=7">
     <link rel="stylesheet" href="quiz.css?v=4">
+    <link rel="stylesheet" href="../exam-scope.css?v=1">
 </head>
 <body>
     <main>
@@ -18,13 +19,13 @@
                 <a href="../">← 과학 실험실</a>
                 <h1>열기관의 효율과 열펌프</h1>
             </div>
-            <div class="grade-tags"><span>고등학교 2~3학년</span><span>물리학</span></div>
+            <div class="grade-tags"><span>고등학교 2~3학년</span><span>역학과 에너지</span></div>
         </header>
 
         <ol class="method-steps" aria-label="실험 방법">
             <li>카르노 열기관, 열의 흐름과 일, 열펌프 가운데 하나를 고릅니다.</li>
             <li>뜨거운 곳과 차가운 곳의 온도, 기관의 효율, 바깥과 실내 온도를 정합니다.</li>
-            <li>효율이 얼마쯤 될지, 그런 기관이 가능할지, 전기 1 J로 열을 몇 J 옮길지 예상합니다.</li>
+            <li>효율의 변화, 그런 기관의 가능 여부, 열을 옮길 때 일이 필요한지 예상합니다.</li>
             <li>시작해서 네 과정을 도는 피스톤, 갈라지는 에너지 흐름, 열펌프의 화살을 확인합니다.</li>
         </ol>
 
@@ -35,9 +36,9 @@
                 <fieldset class="mode-field">
                     <legend>실험 종류</legend>
                     <div class="mode-buttons three">
-                        <button type="button" data-mode="carnot">카르노 열기관<small>효율은 얼마</small></button>
+                        <button type="button" data-mode="carnot">카르노 열기관<small>효율 변화 비교</small></button>
                         <button type="button" data-mode="flow">열의 흐름과 일<small>가능한 기관일까</small></button>
-                        <button type="button" data-mode="pump">열펌프<small>전기 1 J로 열 몇 J</small></button>
+                        <button type="button" data-mode="pump">열펌프<small>열을 옮기는 방향</small></button>
                     </div>
                 </fieldset>
                 <div id="controlArea"></div>
@@ -86,10 +87,10 @@
         <section class="panel meaning-panel">
             <h2>실험 결과의 의미</h2>
             <div class="meaning-body">
-                <p><strong>열기관과 카르노 효율</strong> 열기관은 뜨거운 곳에서 열 Q_h를 받아 그 일부를 일 W로 바꾸고 나머지 Q_c를 차가운 곳에 버립니다. 효율은 η = W/Q_h = 1 − Q_c/Q_h이고, 두 등온 과정과 두 단열 과정으로 이루어진 카르노 기관이 가장 높은 효율 1 − T_c/T_h(절대 온도)를 냅니다. 뜨거운 곳이 뜨겁고 차가운 곳이 차가울수록 효율이 오르지만, 차가운 곳을 절대 0도로 만들 수 없으니 효율 100 %는 불가능합니다.</p>
-                <p><strong>열역학 제2법칙과 2종 영구 기관</strong> 받은 열을 몽땅 일로 바꾸고 버리는 열이 없는 기관(2종 영구 기관)은 에너지 보존에는 어긋나지 않지만 제2법칙에 어긋나 만들 수 없습니다. 열이 차가운 곳에서 뜨거운 곳으로 저절로 흐르지 않는 것과 같은 법칙입니다. 엔트로피로 보면 기관이 한 바퀴 돌 때 우주 전체의 엔트로피 변화 Q_c/T_c − Q_h/T_h가 0보다 작아질 수 없고, 등호가 카르노 기관입니다.</p>
-                <p><strong>냉장고와 열펌프</strong> 같은 사이클을 거꾸로 돌리면 일 W를 넣어 차가운 곳에서 열 Q_c를 빼내 뜨거운 곳에 Q_h = Q_c + W를 보냅니다. 냉장고의 성적 계수는 Q_c/W, 난방 열펌프는 Q_h/W이고 이상적으로는 T_h/(T_h − T_c)입니다. 열을 만드는 것이 아니라 옮기기 때문에 전기 1 J로 열 여러 J을 나를 수 있어, 전기 난로보다 훨씬 적은 전기로 집을 데웁니다. 바깥이 추울수록 온도 차가 커져 성적 계수가 내려갑니다.</p>
-                <p><strong>실제 기관의 효율</strong> 화력·원자력 발전소는 35~45 %, 자동차 엔진은 25~35 %, 실제 열펌프는 이상값의 3분의 1쯤입니다. 마찰, 열이 새는 것, 빠른 팽창·압축 같은 비가역 과정이 카르노 한계에서 깎아 먹기 때문입니다. 그래도 한계 자체는 온도로 정해지므로 발전소는 증기 온도를 높이는 데 힘을 씁니다.</p>
+                <p><strong>열기관과 카르노 효율</strong> 열기관은 고온의 열원에서 받은 열의 일부를 일로 바꾸고 나머지는 저온의 열원으로 내보냅니다. 가역 기관의 한계 효율은 저온 열원을 고정하고 고온 열원의 온도를 높일 때 커지며, 고온 열원을 고정하고 저온 열원의 온도를 낮출 때도 커집니다.</p>
+                <p><strong>열역학 제2법칙과 2종 영구 기관</strong> 하나의 열원에서 받은 열을 모두 일로 바꾸는 순환 기관은 만들 수 없습니다. 열은 저절로 고온에서 저온으로 흐르며, 반대 방향으로 옮기려면 외부에서 일을 해야 합니다.</p>
+                <p><strong>냉장고와 열펌프</strong> 열펌프는 외부에서 공급한 일로 차가운 곳의 열을 따뜻한 곳으로 옮깁니다. 따뜻한 곳이 받는 에너지는 옮겨 온 열과 공급한 일의 합입니다. 에너지를 새로 만드는 장치가 아닙니다.</p>
+                <p><strong>실제 기관의 효율</strong> 마찰과 비가역적인 열 전달 때문에 실제 기관의 효율은 같은 두 열원 사이의 가역 기관보다 낮습니다. 실제 성능은 기기와 운전 조건에 따라 달라집니다.</p>
             </div>
         </section>
 
@@ -97,59 +98,61 @@
             <summary class="quiz-heading"><h2 id="quiz-title">확인 문제</h2><span>4문제</span></summary>
             <div class="quiz-grid">
                 <article class="quiz-card" data-answer="b">
-                    <h3>카르노 열기관의 효율을 높이려면?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q1" value="a"> 기체의 양을 늘린다</label>
-                        <label><input type="radio" name="q1" value="b"> 뜨거운 곳은 더 뜨겁게, 차가운 곳은 더 차갑게 한다</label>
-                        <label><input type="radio" name="q1" value="c"> 피스톤을 더 빨리 움직인다</label>
-                        <label><input type="radio" name="q1" value="d"> 두 곳의 온도를 모두 높인다</label>
-                    </div>
-                    <button class="answer-button" type="button">정답 확인</button>
-                    <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>카르노 효율 1 − T_c/T_h는 두 온도의 비로만 정해집니다. T_h를 올리거나 T_c를 내려 비를 작게 만들어야 효율이 오르고, 기체의 양이나 속도는 한계 효율과 상관없습니다.</p>
-                </article>
+<h3>차가운 열원의 온도를 고정하고 뜨거운 열원의 온도를 높이면 가역 열기관의 한계 효율은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q1" value="a"> 낮아진다.</label>
+<label><input type="radio" name="q1" value="b"> 높아진다.</label>
+<label><input type="radio" name="q1" value="c"> 항상 100%이다.</label>
+<label><input type="radio" name="q1" value="d"> 온도와 무관하다.</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>저온 열원을 고정하면 고온 열원의 온도를 높일수록 가역 기관의 한계 효율이 커집니다.</p>
+</article>
 
                 <article class="quiz-card" data-answer="c">
-                    <h3>받은 열을 남김없이 일로 바꾸는 열기관은?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q2" value="a"> 마찰만 없애면 만들 수 있다</label>
-                        <label><input type="radio" name="q2" value="b"> 에너지 보존 법칙에 어긋나 불가능하다</label>
-                        <label><input type="radio" name="q2" value="c"> 에너지는 보존되지만 열역학 제2법칙에 어긋나 불가능하다</label>
-                        <label><input type="radio" name="q2" value="d"> 차가운 곳을 없애면 만들 수 있다</label>
-                    </div>
-                    <button class="answer-button" type="button">정답 확인</button>
-                    <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>이런 기관(2종 영구 기관)은 에너지를 만들어 내지는 않지만, 한 곳의 열을 통째로 일로 바꾸어 우주의 엔트로피를 줄이므로 제2법칙에 어긋납니다. 열기관은 반드시 차가운 곳에 열을 버려야 합니다.</p>
-                </article>
+<h3>하나의 열원에서 받은 열을 모두 일로 바꾸는 순환 열기관은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q2" value="a"> 언제나 만들 수 있다.</label>
+<label><input type="radio" name="q2" value="b"> 마찰만 없애면 된다.</label>
+<label><input type="radio" name="q2" value="c"> 열역학 제2법칙에 어긋난다.</label>
+<label><input type="radio" name="q2" value="d"> 에너지를 무한히 만든다.</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>에너지 보존만으로 판단하면 안 됩니다. 받은 열 전부를 일로 바꾸는 순환 기관은 열역학 제2법칙에 어긋납니다.</p>
+</article>
 
                 <article class="quiz-card" data-answer="a">
-                    <h3>열펌프가 전기 1 J로 열 3 J을 집 안에 보낼 수 있는 까닭은?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q3" value="a"> 열을 만드는 것이 아니라 바깥의 열을 옮겨 오기 때문에</label>
-                        <label><input type="radio" name="q3" value="b"> 전기가 열로 바뀔 때 세 배가 되기 때문에</label>
-                        <label><input type="radio" name="q3" value="c"> 에너지 보존 법칙이 열펌프에는 안 맞기 때문에</label>
-                        <label><input type="radio" name="q3" value="d"> 냉매가 스스로 열을 내기 때문에</label>
-                    </div>
-                    <button class="answer-button" type="button">정답 확인</button>
-                    <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>집 안에 들어오는 열 Q_h는 바깥에서 퍼 온 Q_c에 전기로 한 일 W를 더한 것입니다. 에너지는 보존되지만 옮겨 온 몫이 더해지므로 W보다 큰 열을 나를 수 있고, 그 비가 성적 계수입니다.</p>
-                </article>
+<h3>열펌프로 차가운 곳의 열을 따뜻한 곳으로 옮기려면?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q3" value="a"> 외부에서 일을 공급해야 한다.</label>
+<label><input type="radio" name="q3" value="b"> 아무 에너지도 필요 없다.</label>
+<label><input type="radio" name="q3" value="c"> 에너지 보존 법칙을 깨야 한다.</label>
+<label><input type="radio" name="q3" value="d"> 따뜻한 곳의 열이 전부 사라져야 한다.</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>저온에서 고온으로 열을 옮기려면 외부에서 일을 해야 합니다. 따뜻한 곳이 받는 열에는 공급한 일도 포함됩니다.</p>
+</article>
 
                 <article class="quiz-card" data-answer="d">
-                    <h3>카르노 한계가 60 %인 발전소의 실제 효율이 40 %인 까닭은?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q4" value="a"> 카르노 식이 발전소에는 안 맞기 때문에</label>
-                        <label><input type="radio" name="q4" value="b"> 물이 증기가 될 때 에너지가 사라지기 때문에</label>
-                        <label><input type="radio" name="q4" value="c"> 발전소가 열을 버리지 않기 때문에</label>
-                        <label><input type="radio" name="q4" value="d"> 마찰과 새는 열, 빠른 팽창·압축 같은 비가역 과정 때문에</label>
-                    </div>
-                    <button class="answer-button" type="button">정답 확인</button>
-                    <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>카르노 효율은 모든 과정이 느리고 되돌릴 수 있을 때의 한계입니다. 실제 기관은 마찰로 열이 새고, 열이 온도 차를 두고 흐르며, 팽창·압축이 빠르게 일어나 그만큼 효율이 깎입니다.</p>
-                </article>
+<h3>실제 열기관의 효율이 같은 두 열원 사이의 가역 기관보다 낮은 이유는?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q4" value="a"> 에너지가 보존되지 않아서</label>
+<label><input type="radio" name="q4" value="b"> 받은 열이 전부 일로 바뀌어서</label>
+<label><input type="radio" name="q4" value="c"> 차가운 열원이 없어서</label>
+<label><input type="radio" name="q4" value="d"> 마찰과 비가역적인 열 전달이 있어서</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>마찰과 비가역적인 과정으로 실제 기관의 효율은 가역 기관의 한계 효율보다 낮습니다.</p>
+</article>
             </div>
         </details>
     </main>
-    <script src="app.js?v=6"></script>
+    <script src="app.js?v=70db71a794f2"></script>
+    <script src="../curriculum-map.js?v=2ffe762f2206"></script>
+    <script src="../exam-scope.js?v=849f3853d47f"></script>
 </body>
 </html>

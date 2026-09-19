@@ -84,10 +84,7 @@ function output(sys, act) {
     return 180;
 }
 function ratio(sys, act) { return output(sys, act) / output(sys, 'rest'); }
-function verdictFor(sys, act) {
-    const r = ratio(sys, act);
-    return r < 1.4 ? 'p1' : (r < 2.8 ? 'p2' : 'p3');
-}
+function verdictFor(sys, act) { return {dig:'p1',resp:'p2',circ:'p3',excr:'p4'}[sys]; }
 
 function analyse() {
     const s = SYSTEMS[state.sys], a = ACTS[state.act];
@@ -160,13 +157,6 @@ function drawBody(g) {
     }
 
     g.appendChild(el('text', { x: 20, y: 22, class: 'small-label' }, `${a.sys.name} · ${a.act.name}`));
-    g.appendChild(el('text', { x: 20, y: 44, class: 'big-read' }, `${fmt(a.out, a.out < 10 ? 1 : 0)} ${a.sys.unit}`));
-    g.appendChild(el('text', { x: 20, y: 60, class: 'tiny-label' }, a.sys.label));
-    if (state.sys === 'circ') {
-        g.appendChild(el('text', { x: 20, y: 84, class: 'note-text' }, '피 5 L가 몸을 한 바퀴'));
-        g.appendChild(el('text', { x: 20, y: 100, class: 'read-text' }, `${fmt(a.lapSec, 0)}초`));
-    }
-
     // The journey, listed in order beside the body.
     g.appendChild(el('text', { x: 244, y: 22, class: 'small-label' }, `${a.sys.mover}가 지나는 차례`));
     organs.forEach((o, i) => {
@@ -174,41 +164,13 @@ function drawBody(g) {
         const y = 44 + i * 22;
         g.appendChild(el('circle', { cx: 252, cy: y, r: 8, class: 'organ', style: `fill:${a.sys.colour}${here ? '' : '77'}` }));
         g.appendChild(el('text', { x: 252, y: y + 3, 'text-anchor': 'middle', class: 'tiny-label', style: 'fill:#10202a;font-weight:900' }, String(i + 1)));
-        g.appendChild(el('text', { x: 266, y: y + 4, class: `step-text${here ? ' here' : ''}` }, `${o.n} · ${o.stay}`));
+        g.appendChild(el('text', { x: 266, y: y + 4, class: `step-text${here ? ' here' : ''}` }, o.n));
     });
 }
 
 function drawGraph(g) {
-    const a = analyse();
-    const x0 = 54, x1 = 440, yTop = 30, yBot = 146;
-    const keys = ['rest', 'walk', 'run'];
-    const top = Math.max(...keys.map(k => output(state.sys, k))) * 1.25;
-    const Y = v => yBot - (v / top) * (yBot - yTop);
-    const slot = (x1 - x0) / keys.length;
-
-    for (let i = 0; i <= 4; i += 1) {
-        const v = top * i / 4;
-        g.appendChild(el('line', { x1: x0, y1: Y(v), x2: x1, y2: Y(v), class: 'grid-line' }));
-        if (i > 0) g.appendChild(el('text', { x: x0 - 6, y: Y(v) + 3.5, 'text-anchor': 'end', class: 'axis-text' }, fmt(v, v < 10 ? 1 : 0)));
-    }
-    g.appendChild(el('line', { x1: x0, y1: yBot, x2: x1, y2: yBot, class: 'axis' }));
-    g.appendChild(el('line', { x1: x0, y1: yTop, x2: x0, y2: yBot, class: 'axis' }));
-
-    keys.forEach((k, i) => {
-        const cx = x0 + slot * (i + 0.5);
-        const v = output(state.sys, k), on = k === state.act;
-        const bw = Math.min(64, slot * 0.5);
-        g.appendChild(el('rect', {
-            x: cx - bw / 2, y: Y(v), width: bw, height: yBot - Y(v), rx: 3, class: 'bar',
-            style: `fill:${a.sys.colour}${on ? '' : '66'}`,
-        }));
-        g.appendChild(el('text', { x: cx, y: Y(v) - 6, 'text-anchor': 'middle', class: 'bar-text', style: `fill:${on ? '#059669' : '#475569'}` },
-            `${fmt(v, v < 10 ? 1 : 0)} ${a.sys.unit}`));
-        g.appendChild(el('text', { x: cx, y: yBot + 15, 'text-anchor': 'middle', class: 'axis-text', style: on ? 'fill:#059669' : '' }, ACTS[k].name));
-        g.appendChild(el('text', { x: cx, y: yBot + 33, 'text-anchor': 'middle', class: 'tiny-label' }, `쉴 때의 ${fmt(ratio(state.sys, k), 1)}배`));
-    });
-
-    g.appendChild(el('text', { x: (x0 + x1) / 2, y: 191, 'text-anchor': 'middle', class: 'axis-title' }, `무엇을 하고 있느냐에 따른 ${a.sys.label}`));
+    const a=analyse();
+    a.sys.organs.forEach((o,i)=>g.appendChild(el('text',{x:20,y:28+i*30,fill:'#334155','font-size':14},o.n+' — '+o.note)));
 }
 
 function render() {
@@ -218,70 +180,19 @@ function render() {
     updateReadout();
 }
 
-const WORDS = { p1: '거의 같다', p2: '2배쯤', p3: '4배쯤' };
+const WORDS = {p1:'소화와 영양소 흡수',p2:'산소 공급과 이산화 탄소 배출',p3:'피를 온몸으로 운반',p4:'노폐물을 오줌으로 배출'};
 
 function updateReadout() {
-    const a = analyse();
-    $('stageBadge').textContent = `${a.sys.name} · ${a.act.name}`;
-    $('labelA').textContent = a.sys.label;
-    $('valueA').textContent = `${fmt(a.out, a.out < 10 ? 1 : 0)} ${a.sys.unit}`;
-    $('valueB').textContent = `${fmt(a.ratio, 1)}배`;
-    const rows = [
-        ['지나는 차례', a.sys.organs.map(o => o.n).join(' → '), false],
-        ...a.sys.organs.map(o => [o.n, o.note, false]),
-        ['심장이 뛰는 횟수', `1분에 ${a.act.hr}번`, false],
-        ['숨 쉬는 횟수', `1분에 ${a.act.br}번`, false],
-        ['1분에 내보내는 피', `${fmt(a.act.hr * a.act.sv / 1000, 1)} L`, state.sys === 'circ'],
-        ['1분에 마시는 공기', `${fmt(a.act.br * a.act.tv / 1000, 1)} L`, state.sys === 'resp'],
-        ['피가 한 바퀴 도는 시간', `${fmt(a.lapSec, 0)}초`, false],
-    ];
-    $('dataNote').innerHTML = rows.map(([n, v, m]) =>
-        `<div class="data-row${m ? ' match' : ''}"><span class="data-name">${n}</span><span class="data-val">${v}</span></div>`).join('');
-    if (state.checked) explain(a);
+    const a=analyse();$('stageBadge').textContent=a.sys.name+' · '+a.act.name;
+    $('labelA').textContent='기관';$('valueA').textContent=a.sys.name;$('valueB').textContent=WORDS[a.verdict];
+    $('dataNote').innerHTML='<p>'+a.sys.organs.map(o=>o.n).join(' → ')+'</p><p>모형의 움직임 속도는 실제 측정값이 아닙니다. 기관의 위치·기능과 서로 연결된 관계를 관찰하세요.</p>';
+    if(state.checked)explain(a);
 }
 
 function explain(a) {
-    $('resultEmpty').hidden = true;
-    $('resultContent').hidden = false;
-    const v = a.verdict;
-    if (state.prediction) {
-        const ok = state.prediction === v;
-        $('predictionResult').textContent = ok ? `예상이 맞았습니다 — ${WORDS[v]}.`
-            : `예상은 ${WORDS[state.prediction]}였지만 결과는 ${WORDS[v]}입니다.`;
-        $('predictionResult').className = `prediction-result ${ok ? 'correct' : 'wrong'}`;
-    } else {
-        $('predictionResult').textContent = '';
-        $('predictionResult').className = 'prediction-result';
-    }
-
-    const first = a.sys.organs[0], last = a.sys.organs[a.sys.organs.length - 1];
-    let s = `${eun(a.sys.mover)} ${a.sys.organs.map(o => o.n).join(' → ')} 차례로 지나갑니다. `;
-    // The notes are whole sentences and are used as they stand; trying to bend
-    // them into a clause by trimming the ending produced nonsense.
-    s += `맨 처음 ${first.n}에서는 ${first.note}. `;
-    s += `그리고 마지막 ${last.n}에서는 ${last.note}. `;
-
-    if (state.sys === 'circ') {
-        s += `${a.act.name} 심장은 1분에 ${a.act.hr}번 뛰고 한 번에 ${a.act.sv} mL를 내보내므로, 1분에 ${a.act.hr} × ${a.act.sv} = ${fmt(a.out * 1000, 0)} mL, 곧 ${fmt(a.out, 1)} L를 보냅니다. `;
-        s += `우리 몸에 든 피가 모두 5 L쯤이니, 피 전체가 몸을 한 바퀴 도는 데 ${fmt(a.lapSec, 0)}초밖에 걸리지 않습니다. `;
-    } else if (state.sys === 'resp') {
-        s += `${a.act.name} 숨은 1분에 ${a.act.br}번 쉬고 한 번에 ${a.act.tv} mL를 마시므로, 1분에 ${fmt(a.out, 1)} L의 공기가 드나듭니다. `;
-        s += `그 공기에서 산소만 폐포를 지나 피로 넘어가고, 피가 실어 온 이산화 탄소는 반대로 나옵니다. `;
-    } else if (state.sys === 'dig') {
-        s += `먹은 음식이 몸을 다 지나는 데는 모두 ${a.out}시간쯤 걸립니다. 대부분은 큰창자에서 물을 빼앗기며 보내는 시간입니다. `;
-    } else {
-        s += `콩팥은 하루에 피를 ${a.out} L나 거르지만 오줌은 1.5 L밖에 나오지 않습니다. 걸러 낸 것의 99%를 다시 몸으로 돌려보내기 때문입니다. `;
-    }
-
-    if (v === 'p1') {
-        s += state.act === 'rest'
-            ? `지금은 쉬는 중이니 이것이 기준이 되는 값입니다. `
-            : `${a.act.name}에도이 기관계가 하는 일은 쉴 때와 거의 같습니다. 몸은 급한 일부터 하는데, 소화나 배설은 잠시 미뤄도 괜찮은 일이기 때문입니다. `;
-    } else {
-        s += `${a.act.name}는 쉴 때의 ${fmt(a.ratio, 1)}배로 일합니다. 달리는 근육이 산소를 훨씬 많이 쓰기 때문입니다. `;
-    }
-    s += `한 가지만 기억해 두세요. 기관들은 따로 떨어져 일하지 않습니다. 소화 기관이 얻은 영양소도, 호흡 기관이 들인 산소도 결국 피에 실려 온몸으로 갑니다.`;
-    $('elementaryExplanation').textContent = s;
+    $('resultEmpty').hidden=true;$('resultContent').hidden=false;
+    $('predictionResult').textContent=state.prediction?(state.prediction===a.verdict?'예상이 맞았습니다.':'선택한 기관의 하는 일을 다시 확인하세요.'):'다음에는 먼저 예상해 보세요.';
+    $('elementaryExplanation').textContent=a.sys.name+'의 주요 역할은 '+WORDS[a.verdict]+'입니다. '+a.sys.organs.map(o=>o.n+': '+o.note).join(' / ')+'. 기관들은 서로 연결되어 우리 몸이 활동하도록 돕습니다.';
 }
 
 // --- animation --------------------------------------------------------------

@@ -136,7 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const pMax = Math.max(a.pBefore, a.pAfter) * 1.18 || 1;
         const kMax = Math.max(a.kBefore, a.kAfter) * 1.18 || 1;
         let out = '';
-        out += `<text class="axis-title" x="20" y="26">운동량 (kg·m/s) — 언제나 보존</text>`;
+        out += `<text class="axis-title" x="20" y="26">두 수레 운동량 합 — 외부 충격량 무시</text>`;
         out += bar(50, '충돌 전', a.pBefore, pMax, '#059669', '');
         out += bar(76, '충돌 후', a.pAfter, pMax, '#059669', '');
         const pLine = GRAPH.x0 + (a.pBefore / pMax) * (GRAPH.x1 - GRAPH.x0);
@@ -212,7 +212,7 @@ document.addEventListener('DOMContentLoaded', () => {
             : prediction === a.verdict ? '예상이 맞았습니다.' : '예상과 다른 결과입니다.';
         let s = `충돌 전 운동량은 ${a.m1}×${a.v1.toFixed(1)} = ${a.pBefore.toFixed(2)} kg·m/s 입니다. `;
         s += `충돌 뒤 ${a.m1}×${sn(a.after1)} + ${a.m2}×${sn(a.after2)} = ${a.pAfter.toFixed(2)} kg·m/s로 정확히 같습니다. `;
-        s += `충돌의 종류와 상관없이 운동량은 언제나 보존됩니다. `;
+        s += `외부 충격량을 무시한 두 수레계에서 운동량 합이 보존됩니다. `;
         if (a.lost > 1e-9) {
             s += `반면 운동 에너지는 ${a.kBefore.toFixed(2)} J 에서 ${a.kAfter.toFixed(2)} J로 ${a.lostPct.toFixed(0)}% 줄었습니다. ` +
                  `줄어든 ${a.lost.toFixed(2)} J은 충돌 소리와 열, 수레의 변형으로 바뀐 것이지 사라진 것이 아닙니다. `;
@@ -255,7 +255,7 @@ document.addEventListener('DOMContentLoaded', () => {
         m1Range.value = '2'; m2Range.value = '2'; v1Range.value = '3';
         prediction = null;
         predictionButtons.forEach(item => item.classList.remove('selected'));
-        stageCaption.textContent = '운동량의 합은 충돌 전후가 언제나 같습니다. 운동 에너지는 그렇지 않습니다.';
+        stageCaption.textContent = '이 모형은 외부 충격량을 무시하므로 두 수레의 운동량 합이 충돌 전후 같습니다. 운동 에너지는 그렇지 않습니다.';
         kindButtons.find(b => b.dataset.kind === 'elastic').click();
     });
 

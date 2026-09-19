@@ -109,9 +109,8 @@ document.addEventListener('DOMContentLoaded', () => {
         return { kind: 'classify', arms, bulge, bar, cls, code, sub, verdict: cls };
     }
     function redshiftModel() {
-        const o = OBJECTS[state.object], z = o.z, vNewton = C * z, q = (1 + z) ** 2, vRel = C * (q - 1) / (q + 1), frac = vRel / C;
-        const track = LINES[o.kind].find(l => l[2]);
-        return { kind: 'redshift', o, z, vNewton, vRel, frac, track, lines: LINES[o.kind], verdict: frac < 0.03 ? 'slow' : frac < 0.3 ? 'mid' : 'fast' };
+        const o=OBJECTS[state.object],z=o.z,track=LINES[o.kind].find(l=>l[2]);
+        return {kind:'redshift',o,z,track,lines:LINES[o.kind],verdict:z<0.03?'slow':z<0.3?'mid':'fast'};
     }
     function hubbleModel() {
         const sm = SAMPLES[state.sample], f = SCALES[state.scale].f;
@@ -153,13 +152,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const PRED_C = [{ value: 'e', label: '타원 은하 (E)' }, { value: 's', label: '정상 나선 은하 (S)' }, { value: 'sb', label: '막대 나선 은하 (SB)' }, { value: 'irr', label: '불규칙 은하 (Irr)' }];
-    const PRED_Z = [{ value: 'slow', label: '수천 km/s (광속의 3 % 안)' }, { value: 'mid', label: '수만 km/s (광속의 3~30 %)' }, { value: 'fast', label: '광속의 30 % 넘게' }];
-    const PRED_H = [{ value: 'ok', label: '60~80 (오늘날 값 근처)' }, { value: 'low', label: '60보다 작음' }, { value: 'high', label: '80보다 큼' }];
+    const PRED_Z = [{value:'slow',label:'z < 0.03'},{value:'mid',label:'0.03 ≤ z < 0.3'},{value:'fast',label:'z ≥ 0.3'}];
+    const PRED_H = [{ value: 'ok', label: '60~80 (모형 비교값 근처)' }, { value: 'low', label: '60보다 작음' }, { value: 'high', label: '80보다 큼' }];
 
     function buildPrediction() {
         const list = state.mode === 'classify' ? PRED_C : state.mode === 'redshift' ? PRED_Z : PRED_H;
         predictionLegend.textContent = state.mode === 'classify' ? `나선팔 ${ARMS[state.arms].label} · 팽대부 ${BULGES[state.bulge].label}${state.arms === 'none' ? '' : ` · 막대 ${BARS[state.bar].label}`} — 이 은하는 어디에 들까요?`
-            : state.mode === 'redshift' ? `${OBJECTS[state.object].name}의 후퇴 속도는?`
+            : state.mode === 'redshift' ? `${OBJECTS[state.object].name}의 적색편이 z 범위는?`
                 : `${SAMPLES[state.sample].label}를 ${SCALES[state.scale].label}으로 재면 기울기 H₀(km/s/Mpc)는?`;
         predictionArea.className = `prediction-buttons ${list.length === 4 ? 'four' : 'three'}`;
         predictionArea.innerHTML = list.map(o => `<button type="button" data-prediction="${o.value}">${o.label}</button>`).join('');
@@ -270,30 +269,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 out += `<text class="small-label" style="fill:#d97706" x="${Math.min(x1, SX1 - 4).toFixed(1)}" y="${YO + 25}" text-anchor="end">${name} ${fmtN(lamObs, 1)}</text>`;
             }
         });
-        const [tn, tl] = a.track, lamObs = tl * (1 + zNow), dl = lamObs - tl, zN = dl / tl, qq = (1 + zN) ** 2, vR = C * (qq - 1) / (qq + 1);
-        out += `<text class="trait-text" x="${SX0}" y="176">${tn} ${tl} nm → ${fmtN(lamObs, 1)} nm, Δλ = ${fmtN(dl, 1)} nm → z = ${fmtN(dl, 1)} ÷ ${tl} = ${fmtN(zN, zN < 0.01 ? 4 : 3)}</text>`;
-        out += `<text class="trait-text" style="fill:#d97706" x="${SX0}" y="192">v = cz ≈ ${fmtN(C * zN)} km/s${zN > 0.05 ? ` → 상대론 식으로 ${fmtN(vR)} km/s` : ''} (광속의 ${fmtN(vR / C * 100, vR / C < 0.01 ? 2 : 1)} %)</text>`;
-        const VERD = { slow: '수천 km/s', mid: '수만 km/s', fast: '광속의 30 % 넘게' };
-        out += `<text class="verdict-text" fill="#d97706" x="20" y="16">${p >= 1 ? `${o.name}: z = ${z}, ${fmtN(a.vRel)} km/s — ${VERD[a.verdict]}` : `${o.name} · 스펙트럼 선이 밀리는 중`}</text>`;
-        out += `<text class="note-text" x="20" y="208">z = Δλ ÷ λ₀ · z가 작으면 v ≈ cz, 크면 v/c = [(1+z)²−1] ÷ [(1+z)²+1] · 가시광선 380~750 nm</text>`;
+        const [tn,tl]=a.track,lamObs=tl*(1+zNow),dl=lamObs-tl;
+        out += '<text class="trait-text" x="20" y="176">'+tn+' '+tl+' nm → '+fmtN(lamObs,1)+' nm</text>';
+        out += '<text class="trait-text" x="20" y="194">z = Δλ/λ₀ = '+fmtN(zNow,4)+'</text>';
+        out += '<text class="note-text" x="20" y="210">큰 적색편이를 단순한 속도 공식으로 환산하지 않습니다.</text>';
         return out;
     }
 
     function graphRedshift(a) {
-        const X0 = 60, X1 = 420, Y0 = 150, Y1 = 40, ZM = 1.2, xOf = z => X0 + z / ZM * (X1 - X0), yOf = f => Y0 - clamp(f, 0, 1.05) / 1.05 * (Y0 - Y1);
-        let out = `<text class="axis-title" x="${X0}" y="18">적색 이동 z에 따른 후퇴 속도 — 점선은 v = cz, 실선은 상대론 식</text>`;
-        [0, 0.2, 0.4, 0.6, 0.8, 1.0, 1.2].forEach(z => { out += `<line class="grid-line" x1="${xOf(z).toFixed(1)}" y1="${Y1}" x2="${xOf(z).toFixed(1)}" y2="${Y0}"/><text class="axis-text" x="${xOf(z).toFixed(1)}" y="${Y0 + 14}" text-anchor="middle">${z}</text>`; });
-        [0, 0.5, 1].forEach(f => { out += `<line class="grid-line" x1="${X0}" y1="${yOf(f).toFixed(1)}" x2="${X1}" y2="${yOf(f).toFixed(1)}"/><text class="axis-text" x="${X0 - 5}" y="${(yOf(f) + 3.5).toFixed(1)}" text-anchor="end">${f === 1 ? '광속' : f === 0.5 ? '½c' : '0'}</text>`; });
-        out += `<line class="axis" x1="${X0}" y1="${Y0}" x2="${X1}" y2="${Y0}"/><line class="axis" x1="${X0}" y1="${Y1}" x2="${X0}" y2="${Y0}"/>`;
-        let dN = '', dR = '';
-        for (let z = 0; z <= ZM + 1e-9; z += 0.02) { const q = (1 + z) ** 2; if (z <= 1.05) dN += `${dN ? 'L' : 'M'}${xOf(z).toFixed(1)},${yOf(z).toFixed(1)} `; dR += `${dR ? 'L' : 'M'}${xOf(z).toFixed(1)},${yOf((q - 1) / (q + 1)).toFixed(1)} `; }
-        out += `<path class="trace faint" style="stroke:#97dad3" d="${dN}"/><path class="trace" style="stroke:#d97706" d="${dR}"/>`;
-        Object.values(OBJECTS).forEach(o => { const q = (1 + o.z) ** 2, f = (q - 1) / (q + 1); out += `<circle fill="${o === a.o ? '#d97706' : 'rgba(148, 163, 184, 0.40)'}" stroke="${o === a.o ? '#fff' : 'none'}" cx="${xOf(o.z).toFixed(1)}" cy="${yOf(f).toFixed(1)}" r="${o === a.o ? 4.5 : 3}"/>`; });
-        const zNow = a.z * ease(state.progress), q = (1 + zNow) ** 2, fNow = (q - 1) / (q + 1);
-        out += `<line class="marker" x1="${xOf(zNow).toFixed(1)}" y1="${Y1}" x2="${xOf(zNow).toFixed(1)}" y2="${Y0}"/>`;
-        out += `<text class="small-label" style="fill:#d97706" x="${(xOf(zNow) + (zNow > 0.9 ? -6 : 6)).toFixed(1)}" y="${(yOf(fNow) - 8).toFixed(1)}" text-anchor="${zNow > 0.9 ? 'end' : 'start'}">${a.o.label} z = ${fmtN(zNow, zNow < 0.01 ? 4 : 3)}</text>`;
-        out += `<text class="axis-title" x="${(X0 + X1) / 2}" y="${Y0 + 30}" text-anchor="middle">적색 이동 z — z가 0.1을 넘으면 두 식이 갈라지고, 상대론 식은 광속을 넘지 않습니다</text>`;
-        return out;
+        let out='<text class="axis-title" x="30" y="25">같은 스펙트럼 선의 관측 파장 비교</text>';
+        for(const [i,o]of Object.values(OBJECTS).entries()){
+            const y=50+i*26,w=90*(1+o.z);out+='<rect x="130" y="'+y+'" width="'+w+'" height="14" fill="'+(o===a.o?'#d97706':'#b6c4d0')+'"/><text class="small-label" x="20" y="'+(y+11)+'">'+o.label+'</text><text class="small-label" x="'+(140+w)+'" y="'+(y+11)+'">λ₀의 '+(1+o.z).toFixed(3)+'배</text>';
+        }return out;
     }
 
     function renderHubble(a) {
@@ -321,7 +308,7 @@ document.addEventListener('DOMContentLoaded', () => {
         out += `<text class="small-label" x="20" y="173">붉은 화살 멀어짐 · 파란 화살 다가옴 (km/s, 길이 ∝ 속도) · 거리는 ${SCALES[state.scale].label}</text>`;
         const cur = a.fit(a.pts.slice(0, shown));
         out += `<text class="trait-text" x="20" y="186">${shown >= 2 ? `지금까지 ${shown}개로 맞춘 기울기 H₀ = ${fmtN(cur)} km/s/Mpc → 1/H₀ = ${fmtN(AGE_K / cur * 10, 0)}억 년` : '은하를 하나씩 재는 중…'}</text>`;
-        const VERD = { ok: '오늘날 값 근처', low: '60보다 작음', high: '80보다 큼' };
+        const VERD = { ok: '모형 비교값 근처', low: '60보다 작음', high: '80보다 큼' };
         out += `<text class="verdict-text" fill="#d97706" x="20" y="16">${p >= 1 ? `H₀ = ${fmtN(a.H)} km/s/Mpc (${VERD[a.verdict]}) → 우주 나이 어림 ${fmtN(a.age * 10, 0)}억 년` : `${a.sm.label} · ${SCALES[state.scale].label}`}</text>`;
         out += `<text class="note-text" x="20" y="208">1 Mpc = 326만 광년 · 속도는 실제 관측값 · 나이 어림 1/H₀ = 9,778억 년 ÷ H₀ (팽창 빠르기가 늘 같았다면)</text>`;
         return out;
@@ -355,16 +342,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 `<div class="data-row match"><span class="data-name">판정</span><span class="data-val">${NAMES[a.cls]}</span></div>`;
         }
         if (a.kind === 'redshift') {
-            const [tn, tl] = a.track, lo = tl * (1 + a.z);
-            return `<div class="data-row"><span class="data-name">천체</span><span class="data-val">${a.o.name} — 약 ${lyText(a.o.dist)} (대략)</span></div>` +
-                `<div class="data-row"><span class="data-name">밀린 선</span><span class="data-val">${tn} ${tl} nm → ${fmtN(lo, 1)} nm, Δλ = ${fmtN(lo - tl, 1)} nm → z = ${a.z}</span></div>` +
-                `<div class="data-row"><span class="data-name">후퇴 속도</span><span class="data-val">v = cz = ${fmtN(a.vNewton)} km/s${a.z > 0.05 ? `, 상대론 식 ${fmtN(a.vRel)} km/s (광속의 ${fmtN(a.frac * 100, 1)} %)` : ` (광속의 ${fmtN(a.frac * 100, 2)} %)`}</span></div>` +
-                `<div class="data-row match"><span class="data-name">판정</span><span class="data-val">${{ slow: '수천 km/s (광속의 3 % 안)', mid: '수만 km/s (광속의 3~30 %)', fast: '광속의 30 % 넘게' }[a.verdict]}</span></div>`;
+            const [tn,tl]=a.track;
+            return '<p>'+a.o.name+': '+tn+' '+tl+' nm → '+fmtN(tl*(1+a.z),1)+' nm, z = '+a.z+'</p><p>스펙트럼 이동을 비교합니다. 우주론적 적색편이를 특수상대론 도플러 속도로 단순 변환하지 않습니다.</p>';
         }
         return `<div class="data-row"><span class="data-name">표본</span><span class="data-val">${a.pts.map(q => `${(q.name.match(/M\d+/) || [q.name.split(' ')[0]])[0]} ${fmtN(q.d, q.d < 10 ? 2 : q.d < 20 ? 1 : 0)} Mpc·${q.v >= 0 ? '+' : '−'}${fmtN(Math.abs(q.v))}`).join(' / ')}</span></div>` +
             `<div class="data-row"><span class="data-name">맞춘 기울기</span><span class="data-val">Σ(거리 × 속도) ÷ Σ(거리²) = ${fmtN(a.H, 1)} km/s/Mpc ${a.f < 1 ? '(거리를 7분의 1로 잰 눈금)' : ''}</span></div>` +
             `<div class="data-row"><span class="data-name">우주 나이</span><span class="data-val">1/H₀ = 9,778억 년 ÷ ${fmtN(a.H, 1)} = ${fmtN(a.age * 10, 0)}억 년 ${a.age < 4.6 ? '— 지구(46억 년)보다 젊음, 모순' : ''}</span></div>` +
-            `<div class="data-row match"><span class="data-name">판정</span><span class="data-val">${{ ok: '60~80, 오늘날 값 근처', low: '60보다 작음', high: '80보다 큼' }[a.verdict]}</span></div>`;
+            `<div class="data-row match"><span class="data-name">판정</span><span class="data-val">${{ ok: '60~80, 모형 비교값 근처', low: '60보다 작음', high: '80보다 큼' }[a.verdict]}</span></div>`;
     }
 
     function render() {
@@ -415,20 +399,16 @@ document.addEventListener('DOMContentLoaded', () => {
             else if (a.cls === 'irr') s = `한가운데 뭉친 팽대부가 없고 ${a.arms === 'none' ? '팔도 없이' : '팔 조각만 흩어져'} 뚜렷한 대칭이 없으니 불규칙 은하입니다. 대체로 작은 은하이고 가스가 많아 여기저기서 푸른 젊은 별이 태어나며, 남반구에서 맨눈에 보이는 대·소마젤란은하가 그 예입니다. 이웃 은하의 중력에 흐트러진 경우도 많습니다.`;
             else s = `원반과 나선팔이 있고 가운데 팽대부가 ${a.bulge === 'big' ? '크며' : '작으며'} ${a.cls === 'sb' ? '팽대부를 가로지르는 막대가 있으니 막대 나선 은하' : '막대가 없으니 정상 나선 은하'}입니다. 팽대부가 ${a.bulge === 'big' ? '크고' : '작고'} 팔이 ${a.arms === 'tight' ? '촘촘히' : '느슨하게'} 감겨 ${a.code}이고, a에서 c로 갈수록 팽대부가 작아지고 팔이 풀립니다. 팽대부는 붉고 늙은 별, 팔은 가스와 먼지가 많아 푸른 젊은 별이 계속 태어나는 곳입니다. ${a.cls === 'sb' ? '우리 은하도 막대 나선 은하(SBbc쯤)입니다.' : '안드로메다은하가 정상 나선 은하(Sb)의 예입니다.'}`;
         } else if (a.kind === 'redshift') {
-            const [tn, tl] = a.track, lo = tl * (1 + a.z);
-            labelA.textContent = '적색 이동'; valueA.textContent = `z = ${a.z}`;
-            labelB.textContent = '후퇴 속도'; valueB.textContent = `${fmtN(a.vRel)} km/s`;
-            s = `${a.o.name}의 ${tn} 선은 실험실 값 ${tl} nm가 아니라 ${fmtN(lo, 1)} nm에서 나타납니다. Δλ = ${fmtN(lo - tl, 1)} nm를 ${tl} nm로 나눈 적색 이동 z = ${a.z}입니다. `;
-            if (a.verdict === 'slow') s += `z가 작으니 v = cz = ${fmtN(a.vNewton)} km/s로 두어도 됩니다. 광속의 ${fmtN(a.frac * 100, 2)} %인 초속 ${fmtN(a.vRel)} km로 멀어지는 셈이고, 이 속도를 허블 법칙에 넣으면 거리가 나옵니다.`;
-            else if (a.verdict === 'mid') s += `v = cz면 ${fmtN(a.vNewton)} km/s이지만 광속의 10 %가 넘어 상대성 이론의 식을 써야 하고, 그러면 ${fmtN(a.vRel)} km/s, 광속의 ${fmtN(a.frac * 100, 1)} %입니다. 퀘이사 3C 273은 별처럼 보이지만 이렇게 큰 적색 이동으로 수십억 광년 밖의 은하 중심핵임이 밝혀졌습니다.`;
-            else s += `v = cz면 ${fmtN(a.vNewton)} km/s로 ${a.z >= 1 ? '광속과 같거나 넘어 버리므로' : '광속의 절반이 되므로'} 반드시 상대성 이론의 식을 써야 합니다. 그러면 ${fmtN(a.vRel)} km/s, 광속의 ${fmtN(a.frac * 100, 1)} %입니다. 이 빛은 ${fmtN(a.o.dist / 100)}억 년 전에 떠난 것이라, 우리는 우주가 지금보다 훨씬 젊을 때의 모습을 보는 셈입니다. 사실 이 속도는 천체가 달리는 것이 아니라 그동안 공간이 ${fmtN(1 + a.z, 1)}배로 늘어난 결과입니다.`;
+            const [tn,tl]=a.track;labelA.textContent='적색편이';valueA.textContent='z = '+a.z;
+            labelB.textContent='파장 비';valueB.textContent=(1+a.z).toFixed(3)+'배';
+            s=tn+'의 실험실 파장 '+tl+' nm와 관측 파장 '+fmtN(tl*(1+a.z),1)+' nm를 비교합니다. 우주의 팽창은 빛의 파장을 늘립니다. 큰 적색편이에서 속도나 거리를 구하려면 우주론 모형을 고려해야 합니다.';
         } else {
             labelA.textContent = '기울기 H₀'; valueA.textContent = `${fmtN(a.H)} km/s/Mpc`;
             labelB.textContent = '우주 나이 어림'; valueB.textContent = `${fmtN(a.age * 10, 0)}억 년`;
             s = `${a.sm.label}의 거리와 속도를 찍고 원점을 지나는 직선을 맞추면 기울기 H₀ = ${fmtN(a.H)} km/s/Mpc입니다. 거리를 속도로 나눈 1/H₀ = ${fmtN(a.age * 10, 0)}억 년이 팽창이 시작된 뒤 흐른 시간의 어림값입니다. `;
             if (a.f < 1) s += `허블은 1929년에 세페이드 변광성의 밝기 눈금이 틀린 탓에 거리를 실제의 7분의 1로 재어 기울기 500 안팎을 얻었습니다. 그러면 우주 나이가 ${fmtN(a.age * 10, 0)}억 년으로 지구(46억 년)보다 젊다는 모순이 생깁니다. 이 모순은 1950년대에 세페이드에 두 종류가 있음을 알고 눈금을 바로잡으며 풀렸습니다. 값은 틀렸어도 "멀수록 빨리 멀어진다"는 법칙은 옳았습니다.`;
             else if (a.verdict === 'low') s += `가까운 은하들은 서로 중력으로 끌어당겨 제멋대로 움직이는 고유 운동이 초속 수백 km인데, 이 거리에서 팽창 속도는 그보다 작습니다. 안드로메다은하는 아예 초속 300 km로 다가옵니다. 그래서 기울기가 낮고 들쭉날쭉하며, 이런 표본으로는 허블 상수를 믿을 수 없습니다. 수천만 광년 넘는 먼 은하단까지 써야 팽창이 고유 운동을 압도합니다.`;
-            else s += `먼 은하단은 팽창 속도가 초속 수천 km라 고유 운동을 압도하므로 점들이 직선에 가깝게 늘어서고, 기울기는 오늘날 여러 방법으로 잰 값 67~73 km/s/Mpc 안에 듭니다. 1/H₀ = ${fmtN(a.age * 10, 0)}억 년은 팽창 빠르기가 늘 같았다고 본 어림이고, 감속과 가속을 넣어 계산한 우주의 나이는 138억 년입니다.`;
+            else s += `먼 은하단은 팽창 속도가 초속 수천 km라 고유 운동을 압도하므로 점들이 직선에 가깝게 늘어서고, 기울기는 이 모형의 비교 구간 67~73 km/s/Mpc 안에 듭니다. 1/H₀ = ${fmtN(a.age * 10, 0)}억 년은 팽창 빠르기가 늘 같았다고 본 어림이고, 감속과 가속을 넣어 계산한 우주의 나이는 138억 년입니다.`;
         }
         predictionResult.textContent = !state.prediction ? '다음에는 결과를 먼저 예상해 보세요.'
             : state.prediction === a.verdict ? '예상이 맞았습니다.' : '예상과 다른 결과입니다.';

@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="styles.css?v=6">
     <link rel="stylesheet" href="star-visual.css?v=6">
     <link rel="stylesheet" href="quiz.css?v=4">
+    <link rel="stylesheet" href="../exam-scope.css?v=1">
 </head>
 <body>
     <main>
@@ -18,24 +19,24 @@
                 <a href="../">← 과학 실험실</a>
                 <h1>별이 만든 원소 — 핵융합과 원소의 기원</h1>
             </div>
-            <div class="grade-tags"><span>고등학교 1학년</span><span>화학·지구과학</span></div>
+            <div class="grade-tags"><span>고등학교 1학년</span><span>통합과학1</span><span>통합과학2</span></div>
         </header>
 
         <ol class="method-steps" aria-label="실험 방법">
             <li>핵융합 한 단계, 별 한 개의 일생, 원소 하나의 고향 가운데 무엇을 볼지 고릅니다.</li>
             <li>어떤 원자핵이 합쳐지는지, 별의 질량이 얼마인지, 어느 원소인지 정합니다.</li>
-            <li>에너지가 얼마나 나올지, 어느 원소까지 만들지, 어디서 왔을지 예상합니다.</li>
+            <li>에너지가 나올까 나올지, 어느 원소까지 만들지, 어디서 왔을지 예상합니다.</li>
             <li>시작해서 원자핵이 합쳐지는 모습, 별의 속이 층층이 쌓이는 모습, 원소의 고향을 확인합니다.</li>
         </ol>
 
         <div class="experiment-layout">
             <section class="panel control-panel" aria-labelledby="control-title">
                 <h2 id="control-title">실험 조건</h2>
-                <p class="water-standard" id="methodHint">원자핵이 더 단단히 묶일수록 남는 질량이 에너지로 나옵니다</p>
+                <p class="water-standard" id="methodHint">태양은 수소 핵융합으로 에너지를 방출합니다</p>
                 <fieldset class="mode-field">
                     <legend>실험 종류</legend>
                     <div class="mode-buttons three">
-                        <button type="button" data-mode="fusion">핵융합 한 단계<small>에너지가 얼마나</small></button>
+                        <button type="button" data-mode="fusion">핵융합 한 단계<small>에너지가 나올까</small></button>
                         <button type="button" data-mode="mass">별의 질량과 일생<small>어느 원소까지</small></button>
                         <button type="button" data-mode="origin">원소의 고향<small>어디서 왔나</small></button>
                     </div>
@@ -86,70 +87,72 @@
         <section class="panel meaning-panel">
             <h2>실험 결과의 의미</h2>
             <div class="meaning-body">
-                <p><strong>핵융합과 질량</strong> 가벼운 원자핵이 합쳐져 무거운 원자핵이 되면 원자핵을 이루는 알갱이들이 더 단단히 묶이고, 그만큼 질량이 조금 줄어 빛과 열이 됩니다. 수소 4개가 헬륨 1개가 될 때 질량의 0.7 %가 사라지는데, 이것이 태양이 초마다 수소 6억 t을 태우며 400만 t씩 가벼워지면서 빛나는 까닭입니다. 아주 작은 질량이 엄청난 에너지가 되는 것은 에너지 = 질량 × (빛의 속력)² 때문입니다.</p>
-                <p><strong>철에서 멈추는 까닭</strong> 헬륨이 탄소로, 탄소가 산소·규소로, 규소가 철로 될 때마다 나오는 에너지는 수소 때의 10분의 1, 20분의 1로 줄어듭니다. 철의 원자핵이 가장 단단히 묶여 있어 철을 더 합쳐도 에너지가 나오지 않고 오히려 들어가므로, 별 속의 핵융합은 철에서 끝납니다. 철보다 무거운 금·은·우라늄은 초신성 폭발이나 중성자별 충돌처럼 에너지가 넘치는 자리에서 만들어집니다.</p>
-                <p><strong>별의 질량이 운명을 정한다</strong> 무거운 별은 중심이 더 뜨겁고 무거워 다음 단계 핵융합을 이어 갈 수 있지만, 연료를 훨씬 빨리 씁니다. 태양의 0.3배쯤인 작은 별은 헬륨까지만 만들며 수천억 년을 살고, 태양은 탄소·산소까지 만들고 100억 년 뒤 백색 왜성이 되며, 태양의 25배인 별은 수백만 년 만에 철까지 만들고 초신성으로 터져 만든 원소를 우주에 뿌립니다.</p>
-                <p><strong>우리 몸의 원소는 별에서 왔다</strong> 우주의 수소와 헬륨은 빅뱅 직후 몇 분 동안 만들어졌습니다. 우리 몸의 탄소·산소·질소·칼슘·철은 모두 옛 별 속에서 만들어져 별이 죽을 때 퍼진 것이고, 금·은은 중성자별이 충돌하며 만들어졌습니다. 태양과 지구, 우리 몸은 앞선 별들의 재에서 생겨났습니다.</p>
+                <p><strong>핵융합과 질량</strong> 태양에서는 수소 원자핵이 융합하여 헬륨 원자핵이 만들어지는 과정에서 에너지가 방출됩니다. 이 에너지는 지구에서 일어나는 여러 현상의 에너지원이 됩니다.</p>
+                <p><strong>철에서 멈추는 까닭</strong> 별 내부의 핵융합으로 여러 원소가 생성되며, 질량이 큰 별에서는 철까지 생성되는 과정을 설명할 수 있습니다. 무거운 원소의 생성에는 별의 진화·폭발·중성자별 충돌 등 여러 과정이 관련됩니다.</p>
+                <p><strong>별의 질량이 운명을 정한다</strong> 별에서 생성되는 원소와 마지막 모습은 질량에 따라 다릅니다. 이 화면의 단계별 진행 시간은 관찰을 위한 모형이며 실제 별의 수명이나 각 단계의 지속 시간을 뜻하지 않습니다.</p>
+                <p><strong>우리 몸의 원소는 별에서 왔다</strong> 초기 우주에서는 주로 수소와 헬륨이 만들어졌습니다. 탄소·산소 등은 별 내부 등에서 만들어져 우주 공간으로 퍼졌고, 이후 태양계와 우리 몸을 이루는 재료가 되었습니다.</p>
             </div>
         </section>
 
         <details class="quiz-section" aria-labelledby="quiz-title">
             <summary class="quiz-heading"><h2 id="quiz-title">확인 문제</h2><span>4문제</span></summary>
             <div class="quiz-grid">
-                <article class="quiz-card" data-answer="c">
-                    <h3>태양 속에서 수소 4개가 헬륨 1개로 합쳐질 때 질량은 어떻게 될까요?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q1" value="a"> 정확히 같다</label>
-                        <label><input type="radio" name="q1" value="b"> 절반으로 줄어든다</label>
-                        <label><input type="radio" name="q1" value="c"> 0.7 %쯤 줄고, 그만큼이 빛과 열이 된다</label>
-                        <label><input type="radio" name="q1" value="d"> 4배로 늘어난다</label>
-                    </div>
-                    <button class="answer-button" type="button">정답 확인</button>
-                    <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>헬륨 원자핵은 수소 원자핵 4개보다 0.7 % 가볍습니다. 사라진 질량이 에너지가 되는데, 질량은 아주 작아도 빛의 속력의 제곱을 곱하므로 엄청난 에너지입니다.</p>
-                </article>
+                <article class="quiz-card" data-answer="b">
+<h3>태양이 빛과 열을 방출하는 주된 에너지원은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q1" value="a"> 석탄의 연소</label>
+<label><input type="radio" name="q1" value="b"> 수소 원자핵의 핵융합</label>
+<label><input type="radio" name="q1" value="c"> 태양 표면의 마찰</label>
+<label><input type="radio" name="q1" value="d"> 지구에서 올라온 열</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>태양 중심부에서 수소 원자핵이 융합하여 헬륨 원자핵을 만드는 과정에서 에너지가 방출됩니다.</p>
+</article>
 
-                <article class="quiz-card" data-answer="a">
-                    <h3>별 속의 핵융합이 철에서 멈추는 까닭은?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q2" value="a"> 철의 원자핵이 가장 단단히 묶여 있어 더 합쳐도 에너지가 나오지 않기 때문에</label>
-                        <label><input type="radio" name="q2" value="b"> 철은 너무 무거워 별 밖으로 빠져나가기 때문에</label>
-                        <label><input type="radio" name="q2" value="c"> 별에 철이 너무 적기 때문에</label>
-                        <label><input type="radio" name="q2" value="d"> 철은 자석에 붙기 때문에</label>
-                    </div>
-                    <button class="answer-button" type="button">정답 확인</button>
-                    <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>원자핵을 묶는 에너지는 철에서 가장 큽니다. 철을 더 무거운 원자핵으로 합치려면 오히려 에너지를 넣어야 하므로 별은 더 버틸 힘을 얻지 못하고, 무거운 별은 이때 무너져 초신성이 됩니다.</p>
-                </article>
+                <article class="quiz-card" data-answer="c">
+<h3>초기 우주와 별에서 생성된 원소에 대한 설명으로 옳은 것은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q2" value="a"> 초기 우주에서 모든 원소가 같은 양으로 생겼다.</label>
+<label><input type="radio" name="q2" value="b"> 철은 생명체가 처음 만들었다.</label>
+<label><input type="radio" name="q2" value="c"> 초기 우주에서는 주로 수소·헬륨이 생성되었다.</label>
+<label><input type="radio" name="q2" value="d"> 탄소는 별과 전혀 관계없다.</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>초기 우주에서는 주로 수소와 헬륨이 생성되었고, 탄소·산소 등 여러 원소는 이후 별 내부 등에서 생성되었습니다.</p>
+</article>
 
                 <article class="quiz-card" data-answer="d">
-                    <h3>태양의 25배쯤 되는 무거운 별과 태양을 견주면?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q3" value="a"> 연료가 많아 훨씬 오래 산다</label>
-                        <label><input type="radio" name="q3" value="b"> 헬륨까지만 만들고 조용히 꺼진다</label>
-                        <label><input type="radio" name="q3" value="c"> 태양과 같은 원소를 같은 시간에 만든다</label>
-                        <label><input type="radio" name="q3" value="d"> 철까지 만들지만 수백만 년 만에 다 태우고 초신성으로 터진다</label>
-                    </div>
-                    <button class="answer-button" type="button">정답 확인</button>
-                    <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>무거운 별은 중심이 뜨거워 철까지 핵융합을 이어 가지만, 연료를 훨씬 빨리 써서 태양의 100억 년 대신 수백만 년밖에 살지 못하고 초신성으로 끝납니다.</p>
-                </article>
+<h3>질량이 다른 별의 진화를 비교할 때 옳은 설명은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q3" value="a"> 모든 별이 반드시 같은 원소만 만든다.</label>
+<label><input type="radio" name="q3" value="b"> 모든 별이 반드시 초신성으로 끝난다.</label>
+<label><input type="radio" name="q3" value="c"> 별의 질량은 진화와 무관하다.</label>
+<label><input type="radio" name="q3" value="d"> 생성하는 원소와 마지막 모습이 달라질 수 있다.</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>별의 질량에 따라 진화 과정과 생성하는 원소, 마지막 모습이 달라집니다. 화면의 진행 시간을 실제 수명으로 읽으면 안 됩니다.</p>
+</article>
 
-                <article class="quiz-card" data-answer="b">
-                    <h3>우리 몸의 탄소와 산소는 어디에서 왔을까요?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q4" value="a"> 빅뱅 직후에 수소와 함께 만들어졌다</label>
-                        <label><input type="radio" name="q4" value="b"> 옛 별 속의 핵융합으로 만들어져 별이 죽을 때 퍼졌다</label>
-                        <label><input type="radio" name="q4" value="c"> 지구가 스스로 만들어 냈다</label>
-                        <label><input type="radio" name="q4" value="d"> 달에서 떨어져 나왔다</label>
-                    </div>
-                    <button class="answer-button" type="button">정답 확인</button>
-                    <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>빅뱅은 수소와 헬륨만 만들었습니다. 탄소·산소는 별 속 헬륨·탄소 핵융합으로 만들어져 별이 죽을 때 우주에 퍼졌고, 그 재에서 태양·지구·우리 몸이 생겼습니다.</p>
-                </article>
+                <article class="quiz-card" data-answer="a">
+<h3>우리 몸을 이루는 탄소·산소의 기원에 대한 설명은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q4" value="a"> 별 내부 등에서 생성되어 우주에 퍼진 물질이 재료가 되었다.</label>
+<label><input type="radio" name="q4" value="b"> 우리 몸에서 처음 만들어졌다.</label>
+<label><input type="radio" name="q4" value="c"> 모두 빅뱅 직후에만 만들어졌다.</label>
+<label><input type="radio" name="q4" value="d"> 지구의 돌이 저절로 핵융합한 결과이다.</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>별 내부 등에서 생성된 원소가 우주 공간에 퍼지고 다시 모여 태양계와 우리 몸을 이루는 재료가 되었습니다.</p>
+</article>
             </div>
         </details>
     </main>
-    <script src="app.js?v=10"></script>
+    <script src="app.js?v=b43dc398893a"></script>
+    <script src="../curriculum-map.js?v=2ffe762f2206"></script>
+    <script src="../exam-scope.js?v=849f3853d47f"></script>
 </body>
 </html>

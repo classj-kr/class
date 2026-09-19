@@ -10,15 +10,16 @@
     <link rel="stylesheet" href="styles.css?v=5">
     <link rel="stylesheet" href="seed-visual.css?v=6">
     <link rel="stylesheet" href="quiz.css?v=3">
+    <link rel="stylesheet" href="../exam-scope.css?v=1">
 </head>
 <body>
     <main>
         <header class="page-header">
             <div class="title-row">
                 <a href="../">← 과학 실험실</a>
-                <h1>씨의 발아와 식물의 구조</h1>
+                <h1>씨의 발아와 식물의 자람</h1>
             </div>
-            <div class="grade-tags"><span>초등 3학년</span><span>생명과학</span></div>
+            <div class="grade-tags"><span>초등 3학년</span><span>과학</span></div>
         </header>
 
         <ol class="method-steps" aria-label="실험 방법">
@@ -31,7 +32,7 @@
         <div class="experiment-layout">
             <section class="panel control-panel" aria-labelledby="control-title">
                 <h2 id="control-title">실험 조건</h2>
-                <p class="water-standard">조건을 눌러 켜고 끌 수 있습니다</p>
+                <p class="water-standard">물과 온도를 비교합니다. 공기가 통하고 빛 조건이 같은 곳에 둡니다.</p>
 
                 <div class="condition-list">
                     <button type="button" class="condition on" data-cond="water">
@@ -39,12 +40,6 @@
                     </button>
                     <button type="button" class="condition on" data-cond="warm">
                         <span class="cond-name">온도</span><span class="cond-state">따뜻함</span>
-                    </button>
-                    <button type="button" class="condition on" data-cond="air">
-                        <span class="cond-name">공기</span><span class="cond-state">통한다</span>
-                    </button>
-                    <button type="button" class="condition on" data-cond="light">
-                        <span class="cond-name">빛</span><span class="cond-state">비춘다</span>
                     </button>
                 </div>
 
@@ -115,40 +110,40 @@
         <section class="panel meaning-panel">
             <h2>실험 결과의 의미</h2>
             <div class="meaning-body">
-                <p><strong>필요한 조건</strong> 씨가 싹트려면 물·알맞은 온도·공기가 모두 있어야 합니다.</p>
-                <p><strong>빛</strong> 씨가 싹트는 데에는 빛이 필요하지 않습니다. 다만 싹튼 뒤 잎이 초록색이 되려면 빛이 필요합니다.</p>
-                <p><strong>식물의 구조</strong> 뿌리는 물을 빨아들이고, 줄기는 물을 옮기며, 잎은 양분을 만듭니다.</p>
+                <p><strong>발아 조건 비교</strong> 공기와 빛 등 다른 조건은 같게 두고 물과 알맞은 온도가 싹트기에 미치는 영향을 비교합니다.</p>
+                <p><strong>관찰할 것</strong> 씨의 변화, 뿌리와 싹이 나오는 순서, 잎의 모습을 기록합니다.</p>
+                <p><strong>한 가지씩 비교</strong> 물을 비교할 때는 온도를 같게, 온도를 비교할 때는 물의 양을 같게 합니다.</p>
             </div>
         </section>
 
         <details class="quiz-section" aria-labelledby="quiz-title">
             <summary class="quiz-heading"><h2 id="quiz-title">확인 문제</h2><span>4문제</span></summary>
             <div class="quiz-grid">
-                <article class="quiz-card" data-answer="c">
-                    <h3>씨가 싹트는 데 반드시 필요한 조건끼리 묶인 것은?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q1" value="a"> 물, 빛, 흙</label>
-                        <label><input type="radio" name="q1" value="b"> 빛, 공기, 흙</label>
-                        <label><input type="radio" name="q1" value="c"> 물, 알맞은 온도, 공기</label>
-                        <label><input type="radio" name="q1" value="d"> 물, 빛, 알맞은 온도</label>
-                    </div>
-                    <button class="answer-button" type="button">정답 확인</button>
-                    <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>씨가 싹트려면 물, 알맞은 온도, 공기가 필요합니다. 빛과 흙은 싹트는 조건이 아닙니다.</p>
-                </article>
-
                 <article class="quiz-card" data-answer="b">
-                    <h3>어두운 곳에 둔 씨는 어떻게 되는가?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q2" value="a"> 절대 싹트지 않는다.</label>
-                        <label><input type="radio" name="q2" value="b"> 싹은 트지만 잎이 초록색이 되지 못한다.</label>
-                        <label><input type="radio" name="q2" value="c"> 씨가 녹아 없어진다.</label>
-                        <label><input type="radio" name="q2" value="d"> 더 빨리 자라 열매를 맺는다.</label>
-                    </div>
-                    <button class="answer-button" type="button">정답 확인</button>
-                    <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>빛이 없어도 싹은 틉니다. 다만 잎이 초록색이 되지 못하고 줄기만 가늘고 길게 자랍니다.</p>
-                </article>
+<h3>물을 주는 것이 싹트기에 미치는 영향을 알아보려면?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q1" value="a"> 온도와 물을 모두 바꾼다.</label>
+<label><input type="radio" name="q1" value="b"> 온도는 같게 하고 물만 다르게 준다.</label>
+<label><input type="radio" name="q1" value="c"> 씨 종류도 다르게 한다.</label>
+<label><input type="radio" name="q1" value="d"> 관찰 기간을 다르게 한다.</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>온도, 씨의 종류와 관찰 기간은 같게 하고 물을 주는 조건만 다르게 비교합니다.</p>
+</article>
+
+                <article class="quiz-card" data-answer="a">
+<h3>온도의 영향을 알아보는 공정한 비교는?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q2" value="a"> 물은 같게 주고 온도만 다르게 한다.</label>
+<label><input type="radio" name="q2" value="b"> 물도 온도도 다르게 한다.</label>
+<label><input type="radio" name="q2" value="c"> 씨 종류만 바꾼다.</label>
+<label><input type="radio" name="q2" value="d"> 한쪽만 관찰한다.</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>다른 조건은 같게 하고 온도만 다르게 해야 온도의 영향을 알 수 있습니다.</p>
+</article>
 
                 <article class="quiz-card" data-answer="a">
                     <h3>조건 하나가 필요한지 알아보려면 어떻게 해야 하는가?</h3>
@@ -163,21 +158,23 @@
                     <p class="answer-explanation" hidden>알아보려는 조건만 다르게 하고 나머지 조건은 모두 같게 해야 무엇 때문인지 알 수 있습니다.</p>
                 </article>
 
-                <article class="quiz-card" data-answer="d">
-                    <h3>식물에서 물을 빨아들이는 부분은?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q4" value="a"> 잎</label>
-                        <label><input type="radio" name="q4" value="b"> 꽃</label>
-                        <label><input type="radio" name="q4" value="c"> 줄기</label>
-                        <label><input type="radio" name="q4" value="d"> 뿌리</label>
-                    </div>
-                    <button class="answer-button" type="button">정답 확인</button>
-                    <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>뿌리가 흙 속의 물을 빨아들이고, 줄기가 그 물을 잎까지 옮깁니다.</p>
-                </article>
+                <article class="quiz-card" data-answer="b">
+<h3>씨가 싹트는 과정을 관찰한 기록으로 알맞은 것은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q4" value="a"> 결과를 보기 전에 정한다.</label>
+<label><input type="radio" name="q4" value="b"> 날짜와 씨·뿌리·잎의 변화를 적는다.</label>
+<label><input type="radio" name="q4" value="c"> 키가 큰 것만 적는다.</label>
+<label><input type="radio" name="q4" value="d"> 기억에만 남긴다.</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>날짜별 모습을 글이나 그림으로 기록하면 싹트고 자라는 변화를 비교할 수 있습니다.</p>
+</article>
             </div>
         </details>
     </main>
-    <script src="app.js?v=11"></script>
+    <script src="app.js?v=8e4a4f4c3269"></script>
+    <script src="../curriculum-map.js?v=2ffe762f2206"></script>
+    <script src="../exam-scope.js?v=849f3853d47f"></script>
 </body>
 </html>

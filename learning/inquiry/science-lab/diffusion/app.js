@@ -115,8 +115,8 @@ document.addEventListener('DOMContentLoaded', () => {
         out += `<rect class="tube" x="${TUBE.x0}" y="${TUBE.y}" width="${TUBE.x1 - TUBE.x0}" height="${TUBE.h}" rx="4"/>`;
         out += `<rect class="cotton" x="${TUBE.x0 - 12}" y="${TUBE.y + 4}" width="12" height="${TUBE.h - 8}" rx="3"/>`;
         out += `<rect class="cotton" x="${TUBE.x1}" y="${TUBE.y + 4}" width="12" height="${TUBE.h - 8}" rx="3"/>`;
-        out += `<text class="end-label" fill="#78dcbe" x="${TUBE.x0 - 14}" y="${TUBE.y - 8}">${NH3.formula} ${NH3.M}</text>`;
-        out += `<text class="end-label" fill="#ffbe78" x="${TUBE.x1 + 12}" y="${TUBE.y - 8}" text-anchor="end">${HCL.formula} ${HCL.M}</text>`;
+        out += `<text class="end-label" fill="#78dcbe" x="${TUBE.x0 - 14}" y="${TUBE.y - 8}">${NH3.name}</text>`;
+        out += `<text class="end-label" fill="#ffbe78" x="${TUBE.x1 + 12}" y="${TUBE.y - 8}" text-anchor="end">${HCL.name}</text>`;
 
         for (let cm = 0; cm <= TUBE_CM; cm += 5) {
             const x = TUBE.x0 + cm * PX_PER_CM;
@@ -167,7 +167,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const mp = f.mp;
         dataNote.innerHTML =
             `<div class="data-row"><span class="data-name">이동 거리</span><span class="data-val">${NH3.name} ${f.nh3.toFixed(1)} cm · ${HCL.name} ${f.hcl.toFixed(1)} cm</span></div>` +
-            `<div class="data-row match"><span class="data-name">거리의 비</span><span class="data-val">${mp.ratio.toFixed(3)} : 1 — √(36.5 ÷ 17) = ${Math.sqrt(HCL.M / NH3.M).toFixed(3)}</span></div>` +
             `<div class="data-row"><span class="data-name">고리 위치</span><span class="data-val">암모니아 끝에서 ${mp.fromNH3.toFixed(2)} cm (온도와 무관)</span></div>`;
 
         stageBadge.textContent = `${t.toFixed(1)} 초`;
@@ -262,18 +261,15 @@ document.addEventListener('DOMContentLoaded', () => {
             const f = fronts(t, T);
             const grahamRatio = Math.sqrt(HCL.M / NH3.M);
             labelA.textContent = '고리 위치';
-            labelB.textContent = '이동 거리의 비';
+            labelB.textContent = '이동 비교';
             valueA.textContent = `${f.mp.fromNH3.toFixed(1)} cm`;
-            valueB.textContent = `${grahamRatio.toFixed(3)} : 1`;
+            valueB.textContent = "암모니아가 더 멀리";
             const actual = f.mp.fromNH3 > TUBE_CM / 2 + 0.01 ? 'hcl'
                          : f.mp.fromNH3 < TUBE_CM / 2 - 0.01 ? 'nh3' : 'center';
             predictionResult.textContent = !prediction
                 ? '다음에는 결과를 먼저 예상해 보세요.'
                 : prediction === actual ? '예상이 맞았습니다.' : '예상과 다른 결과입니다.';
-            explanation.textContent =
-                `기체 분자의 평균 속력은 √(T/M) 에 비례하므로, 분자량이 작은 ${NH3.name}(${NH3.M})가 ${HCL.name}(${HCL.M})보다 √(36.5÷17) = ${grahamRatio.toFixed(3)}배 빠르게 확산합니다. ` +
-                `그래서 두 기체는 관 가운데가 아니라 암모니아 끝에서 ${f.mp.fromNH3.toFixed(1)} cm 지점, 즉 염화수소 쪽에 가까운 곳에서 만납니다. ` +
-                `온도를 올리면 두 속력이 같은 비율로 커져 ${f.meetTime.toFixed(2)} 초처럼 만나는 시각만 빨라지고, 고리 위치는 변하지 않습니다.`;
+            explanation.textContent = "직접 섞지 않아도 입자가 스스로 움직여 퍼집니다. 이 모형에서는 암모니아가 더 멀리 이동하므로 염화수소 쪽에서 흰 고리가 생깁니다. 시간·경계는 단순화한 예시이며 실제 측정값이 아닙니다.";
         } else {
             const g0 = gasModel(), t = gasElapsed();
             const v = gasVolume(t, g0);

@@ -30,7 +30,7 @@ const fmt = (v, d) => v.toFixed(d).replace('-', '−');
 function power(eye, obj) { return eye * obj; }
 function fieldMm(eye, obj) { return EYEPIECES[eye].fn / obj; }
 // Against the widest, dimmest-free setting: brightness falls as 1/power².
-function brightness(eye, obj) { return Math.pow(40 / power(eye, obj), 2); }
+function brightness(eye, obj) { return ({4:1,10:0.8,40:0.6})[obj]; } // Illustrative shading, not a photometric law.
 
 function share(spec, eye, obj) { return SPECIMENS[spec].mm / fieldMm(eye, obj); }
 function verdictFor(spec, eye, obj) {
@@ -103,7 +103,6 @@ function drawScope(g) {
     g.appendChild(el('text', { x: 20, y: 22, class: 'small-label' }, '배율'));
     g.appendChild(el('text', { x: 20, y: 44, class: 'big-read' }, `${a.mag}배`));
     g.appendChild(el('text', { x: 20, y: 62, class: 'tiny-label' }, `${state.eye} × ${state.obj}`));
-    g.appendChild(el('text', { x: 20, y: 206, class: 'note-text' }, `밝기 ${a.bright >= 0.1 ? Math.round(a.bright * 100) : fmt(a.bright * 100, 1)}%`));
 }
 
 function drawField(g) {
@@ -242,10 +241,9 @@ function updateReadout() {
     $('valueB').textContent = a.field >= 1 ? `${fmt(a.field, 2)} mm` : `${Math.round(a.field * 1000)} μm`;
     const rows = [
         ['배율 계산', `접안 ${state.eye} × 대물 ${state.obj} = ${a.mag}배`, false],
-        ['실제 크기', `${fmt(a.spec.mm, 2)} mm · ${Math.round(a.spec.mm * 1000)} μm`, false],
+        ['모형의 세포 크기', `${fmt(a.spec.mm, 2)} mm · ${Math.round(a.spec.mm * 1000)} μm`, false],
         ['눈에 보이는 크기', `${fmt(a.apparent, 1)} mm`, false],
         ['가로로 몇 개', a.overflows ? '한 개도 다 안 들어옵니다' : `${fmt(a.across, a.across < 10 ? 1 : 0)}개`, false],
-        ['밝기', `${a.bright >= 0.1 ? Math.round(a.bright * 100) : fmt(a.bright * 100, 1)}% · 40배일 때를 100으로`, a.bright >= 0.5],
         ['이 세포의 특징', a.spec.note, false],
     ];
     $('dataNote').innerHTML = rows.map(([n, v, m]) =>
@@ -268,7 +266,7 @@ function explain(a) {
     }
 
     let s = `접안렌즈 ${state.eye}배에 대물렌즈 ${state.obj}배를 끼웠으니 배율은 ${state.eye} × ${state.obj} = ${a.mag}배입니다. `;
-    s += `${a.spec.name}의 실제 크기는 ${Math.round(a.spec.mm * 1000)} μm, 곧 ${fmt(a.spec.mm, 2)} mm인데 ${a.mag}배로 보면 ${fmt(a.apparent, 1)} mm짜리로 보입니다. `;
+    s += `${a.spec.name}의 모형 크기는 ${Math.round(a.spec.mm * 1000)} μm, 곧 ${fmt(a.spec.mm, 2)} mm인데 ${a.mag}배로 보면 ${fmt(a.apparent, 1)} mm짜리로 보입니다. `;
     s += `이 배율에서 한눈에 들어오는 너비는 ${a.field >= 1 ? `${fmt(a.field, 2)} mm` : `${Math.round(a.field * 1000)} μm`}이므로, `;
     s += a.overflows
         ? `${a.spec.name} 한 개도 다 담기지 않습니다. 너무 크게 본 셈입니다. `
@@ -282,7 +280,7 @@ function explain(a) {
         s += `화면에서 차지하는 자리가 너무 작아 무엇이 있는지도 알아보기 어렵습니다. 대물렌즈를 높은 것으로 바꿔야 합니다. `;
     }
     s += `배율을 올리면 크게 보이지만 그만큼 보이는 범위가 좁아집니다. 대물렌즈를 4배에서 40배로 바꾸면 너비가 정확히 10분의 1이 됩니다. `;
-    s += `밝기는 더 가파르게 줄어들어 ${a.mag}배에서는 40배일 때의 ${a.bright >= 0.1 ? Math.round(a.bright * 100) : fmt(a.bright * 100, 1)}%밖에 되지 않습니다. 배율이 10배가 되면 밝기는 100분의 1이 되기 때문입니다. `;
+    s += "실제 밝기는 렌즈와 조명 조건에 따라 달라집니다. 화면이 어두우면 조명과 조리개를 조절합니다. ";
     s += `그래서 현미경은 늘 낮은 배율로 먼저 찾아 가운데에 놓고, 그다음에 배율을 올립니다. ${a.spec.note}.`;
     $('elementaryExplanation').textContent = s;
 }

@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#f1f5f9">
     <title>과학 실험실</title>
-    <meta name="description" content="두 점전하의 부호와 크기를 바꾸어 전기력선을 그리고 시험 전하가 받는 힘의 방향을 쿨롱 법칙으로 계산하고, 두 판 사이 전압으로 전자·양성자·알파 입자를 가속해 전기장 E = V/d와 한 일 qV로 속력을 구하고, 평행판 축전기의 판 넓이·간격·유전체를 바꾸어 전기 용량과 저장 전하를 실제 값으로 확인하는 고등학교 물리학 모의실험">
+    <meta name="description" content="점전하의 전기장과 전위차에 따른 입자 운동, 축전기의 에너지 저장과 방출을 비교하는 전자기와 양자 학습 모형">
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
     <link rel="stylesheet" href="styles.css?v=6">
     <link rel="stylesheet" href="efield-visual.css?v=7">
     <link rel="stylesheet" href="quiz.css?v=4">
+    <link rel="stylesheet" href="../exam-scope.css?v=1">
 </head>
 <body>
     <main>
@@ -18,12 +19,12 @@
                 <a href="../">← 과학 실험실</a>
                 <h1>전기장·전위·축전기</h1>
             </div>
-            <div class="grade-tags"><span>고등학교 2~3학년</span><span>물리학</span></div>
+            <div class="grade-tags"><span>고등학교 2~3학년</span><span>전자기와 양자</span></div>
         </header>
 
         <ol class="method-steps" aria-label="실험 방법">
             <li>두 전하 사이의 전기장, 전압으로 입자 가속하기, 평행판 축전기 가운데 하나를 고릅니다.</li>
-            <li>두 전하의 부호와 크기와 시험 전하 자리, 전압과 입자 종류, 판 넓이·간격·사이 물질을 정합니다.</li>
+            <li>두 전하의 부호와 크기와 시험 전하 자리, 전압과 입자 종류, 축전기의 충전·방전 상황을 정합니다.</li>
             <li>시험 전하가 어느 쪽으로 밀릴지, 입자가 얼마나 빨라질지, 전기 용량이 얼마쯤일지 예상합니다.</li>
             <li>시작해서 전기력선과 힘의 화살표, 입자의 움직임, 판에 쌓이는 전하를 확인합니다.</li>
         </ol>
@@ -37,7 +38,7 @@
                     <div class="mode-buttons three">
                         <button type="button" data-mode="field">두 전하의 전기장<small>시험 전하는 어디로</small></button>
                         <button type="button" data-mode="accel">전압으로 가속<small>얼마나 빨라질까</small></button>
-                        <button type="button" data-mode="cap">평행판 축전기<small>전기 용량은 얼마</small></button>
+                        <button type="button" data-mode="cap">평행판 축전기<small>에너지 저장과 방출</small></button>
                     </div>
                 </fieldset>
                 <div id="controlArea"></div>
@@ -86,10 +87,10 @@
         <section class="panel meaning-panel">
             <h2>실험 결과의 의미</h2>
             <div class="meaning-body">
-                <p><strong>전기장과 전기력선</strong> 전하 Q에서 r만큼 떨어진 곳의 전기장 세기는 E = kQ/r²(k = 9.0×10⁹ N·m²/C²)이고, 방향은 + 전하에서 멀어지는 쪽입니다. 전기장은 화살표(벡터)라서 전하가 여럿이면 각각의 전기장을 화살표로 더합니다. 전기력선은 + 전하에서 나와 − 전하로 들어가고, 선이 빽빽한 곳이 전기장이 센 곳이며, 선끼리는 절대 교차하지 않습니다. 같은 크기의 같은 부호 전하 사이 한가운데는 두 전기장이 정확히 상쇄되어 0입니다.</p>
+                <p><strong>전기장과 전기력선</strong> 전하 Q에서 r만큼 떨어진 곳의 전기장 세기는 E = k|Q|/r²(k = 9.0×10⁹ N·m²/C²)이고, 양전하의 전기장 방향은 전하에서 멀어지는 쪽이고 음전하의 전기장은 전하를 향합니다. 전기장은 화살표(벡터)라서 전하가 여럿이면 각각의 전기장을 화살표로 더합니다. 전기력선은 + 전하에서 나와 − 전하로 들어가고, 선이 빽빽한 곳이 전기장이 센 곳이며, 선끼리는 절대 교차하지 않습니다. 같은 크기의 같은 부호 전하 사이 한가운데는 두 전기장이 정확히 상쇄되어 0입니다.</p>
                 <p><strong>전위와 전위차</strong> 전하를 전기장 거슬러 옮기는 데 든 일을 전하량으로 나눈 것이 전위(단위 V = J/C)입니다. 판 사이가 d이고 전압이 V인 평행판 사이의 전기장은 균일하고 E = V/d입니다. 전하 q가 전위차 V를 지나면 qV만큼의 일을 받아 운동 에너지가 되므로, 전자 하나가 1 V를 지나면 1 eV = 1.6×10⁻¹⁹ J을 얻습니다. 같은 전압이면 전자와 양성자의 운동 에너지는 같지만, 전자가 1,836배 가벼워 속력은 43배 빠릅니다.</p>
-                <p><strong>축전기</strong> 두 판에 전압 V를 걸면 전하 Q = CV가 쌓이고, C를 전기 용량(단위 F, 보통 pF·nF·μF)이라 합니다. 평행판이면 C = ε₀εr·A/d로 판 넓이 A에 비례하고 간격 d에 반비례하며, 사이에 넣은 물질의 유전율 εr(공기 1, 종이 3.7, 유리 7, 물 80)만큼 커집니다. 저장된 에너지는 ½CV²입니다. 카메라 플래시, 휴대전화 화면의 터치 감지, 회로의 잡음 걸러내기가 모두 축전기의 일입니다.</p>
-                <p><strong>단위 감각</strong> 손톱만 한 판 두 장을 1 mm 띄우면 전기 용량은 100 pF 남짓이고 9 V에서 1 nC도 안 되는 전하가 쌓입니다. 판 사이 전기장은 9 V ÷ 1 mm = 9,000 V/m로 공기가 견디는 한계(약 3,000,000 V/m)에 한참 못 미칩니다. 실용 축전기는 얇은 유전체를 겹겹이 말아 μF 단위를 만듭니다.</p>
+                <p><strong>축전기</strong> 축전기는 분리된 두 도체에 반대 부호의 전하가 모이면서 전기 에너지를 저장하는 장치입니다. 저장된 에너지는 방전 과정에서 다른 형태로 전환될 수 있습니다. 플래시 등 장치의 에너지 관점으로 정성적으로 설명합니다.</p>
+                <p><strong>모형의 범위</strong> 점전하의 전기장은 정량적으로 비교하고, 축전기는 에너지 저장·방출을 정성적으로 비교합니다. 그림은 실제 장치 제작이나 고전압 회로 실험 지침이 아닙니다.</p>
             </div>
         </section>
 
@@ -106,7 +107,7 @@
                     </div>
                     <button class="answer-button" type="button">정답 확인</button>
                     <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>한가운데는 두 전하에서 같은 거리라 전기장의 크기가 같고, 방향은 서로 반대(각 전하에서 멀어지는 쪽)라 화살표를 더하면 0입니다. 조금만 한쪽으로 치우치면 가까운 전하가 이겨 바깥쪽으로 밀립니다.</p>
+                    <p class="answer-explanation" hidden>한가운데는 두 전하에서 같은 거리라 전기장의 크기가 같고, 방향은 서로 반대(각 전하에서 멀어지는 쪽)라 화살표를 더하면 0입니다. 두 전하를 잇는 선 위에서 조금 치우친 양의 시험 전하는 가까운 전하의 반발로 중점 쪽 힘을 받습니다. 수직 방향의 변위는 다르게 작용하므로 중점이 모든 방향에서 안정한 것은 아닙니다.</p>
                 </article>
 
                 <article class="quiz-card" data-answer="c">
@@ -123,33 +124,35 @@
                 </article>
 
                 <article class="quiz-card" data-answer="a">
-                    <h3>9 V에 이어 둔 축전기의 판 사이에 유리를 끼워 넣으면?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q3" value="a"> 전기 용량이 7배로 커져 같은 전압에서 7배의 전하가 쌓인다</label>
-                        <label><input type="radio" name="q3" value="b"> 유리가 전기를 막아 전하가 쌓이지 않는다</label>
-                        <label><input type="radio" name="q3" value="c"> 전압이 7배로 커진다</label>
-                        <label><input type="radio" name="q3" value="d"> 아무 변화가 없다</label>
-                    </div>
-                    <button class="answer-button" type="button">정답 확인</button>
-                    <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>유전체 속 분자들이 전기장 방향으로 정렬해 판의 전기장을 일부 상쇄합니다. 같은 전압을 유지하려면 판에 더 많은 전하가 쌓여야 하므로 전기 용량이 유전율(유리 7)만큼 커집니다.</p>
-                </article>
+<h3>축전기를 충전할 때 일어나는 일로 알맞은 것은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q3" value="a"> 두 도체에 반대 부호의 전하가 모이며 에너지를 저장한다.</label>
+<label><input type="radio" name="q3" value="b"> 에너지가 무에서 생긴다.</label>
+<label><input type="radio" name="q3" value="c"> 두 도체가 반드시 같은 부호로만 대전된다.</label>
+<label><input type="radio" name="q3" value="d"> 항상 원자가 핵분열한다.</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>외부 전원으로 전하가 분리되면서 전기 에너지가 저장됩니다.</p>
+</article>
 
-                <article class="quiz-card" data-answer="d">
-                    <h3>평행판 축전기의 판 간격을 절반으로 줄이면 전기 용량은?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q4" value="a"> 절반이 된다</label>
-                        <label><input type="radio" name="q4" value="b"> 변하지 않는다</label>
-                        <label><input type="radio" name="q4" value="c"> 4배가 된다</label>
-                        <label><input type="radio" name="q4" value="d"> 2배가 된다</label>
-                    </div>
-                    <button class="answer-button" type="button">정답 확인</button>
-                    <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>C = ε₀εr·A/d에서 전기 용량은 간격 d에 반비례합니다. 간격이 반이면 같은 전압에서 전기장 E = V/d가 두 배가 되고, 그만큼 판에 전하가 두 배로 쌓입니다.</p>
-                </article>
+                <article class="quiz-card" data-answer="b">
+<h3>축전기에 저장된 에너지로 플래시를 작동시키면?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q4" value="a"> 에너지가 사라진다.</label>
+<label><input type="radio" name="q4" value="b"> 저장된 전기 에너지가 빛과 열 등으로 전환된다.</label>
+<label><input type="radio" name="q4" value="c"> 항상 저장 에너지가 증가한다.</label>
+<label><input type="radio" name="q4" value="d"> 전하가 있어도 에너지는 저장할 수 없다.</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>방전 과정에서 저장된 에너지가 다른 형태로 전환됩니다. 실제 에너지량·시간은 장치에 따라 달라집니다.</p>
+</article>
             </div>
         </details>
     </main>
-    <script src="app.js?v=8"></script>
+    <script src="app.js?v=7a4277902140"></script>
+    <script src="../curriculum-map.js?v=2ffe762f2206"></script>
+    <script src="../exam-scope.js?v=849f3853d47f"></script>
 </body>
 </html>

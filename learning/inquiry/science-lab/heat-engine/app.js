@@ -126,11 +126,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 `${o.label}${o.hint ? `<small>${o.hint}</small>` : ''}</button>`).join('') +
             `</div></fieldset>`;
     }
-    const opts = table => Object.entries(table).map(([k, v]) => ({ value: k, label: v.label, hint: v.hint }));
+    const opts = table => Object.entries(table).map(([k, v]) => ({ value: k, label: v.label }));
 
     function buildControls() {
         if (state.mode === 'carnot') controlArea.innerHTML = pickRow('뜨거운 곳 (열원)', 'hot', opts(HOTS), state.hot, 4) + pickRow('차가운 곳 (열을 버리는 곳)', 'cold', opts(COLDS), state.cold, 2);
-        else if (state.mode === 'flow') controlArea.innerHTML = pickRow('기관이 내세우는 효율', 'eff', opts(EFFS), state.eff, 4) + pickRow('뜨거운 곳 / 차가운 곳', 'pair', opts(PAIRS), state.pair, 2);
+        else if (state.mode === 'flow') { if(!['e20','e100'].includes(state.eff))state.eff='e20'; controlArea.innerHTML=pickRow('받은 열을 어떻게 쓰는 기관인가요?', 'eff', [{value:'e20',label:'일부를 일로, 나머지는 배출'},{value:'e100',label:'모두 일로, 배출 없음'}], state.eff, 2); }
         else controlArea.innerHTML = pickRow('바깥 온도', 'out', opts(OUTS), state.out, 4) + pickRow('실내 온도', 'inn', opts(INS), state.inn, 2);
         controlArea.querySelectorAll('[data-pick]').forEach(group => {
             group.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
@@ -147,16 +147,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const PRED_P = [{ value: 'low', label: '10배 안' }, { value: 'mid', label: '10~20배' }, { value: 'high', label: '20배 넘게' }];
 
     function buildPrediction() {
-        const list = state.mode === 'carnot' ? PRED_C : state.mode === 'flow' ? PRED_F : PRED_P;
-        predictionLegend.textContent = state.mode === 'carnot' ? `${HOTS[state.hot].label}와 ${COLDS[state.cold].label} 사이에서 도는 카르노 기관의 효율은?`
-            : state.mode === 'flow' ? `${PAIRS[state.pair].label} 사이에서 효율 ${EFFS[state.eff].label}를 내세우는 기관은?`
-                : `바깥 ${OUTS[state.out].label}, 실내 ${INS[state.inn].label}일 때 이상적인 열펌프는 전기 1 J로 열을 몇 J 나를까요?`;
-        predictionArea.className = 'prediction-buttons three';
-        predictionArea.innerHTML = list.map(o => `<button type="button" data-prediction="${o.value}">${o.label}</button>`).join('');
-        predictionArea.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
-            state.prediction = button.dataset.prediction;
-            predictionArea.querySelectorAll('button').forEach(b => b.classList.toggle('selected', b === button));
-        }));
+        const list=state.mode==='flow'?[{value:'yes',label:'가능한 기관'},{value:'no',label:'불가능한 기관'}]:state.mode==='pump'?[{value:'yes',label:'외부에서 일을 공급해야 한다'},{value:'no',label:'일 없이 저절로 옮긴다'}]:[{value:'yes',label:'고온 열원을 높이면 한계 효율 증가'},{value:'no',label:'고온 열원을 높이면 한계 효율 감소'}];
+        predictionLegend.textContent=state.mode==='carnot'?'저온 열원의 온도를 고정하고 비교하세요.':state.mode==='flow'?'이러한 순환 기관을 만들 수 있을까요?':'저온에서 고온으로 열을 옮기려면?';
+        predictionArea.innerHTML=list.map(o=>'<button type="button" data-prediction="'+o.value+'">'+o.label+'</button>').join('');
+        predictionArea.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{state.prediction=b.dataset.prediction;predictionArea.querySelectorAll('button').forEach(x=>x.classList.toggle('selected',x===b));}));
     }
 
     /* ----------------------------------------------------------- visuals */
@@ -321,16 +315,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function render() {
-        const a = analyse();
-        mainGroup.innerHTML = a.kind === 'carnot' ? renderCarnot(a) : a.kind === 'flow' ? renderFlow(a) : renderPump(a);
-        graphGroup.innerHTML = a.kind === 'carnot' ? graphCarnot(a) : a.kind === 'flow' ? graphFlow(a) : graphPump(a);
-        liftProse();
-        stageBadge.textContent = a.kind === 'carnot' ? `${HOTS[state.hot].label} / ${COLDS[state.cold].label}` : a.kind === 'flow' ? `효율 ${EFFS[state.eff].label} · ${PAIRS[state.pair].label}` : `바깥 ${OUTS[state.out].label} · 실내 ${INS[state.inn].label}`;
-        methodHint.textContent = a.kind === 'carnot' ? '열기관은 뜨거운 곳과 차가운 곳의 온도 차가 클수록 효율이 높습니다'
-            : a.kind === 'flow' ? '받은 열은 일과 버리는 열로 나뉘고, 버리는 열이 없는 기관은 없습니다'
-                : '열펌프는 열을 만드는 것이 아니라 옮기므로 전기 1 J로 열 여러 J을 나릅니다';
-        dataNote.innerHTML = noteFor(a);
-        return a;
+        const a=analyse(),pump=a.kind==='pump',invalid=a.kind==='flow'&&state.eff==='e100';
+        const progress=state.progress,phase=Math.min(3,Math.floor(progress*4));
+        const labels=['열을 받아 팽창','열 출입 없이 팽창','열을 내보내며 압축','열 출입 없이 압축'];
+        const width=a.kind==='carnot'?80+50*Math.sin(Math.PI*progress)**2:90;
+        mainGroup.innerHTML='<rect x="30" y="35" width="130" height="40" rx="8" fill="#fee2e2"/><text x="95" y="60" text-anchor="middle" fill="#991b1b">'+(pump?'차가운 바깥':'고온 열원')+'</text><rect x="280" y="135" width="145" height="40" rx="8" fill="#dbeafe"/><text x="352" y="160" text-anchor="middle" fill="#1e40af">'+(pump?'따뜻한 실내':'저온 열원')+'</text><rect x="175" y="82" width="'+width+'" height="40" fill="#d97706" opacity=".75"/><text x="200" y="108" fill="#172f3b">'+(pump?'열펌프':'기관')+'</text><text x="140" y="88" fill="#334155">↘ 열</text><text x="285" y="132" fill="#334155">열 ↘</text><text x="190" y="170" fill="#334155">'+(pump?'일을 공급 ↑':'↓ 일을 함')+'</text><text x="20" y="208" fill="#334155">'+(invalid?'배출 열이 없는 순환 기관: 불가능':a.kind==='carnot'?labels[phase]:'화살표는 에너지 이동 방향을 나타냅니다.')+'</text>';
+        graphGroup.innerHTML=a.kind==='carnot'?'<text x="20" y="45" fill="#334155">저온 열원 고정 → 고온 열원 온도 ↑ → 한계 효율 ↑</text><text x="20" y="85" fill="#334155">고온 열원 고정 → 저온 열원 온도 ↓ → 한계 효율 ↑</text>':'<text x="20" y="45" fill="#334155">열은 저절로 고온에서 저온으로 흐릅니다.</text><text x="20" y="85" fill="#334155">반대로 옮길 때는 외부에서 일을 공급합니다.</text>';
+        stageBadge.textContent=a.kind==='carnot'?HOTS[state.hot].label+' / '+COLDS[state.cold].label:pump?OUTS[state.out].label+' → '+INS[state.inn].label:invalid?'배출 열 없음':'열의 일부를 일로';
+        methodHint.textContent=pump?'열을 옮기는 데 외부의 일이 필요합니다.':'받은 열의 일부는 일로, 나머지는 저온 열원으로 이동합니다.';
+        dataNote.innerHTML='<p>'+(pump?'실내로 전달한 열 = 바깥에서 가져온 열 + 공급한 일':invalid?'하나의 열원에서 받은 열을 전부 일로 바꾸는 순환 기관은 만들 수 없습니다.':'고온에서 받은 열 = 한 일 + 저온으로 배출한 열')+'</p><p>화살표와 상자는 과정의 모형이며, 크기로 에너지의 수치를 계산하지 않습니다.</p>';
+        liftProse();return a;
     }
 
     /* --------------------------------------------------------------- run */
@@ -356,34 +350,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function finish() {
-        const a = render();
-        resultEmpty.hidden = true;
-        resultContent.hidden = false;
-        let s = '';
-        if (a.kind === 'carnot') {
-            labelA.textContent = '카르노 효율'; valueA.textContent = `${fmtN(a.eta * 100, 1)} %`;
-            labelB.textContent = '한 바퀴에 한 일'; valueB.textContent = `${fmtN(a.W)} J`;
-            s = `뜨거운 곳 ${fmtN(a.Th - 273.15)} ℃는 절대 온도 ${fmtN(a.Th, 1)} K, 차가운 곳 ${fmtN(a.Tc - 273.15)} ℃는 ${fmtN(a.Tc, 1)} K입니다. 기체 1 mol이 뜨거운 곳에서 등온 팽창하며 받는 열은 Q_h = RT_h ln2 = ${fmtN(a.Qh)} J, 차가운 곳에 버리는 열은 Q_c = RT_c ln2 = ${fmtN(a.Qc)} J이므로 한 일은 ${fmtN(a.W)} J이고 효율은 ${fmtN(a.eta * 100, 1)} %입니다. 온도의 비 T_c/T_h = ${fmtN(a.Tc / a.Th, 3)}이므로 1 − ${fmtN(a.Tc / a.Th, 3)}${roNum(fmtN(a.Tc / a.Th, 3))} 바로 나오는 값과 같습니다. `;
-            if (a.verdict === 'low') s += `두 온도가 가까워 받은 열 대부분을 그대로 버려야 합니다. 초기 증기 기관의 효율이 몇 % 남짓이었던 까닭이 이것이고, 그래서 뜨거운 쪽 온도를 올리는 것이 열기관 발전의 역사였습니다.`;
-            else if (a.verdict === 'mid') s += `실제 자동차 엔진(30 % 안팎)이나 화력 발전소(40 %)가 이 부근입니다. 다만 실제 기관은 마찰과 새는 열 때문에 카르노 한계보다 낮으며, 한계를 넘는 기관은 있을 수 없습니다.`;
-            else s += `온도 차가 커서 한계가 높지만, 실제 가스 터빈은 재료가 견디는 온도와 비가역 과정 때문에 40 % 안팎에 머뭅니다. 차가운 곳을 더 차갑게 하기는 어려우니(강물과 공기가 한계) 뜨거운 쪽을 높이는 쪽으로 기술이 발전합니다.`;
-        } else if (a.kind === 'flow') {
-            labelA.textContent = '엔트로피 변화'; valueA.textContent = `${fmtN(a.dS, 2)} J/K`;
-            labelB.textContent = '카르노 한계'; valueB.textContent = `${fmtN(a.etaC * 100, 1)} %`;
-            s = `받은 열 ${fmtN(Q_IN)} J 가운데 ${fmtN(a.W)} J을 일로 바꾸고 ${fmtN(a.Qc)} J을 버리니 에너지는 보존됩니다. 한 바퀴 돌 때 우주의 엔트로피는 차가운 곳이 얻는 Q_c/T_c = ${fmtN(a.Qc / a.Tc, 2)} J/K에서 뜨거운 곳이 잃는 Q_h/T_h = ${fmtN(Q_IN / a.Th, 2)} J/K를 뺀 ${fmtN(a.dS, 2)} J/K만큼 변합니다. `;
-            if (a.verdict === 'ok') s += `0보다 크므로 제2법칙에 맞는 기관입니다. 카르노 한계 ${fmtN(a.etaC * 100, 1)} % 안쪽이라 비가역 과정이 있는 실제 기관으로 만들 수 있습니다.`;
-            else if (a.verdict === 'over') s += `0보다 작아 제2법칙에 어긋납니다. 이 온도에서는 카르노 기관의 ${fmtN(a.etaC * 100, 1)} %가 상한이고, 그보다 좋은 기관은 아무리 잘 만들어도 있을 수 없습니다.`;
-            else s += `버리는 열이 없으면 차가운 곳은 아무것도 받지 못해 엔트로피가 ${fmtN(Q_IN / a.Th, 2)} J/K 줄어듭니다. 에너지 보존에는 어긋나지 않지만 제2법칙에 어긋나는 2종 영구 기관이라 만들 수 없습니다. 바다의 열을 몽땅 일로 바꾸는 배가 없는 까닭입니다.`;
-        } else {
-            labelA.textContent = '성적 계수'; valueA.textContent = `${fmtN(a.cop, 1)}`;
-            labelB.textContent = '실제 기기 어림'; valueB.textContent = `${fmtN(a.copReal, 1)}`;
-            s = `바깥 ${OUTS[state.out].label}(${fmtN(a.Tc, 1)} K)에서 실내 ${INS[state.inn].label}(${fmtN(a.Th, 1)} K)로 열을 나르는 이상적인 열펌프의 성적 계수는 T_h/(T_h − T_c) = ${fmtN(a.cop, 1)}입니다. 전기 1 J로 바깥에서 열 ${fmtN(a.Qc, 1)} J을 퍼 올려 집 안에 ${fmtN(a.cop, 1)} J을 보내는 셈입니다. `;
-            s += a.verdict === 'high' ? `온도 차가 ${fmtN(a.Th - a.Tc, 1)} K뿐이라 열을 조금만 밀어 올리면 되니 계수가 큽니다. ` : a.verdict === 'mid' ? `온도 차가 ${fmtN(a.Th - a.Tc, 1)} K로 커지면서 계수가 내려갑니다. ` : `온도 차가 ${fmtN(a.Th - a.Tc, 1)} K나 되어 열을 높이 밀어 올려야 하므로 계수가 낮습니다. 혹한에서 열펌프가 힘을 못 쓰는 까닭입니다. `;
-            s += `실제 기기는 냉매가 바깥보다 더 차갑고 실내보다 더 뜨거워야 열이 흐르고 압축기에 마찰이 있어 이상값의 3분의 1쯤인 ${fmtN(a.copReal, 1)}배입니다. 그래도 전기를 몽땅 열로 바꾸는 전기 난로(1배)보다 훨씬 적은 전기로 집을 데웁니다.`;
-        }
-        predictionResult.textContent = !state.prediction ? '다음에는 결과를 먼저 예상해 보세요.'
-            : state.prediction === a.verdict ? '예상이 맞았습니다.' : '예상과 다른 결과입니다.';
-        explanation.textContent = s;
+        const a=render();resultEmpty.hidden=true;resultContent.hidden=false;
+        labelA.textContent='관찰';valueA.textContent=a.kind==='pump'?'일을 공급하여 열 이동':a.kind==='flow'&&state.eff==='e100'?'불가능한 기관':'열의 일부를 일로';
+        labelB.textContent='에너지';valueB.textContent='보존됨';
+        const answer=a.kind==='flow'&&state.eff==='e100'?'no':'yes';predictionResult.textContent=!state.prediction?'다음에는 먼저 예상해 보세요.':state.prediction===answer?'예상이 맞았습니다.':'예상과 다른 결과입니다.';
+        explanation.textContent=a.kind==='pump'?'열펌프는 일을 공급받아 저온의 열을 고온으로 옮깁니다. 에너지를 새로 만드는 것이 아닙니다.':a.kind==='flow'?'순환 열기관은 받은 열을 모두 일로 바꿀 수 없습니다. 에너지 보존뿐 아니라 열역학 제2법칙도 만족해야 합니다.':'다른 열원의 온도를 고정하고 고온 열원을 높이거나 저온 열원을 낮추면 가역 기관의 한계 효율은 커집니다. 실제 기관은 비가역적인 과정 때문에 이보다 효율이 낮습니다.';
     }
 
     function settingsChanged() {
@@ -402,8 +373,8 @@ document.addEventListener('DOMContentLoaded', () => {
         buildPrediction();
         checkBtn.textContent = state.mode === 'carnot' ? '한 바퀴 돌리기' : state.mode === 'flow' ? '열 흘려보내기' : '열펌프 돌리기';
         stageCaption.textContent = state.mode === 'carnot' ? '실린더 속 기체가 뜨거운 곳에서 열을 받아 팽창하고, 단열 팽창으로 식은 뒤, 차가운 곳에 열을 버리며 압축되고, 단열 압축으로 다시 더워지는 네 과정입니다.'
-            : state.mode === 'flow' ? '위에서 받은 열이 기관에서 오른쪽의 일과 아래로 버리는 열로 갈라집니다. 띠의 폭이 에너지의 크기이고, 불가능한 기관에는 ✕가 찍힙니다.'
-                : '왼쪽 바깥에서 열을 퍼 올려 오른쪽 집 안에 보냅니다. 아래에서 들어오는 노란 띠가 전기 1 J, 빨간 띠가 집 안에 들어가는 열입니다.';
+            : state.mode === 'flow' ? '위에서 받은 열이 기관에서 오른쪽의 일과 아래로 버리는 열로 갈라집니다. 화살표는 에너지의 이동 방향을 나타냅니다.'
+                : '왼쪽 바깥에서 열을 퍼 올려 오른쪽 집 안에 보냅니다. 외부에서 일을 공급하여 열을 옮깁니다.';
         settingsChanged();
     }));
     checkBtn.addEventListener('click', startRun);

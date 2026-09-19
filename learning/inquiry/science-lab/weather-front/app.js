@@ -350,7 +350,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const other = analyseWind(state.spacing === 100 ? 400 : 100);
             explanation.textContent =
                 `${a.spacing} km 마다 ${DP_HPA} hPa 씩 차이가 나므로 1 m 당 기압 차이는 ${a.gradient.toFixed(4)} Pa 입니다. ` +
-                `이 힘이 공기를 밀어 ${a.v.toFixed(1)} m/s, 시속 ${a.kmh.toFixed(0)} km 의 바람이 붑니다. ${STRENGTH_QUOTE[a.strength]} 할 수 있습니다. ` +
+                `같은 위도 등 다른 조건을 고정한 가상 모형에서는 ${a.v.toFixed(1)} m/s로 표시됩니다. 실제 관측값이나 기상 예보가 아닙니다. ${STRENGTH_QUOTE[a.strength]} 할 수 있습니다. ` +
                 `같은 기압 차이라도 간격이 ${other.spacing} km 라면 ${other.v.toFixed(1)} m/s로 ${other.v > a.v ? '더 세집니다' : '약해집니다'}. ` +
                 `등압선이 촘촘할수록 바람이 세다는 뜻입니다. ` +
                 (a.low
@@ -387,7 +387,7 @@ document.addEventListener('DOMContentLoaded', () => {
         buildControls();
         buildPrediction();
         stageCaption.textContent = state.mode === 'wind'
-            ? '바람은 등압선을 가로지르지 않고 나란히 붑니다. 흐르는 빠르기를 견주어 보세요.'
+            ? '북반구 지표 부근 바람은 등압선을 비스듬히 가로질러, 저기압으로 들어가고 고기압에서 나갑니다.'
             : '구름의 모양과 비가 내리는 폭이 어떻게 다른지 보세요.';
         changed();
     }));

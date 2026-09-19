@@ -115,16 +115,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const PRED_EXPAND = [{ value: 'faster', label: '더 빨리 멀어진다' }, { value: 'same', label: '같은 속도로 멀어진다' }, { value: 'slower', label: '더 느리게 멀어진다' }];
 
     function buildPrediction() {
-        const n = state.mult;
-        const list = state.mode === 'bright'
-            ? [{ value: 'linear', label: `${n}분의 1로 줄어든다` }, { value: 'square', label: `${n * n}분의 1로 줄어든다` }, { value: 'same', label: '변하지 않는다' }]
-            : PRED_EXPAND;
-        predictionLegend.textContent = state.mode === 'bright' ? `거리를 ${n}배로 하면 밝기는 어떻게 될까요?` : '멀리 있는 은하는 가까운 은하보다 어떻게 될까요?';
-        predictionArea.innerHTML = list.map(o => `<button type="button" data-prediction="${o.value}">${o.label}</button>`).join('');
-        predictionArea.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
-            state.prediction = button.dataset.prediction;
-            predictionArea.querySelectorAll('button').forEach(b => b.classList.toggle('selected', b === button));
-        }));
+        const list=state.mode==='bright'?[{value:'square',label:'어두워진다'},{value:'no',label:'밝아진다'}]:[{value:'faster',label:'점들 사이 거리가 커진다'},{value:'no',label:'모든 점이 한 곳으로 모인다'}];
+        predictionLegend.textContent=state.mode==='bright'?'같은 별을 멀리에서 보면?':'고무줄을 늘리면?';
+        predictionArea.innerHTML=list.map(o=>'<button type="button" data-prediction="'+o.value+'">'+o.label+'</button>').join('');
+        predictionArea.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{state.prediction=b.dataset.prediction;predictionArea.querySelectorAll('button').forEach(x=>x.classList.toggle('selected',x===b));}));
     }
 
     /* ----------------------------------------------------------- visuals */
@@ -172,7 +166,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // readouts along the top of the frame
         out += `<text class="verdict-text" fill="#0f172a" x="20" y="28">${a.star.name} · ${BASE_PC} pc → ${a.d} pc</text>`;
-        out += `<text class="mag-text" fill="#0f172a" x="20" y="204">밝기 ${at.n > 1.001 ? `${BASE_PC} pc일 때의 ${fmtFrac(1 / at.ratio)}` : '처음 그대로'}</text>`;
+        out += `<text class="mag-text" fill="#0f172a" x="20" y="204">같은 별은 더 멀리에서 보면 어둡게 보입니다.</text>`;
         out += `<text class="mag-text" fill="#0f172a" x="250" y="204">겉보기 ${fmtMag(at.m)} · 절대 ${fmtMag(a.star.abs)}</text>`;
         return out;
     }
@@ -231,75 +225,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // brightness against distance: the inverse-square curve with the screen's point on it
-    function graphBright(a) {
-        const at = brightAt(state.progress, a);
-        const dMax = 50;
-        const gx = d => GRAPH.x0 + (d / dMax) * (GRAPH.x1 - GRAPH.x0);
-        const gy = f => GRAPH.y0 - f * (GRAPH.y0 - GRAPH.y1);
-        let out = graphFrame(
-            [0, 10, 20, 30, 40, 50].map(d => [d, gx(d)]),
-            [[0, gy(0)], ['1/4', gy(0.25)], ['1/2', gy(0.5)], ['3/4', gy(0.75)], ['1', gy(1)]],
-            '거리 (pc)', `밝기 (${BASE_PC} pc일 때를 1로)`);
-        const pts = [];
-        for (let d = BASE_PC; d <= dMax + 1e-9; d += 0.5) pts.push(`${gx(d).toFixed(1)},${gy(Math.min(1, (BASE_PC / d) ** 2)).toFixed(1)}`);
-        out += `<path class="trace-done" d="M${pts.join('L')}"/>`;
-        MULTIPLES.forEach(n => {
-            out += `<circle class="flash-dot" style="fill:#059669" cx="${gx(n * BASE_PC).toFixed(1)}" cy="${gy(1 / (n * n)).toFixed(1)}" r="2.6"/>`;
-            out += `<text class="axis-text" style="fill:#059669" x="${(gx(n * BASE_PC) + 4).toFixed(1)}" y="${(gy(1 / (n * n)) - 6).toFixed(1)}">1/${n * n}</text>`;
-        });
-        const live = [];
-        for (let d = BASE_PC; d <= at.d + 1e-9; d += 0.5) live.push(`${gx(d).toFixed(1)},${gy((BASE_PC / d) ** 2).toFixed(1)}`);
-        live.push(`${gx(at.d).toFixed(1)},${gy(at.ratio).toFixed(1)}`);
-        out += `<path class="trace" style="stroke:${a.star.hex}" d="M${live.join('L')}"/>`;
-        out += `<circle class="trace-dot" cx="${gx(at.d).toFixed(1)}" cy="${gy(at.ratio).toFixed(1)}" r="5" fill="${a.star.hex}"/>`;
-        out += `<text class="note-text" x="${GRAPH.x1 - 4}" y="${GRAPH.y1 + 14}" text-anchor="end">거리 n배 → 밝기 1/n² · 겉보기 등급은 ${a.dm > 0 ? '+' : ''}${a.dm.toFixed(1)}</text>`;
-        return out;
-    }
+    function graphBright(a) { return '<text x="20" y="50" fill="#334155">겉보기 등급: 실제 보이는 밝기</text><text x="20" y="90" fill="#334155">절대 등급: 같은 기준 거리에서 비교한 밝기</text><text x="20" y="130" fill="#334155">같은 별의 색과 절대 등급은 거리만으로 바뀌지 않습니다.</text>'; }
 
     // recession speed against distance: the points fall on a line through the origin
-    function graphExpand(a) {
-        const S = stretchAt(state.progress, a);
-        const rows = a.rows.filter(r => r.i !== a.home);
-        const dMax = 4, vMax = Math.max(...STRETCH) - 1;     // stretch 3× → the 4-notch galaxy moves 8 notches → 1 notch/s over 8 s
-        const gx = d => GRAPH.x0 + (d / dMax) * (GRAPH.x1 - GRAPH.x0);
-        const gy = v => GRAPH.y0 - (v / (vMax * dMax / RUN_SECONDS)) * (GRAPH.y0 - GRAPH.y1);
-        let out = graphFrame(
-            [0, 1, 2, 3, 4].map(d => [d, gx(d)]),
-            [0, 0.25, 0.5, 0.75, 1].map(v => [v.toFixed(2), gy(v)]),
-            '처음 거리 (칸)', '멀어지는 속도 (칸/초)');
-        const slope = (a.S - 1) / RUN_SECONDS;
-        out += `<line class="hubble-line" x1="${gx(0)}" y1="${gy(0)}" x2="${gx(dMax).toFixed(1)}" y2="${gy(slope * dMax).toFixed(1)}"/>`;
-        // galaxies the same distance away on either side share one point and one label
-        const byDist = new Map();
-        rows.forEach(r => { const g = byDist.get(r.d0) || []; g.push(r); byDist.set(r.d0, g); });
-        [...byDist.values()].forEach(group => {
-            const r = group[0], moved = r.d0 * (S - 1);
-            out += `<circle class="trace-dot" cx="${gx(r.d0).toFixed(1)}" cy="${gy(r.speed).toFixed(1)}" r="5" fill="#ea580c"/>`;
-            // labels hang below their point; far points sit near the right edge, so theirs go on the left
-            const left = r.d0 >= 3;
-            // odd distances label above, even below, so neighbours never share a row
-            const ly = Math.min(GRAPH.y0 - 2, r.d0 % 2 ? gy(r.speed) - 7 : gy(r.speed) + 14);
-            out += `<text class="axis-text" x="${(gx(r.d0) + (left ? -10 : 10)).toFixed(1)}" y="${ly.toFixed(1)}" text-anchor="${left ? 'end' : 'start'}">${group.map(x => x.name).join('·')} ${moved.toFixed(1)}칸</text>`;
-        });
-        out += `<text class="note-text" x="${GRAPH.x0 + 8}" y="${GRAPH.y1 + 14}">거리에 비례하는 속도 — 허블 법칙</text>`;
-        return out;
-    }
+    function graphExpand(a) { return '<text x="20" y="50" fill="#334155">늘리기 전과 후의 점 사이 거리를 비교합니다.</text><text x="20" y="90" fill="#334155">다른 점을 기준으로 삼아 다시 관찰하세요.</text><text x="20" y="130" fill="#334155">고무줄의 가장자리를 실제 우주의 끝으로 해석하지 않습니다.</text>'; }
 
-    function noteFor(a) {
-        if (a.kind === 'bright') {
-            const at = brightAt(state.progress, a);
-            return `<div class="data-row"><span class="data-name">별</span><span class="data-val">${a.star.name} · 표면 온도 ${a.star.temp} K · ${a.star.colour}</span></div>` +
-                `<div class="data-row"><span class="data-name">거리</span><span class="data-val">${BASE_PC} pc → ${at.d.toFixed(0)} pc (${at.n.toFixed(1)}배)</span></div>` +
-                `<div class="data-row"><span class="data-name">빛이 퍼진 넓이</span><span class="data-val">${at.n.toFixed(1)} × ${at.n.toFixed(1)} = ${(at.n * at.n).toFixed(1)}칸</span></div>` +
-                `<div class="data-row"><span class="data-name">밝기</span><span class="data-val">처음의 ${fmtFrac(at.n * at.n)}</span></div>` +
-                `<div class="data-row match"><span class="data-name">등급</span><span class="data-val">절대 ${fmtMag(a.star.abs)} 그대로 · 겉보기 ${fmtMag(a.m0)} → ${fmtMag(at.m)}</span></div>`;
-        }
-        const S = stretchAt(state.progress, a);
-        return `<div class="data-row"><span class="data-name">고무줄</span><span class="data-val">${S.toFixed(2)}배로 늘어남 (끝까지 ${a.S}배)</span></div>` +
-            a.rows.filter(r => r.i !== a.home).map(r =>
-                `<div class="data-row"><span class="data-name">${r.name} 은하</span><span class="data-val">${r.d0}칸 → ${(r.d0 * S).toFixed(1)}칸 · 속도 1초에 ${r.speed.toFixed(3)}칸</span></div>`).join('') +
-            `<div class="data-row match"><span class="data-name">규칙</span><span class="data-val">속도 = 거리 × ${((a.S - 1) / RUN_SECONDS).toFixed(3)} — 거리에 비례</span></div>`;
-    }
+    function noteFor(a) { return a.kind==='bright'?'<p>'+a.star.name+' · '+a.star.colour+'</p><p>같은 별을 멀리 놓으면 어둡게 보이지만 절대 등급은 그대로입니다. 청백색 별은 붉은색 별보다 표면 온도가 높습니다.</p>':'<p>늘리기 전후의 점 사이 거리가 커집니다. 어느 점을 기준으로 삼아도 다른 점들과 멀어지는 모습을 관찰할 수 있습니다.</p>'; }
 
     function render() {
         const a = analyse();
@@ -307,8 +238,8 @@ document.addEventListener('DOMContentLoaded', () => {
         graphGroup.innerHTML = a.kind === 'bright' ? graphBright(a) : graphExpand(a);
         stageBadge.textContent = a.kind === 'bright' ? `${a.star.name} · ${a.d} pc` : `${a.S}배 · ${GALAXIES[a.home]} 은하에서`;
         methodHint.textContent = state.mode === 'bright'
-            ? '거리가 2배가 되면 같은 빛이 4배 넓은 곳에 퍼져 밝기는 4분의 1이 됩니다'
-            : '고무줄이 늘어나면 멀리 있던 점이 더 많이 움직입니다';
+            ? '같은 별을 더 멀리에서 보면 어둡게 보입니다'
+            : '고무줄이 늘어나면 점들 사이 거리가 커집니다';
         dataNote.innerHTML = noteFor(a);
         return a;
     }
@@ -339,33 +270,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function finish() {
-        const a = render();
-        resultEmpty.hidden = true;
-        resultContent.hidden = false;
-        if (a.kind === 'bright') {
-            const n = state.mult;
-            labelA.textContent = '밝기'; labelB.textContent = '겉보기 등급';
-            valueA.textContent = `${n * n}분의 1`;
-            valueB.textContent = `${fmtMag(a.m0)} → ${fmtMag(a.m1)}`;
-            predictionResult.textContent = !state.prediction ? '다음에는 결과를 먼저 예상해 보세요.'
-                : state.prediction === a.verdict ? '예상이 맞았습니다.' : '예상과 다른 결과입니다.';
-            explanation.textContent =
-                `${eul(a.star.name)} ${BASE_PC} pc에서 ${a.d} pc로, ${n}배 멀리 놓았습니다. 같은 빛이 ${n} × ${n} = ${n * n}칸에 나뉘어 한 칸에 닿는 빛은 ${n * n}분의 1이 됩니다. ` +
-                `그래서 겉보기 등급은 ${fmtMag(a.m0)}에서 ${fmtMag(a.m1)}으로 ${a.dm.toFixed(1)}등급 어두워졌지만, ${BASE_PC} pc에 놓았다고 치고 매기는 절대 등급은 ${fmtMag(a.star.abs)} 그대로입니다. ` +
-                `${eun(a.star.name)} 표면 온도가 약 ${a.star.temp} K라서 ${a.star.colour}으로 보이는데, 색 역시 거리와는 상관없습니다.`;
-            return;
-        }
-        const far = a.rows.reduce((x, y) => (y.d0 > x.d0 ? y : x));
-        const near = a.rows.filter(r => r.d0 === 1)[0];
-        labelA.textContent = '가장 먼 은하'; labelB.textContent = '가장 가까운 은하';
-        valueA.textContent = `${far.moved.toFixed(1)}칸 멀어짐`;
-        valueB.textContent = `${near.moved.toFixed(1)}칸 멀어짐`;
-        predictionResult.textContent = !state.prediction ? '다음에는 결과를 먼저 예상해 보세요.'
-            : state.prediction === a.verdict ? '예상이 맞았습니다.' : '예상과 다른 결과입니다.';
-        explanation.textContent =
-            `고무줄을 ${a.S}배로 늘리자 ${GALAXIES[a.home]} 은하에서 볼 때 ${near.d0}칸 떨어져 있던 ${near.name} 은하는 ${near.moved.toFixed(1)}칸, ${far.d0}칸 떨어져 있던 ${far.name} 은하는 ${far.moved.toFixed(1)}칸 멀어졌습니다. ` +
-            `같은 시간에 ${far.d0}배 멀리 있던 은하가 ${far.d0}배 많이 움직였으니 속도가 거리에 비례합니다. 이것이 허블 법칙이고, 실제 은하들이 이렇게 멀어지는 것은 우주 공간이 팽창하기 때문입니다. ` +
-            `서 있는 은하를 바꿔도 똑같은 규칙이 나오므로 어느 은하도 우주의 중심이 아닙니다.`;
+        const a=render();resultEmpty.hidden=true;resultContent.hidden=false;
+        labelA.textContent=a.kind==='bright'?'겉보기 밝기':'점 사이 거리';valueA.textContent=a.kind==='bright'?'어두워짐':'커짐';
+        labelB.textContent=a.kind==='bright'?'절대 등급':'모형의 의미';valueB.textContent=a.kind==='bright'?fmtMag(a.star.abs)+' 그대로':'우주 팽창';
+        predictionResult.textContent=!state.prediction?'다음에는 먼저 예상해 보세요.':state.prediction===a.verdict?'예상이 맞았습니다.':'예상과 다른 결과입니다.';
+        explanation.textContent=a.kind==='bright'?'같은 별은 멀리에서 보면 어둡게 보입니다. 절대 등급은 같은 기준 거리에서의 밝기를 뜻하므로 별 자체의 성질이 같으면 바뀌지 않습니다.':'고무줄을 늘릴 때 점 사이가 벌어지는 모습은 우주 팽창의 모형입니다. 어느 점을 기준으로 삼아도 다른 점들과 멀어지는 모습을 관찰할 수 있습니다. 모형의 가장자리와 바깥 공간을 실제 우주에 그대로 대응시키지 않습니다.';
     }
     const eul = w => w + (batchim(w) ? '을' : '를');
 

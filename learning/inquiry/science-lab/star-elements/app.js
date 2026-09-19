@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function buildControls() {
         if (state.mode === 'fusion') {
-            controlArea.innerHTML = pickRow('합쳐지는 원자핵', 'step', Object.entries(STEPS).map(([k, v]) => ({ value: k, label: v.label, hint: v.temp === '—' ? '' : v.temp })), state.step, 3);
+            controlArea.innerHTML = pickRow('합쳐지는 원자핵', 'step', Object.entries(STEPS).filter(([k])=>['h','he'].includes(k)).map(([k,v])=>({value:k,label:v.label})), state.step, 3);
         } else if (state.mode === 'mass') {
             controlArea.innerHTML = pickRow('별의 질량', 'star', Object.entries(STARS).map(([k, v]) => ({ value: k, label: v.label, hint: v.hint })), state.star, 4);
         } else {
@@ -139,16 +139,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const PRED_ORIGIN = [{ value: 'bigbang', label: '빅뱅 직후 몇 분 동안' }, { value: 'star', label: '별 속 핵융합에서' }, { value: 'merger', label: '초신성이나 중성자별 충돌에서' }];
 
     function buildPrediction() {
-        const list = state.mode === 'fusion' ? PRED_FUSION : state.mode === 'mass' ? PRED_MASS : PRED_ORIGIN;
-        predictionLegend.textContent = state.mode === 'fusion' ? `${STEPS[state.step].label}: 연료 1 kg에서 나오는 에너지는 수소 → 헬륨 때와 견줘 얼마일까요?`
-            : state.mode === 'mass' ? `${STARS[state.star].label}은 어느 원소까지 만들까요?`
-                : `${ORIGINS[state.element].name}(${ORIGINS[state.element].sym})은 어디에서 만들어졌을까요?`;
-        predictionArea.className = `prediction-buttons${list.length === 3 ? ' three' : ''}`;
-        predictionArea.innerHTML = list.map(o => `<button type="button" data-prediction="${o.value}">${o.label}</button>`).join('');
-        predictionArea.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
-            state.prediction = button.dataset.prediction;
-            predictionArea.querySelectorAll('button').forEach(b => b.classList.toggle('selected', b === button));
-        }));
+        const list=state.mode==='fusion'?[{value:'yes',label:'에너지 방출'},{value:'no',label:'에너지가 전혀 나오지 않음'}]:state.mode==='mass'?PRED_MASS:PRED_ORIGIN;
+        predictionLegend.textContent=state.mode==='fusion'?'이 핵융합 과정에서는?':state.mode==='mass'?'이 별에서 생성되는 원소를 예상하세요.':'이 원소의 주요 생성 과정을 고르세요.';
+        predictionArea.innerHTML=list.map(o=>'<button type="button" data-prediction="'+o.value+'">'+o.label+'</button>').join('');
+        predictionArea.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{state.prediction=b.dataset.prediction;predictionArea.querySelectorAll('button').forEach(x=>x.classList.toggle('selected',x===b));}));
     }
 
     /* ----------------------------------------------------------- visuals */
@@ -401,14 +395,26 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function render() {
-        const a = analyse();
-        mainGroup.innerHTML = a.kind === 'fusion' ? renderFusion(a) : a.kind === 'mass' ? renderMass(a) : renderOrigin(a);
-        graphGroup.innerHTML = a.kind === 'fusion' ? graphFusion(a) : a.kind === 'mass' ? graphMass(a) : graphOrigin(a);
-        stageBadge.textContent = a.kind === 'fusion' ? a.st.label : a.kind === 'mass' ? a.star.label : `${a.el.name} ${a.el.sym}`;
-        methodHint.textContent = a.kind === 'fusion' ? '원자핵이 더 단단히 묶일수록 남는 질량이 에너지로 나옵니다'
-            : a.kind === 'mass' ? '무거운 별은 중심이 더 뜨거워 다음 단계로 가지만 연료를 빨리 씁니다'
-                : '수소·헬륨은 빅뱅에서, 나머지는 별과 별의 죽음에서 왔습니다';
-        dataNote.innerHTML = noteFor(a);
+        const a=analyse(),p=state.progress;
+        let text='',drawing='',label='';
+        if(a.kind==='fusion'){
+            const st=a.st,n=st.fuel.n;
+            for(let i=0;i<n;i++){const angle=i*2*Math.PI/n;drawing+=nucleus(200+70*(1-p)*Math.cos(angle),105+55*(1-p)*Math.sin(angle),st.fuel.sym,st.fuel.A,1-p);}
+            drawing+=nucleus(200,105,st.ash.sym,st.ash.A,p);
+            text=st.label+' · 核융합 과정에서 에너지가 방출됩니다.'.replace('核','핵');label='핵융합과 에너지';
+        }else if(a.kind==='mass'){
+            const i=Math.min(a.star.stages.length-1,Math.floor(p*a.star.stages.length));
+            const st=STEPS[a.star.stages[i]];
+            drawing='<circle cx="200" cy="105" r="68" fill="#f59e0b" opacity=".55"/><circle cx="200" cy="105" r="34" fill="#b45309"/>'+nucleus(200,105,st.ash.sym,st.ash.A);
+            text=p>=1?a.star.endText:st.label+' 과정의 모형';label=a.star.label;
+        }else{
+            drawing='<circle cx="200" cy="100" r="60" fill="#dbeafe"/><text x="200" y="112" text-anchor="middle" fill="#334155" font-size="32">'+a.el.sym+'</text>';
+            text=a.el.origin==='bigbang'?'초기 우주에서 주로 수소·헬륨 생성':a.el.origin==='star'?'별 내부와 진화 과정 등에서 생성':'중성자별 충돌 등 무거운 원소의 생성 과정';label=a.el.name+'의 기원';
+        }
+        mainGroup.innerHTML=drawing+'<text x="20" y="28" fill="#334155">'+label+'</text>';
+        graphGroup.innerHTML='<text x="20" y="45" fill="#334155">초기 우주 → 별의 형성과 진화 → 원소가 우주로 퍼짐</text><text x="20" y="95" fill="#334155">이 물질들이 모여 태양계와 우리 몸의 재료가 됩니다.</text>';
+        stageBadge.textContent=label;methodHint.textContent='태양의 수소 핵융합과 원소의 생성 과정을 연결합니다.';
+        dataNote.innerHTML='<p>'+text+'</p><p>단계와 원자핵 그림은 개념을 나타내는 모형입니다. 그림의 크기·시간으로 실제 핵반응량이나 별의 수명을 계산하지 않습니다.</p>';
         return a;
     }
 
@@ -438,45 +444,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function finish() {
-        const a = render();
-        resultEmpty.hidden = true;
-        resultContent.hidden = false;
-        let s = '';
-        if (a.kind === 'fusion') {
-            const { st } = a;
-            labelA.textContent = '나오는 에너지'; valueA.textContent = st.gain > 0 ? `수소 때의 ${a.ratio >= 50 ? Math.round(a.ratio) : a.ratio.toFixed(1)} %` : '나오지 않음 (들어감)';
-            labelB.textContent = '질량 변화'; valueB.textContent = `${a.massPct > 0 ? '−' : '+'}${Math.abs(a.massPct).toFixed(a.massPct > 0.1 || a.massPct < -0.1 ? 2 : 3)} %`;
-            if (st.gain > 0) {
-                s = `${st.fuel.name} 원자핵 ${st.fuel.n}개가 합쳐져 ${st.ash.name} 원자핵이 되면 알갱이 하나를 묶는 에너지가 ${beText(beOf(st.fuel.sym, st.fuel.A))}에서 ${beText(beOf(st.ash.sym, st.ash.A))}로 커집니다. 더 단단히 묶인 만큼 질량이 ${a.massPct.toFixed(a.massPct > 0.1 ? 2 : 3)} % 줄고, 줄어든 질량이 빛과 열이 됩니다. 연료 1 kg에서 ${(a.jPerKg / 1e12).toFixed(0)}조 J — 석탄 ${fmtTons(a.coalKg)}을 태우는 것과 같습니다. `;
-                if (state.step === 'h') s += `태양은 이 반응으로 초마다 수소 6억 t을 헬륨으로 바꾸며 400만 t씩 가벼워지고, 그 에너지로 100억 년을 빛납니다. 1,500만 K이 필요한 까닭은 양전기를 띤 원자핵끼리 서로 밀어내는 힘을 이겨야 하기 때문입니다. `;
-                else s += `수소 때에 견주면 ${a.ratio.toFixed(1)} %밖에 되지 않습니다. 단계가 올라갈수록 나오는 에너지는 줄고 필요한 온도(${st.temp})는 높아져, 별은 이 연료를 훨씬 빨리 씁니다 — 태양의 25배 별에서 이 단계는 ${st.time25}밖에 이어지지 않습니다. `;
-                s += `핵융합은 원자핵이 더 단단히 묶이는 쪽으로만 에너지를 내고, 그 끝이 철입니다.`;
-            } else {
-                s = `철 원자핵은 알갱이 하나를 묶는 에너지가 ${beOf('Fe', 56).toFixed(2)} MeV로 모든 원자핵 가운데 가장 큽니다. 철을 합쳐 더 무거운 원자핵을 만들면 묶는 에너지가 오히려 작아지므로(납은 ${beOf('Pb', 208).toFixed(2)} MeV) 질량이 늘고, 그만큼 에너지를 넣어야 합니다. 그래서 별 속의 핵융합은 철에서 멈추고, 무거운 별은 철 중심이 생기면 버틸 힘을 잃고 무너져 초신성이 됩니다. 철보다 무거운 금·은·우라늄은 초신성 폭발이나 중성자별 충돌처럼 에너지와 중성자가 넘치는 자리에서 만들어집니다.`;
-            }
-        } else if (a.kind === 'mass') {
-            const { star } = a;
-            labelA.textContent = '만드는 원소'; valueA.textContent = { he: '헬륨까지', co: '탄소·산소까지', sn: '철까지 + 초신성' }[star.end];
-            labelB.textContent = '수명'; valueB.textContent = star.lifeText;
-            s = `${star.label}${pEun(star.label)} 중심에서 ${star.stages.map(k => STEPS[k].label).join(', ')} 핵융합을 차례로 하고 ${star.lifeText} 만에 연료가 끝납니다. `;
-            if (star.end === 'he') s += `중심이 헬륨 핵융합에 필요한 1억 K까지 뜨거워지지 못해 헬륨에서 멈추고, 연료를 아주 천천히 써서 태양보다 스무 배 넘게 오래 삽니다. 우주의 나이(138억 년)보다 길어 아직 죽은 별이 없습니다. `;
-            else if (star.end === 'co') s += `헬륨을 태워 탄소·산소 중심을 만들지만, 탄소 핵융합에 필요한 6억 K에는 이르지 못해 거기서 멈춥니다. 바깥층을 행성상 성운으로 날려 보내며 만든 탄소·산소의 일부를 우주에 돌려주고, 지구만 한 크기의 백색 왜성이 남습니다. `;
-            else s += `무거워서 중심이 30억 K까지 뜨거워져 규소를 철로 바꾸는 데까지 갑니다. 그러나 철에서는 에너지가 나오지 않으므로 중심이 순식간에 무너져 초신성으로 터지고, 이때 만든 원소를 모두 우주에 뿌리며 철보다 무거운 원소까지 만듭니다. 연료를 태양의 수천 배 빨리 써서 겨우 수백만 년밖에 살지 못합니다. `;
-            s += `질량이 큰 별일수록 중심이 뜨거워 더 무거운 원소까지 만들지만, 수명은 질량의 2.5제곱에 반비례해 훨씬 짧습니다.`;
-        } else {
-            const { el } = a;
-            labelA.textContent = '고향'; valueA.textContent = { bigbang: '빅뱅 직후', star: '별 속 핵융합', merger: '중성자별 충돌·초신성' }[el.origin];
-            labelB.textContent = '사람 몸에서'; valueB.textContent = fmtShare(el.body);
-            const bodyTxt = fmtShare(el.body);
-            s = `${el.name}(${el.sym})${pEun(el.name)} ${el.how}. 우주 전체 질량의 ${fmtShare(el.universe)}, 지구 지각의 ${fmtShare(el.crust)}${el.body ? `, 사람 몸의 ${bodyTxt}${eulOf(bodyTxt)}` : `${eulOf(fmtShare(el.crust))}`} 차지합니다${el.body ? '' : ' (사람 몸에는 거의 없습니다)'}. `;
-            if (el.origin === 'bigbang') s += `우주가 태어나 3분쯤 지났을 때 온도가 내려가면서 양성자와 중성자가 수소와 헬륨 원자핵으로 굳어졌고, 그 비율(질량으로 3 : 1)이 지금 우주의 수소·헬륨 비율과 맞습니다. 그보다 무거운 원자핵은 이때 거의 만들어지지 못했습니다. `;
-            else if (el.origin === 'star') s += `별 속 핵융합으로 만들어진 뒤 별이 죽을 때 우주로 퍼졌고, 그 재가 모여 태양과 지구, 우리 몸이 되었습니다. 우리 몸의 원자 대부분은 태양이 생기기 전 죽은 별 속에 있던 것들입니다. `;
-            else s += `철보다 무거운 원소는 핵융합으로는 에너지를 얻을 수 없어 별 속에서 만들어지지 않습니다. 중성자별 두 개가 충돌하거나 초신성이 터질 때 쏟아지는 중성자를 원자핵이 빠르게 붙잡아 만들어지고, 2017년 중성자별 충돌에서 실제로 금과 백금이 만들어지는 빛이 관측되었습니다. `;
-            s += `우주의 원소는 수소 74 %, 헬륨 24 %이고 나머지 2 %가 별이 만든 모든 원소입니다.`;
-        }
-        predictionResult.textContent = !state.prediction ? '다음에는 결과를 먼저 예상해 보세요.'
-            : state.prediction === a.verdict ? '예상이 맞았습니다.' : '예상과 다른 결과입니다.';
-        explanation.textContent = s;
+        const a=render();resultEmpty.hidden=true;resultContent.hidden=false;
+        labelA.textContent='관찰';valueA.textContent=a.kind==='fusion'?'에너지 방출':a.kind==='mass'?{he:'헬륨까지',co:'탄소·산소까지',sn:'철까지 + 초신성'}[a.star.end]:a.el.name;
+        labelB.textContent='핵심';valueB.textContent=a.kind==='fusion'?'핵융합':a.kind==='mass'?'질량에 따라 다름':'원소의 기원';
+        const answer=a.kind==='fusion'?'yes':a.verdict;predictionResult.textContent=!state.prediction?'다음에는 먼저 예상해 보세요.':state.prediction===answer?'예상이 맞았습니다.':'예상과 다른 결과입니다.';
+        explanation.textContent=a.kind==='fusion'?'태양은 수소 원자핵의 핵융합으로 에너지를 방출합니다.':a.kind==='mass'?'별의 질량에 따라 생성하는 원소와 마지막 모습이 달라집니다. 모형의 진행 시간은 실제 수명이 아닙니다.':'초기 우주에서 주로 수소·헬륨이 생성되었고, 이후 별 내부·진화·폭발·충돌 등의 여러 과정으로 다양한 원소가 만들어져 퍼졌습니다. 특정 원소의 생성 과정은 하나로만 한정되지 않을 수 있습니다.';
     }
 
     function settingsChanged() {

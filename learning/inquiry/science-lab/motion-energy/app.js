@@ -125,7 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function buildControls() {
         if (state.mode === 'incline') {
             controlArea.innerHTML =
-                pickRow('빗면의 기울기', 'angle', ANGLES.map(d => ({ value: String(d), label: `${d}°`, hint: `가속도 ${(G * Math.sin(d * Math.PI / 180)).toFixed(2)} m/s²` })), state.angle, 3) +
+                pickRow('빗면의 기울기', 'angle', ANGLES.map(d => ({ value: String(d), label: `${d}°` })), state.angle, 3) +
                 pickRow('사진 찍는 간격', 'flash', FLASH.map(f => ({ value: String(f), label: `${f}초` })), state.flash, 3);
         } else {
             controlArea.innerHTML =
@@ -210,9 +210,8 @@ document.addEventListener('DOMContentLoaded', () => {
         // readouts
         out += `<text class="part-label" x="300" y="40">시간</text><text class="read-text" x="300" y="58">${t.toFixed(2)} 초</text>`;
         out += `<text class="part-label" x="300" y="84">속력</text><text class="read-text" x="300" y="102">${now.v.toFixed(2)} m/s</text>`;
-        out += `<text class="part-label" x="380" y="40">가속도</text><text class="read-text" x="380" y="58">${(now.onRamp ? a.a : 0).toFixed(2)} m/s²</text>`;
         out += `<text class="note-text" x="380" y="102">${now.onRamp ? '속력 늘어남' : '속력 그대로'}</text>`;
-        out += `<text class="verdict-text" fill="#0284c7" x="20" y="28">${state.angle}° 빗면 · ${state.flash}초마다 찍음 → ${now.onRamp ? '등가속도 운동' : '등속 운동'}</text>`;
+        out += `<text class="verdict-text" fill="#0284c7" x="20" y="28">${state.angle}° 빗면 · ${state.flash}초마다 찍음 → ${now.onRamp ? '속력이 증가하는 운동' : '등속 운동'}</text>`;
         return out;
     }
 
@@ -303,7 +302,6 @@ document.addEventListener('DOMContentLoaded', () => {
         a.flashes.filter(f => f.t <= t + 1e-9).forEach(f => {
             out += `<circle class="flash-dot" cx="${gx(f.t).toFixed(1)}" cy="${gy(f.v).toFixed(1)}" r="2.6"/>`;
         });
-        out += `<text class="note-text" x="${gx(a.tRamp / 2).toFixed(1)}" y="${(gy(a.vEnd) - 10).toFixed(1)}" text-anchor="middle">기울기 = 가속도 ${a.a.toFixed(2)} m/s²</text>`;
         out += `<text class="note-text" x="${gx((a.tRamp + a.total) / 2).toFixed(1)}" y="${(gy(a.vEnd) - 10).toFixed(1)}" text-anchor="middle">${a.vEnd.toFixed(2)} m/s 그대로</text>`;
         return out;
     }
@@ -344,11 +342,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function noteFor(a) {
         if (a.kind === 'incline') {
             const gaps = rampGaps(a);
-            return `<div class="data-row"><span class="data-name">가속도</span><span class="data-val">9.8 × sin ${state.angle}° = ${a.a.toFixed(2)} m/s²</span></div>` +
-                `<div class="data-row"><span class="data-name">속력 변화</span><span class="data-val">${state.flash}초마다 ${(a.a * state.flash).toFixed(2)} m/s씩 늘어남</span></div>` +
-                `<div class="data-row"><span class="data-name">빗면의 점 사이</span><span class="data-val">${gaps.length >= 2 ? `${gapText(gaps)} (${gaps.slice(0, 3).map((g, i) => 2 * i + 1).join(' : ')})` : gaps.length === 1 ? `${gapText(gaps)} — 빗면에 점이 둘뿐, 간격을 줄여 보세요` : '빗면에 점이 하나뿐, 간격을 줄여 보세요'}</span></div>` +
-                `<div class="data-row"><span class="data-name">빗면 끝</span><span class="data-val">${a.tRamp.toFixed(2)}초 뒤 ${a.vEnd.toFixed(2)} m/s</span></div>` +
-                `<div class="data-row match"><span class="data-name">평평한 곳</span><span class="data-val">${a.vEnd.toFixed(2)} m/s로 ${a.tFlat.toFixed(2)}초 동안 등속</span></div>`;
+            return '<p>같은 시간 간격의 점 사이: ' + (gaps.length >= 2 ? gapText(gaps) : '기록 간격을 줄여 비교하세요') + '</p><p>빗면에서는 속력이 증가하고, 마찰 없는 평평한 곳에서는 속력이 일정합니다.</p>';
         }
         return `<div class="data-row"><span class="data-name">처음 위치 에너지</span><span class="data-val">9.8 × ${a.m} kg × ${a.h0.toFixed(1)} m = ${a.eTotal.toFixed(1)} J</span></div>` +
             `<div class="data-row"><span class="data-name">가장 낮은 곳</span><span class="data-val">운동 에너지 ${a.eTotal.toFixed(1)} J · 속력 ${a.vBottom.toFixed(2)} m/s</span></div>` +
@@ -407,12 +401,7 @@ document.addEventListener('DOMContentLoaded', () => {
             predictionResult.textContent = !state.prediction ? '다음에는 결과를 먼저 예상해 보세요.'
                 : state.prediction === a.verdict ? '예상이 맞았습니다.' : '예상과 다른 결과입니다.';
             const gaps = rampGaps(a);
-            const gapSentence = gaps.length >= 2
-                ? `${state.flash}초마다 속력이 ${(a.a * state.flash).toFixed(2)} m/s씩 늘어나므로 점 사이 거리도 ${gaps.slice(0, 3).map(g => `${g.toFixed(1)} cm`).join(', ')}로 1 : 3 : 5 비로 벌어집니다. `
-                : `${state.flash}초마다 속력이 ${(a.a * state.flash).toFixed(2)} m/s씩 늘어납니다. 그런데 ${state.flash}초는 이 빗면(${RAMP_M} m)을 내려오는 ${a.tRamp.toFixed(2)}초에 비해 너무 길어 빗면 위에 점이 ${gaps.length + 1}개밖에 찍히지 않습니다. 간격을 줄이면 1 : 3 : 5로 벌어지는 것이 보입니다. `;
-            explanation.textContent =
-                `${state.angle}° 빗면에서 수레의 가속도는 9.8 × sin ${state.angle}° = ${a.a.toFixed(2)} m/s²입니다. ` + gapSentence +
-                `빗면 끝에서 ${a.vEnd.toFixed(2)} m/s가 된 뒤 마찰 없는 평평한 곳에서는 미는 힘이 없어 그 속력이 그대로 유지되고, 점 사이 거리가 ${(a.vEnd * state.flash * 100).toFixed(0)} cm로 똑같아집니다.`;
+            explanation.textContent = '같은 시간 간격의 점 사이가 벌어지면 속력이 증가한 것입니다. 마찰 없는 평평한 곳에서는 운동 방향의 알짜힘이 없어 속력이 일정하고 점 사이 거리도 같습니다.';
             return;
         }
         labelA.textContent = '결과'; labelB.textContent = '에너지 합';
