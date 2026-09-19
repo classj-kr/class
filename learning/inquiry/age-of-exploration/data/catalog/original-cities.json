@@ -27670,5 +27670,465 @@
     "in1520": "잉카 제국의 높은 산골 · 마을 없음",
     "todayCountry": "볼리비아",
     "artKey": "potosi"
+  },
+  {
+    "id": "mbanza_kongo",
+    "name": "음반자콩고",
+    "nameEn": "",
+    "continent": "",
+    "region": "서아프리카",
+    "lat": -6.26778,
+    "lon": 14.24806,
+    "cellX": 1348,
+    "cellY": 668,
+    "markerWidth": 2,
+    "markerHeight": 2,
+    "atlasHint": "",
+    "isOriginalCity": true,
+    "addedCity": true,
+    "originalIndex": 225,
+    "originalCitySize": 2,
+    "displayOnMap": true,
+    "category": "도시",
+    "access": "land",
+    "canEnterFromSea": false,
+    "canEnterFromLand": true,
+    "originalMarkerCells": [
+      [
+        1348,
+        668
+      ],
+      [
+        1349,
+        668
+      ],
+      [
+        1348,
+        669
+      ],
+      [
+        1349,
+        669
+      ]
+    ],
+    "originalSeaEntryCells": [],
+    "originalLandEntryCells": [
+      [
+        1347,
+        667
+      ],
+      [
+        1348,
+        667
+      ],
+      [
+        1349,
+        667
+      ],
+      [
+        1350,
+        667
+      ],
+      [
+        1347,
+        668
+      ],
+      [
+        1350,
+        668
+      ],
+      [
+        1347,
+        669
+      ],
+      [
+        1350,
+        669
+      ],
+      [
+        1347,
+        670
+      ],
+      [
+        1348,
+        670
+      ],
+      [
+        1349,
+        670
+      ],
+      [
+        1350,
+        670
+      ]
+    ],
+    "originalSeaSpawnCell": null,
+    "originalLandSpawnCell": [
+      1347,
+      667
+    ],
+    "facilities": [
+      "도시",
+      "육상 출입구"
+    ],
+    "arrivalRule": "enter-original-city",
+    "arrivalRadiusTiles": 0,
+    "originalOrder": null,
+    "originalHex": null,
+    "originalRegion": "서아프리카",
+    "naturalEarthPositionOverride": true,
+    "modernLocationName": "M'banza-Kongo",
+    "countryCode": "AO",
+    "coordinateSource": "manual-historical",
+    "hasLibrary": false,
+    "libraryRegion": "서아프리카",
+    "in1520": "콩고 왕국의 수도",
+    "todayCountry": "앙골라",
+    "artKey": "mbanza-kongo"
+  },
+  {
+    "id": "benin_city",
+    "name": "베냉시티",
+    "nameEn": "",
+    "continent": "",
+    "region": "서아프리카",
+    "lat": 6.33333,
+    "lon": 5.62222,
+    "cellX": 1288,
+    "cellY": 580,
+    "markerWidth": 2,
+    "markerHeight": 2,
+    "atlasHint": "",
+    "isOriginalCity": true,
+    "addedCity": true,
+    "originalIndex": 226,
+    "originalCitySize": 2,
+    "displayOnMap": true,
+    "category": "도시",
+    "access": "land",
+    "canEnterFromSea": false,
+    "canEnterFromLand": true,
+    "originalMarkerCells": [
+      [
+        1288,
+        580
+      ],
+      [
+        1289,
+        580
+      ],
+      [
+        1288,
+        581
+      ],
+      [
+        1289,
+        581
+      ]
+    ],
+    "originalSeaEntryCells": [],
+    "originalLandEntryCells": [
+      [
+        1287,
+        579
+      ],
+      [
+        1288,
+        579
+      ],
+      [
+        1289,
+        579
+      ],
+      [
+        1290,
+        579
+      ],
+      [
+        1287,
+        580
+      ],
+      [
+        1290,
+        580
+      ],
+      [
+        1287,
+        581
+      ],
+      [
+        1290,
+        581
+      ],
+      [
+        1287,
+        582
+      ],
+      [
+        1288,
+        582
+      ],
+      [
+        1289,
+        582
+      ],
+      [
+        1290,
+        582
+      ]
+    ],
+    "originalSeaSpawnCell": null,
+    "originalLandSpawnCell": [
+      1287,
+      579
+    ],
+    "facilities": [
+      "도시",
+      "육상 출입구"
+    ],
+    "arrivalRule": "enter-original-city",
+    "arrivalRadiusTiles": 0,
+    "originalOrder": null,
+    "originalHex": null,
+    "originalRegion": "서아프리카",
+    "naturalEarthPositionOverride": true,
+    "modernLocationName": "Benin City",
+    "countryCode": "NG",
+    "coordinateSource": "GeoNames",
+    "hasLibrary": false,
+    "libraryRegion": "서아프리카",
+    "in1520": "베냉 왕국의 수도",
+    "todayCountry": "나이지리아",
+    "artKey": "benin-city"
+  },
+  {
+    "id": "harar",
+    "name": "하라르",
+    "nameEn": "",
+    "continent": "",
+    "region": "동아프리카",
+    "lat": 9.31111,
+    "lon": 42.12778,
+    "cellX": 1542,
+    "cellY": 559,
+    "markerWidth": 2,
+    "markerHeight": 2,
+    "atlasHint": "",
+    "isOriginalCity": true,
+    "addedCity": true,
+    "originalIndex": 227,
+    "originalCitySize": 2,
+    "displayOnMap": true,
+    "category": "도시",
+    "access": "land",
+    "canEnterFromSea": false,
+    "canEnterFromLand": true,
+    "originalMarkerCells": [
+      [
+        1542,
+        559
+      ],
+      [
+        1543,
+        559
+      ],
+      [
+        1542,
+        560
+      ],
+      [
+        1543,
+        560
+      ]
+    ],
+    "originalSeaEntryCells": [],
+    "originalLandEntryCells": [
+      [
+        1541,
+        558
+      ],
+      [
+        1542,
+        558
+      ],
+      [
+        1543,
+        558
+      ],
+      [
+        1544,
+        558
+      ],
+      [
+        1541,
+        559
+      ],
+      [
+        1544,
+        559
+      ],
+      [
+        1541,
+        560
+      ],
+      [
+        1544,
+        560
+      ],
+      [
+        1541,
+        561
+      ],
+      [
+        1542,
+        561
+      ],
+      [
+        1543,
+        561
+      ],
+      [
+        1544,
+        561
+      ]
+    ],
+    "originalSeaSpawnCell": null,
+    "originalLandSpawnCell": [
+      1541,
+      558
+    ],
+    "facilities": [
+      "도시",
+      "육상 출입구"
+    ],
+    "arrivalRule": "enter-original-city",
+    "arrivalRadiusTiles": 0,
+    "originalOrder": null,
+    "originalHex": null,
+    "originalRegion": "동아프리카",
+    "naturalEarthPositionOverride": true,
+    "modernLocationName": "Harar",
+    "countryCode": "ET",
+    "coordinateSource": "GeoNames",
+    "hasLibrary": false,
+    "libraryRegion": "동아프리카",
+    "in1520": "아달 술탄국이 막 수도로 삼은 도시",
+    "todayCountry": "에티오피아",
+    "artKey": "harar"
+  },
+  {
+    "id": "sennar",
+    "name": "센나르",
+    "nameEn": "",
+    "continent": "",
+    "region": "동아프리카",
+    "lat": 13.55,
+    "lon": 33.58333,
+    "cellX": 1482,
+    "cellY": 530,
+    "markerWidth": 2,
+    "markerHeight": 2,
+    "atlasHint": "",
+    "isOriginalCity": true,
+    "addedCity": true,
+    "originalIndex": 228,
+    "originalCitySize": 2,
+    "displayOnMap": true,
+    "category": "도시",
+    "access": "land",
+    "canEnterFromSea": false,
+    "canEnterFromLand": true,
+    "originalMarkerCells": [
+      [
+        1482,
+        530
+      ],
+      [
+        1483,
+        530
+      ],
+      [
+        1482,
+        531
+      ],
+      [
+        1483,
+        531
+      ]
+    ],
+    "originalSeaEntryCells": [],
+    "originalLandEntryCells": [
+      [
+        1481,
+        529
+      ],
+      [
+        1482,
+        529
+      ],
+      [
+        1483,
+        529
+      ],
+      [
+        1484,
+        529
+      ],
+      [
+        1481,
+        530
+      ],
+      [
+        1484,
+        530
+      ],
+      [
+        1481,
+        531
+      ],
+      [
+        1484,
+        531
+      ],
+      [
+        1481,
+        532
+      ],
+      [
+        1482,
+        532
+      ],
+      [
+        1483,
+        532
+      ],
+      [
+        1484,
+        532
+      ]
+    ],
+    "originalSeaSpawnCell": null,
+    "originalLandSpawnCell": [
+      1481,
+      529
+    ],
+    "facilities": [
+      "도시",
+      "육상 출입구"
+    ],
+    "arrivalRule": "enter-original-city",
+    "arrivalRadiusTiles": 0,
+    "originalOrder": null,
+    "originalHex": null,
+    "originalRegion": "동아프리카",
+    "naturalEarthPositionOverride": true,
+    "modernLocationName": "Sennar",
+    "countryCode": "SD",
+    "coordinateSource": "manual-historical",
+    "hasLibrary": false,
+    "libraryRegion": "동아프리카",
+    "in1520": "푼지 술탄국의 수도",
+    "todayCountry": "수단",
+    "artKey": "sennar"
   }
 ]

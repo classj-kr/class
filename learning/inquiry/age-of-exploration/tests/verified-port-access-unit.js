@@ -27,7 +27,8 @@ assert.deepEqual(
 
 const effectiveCities = catalog.ORIGINAL_CITIES.map(catalog.normalizePlaceAccess);
 assert.equal(effectiveCities.filter((city) => city.canEnterFromSea).length, 122);
-assert.equal(effectiveCities.filter((city) => !city.canEnterFromSea).length, 103);
+// 내륙 103곳 + 2026-09-19 새로 넣은 내륙 도시 4곳.
+assert.equal(effectiveCities.filter((city) => !city.canEnterFromSea).length, 107);
 
 for (const name of blockedDirectSeaAccess) {
   const original = catalog.ORIGINAL_CITIES.find((city) => city.name === name);

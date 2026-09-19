@@ -1,7 +1,7 @@
 {
-  "version": 79,
+  "version": 80,
   "label": "전 도시 교육용 도서관 · 지역 공동 장서",
-  "libraryCityCount": 224,
+  "libraryCityCount": 228,
   "booksPerLibrary": 13,
   "sectionCount": 545,
   "collections": [
@@ -170,7 +170,9 @@
         "original_city_126",
         "original_city_125",
         "original_city_124",
-        "original_city_123"
+        "original_city_123",
+        "mbanza_kongo",
+        "benin_city"
       ],
       "regionalBooks": 8,
       "commonBooks": 5
@@ -188,7 +190,9 @@
         "original_city_116",
         "original_city_115",
         "original_city_114",
-        "original_city_113"
+        "original_city_113",
+        "harar",
+        "sennar"
       ],
       "regionalBooks": 8,
       "commonBooks": 5

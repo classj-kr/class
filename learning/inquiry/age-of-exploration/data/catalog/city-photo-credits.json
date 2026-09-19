@@ -179,6 +179,13 @@
   "file": "Panorama_Belgrad.jpg",
   "source": "https://commons.wikimedia.org/wiki/File:Panorama_Belgrad.jpg"
  },
+ "benin-city": {
+  "author": "Kelechukwu Ajoku",
+  "license": "CC BY-SA 4.0",
+  "file": "Royal Palace of the Oba of Benin cropped.jpg",
+  "source": "https://commons.wikimedia.org/wiki/File:Royal_Palace_of_the_Oba_of_Benin_cropped.jpg",
+  "caption": "베냉 왕의 궁궐 — 왕실은 1520년에도 이 도시에 궁을 두었고, 지금 건물은 1897년 불탄 뒤 다시 지은 것입니다."
+ },
  "bergen": {
   "author": "TomasEE",
   "license": "CC BY 3.0",
@@ -538,6 +545,13 @@
   "file": "杭州钱江新城_4_(cropped).jpg",
   "source": "https://commons.wikimedia.org/wiki/File:%E6%9D%AD%E5%B7%9E%E9%92%B1%E6%B1%9F%E6%96%B0%E5%9F%8E_4_(cropped).jpg"
  },
+ "harar": {
+  "author": "Bikoadem",
+  "license": "CC BY-SA 4.0",
+  "file": "Old City (Jugal) Street Scene of Jugol 45.jpg",
+  "source": "https://commons.wikimedia.org/wiki/File:Old_City_(Jugal)_Street_Scene_of_Jugol_45.jpg",
+  "caption": "성벽 안 옛 도시의 골목 — 좁은 골목과 알록달록한 흙벽 집이 그대로 남아 있습니다."
+ },
  "havana": {
   "author": "RenaatPeeters",
   "license": "CC BY-SA 4.0",
@@ -823,6 +837,13 @@
   "file": "Notre-Dame_de_la_Garde_aerial_view_2020.jpeg",
   "source": "https://commons.wikimedia.org/wiki/File:Notre-Dame_de_la_Garde_aerial_view_2020.jpeg",
   "caption": "노트르담 드 라 가르드 성당 — 1864년에 지어, 1520년에는 아직 없었습니다."
+ },
+ "mbanza-kongo": {
+  "author": "André Semeador",
+  "license": "CC BY-SA 4.0",
+  "file": "Desfile Provincial do Carnaval em Mbanza Kongo.jpg",
+  "source": "https://commons.wikimedia.org/wiki/File:Desfile_Provincial_do_Carnaval_em_Mbanza_Kongo.jpg",
+  "caption": "음반자콩고의 축제 행진 — 오늘날 이 도시 사람들의 모습입니다."
  },
  "mecca": {
   "author": "Saudipics.com",
@@ -1112,6 +1133,13 @@
   "license": "CC BY 2.0",
   "file": "2012SaoTome-8_(8042889363).jpg",
   "source": "https://commons.wikimedia.org/wiki/File:2012SaoTome-8_(8042889363).jpg"
+ },
+ "sennar": {
+  "author": "Mussapedia",
+  "license": "CC BY-SA 3.0",
+  "file": "SnrDam.JPG",
+  "source": "https://commons.wikimedia.org/wiki/File:SnrDam.JPG",
+  "caption": "센나르 댐 — 1925년에 세워, 1520년에는 아직 없었습니다."
  },
  "seoul": {
   "author": "Eunmi Park",

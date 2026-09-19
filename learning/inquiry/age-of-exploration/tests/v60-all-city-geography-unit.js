@@ -2,8 +2,8 @@
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const cities = JSON.parse(fs.readFileSync('data/catalog/original-cities.json','utf8'));
-assert.equal(cities.length,225);
-assert.equal(cities.filter(c=>c.naturalEarthPositionOverride===true).length,225,'모든 도시가 Natural Earth 좌표를 사용해야 함');
+assert.equal(cities.length,229);
+assert.equal(cities.filter(c=>c.naturalEarthPositionOverride===true).length,229,'모든 도시가 Natural Earth 좌표를 사용해야 함');
 for(const c of cities){
   assert.ok(Number.isFinite(c.lat)&&c.lat>=-90&&c.lat<=90,`${c.name} 위도`);
   assert.ok(Number.isFinite(c.lon)&&c.lon>=-180&&c.lon<=180,`${c.name} 경도`);
@@ -34,5 +34,5 @@ const server=fs.readFileSync('server.js','utf8');
 assert.match(server,/displayOffsetCellsX/);
 assert.match(server,/displayedLandPoint/);
 const audit=JSON.parse(fs.readFileSync('data/catalog/city-coordinate-audit-v60.json','utf8'));
-assert.equal(audit.length,225);
-console.log(JSON.stringify({ok:true,cities:225,allNaturalEarth:true,globalCoastMask:true,shiftedMoreThan2Degrees:audit.filter(x=>x.shiftDegrees>2).length}));
+assert.equal(audit.length,229);
+console.log(JSON.stringify({ok:true,cities:229,allNaturalEarth:true,globalCoastMask:true,shiftedMoreThan2Degrees:audit.filter(x=>x.shiftDegrees>2).length}));

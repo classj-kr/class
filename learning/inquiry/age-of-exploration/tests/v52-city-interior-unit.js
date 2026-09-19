@@ -9,7 +9,7 @@ const student=fs.readFileSync(path.join(__dirname,'..','public','index.html'),'u
 const dir=path.join(__dirname,'..','public','assets','cities','1520');
 const live=cities.filter(c=>!c.retired);
 const keys=new Set(live.map(c=>c.artKey));
-assert.equal(cities.length,225);
+assert.equal(cities.length,229);
 assert.equal(keys.size,live.length,'도시마다 그림 이름이 하나씩');
 assert.ok(live.every(c=>/^[a-z0-9-]+$/.test(c.artKey||'')),'그림 이름은 영어 소문자');
 const files=fs.existsSync(dir)?fs.readdirSync(dir).filter(x=>x.endsWith('.webp')):[];
