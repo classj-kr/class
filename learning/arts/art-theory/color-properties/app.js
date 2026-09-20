@@ -27,7 +27,6 @@
     $('#propertyOutput').textContent=state.axis==='h'?M.hues[state.changed.h].name:state.changed[state.axis];
     $('#scaleStart').textContent={h:'빨강',l:'어둡게',c:'회색에 가깝게'}[state.axis];
     $('#scaleEnd').textContent={h:'자주',l:'밝게',c:'선명하게'}[state.axis];
-    $('#fixedAttributes').textContent=`${Object.entries(labels).filter(([key])=>key!==state.axis).map(([,label])=>label).join('·')}는 고정됩니다.`;
     const count=state.axis==='h'?M.hues.length:16;
     $('#propertyScale').innerHTML=Array.from({length:count},(_,index)=>{
       const value=bounds.min+(bounds.max-bounds.min)*index/(count-1);
