@@ -1,80 +1,83 @@
-.space-topic-page .tab-pane#tab-eclipse { max-width: 1440px; margin: 0 auto; padding: 6px 12px 8px; color: #e2e8f0; }
-.ecl-controls { display: flex; align-items: center; justify-content: flex-start; gap: 20px; height: 38px; margin-bottom: 6px; padding-left: 42px; padding-right: 330px; }
-.ecl-modes, .ecl-options, .ecl-presets { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-.eclipse-lab button { cursor: pointer; padding: 9px 18px; border: 1px solid #34445f; border-radius: 8px; background: #111d30; color: #cbd5e1; font: inherit; font-weight: 700; }
-.eclipse-lab button[aria-pressed="true"] { background: #036e99; border-color: #38bdf8; color: white; }
-.eclipse-lab button:focus-visible, .eclipse-lab input:focus-visible, .eclipse-lab summary:focus-visible { outline: 2px solid #7dd3fc; outline-offset: 3px; }
-.ecl-options { gap: 18px; font-size: 13px; color: #bac9dc; }
-.ecl-options label { display: flex; align-items: center; gap: 6px; cursor: pointer; }
-.ecl-layout { display: grid; grid-template-columns: minmax(0,1fr) clamp(300px,28vw,390px); gap: 10px; height: calc(100dvh - 102px); min-height: 400px; }
-.ecl-diagram-panel, .ecl-observation { min-width: 0; border: 1px solid #273a56; border-radius: 12px; background: #071120; overflow: hidden; }
-.ecl-arrangement { padding: 12px 16px 8px; color: #c8daf1; font-size: 16px; font-weight: 700; }
-.ecl-diagram { display: block; width: 100%; height: 100%; }
-.eclipse-lab svg text { fill: #d4e2f4; font-size: 19px; font-weight: 700; font-family: inherit; }
-.eclipse-lab svg .ecl-shadow-name { fill: #bfd9ff; font-size: 15px; }
-.eclipse-lab svg .ecl-observer-label { fill: #6ee7b7; font-size: 16px; }
-.ecl-axis { stroke: #344258; stroke-width: 1; stroke-dasharray: 5 7; }
-.ecl-penumbra { fill: #9eafc8; fill-opacity: .25; }
-.ecl-umbra { fill: #233d69; fill-opacity: .93; }
-.ecl-rays { stroke: #f6cd76; stroke-width: 1.5; opacity: .85; }
-.ecl-rays line { stroke-dasharray: 6 10; stroke-linecap: round; animation: ecl-light-flow .65s linear infinite; }
-@keyframes ecl-light-flow { from { stroke-dashoffset: 0; } to { stroke-dashoffset: -16; } }
-body:not([data-topic-view="observe"]) .ecl-rays line,
-.eclipse-lab .ecl-rays[visibility="hidden"] line { animation-play-state: paused; }
-@media (prefers-reduced-motion: reduce) { .ecl-rays line { animation: none; } }
-.ecl-person { filter: drop-shadow(0 0 2px #071120); }
-.ecl-legend { display: flex; gap: 12px 24px; flex-wrap: wrap; padding: 0 18px 18px; font-size: 12px; color: #b8c9de; }
-.ecl-legend span { display: flex; align-items: center; gap: 7px; }
-.ecl-legend i { display: inline-block; width: 14px; height: 14px; border: 1px solid #6880a4; border-radius: 3px; flex-shrink: 0; }
-.ecl-umbra-key { background: #233d69; }.ecl-penumbra-key { background: #66758d; }
-.ecl-observation { padding: 14px; display: flex; flex-direction: column; gap: 12px; overflow-y: auto; }
-.ecl-observation h2 { font-size: 15px; color: #b9cce4; margin: 0; }
-.ecl-view { display: block; width: 100%; max-width: 280px; flex: 0 0 auto; margin: 0 auto; }
-.ecl-view text { font-size: 12px !important; font-weight: 500 !important; }
-.ecl-result { min-height: 0; }
-.ecl-result strong { display: block; font-size: 22px; color: #7dd3fc; margin-bottom: 10px; }
-.ecl-result p { font-size: 14px; line-height: 1.75; color: #bccce0; word-break: keep-all; }
-.ecl-position { margin-top: 6px; padding: 3px 10px; border: 1px solid #273a56; border-radius: 8px; display: grid; grid-template-columns: max-content minmax(100px,260px) max-content; justify-content: center; gap: 12px; align-items: center; height: 38px; background: #0b1526; }
-.ecl-position label { font-size: 14px; }.ecl-position input { width: 100%; accent-color: #38bdf8; cursor: pointer; }
-.ecl-presets button { padding: 8px 12px; font-size: 13px; }
-.ecl-note { font-size: 12px; color: #8197b2; line-height: 1.7; margin: 14px 2px; }
-.ecl-more { padding: 12px 2px; border-top: 1px solid #23324b; font-size: 14px; }
-.ecl-more summary { cursor: pointer; color: #a9c1dc; }.ecl-more p { max-width: 900px; margin-top: 12px; color: #aabbd1; line-height: 1.8; }
+.space-topic-page .tab-pane#tab-eclipse { max-width: 1680px; margin: 0 auto; padding: 0 12px 8px; color: #e2e8f0; }
+body[data-space-topic="eclipses"] .view-container { padding-left: 0; padding-right: 0; }
 html:has(body[data-space-topic="eclipses"]) { background: #030712; }
+.ecl-content { min-width: 0; }
+.ecl-controls { display: flex; align-items: center; gap: 28px; min-height: 44px; padding: 0 340px 0 44px; }
+.ecl-time-note { font-size: 12px; color: #a5b3c7; white-space: nowrap; }
+.ecl-options { display: flex; gap: 16px; font-size: 12px; color: #b7c8df; white-space: nowrap; }
+.ecl-options label { display: flex; align-items: center; gap: 5px; cursor: pointer; }
+.eclipse-lab button { cursor: pointer; border: 1px solid #34445f; border-radius: 6px; background: #111d30; color: #cbd5e1; font: inherit; font-weight: 600; }
+.eclipse-lab button[aria-pressed="true"] { background: #075e82; border-color: #38bdf8; color: #fff; }
+.eclipse-lab button:focus-visible, .eclipse-lab input:focus-visible, .eclipse-lab summary:focus-visible { outline: 2px solid #7dd3fc; outline-offset: 3px; }
+.ecl-diagram-panel { height: clamp(290px,47dvh,540px); min-width: 0; overflow: hidden; border: 1px solid #26354b; border-radius: 12px; background: radial-gradient(ellipse at 47% 50%,#101f34,#050b16 75%); }
+.ecl-diagram { display: block; width: 100%; height: 100%; }
+.eclipse-lab svg text { fill: #d7e5f5; font-family: inherit; font-size: 20px; font-weight: 600; paint-order: stroke; stroke: #07101e; stroke-width: 3px; stroke-linejoin: round; }
+.eclipse-lab svg .ecl-sub-label { font-size: 15px; fill: #99adc7; }
+.eclipse-lab svg .ecl-shadow-name { fill: #b2c8e8; font-size: 16px; font-weight: 500; }
+.eclipse-lab svg .ecl-solar-label, .eclipse-lab svg .ecl-sun-label { fill: #f9cf7b; }
+.eclipse-lab svg .ecl-lunar-label { fill: #b5bcfa; }
+.eclipse-lab svg .ecl-observer-label { fill: #6ee7b7; font-size: 14px; }
+.ecl-label-leader { stroke: #9aaecb; stroke-width: 1; fill: none; }
+.ecl-axis { stroke: #47607d; stroke-width: 1; stroke-dasharray: 3 8; opacity: .4; }
+.ecl-penumbra { fill: #9bb3d1; fill-opacity: .18; }
+.ecl-umbra { fill: #142444; fill-opacity: .92; }
+.ecl-rays { stroke: #e9c87c; stroke-width: 1.1; opacity: .6; }
+.ecl-rays line { stroke-dasharray: 5 9; stroke-linecap: round; animation: ecl-light-flow .8s linear infinite; }
+@keyframes ecl-light-flow { from { stroke-dashoffset: 0; } to { stroke-dashoffset: -14; } }
+body:not([data-topic-view="observe"]) .ecl-rays line, .ecl-rays[visibility="hidden"] line { animation-play-state: paused; }
+@media(prefers-reduced-motion: reduce) { .ecl-rays line { animation: none; } }
+.ecl-person { filter: drop-shadow(0 0 2px #071120); }
+.ecl-comparison { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 10px; margin-top: 10px; }
+.ecl-observation { min-width: 0; overflow: hidden; border: 1px solid #2e354a; border-radius: 12px; background: #050a13; }
+.ecl-observation[data-ecl-card="solar"] { border-top-color: #a88448; }
+.ecl-observation[data-ecl-card="lunar"] { border-top-color: #6f669a; }
+.ecl-card-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 16px 0; }
+.ecl-card-heading h2 { font-size: 18px; margin: 0; color: #f5dfb7; }
+.ecl-card-heading h2 span { font-size: 12px; font-weight: 400; color: #a9b8cd; margin-left: 8px; }
+.ecl-card-heading > span { color: #a9b8cd; font-size: 12px; }
+.ecl-observation[data-ecl-card="lunar"] h2 { color: #d1cafa; }
+.ecl-sky { position: relative; height: clamp(175px,25dvh,310px); }
+.ecl-view { display: block; width: 100%; height: 100%; object-fit: contain; }
+.ecl-sky-caption { position: absolute; bottom: 6px; left: 0; width: 100%; text-align: center; font-size: 11px; color: #889ab1; pointer-events: none; }
+.ecl-result { display: flex; align-items: baseline; gap: 12px; padding: 0 16px 12px; min-height: 35px; }
+.ecl-result strong { color: #e8eef8; font-size: 18px; white-space: nowrap; }
+.ecl-result p { margin: 0; font-size: 12px; color: #aabbd2; line-height: 1.5; word-break: keep-all; }
+.ecl-position { display: grid; grid-template-columns: max-content max-content minmax(60px,1fr) max-content; align-items: center; gap: 10px; padding: 10px 12px; border-top: 1px solid #233047; background: #0b1424; }
+.ecl-position label { font-size: 12px; white-space: nowrap; color: #b5c7df; }
+.ecl-position input { width: 100%; min-width: 0; accent-color: #38bdf8; cursor: pointer; }
+.ecl-play { font-size: 11px !important; padding: 6px 9px; min-height: 30px; white-space: nowrap; }
+.ecl-presets { display: flex; gap: 4px; }
+.ecl-presets button { padding: 6px 9px; min-height: 30px; font-size: 11px; white-space: nowrap; }
+.ecl-more { margin: 8px 0 0; padding: 3px 4px; color: #96aac6; font-size: 12px; }
+.ecl-more summary { cursor: pointer; }
+.ecl-info-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 10px 24px; padding: 8px 10px; line-height: 1.8; }
+.ecl-info-grid p { margin: 0; }
+.ecl-info-grid b { color: #d0def1; }
 .ecl-quiz-figure { margin: 16px 0; padding: 12px; border-radius: 10px; background: #071120; }
 .ecl-quiz-figure svg { display: block; width: 100%; }
 .ecl-quiz-figure figcaption { margin-top: 6px; color: #8fa6c2; font-size: 11px; }
-/* The Sun is clipped by the top edge of the model, not by a floating inner box. */
-.ecl-diagram-panel { position: relative; }
-.ecl-arrangement { position: absolute; top: 12px; left: 16px; padding: 0; z-index: 1; }
-.ecl-diagram text { font-size: 24px; }
-.ecl-diagram .ecl-shadow-name { font-size: 22px; }
-.ecl-diagram .ecl-observer-label { font-size: 24px; }
-
-.ecl-content { min-width: 0; }
-.ecl-diagram-panel { min-height: 0; }
-.ecl-controls button { padding: 7px 14px; min-height: 34px; }
-.ecl-presets button { padding: 5px 10px; min-height: 30px; }
-.ecl-observation .ecl-legend { flex-direction: column; gap: 7px; padding: 0; line-height: 1.5; }
-.ecl-observation .ecl-more { padding: 9px 0; font-size: 12px; }
-.ecl-observation .ecl-more p { margin-bottom: 0; }
+@media(max-width: 1150px) {
+    .ecl-position { grid-template-columns: max-content max-content minmax(0,1fr); gap: 6px; }
+    .ecl-presets { grid-column: 1 / -1; justify-content: flex-end; }
+    .ecl-result { display: block; }
+    .ecl-result p { margin-top: 4px; }
+    .ecl-card-heading > span { font-size: 11px; }
+    .ecl-diagram-panel { height: clamp(280px,43dvh,470px); }
+}
 @media(max-width: 760px) {
-    .space-topic-page .tab-pane#tab-eclipse { padding: 52px 8px 8px; }
-    .ecl-content { display: flex; flex-direction: column; }
-    .ecl-controls { order: 0; padding: 0; height: 36px; gap: 12px; justify-content: space-between; }
-    .ecl-controls button { padding: 6px 12px; }
-    .ecl-options { gap: 8px; font-size: 12px; }
-    .ecl-layout { display: contents; }
-    .ecl-diagram-panel { order: 1; height: max(400px,calc(100svh - 190px)); }
-    .ecl-position { order: 2; height: auto; grid-template-columns: 64px minmax(0,1fr); gap: 6px; padding: 6px 8px; }
-    .ecl-presets { grid-column: 1/-1; justify-content: center; }
-    .ecl-position label { font-size: 12px; }
-    .ecl-observation { order: 3; margin-top: 10px; display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 10px; padding: 12px; overflow: visible; }
-    .ecl-observation h2,.ecl-observation .ecl-legend,.ecl-observation .ecl-more { grid-column: 1/-1; }
-    .ecl-result { align-self: center; }
-    .ecl-result strong { font-size: 18px; }
-    .ecl-result p { font-size: 13px; }
-    .ecl-arrangement { font-size: 13px; top: 10px; left: 12px; }
-    .ecl-diagram text { font-size: 24px; }
-    .ecl-view text { font-size: 16px !important; }
+    .space-topic-page .tab-pane#tab-eclipse { padding: 48px 8px 8px; }
+    .ecl-controls { min-height: 34px; padding: 0 2px; gap: 8px; justify-content: space-between; }
+    .ecl-time-note { font-size: 10px; }
+    .ecl-options { font-size: 10px; gap: 8px; }
+    .ecl-diagram-panel { height: auto; aspect-ratio: 1120 / 440; }
+    .ecl-comparison { grid-template-columns: minmax(0,1fr); }
+    .ecl-sky { height: 210px; }
+    .ecl-result { display: block; }
+    .ecl-result strong { font-size: 17px; }
+    .ecl-result p { font-size: 12px; }
+    .ecl-card-heading { padding: 10px 12px 0; }
+    .ecl-position { grid-template-columns: max-content max-content minmax(0,1fr); }
+    .ecl-presets { grid-column: 1 / -1; justify-content: center; }
+    .ecl-presets button { min-height: 34px; padding: 6px 14px; }
+    .ecl-info-grid { grid-template-columns: minmax(0,1fr); }
 }
