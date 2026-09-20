@@ -732,6 +732,7 @@ function movePrediction(dt){
 // 지구본 지도. 지구본 앱(learning/inquiry/globe)의 라이브러리와 지도 조각을 그대로 쓴다.
 // 경위도를 그대로 편 평면 지도는 위도가 높을수록 동서로 늘어나, 아이슬란드가 한국보다 1.84배 커 보였다.
 // 지구본에서는 땅 모양과 넓이가 실제와 같다. 게임 규칙(이동·충돌·길찾기)은 그대로고, 그리는 방식만 바뀐다.
+let viewSpanX=0,viewSpanY=0;
 const GLOBE_BASE='/learning/inquiry/globe/';
 let globeMap=null,globeReady=false,globeLastCenter=null;
 function startGlobeMap(){
@@ -771,7 +772,11 @@ function decodeSoon(img){return Promise.race([img.decode().catch(()=>{}),new Pro
 function drawMap(cw,ch){
   if(globeReady)ctx.clearRect(0,0,cw,ch);else{ctx.fillStyle='#07141a';ctx.fillRect(0,0,cw,ch)}
   if(!self)return null;
-  const viewW=cw/zoom,viewH=ch/zoom,left=self.x-viewW/2,top=self.y-viewH/2;
+  // 지구본에서는 위도가 높을수록 한 화면에 더 넓은 경도가 담긴다(1/cos). 바다·얼음·바람 층이
+  // 평면 기준으로 좁게 계산하면 화면 가운데만 칠해져 얼음이 배를 따라다니는 것처럼 보인다.
+  const latNow=90-(self.y/MAP_H)*180;
+  viewSpanX=cw/zoom*(globeReady?1/Math.max(.035,Math.cos(latNow*Math.PI/180)):1);viewSpanY=ch/zoom;
+  const viewW=viewSpanX,viewH=viewSpanY,left=self.x-viewW/2,top=self.y-viewH/2;
   syncGlobeCamera();
   if(!globeReady)drawNaturalEarthLayer(cw,ch,left,top);
   drawSeaSurface(cw,ch,left,top);
@@ -801,7 +806,7 @@ function drawIceLayer(cw,ch,left,top){
   if(!world)return;const ICE=UW3Terrain.ICE,ICEW=UW3Terrain.ICE_WINTER,FRINGE=1.3,latOf=cy=>90-(cy+.5)/WH*180,day=seasonDay();
   const cy0=Math.max(0,Math.floor(top/TS)-1),cy1=Math.min(WH-1,Math.ceil((top+ch/zoom)/TS)+1);
   if(latOf(cy0)<ICEW.north-1-FRINGE&&latOf(cy1)>ICEW.south+1+FRINGE)return;
-  const cx0=Math.floor(left/TS)-1,cx1=Math.ceil((left+cw/zoom)/TS)+1,w=cx1-cx0+1,h=cy1-cy0+1;
+  const cx0=Math.floor(left/TS)-1,cx1=Math.ceil((left+viewSpanX)/TS)+1,w=cx1-cx0+1,h=cy1-cy0+1;
   if(!ICE_BUF)ICE_BUF=document.createElement('canvas');if(ICE_BUF.width!==w||ICE_BUF.height!==h){ICE_BUF.width=w;ICE_BUF.height=h}
   const bctx=ICE_BUF.getContext('2d'),img=bctx.createImageData(w,h),d=img.data;let any=false;
   for(let y=0;y<h;y++){const cy=cy0+y,lat=latOf(cy);if(lat<ICE.north-1-FRINGE&&lat>ICE.south+1+FRINGE)continue;
@@ -816,17 +821,19 @@ function drawIceLayer(cw,ch,left,top){
   if(!any)return;bctx.putImageData(img,0,0);
   ctx.save();ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';ctx.filter=`blur(${Math.max(1.5,TS*zoom*.45).toFixed(1)}px)`;
   if(globeReady){
-    // 지구본에서는 가로줄로 나눠 그린다. 줄마다 제자리에 붙어야 얼음이 땅과 어긋나지 않는다.
-    const strips=Math.min(h,28),rows=h/strips;
+    // 지구본에서는 가로줄 하나하나를 제자리에 붙여 그린다. 줄을 굵게 잡으면 계단처럼 보인다.
+    const strips=Math.min(h,120),rows=h/strips;
     for(let i=0;i<strips;i++){
       const r0=Math.floor(i*rows),r1=Math.min(h,Math.floor((i+1)*rows));if(r1<=r0)continue;
       const a=globeScreenPoint(cx0*TS,(cy0+r0)*TS),b=globeScreenPoint((cx0+w)*TS,(cy0+r1)*TS);
       if(a.x<-9000||b.x<-9000)continue;
-      ctx.drawImage(ICE_BUF,0,r0,w,r1-r0,a.x,a.y,b.x-a.x,b.y-a.y);
+      // 줄 사이가 0.5픽셀이라도 벌어지면 흰 줄이 생긴다. 아래로 조금 겹쳐 그린다.
+      ctx.drawImage(ICE_BUF,0,r0,w,r1-r0,a.x,a.y,b.x-a.x,(b.y-a.y)+1);
     }
   }else ctx.drawImage(ICE_BUF,(cx0*TS-left)*zoom,(cy0*TS-top)*zoom,w*TS*zoom,h*TS*zoom);
   ctx.filter='none';
-  const lon=mapLonAt(self.x),edgeN=((90-UW3Terrain.iceLimitNorthAt(lon,day))/180*MAP_H-top)*zoom,edgeS=((90-UW3Terrain.iceLimitSouthAt(lon,day))/180*MAP_H-top)*zoom;
+  const lon=mapLonAt(self.x),edgeY=(limitLat)=>screenPoint(self.x,(90-limitLat)/180*MAP_H,cw,ch).y;
+  const edgeN=edgeY(UW3Terrain.iceLimitNorthAt(lon,day)),edgeS=edgeY(UW3Terrain.iceLimitSouthAt(lon,day));
   ctx.font='bold 14px "Malgun Gothic"';ctx.textAlign='center';ctx.lineWidth=4;ctx.strokeStyle='rgba(240,247,250,.85)';ctx.fillStyle='#35566b';const label='얼음 바다 · 1520년의 배로는 갈 수 없음';
   // 글씨는 얼음 띠의 한가운데에 둔다(가장자리 바로 곁에 두면 땅 위에 얹히기 쉽다).
   if(edgeN>50){const y=Math.max(96,Math.min(edgeN/2,edgeN-30));ctx.strokeText(label,cw/2,y);ctx.fillText(label,cw/2,y)}
@@ -836,7 +843,7 @@ function drawIceLayer(cw,ch,left,top){
 
 function drawSeaSurface(cw,ch,left,top,now=performance.now()){
   if(mode!=='sea'||choiceModalActive())return;
-  const spacing=isPhoneMapView()?180:145,viewW=cw/zoom,viewH=ch/zoom,c0x=Math.floor((left-spacing)/spacing),c1x=Math.ceil((left+viewW+spacing)/spacing),c0y=Math.max(0,Math.floor((top-spacing)/spacing)),c1y=Math.min(Math.ceil(MAP_H/spacing),Math.ceil((top+viewH+spacing)/spacing));
+  const spacing=isPhoneMapView()?180:145,viewW=viewSpanX,viewH=viewSpanY,c0x=Math.floor((left-spacing)/spacing),c1x=Math.ceil((left+viewW+spacing)/spacing),c0y=Math.max(0,Math.floor((top-spacing)/spacing)),c1y=Math.min(Math.ceil(MAP_H/spacing),Math.ceil((top+viewH+spacing)/spacing));
   ctx.save();ctx.globalCompositeOperation='screen';ctx.lineCap='round';ctx.imageSmoothingEnabled=true;
   for(let gy=c0y;gy<=c1y;gy++)for(let rawGx=c0x;rawGx<=c1x;rawGx++){
     const gx=((rawGx%Math.ceil(SPAN/spacing))+Math.ceil(SPAN/spacing))%Math.ceil(SPAN/spacing),seed=hashUnit(gx,gy,89),baseX=wrapX((gx+seed*.86+.07)*spacing),baseY=Math.max(4,Math.min(MAP_H-4,(gy+hashUnit(gx,gy,91)*.82+.09)*spacing));
@@ -865,7 +872,7 @@ function drawOceanCurrents(cw,ch,left,top,now=performance.now()*SIMULATION_RATE)
 }
 function drawWindClouds(cw,ch,left,top,now=performance.now()){
   if(mode!=='sea'||choiceModalActive()||!windCloudAtlas.complete)return;
-  const viewW=cw/zoom,viewH=ch/zoom,cellsX=Math.ceil(SPAN/WIND_CLOUD_CELL_W),c0x=Math.floor((left-WIND_CLOUD_CELL_W)/WIND_CLOUD_CELL_W),c1x=Math.ceil((left+viewW+WIND_CLOUD_CELL_W)/WIND_CLOUD_CELL_W),c0y=Math.max(0,Math.floor((top-WIND_CLOUD_CELL_H)/WIND_CLOUD_CELL_H)),c1y=Math.min(Math.ceil(MAP_H/WIND_CLOUD_CELL_H)-1,Math.ceil((top+viewH+WIND_CLOUD_CELL_H)/WIND_CLOUD_CELL_H));
+  const viewW=viewSpanX,viewH=viewSpanY,cellsX=Math.ceil(SPAN/WIND_CLOUD_CELL_W),c0x=Math.floor((left-WIND_CLOUD_CELL_W)/WIND_CLOUD_CELL_W),c1x=Math.ceil((left+viewW+WIND_CLOUD_CELL_W)/WIND_CLOUD_CELL_W),c0y=Math.max(0,Math.floor((top-WIND_CLOUD_CELL_H)/WIND_CLOUD_CELL_H)),c1y=Math.min(Math.ceil(MAP_H/WIND_CLOUD_CELL_H)-1,Math.ceil((top+viewH+WIND_CLOUD_CELL_H)/WIND_CLOUD_CELL_H));
   ctx.save();ctx.globalCompositeOperation='screen';ctx.imageSmoothingEnabled=false;
   for(let cy=c0y;cy<=c1y;cy++)for(let rawCx=c0x;rawCx<=c1x;rawCx++){
     const cx=((rawCx%cellsX)+cellsX)%cellsX,baseX=wrapX((cx+hashUnit(cx,cy,11)*.88+.06)*WIND_CLOUD_CELL_W),baseY=Math.max(25,Math.min(MAP_H-25,(cy+hashUnit(cx,cy,23)*.82+.09)*WIND_CLOUD_CELL_H)),wind=CDS95Wind.windAtPixel(baseX,baseY,classGameMinutes);
