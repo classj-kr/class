@@ -15,17 +15,14 @@
 
 body { background-color: var(--bg-color); color: var(--text-main); line-height: 1.5; padding-bottom: 60px; }
 
-/* Header */
-.app-header { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; background-color: var(--card-bg); border-bottom: 1px solid var(--border-color); position: sticky; top: 0; z-index: 100; }
-.back-button { color: var(--text-main); text-decoration: none; display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background: rgba(0,0,0,0.04); }
-.back-button:hover { background: rgba(0,0,0,0.08); }
-#schoolNameTitle { font-size: 1.2rem; font-weight: 700; color: var(--primary); margin: 0; text-align: center; flex: 1; }
+.back-button { flex: 0 0 auto; color: var(--text-main); text-decoration: none; display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 50%; }
 .text-button { background: none; border: none; color: var(--text-muted); font-size: 0.9rem; cursor: pointer; }
 .text-button:hover { color: var(--text-main); }
 
 /* Tabs */
-.tabs-nav { background: var(--card-bg); border-bottom: 1px solid var(--border-color); overflow-x: auto; }
-.tabs { display: flex; padding: 0 20px; white-space: nowrap; }
+.tabs-nav { display: flex; align-items: center; gap: 12px; background: var(--card-bg); border-bottom: 1px solid var(--border-color); position: sticky; top: 0; z-index: 100; }
+.tabs { display: flex; padding: 0 20px; white-space: nowrap; overflow-x: auto; flex: 1 1 auto; min-width: 0; }
+.tabs-nav > .text-button { flex: 0 0 auto; padding-right: 20px; }
 .tab-button { padding: 14px 20px; background: none; border: none; color: var(--text-muted); font-size: 0.95rem; font-weight: 700; cursor: pointer; border-bottom: 3px solid transparent; transition: all 0.2s; min-height: 48px; }
 .tab-button.active { color: var(--primary); border-bottom-color: var(--primary); }
 .tab-button:hover:not(.active) { color: var(--text-main); }

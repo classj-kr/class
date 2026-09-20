@@ -6641,13 +6641,21 @@ function createClassroomPlatform(options = {}) {
     const { profile } = await requireSchoolAdmin(req);
     const year = Number(req.query.academicYear || new Date().getFullYear());
     const result = await pool.query(
-      `SELECT grade, COALESCE(SUM(weekly_hours), 0) AS total_weekly_hours
+      `SELECT grade,
+              COALESCE(SUM(weekly_hours), 0) AS total_weekly_hours,
+              COALESCE(SUM(annual_required_hours), 0) AS total_annual_hours
        FROM school_curriculum_hours
        WHERE school_id = $1 AND academic_year = $2
        GROUP BY grade`,
       [profile.school_id, year]
     );
-    res.json({ totals: result.rows.map(r => ({ grade: r.grade, totalWeeklyHours: Number(r.total_weekly_hours) })) });
+    res.json({
+      totals: result.rows.map(r => ({
+        grade: r.grade,
+        totalWeeklyHours: Number(r.total_weekly_hours),
+        totalAnnualHours: Number(r.total_annual_hours)
+      }))
+    });
   }));
 
   router.post("/school-admin/curriculum-hours", asyncRoute(async (req, res) => {
@@ -7013,32 +7021,15 @@ function createClassroomPlatform(options = {}) {
     res.json({ timetable: result.rows });
   }));
 
+  // 학교 설정에 등록한 특별실만 내려준다. 시간표에 쓰인 이름을 섞어 주면 한 번 잘못
+  // 친 이름이 목록에 눌러앉아 그게 진짜 특별실인 것처럼 보인다.
   router.get("/school-admin/rooms", asyncRoute(async (req, res) => {
     const { profile } = await requireSchoolAdmin(req);
-    const year = Number(req.query.academicYear || new Date().getFullYear());
-    // 공식 특별실 명단(학교 설정에서 관리) + 시간표에 이미 쓰인 방 이름을 합쳐서 보여준다.
-    // 명단이 우선 정렬되고, 명단에 없지만 과거에 입력된 이름도 사라지지 않는다.
-    const [rosterResult, usedResult] = await Promise.all([
-      pool.query(
-        `SELECT room_name FROM school_special_rooms WHERE school_id = $1 ORDER BY sort_order, id`,
-        [profile.school_id]
-      ),
-      pool.query(
-        `SELECT DISTINCT room_name FROM school_master_timetable
-         WHERE school_id = $1 AND academic_year = $2 AND room_name IS NOT NULL
-         ORDER BY room_name`,
-        [profile.school_id, year]
-      )
-    ]);
-    const seen = new Set();
-    const rooms = [];
-    for (const r of rosterResult.rows.concat(usedResult.rows)) {
-      if (r.room_name && !seen.has(r.room_name)) {
-        seen.add(r.room_name);
-        rooms.push(r.room_name);
-      }
-    }
-    res.json({ rooms });
+    const result = await pool.query(
+      `SELECT room_name FROM school_special_rooms WHERE school_id = $1 ORDER BY room_name`,
+      [profile.school_id]
+    );
+    res.json({ rooms: result.rows.map(r => r.room_name).filter(Boolean) });
   }));
 
   router.put("/school-admin/room-timetable", asyncRoute(async (req, res) => {

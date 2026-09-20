@@ -666,6 +666,23 @@ document.addEventListener('DOMContentLoaded', () => {
         targetSchoolDaysInput.addEventListener('input', calculateSchoolDaysAudit);
     }
 
+    // 시수는 34주가 아니라 실제로 수업하는 주수로 따져야 한다. 국가 기준시수는 34주를
+    // 기준으로 적힌 수이지만 학교는 190일, 곧 38주를 수업하므로 34로 나누면 주당 시수가
+    // 실제 시간표보다 두세 시간 많게 나온다. 학사일정에서 센 학년별 수업일수를 쓰고,
+    // 아직 세기 전이면 목표 수업일수(기본 190일)로 본다.
+    let perGradeSchoolDaysCache = {};
+
+    function schoolDaysForGrade(grade) {
+        const counted = Number(perGradeSchoolDaysCache[grade] || 0);
+        if (counted > 0) return counted;
+        const target = Number(targetSchoolDaysInput ? targetSchoolDaysInput.value : 0);
+        return target > 0 ? target : 190;
+    }
+
+    function schoolWeeksForGrade(grade) {
+        return schoolDaysForGrade(grade) / 5;
+    }
+
     // 재량휴업일은 학년별로 다르게 지정될 수 있으므로(예: 6학년 졸업식 날 1~5학년만
     // 재량휴업), 수업일수는 학년마다 따로 세야 한다. 학교 전체를 하나의 숫자로만
     // 세면 특정 학년만 쉬는 날도 전교생이 쉬는 것처럼 잘못 계산된다.
@@ -706,6 +723,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
+        perGradeSchoolDaysCache = perGradeSchoolDays;
         const minSchoolDays = Math.min(...Object.values(perGradeSchoolDays));
 
         if (calculatedSchoolDaysVal) calculatedSchoolDaysVal.textContent = `${minSchoolDays}일`;
@@ -803,36 +821,40 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- 시수편성 (Curriculum Hours Allocation & Adjustment) ---
+    // 2022 개정 교육과정 시간 배당 기준이다. 국가가 정한 건 학년군 2년 총량이라
+    // (1~2학년군 1,744 · 3~4학년군 1,972 · 5~6학년군 2,176시간) 그걸 두 학년으로 나눠
+    // 적었다. base는 연간 기준시수, weekly는 수업일 190일(38주)로 나눈 주당 시수다.
+    // 34주로 나누면 주당 시수가 실제 시간표보다 두세 시간 많게 나온다.
     const GRADE_SUBJECT_BASE_HOURS = {
         1: [
-            { name: '국어', base: 210, weekly: 6, category: 'SUBJECT' },
-            { name: '수학', base: 130, weekly: 4, category: 'SUBJECT' },
-            { name: '바른 생활', base: 40, weekly: 1, category: 'SUBJECT' },
-            { name: '슬기로운 생활', base: 90, weekly: 3, category: 'SUBJECT' },
-            { name: '즐거운 생활', base: 190, weekly: 6, category: 'SUBJECT' },
-            { name: '창체(자율)', base: 70, weekly: 2, category: 'CHANGTAE' },
-            { name: '창체(동아리)', base: 60, weekly: 2, category: 'CHANGTAE' },
-            { name: '창체(봉사)', base: 40, weekly: 1, category: 'CHANGTAE' },
-            { name: '창체(진로)', base: 60, weekly: 2, category: 'CHANGTAE' }
+            { name: '국어', base: 238, weekly: 6.5, category: 'SUBJECT' },
+            { name: '수학', base: 120, weekly: 3, category: 'SUBJECT' },
+            { name: '바른 생활', base: 64, weekly: 1.5, category: 'SUBJECT' },
+            { name: '슬기로운 생활', base: 96, weekly: 2.5, category: 'SUBJECT' },
+            { name: '즐거운 생활', base: 192, weekly: 5, category: 'SUBJECT' },
+            { name: '창체(자율)', base: 68, weekly: 2, category: 'CHANGTAE' },
+            { name: '창체(동아리)', base: 34, weekly: 1, category: 'CHANGTAE' },
+            { name: '창체(봉사)', base: 10, weekly: 0.5, category: 'CHANGTAE' },
+            { name: '창체(진로)', base: 26, weekly: 0.5, category: 'CHANGTAE' }
         ],
         2: [
-            { name: '국어', base: 210, weekly: 6, category: 'SUBJECT' },
-            { name: '수학', base: 130, weekly: 4, category: 'SUBJECT' },
-            { name: '바른 생활', base: 40, weekly: 1, category: 'SUBJECT' },
-            { name: '슬기로운 생활', base: 90, weekly: 3, category: 'SUBJECT' },
-            { name: '즐거운 생활', base: 190, weekly: 6, category: 'SUBJECT' },
-            { name: '창체(자율)', base: 70, weekly: 2, category: 'CHANGTAE' },
-            { name: '창체(동아리)', base: 60, weekly: 2, category: 'CHANGTAE' },
-            { name: '창체(봉사)', base: 40, weekly: 1, category: 'CHANGTAE' },
-            { name: '창체(진로)', base: 60, weekly: 2, category: 'CHANGTAE' }
+            { name: '국어', base: 244, weekly: 6.5, category: 'SUBJECT' },
+            { name: '수학', base: 136, weekly: 3.5, category: 'SUBJECT' },
+            { name: '바른 생활', base: 80, weekly: 2, category: 'SUBJECT' },
+            { name: '슬기로운 생활', base: 128, weekly: 3.5, category: 'SUBJECT' },
+            { name: '즐거운 생활', base: 208, weekly: 5.5, category: 'SUBJECT' },
+            { name: '창체(자율)', base: 34, weekly: 1, category: 'CHANGTAE' },
+            { name: '창체(동아리)', base: 34, weekly: 1, category: 'CHANGTAE' },
+            { name: '창체(봉사)', base: 10, weekly: 0.5, category: 'CHANGTAE' },
+            { name: '창체(진로)', base: 22, weekly: 0.5, category: 'CHANGTAE' }
         ],
         3: [
-            { name: '국어', base: 204, weekly: 6, category: 'SUBJECT' },
-            { name: '수학', base: 136, weekly: 4, category: 'SUBJECT' },
-            { name: '사회', base: 102, weekly: 3, category: 'SUBJECT' },
+            { name: '국어', base: 204, weekly: 5.5, category: 'SUBJECT' },
+            { name: '수학', base: 136, weekly: 3.5, category: 'SUBJECT' },
+            { name: '사회', base: 102, weekly: 2.5, category: 'SUBJECT' },
             { name: '도덕', base: 34, weekly: 1, category: 'SUBJECT' },
-            { name: '과학', base: 102, weekly: 3, category: 'SUBJECT' },
-            { name: '체육', base: 102, weekly: 3, category: 'SUBJECT' },
+            { name: '과학', base: 102, weekly: 2.5, category: 'SUBJECT' },
+            { name: '체육', base: 102, weekly: 2.5, category: 'SUBJECT' },
             { name: '음악', base: 68, weekly: 2, category: 'SUBJECT' },
             { name: '미술', base: 68, weekly: 2, category: 'SUBJECT' },
             { name: '영어', base: 68, weekly: 2, category: 'SUBJECT' },
@@ -842,12 +864,12 @@ document.addEventListener('DOMContentLoaded', () => {
             { name: '창체(진로)', base: 24, weekly: 0.5, category: 'CHANGTAE' }
         ],
         4: [
-            { name: '국어', base: 204, weekly: 6, category: 'SUBJECT' },
-            { name: '수학', base: 136, weekly: 4, category: 'SUBJECT' },
-            { name: '사회', base: 102, weekly: 3, category: 'SUBJECT' },
+            { name: '국어', base: 204, weekly: 5.5, category: 'SUBJECT' },
+            { name: '수학', base: 136, weekly: 3.5, category: 'SUBJECT' },
+            { name: '사회', base: 102, weekly: 2.5, category: 'SUBJECT' },
             { name: '도덕', base: 34, weekly: 1, category: 'SUBJECT' },
-            { name: '과학', base: 102, weekly: 3, category: 'SUBJECT' },
-            { name: '체육', base: 102, weekly: 3, category: 'SUBJECT' },
+            { name: '과학', base: 102, weekly: 2.5, category: 'SUBJECT' },
+            { name: '체육', base: 102, weekly: 2.5, category: 'SUBJECT' },
             { name: '음악', base: 68, weekly: 2, category: 'SUBJECT' },
             { name: '미술', base: 68, weekly: 2, category: 'SUBJECT' },
             { name: '영어', base: 68, weekly: 2, category: 'SUBJECT' },
@@ -857,32 +879,32 @@ document.addEventListener('DOMContentLoaded', () => {
             { name: '창체(진로)', base: 24, weekly: 0.5, category: 'CHANGTAE' }
         ],
         5: [
-            { name: '국어', base: 204, weekly: 6, category: 'SUBJECT' },
-            { name: '수학', base: 136, weekly: 4, category: 'SUBJECT' },
-            { name: '사회', base: 102, weekly: 3, category: 'SUBJECT' },
+            { name: '국어', base: 204, weekly: 5.5, category: 'SUBJECT' },
+            { name: '수학', base: 136, weekly: 3.5, category: 'SUBJECT' },
+            { name: '사회', base: 102, weekly: 2.5, category: 'SUBJECT' },
             { name: '도덕', base: 34, weekly: 1, category: 'SUBJECT' },
-            { name: '과학', base: 102, weekly: 3, category: 'SUBJECT' },
+            { name: '과학', base: 102, weekly: 2.5, category: 'SUBJECT' },
             { name: '실과', base: 68, weekly: 2, category: 'SUBJECT' },
-            { name: '체육', base: 102, weekly: 3, category: 'SUBJECT' },
+            { name: '체육', base: 102, weekly: 2.5, category: 'SUBJECT' },
             { name: '음악', base: 68, weekly: 2, category: 'SUBJECT' },
             { name: '미술', base: 68, weekly: 2, category: 'SUBJECT' },
-            { name: '영어', base: 68, weekly: 2, category: 'SUBJECT' },
+            { name: '영어', base: 102, weekly: 2.5, category: 'SUBJECT' },
             { name: '창체(자율)', base: 34, weekly: 1, category: 'CHANGTAE' },
             { name: '창체(동아리)', base: 34, weekly: 1, category: 'CHANGTAE' },
             { name: '창체(봉사)', base: 10, weekly: 0.5, category: 'CHANGTAE' },
             { name: '창체(진로)', base: 24, weekly: 0.5, category: 'CHANGTAE' }
         ],
         6: [
-            { name: '국어', base: 204, weekly: 6, category: 'SUBJECT' },
-            { name: '수학', base: 136, weekly: 4, category: 'SUBJECT' },
-            { name: '사회', base: 102, weekly: 3, category: 'SUBJECT' },
+            { name: '국어', base: 204, weekly: 5.5, category: 'SUBJECT' },
+            { name: '수학', base: 136, weekly: 3.5, category: 'SUBJECT' },
+            { name: '사회', base: 102, weekly: 2.5, category: 'SUBJECT' },
             { name: '도덕', base: 34, weekly: 1, category: 'SUBJECT' },
-            { name: '과학', base: 102, weekly: 3, category: 'SUBJECT' },
+            { name: '과학', base: 102, weekly: 2.5, category: 'SUBJECT' },
             { name: '실과', base: 68, weekly: 2, category: 'SUBJECT' },
-            { name: '체육', base: 102, weekly: 3, category: 'SUBJECT' },
+            { name: '체육', base: 102, weekly: 2.5, category: 'SUBJECT' },
             { name: '음악', base: 68, weekly: 2, category: 'SUBJECT' },
             { name: '미술', base: 68, weekly: 2, category: 'SUBJECT' },
-            { name: '영어', base: 68, weekly: 2, category: 'SUBJECT' },
+            { name: '영어', base: 102, weekly: 2.5, category: 'SUBJECT' },
             { name: '창체(자율)', base: 34, weekly: 1, category: 'CHANGTAE' },
             { name: '창체(동아리)', base: 34, weekly: 1, category: 'CHANGTAE' },
             { name: '창체(봉사)', base: 10, weekly: 0.5, category: 'CHANGTAE' },
@@ -946,6 +968,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function renderCurriculumTable(rowsData, previousYear) {
+        const weeks = schoolWeeksForGrade(Number(curriculumGradeSelect ? curriculumGradeSelect.value : 1));
         curriculumTableBody.innerHTML = '';
         let totalWeekly = 0;
         let totalBase = 0;
@@ -961,7 +984,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         rowsData.forEach(row => {
             const finalAnnual = row.base + (row.adj || 0);
-            const calcAnnual = row.weekly * 34; // 34 weeks
+            const calcAnnual = Math.round(row.weekly * weeks);
             const diff = calcAnnual - finalAnnual;
 
             totalWeekly += row.weekly;
@@ -1004,7 +1027,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         curriculumTableFoot.innerHTML = `
             <tr>
-                <td colspan="2">합계</td>
+                <td colspan="2">합계 (수업 ${Math.round(weeks * 10) / 10}주 기준)</td>
                 <td>${totalWeekly}시간/주</td>
                 <td>${totalBase}시간</td>
                 <td>${totalAdj >= 0 ? '+' + totalAdj : totalAdj}시간</td>
@@ -1329,19 +1352,26 @@ document.addEventListener('DOMContentLoaded', () => {
         weeklyAllocationTableBody.innerHTML = '';
 
         for (let grade = 1; grade <= 6; grade++) {
-            const target = curriculumHoursTotals[grade];
-            const locked = target === undefined;
+            const totals = curriculumHoursTotals[grade];
+            const locked = totals === undefined;
+            const weeks = schoolWeeksForGrade(grade);
+            // 목표는 연간 편성 시수를 실제 수업 주수로 나눈 값이다. 주당 시수를 그대로
+            // 목표로 쓰면 34주 기준 수와 견주게 되어 멀쩡한 시간표가 부족으로 나온다.
+            const targetWeekly = totals ? totals.annual / weeks : null;
             const tr = document.createElement('tr');
             if (locked) tr.style.opacity = '0.5';
             let cellsHtml = `<td style="font-weight:800;">${grade}학년</td>`;
             for (let day = 1; day <= 5; day++) {
                 const found = weeklyAllocationData.find(a => a.grade === grade && a.day_of_week === day);
                 const count = found ? found.period_count : 0;
-                const disabledAttr = locked ? ' disabled title="먼저 시수편성 탭에서 이 학년의 주당 시수를 정하세요"' : '';
+                const disabledAttr = locked ? ' disabled title="먼저 시수편성 탭에서 이 학년의 시수를 저장하세요"' : '';
                 cellsHtml += `<td><input type="number" min="0" max="8" class="form-input weekly-count-input" data-grade="${grade}" data-day="${day}" value="${count}" style="width:56px; text-align:center;"${disabledAttr}></td>`;
             }
             cellsHtml += `<td class="weekly-total" data-grade-total="${grade}" style="font-weight:800;">0</td>`;
-            cellsHtml += `<td>${target !== undefined ? target + '시간' : '-'}</td>`;
+            const targetTitle = totals
+                ? `연간 ${totals.annual}시간 ÷ ${Math.round(weeks * 10) / 10}주`
+                : '';
+            cellsHtml += `<td title="${targetTitle}">${targetWeekly !== null ? (Math.round(targetWeekly * 10) / 10) + '시간' : '-'}</td>`;
             cellsHtml += `<td class="weekly-status" data-grade-status="${grade}"></td>`;
             tr.innerHTML = cellsHtml;
             weeklyAllocationTableBody.appendChild(tr);
@@ -1356,14 +1386,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const statusCell = weeklyAllocationTableBody.querySelector(`[data-grade-status="${grade}"]`);
             if (statusCell) {
-                const target = curriculumHoursTotals[grade];
-                if (target === undefined) {
+                const totals = curriculumHoursTotals[grade];
+                if (totals === undefined) {
                     statusCell.innerHTML = `<span style="color:var(--text-muted);">시수편성 미입력</span>`;
-                } else if (sum === target) {
-                    statusCell.innerHTML = `<span style="color:var(--success);">✅ 일치</span>`;
                 } else {
-                    const diff = target - sum;
-                    statusCell.innerHTML = `<span style="color:var(--danger); font-weight:700;">⚠️ ${diff > 0 ? diff + '시간 부족' : Math.abs(diff) + '시간 초과'}</span>`;
+                    // 주당 계를 연간으로 환산해 편성 시수와 견준다. 한 주에 몇 시간이냐가
+                    // 아니라 한 해에 몇 시간을 채우느냐가 기준이기 때문이다.
+                    const weeks = schoolWeeksForGrade(grade);
+                    const plannedAnnual = Math.round(sum * weeks);
+                    if (plannedAnnual >= totals.annual) {
+                        statusCell.innerHTML = `<span style="color:var(--success);">✅ 충족 (연 ${plannedAnnual}시간)</span>`;
+                    } else {
+                        statusCell.innerHTML = `<span style="color:var(--danger); font-weight:700;">⚠️ 연 ${totals.annual - plannedAnnual}시간 부족</span>`;
+                    }
                 }
             }
         }
@@ -1388,7 +1423,12 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             const res = await api(`/api/school-admin/curriculum-hours-summary?academicYear=${selectedAcademicYear}`);
             curriculumHoursTotals = {};
-            (res.totals || []).forEach(t => { curriculumHoursTotals[t.grade] = t.totalWeeklyHours; });
+            (res.totals || []).forEach(t => {
+                curriculumHoursTotals[t.grade] = {
+                    weekly: Number(t.totalWeeklyHours) || 0,
+                    annual: Number(t.totalAnnualHours) || 0
+                };
+            });
         } catch (err) {
             console.error('Failed to load curriculum hours summary:', err);
             curriculumHoursTotals = {};
@@ -1594,29 +1634,47 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- Special Room Timetable (특별실별 시간표) ---
-    const roomNameInput = document.getElementById('roomNameInput');
-    const roomNameList = document.getElementById('roomNameList');
-    const loadRoomTimetableBtn = document.getElementById('loadRoomTimetableBtn');
+    const roomNameSelect = document.getElementById('roomNameSelect');
     const roomTimetableEmpty = document.getElementById('roomTimetableEmpty');
     const roomTimetableContent = document.getElementById('roomTimetableContent');
     const roomTimetableMatrixBody = document.getElementById('roomTimetableMatrixBody');
     let roomTimetableData = {};
     let currentRoomName = '';
 
+    // 고를 수 있는 건 학교 설정에 등록한 특별실뿐이다. 첫 칸을 바로 띄워 주므로
+    // 따로 누를 단추가 없다.
     async function loadRoomsList() {
-        if (!roomNameList) return;
+        if (!roomNameSelect) return;
         try {
-            const res = await api(`/api/school-admin/rooms?academicYear=${selectedAcademicYear}`);
-            roomNameList.innerHTML = (res.rooms || []).map(r => `<option value="${escapeHtml(r)}"></option>`).join('');
-        } catch (error) { /* non-critical */ }
+            const res = await api('/api/school-admin/rooms');
+            const rooms = (res.rooms || []).slice().sort((a, b) => a.localeCompare(b, 'ko'));
+            if (rooms.length === 0) {
+                roomNameSelect.innerHTML = '<option value="">등록된 특별실이 없습니다</option>';
+                if (roomTimetableEmpty) {
+                    roomTimetableEmpty.hidden = false;
+                    roomTimetableEmpty.textContent = '학교 설정에서 특별실을 먼저 등록하세요.';
+                }
+                if (roomTimetableContent) roomTimetableContent.hidden = true;
+                return;
+            }
+            const previous = currentRoomName;
+            roomNameSelect.innerHTML = rooms.map(r => `<option value="${escapeHtml(r)}">${escapeHtml(r)}</option>`).join('');
+            roomNameSelect.value = rooms.includes(previous) ? previous : rooms[0];
+            await loadRoomTimetable();
+        } catch (error) {
+            if (roomTimetableEmpty) {
+                roomTimetableEmpty.hidden = false;
+                roomTimetableEmpty.textContent = error.message;
+            }
+        }
     }
 
     async function loadRoomTimetable() {
-        const roomName = roomNameInput.value.trim();
+        const roomName = roomNameSelect ? roomNameSelect.value.trim() : '';
         if (!roomName) {
             if (roomTimetableEmpty) {
                 roomTimetableEmpty.hidden = false;
-                roomTimetableEmpty.textContent = '특별실 이름을 입력하세요.';
+                roomTimetableEmpty.textContent = '학교 설정에서 특별실을 먼저 등록하세요.';
             }
             if (roomTimetableContent) roomTimetableContent.hidden = true;
             return;
@@ -1633,7 +1691,6 @@ document.addEventListener('DOMContentLoaded', () => {
             if (roomTimetableEmpty) roomTimetableEmpty.hidden = true;
             if (roomTimetableContent) roomTimetableContent.hidden = false;
             renderGridMatrix(roomTimetableMatrixBody, roomTimetableData, handleRoomCellClick);
-            await loadRoomsList();
         } catch (error) {
             if (roomTimetableEmpty) {
                 roomTimetableEmpty.hidden = false;
@@ -1687,7 +1744,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    if (loadRoomTimetableBtn) loadRoomTimetableBtn.addEventListener('click', loadRoomTimetable);
+    if (roomNameSelect) roomNameSelect.addEventListener('change', loadRoomTimetable);
 
     function getWeeklyAllocationTotal(grade) {
         return weeklyAllocationData
