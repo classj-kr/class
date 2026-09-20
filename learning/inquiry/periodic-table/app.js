@@ -15,11 +15,8 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Quiz state
         quiz: {
-            score: 0,
-            streak: 0,
             currentQuestion: null,
-            answered: false,
-            hadWrong: false
+            answered: false
         },
 
         // Molecule lab state
@@ -50,6 +47,30 @@ document.addEventListener('DOMContentLoaded', () => {
     const bohrCanvas = document.getElementById('bohrAtomCanvas');
     const ctx = bohrCanvas ? bohrCanvas.getContext('2d') : null;
     const EXAM_MAX_ATOMIC_NUMBER = 20;
+
+    // Include plausible misspellings and related terms, not just other elements.
+    const QUIZ_DISTRACTORS = {
+        H:  { symbols: ['He', 'Hy', 'Hh'], names: ['산소', '질소', '탄소'] },
+        He: { symbols: ['H', 'Hel', 'HE'], names: ['베릴륨', '셀레늄', '텔루륨'] },
+        Li: { symbols: ['L', 'LI', 'Ri'], names: ['나트륨', '루비듐', '라듐'] },
+        Be: { symbols: ['B', 'BE', 'Br'], names: ['베르켈륨', '바륨', '헬륨'] },
+        B:  { symbols: ['Be', 'Bo', 'Br'], names: ['불소', '붕산', '비소'] },
+        C:  { symbols: ['Ca', 'Cl', 'Cb'], names: ['탄산', '질소', '산소'] },
+        N:  { symbols: ['Na', 'Ne', 'Ni'], names: ['질산', '산소', '수소'] },
+        O:  { symbols: ['O2', 'Ox', 'Os'], names: ['오존', '수소', '질소'] },
+        F:  { symbols: ['Fl', 'Fe', 'Fr'], names: ['붕소', '염소', '브로민'] },
+        Ne: { symbols: ['N', 'NE', 'Na'], names: ['니켈', '네오디뮴', '라돈'] },
+        Na: { symbols: ['N', 'NA', 'Ne'], names: ['질산', '칼륨', '라듐'] },
+        Mg: { symbols: ['M', 'MG', 'Mn'], names: ['망가니즈', '칼슘', '마그네타이트'] },
+        Al: { symbols: ['A', 'AL', 'Ar'], names: ['알루미나', '아메리슘', '갈륨'] },
+        Si: { symbols: ['S', 'SI', 'Sl'], names: ['규산', '비소', '탄소'] },
+        P:  { symbols: ['Ph', 'Po', 'Pb'], names: ['인듐', '인산', '황'] },
+        S:  { symbols: ['Si', 'Na', 'Su'], names: ['황산', '인', '염소'] },
+        Cl: { symbols: ['C', 'CL', 'Ci'], names: ['염산', '불소', '산소'] },
+        Ar: { symbols: ['A', 'AR', 'Al'], names: ['라돈', '크립톤', '아스타틴'] },
+        K:  { symbols: ['Ca', 'Ka', 'P'], names: ['칼슘', '갈륨', '나트륨'] },
+        Ca: { symbols: ['C', 'CA', 'K'], names: ['칼륨', '갈륨', '세슘'] }
+    };
 
     // Initialize App
     initNavTabs();
@@ -528,22 +549,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function loadNewQuestion() {
         state.quiz.answered = false;
-        state.quiz.hadWrong = false;
 
         // Every question stays inside the exam scope: elements 1 through 20.
         const available = getExamElements();
         const correctEl = available[Math.floor(Math.random() * available.length)];
 
-        // Select 3 wrong options from the same difficulty pool
-        const wrongOpts = [];
-        while (wrongOpts.length < 3) {
-            const rand = available[Math.floor(Math.random() * available.length)];
-            if (rand.number !== correctEl.number && !wrongOpts.includes(rand)) {
-                wrongOpts.push(rand);
-            }
-        }
-
-        const options = [correctEl, ...wrongOpts].sort(() => Math.random() - 0.5);
         // Render short-form periodic table exam questions.
         const qText = document.getElementById('quizQuestionText');
         const qSub = document.getElementById('quizSubText');
@@ -556,10 +566,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (chosenType === 'symbol_name') {
             qText.textContent = `원소 기호 『 ${correctEl.symbol} 』 의 올바른 한글 원소 이름은?`;
-            qSub.textContent = '기호의 첫 글자는 대문자, 두 번째 글자는 소문자입니다.';
+            qSub.textContent = '비슷한 이름을 구별해 기호에 맞는 원소를 고르세요.';
         } else if (chosenType === 'name_symbol') {
             qText.textContent = `『 ${correctEl.name} 』의 올바른 원소 기호는?`;
-            qSub.textContent = '원소 1~20번에서 고르세요.';
+            qSub.textContent = '철자와 대소문자를 확인해 정확한 기호를 고르세요.';
             optionLabel = opt => opt.symbol;
         } else if (chosenType === 'atomic_number') {
             qText.textContent = `『 ${correctEl.name} (${correctEl.symbol}) 』의 원자번호는?`;
@@ -575,14 +585,14 @@ document.addEventListener('DOMContentLoaded', () => {
             optionLabel = opt => `${getShortGroup(opt.group)}족 · ${opt.period}주기`;
         }
 
+        const options = buildQuizOptions(correctEl, chosenType, optionLabel, available);
         state.quiz.currentQuestion = { correctEl, options, chosenType };
 
         optGrid.innerHTML = '';
         options.forEach(opt => {
             const btn = document.createElement('button');
             btn.className = 'quiz-opt-btn';
-            btn.dataset.number = String(opt.number);
-            btn.textContent = optionLabel(opt);
+            btn.textContent = opt.label;
             btn.addEventListener('click', () => checkAnswer(opt, btn));
             optGrid.appendChild(btn);
         });
@@ -591,12 +601,45 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('nextQuizBtn').hidden = true;
     }
 
+    function buildQuizOptions(correctEl, questionType, optionLabel, available) {
+        let wrongLabels;
+        if (questionType === 'name_symbol' || questionType === 'symbol_name') {
+            const key = questionType === 'name_symbol' ? 'symbols' : 'names';
+            wrongLabels = QUIZ_DISTRACTORS[correctEl.symbol][key];
+        } else {
+            const pool = available.filter(element => element.number !== correctEl.number);
+            wrongLabels = [];
+            while (wrongLabels.length < 3) {
+                const index = Math.floor(Math.random() * pool.length);
+                wrongLabels.push(optionLabel(pool.splice(index, 1)[0]));
+            }
+        }
+        const options = [
+            { label: optionLabel(correctEl), isCorrect: true },
+            ...wrongLabels.map(label => ({ label, isCorrect: false }))
+        ];
+        for (let i = options.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [options[i], options[j]] = [options[j], options[i]];
+        }
+        return options;
+    }
+
     function getQuizExplanation(element, questionType) {
         if (questionType === 'symbol_name') {
+            if (element.symbol === 'B') {
+                return 'B는 붕소입니다. 불소(플루오린)는 F, 비소는 As이며, 붕산은 원소가 아니라 화합물입니다.';
+            }
+            if (element.symbol === 'F') {
+                return 'F는 플루오린(불소)입니다. 붕소는 B, 염소는 Cl, 브로민은 Br입니다.';
+            }
             return `${element.symbol}은 ${element.name}의 원소 기호입니다.`;
         }
         if (questionType === 'name_symbol') {
-            return `${element.name}의 원소 기호는 ${element.symbol}입니다.`;
+            if (element.symbol === 'He') {
+                return '헬륨의 원소 기호는 He입니다. H는 수소이며, Hel과 HE는 올바른 원소 기호가 아닙니다.';
+            }
+            return `${element.name}의 원소 기호는 ${element.symbol}입니다. 첫 글자는 대문자로, 두 번째 글자가 있으면 소문자로 씁니다.`;
         }
         if (questionType === 'atomic_number') {
             return `${element.name}(${element.symbol})의 원자번호는 ${element.number}번이며, 원자핵 속 양성자 수도 ${element.number}개입니다.`;
@@ -611,40 +654,28 @@ document.addEventListener('DOMContentLoaded', () => {
         if (state.quiz.answered) return;
 
         const { correctEl, chosenType } = state.quiz.currentQuestion;
-        const isCorrect = selectedOpt.number === correctEl.number;
+        const isCorrect = selectedOpt.isCorrect;
         const msg = document.getElementById('quizResultMsg');
         const explanation = getQuizExplanation(correctEl, chosenType);
 
         if (!isCorrect) {
-            state.quiz.hadWrong = true;
             btn.classList.add('wrong');
             btn.disabled = true;
-            state.quiz.streak = 0;
             msg.innerHTML = '<strong>다시 생각하고 다른 답을 골라보세요.</strong>';
             msg.style.color = '#ffb86b';
-            document.getElementById('quizStreak').textContent = state.quiz.streak;
             return;
         }
         state.quiz.answered = true;
 
-        if (!state.quiz.hadWrong) {
-            btn.classList.add('correct');
-            state.quiz.score += 10;
-            state.quiz.streak += 1;
-            msg.innerHTML = `<strong>🎉 정답입니다! (+10점)</strong><span>${explanation}</span>`;
-            msg.style.color = '#38ef7d';
-        } else {
-            btn.classList.add('correct');
-            msg.innerHTML = `<strong>정답입니다.</strong><span>${explanation}</span>`;
-            msg.style.color = '#38ef7d';
-        }
+        btn.classList.add('correct');
+        msg.innerHTML = `<strong>정답입니다.</strong><span>${explanation}</span>`;
+        msg.style.color = '#38ef7d';
 
         document.querySelectorAll('.quiz-opt-btn').forEach(option => {
             option.disabled = true;
         });
         document.getElementById('nextQuizBtn').hidden = false;
-        document.getElementById('quizScore').textContent = state.quiz.score;
-        document.getElementById('quizStreak').textContent = state.quiz.streak;
+
     }
 
     /**

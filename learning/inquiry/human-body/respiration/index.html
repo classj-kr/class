@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>호흡계 · 숨쉬기와 기체 교환 | 인체 모형</title>
     <link rel="stylesheet" href="../styles.css?v=20260907ay">
-    <link rel="stylesheet" href="styles.css?v=20260908c">
+    <link rel="stylesheet" href="styles.css?v=20260920-breath">
 </head>
 <body>
 
@@ -20,7 +20,7 @@
             </div>
         </div>
         <div class="sim-header-right">
-            <button id="playPauseBtn" data-for-scene="alveoli,twoplaces" class="tool-toggle-btn" type="button">
+            <button id="playPauseBtn" data-for-scene="alveoli,twoplaces,breath" class="tool-toggle-btn" type="button">
                 <span>⏸️</span> 일시정지
             </button>
         </div>
@@ -53,10 +53,10 @@
         <!-- Right Sidebar: Details & Exam Traps -->
         <aside class="sim-sidebar">
             <div class="sidebar-tabs">
-                <button class="sidebar-tab-btn active" data-tab="focus">가로막 조작과 압력</button>
+                <button class="sidebar-tab-btn active" data-tab="focus">관찰과 조작</button>
                 <button class="sidebar-tab-btn" data-tab="gas">기체 성분 비교표</button>
                 <button class="sidebar-tab-btn" data-tab="traps">헷갈리기 쉬운 것</button>
-                <button class="sidebar-tab-btn" data-tab="quiz">개념 문제</button>
+                <button class="sidebar-tab-btn" data-tab="quiz">확인 문제</button>
             </div>
 
             <div class="sidebar-body">
@@ -88,11 +88,11 @@
                         <div style="margin-top:12px; padding:8px 12px; background:rgba(0,0,0,0.3); border-radius:6px; font-size:12px;">
                             <div style="display:flex; justify-content:space-between; gap:8px; margin-bottom:4px;">
                                 <span style="color:#94a3b8;">흉강 부피:</span>
-                                <strong id="statVolume" style="color:#34d399;">3.05 L</strong>
+                                <strong id="statVolume" style="color:#34d399;">50% (모형의 상대 크기)</strong>
                             </div>
                             <div style="display:flex; justify-content:space-between; gap:8px; margin-bottom:4px;">
-                                <span style="color:#94a3b8;">흉강 내압 (보일 법칙):</span>
-                                <strong id="statPressure" style="color:#38bdf8;">760.0 mmHg</strong>
+                                <span style="color:#94a3b8;">폐 속 공기 압력:</span>
+                                <strong id="statPressure" style="color:#38bdf8;">대기압과 같음</strong>
                             </div>
                         </div>
                     </div>
@@ -156,8 +156,9 @@
     <!-- Scripts -->
     <script src="../shared/engine-core.js?v=20260909b"></script>
     <script src="../shared/exam-data.js?v=20260918-quiz"></script>
-    <script src="app.js?v=20260908b"></script>
-    <script src="breath-motion.js?v=20260908b"></script>
+    <script src="breath-model.js?v=20260920-breath"></script>
+    <script src="app.js?v=20260920-breath"></script>
+    <script src="breath-motion.js?v=20260920-breath"></script>
     <script src="gas-exchange.js?v=20260908b"></script>
     <script src="gas-two-places.js?v=20260908b"></script>
 </body>

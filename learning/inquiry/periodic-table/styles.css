@@ -912,25 +912,6 @@ canvas#bohrAtomCanvas {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
 }
 
-.quiz-header {
-    display: flex;
-    justify-content: flex-end;
-    gap: 12px;
-    align-items: center;
-    margin-bottom: 24px;
-    padding-bottom: 16px;
-    border-bottom: 1px solid var(--border-color);
-}
-
-.quiz-score-badge {
-    background: linear-gradient(135deg, #ffd18a, #b56e20);
-    color: #000;
-    padding: 6px 16px;
-    border-radius: 20px;
-    font-weight: 800;
-    font-size: 14px;
-}
-
 .quiz-card {
     text-align: center;
 }
@@ -1543,12 +1524,6 @@ body.presentation-mode .axis-label {
 
     .quiz-container {
         padding: 20px 14px;
-    }
-
-    .quiz-header {
-        align-items: flex-start;
-        flex-direction: column;
-        gap: 14px;
     }
 
     .quiz-options-grid {

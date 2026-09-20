@@ -89,7 +89,7 @@
                 'box-shadow:0 18px 48px rgba(0,0,0,.45);color:#f8fafc;text-align:center;' +
                 'font:700 14px/1.55 system-ui,sans-serif;';
             panel.innerHTML =
-                '<div style="color:#fca5a5;font-size:16px;margin-bottom:6px;">3D 시뮬레이션을 시작하지 못했습니다</div>' +
+                '<div style="color:#fca5a5;font-size:16px;margin-bottom:6px;">태양계 화면을 불러오지 못했습니다</div>' +
                 '<div style="color:#cbd5e1;font-weight:600;word-break:break-word;">' +
                 message.replace(/[&<>"']/g, function (char) {
                     return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char];
@@ -2684,7 +2684,7 @@
             if (playPauseBtn) {
                 playPauseBtn.disabled = locked;
                 playPauseBtn.classList.toggle('ufo-time-locked', locked);
-                playPauseBtn.title = locked ? 'UFO Flight의 시간은 방장이 조작합니다.' : '시뮬레이션 일시정지 / 재생';
+                playPauseBtn.title = locked ? 'UFO Flight의 시간은 방장이 조작합니다.' : '일시정지 / 재생';
             }
             if (speedSlider) {
                 speedSlider.disabled = locked;
@@ -3102,7 +3102,7 @@
                         }
 
                         if (auInfoCard) auInfoCard.style.display = 'block';
-                        simModeLabel.textContent = '🌐 리얼리티 (실제 거리 비율)';
+                        simModeLabel.textContent = '🌐 실제 거리 비율';
                         simModeLabel.style.color = '#10b981'; // emerald
                         simModeLabel.style.background = 'rgba(16,185,129,0.15)';
                         if(simWarningAlert) {
@@ -3127,11 +3127,11 @@
                         }
 
                         if (auInfoCard) auInfoCard.style.display = 'none';
-                        simModeLabel.textContent = '🔭 관찰용 (Log Scale)';
+                        simModeLabel.textContent = '🔭 보기 편한 거리';
                         simModeLabel.style.color = '#38bdf8'; // sky
                         simModeLabel.style.background = 'rgba(56,189,248,0.15)';
                         if(simWarningAlert) {
-                            simWarningAlert.textContent = '※ 이 화면은 교육적 시각화를 위해 거리와 크기가 로그 스케일(Log Scale)로 조절되었습니다.';
+                            simWarningAlert.textContent = '천체를 보기 쉽도록 거리와 크기를 조정했습니다.';
                             simWarningAlert.style.color = '#f59e0b';
                             simWarningAlert.style.background = 'rgba(245,158,11,0.1)';
                             simWarningAlert.style.border = '1px solid rgba(245,158,11,0.2)';
@@ -3334,7 +3334,7 @@
                 var keyPointsHtml = '';
                 if (body.satExamKeyPoints && body.satExamKeyPoints.length > 0) {
                     keyPointsHtml = '<div style="font-size:12px; color:#e2e8f0; background:rgba(15, 23, 42, 0.9); border-left:3px solid ' + badgeColor + '; padding:9px 12px; border-radius:8px; line-height:1.5;">' +
-                        '<div style="font-weight:800; color:' + badgeColor + '; font-size:11px; margin-bottom:2px;">🎓 핵심 출제 포인트</div>' +
+                        '<div style="font-weight:800; color:' + badgeColor + '; font-size:11px; margin-bottom:2px;">💡 주요 특징</div>' +
                         body.satExamKeyPoints[0] +
                         '</div>';
                 }

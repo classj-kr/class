@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="인터랙티브 태양계 관찰 - 3D 태양계 공전 시뮬레이션, 행성 입체 도감, 자전 &amp; 공전주기 비교">
+    <meta name="description" content="태양과 행성, 위성과 작은 천체의 특징과 운동">
     <title>태양계</title>
     <link rel="stylesheet" href="../quiz-board.css?v=quiz-topic-picker-20260906c">
     <link rel="stylesheet" href="styles.css?v=quiz-topic-picker-20260906c">
@@ -23,13 +23,13 @@
         <!-- Sub Tabs for Solar System Module -->
         <nav class="nav-tabs" aria-label="태양계 세부 학습 모드">
             <button class="nav-tab active" data-tab="sim" id="tabSimBtn">
-                <span>🛰️</span> Simulation
+                <span>🛰️</span> 관찰
             </button>
             <button class="nav-tab" data-tab="atlas" id="tabAtlasBtn">
-                <span>📚</span> Knowledge
+                <span>📚</span> 개념
             </button>
             <button class="nav-tab" data-tab="quiz" id="tabQuizBtn">
-                <span>🧩</span> Quiz
+                <span>🧩</span> 문제
             </button>
         </nav>
     </header>
@@ -45,7 +45,7 @@
                 <div class="viewport-header-bar">
                     <div class="sim-top-btns">
                         <button class="btn btn-secondary" id="ufoModeBtn" style="padding: 4px 10px; font-size: 12px; font-weight: 700; background: rgba(56, 189, 248, 0.15); border: 1px solid #38bdf8; color: #38bdf8; border-radius: 14px;">🛸 UFO Flight (방번호 입력)</button>
-                        <button class="icon-btn" id="playPauseBtn" title="시뮬레이션 일시정지 / 재생">⏸</button>
+                        <button class="icon-btn" id="playPauseBtn" title="일시정지 / 재생">⏸</button>
                         <button class="icon-btn" id="resetCamBtn" title="카메라 위치 초기화">🔄</button>
                     </div>
                 </div>
@@ -91,7 +91,7 @@
                     <!-- 1 AU & 3D Reality Scale Educational Card -->
                     <div id="auInfoCard" style="display: none; position: absolute; top: 16px; left: 16px; max-width: 340px; background: rgba(15, 23, 42, 0.94); border: 1px solid rgba(16, 185, 129, 0.5); border-radius: 14px; padding: 14px 16px; color: #e2e8f0; font-size: 12px; line-height: 1.5; backdrop-filter: blur(10px); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7); z-index: 10;">
                         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 6px;">
-                            <span style="font-weight: 800; font-size: 13px; color: #10b981;">🌐 리얼리티 (실제 거리 비율) 왜 행성이 안 보일까?</span>
+                            <span style="font-weight: 800; font-size: 13px; color: #10b981;">🌐 실제 거리 비율 왜 행성이 안 보일까?</span>
                             <button id="auCardToggleBtn" style="background: none; border: none; color: #94a3b8; cursor: pointer; font-size: 14px; padding: 0 4px;">➖</button>
                         </div>
                         <div id="auCardContent">
@@ -116,37 +116,37 @@
                     
                     <!-- Simulation Time Display -->
                     <div class="sim-time-display">
-                        <div class="sim-time-label">SIMULATION TIME</div>
+                        <div class="sim-time-label">경과 시간</div>
                         <div class="sim-time-val" id="simTimeVal">0.0 yrs</div>
                     </div>
 
                     <!-- Control Rows -->
                     <div class="control-rows">
                         
-                        <!-- Row 1: Orbit Speed Slider -->
+                        <!-- Row 1: 시간 흐름 Slider -->
                         <div class="ctrl-row">
-                            <span class="ctrl-label">Orbit Speed</span>
+                            <span class="ctrl-label">시간 흐름</span>
                             <div class="slider-group">
                                 <input type="range" class="sim-slider" id="speedSlider" min="0.1" max="10" step="0.1" value="1">
                                 <span class="slider-val-badge" id="speedValBadge">1.0x</span>
                             </div>
                         </div>
 
-                        <!-- Row 2: Dual Simulation Mode Toggle -->
+                        <!-- Row 2: Dual 거리 표시 Toggle -->
                         <div class="ctrl-row">
-                            <span class="ctrl-label">Simulation Mode</span>
+                            <span class="ctrl-label">거리 표시</span>
                             <div style="display:flex; align-items:center; gap:8px;">
                                 <label class="toggle-switch">
                                     <input type="checkbox" id="simModeToggle">
                                     <span class="slider-knob"></span>
                                 </label>
-                                <span id="simModeLabel" style="font-size: 12px; font-weight: 800; color: #38bdf8; background: rgba(56,189,248,0.15); padding: 4px 12px; border-radius: 20px;">🔭 관찰용 (Log Scale)</span>
+                                <span id="simModeLabel" style="font-size: 12px; font-weight: 800; color: #38bdf8; background: rgba(56,189,248,0.15); padding: 4px 12px; border-radius: 20px;">🔭 보기 편한 거리</span>
                             </div>
                         </div>
 
-                        <!-- Row 3: Show Orbits Toggle Switch -->
+                        <!-- Row 3: 공전 궤도 Toggle Switch -->
                         <div class="ctrl-row">
-                            <span class="ctrl-label">Show Orbits</span>
+                            <span class="ctrl-label">공전 궤도</span>
                             <label class="toggle-switch">
                                 <input type="checkbox" id="showOrbitsToggle" checked>
                                 <span class="slider-knob"></span>
@@ -172,7 +172,7 @@
             <!-- Integrated Spec Comparison Table Component -->
             <div style="margin-bottom: 32px; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 20px; overflow-x: auto; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
                 <h3 style="color: #38bdf8; font-size: 16px; margin-bottom: 14px; display: flex; align-items: center; gap: 8px;">
-                    📊 태양계 주요 천체 물리 스펙 비교표
+                    📊 천체의 크기와 운동 비교
                 </h3>
                 <table style="width: 100%; border-collapse: collapse; font-size: 13px; color: #e2e8f0; text-align: left;" id="specComparisonTable">
                     <thead>
@@ -261,7 +261,7 @@
                     <!-- Knowledge Box -->
                     <div class="sat-exam-box">
                         <div class="sat-exam-title">
-                            🎓 <span>핵심 출제 지식</span>
+                            🎓 <span>주요 특징</span>
                         </div>
                         <ul class="sat-exam-list" id="modalSatExamPoints">
                             <!-- JS Dyn Rendered CSAT Points -->

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="별과 별자리 (Stars &amp; Constellations) - 사계절 성도 시뮬레이션, 대표 별자리 지식, 별의 등급, Quiz">
+    <meta name="description" content="계절별 별자리와 천구, 별의 움직임과 성질, 별의 일생">
     <title>별과 별자리</title>
     <link rel="stylesheet" href="base.css?v=floating-nav-full-quiz-20260906">
     <!-- Three.js & OrbitControls for 3D Celestial Sphere -->
@@ -22,13 +22,13 @@
         <!-- Sub Tabs for Constellations Module -->
         <nav class="nav-tabs" style="flex-shrink: 0;">
             <button class="nav-tab active" data-tab="sim" onclick="switchMainTab('sim')" style="padding: 6px 12px; font-size: 13px;">
-                <span>🛰️</span> Simulation
+                <span>🛰️</span> 관찰
             </button>
             <button class="nav-tab" data-tab="knowledge" onclick="switchMainTab('knowledge')" style="padding: 6px 12px; font-size: 13px;">
-                <span>📚</span> Knowledge
+                <span>📚</span> 개념
             </button>
             <button class="nav-tab" data-tab="quiz" onclick="switchMainTab('quiz')" style="padding: 6px 12px; font-size: 13px;">
-                <span>🧩</span> Quiz
+                <span>🧩</span> 문제
             </button>
         </nav>
     </header>
@@ -106,7 +106,7 @@
                             </div>
                             <!-- Exam Tip Highlight Box -->
                             <div style="margin-top: 10px; background: rgba(251, 191, 36, 0.12); border: 1px solid rgba(251, 191, 36, 0.4); border-radius: 12px; padding: 10px 14px; font-size: 12.5px; color: #f1f5f9; line-height: 1.55;">
-                                <strong style="color: #fbbf24;">🎓 [중학교 시험 필수 출제 개념]</strong><br>
+                                <strong style="color: #fbbf24;">💡 관측 원리</strong><br>
                                 • <strong>"N월의 별자리"</strong>는 N월에 태양이 지나는 위치의 별자리(관측 불가능)<br>
                                 • <strong>"N월 한밤중 남중 별자리"</strong>는 태양의 반대편 별자리(밤 12시에 남쪽 하늘에서 가장 잘 보임)
                             </div>
@@ -618,7 +618,7 @@
                 <div style="margin-bottom: 24px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;">
                     <div>
                         <h2 style="font-size: 24px; color: #fff; margin-bottom: 6px; display:flex; align-items:center; gap:10px;">
-                            <span>✨</span> 별의 탄생부터 사멸까지 (Stellar Evolution &amp; Life Cycle)
+                            <span>✨</span> 별의 일생
                         </h2>
                         <p style="color: #94a3b8; font-size: 14px;">성운의 가스와 먼지가 중력으로 수축해 원시별을 형성하고, 질량에 따라 적색거성·초거성 단계를 거쳐 백색왜성·중성자별·블랙홀로 진화하는 과정을 보여줍니다.</p>
                     </div>
@@ -648,7 +648,7 @@
                     <div style="background: rgba(15, 23, 42, 0.85); border: 1px solid rgba(56, 189, 248, 0.3); border-radius: 12px; padding: 14px 0; margin-bottom: 20px;">
                         <div style="display:flex; align-items:center; justify-content:space-between; gap:20px; padding:0 4px 10px;">
                             <div style="font-weight: 800; color: #fbbf24; font-size: 14px; display: flex; align-items: center; gap: 8px;">
-                                <span>🎛️</span> 별의 일생 시간 노브 (Timeline Knob):
+                                <span>🎛️</span> 별의 진화 단계:
                             </div>
                             <span id="stellarTimeValText" style="font-size: 13.5px; font-weight: 800; color: #38bdf8; text-align: right;">진화 0% ~ 10% (탄생기)</span>
                         </div>
@@ -703,14 +703,14 @@
                                 <td style="padding:14px; text-align:center;"><span style="color:#fca5a5; font-weight:bold;">🔴 붉은색 (약 3,500 K)</span></td>
                                 <td style="padding:14px; text-align:center;">+0.50 등성</td>
                                 <td style="padding:14px; text-align:center; font-weight:bold; color:#f43f5e;">-5.85 (초거성)</td>
-                                <td style="padding:14px;"><span style="color:#f43f5e; font-weight:bold;">적색 초거성 (Red Supergiant - 폭발 임박!)</span></td>
+                                <td style="padding:14px;"><span style="color:#f43f5e; font-weight:bold;">적색 초거성 (Red Supergiant)</span></td>
                             </tr>
                             <tr style="border-bottom:1px solid rgba(255,255,255,0.06);">
                                 <td style="padding:14px; font-weight:bold; color:#fbbf24; font-size:15px;">리겔 (Rigel)</td>
                                 <td style="padding:14px;">오리온자리</td>
                                 <td style="padding:14px; text-align:center;"><span style="color:#60a5fa; font-weight:bold;">🔵 청색 (약 12,000 K)</span></td>
                                 <td style="padding:14px; text-align:center;">+0.12 등성</td>
-                                <td style="padding:14px; text-align:center; font-weight:bold; color:#60a5fa;">-7.84 (초강력 광도)</td>
+                                <td style="padding:14px; text-align:center; font-weight:bold; color:#60a5fa;">-7.84 등성</td>
                                 <td style="padding:14px;"><span style="color:#60a5fa; font-weight:bold;">청색 초거성 (Blue Supergiant)</span></td>
                             </tr>
                             <tr style="border-bottom:1px solid rgba(255,255,255,0.06);">

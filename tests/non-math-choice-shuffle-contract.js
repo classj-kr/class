@@ -14,7 +14,7 @@ const checks = [
   ['한자성어', 'learning/literacy-numeracy/classical-chinese-idioms/idioms-core.js', /const options = shuffle\(\[idiom, \.\.\.wrong\]/],
   ['대항해시대', 'learning/inquiry/age-of-exploration/lib/final-quiz.js', /function shuffledQuestion\(source\)/],
   ['국내 지도(지리·유물·유적)', 'learning/inquiry/korea-map/app.js', /const shuffled = shuffle\(question\.options\.map/],
-  ['주기율표', 'learning/inquiry/periodic-table/app.js', /const options = \[correctEl, \.\.\.wrongOpts\]\.sort/],
+  ['주기율표', 'learning/inquiry/periodic-table/app.js', /\[options\[i\], options\[j\]\] = \[options\[j\], options\[i\]\]/],
   ['지진파와 진앙', 'learning/inquiry/science-lab/earthquake/app.js', /shuffleQuizOptions\(card\)/],
   ['용해도', 'learning/inquiry/science-lab/solubility/app.js', /shuffleQuizOptions\(card\)/],
   ['별과 별자리', 'learning/inquiry/space/constellations/app.js', /const randomizedOptions = item\.opts\.map/],

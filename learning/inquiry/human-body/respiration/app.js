@@ -123,72 +123,70 @@
     var dragStartY = 0;
     var airwayAirFlow = [];
 
-    /**
-     * 가로막 상태 글자. 50은 올라간 것도 내려간 것도 아닌 평형이라
-     * 전처럼 50에서 "상승 (날숨)"이라고 적으면 안 된다.
-     */
+    var cycleAngle = Math.PI / 2;
+    var manualTarget = 50;
+    var breathingState = BreathModel.state(50, 0);
+
     function showDiaphragmState() {
         if (!diaphragmValEl) return;
-
-        if (diaphragmPosition > 52) {
-            diaphragmValEl.textContent = '하강 · 들숨';
-            diaphragmValEl.style.color = '#38bdf8';
-        } else if (diaphragmPosition < 48) {
-            diaphragmValEl.textContent = '상승 · 날숨';
-            diaphragmValEl.style.color = '#f59e0b';
-        } else {
-            diaphragmValEl.textContent = '평형';
-            diaphragmValEl.style.color = '#94a3b8';
-        }
+        diaphragmValEl.textContent = breathingState.phase === 'in' ? '내려가는 중' :
+            breathingState.phase === 'out' ? '올라가는 중' : '위치 유지';
+        diaphragmValEl.style.color = breathingState.phase === 'out' ? '#fbbf24' : '#7dd3fc';
     }
 
-    /**
-     * 호흡수 칸 옆에 지금이 저절로 숨쉬는 중인지 손으로 잡은 중인지 적는다.
-     */
     function showBreathMode() {
-        if (!rateValEl) return;
-        rateValEl.textContent = breathRate + ' 회/분 · ' + (autoBreathing ? '자동' : '수동');
-        rateValEl.style.color = autoBreathing ? '#34d399' : '#f59e0b';
+        if (rateValEl) rateValEl.textContent = breathRate + ' 회/분 · ' + (autoBreathing ? '자동' : '수동');
     }
+
+    function updateBreathingReadout() {
+        showDiaphragmState();
+        showBreathMode();
+        if (statVolumeEl) statVolumeEl.textContent = Math.round(diaphragmPosition) + '% (모형의 상대 크기)';
+        if (statPressureEl) statPressureEl.textContent = breathingState.phase === 'in' ? '대기압보다 낮음' :
+            breathingState.phase === 'out' ? '대기압보다 높음' : '대기압과 같음';
+    }
+
+    function setBreathingPosition(value) {
+        manualTarget = Math.max(0, Math.min(100, Number(value)));
+        if (!Number.isFinite(manualTarget)) manualTarget = diaphragmPosition;
+        autoBreathing = false;
+        if (!isRunning) {
+            diaphragmPosition = manualTarget;
+            breathingState = BreathModel.state(diaphragmPosition, 0);
+        }
+        updateBreathingReadout();
+    }
+
+    window.RespirationBreathing = {
+        getState: function () {
+            return Object.assign({}, breathingState, { running: isRunning, automatic: autoBreathing, rate: breathRate });
+        },
+        setPosition: setBreathingPosition,
+        startAuto: function () {
+            cycleAngle = Math.acos(1 - 2 * diaphragmPosition / 100);
+            autoBreathing = true;
+            if (!isRunning && playPauseBtn) playPauseBtn.click();
+            showBreathMode();
+        }
+    };
 
     function updatePhysics(dt, time) {
-        // 저절로 숨쉬기. 전에는 이 계산을 해 놓고 결과를 버려서(주석 처리)
-        // 호흡수 슬라이더가 숫자만 바꾸고 폐는 꿈쩍도 하지 않았다.
         if (autoBreathing && !isDraggingDiaphragm) {
-            var breathCycle = time * 0.001 * (breathRate / 60) * Math.PI * 2;
-            var autoWave = (Math.sin(breathCycle) + 1) / 2; // 0 ~ 1
-            diaphragmPosition = Math.round(autoWave * 100);
-            if (diaphragmSlider) diaphragmSlider.value = diaphragmPosition;
+            cycleAngle += dt * (breathRate / 60) * Math.PI * 2;
+            breathingState = BreathModel.cycle(cycleAngle);
+            diaphragmPosition = breathingState.position;
+        } else {
+            var previousPosition = diaphragmPosition;
+            var gap = manualTarget - previousPosition;
+            diaphragmPosition = Math.abs(gap) < 0.08 ? manualTarget :
+                previousPosition + gap * (1 - Math.exp(-dt * 6));
+            breathingState = BreathModel.state(diaphragmPosition,
+                (diaphragmPosition - previousPosition) / Math.max(dt, 0.001) / 100);
         }
-
-        // Boyle's law pressure calculation: P * V = const
-        // Normal atmospheric P = 760 mmHg
-        // Inhale: Diaphragm down -> Volume increases (2.5L -> 4.5L) -> Pressure drops to 756 mmHg (-4 mmHg)
-        // Exhale: Diaphragm up -> Volume decreases (1.8L) -> Pressure rises to 764 mmHg (+4 mmHg)
-        var volumeL = 1.8 + (diaphragmPosition / 100) * 2.5; // 1.8L ~ 4.3L
-        thoracicPressure = 760 - (diaphragmPosition - 50) * 0.16;
-
-        showDiaphragmState();
-
-        if (statPressureEl) {
-            var pDiff = thoracicPressure - 760;
-            // 0은 양압도 음압도 아니다. 전에는 +0.0에도 "양압 ➔ 날숨"이라고 적었다.
-            var pText;
-            if (pDiff < -0.05) {
-                pText = pDiff.toFixed(1) + ' mmHg 음압 ➔ 들숨';
-            } else if (pDiff > 0.05) {
-                pText = '+' + pDiff.toFixed(1) + ' mmHg 양압 ➔ 날숨';
-            } else {
-                pText = '대기압과 같음 ➔ 평형';
-            }
-            statPressureEl.textContent = thoracicPressure.toFixed(1) + ' mmHg (' + pText + ')';
-            statPressureEl.style.color = pDiff < -0.05 ? '#38bdf8' : (pDiff > 0.05 ? '#f59e0b' : '#94a3b8');
-        }
-
-        if (statVolumeEl) {
-            statVolumeEl.textContent = volumeL.toFixed(2) + ' L (' + (diaphragmPosition > 50 ? '흉강 팽창' : '흉강 수축') + ')';
-            statVolumeEl.style.color = '#34d399';
-        }
+        if (diaphragmSlider && autoBreathing) diaphragmSlider.value = diaphragmPosition;
+        // Qualitative alveolar pressure relative to atmosphere, not pleural pressure.
+        thoracicPressure = 760 + breathingState.pressure;
+        updateBreathingReadout();
 
         // Airway air flow particles driven by pressure differential
         var pDelta = 760 - thoracicPressure; // Positive = Inhale flow inward, Negative = Exhale flow outward
@@ -479,18 +477,14 @@
 
         if (diaphragmSlider) {
             diaphragmSlider.addEventListener('input', function () {
-                diaphragmPosition = parseInt(diaphragmSlider.value, 10);
-                autoBreathing = false;  // 직접 잡았으니 저절로 숨쉬기는 멈춘다
-                showBreathMode();
-                showDiaphragmState();
+                setBreathingPosition(diaphragmSlider.value);
             });
         }
 
         if (rateSlider) {
             rateSlider.addEventListener('input', function () {
                 breathRate = parseInt(rateSlider.value, 10);
-                autoBreathing = true;   // 호흡수를 만지면 저절로 숨쉬기로 돌아온다
-                showBreathMode();
+                window.RespirationBreathing.startAuto();
             });
         }
 
