@@ -5,11 +5,12 @@
     const lessons = window.COMPUTER_LESSON_INDEX || [];
     const modules = window.COMPUTER_CORE_MODULES || [];
 
+    const readProgress = (key) => { try { return JSON.parse(localStorage.getItem(key) || "null"); } catch (_) { return null; } };
     const completed = new Set();
     lessons.forEach((item) => {
         try {
-            const old = JSON.parse(localStorage.getItem('computer-literacy:' + item.id) || "null");
-            const edition = JSON.parse(localStorage.getItem('classj:textbook:' + item.id + ':v1') || "null");
+            const old = readProgress("computer-literacy:" + item.id);
+            const edition = readProgress("classj:textbook:" + item.id + ":v1");
             const done = item.id === "a01"
                 ? edition?.photo && edition?.transfer && edition?.answers?.length === 4 && edition.answers.every(a => a.solved)
                 : edition?.completed;

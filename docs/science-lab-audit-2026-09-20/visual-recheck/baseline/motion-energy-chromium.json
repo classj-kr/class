@@ -1,0 +1,82 @@
+{
+  "slug": "motion-energy",
+  "engine": "chromium",
+  "modes": [
+    "incline",
+    "energy"
+  ],
+  "cases": 13,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__motionModel",
+      "methods": [
+        "G",
+        "RAMP_M",
+        "FLAT_M",
+        "TOP",
+        "HILL2",
+        "END",
+        "state",
+        "analyseIncline",
+        "analyseEnergy",
+        "analyse",
+        "trackY",
+        "startX",
+        "sampleEnergy",
+        "render",
+        "runSeconds",
+        "setMode",
+        "set",
+        "setProgress",
+        "runToEnd",
+        "tick",
+        "finish"
+      ]
+    }
+  ],
+  "paint": [],
+  "grades": [
+    {
+      "mode": "incline",
+      "results": [
+        {
+          "choice": "widen",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        },
+        {
+          "choice": "same",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "narrow",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        }
+      ]
+    },
+    {
+      "mode": "energy",
+      "results": [
+        {
+          "choice": "pass",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        },
+        {
+          "choice": "stop",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "back",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        }
+      ]
+    }
+  ]
+}

@@ -27,7 +27,7 @@
             <div class="ecl-layout">
                 <div class="ecl-diagram-panel">
                     <div class="ecl-arrangement" data-ecl-order></div>
-                    <svg class="ecl-diagram" viewBox="0 80 500 856" role="img" aria-label="태양과 가리는 천체가 만드는 본그림자와 반그림자의 단면" data-ecl-diagram></svg>
+                    <svg class="ecl-diagram" preserveAspectRatio="xMidYMin meet" viewBox="0 80 500 856" role="img" aria-label="태양과 가리는 천체가 만드는 본그림자와 반그림자의 단면" data-ecl-diagram></svg>
                     <div class="ecl-legend"><span><i class="ecl-umbra-key"></i>본그림자 · 직접 오는 태양빛이 모두 가려짐</span><span><i class="ecl-penumbra-key"></i>반그림자 · 태양빛의 일부만 가려짐</span></div>
                 </div>
                 <aside class="ecl-observation">

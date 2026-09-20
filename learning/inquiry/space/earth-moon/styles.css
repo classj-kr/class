@@ -1092,7 +1092,7 @@ body {
     margin-top: 0;
 }
 
-.tab-pane:not(#tab-sim) {
+.tab-pane:not(#tab-sim, #tab-eclipse) {
     padding-top: 20px;
 }
 

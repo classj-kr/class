@@ -625,22 +625,22 @@
         const lab = document.querySelector("[data-a03-lab]");
         if (!lab) return;
         const devices = {
-            pc: { name: "PC", english: "Personal Computer", hardware: "PC 펌웨어·CPU·메모리·화면", osSupport: { windows: "Windows용 펌웨어·장치 드라이버", chromeos: "ChromeOS Flex 지원 PC용 펌웨어·장치 드라이버" } },
-            chromebook: { name: "Chromebook", english: "Chromebook", hardware: "Chromebook 펌웨어·프로세서·키보드·화면", osSupport: { chromeos: "이 Chromebook 모델용 ChromeOS 펌웨어·장치 드라이버" } },
-            ipad: { name: "iPad", english: "Tablet", hardware: "iPad 하드웨어·Apple 칩·터치 화면", osSupport: { ipados: "이 iPad 모델용 iPadOS 부팅 파일·장치 드라이버" } },
-            phone: { name: "Phone (Android형)", english: "Android Phone", hardware: "Android형 스마트폰 SoC·터치 화면·센서", osSupport: { android: "이 스마트폰 모델용 Android 부팅 파일·장치 드라이버" } }
+            pc: { name: "PC", english: "Personal Computer", hardware: "키보드·마우스·화면 등을 갖춘 컴퓨터", osSupport: { windows: "이 모형의 PC에서 Windows 지원", chromeos: "이 모형의 PC에서 ChromeOS 계열 지원" } },
+            chromebook: { name: "Chromebook", english: "Chromebook", hardware: "키보드와 화면을 갖춘 Chromebook", osSupport: { chromeos: "이 기기의 ChromeOS 지원" } },
+            ipad: { name: "iPad", english: "Tablet", hardware: "터치 화면을 갖춘 iPad", osSupport: { ipados: "이 기기의 iPadOS 지원" } },
+            phone: { name: "Phone (Android형)", english: "Android Phone", hardware: "터치 화면과 카메라를 갖춘 스마트폰", osSupport: { android: "이 기기의 Android 지원" } }
         };
         const systems = {
-            windows: { name: "Windows", job: "지원되는 PC의 장치 드라이버와 Windows API 제공" },
-            chromeos: { name: "ChromeOS", job: "지원되는 기기의 장치 관리와 ChromeOS API 제공" },
-            ipados: { name: "iPadOS", job: "지원되는 iPad의 터치·파일·권한과 iPadOS API 관리" },
-            android: { name: "Android", job: "지원되는 스마트폰의 장치와 Android API 관리" }
+            windows: { name: "Windows", job: "PC의 장치를 관리하고 Windows용 앱이 실행되도록 돕습니다." },
+            chromeos: { name: "ChromeOS", job: "기기의 장치를 관리하고 ChromeOS용 앱이 실행되도록 돕습니다." },
+            ipados: { name: "iPadOS", job: "iPad를 관리하고 iPadOS용 앱이 실행되도록 돕습니다." },
+            android: { name: "Android", job: "스마트폰을 관리하고 Android용 앱이 실행되도록 돕습니다." }
         };
         const apps = {
-            paint: { name: "PC 그림판", english: "Windows Drawing App", os: "windows", osName: "Windows", package: "Windows용 .exe와 Windows API 요청", result: "그림판 창이 열리고 선을 그릴 수 있습니다." },
-            "chrome-files": { name: "Chromebook 파일 앱", english: "ChromeOS Files App", os: "chromeos", osName: "ChromeOS", package: "ChromeOS 시스템 앱과 ChromeOS 파일 API 요청", result: "파일 앱이 열리고 Chromebook의 파일을 보여 줍니다." },
-            "ipad-sketch": { name: "iPad 스케치", english: "iPadOS Sketch App", os: "ipados", osName: "iPadOS", package: "iPadOS용 앱 묶음과 터치·파일 API 요청", result: "스케치 앱이 열리고 Apple Pencil·터치 입력을 받습니다." },
-            "android-camera": { name: "Android 카메라", english: "Android Camera App", os: "android", osName: "Android", package: "Android용 .apk와 Android 카메라 API 요청", result: "카메라 앱이 열리고 스마트폰 센서 미리보기를 보여 줍니다." }
+            paint: { name: "PC 그림판", english: "Windows Drawing App", os: "windows", osName: "Windows", package: "Windows에서 사용하는 그림 앱", result: "그림판 창이 열리고 선을 그릴 수 있습니다." },
+            "chrome-files": { name: "Chromebook 파일 앱", english: "ChromeOS Files App", os: "chromeos", osName: "ChromeOS", package: "ChromeOS에서 사용하는 파일 관리 앱", result: "파일 앱이 열리고 Chromebook의 파일을 보여 줍니다." },
+            "ipad-sketch": { name: "iPad 스케치", english: "iPadOS Sketch App", os: "ipados", osName: "iPadOS", package: "iPadOS에서 사용하는 스케치 앱", result: "스케치 앱이 열리고 Apple Pencil·터치 입력을 받습니다." },
+            "android-camera": { name: "Android 카메라", english: "Android Camera App", os: "android", osName: "Android", package: "Android에서 사용하는 카메라 앱", result: "카메라 앱이 열리고 스마트폰 센서 미리보기를 보여 줍니다." }
         };
         const deviceButtons = Array.from(lab.querySelectorAll("[data-a03-device]"));
         const osButtons = Array.from(lab.querySelectorAll("[data-a03-os]"));
@@ -702,15 +702,15 @@
                 apiProof.classList.add("is-blocked");
                 runProof.classList.add("is-blocked");
                 lab.querySelector("[data-a03-preview-title]").textContent = "운영체제에서 멈춤";
-                lab.querySelector("[data-a03-preview-copy]").textContent = `${device.name}이라는 기기 이름만으로 운영체제가 정해지는 것은 아닙니다. 이 모형의 기기는 ${os.name}용 펌웨어·부팅 방식·드라이버 지원이 없습니다.`;
-                lab.querySelector("[data-a03-boot-proof]").textContent = `${os.name}을 시작할 펌웨어·부팅 방식·장치 드라이버 지원을 이 ${device.name}에서 찾지 못했습니다.`;
-                lab.querySelector("[data-a03-api-proof]").textContent = "운영체제가 시작되지 않아 앱의 API 요청까지 가지 못함";
+                lab.querySelector("[data-a03-preview-copy]").textContent = `이 실습에 정해진 기기 조건에서는 ${os.name}을 지원하지 않습니다. 지원하는 조합으로 바꾸어 보세요.`;
+                lab.querySelector("[data-a03-boot-proof]").textContent = `이 모형의 ${device.name}은 ${os.name}을 지원하지 않습니다.`;
+                lab.querySelector("[data-a03-api-proof]").textContent = "운영체제가 시작되지 않아 앱 실행도 확인할 수 없음";
                 lab.querySelector("[data-a03-run-proof]").textContent = "앱 실행 안 됨";
                 return;
             }
             osLayer.classList.add("is-pass");
             bootProof.classList.add("is-pass");
-            lab.querySelector("[data-a03-boot-proof]").textContent = `${bootSupport}이 있어 ${os.name}이 시작됨`;
+            lab.querySelector("[data-a03-boot-proof]").textContent = `${bootSupport}: ${os.name} 시작 가능`;
             if (app.os !== selectedOs) {
                 lab.dataset.outcome = "app-fail";
                 appLayer.classList.add("is-fail");
@@ -718,7 +718,7 @@
                 runProof.classList.add("is-blocked");
                 lab.querySelector("[data-a03-preview-title]").textContent = "앱에서 멈춤";
                 lab.querySelector("[data-a03-preview-copy]").textContent = `${app.name}은 ${app.osName}용이므로 현재 ${os.name}의 앱 규칙과 맞지 않습니다.`;
-                lab.querySelector("[data-a03-api-proof]").textContent = `${app.package} — 현재 운영체제는 필요한 패키지·API를 제공하지 않음`;
+                lab.querySelector("[data-a03-api-proof]").textContent = `${app.package} — 지금 고른 운영체제에서 지원하지 않는 앱`;
                 lab.querySelector("[data-a03-run-proof]").textContent = "운영체제는 켜졌지만 앱 실행 안 됨";
                 return;
             }
@@ -728,7 +728,7 @@
             runProof.classList.add("is-pass");
             lab.querySelector("[data-a03-preview-title]").textContent = "앱 실행 성공";
             lab.querySelector("[data-a03-preview-copy]").textContent = app.result;
-            lab.querySelector("[data-a03-api-proof]").textContent = `${app.osName}이 앱이 요구한 패키지·API를 제공함`;
+            lab.querySelector("[data-a03-api-proof]").textContent = `${app.osName}에서 지원하는 앱`;
             lab.querySelector("[data-a03-run-proof]").textContent = app.result;
         });
         lab.querySelector("[data-a03-reset]").addEventListener("click", () => {

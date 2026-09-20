@@ -41,7 +41,30 @@
         const type = d + r <= radii.umbra ? 'total' : d < radii.umbra + r ? 'partial' : d < radii.penumbra + r ? 'penumbral' : 'none';
         return { type, offset: y, ...radii };
     }
-    const api = { SUN, SOLAR_MOON, SOLAR_EARTH, LUNAR_EARTH, LUNAR_MOON, tangent, shadow, solar, lunar };
+    // One shared scale for the two different moments shown in the comparison scene.
+    const COMPARISON = {
+        sun: {x:50,y:250,r:125}, earth: {x:650,y:250,r:88},
+        newMoon: {x:490,y:250,r:22}, fullMoon: {x:880,y:250,r:22}
+    };
+    function comparisonSolar(offset) {
+        const {sun,earth,newMoon:moon}=COMPARISON;
+        const y=Math.max(-86,Math.min(86,Number(offset)));
+        const observer={x:earth.x-Math.sqrt(earth.r**2-y**2),y:earth.y+y};
+        const distance=body=>Math.hypot(body.x-observer.x,body.y-observer.y);
+        const sunAngle=Math.asin(sun.r/distance(sun)),moonAngle=Math.asin(moon.r/distance(moon));
+        const dot=(sun.x-observer.x)*(moon.x-observer.x)+(sun.y-observer.y)*(moon.y-observer.y);
+        const separation=Math.acos(Math.max(-1,Math.min(1,dot/(distance(sun)*distance(moon)))));
+        const type=separation+sunAngle<=moonAngle+1e-10?'total':separation+moonAngle<sunAngle?'annular':separation<sunAngle+moonAngle?'partial':'none';
+        return {type,observer,sunAngle,moonAngle,separation,offset:y};
+    }
+    function comparisonLunar(offset) {
+        const {sun,earth,fullMoon:moon}=COMPARISON;
+        const y=Math.max(-200,Math.min(200,Number(offset)));
+        const radii=shadow(sun,earth,moon.x),d=Math.abs(y);
+        const type=d+moon.r<=radii.umbra?'total':d<radii.umbra+moon.r?'partial':d<radii.penumbra+moon.r?'penumbral':'none';
+        return {type,offset:y,...radii};
+    }
+    const api = { COMPARISON, comparisonSolar, comparisonLunar, SUN, SOLAR_MOON, SOLAR_EARTH, LUNAR_EARTH, LUNAR_MOON, tangent, shadow, solar, lunar };
     if (typeof module !== 'undefined' && module.exports) module.exports = api;
     else root.EclipseGeometry = api;
 })(typeof window !== 'undefined' ? window : globalThis);

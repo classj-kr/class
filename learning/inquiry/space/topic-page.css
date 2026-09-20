@@ -1,7 +1,7 @@
 .topic-back { position: fixed; top: max(8px, env(safe-area-inset-top)); left: 10px; z-index: 2100; display: grid; place-items: center; width: 36px; height: 36px; border: 1px solid #475569; border-radius: 50%; background: #1e293b; color: #fff; text-decoration: none; }
 .topic-back:focus-visible { outline: 2px solid #67e8f9; outline-offset: 3px; }
 .space-topic-page .nav-tabs { background: rgba(15, 23, 42, .92); }
-.space-topic-page .tab-pane:not(#tab-sim) { padding-top: 60px; }
+.space-topic-page .tab-pane:not(#tab-sim, #tab-eclipse) { padding-top: 60px; }
 @media (max-width: 760px) {
     .space-topic-page .nav-tab { padding: 8px; font-size: 13px; gap: 4px; }
 }

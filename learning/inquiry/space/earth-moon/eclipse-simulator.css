@@ -1,4 +1,4 @@
-.space-topic-page .tab-pane#tab-eclipse { max-width: 1440px; margin: 0 auto; padding: 6px 12px 8px; color: #e2e8f0; }
+.space-topic-page .tab-pane#tab-eclipse { max-width: 1440px; margin: 0 auto; padding: 0 12px 8px; color: #e2e8f0; }
 .ecl-controls { display: flex; align-items: center; justify-content: flex-start; gap: 20px; height: 38px; margin-bottom: 6px; padding-left: 42px; padding-right: 330px; }
 .ecl-modes, .ecl-options, .ecl-presets { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
 .eclipse-lab button { cursor: pointer; padding: 9px 18px; border: 1px solid #34445f; border-radius: 8px; background: #111d30; color: #cbd5e1; font: inherit; font-weight: 700; }
@@ -6,7 +6,7 @@
 .eclipse-lab button:focus-visible, .eclipse-lab input:focus-visible, .eclipse-lab summary:focus-visible { outline: 2px solid #7dd3fc; outline-offset: 3px; }
 .ecl-options { gap: 18px; font-size: 13px; color: #bac9dc; }
 .ecl-options label { display: flex; align-items: center; gap: 6px; cursor: pointer; }
-.ecl-layout { display: grid; grid-template-columns: minmax(0,1fr) clamp(300px,28vw,390px); gap: 10px; height: calc(100dvh - 102px); min-height: 400px; }
+.ecl-layout { display: grid; grid-template-columns: minmax(0,1fr) clamp(300px,28vw,390px); gap: 10px; height: calc(100dvh - 96px); min-height: 400px; }
 .ecl-diagram-panel, .ecl-observation { min-width: 0; border: 1px solid #273a56; border-radius: 12px; background: #071120; overflow: hidden; }
 .ecl-arrangement { padding: 12px 16px 8px; color: #c8daf1; font-size: 16px; font-weight: 700; }
 .ecl-diagram { display: block; width: 100%; height: 100%; }
@@ -78,3 +78,5 @@ html:has(body[data-space-topic="eclipses"]) { background: #030712; }
     .ecl-diagram text { font-size: 24px; }
     .ecl-view text { font-size: 16px !important; }
 }
+body[data-space-topic="eclipses"] .view-container { padding-left: 0; padding-right: 0; }
+@media(max-width: 760px) { .ecl-diagram-panel { height: auto; aspect-ratio: 500 / 856; } }
