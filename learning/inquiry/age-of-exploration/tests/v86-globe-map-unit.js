@@ -36,7 +36,7 @@ assert.match(page, /projection:\{type:'globe'\}/, '지구본 도법으로 그려
 assert.match(page, /learning\/inquiry\/globe\//, '지구본 앱의 지도 조각을 그대로 써야 함(저장소가 늘지 않는다)');
 assert.match(page, /UW3Terrain\.globeMapZoom\(zoom,lat,512\)/, '위도에 맞춰 배율을 깎아야 함');
 assert.match(page, /if\(globeReady\)return globeScreenPoint/, '배·도시도 지구본 자리에 그려야 함');
-assert.match(page, /js\/terrain\.js\?v=80/, '지형 파일 버전을 올려야 함');
+assert.match(page, /js\/terrain\.js\?v=81/, '지형 파일 버전을 올려야 함');
 // 지구본 지도를 못 불러와도 게임은 돌아가야 한다.
 assert.match(page, /if\(!globeReady\)drawNaturalEarthLayer/, '지구본을 못 쓰면 평면 지도로 그려야 함');
 

@@ -194,17 +194,40 @@
   }
 
   // 1520년의 나무배는 북극·남극의 얼음 바다를 지날 수 없었다(북동 항로는 1878년, 북서 항로는 1906년에야 뚫렸다).
-  // 바다는 북위 70도부터 막고, 멕시코 만류로 덜 어는 노르웨이 앞바다만 74도까지 연다(사이는 부드럽게).
-  // 시베리아 앞바다 항로가 70~77도를 지나므로 80도에서 막으면 꼼수 항로가 그대로 열린다.
-  // 남쪽은 62도부터 막는다(혼곶 56도·드레이크 해협 58도는 지난다). 땅은 80도부터 얼음이다.
-  // 노르웨이 앞바다(서경 35도~동경 50도)는 74도, 그 밖은 70도. 사이 15도는 부드럽게 이어 얼음 벽처럼 꺾이지 않게 한다.
-  // 얼음은 계절에 따라 움직인다. 아래 값은 가장 많이 녹는 한여름 기준이고(지형이 늘 'ice'인 곳),
-  // 그보다 남쪽은 겨울에만 어는 바다라 계절에 따라 막았다 열었다 한다.
+  // 지형에 'ice'로 박아 두는 곳은 한여름에도 얼어 있는 곳이고, 그 바깥은 계절에 따라 얼었다 녹는다.
   // 여름에도 북극을 가로지르는 길(타이미르반도 앞 77.7도, 캐나다 북쪽 섬 사이)은 막힌 채로 둔다.
-  const ICE = Object.freeze({ north: 71.5, northAtlantic: 80, rampWest: -50, fullWest: -35, fullEast: 50, rampEast: 65, south: -65, landNorth: 80 });
-  // 겨울에 가장 많이 어는 때의 경계와, 얼음이 가장 많은 날·가장 적은 날(북극은 3월 중순·9월 중순, 남극은 그 반대).
-  const ICE_WINTER = Object.freeze({ north: 65, northAtlantic: 72, south: -60 });
+  // 남극은 북극만큼 경도에 따라 다르지 않아 한 값으로 둔다(혼곶 56도·드레이크 해협 58도는 지난다). 땅은 80도부터 얼음이다.
+  const ICE = Object.freeze({ south: -65, landNorth: 80 });
+  // 겨울에 가장 많이 어는 때의 남극 경계와, 얼음이 가장 많은 날·가장 적은 날(북극은 3월 중순·9월 중순, 남극은 그 반대).
+  const ICE_WINTER = Object.freeze({ south: -60 });
   const ICE_DAYS = Object.freeze({ northMaxIce: 74, southMaxIce: 263 });
+
+  // 북극 얼음 경계는 위도 하나로 그을 수 없다. 해류가 정한다.
+  // 따뜻한 물이 올라오는 노르웨이 앞바다는 한겨울에도 북위 78도까지 열려 있고(함메르페스트는 얼지 않는 항구다),
+  // 찬 물이 얼음을 실어 내리는 동그린란드·래브라도 앞바다는 겨울에 북위 50~65도까지 언다.
+  // [경도, 한겨울(3월) 경계, 한여름(9월) 경계]. 사이 경도는 부드럽게 이어 붙인다.
+  const ICE_EDGE = Object.freeze([
+    [-180, 58, 71], [-160, 60, 71.5], [-140, 69, 72], [-120, 70, 72], [-100, 68, 71],
+    [-80, 57, 70], [-60, 50, 70], [-45, 58, 70], [-30, 65, 72], [-15, 70, 76],
+    [0, 75, 80], [15, 78, 81], [30, 75, 80], [45, 73, 78], [60, 70, 76],
+    [90, 70, 76], [120, 70, 74], [150, 66, 72], [170, 60, 71], [180, 58, 71]
+  ]);
+  const ICE_EDGE_MIN = Object.freeze({ winter: Math.min(...ICE_EDGE.map((e) => e[1])), summer: Math.min(...ICE_EDGE.map((e) => e[2])) });
+
+  function iceEdgeAt(lon, column) {
+    let l = ((Number(lon) || 0) + 180) % 360;
+    if (l < 0) l += 360;
+    l -= 180;
+    for (let i = 1; i < ICE_EDGE.length; i += 1) {
+      const a = ICE_EDGE[i - 1];
+      const b = ICE_EDGE[i];
+      if (l <= b[0]) {
+        const t = (l - a[0]) / (b[0] - a[0]);
+        return a[column] + (b[column] - a[column]) * t;
+      }
+    }
+    return ICE_EDGE[ICE_EDGE.length - 1][column];
+  }
 
   // 얼음 가장자리는 자로 그은 줄이 아니라 들쭉날쭉하다. 경도에 따라 ±0.8도 안에서 부드럽게 흔든다.
   // 가장 많이 물러나도 북위 71도라, 72도가 넘는 벨로트 해협·타이미르반도 앞바다(북서·북동 항로)는 그대로 막힌다.
@@ -213,15 +236,8 @@
     return 0.5 * Math.sin(r * 7) + 0.3 * Math.sin(r * 23 + 1.1);
   }
 
-  function atlanticWeight(lon) {
-    if (lon >= ICE.fullWest && lon <= ICE.fullEast) return 1;
-    if (lon > ICE.fullEast && lon < ICE.rampEast) return (ICE.rampEast - lon) / (ICE.rampEast - ICE.fullEast);
-    if (lon < ICE.fullWest && lon > ICE.rampWest) return (lon - ICE.rampWest) / (ICE.fullWest - ICE.rampWest);
-    return 0;
-  }
-
   function iceLimitNorth(lon) {
-    return ICE.north + (ICE.northAtlantic - ICE.north) * atlanticWeight(lon) + iceWobble(lon);
+    return iceEdgeAt(lon, 2) + iceWobble(lon);
   }
 
   function iceLimitSouth(lon) {
@@ -247,9 +263,8 @@
 
   function iceLimitNorthAt(lon, day) {
     if (!Number.isFinite(day)) return iceLimitNorth(lon);
-    const weight = atlanticWeight(lon);
-    const winter = ICE_WINTER.north + (ICE_WINTER.northAtlantic - ICE_WINTER.north) * weight;
-    const summer = ICE.north + (ICE.northAtlantic - ICE.north) * weight;
+    const winter = iceEdgeAt(lon, 1);
+    const summer = iceEdgeAt(lon, 2);
     return winter + (summer - winter) * seasonOpenness(day, ICE_DAYS.northMaxIce) + iceWobble(lon);
   }
 
@@ -317,6 +332,6 @@
 
   return Object.freeze({
     WORLD_W, WORLD_H, TILE, WORLD_PIXEL_W, WORLD_PIXEL_H,
-    SPEED, LABEL, ICE, ICE_WINTER, ICE_DAYS, ICE_SLOW, iceSlowdownAt, globeMapZoom, HIGH_MOUNTAIN_FAMILIES, NAVIGABLE_SEA_CORRIDORS, iceLimitNorth, iceLimitSouth, isIceAt, iceLimitNorthAt, iceLimitSouthAt, isIceAtDay, dayOfYear, seasonOpenness, wrapCellX, wrapPixelX, cellValue, setNaturalEarthLandMask, navigableSeaCorridorAtCell, terrainAtCell, terrainAtPixel, lonLat
+    SPEED, LABEL, ICE, ICE_WINTER, ICE_DAYS, ICE_EDGE, ICE_EDGE_MIN, ICE_SLOW, iceSlowdownAt, globeMapZoom, HIGH_MOUNTAIN_FAMILIES, NAVIGABLE_SEA_CORRIDORS, iceLimitNorth, iceLimitSouth, isIceAt, iceLimitNorthAt, iceLimitSouthAt, isIceAtDay, dayOfYear, seasonOpenness, wrapCellX, wrapPixelX, cellValue, setNaturalEarthLandMask, navigableSeaCorridorAtCell, terrainAtCell, terrainAtPixel, lonLat
   });
 }));

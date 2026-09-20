@@ -51,6 +51,19 @@ for (const [name, lat, lon] of [['노르카프 앞바다', 71.3, 25.8], ['드레
   assert.equal(frozen(lat, lon, SUMMER), false, `${name}은 한여름에 열려 있어야 함`);
   assert.equal(frozen(lat, lon, WINTER), false, `${name}은 한겨울에도 열려 있어야 함`);
 }
+// 해류가 얼음 경계를 정한다. 위도 하나로 그으면 노르웨이 앞바다가 한겨울에 얼어붙는 잘못이 생긴다.
+// 따뜻한 물이 올라오는 곳: 한겨울에도 열려 있어야 한다(함메르페스트는 얼지 않는 항구다).
+for (const [name, lat, lon] of [['함메르페스트 앞바다', 70.7, 23.7], ['로포텐 앞바다', 71.5, 15.3], ['노르웨이해 74도', 74, 5]]) {
+  assert.equal(frozen(lat, lon, WINTER), false, `${name}은 한겨울에도 얼지 않아야 함`);
+}
+// 찬 물이 얼음을 실어 내리는 곳: 같은 위도라도 한겨울에는 얼어야 한다.
+for (const [name, lat, lon] of [['동그린란드 앞바다', 68, -25], ['래브라도 앞바다', 55, -55], ['배핀만 남쪽', 62, -60]]) {
+  assert.equal(frozen(lat, lon, WINTER), true, `${name}은 한겨울에 얼어야 함`);
+  assert.equal(frozen(lat, lon, SUMMER), false, `${name}은 한여름에는 열려야 함`);
+}
+// 같은 위도 71도인데 노르웨이 앞은 열리고 동그린란드 앞은 언다.
+assert.ok(Terrain.iceLimitNorthAt(15, WINTER) - Terrain.iceLimitNorthAt(-25, WINTER) > 8, '해류에 따라 경계가 크게 달라야 함');
+
 // 스발바르 앞바다는 한여름에만 갈 수 있다(바렌츠가 1596년에 여름에 80도까지 갔다).
 assert.equal(frozen(79, 15, SUMMER), false, '스발바르 앞바다는 한여름에는 열려야 함');
 assert.equal(frozen(79, 15, WINTER), true, '스발바르 앞바다는 한겨울에는 얼어야 함');
@@ -91,6 +104,6 @@ assert.match(server, /으로 뱃머리를 돌리/, '막혔을 때 빠져나갈 �
 const page = fs.readFileSync(path.join(root, 'public', 'index.html'), 'utf8');
 assert.match(page, /function drawIceLayer/, '학생 지도에 얼음을 그려야 함');
 assert.match(page, /isIceAtDay/, '학생 화면도 계절 얼음을 그려야 함');
-assert.match(page, /terrain\.js\?v=80/, '지형 파일 버전을 올려야 함');
+assert.match(page, /terrain\.js\?v=81/, '지형 파일 버전을 올려야 함');
 
 console.log(`v84 polar ice unit ok · 북동 항로 우회 최북 ${maxLat.toFixed(1)}° · 최남 ${minLat.toFixed(1)}°`);

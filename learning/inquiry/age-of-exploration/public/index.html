@@ -123,7 +123,7 @@ button,input{font:inherit}button{border:1px solid var(--line);background:#17313b
 <div id="discoveryView"><div id="discoveryCard"><h2 id="discoveryName">발견!</h2><div id="discoveryKind"></div><img id="discoveryImage" alt="" hidden><div id="discoveryCredit" hidden></div><div id="discoveryText"></div><div id="discoveryCount"></div><div id="discoveryButtons"><button id="discoveryNext" type="button" hidden>다음 명소</button><button id="discoveryClose" type="button">계속 탐험하기</button></div></div></div><div id="hostBar" class="panel" hidden><span>방번호 <b id="hostCode"></b></span><button id="hostStartBtn" type="button">모두 출발</button></div><div id="transitionOverlay"><div id="transitionCard"><div id="transitionLabel">입항 준비 중</div><div id="transitionBar"><div id="transitionFill"></div></div></div></div><div id="pauseOverlay"><div id="lockTitle">방장이 게임을 잠시 멈췄습니다.</div><span id="lockDetail" style="font-size:14px;font-weight:400">설명을 듣고 다시 시작할 때까지 기다리세요.</span></div>
 <div id="messageWindow" class="panel" aria-live="polite"><div id="messageHeader">항해 안내</div><div id="messageLines"><div class="guideLine system">서버에 접속한 뒤 안내 메시지가 여기에 표시됩니다.</div></div></div>
 <script src="/learn/world-voyage/socket.io/socket.io.js"></script>
-<script src="/learn/world-voyage/js/terrain.js?v=80"></script>
+<script src="/learn/world-voyage/js/terrain.js?v=81"></script>
 <script src="/learn/world-voyage/js/geo-motion.js?v=75"></script>
 <script src="/learn/world-voyage/js/ocean-current.js"></script>
 <script src="/learn/world-voyage/js/wind.js?v=77"></script>
@@ -803,20 +803,31 @@ function frozenNow(x,y,day=seasonDay()){return UW3Terrain.isIceAtDay(mapLonAt(x)
 // 부드러운 얼룩(값 잡음). 칸마다 따로 뽑으면 모자이크처럼 보이므로 몇 칸 간격의 값을 매끄럽게 잇는다.
 function iceNoise(x,y){const xi=Math.floor(x),yi=Math.floor(y),u=x-xi,v=y-yi,s=t=>t*t*(3-2*t),su=s(u),sv=s(v),h=(a,b)=>(iceHash(((a%WW)+WW)%WW,b)%1000)/1000;return (h(xi,yi)*(1-su)+h(xi+1,yi)*su)*(1-sv)+(h(xi,yi+1)*(1-su)+h(xi+1,yi+1)*su)*sv}
 function drawIceLayer(cw,ch,left,top){
-  if(!world)return;const ICE=UW3Terrain.ICE,ICEW=UW3Terrain.ICE_WINTER,FRINGE=1.3,latOf=cy=>90-(cy+.5)/WH*180,day=seasonDay();
+  if(!world)return;const ICE=UW3Terrain.ICE,ICE_EDGE_MIN=UW3Terrain.ICE_EDGE_MIN,FLOE_OUT=UW3Terrain.ICE_SLOW.degrees,FLOE_IN=3,ICE_WINTER_SOUTH=UW3Terrain.ICE_WINTER.south,latOf=cy=>90-(cy+.5)/WH*180,day=seasonDay();
   const cy0=Math.max(0,Math.floor(top/TS)-1),cy1=Math.min(WH-1,Math.ceil((top+ch/zoom)/TS)+1);
-  if(latOf(cy0)<ICEW.north-1-FRINGE&&latOf(cy1)>ICEW.south+1+FRINGE)return;
+  if(latOf(cy0)<ICE_EDGE_MIN.winter-FLOE_OUT&&latOf(cy1)>ICE_WINTER_SOUTH+FLOE_OUT)return;
   const cx0=Math.floor(left/TS)-1,cx1=Math.ceil((left+viewSpanX)/TS)+1,w=cx1-cx0+1,h=cy1-cy0+1;
   if(!ICE_BUF)ICE_BUF=document.createElement('canvas');if(ICE_BUF.width!==w||ICE_BUF.height!==h){ICE_BUF.width=w;ICE_BUF.height=h}
   const bctx=ICE_BUF.getContext('2d'),img=bctx.createImageData(w,h),d=img.data;let any=false;
-  for(let y=0;y<h;y++){const cy=cy0+y,lat=latOf(cy);if(lat<ICE.north-1-FRINGE&&lat>ICE.south+1+FRINGE)continue;
-    for(let x=0;x<w;x++){const cx=cx0+x;let kind=iceCellKind(cx,cy);if(kind===1)continue;const lonC=mapLonAt(cx*TS);
-      // 계절에 따라 어는 바다: 오늘 얼어 있으면 얼음처럼 칠한다.
-      if(kind===3&&UW3Terrain.isIceAtDay(lonC,lat,true,day))kind=4;
-      const n=iceNoise(cx/5,cy/5)*.7+iceNoise(cx/2+50,cy/2)*.3;let r,g,b,a;
-      if(kind===2||kind===4){const coast=iceCellKind(cx+1,cy)===1||iceCellKind(cx-1,cy)===1||iceCellKind(cx,cy+1)===1||iceCellKind(cx,cy-1)===1;
-        if(coast){r=150;g=176;b=196;a=kind===4?.8:.95}else{r=206+n*30;g=222+n*22;b=234+n*14;a=kind===4?.78:.9}}
-      else{const lon=lonC,gap=Math.min(UW3Terrain.iceLimitNorthAt(lon,day)-lat,lat-UW3Terrain.iceLimitSouthAt(lon,day));if(gap>=FRINGE)continue;const f=1-Math.max(0,gap)/FRINGE,m=iceNoise(cx/3+200,cy/3),k=Math.max(0,Math.min(1,(f*1.1-m)*3.5));if(k<=0)continue;r=224;g=236;b=243;a=(.35+.5*f)*k}
+  for(let y=0;y<h;y++){const cy=cy0+y,lat=latOf(cy);if(lat<ICE_EDGE_MIN.winter-FLOE_OUT&&lat>ICE.south+1+FLOE_OUT)continue;
+    for(let x=0;x<w;x++){const cx=cx0+x;const kind=iceCellKind(cx,cy);if(kind===1)continue;const lonC=mapLonAt(cx*TS);
+      // 얼음 가장자리에서 얼마나 들어왔나(도). 음수면 아직 열린 바다다.
+      // 바깥 5도는 얼음덩이가 드문드문 떠다니고, 안으로 3도를 더 들어가야 바다가 통째로 언다.
+      // 지형에 박아 둔 얼음(한여름에도 언 곳)은 언제나 통째로 언 바다다.
+      const depth=kind===2?FLOE_IN:Math.max(lat-UW3Terrain.iceLimitNorthAt(lonC,day),UW3Terrain.iceLimitSouthAt(lonC,day)-lat);
+      if(depth<-FLOE_OUT)continue;
+      const n=iceNoise(cx/5,cy/5)*.7+iceNoise(cx/2+50,cy/2)*.3,density=Math.max(0,Math.min(1,(depth+FLOE_OUT)/(FLOE_OUT+FLOE_IN)));
+      let r,g,b,a;
+      if(density<1){
+        // 떠다니는 얼음덩이: 성글게 흩어 놓고, 안으로 들어갈수록 촘촘해진다.
+        const m=iceNoise(cx/2.4+200,cy/2.4);if(m>density*density*1.4)continue;
+        r=214+n*24;g=228+n*18;b=238+n*12;a=.42+.45*density;
+      }else{
+        // 통째로 언 바다: 갈라진 틈이 군데군데 보이고, 땅에 닿은 곳은 조금 어둡게 해 섬 모양이 드러난다.
+        const coast=iceCellKind(cx+1,cy)===1||iceCellKind(cx-1,cy)===1||iceCellKind(cx,cy+1)===1||iceCellKind(cx,cy-1)===1;
+        const lead=iceNoise(cx/9+400,cy/3.6+400);
+        if(coast){r=150;g=176;b=196;a=.93}else{r=206+n*30;g=222+n*22;b=234+n*14;a=lead>.79?.5:.9}
+      }
       const i=(y*w+x)*4;d[i]=r;d[i+1]=g;d[i+2]=b;d[i+3]=a*255;any=true}}
   if(!any)return;bctx.putImageData(img,0,0);
   ctx.save();ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';ctx.filter=`blur(${Math.max(1.5,TS*zoom*.45).toFixed(1)}px)`;
