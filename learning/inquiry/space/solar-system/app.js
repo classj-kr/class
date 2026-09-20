@@ -19,6 +19,7 @@
     }
 
     function boot() {
+        var selectedTopic = window.SpaceTopics && window.SpaceTopics.current(window.location);
         var state = {
             simMode: '3d', // '3d' (Log Scale) or '2d' (True Scale Map)
             currentTab: 'sim',
@@ -3204,7 +3205,8 @@
             bar.innerHTML = '';
             
             // All 13 Solar System Bodies (Sun, Mercury, Venus, Earth, Moon, Mars, Jupiter, Saturn, Uranus, Neptune, Pluto, Comet, Meteor)
-            var allKeys = ['sun', 'mercury', 'venus', 'earth', 'moon', 'mars', 'jupiter', 'saturn', 'uranus', 'neptune', 'pluto', 'comet', 'meteor'];
+            var allKeys = ['sun', 'mercury', 'venus', 'earth', 'moon', 'mars', 'jupiter', 'saturn', 'uranus', 'neptune', 'pluto', 'comet', 'meteor', 'asteroid'];
+            if (selectedTopic) allKeys = allKeys.filter(function(key) { return selectedTopic.bodies.includes(key); });
             
             allKeys.forEach(function (key) {
                 var body = window.SOLAR_SYSTEM_DATA[key];
@@ -3248,7 +3250,7 @@
 
             var tableRowsHtml = '';
 
-            Object.keys(window.SOLAR_SYSTEM_DATA).forEach(function (key) {
+            Object.keys(window.SOLAR_SYSTEM_DATA).filter(function (key) { return !selectedTopic || selectedTopic.bodies.includes(key); }).forEach(function (key) {
                 var body = window.SOLAR_SYSTEM_DATA[key];
                 var photo = body.photoUrl || (typeof window.createPlanetTexture === 'function' ? window.createPlanetTexture(key) : '');
 

@@ -6,7 +6,7 @@
     'use strict';
     var NS = 'http://www.w3.org/2000/svg';
     var layer, body, jar, phaseText, summary, autoButton, lastTime = 0;
-    var streams = [], callouts = [], travel = 0, previousPhase = '';
+    var streams = [], travel = 0, previousPhase = '', previousFocus;
     var blue = '#79d9f2', gold = '#f7c76b';
 
     function el(name, attrs, parent) {
@@ -25,7 +25,6 @@
         var t = el('text', { x: x, y: y, fill: color, 'text-anchor': side === 'left' ? 'start' : 'end' }, g);
         t.textContent = text;
         var c = { line: line, dot: dot, x: x, y: y, side: side };
-        callouts.push(c);
         return c;
     }
     function pointLabel(c, x, y) {
@@ -76,16 +75,14 @@
         var ribPaths = [];
         for (var i = 0; i < 5; i++) ribPaths.push(path(ribs, '', {}));
         tube(svg, 'M240 32 V143 Q240 153 229 163 L198 191 M240 143 Q240 153 251 163 L282 191', 12);
-        var branches = [];
         [-1, 1].forEach(function (side) {
             var cx = 240 + side * 42;
-            branches.push(tube(svg, 'M' + cx + ' 191 L' + (cx + side * 14) + ' 229 M' + cx + ' 191 L' + (cx - side * 13) + ' 224', 5));
+            tube(svg, 'M' + cx + ' 191 L' + (cx + side * 14) + ' 229 M' + cx + ' 191 L' + (cx - side * 13) + ' 224', 5);
         });
         var diaphragm = path(svg, '', { fill: 'none', stroke: gold, 'stroke-width': 8, 'stroke-linecap': 'round' });
-        var flows = [];
         [-1, 1].forEach(function (side) {
             [-1, 1].forEach(function (branch) {
-                flows.push(flowRoute(svg, 'M240 20 V143 Q240 153 ' + (240 + side * 11) + ' 163 L' + (240 + side * 42) + ' 191 L' + (240 + side * 42 + branch * 14) + ' 226'));
+                flowRoute(svg, 'M240 20 V143 Q240 153 ' + (240 + side * 11) + ' 163 L' + (240 + side * 42) + ' 191 L' + (240 + side * 42 + branch * 14) + ' 226');
             });
         });
         body = { svg: svg, chest: chest, left: left, right: right, ribs: ribPaths, diaphragm: diaphragm,
@@ -175,7 +172,7 @@
         pointLabel(body.ribsLabel, x1 + 7, 171 - p * 9);
         pointLabel(body.lungLabel, 304 + p * 8, 228);
         pointLabel(body.chestLabel, x1 + 9, edge - 21);
-        pointLabel(body.diaphragmLabel, 266, center + 2);
+        pointLabel(body.diaphragmLabel, 266, center + (edge - center) * Math.pow(26 / s.chestWidth, 2));
         pointLabel(jar.tubeLabel, 248, 49);
         pointLabel(jar.wallLabel, 137, 162);
         pointLabel(jar.balloonLabel, 282 + s.balloonWidth * 0.6, 236);
@@ -204,10 +201,10 @@
         if (previousPhase !== phase) {
             previousPhase = phase;
             phaseText.textContent = phase === 'in' ? '들숨 · 공기가 들어오는 중' : phase === 'out' ? '날숨 · 공기가 나가는 중' :
-                phase === 'paused' ? '일시정지 · 움직임 관찰' : '호흡 전환 · 공기 흐름 없음';
+                phase === 'paused' ? '일시정지 · 움직임 관찰' : '공기 흐름 없음';
             summary.innerHTML = phase === 'in' ? '<span>횡격막 <b>수축 · 하강</b></span><span>흉강 부피 <b>증가</b></span><span>폐 속 압력 <b>대기압보다 낮음</b></span>' :
                 phase === 'out' ? '<span>횡격막 <b>이완 · 상승</b></span><span>흉강 부피 <b>감소</b></span><span>폐 속 압력 <b>대기압보다 높음</b></span>' :
-                '<span>' + (phase === 'paused' ? '재생하면 현재 위치에서 움직임을 이어갑니다.' : '움직임이 멎으면 폐 속 압력은 대기압과 같아집니다.') + '</span>';
+                '<span>' + (phase === 'paused' ? '현재 위치에서 멈췄습니다. 자동 호흡으로 움직임을 이어서 관찰하세요.' : '움직임이 멎으면 폐 속 압력은 대기압과 같아집니다.') + '</span>';
         }
         autoButton.setAttribute('aria-pressed', s.automatic ? 'true' : 'false');
         autoButton.textContent = s.automatic ? '자동 호흡 중' : '자동 호흡';
@@ -249,11 +246,28 @@
         var b = document.createElement('button');
         b.className = 'scene-btn'; b.dataset.scene = 'breath'; b.textContent = '3. 호흡 운동과 종 모형';
         bar.appendChild(b);
+        function revealActiveScene() {
+            var active = bar.querySelector('.scene-btn.active');
+            if (!active) return;
+            if (active.offsetLeft < bar.scrollLeft) bar.scrollLeft = active.offsetLeft - 6;
+            else if (active.offsetLeft + active.offsetWidth > bar.scrollLeft + bar.clientWidth)
+                bar.scrollLeft = active.offsetLeft + active.offsetWidth - bar.clientWidth + 6;
+        }
+        window.addEventListener('resize', revealActiveScene);
         bar.addEventListener('click', function (event) {
             var btn = event.target.closest('.scene-btn');
             if (!btn) return;
             bar.querySelectorAll('.scene-btn').forEach(function (item) { item.classList.toggle('active', item === btn); });
-            layer.hidden = btn.dataset.scene !== 'breath';
+            revealActiveScene();
+            var entering = btn.dataset.scene === 'breath';
+            var title = document.getElementById('organTitle');
+            var description = document.getElementById('organDesc');
+            if (entering && layer.hidden) previousFocus = { title: title.textContent, description: description.innerHTML };
+            if (!entering && !layer.hidden && previousFocus) {
+                title.textContent = previousFocus.title;
+                description.innerHTML = previousFocus.description;
+            }
+            layer.hidden = !entering;
             if (!layer.hidden) {
                 document.getElementById('respirationCanvas').style.visibility = 'hidden';
                 document.getElementById('organTitle').textContent = '호흡 운동과 종 모형';

@@ -1,0 +1,45 @@
+.space-topic-page [hidden] { display: none !important; }
+.space-topic-page .top-header { position: relative; inset: auto; width: 100%; min-height: 66px; padding: 12px 78px 12px 18px; display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; background: #080f20; border-bottom: 1px solid #223047; }
+.topic-identity { display: flex; align-items: center; gap: 18px; min-width: 0; }
+.topic-identity h1 { color: #f8fafc; font-size: 18px; line-height: 1.4; margin: 0; word-break: keep-all; }
+.topic-back { color: #aebed4; text-decoration: none; white-space: nowrap; padding: 8px 0; font-size: 14px; }
+.topic-back:hover { color: white; }
+.topic-back:focus-visible, .topic-related a:focus-visible { outline: 2px solid #67e8f9; outline-offset: 4px; }
+.space-topic-page .view-container { margin-top: 0; padding-top: 0; }
+.space-topic-page .nav-tab { white-space: nowrap; }
+.topic-observation-guide { margin: 0; padding: 10px 20px; background: #0c1729; color: #afc5dc; font-size: 13px; line-height: 1.6; }
+.topic-concepts { max-width: 1200px; margin: 0 auto; padding: 28px 20px 48px; }
+.topic-concept-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-bottom: 28px; }
+.topic-concept-grid article, .topic-eclipse-diagrams figure { background: #0d182c; border: 1px solid #26354d; border-radius: 14px; padding: 24px; }
+.topic-concept-grid h2 { font-size: 18px; margin: 0 0 12px; color: #7dd3fc; }
+.topic-concept-grid p, .topic-eclipse-diagrams p { font-size: 15px; line-height: 1.85; color: #d3deec; margin: 0; word-break: keep-all; }
+.topic-related { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; padding: 24px 0; border-top: 1px solid #26354d; margin-top: 28px; }
+.topic-related strong { color: #94a3b8; margin-right: 8px; font-size: 13px; }
+.topic-related a { color: #d6e5fa; text-decoration: none; font-size: 13px; padding: 8px 12px; border: 1px solid #334155; border-radius: 9px; }
+.topic-related a:hover { background: #1e293b; }
+.topic-table-wrap { overflow-x: auto; }
+.topic-eclipse-diagrams { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.topic-eclipse-diagrams figure { margin: 0; }
+.topic-eclipse-diagrams figcaption { font-size: 18px; color: #f8fafc; }
+.eclipse-alignment { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 30px 0; position: relative; }
+.eclipse-alignment::before { content: ''; position: absolute; left: 24px; right: 24px; top: 50%; border-top: 1px dashed #94a3b8; }
+.eclipse-alignment span { display: grid; place-items: center; border-radius: 50%; color: #0f172a; font-weight: 800; position: relative; }
+.eclipse-sun { width: 74px; height: 74px; background: #fbbf24; }
+.eclipse-moon { width: 42px; height: 42px; background: #cbd5e1; }
+.eclipse-earth { width: 58px; height: 58px; background: #38bdf8; }
+.space-topic-page #stellarStageNodes { grid-template-columns: repeat(5, minmax(0, 1fr)) !important; }
+.space-topic-page .quiz-panel { margin-top: 18px; }
+@media (max-width: 760px) {
+    .space-topic-page .top-header { padding: 10px 66px 10px 14px; gap: 8px; }
+    .topic-identity { width: 100%; gap: 12px; }
+    .topic-identity h1 { font-size: 16px; }
+    .topic-concept-grid, .topic-eclipse-diagrams { grid-template-columns: 1fr; }
+    .topic-concepts { padding: 18px 12px 40px; }
+    .topic-concept-grid article { padding: 20px; }
+    .space-topic-page #stellarStageNodes { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+    .space-topic-page #stageDetailBox { flex-direction: column; align-items: stretch !important; }
+    .space-topic-page #mode-zodiac { flex-direction: column; min-height: 780px !important; max-height: none !important; aspect-ratio: auto !important; }
+    .space-topic-page #mode-zodiac > div { min-height: 340px; flex: 1 !important; }
+    .space-topic-page #mode-compare { overflow: auto; }
+    .space-topic-page #atlasGrid { grid-template-columns: minmax(0, 1fr) !important; }
+}

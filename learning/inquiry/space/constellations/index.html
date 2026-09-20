@@ -7,12 +7,14 @@
     <title>별과 별자리</title>
     <link rel="stylesheet" href="base.css?v=floating-nav-full-quiz-20260906">
     <!-- Three.js & OrbitControls for 3D Celestial Sphere -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="../solar-system/assets/vendor/three-r128/three.min.js"></script>
+    <script src="../solar-system/assets/vendor/three-r128/OrbitControls.js"></script>
     <link rel="stylesheet" href="../quiz-board.css?v=quiz-topic-picker-20260906c">
     <link rel="stylesheet" href="styles.css?v=quiz-topic-picker-20260906c">
     <script src="navigation.js"></script>
     <script src="../../../../assets/sound/music-control.js?v=20260910-click-cache-1" defer></script>
+    <script src="../topic-catalog.js?v=20260920-topics"></script>
+    <link rel="stylesheet" href="../topic-page.css?v=20260920-topics">
 </head>
 <body>
     <audio id="bgm" src="assets/audio/galaxy-breath.ogg" preload="auto" loop aria-label="은하의 숨결 배경음악"></audio>
@@ -165,7 +167,7 @@
                             <div style="font-size: 11.5px; color: #fbbf24; font-weight: 800;">📍 관측자 위도 = ⭐ 북극성 고도 관계</div>
                             <div id="obsViewStatusTitle" style="font-size: 16px; font-weight: 900; color: #38bdf8; margin-top: 2px;">📍 위도 37.5°N = ⭐ 북극성 고도 37.5°</div>
                             <div id="obsViewStatusDetail" style="font-size: 12px; color: #f1f5f9; margin-top: 4px; line-height: 1.5; font-weight: 500;">
-                                💡 관측자 위도가 37.5°N이므로, 지평선으로부터 북극성까지의 높이각(고도)도 정확히 37.5°로 관측됩니다!
+                                💡 관측자 위도가 37.5°N이므로, 지평선으로부터 북극성까지의 높이각(고도)도 약 37.5°로 관측됩니다!
                             </div>
                         </div>
                     </div>
@@ -526,7 +528,7 @@
                     </div>
                     <div class="atlas-card" style="background: rgba(15,23,42,0.8); border:1px solid rgba(244,63,94,0.4); border-radius:14px; padding:16px; backdrop-filter:blur(6px);">
                         <h3 style="color:#f43f5e; margin-bottom:8px; font-size:16px;">❄️ 겨울철 대표 별자리</h3>
-                        <p style="font-size:13px; color:#cbd5e1; line-height:1.6;"><strong>겨울철 오리온:</strong> 모래시계 4개 1등성과 중앙 삼태성 3개 별<br><strong>겨울철 대육각형:</strong> 베텔게우스, 시리우스, 리겔, 프로키온, 카펠라, 알데바란.</p>
+                        <p style="font-size:13px; color:#cbd5e1; line-height:1.6;"><strong>겨울철 오리온:</strong> 모래시계 4개 1등성과 중앙 삼태성 3개 별<br><strong>겨울철 대육각형:</strong> 폴룩스, 시리우스, 리겔, 프로키온, 카펠라, 알데바란.</p>
                     </div>
                 </div>
 
@@ -763,8 +765,9 @@
         </section>
     </main>
 
-    <script src="../quiz-board.js?v=quiz-topic-picker-20260906c"></script>
-    <script src="app.js?v=20260918-quiz"></script>
+    <script src="../quiz-board.js?v=20260920-topics"></script>
+    <script src="app.js?v=20260920-topics"></script>
 
+    <script src="../topic-page.js?v=20260920-topics"></script>
 </body>
 </html>

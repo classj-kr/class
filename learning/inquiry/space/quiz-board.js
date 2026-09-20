@@ -103,6 +103,7 @@
     }
 
     function mount(config) {
+        if (window.SpaceTopics) config = window.SpaceTopics.scopeQuiz(config, window.SpaceTopics.current(window.location));
         var questions = config.questions || [];
         var topics = config.topics || [];
         var namePrefix = config.namePrefix || 'quiz';
@@ -114,7 +115,7 @@
         });
         if (!el.grid) return;
 
-        var state = { topic: null, sub: null, limit: chunkSize };
+        var state = { topic: config.scopedTopic ? topics[0].name : null, sub: null, limit: chunkSize };
 
         function catsOfTopic(topic) {
             return topic.subs.reduce(function (all, sub) { return all.concat(sub.cats); }, []);
@@ -228,6 +229,13 @@
         }
 
         if (el.total) el.total.textContent = questions.length + '문제';
+        if (config.scopedTopic) {
+            var heading = el.grid.closest('.quiz-panel').querySelector('h2');
+            if (heading) heading.textContent = config.scopedTopic.title + ' 확인 문제';
+            if (el.tabs) el.tabs.closest('.quiz-picker-row').hidden = true;
+            var subLabel = el.subRow && el.subRow.querySelector('.quiz-picker-label');
+            if (subLabel) subLabel.textContent = '개념별 문제';
+        }
 
         buildTopicTabs();
         buildSubChips();

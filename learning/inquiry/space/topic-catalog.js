@@ -1,0 +1,70 @@
+(function (root) {
+    'use strict';
+    const groups = [
+        { id: 'solar', title: '태양계', color: '#fbbf24' },
+        { id: 'sky', title: '별과 하늘', color: '#c4b5fd' },
+        { id: 'earth', title: '지구와 달', color: '#67e8f9' }
+    ];
+    const topics = [
+        { id: 'sun', group: 'solar', app: 'solar-system', title: '태양', icon: '☀️', desc: '태양의 에너지와 흑점', bodies: ['sun'], cats: ['태양계의 중심', '태양의 에너지원'],
+          concepts: [['스스로 빛을 내는 별', '태양은 태양계의 중심에 있는 항성입니다. 행성과 달은 태양빛을 반사해 보입니다.'], ['에너지원', '태양 중심부의 수소 핵융합으로 에너지가 만들어집니다. 표면에서 물질이 불타는 현상과는 다릅니다.'], ['흑점', '흑점은 주변보다 온도가 낮아 어둡게 보이는 영역입니다. 흑점의 이동으로 태양의 자전을 알아볼 수 있습니다.']], observe: '태양을 선택해 표면의 흑점과 자전을 살펴보세요.' },
+        { id: 'planets', group: 'solar', app: 'solar-system', title: '행성', icon: '🪐', desc: '행성의 순서와 특징', bodies: ['mercury', 'venus', 'earth', 'mars', 'jupiter', 'saturn', 'uranus', 'neptune'], cats: ['행성 순서', '지구형 vs 목성형', '지구형 행성', '목성형 행성', '행성의 자전', '수성', '화성', '행성의 밀도', '행성의 고리', '자전축 기울기', '지구형·목성형 분포', '금성', '지구'],
+          concepts: [['행성의 순서', '태양에서 가까운 순서로 수성, 금성, 지구, 화성, 목성, 토성, 천왕성, 해왕성입니다.'], ['지구형과 목성형', '수성부터 화성까지는 작고 밀도가 큰 암석질 행성입니다. 목성부터 해왕성까지는 크고 평균 밀도가 비교적 작은 행성으로, 모두 고리와 위성을 가집니다.'], ['특징 비교', '금성의 높은 표면 온도는 강한 온실 효과와 관련됩니다. 화성은 산화 철 때문에 붉게 보이고, 천왕성의 자전축은 옆으로 크게 기울어져 있습니다.']], observe: '행성을 선택해 크기, 고리, 자전축을 비교하세요.' },
+        { id: 'planet-motion', group: 'solar', app: 'solar-system', title: '행성의 운동과 관측', icon: '🔭', desc: '공전과 내행성·외행성 관측', bodies: ['mercury', 'venus', 'earth', 'mars', 'jupiter', 'saturn', 'uranus', 'neptune'], cats: ['공전 주기', '내행성 관측', '외행성 관측', '행성의 공전 방향', '행성의 공전 궤도', '공전 속도', '행성의 역행'],
+          concepts: [['공전', '행성은 태양을 한 초점으로 하는 타원 궤도를 따라 공전합니다. 태양에서 먼 행성일수록 공전 주기가 길어집니다.'], ['내행성과 외행성', '수성과 금성은 지구 궤도 안쪽을 돌아 태양에서 멀리 떨어져 보이지 않습니다. 초저녁 서쪽이나 새벽 동쪽 하늘에서 관측합니다. 외행성이 태양의 반대 방향에 있는 충 무렵에는 밤새 관측하기 좋습니다.'], ['겉보기 역행', '지구가 외행성을 앞질러 갈 때 외행성이 별들 사이에서 잠시 반대 방향으로 움직이는 것처럼 보입니다. 실제 공전 방향이 바뀐 것은 아닙니다.']], observe: '같은 시간 동안 안쪽 행성과 바깥쪽 행성이 움직이는 각도를 비교하세요.' },
+        { id: 'small-bodies', group: 'solar', app: 'solar-system', title: '위성과 작은 천체', icon: '☄️', desc: '위성·왜소행성·소행성·혜성·유성', bodies: ['moon', 'pluto', 'asteroid', 'comet', 'meteor'], cats: ['왜소행성 재분류', '자연위성', '소행성대', '혜성의 특성', '혜성의 구성', '유성체·유성·운석', '태양계 외곽', '왜소행성', '소행성과 혜성', '혜성 꼬리', '태양계 형성'],
+          concepts: [['위성과 왜소행성', '자연위성은 행성이나 왜소행성 주위를 돕니다. 왜소행성은 태양 주위를 돌고 둥근 모양이지만, 자기 궤도 주변을 지배적으로 정리하지 못한 천체입니다.'], ['소행성과 혜성', '소행성은 주로 암석과 금속, 혜성은 얼음과 먼지로 이루어집니다. 혜성의 꼬리는 대체로 태양 반대쪽을 향하며 먼지 꼬리는 휘어질 수 있습니다.'], ['유성체·유성·운석', '우주 공간의 작은 조각은 유성체, 대기권에 들어와 빛나는 현상은 유성, 지표에 도달한 잔해는 운석입니다.']], observe: '작은 천체를 선택해 궤도와 혜성 꼬리의 방향을 살펴보세요.' },
+        { id: 'zodiac', group: 'sky', app: 'constellations', title: '황도 12궁', icon: '☀️', desc: '태양의 길과 배경 별자리', mode: 'zodiac', cats: ['황도 12궁'],
+          concepts: [['황도', '지구의 공전 때문에 태양이 1년 동안 천구 위를 이동하는 것처럼 보이는 길입니다.'], ['낮하늘과 밤하늘', '태양과 같은 방향의 별자리는 밝은 낮하늘에 가려 관측하기 어렵습니다. 태양 반대 방향의 별자리는 한밤중에 관측하기 좋습니다.'], ['황도궁과 실제 별자리', '전통적인 황도 12궁과 실제 별자리의 경계는 같지 않습니다. 이 화면은 공전과 관측 방향의 관계를 보여주는 모형이며 실제 관측용 달력이 아닙니다.']], observe: '월을 바꾸며 태양 방향의 별자리와 한밤중 반대편 별자리를 비교하세요.' },
+        { id: 'seasonal-stars', group: 'sky', app: 'constellations', title: '계절별 별자리', icon: '✨', desc: '계절에 따라 달라지는 밤하늘', mode: 'zodiac', cats: ['계절 별자리', '별자리'],
+          concepts: [['달라지는 밤하늘', '지구가 공전하면 같은 시각에 밤하늘을 바라보는 방향이 달라집니다. 그래서 계절마다 잘 보이는 별자리도 달라집니다.'], ['여섯 달 뒤', '지구가 공전 궤도의 반대편으로 이동하면 한밤중에 바라보는 우주 방향도 대략 반대가 됩니다.'], ['별자리는 겉보기 모양', '가까이 모여 보이는 별도 지구에서의 실제 거리는 크게 다를 수 있습니다. 별자리는 지구에서 보이는 방향을 바탕으로 정한 것입니다.']], observe: '시각을 고정하고 월만 바꿔 같은 시각에 보이는 별자리를 비교하세요.', extras: 'seasons' },
+        { id: 'north-sky', group: 'sky', app: 'constellations', title: '북쪽 하늘과 방향 찾기', icon: '🧭', desc: '북극성과 길잡이 별자리', mode: 'diurnal', cats: ['북쪽 하늘', '북극성', '북극성 찾기', '남쪽 하늘'],
+          concepts: [['북극성', '북극성은 지구 자전축 연장선인 천구의 북극 가까이에 있어 밤새 거의 움직이지 않는 것처럼 보입니다. 가장 밝은 별이라는 뜻은 아닙니다.'], ['북극성 찾기', '북두칠성의 국자 그릇 바깥쪽 두 별을 잇는 방향으로 약 다섯 배 연장합니다. 카시오페이아도 북극성을 찾는 길잡이가 됩니다.'], ['관측 방향', '우리나라에서 북쪽 하늘의 별들은 북극성 부근을 중심으로 시계 반대 방향으로 움직입니다. 남반구에서는 남십자자리를 이용해 남쪽을 찾을 수 있습니다.']], observe: '재생하며 북극성과 주변 별들의 위치 변화를 비교하세요.' },
+        { id: 'star-motion', group: 'sky', app: 'constellations', title: '일주 운동과 연주 운동', icon: '⏰', desc: '하루 동안의 변화와 계절별 변화', mode: 'compare', cats: ['일주 운동', '연주 운동', '일주·연주 비교'],
+          concepts: [['일주 운동', '같은 날짜에 시각을 바꾸어 관찰하는 별의 겉보기 운동입니다. 지구의 자전 때문에 하루 동안 동쪽에서 서쪽으로 움직이며 한 시간에 약 15° 회전합니다.'], ['연주 운동', '매일 같은 시각에 관찰하면 별자리가 하루 약 1°, 한 달 약 30°씩 서쪽으로 이동해 보입니다. 지구의 공전 때문에 나타납니다.'], ['비교 기준', '하루 중 변화를 볼 때는 날짜를 고정하고 시각을 바꿉니다. 연간 변화를 볼 때는 시각을 고정하고 날짜를 바꿉니다.']], observe: '왼쪽은 시간을, 오른쪽은 월을 바꾸며 자전과 공전의 차이를 비교하세요.' },
+        { id: 'celestial-sphere', group: 'sky', app: 'constellations', title: '천구', icon: '🌐', desc: '지평선·천정·천구의 적도와 위도', mode: '3ddepth', cats: ['천구', '북극성'],
+          concepts: [['천구와 관측자', '천구는 천체의 방향을 나타내기 위해 가정한 큰 구입니다. 관측자의 머리 바로 위가 천정, 발 아래 방향이 천저이며, 지평선은 하늘과 땅을 나누는 기준입니다.'], ['천구의 극과 적도', '지구 자전축을 연장하면 천구의 북극과 남극을 만납니다. 지구 적도면을 연장한 큰 원은 천구의 적도입니다. 황도와 천구의 적도가 만나는 두 점은 춘분점과 추분점입니다.'], ['위도와 고도', '북반구에서 천구의 북극 고도는 관측지의 위도와 같습니다. 북극성은 그 가까이에 있으므로 고도가 위도와 거의 같습니다. 남반구에서는 천구의 북극이 지평선 아래에 있습니다.']], observe: '관측 위치를 바꾸며 천정 방향과 북극성의 고도를 비교하세요.' },
+        { id: 'star-properties', group: 'sky', app: 'constellations', title: '별의 밝기와 색', icon: '🌟', desc: '등급·거리·표면 온도', mode: null, extras: 'star-table', cats: ['별의 밝기', '별의 색과 온도'],
+          concepts: [['겉보기 밝기', '별이 실제로 내는 빛의 양인 광도와 지구까지의 거리가 함께 영향을 줍니다. 밝게 보인다는 사실만으로 가까운 별이라고 판단할 수는 없습니다.'], ['겉보기 등급과 절대 등급', '등급의 숫자가 작을수록 밝습니다. 겉보기 등급은 지구에서 보이는 밝기, 절대 등급은 같은 거리인 10파섹에 놓았다고 가정한 밝기입니다.'], ['색과 온도', '표면 온도가 높은 별은 청백색, 낮은 별은 붉은색에 가깝습니다. 별의 크기나 거리와 구분해서 비교합니다.']] },
+        { id: 'stellar-life', group: 'sky', app: 'constellations', title: '별의 일생', icon: '💫', desc: '질량에 따른 별의 변화', mode: 'stellar', cats: ['별의 일생'],
+          concepts: [['별의 탄생', '성운의 가스와 먼지가 중력으로 모여 원시별이 됩니다. 중심부의 수소 핵융합이 시작되면 주계열 단계에 들어갑니다.'], ['태양과 비슷한 별', '주계열성에서 적색거성으로 변한 뒤 바깥층을 내보내 행성상 성운을 만들고 중심부는 백색왜성으로 남습니다.'], ['질량이 큰 별', '질량이 큰 주계열성을 거쳐 초거성으로 진화합니다. 초신성 폭발 뒤 중심부의 질량에 따라 중성자별이나 블랙홀이 남을 수 있습니다.']], observe: '두 질량의 별을 선택하고 진화 단계를 비교하세요. 막대는 단계 선택용이며 실제 시간 비율이 아닙니다.' },
+        { id: 'earth-motion', group: 'earth', app: 'earth-moon', title: '지구와 달의 운동', icon: '🌍', desc: '지구와 달의 자전·공전', mode: 'moon', cats: ['지구의 자전', '낮과 밤', '지구의 공전', '달의 공전', '달의 주기'],
+          concepts: [['자전', '지구가 자전축을 중심으로 도는 운동입니다. 북극 위에서 보면 시계 반대 방향이며, 지표에서는 서쪽에서 동쪽 방향입니다.'], ['낮과 밤', '자전하면서 햇빛을 받는 쪽과 받지 않는 쪽이 바뀝니다. 태양이 지구 주위를 하루에 한 바퀴 도는 것은 아닙니다.'], ['공전과 달의 운동', '지구는 약 일 년에 태양 주위를 돕니다. 달은 약 27.3일에 지구를 한 바퀴 돌고 같은 주기로 자전합니다. 지구도 공전하기 때문에 같은 위상이 반복되는 주기는 약 29.5일로 더 깁니다.']], observe: '날짜를 고정하고 시각을 바꾼 뒤, 시각을 고정하고 날짜를 바꿔 비교하세요.' },
+        { id: 'seasons', group: 'earth', app: 'earth-moon', title: '계절의 변화', icon: '🍂', desc: '자전축·낮의 길이·햇빛', mode: 'sunpath', cats: ['계절 변화', '계절의 원인', '계절과 에너지', '계절과 낮의 길이'],
+          concepts: [['계절의 원인', '지구는 자전축이 기울어진 채 거의 같은 방향을 유지하며 공전합니다. 그 결과 계절별로 태양의 고도와 낮의 길이가 달라집니다.'], ['햇빛과 낮의 길이', '태양 고도가 높으면 같은 양의 빛이 좁은 면적에 집중됩니다. 여름에는 낮도 길어 지표가 받는 에너지가 많아집니다.'], ['남북반구', '북반구와 남반구의 계절은 반대입니다. 두 반구는 태양에서 거의 같은 거리에 있으므로 거리 차이만으로 계절을 설명할 수 없습니다.']], observe: '한국과 호주에서 같은 날짜의 태양 고도와 낮의 길이를 비교하세요.' },
+        { id: 'sun-path', group: 'earth', app: 'earth-moon', title: '계절별 태양의 남중 고도', icon: '🌤️', desc: '태양의 경로·그림자·일출과 일몰', mode: 'sunpath', cats: ['태양의 남중 고도', '춘분·추분', '태양의 일주 운동', '태양의 남중', '일출·일몰', '하지', '동지', '태양 고도와 그림자', '위도와 태양 고도', '적도의 태양 경로', '위도와 낮의 길이'],
+          concepts: [['태양 고도와 그림자', '고도는 지평선에서 천체까지의 높이각입니다. 우리나라에서는 태양이 남중할 때 고도가 가장 높고 같은 막대의 그림자는 가장 짧습니다.'], ['계절별 경로', '우리나라에서 하지 무렵에는 태양이 북동쪽에서 떠서 북서쪽으로 지며 낮이 깁니다. 동지 무렵에는 남동쪽에서 떠서 남서쪽으로 지며 낮이 짧습니다.'], ['위도와 고도', '춘분·추분에 우리나라의 남중 고도는 대략 90°에서 위도를 뺀 값입니다. 관측 위치가 바뀌면 고도와 보이는 경로도 달라집니다.']], observe: '시각과 관측 위치를 바꾸며 태양 고도를 읽어 보세요. 경로의 가로 폭은 낮 길이를 비교하기 위한 표현입니다.' },
+        { id: 'moon-phases', group: 'earth', app: 'earth-moon', title: '달의 위상과 관측', icon: '🌙', desc: '달의 모양·관측 시각·주기', mode: 'moon', extras: 'moon', cats: ['달의 위상', '달의 관측', '삭의 관측', '상현달의 관측', '보름달의 관측', '하현달의 관측', '달의 위상과 위치'],
+          concepts: [['위상 변화', '달이 지구 주위를 돌면서 햇빛을 받는 면을 보는 각도가 달라집니다. 지구 그림자가 달을 가려 모양이 바뀌는 것은 아닙니다.'], ['시각과 방향', '우리나라에서 상현달은 해 질 무렵 남쪽, 보름달은 자정 무렵 남쪽, 하현달은 해 뜰 무렵 남쪽에서 높이 보입니다. 초승달은 초저녁 서쪽에서 관측합니다.'], ['서로 다른 주기', '달의 자전과 공전 주기는 약 27.3일로 같아 거의 같은 면이 지구를 향합니다. 같은 위상이 반복되는 삭망월은 지구의 공전 때문에 약 29.5일입니다.']], observe: '위상을 선택하고 시각을 바꾸며 달이 어느 방향에 있는지 확인하세요. 날짜 표시는 단순화된 월령 모형입니다.' },
+        { id: 'eclipses', group: 'earth', app: 'earth-moon', title: '일식과 월식', icon: '🌘', desc: '세 천체의 배열과 그림자', mode: null, extras: 'eclipses', cats: ['식 현상'],
+          concepts: [['일식', '태양–달–지구 순서로 거의 일직선이 되고 달의 그림자가 지구에 닿으면, 그 지역에서 태양이 가려지는 일식을 볼 수 있습니다. 삭 무렵에 일어날 수 있습니다.'], ['월식', '태양–지구–달 순서로 거의 일직선이 되고 달이 지구의 그림자에 들어가면 월식이 일어납니다. 보름달 무렵에 일어날 수 있습니다.'], ['매달 생기지 않는 이유', '달의 공전 궤도면은 지구의 공전 궤도면과 약 5° 기울어져 있습니다. 대부분의 삭과 망에는 그림자가 빗나가므로 매달 식이 생기지 않습니다.']] }
+    ];
+    function get(id) { return topics.find(topic => topic.id === id) || null; }
+    function current(location) {
+        if (!location) return null;
+        const app = ['solar-system', 'constellations', 'earth-moon'].find(name => location.pathname.includes('/space/' + name + '/'));
+        if (!app) return null;
+        const requested = get(new URLSearchParams(location.search).get('topic'));
+        if (requested && requested.app === app) return requested;
+        return get({ 'solar-system': 'planets', constellations: 'zodiac', 'earth-moon': 'moon-phases' }[app]);
+    }
+    function matches(topic, question) {
+        if (!topic.cats.includes(question.cat)) return false;
+        if (question.cat === '북극성') {
+            const isDirectionQuestion = question.q.includes('밤새');
+            return topic.id === 'north-sky' ? isDirectionQuestion : !isDirectionQuestion;
+        }
+        return true;
+    }
+    function scopeQuiz(config, topic) {
+        if (!topic) return config;
+        const questions = config.questions.filter(q => matches(topic, q));
+        const subs = config.topics.flatMap(t => t.subs).map(sub => ({
+            name: sub.name, cats: sub.cats.filter(cat => questions.some(q => q.cat === cat))
+        })).filter(sub => sub.cats.length);
+        return Object.assign({}, config, { questions, topics: [{ name: topic.title, subs }], scopedTopic: topic });
+    }
+    const api = { groups, topics, get, current, matches, scopeQuiz, href: topic => topic.app + '/?topic=' + topic.id };
+    if (typeof module !== 'undefined' && module.exports) module.exports = api;
+    else root.SpaceTopics = api;
+})(typeof window !== 'undefined' ? window : globalThis);

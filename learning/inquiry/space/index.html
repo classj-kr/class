@@ -2,254 +2,46 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="description" content="우주 관찰과 천문학 학습 - 태양계의 구성원, 별과 별자리, 지구와 달의 운동">
-    <title>우주 관찰</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="태양계, 별과 하늘, 지구와 달을 주제별로 관찰하고 개념과 문제를 확인합니다.">
+    <title>우주</title>
     <link rel="preload" as="image" href="assets/images/space-hub-bg.webp">
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        html, body.hub-page {
-            width: 100%;
-            min-height: 100vh;
-            height: 100%;
-            margin: 0;
-            padding: 0;
-            background: #030712 url('assets/images/space-hub-bg.webp') center center / cover no-repeat fixed;
-            color: #f8fafc;
-            font-family: -apple-system, BlinkMacSystemFont, "Pretendard", "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow-x: hidden;
-            overflow-y: auto;
-            position: relative;
-        }
-
-        /* Ambient Dark Vignette Overlay */
-        body.hub-page::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at center, rgba(3, 7, 18, 0.42) 0%, rgba(2, 6, 23, 0.82) 100%);
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        /* Floating Top Left Back Button */
-        .floating-back-btn {
-            position: fixed;
-            top: 18px;
-            left: 18px;
-            width: 38px;
-            height: 38px;
-            border-radius: 50%;
-            background: rgba(15, 23, 42, 0.75);
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #ffffff;
-            text-decoration: none;
-            font-size: 16px;
-            font-weight: 700;
-            transition: all 0.2s ease;
-            z-index: 100;
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-        }
-
-        .floating-back-btn:hover {
-            background: rgba(30, 41, 59, 0.9);
-            border-color: rgba(56, 189, 248, 0.6);
-            transform: scale(1.06);
-            box-shadow: 0 0 14px rgba(56, 189, 248, 0.4);
-        }
-
-        .hub-container {
-            width: 100%;
-            max-width: 1200px;
-            margin: auto;
-            padding: 24px 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            z-index: 10;
-        }
-
-        .hub-grid {
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 20px;
-            width: 100%;
-            max-width: 1060px;
-            justify-content: center;
-        }
-
-        .hub-card {
-            background: rgba(15, 23, 42, 0.78);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1.5px solid rgba(255, 255, 255, 0.11);
-            border-radius: 14px;
-            padding: 22px 20px;
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-            color: #f8fafc;
-            transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
-        }
-
-        .hub-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: var(--card-accent, #38bdf8);
-        }
-
-        .hub-card:hover, .hub-card:focus-visible {
-            border-color: var(--card-accent, #38bdf8);
-            background: rgba(15, 23, 42, 0.92);
-            transform: translateY(-2.5px);
-            box-shadow: 0 10px 26px rgba(0, 0, 0, 0.6), 0 0 18px var(--card-accent, #38bdf8);
-        }
-
-        .card-top {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            width: 100%;
-        }
-
-        .card-icon-box {
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
-            background: rgba(255, 255, 255, 0.06);
-            border: 1px solid var(--card-accent, #38bdf8);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 22px;
-            flex-shrink: 0;
-        }
-
-        .card-title-group {
-            flex: 1;
-            min-width: 0;
-        }
-
-        .card-title {
-            font-size: 16.5px;
-            font-weight: 750;
-            color: #ffffff;
-            letter-spacing: -0.2px;
-            line-height: 1.3;
-            word-break: keep-all;
-        }
-
-        .card-desc {
-            font-size: 12.5px;
-            color: #94a3b8;
-            margin-top: 4px;
-            line-height: 1.35;
-            word-break: keep-all;
-        }
-
-        /* Responsive Layout Optimization */
-        @media (max-width: 900px) {
-            .hub-grid {
-                grid-template-columns: 1fr;
-                max-width: 440px;
-                gap: 16px;
-            }
-        }
-
-        @media (max-width: 580px) {
-            .hub-container {
-                padding: 68px 16px 24px;
-            }
-            .hub-grid {
-                grid-template-columns: 1fr;
-                max-width: 340px;
-                gap: 14px;
-            }
-            .hub-card {
-                padding: 18px 16px;
-            }
-            .card-icon-box {
-                width: 44px;
-                height: 44px;
-                font-size: 20px;
-            }
-            .card-title {
-                font-size: 15.5px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="topic-hub.css?v=20260920-topics">
 </head>
-<body class="hub-page">
-
-    <!-- Floating Back Button (Back to Portal Main) -->
-    <a href="../../../" class="floating-back-btn back-link" aria-label="포털 메인으로">
-        <span>←</span>
-    </a>
-
-    <!-- Content Hub (Centered) -->
+<body>
     <main class="hub-container">
-        <div class="hub-grid">
-            
-            <!-- 1. 태양계 -->
-            <a href="solar-system/" class="hub-card" style="--card-accent: #f59e0b;">
-                <div class="card-top">
-                    <div class="card-icon-box">🪐</div>
-                    <div class="card-title-group">
-                        <div class="card-title">태양계 · 행성과 천체</div>
-                        <div class="card-desc">태양과 행성, 위성과 작은 천체</div>
-                    </div>
-                </div>
-            </a>
-
-            <!-- 2. 별과 별자리 -->
-            <a href="constellations/" class="hub-card" style="--card-accent: #a855f7;">
-                <div class="card-top">
-                    <div class="card-icon-box">✨</div>
-                    <div class="card-title-group">
-                        <div class="card-title">별과 별자리 · 밤하늘과 천구</div>
-                        <div class="card-desc">사계절 별자리, 별의 일주·연주 운동과 일생</div>
-                    </div>
-                </div>
-            </a>
-
-            <!-- 3. 지구와 달의 운동 -->
-            <a href="earth-moon/" class="hub-card" style="--card-accent: #38bdf8;">
-                <div class="card-top">
-                    <div class="card-icon-box">🌍</div>
-                    <div class="card-title-group">
-                        <div class="card-title">지구와 달의 운동 · 자전과 공전</div>
-                        <div class="card-desc">낮과 밤, 계절별 태양 고도, 달의 위상 변화</div>
-                    </div>
-                </div>
-            </a>
-
-        </div>
+        <header class="hub-header"><a href="../../../" aria-label="학습 메뉴로 돌아가기">← 학습 메뉴</a><h1>우주</h1></header>
+        <section class="topic-group" aria-labelledby="group-solar" style="--accent:#fbbf24">
+            <h2 id="group-solar">태양계</h2>
+            <div class="hub-grid">
+                <a class="hub-card" href="solar-system/?topic=sun"><span class="card-icon" aria-hidden="true">☀️</span><span class="card-copy"><strong>태양</strong><span>태양의 에너지와 흑점</span></span><span class="card-arrow" aria-hidden="true">↗</span></a>
+                <a class="hub-card" href="solar-system/?topic=planets"><span class="card-icon" aria-hidden="true">🪐</span><span class="card-copy"><strong>행성</strong><span>행성의 순서와 특징</span></span><span class="card-arrow" aria-hidden="true">↗</span></a>
+                <a class="hub-card" href="solar-system/?topic=planet-motion"><span class="card-icon" aria-hidden="true">🔭</span><span class="card-copy"><strong>행성의 운동과 관측</strong><span>공전과 내행성·외행성 관측</span></span><span class="card-arrow" aria-hidden="true">↗</span></a>
+                <a class="hub-card" href="solar-system/?topic=small-bodies"><span class="card-icon" aria-hidden="true">☄️</span><span class="card-copy"><strong>위성과 작은 천체</strong><span>위성·왜소행성·소행성·혜성·유성</span></span><span class="card-arrow" aria-hidden="true">↗</span></a>
+            </div>
+        </section>
+        <section class="topic-group" aria-labelledby="group-sky" style="--accent:#c4b5fd">
+            <h2 id="group-sky">별과 하늘</h2>
+            <div class="hub-grid">
+                <a class="hub-card" href="constellations/?topic=zodiac"><span class="card-icon" aria-hidden="true">☀️</span><span class="card-copy"><strong>황도 12궁</strong><span>태양의 길과 배경 별자리</span></span><span class="card-arrow" aria-hidden="true">↗</span></a>
+                <a class="hub-card" href="constellations/?topic=seasonal-stars"><span class="card-icon" aria-hidden="true">✨</span><span class="card-copy"><strong>계절별 별자리</strong><span>계절에 따라 달라지는 밤하늘</span></span><span class="card-arrow" aria-hidden="true">↗</span></a>
+                <a class="hub-card" href="constellations/?topic=north-sky"><span class="card-icon" aria-hidden="true">🧭</span><span class="card-copy"><strong>북쪽 하늘과 방향 찾기</strong><span>북극성과 길잡이 별자리</span></span><span class="card-arrow" aria-hidden="true">↗</span></a>
+                <a class="hub-card" href="constellations/?topic=star-motion"><span class="card-icon" aria-hidden="true">⏰</span><span class="card-copy"><strong>일주 운동과 연주 운동</strong><span>하루 동안의 변화와 계절별 변화</span></span><span class="card-arrow" aria-hidden="true">↗</span></a>
+                <a class="hub-card" href="constellations/?topic=celestial-sphere"><span class="card-icon" aria-hidden="true">🌐</span><span class="card-copy"><strong>천구</strong><span>지평선·천정·천구의 적도와 위도</span></span><span class="card-arrow" aria-hidden="true">↗</span></a>
+                <a class="hub-card" href="constellations/?topic=star-properties"><span class="card-icon" aria-hidden="true">🌟</span><span class="card-copy"><strong>별의 밝기와 색</strong><span>등급·거리·표면 온도</span></span><span class="card-arrow" aria-hidden="true">↗</span></a>
+                <a class="hub-card" href="constellations/?topic=stellar-life"><span class="card-icon" aria-hidden="true">💫</span><span class="card-copy"><strong>별의 일생</strong><span>질량에 따른 별의 변화</span></span><span class="card-arrow" aria-hidden="true">↗</span></a>
+            </div>
+        </section>
+        <section class="topic-group" aria-labelledby="group-earth" style="--accent:#67e8f9">
+            <h2 id="group-earth">지구와 달</h2>
+            <div class="hub-grid">
+                <a class="hub-card" href="earth-moon/?topic=earth-motion"><span class="card-icon" aria-hidden="true">🌍</span><span class="card-copy"><strong>지구와 달의 운동</strong><span>지구와 달의 자전·공전</span></span><span class="card-arrow" aria-hidden="true">↗</span></a>
+                <a class="hub-card" href="earth-moon/?topic=seasons"><span class="card-icon" aria-hidden="true">🍂</span><span class="card-copy"><strong>계절의 변화</strong><span>자전축·낮의 길이·햇빛</span></span><span class="card-arrow" aria-hidden="true">↗</span></a>
+                <a class="hub-card" href="earth-moon/?topic=sun-path"><span class="card-icon" aria-hidden="true">🌤️</span><span class="card-copy"><strong>계절별 태양의 남중 고도</strong><span>태양의 경로·그림자·일출과 일몰</span></span><span class="card-arrow" aria-hidden="true">↗</span></a>
+                <a class="hub-card" href="earth-moon/?topic=moon-phases"><span class="card-icon" aria-hidden="true">🌙</span><span class="card-copy"><strong>달의 위상과 관측</strong><span>달의 모양·관측 시각·주기</span></span><span class="card-arrow" aria-hidden="true">↗</span></a>
+                <a class="hub-card" href="earth-moon/?topic=eclipses"><span class="card-icon" aria-hidden="true">🌘</span><span class="card-copy"><strong>일식과 월식</strong><span>세 천체의 배열과 그림자</span></span><span class="card-arrow" aria-hidden="true">↗</span></a>
+            </div>
+        </section>
     </main>
-
 </body>
 </html>

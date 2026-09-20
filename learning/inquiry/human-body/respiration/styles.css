@@ -259,3 +259,9 @@
 [class$="-tag"].on, [class$="-tag"].picked {
     animation: hb-tag-breathe 1.6s ease-in-out infinite;
 }
+
+/* Keep scene navigation clear of the back and playback controls. */
+.respiration-viewport .scene-switcher { left: 94px; max-width: calc(100% - 220px); }
+@media (max-width: 900px) {
+    .respiration-viewport .scene-switcher { left: 12px; max-width: calc(100% - 24px); }
+}

@@ -141,7 +141,9 @@
     function updateBreathingReadout() {
         showDiaphragmState();
         showBreathMode();
-        if (statVolumeEl) statVolumeEl.textContent = Math.round(diaphragmPosition) + '% (모형의 상대 크기)';
+        if (statVolumeEl) statVolumeEl.textContent = breathingState.phase === 'in' ? '커지는 중' :
+            breathingState.phase === 'out' ? '작아지는 중' : diaphragmPosition > 66 ? '큼 · 유지' :
+            diaphragmPosition < 34 ? '작음 · 유지' : '중간 · 유지';
         if (statPressureEl) statPressureEl.textContent = breathingState.phase === 'in' ? '대기압보다 낮음' :
             breathingState.phase === 'out' ? '대기압보다 높음' : '대기압과 같음';
     }
@@ -150,6 +152,7 @@
         manualTarget = Math.max(0, Math.min(100, Number(value)));
         if (!Number.isFinite(manualTarget)) manualTarget = diaphragmPosition;
         autoBreathing = false;
+        if (diaphragmSlider) diaphragmSlider.value = manualTarget;
         if (!isRunning) {
             diaphragmPosition = manualTarget;
             breathingState = BreathModel.state(diaphragmPosition, 0);
