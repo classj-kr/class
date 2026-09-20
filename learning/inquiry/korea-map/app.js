@@ -42,7 +42,7 @@
   let mapDetailsVisible = false;
   let session = { questions: [], answers: [], index: 0, answered: false, mode: "theme" };
   let mainMap, questionMap;
-  let study, lessonMapLayer;
+  let study, lessonMapLayer, scene;
   let mainBoundaryLayer, mainThemeLayer, mainLabelLayer;
   let questionBoundaryLayer, questionThemeLayer, questionLabelLayer, questionFocusLayer;
   const zoomSyncHandlers = new WeakMap();
@@ -56,7 +56,8 @@
     initMaps();
     bindControls();
     lessonMapLayer = L.layerGroup().addTo(mainMap);
-    study = window.KoreaStudy.create({ focus: focusLesson, focusSpot: focusStudySpot, practice: startLessonPractice, progress: readProgress });
+    scene = window.KoreaScene.create(mainMap);
+    study = window.KoreaStudy.create({ focus: focusLesson, focusSpot: focusStudySpot, practice: startLessonPractice, progress: readProgress, rendered: () => scene.renderInsight() });
     const hashTheme = (location.hash || "").replace("#", "");
     renderTheme(themes[hashTheme] ? hashTheme : currentTheme);
     renderProgress();
@@ -237,9 +238,14 @@
       const response = await fetch("data/major-rivers.geojson?v=20260901-3");
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
       majorRivers = await response.json();
-      if (themes[currentTheme] && themes[currentTheme].rivers) renderTheme(currentTheme);
+      scene.setRivers(majorRivers);
+      if (themes[currentTheme] && (themes[currentTheme].rivers || study.current)) {
+        // Late data must also reach a direct #climate visit, without resetting the selected lesson/view.
+        drawThemeOnMap(mainMap, mainThemeLayer, themes[currentTheme], {interactive:true,baseOnly:!!study.current});
+      }
     } catch (error) {
       console.warn("주요 하천 선형을 불러오지 못했습니다.", error);
+      scene.failRivers();
     }
   }
 
@@ -364,11 +370,13 @@
   function focusLesson(lesson) {
     mainMap.invalidateSize({ pan: false });
     lessonMapLayer.clearLayers();
-    if (!lesson) return;
+    if (!lesson) { scene.setContext(currentTheme, null); return; }
     renderLegend((themes[currentTheme].legend || []).filter(item=>item.type === "relief"));
     drawThemeOnMap(mainMap, mainThemeLayer, themes[currentTheme], { interactive: true, skipFeatures: true, baseOnly: true });
     drawLabels(mainMap, mainLabelLayer, { admin: true, city: true, annotations: [] });
     lesson.spots.forEach((spot, index) => {
+      // The temperature scene already places A/B at the observed stations; do not stack duplicate pins.
+      if (currentTheme === "climate" && lesson.id === "temperature") return;
       const marker = L.marker([spot.lat, spot.lng], { pane: "studyMarkers", icon: L.divIcon({ className: "lesson-pin-wrap", html: '<span class="lesson-pin">'+(index+1)+'</span>', iconSize:[32,32],iconAnchor:[16,16] }) });
       marker.bindTooltip(spot.name, { permanent:true, direction:"top", offset:[0,-17], className:"study-tooltip" });
       marker.on("click", () => focusStudySpot(spot));
@@ -376,6 +384,7 @@
     });
     if (lesson.spots.length > 1) mainMap.fitBounds(L.latLngBounds(lesson.spots.map(s=>[s.lat,s.lng])), {padding:[65,65],maxZoom:8,animate:false});
     else mainMap.setView([lesson.spots[0].lat,lesson.spots[0].lng],7,{animate:false});
+    scene.setContext(currentTheme, lesson);
   }
 
   function focusStudySpot(spot) {
@@ -569,13 +578,17 @@
           const midpoint = coordinates[Math.floor(coordinates.length / 2)];
           const weight = riverWidthAt(name, midpoint, maxDistance);
           const latLngs = coordinates.map((coordinate) => [coordinate[1], coordinate[0]]);
-          const casing = L.polyline(latLngs, { pane: "themeLines", color: "#ffffff", weight: weight + 2.4, opacity: 0.8, lineCap: "round", lineJoin: "round", interactive: false, className: "major-river-casing" }).addTo(group);
-          const path = L.polyline(latLngs, { pane: "themeLines", color: "#087eaf", weight, opacity: 0.96, lineCap: "round", lineJoin: "round", interactive, className: "major-river-path" }).addTo(group);
+          const casing = L.polyline(latLngs, { pane: "themeLines", color: "#ffffff", weight: weight + 2.4, opacity: 0.8, lineCap: "round", lineJoin: "round", interactive: false, className: "major-river-casing" });
+          const path = L.polyline(latLngs, { pane: "themeLines", color: "#087eaf", weight, opacity: 0.96, lineCap: "round", lineJoin: "round", interactive, className: "major-river-path" });
           if (interactive) path.bindTooltip(system ? `${name} · ${system}` : name, { sticky: true, className: "river-tooltip" });
+          if (interactive && map === mainMap) path.on("click", () => { if (!profile.active) scene.selectRiver(name); });
           strokes.push({ casing, path, weight });
         }
       });
     });
+    // Draw every casing BEFORE the blue strokes: chunk ends must not cover their neighbours in white.
+    strokes.forEach(({ casing }) => casing.addTo(group));
+    strokes.forEach(({ path }) => path.addTo(group));
     setZoomSync(map, "riverWidth", () => {
       const zoom = map.getZoom();
       const scale = zoom <= 5 ? 0.45 : zoom === 6 ? 0.6 : zoom === 7 ? 0.8 : 1;
