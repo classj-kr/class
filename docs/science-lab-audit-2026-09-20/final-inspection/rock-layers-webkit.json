@@ -1,0 +1,47 @@
+{
+  "slug": "rock-layers",
+  "engine": "webkit",
+  "modes": [
+    "initial"
+  ],
+  "cases": 4,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__layerModel",
+      "methods": [
+        "GRAINS",
+        "MIXES",
+        "TANK",
+        "LAYER_H",
+        "MAX_LAYERS",
+        "settlingSpeed",
+        "sublayersFor",
+        "layers",
+        "setMix",
+        "setFossil",
+        "pour",
+        "reset"
+      ]
+    }
+  ],
+  "paint": [],
+  "grades": [
+    {
+      "mode": "initial",
+      "results": [
+        {
+          "choice": "bottom",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        },
+        {
+          "choice": "top",
+          "visible": true,
+          "text": "예상과 다른 결과입니다. 맨 아래층이 가장 먼저 쌓인 층입니다."
+        }
+      ]
+    }
+  ]
+}

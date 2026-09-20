@@ -1,0 +1,55 @@
+{
+  "slug": "lens-image",
+  "engine": "webkit",
+  "modes": [
+    "initial"
+  ],
+  "cases": 9,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__lensModel",
+      "methods": [
+        "LENS_X",
+        "AXIS_Y",
+        "SCALE",
+        "OBJ_CM",
+        "analyse",
+        "rays",
+        "at",
+        "render",
+        "check",
+        "setLens",
+        "setFocus",
+        "setDist",
+        "getLens",
+        "focal",
+        "dist"
+      ]
+    }
+  ],
+  "paint": [],
+  "grades": [
+    {
+      "mode": "initial",
+      "results": [
+        {
+          "choice": "real",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        },
+        {
+          "choice": "virtual",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "none",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        }
+      ]
+    }
+  ]
+}

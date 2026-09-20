@@ -18,7 +18,7 @@ const engine=process.argv.includes('--webkit')?'webkit':'chromium';
    const rules=[];function collect(list){for(const r of list){if(r.cssRules)collect(r.cssRules);if(r.selectorText&&r.style&&(r.style.fill||r.style.stroke))rules.push(r.selectorText);}}
    for(const sheet of document.styleSheets){try{collect(sheet.cssRules);}catch{}}
    const result=[];for(const e of document.querySelectorAll('svg path,svg rect,svg circle,svg ellipse,svg line,svg polyline,svg polygon')){
-    if(e.closest('defs')||e.closest('[hidden]')||!e.getClientRects().length)continue;
+    if(e.closest('defs,clipPath')||e.closest('[hidden]')||!e.getClientRects().length)continue;
     const c=getComputedStyle(e);if(c.display==='none'||Number(c.opacity)===0)continue;
     const explicit=node=>node.hasAttribute('fill')||node.hasAttribute('stroke')||node.style.fill||node.style.stroke||rules.some(r=>{try{return node.matches(r);}catch{return false;}});
     let styled=false;for(let node=e;node instanceof SVGElement;node=node.parentElement){if(explicit(node)){styled=true;break;}}

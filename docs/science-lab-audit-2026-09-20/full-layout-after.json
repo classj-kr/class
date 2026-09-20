@@ -1,0 +1,101 @@
+{
+  "apps": 104,
+  "scenarios": 728,
+  "viewports": [
+    1366,
+    1024,
+    820,
+    768
+  ],
+  "failures": [
+    {
+      "slug": "flame-ions",
+      "width": 1366,
+      "mode": "ion",
+      "overflow": false,
+      "typography": [],
+      "outside": [
+        "전원 장치"
+      ],
+      "overlaps": []
+    },
+    {
+      "slug": "flame-ions",
+      "width": 1024,
+      "mode": "ion",
+      "overflow": false,
+      "typography": [],
+      "outside": [
+        "전원 장치"
+      ],
+      "overlaps": []
+    },
+    {
+      "slug": "flame-ions",
+      "width": 820,
+      "mode": "ion",
+      "overflow": false,
+      "typography": [],
+      "outside": [
+        "전원 장치"
+      ],
+      "overlaps": []
+    },
+    {
+      "slug": "flame-ions",
+      "width": 768,
+      "mode": "ion",
+      "overflow": false,
+      "typography": [],
+      "outside": [
+        "전원 장치"
+      ],
+      "overlaps": []
+    },
+    {
+      "slug": "cell-osmosis",
+      "width": 1366,
+      "mode": "initial",
+      "overflow": false,
+      "typography": [],
+      "outside": [
+        "처음 세포 속 1.00"
+      ],
+      "overlaps": []
+    },
+    {
+      "slug": "cell-osmosis",
+      "width": 1024,
+      "mode": "initial",
+      "overflow": false,
+      "typography": [],
+      "outside": [
+        "처음 세포 속 1.00"
+      ],
+      "overlaps": []
+    },
+    {
+      "slug": "cell-osmosis",
+      "width": 820,
+      "mode": "initial",
+      "overflow": false,
+      "typography": [],
+      "outside": [
+        "처음 세포 속 1.00"
+      ],
+      "overlaps": []
+    },
+    {
+      "slug": "cell-osmosis",
+      "width": 768,
+      "mode": "initial",
+      "overflow": false,
+      "typography": [],
+      "outside": [
+        "처음 세포 속 1.00"
+      ],
+      "overlaps": []
+    }
+  ],
+  "overlapReview": []
+}

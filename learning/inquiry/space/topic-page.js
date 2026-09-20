@@ -44,10 +44,11 @@
             });
         } else topic.concepts.forEach(concept => conceptCard(concept, intro));
         concepts.append(intro);
+        if (topic.id === 'star-properties' && window.StarProperties) window.StarProperties.mount(concepts);
         if (topic.id === 'stellar-life' && window.StellarStudy) window.StellarStudy.mount(concepts);
         main.append(concepts);
         const calc = document.querySelector('#tab-calc .calc-container');
-        if (calc && topic.extras === 'star-table') {
+        if (calc && topic.extras === 'star-table' && topic.id !== 'star-properties') {
             const table = calc.lastElementChild;
             table.classList.add('topic-table-wrap');
             concepts.append(table);

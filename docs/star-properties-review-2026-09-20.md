@@ -1,0 +1,20 @@
+# 별의 밝기와 색 학습 화면 검토
+
+2026-09-20. 로컬 수정이며 배포하지 않음.
+
+- 개념 화면: 광도와 거리 조절 → 겉보기 밝기, 등급 차이 → 밝기 비와 비례 막대, m/M 표의 관측 기준 전환, 색·표면 온도 순서.
+- 광도 1배·거리 1배를 기준으로 b = L / d². 단순 비교 모형이며 성간 흡수를 제외한다.
+- 밝기 비는 100^(등급 차이/5). 1등급 차이는 약 2.512배, 5등급 차이는 100배. 작은 등급 쪽이 밝다.
+- m/M 비교는 같은 관측 파장대를 전제하고, 절대 등급은 10 pc 기준이다. 가상의 자료 A(1,4), B(4,-1), C(2,2)를 사용해 별 이름별 수치 암기 대신 두 열을 비교한다.
+- 기존 실제 별 비교표는 개념 화면의 주요 자료에서 제외했다. 원본 자료 DOM은 유지한다.
+- 문항을 거리와 밝기 / 등급과 밝기 차이 / 겉보기 등급과 절대 등급 / 별의 색과 온도로 구분. 수량 목표 대신 요인 구분, 거리 제곱, 광도·거리 동시 비교, 음수 등급, 5등급 차이, m/M 밝기·거리 비교, 온도와 판단 한계를 다룬다.
+
+근거:
+- https://www.astro.ucla.edu/~wright/magcolor.htm
+- https://www.phys.ksu.edu/personal/wysin/astro/magnitudes.html
+- https://astronomy.swin.edu.au/cosmos/d/Distance%2BModulus
+
+검증:
+- tests/space-topic-contract.cjs: 전체 문항의 주제·소단원 배정.
+- tmp/star-properties-browser.cjs: 거리 2·3·4배 계산, 광도 4배/거리 2배 동일 밝기, 등급 비, 기준 전환 순위, 전체 소단원 필터, 도해 문항·해설, 모바일 넘침 및 새로고침.
+- tmp/stellar-study-browser.cjs, tmp/eclipse-vertical-browser.cjs: 공용 도해 렌더러 변경 후 기존 별의 일생·일식 기능 회귀 검증.

@@ -1,0 +1,99 @@
+{
+  "slug": "metamorphism",
+  "engine": "webkit",
+  "modes": [
+    "facies",
+    "grade",
+    "contact"
+  ],
+  "cases": 22,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__metaModel",
+      "methods": [
+        "DEPTHS",
+        "GRADS",
+        "TEMPS",
+        "PARENTS",
+        "BODIES",
+        "DISTS",
+        "state",
+        "analyse",
+        "render",
+        "faciesOf",
+        "runSeconds",
+        "setMode",
+        "set",
+        "setProgress",
+        "runToEnd",
+        "tick",
+        "finish"
+      ]
+    }
+  ],
+  "paint": [],
+  "grades": [
+    {
+      "mode": "facies",
+      "results": [
+        {
+          "choice": "low",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        },
+        {
+          "choice": "mid",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "high",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        }
+      ]
+    },
+    {
+      "mode": "grade",
+      "results": [
+        {
+          "choice": "weak",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "strong",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        },
+        {
+          "choice": "high",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        }
+      ]
+    },
+    {
+      "mode": "contact",
+      "results": [
+        {
+          "choice": "hornfels",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        },
+        {
+          "choice": "baked",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "none",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        }
+      ]
+    }
+  ]
+}

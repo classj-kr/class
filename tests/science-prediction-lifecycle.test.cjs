@@ -7,7 +7,7 @@ for(const engine of ['chromium','webkit'])test(`${engine}: every app clears obso
  try{browser=await require('playwright')[engine].launch({headless:true,...(engine==='chromium'?{executablePath:process.env.SCIENCE_BROWSER||'C:/Program Files/Google/Chrome/Application/chrome.exe'}:{})});
  const slugs=process.env.SCIENCE_SLUGS?.split(',')||Object.keys(map);let cursor=0;
  await Promise.all(Array.from({length:3},async()=>{const page=await browser.newPage({viewport:{width:1024,height:768},hasTouch:true});await page.route('**/*',r=>new URL(r.request().url()).hostname==='127.0.0.1'?r.continue():r.abort());page.on('pageerror',e=>errors.push(e.message));
- while(cursor<slugs.length){const slug=slugs[cursor++];await page.goto('http://127.0.0.1:'+server.address().port+'/'+slug+'/');const result=await page.evaluate(()=>{
+ while(cursor<slugs.length){const slug=slugs[cursor++];await page.goto('http://127.0.0.1:'+server.address().port+'/'+slug+'/');const result=await page.evaluate(async(probeLift)=>{
   const issues=[],visible=e=>!!e&&!!e.getClientRects().length&&!e.closest('[hidden]');let p=0,q=0,r=0;
   const models=Object.keys(window).filter(k=>k.startsWith('__')&&k.endsWith('Model')).map(k=>window[k]);
   const btn=[...document.querySelectorAll('[data-prediction]')].find(visible),feedback=document.getElementById('predictionResult'),content=document.getElementById('resultContent');
@@ -15,8 +15,15 @@ for(const engine of ['chromium','webkit'])test(`${engine}: every app clears obso
    const setting=document.querySelector('#controlArea [data-pick] button:not(.selected)');if(setting){setting.click();if(!document.querySelector('[data-prediction].selected'))for(const m of models){if(m.state&&typeof m.state==='object'&&'prediction'in m.state){r++;if(m.state.prediction!==null)issues.push('invisible prediction retained after question rebuilt');}}}
   }
   for(const card of document.querySelectorAll('.quiz-card')){const choices=[...card.querySelectorAll('input[type=radio]')];if(choices.length<2)continue;const right=choices.find(i=>i.value===card.dataset.answer)||choices[0];right.click();card.querySelector('.answer-button')?.click();const result=card.querySelector('.answer-result');if(!result?.textContent.trim())continue;q++;const other=choices.find(i=>i!==right&&!i.disabled);if(!other)continue;other.click();if(result.textContent.trim()||card.dataset.state||card.querySelector('.answer-explanation')?.hidden===false)issues.push('quiz '+q+' retains old grade after answer change');}
+  if(probeLift){
+   const readout=document.getElementById('stageReadout'),note=document.getElementById('stageNote'),verdict=document.getElementById('stageVerdict');
+   for(const e of [readout,note,verdict])if(e)e.textContent='obsolete-condition-sentinel';
+   for(const id of ['mainGroup','graphGroup'])document.getElementById(id)?.replaceChildren(document.createElementNS('http://www.w3.org/2000/svg','g'));
+   await Promise.resolve();await Promise.resolve();
+   for(const e of [readout,note,verdict])if(e?.textContent.includes('obsolete-condition-sentinel'))issues.push('lifted SVG prose survives a new empty drawing');
+  }
   return{issues,p,q,r};
- });predictions+=result.p;quizzes+=result.q;rebuilt+=result.r;if(result.issues.length)failures.push({slug,issues:result.issues});if(cursor%20===0)console.log(engine,cursor+'/'+slugs.length);}
+ },fs.existsSync(path.join(root,slug,'app.js'))&&fs.readFileSync(path.join(root,slug,'app.js'),'utf8').includes('new MutationObserver(run)'));predictions+=result.p;quizzes+=result.q;rebuilt+=result.r;if(result.issues.length)failures.push({slug,issues:result.issues});if(cursor%20===0)console.log(engine,cursor+'/'+slugs.length);}
  await page.close();}));
  console.log(JSON.stringify({engine,apps:slugs.length,predictions,quizzes,rebuilt,failures}));assert.deepEqual(errors,[]);assert.deepEqual(failures,[]);
  }finally{await browser?.close();await new Promise(r=>server.close(r));}

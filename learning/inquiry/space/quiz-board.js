@@ -45,7 +45,7 @@
         question.textContent = item.q;
         card.appendChild(question);
         if (item.diagram) {
-            var renderer = item.diagram.startsWith('stellar-') ? window.StellarStudy : window.EclipseLab;
+            var renderer = item.diagram.startsWith('properties-') ? window.StarProperties : item.diagram.startsWith('stellar-') ? window.StellarStudy : window.EclipseLab;
             var figure = renderer && renderer.questionFigure(item.diagram);
             if (figure) card.appendChild(figure);
         }

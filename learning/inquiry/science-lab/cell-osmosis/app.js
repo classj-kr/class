@@ -149,7 +149,7 @@ document.addEventListener('DOMContentLoaded', () => {
         out += `<text class="state-label" fill="${s.tone}" x="358" y="60">${s.label}</text>`;
         out += `<text class="part-label" x="358" y="78">부피 ${(s.v * 100).toFixed(0)}%</text>`;
         out += `<text class="part-label" x="358" y="96">바깥 농도 ${c.toFixed(2)}</text>`;
-        out += `<text class="part-label" x="358" y="114">처음 세포 속 1.00</text>`;
+        out += `<text class="part-label" x="358" y="114">처음 내부 1.00</text>`;
         mainGroup.innerHTML = out;
         return s;
     }

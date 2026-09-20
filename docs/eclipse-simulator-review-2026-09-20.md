@@ -29,3 +29,11 @@
 - [NASA: Why Do Eclipses Happen?](https://science.nasa.gov/eclipses/geometry/) — 일식의 그림자 영역과 관측 위치의 관계.
 - [NASA: Eclipses and the Moon](https://science.nasa.gov/moon/eclipses/) — 월식의 구분, 관측 범위, 궤도면의 기울기와 붉은 달.
 - [NASA: Eclipse Glossary](https://science.nasa.gov/eclipses/glossary/) — 개기·부분·반영월식의 용어 구분.
+
+## 세로 배치 보완 (2026-09-20)
+
+- 광원·가리는 천체·그림자를 받는 천체를 위에서 아래로 배치. 기존 기하 계산을 회전해 사용하므로 판정 경계는 그대로 유지한다.
+- 태양은 그림 상단에서 잘려 전체 높이의 약 60%만 보인다. 큰 광원을 전부 그리기 위한 공간을 줄인다.
+- 관측자와 달의 좌우 이동은 가로 슬라이더 방향과 일치하며, 월식 관측 그림의 그림자 위치도 같은 기준으로 맞췄다.
+- 본그림자·반그림자와 관측자 표시는 회전시키지 않고 수평 글자로 표시한다.
+- tests/eclipse-geometry.cjs 및 tmp/eclipse-vertical-browser.cjs 통과. 세로 순서, 하향 광선, 태양 잘림 비율, 조작 방향, 전체 식 종류 예시와 모바일 넘침 검증.

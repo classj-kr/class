@@ -272,9 +272,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // power supply and wires
         // the supply sits at the right so its reading stays clear of the verdict line
-        out += `<rect class="supply" x="350" y="14" width="80" height="34" rx="6"/>`;
+        out += `<rect class="supply" x="350" y="4" width="80" height="44" rx="6"/>`;
         out += `<text class="read-text" x="390" y="37" text-anchor="middle">${state.volts} V</text>`;
-        out += `<text class="small-label" x="390" y="10" text-anchor="middle">전원 장치</text>`;
+        out += `<text class="small-label" x="390" y="20" text-anchor="middle">전원 장치</text>`;
         out += `<path class="lead lead-plus" d="M366,48 L366,56 L${plusX},56 L${plusX},${Y - 2}"/>`;
         out += `<path class="lead lead-minus" d="M414,48 L414,64 L${minusX},64 L${minusX},${Y - 2}"/>`;
         out += `<rect class="clip clip-plus" x="${plusX - 5}" y="${Y - 2}" width="10" height="${H + 4}" rx="2"/>`;

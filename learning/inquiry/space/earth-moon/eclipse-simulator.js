@@ -27,7 +27,7 @@
             <div class="ecl-layout">
                 <div class="ecl-diagram-panel">
                     <div class="ecl-arrangement" data-ecl-order></div>
-                    <svg class="ecl-diagram" viewBox="-20 0 980 500" role="img" aria-label="태양과 가리는 천체가 만드는 본그림자와 반그림자의 단면" data-ecl-diagram></svg>
+                    <svg class="ecl-diagram" viewBox="0 80 500 856" role="img" aria-label="태양과 가리는 천체가 만드는 본그림자와 반그림자의 단면" data-ecl-diagram></svg>
                     <div class="ecl-legend"><span><i class="ecl-umbra-key"></i>본그림자 · 직접 오는 태양빛이 모두 가려짐</span><span><i class="ecl-penumbra-key"></i>반그림자 · 태양빛의 일부만 가려짐</span></div>
                 </div>
                 <aside class="ecl-observation">
@@ -41,7 +41,7 @@
                 <input id="eclPosition" type="range" min="-86" max="86" value="0" step="1">
                 <div class="ecl-presets" role="group" aria-label="위치 예시" data-ecl-presets></div>
             </div>
-            <p class="ecl-note">크기·거리·이동은 원리를 보여 주기 위한 모형입니다. 본그림자·반그림자는 공간의 영역이며, 옆 그림은 그 단면입니다.</p>
+            <p class="ecl-note">크기·거리·이동은 원리를 보여 주기 위한 모형입니다. 본그림자·반그림자는 공간의 영역이며, 그림은 그 단면입니다.</p>
             <details class="ecl-more"><summary>매달 식이 생기지 않는 이유</summary><p>달의 공전 궤도면은 지구의 공전 궤도면에 약 5° 기울어져 있습니다. 삭이나 보름이어도 달이 궤도면의 교점 부근에 있지 않으면 그림자가 빗나갑니다. 월식 모형에서 달을 그림자 밖으로 옮겨 비교하세요. 위치 조절값은 실제 궤도 경사각이 아닙니다.</p></details>
             <details class="ecl-more"><summary>금환일식과 반영월식</summary><p>달이 작게 보이면 태양을 전부 가리지 못해 금환일식이 일어날 수 있습니다. 이 일식 모형은 본그림자가 지구에 닿는 경우로 고정했습니다. 달이 지구의 반그림자만 통과하는 반영월식은 달이 조금 어두워지는 현상으로, 부분월식과 구분합니다.</p></details>`;
         let mode = 'solar';
@@ -66,23 +66,38 @@
         }
         function draw() {
             const solarMode = mode === 'solar';
-            const result = solarMode ? G.solar(slider.value) : G.lunar(slider.value);
+            const result = solarMode ? G.solar(-Number(slider.value)) : G.lunar(-Number(slider.value));
             pane.dataset.eclipseMode = mode;
             pane.dataset.eclipseState = result.type;
             const blocker = solarMode ? G.SOLAR_MOON : G.LUNAR_EARTH;
             const receiver = solarMode ? G.SOLAR_EARTH : {...G.LUNAR_MOON, y:250+result.offset};
             const geo = geometry(blocker, solarMode ? G.SOLAR_EARTH.x : 920);
             const fills = `<polygon points="${geo.pen}" class="ecl-penumbra"/><polygon points="${geo.umb}" class="ecl-umbra"/>`;
-            const nameLayer = labels.checked ? text(G.SUN.x,G.SUN.y+G.SUN.r+28,'태양') + text(blocker.x,solarMode?305:330,solarMode?'달':'지구') + text(receiver.x,solarMode?365:receiver.y+42,solarMode?'지구':'달') + text(solarMode?658:665,245,'본그림자','class="ecl-shadow-name"') + text(solarMode?665:665,solarMode?294:340,'반그림자','class="ecl-shadow-name"') : '';
+            // Rotate the geometry into a downward light path. Keep labels upright.
+            const screen = p => ({x:500-p.y,y:p.x});
+            const receiverScreen=screen(receiver);
+            const nameLayer = labels.checked ?
+                text(390,170,'태양') +
+                text(330,blocker.x+7,solarMode?'달':'지구') +
+                text(receiverScreen.x>380?receiverScreen.x-receiver.r-32:receiverScreen.x+receiver.r+32,receiver.x+12,solarMode?'지구':'달') +
+                text(415,solarMode?644:645,'본그림자','class="ecl-shadow-name"') +
+                text(415,solarMode?685:730,'반그림자','class="ecl-shadow-name"') : '';
+            const shadowPointers=labels.checked?[['umbra',solarMode?638:639],['penumbra',solarMode?679:724]].map(([kind,y])=>{
+                const inner=Math.abs(G.tangent(G.SUN,blocker,false,1).at(y)-250);
+                const outer=Math.abs(G.tangent(G.SUN,blocker,true,1).at(y)-250);
+                const x=kind==='umbra'?250:250+(inner+outer)/2;
+                return '<path d="M 365 '+y+' L '+f(x)+' '+y+'" stroke="#a8c4e6" stroke-width="1" fill="none"/>';
+            }).join(''):'';
             const observer = solarMode ? result.observer : {x:G.LUNAR_EARTH.x+G.LUNAR_EARTH.r,y:G.LUNAR_EARTH.y};
             const earth = solarMode ? G.SOLAR_EARTH : G.LUNAR_EARTH;
-            const labelX = solarMode ? 800 : 565;
-            const marker = observerMarkup(observer,earth) + (labels.checked ? '<path d="M '+f(observer.x)+' '+f(observer.y)+' L '+labelX+' 140" stroke="#6ee7b7" stroke-dasharray="3 5" fill="none"/>'+text(labelX,125,'관측자','class="ecl-observer-label"') : '');
+            const observerScreen=screen(observer);
+            const labelX=observerScreen.x>=250?410:90,labelY=solarMode?765:575;
+            const observerLabel=labels.checked?'<path d="M '+f(observerScreen.x)+' '+f(observerScreen.y)+' L '+labelX+' '+(labelY-16)+'" stroke="#6ee7b7" stroke-dasharray="3 5" fill="none"/>'+text(labelX,labelY,'관측자','class="ecl-observer-label"'):'';
             diagram.innerHTML = `<defs><clipPath id="eclReceiver">${circle(receiver,'white')}</clipPath><linearGradient id="eclEarth"><stop offset="0" stop-color="#38bdf8"/><stop offset=".48" stop-color="#177dc4"/><stop offset=".51" stop-color="#0d304f"/><stop offset="1" stop-color="#061727"/></linearGradient></defs>
-                <line x1="190" y1="250" x2="915" y2="250" class="ecl-axis"/>
+                <g class="ecl-world" transform="matrix(0 1 -1 0 500 0)"><line x1="190" y1="250" x2="915" y2="250" class="ecl-axis"/>
                 ${fills}<g class="ecl-rays" ${rays.checked?'':'visibility="hidden"'}>${geo.rays}</g>
                 ${circle(G.SUN,'#fbbf24')}${circle(blocker,solarMode?'#cbd5e1':'url(#eclEarth)')}${circle(receiver,solarMode?'url(#eclEarth)':'#e2e8f0')}
-                <g clip-path="url(#eclReceiver)">${fills}</g>${marker}${nameLayer}`;
+                <g clip-path="url(#eclReceiver)">${fills}</g>${observerMarkup(observer,earth)}</g>${shadowPointers}${observerLabel}${nameLayer}`;
             let title, reason;
             if (solarMode) {
                 title = {total:'개기일식',partial:'부분일식',annular:'금환일식',none:'이 위치에서는 일식 없음'}[result.type];
@@ -94,19 +109,19 @@
                 title = {total:'개기월식',partial:'부분월식',penumbral:'반영월식',none:'월식 없음'}[result.type];
                 reason = {total:'달 전체가 지구의 본그림자 안에 들어갔습니다. 대기를 지난 붉은빛 때문에 붉게 보일 수 있습니다.',partial:'달의 일부만 지구의 본그림자 안에 들어갔습니다. 반그림자에만 들어간 경우와 다릅니다.',penumbral:'달이 지구의 반그림자만 지나 조금 어두워집니다. 본그림자에는 들어가지 않았습니다.',none:'달이 지구의 그림자를 벗어나 태양빛을 받습니다. 보름달이어도 월식이 일어나지 않을 수 있습니다.'}[result.type];
                 const scale = 62/G.LUNAR_MOON.r;
-                view.innerHTML = `<defs><clipPath id="eclMoonView"><circle cx="140" cy="125" r="62"/></clipPath></defs><circle cx="140" cy="125" r="62" fill="#e2e8f0"/><g clip-path="url(#eclMoonView)"><circle cx="140" cy="${f(125-result.offset*scale)}" r="${f(result.penumbra*scale)}" fill="#677180" opacity=".38"/><circle cx="140" cy="${f(125-result.offset*scale)}" r="${f(result.umbra*scale)}" fill="#703b30" opacity=".96"/></g>${text(140,228,'달이 보이는 밤인 지역에서 관측')}`;
+                view.innerHTML = `<defs><clipPath id="eclMoonView"><circle cx="140" cy="125" r="62"/></clipPath></defs><circle cx="140" cy="125" r="62" fill="#e2e8f0"/><g clip-path="url(#eclMoonView)"><circle cx="${f(140+result.offset*scale)}" cy="125" r="${f(result.penumbra*scale)}" fill="#677180" opacity=".38"/><circle cx="${f(140+result.offset*scale)}" cy="125" r="${f(result.umbra*scale)}" fill="#703b30" opacity=".96"/></g>${text(140,228,'달이 보이는 밤인 지역에서 관측')}`;
             }
             pane.querySelector('[data-ecl-result]').textContent = title;
             pane.querySelector('[data-ecl-reason]').textContent = reason;
             view.setAttribute('aria-label', (solarMode?'지구 관측자에게 보이는 태양: ':'지구에서 보이는 달: ')+title);
-            diagram.setAttribute('aria-label', `${solarMode?'태양–달–지구':'태양–지구–달'} 배열과 본그림자·반그림자. 현재 ${title}.`);
+            diagram.setAttribute('aria-label', `${solarMode?'태양–달–지구':'태양–지구–달'} 위에서 아래 배열과 본그림자·반그림자. 현재 ${title}.`);
             slider.setAttribute('aria-valuetext', (solarMode?'관측자 위치: ':'달 위치: ')+title);
             pane.querySelectorAll('[data-ecl-position]').forEach(button => button.setAttribute('aria-pressed',String(Number(button.dataset.eclPosition)===Number(slider.value))));
         }
         function selectMode(next) {
             mode=next; slider.min=mode==='solar'?-86:-210; slider.max=mode==='solar'?86:210; slider.value=0;
             pane.querySelectorAll('[data-ecl-mode]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.eclMode===mode)));
-            pane.querySelector('[data-ecl-order]').textContent=mode==='solar'?'태양 → 달 → 지구 · 삭 무렵':'태양 → 지구 → 달 · 보름 무렵';
+            pane.querySelector('[data-ecl-order]').textContent=mode==='solar'?'일식 · 삭 무렵':'월식 · 보름 무렵';
             pane.querySelector('[data-ecl-view-title]').textContent=mode==='solar'?'관측자에게 보이는 태양':'지구에서 보이는 달';
             pane.querySelector('[data-ecl-position-label]').textContent=mode==='solar'?'지구의 관측 위치':'달의 위치 · 그림자 중심에서 이동';
             pane.querySelector('[data-ecl-presets]').innerHTML=presetValues[mode].map(([label,value])=>`<button type="button" data-ecl-position="${value}">${label}</button>`).join('');

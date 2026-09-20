@@ -1,0 +1,12 @@
+{
+  "apps": 104,
+  "scenarios": 728,
+  "viewports": [
+    1366,
+    1024,
+    820,
+    768
+  ],
+  "failures": [],
+  "overlapReview": []
+}

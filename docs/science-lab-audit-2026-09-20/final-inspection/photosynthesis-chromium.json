@@ -1,0 +1,53 @@
+{
+  "slug": "photosynthesis",
+  "engine": "chromium",
+  "modes": [
+    "initial"
+  ],
+  "cases": 10,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__photoModel",
+      "methods": [
+        "V_MAX",
+        "K_LIGHT",
+        "K_CO2",
+        "T_OPT",
+        "analyse",
+        "tempFactor",
+        "setLight",
+        "setCO2",
+        "setTemp",
+        "light",
+        "co2",
+        "temp",
+        "render"
+      ]
+    }
+  ],
+  "paint": [],
+  "grades": [
+    {
+      "mode": "initial",
+      "results": [
+        {
+          "choice": "light",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        },
+        {
+          "choice": "co2",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "temp",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        }
+      ]
+    }
+  ]
+}

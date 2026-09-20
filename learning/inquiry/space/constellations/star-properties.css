@@ -1,0 +1,41 @@
+.star-properties { color: #dceafb; }
+.sp-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 16px; }
+.sp-grid > section { min-width: 0; padding: 22px; background: #0c1729; border: 1px solid #293b55; border-radius: 12px; }
+.star-properties h2 { margin: 0 0 18px; color: #80dcff; font-size: 18px; }
+.star-properties svg { width: 100%; display: block; }
+.star-properties p { font-size: 14px; line-height: 1.8; margin: 12px 0 0; word-break: keep-all; }
+.star-properties b { color: #f6db9e; }
+.star-properties small { display: block; color: #9cafc7; font-size: 12px; line-height: 1.7; margin-top: 10px; }
+.sp-controls { display: flex; align-items: center; flex-wrap: wrap; gap: 16px; }
+.sp-controls label { display: flex; align-items: center; gap: 8px; font-size: 13px; }
+.sp-controls input { width: 120px; accent-color: #38bdf8; }
+.star-properties select,.star-properties button,.sp-practice { border: 1px solid #426080; border-radius: 7px; background: #14273e; color: #e1f3ff; padding: 8px 10px; font: inherit; font-size: 13px; }
+.star-properties button,.star-properties select { cursor: pointer; }
+.star-properties button[aria-pressed="true"] { background: #096985; border-color: #51d2f1; }
+.star-properties :is(button,select,input,a):focus-visible { outline: 2px solid #67e8f9; outline-offset: 3px; }
+.sp-output { padding: 12px; margin-top: 14px; background: #102740; border-radius: 8px; color: #9ce8ff; font-size: 15px; font-weight: 700; }
+.sp-meter { height: 8px; background: #263b52; margin-top: 8px; border-radius: 4px; overflow: hidden; }
+.sp-meter i { display: block; height: 100%; background: #ffce63; }
+.sp-magnitude-scale { display: flex; justify-content: space-between; gap: 8px; margin-top: 36px; }
+.sp-magnitude-scale span { display: grid; place-items: center; flex: 1; min-height: 55px; border: 1px solid #52708c; border-radius: 8px; font-size: 22px; }
+.sp-temp-direction { display: flex; justify-content: space-between; align-items: center; gap: 8px; color: #a9c1db; font-size: 12px; margin: 12px 0 22px; }
+.sp-gap-control { display: flex; align-items: center; gap: 14px; margin-top: 28px; }
+.star-properties table { border-collapse: collapse; width: 100%; font-size: 14px; text-align: center; }
+.star-properties caption { text-align: left; font-size: 12px; color: #a8bbd4; margin-bottom: 10px; }
+.star-properties th,.star-properties td { padding: 10px 6px; border-bottom: 1px solid #344660; }
+.star-properties thead { background: #12324b; color: #83d8f4; }
+.sp-view-modes { display: flex; gap: 8px; margin-top: 14px; flex-wrap: wrap; }
+.sp-distance-rule { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 6px; margin-top: 14px; font-size: 12px; text-align: center; line-height: 1.8; }
+.sp-distance-rule span { background: #15263b; padding: 8px 4px; border-radius: 6px; }
+.sp-colors { display: flex; justify-content: space-between; gap: 8px; margin: 34px 0 8px; }
+.sp-colors > div { text-align: center; font-size: 12px; }
+.sp-colors i { display: block; width: 42px; height: 42px; border-radius: 50%; margin: 0 auto 12px; }
+.sp-distinction { margin-top: 24px; padding: 16px; border: 1px solid #384c66; border-radius: 8px; font-size: 14px; }
+.sp-practice { display: inline-block; margin-top: 16px; text-decoration: none; }
+.sp-question { padding: 16px; margin: 0 0 16px; background: #091625; border: 1px solid #2d455f; border-radius: 10px; }
+.sp-question svg { max-height: 190px; }
+@media(max-width: 760px) { .sp-grid { grid-template-columns: 1fr; } .sp-grid > section { padding: 16px; } .sp-colors i { width: 34px; height: 34px; } .sp-magnitude-scale { gap: 5px; } .sp-controls { gap: 10px; } }
+html:has(body[data-space-topic="star-properties"]) { background: #030712; }
+.sp-ratio-bars { display: grid; grid-template-columns: 108px 1fr; align-items: center; gap: 12px; margin-top: 24px; color: #aec6e2; font-size: 12px; }
+.sp-ratio-bars > div { height: 14px; background: #263b52; border-radius: 3px; overflow: hidden; }
+.sp-ratio-bars i { display: block; height: 100%; background: #ffda7d; min-width: 1px; }
