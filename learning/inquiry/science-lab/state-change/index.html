@@ -8,7 +8,7 @@
     <meta name="description" content="온도에 따라 물이 고체·액체·기체로 바뀌는 모습을 관찰하는 초등 과학 모의실험">
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
     <link rel="stylesheet" href="styles.css?v=5">
-    <link rel="stylesheet" href="state-visual.css?v=9">
+    <link rel="stylesheet" href="state-visual.css?v=10">
     <link rel="stylesheet" href="quiz.css?v=3">
     <link rel="stylesheet" href="../exam-scope.css?v=1">
     <link rel="stylesheet" href="../lab-ui.css?v=4">
@@ -42,12 +42,19 @@
                 <input id="temperatureRange" type="range" min="-10" max="110" step="1" value="20">
                 <div class="range-scale" aria-hidden="true"><span>-10℃</span><span>10</span><span>30</span><span>60</span><span>90</span><span>110℃</span></div>
 
+                <div id="phaseControls" hidden>
+                    <div class="range-heading"><label id="phaseLabel" for="phaseRange">가열에 따른 변화 비율</label><output id="phaseOutput" for="phaseRange">50%</output></div>
+                    <input id="phaseRange" type="range" min="0" max="100" step="10" value="50">
+                    <div class="range-scale" aria-hidden="true"><span>변화 전</span><span>변화 중</span><span>모두 변함</span></div>
+                </div>
                 <fieldset class="prediction-field">
                     <legend>상태 예상</legend>
                     <div class="prediction-buttons three">
                         <button type="button" data-prediction="solid">고체 (얼음)</button>
                         <button type="button" data-prediction="liquid">액체 (물)</button>
                         <button type="button" data-prediction="gas">기체 (수증기)</button>
+                        <button type="button" data-prediction="solid-liquid">얼음과 물</button>
+                        <button type="button" data-prediction="liquid-gas">물과 수증기</button>
                     </div>
                 </fieldset>
 
@@ -96,10 +103,11 @@
                                     <g id="bubbleGroup"></g>
                                 </g>
                                 <g id="iceLayer" clip-path="url(#iceClip)">
-                                    <rect x="22" y="94" width="196" height="206" fill="url(#iceGrad)"/>
+                                    <rect id="iceRect" x="22" y="94" width="196" height="206" fill="url(#iceGrad)"/>
                                     <path class="ice-facet" d="M60,120 L96,220 M110,104 L140,260 M168,116 L150,240 M84,150 L180,180" fill="none"/>
                                 </g>
                             </g>
+                            <text id="phaseSampleLabel" x="120" y="52" text-anchor="middle" style="fill:#173449;font-size:14px">액체 (물)</text>
                             <path class="beaker-glass" fill="none" d="M22,20 L22,268 Q22,300 54,300 L186,300 Q218,300 218,268 L218,20"/>
                             <ellipse class="beaker-rim" fill="none" cx="120" cy="20" rx="98" ry="9"/>
                             <rect class="beaker-shine" x="36" y="30" width="30" height="246" fill="url(#glassShine)"/>
@@ -150,7 +158,7 @@
 <p>보통의 대기압을 가정한 모형입니다. 실제 어는 온도와 끓는 온도는 조건에 따라 달라질 수 있습니다.</p>
             <div class="meaning-body">
                 <p><strong>녹는점(어는점)</strong> 고체가 액체로, 액체가 고체로 바뀌는 온도로 물은 0℃입니다.</p>
-                <p><strong>끓는점</strong> 액체가 기체로 바뀌는 온도로 물은 100℃입니다.</p>
+                <p><strong>끓는점</strong> 물이 내부에서도 기포를 만들며 끓기 시작하는 온도로, 보통 기압의 순수한 물은 약 100℃입니다. 물의 증발은 끓는점보다 낮은 온도에서도 일어납니다.</p>
                 <p>젖은 물체가 마르는 것은 물이 수증기로 변하기 때문입니다. 차가운 컵 바깥에는 공기 중 수증기가 물로 변해 맺힐 수 있습니다. 상태가 바뀌어도 물이라는 사실은 그대로입니다 — 다른 물질로 변하는 것이 아닙니다.</p>
             </div>
         </section>
@@ -212,7 +220,8 @@
             </div>
         </details>
     </main>
-    <script src="app.js?v=c1bef658b165"></script>
+    <script src="phase-model.js?v=1"></script>
+<script src="app.js?v=c1bef658b165"></script>
     <script src="../curriculum-map.js?v=3f7264a2b189"></script>
     <script src="../exam-scope.js?v=caa16ae47731"></script>
     <script src="../lab-ui.js?v=c295eda1bdab"></script>

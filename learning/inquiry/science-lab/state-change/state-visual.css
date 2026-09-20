@@ -45,7 +45,7 @@
     transform-box: fill-box;
     transform-origin: center;
 }
-.beaker.state-gas #bubbleGroup circle { animation: bubbleRise 1.6s ease-in infinite; animation-delay: var(--delay); }
+.beaker.state-liquid-gas #bubbleGroup circle { animation: bubbleRise 1.6s ease-in infinite; animation-delay: var(--delay); }
 
 @keyframes bubbleRise {
     0% { transform: translateY(0) scale(.4); opacity: 0; }
@@ -66,7 +66,7 @@
     opacity: 0;
     transition: opacity .5s ease;
 }
-.beaker.state-gas .steam-wisps { opacity: 1; }
+.steam-wisps { display: none; }
 .steam-wisps span {
     position: absolute;
     bottom: 0;
@@ -126,3 +126,7 @@
 .op-point { fill: #c2410c; stroke: #0d1f27; stroke-width: 1.6; }
 .op-text { fill: #c2410c; font-size: 14px; font-weight: 900; }
 .data-note { display: grid; gap: 3px; margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--line); }
+
+/* Independent equilibrium samples: no delayed thaw/refill when the condition changes. */
+#waterRect, #waterSurface, #iceClipRect { transition: none; }
+#phaseControls[hidden] { display: none; }

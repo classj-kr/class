@@ -1,5 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
     const temperatureRange = document.getElementById('temperatureRange');
+    const phaseRange = document.getElementById('phaseRange');
+    const phaseControls = document.getElementById('phaseControls');
+    const sample = () => window.SciencePhaseModel.sample(temperatureRange.value,phaseRange.value);
     const graphGroup = document.getElementById('graphGroup');
     const dataNote = document.getElementById('dataNote');
     const temperatureOutput = document.getElementById('temperatureOutput');
@@ -23,13 +26,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let prediction = null;
 
-    const STATE_LABEL = { solid: '고체 (얼음)', liquid: '액체 (물)', gas: '기체 (수증기)' };
-
-    function stateAt(temp) {
-        if (temp < 0) return 'solid';
-        if (temp > 100) return 'gas';
-        return 'liquid';
-    }
+    const STATE_LABEL = window.SciencePhaseModel.labels;
+    function stateAt(temp) { return window.SciencePhaseModel.sample(temp,phaseRange.value).state; }
 
     function createBubbles() {
         const bounds = { xMin: 40, xMax: 200, yMin: 235, yMax: 292 };
@@ -60,7 +58,10 @@ document.addEventListener('DOMContentLoaded', () => {
         waterStopBottom.setAttribute('stop-color', `rgb(${Math.round(60 + 50 * warmth)}, ${Math.round(150 - 15 * warmth)}, ${Math.round(195 - 35 * warmth)})`);
 
         const state = stateAt(temp);
-        beaker.classList.remove('state-solid', 'state-liquid', 'state-gas');
+        beaker.classList.remove('state-solid', 'state-liquid', 'state-gas', 'state-solid-liquid', 'state-liquid-gas');
+        phaseControls.hidden = temp !== 0 && temp !== 100;
+        document.getElementById('phaseLabel').textContent = temp === 0 ? '가열하여 녹인 비율' : '가열하여 기화시킨 비율';
+        document.getElementById('phaseOutput').textContent = phaseRange.value + '%';
         beaker.classList.add(`state-${state}`);
 
         renderPhaseVisuals();
@@ -85,11 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const T5 = T4 + minutes(MASS_G * C_STEAM * 10);
 
     // when a given temperature is first reached
-    function timeAt(temp) {
-        if (temp <= 0) return minutes(MASS_G * C_ICE * (temp - T_LO));
-        if (temp <= 100) return T2 + minutes(MASS_G * C_WATER * temp);
-        return T4 + minutes(MASS_G * C_STEAM * (temp - 100));
-    }
+    function timeAt(temp) { return window.SciencePhaseModel.sample(temp,phaseRange.value).time; }
 
     const G = { x0: 46, x1: 428, y0: 148, y1: 26 };
     const gx = t => G.x0 + (t / T5) * (G.x1 - G.x0);
@@ -141,100 +138,26 @@ document.addEventListener('DOMContentLoaded', () => {
             `<div class="data-row"><span class="data-name">이 모형의 비교</span><span class="data-val">끓는 데 ${(boilMin / meltMin).toFixed(1)}배 더 오래 걸립니다</span></div>`;
     }
 
-    // Temperature sets the *rate* of freezing/boiling, not how much has
-    // happened — -1℃ and -10℃ both end up fully frozen given enough time,
-    // -10℃ just gets there faster. Same for boiling: 101℃ and 110℃ both
-    // fully boil away eventually, 110℃ just does it sooner. iceFraction and
-    // boilFraction are persistent accumulators advanced over real elapsed
-    // time by tickPhaseChange(), not recomputed from the slider value.
-    const BEAKER_BOTTOM = 300;
-    const FULL_HEIGHT = 206;
-    let iceFraction = 0;
-    let boilFraction = 0;
-    let lastTickTime = Date.now();
-
-    // Rate constants (fraction per second, at 1℃ past the threshold) — sqrt
-    // of the distance past the threshold, so going from -1℃ to -10℃ (10x
-    // the distance) only makes freezing ~3x faster, not 10x: fast enough to
-    // clearly read as "quicker" without snapping shut instantly. At -1℃,
-    // rate = .1 * sqrt(1) = .1/s → ~10s to fully freeze. At -10℃, rate = .1 *
-    // sqrt(10) ≈ .316/s → ~3.2s. Boiling/condensing mirrors freezing/melting:
-    // above 100℃ the water boils away (faster the hotter it gets), and back
-    // below 100℃ it returns (faster the further below 100℃), the same way
-    // ice above 0℃ melts back. This is a simplified idealization — a real
-    // open beaker's steam wouldn't return — but the tool is for repeatedly
-    // dragging the slider back and forth, and a beaker left permanently
-    // empty after one trip past 100℃ makes it impossible to re-run at any
-    // other temperature, which defeats the tool's purpose.
-    const FREEZE_RATE_K = .1;
-    const MELT_RATE_K = .1;
-    const BOIL_RATE_K = .1;
-    const CONDENSE_RATE_K = .1;
-
-    // At exactly the melting point (0℃) or boiling point (100℃), the two
-    // phases are in dynamic equilibrium — not a fixed 50/50 split, but
-    // continuously trading back and forth (some ice forms while some melts,
-    // some liquid boils while some vapor condenses). A slow sine wave gives
-    // an oscillating target that the fraction smoothly chases at a bounded
-    // rate — never snapping, never settling flat — so parking exactly at
-    // 0℃ or 100℃ visibly keeps freezing and thawing rather than sitting
-    // static at whatever ratio it happened to arrive with.
-    const COEXIST_PERIOD_MS = 9000;
-    const COEXIST_BASE = .45;
-    const COEXIST_AMPLITUDE = .22;
-    const COEXIST_CHASE_RATE = .3;
-    function coexistTarget(now) {
-        return COEXIST_BASE + COEXIST_AMPLITUDE * Math.sin((now / COEXIST_PERIOD_MS) * 2 * Math.PI);
-    }
-    function chaseTarget(current, target, dt) {
-        const delta = target - current;
-        const maxStep = COEXIST_CHASE_RATE * dt;
-        return current + (Math.abs(delta) < maxStep ? delta : Math.sign(delta) * maxStep);
-    }
-
     function renderPhaseVisuals() {
-        const waterHeight = FULL_HEIGHT * (1 - boilFraction);
-        const waterY = BEAKER_BOTTOM - waterHeight;
-        waterRect.setAttribute('y', String(waterY));
-        waterRect.setAttribute('height', String(waterHeight));
-        waterSurface.setAttribute('cy', String(waterY));
-        // Freezing starts at the surface and works down — the clip's top
-        // edge stays fixed at the water surface while its height grows.
-        iceClipRect.setAttribute('height', String(FULL_HEIGHT * iceFraction));
-    }
-
-    function tickPhaseChange() {
-        const now = Date.now();
-        // Cap dt so a backgrounded/throttled tab doesn't "catch up" with one
-        // huge jump the moment it's foregrounded again.
-        const dt = Math.min(1, (now - lastTickTime) / 1000);
-        lastTickTime = now;
-        const temp = Number(temperatureRange.value);
-
-        if (temp < 0) {
-            iceFraction = Math.min(1, iceFraction + FREEZE_RATE_K * Math.sqrt(-temp) * dt);
-        } else if (temp === 0) {
-            iceFraction = chaseTarget(iceFraction, coexistTarget(now), dt);
-        } else if (iceFraction > 0) {
-            iceFraction = Math.max(0, iceFraction - MELT_RATE_K * Math.sqrt(temp) * dt);
-        }
-
-        if (temp > 100) {
-            boilFraction = Math.min(1, boilFraction + BOIL_RATE_K * Math.sqrt(temp - 100) * dt);
-        } else if (temp === 100) {
-            boilFraction = chaseTarget(boilFraction, coexistTarget(now), dt);
-        } else if (boilFraction > 0) {
-            boilFraction = Math.max(0, boilFraction - CONDENSE_RATE_K * Math.sqrt(100 - temp) * dt);
-        }
-
-        renderPhaseVisuals();
-        setTimeout(tickPhaseChange, 150);
+        const a=sample(), bottom=300, scale=2.06;
+        const liquidHeight=100*a.liquid*scale, iceHeight=100*a.ice/0.917*scale;
+        const iceTop=bottom-liquidHeight-iceHeight;
+        waterRect.setAttribute('y',String(bottom-liquidHeight));
+        waterRect.setAttribute('height',String(liquidHeight));
+        waterSurface.setAttribute('cy',String(bottom-liquidHeight));
+        waterSurface.style.opacity=a.ice>0||a.liquid===0?'0':'1';
+        iceClipRect.setAttribute('y',String(iceTop));
+        iceClipRect.setAttribute('height',String(iceHeight));
+        const ice=document.getElementById('iceRect');
+        ice.setAttribute('y',String(iceTop));ice.setAttribute('height',String(iceHeight));
+        document.getElementById('phaseSampleLabel').textContent=a.vapour===1?'수증기는 보이지 않음':a.label;
+        beaker.dataset.phase=a.state;
     }
 
     function clearResult() {
         resultEmpty.hidden = false;
         resultContent.hidden = true;
-        stageCaption.textContent = '온도를 정해 물의 상태를 관찰하세요.';
+        stageCaption.textContent = '각 온도에서 별도 시료를 비교합니다. 0℃·100℃에서는 가열에 따른 변화 비율도 정하세요.';
     }
 
     function checkState() {
@@ -252,10 +175,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (temp === 0) {
             stageCaption.textContent = '0℃는 물의 어는점(녹는점)입니다. 얼음과 물이 함께 있을 수 있는 온도입니다.';
-            explanation.textContent = '이 온도에서는 얼음이 녹아 물이 되거나, 물이 얼어 얼음이 됩니다. 다 바뀔 때까지 온도는 0℃에 머무릅니다.';
+            explanation.textContent = '녹는 동안에는 열을 받아도 온도가 0℃에 머무릅니다. 온도만으로 얼음과 물의 비율을 정할 수 없으며, 이 그림은 선택한 변화 비율을 나타냅니다.';
         } else if (temp === 100) {
             stageCaption.textContent = '100℃는 물의 끓는점입니다. 물이 기체(수증기)로 바뀌기 시작합니다.';
-            explanation.textContent = '끓는 동안에는 계속 열을 가해도 온도가 100℃에 머무르고, 그 열은 물을 기체로 바꾸는 데 쓰입니다.';
+            explanation.textContent = '끓는 동안에는 열을 받아도 온도가 100℃에 머무릅니다. 물과 수증기가 함께 있을 수 있으며, 모두 기화한 뒤에 수증기의 온도가 더 올라갑니다. 비율은 온도만으로 결정되지 않습니다.';
         } else if (state === 'solid') {
             stageCaption.textContent = `${temp}℃에서 물은 고체인 얼음 상태입니다.`;
             explanation.textContent = '물은 얼어 단단한 얼음이 됩니다. 얼음은 액체인 물과 달리 담는 그릇에 따라 모양이 쉽게 달라지지 않습니다.';
@@ -268,7 +191,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    temperatureRange.addEventListener('input', () => { syncControls(); clearResult(); });
+    temperatureRange.addEventListener('input', () => { phaseRange.value='50'; syncControls(); clearResult(); });
+    phaseRange.addEventListener('input', () => { syncControls(); clearResult(); });
     predictionButtons.forEach(button => button.addEventListener('click', () => {
         prediction = button.dataset.prediction; window.scienceInvalidatePrediction?.();
         predictionButtons.forEach(item => item.classList.toggle('selected', item === button));
@@ -312,6 +236,9 @@ document.addEventListener('DOMContentLoaded', () => {
     createBubbles();
     syncControls();
     clearResult();
-    lastTickTime = Date.now();
-    setTimeout(tickPhaseChange, 150);
+    window.__phaseModel = {
+        analyse:sample,check:checkState,render:syncControls,
+        setTemperature(v){temperatureRange.value=String(v);temperatureRange.dispatchEvent(new Event('input'));},
+        setProgress(v){phaseRange.value=String(v);phaseRange.dispatchEvent(new Event('input'));}
+    };
 });

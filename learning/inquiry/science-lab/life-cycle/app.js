@@ -1,11 +1,7 @@
 'use strict';
 
-/* Two things about an animal, side by side. How it grows — with or without a
-   pupa, and how many days each step takes — and where it sits in the chain
-   that feeds it. The pyramid narrows by ten each step up, because almost
-   nothing an animal eats stays as body. */
+/* Life stages and feeding links are separate observations. No individual-count ratio is assumed. */
 
-const PASS = 10;   // roughly how many of a level it takes to feed one above
 const NONE = '아무것도 먹지 않습니다';
 
 const ANIMALS = {
@@ -88,13 +84,8 @@ function verdictFor(k) {
     const c = ANIMALS[k].change;
     return c === 'full' ? 'p1' : (c === 'shape' ? 'p2' : 'p3');
 }
-// How many of each level it takes to keep one of the top alive.
-function pyramid(k) {
-    const a = ANIMALS[k];
-    return a.chain.map((name, i) => ({
-        name, unit: a.units[i], level: i,
-        count: Math.pow(PASS, a.chain.length - 1 - i),
-    }));
+function foodChain(k) {
+    return ANIMALS[k].chain.map((name,level)=>({name,level}));
 }
 
 function analyse() {
@@ -102,7 +93,7 @@ function analyse() {
     const step = clamp(state.step, 0, a.stages.length - 1);
     return {
         animal: a, step, stage: a.stages[step],
-        total: daysToAdult(state.animal), pyramid: pyramid(state.animal),
+        total: daysToAdult(state.animal), chain: foodChain(state.animal),
         verdict: verdictFor(state.animal),
     };
 }
@@ -201,53 +192,22 @@ function drawStages(g) {
     g.appendChild(el('text', { x: 36, y: 196, class: 'part-label', style: 'fill:#0f172a' }, a.stage.eat));
 }
 
-function drawPyramid(g) {
-    const a = analyse();
-    const tiers = a.pyramid;
-    const n = tiers.length;
-    const cx = 230, topW = 96, botW = 340;
-    const hTop = 30, hBot = 150;
-    const rowH = (hBot - hTop) / n;
-
-    tiers.forEach((t, i) => {
-        const fromTop = n - 1 - i;          // 0 at the very top of the pyramid
-        const y = hTop + fromTop * rowH;
-        const wTop = topW + (botW - topW) * (fromTop / n);
-        const wBot = topW + (botW - topW) * ((fromTop + 1) / n);
-        const here = i === a.animal.at;
-        g.appendChild(el('polygon', {
-            points: `${cx - wTop / 2},${y} ${cx + wTop / 2},${y} ${cx + wBot / 2},${y + rowH - 3} ${cx - wBot / 2},${y + rowH - 3}`,
-            class: `tier${here ? ' here' : ''}`,
-            style: `fill:${here ? a.animal.colour : 'rgba(150,190,175,.28)'}`,
-        }));
-        g.appendChild(el('text', { x: cx, y: y + rowH / 2, 'text-anchor': 'middle', class: 'tier-name', style: `fill:${here ? '#14242c' : '#0f172a'}` }, t.name));
-        g.appendChild(el('text', {
-            x: cx + wBot / 2 + 8, y: y + rowH / 2 + 1, class: 'tier-count',
-            style: `fill:${here ? '#d97706' : '#475569'}`,
-        }, t.count === 1 ? `1${t.unit}` : `${t.count.toLocaleString('ko-KR')}${t.unit}쯤`));
-        /* An arrow up the left edge for "this level feeds the one above". It
-           needs a head — a bare curve just read as a stray bracket. */
-        if (fromTop > 0) {
-            const ax = cx - wBot / 2 - 13;
-            const y1 = y + rowH - 5, y2 = y + 3;
-            g.appendChild(el('line', { x1: ax, y1, x2: ax, y2, class: 'eat-arrow' }));
-            g.appendChild(el('path', { d: `M ${ax} ${y2} l -3.5 6 l 7 0 z`, class: 'eat-head' }));
-        }
+function drawFoodChain(g) {
+    const a=analyse(),n=a.chain.length;
+    g.appendChild(el('text',{x:230,y:20,'text-anchor':'middle',class:'axis-title'},'먹이 관계의 예'));
+    a.chain.forEach((t,i)=>{
+        const y=34+i*34,here=i===a.animal.at;
+        g.appendChild(el('rect',{x:120,y,width:220,height:26,rx:6,fill:here?'#dff0e7':'#edf3f6',stroke:here?'#67a187':'#c9d9e2','data-food-level':i}));
+        g.appendChild(el('text',{x:230,y:y+18,'text-anchor':'middle',style:'fill:#173449;font-size:14px;font-weight:600'},t.name));
+        if(i<n-1){g.appendChild(el('path',{d:'M230 '+(y+28)+' v4 m-3 -2 l3 3 3 -3',fill:'none',stroke:'#557a6b','stroke-width':1.5,'data-food-direction':'prey-to-consumer'}));}
     });
-
-    g.appendChild(el('text', { x: 16, y: 22, class: 'small-label' }, `${iga(a.animal.name)} 든 먹이 사슬`));
-    g.appendChild(el('text', { x: 444, y: 22, 'text-anchor': 'end', class: 'legend-text', style: `fill:${a.animal.colour}` },
-        `${eun(a.animal.chain[a.animal.at])} 여기`));
-    g.appendChild(el('text', { x: 230, y: 172, 'text-anchor': 'middle', class: 'legend-text', style: 'fill:#475569' },
-        '한 단계 올라갈 때마다 열 배쯤 적어집니다'));
-    g.appendChild(el('text', { x: 230, y: 190, 'text-anchor': 'middle', class: 'axis-title' },
-        '맨 위 하나를 먹여 살리는 데 필요한 수'));
+    g.appendChild(el('text',{x:230,y:190,'text-anchor':'middle',class:'axis-text'},'화살표: 먹이가 되는 생물 → 먹는 생물'));
 }
 
 function render() {
     const m = $('mainGroup'), gr = $('graphGroup');
     m.textContent = ''; gr.textContent = '';
-    drawStages(m); drawPyramid(gr);
+    drawStages(m); drawFoodChain(gr);
     updateReadout();
 }
 
@@ -258,15 +218,13 @@ function updateReadout() {
     $('stageBadge').textContent = `${a.animal.name} · ${a.stage.n}`;
     $('valueA').textContent = `${a.total}일`;
     $('valueB').textContent = a.stage.food;
-    const top = a.pyramid[a.pyramid.length - 1];
     const rows = [
         ['자라는 차례', a.animal.stages.map(s => s.n).join(' → '), false],
         ['지금 단계', `${a.step + 1}번째 · ${a.stage.n}`, false],
         ['이 단계에 머무는 날', a.stage.days ? `${a.stage.days}일` : '어른이 되면 끝', false],
         ['번데기', a.animal.change === 'full' ? '있습니다' : '없습니다', a.animal.change === 'full'],
         ['먹이 사슬', a.animal.chain.join(' → '), false],
-        [`${top.name} 한 ${eul(top.unit)} 먹이려면`,
-            `${iga(a.pyramid[0].name)} ${a.pyramid[0].count.toLocaleString('ko-KR')}${a.pyramid[0].unit}쯤 있어야 합니다`, false],
+        ['먹이 관계 해석', '화살표는 먹이가 되는 생물에서 먹는 생물 쪽으로 향합니다.', false],
     ];
     $('dataNote').innerHTML = rows.map(([n, v, m]) =>
         `<div class="data-row${m ? ' match' : ''}"><span class="data-name">${n}</span><span class="data-val">${v}</span></div>`).join('');
@@ -288,12 +246,12 @@ function explain(a) {
     }
 
     const names = a.animal.stages.map(s => s.n).join(' → ');
-    let s = `${eun(a.animal.name)} ${names} 차례로 자랍니다. 알에서 어른이 되기까지 모두 ${a.total}일쯤 걸립니다. `;
+    let s = `${eun(a.animal.name)} ${names} 차례로 자랍니다. 이 모형의 예시에서는 알에서 어른이 되기까지 ${a.total}일이며, 실제 기간은 종과 환경에 따라 달라집니다. `;
 
     if (v === 'p1') {
         s += `가운데에 번데기가 있는 것이 눈에 띕니다. 번데기 속에서 몸이 새로 만들어지기 때문에, 애벌레와 어른벌레는 생김새가 전혀 다릅니다. 이런 자람을 완전 탈바꿈이라고 합니다. `;
     } else if (v === 'p2') {
-        s += `번데기는 없지만 모습이 크게 바뀝니다. 올챙이는 물속에서 아가미로 숨 쉬고, 개구리가 되면 뭍으로 올라와 폐로 숨 쉽니다. 사는 곳이 통째로 바뀌는 셈입니다. `;
+        s += `번데기는 없지만 모습이 크게 바뀝니다. 이 모형의 올챙이는 주로 아가미로 숨 쉬며 물속에서 자랍니다. 다 자란 개구리는 폐와 피부로 호흡하고 물가와 뭍에서 생활합니다. 개구리의 종류에 따라 생활 모습은 다릅니다. `;
     } else {
         s += `번데기가 없습니다. 알에서 나올 때부터 어른과 제법 닮았고, ${a.animal.moult} 조금씩 커질 뿐입니다. `;
     }
@@ -307,10 +265,8 @@ function explain(a) {
         s += `${eun(a.animal.name)} 새끼일 때와 어른일 때 먹는 것이 거의 같습니다. 모든 동물이 자라면서 먹이를 바꾸는 것은 아닙니다. `;
     }
 
-    const p = a.pyramid, top = p[p.length - 1], bottom = p[0];
-    s += `${eun(a.animal.name)} ${ro(a.animal.chain.join(' → '))} 이어지는 먹이 사슬 안에 있습니다. `;
-    s += `먹은 것이 모두 몸이 되지는 않습니다. 대부분은 움직이고 숨 쉬는 데 쓰여 사라지므로, 한 단계 올라갈 때마다 수가 열 배쯤 줄어듭니다. `;
-    s += `그래서 맨 위의 ${top.name} 한 ${eul(top.unit)} 먹여 살리려면 맨 아래의 ${iga(bottom.name)} ${bottom.count.toLocaleString('ko-KR')}${bottom.unit}쯤 있어야 합니다.`;
+    s += '이 그림은 먹고 먹히는 관계를 보여 줍니다. 먹이 사슬의 단계만으로 생물의 수를 정할 수 없으며, 한 단계마다 개체 수가 열 배씩 줄어드는 것은 아닙니다.';
+
     $('elementaryExplanation').textContent = s;
 }
 
@@ -409,8 +365,8 @@ render();
 requestAnimationFrame(frame);
 
 window.__lifeModel = {
-    state, analyse, tick, render, daysToAdult, verdictFor, pyramid,
-    ANIMALS, PASS,
+    state, analyse, tick, render, daysToAdult, verdictFor, foodChain,
+    ANIMALS,
     setAnimal(v) { document.querySelector(`[data-animal="${v}"]`).click(); },
     setStep(v) { const r = $('stageRange'); r.value = String(v); r.dispatchEvent(new Event('input')); },
     check() { state.checked = true; explain(analyse()); },

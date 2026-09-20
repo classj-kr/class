@@ -34,7 +34,7 @@ edit(lab+'state-change/app.js',s=>{
 });
 edit(lab+'state-change/index.html',s=>{
     s=s.replace(/(<script src="app.js[^\"]*"><\/script>)/,'<script src="phase-model.js?v=1"></script>\n$1');
-    s=replace(s,'state-visual.css?v=5','state-visual.css?v=6');
+    s=replace(s,'state-visual.css?v=9','state-visual.css?v=10');
     s=replace(s,'                <fieldset class="prediction-field">',`                <div id="phaseControls" hidden>
                     <div class="range-heading"><label id="phaseLabel" for="phaseRange">가열에 따른 변화 비율</label><output id="phaseOutput" for="phaseRange">50%</output></div>
                     <input id="phaseRange" type="range" min="0" max="100" step="10" value="50">
@@ -54,9 +54,5 @@ edit(lab+'state-change/state-visual.css',s=>{
     // Water vapor is invisible. Do not use white wisps to represent the gas itself.
     s=replace(s,'.beaker.state-gas .steam-wisps { opacity: 1; }','.steam-wisps { display: none; }');
     return s+'\n/* Independent equilibrium samples: no delayed thaw/refill when the condition changes. */\n#waterRect, #waterSurface, #iceClipRect { transition: none; }\n#phaseControls[hidden] { display: none; }\n';
-});
-edit(lab+'life-cycle/app.js',s=>{
-    s=span(s,'/* Watch','const ANIMALS',"/* Compare life stages and feeding links. Organism counts cannot be inferred from trophic level. */\nconst NONE = '먹이를 먹지 않습니다';\n\nconst ANIMALS").replace('const ANIMALSconst ANIMALS','const ANIMALS');
-    return s;
 });
 apply();
