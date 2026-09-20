@@ -1,0 +1,53 @@
+/* Shared reading scale. Scientific geometry keeps its own coordinate system. */
+:root{--lab-body:15px;--lab-label:14px;--lab-heading:18px;--lab-title:21px;--lab-value:18px}
+body{font-size:var(--lab-body);line-height:1.6}
+body .page-header h1,body .page-heading h1,body main>h1{font-size:var(--lab-title);line-height:1.4;font-weight:700;letter-spacing:-.025em;word-break:keep-all;overflow-wrap:anywhere}
+body .panel h2,body .stage-heading h2,body .quiz-section h2,body .meaning-panel h2,body .curriculum-supplement h2{font-size:var(--lab-heading);line-height:1.5;font-weight:650}
+body .panel h3,body .quiz-card h3,body .supplement-check h3{font-size:16px;line-height:1.6;font-weight:650}
+body .panel p,body .meaning-body p,body .answer-explanation,body .explanation,body .supplement-observation{font-size:var(--lab-body);line-height:1.75;font-weight:400;word-break:keep-all;overflow-wrap:anywhere}
+body .control-panel legend,body .prediction-field legend,body .method-steps li,body .grade-tags span,body .title-row a,body .stage-heading span,body #stageBadge,body .stage-caption,body .data-note,body .amount-guide,body .water-standard{font-size:var(--lab-label);line-height:1.6;font-weight:550}
+body button,body select,body input{font-size:var(--lab-label);font-weight:550}
+body button small,body .pick-field small,body .mode-buttons small{font-size:13px;line-height:1.5;font-weight:400}
+body .supplement-note,body .panel p.supplement-note{font-size:13px;line-height:1.7;font-weight:400}
+body .page-header,body .title-row,body .stage-heading{flex-wrap:wrap;row-gap:10px}
+body .title-row{min-width:0}
+body .result-numbers{grid-template-columns:repeat(auto-fit,minmax(min(145px,100%),1fr));gap:10px}
+body .result-numbers article{min-width:0;padding:12px;border-radius:10px}
+body .result-numbers span{font-size:var(--lab-label);line-height:1.5;font-weight:450}
+body .result-numbers strong{font-size:var(--lab-value);font-weight:650;line-height:1.5;margin-top:4px;word-break:keep-all;overflow-wrap:anywhere;font-variant-numeric:tabular-nums}
+body .result-numbers .metric-number{font-size:var(--lab-value);font-weight:650;white-space:nowrap}
+body .result-numbers .metric-context{font-size:var(--lab-label);font-weight:450;margin-top:2px}
+body .burn-stage,body .beaker-stage,body .sound-stage{background-image:none}
+body .stage-views{gap:18px;padding-top:12px;min-width:0}
+body .stage-caption{font-weight:450;text-align:left;background:#f7fafb;border-color:#e2e8ed;max-width:100%;margin-top:14px}
+body svg text[class]{font-family:inherit;font-weight:550}
+body svg text.pole-text,body svg text.battery-label{font-weight:650}
+.figure-notes{width:100%;max-width:620px;margin:0 auto 8px;padding:10px 12px;border-left:3px solid #bed3da;background:#f7fafb;border-radius:0 8px 8px 0;color:#344e5b;font-size:14px;line-height:1.65;word-break:keep-all;overflow-wrap:anywhere}
+.figure-notes p{margin:0!important;font-size:14px!important;line-height:1.65!important;font-weight:450!important}
+.figure-notes p+p{margin-top:6px!important}
+svg text[data-figure-extracted]{display:none}
+body .data-row{grid-template-columns:minmax(105px,auto) minmax(0,1fr);font-size:14px;line-height:1.65;font-weight:500}
+body .quiz-options label{font-size:15px;line-height:1.65;font-weight:450;word-break:keep-all;overflow-wrap:anywhere}
+@media(max-width:600px){
+ :root{--lab-title:20px;--lab-heading:17px}
+ body .panel{padding:16px}
+ body .result-numbers{grid-template-columns:repeat(auto-fit,minmax(min(145px,100%),1fr))}
+ body .method-steps{flex-wrap:wrap;overflow:visible}
+ body .method-steps li{flex:1 1 220px;min-width:0}
+ body .stage-heading span,body #stageBadge{max-width:100%;white-space:normal}
+}
+
+.figure-viewport{width:100%;max-width:620px;margin:0 auto;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:thin;scrollbar-color:#adc5cf #f4f8fa}.figure-viewport svg{display:block}.figure-viewport:focus-visible{outline:2px solid #26778d;outline-offset:2px}
+
+/* Chromebook + iPad: reading space and touch targets, without phone-first stacking. */
+body .experiment-layout>*,body .panel,body .figure-viewport{min-width:0}
+body .panel:has(.stage-views){background-image:none}
+body .control-panel button,body .control-panel select,body .answer-button{min-height:44px}
+body input[type=range]{min-height:32px}
+body button:focus-visible,body select:focus-visible,body input:focus-visible{outline:3px solid #237b97;outline-offset:3px}
+body .light-stage .side-view{width:100%;max-width:560px;flex:none}
+body .light-stage .front-view{width:190px}
+body .view-title{font-size:14px;font-weight:600}
+.figure-notes .figure-axis{font-weight:550!important}
+@media(min-width:821px) and (max-width:1180px){body .experiment-layout{grid-template-columns:280px minmax(0,1fr);gap:16px}}
+@media(min-width:601px) and (max-width:820px){body .experiment-layout{grid-template-columns:1fr}body .control-panel .result-numbers{grid-template-columns:repeat(auto-fit,minmax(160px,1fr))}}

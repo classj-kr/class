@@ -217,7 +217,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function renderPunnett(a) {
         const n = a.gamA.length;
-        const cell = n === 2 ? 36 : 27;
+        const cell = a.kind === 'two' ? 44 : 36;
         const X = 26, Y = 52;
         let out = `<text class="part-label" x="${X}" y="26">유전자형 표 — 기대</text>`;
         out += `<text class="small-label" x="${X + cell + (n * cell) / 2}" y="${Y - 6}" text-anchor="middle">부모 ⓐ${a.kind === 'one' ? '' : ' ' + a.cross.a}</text>`;
@@ -240,7 +240,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function renderTray(a) {
-        const TX = 196, TY = 44, TW = 244, TH = 132;
+        const TX = a.kind === 'two' ? 290 : 196, TY = 58, TW = a.kind === 'two' ? 350 : 244, TH = 132;
         const n = state.seeds, k = shown();
         const cols = Math.ceil(Math.sqrt(n * TW / TH)), rows = Math.ceil(n / cols);
         const cw = TW / cols, ch = TH / rows, r = Math.min(cw, ch) * 0.38;
@@ -254,7 +254,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         // legend: one row for two kinds, two rows for four
         a.phenos.forEach((ph, i) => {
-            const lx = TX + (i % 2) * 124, ly = a.phenos.length > 2 ? 190 + Math.floor(i / 2) * 15 : 197;
+            const lx = TX + (i % 2) * (a.kind === 'two' ? 176 : 124), ly = a.phenos.length > 2 ? 216 + Math.floor(i / 2) * 24 : 214;
             out += seedShape(lx + 5, ly - 4, 4.5, ph);
             out += `<text class="legend-text" x="${lx + 13}" y="${ly}">${ph.label.replace(' 완두', '').replace(' 꽃', '')} ${counts[ph.key]}</text>`;
         });
@@ -288,11 +288,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function renderMain(a) {
+        mainGroup.closest('svg').setAttribute('viewBox',a.kind==='two'?'0 0 660 290':'0 0 460 238');
         let out = renderPunnett(a) + renderTray(a);
         const head = a.kind === 'one'
             ? `${alleles(state.parentA, a.gene).join('')} × ${alleles(state.parentB, a.gene).join('')}`
             : a.cross.label;
-        out += `<text class="verdict-text" fill="#0f172a" x="26" y="210">${head} · 기대 ${expectedText(a)}</text>`;
+        out += `<text class="verdict-text figure-caption" fill="#0f172a" x="26" y="210">${head} · 기대 ${expectedText(a)}</text>`;
         mainGroup.innerHTML = out;
     }
 

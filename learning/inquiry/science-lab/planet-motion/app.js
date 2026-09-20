@@ -29,7 +29,11 @@ document.addEventListener('DOMContentLoaded', () => {
     function liftProse() {
         const rows = [], notes = [], verdicts = [];
         const takeOut = t => {
-            const cls = t.getAttribute('class') || '', txt = t.textContent.trim();
+            const cls = t.getAttribute('class') || '';let txt = t.textContent.trim();
+            if(t.matches('.stat-value')){
+                const label=t.previousElementSibling;
+                if(label?.matches('.stat-name')&&label.getAttribute('y')===t.getAttribute('y')){txt=label.textContent.trim()+': '+txt;label.remove();}
+            }
             if (txt) {
                 if (/verdict-text/.test(cls)) verdicts.push(txt);
                 else if (/note-text/.test(cls)) notes.push(txt);
@@ -43,11 +47,11 @@ document.addEventListener('DOMContentLoaded', () => {
             [...g.querySelectorAll('text')].forEach(t => {
                 const cls = t.getAttribute('class') || '';
                 const must = /verdict-text|note-text/.test(cls) || /prose/.test(cls);
-                let b; try { b = t.getBBox(); } catch (e) { return; }
+                let b; try { b = window.scienceTextInkBox ? window.scienceTextInkBox(t) : t.getBBox(); } catch (e) { return; }
                 const out = b.x < -0.5 || b.x + b.width > W + 0.5 || b.y + b.height > H + 0.5 || b.y < -0.5;
                 if (must || out) takeOut(t);
             });
-            const items = [...g.querySelectorAll('text')].map(t => { let b; try { b = t.getBBox(); } catch (e) { b = null; } return { t, b, len: t.textContent.trim().length }; }).filter(o => o.b);
+            const items = [...g.querySelectorAll('text')].map(t => { let b; try { b = window.scienceTextInkBox ? window.scienceTextInkBox(t) : t.getBBox(); } catch (e) { b = null; } return { t, b, len: t.textContent.trim().length }; }).filter(o => o.b);
             const drop = new Set();
             for (let i = 0; i < items.length; i += 1) for (let j = i + 1; j < items.length; j += 1) {
                 if (drop.has(i) || drop.has(j)) continue;

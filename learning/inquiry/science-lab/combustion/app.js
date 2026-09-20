@@ -215,7 +215,7 @@ document.addEventListener('DOMContentLoaded', () => {
             out += `<text class="bar-text" fill="${colour}" x="${GRAPH.x0}" y="${y - 10}">${name} ${value.toFixed(2)} g</text>`;
             out += `<rect class="bar" x="${GRAPH.x0}" y="${y - 4}" width="${Math.max(2, gx(value) - GRAPH.x0).toFixed(1)}" height="11" rx="3" fill="${colour}" opacity=".8"/>`;
         });
-        out += `<text class="note-text" x="${GRAPH.x0}" y="${GRAPH.y0 - 4}">지금 저울이 가리키는 값 ${st.measured.toFixed(2)} g</text>`;
+        out += `<text class="note-text figure-caption" x="${GRAPH.x0}" y="${GRAPH.y0 - 4}">지금 저울이 가리키는 값 ${st.measured.toFixed(2)} g</text>`;
         return out;
     }
 

@@ -134,40 +134,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const hourText = h => { const hh = Math.floor(h), mm = Math.round((h - hh) * 60); return `${hh < 12 ? '오전' : '오후'} ${hh % 12 === 0 ? 12 : hh % 12}시${mm ? ` ${String(mm).padStart(2, '0')}분` : ''}`; };
 
     function renderPath(a, p) {
-        const hour = pathHour(a, p);
-        const HX = 230, HY = 172, RX = 200, RY = 150;
-        const pos = (alt, az) => ({ x: HX + RX * Math.sin(az * D2R), y: HY - RY * Math.sin(alt * D2R) });
-        const up = sunAt(hour, a.season.dec).alt > 0;
-        let out = `<rect class="sky${up ? ' day' : ''}" x="12" y="30" width="436" height="${HY - 30}"/>`;
-        out += `<rect class="ground" x="12" y="${HY}" width="436" height="24"/>`;
-        out += `<line class="horizon-line" x1="12" y1="${HY}" x2="448" y2="${HY}"/>`;
-        out += `<text class="dir-text" x="24" y="${HY + 16}">동</text><text class="dir-text" x="${HX}" y="${HY + 16}" text-anchor="middle">남</text><text class="dir-text" x="436" y="${HY + 16}" text-anchor="end">서</text>`;
-        // the three paths, this season's drawn bright
-        Object.entries(SEASONS).forEach(([k, se]) => {
-            const pts = [];
-            for (let h = 3; h <= 21; h += 0.25) { const q = sunAt(h, se.dec); if (q.alt >= 0) { const r = pos(q.alt, q.az); pts.push(`${r.x.toFixed(1)},${r.y.toFixed(1)}`); } }
-            if (pts.length > 1) out += `<path class="sun-path${k === state.season ? '' : ' other'}" style="stroke:${se.colour}" d="M${pts.join('L')}"/>`;
-            const nq = sunAt(12, se.dec), nr = pos(nq.alt, nq.az);
-            out += `<text class="axis-text" style="fill:${se.ink || se.colour}" x="${(nr.x + 14).toFixed(1)}" y="${(nr.y + 3).toFixed(1)}">${se.label} ${Math.round(nq.alt)}°</text>`;
+        const hour=pathHour(a,p),q=sunAt(hour,a.season.dec),HY=236;
+        // Direction is monotonic from east to west; sin(azimuth) folds summer paths.
+        const pos=(alt,az)=>({x:230+196*az/135,y:HY-140*Math.sin(alt*D2R)});
+        let out='<rect class="sky day" x="24" y="72" width="412" height="164"/><rect class="ground" x="24" y="236" width="412" height="27"/>';
+        out+='<line class="horizon-line" x1="24" y1="236" x2="436" y2="236"/>';
+        [99,230,361].forEach((x,i)=>out+='<text class="dir-text" x="'+x+'" y="255" text-anchor="middle">'+['동','남','서'][i]+'</text>');
+        Object.entries(SEASONS).forEach(([k,se],i)=>{
+            const pts=[];
+            for(let h=3;h<=21;h+=.1){const sun=sunAt(h,se.dec);if(sun.alt>=0){const r=pos(sun.alt,sun.az);pts.push(r.x.toFixed(1)+','+r.y.toFixed(1));}}
+            if(pts.length>1)out+='<path class="sun-path'+(k===state.season?'':' other')+'" style="stroke:'+se.colour+'" d="M'+pts.join('L')+'"/>';
+            const x=36+i*140;
+            out+='<line x1="'+x+'" y1="47" x2="'+(x+16)+'" y2="47" stroke="'+se.colour+'" stroke-width="3"/><text class="axis-text" x="'+(x+23)+'" y="52" style="fill:'+se.ink+'">'+se.label+' '+Math.round(noonAlt(se.dec))+'°</text>';
         });
-        // the sun now, with a metre stick and its shadow on the ground
-        const q = sunAt(hour, a.season.dec);
-        if (q.alt > 0) {
-            const r = pos(q.alt, q.az);
-            out += `<circle class="sun-glow" cx="${r.x.toFixed(1)}" cy="${r.y.toFixed(1)}" r="16"/><circle class="sun" cx="${r.x.toFixed(1)}" cy="${r.y.toFixed(1)}" r="8"/>`;
-            const SX = 110, SY = HY, stickH = 30;
-            const dir = q.az > 0 ? -1 : 1;         // shadow falls away from the sun
-            // a low sun throws a long shadow; it stops at the edge of the picture
-            const shadowRatio = 1 / Math.tan(q.alt * D2R);
-            const shadowLen = Math.min(dir < 0 ? SX - 16 : 440 - SX, stickH * shadowRatio);
-            out += `<line class="shadow" x1="${SX}" y1="${SY - 1}" x2="${(SX + dir * shadowLen).toFixed(1)}" y2="${SY - 1}"/>`;
-            out += `<line class="stick" x1="${SX}" y1="${SY}" x2="${SX}" y2="${SY - stickH}"/>`;
-            out += `<text class="alt-text" x="${SX}" y="${SY - stickH - 6}" text-anchor="middle">그림자 ${shadowRatio > 100 ? '100배 이상' : `${shadowRatio.toFixed(1)}배`}</text>`;
-        }
-        out += `<text class="sky-text" x="24" y="46">${hourText(hour)}</text>`;
-        out += `<text class="sky-text" x="24" y="60">${q.alt > 0 ? `태양 높이 ${Math.round(q.alt)}°` : hour < 12 ? '해 뜨기 전' : '해 진 뒤'}</text>`;
-        out += `<text class="verdict-text" fill="#0f172a" x="20" y="16">${a.season.label} · 남중 고도 ${Math.round(a.noon)}° · 낮 ${a.len.toFixed(1)}시간 (${hourText(a.rise)} ~ ${hourText(a.set)})</text>`;
-        out += `<text class="note-text" x="20" y="208">1 m 막대의 정오 그림자: ${a.shadow.toFixed(2)} m · 태양이 높을수록 그림자가 짧습니다</text>`;
+        if(q.alt>0){const r=pos(q.alt,q.az);out+='<circle class="sun-glow" cx="'+r.x.toFixed(1)+'" cy="'+r.y.toFixed(1)+'" r="15"/><circle class="sun" cx="'+r.x.toFixed(1)+'" cy="'+r.y.toFixed(1)+'" r="8"/>';}
+        out+='<text class="sky-text" x="24" y="289">'+hourText(hour)+' · '+(q.alt>0?'태양 높이 '+Math.round(q.alt)+'°':hour<12?'해 뜨기 전':'해 진 뒤')+'</text>';
+        if(q.alt>0){const ratio=1/Math.tan(q.alt*D2R);out+='<text class="alt-text" x="436" y="289" text-anchor="end">그림자 '+(ratio>100?'100배 이상':ratio.toFixed(1)+'배')+'</text>';}
+        out+='<text class="verdict-text" x="20" y="18">'+a.season.label+' · 남중 고도 '+Math.round(a.noon)+'° · 낮 '+a.len.toFixed(1)+'시간 ('+hourText(a.rise)+' ~ '+hourText(a.set)+')</text>';
+        out+='<text class="note-text" x="20" y="319">1 m 막대의 정오 그림자: '+a.shadow.toFixed(2)+' m · 태양이 높을수록 그림자가 짧습니다</text>';
         return out;
     }
 
@@ -229,6 +213,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function renderMain(a) {
+        mainGroup.closest('svg').toggleAttribute('data-mobile-fit',a.kind==='path');
+        mainGroup.closest('svg').setAttribute('viewBox', a.kind === 'path' ? '0 0 460 334' : '0 0 460 240');
         mainGroup.innerHTML = a.kind === 'path' ? renderPath(a, state.progress) : renderOrbit(a, state.progress);
     }
 
@@ -244,7 +230,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         out += `<line class="axis" x1="${GRAPH.x0}" y1="${GRAPH.y0}" x2="${GRAPH.x1}" y2="${GRAPH.y0}"/>`;
         out += `<line class="axis" x1="${GRAPH.x0}" y1="${GRAPH.y0}" x2="${GRAPH.x0}" y2="${GRAPH.y1}"/>`;
-        out += `<text class="axis-title" x="${((GRAPH.x0 + GRAPH.x1) / 2).toFixed(1)}" y="${GRAPH.y0 + 30}" text-anchor="middle">${xTitle}</text>`;
+        out += `<text class="axis-title" x="${((GRAPH.x0 + GRAPH.x1) / 2).toFixed(1)}" y="${GRAPH.y0 + 42}" text-anchor="middle">${xTitle}</text>`;
         out += `<text class="axis-title" x="${GRAPH.x0 + 4}" y="${GRAPH.y1 - 8}">${yTitle}</text>`;
         return out;
     }

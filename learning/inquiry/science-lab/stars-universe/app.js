@@ -135,7 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
         out += `<circle fill="${a.star.hex}" opacity=".25" cx="${SX}" cy="${SY}" r="22"/>`;
         out += `<circle fill="${a.star.hex}" cx="${SX}" cy="${SY}" r="11"/>`;
         out += `<text class="small-label" style="fill:#f8fafc" x="${SX}" y="${SY + 34}" text-anchor="middle">${a.star.name}</text>`;
-        out += `<text class="note-text" style="fill:#cbd5e1" x="${SX}" y="${SY + 46}" text-anchor="middle">${a.star.temp} K · ${a.star.colour}</text>`;
+        out += `<text class="note-text figure-caption" style="fill:#cbd5e1" x="${SX}" y="${SY + 46}" text-anchor="middle">${a.star.temp} K · ${a.star.colour}</text>`;
 
         // the bundle of light that fills one reference cell at 10 pc, spreading outward
         const half0 = CELL / 2;
@@ -146,7 +146,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // the reference cell at 10 pc
         out += `<rect class="screen-ref" x="${(xRef - half0).toFixed(1)}" y="${(SY - half0).toFixed(1)}" width="${CELL}" height="${CELL}"/>`;
         out += `<text class="small-label" style="fill:#34d399" x="${xRef.toFixed(1)}" y="${SY - 12}" text-anchor="middle">10 pc</text>`;
-        out += `<text class="note-text" style="fill:#cbd5e1" x="${xRef.toFixed(1)}" y="${SY + 26}" text-anchor="middle">한 칸에 빛 전부</text>`;
+        out += `<text class="note-text figure-caption" style="fill:#cbd5e1" x="${xRef.toFixed(1)}" y="${SY + 26}" text-anchor="middle">한 칸에 빛 전부</text>`;
         // the screen now: the same light over n × n cells
         if (p > 0.001) {
             const side = 2 * halfNow;
@@ -161,13 +161,13 @@ document.addEventListener('DOMContentLoaded', () => {
             out += `<rect class="screen-grid" style="stroke:#0f172a" x="${(xNow - halfNow).toFixed(1)}" y="${(SY - halfNow).toFixed(1)}" width="${side.toFixed(1)}" height="${side.toFixed(1)}"/>`;
             if (xNow - xRef >= 40) out += `<text class="small-label" style="fill:#f8fafc" x="${xNow.toFixed(1)}" y="${(SY - halfNow - 6).toFixed(1)}" text-anchor="middle">${at.d.toFixed(0)} pc</text>`;
             // the caption waits until the screen has cleared the reference cell's caption
-            if (xNow - xRef >= 64) out += `<text class="note-text" style="fill:#cbd5e1" x="${xNow.toFixed(1)}" y="${(SY + halfNow + 14).toFixed(1)}" text-anchor="middle">${(at.n * at.n).toFixed(1)}칸에 나뉨</text>`;
+            if (xNow - xRef >= 64) out += `<text class="note-text figure-caption" style="fill:#cbd5e1" x="${xNow.toFixed(1)}" y="${(SY + halfNow + 14).toFixed(1)}" text-anchor="middle">${(at.n * at.n).toFixed(1)}칸에 나뉨</text>`;
         }
 
         // readouts along the top of the frame
         out += `<text class="verdict-text" fill="#0f172a" x="20" y="28">${a.star.name} · ${BASE_PC} pc → ${a.d} pc</text>`;
-        out += `<text class="mag-text" fill="#0f172a" x="20" y="204">같은 별은 더 멀리에서 보면 어둡게 보입니다.</text>`;
-        out += `<text class="mag-text" fill="#0f172a" x="250" y="204">겉보기 ${fmtMag(at.m)} · 절대 ${fmtMag(a.star.abs)}</text>`;
+        out += `<text class="mag-text figure-caption" fill="#0f172a" x="20" y="204">같은 별은 더 멀리에서 보면 어둡게 보입니다.</text>`;
+        out += `<text class="mag-text figure-caption" fill="#0f172a" x="250" y="204">겉보기 ${fmtMag(at.m)} · 절대 ${fmtMag(a.star.abs)}</text>`;
         return out;
     }
 
@@ -199,7 +199,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         out += `<text class="verdict-text" fill="#0f172a" x="20" y="28">고무줄 ${S.toFixed(2)}배 · ${GALAXIES[a.home]} 은하에서 본 모습</text>`;
         out += `<text class="small-label" style="fill:#cbd5e1" x="20" y="164">눈금 한 칸 = 처음 은하 사이 거리 · 화살표 = 나에게서 멀어진 거리</text>`;
-        out += `<text class="mag-text" fill="#0f172a" x="20" y="204">가장 먼 은하 ${Math.max(...a.rows.map(r => r.d0))}칸 → ${(Math.max(...a.rows.map(r => r.d0)) * S).toFixed(1)}칸 · 가장 가까운 은하 1칸 → ${S.toFixed(1)}칸</text>`;
+        out += `<text class="mag-text figure-caption" fill="#0f172a" x="20" y="204">가장 먼 은하 ${Math.max(...a.rows.map(r => r.d0))}칸 → ${(Math.max(...a.rows.map(r => r.d0)) * S).toFixed(1)}칸 · 가장 가까운 은하 1칸 → ${S.toFixed(1)}칸</text>`;
         return out;
     }
 

@@ -139,7 +139,7 @@ function drawSea(g) {
         }
     }
     g.appendChild(el('text', { x: HODO.cx - HODO.r, y: HODO.cy + HODO.r + 14, class: 'tiny-label' }, '표층'));
-    g.appendChild(el('text', { x: HODO.cx + HODO.r, y: HODO.cy + HODO.r + 14, 'text-anchor': 'end', class: 'tiny-label' },
+    g.appendChild(el('text', { x: HODO.cx + HODO.r, y: HODO.cy + HODO.r + 36, 'text-anchor': 'end', class: 'tiny-label figure-caption' },
         `${Math.round(a.depth)} m에서 반대 방향`));
 
     g.appendChild(el('text', { x: 446, y: 22, 'text-anchor': 'end', class: 'read-text' }, `${a.lat}°${a.hemi === 'N' ? 'N' : 'S'}`));

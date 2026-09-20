@@ -237,8 +237,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const count = tr => { const c = new Array(bins).fill(0); tr.forEach(t => { c[Math.min(bins - 1, Math.floor((t - lo) / (hi - lo) * bins))] += 1; }); return c; };
         const c0 = count(first.traits), c1 = count(gen.traits);
         const X0 = 50, X1 = 424, Y0 = 144, Y1 = 30, W = (X1 - X0) / bins, max = Math.max(8, ...c0, ...c1);
-        let out = `<text class="axis-title" x="${X0}" y="18">옅은 막대: 처음 · 진한 막대: ${g === 0 ? '처음' : `${g}세대`}</text>`;
-        out += `<text class="axis-text" style="fill:#059669" x="${X1}" y="18" text-anchor="end">초록 점선: 환경이 유리하게 하는 값</text>`;
+        let out = `<text class="axis-title figure-caption" x="${X0}" y="18">옅은 막대: 처음 · 진한 막대: ${g === 0 ? '처음' : `${g}세대`}</text>`;
+        out += `<text class="axis-text figure-caption" style="fill:#059669" x="${X1}" y="18" text-anchor="end">초록 점선: 환경이 유리하게 하는 값</text>`;
         for (let b = 0; b < bins; b += 1) {
             const x = X0 + b * W;
             out += `<rect class="hist-bar hist-first" x="${(x + 2).toFixed(1)}" y="${(Y0 - (Y0 - Y1) * c0[b] / max).toFixed(1)}" width="${(W - 4).toFixed(1)}" height="${((Y0 - Y1) * c0[b] / max).toFixed(1)}" rx="2"/>`;

@@ -567,7 +567,11 @@ document.addEventListener('DOMContentLoaded', () => {
     function liftProse() {
         const rows = [], notes = [], verdicts = [];
         const takeOut = t => {
-            const cls = t.getAttribute('class') || '', txt = t.textContent.trim();
+            const cls = t.getAttribute('class') || '';let txt = t.textContent.trim();
+            if(t.matches('.stat-value')){
+                const label=t.previousElementSibling;
+                if(label?.matches('.stat-name')&&label.getAttribute('y')===t.getAttribute('y')){txt=label.textContent.trim()+': '+txt;label.remove();}
+            }
             if (txt) {
                 if (/verdict-text/.test(cls)) verdicts.push(txt);
                 else if (/note-text/.test(cls)) notes.push(txt);
@@ -581,23 +585,23 @@ document.addEventListener('DOMContentLoaded', () => {
             [...g.querySelectorAll('text')].forEach(t => {
                 const cls = t.getAttribute('class') || '';
                 const must = /verdict-text|note-text|prose/.test(cls);
-                let b; try { b = t.getBBox(); } catch (e) { return; }
+                let b; try { b = window.scienceTextInkBox ? window.scienceTextInkBox(t) : t.getBBox(); } catch (e) { return; }
                 // 눈금 같은 짧은 이름표는 밖으로 내보내면 뜻을 잃는다. 액자 안으로 밀어 넣어 본다.
                 if (!must && outside(b) && b.width < W * 0.6 && !t.getAttribute('transform')) {
                     const x = parseFloat(t.getAttribute('x')), y = parseFloat(t.getAttribute('y'));
                     if (!Number.isNaN(x)) {
                         const dx = b.x + b.width > W - 2 ? (W - 2) - (b.x + b.width) : (b.x < 2 ? 2 - b.x : 0);
-                        if (dx) { t.setAttribute('x', (x + dx).toFixed(1)); b = t.getBBox(); }
+                        if (dx) { t.setAttribute('x', (x + dx).toFixed(1)); b = window.scienceTextInkBox ? window.scienceTextInkBox(t) : t.getBBox(); }
                     }
                     if (!Number.isNaN(y)) {
                         const dy = b.y + b.height > H - 1 ? (H - 1) - (b.y + b.height) : (b.y < 1 ? 1 - b.y : 0);
-                        if (dy) { t.setAttribute('y', (y + dy).toFixed(1)); b = t.getBBox(); }
+                        if (dy) { t.setAttribute('y', (y + dy).toFixed(1)); b = window.scienceTextInkBox ? window.scienceTextInkBox(t) : t.getBBox(); }
                     }
                 }
                 if (must || outside(b)) takeOut(t);
             });
             const items = [...g.querySelectorAll('text')].map(t => {
-                let b; try { b = t.getBBox(); } catch (e) { b = null; }
+                let b; try { b = window.scienceTextInkBox ? window.scienceTextInkBox(t) : t.getBBox(); } catch (e) { b = null; }
                 return { t, b, len: t.textContent.trim().length };
             }).filter(o => o.b);
             const drop = new Set();

@@ -122,7 +122,7 @@ function drawModel(g) {
         g.appendChild(el('text', { x: 298, y: y - 4, class: 'part-label' }, `${stateName} — ${name}`));
         g.appendChild(el('text', { x: 298, y: y + 9, class: 'tiny-label' }, note));
     });
-    g.appendChild(el('text', { x: 268, y: 200, class: 'note-text' }, '모형의 거품은 용암처럼 뜨겁지 않습니다'));
+    g.appendChild(el('text', { x: 268, y: 200, 'text-anchor': 'middle', class: 'note-text figure-caption' }, '모형의 거품은 용암처럼 뜨겁지 않습니다'));
 }
 
 function drawGraph(g) {
@@ -157,8 +157,8 @@ function drawGraph(g) {
     }
     g.appendChild(el('circle', { cx: X(a.soda), cy: Y(a.gas), r: 6, class: 'trace-dot', style: 'fill:#ffb26b' }));
 
-    g.appendChild(el('text', { x: x0 + 4, y: 172, class: 'legend-text', style: 'fill:#ffb26b' }, '올라가는 동안은 소다가 모자랍니다'));
-    g.appendChild(el('text', { x: x1 - 2, y: 172, 'text-anchor': 'end', class: 'legend-text', style: 'fill:#475569' }, '평평해지면 식초가 다 떨어진 것입니다'));
+    g.appendChild(el('text', { x: x0 + 4, y: 172, class: 'legend-text figure-caption', style: 'fill:#ffb26b' }, '올라가는 동안은 소다가 모자랍니다'));
+    g.appendChild(el('text', { x: x1 - 2, y: 172, 'text-anchor': 'end', class: 'legend-text figure-caption', style: 'fill:#475569' }, '평평해지면 식초가 다 떨어진 것입니다'));
     g.appendChild(el('text', { x: (x0 + x1) / 2, y: 191, 'text-anchor': 'middle', class: 'axis-title' }, `식초 ${state.vin} mL에 소다를 넣을 때 생기는 거품`));
 }
 

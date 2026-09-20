@@ -268,7 +268,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }, contactDelay * 1000);
 
         const actual = data.hz > BARS[REFERENCE].hz ? 'higher' : data.hz < BARS[REFERENCE].hz ? 'lower' : 'same';
-        resultPitch.textContent = `${data.hz} Hz (${data.note})`;
+        resultPitch.innerHTML = `<span class="metric-number">${data.hz} Hz</span><span class="metric-context">${data.note}</span>`;
         resultLoudness.textContent = `진폭 ${strength}`;
         resultEmpty.hidden = true;
         resultContent.hidden = false;

@@ -37,8 +37,12 @@ test('every catalog app loads, every question has a working correct answer, mobi
       },grade);
       assert.equal(state.count,state.expected,grade);assert.equal(state.wrong,0,grade);assert.equal(state.overflow,false,grade);
     }
-    await catalogPage.locator('#courseSelect').selectOption('화학반응의 세계');
-    assert.equal(await catalogPage.locator('.level-entry:not([hidden])').count(),2);
+    assert.equal(await catalogPage.locator('#courseSelect,#gradeCount,.placement-note,.grade-navigation h1').count(),0);
+    await catalogPage.goto(`http://127.0.0.1:${server.address().port}/?grade=고1&course=세포와%20물질대사`);
+    assert.equal(new URL(catalogPage.url()).searchParams.has('course'),false);
+    const highOneCount=await catalogPage.evaluate(()=>Object.values(window.scienceCurriculum).filter(m=>m.grades.includes('고1')).length);
+    assert.equal(await catalogPage.locator('.level-entry:not([hidden])').count(),highOneCount);
+    assert(highOneCount>0);
     if(process.env.SCIENCE_CAPTURE){await catalogPage.locator('[data-grade="초6"]').click();fs.mkdirSync(path.resolve(root,'../../../docs/science-lab-audit-2026-09-20/current-screenshots'),{recursive:true});await catalogPage.screenshot({path:path.resolve(root,'../../../docs/science-lab-audit-2026-09-20/current-screenshots/catalog-mobile.png'),fullPage:true});}
     await catalogPage.close();
     for (const slug of slugs) {
@@ -75,9 +79,10 @@ test('every catalog app loads, every question has a working correct answer, mobi
           }
           document.querySelector('.supplement-reset')?.click();
           if(document.getElementById('bendArm')){document.getElementById('bendArm').click();document.getElementById('straightArm').click();interactions+=2;}
-          return {interactions,scope:document.querySelector('.exam-scope')?.textContent||'',invalid:/\bNaN\b|\bundefined\b/.test(document.body.innerText)};
+          return {interactions,scopeBanner:!!document.querySelector('.exam-scope'),observationLoader:!!document.querySelector('script[src*="supplement-labs.js"]'),invalid:/\bNaN\b|\bundefined\b/.test(document.body.innerText)};
         });
-        if(!integration.scope.includes('성취기준'))errors.push('missing grade exam scope');
+        if(integration.scopeBanner)errors.push('removed scope banner reappeared');
+        if(!integration.observationLoader)errors.push('missing observation module loader');
         if(integration.invalid)errors.push('NaN/undefined visible after boundary controls');
         const result = await page.evaluate(() => {
           const cards = [...document.querySelectorAll('.quiz-card')];

@@ -204,7 +204,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const f = a.f;
         const leftFar = f.left === 'N' ? 'S' : 'N';
         out += barMagnet(LX, TY, MW, MH, leftFar, f.left);
-        out += `<text class="small-label" x="${LX + MW / 2}" y="${TY - 8}" text-anchor="middle">고정한 자석</text>`;
+        out += `<text class="small-label" x="${LX + MW / 2}" y="${TY - 8}" text-anchor="middle">고정</text>`;
         // free object
         const FX = LX + MW + q.gap * 100 * PX_PER_CM;
         if (f.right === null) {
@@ -214,7 +214,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             const rightFar = f.right === 'N' ? 'S' : 'N';
             out += barMagnet(FX, TY, MW, MH, f.right, rightFar);
-            out += `<text class="small-label" x="${(FX + MW / 2).toFixed(1)}" y="${TY - 8}" text-anchor="middle">움직이는 자석</text>`;
+            out += `<text class="small-label" x="${(FX + MW / 2).toFixed(1)}" y="${TY - 8}" text-anchor="middle">이동</text>`;
         }
         // the force arrow on the free object: toward the fixed magnet when positive
         const F = q.F, mag = Math.min(90, Math.abs(F) * 60);
@@ -272,7 +272,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function renderCompass(a, p) {
-        const CX = 210, CY = 118;
+        const CX = 230, CY = 146;
         const MAG_SCALE = 14;
         const toPxField = (x, y) => ({ x: CX + x * MAG_SCALE, y: CY + y * MAG_SCALE });
         let out = '';
@@ -293,7 +293,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const getCompassPos = (angDeg) => {
             const rad = angDeg * Math.PI / 180;
             const x = CX + distPx * Math.cos(rad);
-            const y = CY + Math.min(68, distPx * 0.44) * Math.sin(rad);
+            const y = CY + Math.min(80, 54 + (distPx - 58) * 0.23) * Math.sin(rad);
             return { x, y };
         };
 
@@ -308,19 +308,19 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         const me = getCompassPos(a.place.angle);
         out += compassAt(me.x, me.y, 18, angle, true);
-        // the label goes above a compass that sits low on the screen
-        const labelY = state.place === 'below' ? me.y - 24 : me.y + 30;
-        out += `<text class="small-label" x="${me.x.toFixed(1)}" y="${labelY.toFixed(1)}" text-anchor="middle">${a.place.label} ${state.dist} cm</text>`;
+        // Keep descriptive text outside the compass/magnet geometry.
         // north marker
-        out += `<text class="north-text" x="428" y="36" text-anchor="middle">북 ↑</text>`;
-        out += `<text class="note-text" x="428" y="52" text-anchor="middle">위쪽이 북쪽</text>`;
+        out += `<text class="north-text" x="436" y="42" text-anchor="end">북 ↑</text>`;
+        out += `<text class="note-text" x="436" y="62" text-anchor="end">위쪽이 북쪽</text>`;
         const VERD = { toS: '자석 때문에 방향 변화', north: '북쪽' };
         out += `<text class="verdict-text" fill="var(--primary)" x="20" y="18">${a.place.label} ${state.dist} cm → 바늘 N극은 ${VERD[a.verdict]}</text>`;
-        out += `<text class="note-text" x="20" y="206">작은 나침반: 다른 자리에 놓았을 때의 바늘 방향</text>`;
+        out += `<text class="note-text" x="20" y="278">작은 나침반: 다른 자리에 놓았을 때의 바늘 방향</text>`;
         return out;
     }
 
     function renderMain(a) {
+        mainGroup.closest('svg').toggleAttribute('data-mobile-fit',a.kind==='compass');
+        mainGroup.closest('svg').setAttribute('viewBox', a.kind === 'force' ? '0 0 460 214' : '0 0 460 294');
         mainGroup.innerHTML = a.kind === 'force' ? renderForce(a, state.progress) : renderCompass(a, state.progress);
     }
 
