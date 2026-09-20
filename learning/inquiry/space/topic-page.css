@@ -10,23 +10,14 @@
 .space-topic-page .nav-tab { white-space: nowrap; }
 .topic-concepts { max-width: 1200px; margin: 0 auto; padding: 28px 20px 48px; }
 .topic-concept-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-bottom: 28px; }
-.topic-concept-grid article, .topic-eclipse-diagrams figure { background: #0d182c; border: 1px solid #26354d; border-radius: 14px; padding: 24px; }
+.topic-concept-grid article { background: #0d182c; border: 1px solid #26354d; border-radius: 14px; padding: 24px; }
 .topic-concept-grid h2 { font-size: 18px; margin: 0 0 12px; color: #7dd3fc; }
-.topic-concept-grid p, .topic-eclipse-diagrams p { font-size: 15px; line-height: 1.85; color: #d3deec; margin: 0; word-break: keep-all; }
+.topic-concept-grid p { font-size: 15px; line-height: 1.85; color: #d3deec; margin: 0; word-break: keep-all; }
 .topic-table-wrap { overflow-x: auto; }
-.topic-eclipse-diagrams { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-.topic-eclipse-diagrams figure { margin: 0; }
-.topic-eclipse-diagrams figcaption { font-size: 18px; color: #f8fafc; }
-.eclipse-alignment { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 30px 0; position: relative; }
-.eclipse-alignment::before { content: ''; position: absolute; left: 24px; right: 24px; top: 50%; border-top: 1px dashed #94a3b8; }
-.eclipse-alignment span { display: grid; place-items: center; border-radius: 50%; color: #0f172a; font-weight: 800; position: relative; }
-.eclipse-sun { width: 74px; height: 74px; background: #fbbf24; }
-.eclipse-moon { width: 42px; height: 42px; background: #cbd5e1; }
-.eclipse-earth { width: 58px; height: 58px; background: #38bdf8; }
 .space-topic-page #stellarStageNodes { grid-template-columns: repeat(5, minmax(0, 1fr)) !important; }
 .space-topic-page .quiz-panel { margin-top: 18px; }
 @media (max-width: 760px) {
-    .topic-concept-grid, .topic-eclipse-diagrams { grid-template-columns: 1fr; }
+    .topic-concept-grid { grid-template-columns: 1fr; }
     .topic-concepts { padding: 18px 12px 40px; }
     .topic-concept-grid article { padding: 20px; }
     .space-topic-page #stellarStageNodes { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }

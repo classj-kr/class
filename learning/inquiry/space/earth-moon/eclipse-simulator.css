@@ -1,0 +1,52 @@
+.space-topic-page #tab-eclipse { max-width: 1560px; margin: 0 auto; padding: 62px 18px 24px; color: #e2e8f0; }
+.ecl-controls { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 14px; flex-wrap: wrap; }
+.ecl-modes, .ecl-options, .ecl-presets { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.eclipse-lab button { cursor: pointer; padding: 9px 18px; border: 1px solid #34445f; border-radius: 8px; background: #111d30; color: #cbd5e1; font: inherit; font-weight: 700; }
+.eclipse-lab button[aria-pressed="true"] { background: #036e99; border-color: #38bdf8; color: white; }
+.eclipse-lab button:focus-visible, .eclipse-lab input:focus-visible, .eclipse-lab summary:focus-visible { outline: 2px solid #7dd3fc; outline-offset: 3px; }
+.ecl-options { gap: 18px; font-size: 13px; color: #bac9dc; }
+.ecl-options label { display: flex; align-items: center; gap: 6px; cursor: pointer; }
+.ecl-layout { display: grid; grid-template-columns: minmax(0, 2.7fr) minmax(260px, 1fr); gap: 16px; }
+.ecl-diagram-panel, .ecl-observation { min-width: 0; border: 1px solid #273a56; border-radius: 12px; background: #071120; overflow: hidden; }
+.ecl-arrangement { padding: 16px 20px 0; color: #c8daf1; font-size: 16px; font-weight: 700; }
+.ecl-diagram { display: block; width: 100%; height: auto; }
+.eclipse-lab svg text { fill: #d4e2f4; font-size: 19px; font-weight: 700; font-family: inherit; }
+.eclipse-lab svg .ecl-shadow-name { fill: #bfd9ff; font-size: 15px; }
+.eclipse-lab svg .ecl-observer-label { fill: #6ee7b7; font-size: 16px; }
+.ecl-axis { stroke: #344258; stroke-width: 1; stroke-dasharray: 5 7; }
+.ecl-penumbra { fill: #9eafc8; fill-opacity: .25; }
+.ecl-umbra { fill: #233d69; fill-opacity: .93; }
+.ecl-rays { stroke: #f6cd76; stroke-width: 1.3; opacity: .65; }
+.ecl-legend { display: flex; gap: 12px 24px; flex-wrap: wrap; padding: 0 18px 18px; font-size: 12px; color: #b8c9de; }
+.ecl-legend span { display: flex; align-items: center; gap: 7px; }
+.ecl-legend i { display: inline-block; width: 14px; height: 14px; border: 1px solid #6880a4; border-radius: 3px; flex-shrink: 0; }
+.ecl-umbra-key { background: #233d69; }.ecl-penumbra-key { background: #66758d; }
+.ecl-observation { padding: 20px; display: flex; flex-direction: column; }
+.ecl-observation h2 { font-size: 15px; color: #b9cce4; margin: 0; }
+.ecl-view { display: block; width: 100%; max-width: 300px; margin: auto; }
+.ecl-view text { font-size: 12px !important; font-weight: 500 !important; }
+.ecl-result { min-height: 106px; }
+.ecl-result strong { display: block; font-size: 22px; color: #7dd3fc; margin-bottom: 10px; }
+.ecl-result p { font-size: 14px; line-height: 1.75; color: #bccce0; word-break: keep-all; }
+.ecl-position { margin-top: 16px; padding: 18px; border: 1px solid #273a56; border-radius: 12px; display: grid; grid-template-columns: 210px minmax(100px,1fr) auto; gap: 18px; align-items: center; background: #0b1526; }
+.ecl-position label { font-size: 14px; }.ecl-position input { width: 100%; accent-color: #38bdf8; cursor: pointer; }
+.ecl-presets button { padding: 8px 12px; font-size: 13px; }
+.ecl-note { font-size: 12px; color: #8197b2; line-height: 1.7; margin: 14px 2px; }
+.ecl-more { padding: 12px 2px; border-top: 1px solid #23324b; font-size: 14px; }
+.ecl-more summary { cursor: pointer; color: #a9c1dc; }.ecl-more p { max-width: 900px; margin-top: 12px; color: #aabbd1; line-height: 1.8; }
+@media (max-width: 900px) { .ecl-position { grid-template-columns: 1fr; gap: 14px; } }
+@media (max-width: 650px) {
+ .space-topic-page #tab-eclipse { padding: 60px 10px 20px; }
+ .ecl-layout { grid-template-columns: 1fr; gap: 10px; }
+ .ecl-observation { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 8px; padding: 16px; }
+ .ecl-observation h2 { grid-column: 1/-1; }.ecl-result { align-self: center; min-height: 0; }
+ .ecl-result strong { font-size: 18px; }.ecl-result p { font-size: 13px; }
+ .ecl-arrangement { font-size: 14px; }.ecl-legend { font-size: 11px; padding: 0 12px 12px; }
+ .ecl-options { font-size: 12px; gap: 10px; }.eclipse-lab button { padding: 8px 14px; }
+}
+
+html:has(body[data-space-topic="eclipses"]) { background: #030712; }
+.ecl-quiz-figure { margin: 16px 0; padding: 12px; border-radius: 10px; background: #071120; }
+.ecl-quiz-figure svg { display: block; width: 100%; }
+.ecl-quiz-figure figcaption { margin-top: 6px; color: #8fa6c2; font-size: 11px; }
+@media (max-width: 650px) { .ecl-diagram text { font-size: 32px !important; } .ecl-diagram .ecl-shadow-name { font-size: 28px !important; } .ecl-diagram .ecl-observer-label { font-size: 28px !important; } .ecl-view text { font-size: 16px !important; } }

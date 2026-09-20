@@ -16,9 +16,9 @@ assert.ok(
   'Story books must remain in the literacy and numeracy section.',
 );
 
-// 국내 지리는 통합 앱 링크 하나로 지도 아코디언에 들어간다.
+// 국내 지도는 통합 앱 링크 하나로 지도 아코디언에 들어간다.
 assert.ok(!groupByName.has('korea-maps'), 'The domestic-map tools are one app now, not a disclosure menu.');
-assert.match(html, /<a href="learning\/inquiry\/korea-map\/" data-requires-player="true" data-access-parent="world-maps"[^>]*>\s*<span class="worksheet-copy"><strong>국내 지리<\/strong>/);
+assert.match(html, /<a href="learning\/inquiry\/korea-map\/" data-requires-player="true" data-access-parent="world-maps"[^>]*>\s*<span class="worksheet-copy"><strong>국내 지도<\/strong>/);
 assert.doesNotMatch(html, /href="learning\/inquiry\/(?:korean-museum|korea-travel-map|korea-geography|korea-terrain)\//);
 assert.ok(
   html.indexOf('href="learning/inquiry/korea-map/"') > html.indexOf('aria-labelledby="exploration-title"'),
@@ -29,7 +29,7 @@ const worldMaps = groupByName.get('world-maps') || '';
 assert.ok(worldMaps, 'The world-map tools must be grouped in one disclosure menu.');
 assert.match(worldMaps, /<strong>지도<\/strong><small>\(Maps\)<\/small>/);
 assert.match(worldMaps, /data-content-paths="learning\/inquiry\/korea-map\/\|learning\/inquiry\/world-geography\/\|learning\/inquiry\/globe\/\|\/learn\/world-voyage\/"/);
-assert.match(worldMaps, /href="learning\/inquiry\/globe\/"[^>]*data-access-parent="world-maps"[\s\S]*?<strong>세계 지리<\/strong>/);
+assert.match(worldMaps, /href="learning\/inquiry\/globe\/"[^>]*data-access-parent="world-maps"[\s\S]*?<strong>세계 지도<\/strong>/);
 assert.match(worldMaps, /id="cds95GameLink"[\s\S]*?href="\/learn\/world-voyage\/"[\s\S]*?data-player-handoff="query"[\s\S]*?data-access-parent="world-maps"[\s\S]*?<strong>대항해시대<\/strong>/);
 
 const vocabulary = groupByName.get('vocabulary') || '';

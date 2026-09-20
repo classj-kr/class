@@ -44,6 +44,10 @@
         var question = document.createElement('h3');
         question.textContent = item.q;
         card.appendChild(question);
+        if (item.diagram && window.EclipseLab) {
+            var figure = window.EclipseLab.questionFigure(item.diagram);
+            if (figure) card.appendChild(figure);
+        }
 
         var optionsWrap = document.createElement('div');
         optionsWrap.className = 'quiz-options';

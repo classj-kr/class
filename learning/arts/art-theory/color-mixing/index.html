@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#f4f2eb">
+  <title>색의 혼합 · 실험 수업</title>
+  <link rel="stylesheet" href="styles.css?v=20260920">
+  <script src="model.js?v=20260920" defer></script>
+  <script src="app.js?v=20260920" defer></script>
+</head>
+<body>
+  <main class="lab-shell">
+    <header class="lesson-header">
+      <div><p class="eyebrow">미술 · 검토용 차시</p><h1>색의 혼합</h1></div>
+      <button class="primary-button" id="startExperiment" type="button">예측 실험 시작 <span aria-hidden="true">↗</span></button>
+    </header>
+    <p class="intro">색을 하나씩 켜고, 겹치고, 빼 보세요. 겹친 곳에는 어떤 색이 남을까요?</p>
+
+    <div class="mode-row">
+      <div class="mode-switch" role="group" aria-label="혼합 방식">
+        <button type="button" data-mode="light" aria-pressed="true">빛을 겹치기 <span>가산 혼합</span></button>
+        <button type="button" data-mode="filter" aria-pressed="false">색 필터를 겹치기 <span>감산 혼합</span></button>
+      </div>
+      <span id="modeContext" class="mode-context">어두운 곳에 세 조명의 빛을 비춥니다.</span>
+    </div>
+
+    <section id="experiment" class="experiment" aria-labelledby="experimentTitle" hidden>
+      <div class="experiment-top"><p id="experimentStep" class="eyebrow"></p><button id="exitExperiment" type="button" class="text-button">자유 실험으로</button></div>
+      <h2 id="experimentTitle" tabindex="-1"></h2>
+      <p id="experimentInstruction"></p>
+      <fieldset id="predictionChoices"><legend>내 예상</legend><div id="predictionOptions" class="prediction-options"></div></fieldset>
+      <div class="experiment-bottom"><button id="revealExperiment" type="button" class="primary-button" disabled>겹쳐서 확인</button><button id="nextExperiment" type="button" class="primary-button" hidden>다음 실험 →</button><p id="experimentFeedback" role="status"></p></div>
+    </section>
+
+    <section class="workspace" aria-label="색 혼합 실험대">
+      <figure id="stage" class="stage" data-mode="light">
+        <div class="stage-top"><span id="stageTitle">빛을 비추는 화면</span><button id="separateToggle" type="button" aria-pressed="false">따로 보기</button></div>
+        <canvas id="mixCanvas" width="900" height="560" role="img" aria-label="빨강 빛만 켜진 화면">색 혼합 그림입니다. 조작 결과는 바로 아래 글로도 표시됩니다.</canvas>
+        <figcaption class="stage-result"><span class="result-chip" id="resultChip" aria-hidden="true"></span><div><span id="resultLabel" class="result-label">세 영역이 겹친 곳</span><strong id="resultName">빨강</strong></div><p id="resultDescription"></p></figcaption>
+      </figure>
+
+      <aside class="control-panel" aria-labelledby="controlsTitle">
+        <div class="control-heading"><h2 id="controlsTitle">조명의 세기</h2><button id="resetControls" type="button" class="text-button">초기화</button></div>
+        <p class="control-hint" id="controlHint">막대를 움직이거나 스위치로 빛을 꺼 보세요.</p>
+        <div id="channels" class="channels"></div>
+        <div class="preset-row" aria-label="빠른 조합"><button type="button" id="allOn">모두 켜기</button><button type="button" id="allOff">모두 끄기</button></div>
+        <div class="remaining-light">
+          <h3 id="componentsTitle">겹친 곳의 빛 성분</h3>
+          <div id="components" class="components"></div>
+          <p id="modelNote">밝기는 상대적인 값입니다. 실제 조명과 화면의 색은 다를 수 있습니다.</p>
+        </div>
+      </aside>
+    </section>
+    <p id="liveResult" class="sr-only" role="status"></p>
+
+    <section id="experimentSummary" class="experiment-summary" aria-labelledby="summaryTitle" hidden>
+      <p class="eyebrow">실험 기록</p><h2 id="summaryTitle" tabindex="-1">빛을 더할 때와 걸러 낼 때</h2>
+      <p>예상과 관찰 결과를 비교해 보세요.</p>
+      <div id="summaryRows" class="summary-rows"></div>
+      <p class="summary-conclusion">빛을 겹치면 빛 성분이 더해집니다. 색 필터를 겹치면 통과하는 빛 성분이 줄어듭니다.</p>
+      <button id="retryExperiment" type="button" class="secondary-button">다시 예상해 보기</button>
+    </section>
+
+    <section class="observation-note" aria-labelledby="observationTitle">
+      <div><span class="note-index">관찰할 것</span><h2 id="observationTitle">하나만 바꿔 보세요.</h2></div>
+      <p id="observationPrompt">빨강과 초록을 켠 상태에서 파랑을 조금씩 더해 보세요. 겹친 곳이 어떻게 달라지나요?</p>
+    </section>
+    <details class="teacher-notes">
+      <summary>수업 안내와 자료 출처</summary>
+      <div class="teacher-notes-body">
+        <p><strong>수업 흐름</strong> · 자유롭게 조작하기 → 네 가지 결과 예상하기 → 겹쳐서 확인하기 → 예상과 관찰 비교하기. 틀린 예상도 실험 기록에 함께 남습니다.</p>
+        <p><strong>모형의 범위</strong> · 빛 실험은 빨강·초록·파랑 성분의 상대 세기를 다룹니다. 필터 실험은 흰빛에서 특정 성분을 걸러 내는 이상적인 시안·마젠타·노랑 필터를 다룹니다. 실제 물감의 혼합 결과를 재현하는 모형은 아닙니다.</p>
+        <p><strong>확인할 질문</strong> · “세 빛을 모두 켰을 때와 세 필터를 모두 겹쳤을 때 왜 결과가 다를까?” 학생이 남거나 더해진 빛 성분으로 설명할 수 있는지 확인합니다.</p>
+        <p class="source-links">자료: 위스콘신대학교 물리학 박물관 <a href="https://www.physics.wisc.edu/ingersollmuseum/exhibits/opticscolor/color-mixing/" target="_blank" rel="noopener">가산 혼합</a> · <a href="https://www.physics.wisc.edu/ingersollmuseum/exhibits/opticscolor/subcolormix/" target="_blank" rel="noopener">감산 혼합</a></p>
+      </div>
+    </details>
+    <noscript><p class="no-script">실험을 사용하려면 브라우저의 JavaScript를 켜 주세요.</p></noscript>
+  </main>
+</body>
+</html>

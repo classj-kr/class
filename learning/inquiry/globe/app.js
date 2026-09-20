@@ -3,7 +3,7 @@ import * as maplibregl from "./vendor/maplibre-gl-6.10.0/maplibre-gl.mjs";
 import { buildFlowModel, flowFrame, installFlowImages } from "./flow-textures.mjs?v=20260920-17";
 
 import { createAtlas } from "./atlas-study.mjs?v=20260920-28";
-import { animateProjection } from "./projection-morph.mjs?v=20260920-19";
+import { animateProjection } from "./projection-morph.mjs?v=20260920-29";
 
 const data = window.GLOBE_DATA;
 // 자료 파일이 옛 판일 수 있다(배포 중 화면 코드와 자료가 어긋나는 때). 없는 갈래는 빈 것으로 둔다.
@@ -292,7 +292,7 @@ function buildStyle() {
     version: 8,
     projection: { type: "globe" },
     sky: {
-      "atmosphere-blend": ["interpolate", ["linear"], ["zoom"], 0, 1, 4, 0.6, 5.5, 0],
+      "atmosphere-blend": ["interpolate", ["linear"], ["zoom"], 0, 0.65, 4, 0.35, 5.5, 0],
     },
     sources: {
       relief: {
@@ -1161,6 +1161,7 @@ function setStudyLayers(ids) {
 async function setViewMode(mode, instant = false) {
   if (mode === viewMode) return;
   viewMode = mode;
+  map.getContainer().dataset.viewMode = mode;
   const center = map.getCenter();
   const zoom = map.getZoom();
   map.setMinZoom(Math.min(-1, map.getMinZoom()));

@@ -18,6 +18,8 @@
   }));
   const THEME_ORDER = ["territory", "terrain", "climate", "population", "industry", "transport", "region", "heritage", "travel"];
   const KOREA_BOUNDS = L.latLngBounds([[32.95, 123.85], [43.15, 131.35]]);
+  // 중국·몽골·러시아 인근과 일본까지 허용하되, 지형 타일이 끝나는 곳까지 벗어나지 않는다.
+  const NAVIGATION_BOUNDS = L.latLngBounds([[15, 90], [60, 155]]);
   // 지형 바탕(tools/build_relief.py): 3~6단은 동아시아 둘레, 7~9단은 한반도 둘레, 10~11단은 남북한 땅에 닿는 칸만 있다.
   const RELIEF_URL = "relief/{z}/{x}/{y}.webp?v=20260919-1";
   const DEM_URL = "dem/{z}/{x}/{y}.webp?v=20260919-1";
@@ -100,8 +102,19 @@
   function createBaseMap(elementId, options) {
     const map = L.map(elementId, {
       center: [38.05, 127.65], zoom: 6, minZoom: 5, maxZoom: 12,
-      zoomControl: true, attributionControl: false, preferCanvas: true, ...options
+      zoomControl: true, attributionControl: false, preferCanvas: true, ...options,
+      maxBounds: NAVIGATION_BOUNDS, maxBoundsViscosity: 1, bounceAtZoomLimits: false
     });
+    const minimumZoom = map.options.minZoom;
+    const updateNavigationLimits = () => {
+      const size = map.getSize();
+      // 문제·경로 지도는 숨겨진 상태에서 생성되므로 실제 크기가 생긴 뒤 계산한다.
+      if (!size.x || !size.y) return;
+      map.setMinZoom(Math.max(minimumZoom, map.getBoundsZoom(NAVIGATION_BOUNDS, true)));
+      map.panInsideBounds(NAVIGATION_BOUNDS, { animate: false });
+    };
+    map.on("resize", updateNavigationLimits);
+    updateNavigationLimits();
     L.tileLayer(RELIEF_URL, { minNativeZoom: 3, maxNativeZoom: 6 }).addTo(map);
     L.tileLayer(RELIEF_URL, { minZoom: 7, minNativeZoom: 7, maxNativeZoom: 9, bounds: DETAIL_BOUNDS }).addTo(map);
     new SparseTileLayer(RELIEF_URL, { minZoom: 10, minNativeZoom: 10, maxNativeZoom: 11, bounds: DETAIL_BOUNDS }).addTo(map);

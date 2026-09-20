@@ -1,4 +1,4 @@
-import { createPeelSurface } from "./peel-surface.mjs?v=20260920-18";
+import { createPeelSurface } from "./peel-surface.mjs?v=20260920-29";
 // The same map, sources, lesson and selected feature survive the projection change.
 // The transition is a visual unfolding, not a distance/area-preserving projection.
 export async function animateProjection(map,mode,{reduced,targetZoom,center}){

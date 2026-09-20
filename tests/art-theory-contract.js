@@ -60,8 +60,8 @@ for (const file of new Set(artworkFiles)) {
   assert.ok(fs.existsSync(path.join(root, 'learning', 'arts', 'art-appreciation', 'museum', 'assets', 'artworks', file)), `${file} 작품 이미지가 필요합니다.`);
 }
 assert.ok(new Set(artworkFiles).size >= 6, '장식 도형 대신 실제 작품을 충분히 분석해야 합니다.');
-assert.match(portal, /href="learning\/arts\/art-theory\/"/, '메인 포털에 미술 이론 링크가 필요합니다.');
-assert.match(portal, /미술 이론<\/strong><small>\(9 Lessons\)/, '메인 포털에 9차시 과정을 표시해야 합니다.');
+assert.doesNotMatch(portal, /href="learning\/arts\/art-theory\/[^"]*"/, '검토 중인 미술 이론 앱은 수업 목록에 노출하지 않습니다.');
+assert.doesNotMatch(portal, /data-access-group="art-theory"/, '중단한 9차시 메뉴 그룹을 다시 노출하지 않습니다.');
 assert.doesNotMatch(page, /정답 대신|근거를 말해요|눈으로 발견하고/, '미술 개념과 무관한 홍보 문구를 넣지 않습니다.');
 
 console.log('미술 이론 페이지 계약 검사 통과');

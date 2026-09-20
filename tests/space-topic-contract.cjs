@@ -31,7 +31,7 @@ assert.equal(topics.get('celestial-sphere').title, '천구');
 assert.equal(topics.get('earth-motion').title, '지구와 달의 운동');
 assert.equal(topics.get('sun-path').title, '계절별 태양의 남중 고도');
 assert.notEqual(topics.href(topics.get('earth-motion')), topics.href(topics.get('sun-path')));
-console.log(`Space subjects: ${topics.topics.length} independent routes; ${total} existing questions assigned once; concept and subtopic coverage passed.`);
+console.log(`Space subjects: ${topics.topics.length} independent routes; ${total} questions assigned once; concept and subtopic coverage passed.`);
 
 assert.equal(topics.topics.filter(topic => topic.app === 'solar-system').length, 1);
 for (const id of ['sun', 'planets', 'planet-motion', 'small-bodies']) {

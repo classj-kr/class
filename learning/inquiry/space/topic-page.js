@@ -60,19 +60,18 @@
             const knowledge = document.querySelector('#tab-knowledge');
             if (knowledge && knowledge.firstElementChild) concepts.append(knowledge.firstElementChild);
         }
-        if (topic.extras === 'eclipses') {
-            const diagrams = document.createElement('div');
-            diagrams.className = 'topic-eclipse-diagrams';
-            // Positions show alignment only; sizes and distances are schematic.
-            diagrams.innerHTML = '<figure><figcaption>일식 · 태양–달–지구</figcaption><div class="eclipse-alignment"><span class="eclipse-sun">태양</span><span class="eclipse-moon">달</span><span class="eclipse-earth">지구</span></div><p>달의 그림자가 닿는 지역에서 태양이 가려집니다.</p></figure>' +
-                '<figure><figcaption>월식 · 태양–지구–달</figcaption><div class="eclipse-alignment"><span class="eclipse-sun">태양</span><span class="eclipse-earth">지구</span><span class="eclipse-moon">달</span></div><p>달이 지구의 그림자 안으로 들어갑니다.</p></figure>';
-            concepts.append(diagrams);
-        }
         if (topic.app === 'solar-system') {
             const atlas = document.getElementById('tab-atlas');
             Array.from(atlas.children).forEach(child => concepts.append(child));
         }
-        const observation = document.getElementById(topic.mode === 'stellar' ? 'tab-calc' : 'tab-sim');
+        let observation = document.getElementById(topic.mode === 'stellar' ? 'tab-calc' : 'tab-sim');
+        if (topic.mode === 'eclipse') {
+            observation = document.createElement('section');
+            observation.id = 'tab-eclipse';
+            observation.className = 'tab-pane';
+            main.append(observation);
+            window.EclipseLab.mount(observation);
+        }
         const hasObservation = topic.app === 'solar-system' || Boolean(topic.mode);
         if (topic.app === 'constellations' && topic.mode && topic.mode !== 'stellar') {
             const button = document.querySelector('[data-sim-mode="' + topic.mode + '"]');
