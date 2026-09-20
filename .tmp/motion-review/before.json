@@ -1,0 +1,19 @@
+{
+  "paints": 129,
+  "raf": 265,
+  "outsideRender": 129,
+  "maxMapIconOffset": 6.628653776755637,
+  "meanInterval": 34.11015625006985,
+  "backsteps": 3,
+  "globeReady": true,
+  "mode": "sea",
+  "self": {
+    "x": 18213.082270789688,
+    "y": 5777.099116815058
+  },
+  "server": {
+    "x": 18215.8,
+    "y": 5777.1
+  },
+  "errors": []
+}

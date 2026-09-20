@@ -11,6 +11,8 @@
         <p class="sl-note">단계를 비교하도록 시간을 압축했습니다. 재생 시간과 그림의 크기는 실제 수명·크기 비율이 아닙니다.</p>`;
         const canvas=pane.querySelector('canvas'),ctx=canvas.getContext('2d');
         const progress=pane.querySelector('[data-sl-progress]'),play=pane.querySelector('[data-sl-play]');
+        const content=document.createElement('div');content.className='sl-content';
+        Array.from(pane.children).forEach(child=>content.append(child));pane.append(content);
         let mass='sun',remnant='neutron',t=0,speed=1,playing=!matchMedia('(prefers-reduced-motion: reduce)').matches;
         let last=0,frame=0,prevStage=-1,W=900,H=570;
         let seed=13907;const random=()=>{seed=(seed*1664525+1013904223)>>>0;return seed/4294967296;};

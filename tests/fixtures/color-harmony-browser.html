@@ -1,0 +1,47 @@
+<!doctype html><meta charset="utf-8"><style>body{margin:0}iframe{height:100vh;border:0;display:block}pre{display:none}</style><iframe src="../../learning/arts/art-theory/color-harmony/index.html"></iframe><pre id="result">pending</pre><script>
+const frame=document.querySelector('iframe');const viewport=Number(new URLSearchParams(location.search).get('width'))||1440;frame.style.width=viewport+'px';
+frame.onload=()=>{try{
+ const d=frame.contentDocument,w=frame.contentWindow,checks=[],$=s=>d.querySelector(s);
+ const ok=(value,message)=>{if(!value)throw Error(message);checks.push(message)};
+ const click=s=>$(s).click();const set=(id,value)=>{const input=$(id);input.value=value;input.dispatchEvent(new w.Event('input',{bubbles:true}))};
+ const color=id=>w.getComputedStyle($(id)).backgroundColor;
+ const fits=()=>d.documentElement.scrollWidth<=d.documentElement.clientWidth;
+ const renderedRatios=id=>{const rect=$(id).getBoundingClientRect();return [...$(id).children].map(child=>child.getBoundingClientRect().width/rect.width*100)};
+ ok(w.innerWidth===viewport,'requested viewport');
+ ok(color('#leftCenter')===color('#rightCenter'),'center colors are identical');
+ const center=color('#leftCenter');set('#leftLightness',30);set('#rightLightness',85);
+ ok(color('#leftCenter')===center&&color('#rightCenter')===center,'background changes do not alter center colors');
+ ok(color('#leftField')!==color('#rightField'),'independent backgrounds are visible');
+ click('#neutralBackgrounds');ok(color('#leftField')===color('#rightField'),'verification uses same background');
+ ok($('#leftLightness').disabled&&$('#leftOutput').textContent==='65','verification readout agrees with actual background');
+ ok(color('#leftCenter')===center,'verification preserves center color');
+ click('#neutralBackgrounds');ok($('#leftLightness').value==='30'&&$('#rightLightness').value==='85','original backgrounds restored');
+ click('#swapBackgrounds');ok($('#leftLightness').value==='85'&&$('#rightLightness').value==='30','background swap');
+ for(let index=0;index<8;index++){click(`[data-center="${index}"]`);ok(color('#leftCenter')===color('#rightCenter'),'center choice '+index+' stays identical');ok(fits(),'context choice fits viewport');}
+ click('#saveRecord');ok(d.querySelectorAll('.comparison-record').length===1,'context recorded');
+ click('[data-study="area"]');
+ const reference=$('#referenceComposition').innerHTML;
+ set('#accentArea',30);ok($('#referenceComposition').innerHTML===reference,'area editing leaves reference unchanged');
+ const sizes=renderedRatios('#currentComposition');ok(Math.abs(sizes[0]-60)<.1&&Math.abs(sizes[1]-10)<.1&&Math.abs(sizes[2]-30)<.1,'rendered areas match 60/10/30');
+ ok($('#mainArea').value==='60','accent editing preserves main area');
+ click('[data-scheme="opposite"]');ok($('#referenceComposition').innerHTML===reference,'color editing leaves reference unchanged');
+ click('#setReference');const custom=$('#referenceComposition').innerHTML;
+ set('#mainArea',35);click('#restoreReference');ok($('#currentComposition').innerHTML===custom,'reference restores colors and ratios');
+ set('#mainArea',45);click('#saveRecord');ok(d.querySelectorAll('.comparison-record').length===2,'area comparison recorded');
+ for(const hue of [29,65,100,145,195,250,300,345]){
+  click(`[data-palette="${hue}"]`);for(const scheme of ['near','opposite']){
+   click(`[data-scheme="${scheme}"]`);set('#mainArea',$('#mainArea').max);set('#accentArea',$('#accentArea').max);
+   const ratios=renderedRatios('#currentComposition');ok(Math.abs(ratios.reduce((a,b)=>a+b,0)-100)<.1,'rendered total remains 100%');ok(fits(),'area controls fit viewport');
+  }
+ }
+ click('#resetStudy');ok($('#mainArea').value==='60'&&$('#accentArea').value==='10','reset defaults');
+ ok(d.querySelectorAll('.comparison-record').length===2,'reset preserves records');
+ click('[data-restore="2"]');ok($('#mainArea').value==='45'&&$('#accentArea').value==='30','record restores current areas');
+ ok($('#referenceComposition').innerHTML===custom,'record restores pinned reference');
+ click('[data-restore="1"]');ok(!$('#contextStudy').hidden&&$('#leftLightness').value==='85','context record restores mode and background');
+ click('[data-delete="1"]');ok(d.querySelectorAll('.comparison-record').length===1&&d.activeElement.id==='saveRecord','record removal restores focus');
+ ok([...d.querySelectorAll('.lesson-links a')].length===3,'three new lessons connected');
+ click('[data-study="area"]');w.scrollTo(0,0);d.activeElement.blur();
+ document.querySelector('#result').textContent=JSON.stringify({passed:checks.length});document.title='PASS';
+}catch(error){document.querySelector('#result').textContent='FAIL '+error.stack;document.title='FAIL'}};
+</script>

@@ -22,6 +22,15 @@
 - 색상은 공통 명도·채도로 표시 가능한 여덟 예시에서 선택합니다. 명도·채도 조절 범위는 기준 색을 sRGB 안에서 표시할 수 있는 범위로 제한합니다. 범위를 넘는 색을 잘라서 다른 속성까지 변하게 하지 않습니다.
 - 색 맞추기는 명도·채도 눈금 차이 1 이내를 허용합니다. 자유 비교에서는 눈금 차이 1도 차이로 표시합니다.
 
+### 색의 관계와 배색 — `color-harmony/`
+
+- 같은 가운데 색을 서로 다른 밝기의 배경 위에 놓고 비교합니다. 같은 배경으로 확인하는 동안 가운데 색은 바꾸지 않습니다.
+- 세 색의 면적을 바꾸되 합계는 항상 100%를 유지합니다. 첫째·셋째 색을 조절하며 둘째 색이 남은 면적을 채웁니다.
+- 어느 색이든 화면에 남도록 첫째 색 최소 10%, 둘째·셋째 색 최소 5%로 제한합니다. 특정 비율을 좋은 배색의 공식으로 제시하지 않습니다.
+- 색상환에서 이웃한 색과 반대편 색을 비교합니다. 첫째 색에 대한 둘째 색의 간격은 +30도, 셋째 색은 -30도 또는 +180도입니다. OKLCH의 L=65%, C=0.08을 유지하며 색상만 바꿉니다. 물감 혼합의 보색이나 특정 표준 색상환을 재현하는 것은 아닙니다.
+- 기준 배색을 고정한 뒤 색 또는 면적을 비교합니다. 기록은 배경·색·면적·기준 배색을 함께 저장하고 다시 불러옵니다.
+- 배경에 따른 색의 지각은 개인과 환경에 따라 차이가 있으므로 느낌을 정답으로 채점하지 않습니다.
+
 ## 화면 원칙
 
 - 본문·버튼·수치 16px, 소제목 18px, 제목 22px.
@@ -31,20 +40,23 @@
 
 ## 남은 순서
 
-배색 → 조형 요소 → 조형 원리 → 공간과 구도 → 실제 작품 적용. 오방색은 문화 자료를 중심으로 별도 구성합니다. 검토되지 않은 빈 차시를 미리 노출하지 않습니다.
+조형 요소 → 조형 원리 → 공간과 구도 → 실제 작품 적용. 오방색은 문화 자료를 중심으로 별도 구성합니다. 검토되지 않은 빈 차시를 미리 노출하지 않습니다.
 
 ## 검증
 
 ```powershell
-node --test tests/color-mixing-model.test.cjs tests/color-properties-model.test.cjs
+node --test tests/color-mixing-model.test.cjs tests/color-properties-model.test.cjs tests/color-harmony-model.test.cjs
 node tests/color-mixing-browser-smoke.cjs
 node tests/color-properties-browser-smoke.cjs
+node tests/color-harmony-browser-smoke.cjs
 ```
 
-Chrome 또는 Edge를 사용합니다. 실행 파일을 찾지 못하면 `CHROME_PATH`를 설정합니다. 스크린샷 출력 폴더는 `COLOR_MIXING_SCREENSHOTS` 또는 `COLOR_PROPERTIES_SCREENSHOTS`로 지정합니다. 임시 브라우저 프로필은 시스템 임시 폴더에서 만들고 검사 종료 시 삭제합니다.
+Chrome 또는 Edge를 사용합니다. 실행 파일을 찾지 못하면 `CHROME_PATH`를 설정합니다. 스크린샷 출력 폴더는 `COLOR_MIXING_SCREENSHOTS`, `COLOR_PROPERTIES_SCREENSHOTS`, `COLOR_HARMONY_SCREENSHOTS`로 지정합니다. 임시 브라우저 프로필은 시스템 임시 폴더에서 만들고 검사 종료 시 삭제합니다.
 
 ## 근거 자료
 
 - [위스콘신대학교 물리학 박물관: 가산 혼합](https://www.physics.wisc.edu/ingersollmuseum/exhibits/opticscolor/color-mixing/)
 - [위스콘신대학교 물리학 박물관: 감산 혼합](https://www.physics.wisc.edu/ingersollmuseum/exhibits/opticscolor/subcolormix/)
 - [W3C CSS Color 4: Oklab·OKLCH와 색 공간 변환](https://www.w3.org/TR/css-color-4/)
+
+- [알버스 재단: One Color Becomes Two](https://www.albersfoundation.org/learning/workshops/one-color-becomes-two)

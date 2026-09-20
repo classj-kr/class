@@ -42,7 +42,7 @@
   let mapDetailsVisible = false;
   let session = { questions: [], answers: [], index: 0, answered: false, mode: "theme" };
   let mainMap, questionMap;
-  let study, lessonMapLayer;
+  let study, lessonMapLayer, lessonMapFocused = false;
   let mainBoundaryLayer, mainThemeLayer, mainLabelLayer;
   let questionBoundaryLayer, questionThemeLayer, questionLabelLayer, questionFocusLayer;
   const zoomSyncHandlers = new WeakMap();
@@ -185,6 +185,17 @@
     $("#reviewWrong").addEventListener("click", reviewWrongQuestions);
     $("#focusClose").addEventListener("click", clearFeatureFocus);
     $("#labelToggle").addEventListener("click", toggleMapDetails);
+    $("#studyMapToggle").addEventListener("click", () => {
+      if (!lessonMapFocused) { focusLesson(study.current); return; }
+      lessonMapFocused = false;
+      lessonMapLayer.clearLayers();
+      const theme = themes[currentTheme];
+      drawThemeOnMap(mainMap, mainThemeLayer, theme, {interactive:true});
+      drawLabels(mainMap, mainLabelLayer, {admin:!theme.provinceNames,city:!theme.provinceNames,annotations:theme.annotations||[]});
+      renderLegend(theme.legend||[]);
+      fitKorea(mainMap);
+      $("#studyMapToggle").textContent = "현재 개념의 지도 사례 보기";
+    });
     // 지도 자료 출처는 자료를 쓰는 조건이라 없앨 수 없어 ⓘ 단추 안에 접어 둔다.
     $("#creditButton").addEventListener("click", () => {
       const open = $("#creditText").hidden;
@@ -207,6 +218,7 @@
       if (!confirm("지금까지의 기록을 모두 지울까요?")) return;
       localStorage.removeItem(PROGRESS_KEY);
       renderProgress();
+      study.refresh();
       fillRecord();
     });
     $("#practiceDialog").addEventListener("close", () => {
@@ -365,9 +377,13 @@
 
   function focusLesson(lesson) {
     lessonMapLayer.clearLayers();
+    lessonMapFocused = !!lesson;
+    $("#studyMapToggle").hidden = !lesson;
     if (!lesson) return;
+    $("#studyMapToggle").textContent = "주제 지도 전체 보기";
+    renderLegend((themes[currentTheme].legend || []).filter(item=>item.type === "relief"));
     drawThemeOnMap(mainMap, mainThemeLayer, themes[currentTheme], { interactive: true, skipFeatures: true, baseOnly: true });
-    drawLabels(mainMap, mainLabelLayer, { admin: false, city: false, annotations: [] });
+    drawLabels(mainMap, mainLabelLayer, { admin: true, city: true, annotations: [] });
     lesson.spots.forEach((spot, index) => {
       const marker = L.marker([spot.lat, spot.lng], { pane: "studyMarkers", icon: L.divIcon({ className: "lesson-pin-wrap", html: '<span class="lesson-pin">'+(index+1)+'</span>', iconSize:[32,32],iconAnchor:[16,16] }) });
       marker.bindTooltip(spot.name, { permanent:true, direction:"top", offset:[0,-17], className:"study-tooltip" });
@@ -991,11 +1007,12 @@
     const question = session.questions[session.index];
     if (!question) return;
     session.answered = false;
+    ["#questionDiagram", "#questionGraph", ".question-body", ".question-copy"].forEach(id=>$(id).scrollTop=0);
     const theme = themes[question.topic] || {};
     $("#questionProgress").textContent = `${session.index + 1} / ${session.questions.length}`;
     $("#questionProgressBar").style.width = `${(session.index / session.questions.length) * 100}%`;
     $("#questionTopic").textContent = theme.label || "국내 지도";
-    $("#questionDifficulty").textContent = question.difficulty === "advanced" ? "실전" : "기본";
+    $("#questionDifficulty").textContent = question.essential ? "필수 그림" : question.difficulty === "advanced" ? "확장" : "기본";
     $("#questionTitle").innerHTML = question.prompt;
     renderQuestionStimulus(question);
     $("#answerFeedback").hidden = true;
@@ -1060,7 +1077,7 @@
       const box = document.createElement("div");
       const marker = list.length > 1 ? `(${["가", "나", "다"][index]})` : "";
       const title = revealed ? `${marker} ${station.name}`.trim() : (marker || "어느 지점의 기후 그래프");
-      window.ClimateGraph.render(box, station, { title });
+      window.ClimateGraph.render(box, station, { title, rainMax: Math.max(300, ...list.map(s=>Math.ceil(Math.max(...s.rain)/100)*100)) });
       holder.append(box);
     });
   }
@@ -1244,7 +1261,7 @@
 
   function showAnswerLocation(question) {
     if (question.diagram) {
-      window.KoreaVisuals.render($("#questionDiagram"), dataset.lessons.find(l=>l.id===question.diagram), { quiz:true, revealed:true });
+      window.KoreaVisuals.render($("#questionDiagram"), dataset.lessons.find(l=>l.id===question.diagram), { quiz:true, revealed:true, evidence:question.explanation, area:question.evidenceArea });
       $("#questionMapCaption").textContent = "개념 이름과 정답 근거를 같은 그림에서 확인하세요.";
       return;
     }

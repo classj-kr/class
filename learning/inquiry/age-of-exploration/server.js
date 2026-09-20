@@ -2994,8 +2994,8 @@ function movePlayer(p, dt) {
     p.speedKmh = 0;
     if (p.target) { p.target = null; p.route = null; }
     const equatorWord = p.y < WORLD_PIXEL_H / 2 ? '남쪽' : '북쪽';
-    if (blockedTerrain?.type === 'seasonIce') setNotice(p, `이 계절에는 이 앞바다가 얼어붙었습니다. ${equatorWord}으로 뱃머리를 돌리거나, 얼음이 녹는 여름을 기다리세요.`);
-    if (blockedTerrain?.type === 'ice') setNotice(p, p.mode === 'sea' ? `얼음 바다입니다. 1520년의 나무배로는 얼음을 뚫고 갈 수 없습니다. ${equatorWord}으로 뱃머리를 돌리세요.` : `얼음으로 덮인 땅입니다. 너무 추워 더 나아갈 수 없습니다. ${equatorWord}으로 돌아가세요.`);
+    if (blockedTerrain?.type === 'seasonIce') setNotice(p, '얼음 바다 - 항해가 어려움');
+    if (blockedTerrain?.type === 'ice') setNotice(p, p.mode === 'sea' ? '얼음 바다 - 항해가 어려움' : '얼음 지대 - 이동이 어려움');
     else if (p.mode === 'land' && blockedTerrain?.type === 'sea') setNotice(p, '탐험대는 바다를 건널 수 없습니다. 항구로 돌아가 배를 이용하세요.');
     else if (p.mode === 'sea' && blockedTerrain?.type !== 'sea') setNotice(p, '육지입니다. 가까운 항구를 통해 입항하세요.');
   }
@@ -3042,10 +3042,10 @@ function warnNearIce(p) {
   const day = seasonDayFor(p);
   const north = Terrain.iceLimitNorthAt(lon, day);
   const south = Terrain.iceLimitSouthAt(lon, day);
-  if (lat >= north) setNotice(p, '얼음에 갇혔습니다. 남쪽으로 뱃머리를 돌리면 얼음을 헤치고 빠져나올 수 있습니다.');
-  else if (lat <= south) setNotice(p, '얼음에 갇혔습니다. 북쪽으로 뱃머리를 돌리면 얼음을 헤치고 빠져나올 수 있습니다.');
-  else if (lat >= north - Terrain.ICE_SLOW.degrees) setNotice(p, '떠다니는 얼음덩이에 부딪혀 배가 느려집니다. 더 북쪽은 바다가 얼어붙어 지날 수 없습니다.');
-  else if (lat <= south + Terrain.ICE_SLOW.degrees) setNotice(p, '떠다니는 얼음덩이에 부딪혀 배가 느려집니다. 더 남쪽은 바다가 얼어붙어 지날 수 없습니다.');
+  if (lat >= north) setNotice(p, '얼음 바다 - 항해가 어려움');
+  else if (lat <= south) setNotice(p, '얼음 바다 - 항해가 어려움');
+  else if (lat >= north - Terrain.ICE_SLOW.degrees) setNotice(p, '얼음 바다 - 항해가 어려움');
+  else if (lat <= south + Terrain.ICE_SLOW.degrees) setNotice(p, '얼음 바다 - 항해가 어려움');
 }
 
 setInterval(() => {

@@ -177,7 +177,7 @@
   const sprites = new Map();
   function draw(ctx, city, x, y, zoom = 1, selected = false) {
     const m = metrics(city, zoom);
-    ctx.save(); ctx.translate(Math.round(x), Math.round(y)); ctx.scale(m.scale,m.scale);
+    ctx.save(); ctx.translate(x, y); ctx.scale(m.scale,m.scale);
     if(selected) {
       ctx.fillStyle='#ffdf7529'; ctx.strokeStyle='#ffdf75'; ctx.lineWidth=1.6;
       ctx.beginPath(); ctx.ellipse(0,2,22,9,0,0,Math.PI*2); ctx.fill(); ctx.stroke();

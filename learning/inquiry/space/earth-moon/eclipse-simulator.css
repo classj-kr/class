@@ -16,7 +16,13 @@
 .ecl-axis { stroke: #344258; stroke-width: 1; stroke-dasharray: 5 7; }
 .ecl-penumbra { fill: #9eafc8; fill-opacity: .25; }
 .ecl-umbra { fill: #233d69; fill-opacity: .93; }
-.ecl-rays { stroke: #f6cd76; stroke-width: 1.3; opacity: .65; }
+.ecl-rays { stroke: #f6cd76; stroke-width: 1.5; opacity: .85; }
+.ecl-rays line { stroke-dasharray: 6 10; stroke-linecap: round; animation: ecl-light-flow .65s linear infinite; }
+@keyframes ecl-light-flow { from { stroke-dashoffset: 0; } to { stroke-dashoffset: -16; } }
+body:not([data-topic-view="observe"]) .ecl-rays line,
+.eclipse-lab .ecl-rays[visibility="hidden"] line { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) { .ecl-rays line { animation: none; } }
+.ecl-person { filter: drop-shadow(0 0 2px #071120); }
 .ecl-legend { display: flex; gap: 12px 24px; flex-wrap: wrap; padding: 0 18px 18px; font-size: 12px; color: #b8c9de; }
 .ecl-legend span { display: flex; align-items: center; gap: 7px; }
 .ecl-legend i { display: inline-block; width: 14px; height: 14px; border: 1px solid #6880a4; border-radius: 3px; flex-shrink: 0; }

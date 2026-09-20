@@ -15,3 +15,19 @@
 - `travel-data.js`: 체험·관광 장소 308곳과 사진 출처(사진은 `../travel/`). 장소를 고른 기준은 `travel-candidates.md`.
 - 지형 바탕(`../relief/`)과 단면도 높이(`../dem/`): Copernicus DEM GLO-30(© DLR e.V. 2010-2014, © Airbus Defence and Space GmbH 2014-2018, 유럽 연합·ESA 코페르니쿠스 사업 제공)과
   Mapzen Terrain Tiles(AWS Open Data). `tools/build_dem.py` → `tools/build_relief.py`.
+
+## 시각 학습 자료 (2026-09-20)
+
+- `study-lessons.js`: 28개 개념과 기존 139문항의 명시적 연결, 새 시각 확인 56문항. 합계 195문항.
+- `../study-visuals.js`: 개념별 SVG 단면·과정·분포·비교 모형. 실제 지형이나 통계의 측정값으로 사용하지 않는다.
+- 기후 비교 모형의 두 기온선은 동일한 −10~30℃ 눈금으로 표현한다. 기존 기후 관측 지점 그래프를 두 개 이상 비교할 때는 강수량 축의 최댓값도 공유한다.
+- 인구 모형은 3개 연령 구간을 사용한다. 남녀 막대의 값은 전체 인구에 대한 비율이고 각 모형의 합은 100%다. 개별 도시의 실제 통계를 뜻하지 않는다.
+- 지도 표식 1·2·3은 관련 사례의 위치다. 도식의 A·B·C는 비교 대상이며, 지도 위치에서 실제 측정한 단면·수치라는 의미가 아니다.
+- 필수 그림/기본/확장 분류는 이 앱의 학습 경로다. 특정 시험의 기출 빈도·등급 또는 교육과정 전체 이수를 보장하는 분류가 아니다.
+
+검토 참고 자료:
+- 국토지리정보원 [대한민국 국가지도집](https://nationalatlas.ngii.go.kr/pages/page_2221.php): 자연·인문 지리 자료.
+- 기상청 [우리나라 기후평년값](https://data.kma.go.kr/climate/average30Years/selectAverage30YearsList.do): 기후평년값의 산출·조회 기준. 새 비교 모형은 이 페이지의 관측 자료를 전재한 것이 아니다.
+- EBSi [2026학년도 9월 모의평가 한국지리 해설](https://wdown.ebsi.co.kr/W61001/01exam/20250903/go3/s_hanji_hsj_BALI1SG3.pdf): 자연 제방·배후 습지, 기선·영해, 하천 등의 자료 판단 방식 검토. 새 문항·도식은 직접 작성했으며 기출문항을 전재하지 않았다.
+
+검증: `node tests/korea-map-study.cjs` (195문항의 연결·분류, 56개 시각 문제 풀이, 기록 유지, 기존 그래프/지도 문항, 모바일 화면). 기존 지도 탐색은 `node tests/korea-map-navigation.cjs`.

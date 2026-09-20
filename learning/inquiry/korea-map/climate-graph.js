@@ -11,7 +11,7 @@
     const left = 42, right = 46, top = 28, bottom = 34;
     const plotW = width - left - right, plotH = height - top - bottom;
     const tMin = -20, tMax = 40;
-    const rMax = Math.max(300, Math.ceil(Math.max(...station.rain) / 100) * 100);
+    const rMax = Math.max(300, opts.rainMax || 0, Math.ceil(Math.max(...station.rain) / 100) * 100);
     const x = (i) => left + (i + 0.5) * plotW / 12;
     const yT = (t) => top + (tMax - t) / (tMax - tMin) * plotH;
     const yR = (r) => top + plotH - r / rMax * plotH;

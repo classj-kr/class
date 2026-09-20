@@ -1,6 +1,19 @@
 (function () {
     'use strict';
     const G = window.EclipseGeometry;
+    // Match the orange clothes and yellow hat used by createObserverMarker in app.js.
+    // Local y=0 is the feet; rotate local up onto the surface normal.
+    function observerMarkup(position, earth, scale = 1) {
+        const rotation = Math.atan2(position.y-earth.y, position.x-earth.x)*180/Math.PI+90;
+        return '<g class="ecl-person" transform="translate('+position.x+' '+position.y+') rotate('+rotation+') scale('+scale+')" aria-label="지표에 선 관측자">' +
+            '<ellipse cx="0" cy="0" rx="10" ry="2.5" fill="#10b981" stroke="#6ee7b7" stroke-width="1"/>' +
+            '<g stroke="#f97316" stroke-width="3.6" stroke-linecap="round"><path d="M -3 -12 L -4 -1 M 3 -12 L 4 -1 M -6 -23 L -10 -15 M 6 -23 L 10 -15"/></g>' +
+            '<path d="M -5 -26 L 5 -26 L 7 -12 L -7 -12 Z" fill="#f97316" stroke="#ffad62" stroke-width="1"/>' +
+            '<circle cx="0" cy="-31" r="5" fill="#ffb35c"/>' +
+            '<path d="M -5 -36 L -4 -42 L 4 -42 L 5 -36 Z" fill="#facc15"/>' +
+            '<path d="M -5 -36 L 5 -36" stroke="#7c2d12" stroke-width="2"/>' +
+            '<path d="M -8 -35 L 8 -35" stroke="#facc15" stroke-width="3" stroke-linecap="round"/></g>';
+    }
     function mount(pane) {
         pane.classList.add('eclipse-lab');
         pane.innerHTML = `
@@ -61,7 +74,10 @@
             const geo = geometry(blocker, solarMode ? G.SOLAR_EARTH.x : 920);
             const fills = `<polygon points="${geo.pen}" class="ecl-penumbra"/><polygon points="${geo.umb}" class="ecl-umbra"/>`;
             const nameLayer = labels.checked ? text(100,355,'태양') + text(blocker.x,solarMode?305:330,solarMode?'달':'지구') + text(receiver.x,solarMode?365:receiver.y+42,solarMode?'지구':'달') + text(solarMode?658:665,245,'본그림자','class="ecl-shadow-name"') + text(solarMode?665:665,solarMode?294:340,'반그림자','class="ecl-shadow-name"') : '';
-            const marker = solarMode ? `<circle cx="${f(result.observer.x)}" cy="${f(result.observer.y)}" r="7" fill="#34d399" stroke="white" stroke-width="2"/><path d="M ${f(result.observer.x)} ${f(result.observer.y)} L 800 140" stroke="#34d399" stroke-dasharray="4 5" fill="none"/>${text(800,125,'관측자','class="ecl-observer-label"')}` : '';
+            const observer = solarMode ? result.observer : {x:G.LUNAR_EARTH.x+G.LUNAR_EARTH.r,y:G.LUNAR_EARTH.y};
+            const earth = solarMode ? G.SOLAR_EARTH : G.LUNAR_EARTH;
+            const labelX = solarMode ? 800 : 565;
+            const marker = observerMarkup(observer,earth) + (labels.checked ? '<path d="M '+f(observer.x)+' '+f(observer.y)+' L '+labelX+' 140" stroke="#6ee7b7" stroke-dasharray="3 5" fill="none"/>'+text(labelX,125,'관측자','class="ecl-observer-label"') : '');
             diagram.innerHTML = `<defs><clipPath id="eclReceiver">${circle(receiver,'white')}</clipPath><linearGradient id="eclEarth"><stop offset="0" stop-color="#38bdf8"/><stop offset=".48" stop-color="#177dc4"/><stop offset=".51" stop-color="#0d304f"/><stop offset="1" stop-color="#061727"/></linearGradient></defs>
                 <line x1="190" y1="250" x2="915" y2="250" class="ecl-axis"/>
                 ${fills}<g class="ecl-rays" ${rays.checked?'':'visibility="hidden"'}>${geo.rays}</g>
@@ -114,7 +130,7 @@
         const a=G.solar(0).observer,b=G.solar(38).observer;
         const figure = document.createElement('figure');
         figure.className='ecl-quiz-figure';
-        figure.innerHTML='<svg viewBox="0 130 960 265" role="img" aria-label="태양, 달, 지구가 나란히 있다. 지구의 A는 중앙의 좁고 짙은 그림자 안에, B는 그 바깥의 옅은 그림자 안에 있다."><defs><clipPath id="eclQuizEarth"><circle cx="800" cy="250" r="88"/></clipPath></defs>'+cones+lines.map(l=>'<line x1="'+l.a.x+'" y1="'+l.a.y+'" x2="800" y2="'+l.at(800)+'" stroke="#f6cd76" stroke-width="1.5"/>').join('')+'<circle cx="100" cy="250" r="80" fill="#fbbf24"/><circle cx="580" cy="250" r="26" fill="#cbd5e1"/><circle cx="800" cy="250" r="88" fill="#278bc7"/><g clip-path="url(#eclQuizEarth)">'+cones+'</g><g fill="#f1f5f9" font-size="28" text-anchor="middle"><text x="100" y="370">태양</text><text x="580" y="312">달</text><text x="800" y="370">지구</text></g><g fill="#6ee7b7" stroke="#6ee7b7"><circle cx="'+a.x+'" cy="'+a.y+'" r="6"/><circle cx="'+b.x+'" cy="'+b.y+'" r="6"/><path d="M '+a.x+' '+a.y+' L 914 206 M '+b.x+' '+b.y+' L 914 302" fill="none" stroke-dasharray="4 4"/></g><g fill="#6ee7b7" font-size="30" font-weight="bold"><text x="922" y="214">A</text><text x="922" y="313">B</text></g></svg><figcaption>크기와 거리는 실제 비율이 아닙니다.</figcaption>';
+        figure.innerHTML='<svg viewBox="0 130 960 265" role="img" aria-label="태양, 달, 지구가 나란히 있다. 지구의 A는 중앙의 좁고 짙은 그림자 안에, B는 그 바깥의 옅은 그림자 안에 있다."><defs><clipPath id="eclQuizEarth"><circle cx="800" cy="250" r="88"/></clipPath></defs>'+cones+lines.map(l=>'<line x1="'+l.a.x+'" y1="'+l.a.y+'" x2="800" y2="'+l.at(800)+'" stroke="#f6cd76" stroke-width="1.5"/>').join('')+'<circle cx="100" cy="250" r="80" fill="#fbbf24"/><circle cx="580" cy="250" r="26" fill="#cbd5e1"/><circle cx="800" cy="250" r="88" fill="#278bc7"/><g clip-path="url(#eclQuizEarth)">'+cones+'</g><g fill="#f1f5f9" font-size="28" text-anchor="middle"><text x="100" y="370">태양</text><text x="580" y="312">달</text><text x="800" y="370">지구</text></g><g fill="#6ee7b7" stroke="#6ee7b7">'+observerMarkup(a,G.SOLAR_EARTH,.85)+observerMarkup(b,G.SOLAR_EARTH,.85)+'<path d="M '+a.x+' '+a.y+' L 914 206 M '+b.x+' '+b.y+' L 914 302" fill="none" stroke-dasharray="4 4"/></g><g fill="#6ee7b7" font-size="30" font-weight="bold"><text x="922" y="214">A</text><text x="922" y="313">B</text></g></svg><figcaption>크기와 거리는 실제 비율이 아닙니다.</figcaption>';
         return figure;
     }
     window.EclipseLab={mount,questionFigure};

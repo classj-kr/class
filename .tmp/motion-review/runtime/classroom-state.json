@@ -1,0 +1,93 @@
+{
+  "version": 10,
+  "rooms": {
+    "4148": {
+      "activeMission": null,
+      "progress": {},
+      "settings": {
+        "paused": false,
+        "locked": false,
+        "roomType": "free",
+        "started": true
+      },
+      "clock": {
+        "gameMinutes": 0
+      },
+      "discoveries": {
+        "이동검사": []
+      },
+      "hunts": {},
+      "host": {
+        "tokenHash": "b4a604dd1b42a2448b9df57733f7ed1849f0301be2c3250e710721a2071e27e8",
+        "createdAt": 1789891211704,
+        "lastActiveAt": 1789891211798
+      }
+    },
+    "6379": {
+      "activeMission": null,
+      "progress": {},
+      "settings": {
+        "paused": false,
+        "locked": false,
+        "roomType": "free",
+        "started": true
+      },
+      "clock": {
+        "gameMinutes": 0
+      },
+      "discoveries": {
+        "이동검사": []
+      },
+      "hunts": {},
+      "host": {
+        "tokenHash": "25ed6fad70448d365503219bea213cf7c4e1781c2003083148dc8850d6706e73",
+        "createdAt": 1789891280182,
+        "lastActiveAt": 1789891280273
+      }
+    },
+    "7744": {
+      "activeMission": null,
+      "progress": {},
+      "settings": {
+        "paused": false,
+        "locked": false,
+        "roomType": "free",
+        "started": true
+      },
+      "clock": {
+        "gameMinutes": 0
+      },
+      "discoveries": {
+        "이동검사": []
+      },
+      "hunts": {},
+      "host": {
+        "tokenHash": "af657f6768e5aad79827d7beddc50a43471e8a1a75481e81f7a58bd6a9a66f00",
+        "createdAt": 1789890922542,
+        "lastActiveAt": 1789890922569
+      }
+    },
+    "8148": {
+      "activeMission": null,
+      "progress": {},
+      "settings": {
+        "paused": false,
+        "locked": false,
+        "roomType": "free",
+        "started": true
+      },
+      "clock": {
+        "gameMinutes": 0
+      },
+      "discoveries": {
+        "이동검사": []
+      },
+      "hunts": {},
+      "host": {
+        "tokenHash": "2f75294c5cdf64cce6852831bd91b7fe602777b85c47bf4a33e1ffa46cdec713",
+        "createdAt": 1789891029312,
+        "lastActiveAt": 1789891029415
+      }
+    }
+  }
+}
