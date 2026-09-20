@@ -1,5 +1,6 @@
-import {GROUPS,LESSONS,QUESTIONS} from './curriculum.mjs?v=20260920-20';
-import {installAtlasLayers,CLIMATE_LEGEND,DENSITY_LEGEND} from './atlas-layers.mjs?v=20260920-18';
+import {selectPracticeQuestions,questionDataHTML} from './question-session.mjs?v=20260920-22';
+import {GROUPS,WORLD_LESSONS as LESSONS,WORLD_QUESTIONS as QUESTIONS} from './curriculum.mjs?v=20260920-26';
+import {installAtlasLayers,CLIMATE_LEGEND,DENSITY_LEGEND} from './atlas-layers.mjs?v=20260920-24';
 import {renderVisual} from './atlas-visuals.mjs?v=20260920-18';
 const KEY='classj-atlas-progress-2022-v1';
 export function readProgress(storage){
@@ -13,7 +14,7 @@ export function createAtlas(api){
   let query='',current=null,layers=null,loaded=false,revision=0,quiz=null,progress;
   try{progress=readProgress(localStorage);}catch{progress={};}
   document.body.classList.add('atlas');
-  document.body.insertAdjacentHTML('afterbegin',`<header class="atlas-header"><button id="catalogToggle" aria-expanded="false" aria-controls="atlasCatalog" aria-label="학습 목록 열기">☰</button><div class="projection-toggle" role="group" aria-label="지도 보기 모드"><button data-view="globe" aria-pressed="true">지구본</button><button data-view="flat" aria-pressed="false">평면지도</button></div></header>
+  document.body.insertAdjacentHTML('afterbegin',`<header class="atlas-header"><button id="catalogToggle" aria-expanded="false" aria-controls="atlasCatalog" aria-label="학습 목록 열기">☰</button><div class="projection-toggle" role="group" aria-label="지도 보기 모드"><button data-view="globe" aria-pressed="true">지구본</button><button data-view="flat" aria-pressed="false" title="메르카토르 도법: 고위도일수록 면적이 크게 보입니다.">평면지도</button></div></header>
     <aside class="atlas-catalog" id="atlasCatalog" aria-label="학습 주제 목록"><div class="catalog-tabs" role="group" aria-label="목록 종류"><button id="topicsTab" aria-pressed="true">학습 주제</button><button id="layersTab" aria-pressed="false">지도 표시</button></div><section id="topicsPane"><label class="search-box"><span class="sr-only">학습 주제 검색</span><input id="topicSearch" type="search" placeholder="주제·개념 검색" autocomplete="off"></label><nav id="topicList" aria-label="주제별 학습 목록"></nav></section><section id="layersPane" hidden></section><footer class="catalog-footer"><button id="wrongPractice">오답 다시 풀기</button></footer></aside>
     <section class="atlas-lesson" id="lessonPanel" aria-label="주제 학습"><p class="loading-copy">지도를 준비하고 있습니다.</p></section>
     <button id="lessonReopen" hidden>학습 카드 열기</button><div class="map-caption" id="mapCaption" aria-live="polite"></div><div class="atlas-legend" id="atlasLegend" hidden></div><div class="map-tools" id="mapTools"></div>
@@ -31,10 +32,10 @@ export function createAtlas(api){
   document.querySelectorAll('[data-view]').forEach(b=>b.onclick=async()=>{
     if(!loaded)return;
     const buttons=[...document.querySelectorAll('[data-view]')];buttons.forEach(o=>o.disabled=true);
-    try{await api.setView(b.dataset.view);buttons.forEach(o=>o.setAttribute('aria-pressed',String(o===b)));caption(b.dataset.view==='flat'?'메르카토르 평면지도 · 고위도 면적이 크게 보입니다.':'지구본 · 구면에서 위치와 분포를 비교하세요.');}
+    try{await api.setView(b.dataset.view);buttons.forEach(o=>o.setAttribute('aria-pressed',String(o===b)));caption('');}
     finally{buttons.forEach(o=>o.disabled=false);}
   });
-  $('wrongPractice').onclick=()=>startQuiz(QUESTIONS.filter(q=>progress[q.id]?.lastCorrect===false),12,true);
+  $('wrongPractice').onclick=()=>startQuiz(QUESTIONS,true);
   $('atlasQuiz').querySelector('.quiz-close').onclick=()=>$('atlasQuiz').close();
   $('atlasQuiz').addEventListener('close',()=>{quiz=null;});
   $('lessonReopen').onclick=()=>{document.body.classList.remove('lesson-closed');$('lessonReopen').hidden=true;api.map.resize();};
@@ -69,7 +70,7 @@ export function createAtlas(api){
     $('lessonPanel').querySelector('.lesson-close').onclick=()=>{document.body.classList.add('lesson-closed');$('lessonReopen').hidden=false;api.map.resize();};
     $('lessonPanel').querySelectorAll('[data-spot]').forEach(b=>b.onclick=()=>focusSpot(Number(b.dataset.spot)));
     if(l.visual)renderVisual($('lessonVisual'),l.visual);
-    $('lessonPractice').onclick=()=>startQuiz(QUESTIONS.filter(q=>q.lesson===l.id),2);
+    $('lessonPractice').onclick=()=>startQuiz(QUESTIONS.filter(q=>q.lesson===l.id));
   }
   function focusSpot(index){
     const s=current.spots[index];if(!s||!loaded)return;
@@ -83,20 +84,19 @@ export function createAtlas(api){
   function renderLegend(id){
     const box=$('atlasLegend');box.hidden=!id;if(!id)return;box.setAttribute('aria-busy','true');
     const rows=id==='density'?DENSITY_LEGEND:id==='climate'?CLIMATE_LEGEND:[['#ffad78','수렴'],['#65dfd5','발산'],['#caadff','보존'],['#b6bdc6','기타']];
-    box.innerHTML=`<strong>${{density:'국가·지역별 평균 인구밀도',climate:'주요 기후 지역',plates:'판 경계'}[id]}</strong><div>${rows.map(([c,t])=>`<span><i style="background:${c}"></i>${t}</span>`).join('')}</div><small>${{density:'2023 · 명/육지 km² · World Bank · 눌러서 수치 보기',climate:'Peel 외(2007) · 격자 단순화 · 현재 날씨 아님',plates:'USGS · 경계선 모형 · 실제 이동 속도 아님'}[id]}</small>`;
+    box.innerHTML=`<strong>${{density:'국가·지역별 평균 인구밀도',climate:'주요 기후 지역',plates:'판 경계'}[id]}</strong><div>${rows.map(([c,t])=>`<span><i style="background:${c}"></i>${t}</span>`).join('')}</div><small>${{density:'2023 · 명/육지 km² · World Bank',climate:'Peel 외(2007)',plates:'USGS · 경계선 모형 · 실제 이동 속도 아님'}[id]}</small>`;
   }
   function shuffle(items){const a=items.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
-  function startQuiz(pool,count,review=false){
-    // Unanswered and last-wrong questions take precedence within the chosen scope.
-    const ordered=shuffle(pool).sort((a,b)=>Number(progress[a.id]?.lastCorrect===true)-Number(progress[b.id]?.lastCorrect===true));
-    quiz={items:ordered.slice(0,count),at:0,answers:[],review};
+  function startQuiz(pool,review=false){
+    quiz={items:selectPracticeQuestions(pool,progress,{reviewOnly:review}),at:0,answers:[],review};
     if(!$('atlasQuiz').open)$('atlasQuiz').showModal();renderQuestion();
   }
   function renderQuestion(){
     if(!quiz.items.length){$('quizBody').innerHTML='<h2>다시 풀 문제가 없습니다</h2><p>확인 문제를 풀면 틀린 문제를 여기에 모아 드립니다.</p>';return;}
     const q=quiz.items[quiz.at],l=LESSONS.find(l=>l.id===q.lesson);
     const options=shuffle(q.options.map((text,index)=>({text,index})));
-    $('quizBody').innerHTML=`<p class="quiz-meta">${quiz.review?'오답 다시 보기':'확인 문제'} · ${quiz.at+1} / ${quiz.items.length}</p><progress value="${quiz.at}" max="${quiz.items.length}" aria-label="문제 진행"></progress><p class="quiz-topic">${l.title}</p><h2 id="questionTitle">${q.prompt}</h2>${q.visual?'<div id="quizVisual" class="lesson-visual"></div>':''}<div class="quiz-options" role="group" aria-labelledby="questionTitle">${options.map((o,i)=>`<button data-answer="${o.index}"><span>${i+1}</span>${o.text}</button>`).join('')}</div><div id="answerFeedback" aria-live="polite"></div><button id="nextQuestion" class="primary-button" hidden>${quiz.at+1===quiz.items.length?'결과 보기':'다음 문제'}</button>`;
+    $('quizBody').dataset.questionId=q.id;
+    $('quizBody').innerHTML=`<p class="quiz-meta">${quiz.review?'오답 다시 보기':'확인 문제'} · ${quiz.at+1} / ${quiz.items.length}</p><progress value="${quiz.at}" max="${quiz.items.length}" aria-label="문제 진행"></progress><p class="quiz-topic">${l.title}</p><h2 id="questionTitle">${q.prompt}</h2>${questionDataHTML(q)}${q.visual?'<div id="quizVisual" class="lesson-visual"></div>':''}<div class="quiz-options" role="group" aria-labelledby="questionTitle">${options.map((o,i)=>`<button data-answer="${o.index}"><span>${i+1}</span>${o.text}</button>`).join('')}</div><div id="answerFeedback" aria-live="polite"></div><button id="nextQuestion" class="primary-button" hidden>${quiz.at+1===quiz.items.length?'결과 보기':'다음 문제'}</button>`;
     if(q.visual){
       renderVisual($('quizVisual'),q.visual);
       $('quizVisual').querySelector('.mini-tabs')?.remove();
@@ -117,11 +117,11 @@ export function createAtlas(api){
   }
   function renderResult(){
     const wrong=quiz.items.filter((_,i)=>!quiz.answers[i]),correct=quiz.answers.filter(Boolean).length;
-    $('quizBody').innerHTML=`<p class="quiz-meta">학습 확인</p><h2>${quiz.items.length}개 중 ${correct}개를 맞혔어요</h2><p>${wrong.length?'틀린 개념을 확인하고 다시 풀어 보세요.':'다른 주제와 연결해서 설명해 보세요.'}</p><div class="result-topics">${quiz.items.map((q,i)=>`<p>${quiz.answers[i]?'✓':'↻'} ${LESSONS.find(l=>l.id===q.lesson).title}</p>`).join('')}</div>${wrong.length?'<button id="retryQuiz" class="primary-button">틀린 문제만 다시 풀기</button>':''}<button id="returnMap">지도로 돌아가기</button>`;
-    if(wrong.length)$('retryQuiz').onclick=()=>startQuiz(wrong,wrong.length,true);
+    $('quizBody').innerHTML=`<p class="quiz-meta">학습 확인</p><h2>${quiz.items.length}개 중 ${correct}개를 맞혔어요</h2><div class="result-topics">${wrong.map(q=>`<p>↻ ${q.prompt}</p>`).join('')}</div>${wrong.length?'<button id="retryQuiz" class="primary-button">틀린 문제만 다시 풀기</button>':''}<button id="returnMap">지도로 돌아가기</button>`;
+    if(wrong.length)$('retryQuiz').onclick=()=>startQuiz(wrong,true);
     $('returnMap').onclick=()=>$('atlasQuiz').close();
   }
-  const legacy={world:'regions',terrain:'landforms',climate:'climate-zones',population:'density',region:'regions'};
+  const legacy={'terrain-conflict':'landforms','korea-location':'coordinates','korea-terrain':'landforms',world:'regions',terrain:'landforms',climate:'climate-zones',population:'density',region:'regions'};
   let hash='';
   try{hash=decodeURIComponent(location.hash.slice(1));}catch{/* A malformed bookmark opens the default lesson. */}
   const initial=LESSONS.some(l=>l.id===hash)?hash:legacy[hash]||'currents';

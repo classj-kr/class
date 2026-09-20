@@ -2,7 +2,7 @@ import * as maplibregl from "./vendor/maplibre-gl-6.10.0/maplibre-gl.mjs";
 
 import { buildFlowModel, flowFrame, installFlowImages } from "./flow-textures.mjs?v=20260920-17";
 
-import { createAtlas } from "./atlas-study.mjs?v=20260920-21";
+import { createAtlas } from "./atlas-study.mjs?v=20260920-26";
 import { animateProjection } from "./projection-morph.mjs?v=20260920-19";
 
 const data = window.GLOBE_DATA;
@@ -20,7 +20,7 @@ const BASE = new URL(".", import.meta.url).href;
 const TILE_VERSION = 2;
 const FLAG_VERSION = 2;
 // 모양(shapes.json)·설명(info.json)·사진을 바꾸면 올린다.
-const DATA_VERSION = "20260920-16";
+const DATA_VERSION = "20260920-26";
 const HOME = { center: [127.5, 30], lat: 30 };
 // 켜고 끄는 항목이 늘면 판을 올린다(옛 저장값에는 새 항목이 없어 꺼진 채로 보이므로).
 const SETTINGS_KEY = "classj-globe-layers-v3";
@@ -115,7 +115,7 @@ const map = new maplibregl.Map({
 });
 map.touchZoomRotate.disableRotation();
 map.keyboard.disableRotation();
-map.addControl(new maplibregl.AttributionControl({ compact: true, customAttribution: "바탕 그림·지명 자료: Natural Earth · 사진: 위키미디어 공용" }), "top-right");
+map.addControl(new maplibregl.AttributionControl({ compact: true, customAttribution: "바탕 그림·지명: Natural Earth · 한강: © OpenStreetMap 기여자 · 사진: 위키미디어 공용" }), "top-right");
 
 renderLayerBar();
 renderSeasonSwitch();

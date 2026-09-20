@@ -1,4 +1,4 @@
-"""Refresh verified thematic data. Build-time dependencies: numpy, rasterio.
+"""Refresh verified thematic data. Build-time dependencies: numpy, rasterio, Pillow.
 
 Run from any directory. Country geometry and Korean labels remain the checked-in
 atlas-countries.json; only the World Bank statistical field is refreshed.
@@ -8,6 +8,7 @@ import hashlib, io, json, pathlib, tempfile, urllib.request, zipfile
 from datetime import date
 import numpy as np
 import rasterio
+from build_climate_tiles import build_climate
 
 DEST = pathlib.Path(__file__).resolve().parent.parent / 'data'
 WB = 'https://api.worldbank.org/v2/country/all/indicator/EN.POP.DNST?date=2023&format=json&per_page=400'
@@ -69,25 +70,8 @@ def climate():
         with rasterio.open(pathlib.Path(directory) / 'Raster files/world_koppen') as source:
             original = source.read(1)
             assert original.shape == (1800, 3600)
-        rows = np.floor((np.arange(720) + .5) * 2.5).astype(int)
-        cols = np.floor((np.arange(1440) + .5) * 2.5).astype(int)
-        sample = original[rows[:, None], cols[None, :]]
-        chars = np.full(sample.shape, '_', dtype='<U1')
-        for low, high, key in [(1, 3, 'A'), (4, 7, 'B'), (8, 16, 'C'), (17, 28, 'D'), (29, 30, 'E')]:
-            chars[(sample >= low) & (sample <= high)] = key
-        flat = chars.flatten()
-        runs, previous, count = [], flat[0], 0
-        for char in flat:
-            if char == previous:
-                count += 1
-            else:
-                runs.append(previous + base36(count))
-                previous, count = char, 1
-        runs.append(previous + base36(count))
-        write('atlas-climate.json', {'step': .25, 'width': 1440, 'height': 720, 'runs': ''.join(runs),
-              'source': 'Peel et al. (2007), original 0.1 degree raster',
-              'method': '0.25 degree cell-centre nearest sampling; 30 classes grouped into A/B/C/D/E; no-data preserved',
-              'downloaded': date.today().isoformat(), 'sourceSha256': hashlib.sha256(archive).hexdigest()})
+        build_climate(original, archive, DEST)
+
 
 if __name__ == '__main__':
     density()

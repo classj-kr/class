@@ -9,6 +9,7 @@
 // tier: 이름표가 나타나는 배율 단계. 1은 지구 전체가 보일 때부터, 4는 가장 크게 확대했을 때.
 
 import fs from "node:fs";
+import { buildHanRiver } from "./han-river.mjs";
 import os from "node:os";
 import path from "node:path";
 import vm from "node:vm";
@@ -1228,6 +1229,9 @@ async function main() {
 
   const rivers = await buildRivers();
   for (const river of rivers) river.geometry.coordinates = orientRiver(river.properties.name, river.geometry.coordinates);
+  const hanIndex = rivers.findIndex(river => river.properties.name === "한강");
+  const localRivers = JSON.parse(fs.readFileSync(path.join(ROOT, "../korea-map/data/major-rivers.geojson"), "utf8"));
+  rivers[hanIndex] = buildHanRiver(localRivers, rivers[hanIndex]);
   // 강 이름은 가장 긴 줄기 위에 가로로 놓는다(줄기를 따라 놓는 방식은 지구본에서 글자가 그려지지 않는다).
   // 긴 강(경위도로 25도 넘게 흐르는 강)은 1/3, 2/3 자리 두 군데에 적는다.
   for (const river of rivers) {

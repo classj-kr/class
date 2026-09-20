@@ -17,13 +17,12 @@ export async function installAtlasLayers(map, onPick) {
   const cached=new Map();
   async function load(id){
     if(!cached.has(id)) cached.set(id,(async()=>{
-      const response=await fetch(new URL(`atlas-${id==='density'?'countries':id}.json?v=20260920-18`,BASE));
+      const response=await fetch(new URL(`atlas-${id==='density'?'countries':id}.json?v=20260920-24`,BASE));
       if(!response.ok)throw Error('지도 자료를 불러오지 못했습니다.');
       const json=await response.json();
       if(id==='climate') {
-        const canvas=climateCanvas(json);
-        map.addSource('atlas-climate',{type:'image',url:canvas.toDataURL(),coordinates:[[-180,85.05112878],[180,85.05112878],[180,-85.05112878],[-180,-85.05112878]]});
-        map.addLayer({id:'atlas-climate-fill',type:'raster',source:'atlas-climate',layout:{visibility:'none'},paint:{'raster-opacity':.7,'raster-resampling':'nearest','raster-fade-duration':0}},before);
+        map.addSource('atlas-climate',{type:'raster',tiles:[new URL('climate-tiles/{z}/{x}/{y}.png',BASE).href.replaceAll('%7B','{').replaceAll('%7D','}')+'?v=20260920-24'],tileSize:json.tiles.tileSize,minzoom:0,maxzoom:json.tiles.maxzoom,attribution:'Peel et al. (2007) · CC BY-NC-SA 2.5'});
+        map.addLayer({id:'atlas-climate-fill',type:'raster',source:'atlas-climate',layout:{visibility:'none'},paint:{'raster-opacity':.7,'raster-resampling':'linear','raster-fade-duration':0}},before);
       } else map.getSource(id==='density'?'atlas-countries':'atlas-plates').setData(json);
     })().catch(error=>{cached.delete(id);throw error;}));
     return cached.get(id);
@@ -56,18 +55,4 @@ export function decodeClimate(grid){
   }
   if(offset!==cells.length)throw Error('기후 격자 길이가 맞지 않습니다.');
   return cells;
-}
-function climateCanvas(grid){
-  const cells=decodeClimate(grid),canvas=document.createElement('canvas');canvas.width=canvas.height=1024;
-  const ctx=canvas.getContext('2d'),pixels=ctx.createImageData(1024,1024);
-  const colors=Object.fromEntries(Object.entries(CLIMATE_COLORS).map(([k,h])=>[k.charCodeAt(0),[1,3,5].map(i=>parseInt(h.slice(i,i+2),16))]));
-  for(let y=0;y<1024;y++){
-    const lat=Math.atan(Math.sinh(Math.PI*(1-2*(y+.5)/1024)))*180/Math.PI;
-    const row=Math.min(grid.height-1,Math.max(0,Math.floor((90-lat)/grid.step)));
-    for(let x=0;x<1024;x++){
-      const color=colors[cells[row*grid.width+Math.floor((x+.5)*grid.width/1024)]];
-      if(color)pixels.data.set([...color,255],(y*1024+x)*4);
-    }
-  }
-  ctx.putImageData(pixels,0,0);return canvas;
 }
