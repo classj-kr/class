@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const QUIZ_DISTRACTORS = {
         H:  { symbols: ['He', 'Hy', 'Hh'], names: ['산소', '질소', '탄소'] },
         He: { symbols: ['H', 'Hel', 'HE'], names: ['베릴륨', '셀레늄', '텔루륨'] },
-        Li: { symbols: ['L', 'LI', 'Ri'], names: ['나트륨', '루비듐', '라듐'] },
+        Li: { symbols: ['L', 'LI', 'Ri'], names: ['리듐', '리슘', '리트륨'] },
         Be: { symbols: ['B', 'BE', 'Br'], names: ['베르켈륨', '바륨', '헬륨'] },
         B:  { symbols: ['Be', 'Bo', 'Br'], names: ['불소', '붕산', '비소'] },
         C:  { symbols: ['Ca', 'Cl', 'Cb'], names: ['탄산', '질소', '산소'] },
@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
         Ne: { symbols: ['N', 'NE', 'Na'], names: ['니켈', '네오디뮴', '라돈'] },
         Na: { symbols: ['N', 'NA', 'Ne'], names: ['질산', '칼륨', '라듐'] },
         Mg: { symbols: ['M', 'MG', 'Mn'], names: ['망가니즈', '칼슘', '마그네타이트'] },
-        Al: { symbols: ['A', 'AL', 'Ar'], names: ['알루미나', '아메리슘', '갈륨'] },
+        Al: { symbols: ['A', 'AL', 'Ar'], names: ['알루미나', '알루미슘', '알칼리'] },
         Si: { symbols: ['S', 'SI', 'Sl'], names: ['규산', '비소', '탄소'] },
         P:  { symbols: ['Ph', 'Po', 'Pb'], names: ['인듐', '인산', '황'] },
         S:  { symbols: ['Si', 'Na', 'Su'], names: ['황산', '인', '염소'] },

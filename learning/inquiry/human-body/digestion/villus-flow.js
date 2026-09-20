@@ -212,46 +212,10 @@
     }
 
     function placeLabels() {
-        if (!svg || !labelBox) return;
-        var box = svg.getBoundingClientRect();
-        if (!box.width) return;
-        var vb = svg.viewBox.baseVal;
-        // 그림은 가운데 맞춤으로 들어가므로 남는 여백을 더해 줘야 조각 위에 붙는다
-        var k = Math.min(box.width / vb.width, box.height / vb.height);
-        var offX = (box.width - vb.width * k) / 2;
-        var offY = (box.height - vb.height * k) / 2;
-
-        labelBox.innerHTML = '';
-        while (leaderGroup && leaderGroup.firstChild) leaderGroup.removeChild(leaderGroup.firstChild);
-
-        LABELS.forEach(function (item) {
-            var elm = svg.querySelector('#' + item.id);
-            if (!elm) return;
-            var b;
-            try { b = elm.getBBox(); } catch (e) { return; }
-            if (!b.width && !b.height) return;
-
-            var cx = (item.sx === undefined) ? b.x + b.width / 2 : item.sx;
-            var cy = (item.sy === undefined) ? b.y + b.height / 2 : item.sy;
-            var ax = (item.ax === undefined) ? cx : item.ax;
-            var ay = (item.ay === undefined) ? cy : item.ay;
-
-            if (leaderGroup && (ax !== cx || ay !== cy)) {
-                var line = document.createElementNS(SVG_NS, 'line');
-                line.setAttribute('x1', cx); line.setAttribute('y1', cy);
-                line.setAttribute('x2', ax); line.setAttribute('y2', ay);
-                line.setAttribute('stroke', 'rgba(148, 163, 184, 0.7)');
-                line.setAttribute('stroke-width', 1.6);
-                leaderGroup.appendChild(line);
-            }
-
-            var tag = document.createElement('span');
-            tag.className = 'villus-tag';
-            tag.textContent = item.text;
-            tag.style.left = (offX + ax * k) + 'px';
-            tag.style.top = (offY + ay * k) + 'px';
-            tag.addEventListener('click', function () { showDetail(item.id); });
-            labelBox.appendChild(tag);
+        BodyDiagramLabels.render(svg, labelBox, LABELS, {
+            leaders: leaderGroup,
+            className: 'villus-tag',
+            select: function (item) { showDetail(item.id); }
         });
     }
 

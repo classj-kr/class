@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>골격계 · 관절과 길항근 | 인체 모형</title>
-    <link rel="stylesheet" href="../styles.css?v=20260907ay">
-    <link rel="stylesheet" href="styles.css?v=20260908c">
+    <link rel="stylesheet" href="../styles.css?v=20260920-audit">
+    <link rel="stylesheet" href="styles.css?v=20260920-audit">
 </head>
 <body>
 
@@ -26,7 +26,7 @@
             <button id="extendBtn" class="sim-btn" type="button">
                 <span>↔️</span> 팔 펴기 (삼두근 수축)
             </button>
-            <button id="playPauseBtn" data-for-scene="joint" class="tool-toggle-btn" type="button">
+            <button id="playPauseBtn" data-for-scene="joint,sarcomere" class="tool-toggle-btn" type="button">
                 <span>⏸️</span> 일시정지
             </button>
         </div>
@@ -116,9 +116,10 @@
     </div>
 
     <!-- Scripts -->
-    <script src="../shared/engine-core.js?v=20260909b"></script>
+    <script src="../shared/engine-core.js?v=20260920-audit"></script>
+    <script src="../shared/diagram-labels.js?v=20260920-audit"></script>
     <script src="../shared/exam-data.js?v=20260918-quiz"></script>
-    <script src="app.js?v=20260908b"></script>
-    <script src="joint-arm.js?v=20260908b"></script>
+    <script src="app.js?v=20260920-audit"></script>
+    <script src="joint-arm.js?v=20260920-audit"></script>
 </body>
 </html>

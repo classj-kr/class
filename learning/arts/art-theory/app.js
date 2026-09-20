@@ -402,6 +402,7 @@
         zoomSlider.addEventListener('input', () => {
           const sz = zoomSlider.value;
           zoomCanvas.style.backgroundSize = `${sz}px ${sz}px`;
+          zoomCanvas.style.backgroundPosition = `0 0, ${sz / 2}px ${sz / 2}px`;
         });
       }
       showMix(0);
@@ -571,6 +572,30 @@
     }));
   }
 
+  const sectionTabs = [...document.querySelectorAll('[data-panel]')];
+  function showPanel(id, focus = false) {
+    sectionTabs.forEach((tab) => {
+      const selected = tab.dataset.panel === id;
+      tab.setAttribute('aria-selected', String(selected));
+      tab.tabIndex = selected ? 0 : -1;
+      document.getElementById(tab.dataset.panel).hidden = !selected;
+      if (selected && focus) tab.focus();
+    });
+  }
+  sectionTabs.forEach((tab, index) => {
+    tab.addEventListener('click', () => showPanel(tab.dataset.panel));
+    tab.addEventListener('keydown', (event) => {
+      let next = index;
+      if (event.key === 'ArrowRight') next = (index + 1) % sectionTabs.length;
+      else if (event.key === 'ArrowLeft') next = (index + sectionTabs.length - 1) % sectionTabs.length;
+      else if (event.key === 'Home') next = 0;
+      else if (event.key === 'End') next = sectionTabs.length - 1;
+      else return;
+      event.preventDefault();
+      showPanel(sectionTabs[next].dataset.panel, true);
+    });
+  });
+
   function showLesson(id) {
     const index = lessons.findIndex((lesson) => lesson.id === id);
     if (index < 0) return;
@@ -586,6 +611,9 @@
     renderVisual(lesson.visual);
     renderStudy(lesson.study);
     renderQuiz(lesson.quiz);
+    showPanel('observePanel');
+    document.querySelector('.concept-details').open = false;
+    document.getElementById('lessonTitle').focus({ preventScroll: true });
     previousLesson.disabled = index === 0;
     nextLesson.disabled = index === lessons.length - 1;
     document.title = `${lesson.title} · 미술 이론`;
@@ -596,10 +624,12 @@
     lessonView.hidden = true;
     courseMenu.hidden = false;
     document.title = '미술 이론 · 색채와 조형';
+    document.querySelector(`[data-open-lesson="${lessons[currentIndex].id}"]`).focus({ preventScroll: true });
     window.scrollTo(0, 0);
   }
 
   document.querySelectorAll('[data-open-lesson]').forEach((button) => button.addEventListener('click', () => showLesson(button.dataset.openLesson)));
+  document.getElementById('courseListButton').addEventListener('click', showCourseMenu);
   previousLesson.addEventListener('click', () => showLesson(lessons[currentIndex - 1].id));
   nextLesson.addEventListener('click', () => showLesson(lessons[currentIndex + 1].id));
   window.addEventListener('sitebackrequest', (event) => {

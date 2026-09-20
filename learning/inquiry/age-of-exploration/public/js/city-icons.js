@@ -62,7 +62,7 @@
       top: -28 * scale, bottom: 10 * scale, labelY: -31 * scale };
   }
   function paint(ctx, style) {
-    const [label, wall, roof] = STYLES[style.culture];
+    const [, wall, roof] = STYLES[style.culture];
     const ink = '#302c29', light = '#fff0cb';
     ctx.lineWidth = 1.15; ctx.lineJoin = 'round'; ctx.lineCap = 'round';
     function poly(points, fill, stroke = ink) {
@@ -79,7 +79,11 @@
       ctx.fillStyle = fill; ctx.fill(); ctx.strokeStyle = ink; ctx.stroke();
     }
     function house(x, y, w = 10, h = 9) {
-      rect(x,y-h,w,h); poly([[x-1,y-h],[x+w/2,y-h-5],[x+w+1,y-h]],roof);
+      rect(x,y-h,w,h);
+      if(['chinese','korean','japanese','southeast'].includes(style.culture)) eaves(x+w/2,y-h-2,w);
+      else if(['islamic','swahili','eastern','steppe'].includes(style.culture)) dome(x+w/2,y-h,w/2);
+      else if(['american','andean','sahel','tibetan'].includes(style.culture)) rect(x-.5,y-h-2,w+1,2,roof);
+      else poly([[x-1,y-h],[x+w/2,y-h-5],[x+w+1,y-h]],roof);
       rect(x+w/2-1,y-4,2,4,ink);
     }
     function eaves(x,y,w,color=roof) {

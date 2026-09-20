@@ -6,17 +6,12 @@
   <meta name="theme-color" content="#181a1f">
   <title>미술 이론 · 색채와 조형</title>
   <meta name="description" content="색채의 물리적 지각 원리부터 화면 조형 질서, 명작 형식 분석까지 체계적으로 탐구하는 인터랙티브 미술 이론 9차시">
-  <link rel="stylesheet" href="styles.css?v=20260910-v3">
-  <script src="app.js?v=20260918-quiz" defer></script>
+  <link rel="stylesheet" href="styles.css?v=20260920-cleanup">
+  <script src="app.js?v=20260920-workspace" defer></script>
 </head>
 <body>
   <main class="course-shell">
     <section id="courseMenu" class="course-menu" aria-label="미술 이론 9차시 목록">
-      <header class="menu-heading">
-        <h1>미술 이론</h1>
-        <p>전체 9차시</p>
-      </header>
-
       <ol class="syllabus-list course-sequence">
         <li class="unit-marker color-unit">
           <span class="unit-range">01–05</span>
@@ -123,7 +118,7 @@
       <article class="lesson-article">
         <header class="lesson-heading">
           <p id="lessonKicker" class="lesson-kicker"></p>
-          <h1 id="lessonTitle" class="lesson-main-title"></h1>
+          <h1 id="lessonTitle" class="lesson-main-title" tabindex="-1"></h1>
           <p class="essential-question">
             <span class="question-label">핵심 질문</span>
             <strong id="lessonQuestion" class="question-body"></strong>
@@ -131,36 +126,38 @@
         </header>
 
         <div class="lesson-columns">
-          <div class="lesson-reading">
-            <section class="chapter concept-chapter" aria-labelledby="conceptHeading">
-              <h2 id="conceptHeading" class="chapter-title">개념 정리</h2>
-              <div id="conceptContent" class="concept-content"></div>
-            </section>
-
-            <section class="chapter analysis-chapter" aria-labelledby="analysisHeading">
-              <h2 id="analysisHeading" class="chapter-title">작품으로 확인</h2>
-              <div id="analysisContent" class="analysis-content"></div>
-            </section>
-          </div>
-
           <aside class="artwork-column" aria-label="작품 시각 분석">
             <figure id="artworkFigure" class="artwork-figure"></figure>
           </aside>
+          <div class="lesson-reading">
+            <div class="lesson-sections" role="tablist" aria-label="학습 활동">
+              <button type="button" id="observeTab" role="tab" aria-selected="true" aria-controls="observePanel" data-panel="observePanel">작품 살펴보기</button>
+              <button type="button" id="studyTab" role="tab" aria-selected="false" aria-controls="studyPanel" tabindex="-1" data-panel="studyPanel">비교하기</button>
+              <button type="button" id="checkTab" role="tab" aria-selected="false" aria-controls="checkPanel" tabindex="-1" data-panel="checkPanel">개념 확인</button>
+            </div>
+            <section id="observePanel" class="lesson-panel" role="tabpanel" aria-labelledby="observeTab" tabindex="0">
+              <h2 id="analysisHeading" class="chapter-title">작품에서 찾아보기</h2>
+              <div id="analysisContent" class="analysis-content"></div>
+              <details class="concept-details">
+                <summary>개념 정리</summary>
+                <div id="conceptContent" class="concept-content"></div>
+              </details>
+            </section>
+            <section id="studyPanel" class="lesson-panel study-chapter" role="tabpanel" aria-labelledby="studyTab" tabindex="0" hidden>
+              <h2 id="studyHeading" class="chapter-title">비교하며 적용</h2>
+              <div id="studyContent" class="study-content"></div>
+            </section>
+            <section id="checkPanel" class="lesson-panel check-chapter" role="tabpanel" aria-labelledby="checkTab" tabindex="0" hidden>
+              <h2 id="checkHeading" class="chapter-title">개념 확인</h2>
+              <div id="checkContent" class="check-content"></div>
+            </section>
+          </div>
         </div>
-
-        <section class="chapter study-chapter" aria-labelledby="studyHeading">
-          <h2 id="studyHeading" class="chapter-title">비교하며 적용</h2>
-          <div id="studyContent" class="study-content"></div>
-        </section>
-
-        <section class="chapter check-chapter" aria-labelledby="checkHeading">
-          <h2 id="checkHeading" class="chapter-title">개념 확인</h2>
-          <div id="checkContent" class="check-content"></div>
-        </section>
       </article>
 
       <nav class="lesson-footer-nav" aria-label="차시 이동">
         <button type="button" id="previousLesson">← 이전 차시</button>
+        <button type="button" id="courseListButton">차시 목록</button>
         <button type="button" id="nextLesson">다음 차시 →</button>
       </nav>
     </section>

@@ -22,7 +22,7 @@
     var pupil, irisRing, circularMuscle, radialMuscles = [], glare;
     var pupilLabel, muscleNote;
     var steps = [], stepBoxes = [];
-    var raf;
+    var raf, displayedBrightness = 50, lastFrame = 0;
 
     // 반사가 지나가는 길. 마지막 둘은 밝기에 따라 말이 바뀐다.
     var PATH = [
@@ -151,8 +151,10 @@
         g.appendChild(glare);
 
         // 이름표
-        g.appendChild(tag(CX - 216, CY - 118, '공막 (흰자)', '#64748b'));
-        g.appendChild(tag(CX + 128, CY + 122, '홍채', '#22d3ee'));
+        g.appendChild(tag(CX - 160, CY - 150, '공막 (흰자)', '#64748b'));
+        g.appendChild(el('line', { x1: CX - 160, y1: CY - 138, x2: CX - 173, y2: CY - 58, stroke: '#94a3b8', 'stroke-width': 2 }));
+        g.appendChild(tag(CX + 148, CY + 158, '홍채', '#22d3ee'));
+        g.appendChild(el('line', { x1: CX + 148, y1: CY + 144, x2: CX + 109, y2: CY + 82, stroke: '#22d3ee', 'stroke-width': 2 }));
         pupilLabel = tag(CX, CY + 178, '', '#f8fafc');
         g.appendChild(pupilLabel);
         muscleNote = htmlTag(CX, 522, '', 'note');
@@ -192,7 +194,10 @@
         if (s) s.addEventListener('input', render);
     }
 
-    function loop() {
+    function loop(now) {
+        var dt = lastFrame ? Math.min((now - lastFrame) / 1000, 0.05) : 0;
+        lastFrame = now;
+        if (!SimEngine.isPaused()) displayedBrightness += (brightness() - displayedBrightness) * (1 - Math.exp(-dt * 7));
         render();
         placeTags();
         raf = requestAnimationFrame(loop);
@@ -201,7 +206,7 @@
     function render() {
         if (!layer || layer.hidden) return;
 
-        var b = brightness();              // 10 ~ 100
+        var b = displayedBrightness;              // 10 ~ 100
         var t = (b - 10) / 90;             // 0 (아주 어두움) ~ 1 (아주 밝음)
         var bright = b >= 55;
 
@@ -209,6 +214,7 @@
         var r = 78 - t * 54;               // 78 ~ 24
         var mm = (r / 78 * 8).toFixed(1);
         pupil.setAttribute('r', r.toFixed(1));
+        layer.dataset.pupilRadius = r.toFixed(1);
 
         // 원형근: 밝을 때 수축해 두꺼워지고 동공을 조인다
         circularMuscle.setAttribute('r', (r + 9).toFixed(1));

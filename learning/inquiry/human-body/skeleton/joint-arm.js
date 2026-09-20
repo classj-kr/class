@@ -559,6 +559,25 @@
             tag.className = 'joint-tag';
             tag.dataset.for = item.id;
             tag.textContent = item.text;
+            tag.tabIndex = 0;
+            tag.setAttribute('role', 'button');
+            function selectPart() {
+                var details = {
+                    humerus: '어깨에서 팔꿈치까지 이어지는 위팔의 뼈입니다.',
+                    triceps: '팔을 펼 때 수축하고, 굽힐 때 이완하는 근육입니다.',
+                    joint: '팔꿈치에서 뼈가 만납니다. 연골과 윤활액이 마찰을 줄입니다.',
+                    forearm: '아래팔에는 노뼈와 자뼈 두 개가 있습니다.',
+                    biceps: '팔을 굽힐 때 수축하고, 펼 때 이완하는 근육입니다.',
+                    tendon: '근육의 힘을 뼈로 전달하는 연결 조직입니다.'
+                };
+                document.getElementById('organTitle').textContent = item.text;
+                document.getElementById('organDesc').textContent = details[item.id];
+                labelBox.querySelectorAll('.joint-tag').forEach(function (t) { t.classList.toggle('picked', t === tag); });
+            }
+            tag.addEventListener('click', selectPart);
+            tag.addEventListener('keydown', function (event) {
+                if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); selectPart(); }
+            });
             labelBox.appendChild(tag);
             item._tag = tag;
         });

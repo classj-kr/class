@@ -47,6 +47,7 @@ button,input{font:inherit}button{border:1px solid var(--line);background:#17313b
 #bgmControl{position:fixed;right:12px;bottom:142px;z-index:32;display:flex;align-items:center;gap:8px;max-width:min(360px,calc(100vw - 24px));padding:6px 9px;border-radius:8px;touch-action:auto}#bgmToggle{min-width:46px;min-height:34px;padding:0 9px;font-weight:900;background:#72552d}#bgmVolume{width:92px;accent-color:#d7bb6d;touch-action:auto}#bgmTrack{max-width:150px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:10px;color:#ead9a8}#bgmControl.locked #bgmTrack::after{content:' · 화면을 한 번 누르면 재생';color:#9fcbd5}
 @media(max-width:650px){#finalQuizView{padding:4px}#finalQuizCard{width:100%;max-height:99vh;border-radius:6px}#finalQuizHeader{padding:10px 12px}#finalQuizHeader h2{font-size:18px}#finalQuizQuestions{padding:9px}.finalQuestion{padding:11px}.finalPassage,.finalChoice{font-size:12px}.entryModes{grid-template-columns:1fr}.entryMode{min-height:104px}.statusMain{grid-template-columns:repeat(2,1fr)}.statusItem{min-height:29px;padding:3px 5px}.statusItem small{font-size:8px}.statusItem b{font-size:10px}.statusSub{font-size:8px}.statusSub #identity,.statusSub #terrainHud{display:none}#hud{font-size:9px}.joinRow{grid-template-columns:1fr}#zoom{top:126px}#messageWindow{left:8px;right:8px;bottom:8px;height:106px;padding-bottom:9px}#messageHeader{height:18px;line-height:16px;margin-bottom:4px}#messageLines{font-size:10px;line-height:1.42;gap:1px;grid-template-rows:repeat(4,minmax(14px,auto))}.guideLine{min-height:14px}#pad{width:132px;height:132px;bottom:122px}.actionPrompt{bottom:262px;width:max-content;max-width:92vw}#missionPanel{right:8px;top:126px;max-height:43vh}#missionToggle{right:8px;top:126px}#missionBanner{top:126px;min-width:calc(100vw - 150px);max-width:calc(100vw - 150px);font-size:11px}.choiceRequired .missionChoiceGrid{grid-template-columns:1fr}#cityView{padding:126px 6px 6px}#cityCard{width:min(100%,calc((100vh - 236px) * 1.5));aspect-ratio:auto;display:flex;flex-direction:column;border-radius:5px}#cityScene{position:relative;inset:auto;height:auto;aspect-ratio:3/2}#cityShade{display:none}#cityCard:has(#cityScene[hidden]){padding-top:48px}#cityTitle{left:9px;top:9px;font-size:17px;padding:5px 9px}#cityInfo{position:static;max-width:none;padding:10px 12px 2px;font-size:12px;text-shadow:none}#cityMenu{position:static;padding:8px;flex-wrap:wrap}#cityMenu button{flex:1 1 0;min-width:0;min-height:38px;padding:0 8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}#leaveCityBtn{margin-left:0}#libraryView{padding:6px}#libraryCard{height:97vh}#libraryBody{grid-template-columns:1fr;grid-template-rows:36% minmax(0,1fr)}#bookList{border-right:0;border-bottom:1px solid #53645c}#bookReader{padding:18px}#bookReader h2{font-size:22px}#bgmControl{right:8px;bottom:120px;padding:4px 6px;gap:5px}#bgmToggle{min-width:40px;min-height:32px;padding:0 7px}#bgmVolume{width:72px}#bgmTrack{display:none}}
 #bgmControl.unified-music-control{top:8px;right:8px;bottom:auto;z-index:100000;max-width:none;padding:3px 6px;border-radius:999px;touch-action:manipulation}#bgmControl.locked .unified-audio-slider{opacity:.58}@media(max-width:650px){#bgmControl.unified-music-control{top:6px;right:6px;bottom:auto;padding:2px 4px}}
+#cityLegend{border-radius:8px;font-size:11px}#cityLegend summary{min-height:42px;display:flex;align-items:center;padding:0 9px;cursor:pointer;list-style:none}#cityLegend summary::-webkit-details-marker{display:none}#cityLegend summary:focus-visible{outline:2px solid #f2cf78;outline-offset:2px}#cityLegend[open] summary{color:#ffe3a0}#cityLegend>div{position:absolute;right:0;top:48px;width:215px;padding:12px 14px;background:#102832f5;border:1px solid var(--line);border-radius:8px;line-height:1.9;box-shadow:0 4px 18px #0008}#cityLegend small{color:#b9c9c7;font-size:10px}
 </style>
 </head>
 <body>
@@ -83,7 +84,7 @@ button,input{font:inherit}button{border:1px solid var(--line);background:#17313b
   <div class="statusSub"><b id="identity">접속 준비 중</b><span class="statusDivider">│</span><span id="net" class="bad">● 연결 중</span><span id="onlineGroup">같은 반 <b id="online">0</b>명</span><span id="nearbyGroup">근처 <b id="nearby">0</b>명</span><span class="statusDivider">│</span><span id="modeHud">항해</span><span id="terrainHud">바다 · 속도 100%</span><span class="statusDivider">│</span><span id="currentHud">잔잔한 해역</span><span class="statusDivider">│</span><span id="windHud">바람 확인 중</span><span class="statusDivider">│</span><span id="mission" class="grow">방장의 신호를 기다리는 중</span></div>
 </div>
 <div id="missionBanner" class="panel" aria-live="polite"></div>
-<div id="zoom"><button id="minus" aria-label="축소">−</button><button id="plus" aria-label="확대">＋</button><button id="home" aria-label="현재 임무 지점">⌂</button></div>
+<div id="zoom"><button id="minus" aria-label="축소">−</button><button id="plus" aria-label="확대">＋</button><button id="home" aria-label="현재 임무 지점">⌂</button><details id="cityLegend" class="panel"><summary aria-label="도시 아이콘 안내">도시 표시</summary><div><b>건물 모양 = 문화권</b><br>건물 수·넓이 = 도시 규모<br><span style="color:#9fe5ef">⚓ 닻 표시 = 입항 가능</span><br>닻 없는 도시 = 육로 진입<br><small>확대하면 도시 모습이 더 잘 보여요.</small></div></details></div>
 <div id="bgmControl" class="unified-music-control locked" aria-label="배경음악 조절"><div class="unified-audio-group"><button id="bgmMuteBtn" class="unified-audio-toggle" type="button" aria-label="음악 음소거">♪</button><input id="bgmVolumeSlider" class="unified-audio-slider" type="range" min="0" max="1" step="0.01" aria-label="음악 음량"></div></div>
 <div id="pad"><button class="blank"></button><button data-dir="up">▲</button><button class="blank"></button><button data-dir="left">◀</button><button data-dir="stop">■</button><button data-dir="right">▶</button><button class="blank"></button><button data-dir="down">▼</button><button class="blank"></button></div>
 <div id="missionActionPrompt" class="actionPrompt panel"><span id="missionActionText"><b>행동</b></span><button id="cityActionBtn" hidden>도시 들어가기</button><button id="discoveryActionBtn" hidden>살펴보기</button><button id="huntActionBtn" hidden>만나기</button><button id="missionActionBtn" hidden>확인 Enter</button></div>
@@ -124,6 +125,7 @@ button,input{font:inherit}button{border:1px solid var(--line);background:#17313b
 <div id="messageWindow" class="panel" aria-live="polite"><div id="messageHeader">항해 안내</div><div id="messageLines"><div class="guideLine system">서버에 접속한 뒤 안내 메시지가 여기에 표시됩니다.</div></div></div>
 <script src="/learn/world-voyage/socket.io/socket.io.js"></script>
 <script src="/learn/world-voyage/js/terrain.js?v=81"></script>
+<script src="/learn/world-voyage/js/city-icons.js?v=1"></script>
 <script src="/learn/world-voyage/js/geo-motion.js?v=75"></script>
 <script src="/learn/world-voyage/js/ocean-current.js"></script>
 <script src="/learn/world-voyage/js/wind.js?v=77"></script>
@@ -944,23 +946,28 @@ function drawCityLabels(cw,ch,left,top){
   const candidates=[];
   for(const city of mapCities){
     const p=city.cityPoint;if(!p)continue;
-    const _ct=screenPoint(p.x,p.y,cw,ch),sx=_ct.x,sy=_ct.y;
-    if(sx<-80||sx>cw+80||sy<-40||sy>ch+40)continue;
-    candidates.push({city,sx,sy,priority:(city.id===targetId?100:0)+(city.originalCitySize===3?20:0)+(city.access==='port'?8:0)});
+    const {x:sx,y:sy}=screenPoint(p.x,p.y,cw,ch);
+    if(sx<-80||sx>cw+80||sy<-80||sy>ch+80)continue;
+    const icon=VoyageCityIcons.metrics(city,zoom);
+    candidates.push({city,sx,sy,icon,priority:(city.id===targetId?100:0)+(city.originalCitySize===3?20:0)+(icon.port?8:0)});
   }
   candidates.sort((a,b)=>b.priority-a.priority||a.city.originalIndex-b.city.originalIndex);
+  const intersects=(a,b)=>!(a.x+a.w<b.x||b.x+b.w<a.x||a.y+a.h<b.y||b.y+b.h<a.y);
+  // Keep buildings visible even when there is no room for their names.
+  // Draw important cities last, preserving the destination in dense regions.
+  const iconRects=candidates.map(({sx,sy,icon})=>({x:sx+icon.left,y:sy+icon.top,w:icon.right-icon.left,h:icon.bottom-icon.top}));
+  for(let i=candidates.length-1;i>=0;i--){const {city,sx,sy}=candidates[i];VoyageCityIcons.draw(ctx,city,sx,sy,zoom,city.id===targetId)}
   const occupied=[];
-  ctx.save();ctx.textAlign='center';ctx.textBaseline='bottom';ctx.font=`${zoom>=2.4?'bold 12px':'bold 10px'} "Malgun Gothic",sans-serif`;
+  ctx.save();ctx.textAlign='center';ctx.textBaseline='bottom';ctx.font=(zoom>=2.4?'bold 12px':'bold 10px')+' "Malgun Gothic",sans-serif';
   for(const item of candidates){
-    const {city,sx,sy}=item,label=city.name,tw=ctx.measureText(label).width,pad=3;
-    const rect={x:sx-tw/2-pad,y:sy-25,w:tw+pad*2,h:16};
-    const overlap=occupied.some(r=>!(rect.x+rect.w<r.x||r.x+r.w<rect.x||rect.y+rect.h<r.y||r.y+r.h<rect.y));
-    if(overlap&&zoom<2.45&&city.id!==targetId)continue;
+    const {city,sx,sy,icon}=item,label=city.name,tw=ctx.measureText(label).width,pad=3;
+    const labelY=sy+icon.labelY;
+    const rect={x:sx-tw/2-pad,y:labelY-14,w:tw+pad*2,h:16};
+    const overlap=occupied.some(r=>intersects(rect,r))||iconRects.some(r=>intersects(rect,r));
+    if(overlap&&city.id!==targetId)continue;
     occupied.push(rect);
-    ctx.fillStyle=city.id===targetId?'#ffdf75':city.access==='port'?'#9eddf0':'#f0d9a0';
-    ctx.strokeStyle='#07141a';ctx.lineWidth=3;ctx.strokeText(label,Math.round(sx),Math.round(sy-9));ctx.fillText(label,Math.round(sx),Math.round(sy-9));
-    ctx.fillStyle=city.id===targetId?'#ffdf75':city.access==='port'?'#78c8df':'#d7b96b';
-    ctx.strokeStyle='#07141a';ctx.lineWidth=1.5;ctx.beginPath();ctx.arc(Math.round(sx),Math.round(sy),city.originalCitySize===3?4:3,0,Math.PI*2);ctx.fill();ctx.stroke();
+    ctx.fillStyle=city.id===targetId?'#ffdf75':icon.port?'#9eddf0':'#f0d9a0';
+    ctx.strokeStyle='#07141a';ctx.lineWidth=3;ctx.strokeText(label,Math.round(sx),Math.round(labelY));ctx.fillText(label,Math.round(sx),Math.round(labelY));
   }
   ctx.restore();
 }

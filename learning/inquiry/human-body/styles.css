@@ -808,3 +808,23 @@ canvas.sim-canvas {
 /* 감추라고 한 것은 반드시 감춘다.
    층에 display: flex 를 주면 그것이 hidden 을 이겨 감춘 층이 그대로 보인다. */
 [hidden] { display: none !important; }
+
+/* Labels keep readable text and a visible connection to their anatomical target. */
+.body-diagram-label {
+    white-space: normal !important;
+    word-break: keep-all;
+    overflow-wrap: anywhere;
+    text-align: center;
+    line-height: 1.45;
+    font-size: 13px;
+    min-height: 28px;
+    padding: 4px 8px;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+}
+.body-diagram-label:focus-visible { outline: 2px solid #facc15; outline-offset: 3px; }
+/* Reserve a separate strip for scene navigation and playback tools. */
+.sim-stage-area .scene-switcher { left: 94px; max-width: calc(100% - 260px); }
+@media (max-width: 900px) {
+    .sim-stage-area .scene-switcher { left: 12px; max-width: calc(100% - 24px); }
+}

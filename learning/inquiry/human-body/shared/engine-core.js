@@ -602,10 +602,28 @@
             }
         }
 
+        function revealScene() {
+            var bar = document.querySelector('.scene-switcher');
+            var active = bar && bar.querySelector('.scene-btn.active');
+            if (!active) return;
+            if (active.offsetLeft < bar.scrollLeft) bar.scrollLeft = active.offsetLeft - 6;
+            if (active.offsetLeft + active.offsetWidth > bar.scrollLeft + bar.clientWidth)
+                bar.scrollLeft = active.offsetLeft + active.offsetWidth - bar.clientWidth + 6;
+        }
         document.addEventListener('click', function (e) {
             var b = e.target.closest ? e.target.closest('.scene-btn') : null;
-            if (b) setTimeout(apply, 0);
+            if (!b) return;
+            setTimeout(function () {
+                apply();
+                var scene = activeScene();
+                var related = tabs.filter(function (tab) {
+                    return tab.getAttribute('data-for-scene') && wants(tab, scene);
+                })[0];
+                if (related && !related.hidden) related.click();
+                revealScene();
+            }, 0);
         });
+        window.addEventListener('resize', revealScene);
         apply();
     }
 

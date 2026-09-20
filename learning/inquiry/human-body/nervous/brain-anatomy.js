@@ -152,42 +152,10 @@
     }
 
     function placeLabels() {
-        if (!svg || !labelBox || layer.hidden) return;
-        var box = svg.getBoundingClientRect();
-        if (!box.width) return;
-        var vb = svg.viewBox.baseVal;
-        var k = Math.min(box.width / vb.width, box.height / vb.height);
-        var offX = (box.width - vb.width * k) / 2;
-        var offY = (box.height - vb.height * k) / 2;
-
-        labelBox.innerHTML = '';
-        while (leaderGroup && leaderGroup.firstChild) leaderGroup.removeChild(leaderGroup.firstChild);
-
-        LABELS.forEach(function (item) {
-            var e = svg.querySelector('#' + item.id);
-            if (!e) return;
-            var b;
-            try { b = e.getBBox(); } catch (err) { return; }
-            if (!b.width && !b.height) return;
-
-            var cx = (item.sx === undefined) ? b.x + b.width / 2 : item.sx;
-            var cy = (item.sy === undefined) ? b.y + b.height / 2 : item.sy;
-
-            var line = document.createElementNS(SVG_NS, 'line');
-            line.setAttribute('x1', cx); line.setAttribute('y1', cy);
-            line.setAttribute('x2', item.ax); line.setAttribute('y2', item.ay);
-            line.setAttribute('stroke', 'rgba(148, 163, 184, 0.65)');
-            line.setAttribute('stroke-width', 1.6);
-            leaderGroup.appendChild(line);
-
-            var tag = document.createElement('span');
-            tag.className = 'brain-tag';
-            tag.dataset.for = item.id;
-            tag.textContent = item.text;
-            tag.style.left = (offX + item.ax * k) + 'px';
-            tag.style.top = (offY + item.ay * k) + 'px';
-            tag.addEventListener('click', function () { pick(item.id); });
-            labelBox.appendChild(tag);
+        BodyDiagramLabels.render(svg, labelBox, LABELS, {
+            leaders: leaderGroup,
+            className: 'brain-tag',
+            select: function (item) { pick(item.id); }
         });
         painted = null;
         paint();

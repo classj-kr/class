@@ -315,32 +315,9 @@
 
     /** 이름표는 그림 속 조각의 자리를 재서 붙인다. 그림이 바뀌어도 따라간다. */
     function placeLabels() {
-        if (!svg || !labelBox) return;
-        var box = svg.getBoundingClientRect();
-        if (!box.width) return;
-        var vb = svg.viewBox.baseVal;
-        // 그림은 가운데 맞춤으로 들어가므로 남는 여백을 더해 줘야 조각 위에 붙는다
-        var k = Math.min(box.width / vb.width, box.height / vb.height);
-        var offX = (box.width - vb.width * k) / 2;
-        var offY = (box.height - vb.height * k) / 2;
-
-        labelBox.innerHTML = '';
-        LABELS.forEach(function (item) {
-            var el = svg.querySelector('#' + item.id);
-            if (!el) return;
-            var b;
-            try { b = el.getBBox(); } catch (e) { return; }
-
-            var cx = offX + (b.x + b.width * (item.fx === undefined ? 0.5 : item.fx)) * k;
-            var cy = offY + (b.y + b.height * (item.fy === undefined ? 0.5 : item.fy)) * k;
-
-            var tag = document.createElement('span');
-            tag.className = 'heart-flow-tag';
-            tag.textContent = item.text;
-            tag.style.left = cx + 'px';
-            tag.style.top = cy + 'px';
-            tag.addEventListener('click', function () { showDetail(item.id); });
-            labelBox.appendChild(tag);
+        BodyDiagramLabels.render(svg, labelBox, LABELS, {
+            className: 'heart-flow-tag',
+            select: function (item) { showDetail(item.id); }
         });
     }
 

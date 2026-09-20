@@ -155,3 +155,6 @@
 [class$="-tag"].on, [class$="-tag"].picked {
     animation: hb-tag-breathe 1.6s ease-in-out infinite;
 }
+
+.joint-tag { cursor:pointer; pointer-events:auto; }
+.joint-tag:focus-visible { outline:2px solid #facc15; outline-offset:3px; }

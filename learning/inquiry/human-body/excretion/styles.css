@@ -336,3 +336,7 @@
 [class$="-tag"].on, [class$="-tag"].picked {
     animation: hb-tag-breathe 1.6s ease-in-out infinite;
 }
+
+.urine-anatomy-labels { position:absolute; inset:0; pointer-events:none; }
+.urine-part-tag { position:absolute; pointer-events:auto; background:#102234; border:1px solid #6b889d; border-radius:7px; color:#e5eff7; font-weight:700; }
+.urine-tag.lead, .urine-tag.dim, .urine-tag.warm { max-width:calc(100% - 28px); white-space:normal; text-align:center; }

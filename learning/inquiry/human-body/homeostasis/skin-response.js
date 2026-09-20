@@ -26,7 +26,7 @@
 
     var wrap, layer, svg, tagLayer;
     var vessel, vesselGlow, sweatDrops = [], hairs = [], hairMuscles = [], shivers = [];
-    var heatArrows = [], glandFill;
+    var heatWaves = [], glandFill;
     var titleText, orderText, verdictBox, verdictText, lossBar, lossText, makeBar, makeText;
     var t0 = 0;
 
@@ -135,12 +135,12 @@
             hairMuscles.push(muscle);
         });
 
-        // 열이 빠져나가는 화살표
+        // 피부 표면에서 서서히 퍼지는 열
         for (var i = 0; i < 5; i++) {
-            var a = el('path', { fill: '#f97316' });
+            var a = el('path', { fill: 'none', stroke: '#f9ad75', 'stroke-width': 3, 'stroke-linecap': 'round' });
             a._x = 140 + i * 110;
             g.appendChild(a);
-            heatArrows.push(a);
+            heatWaves.push(a);
         }
 
         // 피부 혈관 (굵기가 바뀐다)
@@ -152,11 +152,13 @@
 
         // 땀샘
         glandFill = el('path', {
-            d: 'M300 344 C270 344 262 300 292 288 C322 276 338 300 330 320 L330 240',
+            d: 'M300 344 C278 345 266 323 275 305 C286 285 312 282 326 297 C340 314 325 335 308 329 C292 322 295 303 308 304 C324 305 330 290 330 274 L330 120',
             fill: 'none', stroke: '#38bdf8', 'stroke-width': 7, 'stroke-linecap': 'round'
         });
         g.appendChild(glandFill);
         g.appendChild(tagBox(214, 322, '땀샘', '#38bdf8'));
+        g.appendChild(el('path', { d: 'M262 322 L294 318', fill: 'none', stroke: '#22627b', 'stroke-width': 2 }));
+        g.appendChild(el('circle', { cx: 330, cy: 120, r: 5, fill: '#38bdf8' }));
 
         // 땀방울
         for (var j = 0; j < 6; j++) {
@@ -240,25 +242,21 @@
         vesselGlow.setAttribute('stroke-width', (w + 14).toFixed(1));
         vesselGlow.setAttribute('opacity', (0.10 + h * 0.3).toFixed(2));
 
-        /* 열 화살표: 혈관이 굵을수록 많이 빠져나간다 */
-        heatArrows.forEach(function (a, i) {
-            if (h < 0.25) { a.setAttribute('d', ''); return; }
-            var len = 12 + h * 22;   // 화살표 끝이 제목 줄을 넘지 않게
-            var wob = Math.sin(t0 * 0.004 + i) * 4;
-            var x = a._x + wob;
-            a.setAttribute('d', 'M' + (x - 7) + ' 120 L' + (x - 7) + ' ' + (120 - len) +
-                ' L' + (x - 15) + ' ' + (120 - len) + ' L' + x + ' ' + (120 - len - 18) +
-                ' L' + (x + 15) + ' ' + (120 - len) + ' L' + (x + 7) + ' ' + (120 - len) + ' L' + (x + 7) + ' 120 Z');
-            a.setAttribute('opacity', (0.25 + h * 0.7).toFixed(2));
+        /* Surface heat loss is a drifting thermal wave, not a rigid arrow. */
+        heatWaves.forEach(function (wave, i) {
+            var phase = (t0 * (0.00012 + h * 0.0002) + i * 0.19) % 1;
+            var x = wave._x, y = 118 - phase * 57;
+            wave.setAttribute('d', 'M' + x + ' ' + y + ' q-7 -8 0 -16 t0 -16');
+            wave.setAttribute('opacity', ((0.15 + h * 0.7) * Math.sin(phase * Math.PI)).toFixed(2));
         });
 
         /* 땀: 더울 때만 흐른다 */
         sweatDrops.forEach(function (d, i) {
             if (!hot) { d.setAttribute('opacity', 0); return; }
             var p = ((t0 * 0.00035) + i / sweatDrops.length) % 1;
-            d.setAttribute('opacity', (0.9 - p * 0.5).toFixed(2));
-            d.setAttribute('cx', 330 + Math.sin(i * 2.1) * 8);
-            d.setAttribute('cy', (240 - p * 150).toFixed(1));
+            d.setAttribute('opacity', (0.9 * (1 - p)).toFixed(2));
+            d.setAttribute('cx', 330 + Math.sin(i * 2.1) * p * 14);
+            d.setAttribute('cy', (120 - p * 70).toFixed(1));
         });
         glandFill.setAttribute('opacity', hot ? 1 : 0.35);
 
