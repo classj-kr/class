@@ -41,6 +41,14 @@
 - 무늬로 시각적 질감을 비교합니다. 화면상의 무늬를 실제 촉감으로 동일시하거나 느낌을 채점하지 않습니다. 무늬에 따라 평균 밝기도 달라질 수 있습니다.
 - 기준 모습과 바꾼 모습, 선택적인 관찰 메모를 함께 기록하고 복원합니다. 초기화해도 기록은 남으며 페이지를 새로 열면 지워집니다.
 
+### 조형 원리 — `design-principles/`
+
+- 균형: 같은 크기의 좌우 배치와 큰 원 하나·작은 원 세 개의 배치를 비교합니다. 두 배치의 전체 원 면적은 같으며 오른쪽 묶음만 안팎으로 옮깁니다.
+- 반복과 리듬: 일곱 원의 크기·개수·양 끝 위치를 고정하고 간격을 일정하게, 번갈아, 점점 넓게 바꿉니다. 일정한 간격에서는 차이 조절을 잠시 끄고 실제 간격 차이 0을 표시합니다.
+- 강조: 일곱 원 중 하나를 골라 크기 또는 색 차이를 조절합니다. 크기는 지름 비율이며 색은 정해진 녹색에서 주황색까지의 화면 RGB 보간입니다.
+- 균형의 정답이나 시선의 중요도를 수치로 채점하지 않습니다. 면적 보존은 비교 조건이며 시각적 균형의 공식을 뜻하지 않습니다.
+- 원리별 편집 상태를 유지합니다. 기준 지정·복원과 메모를 포함한 비교 기록을 지원하며 초기화는 현재 원리만 되돌립니다.
+
 ## 화면 원칙
 
 - 본문·버튼·수치 16px, 소제목 18px, 제목 22px.
@@ -50,7 +58,7 @@
 
 ## 남은 순서
 
-조형 원리 → 공간과 구도 → 실제 작품 적용. 오방색은 문화 자료를 중심으로 별도 구성합니다. 검토되지 않은 빈 차시를 미리 노출하지 않습니다.
+공간과 구도 → 실제 작품 적용. 오방색은 문화 자료를 중심으로 별도 구성합니다. 검토되지 않은 빈 차시를 미리 노출하지 않습니다.
 
 ## 검증
 
@@ -61,9 +69,11 @@ node tests/color-properties-browser-smoke.cjs
 node tests/color-harmony-browser-smoke.cjs
 node --test tests/visual-elements-model.test.cjs
 node tests/visual-elements-browser-smoke.cjs
+node --test tests/design-principles-model.test.cjs
+node tests/design-principles-browser-smoke.cjs
 ```
 
-Chrome 또는 Edge를 사용합니다. 실행 파일을 찾지 못하면 `CHROME_PATH`를 설정합니다. 스크린샷 출력 폴더는 `COLOR_MIXING_SCREENSHOTS`, `COLOR_PROPERTIES_SCREENSHOTS`, `COLOR_HARMONY_SCREENSHOTS`, `VISUAL_ELEMENTS_SCREENSHOTS`로 지정합니다. 임시 브라우저 프로필은 시스템 임시 폴더에서 만들고 검사 종료 시 삭제합니다.
+Chrome 또는 Edge를 사용합니다. 실행 파일을 찾지 못하면 `CHROME_PATH`를 설정합니다. 스크린샷 출력 폴더는 `COLOR_MIXING_SCREENSHOTS`, `COLOR_PROPERTIES_SCREENSHOTS`, `COLOR_HARMONY_SCREENSHOTS`, `VISUAL_ELEMENTS_SCREENSHOTS`, `DESIGN_PRINCIPLES_SCREENSHOTS`로 지정합니다. 임시 브라우저 프로필은 시스템 임시 폴더에서 만들고 검사 종료 시 삭제합니다.
 
 ## 근거 자료
 
@@ -74,3 +84,5 @@ Chrome 또는 Edge를 사용합니다. 실행 파일을 찾지 못하면 `CHROME
 - [알버스 재단: One Color Becomes Two](https://www.albersfoundation.org/learning/workshops/one-color-becomes-two)
 
 - [Getty: 조형 요소와 형식 분석](https://www.getty.edu/education/teachers/building_lessons/formal_analysis.html)
+
+- [Getty: 조형 원리와 형식 분석](https://www.getty.edu/education/teachers/building_lessons/formal_analysis2.html)

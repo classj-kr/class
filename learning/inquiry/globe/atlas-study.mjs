@@ -88,7 +88,7 @@ export function createAtlas(api){
   }
   function shuffle(items){const a=items.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
   function startQuiz(pool,review=false){
-    quiz={items:selectPracticeQuestions(pool,progress,{reviewOnly:review}),at:0,answers:[],review};
+    quiz={items:selectPracticeQuestions(pool,progress,{reviewOnly:review}),at:0,answers:[],solved:[],review};
     if(!$('atlasQuiz').open)$('atlasQuiz').showModal();renderQuestion();
   }
   function renderQuestion(){
@@ -104,20 +104,35 @@ export function createAtlas(api){
       if(q.visual==='climate')$('quizVisual').querySelector('.visual-caption').textContent='학습용 모형 A · 특정 도시의 관측값이 아닙니다.';
     }
     $('quizBody').querySelectorAll('[data-answer]').forEach(b=>b.onclick=()=>{
-      if(quiz.answers[quiz.at]!==undefined)return;
-      const correct=Number(b.dataset.answer)===q.answer;quiz.answers[quiz.at]=correct;
-      progress=updateProgress(progress,q.id,correct);
-      try{localStorage.setItem(KEY,JSON.stringify(progress));}catch{/* Study remains usable without persistent storage. */}
-      $('quizBody').querySelectorAll('[data-answer]').forEach(o=>{o.disabled=true;if(Number(o.dataset.answer)===q.answer)o.classList.add('correct');else if(o===b)o.classList.add('incorrect');});
-      $('answerFeedback').innerHTML=`<strong>${correct?'맞았어요':'다시 확인해 보세요'}</strong><p>${q.explanation}</p>`;
+      if(quiz.solved[quiz.at]||b.disabled)return;
+      const correct=Number(b.dataset.answer)===q.answer;
+      // Record the first attempt so a corrected mistake remains available for review.
+      if(quiz.answers[quiz.at]===undefined){
+        quiz.answers[quiz.at]=correct;
+        progress=updateProgress(progress,q.id,correct);
+        try{localStorage.setItem(KEY,JSON.stringify(progress));}catch{/* Study remains usable without persistent storage. */}
+      }
+      if(!correct){
+        b.classList.add('incorrect');b.disabled=true;
+        $('answerFeedback').textContent='다시 생각하고 골라 보세요.';
+        $('quizBody').querySelector('[data-answer]:not(:disabled)')?.focus();
+        return;
+      }
+      quiz.solved[quiz.at]=true;
+      b.classList.add('correct');
+      $('quizBody').querySelectorAll('[data-answer]').forEach(o=>{o.disabled=true;});
+      $('answerFeedback').innerHTML='<strong>맞았어요</strong><p>'+q.explanation+'</p>';
       $('nextQuestion').hidden=false;$('nextQuestion').focus();renderCatalog();
     });
-    $('nextQuestion').onclick=()=>{if(quiz.at+1<quiz.items.length){quiz.at++;renderQuestion();}else renderResult();};
+    $('nextQuestion').onclick=()=>{
+      if(!quiz.solved[quiz.at])return;
+      if(quiz.at+1<quiz.items.length){quiz.at++;renderQuestion();}else renderResult();
+    };
     $('quizBody').querySelector('[data-answer]')?.focus();
   }
   function renderResult(){
     const wrong=quiz.items.filter((_,i)=>!quiz.answers[i]),correct=quiz.answers.filter(Boolean).length;
-    $('quizBody').innerHTML=`<p class="quiz-meta">학습 확인</p><h2>${quiz.items.length}개 중 ${correct}개를 맞혔어요</h2><div class="result-topics">${wrong.map(q=>`<p>↻ ${q.prompt}</p>`).join('')}</div>${wrong.length?'<button id="retryQuiz" class="primary-button">틀린 문제만 다시 풀기</button>':''}<button id="returnMap">지도로 돌아가기</button>`;
+    $('quizBody').innerHTML=`<p class="quiz-meta">학습 확인</p><h2>모든 문제를 풀었어요</h2><p>처음에 맞힌 문제: ${correct} / ${quiz.items.length}</p><div class="result-topics">${wrong.map(q=>`<p>↻ ${q.prompt}</p>`).join('')}</div>${wrong.length?'<button id="retryQuiz" class="primary-button">틀린 문제만 다시 풀기</button>':''}<button id="returnMap">지도로 돌아가기</button>`;
     if(wrong.length)$('retryQuiz').onclick=()=>startQuiz(wrong,true);
     $('returnMap').onclick=()=>$('atlasQuiz').close();
   }

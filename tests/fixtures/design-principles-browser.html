@@ -1,0 +1,43 @@
+<!doctype html><meta charset="utf-8"><style>body{margin:0}iframe{height:100vh;border:0;display:block}pre{display:none}</style><iframe src="../../learning/arts/art-theory/design-principles/index.html"></iframe><pre id="result">pending</pre><script>
+const frame=document.querySelector('iframe');const viewport=Number(new URLSearchParams(location.search).get('width'))||1440;frame.style.width=viewport+'px';
+frame.onload=async()=>{try{
+ const d=frame.contentDocument,w=frame.contentWindow,checks=[],$=s=>d.querySelector(s);
+ const ok=(value,message)=>{if(!value)throw Error(message);checks.push(message)};
+ const click=s=>$(s).click();const set=(id,value)=>{const input=$(id);input.value=value;input.dispatchEvent(new w.Event('input',{bubbles:true}))};
+ const scene=id=>$(id).innerHTML;const circles=id=>[...$(id).querySelectorAll('circle')];const fits=()=>d.documentElement.scrollWidth<=d.documentElement.clientWidth;
+ async function pixels(id){const svg=$(id).cloneNode(true);svg.setAttribute('xmlns','http://www.w3.org/2000/svg');svg.setAttribute('width','380');svg.setAttribute('height','340');const url=URL.createObjectURL(new Blob([new XMLSerializer().serializeToString(svg)],{type:'image/svg+xml'})),img=new Image();await new Promise((resolve,reject)=>{img.onload=resolve;img.onerror=reject;img.src=url});const canvas=document.createElement('canvas');canvas.width=380;canvas.height=340;const ctx=canvas.getContext('2d');ctx.drawImage(img,0,0);URL.revokeObjectURL(url);return ctx.getImageData(0,0,380,340).data;}
+ ok(w.innerWidth===viewport,'actual viewport');ok(fits(),'initial layout');
+ click('#saveRecord');ok(!$('.comparison-record'),'identical scenes cannot be recorded');
+ const ref=scene('#referenceScene');set('#shift',35);ok(scene('#referenceScene')===ref,'moving group preserves reference');
+ ok(circles('#currentScene')[0].outerHTML===circles('#referenceScene')[0].outerHTML,'left group unchanged');
+ ok(circles('#currentScene')[2].getAttribute('cx')==='305','right group moves');
+ const first=await pixels('#referenceScene'),second=await pixels('#currentScene');ok(first.some((v,i)=>v!==second[i]),'visible balance change');
+ $('#observationText').value='<b>오른쪽</b>';click('#saveRecord');ok($('.record-description p').textContent==='<b>오른쪽</b>'&&!$('.record-description b'),'literal observation recorded');
+ click('#setReference');const pinned=scene('#referenceScene');click('[data-layout="varied"]');ok(scene('#referenceScene')===pinned,'arrangement preserves pinned reference');
+ const area=items=>items.reduce((sum,c)=>sum+Math.PI*Number(c.getAttribute('r'))**2,0);ok(Math.abs(area(circles('#referenceScene'))-area(circles('#currentScene')))<1e-8,'rendered total area retained');
+ click('[data-study="rhythm"]');ok($('#amount').disabled&&$('#amountOutput').value==='0','equal intervals disable difference slider');
+ click('[data-pattern="alternate"]');set('#amount',100);const rhythm=scene('#currentScene');ok(!$('#amount').disabled,'unequal intervals enable difference');
+ let xs=circles('#currentScene').map(el=>Number(el.getAttribute('cx')));ok(Math.abs(xs[0]-50)<.001&&Math.abs(xs.at(-1)-330)<.001,'rhythm endpoints remain');ok(xs[2]-xs[1]>xs[1]-xs[0],'alternating gaps rendered');click('#saveRecord');
+ click('[data-pattern="even"]');ok($('#amount').value==='0'&&$('#amount').disabled,'even mode readout matches visual');click('[data-pattern="alternate"]');ok($('#amount').value==='100','previous interval difference restored');
+ click('[data-study="balance"]');ok(scene('#referenceScene')===pinned&&$('[data-layout="varied"]').getAttribute('aria-pressed')==='true','mode switching preserves both scenes');
+ click('[data-study="emphasis"]');set('#target',7);click('#saveRecord');ok(d.querySelectorAll('.comparison-record').length===2,'selection alone does not create a false difference');
+ const normal=circles('#referenceScene').map(el=>el.outerHTML);set('#size',180);set('#contrast',100);let modified=circles('#currentScene');ok(modified.slice(0,6).every((el,i)=>el.outerHTML===normal[i]),'only selected item changes');ok(modified[6].getAttribute('r')==='32.4','selected size displayed');
+ click('#setReference');const emphasisRef=scene('#referenceScene');set('#target',2);click('#saveRecord');click('#resetStudy');ok(d.querySelectorAll('.comparison-record').length===3,'reset keeps records');
+ click('[data-restore="3"]');ok(scene('#referenceScene')===emphasisRef&&$('#target').value==='2','record restores pinned reference and target');
+ ok(d.activeElement.dataset.study==='emphasis','restore returns focus to active mode');
+ click('[data-restore="2"]');ok(scene('#currentScene')===rhythm,'rhythm record survives later edits');
+ click('[data-restore="1"]');ok(scene('#referenceScene')===ref&&$('#shift').value==='35','old record stays immutable');
+ click('#restoreReference');ok(scene('#currentScene')===scene('#referenceScene'),'restore reference restores exact geometry');
+ click('[data-delete="2"]');ok(d.querySelectorAll('.comparison-record').length===2&&d.activeElement.id==='saveRecord','record delete and focus');
+ for(const study of ['balance','rhythm','emphasis']){
+  click(`[data-study="${study}"]`);
+  for(const button of d.querySelectorAll(`#${study}Controls button`)){button.click();ok(fits(),'choice fits');}
+  for(const input of d.querySelectorAll(`#${study}Controls input`))for(const value of [input.min,input.max]){set('#'+input.id,value);ok(fits(),'range limits fit');}
+ }
+ ok(w.getComputedStyle($('h1')).fontSize==='22px','title size');ok(w.getComputedStyle($('#controlTitle')).fontSize==='18px','subheading size');ok(w.getComputedStyle($('#saveRecord')).fontSize==='16px','button size');ok(d.querySelectorAll('.lesson-links a').length===5,'five lessons connected');
+ click('[data-study="balance"]');click('#resetStudy');click('[data-layout="varied"]');set('#shift',25);
+ if(viewport===390){click('[data-study="rhythm"]');click('[data-pattern="alternate"]');set('#amount',100);}
+ if(viewport===320){click('[data-study="emphasis"]');click('#resetStudy');set('#size',180);set('#contrast',100);}
+ w.scrollTo(0,0);d.activeElement.blur();document.querySelector('#result').textContent=JSON.stringify({passed:checks.length});document.title='PASS';
+}catch(error){document.querySelector('#result').textContent='FAIL '+error.stack;document.title='FAIL'}};
+</script>

@@ -16,8 +16,11 @@ assert.equal(byId.size, stories.length, '이야기 도시 ID 중복');
 for (const city of cities) {
   const story = byId.get(city.id);
   assert.ok(story, `${city.name} 이야기가 없음`);
-  for (const field of ['why', 'in1520', 'today']) {
-    const value = String(story[field] || '');
+  assert.ok(Array.isArray(story.sections) && story.sections.length > 0, city.name + ' 설명 문단 없음');
+  assert.ok(!('in1520' in story) && !('why' in story) && !('today' in story), '고정된 시대별 구조가 남음');
+  for (const section of story.sections) {
+    const field = section.heading || '본문';
+    const value = String(section.text || '');
     assert.ok(value.length >= 20, `${city.name} ${field} 가 너무 짧음`);
     assert.ok(value.endsWith('.'), `${city.name} ${field} 마지막 문장에 마침표 없음`);
     assert.ok(!/[A-Za-z]/.test(value), `${city.name} ${field} 에 로마자가 섞임`);
@@ -56,6 +59,10 @@ const server = fs.readFileSync(path.join(ROOT, 'server.js'), 'utf8');
 assert.match(server, /caption: credit\?\.caption/, '서버가 사진 설명을 보내지 않음');
 const page = fs.readFileSync(path.join(ROOT, 'public', 'index.html'), 'utf8');
 assert.match(page, /storyCaption/, '화면이 사진 설명을 보여 주지 않음');
-assert.match(page, /도시의 형성 배경/, '도시 설명 첫 칸 제목이 없음');
+assert.match(page, /story\.sections/, '도시별 문단을 표시해야 함');
+assert.doesNotMatch(page, /story\.(why|in1520|today)/, '공통 시대별 양식을 다시 쓰면 안 됨');
+assert.ok(new Set(stories.map(s=>s.sections.length)).size >= 3, '설명 문단 수를 고정하면 안 됨');
+const chengdu = byId.get(cities.find(c=>c.name==='청두').id);
+for(const word of ['촉한','유비','제갈량','두장옌'])assert.ok(chengdu.sections.some(s=>s.text.includes(word)), '청두 핵심 내용 누락: '+word);
 
 console.log(`v83 city story unit ok · 이야기 ${stories.length} · 사진 ${photos.length} · 사진 설명 ${Object.values(credits).filter((c) => c.caption).length}`);

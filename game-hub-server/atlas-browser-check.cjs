@@ -21,7 +21,22 @@ const server=http.createServer((req,res)=>{let file=path.resolve(root,'.'+decode
  let questionsAnswered=0;
  while(await page.locator('#nextQuestion').count()){
    const answer=await page.evaluate(async()=>{const {QUESTIONS}=await import('/learning/inquiry/globe/curriculum.mjs?v=20260920-22');return QUESTIONS.find(q=>q.id===document.getElementById('quizBody').dataset.questionId).answer;});
-   await page.locator('[data-answer="'+(questionsAnswered===0?(answer+1)%4:answer)+'"]').click();
+   if(questionsAnswered===0){
+     const questionId=await page.locator('#quizBody').getAttribute('data-question-id');
+     for(const wrong of [(answer+1)%4,(answer+2)%4]){
+       await page.locator('[data-answer="'+wrong+'"]').click();
+       assert.equal(await page.locator('#nextQuestion').isVisible(),false);
+       assert.equal(await page.locator('.quiz-options .correct').count(),0);
+       assert.equal(await page.locator('#answerFeedback p').count(),0);
+       assert.equal(await page.locator('[data-answer="'+answer+'"]').isEnabled(),true);
+       assert.equal(await page.locator('#quizBody').getAttribute('data-question-id'),questionId);
+       await page.locator('#nextQuestion').evaluate(b=>b.click());
+       assert.equal(await page.locator('#quizBody').getAttribute('data-question-id'),questionId);
+     }
+   }
+   await page.locator('[data-answer="'+answer+'"]').click();
+   assert.equal(await page.locator('#nextQuestion').isVisible(),true);
+   assert.equal(await page.locator('#answerFeedback p').count(),1);
    await page.locator('#nextQuestion').click();questionsAnswered++;
  }
  assert.ok(questionsAnswered>2);assert.ok(await page.locator('#retryQuiz').isVisible());await page.screenshot({path:path.join(screenshots,'atlas-quiz.png')});await page.locator('#retryQuiz').click();
@@ -39,7 +54,7 @@ const server=http.createServer((req,res)=>{let file=path.resolve(root,'.'+decode
  assert.equal(await page.evaluate(()=>__atlasCheck.getMode()),'flat');
  await page.emulateMedia({reducedMotion:'reduce'});await page.reload();await page.waitForFunction(()=>window.__atlasCheck?.isReady()&&__atlasCheck.map.getSource('atlas-spots'));await page.waitForTimeout(1000);await page.getByRole('button',{name:'지구본',exact:true}).click();assert.equal(await page.locator('.peel-surface').count(),0);assert.equal(await page.evaluate(()=>__atlasCheck.getMode()),'globe');
  await page.locator('#catalogToggle').click();await choose('currents');const reduced=await page.evaluate(()=>__atlasCheck.getTime());await page.waitForTimeout(200);assert.equal(await page.evaluate(()=>__atlasCheck.getTime()),reduced);
- await page.locator('#catalogToggle').click();await choose('climate-graph');await page.locator('#lessonPractice').click();for(let n=0;n<20&&!(await page.locator('#quizVisual svg').count());n++){await page.locator('[data-answer="0"]').click();await page.locator('#nextQuestion').click();}assert.ok(await page.locator('#quizVisual svg').isVisible());assert.equal(await page.locator('#quizVisual .mini-tabs').count(),0);assert.ok(!(await page.locator('#quizVisual .visual-caption').textContent()).includes('연교차'));assert.ok(!(await page.locator('#quizVisual .visual-caption').textContent()).includes('19')); await page.screenshot({path:path.join(screenshots,'atlas-graph-question.png')});await page.getByRole('button',{name:'문제 닫기',exact:true}).click();
+ await page.locator('#catalogToggle').click();await choose('climate-graph');await page.locator('#lessonPractice').click();for(let n=0;n<20&&!(await page.locator('#quizVisual svg').count());n++){const a=await page.evaluate(async()=>{const {QUESTIONS}=await import('/learning/inquiry/globe/curriculum.mjs');return QUESTIONS.find(q=>q.id===document.getElementById('quizBody').dataset.questionId).answer;});await page.locator('[data-answer="'+a+'"]').click();await page.locator('#nextQuestion').click();}assert.ok(await page.locator('#quizVisual svg').isVisible());assert.equal(await page.locator('#quizVisual .mini-tabs').count(),0);assert.ok(!(await page.locator('#quizVisual .visual-caption').textContent()).includes('연교차'));assert.ok(!(await page.locator('#quizVisual .visual-caption').textContent()).includes('19')); await page.screenshot({path:path.join(screenshots,'atlas-graph-question.png')});await page.getByRole('button',{name:'문제 닫기',exact:true}).click();
  await page.setViewportSize({width:1440,height:950});await page.emulateMedia({reducedMotion:'no-preference'});await choose('currents');await page.screenshot({path:path.join(screenshots,'atlas-final-desktop.png')});
  await page.evaluate(async()=>{const {createPeelSurface}=await import('/learning/inquiry/globe/peel-surface.mjs?v=20260920-18');window.__peel=await createPeelSurface(__atlasCheck.map,1,[127,25]);__peel.draw(.36,.36);});await page.screenshot({path:path.join(screenshots,'atlas-peel-surface.png')});await page.evaluate(()=>__peel.destroy());
  console.log(JSON.stringify({errors,projection:await page.evaluate(()=>__atlasCheck.getMode()),bodyOverflow:await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth)}));assert.deepEqual(errors,[]);

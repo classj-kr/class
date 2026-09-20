@@ -48,6 +48,18 @@ button,input{font:inherit}button{border:1px solid var(--line);background:#17313b
 @media(max-width:650px){#finalQuizView{padding:4px}#finalQuizCard{width:100%;max-height:99vh;border-radius:6px}#finalQuizHeader{padding:10px 12px}#finalQuizHeader h2{font-size:18px}#finalQuizQuestions{padding:9px}.finalQuestion{padding:11px}.finalPassage,.finalChoice{font-size:12px}.entryModes{grid-template-columns:1fr}.entryMode{min-height:104px}.statusMain{grid-template-columns:repeat(2,1fr)}.statusItem{min-height:29px;padding:3px 5px}.statusItem small{font-size:8px}.statusItem b{font-size:10px}.statusSub{font-size:8px}.statusSub #identity,.statusSub #terrainHud{display:none}#hud{font-size:9px}.joinRow{grid-template-columns:1fr}#zoom{top:126px}#messageWindow{left:8px;right:8px;bottom:8px;height:106px;padding-bottom:9px}#messageHeader{height:18px;line-height:16px;margin-bottom:4px}#messageLines{font-size:10px;line-height:1.42;gap:1px;grid-template-rows:repeat(4,minmax(14px,auto))}.guideLine{min-height:14px}#pad{width:132px;height:132px;bottom:122px}.actionPrompt{bottom:262px;width:max-content;max-width:92vw}#missionPanel{right:8px;top:126px;max-height:43vh}#missionToggle{right:8px;top:126px}#missionBanner{top:126px;min-width:calc(100vw - 150px);max-width:calc(100vw - 150px);font-size:11px}.choiceRequired .missionChoiceGrid{grid-template-columns:1fr}#cityView{padding:126px 6px 6px}#cityCard{width:min(100%,calc((100vh - 236px) * 1.5));aspect-ratio:auto;display:flex;flex-direction:column;border-radius:5px}#cityScene{position:relative;inset:auto;height:auto;aspect-ratio:3/2}#cityShade{display:none}#cityCard:has(#cityScene[hidden]){padding-top:48px}#cityTitle{left:9px;top:9px;font-size:17px;padding:5px 9px}#cityInfo{position:static;max-width:none;padding:10px 12px 2px;font-size:12px;text-shadow:none}#cityMenu{position:static;padding:8px;flex-wrap:wrap}#cityMenu button{flex:1 1 0;min-width:0;min-height:38px;padding:0 8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}#leaveCityBtn{margin-left:0}#libraryView{padding:6px}#libraryCard{height:97vh}#libraryBody{grid-template-columns:1fr;grid-template-rows:36% minmax(0,1fr)}#bookList{border-right:0;border-bottom:1px solid #53645c}#bookReader{padding:18px}#bookReader h2{font-size:22px}#bgmControl{right:8px;bottom:120px;padding:4px 6px;gap:5px}#bgmToggle{min-width:40px;min-height:32px;padding:0 7px}#bgmVolume{width:72px}#bgmTrack{display:none}}
 #bgmControl.unified-music-control{top:8px;right:8px;bottom:auto;z-index:100000;max-width:none;padding:3px 6px;border-radius:999px;touch-action:manipulation}#bgmControl.locked .unified-audio-slider{opacity:.58}@media(max-width:650px){#bgmControl.unified-music-control{top:6px;right:6px;bottom:auto;padding:2px 4px}}
 #cityLegend{border-radius:8px;font-size:11px}#cityLegend summary{min-height:42px;display:flex;align-items:center;padding:0 9px;cursor:pointer;list-style:none}#cityLegend summary::-webkit-details-marker{display:none}#cityLegend summary:focus-visible{outline:2px solid #f2cf78;outline-offset:2px}#cityLegend[open] summary{color:#ffe3a0}#cityLegend>div{position:absolute;right:0;top:48px;width:215px;padding:12px 14px;background:#102832f5;border:1px solid var(--line);border-radius:8px;line-height:1.9;box-shadow:0 4px 18px #0008}#cityLegend small{color:#b9c9c7;font-size:10px}
+
+/* Locally bundled reading face for explanations and exam passages. */
+@font-face{font-family:'Voyage Batang';src:url('/learn/world-voyage/fonts/KoPubWorld-Batang-Medium.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
+:root{--reading-font:'Voyage Batang','Batang','바탕',serif}
+#discoveryText,#bookReader,#bookReader h2,#bookSections h3,#finalQuizQuestions{font-family:var(--reading-font);word-break:keep-all;overflow-wrap:break-word}
+#discoveryText{font-size:16px;line-height:1.9}
+#discoveryText .storyHead{font-size:17px;margin:20px 0 7px;line-height:1.5}
+#discoveryText .storyBody{line-height:1.9}
+#discoveryText .storyCaption{font-size:13px;line-height:1.65}
+#finalQuizQuestions .finalPassage,#finalQuizQuestions .finalChoice,#finalQuizQuestions .finalPrompt{font-size:15.5px;line-height:1.8}
+#finalQuizQuestions .finalExplanation{font-size:14px;line-height:1.75}
+@media(max-width:650px){#discoveryCard{padding:17px 16px}#discoveryText{font-size:15px}#discoveryText .storyHead{font-size:16px}#finalQuizQuestions .finalPassage,#finalQuizQuestions .finalChoice,#finalQuizQuestions .finalPrompt{font-size:14.5px}}
 </style>
 </head>
 <body>
@@ -527,7 +539,7 @@ function applyModeUI(){
 }
 
 async function ungzipResponse(url){const response=await fetch(url);if(!response.ok)throw new Error('지도 파일을 받지 못했습니다.');if(!('DecompressionStream' in window))throw new Error('최신 Chrome이 필요합니다.');const ds=new DecompressionStream('gzip');return await new Response(response.body.pipeThrough(ds)).arrayBuffer()}
-Promise.all([ungzipResponse('/learn/world-voyage/assets/maps/world.cds.gz?v=58'),ungzipResponse('/learn/world-voyage/assets/maps/natural-earth-land-mask-v59.bin.gz?v=61'),decodeSoon(naturalMapOverview),decodeSoon(shipAtlas),decodeSoon(windCloudAtlas),fetch('/learn/world-voyage/api/mission-catalog?v=88').then(r=>{if(!r.ok)throw new Error('도시 목록을 받지 못했습니다.');return r.json()}),fetch('/learn/world-voyage/data/library-books.json?v=80').then(r=>{if(!r.ok)throw new Error('도서관 자료를 받지 못했습니다.');return r.json()})]).then(([buf,landMask,_map,_s,_w,catalog,books])=>{world=new Uint16Array(buf);if(world.length!==WW*WH)throw new Error('지도 크기 불일치');naturalLandMask=new Uint8Array(landMask);UW3Terrain.setNaturalEarthLandMask(naturalLandMask);mapCities=(catalog.places||[]).filter(p=>p.isOriginalCity&&p.displayOnMap&&p.cityPoint);cityCatalogById=new Map((catalog.places||[]).filter(p=>p.isOriginalCity).map(p=>[p.id,p]));libraryCatalog=books||{books:[]};discoveryCatalog=new Map((catalog.discoveries||[]).map(d=>[d.id,d]));discoveryPoints=(catalog.discoveries||[]).map(d=>({...d,x:((d.lon+180)/360)*SPAN,y:((90-d.lat)/180)*MAP_H}));assetsReady=true;loading.remove()}).catch(err=>{loading.textContent='불러오기 실패: '+err.message;console.error(err)});
+Promise.all([ungzipResponse('/learn/world-voyage/assets/maps/world.cds.gz?v=58'),ungzipResponse('/learn/world-voyage/assets/maps/natural-earth-land-mask-v59.bin.gz?v=61'),decodeSoon(naturalMapOverview),decodeSoon(shipAtlas),decodeSoon(windCloudAtlas),fetch('/learn/world-voyage/api/mission-catalog?v=89').then(r=>{if(!r.ok)throw new Error('도시 목록을 받지 못했습니다.');return r.json()}),fetch('/learn/world-voyage/data/library-books.json?v=80').then(r=>{if(!r.ok)throw new Error('도서관 자료를 받지 못했습니다.');return r.json()})]).then(([buf,landMask,_map,_s,_w,catalog,books])=>{world=new Uint16Array(buf);if(world.length!==WW*WH)throw new Error('지도 크기 불일치');naturalLandMask=new Uint8Array(landMask);UW3Terrain.setNaturalEarthLandMask(naturalLandMask);mapCities=(catalog.places||[]).filter(p=>p.isOriginalCity&&p.displayOnMap&&p.cityPoint);cityCatalogById=new Map((catalog.places||[]).filter(p=>p.isOriginalCity).map(p=>[p.id,p]));libraryCatalog=books||{books:[]};discoveryCatalog=new Map((catalog.discoveries||[]).map(d=>[d.id,d]));discoveryPoints=(catalog.discoveries||[]).map(d=>({...d,x:((d.lon+180)/360)*SPAN,y:((90-d.lat)/180)*MAP_H}));assetsReady=true;loading.remove()}).catch(err=>{loading.textContent='불러오기 실패: '+err.message;console.error(err)});
 
 socket.on('connect',()=>{net.textContent='● 서버 연결';net.className='good'});
 socket.on('disconnect',()=>{net.textContent='● 재연결 중';net.className='bad';startChoicePending=false;pendingStartChoice=null;startChoiceRollback=null;for(const card of missionPanel.querySelectorAll('.missionChoiceCard')){card.disabled=false;card.classList.remove('isSelecting')}if(awaitingStartChoice()){missionFeedback.className='bad';missionFeedback.textContent='서버 연결이 끊겼습니다. 재연결 후 다시 선택하세요.'}});
@@ -571,18 +583,18 @@ function openLandmark(index){
   });
 }
 landmarkBtn.addEventListener('click',()=>{if(landmarkQueue.length)openLandmark(0)});
-// 도시 이야기: 왜 여기에 도시가 생겼는지, 1520년에는, 지금은. 오늘날 사진을 붙여 도시 화면의 1520년 그림과 견준다.
+// 도시별로 고른 역사·인물·문화 주제를 데이터 순서대로 표시한다.
 function openCityStory(){
   const city=cityCatalogById.get(String(serverSelf?.currentCityId||''));const story=city?.story;if(!story)return;
   discoveryName.textContent=`${city.name} 도시 설명`;
-  discoveryKind.textContent=[city.in1520?`1520년 ${city.in1520}`:'',city.todayCountry?`오늘날 ${city.todayCountry}`:''].filter(Boolean).join(' · ');
+  discoveryKind.textContent=[city.todayCountry,city.region].filter(Boolean).join(' · ');
   const photo=city.todayPhoto;
   if(photo?.url){discoveryImage.src=photo.url;discoveryImage.alt=`오늘날 ${city.name}`;discoveryImage.hidden=false;discoveryCredit.textContent=photo.credit||'오늘날 모습';discoveryCredit.hidden=false}
   else{discoveryImage.removeAttribute('src');discoveryImage.hidden=true;discoveryCredit.textContent='';discoveryCredit.hidden=true}
-  const parts=[['도시의 형성 배경',story.why],['1520년에는',story.in1520],['지금은',story.today]];
+  const parts=(story.sections||[]).map(section=>[section.heading,section.text]);
   discoveryText.replaceChildren();
   if(photo?.url&&photo.caption){const cap=document.createElement('p');cap.className='storyCaption';cap.textContent=`사진 속 · ${photo.caption}`;discoveryText.append(cap)}
-  for(const [title,body] of parts){if(!body)continue;const h=document.createElement('h3');h.className='storyHead';h.textContent=title;const para=document.createElement('p');para.className='storyBody';para.textContent=body;discoveryText.append(h,para)}
+  for(const [title,body] of parts){if(!body)continue;if(title){const h=document.createElement('h3');h.className='storyHead';h.textContent=title;discoveryText.append(h)}const para=document.createElement('p');para.className='storyBody';para.textContent=body;discoveryText.append(para)}
   discoveryCount.textContent='';discoveryNext.hidden=true;
   discoveryView.classList.add('show');clearKeys();
 }

@@ -397,9 +397,7 @@ const ITEM_BY_ID = new Map(MissionCatalog.ITEMS.map((item) => [item.id, item]));
 const TEMPLATE_BY_ID = new Map(MissionCatalog.TEMPLATES.map((template) => [template.id, template]));
 const READY_BY_ID = new Map(MissionCatalog.READY_MISSIONS.map((mission) => [mission.id, mission]));
 
-// 도시 이야기. 도시에 들어가면 "이야기" 단추로 왜 여기에 도시가 생겼는지,
-// 1520년에는 어땠는지, 지금은 어떻게 달라졌는지를 쉬운 말로 보여 준다.
-// 도시 화면 그림이 1520년 모습이니, 이야기 창에는 오늘날 사진을 붙여 그때와 지금을 견준다.
+// 도시 설명은 각 도시의 핵심 주제를 담은 가변 길이의 문단으로 제공한다.
 const CITY_STORIES = new Map(JSON.parse(fs.readFileSync(path.join(__dirname, 'data', 'catalog', 'city-stories.json'), 'utf8')).map((item) => [item.cityId, item]));
 const CITY_TODAY_DIR = path.join(__dirname, 'public', 'assets', 'city-today');
 const CITY_PHOTO_CREDITS = (() => {
@@ -431,7 +429,7 @@ function publicMissionCatalog() {
       const todayPhoto = place.isOriginalCity ? cityTodayPhoto(place.artKey) : null;
       const educationalLibrary = place.isOriginalCity
         ? {
-            story: story ? { why: story.why, in1520: story.in1520, today: story.today } : null,
+            story: story ? { sections: story.sections, sources: story.sources || [] } : null,
             todayPhoto,
             hasLibrary: true,
             libraryRegion: FinalQuiz.libraryShelfForCity(place),

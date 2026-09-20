@@ -52,7 +52,7 @@ frame.onload=async()=>{try{
   ok(w.getComputedStyle($('#controlTitle')).fontSize==='18px','subheading size');
  }
  ok(w.getComputedStyle($('h1')).fontSize==='22px','title size');ok(w.getComputedStyle($('#saveRecord')).fontSize==='16px','button size');
- ok(d.querySelectorAll('.lesson-links a').length===4,'four lessons connected');
+ ok(d.querySelectorAll('.lesson-links a').length===5,'five lessons connected');
  click('#resetStudy');click('[data-axis="angle"]');set(45);if(viewport===390){click('[data-axis="texture"]');click('[data-value="grain"]');}w.scrollTo(0,0);d.activeElement.blur();
  document.querySelector('#result').textContent=JSON.stringify({passed:checks.length});document.title='PASS';
 }catch(error){document.querySelector('#result').textContent='FAIL '+error.stack;document.title='FAIL'}};

@@ -40,7 +40,7 @@ frame.onload=()=>{try{
  ok($('#referenceComposition').innerHTML===custom,'record restores pinned reference');
  click('[data-restore="1"]');ok(!$('#contextStudy').hidden&&$('#leftLightness').value==='85','context record restores mode and background');
  click('[data-delete="1"]');ok(d.querySelectorAll('.comparison-record').length===1&&d.activeElement.id==='saveRecord','record removal restores focus');
- ok([...d.querySelectorAll('.lesson-links a')].length===4,'four new lessons connected');
+ ok([...d.querySelectorAll('.lesson-links a')].length===5,'five new lessons connected');
  click('[data-study="area"]');w.scrollTo(0,0);d.activeElement.blur();
  document.querySelector('#result').textContent=JSON.stringify({passed:checks.length});document.title='PASS';
 }catch(error){document.querySelector('#result').textContent='FAIL '+error.stack;document.title='FAIL'}};

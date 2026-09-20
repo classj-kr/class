@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex">
+<title>조형 원리 · 미술 실험</title>
+<link rel="stylesheet" href="../color-mixing/styles.css?v=20260920-type"><link rel="stylesheet" href="styles.css?v=20260920">
+<script src="model.js?v=20260920" defer></script><script src="app.js?v=20260920" defer></script>
+</head>
+<body><main class="lab-shell">
+<nav class="lesson-links" aria-label="차시 선택"><a href="../color-mixing/">색의 혼합</a><a href="../color-properties/">색상·명도·채도</a><a href="../color-harmony/">색의 관계와 배색</a><a href="../visual-elements/">조형 요소</a><a href="./" aria-current="page">조형 원리</a></nav>
+<header class="lesson-header"><h1>조형 원리</h1><button type="button" id="resetStudy" class="text-button">초기화</button></header>
+<p class="intro">같은 요소도 배열에 따라 달라집니다. 배치와 간격, 눈길이 머무는 곳을 비교해 보세요.</p>
+<div class="axis-switch" role="group" aria-label="살펴볼 원리"><button type="button" data-study="balance" aria-pressed="true">균형</button><button type="button" data-study="rhythm" aria-pressed="false">반복과 리듬</button><button type="button" data-study="emphasis" aria-pressed="false">강조</button></div>
+<section class="elements-workspace" aria-label="조형 원리 비교">
+<div class="comparison-board">
+<div class="scene-pair">
+<figure><figcaption>기준 모습</figcaption><svg id="referenceScene" viewBox="0 0 380 340" role="img"></svg><p id="referenceValue" class="scene-value"></p></figure>
+<figure><figcaption>바꾼 모습</figcaption><svg id="currentScene" viewBox="0 0 380 340" role="img"></svg><p id="currentValue" class="scene-value"></p></figure>
+</div>
+<div class="comparison-actions"><button type="button" id="setReference" class="secondary-button">현재 모습을 기준으로</button><button type="button" id="restoreReference" class="text-button">기준으로 되돌리기</button></div>
+<p id="comparisonStatus" role="status"></p>
+</div>
+<aside class="elements-controls" aria-labelledby="controlTitle">
+<h2 id="controlTitle">균형</h2>
+<div id="balanceControls">
+<div class="element-choices" role="group" aria-label="배치 방식"><button type="button" data-layout="mirror">같은 크기</button><button type="button" data-layout="varied">다른 크기</button></div>
+<label for="shift">오른쪽 묶음의 위치 <output id="shiftOutput" for="shift"></output></label><input id="shift" type="range" min="-45" max="45" value="0"><div class="range-ends"><span>안쪽으로</span><span>바깥쪽으로</span></div>
+</div>
+<div id="rhythmControls" hidden>
+<div class="element-choices" role="group" aria-label="간격의 변화"><button type="button" data-pattern="even">일정하게</button><button type="button" data-pattern="alternate">번갈아</button><button type="button" data-pattern="growing">점점 넓게</button></div>
+<label for="amount">간격 차이 <output id="amountOutput" for="amount"></output></label><input id="amount" type="range" min="0" max="100" value="60"><div class="range-ends"><span>같은 간격</span><span>큰 차이</span></div>
+</div>
+<div id="emphasisControls" hidden>
+<label for="target">바꿀 원 <output id="targetOutput" for="target"></output></label><input id="target" type="range" min="1" max="7" value="4">
+<label for="size">크기 <output id="sizeOutput" for="size"></output></label><input id="size" type="range" min="100" max="180" value="100">
+<label for="contrast">색 차이 <output id="contrastOutput" for="contrast"></output></label><input id="contrast" type="range" min="0" max="100" value="0">
+</div>
+<p id="fixedNote" class="control-note"></p>
+</aside>
+</section>
+<section class="observation-note"><h2>살펴볼 점</h2><p id="observationPrompt"></p></section>
+<section class="comparison-records" aria-labelledby="recordTitle">
+<h2 id="recordTitle">비교 기록</h2>
+<div class="record-entry"><label for="observationText">발견한 차이 <span>(선택)</span></label><div class="record-input"><input id="observationText" type="text" maxlength="200" placeholder="어느 쪽에서 무엇이 다르게 보였나요?"><button type="button" id="saveRecord" class="secondary-button">지금 비교 기록하기</button></div></div>
+<p id="recordStatus" role="status"></p><div id="records"></div>
+</section>
+<noscript><p class="no-script">직접 비교하려면 자바스크립트를 켜 주세요.</p></noscript>
+</main></body></html>
