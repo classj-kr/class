@@ -1,0 +1,91 @@
+{
+  "slug": "pea-genetics",
+  "engine": "webkit",
+  "modes": [
+    "one",
+    "two"
+  ],
+  "cases": 22,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__peaModel",
+      "methods": [
+        "TRAITS",
+        "GENOS",
+        "CROSSES2",
+        "SEED_COUNTS",
+        "state",
+        "analyseOne",
+        "analyseTwo",
+        "analyse",
+        "sow",
+        "tally",
+        "rng",
+        "render",
+        "runSeconds",
+        "setMode",
+        "set",
+        "setSeed",
+        "setProgress",
+        "runToEnd",
+        "tick",
+        "finish"
+      ]
+    }
+  ],
+  "paint": [],
+  "grades": [
+    {
+      "mode": "one",
+      "results": [
+        {
+          "choice": "all-dom",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        },
+        {
+          "choice": "3-1",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "1-1",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "all-rec",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        }
+      ]
+    },
+    {
+      "mode": "two",
+      "results": [
+        {
+          "choice": "all-same",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "9-3-3-1",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        },
+        {
+          "choice": "1-1-1-1",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "3-1",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        }
+      ]
+    }
+  ]
+}

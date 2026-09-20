@@ -1,0 +1,81 @@
+{
+  "slug": "minerals-rocks",
+  "engine": "webkit",
+  "modes": [
+    "mineral",
+    "rock"
+  ],
+  "cases": 22,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__rockModel",
+      "methods": [
+        "MINERALS",
+        "ROCKS",
+        "K_CRYSTAL",
+        "N_CRYSTAL",
+        "FINE_MM",
+        "COARSE_MM",
+        "LOG_MIN",
+        "LOG_MAX",
+        "COOL_K",
+        "state",
+        "analyseMineral",
+        "analyseRock",
+        "analyse",
+        "daysFor",
+        "crystalFor",
+        "timeText",
+        "render",
+        "check",
+        "setMode",
+        "set"
+      ]
+    }
+  ],
+  "paint": [],
+  "grades": [
+    {
+      "mode": "mineral",
+      "results": [
+        {
+          "choice": "a",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        },
+        {
+          "choice": "b",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "none",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        }
+      ]
+    },
+    {
+      "mode": "rock",
+      "results": [
+        {
+          "choice": "fine",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        },
+        {
+          "choice": "medium",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "coarse",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        }
+      ]
+    }
+  ]
+}

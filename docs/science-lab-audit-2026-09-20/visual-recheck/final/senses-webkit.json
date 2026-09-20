@@ -1,0 +1,57 @@
+{
+  "slug": "senses",
+  "engine": "webkit",
+  "modes": [
+    "initial"
+  ],
+  "cases": 9,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__senseModel",
+      "methods": [
+        "state",
+        "analyse",
+        "tick",
+        "render",
+        "reaction",
+        "fallCm",
+        "timeFor",
+        "verdictFor",
+        "SENSES",
+        "CONDS",
+        "G",
+        "RULER_CM",
+        "RULER_T",
+        "setSense",
+        "setCond",
+        "check",
+        "runToEnd"
+      ]
+    }
+  ],
+  "paint": [],
+  "grades": [
+    {
+      "mode": "initial",
+      "results": [
+        {
+          "choice": "p1",
+          "visible": true,
+          "text": "모형의 예상이 맞았습니다."
+        },
+        {
+          "choice": "p2",
+          "visible": true,
+          "text": "모형의 예상과 다른 결과입니다."
+        },
+        {
+          "choice": "p3",
+          "visible": true,
+          "text": "모형의 예상과 다른 결과입니다."
+        }
+      ]
+    }
+  ]
+}

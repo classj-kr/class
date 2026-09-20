@@ -17,12 +17,41 @@
       "coordinateNote": "옛 경성 읍치 일대의 대표 좌표. 성벽과 항구의 정확한 경계를 뜻하지 않는다.",
       "story": {
         "sections": [
-          {"heading": "함경도 북부를 지키던 도시", "text": "경성은 서울의 옛 이름과 발음이 같지만, 함경도 북부에 있는 별개의 도시입니다. 조선 초인 1398년에 경성이라는 이름이 붙었고 군사 거점이 설치되었습니다. 이후 북쪽으로 영역을 넓혀 가는 과정에서 중요한 후방 거점이 되었습니다."},
-          {"heading": "국경 너머와 오간 물품", "text": "조선 초기에는 경성과 경원 등지에서 여진과 물품을 교환했습니다. 옷감과 곡식, 농기구 등이 짐승 가죽과 바뀌었습니다. 북방의 성과 마을은 방어뿐 아니라 서로 다른 생활권이 만나는 장소이기도 했습니다."}
+          {
+            "heading": "함경도 북부를 지키던 도시",
+            "text": "경성은 서울의 옛 이름과 발음이 같지만, 함경도 북부에 있는 별개의 도시입니다. 조선 초인 1398년에 경성이라는 이름이 붙었고 군사 거점이 설치되었습니다. 이후 북쪽으로 영역을 넓혀 가는 과정에서 중요한 후방 거점이 되었습니다."
+          },
+          {
+            "heading": "국경 너머와 오간 물품",
+            "text": "조선 초기에는 경성과 경원 등지에서 여진과 물품을 교환했습니다. 옷감과 곡식, 농기구 등이 짐승 가죽과 바뀌었습니다. 북방의 성과 마을은 방어뿐 아니라 서로 다른 생활권이 만나는 장소이기도 했습니다."
+          }
         ],
         "sources": [
-          {"title": "한국민족문화대백과사전: 경성군", "url": "https://encykorea.aks.ac.kr/Article/E0002550"},
-          {"title": "우리역사넷: 조선 초기 북방 교역", "url": "https://contents.history.go.kr/front/ta/print.do?levelId=ta_m11_0060_0010&whereStr="}
+          {
+            "title": "한국민족문화대백과사전: 경성군",
+            "url": "https://encykorea.aks.ac.kr/Article/E0002550"
+          },
+          {
+            "title": "우리역사넷: 조선 초기 북방 교역",
+            "url": "https://contents.history.go.kr/front/ta/print.do?levelId=ta_m11_0060_0010&whereStr="
+          }
+        ]
+      },
+      "artKey": "kyongsong",
+      "interiorImageCaption": "역사 자료를 참고한 상상도",
+      "historicalEvidence": {
+        "status": "attested",
+        "attestedByYear": 1398,
+        "basis": "조선 함경도 북부의 행정·군사 거점",
+        "sources": [
+          {
+            "title": "한국민족문화대백과사전: 경성군",
+            "url": "https://encykorea.aks.ac.kr/Article/E0002550"
+          },
+          {
+            "title": "우리역사넷: 조선 초기 북방 교역",
+            "url": "https://contents.history.go.kr/front/ta/print.do?levelId=ta_m11_0060_0010&whereStr="
+          }
         ]
       }
     },
@@ -43,13 +72,49 @@
       "coordinateNote": "회령 읍치 일대의 대표 좌표. 바닷배가 드나드는 항구로 취급하지 않는다.",
       "story": {
         "sections": [
-          {"heading": "두만강의 육진", "text": "회령은 조선 세종 때 두만강 유역에 설치한 여섯 방어 거점 가운데 하나입니다. 이 지역은 여진이 알목하라고 부르던 곳이기도 합니다. 성을 지키는 군사와 이주민의 생활이 함께 이루어지면서 조선 북방의 주요 거점이 되었습니다."},
-          {"heading": "강가의 교역 도시로 이어진 역사", "text": "훗날 1638년에는 이곳에 청나라와 물품을 교환하는 회령개시가 설치되었습니다. 강을 사이에 둔 주민들의 필요가 국경 교역을 이어 갔습니다. 다만 이 시장은 게임의 출발 시점인 1520년보다 뒤에 생겼습니다."}
+          {
+            "heading": "두만강의 육진",
+            "text": "회령은 조선 세종 때 두만강 유역에 설치한 여섯 방어 거점 가운데 하나입니다. 이 지역은 여진이 알목하라고 부르던 곳이기도 합니다. 성을 지키는 군사와 이주민의 생활이 함께 이루어지면서 조선 북방의 주요 거점이 되었습니다."
+          },
+          {
+            "heading": "강가의 교역 도시로 이어진 역사",
+            "text": "훗날 1638년에는 이곳에 청나라와 물품을 교환하는 회령개시가 설치되었습니다. 강을 사이에 둔 주민들의 필요가 국경 교역을 이어 갔습니다. 다만 이 시장은 게임의 출발 시점인 1520년보다 뒤에 생겼습니다."
+          }
         ],
         "sources": [
-          {"title": "우리역사넷: 육진", "url": "https://contents.history.go.kr/front/tg/print.do?levelId=tg_003_0800&treeId=&whereStr="},
-          {"title": "한국민족문화대백과사전: 알목하", "url": "https://encykorea.aks.ac.kr/Article/E0035132"},
-          {"title": "한국민족문화대백과사전: 회령개시", "url": "https://encykorea.aks.ac.kr/Article/E0065474"}
+          {
+            "title": "우리역사넷: 육진",
+            "url": "https://contents.history.go.kr/front/tg/print.do?levelId=tg_003_0800&treeId=&whereStr="
+          },
+          {
+            "title": "한국민족문화대백과사전: 알목하",
+            "url": "https://encykorea.aks.ac.kr/Article/E0035132"
+          },
+          {
+            "title": "한국민족문화대백과사전: 회령개시",
+            "url": "https://encykorea.aks.ac.kr/Article/E0065474"
+          }
+        ]
+      },
+      "artKey": "hoeryong",
+      "interiorImageCaption": "역사 자료를 참고한 상상도",
+      "historicalEvidence": {
+        "status": "attested",
+        "attestedByYear": 1434,
+        "basis": "조선의 두만강 방어 거점인 육진 가운데 한 곳",
+        "sources": [
+          {
+            "title": "우리역사넷: 육진",
+            "url": "https://contents.history.go.kr/front/tg/print.do?levelId=tg_003_0800&treeId=&whereStr="
+          },
+          {
+            "title": "한국민족문화대백과사전: 알목하",
+            "url": "https://encykorea.aks.ac.kr/Article/E0035132"
+          },
+          {
+            "title": "한국민족문화대백과사전: 회령개시",
+            "url": "https://encykorea.aks.ac.kr/Article/E0065474"
+          }
         ]
       }
     },
@@ -57,7 +122,7 @@
       "id": "kaminokuni",
       "name": "가미노쿠니",
       "nameEn": "Kaminokuni",
-      "lat": 41.80,
+      "lat": 41.8,
       "lon": 140.11,
       "region": "동북아시아",
       "countryCode": "JP",
@@ -70,11 +135,41 @@
       "coordinateNote": "가츠야마다테와 인접 해안 취락을 함께 나타내는 대표 좌표. 입항은 해안에서 이루어진다.",
       "story": {
         "sections": [
-          {"heading": "바다를 내려다보는 북방 교역 거점", "text": "가미노쿠니의 가츠야마다테는 1470년 무렵 세워진 산성으로, 16세기에도 정치·군사·교역 거점으로 쓰였습니다. 해안 가까운 언덕에 자리해 바다를 오가는 배와 주변 길을 살필 수 있었습니다."},
-          {"heading": "도자기와 무덤이 알려 주는 교류", "text": "유적에서는 중국산 도자기와 일본 각지의 그릇, 아이누가 사용한 뼈와 뿔 도구 등이 발견되었습니다. 서로 이웃한 무덤들을 근거로 아이누와 일본계 주민이 함께 살았다는 해석도 있습니다. 북쪽 바다가 여러 지역의 사람과 물품을 이어 주었음을 보여 줍니다."}
+          {
+            "heading": "바다를 내려다보는 북방 교역 거점",
+            "text": "가미노쿠니의 가츠야마다테는 1470년 무렵 세워진 산성으로, 16세기에도 정치·군사·교역 거점으로 쓰였습니다. 해안 가까운 언덕에 자리해 바다를 오가는 배와 주변 길을 살필 수 있었습니다."
+          },
+          {
+            "heading": "도자기와 무덤이 알려 주는 교류",
+            "text": "유적에서는 중국산 도자기와 일본 각지의 그릇, 아이누가 사용한 뼈와 뿔 도구 등이 발견되었습니다. 서로 이웃한 무덤들을 근거로 아이누와 일본계 주민이 함께 살았다는 해석도 있습니다. 북쪽 바다가 여러 지역의 사람과 물품을 이어 주었음을 보여 줍니다."
+          }
         ],
         "sources": [
-          {"title": "가미노쿠니정: 문화재 지도와 가츠야마다테 조사", "url": "https://www.town.kaminokuni.lg.jp/contents/bunkazai_map/bunkazai_map1.pdf"}
+          {
+            "title": "가미노쿠니정: 문화재 지도와 가츠야마다테 조사",
+            "url": "https://www.town.kaminokuni.lg.jp/contents/bunkazai_map/bunkazai_map1.pdf"
+          },
+          {
+            "title": "가미노쿠니정: 가츠야마다테 유적",
+            "url": "https://www.town.kaminokuni.lg.jp/hotnews/detail_sp/00000285.html"
+          }
+        ]
+      },
+      "artKey": "kaminokuni",
+      "interiorImageCaption": "역사 자료를 참고한 상상도",
+      "historicalEvidence": {
+        "status": "attested",
+        "attestedByYear": 1470,
+        "basis": "가츠야마다테를 중심으로 한 홋카이도 남서부의 교역 거점",
+        "sources": [
+          {
+            "title": "가미노쿠니정: 문화재 지도와 가츠야마다테 조사",
+            "url": "https://www.town.kaminokuni.lg.jp/contents/bunkazai_map/bunkazai_map1.pdf"
+          },
+          {
+            "title": "가미노쿠니정: 가츠야마다테 유적",
+            "url": "https://www.town.kaminokuni.lg.jp/hotnews/detail_sp/00000285.html"
+          }
         ]
       }
     },
@@ -95,39 +190,33 @@
       "coordinateNote": "홋카이도 마쓰마에의 오다테·도쿠야마 일대를 나타내는 대표 좌표. 혼슈의 동명 도시와 구분한다.",
       "story": {
         "sections": [
-          {"heading": "마쓰마에가 되기 전의 이름", "text": "홋카이도 남단의 이곳에는 오다테라는 성곽 거점이 있었습니다. 1513년 아이누의 봉기로 함락된 뒤, 이듬해 가키자키 미쓰히로가 들어와 거점을 정비하고 도쿠야마로 이름을 바꾸었습니다. 오늘날 마쓰마에로 알려진 지역입니다."},
-          {"heading": "교역과 갈등이 함께 있었던 해안", "text": "가키자키씨는 이곳을 근거지로 삼아 세력을 키웠습니다. 북쪽의 아이누 사회와 남쪽의 일본계 주민 사이에는 물품 교류뿐 아니라 충돌도 있었습니다. 뒤에 지어진 마쓰마에성의 모습 전체를 1520년의 풍경으로 생각해서는 안 됩니다."}
+          {
+            "heading": "마쓰마에가 되기 전의 이름",
+            "text": "홋카이도 남단의 이곳에는 오다테라는 성곽 거점이 있었습니다. 1513년 아이누의 봉기로 함락된 뒤, 이듬해 가키자키 미쓰히로가 들어와 거점을 정비하고 도쿠야마로 이름을 바꾸었습니다. 오늘날 마쓰마에로 알려진 지역입니다."
+          },
+          {
+            "heading": "교역과 갈등이 함께 있었던 해안",
+            "text": "가키자키씨는 이곳을 근거지로 삼아 세력을 키웠습니다. 북쪽의 아이누 사회와 남쪽의 일본계 주민 사이에는 물품 교류뿐 아니라 충돌도 있었습니다. 뒤에 지어진 마쓰마에성의 모습 전체를 1520년의 풍경으로 생각해서는 안 됩니다."
+          }
         ],
         "sources": [
-          {"title": "일본 문화유산 온라인: 오다테 유적", "url": "https://online.bunka.go.jp/heritages/detail/137544"}
+          {
+            "title": "일본 문화유산 온라인: 오다테 유적",
+            "url": "https://online.bunka.go.jp/heritages/detail/137544"
+          }
         ]
-      }
-    },
-    {
-      "id": "saru_ainu_settlement",
-      "name": "사루강 아이누 취락",
-      "nameEn": "Saru River Ainu communities",
-      "lat": 42.63,
-      "lon": 142.16,
-      "region": "동북아시아",
-      "countryCode": "JP",
-      "todayCountry": "일본",
-      "iconCulture": "ainu",
-      "originalCitySize": 1,
-      "settlementKind": "village",
-      "canEnterFromSea": false,
-      "shipType": "canoe",
-      "in1520": "사루강 유역 아이누 공동체를 대표하는 취락",
-      "coordinateNote": "니부타니 일대의 대표 좌표. 1520년의 특정 마을 이름·위치·규모를 확정한 복원이 아니다.",
-      "story": {
-        "sections": [
-          {"heading": "강을 따라 이어진 생활", "text": "홋카이도에는 일본계 성곽 거점만 있었던 것이 아닙니다. 사루강 유역에는 아이누의 생활과 문화가 이어져 왔으며, 니부타니 일대에서는 15~17세기의 생활을 보여 주는 유물들이 발견되었습니다."},
-          {"heading": "교류하는 공동체", "text": "아이누 사람들은 수산물과 모피 등을 다른 지역의 물품과 교환했습니다. 강과 바다는 취락을 서로 연결하는 길이었습니다. 이 지도 표시는 사루강 유역의 공동체를 대표하며, 1520년 특정 마을의 이름과 정확한 위치를 복원한 것은 아닙니다."}
-        ],
+      },
+      "artKey": "tokuyama-ezo",
+      "interiorImageCaption": "역사 자료를 참고한 상상도",
+      "historicalEvidence": {
+        "status": "attested",
+        "attestedByYear": 1514,
+        "basis": "오늘날 마쓰마에 일대에 있던 가키자키씨의 거점",
         "sources": [
-          {"title": "비라토리정: 문화재와 니부타니 유적 출토품", "url": "https://www.town.biratori.hokkaido.jp/material/files/group/18/51820194.pdf"},
-          {"title": "국립아이누민족박물관: 아이누 사회와 교역", "url": "https://ainugo.nam.go.jp/siror/monthly/201505.html"},
-          {"title": "나라문화재연구소: 니부타니 유적 위치", "url": "https://heritagemap.nabunken.go.jp/statistic/44183-%E4%BA%8C%E9%A2%A8%E8%B0%B7%E9%81%BA%E8%B7%A1.html"}
+          {
+            "title": "일본 문화유산 온라인: 오다테 유적",
+            "url": "https://online.bunka.go.jp/heritages/detail/137544"
+          }
         ]
       }
     }
@@ -144,7 +233,10 @@
       "text": "아무르강 하류의 티르에는 명나라 사절단이 1413년에 세운 영녕사가 있었습니다. 사찰은 훼손된 뒤 1433년에 다시 세워졌고, 이를 기록한 비석이 전해집니다. 여러 언어가 새겨진 비석은 강 하류 주민들과 외부 세력이 접촉했던 역사를 보여 줍니다. 지도에는 근대에 생긴 러시아 도시 대신 이 유적의 위치를 표시했습니다.",
       "todayCountry": "러시아",
       "sources": [
-        {"title": "아르세니예프 극동역사박물관: 영녕사 비석", "url": "https://old.arseniev.org/press/261/?special_version=Y"}
+        {
+          "title": "아르세니예프 극동역사박물관: 영녕사 비석",
+          "url": "https://old.arseniev.org/press/261/?special_version=Y"
+        }
       ]
     }
   ]

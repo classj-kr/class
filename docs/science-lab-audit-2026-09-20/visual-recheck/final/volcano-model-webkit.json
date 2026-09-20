@@ -1,0 +1,58 @@
+{
+  "slug": "volcano-model",
+  "engine": "webkit",
+  "modes": [
+    "initial"
+  ],
+  "cases": 7,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__volcanoModel",
+      "methods": [
+        "state",
+        "analyse",
+        "tick",
+        "render",
+        "acidMol",
+        "sodaMol",
+        "matchGrams",
+        "gasLitres",
+        "verdictFor",
+        "VINEGARS",
+        "ACID_PER_ML",
+        "SODA_PER_G",
+        "LITRE_PER_MOL",
+        "NEAR",
+        "setVin",
+        "setSoda",
+        "check",
+        "runToEnd"
+      ]
+    }
+  ],
+  "paint": [],
+  "grades": [
+    {
+      "mode": "initial",
+      "results": [
+        {
+          "choice": "p1",
+          "visible": true,
+          "text": "예상은 소다가 남는다였지만 결과는 둘 다 딱 맞다입니다."
+        },
+        {
+          "choice": "p2",
+          "visible": true,
+          "text": "예상은 식초가 남는다였지만 결과는 둘 다 딱 맞다입니다."
+        },
+        {
+          "choice": "p3",
+          "visible": true,
+          "text": "예상이 맞았습니다 — 둘 다 딱 맞다."
+        }
+      ]
+    }
+  ]
+}

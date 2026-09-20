@@ -248,7 +248,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const cw = TW / cols, ch = TH / rows, r = Math.min(cw, ch) * 0.38;
         let out = `<text class="part-label" x="${TX}" y="26">뿌려서 나온 것 — 실제</text>`;
         const counts = tally(a);
-        out += `<text class="small-label" x="${TX + TW}" y="38" text-anchor="end">${k} / ${n}${a.trait.unit} · 지금까지 ${ratioText(a, counts)}</text>`;
+        out += `<text class="small-label" x="${TX + TW}" y="38" text-anchor="end">${k} / ${n}${a.trait.unit}</text>`;
         out += `<rect class="tray" x="${TX}" y="${TY}" width="${TW}" height="${TH}" rx="6"/>`;
         for (let i = 0; i < k; i += 1) {
             const ph = phenoOf(a, state.offspring[i].key);

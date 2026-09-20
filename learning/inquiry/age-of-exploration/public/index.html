@@ -126,7 +126,9 @@ button,input{font:inherit}button{border:1px solid var(--line);background:#17313b
 #joinCard .joinIntro,.entryMode span,.roomType span{color:#d6e1df}
 .entryMode b,.roomType b{font-family:var(--reading-font);font-weight:700}
 #messageWindow{background:rgba(7,27,36,.94);box-shadow:0 4px 18px rgba(0,0,0,.2)}
-@media(max-width:650px){#discoveryCard{padding:20px 17px}#discoveryText{font-size:16px;line-height:1.9}#discoveryText .storyHead{font-size:16px}#bookReader{padding:22px 18px}#bookReader h2{font-size:24px}#bookIntro,#bookSections p{font-size:16px;line-height:1.9}#finalQuizQuestions{padding:12px 10px}.finalQuestion{padding:13px}.finalPassage{font-size:15px!important}.finalPrompt{font-size:15px!important}.finalChoice{font-size:15px!important}}</style>
+@media(max-width:650px){#discoveryCard{padding:20px 17px}#discoveryText{font-size:16px;line-height:1.9}#discoveryText .storyHead{font-size:16px}#bookReader{padding:22px 18px}#bookReader h2{font-size:24px}#bookIntro,#bookSections p{font-size:16px;line-height:1.9}#finalQuizQuestions{padding:12px 10px}.finalQuestion{padding:13px}.finalPassage{font-size:15px!important}.finalPrompt{font-size:15px!important}.finalChoice{font-size:15px!important}}#cityRest{margin-top:5px;font-size:14px;font-weight:700;color:#e9f3d5}#cityArtCaption{display:block;margin-top:3px;font-size:10px;color:#cbd5d3}
+@media(max-width:650px){#cityMenu button{flex:1 1 calc(50% - 8px);max-width:none}}
+</style>
 </head>
 <body>
 <div id="globeBase"></div>
@@ -170,7 +172,7 @@ button,input{font:inherit}button{border:1px solid var(--line);background:#17313b
     <img id="cityScene" alt="도시 내부">
     <div id="cityShade"></div>
     <div id="cityTitle">도시</div>
-    <div id="cityInfo"></div>
+    <div id="cityInfo"><div id="cityContext"></div><div id="cityRest"></div><small id="cityArtCaption"></small></div>
     <div id="cityMenu"><button id="storyBtn" hidden>도시 설명</button><button id="landmarkBtn" hidden>명소</button><button id="libraryBtn" hidden>도서관</button><button id="departCityBtn" hidden>출항</button><button id="leaveCityBtn">도시 밖으로</button></div>
   </div>
 </section>
@@ -546,6 +548,7 @@ function openLibrary(){
   libraryView.classList.add('show');renderBook(books.find(book=>book.id===openedBookId)||books[0]);
 }
 function closeLibrary(){libraryView.classList.remove('show')}
+const cityContext=document.getElementById('cityContext'),cityRest=document.getElementById('cityRest'),cityArtCaption=document.getElementById('cityArtCaption');
 function renderCityView(){
   if(mode!=='city'||!serverSelf?.currentCityId)return;
   const cityId=serverSelf.currentCityId,catalogCity=cityCatalogById.get(String(cityId)),regionLabel=libraryRegionLabelForCity(catalogCity);
@@ -555,7 +558,10 @@ function renderCityView(){
   landmarkBtn.hidden=!landmarkQueue.length;
   if(landmarkQueue.length)landmarkBtn.textContent=landmarkQueue.length>1?`명소 ${landmarkQueue.length}곳`:'명소';
   const shipHere=!!catalogCity?.canEnterFromSea&&serverSelf.shipPortId===cityId,busy=!!serverSelf.transition;departCityBtn.hidden=!shipHere;departCityBtn.disabled=busy;leaveCityBtn.disabled=busy;
-  if(renderedCityId!==cityId){renderedCityId=cityId;const sceneSrc=serverSelf.currentCityImage||catalogCity?.interiorImage||'';cityScene.hidden=!sceneSrc;if(sceneSrc)cityScene.src=sceneSrc;else cityScene.removeAttribute('src');cityScene.alt=`${serverSelf.currentCityName||'도시'} 내부`;cityTitle.textContent=serverSelf.currentCityName||'도시';cityInfo.textContent=catalogCity?.in1520?`1520년 ${catalogCity.in1520} · 오늘날 ${catalogCity.todayCountry}`:[serverSelf.currentCityRegion,'도시 내부',`${regionLabel} 도서관`].filter(Boolean).join(' · ');openedBookId='';closeLibrary()}
+  if(renderedCityId!==cityId){renderedCityId=cityId;const sceneSrc=serverSelf.currentCityImage||catalogCity?.interiorImage||'';cityScene.hidden=!sceneSrc;if(sceneSrc)cityScene.src=sceneSrc;else cityScene.removeAttribute('src');cityScene.alt=`${serverSelf.currentCityName||'도시'} 내부`;cityTitle.textContent=serverSelf.currentCityName||'도시';cityContext.textContent=catalogCity?.in1520?`1520년 ${catalogCity.in1520} · 오늘날 ${catalogCity.todayCountry}`:[serverSelf.currentCityRegion,'도시 내부',`${regionLabel} 도서관`].filter(Boolean).join(' · ');openedBookId='';closeLibrary()}
+  const fatigue=Math.max(0,Number(serverSelf.fatigue)||0);
+  cityRest.textContent=classSettings.paused?'휴식 일시정지':fatigue>0?`휴식 중 · 피로도 ${Math.ceil(fatigue)}% · 자동 회복`:'휴식 완료 · 피로도 0%';
+  cityArtCaption.textContent=catalogCity?.interiorImageCaption||'';
 }
 function applyModeUI(){
   const busy=!!serverSelf?.transition,travelAllowed=canTravelNow(),inCity=mode==='city';

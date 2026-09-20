@@ -52,6 +52,7 @@
       host.querySelectorAll('[data-study-level]').forEach(b=>b.onclick=()=>{level=b.dataset.studyLevel;render();host.querySelector(`[data-study-level="${level}"]`).focus();});
       host.querySelector('#practiceLesson').onclick=()=>api.practice(questionsFor(current,level));
       host.querySelector('#reviewLesson').onclick=()=>api.practice(questionsFor(current).filter(q=>api.progress().items[q.id]?.wrong));
+      api.rendered?.();
     }
     return {show,refresh(){if(current)render();},get current(){return current;}};
   }

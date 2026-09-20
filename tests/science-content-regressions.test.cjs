@@ -1,6 +1,6 @@
 // Independent physical expectations, not an expected answer copied from the app under test.
 const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),http=require('node:http');
-const root=path.resolve(__dirname,'../learning/inquiry/science-lab'),out=path.resolve(__dirname,'../docs/science-lab-audit-2026-09-20/content-validity');
+const root=path.resolve(__dirname,'../learning/inquiry/science-lab'),out=path.resolve(process.env.SCIENCE_TEST_ARTIFACTS || path.resolve(__dirname,'../docs/science-lab-audit-2026-09-20'), 'content-validity');
 const near=(a,b,msg='')=>assert.ok(Math.abs(a-b)<1e-7*Math.max(1,Math.abs(b)),msg+': '+a+' != '+b);
 for(const engine of ['chromium','webkit'])test(engine+': scientific content and boundary regressions',{timeout:180000},async()=>{
  const server=http.createServer((req,res)=>{let f=path.resolve(root,'.'+new URL(req.url,'http://localhost').pathname);if(!f.startsWith(root+path.sep)){res.writeHead(403).end();return;}if(fs.existsSync(f)&&fs.statSync(f).isDirectory())f=path.join(f,'index.html');fs.readFile(f,(e,b)=>{if(e){res.writeHead(404).end();return;}res.setHeader('Content-Type',{'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8'}[path.extname(f)]||'application/octet-stream');res.end(b);});});await new Promise(r=>server.listen(0,'127.0.0.1',r));let browser;const counts={};

@@ -49,6 +49,9 @@ const place = payload => new Promise((resolve, reject) => {
     }
     assert.ok(ready, logs);
     const catalog = await (await fetch(base + '/api/mission-catalog')).json();
+    for (const id of ['saru_ainu_settlement', 'buenos_aires', 'original_city_123', 'original_city_000']) {
+      assert.ok(!catalog.places.some(city => city.id === id), id + ' must not be a playable 1520 city');
+    }
     for (const collection of [catalog.places, catalog.discoveries]) {
       const ids = collection.map(item => item.id);
       assert.equal(new Set(ids).size, ids.length, 'unique IDs within each catalog');
@@ -63,28 +66,39 @@ const place = payload => new Promise((resolve, reject) => {
       const city = catalog.places.find(item => item.id === site.id);
       assert.ok(city?.displayOnMap && city.isOriginalCity, site.name + ' map visibility');
       assert.ok(city.story.sections.length && city.story.sources.length, site.name + ' sourced description');
+      assert.equal(site.historicalEvidence.status, 'attested');
+      assert.ok(site.historicalEvidence.attestedByYear <= 1520, site.name + ' existed by 1520');
+      assert.ok(city.interiorImage, site.name + ' generated city art');
+      const artwork = await fetch(base + city.interiorImage.replace('/learn/world-voyage', ''));
+      assert.equal(artwork.status, 200, site.name + ' artwork served');
+      assert.equal(Buffer.from(await artwork.arrayBuffer()).toString('ascii', 8, 12), 'WEBP');
       assert.equal(Icons.appearance(city).culture, site.iconCulture);
       assert.equal(Icons.appearance(city).port, site.canEnterFromSea);
       assert.equal(Ships.forPort(city), site.shipType);
       assert.notEqual(Terrain.terrainAtPixel(world, city.landPoint.x, city.landPoint.y).type, 'sea', site.name + ' land gate');
-      await place({ city: city.name });
+      await place({ city: city.name, fatigue: 80 });
       const entered = await ack('enterCity', { placeId: city.id });
       assert.equal(entered.ok, true, site.name + ': ' + entered.error);
       assert.equal(entered.self.currentCityId, city.id);
+      const restedOnLand = await once('snapshot', snap => snap.you.mode === 'city' && snap.you.fatigue < 76);
+      assert.ok(restedOnLand.you.fatigue >= 0, site.name + ' land visit recovers fatigue');
       assert.equal((await ack('leaveCity')).ok, true);
       await once('snapshot', snap => snap.you.mode === 'land' && !snap.you.transition);
       if (site.canEnterFromSea) {
         assert.equal(Terrain.terrainAtPixel(world, city.seaPoint.x, city.seaPoint.y).type, 'sea', site.name + ' sea entrance');
-        await place({ city: city.name, mode: 'sea' });
+        await place({ city: city.name, mode: 'sea', fatigue: 80 });
         assert.equal((await ack('useCatalogPort', { placeId: city.id })).ok, true, site.name + ' arrival');
-        await once('snapshot', snap => snap.you.currentCityId === city.id && !snap.you.transition);
+        const docked = await once('snapshot', snap => snap.you.currentCityId === city.id && !snap.you.transition);
+        assert.equal(docked.you.shipPortId, city.id, site.name + ' own ship remains docked');
+        const rested = await once('snapshot', snap => snap.you.mode === 'city' && snap.you.fatigue < docked.you.fatigue - 3);
+        assert.ok(rested.you.fatigue >= 0, site.name + ' rest recovers fatigue');
         assert.equal((await ack('departCity')).ok, true, site.name + ' departure');
         await once('snapshot', snap => snap.you.mode === 'sea' && !snap.you.transition);
       } else {
         await place({ city: city.name, mode: 'sea' });
         assert.equal((await ack('useCatalogPort', { placeId: city.id })).ok, false, site.name + ' must not become a sea port');
       }
-      checked.push({ name: city.name, landEntry: true, seaEntry: site.canEnterFromSea });
+      checked.push({ name: city.name, landEntry: true, seaEntry: site.canEnterFromSea, art: true, fatigueRecovery: true });
     }
     const tyr = catalog.discoveries.find(item => item.id === 'tyr_yongning_temple');
     assert.ok(tyr && tyr.kind === '유적');

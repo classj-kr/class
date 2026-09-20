@@ -40,6 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const BOWL = { x0: 44, x1: 192, yTop: 96, yBottom: 222 };
     const TRAY = { x: 244, w: 200, yTop: 40, h: 52, gap: 8 };
 
+    let batch=0,revision=0;
     let separated = [];     // [{id, method}] in the order they came out
     let grains = [];        // one entry per drawn grain
 
@@ -99,6 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function setBusy(on) {
         [magnetBtn, waterBtn, sieveBtn].forEach(b => { b.disabled = on || remaining().length === 0; });
+        document.querySelectorAll('[data-open-group],[data-recover-group]').forEach(b=>b.disabled=on);
     }
 
     function clearApparatus() {
@@ -135,7 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
                `<line x1="${BOWL.x1 + 6}" y1="-14" x2="${BOWL.x1 + 6}" y2="0" stroke="#334155" stroke-width="3" stroke-linecap="round"/></g>`;
     }
 
-    const wait = ms => new Promise(r => setTimeout(r, SLOW ? ms : 0));
+    const wait = ms => {const token=revision;return new Promise((resolve,reject)=>setTimeout(()=>token===revision?resolve():reject(new DOMException('Reset cancelled the old operation','AbortError')),SLOW?ms:0));};
 
     async function playMagnet(picked) {
         const hangY = BOWL.yTop - 34;
@@ -201,52 +203,48 @@ document.addEventListener('DOMContentLoaded', () => {
         return { x: TRAY.x, y: TRAY.yTop + index * (TRAY.h + TRAY.gap), w: TRAY.w, h: TRAY.h };
     }
 
+    function storedGroups(){
+        const groups=[];for(const entry of separated){let g=groups.find(g=>g.key===entry.group);if(!g){g={key:entry.group,method:entry.method,dissolved:!!entry.dissolved,ids:[]};groups.push(g);}g.ids.push(entry.id);}return groups;
+    }
+    function storeGroup(items,method,dissolved=false){if(!items.length)return;const group=++batch;items.forEach(s=>separated.push({id:s.id,method,group,dissolved}));}
+    function complete(){return remaining().length<=1&&storedGroups().every(g=>g.ids.length===1&&!g.dissolved);}
+    function selectGroup(key){
+        if(acting)return;const group=storedGroups().find(g=>g.key===key);if(!group||group.dissolved)return;
+        const current=remaining();separated=separated.filter(e=>e.group!==key);storeGroup(current,'다시 나눌 때 보관');
+        stageCaption.textContent=group.ids.map(id=>SUBSTANCES.find(s=>s.id===id).name).join('·')+' 무리를 왼쪽 그릇으로 옮겼습니다. 다른 조건으로 다시 분리하세요.';render();
+    }
+    function handleCancellation(error){if(error.name!=='AbortError')throw error;}
     function render() {
-        // trays
-        trayGroup.innerHTML = separated.map((entry, idx) => {
-            const s = SUBSTANCES.find(x => x.id === entry.id);
-            const r = trayRect(idx);
-            return `<rect class="tray-box" x="${r.x}" y="${r.y}" width="${r.w}" height="${r.h}" rx="8"/>` +
-                   `<text class="tray-label" x="${r.x + 10}" y="${r.y + 21}">${s.name}</text>` +
-                   `<text class="tray-method" x="${r.x + 10}" y="${r.y + 38}">${entry.method}</text>`;
+        const groups=storedGroups();
+        trayGroup.innerHTML=groups.map((group,idx)=>{const r=trayRect(idx),name=group.dissolved?'소금물':group.ids.length>1?'섞인 무리 · '+group.ids.length+'가지':SUBSTANCES.find(s=>s.id===group.ids[0]).name;
+            return '<rect class="tray-box" x="'+r.x+'" y="'+r.y+'" width="'+r.w+'" height="'+r.h+'" rx="8"/>'+
+              (group.dissolved?'<rect x="'+(r.x+125)+'" y="'+(r.y+12)+'" width="62" height="32" rx="3" fill="#a7d4e8"/>':'')+
+              '<text class="tray-label" x="'+(r.x+10)+'" y="'+(r.y+21)+'">'+name+'</text><text class="tray-method" x="'+(r.x+10)+'" y="'+(r.y+39)+'">'+(group.dissolved?'소금 회수 전':group.ids.length>1?'다시 분리 필요':'한 물질')+'</text>';
         }).join('');
-
-        // move each grain to its tray, or leave it in the bowl
-        grains.forEach(g => {
-            const el = document.getElementById(`g-${g.key}`);
-            const idx = separated.findIndex(v => v.id === g.sub);
-            if (idx === -1) { el.setAttribute('transform', 'translate(0 0)'); return; }
-            const r = trayRect(idx);
-            const s = SUBSTANCES.find(x => x.id === g.sub);
-            const rad = drawRadius(s.mm);
-            const perRow = Math.max(1, Math.floor((r.w - 96) / (rad * 2 + 3)));
-            const col = g.i % perRow, row = Math.floor(g.i / perRow);
-            const tx = r.x + 92 + rad + col * (rad * 2 + 3);
-            const ty = r.y + 18 + row * (rad * 2 + 3);
-            el.setAttribute('transform', `translate(${(tx - g.homeX).toFixed(1)} ${(ty - g.homeY).toFixed(1)})`);
+        grains.forEach(g=>{
+            const el=document.getElementById('g-'+g.key),idx=groups.findIndex(b=>b.ids.includes(g.sub));el.style.opacity='';
+            if(idx===-1){el.setAttribute('transform','translate(0 0)');return;}
+            const group=groups[idx];if(group.dissolved){el.style.opacity='0';return;}
+            const r=trayRect(idx),s=SUBSTANCES.find(x=>x.id===g.sub),rad=drawRadius(s.mm);
+            const ordinal=grains.filter(x=>group.ids.includes(x.sub)).sort((a,b)=>a.i-b.i||a.sub.localeCompare(b.sub)).findIndex(x=>x.key===g.key),perRow=Math.max(1,Math.floor(76/(rad*2+3)));
+            const tx=r.x+119+rad+(ordinal%perRow)*(rad*2+3),ty=r.y+12+Math.floor(ordinal/perRow)*(rad*2+3);
+            el.setAttribute('transform','translate('+(tx-g.homeX).toFixed(1)+' '+(ty-g.homeY).toFixed(1)+')');
         });
-
-        const left = remaining();
-        stageBadge.textContent = left.length <= 1 ? '분리 완료' : `${left.length}가지 섞여 있음`;
-        resultLeft.textContent = `${left.length}가지`;
-        resultDone.textContent = `${separated.length}가지`;
-
-        magnetBtn.disabled = left.length === 0;
-        waterBtn.disabled = left.length === 0;
-        sieveBtn.disabled = left.length === 0;
-
-        propertyTable.innerHTML =
-            `<div class="property-row head"><span>물질</span><span>크기</span><span>자석</span><span>물에서</span></div>` +
-            SUBSTANCES.map(s => {
-                const done = isSeparated(s.id);
-                const water = s.soluble ? '녹음' : s.density < 1 ? '뜸' : '가라앉음';
-                return `<div class="property-row${done ? ' separated' : ''}">` +
-                       `<span><i class="swatch" style="background:${s.color}"></i>${s.name}</span>` +
-                       `<span>${s.mm} mm</span><span>${s.magnetic ? '붙음' : '안 붙음'}</span><span>${water}</span></div>`;
-            }).join('');
-
+        const left=remaining();
+        stageBadge.textContent=complete()?'모든 물질 회수 완료':groups.some(g=>g.dissolved)?'소금 회수 단계가 남음':groups.some(g=>g.ids.length>1)?'다시 나눌 혼합물이 남음':left.length+'가지 섞여 있음';
+        resultLeft.textContent=left.length+'가지';resultDone.textContent=groups.length+'무리';
+        setBusy(acting);
+        document.getElementById('groupControls').innerHTML=groups.map(g=>{const names=g.ids.map(id=>SUBSTANCES.find(s=>s.id===id).name).join(' · ');return '<div class="mixture-group-row"><span>'+names+(g.dissolved?' → 소금물':g.ids.length>1?' (아직 섞여 있음)':'')+'</span>'+
+             (g.dissolved?'<button type="button" data-recover-group="'+g.key+'"'+(acting?' disabled':'')+'>물 증발 · 소금 회수</button>':g.ids.length>1?'<button type="button" data-open-group="'+g.key+'"'+(acting?' disabled':'')+'>이 무리 다시 분리</button>':'<span>한 물질로 나뉨</span>')+'</div>';}).join('');
+        propertyTable.innerHTML='<div class="property-row head"><span>물질</span><span>크기</span><span>자석</span><span>물에서</span></div>'+SUBSTANCES.map(s=>'<div class="property-row"><span><i class="swatch" style="background:'+s.color+'"></i>'+s.name+'</span><span>'+s.mm+' mm</span><span>'+(s.magnetic?'붙음':'안 붙음')+'</span><span>'+(s.soluble?'녹음':s.density<1?'뜸':'가라앉음')+'</span></div>').join('');
         renderSizes();
     }
+    document.getElementById('groupControls').addEventListener('click',e=>{
+        const open=e.target.closest('[data-open-group]'),recover=e.target.closest('[data-recover-group]');if(acting)return;
+        if(open)selectGroup(+open.dataset.openGroup);
+        if(recover){for(const entry of separated)if(entry.group===+recover.dataset.recoverGroup){entry.dissolved=false;entry.method='물을 증발시켜 회수';}
+            stageCaption.textContent='소금물에서 물을 증발시킨 뒤 소금이 남습니다. 교사의 안전 지도 아래 하는 실제 실험을 나타낸 단계 모형입니다.';render();}
+    });
 
     /* ------------------------------- 알갱이 크기와 체 구멍을 견주는 그림 */
     /* 가장 작은 철가루(0.3 mm)와 가장 큰 콩(8 mm)은 27배 차이라, 곧이곧대로
@@ -267,7 +265,7 @@ document.addEventListener('DOMContentLoaded', () => {
             out += `<rect class="size-bar" x="${SZ.x0}" y="${y + 3}" width="${(sxOf(s.mm) - SZ.x0).toFixed(1)}" height="${SZ.h - 6}" rx="4" fill="${s.color}" opacity="${done ? .45 : .95}"/>`;
             out += `<text class="size-name" x="${SZ.x0 - 8}" y="${y + 13}" text-anchor="end">${s.name}</text>`;
             out += `<text class="size-mm" x="${(sxOf(s.mm) + 6).toFixed(1)}" y="${y + 13}">${s.mm} mm</text>`;
-            if (done) out += `<text class="size-done" x="${SZ.x1 + 6}" y="${y + 13}">분리됨</text>`;
+            if (done) out += `<text class="size-done" x="${SZ.x1 + 6}" y="${y + 13}">옮겨짐</text>`;
         });
 
         const bottom = SZ.top + SUBSTANCES.length * (SZ.h + SZ.gap);
@@ -313,7 +311,7 @@ document.addEventListener('DOMContentLoaded', () => {
             setBusy(false);
             return;
         }
-        picked.forEach(s => separated.push({ id: s.id, method: methodLabel(s) }));
+        storeGroup(picked,methodLabel(picked[0]));
         const names = picked.map(s => s.name).join(', ');
         stageCaption.textContent = describe.ok(names);
         showResult(describe.okDetail(names));
@@ -321,9 +319,9 @@ document.addEventListener('DOMContentLoaded', () => {
         render();
         acting = false;
         setBusy(false);
-        if (remaining().length === 1) {
+        if (complete()) {
             const last = remaining()[0];
-            stageCaption.textContent = `${names}${objectP(names)} 분리했습니다. 그릇에는 ${last.name}만 남아 모두 나뉘었습니다.`;
+            stageCaption.textContent = `${names}${objectP(names)} 분리했습니다. 모든 물질이 한 종류씩 나뉘었고 소금도 회수했습니다.`;
         }
     }
 
@@ -336,9 +334,9 @@ document.addEventListener('DOMContentLoaded', () => {
             ok: n => `${n}${subjectP(n)} 자석에 붙어 분리되었습니다.`,
             okDetail: n => `${n}만 자석에 붙는 성질이 있어 다른 물질과 나눌 수 있었습니다.`,
         },
-        playMagnet));
+        playMagnet).catch(handleCancellation));
 
-    waterBtn.addEventListener('click', async () => {
+    async function applyWater() {
         const left = remaining();
         if (left.length === 0 || acting) return;
         // Water sorts by two properties at once: what dissolves and what floats.
@@ -349,7 +347,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setBusy(true);
         clearApparatus();
         await playWater(dissolved, floated);
-        if (picked.length === 0 || picked.length === left.length) {
+        if ([dissolved,floated,left.filter(s=>!picked.includes(s))].filter(g=>g.length).length < 2) {
             stageCaption.textContent = '물에 넣어도 남은 물질이 모두 같게 행동해 분리되지 않았습니다.';
             showResult('물로 나누려면 녹는 물질이나 뜨는 물질이 섞여 있어야 합니다.');
             await wait(350);
@@ -359,8 +357,8 @@ document.addEventListener('DOMContentLoaded', () => {
             setBusy(false);
             return;
         }
-        dissolved.forEach(s => separated.push({ id: s.id, method: '물에 녹음' }));
-        floated.forEach(s => separated.push({ id: s.id, method: '물에 뜸' }));
+        storeGroup(dissolved,'소금물로 받음',true);
+        storeGroup(floated,'물 위에서 건짐');
         const parts = [];
         if (dissolved.length) {
             const n = dissolved.map(s => s.name).join(', ');
@@ -370,13 +368,14 @@ document.addEventListener('DOMContentLoaded', () => {
             const n = floated.map(s => s.name).join(', ');
             parts.push(`${n}${topicP(n)} 물에 떠서`);
         }
-        stageCaption.textContent = `${parts.join(' ')} 분리되었습니다.`;
+        stageCaption.textContent = `${parts.join(' ')} 나뉘었습니다.${dissolved.length ? ' 녹은 소금은 아직 소금물에 있으므로 물을 증발시켜 회수해야 합니다.' : ''}`;
         showResult(`물에 녹는 성질과 물에 뜨는 성질이 서로 달라 나눌 수 있었습니다. 가라앉은 물질은 그릇에 남습니다.`);
         clearApparatus();
         render();
         acting = false;
         setBusy(false);
-    });
+    }
+    waterBtn.addEventListener('click',()=>applyWater().catch(handleCancellation));
 
     sieveBtn.addEventListener('click', () => {
         const mesh = meshMm();
@@ -389,13 +388,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 ok: n => `${n}${subjectP(n)} ${mesh} mm 구멍을 빠져나가 분리되었습니다.`,
                 okDetail: n => `${n}${topicP(n)} 구멍보다 작아 빠져나가고, 더 큰 알갱이는 체 위에 남았습니다.`,
             },
-            picked => playSieve(picked, mesh));
+            picked => playSieve(picked, mesh)).catch(handleCancellation);
     });
 
     meshRange.addEventListener('input', () => { meshOutput.textContent = `${meshMm()} mm`; renderSizes(); });
 
     resetBtn.addEventListener('click', () => {
-        separated = [];
+        revision++;batch=0;separated = [];
         resultEmpty.hidden = false;
         resultContent.hidden = true;
         stageCaption.textContent = '자석·물·체 가운데 알맞은 도구를 골라 보세요.';
@@ -439,7 +438,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     window.__mixtureModel = {
-        SUBSTANCES, remaining, separated: () => separated.map(v => ({ ...v })),
+        SUBSTANCES, remaining, isActing:()=>acting, groups:storedGroups, complete, selectGroup, separated: () => separated.map(v => ({ ...v })),
         setMesh(v) {
             const i = MESH_STOPS.indexOf(v);
             meshRange.value = String(i === -1 ? 3 : i);

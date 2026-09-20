@@ -59,7 +59,7 @@
     }
     function comparisonLunar(offset) {
         const {sun,earth,fullMoon:moon}=COMPARISON;
-        const y=Math.max(-200,Math.min(200,Number(offset)));
+        const y=Math.max(-215,Math.min(215,Number(offset)));
         const radii=shadow(sun,earth,moon.x),d=Math.abs(y);
         const type=d+moon.r<=radii.umbra?'total':d<radii.umbra+moon.r?'partial':d<radii.penumbra+moon.r?'penumbral':'none';
         return {type,offset:y,...radii};

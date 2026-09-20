@@ -27,19 +27,19 @@ const ANIMALS = {
         chain: ['풀', '메뚜기', '사마귀', '새'],
         units: ['포기', '마리', '마리', '마리'], at: 2,
         moult: '몸에 맞지 않게 된 껍질을 여러 번 벗으며',
-        why: '사마귀는 자라도 사는 곳이 바뀌지 않습니다. 다만 몸이 커진 만큼 잡을 수 있는 먹이도 커집니다.',
+        why: '사마귀는 애벌레와 어른벌레 모두 앞다리로 먹이를 붙잡습니다. 몸이 커지면 잡을 수 있는 먹이도 달라집니다.',
     },
     frog: {
         name: '개구리', change: 'shape', colour: '#8fd0b0',
         stages: [
             { n: '알', days: 7, eat: NONE, food: '없음', tint: '#cfe6e0' },
             { n: '올챙이', days: 60, eat: '물속 이끼를 먹습니다', food: '물속 이끼', tint: '#6f8f9a' },
-            { n: '뒷다리 난 올챙이', days: 14, eat: '작은 벌레를 먹기 시작합니다', food: '작은 벌레', tint: '#79a68f' },
+            { n: '뒷다리 난 올챙이', days: 14, eat: '이끼나 물속 유기물 등을 먹습니다', food: '이끼·유기물 등', tint: '#79a68f' },
             { n: '개구리', days: null, eat: '곤충을 혀로 잡아먹습니다', food: '곤충', tint: '#8fd0b0' },
         ],
         chain: ['물풀', '물속 벌레', '개구리', '뱀'],
         units: ['포기', '마리', '마리', '마리'], at: 2,
-        why: '올챙이는 물속에서 이끼를 훑어 먹고, 개구리는 뭍에서 혀를 뻗어 곤충을 잡습니다. 사는 곳이 바뀌니 먹는 것도 바뀝니다.',
+        why: '이 모형은 올챙이와 다 자란 개구리의 먹이를 비교합니다. 먹이가 바뀌는 시점과 종류는 개구리의 종류와 성장 상태에 따라 다릅니다.',
     },
     chick: {
         name: '닭', change: 'none', colour: '#f0c98a',
@@ -115,81 +115,13 @@ function elapsedDays() {
     return d + (list[a.step].days || 0) * (state.running || state.t > 0 ? within : 0);
 }
 
-const STAGE_PATHS = {
-    butterfly: [
-        'M 50 16 C 66 16 72 44 72 64 C 72 78 62 84 50 84 C 38 84 28 78 28 64 C 28 44 34 16 50 16 Z',
-        'M 18 62 C 14 56 16 48 24 46 C 26 42 30 40 36 44 C 44 38 56 38 66 42 C 76 40 84 46 88 54 C 92 62 88 70 80 72 C 72 74 60 70 50 72 C 40 70 30 74 22 70 C 16 68 14 64 18 62 M 16 58 L 10 60 L 14 64 Z',
-        'M 48 10 C 56 10 60 22 62 38 C 68 50 64 74 54 90 C 48 90 42 74 38 52 C 34 36 40 10 48 10 Z',
-        'M 50 40 C 42 20 20 18 14 26 C 8 34 16 52 38 54 C 20 58 12 74 20 84 C 28 94 44 80 48 64 L 52 64 C 56 80 72 94 80 84 C 88 74 80 58 62 54 C 84 52 92 34 86 26 C 80 18 58 20 50 40 M 50 36 C 48 30 46 22 42 20 C 38 18 42 14 45 16 C 48 18 50 28 50 36 Z',
-    ],
-    mantis: [
-        'M 50 18 C 72 18 82 36 82 56 C 82 76 68 84 50 84 C 32 84 18 76 18 56 C 18 36 28 18 50 18 Z',
-        'M 48 18 L 54 18 L 56 36 L 68 28 L 72 34 L 58 44 L 60 64 L 74 82 L 68 86 L 56 70 L 52 86 L 46 86 L 48 64 L 40 74 L 34 70 L 44 54 L 44 36 L 48 18 Z',
-        'M 46 12 L 54 12 L 56 28 L 74 16 L 78 24 L 62 38 L 62 88 L 54 88 L 54 50 L 46 50 L 46 88 L 38 88 L 38 38 L 22 24 L 26 16 L 44 28 Z',
-    ],
-    frog: [
-        'M 50 18 C 68 18 82 32 82 50 C 82 68 68 82 50 82 C 32 82 18 68 18 50 C 18 32 32 18 50 18 M 50 38 C 57 38 62 43 62 50 C 62 57 57 62 50 62 C 43 62 38 57 38 50 C 38 43 43 38 50 38 Z',
-        'M 36 30 C 50 30 60 40 60 50 C 60 60 50 70 36 70 C 22 70 14 60 14 50 C 14 40 22 30 36 30 M 58 48 C 74 44 88 40 92 50 C 88 60 74 56 58 52 Z',
-        'M 36 30 C 50 30 60 40 60 50 C 60 60 50 70 36 70 C 22 70 14 60 14 50 C 14 40 22 30 36 30 M 58 48 C 74 44 88 40 92 50 C 88 60 74 56 58 52 M 48 64 L 56 78 L 66 80 L 64 84 L 52 82 L 44 68 Z',
-        'M 50 20 C 66 20 74 32 74 48 C 84 50 90 68 84 82 L 74 80 C 76 68 70 58 64 56 C 64 70 58 82 50 82 C 42 82 36 70 36 56 C 30 58 24 68 26 80 L 16 82 C 10 68 16 50 26 48 C 26 32 34 20 50 20 Z',
-    ],
-    chick: [
-        'M 50 14 C 68 14 78 36 78 58 C 78 74 66 86 50 86 C 34 86 22 74 22 58 C 22 36 32 14 50 14 Z',
-        'M 38 28 C 48 28 54 34 54 44 C 62 46 72 54 72 68 C 72 78 62 84 48 84 C 36 84 28 78 28 66 C 28 56 32 50 30 44 C 30 34 34 28 38 28 M 28 38 L 18 42 L 28 46 Z M 44 84 L 40 92 M 52 84 L 56 92',
-        'M 36 14 C 44 14 48 22 48 30 C 58 34 76 44 82 58 C 86 68 82 78 72 82 C 58 82 46 76 40 64 L 38 82 L 32 82 L 34 56 C 28 48 28 34 36 14 M 28 26 L 16 30 L 28 34 Z M 38 82 L 36 94 M 50 82 L 52 94',
-    ],
-};
-
 function drawStages(g) {
-    const a = analyse();
-    const list = a.animal.stages, n = list.length;
-    const slot = 440 / n;
-
-    g.appendChild(el('text', { x: 16, y: 24, class: 'big-read' }, a.animal.name));
-    g.appendChild(el('text', { x: 16, y: 42, class: 'tiny-label' },
-        a.animal.change === 'full' ? '번데기를 거칩니다'
-            : (a.animal.change === 'shape' ? '번데기 없이 모습이 크게 바뀝니다' : '번데기 없이 조금씩 커집니다')));
-    g.appendChild(el('text', { x: 444, y: 24, 'text-anchor': 'end', class: 'read-text' }, `어른까지 ${a.total}일`));
-
-    const beat = 1 + 0.05 * Math.sin(state.phase * 3.2);
-    const paths = STAGE_PATHS[state.animal] || [];
-    list.forEach((s, i) => {
-        const cx = 10 + slot * (i + 0.5), cy = 92;
-        const here = i === a.step;
-        const r = here ? 25 * (state.running ? beat : 1) : 21;
-        g.appendChild(el('circle', { cx, cy, r, class: `stage-disc${here ? ' now' : ''}`, style: `fill:${s.tint}` }));
-        if (paths[i]) {
-            const sc = (r * 1.35 / 50).toFixed(3);
-            const pathEl = el('path', {
-                d: paths[i],
-                fill: '#24343d',
-                stroke: '#24343d',
-                'stroke-width': '1.5',
-                transform: `translate(${(cx - 50 * sc).toFixed(1)}, ${(cy - 50 * sc).toFixed(1)}) scale(${sc})`,
-            });
-            g.appendChild(pathEl);
-        } else {
-            g.appendChild(el('text', { x: cx, y: cy + 4, 'text-anchor': 'middle', class: 'stage-name', style: 'fill:#14242c' }, String(i + 1)));
-        }
-        g.appendChild(el('text', { x: cx, y: 132, 'text-anchor': 'middle', class: 'stage-name', style: `fill:${here ? '#d97706' : '#0f172a'}` }, s.n));
-        g.appendChild(el('text', { x: cx, y: 146, 'text-anchor': 'middle', class: 'stage-days' }, s.days ? `${s.days}일` : '어른'));
-        if (i < n - 1) {
-            const x1 = cx + 27, x2 = 10 + slot * (i + 1.5) - 27;
-            g.appendChild(el('line', { x1, y1: cy, x2, y2: cy, class: 'step-arrow' }));
-            g.appendChild(el('path', { d: `M ${x2} ${cy} l -6 -4 l 0 8 z`, class: 'arrow-head' }));
-        }
-    });
-
-    // A day counter, so the run reads as time passing rather than steps jumping.
-    const done = elapsedDays();
-    g.appendChild(el('rect', { x: 22, y: 156, width: 416, height: 6, rx: 3, class: 'day-track' }));
-    g.appendChild(el('rect', { x: 22, y: 156, width: Math.max(2, 416 * done / a.total), height: 6, rx: 3, class: 'day-fill' }));
-    g.appendChild(el('text', { x: 438, y: 222, 'text-anchor': 'end', class: 'tiny-label figure-caption' }, `${Math.round(done)}일째`));
-
-    // What it is eating right now, given its own line so the row stays clean.
-    g.appendChild(el('rect', { x: 22, y: 168, width: 416, height: 34, rx: 9, class: 'eat-box' }));
-    g.appendChild(el('text', { x: 36, y: 182, class: 'tiny-label' }, `${a.stage.n}일 때 먹는 것`));
-    g.appendChild(el('text', { x: 36, y: 196, class: 'part-label', style: 'fill:#0f172a' }, a.stage.eat));
+    const a=analyse(), art=window.lifeObservationArt;
+    g.innerHTML=art.scene(state.animal,a.step);
+    const [title,description]=art.features[state.animal][a.step];
+    $('lifeFeature').innerHTML='<h3>'+title+'</h3><p>'+description+'</p><p class="life-food"><span>먹이</span> '+a.stage.eat+'</p>';
+    $('lifeStages').innerHTML=a.animal.stages.map((stage,i)=>'<button type="button" data-life-step="'+i+'" aria-pressed="'+(i===a.step)+'">'+art.scene(state.animal,i,true)+'<span>'+stage.n+'</span></button>').join('');
+    $('lifeCycleNote').textContent='어른이 번식하면 다음 세대의 한살이가 이어집니다.';
 }
 
 function drawFoodChain(g) {
@@ -204,24 +136,31 @@ function drawFoodChain(g) {
     g.appendChild(el('text',{x:230,y:190,'text-anchor':'middle',class:'axis-text'},'화살표: 먹이가 되는 생물 → 먹는 생물'));
 }
 
+let lastRenderKey='';
 function render() {
-    const m = $('mainGroup'), gr = $('graphGroup');
-    m.textContent = ''; gr.textContent = '';
-    drawStages(m); drawFoodChain(gr);
-    updateReadout();
+    const key=[state.animal,state.step,state.prediction,state.checked].join(':');
+    if(key!==lastRenderKey){
+        lastRenderKey=key;
+        const m=$('mainGroup'),gr=$('graphGroup');
+        gr.textContent='';
+        drawStages(m);drawFoodChain(gr);updateReadout();
+    }
+    const a=analyse(),done=elapsedDays();
+    $('lifeProgress').value=done/a.total;
+    $('lifeDay').textContent='성장 기간 예시'+' · '+Math.round(done)+' / '+a.total+'일';
 }
 
-const WORDS = { p1: '번데기를 거친다', p2: '번데기 없이 모습이 크게 바뀐다', p3: '처음부터 어른과 닮았다' };
+const WORDS = { p1: '번데기를 거친다', p2: '번데기 없이 모습이 크게 바뀐다', p3: '알에서 나온 모습이 어른과 닮았다' };
 
 function updateReadout() {
     const a = analyse();
     $('stageBadge').textContent = `${a.animal.name} · ${a.stage.n}`;
-    $('valueA').textContent = `${a.total}일`;
+    $('valueA').textContent = `${a.total}일 (예시)`;
     $('valueB').textContent = a.stage.food;
     const rows = [
         ['자라는 차례', a.animal.stages.map(s => s.n).join(' → '), false],
         ['지금 단계', `${a.step + 1}번째 · ${a.stage.n}`, false],
-        ['이 단계에 머무는 날', a.stage.days ? `${a.stage.days}일` : '어른이 되면 끝', false],
+        ['이 단계의 기간 예시', a.stage.days ? `${a.stage.days}일` : '번식하여 다음 세대로 이어짐', false],
         ['번데기', a.animal.change === 'full' ? '있습니다' : '없습니다', a.animal.change === 'full'],
         ['먹이 사슬', a.animal.chain.join(' → '), false],
         ['먹이 관계 해석', '화살표는 먹이가 되는 생물에서 먹는 생물 쪽으로 향합니다.', false],
@@ -275,7 +214,7 @@ function tick(dt) {
     state.phase += dt;
     if (!state.running) return false;
     const n = ANIMALS[state.animal].stages.length;
-    state.t = Math.min(1, state.t + dt / (n * 1.6));
+    state.t = Math.min(1, state.t + dt / (n * 4));
     const step = Math.min(n - 1, Math.floor(state.t * n));
     if (step !== state.step) {
         state.step = step;
@@ -291,6 +230,22 @@ function tick(dt) {
     return false;
 }
 
+const motionButton=$('lifeMotionBtn');
+let motionPaused=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+function setMotionPaused(paused){
+    motionPaused=paused;
+    document.querySelector('.life-stage').classList.toggle('life-motion-paused',paused);
+    motionButton.textContent=paused?'움직임 재생':'움직임 멈추기';
+    motionButton.setAttribute('aria-pressed',String(paused));
+}
+motionButton.addEventListener('click',()=>setMotionPaused(!motionPaused));
+$('lifeStages').addEventListener('click',e=>{
+    const button=e.target.closest('[data-life-step]');
+    if(!button)return;
+    const range=$('stageRange');range.value=button.dataset.lifeStep;
+    range.dispatchEvent(new Event('input',{bubbles:true}));
+});
+setMotionPaused(motionPaused);
 let last = 0;
 function frame(now) {
     const dt = Math.min(0.05, (now - last) / 1000 || 0);

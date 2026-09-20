@@ -1,0 +1,84 @@
+{
+  "slug": "natural-selection",
+  "engine": "webkit",
+  "modes": [
+    "beak",
+    "coat"
+  ],
+  "cases": 9,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__selectionModel",
+      "methods": [
+        "SEEDS",
+        "GROUNDS",
+        "SWITCHES",
+        "N",
+        "GENS",
+        "state",
+        "analyse",
+        "simulate",
+        "fitnessAll",
+        "render",
+        "runSeconds",
+        "setMode",
+        "set",
+        "setSeed",
+        "setProgress",
+        "runToEnd",
+        "tick",
+        "finish"
+      ]
+    }
+  ],
+  "paint": [],
+  "grades": [
+    {
+      "mode": "beak",
+      "results": [
+        {
+          "choice": "small",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        },
+        {
+          "choice": "large",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "split",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "same",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        }
+      ]
+    },
+    {
+      "mode": "coat",
+      "results": [
+        {
+          "choice": "light",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        },
+        {
+          "choice": "dark",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "mixed",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        }
+      ]
+    }
+  ]
+}

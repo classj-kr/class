@@ -431,7 +431,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const vOut = document.getElementById('voltRangeOut');
         if (vOut) vOut.textContent = `${state.volts} V`;
         stageBadge.textContent = a.kind === 'flame'
-            ? `${a.compound.name} · ${COLOURS[a.colour].label}`
+            ? `${a.compound.name} · ${state.progress < .3 ? "반응 전" : state.progress >= 1 ? "시료 소진" : COLOURS[a.colour].label}`
             : `${a.sample.name} · ${state.volts} V`;
         methodHint.textContent = state.mode === 'flame'
             ? '불꽃 색은 화합물이 아니라 그 속의 금속 원소가 정합니다'

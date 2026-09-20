@@ -1,0 +1,81 @@
+{
+  "slug": "magnets",
+  "engine": "chromium",
+  "modes": [
+    "force",
+    "compass"
+  ],
+  "cases": 16,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__magnetModel",
+      "methods": [
+        "FACING",
+        "GAPS",
+        "PLACES",
+        "DISTS",
+        "FRICTION",
+        "EARTH",
+        "state",
+        "analyseForce",
+        "analyseCompass",
+        "analyse",
+        "forceAt",
+        "fieldAt",
+        "render",
+        "runSeconds",
+        "setMode",
+        "set",
+        "setProgress",
+        "runToEnd",
+        "tick",
+        "finish"
+      ]
+    }
+  ],
+  "paint": [],
+  "grades": [
+    {
+      "mode": "force",
+      "results": [
+        {
+          "choice": "stick",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        },
+        {
+          "choice": "push",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "still",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        }
+      ]
+    },
+    {
+      "mode": "compass",
+      "results": [
+        {
+          "choice": "toS",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        },
+        {
+          "choice": "toN",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "north",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        }
+      ]
+    }
+  ]
+}

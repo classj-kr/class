@@ -6,7 +6,8 @@ const path = require('node:path');
 
 const ROOT = path.join(__dirname, '..');
 const read = (file) => JSON.parse(fs.readFileSync(path.join(ROOT, file), 'utf8'));
-const cities = read('data/catalog/original-cities.json').filter((city) => !city.retired);
+const knownCities = read('data/catalog/original-cities.json');
+const cities = knownCities.filter((city) => !city.retired);
 const stories = read('data/catalog/city-stories.json');
 const credits = read('data/catalog/city-photo-credits.json');
 const photoDir = path.join(ROOT, 'public', 'assets', 'city-today');
@@ -27,11 +28,11 @@ for (const city of cities) {
     assert.ok(!/[一-鿿]/.test(value), `${city.name} ${field} 에 한자가 섞임`);
   }
 }
-for (const id of byId.keys()) assert.ok(cities.some((city) => city.id === id), `없는 도시의 이야기: ${id}`);
+for (const id of byId.keys()) assert.ok(knownCities.some((city) => city.id === id), `없는 도시의 이야기: ${id}`);
 
 // 사진은 마음대로 써도 되는 것만, 누가 찍었는지와 이용 조건을 붙여서.
 const FREE = /^(cc0|cc[- ]by|public domain|pd|fal)/i;
-const keys = new Set(cities.map((city) => city.artKey));
+const keys = new Set(knownCities.map((city) => city.artKey));
 const photos = fs.readdirSync(photoDir).filter((file) => file.endsWith('.webp'));
 assert.ok(photos.length >= 200, `오늘날 사진이 너무 적음: ${photos.length}`);
 for (const file of photos) {

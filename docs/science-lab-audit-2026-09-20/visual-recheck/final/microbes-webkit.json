@@ -1,0 +1,80 @@
+{
+  "slug": "microbes",
+  "engine": "webkit",
+  "modes": [
+    "mould",
+    "germ"
+  ],
+  "cases": 13,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__microbeModel",
+      "methods": [
+        "TEMPS",
+        "MOIST",
+        "GERM_TEMPS",
+        "HOURS",
+        "MOULD_DAYS",
+        "state",
+        "analyseMould",
+        "analyseGerm",
+        "analyse",
+        "coverage",
+        "germCount",
+        "render",
+        "runSeconds",
+        "setMode",
+        "set",
+        "setProgress",
+        "runToEnd",
+        "tick",
+        "finish"
+      ]
+    }
+  ],
+  "paint": [],
+  "grades": [
+    {
+      "mode": "mould",
+      "results": [
+        {
+          "choice": "lots",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        },
+        {
+          "choice": "some",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "none",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        }
+      ]
+    },
+    {
+      "mode": "germ",
+      "results": [
+        {
+          "choice": "double",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "tens",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "huge",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        }
+      ]
+    }
+  ]
+}

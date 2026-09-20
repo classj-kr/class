@@ -1,0 +1,52 @@
+{
+  "slug": "circuit-bulbs",
+  "engine": "webkit",
+  "modes": [
+    "circuit",
+    "magnet"
+  ],
+  "cases": 13,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__circuitModel",
+      "methods": [
+        "circuitState",
+        "magnetState",
+        "setMode",
+        "setCircuit",
+        "setMagnet",
+        "setPermanentComparison",
+        "state"
+      ]
+    }
+  ],
+  "paint": [],
+  "grades": [
+    {
+      "mode": "circuit",
+      "results": [
+        {
+          "choice": "dimmer",
+          "visible": true,
+          "text": "전지 1개는 비교 기준입니다. 2개로 바꾼 뒤 예상을 확인하세요."
+        },
+        {
+          "choice": "same",
+          "visible": true,
+          "text": "전지 1개는 비교 기준입니다. 2개로 바꾼 뒤 예상을 확인하세요."
+        },
+        {
+          "choice": "brighter",
+          "visible": true,
+          "text": "전지 1개는 비교 기준입니다. 2개로 바꾼 뒤 예상을 확인하세요."
+        }
+      ]
+    },
+    {
+      "mode": "magnet",
+      "results": []
+    }
+  ]
+}

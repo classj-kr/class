@@ -1,0 +1,80 @@
+{
+  "slug": "wave-transfer",
+  "engine": "chromium",
+  "modes": [
+    "transverse",
+    "longitudinal"
+  ],
+  "cases": 20,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__waveModel",
+      "methods": [
+        "X0",
+        "X1",
+        "PX",
+        "CY",
+        "SPAN_CM",
+        "MARK_X",
+        "SAMPLES",
+        "REF_LAMBDA",
+        "analyse",
+        "phaseOf",
+        "render",
+        "setSpeed",
+        "setFreq",
+        "setAmp",
+        "setMode",
+        "speed",
+        "freq",
+        "amp",
+        "getMode"
+      ]
+    }
+  ],
+  "paint": [],
+  "grades": [
+    {
+      "mode": "transverse",
+      "results": [
+        {
+          "choice": "longer",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "same",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        },
+        {
+          "choice": "shorter",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        }
+      ]
+    },
+    {
+      "mode": "longitudinal",
+      "results": [
+        {
+          "choice": "longer",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "same",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "shorter",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        }
+      ]
+    }
+  ]
+}

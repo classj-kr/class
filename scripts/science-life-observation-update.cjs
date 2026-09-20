@@ -1,5 +1,5 @@
 'use strict';
-const {edit,replace,cut,apply,lab}=require('./scripts/science-scope-patch.cjs');
+const {edit,replace,cut,apply,lab}=require('./science-scope-patch.cjs');
 edit(lab+'life-cycle/app.js',s=>{
  const start=s.indexOf('const STAGE_PATHS = {'),end=s.indexOf('\nfunction drawFoodChain',start);
  if(start<0||end<0)throw Error('life drawing anchors');
@@ -28,7 +28,7 @@ function render() {
     }
     const a=analyse(),done=elapsedDays();
     $('lifeProgress').value=done/a.total;
-    $('lifeDay').textContent='成長'.replace('成長','성장 기간 예시')+' · '+Math.round(done)+' / '+a.total+'일';
+    $('lifeDay').textContent='성장 기간 예시'+' · '+Math.round(done)+' / '+a.total+'일';
 }`);
  s=replace(s,"'어른이 되면 끝'","'번식하여 다음 세대로 이어짐'");
  s=replace(s,"['이 단계에 머무는 날',","['이 단계의 기간 예시',");

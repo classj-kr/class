@@ -1,0 +1,111 @@
+{
+  "slug": "earth-system",
+  "engine": "webkit",
+  "modes": [
+    "spheres",
+    "water",
+    "carbon"
+  ],
+  "cases": 24,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__earthModel",
+      "methods": [
+        "SPHERES",
+        "PHENOMENA",
+        "RESERVOIRS",
+        "FLUX",
+        "EMITS",
+        "state",
+        "analyse",
+        "render",
+        "tauOf",
+        "carbonAt",
+        "fmtTime",
+        "fmtVol",
+        "runSeconds",
+        "setMode",
+        "set",
+        "setProgress",
+        "runToEnd",
+        "tick",
+        "finish"
+      ]
+    }
+  ],
+  "paint": [],
+  "grades": [
+    {
+      "mode": "spheres",
+      "results": [
+        {
+          "choice": "geo-hydro",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "geo-atmo",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        },
+        {
+          "choice": "hydro-atmo",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "bio",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "space",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        }
+      ]
+    },
+    {
+      "mode": "water",
+      "results": [
+        {
+          "choice": "days",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        },
+        {
+          "choice": "years",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "ages",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        }
+      ]
+    },
+    {
+      "mode": "carbon",
+      "results": [
+        {
+          "choice": "down",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "same",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "up",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        }
+      ]
+    }
+  ]
+}

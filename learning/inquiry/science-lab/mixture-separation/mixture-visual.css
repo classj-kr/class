@@ -99,3 +99,5 @@
 @media (prefers-reduced-motion: reduce) {
     .magnet, .water, .sieve { transition: none; }
 }
+
+.mixture-group-controls{display:grid;gap:8px;margin-top:14px;}.mixture-group-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 12px;background:#f2f6f8;border-radius:8px;font-size:14px;line-height:1.5;}.mixture-group-row button{min-height:44px;flex-shrink:0;padding:8px 10px;border:1px solid #a8bec9;border-radius:8px;background:#fff;color:#24536b;font:inherit;cursor:pointer;}.mixture-group-row button:disabled{opacity:.5;}.mixture-stage .property-row span{color:#475569;}.mixture-stage .tray-method{font-size:13px;}
