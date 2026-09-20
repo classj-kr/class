@@ -1,0 +1,60 @@
+<!doctype html><meta charset="utf-8"><style>body{margin:0}iframe{height:100vh;border:0;display:block}pre{display:none}</style><iframe src="../../learning/arts/art-theory/color-mixing/index.html"></iframe><pre id="result">pending</pre><script>
+const frame=document.querySelector('iframe');
+const viewport=Number(new URLSearchParams(location.search).get('width'))||1440;frame.style.width=viewport+'px';
+frame.onload=()=>{try{
+ const d=frame.contentDocument,w=frame.contentWindow,checks=[];
+ const $=selector=>d.querySelector(selector);
+ const ok=(value,message)=>{if(!value)throw Error(message);checks.push(message)};
+ const click=selector=>$(selector).click();
+ const set=(index,value)=>{const input=$(`#channel${index}`);input.value=value;input.dispatchEvent(new w.Event('input',{bubbles:true}))};
+ const center=()=>[...$('#mixCanvas').getContext('2d').getImageData(450,282,1,1).data].slice(0,3).join(',');
+ ok(w.innerWidth===viewport,'requested viewport applied');
+ ok(center()==='255,0,0','initial red spotlight is visible');
+ set(1,100);ok(center()==='255,255,0','red and green visibly produce yellow');
+ ok($('#resultName').textContent==='노랑','result text agrees with rendered yellow');
+ set(2,100);ok(center()==='255,255,255','three spotlights visibly produce white');
+ click('#allOff');ok(center()==='0,0,0','no lights produces black');
+ set(0,50);ok(center()==='188,0,0','intermediate intensity is gamma encoded');
+ click('[data-channel-toggle="0"]');ok($('#channel0').value==='0','toggle turns source off');
+ click('[data-channel-toggle="0"]');ok($('#channel0').value==='50','toggle restores previous intensity');
+ click('#separateToggle');ok($('#resultChip').hidden&&$('.remaining-light').hidden,'separated view does not claim a mixed result');
+ click('#separateToggle');ok(!$('#resultChip').hidden,'overlap restores result');
+ click('[data-mode="filter"]');ok(center()==='0,255,255','cyan filter transmits green and blue');
+ set(2,100);ok(center()==='0,255,0','cyan and yellow filters visibly transmit green');
+ click('#allOn');ok(center()==='0,0,0','three filters block all components');
+ click('#allOff');ok(center()==='255,255,255','no filters passes white light');
+ set(0,50);ok(center()==='188,255,255','partial filter removes only the red component');
+ click('[data-mode="light"]');ok($('#channel0').value==='50','switching modes restores source settings');
+ click('#startExperiment');
+ ok(!$('#experiment').hidden,'prediction experiment opens');
+ ok($('#revealExperiment').disabled,'cannot reveal before choosing a prediction');
+ ok($('#separateToggle').disabled&&$('.remaining-light').hidden,'combined result is not leaked before prediction');
+ ok(d.activeElement.id==='experimentTitle','experiment heading receives focus');
+ for(let task=0;task<4;task++){
+  ok($('#channel0').disabled&&$('[data-mode="filter"]').disabled,'prepared experiment cannot be changed');
+  click('#predictionOptions input[value="0"]');ok(!$('#revealExperiment').disabled,'prediction enables experiment');
+  click('#revealExperiment');
+  ok(!$('#resultChip').hidden&&!$('.remaining-light').hidden,'reveal exposes the real combined result');
+  ok($('#experimentFeedback').textContent.length>20,'observation includes an explanation');
+  ok($('#predictionChoices').disabled,'prediction remains recorded after reveal');
+  const expected=['255,255,0','255,255,255','0,255,0','0,0,0'][task];
+  ok(center()===expected,'experiment '+(task+1)+' canvas agrees with result');
+  ok(d.documentElement.scrollWidth<=d.documentElement.clientWidth,'experiment fits viewport');
+  click('#nextExperiment');
+ }
+ ok(!$('#experimentSummary').hidden,'all experiments produce a summary');
+ ok(d.querySelectorAll('.summary-row').length===4,'exactly four observation records');
+ ok($('#summaryRows').textContent.includes('내 예상 검정'),'wrong prediction is retained in the notebook');
+ ok($('#channel0').value==='50'&&!$('#channel0').disabled,'completion restores free experiment controls');
+ click('#retryExperiment');click('#exitExperiment');
+ ok($('#experiment').hidden&&$('#channel0').value==='50','exit restores previous experiment state');
+ click('#startExperiment');w.dispatchEvent(new w.CustomEvent('sitebackrequest',{cancelable:true}));
+ ok($('#experiment').hidden,'common back returns to free experiment');
+ click('[data-mode="filter"]');click('#resetControls');ok($('#channel0').value==='100'&&$('#channel2').value==='0','filter reset restores defaults');
+ click('[data-mode="light"]');click('#allOn');
+ ok(d.documentElement.scrollWidth<=d.documentElement.clientWidth,'free experiment fits viewport');
+ document.querySelector('#result').textContent=JSON.stringify({passed:checks.length,checks});
+ document.title='PASS '+checks.length;
+ w.scrollTo(0,0);d.activeElement.blur();
+}catch(error){document.querySelector('#result').textContent='FAIL '+error.stack;document.title='FAIL'}};
+</script>
