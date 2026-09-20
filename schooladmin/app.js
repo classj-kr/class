@@ -1460,12 +1460,23 @@ document.addEventListener('DOMContentLoaded', () => {
         timetableClassSelect.addEventListener('change', loadMasterTimetable);
     }
 
-    // --- Specialist Teacher Timetable (전담교사별 시간표) ---
+    // --- Teacher Timetable (교사별 시간표) ---
     const specialistTeacherSelect = document.getElementById('specialistTeacherSelect');
     const specialistTimetableEmpty = document.getElementById('specialistTimetableEmpty');
     const specialistTimetableContent = document.getElementById('specialistTimetableContent');
     const specialistTimetableMatrixBody = document.getElementById('specialistTimetableMatrixBody');
     let specialistTeachersCache = [];
+
+    // 담임은 "(담임)"보다 맡은 반이 훨씬 빨리 읽힌다. 반이 없으면 교과를 맡은 교사다.
+    function teacherRoleLabel(teacher) {
+        if (teacher.homeroomGrade && teacher.homeroomClassNumber) {
+            return `${teacher.homeroomGrade}-${teacher.homeroomClassNumber}`;
+        }
+        // 담임으로 등록됐는데 학년·반이 비어 있으면 교과 교사로 둔갑시키지 말고
+        // 반이 안 잡혔다는 걸 그대로 보여 준다.
+        if (teacher.type === '담임' || teacher.type === 'homeroom') return '담임·반 미정';
+        return '교과';
+    }
     let specialistTimetableData = {}; // "day_period" -> { grade, classNumber, subjectName, roomName }
 
     async function loadSpecialistTeachersList() {
@@ -1475,7 +1486,7 @@ document.addEventListener('DOMContentLoaded', () => {
             specialistTeachersCache = res.teachers || [];
             const prevValue = specialistTeacherSelect.value;
             specialistTeacherSelect.innerHTML = '<option value="">교사를 선택하세요</option>' +
-                specialistTeachersCache.map(t => `<option value="${t.id}">${escapeHtml(t.name)} (${escapeHtml(t.type)})</option>`).join('');
+                specialistTeachersCache.map(t => `<option value="${t.id}">${escapeHtml(t.name)} (${escapeHtml(teacherRoleLabel(t))})</option>`).join('');
             if (prevValue) specialistTeacherSelect.value = prevValue;
         } catch (error) {
             if (specialistTimetableEmpty) specialistTimetableEmpty.textContent = error.message;
@@ -1799,10 +1810,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 const isInactive = allocated !== null && period > allocated;
                 const sub = timetableMatrixData[`${day}_${period}`] || '-';
                 const lock = timetableMatrixLocks[`${day}_${period}`];
-                const lockBadge = lock ? `<div style="font-size:0.68rem; color:var(--primary);">${lock.teacherUserId ? '🎯전담' : ''}${lock.teacherUserId && lock.roomName ? ' · ' : ''}${lock.roomName ? `🚪${escapeHtml(lock.roomName)}` : ''}</div>` : '';
+                const lockBadge = lock ? `<div style="font-size:0.68rem; color:var(--primary);">${lock.teacherUserId ? '🎯교과' : ''}${lock.teacherUserId && lock.roomName ? ' · ' : ''}${lock.roomName ? `🚪${escapeHtml(lock.roomName)}` : ''}</div>` : '';
                 const tagHtml = (sub !== '-' && sub !== '수업없음' ? `<span class="cell-subject-tag">${escapeHtml(sub)}</span>` : `<span style="color:var(--text-muted);">${sub}</span>`) + lockBadge;
                 const inactiveAttrs = isInactive ? ' style="opacity:0.3; pointer-events:none;" title="이 요일의 배당 교시수를 초과했습니다"' : '';
-                const lockAttrs = lock ? ' data-locked="true" title="전담교사별/특별실별 시간표에서 배정됨 - 클릭하면 지울 수 있습니다"' : '';
+                const lockAttrs = lock ? ' data-locked="true" title="교사별/특별실별 시간표에서 배정됨 - 클릭하면 지울 수 있습니다"' : '';
                 cellsHtml += `<td class="timetable-cell" data-day="${day}" data-period="${period}"${inactiveAttrs}${lockAttrs}>${tagHtml}</td>`;
             }
 
@@ -1829,7 +1840,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     async function clearLockedTimetableCell(day, period) {
-        if (!confirm('이 시간은 전담교사별/특별실별 시간표에서 배정되었습니다. 여기서 지우면 그쪽 배정도 함께 사라집니다. 지울까요?')) return;
+        if (!confirm('이 시간은 교사별/특별실별 시간표에서 배정되었습니다. 여기서 지우면 그쪽 배정도 함께 사라집니다. 지울까요?')) return;
         const grade = timetableGradeSelect.value;
         const classNum = timetableClassSelect ? timetableClassSelect.value : 1;
         try {

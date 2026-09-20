@@ -463,7 +463,7 @@
             </div>
         </div>
         <div class="roster-toolbar tab-toolbar" data-tab="teachers">
-            <span class="card-desc toolbar-desc">교직원 통합 명단 (담임·전담·관리자 구분, 구글 계정 관리)</span>
+            <span class="card-desc toolbar-desc">교직원 통합 명단 (담임·교과·관리자 구분, 구글 계정 관리)</span>
             <span class="status-msg" id="teacherRosterStatus"></span>
             <div class="toolbar-buttons" id="teacherAdminActions">
                 <button class="btn btn-secondary btn-sm" id="toggleTeacherPasteBtn" onclick="toggleTeacherPasteSection()">📥 붙여넣기로 입력</button>
@@ -550,7 +550,7 @@
                             <th>구글 계정</th>
                             <th style="width:80px;">담당 학년</th>
                             <th style="width:80px;">담당 반</th>
-                            <th style="width:110px;">담당 과목 (전담)</th>
+                            <th style="width:110px;">담당 과목 (교과)</th>
                             <th style="width:110px;">기본 특별실</th>
                             <th style="width:120px;">직책</th>
                             <th style="width:90px;">연동 상태</th>
@@ -607,7 +607,7 @@
     <div class="panel" id="panel-groups">
         <div class="card">
             <div class="card-title">내 학급·그룹</div>
-            <div class="card-desc">담임반, 동아리, 전담 과목반, 방과후반 등 자유롭게 개설하여 전교생 명단에서 학생을 끌어다 구성하세요.</div>
+            <div class="card-desc">담임반, 동아리, 교과반, 방과후반 등 자유롭게 개설하여 전교생 명단에서 학생을 끌어다 구성하세요.</div>
             <p class="status-msg" id="groupStatus"></p>
             <div class="groups-grid" id="groupsGrid">
                 <div style="padding:40px;text-align:center;color:var(--muted);">불러오는 중…</div>
@@ -625,7 +625,7 @@
             <label>그룹 유형</label>
             <select class="form-control" id="newGroupType">
                 <option value="homeroom">🏫 담임 학급</option>
-                <option value="subject">📖 전담 교과</option>
+                <option value="subject">📖 교과</option>
                 <option value="club">🎯 동아리</option>
                 <option value="afterschool">⚽ 방과후부</option>
                 <option value="care">🧸 돌봄반</option>
@@ -743,7 +743,7 @@
                 ? `<span style="background:#fef3c7;color:#d97706;padding:3px 8px;border-radius:12px;font-size:11px;font-weight:bold;">👑 학교 관리자</span>`
                 : (Boolean(t.grade && t.classNumber)
                     ? `<span style="background:#e0f2fe;color:#0284c7;padding:3px 8px;border-radius:12px;font-size:11px;font-weight:bold;">담임 (${t.grade}-${t.classNumber})</span>`
-                    : `<span style="background:#f3f4f6;color:#4b5563;padding:3px 8px;border-radius:12px;font-size:11px;">전담/교직원</span>`);
+                    : `<span style="background:#f3f4f6;color:#4b5563;padding:3px 8px;border-radius:12px;font-size:11px;">교과/교직원</span>`);
             
             const linkedBadge = t.linked ? `<span class="linked-badge">✓ 연동</span>` : `<span style="color:#9ca3af;font-size:11px;">미연동</span>`;
             
@@ -798,13 +798,13 @@
                         <input class="roster-cell-input" style="width:100%;border:1px solid #d1d5db;border-radius:4px;padding:3px 6px;" value="${esc(t.roomName ?? '')}" placeholder="예: 음악실" onchange="updateTeacherField(${idx}, 'roomName', this.value)">
                     </td>
                     <td style="text-align:center;">
-                        <!-- 담임·전담은 학년·반으로 자동. 교무부장·교감·교장은 여기서 고른다.
+                        <!-- 담임·교과는 학년·반으로 자동. 교무부장·교감·교장은 여기서 고른다.
                              결재선의 '교무부장·교감·교장' 차례는 이 직책으로 정해진다. -->
                         <select class="roster-cell-input" style="width:100%;border:1px solid #d1d5db;border-radius:4px;padding:3px 4px;" onchange="updateTeacherField(${idx}, 'role', this.value)">
-                            <option value="auto" ${!['교무부장','교감','교장'].includes(t.role || t.type) ? 'selected' : ''}>자동 (담임/전담)</option>
-                            <option value="교무부장" ${(t.role || t.type) === '교무부장' ? 'selected' : ''}>교무부장</option>
-                            <option value="교감" ${(t.role || t.type) === '교감' ? 'selected' : ''}>교감</option>
+                            <option value="auto" ${!['교무부장','교감','교장'].includes(t.role || t.type) ? 'selected' : ''}>-</option>
                             <option value="교장" ${(t.role || t.type) === '교장' ? 'selected' : ''}>교장</option>
+                            <option value="교감" ${(t.role || t.type) === '교감' ? 'selected' : ''}>교감</option>
+                            <option value="교무부장" ${(t.role || t.type) === '교무부장' ? 'selected' : ''}>교무부장</option>
                         </select>
                     </td>
                     <td style="text-align:center;">${linkedBadge}</td>
@@ -847,7 +847,7 @@
                 const hasC = Boolean(t.classNumber);
                 if (hasG !== hasC) {
                     const nameStr = t.name || "선택한";
-                    setStatus("teacherRosterStatus", `⚠️ '${nameStr}' 교사의 학년과 반을 모두 입력하거나, 전담인 경우 둘 다 비워두세요.`, "error");
+                    setStatus("teacherRosterStatus", `⚠️ '${nameStr}' 교사의 학년과 반을 모두 입력하거나, 교과를 맡은 경우 둘 다 비워두세요.`, "error");
                     if (btn) btn.disabled = false;
                     return;
                 }
@@ -1645,7 +1645,7 @@
             const data = await api(`/api/teacher/groups?year=${currentYear}`);
             const groups = data.groups || [];
             const badgeMap = { homeroom: "badge-homeroom", subject: "badge-subject", club: "badge-club", afterschool: "badge-afterschool", care: "badge-afterschool", shuttle: "badge-shuttle", other: "badge-other" };
-            const typeLabel = { homeroom: "담임 학급", subject: "전담 교과", club: "동아리", afterschool: "방과후부", care: "돌봄반", shuttle: "통학버스", other: "기타" };
+            const typeLabel = { homeroom: "담임 학급", subject: "교과", club: "동아리", afterschool: "방과후부", care: "돌봄반", shuttle: "통학버스", other: "기타" };
 
             grid.innerHTML = groups.map(g => `
                 <div class="group-card">
@@ -1681,7 +1681,7 @@
         // 학년·반은 담임반에만 쓴다.
         gradeClass.style.display = type === "homeroom" ? "grid" : "none";
 
-        // 담임 학급·전담 교과는 등록 목록이 없어 직접 입력을 받는다.
+        // 담임 학급·교과는 등록 목록이 없어 직접 입력을 받는다.
         const names = ["homeroom", "subject"].includes(type) ? null : groupNameOptions();
 
         if (!names) {
