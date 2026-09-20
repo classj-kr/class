@@ -67,17 +67,46 @@
     box-shadow: 0 0 14px rgba(6, 182, 212, 0.5);
 }
 
-/* ── 호흡 운동 (breath-motion.js) ─────────────────────────── */
 .breath-layer {
     position: absolute;
     inset: 0;
-    background: radial-gradient(circle at 50% 45%, #101a2e 0%, #05070f 100%);
     z-index: 3;
-    padding: 50px 10px 8px;
+    padding: 76px 22px 24px;
+    overflow: auto;
+    background: radial-gradient(ellipse at 50% 30%, #13283b 0%, #0a1422 65%);
+    container-type: inline-size;
 }
-
 .breath-layer[hidden] { display: none !important; }
-.breath-layer svg { width: 100%; height: 100%; display: block; }
+.breath-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap; margin-bottom: 18px; }
+.breath-phase { color: #8edcef; font-size: 17px; font-weight: 750; letter-spacing: -.4px; }
+.breath-phase::before { content: ''; display: inline-block; width: 8px; height: 8px; background: currentColor; border-radius: 50%; margin-right: 9px; }
+.breath-layer[data-phase="out"] .breath-phase { color: #f7c76b; }
+.breath-layer[data-phase="paused"] .breath-phase, .breath-layer[data-phase="rest"] .breath-phase { color: #c8d6e2; }
+.breath-actions { display: flex; gap: 6px; flex-wrap: wrap; }
+.breath-actions button { min-height: 44px; padding: 8px 13px; border: 1px solid #3c5669; border-radius: 9px; background: #162b3d; color: #e7f1f7; font: inherit; font-size: 13px; font-weight: 650; cursor: pointer; }
+.breath-actions button:hover, .breath-actions button[aria-pressed="true"] { background: #204556; border-color: #6eb8ce; }
+.breath-actions button:focus-visible { outline: 2px solid #9ae7fc; outline-offset: 3px; }
+.breath-figures { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.breath-figure { min-width: 0; border: 1px solid #2c4154; border-radius: 16px; overflow: hidden; background: rgba(12, 24, 38, .76); }
+.breath-figure header { padding: 18px 20px 0; }
+.breath-figure h2 { color: #f0f6fa; font-size: 17px; font-weight: 750; }
+.breath-figure header p { color: #a4bacb; font-size: 13px; margin-top: 4px; line-height: 1.6; }
+.breath-layer .breath-diagram { display: block; width: 100%; height: auto; max-height: 520px; }
+.breath-callout text { font: 600 17px var(--font-main); }
+.breath-handle { cursor: ns-resize; touch-action: none; outline: none; }
+.breath-handle:focus-visible > circle:nth-of-type(2), .breath-handle:hover > circle:nth-of-type(2) { stroke: #fff1bc; stroke-width: 5px; }
+.breath-summary { display: flex; flex-wrap: wrap; gap: 12px 25px; padding: 15px 18px; margin-top: 16px; background: #152b3c; border: 1px solid #304f65; border-radius: 12px; min-height: 56px; align-items: center; color: #afc3d2; font-size: 14px; }
+.breath-summary b { color: #e0f1f6; margin-left: 7px; font-weight: 650; }
+.breath-correspondence { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 26px; padding: 18px 0 9px; color: #c2d2df; font-size: 13px; }
+.breath-correspondence i { display: inline-block; width: 8px; height: 8px; border-radius: 3px; margin-right: 7px; }
+.lung-key { background: #f0a0b9; } .membrane-key { background: #f7c76b; } .space-key { background: #79d9f2; }
+.breath-note { color: #9eb3c4; font-size: 12px; line-height: 1.7; text-align: center; margin: 0 auto; max-width: 680px; }
+@container (max-width: 730px) { .breath-figures { grid-template-columns: 1fr; } .breath-figure { max-width: 550px; width: 100%; margin: 0 auto; } }
+@media (max-width: 900px) {
+    .breath-layer { padding: 116px 12px 20px; }
+    .sim-stage-area .scene-switcher { max-width: calc(100% - 24px); }
+}
+@media (max-width: 430px) { .breath-layer { padding-left: 7px; padding-right: 7px; } .breath-figure header { padding: 14px 12px 0; } .breath-callout text { font-size: 18px; } }
 
 /* ── 폐포 기체 교환 (1번 장면) ──────────────────────────────── */
 
@@ -220,43 +249,6 @@
 .twoplaces-error {
     position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
     color: #fca5a5; font-weight: 700;
-}
-
-/* ── 갈비뼈·가로막 장면의 이름표 (breath-motion.js) ──────────
-   그림 안 <text> 를 쓰지 않는다. 창이 커져도 글씨 크기가 같아야 한다. */
-.breath-tags {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-}
-
-.breath-tag {
-    position: absolute;
-    transform: translate(-50%, -50%);
-    white-space: nowrap;
-    font-size: 13.5px;
-    font-weight: 700;
-    color: #cbd5e1;
-}
-
-.breath-tag[data-anchor="start"] { transform: translate(0, -50%); }
-.breath-tag[data-anchor="end"] { transform: translate(-100%, -50%); }
-
-.breath-tag.head { font-size: 15px; font-weight: 800; color: #f8fafc; }
-.breath-tag.warm { color: #fbbf24; font-weight: 800; }
-.breath-tag.cool { color: #38bdf8; font-weight: 800; }
-.breath-tag.good { color: #34d399; font-weight: 800; }
-.breath-tag.dim { color: #94a3b8; }
-
-.breath-tag.verdict {
-    padding: 8px 16px;
-    border-radius: 12px;
-    background: rgba(6, 10, 24, 0.9);
-    border: 1.6px solid #94a3b8;
-    font-weight: 800;
-    max-width: 620px;
-    white-space: normal;
-    text-align: center;
 }
 
 /* 고른 이름표도 조각과 같은 가락으로 숨 쉰다 */
