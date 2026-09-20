@@ -1,0 +1,11 @@
+.required-experiments{margin:22px 0;padding:22px;background:#fff;border:1px solid #c4d4dc;border-radius:14px;color:#173f50;min-width:0}
+.required-experiments h2{font-size:18px!important;line-height:1.5;margin:0 0 14px}.required-experiments h3{font-size:16px!important;line-height:1.6}
+.required-experiments button,.required-experiments select{font:inherit;font-size:14px;min-height:44px;padding:9px 12px;border:1px solid #aec5ce;border-radius:8px;background:#f7fafb;color:#173f50;cursor:pointer;white-space:normal}
+.required-experiments button:focus-visible,.required-experiments select:focus-visible{outline:3px solid #267b97;outline-offset:2px}
+.required-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}.required-tabs button[aria-pressed=true]{background:#235f72;color:#fff}
+.required-layout{display:grid;grid-template-columns:240px minmax(0,1fr);gap:22px}.required-controls label{display:block;font-size:14px;line-height:1.6;margin-bottom:16px}.required-controls select{display:block;width:100%;margin-top:6px}
+.required-figure{display:block;width:100%;max-width:620px;height:auto;margin:auto}.required-experiments p{font-size:15px;line-height:1.7;font-weight:400}.required-readings{display:grid;grid-template-columns:minmax(120px,auto) 1fr;gap:8px 18px;font-size:15px;line-height:1.6}.required-readings dd{margin:0;font-weight:600}
+.required-actions{display:flex;gap:10px;margin:14px 0}.required-history{overflow-x:auto}.required-history table{width:100%;border-collapse:collapse;font-size:14px;line-height:1.6}.required-history th,.required-history td{padding:10px;border-bottom:1px solid #d8e3e7;text-align:left;word-break:keep-all}
+.required-check{border-top:1px solid #d8e3e7;margin-top:18px}.required-check button{display:block;width:100%;margin:7px 0;text-align:left}.required-note{font-size:13px!important;color:#526b78}
+@media(max-width:820px){.required-layout{grid-template-columns:1fr}.required-controls{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 16px}.required-experiments{padding:18px}}
+@media(max-width:500px){.required-controls{grid-template-columns:1fr}.required-readings{grid-template-columns:1fr;gap:2px}.required-readings dd{margin-bottom:9px}}

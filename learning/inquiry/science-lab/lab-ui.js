@@ -35,7 +35,7 @@
     if(text.matches('.figure-caption')||(atEdge&&b.width>box.width*.67)||b.x<box.x||b.x+b.width>box.x+box.width||b.y<box.y||b.y+b.height>box.y+box.height){lines.push(text.textContent.trim());text.setAttribute('data-figure-extracted','');}
    });
    // Bottom axis titles are prose, not plotted coordinates. Give them a separate line.
-   if(!proseOnly&&svg.matches('.graph-svg'))svg.querySelectorAll('text.axis-title').forEach(text=>{
+   if(!proseOnly&&svg.matches('.graph-svg'))svg.querySelectorAll('text.axis-title:not(.figure-caption)').forEach(text=>{
     text.removeAttribute('data-figure-extracted');
     const b=text.getBBox();
     if(b.y>box.y+box.height*.72){lines.push('가로축: '+text.textContent.trim());text.setAttribute('data-figure-extracted','');}
@@ -47,7 +47,7 @@
    }else if(notes)notes.hidden=true;
   }
   const schedule=()=>{if(!scheduled){scheduled=true;requestAnimationFrame(layout);}};
-  new MutationObserver(schedule).observe(svg,{childList:true,subtree:true,characterData:true});
+  new MutationObserver(layout).observe(svg,{childList:true,subtree:true,characterData:true});
   new ResizeObserver(schedule).observe(svg);
   schedule();document.fonts?.ready.then(schedule);
  }

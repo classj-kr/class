@@ -288,6 +288,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function renderMain(a) {
+        mainGroup.closest('svg').setAttribute('data-mobile-fit','');
         mainGroup.closest('svg').setAttribute('viewBox',a.kind==='two'?'0 0 660 290':'0 0 460 238');
         let out = renderPunnett(a) + renderTray(a);
         const head = a.kind === 'one'

@@ -149,7 +149,7 @@ const scienceCurriculum = {
       "중1"
     ],
     "level": "middle",
-    "title": "속력과 힘의 평형",
+    "title": "힘의 평형·탄성력·부력 측정",
     "subjects": [
       "과학"
     ],
@@ -345,7 +345,7 @@ const scienceCurriculum = {
       "초5"
     ],
     "level": "elementary",
-    "title": "온도 측정과 열의 이동",
+    "title": "열의 이동과 에너지 절약",
     "subjects": [
       "과학"
     ],
@@ -353,7 +353,8 @@ const scienceCurriculum = {
       "6과07-01",
       "6과07-02",
       "6과07-03",
-      "6과07-04"
+      "6과07-04",
+      "6과08-03"
     ]
   },
   "specific-heat": {
@@ -1034,7 +1035,7 @@ const scienceCurriculum = {
       "중3"
     ],
     "level": "middle",
-    "title": "감각 기관의 반응",
+    "title": "감각 기관과 맹점 확인",
     "subjects": [
       "과학"
     ],
@@ -1159,7 +1160,7 @@ const scienceCurriculum = {
       "초4"
     ],
     "level": "elementary",
-    "title": "강낭콩 기르기와 먹이 관계",
+    "title": "강낭콩·먹이 관계와 기후변화",
     "subjects": [
       "과학"
     ],
@@ -1167,7 +1168,8 @@ const scienceCurriculum = {
       "4과04-02",
       "4과14-01",
       "4과14-02",
-      "4과14-03"
+      "4과14-03",
+      "4과16-02"
     ]
   },
   "population": {
@@ -1266,11 +1268,12 @@ const scienceCurriculum = {
       "초4"
     ],
     "level": "elementary",
-    "title": "화산과 화성암 관찰",
+    "title": "땅의 변화·화산과 화성암",
     "subjects": [
       "과학"
     ],
     "codes": [
+      "4과11-01",
       "4과11-02",
       "4과11-03"
     ]

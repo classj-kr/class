@@ -253,7 +253,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const X0 = 56, X1 = 420, Y0 = 150, Y1 = 40, YM = (Y0 + Y1) / 2;
         const xOf = xm => X0 + (xm + 0.6) / 1.2 * (X1 - X0);
         const yOf = E => YM - Math.sign(E) * Math.log10(1 + Math.abs(E) / 1e3) / 3.3 * (YM - Y1);
-        let out = `<text class="axis-title" x="${X0}" y="18">두 전하를 잇는 축 위의 전기장 — 위가 오른쪽 방향(+), 아래가 왼쪽 방향(−)</text>`;
+        let out = `<text class="axis-title figure-caption" x="${X0}" y="18">두 전하를 잇는 축 위의 전기장 — 위가 오른쪽 방향(+), 아래가 왼쪽 방향(−)</text>`;
         [[1e6, '100만'], [1e5, '10만'], [1e4, '1만'], [0, '0'], [-1e4, '−1만'], [-1e5, '−10만'], [-1e6, '−100만']].forEach(([E, lab]) => { const y = yOf(E); out += `<line class="grid-line" x1="${X0}" y1="${y.toFixed(1)}" x2="${X1}" y2="${y.toFixed(1)}"/><text class="axis-text" x="${X0 - 5}" y="${(y + 3.5).toFixed(1)}" text-anchor="end">${lab}</text>`; });
         [-0.6, -0.3, 0, 0.3, 0.6].forEach(xm => { out += `<text class="axis-text" x="${xOf(xm).toFixed(1)}" y="${Y0 + 14}" text-anchor="middle">${xm} m</text>`; });
         out += `<line class="axis" x1="${X0}" y1="${YM}" x2="${X1}" y2="${YM}"/><line class="axis" x1="${X0}" y1="${Y1}" x2="${X0}" y2="${Y0}"/>`;
