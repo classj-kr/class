@@ -253,7 +253,7 @@ const CHAPTERS = [
                 "art": "08-ending-2.webp",
                 "emoji": "✨",
                 "left": [
-                    "이튿날 아침, 궁궐 앞에 여덟 마리 백마가 끄는 마차가 섰습니다. 마부는 왕자를 어릴 때부터 모신 하인리히였지요.",
+                    "이튿날 아침, 궁궐 앞에 백마 두 마리가 끄는 마차가 섰습니다. 마부는 왕자를 어릴 때부터 모신 하인리히였지요.",
                     "왕자가 개구리가 되던 날, 하인리히는 너무 슬퍼 가슴이 터질까 봐 가슴에 쇠테를 둘렀습니다."
                 ],
                 "right": [
@@ -473,7 +473,7 @@ const QUIZ = [
         "q": "마차 뒤에서 툭툭 소리가 난 까닭은 무엇인가요?",
         "choices": [
             "마차의 문",
-            "여덟 마리 백마",
+            "백마 두 마리",
             "하인리히의 쇠테"
         ],
         "answer": 2
@@ -872,7 +872,7 @@ const EN = {
                     art: '08-ending-2.webp',
                     emoji: '✨',
                     left: [
-                        "Next morning a carriage with eight white horses came.",
+                        "Next morning a carriage with two white horses came.",
                         "The driver, Henry, had served the prince since he was a boy.",
                         "When the prince became a frog, Henry was so sad",
                         "he bound iron bands round his chest so it would not burst."
@@ -1053,7 +1053,7 @@ const EN = {
             { word: 'under a spell', meaning: '마법에 걸린', sentence: 'A prince from the next kingdom, under a spell.' }
         ],
         '08-ending-2.webp': [
-            { word: 'carriage', meaning: '마차', sentence: 'A carriage with eight white horses.' },
+            { word: 'carriage', meaning: '마차', sentence: 'A carriage with two white horses.' },
             { word: 'serve', meaning: '모시다', sentence: 'Henry had served the prince since he was a boy.' },
             { word: 'iron band', meaning: '쇠테', sentence: 'He bound iron bands round his chest.' },
             { word: 'burst', meaning: '터지다', sentence: 'So it would not burst.' },

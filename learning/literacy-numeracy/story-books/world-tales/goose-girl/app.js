@@ -92,7 +92,7 @@ const CHAPTERS = [
                     "공주는 고개를 끄덕였습니다. 그것 말고는 할 수 있는 것이 없었지요."
                 ],
                 "right": [
-                    "말발굽 아래에서 먼지가 뿌옇게 일었지요. 공주의 신은 금세 흙투성이가 되었습니다.",
+                    "말발굽 아래에서 먼지가 뿌옇게 일었지요. 맨발로 걷는 공주의 발은 금세 흙투성이가 되었습니다.",
                     "해가 기울 무렵 멀리 성이 보였습니다. 깃발이 나부끼고 성문이 활짝 열려 있었지요. 사람들이 길가에 나와 손을 흔들었습니다.",
                     "모두 말 탄 사람만 바라보았지요."
                 ]
@@ -177,7 +177,7 @@ const CHAPTERS = [
                 "left": [
                     "들판에 이르면 공주는 풀밭에 앉아 머리를 풀어 빗었습니다. 금빛 머리카락이 햇빛을 받아 눈부시게 쏟아졌지요. 콘라트는 그것을 볼 때마다 자꾸 손이 갔습니다.",
                     "\"한 올만 뽑아 볼래! 딱 한 올만!\"",
-                    "콘라트가 손을 쑥 내밀었지요. 공주가 얼른 몸을 피했습니다."
+                    "콘라트가 손을 쑥 뻗어 머리카락을 한 줌 움켜쥐었지요."
                 ],
                 "right": [
                     "공주는 고개를 세게 저었습니다. 머리카락 하나도 함부로 내줄 수 없었지요. 그러고는 눈을 감고 노래하듯 중얼거렸습니다.",
@@ -664,7 +664,7 @@ const EN = {
                     ],
                     right: [
                         "Dust rose under the horse's hooves,",
-                        "and the princess's shoes were soon thick with it.",
+                        "and the princess's bare feet were soon thick with it.",
                         "As the sun went down, a castle came into sight.",
                         "Flags were flying and the gates were thrown wide.",
                         "People lined the road and waved — but only at the one on the horse."
@@ -762,7 +762,7 @@ const EN = {
                         "Out in the fields, the princess would sit in the grass and let her hair loose to comb it.",
                         "It came pouring down golden in the sunlight, and Conrad always wanted to touch it.",
                         "\"Let me pull out one hair! Just one!\" said Conrad.",
-                        "He reached out, but she quickly moved away."
+                        "He reached out and caught a handful of her hair."
                     ],
                     right: [
                         "She shook her head hard. She would not give away so much as a hair of it.",
@@ -977,7 +977,7 @@ const EN = {
         ],
         '03-swap-2.webp': [
             { word: 'hoof', meaning: '말발굽', sentence: "Dust rose under the horse's hooves." },
-            { word: 'thick with', meaning: '~투성이인', sentence: 'Her shoes were soon thick with it.' },
+            { word: 'thick with', meaning: '~투성이인', sentence: 'Her bare feet were soon thick with it.' },
             { word: 'come into sight', meaning: '보이기 시작하다', sentence: 'A castle came into sight.' },
             { word: 'throw wide', meaning: '활짝 열다', sentence: "The gates were thrown wide." }
         ],

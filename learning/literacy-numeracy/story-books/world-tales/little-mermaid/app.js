@@ -8,8 +8,8 @@ const CHAPTERS = [
                 "emoji": "🏰",
                 "left": [
                     "바다 깊은 곳에 궁전이 하나 있었습니다. 산호로 지은 궁전이었지요.",
-                    "바다 임금님이 그곳을 다스렸습니다. 임금님에게는 딸이 여섯 있었지요.",
-                    "그중 막내는 제일 어렸지만 노래는 여섯 가운데 가장 잘했습니다."
+                    "바다 임금님이 그곳을 다스렸습니다. 임금님에게는 딸이 다섯 있었지요.",
+                    "그중 막내는 제일 어렸지만 노래는 다섯 가운데 가장 잘했습니다."
                 ],
                 "right": [
                     "저녁이면 공주들의 할머니가 바다 위 세상 이야기를 들려주었습니다.",
@@ -567,9 +567,9 @@ const EN = {
                     emoji: '🐚',
                     left: [
                         "Deep down in the sea there stood a palace built of coral.",
-                        "The sea king ruled there, and he had six daughters.",
+                        "The sea king ruled there, and he had five daughters.",
                         "The youngest of them was the smallest.",
-                        "And of all six, she sang the best."
+                        "And of all five, she sang the best."
                     ],
                     right: [
                         "In the evenings their grandmother told them stories about the world above the water.",

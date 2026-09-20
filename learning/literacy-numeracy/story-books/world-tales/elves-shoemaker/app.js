@@ -110,7 +110,7 @@ const CHAPTERS = [
                 ],
                 "right": [
                     "바로 그때 문틈이 흔들렸지요. 손바닥만 한 작은 사람 둘이 쏙 들어왔습니다. 둘은 작업대 다리를 타고 올라갔지요.",
-                    "둘은 옷을 하나도 걸치지 않은 맨몸이었지요. 한겨울인데도 발까지 맨발이었습니다.",
+                    "둘이 걸친 것이라고는 얇은 홑옷 한 벌뿐이었지요. 한겨울인데도 발까지 맨발이었습니다.",
                     "아내가 하마터면 소리를 낼 뻔했지요."
                 ]
             },
@@ -634,7 +634,7 @@ const EN = {
                     ],
                     right: [
                         "Just then the door moved a little. Two tiny men, no bigger than a hand, slipped in and climbed up the leg of the bench.",
-                        "They had no clothes on at all. It was the middle of winter, and their feet were bare.",
+                        "They wore nothing but one thin shirt each. It was the middle of winter, and their feet were bare.",
                         "His wife nearly cried out."
                     ]
                 },

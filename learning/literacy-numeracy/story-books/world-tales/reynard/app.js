@@ -122,10 +122,10 @@ const CHAPTERS = [
                 "left": [
                     "\"딱 한 마리만 잡고 가지요.\"",
                     "고양이는 침을 꼴깍 삼켰습니다. 그러고는 헛간으로 뛰어들었지요.",
-                    "그런데 문턱에 밧줄 올가미가 놓여 있었습니다. 올가미가 고양이 목에 척 걸렸지요. \"야옹! 사람 살려!\""
+                    "그런데 문턱에 밧줄 올가미가 놓여 있었습니다. 올가미가 고양이 뒷다리에 척 걸렸지요. \"야옹! 사람 살려!\""
                 ],
                 "right": [
-                    "고양이는 대롱대롱 매달렸습니다. 농부가 몽둥이를 들고 달려 나왔지요. 여우는 그 소리를 뒤로하고 돌아섰습니다.",
+                    "고양이는 거꾸로 대롱대롱 매달렸습니다. 농부가 빗자루를 들고 달려 나왔지요. 여우는 그 소리를 뒤로하고 돌아섰습니다.",
                     "\"저런, 안됐군요.\"",
                     "그러고는 낮잠을 자러 갔지요. 고양이는 한참 소동을 겪은 뒤에야 겨우 도망쳐 돌아왔습니다."
                 ]
@@ -676,11 +676,11 @@ const EN = {
                     emoji: '🐈',
                     left: [
                         "\"I shall catch just one, and then we go,\" said the cat. He swallowed hard and sprang into the barn.",
-                        "But a rope noose had been set in the doorway, and it caught him neatly round the neck.",
+                        "But a rope noose had been set in the doorway, and it caught him neatly round the hind legs.",
                         "\"Miaow! Help, somebody!\""
                     ],
                     right: [
-                        "The cat hung there swinging. The farmer came running out with a stick.",
+                        "The cat hung there upside down, swinging. The farmer came running out with a broom.",
                         "The fox turned away from the noise. \"Dear me. What a shame.\" And off he went for his afternoon nap.",
                         "There was an uproar in the barn for a long while before the cat finally escaped and limped back."
                     ]

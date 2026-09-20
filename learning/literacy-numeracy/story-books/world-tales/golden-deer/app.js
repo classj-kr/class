@@ -78,9 +78,9 @@ const CHAPTERS = [
                     "아무도 감히 가로막지 못했지요. 이윽고 황금 사슴은 궁궐 문 앞에 이르렀습니다."
                 ],
                 "right": [
-                    "황금 사슴은 그대로 안으로 들어갔지요. 병사들이 창을 겨누었습니다.",
+                    "황금 사슴은 그대로 안으로 들어갔지요. 병사들이 창을 든 채 굳어 버렸습니다.",
                     "그래도 사슴은 멈추지 않았지요. 뜰 한가운데까지 곧장 걸어갔습니다.",
-                    "임금님이 놀라 활을 집어 들고 자리에서 일어섰지요."
+                    "임금님이 놀라 자리에서 벌떡 일어섰지요. 손에 든 잔이 기울어 바닥에 쏟아졌습니다."
                 ]
             },
             {
@@ -651,10 +651,10 @@ const EN = {
                     ],
                     right: [
                         "The Golden Deer walked straight in.",
-                        "The soldiers levelled their spears at him.",
+                        "The soldiers stood frozen with their spears in their hands.",
                         "But the deer did not stop.",
                         "He walked right to the middle of the courtyard.",
-                        "The king jumped up in surprise and snatched up his bow."
+                        "The king jumped up in surprise, and the cup in his hand tipped and spilled."
                     ]
                 },
                 {
@@ -988,7 +988,7 @@ const EN = {
         '03-king.webp': [
             { word: 'astonished', meaning: '놀란', sentence: 'People were astonished at the sight.' },
             { word: 'dare', meaning: '감히 ~하다', sentence: 'Nobody dared to stand in his way.' },
-            { word: 'level', meaning: '겨누다', sentence: 'The soldiers levelled their spears.' },
+            { word: 'frozen', meaning: '굳어 버린', sentence: 'The soldiers stood frozen with their spears in their hands.' },
             { word: 'courtyard', meaning: '뜰', sentence: 'He walked to the middle of the courtyard.' }
         ],
         '03-king-2.webp': [

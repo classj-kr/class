@@ -211,7 +211,7 @@ const CHAPTERS = [
                 "emoji": "🌸",
                 "left": [
                     "겨울이 끝나고 눈이 녹았습니다. 땅에서 새싹이 돋아났지요. 숲이 다시 초록으로 물들었습니다.",
-                    "밤비도 몰라보게 자랐지요. 머리에는 작은 뿔이 돋았습니다.",
+                    "밤비도 몰라보게 자랐지요. 머리에는 뿔이 제법 가지를 뻗었습니다.",
                     "어느 날 풀밭에서 낯익은 얼굴을 만났지요. 팔리네였습니다."
                 ],
                 "right": [
@@ -772,7 +772,7 @@ const EN = {
                     emoji: '🌱',
                     left: [
                         "The winter ended and the snow melted. Green shoots came up out of the ground, and the wood turned green again.",
-                        "Bambi had grown a great deal, and small antlers had come up on his head.",
+                        "Bambi had grown a great deal, and his antlers had branched out.",
                         "One day on the meadow he met a face he knew. It was Faline."
                     ],
                     right: [

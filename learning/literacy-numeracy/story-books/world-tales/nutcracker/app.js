@@ -126,9 +126,9 @@ const CHAPTERS = [
                 "emoji": "⚔️",
                 "left": [
                     "끝내 인형이 쿵 넘어졌습니다. 생쥐 왕이 성큼성큼 다가갔지요.",
-                    "마리는 저도 모르게 몸이 움직였습니다. 신고 있던 신발을 얼른 벗었지요.",
+                    "마리는 저도 모르게 몸이 움직였습니다. 발치에 놓인 슬리퍼를 얼른 집어 들었지요.",
                     "\"저리 가!\"",
-                    "마리는 있는 힘껏 신발을 던졌습니다."
+                    "마리는 있는 힘껏 슬리퍼를 던졌습니다."
                 ],
                 "right": [
                     "그것이 생쥐 왕의 머리에 딱 맞았지요. 생쥐들이 놀라 우르르 흩어졌습니다. 마룻바닥 틈으로 순식간에 사라졌지요.",
@@ -400,7 +400,7 @@ const AFTERWORD = {
                 "호프만이 지은 이야기를 뒤에 차이콥스키가 발레 음악으로 만들었습니다. 그래서 더 널리 알려졌지요.",
                 "호두까기 인형은 선물 가운데 가장 볼품없었습니다. 얼굴이 우스꽝스러운 인형이었지요. 다른 아이들은 거들떠보지 않았습니다.",
                 "마리만 그것을 안고 다녔습니다. 손수건으로 턱을 매어 주기도 했고요. 그래서 밤에 벌어지는 일을 마리만 보게 됩니다.",
-                "싸움이 벌어졌을 때 마리는 숨지 않았습니다. 신발을 벗어 던졌지요. 그 한 번이 판을 갈랐습니다."
+                "싸움이 벌어졌을 때 마리는 숨지 않았습니다. 슬리퍼를 집어 던졌지요. 그 한 번이 판을 갈랐습니다."
             ],
             right: [
                 "어른들은 마리의 말을 믿지 않습니다. 꿈을 꾼 것이라고 하지요. 이야기는 누가 옳은지 끝까지 딱 잘라 말하지 않습니다.",
@@ -498,7 +498,7 @@ const QUIZ = [
         "wide": true,
         "choices": [
                 "마리가 손수건을 풀어 인형의 턱을 감아 준 것을 보면, 부러진 것을 그냥 두지 못했구나.",
-                "마리가 신고 있던 신발을 벗어 던진 것을 보면, 인형이 밀리는 것을 보고 몸이 먼저 움직인 거지.",
+                "마리가 발치의 슬리퍼를 집어 던진 것을 보면, 인형이 밀리는 것을 보고 몸이 먼저 움직인 거지.",
                 "아침에 부러졌던 턱이 멀쩡했던 것을 보면, 이야기가 그날 밤 일을 딱 잘라 말하지 않았어.",
                 "프리츠가 인형을 툭 놓고 가 버린 것을 보면, 제가 부러뜨린 것이 미안해 자리를 피했구나."
             ],
@@ -712,7 +712,7 @@ const EN = {
                         "At last the Nutcracker went down.",
                         "The Mouse King came striding toward him.",
                         "And Marie moved before she knew she had.",
-                        "She pulled off the slipper she was wearing.",
+                        "She snatched up the slipper at her feet.",
                         "\"Get away from him!\"",
                         "And she threw it with all her strength."
                     ],
@@ -933,7 +933,7 @@ const EN = {
             wide: true,
             choices: [
                 "Marie untied her handkerchief and bound up the broken jaw — she could not leave it as it was.",
-                "She pulled off the slipper she was wearing and threw it — she moved before she had thought about it.",
+                "She snatched up the slipper at her feet and threw it — she moved before she had thought about it.",
                 "In the morning the broken jaw was whole again — the story never says outright what happened that night.",
                 "Fritz put the doll down and walked off — he was ashamed of breaking it and made himself scarce."
             ],
@@ -950,7 +950,7 @@ const EN = {
                     "Hoffmann wrote the story, and Tchaikovsky later turned it into ballet music. That is why so many people know it.",
                     "The Nutcracker was the least impressive present of the lot — a doll with a stiff jaw and a comical face. Nobody gave him a second look.",
                     "Only Marie carried him about. She even tied her handkerchief round his jaw. And that is why she is the only one who sees what happens at night.",
-                    "When the fight came, Marie did not hide. She pulled off her slipper and threw it. That one throw turned the whole thing."
+                    "When the fight came, Marie did not hide. She snatched up her slipper and threw it. That one throw turned the whole thing."
                 ],
                 right: [
                     "The grown-ups do not believe her. They say she was dreaming. The story never quite comes down on one side.",
@@ -1015,7 +1015,7 @@ const EN = {
         '04-battle-2.webp': [
             { word: 'go down', meaning: '쓰러지다', sentence: 'At last the Nutcracker went down.' },
             { word: 'stride', meaning: '성큼성큼 걷다', sentence: 'The Mouse King came striding toward him.' },
-            { word: 'slipper', meaning: '신발', sentence: 'She pulled off the slipper she was wearing.' },
+            { word: 'slipper', meaning: '실내화', sentence: 'She snatched up the slipper at her feet.' },
             { word: 'square on', meaning: '딱 정통으로', sentence: 'It caught him square on the head.' },
             { word: 'faint away', meaning: '정신을 잃다', sentence: 'Everything spun, and she fainted away.' }
         ],

@@ -65,7 +65,7 @@ const CHAPTERS = [
                 "right": [
                     "한참을 이리저리 뒤척였습니다. '내가 정말 바보짓을 했나 봐.'",
                     "그때 창밖에서 무슨 소리가 났지요. 사각사각, 사각사각.",
-                    "꼭 무언가 자라는 소리 같았습니다. 잭은 그 소리를 들으며 스르르 잠이 들었지요."
+                    "잭이 창문을 밀고 내다봤지요. 마당 한가운데에서 굵은 줄기가 쑥쑥 하늘로 뻗어 오르고 있었습니다."
                 ]
             }
         ]
@@ -83,7 +83,7 @@ const CHAPTERS = [
                     "\"어머니가 던진 콩이 밤새 자랐구나!\""
                 ],
                 "right": [
-                    "잭은 맨발로 마당에 뛰어나갔습니다. 어머니는 아직 자고 있었지요.",
+                    "잭은 맨발로 마당에 뛰어나갔습니다. 어머니도 뒤따라 나와 줄기를 올려다봤지요.",
                     "고개를 한껏 젖혀 봐도 꼭대기가 보이지 않았지요. 줄기는 구름 속으로 그대로 사라져 있었습니다. 가까이 가 보니 줄기가 사다리처럼 얽혀 있었지요.",
                     "오르기에 딱 좋았습니다. 잭은 침을 꿀꺽 삼켰지요."
                 ]
@@ -629,7 +629,7 @@ const EN = {
                         "He tossed and turned for a long while. 'I really have been a fool.'",
                         "Then a sound came from outside the window.",
                         "Rustle, rustle. Rustle, rustle.",
-                        "It sounded like something growing. Jack drifted off to sleep listening to it."
+                        "Jack pushed the window open. In the middle of the yard a thick stalk was shooting up into the sky."
                     ]
                 }
             ]
@@ -647,7 +647,7 @@ const EN = {
                         "Jack gasped. \"The beans Mother threw have grown in one night!\""
                     ],
                     right: [
-                        "Jack ran out into the yard barefoot. His mother was still asleep.",
+                        "Jack ran out into the yard barefoot, and his mother came out after him and looked up at the stalk.",
                         "He tipped his head back but could not see the top. The stalk went up into the clouds and vanished.",
                         "Up close, the stems were twisted round one another like a ladder, just right for climbing.",
                         "Jack swallowed hard."
@@ -957,7 +957,7 @@ const EN = {
             { word: 'fling', meaning: '확 던지다', sentence: 'She flung the beans out of the window.' },
             { word: 'scatter', meaning: '흩어지다', sentence: 'They scattered all over the yard.' },
             { word: 'toss and turn', meaning: '뒤척이다', sentence: 'He tossed and turned for a long while.' },
-            { word: 'rustle', meaning: '사각사각 소리', sentence: "Rustle, rustle. It sounded like something growing." }
+            { word: 'shoot up', meaning: '쑥쑥 자라다', sentence: 'A thick stalk was shooting up into the sky.' }
         ],
         '03-beanstalk.webp': [
             { word: 'stalk', meaning: '줄기', sentence: 'An enormous stalk stood planted there.' },

@@ -23,7 +23,7 @@ const CHAPTERS = [
                 "left": [
                     "아내는 밥도 제대로 넘기지 못했습니다. 얼굴이 하루가 다르게 여위어 갔지요.",
                     "남편은 며칠을 망설였습니다. 마녀의 밭이라는 것을 알면서도 다른 수가 없었지요.",
-                    "결국 남편은 달도 없는 밤에 담을 넘었습니다. 담은 어른 키의 두 배나 되었지요."
+                    "결국 남편은 달빛이 환한 밤에 담을 넘었습니다. 담은 어른 키의 두 배나 되었지요."
                 ],
                 "right": [
                     "남편은 손을 떨며 나물을 한 줌 뜯었습니다. 잎에서 서늘한 풀 냄새가 났지요.",
@@ -586,7 +586,7 @@ const EN = {
                     left: [
                         "The wife could hardly get her food down. Her face grew thinner every day.",
                         "Her husband hesitated for days. He knew it was the witch's garden, but he could see no other way.",
-                        "At last he climbed the wall on a moonless night. It was twice as tall as a man."
+                        "At last he climbed the wall under a bright moon. It was twice as tall as a man."
                     ],
                     right: [
                         "With shaking hands he picked a handful of the green. The leaves smelled cool and fresh.",
@@ -939,7 +939,7 @@ const EN = {
         '01-garden-2.webp': [
             { word: 'get down', meaning: '넘기다, 삼키다', sentence: 'The wife could hardly get her food down.' },
             { word: 'hesitate', meaning: '망설이다', sentence: 'Her husband hesitated for days.' },
-            { word: 'moonless', meaning: '달 없는', sentence: 'He climbed the wall on a moonless night.' },
+            { word: 'bright', meaning: '환한', sentence: 'He climbed the wall under a bright moon.' },
             { word: 'handful', meaning: '한 줌', sentence: 'He picked a handful of the green.' },
             { word: 'cloak', meaning: '망토', sentence: 'There stood a witch in a purple cloak.' }
         ],

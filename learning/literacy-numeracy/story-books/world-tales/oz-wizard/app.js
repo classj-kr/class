@@ -160,7 +160,7 @@ const CHAPTERS = [
                     "넷은 서쪽으로 걸음을 옮겼습니다. 그쪽으로는 노란 벽돌길도 없었지요. 그래서 해가 지는 쪽만 보고 걸었습니다."
                 ],
                 "right": [
-                    "서쪽 마녀는 눈이 하나뿐인데도 멀리까지 다 보았습니다. 넷이 오는 것을 보자 마녀는 짐승들을 보냈지요.",
+                    "서쪽 마녀는 눈이 어찌나 밝은지 멀리까지 다 보았습니다. 넷이 오는 것을 보자 마녀는 짐승들을 보냈지요.",
                     "먼저 늑대 떼가 몰려왔습니다. 나무꾼이 도끼를 빙빙 돌리자 꽁무니를 뺐지요.",
                     "다음은 까마귀 떼였지요. 허수아비가 팔을 휘휘 젓자 까악까악 흩어졌습니다."
                 ]
@@ -229,7 +229,7 @@ const CHAPTERS = [
                     "나무꾼 가슴에는 비단으로 지은 심장을 넣어 주었지요."
                 ],
                 "right": [
-                    "사자에게는 초록빛 물약을 한 사발 따라 주었습니다. \"쭉 들이켜시오. 이것이 용기요.\"",
+                    "사자에게는 초록빛 물약을 병째 건넸습니다. \"쭉 들이켜시오. 이것이 용기요.\"",
                     "사자는 벌컥벌컥 마시고 가슴을 쭉 폈지요. \"이제 하나도 안 무섭다!\"",
                     "사실 셋은 처음부터 지혜롭고 다정하고 용감했습니다. 저마다 그걸 몰랐을 뿐이지요."
                 ]
@@ -808,7 +808,7 @@ const EN = {
                         "Into the Woodman's chest he fitted a heart sewn out of silk."
                     ],
                     right: [
-                        "For the Lion he poured a bowl of green drink. \"Drink it all. That is courage.\"",
+                        "For the Lion he held out a bottle of green drink. \"Drink it all. That is courage.\"",
                         "The Lion gulped it down and squared his chest. \"Now I'm not afraid of anything!\"",
                         "In truth, the three had been clever and kind and brave all along. They just didn't know it."
                     ]
