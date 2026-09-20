@@ -365,6 +365,7 @@
   }
 
   function focusLesson(lesson) {
+    mainMap.invalidateSize({ pan: false });
     lessonMapLayer.clearLayers();
     if (!lesson) return;
     renderLegend((themes[currentTheme].legend || []).filter(item=>item.type === "relief"));

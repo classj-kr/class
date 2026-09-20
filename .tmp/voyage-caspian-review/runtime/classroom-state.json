@@ -1,0 +1,29 @@
+{
+  "version": 10,
+  "rooms": {
+    "4967": {
+      "activeMission": null,
+      "progress": {},
+      "settings": {
+        "paused": false,
+        "locked": false,
+        "roomType": "free",
+        "started": true
+      },
+      "clock": {
+        "gameMinutes": 0
+      },
+      "discoveries": {
+        "상호작용검사": [
+          "caspian-sea"
+        ]
+      },
+      "hunts": {},
+      "host": {
+        "tokenHash": "208740fc6dd0a920629d26611adce3dbf35ecae8fc9ffa1e381ffc69e7591c80",
+        "createdAt": 1789907152181,
+        "lastActiveAt": 1789907152289
+      }
+    }
+  }
+}

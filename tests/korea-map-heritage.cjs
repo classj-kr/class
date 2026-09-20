@@ -113,6 +113,11 @@ const server = http.createServer((req, res) => {
       await page.keyboard.press('Enter');
       assert.equal(await page.$eval('#relicTitle', el => el.textContent), relics[0].title);
       assert.ok(await page.$eval('#relicDialog', el => el.open));
+      await page.$eval('#relicDialog', el => el.close());
+      await target.focus();
+      await page.keyboard.press('Space');
+      assert.equal(await page.$eval('#relicTitle', el => el.textContent), relics[0].title);
+      assert.ok(await page.$eval('#relicDialog', el => el.open));
       assert.deepEqual(errors, []);
       reports.push({ viewport, clicks, clustered, individuallyReachableAtMaxZoom: clickedAtMaximum.size, errors });
       await page.close();
@@ -124,4 +129,3 @@ const server = http.createServer((req, res) => {
     await new Promise(resolve => server.close(resolve));
   }
 })().catch(error => { console.error(error); process.exitCode = 1; });
-

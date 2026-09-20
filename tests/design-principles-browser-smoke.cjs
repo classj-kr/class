@@ -1,34 +1,40 @@
-const assert = require('node:assert/strict');
-const fs = require('node:fs');
-const os = require('node:os');
-const path = require('node:path');
-const { spawnSync } = require('node:child_process');
-const { pathToFileURL } = require('node:url');
-const browser = process.env.CHROME_PATH || ['C:/Program Files/Google/Chrome/Application/chrome.exe', 'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe', '/usr/bin/chromium', '/usr/bin/google-chrome'].find(p => fs.existsSync(p));
-assert.ok(browser, 'Set CHROME_PATH to a Chrome or Edge executable.');
-const temporaryRoot = fs.realpathSync(os.tmpdir());
-const profile = fs.mkdtempSync(path.join(temporaryRoot, 'design-principles-test-'));
-const fixture = pathToFileURL(path.join(__dirname, 'fixtures/design-principles-browser.html'));
-try {
-  for (const width of [1440, 390, 320]) {
-    fixture.search = `?width=${width}`;
-    const args = ['--headless', '--disable-gpu', '--no-first-run', '--no-default-browser-check', '--allow-file-access-from-files', `--user-data-dir=${profile}`, `--window-size=${width},1000`, '--force-device-scale-factor=1', '--virtual-time-budget=8000', '--dump-dom'];
-    if (process.env.DESIGN_PRINCIPLES_SCREENSHOTS) {
-      fs.mkdirSync(process.env.DESIGN_PRINCIPLES_SCREENSHOTS, { recursive: true });
-      args.push(`--screenshot=${path.resolve(process.env.DESIGN_PRINCIPLES_SCREENSHOTS, `lesson-${width}.png`)}`);
-    }
-    const result = spawnSync(browser, [...args, fixture.href], { encoding: 'utf8', timeout: 30000, maxBuffer: 2000000 });
-    assert.ifError(result.error);
-    assert.equal(result.status, 0, result.stderr);
-    const raw = result.stdout.match(/<pre id="result">([\s\S]*?)<\/pre>/)?.[1];
-    assert.ok(raw && raw.startsWith('{'), raw || 'No browser test result');
-    const report = JSON.parse(raw);
-    assert.ok(report.passed > 0);
-    console.log(`${width}px: ${report.passed} browser checks passed`);
-  }
-} finally {
-  const resolved = fs.realpathSync(profile);
-  assert.equal(path.dirname(resolved).toLowerCase(), temporaryRoot.toLowerCase());
-  assert.ok(path.basename(resolved).startsWith('design-principles-test-'));
-  fs.rmSync(resolved, { recursive: true, force: true, maxRetries: 3 });
+const assert=require('node:assert/strict'),fs=require('node:fs'),os=require('node:os'),path=require('node:path'),{spawn}=require('node:child_process'),{pathToFileURL}=require('node:url');
+const browser=process.env.CHROME_PATH||['C:/Program Files/Google/Chrome/Application/chrome.exe','C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe','/usr/bin/chromium'].find(p=>fs.existsSync(p));assert.ok(browser);
+const tmp=fs.realpathSync(os.tmpdir()),profile=fs.mkdtempSync(path.join(tmp,'composition-studio-test-')),url=pathToFileURL(path.resolve('learning/arts/art-theory/design-principles/index.html')).href;
+const delay=ms=>new Promise(r=>setTimeout(r,ms));
+let proc,ws,seq=0,pending=new Map();
+async function until(fn){for(let i=0;i<100;i++){try{const value=await fn();if(value)return value;}catch{}await delay(100);}throw Error('Timed out waiting for browser');}
+function send(method,params={}){return new Promise((resolve,reject)=>{const id=++seq,timer=setTimeout(()=>{pending.delete(id);reject(Error(method+' timed out'));},10000);pending.set(id,{resolve:v=>{clearTimeout(timer);resolve(v)},reject:e=>{clearTimeout(timer);reject(e)}});ws.send(JSON.stringify({id,method,params}));});}
+async function evaluate(expression){const value=await send('Runtime.evaluate',{expression,returnByValue:true,awaitPromise:true});if(value.exceptionDetails)throw Error(JSON.stringify(value.exceptionDetails));return value.result.value;}
+const click=selector=>evaluate(`document.querySelector(${JSON.stringify(selector)}).click()`);
+const read=expression=>evaluate(expression);
+const set=async(id,value)=>evaluate(`(()=>{const el=document.getElementById(${JSON.stringify(id)});el.value=${JSON.stringify(value)};el.dispatchEvent(new Event('input',{bubbles:true}));el.dispatchEvent(new Event('change',{bubbles:true}));})()`);
+async function dragShape(touch=false){const p=await read(`(()=>{const r=document.querySelector('#canvas [data-object="1"]').getBoundingClientRect();return {x:r.x+r.width/2,y:r.y+r.height/2}})()`);
+ if(touch){await send('Emulation.setTouchEmulationEnabled',{enabled:true,maxTouchPoints:1});await send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[{x:p.x,y:p.y}]});for(let n=1;n<=3;n++)await send('Input.dispatchTouchEvent',{type:'touchMove',touchPoints:[{x:p.x+12*n,y:p.y+6*n}]});await send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});await send('Emulation.setTouchEmulationEnabled',{enabled:false});}
+ else{await send('Input.dispatchMouseEvent',{type:'mousePressed',x:p.x,y:p.y,button:'left',clickCount:1});for(let n=1;n<=3;n++)await send('Input.dispatchMouseEvent',{type:'mouseMoved',x:p.x+12*n,y:p.y+6*n,button:'left',buttons:1});await send('Input.dispatchMouseEvent',{type:'mouseReleased',x:p.x+36,y:p.y+18,button:'left',clickCount:1});}
 }
+(async()=>{try{
+ proc=spawn(browser,['--headless','--disable-gpu','--no-first-run','--no-default-browser-check','--remote-debugging-port=0',`--user-data-dir=${profile}`,url],{stdio:'ignore',windowsHide:true});
+ const port=await until(()=>fs.existsSync(path.join(profile,'DevToolsActivePort'))&&Number(fs.readFileSync(path.join(profile,'DevToolsActivePort'),'utf8').split('\n')[0]));
+ const targets=await (await fetch(`http://127.0.0.1:${port}/json`)).json();const target=targets.find(t=>t.type==='page');ws=new WebSocket(target.webSocketDebuggerUrl);await new Promise((res,rej)=>{ws.addEventListener('open',res,{once:true});ws.addEventListener('error',rej,{once:true});});
+ ws.addEventListener('message',event=>{const result=JSON.parse(event.data);if(pending.has(result.id)){const promise=pending.get(result.id);pending.delete(result.id);if(result.error)promise.reject(Error(JSON.stringify(result.error)));else promise.resolve(result.result);}});
+ await send('Page.enable');
+ for(const width of [1440,390,320]){
+  await send('Emulation.setDeviceMetricsOverride',{width,height:1100,deviceScaleFactor:1,mobile:false});await evaluate('localStorage.clear()');await send('Page.reload');await until(()=>read(`document.readyState==='complete'&&document.querySelectorAll('#canvas [data-object]').length===4`));
+  let checks=0;const ok=(v,label)=>{assert.ok(v,label);checks++;};
+  ok(await read(`innerWidth===${width}&&document.documentElement.scrollWidth<=innerWidth`),'viewport fits');ok(await read(`!document.querySelector('#prediction')&&!document.querySelector('#startTrial')`),'no prediction or staged exercise');
+  const initial=await read(`document.querySelector('#canvas [data-object="1"]').getAttribute('transform')`);await dragShape(width!==1440);
+  const moved=await read(`document.querySelector('#canvas [data-object="1"]').getAttribute('transform')`);ok(moved!==initial,'real mouse or touch moves selected shape');
+  await click('#undo');ok(await read(`document.querySelector('#canvas [data-object="1"]').getAttribute('transform')`)===initial,'one undo reverses the whole drag');await click('#redo');ok(await read(`document.querySelector('#canvas [data-object="1"]').getAttribute('transform')`)===moved,'redo restores drag');
+  await evaluate(`document.querySelector('#canvas [data-object="1"]').focus()`);await send('Input.dispatchKeyEvent',{type:'keyDown',key:'ArrowRight',code:'ArrowRight',windowsVirtualKeyCode:39});await send('Input.dispatchKeyEvent',{type:'keyUp',key:'ArrowRight',code:'ArrowRight',windowsVirtualKeyCode:39});ok(await read(`document.querySelector('#canvas [data-object="1"]').getAttribute('transform')`)!==moved,'actual arrow key moves focused object');await click('#undo');
+  await click('#pinReference');const baseline=await read(`document.querySelector('#referenceCanvas').innerHTML`);await set('objectSize',130);await click('[data-color="#b76e4d"]');ok(await read(`document.querySelector('#referenceCanvas').innerHTML`)===baseline,'reference survives size and color editing');
+  await click('[data-add="square"]');await click('[data-add="triangle"]');await click('#duplicate');ok(await read(`document.querySelectorAll('#canvas [data-object]').length`)===7,'add and duplicate');await click('#sendBack');ok(await read(`document.querySelector('#canvas').firstElementChild.dataset.object==='7'`),'stack order can change');await click('#remove');ok(await read(`document.querySelectorAll('#canvas [data-object]').length`)===6,'delete one object');await click('#undo');
+  await click('#saveComposition');const saved=await read(`document.querySelector('.saved-composition svg').innerHTML`);await click('#clearCanvas');ok(await read(`document.querySelectorAll('#canvas [data-object]').length`)===0,'clear canvas');await click('#undo');ok(await read(`document.querySelectorAll('#canvas [data-object]').length`)===7,'clear is reversible');await set('objectSize',50);ok(await read(`document.querySelector('.saved-composition svg').innerHTML`)===saved,'saved composition immutable');await click('[data-load="1"]');
+  const persisted=await read(`localStorage.getItem('art-composition-studio-v2')`);await send('Page.reload');await until(()=>read(`document.readyState==='complete'&&document.querySelectorAll('#canvas [data-object]').length===7`));ok(await read(`localStorage.getItem('art-composition-studio-v2')`)===persisted,'reload restores work and saved composition');ok(await read(`document.querySelector('.saved-composition svg').innerHTML`)===saved,'saved preview survives reload');ok(await read(`document.querySelector('#referenceCanvas').innerHTML`)===baseline,'reference survives reload');
+  await click('[data-compare="1"]');ok(await read(`document.querySelector('#referenceCanvas').innerHTML`)===saved,'saved composition can be comparison reference');await click('[data-delete="1"]');ok(await read(`document.querySelectorAll('.saved-composition').length`)===0,'saved composition removable');
+  ok(await read(`getComputedStyle(document.querySelector('h1')).fontSize==='22px'&&getComputedStyle(document.querySelector('h2')).fontSize==='18px'&&getComputedStyle(document.querySelector('#undo')).fontSize==='16px'`),'restrained type sizes');ok(await read(`document.documentElement.scrollWidth<=innerWidth`),'final layout fits');
+  if(width!==1440)await click('#compareToggle');await evaluate('scrollTo(0,0);document.activeElement.blur()');
+  if(process.env.DESIGN_PRINCIPLES_SCREENSHOTS){fs.mkdirSync(process.env.DESIGN_PRINCIPLES_SCREENSHOTS,{recursive:true});const screenshot=await send('Page.captureScreenshot',{format:'png'});fs.writeFileSync(path.join(process.env.DESIGN_PRINCIPLES_SCREENSHOTS,`studio-${width}.png`),Buffer.from(screenshot.data,'base64'));}
+  console.log(`${width}px: ${checks} studio checks passed (${width===1440?'mouse':'touch'} drag + keyboard)`);
+ }
+}finally{if(ws)ws.close();if(proc){proc.kill();await delay(400);}const resolved=fs.realpathSync(profile);assert.equal(path.dirname(resolved).toLowerCase(),tmp.toLowerCase());assert.ok(path.basename(resolved).startsWith('composition-studio-test-'));fs.rmSync(resolved,{recursive:true,force:true,maxRetries:6,retryDelay:300});}})().catch(error=>{console.error(error);process.exitCode=1;});
