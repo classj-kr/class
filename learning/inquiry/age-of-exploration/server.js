@@ -2897,7 +2897,7 @@ function movePlayer(p, dt) {
   if (!moved) {
     const distanceToTarget = () => (p.target ? GeoMotion.initialDirection(p.x, p.y, p.target.x, p.target.y, WORLD_PIXEL_W, WORLD_PIXEL_H).distancePixels : 0);
     const before = distanceToTarget();
-    const angles = ShipMotion.slideAngles(!!p.target, p.slideSign);
+    const angles = ShipMotion.slideAngles(p.slideSign);
     for (const angle of angles) {
       const startX = p.x;
       const startY = p.y;

@@ -34,17 +34,18 @@ assert.equal(ShipMotion.canEnter({ ...onIce, nextType: 'sea', nextLat: 81.5 }), 
 // 갇히지 않은 탐험대는 얼음을 밟지 못한다.
 assert.equal(ShipMotion.canEnter({ mode: 'land', trapped: false, hereLat: 79, nextType: 'ice', nextPassable: false, nextLat: 80 }), false, '평소에는 얼음 땅으로 들어갈 수 없어야 함');
 
-// 비껴 가기: 손으로 몰 때는 옆(90도)까지만, 길을 따라갈 때는 뒤(150도)까지.
-const manual = ShipMotion.slideAngles(false, 1);
-const routed = ShipMotion.slideAngles(true, 1);
-assert.ok(Math.max(...manual.map(Math.abs)) <= Math.PI / 2 + 1e-9, '손으로 몰 때 뒤로 돌아서면 안 됨');
-assert.ok(Math.max(...routed.map(Math.abs)) > Math.PI / 2, '길을 따라갈 때는 뒤로도 돌 수 있어야 함');
-assert.deepEqual(ShipMotion.slideAngles(false, -1).map((a) => Math.sign(a)), [-1, 1, -1, 1, -1, 1], '돌던 쪽을 이어서 돌아야 함');
+// 비껴 가기: 조금씩 틀어 보다가, 옆으로도 못 가면 뒤쪽까지 돌린다(피오르 안쪽에서 빠져나오는 유일한 길).
+const angles = ShipMotion.slideAngles(1);
+const magnitudes = angles.map(Math.abs);
+assert.deepEqual(magnitudes, [...magnitudes].sort((a, b) => a - b), '작게 틀어 보고 나서 크게 틀어야 함');
+assert.ok(magnitudes[0] < Math.PI / 4, '먼저 조금만 틀어야 함');
+assert.ok(magnitudes[magnitudes.length - 1] > Math.PI / 2, '끝내 막히면 뒤로도 돌 수 있어야 함');
+assert.deepEqual(ShipMotion.slideAngles(-1).map((a) => Math.sign(a)), [-1, 1, -1, 1, -1, 1, -1, 1, -1, 1], '돌던 쪽을 이어서 돌아야 함');
 
 // 서버가 이 규칙을 쓰고 있는가. 손으로 몰 때도 비껴 가야 한다.
 const server = fs.readFileSync(path.join(__dirname, '..', 'server.js'), 'utf8');
 assert.match(server, /ShipMotion\.canEnter\(/, '서버가 같은 규칙을 써야 함');
-assert.match(server, /ShipMotion\.slideAngles\(!!p\.target, p\.slideSign\)/, '서버가 같은 비껴 가기를 써야 함');
+assert.match(server, /ShipMotion\.slideAngles\(p\.slideSign\)/, '서버가 같은 비껴 가기를 써야 함');
 assert.match(server, /if \(!moved\) \{/, '손으로 몰 때도 비껴 가야 함');
 const page = fs.readFileSync(path.join(__dirname, '..', 'public', 'index.html'), 'utf8');
 assert.match(page, /if\(!moved\)for\(const angle of/, '학생 화면도 비껴 가야 함(서버와 어긋나면 배가 덜컥거린다)');
@@ -53,4 +54,4 @@ assert.match(page, /iceSlowdownAt/, '학생 화면도 얼음 앞에서 느려져
 // 얼음 앞에서 느려지는 폭: 다 와서도 3분의 1은 남아야 빠져나올 수 있다.
 assert.ok(Terrain.ICE_SLOW.floor >= 0.25 && Terrain.ICE_SLOW.floor < 0.5, '얼음 속 속도는 3분의 1쯤이어야 함');
 
-console.log(`v85 ice escape unit ok · 손 비껴가기 ${manual.length}방향 · 길 비껴가기 ${routed.length}방향 · 얼음 속 속도 ${Terrain.ICE_SLOW.floor}`);
+console.log(`v85 ice escape unit ok · 비껴가기 ${angles.length}방향 · 얼음 속 속도 ${Terrain.ICE_SLOW.floor}`);

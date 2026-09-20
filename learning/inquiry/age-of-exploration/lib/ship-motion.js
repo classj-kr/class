@@ -20,18 +20,17 @@ function canEnter({ mode, nextType, nextPassable, frozenAhead, trapped, hereLat,
 }
 
 // 해안이나 얼음에 뱃머리가 박혔을 때 비껴 갈 방향(라디안).
-// 길을 따라가는 중이면 뒤로 돌아서라도 빠져나가고, 손으로 몰 때는 옆으로까지만 비껴 간다.
-// 누르지도 않은 뒤쪽으로 배가 가면 아이가 놀란다.
-const SLIDE_MANUAL = Object.freeze([Math.PI / 6, Math.PI / 3, Math.PI / 2]);
-const SLIDE_ROUTED = Object.freeze([Math.PI / 6, Math.PI / 3, Math.PI / 2, (Math.PI * 2) / 3, (Math.PI * 5) / 6]);
+// 조금씩 틀어 보다가, 옆으로도 못 가면 뒤쪽까지 돌린다. 피오르 안쪽이나 얼음과 뭍 사이에서는
+// 왔던 길로 돌아 나오는 것이 유일한 길이라, 여기서 멈추면 배가 영영 갇힌다.
+const SLIDE_MAGNITUDES = Object.freeze([Math.PI / 6, Math.PI / 3, Math.PI / 2, (Math.PI * 2) / 3, (Math.PI * 5) / 6]);
 
-function slideAngles(hasTarget, preferredSign) {
+function slideAngles(preferredSign) {
   const sign = preferredSign === -1 ? -1 : 1;
   const angles = [];
-  for (const magnitude of hasTarget ? SLIDE_ROUTED : SLIDE_MANUAL) {
+  for (const magnitude of SLIDE_MAGNITUDES) {
     angles.push(magnitude * sign, magnitude * -sign);
   }
   return angles;
 }
 
-module.exports = { canEnter, slideAngles, SLIDE_MANUAL, SLIDE_ROUTED };
+module.exports = { canEnter, slideAngles, SLIDE_MAGNITUDES };

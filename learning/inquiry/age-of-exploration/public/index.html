@@ -715,7 +715,7 @@ function movePrediction(dt){
     return moved};
   let moved=tryMove(delta.x,delta.y);
   // 해안이나 얼음에 뱃머리가 박히면 그 자리에 서지 않고 옆으로 비껴 간다(서버와 같은 규칙).
-  if(!moved)for(const angle of [Math.PI/6,-Math.PI/6,Math.PI/3,-Math.PI/3,Math.PI/2,-Math.PI/2]){const c=Math.cos(angle),s=Math.sin(angle),d2=CDS95GeoMotion.localDeltaToMap((vx*c-vy*s)*step,(vx*s+vy*c)*step,oy,MAP_H);if(tryMove(d2.x,d2.y)){moved=true;break}}
+  if(!moved)for(const angle of [Math.PI/6,-Math.PI/6,Math.PI/3,-Math.PI/3,Math.PI/2,-Math.PI/2,Math.PI*2/3,-Math.PI*2/3,Math.PI*5/6,-Math.PI*5/6]){const c=Math.cos(angle),s=Math.sin(angle),d2=CDS95GeoMotion.localDeltaToMap((vx*c-vy*s)*step,(vx*s+vy*c)*step,oy,MAP_H);if(tryMove(d2.x,d2.y)){moved=true;break}}
   if(moved){self.dir=vectorToDir(vx,vy);return}
   const equatorWord=self.y<MAP_H/2?'남쪽':'북쪽';
   if(blocked?.type==='seasonIce')localBlock(`이 계절에는 이 앞바다가 얼어붙었습니다. ${equatorWord}으로 뱃머리를 돌리세요.`);
