@@ -120,7 +120,7 @@ button,input{font:inherit}button{border:1px solid var(--line);background:#17313b
 <div id="discoveryView"><div id="discoveryCard"><h2 id="discoveryName">발견!</h2><div id="discoveryKind"></div><img id="discoveryImage" alt="" hidden><div id="discoveryCredit" hidden></div><div id="discoveryText"></div><div id="discoveryCount"></div><div id="discoveryButtons"><button id="discoveryNext" type="button" hidden>다음 명소</button><button id="discoveryClose" type="button">계속 탐험하기</button></div></div></div><div id="hostBar" class="panel" hidden><span>방번호 <b id="hostCode"></b></span><button id="hostStartBtn" type="button">모두 출발</button></div><div id="transitionOverlay"><div id="transitionCard"><div id="transitionLabel">입항 준비 중</div><div id="transitionBar"><div id="transitionFill"></div></div></div></div><div id="pauseOverlay"><div id="lockTitle">방장이 게임을 잠시 멈췄습니다.</div><span id="lockDetail" style="font-size:14px;font-weight:400">설명을 듣고 다시 시작할 때까지 기다리세요.</span></div>
 <div id="messageWindow" class="panel" aria-live="polite"><div id="messageHeader">항해 안내</div><div id="messageLines"><div class="guideLine system">서버에 접속한 뒤 안내 메시지가 여기에 표시됩니다.</div></div></div>
 <script src="/learn/world-voyage/socket.io/socket.io.js"></script>
-<script src="/learn/world-voyage/js/terrain.js?v=78"></script>
+<script src="/learn/world-voyage/js/terrain.js?v=79"></script>
 <script src="/learn/world-voyage/js/geo-motion.js?v=75"></script>
 <script src="/learn/world-voyage/js/ocean-current.js"></script>
 <script src="/learn/world-voyage/js/wind.js?v=77"></script>
@@ -701,15 +701,20 @@ function movePrediction(dt){
   dt*=SIMULATION_RATE;
   if(!self||!canTravelNow()||(mode!=='sea'&&mode!=='land'))return;
   let vx=(keys.right?1:0)-(keys.left?1:0),vy=(keys.down?1:0)-(keys.up?1:0);const len=Math.hypot(vx,vy);if(!len)return;vx/=len;vy/=len;
-  const current=terrainAtPixel(self.x,self.y),mult=mode==='sea'?TERRAIN_SPEED.sea:current.multiplier,baseSpeed=mode==='sea'?SEA_BASE_SPEED:LAND_BASE_SPEED,fatigueMult=serverSelf?.fatigueSpeedMultiplier??fatigueMultiplier(serverSelf?.fatigue),completionMult=completionBoost(),ox=self.x,oy=self.y;
+  const current=terrainAtPixel(self.x,self.y),mult=(mode==='sea'?TERRAIN_SPEED.sea:current.multiplier)*UW3Terrain.iceSlowdownAt(mapLonAt(self.x),90-(self.y/MAP_H)*180,mode==='sea',seasonDay()),baseSpeed=mode==='sea'?SEA_BASE_SPEED:LAND_BASE_SPEED,fatigueMult=serverSelf?.fatigueSpeedMultiplier??fatigueMultiplier(serverSelf?.fatigue),completionMult=completionBoost(),ox=self.x,oy=self.y;
   let windMult=1;if(mode==='sea'){const wind=CDS95Wind.windAtPixel(ox,oy,classGameMinutes),windAlignment=vx*wind.x+vy*wind.y;windMult=CDS95Wind.speedMultiplier(windAlignment,wind.strength,WIND_TAIL_FACTOR,WIND_HEAD_FACTOR)}
   const step=baseSpeed*mult*fatigueMult*completionMult*windMult*dt;
   let driftEast=0,driftSouth=0;if(mode==='sea'){const flow=CDS95Current.currentAtPixel(ox,oy),alignment=vx*flow.x+vy*flow.y,localTailFactor=Number.isFinite(flow.tailFactor)?flow.tailFactor:CURRENT_TAIL_FACTOR,factor=CDS95Current.movementFactor(alignment,localTailFactor,CURRENT_HEAD_FACTOR,CURRENT_CROSS_FACTOR),driftSpeed=SEA_BASE_SPEED*factor*flow.strength*completionMult;driftEast=flow.x*driftSpeed*dt;driftSouth=flow.y*driftSpeed*dt}
   const delta=CDS95GeoMotion.localDeltaToMap(vx*step+driftEast,vy*step+driftSouth,oy,MAP_H),substeps=Math.max(1,Math.ceil(Math.max(Math.abs(delta.x),Math.abs(delta.y))/(TS*.45))),stepX=delta.x/substeps,stepY=delta.y/substeps;let blocked=null,moved=false;
-  for(let i=0;i<substeps;i++){const px=self.x,py=self.y,tries=[[px+stepX,py+stepY]];if(Math.abs(stepX)>.001&&Math.abs(stepY)>.001)tries.push([px+stepX,py],[px,py+stepY]);let advanced=false;for(const [rx,ry] of tries){const nx=wrapX(rx),ny=Math.max(TS,Math.min(MAP_H-TS,ry)),next=terrainAtPixel(nx,ny),allowed=mode==='sea'?next.type==='sea':next.type!=='sea'&&next.passable!==false;if(allowed&&mode==='sea'&&frozenNow(nx,ny)&&!(frozenNow(px,py)&&Math.abs(90-(ny/MAP_H)*180)<Math.abs(90-(py/MAP_H)*180))){allowed=false;blocked={type:'seasonIce'}}if(!allowed){blocked=next.type?blocked||next:blocked;continue}self.x=nx;self.y=ny;advanced=true;moved=true;break}if(!advanced)break}
+  // 얼음에 갇힌 배·탐험대는 적도 쪽으로는 언제나 나아갈 수 있다(서버와 같은 규칙).
+  const hereLat=Math.abs(90-(self.y/MAP_H)*180),trapped=mode==='sea'?current.type!=='sea'||frozenNow(self.x,self.y):current.type==='sea'||current.passable===false;
+  for(let i=0;i<substeps;i++){const px=self.x,py=self.y,tries=[[px+stepX,py+stepY]];if(Math.abs(stepX)>.001&&Math.abs(stepY)>.001)tries.push([px+stepX,py],[px,py+stepY]);let advanced=false;for(const [rx,ry] of tries){const nx=wrapX(rx),ny=Math.max(TS,Math.min(MAP_H-TS,ry)),next=terrainAtPixel(nx,ny);let allowed=mode==='sea'?next.type==='sea':next.type!=='sea'&&next.passable!==false;if(allowed&&mode==='sea'&&frozenNow(nx,ny)){allowed=false;blocked={type:'seasonIce'}}
+    if(!allowed&&trapped&&Math.abs(90-(ny/MAP_H)*180)<hereLat-.0001&&(mode==='sea'?next.type==='sea'||next.type==='ice':next.type!=='sea'))allowed=true;
+    if(!allowed){blocked=next.type?blocked||next:blocked;continue}self.x=nx;self.y=ny;advanced=true;moved=true;break}if(!advanced)break}
   if(moved){self.dir=vectorToDir(vx,vy);return}
-  if(blocked?.type==='seasonIce')localBlock('이 계절에는 바다가 얼어붙었습니다. 여름을 기다리거나 남쪽으로 돌아가세요.');
-  else if(blocked?.type==='ice')localBlock(mode==='sea'?'얼음 바다입니다. 1520년의 나무배로는 얼음을 뚫고 지나갈 수 없습니다.':'얼음으로 덮인 땅입니다. 너무 추워 더 나아갈 수 없습니다.');
+  const equatorWord=self.y<MAP_H/2?'남쪽':'북쪽';
+  if(blocked?.type==='seasonIce')localBlock(`이 계절에는 이 앞바다가 얼어붙었습니다. ${equatorWord}으로 뱃머리를 돌리세요.`);
+  else if(blocked?.type==='ice')localBlock(mode==='sea'?`얼음 바다입니다. 1520년의 나무배로는 얼음을 뚫고 갈 수 없습니다. ${equatorWord}으로 뱃머리를 돌리세요.`:`얼음으로 덮인 땅입니다. 너무 추워 더 나아갈 수 없습니다. ${equatorWord}으로 돌아가세요.`);
   else if(mode==='land'&&blocked?.type==='sea')localBlock('탐험대는 바다로 들어갈 수 없습니다.');
 }
 function drawMap(cw,ch){

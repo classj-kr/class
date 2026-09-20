@@ -75,6 +75,6 @@ assert.match(server, /얼음이 녹는 여름을 기다리거나/, '계절 얼�
 const page = fs.readFileSync(path.join(root, 'public', 'index.html'), 'utf8');
 assert.match(page, /function drawIceLayer/, '학생 지도에 얼음을 그려야 함');
 assert.match(page, /isIceAtDay/, '학생 화면도 계절 얼음을 그려야 함');
-assert.match(page, /terrain\.js\?v=78/, '지형 파일 버전을 올려야 함');
+assert.match(page, /terrain\.js\?v=79/, '지형 파일 버전을 올려야 함');
 
 console.log(`v84 polar ice unit ok · 북동 항로 우회 최북 ${maxLat.toFixed(1)}° · 최남 ${minLat.toFixed(1)}°`);

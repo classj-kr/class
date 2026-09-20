@@ -20,7 +20,9 @@
     forest: 0.54,
     desert: 0.43,
     mountain: 0.30,
-    highMountain: 0.18
+    highMountain: 0.18,
+    // 얼음에 갇힌 배가 빠져나오는 속도. 0으로 두면 그 자리에서 영영 못 움직인다.
+    ice: 0.26
   });
 
   const LABEL = Object.freeze({
@@ -263,7 +265,20 @@
     return lat >= iceLimitNorthAt(lon, day) || lat <= iceLimitSouthAt(lon, day);
   }
 
-  const ICE_TERRAIN = Object.freeze({ type: 'ice', multiplier: 0, passable: false });
+  // 얼음 가장자리 앞 5도는 떠다니는 얼음덩이 구역이다. 벽에 부딪히듯 갑자기 멈추지 않고
+  // 여기서부터 배가 천천히 느려지다가 얼음 앞에서 더 못 가게 된다.
+  const ICE_SLOW = Object.freeze({ degrees: 5, floor: 0.34 });
+
+  // 1이면 제 속도, 0.34면 얼음을 헤치고 겨우 나아가는 속도. 얼음 안에서도 0이 되지는 않는다.
+  function iceSlowdownAt(lon, lat, sea, day) {
+    const north = sea ? iceLimitNorthAt(lon, day) : ICE.landNorth;
+    const gap = Math.min(north - lat, lat - iceLimitSouthAt(lon, day));
+    if (gap >= ICE_SLOW.degrees) return 1;
+    if (gap <= 0) return ICE_SLOW.floor;
+    return ICE_SLOW.floor + (1 - ICE_SLOW.floor) * (gap / ICE_SLOW.degrees);
+  }
+
+  const ICE_TERRAIN = Object.freeze({ type: 'ice', multiplier: SPEED.ice, passable: false });
 
   function terrainAtCell(world, cx, cy) {
     cx = wrapCellX(Math.floor(cx));
@@ -294,6 +309,6 @@
 
   return Object.freeze({
     WORLD_W, WORLD_H, TILE, WORLD_PIXEL_W, WORLD_PIXEL_H,
-    SPEED, LABEL, ICE, ICE_WINTER, ICE_DAYS, HIGH_MOUNTAIN_FAMILIES, NAVIGABLE_SEA_CORRIDORS, iceLimitNorth, iceLimitSouth, isIceAt, iceLimitNorthAt, iceLimitSouthAt, isIceAtDay, dayOfYear, seasonOpenness, wrapCellX, wrapPixelX, cellValue, setNaturalEarthLandMask, navigableSeaCorridorAtCell, terrainAtCell, terrainAtPixel, lonLat
+    SPEED, LABEL, ICE, ICE_WINTER, ICE_DAYS, ICE_SLOW, iceSlowdownAt, HIGH_MOUNTAIN_FAMILIES, NAVIGABLE_SEA_CORRIDORS, iceLimitNorth, iceLimitSouth, isIceAt, iceLimitNorthAt, iceLimitSouthAt, isIceAtDay, dayOfYear, seasonOpenness, wrapCellX, wrapPixelX, cellValue, setNaturalEarthLandMask, navigableSeaCorridorAtCell, terrainAtCell, terrainAtPixel, lonLat
   });
 }));
