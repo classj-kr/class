@@ -5,7 +5,7 @@ const BASE = new URL(".", location.href).href;
 const TILE_VERSION = 2;
 const FLAG_VERSION = 2;
 // 모양(shapes.json)·설명(info.json)·사진을 바꾸면 올린다.
-const DATA_VERSION = "20260919-14";
+const DATA_VERSION = "20260920-15";
 const HOME = { center: [127.5, 30], lat: 30 };
 // 켜고 끄는 항목이 늘면 판을 올린다(옛 저장값에는 새 항목이 없어 꺼진 채로 보이므로).
 const SETTINGS_KEY = "classj-globe-layers-v3";
@@ -34,6 +34,7 @@ const KINDS = [
 const BACKDROPS = [
   { id: "sea", label: "바다·해협", color: "#9fd4ff", light: "#36c5ff", members: ["sea", "strait"] },
   { id: "current", label: "해류", color: "#ff9e8f", light: "#ff9e8f" },
+  { id: "wind", label: "바람·기압대", color: "#a8e06a", light: "#9be36d", members: ["wind", "belt"] },
   { id: "country", label: "나라", color: "#f5f5f5", light: "#ffe066" },
   { id: "grid", label: "위선·경선", color: "#ffd166", light: "#ffd166" },
 ];
@@ -46,11 +47,16 @@ const DEFAULT_ON = new Set(["mountain", "plateau", "plain", "basin", "desert", "
 const KIND_NAME = {
   mountain: "산맥·산지", peak: "높은 산", plateau: "고원", plain: "평원", basin: "분지", desert: "사막",
   peninsula: "반도", cape: "곶", other: "지형", river: "강", lake: "호수", island: "섬", sea: "바다",
-  strait: "해협", country: "나라", grid: "위선·경선",
+  strait: "해협", country: "나라", grid: "위선·경선", wind: "바람", belt: "기압대",
 };
 const WARM = { line: "#ff5a45", flow: "#ffd0c8", text: "#ffb4a6" };
 const COLD = { line: "#2f8fff", flow: "#cfe8ff", text: "#a8d8ff" };
+const WIND = { line: "#7fc94f", flow: "#eaffd8", text: "#c8f2a0" };
+// 기압대: 공기가 올라가는 저압대는 붉게, 내려오는 고압대는 푸르게 옅은 띠로 칠한다.
+const BELT_COLOR = ["case", ["==", ["get", "air"], "low"], "#ff6b57", "#3fa2ff"];
 const WATER_KINDS = ["sea", "strait", "river", "lake", "current"];
+// 계절풍은 철을 골라 본다(늘 부는 바람은 always).
+const SEASONS = [["summer", "여름"], ["winter", "겨울"]];
 // 점 하나를 가리키는 이름표: 점 오른쪽에 이름을 적는다.
 const POINT_KINDS = ["peak", "cape"];
 // 위선·경선 이름 가운데 누르면 설명이 뜨는 것
@@ -62,12 +68,20 @@ const DASH_STEPS = [
   [0, 0.5, 3, 3.5], [0, 1, 3, 3], [0, 1.5, 3, 2.5], [0, 2, 3, 2], [0, 2.5, 3, 1.5], [0, 3, 3, 1], [0, 3.5, 3, 0.5],
 ];
 
+const WIND_LAYERS = ["wind-line", "wind-flow", "wind-arrows"];
 const CURRENT_MAIN_LAYERS = ["currents-line-main", "currents-flow-main", "currents-arrows-main"];
 const CURRENT_LOCAL_LAYERS = ["currents-line-local", "currents-flow-local", "currents-arrows-local"];
 // 아무것도 고르지 않았을 때 켜짐 층에 거는 조건(어떤 선과도 맞지 않음)
 const NOTHING = ["boolean", false];
 
 const enabled = loadSettings();
+// 계절풍을 여름 것으로 볼지 겨울 것으로 볼지
+let season = loadSeason();
+
+// 늘 부는 바람은 언제나, 계절풍은 고른 철의 것만 보인다.
+function seasonFilter() {
+  return ["any", ["!", ["has", "season"]], ["==", ["get", "season"], "always"], ["==", ["get", "season"], season]];
+}
 
 const map = new maplibregl.Map({
   container: "globe",
@@ -89,6 +103,7 @@ map.keyboard.disableRotation();
 map.addControl(new maplibregl.AttributionControl({ compact: true, customAttribution: "바탕 그림·지명 자료: Natural Earth · 사진: 위키미디어 공용" }), "top-right");
 
 renderLayerBar();
+renderSeasonSwitch();
 bindViewControls();
 
 // 극점은 글자 이름표 층(위도 85도까지)에 놓을 수 없어 따로 붙인다. 지구 뒤편으로 가면 숨는다.
@@ -132,7 +147,11 @@ window.addEventListener("resize", () => {
 
 function buildStyle() {
   const colorOf = (field) => ["match", ["get", "kind"], ...CHIPS.flatMap((chip) => membersOf(chip).flatMap((kind) => [kind, chip[field]])), "#ffffff"];
-  const labelColor = ["case", ["==", ["get", "kind"], "current"], ["case", ["get", "warm"], WARM.text, COLD.text], colorOf("color")];
+  const labelColor = ["case",
+    ["==", ["get", "kind"], "current"], ["case", ["get", "warm"], WARM.text, COLD.text],
+    ["==", ["get", "kind"], "wind"], WIND.text,
+    ["==", ["get", "kind"], "belt"], ["case", ["==", ["get", "air"], "low"], WARM.text, COLD.text],
+    colorOf("color")];
   const isPoint = ["in", ["get", "kind"], ["literal", POINT_KINDS]];
   const labelLayers = [1, 2, 3, 4].map((tier) => ({
     id: `labels-${tier}`,
@@ -145,7 +164,7 @@ function buildStyle() {
       "text-font": LABEL_FONT,
       "text-size": ["match", ["get", "kind"],
         "country", ["match", ["get", "tier"], 1, 15, 14],
-        "sea", 13, ["peak", "cape", "strait", "current"], 12.5,
+        "sea", 13, ["peak", "cape", "strait", "current", "wind", "belt"], 12.5,
         ["match", ["get", "tier"], 1, 15, 2, 14, 13]],
       "text-letter-spacing": ["match", ["get", "kind"], "sea", 0.12, "country", 0.06, 0.02],
       "text-max-width": ["case", isPoint, 20, 7],
@@ -206,6 +225,40 @@ function buildStyle() {
       },
     },
   ]);
+  const windLayers = [
+    {
+      id: "wind-line",
+      type: "line",
+      source: "winds",
+      filter: seasonFilter(),
+      layout: { visibility: visibility("wind"), "line-join": "round", "line-cap": "round" },
+      paint: { "line-color": WIND.line, "line-width": ["interpolate", ["linear"], ["zoom"], 1, 3, 5, 4.6], "line-opacity": 0.9 },
+    },
+    {
+      id: "wind-flow",
+      type: "line",
+      source: "winds",
+      filter: seasonFilter(),
+      layout: { visibility: visibility("wind"), "line-join": "round" },
+      paint: { "line-color": WIND.flow, "line-width": ["interpolate", ["linear"], ["zoom"], 1, 1.2, 5, 1.8], "line-dasharray": DASH_STEPS[0] },
+    },
+    {
+      id: "wind-arrows",
+      type: "symbol",
+      source: "windArrows",
+      filter: seasonFilter(),
+      layout: {
+        visibility: visibility("wind"),
+        "icon-image": "arrow-wind",
+        "icon-rotate": ["get", "bearing"],
+        "icon-rotation-alignment": "map",
+        "icon-allow-overlap": true,
+        "icon-ignore-placement": true,
+        "icon-size": 0.55,
+      },
+    },
+  ];
+
   // 자리를 먼저 차지하는 순서(위가 먼저): 1단 이름표 → 위선·경선 숫자 → 2단 → 3단 → 4단
   const layer = (list, tier) => list[tier - 1];
   const noShape = { type: "FeatureCollection", features: [] };
@@ -228,7 +281,10 @@ function buildStyle() {
       borders: { type: "geojson", data: data.borders },
       rivers: { type: "geojson", data: data.rivers },
       currents: { type: "geojson", data: data.currents },
-      currentArrows: { type: "geojson", data: currentArrowPoints() },
+      winds: { type: "geojson", data: data.winds },
+      belts: { type: "geojson", data: data.belts },
+      windArrows: { type: "geojson", data: arrowPoints(data.winds) },
+      currentArrows: { type: "geojson", data: arrowPoints(data.currents) },
       grid: { type: "geojson", data: buildGrid() },
       gridLabels: { type: "geojson", data: noShape },
       highlight: { type: "geojson", data: noShape },
@@ -242,6 +298,27 @@ function buildStyle() {
         source: "highlight",
         filter: ["in", ["geometry-type"], ["literal", ["Polygon", "MultiPolygon"]]],
         paint: { "fill-color": ["get", "color"], "fill-opacity": 0.3 },
+      },
+      {
+        id: "belts-fill",
+        type: "fill",
+        source: "belts",
+        layout: { visibility: visibility("wind") },
+        paint: { "fill-color": BELT_COLOR, "fill-opacity": 0.16 },
+      },
+      {
+        id: "belts-edge",
+        type: "line",
+        source: "belts",
+        layout: { visibility: visibility("wind") },
+        paint: { "line-color": BELT_COLOR, "line-width": 1, "line-opacity": 0.45, "line-dasharray": [3, 2] },
+      },
+      {
+        id: "belt-selected",
+        type: "line",
+        source: "belts",
+        filter: NOTHING,
+        paint: { "line-color": "#fff3b0", "line-width": 3.5, "line-blur": 2, "line-opacity": 0.9 },
       },
       {
         id: "grid-coarse",
@@ -280,6 +357,15 @@ function buildStyle() {
         paint: { "line-color": "#fff3b0", "line-width": 5, "line-blur": 2, "line-opacity": 0.85 },
       },
       ...currentLayers,
+      ...windLayers,
+      {
+        id: "wind-selected",
+        type: "line",
+        source: "winds",
+        filter: NOTHING,
+        layout: { "line-join": "round", "line-cap": "round" },
+        paint: { "line-color": WIND.line, "line-width": 9, "line-blur": 4, "line-opacity": 0.85 },
+      },
       {
         id: "current-selected",
         type: "line",
@@ -374,12 +460,13 @@ let lastDash = 0;
 function animate(time) {
   requestAnimationFrame(animate);
   if (!ready) return;
-  const flowing = enabled.has("current") || selected?.kind === "river";
+  const flowing = enabled.has("current") || enabled.has("wind") || selected?.kind === "river";
   if (flowing && time - lastDash > 70) {
     lastDash = time;
     dashStep = (dashStep + 1) % DASH_STEPS.length;
     const dash = DASH_STEPS[dashStep];
     if (enabled.has("current")) for (const id of ["currents-flow-main", "currents-flow-local"]) map.setPaintProperty(id, "line-dasharray", dash);
+    if (enabled.has("wind")) map.setPaintProperty("wind-flow", "line-dasharray", dash);
     if (selected?.kind === "river") map.setPaintProperty("river-selected-flow", "line-dasharray", dash);
   }
   // 칠한 곳은 천천히 숨 쉬듯 밝아졌다 어두워진다.
@@ -391,10 +478,10 @@ function animate(time) {
 }
 requestAnimationFrame(animate);
 
-// 해류 줄기 끝에 화살촉을 단다. 방향은 마지막 두 점으로 잰 방위각.
-function currentArrowPoints() {
+// 해류·바람 줄기 끝에 화살촉을 단다. 방향은 마지막 두 점으로 잰 방위각.
+function arrowPoints(collection) {
   const features = [];
-  for (const feature of data.currents.features) {
+  for (const feature of collection.features) {
     const parts = feature.geometry.coordinates;
     const last = parts[parts.length - 1];
     const [x1, y1] = last[last.length - 2];
@@ -405,7 +492,7 @@ function currentArrowPoints() {
       Math.cos(y1 * toRad) * Math.sin(y2 * toRad) - Math.sin(y1 * toRad) * Math.cos(y2 * toRad) * Math.cos(dLng)) / toRad;
     features.push({
       type: "Feature",
-      properties: { warm: feature.properties.warm, bearing, tier: feature.properties.tier },
+      properties: { ...feature.properties, bearing },
       geometry: { type: "Point", coordinates: [x2, y2] },
     });
   }
@@ -636,7 +723,7 @@ function enabledKinds() {
 }
 
 function labelFilter(tier) {
-  return ["all", ["==", ["get", "tier"], tier], ["in", ["get", "kind"], ["literal", enabledKinds()]]];
+  return ["all", ["==", ["get", "tier"], tier], ["in", ["get", "kind"], ["literal", enabledKinds()]], seasonFilter()];
 }
 
 function visibility(id) {
@@ -652,6 +739,12 @@ function applyLayerFilters() {
     map.setLayoutProperty(id, "visibility", visibility("grid"));
   }
   for (const id of [...CURRENT_MAIN_LAYERS, ...CURRENT_LOCAL_LAYERS]) map.setLayoutProperty(id, "visibility", visibility("current"));
+  for (const id of WIND_LAYERS) {
+    map.setLayoutProperty(id, "visibility", visibility("wind"));
+    map.setFilter(id, seasonFilter());
+  }
+  for (const id of ["belts-fill", "belts-edge"]) map.setLayoutProperty(id, "visibility", visibility("wind"));
+  document.getElementById("seasonSwitch").hidden = !enabled.has("wind");
   // 칠해 둔 것의 단추를 끄면 칠한 것과 설명 창도 닫는다.
   if (selected && !isShown(selected.kind)) clearSelection();
   refreshGridLabels();
@@ -686,10 +779,49 @@ function renderLayerBar() {
   BACKDROPS.forEach((item) => bar.append(chip(item)));
 }
 
+// 바람을 켰을 때만 보이는 여름·겨울 단추
+function renderSeasonSwitch() {
+  const box = document.createElement("div");
+  box.className = "season-switch";
+  box.id = "seasonSwitch";
+  box.setAttribute("role", "group");
+  box.setAttribute("aria-label", "계절풍 철");
+  box.hidden = !enabled.has("wind");
+  document.getElementById("layerBar").append(box);
+  for (const [id, label] of SEASONS) {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.textContent = label;
+    button.dataset.season = id;
+    button.setAttribute("aria-pressed", String(season === id));
+    button.addEventListener("click", () => {
+      season = id;
+      saveSeason();
+      for (const other of box.querySelectorAll("button")) other.setAttribute("aria-pressed", String(other.dataset.season === season));
+      if (ready) applyLayerFilters();
+    });
+    box.append(button);
+  }
+}
+
+function saveSeason() {
+  try {
+    localStorage.setItem(`${SETTINGS_KEY}-season`, season);
+  } catch (_) {}
+}
+
 function bindViewControls() {
   document.getElementById("zoomIn").addEventListener("click", () => map.zoomIn({ duration: 400 }));
   document.getElementById("zoomOut").addEventListener("click", () => map.zoomOut({ duration: 400 }));
   document.getElementById("resetView").addEventListener("click", () => fitWholeGlobe(true));
+}
+
+function loadSeason() {
+  try {
+    const saved = localStorage.getItem(`${SETTINGS_KEY}-season`);
+    if (saved === "summer" || saved === "winter") return saved;
+  } catch (_) {}
+  return "summer";
 }
 
 function loadSettings() {
@@ -732,9 +864,15 @@ function bindSelection() {
   const pick = (point) => {
     const label = map.queryRenderedFeatures(near(point), { layers: CLICKABLE }).find((f) => f.properties.key);
     if (label) return label;
-    if (!enabled.has("current")) return null;
-    const line = map.queryRenderedFeatures(near(point, 8), { layers: ["currents-line-main", "currents-line-local"] })[0];
-    return line ? { properties: { key: `current:${line.properties.name}`, kind: "current", name: line.properties.name, warm: line.properties.warm }, geometry: null } : null;
+    const lineLayers = [
+      ...(enabled.has("current") ? ["currents-line-main", "currents-line-local"] : []),
+      ...(enabled.has("wind") ? ["wind-line"] : []),
+    ];
+    if (!lineLayers.length) return null;
+    const line = map.queryRenderedFeatures(near(point, 8), { layers: lineLayers })[0];
+    if (!line) return null;
+    const kind = line.layer.id === "wind-line" ? "wind" : "current";
+    return { properties: { key: `${kind}:${line.properties.name}`, kind, name: line.properties.name, warm: line.properties.warm }, geometry: null };
   };
   map.on("click", (event) => {
     const feature = pick(event.point);
@@ -781,6 +919,8 @@ function lightUp(item) {
   map.setFilter("river-selected", item.kind === "river" ? nameIs : NOTHING);
   map.setFilter("river-selected-flow", item.kind === "river" ? nameIs : NOTHING);
   map.setFilter("current-selected", item.kind === "current" ? nameIs : NOTHING);
+  map.setFilter("wind-selected", item.kind === "wind" ? nameIs : NOTHING);
+  map.setFilter("belt-selected", item.kind === "belt" ? nameIs : NOTHING);
   map.setFilter("grid-selected", item.kind === "grid" ? nameIs : NOTHING);
   const shape = shapes?.[item.key];
   const color = (chipOfKind.get(item.kind) || {}).light || "#ffffff";
@@ -797,7 +937,7 @@ function lightUp(item) {
   });
   pulseMarker?.remove();
   pulseMarker = null;
-  const lineLike = ["river", "current"].includes(item.kind) || (item.kind === "grid" && !item.name.endsWith("점"));
+  const lineLike = ["river", "current", "wind", "belt"].includes(item.kind) || (item.kind === "grid" && !item.name.endsWith("점"));
   if (!shape && !lineLike && shapes) {
     const element = document.createElement("div");
     element.className = "pulse-mark";

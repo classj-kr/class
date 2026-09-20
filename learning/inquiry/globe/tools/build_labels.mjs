@@ -675,6 +675,51 @@ const CURRENTS = [
   ["리만 해류", false, 4, [[141.2, 50], [140.2, 47.5], [138.8, 45.5], [136.5, 43.8], [134, 42.8], [132.2, 42.2]]],
   ["황해 난류", true, 4, [[125.6, 32.4], [124.6, 34], [124.1, 35.5], [123.6, 37], [122.6, 38.4]]],
 ];
+// 바람: [이름, 철(always/summer/winter), tier, 부는 차례대로의 점들]. 교과서 대기 대순환 그림처럼 줄기만 그린다.
+// 경도는 180도를 넘겨 이어 적어도 된다(만들 때 ±180에서 끊는다).
+const WINDS = [
+  // 무역풍 — 북동 무역풍은 북동쪽에서 남서쪽으로, 남동 무역풍은 남동쪽에서 북서쪽으로.
+  ["무역풍", "always", 1, [[-22, 27], [-35, 19], [-48, 11]]],
+  ["무역풍", "always", 1, [[-118, 27], [-138, 19], [-156, 11]]],
+  ["무역풍", "always", 1, [[-175, 25], [-195, 18], [-212, 11]]],
+  ["무역풍", "always", 1, [[-6, -24], [-16, -15], [-26, -7]]],
+  ["무역풍", "always", 1, [[-98, -24], [-118, -15], [-136, -7]]],
+  ["무역풍", "always", 1, [[82, -24], [70, -15], [58, -7]]],
+  // 편서풍 — 서쪽에서 동쪽으로.
+  ["편서풍", "always", 1, [[-142, 40], [-115, 45], [-88, 44]]],
+  ["편서풍", "always", 1, [[-44, 44], [-14, 49], [16, 52]]],
+  ["편서풍", "always", 1, [[58, 48], [98, 45], [138, 41]]],
+  ["편서풍", "always", 1, [[-64, -45], [-24, -48], [14, -46]]],
+  ["편서풍", "always", 1, [[56, -46], [96, -48], [134, -45]]],
+  ["편서풍", "always", 1, [[-186, -47], [-156, -45], [-126, -46]]],
+  // 극동풍 — 동쪽에서 서쪽으로.
+  ["극동풍", "always", 2, [[158, 73], [118, 76], [78, 75]]],
+  ["극동풍", "always", 2, [[-36, 76], [-76, 75], [-116, 73]]],
+  ["극동풍", "always", 2, [[66, -72], [26, -74], [-14, -73]]],
+  ["극동풍", "always", 2, [[-134, -73], [-174, -74], [-214, -72]]],
+  // 계절풍 — 여름에는 바다에서 뭍으로, 겨울에는 뭍에서 바다로.
+  ["여름 계절풍", "summer", 2, [[72, -8], [70, 6], [74, 18], [79, 26]]],
+  ["여름 계절풍", "summer", 2, [[90, 2], [90, 14], [89, 24]]],
+  ["여름 계절풍", "summer", 2, [[132, 16], [128, 27], [126, 36], [126, 42]]],
+  ["겨울 계절풍", "winter", 2, [[80, 30], [78, 20], [75, 10], [72, 2]]],
+  ["겨울 계절풍", "winter", 2, [[112, 48], [119, 38], [125, 28], [130, 18]]],
+  ["높새바람", "summer", 4, [[129.9, 38.5], [128.8, 37.9], [127.4, 37.4]]],
+];
+// 바람 이름표 자리를 따로 정한 것. [경도, 위도]
+const WIND_LABEL_AT = {
+  "높새바람": [128.3, 37.65],
+};
+
+// 기압대: [이름, tier, [위도 남쪽 끝, 위도 북쪽 끝] 띠들]. 저압대는 공기가 올라가는 곳, 고압대는 내려오는 곳.
+const PRESSURE_BELTS = [
+  ["적도 저압대", 1, "low", [[-6, 6]]],
+  ["아열대 고압대", 1, "high", [[20, 35], [-35, -20]]],
+  ["한대 전선대", 2, "low", [[55, 66], [-66, -55]]],
+  ["극고압대", 2, "high", [[76, 89], [-89, -76]]],
+];
+// 기압대 이름을 다는 경도(다른 이름표와 덜 겹치는 바다 위)
+const BELT_LABEL_LNG = { "적도 저압대": -30, "아열대 고압대": -30, "한대 전선대": -20, "극고압대": 60 };
+
 // 해류 이름표 자리를 따로 정한 것(선 가운데가 다른 이름과 겹치거나 뭍에 걸리는 것). [경도, 위도]
 const CURRENT_LABEL_AT = {};
 
@@ -1210,12 +1255,44 @@ async function main() {
     labels.push(point(lng, lat, { name, kind: "current", tier: tier === 4 ? 4 : Math.max(1, tier - 1), warm }));
   }
 
+  // 바람: 해류와 같은 방식으로 ±180도에서 끊고, 이름표는 바람마다 가장 긴 조각 가운데에 하나.
+  const winds = [];
+  const windLabels = new Map();
+  for (const [name, season, tier, points] of WINDS) {
+    const parts = splitAtDateLine(points);
+    winds.push({ type: "Feature", properties: { name, season, tier }, geometry: { type: "MultiLineString", coordinates: parts } });
+    const longest = parts.reduce((a, b) => (pathLength(b) > pathLength(a) ? b : a));
+    const best = windLabels.get(name);
+    if (!best || pathLength(longest) > best.length) windLabels.set(name, { length: pathLength(longest), line: longest, season, tier });
+  }
+  for (const [name, { line, season, tier }] of windLabels) {
+    const [lng, lat] = WIND_LABEL_AT[name] || pointAlong(line, pathLength(line) / 2);
+    labels.push(point(lng, lat, { name, kind: "wind", tier, season }));
+  }
+
+  // 기압대: 위도 띠 다각형과 그 위의 이름표.
+  const belts = [];
+  for (const [name, tier, air, bands] of PRESSURE_BELTS) {
+    const rings = bands.map(([south, north]) => {
+      const ring = [];
+      for (let lng = -180; lng <= 180; lng += 5) ring.push([lng, south]);
+      for (let lng = 180; lng >= -180; lng -= 5) ring.push([lng, north]);
+      ring.push([-180, south]);
+      return [ring];
+    });
+    belts.push({ type: "Feature", properties: { name, air, tier }, geometry: { type: "MultiPolygon", coordinates: rings } });
+    for (const [south, north] of bands) {
+      labels.push(point(BELT_LABEL_LNG[name], (south + north) / 2, { name, kind: "belt", tier, air }));
+    }
+  }
+
   // 날짜 변경선: 180도 경선이 아니라 나라·섬을 비껴 꺾인 실제 선.
   const geographicLines = await neFile("ne_50m_geographic_lines");
   const dateLine = geographicLines.features.find((f) => f.properties.name === "International Date Line");
   const dateLineParts = (dateLine.geometry.type === "LineString" ? [dateLine.geometry.coordinates] : dateLine.geometry.coordinates)
     .map((part) => part.map(([x, y]) => [round(Math.max(-180, Math.min(180, x))), round(y)]));
 
+  // 기압대는 남북 두 띠에 같은 이름표를 달므로 이름이 겹친다(설명은 하나를 같이 쓴다).
   const seen = new Set();
   for (const feature of labels) {
     feature.properties.key = `${feature.properties.kind}:${feature.properties.name}`;
@@ -1229,6 +1306,8 @@ async function main() {
     borders: { type: "FeatureCollection", features: borders },
     rivers: { type: "FeatureCollection", features: rivers },
     currents: { type: "FeatureCollection", features: currents },
+    winds: { type: "FeatureCollection", features: winds },
+    belts: { type: "FeatureCollection", features: belts },
     dateLine: { type: "Feature", properties: { special: "dateline" }, geometry: { type: "MultiLineString", coordinates: dateLineParts } },
   };
   const shapesOut = path.join(ROOT, "data/shapes.json");
@@ -1239,7 +1318,7 @@ async function main() {
   fs.mkdirSync(path.dirname(out), { recursive: true });
   fs.writeFileSync(out, `// tools/build_labels.mjs 로 만든 파일. 직접 고치지 말 것.\nwindow.GLOBE_DATA = ${JSON.stringify(data)};\n`);
   const count = (kind) => labels.filter((f) => f.properties.kind === kind).length;
-  console.log(`이름표 ${labels.length}개 (산지 ${count("mountain")}, 고원 ${count("plateau")}, 평원 ${count("plain")}, 분지 ${count("basin")}, 사막 ${count("desert")}, 강 ${count("river")}, 호수 ${count("lake")}, 반도 ${count("peninsula")}, 곶 ${count("cape")}, 섬 ${count("island")}, 그 밖 ${count("other")}, 산 ${count("peak")}, 바다 ${count("sea")}, 해협 ${count("strait")}, 나라 ${count("country")})`);
+  console.log(`이름표 ${labels.length}개 (산지 ${count("mountain")}, 고원 ${count("plateau")}, 평원 ${count("plain")}, 분지 ${count("basin")}, 사막 ${count("desert")}, 강 ${count("river")}, 호수 ${count("lake")}, 반도 ${count("peninsula")}, 곶 ${count("cape")}, 섬 ${count("island")}, 그 밖 ${count("other")}, 산 ${count("peak")}, 바다 ${count("sea")}, 해협 ${count("strait")}, 나라 ${count("country")}, 바람 ${count("wind")}, 기압대 ${count("belt")})`);
   console.log(`강 ${rivers.length}개: ${rivers.map((f) => `${f.properties.name}(${f.geometry.coordinates.length}줄기)`).join(" ")}`);
   console.log(`국경 ${borders.length}줄, ${(fs.statSync(out).size / 1024).toFixed(0)}KB`);
 }

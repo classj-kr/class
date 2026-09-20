@@ -47,7 +47,7 @@ const { rivers } = context.window.GLOBE_DATA;
 for (const river of rivers.features) {
   assert.ok(labels.features.some((f) => f.properties.kind === 'river' && f.properties.name === river.properties.name), `${river.properties.name} needs a name label.`);
 }
-const kinds = new Set(['mountain', 'plateau', 'plain', 'basin', 'desert', 'river', 'lake', 'peninsula', 'cape', 'island', 'other', 'peak', 'sea', 'strait', 'country', 'current']);
+const kinds = new Set(['mountain', 'plateau', 'plain', 'basin', 'desert', 'river', 'lake', 'peninsula', 'cape', 'island', 'other', 'peak', 'sea', 'strait', 'country', 'current', 'wind', 'belt']);
 const names = new Set();
 for (const feature of labels.features) {
   const { name, kind, tier, key } = feature.properties;
@@ -58,7 +58,7 @@ for (const feature of labels.features) {
   assert.ok(Math.abs(lng) <= 180 && Math.abs(lat) <= 85, `${name}: position must be drawable on the globe.`);
   // Natural Earth의 소리만 옮긴 이름이 새어 들어오지 않았는지 본다.
   assert.doesNotMatch(name, /(^|\s)(플래투|마운틴스?|레인지|로우랜드|플레인|업랜드|데저트|페닌슐라|코디렐라|디프레션|하이랜즈?|힐스)/, `${name}: transliterated English name.`);
-  if (kind !== 'sea' && kind !== 'river' && kind !== 'current') {
+  if (kind !== 'sea' && kind !== 'river' && kind !== 'current' && kind !== 'belt') {
     assert.ok(!names.has(`${kind}:${name}`), `${name}: duplicated label.`);
     names.add(`${kind}:${name}`);
   }
@@ -89,6 +89,18 @@ for (const feature of labels.features.filter((f) => f.properties.flag)) {
 // 날짜 변경선은 180도 경선 그대로가 아니라 꺾인 실제 선이어야 한다.
 const { dateLine, currents } = context.window.GLOBE_DATA;
 assert.ok(dateLine.geometry.coordinates.flat().some(([lng]) => Math.abs(lng) < 179), 'The date line must bend around islands, not follow 180° exactly.');
+
+// 바람: 계절풍은 철이 정해져 있고, 늘 부는 바람은 always. 기압대는 저압·고압 띠다.
+const { winds, belts } = context.window.GLOBE_DATA;
+for (const wind of winds.features) {
+  assert.ok(['always', 'summer', 'winter'].includes(wind.properties.season), `${wind.properties.name}: bad season`);
+}
+for (const belt of belts.features) {
+  assert.ok(['low', 'high'].includes(belt.properties.air), `${belt.properties.name}: belt must be low or high`);
+}
+for (const name of ['무역풍', '편서풍', '극동풍', '여름 계절풍', '겨울 계절풍', '적도 저압대', '아열대 고압대']) {
+  assert.ok(labels.features.some((f) => f.properties.name === name), `Missing label ${name}.`);
+}
 
 // 해류: 난류·한류가 정해져 있고, 날짜 변경선에서 끊겨 있어(지구를 가로지르는 선이 없어)야 한다.
 for (const current of currents.features) {
