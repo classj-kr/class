@@ -57,3 +57,20 @@ body.computer-edition>.app-bar,body.computer-edition>.lesson-shell,body.computer
 @media(max-width:540px){.edition-shell{width:calc(100% - 20px);margin-top:6px}.edition-header{gap:6px}.edition-page{padding:20px 15px}.edition-glossary>div{grid-template-columns:1fr;gap:5px}.edition-glossary dt span{display:inline;margin-left:8px}.edition-evidence th{width:30%}.edition-evidence th,.edition-evidence td{padding:9px}.edition-option{padding:10px}.edition-lab .foundation-lab,.edition-lab .foundation-direct-lab{padding-inline:8px}.edition-lab .lesson-specific-board{padding-inline:8px}}
 @media print{body.computer-edition{background:white!important}.edition-shell{width:100%;margin:0}.edition-header .edition-back,.edition-nav,.edition-page-end,.edition-submit,.edition-save-note{display:none!important}.edition-page[hidden]{display:block!important}.edition-page{border:0;padding:20px 0}.edition-question{break-inside:avoid}}
 
+
+.edition-binary{max-width:760px;padding:22px;background:#f0f4ed;border:1px solid #b6c7b5}
+.edition-binary select{width:auto;margin:0 0 16px 12px;padding:8px;font-size:16px}
+.edition-binary button{min-height:44px;border:1px solid #8ca48d;border-radius:5px;background:#fffefa;color:#21302b;padding:8px 14px;cursor:pointer}
+.binary-cells{display:flex;gap:12px;margin:18px 0}.binary-cells button{width:70px;height:75px;font-size:34px}
+.binary-cells button[aria-pressed=true]{color:white;background:#24604c}
+.binary-code{display:block;font:28px ui-monospace,monospace;letter-spacing:.2em;margin:18px 0}
+.binary-records{display:flex;gap:10px;flex-wrap:wrap;list-style:none;padding:0}
+.binary-records li{font:20px ui-monospace,monospace;border:1px solid #becbbc;background:white;padding:10px}
+.edition-lab .foundation-lab-heading.has-context .foundation-context-figure{display:none}
+.edition-lab .foundation-lab-heading.has-context{grid-template-columns:minmax(0,1fr) auto}
+@media(max-width:900px){.edition-lab .visual-control-path-lab .control-path-lab,.edition-lab .visual-control-path-lab .control-observation{grid-template-columns:minmax(0,1fr)}.edition-lab .control-path-lab>*{min-width:0}}
+@media(max-width:540px){.edition-lab .control-lab-heading{flex-wrap:wrap}.edition-lab .program-flow li{grid-template-columns:36px minmax(0,1fr) auto}.edition-lab .control-state-evidence{grid-template-columns:minmax(0,1fr)}}
+
+body.computer-edition{display:flow-root;min-height:100vh}
+.edition-page,.edition-reading p{font-weight:400}
+.edition-lab .program-flow .flow-branch{transform:none;font-size:inherit;text-align:left;line-height:inherit;min-height:83px}

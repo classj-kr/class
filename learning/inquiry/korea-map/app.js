@@ -16,7 +16,7 @@
     type: "Feature", properties: { name: province.name, north: true },
     geometry: { type: "MultiPolygon", coordinates: province.rings.map((ring) => [ring.map(([lat, lng]) => [lng, lat])]) }
   }));
-  const THEME_ORDER = ["territory", "terrain", "climate", "population", "industry", "transport", "region", "heritage", "travel"];
+  const THEME_ORDER = ["territory", "terrain", "climate", "population", "industry", "transport", "region", "heritage", "history", "travel"];
   const KOREA_BOUNDS = L.latLngBounds([[32.95, 123.85], [43.15, 131.35]]);
   // 중국·몽골·러시아 인근과 일본까지 허용하되, 지형 타일이 끝나는 곳까지 벗어나지 않는다.
   const NAVIGATION_BOUNDS = L.latLngBounds([[15, 90], [60, 155]]);
@@ -114,7 +114,7 @@
       const size = map.getSize();
       // 문제·경로 지도는 숨겨진 상태에서 생성되므로 실제 크기가 생긴 뒤 계산한다.
       if (!size.x || !size.y) return;
-      map.setMinZoom(Math.max(minimumZoom, map.getBoundsZoom(NAVIGATION_BOUNDS, true)));
+      setNavigationMinimum(map, map.options.themeMinZoom ?? minimumZoom);
       map.panInsideBounds(NAVIGATION_BOUNDS, { animate: false });
     };
     map.on("resize", updateNavigationLimits);
@@ -132,7 +132,16 @@
     return map;
   }
 
-  // 국경(압록강·두만강)과 휴전선. 주제와 상관없이 늘 그린다.
+  function setNavigationMinimum(map, minimum) {
+    // Leaflet getBoundsZoom clamps to the old minimum; release it while measuring.
+    const previous = map.options.minZoom;
+    map.options.minZoom = 0;
+    const regionalMinimum = map.getBoundsZoom(NAVIGATION_BOUNDS, true);
+    map.options.minZoom = previous;
+    map.setMinZoom(Math.max(minimum, regionalMinimum));
+  }
+
+  // 국경(압록강·두만강)과 휴전선. 역사 탭에서는 현재 경계를 숨긴다.
   function drawBorders(map) {
     (borders.national || []).forEach((line) => {
       L.polyline(line, { pane: "borderLines", color: "#ffffff", weight: 4.5, opacity: 0.7, interactive: false }).addTo(map);
@@ -171,6 +180,11 @@
   // 주제에 따로 정한 범위가 있으면(국토: 독도·이어도·표준 경선까지) 그 범위로 맞춘다.
   function fitKorea(map, themeKey) {
     const theme = themes[themeKey || (map === mainMap ? currentTheme : questionThemeKey())];
+    if (map === mainMap) {
+      map.options.themeMinZoom = theme && theme.minZoom !== undefined ? theme.minZoom : 5;
+      map.options.zoomSnap = theme && theme.historical ? 0.25 : 1;
+      setNavigationMinimum(map, map.options.themeMinZoom);
+    }
     const bounds = theme && theme.bounds ? L.latLngBounds(theme.bounds) : KOREA_BOUNDS;
     map.fitBounds(bounds, { padding: [18, 18], animate: false });
   }
@@ -257,6 +271,7 @@
     group.clearLayers();
     if (!provinceFeatures.length && !northFeatures.length) return;
     const theme = themes[map === mainMap ? currentTheme : questionThemeKey()] || {};
+    if (theme.historical) return;
     const fillByRegion = !!theme.regionFill;
     if (!fillByRegion && map.getZoom() > 9) return;
     L.geoJSON({ type: "FeatureCollection", features: [...provinceFeatures, ...northFeatures] }, {
@@ -348,7 +363,8 @@
     $("#conceptPoints").hidden = !theme.points.length;
     $("#themeExtra").replaceChildren(...(theme.panel ? [theme.panel(themeApi)] : []));
     // 행정구역 탭은 시·도 이름이 늘 보이므로 지역명 단추가 필요 없다.
-    $("#labelToggle").hidden = !!theme.provinceNames;
+    $("#labelToggle").hidden = !!theme.provinceNames || !!theme.historical;
+    $("#historyMapCaption").hidden = !theme.historical;
     clearFeatureFocus(false);
     stopProfile();
     mainMap.closePopup();
@@ -360,7 +376,7 @@
     syncMapDetailsButton();
     setReliefTone(mainMap, theme);
     drawThemeOnMap(mainMap, mainThemeLayer, theme, { interactive: true });
-    drawLabels(mainMap, mainLabelLayer, { admin: !theme.provinceNames, city: !theme.provinceNames, annotations: theme.annotations || [] });
+    drawLabels(mainMap, mainLabelLayer, { admin: !theme.provinceNames && !theme.historical, city: !theme.provinceNames && !theme.historical, annotations: theme.annotations || [] });
     drawBoundaries(mainMap, mainBoundaryLayer, true);
     fitKorea(mainMap);
     updatePracticeButton();
@@ -452,6 +468,8 @@
   // 지형이 주제가 아닌 탭에서는 바탕 색을 옅게 해 주제 표지가 잘 보이게 한다.
   function setReliefTone(map, theme) {
     map.getContainer().classList.toggle("relief-muted", !theme.relief);
+    map.getContainer().classList.toggle("history-map", !!theme.historical);
+    map.getPane("borderLines").hidden = !!theme.historical;
   }
 
   // 지형 이름표를 누르면 그 자리에 설명 풍선을 띄운다(지도를 옮기지 않는다).

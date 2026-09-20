@@ -7,7 +7,7 @@
     renderers.j01 = (spec) => figure(spec, "visual-algorithm-builder", `
         <section class="algorithm-file-lab" data-algorithm-lab data-algorithm-stage="0">
             <header class="algorithm-lab-heading">
-                <div><h3>파일을 실제로 옮기며 실행 순서를 만든다 <small>Build an Algorithm by Operating a File Manager</small></h3><p>문장 카드를 먼저 맞히지 않습니다. 파일 관리자에서 할 수 있는 동작을 차례로 실행하면 그 기록이 알고리즘이 됩니다.</p></div>
+                <div><h3>파일을 실제로 옮기며 실행 순서를 만든다 <small>Build an Algorithm by Operating a File Manager</small></h3><p>river.webp를 다운로드 폴더에서 과제 사진 폴더로 옮기세요. 실행한 순서와 각 단계의 결과를 확인합니다.</p></div>
                 <button type="button" data-algo-reset>처음부터 <small>Reset</small></button>
             </header>
             <div class="algorithm-file-manager" aria-label="river.webp 파일을 과제 사진 폴더로 옮기는 파일 관리자">

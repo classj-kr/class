@@ -1,0 +1,51 @@
+{
+  "slug": "water-cycle",
+  "engine": "chromium",
+  "modes": [
+    "initial"
+  ],
+  "cases": 7,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__cycleModel",
+      "methods": [
+        "TOTAL",
+        "INITIAL",
+        "DT",
+        "advanceSim",
+        "render",
+        "reservoirs",
+        "total",
+        "days",
+        "setSun",
+        "setTemp",
+        "reset"
+      ]
+    }
+  ],
+  "paint": [],
+  "grades": [
+    {
+      "mode": "initial",
+      "results": [
+        {
+          "choice": "less",
+          "visible": true,
+          "text": "예상과 다른 결과입니다. 물의 총량은 변하지 않습니다."
+        },
+        {
+          "choice": "same",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        },
+        {
+          "choice": "more",
+          "visible": true,
+          "text": "예상과 다른 결과입니다. 물의 총량은 변하지 않습니다."
+        }
+      ]
+    }
+  ]
+}

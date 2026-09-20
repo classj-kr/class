@@ -55,7 +55,7 @@
             pressTime.textContent = metrics[1];
             moveDistance.textContent = metrics[2];
             status.innerHTML = detected
-                ? "<b>" + detectedNames[gesture] + " 감지했습니다.</b> " + copy[gesture][3].replace(/^<b>.*?<\/b>/, "")
+                ? "<b>" + detectedNames[gesture] + " 감지했습니다.</b> " + copy[gesture][3].replace(/<\/?b>/g, "")
                 : copy[gesture][3];
             if (detected) {
                 surface.classList.remove("is-recognized");
@@ -70,6 +70,7 @@
         let pinchStartedAt = 0;
         const distanceBetween = (items) => Math.hypot(items[0].x - items[1].x, items[0].y - items[1].y);
         surface.addEventListener("pointerdown", (event) => {
+            if (event.target.closest("[data-gesture-menu]")) return;
             event.preventDefault();
             surface.setPointerCapture?.(event.pointerId);
             points.set(event.pointerId, { startX: event.clientX, startY: event.clientY, x: event.clientX, y: event.clientY, startedAt: performance.now() });
@@ -124,6 +125,7 @@
             pinchStart = null;
         });
         surface.addEventListener("keydown", (event) => {
+            if (event.target !== surface) return;
             if (event.key !== "Enter" && event.key !== " ") return;
             event.preventDefault();
             present(lab.dataset.gesture || "tap", undefined, true);

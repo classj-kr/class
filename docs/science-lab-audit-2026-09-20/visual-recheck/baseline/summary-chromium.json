@@ -1,0 +1,4461 @@
+{
+  "engine": "chromium",
+  "apps": 66,
+  "modes": 104,
+  "cases": 772,
+  "reports": [
+    {
+      "slug": "light-shadow",
+      "engine": "chromium",
+      "modes": [
+        "initial"
+      ],
+      "cases": 7,
+      "errors": [],
+      "issues": [],
+      "models": [],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "initial",
+          "results": [
+            {
+              "choice": "bigger",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "smaller",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "same",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "refraction",
+      "engine": "chromium",
+      "modes": [
+        "initial"
+      ],
+      "cases": 8,
+      "errors": [],
+      "issues": [],
+      "models": [
+        {
+          "key": "__rayModel",
+          "methods": [
+            "MEDIA",
+            "N_AIR",
+            "P",
+            "L",
+            "solve",
+            "setAngle",
+            "setMedium",
+            "setDir"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "initial",
+          "results": [
+            {
+              "choice": "smaller",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "larger",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "same",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "sound-vibration",
+      "engine": "chromium",
+      "modes": [
+        "initial"
+      ],
+      "cases": 7,
+      "errors": [],
+      "issues": [],
+      "models": [
+        {
+          "key": "__soundModel",
+          "methods": [
+            "BARS",
+            "SLOWDOWN",
+            "T_WIN",
+            "TAU",
+            "REFERENCE",
+            "displacementAt",
+            "envelopeAt",
+            "ringDuration",
+            "state",
+            "renderAt",
+            "forceRing"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "initial",
+          "results": [
+            {
+              "choice": "higher",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "lower",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "same",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "wave-transfer",
+      "engine": "chromium",
+      "modes": [
+        "transverse",
+        "longitudinal"
+      ],
+      "cases": 20,
+      "errors": [],
+      "issues": [],
+      "models": [
+        {
+          "key": "__waveModel",
+          "methods": [
+            "X0",
+            "X1",
+            "PX",
+            "CY",
+            "SPAN_CM",
+            "MARK_X",
+            "SAMPLES",
+            "REF_LAMBDA",
+            "analyse",
+            "phaseOf",
+            "render",
+            "setSpeed",
+            "setFreq",
+            "setAmp",
+            "setMode",
+            "speed",
+            "freq",
+            "amp",
+            "getMode"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "transverse",
+          "results": [
+            {
+              "choice": "longer",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "same",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "shorter",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        },
+        {
+          "mode": "longitudinal",
+          "results": [
+            {
+              "choice": "longer",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "same",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "shorter",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "lever-balance",
+      "engine": "chromium",
+      "modes": [
+        "initial"
+      ],
+      "cases": 5,
+      "errors": [],
+      "issues": [],
+      "models": [
+        {
+          "key": "__leverModel",
+          "methods": [
+            "lifted",
+            "state"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "initial",
+          "results": [
+            {
+              "choice": "yes",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "no",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "speed",
+      "engine": "chromium",
+      "modes": [
+        "distance",
+        "time"
+      ],
+      "cases": 26,
+      "errors": [],
+      "issues": [],
+      "models": [
+        {
+          "key": "__speedModel",
+          "methods": [
+            "MOVERS",
+            "COURSE_M",
+            "CLOCK_S",
+            "state",
+            "analyse",
+            "render",
+            "runSeconds",
+            "setMode",
+            "set",
+            "setProgress",
+            "runToEnd",
+            "tick",
+            "finish"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "distance",
+          "results": [
+            {
+              "choice": "a",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "b",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "same",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        },
+        {
+          "mode": "time",
+          "results": [
+            {
+              "choice": "a",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "b",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "same",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "force-motion",
+      "engine": "chromium",
+      "modes": [
+        "initial"
+      ],
+      "cases": 13,
+      "errors": [],
+      "issues": [],
+      "models": [
+        {
+          "key": "__forceModel",
+          "methods": [
+            "G",
+            "TRACK_M",
+            "PX_PER_M",
+            "PX_PER_N",
+            "TRACK_X0",
+            "FLOORS",
+            "analyse",
+            "stateAt",
+            "timeToReach",
+            "render",
+            "setForce",
+            "setMass",
+            "setStart",
+            "setFloor",
+            "seek",
+            "runToEnd",
+            "tick",
+            "finish",
+            "getTime",
+            "getFloor"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "initial",
+          "results": [
+            {
+              "choice": "rest",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "constant",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "faster",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "slower",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "motion-energy",
+      "engine": "chromium",
+      "modes": [
+        "incline",
+        "energy"
+      ],
+      "cases": 13,
+      "errors": [],
+      "issues": [],
+      "models": [
+        {
+          "key": "__motionModel",
+          "methods": [
+            "G",
+            "RAMP_M",
+            "FLAT_M",
+            "TOP",
+            "HILL2",
+            "END",
+            "state",
+            "analyseIncline",
+            "analyseEnergy",
+            "analyse",
+            "trackY",
+            "startX",
+            "sampleEnergy",
+            "render",
+            "runSeconds",
+            "setMode",
+            "set",
+            "setProgress",
+            "runToEnd",
+            "tick",
+            "finish"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "incline",
+          "results": [
+            {
+              "choice": "widen",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "same",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "narrow",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        },
+        {
+          "mode": "energy",
+          "results": [
+            {
+              "choice": "pass",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "stop",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "back",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "gravity-motion",
+      "engine": "chromium",
+      "modes": [
+        "drop",
+        "impact"
+      ],
+      "cases": 18,
+      "errors": [],
+      "issues": [],
+      "models": [
+        {
+          "key": "__gravityModel",
+          "methods": [
+            "HEIGHTS",
+            "SPEEDS",
+            "AIMS",
+            "LAUNCH",
+            "DROPS",
+            "FLOORS",
+            "V_CIRC",
+            "V_ESC",
+            "EGG_M",
+            "BREAK_N",
+            "state",
+            "analyse",
+            "render",
+            "dropCalc",
+            "orbitOf",
+            "impactCalc",
+            "runSeconds",
+            "setMode",
+            "set",
+            "setProgress",
+            "runToEnd",
+            "tick",
+            "finish"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "drop",
+          "results": [
+            {
+              "choice": "drop-first",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "throw-first",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "same",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            }
+          ]
+        },
+        {
+          "mode": "impact",
+          "results": [
+            {
+              "choice": "low",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "mid",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "high",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "magnets",
+      "engine": "chromium",
+      "modes": [
+        "force",
+        "compass"
+      ],
+      "cases": 16,
+      "errors": [],
+      "issues": [],
+      "models": [
+        {
+          "key": "__magnetModel",
+          "methods": [
+            "FACING",
+            "GAPS",
+            "PLACES",
+            "DISTS",
+            "FRICTION",
+            "EARTH",
+            "state",
+            "analyseForce",
+            "analyseCompass",
+            "analyse",
+            "forceAt",
+            "fieldAt",
+            "render",
+            "runSeconds",
+            "setMode",
+            "set",
+            "setProgress",
+            "runToEnd",
+            "tick",
+            "finish"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "force",
+          "results": [
+            {
+              "choice": "stick",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "push",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "still",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        },
+        {
+          "mode": "compass",
+          "results": [
+            {
+              "choice": "toS",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "toN",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "north",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "circuit-bulbs",
+      "engine": "chromium",
+      "modes": [
+        "circuit",
+        "magnet"
+      ],
+      "cases": 13,
+      "errors": [],
+      "issues": [],
+      "models": [
+        {
+          "key": "__circuitModel",
+          "methods": [
+            "circuitState",
+            "magnetState",
+            "setMode",
+            "setCircuit",
+            "setMagnet",
+            "setPermanentComparison",
+            "state"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "circuit",
+          "results": [
+            {
+              "choice": "dimmer",
+              "visible": true,
+              "text": "전지 1개는 비교 기준입니다. 2개로 바꾼 뒤 예상을 확인하세요."
+            },
+            {
+              "choice": "same",
+              "visible": true,
+              "text": "전지 1개는 비교 기준입니다. 2개로 바꾼 뒤 예상을 확인하세요."
+            },
+            {
+              "choice": "brighter",
+              "visible": true,
+              "text": "전지 1개는 비교 기준입니다. 2개로 바꾼 뒤 예상을 확인하세요."
+            }
+          ]
+        },
+        {
+          "mode": "magnet",
+          "results": []
+        }
+      ]
+    },
+    {
+      "slug": "ohms-law",
+      "engine": "chromium",
+      "modes": [
+        "initial"
+      ],
+      "cases": 12,
+      "errors": [],
+      "issues": [],
+      "models": [
+        {
+          "key": "__ohmModel",
+          "methods": [
+            "analyse",
+            "GRAPH",
+            "V_MAX",
+            "gx",
+            "gy",
+            "niceMax",
+            "set",
+            "state"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "initial",
+          "results": [
+            {
+              "choice": "bigger",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "smaller",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "same",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "heat-transfer",
+      "engine": "chromium",
+      "modes": [
+        "initial"
+      ],
+      "cases": 5,
+      "errors": [],
+      "issues": [],
+      "models": [
+        {
+          "key": "__heatModel",
+          "methods": [
+            "MATERIALS",
+            "N",
+            "DX_MM",
+            "DT_SIM",
+            "SPEED",
+            "T_AMBIENT",
+            "T_FLAME",
+            "BEAD_MELT",
+            "BEAD_CM",
+            "PROBE_CM",
+            "REFERENCE",
+            "setMaterial",
+            "startHeating",
+            "stopHeating",
+            "advanceSim",
+            "profile",
+            "tempAtCm",
+            "beadsFallen",
+            "simTime",
+            "stability",
+            "reset",
+            "render"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "initial",
+          "results": [
+            {
+              "choice": "faster",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "slower",
+              "visible": false,
+              "text": ""
+            },
+            {
+              "choice": "same",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "specific-heat",
+      "engine": "chromium",
+      "modes": [
+        "heat",
+        "expand"
+      ],
+      "cases": 11,
+      "errors": [],
+      "issues": [],
+      "models": [
+        {
+          "key": "__heat2Model",
+          "methods": [
+            "SUBS",
+            "METALS",
+            "POWER",
+            "T0",
+            "MAX_TIME",
+            "L0_MM",
+            "EXAGGERATION",
+            "PX_PER_MM",
+            "tempOf",
+            "expansionMM",
+            "tempScaleMax",
+            "setMode",
+            "setMass",
+            "setTime",
+            "setDelta",
+            "stepFrame",
+            "elapsed",
+            "mass",
+            "deltaT",
+            "render"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "heat",
+          "results": [
+            {
+              "choice": "water",
+              "visible": true,
+              "text": "아직 가열 전입니다. 가열한 뒤 온도 변화를 비교하세요."
+            },
+            {
+              "choice": "iron",
+              "visible": true,
+              "text": "아직 가열 전입니다. 가열한 뒤 온도 변화를 비교하세요."
+            }
+          ]
+        },
+        {
+          "mode": "expand",
+          "results": []
+        }
+      ]
+    },
+    {
+      "slug": "energy-conversion",
+      "engine": "chromium",
+      "modes": [
+        "solar",
+        "wind",
+        "chain"
+      ],
+      "cases": 20,
+      "errors": [],
+      "issues": [],
+      "models": [
+        {
+          "key": "__energyModel",
+          "methods": [
+            "SEASONS",
+            "WEATHERS",
+            "TILTS",
+            "WINDS",
+            "BLADES",
+            "REF",
+            "PLANTS",
+            "LAMPS",
+            "GRID_EFF",
+            "SUPPLY_J",
+            "state",
+            "analyse",
+            "render",
+            "panelPower",
+            "panelIrradiance",
+            "sunAt",
+            "windPower",
+            "chainOf",
+            "dayCurves",
+            "runSeconds",
+            "setMode",
+            "set",
+            "setProgress",
+            "runToEnd",
+            "tick",
+            "finish"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "solar",
+          "results": [
+            {
+              "choice": "0",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "35",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "70",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        },
+        {
+          "mode": "wind",
+          "results": [
+            {
+              "choice": "tiny",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "less",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "same",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "more",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "huge",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            }
+          ]
+        },
+        {
+          "mode": "chain",
+          "results": [
+            {
+              "choice": "tiny",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "small",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "mid",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "big",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "weight-compare",
+      "engine": "chromium",
+      "modes": [
+        "initial"
+      ],
+      "cases": 10,
+      "errors": [],
+      "issues": [],
+      "models": [
+        {
+          "key": "__weightModel",
+          "methods": [
+            "state",
+            "analyse",
+            "tick",
+            "render",
+            "weightOf",
+            "refWeight",
+            "sunkFraction",
+            "floats",
+            "MATERIALS",
+            "SIZES",
+            "REF",
+            "WATER",
+            "setMat",
+            "setSize",
+            "check",
+            "runToEnd"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "initial",
+          "results": [
+            {
+              "choice": "p1",
+              "visible": true,
+              "text": "예상이 맞았습니다 — 뜬다."
+            },
+            {
+              "choice": "p2",
+              "visible": true,
+              "text": "예상은 아슬아슬하게 뜬다였지만 결과는 뜬다입니다."
+            },
+            {
+              "choice": "p3",
+              "visible": true,
+              "text": "예상은 가라앉는다였지만 결과는 뜬다입니다."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "density-buoyancy",
+      "engine": "chromium",
+      "modes": [
+        "buoy",
+        "gas"
+      ],
+      "cases": 14,
+      "errors": [],
+      "issues": [],
+      "models": [
+        {
+          "key": "__buoyModel",
+          "methods": [
+            "FLUIDS",
+            "G",
+            "P0",
+            "V0",
+            "TANK",
+            "buoyancy",
+            "pressureOf",
+            "PARTICLES",
+            "setMode",
+            "setFluid",
+            "set",
+            "setGas",
+            "mass",
+            "vol",
+            "gasVol",
+            "render"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "buoy",
+          "results": [
+            {
+              "choice": "float",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "sink",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        },
+        {
+          "mode": "gas",
+          "results": []
+        }
+      ]
+    },
+    {
+      "slug": "measurement",
+      "engine": "chromium",
+      "modes": [
+        "scale",
+        "units",
+        "measure"
+      ],
+      "cases": 26,
+      "errors": [],
+      "issues": [],
+      "models": [
+        {
+          "key": "__measureModel",
+          "methods": [
+            "KINDS",
+            "TARGETS",
+            "UNITS",
+            "ERAS",
+            "DEFS",
+            "RULERS",
+            "TRUE_MM",
+            "state",
+            "analyse",
+            "render",
+            "readingsFor",
+            "fmtSci",
+            "runSeconds",
+            "setMode",
+            "set",
+            "setProgress",
+            "runToEnd",
+            "tick",
+            "finish"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "scale",
+          "results": [
+            {
+              "choice": "near",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "mid",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "far",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        },
+        {
+          "mode": "units",
+          "results": [
+            {
+              "choice": "nature",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "artifact",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "constant",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            }
+          ]
+        },
+        {
+          "mode": "measure",
+          "results": [
+            {
+              "choice": "cm",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "mm",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "vernier",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "mixture-separation",
+      "engine": "chromium",
+      "modes": [
+        "initial"
+      ],
+      "cases": 4,
+      "errors": [],
+      "issues": [],
+      "models": [
+        {
+          "key": "__mixtureModel",
+          "methods": [
+            "SUBSTANCES",
+            "remaining",
+            "separated",
+            "setMesh",
+            "reset",
+            "grainCount"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "initial",
+          "results": []
+        }
+      ]
+    },
+    {
+      "slug": "separation-methods",
+      "engine": "chromium",
+      "modes": [
+        "filter",
+        "distill",
+        "chroma"
+      ],
+      "cases": 21,
+      "errors": [],
+      "issues": [],
+      "models": [
+        {
+          "key": "__sepModel",
+          "methods": [
+            "PORE_MM",
+            "MIXTURES",
+            "analyse",
+            "schedule",
+            "tempAt",
+            "collectedAt",
+            "render",
+            "round",
+            "setMode",
+            "setMix",
+            "setProgress",
+            "runToEnd",
+            "tick",
+            "finish",
+            "getMode",
+            "getMix",
+            "runSeconds"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "filter",
+          "results": [
+            {
+              "choice": "full",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "partial",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "none",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        },
+        {
+          "mode": "distill",
+          "results": [
+            {
+              "choice": "full",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "partial",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "none",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        },
+        {
+          "mode": "chroma",
+          "results": [
+            {
+              "choice": "full",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "partial",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "none",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "state-change",
+      "engine": "chromium",
+      "modes": [
+        "initial"
+      ],
+      "cases": 4,
+      "errors": [],
+      "issues": [],
+      "models": [
+        {
+          "key": "__phaseModel",
+          "methods": [
+            "analyse",
+            "check",
+            "render",
+            "setTemperature",
+            "setProgress"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "initial",
+          "results": [
+            {
+              "choice": "solid",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "liquid",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "gas",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "solid-liquid",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "liquid-gas",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "gases",
+      "engine": "chromium",
+      "modes": [
+        "make",
+        "press"
+      ],
+      "cases": 12,
+      "errors": [],
+      "issues": [],
+      "models": [
+        {
+          "key": "__gasModel",
+          "methods": [
+            "GASES",
+            "TESTS",
+            "WEIGHTS",
+            "TEMPS",
+            "V0",
+            "state",
+            "analyseMake",
+            "analysePress",
+            "analyse",
+            "volumeOf",
+            "pressureOf",
+            "collectedAt",
+            "testAt",
+            "render",
+            "runSeconds",
+            "setMode",
+            "set",
+            "setProgress",
+            "runToEnd",
+            "tick",
+            "finish"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "make",
+          "results": [
+            {
+              "choice": "flare",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "out",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "steady",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        },
+        {
+          "mode": "press",
+          "results": [
+            {
+              "choice": "smaller",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "bigger",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "same",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "diffusion",
+      "engine": "chromium",
+      "modes": [
+        "diff"
+      ],
+      "cases": 7,
+      "errors": [],
+      "issues": [],
+      "models": [
+        {
+          "key": "__diffModel",
+          "methods": [
+            "NH3",
+            "HCL",
+            "TUBE_CM",
+            "SURFACE",
+            "CACO3_G",
+            "CACO3_M",
+            "HCL_VOL_L",
+            "MOLAR_VOL_ML",
+            "speed",
+            "meetPoint",
+            "meetTime",
+            "fronts",
+            "gasModel",
+            "gasVolume",
+            "setMode",
+            "setGrain",
+            "setTemp",
+            "setTime",
+            "setConc",
+            "setGasTime",
+            "tempK",
+            "elapsed",
+            "conc",
+            "gasElapsed",
+            "render"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "diff",
+          "results": [
+            {
+              "choice": "nh3",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "center",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "hcl",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "solubility",
+      "engine": "chromium",
+      "modes": [
+        "initial"
+      ],
+      "cases": 7,
+      "errors": [],
+      "issues": [],
+      "models": [],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "initial",
+          "results": [
+            {
+              "choice": "all",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "some",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "solubility-curve",
+      "engine": "chromium",
+      "modes": [
+        "initial"
+      ],
+      "cases": 13,
+      "errors": [],
+      "issues": [],
+      "models": [
+        {
+          "key": "__curveModel",
+          "methods": [
+            "SOLUTES",
+            "TEMPS",
+            "WATER_G",
+            "solubility",
+            "analyse",
+            "setSolute",
+            "setAdded",
+            "setTemp",
+            "setCool",
+            "added",
+            "temp",
+            "coolTemp",
+            "render"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "initial",
+          "results": [
+            {
+              "choice": "all",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "left",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "recrystallise",
+      "engine": "chromium",
+      "modes": [
+        "initial"
+      ],
+      "cases": 15,
+      "errors": [],
+      "issues": [],
+      "models": [
+        {
+          "key": "__crystalModel",
+          "methods": [
+            "SALTS",
+            "IMP_S",
+            "solubility",
+            "analyse",
+            "outAt",
+            "freshSim",
+            "step",
+            "render",
+            "check",
+            "setSalt",
+            "setWater",
+            "setHot",
+            "setCold",
+            "setDirt",
+            "runToEnd",
+            "getSim",
+            "tick"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "initial",
+          "results": [
+            {
+              "choice": "pure",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "none",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "slight",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "dirty",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "flame-ions",
+      "engine": "chromium",
+      "modes": [
+        "flame",
+        "ion"
+      ],
+      "cases": 20,
+      "errors": [],
+      "issues": [],
+      "models": [
+        {
+          "key": "__flameIonModel",
+          "methods": [
+            "METALS",
+            "ANIONS",
+            "IONS",
+            "COLOURS",
+            "PAPER_FACTOR",
+            "STRIP_M",
+            "RUN_MINUTES",
+            "state",
+            "analyseFlame",
+            "analyseIon",
+            "analyse",
+            "compound",
+            "ionAt",
+            "flameIntensity",
+            "wlToRgb",
+            "render",
+            "runSeconds",
+            "setMode",
+            "set",
+            "setProgress",
+            "runToEnd",
+            "tick",
+            "finish"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "flame",
+          "results": [
+            {
+              "choice": "red",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "yellow",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "violet",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "orange",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "green",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        },
+        {
+          "mode": "ion",
+          "results": [
+            {
+              "choice": "plus",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "minus",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "none",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "periodic-bonding",
+      "engine": "chromium",
+      "modes": [
+        "elements",
+        "bonds"
+      ],
+      "cases": 23,
+      "errors": [],
+      "issues": [],
+      "models": [
+        {
+          "key": "__bondingModel",
+          "methods": [
+            "ELEMENTS",
+            "PAIRS",
+            "GROUPS",
+            "PERIODS",
+            "state",
+            "analyse",
+            "render",
+            "elementAt",
+            "layoutOf",
+            "runSeconds",
+            "setMode",
+            "set",
+            "setProgress",
+            "runToEnd",
+            "tick",
+            "finish"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "elements",
+          "results": [
+            {
+              "choice": "cation",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "anion",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "none",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        },
+        {
+          "mode": "bonds",
+          "results": [
+            {
+              "choice": "1:1",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "1:2",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "2:1",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "acid-base",
+      "engine": "chromium",
+      "modes": [
+        "initial"
+      ],
+      "cases": 5,
+      "errors": [],
+      "issues": [],
+      "models": [],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "initial",
+          "results": [
+            {
+              "choice": "acid",
+              "visible": false,
+              "text": ""
+            },
+            {
+              "choice": "base",
+              "visible": false,
+              "text": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "mass-ratio",
+      "engine": "chromium",
+      "modes": [
+        "mass",
+        "heat"
+      ],
+      "cases": 15,
+      "errors": [],
+      "issues": [],
+      "models": [
+        {
+          "key": "__massModel",
+          "methods": [
+            "R_MG",
+            "R_OX",
+            "R_PROD",
+            "MAX_G",
+            "REACTIONS",
+            "T0",
+            "react",
+            "tempAt",
+            "setMode",
+            "setRxn",
+            "setMg",
+            "setOx",
+            "setTime",
+            "mg",
+            "ox",
+            "elapsed",
+            "render"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "mass",
+          "results": [
+            {
+              "choice": "less",
+              "visible": true,
+              "text": "예상과 다른 결과입니다. 전체 질량은 변하지 않습니다."
+            },
+            {
+              "choice": "same",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "more",
+              "visible": true,
+              "text": "예상과 다른 결과입니다. 전체 질량은 변하지 않습니다."
+            }
+          ]
+        },
+        {
+          "mode": "heat",
+          "results": []
+        }
+      ]
+    },
+    {
+      "slug": "burning-conditions",
+      "engine": "chromium",
+      "modes": [
+        "initial"
+      ],
+      "cases": 12,
+      "errors": [],
+      "issues": [],
+      "models": [
+        {
+          "key": "__burnModel",
+          "methods": [
+            "O2_START",
+            "O2_FLOOR",
+            "O2_RATE",
+            "FUELS",
+            "state",
+            "analyse",
+            "o2At",
+            "render",
+            "runSeconds",
+            "set",
+            "setProgress",
+            "runToEnd",
+            "tick",
+            "finish"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "initial",
+          "results": [
+            {
+              "choice": "burn",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "out",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "none",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "combustion",
+      "engine": "chromium",
+      "modes": [
+        "initial"
+      ],
+      "cases": 8,
+      "errors": [],
+      "issues": [],
+      "models": [
+        {
+          "key": "__oxideModel",
+          "methods": [
+            "MATERIALS",
+            "state",
+            "analyse",
+            "step",
+            "render",
+            "runSeconds",
+            "set",
+            "setProgress",
+            "runToEnd",
+            "tick",
+            "finish"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "initial",
+          "results": [
+            {
+              "choice": "up",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "same",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "down",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "living-things",
+      "engine": "chromium",
+      "modes": [
+        "sort",
+        "habitat"
+      ],
+      "cases": 17,
+      "errors": [],
+      "issues": [],
+      "models": [
+        {
+          "key": "__livingThingsModel",
+          "methods": [
+            "CARDS",
+            "RULES",
+            "HABITATS",
+            "BEINGS",
+            "state",
+            "analyseSort",
+            "analyseHabitat",
+            "analyse",
+            "render",
+            "runSeconds",
+            "setMode",
+            "set",
+            "setProgress",
+            "runToEnd",
+            "tick",
+            "finish"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "sort",
+          "results": [
+            {
+              "choice": "few",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "mid",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "many",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        },
+        {
+          "mode": "habitat",
+          "results": [
+            {
+              "choice": "fit",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "unfit",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "microbes",
+      "engine": "chromium",
+      "modes": [
+        "mould",
+        "germ"
+      ],
+      "cases": 13,
+      "errors": [],
+      "issues": [],
+      "models": [
+        {
+          "key": "__microbeModel",
+          "methods": [
+            "TEMPS",
+            "MOIST",
+            "GERM_TEMPS",
+            "HOURS",
+            "MOULD_DAYS",
+            "state",
+            "analyseMould",
+            "analyseGerm",
+            "analyse",
+            "coverage",
+            "germCount",
+            "render",
+            "runSeconds",
+            "setMode",
+            "set",
+            "setProgress",
+            "runToEnd",
+            "tick",
+            "finish"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "mould",
+          "results": [
+            {
+              "choice": "lots",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "some",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "none",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        },
+        {
+          "mode": "germ",
+          "results": [
+            {
+              "choice": "double",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "tens",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "huge",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "microscope",
+      "engine": "chromium",
+      "modes": [
+        "initial"
+      ],
+      "cases": 8,
+      "errors": [],
+      "issues": [],
+      "models": [
+        {
+          "key": "__scopeModel",
+          "methods": [
+            "state",
+            "analyse",
+            "tick",
+            "render",
+            "power",
+            "fieldMm",
+            "brightness",
+            "share",
+            "verdictFor",
+            "SPECIMENS",
+            "EYEPIECES",
+            "OBJECTIVES",
+            "setSpec",
+            "setEye",
+            "setObj",
+            "check",
+            "runToEnd"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "initial",
+          "results": [
+            {
+              "choice": "p1",
+              "visible": true,
+              "text": "예상이 맞았습니다 — 잘 보인다."
+            },
+            {
+              "choice": "p2",
+              "visible": true,
+              "text": "예상은 겨우 보인다였지만 결과는 잘 보인다입니다."
+            },
+            {
+              "choice": "p3",
+              "visible": true,
+              "text": "예상은 너무 작아 안 보인다였지만 결과는 잘 보인다입니다."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "cell-membrane",
+      "engine": "chromium",
+      "modes": [
+        "diffusion",
+        "osmosis"
+      ],
+      "cases": 10,
+      "errors": [],
+      "issues": [],
+      "models": [
+        {
+          "key": "__membraneModel",
+          "methods": [
+            "CONCS",
+            "TEMPS",
+            "SOLUTIONS",
+            "C_IN",
+            "VB",
+            "BURST",
+            "state",
+            "analyse",
+            "render",
+            "countsAt",
+            "volumeAt",
+            "volumeTarget",
+            "burstTime",
+            "runSeconds",
+            "setMode",
+            "set",
+            "setProgress",
+            "runToEnd",
+            "tick",
+            "finish"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "diffusion",
+          "results": [
+            {
+              "choice": "far",
+              "visible": true,
+              "text": "이 모형의 예상이 맞았습니다."
+            },
+            {
+              "choice": "mid",
+              "visible": true,
+              "text": "이 모형의 결과와 다릅니다."
+            },
+            {
+              "choice": "same",
+              "visible": true,
+              "text": "이 모형의 결과와 다릅니다."
+            }
+          ]
+        },
+        {
+          "mode": "osmosis",
+          "results": [
+            {
+              "choice": "swell",
+              "visible": true,
+              "text": "이 모형의 예상이 맞았습니다."
+            },
+            {
+              "choice": "same",
+              "visible": true,
+              "text": "이 모형의 결과와 다릅니다."
+            },
+            {
+              "choice": "shrink",
+              "visible": true,
+              "text": "이 모형의 결과와 다릅니다."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "seed-germination",
+      "engine": "chromium",
+      "modes": [
+        "initial"
+      ],
+      "cases": 3,
+      "errors": [],
+      "issues": [],
+      "models": [
+        {
+          "key": "__seedModel",
+          "methods": [
+            "germinates",
+            "missingConditions",
+            "stageName",
+            "setConditions",
+            "conditions",
+            "setProgress",
+            "progress",
+            "SOIL_Y",
+            "SEED"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "initial",
+          "results": [
+            {
+              "choice": "yes",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "no",
+              "visible": false,
+              "text": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "photosynthesis",
+      "engine": "chromium",
+      "modes": [
+        "initial"
+      ],
+      "cases": 10,
+      "errors": [],
+      "issues": [],
+      "models": [
+        {
+          "key": "__photoModel",
+          "methods": [
+            "V_MAX",
+            "K_LIGHT",
+            "K_CO2",
+            "T_OPT",
+            "analyse",
+            "tempFactor",
+            "setLight",
+            "setCO2",
+            "setTemp",
+            "light",
+            "co2",
+            "temp",
+            "render"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "initial",
+          "results": [
+            {
+              "choice": "light",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "co2",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "temp",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "body-organs",
+      "engine": "chromium",
+      "modes": [
+        "initial"
+      ],
+      "cases": 8,
+      "errors": [],
+      "issues": [],
+      "models": [
+        {
+          "key": "__organModel",
+          "methods": [
+            "state",
+            "analyse",
+            "tick",
+            "render",
+            "output",
+            "ratio",
+            "verdictFor",
+            "SYSTEMS",
+            "ACTS",
+            "BLOOD_ML",
+            "setSys",
+            "setAct",
+            "check",
+            "runToEnd"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "initial",
+          "results": [
+            {
+              "choice": "p1",
+              "visible": true,
+              "text": "선택한 기관의 하는 일을 다시 확인하세요."
+            },
+            {
+              "choice": "p2",
+              "visible": true,
+              "text": "선택한 기관의 하는 일을 다시 확인하세요."
+            },
+            {
+              "choice": "p3",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "p4",
+              "visible": true,
+              "text": "선택한 기관의 하는 일을 다시 확인하세요."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "body-systems",
+      "engine": "chromium",
+      "modes": [
+        "initial"
+      ],
+      "cases": 8,
+      "errors": [],
+      "issues": [],
+      "models": [
+        {
+          "key": "__bodyModel",
+          "methods": [
+            "ACTS",
+            "DEAD_SPACE",
+            "O2_PER_GLUCOSE",
+            "BLOOD_VOLUME",
+            "AIR_O2",
+            "derive",
+            "render",
+            "check",
+            "setAct",
+            "setMinutes",
+            "getAct",
+            "minutes"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "initial",
+          "results": [
+            {
+              "choice": "more",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "same",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "less",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "nutrient-detection",
+      "engine": "chromium",
+      "modes": [
+        "reagent",
+        "benedict",
+        "amylase"
+      ],
+      "cases": 19,
+      "errors": [],
+      "issues": [],
+      "models": [
+        {
+          "key": "__nutrientModel",
+          "methods": [
+            "REAGENTS",
+            "HEATS",
+            "SAMPLES",
+            "CONCS",
+            "CONDS",
+            "TUBES",
+            "state",
+            "analyse",
+            "render",
+            "runSeconds",
+            "setMode",
+            "set",
+            "setProgress",
+            "runToEnd",
+            "tick",
+            "finish"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "reagent",
+          "results": [
+            {
+              "choice": "starch",
+              "visible": true,
+              "text": "🎉 예상이 맞았습니다!"
+            },
+            {
+              "choice": "sugar",
+              "visible": true,
+              "text": "💡 예상과 다른 결과입니다. 원리를 확인해 보세요."
+            },
+            {
+              "choice": "protein",
+              "visible": true,
+              "text": "💡 예상과 다른 결과입니다. 원리를 확인해 보세요."
+            },
+            {
+              "choice": "fat",
+              "visible": true,
+              "text": "💡 예상과 다른 결과입니다. 원리를 확인해 보세요."
+            },
+            {
+              "choice": "none",
+              "visible": true,
+              "text": "💡 예상과 다른 결과입니다. 원리를 확인해 보세요."
+            }
+          ]
+        },
+        {
+          "mode": "benedict",
+          "results": [
+            {
+              "choice": "none",
+              "visible": true,
+              "text": "🎉 예상이 맞았습니다!"
+            },
+            {
+              "choice": "some",
+              "visible": true,
+              "text": "💡 예상과 다른 결과입니다. 원리를 확인해 보세요."
+            },
+            {
+              "choice": "much",
+              "visible": true,
+              "text": "💡 예상과 다른 결과입니다. 원리를 확인해 보세요."
+            }
+          ]
+        },
+        {
+          "mode": "amylase",
+          "results": [
+            {
+              "choice": "digested",
+              "visible": true,
+              "text": "🎉 예상이 맞았습니다!"
+            },
+            {
+              "choice": "partial",
+              "visible": true,
+              "text": "💡 예상과 다른 결과입니다. 원리를 확인해 보세요."
+            },
+            {
+              "choice": "none",
+              "visible": true,
+              "text": "💡 예상과 다른 결과입니다. 원리를 확인해 보세요."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "senses",
+      "engine": "chromium",
+      "modes": [
+        "initial"
+      ],
+      "cases": 9,
+      "errors": [],
+      "issues": [],
+      "models": [
+        {
+          "key": "__senseModel",
+          "methods": [
+            "state",
+            "analyse",
+            "tick",
+            "render",
+            "reaction",
+            "fallCm",
+            "timeFor",
+            "verdictFor",
+            "SENSES",
+            "CONDS",
+            "G",
+            "RULER_CM",
+            "RULER_T",
+            "setSense",
+            "setCond",
+            "check",
+            "runToEnd"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "initial",
+          "results": [
+            {
+              "choice": "p1",
+              "visible": true,
+              "text": "모형의 예상이 맞았습니다."
+            },
+            {
+              "choice": "p2",
+              "visible": true,
+              "text": "모형의 예상과 다른 결과입니다."
+            },
+            {
+              "choice": "p3",
+              "visible": true,
+              "text": "모형의 예상과 다른 결과입니다."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "reflex-nerve",
+      "engine": "chromium",
+      "modes": [
+        "initial"
+      ],
+      "cases": 4,
+      "errors": [],
+      "issues": [],
+      "models": [
+        {
+          "key": "__reflexModel",
+          "methods": [
+            "PATHS",
+            "state"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "initial",
+          "results": [
+            {
+              "choice": "yes",
+              "visible": false,
+              "text": ""
+            },
+            {
+              "choice": "no",
+              "visible": false,
+              "text": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "pea-genetics",
+      "engine": "chromium",
+      "modes": [
+        "one",
+        "two"
+      ],
+      "cases": 22,
+      "errors": [],
+      "issues": [],
+      "models": [
+        {
+          "key": "__peaModel",
+          "methods": [
+            "TRAITS",
+            "GENOS",
+            "CROSSES2",
+            "SEED_COUNTS",
+            "state",
+            "analyseOne",
+            "analyseTwo",
+            "analyse",
+            "sow",
+            "tally",
+            "rng",
+            "render",
+            "runSeconds",
+            "setMode",
+            "set",
+            "setSeed",
+            "setProgress",
+            "runToEnd",
+            "tick",
+            "finish"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "one",
+          "results": [
+            {
+              "choice": "all-dom",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "3-1",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "1-1",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "all-rec",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        },
+        {
+          "mode": "two",
+          "results": [
+            {
+              "choice": "all-same",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "9-3-3-1",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "1-1-1-1",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "3-1",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "natural-selection",
+      "engine": "chromium",
+      "modes": [
+        "beak",
+        "coat"
+      ],
+      "cases": 9,
+      "errors": [],
+      "issues": [],
+      "models": [
+        {
+          "key": "__selectionModel",
+          "methods": [
+            "SEEDS",
+            "GROUNDS",
+            "SWITCHES",
+            "N",
+            "GENS",
+            "state",
+            "analyse",
+            "simulate",
+            "fitnessAll",
+            "render",
+            "runSeconds",
+            "setMode",
+            "set",
+            "setSeed",
+            "setProgress",
+            "runToEnd",
+            "tick",
+            "finish"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "beak",
+          "results": [
+            {
+              "choice": "small",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "large",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "split",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "same",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        },
+        {
+          "mode": "coat",
+          "results": [
+            {
+              "choice": "light",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "dark",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "mixed",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "life-cycle",
+      "engine": "chromium",
+      "modes": [
+        "initial"
+      ],
+      "cases": 8,
+      "errors": [],
+      "issues": [],
+      "models": [
+        {
+          "key": "__lifeModel",
+          "methods": [
+            "state",
+            "analyse",
+            "tick",
+            "render",
+            "daysToAdult",
+            "verdictFor",
+            "foodChain",
+            "ANIMALS",
+            "setAnimal",
+            "setStep",
+            "check",
+            "runToEnd"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "initial",
+          "results": [
+            {
+              "choice": "p1",
+              "visible": true,
+              "text": "예상이 맞았습니다 — 번데기를 거친다."
+            },
+            {
+              "choice": "p2",
+              "visible": true,
+              "text": "예상은 번데기 없이 모습이 크게 바뀐다였지만 결과는 번데기를 거친다입니다."
+            },
+            {
+              "choice": "p3",
+              "visible": true,
+              "text": "예상은 처음부터 어른과 닮았다였지만 결과는 번데기를 거친다입니다."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "living-environment",
+      "engine": "chromium",
+      "modes": [
+        "bean",
+        "web"
+      ],
+      "cases": 10,
+      "errors": [],
+      "issues": [],
+      "models": [
+        {
+          "key": "__livingModel",
+          "methods": [
+            "EVENTS",
+            "START",
+            "WEB",
+            "BEAN_DAYS",
+            "WEB_MONTHS",
+            "EVENT_MONTH",
+            "state",
+            "analyseBean",
+            "analyseWeb",
+            "analyse",
+            "simulateWeb",
+            "heightAt",
+            "beanProfile",
+            "render",
+            "runSeconds",
+            "setMode",
+            "set",
+            "setProgress",
+            "runToEnd",
+            "tick",
+            "finish"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "bean",
+          "results": [
+            {
+              "choice": "green",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "yellow",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "none",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        },
+        {
+          "mode": "web",
+          "results": [
+            {
+              "choice": "rabbit-up",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "rabbit-down",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "steady",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "rock-layers",
+      "engine": "chromium",
+      "modes": [
+        "initial"
+      ],
+      "cases": 4,
+      "errors": [],
+      "issues": [],
+      "models": [
+        {
+          "key": "__layerModel",
+          "methods": [
+            "GRAINS",
+            "MIXES",
+            "TANK",
+            "LAYER_H",
+            "MAX_LAYERS",
+            "sublayersFor",
+            "layers",
+            "setMix",
+            "setFossil",
+            "pour",
+            "reset"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "initial",
+          "results": [
+            {
+              "choice": "bottom",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "top",
+              "visible": true,
+              "text": "예상과 다른 결과입니다. 맨 아래층이 가장 먼저 쌓인 층입니다."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "minerals-rocks",
+      "engine": "chromium",
+      "modes": [
+        "mineral",
+        "rock"
+      ],
+      "cases": 22,
+      "errors": [],
+      "issues": [],
+      "models": [
+        {
+          "key": "__rockModel",
+          "methods": [
+            "MINERALS",
+            "ROCKS",
+            "K_CRYSTAL",
+            "N_CRYSTAL",
+            "FINE_MM",
+            "COARSE_MM",
+            "LOG_MIN",
+            "LOG_MAX",
+            "COOL_K",
+            "state",
+            "analyseMineral",
+            "analyseRock",
+            "analyse",
+            "daysFor",
+            "crystalFor",
+            "timeText",
+            "render",
+            "check",
+            "setMode",
+            "set"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "mineral",
+          "results": [
+            {
+              "choice": "a",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "b",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "none",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        },
+        {
+          "mode": "rock",
+          "results": [
+            {
+              "choice": "fine",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "medium",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "coarse",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "geologic-time",
+      "engine": "chromium",
+      "modes": [
+        "calendar",
+        "extinction",
+        "diversity"
+      ],
+      "cases": 25,
+      "errors": [],
+      "issues": [],
+      "models": [
+        {
+          "key": "__geoTimeModel",
+          "methods": [
+            "EVENTS",
+            "EXTINCTIONS",
+            "FORESTS",
+            "ERAS",
+            "PERIODS",
+            "state",
+            "analyse",
+            "render",
+            "dayOf",
+            "dateText",
+            "fmtAge",
+            "runSeconds",
+            "setMode",
+            "set",
+            "setProgress",
+            "runToEnd",
+            "tick",
+            "finish"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "calendar",
+          "results": [
+            {
+              "choice": "early",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "mid",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "late",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "end",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        },
+        {
+          "mode": "extinction",
+          "results": [
+            {
+              "choice": "low",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "mid",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "high",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            }
+          ]
+        },
+        {
+          "mode": "diversity",
+          "results": [
+            {
+              "choice": "most",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "half",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "gone",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "volcano-model",
+      "engine": "chromium",
+      "modes": [
+        "initial"
+      ],
+      "cases": 7,
+      "errors": [],
+      "issues": [],
+      "models": [
+        {
+          "key": "__volcanoModel",
+          "methods": [
+            "state",
+            "analyse",
+            "tick",
+            "render",
+            "acidMol",
+            "sodaMol",
+            "matchGrams",
+            "gasLitres",
+            "verdictFor",
+            "VINEGARS",
+            "ACID_PER_ML",
+            "SODA_PER_G",
+            "LITRE_PER_MOL",
+            "NEAR",
+            "setVin",
+            "setSoda",
+            "check",
+            "runToEnd"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "initial",
+          "results": [
+            {
+              "choice": "p1",
+              "visible": true,
+              "text": "예상은 소다가 남는다였지만 결과는 둘 다 딱 맞다입니다."
+            },
+            {
+              "choice": "p2",
+              "visible": true,
+              "text": "예상은 식초가 남는다였지만 결과는 둘 다 딱 맞다입니다."
+            },
+            {
+              "choice": "p3",
+              "visible": true,
+              "text": "예상이 맞았습니다 — 둘 다 딱 맞다."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "plate-tectonics",
+      "engine": "chromium",
+      "modes": [
+        "initial"
+      ],
+      "cases": 11,
+      "errors": [],
+      "issues": [],
+      "models": [
+        {
+          "key": "__plateModel",
+          "methods": [
+            "DEPTH_MAX",
+            "PX_PER_KM",
+            "SHALLOW",
+            "MIDDLE",
+            "KINDS",
+            "analyse",
+            "quakes",
+            "moved",
+            "render",
+            "check",
+            "setKind",
+            "setSpeed",
+            "setYears",
+            "runToEnd",
+            "getKind",
+            "speed",
+            "years"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "initial",
+          "results": [
+            {
+              "choice": "shallow",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "deep",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "none",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "earth-system",
+      "engine": "chromium",
+      "modes": [
+        "spheres",
+        "water",
+        "carbon"
+      ],
+      "cases": 24,
+      "errors": [],
+      "issues": [],
+      "models": [
+        {
+          "key": "__earthModel",
+          "methods": [
+            "SPHERES",
+            "PHENOMENA",
+            "RESERVOIRS",
+            "FLUX",
+            "EMITS",
+            "state",
+            "analyse",
+            "render",
+            "tauOf",
+            "carbonAt",
+            "fmtTime",
+            "fmtVol",
+            "runSeconds",
+            "setMode",
+            "set",
+            "setProgress",
+            "runToEnd",
+            "tick",
+            "finish"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "spheres",
+          "results": [
+            {
+              "choice": "geo-hydro",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "geo-atmo",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "hydro-atmo",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "bio",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "space",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        },
+        {
+          "mode": "water",
+          "results": [
+            {
+              "choice": "days",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "years",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "ages",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        },
+        {
+          "mode": "carbon",
+          "results": [
+            {
+              "choice": "down",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "same",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "up",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "weather-watch",
+      "engine": "chromium",
+      "modes": [
+        "initial"
+      ],
+      "cases": 7,
+      "errors": [],
+      "issues": [],
+      "models": [
+        {
+          "key": "__weatherModel",
+          "methods": [
+            "state",
+            "analyse",
+            "tick",
+            "render",
+            "landTemp",
+            "seaTemp",
+            "windAt",
+            "verdictFor",
+            "amp",
+            "tMax",
+            "tMin",
+            "SKIES",
+            "T_MIN_H",
+            "T_MAX_H",
+            "T_MEAN",
+            "AMP",
+            "CALM",
+            "setSky",
+            "setHour",
+            "check",
+            "runToEnd"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "initial",
+          "results": [
+            {
+              "choice": "p1",
+              "visible": true,
+              "text": "예상은 바다에서 육지로였지만 결과는 육지에서 바다로입니다."
+            },
+            {
+              "choice": "p2",
+              "visible": true,
+              "text": "예상이 맞았습니다 — 육지에서 바다로."
+            },
+            {
+              "choice": "p3",
+              "visible": true,
+              "text": "예상은 거의 안 분다였지만 결과는 육지에서 바다로입니다."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "weather-front",
+      "engine": "chromium",
+      "modes": [
+        "wind",
+        "front"
+      ],
+      "cases": 10,
+      "errors": [],
+      "issues": [],
+      "models": [
+        {
+          "key": "__weatherModel",
+          "methods": [
+            "RHO",
+            "CORIOLIS",
+            "DP_HPA",
+            "CROSS",
+            "MAP_SCALE",
+            "MAP_CX",
+            "MAP_CY",
+            "EXAG",
+            "PASS_H",
+            "FRONTS",
+            "state",
+            "analyseWind",
+            "analyseFront",
+            "analyse",
+            "tempAt",
+            "windVector",
+            "render",
+            "check",
+            "setMode",
+            "set"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "wind",
+          "results": [
+            {
+              "choice": "strong",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "medium",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "weak",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        },
+        {
+          "mode": "front",
+          "results": [
+            {
+              "choice": "up",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "same",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "down",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "land-sea",
+      "engine": "chromium",
+      "modes": [
+        "area",
+        "salt"
+      ],
+      "cases": 11,
+      "errors": [],
+      "issues": [],
+      "models": [
+        {
+          "key": "__landSeaModel",
+          "methods": [
+            "LAND",
+            "LAND_SHARE",
+            "WATERS",
+            "DOT_COUNTS",
+            "state",
+            "analyseArea",
+            "analyseSalt",
+            "analyse",
+            "dropDots",
+            "tallyArea",
+            "render",
+            "runSeconds",
+            "setMode",
+            "set",
+            "setSeed",
+            "setProgress",
+            "runToEnd",
+            "tick",
+            "finish"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "area",
+          "results": [
+            {
+              "choice": "sea-more",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "even",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "land-more",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        },
+        {
+          "mode": "salt",
+          "results": [
+            {
+              "choice": "none",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "some",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "lots",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "water-cycle",
+      "engine": "chromium",
+      "modes": [
+        "initial"
+      ],
+      "cases": 7,
+      "errors": [],
+      "issues": [],
+      "models": [
+        {
+          "key": "__cycleModel",
+          "methods": [
+            "TOTAL",
+            "INITIAL",
+            "DT",
+            "advanceSim",
+            "render",
+            "reservoirs",
+            "total",
+            "days",
+            "setSun",
+            "setTemp",
+            "reset"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "initial",
+          "results": [
+            {
+              "choice": "less",
+              "visible": true,
+              "text": "예상과 다른 결과입니다. 물의 총량은 변하지 않습니다."
+            },
+            {
+              "choice": "same",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "more",
+              "visible": true,
+              "text": "예상과 다른 결과입니다. 물의 총량은 변하지 않습니다."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "seawater",
+      "engine": "chromium",
+      "modes": [
+        "initial"
+      ],
+      "cases": 13,
+      "errors": [],
+      "issues": [],
+      "models": [
+        {
+          "key": "__seaModel",
+          "methods": [
+            "RHO0",
+            "T0",
+            "S0",
+            "ALPHA",
+            "BETA",
+            "MEAN_RHO",
+            "DEEP_T",
+            "THERMO_M",
+            "MAX_DEPTH",
+            "SALTS",
+            "PLACES",
+            "analyse",
+            "tempAt",
+            "render",
+            "check",
+            "setPlace",
+            "setTemp",
+            "setSalt",
+            "setWind",
+            "getPlace"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "initial",
+          "results": [
+            {
+              "choice": "heavier",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "same",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "lighter",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "night-sky",
+      "engine": "chromium",
+      "modes": [
+        "moon",
+        "stars"
+      ],
+      "cases": 8,
+      "errors": [],
+      "issues": [],
+      "models": [
+        {
+          "key": "__skyModel",
+          "methods": [
+            "DAYS",
+            "SEASONS",
+            "DIPPER",
+            "CASS",
+            "state",
+            "analyseMoon",
+            "analyseStars",
+            "analyse",
+            "elongation",
+            "moonHA",
+            "where",
+            "polar",
+            "side",
+            "render",
+            "runSeconds",
+            "setMode",
+            "set",
+            "setProgress",
+            "runToEnd",
+            "tick",
+            "finish"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "moon",
+          "results": [
+            {
+              "choice": "east",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "south",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "west",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "hidden",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        },
+        {
+          "mode": "stars",
+          "results": [
+            {
+              "choice": "up",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "right",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "left",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "down",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "seasons",
+      "engine": "chromium",
+      "modes": [
+        "path",
+        "orbit"
+      ],
+      "cases": 9,
+      "errors": [],
+      "issues": [],
+      "models": [
+        {
+          "key": "__seasonModel",
+          "methods": [
+            "SEASONS",
+            "TILTS",
+            "SPOTS",
+            "LAT",
+            "state",
+            "analysePath",
+            "analyseOrbit",
+            "analyse",
+            "sunAt",
+            "dayLength",
+            "noonAlt",
+            "render",
+            "runSeconds",
+            "setMode",
+            "set",
+            "setProgress",
+            "runToEnd",
+            "tick",
+            "finish"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "path",
+          "results": [
+            {
+              "choice": "high",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "mid",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "low",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        },
+        {
+          "mode": "orbit",
+          "results": [
+            {
+              "choice": "summer",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "winter",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "none",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "moon-phases",
+      "engine": "chromium",
+      "modes": [
+        "initial"
+      ],
+      "cases": 4,
+      "errors": [],
+      "issues": [],
+      "models": [
+        {
+          "key": "__moonModel",
+          "methods": [
+            "SYNODIC",
+            "EARTH",
+            "ORBIT_R",
+            "MOON_R",
+            "PHASE_C",
+            "PHASE_R",
+            "elongationDeg",
+            "litFraction",
+            "phaseName",
+            "litPath",
+            "sunlitHalfPath",
+            "setDay",
+            "day"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "initial",
+          "results": [
+            {
+              "choice": "right",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "left",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "full",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "apparent-motion",
+      "engine": "chromium",
+      "modes": [
+        "initial"
+      ],
+      "cases": 7,
+      "errors": [],
+      "issues": [],
+      "models": [
+        {
+          "key": "__skyModel",
+          "methods": [
+            "POLARIS",
+            "DIURNAL_PER_HOUR",
+            "ANNUAL_PER_DAY",
+            "MOON_SIDEREAL_PER_DAY",
+            "MOON_SYNODIC_PER_DAY",
+            "MOONRISE_DELAY_MIN",
+            "MOON_R",
+            "MOON_BASE_A",
+            "polar",
+            "starRotation",
+            "clockLabel",
+            "setHours",
+            "setHoursViaSlider",
+            "animHours",
+            "stepFrame",
+            "setDays",
+            "setMoon",
+            "isPlaying",
+            "render"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "initial",
+          "results": [
+            {
+              "choice": "ccw",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "cw",
+              "visible": true,
+              "text": "예상과 다른 결과입니다. 북쪽 하늘에서는 시계 반대 방향으로 돕니다."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "stars-universe",
+      "engine": "chromium",
+      "modes": [
+        "bright",
+        "expand"
+      ],
+      "cases": 18,
+      "errors": [],
+      "issues": [],
+      "models": [
+        {
+          "key": "__starsModel",
+          "methods": [
+            "STARS",
+            "GALAXIES",
+            "BASE_PC",
+            "MULTIPLES",
+            "STRETCH",
+            "state",
+            "analyseBright",
+            "analyseExpand",
+            "analyse",
+            "apparent",
+            "brightAt",
+            "stretchAt",
+            "render",
+            "runSeconds",
+            "setMode",
+            "set",
+            "setProgress",
+            "runToEnd",
+            "tick",
+            "finish"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "bright",
+          "results": [
+            {
+              "choice": "square",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "no",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        },
+        {
+          "mode": "expand",
+          "results": [
+            {
+              "choice": "faster",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "no",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "star-elements",
+      "engine": "chromium",
+      "modes": [
+        "fusion",
+        "mass",
+        "origin"
+      ],
+      "cases": 15,
+      "errors": [],
+      "issues": [
+        {
+          "mode": "fusion",
+          "condition": {
+            "kind": "initial"
+          },
+          "issues": [
+            {
+              "kind": "unanswerable-prediction",
+              "verdict": "lots",
+              "choices": [
+                {
+                  "key": "yes",
+                  "text": "에너지 방출"
+                },
+                {
+                  "key": "no",
+                  "text": "에너지가 전혀 나오지 않음"
+                }
+              ]
+            }
+          ],
+          "choices": [
+            {
+              "key": "yes",
+              "text": "에너지 방출"
+            },
+            {
+              "key": "no",
+              "text": "에너지가 전혀 나오지 않음"
+            }
+          ],
+          "values": [
+            {
+              "kind": "fusion",
+              "ratio": 100,
+              "massPct": 0.71658615136876,
+              "jPerKg": 644137500000000,
+              "coalKg": 21471250,
+              "verdict": "lots"
+            }
+          ]
+        },
+        {
+          "mode": "fusion",
+          "condition": {
+            "kind": "button",
+            "attrs": [
+              [
+                "data-value",
+                "h"
+              ]
+            ],
+            "group": "step"
+          },
+          "issues": [
+            {
+              "kind": "unanswerable-prediction",
+              "verdict": "lots",
+              "choices": [
+                {
+                  "key": "yes",
+                  "text": "에너지 방출"
+                },
+                {
+                  "key": "no",
+                  "text": "에너지가 전혀 나오지 않음"
+                }
+              ]
+            }
+          ],
+          "choices": [
+            {
+              "key": "yes",
+              "text": "에너지 방출"
+            },
+            {
+              "key": "no",
+              "text": "에너지가 전혀 나오지 않음"
+            }
+          ],
+          "values": [
+            {
+              "kind": "fusion",
+              "ratio": 100,
+              "massPct": 0.71658615136876,
+              "jPerKg": 644137500000000,
+              "coalKg": 21471250,
+              "verdict": "lots"
+            }
+          ]
+        },
+        {
+          "mode": "fusion",
+          "condition": {
+            "kind": "button",
+            "attrs": [
+              [
+                "data-value",
+                "he"
+              ]
+            ],
+            "group": "step"
+          },
+          "issues": [
+            {
+              "kind": "unanswerable-prediction",
+              "verdict": "tenth",
+              "choices": [
+                {
+                  "key": "yes",
+                  "text": "에너지 방출"
+                },
+                {
+                  "key": "no",
+                  "text": "에너지가 전혀 나오지 않음"
+                }
+              ]
+            }
+          ],
+          "choices": [
+            {
+              "key": "yes",
+              "text": "에너지 방출"
+            },
+            {
+              "key": "no",
+              "text": "에너지가 전혀 나오지 않음"
+            }
+          ],
+          "values": [
+            {
+              "kind": "fusion",
+              "ratio": 9.078651685393256,
+              "massPct": 0.06505636070853461,
+              "jPerKg": 58478999999999.984,
+              "coalKg": 1949299.9999999995,
+              "verdict": "tenth"
+            }
+          ]
+        }
+      ],
+      "models": [
+        {
+          "key": "__starModel",
+          "methods": [
+            "BINDING",
+            "STEPS",
+            "STARS",
+            "ORIGINS",
+            "UNIVERSE",
+            "state",
+            "analyse",
+            "render",
+            "beOf",
+            "lifeYears",
+            "fmtShare",
+            "runSeconds",
+            "setMode",
+            "set",
+            "setProgress",
+            "runToEnd",
+            "tick",
+            "finish"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "fusion",
+          "results": [
+            {
+              "choice": "yes",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "no",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        },
+        {
+          "mode": "mass",
+          "results": [
+            {
+              "choice": "he",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "co",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "sn",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        },
+        {
+          "mode": "origin",
+          "results": [
+            {
+              "choice": "bigbang",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "star",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "merger",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "cell-structure",
+      "engine": "chromium",
+      "modes": [
+        "initial"
+      ],
+      "cases": 1,
+      "errors": [],
+      "issues": [],
+      "models": [],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "initial",
+          "results": []
+        }
+      ]
+    },
+    {
+      "slug": "neutralization-common",
+      "engine": "chromium",
+      "modes": [
+        "initial"
+      ],
+      "cases": 1,
+      "errors": [],
+      "issues": [],
+      "models": [],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "initial",
+          "results": []
+        }
+      ]
+    }
+  ]
+}

@@ -65,7 +65,7 @@ function bilingual(text) {
 }
 const reading=node("article","edition-reading");
 reading.append(node("h2","",data.case));
-data.body.forEach(text=>{const p=node("p");p.append(bilingual(text));reading.append(p);});
+data.body.forEach((text,index)=>{if(data.sections?.[index])reading.append(node("h3","",data.sections[index]));const p=node("p");p.append(bilingual(text));reading.append(p);});
 const glossary=node("dl","edition-glossary");
 data.terms.forEach(([ko,en,definition])=>{
  const row=node("div"); const dt=node("dt","",ko);dt.append(node("span","",en));row.append(dt,node("dd","",definition));glossary.append(row);
@@ -82,6 +82,7 @@ const lab=node("div","edition-lab");lab.id="editionLab";
  const existing=document.getElementById(name);
  if(existing?.childNodes.length)lab.append(existing);
 });
+if(id==="g01")buildBinaryLab(lab);
 pages.lab.append(lab);
 const labNote=node("p","edition-note","화면 속 기기와 기록은 실습 모형입니다. 실습 조작 상태는 다시 열면 초기화되고, 답 확인 기록은 이 브라우저에 저장됩니다.");
 pages.lab.append(labNote);
@@ -173,7 +174,8 @@ function update(){
  });
  root.querySelectorAll(".edition-question").forEach((form,i)=>form.dataset.solved=String(progress.answers[i].solved));
  const first=progress.answers.slice(3).filter(a=>a.firstCorrect).length;
- result.textContent="실습 확인 "+(groups[0]?"완료":"미완료")+" · 적용 "+(groups[1]?"완료":"미완료")+" · 확인 문제 "+progress.answers.slice(3).filter(a=>a.solved).length+"/2. 확인 문제 첫 답 정답 "+first+"/2.";
+ const attempted=progress.answers.slice(3).filter(a=>a.attempts>0).length;
+ result.textContent="실습 확인 "+(groups[0]?"완료":"미완료")+" · 적용 "+(groups[1]?"완료":"미완료")+" · 확인 문제 "+progress.answers.slice(3).filter(a=>a.solved).length+"/2. 확인 문제 첫 답 정답 "+first+"/"+attempted+".";
 }
 function show(name){
  const active=pages[name]?name:"read";
@@ -185,6 +187,39 @@ function show(name){
  if(active==="lab")requestAnimationFrame(()=>window.dispatchEvent(new Event("resize")));
  window.scrollTo(0,0);
 }
+
+function buildBinaryLab(mount){
+ const old=document.querySelector(".lesson-shell");
+ old.append(...mount.childNodes);
+ const box=node("section","edition-binary");
+ const label=node("label","","자리 수 ");
+ const select=node("select");select.id="binaryLength";select.setAttribute("aria-label","이진 조합 자리 수");
+ [1,2,3].forEach(n=>{const option=node("option","",n+"자리");option.value=n;select.append(option);});
+ label.append(select);
+ const cells=node("div","binary-cells"),output=node("output","binary-code"),record=node("button","","현재 조합 기록"),reset=node("button","","조합 기록 지우기"),list=node("ul","binary-records"),status=node("p","edition-note");
+ record.type=reset.type="button";record.id="binaryRecord";reset.id="binaryReset";output.id="binaryOutput";list.id="binaryRecords";
+ output.setAttribute("aria-live","polite");status.setAttribute("aria-live","polite");
+ let bits=[0],history={1:new Set(),2:new Set(),3:new Set()};
+ function draw(){
+  cells.replaceChildren();
+  bits.forEach((value,i)=>{
+   const button=node("button","",String(value));button.type="button";button.dataset.binaryBit=i;
+   button.setAttribute("aria-label",(i+1)+"번째 자리: "+value);button.setAttribute("aria-pressed",String(value===1));
+   button.addEventListener("click",()=>{bits[i]=1-bits[i];draw();cells.children[i].focus({preventScroll:true});});
+   cells.append(button);
+  });
+  output.textContent=bits.join("");
+  list.replaceChildren();
+  [...history[bits.length]].sort().forEach(code=>list.append(node("li","",code)));
+  status.textContent=bits.length+"자리에서 서로 다른 조합 "+history[bits.length].size+"개를 기록했습니다.";
+ }
+ select.addEventListener("change",()=>{bits=Array(Number(select.value)).fill(0);draw();});
+ record.addEventListener("click",()=>{const code=bits.join("");const duplicate=history[bits.length].has(code);history[bits.length].add(code);draw();if(duplicate)status.textContent+=" 방금 조합은 이미 기록되어 있습니다.";});
+ reset.addEventListener("click",()=>{history={1:new Set(),2:new Set(),3:new Set()};draw();});
+ box.append(label,node("p","","각 자리의 단추를 누르면 0과 1이 바뀝니다. 같은 조합을 두 번 기록해도 종류는 늘어나지 않습니다."),cells,output,record,list,status,reset);
+ mount.append(box);draw();
+}
+
 window.addEventListener("hashchange",()=>show(location.hash.slice(1)));
 update();show(location.hash.slice(1));
 })();

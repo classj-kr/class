@@ -1,0 +1,84 @@
+{
+  "slug": "gravity-motion",
+  "engine": "chromium",
+  "modes": [
+    "drop",
+    "impact"
+  ],
+  "cases": 18,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__gravityModel",
+      "methods": [
+        "HEIGHTS",
+        "SPEEDS",
+        "AIMS",
+        "LAUNCH",
+        "DROPS",
+        "FLOORS",
+        "V_CIRC",
+        "V_ESC",
+        "EGG_M",
+        "BREAK_N",
+        "state",
+        "analyse",
+        "render",
+        "dropCalc",
+        "orbitOf",
+        "impactCalc",
+        "runSeconds",
+        "setMode",
+        "set",
+        "setProgress",
+        "runToEnd",
+        "tick",
+        "finish"
+      ]
+    }
+  ],
+  "paint": [],
+  "grades": [
+    {
+      "mode": "drop",
+      "results": [
+        {
+          "choice": "drop-first",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "throw-first",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "same",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        }
+      ]
+    },
+    {
+      "mode": "impact",
+      "results": [
+        {
+          "choice": "low",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "mid",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "high",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        }
+      ]
+    }
+  ]
+}

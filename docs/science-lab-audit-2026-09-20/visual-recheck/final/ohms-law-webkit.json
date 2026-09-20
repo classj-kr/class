@@ -1,0 +1,48 @@
+{
+  "slug": "ohms-law",
+  "engine": "webkit",
+  "modes": [
+    "initial"
+  ],
+  "cases": 12,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__ohmModel",
+      "methods": [
+        "analyse",
+        "GRAPH",
+        "V_MAX",
+        "gx",
+        "gy",
+        "niceMax",
+        "set",
+        "state"
+      ]
+    }
+  ],
+  "paint": [],
+  "grades": [
+    {
+      "mode": "initial",
+      "results": [
+        {
+          "choice": "bigger",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        },
+        {
+          "choice": "smaller",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "same",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        }
+      ]
+    }
+  ]
+}

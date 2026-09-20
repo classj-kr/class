@@ -1,0 +1,62 @@
+{
+  "slug": "heat-transfer",
+  "engine": "webkit",
+  "modes": [
+    "initial"
+  ],
+  "cases": 5,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__heatModel",
+      "methods": [
+        "MATERIALS",
+        "N",
+        "DX_MM",
+        "DT_SIM",
+        "SPEED",
+        "T_AMBIENT",
+        "T_FLAME",
+        "BEAD_MELT",
+        "BEAD_CM",
+        "PROBE_CM",
+        "REFERENCE",
+        "setMaterial",
+        "startHeating",
+        "stopHeating",
+        "advanceSim",
+        "profile",
+        "tempAtCm",
+        "beadsFallen",
+        "simTime",
+        "stability",
+        "reset",
+        "render"
+      ]
+    }
+  ],
+  "paint": [],
+  "grades": [
+    {
+      "mode": "initial",
+      "results": [
+        {
+          "choice": "faster",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "slower",
+          "visible": false,
+          "text": ""
+        },
+        {
+          "choice": "same",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        }
+      ]
+    }
+  ]
+}
