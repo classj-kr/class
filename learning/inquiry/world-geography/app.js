@@ -8,7 +8,7 @@
   const MAP_IMAGE = "../age-of-exploration/public/assets/maps/natural-earth-v58/overview.jpg?v=58";
   const VISIBLE_WORLD_BOUNDS = L.latLngBounds([[-77, -180], [84, 180]]);
   const COPY_OVERLAP = 0.05; // 사본 이음새가 실금으로 보이지 않도록 살짝 겹친다.
-  const PROGRESS_KEY = "joyclass-world-geography-progress-v2";
+  const PROGRESS_KEY = "classj-world-geography-progress-v2";
   const SESSION_SIZE = 6;
   const themeOrder = Object.keys(themes);
 

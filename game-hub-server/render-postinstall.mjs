@@ -76,7 +76,7 @@ function runNpm(label, args) {
 function arithmeticCacheDirectory(inputHash) {
   const cacheHome = String(process.env.XDG_CACHE_HOME || "").trim();
   return cacheHome
-    ? path.join(cacheHome, "joyclass", "arithmetics", inputHash, "dist")
+    ? path.join(cacheHome, "classj", "arithmetics", inputHash, "dist")
     : "";
 }
 

@@ -4,7 +4,7 @@
     const course = window.SENTENCE_COURSE;
     if (!course || !Array.isArray(course.lessons)) return;
 
-    const STORAGE_KEY = "joyclass-sentence-building-progress-v2";
+    const STORAGE_KEY = "classj-sentence-building-progress-v2";
     const elements = {
         courseScreen: document.getElementById("courseScreen"),
         lessonScreen: document.getElementById("lessonScreen"),

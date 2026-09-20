@@ -121,7 +121,7 @@ async function overpass(name, query) {
   if (!fs.existsSync(file)) {
     fs.mkdirSync(CACHE, { recursive: true });
     const body = new URLSearchParams({ data: `[out:json][timeout:270];${query};out geom;` });
-    const response = await fetch(OVERPASS, { method: "POST", body, headers: { "User-Agent": "joyclass-build/1.0" } });
+    const response = await fetch(OVERPASS, { method: "POST", body, headers: { "User-Agent": "classj-build/1.0" } });
     if (!response.ok) throw new Error(`${name}: ${response.status}`);
     fs.writeFileSync(file, await response.text());
   }

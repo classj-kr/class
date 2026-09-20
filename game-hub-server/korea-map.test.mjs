@@ -119,7 +119,7 @@ assert.match(app, /shuffle\(pool\)\.map\(shuffleQuestionOptions\)/);
 assert.doesNotMatch(app, /shuffle\(pool\)\.slice\s*\(|questions\.slice\s*\(\s*0\s*,\s*\d+/);
 assert.match(app, /answer: shuffled\.findIndex\(\(option\) => option\.correct\)/);
 // 학생 기록이 이어지도록 지리 앱과 같은 저장 열쇠를 쓴다.
-assert.match(app, /const PROGRESS_KEY = "joyclass-korea-geography-progress-v2"/);
+assert.match(app, /const PROGRESS_KEY = "classj-korea-geography-progress-v2"/);
 
 assert.match(styles, /@media \(max-width: 1050px\)[\s\S]*?\.study-layout \{ display: flex; flex-direction: column; \}/);
 assert.match(styles, /\.principle-button \{[^}]*min-height:\s*44px/s);

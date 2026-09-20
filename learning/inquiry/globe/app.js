@@ -8,7 +8,7 @@ const FLAG_VERSION = 2;
 const DATA_VERSION = "20260919-14";
 const HOME = { center: [127.5, 30], lat: 30 };
 // 켜고 끄는 항목이 늘면 판을 올린다(옛 저장값에는 새 항목이 없어 꺼진 채로 보이므로).
-const SETTINGS_KEY = "joyclass-globe-layers-v3";
+const SETTINGS_KEY = "classj-globe-layers-v3";
 
 // 바탕 그림은 1픽셀이 약 2.5km. 적도에서 5단 조각이 화면 1픽셀과 맞고, 그보다 조금만 더 키운다.
 const MAX_EQUATOR_ZOOM = 5.25;

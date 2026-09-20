@@ -32,7 +32,7 @@ assert.match(css, /\.rubric-list/);
 assert.match(css, /\.multi-guide/);
 assert.match(css, /@media \(max-width: 480px\)/);
 
-assert.match(app, /joyclass-sentence-building-progress-v2/);
+assert.match(app, /classj-sentence-building-progress-v2/);
 assert.match(app, /selectedChoices/);
 assert.match(app, /task\.answers/);
 assert.match(app, /task\.shuffleOptions === false/);

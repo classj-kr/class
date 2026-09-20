@@ -23,7 +23,7 @@
   const DEM_URL = "dem/{z}/{x}/{y}.webp?v=20260919-1";
   const DETAIL_BOUNDS = L.latLngBounds([[31.96, 123.76], [44.94, 133.58]]);
   const SPARSE_TILES = buildTileSets(window.RELIEF_TILES || {});
-  const PROGRESS_KEY = "joyclass-korea-geography-progress-v2";
+  const PROGRESS_KEY = "classj-korea-geography-progress-v2";
   const KIND_LABELS = {
     range: "산맥", plateau: "고원", basin: "분지", plain: "평야", riverform: "하천 지형", coast: "해안 지형",
     volcano: "화산 지형", karst: "카르스트 지형", peak: "산", river: "강", sea: "바다"
