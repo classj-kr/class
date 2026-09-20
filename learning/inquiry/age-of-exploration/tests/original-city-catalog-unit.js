@@ -9,10 +9,9 @@ assert.equal(new Set(cities.map((c) => c.id)).size, cities.length, '도시 ID �
 assert.equal(cities.filter((c) => c.canEnterFromSea === true).length, 134, '원작 지도 기준 바다 입항 가능 도시 수 불일치');
 // 멕시코(24번)는 테노치티틀란 칸과 겹쳐서 숨겼다. 칸을 지우면 뒤 도시 번호가 밀리므로 목록에는 남겨 둔다.
 const retired = cities.filter((c) => c.retired);
-assert.equal(retired.length, 1, '숨긴 도시는 멕시코 한 곳뿐이어야 함');
-assert.equal(retired[0].name, '멕시코');
+assert.deepEqual(retired.map(c=>c.id).sort(),['original_city_024','original_city_123','buenos_aires','original_city_000'].sort(),'중복 도시와 1520년 이후 도시 제외');
 const live = cities.filter((c) => !c.retired);
-assert.equal(live.length, 228, '게임에 나오는 도시는 228곳');
+assert.equal(live.length, 225, '시대 검토를 통과한 기존 도시 225곳');
 for (const city of live) {
   assert.ok(Number.isFinite(city.cellX) && Number.isFinite(city.cellY), `${city.name} 원작 좌표 누락`);
   assert.ok(city.displayOnMap, `${city.name} 지도 표시 누락`);
