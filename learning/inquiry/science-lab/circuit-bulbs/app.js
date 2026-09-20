@@ -32,6 +32,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let magnetPower = true;
     let comparePermanent = false;
     let prediction = null;
+    const predictionLegend = document.getElementById('predictionLegend');
+    function resetPrediction(){prediction=null;predictionButtons.forEach(b=>{b.classList.remove('selected');b.setAttribute('aria-pressed','false');});}
 
     function circuitState() {
         const batteries = Number(circuitBatteryRange.value);
@@ -67,37 +69,29 @@ document.addEventListener('DOMContentLoaded', () => {
             `<rect class="bulb-base" x="${x - 8}" y="${y + 17}" width="16" height="8" rx="2"/>`;
     };
 
-    const batterySVG = (x, y, count = 1, direction = 'forward') => {
-        let out = '';
-        for (let index = 0; index < count; index += 1) {
-            const bx = x + index * 34;
-            out += `<rect class="battery-body" x="${bx - 13}" y="${y - 12}" width="26" height="24" rx="4"/>` +
-                `<rect class="battery-cap" x="${bx - 3}" y="${y - 17}" width="6" height="5" rx="1"/>` +
-                `<text class="battery-sign" x="${bx}" y="${y + 4}" text-anchor="middle">${direction === 'forward' ? '+' : '−'}</text>`;
+    // A horizontal series pack. Each cell's negative terminal joins the next positive terminal.
+    const batterySVG = (cx, y, count = 1, direction = 'forward') => {
+        const width = count * 46 + (count - 1) * 14, start = cx - width / 2;
+        let svg = '';
+        for (let i = 0; i < count; i += 1) {
+            const x = start + i * 60, positiveLeft = direction === 'forward';
+            if (i) svg += `<path class="wire battery-jumper" d="M${x-14},${y} H${x-5}"/>`;
+            svg += `<g class="battery-cell" data-positive="${positiveLeft?'left':'right'}"><rect class="cell-shell" x="${x}" y="${y-15}" width="46" height="30" rx="5"/><rect class="cell-positive-end" x="${positiveLeft?x:x+31}" y="${y-15}" width="15" height="30" rx="4"/><path class="cell-terminal" d="M${x-5},${y} H${x} M${x+46},${y} H${x+51}"/><text class="cell-sign" x="${x+10}" y="${y+5}" text-anchor="middle">${positiveLeft?'+':'−'}</text><text class="cell-sign" x="${x+36}" y="${y+5}" text-anchor="middle">${positiveLeft?'−':'+'}</text></g>`;
         }
-        return out;
+        return {svg,left:start-5,right:start+width+5};
     };
 
     function renderCircuit() {
-        const state = circuitState();
-        const left = 74, right = 390, top = 72, bottom = 226;
-        const switchLeft = 175, switchRight = 225;
-        const fullLoop = `M${left},138 L${left},${top} L${right},${top} L${right},${bottom} L${left},${bottom} L${left},162`;
-        let out = `<path class="wire${state.closed ? '' : ' dead'}" d="${fullLoop}"/>`;
-        if (state.closed) {
-            out += `<path class="current" d="${fullLoop}" style="animation-duration:${state.batteries === 2 ? '.58s' : '1s'}"/>`;
-            out += `<line class="switch-blade closed" x1="${switchLeft}" y1="${bottom}" x2="${switchRight}" y2="${bottom}"/>`;
-        } else {
-            out += `<rect class="stage-mask" x="${switchLeft - 6}" y="${bottom - 9}" width="${switchRight - switchLeft + 12}" height="18"/>`;
-            out += `<circle class="switch-contact" cx="${switchLeft}" cy="${bottom}" r="4"/>`;
-            out += `<circle class="switch-contact" cx="${switchRight}" cy="${bottom}" r="4"/>`;
-            out += `<line class="switch-blade" x1="${switchLeft}" y1="${bottom - 3}" x2="${switchRight - 7}" y2="${bottom - 28}"/>`;
-        }
-        out += batterySVG(left, 150, state.batteries);
-        out += `<text class="battery-label" x="${left + (state.batteries - 1) * 17}" y="190" text-anchor="middle">전지 ${state.batteries}개 직렬연결</text>`;
-        out += bulbSVG(285, top, state.lit, state.brightness);
-        out += `<text class="stage-label" x="285" y="120" text-anchor="middle">${state.lit ? state.comparison : '불이 켜지지 않음'}</text>`;
-        out += `<text class="stage-label" x="230" y="266" text-anchor="middle">${state.closed ? '끊어진 곳 없이 이어진 회로' : '스위치가 열려 끊어진 회로'}</text>`;
+        const state = circuitState(), pack = batterySVG(230,210,state.batteries);
+        circuitGroup.ownerSVGElement.setAttribute('viewBox','0 0 460 300');
+        const path = `M${pack.left},210 H64 V64 H212 M248,64 H396 V210 H354 M316,210 H${pack.right}`;
+        let out = `<path class="wire${state.closed?'':' dead'}" d="${path}"/>`;
+        if(state.closed) out += `<path class="current" d="${path}"/><path class="switch-blade closed" d="M316,210 H354"/>`;
+        else out += '<path class="switch-blade" d="M316,210 L348,184"/>';
+        out += '<circle class="switch-contact" cx="316" cy="210" r="3"/><circle class="switch-contact" cx="354" cy="210" r="3"/>';
+        out += pack.svg + bulbSVG(230,64,state.lit,state.brightness);
+        out += '<path class="bulb-leads" d="M212,64 H221 L223,67 M237,61 L239,64 H248"/>';
+        out += `<text class="stage-label" x="230" y="116" text-anchor="middle">${state.lit?state.comparison:'꺼짐'}</text><text class="stage-label" x="335" y="251" text-anchor="middle">${state.closed?'스위치 닫힘':'스위치 열림'}</text><text class="battery-label" x="230" y="280" text-anchor="middle">전지 ${state.batteries}개 · ${state.batteries===2?'같은 방향 직렬연결':'비교 기준'}</text>`;
         circuitGroup.innerHTML = out;
     }
 
@@ -107,57 +101,45 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function renderMagnet() {
-        const state = magnetState();
-        const coreX = 170, coreY = comparePermanent ? 92 : 132, coreW = 155, coreH = 26;
-        let out = batterySVG(55, 236, state.batteries, state.direction);
-        out += `<text class="battery-label" x="${55 + (state.batteries - 1) * 17}" y="272" text-anchor="middle">${state.direction === 'forward' ? '＋ → −' : '− → ＋'}</text>`;
-        const lead = `M55,219 L55,${coreY} L${coreX - 18},${coreY}`;
-        const returnX = 55 + (state.batteries - 1) * 34;
-        const ret = `M${returnX},248 L${returnX},286 L${coreX + coreW + 18},286 L${coreX + coreW + 18},${coreY + 18}`;
-        out += `<path class="wire${state.power ? '' : ' dead'}" d="${lead}"/><path class="wire${state.power ? '' : ' dead'}" d="${ret}"/>`;
-        if (state.power) {
-            const duration = (1 / state.batteries).toFixed(2);
-            out += `<path class="current" d="${lead}" style="animation-duration:${duration}s"/>`;
-            out += `<path class="current" d="${ret}" style="animation-duration:${duration}s"/>`;
+        const state = magnetState(), pack = batterySVG(230,242,state.batteries,state.direction);
+        circuitGroup.ownerSVGElement.setAttribute('viewBox',comparePermanent?'0 0 460 410':'0 0 460 300');
+        const turns=Math.round(state.turns/16),start=154,pitch=144/turns,end=298;
+        const leads=`M${pack.left},242 H58 V124 H${start} M${end},124 H310 V150 H418 V242 H354 M316,242 H${pack.right}`;
+        let out=`<path class="wire${state.power?'':' dead'}" d="${leads}"/>`;
+        if(state.power)out+=`<path class="current" style="animation-direction:${state.direction==='forward'?'normal':'reverse'}" d="${leads}"/>`;
+        out+=state.power?'<path class="switch-blade closed" d="M316,242 H354"/>':'<path class="switch-blade" d="M316,242 L348,218"/>';
+        out+='<circle class="switch-contact" cx="316" cy="242" r="3"/><circle class="switch-contact" cx="354" cy="242" r="3"/>';
+        let back='',front='';
+        for(let i=0;i<turns;i++){const x=start+i*pitch,top=x+pitch/2,next=x+pitch;
+            back+=`<path class="coil-back" d="M${x},124 C${x-8},124 ${x-8},76 ${top},76"/>`;
+            front+=`<path class="coil-front" d="M${top},76 C${next+8},76 ${next+8},124 ${next},124"/>`;
         }
-        out += `<rect class="core${state.power ? '' : ' off'}" x="${coreX}" y="${coreY - coreH / 2}" width="${coreW}" height="${coreH}" rx="5"/>`;
-        const loops = Math.round(state.turns / 16);
-        for (let index = 0; index < loops; index += 1) {
-            const x = coreX + 8 + (index * (coreW - 16)) / Math.max(1, loops - 1);
-            out += `<path class="coil${state.power ? '' : ' off'}" d="M${x.toFixed(1)},${coreY - coreH / 2 - 7} Q${(x + 7).toFixed(1)},${coreY} ${x.toFixed(1)},${coreY + coreH / 2 + 7}"/>`;
+        out+=back+'<rect class="iron-head" x="136" y="82" width="9" height="36" rx="2"/><path class="iron-core" d="M145,91 H305 L322,100 L305,109 H145 Z"/>'+front;
+        out+=poleLabel(116,100,state.leftPole,state.power)+poleLabel(344,60,state.rightPole,state.power);
+        out+='<text class="stage-label" x="230" y="32" text-anchor="middle">철심에 에나멜선을 감은 전자석</text>';
+        out+=`<text class="stage-label" x="230" y="59" text-anchor="middle">코일 ${state.turns}번 · 감은 모습은 축약</text>`;
+        const number=Math.min(12,Math.round(state.batteries*state.turns/50));
+        for(let i=0;i<number;i++){const x=state.power?320+i*7:337+(i%4)*12,y=state.power?98+(i%2)*2:166+Math.floor(i/4)*11;out+=`<rect class="apparatus-clip ${state.power?'attracted':'fallen'}" x="${x}" y="${y}" width="8" height="5" rx="2"/>`;}
+        out+=`<text class="stage-label" x="371" y="209" text-anchor="middle">${state.power?'붙은 클립 '+state.clips+'개':'클립이 떨어짐'}</text>`;
+        out+=pack.svg+`<text class="battery-label" x="230" y="280" text-anchor="middle">전지 ${state.batteries}개 · ${state.power?'전원 켜짐':'전원 꺼짐'}</text>`;
+        if(comparePermanent){out+='<text class="stage-label" x="230" y="321" text-anchor="middle">영구자석 · 전원 없이도 자성 유지</text><rect class="bar-north" x="150" y="344" width="80" height="28" rx="3"/><rect class="bar-south" x="230" y="344" width="80" height="28" rx="3"/><text class="bar-pole" x="166" y="364">N</text><text class="bar-pole" x="285" y="364">S</text>';
+            for(let i=0;i<6;i++)out+=`<rect class="apparatus-clip permanent-clip" x="${321+(i%3)*12}" y="${349+Math.floor(i/3)*11}" width="8" height="5" rx="2"/>`;
+            out+='<text class="stage-label" x="230" y="395" text-anchor="middle">세기·클립 수는 비교용 모형</text>';
         }
-        out += poleLabel(coreX - 22, coreY, state.leftPole, state.power);
-        out += poleLabel(coreX + coreW + 22, coreY, state.rightPole, state.power);
-        out += `<text class="stage-label" x="${coreX + coreW / 2}" y="${coreY - 35}" text-anchor="middle">전자석 · 코일 ${state.turns}번</text>`;
-        for (let index = 0; index < state.clips; index += 1) {
-            const x = coreX + coreW + 45 + (index % 4) * 12;
-            const y = coreY - 14 + Math.floor(index / 4) * 12;
-            out += `<rect class="clip" x="${x}" y="${y}" width="8" height="5" rx="2"/>`;
-        }
-        out += `<text class="stage-label" x="390" y="${coreY + 50}" text-anchor="middle">클립 ${state.clips}개</text>`;
-        if (comparePermanent) {
-            const y = 205;
-            out += `<text class="stage-label" x="${coreX + coreW / 2}" y="174" text-anchor="middle">영구자석 · 전원 없이도 자성 유지</text>`;
-            out += `<rect class="permanent north" x="${coreX}" y="${y - 13}" width="${coreW / 2}" height="26" rx="5"/>`;
-            out += `<rect class="permanent south" x="${coreX + coreW / 2}" y="${y - 13}" width="${coreW / 2}" height="26" rx="5"/>`;
-            out += poleLabel(coreX - 22, y, 'N', true) + poleLabel(coreX + coreW + 22, y, 'S', true);
-            for (let index = 0; index < 6; index += 1) {
-                const x = coreX + coreW + 45 + (index % 3) * 12;
-                const cy = y - 8 + Math.floor(index / 3) * 12;
-                out += `<rect class="clip" x="${x}" y="${cy}" width="8" height="5" rx="2"/>`;
-            }
-        }
-        circuitGroup.innerHTML = out;
+        circuitGroup.innerHTML=out;
     }
 
     function render() {
         if (mode === 'circuit') {
             const state = circuitState();
             renderCircuit();
+            predictionLegend.textContent=state.closed?'이어진 회로에서 전지를 1개에서 2개로 늘리면?':'전지 1개의 이어진 회로와 비교하면, 끊어진 회로의 밝기는?';
+            stageCaption.textContent=!state.closed?'회로가 끊어져 전지 수와 관계없이 전구가 꺼집니다.':state.batteries===1?'전지 1개가 비교 기준입니다. 예상한 뒤 전지를 2개로 바꾸어 확인하세요.':'전지 두 개를 같은 방향으로 직렬연결한 결과입니다. 한 개일 때보다 밝습니다.';
             stageBadge.textContent = `전지 ${state.batteries}개 · ${state.closed ? '이어짐' : '끊어짐'}`;
         } else {
             const state = magnetState();
             renderMagnet();
+            stageCaption.textContent=state.power?'전지에서 이어진 에나멜선이 철심을 감고 다시 전지로 이어집니다. 극은 전류 방향에 따라 바뀝니다.':'스위치가 열려 전류가 흐르지 않습니다. 전자석은 클립을 끌어당기지 못합니다.';
             stageBadge.textContent = `${state.power ? `${state.leftPole}극–${state.rightPole}극` : '전원 꺼짐'} · 전지 ${state.batteries}개`;
         }
     }
@@ -165,6 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function clearResult() {
         resultEmpty.hidden = false;
         resultContent.hidden = true;
+        predictionResult.textContent="";delete predictionResult.dataset.correct;
     }
 
     function check() {
@@ -192,10 +175,11 @@ document.addEventListener('DOMContentLoaded', () => {
         resultLabelB.textContent = '전구 밝기';
         resultA.textContent = state.closed ? '이어짐' : '끊어짐';
         resultB.textContent = state.comparison;
-        const actual = state.batteries === 2 && state.closed ? 'brighter' : state.batteries === 1 && state.closed ? 'same' : 'dimmer';
-        predictionResult.textContent = !prediction
-            ? '다음에는 결과를 먼저 예상해 보세요.'
-            : prediction === actual ? '예상이 맞았습니다.' : '예상과 다른 결과입니다.';
+        const baseline = state.closed && state.batteries === 1;
+        const actual = state.closed ? 'brighter' : 'dimmer';
+        delete predictionResult.dataset.correct;
+        predictionResult.textContent=baseline?'전지 1개는 비교 기준입니다. 2개로 바꾼 뒤 예상을 확인하세요.':!prediction?'결과를 먼저 예상한 뒤 확인해 보세요.':prediction===actual?'예상이 맞았습니다.':'예상과 다른 결과입니다.';
+        if(!baseline&&prediction)predictionResult.dataset.correct=String(prediction===actual);
         if (!state.closed) {
             explanation.textContent = '전선이 한 곳이라도 끊어지면 전류가 한 바퀴 돌아 전지로 되돌아갈 수 없어 전구가 켜지지 않습니다.';
             stageCaption.textContent = '스위치가 열려 회로가 끊어졌으므로 전구가 꺼졌습니다.';
@@ -210,6 +194,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     modeButtons.forEach(button => button.addEventListener('click', () => {
         mode = button.dataset.mode;
+        resetPrediction();
         modeButtons.forEach(item => item.classList.toggle('selected', item === button));
         circuitControls.hidden = mode !== 'circuit';
         magnetControls.hidden = mode !== 'magnet';
@@ -220,6 +205,7 @@ document.addEventListener('DOMContentLoaded', () => {
         render();
     }));
     circuitButtons.forEach(button => button.addEventListener('click', () => {
+        if(circuitClosed !== (button.dataset.circuit === 'closed'))resetPrediction();
         circuitClosed = button.dataset.circuit === 'closed';
         circuitButtons.forEach(item => item.classList.toggle('selected', item === button));
         render(); clearResult();
@@ -247,12 +233,13 @@ document.addEventListener('DOMContentLoaded', () => {
     compareBtn.addEventListener('click', () => {
         comparePermanent = !comparePermanent;
         compareBtn.classList.toggle('selected', comparePermanent);
-        compareBtn.textContent = comparePermanent ? '영구자석 숨기기' : '영구자석과 비교';
+        compareBtn.textContent = comparePermanent ? '비교 끝내기' : '영구자석 비교';
         render(); clearResult();
     });
     predictionButtons.forEach(button => button.addEventListener('click', () => {
+        clearResult();
         prediction = button.dataset.prediction;
-        predictionButtons.forEach(item => item.classList.toggle('selected', item === button));
+        predictionButtons.forEach(item => {item.classList.toggle('selected', item === button);item.setAttribute('aria-pressed',String(item===button));});
     }));
     checkBtn.addEventListener('click', check);
 

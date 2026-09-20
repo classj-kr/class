@@ -1,0 +1,37 @@
+{
+  "slug": "land-sea",
+  "engine": "chromium",
+  "modes": [
+    "area",
+    "salt"
+  ],
+  "cases": 11,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__landSeaModel",
+      "methods": [
+        "LAND",
+        "LAND_SHARE",
+        "WATERS",
+        "DOT_COUNTS",
+        "state",
+        "analyseArea",
+        "analyseSalt",
+        "analyse",
+        "dropDots",
+        "tallyArea",
+        "render",
+        "runSeconds",
+        "setMode",
+        "set",
+        "setSeed",
+        "setProgress",
+        "runToEnd",
+        "tick",
+        "finish"
+      ]
+    }
+  ]
+}

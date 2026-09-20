@@ -218,6 +218,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const PRED_W = [{ value: 'much', label: '오줌이 많고 옅음' }, { value: 'little', label: '오줌이 적고 진함' }, { value: 'usual', label: '평소와 비슷' }];
 
     function buildPrediction() {
+        state.prediction = null;
+        window.scienceInvalidatePrediction?.();
         const list = state.mode === 'glucose' ? PRED_G : state.mode === 'temp' ? PRED_T : PRED_W;
         predictionLegend.textContent = state.mode === 'glucose' ? `${BODIES[state.body].who} ${MEALS[state.meal].label}를 ${BODIES[state.body].ex ? MEALS[state.meal].condEx : MEALS[state.meal].cond} 2시간 뒤 혈당(mg/dL)은?`
             : state.mode === 'temp' ? `${WEATHERS[state.weather].label}에 ${STATES[state.bstate].who} ${WEATHERS[state.weather].act} 체온은?`
@@ -225,7 +227,7 @@ document.addEventListener('DOMContentLoaded', () => {
         predictionArea.className = 'prediction-buttons three';
         predictionArea.innerHTML = list.map(o => `<button type="button" data-prediction="${o.value}">${o.label}</button>`).join('');
         predictionArea.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
-            state.prediction = button.dataset.prediction;
+            state.prediction = button.dataset.prediction; window.scienceInvalidatePrediction?.();
             predictionArea.querySelectorAll('button').forEach(b => b.classList.toggle('selected', b === button));
         }));
     }

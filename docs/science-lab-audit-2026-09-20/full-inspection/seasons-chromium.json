@@ -1,0 +1,37 @@
+{
+  "slug": "seasons",
+  "engine": "chromium",
+  "modes": [
+    "path",
+    "orbit"
+  ],
+  "cases": 9,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__seasonModel",
+      "methods": [
+        "SEASONS",
+        "TILTS",
+        "SPOTS",
+        "LAT",
+        "state",
+        "analysePath",
+        "analyseOrbit",
+        "analyse",
+        "sunAt",
+        "dayLength",
+        "noonAlt",
+        "render",
+        "runSeconds",
+        "setMode",
+        "set",
+        "setProgress",
+        "runToEnd",
+        "tick",
+        "finish"
+      ]
+    }
+  ]
+}

@@ -175,6 +175,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const PRED_P = [{ value: 'left', label: '왼쪽 받침이 더 받음' }, { value: 'right', label: '오른쪽 받침이 더 받음' }, { value: 'tip', label: '왼쪽이 뜨며 판이 뒤집힘' }];
 
     function buildPrediction() {
+        state.prediction = null;
+        window.scienceInvalidatePrediction?.();
         const list = state.mode === 'seesaw' ? PRED_S : state.mode === 'tip' ? PRED_T : PRED_P;
         predictionLegend.textContent = state.mode === 'seesaw' ? `받침점 ${PIVOTS[state.pivot].label}, 파란 상자 ${MASSES[state.mass].label}을 왼쪽 ${DISTS[state.dist].label}에 놓으면?`
             : state.mode === 'tip' ? `${FLOORS[state.floor].label}의 ${SHAPES[state.shape].label}, 바닥을 ${ANGLES[state.angle].label} 기울이면?`
@@ -182,7 +184,7 @@ document.addEventListener('DOMContentLoaded', () => {
         predictionArea.className = 'prediction-buttons three';
         predictionArea.innerHTML = list.map(o => `<button type="button" data-prediction="${o.value}">${o.label}</button>`).join('');
         predictionArea.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
-            state.prediction = button.dataset.prediction;
+            state.prediction = button.dataset.prediction; window.scienceInvalidatePrediction?.();
             predictionArea.querySelectorAll('button').forEach(b => b.classList.toggle('selected', b === button));
         }));
     }

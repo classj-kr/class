@@ -568,7 +568,7 @@ document.querySelectorAll('[data-shuttle]').forEach(b => b.addEventListener('cli
     state.shuttle = b.dataset.shuttle; markSelected('[data-shuttle]', 'shuttle', state.shuttle); render();
 }));
 document.querySelectorAll('[data-prediction]').forEach(b => b.addEventListener('click', () => {
-    state.prediction = b.dataset.prediction; markSelected('[data-prediction]', 'prediction', state.prediction);
+    state.prediction = b.dataset.prediction; state.checked = false; window.scienceInvalidatePrediction?.(); markSelected('[data-prediction]', 'prediction', state.prediction);
 }));
 $('lightRange').addEventListener('input', e => {
     state.light = Number(e.target.value);

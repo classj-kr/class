@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const predictionButtons = [...predictionArea.querySelectorAll('button')];
     predictionButtons.forEach(button => button.addEventListener('click', () => {
-        state.prediction = button.dataset.prediction;
+        state.prediction = button.dataset.prediction; window.scienceInvalidatePrediction?.();
         predictionButtons.forEach(b => b.classList.toggle('selected', b === button));
     }));
     const clearPrediction = () => {

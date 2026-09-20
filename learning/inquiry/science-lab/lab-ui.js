@@ -3,6 +3,20 @@
  * Bottom axis titles may flow below their graph; plotted ticks, objects and shapes stay put.
  */
 (() => {
+ // A verdict belongs to the submitted answer, never to a subsequently edited answer.
+ window.scienceInvalidatePrediction=()=>{
+  const empty=document.getElementById('resultEmpty'),content=document.getElementById('resultContent'),feedback=document.getElementById('predictionResult');
+  if(empty)empty.hidden=false;if(content)content.hidden=true;
+  if(feedback){feedback.textContent='';feedback.classList.remove('correct','wrong','incorrect');delete feedback.dataset.correct;}
+ };
+ document.addEventListener('change',event=>{
+  const input=event.target;
+  if(!input.matches('.quiz-card input[type="radio"]'))return;
+  const card=input.closest('.quiz-card'),feedback=card.querySelector('.answer-result'),why=card.querySelector('.answer-explanation');
+  delete card.dataset.state;
+  if(feedback){feedback.textContent='';feedback.classList.remove('correct','wrong','incorrect');}
+  if(why)why.hidden=true;
+ });
  const inkCanvas=document.createElement('canvas').getContext('2d');
  window.scienceTextInkBox=text=>{
   const b=text.getBBox(),style=getComputedStyle(text);

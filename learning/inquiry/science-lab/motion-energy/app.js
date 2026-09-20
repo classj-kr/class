@@ -145,11 +145,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const PRED_ENERGY = [{ value: 'pass', label: '언덕을 넘어간다' }, { value: 'stop', label: '꼭대기에서 멈춘다' }, { value: 'back', label: '되돌아온다' }];
 
     function buildPrediction() {
+        state.prediction = null;
+        window.scienceInvalidatePrediction?.();
         const list = state.mode === 'incline' ? PRED_INCLINE : PRED_ENERGY;
         predictionLegend.textContent = state.mode === 'incline' ? '빗면에서 점 사이 간격은 어떻게 될까요?' : `공은 높이 ${HILL2} m 언덕을 넘을까요?`;
         predictionArea.innerHTML = list.map(o => `<button type="button" data-prediction="${o.value}">${o.label}</button>`).join('');
         predictionArea.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
-            state.prediction = button.dataset.prediction;
+            state.prediction = button.dataset.prediction; window.scienceInvalidatePrediction?.();
             predictionArea.querySelectorAll('button').forEach(b => b.classList.toggle('selected', b === button));
         }));
     }

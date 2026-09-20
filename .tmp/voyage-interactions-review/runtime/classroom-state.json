@@ -1,0 +1,29 @@
+{
+  "version": 10,
+  "rooms": {
+    "6534": {
+      "activeMission": null,
+      "progress": {},
+      "settings": {
+        "paused": false,
+        "locked": false,
+        "roomType": "free",
+        "started": true
+      },
+      "clock": {
+        "gameMinutes": 1598.4
+      },
+      "discoveries": {
+        "상호작용검사": [
+          "amazon_mouth"
+        ]
+      },
+      "hunts": {},
+      "host": {
+        "tokenHash": "2a263521d681af57d301c274fcfc71af18fd217edf31f5fa3ae8feebffa24249",
+        "createdAt": 1789897739177,
+        "lastActiveAt": 1789897740604
+      }
+    }
+  }
+}

@@ -216,7 +216,7 @@ document.addEventListener('DOMContentLoaded', () => {
         fossilBtn.textContent = withFossil ? '화석 넣지 않기' : '화석 함께 넣기';
     });
     predictionButtons.forEach(button => button.addEventListener('click', () => {
-        prediction = button.dataset.prediction;
+        prediction = button.dataset.prediction; window.scienceInvalidatePrediction?.();
         predictionButtons.forEach(item => item.classList.toggle('selected', item === button));
     }));
     pourBtn.addEventListener('click', pour);

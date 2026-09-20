@@ -279,7 +279,7 @@ document.addEventListener('DOMContentLoaded', () => {
         resetAll();
     }));
     predictionButtons.forEach(button => button.addEventListener('click', () => {
-        prediction = button.dataset.prediction;
+        prediction = button.dataset.prediction; window.scienceInvalidatePrediction?.();
         predictionButtons.forEach(item => item.classList.toggle('selected', item === button));
     }));
     growButton.addEventListener('click', () => { if (!growing) startGrowing(); });

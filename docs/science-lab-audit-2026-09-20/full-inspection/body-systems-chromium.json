@@ -1,0 +1,29 @@
+{
+  "slug": "body-systems",
+  "engine": "chromium",
+  "modes": [
+    "initial"
+  ],
+  "cases": 8,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__bodyModel",
+      "methods": [
+        "ACTS",
+        "DEAD_SPACE",
+        "O2_PER_GLUCOSE",
+        "BLOOD_VOLUME",
+        "AIR_O2",
+        "derive",
+        "render",
+        "check",
+        "setAct",
+        "setMinutes",
+        "getAct",
+        "minutes"
+      ]
+    }
+  ]
+}

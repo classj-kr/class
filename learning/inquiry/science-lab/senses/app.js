@@ -202,7 +202,7 @@ document.querySelectorAll('[data-cond]').forEach(b => b.addEventListener('click'
     state.cond = b.dataset.cond; markSelected('[data-cond]', 'cond', state.cond); render();
 }));
 document.querySelectorAll('[data-prediction]').forEach(b => b.addEventListener('click', () => {
-    state.prediction = b.dataset.prediction; markSelected('[data-prediction]', 'prediction', state.prediction);
+    state.prediction = b.dataset.prediction; state.checked = false; window.scienceInvalidatePrediction?.(); markSelected('[data-prediction]', 'prediction', state.prediction);
 }));
 $('runBtn').addEventListener('click', () => {
     if (state.running) { state.running = false; state.t = 1; $('runBtn').textContent = '자 떨어뜨리기'; return; }

@@ -1,0 +1,1546 @@
+learning/inquiry/science-lab\acid-base\app.js-253-    predictionButtons.forEach(button => button.addEventListener('click', () => {
+learning/inquiry/science-lab\acid-base\app.js:254:        prediction = button.dataset.prediction;
+learning/inquiry/science-lab\acid-base\app.js-255-        predictionButtons.forEach(item => item.classList.toggle('selected', item === button));
+learning/inquiry/science-lab\acid-base\app.js-256-    }));
+learning/inquiry/science-lab\acid-base\app.js-257-    dipButton.addEventListener('click', dip);
+learning/inquiry/science-lab\acid-base\app.js-258-
+learning/inquiry/science-lab\acid-base\app.js-259-    function shuffleQuizOptions(card) {
+learning/inquiry/science-lab\acid-base\app.js-260-        const optionGroup = card.querySelector('.quiz-options');
+--
+learning/inquiry/science-lab\body-systems\app.js-217-    predictionButtons.forEach(button => button.addEventListener('click', () => {
+learning/inquiry/science-lab\body-systems\app.js:218:        prediction = button.dataset.prediction;
+learning/inquiry/science-lab\body-systems\app.js-219-        predictionButtons.forEach(item => item.classList.toggle('selected', item === button));
+learning/inquiry/science-lab\body-systems\app.js-220-    }));
+learning/inquiry/science-lab\body-systems\app.js-221-    checkBtn.addEventListener('click', check);
+learning/inquiry/science-lab\body-systems\app.js-222-    resetBtn.addEventListener('click', () => {
+learning/inquiry/science-lab\body-systems\app.js-223-        timeRange.value = '10';
+learning/inquiry/science-lab\body-systems\app.js-224-        prediction = null;
+--
+learning/inquiry/science-lab\body-organs\app.js-193-    $('resultEmpty').hidden=true;$('resultContent').hidden=false;
+learning/inquiry/science-lab\body-organs\app.js:194:    $('predictionResult').textContent=state.prediction?(state.prediction===a.verdict?'예상이 맞았습니다.':'선택한 기관의 하는 일을 다시 확인하세요.'):'다음에는 먼저 예상해 보세요.';
+learning/inquiry/science-lab\body-organs\app.js-195-    $('elementaryExplanation').textContent=a.sys.name+'의 주요 역할은 '+WORDS[a.verdict]+'입니다. '+a.sys.organs.map(o=>o.n+': '+o.note).join(' / ')+'. 기관들은 서로 연결되어 우리 몸이 활동하도록 돕습니다.';
+learning/inquiry/science-lab\body-organs\app.js-196-}
+learning/inquiry/science-lab\body-organs\app.js-197-
+learning/inquiry/science-lab\body-organs\app.js-198-// --- animation --------------------------------------------------------------
+learning/inquiry/science-lab\body-organs\app.js-199-function tick(dt) {
+learning/inquiry/science-lab\body-organs\app.js-200-    state.phase += dt;
+--
+learning/inquiry/science-lab\body-organs\app.js-232-document.querySelectorAll('[data-prediction]').forEach(b => b.addEventListener('click', () => {
+learning/inquiry/science-lab\body-organs\app.js:233:    state.prediction = b.dataset.prediction; markSelected('[data-prediction]', 'prediction', state.prediction);
+learning/inquiry/science-lab\body-organs\app.js-234-}));
+learning/inquiry/science-lab\body-organs\app.js-235-$('runBtn').addEventListener('click', () => {
+learning/inquiry/science-lab\body-organs\app.js-236-    if (state.running) { state.running = false; $('runBtn').textContent = '따라가 보기'; return; }
+learning/inquiry/science-lab\body-organs\app.js-237-    state.t = 0; state.running = true; state.checked = true;
+learning/inquiry/science-lab\body-organs\app.js-238-    $('runBtn').textContent = '멈추기';
+learning/inquiry/science-lab\body-organs\app.js-239-    render();
+--
+learning/inquiry/science-lab\body-organs\app.js-242-    state.sys = 'circ'; state.act = 'rest';
+learning/inquiry/science-lab\body-organs\app.js:243:    state.prediction = null; state.checked = false; state.running = false; state.t = 0;
+learning/inquiry/science-lab\body-organs\app.js-244-    $('runBtn').textContent = '따라가 보기';
+learning/inquiry/science-lab\body-organs\app.js-245-    document.querySelectorAll('[data-prediction]').forEach(x => x.classList.remove('selected'));
+learning/inquiry/science-lab\body-organs\app.js-246-    $('resultEmpty').hidden = false; $('resultContent').hidden = true;
+learning/inquiry/science-lab\body-organs\app.js-247-    markSelected('[data-sys]', 'sys', 'circ'); markSelected('[data-act]', 'act', 'rest');
+learning/inquiry/science-lab\body-organs\app.js-248-    render();
+learning/inquiry/science-lab\body-organs\app.js-249-});
+--
+learning/inquiry/science-lab\apparent-motion\app.js-222-    predictionButtons.forEach(button => button.addEventListener('click', () => {
+learning/inquiry/science-lab\apparent-motion\app.js:223:        prediction = button.dataset.prediction;
+learning/inquiry/science-lab\apparent-motion\app.js-224-        predictionButtons.forEach(item => item.classList.toggle('selected', item === button));
+learning/inquiry/science-lab\apparent-motion\app.js-225-    }));
+learning/inquiry/science-lab\apparent-motion\app.js-226-
+learning/inquiry/science-lab\apparent-motion\app.js-227-    function shuffleQuizOptions(card) {
+learning/inquiry/science-lab\apparent-motion\app.js-228-        const optionGroup = card.querySelector('.quiz-options');
+learning/inquiry/science-lab\apparent-motion\app.js-229-        const options = Array.from(optionGroup.children);
+--
+learning/inquiry/science-lab\air-stability\app.js-391-document.querySelectorAll('[data-prediction]').forEach(b => b.addEventListener('click', () => {
+learning/inquiry/science-lab\air-stability\app.js:392:    state.prediction = b.dataset.prediction; markSelected('[data-prediction]', 'prediction', state.prediction);
+learning/inquiry/science-lab\air-stability\app.js-393-}));
+learning/inquiry/science-lab\air-stability\app.js-394-$('tempRange').addEventListener('input', e => {
+learning/inquiry/science-lab\air-stability\app.js-395-    state.temp = Number(e.target.value);
+learning/inquiry/science-lab\air-stability\app.js-396-    $('tempOutput').textContent = `${state.temp} ℃`;
+learning/inquiry/science-lab\air-stability\app.js-397-    render();
+learning/inquiry/science-lab\air-stability\app.js-398-});
+--
+learning/inquiry/science-lab\air-stability\app.js-411-    state.height = 2000; state.rh = 60; state.temp = 20; state.lapse = 6.5;
+learning/inquiry/science-lab\air-stability\app.js:412:    state.prediction = null; state.checked = false; state.running = false; state.progress = 0;
+learning/inquiry/science-lab\air-stability\app.js-413-    $('tempRange').value = '20'; $('tempOutput').textContent = '20 ℃';
+learning/inquiry/science-lab\air-stability\app.js-414-    $('lapseRange').value = '6.5'; $('lapseOutput').textContent = '6.5 ℃/km';
+learning/inquiry/science-lab\air-stability\app.js-415-    $('runBtn').textContent = '산 너머로 보내기';
+learning/inquiry/science-lab\air-stability\app.js-416-    document.querySelectorAll('[data-prediction]').forEach(x => x.classList.remove('selected'));
+learning/inquiry/science-lab\air-stability\app.js-417-    $('resultEmpty').hidden = false; $('resultContent').hidden = true;
+learning/inquiry/science-lab\air-stability\app.js-418-    markSelected('[data-height]', 'height', 2000); markSelected('[data-rh]', 'rh', 60);
+--
+learning/inquiry/science-lab\force-motion\app.js-286-    predictionButtons.forEach(button => button.addEventListener('click', () => {
+learning/inquiry/science-lab\force-motion\app.js:287:        prediction = button.dataset.prediction;
+learning/inquiry/science-lab\force-motion\app.js-288-        predictionButtons.forEach(item => item.classList.toggle('selected', item === button));
+learning/inquiry/science-lab\force-motion\app.js-289-    }));
+learning/inquiry/science-lab\force-motion\app.js-290-    checkBtn.addEventListener('click', startSim);
+learning/inquiry/science-lab\force-motion\app.js-291-    resetBtn.addEventListener('click', () => {
+learning/inquiry/science-lab\force-motion\app.js-292-        stopSim();
+learning/inquiry/science-lab\force-motion\app.js-293-        forceRange.value = '8'; massRange.value = '4'; startRange.value = '0';
+--
+learning/inquiry/science-lab\flame-ions\app.js-178-        predictionArea.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
+learning/inquiry/science-lab\flame-ions\app.js:179:            state.prediction = button.dataset.prediction;
+learning/inquiry/science-lab\flame-ions\app.js-180-            predictionArea.querySelectorAll('button').forEach(b => b.classList.toggle('selected', b === button));
+learning/inquiry/science-lab\flame-ions\app.js-181-        }));
+learning/inquiry/science-lab\flame-ions\app.js-182-    }
+learning/inquiry/science-lab\flame-ions\app.js-183-
+learning/inquiry/science-lab\flame-ions\app.js-184-    /* ----------------------------------------------------------- visuals */
+learning/inquiry/science-lab\flame-ions\app.js-185-    // visible wavelength to a screen colour, dimming toward both ends of sight
+--
+learning/inquiry/science-lab\flame-ions\app.js-516-        state.mode = button.dataset.mode;
+learning/inquiry/science-lab\flame-ions\app.js:517:        state.prediction = null;
+learning/inquiry/science-lab\flame-ions\app.js-518-        modeButtons.forEach(item => item.classList.toggle('selected', item === button));
+learning/inquiry/science-lab\flame-ions\app.js-519-        buildControls();
+learning/inquiry/science-lab\flame-ions\app.js-520-        buildPrediction();
+learning/inquiry/science-lab\flame-ions\app.js-521-        stageCaption.textContent = state.mode === 'flame'
+learning/inquiry/science-lab\flame-ions\app.js-522-            ? '같은 금속이 든 화합물은 음이온 부분이 달라도 불꽃 색이 같습니다.'
+learning/inquiry/science-lab\flame-ions\app.js-523-            : '색을 띤 이온이 어느 전극으로 가는지, 전극을 바꾸면 어떻게 되는지 보세요.';
+--
+learning/inquiry/science-lab\earth-system\app.js-157-        predictionArea.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
+learning/inquiry/science-lab\earth-system\app.js:158:            state.prediction = button.dataset.prediction;
+learning/inquiry/science-lab\earth-system\app.js-159-            predictionArea.querySelectorAll('button').forEach(b => b.classList.toggle('selected', b === button));
+learning/inquiry/science-lab\earth-system\app.js-160-        }));
+learning/inquiry/science-lab\earth-system\app.js-161-    }
+learning/inquiry/science-lab\earth-system\app.js-162-
+learning/inquiry/science-lab\earth-system\app.js-163-    /* ----------------------------------------------------------- visuals */
+learning/inquiry/science-lab\earth-system\app.js-164-    const CAT_LABEL = { 'geo-hydro': '지권과 수권', 'geo-atmo': '지권과 기권', 'hydro-atmo': '수권과 기권', bio: '생물권과 다른 권', space: '외권과 다른 권' };
+--
+learning/inquiry/science-lab\earth-system\app.js-460-        state.mode = button.dataset.mode;
+learning/inquiry/science-lab\earth-system\app.js:461:        state.prediction = null;
+learning/inquiry/science-lab\earth-system\app.js-462-        modeButtons.forEach(item => item.classList.toggle('selected', item === button));
+learning/inquiry/science-lab\earth-system\app.js-463-        buildControls();
+learning/inquiry/science-lab\earth-system\app.js-464-        buildPrediction();
+learning/inquiry/science-lab\earth-system\app.js-465-        checkBtn.textContent = state.mode === 'spheres' ? '따라가 보기' : state.mode === 'water' ? '시간 흘려 보기' : '50년 흘려 보기';
+learning/inquiry/science-lab\earth-system\app.js-466-        stageCaption.textContent = state.mode === 'spheres' ? '다섯 권 사이에서 물질이나 에너지가 옮겨 가는 길을 노란 점이 따라갑니다.'
+learning/inquiry/science-lab\earth-system\app.js-467-            : state.mode === 'water' ? '오른쪽 통에서 처음 있던 물(짙은 색)이 빠져나가고 새 물(옅은 색)이 채워지는 데 걸리는 시간을 봅니다.'
+--
+learning/inquiry/science-lab\enzyme\app.js-359-document.querySelectorAll('[data-prediction]').forEach(b => b.addEventListener('click', () => {
+learning/inquiry/science-lab\enzyme\app.js:360:    state.prediction = b.dataset.prediction; markSelected('[data-prediction]', 'prediction', state.prediction);
+learning/inquiry/science-lab\enzyme\app.js-361-}));
+learning/inquiry/science-lab\enzyme\app.js-362-$('subRange').addEventListener('input', e => {
+learning/inquiry/science-lab\enzyme\app.js-363-    state.sub = Number(e.target.value);
+learning/inquiry/science-lab\enzyme\app.js-364-    $('subOutput').textContent = `${fmt(state.sub, 1)} mmol/L`;
+learning/inquiry/science-lab\enzyme\app.js-365-    render();
+learning/inquiry/science-lab\enzyme\app.js-366-});
+--
+learning/inquiry/science-lab\dna-gel\app.js-337-document.querySelectorAll('[data-prediction]').forEach(b => b.addEventListener('click', () => {
+learning/inquiry/science-lab\dna-gel\app.js:338:    state.prediction = b.dataset.prediction; markSelected('[data-prediction]', 'prediction', state.prediction);
+learning/inquiry/science-lab\dna-gel\app.js-339-}));
+learning/inquiry/science-lab\dna-gel\app.js-340-$('timeRange').addEventListener('input', e => {
+learning/inquiry/science-lab\dna-gel\app.js-341-    state.time = Number(e.target.value);
+learning/inquiry/science-lab\dna-gel\app.js-342-    state.elapsed = state.time;
+learning/inquiry/science-lab\dna-gel\app.js-343-    state.running = false;
+learning/inquiry/science-lab\dna-gel\app.js-344-    $('runBtn').textContent = '전기 영동 시작';
+--
+learning/inquiry/science-lab\dna-gel\app.js-356-    state.time = 40; state.elapsed = 40; state.running = false;
+learning/inquiry/science-lab\dna-gel\app.js:357:    state.prediction = null; state.checked = false;
+learning/inquiry/science-lab\dna-gel\app.js-358-    $('timeRange').value = '40'; $('timeOutput').textContent = '40분';
+learning/inquiry/science-lab\dna-gel\app.js-359-    $('runBtn').textContent = '전기 영동 시작';
+learning/inquiry/science-lab\dna-gel\app.js-360-    document.querySelectorAll('[data-prediction]').forEach(x => x.classList.remove('selected'));
+learning/inquiry/science-lab\dna-gel\app.js-361-    $('resultEmpty').hidden = false; $('resultContent').hidden = true;
+learning/inquiry/science-lab\dna-gel\app.js-362-    syncMarks(); render();
+learning/inquiry/science-lab\dna-gel\app.js-363-});
+--
+learning/inquiry/science-lab\energy-metabolism\app.js-552-document.querySelectorAll('[data-mode]').forEach(b => b.addEventListener('click', () => {
+learning/inquiry/science-lab\energy-metabolism\app.js:553:    state.mode = b.dataset.mode; state.prediction = null; state.checked = false;
+learning/inquiry/science-lab\energy-metabolism\app.js-554-    document.querySelectorAll('[data-prediction]').forEach(x => x.classList.remove('selected'));
+learning/inquiry/science-lab\energy-metabolism\app.js-555-    $('resultEmpty').hidden = false; $('resultContent').hidden = true;
+learning/inquiry/science-lab\energy-metabolism\app.js-556-    applyMode();
+learning/inquiry/science-lab\energy-metabolism\app.js-557-}));
+learning/inquiry/science-lab\energy-metabolism\app.js-558-document.querySelectorAll('[data-co2]').forEach(b => b.addEventListener('click', () => {
+learning/inquiry/science-lab\energy-metabolism\app.js-559-    state.co2 = Number(b.dataset.co2); markSelected('[data-co2]', 'co2', state.co2); render();
+--
+learning/inquiry/science-lab\energy-metabolism\app.js-570-document.querySelectorAll('[data-prediction]').forEach(b => b.addEventListener('click', () => {
+learning/inquiry/science-lab\energy-metabolism\app.js:571:    state.prediction = b.dataset.prediction; markSelected('[data-prediction]', 'prediction', state.prediction);
+learning/inquiry/science-lab\energy-metabolism\app.js-572-}));
+learning/inquiry/science-lab\energy-metabolism\app.js-573-$('lightRange').addEventListener('input', e => {
+learning/inquiry/science-lab\energy-metabolism\app.js-574-    state.light = Number(e.target.value);
+learning/inquiry/science-lab\energy-metabolism\app.js-575-    state.peakLight = state.light;
+learning/inquiry/science-lab\energy-metabolism\app.js-576-    $('lightOutput').textContent = `${state.light} μmol/m²/s`;
+learning/inquiry/science-lab\energy-metabolism\app.js-577-    render();
+--
+learning/inquiry/science-lab\energy-metabolism\app.js-594-    state.o2 = true; state.shuttle = 'malate';
+learning/inquiry/science-lab\energy-metabolism\app.js:595:    state.prediction = null; state.checked = false; state.running = false;
+learning/inquiry/science-lab\energy-metabolism\app.js-596-    state.dayHour = 0; state.dayNet = 0; state.atpProgress = 0;
+learning/inquiry/science-lab\energy-metabolism\app.js-597-    $('lightRange').value = '600'; $('lightOutput').textContent = '600 μmol/m²/s';
+learning/inquiry/science-lab\energy-metabolism\app.js-598-    document.querySelectorAll('[data-prediction]').forEach(x => x.classList.remove('selected'));
+learning/inquiry/science-lab\energy-metabolism\app.js-599-    $('resultEmpty').hidden = false; $('resultContent').hidden = true;
+learning/inquiry/science-lab\energy-metabolism\app.js-600-    markSelected('[data-co2]', 'co2', 400); markSelected('[data-temp]', 'temp', 20);
+learning/inquiry/science-lab\energy-metabolism\app.js-601-    markSelected('[data-o2]', 'o2', 'yes'); markSelected('[data-shuttle]', 'shuttle', 'malate');
+--
+learning/inquiry/science-lab\energy-conversion\app.js-211-        predictionArea.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
+learning/inquiry/science-lab\energy-conversion\app.js:212:            state.prediction = button.dataset.prediction;
+learning/inquiry/science-lab\energy-conversion\app.js-213-            predictionArea.querySelectorAll('button').forEach(b => b.classList.toggle('selected', b === button));
+learning/inquiry/science-lab\energy-conversion\app.js-214-        }));
+learning/inquiry/science-lab\energy-conversion\app.js-215-    }
+learning/inquiry/science-lab\energy-conversion\app.js-216-
+learning/inquiry/science-lab\energy-conversion\app.js-217-    /* ----------------------------------------------------------- visuals */
+learning/inquiry/science-lab\energy-conversion\app.js-218-    const hx = h => 24 + (h - DAY_START) / (DAY_END - DAY_START) * 264;
+--
+learning/inquiry/science-lab\energy-conversion\app.js-600-        state.mode = button.dataset.mode;
+learning/inquiry/science-lab\energy-conversion\app.js:601:        state.prediction = null;
+learning/inquiry/science-lab\energy-conversion\app.js-602-        modeButtons.forEach(item => item.classList.toggle('selected', item === button));
+learning/inquiry/science-lab\energy-conversion\app.js-603-        buildControls();
+learning/inquiry/science-lab\energy-conversion\app.js-604-        buildPrediction();
+learning/inquiry/science-lab\energy-conversion\app.js-605-        checkBtn.textContent = state.mode === 'solar' ? '하루 돌려 보기' : state.mode === 'wind' ? '바람 불게 하기' : '전기 보내기';
+learning/inquiry/science-lab\energy-conversion\app.js-606-        stageCaption.textContent = state.mode === 'solar' ? '같은 판 세 장을 기울기만 다르게 놓고 하루 동안 만드는 전기를 견줍니다.'
+learning/inquiry/science-lab\energy-conversion\app.js-607-            : state.mode === 'wind' ? '왼쪽은 기준 발전기, 오른쪽은 내 발전기입니다. 날개 끝은 바람보다 일곱 배쯤 빠르게 돕니다.'
+--
+learning/inquiry/science-lab\electric-field\app.js-182-        predictionArea.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
+learning/inquiry/science-lab\electric-field\app.js:183:            state.prediction = button.dataset.prediction;
+learning/inquiry/science-lab\electric-field\app.js-184-            predictionArea.querySelectorAll('button').forEach(b => b.classList.toggle('selected', b === button));
+learning/inquiry/science-lab\electric-field\app.js-185-        }));
+learning/inquiry/science-lab\electric-field\app.js-186-    }
+learning/inquiry/science-lab\electric-field\app.js-187-
+learning/inquiry/science-lab\electric-field\app.js-188-    /* ----------------------------------------------------------- visuals */
+learning/inquiry/science-lab\electric-field\app.js-189-    const arrow = (x1, y1, x2, y2, cls, head, w = 3.5) => {
+--
+learning/inquiry/science-lab\electric-field\app.js-425-        state.mode = button.dataset.mode;
+learning/inquiry/science-lab\electric-field\app.js:426:        state.prediction = null;
+learning/inquiry/science-lab\electric-field\app.js-427-        modeButtons.forEach(item => item.classList.toggle('selected', item === button));
+learning/inquiry/science-lab\electric-field\app.js-428-        buildControls();
+learning/inquiry/science-lab\electric-field\app.js-429-        buildPrediction();
+learning/inquiry/science-lab\electric-field\app.js-430-        checkBtn.textContent = state.mode === 'field' ? '시험 전하 놓기' : state.mode === 'accel' ? '입자 쏘기' : '전지에 잇기';
+learning/inquiry/science-lab\electric-field\app.js-431-        stageCaption.textContent = state.mode === 'field' ? '두 전하가 0.6 m 떨어져 있습니다. 옅은 선이 전기력선, 노란 점이 +1 nC 시험 전하이고 노란 화살표가 받는 힘입니다.'
+learning/inquiry/science-lab\electric-field\app.js-432-            : state.mode === 'accel' ? '왼쪽 판이 입자를 밀어내는 쪽입니다. 판 사이 화살표는 전기장(+에서 −로), 노란 화살표는 입자가 받는 힘입니다.'
+--
+learning/inquiry/science-lab\heat-engine\app.js-156-        predictionArea.innerHTML=list.map(o=>'<button type="button" data-prediction="'+o.value+'">'+o.label+'</button>').join('');
+learning/inquiry/science-lab\heat-engine\app.js:157:        predictionArea.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{state.prediction=b.dataset.prediction;predictionArea.querySelectorAll('button').forEach(x=>x.classList.toggle('selected',x===b));}));
+learning/inquiry/science-lab\heat-engine\app.js-158-    }
+learning/inquiry/science-lab\heat-engine\app.js-159-
+learning/inquiry/science-lab\heat-engine\app.js-160-    /* ----------------------------------------------------------- visuals */
+learning/inquiry/science-lab\heat-engine\app.js-161-    const arrow = (x1, y1, x2, y2, cls, head, w = 3.5) => {
+learning/inquiry/science-lab\heat-engine\app.js-162-        const dx = x2 - x1, dy = y2 - y1, len = Math.hypot(dx, dy) || 1, ux = dx / len, uy = dy / len;
+learning/inquiry/science-lab\heat-engine\app.js-163-        const bx = x2 - ux * 6, by = y2 - uy * 6;
+--
+learning/inquiry/science-lab\heat-engine\app.js-359-        labelB.textContent='에너지';valueB.textContent='보존됨';
+learning/inquiry/science-lab\heat-engine\app.js:360:        const answer=a.kind==='flow'&&state.eff==='e100'?'no':'yes';predictionResult.textContent=!state.prediction?'다음에는 먼저 예상해 보세요.':state.prediction===answer?'예상이 맞았습니다.':'예상과 다른 결과입니다.';
+learning/inquiry/science-lab\heat-engine\app.js-361-        explanation.textContent=a.kind==='pump'?'열펌프는 일을 공급받아 저온의 열을 고온으로 옮깁니다. 에너지를 새로 만드는 것이 아닙니다.':a.kind==='flow'?'순환 열기관은 받은 열을 모두 일로 바꿀 수 없습니다. 에너지 보존뿐 아니라 열역학 제2법칙도 만족해야 합니다.':'다른 열원의 온도를 고정하고 고온 열원을 높이거나 저온 열원을 낮추면 가역 기관의 한계 효율은 커집니다. 실제 기관은 비가역적인 과정 때문에 이보다 효율이 낮습니다.';
+learning/inquiry/science-lab\heat-engine\app.js-362-    }
+learning/inquiry/science-lab\heat-engine\app.js-363-
+learning/inquiry/science-lab\heat-engine\app.js-364-    function settingsChanged() {
+learning/inquiry/science-lab\heat-engine\app.js-365-        stopRun();
+learning/inquiry/science-lab\heat-engine\app.js-366-        state.progress = 0;
+--
+learning/inquiry/science-lab\heat-engine\app.js-373-        state.mode = button.dataset.mode;
+learning/inquiry/science-lab\heat-engine\app.js:374:        state.prediction = null;
+learning/inquiry/science-lab\heat-engine\app.js-375-        modeButtons.forEach(item => item.classList.toggle('selected', item === button));
+learning/inquiry/science-lab\heat-engine\app.js-376-        buildControls();
+learning/inquiry/science-lab\heat-engine\app.js-377-        buildPrediction();
+learning/inquiry/science-lab\heat-engine\app.js-378-        checkBtn.textContent = state.mode === 'carnot' ? '한 바퀴 돌리기' : state.mode === 'flow' ? '열 흘려보내기' : '열펌프 돌리기';
+learning/inquiry/science-lab\heat-engine\app.js-379-        stageCaption.textContent = state.mode === 'carnot' ? '실린더 속 기체가 뜨거운 곳에서 열을 받아 팽창하고, 단열 팽창으로 식은 뒤, 차가운 곳에 열을 버리며 압축되고, 단열 압축으로 다시 더워지는 네 과정입니다.'
+learning/inquiry/science-lab\heat-engine\app.js-380-            : state.mode === 'flow' ? '위에서 받은 열이 기관에서 오른쪽의 일과 아래로 버리는 열로 갈라집니다. 화살표는 에너지의 이동 방향을 나타냅니다.'
+--
+learning/inquiry/science-lab\energy-heat\app.js-247-    predictionButtons.forEach(button => button.addEventListener('click', () => {
+learning/inquiry/science-lab\energy-heat\app.js:248:        prediction = button.dataset.prediction;
+learning/inquiry/science-lab\energy-heat\app.js-249-        predictionButtons.forEach(item => item.classList.toggle('selected', item === button));
+learning/inquiry/science-lab\energy-heat\app.js-250-    }));
+learning/inquiry/science-lab\energy-heat\app.js-251-    checkBtn.addEventListener('click', startRun);
+learning/inquiry/science-lab\energy-heat\app.js-252-    resetBtn.addEventListener('click', () => {
+learning/inquiry/science-lab\energy-heat\app.js-253-        stopRun();
+learning/inquiry/science-lab\energy-heat\app.js-254-        heightRange.value = '4'; angleRange.value = '30'; frictionRange.value = '0';
+--
+learning/inquiry/science-lab\interference\app.js-96-        predictionArea.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
+learning/inquiry/science-lab\interference\app.js:97:            state.prediction = button.dataset.prediction;
+learning/inquiry/science-lab\interference\app.js-98-            predictionArea.querySelectorAll('button').forEach(b => b.classList.toggle('selected', b === button));
+learning/inquiry/science-lab\interference\app.js-99-        }));
+learning/inquiry/science-lab\interference\app.js-100-    }
+learning/inquiry/science-lab\interference\app.js-101-
+learning/inquiry/science-lab\interference\app.js-102-    /* ----------------------------------------------------------- visuals */
+learning/inquiry/science-lab\interference\app.js-103-    function travelPath(row, amp, phase) {
+--
+learning/inquiry/science-lab\interference\app.js-332-        state.mode = button.dataset.mode;
+learning/inquiry/science-lab\interference\app.js:333:        state.prediction = null;
+learning/inquiry/science-lab\interference\app.js-334-        modeButtons.forEach(item => item.classList.toggle('selected', item === button));
+learning/inquiry/science-lab\interference\app.js-335-        buildControls();
+learning/inquiry/science-lab\interference\app.js-336-        buildPrediction();
+learning/inquiry/science-lab\interference\app.js-337-        stageCaption.textContent = state.mode === 'superpose'
+learning/inquiry/science-lab\interference\app.js-338-            ? '위의 두 파동을 세로로 더한 것이 아래 파동입니다.'
+learning/inquiry/science-lab\interference\app.js-339-            : '빨간 점(마디)은 전혀 움직이지 않습니다. 눈으로 확인해 보세요.';
+--
+learning/inquiry/science-lab\lens-image\app.js-184-    predictionButtons.forEach(button => button.addEventListener('click', () => {
+learning/inquiry/science-lab\lens-image\app.js:185:        prediction = button.dataset.prediction;
+learning/inquiry/science-lab\lens-image\app.js-186-        predictionButtons.forEach(item => item.classList.toggle('selected', item === button));
+learning/inquiry/science-lab\lens-image\app.js-187-    }));
+learning/inquiry/science-lab\lens-image\app.js-188-    checkBtn.addEventListener('click', check);
+learning/inquiry/science-lab\lens-image\app.js-189-    resetBtn.addEventListener('click', () => {
+learning/inquiry/science-lab\lens-image\app.js-190-        focusRange.value = '10'; distRange.value = '30';
+learning/inquiry/science-lab\lens-image\app.js-191-        prediction = null;
+--
+learning/inquiry/science-lab\diffusion\app.js-351-    predictionButtons.forEach(button => button.addEventListener('click', () => {
+learning/inquiry/science-lab\diffusion\app.js:352:        prediction = button.dataset.prediction;
+learning/inquiry/science-lab\diffusion\app.js-353-        predictionButtons.forEach(item => item.classList.toggle('selected', item === button));
+learning/inquiry/science-lab\diffusion\app.js-354-    }));
+learning/inquiry/science-lab\diffusion\app.js-355-
+learning/inquiry/science-lab\diffusion\app.js-356-    function shuffleQuizOptions(card) {
+learning/inquiry/science-lab\diffusion\app.js-357-        const optionGroup = card.querySelector('.quiz-options');
+learning/inquiry/science-lab\diffusion\app.js-358-        const options = Array.from(optionGroup.children);
+--
+learning/inquiry/science-lab\homeostasis\app.js-227-        predictionArea.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
+learning/inquiry/science-lab\homeostasis\app.js:228:            state.prediction = button.dataset.prediction;
+learning/inquiry/science-lab\homeostasis\app.js-229-            predictionArea.querySelectorAll('button').forEach(b => b.classList.toggle('selected', b === button));
+learning/inquiry/science-lab\homeostasis\app.js-230-        }));
+learning/inquiry/science-lab\homeostasis\app.js-231-    }
+learning/inquiry/science-lab\homeostasis\app.js-232-
+learning/inquiry/science-lab\homeostasis\app.js-233-    /* ----------------------------------------------------------- visuals */
+learning/inquiry/science-lab\homeostasis\app.js-234-    const at = (arr, tArr, t) => { let i = 0; while (i < tArr.length - 1 && tArr[i + 1] <= t) i += 1; return arr[i]; };
+--
+learning/inquiry/science-lab\homeostasis\app.js-438-        labelB.textContent='핵심';valueB.textContent='음성 되먹임';
+learning/inquiry/science-lab\homeostasis\app.js:439:        predictionResult.textContent=!state.prediction?'다음에는 변화를 먼저 예상해 보세요.':state.prediction===a.verdict?'이 모형의 예상이 맞았습니다.':'이 모형의 결과와 다릅니다.';
+learning/inquiry/science-lab\homeostasis\app.js-440-        explanation.textContent='일정한 범위를 벗어나는 변화에 반대 방향의 조절 반응이 일어나 항상성 유지에 기여합니다. 조건에 따라 조절이 충분하지 않을 수도 있습니다. 곡선과 수치는 가상 모형이며 질병의 진단·유형 구별이나 치료 결정을 위해 사용하지 않습니다.';
+learning/inquiry/science-lab\homeostasis\app.js-441-    }
+learning/inquiry/science-lab\homeostasis\app.js-442-
+learning/inquiry/science-lab\homeostasis\app.js-443-    function settingsChanged() {
+learning/inquiry/science-lab\homeostasis\app.js-444-        stopRun();
+learning/inquiry/science-lab\homeostasis\app.js-445-        state.progress = 0;
+--
+learning/inquiry/science-lab\homeostasis\app.js-452-        state.mode = button.dataset.mode;
+learning/inquiry/science-lab\homeostasis\app.js:453:        state.prediction = null;
+learning/inquiry/science-lab\homeostasis\app.js-454-        modeButtons.forEach(item => item.classList.toggle('selected', item === button));
+learning/inquiry/science-lab\homeostasis\app.js-455-        buildControls();
+learning/inquiry/science-lab\homeostasis\app.js-456-        buildPrediction();
+learning/inquiry/science-lab\homeostasis\app.js-457-        checkBtn.textContent = state.mode === 'glucose' ? '3시간 흘려 보기' : state.mode === 'temp' ? '1시간 흘려 보기' : '3시간 흘려 보기';
+learning/inquiry/science-lab\homeostasis\app.js-458-        stageCaption.textContent = state.mode === 'glucose' ? '혈관 속 노란 점이 포도당입니다. 이자가 인슐린과 글루카곤을 내어 간·근육이 포도당을 넣고 꺼냅니다.'
+learning/inquiry/science-lab\homeostasis\app.js-459-            : state.mode === 'temp' ? '피부색이 혈관의 넓이, 파란 점이 땀, 왼쪽 물결이 떨림입니다. 오른쪽에 만드는 열과 내보내는 열이 있습니다.'
+--
+learning/inquiry/science-lab\gases\app.js-119-        predictionArea.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
+learning/inquiry/science-lab\gases\app.js:120:            state.prediction = button.dataset.prediction;
+learning/inquiry/science-lab\gases\app.js-121-            predictionArea.querySelectorAll('button').forEach(b => b.classList.toggle('selected', b === button));
+learning/inquiry/science-lab\gases\app.js-122-        }));
+learning/inquiry/science-lab\gases\app.js-123-    }
+learning/inquiry/science-lab\gases\app.js-124-
+learning/inquiry/science-lab\gases\app.js-125-    /* ----------------------------------------------------------- visuals */
+learning/inquiry/science-lab\gases\app.js-126-    function renderMake(a, p) {
+--
+learning/inquiry/science-lab\gases\app.js-412-        state.mode = button.dataset.mode;
+learning/inquiry/science-lab\gases\app.js:413:        state.prediction = null;
+learning/inquiry/science-lab\gases\app.js-414-        modeButtons.forEach(item => item.classList.toggle('selected', item === button));
+learning/inquiry/science-lab\gases\app.js-415-        buildControls();
+learning/inquiry/science-lab\gases\app.js-416-        buildPrediction();
+learning/inquiry/science-lab\gases\app.js-417-        stageCaption.textContent = state.mode === 'make'
+learning/inquiry/science-lab\gases\app.js-418-            ? '플라스크에서 생긴 기체가 고무관을 지나 물속 집기병에 모입니다. 다 모이면 확인 도구를 넣습니다.'
+learning/inquiry/science-lab\gases\app.js-419-            : '피스톤이 어디에서 멈추는지, 눈금으로 부피를 읽어 보세요. 초록 점선이 처음 40 mL입니다.';
+--
+learning/inquiry/science-lab\light-shadow\app.js-260-    predictionButtons.forEach(button => button.addEventListener('click', () => {
+learning/inquiry/science-lab\light-shadow\app.js:261:        prediction = button.dataset.prediction;
+learning/inquiry/science-lab\light-shadow\app.js-262-        predictionButtons.forEach(item => item.classList.toggle('selected', item === button));
+learning/inquiry/science-lab\light-shadow\app.js-263-    }));
+learning/inquiry/science-lab\light-shadow\app.js-264-    distanceRange.addEventListener('input', () => { renderScene(); clearResult(); });
+learning/inquiry/science-lab\light-shadow\app.js-265-    checkButton.addEventListener('click', checkShadow);
+learning/inquiry/science-lab\light-shadow\app.js-266-
+learning/inquiry/science-lab\light-shadow\app.js-267-    function shuffleQuizOptions(card) {
+--
+learning/inquiry/science-lab\galaxy-hubble\app.js-169-        predictionArea.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
+learning/inquiry/science-lab\galaxy-hubble\app.js:170:            state.prediction = button.dataset.prediction;
+learning/inquiry/science-lab\galaxy-hubble\app.js-171-            predictionArea.querySelectorAll('button').forEach(b => b.classList.toggle('selected', b === button));
+learning/inquiry/science-lab\galaxy-hubble\app.js-172-        }));
+learning/inquiry/science-lab\galaxy-hubble\app.js-173-    }
+learning/inquiry/science-lab\galaxy-hubble\app.js-174-
+learning/inquiry/science-lab\galaxy-hubble\app.js-175-    /* ----------------------------------------------------------- visuals */
+learning/inquiry/science-lab\galaxy-hubble\app.js-176-    const arrow = (x1, y1, x2, y2, cls, head, w = 3.5) => {
+--
+learning/inquiry/science-lab\galaxy-hubble\app.js-431-        state.mode = button.dataset.mode;
+learning/inquiry/science-lab\galaxy-hubble\app.js:432:        state.prediction = null;
+learning/inquiry/science-lab\galaxy-hubble\app.js-433-        modeButtons.forEach(item => item.classList.toggle('selected', item === button));
+learning/inquiry/science-lab\galaxy-hubble\app.js-434-        buildControls();
+learning/inquiry/science-lab\galaxy-hubble\app.js-435-        buildPrediction();
+learning/inquiry/science-lab\galaxy-hubble\app.js-436-        checkBtn.textContent = state.mode === 'classify' ? '은하 만들기' : state.mode === 'redshift' ? '스펙트럼 찍기' : '은하 재기';
+learning/inquiry/science-lab\galaxy-hubble\app.js-437-        stageCaption.textContent = state.mode === 'classify' ? '왼쪽은 고른 특징으로 그린 은하이고, 아래는 허블의 소리굽쇠 분류표입니다. 노란 별은 늙은 별, 파란 별은 젊은 별, 분홍은 별이 태어나는 가스 구름입니다.'
+learning/inquiry/science-lab\galaxy-hubble\app.js-438-            : state.mode === 'redshift' ? '위 띠는 실험실에서 잰 선의 자리, 아래 띠는 천체에서 온 빛의 선입니다. 노란 선이 밀린 만큼이 적색 이동입니다.'
+--
+learning/inquiry/science-lab\geologic-time\app.js-151-        predictionArea.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
+learning/inquiry/science-lab\geologic-time\app.js:152:            state.prediction = button.dataset.prediction;
+learning/inquiry/science-lab\geologic-time\app.js-153-            predictionArea.querySelectorAll('button').forEach(b => b.classList.toggle('selected', b === button));
+learning/inquiry/science-lab\geologic-time\app.js-154-        }));
+learning/inquiry/science-lab\geologic-time\app.js-155-    }
+learning/inquiry/science-lab\geologic-time\app.js-156-
+learning/inquiry/science-lab\geologic-time\app.js-157-    /* ----------------------------------------------------------- visuals */
+learning/inquiry/science-lab\geologic-time\app.js-158-    function renderCalendar(a) {
+--
+learning/inquiry/science-lab\geologic-time\app.js-457-        state.mode = button.dataset.mode;
+learning/inquiry/science-lab\geologic-time\app.js:458:        state.prediction = null;
+learning/inquiry/science-lab\geologic-time\app.js-459-        modeButtons.forEach(item => item.classList.toggle('selected', item === button));
+learning/inquiry/science-lab\geologic-time\app.js-460-        buildControls();
+learning/inquiry/science-lab\geologic-time\app.js-461-        buildPrediction();
+learning/inquiry/science-lab\geologic-time\app.js-462-        checkBtn.textContent = state.mode === 'calendar' ? '달력 넘기기' : state.mode === 'extinction' ? '멸종 일어나기' : '병 돌게 하기';
+learning/inquiry/science-lab\geologic-time\app.js-463-        stageCaption.textContent = state.mode === 'calendar' ? '1월 1일 0시에 지구가 태어나고 12월 31일 밤 12시가 지금입니다. 노란 표시가 달력을 넘어갑니다.'
+learning/inquiry/science-lab\geologic-time\app.js-464-            : state.mode === 'extinction' ? '점 하나가 생물 종 하나입니다. 멸종이 일어나면 흐려지고, 뒤에 새로 생긴 종은 초록으로 나타납니다.'
+--
+learning/inquiry/science-lab\gravity-motion\app.js-179-        predictionArea.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
+learning/inquiry/science-lab\gravity-motion\app.js:180:            state.prediction = button.dataset.prediction;
+learning/inquiry/science-lab\gravity-motion\app.js-181-            predictionArea.querySelectorAll('button').forEach(b => b.classList.toggle('selected', b === button));
+learning/inquiry/science-lab\gravity-motion\app.js-182-        }));
+learning/inquiry/science-lab\gravity-motion\app.js-183-    }
+learning/inquiry/science-lab\gravity-motion\app.js-184-
+learning/inquiry/science-lab\gravity-motion\app.js-185-    /* ----------------------------------------------------------- visuals */
+learning/inquiry/science-lab\gravity-motion\app.js-186-    function renderDrop(a) {
+--
+learning/inquiry/science-lab\gravity-motion\app.js-474-        state.mode = button.dataset.mode;
+learning/inquiry/science-lab\gravity-motion\app.js:475:        state.prediction = null;
+learning/inquiry/science-lab\gravity-motion\app.js-476-        modeButtons.forEach(item => item.classList.toggle('selected', item === button));
+learning/inquiry/science-lab\gravity-motion\app.js-477-        buildControls();
+learning/inquiry/science-lab\gravity-motion\app.js-478-        buildPrediction();
+learning/inquiry/science-lab\gravity-motion\app.js-479-        checkBtn.textContent = state.mode === 'drop' ? '동시에 놓기' : state.mode === 'orbit' ? '대포 쏘기' : '떨어뜨리기';
+learning/inquiry/science-lab\gravity-motion\app.js-480-        stageCaption.textContent = state.mode === 'drop' ? '흰 공은 가만히 놓고, 노란 공은 같은 순간에 던집니다. 0.1초마다 자리를 점으로 남깁니다 (느리게 재생).'
+learning/inquiry/science-lab\gravity-motion\app.js-481-            : state.mode === 'orbit' ? '공기가 없는 400 km 높이의 산꼭대기에서 옆으로 던집니다. 지구 중력을 1초마다 계산해 길을 그립니다.'
+--
+learning/inquiry/science-lab\heat-transfer\app.js-235-    predictionButtons.forEach(button => button.addEventListener('click', () => {
+learning/inquiry/science-lab\heat-transfer\app.js:236:        prediction = button.dataset.prediction;
+learning/inquiry/science-lab\heat-transfer\app.js-237-        predictionButtons.forEach(item => item.classList.toggle('selected', item === button));
+learning/inquiry/science-lab\heat-transfer\app.js-238-    }));
+learning/inquiry/science-lab\heat-transfer\app.js-239-
+learning/inquiry/science-lab\heat-transfer\app.js-240-    function shuffleQuizOptions(card) {
+learning/inquiry/science-lab\heat-transfer\app.js-241-        const optionGroup = card.querySelector('.quiz-options');
+learning/inquiry/science-lab\heat-transfer\app.js-242-        const options = Array.from(optionGroup.children);
+--
+learning/inquiry/science-lab\land-sea\app.js-129-        predictionArea.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
+learning/inquiry/science-lab\land-sea\app.js:130:            state.prediction = button.dataset.prediction;
+learning/inquiry/science-lab\land-sea\app.js-131-            predictionArea.querySelectorAll('button').forEach(b => b.classList.toggle('selected', b === button));
+learning/inquiry/science-lab\land-sea\app.js-132-        }));
+learning/inquiry/science-lab\land-sea\app.js-133-    }
+learning/inquiry/science-lab\land-sea\app.js-134-
+learning/inquiry/science-lab\land-sea\app.js-135-    /* ----------------------------------------------------------- visuals */
+learning/inquiry/science-lab\land-sea\app.js-136-    function renderArea(a, p) {
+--
+learning/inquiry/science-lab\land-sea\app.js-362-        state.mode = button.dataset.mode;
+learning/inquiry/science-lab\land-sea\app.js:363:        state.prediction = null;
+learning/inquiry/science-lab\land-sea\app.js-364-        modeButtons.forEach(item => item.classList.toggle('selected', item === button));
+learning/inquiry/science-lab\land-sea\app.js-365-        buildControls();
+learning/inquiry/science-lab\land-sea\app.js-366-        buildPrediction();
+learning/inquiry/science-lab\land-sea\app.js-367-        stageCaption.textContent = state.mode === 'area'
+learning/inquiry/science-lab\land-sea\app.js-368-            ? '지구 표면을 100칸으로 나눈 모형입니다. 눈을 감고 붙임딱지를 떨어뜨리는 것과 같습니다.'
+learning/inquiry/science-lab\land-sea\app.js-369-            : '왼쪽은 고른 물, 오른쪽은 견주기 위한 다른 물입니다. 물이 마르면서 접시에 남는 것을 보세요.';
+--
+learning/inquiry/science-lab\induction\app.js-87-        predictionArea.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
+learning/inquiry/science-lab\induction\app.js:88:            state.prediction = button.dataset.prediction;
+learning/inquiry/science-lab\induction\app.js-89-            predictionArea.querySelectorAll('button').forEach(b => b.classList.toggle('selected', b === button));
+learning/inquiry/science-lab\induction\app.js-90-        }));
+learning/inquiry/science-lab\induction\app.js-91-    }
+learning/inquiry/science-lab\induction\app.js-92-
+learning/inquiry/science-lab\induction\app.js-93-    /* ----------------------------------------------------------- visuals */
+learning/inquiry/science-lab\induction\app.js-94-    function arrow(x1, y1, x2, y2, cls) {
+--
+learning/inquiry/science-lab\induction\app.js-309-        state.mode = button.dataset.mode;
+learning/inquiry/science-lab\induction\app.js:310:        state.prediction = null;
+learning/inquiry/science-lab\induction\app.js-311-        modeButtons.forEach(item => item.classList.toggle('selected', item === button));
+learning/inquiry/science-lab\induction\app.js-312-        buildControls();
+learning/inquiry/science-lab\induction\app.js-313-        buildPrediction();
+learning/inquiry/science-lab\induction\app.js-314-        stageCaption.textContent = state.mode === 'induce'
+learning/inquiry/science-lab\induction\app.js-315-            ? '도선이 받는 힘은 언제나 움직임을 방해하는 쪽입니다.'
+learning/inquiry/science-lab\induction\app.js-316-            : '전지 안에서도 전력이 열로 버려집니다.';
+--
+learning/inquiry/science-lab\density-buoyancy\app.js-215-    predictionButtons.forEach(button => button.addEventListener('click', () => {
+learning/inquiry/science-lab\density-buoyancy\app.js:216:        prediction = button.dataset.prediction;
+learning/inquiry/science-lab\density-buoyancy\app.js-217-        predictionButtons.forEach(item => item.classList.toggle('selected', item === button));
+learning/inquiry/science-lab\density-buoyancy\app.js-218-    }));
+learning/inquiry/science-lab\density-buoyancy\app.js-219-    checkBtn.addEventListener('click', check);
+learning/inquiry/science-lab\density-buoyancy\app.js-220-
+learning/inquiry/science-lab\density-buoyancy\app.js-221-    function shuffleQuizOptions(card) {
+learning/inquiry/science-lab\density-buoyancy\app.js-222-        const optionGroup = card.querySelector('.quiz-options');
+--
+learning/inquiry/science-lab\life-cycle\app.js-367-document.querySelectorAll('[data-prediction]').forEach(b => b.addEventListener('click', () => {
+learning/inquiry/science-lab\life-cycle\app.js:368:    state.prediction = b.dataset.prediction; markSelected('[data-prediction]', 'prediction', state.prediction);
+learning/inquiry/science-lab\life-cycle\app.js-369-}));
+learning/inquiry/science-lab\life-cycle\app.js-370-$('stageRange').addEventListener('input', e => {
+learning/inquiry/science-lab\life-cycle\app.js-371-    state.step = Number(e.target.value);
+learning/inquiry/science-lab\life-cycle\app.js-372-    state.running = false; state.t = 0;   // dragged here by hand, so no part-day is elapsed
+learning/inquiry/science-lab\life-cycle\app.js-373-    $('runBtn').textContent = '키워 보기';
+learning/inquiry/science-lab\life-cycle\app.js-374-    $('stageOutput').textContent = ANIMALS[state.animal].stages[state.step].n;
+--
+learning/inquiry/science-lab\life-cycle\app.js-384-    state.animal = 'butterfly'; state.step = 0;
+learning/inquiry/science-lab\life-cycle\app.js:385:    state.prediction = null; state.checked = false; state.running = false; state.t = 0;
+learning/inquiry/science-lab\life-cycle\app.js-386-    $('runBtn').textContent = '키워 보기';
+learning/inquiry/science-lab\life-cycle\app.js-387-    document.querySelectorAll('[data-prediction]').forEach(x => x.classList.remove('selected'));
+learning/inquiry/science-lab\life-cycle\app.js-388-    $('resultEmpty').hidden = false; $('resultContent').hidden = true;
+learning/inquiry/science-lab\life-cycle\app.js-389-    markSelected('[data-animal]', 'animal', 'butterfly');
+learning/inquiry/science-lab\life-cycle\app.js-390-    fitRange(); render();
+learning/inquiry/science-lab\life-cycle\app.js-391-});
+--
+learning/inquiry/science-lab\immune\app.js-229-        predictionArea.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
+learning/inquiry/science-lab\immune\app.js:230:            state.prediction = button.dataset.prediction;
+learning/inquiry/science-lab\immune\app.js-231-            predictionArea.querySelectorAll('button').forEach(b => b.classList.toggle('selected', b === button));
+learning/inquiry/science-lab\immune\app.js-232-        }));
+learning/inquiry/science-lab\immune\app.js-233-    }
+learning/inquiry/science-lab\immune\app.js-234-
+learning/inquiry/science-lab\immune\app.js-235-    /* ----------------------------------------------------------- visuals */
+learning/inquiry/science-lab\immune\app.js-236-    const yShape = (x, y, cls, s = 4) => `<path class="${cls}" d="M${x},${y + s} L${x},${y} M${x},${y} L${x - s * 0.8},${y - s} M${x},${y} L${x + s * 0.8},${y - s}"/>`;
+--
+learning/inquiry/science-lab\immune\app.js-451-        labelB.textContent='관찰 대상';valueB.textContent='항체와 병원체 곡선';
+learning/inquiry/science-lab\immune\app.js:452:        predictionResult.textContent=!state.prediction?'다음에는 모형의 결과를 먼저 예상해 보세요.':state.prediction===a.verdict?'이 가상 모형의 예상이 맞았습니다.':'이 가상 모형의 결과와 다릅니다.';
+learning/inquiry/science-lab\immune\app.js-453-        explanation.textContent='특정 항원에 대한 면역 기억은 같은 항원에 다시 노출될 때 더 빠르고 강한 반응에 기여할 수 있습니다. B 림프구가 형질 세포로 분화하면 항체를 분비합니다. 그림의 수치·기간은 가상 조건이며 실제 감염, 접종 일정, 수혈이나 치료 결정을 위한 자료가 아닙니다.';
+learning/inquiry/science-lab\immune\app.js-454-    }
+learning/inquiry/science-lab\immune\app.js-455-
+learning/inquiry/science-lab\immune\app.js-456-    function settingsChanged() {
+learning/inquiry/science-lab\immune\app.js-457-        stopRun();
+learning/inquiry/science-lab\immune\app.js-458-        state.progress = 0;
+--
+learning/inquiry/science-lab\immune\app.js-465-        state.mode = button.dataset.mode;
+learning/inquiry/science-lab\immune\app.js:466:        state.prediction = null;
+learning/inquiry/science-lab\immune\app.js-467-        modeButtons.forEach(item => item.classList.toggle('selected', item === button));
+learning/inquiry/science-lab\immune\app.js-468-        buildControls();
+learning/inquiry/science-lab\immune\app.js-469-        buildPrediction();
+learning/inquiry/science-lab\immune\app.js-470-        checkBtn.textContent = state.mode === 'blood' ? '수혈하기' : '3주 흘려 보기';
+learning/inquiry/science-lab\immune\app.js-471-        stageCaption.textContent = state.mode === 'infect' ? '보라 점이 병원체, 초록 Y가 항체입니다. 아래 줄의 세포들이 차례로 깨어나며 병원체를 치웁니다.'
+learning/inquiry/science-lab\immune\app.js-472-            : state.mode === 'vaccine' ? '옅은 점은 백신 항원, 진한 보라 점은 진짜 병원체입니다. 그래프 가운데 점선에서 몇 달을 건너뜁니다.'
+--
+learning/inquiry/science-lab\mass-ratio\app.js-301-    predictionButtons.forEach(button => button.addEventListener('click', () => {
+learning/inquiry/science-lab\mass-ratio\app.js:302:        prediction = button.dataset.prediction;
+learning/inquiry/science-lab\mass-ratio\app.js-303-        predictionButtons.forEach(item => item.classList.toggle('selected', item === button));
+learning/inquiry/science-lab\mass-ratio\app.js-304-    }));
+learning/inquiry/science-lab\mass-ratio\app.js-305-
+learning/inquiry/science-lab\mass-ratio\app.js-306-    function shuffleQuizOptions(card) {
+learning/inquiry/science-lab\mass-ratio\app.js-307-        const optionGroup = card.querySelector('.quiz-options');
+learning/inquiry/science-lab\mass-ratio\app.js-308-        const options = Array.from(optionGroup.children);
+--
+learning/inquiry/science-lab\living-things\app.js-145-        predictionArea.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
+learning/inquiry/science-lab\living-things\app.js:146:            state.prediction = button.dataset.prediction;
+learning/inquiry/science-lab\living-things\app.js-147-            predictionArea.querySelectorAll('button').forEach(b => b.classList.toggle('selected', b === button));
+learning/inquiry/science-lab\living-things\app.js-148-        }));
+learning/inquiry/science-lab\living-things\app.js-149-    }
+learning/inquiry/science-lab\living-things\app.js-150-
+learning/inquiry/science-lab\living-things\app.js-151-    const CARD_PATHS = {
+learning/inquiry/science-lab\living-things\app.js-152-        '참새': 'M 24 32 C 34 32 40 38 42 46 C 54 46 74 54 84 66 L 90 74 L 76 72 C 68 80 52 80 40 74 C 32 68 30 58 30 48 C 30 38 24 32 24 32 M 22 38 L 12 42 L 22 44 Z M 48 78 L 46 90 M 56 78 L 58 90',
+--
+learning/inquiry/science-lab\living-things\app.js-363-        state.mode = button.dataset.mode;
+learning/inquiry/science-lab\living-things\app.js:364:        state.prediction = null;
+learning/inquiry/science-lab\living-things\app.js-365-        modeButtons.forEach(item => item.classList.toggle('selected', item === button));
+learning/inquiry/science-lab\living-things\app.js-366-        buildControls();
+learning/inquiry/science-lab\living-things\app.js-367-        buildPrediction();
+learning/inquiry/science-lab\living-things\app.js-368-        stageCaption.textContent = state.mode === 'sort'
+learning/inquiry/science-lab\living-things\app.js-369-            ? '카드가 한 장씩 기준에 맞는 상자로 들어갑니다.'
+learning/inquiry/science-lab\living-things\app.js-370-            : '왼쪽은 사는 곳, 오른쪽은 그 생물의 몸의 특징입니다.';
+--
+learning/inquiry/science-lab\magma\app.js-339-document.querySelectorAll('[data-prediction]').forEach(b => b.addEventListener('click', () => {
+learning/inquiry/science-lab\magma\app.js:340:    state.prediction = b.dataset.prediction; markSelected('[data-prediction]', 'prediction', state.prediction);
+learning/inquiry/science-lab\magma\app.js-341-}));
+learning/inquiry/science-lab\magma\app.js-342-$('tempRange').addEventListener('input', e => {
+learning/inquiry/science-lab\magma\app.js-343-    state.temp = Number(e.target.value);
+learning/inquiry/science-lab\magma\app.js-344-    $('tempOutput').textContent = `${state.temp} ℃`;
+learning/inquiry/science-lab\magma\app.js-345-    render();
+learning/inquiry/science-lab\magma\app.js-346-});
+--
+learning/inquiry/science-lab\magma\app.js-354-    state.kind = 'basalt'; state.water = 0.5; state.temp = 1200;
+learning/inquiry/science-lab\magma\app.js:355:    state.prediction = null; state.checked = false; state.running = false; state.blast = 0;
+learning/inquiry/science-lab\magma\app.js-356-    $('runBtn').textContent = '분출시키기';
+learning/inquiry/science-lab\magma\app.js-357-    document.querySelectorAll('[data-prediction]').forEach(x => x.classList.remove('selected'));
+learning/inquiry/science-lab\magma\app.js-358-    $('resultEmpty').hidden = false; $('resultContent').hidden = true;
+learning/inquiry/science-lab\magma\app.js-359-    markSelected('[data-kind]', 'kind', 'basalt'); markSelected('[data-water]', 'water', 0.5);
+learning/inquiry/science-lab\magma\app.js-360-    applyTempRange();
+learning/inquiry/science-lab\magma\app.js-361-    render();
+--
+learning/inquiry/science-lab\magnets\app.js-179-        predictionArea.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
+learning/inquiry/science-lab\magnets\app.js:180:            state.prediction = button.dataset.prediction;
+learning/inquiry/science-lab\magnets\app.js-181-            predictionArea.querySelectorAll('button').forEach(b => b.classList.toggle('selected', b === button));
+learning/inquiry/science-lab\magnets\app.js-182-        }));
+learning/inquiry/science-lab\magnets\app.js-183-    }
+learning/inquiry/science-lab\magnets\app.js-184-
+learning/inquiry/science-lab\magnets\app.js-185-    /* ----------------------------------------------------------- visuals */
+learning/inquiry/science-lab\magnets\app.js-186-    const PX_PER_CM = 14;
+--
+learning/inquiry/science-lab\magnets\app.js-421-        state.mode = button.dataset.mode;
+learning/inquiry/science-lab\magnets\app.js:422:        state.prediction = null;
+learning/inquiry/science-lab\magnets\app.js-423-        modeButtons.forEach(item => item.classList.toggle('selected', item === button));
+learning/inquiry/science-lab\magnets\app.js-424-        buildControls();
+learning/inquiry/science-lab\magnets\app.js-425-        buildPrediction();
+learning/inquiry/science-lab\magnets\app.js-426-        stageCaption.textContent = state.mode === 'force'
+learning/inquiry/science-lab\magnets\app.js-427-            ? '왼쪽 자석은 고정되어 있고 오른쪽 것만 움직일 수 있습니다. 노란 화살표가 힘의 방향과 세기입니다.'
+learning/inquiry/science-lab\magnets\app.js-428-            : '큰 나침반이 내가 놓은 것, 작은 나침반은 다른 자리에 놓았을 때 모습입니다. 위쪽이 북쪽입니다.';
+--
+learning/inquiry/science-lab\microscope\app.js-325-document.querySelectorAll('[data-prediction]').forEach(b => b.addEventListener('click', () => {
+learning/inquiry/science-lab\microscope\app.js:326:    state.prediction = b.dataset.prediction; markSelected('[data-prediction]', 'prediction', state.prediction);
+learning/inquiry/science-lab\microscope\app.js-327-}));
+learning/inquiry/science-lab\microscope\app.js-328-$('runBtn').addEventListener('click', () => {
+learning/inquiry/science-lab\microscope\app.js-329-    if (state.running) { state.running = false; state.focus = 1; $('runBtn').textContent = '초점 맞추기'; return; }
+learning/inquiry/science-lab\microscope\app.js-330-    state.focus = 0; state.running = true; state.checked = true;
+learning/inquiry/science-lab\microscope\app.js-331-    $('runBtn').textContent = '멈추기';
+learning/inquiry/science-lab\microscope\app.js-332-    render();
+--
+learning/inquiry/science-lab\microscope\app.js-335-    state.spec = 'onion'; state.eye = 10; state.obj = 4;
+learning/inquiry/science-lab\microscope\app.js:336:    state.prediction = null; state.checked = false; state.running = false; state.focus = 1;
+learning/inquiry/science-lab\microscope\app.js-337-    $('runBtn').textContent = '초점 맞추기';
+learning/inquiry/science-lab\microscope\app.js-338-    document.querySelectorAll('[data-prediction]').forEach(x => x.classList.remove('selected'));
+learning/inquiry/science-lab\microscope\app.js-339-    $('resultEmpty').hidden = false; $('resultContent').hidden = true;
+learning/inquiry/science-lab\microscope\app.js-340-    markSelected('[data-spec]', 'spec', 'onion'); markSelected('[data-eye]', 'eye', 10); markSelected('[data-obj]', 'obj', 4);
+learning/inquiry/science-lab\microscope\app.js-341-    render();
+learning/inquiry/science-lab\microscope\app.js-342-});
+--
+learning/inquiry/science-lab\cell-osmosis\app.js-274-    predictionButtons.forEach(button => button.addEventListener('click', () => {
+learning/inquiry/science-lab\cell-osmosis\app.js:275:        prediction = button.dataset.prediction;
+learning/inquiry/science-lab\cell-osmosis\app.js-276-        predictionButtons.forEach(item => item.classList.toggle('selected', item === button));
+learning/inquiry/science-lab\cell-osmosis\app.js-277-    }));
+learning/inquiry/science-lab\cell-osmosis\app.js-278-
+learning/inquiry/science-lab\cell-osmosis\app.js-279-    function shuffleQuizOptions(card) {
+learning/inquiry/science-lab\cell-osmosis\app.js-280-        const optionGroup = card.querySelector('.quiz-options');
+learning/inquiry/science-lab\cell-osmosis\app.js-281-        const options = Array.from(optionGroup.children);
+--
+learning/inquiry/science-lab\metamorphism\app.js-167-        predictionArea.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
+learning/inquiry/science-lab\metamorphism\app.js:168:            state.prediction = button.dataset.prediction;
+learning/inquiry/science-lab\metamorphism\app.js-169-            predictionArea.querySelectorAll('button').forEach(b => b.classList.toggle('selected', b === button));
+learning/inquiry/science-lab\metamorphism\app.js-170-        }));
+learning/inquiry/science-lab\metamorphism\app.js-171-    }
+learning/inquiry/science-lab\metamorphism\app.js-172-    const eul = s => jong(s) ? '을' : '를';
+learning/inquiry/science-lab\metamorphism\app.js-173-
+learning/inquiry/science-lab\metamorphism\app.js-174-    /* ----------------------------------------------------------- visuals */
+--
+learning/inquiry/science-lab\metamorphism\app.js-425-        state.mode = button.dataset.mode;
+learning/inquiry/science-lab\metamorphism\app.js:426:        state.prediction = null;
+learning/inquiry/science-lab\metamorphism\app.js-427-        modeButtons.forEach(item => item.classList.toggle('selected', item === button));
+learning/inquiry/science-lab\metamorphism\app.js-428-        buildControls();
+learning/inquiry/science-lab\metamorphism\app.js-429-        buildPrediction();
+learning/inquiry/science-lab\metamorphism\app.js-430-        checkBtn.textContent = state.mode === 'facies' ? '묻어 내리기' : state.mode === 'grade' ? '데우기' : '마그마 관입시키기';
+learning/inquiry/science-lab\metamorphism\app.js-431-        stageCaption.textContent = state.mode === 'facies' ? '왼쪽 지각 기둥에서 셰일 시료가 고른 깊이까지 묻혀 내려갑니다. 점선은 등온선이고, 오른쪽은 그 깊이에서 시료가 되는 암석입니다.'
+learning/inquiry/science-lab\metamorphism\app.js-432-            : state.mode === 'grade' ? '왼쪽 암석 조각을 데우며 광물과 조직이 바뀌는 모습입니다. 짧은 선은 판 모양 광물, 노란 선은 운모, 붉은 점은 석류석입니다.'
+--
+learning/inquiry/science-lab\combustion\app.js-99-    predictionButtons.forEach(button => button.addEventListener('click', () => {
+learning/inquiry/science-lab\combustion\app.js:100:        state.prediction = button.dataset.prediction;
+learning/inquiry/science-lab\combustion\app.js-101-        predictionButtons.forEach(b => b.classList.toggle('selected', b === button));
+learning/inquiry/science-lab\combustion\app.js-102-    }));
+learning/inquiry/science-lab\combustion\app.js-103-    const clearPrediction = () => {
+learning/inquiry/science-lab\combustion\app.js:104:        state.prediction = null;
+learning/inquiry/science-lab\combustion\app.js-105-        predictionButtons.forEach(b => b.classList.remove('selected'));
+learning/inquiry/science-lab\combustion\app.js-106-    };
+learning/inquiry/science-lab\combustion\app.js-107-
+learning/inquiry/science-lab\combustion\app.js-108-    /* ----------------------------------------------------------- visuals */
+learning/inquiry/science-lab\combustion\app.js-109-    function flame(cx, baseY, s, dim = 1) {
+learning/inquiry/science-lab\combustion\app.js-110-        if (s <= 0.02) return '';
+--
+learning/inquiry/science-lab\mole\app.js-173-        predictionArea.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
+learning/inquiry/science-lab\mole\app.js:174:            state.prediction = button.dataset.prediction;
+learning/inquiry/science-lab\mole\app.js-175-            predictionArea.querySelectorAll('button').forEach(b => b.classList.toggle('selected', b === button));
+learning/inquiry/science-lab\mole\app.js-176-        }));
+learning/inquiry/science-lab\mole\app.js-177-    }
+learning/inquiry/science-lab\mole\app.js-178-
+learning/inquiry/science-lab\mole\app.js-179-    /* ----------------------------------------------------------- visuals */
+learning/inquiry/science-lab\mole\app.js-180-    function renderCount(a) {
+--
+learning/inquiry/science-lab\mole\app.js-425-        state.mode = button.dataset.mode;
+learning/inquiry/science-lab\mole\app.js:426:        state.prediction = null;
+learning/inquiry/science-lab\mole\app.js-427-        modeButtons.forEach(item => item.classList.toggle('selected', item === button));
+learning/inquiry/science-lab\mole\app.js-428-        buildControls();
+learning/inquiry/science-lab\mole\app.js-429-        buildPrediction();
+learning/inquiry/science-lab\mole\app.js-430-        checkBtn.textContent = state.mode === 'count' ? '저울에 올리기' : state.mode === 'react' ? '반응시키기' : '만들고 묽히기';
+learning/inquiry/science-lab\mole\app.js-431-        stageCaption.textContent = state.mode === 'count' ? '왼쪽 접시의 물질을 재고, 몰 질량으로 나누어 몰수와 입자 수를 셉니다. 기체면 0 ℃ 1기압에서의 부피도 나옵니다.'
+learning/inquiry/science-lab\mole\app.js-432-            : state.mode === 'react' ? '왼쪽 두 상자가 반응물, 오른쪽이 생성물입니다. 점 하나가 0.25 mol이고, 남는 점은 그대로 상자에 남습니다.'
+--
+learning/inquiry/science-lab\cell-division\app.js-325-    predictionButtons.forEach(button => button.addEventListener('click', () => {
+learning/inquiry/science-lab\cell-division\app.js:326:        prediction = button.dataset.prediction;
+learning/inquiry/science-lab\cell-division\app.js-327-        predictionButtons.forEach(item => item.classList.toggle('selected', item === button));
+learning/inquiry/science-lab\cell-division\app.js-328-    }));
+learning/inquiry/science-lab\cell-division\app.js-329-    checkBtn.addEventListener('click', startRun);
+learning/inquiry/science-lab\cell-division\app.js-330-    resetBtn.addEventListener('click', () => {
+learning/inquiry/science-lab\cell-division\app.js-331-        stopRun();
+learning/inquiry/science-lab\cell-division\app.js-332-        stageRange.value = '0';
+--
+learning/inquiry/science-lab\molecule-shape\app.js-175-        predictionArea.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
+learning/inquiry/science-lab\molecule-shape\app.js:176:            state.prediction = button.dataset.prediction;
+learning/inquiry/science-lab\molecule-shape\app.js-177-            predictionArea.querySelectorAll('button').forEach(b => b.classList.toggle('selected', b === button));
+learning/inquiry/science-lab\molecule-shape\app.js-178-        }));
+learning/inquiry/science-lab\molecule-shape\app.js-179-    }
+learning/inquiry/science-lab\molecule-shape\app.js-180-
+learning/inquiry/science-lab\molecule-shape\app.js-181-    /* ----------------------------------------------------------- visuals */
+learning/inquiry/science-lab\molecule-shape\app.js-182-    // turn about the vertical axis by th, then tip the top toward the viewer a little
+--
+learning/inquiry/science-lab\molecule-shape\app.js-475-        state.mode = button.dataset.mode;
+learning/inquiry/science-lab\molecule-shape\app.js:476:        state.prediction = null;
+learning/inquiry/science-lab\molecule-shape\app.js-477-        modeButtons.forEach(item => item.classList.toggle('selected', item === button));
+learning/inquiry/science-lab\molecule-shape\app.js-478-        buildControls();
+learning/inquiry/science-lab\molecule-shape\app.js-479-        buildPrediction();
+learning/inquiry/science-lab\molecule-shape\app.js-480-        checkBtn.textContent = state.mode === 'shape' ? '분자 돌려 보기' : state.mode === 'polar' ? '전기장 걸기' : '넣고 저어 보기';
+learning/inquiry/science-lab\molecule-shape\app.js-481-        stageCaption.textContent = state.mode === 'shape' ? '분자가 천천히 돌아갑니다. 보라색 덩어리가 비공유 전자쌍이고, 노란 호가 결합각입니다.'
+learning/inquiry/science-lab\molecule-shape\app.js-482-            : state.mode === 'polar' ? '왼쪽은 결합마다의 쌍극자 화살표와 그 합, 오른쪽은 전기장 속의 분자들입니다. 극성 분자만 줄지어 섭니다.'
+--
+learning/inquiry/science-lab\living-environment\app.js-159-        predictionArea.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
+learning/inquiry/science-lab\living-environment\app.js:160:            state.prediction = button.dataset.prediction;
+learning/inquiry/science-lab\living-environment\app.js-161-            predictionArea.querySelectorAll('button').forEach(b => b.classList.toggle('selected', b === button));
+learning/inquiry/science-lab\living-environment\app.js-162-        }));
+learning/inquiry/science-lab\living-environment\app.js-163-    }
+learning/inquiry/science-lab\living-environment\app.js-164-
+learning/inquiry/science-lab\living-environment\app.js-165-    /* ----------------------------------------------------------- visuals */
+learning/inquiry/science-lab\living-environment\app.js-166-    const HUES = { green: { stem: '#5fae4a', leaf: '#6cc25a' }, yellow: { stem: '#d9d26a', leaf: '#e6de7a' }, none: { stem: '#8a7a5a', leaf: '#8a7a5a' } };
+--
+learning/inquiry/science-lab\living-environment\app.js-438-        state.mode = button.dataset.mode;
+learning/inquiry/science-lab\living-environment\app.js:439:        state.prediction = null;
+learning/inquiry/science-lab\living-environment\app.js-440-        modeButtons.forEach(item => item.classList.toggle('selected', item === button));
+learning/inquiry/science-lab\living-environment\app.js-441-        buildControls();
+learning/inquiry/science-lab\living-environment\app.js-442-        buildPrediction();
+learning/inquiry/science-lab\living-environment\app.js-443-        stageCaption.textContent = state.mode === 'bean'
+learning/inquiry/science-lab\living-environment\app.js-444-            ? '왼쪽은 햇빛·물·따뜻함을 모두 준 기준 화분, 오른쪽은 내가 고른 조건의 화분입니다.'
+learning/inquiry/science-lab\living-environment\app.js-445-            : `${EVENT_MONTH}달째에 일이 일어난 뒤 풀·토끼·여우의 수가 차례로 어떻게 바뀌는지 보세요.`;
+--
+learning/inquiry/science-lab\moon-phases\app.js-152-    predictionButtons.forEach(button => button.addEventListener('click', () => {
+learning/inquiry/science-lab\moon-phases\app.js:153:        prediction = button.dataset.prediction;
+learning/inquiry/science-lab\moon-phases\app.js-154-        predictionButtons.forEach(item => item.classList.toggle('selected', item === button));
+learning/inquiry/science-lab\moon-phases\app.js-155-    }));
+learning/inquiry/science-lab\moon-phases\app.js-156-    checkButton.addEventListener('click', check);
+learning/inquiry/science-lab\moon-phases\app.js-157-
+learning/inquiry/science-lab\moon-phases\app.js-158-    function shuffleQuizOptions(card) {
+learning/inquiry/science-lab\moon-phases\app.js-159-        const optionGroup = card.querySelector('.quiz-options');
+--
+learning/inquiry/science-lab\microbes\app.js-123-        predictionArea.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
+learning/inquiry/science-lab\microbes\app.js:124:            state.prediction = button.dataset.prediction;
+learning/inquiry/science-lab\microbes\app.js-125-            predictionArea.querySelectorAll('button').forEach(b => b.classList.toggle('selected', b === button));
+learning/inquiry/science-lab\microbes\app.js-126-        }));
+learning/inquiry/science-lab\microbes\app.js-127-    }
+learning/inquiry/science-lab\microbes\app.js-128-
+learning/inquiry/science-lab\microbes\app.js-129-    /* ----------------------------------------------------------- visuals */
+learning/inquiry/science-lab\microbes\app.js-130-    const fmtCount = n => (n >= 10000 ? `약 ${Math.round(n / 10000)}만` : n >= 1000 ? `약 ${Math.round(n / 100) * 100}` : `${Math.round(n)}`);
+--
+learning/inquiry/science-lab\microbes\app.js-359-        state.mode = button.dataset.mode;
+learning/inquiry/science-lab\microbes\app.js:360:        state.prediction = null;
+learning/inquiry/science-lab\microbes\app.js-361-        modeButtons.forEach(item => item.classList.toggle('selected', item === button));
+learning/inquiry/science-lab\microbes\app.js-362-        buildControls();
+learning/inquiry/science-lab\microbes\app.js-363-        buildPrediction();
+learning/inquiry/science-lab\microbes\app.js-364-        stageCaption.textContent = state.mode === 'mould'
+learning/inquiry/science-lab\microbes\app.js-365-            ? '날이 갈수록 빵 위에 곰팡이가 얼마나 퍼지는지 보세요.'
+learning/inquiry/science-lab\microbes\app.js-366-            : '세균이 둘로 나뉠 때마다 수가 2배가 되는 것을 보세요.';
+--
+learning/inquiry/science-lab\measurement\app.js-175-        predictionArea.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
+learning/inquiry/science-lab\measurement\app.js:176:            state.prediction = button.dataset.prediction;
+learning/inquiry/science-lab\measurement\app.js-177-            predictionArea.querySelectorAll('button').forEach(b => b.classList.toggle('selected', b === button));
+learning/inquiry/science-lab\measurement\app.js-178-        }));
+learning/inquiry/science-lab\measurement\app.js-179-    }
+learning/inquiry/science-lab\measurement\app.js-180-
+learning/inquiry/science-lab\measurement\app.js-181-    /* ----------------------------------------------------------- visuals */
+learning/inquiry/science-lab\measurement\app.js-182-    function renderScale(a) {
+--
+learning/inquiry/science-lab\measurement\app.js-434-        state.mode = button.dataset.mode;
+learning/inquiry/science-lab\measurement\app.js:435:        state.prediction = null;
+learning/inquiry/science-lab\measurement\app.js-436-        modeButtons.forEach(item => item.classList.toggle('selected', item === button));
+learning/inquiry/science-lab\measurement\app.js-437-        buildControls();
+learning/inquiry/science-lab\measurement\app.js-438-        buildPrediction();
+learning/inquiry/science-lab\measurement\app.js-439-        checkBtn.textContent = state.mode === 'scale' ? '10배씩 가 보기' : state.mode === 'units' ? '역사 넘기기' : '열 번 재기';
+learning/inquiry/science-lab\measurement\app.js-440-        stageCaption.textContent = state.mode === 'scale' ? '눈금 한 칸이 10배입니다. 기준(사람 키 1.7 m 또는 1초)에서 출발해 대상까지 칸을 세어 갑니다.'
+learning/inquiry/science-lab\measurement\app.js-441-            : state.mode === 'units' ? '시간을 넘기며 그 단위의 기준이 무엇에 맞추어져 있었는지 카드가 열립니다.'
+--
+learning/inquiry/science-lab\cell-membrane\app.js-105-        predictionArea.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
+learning/inquiry/science-lab\cell-membrane\app.js:106:            state.prediction = button.dataset.prediction;
+learning/inquiry/science-lab\cell-membrane\app.js-107-            predictionArea.querySelectorAll('button').forEach(b => b.classList.toggle('selected', b === button));
+learning/inquiry/science-lab\cell-membrane\app.js-108-        }));
+learning/inquiry/science-lab\cell-membrane\app.js-109-    }
+learning/inquiry/science-lab\cell-membrane\app.js-110-
+learning/inquiry/science-lab\cell-membrane\app.js-111-    /* ----------------------------------------------------------- visuals */
+learning/inquiry/science-lab\cell-membrane\app.js-112-    function renderDiffusion(a) {
+--
+learning/inquiry/science-lab\cell-membrane\app.js-227-        labelB.textContent='관찰 조건';valueB.textContent=a.kind==='diffusion'?a.c.label:a.sol.label;
+learning/inquiry/science-lab\cell-membrane\app.js:228:        predictionResult.textContent=!state.prediction?'다음에는 결과를 먼저 예상해 보세요.':state.prediction===a.verdict?'이 모형의 예상이 맞았습니다.':'이 모형의 결과와 다릅니다.';
+learning/inquiry/science-lab\cell-membrane\app.js-229-        explanation.textContent=a.kind==='diffusion'?'알갱이는 양방향으로 이동하지만 농도가 높은 쪽에서 낮은 쪽으로 순이동합니다. 양쪽 농도가 같아져도 움직임은 계속됩니다. 시간과 이동 비율은 가상 설정입니다.':'물을 통과시키고 같은 용질은 통과시키지 않는 막에서, 바깥이 더 옅으면 물이 안으로, 더 진하면 밖으로 순이동합니다. 같은 농도에서는 평균적인 순이동이 거의 없습니다. 막의 투과성이 달라지는 경우와 실제 의료용 용액은 이 모형으로 판단하지 않습니다.';
+learning/inquiry/science-lab\cell-membrane\app.js-230-    }
+learning/inquiry/science-lab\cell-membrane\app.js-231-
+learning/inquiry/science-lab\cell-membrane\app.js-232-    function settingsChanged() {
+learning/inquiry/science-lab\cell-membrane\app.js-233-        stopRun();
+learning/inquiry/science-lab\cell-membrane\app.js-234-        state.progress = 0;
+--
+learning/inquiry/science-lab\cell-membrane\app.js-241-        state.mode = button.dataset.mode;
+learning/inquiry/science-lab\cell-membrane\app.js:242:        state.prediction = null;
+learning/inquiry/science-lab\cell-membrane\app.js-243-        modeButtons.forEach(item => item.classList.toggle('selected', item === button));
+learning/inquiry/science-lab\cell-membrane\app.js-244-        buildControls();
+learning/inquiry/science-lab\cell-membrane\app.js-245-        buildPrediction();
+learning/inquiry/science-lab\cell-membrane\app.js-246-        checkBtn.textContent = state.mode === 'diffusion' ? '20초 흘려 보기' : '15초 흘려 보기';
+learning/inquiry/science-lab\cell-membrane\app.js-247-        stageCaption.textContent = state.mode === 'diffusion' ? '가운데 노란 막에는 작은 구멍이 있어 산소 알갱이가 어느 쪽으로든 지나갈 수 있습니다.'
+learning/inquiry/science-lab\cell-membrane\app.js-248-            : '비커의 흰 점은 녹은 알갱이입니다. 물(파란 화살표)만 세포막을 지나고, 알갱이는 지나지 못합니다.';
+--
+learning/inquiry/science-lab\burning-conditions\app.js-103-    predictionButtons.forEach(button => button.addEventListener('click', () => {
+learning/inquiry/science-lab\burning-conditions\app.js:104:        state.prediction = button.dataset.prediction;
+learning/inquiry/science-lab\burning-conditions\app.js-105-        predictionButtons.forEach(b => b.classList.toggle('selected', b === button));
+learning/inquiry/science-lab\burning-conditions\app.js-106-    }));
+learning/inquiry/science-lab\burning-conditions\app.js-107-    const clearPrediction = () => {
+learning/inquiry/science-lab\burning-conditions\app.js:108:        state.prediction = null;
+learning/inquiry/science-lab\burning-conditions\app.js-109-        predictionButtons.forEach(b => b.classList.remove('selected'));
+learning/inquiry/science-lab\burning-conditions\app.js-110-    };
+learning/inquiry/science-lab\burning-conditions\app.js-111-
+learning/inquiry/science-lab\burning-conditions\app.js-112-    /* ----------------------------------------------------------- visuals */
+learning/inquiry/science-lab\burning-conditions\app.js-113-    function flame(cx, baseY, s, dim = 1) {
+learning/inquiry/science-lab\burning-conditions\app.js-114-        if (s <= 0.02) return '';
+--
+learning/inquiry/science-lab\minerals-rocks\app.js-149-        predictionArea.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
+learning/inquiry/science-lab\minerals-rocks\app.js:150:            state.prediction = button.dataset.prediction;
+learning/inquiry/science-lab\minerals-rocks\app.js-151-            predictionArea.querySelectorAll('button').forEach(b => b.classList.toggle('selected', b === button));
+learning/inquiry/science-lab\minerals-rocks\app.js-152-        }));
+learning/inquiry/science-lab\minerals-rocks\app.js-153-    }
+learning/inquiry/science-lab\minerals-rocks\app.js-154-
+learning/inquiry/science-lab\minerals-rocks\app.js-155-    /* ----------------------------------------------------------- visuals */
+learning/inquiry/science-lab\minerals-rocks\app.js-156-    function rng(seed) { let s = seed >>> 0; return () => { s = (s * 1664525 + 1013904223) >>> 0; return s / 4294967296; }; }
+--
+learning/inquiry/science-lab\minerals-rocks\app.js-397-        state.mode = button.dataset.mode;
+learning/inquiry/science-lab\minerals-rocks\app.js:398:        state.prediction = null;
+learning/inquiry/science-lab\minerals-rocks\app.js-399-        modeButtons.forEach(item => item.classList.toggle('selected', item === button));
+learning/inquiry/science-lab\minerals-rocks\app.js-400-        buildControls();
+learning/inquiry/science-lab\minerals-rocks\app.js-401-        buildPrediction();
+learning/inquiry/science-lab\minerals-rocks\app.js-402-        stageCaption.textContent = state.mode === 'mineral'
+learning/inquiry/science-lab\minerals-rocks\app.js-403-            ? '굳기가 큰 쪽이 작은 쪽에 흠집을 냅니다. 같으면 서로 긁지 못합니다.'
+learning/inquiry/science-lab\minerals-rocks\app.js-404-            : '확대한 화면에서 알갱이의 크기를 견주어 보세요.';
+--
+learning/inquiry/science-lab\collision\app.js-248-    predictionButtons.forEach(button => button.addEventListener('click', () => {
+learning/inquiry/science-lab\collision\app.js:249:        prediction = button.dataset.prediction;
+learning/inquiry/science-lab\collision\app.js-250-        predictionButtons.forEach(item => item.classList.toggle('selected', item === button));
+learning/inquiry/science-lab\collision\app.js-251-    }));
+learning/inquiry/science-lab\collision\app.js-252-    checkBtn.addEventListener('click', startRun);
+learning/inquiry/science-lab\collision\app.js-253-    resetBtn.addEventListener('click', () => {
+learning/inquiry/science-lab\collision\app.js-254-        stopRun();
+learning/inquiry/science-lab\collision\app.js-255-        m1Range.value = '2'; m2Range.value = '2'; v1Range.value = '3';
+--
+learning/inquiry/science-lab\motion-energy\app.js-151-        predictionArea.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
+learning/inquiry/science-lab\motion-energy\app.js:152:            state.prediction = button.dataset.prediction;
+learning/inquiry/science-lab\motion-energy\app.js-153-            predictionArea.querySelectorAll('button').forEach(b => b.classList.toggle('selected', b === button));
+learning/inquiry/science-lab\motion-energy\app.js-154-        }));
+learning/inquiry/science-lab\motion-energy\app.js-155-    }
+learning/inquiry/science-lab\motion-energy\app.js-156-
+learning/inquiry/science-lab\motion-energy\app.js-157-    /* ----------------------------------------------------------- visuals */
+learning/inquiry/science-lab\motion-energy\app.js-158-    function renderIncline(a, p) {
+--
+learning/inquiry/science-lab\motion-energy\app.js-432-        state.mode = button.dataset.mode;
+learning/inquiry/science-lab\motion-energy\app.js:433:        state.prediction = null;
+learning/inquiry/science-lab\motion-energy\app.js-434-        modeButtons.forEach(item => item.classList.toggle('selected', item === button));
+learning/inquiry/science-lab\motion-energy\app.js-435-        buildControls();
+learning/inquiry/science-lab\motion-energy\app.js-436-        buildPrediction();
+learning/inquiry/science-lab\motion-energy\app.js-437-        stageCaption.textContent = state.mode === 'incline'
+learning/inquiry/science-lab\motion-energy\app.js-438-            ? '일정한 시간마다 찍은 점 사이가 벌어지면 속력이 늘고 있다는 뜻입니다.'
+learning/inquiry/science-lab\motion-energy\app.js-439-            : '두 막대가 서로 바뀌는 동안 오른쪽 합 막대는 그대로인지 보세요.';
+--
+learning/inquiry/science-lab\circuit-bulbs\app.js-240-        clearResult();
+learning/inquiry/science-lab\circuit-bulbs\app.js:241:        prediction = button.dataset.prediction;
+learning/inquiry/science-lab\circuit-bulbs\app.js-242-        predictionButtons.forEach(item => {item.classList.toggle('selected', item === button);item.setAttribute('aria-pressed',String(item===button));});
+learning/inquiry/science-lab\circuit-bulbs\app.js-243-    }));
+learning/inquiry/science-lab\circuit-bulbs\app.js-244-    checkBtn.addEventListener('click', check);
+learning/inquiry/science-lab\circuit-bulbs\app.js-245-
+learning/inquiry/science-lab\circuit-bulbs\app.js-246-    function shuffleQuizOptions(card) {
+learning/inquiry/science-lab\circuit-bulbs\app.js-247-        const optionGroup = card.querySelector('.quiz-options');
+--
+learning/inquiry/science-lab\natural-selection\app.js-169-        predictionArea.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
+learning/inquiry/science-lab\natural-selection\app.js:170:            state.prediction = button.dataset.prediction;
+learning/inquiry/science-lab\natural-selection\app.js-171-            predictionArea.querySelectorAll('button').forEach(b => b.classList.toggle('selected', b === button));
+learning/inquiry/science-lab\natural-selection\app.js-172-        }));
+learning/inquiry/science-lab\natural-selection\app.js-173-    }
+learning/inquiry/science-lab\natural-selection\app.js-174-
+learning/inquiry/science-lab\natural-selection\app.js-175-    /* ----------------------------------------------------------- visuals */
+learning/inquiry/science-lab\natural-selection\app.js-176-    const shadeHex = s => { const v = Math.round(235 - 190 * s); return `rgb(${v},${v - 10},${v - 20})`; };
+--
+learning/inquiry/science-lab\natural-selection\app.js-352-        state.mode = button.dataset.mode;
+learning/inquiry/science-lab\natural-selection\app.js:353:        state.prediction = null;
+learning/inquiry/science-lab\natural-selection\app.js-354-        modeButtons.forEach(item => item.classList.toggle('selected', item === button));
+learning/inquiry/science-lab\natural-selection\app.js-355-        buildControls();
+learning/inquiry/science-lab\natural-selection\app.js-356-        buildPrediction();
+learning/inquiry/science-lab\natural-selection\app.js-357-        stageCaption.textContent = state.mode === 'beak'
+learning/inquiry/science-lab\natural-selection\app.js-358-            ? '한 세대마다 먹이를 잘 먹는 새가 살아남고, 흐려진 새는 자손을 남기지 못합니다.'
+learning/inquiry/science-lab\natural-selection\app.js-359-            : '한 세대마다 배경에 잘 숨는 쥐가 살아남고, 흐려진 쥐는 천적에게 잡힙니다.';
+--
+learning/inquiry/science-lab\motor-magnet\app.js-169-        predictionArea.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
+learning/inquiry/science-lab\motor-magnet\app.js:170:            state.prediction = button.dataset.prediction;
+learning/inquiry/science-lab\motor-magnet\app.js-171-            predictionArea.querySelectorAll('button').forEach(b => b.classList.toggle('selected', b === button));
+learning/inquiry/science-lab\motor-magnet\app.js-172-        }));
+learning/inquiry/science-lab\motor-magnet\app.js-173-    }
+learning/inquiry/science-lab\motor-magnet\app.js-174-
+learning/inquiry/science-lab\motor-magnet\app.js-175-    /* ----------------------------------------------------------- visuals */
+learning/inquiry/science-lab\motor-magnet\app.js-176-    const arrow = (x1, y1, x2, y2, cls, head, w = 3.5) => {
+--
+learning/inquiry/science-lab\motor-magnet\app.js-438-        state.mode = button.dataset.mode;
+learning/inquiry/science-lab\motor-magnet\app.js:439:        state.prediction = null;
+learning/inquiry/science-lab\motor-magnet\app.js-440-        modeButtons.forEach(item => item.classList.toggle('selected', item === button));
+learning/inquiry/science-lab\motor-magnet\app.js-441-        buildControls();
+learning/inquiry/science-lab\motor-magnet\app.js-442-        buildPrediction();
+learning/inquiry/science-lab\motor-magnet\app.js-443-        checkBtn.textContent = state.mode === 'motor' ? '전류 흘리기' : state.mode === 'material' ? '자석 가까이 대기' : '달구고 자석 대기';
+learning/inquiry/science-lab\motor-magnet\app.js-444-        stageCaption.textContent = state.mode === 'motor' ? '축 끝에서 본 코일입니다. 양쪽 도선의 ⊙는 전류가 나오는 쪽, ⊗는 들어가는 쪽이고, 초록 화살이 도선이 받는 힘입니다.'
+learning/inquiry/science-lab\motor-magnet\app.js-445-            : state.mode === 'material' ? '저울 위의 시료 1 cm³에 자석의 N극을 가까이 댑니다. 시료 속 노란 화살은 원자 자석의 방향, 위 화살은 시료가 받는 힘입니다.'
+--
+learning/inquiry/science-lab\neuron\app.js-201-        predictionArea.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
+learning/inquiry/science-lab\neuron\app.js:202:            state.prediction = button.dataset.prediction;
+learning/inquiry/science-lab\neuron\app.js-203-            predictionArea.querySelectorAll('button').forEach(b => b.classList.toggle('selected', b === button));
+learning/inquiry/science-lab\neuron\app.js-204-        }));
+learning/inquiry/science-lab\neuron\app.js-205-    }
+learning/inquiry/science-lab\neuron\app.js-206-
+learning/inquiry/science-lab\neuron\app.js-207-    /* ----------------------------------------------------------- visuals */
+learning/inquiry/science-lab\neuron\app.js-208-    function renderSpike(a) {
+--
+learning/inquiry/science-lab\neuron\app.js-469-        state.mode = button.dataset.mode;
+learning/inquiry/science-lab\neuron\app.js:470:        state.prediction = null;
+learning/inquiry/science-lab\neuron\app.js-471-        modeButtons.forEach(item => item.classList.toggle('selected', item === button));
+learning/inquiry/science-lab\neuron\app.js-472-        buildControls();
+learning/inquiry/science-lab\neuron\app.js-473-        buildPrediction();
+learning/inquiry/science-lab\neuron\app.js-474-        checkBtn.textContent = state.mode === 'spike' ? '자극 주기' : state.mode === 'conduct' ? '흥분 보내기' : '신호 건너 보내기';
+learning/inquiry/science-lab\neuron\app.js-475-        stageCaption.textContent = state.mode === 'spike' ? '세포막의 한 조각입니다. 위가 세포 밖, 아래가 세포 안이고 파란 통로가 Na⁺, 노란 통로가 K⁺ 통로입니다.'
+learning/inquiry/science-lab\neuron\app.js-476-            : state.mode === 'conduct' ? '세포체에서 근육까지 1 m 축삭입니다. 붉은 점이 활동 전위가 있는 자리입니다 (실제보다 느리게 재생).'
+--
+learning/inquiry/science-lab\neutralization\app.js-264-    predictionButtons.forEach(button => button.addEventListener('click', () => {
+learning/inquiry/science-lab\neutralization\app.js:265:        prediction = button.dataset.prediction;
+learning/inquiry/science-lab\neutralization\app.js-266-        predictionButtons.forEach(item => item.classList.toggle('selected', item === button));
+learning/inquiry/science-lab\neutralization\app.js-267-    }));
+learning/inquiry/science-lab\neutralization\app.js-268-
+learning/inquiry/science-lab\neutralization\app.js-269-    function shuffleQuizOptions(card) {
+learning/inquiry/science-lab\neutralization\app.js-270-        const optionGroup = card.querySelector('.quiz-options');
+learning/inquiry/science-lab\neutralization\app.js-271-        const options = Array.from(optionGroup.children);
+--
+learning/inquiry/science-lab\night-sky\app.js-153-        predictionArea.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
+learning/inquiry/science-lab\night-sky\app.js:154:            state.prediction = button.dataset.prediction;
+learning/inquiry/science-lab\night-sky\app.js-155-            predictionArea.querySelectorAll('button').forEach(b => b.classList.toggle('selected', b === button));
+learning/inquiry/science-lab\night-sky\app.js-156-        }));
+learning/inquiry/science-lab\night-sky\app.js-157-    }
+learning/inquiry/science-lab\night-sky\app.js-158-
+learning/inquiry/science-lab\night-sky\app.js-159-    /* ----------------------------------------------------------- visuals */
+learning/inquiry/science-lab\night-sky\app.js-160-    const hourText = h => { const hh = ((h % 24) + 24) % 24; const m = Math.round((hh % 1) * 60); return `${hh < 12 ? (hh < 5 ? '새벽' : '아침') : hh < 18 ? '오후' : '저녁'} ${Math.floor(hh) % 12 === 0 ? 12 : Math.floor(hh) % 12}시${m ? ` ${String(m).padStart(2, '0')}분` : ''}`; };
+--
+learning/inquiry/science-lab\night-sky\app.js-365-        state.mode = button.dataset.mode;
+learning/inquiry/science-lab\night-sky\app.js:366:        state.prediction = null;
+learning/inquiry/science-lab\night-sky\app.js-367-        modeButtons.forEach(item => item.classList.toggle('selected', item === button));
+learning/inquiry/science-lab\night-sky\app.js-368-        buildControls();
+learning/inquiry/science-lab\night-sky\app.js-369-        buildPrediction();
+learning/inquiry/science-lab\night-sky\app.js-370-        stageCaption.textContent = state.mode === 'moon'
+learning/inquiry/science-lab\night-sky\app.js-371-            ? '남쪽을 바라보고 선 모습입니다. 왼쪽이 동쪽, 오른쪽이 서쪽입니다.'
+learning/inquiry/science-lab\night-sky\app.js-372-            : '북쪽을 바라보고 선 모습입니다. 왼쪽이 서쪽, 오른쪽이 동쪽이고, 점선은 북극성을 찾는 선입니다.';
+--
+learning/inquiry/science-lab\ocean-circulation\app.js-289-document.querySelectorAll('[data-prediction]').forEach(b => b.addEventListener('click', () => {
+learning/inquiry/science-lab\ocean-circulation\app.js:290:    state.prediction = b.dataset.prediction; markSelected('[data-prediction]', 'prediction', state.prediction);
+learning/inquiry/science-lab\ocean-circulation\app.js-291-}));
+learning/inquiry/science-lab\ocean-circulation\app.js-292-$('latRange').addEventListener('input', e => {
+learning/inquiry/science-lab\ocean-circulation\app.js-293-    state.lat = Number(e.target.value);
+learning/inquiry/science-lab\ocean-circulation\app.js-294-    $('latOutput').textContent = `${state.lat}°${state.hemi}`;
+learning/inquiry/science-lab\ocean-circulation\app.js-295-    render();
+learning/inquiry/science-lab\ocean-circulation\app.js-296-});
+--
+learning/inquiry/science-lab\ocean-circulation\app.js-309-    state.hemi = 'N'; state.lat = 35; state.wind = 10;
+learning/inquiry/science-lab\ocean-circulation\app.js:310:    state.prediction = null; state.checked = false; state.running = false; state.t = 0;
+learning/inquiry/science-lab\ocean-circulation\app.js-311-    $('latRange').value = '35'; $('latOutput').textContent = '35°N';
+learning/inquiry/science-lab\ocean-circulation\app.js-312-    $('windRange').value = '10'; $('windOutput').textContent = '10 m/s';
+learning/inquiry/science-lab\ocean-circulation\app.js-313-    $('runBtn').textContent = '물덩이 놓아 보기';
+learning/inquiry/science-lab\ocean-circulation\app.js-314-    document.querySelectorAll('[data-prediction]').forEach(x => x.classList.remove('selected'));
+learning/inquiry/science-lab\ocean-circulation\app.js-315-    $('resultEmpty').hidden = false; $('resultContent').hidden = true;
+learning/inquiry/science-lab\ocean-circulation\app.js-316-    markSelected('[data-hemi]', 'hemi', 'N');
+--
+learning/inquiry/science-lab\nutrient-detection\app.js-201-        predictionArea.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
+learning/inquiry/science-lab\nutrient-detection\app.js:202:            state.prediction = button.dataset.prediction;
+learning/inquiry/science-lab\nutrient-detection\app.js-203-            predictionArea.querySelectorAll('button').forEach(b => b.classList.toggle('selected', b === button));
+learning/inquiry/science-lab\nutrient-detection\app.js-204-        }));
+learning/inquiry/science-lab\nutrient-detection\app.js-205-    }
+learning/inquiry/science-lab\nutrient-detection\app.js-206-
+learning/inquiry/science-lab\nutrient-detection\app.js-207-    /* ----------------------------------------------------------- SVG graphics */
+learning/inquiry/science-lab\nutrient-detection\app.js-208-    const SVG_DEFS = `
+--
+learning/inquiry/science-lab\nutrient-detection\app.js-873-        state.mode = button.dataset.mode;
+learning/inquiry/science-lab\nutrient-detection\app.js:874:        state.prediction = null;
+learning/inquiry/science-lab\nutrient-detection\app.js-875-        modeButtons.forEach(item => item.classList.toggle('selected', item === button));
+learning/inquiry/science-lab\nutrient-detection\app.js-876-        buildControls();
+learning/inquiry/science-lab\nutrient-detection\app.js-877-        buildPrediction();
+learning/inquiry/science-lab\nutrient-detection\app.js-878-        checkBtn.textContent = state.mode === 'reagent' ? '시약 넣기' : state.mode === 'benedict' ? '베네딕트 넣기' : '10분 반응시키고 검사하기';
+learning/inquiry/science-lab\nutrient-detection\app.js-879-        stageCaption.textContent = state.mode === 'reagent'
+learning/inquiry/science-lab\nutrient-detection\app.js-880-            ? '네 시험관에 같은 시약을 차례로 떨어뜨립니다. 찾는 영양소가 든 시험관만 색이 변하고, 나머지는 시약 색이 옅게 섞일 뿐입니다.'
+--
+learning/inquiry/science-lab\pea-genetics\app.js-198-        predictionArea.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
+learning/inquiry/science-lab\pea-genetics\app.js:199:            state.prediction = button.dataset.prediction;
+learning/inquiry/science-lab\pea-genetics\app.js-200-            predictionArea.querySelectorAll('button').forEach(b => b.classList.toggle('selected', b === button));
+learning/inquiry/science-lab\pea-genetics\app.js-201-        }));
+learning/inquiry/science-lab\pea-genetics\app.js-202-    }
+learning/inquiry/science-lab\pea-genetics\app.js-203-
+learning/inquiry/science-lab\pea-genetics\app.js-204-    /* ----------------------------------------------------------- visuals */
+learning/inquiry/science-lab\pea-genetics\app.js-205-    function seedShape(cx, cy, r, ph, cls = 'seed') {
+--
+learning/inquiry/science-lab\pea-genetics\app.js-480-        state.mode = button.dataset.mode;
+learning/inquiry/science-lab\pea-genetics\app.js:481:        state.prediction = null;
+learning/inquiry/science-lab\pea-genetics\app.js-482-        modeButtons.forEach(item => item.classList.toggle('selected', item === button));
+learning/inquiry/science-lab\pea-genetics\app.js-483-        buildControls();
+learning/inquiry/science-lab\pea-genetics\app.js-484-        buildPrediction();
+learning/inquiry/science-lab\pea-genetics\app.js-485-        stageCaption.textContent = state.mode === 'one'
+learning/inquiry/science-lab\pea-genetics\app.js-486-            ? '왼쪽 표는 기대, 오른쪽 씨앗은 실제로 뿌려 나온 결과입니다.'
+learning/inquiry/science-lab\pea-genetics\app.js-487-            : '두 형질이 따로 갈라지면 표의 16칸이 9 : 3 : 3 : 1로 나뉩니다.';
+--
+learning/inquiry/science-lab\ocean-layers\app.js-166-        predictionArea.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
+learning/inquiry/science-lab\ocean-layers\app.js:167:            state.prediction = button.dataset.prediction;
+learning/inquiry/science-lab\ocean-layers\app.js-168-            predictionArea.querySelectorAll('button').forEach(b => b.classList.toggle('selected', b === button));
+learning/inquiry/science-lab\ocean-layers\app.js-169-        }));
+learning/inquiry/science-lab\ocean-layers\app.js-170-    }
+learning/inquiry/science-lab\ocean-layers\app.js-171-
+learning/inquiry/science-lab\ocean-layers\app.js-172-    /* ----------------------------------------------------------- visuals */
+learning/inquiry/science-lab\ocean-layers\app.js-173-    const arrow = (x1, y1, x2, y2, cls, head, w = 3.5) => {
+--
+learning/inquiry/science-lab\ocean-layers\app.js-431-        state.mode = button.dataset.mode;
+learning/inquiry/science-lab\ocean-layers\app.js:432:        state.prediction = null;
+learning/inquiry/science-lab\ocean-layers\app.js-433-        modeButtons.forEach(item => item.classList.toggle('selected', item === button));
+learning/inquiry/science-lab\ocean-layers\app.js-434-        buildControls();
+learning/inquiry/science-lab\ocean-layers\app.js-435-        buildPrediction();
+learning/inquiry/science-lab\ocean-layers\app.js-436-        checkBtn.textContent = state.mode === 'profile' ? '수온 재기' : state.mode === 'salinity' ? '일어나게 하기' : '물덩이 놓기';
+learning/inquiry/science-lab\ocean-layers\app.js-437-        stageCaption.textContent = state.mode === 'profile' ? '왼쪽 물기둥의 색이 수온입니다. 노란 곡선이 깊이에 따른 수온이고, 급하게 꺾이는 곳이 수온약층입니다.'
+learning/inquiry/science-lab\ocean-layers\app.js-438-            : state.mode === 'salinity' ? '비커 속 흰 알갱이 35개가 염류입니다. 물이 늘거나 줄면 알갱이 사이가 벌어지거나 좁아집니다.'
+--
+learning/inquiry/science-lab\ohms-law\app.js-418-    predictionButtons.forEach(button => button.addEventListener('click', () => {
+learning/inquiry/science-lab\ohms-law\app.js:419:        prediction = button.dataset.prediction;
+learning/inquiry/science-lab\ohms-law\app.js-420-        predictionButtons.forEach(item => item.classList.toggle('selected', item === button));
+learning/inquiry/science-lab\ohms-law\app.js-421-    }));
+learning/inquiry/science-lab\ohms-law\app.js-422-    checkBtn.addEventListener('click', check);
+learning/inquiry/science-lab\ohms-law\app.js-423-
+learning/inquiry/science-lab\ohms-law\app.js-424-    function shuffleQuizOptions(card) {
+learning/inquiry/science-lab\ohms-law\app.js-425-        const optionGroup = card.querySelector('.quiz-options');
+--
+learning/inquiry/science-lab\phylogeny\app.js-174-        predictionArea.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
+learning/inquiry/science-lab\phylogeny\app.js:175:            state.prediction = button.dataset.prediction;
+learning/inquiry/science-lab\phylogeny\app.js-176-            predictionArea.querySelectorAll('button').forEach(b => b.classList.toggle('selected', b === button));
+learning/inquiry/science-lab\phylogeny\app.js-177-        }));
+learning/inquiry/science-lab\phylogeny\app.js-178-    }
+learning/inquiry/science-lab\phylogeny\app.js-179-
+learning/inquiry/science-lab\phylogeny\app.js-180-    /* ----------------------------------------------------------- visuals */
+learning/inquiry/science-lab\phylogeny\app.js-181-    function renderRank(a) {
+--
+learning/inquiry/science-lab\phylogeny\app.js-417-        state.mode = button.dataset.mode;
+learning/inquiry/science-lab\phylogeny\app.js:418:        state.prediction = null;
+learning/inquiry/science-lab\phylogeny\app.js-419-        modeButtons.forEach(item => item.classList.toggle('selected', item === button));
+learning/inquiry/science-lab\phylogeny\app.js-420-        buildControls();
+learning/inquiry/science-lab\phylogeny\app.js-421-        buildPrediction();
+learning/inquiry/science-lab\phylogeny\app.js-422-        checkBtn.textContent = state.mode === 'rank' ? '사다리 내려가기' : state.mode === 'tree' ? '가지 묶기' : '시계 돌리기';
+learning/inquiry/science-lab\phylogeny\app.js-423-        stageCaption.textContent = state.mode === 'rank' ? '역에서 종까지 여덟 단계를 내려갑니다. 초록 칸은 사람과 같은 무리, 갈라진 뒤에는 왼쪽이 사람, 오른쪽이 고른 생물입니다.'
+learning/inquiry/science-lab\phylogeny\app.js-424-            : state.mode === 'tree' ? '형질표에서 새 형질을 함께 가진 무리부터 차례로 묶어 계통수를 그립니다. 노란 점이 기준 생물, 초록과 주황이 견주는 두 생물, 노란 마디가 공통 조상입니다.'
+--
+learning/inquiry/science-lab\population\app.js-505-document.querySelectorAll('[data-mode]').forEach(b => b.addEventListener('click', () => {
+learning/inquiry/science-lab\population\app.js:506:    state.mode = b.dataset.mode; state.prediction = null; state.checked = false;
+learning/inquiry/science-lab\population\app.js-507-    document.querySelectorAll('[data-prediction]').forEach(x => x.classList.remove('selected'));
+learning/inquiry/science-lab\population\app.js-508-    $('resultEmpty').hidden = false; $('resultContent').hidden = true;
+learning/inquiry/science-lab\population\app.js-509-    applyMode();
+learning/inquiry/science-lab\population\app.js-510-}));
+learning/inquiry/science-lab\population\app.js-511-document.querySelectorAll('[data-model]').forEach(b => b.addEventListener('click', () => {
+learning/inquiry/science-lab\population\app.js-512-    state.model = b.dataset.model; markSelected('[data-model]', 'model', state.model); touch();
+--
+learning/inquiry/science-lab\population\app.js-523-document.querySelectorAll('[data-prediction]').forEach(b => b.addEventListener('click', () => {
+learning/inquiry/science-lab\population\app.js:524:    state.prediction = b.dataset.prediction; markSelected('[data-prediction]', 'prediction', state.prediction);
+learning/inquiry/science-lab\population\app.js-525-}));
+learning/inquiry/science-lab\population\app.js-526-$('rRange').addEventListener('input', e => {
+learning/inquiry/science-lab\population\app.js-527-    state.r = Number(e.target.value);
+learning/inquiry/science-lab\population\app.js-528-    $('rOutput').textContent = `${fmt(state.r, 2)} /일`;
+learning/inquiry/science-lab\population\app.js-529-    touch();
+learning/inquiry/science-lab\population\app.js-530-});
+--
+learning/inquiry/science-lab\population\app.js-548-    state.dist = 'random'; state.quad = 5; state.trials = []; state.running = false;
+learning/inquiry/science-lab\population\app.js:549:    state.prediction = null; state.checked = false;
+learning/inquiry/science-lab\population\app.js-550-    $('rRange').value = '0.3'; $('rOutput').textContent = '0.30 /일';
+learning/inquiry/science-lab\population\app.js-551-    $('quadRange').value = '5'; $('quadOutput').textContent = '5칸';
+learning/inquiry/science-lab\population\app.js-552-    state.sample = drawSample(1000);
+learning/inquiry/science-lab\population\app.js-553-    document.querySelectorAll('[data-prediction]').forEach(x => x.classList.remove('selected'));
+learning/inquiry/science-lab\population\app.js-554-    $('resultEmpty').hidden = false; $('resultContent').hidden = true;
+learning/inquiry/science-lab\population\app.js-555-    markSelected('[data-model]', 'model', 'log'); markSelected('[data-k]', 'k', 500);
+--
+learning/inquiry/science-lab\recrystallise\app.js-287-    predictionButtons.forEach(button => button.addEventListener('click', () => {
+learning/inquiry/science-lab\recrystallise\app.js:288:        prediction = button.dataset.prediction;
+learning/inquiry/science-lab\recrystallise\app.js-289-        predictionButtons.forEach(item => item.classList.toggle('selected', item === button));
+learning/inquiry/science-lab\recrystallise\app.js-290-    }));
+learning/inquiry/science-lab\recrystallise\app.js-291-    checkBtn.addEventListener('click', startRun);
+learning/inquiry/science-lab\recrystallise\app.js-292-    resetBtn.addEventListener('click', () => {
+learning/inquiry/science-lab\recrystallise\app.js-293-        stopRun();
+learning/inquiry/science-lab\recrystallise\app.js-294-        waterRange.value = '100'; hotRange.value = '80'; coldRange.value = '20'; dirtRange.value = '0';
+--
+learning/inquiry/science-lab\photosynthesis\app.js-225-    predictionButtons.forEach(button => button.addEventListener('click', () => {
+learning/inquiry/science-lab\photosynthesis\app.js:226:        prediction = button.dataset.prediction;
+learning/inquiry/science-lab\photosynthesis\app.js-227-        predictionButtons.forEach(item => item.classList.toggle('selected', item === button));
+learning/inquiry/science-lab\photosynthesis\app.js-228-    }));
+learning/inquiry/science-lab\photosynthesis\app.js-229-    checkBtn.addEventListener('click', check);
+learning/inquiry/science-lab\photosynthesis\app.js-230-    resetBtn.addEventListener('click', () => {
+learning/inquiry/science-lab\photosynthesis\app.js-231-        lightRange.value = '60'; co2Range.value = '50'; tempRange.value = '30';
+learning/inquiry/science-lab\photosynthesis\app.js-232-        clearResult();
+--
+learning/inquiry/science-lab\plate-tectonics\app.js-292-    predictionButtons.forEach(button => button.addEventListener('click', () => {
+learning/inquiry/science-lab\plate-tectonics\app.js:293:        prediction = button.dataset.prediction;
+learning/inquiry/science-lab\plate-tectonics\app.js-294-        predictionButtons.forEach(item => item.classList.toggle('selected', item === button));
+learning/inquiry/science-lab\plate-tectonics\app.js-295-    }));
+learning/inquiry/science-lab\plate-tectonics\app.js-296-    checkBtn.addEventListener('click', startRun);
+learning/inquiry/science-lab\plate-tectonics\app.js-297-    resetBtn.addEventListener('click', () => {
+learning/inquiry/science-lab\plate-tectonics\app.js-298-        stopRun();
+learning/inquiry/science-lab\plate-tectonics\app.js-299-        speedRange.value = '5'; timeRange.value = '0';
+--
+learning/inquiry/science-lab\rate-equilibrium\app.js-108-        predictionArea.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
+learning/inquiry/science-lab\rate-equilibrium\app.js:109:            state.prediction = button.dataset.prediction;
+learning/inquiry/science-lab\rate-equilibrium\app.js-110-            predictionArea.querySelectorAll('button').forEach(b => b.classList.toggle('selected', b === button));
+learning/inquiry/science-lab\rate-equilibrium\app.js-111-        }));
+learning/inquiry/science-lab\rate-equilibrium\app.js-112-    }
+learning/inquiry/science-lab\rate-equilibrium\app.js-113-
+learning/inquiry/science-lab\rate-equilibrium\app.js-114-    /* ----------------------------------------------------------- visuals */
+learning/inquiry/science-lab\rate-equilibrium\app.js-115-    const E_LO = -90, E_HI = 60, E_TOP = 40, E_BOT = 182;
+--
+learning/inquiry/science-lab\rate-equilibrium\app.js-341-        state.mode = button.dataset.mode;
+learning/inquiry/science-lab\rate-equilibrium\app.js:342:        state.prediction = null;
+learning/inquiry/science-lab\rate-equilibrium\app.js-343-        modeButtons.forEach(item => item.classList.toggle('selected', item === button));
+learning/inquiry/science-lab\rate-equilibrium\app.js-344-        buildControls();
+learning/inquiry/science-lab\rate-equilibrium\app.js-345-        buildPrediction();
+learning/inquiry/science-lab\rate-equilibrium\app.js-346-        stageCaption.textContent = state.mode === 'rate'
+learning/inquiry/science-lab\rate-equilibrium\app.js-347-            ? '촉매는 활성화 에너지만 낮출 뿐 반응열은 바꾸지 못합니다.'
+learning/inquiry/science-lab\rate-equilibrium\app.js-348-            : '갈색 NO₂와 무색 N₂O₄ 의 비율이 조건에 따라 달라집니다.';
+--
+learning/inquiry/science-lab\photoelectric\app.js-176-        predictionArea.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
+learning/inquiry/science-lab\photoelectric\app.js:177:            state.prediction = button.dataset.prediction;
+learning/inquiry/science-lab\photoelectric\app.js-178-            predictionArea.querySelectorAll('button').forEach(b => b.classList.toggle('selected', b === button));
+learning/inquiry/science-lab\photoelectric\app.js-179-        }));
+learning/inquiry/science-lab\photoelectric\app.js-180-    }
+learning/inquiry/science-lab\photoelectric\app.js-181-
+learning/inquiry/science-lab\photoelectric\app.js-182-    /* ----------------------------------------------------------- visuals */
+learning/inquiry/science-lab\photoelectric\app.js-183-    // a short wavy segment from (x1,y1) toward (x2,y2)
+--
+learning/inquiry/science-lab\photoelectric\app.js-444-        state.mode = button.dataset.mode;
+learning/inquiry/science-lab\photoelectric\app.js:445:        state.prediction = null;
+learning/inquiry/science-lab\photoelectric\app.js-446-        modeButtons.forEach(item => item.classList.toggle('selected', item === button));
+learning/inquiry/science-lab\photoelectric\app.js-447-        buildControls();
+learning/inquiry/science-lab\photoelectric\app.js-448-        buildPrediction();
+learning/inquiry/science-lab\photoelectric\app.js-449-        checkBtn.textContent = state.mode === 'photo' ? '빛 비추기' : state.mode === 'hydrogen' ? '전자 내려보내기' : '물결 재기';
+learning/inquiry/science-lab\photoelectric\app.js-450-        stageCaption.textContent = state.mode === 'photo' ? '진공관 왼쪽의 금속판에 빛(물결)을 비춥니다. 파란 점이 튀어나온 전자이고 오른쪽 판에 닿으면 전류계 바늘이 움직입니다.'
+learning/inquiry/science-lab\photoelectric\app.js-451-            : state.mode === 'hydrogen' ? '왼쪽 사다리가 수소 원자의 에너지 준위입니다. 파란 점이 전자이고, 내려올 때 나오는 빛이 오른쪽 위로 날아갑니다.'
+--
+learning/inquiry/science-lab\planet-motion\app.js-203-        predictionArea.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
+learning/inquiry/science-lab\planet-motion\app.js:204:            state.prediction = button.dataset.prediction;
+learning/inquiry/science-lab\planet-motion\app.js-205-            predictionArea.querySelectorAll('button').forEach(b => b.classList.toggle('selected', b === button));
+learning/inquiry/science-lab\planet-motion\app.js-206-        }));
+learning/inquiry/science-lab\planet-motion\app.js-207-    }
+learning/inquiry/science-lab\planet-motion\app.js-208-
+learning/inquiry/science-lab\planet-motion\app.js-209-    /* ----------------------------------------------------------- visuals */
+learning/inquiry/science-lab\planet-motion\app.js-210-    const stars = []; for (let i = 0; i < 70; i += 1) stars.push([((i * 7919) % 997) / 997, ((i * 104729) % 991) / 991, 0.5 + ((i * 31) % 7) / 7]);
+--
+learning/inquiry/science-lab\planet-motion\app.js-495-        state.mode = button.dataset.mode;
+learning/inquiry/science-lab\planet-motion\app.js:496:        state.prediction = null;
+learning/inquiry/science-lab\planet-motion\app.js-497-        modeButtons.forEach(item => item.classList.toggle('selected', item === button));
+learning/inquiry/science-lab\planet-motion\app.js-498-        buildControls();
+learning/inquiry/science-lab\planet-motion\app.js-499-        buildPrediction();
+learning/inquiry/science-lab\planet-motion\app.js-500-        checkBtn.textContent = state.mode === 'retro' ? '행성 돌리기' : state.mode === 'phase' ? '한 바퀴 돌리기' : '달 지나가게 하기';
+learning/inquiry/science-lab\planet-motion\app.js-501-        stageCaption.textContent = state.mode === 'retro' ? '왼쪽은 위에서 본 궤도(축척대로), 오른쪽은 남쪽 하늘에 찍힌 행성의 자리입니다. 붉은 구간이 서쪽으로 되돌아가는 역행입니다.'
+learning/inquiry/science-lab\planet-motion\app.js-502-            : state.mode === 'phase' ? '왼쪽은 위에서 본 궤도, 오른쪽은 지구에서 본 행성의 모양과 크기입니다. 한 바퀴 도는 동안 모양과 크기가 어떻게 엇갈리는지 보세요.'
+--
+learning/inquiry/science-lab\rock-layers\app.js-218-    predictionButtons.forEach(button => button.addEventListener('click', () => {
+learning/inquiry/science-lab\rock-layers\app.js:219:        prediction = button.dataset.prediction;
+learning/inquiry/science-lab\rock-layers\app.js-220-        predictionButtons.forEach(item => item.classList.toggle('selected', item === button));
+learning/inquiry/science-lab\rock-layers\app.js-221-    }));
+learning/inquiry/science-lab\rock-layers\app.js-222-    pourBtn.addEventListener('click', pour);
+learning/inquiry/science-lab\rock-layers\app.js-223-    resetBtn.addEventListener('click', () => {
+learning/inquiry/science-lab\rock-layers\app.js-224-        layers = [];
+learning/inquiry/science-lab\rock-layers\app.js-225-        fallGroup.innerHTML = '';
+--
+learning/inquiry/science-lab\periodic-bonding\app.js-155-        predictionArea.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
+learning/inquiry/science-lab\periodic-bonding\app.js:156:            state.prediction = button.dataset.prediction;
+learning/inquiry/science-lab\periodic-bonding\app.js-157-            predictionArea.querySelectorAll('button').forEach(b => b.classList.toggle('selected', b === button));
+learning/inquiry/science-lab\periodic-bonding\app.js-158-        }));
+learning/inquiry/science-lab\periodic-bonding\app.js-159-    }
+learning/inquiry/science-lab\periodic-bonding\app.js-160-
+learning/inquiry/science-lab\periodic-bonding\app.js-161-    /* ----------------------------------------------------------- visuals */
+learning/inquiry/science-lab\periodic-bonding\app.js-162-    const SHELL_R = [20, 36, 52, 68];
+--
+learning/inquiry/science-lab\periodic-bonding\app.js-553-        state.mode = button.dataset.mode;
+learning/inquiry/science-lab\periodic-bonding\app.js:554:        state.prediction = null;
+learning/inquiry/science-lab\periodic-bonding\app.js-555-        modeButtons.forEach(item => item.classList.toggle('selected', item === button));
+learning/inquiry/science-lab\periodic-bonding\app.js-556-        buildControls();
+learning/inquiry/science-lab\periodic-bonding\app.js-557-        buildPrediction();
+learning/inquiry/science-lab\periodic-bonding\app.js-558-        checkBtn.textContent = state.mode === 'elements' ? '전자 배치 보기' : '만나게 하기';
+learning/inquiry/science-lab\periodic-bonding\app.js-559-        stageCaption.textContent = state.mode === 'elements'
+learning/inquiry/science-lab\periodic-bonding\app.js-560-            ? '원자핵 둘레의 껍질에 전자가 안쪽부터 차례로 들어갑니다. 첫 껍질은 2개, 다음은 8개까지입니다.'
+--
+learning/inquiry/science-lab\seed-germination\app.js-281-    predictionButtons.forEach(button => button.addEventListener('click', () => {
+learning/inquiry/science-lab\seed-germination\app.js:282:        prediction = button.dataset.prediction;
+learning/inquiry/science-lab\seed-germination\app.js-283-        predictionButtons.forEach(item => item.classList.toggle('selected', item === button));
+learning/inquiry/science-lab\seed-germination\app.js-284-    }));
+learning/inquiry/science-lab\seed-germination\app.js-285-    growButton.addEventListener('click', () => { if (!growing) startGrowing(); });
+learning/inquiry/science-lab\seed-germination\app.js-286-    resetButton.addEventListener('click', resetAll);
+learning/inquiry/science-lab\seed-germination\app.js-287-
+learning/inquiry/science-lab\seed-germination\app.js-288-    function shuffleQuizOptions(card) {
+--
+learning/inquiry/science-lab\senses\app.js-165-    $('resultEmpty').hidden=true;$('resultContent').hidden=false;
+learning/inquiry/science-lab\senses\app.js:166:    $('predictionResult').textContent=state.prediction?(state.prediction===a.verdict?'모형의 예상이 맞았습니다.':'모형의 예상과 다른 결과입니다.'):'';
+learning/inquiry/science-lab\senses\app.js-167-    $('elementaryExplanation').textContent='자극을 '+a.sense.name+'에서 받아들이고 감각 신경을 거쳐 중추 신경계로 전달합니다. 의식적인 반응에서는 대뇌의 판단 뒤 운동 신경을 거쳐 근육이 반응합니다. 화면의 시간은 예시이며 실제 반응 시간은 반복 실험으로 확인해야 합니다.';
+learning/inquiry/science-lab\senses\app.js-168-}
+learning/inquiry/science-lab\senses\app.js-169-
+learning/inquiry/science-lab\senses\app.js-170-// --- animation --------------------------------------------------------------
+learning/inquiry/science-lab\senses\app.js-171-function tick(dt) {
+learning/inquiry/science-lab\senses\app.js-172-    state.phase += dt;
+--
+learning/inquiry/science-lab\senses\app.js-204-document.querySelectorAll('[data-prediction]').forEach(b => b.addEventListener('click', () => {
+learning/inquiry/science-lab\senses\app.js:205:    state.prediction = b.dataset.prediction; markSelected('[data-prediction]', 'prediction', state.prediction);
+learning/inquiry/science-lab\senses\app.js-206-}));
+learning/inquiry/science-lab\senses\app.js-207-$('runBtn').addEventListener('click', () => {
+learning/inquiry/science-lab\senses\app.js-208-    if (state.running) { state.running = false; state.t = 1; $('runBtn').textContent = '자 떨어뜨리기'; return; }
+learning/inquiry/science-lab\senses\app.js-209-    state.t = 0; state.running = true; state.checked = true;
+learning/inquiry/science-lab\senses\app.js-210-    $('runBtn').textContent = '멈추기';
+learning/inquiry/science-lab\senses\app.js-211-    render();
+--
+learning/inquiry/science-lab\senses\app.js-214-    state.sense = 'eye'; state.cond = 'fresh';
+learning/inquiry/science-lab\senses\app.js:215:    state.prediction = null; state.checked = false; state.running = false; state.t = 0;
+learning/inquiry/science-lab\senses\app.js-216-    $('runBtn').textContent = '자 떨어뜨리기';
+learning/inquiry/science-lab\senses\app.js-217-    document.querySelectorAll('[data-prediction]').forEach(x => x.classList.remove('selected'));
+learning/inquiry/science-lab\senses\app.js-218-    $('resultEmpty').hidden = false; $('resultContent').hidden = true;
+learning/inquiry/science-lab\senses\app.js-219-    markSelected('[data-sense]', 'sense', 'eye'); markSelected('[data-cond]', 'cond', 'fresh');
+learning/inquiry/science-lab\senses\app.js-220-    render();
+learning/inquiry/science-lab\senses\app.js-221-});
+--
+learning/inquiry/science-lab\rock-age\app.js-444-document.querySelectorAll('[data-mode]').forEach(b => b.addEventListener('click', () => {
+learning/inquiry/science-lab\rock-age\app.js:445:    state.mode = b.dataset.mode; state.prediction = null; state.checked = false;
+learning/inquiry/science-lab\rock-age\app.js-446-    document.querySelectorAll('[data-prediction]').forEach(x => x.classList.remove('selected'));
+learning/inquiry/science-lab\rock-age\app.js-447-    $('resultEmpty').hidden = false; $('resultContent').hidden = true;
+learning/inquiry/science-lab\rock-age\app.js-448-    applyMode();
+learning/inquiry/science-lab\rock-age\app.js-449-}));
+learning/inquiry/science-lab\rock-age\app.js-450-document.querySelectorAll('[data-iso]').forEach(b => b.addEventListener('click', () => {
+learning/inquiry/science-lab\rock-age\app.js-451-    state.iso = b.dataset.iso; markSelected('[data-iso]', 'iso', state.iso); render();
+--
+learning/inquiry/science-lab\rock-age\app.js-456-document.querySelectorAll('[data-prediction]').forEach(b => b.addEventListener('click', () => {
+learning/inquiry/science-lab\rock-age\app.js:457:    state.prediction = b.dataset.prediction; markSelected('[data-prediction]', 'prediction', state.prediction);
+learning/inquiry/science-lab\rock-age\app.js-458-}));
+learning/inquiry/science-lab\rock-age\app.js-459-$('hlRange').addEventListener('input', e => {
+learning/inquiry/science-lab\rock-age\app.js-460-    state.hl = Number(e.target.value);
+learning/inquiry/science-lab\rock-age\app.js-461-    state.running = false;
+learning/inquiry/science-lab\rock-age\app.js-462-    $('runBtn').textContent = '시간 흘려보내기';
+learning/inquiry/science-lab\rock-age\app.js-463-    $('hlOutput').textContent = `${fmt(state.hl, 2)}번`;
+--
+learning/inquiry/science-lab\rock-age\app.js-476-    state.mode = 'decay'; state.iso = 'k40'; state.hl = 2; state.target = 'C';
+learning/inquiry/science-lab\rock-age\app.js:477:    state.prediction = null; state.checked = false; state.running = false; state.cursor = 0;
+learning/inquiry/science-lab\rock-age\app.js-478-    $('hlRange').value = '2'; $('hlOutput').textContent = '2.00번';
+learning/inquiry/science-lab\rock-age\app.js-479-    document.querySelectorAll('[data-prediction]').forEach(x => x.classList.remove('selected'));
+learning/inquiry/science-lab\rock-age\app.js-480-    $('resultEmpty').hidden = false; $('resultContent').hidden = true;
+learning/inquiry/science-lab\rock-age\app.js-481-    markSelected('[data-iso]', 'iso', 'k40'); markSelected('[data-target]', 'target', 'C');
+learning/inquiry/science-lab\rock-age\app.js-482-    applyMode();
+learning/inquiry/science-lab\rock-age\app.js-483-});
+--
+learning/inquiry/science-lab\semiconductor-relativity\app.js-155-        predictionArea.innerHTML=list.map(o=>'<button type="button" data-prediction="'+o.value+'">'+o.label+'</button>').join('');
+learning/inquiry/science-lab\semiconductor-relativity\app.js:156:        predictionArea.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{state.prediction=b.dataset.prediction;predictionArea.querySelectorAll('button').forEach(x=>x.classList.toggle('selected',x===b));}));
+learning/inquiry/science-lab\semiconductor-relativity\app.js-157-    }
+learning/inquiry/science-lab\semiconductor-relativity\app.js-158-
+learning/inquiry/science-lab\semiconductor-relativity\app.js-159-    /* ----------------------------------------------------------- visuals */
+learning/inquiry/science-lab\semiconductor-relativity\app.js-160-    const arrow = (x1, y1, x2, y2, cls, head, w = 3.5) => {
+learning/inquiry/science-lab\semiconductor-relativity\app.js-161-        const dx = x2 - x1, dy = y2 - y1, len = Math.hypot(dx, dy) || 1, ux = dx / len, uy = dy / len;
+learning/inquiry/science-lab\semiconductor-relativity\app.js-162-        const bx = x2 - ux * 6, by = y2 - uy * 6;
+--
+learning/inquiry/science-lab\semiconductor-relativity\app.js-294-        const answer=a.kind==='diode'?a.verdict:'yes';
+learning/inquiry/science-lab\semiconductor-relativity\app.js:295:        predictionResult.textContent=!state.prediction?'다음에는 먼저 예상해 보세요.':state.prediction===answer?'예상이 맞았습니다.':'예상과 다른 결과입니다.';
+learning/inquiry/science-lab\semiconductor-relativity\app.js-296-        explanation.textContent=a.kind==='diode'?'다이오드는 전압의 방향에 따라 전류가 다르게 흘러 정류에 이용됩니다.':a.kind==='muon'?'지상에서 빠르게 움직이는 뮤온의 수명을 관측하면 고유 수명보다 길게 측정됩니다.':'운동 방향 길이는 고유 길이보다 짧게 측정됩니다. 운동에 수직인 방향은 수축하지 않습니다.';
+learning/inquiry/science-lab\semiconductor-relativity\app.js-297-    }
+learning/inquiry/science-lab\semiconductor-relativity\app.js-298-
+learning/inquiry/science-lab\semiconductor-relativity\app.js-299-    function settingsChanged() {
+learning/inquiry/science-lab\semiconductor-relativity\app.js-300-        stopRun();
+learning/inquiry/science-lab\semiconductor-relativity\app.js-301-        state.progress = 0;
+--
+learning/inquiry/science-lab\semiconductor-relativity\app.js-308-        state.mode = button.dataset.mode;
+learning/inquiry/science-lab\semiconductor-relativity\app.js:309:        state.prediction = null;
+learning/inquiry/science-lab\semiconductor-relativity\app.js-310-        modeButtons.forEach(item => item.classList.toggle('selected', item === button));
+learning/inquiry/science-lab\semiconductor-relativity\app.js-311-        buildControls();
+learning/inquiry/science-lab\semiconductor-relativity\app.js-312-        buildPrediction();
+learning/inquiry/science-lab\semiconductor-relativity\app.js-313-        checkBtn.textContent = state.mode === 'diode' ? '전압 걸기' : state.mode === 'muon' ? '뮤온 떨어뜨리기' : '우주선 보내기';
+learning/inquiry/science-lab\semiconductor-relativity\app.js-314-        stageCaption.textContent = state.mode === 'diode' ? '왼쪽은 전원·저항·다이오드 회로, 오른쪽은 다이오드 속 p-n 접합입니다. 가운데 점선 띠가 전하 운반자가 없는 공핍층입니다.'
+learning/inquiry/science-lab\semiconductor-relativity\app.js-315-            : state.mode === 'muon' ? '왼쪽은 시간 지연이 없을 때, 오른쪽은 있을 때 같은 뮤온 무리가 떨어지는 모습입니다. 흐려진 점은 붕괴한 뮤온이고, 가운데 두 시계가 지상과 뮤온의 시간입니다.'
+--
+learning/inquiry/science-lab\seawater\app.js-223-    predictionButtons.forEach(button => button.addEventListener('click', () => {
+learning/inquiry/science-lab\seawater\app.js:224:        prediction = button.dataset.prediction;
+learning/inquiry/science-lab\seawater\app.js-225-        predictionButtons.forEach(item => item.classList.toggle('selected', item === button));
+learning/inquiry/science-lab\seawater\app.js-226-    }));
+learning/inquiry/science-lab\seawater\app.js-227-    checkBtn.addEventListener('click', check);
+learning/inquiry/science-lab\seawater\app.js-228-    resetBtn.addEventListener('click', () => {
+learning/inquiry/science-lab\seawater\app.js-229-        prediction = null;
+learning/inquiry/science-lab\seawater\app.js-230-        predictionButtons.forEach(item => item.classList.remove('selected'));
+--
+learning/inquiry/science-lab\refraction\app.js-166-    predictionButtons.forEach(button => button.addEventListener('click', () => {
+learning/inquiry/science-lab\refraction\app.js:167:        prediction = button.dataset.prediction;
+learning/inquiry/science-lab\refraction\app.js-168-        predictionButtons.forEach(item => item.classList.toggle('selected', item === button));
+learning/inquiry/science-lab\refraction\app.js-169-    }));
+learning/inquiry/science-lab\refraction\app.js-170-    checkBtn.addEventListener('click', check);
+learning/inquiry/science-lab\refraction\app.js-171-
+learning/inquiry/science-lab\refraction\app.js-172-    function shuffleQuizOptions(card) {
+learning/inquiry/science-lab\refraction\app.js-173-        const optionGroup = card.querySelector('.quiz-options');
+--
+learning/inquiry/science-lab\separation-methods\app.js-484-    predictionButtons.forEach(button => button.addEventListener('click', () => {
+learning/inquiry/science-lab\separation-methods\app.js:485:        prediction = button.dataset.prediction;
+learning/inquiry/science-lab\separation-methods\app.js-486-        predictionButtons.forEach(item => item.classList.toggle('selected', item === button));
+learning/inquiry/science-lab\separation-methods\app.js-487-    }));
+learning/inquiry/science-lab\separation-methods\app.js-488-    checkBtn.addEventListener('click', startRun);
+learning/inquiry/science-lab\separation-methods\app.js-489-    resetBtn.addEventListener('click', () => {
+learning/inquiry/science-lab\separation-methods\app.js-490-        stopRun();
+learning/inquiry/science-lab\separation-methods\app.js-491-        prediction = null;
+--
+learning/inquiry/science-lab\seasons\app.js-127-        predictionArea.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
+learning/inquiry/science-lab\seasons\app.js:128:            state.prediction = button.dataset.prediction;
+learning/inquiry/science-lab\seasons\app.js-129-            predictionArea.querySelectorAll('button').forEach(b => b.classList.toggle('selected', b === button));
+learning/inquiry/science-lab\seasons\app.js-130-        }));
+learning/inquiry/science-lab\seasons\app.js-131-    }
+learning/inquiry/science-lab\seasons\app.js-132-
+learning/inquiry/science-lab\seasons\app.js-133-    /* ----------------------------------------------------------- visuals */
+learning/inquiry/science-lab\seasons\app.js-134-    const hourText = h => { const hh = Math.floor(h), mm = Math.round((h - hh) * 60); return `${hh < 12 ? '오전' : '오후'} ${hh % 12 === 0 ? 12 : hh % 12}시${mm ? ` ${String(mm).padStart(2, '0')}분` : ''}`; };
+--
+learning/inquiry/science-lab\seasons\app.js-374-        state.mode = button.dataset.mode;
+learning/inquiry/science-lab\seasons\app.js:375:        state.prediction = null;
+learning/inquiry/science-lab\seasons\app.js-376-        modeButtons.forEach(item => item.classList.toggle('selected', item === button));
+learning/inquiry/science-lab\seasons\app.js-377-        buildControls();
+learning/inquiry/science-lab\seasons\app.js-378-        buildPrediction();
+learning/inquiry/science-lab\seasons\app.js-379-        stageCaption.textContent = state.mode === 'path'
+learning/inquiry/science-lab\seasons\app.js-380-            ? '서울에서 남쪽을 바라본 하늘입니다. 점선은 다른 계절의 태양의 길입니다.'
+learning/inquiry/science-lab\seasons\app.js-381-            : '왼쪽은 옆에서 본 지구의 공전, 오른쪽은 같은 햇빛이 서울 땅에 닿는 모습입니다.';
+--
+learning/inquiry/science-lab\redox\app.js-116-        predictionArea.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
+learning/inquiry/science-lab\redox\app.js:117:            state.prediction = button.dataset.prediction;
+learning/inquiry/science-lab\redox\app.js-118-            predictionArea.querySelectorAll('button').forEach(b => b.classList.toggle('selected', b === button));
+learning/inquiry/science-lab\redox\app.js-119-        }));
+learning/inquiry/science-lab\redox\app.js-120-    }
+learning/inquiry/science-lab\redox\app.js-121-
+learning/inquiry/science-lab\redox\app.js-122-    /* ----------------------------------------------------------- visuals */
+learning/inquiry/science-lab\redox\app.js-123-    function renderCell(a) {
+--
+learning/inquiry/science-lab\redox\app.js-360-        state.mode = button.dataset.mode;
+learning/inquiry/science-lab\redox\app.js:361:        state.prediction = null;
+learning/inquiry/science-lab\redox\app.js-362-        modeButtons.forEach(item => item.classList.toggle('selected', item === button));
+learning/inquiry/science-lab\redox\app.js-363-        buildControls();
+learning/inquiry/science-lab\redox\app.js-364-        buildPrediction();
+learning/inquiry/science-lab\redox\app.js-365-        stageCaption.textContent = state.mode === 'cell'
+learning/inquiry/science-lab\redox\app.js-366-            ? '전자는 산화되는 쪽에서 환원되는 쪽으로 흐릅니다.'
+learning/inquiry/science-lab\redox\app.js-367-            : '같은 전기량이라도 이온의 전하수에 따라 나오는 양이 다릅니다.';
+--
+learning/inquiry/science-lab\solubility\app.js-277-    predictionButtons.forEach(button => button.addEventListener('click', () => {
+learning/inquiry/science-lab\solubility\app.js:278:        prediction = button.dataset.prediction;
+learning/inquiry/science-lab\solubility\app.js-279-        predictionButtons.forEach(item => item.classList.toggle('selected', item === button));
+learning/inquiry/science-lab\solubility\app.js-280-    }));
+learning/inquiry/science-lab\solubility\app.js-281-    runButton.addEventListener('click', runExperiment);
+learning/inquiry/science-lab\solubility\app.js-282-
+learning/inquiry/science-lab\solubility\app.js-283-    function shuffleQuizOptions(card) {
+learning/inquiry/science-lab\solubility\app.js-284-        const optionGroup = card.querySelector('.quiz-options');
+--
+learning/inquiry/science-lab\solubility-curve\app.js-259-    predictionButtons.forEach(button => button.addEventListener('click', () => {
+learning/inquiry/science-lab\solubility-curve\app.js:260:        prediction = button.dataset.prediction;
+learning/inquiry/science-lab\solubility-curve\app.js-261-        predictionButtons.forEach(item => item.classList.toggle('selected', item === button));
+learning/inquiry/science-lab\solubility-curve\app.js-262-    }));
+learning/inquiry/science-lab\solubility-curve\app.js-263-    checkBtn.addEventListener('click', check);
+learning/inquiry/science-lab\solubility-curve\app.js-264-
+learning/inquiry/science-lab\solubility-curve\app.js-265-    function shuffleQuizOptions(card) {
+learning/inquiry/science-lab\solubility-curve\app.js-266-        const optionGroup = card.querySelector('.quiz-options');
+--
+learning/inquiry/science-lab\sound-vibration\app.js-295-    predictionButtons.forEach(button => button.addEventListener('click', () => {
+learning/inquiry/science-lab\sound-vibration\app.js:296:        prediction = button.dataset.prediction;
+learning/inquiry/science-lab\sound-vibration\app.js-297-        predictionButtons.forEach(item => item.classList.toggle('selected', item === button));
+learning/inquiry/science-lab\sound-vibration\app.js-298-    }));
+learning/inquiry/science-lab\sound-vibration\app.js-299-    strengthRange.addEventListener('input', () => {
+learning/inquiry/science-lab\sound-vibration\app.js-300-        strengthOutput.textContent = strengthRange.value;
+learning/inquiry/science-lab\sound-vibration\app.js-301-        silence();
+learning/inquiry/science-lab\sound-vibration\app.js-302-        clearResult();
+--
+learning/inquiry/science-lab\specific-heat\app.js-321-    predictionButtons.forEach(button => button.addEventListener('click', () => {
+learning/inquiry/science-lab\specific-heat\app.js:322:        prediction = button.dataset.prediction;
+learning/inquiry/science-lab\specific-heat\app.js-323-        predictionButtons.forEach(item => item.classList.toggle('selected', item === button));
+learning/inquiry/science-lab\specific-heat\app.js-324-    }));
+learning/inquiry/science-lab\specific-heat\app.js-325-
+learning/inquiry/science-lab\specific-heat\app.js-326-    function shuffleQuizOptions(card) {
+learning/inquiry/science-lab\specific-heat\app.js-327-        const optionGroup = card.querySelector('.quiz-options');
+learning/inquiry/science-lab\specific-heat\app.js-328-        const options = Array.from(optionGroup.children);
+--
+learning/inquiry/science-lab\speed\app.js-97-        predictionArea.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
+learning/inquiry/science-lab\speed\app.js:98:            state.prediction = button.dataset.prediction;
+learning/inquiry/science-lab\speed\app.js-99-            predictionArea.querySelectorAll('button').forEach(b => b.classList.toggle('selected', b === button));
+learning/inquiry/science-lab\speed\app.js-100-        }));
+learning/inquiry/science-lab\speed\app.js-101-    }
+learning/inquiry/science-lab\speed\app.js-102-
+learning/inquiry/science-lab\speed\app.js-103-    /* ----------------------------------------------------------- visuals */
+learning/inquiry/science-lab\speed\app.js-104-    function renderMain(a) {
+--
+learning/inquiry/science-lab\speed\app.js-257-        state.mode = button.dataset.mode;
+learning/inquiry/science-lab\speed\app.js:258:        state.prediction = null;
+learning/inquiry/science-lab\speed\app.js-259-        modeButtons.forEach(item => item.classList.toggle('selected', item === button));
+learning/inquiry/science-lab\speed\app.js-260-        buildControls();
+learning/inquiry/science-lab\speed\app.js-261-        buildPrediction();
+learning/inquiry/science-lab\speed\app.js-262-        stageCaption.textContent = state.mode === 'distance'
+learning/inquiry/science-lab\speed\app.js-263-            ? '두 물체가 100 m 결승선에 닿는 순간 초시계가 멈춥니다.'
+learning/inquiry/science-lab\speed\app.js-264-            : '10초가 되면 둘 다 멈추고, 어디까지 갔는지 거리를 읽습니다.';
+--
+learning/inquiry/science-lab\stars\app.js-333-document.querySelectorAll('[data-prediction]').forEach(b => b.addEventListener('click', () => {
+learning/inquiry/science-lab\stars\app.js:334:    state.prediction = b.dataset.prediction; markSelected('[data-prediction]', 'prediction', state.prediction);
+learning/inquiry/science-lab\stars\app.js-335-}));
+learning/inquiry/science-lab\stars\app.js-336-$('tempRange').addEventListener('input', e => {
+learning/inquiry/science-lab\stars\app.js-337-    state.temp = sliderToTemp(Number(e.target.value));
+learning/inquiry/science-lab\stars\app.js-338-    $('tempOutput').textContent = `${Math.round(state.temp).toLocaleString('ko-KR')} K`;
+learning/inquiry/science-lab\stars\app.js-339-    render();
+learning/inquiry/science-lab\stars\app.js-340-});
+--
+learning/inquiry/science-lab\stars\app.js-354-    state.star = 'sun'; state.temp = s.t; state.radius = s.r; state.parallax = s.p;
+learning/inquiry/science-lab\stars\app.js:355:    state.prediction = null; state.checked = false; state.running = false; state.year = 0;
+learning/inquiry/science-lab\stars\app.js-356-    $('runBtn').textContent = '일 년 지켜보기';
+learning/inquiry/science-lab\stars\app.js-357-    document.querySelectorAll('[data-prediction]').forEach(x => x.classList.remove('selected'));
+learning/inquiry/science-lab\stars\app.js-358-    $('resultEmpty').hidden = false; $('resultContent').hidden = true;
+learning/inquiry/science-lab\stars\app.js-359-    markSelected('[data-star]', 'star', 'sun');
+learning/inquiry/science-lab\stars\app.js-360-    syncSliders(); render();
+learning/inquiry/science-lab\stars\app.js-361-});
+--
+learning/inquiry/science-lab\stars-universe\app.js-120-        predictionArea.innerHTML=list.map(o=>'<button type="button" data-prediction="'+o.value+'">'+o.label+'</button>').join('');
+learning/inquiry/science-lab\stars-universe\app.js:121:        predictionArea.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{state.prediction=b.dataset.prediction;predictionArea.querySelectorAll('button').forEach(x=>x.classList.toggle('selected',x===b));}));
+learning/inquiry/science-lab\stars-universe\app.js-122-    }
+learning/inquiry/science-lab\stars-universe\app.js-123-
+learning/inquiry/science-lab\stars-universe\app.js-124-    /* ----------------------------------------------------------- visuals */
+learning/inquiry/science-lab\stars-universe\app.js-125-    const fmtMag = m => `${m.toFixed(1)}등급`;
+learning/inquiry/science-lab\stars-universe\app.js-126-    const fmtFrac = n => (Math.abs(n - Math.round(n)) < 1e-9 ? `${Math.round(n)}분의 1` : `${n.toFixed(1)}분의 1`);
+learning/inquiry/science-lab\stars-universe\app.js-127-
+--
+learning/inquiry/science-lab\stars-universe\app.js-275-        labelB.textContent=a.kind==='bright'?'절대 등급':'모형의 의미';valueB.textContent=a.kind==='bright'?fmtMag(a.star.abs)+' 그대로':'우주 팽창';
+learning/inquiry/science-lab\stars-universe\app.js:276:        predictionResult.textContent=!state.prediction?'다음에는 먼저 예상해 보세요.':state.prediction===a.verdict?'예상이 맞았습니다.':'예상과 다른 결과입니다.';
+learning/inquiry/science-lab\stars-universe\app.js-277-        explanation.textContent=a.kind==='bright'?'같은 별은 멀리에서 보면 어둡게 보입니다. 절대 등급은 같은 기준 거리에서의 밝기를 뜻하므로 별 자체의 성질이 같으면 바뀌지 않습니다.':'고무줄을 늘릴 때 점 사이가 벌어지는 모습은 우주 팽창의 모형입니다. 어느 점을 기준으로 삼아도 다른 점들과 멀어지는 모습을 관찰할 수 있습니다. 모형의 가장자리와 바깥 공간을 실제 우주에 그대로 대응시키지 않습니다.';
+learning/inquiry/science-lab\stars-universe\app.js-278-    }
+learning/inquiry/science-lab\stars-universe\app.js-279-    const eul = w => w + (batchim(w) ? '을' : '를');
+learning/inquiry/science-lab\stars-universe\app.js-280-
+learning/inquiry/science-lab\stars-universe\app.js-281-    function settingsChanged() {
+learning/inquiry/science-lab\stars-universe\app.js-282-        stopRun();
+--
+learning/inquiry/science-lab\stars-universe\app.js-290-        state.mode = button.dataset.mode;
+learning/inquiry/science-lab\stars-universe\app.js:291:        state.prediction = null;
+learning/inquiry/science-lab\stars-universe\app.js-292-        modeButtons.forEach(item => item.classList.toggle('selected', item === button));
+learning/inquiry/science-lab\stars-universe\app.js-293-        buildControls();
+learning/inquiry/science-lab\stars-universe\app.js-294-        buildPrediction();
+learning/inquiry/science-lab\stars-universe\app.js-295-        stageCaption.textContent = state.mode === 'bright'
+learning/inquiry/science-lab\stars-universe\app.js-296-            ? '점선 네모 한 칸에 들어오던 빛이 멀어질수록 여러 칸으로 퍼집니다.'
+learning/inquiry/science-lab\stars-universe\app.js-297-            : '내가 서 있는 은하를 바꿔도 멀리 있는 은하가 더 빨리 멀어지는지 보세요.';
+--
+learning/inquiry/science-lab\star-elements\app.js-144-        predictionArea.innerHTML=list.map(o=>'<button type="button" data-prediction="'+o.value+'">'+o.label+'</button>').join('');
+learning/inquiry/science-lab\star-elements\app.js:145:        predictionArea.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{state.prediction=b.dataset.prediction;predictionArea.querySelectorAll('button').forEach(x=>x.classList.toggle('selected',x===b));}));
+learning/inquiry/science-lab\star-elements\app.js-146-    }
+learning/inquiry/science-lab\star-elements\app.js-147-
+learning/inquiry/science-lab\star-elements\app.js-148-    /* ----------------------------------------------------------- visuals */
+learning/inquiry/science-lab\star-elements\app.js-149-    const nucR = A => 5 + 2.3 * Math.cbrt(A);
+learning/inquiry/science-lab\star-elements\app.js-150-    function nucleus(cx, cy, sym, A, opacity = 1, labelOpacity = opacity) {
+learning/inquiry/science-lab\star-elements\app.js-151-        const r = nucR(A);
+--
+learning/inquiry/science-lab\star-elements\app.js-449-        labelB.textContent='핵심';valueB.textContent=a.kind==='fusion'?'핵융합':a.kind==='mass'?'질량에 따라 다름':'원소의 기원';
+learning/inquiry/science-lab\star-elements\app.js:450:        const answer=a.kind==='fusion'?'yes':a.verdict;predictionResult.textContent=!state.prediction?'다음에는 먼저 예상해 보세요.':state.prediction===answer?'예상이 맞았습니다.':'예상과 다른 결과입니다.';
+learning/inquiry/science-lab\star-elements\app.js-451-        explanation.textContent=a.kind==='fusion'?'태양은 수소 원자핵의 핵융합으로 에너지를 방출합니다.':a.kind==='mass'?'별의 질량에 따라 생성하는 원소와 마지막 모습이 달라집니다. 모형의 진행 시간은 실제 수명이 아닙니다.':'초기 우주에서 주로 수소·헬륨이 생성되었고, 이후 별 내부·진화·폭발·충돌 등의 여러 과정으로 다양한 원소가 만들어져 퍼졌습니다. 특정 원소의 생성 과정은 하나로만 한정되지 않을 수 있습니다.';
+learning/inquiry/science-lab\star-elements\app.js-452-    }
+learning/inquiry/science-lab\star-elements\app.js-453-
+learning/inquiry/science-lab\star-elements\app.js-454-    function settingsChanged() {
+learning/inquiry/science-lab\star-elements\app.js-455-        stopRun();
+learning/inquiry/science-lab\star-elements\app.js-456-        state.progress = 0;
+--
+learning/inquiry/science-lab\star-elements\app.js-463-        state.mode = button.dataset.mode;
+learning/inquiry/science-lab\star-elements\app.js:464:        state.prediction = null;
+learning/inquiry/science-lab\star-elements\app.js-465-        modeButtons.forEach(item => item.classList.toggle('selected', item === button));
+learning/inquiry/science-lab\star-elements\app.js-466-        buildControls();
+learning/inquiry/science-lab\star-elements\app.js-467-        buildPrediction();
+learning/inquiry/science-lab\star-elements\app.js-468-        checkBtn.textContent = state.mode === 'fusion' ? '합쳐 보기' : state.mode === 'mass' ? '일생 돌려 보기' : '고향 찾기';
+learning/inquiry/science-lab\star-elements\app.js-469-        stageCaption.textContent = state.mode === 'fusion' ? '원자핵들이 가까이 다가가 하나로 합쳐지고, 줄어든 질량만큼 빛과 열이 나옵니다.'
+learning/inquiry/science-lab\star-elements\app.js-470-            : state.mode === 'mass' ? '별의 속을 잘라 본 그림입니다. 단계가 끝날 때마다 타고 남은 재가 새 중심이 되어 층이 쌓입니다.'
+--
+learning/inquiry/science-lab\state-change\app.js-272-    predictionButtons.forEach(button => button.addEventListener('click', () => {
+learning/inquiry/science-lab\state-change\app.js:273:        prediction = button.dataset.prediction;
+learning/inquiry/science-lab\state-change\app.js-274-        predictionButtons.forEach(item => item.classList.toggle('selected', item === button));
+learning/inquiry/science-lab\state-change\app.js-275-    }));
+learning/inquiry/science-lab\state-change\app.js-276-    checkButton.addEventListener('click', checkState);
+learning/inquiry/science-lab\state-change\app.js-277-
+learning/inquiry/science-lab\state-change\app.js-278-    function shuffleQuizOptions(card) {
+learning/inquiry/science-lab\state-change\app.js-279-        const optionGroup = card.querySelector('.quiz-options');
+--
+learning/inquiry/science-lab\titration\app.js-302-    predictionButtons.forEach(button => button.addEventListener('click', () => {
+learning/inquiry/science-lab\titration\app.js:303:        prediction = button.dataset.prediction;
+learning/inquiry/science-lab\titration\app.js-304-        predictionButtons.forEach(item => item.classList.toggle('selected', item === button));
+learning/inquiry/science-lab\titration\app.js-305-    }));
+learning/inquiry/science-lab\titration\app.js-306-    checkBtn.addEventListener('click', startRun);
+learning/inquiry/science-lab\titration\app.js-307-    resetBtn.addEventListener('click', () => {
+learning/inquiry/science-lab\titration\app.js-308-        stopRun();
+learning/inquiry/science-lab\titration\app.js-309-        acidRange.value = '0.1'; baseRange.value = '0.1';
+--
+learning/inquiry/science-lab\volcano-model\app.js-254-document.querySelectorAll('[data-prediction]').forEach(b => b.addEventListener('click', () => {
+learning/inquiry/science-lab\volcano-model\app.js:255:    state.prediction = b.dataset.prediction; markSelected('[data-prediction]', 'prediction', state.prediction);
+learning/inquiry/science-lab\volcano-model\app.js-256-}));
+learning/inquiry/science-lab\volcano-model\app.js-257-$('sodaRange').addEventListener('input', e => {
+learning/inquiry/science-lab\volcano-model\app.js-258-    state.soda = Number(e.target.value);
+learning/inquiry/science-lab\volcano-model\app.js-259-    $('sodaOutput').textContent = `${fmt(state.soda, 1)} g`;
+learning/inquiry/science-lab\volcano-model\app.js-260-    render();
+learning/inquiry/science-lab\volcano-model\app.js-261-});
+--
+learning/inquiry/science-lab\volcano-model\app.js-269-    state.vin = 50; state.soda = 3.5;
+learning/inquiry/science-lab\volcano-model\app.js:270:    state.prediction = null; state.checked = false; state.running = false; state.t = 0;
+learning/inquiry/science-lab\volcano-model\app.js-271-    $('sodaRange').value = '3.5'; $('sodaOutput').textContent = '3.5 g';
+learning/inquiry/science-lab\volcano-model\app.js-272-    $('runBtn').textContent = '소다 넣기';
+learning/inquiry/science-lab\volcano-model\app.js-273-    document.querySelectorAll('[data-prediction]').forEach(x => x.classList.remove('selected'));
+learning/inquiry/science-lab\volcano-model\app.js-274-    $('resultEmpty').hidden = false; $('resultContent').hidden = true;
+learning/inquiry/science-lab\volcano-model\app.js-275-    markSelected('[data-vin]', 'vin', 50);
+learning/inquiry/science-lab\volcano-model\app.js-276-    render();
+--
+learning/inquiry/science-lab\torque\app.js-184-        predictionArea.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
+learning/inquiry/science-lab\torque\app.js:185:            state.prediction = button.dataset.prediction;
+learning/inquiry/science-lab\torque\app.js-186-            predictionArea.querySelectorAll('button').forEach(b => b.classList.toggle('selected', b === button));
+learning/inquiry/science-lab\torque\app.js-187-        }));
+learning/inquiry/science-lab\torque\app.js-188-    }
+learning/inquiry/science-lab\torque\app.js-189-
+learning/inquiry/science-lab\torque\app.js-190-    /* ----------------------------------------------------------- visuals */
+learning/inquiry/science-lab\torque\app.js-191-    const arrow = (x1, y1, x2, y2, cls, head) => {
+--
+learning/inquiry/science-lab\torque\app.js-479-        state.mode = button.dataset.mode;
+learning/inquiry/science-lab\torque\app.js:480:        state.prediction = null;
+learning/inquiry/science-lab\torque\app.js-481-        modeButtons.forEach(item => item.classList.toggle('selected', item === button));
+learning/inquiry/science-lab\torque\app.js-482-        buildControls();
+learning/inquiry/science-lab\torque\app.js-483-        buildPrediction();
+learning/inquiry/science-lab\torque\app.js-484-        checkBtn.textContent = state.mode === 'seesaw' ? '손 떼기' : state.mode === 'tip' ? '바닥 기울이기' : '물건 놓기';
+learning/inquiry/science-lab\torque\app.js-485-        stageCaption.textContent = state.mode === 'seesaw' ? '4 m 판이 받침점 위에 놓여 있습니다. 파란 상자가 고를 수 있는 물체, 붉은 상자는 20 kg으로 가운데에서 오른쪽 1 m에 고정입니다.'
+learning/inquiry/science-lab\torque\app.js-486-            : state.mode === 'tip' ? '오른쪽 끝을 축으로 바닥이 천천히 올라갑니다. 노란 점이 무게중심, 점선이 무게중심에서 내린 수직선입니다.'
+--
+learning/inquiry/science-lab\typhoon\app.js-164-        predictionArea.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
+learning/inquiry/science-lab\typhoon\app.js:165:            state.prediction = button.dataset.prediction;
+learning/inquiry/science-lab\typhoon\app.js-166-            predictionArea.querySelectorAll('button').forEach(b => b.classList.toggle('selected', b === button));
+learning/inquiry/science-lab\typhoon\app.js-167-        }));
+learning/inquiry/science-lab\typhoon\app.js-168-    }
+learning/inquiry/science-lab\typhoon\app.js-169-
+learning/inquiry/science-lab\typhoon\app.js-170-    /* ----------------------------------------------------------- visuals */
+learning/inquiry/science-lab\typhoon\app.js-171-    const arrow = (x1, y1, x2, y2, cls, head, w = 3.5) => {
+--
+learning/inquiry/science-lab\typhoon\app.js-447-        state.mode = button.dataset.mode;
+learning/inquiry/science-lab\typhoon\app.js:448:        state.prediction = null;
+learning/inquiry/science-lab\typhoon\app.js-449-        modeButtons.forEach(item => item.classList.toggle('selected', item === button));
+learning/inquiry/science-lab\typhoon\app.js-450-        buildControls();
+learning/inquiry/science-lab\typhoon\app.js-451-        buildPrediction();
+learning/inquiry/science-lab\typhoon\app.js-452-        checkBtn.textContent = state.mode === 'genesis' ? '며칠 지켜보기' : state.mode === 'track' ? '태풍 보내기' : '바람 바꾸기';
+learning/inquiry/science-lab\typhoon\app.js-453-        stageCaption.textContent = state.mode === 'genesis' ? '바다 위에서 수증기가 올라와 구름이 되고, 전향력이 있으면 반시계 방향 소용돌이로 감깁니다.'
+learning/inquiry/science-lab\typhoon\app.js-454-            : state.mode === 'track' ? '점선이 북태평양 고기압의 가장자리, 노란 선이 태풍의 길입니다. 오른쪽 원은 회전 바람과 이동 방향을 보입니다.'
+--
+learning/inquiry/science-lab\weight-compare\app.js-258-document.querySelectorAll('[data-prediction]').forEach(b => b.addEventListener('click', () => {
+learning/inquiry/science-lab\weight-compare\app.js:259:    state.prediction = b.dataset.prediction; markSelected('[data-prediction]', 'prediction', state.prediction);
+learning/inquiry/science-lab\weight-compare\app.js-260-}));
+learning/inquiry/science-lab\weight-compare\app.js-261-$('runBtn').addEventListener('click', () => {
+learning/inquiry/science-lab\weight-compare\app.js-262-    if (state.running) { state.running = false; $('runBtn').textContent = '저울에 올리고 물에 넣기'; return; }
+learning/inquiry/science-lab\weight-compare\app.js-263-    state.t = 0; state.running = true; state.checked = true;
+learning/inquiry/science-lab\weight-compare\app.js-264-    $('runBtn').textContent = '멈추기';
+learning/inquiry/science-lab\weight-compare\app.js-265-    render();
+--
+learning/inquiry/science-lab\weight-compare\app.js-268-    state.mat = 'wood'; state.size = 2;
+learning/inquiry/science-lab\weight-compare\app.js:269:    state.prediction = null; state.checked = false; state.running = false; state.t = 0;
+learning/inquiry/science-lab\weight-compare\app.js-270-    $('runBtn').textContent = '저울에 올리고 물에 넣기';
+learning/inquiry/science-lab\weight-compare\app.js-271-    document.querySelectorAll('[data-prediction]').forEach(x => x.classList.remove('selected'));
+learning/inquiry/science-lab\weight-compare\app.js-272-    $('resultEmpty').hidden = false; $('resultContent').hidden = true;
+learning/inquiry/science-lab\weight-compare\app.js-273-    markSelected('[data-mat]', 'mat', 'wood'); markSelected('[data-size]', 'size', 2);
+learning/inquiry/science-lab\weight-compare\app.js-274-    render();
+learning/inquiry/science-lab\weight-compare\app.js-275-});
+--
+learning/inquiry/science-lab\water-cycle\app.js-410-    predictionButtons.forEach(button => button.addEventListener('click', () => {
+learning/inquiry/science-lab\water-cycle\app.js:411:        prediction = button.dataset.prediction;
+learning/inquiry/science-lab\water-cycle\app.js-412-        predictionButtons.forEach(item => item.classList.toggle('selected', item === button));
+learning/inquiry/science-lab\water-cycle\app.js-413-    }));
+learning/inquiry/science-lab\water-cycle\app.js-414-
+learning/inquiry/science-lab\water-cycle\app.js-415-    function shuffleQuizOptions(card) {
+learning/inquiry/science-lab\water-cycle\app.js-416-        const optionGroup = card.querySelector('.quiz-options');
+learning/inquiry/science-lab\water-cycle\app.js-417-        const options = Array.from(optionGroup.children);
+--
+learning/inquiry/science-lab\wave-transfer\app.js-240-    predictionButtons.forEach(button => button.addEventListener('click', () => {
+learning/inquiry/science-lab\wave-transfer\app.js:241:        prediction = button.dataset.prediction;
+learning/inquiry/science-lab\wave-transfer\app.js-242-        predictionButtons.forEach(item => item.classList.toggle('selected', item === button));
+learning/inquiry/science-lab\wave-transfer\app.js-243-    }));
+learning/inquiry/science-lab\wave-transfer\app.js-244-    checkBtn.addEventListener('click', check);
+learning/inquiry/science-lab\wave-transfer\app.js-245-    resetBtn.addEventListener('click', () => {
+learning/inquiry/science-lab\wave-transfer\app.js-246-        speedRange.value = '20'; freqRange.value = '1'; ampRange.value = '2';
+learning/inquiry/science-lab\wave-transfer\app.js-247-        prediction = null;
+--
+learning/inquiry/science-lab\weather-watch\app.js-309-document.querySelectorAll('[data-prediction]').forEach(b => b.addEventListener('click', () => {
+learning/inquiry/science-lab\weather-watch\app.js:310:    state.prediction = b.dataset.prediction; markSelected('[data-prediction]', 'prediction', state.prediction);
+learning/inquiry/science-lab\weather-watch\app.js-311-}));
+learning/inquiry/science-lab\weather-watch\app.js-312-$('timeRange').addEventListener('input', e => {
+learning/inquiry/science-lab\weather-watch\app.js-313-    state.hour = Number(e.target.value);
+learning/inquiry/science-lab\weather-watch\app.js-314-    state.running = false;
+learning/inquiry/science-lab\weather-watch\app.js-315-    $('runBtn').textContent = '하루 지켜보기';
+learning/inquiry/science-lab\weather-watch\app.js-316-    $('timeOutput').textContent = koHour(state.hour);
+--
+learning/inquiry/science-lab\weather-watch\app.js-326-    state.sky = 'clear'; state.hour = 14;
+learning/inquiry/science-lab\weather-watch\app.js:327:    state.prediction = null; state.checked = false; state.running = false;
+learning/inquiry/science-lab\weather-watch\app.js-328-    $('timeRange').value = '14'; $('timeOutput').textContent = '14시';
+learning/inquiry/science-lab\weather-watch\app.js-329-    $('runBtn').textContent = '하루 지켜보기';
+learning/inquiry/science-lab\weather-watch\app.js-330-    document.querySelectorAll('[data-prediction]').forEach(x => x.classList.remove('selected'));
+learning/inquiry/science-lab\weather-watch\app.js-331-    $('resultEmpty').hidden = false; $('resultContent').hidden = true;
+learning/inquiry/science-lab\weather-watch\app.js-332-    markSelected('[data-sky]', 'sky', 'clear');
+learning/inquiry/science-lab\weather-watch\app.js-333-    render();
+--
+learning/inquiry/science-lab\weather-front\app.js-118-        predictionArea.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
+learning/inquiry/science-lab\weather-front\app.js:119:            state.prediction = button.dataset.prediction;
+learning/inquiry/science-lab\weather-front\app.js-120-            predictionArea.querySelectorAll('button').forEach(b => b.classList.toggle('selected', b === button));
+learning/inquiry/science-lab\weather-front\app.js-121-        }));
+learning/inquiry/science-lab\weather-front\app.js-122-    }
+learning/inquiry/science-lab\weather-front\app.js-123-
+learning/inquiry/science-lab\weather-front\app.js-124-    /* ----------------------------------------------------------- visuals */
+learning/inquiry/science-lab\weather-front\app.js-125-    function windVector(theta, low) {
+--
+learning/inquiry/science-lab\weather-front\app.js-384-        state.mode = button.dataset.mode;
+learning/inquiry/science-lab\weather-front\app.js:385:        state.prediction = null;
+learning/inquiry/science-lab\weather-front\app.js-386-        modeButtons.forEach(item => item.classList.toggle('selected', item === button));
+learning/inquiry/science-lab\weather-front\app.js-387-        buildControls();
+learning/inquiry/science-lab\weather-front\app.js-388-        buildPrediction();
+learning/inquiry/science-lab\weather-front\app.js-389-        stageCaption.textContent = state.mode === 'wind'
+learning/inquiry/science-lab\weather-front\app.js-390-            ? '북반구 지표 부근 바람은 등압선을 비스듬히 가로질러, 저기압으로 들어가고 고기압에서 나갑니다.'
+learning/inquiry/science-lab\weather-front\app.js-391-            : '구름의 모양과 비가 내리는 폭이 어떻게 다른지 보세요.';

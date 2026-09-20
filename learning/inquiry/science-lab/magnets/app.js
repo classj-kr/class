@@ -173,11 +173,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const PRED_COMPASS = [{ value: 'toS', label: '자석 때문에 방향 변화' }, { value: 'toN', label: '바늘이 사라짐' }, { value: 'north', label: '북쪽' }];
 
     function buildPrediction() {
+        state.prediction = null;
+        window.scienceInvalidatePrediction?.();
         const list = state.mode === 'force' ? PRED_FORCE : PRED_COMPASS;
         predictionLegend.textContent = state.mode === 'force' ? '오른쪽 것은 어떻게 될까요?' : '바늘의 N극은 어디를 가리킬까요?';
         predictionArea.innerHTML = list.map(o => `<button type="button" data-prediction="${o.value}">${o.label}</button>`).join('');
         predictionArea.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
-            state.prediction = button.dataset.prediction;
+            state.prediction = button.dataset.prediction; window.scienceInvalidatePrediction?.();
             predictionArea.querySelectorAll('button').forEach(b => b.classList.toggle('selected', b === button));
         }));
     }

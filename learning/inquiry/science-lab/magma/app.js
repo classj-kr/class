@@ -337,7 +337,7 @@ document.querySelectorAll('[data-water]').forEach(b => b.addEventListener('click
     state.water = Number(b.dataset.water); markSelected('[data-water]', 'water', state.water); render();
 }));
 document.querySelectorAll('[data-prediction]').forEach(b => b.addEventListener('click', () => {
-    state.prediction = b.dataset.prediction; markSelected('[data-prediction]', 'prediction', state.prediction);
+    state.prediction = b.dataset.prediction; state.checked = false; window.scienceInvalidatePrediction?.(); markSelected('[data-prediction]', 'prediction', state.prediction);
 }));
 $('tempRange').addEventListener('input', e => {
     state.temp = Number(e.target.value);

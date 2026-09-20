@@ -1,0 +1,35 @@
+{
+  "slug": "immune",
+  "engine": "chromium",
+  "modes": [
+    "infect",
+    "vaccine"
+  ],
+  "cases": 13,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__immuneModel",
+      "methods": [
+        "INFECTS",
+        "DOSES",
+        "SHOTS",
+        "WHENS",
+        "ABO",
+        "RHS",
+        "state",
+        "analyse",
+        "render",
+        "immuneRun",
+        "runSeconds",
+        "setMode",
+        "set",
+        "setProgress",
+        "runToEnd",
+        "tick",
+        "finish"
+      ]
+    }
+  ]
+}

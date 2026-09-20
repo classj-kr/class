@@ -1,0 +1,28 @@
+{
+  "slug": "sound-vibration",
+  "engine": "chromium",
+  "modes": [
+    "initial"
+  ],
+  "cases": 7,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__soundModel",
+      "methods": [
+        "BARS",
+        "SLOWDOWN",
+        "T_WIN",
+        "TAU",
+        "REFERENCE",
+        "displacementAt",
+        "envelopeAt",
+        "ringDuration",
+        "state",
+        "renderAt",
+        "forceRing"
+      ]
+    }
+  ]
+}

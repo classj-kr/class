@@ -1,0 +1,38 @@
+{
+  "slug": "measurement",
+  "engine": "chromium",
+  "modes": [
+    "scale",
+    "units",
+    "measure"
+  ],
+  "cases": 26,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__measureModel",
+      "methods": [
+        "KINDS",
+        "TARGETS",
+        "UNITS",
+        "ERAS",
+        "DEFS",
+        "RULERS",
+        "TRUE_MM",
+        "state",
+        "analyse",
+        "render",
+        "readingsFor",
+        "fmtSci",
+        "runSeconds",
+        "setMode",
+        "set",
+        "setProgress",
+        "runToEnd",
+        "tick",
+        "finish"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "slug": "life-cycle",
+  "engine": "chromium",
+  "modes": [
+    "initial"
+  ],
+  "cases": 8,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__lifeModel",
+      "methods": [
+        "state",
+        "analyse",
+        "tick",
+        "render",
+        "daysToAdult",
+        "verdictFor",
+        "pyramid",
+        "ANIMALS",
+        "PASS",
+        "setAnimal",
+        "setStep",
+        "check",
+        "runToEnd"
+      ]
+    }
+  ]
+}

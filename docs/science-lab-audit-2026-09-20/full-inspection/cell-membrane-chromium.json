@@ -1,0 +1,38 @@
+{
+  "slug": "cell-membrane",
+  "engine": "chromium",
+  "modes": [
+    "diffusion",
+    "osmosis"
+  ],
+  "cases": 10,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__membraneModel",
+      "methods": [
+        "CONCS",
+        "TEMPS",
+        "SOLUTIONS",
+        "C_IN",
+        "VB",
+        "BURST",
+        "state",
+        "analyse",
+        "render",
+        "countsAt",
+        "volumeAt",
+        "volumeTarget",
+        "burstTime",
+        "runSeconds",
+        "setMode",
+        "set",
+        "setProgress",
+        "runToEnd",
+        "tick",
+        "finish"
+      ]
+    }
+  ]
+}

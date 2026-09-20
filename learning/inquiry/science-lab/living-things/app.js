@@ -132,6 +132,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function buildPrediction() {
+        state.prediction = null;
+        window.scienceInvalidatePrediction?.();
         let list;
         if (state.mode === 'sort') {
             const rule = RULES[state.rule];
@@ -143,7 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         predictionArea.innerHTML = list.map(o => `<button type="button" data-prediction="${o.value}"${o.value === state.prediction ? ' class="selected"' : ''}>${o.label}</button>`).join('');
         predictionArea.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
-            state.prediction = button.dataset.prediction;
+            state.prediction = button.dataset.prediction; window.scienceInvalidatePrediction?.();
             predictionArea.querySelectorAll('button').forEach(b => b.classList.toggle('selected', b === button));
         }));
     }

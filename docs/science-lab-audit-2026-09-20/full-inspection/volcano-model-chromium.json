@@ -1,0 +1,35 @@
+{
+  "slug": "volcano-model",
+  "engine": "chromium",
+  "modes": [
+    "initial"
+  ],
+  "cases": 7,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__volcanoModel",
+      "methods": [
+        "state",
+        "analyse",
+        "tick",
+        "render",
+        "acidMol",
+        "sodaMol",
+        "matchGrams",
+        "gasLitres",
+        "verdictFor",
+        "VINEGARS",
+        "ACID_PER_ML",
+        "SODA_PER_G",
+        "LITRE_PER_MOL",
+        "NEAR",
+        "setVin",
+        "setSoda",
+        "check",
+        "runToEnd"
+      ]
+    }
+  ]
+}

@@ -112,11 +112,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const PRED_FRONT = [{ v: 'up', t: '올라간다' }, { v: 'same', t: '그대로다' }, { v: 'down', t: '내려간다' }];
 
     function buildPrediction() {
+        state.prediction = null;
+        window.scienceInvalidatePrediction?.();
         const list = state.mode === 'wind' ? PRED_WIND : PRED_FRONT;
         predictionLegend.textContent = state.mode === 'wind' ? '바람의 세기는 어떨까요?' : '전선이 지나간 뒤 기온은?';
         predictionArea.innerHTML = list.map(o => `<button type="button" data-prediction="${o.v}">${o.t}</button>`).join('');
         predictionArea.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
-            state.prediction = button.dataset.prediction;
+            state.prediction = button.dataset.prediction; window.scienceInvalidatePrediction?.();
             predictionArea.querySelectorAll('button').forEach(b => b.classList.toggle('selected', b === button));
         }));
     }

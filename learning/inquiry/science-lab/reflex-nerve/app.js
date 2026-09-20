@@ -25,7 +25,7 @@
         }
       }
       document.querySelectorAll('[data-path]').forEach(b => b.addEventListener('click', () => { selected = b.dataset.path; step = -1; prediction = null; render(); }));
-      document.querySelectorAll('[data-prediction]').forEach(b => b.addEventListener('click', () => { prediction = b.dataset.prediction; render(); }));
+      document.querySelectorAll('[data-prediction]').forEach(b => b.addEventListener('click', () => { prediction = b.dataset.prediction; window.scienceInvalidatePrediction?.(); render(); }));
       $('checkBtn').addEventListener('click', () => { step = 0; render(); });
       $('nextBtn').addEventListener('click', () => { if (step >= 0 && step < 4) step += 1; render(); });
       $('resetBtn').addEventListener('click', () => { selected = 'conscious'; prediction = null; step = -1; window.resetGradeQuiz(); render(); });

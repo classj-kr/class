@@ -44,8 +44,9 @@
         var question = document.createElement('h3');
         question.textContent = item.q;
         card.appendChild(question);
-        if (item.diagram && window.EclipseLab) {
-            var figure = window.EclipseLab.questionFigure(item.diagram);
+        if (item.diagram) {
+            var renderer = item.diagram.startsWith('stellar-') ? window.StellarStudy : window.EclipseLab;
+            var figure = renderer && renderer.questionFigure(item.diagram);
             if (figure) card.appendChild(figure);
         }
 

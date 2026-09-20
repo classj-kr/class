@@ -153,11 +153,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const PRED_WEB = [{ value: 'rabbit-up', label: '토끼가 늘어난다' }, { value: 'rabbit-down', label: '토끼가 줄어든다' }, { value: 'steady', label: '거의 변하지 않는다' }];
 
     function buildPrediction() {
+        state.prediction = null;
+        window.scienceInvalidatePrediction?.();
         const list = state.mode === 'bean' ? PRED_BEAN : PRED_WEB;
         predictionLegend.textContent = state.mode === 'bean' ? `${BEAN_DAYS}일 뒤 강낭콩은 어떻게 되어 있을까요?` : '그 뒤 토끼 수는 어떻게 될까요?';
         predictionArea.innerHTML = list.map(o => `<button type="button" data-prediction="${o.value}">${o.label}</button>`).join('');
         predictionArea.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
-            state.prediction = button.dataset.prediction;
+            state.prediction = button.dataset.prediction; window.scienceInvalidatePrediction?.();
             predictionArea.querySelectorAll('button').forEach(b => b.classList.toggle('selected', b === button));
         }));
     }

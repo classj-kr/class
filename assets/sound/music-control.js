@@ -41,8 +41,11 @@
         document.head.appendChild(sfxScript);
     }
 
-    const audio = document.getElementById("bgm");
-    if (!audio) return;
+    // Regional music engines keep their channels and crossfades; the site owns settings.
+    // Optional controller contract: setVolume(number), setMuted(boolean), unlock().
+    const externalMusic = window.ClassMusicController;
+    const audio = externalMusic ? null : document.getElementById("bgm");
+    if (!audio && !externalMusic) return;
 
     if (!document.querySelector('link[data-class-music-style]')) {
         const stylesheet = document.createElement("link");
@@ -103,6 +106,7 @@
     }
 
     function savePlaybackState() {
+        if (!audio) return;
         const isPlaying = !audio.paused && !audio.ended;
         localStorage.setItem(PLAYBACK_STATE_KEY, isPlaying ? "playing" : "paused");
 
@@ -117,6 +121,7 @@
     }
 
     function restorePlaybackPosition() {
+        if (!audio) return;
         const source = audio.currentSrc || audio.src;
         const positions = readPlaybackPositions();
         const savedTime = Number(
@@ -253,6 +258,11 @@
     }
 
     function applyAudioState() {
+        if (externalMusic) {
+            externalMusic.setVolume(musicVolume);
+            externalMusic.setMuted(musicMuted);
+            return;
+        }
         if (applyingAudioState) return;
         applyingAudioState = true;
         const targetVolume = musicVolume;
@@ -300,6 +310,11 @@
 
     async function startPlayback() {
         applyAudioState();
+        if (externalMusic) {
+            if (!navigator.userActivation?.hasBeenActive) return false;
+            externalMusic.unlock();
+            return true;
+        }
         try {
             await audio.play();
             playbackUnlocked = true;
@@ -361,26 +376,26 @@
         playSfxPreview({ force: true });
     });
 
-    audio.addEventListener("volumechange", () => {
+    audio?.addEventListener("volumechange", () => {
         if (!applyingAudioState) queueMicrotask(applyAudioState);
     });
-    audio.addEventListener("play", () => {
+    audio?.addEventListener("play", () => {
         shouldResumePlayback = true;
         applyAudioState();
         savePlaybackState();
     });
-    audio.addEventListener("pause", () => {
+    audio?.addEventListener("pause", () => {
         // During navigation the browser pauses the old page's audio after
         // pagehide. That is not a learner-requested pause, so keep the state
         // captured at pagehide for the next menu.
         if (!pageIsHiding) savePlaybackState();
     });
-    audio.addEventListener("timeupdate", () => {
+    audio?.addEventListener("timeupdate", () => {
         // Keep navigation seamless without writing to storage for every frame.
         if (Math.floor(audio.currentTime) % 5 === 0) savePlaybackState();
     });
-    audio.addEventListener("loadedmetadata", restorePlaybackPosition);
-    audio.addEventListener("loadeddata", () => {
+    audio?.addEventListener("loadedmetadata", restorePlaybackPosition);
+    audio?.addEventListener("loadeddata", () => {
         applyAudioState();
         if (playbackUnlocked || musicMuted) startPlayback();
     });

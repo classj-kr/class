@@ -167,6 +167,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const PRED_M = [{ value: 'big', label: '원자보다 큼 (1 nm 넘게)' }, { value: 'atom', label: '원자만 함 (0.01~1 nm)' }, { value: 'tiny', label: '잴 수 없이 작음' }];
 
     function buildPrediction() {
+        state.prediction = null;
+        window.scienceInvalidatePrediction?.();
         const list = state.mode === 'photo' ? PRED_P : state.mode === 'hydrogen' ? PRED_H : PRED_M;
         predictionLegend.textContent = state.mode === 'photo' ? `${METALS[state.metal].label}에 ${BRIGHTS[state.bright].label.replace(' 빛', '')} ${LIGHTS[state.light].label}${state.light === 'uv' ? '을' : ' 빛을'} 비추면?`
             : state.mode === 'hydrogen' ? `전자가 ${FROMS[state.from].label}에서 ${TOS[state.to].label}${roNum(TOS[state.to].n)} 갈 때 나오는 빛은?`
@@ -174,7 +176,7 @@ document.addEventListener('DOMContentLoaded', () => {
         predictionArea.className = `prediction-buttons ${list.length === 4 ? 'four' : 'three'}`;
         predictionArea.innerHTML = list.map(o => `<button type="button" data-prediction="${o.value}">${o.label}</button>`).join('');
         predictionArea.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
-            state.prediction = button.dataset.prediction;
+            state.prediction = button.dataset.prediction; window.scienceInvalidatePrediction?.();
             predictionArea.querySelectorAll('button').forEach(b => b.classList.toggle('selected', b === button));
         }));
     }

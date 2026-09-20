@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // A hundred plants of up to five kinds; a blight takes the commonest kind.
     const FORESTS = {
-        even: { label: '다섯 종 고루', hint: '20마리씩', counts: [20, 20, 20, 20, 20] },
+        even: { label: '다섯 종 고루', hint: '20개체씩', counts: [20, 20, 20, 20, 20] },
         two: { label: '두 종 반씩', hint: '50 · 50', counts: [50, 50, 0, 0, 0] },
         dominant: { label: '한 종이 대부분', hint: '90 · 4 · 3 · 2 · 1', counts: [90, 4, 3, 2, 1] },
         mono: { label: '한 종만 (밭)', hint: '100', counts: [100, 0, 0, 0, 0] },
@@ -106,7 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const remaining = 100 - f.counts[target];
         const simpson = arr => { const n = arr.reduce((s, v) => s + v, 0); return n ? 1 - arr.reduce((s, v) => s + (v / n) ** 2, 0) : 0; };
         const after = f.counts.map((v, i) => i === target ? 0 : v);
-        return { kind: 'diversity', f, target, remaining, before: simpson(f.counts), afterIdx: simpson(after), after, verdict: remaining >= 75 ? 'most' : remaining >= 35 ? 'half' : 'gone' };
+        return { kind: 'diversity', f, target, remaining, before: simpson(f.counts), afterIdx: simpson(after), after, verdict: remaining >= 80 ? 'most' : remaining >= 35 ? 'half' : 'gone' };
     }
     const runSeconds = () => 7;
 
@@ -125,7 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (state.mode === 'extinction') {
             controlArea.innerHTML = pickRow('멸종', 'extinction', Object.entries(EXTINCTIONS).map(([k, v]) => ({ value: k, label: v.label, hint: v.age ? fmtAge(v.age) : '' })), state.extinction, 3);
         } else {
-            controlArea.innerHTML = pickRow('숲의 생물 구성 (모두 100마리)', 'forest', Object.entries(FORESTS).map(([k, v]) => ({ value: k, label: v.label, hint: v.hint })), state.forest, 4);
+            controlArea.innerHTML = pickRow('숲의 생물 구성 (모두 100개체)', 'forest', Object.entries(FORESTS).map(([k, v]) => ({ value: k, label: v.label, hint: v.hint })), state.forest, 4);
         }
         controlArea.querySelectorAll('[data-pick]').forEach(group => {
             group.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
@@ -139,9 +139,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const PRED_CAL = [{ value: 'early', label: '1월 ~ 6월' }, { value: 'mid', label: '7월 ~ 10월' }, { value: 'late', label: '11월 ~ 12월 25일' }, { value: 'end', label: '12월 26일 ~ 31일' }];
     const PRED_EXT = [{ value: 'low', label: '절반 이하' }, { value: 'mid', label: '70 ~ 85 %' }, { value: 'high', label: '90 % 넘게' }];
-    const PRED_DIV = [{ value: 'most', label: '80 % 넘게 남음' }, { value: 'half', label: '절반쯤 남음' }, { value: 'gone', label: '거의 사라짐 (20 % 이하)' }];
+    const PRED_DIV = [{ value: 'most', label: '80 % 남음' }, { value: 'half', label: '절반쯤 남음' }, { value: 'gone', label: '거의 사라짐 (20 % 이하)' }];
 
     function buildPrediction() {
+        state.prediction = null;
+        window.scienceInvalidatePrediction?.();
         const list = state.mode === 'calendar' ? PRED_CAL : state.mode === 'extinction' ? PRED_EXT : PRED_DIV;
         predictionLegend.textContent = state.mode === 'calendar' ? `46억 년을 1년으로 줄이면 '${EVENTS[state.event].label}'은 달력의 언제일까요?`
             : state.mode === 'extinction' ? `${EXTINCTIONS[state.extinction].label}에 생물 종의 몇 %가 사라졌을까요?`
@@ -149,7 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
         predictionArea.className = `prediction-buttons${list.length === 3 ? ' three' : ''}`;
         predictionArea.innerHTML = list.map(o => `<button type="button" data-prediction="${o.value}">${o.label}</button>`).join('');
         predictionArea.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
-            state.prediction = button.dataset.prediction;
+            state.prediction = button.dataset.prediction; window.scienceInvalidatePrediction?.();
             predictionArea.querySelectorAll('button').forEach(b => b.classList.toggle('selected', b === button));
         }));
     }
@@ -305,21 +307,21 @@ document.addEventListener('DOMContentLoaded', () => {
             if (sp === target) { seen += 1; if (seen <= Math.round(total * killFrac)) { isDead = true; dead += 1; } }
             out += `<rect class="plot ${isDead ? 'dead' : ''}" fill="${SPECIES_COLOR[sp]}" x="${x + 1}" y="${y + 1}" width="${S - 2}" height="${S - 2}" rx="3"/>`;
         });
-        out += `<text class="small-label" x="${GX + 5 * S}" y="${GY + 10 * S + 12}" text-anchor="middle">100마리 · 색이 종 · 흐린 칸은 죽음</text>`;
+        out += `<text class="small-label" x="${GX + 5 * S}" y="${GY + 10 * S + 12}" text-anchor="middle">100개체 · 색이 종 · 흐린 칸은 죽음</text>`;
         const IX = 232;
         out += `<text class="trait-text" x="${IX}" y="46">종 수 ${f.counts.filter(v => v).length}가지</text>`;
         out += `<text class="trait-text" x="${IX}" y="62">${f.counts.map((v, i) => v ? `${SPECIES_NAME[i]} ${v}` : '').filter(Boolean).join(' · ')}</text>`;
         out += `<text class="trait-text" x="${IX}" y="84">다양성 지수 ${a.before.toFixed(2)}</text>`;
-        out += `<text class="small-label" x="${IX}" y="97">(두 마리를 뽑았을 때 다른 종일 확률)</text>`;
+        out += `<text class="small-label" x="${IX}" y="97">(두 개체를 뽑았을 때 다른 종일 확률)</text>`;
         if (p > 0) {
-            out += `<text class="trait-text" style="fill:#ff7a59" x="${IX}" y="120">병이 '${SPECIES_NAME[target]}' 종을 덮침 — ${dead}마리 죽음</text>`;
-            out += `<text class="trait-text" style="fill:#d97706" x="${IX}" y="136">남은 개체 ${100 - dead}마리</text>`;
+            out += `<text class="trait-text" style="fill:#ff7a59" x="${IX}" y="120">병이 '${SPECIES_NAME[target]}' 종을 덮침 — ${dead}개체 죽음</text>`;
+            out += `<text class="trait-text" style="fill:#d97706" x="${IX}" y="136">남은 개체 ${100 - dead}개체</text>`;
             if (p >= 0.8) { out += `<text class="trait-text" x="${IX}" y="152">남은 종 ${a.after.filter(v => v).length}가지 · 지수 ${a.afterIdx.toFixed(2)}</text>`; }
         } else {
             out += `<text class="trait-text" x="${IX}" y="120">가장 많은 종 '${SPECIES_NAME[target]}'을 덮치는 병이 돌면?</text>`;
         }
-        const VERD = { most: '80 % 넘게 남음', half: '절반쯤 남음', gone: '거의 사라짐' };
-        out += `<text class="verdict-text" fill="#d97706" x="20" y="16">${p >= 1 ? `${f.label}: ${a.remaining}마리 남음 → ${VERD[a.verdict]}` : `${f.label} 숲 (${f.hint})`}</text>`;
+        const VERD = { most: '80 % 남음', half: '절반쯤 남음', gone: '거의 사라짐' };
+        out += `<text class="verdict-text" fill="#d97706" x="20" y="16">${p >= 1 ? `${f.label}: ${a.remaining}개체 남음 → ${VERD[a.verdict]}` : `${f.label} 숲 (${f.hint})`}</text>`;
         out += `<text class="note-text" x="20" y="208">종이 여러 가지면 한 종을 덮치는 병이 와도 숲이 이어집니다 — 1845년 아일랜드 감자 흉년, 한 품종만 심었던 탓</text>`;
         return out;
     }
@@ -329,7 +331,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const X0 = 60, X1 = 430, Y0 = 150, Y1 = 40;
         const yOf = n => Y0 - n / 100 * (Y0 - Y1);
         const p = state.progress, killFrac = clamp(p / 0.8, 0, 1);
-        let out = `<text class="axis-title" x="${X0}" y="18">종마다 몇 마리 — 옅은 막대 처음, 진한 막대 병이 돈 뒤</text>`;
+        let out = `<text class="axis-title" x="${X0}" y="18">종마다 몇 개체 — 옅은 막대 처음, 진한 막대 병이 돈 뒤</text>`;
         [0, 25, 50, 75, 100].forEach(n => { out += `<line class="grid-line" x1="${X0}" y1="${yOf(n).toFixed(1)}" x2="${X1}" y2="${yOf(n).toFixed(1)}"/><text class="axis-text" x="${X0 - 6}" y="${(yOf(n) + 3.5).toFixed(1)}" text-anchor="end">${n}</text>`; });
         out += `<line class="axis" x1="${X0}" y1="${Y0}" x2="${X1}" y2="${Y0}"/>`;
         const step = (X1 - X0) / 5, W = 40;
@@ -361,10 +363,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 `<div class="data-row match"><span class="data-name">비율</span><span class="data-val">종의 약 ${ex.loss} %${ex.age ? ` · 회복에 ${ex.recovery}` : ` · 멸종 위기 ${ex.threatened} % · 속도 ${ex.rate}`}</span></div>`;
         }
         const { f } = a;
-        return `<div class="data-row"><span class="data-name">숲</span><span class="data-val">${f.label} — ${f.counts.map((v, i) => v ? `${SPECIES_NAME[i]} ${v}마리` : '').filter(Boolean).join(', ')}</span></div>` +
-            `<div class="data-row"><span class="data-name">다양성 지수</span><span class="data-val">1 − (각 종 비율)²의 합 = ${a.before.toFixed(2)} (두 마리를 뽑아 다른 종일 확률)</span></div>` +
-            `<div class="data-row"><span class="data-name">병</span><span class="data-val">가장 많은 '${SPECIES_NAME[a.target]}' 종 ${f.counts[a.target]}마리를 모두 죽임</span></div>` +
-            `<div class="data-row match"><span class="data-name">남은 것</span><span class="data-val">${a.remaining}마리 · ${a.after.filter(v => v).length}종 · 지수 ${a.afterIdx.toFixed(2)}</span></div>`;
+        return `<div class="data-row"><span class="data-name">숲</span><span class="data-val">${f.label} — ${f.counts.map((v, i) => v ? `${SPECIES_NAME[i]} ${v}개체` : '').filter(Boolean).join(', ')}</span></div>` +
+            `<div class="data-row"><span class="data-name">다양성 지수</span><span class="data-val">1 − (각 종 비율)²의 합 = ${a.before.toFixed(2)} (두 개체를 뽑아 다른 종일 확률)</span></div>` +
+            `<div class="data-row"><span class="data-name">병</span><span class="data-val">가장 많은 '${SPECIES_NAME[a.target]}' 종 ${f.counts[a.target]}개체를 모두 죽임</span></div>` +
+            `<div class="data-row match"><span class="data-name">남은 것</span><span class="data-val">${a.remaining}개체 · ${a.after.filter(v => v).length}종 · 지수 ${a.afterIdx.toFixed(2)}</span></div>`;
     }
 
     function render() {
@@ -432,13 +434,13 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         } else {
             const { f } = a;
-            labelA.textContent = '남은 개체'; valueA.textContent = `${a.remaining}마리 (${a.after.filter(v => v).length}종)`;
+            labelA.textContent = '남은 개체'; valueA.textContent = `${a.remaining}개체 (${a.after.filter(v => v).length}종)`;
             labelB.textContent = '다양성 지수'; valueB.textContent = `${a.before.toFixed(2)} → ${a.afterIdx.toFixed(2)}`;
-            s = `${f.label} 숲(${f.hint})에 가장 많은 '${SPECIES_NAME[a.target]}' 종을 죽이는 병이 돌자 ${f.counts[a.target]}마리가 죽고 ${a.remaining}마리가 남았습니다. `;
+            s = `${f.label} 숲(${f.hint})에 가장 많은 '${SPECIES_NAME[a.target]}' 종을 죽이는 병이 돌자 ${f.counts[a.target]}개체가 죽고 ${a.remaining}개체가 남았습니다. `;
             if (a.verdict === 'most') s += `종이 다섯 가지로 고루 있어 한 종을 잃어도 나머지 네 종이 숲을 이어 갑니다. `;
             else if (a.verdict === 'half') s += `종이 둘뿐이라 한 종을 잃으면 절반이 사라집니다. `;
             else s += `한 종이 거의 전부인 곳은 그 종을 덮치는 병 한 번에 무너집니다. 1845년 아일랜드는 한 품종의 감자만 심다가 감자 병으로 흉년이 들어 100만 명이 굶어 죽었습니다. `;
-            s += `다양성 지수(두 마리를 뽑았을 때 서로 다른 종일 확률)는 ${a.before.toFixed(2) === a.afterIdx.toFixed(2) ? `${a.before.toFixed(2)} 그대로입니다` : `${a.before.toFixed(2)}에서 ${a.afterIdx.toFixed(2)}${roOf(a.afterIdx.toFixed(2))} 바뀌었습니다`}. ${a.afterIdx > a.before ? '남은 열 마리 사이는 고르게 되어 지수는 올랐지만 개체의 90 %를 잃었습니다 — 지수는 고른 정도를 재고 마릿수는 재지 않습니다. ' : ''}종이 많고 고를수록 1에 가깝고, 그런 생태계가 병·가뭄·기후 변화 같은 재난을 잘 견딥니다. 생물 다양성은 종의 수만이 아니라 고른 정도, 종 안의 유전자 다양성, 생태계의 다양성을 함께 말합니다.`;
+            s += `다양성 지수(두 개체를 뽑았을 때 서로 다른 종일 확률)는 ${a.before.toFixed(2) === a.afterIdx.toFixed(2) ? `${a.before.toFixed(2)} 그대로입니다` : `${a.before.toFixed(2)}에서 ${a.afterIdx.toFixed(2)}${roOf(a.afterIdx.toFixed(2))} 바뀌었습니다`}. ${a.afterIdx > a.before ? '남은 열 개체 사이는 고르게 되어 지수는 올랐지만 개체의 90 %를 잃었습니다 — 지수는 고른 정도를 재고 마릿수는 재지 않습니다. ' : ''}종이 많고 고를수록 1에 가깝고, 그런 생태계가 병·가뭄·기후 변화 같은 재난을 잘 견딥니다. 생물 다양성은 종의 수만이 아니라 고른 정도, 종 안의 유전자 다양성, 생태계의 다양성을 함께 말합니다.`;
         }
         predictionResult.textContent = !state.prediction ? '다음에는 결과를 먼저 예상해 보세요.'
             : state.prediction === a.verdict ? '예상이 맞았습니다.' : '예상과 다른 결과입니다.';
@@ -462,7 +464,7 @@ document.addEventListener('DOMContentLoaded', () => {
         checkBtn.textContent = state.mode === 'calendar' ? '달력 넘기기' : state.mode === 'extinction' ? '멸종 일어나기' : '병 돌게 하기';
         stageCaption.textContent = state.mode === 'calendar' ? '1월 1일 0시에 지구가 태어나고 12월 31일 밤 12시가 지금입니다. 노란 표시가 달력을 넘어갑니다.'
             : state.mode === 'extinction' ? '점 하나가 생물 종 하나입니다. 멸종이 일어나면 흐려지고, 뒤에 새로 생긴 종은 초록으로 나타납니다.'
-                : '칸 하나가 한 마리, 색이 종입니다. 가장 많은 종을 덮치는 병이 돌면 그 칸들이 흐려집니다.';
+                : '칸 하나가 한 개체, 색이 종입니다. 가장 많은 종을 덮치는 병이 돌면 그 칸들이 흐려집니다.';
         settingsChanged();
     }));
     checkBtn.addEventListener('click', startRun);

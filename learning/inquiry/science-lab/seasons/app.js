@@ -121,11 +121,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const PRED_ORBIT = [{ value: 'summer', label: '여름' }, { value: 'winter', label: '겨울' }, { value: 'none', label: '계절 차이 없음' }];
 
     function buildPrediction() {
+        state.prediction = null;
+        window.scienceInvalidatePrediction?.();
         const list = state.mode === 'path' ? PRED_PATH : PRED_ORBIT;
         predictionLegend.textContent = state.mode === 'path' ? '정오에 태양은 얼마나 높이 있을까요?' : '이 자리에서 서울은 어느 계절일까요?';
         predictionArea.innerHTML = list.map(o => `<button type="button" data-prediction="${o.value}">${o.label}</button>`).join('');
         predictionArea.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
-            state.prediction = button.dataset.prediction;
+            state.prediction = button.dataset.prediction; window.scienceInvalidatePrediction?.();
             predictionArea.querySelectorAll('button').forEach(b => b.classList.toggle('selected', b === button));
         }));
     }

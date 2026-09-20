@@ -1,0 +1,28 @@
+{
+  "slug": "combustion",
+  "engine": "chromium",
+  "modes": [
+    "initial"
+  ],
+  "cases": 8,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__oxideModel",
+      "methods": [
+        "MATERIALS",
+        "state",
+        "analyse",
+        "step",
+        "render",
+        "runSeconds",
+        "set",
+        "setProgress",
+        "runToEnd",
+        "tick",
+        "finish"
+      ]
+    }
+  ]
+}

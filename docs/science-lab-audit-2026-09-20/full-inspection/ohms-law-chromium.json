@@ -1,0 +1,25 @@
+{
+  "slug": "ohms-law",
+  "engine": "chromium",
+  "modes": [
+    "initial"
+  ],
+  "cases": 12,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__ohmModel",
+      "methods": [
+        "analyse",
+        "GRAPH",
+        "V_MAX",
+        "gx",
+        "gy",
+        "niceMax",
+        "set",
+        "state"
+      ]
+    }
+  ]
+}

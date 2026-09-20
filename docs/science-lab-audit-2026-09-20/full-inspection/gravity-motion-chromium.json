@@ -1,0 +1,41 @@
+{
+  "slug": "gravity-motion",
+  "engine": "chromium",
+  "modes": [
+    "drop",
+    "impact"
+  ],
+  "cases": 18,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__gravityModel",
+      "methods": [
+        "HEIGHTS",
+        "SPEEDS",
+        "AIMS",
+        "LAUNCH",
+        "DROPS",
+        "FLOORS",
+        "V_CIRC",
+        "V_ESC",
+        "EGG_M",
+        "BREAK_N",
+        "state",
+        "analyse",
+        "render",
+        "dropCalc",
+        "orbitOf",
+        "impactCalc",
+        "runSeconds",
+        "setMode",
+        "set",
+        "setProgress",
+        "runToEnd",
+        "tick",
+        "finish"
+      ]
+    }
+  ]
+}

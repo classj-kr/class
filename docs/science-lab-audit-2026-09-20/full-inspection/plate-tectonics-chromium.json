@@ -1,0 +1,34 @@
+{
+  "slug": "plate-tectonics",
+  "engine": "chromium",
+  "modes": [
+    "initial"
+  ],
+  "cases": 11,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__plateModel",
+      "methods": [
+        "DEPTH_MAX",
+        "PX_PER_KM",
+        "SHALLOW",
+        "MIDDLE",
+        "KINDS",
+        "analyse",
+        "quakes",
+        "moved",
+        "render",
+        "check",
+        "setKind",
+        "setSpeed",
+        "setYears",
+        "runToEnd",
+        "getKind",
+        "speed",
+        "years"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "slug": "acid-base",
+  "engine": "chromium",
+  "modes": [
+    "initial"
+  ],
+  "cases": 5,
+  "errors": [],
+  "issues": [],
+  "models": []
+}

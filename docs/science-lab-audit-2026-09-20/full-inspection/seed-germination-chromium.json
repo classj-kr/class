@@ -1,0 +1,26 @@
+{
+  "slug": "seed-germination",
+  "engine": "chromium",
+  "modes": [
+    "initial"
+  ],
+  "cases": 3,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__seedModel",
+      "methods": [
+        "germinates",
+        "missingConditions",
+        "stageName",
+        "setConditions",
+        "conditions",
+        "setProgress",
+        "progress",
+        "SOIL_Y",
+        "SEED"
+      ]
+    }
+  ]
+}

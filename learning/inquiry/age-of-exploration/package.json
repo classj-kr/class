@@ -74,7 +74,8 @@
     "test:ship-designs": "node tests/ship-designs-unit.js",
     "test:ship-designs:smoke": "node tests/ship-designs-smoke.js",
     "test:view-motion": "node tests/view-motion-unit.js",
-    "test:ice-visual": "node tests/ice-visual-unit.js"
+    "test:ice-visual": "node tests/ice-visual-unit.js",
+    "test:interactions:smoke": "node tests/interaction-recovery-smoke.js"
   },
   "engines": {
     "node": ">=22"

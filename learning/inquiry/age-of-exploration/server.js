@@ -182,14 +182,13 @@ function nearbyDiscovery(p) {
   let best = null;
   let bestDistance = Infinity;
   for (const item of RESOLVED_DISCOVERIES) {
-    if (item.reach !== 'any' && item.reach !== p.mode) continue;
     const d = distanceXY(p.x, p.y, item.x, item.y);
     if (d > DISCOVERY_RADIUS_TILES * TILE || d >= bestDistance) continue;
     best = item;
     bestDistance = d;
   }
   if (!best) return null;
-  return { id: best.id, name: best.name, kind: best.kind, found: discoveryListFor(p.roomCode, p.name).includes(best.id) };
+  return { id: best.id, name: best.name, kind: best.kind, canUse:best.reach === 'any' || best.reach === p.mode, message:best.reach === 'sea' ? '배에서 살펴보기' : '상륙해서 살펴보기', found: discoveryListFor(p.roomCode, p.name).includes(best.id) };
 }
 
 // 동물 만나기 경주. 참가자마다 자기 동물이 따로 있고, 정해진 바다 안을 어슬렁거린다.
@@ -530,6 +529,14 @@ const io = new Server(server, {
 
 const rooms = new Map();
 const teachers = new Map();
+// A reconnect must restore the server's position, city and moored ship, never a client position.
+const disconnectedVoyagers = new Map();
+const VOYAGER_RESUME_MS = 10 * 60 * 1000;
+setInterval(() => {
+  for (const [token, session] of disconnectedVoyagers) {
+    if (session.expiresAt <= Date.now()) disconnectedVoyagers.delete(token);
+  }
+}, 60000).unref();
 const missionRuntime = new Map();
 const roomClocks = new Map();
 
@@ -1560,7 +1567,9 @@ function coastalTransferForPlayer(player) {
   if (player.mode === 'land') {
     const values = [player.shipAnchorX, player.shipAnchorY, player.shipLandingX, player.shipLandingY];
     if (!values.every(Number.isFinite)) return null;
-    if (distanceXY(player.x, player.y, player.shipLandingX, player.shipLandingY) > SHORE_RETURN_RADIUS_TILES * TILE) return null;
+    const landingDistance = distanceXY(player.x, player.y, player.shipLandingX, player.shipLandingY);
+    const anchorDistance = distanceXY(player.x, player.y, player.shipAnchorX, player.shipAnchorY);
+    if (Math.min(landingDistance, anchorDistance) > SHORE_RETURN_RADIUS_TILES * TILE) return null;
     return {
       anchorPoint: { x: player.shipAnchorX, y: player.shipAnchorY },
       landingPoint: { x: player.shipLandingX, y: player.shipLandingY }
@@ -1944,7 +1953,38 @@ function removePlayer(socket) {
   if (p) io.to(`teacher:${roomCode}`).emit('teacherEvent', { type: 'leave', name: p.name, at: Date.now() });
 }
 
+function joinedVoyagerState(player, host) {
+  const roomCode = player.roomCode, settings = store.room(roomCode).settings;
+  const minutes = classGameMinutes(roomCode);
+  return { ok:true, resumeToken:player.resumeToken, sessionMode:'competition',
+    roomType:settings.roomType || 'race', isHost:host, roomLabel:`방 ${roomCode}`,
+    self:publicPlayer(player, minutes), classGameMinutes:minutes, roomCode,
+    nearbyRadiusTiles:NEARBY_RADIUS / TILE, settings, ...activeMissionState(roomCode, player.name, player) };
+}
+
 io.on('connection', (socket) => {
+  socket.on('resumeVoyager', (payload, ack = () => {}) => {
+    const token = String(payload?.resumeToken || '');
+    const current = playerForSocket(socket);
+    if (current && current.resumeToken === token) return ack(joinedVoyagerState(current, teachers.get(socket.id) === current.roomCode));
+    if (current) return ack({ok:false, error:'현재 접속과 일치하지 않는 복구 요청입니다.'});
+    const session = disconnectedVoyagers.get(token);
+    if (!session || session.expiresAt <= Date.now()) return ack({ok:false, error:'연결 복구 시간이 지났습니다. 방에 다시 입장하세요.'});
+    const player = session.player, roomCode = player.roomCode;
+    if (!roomExists(roomCode) || (store.room(roomCode).activeMission?.id || null) !== player.activeMissionId) {
+      disconnectedVoyagers.delete(token);
+      return ack({ok:false, error:'방이나 미션이 변경되었습니다. 다시 입장하세요.'});
+    }
+    let room = rooms.get(roomCode);
+    if (room && (room.size >= MAX_ROOM_PLAYERS || [...room.values()].some(p => p.name === player.name))) return ack({ok:false, error:'같은 이름으로 이미 접속 중이거나 방이 가득 찼습니다.'});
+    if (!room) { room = new Map(); rooms.set(roomCode, room); if (isFreeRoom(roomCode)) clockForRoom(roomCode).baseServerMs = Date.now(); }
+    player.id = socket.id; player.lastSeen = Date.now(); player.lastInputAt = Date.now(); stopPlayer(player);
+    room.set(socket.id, player); socket.data.roomCode = roomCode; socket.data.sessionMode = 'competition';
+    socket.join(`class:${roomCode}`);
+    if (session.host) becomeHost(socket, roomCode);
+    disconnectedVoyagers.delete(token); touchRoom(roomCode);
+    ack(joinedVoyagerState(player, session.host));
+  });
   socket.on('joinClass', (payload, ack = () => {}) => {
     try {
       removePlayer(socket);
@@ -1983,6 +2023,7 @@ io.on('connection', (socket) => {
         : safeSpawn(room, savedRaceStart?.point || savedMission?.startPlace?.point || START, 'sea');
       const player = {
         id: socket.id,
+        resumeToken: crypto.randomUUID(),
         name,
         roomCode,
         sessionMode: 'competition',
@@ -2023,7 +2064,7 @@ io.on('connection', (socket) => {
       socket.data.roomCode = roomCode;
       socket.data.sessionMode = 'competition';
       socket.join(`class:${roomCode}`);
-      ack({ ok: true, sessionMode:'competition', roomType: roomSettings.roomType || 'race', isHost: host, roomLabel:`방 ${roomCode}`, self: publicPlayer(player, classMinutes), classGameMinutes: classMinutes, roomCode, nearbyRadiusTiles: NEARBY_RADIUS / TILE, settings: store.room(roomCode).settings, ...activeMissionState(roomCode, name, player) });
+      ack(joinedVoyagerState(player, host));
       io.to(`teacher:${roomCode}`).emit('teacherEvent', { type: 'join', name, at: Date.now() });
     } catch (error) {
       console.error(error);
@@ -2657,6 +2698,11 @@ io.on('connection', (socket) => {
   });
 
   socket.on('disconnect', () => {
+    const player = playerForSocket(socket);
+    if (player?.resumeToken) {
+      stopPlayer(player);
+      disconnectedVoyagers.set(player.resumeToken, {player, host:teachers.get(socket.id) === player.roomCode, expiresAt:Date.now() + VOYAGER_RESUME_MS});
+    }
     removePlayer(socket);
     releaseTeacherClock(socket.id);
     teachers.delete(socket.id);

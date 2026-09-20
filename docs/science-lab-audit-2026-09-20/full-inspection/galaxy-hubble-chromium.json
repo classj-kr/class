@@ -1,0 +1,35 @@
+{
+  "slug": "galaxy-hubble",
+  "engine": "chromium",
+  "modes": [
+    "classify",
+    "redshift",
+    "hubble"
+  ],
+  "cases": 20,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__galaxyModel",
+      "methods": [
+        "ARMS",
+        "BULGES",
+        "BARS",
+        "OBJECTS",
+        "SAMPLES",
+        "SCALES",
+        "state",
+        "analyse",
+        "render",
+        "runSeconds",
+        "setMode",
+        "set",
+        "setProgress",
+        "runToEnd",
+        "tick",
+        "finish"
+      ]
+    }
+  ]
+}

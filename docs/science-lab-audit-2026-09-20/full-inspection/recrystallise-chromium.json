@@ -1,0 +1,34 @@
+{
+  "slug": "recrystallise",
+  "engine": "chromium",
+  "modes": [
+    "initial"
+  ],
+  "cases": 15,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__crystalModel",
+      "methods": [
+        "SALTS",
+        "IMP_S",
+        "solubility",
+        "analyse",
+        "outAt",
+        "freshSim",
+        "step",
+        "render",
+        "check",
+        "setSalt",
+        "setWater",
+        "setHot",
+        "setCold",
+        "setDirt",
+        "runToEnd",
+        "getSim",
+        "tick"
+      ]
+    }
+  ]
+}

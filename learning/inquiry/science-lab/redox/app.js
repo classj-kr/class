@@ -109,12 +109,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const PRED_ELEC = [{ v: 'more', t: '많다' }, { v: 'near', t: '비슷하다' }, { v: 'less', t: '적다' }];
 
     function buildPrediction() {
+        state.prediction = null;
+        window.scienceInvalidatePrediction?.();
         const list = state.mode === 'cell' ? PRED_CELL : PRED_ELEC;
         predictionLegend.textContent = state.mode === 'cell'
             ? '산화되는 (−)극은 어느 쪽일까요?' : `흐른 전자가 ${E_BENCH} mol보다?`;
         predictionArea.innerHTML = list.map(o => `<button type="button" data-prediction="${o.v}">${o.t}</button>`).join('');
         predictionArea.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
-            state.prediction = button.dataset.prediction;
+            state.prediction = button.dataset.prediction; window.scienceInvalidatePrediction?.();
             predictionArea.querySelectorAll('button').forEach(b => b.classList.toggle('selected', b === button));
         }));
     }

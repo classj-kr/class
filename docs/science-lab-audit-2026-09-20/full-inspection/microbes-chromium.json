@@ -1,0 +1,37 @@
+{
+  "slug": "microbes",
+  "engine": "chromium",
+  "modes": [
+    "mould",
+    "germ"
+  ],
+  "cases": 13,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__microbeModel",
+      "methods": [
+        "TEMPS",
+        "MOIST",
+        "GERM_TEMPS",
+        "HOURS",
+        "MOULD_DAYS",
+        "state",
+        "analyseMould",
+        "analyseGerm",
+        "analyse",
+        "coverage",
+        "germCount",
+        "render",
+        "runSeconds",
+        "setMode",
+        "set",
+        "setProgress",
+        "runToEnd",
+        "tick",
+        "finish"
+      ]
+    }
+  ]
+}

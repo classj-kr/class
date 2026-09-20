@@ -26,14 +26,25 @@
         const noise=(x,y)=>{const ix=Math.floor(x),iy=Math.floor(y),fx=x-ix,fy=y-iy,sx=fx*fx*(3-2*fx),sy=fy*fy*(3-2*fy);return (hash(ix,iy)*(1-sx)+hash(ix+1,iy)*sx)*(1-sy)+(hash(ix,iy+1)*(1-sx)+hash(ix+1,iy+1)*sx)*sy;};
         const fbm=(x,y)=>{let sum=0,amp=.55;for(let i=0;i<5;i++){sum+=amp*noise(x,y);x=x*2.07+3.2;y=y*2.03-1.4;amp*=.48;}return sum;};
         const mapW=256,mapH=128,surfaceMap=new Float32Array(mapW*mapH);
-        for(let y=0;y<mapH;y++)for(let x=0;x<mapW;x++)surfaceMap[y*mapW+x]=fbm(x/18,y/18);
+        for(let y=0;y<mapH;y++)for(let x=0;x<mapW;x++){
+            const u=x/mapW,v=y/mapH,nx=x/18,ny=y/18;
+            // Periodic noise avoids visible seams when expanding material reveals more surface.
+            surfaceMap[y*mapW+x]=(fbm(nx,ny)*(1-u)+fbm(nx-mapW/18,ny)*u)*(1-v)
+                +(fbm(nx,ny-mapH/18)*(1-u)+fbm(nx-mapW/18,ny-mapH/18)*u)*v;
+        }
         const surfaceCanvas=document.createElement('canvas');surfaceCanvas.width=surfaceCanvas.height=200;
         const surfaceCtx=surfaceCanvas.getContext('2d'),surfaceImage=surfaceCtx.createImageData(200,200),sphere=[];
-        for(let y=0;y<200;y++)for(let x=0;x<200;x++){const nx=(x-99.5)/100,ny=(y-99.5)/100,d=nx*nx+ny*ny;if(d<=1){const nz=Math.sqrt(1-d);sphere.push({i:(y*200+x)*4,u:(Math.atan2(nx,nz)/Math.PI/2+.5)*mapW,v:Math.floor((Math.asin(ny)/Math.PI+.5)*(mapH-1)),shade:.36+.64*Math.max(0,nz*.9-nx*.22-ny*.32)});}}
+        for(let y=0;y<200;y++)for(let x=0;x<200;x++){const nx=(x-99.5)/100,ny=(y-99.5)/100,d=nx*nx+ny*ny;if(d<=1){const nz=Math.sqrt(1-d);sphere.push({i:(y*200+x)*4,u:(Math.atan2(nx,nz)/Math.PI/2+.5)*mapW,v:(Math.asin(ny)/Math.PI+.5)*(mapH-1),shade:.36+.64*Math.max(0,nz*.9-nx*.22-ny*.32)});}}
         function surface(radius,state){
-            const base=state.red>.3?[255,91,30]:state.large&&state.index>=2?[116,204,255]:[255,196,72];
-            const shift=Math.floor(t*mapW*4);
-            for(const p of sphere){const x=(Math.floor(p.u)+shift)%mapW,n=surfaceMap[p.v*mapW+x];const filaments=Math.pow(Math.max(0,1-Math.abs(n-.51)*9),3);const value=(.46+n*.86+filaments*.37)*p.shade;
+            const initial=state.large&&state.index>=2?[116,204,255]:[255,196,72];
+            const base=initial.map((value,i)=>value+([255,91,30][i]-value)*state.red);
+            const shift=t*mapW*4;
+            const textureScale=Math.max(1,radius/state.mainR);
+            for(const p of sphere){
+                const sx=(p.u*textureScale+shift)%mapW,sy=(p.v*textureScale)%mapH,
+                    x=Math.floor(sx),y=Math.floor(sy),fx=sx-x,fy=sy-y,x1=(x+1)%mapW,y1=(y+1)%mapH,
+                    n=(surfaceMap[y*mapW+x]*(1-fx)+surfaceMap[y*mapW+x1]*fx)*(1-fy)
+                        +(surfaceMap[y1*mapW+x]*(1-fx)+surfaceMap[y1*mapW+x1]*fx)*fy;const filaments=Math.pow(Math.max(0,1-Math.abs(n-.51)*9),3);const value=(.46+n*.86+filaments*.37)*p.shade;
                 surfaceImage.data[p.i]=Math.min(255,base[0]*value+filaments*28);surfaceImage.data[p.i+1]=Math.min(255,base[1]*value+filaments*40);surfaceImage.data[p.i+2]=Math.min(255,base[2]*value+filaments*25);surfaceImage.data[p.i+3]=255;}
             surfaceCtx.putImageData(surfaceImage,0,0);ctx.drawImage(surfaceCanvas,-radius,-radius,radius*2,radius*2);
         }
@@ -53,8 +64,8 @@
             const dpr=canvas.width/W;ctx.setTransform(dpr,0,0,dpr,0,0);
             for(const star of stars){ctx.fillStyle=`rgba(199,216,255,${star.a})`;ctx.beginPath();ctx.arc(star.x*W,star.y*H,star.r,0,7);ctx.fill();}
             ctx.save();ctx.translate(cx,cy);
-            const camera=state.index===5?1+M.smooth(state.u)*3:1;
-            ctx.scale(k*camera,k*camera);
+            // A single fixed scene scale preserves spatial anchors throughout the life cycle.
+            ctx.scale(k,k);
             if(state.cloud>0){
                 ctx.globalCompositeOperation='screen';
                 ctx.save();ctx.rotate(t*2.8);ctx.globalAlpha=state.cloud*.72;
@@ -72,22 +83,37 @@
                 const front=state.giantR+q*(state.large?470:225);
                 ctx.globalCompositeOperation='screen';
                 for(const p of particles){
-                    const travel=state.large?M.smooth(Math.max(0,(q-.08)/.9)):M.smooth(q);
-                    const r=state.giantR*(.82+.18*p.r)+travel*(120+420*p.r)*(state.large?1:.65);
-                    const a=p.a+.1*q,flatten=state.large?1:.76;
+                    const travel=state.large?M.smooth(Math.max(0,(q-.10)/.65)):M.smooth(q)*.6;
+                    const r=state.large?state.giantR*(.7+.3*p.r)+travel*(150+500*p.r):state.giantR*(.25+.75*p.r)+travel*(90+210*p.r);
+                    const a=p.a+.1*q,flatten=state.large?1:.7;
                     const size=(10+p.size*7)*(1+q*.3);
-                    ctx.globalAlpha=Math.min(1,q*7)*(.26+p.z*.4)*(1-q*.65);
+                    ctx.globalAlpha=Math.min(1,q*(state.large?7:3))*(.26+p.z*.4)*(1-q*.65);
                     if(state.large&&q>.1){ctx.strokeStyle=p.z>.5?'#fbba77':'#81bfff';ctx.lineWidth=.7+p.size*.25;ctx.beginPath();ctx.moveTo(Math.cos(a)*r,Math.sin(a)*r);ctx.lineTo(Math.cos(a)*(r+q*(20+p.z*70)),Math.sin(a)*(r+q*(20+p.z*70)));ctx.stroke();}
                     ctx.drawImage(sprites[state.large?(p.z>.6?0:2):(p.z>.5?0:1)],Math.cos(a)*r-size/2,Math.sin(a)*r*flatten-size/2,size,size);
                 }
                 if(state.large&&q>.08){ctx.globalAlpha=Math.max(0,(1-q))*.7;ctx.strokeStyle='#f9c788';ctx.lineWidth=3;ctx.beginPath();ctx.arc(0,0,front,0,7);ctx.stroke();halo(0,0,Math.max(1,state.burst*280),'255,222,177',state.burst*.8);}
-                if(!state.large){ctx.globalAlpha=Math.sin(Math.PI*Math.min(q,1))*.45;ctx.strokeStyle='#88bdfa';ctx.lineWidth=9;ctx.beginPath();ctx.ellipse(0,0,front,front*.72,-.22,0,7);ctx.stroke();}
+                if(!state.large){
+                    // Broad, slowly escaping gas layers; no shock front or explosive flash.
+                    ctx.save();ctx.rotate(-.25);ctx.globalAlpha=Math.min(1,q*3)*(1-q*.25)*.55;
+                    const width=state.giantR*2+q*180,height=state.giantR*1.7+q*75;
+                    ctx.drawImage(cloudCanvas,-width/2-q*55,-height/2,width,height);
+                    ctx.scale(-1,1);ctx.drawImage(cloudCanvas,-width/2-q*55,-height/2,width,height);ctx.restore();
+                }
                 ctx.globalAlpha=1;ctx.globalCompositeOperation='source-over';
             }
             const r=Math.max(.01,state.radius);
-            const dead=state.index>=4 && (state.large?state.u>.28||state.index===5:state.u>.55||state.index===5);
+            const dead=state.index>=4 && (state.large?state.u>.22||state.index===5:state.u>.55||state.index===5);
             const black=dead&&state.large&&remnant==='black-hole';
-            if(black){
+            if(state.index===4&&!state.large){
+                // The original envelope stays in place as it becomes transparent;
+                // the exposed white core does not shrink toward or move away from the viewer.
+                const opacity=1-M.smooth(state.u/.82),envelope=state.giantR*(1+state.u*.045);
+                ctx.save();ctx.globalAlpha=opacity;
+                halo(0,0,envelope*2,'255,105,44',.42*opacity);surface(envelope,state);ctx.restore();
+                const exposed=M.smooth(state.u/.4);
+                ctx.save();ctx.globalAlpha=exposed;halo(0,0,42,'161,222,255',.85);
+                ctx.fillStyle='#e8f6ff';ctx.beginPath();ctx.arc(0,0,11,0,7);ctx.fill();ctx.restore();
+            }else if(black){
                 ctx.strokeStyle='rgba(122,153,196,.65)';ctx.lineWidth=1.5;ctx.setLineDash([3,5]);ctx.beginPath();ctx.arc(0,0,r+5,0,7);ctx.stroke();ctx.setLineDash([]);
                 ctx.fillStyle='#000';ctx.beginPath();ctx.arc(0,0,r,0,7);ctx.fill();
             }else{
@@ -115,13 +141,48 @@
                     ctx.font='13px sans-serif';ctx.textAlign='center';ctx.fillStyle='#b6c4ec';ctx.fillText('중력 ↔ 내부 압력',0,r+68);
                 }
             }
+            if(state.index===3){
+                // Keep the pre-expansion outline in the same place and at the same size.
+                ctx.save();
+                ctx.strokeStyle='#8de5f6';ctx.lineWidth=1.25/k;ctx.setLineDash([5/k,5/k]);
+                ctx.beginPath();ctx.arc(0,0,state.mainR,0,Math.PI*2);ctx.stroke();ctx.setLineDash([]);
+                ctx.strokeStyle='rgba(187,222,241,.65)';ctx.lineWidth=1/k;
+                ctx.beginPath();ctx.moveTo(-5/k,0);ctx.lineTo(5/k,0);ctx.moveTo(0,-5/k);ctx.lineTo(0,5/k);ctx.stroke();
+                ctx.beginPath();ctx.moveTo(0,-state.mainR);ctx.lineTo(0,-state.giantR-24);ctx.stroke();
+                ctx.font=(12/k)+'px sans-serif';ctx.textAlign='center';ctx.fillStyle='#b8eaf5';
+                ctx.fillText('점선: 팽창 전 크기',0,-state.giantR-34);
+                if(state.u>.04){
+                    const outer=state.radius;
+                    for(let i=0;i<8;i++){
+                        const angle=i*Math.PI/4+Math.PI/8,ax=Math.cos(angle),ay=Math.sin(angle);
+                        const phase=(state.u*4+i*.17)%1;
+                        const rr=state.mainR+(outer-state.mainR)*phase;
+                        ctx.globalAlpha=Math.sin(phase*Math.PI)*.72;
+                        ctx.fillStyle='#ffe3a2';ctx.beginPath();ctx.arc(ax*rr,ay*rr,1.7/k,0,7);ctx.fill();
+                        ctx.globalAlpha=.85;ctx.strokeStyle='#ffdf9e';ctx.lineWidth=1.3/k;
+                        const start=outer+10/k,end=outer+27/k;
+                        ctx.beginPath();ctx.moveTo(ax*start,ay*start);ctx.lineTo(ax*end,ay*end);
+                        ctx.moveTo(ax*end,ay*end);ctx.lineTo(ax*(end-6/k)-ay*3/k,ay*(end-6/k)+ax*3/k);
+                        ctx.moveTo(ax*end,ay*end);ctx.lineTo(ax*(end-6/k)+ay*3/k,ay*(end-6/k)-ax*3/k);ctx.stroke();
+                    }
+                }
+                ctx.restore();
+            }
             ctx.restore();
+            if(state.index===5){
+                // Magnify only a separate inset; the star and surrounding space never move closer.
+                const box=100,x=W-box-18,y=18,crop=28*k;
+                ctx.save();ctx.fillStyle='#08101e';ctx.fillRect(x-5,y-5,box+10,box+30);
+                ctx.drawImage(canvas,(cx-crop)*dpr,(cy-crop)*dpr,crop*2*dpr,crop*2*dpr,x,y,box,box);
+                ctx.strokeStyle='#435773';ctx.lineWidth=1;ctx.strokeRect(x-5,y-5,box+10,box+30);
+                ctx.font='11px sans-serif';ctx.textAlign='center';ctx.fillStyle='#a7bedb';ctx.fillText('잔해 확대',x+box/2,y+box+18);ctx.restore();
+            }
             pane.dataset.stellarStage=state.stage.id;pane.dataset.stellarMass=mass;pane.dataset.stellarRemnant=remnant;
             progress.value=String(t);progress.setAttribute('aria-valuetext',state.stage.name);
             if(prevStage!==state.index){prevStage=state.index;updateInfo(state);}
         }
         function updateInfo(state){
-            pane.querySelector('[data-sl-phase]').textContent=(state.index+1)+' / 6'+(state.index===5?' · 잔해 확대':'');
+            pane.querySelector('[data-sl-phase]').textContent=(state.index+1)+' / 6';
             pane.querySelector('[data-sl-stage]').textContent=state.stage.name;
             pane.querySelector('[data-sl-description]').textContent=state.stage.description;
             pane.querySelector('[data-sl-energy]').textContent=state.stage.energy;

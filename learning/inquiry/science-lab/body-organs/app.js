@@ -230,7 +230,7 @@ document.querySelectorAll('[data-act]').forEach(b => b.addEventListener('click',
     state.act = b.dataset.act; markSelected('[data-act]', 'act', state.act); render();
 }));
 document.querySelectorAll('[data-prediction]').forEach(b => b.addEventListener('click', () => {
-    state.prediction = b.dataset.prediction; markSelected('[data-prediction]', 'prediction', state.prediction);
+    state.prediction = b.dataset.prediction; state.checked = false; window.scienceInvalidatePrediction?.(); markSelected('[data-prediction]', 'prediction', state.prediction);
 }));
 $('runBtn').addEventListener('click', () => {
     if (state.running) { state.running = false; $('runBtn').textContent = '따라가 보기'; return; }

@@ -1,0 +1,38 @@
+{
+  "slug": "weather-watch",
+  "engine": "chromium",
+  "modes": [
+    "initial"
+  ],
+  "cases": 7,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__weatherModel",
+      "methods": [
+        "state",
+        "analyse",
+        "tick",
+        "render",
+        "landTemp",
+        "seaTemp",
+        "windAt",
+        "verdictFor",
+        "amp",
+        "tMax",
+        "tMin",
+        "SKIES",
+        "T_MIN_H",
+        "T_MAX_H",
+        "T_MEAN",
+        "AMP",
+        "CALM",
+        "setSky",
+        "setHour",
+        "check",
+        "runToEnd"
+      ]
+    }
+  ]
+}

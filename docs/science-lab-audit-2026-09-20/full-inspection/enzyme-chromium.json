@@ -1,0 +1,41 @@
+{
+  "slug": "enzyme",
+  "engine": "chromium",
+  "modes": [
+    "initial"
+  ],
+  "cases": 19,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__enzymeModel",
+      "methods": [
+        "state",
+        "analyse",
+        "tick",
+        "render",
+        "rateAt",
+        "rateClean",
+        "vmaxEff",
+        "kmEff",
+        "vmaxClean",
+        "kcatAt",
+        "survivalAt",
+        "phFactor",
+        "blockedFraction",
+        "isBlocked",
+        "ENZYMES",
+        "setEnzyme",
+        "setTemp",
+        "setPh",
+        "setInhib",
+        "setSub",
+        "fresh",
+        "check",
+        "runToEnd",
+        "measureThroughput"
+      ]
+    }
+  ]
+}

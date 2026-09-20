@@ -111,13 +111,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const PRED_PRESS = [{ value: 'smaller', label: '줄어든다' }, { value: 'bigger', label: '늘어난다' }, { value: 'same', label: '그대로다' }];
 
     function buildPrediction() {
+        state.prediction = null;
+        window.scienceInvalidatePrediction?.();
         const list = state.mode === 'make' ? (state.test === 'incense' ? PRED_INCENSE : PRED_LIME) : PRED_PRESS;
         predictionLegend.textContent = state.mode === 'make'
             ? (state.test === 'incense' ? '향불을 넣으면 어떻게 될까요?' : '석회수를 넣고 흔들면 어떻게 될까요?')
             : '주사기 속 공기의 부피는 어떻게 될까요?';
         predictionArea.innerHTML = list.map(o => `<button type="button" data-prediction="${o.value}">${o.label}</button>`).join('');
         predictionArea.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
-            state.prediction = button.dataset.prediction;
+            state.prediction = button.dataset.prediction; window.scienceInvalidatePrediction?.();
             predictionArea.querySelectorAll('button').forEach(b => b.classList.toggle('selected', b === button));
         }));
     }

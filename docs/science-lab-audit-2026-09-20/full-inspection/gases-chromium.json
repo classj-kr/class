@@ -1,0 +1,39 @@
+{
+  "slug": "gases",
+  "engine": "chromium",
+  "modes": [
+    "make",
+    "press"
+  ],
+  "cases": 12,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__gasModel",
+      "methods": [
+        "GASES",
+        "TESTS",
+        "WEIGHTS",
+        "TEMPS",
+        "V0",
+        "state",
+        "analyseMake",
+        "analysePress",
+        "analyse",
+        "volumeOf",
+        "pressureOf",
+        "collectedAt",
+        "testAt",
+        "render",
+        "runSeconds",
+        "setMode",
+        "set",
+        "setProgress",
+        "runToEnd",
+        "tick",
+        "finish"
+      ]
+    }
+  ]
+}

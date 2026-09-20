@@ -27,7 +27,7 @@
         }
       }
       for (const key of ['method', 'force']) document.querySelectorAll(`[data-${key}]`).forEach(b => b.addEventListener('click', () => { if (key === 'method') method = b.dataset.method; else force = b.dataset.force; ran = false; prediction = null; render(); }));
-      document.querySelectorAll('[data-prediction]').forEach(b => b.addEventListener('click', () => { prediction = b.dataset.prediction; render(); }));
+      document.querySelectorAll('[data-prediction]').forEach(b => b.addEventListener('click', () => { prediction = b.dataset.prediction; window.scienceInvalidatePrediction?.(); render(); }));
       $('checkBtn').addEventListener('click', () => { ran = true; render(); });
       $('resetBtn').addEventListener('click', () => { method = 'direct'; force = 'small'; prediction = null; ran = false; window.resetGradeQuiz(); render(); });
       window.__leverModel = { lifted, state: () => ({ method, force, prediction, ran }) };

@@ -1,0 +1,49 @@
+{
+  "version": 10,
+  "rooms": {
+    "4294": {
+      "activeMission": null,
+      "progress": {},
+      "settings": {
+        "paused": false,
+        "locked": false,
+        "roomType": "free",
+        "started": true
+      },
+      "clock": {
+        "gameMinutes": 0
+      },
+      "discoveries": {
+        "UI 검사": []
+      },
+      "hunts": {},
+      "host": {
+        "tokenHash": "dca63bdbb67f70ee7671efb442c21bce320351847d8613f95ddc041b8ef59568",
+        "createdAt": 1789897162508,
+        "lastActiveAt": 1789897162527
+      }
+    },
+    "6490": {
+      "activeMission": null,
+      "progress": {},
+      "settings": {
+        "paused": false,
+        "locked": false,
+        "roomType": "free",
+        "started": true
+      },
+      "clock": {
+        "gameMinutes": 0
+      },
+      "discoveries": {
+        "UI 검사": []
+      },
+      "hunts": {},
+      "host": {
+        "tokenHash": "c9feffffa0a13c3e18fbcd5cdfcbf21af73e3074e8220f1d32f1a04a1a178b27",
+        "createdAt": 1789897218394,
+        "lastActiveAt": 1789897218427
+      }
+    }
+  }
+}

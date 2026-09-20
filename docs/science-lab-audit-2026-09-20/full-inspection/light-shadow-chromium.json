@@ -1,0 +1,11 @@
+{
+  "slug": "light-shadow",
+  "engine": "chromium",
+  "modes": [
+    "initial"
+  ],
+  "cases": 7,
+  "errors": [],
+  "issues": [],
+  "models": []
+}

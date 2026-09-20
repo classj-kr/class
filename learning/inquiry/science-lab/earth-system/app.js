@@ -148,6 +148,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const PRED_CARBON = [{ value: 'down', label: '줄어든다' }, { value: 'same', label: '거의 그대로 (±5 %)' }, { value: 'up', label: '늘어난다' }];
 
     function buildPrediction() {
+        state.prediction = null;
+        window.scienceInvalidatePrediction?.();
         const list = state.mode === 'spheres' ? PRED_SPHERES : state.mode === 'water' ? PRED_WATER : PRED_CARBON;
         predictionLegend.textContent = state.mode === 'spheres' ? `'${PHENOMENA[state.phenomenon].label}'은 어느 권 사이의 상호작용일까요?`
             : state.mode === 'water' ? `${RESERVOIRS[state.reservoir].label}에 든 물은 얼마 만에 모두 새 물로 바뀔까요?`
@@ -155,7 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
         predictionArea.className = `prediction-buttons${list.length === 3 || list.length === 5 ? ' three' : ''}`;
         predictionArea.innerHTML = list.map(o => `<button type="button" data-prediction="${o.value}">${o.label}</button>`).join('');
         predictionArea.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
-            state.prediction = button.dataset.prediction;
+            state.prediction = button.dataset.prediction; window.scienceInvalidatePrediction?.();
             predictionArea.querySelectorAll('button').forEach(b => b.classList.toggle('selected', b === button));
         }));
     }

@@ -1,0 +1,32 @@
+{
+  "slug": "cell-osmosis",
+  "engine": "chromium",
+  "modes": [
+    "initial"
+  ],
+  "cases": 9,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__cellModel",
+      "methods": [
+        "C_IN0",
+        "V0",
+        "BURST_V",
+        "TAU",
+        "targetVolume",
+        "volumeAt",
+        "burstTime",
+        "state",
+        "scaleOf",
+        "setCell",
+        "setConc",
+        "setTime",
+        "conc",
+        "elapsed",
+        "render"
+      ]
+    }
+  ]
+}

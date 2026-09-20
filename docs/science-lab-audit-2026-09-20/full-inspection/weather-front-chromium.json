@@ -1,0 +1,38 @@
+{
+  "slug": "weather-front",
+  "engine": "chromium",
+  "modes": [
+    "wind",
+    "front"
+  ],
+  "cases": 10,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__weatherModel",
+      "methods": [
+        "RHO",
+        "CORIOLIS",
+        "DP_HPA",
+        "CROSS",
+        "MAP_SCALE",
+        "MAP_CX",
+        "MAP_CY",
+        "EXAG",
+        "PASS_H",
+        "FRONTS",
+        "state",
+        "analyseWind",
+        "analyseFront",
+        "analyse",
+        "tempAt",
+        "windVector",
+        "render",
+        "check",
+        "setMode",
+        "set"
+      ]
+    }
+  ]
+}

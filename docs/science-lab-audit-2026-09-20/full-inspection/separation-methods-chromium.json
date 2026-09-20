@@ -1,0 +1,36 @@
+{
+  "slug": "separation-methods",
+  "engine": "chromium",
+  "modes": [
+    "filter",
+    "distill",
+    "chroma"
+  ],
+  "cases": 21,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__sepModel",
+      "methods": [
+        "PORE_MM",
+        "MIXTURES",
+        "analyse",
+        "schedule",
+        "tempAt",
+        "collectedAt",
+        "render",
+        "round",
+        "setMode",
+        "setMix",
+        "setProgress",
+        "runToEnd",
+        "tick",
+        "finish",
+        "getMode",
+        "getMix",
+        "runSeconds"
+      ]
+    }
+  ]
+}

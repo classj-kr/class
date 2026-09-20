@@ -1,0 +1,32 @@
+{
+  "slug": "lens-image",
+  "engine": "chromium",
+  "modes": [
+    "initial"
+  ],
+  "cases": 9,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__lensModel",
+      "methods": [
+        "LENS_X",
+        "AXIS_Y",
+        "SCALE",
+        "OBJ_CM",
+        "analyse",
+        "rays",
+        "at",
+        "render",
+        "check",
+        "setLens",
+        "setFocus",
+        "setDist",
+        "getLens",
+        "focal",
+        "dist"
+      ]
+    }
+  ]
+}

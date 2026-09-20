@@ -80,12 +80,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const PRED_CIR = [{ v: 'up', t: '커진다' }, { v: 'peak', t: '이미 최대다' }, { v: 'down', t: '작아진다' }];
 
     function buildPrediction() {
+        state.prediction = null;
+        window.scienceInvalidatePrediction?.();
         const list = state.mode === 'induce' ? PRED_IND : PRED_CIR;
         predictionLegend.textContent = state.mode === 'induce'
             ? `유도 기전력이 ${EMF_BENCH} V보다 어떨까요?` : 'R을 조금 더 키우면 소비 전력은?';
         predictionArea.innerHTML = list.map(o => `<button type="button" data-prediction="${o.v}">${o.t}</button>`).join('');
         predictionArea.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
-            state.prediction = button.dataset.prediction;
+            state.prediction = button.dataset.prediction; window.scienceInvalidatePrediction?.();
             predictionArea.querySelectorAll('button').forEach(b => b.classList.toggle('selected', b === button));
         }));
     }

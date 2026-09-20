@@ -1,0 +1,37 @@
+{
+  "slug": "wave-transfer",
+  "engine": "chromium",
+  "modes": [
+    "transverse",
+    "longitudinal"
+  ],
+  "cases": 20,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__waveModel",
+      "methods": [
+        "X0",
+        "X1",
+        "PX",
+        "CY",
+        "SPAN_CM",
+        "MARK_X",
+        "SAMPLES",
+        "REF_LAMBDA",
+        "analyse",
+        "phaseOf",
+        "render",
+        "setSpeed",
+        "setFreq",
+        "setAmp",
+        "setMode",
+        "speed",
+        "freq",
+        "amp",
+        "getMode"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "slug": "mass-ratio",
+  "engine": "chromium",
+  "modes": [
+    "mass",
+    "heat"
+  ],
+  "cases": 15,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__massModel",
+      "methods": [
+        "R_MG",
+        "R_OX",
+        "R_PROD",
+        "MAX_G",
+        "REACTIONS",
+        "T0",
+        "react",
+        "tempAt",
+        "setMode",
+        "setRxn",
+        "setMg",
+        "setOx",
+        "setTime",
+        "mg",
+        "ox",
+        "elapsed",
+        "render"
+      ]
+    }
+  ]
+}

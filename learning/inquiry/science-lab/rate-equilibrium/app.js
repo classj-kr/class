@@ -101,12 +101,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const PRED_EQ = [{ v: 'darker', t: '진해진다' }, { v: 'same', t: '비슷하다' }, { v: 'lighter', t: '옅어진다' }];
 
     function buildPrediction() {
+        state.prediction = null;
+        window.scienceInvalidatePrediction?.();
         const list = state.mode === 'rate' ? PRED_RATE : PRED_EQ;
         predictionLegend.textContent = state.mode === 'rate'
             ? '기준(25 ℃, 촉매 없음)보다 반응 속도가?' : '기준(25 ℃, 1 L)보다 갈색이?';
         predictionArea.innerHTML = list.map(o => `<button type="button" data-prediction="${o.v}">${o.t}</button>`).join('');
         predictionArea.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
-            state.prediction = button.dataset.prediction;
+            state.prediction = button.dataset.prediction; window.scienceInvalidatePrediction?.();
             predictionArea.querySelectorAll('button').forEach(b => b.classList.toggle('selected', b === button));
         }));
     }

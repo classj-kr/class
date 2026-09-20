@@ -1,0 +1,31 @@
+{
+  "slug": "body-organs",
+  "engine": "chromium",
+  "modes": [
+    "initial"
+  ],
+  "cases": 8,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__organModel",
+      "methods": [
+        "state",
+        "analyse",
+        "tick",
+        "render",
+        "output",
+        "ratio",
+        "verdictFor",
+        "SYSTEMS",
+        "ACTS",
+        "BLOOD_ML",
+        "setSys",
+        "setAct",
+        "check",
+        "runToEnd"
+      ]
+    }
+  ]
+}

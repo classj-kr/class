@@ -160,6 +160,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const PRED_H = [{ value: 'ok', label: '60~80 (모형 비교값 근처)' }, { value: 'low', label: '60보다 작음' }, { value: 'high', label: '80보다 큼' }];
 
     function buildPrediction() {
+        state.prediction = null;
+        window.scienceInvalidatePrediction?.();
         const list = state.mode === 'classify' ? PRED_C : state.mode === 'redshift' ? PRED_Z : PRED_H;
         predictionLegend.textContent = state.mode === 'classify' ? `나선팔 ${ARMS[state.arms].label} · 팽대부 ${BULGES[state.bulge].label}${state.arms === 'none' ? '' : ` · 막대 ${BARS[state.bar].label}`} — 이 은하는 어디에 들까요?`
             : state.mode === 'redshift' ? `${OBJECTS[state.object].name}의 적색편이 z 범위는?`
@@ -167,7 +169,7 @@ document.addEventListener('DOMContentLoaded', () => {
         predictionArea.className = `prediction-buttons ${list.length === 4 ? 'four' : 'three'}`;
         predictionArea.innerHTML = list.map(o => `<button type="button" data-prediction="${o.value}">${o.label}</button>`).join('');
         predictionArea.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
-            state.prediction = button.dataset.prediction;
+            state.prediction = button.dataset.prediction; window.scienceInvalidatePrediction?.();
             predictionArea.querySelectorAll('button').forEach(b => b.classList.toggle('selected', b === button));
         }));
     }

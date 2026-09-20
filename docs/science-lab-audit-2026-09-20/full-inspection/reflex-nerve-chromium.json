@@ -1,0 +1,19 @@
+{
+  "slug": "reflex-nerve",
+  "engine": "chromium",
+  "modes": [
+    "initial"
+  ],
+  "cases": 4,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__reflexModel",
+      "methods": [
+        "PATHS",
+        "state"
+      ]
+    }
+  ]
+}

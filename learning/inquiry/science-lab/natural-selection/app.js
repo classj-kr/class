@@ -163,11 +163,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const PRED_COAT = [{ value: 'light', label: '밝은 쪽으로' }, { value: 'dark', label: '어두운 쪽으로' }, { value: 'mixed', label: '거의 그대로' }];
 
     function buildPrediction() {
+        state.prediction = null;
+        window.scienceInvalidatePrediction?.();
         const list = state.mode === 'beak' ? PRED_BEAK : PRED_COAT;
         predictionLegend.textContent = state.mode === 'beak' ? '10세대 뒤 무리의 부리는?' : state.flip === 'flip' ? '배경이 바뀐 뒤 무리는 어느 쪽으로 옮겨 갈까요?' : '10세대 뒤 무리의 털 색은?';
         predictionArea.innerHTML = list.map(o => `<button type="button" data-prediction="${o.value}">${o.label}</button>`).join('');
         predictionArea.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
-            state.prediction = button.dataset.prediction;
+            state.prediction = button.dataset.prediction; window.scienceInvalidatePrediction?.();
             predictionArea.querySelectorAll('button').forEach(b => b.classList.toggle('selected', b === button));
         }));
     }

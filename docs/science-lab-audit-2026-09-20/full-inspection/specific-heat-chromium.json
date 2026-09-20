@@ -1,0 +1,38 @@
+{
+  "slug": "specific-heat",
+  "engine": "chromium",
+  "modes": [
+    "heat",
+    "expand"
+  ],
+  "cases": 11,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__heat2Model",
+      "methods": [
+        "SUBS",
+        "METALS",
+        "POWER",
+        "T0",
+        "MAX_TIME",
+        "L0_MM",
+        "EXAGGERATION",
+        "PX_PER_MM",
+        "tempOf",
+        "expansionMM",
+        "tempScaleMax",
+        "setMode",
+        "setMass",
+        "setTime",
+        "setDelta",
+        "stepFrame",
+        "elapsed",
+        "mass",
+        "deltaT",
+        "render"
+      ]
+    }
+  ]
+}

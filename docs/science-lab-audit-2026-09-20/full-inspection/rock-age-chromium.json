@@ -1,0 +1,38 @@
+{
+  "slug": "rock-age",
+  "engine": "chromium",
+  "modes": [
+    "decay",
+    "strata"
+  ],
+  "cases": 17,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__rockModel",
+      "methods": [
+        "state",
+        "analyse",
+        "tick",
+        "render",
+        "fracAfter",
+        "fracAtAge",
+        "windowFor",
+        "datable",
+        "koYears",
+        "ISO",
+        "TARGETS",
+        "ORDERED",
+        "HIDDEN_B",
+        "ATOMS",
+        "setMode",
+        "setIso",
+        "setTarget",
+        "setHl",
+        "check",
+        "runToEnd"
+      ]
+    }
+  ]
+}

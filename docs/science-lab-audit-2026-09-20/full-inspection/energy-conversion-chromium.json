@@ -1,0 +1,45 @@
+{
+  "slug": "energy-conversion",
+  "engine": "chromium",
+  "modes": [
+    "solar",
+    "wind",
+    "chain"
+  ],
+  "cases": 20,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__energyModel",
+      "methods": [
+        "SEASONS",
+        "WEATHERS",
+        "TILTS",
+        "WINDS",
+        "BLADES",
+        "REF",
+        "PLANTS",
+        "LAMPS",
+        "GRID_EFF",
+        "SUPPLY_J",
+        "state",
+        "analyse",
+        "render",
+        "panelPower",
+        "panelIrradiance",
+        "sunAt",
+        "windPower",
+        "chainOf",
+        "dayCurves",
+        "runSeconds",
+        "setMode",
+        "set",
+        "setProgress",
+        "runToEnd",
+        "tick",
+        "finish"
+      ]
+    }
+  ]
+}

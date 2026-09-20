@@ -1,0 +1,38 @@
+{
+  "slug": "minerals-rocks",
+  "engine": "chromium",
+  "modes": [
+    "mineral",
+    "rock"
+  ],
+  "cases": 22,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__rockModel",
+      "methods": [
+        "MINERALS",
+        "ROCKS",
+        "K_CRYSTAL",
+        "N_CRYSTAL",
+        "FINE_MM",
+        "COARSE_MM",
+        "LOG_MIN",
+        "LOG_MAX",
+        "COOL_K",
+        "state",
+        "analyseMineral",
+        "analyseRock",
+        "analyse",
+        "daysFor",
+        "crystalFor",
+        "timeText",
+        "render",
+        "check",
+        "setMode",
+        "set"
+      ]
+    }
+  ]
+}

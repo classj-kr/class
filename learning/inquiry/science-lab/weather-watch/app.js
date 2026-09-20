@@ -307,7 +307,7 @@ document.querySelectorAll('[data-sky]').forEach(b => b.addEventListener('click',
     state.sky = b.dataset.sky; markSelected('[data-sky]', 'sky', state.sky); render();
 }));
 document.querySelectorAll('[data-prediction]').forEach(b => b.addEventListener('click', () => {
-    state.prediction = b.dataset.prediction; markSelected('[data-prediction]', 'prediction', state.prediction);
+    state.prediction = b.dataset.prediction; state.checked = false; window.scienceInvalidatePrediction?.(); markSelected('[data-prediction]', 'prediction', state.prediction);
 }));
 $('timeRange').addEventListener('input', e => {
     state.hour = Number(e.target.value);

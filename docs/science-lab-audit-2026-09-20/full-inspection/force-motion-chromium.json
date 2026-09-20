@@ -1,0 +1,37 @@
+{
+  "slug": "force-motion",
+  "engine": "chromium",
+  "modes": [
+    "initial"
+  ],
+  "cases": 13,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__forceModel",
+      "methods": [
+        "G",
+        "TRACK_M",
+        "PX_PER_M",
+        "PX_PER_N",
+        "TRACK_X0",
+        "FLOORS",
+        "analyse",
+        "stateAt",
+        "timeToReach",
+        "render",
+        "setForce",
+        "setMass",
+        "setStart",
+        "setFloor",
+        "seek",
+        "runToEnd",
+        "tick",
+        "finish",
+        "getTime",
+        "getFloor"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "slug": "neuron",
+  "engine": "chromium",
+  "modes": [
+    "spike",
+    "conduct",
+    "synapse"
+  ],
+  "cases": 15,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__neuronModel",
+      "methods": [
+        "STIMS",
+        "DURS",
+        "AXONS",
+        "DRUGS",
+        "state",
+        "analyse",
+        "render",
+        "hhRun",
+        "synRun",
+        "runSeconds",
+        "setMode",
+        "set",
+        "setProgress",
+        "runToEnd",
+        "tick",
+        "finish"
+      ]
+    }
+  ]
+}

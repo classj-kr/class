@@ -1,0 +1,30 @@
+{
+  "slug": "photosynthesis",
+  "engine": "chromium",
+  "modes": [
+    "initial"
+  ],
+  "cases": 10,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__photoModel",
+      "methods": [
+        "V_MAX",
+        "K_LIGHT",
+        "K_CO2",
+        "T_OPT",
+        "analyse",
+        "tempFactor",
+        "setLight",
+        "setCO2",
+        "setTemp",
+        "light",
+        "co2",
+        "temp",
+        "render"
+      ]
+    }
+  ]
+}

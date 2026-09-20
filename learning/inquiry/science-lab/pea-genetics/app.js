@@ -192,11 +192,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const PRED_TWO = [{ value: 'all-same', label: '모두 같음' }, { value: '9-3-3-1', label: '9 : 3 : 3 : 1' }, { value: '1-1-1-1', label: '1 : 1 : 1 : 1' }, { value: '3-1', label: '3 : 1' }];
 
     function buildPrediction() {
+        state.prediction = null;
+        window.scienceInvalidatePrediction?.();
         const list = state.mode === 'one' ? PRED_ONE : PRED_TWO;
         predictionLegend.textContent = state.mode === 'one' ? '우성 : 열성 비는 어떻게 나올까요?' : '네 가지 겉모습의 비는 어떻게 나올까요?';
         predictionArea.innerHTML = list.map(o => `<button type="button" data-prediction="${o.value}">${o.label}</button>`).join('');
         predictionArea.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
-            state.prediction = button.dataset.prediction;
+            state.prediction = button.dataset.prediction; window.scienceInvalidatePrediction?.();
             predictionArea.querySelectorAll('button').forEach(b => b.classList.toggle('selected', b === button));
         }));
     }

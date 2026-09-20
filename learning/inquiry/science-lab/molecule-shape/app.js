@@ -166,6 +166,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const PRED_M = [{ value: 'mix', label: '잘 녹아 섞임' }, { value: 'partly', label: '조금만 녹음' }, { value: 'no', label: '녹지 않고 따로 놂' }];
 
     function buildPrediction() {
+        state.prediction = null;
+        window.scienceInvalidatePrediction?.();
         const list = state.mode === 'shape' ? PRED_S : state.mode === 'polar' ? PRED_P : PRED_M;
         predictionLegend.textContent = state.mode === 'shape' ? `${MOLS[state.mol].name} ${MOLS[state.mol].formula}의 모양은?`
             : state.mode === 'polar' ? `${MOLS[state.pmol].name} ${MOLS[state.pmol].formula}${eunF(MOLS[state.pmol].formula)} 극성 분자일까요?`
@@ -173,7 +175,7 @@ document.addEventListener('DOMContentLoaded', () => {
         predictionArea.className = `prediction-buttons ${list.length === 4 ? 'four' : 'three'}`;
         predictionArea.innerHTML = list.map(o => `<button type="button" data-prediction="${o.value}">${o.label}</button>`).join('');
         predictionArea.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
-            state.prediction = button.dataset.prediction;
+            state.prediction = button.dataset.prediction; window.scienceInvalidatePrediction?.();
             predictionArea.querySelectorAll('button').forEach(b => b.classList.toggle('selected', b === button));
         }));
     }

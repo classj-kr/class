@@ -1,0 +1,31 @@
+{
+  "slug": "redox",
+  "engine": "chromium",
+  "modes": [
+    "cell",
+    "elec"
+  ],
+  "cases": 21,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__redoxModel",
+      "methods": [
+        "FARADAY",
+        "MOLAR_VOL",
+        "E_BENCH",
+        "METALS",
+        "BATHS",
+        "state",
+        "analyseCell",
+        "analyseElec",
+        "analyse",
+        "render",
+        "check",
+        "setMode",
+        "set"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "slug": "torque",
+  "engine": "chromium",
+  "modes": [
+    "seesaw",
+    "tip",
+    "plank"
+  ],
+  "cases": 26,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__torqueModel",
+      "methods": [
+        "PIVOTS",
+        "MASSES",
+        "DISTS",
+        "SHAPES",
+        "FLOORS",
+        "ANGLES",
+        "LOADS",
+        "SPOTS",
+        "state",
+        "analyse",
+        "render",
+        "seesawRun",
+        "runSeconds",
+        "setMode",
+        "set",
+        "setProgress",
+        "runToEnd",
+        "tick",
+        "finish"
+      ]
+    }
+  ]
+}

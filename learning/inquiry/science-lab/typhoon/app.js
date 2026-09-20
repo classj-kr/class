@@ -155,6 +155,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const PRED_E = [{ value: 'elnino', label: '동태평양이 따뜻해짐 — 페루에 비, 인도네시아 가뭄' }, { value: 'normal', label: '평소와 같음' }, { value: 'lanina', label: '동태평양이 더 차가워짐 — 인도네시아 홍수, 페루 가뭄' }];
 
     function buildPrediction() {
+        state.prediction = null;
+        window.scienceInvalidatePrediction?.();
         const list = state.mode === 'genesis' ? PRED_G : state.mode === 'track' ? PRED_T : PRED_E;
         predictionLegend.textContent = state.mode === 'genesis' ? `해수면 ${SSTS[state.sst].label}, ${LATS[state.lat].label}의 바다에서는?`
             : state.mode === 'track' ? `북태평양 고기압이 ${HIGHS[state.high].when} 태풍은?`
@@ -162,7 +164,7 @@ document.addEventListener('DOMContentLoaded', () => {
         predictionArea.className = 'prediction-buttons three';
         predictionArea.innerHTML = list.map(o => `<button type="button" data-prediction="${o.value}">${o.label}</button>`).join('');
         predictionArea.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
-            state.prediction = button.dataset.prediction;
+            state.prediction = button.dataset.prediction; window.scienceInvalidatePrediction?.();
             predictionArea.querySelectorAll('button').forEach(b => b.classList.toggle('selected', b === button));
         }));
     }

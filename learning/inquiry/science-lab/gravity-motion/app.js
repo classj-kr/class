@@ -170,6 +170,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const PRED_IMPACT = [{ value: 'low', label: '10배 이내' }, { value: 'mid', label: '10 ~ 100배' }, { value: 'high', label: '100배 넘게' }];
 
     function buildPrediction() {
+        state.prediction = null;
+        window.scienceInvalidatePrediction?.();
         const list = state.mode === 'drop' ? PRED_DROP : state.mode === 'orbit' ? PRED_ORBIT : PRED_IMPACT;
         predictionLegend.textContent = state.mode === 'drop' ? '같은 순간 한 공은 놓고 한 공은 던지면, 어느 공이 먼저 땅에 닿을까요?'
             : state.mode === 'orbit' ? `${LAUNCH[state.launch].label}로 옆으로 던진 대포알은 어떻게 될까요?`
@@ -177,7 +179,7 @@ document.addEventListener('DOMContentLoaded', () => {
         predictionArea.className = `prediction-buttons${list.length === 3 ? ' three' : ''}`;
         predictionArea.innerHTML = list.map(o => `<button type="button" data-prediction="${o.value}">${o.label}</button>`).join('');
         predictionArea.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
-            state.prediction = button.dataset.prediction;
+            state.prediction = button.dataset.prediction; window.scienceInvalidatePrediction?.();
             predictionArea.querySelectorAll('button').forEach(b => b.classList.toggle('selected', b === button));
         }));
     }

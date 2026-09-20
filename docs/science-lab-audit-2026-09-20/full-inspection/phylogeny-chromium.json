@@ -1,0 +1,33 @@
+{
+  "slug": "phylogeny",
+  "engine": "chromium",
+  "modes": [
+    "rank",
+    "tree",
+    "clock"
+  ],
+  "cases": 28,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__phyloModel",
+      "methods": [
+        "ORGS",
+        "SETS",
+        "ORGS3",
+        "CALS",
+        "state",
+        "analyse",
+        "render",
+        "runSeconds",
+        "setMode",
+        "set",
+        "setProgress",
+        "runToEnd",
+        "tick",
+        "finish"
+      ]
+    }
+  ]
+}

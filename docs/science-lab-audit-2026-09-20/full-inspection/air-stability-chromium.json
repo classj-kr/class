@@ -1,0 +1,41 @@
+{
+  "slug": "air-stability",
+  "engine": "chromium",
+  "modes": [
+    "initial"
+  ],
+  "cases": 13,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__airModel",
+      "methods": [
+        "state",
+        "analyse",
+        "tick",
+        "render",
+        "crossing",
+        "parcelAt",
+        "envAt",
+        "liftedAt",
+        "freeConvection",
+        "esat",
+        "dewFrom",
+        "rhFrom",
+        "mixing",
+        "pressAt",
+        "GD",
+        "GM",
+        "GDEW",
+        "Z_TOP",
+        "setHeight",
+        "setRh",
+        "setTemp",
+        "setLapse",
+        "check",
+        "runToEnd"
+      ]
+    }
+  ]
+}

@@ -357,7 +357,7 @@ document.querySelectorAll('[data-inhib]').forEach(b => b.addEventListener('click
     markSelected('[data-inhib]', 'inhib', state.inhib); render();
 }));
 document.querySelectorAll('[data-prediction]').forEach(b => b.addEventListener('click', () => {
-    state.prediction = b.dataset.prediction; markSelected('[data-prediction]', 'prediction', state.prediction);
+    state.prediction = b.dataset.prediction; state.checked = false; window.scienceInvalidatePrediction?.(); markSelected('[data-prediction]', 'prediction', state.prediction);
 }));
 $('subRange').addEventListener('input', e => {
     state.sub = Number(e.target.value);

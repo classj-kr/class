@@ -147,11 +147,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const PRED_STARS = [{ value: 'up', label: '북극성 위' }, { value: 'right', label: '오른쪽 (동쪽)' }, { value: 'left', label: '왼쪽 (서쪽)' }, { value: 'down', label: '아래' }];
 
     function buildPrediction() {
+        state.prediction = null;
+        window.scienceInvalidatePrediction?.();
         const list = state.mode === 'moon' ? PRED_MOON : PRED_STARS;
         predictionLegend.textContent = state.mode === 'moon' ? '저녁 7시에 달은 어디에 있을까요?' : '저녁 9시에 북두칠성은 북극성의 어느 쪽에 있을까요?';
         predictionArea.innerHTML = list.map(o => `<button type="button" data-prediction="${o.value}">${o.label}</button>`).join('');
         predictionArea.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
-            state.prediction = button.dataset.prediction;
+            state.prediction = button.dataset.prediction; window.scienceInvalidatePrediction?.();
             predictionArea.querySelectorAll('button').forEach(b => b.classList.toggle('selected', b === button));
         }));
     }

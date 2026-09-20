@@ -90,12 +90,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function buildPrediction() {
+        state.prediction = null;
+        window.scienceInvalidatePrediction?.();
         const A = MOVERS[state.a], B = MOVERS[state.b];
         const list = [{ value: 'a', label: `1번 ${A.name}` }, { value: 'b', label: `2번 ${B.name}` }, { value: 'same', label: '같다' }];
         predictionLegend.textContent = state.mode === 'distance' ? '누가 먼저 100 m에 닿을까요?' : '10초 동안 누가 더 멀리 갈까요?';
         predictionArea.innerHTML = list.map(o => `<button type="button" data-prediction="${o.value}"${o.value === state.prediction ? ' class="selected"' : ''}>${o.label}</button>`).join('');
         predictionArea.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
-            state.prediction = button.dataset.prediction;
+            state.prediction = button.dataset.prediction; window.scienceInvalidatePrediction?.();
             predictionArea.querySelectorAll('button').forEach(b => b.classList.toggle('selected', b === button));
         }));
     }

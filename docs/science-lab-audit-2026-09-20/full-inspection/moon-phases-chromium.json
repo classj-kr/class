@@ -1,0 +1,30 @@
+{
+  "slug": "moon-phases",
+  "engine": "chromium",
+  "modes": [
+    "initial"
+  ],
+  "cases": 4,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__moonModel",
+      "methods": [
+        "SYNODIC",
+        "EARTH",
+        "ORBIT_R",
+        "MOON_R",
+        "PHASE_C",
+        "PHASE_R",
+        "elongationDeg",
+        "litFraction",
+        "phaseName",
+        "litPath",
+        "sunlitHalfPath",
+        "setDay",
+        "day"
+      ]
+    }
+  ]
+}

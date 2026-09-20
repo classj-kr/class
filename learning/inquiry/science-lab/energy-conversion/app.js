@@ -202,6 +202,8 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
 
     function buildPrediction() {
+        state.prediction = null;
+        window.scienceInvalidatePrediction?.();
         const list = state.mode === 'solar' ? PRED_SOLAR : state.mode === 'wind' ? PRED_WIND : PRED_CHAIN;
         predictionLegend.textContent = state.mode === 'solar' ? '이 날 하루 전기를 가장 많이 만드는 판은?'
             : state.mode === 'wind' ? `기준 발전기(풍속 ${REF.wind} m/s, 날개 ${REF.blade} m)와 견주면 내 발전기의 전력은?`
@@ -209,7 +211,7 @@ document.addEventListener('DOMContentLoaded', () => {
         predictionArea.className = `prediction-buttons${list.length === 3 || list.length === 5 ? ' three' : ''}`;
         predictionArea.innerHTML = list.map(o => `<button type="button" data-prediction="${o.value}">${o.label}</button>`).join('');
         predictionArea.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
-            state.prediction = button.dataset.prediction;
+            state.prediction = button.dataset.prediction; window.scienceInvalidatePrediction?.();
             predictionArea.querySelectorAll('button').forEach(b => b.classList.toggle('selected', b === button));
         }));
     }

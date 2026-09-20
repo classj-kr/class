@@ -1,0 +1,38 @@
+{
+  "slug": "mole",
+  "engine": "chromium",
+  "modes": [
+    "count",
+    "react",
+    "molar"
+  ],
+  "cases": 33,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__moleModel",
+      "methods": [
+        "SUBS",
+        "MASSES",
+        "REACTIONS",
+        "AMT_A",
+        "AMT_B",
+        "SOLUTES",
+        "NSOL",
+        "VOLS",
+        "DILS",
+        "state",
+        "analyse",
+        "render",
+        "runSeconds",
+        "setMode",
+        "set",
+        "setProgress",
+        "runToEnd",
+        "tick",
+        "finish"
+      ]
+    }
+  ]
+}

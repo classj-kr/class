@@ -1,0 +1,45 @@
+{
+  "slug": "population",
+  "engine": "chromium",
+  "modes": [
+    "growth",
+    "survey"
+  ],
+  "cases": 19,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__popModel",
+      "methods": [
+        "state",
+        "analyse",
+        "tick",
+        "render",
+        "expAt",
+        "logAt",
+        "slopeAt",
+        "popAt",
+        "field",
+        "cellStats",
+        "estimateSpread",
+        "drawSample",
+        "estimateFrom",
+        "DAYS",
+        "TRUE_N",
+        "CELLS",
+        "setMode",
+        "setModel",
+        "setK",
+        "setN0",
+        "setR",
+        "setDist",
+        "setQuad",
+        "setDay",
+        "check",
+        "runToEnd",
+        "sampleStats"
+      ]
+    }
+  ]
+}

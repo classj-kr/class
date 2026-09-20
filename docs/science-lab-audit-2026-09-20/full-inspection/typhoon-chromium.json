@@ -1,0 +1,34 @@
+{
+  "slug": "typhoon",
+  "engine": "chromium",
+  "modes": [
+    "genesis",
+    "track",
+    "enso"
+  ],
+  "cases": 18,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__typhoonModel",
+      "methods": [
+        "SSTS",
+        "LATS",
+        "HIGHS",
+        "SPEEDS",
+        "TRADES",
+        "state",
+        "analyse",
+        "render",
+        "runSeconds",
+        "setMode",
+        "set",
+        "setProgress",
+        "runToEnd",
+        "tick",
+        "finish"
+      ]
+    }
+  ]
+}

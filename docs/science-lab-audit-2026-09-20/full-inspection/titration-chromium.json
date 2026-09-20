@@ -1,0 +1,37 @@
+{
+  "slug": "titration",
+  "engine": "chromium",
+  "modes": [
+    "initial"
+  ],
+  "cases": 12,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__titrModel",
+      "methods": [
+        "VA",
+        "KA",
+        "KB",
+        "KW",
+        "DROP",
+        "CASES",
+        "INDS",
+        "pHAt",
+        "analyse",
+        "freshSim",
+        "step",
+        "render",
+        "check",
+        "setCase",
+        "setInd",
+        "setCa",
+        "setCb",
+        "runToEnd",
+        "getSim",
+        "tick"
+      ]
+    }
+  ]
+}

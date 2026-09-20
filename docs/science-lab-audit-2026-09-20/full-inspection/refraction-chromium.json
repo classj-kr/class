@@ -1,0 +1,25 @@
+{
+  "slug": "refraction",
+  "engine": "chromium",
+  "modes": [
+    "initial"
+  ],
+  "cases": 8,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__rayModel",
+      "methods": [
+        "MEDIA",
+        "N_AIR",
+        "P",
+        "L",
+        "solve",
+        "setAngle",
+        "setMedium",
+        "setDir"
+      ]
+    }
+  ]
+}

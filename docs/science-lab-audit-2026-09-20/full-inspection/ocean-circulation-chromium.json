@@ -1,0 +1,36 @@
+{
+  "slug": "ocean-circulation",
+  "engine": "chromium",
+  "modes": [
+    "initial"
+  ],
+  "cases": 9,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__oceanModel",
+      "methods": [
+        "state",
+        "analyse",
+        "tick",
+        "render",
+        "coriolis",
+        "stress",
+        "inertialHours",
+        "belt",
+        "OMEGA",
+        "RHO_A",
+        "RHO_W",
+        "CD",
+        "AZ",
+        "HALF_DAY_H",
+        "setHemi",
+        "setLat",
+        "setWind",
+        "check",
+        "runToEnd"
+      ]
+    }
+  ]
+}

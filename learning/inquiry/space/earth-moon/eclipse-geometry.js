@@ -1,7 +1,7 @@
 /* Geometry for a teaching cross-section; radii and distances are not to scale. */
 (function (root) {
     'use strict';
-    const SUN = { x: 100, y: 250, r: 80 };
+    const SUN = { x: 100, y: 250, r: 96 };
     const SOLAR_MOON = { x: 580, y: 250, r: 26 };
     const SOLAR_EARTH = { x: 800, y: 250, r: 88 };
     const LUNAR_EARTH = { x: 500, y: 250, r: 55 };

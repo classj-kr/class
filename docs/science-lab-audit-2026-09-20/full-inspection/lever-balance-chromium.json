@@ -1,0 +1,19 @@
+{
+  "slug": "lever-balance",
+  "engine": "chromium",
+  "modes": [
+    "initial"
+  ],
+  "cases": 5,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__leverModel",
+      "methods": [
+        "lifted",
+        "state"
+      ]
+    }
+  ]
+}

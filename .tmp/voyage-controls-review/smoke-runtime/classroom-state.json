@@ -1,0 +1,28 @@
+{
+  "version": 10,
+  "rooms": {
+    "2451": {
+      "activeMission": null,
+      "progress": {},
+      "settings": {
+        "paused": false,
+        "locked": false,
+        "roomType": "free",
+        "started": true
+      },
+      "clock": {
+        "gameMinutes": 0
+      },
+      "discoveries": {
+        "방장항해사": [],
+        "손님항해사": []
+      },
+      "hunts": {},
+      "host": {
+        "tokenHash": "6d008b672f6ec92c96b4bcc4f618e8d17027b7e8cb766e95813fc02d1026b8c8",
+        "createdAt": 1789897307978,
+        "lastActiveAt": 1789897308741
+      }
+    }
+  }
+}

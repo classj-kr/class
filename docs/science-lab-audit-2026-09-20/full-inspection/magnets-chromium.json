@@ -1,0 +1,38 @@
+{
+  "slug": "magnets",
+  "engine": "chromium",
+  "modes": [
+    "force",
+    "compass"
+  ],
+  "cases": 16,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__magnetModel",
+      "methods": [
+        "FACING",
+        "GAPS",
+        "PLACES",
+        "DISTS",
+        "FRICTION",
+        "EARTH",
+        "state",
+        "analyseForce",
+        "analyseCompass",
+        "analyse",
+        "forceAt",
+        "fieldAt",
+        "render",
+        "runSeconds",
+        "setMode",
+        "set",
+        "setProgress",
+        "runToEnd",
+        "tick",
+        "finish"
+      ]
+    }
+  ]
+}

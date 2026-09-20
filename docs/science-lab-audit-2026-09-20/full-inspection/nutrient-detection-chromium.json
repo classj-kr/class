@@ -1,0 +1,35 @@
+{
+  "slug": "nutrient-detection",
+  "engine": "chromium",
+  "modes": [
+    "reagent",
+    "benedict",
+    "amylase"
+  ],
+  "cases": 19,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__nutrientModel",
+      "methods": [
+        "REAGENTS",
+        "HEATS",
+        "SAMPLES",
+        "CONCS",
+        "CONDS",
+        "TUBES",
+        "state",
+        "analyse",
+        "render",
+        "runSeconds",
+        "setMode",
+        "set",
+        "setProgress",
+        "runToEnd",
+        "tick",
+        "finish"
+      ]
+    }
+  ]
+}

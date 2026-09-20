@@ -1,0 +1,40 @@
+{
+  "slug": "magma",
+  "engine": "chromium",
+  "modes": [
+    "initial"
+  ],
+  "cases": 10,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__magmaModel",
+      "methods": [
+        "state",
+        "analyse",
+        "tick",
+        "render",
+        "logEta",
+        "eta",
+        "flowSpeed",
+        "bubbleSpeed",
+        "retention",
+        "explosivity",
+        "shapeOf",
+        "KINDS",
+        "SHAPES",
+        "RHO",
+        "G",
+        "H_FLOW",
+        "SLOPE",
+        "R_BUBBLE",
+        "setKind",
+        "setWater",
+        "setTemp",
+        "check",
+        "runToEnd"
+      ]
+    }
+  ]
+}

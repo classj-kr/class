@@ -1,0 +1,28 @@
+{
+  "slug": "water-cycle",
+  "engine": "chromium",
+  "modes": [
+    "initial"
+  ],
+  "cases": 7,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__cycleModel",
+      "methods": [
+        "TOTAL",
+        "INITIAL",
+        "DT",
+        "advanceSim",
+        "render",
+        "reservoirs",
+        "total",
+        "days",
+        "setSun",
+        "setTemp",
+        "reset"
+      ]
+    }
+  ]
+}

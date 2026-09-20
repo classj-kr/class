@@ -1,0 +1,34 @@
+{
+  "slug": "density-buoyancy",
+  "engine": "chromium",
+  "modes": [
+    "buoy",
+    "gas"
+  ],
+  "cases": 14,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__buoyModel",
+      "methods": [
+        "FLUIDS",
+        "G",
+        "P0",
+        "V0",
+        "TANK",
+        "buoyancy",
+        "pressureOf",
+        "PARTICLES",
+        "setMode",
+        "setFluid",
+        "set",
+        "setGas",
+        "mass",
+        "vol",
+        "gasVol",
+        "render"
+      ]
+    }
+  ]
+}

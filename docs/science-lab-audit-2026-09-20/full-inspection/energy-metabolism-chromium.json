@@ -1,0 +1,38 @@
+{
+  "slug": "energy-metabolism",
+  "engine": "chromium",
+  "modes": [
+    "leaf",
+    "atp"
+  ],
+  "cases": 16,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__metabModel",
+      "methods": [
+        "state",
+        "analyse",
+        "tick",
+        "render",
+        "grossAt",
+        "netAt",
+        "respAt",
+        "pmaxAt",
+        "slopeShare",
+        "compensationPoint",
+        "saturationPoint",
+        "atpPlan",
+        "setMode",
+        "setLight",
+        "setCO2",
+        "setTemp",
+        "setO2",
+        "setShuttle",
+        "check",
+        "runToEnd"
+      ]
+    }
+  ]
+}

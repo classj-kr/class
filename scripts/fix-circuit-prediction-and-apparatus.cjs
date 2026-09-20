@@ -1,0 +1,31 @@
+const {edit,replace,apply,lab}=require('./science-scope-patch.cjs'),parts=require('./circuit-diagram-fragments.cjs');
+edit(lab+'circuit-bulbs/app.js',s=>{
+ const segment=(from,to,content)=>{const a=s.indexOf(from),b=s.indexOf(to,a);if(a<0||b<0)throw Error(from);s=s.slice(0,a)+content+'\n'+s.slice(b);};
+ segment('    const batterySVG =','    function renderCircuit()',parts.battery);
+ segment('    function renderCircuit()','    function poleLabel(',parts.circuit);
+ segment('    function renderMagnet()','    function render()',parts.magnet);
+ s=replace(s,"    let prediction = null;","    let prediction = null;\n    const predictionLegend = document.getElementById('predictionLegend');\n    function resetPrediction(){prediction=null;predictionButtons.forEach(b=>{b.classList.remove('selected');b.setAttribute('aria-pressed','false');});}");
+ s=replace(s,'            renderCircuit();',`            renderCircuit();
+            predictionLegend.textContent=state.closed?'이어진 회로에서 전지를 1개에서 2개로 늘리면?':'전지 1개의 이어진 회로와 비교하면, 끊어진 회로의 밝기는?';
+            stageCaption.textContent=!state.closed?'회로가 끊어져 전지 수와 관계없이 전구가 꺼집니다.':state.batteries===1?'전지 1개가 비교 기준입니다. 예상한 뒤 전지를 2개로 바꾸어 확인하세요.':'전지 두 개를 같은 방향으로 직렬연결한 결과입니다. 한 개일 때보다 밝습니다.';`);
+ s=replace(s,'            renderMagnet();',`            renderMagnet();
+            stageCaption.textContent=state.power?'전지에서 이어진 에나멜선이 철심을 감고 다시 전지로 이어집니다. 극은 전류 방향에 따라 바뀝니다.':'스위치가 열려 전류가 흐르지 않습니다. 전자석은 클립을 끌어당기지 못합니다.';`);
+ s=replace(s,'        resultContent.hidden = true;','        resultContent.hidden = true;\n        predictionResult.textContent="";delete predictionResult.dataset.correct;');
+ s=replace(s,"        const actual = state.batteries === 2 && state.closed ? 'brighter' : state.batteries === 1 && state.closed ? 'same' : 'dimmer';",`        const baseline = state.closed && state.batteries === 1;
+        const actual = state.closed ? 'brighter' : 'dimmer';`);
+ s=replace(s,"        predictionResult.textContent = !prediction\n            ? '다음에는 결과를 먼저 예상해 보세요.'\n            : prediction === actual ? '예상이 맞았습니다.' : '예상과 다른 결과입니다.';",`        delete predictionResult.dataset.correct;
+        predictionResult.textContent=baseline?'전지 1개는 비교 기준입니다. 2개로 바꾼 뒤 예상을 확인하세요.':!prediction?'결과를 먼저 예상한 뒤 확인해 보세요.':prediction===actual?'예상이 맞았습니다.':'예상과 다른 결과입니다.';
+        if(!baseline&&prediction)predictionResult.dataset.correct=String(prediction===actual);`);
+ s=replace(s,'        mode = button.dataset.mode;','        mode = button.dataset.mode;\n        resetPrediction();');
+ s=replace(s,"        circuitClosed = button.dataset.circuit === 'closed';","        if(circuitClosed !== (button.dataset.circuit === 'closed'))resetPrediction();\n        circuitClosed = button.dataset.circuit === 'closed';");
+ s=replace(s,'        prediction = button.dataset.prediction;','        clearResult();\n        prediction = button.dataset.prediction;');
+ s=replace(s,'        predictionButtons.forEach(item => item.classList.toggle(\'selected\', item === button));','        predictionButtons.forEach(item => {item.classList.toggle(\'selected\', item === button);item.setAttribute(\'aria-pressed\',String(item===button));});');
+ return s;
+});
+edit(lab+'circuit-bulbs/index.html',s=>{
+ s=replace(s,'<legend>전지를 두 개로 늘리면 밝기는?</legend>','<legend id="predictionLegend">이어진 회로에서 전지를 1개에서 2개로 늘리면?</legend>');
+ s=replace(s,'circuit-visual.css?v=6','circuit-visual.css?v=7');
+ return s;
+});
+edit(lab+'circuit-bulbs/circuit-visual.css',s=>s+'\n/* Connected apparatus: cell terminals, winding behind/in front of the iron core. */\n.cell-shell{fill:#f6f0df;stroke:#586a73;stroke-width:1.5}.cell-positive-end{fill:#ddae61}.cell-terminal{stroke:#586a73;stroke-width:3;fill:none}.cell-sign{fill:#263942;font-size:15px;font-weight:700}.bulb-leads{fill:none;stroke:#b5812a;stroke-width:1.8}.iron-core,.iron-head{fill:#b5c0c6;stroke:#607780;stroke-width:1.5}.coil-back{fill:none;stroke:#9a602c;stroke-width:3}.coil-front{fill:none;stroke:#d18c46;stroke-width:3.6;stroke-linecap:round}.apparatus-clip{fill:none;stroke:#526570;stroke-width:1.3}.bar-north{fill:#c3544d}.bar-south{fill:#3b7eae}.bar-pole{fill:white;font-size:16px;font-weight:700}\n');
+apply();

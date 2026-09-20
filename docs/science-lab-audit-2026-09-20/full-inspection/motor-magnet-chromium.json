@@ -1,0 +1,35 @@
+{
+  "slug": "motor-magnet",
+  "engine": "chromium",
+  "modes": [
+    "motor",
+    "material",
+    "curie"
+  ],
+  "cases": 23,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__motorModel",
+      "methods": [
+        "CURRENTS",
+        "TURNS",
+        "COMMS",
+        "MATERIALS",
+        "FERROS",
+        "HEATS",
+        "state",
+        "analyse",
+        "render",
+        "runSeconds",
+        "setMode",
+        "set",
+        "setProgress",
+        "runToEnd",
+        "tick",
+        "finish"
+      ]
+    }
+  ]
+}

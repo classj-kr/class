@@ -1,0 +1,41 @@
+{
+  "slug": "flame-ions",
+  "engine": "chromium",
+  "modes": [
+    "flame",
+    "ion"
+  ],
+  "cases": 20,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__flameIonModel",
+      "methods": [
+        "METALS",
+        "ANIONS",
+        "IONS",
+        "COLOURS",
+        "PAPER_FACTOR",
+        "STRIP_M",
+        "RUN_MINUTES",
+        "state",
+        "analyseFlame",
+        "analyseIon",
+        "analyse",
+        "compound",
+        "ionAt",
+        "flameIntensity",
+        "wlToRgb",
+        "render",
+        "runSeconds",
+        "setMode",
+        "set",
+        "setProgress",
+        "runToEnd",
+        "tick",
+        "finish"
+      ]
+    }
+  ]
+}

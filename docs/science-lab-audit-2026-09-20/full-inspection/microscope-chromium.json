@@ -1,0 +1,34 @@
+{
+  "slug": "microscope",
+  "engine": "chromium",
+  "modes": [
+    "initial"
+  ],
+  "cases": 8,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__scopeModel",
+      "methods": [
+        "state",
+        "analyse",
+        "tick",
+        "render",
+        "power",
+        "fieldMm",
+        "brightness",
+        "share",
+        "verdictFor",
+        "SPECIMENS",
+        "EYEPIECES",
+        "OBJECTIVES",
+        "setSpec",
+        "setEye",
+        "setObj",
+        "check",
+        "runToEnd"
+      ]
+    }
+  ]
+}

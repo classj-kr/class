@@ -166,6 +166,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const PRED_MEASURE = [{ value: 'cm', label: '1 mm 자리까지' }, { value: 'mm', label: '0.1 mm 자리까지' }, { value: 'vernier', label: '0.01 mm 자리까지' }];
 
     function buildPrediction() {
+        state.prediction = null;
+        window.scienceInvalidatePrediction?.();
         const list = state.mode === 'scale' ? PRED_SCALE : state.mode === 'units' ? PRED_UNITS : PRED_MEASURE;
         predictionLegend.textContent = state.mode === 'scale' ? `${TARGETS[state.kind][state.target].label}${pEun(TARGETS[state.kind][state.target].label)} ${KINDS[state.kind].refLabel}와 견주면 몇 배 크거나 작을까요?`
             : state.mode === 'units' ? `${ERAS[state.era].label}의 ${UNITS[state.unit].label} 기준은 무엇에 맞추었을까요?`
@@ -173,7 +175,7 @@ document.addEventListener('DOMContentLoaded', () => {
         predictionArea.className = 'prediction-buttons three';
         predictionArea.innerHTML = list.map(o => `<button type="button" data-prediction="${o.value}">${o.label}</button>`).join('');
         predictionArea.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
-            state.prediction = button.dataset.prediction;
+            state.prediction = button.dataset.prediction; window.scienceInvalidatePrediction?.();
             predictionArea.querySelectorAll('button').forEach(b => b.classList.toggle('selected', b === button));
         }));
     }

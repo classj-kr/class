@@ -145,6 +145,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const PRED_PAIRS = [{ value: 'p1', label: '1쌍' }, { value: 'p2', label: '2쌍' }, { value: 'p3', label: '3쌍' }];
 
     function buildPrediction() {
+        state.prediction = null;
+        window.scienceInvalidatePrediction?.();
         const a = analyse();
         const list = a.kind === 'elements' ? PRED_ELEMENTS : a.same ? PRED_PAIRS : PRED_RATIO;
         predictionLegend.textContent = a.kind === 'elements' ? `${a.el.name}(${a.el.sym}) 원자는 어떤 이온이 될까요?`
@@ -153,7 +155,7 @@ document.addEventListener('DOMContentLoaded', () => {
         predictionArea.className = `prediction-buttons${list.length === 3 ? ' three' : ''}`;
         predictionArea.innerHTML = list.map(o => `<button type="button" data-prediction="${o.value}">${o.label}</button>`).join('');
         predictionArea.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
-            state.prediction = button.dataset.prediction;
+            state.prediction = button.dataset.prediction; window.scienceInvalidatePrediction?.();
             predictionArea.querySelectorAll('button').forEach(b => b.classList.toggle('selected', b === button));
         }));
     }

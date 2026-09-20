@@ -1,0 +1,36 @@
+{
+  "slug": "metamorphism",
+  "engine": "chromium",
+  "modes": [
+    "facies",
+    "grade",
+    "contact"
+  ],
+  "cases": 22,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__metaModel",
+      "methods": [
+        "DEPTHS",
+        "GRADS",
+        "TEMPS",
+        "PARENTS",
+        "BODIES",
+        "DISTS",
+        "state",
+        "analyse",
+        "render",
+        "faciesOf",
+        "runSeconds",
+        "setMode",
+        "set",
+        "setProgress",
+        "runToEnd",
+        "tick",
+        "finish"
+      ]
+    }
+  ]
+}

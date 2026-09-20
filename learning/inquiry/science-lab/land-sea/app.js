@@ -117,6 +117,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function buildPrediction() {
+        state.prediction = null;
+        window.scienceInvalidatePrediction?.();
         let list;
         if (state.mode === 'area') {
             list = [{ value: 'sea-more', label: '바다에 훨씬 많이' }, { value: 'even', label: '반반쯤' }, { value: 'land-more', label: '육지에 훨씬 많이' }];
@@ -127,7 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         predictionArea.innerHTML = list.map(o => `<button type="button" data-prediction="${o.value}"${o.value === state.prediction ? ' class="selected"' : ''}>${o.label}</button>`).join('');
         predictionArea.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
-            state.prediction = button.dataset.prediction;
+            state.prediction = button.dataset.prediction; window.scienceInvalidatePrediction?.();
             predictionArea.querySelectorAll('button').forEach(b => b.classList.toggle('selected', b === button));
         }));
     }

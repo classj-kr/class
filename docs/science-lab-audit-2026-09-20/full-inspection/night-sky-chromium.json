@@ -1,0 +1,39 @@
+{
+  "slug": "night-sky",
+  "engine": "chromium",
+  "modes": [
+    "moon",
+    "stars"
+  ],
+  "cases": 8,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__skyModel",
+      "methods": [
+        "DAYS",
+        "SEASONS",
+        "DIPPER",
+        "CASS",
+        "state",
+        "analyseMoon",
+        "analyseStars",
+        "analyse",
+        "elongation",
+        "moonHA",
+        "where",
+        "polar",
+        "side",
+        "render",
+        "runSeconds",
+        "setMode",
+        "set",
+        "setProgress",
+        "runToEnd",
+        "tick",
+        "finish"
+      ]
+    }
+  ]
+}

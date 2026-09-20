@@ -160,6 +160,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const PRED_C = [{ value: 'strong', label: '세게 붙음' }, { value: 'weak', label: '약하게 붙음' }, { value: 'none', label: '안 붙음' }];
 
     function buildPrediction() {
+        state.prediction = null;
+        window.scienceInvalidatePrediction?.();
         const list = state.mode === 'motor' ? PRED_M : state.mode === 'material' ? PRED_S : PRED_C;
         predictionLegend.textContent = state.mode === 'motor' ? `${TURNS[state.turns].label} 감은 코일에 ${CURRENTS[state.current].label}, 정류자 ${COMMS[state.comm].label}이면 코일은?`
             : state.mode === 'material' ? `${MATERIALS[state.material].label} 1 cm³를 센 자석 곁에 두면?`
@@ -167,7 +169,7 @@ document.addEventListener('DOMContentLoaded', () => {
         predictionArea.className = 'prediction-buttons three';
         predictionArea.innerHTML = list.map(o => `<button type="button" data-prediction="${o.value}">${o.label}</button>`).join('');
         predictionArea.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
-            state.prediction = button.dataset.prediction;
+            state.prediction = button.dataset.prediction; window.scienceInvalidatePrediction?.();
             predictionArea.querySelectorAll('button').forEach(b => b.classList.toggle('selected', b === button));
         }));
     }

@@ -150,10 +150,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const PRED_E = [{ value: 'same', label: '거의 같음 (10 % 안)' }, { value: 'bit', label: '조금 큼 (10~100 %)' }, { value: 'much', label: '두 배 넘게' }];
 
     function buildPrediction() {
+        state.prediction = null;
+        window.scienceInvalidatePrediction?.();
         const list = state.mode === 'diode' ? PRED_D : state.mode === 'muon' ? [{value:'yes',label:'지상에서 더 길게 측정'}, {value:'no',label:'지상에서 더 짧게 측정'}] : [{value:'yes',label:'운동 방향 길이가 짧아짐'}, {value:'no',label:'운동 방향 길이가 길어짐'}];
         predictionLegend.textContent = state.mode === 'diode' ? '전류의 흐름을 예상하세요.' : state.mode === 'muon' ? '지상에서 측정한 뮤온의 수명은 고유 수명에 비해?' : '정지 관측자가 측정한 우주선의 길이는 고유 길이에 비해?';
         predictionArea.innerHTML=list.map(o=>'<button type="button" data-prediction="'+o.value+'">'+o.label+'</button>').join('');
-        predictionArea.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{state.prediction=b.dataset.prediction;predictionArea.querySelectorAll('button').forEach(x=>x.classList.toggle('selected',x===b));}));
+        predictionArea.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{state.prediction=b.dataset.prediction; window.scienceInvalidatePrediction?.();predictionArea.querySelectorAll('button').forEach(x=>x.classList.toggle('selected',x===b));}));
     }
 
     /* ----------------------------------------------------------- visuals */

@@ -1,0 +1,38 @@
+{
+  "slug": "stars-universe",
+  "engine": "chromium",
+  "modes": [
+    "bright",
+    "expand"
+  ],
+  "cases": 18,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__starsModel",
+      "methods": [
+        "STARS",
+        "GALAXIES",
+        "BASE_PC",
+        "MULTIPLES",
+        "STRETCH",
+        "state",
+        "analyseBright",
+        "analyseExpand",
+        "analyse",
+        "apparent",
+        "brightAt",
+        "stretchAt",
+        "render",
+        "runSeconds",
+        "setMode",
+        "set",
+        "setProgress",
+        "runToEnd",
+        "tick",
+        "finish"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "slug": "circuit-bulbs",
+  "engine": "chromium",
+  "modes": [
+    "circuit",
+    "magnet"
+  ],
+  "cases": 13,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__circuitModel",
+      "methods": [
+        "circuitState",
+        "magnetState",
+        "setMode",
+        "setCircuit",
+        "setMagnet",
+        "setPermanentComparison",
+        "state"
+      ]
+    }
+  ]
+}

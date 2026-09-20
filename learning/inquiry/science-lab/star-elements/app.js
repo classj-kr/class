@@ -139,10 +139,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const PRED_ORIGIN = [{ value: 'bigbang', label: '빅뱅 직후 몇 분 동안' }, { value: 'star', label: '별 속 핵융합에서' }, { value: 'merger', label: '초신성이나 중성자별 충돌에서' }];
 
     function buildPrediction() {
+        state.prediction = null;
+        window.scienceInvalidatePrediction?.();
         const list=state.mode==='fusion'?[{value:'yes',label:'에너지 방출'},{value:'no',label:'에너지가 전혀 나오지 않음'}]:state.mode==='mass'?PRED_MASS:PRED_ORIGIN;
         predictionLegend.textContent=state.mode==='fusion'?'이 핵융합 과정에서는?':state.mode==='mass'?'이 별에서 생성되는 원소를 예상하세요.':'이 원소의 주요 생성 과정을 고르세요.';
         predictionArea.innerHTML=list.map(o=>'<button type="button" data-prediction="'+o.value+'">'+o.label+'</button>').join('');
-        predictionArea.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{state.prediction=b.dataset.prediction;predictionArea.querySelectorAll('button').forEach(x=>x.classList.toggle('selected',x===b));}));
+        predictionArea.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{state.prediction=b.dataset.prediction; window.scienceInvalidatePrediction?.();predictionArea.querySelectorAll('button').forEach(x=>x.classList.toggle('selected',x===b));}));
     }
 
     /* ----------------------------------------------------------- visuals */

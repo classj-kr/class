@@ -1,0 +1,38 @@
+{
+  "slug": "planet-motion",
+  "engine": "chromium",
+  "modes": [
+    "retro",
+    "phase",
+    "eclipse"
+  ],
+  "cases": 23,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__planetModel",
+      "methods": [
+        "PLANETS",
+        "PHASE_PLANETS",
+        "POS_INNER",
+        "POS_OUTER",
+        "KINDS",
+        "NODES",
+        "DISTS",
+        "state",
+        "analyse",
+        "render",
+        "geom",
+        "eclipseType",
+        "runSeconds",
+        "setMode",
+        "set",
+        "setProgress",
+        "runToEnd",
+        "tick",
+        "finish"
+      ]
+    }
+  ]
+}

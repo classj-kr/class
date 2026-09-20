@@ -173,6 +173,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const PRED_C = [{value:'store',label:'전기 에너지를 저장한다'},{value:'release',label:'저장 에너지를 빛·열로 전환한다'},{value:'none',label:'에너지가 무에서 생긴다'}];
 
     function buildPrediction() {
+        state.prediction = null;
+        window.scienceInvalidatePrediction?.();
         const list = state.mode === 'field' ? PRED_F : state.mode === 'accel' ? PRED_A : PRED_C;
         predictionLegend.textContent = state.mode === 'field' ? `왼쪽 ${LEFTS[state.left].label}, 오른쪽 ${RIGHTS[state.right].label} — ${SPOTS[state.spot].label}에 놓은 + 시험 전하는?`
             : state.mode === 'accel' ? `${VOLTS[state.volt].label}로 2 cm 가속한 ${PARTS[state.part].label}의 속력은?`
@@ -180,7 +182,7 @@ document.addEventListener('DOMContentLoaded', () => {
         predictionArea.className = 'prediction-buttons three';
         predictionArea.innerHTML = list.map(o => `<button type="button" data-prediction="${o.value}">${o.label}</button>`).join('');
         predictionArea.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
-            state.prediction = button.dataset.prediction;
+            state.prediction = button.dataset.prediction; window.scienceInvalidatePrediction?.();
             predictionArea.querySelectorAll('button').forEach(b => b.classList.toggle('selected', b === button));
         }));
     }

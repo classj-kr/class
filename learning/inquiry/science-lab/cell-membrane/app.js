@@ -98,12 +98,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const PRED_OSM = [{ value: 'swell', label: '부풀어 오른다' }, { value: 'same', label: '거의 그대로' }, { value: 'shrink', label: '쪼그라든다' }];
 
     function buildPrediction() {
+        state.prediction = null;
+        window.scienceInvalidatePrediction?.();
         const list = state.mode === 'diffusion' ? PRED_DIFF : PRED_OSM;
         predictionLegend.textContent = state.mode === 'diffusion' ? `${TEMPS[state.temp].label} 물에서 20초 뒤, 양쪽 알갱이 수는?` : `${SOLUTIONS[state.solution].label}에 넣은 세포 모형은?`;
         predictionArea.className = 'prediction-buttons three';
         predictionArea.innerHTML = list.map(o => `<button type="button" data-prediction="${o.value}">${o.label}</button>`).join('');
         predictionArea.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
-            state.prediction = button.dataset.prediction;
+            state.prediction = button.dataset.prediction; window.scienceInvalidatePrediction?.();
             predictionArea.querySelectorAll('button').forEach(b => b.classList.toggle('selected', b === button));
         }));
     }

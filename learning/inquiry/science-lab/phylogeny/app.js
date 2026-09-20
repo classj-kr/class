@@ -165,6 +165,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const PRED_C = [{ value: 'recent', label: '1천만 년 안' }, { value: 'mid', label: '1천만~1억 년' }, { value: 'old', label: '1억 년 넘게' }];
 
     function buildPrediction() {
+        state.prediction = null;
+        window.scienceInvalidatePrediction?.();
         let list;
         if (state.mode === 'rank') { list = PRED_R; predictionLegend.textContent = `${ORGS[state.org].label}${eun(ORGS[state.org].label)} 사람과 어느 단계까지 같은 무리일까요?`; }
         else if (state.mode === 'tree') { const a = treeModel(); list = [{ value: 'first', label: a.A }, { value: 'second', label: a.B }, { value: 'equal', label: '똑같이 가까움' }]; predictionLegend.textContent = `${a.st.ref}에 더 가까운 친척은 ${a.A}${wa(a.A)} ${a.B} 가운데 누구일까요?`; }
@@ -172,7 +174,7 @@ document.addEventListener('DOMContentLoaded', () => {
         predictionArea.className = 'prediction-buttons three';
         predictionArea.innerHTML = list.map(o => `<button type="button" data-prediction="${o.value}">${o.label}</button>`).join('');
         predictionArea.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
-            state.prediction = button.dataset.prediction;
+            state.prediction = button.dataset.prediction; window.scienceInvalidatePrediction?.();
             predictionArea.querySelectorAll('button').forEach(b => b.classList.toggle('selected', b === button));
         }));
     }

@@ -27,7 +27,7 @@
             <div class="ecl-layout">
                 <div class="ecl-diagram-panel">
                     <div class="ecl-arrangement" data-ecl-order></div>
-                    <svg class="ecl-diagram" viewBox="0 0 960 500" role="img" aria-label="태양과 가리는 천체가 만드는 본그림자와 반그림자의 단면" data-ecl-diagram></svg>
+                    <svg class="ecl-diagram" viewBox="-20 0 980 500" role="img" aria-label="태양과 가리는 천체가 만드는 본그림자와 반그림자의 단면" data-ecl-diagram></svg>
                     <div class="ecl-legend"><span><i class="ecl-umbra-key"></i>본그림자 · 직접 오는 태양빛이 모두 가려짐</span><span><i class="ecl-penumbra-key"></i>반그림자 · 태양빛의 일부만 가려짐</span></div>
                 </div>
                 <aside class="ecl-observation">
@@ -73,7 +73,7 @@
             const receiver = solarMode ? G.SOLAR_EARTH : {...G.LUNAR_MOON, y:250+result.offset};
             const geo = geometry(blocker, solarMode ? G.SOLAR_EARTH.x : 920);
             const fills = `<polygon points="${geo.pen}" class="ecl-penumbra"/><polygon points="${geo.umb}" class="ecl-umbra"/>`;
-            const nameLayer = labels.checked ? text(100,355,'태양') + text(blocker.x,solarMode?305:330,solarMode?'달':'지구') + text(receiver.x,solarMode?365:receiver.y+42,solarMode?'지구':'달') + text(solarMode?658:665,245,'본그림자','class="ecl-shadow-name"') + text(solarMode?665:665,solarMode?294:340,'반그림자','class="ecl-shadow-name"') : '';
+            const nameLayer = labels.checked ? text(G.SUN.x,G.SUN.y+G.SUN.r+28,'태양') + text(blocker.x,solarMode?305:330,solarMode?'달':'지구') + text(receiver.x,solarMode?365:receiver.y+42,solarMode?'지구':'달') + text(solarMode?658:665,245,'본그림자','class="ecl-shadow-name"') + text(solarMode?665:665,solarMode?294:340,'반그림자','class="ecl-shadow-name"') : '';
             const observer = solarMode ? result.observer : {x:G.LUNAR_EARTH.x+G.LUNAR_EARTH.r,y:G.LUNAR_EARTH.y};
             const earth = solarMode ? G.SOLAR_EARTH : G.LUNAR_EARTH;
             const labelX = solarMode ? 800 : 565;
@@ -130,7 +130,7 @@
         const a=G.solar(0).observer,b=G.solar(38).observer;
         const figure = document.createElement('figure');
         figure.className='ecl-quiz-figure';
-        figure.innerHTML='<svg viewBox="0 130 960 265" role="img" aria-label="태양, 달, 지구가 나란히 있다. 지구의 A는 중앙의 좁고 짙은 그림자 안에, B는 그 바깥의 옅은 그림자 안에 있다."><defs><clipPath id="eclQuizEarth"><circle cx="800" cy="250" r="88"/></clipPath></defs>'+cones+lines.map(l=>'<line x1="'+l.a.x+'" y1="'+l.a.y+'" x2="800" y2="'+l.at(800)+'" stroke="#f6cd76" stroke-width="1.5"/>').join('')+'<circle cx="100" cy="250" r="80" fill="#fbbf24"/><circle cx="580" cy="250" r="26" fill="#cbd5e1"/><circle cx="800" cy="250" r="88" fill="#278bc7"/><g clip-path="url(#eclQuizEarth)">'+cones+'</g><g fill="#f1f5f9" font-size="28" text-anchor="middle"><text x="100" y="370">태양</text><text x="580" y="312">달</text><text x="800" y="370">지구</text></g><g fill="#6ee7b7" stroke="#6ee7b7">'+observerMarkup(a,G.SOLAR_EARTH,.85)+observerMarkup(b,G.SOLAR_EARTH,.85)+'<path d="M '+a.x+' '+a.y+' L 914 206 M '+b.x+' '+b.y+' L 914 302" fill="none" stroke-dasharray="4 4"/></g><g fill="#6ee7b7" font-size="30" font-weight="bold"><text x="922" y="214">A</text><text x="922" y="313">B</text></g></svg><figcaption>크기와 거리는 실제 비율이 아닙니다.</figcaption>';
+        figure.innerHTML='<svg viewBox="-20 130 980 265" role="img" aria-label="태양, 달, 지구가 나란히 있다. 지구의 A는 중앙의 좁고 짙은 그림자 안에, B는 그 바깥의 옅은 그림자 안에 있다."><defs><clipPath id="eclQuizEarth"><circle cx="800" cy="250" r="88"/></clipPath></defs>'+cones+lines.map(l=>'<line x1="'+l.a.x+'" y1="'+l.a.y+'" x2="800" y2="'+l.at(800)+'" stroke="#f6cd76" stroke-width="1.5"/>').join('')+'<circle cx="'+G.SUN.x+'" cy="'+G.SUN.y+'" r="'+G.SUN.r+'" fill="#fbbf24"/><circle cx="580" cy="250" r="26" fill="#cbd5e1"/><circle cx="800" cy="250" r="88" fill="#278bc7"/><g clip-path="url(#eclQuizEarth)">'+cones+'</g><g fill="#f1f5f9" font-size="28" text-anchor="middle"><text x="100" y="370">태양</text><text x="580" y="312">달</text><text x="800" y="370">지구</text></g><g fill="#6ee7b7" stroke="#6ee7b7">'+observerMarkup(a,G.SOLAR_EARTH,.85)+observerMarkup(b,G.SOLAR_EARTH,.85)+'<path d="M '+a.x+' '+a.y+' L 914 206 M '+b.x+' '+b.y+' L 914 302" fill="none" stroke-dasharray="4 4"/></g><g fill="#6ee7b7" font-size="30" font-weight="bold"><text x="922" y="214">A</text><text x="922" y="313">B</text></g></svg><figcaption>크기와 거리는 실제 비율이 아닙니다.</figcaption>';
         return figure;
     }
     window.EclipseLab={mount,questionFigure};

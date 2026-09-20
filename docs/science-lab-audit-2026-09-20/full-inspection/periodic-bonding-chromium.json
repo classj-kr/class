@@ -1,0 +1,34 @@
+{
+  "slug": "periodic-bonding",
+  "engine": "chromium",
+  "modes": [
+    "elements",
+    "bonds"
+  ],
+  "cases": 23,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__bondingModel",
+      "methods": [
+        "ELEMENTS",
+        "PAIRS",
+        "GROUPS",
+        "PERIODS",
+        "state",
+        "analyse",
+        "render",
+        "elementAt",
+        "layoutOf",
+        "runSeconds",
+        "setMode",
+        "set",
+        "setProgress",
+        "runToEnd",
+        "tick",
+        "finish"
+      ]
+    }
+  ]
+}

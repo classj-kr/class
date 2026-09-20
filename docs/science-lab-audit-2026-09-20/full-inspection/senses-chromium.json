@@ -1,0 +1,34 @@
+{
+  "slug": "senses",
+  "engine": "chromium",
+  "modes": [
+    "initial"
+  ],
+  "cases": 9,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__senseModel",
+      "methods": [
+        "state",
+        "analyse",
+        "tick",
+        "render",
+        "reaction",
+        "fallCm",
+        "timeFor",
+        "verdictFor",
+        "SENSES",
+        "CONDS",
+        "G",
+        "RULER_CM",
+        "RULER_T",
+        "setSense",
+        "setCond",
+        "check",
+        "runToEnd"
+      ]
+    }
+  ]
+}

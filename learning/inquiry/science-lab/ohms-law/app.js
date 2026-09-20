@@ -416,7 +416,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }));
     [voltRange, r1Range, r2Range].forEach(el => el.addEventListener('input', () => { render(); clearResult(); }));
     predictionButtons.forEach(button => button.addEventListener('click', () => {
-        prediction = button.dataset.prediction;
+        prediction = button.dataset.prediction; window.scienceInvalidatePrediction?.();
         predictionButtons.forEach(item => item.classList.toggle('selected', item === button));
     }));
     checkBtn.addEventListener('click', check);

@@ -161,6 +161,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const PRED_M = [{ value: 'low', label: '0.5 M 아래' }, { value: 'mid', label: '0.5~1.5 M' }, { value: 'high', label: '1.5 M 넘게' }];
 
     function buildPrediction() {
+        state.prediction = null;
+        window.scienceInvalidatePrediction?.();
         let list;
         if (state.mode === 'count') list = PRED_C;
         else if (state.mode === 'react') { const r = REACTIONS[state.rxn]; list = [{ value: 'aLeft', label: `${r.A.name}${iga(r.A.name)} 남음` }, { value: 'exact', label: '둘 다 딱 맞게 쓰임' }, { value: 'bLeft', label: `${r.B.name}${iga(r.B.name)} 남음` }]; }
@@ -171,7 +173,7 @@ document.addEventListener('DOMContentLoaded', () => {
         predictionArea.className = 'prediction-buttons three';
         predictionArea.innerHTML = list.map(o => `<button type="button" data-prediction="${o.value}">${o.label}</button>`).join('');
         predictionArea.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
-            state.prediction = button.dataset.prediction;
+            state.prediction = button.dataset.prediction; window.scienceInvalidatePrediction?.();
             predictionArea.querySelectorAll('button').forEach(b => b.classList.toggle('selected', b === button));
         }));
     }

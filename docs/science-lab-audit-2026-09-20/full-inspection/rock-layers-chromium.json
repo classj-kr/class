@@ -1,0 +1,29 @@
+{
+  "slug": "rock-layers",
+  "engine": "chromium",
+  "modes": [
+    "initial"
+  ],
+  "cases": 4,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__layerModel",
+      "methods": [
+        "GRAINS",
+        "MIXES",
+        "TANK",
+        "LAYER_H",
+        "MAX_LAYERS",
+        "settlingSpeed",
+        "sublayersFor",
+        "layers",
+        "setMix",
+        "setFossil",
+        "pour",
+        "reset"
+      ]
+    }
+  ]
+}

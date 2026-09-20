@@ -1,0 +1,39 @@
+{
+  "slug": "living-environment",
+  "engine": "chromium",
+  "modes": [
+    "bean",
+    "web"
+  ],
+  "cases": 10,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__livingModel",
+      "methods": [
+        "EVENTS",
+        "START",
+        "WEB",
+        "BEAN_DAYS",
+        "WEB_MONTHS",
+        "EVENT_MONTH",
+        "state",
+        "analyseBean",
+        "analyseWeb",
+        "analyse",
+        "simulateWeb",
+        "heightAt",
+        "beanProfile",
+        "render",
+        "runSeconds",
+        "setMode",
+        "set",
+        "setProgress",
+        "runToEnd",
+        "tick",
+        "finish"
+      ]
+    }
+  ]
+}

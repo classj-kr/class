@@ -194,6 +194,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const PRED_L = [{ value: 'total', label: '개기월식' }, { value: 'partial', label: '부분월식' }, { value: 'penumbral', label: '반영월식' }, { value: 'none', label: '월식 없음' }];
 
     function buildPrediction() {
+        state.prediction = null;
+        window.scienceInvalidatePrediction?.();
         const list = state.mode === 'retro' ? PRED_R : state.mode === 'phase' ? PRED_P : state.kind === 'solar' ? PRED_S : PRED_L;
         predictionLegend.textContent = state.mode === 'retro' ? `${PLANETS[state.planet].label}은 ${PLANETS[state.planet].inner ? '내합' : '충'} 앞뒤로 얼마나 오래 서쪽으로 되돌아갈까요?`
             : state.mode === 'phase' ? `${PHASE_PLANETS[state.pplanet].label}이 ${posTable()[state.ppos].label}에 있을 때 어떻게 보일까요?`
@@ -201,7 +203,7 @@ document.addEventListener('DOMContentLoaded', () => {
         predictionArea.className = `prediction-buttons ${list.length === 4 ? 'four' : 'three'}`;
         predictionArea.innerHTML = list.map(o => `<button type="button" data-prediction="${o.value}">${o.label}</button>`).join('');
         predictionArea.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
-            state.prediction = button.dataset.prediction;
+            state.prediction = button.dataset.prediction; window.scienceInvalidatePrediction?.();
             predictionArea.querySelectorAll('button').forEach(b => b.classList.toggle('selected', b === button));
         }));
     }

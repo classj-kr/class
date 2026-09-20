@@ -1,0 +1,35 @@
+{
+  "slug": "ocean-layers",
+  "engine": "chromium",
+  "modes": [
+    "profile",
+    "salinity",
+    "density"
+  ],
+  "cases": 20,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__layersModel",
+      "methods": [
+        "REGIONS",
+        "SEASONS",
+        "EVENTS",
+        "TEMPS",
+        "SALTS",
+        "state",
+        "analyse",
+        "render",
+        "rho",
+        "runSeconds",
+        "setMode",
+        "set",
+        "setProgress",
+        "runToEnd",
+        "tick",
+        "finish"
+      ]
+    }
+  ]
+}

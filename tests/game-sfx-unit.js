@@ -70,7 +70,8 @@ assert.ok(musicControlCss.includes("::-webkit-slider-thumb"), "Shared audio slid
 assert.ok(!/@media[\s\S]*?\.unified-music-control\s*\{[^}]*display:\s*none/.test(musicControlCss), "Compact sliders should remain available on touch devices.");
 
 const voyage = fs.readFileSync(voyagePath, "utf8");
-assert.ok(voyage.includes('id="bgmVolumeSlider"'), "World Voyage should use the same compact continuous slider.");
+assert.ok(voyage.includes('/assets/sound/music-control.js'), "World Voyage should load the complete shared sound menu.");
+assert.ok(voyage.includes('window.ClassMusicController=backgroundMusic'), "Shared sound controls should control the regional music engine.");
 assert.ok(!voyage.includes('id="bgmVolume"'), "World Voyage should not keep its old oversized volume slider.");
 
 const hub = fs.readFileSync(hubPath, "utf8");

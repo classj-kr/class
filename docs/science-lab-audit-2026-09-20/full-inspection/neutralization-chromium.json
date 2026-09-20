@@ -1,0 +1,31 @@
+{
+  "slug": "neutralization",
+  "engine": "chromium",
+  "modes": [
+    "initial"
+  ],
+  "cases": 13,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__neutModel",
+      "methods": [
+        "ACID_ML",
+        "T0",
+        "KW",
+        "DH_NEUT",
+        "C_WATER",
+        "MAX_ML",
+        "analyse",
+        "indicatorColor",
+        "setAcid",
+        "setBase",
+        "setVol",
+        "setIndicator",
+        "addedML",
+        "render"
+      ]
+    }
+  ]
+}

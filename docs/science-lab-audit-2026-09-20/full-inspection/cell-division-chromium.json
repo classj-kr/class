@@ -1,0 +1,30 @@
+{
+  "slug": "cell-division",
+  "engine": "chromium",
+  "modes": [
+    "initial"
+  ],
+  "cases": 9,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__divModel",
+      "methods": [
+        "MITOSIS",
+        "MEIOSIS",
+        "analyse",
+        "render",
+        "check",
+        "setKind",
+        "setChrom",
+        "setStage",
+        "getKind",
+        "getChrom",
+        "idx",
+        "list",
+        "runToEnd"
+      ]
+    }
+  ]
+}

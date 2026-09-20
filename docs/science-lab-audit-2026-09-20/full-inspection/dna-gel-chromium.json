@@ -1,0 +1,38 @@
+{
+  "slug": "dna-gel",
+  "engine": "chromium",
+  "modes": [
+    "initial"
+  ],
+  "cases": 14,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__gelModel",
+      "methods": [
+        "state",
+        "analyse",
+        "tick",
+        "render",
+        "fragments",
+        "travel",
+        "mobility",
+        "readSize",
+        "yieldNow",
+        "piled",
+        "LADDER",
+        "PLASMID",
+        "SITES",
+        "CIRCULAR_APPARENT",
+        "setDet",
+        "setSalt",
+        "setCold",
+        "setCut",
+        "setTime",
+        "check",
+        "runToEnd"
+      ]
+    }
+  ]
+}

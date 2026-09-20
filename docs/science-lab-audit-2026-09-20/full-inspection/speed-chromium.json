@@ -1,0 +1,31 @@
+{
+  "slug": "speed",
+  "engine": "chromium",
+  "modes": [
+    "distance",
+    "time"
+  ],
+  "cases": 26,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__speedModel",
+      "methods": [
+        "MOVERS",
+        "COURSE_M",
+        "CLOCK_S",
+        "state",
+        "analyse",
+        "render",
+        "runSeconds",
+        "setMode",
+        "set",
+        "setProgress",
+        "runToEnd",
+        "tick",
+        "finish"
+      ]
+    }
+  ]
+}

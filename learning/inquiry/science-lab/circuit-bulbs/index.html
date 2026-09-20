@@ -8,7 +8,7 @@
     <meta name="description" content="전지 한 개와 두 개를 직렬연결한 회로의 전구 밝기를 비교하고, 전자석의 세기와 극 변화를 영구자석과 비교하는 초등 과학 모의실험">
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
     <link rel="stylesheet" href="styles.css?v=5">
-    <link rel="stylesheet" href="circuit-visual.css?v=6">
+    <link rel="stylesheet" href="circuit-visual.css?v=8">
     <link rel="stylesheet" href="quiz.css?v=3">
     <link rel="stylesheet" href="../exam-scope.css?v=1">
     <link rel="stylesheet" href="../lab-ui.css?v=3">
@@ -57,11 +57,11 @@
                     <div class="range-scale two" aria-hidden="true"><span>1개</span><span>2개</span></div>
 
                     <fieldset class="prediction-field">
-                        <legend>전지를 두 개로 늘리면 밝기는?</legend>
+                        <legend id="predictionLegend">이어진 회로에서 전지를 1개에서 2개로 늘리면?</legend>
                         <div class="prediction-buttons three">
-                            <button type="button" data-prediction="dimmer">어두워진다</button>
-                            <button type="button" data-prediction="same">같다</button>
-                            <button type="button" data-prediction="brighter">밝아진다</button>
+                            <button type="button" data-prediction="dimmer">어두워짐</button>
+                            <button type="button" data-prediction="same">같음</button>
+                            <button type="button" data-prediction="brighter">밝아짐</button>
                         </div>
                     </fieldset>
                 </div>
@@ -91,7 +91,7 @@
 
                     <div class="comparison-actions">
                         <button type="button" class="toggle-button" id="powerBtn">전원 끄기</button>
-                        <button type="button" class="toggle-button" id="compareBtn">영구자석과 비교</button>
+                        <button type="button" class="toggle-button" id="compareBtn">영구자석 비교</button>
                     </div>
                 </div>
 
@@ -204,9 +204,9 @@
             </div>
         </details>
     </main>
-    <script src="app.js?v=7b77ef8d34d8"></script>
+    <script src="app.js?v=d697c4594a1b"></script>
     <script src="../curriculum-map.js?v=3f7264a2b189"></script>
     <script src="../exam-scope.js?v=caa16ae47731"></script>
-    <script src="../lab-ui.js?v=50727e1bd760"></script>
+    <script src="../lab-ui.js?v=c295eda1bdab"></script>
 </body>
 </html>

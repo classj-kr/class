@@ -115,10 +115,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const PRED_EXPAND = [{ value: 'faster', label: '더 빨리 멀어진다' }, { value: 'same', label: '같은 속도로 멀어진다' }, { value: 'slower', label: '더 느리게 멀어진다' }];
 
     function buildPrediction() {
+        state.prediction = null;
+        window.scienceInvalidatePrediction?.();
         const list=state.mode==='bright'?[{value:'square',label:'어두워진다'},{value:'no',label:'밝아진다'}]:[{value:'faster',label:'점들 사이 거리가 커진다'},{value:'no',label:'모든 점이 한 곳으로 모인다'}];
         predictionLegend.textContent=state.mode==='bright'?'같은 별을 멀리에서 보면?':'고무줄을 늘리면?';
         predictionArea.innerHTML=list.map(o=>'<button type="button" data-prediction="'+o.value+'">'+o.label+'</button>').join('');
-        predictionArea.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{state.prediction=b.dataset.prediction;predictionArea.querySelectorAll('button').forEach(x=>x.classList.toggle('selected',x===b));}));
+        predictionArea.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{state.prediction=b.dataset.prediction; window.scienceInvalidatePrediction?.();predictionArea.querySelectorAll('button').forEach(x=>x.classList.toggle('selected',x===b));}));
     }
 
     /* ----------------------------------------------------------- visuals */

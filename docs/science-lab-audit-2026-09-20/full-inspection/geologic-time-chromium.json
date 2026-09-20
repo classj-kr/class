@@ -1,0 +1,37 @@
+{
+  "slug": "geologic-time",
+  "engine": "chromium",
+  "modes": [
+    "calendar",
+    "extinction",
+    "diversity"
+  ],
+  "cases": 25,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__geoTimeModel",
+      "methods": [
+        "EVENTS",
+        "EXTINCTIONS",
+        "FORESTS",
+        "ERAS",
+        "PERIODS",
+        "state",
+        "analyse",
+        "render",
+        "dayOf",
+        "dateText",
+        "fmtAge",
+        "runSeconds",
+        "setMode",
+        "set",
+        "setProgress",
+        "runToEnd",
+        "tick",
+        "finish"
+      ]
+    }
+  ]
+}

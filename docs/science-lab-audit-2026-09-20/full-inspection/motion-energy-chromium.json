@@ -1,0 +1,39 @@
+{
+  "slug": "motion-energy",
+  "engine": "chromium",
+  "modes": [
+    "incline",
+    "energy"
+  ],
+  "cases": 13,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__motionModel",
+      "methods": [
+        "G",
+        "RAMP_M",
+        "FLAT_M",
+        "TOP",
+        "HILL2",
+        "END",
+        "state",
+        "analyseIncline",
+        "analyseEnergy",
+        "analyse",
+        "trackY",
+        "startX",
+        "sampleEnergy",
+        "render",
+        "runSeconds",
+        "setMode",
+        "set",
+        "setProgress",
+        "runToEnd",
+        "tick",
+        "finish"
+      ]
+    }
+  ]
+}

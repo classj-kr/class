@@ -158,6 +158,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const PRED_C = [{ value: 'hornfels', label: '혼펠스로 구워짐' }, { value: 'baked', label: '약간 구워짐' }, { value: 'none', label: '변화 없음' }];
 
     function buildPrediction() {
+        state.prediction = null;
+        window.scienceInvalidatePrediction?.();
         const list = state.mode === 'facies' ? PRED_F : state.mode === 'grade' ? PRED_G[state.parent] : PRED_C;
         predictionLegend.textContent = state.mode === 'facies' ? `${DEPTHS[state.depth].label} 깊이, 지온 기울기 ${GRADS[state.grad].label}이면 셰일의 변성도는?`
             : state.mode === 'grade' ? `${PARENTS[state.parent].label}${eul(PARENTS[state.parent].label)} ${TEMPS[state.temp].label}까지 데우면 어떤 암석이 될까요?`
@@ -165,7 +167,7 @@ document.addEventListener('DOMContentLoaded', () => {
         predictionArea.className = 'prediction-buttons three';
         predictionArea.innerHTML = list.map(o => `<button type="button" data-prediction="${o.value}">${o.label}</button>`).join('');
         predictionArea.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
-            state.prediction = button.dataset.prediction;
+            state.prediction = button.dataset.prediction; window.scienceInvalidatePrediction?.();
             predictionArea.querySelectorAll('button').forEach(b => b.classList.toggle('selected', b === button));
         }));
     }

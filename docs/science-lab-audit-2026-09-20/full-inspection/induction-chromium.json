@@ -1,0 +1,30 @@
+{
+  "slug": "induction",
+  "engine": "chromium",
+  "modes": [
+    "induce",
+    "circuit"
+  ],
+  "cases": 17,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__emfModel",
+      "methods": [
+        "ROD_L",
+        "RAIL_M",
+        "EMF_BENCH",
+        "EMF_SOURCE",
+        "state",
+        "analyseInduce",
+        "analyseCircuit",
+        "analyse",
+        "render",
+        "check",
+        "setMode",
+        "set"
+      ]
+    }
+  ]
+}

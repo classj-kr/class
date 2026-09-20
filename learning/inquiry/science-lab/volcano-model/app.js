@@ -252,7 +252,7 @@ document.querySelectorAll('[data-vin]').forEach(b => b.addEventListener('click',
     state.vin = Number(b.dataset.vin); markSelected('[data-vin]', 'vin', state.vin); render();
 }));
 document.querySelectorAll('[data-prediction]').forEach(b => b.addEventListener('click', () => {
-    state.prediction = b.dataset.prediction; markSelected('[data-prediction]', 'prediction', state.prediction);
+    state.prediction = b.dataset.prediction; state.checked = false; window.scienceInvalidatePrediction?.(); markSelected('[data-prediction]', 'prediction', state.prediction);
 }));
 $('sodaRange').addEventListener('input', e => {
     state.soda = Number(e.target.value);

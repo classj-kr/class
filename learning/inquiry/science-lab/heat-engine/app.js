@@ -151,10 +151,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const PRED_P = [{ value: 'low', label: '10배 안' }, { value: 'mid', label: '10~20배' }, { value: 'high', label: '20배 넘게' }];
 
     function buildPrediction() {
+        state.prediction = null;
+        window.scienceInvalidatePrediction?.();
         const list=state.mode==='flow'?[{value:'yes',label:'가능한 기관'},{value:'no',label:'불가능한 기관'}]:state.mode==='pump'?[{value:'yes',label:'외부에서 일을 공급해야 한다'},{value:'no',label:'일 없이 저절로 옮긴다'}]:[{value:'yes',label:'고온 열원을 높이면 한계 효율 증가'},{value:'no',label:'고온 열원을 높이면 한계 효율 감소'}];
         predictionLegend.textContent=state.mode==='carnot'?'저온 열원의 온도를 고정하고 비교하세요.':state.mode==='flow'?'이러한 순환 기관을 만들 수 있을까요?':'저온에서 고온으로 열을 옮기려면?';
         predictionArea.innerHTML=list.map(o=>'<button type="button" data-prediction="'+o.value+'">'+o.label+'</button>').join('');
-        predictionArea.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{state.prediction=b.dataset.prediction;predictionArea.querySelectorAll('button').forEach(x=>x.classList.toggle('selected',x===b));}));
+        predictionArea.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{state.prediction=b.dataset.prediction; window.scienceInvalidatePrediction?.();predictionArea.querySelectorAll('button').forEach(x=>x.classList.toggle('selected',x===b));}));
     }
 
     /* ----------------------------------------------------------- visuals */

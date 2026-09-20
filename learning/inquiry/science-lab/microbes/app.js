@@ -117,11 +117,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const PRED_GERM = [{ value: 'double', label: '2배 안팎' }, { value: 'tens', label: '몇 배에서 수십 배' }, { value: 'huge', label: '수천 배 넘게' }];
 
     function buildPrediction() {
+        state.prediction = null;
+        window.scienceInvalidatePrediction?.();
         const list = state.mode === 'mould' ? PRED_MOULD : PRED_GERM;
         predictionLegend.textContent = state.mode === 'mould' ? `${MOULD_DAYS}일 뒤 곰팡이는 어떻게 될까요?` : `${state.hours}시간 뒤 세균은 몇 배가 될까요?`;
         predictionArea.innerHTML = list.map(o => `<button type="button" data-prediction="${o.value}">${o.label}</button>`).join('');
         predictionArea.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
-            state.prediction = button.dataset.prediction;
+            state.prediction = button.dataset.prediction; window.scienceInvalidatePrediction?.();
             predictionArea.querySelectorAll('button').forEach(b => b.classList.toggle('selected', b === button));
         }));
     }

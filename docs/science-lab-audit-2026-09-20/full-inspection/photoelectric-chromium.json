@@ -1,0 +1,35 @@
+{
+  "slug": "photoelectric",
+  "engine": "chromium",
+  "modes": [
+    "photo",
+    "hydrogen",
+    "matter"
+  ],
+  "cases": 26,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__photoModel",
+      "methods": [
+        "METALS",
+        "LIGHTS",
+        "BRIGHTS",
+        "FROMS",
+        "TOS",
+        "OBJS",
+        "state",
+        "analyse",
+        "render",
+        "runSeconds",
+        "setMode",
+        "set",
+        "setProgress",
+        "runToEnd",
+        "tick",
+        "finish"
+      ]
+    }
+  ]
+}

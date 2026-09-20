@@ -1,0 +1,38 @@
+{
+  "slug": "pea-genetics",
+  "engine": "chromium",
+  "modes": [
+    "one",
+    "two"
+  ],
+  "cases": 22,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__peaModel",
+      "methods": [
+        "TRAITS",
+        "GENOS",
+        "CROSSES2",
+        "SEED_COUNTS",
+        "state",
+        "analyseOne",
+        "analyseTwo",
+        "analyse",
+        "sow",
+        "tally",
+        "rng",
+        "render",
+        "runSeconds",
+        "setMode",
+        "set",
+        "setSeed",
+        "setProgress",
+        "runToEnd",
+        "tick",
+        "finish"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "slug": "electric-field",
+  "engine": "chromium",
+  "modes": [
+    "field",
+    "accel",
+    "cap"
+  ],
+  "cases": 19,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__efieldModel",
+      "methods": [
+        "LEFTS",
+        "RIGHTS",
+        "SPOTS",
+        "VOLTS",
+        "PARTS",
+        "AREAS",
+        "GAPS",
+        "DIELS",
+        "state",
+        "analyse",
+        "render",
+        "fieldOnAxis",
+        "runSeconds",
+        "setMode",
+        "set",
+        "setProgress",
+        "runToEnd",
+        "tick",
+        "finish"
+      ]
+    }
+  ]
+}

@@ -4,7 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 <title>세계 항해·육상 탐험</title>
-<link rel="stylesheet" href="/assets/sound/music-control.css">
+<link rel="stylesheet" data-class-music-style href="/assets/sound/music-control.css">
+<script data-site-back-navigation="true" src="/assets/site-back-navigation.js?v=20260920-fraction-path" defer></script>
+<script src="/assets/sound/music-control.js?v=20260920-voyage" defer></script>
 <script data-class-game-sfx="true" src="/assets/sound/game-sfx.js?v=20260912-feedback-scope-1" defer></script>
 <style>
 :root{--ink:#f3e7c9;--panel:#102832ed;--line:#a58d61;--accent:#f2cf78;--good:#9fe1b0;--bad:#ff9f94}
@@ -44,9 +46,7 @@ button,input{font:inherit}button{border:1px solid var(--line);background:#17313b
 #missionBanner.show{display:block}#missionBanner.done{color:#b8f1c5;border-color:#74b784}
 #missionPanel.choiceRequired{display:block!important;left:50%;right:auto;top:50%;width:min(720px,calc(100vw - 28px));max-height:min(78vh,700px);transform:translate(-50%,-50%);padding:20px;z-index:70;background:#0c2630fa;border:2px solid #d3b66d;box-shadow:0 15px 55px #000}
 #missionPanel.choiceRequired h3{font-size:25px;text-align:center}.choiceRequired #missionInstructions{text-align:center;font-size:14px}.choiceRequired .atlasGuide{text-align:center;font-size:15px;padding:13px}.choiceRequired .missionChoiceGrid{grid-template-columns:1fr 1fr;gap:12px}.choiceRequired .missionChoiceCard{min-height:108px;padding:15px}.choiceRequired .missionChoiceCard b{font-size:20px}.choiceRequired .missionChoiceCard span{font-size:13px}.choiceRequired .missionActions{display:none}
-#bgmControl{position:fixed;right:12px;bottom:142px;z-index:32;display:flex;align-items:center;gap:8px;max-width:min(360px,calc(100vw - 24px));padding:6px 9px;border-radius:8px;touch-action:auto}#bgmToggle{min-width:46px;min-height:34px;padding:0 9px;font-weight:900;background:#72552d}#bgmVolume{width:92px;accent-color:#d7bb6d;touch-action:auto}#bgmTrack{max-width:150px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:10px;color:#ead9a8}#bgmControl.locked #bgmTrack::after{content:' · 화면을 한 번 누르면 재생';color:#9fcbd5}
-@media(max-width:650px){#finalQuizView{padding:4px}#finalQuizCard{width:100%;max-height:99vh;border-radius:6px}#finalQuizHeader{padding:10px 12px}#finalQuizHeader h2{font-size:18px}#finalQuizQuestions{padding:9px}.finalQuestion{padding:11px}.finalPassage,.finalChoice{font-size:12px}.entryModes{grid-template-columns:1fr}.entryMode{min-height:104px}.statusMain{grid-template-columns:repeat(2,1fr)}.statusItem{min-height:29px;padding:3px 5px}.statusItem small{font-size:8px}.statusItem b{font-size:10px}.statusSub{font-size:8px}.statusSub #identity,.statusSub #terrainHud{display:none}#hud{font-size:9px}.joinRow{grid-template-columns:1fr}#zoom{top:126px}#messageWindow{left:8px;right:8px;bottom:8px;height:106px;padding-bottom:9px}#messageHeader{height:18px;line-height:16px;margin-bottom:4px}#messageLines{font-size:10px;line-height:1.42;gap:1px;grid-template-rows:repeat(4,minmax(14px,auto))}.guideLine{min-height:14px}#pad{width:132px;height:132px;bottom:122px}.actionPrompt{bottom:262px;width:max-content;max-width:92vw}#missionPanel{right:8px;top:126px;max-height:43vh}#missionToggle{right:8px;top:126px}#missionBanner{top:126px;min-width:calc(100vw - 150px);max-width:calc(100vw - 150px);font-size:11px}.choiceRequired .missionChoiceGrid{grid-template-columns:1fr}#cityView{padding:126px 6px 6px}#cityCard{width:min(100%,calc((100vh - 236px) * 1.5));aspect-ratio:auto;display:flex;flex-direction:column;border-radius:5px}#cityScene{position:relative;inset:auto;height:auto;aspect-ratio:3/2}#cityShade{display:none}#cityCard:has(#cityScene[hidden]){padding-top:48px}#cityTitle{left:9px;top:9px;font-size:17px;padding:5px 9px}#cityInfo{position:static;max-width:none;padding:10px 12px 2px;font-size:12px;text-shadow:none}#cityMenu{position:static;padding:8px;flex-wrap:wrap}#cityMenu button{flex:1 1 0;min-width:0;min-height:38px;padding:0 8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}#leaveCityBtn{margin-left:0}#libraryView{padding:6px}#libraryCard{height:97vh}#libraryBody{grid-template-columns:1fr;grid-template-rows:36% minmax(0,1fr)}#bookList{border-right:0;border-bottom:1px solid #53645c}#bookReader{padding:18px}#bookReader h2{font-size:22px}#bgmControl{right:8px;bottom:120px;padding:4px 6px;gap:5px}#bgmToggle{min-width:40px;min-height:32px;padding:0 7px}#bgmVolume{width:72px}#bgmTrack{display:none}}
-#bgmControl.unified-music-control{top:8px;right:8px;bottom:auto;z-index:100000;max-width:none;padding:3px 6px;border-radius:999px;touch-action:manipulation}#bgmControl.locked .unified-audio-slider{opacity:.58}@media(max-width:650px){#bgmControl.unified-music-control{top:6px;right:6px;bottom:auto;padding:2px 4px}}
+@media(max-width:650px){#finalQuizView{padding:4px}#finalQuizCard{width:100%;max-height:99vh;border-radius:6px}#finalQuizHeader{padding:10px 12px}#finalQuizHeader h2{font-size:18px}#finalQuizQuestions{padding:9px}.finalQuestion{padding:11px}.finalPassage,.finalChoice{font-size:12px}.entryModes{grid-template-columns:1fr}.entryMode{min-height:104px}.statusMain{grid-template-columns:repeat(2,1fr)}.statusItem{min-height:29px;padding:3px 5px}.statusItem small{font-size:8px}.statusItem b{font-size:10px}.statusSub{font-size:8px}.statusSub #identity,.statusSub #terrainHud{display:none}#hud{font-size:9px}.joinRow{grid-template-columns:1fr}#zoom{top:126px}#messageWindow{left:8px;right:8px;bottom:8px;height:106px;padding-bottom:9px}#messageHeader{height:18px;line-height:16px;margin-bottom:4px}#messageLines{font-size:10px;line-height:1.42;gap:1px;grid-template-rows:repeat(4,minmax(14px,auto))}.guideLine{min-height:14px}#pad{width:132px;height:132px;bottom:122px}.actionPrompt{bottom:262px;width:max-content;max-width:92vw}#missionPanel{right:8px;top:126px;max-height:43vh}#missionToggle{right:8px;top:126px}#missionBanner{top:126px;min-width:calc(100vw - 150px);max-width:calc(100vw - 150px);font-size:11px}.choiceRequired .missionChoiceGrid{grid-template-columns:1fr}#cityView{padding:126px 6px 6px}#cityCard{width:min(100%,calc((100vh - 236px) * 1.5));aspect-ratio:auto;display:flex;flex-direction:column;border-radius:5px}#cityScene{position:relative;inset:auto;height:auto;aspect-ratio:3/2}#cityShade{display:none}#cityCard:has(#cityScene[hidden]){padding-top:48px}#cityTitle{left:9px;top:9px;font-size:17px;padding:5px 9px}#cityInfo{position:static;max-width:none;padding:10px 12px 2px;font-size:12px;text-shadow:none}#cityMenu{position:static;padding:8px;flex-wrap:wrap}#cityMenu button{flex:1 1 0;min-width:0;min-height:38px;padding:0 8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}#leaveCityBtn{margin-left:0}#libraryView{padding:6px}#libraryCard{height:97vh}#libraryBody{grid-template-columns:1fr;grid-template-rows:36% minmax(0,1fr)}#bookList{border-right:0;border-bottom:1px solid #53645c}#bookReader{padding:18px}#bookReader h2{font-size:22px}}
 #cityLegend{border-radius:8px;font-size:11px}#cityLegend summary{min-height:42px;display:flex;align-items:center;padding:0 9px;cursor:pointer;list-style:none}#cityLegend summary::-webkit-details-marker{display:none}#cityLegend summary:focus-visible{outline:2px solid #f2cf78;outline-offset:2px}#cityLegend[open] summary{color:#ffe3a0}#cityLegend>div{position:absolute;right:0;top:48px;width:215px;padding:12px 14px;background:#102832f5;border:1px solid var(--line);border-radius:8px;line-height:1.9;box-shadow:0 4px 18px #0008}#cityLegend small{color:#b9c9c7;font-size:10px}
 
 /* Locally bundled reading face for explanations and exam passages. */
@@ -60,7 +60,73 @@ button,input{font:inherit}button{border:1px solid var(--line);background:#17313b
 #finalQuizQuestions .finalPassage,#finalQuizQuestions .finalChoice,#finalQuizQuestions .finalPrompt{font-size:15.5px;line-height:1.8}
 #finalQuizQuestions .finalExplanation{font-size:14px;line-height:1.75}
 @media(max-width:650px){#discoveryCard{padding:17px 16px}#discoveryText{font-size:15px}#discoveryText .storyHead{font-size:16px}#finalQuizQuestions .finalPassage,#finalQuizQuestions .finalChoice,#finalQuizQuestions .finalPrompt{font-size:14.5px}}
-</style>
+
+/* Compact readout; navigation and sound retain their shared site positions. */
+#hud{left:max(58px,calc(env(safe-area-inset-left) + 52px));right:auto;top:12px;display:flex;align-items:center;gap:10px;width:max-content;max-width:calc(100vw - 134px);padding:0 8px 0 12px;min-height:40px;border-radius:8px;pointer-events:auto;box-shadow:0 2px 8px #0006}
+.statusMain{display:flex;align-items:center;gap:16px}
+.statusItem{justify-content:flex-start;min-height:0;padding:0;border:0;background:none;gap:6px;overflow:visible}
+#hud .statusItem b{font-size:12px;font-variant-numeric:tabular-nums;overflow:visible}
+.statusItem .statusLabel{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+.statusItem .fatigueTrack{width:36px;flex-basis:36px;height:5px}
+#hud:has(#voyageInfo[open]){z-index:35}
+#voyageInfo{flex:none}#voyageInfo summary{display:grid;place-items:center;min-height:40px;min-width:36px;cursor:pointer;font-size:11px;color:#c7d8d5;list-style:none;touch-action:manipulation}
+#voyageInfo summary::-webkit-details-marker{display:none}#voyageInfo summary:focus-visible{outline:2px solid #f2cf78;border-radius:4px}#voyageInfo[open] summary{color:#ffe3a0}
+#voyageInfo .statusSub{position:absolute;top:calc(100% + 6px);left:0;display:flex;flex-wrap:wrap;gap:6px 12px;width:min(460px,calc(100vw - 24px));padding:12px;font-size:12px;line-height:1.6;white-space:normal;overflow:visible;background:#0a2029f5;border:1px solid var(--line);border-radius:8px;box-shadow:0 4px 16px #0008}
+#voyageInfo .statusSub>*{overflow:visible;text-overflow:clip}#voyageInfo .statusDivider{display:none}#voyageInfo #identity,#voyageInfo #terrainHud{display:block}#voyageInfo #identity,#voyageInfo #mission{flex-basis:100%}#voyageInfo #identity{font-size:12px}
+#zoom{top:72px}#missionToggle{top:122px}#missionPanel:not(.choiceRequired){top:170px}
+#missionBanner{top:64px;min-width:0;width:max-content;max-width:calc(100vw - 520px);padding:5px 10px;font-size:12px}
+@media(max-width:900px){#hud{gap:6px;padding-left:8px}.statusMain{gap:10px}.statusItem .fatigueTrack{display:none}#missionBanner{top:122px;max-width:calc(100vw - 24px)}}
+@media(max-width:760px){#hud{left:max(8px,env(safe-area-inset-left));top:64px;max-width:calc(100vw - 16px);padding:3px 8px;gap:8px}.statusMain{display:grid;grid-template-columns:auto auto;gap:2px 12px}#hud .statusItem b{font-size:11px}.statusItem:nth-child(2){grid-row:2;grid-column:1}.statusItem:nth-child(3){grid-row:1;grid-column:2}.statusItem:nth-child(4){grid-row:2;grid-column:2}#zoom{top:120px}#missionBanner{top:170px;max-width:calc(100vw - 24px)}#missionToggle{top:212px}#missionPanel:not(.choiceRequired){top:260px;max-height:calc(100vh - 280px)}}
+/* Reading surfaces: neutral paper and regular batang text reduce glare. */
+:root{--paper:#f3f0e8;--paper-edge:#d8d2c5;--paper-ink:#25231f;--paper-muted:#6c665d;--paper-rule:#cfc8b9}
+#discoveryView,#libraryView,#finalQuizView{background:rgba(5,15,20,.78)}
+#discoveryCard,#finalQuizCard,#libraryCard{border:1px solid var(--paper-edge);background:var(--paper);color:var(--paper-ink);box-shadow:0 18px 60px rgba(0,0,0,.38)}
+#discoveryCard{padding:24px 26px;border-radius:12px}
+#discoveryCard h2,#finalQuizHeader h2,#libraryHeader h2{font-family:var(--reading-font);font-weight:700;letter-spacing:-.025em}
+#discoveryCard h2{margin-bottom:5px;color:var(--paper-ink);font-size:25px}
+#discoveryKind,#discoveryCount,#discoveryCredit{color:var(--paper-muted)}
+#discoveryKind{font-size:12px;margin-bottom:14px}
+#discoveryText{font-size:17px;line-height:1.92;font-weight:400;letter-spacing:-.012em}
+#discoveryText .storyCaption{color:var(--paper-muted);font-size:13px}
+#discoveryText .storyHead{margin:23px 0 8px;color:#3b352d;font-size:17px;font-weight:700}
+#discoveryText .storyBody{margin:0;color:var(--paper-ink);line-height:1.92;font-weight:400}
+#discoveryImage{border-color:var(--paper-edge)}
+#discoveryButtons{border-top:1px solid var(--paper-rule);padding-top:14px}
+#discoveryButtons button{min-height:40px;border-color:#9e8a68;background:#806032;color:#fff9ec}
+#libraryCard{background:var(--paper)}
+#libraryHeader{background:#102832;border-bottom:1px solid #776b58;padding:10px 14px}
+#libraryHeader h2{color:#f4e8cf}
+#libraryHeader span{color:#cfd8d4}
+#bookList{background:#102832;border-right:1px solid #5c675f}
+#bookList button{background:#17343c;border-color:#587068;color:#e7eee9;font-family:var(--reading-font);font-weight:400}
+#bookList button b{color:#f2dfb8;font-weight:700}
+#bookList button small{color:#c4d1ce}
+#bookList button.active{background:#365141;border-color:#cfb878}
+#bookReader{background:var(--paper);color:var(--paper-ink);padding:32px clamp(24px,5vw,58px)}
+#bookReader h2{color:var(--paper-ink);font-size:29px;font-weight:700;letter-spacing:-.03em}
+#bookMeta{color:var(--paper-muted);margin-bottom:22px}
+#bookIntro{border-bottom:1px solid var(--paper-rule);padding-bottom:20px;font-weight:400;font-size:17px;line-height:1.9}
+#bookSections h3{color:#3b352d;margin:25px 0 8px;font-size:18px;font-weight:700}
+#bookSections p{color:var(--paper-ink);font-size:17px;line-height:1.95;font-weight:400;letter-spacing:-.012em}
+#finalQuizCard{background:var(--paper)}
+#finalQuizHeader{background:#102832;border-bottom:1px solid #776b58}
+#finalQuizHeader h2{color:#f4e8cf}
+#finalQuizHeader p{color:#cfd8d4}
+#finalQuizQuestions{background:var(--paper);color:var(--paper-ink);padding:22px 24px}
+.finalQuestion{background:#faf8f2;border-color:var(--paper-edge);border-radius:5px;padding:18px}
+.finalQuestion h3{color:#3b352d;font-weight:700}
+.finalPassage{background:#eae6dc;border-left-color:#8f7955;color:var(--paper-ink);font-size:17px!important;line-height:1.9!important;padding:14px}
+.finalPrompt{font-weight:700;color:var(--paper-ink);font-size:17px!important;line-height:1.8!important}
+.finalChoice{background:#f7f5ef;border-color:#c9c2b5;color:var(--paper-ink);font-size:16px!important;line-height:1.7!important}
+.finalChoice:has(input:checked){border-color:#8f7955;background:#e9e2d3}
+.finalExplanation{color:#4f694f;font-size:15px!important;line-height:1.8!important}
+.finalQuizFooter{background:#102832;border-top:1px solid #776b58}
+.finalQuizStatus{color:#e8eee9}
+#joinCard{background:rgba(10,32,40,.94);border:1px solid #b9a372;box-shadow:0 14px 45px rgba(0,0,0,.35)}
+#joinCard .joinIntro,.entryMode span,.roomType span{color:#d6e1df}
+.entryMode b,.roomType b{font-family:var(--reading-font);font-weight:700}
+#messageWindow{background:rgba(7,27,36,.94);box-shadow:0 4px 18px rgba(0,0,0,.2)}
+@media(max-width:650px){#discoveryCard{padding:20px 17px}#discoveryText{font-size:16px;line-height:1.9}#discoveryText .storyHead{font-size:16px}#bookReader{padding:22px 18px}#bookReader h2{font-size:24px}#bookIntro,#bookSections p{font-size:16px;line-height:1.9}#finalQuizQuestions{padding:12px 10px}.finalQuestion{padding:13px}.finalPassage{font-size:15px!important}.finalPrompt{font-size:15px!important}.finalChoice{font-size:15px!important}}</style>
 </head>
 <body>
 <div id="globeBase"></div>
@@ -88,16 +154,15 @@ button,input{font:inherit}button{border:1px solid var(--line);background:#17313b
 </div>
 <div id="hud" class="panel">
   <div class="statusMain">
-    <span class="statusItem" id="clockGroup"><small>날짜</small><b id="clock">1520년 1월 1일 00:00</b></span>
-    <span class="statusItem"><small>위도·경도</small><b id="coord">위치 계산 중</b></span>
-    <span class="statusItem" title="게임 시간과 구면거리를 기준으로 계산한 실제 이동속력"><small>이동 속력</small><b id="speedValue">0 km/h</b></span>
+    <span class="statusItem" id="clockGroup"><small class="statusLabel">날짜</small><b id="clock">1520년 1월 1일 00:00</b></span>
+    <span class="statusItem"><small class="statusLabel">위도·경도</small><b id="coord">위치 계산 중</b></span>
+    <span class="statusItem" title="게임 시간과 구면거리를 기준으로 계산한 실제 이동속력"><small class="statusLabel">이동 속력</small><b id="speedValue">0 km/h</b></span>
     <span class="statusItem"><small>피로도</small><b id="fatigueValue">0%</b><span class="fatigueTrack"><span id="fatigueFill" class="fatigueFill"></span></span></span>
   </div>
-  <div class="statusSub"><b id="identity">접속 준비 중</b><span class="statusDivider">│</span><span id="net" class="bad">● 연결 중</span><span id="onlineGroup">같은 반 <b id="online">0</b>명</span><span id="nearbyGroup">근처 <b id="nearby">0</b>명</span><span class="statusDivider">│</span><span id="modeHud">항해</span><span id="terrainHud">바다 · 속도 100%</span><span class="statusDivider">│</span><span id="currentHud">잔잔한 해역</span><span class="statusDivider">│</span><span id="windHud">바람 확인 중</span><span class="statusDivider">│</span><span id="mission" class="grow">방장의 신호를 기다리는 중</span></div>
+  <details id="voyageInfo"><summary aria-label="항해 정보" title="항해 정보">정보</summary><div class="statusSub"><b id="identity">접속 준비 중</b><span class="statusDivider">│</span><span id="net" class="bad">● 연결 중</span><span id="onlineGroup">같은 반 <b id="online">0</b>명</span><span id="nearbyGroup">근처 <b id="nearby">0</b>명</span><span class="statusDivider">│</span><span id="modeHud">항해</span><span id="terrainHud">바다 · 속도 100%</span><span class="statusDivider">│</span><span id="currentHud">잔잔한 해역</span><span class="statusDivider">│</span><span id="windHud">바람 확인 중</span><span class="statusDivider">│</span><span id="mission" class="grow">방장의 신호를 기다리는 중</span></div></details>
 </div>
 <div id="missionBanner" class="panel" aria-live="polite"></div>
 <div id="zoom"><button id="minus" aria-label="축소">−</button><button id="plus" aria-label="확대">＋</button><button id="home" aria-label="현재 임무 지점">⌂</button><details id="cityLegend" class="panel"><summary aria-label="도시 아이콘 안내">도시 표시</summary><div><b>건물 모양 = 문화권</b><br>건물 수·넓이 = 도시 규모<br><span style="color:#9fe5ef">⚓ 닻 표시 = 입항 가능</span><br>닻 없는 도시 = 육로 진입<br><small>확대하면 도시 모습이 더 잘 보여요.</small></div></details></div>
-<div id="bgmControl" class="unified-music-control locked" aria-label="배경음악 조절"><div class="unified-audio-group"><button id="bgmMuteBtn" class="unified-audio-toggle" type="button" aria-label="음악 음소거">♪</button><input id="bgmVolumeSlider" class="unified-audio-slider" type="range" min="0" max="1" step="0.01" aria-label="음악 음량"></div></div>
 <div id="pad"><button class="blank"></button><button data-dir="up">▲</button><button class="blank"></button><button data-dir="left">◀</button><button data-dir="stop">■</button><button data-dir="right">▶</button><button class="blank"></button><button data-dir="down">▼</button><button class="blank"></button></div>
 <div id="missionActionPrompt" class="actionPrompt panel"><span id="missionActionText"><b>행동</b></span><button id="cityActionBtn" hidden>도시 들어가기</button><button id="discoveryActionBtn" hidden>살펴보기</button><button id="huntActionBtn" hidden>만나기</button><button id="missionActionBtn" hidden>확인 Enter</button></div>
 <section id="cityView" aria-label="도시 내부">
@@ -160,7 +225,6 @@ const cityView=document.getElementById('cityView'),cityScene=document.getElement
 const missionPanel=document.getElementById('missionPanel'),missionToggle=document.getElementById('missionToggle'),missionBanner=document.getElementById('missionBanner'),missionTitle=document.getElementById('missionTitle'),missionMeta=document.getElementById('missionMeta'),missionInstructions=document.getElementById('missionInstructions'),missionTarget=document.getElementById('missionTarget'),missionFeedback=document.getElementById('missionFeedback'),missionClose=document.getElementById('missionClose');
 const pauseOverlay=document.getElementById('pauseOverlay'),lockTitle=document.getElementById('lockTitle'),lockDetail=document.getElementById('lockDetail'),transitionOverlay=document.getElementById('transitionOverlay'),transitionLabel=document.getElementById('transitionLabel'),transitionFill=document.getElementById('transitionFill');
 const finalQuizView=document.getElementById('finalQuizView'),finalQuizCard=document.getElementById('finalQuizCard'),finalQuizTitle=document.getElementById('finalQuizTitle'),finalQuizHint=document.getElementById('finalQuizHint'),finalQuizQuestions=document.getElementById('finalQuizQuestions'),finalQuizStatus=document.getElementById('finalQuizStatus'),finalQuizSubmit=document.getElementById('finalQuizSubmit'),finalQuizContinue=document.getElementById('finalQuizContinue');
-const bgmControl=document.getElementById('bgmControl'),bgmMuteBtn=document.getElementById('bgmMuteBtn'),bgmVolumeSlider=document.getElementById('bgmVolumeSlider');
 const naturalMapOverview=new Image(),shipAtlas=new Image(),windCloudAtlas=new Image();
 naturalMapOverview.src='/learn/world-voyage/assets/maps/natural-earth-v58/overview.jpg?v=58';shipAtlas.src='/learn/world-voyage/assets/ships/ship_original_8dir.png?v=58';windCloudAtlas.src='/learn/world-voyage/assets/weather/cloud_original_12frames.png?v=58';
 const NATURAL_MAP=Object.freeze({width:16200,height:8100,tileSize:1024,cols:16,rows:8});
@@ -221,12 +285,9 @@ function minimumMapZoom(){return isPhoneMapView()?MOBILE_MIN_ZOOM:DESKTOP_MIN_ZO
 let world=null,naturalLandMask=null,assetsReady=false,discoveryCatalog=new Map(),discoveryPoints=[],discoveryInteraction=null,huntInteraction=null,joined=false,dpr=1,zoom=recommendedMapZoom(),zoomManuallyAdjusted=false,last=performance.now(),mode='sea',sessionMode='',entryMode='',roomType='race',isHost=false,chosenRoomType='',lastLocalBlock=0,lastNoticeSeq=0,roomCodeCurrent='',lastModeMessage=null,lastTerrainMessage=null,lastFatigueBand=0,mapCities=[];
 let self=null,serverSelf=null,remote=new Map(),lastSnapshotAt=0,activeMission=null,missionProgress=null,missionInteraction=null,cityInteraction=null,portInteraction=null,classGameMinutes=0,clockAnchorGameMinutes=0,clockAnchorAt=performance.now(),classSettings={paused:false,locked:false};
 let libraryCatalog={books:[]},cityCatalogById=new Map(),renderedCityId='',openedBookId='',finalQuizSubmitting=false,dismissedFinalQuizMissionId='',lastFinalQuizRenderKey='',finalQuizSaveTimer=0;
-let bgmState={muted:false,volume:.6,unlocked:false};
-const backgroundMusic=UW3BGM.createController({basePath:'/learn/world-voyage/assets/bgm',fadeMs:900,storage:localStorage,onStateChange:updateBgmControl});
-function updateBgmControl(state){
-  bgmState=state;const volume=Math.max(0,Math.min(1,Number(state.volume)||0)),percentage=Math.round(volume*100),stateLabel=state.muted?'음소거':`${percentage}%`;
-  bgmControl.classList.toggle('locked',!state.unlocked);bgmMuteBtn.textContent=state.muted?'×':'♪';bgmMuteBtn.classList.toggle('is-muted',state.muted);bgmMuteBtn.setAttribute('aria-label',state.muted?'음악 켜기':'음악 음소거');bgmMuteBtn.setAttribute('aria-pressed',state.muted?'true':'false');bgmVolumeSlider.value=state.muted?'0':String(volume);bgmVolumeSlider.setAttribute('aria-valuetext',stateLabel);bgmVolumeSlider.title=`음악 ${stateLabel}`;
-}
+const backgroundMusic=UW3BGM.createController({basePath:'/learn/world-voyage/assets/bgm',fadeMs:900,storage:localStorage});
+// Keep regional tracks and crossfades while the site owns mute/volume and controls.
+window.ClassMusicController=backgroundMusic;
 function waitingForVoyageStart(){
   // 방 종류를 봐야 한다. 옛 개인 모드를 없앤 뒤로는 모든 방이 competition 이라,
   // 미션이 없는 자유 항해 방에서 음악이 '출항 준비'에 영영 묶여 있었다.
@@ -244,11 +305,10 @@ function syncBackgroundMusic(){
   const city=mode==='city'?(cityCatalogById.get(serverSelf?.currentCityId)||{region:serverSelf?.currentCityRegion||'',countryCode:''}):null;
   backgroundMusic.request(UW3BGM.resolveTrack({joined,waitingForStart:waitingForVoyageStart(),mode,city,position:currentMusicPosition()}));
 }
-bgmMuteBtn.addEventListener('click',()=>backgroundMusic.toggleMuted());
-bgmVolumeSlider.addEventListener('input',()=>{const volume=Math.max(0,Math.min(1,Number(bgmVolumeSlider.value)));if(volume<=0){if(!bgmState.muted)backgroundMusic.toggleMuted();return}if(bgmState.muted)backgroundMusic.toggleMuted();backgroundMusic.setVolume(volume)});
-addEventListener('pointerdown',()=>backgroundMusic.unlock(),{capture:true,once:true});
-addEventListener('keydown',()=>backgroundMusic.unlock(),{capture:true,once:true});
 syncBackgroundMusic();
+const voyageInfo=document.getElementById('voyageInfo');
+document.addEventListener('pointerdown',event=>{if(voyageInfo.open&&!voyageInfo.contains(event.target))voyageInfo.open=false});
+document.addEventListener('keydown',event=>{if(event.key==='Escape'&&voyageInfo.open){voyageInfo.open=false;voyageInfo.querySelector('summary').focus()}});
 // 해류는 바다 물결 애니메이션으로, 바람은 원작 CLOUD.CDS의 구름 애니메이션으로 구분한다.
 const currentTracers=[];
 const CURRENT_FLOW_FRAME_W=96,CURRENT_FLOW_FRAME_H=30,CURRENT_FLOW_FRAME_COUNT=8;
@@ -274,6 +334,7 @@ seedCurrentVisuals();
 const WIND_CLOUD_CELL_W=620,WIND_CLOUD_CELL_H=360,WIND_CLOUD_FRAME_W=160,WIND_CLOUD_FRAME_H=60,WIND_CLOUD_SEQUENCE_FRAMES=6,WIND_VISUAL_FLOW_RATE=5.6,WIND_CLOUD_FRAME_MS=64;
 function hashUnit(a,b,c=0){let x=Math.imul((a|0)^0x9e3779b9,0x85ebca6b)+Math.imul((b|0)^0xc2b2ae35,0x27d4eb2f)+(c|0);x^=x>>>16;x=Math.imul(x,0x7feb352d);x^=x>>>15;x=Math.imul(x,0x846ca68b);x^=x>>>16;return(x>>>0)/4294967296}
 const keys={up:false,down:false,left:false,right:false};
+let resumeToken='',connectionReady=false,resumePending=false;
 const socket=io({path:'/learn/world-voyage/socket.io',transports:['polling'],reconnection:true,reconnectionAttempts:Infinity,reconnectionDelay:500});
 
 function resetMapZoomForDevice(){zoom=recommendedMapZoom();zoomManuallyAdjusted=false}
@@ -300,7 +361,7 @@ function currentStage(){if(activeMission?.kind!=='staged')return null;return act
 function awaitingStartChoice(){return activeMission?.kind==='arrivalRace'&&activeMission.phase!=='running'&&!missionProgress?.selectedStartPlaceId&&missionProgress?.status!=='completed'}
 function waitingForTeacherStart(){return activeMission?.kind==='arrivalRace'&&!!missionProgress?.selectedStartPlaceId&&activeMission.phase!=='running'&&missionProgress?.status!=='completed'}
 function missedTeacherStart(){return activeMission?.kind==='arrivalRace'&&activeMission.phase==='running'&&!missionProgress?.selectedStartPlaceId&&missionProgress?.status!=='completed'}
-function canTravelNow(){if(!joined||classSettings.paused||serverSelf?.transition)return false;if(roomType==='free')return classSettings.started===true;if(missionProgress?.finalQuizStatus==='answering')return false;return !!(activeMission?.kind==='arrivalRace'&&activeMission.phase==='running'&&missionProgress?.selectedStartPlaceId)}
+function canTravelNow(){if(!joined||!connectionReady||!socket.connected||performance.now()-lastSnapshotAt>3000||classSettings.paused||serverSelf?.transition)return false;if(roomType==='free')return classSettings.started===true;if(missionProgress?.finalQuizStatus==='answering')return false;return !!(activeMission?.kind==='arrivalRace'&&activeMission.phase==='running'&&missionProgress?.selectedStartPlaceId)}
 function updateTravelLockOverlay(){
   if(!joined){pauseOverlay.classList.remove('show');return}
   if(roomType==='free'){const waiting=!classSettings.paused&&!classSettings.started;const title=classSettings.paused?'방장이 게임을 잠시 멈췄습니다.':waiting?'출발 대기 중':'';lockTitle.textContent=title;lockDetail.textContent=waiting?(isHost?'친구들에게 방번호를 알려 주고, 모두 들어오면 "모두 출발"을 누르세요.':'방장이 출발 버튼을 누르면 모두 출발합니다.'):'';pauseOverlay.classList.toggle('show',!!title);if(title)clearKeys();return}
@@ -517,11 +578,11 @@ function applyModeUI(){
   const cityReady=cityVisible&&interactionEnabled;
   const portReady=portVisible&&portInteraction.canUse!==false&&interactionEnabled;
   const portBlocked=portVisible&&(portInteraction.canUse===false||!interactionEnabled);
-  missionActionPrompt.classList.toggle('show',missionVisible||cityVisible||portVisible||discoveryVisible);
-  discoveryActionBtn.hidden=!discoveryVisible;discoveryActionBtn.disabled=!discoveryVisible;
-  huntActionBtn.hidden=!huntVisible;huntActionBtn.disabled=!huntVisible;
+  missionActionPrompt.classList.toggle('show',missionVisible||cityVisible||portVisible||discoveryVisible||huntVisible);
+  discoveryActionBtn.hidden=!discoveryVisible;discoveryActionBtn.disabled=!discoveryVisible||!interactionEnabled||discoveryInteraction?.canUse===false;
+  huntActionBtn.hidden=!huntVisible;huntActionBtn.disabled=!huntVisible||!interactionEnabled;
   if(huntVisible)huntActionBtn.textContent=`${huntInteraction.animal} 만나기`;
-  if(discoveryVisible)discoveryActionBtn.textContent=`${discoveryInteraction.name} 살펴보기`;
+  if(discoveryVisible)discoveryActionBtn.textContent=discoveryInteraction.canUse===false?discoveryInteraction.message:`${discoveryInteraction.name} 살펴보기`;
   cityActionBtn.hidden=!cityVisible;cityActionBtn.disabled=!cityReady;
   missionActionBtn.hidden=!(missionVisible||portVisible);missionActionBtn.disabled=false;
   if(missionVisible){missionActionText.innerHTML=`<b>${escapeHtml(missionInteraction.placeName)}</b>`;missionActionBtn.textContent=`${missionInteraction.actionLabel} Enter`;missionActionBtn.disabled=!missionReady;}
@@ -541,8 +602,19 @@ function applyModeUI(){
 async function ungzipResponse(url){const response=await fetch(url);if(!response.ok)throw new Error('지도 파일을 받지 못했습니다.');if(!('DecompressionStream' in window))throw new Error('최신 Chrome이 필요합니다.');const ds=new DecompressionStream('gzip');return await new Response(response.body.pipeThrough(ds)).arrayBuffer()}
 Promise.all([ungzipResponse('/learn/world-voyage/assets/maps/world.cds.gz?v=58'),ungzipResponse('/learn/world-voyage/assets/maps/natural-earth-land-mask-v59.bin.gz?v=61'),decodeSoon(naturalMapOverview),decodeSoon(shipAtlas),decodeSoon(windCloudAtlas),fetch('/learn/world-voyage/api/mission-catalog?v=89').then(r=>{if(!r.ok)throw new Error('도시 목록을 받지 못했습니다.');return r.json()}),fetch('/learn/world-voyage/data/library-books.json?v=80').then(r=>{if(!r.ok)throw new Error('도서관 자료를 받지 못했습니다.');return r.json()})]).then(([buf,landMask,_map,_s,_w,catalog,books])=>{world=new Uint16Array(buf);if(world.length!==WW*WH)throw new Error('지도 크기 불일치');naturalLandMask=new Uint8Array(landMask);UW3Terrain.setNaturalEarthLandMask(naturalLandMask);mapCities=(catalog.places||[]).filter(p=>p.isOriginalCity&&p.displayOnMap&&p.cityPoint);cityCatalogById=new Map((catalog.places||[]).filter(p=>p.isOriginalCity).map(p=>[p.id,p]));libraryCatalog=books||{books:[]};discoveryCatalog=new Map((catalog.discoveries||[]).map(d=>[d.id,d]));discoveryPoints=(catalog.discoveries||[]).map(d=>({...d,x:((d.lon+180)/360)*SPAN,y:((90-d.lat)/180)*MAP_H}));assetsReady=true;loading.remove()}).catch(err=>{loading.textContent='불러오기 실패: '+err.message;console.error(err)});
 
-socket.on('connect',()=>{net.textContent='● 서버 연결';net.className='good'});
-socket.on('disconnect',()=>{net.textContent='● 재연결 중';net.className='bad';startChoicePending=false;pendingStartChoice=null;startChoiceRollback=null;for(const card of missionPanel.querySelectorAll('.missionChoiceCard')){card.disabled=false;card.classList.remove('isSelecting')}if(awaitingStartChoice()){missionFeedback.className='bad';missionFeedback.textContent='서버 연결이 끊겼습니다. 재연결 후 다시 선택하세요.'}});
+function restoreVoyagerConnection(){
+  if(!joined||!socket.connected||resumePending)return;
+  if(!resumeToken){connectionReady=false;joined=false;join.style.display='grid';joinError.textContent='방에 다시 입장해 주세요.';return}
+  resumePending=true;connectionReady=false;net.textContent='● 연결 복구 중';net.className='bad';
+  socket.timeout(5000).emit('resumeVoyager',{resumeToken},(error,result)=>{
+    resumePending=false;if(!socket.connected)return;
+    if(error)return;
+    if(!result?.ok){joined=false;connectionReady=false;join.style.display='grid';joinError.textContent=result?.error||'방에 다시 입장해 주세요.';return}
+    finishJoin(result,true);showToast('연결이 복구되었습니다.','good');
+  });
+}
+socket.on('connect',()=>{if(joined){restoreVoyagerConnection();return}net.textContent='● 서버 연결';net.className='good'});
+socket.on('disconnect',()=>{connectionReady=false;resumePending=false;for(const k in keys)keys[k]=false;net.textContent='● 재연결 중';net.className='bad';startChoicePending=false;pendingStartChoice=null;startChoiceRollback=null;for(const card of missionPanel.querySelectorAll('.missionChoiceCard')){card.disabled=false;card.classList.remove('isSelecting')}if(awaitingStartChoice()){missionFeedback.className='bad';missionFeedback.textContent='서버 연결이 끊겼습니다. 재연결 후 다시 선택하세요.'}});
 socket.on('connect_error',()=>{net.textContent='● 연결 실패';net.className='bad'});
 socket.on('missionPublished',data=>applyMissionState(data?.mission,{status:'assigned',statusLabel:'수행 전'},true));
 socket.on('missionStarted',data=>{applyMissionState(data?.mission||activeMission,missionProgress,false);showToast('출발! 목적지를 향해 이동하세요.','good');clearKeys();updateTravelLockOverlay()});
@@ -561,15 +633,15 @@ function showDiscovery(item,found,total,first,label='발견! '){
 }
 discoveryClose.addEventListener('click',()=>discoveryView.classList.remove('show'));
 discoveryView.addEventListener('pointerdown',e=>{if(e.target===discoveryView)discoveryView.classList.remove('show')});
-function doDiscoveryAction(){
-  if(!discoveryInteraction)return;clearKeys();
-  socket.emit('inspectDiscovery',{id:discoveryInteraction.id},result=>{
+function doDiscoveryAction(item=discoveryInteraction){
+  if(!item?.id||!canTravelNow())return;clearKeys();
+  socket.emit('inspectDiscovery',{id:item.id},result=>{
     if(!result?.ok){showToast(result?.error||'살펴보지 못했습니다.','warn');return}
     if(result.self){serverSelf=result.self;self={...result.self}}
     showDiscovery(result.discovery,result.found,result.total,result.first);
   });
 }
-discoveryActionBtn.addEventListener('click',doDiscoveryAction);
+discoveryActionBtn.addEventListener('click',()=>doDiscoveryAction());
 let landmarkQueue=[],landmarkIndex=0;
 function openLandmark(index){
   const item=landmarkQueue[index];if(!item)return;
@@ -612,6 +684,7 @@ huntActionBtn.addEventListener('click',doMeetAnimal);
 discoveryNext.addEventListener('click',()=>{if(landmarkQueue.length)openLandmark((landmarkIndex+1)%landmarkQueue.length)});
 socket.on('snapshot',snap=>{
   if(!joined)return;
+  lastSnapshotAt=performance.now();connectionReady=true;net.textContent='● 서버 연결';net.className='good';
   serverSelf=snap.you;sessionMode=snap.sessionMode||sessionMode;roomType=snap.roomType||roomType;roomCodeCurrent=snap.roomLabel||roomCodeCurrent;syncClassClock(snap.classGameMinutes);
   applyMissionState(snap.mission,snap.progress,false);missionInteraction=snap.interaction||null;cityInteraction=snap.cityInteraction||null;discoveryInteraction=snap.discoveryInteraction||null;huntInteraction=snap.huntInteraction||null;landmarkQueue=Array.isArray(snap.cityLandmarks)?snap.cityLandmarks:[];portInteraction=snap.portInteraction||null;applyClassSettings(snap.settings);
   const previousMode=mode;mode=serverSelf.mode;if(previousMode!==mode){showToast(mode==='sea'?'배에 올라 항해를 시작했습니다.':mode==='land'?'탐험대가 육상 탐험을 시작했습니다.':'도시에 들어왔습니다.','system')}
@@ -643,11 +716,12 @@ modeBackBtn.addEventListener('click',()=>{entryMode='';chosenRoomType='';joinFie
 const hostTokenKey=code=>`uw3-host-${code}`;
 function readHostToken(code){try{return sessionStorage.getItem(hostTokenKey(code))||''}catch{return ''}}
 function saveHostToken(code,token){try{sessionStorage.setItem(hostTokenKey(code),token)}catch{}}
-function finishJoin(result){
-  joined=true;resetMapZoomForDevice();sessionMode=result.sessionMode||'competition';roomType=result.roomType||'race';isHost=!!result.isHost;roomCodeCurrent=result.roomLabel||`방 ${result.roomCode||''}`;hostCode.textContent=result.roomCode||'';self={...result.self};serverSelf={...result.self};syncClassClock(result.classGameMinutes);mode=result.self.mode;applyMissionState(result.mission,result.progress,false);missionInteraction=result.interaction||null;cityInteraction=result.cityInteraction||null;portInteraction=result.portInteraction||null;applyClassSettings(result.settings||{});join.style.display='none';joinError.textContent='';
-  try{localStorage.setItem('uw3-room',result.roomCode||'')}catch{}guideHistory.length=0;
+function finishJoin(result,resumed=false){
+  resumeToken=result.resumeToken||resumeToken;connectionReady=true;lastSnapshotAt=performance.now();net.textContent='● 서버 연결';net.className='good';remote.clear();
+  joined=true;if(!resumed)resetMapZoomForDevice();sessionMode=result.sessionMode||'competition';roomType=result.roomType||'race';isHost=!!result.isHost;roomCodeCurrent=result.roomLabel||`방 ${result.roomCode||''}`;hostCode.textContent=result.roomCode||'';self={...result.self};serverSelf={...result.self};syncClassClock(result.classGameMinutes);mode=result.self.mode;applyMissionState(result.mission,result.progress,false);missionInteraction=result.interaction||null;cityInteraction=result.cityInteraction||null;portInteraction=result.portInteraction||null;discoveryInteraction=result.discoveryInteraction||null;huntInteraction=result.huntInteraction||null;landmarkQueue=result.cityLandmarks||[];applyClassSettings(result.settings||{});join.style.display='none';joinError.textContent='';
+  try{localStorage.setItem('uw3-room',result.roomCode||'')}catch{}if(!resumed)guideHistory.length=0;
   nearbyGroup.hidden=roomType==='free';
-  showToast(isHost?`방을 만들었습니다. 방번호 ${result.roomCode}`:`방에 들어왔습니다. 방번호 ${result.roomCode}`,'good');showToast('상단에서 날짜·위치·바람·해류 영향을 확인하세요.','system');updateHostBar();applyModeUI();sendInput();
+  if(!resumed){showToast(isHost?`방을 만들었습니다. 방번호 ${result.roomCode}`:`방에 들어왔습니다. 방번호 ${result.roomCode}`,'good');showToast('바람·해류는 상단 ‘정보’에서 확인하세요.','system')}updateHostBar();applyModeUI();sendInput();
 }
 function joinRoom(roomCode,name){
   socket.emit('joinClass',{roomCode,name,hostToken:readHostToken(roomCode)},result=>{if(!result?.ok){joinError.textContent=result?.error||'입장하지 못했습니다.';return}finishJoin(result)});
@@ -681,7 +755,6 @@ function sendInput(){if(canTravelNow())socket.emit('input',keys)}
 // 키를 누르고 있는 동안에는 짧게 되풀이해 보내고, 다시 붙었을 때도 한 번 보낸다.
 function anyKeyHeld(){return !!(keys.up||keys.down||keys.left||keys.right)}
 setInterval(()=>{if(joined&&anyKeyHeld())sendInput()},250);
-socket.on('connect',()=>{if(joined&&anyKeyHeld())sendInput()});
 function setDir(dir,on){if(!canTravelNow()||(mode!=='sea'&&mode!=='land'))return;if(dir==='stop'){clearKeys();return}keys[dir]=on;sendInput()}
 for(const b of document.querySelectorAll('#pad button[data-dir]')){
   const dir=b.dataset.dir;if(dir==='stop'){b.addEventListener('click',()=>setDir('stop',true));continue}
@@ -690,12 +763,18 @@ for(const b of document.querySelectorAll('#pad button[data-dir]')){
 }
 const keyMap={ArrowUp:'up',w:'up',W:'up',ArrowDown:'down',s:'down',S:'down',ArrowLeft:'left',a:'left',A:'left',ArrowRight:'right',d:'right',D:'right'};
 addEventListener('keydown',e=>{
-  if(finalQuizOpen())return;
+  if(finalQuizOpen()||e.composedPath().some(node=>node.matches?.('input,textarea,select,button,summary,[contenteditable]')))return;
   if(keyMap[e.key]){e.preventDefault();if(!keys[keyMap[e.key]])setDir(keyMap[e.key],true)}
-  if(e.key==='Enter'||e.key==='e'||e.key==='E'){if(missionInteraction?.canInteract)doMissionOrPortAction();else if(cityInteraction?.canUse)doCityAction();else if(portInteraction?.canUse!==false&&portInteraction)doMissionOrPortAction()}
+  if(e.key==='Enter'||e.key==='e'||e.key==='E'){if(missionInteraction?.canInteract)doMissionOrPortAction();else if(cityInteraction?.canUse)doCityAction();else if(portInteraction?.canUse!==false&&portInteraction)doMissionOrPortAction();else if(huntInteraction?.withinReach)doMeetAnimal();else if(discoveryInteraction?.canUse!==false)doDiscoveryAction()}
 });
 addEventListener('keyup',e=>{if(keyMap[e.key]){e.preventDefault();setDir(keyMap[e.key],false)}});
 canvas.addEventListener('pointerdown',e=>{if(!canTravelNow()||(mode!=='sea'&&mode!=='land')||!self)return;const r=canvas.getBoundingClientRect();
+  const hit=(x,y,radius=24)=>{const point=screenPoint(x,y,innerWidth,innerHeight);return Math.hypot(point.x-(e.clientX-r.left),point.y-(e.clientY-r.top))<=radius};
+  if(mode==='land'&&portInteraction?.kind==='shore'&&hit(serverSelf.shipAnchorX,serverSelf.shipAnchorY)){doMissionOrPortAction();return}
+  const city=cityInteraction?.canUse?cityCatalogById.get(cityInteraction.placeId):null;
+  if(city?.cityPoint&&hit(city.cityPoint.x,city.cityPoint.y,32)){doCityAction();return}
+  const discovery=discoveryPoints.find(item=>item.id===discoveryInteraction?.id&&hit(item.x,item.y));
+  if(discovery){doDiscoveryAction(discovery);return}
   let x,y;
   if(globeReady){const ll=globeMap.unproject([e.clientX-r.left,e.clientY-r.top]);x=((ll.lng+180)/360)*SPAN;y=Math.max(TS,Math.min(MAP_H-TS,((90-ll.lat)/180)*MAP_H))}
   else{const view=viewPosition();x=view.x+(e.clientX-r.left-r.width/2)/zoom;y=view.y+(e.clientY-r.top-r.height/2)/zoom}
@@ -1084,7 +1163,7 @@ function loop(t){
 }
 requestAnimationFrame(loop);
 setInterval(()=>{if(joined&&self)updateHud()},100);
-setInterval(()=>{if(joined&&performance.now()-lastSnapshotAt>3000){net.textContent='● 동기화 지연';net.className='bad'}},1000);
+setInterval(()=>{if(joined&&performance.now()-lastSnapshotAt>3000){connectionReady=false;for(const k in keys)keys[k]=false;net.textContent='● 연결 복구 중';net.className='bad';restoreVoyagerConnection()}},1000);
 </script>
 </body>
 </html>

@@ -293,7 +293,7 @@ document.addEventListener('DOMContentLoaded', () => {
         stageCaption.textContent = '음판을 치면 떨림이 시작됩니다.';
     }));
     predictionButtons.forEach(button => button.addEventListener('click', () => {
-        prediction = button.dataset.prediction;
+        prediction = button.dataset.prediction; window.scienceInvalidatePrediction?.();
         predictionButtons.forEach(item => item.classList.toggle('selected', item === button));
     }));
     strengthRange.addEventListener('input', () => {

@@ -1,0 +1,37 @@
+{
+  "slug": "homeostasis",
+  "engine": "chromium",
+  "modes": [
+    "glucose",
+    "temp",
+    "water"
+  ],
+  "cases": 18,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__homeoModel",
+      "methods": [
+        "MEALS",
+        "BODIES",
+        "WEATHERS",
+        "STATES",
+        "INTAKES",
+        "state",
+        "analyse",
+        "render",
+        "glucoseRun",
+        "heatRun",
+        "waterRun",
+        "runSeconds",
+        "setMode",
+        "set",
+        "setProgress",
+        "runToEnd",
+        "tick",
+        "finish"
+      ]
+    }
+  ]
+}

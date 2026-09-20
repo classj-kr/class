@@ -270,7 +270,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     temperatureRange.addEventListener('input', () => { syncControls(); clearResult(); });
     predictionButtons.forEach(button => button.addEventListener('click', () => {
-        prediction = button.dataset.prediction;
+        prediction = button.dataset.prediction; window.scienceInvalidatePrediction?.();
         predictionButtons.forEach(item => item.classList.toggle('selected', item === button));
     }));
     checkButton.addEventListener('click', checkState);

@@ -192,6 +192,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const PRED_SYN = [{ value: 'normal', label: '평소처럼 짧게 한 번 반응' }, { value: 'none', label: '반응하지 않는다' }, { value: 'long', label: '반응이 오래 이어진다' }];
 
     function buildPrediction() {
+        state.prediction = null;
+        window.scienceInvalidatePrediction?.();
         const list = state.mode === 'spike' ? PRED_SPIKE : state.mode === 'conduct' ? PRED_CONDUCT : PRED_SYN;
         predictionLegend.textContent = state.mode === 'spike' ? `${STIMS[state.stim].hint} 전류를 ${DURS[state.dur].label.replace('짧게 ', '').replace('길게 ', '')} 동안 흘리면?`
             : state.mode === 'conduct' ? `${AXONS[state.axon].label} 축삭에서 흥분이 1 m를 가는 데 걸리는 시간은?`
@@ -199,7 +201,7 @@ document.addEventListener('DOMContentLoaded', () => {
         predictionArea.className = 'prediction-buttons three';
         predictionArea.innerHTML = list.map(o => `<button type="button" data-prediction="${o.value}">${o.label}</button>`).join('');
         predictionArea.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
-            state.prediction = button.dataset.prediction;
+            state.prediction = button.dataset.prediction; window.scienceInvalidatePrediction?.();
             predictionArea.querySelectorAll('button').forEach(b => b.classList.toggle('selected', b === button));
         }));
     }

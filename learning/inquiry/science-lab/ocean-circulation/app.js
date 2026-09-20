@@ -287,7 +287,7 @@ document.querySelectorAll('[data-hemi]').forEach(b => b.addEventListener('click'
     render();
 }));
 document.querySelectorAll('[data-prediction]').forEach(b => b.addEventListener('click', () => {
-    state.prediction = b.dataset.prediction; markSelected('[data-prediction]', 'prediction', state.prediction);
+    state.prediction = b.dataset.prediction; state.checked = false; window.scienceInvalidatePrediction?.(); markSelected('[data-prediction]', 'prediction', state.prediction);
 }));
 $('latRange').addEventListener('input', e => {
     state.lat = Number(e.target.value);

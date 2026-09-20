@@ -157,6 +157,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const PRED_D = [{ value: 'sink', label: '가라앉음 (더 무거움)' }, { value: 'same', label: '그 자리 (같음)' }, { value: 'float', label: '떠오름 (더 가벼움)' }];
 
     function buildPrediction() {
+        state.prediction = null;
+        window.scienceInvalidatePrediction?.();
         const list = state.mode === 'profile' ? PRED_P : state.mode === 'salinity' ? PRED_S : PRED_D;
         predictionLegend.textContent = state.mode === 'profile' ? `${REGIONS[state.region].label} ${SEASONS[state.season].label} 바다의 수온약층은?`
             : state.mode === 'salinity' ? `바닷물 1 kg(35 ‰)에 ${EVENTS[state.event].when} 염분은?`
@@ -164,7 +166,7 @@ document.addEventListener('DOMContentLoaded', () => {
         predictionArea.className = 'prediction-buttons three';
         predictionArea.innerHTML = list.map(o => `<button type="button" data-prediction="${o.value}">${o.label}</button>`).join('');
         predictionArea.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
-            state.prediction = button.dataset.prediction;
+            state.prediction = button.dataset.prediction; window.scienceInvalidatePrediction?.();
             predictionArea.querySelectorAll('button').forEach(b => b.classList.toggle('selected', b === button));
         }));
     }

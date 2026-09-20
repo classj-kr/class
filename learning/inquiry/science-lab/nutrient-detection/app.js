@@ -190,6 +190,8 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
 
     function buildPrediction() {
+        state.prediction = null;
+        window.scienceInvalidatePrediction?.();
         const list = state.mode === 'reagent' ? PRED_R : state.mode === 'benedict' ? PRED_B : PRED_A;
         predictionLegend.textContent = state.mode === 'reagent'
             ? `네 시험관에 ${REAGENTS[state.reagent].full}${eul(REAGENTS[state.reagent].full)} 넣${state.reagent === 'benedict' ? (state.heat === 'yes' ? '고 가열하' : '고 가열하지 않으') : '으'}면?`
@@ -199,7 +201,7 @@ document.addEventListener('DOMContentLoaded', () => {
         predictionArea.className = `prediction-buttons ${list.length === 5 ? 'five' : 'three'}`;
         predictionArea.innerHTML = list.map(o => `<button type="button" data-prediction="${o.value}">${o.label}</button>`).join('');
         predictionArea.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
-            state.prediction = button.dataset.prediction;
+            state.prediction = button.dataset.prediction; window.scienceInvalidatePrediction?.();
             predictionArea.querySelectorAll('button').forEach(b => b.classList.toggle('selected', b === button));
         }));
     }

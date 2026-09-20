@@ -1,0 +1,11 @@
+{
+  "slug": "state-change",
+  "engine": "chromium",
+  "modes": [
+    "initial"
+  ],
+  "cases": 4,
+  "errors": [],
+  "issues": [],
+  "models": []
+}

@@ -365,7 +365,7 @@ document.querySelectorAll('[data-animal]').forEach(b => b.addEventListener('clic
     fitRange(); render();
 }));
 document.querySelectorAll('[data-prediction]').forEach(b => b.addEventListener('click', () => {
-    state.prediction = b.dataset.prediction; markSelected('[data-prediction]', 'prediction', state.prediction);
+    state.prediction = b.dataset.prediction; state.checked = false; window.scienceInvalidatePrediction?.(); markSelected('[data-prediction]', 'prediction', state.prediction);
 }));
 $('stageRange').addEventListener('input', e => {
     state.step = Number(e.target.value);

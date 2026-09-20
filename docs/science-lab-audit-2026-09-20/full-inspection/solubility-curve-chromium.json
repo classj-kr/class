@@ -1,0 +1,30 @@
+{
+  "slug": "solubility-curve",
+  "engine": "chromium",
+  "modes": [
+    "initial"
+  ],
+  "cases": 13,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__curveModel",
+      "methods": [
+        "SOLUTES",
+        "TEMPS",
+        "WATER_G",
+        "solubility",
+        "analyse",
+        "setSolute",
+        "setAdded",
+        "setTemp",
+        "setCool",
+        "added",
+        "temp",
+        "coolTemp",
+        "render"
+      ]
+    }
+  ]
+}

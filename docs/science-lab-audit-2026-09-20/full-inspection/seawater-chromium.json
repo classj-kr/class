@@ -1,0 +1,37 @@
+{
+  "slug": "seawater",
+  "engine": "chromium",
+  "modes": [
+    "initial"
+  ],
+  "cases": 13,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__seaModel",
+      "methods": [
+        "RHO0",
+        "T0",
+        "S0",
+        "ALPHA",
+        "BETA",
+        "MEAN_RHO",
+        "DEEP_T",
+        "THERMO_M",
+        "MAX_DEPTH",
+        "SALTS",
+        "PLACES",
+        "analyse",
+        "tempAt",
+        "render",
+        "check",
+        "setPlace",
+        "setTemp",
+        "setSalt",
+        "setWind",
+        "getPlace"
+      ]
+    }
+  ]
+}

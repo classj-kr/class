@@ -256,7 +256,7 @@ document.querySelectorAll('[data-size]').forEach(b => b.addEventListener('click'
     state.size = Number(b.dataset.size); markSelected('[data-size]', 'size', state.size); render();
 }));
 document.querySelectorAll('[data-prediction]').forEach(b => b.addEventListener('click', () => {
-    state.prediction = b.dataset.prediction; markSelected('[data-prediction]', 'prediction', state.prediction);
+    state.prediction = b.dataset.prediction; state.checked = false; window.scienceInvalidatePrediction?.(); markSelected('[data-prediction]', 'prediction', state.prediction);
 }));
 $('runBtn').addEventListener('click', () => {
     if (state.running) { state.running = false; $('runBtn').textContent = '저울에 올리고 물에 넣기'; return; }
