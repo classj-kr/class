@@ -29,4 +29,5 @@ for(const [slug,m]of Object.entries(map))edit(lab+slug+'/index.html',s=>{
  if(titles[slug])s=s.replace(/<h1>.*?<\/h1>/,`<h1>${m.title}</h1>`);
  return cache(s,lab+slug);
 });
+edit(lab+'exam-review.html',s=>cache(s,lab));
 apply();

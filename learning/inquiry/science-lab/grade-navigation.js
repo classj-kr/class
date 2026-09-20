@@ -12,6 +12,7 @@
   document.querySelectorAll('.topic-row,.subject-section').forEach(section=>{section.hidden=![...section.querySelectorAll('.level-entry')].some(a=>!a.hidden);});
   document.querySelector('.catalog').classList.toggle('grade-filtered',grade!=='전체');
   buttons.forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.grade===grade)));
+  const review=document.getElementById('examReviewLink');if(review){review.hidden=['고2','고3'].includes(grade);review.href='exam-review.html'+(grade!=='전체'?'?grade='+encodeURIComponent(grade):'');}
   const url=new URL(location.href);
   grade==='전체'?url.searchParams.delete('grade'):url.searchParams.set('grade',grade);
   // Old shared URLs must not silently apply the removed course filter.
