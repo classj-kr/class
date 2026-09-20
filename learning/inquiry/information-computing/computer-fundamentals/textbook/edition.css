@@ -74,3 +74,4 @@ body.computer-edition>.app-bar,body.computer-edition>.lesson-shell,body.computer
 body.computer-edition{display:flow-root;min-height:100vh}
 .edition-page,.edition-reading p{font-weight:400}
 .edition-lab .program-flow .flow-branch{transform:none;font-size:inherit;text-align:left;line-height:inherit;min-height:83px}
+.edition-header h1{min-width:0;overflow-wrap:anywhere}

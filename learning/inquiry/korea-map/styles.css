@@ -285,8 +285,7 @@ dialog::backdrop { background: rgba(9, 30, 36, 0.68); backdrop-filter: blur(3px)
 .practice-dialog:not([open]) { display: none; }
 .question-body { min-height: 0; max-height: calc(100dvh - 230px); display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(310px, 0.88fr); }
 .question-copy { min-width: 0; min-height: 0; padding: 22px 24px 18px; overflow-y: auto; }
-.difficulty-badge { display: inline-flex; align-items: center; min-height: 28px; padding: 3px 9px; border-radius: 999px; color: #815000; background: var(--accent-soft); font-size: 12px; font-weight: 900; }
-.question-copy h2 { margin: 10px 0 14px; font-size: clamp(18px, 2vw, 23px); line-height: 1.45; letter-spacing: -0.035em; }
+.question-copy h2 { margin: 0 0 14px; font-size: clamp(18px, 2vw, 23px); line-height: 1.45; letter-spacing: -0.035em; }
 .stimulus-card { margin: 0 0 14px; padding: 12px 14px; border-left: 4px solid var(--accent); border-radius: 8px; color: #38545a; background: #f4f7f5; font-size: 13px; line-height: 1.55; }
 .stimulus-title { margin-bottom: 9px; color: var(--deep); font-weight: 900; }
 .stimulus-table-wrap { overflow-x: auto; border: 1px solid #c8d7d3; border-radius: 8px; background: #fff; }

@@ -1,5 +1,5 @@
 {
-  "date": "2026-09-20T13:10:05.475Z",
+  "date": "2026-09-20T16:33:46.435Z",
   "results": [
     {
       "id": "a02",
@@ -2571,12 +2571,27 @@
           "width": 390,
           "scrollWidth": 390,
           "top": 104.1875
+        },
+        {
+          "view": "apply",
+          "width": 390,
+          "scrollWidth": 390,
+          "top": 104.1875
+        },
+        {
+          "view": "check",
+          "width": 390,
+          "scrollWidth": 390,
+          "top": 104.1875
         }
       ],
-      "fontChecks": [],
-      "passed": false,
-      "error": "UNKNOWN: unknown error, open 'E:\\webprojects\\class\\docs\\computer-edition\\g02-lab-390.png'",
-      "errors": []
+      "fontChecks": [
+        ".edition-reading p",
+        ".edition-question legend",
+        ".edition-option span",
+        ".edition-feedback"
+      ],
+      "passed": true
     },
     {
       "id": "g03",
@@ -3767,12 +3782,7 @@
       "passed": true
     }
   ],
-  "failures": [
-    {
-      "id": "g02",
-      "error": "UNKNOWN: unknown error, open 'E:\\webprojects\\class\\docs\\computer-edition\\g02-lab-390.png'"
-    }
-  ],
+  "failures": [],
   "firstLessonRoute": true,
   "storageChecks": true
 }

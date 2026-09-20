@@ -37,8 +37,13 @@ async function snapshot(page) {
   return page.evaluate(()=>{
     const canvas=document.querySelector('.geography-flow-canvas');
     const pixels=canvas.getContext('2d').getImageData(0,0,canvas.width,canvas.height).data;
-    let hash=0,painted=0; for(let i=3;i<pixels.length;i+=4) {if(pixels[i])painted++;hash=(Math.imul(hash,31)+pixels[i])|0;}
-    return {...canvas.dataset,hidden:canvas.hidden,hash,painted};
+    let hash=0,alphaHash=0,painted=0;
+    for(let i=0;i<pixels.length;i+=4) {
+      if(pixels[i+3])painted++;
+      alphaHash=(Math.imul(alphaHash,31)+pixels[i+3])|0;
+      for(let channel=0;channel<4;channel++) hash=(Math.imul(hash,31)+pixels[i+channel])|0;
+    }
+    return {...canvas.dataset,hidden:canvas.hidden,hash,alphaHash,painted};
   });
 }
 (async()=>{
@@ -61,8 +66,17 @@ async function snapshot(page) {
     await page.waitForFunction(()=>document.querySelector('.geography-flow-canvas')?.dataset.tracks==='13');
     const first=await snapshot(page); await delay(450); const next=await snapshot(page);
     assert.ok(Number(next.phase)>Number(first.phase)); assert.notEqual(next.hash,first.hash); assert.ok(next.painted>500);
+    assert.equal(next.alphaHash,first.alphaHash,'only water colour moves; the river silhouette must stay fixed');
+    assert.equal(next.riverStyle,'continuous-water');
+    assert.equal(next.particles,'0','no moving capsule/arrow particles on rivers');
+    assert.ok(Number(next.waterSamples)>0);
     report.movement={first,next};
     await page.screenshot({path:path.join(output,'terrain-flow.png')});
+    if(process.env.KOREA_FLOW_RECORD==='1') {
+      const crop=await page.$eval('#map',el=>{const box=el.getBoundingClientRect();return {x:Math.ceil(box.x),y:Math.ceil(box.y),width:Math.floor(box.width),height:Math.floor(box.height)};});
+      const recorder=await page.screencast({path:path.join(output,'continuous-water.webm'),crop,fps:20,quality:18,ffmpegPath:process.env.KOREA_FFMPEG||'ffmpeg'});
+      await delay(6500);await recorder.stop();
+    }
     await page.click('#scenePause'); const paused=await snapshot(page); await delay(350);
     assert.equal((await snapshot(page)).hash,paused.hash); assert.equal((await snapshot(page)).phase,paused.phase);
     await page.click('#scenePause');

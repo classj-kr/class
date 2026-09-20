@@ -1,0 +1,60 @@
+{
+  "lessons": 1,
+  "report": [
+    {
+      "id": "f02",
+      "states": [
+        {
+          "width": 1440,
+          "state": "0"
+        },
+        {
+          "width": 1440,
+          "state": "1"
+        },
+        {
+          "width": 1440,
+          "state": "2"
+        },
+        {
+          "width": 768,
+          "state": "0"
+        },
+        {
+          "width": 768,
+          "state": "1"
+        },
+        {
+          "width": 768,
+          "state": "2"
+        },
+        {
+          "width": 390,
+          "state": "0"
+        },
+        {
+          "width": 390,
+          "state": "1"
+        },
+        {
+          "width": 390,
+          "state": "2"
+        },
+        {
+          "width": 320,
+          "state": "0"
+        },
+        {
+          "width": 320,
+          "state": "1"
+        },
+        {
+          "width": 320,
+          "state": "2"
+        }
+      ],
+      "clipping": []
+    }
+  ],
+  "errors": []
+}

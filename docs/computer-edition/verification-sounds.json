@@ -1,0 +1,328 @@
+{
+  "passed": 38,
+  "report": [
+    {
+      "label": "H05: no answer has no grade sound",
+      "files": [],
+      "oscillators": 0
+    },
+    {
+      "label": "H05: selecting an answer does not grade",
+      "files": [],
+      "oscillators": 0
+    },
+    {
+      "label": "H05: screenshot wrong answer plays error, not summary success",
+      "files": [
+        {
+          "name": "error.ogg",
+          "volume": 0.65,
+          "played": true
+        }
+      ],
+      "oscillators": 0
+    },
+    {
+      "label": "H05: identical wrong retry still plays once",
+      "files": [
+        {
+          "name": "error.ogg",
+          "volume": 0.65,
+          "played": true
+        }
+      ],
+      "oscillators": 0
+    },
+    {
+      "label": "H05: correction plays success",
+      "files": [
+        {
+          "name": "success.ogg",
+          "volume": 0.65,
+          "played": true
+        }
+      ],
+      "oscillators": 0
+    },
+    {
+      "label": "H05: solved question selection is silent",
+      "files": [],
+      "oscillators": 0
+    },
+    {
+      "label": "H05: wrong retry after solving plays error",
+      "files": [
+        {
+          "name": "error.ogg",
+          "volume": 0.65,
+          "played": true
+        }
+      ],
+      "oscillators": 0
+    },
+    {
+      "label": "H05: restored solved record cannot turn a wrong answer into success audio",
+      "files": [
+        {
+          "name": "error.ogg",
+          "volume": 0.65,
+          "played": true
+        }
+      ],
+      "oscillators": 0
+    },
+    {
+      "label": "H05: Enter submits the current correct answer once",
+      "files": [
+        {
+          "name": "success.ogg",
+          "volume": 0.65,
+          "played": true
+        }
+      ],
+      "oscillators": 0
+    },
+    {
+      "label": "H05: adjacent application question correct",
+      "files": [
+        {
+          "name": "success.ogg",
+          "volume": 0.65,
+          "played": true
+        }
+      ],
+      "oscillators": 0
+    },
+    {
+      "label": "H05: adjacent application question wrong",
+      "files": [
+        {
+          "name": "error.ogg",
+          "volume": 0.65,
+          "played": true
+        }
+      ],
+      "oscillators": 0
+    },
+    {
+      "label": "H05: navigation and retained summary do not grade",
+      "files": [],
+      "oscillators": 2
+    },
+    {
+      "label": "H05: unmet lab prerequisite has no grade sound",
+      "files": [],
+      "oscillators": 0
+    },
+    {
+      "label": "H05: lab answer uses the same grading sound",
+      "files": [
+        {
+          "name": "success.ogg",
+          "volume": 0.65,
+          "played": true
+        }
+      ],
+      "oscillators": 0
+    },
+    {
+      "label": "H05: final check wrong",
+      "files": [
+        {
+          "name": "error.ogg",
+          "volume": 0.65,
+          "played": true
+        }
+      ],
+      "oscillators": 0
+    },
+    {
+      "label": "H05: final check correct",
+      "files": [
+        {
+          "name": "success.ogg",
+          "volume": 0.65,
+          "played": true
+        }
+      ],
+      "oscillators": 0
+    },
+    {
+      "label": "H05: site effect volume is respected",
+      "files": [
+        {
+          "name": "error.ogg",
+          "volume": 0.2,
+          "played": true
+        }
+      ],
+      "oscillators": 0
+    },
+    {
+      "label": "H05: muted correct submission stays silent",
+      "files": [],
+      "oscillators": 0
+    },
+    {
+      "label": "H05: stored mute also silences wrong submissions",
+      "files": [],
+      "oscillators": 0
+    },
+    {
+      "label": "A01: no answer has no grade sound",
+      "files": [],
+      "oscillators": 0
+    },
+    {
+      "label": "A01: question 1 selection is silent",
+      "files": [],
+      "oscillators": 0
+    },
+    {
+      "label": "A01: question 1 wrong",
+      "files": [
+        {
+          "name": "error.ogg",
+          "volume": 0.65,
+          "played": true
+        }
+      ],
+      "oscillators": 0
+    },
+    {
+      "label": "A01: question 1 correct",
+      "files": [
+        {
+          "name": "success.ogg",
+          "volume": 0.65,
+          "played": true
+        }
+      ],
+      "oscillators": 0
+    },
+    {
+      "label": "A01: question 2 selection is silent",
+      "files": [],
+      "oscillators": 0
+    },
+    {
+      "label": "A01: question 2 wrong",
+      "files": [
+        {
+          "name": "error.ogg",
+          "volume": 0.65,
+          "played": true
+        }
+      ],
+      "oscillators": 0
+    },
+    {
+      "label": "A01: question 2 correct",
+      "files": [
+        {
+          "name": "success.ogg",
+          "volume": 0.65,
+          "played": true
+        }
+      ],
+      "oscillators": 0
+    },
+    {
+      "label": "A01: question 3 selection is silent",
+      "files": [],
+      "oscillators": 0
+    },
+    {
+      "label": "A01: question 3 wrong",
+      "files": [
+        {
+          "name": "error.ogg",
+          "volume": 0.65,
+          "played": true
+        }
+      ],
+      "oscillators": 0
+    },
+    {
+      "label": "A01: question 3 correct",
+      "files": [
+        {
+          "name": "success.ogg",
+          "volume": 0.65,
+          "played": true
+        }
+      ],
+      "oscillators": 0
+    },
+    {
+      "label": "A01: question 4 selection is silent",
+      "files": [],
+      "oscillators": 0
+    },
+    {
+      "label": "A01: question 4 wrong",
+      "files": [
+        {
+          "name": "error.ogg",
+          "volume": 0.65,
+          "played": true
+        }
+      ],
+      "oscillators": 0
+    },
+    {
+      "label": "A01: question 4 correct",
+      "files": [
+        {
+          "name": "success.ogg",
+          "volume": 0.65,
+          "played": true
+        }
+      ],
+      "oscillators": 0
+    },
+    {
+      "label": "A01: incomplete independent task plays error",
+      "files": [
+        {
+          "name": "error.ogg",
+          "volume": 0.65,
+          "played": true
+        }
+      ],
+      "oscillators": 0
+    },
+    {
+      "label": "A01: #runNumber does not grade from descriptive text",
+      "files": [],
+      "oscillators": 2
+    },
+    {
+      "label": "A01: #saveNumber does not grade from descriptive text",
+      "files": [],
+      "oscillators": 2
+    },
+    {
+      "label": "A01: #closeNumber does not grade from descriptive text",
+      "files": [],
+      "oscillators": 2
+    },
+    {
+      "label": "A01: #openNumber does not grade from descriptive text",
+      "files": [],
+      "oscillators": 2
+    },
+    {
+      "label": "A01: completed independent task plays success",
+      "files": [
+        {
+          "name": "success.ogg",
+          "volume": 0.65,
+          "played": true
+        }
+      ],
+      "oscillators": 0
+    }
+  ],
+  "errors": []
+}

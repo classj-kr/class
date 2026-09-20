@@ -1030,7 +1030,6 @@
     $("#questionProgress").textContent = `${session.index + 1} / ${session.questions.length}`;
     $("#questionProgressBar").style.width = `${(session.index / session.questions.length) * 100}%`;
     $("#questionTopic").textContent = theme.label || "국내 지도";
-    $("#questionDifficulty").textContent = question.essential ? "필수 그림" : question.difficulty === "advanced" ? "확장" : "기본";
     $("#questionTitle").innerHTML = question.prompt;
     renderQuestionStimulus(question);
     $("#answerFeedback").hidden = true;

@@ -1,0 +1,38 @@
+.picture-analogy{margin:20px 0 26px;padding:18px 20px;background:#f1f4eb;border:1px solid #c4d0be;font-family:"KoPubWorld Batang","Batang",serif;color:#263f38}
+.picture-analogy h3{font:700 20px/1.5 "KoPubWorld Batang","Batang",serif;margin:0 0 12px}
+.analogy-controls{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 12px}
+.analogy-controls button{font:14px/1.4 "Malgun Gothic",system-ui,sans-serif!important;min-height:44px;padding:8px 13px;border:1px solid #9aae98;border-radius:5px;background:#fffef9;color:#263f38;cursor:pointer}
+.analogy-controls button[aria-pressed=true]{background:#305d49;color:white;border-color:#305d49}
+.analogy-controls button:focus-visible{outline:3px solid #a46613;outline-offset:3px}
+.analogy-scene{margin:0;padding:0;background:#fffdf6;border:1px solid #d6ddcd;border-radius:4px;overflow:hidden}
+.analogy-scene svg{display:block;width:100%;height:auto;max-height:470px;overflow:hidden}
+.picture-analogy:not([data-part=all]) .analogy-scene svg{height:300px}
+.analogy-muted{opacity:.14}
+.analogy-explanation{padding:15px 0 0}
+.analogy-explanation h4{font:700 17px/1.65 "KoPubWorld Batang","Batang",serif;margin:0 0 5px}
+.analogy-explanation p{font:400 16px/1.85 "KoPubWorld Batang","Batang",serif;margin:0!important;word-break:keep-all;overflow-wrap:anywhere}
+.picture-analogy .analogy-limit{font:400 14px/1.8 "KoPubWorld Batang","Batang",serif;border-top:1px solid #c4d0be;margin:15px 0 0!important;padding-top:12px;color:#49594b}
+.analogy-limit strong{display:block;margin-bottom:3px;color:#305d49}
+.analogy-real-example{margin:18px 0}.analogy-real-example summary{font:16px/1.7 "KoPubWorld Batang","Batang",serif;cursor:pointer;min-height:44px;padding:8px 0}
+@media(max-width:540px){.picture-analogy{padding:14px 12px}.picture-analogy h3{font-size:18px}.analogy-controls{gap:5px}.analogy-controls button{padding:8px 10px;font-size:13px!important}.picture-analogy:not([data-part=all]) .analogy-scene svg{height:270px}.analogy-explanation p{font-size:16px}.analogy-limit{font-size:14px}}
+@media print{.analogy-controls{display:none}.picture-analogy{break-inside:avoid;background:white}}
+
+.picture-analogy .analogy-limit{background:transparent;border:0;border-top:1px solid #c4d0be;border-radius:0;padding:12px 0 0}
+.picture-analogy[data-mobile=true][data-part=all] .analogy-scene svg{max-height:none}
+.life-figure{margin:16px 0 24px;padding:16px 18px;background:#f2f4ec;border:1px solid #c6d2bf;color:#29493e;font-family:"KoPubWorld Batang",Batang,serif}
+.life-figure h3{font:700 20px/1.5 "KoPubWorld Batang",Batang,serif;margin:0 0 10px}
+.life-controls{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 12px}
+.life-controls button{min-height:44px;border:1px solid #91aa96;border-radius:4px;padding:8px 12px;background:#fffdf6;color:#29493e;cursor:pointer;font:14px/1.4 "Malgun Gothic",sans-serif!important}
+.life-controls button[aria-pressed=true]{background:#315d4b;color:#fff}
+.life-controls button:focus-visible,.life-range input:focus-visible{outline:3px solid #ab711f;outline-offset:3px}
+.life-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.life-pair figure{min-width:0;margin:0;background:#fffdf6;border:1px solid #d2ddc9;padding:10px 8px 0}
+.life-pair figcaption{font:700 17px/1.5 "KoPubWorld Batang",Batang,serif;min-height:26px;text-align:center;word-break:keep-all;overflow-wrap:anywhere}
+.life-pair svg{display:block;width:100%;height:auto;max-height:285px;font-family:"KoPubWorld Batang",Batang,serif}
+.life-figure .life-explanation{font:400 16px/1.85 "KoPubWorld Batang",Batang,serif;margin:12px 0 0;word-break:keep-all;overflow-wrap:anywhere}
+.life-figure .life-limit{border-top:1px solid #ccd5c0;padding-top:10px;margin:10px 0 0;font:400 14px/1.8 "KoPubWorld Batang",Batang,serif;color:#4a5a4a;word-break:keep-all;overflow-wrap:anywhere}
+.life-range{display:grid;grid-template-columns:1fr;gap:6px;margin:14px 0 0;font:16px/1.7 "KoPubWorld Batang",Batang,serif}
+.life-range input{width:100%;min-height:36px;accent-color:#315d4b}
+.life-range output{font-variant-numeric:tabular-nums}
+@media(max-width:600px){.life-figure{padding:13px 10px}.life-figure h3{font-size:18px}.life-pair{grid-template-columns:1fr;gap:10px}.life-pair svg{max-height:290px}.life-pair figcaption{font-size:17px}.life-controls button{padding:7px 10px}}
+@media print{.life-controls,.life-range{display:none}.life-figure{background:white;break-inside:avoid}}

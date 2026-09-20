@@ -1224,7 +1224,8 @@
         total: 0,
         perItem: new Map(),
         timer: 0,
-        playTimer: 0
+        playTimer: 0,
+        questionPlaybackEndsAt: 0
     };
 
     let lessonKeyPress = null;
@@ -2486,6 +2487,7 @@
         session.typed = [];
         session.missed = false;
         session.answered = false;
+        session.questionPlaybackEndsAt = 0;
         window.clearTimeout(session.flashTimer);
 
         const asking = question.ask || drill.ask || "";
@@ -2791,8 +2793,11 @@
         els.replayButton.classList.add("playing");
         window.clearTimeout(session.playTimer);
         const span = playback.groups.length * playback.beat * 1000 + 320;
+        // 정답 효과음은 마지막 화음의 여운이 지난 뒤에만 낸다.
+        session.questionPlaybackEndsAt = Date.now() + span;
         session.playTimer = window.setTimeout(() => els.replayButton.classList.remove("playing"), span);
         window.PianoEngine.playSequence(playback.groups, playback.beat).catch(() => {
+            session.questionPlaybackEndsAt = 0;
             els.replayButton.classList.remove("playing");
             els.feedback.textContent = "소리를 낼 수 없습니다. 소리 설정을 확인해 주세요.";
             els.feedback.className = "feedback wrong";
@@ -2890,22 +2895,29 @@
             }));
         }
 
-        if (session.drill.rhythmDrill) {
-            els.feedback.textContent = correct ? "맞았습니다" : "틀렸습니다";
-        } else {
-            els.feedback.textContent = correct
-                ? "맞았습니다 · " + answerText(target)
-                : "정답은 " + answerText(target) + "입니다";
-        }
-        els.feedback.className = "feedback " + (correct ? "right" : "wrong");
+        const showFeedback = () => {
+            if (session.drill.rhythmDrill) {
+                els.feedback.textContent = correct ? "맞았습니다" : "틀렸습니다";
+            } else {
+                els.feedback.textContent = correct
+                    ? "맞았습니다 · " + answerText(target)
+                    : "정답은 " + answerText(target) + "입니다";
+            }
+            els.feedback.className = "feedback " + (correct ? "right" : "wrong");
+
+            if (correct) session.timer = window.setTimeout(nextQuestion, 1100);
+            else {
+                els.nextButton.hidden = false;
+                els.nextButton.focus({ preventScroll: true });
+            }
+        };
 
         updateScore();
-
-        if (correct) session.timer = window.setTimeout(nextQuestion, 1100);
-        else {
-            els.nextButton.hidden = false;
-            els.nextButton.focus({ preventScroll: true });
-        }
+        // 정답 문구의 변경이 공통 "띵동"을 울린다. 화음이 끝난 뒤 문구를
+        // 바꿔서 두 소리가 겹치지 않게 한다. 오답 피드백은 즉시 보여 준다.
+        const feedbackDelay = correct ? Math.max(0, session.questionPlaybackEndsAt - Date.now()) : 0;
+        if (feedbackDelay) session.timer = window.setTimeout(showFeedback, feedbackDelay);
+        else showFeedback();
     }
 
     function answerText(item) {

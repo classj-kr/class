@@ -7,6 +7,11 @@
       this.motion = matchMedia("(prefers-reduced-motion: reduce)");
       this._tick = this.tick.bind(this); this._reset = this.reset.bind(this);
       this._visibility = this.refresh.bind(this);
+      this.waterPalette = Array.from({length:32}, (_,index) => {
+        const light = index / 31;
+        return `rgb(${Math.round(8+76*light)},${Math.round(126+77*light)},${Math.round(175+43*light)})`;
+      });
+      this.waterBuckets = this.waterPalette.map(() => []);
     },
     onAdd(map) {
       if (!map.getPane("geographyFlow")) {
@@ -60,11 +65,32 @@
       this.canvas.style.width = size.x + "px"; this.canvas.style.height = size.y + "px";
       L.DomUtil.setPosition(this.canvas, map.containerPointToLayerPoint([0,0]));
       this.ctx.setTransform(ratio,0,0,ratio,0,0);
+      this.waterPath = new Path2D();
+      const waterBounds = L.bounds([-3,-3],size.add([3,3]));
       this.projected = this.tracks.map(track => {
         const points = L.LineUtil.simplify(track.coordinates.map(([lng,lat]) => map.latLngToContainerPoint([lat,lng])), .5);
         const distances = [0];
         for (let i=1;i<points.length;i++) distances.push(distances[i-1] + points[i].distanceTo(points[i-1]));
-        return { ...track, points, distances, length: distances.at(-1) };
+        const waterPieces = [];
+        if (track.kind === "river") {
+          for (let i=1;i<points.length;i++) {
+            const clipped = L.LineUtil.clipSegment(points[i-1],points[i],waterBounds,false,true);
+            if (!clipped) continue;
+            const [a,b] = clipped, length = a.distanceTo(b);
+            if (!length) continue;
+            this.waterPath.moveTo(a.x,a.y); this.waterPath.lineTo(b.x,b.y);
+            const start = distances[i-1]+a.distanceTo(points[i-1]);
+            // Cache short colour samples on the FIXED channel, not moving capsule shapes.
+            const divisions = Math.ceil(length/4);
+            for (let part=0;part<divisions;part++) {
+              const from=part/divisions, to=(part+1)/divisions;
+              waterPieces.push({ ax:a.x+(b.x-a.x)*from, ay:a.y+(b.y-a.y)*from,
+                bx:a.x+(b.x-a.x)*to, by:a.y+(b.y-a.y)*to,
+                distance:start+length*(from+to)/2 });
+            }
+          }
+        }
+        return { ...track, points, distances, waterPieces, length: distances.at(-1) };
       }).filter(track => track.length > 1);
       this.dirty = false;
     },
@@ -76,45 +102,79 @@
       const t=(at-track.distances[low-1])/(track.distances[low]-track.distances[low-1] || 1);
       return { x:a.x+(b.x-a.x)*t, y:a.y+(b.y-a.y)*t, angle:Math.atan2(b.y-a.y,b.x-a.x) };
     },
-    draw() {
-      if (this.dirty) this.project();
+    drawWater() {
+      const ctx=this.ctx;
+      this.waterBuckets.forEach(bucket => { bucket.length=0; });
+      let samples=0;
+      for (const track of this.projected) {
+        if (track.kind !== "river") continue;
+        for (const piece of track.waterPieces) {
+          // Broad, smooth colour waves travel downstream. No heads, tails, outlines or yellow beads.
+          const wave = .5+.5*Math.cos((piece.distance-this.seconds*18)*Math.PI*2/120);
+          const light = track.selected ? .16+.84*wave : wave;
+          this.waterBuckets[Math.round(light*31)].push(piece); samples++;
+        }
+      }
+      if (!samples) return 0;
+      ctx.save(); ctx.globalAlpha=1; ctx.lineCap="round"; ctx.lineJoin="round";
+      // The entire painted footprint stays still and <= 1 CSS pixel wide, inside the blue river.
+      ctx.lineWidth=Math.min(1,.72+Math.max(0,this._map.getZoom()-6)*.07);
+      ctx.strokeStyle=this.waterPalette[0]; ctx.stroke(this.waterPath);
+      // Colour is clipped to that fixed footprint, including the anti-aliased edges.
+      ctx.globalCompositeOperation="source-atop"; ctx.lineWidth=4;
+      this.waterBuckets.forEach((pieces,index) => {
+        if (!pieces.length) return;
+        ctx.beginPath();
+        for (const piece of pieces) { ctx.moveTo(piece.ax,piece.ay); ctx.lineTo(piece.bx,piece.by); }
+        ctx.strokeStyle=this.waterPalette[index]; ctx.stroke();
+      });
+      ctx.restore(); return samples;
+    },
+    drawWind() {
       const ctx=this.ctx, size=this.size;
-      ctx.clearRect(0,0,size.x,size.y);
       let count=0; const limit=size.x<600 ? 180 : 420;
       for (const track of this.projected) {
-        const wind=track.kind==="wind";
-        const spacing=wind ? 82 : 66;
-        const offset=(this.seconds*(wind?34:24))%spacing;
-        // Keep an entire track continuous. All position samples follow its ordered coordinates.
+        if (track.kind !== "wind") continue;
+        const spacing=82;
+        const offset=(this.seconds*34)%spacing;
         for (let distance=offset+12;distance<track.length;distance+=spacing) {
           const head=this.sample(track,distance);
           if (head.x < -35 || head.y < -35 || head.x>size.x+35 || head.y>size.y+35) continue;
           if (++count>limit) break;
           ctx.save();
-          const color=wind ? (track.season==="summer"?"#efffc8":"#effcff") : track.selected?"#fff6a1":"#c8faff";
-          const edge=wind ? (track.season==="summer"?"#456a2d":"#306280") : "#08699a";
+          const color=track.season==="summer"?"#efffc8":"#effcff";
+          const edge=track.season==="summer"?"#456a2d":"#306280";
           ctx.lineCap="round"; ctx.lineJoin="round";
-          for (const lane of (wind?[-4,0,4]:[0])) {
+          for (const lane of [-4,0,4]) {
             ctx.beginPath();
-            for(let back=wind?32:20;back>=0;back-=4) {
+            for(let back=32;back>=0;back-=4) {
               const point=this.sample(track,distance-back);
               const x=point.x-Math.sin(point.angle)*lane, y=point.y+Math.cos(point.angle)*lane;
-              if(back===(wind?32:20)) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+              if(back===32) ctx.moveTo(x,y); else ctx.lineTo(x,y);
             }
-            ctx.strokeStyle=edge; ctx.lineWidth=wind?4:5; ctx.globalAlpha=.5; ctx.stroke();
-            ctx.strokeStyle=color; ctx.lineWidth=wind?2:2.7; ctx.globalAlpha=wind?.9:1; ctx.stroke();
+            ctx.strokeStyle=edge; ctx.lineWidth=4; ctx.globalAlpha=.5; ctx.stroke();
+            ctx.strokeStyle=color; ctx.lineWidth=2; ctx.globalAlpha=.9; ctx.stroke();
           }
           ctx.translate(head.x,head.y); ctx.rotate(head.angle);
           ctx.beginPath();ctx.moveTo(-5,-3);ctx.lineTo(1,0);ctx.lineTo(-5,3);
-          ctx.strokeStyle=color;ctx.lineWidth=wind?2.1:2.4;ctx.globalAlpha=1;ctx.stroke();
+          ctx.strokeStyle=color;ctx.lineWidth=2.1;ctx.globalAlpha=1;ctx.stroke();
           ctx.restore();
         }
         if(count>limit) break;
       }
+      return Math.min(count,limit);
+    },
+    draw() {
+      if (this.dirty) this.project();
+      this.ctx.clearRect(0,0,this.size.x,this.size.y);
+      const waterSamples=this.drawWater();
+      const windParticles=this.drawWind();
       this.frames++;
       this.canvas.dataset.frames=String(this.frames);
       this.canvas.dataset.phase=this.seconds.toFixed(3);
-      this.canvas.dataset.particles=String(Math.min(count,limit));
+      this.canvas.dataset.particles=String(windParticles);
+      this.canvas.dataset.waterSamples=String(waterSamples);
+      this.canvas.dataset.riverStyle="continuous-water";
       this.canvas.dataset.tracks=String(this.projected.length);
       this.canvas.dataset.state=this.running()?"running":"paused";
     }

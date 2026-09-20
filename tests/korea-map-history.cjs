@@ -9,6 +9,23 @@ const app = path.join(root, 'learning/inquiry/korea-map');
 const context = { window: {} };
 vm.runInNewContext(fs.readFileSync(path.join(app, 'data/history-data.js'), 'utf8'), context);
 const scenes = context.window.KOREA_HISTORY.scenes;
+const boundaryData = JSON.parse(fs.readFileSync(path.join(app,'history/boundaries.json'),'utf8'));
+for (const scene of scenes.filter(s => s.overlay)) {
+  const geometry = boundaryData.scenes[scene.id];
+  assert.ok(geometry.controls.length >= 8);
+  assert.ok(scene.mapSource[1].includes('jihak.co.kr'));
+  assert.equal(scene.areas.length,0,'Old hand-picked polygons must not return');
+  for (const area of geometry.areas) {
+    assert.deepEqual(area.ring[0],area.ring.at(-1));
+    assert.ok(area.ring.length >= 25);
+    if(area.name==='가야') assert.ok(area.ring.every(p=>p[1]<36.5),'Northern campaign arrows are not Gaya');
+    for (const [x,y] of area.ring) {
+      assert.ok(Number.isFinite(x) && Number.isFinite(y));
+      assert.ok(x >= scene.overlayBounds[0] && x <= scene.overlayBounds[2] && y >= scene.overlayBounds[1] && y <= scene.overlayBounds[3],`${scene.id} overlay must not clip its geometry: ${x},${y}`);
+    }
+  }
+}
+assert.ok(boundaryData.scenes['silla-sixth'].areas.some(a=>a.pattern==='hatch'));
 assert.equal(new Set(scenes.map(s => s.id)).size, scenes.length);
 scenes.forEach((scene, i) => {
   assert.ok(scene.startYear <= scene.endYear);
@@ -19,7 +36,7 @@ scenes.forEach((scene, i) => {
     assert.ok(mark.xy[0] >= scene.bounds[0] && mark.xy[0] <= scene.bounds[2], `${scene.id}: longitude`);
     assert.ok(mark.xy[1] >= scene.bounds[1] && mark.xy[1] <= scene.bounds[3], `${scene.id}: latitude`);
   });
-  if (scene.overlay) assert.ok(fs.existsSync(path.join(app, scene.overlay)));
+  if (scene.overlay) assert.ok(fs.existsSync(path.join(app, scene.overlay.split('?')[0])));
 });
 const server = http.createServer((req, res) => {
   let file = path.resolve(root, '.' + decodeURIComponent(new URL(req.url, 'http://localhost').pathname));
@@ -47,6 +64,9 @@ const server = http.createServer((req, res) => {
     await page.setViewport({ width:1440, height:1000 });
     await page.goto(url + '#history', { waitUntil:'networkidle0' });
     await page.waitForSelector('#historyScene');
+    assert.equal(await page.$eval('.history-panel', n => n.firstElementChild.className), 'history-eras');
+    assert.equal(await page.$eval('#historyScene', n => n.getAttribute('aria-label')), '역사 지도 선택');
+    assert.equal(await page.$eval('.history-panel', n => /한국사 · 지도 읽기|시대순으로 보는 역사|지도 주제 · 시작 연대순/.test(n.innerText)), false);
     assert.deepEqual(await page.$$eval('.theme-tab', nodes => nodes.map(n => n.dataset.theme).slice(-3)), ['heritage','history','travel']);
     assert.equal(await page.$eval('#historyPrevious', n => n.disabled), true);
     assert.equal(await page.$eval('#labelToggle', n => n.hidden), true);
@@ -77,7 +97,15 @@ const server = http.createServer((req, res) => {
     await page.click('#historyPrevious');
     assert.equal(await page.$eval('#historyScene', n => n.value), 'liberation-army');
     await page.select('#historyScene', 'silla-sixth');
+    await page.waitForNetworkIdle({idleTime:600});
     await page.screenshot({ path:path.join(out, 'history-desktop.png'), fullPage:true });
+    for (const id of ['baekje-fourth','goguryeo-fifth','baekje-capitals']) {
+      await page.select('#historyScene', id);
+      await page.waitForNetworkIdle({idleTime:600});
+      if (id === 'baekje-capitals') assert.ok(await page.evaluate(()=>testMaps.map.getZoom()>8));
+      await page.screenshot({path:path.join(out, `${id}-desktop.png`),fullPage:true});
+    }
+    await page.select('#historyScene', 'silla-sixth');
     let before;
     for (let i=0; i<5; i++) {
       await page.click('[data-theme="terrain"]');
@@ -114,6 +142,7 @@ const server = http.createServer((req, res) => {
       }
       await page.select('#historyScene', 'silla-sixth');
       await page.evaluate(() => scrollTo(0,0));
+      await page.waitForNetworkIdle({idleTime:600});
       await page.screenshot({ path:path.join(out, `history-${width}.png`), fullPage:true });
     }
     await page.setViewport({ width:1440, height:1000 });
@@ -125,6 +154,11 @@ const server = http.createServer((req, res) => {
     }
     assert.deepEqual(errors, []);
     assert.deepEqual(missing, []);
+    await page.goto(url+'?historyScene=silla-sixth#history',{waitUntil:'networkidle0'});
+    assert.equal(await page.$eval('#historyScene',n=>n.value),'silla-sixth');
+    const pins = await page.$$eval('.history-point',ns=>ns.slice(0,2).map(n=>{const r=n.getBoundingClientRect();return [r.x,r.y]}));
+    assert.ok(Math.hypot(pins[0][0]-pins[1][0],pins[0][1]-pins[1][1])>=25,'Seoul and Bukhansan pins must be distinct');
+    await page.screenshot({path:path.join(out,'silla-direct.png'),fullPage:true});
     console.log(`History passed: ${scenes.length} chronological maps, labels, bounds, sources, assets, navigation, cleanup, desktop/tablet/mobile, neighboring tabs.`);
   } finally {
     if (browser) await browser.close();

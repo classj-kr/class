@@ -59,6 +59,9 @@ const server=http.createServer((req,res)=>{
       if(overflow.length)overflows.push({id:lesson.id,overflow});
       await page.evaluate(()=>document.querySelector('#practiceLesson').click());
       assert.ok(await page.$eval('#practiceDialog',el=>el.open));
+      assert.equal(await page.$('#questionDifficulty,.difficulty-badge'),null,'Question difficulty badges must stay removed');
+      assert.equal(await page.$eval('.question-copy',el=>el.firstElementChild.id),'questionTitle');
+      assert.equal(await page.$eval('#questionProgressBar',el=>el.style.width),'0%');
       assert.ok(await page.$eval('#questionMap',el=>el.hidden));
       assert.ok(!await page.$('#questionDiagram .visual-evidence'));
       for(let n=0;n<2;n++) {
@@ -111,6 +114,7 @@ const server=http.createServer((req,res)=>{
     await page.screenshot({path:path.join(output,'mobile-floodplain.png'),fullPage:true});
     await page.evaluate(()=>{document.querySelector('[data-study-level="essential"]').click();document.querySelector('#practiceLesson').click();});
     await page.screenshot({path:path.join(output,'mobile-question.png')});
+    assert.equal(await page.$('#questionDifficulty,.difficulty-badge'),null);
     assert.ok(await page.$eval('#practiceDialog',el=>el.scrollWidth<=el.clientWidth));
     await page.evaluate(()=>document.querySelector('#closePractice').click());
     for(const topic of ['heritage','travel']){

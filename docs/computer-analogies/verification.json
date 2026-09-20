@@ -1,0 +1,286 @@
+{
+  "report": [
+    {
+      "id": "a01",
+      "type": "stamp",
+      "states": [
+        {
+          "width": 1440,
+          "key": "all",
+          "view": "0 0 900 520"
+        },
+        {
+          "width": 1440,
+          "key": "input",
+          "view": "25 55 195 245"
+        },
+        {
+          "width": 1440,
+          "key": "process",
+          "view": "269 55 251 268"
+        },
+        {
+          "width": 1440,
+          "key": "output",
+          "view": "572 55 246 268"
+        },
+        {
+          "width": 1440,
+          "key": "storage",
+          "view": "301 335 447 187"
+        },
+        {
+          "width": 768,
+          "key": "all",
+          "view": "0 0 900 520"
+        },
+        {
+          "width": 768,
+          "key": "input",
+          "view": "25 55 195 245"
+        },
+        {
+          "width": 768,
+          "key": "process",
+          "view": "269 55 251 268"
+        },
+        {
+          "width": 768,
+          "key": "output",
+          "view": "572 55 246 268"
+        },
+        {
+          "width": 768,
+          "key": "storage",
+          "view": "301 335 447 187"
+        },
+        {
+          "width": 390,
+          "key": "all",
+          "view": "0 0 440 970"
+        },
+        {
+          "width": 390,
+          "key": "input",
+          "view": "25 55 195 245"
+        },
+        {
+          "width": 390,
+          "key": "process",
+          "view": "269 55 251 268"
+        },
+        {
+          "width": 390,
+          "key": "output",
+          "view": "572 55 246 268"
+        },
+        {
+          "width": 390,
+          "key": "storage",
+          "view": "301 335 447 187"
+        },
+        {
+          "width": 320,
+          "key": "all",
+          "view": "0 0 440 970"
+        },
+        {
+          "width": 320,
+          "key": "input",
+          "view": "25 55 195 245"
+        },
+        {
+          "width": 320,
+          "key": "process",
+          "view": "269 55 251 268"
+        },
+        {
+          "width": 320,
+          "key": "output",
+          "view": "572 55 246 268"
+        },
+        {
+          "width": 320,
+          "key": "storage",
+          "view": "301 335 447 187"
+        }
+      ],
+      "clipping": []
+    },
+    {
+      "id": "b01",
+      "type": "workshop",
+      "states": [
+        {
+          "width": 1440,
+          "key": "all",
+          "view": "0 0 900 535"
+        },
+        {
+          "width": 1440,
+          "key": "cpu",
+          "view": "30 0 360 300"
+        },
+        {
+          "width": 1440,
+          "key": "gpu",
+          "view": "454 0 415 283"
+        },
+        {
+          "width": 1440,
+          "key": "ram",
+          "view": "208 293 404 240"
+        },
+        {
+          "width": 1440,
+          "key": "ssd",
+          "view": "650 276 226 256"
+        },
+        {
+          "width": 768,
+          "key": "all",
+          "view": "0 0 900 535"
+        },
+        {
+          "width": 768,
+          "key": "cpu",
+          "view": "30 0 360 300"
+        },
+        {
+          "width": 768,
+          "key": "gpu",
+          "view": "454 0 415 283"
+        },
+        {
+          "width": 768,
+          "key": "ram",
+          "view": "208 293 404 240"
+        },
+        {
+          "width": 768,
+          "key": "ssd",
+          "view": "650 276 226 256"
+        },
+        {
+          "width": 390,
+          "key": "all",
+          "view": "0 0 450 1040"
+        },
+        {
+          "width": 390,
+          "key": "cpu",
+          "view": "30 0 360 300"
+        },
+        {
+          "width": 390,
+          "key": "gpu",
+          "view": "454 0 415 283"
+        },
+        {
+          "width": 390,
+          "key": "ram",
+          "view": "208 293 404 240"
+        },
+        {
+          "width": 390,
+          "key": "ssd",
+          "view": "650 276 226 256"
+        },
+        {
+          "width": 320,
+          "key": "all",
+          "view": "0 0 450 1040"
+        },
+        {
+          "width": 320,
+          "key": "cpu",
+          "view": "30 0 360 300"
+        },
+        {
+          "width": 320,
+          "key": "gpu",
+          "view": "454 0 415 283"
+        },
+        {
+          "width": 320,
+          "key": "ram",
+          "view": "208 293 404 240"
+        },
+        {
+          "width": 320,
+          "key": "ssd",
+          "view": "650 276 226 256"
+        }
+      ],
+      "clipping": []
+    },
+    {
+      "id": "e04",
+      "type": "bookmark",
+      "states": [
+        {
+          "width": 1440,
+          "key": "all",
+          "view": "0 0 900 520"
+        },
+        {
+          "width": 1440,
+          "key": "book",
+          "view": "20 45 394 382"
+        },
+        {
+          "width": 1440,
+          "key": "web",
+          "view": "490 45 370 382"
+        },
+        {
+          "width": 768,
+          "key": "all",
+          "view": "0 0 900 520"
+        },
+        {
+          "width": 768,
+          "key": "book",
+          "view": "20 45 394 382"
+        },
+        {
+          "width": 768,
+          "key": "web",
+          "view": "490 45 370 382"
+        },
+        {
+          "width": 390,
+          "key": "all",
+          "view": "0 0 430 860"
+        },
+        {
+          "width": 390,
+          "key": "book",
+          "view": "20 45 394 382"
+        },
+        {
+          "width": 390,
+          "key": "web",
+          "view": "490 45 370 382"
+        },
+        {
+          "width": 320,
+          "key": "all",
+          "view": "0 0 430 860"
+        },
+        {
+          "width": 320,
+          "key": "book",
+          "view": "20 45 394 382"
+        },
+        {
+          "width": 320,
+          "key": "web",
+          "view": "490 45 370 382"
+        }
+      ],
+      "clipping": []
+    }
+  ],
+  "errors": []
+}

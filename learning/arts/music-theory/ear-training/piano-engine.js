@@ -201,7 +201,9 @@
             const start = context.currentTime + .05;
             groups.forEach(function (group, index) {
                 const chord = group.length > 1;
-                const volume = chord ? Math.min(.072, .16 / Math.sqrt(group.length)) : .13;
+                // 화음 문제는 여러 음이 겹쳐도 충분히 또렷하게 들리도록 한다.
+                // 기존 값은 3~4음 화음에서 지나치게 작게 제한됐다.
+                const volume = chord ? Math.min(.11, .22 / Math.sqrt(group.length)) : .13;
                 const length = chord ? Math.max(.28, beatSeconds * .68) : Math.max(.18, beatSeconds * .72);
                 group.forEach(function (midi, noteIndex) {
                     const pan = group.length > 1 ? -.2 + noteIndex * (.4 / Math.max(1, group.length - 1)) : 0;

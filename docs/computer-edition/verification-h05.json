@@ -1,0 +1,116 @@
+{
+  "date": "2026-09-20T16:10:16.625Z",
+  "results": [
+    {
+      "id": "h05",
+      "layouts": [
+        {
+          "view": "read",
+          "width": 1440,
+          "scrollWidth": 1440,
+          "top": 101.5
+        },
+        {
+          "view": "lab",
+          "width": 1440,
+          "scrollWidth": 1440,
+          "top": 101.5
+        },
+        {
+          "view": "apply",
+          "width": 1440,
+          "scrollWidth": 1440,
+          "top": 101.5
+        },
+        {
+          "view": "check",
+          "width": 1440,
+          "scrollWidth": 1440,
+          "top": 101.5
+        },
+        {
+          "view": "read",
+          "width": 1024,
+          "scrollWidth": 1024,
+          "top": 101.5
+        },
+        {
+          "view": "lab",
+          "width": 1024,
+          "scrollWidth": 1024,
+          "top": 101.5
+        },
+        {
+          "view": "apply",
+          "width": 1024,
+          "scrollWidth": 1024,
+          "top": 101.5
+        },
+        {
+          "view": "check",
+          "width": 1024,
+          "scrollWidth": 1024,
+          "top": 101.5
+        },
+        {
+          "view": "read",
+          "width": 768,
+          "scrollWidth": 768,
+          "top": 101.5
+        },
+        {
+          "view": "lab",
+          "width": 768,
+          "scrollWidth": 768,
+          "top": 101.5
+        },
+        {
+          "view": "apply",
+          "width": 768,
+          "scrollWidth": 768,
+          "top": 101.5
+        },
+        {
+          "view": "check",
+          "width": 768,
+          "scrollWidth": 768,
+          "top": 101.5
+        },
+        {
+          "view": "read",
+          "width": 390,
+          "scrollWidth": 390,
+          "top": 104.1875
+        },
+        {
+          "view": "lab",
+          "width": 390,
+          "scrollWidth": 390,
+          "top": 104.1875
+        },
+        {
+          "view": "apply",
+          "width": 390,
+          "scrollWidth": 390,
+          "top": 104.1875
+        },
+        {
+          "view": "check",
+          "width": 390,
+          "scrollWidth": 390,
+          "top": 104.1875
+        }
+      ],
+      "fontChecks": [
+        ".edition-reading p",
+        ".edition-question legend",
+        ".edition-option span",
+        ".edition-feedback"
+      ],
+      "passed": true
+    }
+  ],
+  "failures": [],
+  "firstLessonRoute": true,
+  "storageChecks": true
+}

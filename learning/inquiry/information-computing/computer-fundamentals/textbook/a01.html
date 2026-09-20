@@ -5,12 +5,14 @@
 <title>1차시. 컴퓨터는 무슨 일을 할까?</title>
 <meta name="description" content="입력·처리·출력·저장을 그림과 숫자로 확인하는 컴퓨터 수업">
 <link rel="icon" href="../../../../../favicon.ico"><link rel="preload" href="../../../periodic-table/fonts/KoPubWorld-Batang-Medium.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="a01.css?v=20260920-compact-serif">
-<script src="a01-model.js?v=1" defer></script><script src="a01.js?v=1" defer></script>
+<script data-class-game-sfx="true" src="/assets/sound/game-sfx.js?v=20260912-feedback-scope-1" defer></script>
+<script src="a01-model.js?v=1" defer></script><script src="a01.js?v=20260921-sfx-1" defer></script>
+<link rel="stylesheet" href="analogies.css?v=20260921-2"><script src="analogies.js?v=20260921-2" defer></script>
 </head>
 <body>
 <a class="skip" href="#lesson">본문으로 이동</a>
 
-<main id="lesson" class="lesson">
+<main id="lesson" class="lesson" data-sfx-feedback="none">
 <header class="lesson-heading"><a class="back-link" href="../" aria-label="차시 목록으로 돌아가기">←</a><h1>1차시. 컴퓨터는 무슨 일을 할까?</h1><span id="progressText">0 / 3 완료</span></header>
 <nav class="section-nav" aria-label="차시 안의 학습 순서">
 <button type="button" data-page="read" aria-current="step"><span>01</span> 읽기</button>
@@ -24,6 +26,8 @@
 <p>그림을 골라 ‘흑백’을 누르면 색이 없는 그림이 나타납니다. 컴퓨터(<span lang="en">Computer</span>)는 고른 그림을 받아, 프로그램에 정해진 규칙에 따라 색을 바꾸고, 결과를 화면에 보여 줍니다.</p>
 <p>컴퓨터가 다루는 숫자·글자·그림·소리 등을 <strong>데이터(<span lang="en">Data</span>)</strong>라고 합니다. 컴퓨터가 따를 명령과 규칙은 <strong>프로그램(<span lang="en">Program</span>)</strong>에 들어 있습니다.</p>
 </div>
+<div data-picture-analogy="stamp"></div>
+<details class="analogy-real-example"><summary>고양이 그림 처리와 비교</summary>
 <figure class="concept-figure">
 <div class="flow">
 <div class="flow-item"><span class="term">입력 <small>Input</small></span><img src="../assets/images/j03-cat-file.webp" alt="입력할 고양이 그림" width="128" height="128"><p>고양이 그림을 받는다.</p></div>
@@ -35,6 +39,7 @@
 <div class="storage-line"><span aria-hidden="true">↳</span><p><strong>저장 <small>Storage</small></strong> 결과를 나중에 다시 사용할 수 있게 기록한다.</p></div>
 <figcaption>화면에 보여 주는 것과 저장하는 것은 별개의 일입니다.</figcaption>
 </figure>
+</details>
 <div class="reading">
 <h3>무엇이 달라지면 결과가 달라질까?</h3>
 <p>같은 그림이라도 ‘흑백’과 ‘밝게’는 서로 다른 결과를 만듭니다. <strong>입력한 데이터뿐 아니라 처리 규칙도 결과에 영향을 줍니다.</strong></p>
@@ -78,7 +83,7 @@
 </div>
 <p class="model-note">그림·숫자의 작업 상태는 이 페이지를 새로고침하면 초기화됩니다.</p>
 <p id="numberFeedback" class="feedback" role="status"></p>
-<div class="page-end"><button id="submitNumber" type="button" class="primary">과제 제출</button><button type="button" data-go="check">확인 문제 →</button></div>
+<div class="page-end"><button id="submitNumber" data-sfx="none" type="button" class="primary">과제 제출</button><button type="button" data-go="check">확인 문제 →</button></div>
 </section>
 <section class="page" id="page-check" aria-labelledby="checkTitle" hidden>
 <div class="section-heading"><div><h2 id="checkTitle" tabindex="-1">다른 기기에서도 같은 역할 찾기</h2><p>상황에 나온 행동과 결과를 근거로 답하세요.</p></div><span id="questionCount"></span></div>

@@ -240,6 +240,7 @@ $('openNumber').addEventListener('click', () => {
 });
 $('submitNumber').addEventListener('click', () => {
     const result = M.checkNumber(numbers);
+    window.ClassGameSfx?.play(result.ok ? 'success' : 'error');
     feedback('numberFeedback', result.text, result.ok ? 'success' : 'wrong');
     if (result.ok) { progress.transfer = true; persist(); }
 });
@@ -271,7 +272,7 @@ function renderQuestions() {
         const response = node('p', '', 'feedback');
         response.id = 'feedback-q' + i; response.setAttribute('role', 'status');
         const button = node('button', record.solved ? '답 확인됨' : '답 확인', 'answer-check');
-        button.type = 'button'; button.disabled = record.solved;
+        button.type = 'button'; button.disabled = record.solved; button.dataset.sfx = 'none';
         if (record.selected !== null && record.attempts > 0) {
             response.textContent = (record.solved ? '맞습니다. ' : '') + q.options[record.selected][1];
             response.dataset.kind = record.solved ? 'success' : 'wrong';
@@ -282,6 +283,7 @@ function renderQuestions() {
             const choice = Number(selected.value);
             record.selected = choice; record.attempts += 1;
             record.solved = choice === q.answer;
+            window.ClassGameSfx?.play(record.solved ? 'success' : 'error');
             if (record.attempts === 1) record.firstCorrect = record.solved;
             response.textContent = (record.solved ? '맞습니다. ' : '') + q.options[choice][1];
             response.dataset.kind = record.solved ? 'success' : 'wrong';

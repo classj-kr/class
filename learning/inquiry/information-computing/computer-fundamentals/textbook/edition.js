@@ -65,6 +65,9 @@ function bilingual(text) {
 }
 const reading=node("article","edition-reading");
 reading.append(node("h2","",data.case));
+const analogyType={b01:"workshop",e04:"bookmark"}[id];
+if(analogyType)window.COMPUTER_PICTURE_ANALOGIES?.render(reading,analogyType);
+else window.COMPUTER_LIFE_FIGURES?.render(reading,id);
 data.body.forEach((text,index)=>{if(data.sections?.[index])reading.append(node("h3","",data.sections[index]));const p=node("p");p.append(bilingual(text));reading.append(p);});
 const glossary=node("dl","edition-glossary");
 data.terms.forEach(([ko,en,definition])=>{
@@ -107,7 +110,8 @@ function orderFor(index,length){
  return order;
 }
 function question(q,index,parent,label){
- const form=node("form","edition-question");form.dataset.question=index;
+ // Grade sounds use this submission, never feedback wording or saved completion.
+ const form=node("form","edition-question");form.dataset.question=index;form.dataset.sfxFeedback="none";
  const fieldset=node("fieldset");const legend=node("legend");legend.append(node("small","edition-question-label",label),document.createTextNode(q.text));fieldset.append(legend);
  orderFor(index,q.options.length).forEach(canonical=>{
   const choice=node("label","edition-option");const radio=node("input");
@@ -120,7 +124,7 @@ function question(q,index,parent,label){
   choice.append(radio,node("span","",q.options[canonical][0]));fieldset.append(choice);
  });
  const feedback=node("p","edition-feedback");feedback.setAttribute("aria-live","polite");feedbacks[index]=feedback;
- const button=node("button","edition-submit","답 확인");button.type="submit";
+ const button=node("button","edition-submit","답 확인");button.type="submit";button.dataset.sfx="none";
  form.append(fieldset,button,feedback);parent.append(form);
  form.addEventListener("submit",event=>{
   event.preventDefault();
@@ -131,6 +135,7 @@ function question(q,index,parent,label){
   if(a.attempts===0)a.firstCorrect=correct;
   a.attempts++;
   if(correct)a.solved=true;
+  window.ClassGameSfx?.play(correct?"success":"error");
   feedback.dataset.correct=String(correct);
   feedback.textContent=(correct?"맞습니다. ":"다시 판단해 보세요. ")+q.options[a.selected][1];
   save();update();
@@ -145,7 +150,7 @@ nextButton(pages.lab,"apply","적용으로");
 data.apply.fields.forEach((q,i)=>question(q,i+1,pages.apply,"적용 "+(i+1)));
 nextButton(pages.apply,"check","확인 문제로");
 data.checks.forEach((q,i)=>question(q,i+3,pages.check,"문제 "+(i+1)));
-const result=node("p","edition-result");result.setAttribute("aria-live","polite");pages.check.append(result);
+const result=node("p","edition-result");result.setAttribute("aria-live","polite");result.dataset.sfxFeedback="none";pages.check.append(result);
 const footer=node("div","edition-page-end");
 const reset=node("button","edition-reset","이 차시 기록 지우기");reset.type="button";
 reset.addEventListener("click",()=>{
