@@ -1,0 +1,29 @@
+const {edit,replace,apply,lab}=require('./science-scope-patch.cjs');
+edit(lab+'supplement-core.js',s=>replace(s,' return result;\n}',`
+ add('cell-structure',{
+  title:'동물·식물 세포의 공통점과 차이',codes:['9과02-01'],initial:{sample:'onion',zoom:'low',stain:'before',focus:'whole'},
+  fields:[field('sample','준비된 표본',[['onion','양파 비늘줄기 표피'],['cheek','입안 상피']]),field('zoom','관찰 배율',[['low','낮음'],['high','높음']]),field('stain','염색',[['before','염색 전'],['after','염색 후']]),field('focus','모형 구조 표시',[['whole','표시 없음'],['nucleus','핵'],['membrane','세포막'],['wall','세포벽']])],
+  view(s){const plant=s.sample==='onion',high=s.zoom==='high',stained=s.stain==='after';let svg='<defs><clipPath id="coreCellView"><circle cx="230" cy="145" r="120"/></clipPath></defs>'+circle(230,145,123,'#b8ced7')+'<g clip-path="url(#coreCellView)">'+circle(230,145,120,'#f8fbfc');
+   const positions=high?[[230,145]]:[[165,100],[240,95],[310,115],[170,180],[250,175],[315,185]],scale=high?1.8:.72;
+   for(const [x,y]of positions){svg+='<g transform="translate('+x+' '+y+') scale('+scale+')">';if(plant)svg+=rect(-45,-32,90,64,s.focus==='wall'?'#75a77b':'#b6cab3')+rect(-41,-28,82,56,s.focus==='membrane'?'#d58f45':'#d2ded6')+rect(-38,-25,76,50,'#f2f0d8');else svg+=ellipse(0,0,43,31,s.focus==='membrane'?'#d58f45':'#c1d5d9')+ellipse(0,0,39,27,'#edf5f7');svg+=ellipse(plant?-24:0,plant?8:0,8,11,stained||s.focus==='nucleus'?'#7c729e':'#dddbe4')+'</g>';}
+   svg+='</g>'+label(high?'높은 배율: 좁은 범위':'낮은 배율: 넓은 범위',230,287);
+   const focus=s.focus==='wall'?(plant?'세포벽이 바깥쪽에서 형태를 지지합니다.':'동물 세포에는 세포벽이 없습니다.'):s.focus==='membrane'?'세포막은 세포 안팎을 구분하고 물질 출입에 관여합니다.':s.focus==='nucleus'?'핵에는 유전 정보가 있으며 세포의 생명 활동에 관여합니다.':'전체 모양과 배열을 비교합니다.';
+   return{svg,text:(plant?'양파 표피 세포는 비교적 규칙적인 경계가 이어져 보입니다.':'입안 상피 세포는 납작하고 불규칙한 외곽을 볼 수 있습니다.')+' '+focus+(stained?' 염색하면 핵 등 구조가 더 뚜렷해집니다.':' 염색 전에는 핵 등의 구별이 어려울 수 있습니다.'),note:'준비된 표본의 설명 그림이며 실제 현미경 사진이 아닙니다. 세포막은 세포벽과 맞닿아 광학현미경에서 따로 구별하기 어려우므로 모형에서 강조해 표시했습니다. 입안 세포 채취·염색은 교사 지도와 위생 관리가 필요합니다.',check:check('동물 세포에는 없고 식물 세포에는 있는 구조는?',['세포벽','핵','세포막'],'0','여기서 비교하는 동물·식물 세포 모두 핵과 세포막이 있지만 세포벽은 식물 세포에 있습니다.')};}
+ });
+ add('energy-conversion',{
+  title:'자석과 코일의 상대 운동과 발전',codes:['10통과2-02-05'],initial:{moving:'magnet',direction:'in',pole:'N',speed:'slow'},
+  fields:[field('moving','움직이는 물체',[['magnet','자석'],['coil','코일'],['none','둘 다 멈춤']]),field('direction','상대 거리 변화',[['in','가까워짐'],['out','멀어짐']]),field('pole','코일을 향한 극',[['N','N극'],['S','S극']]),field('speed','움직임',[['slow','느리게'],['fast','빠르게']])],
+  view(s){const moving=s.moving!=='none',positive=(s.direction==='in')===(s.pole==='N'),deflect=moving?(positive?1:-1)*(s.speed==='fast'?40:20):0;let svg=rect(50,95,80,65,s.pole==='N'?'#cc7673':'#6d92c1')+label(s.pole,90,135,'#fff',24);for(let i=0;i<7;i++)svg+=ellipse(180+i*16,125,11,42,'none').replace('/>',' stroke="#b6874d" stroke-width="4"/>');svg+=circle(340,205,50,'#e7f1f5')+line(340,233,340+deflect,175,'#447e8a',4)+label('검류계',340,282)+label(moving?(s.direction==='in'?'서로 가까워짐':'서로 멀어짐'):'상대 운동 없음',230,40);return{svg,text:moving?'자석과 코일 중 어느 쪽을 움직여도 서로 가까워지거나 멀어지면 코일에 유도 전류가 흐릅니다. 상대 운동 방향 또는 자석의 극을 반대로 하면 검류계 바늘이 반대로 움직입니다. 같은 조건에서 더 빠르게 움직이면 더 크게 흔들립니다.':'자석이 코일 가까이에 있어도 둘 다 멈추어 코일을 지나는 자기장이 변하지 않으면 유도 전류가 흐르지 않습니다.',note:'같은 코일·자석·회로를 사용한 개념 모형입니다. 바늘의 좌우는 임의로 정한 검류계 단자 기준이며 수치는 전류 측정값이 아닙니다. 자석을 움직이는 운동 에너지가 전기 에너지로 전환되는 발전 원리를 비교합니다.',check:check('자석이 코일 가까이에 있다는 사실만으로 계속 전류가 흐르는가?',['아니다. 코일을 지나는 자기장의 변화가 필요하다','그렇다. 둘 다 멈춰도 계속 흐른다','코일을 움직이면 절대로 흐르지 않는다'],'0','자석과 코일의 상대 운동 등으로 코일을 지나는 자기장이 변할 때 유도 전류가 흐릅니다.')};}
+ });
+ add('mass-ratio',{
+  title:'기체 반응의 부피 관계 자료 해석',codes:['9과16-05'],initial:{trial:'one',stage:'before'},fields:[field('trial','같은 온도·압력의 반응 자료',[['one','수소 2 · 산소 1'],['double','수소 4 · 산소 2'],['excess','수소 3 · 산소 1']]),stages],
+  view(s){const after=s.stage==='after',scale=s.trial==='double'?2:1,excess=s.trial==='excess';const amounts=after?[excess?1:0,0,2*scale]:[excess?3:2*scale,scale,0];let svg='';['수소','산소','수증기'].forEach((name,i)=>{const x=70+i*150;svg+=rect(x,245-amounts[i]*40,65,amounts[i]*40,'#8cbccf')+label(name,x+32,280)+label(String(amounts[i]),x+32,230-amounts[i]*40);});return{svg,text:after?'같은 온도와 압력에서 반응에 참여한 수소 : 산소 : 생성된 수증기의 부피비는 2 : 1 : 2입니다.'+(excess?' 수소를 더 넣어도 산소가 부족하여 수소 1이 남습니다. 처음 넣은 전체 양과 실제 반응한 양을 구별합니다.':' 전체 양을 두 배로 해도 반응 부피비는 같습니다.'):'모두 같은 온도·압력에서 비교한 기체 부피 자료입니다. 숫자는 같은 단위의 상대적인 부피이며 물질별 부피를 비교합니다.',note:'물이 응결하지 않고 수증기로 존재하는 조건의 이상화된 반응 자료입니다. 수소·산소 혼합물을 직접 점화하는 활동 지시가 아닙니다. 반응 전후 총 기체 부피가 같아야 질량 보존인 것은 아닙니다.',check:check('같은 조건에서 완전히 반응한 수소·산소·생성 수증기의 부피비는?',['2 : 1 : 2','1 : 1 : 1','2 : 2 : 1'],'0','같은 온도·압력에서 반응에 참여한 기체와 생성된 기체 부피 사이에 간단한 정수비가 성립합니다.')};}
+ });
+ return result;
+}`));
+edit(lab+'curriculum-map.js',s=>{const map=require('../'+lab+'curriculum-map.js');map['cell-structure']={grade:'중1',grades:['중1'],level:'middle',title:'동물·식물 세포 관찰',subjects:['과학'],codes:['9과02-01']};map['mass-ratio'].codes.push('9과16-05');return s.replace(/const scienceCurriculum = [\s\S]*?;\nif /,'const scienceCurriculum = '+JSON.stringify(map,null,2)+';\nif ');});
+edit(lab+'index.html',s=>{const start=s.indexOf('<article class="topic-row"><h4>세포</h4>');if(start<0)throw Error('Missing cell row');const rest=s.slice(start);return (s.slice(0,start)+replace(rest,'<div class="level-cell middle empty" aria-hidden="true"><span class="empty-mark">—</span></div>','<div class="level-cell middle"><a class="level-entry available" href="cell-structure/"><b>중1</b><span>동물·식물 세포 관찰</span></a></div>')).replace('전체 102개 실험','전체 103개 실험');});
+edit('tests/science-supplement-models.test.cjs',s=>replace(s,'Object.keys(specs).length,28','Object.keys(specs).length,31'));
+edit('tests/science-all-apps.test.cjs',s=>replace(s,'new Set(slugs).size, 102','new Set(slugs).size, 103'));
+edit('tests/science-scope-metadata.test.cjs',s=>replace(s,'Object.keys(map).length,102','Object.keys(map).length,103'));
+apply();

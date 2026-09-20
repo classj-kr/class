@@ -1,0 +1,18 @@
+// Generates a bounded repair report; never edits the curriculum or historical audit.
+const fs=require('node:fs'),path=require('node:path'),{spawnSync}=require('node:child_process');
+const {edit,apply}=require('./science-scope-patch.cjs');
+const root=path.resolve(__dirname,'..'),out='docs/science-lab-audit-2026-09-20/required-core.md';
+const rows=require('../docs/science-lab-audit-2026-09-20/required-core-review.cjs'),map=require('../learning/inquiry/science-lab/curriculum-map.js');
+const factory=require('../learning/inquiry/science-lab/supplement-core.js'),specs=factory({line(){},label(){},rect(){},jar(){},field(){}});
+const target=path.resolve(root,out).replaceAll('\\','/');
+const text='# 필수 성취내용의 누락 보완\n\n'+
+'기존 21개 앱을 보완하고 중1 세포 관찰·고1 중화 온도 비교 2개 앱을 신설했다. 전체 목록은 104개이며 학년별 시험 대비로 편성한다. 기본/심화 구분이나 선택과목 확장 실험은 추가하지 않았다.\n\n'+
+'여기서 필수는 공통 교육과정의 성취기준 본문·해설에 근거한 관찰·실험 내용을 뜻한다. 교육과정의 모든 탐구 활동을 일률적으로 필수 실험으로 세지 않는다. 아래는 **이번에 보완한 23개 경로**이지 교육부가 공표한 필수 실험 목록이나 모든 성취기준의 완료 판정이 아니다. 학교·교과서의 실제 시험 범위가 우선이다.\n\n'+
+'## 학년별 보완 내용\n\n| 앱 | 근거 성취기준 | 추가한 필수 관찰 | 경계 |\n|---|---|---|---|\n'+rows.map(r=>'| ['+map[r.slug].grade+' '+map[r.slug].title+'](<'+root.replaceAll('\\','/')+'/learning/inquiry/science-lab/'+r.slug+'/index.html>) | '+specs[r.slug].codes.join(', ')+' | '+r.current+' | '+r.boundary+' |').join('\n')+'\n\n'+
+'## 시험 대비 동작\n\n조건 선택 → 관찰 결과 비교 → 확인 문제 → 정답/오답 해설 → 초기화의 흐름으로 연결했다. 기존 실험과 기존 408문항은 유지하고 신규 두 앱에 8문항을 추가했다. 각 보완 관찰에는 별도의 확인 문제를 제공한다.\n\n'+
+'- 전자석: 초6 전기 회로와 전자석.\n- 전구/저항의 직렬·병렬: 중2 전기 회로·정전기·코일.\n- 태양 고도·그림자·계절: 초6 태양 고도·계절과 지구의 운동.\n\n'+
+'## 검증과 한계\n\n- 전체 104개 앱·416문항의 정답 확인, 학년 필터, 모바일 가로 넘침을 브라우저로 검사한다.\n- `npm run test:science-required`: 23개 경로의 모든 유효 조건 조합에서 결과 문구·세 선택지 판정·초기화를 검사한다. 입자 수 보존, 낙하 속력·에너지, 거울/렌즈 상 방향, 분열 염색체 수, 중화 온도 관계를 별도 검증한다.\n- `npm run test:science-models`: 기존/추가 공용 모형을 함께 검사한다.\n- `npm run test:curriculum` 및 `npm run test:science-audit`: 원본 목록·전기 학년 범위·성취기준·현재 대조표 해시를 검사한다.\n- 모바일 화면은 [required-core-screenshots](<'+root.replaceAll('\\','/')+'/docs/science-lab-audit-2026-09-20/required-core-screenshots>)에 저장한다.\n\n모형은 실제 시료·사진·센서 측정 자료가 아니다. 직접 도구 제작, 안전한 실험 수행, 현미경·저울 실측, 장기 관찰·발표를 대신 완료했다고 판정하지 않는다. 기존 473개 기준·261개 탐구 활동의 전체 역방향표는 유지한다. 이번 변경은 로컬 파일이며 배포하지 않았다.\n\n'+
+'## 근거\n\n학년·성취내용은 [교육부 2022 개정 과학 원문](<'+root.replaceAll('\\','/')+'/references/moe/2022-revised-curriculum/extracted/09-science.txt>)과 대조했다. 소금·설탕의 통제 조건 비교는 [ACS 수업 자료](https://www.acs.org/education/resources/k-8/inquiryinaction/fifth-grade/substances-have-characteristic-properties/lesson-2-1--using-dissolving-to-identify-substances.html), 산과 탄산 칼슘 관찰은 [ACS 관찰 자료](https://www.acs.org/education/whatischemistry/adventures-in-chemistry/experiments/fate-of-calcium-carbonate.html), 거울·렌즈의 상은 [OpenStax 거울](https://openstax.org/books/college-physics-2e/pages/25-7-image-formation-by-mirrors)과 [렌즈](https://openstax.org/books/college-physics-2e/pages/25-6-image-formation-by-lenses)로 교차 확인했다. 웹 자료의 고교 계산 내용을 중학교 화면으로 가져오지는 않았다.\n';
+if(process.argv.includes('--check')){require('node:assert/strict').equal(fs.readFileSync(target,'utf8').replace(/\r\n/g,'\n'),text);console.log('Required core report: current');}
+else if(fs.existsSync(target)){edit(out,()=>text);process.argv.push('--apply');apply();}
+else{const patch='*** Begin Patch\n*** Add File: '+target+'\n'+text.trimEnd().split('\n').map(l=>'+'+l).join('\n')+'\n*** End Patch';const r=spawnSync('C:/Users/A/AppData/Local/OpenAI/Codex/bin/cdef5aaf3e41ab53/codex.exe',['--codex-run-as-apply-patch',patch],{encoding:'utf8',windowsHide:true});if(r.status)throw Error(r.stderr||r.stdout||r.error);console.log(r.stdout);}

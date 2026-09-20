@@ -6,13 +6,14 @@ const base='learning/inquiry/science-lab/';
 function models(){
  const ctx={window:{},location:{pathname:'/none/'}};
  vm.createContext(ctx);vm.runInContext(fs.readFileSync(base+'supplement-extra.js','utf8'),ctx);
+ vm.runInContext(fs.readFileSync(base+'supplement-core.js','utf8'),ctx);
  // Expose the pure model registry in a test-only VM; production stays unmodified.
  const source=fs.readFileSync(base+'supplement-labs.js','utf8').replace(' const path=location.pathname',' window.testSpecs=specs; const path=location.pathname');
  vm.runInContext(source,ctx);return ctx.window.testSpecs;
 }
 const specs=models();
 test('all supplement choices return finite, curriculum-referenced observations',()=>{
- assert.equal(Object.keys(specs).length,16);
+ assert.equal(Object.keys(specs).length,36);
  const curriculum=fs.readFileSync('references/moe/2022-revised-curriculum/extracted/09-science.txt','utf8');
  for(const [slug,spec]of Object.entries(specs)){
   for(const code of spec.codes)assert(curriculum.includes('['+code+']'),slug+': '+code);

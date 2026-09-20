@@ -9,7 +9,7 @@ const catalog = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
 const slugs = [...catalog.matchAll(/href="([^"/]+)\/"/g)].map(m => m[1]);
 
 test('every catalog app loads, every question has a working correct answer, mobile layout', { timeout: 900000 }, async () => {
-  assert.equal(new Set(slugs).size, 102);
+  assert.equal(new Set(slugs).size, 104);
   const server = http.createServer((req, res) => {
     let file = path.resolve(root, '.' + new URL(req.url, 'http://localhost').pathname);
     if (file !== root && !file.startsWith(root + path.sep)) { res.writeHead(403); res.end(); return; }

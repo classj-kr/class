@@ -8,6 +8,7 @@
  const back=document.createElement('a');back.href='../?grade='+encodeURIComponent(m.grades[0]);back.textContent=m.grades[0]+' 시험 대비 목록 →';
  aside.append(title,line,note,back);document.querySelector('.page-header,.page-heading')?.after(aside);
  const base=document.currentScript.src;const extra=document.createElement('script');extra.src=new URL('supplement-extra.js?v=1',base);
- const mount=()=>{const supplement=document.createElement('script');supplement.src=new URL('supplement-labs.js?v=2',base);document.body.append(supplement);};
- extra.onload=mount;extra.onerror=mount;document.body.append(extra);
+ const mount=()=>{const supplement=document.createElement('script');supplement.src=new URL('supplement-labs.js?v=3',base);document.body.append(supplement);};
+ const core=()=>{const script=document.createElement('script');script.src=new URL('supplement-core.js?v=2',base);script.onload=mount;script.onerror=mount;document.body.append(script);};
+ extra.onload=core;extra.onerror=core;document.body.append(extra);
 })();

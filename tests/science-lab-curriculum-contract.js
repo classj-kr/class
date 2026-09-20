@@ -17,8 +17,8 @@ assert.match(curriculum, /\[9과14-03\][^\r\n]*저항의 직렬연결과 병렬�
 
 assert.match(catalog, /data-standards="6과15-01 6과15-02 6과15-03" href="circuit-bulbs\/"/);
 assert.match(catalog, /href="circuit-bulbs\/"[^>]*><b>초6<\/b><span>전기 회로와 전자석<\/span>/);
-assert.match(catalog, /data-standards="9과14-02 9과14-03" href="ohms-law\/"/);
-assert.match(catalog, /전류·전압·저항 — 직렬·병렬/);
+assert.match(catalog, /data-standards="9과14-01 9과14-02 9과14-03 9과14-04" href="ohms-law\/"/);
+assert.match(catalog, /전기 회로·정전기·코일/);
 
 assert.match(elementaryPage, /data-curriculum-standards="6과15-01 6과15-02 6과15-03"/);
 assert.match(elementaryPage, /직렬로 연결한 전지 수/);

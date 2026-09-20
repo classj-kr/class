@@ -10,6 +10,7 @@
     "test:science-scope": "node --test tests/science-grade-scope.test.cjs",
     "test:science-apps": "node --test tests/science-all-apps.test.cjs",
     "test:science-models": "node --test tests/science-supplement-models.test.cjs",
+    "test:science-required": "node --test tests/science-required-core.test.cjs",
     "test:science-audit": "node --test tests/science-scope-metadata.test.cjs && node scripts/build-current-science-audit.cjs --check",
     "test:body-explorer": "node --test tests/circulation-contract.js tests/digestion-contract.js tests/respiration-contract.js tests/nervous-contract.js tests/immune-contract.js tests/movement-contract.js tests/excretion-contract.js tests/temperature-contract.js tests/body-explorer-atlas-contract.js tests/body-explorer-viewport-contract.js tests/body-explorer-classroom-contract.js && node tests/circulation-server-integration.js && node tests/digestion-server-integration.js && node tests/respiration-server-integration.js && node tests/nervous-server-integration.js && node tests/immune-server-integration.js && node tests/movement-server-integration.js && node tests/excretion-server-integration.js && node tests/temperature-server-integration.js"
   },

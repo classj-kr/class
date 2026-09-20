@@ -10,3 +10,5 @@
 .supplement-observation{font-size:15px;line-height:1.75;background:#eff6f7;padding:12px;border-radius:8px}
 .supplement-note{font-size:12px;line-height:1.7;color:#526b76;margin:8px 0}
 @media(max-width:500px){.curriculum-supplement{padding:14px!important}.supplement-controls{display:block}.supplement-controls fieldset{margin-bottom:9px}}
+
+.supplement-check{border-top:1px solid #cadbe0;padding-top:12px}.supplement-check h3{font-size:15px;line-height:1.6}.supplement-check button{display:block;width:100%;text-align:left;font:inherit;font-size:14px;padding:10px;margin:6px 0;border:1px solid #b9cdd4;border-radius:8px;background:#f4f8f9;color:#173f50;cursor:pointer;white-space:normal}.supplement-check button[aria-pressed=true]{border-color:#286879;background:#e0f0f2}.supplement-check button:focus-visible{outline:3px solid #cf8c27}.supplement-check-feedback{font-size:14px;line-height:1.7}.supplement-check-feedback[data-correct=false]{color:#a54930}

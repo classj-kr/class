@@ -5,7 +5,7 @@ const read=p=>fs.readFileSync(p,'utf8').replace(/\r\n/g,'\n');
 const map=require(path.join(base,'curriculum-map.js'));
 test('all app grades, standards, quizzes and local script cache versions agree',()=>{
  const curriculum=read(path.resolve(base,'../../../references/moe/2022-revised-curriculum/extracted/09-science.txt'));
- const catalog=read(path.join(base,'index.html'));assert.equal(Object.keys(map).length,102);
+ const catalog=read(path.join(base,'index.html'));assert.equal(Object.keys(map).length,104);
  for(const[slug,m]of Object.entries(map)){
   const html=read(path.join(base,slug,'index.html'));
   assert.equal((html.match(/class="quiz-card"/g)||[]).length,4,slug);

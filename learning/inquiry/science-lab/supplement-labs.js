@@ -56,22 +56,26 @@
   }
  };
  Object.assign(specs,window.scienceSupplementExtensions?.({line,label,rect,jar,field})||{});
+ Object.assign(specs,window.scienceCoreExtensions?.({line,label,rect,jar,field},specs)||{});
  const path=location.pathname.split('/').filter(Boolean);const slug=path.at(-1)==='index.html'?path.at(-2):path.at(-1),spec=specs[slug];
  if(!spec)return;
- const css=document.createElement('link');css.rel='stylesheet';css.href=new URL('supplement-labs.css?v=1',document.currentScript.src);document.head.append(css);
+ const css=document.createElement('link');css.rel='stylesheet';css.href=new URL('supplement-labs.css?v=2',document.currentScript.src);document.head.append(css);
  const section=document.createElement('section');section.className='panel curriculum-supplement';section.setAttribute('aria-label',spec.title);
  const h=document.createElement('h2');h.textContent=spec.title;const controls=document.createElement('div');controls.className='supplement-controls';
  const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');svg.setAttribute('viewBox','0 0 460 310');svg.setAttribute('role','img');svg.setAttribute('aria-label',spec.title+' 관찰 모형');
  const observation=document.createElement('p');observation.className='supplement-observation';observation.setAttribute('aria-live','polite');
  const note=document.createElement('p');note.className='supplement-note';const ref=document.createElement('p');ref.className='supplement-note';ref.textContent='관련 성취기준: '+spec.codes.join(', ');
  const reset=document.createElement('button');reset.type='button';reset.className='supplement-reset';reset.textContent='이 탐구 처음으로';
- section.append(h,controls,svg,observation,note,ref,reset);const anchor=document.querySelector('.meaning-panel,.interpretation,.quiz-section');if(anchor)anchor.before(section);else document.querySelector('main').append(section);
+ const checkpoint=document.createElement('div');checkpoint.className='supplement-check';checkpoint.setAttribute('aria-label','관찰 확인 문제');
+ section.append(h,controls,svg,observation,note,checkpoint,ref,reset);const anchor=document.querySelector('.meaning-panel,.interpretation,.quiz-section');if(anchor)anchor.before(section);else document.querySelector('main').append(section);
  let state={...spec.initial};
  function render(){
   const fields=typeof spec.fields==='function'?spec.fields(state):spec.fields;
   for(const f of fields)if(!f.items.some(o=>o.value===state[f.key]))state[f.key]=f.items[0].value;
   controls.replaceChildren();for(const f of fields){const set=document.createElement('fieldset'),legend=document.createElement('legend');legend.textContent=f.title;set.append(legend);for(const o of f.items){const b=document.createElement('button');b.type='button';b.textContent=o.text;b.dataset.supplementChoice=f.key;b.dataset.value=o.value;b.setAttribute('aria-pressed',String(state[f.key]===o.value));b.addEventListener('click',()=>{state[f.key]=o.value;render();controls.querySelector(`[data-supplement-choice="${f.key}"][data-value="${o.value}"]`)?.focus({preventScroll:true});});set.append(b);}controls.append(set);}
   const result=spec.view(state);svg.innerHTML=result.svg;observation.textContent=result.text;note.textContent=result.note;
+  checkpoint.replaceChildren();if(result.check){const q=result.check;const heading=document.createElement('h3');heading.textContent=q.question;const feedback=document.createElement('p');feedback.className='supplement-check-feedback';feedback.setAttribute('aria-live','polite');checkpoint.append(heading);q.choices.forEach((choice,i)=>{const button=document.createElement('button');button.type='button';button.dataset.checkAnswer=String(i);button.textContent=choice;button.setAttribute('aria-pressed','false');button.addEventListener('click',()=>{checkpoint.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));feedback.textContent=(String(i)===q.answer?'정답입니다. ':'다시 생각해 보세요. ')+q.why;feedback.dataset.correct=String(String(i)===q.answer);});checkpoint.append(button);});checkpoint.append(feedback);}
+  checkpoint.hidden=!result.check;
  }
  reset.addEventListener('click',()=>{state={...spec.initial};render();});render();
  window.__scienceSupplement={slug,codes:spec.codes,getState:()=>({...state})};

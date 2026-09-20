@@ -1,5 +1,7 @@
 # 과학 실험실 × 2022 개정 교육과정 전수조사
 
+최신: [필수 누락 보완 23개 경로](<E:/webprojects/class/docs/science-lab-audit-2026-09-20/required-core.md>) — 기존 21개 보완·신규 2개, 총 104개 앱. 아래는 최초 조사 기록이다.
+
 > 이 문서 아래는 **교정 전 조사 스냅샷**입니다. 학년별 시험 대비 교정과 현재 판정은 [현재 결과 요약](<E:/webprojects/class/docs/science-lab-audit-2026-09-20/current-summary.md>)과 [검증 기록](<E:/webprojects/class/docs/science-lab-audit-2026-09-20/current-verification.md>)을 확인하세요. 아래 오류·범위조정 건수는 수정 전 집계입니다.
 
 조사일: 2026-09-20. **현재 앱이 교육과정을 빠짐없이, 학년 수준에 맞게 구현했다고 볼 수 없다.** 앱 수나 제목만으로 판단하지 않고, 카탈로그의 102개 앱 모두에서 HTML·JS의 조작, 결과, 설명, 퀴즈를 대조했다. 별책 9 과학 원문의 성취기준 473개와 탐구활동 261개를 역방향 표에 빠짐없이 넣었다.

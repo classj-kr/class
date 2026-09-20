@@ -21,12 +21,13 @@ const scienceCurriculum = {
       "중2"
     ],
     "level": "middle",
-    "title": "빛의 반사와 굴절",
+    "title": "거울·렌즈와 빛의 반사·굴절",
     "subjects": [
       "과학"
     ],
     "codes": [
-      "9과10-01"
+      "9과10-01",
+      "9과10-02"
     ]
   },
   "lens-image": {
@@ -117,11 +118,12 @@ const scienceCurriculum = {
       "초3"
     ],
     "level": "elementary",
-    "title": "지레로 물체 들어 올리기",
+    "title": "힘의 작용과 지레",
     "subjects": [
       "과학"
     ],
     "codes": [
+      "4과01-01",
       "4과01-03",
       "4과01-04"
     ]
@@ -163,12 +165,13 @@ const scienceCurriculum = {
       "중3"
     ],
     "level": "middle",
-    "title": "빗면 운동과 역학적 에너지",
+    "title": "자유 낙하·빗면과 에너지",
     "subjects": [
       "과학"
     ],
     "codes": [
       "9과19-01",
+      "9과19-02",
       "9과19-03",
       "9과19-04"
     ]
@@ -255,13 +258,15 @@ const scienceCurriculum = {
       "중2"
     ],
     "level": "middle",
-    "title": "전류·전압·저항 — 직렬·병렬",
+    "title": "전기 회로·정전기·코일",
     "subjects": [
       "과학"
     ],
     "codes": [
+      "9과14-01",
       "9과14-02",
-      "9과14-03"
+      "9과14-03",
+      "9과14-04"
     ]
   },
   "electric-field": {
@@ -419,13 +424,14 @@ const scienceCurriculum = {
       "초3"
     ],
     "level": "elementary",
-    "title": "물체의 무게 비교",
+    "title": "물체의 무게와 세 가지 상태",
     "subjects": [
       "과학"
     ],
     "codes": [
       "4과01-03",
-      "4과05-01"
+      "4과05-01",
+      "4과05-02"
     ]
   },
   "density-buoyancy": {
@@ -531,12 +537,18 @@ const scienceCurriculum = {
       "중1"
     ],
     "level": "middle",
-    "title": "입자의 확산",
+    "title": "입자 운동·상태 변화·기체",
     "subjects": [
       "과학"
     ],
     "codes": [
-      "9과04-01"
+      "9과04-01",
+      "9과04-02",
+      "9과04-03",
+      "9과04-04",
+      "9과06-01",
+      "9과06-02",
+      "9과06-03"
     ]
   },
   "solubility": {
@@ -545,7 +557,7 @@ const scienceCurriculum = {
       "초5"
     ],
     "level": "elementary",
-    "title": "물의 온도와 소금의 용해",
+    "title": "용해량과 용액 진하기",
     "subjects": [
       "과학"
     ],
@@ -589,13 +601,14 @@ const scienceCurriculum = {
       "중2"
     ],
     "level": "middle",
-    "title": "불꽃 반응과 이온의 이동",
+    "title": "원소의 성질과 이온",
     "subjects": [
       "과학"
     ],
     "codes": [
       "9과11-01",
-      "9과11-04"
+      "9과11-04",
+      "9과11-03"
     ]
   },
   "periodic-bonding": {
@@ -683,7 +696,7 @@ const scienceCurriculum = {
       "중3"
     ],
     "level": "middle",
-    "title": "질량 관계와 발열·흡열 반응",
+    "title": "화학 반응의 질량·부피 관계",
     "subjects": [
       "과학"
     ],
@@ -691,7 +704,8 @@ const scienceCurriculum = {
       "9과16-02",
       "9과16-03",
       "9과16-04",
-      "9과16-06"
+      "9과16-06",
+      "9과16-05"
     ]
   },
   "mole": {
@@ -737,11 +751,12 @@ const scienceCurriculum = {
       "초6"
     ],
     "level": "elementary",
-    "title": "연소의 조건",
+    "title": "연소와 물질의 변화",
     "subjects": [
       "과학"
     ],
     "codes": [
+      "6과14-01",
       "6과14-02",
       "6과14-03"
     ]
@@ -801,7 +816,7 @@ const scienceCurriculum = {
       "초4"
     ],
     "level": "elementary",
-    "title": "곰팡이와 세균 기르기",
+    "title": "균류·원생생물·세균 관찰",
     "subjects": [
       "과학"
     ],
@@ -845,7 +860,7 @@ const scienceCurriculum = {
       "고1"
     ],
     "level": "high",
-    "title": "세포막과 확산·삼투",
+    "title": "세포막과 효소 작용",
     "subjects": [
       "통합과학1"
     ],
@@ -1065,12 +1080,14 @@ const scienceCurriculum = {
       "중3"
     ],
     "level": "middle",
-    "title": "완두 교배와 유전 법칙",
+    "title": "세포분열과 멘델 유전",
     "subjects": [
       "과학"
     ],
     "codes": [
-      "9과21-04"
+      "9과21-04",
+      "9과21-01",
+      "9과21-02"
     ]
   },
   "dna-gel": {
@@ -1249,12 +1266,13 @@ const scienceCurriculum = {
       "초4"
     ],
     "level": "elementary",
-    "title": "화산 분출 모형과 분출물",
+    "title": "화산과 화성암 관찰",
     "subjects": [
       "과학"
     ],
     "codes": [
-      "4과11-02"
+      "4과11-02",
+      "4과11-03"
     ]
   },
   "magma": {
@@ -1341,11 +1359,12 @@ const scienceCurriculum = {
       "중3"
     ],
     "level": "middle",
-    "title": "기압과 바람·일기도와 전선",
+    "title": "전선과 구름 생성",
     "subjects": [
       "과학"
     ],
     "codes": [
+      "9과17-03",
       "9과17-04"
     ]
   },
@@ -1477,15 +1496,17 @@ const scienceCurriculum = {
       "초6"
     ],
     "level": "elementary",
-    "title": "계절이 생기는 까닭",
+    "title": "태양 고도·계절과 지구의 운동",
     "subjects": [
       "과학"
     ],
     "codes": [
+      "6과12-01",
+      "6과12-02",
+      "6과12-03",
       "6과13-01",
       "6과13-02",
-      "6과13-03",
-      "6과12-02"
+      "6과13-03"
     ]
   },
   "moon-phases": {
@@ -1597,6 +1618,35 @@ const scienceCurriculum = {
       "12지구03-04",
       "12지구03-05",
       "12행우03-04"
+    ]
+  },
+  "cell-structure": {
+    "grade": "중1",
+    "grades": [
+      "중1"
+    ],
+    "level": "middle",
+    "title": "동물·식물 세포 관찰",
+    "subjects": [
+      "과학"
+    ],
+    "codes": [
+      "9과02-01"
+    ]
+  },
+  "neutralization-common": {
+    "grade": "고1",
+    "grades": [
+      "고1"
+    ],
+    "level": "high",
+    "title": "중화 반응과 온도 변화",
+    "subjects": [
+      "통합과학2"
+    ],
+    "codes": [
+      "10통과2-01-04",
+      "10통과2-01-05"
     ]
   }
 };
