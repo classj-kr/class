@@ -16,6 +16,7 @@ const Fatigue = require('./lib/fatigue.js');
 const NavGrid = require('./lib/nav-grid.js');
 const ShipMotion = require('./lib/ship-motion.js');
 const ArrivalZones = require('./lib/arrival-zones.js');
+const { createDiscoveryAccess } = require('./lib/discovery-access.js');
 const CompletionRewards = require('./lib/completion-rewards.js');
 const FinalQuiz = require('./lib/final-quiz.js');
 const VoyageShips = require('./public/js/ship-designs.js');
@@ -123,6 +124,8 @@ const RESOLVED_DISCOVERIES = MissionCatalog.DISCOVERIES.map((item) => {
   const cell = MissionCatalog.latLonToCell(item.lat, item.lon);
   return { ...item, x: wrapX(cell.x * TILE), y: Math.max(TILE, Math.min(WORLD_PIXEL_H - TILE, cell.y * TILE)) };
 });
+const discoveryProximity = createDiscoveryAccess(RESOLVED_DISCOVERIES,
+  (x, y) => Terrain.terrainAtCell(world, x, y), Terrain, DISCOVERY_RADIUS_TILES);
 
 // 도시 안의 명소. 도시마다 대표 건물 하나(또는 둘)를 두고, 1520년에 아직 없던 건물은 '아직 없는 곳'으로 적는다.
 const CITY_LANDMARKS_BY_CITY = new Map();
@@ -182,13 +185,17 @@ function nearbyDiscovery(p) {
   let best = null;
   let bestDistance = Infinity;
   for (const item of RESOLVED_DISCOVERIES) {
-    const d = distanceXY(p.x, p.y, item.x, item.y);
+    const access = discoveryProximity(p, item);
+    const d = access.distance;
     if (d > DISCOVERY_RADIUS_TILES * TILE || d >= bestDistance) continue;
-    best = item;
+    best = { ...item, discoveryAccess: access };
     bestDistance = d;
   }
   if (!best) return null;
-  return { id: best.id, name: best.name, kind: best.kind, canUse:best.reach === 'any' || best.reach === p.mode, message:best.reach === 'sea' ? '배에서 살펴보기' : '상륙해서 살펴보기', found: discoveryListFor(p.roomCode, p.name).includes(best.id) };
+  return { id: best.id, name: best.name, kind: best.kind, canUse:best.discoveryAccess.canUse,
+    markerPoint:best.discoveryAccess.markerPoint || null,
+    message:best.discoveryArea ? '해안에서 살펴보기' : best.reach === 'sea' ? '배에서 살펴보기' : '상륙해서 살펴보기',
+    found: discoveryListFor(p.roomCode, p.name).includes(best.id) };
 }
 
 // 동물 만나기 경주. 참가자마다 자기 동물이 따로 있고, 정해진 바다 안을 어슬렁거린다.
@@ -397,7 +404,10 @@ const TEMPLATE_BY_ID = new Map(MissionCatalog.TEMPLATES.map((template) => [templ
 const READY_BY_ID = new Map(MissionCatalog.READY_MISSIONS.map((mission) => [mission.id, mission]));
 
 // 도시 설명은 각 도시의 핵심 주제를 담은 가변 길이의 문단으로 제공한다.
-const CITY_STORIES = new Map(JSON.parse(fs.readFileSync(path.join(__dirname, 'data', 'catalog', 'city-stories.json'), 'utf8')).map((item) => [item.cityId, item]));
+const CITY_STORIES = new Map([
+  ...JSON.parse(fs.readFileSync(path.join(__dirname, 'data', 'catalog', 'city-stories.json'), 'utf8')).map((item) => [item.cityId, item]),
+  ...MissionCatalog.ADDITIONAL_SETTLEMENTS.map((site) => [site.id, site.story])
+]);
 const CITY_TODAY_DIR = path.join(__dirname, 'public', 'assets', 'city-today');
 const CITY_PHOTO_CREDITS = (() => {
   try { return JSON.parse(fs.readFileSync(path.join(__dirname, 'data', 'catalog', 'city-photo-credits.json'), 'utf8')); } catch { return {}; }
@@ -531,7 +541,7 @@ const rooms = new Map();
 const teachers = new Map();
 // A reconnect must restore the server's position, city and moored ship, never a client position.
 const disconnectedVoyagers = new Map();
-const VOYAGER_RESUME_MS = 10 * 60 * 1000;
+const VOYAGER_RESUME_MS = 24 * 60 * 60 * 1000;
 setInterval(() => {
   for (const [token, session] of disconnectedVoyagers) {
     if (session.expiresAt <= Date.now()) disconnectedVoyagers.delete(token);
@@ -2105,8 +2115,9 @@ io.on('connection', (socket) => {
     if (!p) return ack({ ok:false, error:'접속 상태가 아닙니다.' });
     const item = RESOLVED_DISCOVERIES.find((entry) => entry.id === String(payload?.id || ''));
     if (!item) return ack({ ok:false, error:'그런 곳을 찾지 못했습니다.' });
-    if (item.reach !== 'any' && item.reach !== p.mode) return ack({ ok:false, error: item.reach === 'sea' ? '배를 타고 가야 살펴볼 수 있습니다.' : '뭍에 내려서 가야 살펴볼 수 있습니다.' });
-    if (distanceXY(p.x, p.y, item.x, item.y) > DISCOVERY_RADIUS_TILES * TILE) return ack({ ok:false, error:`${item.name}에 더 가까이 가세요.` });
+    const access = discoveryProximity(p, item);
+    if (!access.canUse) return ack({ ok:false, error: item.reach === 'sea' ? '배를 타고 가야 살펴볼 수 있습니다.' : '뭍에 내려서 가야 살펴볼 수 있습니다.' });
+    if (access.distance > DISCOVERY_RADIUS_TILES * TILE) return ack({ ok:false, error:`${item.name}에 더 가까이 가세요.` });
     const found = discoveryListFor(p.roomCode, p.name);
     const first = !found.includes(item.id);
     if (first) {

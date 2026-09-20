@@ -201,8 +201,8 @@ button,input{font:inherit}button{border:1px solid var(--line);background:#17313b
 <div id="discoveryView"><div id="discoveryCard"><h2 id="discoveryName">발견!</h2><div id="discoveryKind"></div><img id="discoveryImage" alt="" hidden><div id="discoveryCredit" hidden></div><div id="discoveryText"></div><div id="discoveryCount"></div><div id="discoveryButtons"><button id="discoveryNext" type="button" hidden>다음 명소</button><button id="discoveryClose" type="button">계속 탐험하기</button></div></div></div><div id="hostBar" class="panel" hidden><span>방번호 <b id="hostCode"></b></span><button id="hostStartBtn" type="button">모두 출발</button></div><div id="transitionOverlay"><div id="transitionCard"><div id="transitionLabel">입항 준비 중</div><div id="transitionBar"><div id="transitionFill"></div></div></div></div><div id="pauseOverlay"><div id="lockTitle">방장이 게임을 잠시 멈췄습니다.</div><span id="lockDetail" style="font-size:14px;font-weight:400">설명을 듣고 다시 시작할 때까지 기다리세요.</span></div>
 <div id="messageWindow" class="panel" aria-live="polite"><div id="messageHeader">항해 안내</div><div id="messageLines"><div class="guideLine system">서버에 접속한 뒤 안내 메시지가 여기에 표시됩니다.</div></div></div>
 <script src="/learn/world-voyage/socket.io/socket.io.js"></script>
-<script src="/learn/world-voyage/js/terrain.js?v=81"></script>
-<script src="/learn/world-voyage/js/city-icons.js?v=2"></script>
+<script src="/learn/world-voyage/js/terrain.js?v=82"></script>
+<script src="/learn/world-voyage/js/city-icons.js?v=3"></script>
 <script src="/learn/world-voyage/js/ship-designs.js?v=1"></script>
 <script src="/learn/world-voyage/js/geo-motion.js?v=75"></script>
 <script src="/learn/world-voyage/js/view-motion.js?v=1"></script>
@@ -334,7 +334,7 @@ seedCurrentVisuals();
 const WIND_CLOUD_CELL_W=620,WIND_CLOUD_CELL_H=360,WIND_CLOUD_FRAME_W=160,WIND_CLOUD_FRAME_H=60,WIND_CLOUD_SEQUENCE_FRAMES=6,WIND_VISUAL_FLOW_RATE=5.6,WIND_CLOUD_FRAME_MS=64;
 function hashUnit(a,b,c=0){let x=Math.imul((a|0)^0x9e3779b9,0x85ebca6b)+Math.imul((b|0)^0xc2b2ae35,0x27d4eb2f)+(c|0);x^=x>>>16;x=Math.imul(x,0x7feb352d);x^=x>>>15;x=Math.imul(x,0x846ca68b);x^=x>>>16;return(x>>>0)/4294967296}
 const keys={up:false,down:false,left:false,right:false};
-let resumeToken='',connectionReady=false,resumePending=false;
+let resumeToken='';try{resumeToken=sessionStorage.getItem('uw3-resume-token')||''}catch{}let connectionReady=false,resumePending=false;
 const socket=io({path:'/learn/world-voyage/socket.io',transports:['polling'],reconnection:true,reconnectionAttempts:Infinity,reconnectionDelay:500});
 
 function resetMapZoomForDevice(){zoom=recommendedMapZoom();zoomManuallyAdjusted=false}
@@ -551,7 +551,7 @@ function renderCityView(){
   const cityId=serverSelf.currentCityId,catalogCity=cityCatalogById.get(String(cityId)),regionLabel=libraryRegionLabelForCity(catalogCity);
   // 좁은 화면에서 단추 넷이 줄어 글자가 잘리므로 이름은 짧게 둔다. 자세한 이름은 열린 창에서 보여 준다.
   libraryBtn.hidden=false;libraryBtn.textContent='도서관';
-  const cityStory=catalogCity?.story||null;storyBtn.hidden=!cityStory;
+  const cityStory=catalogCity?.story||null;storyBtn.hidden=!cityStory;storyBtn.textContent=catalogCity?.settlementKind==='village'?'취락 설명':'도시 설명';
   landmarkBtn.hidden=!landmarkQueue.length;
   if(landmarkQueue.length)landmarkBtn.textContent=landmarkQueue.length>1?`명소 ${landmarkQueue.length}곳`:'명소';
   const shipHere=!!catalogCity?.canEnterFromSea&&serverSelf.shipPortId===cityId,busy=!!serverSelf.transition;departCityBtn.hidden=!shipHere;departCityBtn.disabled=busy;leaveCityBtn.disabled=busy;
@@ -658,7 +658,7 @@ landmarkBtn.addEventListener('click',()=>{if(landmarkQueue.length)openLandmark(0
 // 도시별로 고른 역사·인물·문화 주제를 데이터 순서대로 표시한다.
 function openCityStory(){
   const city=cityCatalogById.get(String(serverSelf?.currentCityId||''));const story=city?.story;if(!story)return;
-  discoveryName.textContent=`${city.name} 도시 설명`;
+  discoveryName.textContent=`${city.name} ${city.settlementKind==='village'?'설명':'도시 설명'}`;
   discoveryKind.textContent=[city.todayCountry,city.region].filter(Boolean).join(' · ');
   const photo=city.todayPhoto;
   if(photo?.url){discoveryImage.src=photo.url;discoveryImage.alt=`오늘날 ${city.name}`;discoveryImage.hidden=false;discoveryCredit.textContent=photo.credit||'오늘날 모습';discoveryCredit.hidden=false}
@@ -717,7 +717,7 @@ const hostTokenKey=code=>`uw3-host-${code}`;
 function readHostToken(code){try{return sessionStorage.getItem(hostTokenKey(code))||''}catch{return ''}}
 function saveHostToken(code,token){try{sessionStorage.setItem(hostTokenKey(code),token)}catch{}}
 function finishJoin(result,resumed=false){
-  resumeToken=result.resumeToken||resumeToken;connectionReady=true;lastSnapshotAt=performance.now();net.textContent='● 서버 연결';net.className='good';remote.clear();
+  resumeToken=result.resumeToken||resumeToken;try{sessionStorage.setItem('uw3-resume-token',resumeToken)}catch{}connectionReady=true;lastSnapshotAt=performance.now();net.textContent='● 서버 연결';net.className='good';remote.clear();
   joined=true;if(!resumed)resetMapZoomForDevice();sessionMode=result.sessionMode||'competition';roomType=result.roomType||'race';isHost=!!result.isHost;roomCodeCurrent=result.roomLabel||`방 ${result.roomCode||''}`;hostCode.textContent=result.roomCode||'';self={...result.self};serverSelf={...result.self};syncClassClock(result.classGameMinutes);mode=result.self.mode;applyMissionState(result.mission,result.progress,false);missionInteraction=result.interaction||null;cityInteraction=result.cityInteraction||null;portInteraction=result.portInteraction||null;discoveryInteraction=result.discoveryInteraction||null;huntInteraction=result.huntInteraction||null;landmarkQueue=result.cityLandmarks||[];applyClassSettings(result.settings||{});join.style.display='none';joinError.textContent='';
   try{localStorage.setItem('uw3-room',result.roomCode||'')}catch{}if(!resumed)guideHistory.length=0;
   nearbyGroup.hidden=roomType==='free';
@@ -773,7 +773,7 @@ canvas.addEventListener('pointerdown',e=>{if(!canTravelNow()||(mode!=='sea'&&mod
   if(mode==='land'&&portInteraction?.kind==='shore'&&hit(serverSelf.shipAnchorX,serverSelf.shipAnchorY)){doMissionOrPortAction();return}
   const city=cityInteraction?.canUse?cityCatalogById.get(cityInteraction.placeId):null;
   if(city?.cityPoint&&hit(city.cityPoint.x,city.cityPoint.y,32)){doCityAction();return}
-  const discovery=discoveryPoints.find(item=>item.id===discoveryInteraction?.id&&hit(item.x,item.y));
+  const discovery=discoveryPoints.find(item=>{const point=discoveryMapPoint(item);return item.id===discoveryInteraction?.id&&hit(point.x,point.y)});
   if(discovery){doDiscoveryAction(discovery);return}
   let x,y;
   if(globeReady){const ll=globeMap.unproject([e.clientX-r.left,e.clientY-r.top]);x=((ll.lng+180)/360)*SPAN;y=Math.max(TS,Math.min(MAP_H-TS,((90-ll.lat)/180)*MAP_H))}
@@ -999,12 +999,15 @@ function drawHuntAnimal(cw,ch,left,top){
   }
 }
 
+function discoveryMapPoint(item){
+  return discoveryInteraction?.id===item.id&&discoveryInteraction.markerPoint?discoveryInteraction.markerPoint:item;
+}
 function drawDiscoveryMarkers(cw,ch,left,top){
   if(!discoveryPoints.length||!self)return;
   const found=new Set(Array.isArray(serverSelf?.discoveryIds)?serverSelf.discoveryIds:[]);
   ctx.save();ctx.textAlign='center';ctx.textBaseline='bottom';ctx.font=`${zoom>=2.4?'bold 11px':'bold 9px'} "Malgun Gothic",sans-serif`;
   for(const item of discoveryPoints){
-    const _di=screenPoint(item.x,item.y,cw,ch),sx=_di.x,sy=_di.y;
+    const point=discoveryMapPoint(item),_di=screenPoint(point.x,point.y,cw,ch),sx=_di.x,sy=_di.y;
     if(sx<-60||sx>cw+60||sy<-40||sy>ch+40)continue;
     const done=found.has(item.id),size=done?3.5:4.2;
     ctx.beginPath();ctx.moveTo(sx,sy-size);ctx.lineTo(sx+size,sy);ctx.lineTo(sx,sy+size);ctx.lineTo(sx-size,sy);ctx.closePath();

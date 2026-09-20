@@ -1,0 +1,64 @@
+{
+  "slug": "enzyme",
+  "engine": "webkit",
+  "modes": [
+    "initial"
+  ],
+  "cases": 19,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__enzymeModel",
+      "methods": [
+        "state",
+        "analyse",
+        "tick",
+        "render",
+        "rateAt",
+        "rateClean",
+        "vmaxEff",
+        "kmEff",
+        "vmaxClean",
+        "kcatAt",
+        "survivalAt",
+        "phFactor",
+        "blockedFraction",
+        "isBlocked",
+        "ENZYMES",
+        "setEnzyme",
+        "setTemp",
+        "setPh",
+        "setInhib",
+        "setSub",
+        "fresh",
+        "check",
+        "runToEnd",
+        "measureThroughput"
+      ]
+    }
+  ],
+  "paint": [],
+  "grades": [
+    {
+      "mode": "initial",
+      "results": [
+        {
+          "choice": "p1",
+          "visible": true,
+          "text": "예상은 Km만 오른다였지만 결과는 둘 다 그대로입니다."
+        },
+        {
+          "choice": "p2",
+          "visible": true,
+          "text": "예상은 Vmax만 내린다였지만 결과는 둘 다 그대로입니다."
+        },
+        {
+          "choice": "p3",
+          "visible": true,
+          "text": "예상이 맞았습니다 — 둘 다 그대로."
+        }
+      ]
+    }
+  ]
+}

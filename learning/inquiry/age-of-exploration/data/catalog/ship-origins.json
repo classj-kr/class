@@ -1092,6 +1092,24 @@
       "sourceRow": 219,
       "sourceCityName": "부에노스아이레스"
     },
+    "kaminokuni": {
+      "name": "가미노쿠니",
+      "shipType": "wasen",
+      "shipScale": 0.85,
+      "role": "북방 연안 교역 거점",
+      "sourceShipyard": false,
+      "sourceRow": null,
+      "sourceCityName": "가미노쿠니"
+    },
+    "tokuyama_ezo": {
+      "name": "도쿠야마",
+      "shipType": "wasen",
+      "shipScale": 0.85,
+      "role": "북방 연안 교역 거점",
+      "sourceShipyard": false,
+      "sourceRow": null,
+      "sourceCityName": "도쿠야마"
+    },
     "original_city_005": {
       "name": "툼베스",
       "shipType": "balsa",

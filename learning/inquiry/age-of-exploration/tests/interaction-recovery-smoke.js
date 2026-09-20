@@ -11,8 +11,8 @@ process.on('message',message=>{try{
     const p=[...rooms.values()].flatMap(room=>[...room.values()]).find(p=>p.id===message.id);
     if(!p)throw Error('missing player');
     if(message.command==='place'){
-      stopPlayer(p);p.transition=null;p.mode='land';p.currentCityId=null;
-      if(message.city){const city=[...RESOLVED_PLACES.values()].find(c=>c.name===message.city);Object.assign(p,city.landPoint);}
+      stopPlayer(p);p.transition=null;p.mode=message.mode==='sea'?'sea':'land';p.currentCityId=null;
+      if(message.city){const city=[...RESOLVED_PLACES.values()].find(c=>c.name===message.city);Object.assign(p,p.mode==='sea'?city.seaPoint:city.landPoint);}
       else Object.assign(p,{x:(message.lon+180)/360*WORLD_PIXEL_W,y:(90-message.lat)/180*WORLD_PIXEL_H});
       if(message.anchor){p.shipAnchorX=p.x+8;p.shipAnchorY=p.y;p.shipLandingX=p.x+80;p.shipLandingY=p.y;p.shipAnchorDir=2;p.shipPortId=null;}
     }
@@ -33,6 +33,8 @@ process.on('message',message=>{try{
    socket=io(base,{autoConnect:false,transports:['websocket'],reconnection:false});const connected=once(socket,'connect');socket.connect();await connected;
    const room=await ack(socket,'createRoom',{roomType:'free'});const joined=await ack(socket,'joinClass',{roomCode:room.roomCode,name:'복구검사',hostToken:room.hostToken});assert.ok(joined.resumeToken);await ack(socket,'hostStartFree');
    await place({lat:-0.83,lon:-49.03});const amazon=await once(socket,'snapshot',s=>s.discoveryInteraction?.id==='amazon_mouth');assert.equal(amazon.discoveryInteraction.canUse,true);assert.equal((await ack(socket,'inspectDiscovery',{id:'amazon_mouth'})).ok,true);
+   const caspian=await place({lat:40.90,lon:52.87});assert.equal(caspian.state.discoveryInteraction?.id,'caspian-sea');assert.equal(caspian.state.discoveryInteraction.canUse,true);assert.ok(caspian.state.discoveryInteraction.markerPoint);assert.equal((await ack(socket,'inspectDiscovery',{id:'caspian-sea'})).ok,true);
+   await place({lat:40.9,lon:57});assert.equal((await ack(socket,'inspectDiscovery',{id:'caspian-sea'})).ok,false,'remote inspection must be rejected by the server');
    const anchor=await place({lat:-1.64,lon:-48.99,anchor:true});assert.equal(anchor.state.portInteraction?.kind,'shore','standing by the visible ship must permit reboarding even away from the original landing point');
    const before=anchor.player;socket.disconnect();await delay(150);const reconnected=once(socket,'connect');socket.connect();await reconnected;
    const rejected=await ack(socket,'resumeVoyager',{resumeToken:'wrong-token'});assert.equal(rejected.ok,false);
@@ -41,6 +43,6 @@ process.on('message',message=>{try{
    const embark=await ack(socket,'useShoreTransfer');assert.equal(embark.ok,true,embark.error);const atSea=await once(socket,'snapshot',s=>s.you.mode==='sea'&&!s.you.transition);assert.ok(Math.abs(atSea.you.x-before.shipAnchorX)<0.1);assert.ok(Math.abs(atSea.you.y-before.shipAnchorY)<0.1);
    const city=await place({lat:-8.20,lon:-78.97});assert.equal(city.state.cityInteraction?.placeName,'찬찬');const entered=await ack(socket,'enterCity',{placeId:city.state.cityInteraction.placeId});assert.equal(entered.ok,true,entered.error);assert.equal(entered.self.mode,'city');
    socket.disconnect();await delay(100);const again=once(socket,'connect');socket.connect();await again;const resumedCity=await ack(socket,'resumeVoyager',{resumeToken:joined.resumeToken});assert.equal(resumedCity.self.currentCityId,entered.self.currentCityId);assert.equal(resumedCity.self.mode,'city');assert.equal((await ack(socket,'leaveCity')).ok,true);
-   console.log(JSON.stringify({ok:true,amazonOnLand:true,reboardByShip:true,reconnectKeepsPositionAndShip:true,hostRestored:true,chanChanEntry:true,cityReconnect:true}));
+   console.log(JSON.stringify({ok:true,amazonOnLand:true,caspianFromShore:true,remoteDiscoveryRejected:true,reboardByShip:true,reconnectKeepsPositionAndShip:true,hostRestored:true,chanChanEntry:true,cityReconnect:true}));
  }finally{socket?.disconnect();attacker?.disconnect();server.kill()}})().catch(e=>{console.error(e);console.error(logs);process.exitCode=1});
 }

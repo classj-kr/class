@@ -8,7 +8,7 @@
     <meta name="description" content="포화 용액을 식힐 때 석출되는 결정의 양을 용해도 곡선으로 계산하고, 재결정으로 불순물을 걸러 낼 수 있는 조건을 찾는 고등학교 과학 모의실험">
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
     <link rel="stylesheet" href="styles.css?v=5">
-    <link rel="stylesheet" href="crystal-visual.css?v=5">
+    <link rel="stylesheet" href="crystal-visual.css?v=6">
     <link rel="stylesheet" href="quiz.css?v=3">
     <link rel="stylesheet" href="../exam-scope.css?v=1">
     <link rel="stylesheet" href="../lab-ui.css?v=4">
@@ -28,13 +28,13 @@
             <li>녹일 물질과 물의 양을 정합니다.</li>
             <li>뜨거운 물에 녹여 포화 용액을 만듭니다.</li>
             <li>천천히 식히며 결정이 나오는 것을 봅니다.</li>
-            <li>석출량과 결정의 순도를 확인합니다.</li>
+            <li>석출량을 확인하고, 결정이 생겼을 때 순도를 비교합니다.</li>
         </ol>
 
         <div class="experiment-layout">
             <section class="panel control-panel" aria-labelledby="control-title">
                 <h2 id="control-title">실험 조건</h2>
-                <p class="water-standard">석출량 = (S₁ − S₂) × 물의 양 ÷ 100</p>
+                <p class="water-standard">용해도가 줄어들 때: 석출량 = (S₁ − S₂) × 물의 양 ÷ 100</p>
 
                 <fieldset class="pick-field">
                     <legend>녹일 물질</legend>
@@ -59,7 +59,7 @@
                 <div class="range-scale" aria-hidden="true"><span>40℃</span><span>70℃</span><span>100℃</span></div>
 
                 <div class="range-heading amount-heading">
-                    <label for="coldRange">식힌 온도 T₂</label>
+                    <label for="coldRange">나중 온도 T₂</label>
                     <output id="coldOutput" for="coldRange">20 ℃</output>
                 </div>
                 <input id="coldRange" type="range" min="0" max="60" step="10" value="20">
@@ -73,16 +73,17 @@
                 <div class="range-scale" aria-hidden="true"><span>0g</span><span>5g</span><span>10g</span></div>
 
                 <fieldset class="prediction-field">
-                    <legend>얻은 결정은 얼마나 순수할까요?</legend>
+                    <legend>주성분 결정과 불순물은 어떻게 될까요?</legend>
                     <div class="prediction-buttons three">
-                        <button type="button" data-prediction="pure">완전히 순수</button>
+                        <button type="button" data-prediction="pure">불순물 없음</button>
+                        <button type="button" data-prediction="none">주성분 결정 없음</button>
                         <button type="button" data-prediction="slight">조금 섞임</button>
                         <button type="button" data-prediction="dirty">많이 섞임</button>
                     </div>
                 </fieldset>
 
                 <div class="run-row">
-                    <button class="run-button" id="checkBtn" type="button">식히기</button>
+                    <button class="run-button" id="checkBtn" type="button">온도 바꾸기</button>
                     <button class="reset-button" id="resetBtn" type="button">처음으로</button>
                 </div>
 
@@ -157,7 +158,7 @@
                 </article>
 
                 <article class="quiz-card" data-answer="b">
-                    <h3>재결정에서 불순물이 결정에 섞이지 않는 까닭은?</h3>
+                    <h3>이 실험에서 소량의 불순물이 용액에 남아 결정과 분리되는 까닭은?</h3>
                     <div class="quiz-options">
                         <label><input type="radio" name="q3" value="a"> 불순물이 물에 녹지 않아서</label>
                         <label><input type="radio" name="q3" value="b"> 양이 적어 식혀도 포화에 이르지 못해서</label>
@@ -184,9 +185,9 @@
             </div>
         </details>
     </main>
-    <script src="app.js?v=24f851faec28"></script>
+    <script src="app.js?v=4dedcec565c7"></script>
     <script src="../curriculum-map.js?v=3f7264a2b189"></script>
-    <script src="../exam-scope.js?v=caa16ae47731"></script>
+    <script src="../exam-scope.js?v=ab08f0f36ca8"></script>
     <script src="../lab-ui.js?v=c295eda1bdab"></script>
 </body>
 </html>

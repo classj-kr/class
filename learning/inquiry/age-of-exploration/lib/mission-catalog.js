@@ -9,12 +9,24 @@ function loadJson(filename) {
 }
 
 const ORIGINAL_CITIES = Object.freeze(loadJson('original-cities.json'));
+const REGIONAL_SITES = loadJson('regional-sites.json');
+// isOriginalCity is the legacy switch for visitable settlement UI and entry rules.
+// Keep supplementary historical sites separate from the original game's city data.
+const ADDITIONAL_SETTLEMENTS = Object.freeze(REGIONAL_SITES.settlements.map(site => ({
+  ...site, continent: '아시아', addedCity: true, isOriginalCity: true,
+  displayOnMap: true, naturalEarthPositionOverride: true, canEnterFromLand: true,
+  verifiedSeaAccess: site.canEnterFromSea === true,
+  access: site.canEnterFromSea ? 'port' : 'land',
+  category: site.settlementKind === 'village' ? '취락' : site.canEnterFromSea ? '항구 도시' : '도시',
+  facilities: site.canEnterFromSea ? ['항구', '육상 출입구'] : ['육상 출입구'],
+  arrivalRule: 'enter-original-city'
+})));
 const LANDMARKS = Object.freeze(loadJson('places.json'));
-const PLACES = Object.freeze([...ORIGINAL_CITIES.filter((city) => !city.retired), ...LANDMARKS]);
+const PLACES = Object.freeze([...ORIGINAL_CITIES.filter((city) => !city.retired), ...ADDITIONAL_SETTLEMENTS, ...LANDMARKS]);
 const ITEMS = Object.freeze(loadJson('items.json'));
 const TEMPLATES = Object.freeze(loadJson('templates.json'));
 const READY_MISSIONS = Object.freeze(loadJson('ready-missions.json'));
-const DISCOVERIES = Object.freeze(loadJson('discoveries.json'));
+const DISCOVERIES = Object.freeze([...loadJson('discoveries.json'), ...REGIONAL_SITES.discoveries]);
 const CITY_LANDMARKS = Object.freeze(loadJson('city-landmarks.json'));
 const SEA_ANIMALS = Object.freeze(loadJson('sea-animals.json'));
 
@@ -72,6 +84,7 @@ function publicCatalog() {
 
 module.exports = {
   ORIGINAL_CITIES,
+  ADDITIONAL_SETTLEMENTS,
   LANDMARKS,
   PLACES,
   ITEMS,

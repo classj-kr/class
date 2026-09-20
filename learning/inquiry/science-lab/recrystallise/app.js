@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function analyse(key = salt, w = water(), T1 = hot(), T2 = cold(), imp = dirt()) {
-        const hi = Math.max(T1, T2), lo = Math.min(T1, T2);
+        const hi = T1, lo = T2; // Preserve the selected start and finish; heating is not cooling.
         const s1 = solubility(hi, key), s2 = solubility(lo, key);
         const dissolved = (s1 * w) / 100;                 // a saturated solution at the hot end
         const canHold = (s2 * w) / 100;
@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const impOut = Math.max(0, imp - impCanHold);
         const totalOut = crystals + impOut;
         const purity = totalOut > 1e-9 ? (crystals / totalOut) * 100 : 0;
-        const verdict = impOut < 1e-9 ? 'pure' : purity >= 90 ? 'slight' : 'dirty';
+        const verdict = crystals < 1e-9 ? 'none' : impOut < 1e-9 ? 'pure' : purity >= 90 ? 'slight' : 'dirty';
         return { key, S: SALTS[key], w, T1: hi, T2: lo, s1, s2, dissolved, canHold,
                  crystals, imp, impCanHold, impOut, totalOut, purity, verdict };
     }
@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function outAt(T, a) {
         const held = (solubility(T, a.key) * a.w) / 100;
         const c = Math.max(0, Math.min(a.crystals, a.dissolved - held));
-        const i = a.T2 >= T - 1e-9 ? a.impOut : 0;
+        const i = a.impOut; // Constant-solubility impurity: any excess was already undissolved at the start.
         return { crystals: c, imp: i };
     }
 
@@ -155,12 +155,18 @@ document.addEventListener('DOMContentLoaded', () => {
         out += `<text class="note-text" x="248" y="134">불순물 ${a.imp} g 중 녹아 남는 양 ${Math.min(a.imp, a.impCanHold).toFixed(1)} g</text>`;
         const tone = a.verdict === 'pure' ? '#059669' : a.verdict === 'slight' ? '#d97706' : '#ea580c';
         out += `<text class="purity-text" fill="${tone}" x="248" y="160">${VERDICT[a.verdict]}</text>`;
-        out += `<text class="note-text" x="20" y="206">석출량 = (${a.s1.toFixed(1)} − ${a.s2.toFixed(1)}) × ${a.w} ÷ 100 = ${a.crystals.toFixed(1)} g</text>`;
+        out += `<text class="note-text" x="20" y="206">석출량: ${yieldText(a)}</text>`;
         mainGroup.innerHTML = out;
     }
 
-    const VERDICT = { pure: '결정은 100% 순수합니다', slight: '불순물이 조금 섞였습니다', dirty: '불순물이 많이 섞였습니다' };
-    const SHORT = { pure: '완전히 순수', slight: '조금 섞임', dirty: '많이 섞임' };
+    const VERDICT = { none: '주성분 결정이 나오지 않습니다', pure: '모형에서 불순물 없는 결정', slight: '불순물이 조금 섞였습니다', dirty: '불순물이 많이 섞였습니다' };
+    const SHORT = { none: '결정 없음', pure: '불순물 없음', slight: '조금 섞임', dirty: '많이 섞임' };
+
+    function yieldText(a) {
+        return a.s1 > a.s2
+            ? `(${a.s1.toFixed(1)} − ${a.s2.toFixed(1)}) × ${a.w} ÷ 100 = ${a.crystals.toFixed(1)} g`
+            : '0.0 g (용해도가 줄지 않음)';
+    }
 
     function renderGraph(a) {
         const gx = T => GRAPH.x0 + (T / GRAPH.tMax) * (GRAPH.x1 - GRAPH.x0);
@@ -186,7 +192,7 @@ document.addEventListener('DOMContentLoaded', () => {
             out += `<text class="curve-tag" fill="${s.colour}" opacity="${on ? 1 : 0.45}" x="${(gx(last[0]) - 4).toFixed(1)}" ` +
                    `y="${(gy(last[1]) - 7).toFixed(1)}" text-anchor="end">${s.formula}</text>`;
         });
-        // the vertical gap between the two temperatures is the yield
+        // A solubility decrease is per 100 g water; scale it by the selected water mass.
         out += `<line class="imp-line" x1="${GRAPH.x0}" y1="${gy(IMP_S).toFixed(1)}" x2="${GRAPH.x1}" y2="${gy(IMP_S).toFixed(1)}"/>`;
         out += `<text class="imp-text" x="${GRAPH.x1 - 4}" y="${(gy(IMP_S) - 5).toFixed(1)}" text-anchor="end">불순물의 용해도 ${IMP_S}</text>`;
         out += `<line class="drop-line" x1="${gx(a.T2).toFixed(1)}" y1="${gy(a.s2).toFixed(1)}" x2="${gx(a.T1).toFixed(1)}" y2="${gy(a.s1).toFixed(1)}"/>`;
@@ -197,7 +203,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const midY = (gy(a.s1) + gy(a.s2)) / 2;
         const flip = gx(a.T2) < 130;
         out += `<text class="drop-text" x="${(gx(a.T2) + (flip ? 8 : -8)).toFixed(1)}" y="${midY.toFixed(1)}"${flip ? '' : ' text-anchor="end"'}>` +
-               `차이 ${(a.s1 - a.s2).toFixed(1)}</text>`;
+               `${a.s1 >= a.s2 ? '감소' : '증가'} ${Math.abs(a.s1 - a.s2).toFixed(1)}</text>`;
         graphGroup.innerHTML = out;
     }
 
@@ -214,9 +220,9 @@ document.addEventListener('DOMContentLoaded', () => {
         dataNote.innerHTML =
             `<div class="data-row"><span class="data-name">용해도</span><span class="data-val">${a.T1} ℃ 에서 ${a.s1.toFixed(1)} · ${a.T2} ℃ 에서 ${a.s2.toFixed(1)} (물 100 g당)</span></div>` +
             `<div class="data-row"><span class="data-name">녹아 있던 양</span><span class="data-val">${a.s1.toFixed(1)} × ${a.w} ÷ 100 = ${a.dissolved.toFixed(1)} g</span></div>` +
-            `<div class="data-row"><span class="data-name">석출량</span><span class="data-val">${a.dissolved.toFixed(1)} − ${a.canHold.toFixed(1)} = ${a.crystals.toFixed(1)} g</span></div>` +
+            `<div class="data-row"><span class="data-name">석출량</span><span class="data-val">${yieldText(a)}</span></div>` +
             `<div class="data-row"><span class="data-name">불순물</span><span class="data-val">${a.imp} g 중 ${a.impCanHold.toFixed(1)} g 까지 녹을 수 있어 ${a.impOut.toFixed(1)} g 석출</span></div>` +
-            `<div class="data-row match"><span class="data-name">결정의 순도</span><span class="data-val">${a.totalOut > 0 ? `${a.crystals.toFixed(1)} ÷ ${a.totalOut.toFixed(1)} = ${a.purity.toFixed(1)}%` : '결정이 나오지 않았습니다'}</span></div>`;
+            `<div class="data-row match"><span class="data-name">결정의 순도</span><span class="data-val">${a.crystals > 0 ? `${a.crystals.toFixed(1)} ÷ ${a.totalOut.toFixed(1)} = ${a.purity.toFixed(1)}%` : '주성분 결정 없음 — 순도 비교 대상 없음'}</span></div>`;
         return a;
     }
 
@@ -250,17 +256,21 @@ document.addEventListener('DOMContentLoaded', () => {
         resultEmpty.hidden = true;
         resultContent.hidden = false;
         valueA.textContent = `${a.crystals.toFixed(1)} g`;
-        valueB.textContent = a.totalOut > 0 ? `${a.purity.toFixed(1)}%` : '—';
+        valueB.textContent = a.crystals > 0 ? `${a.purity.toFixed(1)}%` : '—';
         predictionResult.textContent = !prediction ? '다음에는 결과를 먼저 예상해 보세요.'
             : prediction === a.verdict ? '예상이 맞았습니다.' : '예상과 다른 결과입니다.';
         const other = analyse(a.key === 'kno3' ? 'nacl' : 'kno3', a.w, a.T1, a.T2, a.imp);
         let s = `${a.T1} ℃ 물 ${a.w} g 에는 ${a.S.name}이 ${a.dissolved.toFixed(1)} g 까지 녹습니다. `;
-        s += `${a.T2} ℃로 식히면 ${a.canHold.toFixed(1)} g 만 녹아 있을 수 있으므로 차이인 ${a.crystals.toFixed(1)} g이 결정으로 나옵니다. `;
+        if (a.verdict === 'none') {
+            explanation.textContent = s + a.T2 + ' ℃에서는 ' + a.canHold.toFixed(1) + ' g까지 녹을 수 있어 새 주성분 결정은 나오지 않습니다. 온도를 그대로 두거나 높이는 것은 냉각 재결정이 아닙니다.' + (a.impOut > 0 ? ' 바닥의 불순물 ' + a.impOut.toFixed(1) + ' g은 처음부터 녹지 않은 것으로, 새로 생긴 주성분 결정이 아닙니다.' : '');
+            return;
+        }
+        s += `${a.T2} ℃로 식히면 ${a.canHold.toFixed(1)} g까지 녹을 수 있으므로 차이인 ${a.crystals.toFixed(1)} g이 결정으로 나옵니다. `;
         if (a.impOut < 1e-9) {
             s += `불순물 ${a.imp} g은 이 물에 ${a.impCanHold.toFixed(1)} g 까지 녹을 수 있어 식힌 뒤에도 전부 녹은 채 남습니다. ` +
-                 `그래서 걸러 낸 결정은 100% 순수합니다. 이것이 재결정으로 물질을 정제하는 원리입니다. `;
+                 `이상화한 모형에서는 주성분 결정만 얻습니다. 실제 결정의 순도는 씻기·거르기 등의 조건에도 영향을 받습니다. `;
         } else {
-            s += `그런데 불순물 ${a.imp} g은 이 물에 ${a.impCanHold.toFixed(1)} g 까지밖에 녹지 못해 ${a.impOut.toFixed(1)} g이 함께 석출됩니다. ` +
+            s += `그런데 불순물 ${a.imp} g은 이 물에 ${a.impCanHold.toFixed(1)} g 까지밖에 녹지 못해 ${a.impOut.toFixed(1)} g은 처음부터 녹지 않고 남아 있습니다. 이를 미리 거르지 않고 마지막 고체를 함께 모은 조건입니다. ` +
                  `결정의 순도는 ${a.purity.toFixed(1)}%로 떨어집니다. 물을 더 쓰면 불순물이 다 녹아 남아 순도가 올라갑니다. `;
         }
         s += a.key === 'kno3'
@@ -294,7 +304,7 @@ document.addEventListener('DOMContentLoaded', () => {
         waterRange.value = '100'; hotRange.value = '80'; coldRange.value = '20'; dirtRange.value = '0';
         prediction = null;
         predictionButtons.forEach(item => item.classList.remove('selected'));
-        stageCaption.textContent = '용해도 곡선의 세로 간격이 그대로 석출량입니다.';
+        stageCaption.textContent = '용해도가 줄어들 때, 줄어든 용해도에 물의 질량을 곱하고 100으로 나누면 석출량입니다.';
         saltButtons.find(b => b.dataset.salt === 'kno3').click();
     });
 

@@ -85,3 +85,9 @@
 
 .run-row { display: grid; grid-template-columns: 1.8fr 1fr; gap: 8px; align-items: stretch; margin-top: 10px; }
 .run-row .run-button, .run-row .reset-button { width: 100%; margin: 0; }
+
+/* Keep complete Korean words readable in the 280px tablet control panel. */
+body .control-panel .pick-buttons.cols4,
+body .control-panel .prediction-buttons.three { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+body .control-panel .pick-buttons button,
+body .control-panel .prediction-buttons button { padding: 9px 8px; word-break: keep-all; overflow-wrap: normal; line-height: 1.55; }

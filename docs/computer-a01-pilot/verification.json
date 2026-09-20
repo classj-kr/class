@@ -1,0 +1,44 @@
+{
+  "passed": true,
+  "checks": [
+    "actual grayscale pixels",
+    "unsaved close",
+    "immutable saved photo",
+    "keyboard execution",
+    "independent task rejects stale save",
+    "close and reopen required",
+    "specific wrong-answer feedback",
+    "progress reload",
+    "cancel and reset isolation",
+    "malformed storage",
+    "blocked storage"
+  ],
+  "viewports": [
+    {
+      "width": 1440,
+      "pages": 4,
+      "horizontalOverflow": false
+    },
+    {
+      "width": 1024,
+      "pages": 4,
+      "horizontalOverflow": false
+    },
+    {
+      "width": 768,
+      "pages": 4,
+      "horizontalOverflow": false
+    },
+    {
+      "width": 390,
+      "pages": 4,
+      "horizontalOverflow": false
+    },
+    {
+      "width": 320,
+      "pages": 4,
+      "horizontalOverflow": false
+    }
+  ],
+  "consoleErrors": []
+}

@@ -73,7 +73,8 @@ document.addEventListener('DOMContentLoaded', () => {
     function analyseArea() {
         if (state.drops.length !== state.dots) dropDots();
         const seaAll = state.drops.filter(d => !d.land).length;
-        const verdict = 'sea-more';
+        const share = seaAll / state.dots;
+        const verdict = share > 0.6 ? 'sea-more' : share < 0.4 ? 'land-more' : 'even';
         return { kind: 'area', seaAll, landAll: state.dots - seaAll, verdict };
     }
     const tallyArea = k => { let sea = 0; for (let i = 0; i < k; i += 1) if (!state.drops[i].land) sea += 1; return { sea, land: k - sea }; };
@@ -82,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const water = WATERS[s.water];
         const salt = water.saltPer100 * s.grams / 100;
         const verdict = salt >= 30 ? 'lots' : salt >= 1 ? 'some' : 'none';
-        return { kind: 'salt', water, salt, verdict };
+        return { kind: 'salt', water, salt, evaporated: s.grams - salt, verdict };
     }
     const evaporated = p => Math.min(1, p * 1.15);        // the water is gone a little before the run ends
 
@@ -159,7 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (k) out += `<rect class="bar" x="${TX}" y="132" width="${(BW * t.sea / k).toFixed(1)}" height="12" rx="3" fill="#d97706" opacity=".9"/>`;
         out += `<text class="legend-text" x="${TX}" y="158">노란 막대 = 바다 비율 · 점선 = 실제 71 %</text>`;
         out += `<line class="expect-line" x1="${(TX + BW * (1 - LAND_SHARE)).toFixed(1)}" y1="128" x2="${(TX + BW * (1 - LAND_SHARE)).toFixed(1)}" y2="148"/>`;
-        out += `<text class="verdict-text" fill="#d97706" x="20" y="16">붙임딱지 ${state.dots}장 → 바다에 훨씬 많이 떨어진다</text>`;
+        out += `<text class="verdict-text" fill="#d97706" x="20" y="16">붙임딱지 ${state.dots}장 → ${a.verdict === 'sea-more' ? '바다에 더 많이' : a.verdict === 'land-more' ? '육지에 더 많이' : '반반에 가까움'}</text>`;
         out += `<text class="note-text" x="${TX}" y="196">${k < state.dots ? '떨어뜨리는 중' : `다 떨어졌습니다 · 바다 ${a.seaAll}장 : 육지 ${a.landAll}장`}</text>`;
         return out;
     }
@@ -189,7 +190,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const sx = cx - 30 + j * 30, ph = (p * 6 + j * 0.33) % 1;
                 out += `<path class="steam" opacity="${(1 - ph).toFixed(2)}" d="M${sx},${(base - H - 6 - ph * 30).toFixed(1)} q6,-8 0,-16 q-6,-6 0,-14"/>`;
             }
-            out += `<text class="legend-text" x="${cx}" y="${base + 20}" text-anchor="middle">${e >= 1 ? (salt >= 0.1 ? `소금 ${salt.toFixed(1)} g 남음` : '거의 남지 않음') : `물 ${Math.round((1 - e) * state.grams)} g 남음`}</text>`;
+            out += `<text class="legend-text" x="${cx}" y="${base + 20}" text-anchor="middle">${e >= 1 ? (salt >= 0.1 ? `소금 ${salt.toFixed(1)} g 남음` : '거의 남지 않음') : `물 ${((1 - e) * (state.grams - salt)).toFixed(1)} g 남음`}</text>`;
         });
         const VERD = { none: '거의 남지 않는다', some: `소금 ${a.salt.toFixed(1)} g이 남는다`, lots: '소금이 아주 많이 남는다' };
         out += `<text class="verdict-text" fill="#d97706" x="20" y="16">${a.water.name} ${state.grams} g → ${VERD[a.verdict]}</text>`;
@@ -277,7 +278,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         const e = evaporated(state.progress);
         return `<div class="data-row"><span class="data-name">물</span><span class="data-val">${a.water.name} ${state.grams} g · 100 g마다 소금 ${a.water.saltPer100} g</span></div>` +
-            `<div class="data-row"><span class="data-name">지금</span><span class="data-val">${Math.round(e * 100)} % 증발 · 물 ${Math.round((1 - e) * state.grams)} g 남음</span></div>` +
+            `<div class="data-row"><span class="data-name">지금</span><span class="data-val">${Math.round(e * 100)} % 증발 · 물 ${((1 - e) * a.evaporated).toFixed(1)} g 남음</span></div>` +
             `<div class="data-row"><span class="data-name">맛</span><span class="data-val">${a.water.taste}</span></div>` +
             `<div class="data-row match"><span class="data-name">다 마르면</span><span class="data-val">${a.salt >= 0.1 ? `소금 ${a.salt.toFixed(1)} g` : `소금 ${a.salt.toFixed(2)} g — 눈에 잘 띄지 않음`}</span></div>`;
     }
@@ -328,11 +329,11 @@ document.addEventListener('DOMContentLoaded', () => {
             labelA.textContent = '바다에'; labelB.textContent = '육지에';
             valueA.textContent = `${a.seaAll}장`; valueB.textContent = `${a.landAll}장`;
             const share = a.seaAll / state.dots;
-            const actual = share > 0.6 ? 'sea-more' : share < 0.4 ? 'land-more' : 'even';
+            const actual = a.verdict;
             predictionResult.textContent = !state.prediction ? '다음에는 결과를 먼저 예상해 보세요.'
                 : state.prediction === actual ? '예상이 맞았습니다.' : '예상과 다른 결과입니다.';
             let s = `${state.dots}장 가운데 바다에 ${a.seaAll}장(${Math.round(share * 100)} %), 육지에 ${a.landAll}장이 떨어졌습니다. `;
-            if (actual === 'sea-more') s += `아무 데나 떨어뜨려도 바다에 훨씬 많이 떨어지는 것은 지구 표면에 바다가 육지보다 훨씬 넓기 때문입니다. `;
+            if (actual === 'sea-more') s += `이번 표본에서는 바다 쪽이 더 많이 나왔습니다. 바다에 떨어질 확률이 더 크지만 매번 같은 결과가 나오는 것은 아닙니다. `;
             else if (actual === 'even') s += `이번에는 우연히 바다와 육지가 비슷하게 나왔습니다. 몇 장만으로는 이런 일이 생깁니다. `;
             else s += `이번에는 우연히 육지에 더 많이 떨어졌습니다. 몇 장만으로는 이런 일이 생깁니다. `;
             s += state.dots <= 30
@@ -343,12 +344,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         labelA.textContent = '남은 소금'; labelB.textContent = '날아간 물';
         valueA.textContent = a.salt >= 0.1 ? `${a.salt.toFixed(1)} g` : '거의 없음';
-        valueB.textContent = `${state.grams} g`;
+        valueB.textContent = `${Number(a.evaporated.toFixed(2))} g`;
         predictionResult.textContent = !state.prediction ? '다음에는 결과를 먼저 예상해 보세요.'
             : state.prediction === a.verdict ? '예상이 맞았습니다.' : '예상과 다른 결과입니다.';
         explanation.textContent = state.water === 'sea'
             ? `바닷물 ${state.grams} g을 말리자 물은 수증기가 되어 모두 날아가고 하얀 소금이 ${a.salt.toFixed(1)} g 남았습니다. 바닷물 100 g마다 소금이 약 3.5 g 녹아 있어 짠맛이 나고, 그래서 마실 수 없습니다. 강물이나 수돗물을 같이 말리면 거의 아무것도 남지 않습니다.`
-            : `${a.water.name} ${state.grams} g을 말리자 물은 다 날아갔지만 접시에는 거의 아무것도 남지 않았습니다(소금 ${a.salt.toFixed(2)} g). ${a.water.name}은 짜지 않은 민물이어서 마시고 농사에 쓸 수 있습니다. 바닷물을 같이 말리면 소금이 ${(3.5 * state.grams / 100).toFixed(1)} g 남아 차이가 뚜렷합니다.`;
+            : `${a.water.name} ${state.grams} g을 말리자 물은 다 날아갔지만 접시에는 거의 아무것도 남지 않았습니다(소금 ${a.salt.toFixed(2)} g). 염류가 적다는 결과만으로 마셔도 안전하다고 판단할 수는 없습니다. 강물은 정수 없이 마시면 안 됩니다. 바닷물을 같이 말리면 소금이 ${(3.5 * state.grams / 100).toFixed(1)} g 남아 차이가 뚜렷합니다.`;
     }
 
     function settingsChanged() {

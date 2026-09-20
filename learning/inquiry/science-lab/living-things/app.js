@@ -47,20 +47,20 @@ document.addEventListener('DOMContentLoaded', () => {
         legs: { label: '다리가 있는가', yes: '다리 있음', no: '다리 없음', key: 'legs' },
         flies: { label: '날 수 있는가', yes: '날 수 있음', no: '날 수 없음', key: 'flies' },
         water: { label: '물에서 사는가', yes: '물에서 삶', no: '땅에서 삶', key: 'water' },
-        fur: { label: '털이 있는가', yes: '털 있음', no: '털 없음', key: 'fur' },
+        fur: { label: '포유류의 털이 있는가 (깃털 제외)', graphLabel: '몸털 (깃털 제외)', yes: '몸털 있음', no: '몸털 없음', key: 'fur' },
     };
 
     // Six living things, each with the body it has and the home it fits.
     const HABITATS = {
-        desert: { label: '사막', hint: '뜨겁고 물이 없음', cls: 'desert', icon: '🏜️' },
-        polar: { label: '극지방', hint: '얼음과 눈, 매우 추움', cls: 'polar', icon: '🧊' },
-        water: { label: '물속', hint: '강과 연못', cls: 'water', icon: '🌊' },
-        forest: { label: '숲', hint: '나무가 많음', cls: 'forest', icon: '🌳' },
+        desert: { label: '사막', hint: '덥고 건조한 모형 환경', cls: 'desert', icon: '🏜️' },
+        polar: { label: '극지방', hint: '먹이 식물 없는 얼음 위', cls: 'polar', icon: '🧊' },
+        water: { label: '물속', hint: '공기를 못 마시는 물속', cls: 'water', icon: '🌊' },
+        forest: { label: '숲', hint: '따뜻하고 습한 숲속', cls: 'forest', icon: '🌳' },
     };
     const BEINGS = {
         camel: { name: '낙타', icon: '🐫', home: 'desert',
-                 traits: ['넓고 두꺼운 발바닥 — 뜨거운 모래', '긴 눈썹과 닫히는 코 — 모래바람', '혹에 저장한 지방 — 먹이 없는 날', '물을 오래 참는 몸'],
-                 trouble: { polar: '털이 얇아 추위를 견디지 못합니다', water: '헤엄치지도 숨 쉬지도 못합니다', forest: '먹이는 있지만 젖은 땅에서 발이 미끄러지고 습기에 약합니다' } },
+                 traits: ['넓고 두꺼운 발바닥 — 뜨거운 모래', '긴 속눈썹과 닫히는 코 — 모래바람', '혹에 저장한 지방 — 먹이 없는 날', '물을 오래 참는 몸'],
+                 trouble: { polar: '이 모형의 얼음 위에는 먹을 식물이 부족합니다', water: '폐로 숨 쉬므로 물속에 계속 잠겨 살 수 없습니다', forest: '건조한 환경의 몸 특징과 비교하는 조건입니다' } },
         bear: { name: '북극곰', icon: '🐻', home: 'polar',
                 traits: ['두꺼운 털과 지방 — 추위 막기', '흰 털 — 눈 속에서 숨기', '넓은 발 — 눈과 얼음 위 걷기', '작은 귀 — 열 지키기'],
                 trouble: { desert: '두꺼운 털과 지방 때문에 열을 내보내지 못해 너무 덥습니다', water: '헤엄은 치지만 숨 쉬며 살 수는 없습니다', forest: '추위 막는 두꺼운 털이 너무 더워 오래 살기 힘듭니다' } },
@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
                   trouble: { polar: '얼어 버려 살 수 없습니다', water: '뿌리가 물에 잠기면 썩습니다', forest: '햇빛이 모자라고 물이 너무 많아 썩기 쉽습니다' } },
         lily: { name: '수련', icon: '🪷', home: 'water',
                 traits: ['넓은 잎 — 물 위에 떠 햇빛 받기', '공기가 든 줄기 — 물에 뜨기', '물속 뿌리 — 바닥에 붙기'],
-                trouble: { desert: '물이 없으면 하루도 못 버팁니다', polar: '얼어서 자라지 못합니다', forest: '뜰 물이 없어 잎이 땅에 늘어져 마릅니다' } },
+                trouble: { desert: '물이 없으면 마르고 생장이 어렵습니다', polar: '얼어서 자라지 못합니다', forest: '뜰 물이 없어 잎이 땅에 늘어져 마릅니다' } },
     };
 
     const state = {
@@ -140,8 +140,8 @@ document.addEventListener('DOMContentLoaded', () => {
             list = [{ value: 'few', label: '4장 이하' }, { value: 'mid', label: '5~7장' }, { value: 'many', label: '8장 이상' }];
             predictionLegend.textContent = `'${rule.yes}' 상자에 몇 장이 들어갈까요?`;
         } else {
-            list = [{ value: 'fit', label: '잘 산다' }, { value: 'unfit', label: '살기 힘들다' }];
-            predictionLegend.textContent = `${eun(BEINGS[state.being].name)} ${HABITATS[state.habitat].label}에서 어떨까요?`;
+            list = [{ value: 'fit', label: '대표 서식지와 같다' }, { value: 'unfit', label: '대표 서식지와 다르다' }];
+            predictionLegend.textContent = `${BEINGS[state.being].name}의 대표 서식지와 ${HABITATS[state.habitat].label}을 비교하면?`;
         }
         predictionArea.innerHTML = list.map(o => `<button type="button" data-prediction="${o.value}"${o.value === state.prediction ? ' class="selected"' : ''}>${o.label}</button>`).join('');
         predictionArea.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
@@ -231,7 +231,7 @@ document.addEventListener('DOMContentLoaded', () => {
             out += `<text class="trait-text ${a.fit ? 'trait-good' : 'trait-bad'}" x="226" y="${y}">${a.fit ? `→ ${a.habitat.label}에 딱 맞는 몸입니다` : `✗ ${a.trouble}`.slice(0, 26)}</text>`;
             if (!a.fit && a.trouble.length > 24) out += `<text class="trait-text trait-bad" x="226" y="${y + 14}">${a.trouble.slice(24)}</text>`;
         }
-        out += `<text class="rule-text" x="20" y="16">${a.being.name} · ${a.habitat.label} → ${a.fit ? '잘 산다' : '살기 힘들다'} (원래 사는 곳: ${HABITATS[a.being.home].label})</text>`;
+        out += `<text class="rule-text" x="20" y="16">${a.being.name} · ${a.habitat.label} → ${a.fit ? '대표 서식지' : '다른 환경'} (원래 사는 곳: ${HABITATS[a.being.home].label})</text>`;
         out += `<text class="note-text" x="20" y="210">${shown < a.being.traits.length ? '몸의 특징을 하나씩 살피는 중' : '몸의 특징을 모두 살폈습니다'}</text>`;
         return out;
     }
@@ -248,7 +248,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const yes = CARDS.filter(c => c[r.key]).length;
             const y = 44 + i * 30;
             const mine = k === state.rule;
-            out += `<text class="bar-text" fill="${mine ? '#d97706' : '#334155'}" x="20" y="${y + 4}">${r.label}</text>`;
+            out += `<text class="bar-text" fill="${mine ? '#d97706' : '#334155'}" x="20" y="${y + 4}">${r.graphLabel || r.label}</text>`;
             const x0 = 150, w = 280;
             out += `<rect class="bar" x="${x0}" y="${y - 6}" width="${(w * yes / 12).toFixed(1)}" height="14" rx="3" fill="#059669" opacity="${mine ? '.95' : '.45'}"/>`;
             out += `<rect class="bar" x="${(x0 + w * yes / 12).toFixed(1)}" y="${y - 6}" width="${(w * (12 - yes) / 12).toFixed(1)}" height="14" rx="3" fill="#6f8f8d" opacity="${mine ? '.9' : '.4'}"/>`;
@@ -261,7 +261,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // which of the six belong in this place
     function graphHabitat(a) {
-        let out = `<text class="axis-title" x="20" y="20">${a.habitat.label}에서 잘 살 수 있는 생물은?</text>`;
+        let out = `<text class="axis-title" x="20" y="20">${a.habitat.label}에서 대표 서식지인 생물은?</text>`;
         Object.entries(BEINGS).forEach(([k, b], i) => {
             const col = i % 3, row = Math.floor(i / 3);
             const x = 20 + col * 146, y = 40 + row * 66;
@@ -269,9 +269,9 @@ document.addEventListener('DOMContentLoaded', () => {
             out += `<rect class="card${mine ? ' hit' : ''}" x="${x}" y="${y}" width="134" height="56" rx="6"/>`;
             out += `<text style="font-size:22px" x="${x + 22}" y="${y + 36}" text-anchor="middle">${b.icon}</text>`;
             out += `<text class="bar-text" fill="#0f172a" x="${x + 44}" y="${y + 22}">${b.name}</text>`;
-            out += `<text class="bar-text" fill="${ok ? '#059669' : '#dc2626'}" x="${x + 44}" y="${y + 42}">${ok ? '✓ 잘 산다' : `✗ ${HABITATS[b.home].label}이 집`}</text>`;
+            out += `<text class="bar-text" fill="${ok ? '#059669' : '#dc2626'}" x="${x + 44}" y="${y + 42}">${ok ? '대표 서식지' : `다른 예: ${HABITATS[b.home].label}`}</text>`;
         });
-        out += `<text class="note-text" x="20" y="188">몸의 특징이 그곳에 맞는 생물만 잘 살 수 있습니다</text>`;
+        out += `<text class="note-text" x="20" y="188">이 모형은 대표 서식지를 비교하며, 모든 생존 가능성을 판정하지 않습니다</text>`;
         return out;
     }
 
@@ -336,21 +336,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 : state.prediction === a.verdict ? '예상이 맞았습니다.' : '예상과 다른 결과입니다.';
             let s = `'${a.rule.label}'로 나누니 ${a.rule.yes} 상자에 ${a.yes.map(c => c.name).join('·')} ${a.yes.length}장, ${a.rule.no} 상자에 ${a.no.length}장이 들어갔습니다. `;
             if (state.rule === 'legs') s += `다리가 없는 상자에 붕어·뱀·지렁이 같은 동물과 식물이 함께 들어갔습니다. 다리로는 동물과 식물을 가를 수 없다는 뜻입니다.`;
-            else if (state.rule === 'animal') s += `스스로 움직여 먹이를 찾는 것이 동물, 한자리에서 햇빛으로 양분을 만드는 것이 식물입니다. 이 기준이면 딱 8장과 4장으로 나뉩니다.`;
+            else if (state.rule === 'animal') s += `이 카드의 동물은 다른 생물을 먹이로 이용하고, 초록색 식물은 빛을 이용해 양분을 만듭니다. 이동 여부만으로 모든 동물과 식물을 구분하지는 않습니다. 동물 8장, 식물 4장입니다.`;
             else if (state.rule === 'water') s += `개구리와 오리는 물과 땅을 오가지만 물에서 사는 쪽으로 넣었습니다. 연꽃처럼 식물도 물에 사는 것이 있습니다.`;
             else if (state.rule === 'flies') s += `참새·나비·오리처럼 날개가 있어도 생김새는 아주 다릅니다. 기준이 하나면 무리 안이 다양할 수 있습니다.`;
-            else s += `털이 있는 카드는 고양이 하나뿐입니다. 이런 기준은 한 무리가 너무 작아 나누는 데 별로 쓸모가 없습니다. 다른 기준을 골라 견주어 보세요.`;
+            else s += `깃털을 제외한 포유류의 털을 기준으로 하면 고양이 한 장이 해당합니다. 두 무리의 수가 달라도 같은 기준을 일관되게 적용하면 올바르게 분류한 것입니다.`;
             explanation.textContent = s;
             return;
         }
         labelA.textContent = `${a.habitat.label}에서`; labelB.textContent = '원래 사는 곳';
-        valueA.textContent = a.fit ? '잘 산다' : '살기 힘들다';
+        valueA.textContent = a.fit ? '대표 서식지' : '다른 환경';
         valueB.textContent = HABITATS[a.being.home].label;
         predictionResult.textContent = !state.prediction ? '다음에는 결과를 먼저 예상해 보세요.'
             : state.prediction === a.verdict ? '예상이 맞았습니다.' : '예상과 다른 결과입니다.';
         explanation.textContent = a.fit
             ? `${eun(a.being.name)} ${a.being.traits.join(', ')} 같은 몸의 특징을 가져 ${a.habitat.label}에 딱 맞습니다. 사는 곳에 알맞은 몸을 가졌기 때문에 그곳에서 잘 살 수 있습니다.`
-            : `${a.being.name}의 몸은 ${HABITATS[a.being.home].label}에 맞추어져 있어 ${a.habitat.label}에서는 ${a.trouble}. 생물의 몸은 원래 사는 곳에 맞게 생겼기 때문에 다른 곳에 옮기면 살기 어렵습니다.`;
+            : `${a.being.name}의 몸은 ${HABITATS[a.being.home].label}에 맞추어져 있어 ${a.habitat.label}에서는 ${a.trouble}. 대표 서식지와 다른 조건을 비교한 것입니다. 실제로 살 수 있는지는 종과 온도·먹이·물 등의 조건을 함께 살펴야 합니다.`;
     }
 
     function settingsChanged() {

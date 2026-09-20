@@ -130,3 +130,9 @@
 /* Independent equilibrium samples: no delayed thaw/refill when the condition changes. */
 #waterRect, #waterSurface, #iceClipRect { transition: none; }
 #phaseControls[hidden] { display: none; }
+
+/* Tablet sidebar: keep whole Korean choice words and spread scale labels. */
+.prediction-buttons.three { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.prediction-buttons button { word-break: keep-all; }
+#phaseControls .range-scale { display: flex; justify-content: space-between; gap: 10px; }
+#phaseControls .range-scale span { flex: 0 1 auto; word-break: keep-all; }

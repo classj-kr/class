@@ -96,10 +96,15 @@
   };
 
   // ───────────── 지도 ─────────────
-  let entries = [];
+  function activateMarkerFromKeyboard(event) {
+    const key = event.originalEvent.key;
+    if (key !== "Enter" && key !== " ") return;
+    L.DomEvent.stop(event.originalEvent);
+    event.target.fire("click");
+  }
 
   function draw(map, group, api) {
-    entries = [];
+    const entries = [];
     const links = L.layerGroup().addTo(group);
     relics.filter(inScope).forEach((relic) => {
       const color = eraOf(relic.eraCategory).color;
@@ -111,16 +116,38 @@
       const marker = L.marker([relic.lat, relic.lng], { icon, pane: "studyMarkers", title: relic.title, riseOnHover: true })
         .bindTooltip(`<strong>${relic.title}</strong><small>${placeOf(relic)}</small>`, { direction: "top", offset: [0, -18], className: "relic-tooltip" })
         .on("click", () => openRelic(relic))
+        .on("keydown", activateMarkerFromKeyboard)
         .addTo(group);
       entries.push({ relic, marker, origin: L.latLng(relic.lat, relic.lng) });
     });
-    api.setZoomSync(map, "heritage", () => spreadOverlaps(map, links, group));
+    api.setZoomSync(map, "heritage", () => spreadOverlaps(map, links, group, entries));
   }
 
-  // 가까운 핀끼리 묶는다. 앞선 핀을 씨앗으로 삼아 씨앗에서 44px 안에 든 핀만 같은 묶음이 된다(줄줄이 이어 붙어 한 덩어리가 되지 않게).
-  // 아홉 개까지는 둥글게 벌려 놓고 원래 자리를 점선으로 잇는다(국립중앙박물관 한 자리에 아홉 점). 더 많으면 개수 동그라미 하나로 모으고, 누르면 그곳을 확대한다.
+  // 묶음 안의 핀뿐 아니라 다른 묶음·단독 핀과의 최종 화면 겹침도 제거한다.
+  // 최대 확대에서는 개수가 많아도 개별 핀을 보여 주어 모든 상세창에 접근할 수 있게 한다.
   const RING_LIMIT = 9;
-  function spreadOverlaps(map, links, group) {
+  const PIN_GAP = 54; // 40px 핀의 1.25배 hover 크기(50px)와 여유 간격
+
+  function freePinPosition(preferred, occupied) {
+    const isFree = (point) => occupied.every((other) =>
+      Math.abs(point.x - other.x) >= PIN_GAP || Math.abs(point.y - other.y) >= PIN_GAP);
+    if (isFree(preferred)) return preferred;
+    // 가까운 격자 테두리부터 탐색한다. 유한한 기존 핀 집합 밖에는 반드시 빈 자리가 있다.
+    for (let ring = 1; ; ring += 1) {
+      const candidates = [];
+      for (let x = -ring; x <= ring; x += 1) {
+        candidates.push(L.point(x, -ring), L.point(x, ring));
+      }
+      for (let y = -ring + 1; y < ring; y += 1) {
+        candidates.push(L.point(-ring, y), L.point(ring, y));
+      }
+      candidates.sort((a, b) => a.x * a.x + a.y * a.y - b.x * b.x - b.y * b.y);
+      const spot = candidates.map((offset) => preferred.add(offset.multiplyBy(PIN_GAP))).find(isFree);
+      if (spot) return spot;
+    }
+  }
+
+  function spreadOverlaps(map, links, group, entries) {
     links.clearLayers();
     const points = entries.map((entry) => map.latLngToLayerPoint(entry.origin));
     const clusters = [];
@@ -129,26 +156,41 @@
       if (home) home.members.push(index);
       else clusters.push({ seed: points[index], members: [index] });
     });
+    const placements = [];
     clusters.forEach(({ members }) => {
       const center = members.reduce((sum, index) => sum.add(points[index]), L.point(0, 0)).divideBy(members.length);
-      if (members.length > RING_LIMIT) {
+      if (members.length > RING_LIMIT && map.getZoom() < map.getMaxZoom()) {
         members.forEach((index) => group.removeLayer(entries[index].marker));
-        L.marker(map.layerPointToLatLng(center), {
-          pane: "studyMarkers", title: `유물·유적 ${members.length}개`,
-          icon: L.divIcon({ className: "relic-pin-wrapper", html: `<span class="relic-cluster">${members.length}</span>`, iconSize: [44, 44], iconAnchor: [22, 22] })
-        }).on("click", () => map.flyTo(map.layerPointToLatLng(center), Math.min(map.getZoom() + 2, 12), { duration: 0.5 })).addTo(links);
+        placements.push({ center, preferred: center, members, priority: 1 });
         return;
       }
-      members.forEach((index) => { entries[index].marker.setLatLng(entries[index].origin).addTo(group); });
-      if (members.length < 2) return;
-      const radius = Math.max(30, 48 / (2 * Math.sin(Math.PI / members.length)));
-      L.circleMarker(map.layerPointToLatLng(center), { pane: "themeLines", radius: 3, color: "#ffffff", weight: 1.5, fillColor: "#5b4636", fillOpacity: 0.9, interactive: false }).addTo(links);
+      const radius = members.length < 2 ? 0 : Math.max(30, PIN_GAP / (2 * Math.sin(Math.PI / members.length)));
       members.forEach((index, order) => {
         const angle = -Math.PI / 2 + (Math.PI * 2 * order) / members.length;
-        const spot = map.layerPointToLatLng(center.add(L.point(Math.cos(angle) * radius, Math.sin(angle) * radius)));
-        entries[index].marker.setLatLng(spot);
-        L.polyline([entries[index].origin, spot], { pane: "themeLines", color: "#5b4636", weight: 1.4, opacity: 0.6, dashArray: "3 4", interactive: false }).addTo(links);
+        placements.push({ index, preferred: center.add(L.point(Math.cos(angle) * radius, Math.sin(angle) * radius)), priority: members.length < 2 ? 0 : 2 });
       });
+    });
+    const occupied = [];
+    placements.sort((a, b) => a.priority - b.priority).forEach((placement) => {
+      const position = freePinPosition(placement.preferred.round(), occupied);
+      occupied.push(position);
+      const spot = map.layerPointToLatLng(position);
+      let origin;
+      if (placement.members) {
+        origin = map.layerPointToLatLng(placement.center);
+        L.marker(spot, {
+          pane: "studyMarkers", title: "유물·유적 " + placement.members.length + "개",
+          icon: L.divIcon({ className: "relic-pin-wrapper", html: '<span class="relic-cluster">' + placement.members.length + '</span>', iconSize: [44, 44], iconAnchor: [22, 22] })
+        }).on("click", () => map.flyTo(origin, Math.min(map.getZoom() + 2, map.getMaxZoom()), { duration: 0.5 }))
+          .on("keydown", activateMarkerFromKeyboard).addTo(links);
+      } else {
+        const entry = entries[placement.index];
+        origin = entry.origin;
+        entry.marker.setLatLng(spot).addTo(group);
+      }
+      if (map.latLngToLayerPoint(origin).distanceTo(position) > 1) {
+        L.polyline([origin, spot], { pane: "themeLines", color: "#5b4636", weight: 1.4, opacity: 0.6, dashArray: "3 4", interactive: false }).addTo(links);
+      }
     });
   }
 

@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const avDiff = d.vo2 / co;                       // mL of oxygen taken from each litre
         const ve = (d.rr * d.tv) / 1000;                 // all the air moved
         const va = (d.rr * (d.tv - DEAD_SPACE)) / 1000;  // only the air that reaches the air sacs
-        const feO2 = AIR_O2 - d.vo2 / (va * 1000);       // what is left in the breath we let out
+        const feO2 = AIR_O2 - d.vo2 / (ve * 1000);       // Mixed expired air; illustrative equal inspired/expired volume approximation.
         const glucose = d.vo2 / 1000 / O2_PER_GLUCOSE;   // grams burned each minute
         const kcal = (d.vo2 / 1000) * 5;
         const filteredGlucose = d.gfr * PLASMA_GLUCOSE;  // mg filtered each minute, all taken back
@@ -120,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
         out += statRow(300, 150, '오줌 속 포도당', `0 mg`, '#0f172a', 452);
 
         out += `<text class="note-text" x="14" y="188">산소 소비량 ${a.d.vo2} mL/분 = 심박출량 ${fmt(a.co)} L × 1 L에서 뽑아 쓴 ${fmt(a.avDiff, 0)} mL</text>`;
-        out += `<text class="note-text" x="14" y="204">피가 온몸을 한 바퀴 도는 데 ${fmt(a.circTime, 0)} 초 · 내쉰 숨의 산소 ${fmt(a.feO2 * 100, 1)} % — 심장과 폐는 실제 빠르기입니다</text>`;
+        out += `<text class="note-text" x="14" y="204">표시된 호흡·심장 박동은 예시 자료이며 모든 사람의 측정값이 아닙니다</text>`;
         mainGroup.innerHTML = out;
     }
 
@@ -171,7 +171,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const t = minutes();
         dataNote.innerHTML =
             `<div class="data-row"><span class="data-name">산소 소비량</span><span class="data-val">심박출량 ${fmt(a.co)} L/분 × 1 L당 ${fmt(a.avDiff, 0)} mL = ${a.d.vo2} mL/분</span></div>` +
-            `<div class="data-row"><span class="data-name">숨</span><span class="data-val">${a.d.rr} 회 × ${a.d.tv} mL = ${fmt(a.ve)} L/분 · 내쉰 숨의 산소 ${fmt(a.feO2 * 100, 1)} %</span></div>` +
+            `<div class="data-row"><span class="data-name">숨</span><span class="data-val">${a.d.rr} 회 × ${a.d.tv} mL = ${fmt(a.ve)} L/분 · 내쉰 숨의 산소 약 ${fmt(a.feO2 * 100, 1)} % (들숨·날숨 부피를 같게 둔 근사)</span></div>` +
             `<div class="data-row"><span class="data-name">양분</span><span class="data-val">포도당 ${fmt(a.glucose, 2)} g/분 · ${t} 분이면 ${fmt(a.glucose * t, 1)} g (${fmt(a.kcal * t, 0)} kcal)</span></div>` +
             `<div class="data-row"><span class="data-name">콩팥</span><span class="data-val">포도당 ${fmt(a.filteredGlucose, 0)} mg/분을 거른 뒤 재흡수합니다 (정상 조건 모형)</span></div>` +
             `<div class="data-row match"><span class="data-name">${t} 분 동안</span><span class="data-val">산소 ${fmt((a.d.vo2 * t) / 1000, 1)} L · 오줌 ${fmt(a.d.urine * t, 0)} mL</span></div>`;
@@ -198,7 +198,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (a.key === 'run') {
             s += `이때 심박출량은 ${fmt(a.co / base.co, 1)}배밖에 늘지 않았는데 산소 소비량은 ${fmt(a.d.vo2 / base.d.vo2, 1)}배가 되었습니다. ` +
                  `세포가 피 1 L 에서 뽑아 쓰는 산소가 ${fmt(base.avDiff, 0)} mL 에서 ${fmt(a.avDiff, 0)} mL로 늘었기 때문입니다. `;
-            s += `숨을 아주 많이 쉬어서 내쉰 숨의 산소가 오히려 ${fmt(base.feO2 * 100, 1)} % 에서 ${fmt(a.feO2 * 100, 1)} %로 높아졌습니다. `;
+            s += `이 예시의 환기량을 적용하면 내쉰 숨의 산소 비율은 ${fmt(base.feO2 * 100, 1)} % 에서 ${fmt(a.feO2 * 100, 1)} %로 높아졌습니다. `;
         }
         if (a.verdict === 'less') s += `피가 근육으로 몰려 콩팥으로 가는 피가 줄었습니다. 사구체 여과량이 ${base.d.gfr} 에서 ${a.d.gfr} mL/분으로 줄어 오줌도 ${fmt(a.d.urine, 1)} mL/분으로 적어졌습니다.`;
         else if (a.verdict === 'more') s += `물을 마셔 몸속 물이 많아지자 콩팥이 물을 덜 되찾아 오줌이 ${fmt(a.d.urine, 1)} mL/분으로 늘었습니다. 몸속 물의 양을 콩팥이 조절합니다.`;

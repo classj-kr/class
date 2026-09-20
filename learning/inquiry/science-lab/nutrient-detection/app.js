@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const REAGENTS = {
         iodine: { label: '아이오딘', hint: '녹말 검출 (청람색)', full: '아이오딘-아이오딘화 칼륨 용액', target: 'starch', color: '#92400e', result: '#172554', resultName: '청람색', tint: 0.35, needsHeat: false, badgeColor: '#b45309', icon: '🍂' },
         benedict: { label: '베네딕트', hint: '당분 검출 (황적색)', full: '베네딕트 용액', target: 'sugar', color: '#0284c7', result: '#ea580c', resultName: '황적색', tint: 0.55, needsHeat: true, badgeColor: '#0369a1', icon: '🔥' },
-        biuret: { label: '뷰렛', hint: '단백질 검출 (보라색)', full: '뷰렛 용액 (NaOH + CuSO₄)', target: 'protein', color: '#8b5cf6', result: '#7e22ce', resultName: '보라색', tint: 0.35, needsHeat: false, badgeColor: '#6b21a8', icon: '💜' },
+        biuret: { label: '뷰렛', hint: '단백질 검출 (보라색)', full: '뷰렛 용액 (NaOH + CuSO₄)', target: 'protein', color: '#38bdf8', result: '#7e22ce', resultName: '보라색', tint: 0.35, needsHeat: false, badgeColor: '#6b21a8', icon: '💜' },
         sudan: { label: '수단 Ⅲ', hint: '지방 검출 (선홍색)', full: '수단 Ⅲ 용액', target: 'fat', color: '#dc2626', result: '#e11d48', resultName: '선홍색', tint: 0.15, needsHeat: false, badgeColor: '#b91c1c', icon: '🔴' },
     };
     const HEATS = {
@@ -830,7 +830,7 @@ document.addEventListener('DOMContentLoaded', () => {
             labelA.textContent = '변한 시험관'; valueA.textContent = a.works ? `${TUBES.indexOf(tgt) + 1}번 ${tgt.label}` : '없음';
             labelB.textContent = '색'; valueB.textContent = a.works ? r.resultName : '그대로';
             if (a.works) {
-                s = `${r.full}${eun(r.full)} ${tgt.nutrient}${eul(tgt.nutrient)} 찾아내는 시약입니다. 네 시험관에 똑같이 넣어도 ${tgt.nutrient}이 든 ${TUBES.indexOf(tgt) + 1}번 ${tgt.label}만 ${r.resultName}으로 변하고, 나머지 시험관은 시약 색이 옅게 섞일 뿐 반응하지 않습니다. ${r.target === 'starch' ? '밥이나 감자에 떨어뜨리면 청람색이 되는 것과 같습니다.' : r.target === 'sugar' ? '끓는 물에 담가 가열했기 때문에 반응이 일어났고, 가열하지 않았다면 푸른색 그대로였을 것입니다. 녹말물은 당분이 아니라 변하지 않습니다.' : r.target === 'protein' ? '달걀 흰자처럼 단백질이 든 것만 보라색이 됩니다. 우유나 두부에서도 같은 색이 납니다.' : '수단 Ⅲ은 물에 녹지 않고 지방에만 녹아 색을 내므로, 물 시험관에서는 붉은 알갱이가 가라앉을 뿐입니다.'}`;
+                s = `${r.full}${eun(r.full)} ${tgt.nutrient}${eul(tgt.nutrient)} 찾아내는 시약입니다. 네 시험관에 똑같이 넣어도 ${tgt.nutrient}이 든 ${TUBES.indexOf(tgt) + 1}번 ${tgt.label}만 ${r.resultName}으로 변하고, 나머지 시험관은 시약 색이 옅게 섞일 뿐 반응하지 않습니다. ${r.target === 'starch' ? '밥이나 감자에 떨어뜨리면 청람색이 되는 것과 같습니다.' : r.target === 'sugar' ? '끓는 물에 담가 가열했기 때문에 반응이 일어났고, 가열하지 않았다면 푸른색 그대로였을 것입니다. 녹말물은 당분이 아니라 변하지 않습니다.' : r.target === 'protein' ? '달걀 흰자처럼 단백질이 든 것만 보라색이 됩니다. 우유나 두부에서도 같은 색이 납니다.' : '수단 Ⅲ은 물에 녹지 않고 지방에만 녹아 색을 내므로, 지방층이 붉게 물드는지 대조군과 비교합니다. 시약 자체의 붉은색만으로 양성이라고 판단하지 않습니다.'}`;
             } else {
                 s = `베네딕트 용액은 당분과 만나도 실온에서는 반응하지 않습니다. 끓는 물에 담가 데워야 당분이 구리 이온과 반응해 황적색 앙금이 생기므로, 가열하지 않은 지금은 2번 포도당물까지 푸른색 그대로입니다. 가열 단추를 켜고 다시 해 보세요.`;
             }

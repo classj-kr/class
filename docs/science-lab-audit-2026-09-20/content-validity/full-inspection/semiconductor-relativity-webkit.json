@@ -1,0 +1,813 @@
+{
+  "slug": "semiconductor-relativity",
+  "engine": "webkit",
+  "modes": [
+    "diode",
+    "muon",
+    "energy"
+  ],
+  "cases": 22,
+  "errors": [],
+  "issues": [
+    {
+      "mode": "muon",
+      "condition": {
+        "kind": "initial"
+      },
+      "issues": [
+        {
+          "kind": "unanswerable-prediction",
+          "verdict": "some",
+          "choices": [
+            {
+              "key": "yes",
+              "text": "지상에서 더 길게 측정"
+            },
+            {
+              "key": "no",
+              "text": "지상에서 더 짧게 측정"
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "key": "yes",
+          "text": "지상에서 더 길게 측정"
+        },
+        {
+          "key": "no",
+          "text": "지상에서 더 짧게 측정"
+        }
+      ],
+      "values": [
+        {
+          "kind": "muon",
+          "b": 0.99,
+          "d": 10000,
+          "g": 7.088812050083354,
+          "v": 296794533.42,
+          "tGround": 0.000033693342949308286,
+          "tMuon": 0.000004753030932582294,
+          "fRel": 0.11493152966445634,
+          "fNewton": 2.185898471818542e-7,
+          "reach": 4622.313700799718,
+          "verdict": "some"
+        }
+      ]
+    },
+    {
+      "mode": "muon",
+      "condition": {
+        "kind": "button",
+        "attrs": [
+          [
+            "data-value",
+            "b05"
+          ]
+        ],
+        "group": "mspeed"
+      },
+      "issues": [
+        {
+          "kind": "unanswerable-prediction",
+          "verdict": "few",
+          "choices": [
+            {
+              "key": "yes",
+              "text": "지상에서 더 길게 측정"
+            },
+            {
+              "key": "no",
+              "text": "지상에서 더 짧게 측정"
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "key": "yes",
+          "text": "지상에서 더 길게 측정"
+        },
+        {
+          "key": "no",
+          "text": "지상에서 더 짧게 측정"
+        }
+      ],
+      "values": [
+        {
+          "kind": "muon",
+          "b": 0.5,
+          "d": 10000,
+          "g": 1.1547005383792517,
+          "v": 149896229,
+          "tGround": 0.00006671281903963041,
+          "tMuon": 0.000057774996046394106,
+          "fRel": 3.795436518625316e-12,
+          "fNewton": 6.493328479464343e-14,
+          "reach": 380.2683081511211,
+          "verdict": "few"
+        }
+      ]
+    },
+    {
+      "mode": "muon",
+      "condition": {
+        "kind": "button",
+        "attrs": [
+          [
+            "data-value",
+            "b09"
+          ]
+        ],
+        "group": "mspeed"
+      },
+      "issues": [
+        {
+          "kind": "unanswerable-prediction",
+          "verdict": "few",
+          "choices": [
+            {
+              "key": "yes",
+              "text": "지상에서 더 길게 측정"
+            },
+            {
+              "key": "no",
+              "text": "지상에서 더 짧게 측정"
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "key": "yes",
+          "text": "지상에서 더 길게 측정"
+        },
+        {
+          "key": "no",
+          "text": "지상에서 더 짧게 측정"
+        }
+      ],
+      "values": [
+        {
+          "kind": "muon",
+          "b": 0.9,
+          "d": 10000,
+          "g": 2.294157338705618,
+          "v": 269813212.2,
+          "tGround": 0.000037062677244239115,
+          "tMuon": 0.00001615524646847028,
+          "fRel": 0.00064046178331865,
+          "fNewton": 4.716208374284444e-8,
+          "reach": 1359.9297319838604,
+          "verdict": "few"
+        }
+      ]
+    },
+    {
+      "mode": "muon",
+      "condition": {
+        "kind": "button",
+        "attrs": [
+          [
+            "data-value",
+            "b099"
+          ]
+        ],
+        "group": "mspeed"
+      },
+      "issues": [
+        {
+          "kind": "unanswerable-prediction",
+          "verdict": "some",
+          "choices": [
+            {
+              "key": "yes",
+              "text": "지상에서 더 길게 측정"
+            },
+            {
+              "key": "no",
+              "text": "지상에서 더 짧게 측정"
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "key": "yes",
+          "text": "지상에서 더 길게 측정"
+        },
+        {
+          "key": "no",
+          "text": "지상에서 더 짧게 측정"
+        }
+      ],
+      "values": [
+        {
+          "kind": "muon",
+          "b": 0.99,
+          "d": 10000,
+          "g": 7.088812050083354,
+          "v": 296794533.42,
+          "tGround": 0.000033693342949308286,
+          "tMuon": 0.000004753030932582294,
+          "fRel": 0.11493152966445634,
+          "fNewton": 2.185898471818542e-7,
+          "reach": 4622.313700799718,
+          "verdict": "some"
+        }
+      ]
+    },
+    {
+      "mode": "muon",
+      "condition": {
+        "kind": "button",
+        "attrs": [
+          [
+            "data-value",
+            "b0999"
+          ]
+        ],
+        "group": "mspeed"
+      },
+      "issues": [
+        {
+          "kind": "unanswerable-prediction",
+          "verdict": "many",
+          "choices": [
+            {
+              "key": "yes",
+              "text": "지상에서 더 길게 측정"
+            },
+            {
+              "key": "no",
+              "text": "지상에서 더 짧게 측정"
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "key": "yes",
+          "text": "지상에서 더 길게 측정"
+        },
+        {
+          "key": "no",
+          "text": "지상에서 더 짧게 측정"
+        }
+      ],
+      "values": [
+        {
+          "kind": "muon",
+          "b": 0.999,
+          "d": 10000,
+          "g": 22.36627204212937,
+          "v": 299492665.542,
+          "tGround": 0.00003338979931913434,
+          "tMuon": 0.0000014928638646727057,
+          "fRel": 0.506869818645574,
+          "fNewton": 2.5097665104440593e-7,
+          "reach": 14716.680147400237,
+          "verdict": "many"
+        }
+      ]
+    },
+    {
+      "mode": "muon",
+      "condition": {
+        "kind": "button",
+        "attrs": [
+          [
+            "data-value",
+            "h5"
+          ]
+        ],
+        "group": "height"
+      },
+      "issues": [
+        {
+          "kind": "unanswerable-prediction",
+          "verdict": "many",
+          "choices": [
+            {
+              "key": "yes",
+              "text": "지상에서 더 길게 측정"
+            },
+            {
+              "key": "no",
+              "text": "지상에서 더 짧게 측정"
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "key": "yes",
+          "text": "지상에서 더 길게 측정"
+        },
+        {
+          "key": "no",
+          "text": "지상에서 더 짧게 측정"
+        }
+      ],
+      "values": [
+        {
+          "kind": "muon",
+          "b": 0.999,
+          "d": 5000,
+          "g": 22.36627204212937,
+          "v": 299492665.542,
+          "tGround": 0.00001669489965956717,
+          "tMuon": 7.464319323363528e-7,
+          "fRel": 0.7119479044463675,
+          "fNewton": 0.0005009756990557586,
+          "reach": 14716.680147400237,
+          "verdict": "many"
+        }
+      ]
+    },
+    {
+      "mode": "muon",
+      "condition": {
+        "kind": "button",
+        "attrs": [
+          [
+            "data-value",
+            "h10"
+          ]
+        ],
+        "group": "height"
+      },
+      "issues": [
+        {
+          "kind": "unanswerable-prediction",
+          "verdict": "many",
+          "choices": [
+            {
+              "key": "yes",
+              "text": "지상에서 더 길게 측정"
+            },
+            {
+              "key": "no",
+              "text": "지상에서 더 짧게 측정"
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "key": "yes",
+          "text": "지상에서 더 길게 측정"
+        },
+        {
+          "key": "no",
+          "text": "지상에서 더 짧게 측정"
+        }
+      ],
+      "values": [
+        {
+          "kind": "muon",
+          "b": 0.999,
+          "d": 10000,
+          "g": 22.36627204212937,
+          "v": 299492665.542,
+          "tGround": 0.00003338979931913434,
+          "tMuon": 0.0000014928638646727057,
+          "fRel": 0.506869818645574,
+          "fNewton": 2.5097665104440593e-7,
+          "reach": 14716.680147400237,
+          "verdict": "many"
+        }
+      ]
+    },
+    {
+      "mode": "muon",
+      "condition": {
+        "kind": "button",
+        "attrs": [
+          [
+            "data-value",
+            "h20"
+          ]
+        ],
+        "group": "height"
+      },
+      "issues": [
+        {
+          "kind": "unanswerable-prediction",
+          "verdict": "some",
+          "choices": [
+            {
+              "key": "yes",
+              "text": "지상에서 더 길게 측정"
+            },
+            {
+              "key": "no",
+              "text": "지상에서 더 짧게 측정"
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "key": "yes",
+          "text": "지상에서 더 길게 측정"
+        },
+        {
+          "key": "no",
+          "text": "지상에서 더 짧게 측정"
+        }
+      ],
+      "values": [
+        {
+          "kind": "muon",
+          "b": 0.999,
+          "d": 20000,
+          "g": 22.36627204212937,
+          "v": 299492665.542,
+          "tGround": 0.00006677959863826868,
+          "tMuon": 0.0000029857277293454113,
+          "fRel": 0.2569170130537971,
+          "fNewton": 6.29892793694655e-14,
+          "reach": 14716.680147400237,
+          "verdict": "some"
+        }
+      ]
+    },
+    {
+      "mode": "energy",
+      "condition": {
+        "kind": "initial"
+      },
+      "issues": [
+        {
+          "kind": "unanswerable-prediction",
+          "verdict": "much",
+          "choices": [
+            {
+              "key": "yes",
+              "text": "운동 방향 길이가 짧아짐"
+            },
+            {
+              "key": "no",
+              "text": "운동 방향 길이가 길어짐"
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "key": "yes",
+          "text": "운동 방향 길이가 짧아짐"
+        },
+        {
+          "key": "no",
+          "text": "운동 방향 길이가 길어짐"
+        }
+      ],
+      "values": [
+        {
+          "kind": "energy",
+          "b": 0.9,
+          "g": 2.294157338705618,
+          "L": 43.58898943540673,
+          "kRel": 661314.4000785708,
+          "kNewton": 206955,
+          "ratio": 3.1954502190262173,
+          "verdict": "much"
+        }
+      ]
+    },
+    {
+      "mode": "energy",
+      "condition": {
+        "kind": "button",
+        "attrs": [
+          [
+            "data-value",
+            "e01"
+          ]
+        ],
+        "group": "espeed"
+      },
+      "issues": [
+        {
+          "kind": "unanswerable-prediction",
+          "verdict": "same",
+          "choices": [
+            {
+              "key": "yes",
+              "text": "운동 방향 길이가 짧아짐"
+            },
+            {
+              "key": "no",
+              "text": "운동 방향 길이가 길어짐"
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "key": "yes",
+          "text": "운동 방향 길이가 짧아짐"
+        },
+        {
+          "key": "no",
+          "text": "운동 방향 길이가 길어짐"
+        }
+      ],
+      "values": [
+        {
+          "kind": "energy",
+          "b": 0.1,
+          "g": 1.005037815259212,
+          "L": 99.498743710662,
+          "kRel": 2574.3235974573818,
+          "kNewton": 2555.0000000000005,
+          "ratio": 1.0075630518424192,
+          "verdict": "same"
+        }
+      ]
+    },
+    {
+      "mode": "energy",
+      "condition": {
+        "kind": "button",
+        "attrs": [
+          [
+            "data-value",
+            "e05"
+          ]
+        ],
+        "group": "espeed"
+      },
+      "issues": [
+        {
+          "kind": "unanswerable-prediction",
+          "verdict": "bit",
+          "choices": [
+            {
+              "key": "yes",
+              "text": "운동 방향 길이가 짧아짐"
+            },
+            {
+              "key": "no",
+              "text": "운동 방향 길이가 길어짐"
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "key": "yes",
+          "text": "운동 방향 길이가 짧아짐"
+        },
+        {
+          "key": "no",
+          "text": "운동 방향 길이가 길어짐"
+        }
+      ],
+      "values": [
+        {
+          "kind": "energy",
+          "b": 0.5,
+          "g": 1.1547005383792517,
+          "L": 86.60254037844385,
+          "kRel": 79051.97511179761,
+          "kNewton": 63875,
+          "ratio": 1.2376043070340135,
+          "verdict": "bit"
+        }
+      ]
+    },
+    {
+      "mode": "energy",
+      "condition": {
+        "kind": "button",
+        "attrs": [
+          [
+            "data-value",
+            "e09"
+          ]
+        ],
+        "group": "espeed"
+      },
+      "issues": [
+        {
+          "kind": "unanswerable-prediction",
+          "verdict": "much",
+          "choices": [
+            {
+              "key": "yes",
+              "text": "운동 방향 길이가 짧아짐"
+            },
+            {
+              "key": "no",
+              "text": "운동 방향 길이가 길어짐"
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "key": "yes",
+          "text": "운동 방향 길이가 짧아짐"
+        },
+        {
+          "key": "no",
+          "text": "운동 방향 길이가 길어짐"
+        }
+      ],
+      "values": [
+        {
+          "kind": "energy",
+          "b": 0.9,
+          "g": 2.294157338705618,
+          "L": 43.58898943540673,
+          "kRel": 661314.4000785708,
+          "kNewton": 206955,
+          "ratio": 3.1954502190262173,
+          "verdict": "much"
+        }
+      ]
+    },
+    {
+      "mode": "energy",
+      "condition": {
+        "kind": "button",
+        "attrs": [
+          [
+            "data-value",
+            "e099"
+          ]
+        ],
+        "group": "espeed"
+      },
+      "issues": [
+        {
+          "kind": "unanswerable-prediction",
+          "verdict": "much",
+          "choices": [
+            {
+              "key": "yes",
+              "text": "운동 방향 길이가 짧아짐"
+            },
+            {
+              "key": "no",
+              "text": "운동 방향 길이가 길어짐"
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "key": "yes",
+          "text": "운동 방향 길이가 짧아짐"
+        },
+        {
+          "key": "no",
+          "text": "운동 방향 길이가 길어짐"
+        }
+      ],
+      "values": [
+        {
+          "kind": "energy",
+          "b": 0.99,
+          "g": 7.088812050083354,
+          "L": 14.106735979665894,
+          "kRel": 3111382.957592594,
+          "kNewton": 250415.55,
+          "ratio": 12.424879196170503,
+          "verdict": "much"
+        }
+      ]
+    },
+    {
+      "mode": "energy",
+      "condition": {
+        "kind": "button",
+        "attrs": [
+          [
+            "data-value",
+            "e0999"
+          ]
+        ],
+        "group": "espeed"
+      },
+      "issues": [
+        {
+          "kind": "unanswerable-prediction",
+          "verdict": "much",
+          "choices": [
+            {
+              "key": "yes",
+              "text": "운동 방향 길이가 짧아짐"
+            },
+            {
+              "key": "no",
+              "text": "운동 방향 길이가 길어짐"
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "key": "yes",
+          "text": "운동 방향 길이가 짧아짐"
+        },
+        {
+          "key": "no",
+          "text": "운동 방향 길이가 길어짐"
+        }
+      ],
+      "values": [
+        {
+          "kind": "energy",
+          "b": 0.999,
+          "g": 22.36627204212937,
+          "L": 4.471017781221602,
+          "kRel": 10918165.013528109,
+          "kNewton": 254989.2555,
+          "ratio": 42.818137541203605,
+          "verdict": "much"
+        }
+      ]
+    }
+  ],
+  "models": [
+    {
+      "key": "__semiModel",
+      "methods": [
+        "VOLTS",
+        "TEMPS",
+        "SPEEDS_M",
+        "HEIGHTS",
+        "SPEEDS_E",
+        "BODIES",
+        "state",
+        "analyse",
+        "render",
+        "runSeconds",
+        "setMode",
+        "set",
+        "setProgress",
+        "runToEnd",
+        "tick",
+        "finish"
+      ]
+    }
+  ],
+  "paint": [],
+  "grades": [
+    {
+      "mode": "diode",
+      "results": [
+        {
+          "choice": "well",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        },
+        {
+          "choice": "some",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "none",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        }
+      ]
+    },
+    {
+      "mode": "muon",
+      "results": [
+        {
+          "choice": "yes",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        },
+        {
+          "choice": "no",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        }
+      ]
+    },
+    {
+      "mode": "energy",
+      "results": [
+        {
+          "choice": "yes",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        },
+        {
+          "choice": "no",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        }
+      ]
+    }
+  ]
+}

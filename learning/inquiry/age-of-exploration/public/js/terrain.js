@@ -88,8 +88,60 @@
         Object.freeze([41.18, 29.10]),
         Object.freeze([41.27, 29.16])
       ])
+    }),
+    // 말라카 해협: Natural Earth의 좁은 수로가 육지 마스크에 닫히지 않도록 연다.
+    Object.freeze({
+      id: 'malacca',
+      widthDeg: 0.48,
+      path: Object.freeze([
+        Object.freeze([5.55, 99.25]),
+        Object.freeze([4.65, 99.65]),
+        Object.freeze([3.80, 100.30]),
+        Object.freeze([2.90, 100.85]),
+        Object.freeze([2.25, 101.45]),
+        Object.freeze([1.65, 102.35]),
+        Object.freeze([1.10, 103.25])
+      ])
+    }),
+    // Bangka Strait: preserve the narrow waterway lost in the coarse land mask.
+    // Geographic reference: https://marineregions.org/gazetteer.php?id=32531&p=details
+    Object.freeze({
+      id: 'bangka',
+      widthDeg: 0.12,
+      path: Object.freeze([
+        Object.freeze([-2.08, 105.12]),
+        Object.freeze([-2.23, 105.48]),
+        Object.freeze([-2.38, 105.75]),
+        Object.freeze([-2.55, 105.77]),
+        Object.freeze([-2.70, 105.82]),
+        Object.freeze([-2.82, 105.96]),
+        Object.freeze([-3.08, 106.30])
+      ])
+    }),
+    // Kanmon Strait: retain a navigable cell along the channel between the islands.
+    // Channel chart: https://www6.kaiho.mlit.go.jp/kanmon/info/others/sankouzu/koukouzu-english.pdf
+    Object.freeze({
+      id: 'kanmon',
+      widthDeg: 0.10,
+      path: Object.freeze([
+        Object.freeze([34.15, 130.77]),
+        Object.freeze([33.96, 130.85]),
+        Object.freeze([33.93, 130.90]),
+        Object.freeze([33.96, 130.96]),
+        Object.freeze([33.94, 131.04]),
+        Object.freeze([33.86, 131.20])
+      ])
     })
   ]);
+
+  // Avoid segment calculations for distant cells during navigation-grid creation.
+  // 0.2 is the minimum longitude scale used by pointToSegmentDistanceDeg.
+  const CORRIDOR_BOUNDS = NAVIGABLE_SEA_CORRIDORS.map(corridor => ({
+    south: Math.min(...corridor.path.map(point => point[0])) - corridor.widthDeg,
+    north: Math.max(...corridor.path.map(point => point[0])) + corridor.widthDeg,
+    west: Math.min(...corridor.path.map(point => point[1])) - corridor.widthDeg / 0.2,
+    east: Math.max(...corridor.path.map(point => point[1])) + corridor.widthDeg / 0.2
+  }));
 
   function wrapCellX(cx) {
     cx %= WORLD_W;
@@ -140,7 +192,10 @@
 
   function navigableSeaCorridorAtCell(cx, cy) {
     const { lon, lat } = lonLat(cx + 0.5, cy + 0.5);
-    for (const corridor of NAVIGABLE_SEA_CORRIDORS) {
+    for (let index = 0; index < NAVIGABLE_SEA_CORRIDORS.length; index += 1) {
+      const bounds = CORRIDOR_BOUNDS[index];
+      if (lat < bounds.south || lat > bounds.north || lon < bounds.west || lon > bounds.east) continue;
+      const corridor = NAVIGABLE_SEA_CORRIDORS[index];
       for (let i = 1; i < corridor.path.length; i += 1) {
         if (pointToSegmentDistanceDeg(lat, lon, corridor.path[i - 1], corridor.path[i]) <= corridor.widthDeg) return corridor.id;
       }

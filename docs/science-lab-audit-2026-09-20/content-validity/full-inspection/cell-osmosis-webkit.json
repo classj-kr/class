@@ -1,0 +1,55 @@
+{
+  "slug": "cell-osmosis",
+  "engine": "webkit",
+  "modes": [
+    "initial"
+  ],
+  "cases": 9,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__cellModel",
+      "methods": [
+        "C_IN0",
+        "V0",
+        "BURST_V",
+        "TAU",
+        "targetVolume",
+        "volumeAt",
+        "burstTime",
+        "state",
+        "scaleOf",
+        "setCell",
+        "setConc",
+        "setTime",
+        "conc",
+        "elapsed",
+        "render"
+      ]
+    }
+  ],
+  "paint": [],
+  "grades": [
+    {
+      "mode": "initial",
+      "results": [
+        {
+          "choice": "swell",
+          "visible": true,
+          "text": "변화를 관찰 중입니다. 20분 뒤의 부피로 예상을 확인하세요."
+        },
+        {
+          "choice": "same",
+          "visible": true,
+          "text": "변화를 관찰 중입니다. 20분 뒤의 부피로 예상을 확인하세요."
+        },
+        {
+          "choice": "shrink",
+          "visible": true,
+          "text": "변화를 관찰 중입니다. 20분 뒤의 부피로 예상을 확인하세요."
+        }
+      ]
+    }
+  ]
+}

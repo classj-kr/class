@@ -1,0 +1,81 @@
+{
+  "slug": "rock-age",
+  "engine": "webkit",
+  "modes": [
+    "decay",
+    "strata"
+  ],
+  "cases": 17,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__rockModel",
+      "methods": [
+        "state",
+        "analyse",
+        "tick",
+        "render",
+        "fracAfter",
+        "fracAtAge",
+        "windowFor",
+        "datable",
+        "koYears",
+        "ISO",
+        "TARGETS",
+        "ORDERED",
+        "HIDDEN_B",
+        "ATOMS",
+        "setMode",
+        "setIso",
+        "setTarget",
+        "setHl",
+        "check",
+        "runToEnd"
+      ]
+    }
+  ],
+  "paint": [],
+  "grades": [
+    {
+      "mode": "decay",
+      "results": [
+        {
+          "choice": "p1",
+          "visible": true,
+          "text": "예상은 절반 이상였지만 결과는 거의 없음입니다."
+        },
+        {
+          "choice": "p2",
+          "visible": true,
+          "text": "예상은 절반 이하였지만 결과는 거의 없음입니다."
+        },
+        {
+          "choice": "p3",
+          "visible": true,
+          "text": "예상이 맞았습니다 — 거의 없음."
+        }
+      ]
+    },
+    {
+      "mode": "strata",
+      "results": [
+        {
+          "choice": "p1",
+          "visible": true,
+          "text": "예상이 맞았습니다 — 잴 수 있다."
+        },
+        {
+          "choice": "p2",
+          "visible": true,
+          "text": "예상은 너무 오래됨였지만 결과는 잴 수 있다입니다."
+        },
+        {
+          "choice": "p3",
+          "visible": true,
+          "text": "예상은 너무 젊음였지만 결과는 잴 수 있다입니다."
+        }
+      ]
+    }
+  ]
+}

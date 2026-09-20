@@ -117,9 +117,9 @@ document.addEventListener('DOMContentLoaded', () => {
     function impactCalc(hKey, floorKey) {
         const h = Number(hKey), d = FLOORS[floorKey].d;
         const v = Math.sqrt(2 * G * h), dt = 2 * d / v;          // steady slowing over the give of the floor
-        const p = EGG_M * v, F = p / dt, W = EGG_M * G;
-        const ratio = F / W;                                     // equals h / d
-        return { h, d, v, dt, p, F, W, ratio, broken: F > BREAK_N, tFall: Math.sqrt(2 * h / G) };
+        const p = EGG_M * v, W = EGG_M * G, netF = p / dt, F = netF + W;
+        const ratio = F / W;                                     // Contact force includes weight: F/W = h/d + 1.
+        return { h, d, v, dt, p, F, netF, W, ratio, broken: F > BREAK_N, tFall: Math.sqrt(2 * h / G) };
     }
 
     function analyse() {
@@ -335,7 +335,7 @@ document.addEventListener('DOMContentLoaded', () => {
         out += `<text class="trait-text" x="${MX + 32}" y="112">${p >= 0.6 ? `닿는 속력 ${fmt1(a.v)} m/s` : `떨어지는 중 ${fallT.toFixed(2)} s`}</text>`;
         out += `<text class="trait-text" x="${MX + 32}" y="126">${done ? `멈추는 데 ${a.dt * 1000 < 10 ? (a.dt * 1000).toFixed(1) : fmtN(a.dt * 1000)} ms` : ''}</text>`;
         out += `<text class="verdict-text" fill="#d97706" x="20" y="16">${done ? `${a.h} m → ${fl.label}: 평균 힘 ${a.F < 10 ? fmt1(a.F) : fmtN(a.F)} N, 무게의 ${a.ratio < 100 ? fmt1(a.ratio) : fmtN(a.ratio)}배 → ${a.broken ? '깨짐' : '안 깨짐'}` : `달걀 ${EGG_M * 1000} g을 ${a.h} m에서 ${fl.label}에 떨어뜨림`}</text>`;
-        out += `<text class="note-text" x="20" y="208">멈출 때 힘 × 시간(충격량)은 어느 바닥이든 같음 · 힘 눈금은 한 칸에 10배</text>`;
+        out += `<text class="note-text" x="20" y="208">멈출 때 알짜힘 × 시간은 같음 · 바닥의 힘에서 중력을 빼서 계산 · 힘 눈금은 한 칸에 10배</text>`;
         return out;
     }
 
@@ -357,7 +357,7 @@ document.addEventListener('DOMContentLoaded', () => {
             out += `<text class="axis-text" style="fill:${mine ? '#0f172a' : '#475569'};font-weight:${mine ? '900' : '750'}" x="${x + w / 2}" y="${Y0 + 14}" text-anchor="middle">${FLOORS[f.key].label}</text>`;
             out += `<text class="small-label" x="${x + w / 2}" y="${Y0 + 26}" text-anchor="middle">${shown ? `${f.dt * 1000 < 10 ? (f.dt * 1000).toFixed(1) : fmtN(f.dt * 1000)} ms 만에 멈춤` : ''}</text>`;
         });
-        out += `<text class="axis-title" x="${((X0 + X1) / 2).toFixed(1)}" y="${Y0 + 40}" text-anchor="middle">${shown ? `네 바닥 모두 충격량(힘 × 시간)은 ${fmt2(a.p)} N·s로 같고, 멈추는 시간이 길수록 힘이 작다` : '같은 높이에서 떨어진 달걀을 네 바닥이 멈출 때'}</text>`;
+        out += `<text class="axis-title" x="${((X0 + X1) / 2).toFixed(1)}" y="${Y0 + 40}" text-anchor="middle">${shown ? `네 바닥 모두 알짜힘의 충격량은 ${fmt2(a.p)} N·s로 같고, 멈추는 시간이 길수록 힘이 작다` : '같은 높이에서 떨어진 달걀을 네 바닥이 멈출 때'}</text>`;
         return out;
     }
 
@@ -376,7 +376,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         return `<div class="data-row"><span class="data-name">달걀</span><span class="data-val">${EGG_M * 1000} g (무게 ${fmt2(a.W)} N) · ${a.h} m에서 떨어져 ${fmt1(a.v)} m/s로 닿음 · 운동량 ${fmt2(a.p)} kg·m/s</span></div>` +
             `<div class="data-row"><span class="data-name">바닥</span><span class="data-val">${FLOORS[state.floor].label} · ${depthText(a.d)} 들어가며 ${a.dt * 1000 < 10 ? (a.dt * 1000).toFixed(1) : fmtN(a.dt * 1000)} ms 만에 멈춤</span></div>` +
-            `<div class="data-row"><span class="data-name">힘</span><span class="data-val">충격량 ${fmt2(a.p)} N·s ÷ 시간 = 평균 ${a.F < 10 ? fmt1(a.F) : fmtN(a.F)} N (무게의 ${a.ratio < 100 ? fmt1(a.ratio) : fmtN(a.ratio)}배 = 높이 ÷ 들어간 깊이)</span></div>` +
+            `<div class="data-row"><span class="data-name">힘</span><span class="data-val">운동량 변화 ${fmt2(a.p)} N·s ÷ 시간 + 무게 = 바닥의 평균 힘 ${a.F < 10 ? fmt1(a.F) : fmtN(a.F)} N (무게의 ${a.ratio < 100 ? fmt1(a.ratio) : fmtN(a.ratio)}배 = 높이 ÷ 들어간 깊이 + 1)</span></div>` +
             `<div class="data-row match"><span class="data-name">네 바닥 비교</span><span class="data-val">${a.all.map(f => `${FLOORS[f.key].label} ${f.F < 10 ? fmt1(f.F) : fmtN(f.F)} N`).join(' · ')}</span></div>`;
     }
 
@@ -455,9 +455,9 @@ document.addEventListener('DOMContentLoaded', () => {
             labelB.textContent = '달걀'; valueB.textContent = a.broken ? '깨짐' : '안 깨짐';
             const hard = a.all.find(f => f.key === 'concrete'), soft = a.all.find(f => f.key === 'airbag');
             s = `${a.h} m에서 떨어진 달걀은 ${fmt1(a.v)} m/s로 ${fl.label}에 닿아 ${depthText(a.d)} 들어가며 ${dts} ms 만에 멈췄습니다. `;
-            s += `멈출 때의 충격량(힘 × 시간)은 운동량 변화와 같아 어느 바닥이든 ${fmt2(a.p)} N·s로 같지만, 멈추는 시간이 ${dts} ms이니 평균 힘은 ${Fs} N — 달걀 무게(${fmt2(a.W)} N)의 ${a.ratio < 100 ? fmt1(a.ratio) : fmtN(a.ratio)}배입니다. 이 배수는 떨어진 높이를 들어간 깊이로 나눈 값과 같습니다. `;
-            s += a.broken ? `껍데기가 견디는 약 ${BREAK_N} N을 넘어 깨졌습니다. ` : `${BREAK_N} N보다 작아 깨지지 않았습니다. `;
-            s += `같은 높이라도 콘크리트에서는 ${fmtN(hard.F)} N, 공기 든 봉지에서는 ${fmt1(soft.F)} N — 멈추는 시간이 ${Math.round(soft.dt / hard.dt)}배 길어지면 힘은 그만큼 작아집니다. 에어백·안전띠·매트·헬멧의 푹신한 속, 무릎을 굽히며 착지하는 것이 모두 이 원리입니다.`;
+            s += `멈출 때 알짜힘의 충격량은 운동량 변화와 같아 어느 바닥이든 ${fmt2(a.p)} N·s로 같지만, 멈추는 시간이 ${dts} ms이니 바닥의 평균 힘은 운동량 변화 ÷ 시간에 무게를 더한 ${Fs} N — 달걀 무게(${fmt2(a.W)} N)의 ${a.ratio < 100 ? fmt1(a.ratio) : fmtN(a.ratio)}배입니다. 이 배수는 떨어진 높이를 들어간 깊이로 나눈 값에 1을 더한 값입니다. `;
+            s += a.broken ? `이 모형에서 가정한 파손 기준 ${BREAK_N} N을 넘어 깨짐으로 표시했습니다. ` : `이 모형의 파손 기준 ${BREAK_N} N 이하라 깨지지 않음으로 표시했습니다. 실제 달걀은 껍데기·방향·접촉 면적 등에 따라 다릅니다. `;
+            s += `같은 높이라도 콘크리트에서는 ${fmtN(hard.F)} N, 공기 든 봉지에서는 ${fmt1(soft.F)} N — 멈추는 시간이 길어질수록 받는 힘이 줄어듭니다. 에어백·안전띠·매트·헬멧의 푹신한 속, 무릎을 굽히며 착지하는 것이 모두 이 원리입니다.`;
         }
         predictionResult.textContent = !state.prediction ? '다음에는 결과를 먼저 예상해 보세요.'
             : state.prediction === a.verdict ? '예상이 맞았습니다.' : '예상과 다른 결과입니다.';

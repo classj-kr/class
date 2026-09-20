@@ -1,0 +1,103 @@
+{
+  "slug": "photoelectric",
+  "engine": "webkit",
+  "modes": [
+    "photo",
+    "hydrogen",
+    "matter"
+  ],
+  "cases": 26,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__photoModel",
+      "methods": [
+        "METALS",
+        "LIGHTS",
+        "BRIGHTS",
+        "FROMS",
+        "TOS",
+        "OBJS",
+        "state",
+        "analyse",
+        "render",
+        "runSeconds",
+        "setMode",
+        "set",
+        "setProgress",
+        "runToEnd",
+        "tick",
+        "finish"
+      ]
+    }
+  ],
+  "paint": [],
+  "grades": [
+    {
+      "mode": "photo",
+      "results": [
+        {
+          "choice": "none",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "slow",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        },
+        {
+          "choice": "fast",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        }
+      ]
+    },
+    {
+      "mode": "hydrogen",
+      "results": [
+        {
+          "choice": "visible",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        },
+        {
+          "choice": "uv",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "ir",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "none",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        }
+      ]
+    },
+    {
+      "mode": "matter",
+      "results": [
+        {
+          "choice": "big",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "atom",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        },
+        {
+          "choice": "tiny",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        }
+      ]
+    }
+  ]
+}

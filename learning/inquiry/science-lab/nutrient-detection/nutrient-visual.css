@@ -473,3 +473,12 @@
 .stage-note:empty { display: none; }
 .run-row { display: grid; grid-template-columns: 1.8fr 1fr; gap: 8px; align-items: stretch; margin-top: 10px; }
 .run-row .run-button, .run-row .reset-button { width: 100%; margin: 0; }
+
+/* Long reagent names are choices, not four narrow columns of syllables. */
+body .control-panel .pick-buttons.cols4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+body .control-panel .mode-buttons.three { grid-template-columns: 1fr; }
+body .control-panel .mode-buttons button { flex-direction: row; justify-content: space-between; flex-wrap: wrap; gap: 4px 10px; text-align: left; }
+body .control-panel .pick-buttons button,
+body .control-panel .mode-buttons button,
+body .control-panel .prediction-buttons button,
+body .control-panel .run-row button { padding: 9px 8px; word-break: keep-all; overflow-wrap: normal; line-height: 1.55; }

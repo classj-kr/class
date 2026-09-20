@@ -21,7 +21,7 @@ const BASE = new URL(".", import.meta.url).href;
 const TILE_VERSION = 2;
 const FLAG_VERSION = 2;
 // 모양(shapes.json)·설명(info.json)·사진을 바꾸면 올린다.
-const DATA_VERSION = "20260920-26";
+const DATA_VERSION = "20260920-39";
 const HOME = { center: [127.5, 30], lat: 30 };
 // 켜고 끄는 항목이 늘면 판을 올린다(옛 저장값에는 새 항목이 없어 꺼진 채로 보이므로).
 const SETTINGS_KEY = "classj-globe-layers-v3";

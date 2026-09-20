@@ -1,0 +1,81 @@
+{
+  "slug": "energy-metabolism",
+  "engine": "chromium",
+  "modes": [
+    "leaf",
+    "atp"
+  ],
+  "cases": 16,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__metabModel",
+      "methods": [
+        "state",
+        "analyse",
+        "tick",
+        "render",
+        "grossAt",
+        "netAt",
+        "respAt",
+        "pmaxAt",
+        "slopeShare",
+        "compensationPoint",
+        "saturationPoint",
+        "atpPlan",
+        "setMode",
+        "setLight",
+        "setCO2",
+        "setTemp",
+        "setO2",
+        "setShuttle",
+        "check",
+        "runToEnd"
+      ]
+    }
+  ],
+  "paint": [],
+  "grades": [
+    {
+      "mode": "leaf",
+      "results": [
+        {
+          "choice": "p1",
+          "visible": true,
+          "text": "예상은 크게 는다였지만 결과는 거의 그대로입니다."
+        },
+        {
+          "choice": "p2",
+          "visible": true,
+          "text": "예상은 조금 는다였지만 결과는 거의 그대로입니다."
+        },
+        {
+          "choice": "p3",
+          "visible": true,
+          "text": "예상이 맞았습니다 — 거의 그대로."
+        }
+      ]
+    },
+    {
+      "mode": "atp",
+      "results": [
+        {
+          "choice": "p1",
+          "visible": true,
+          "text": "예상이 맞았습니다 — 32개."
+        },
+        {
+          "choice": "p2",
+          "visible": true,
+          "text": "예상은 30개였지만 결과는 32개입니다."
+        },
+        {
+          "choice": "p3",
+          "visible": true,
+          "text": "예상은 2개였지만 결과는 32개입니다."
+        }
+      ]
+    }
+  ]
+}

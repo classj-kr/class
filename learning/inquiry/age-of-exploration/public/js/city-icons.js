@@ -17,6 +17,7 @@
     chinese: ['중국', '#e4be90', '#b65f45'],
     korean: ['한국', '#e9ddbd', '#617e85'],
     japanese: ['일본', '#eee5ca', '#667b89'],
+    ainu: ['아이누', '#b79969', '#c9b778'],
     sahel: ['서아프리카 사헬', '#cc9767', '#ad7049'],
     african: ['아프리카 내륙', '#b68a62', '#d2b778'],
     swahili: ['동아프리카 해안', '#e7dec0', '#6c9b91'],
@@ -95,6 +96,13 @@
     if(style.size >= 2) { house(-16,2,9,7); house(7,2,9,9); }
     if(style.size >= 3) { house(-18,-4,9,9); house(9,-4,9,11); }
     switch (style.culture) {
+      case 'ainu': {
+        // Small thatched dwelling: a regional illustration, not a reconstructed village.
+        rect(-12,-6,24,10); poly([[-16,-6],[-7,-19],[8,-19],[16,-6]],roof);
+        line([[-7,-17],[-11,-7]],light); line([[0,-18],[0,-7]],light);
+        line([[7,-17],[11,-7]],light); rect(-2,-3,4,7,ink);
+        rect(10,-2,7,6); poly([[8,-2],[13,-8],[19,-2]],roof); break;
+      }
       case 'chinese': case 'korean': case 'japanese': {
         rect(-8,-11,16,14); rect(-6,-10,2,13,roof); rect(4,-10,2,13,roof);
         eaves(0,-13,23); rect(-2,-4,4,7,ink);

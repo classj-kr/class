@@ -1,0 +1,63 @@
+{
+  "slug": "magma",
+  "engine": "webkit",
+  "modes": [
+    "initial"
+  ],
+  "cases": 10,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__magmaModel",
+      "methods": [
+        "state",
+        "analyse",
+        "tick",
+        "render",
+        "logEta",
+        "eta",
+        "flowSpeed",
+        "bubbleSpeed",
+        "retention",
+        "explosivity",
+        "shapeOf",
+        "KINDS",
+        "SHAPES",
+        "RHO",
+        "G",
+        "H_FLOW",
+        "SLOPE",
+        "R_BUBBLE",
+        "setKind",
+        "setWater",
+        "setTemp",
+        "check",
+        "runToEnd"
+      ]
+    }
+  ],
+  "paint": [],
+  "grades": [
+    {
+      "mode": "initial",
+      "results": [
+        {
+          "choice": "p1",
+          "visible": true,
+          "text": "예상이 맞았습니다 — 조용히 흘러넘친다."
+        },
+        {
+          "choice": "p2",
+          "visible": true,
+          "text": "예상은 중간쯤였지만 결과는 조용히 흘러넘친다입니다."
+        },
+        {
+          "choice": "p3",
+          "visible": true,
+          "text": "예상은 크게 폭발한다였지만 결과는 조용히 흘러넘친다입니다."
+        }
+      ]
+    }
+  ]
+}

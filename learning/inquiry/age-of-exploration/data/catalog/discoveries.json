@@ -797,10 +797,16 @@
     "kind": "자연",
     "lat": 41.5,
     "lon": 51,
-    "reach": "sea",
+    "reach": "any",
+    "discoveryArea": {
+      "type": "waterbody",
+      "seed": [41.5, 51],
+      "bounds": {"west": 46, "east": 56, "south": 36, "north": 48}
+    },
     "todayCountry": "러시아·카자흐스탄·투르크메니스탄·이란·아제르바이잔",
     "in1520": "페르시아의 비단과 러시아의 모피가 오가던 안쪽 바다였습니다.",
-    "text": "바다라고 부르지만 바깥 바다와 이어지지 않은, 세상에서 가장 큰 호수입니다. 넓이가 한반도의 열일곱 배쯤 되고 물은 바닷물보다 덜 짭니다. 볼가강이 들어오는 북쪽은 거의 민물이고 남쪽으로 갈수록 짜져, 사는 물고기가 다릅니다."
+    "text": "바다라고 부르지만 바깥 바다와 이어지지 않은, 세상에서 가장 큰 호수입니다. 넓이는 수위에 따라 달라지며 약 37만 제곱킬로미터로 알려져 있습니다. 물은 일반적인 바닷물보다 덜 짜고, 볼가강의 민물이 들어오는 북쪽과 남쪽의 환경도 다릅니다. 해안에 서서도 이 넓은 내륙 수역을 살펴볼 수 있습니다.",
+    "sources": [{"title": "NASA Earth Observatory: Caspian Sea", "url": "https://science.nasa.gov/earth/earth-observatory/caspian-sea-44253/"}]
   },
   {
     "id": "monte-cassino",

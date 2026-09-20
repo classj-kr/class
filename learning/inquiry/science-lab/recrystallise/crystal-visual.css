@@ -85,3 +85,6 @@
 
 .run-row { display: grid; grid-template-columns: 1.8fr 1fr; gap: 8px; align-items: stretch; margin-top: 10px; }
 .run-row .run-button, .run-row .reset-button { width: 100%; margin: 0; }
+
+body .control-panel .prediction-buttons.three{grid-template-columns:repeat(2,minmax(0,1fr))}
+body .control-panel .prediction-buttons button{word-break:keep-all;overflow-wrap:normal;line-height:1.55;padding:9px 8px}

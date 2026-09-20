@@ -52,6 +52,11 @@ for (const [lat, lon] of [[40.95,28.82],[41.10,29.03],[41.25,29.15]]) {
 }
 assert.equal(routeExists([39.85,25.75],[40.75,27.50], { west:25, east:28.5, south:39.5, north:41.2 }), true, 'Aegean to Marmara route is disconnected');
 assert.equal(routeExists([40.75,28.40],[41.45,29.35], { west:28, east:29.7, south:40.5, north:41.7 }), true, 'Marmara to Black Sea route is disconnected');
+for (const [lat, lon] of [[5.55,99.25],[4.65,99.65],[3.80,100.30],[2.25,101.45],[1.10,103.25]]) {
+  const p = cell(lat, lon);
+  assert.equal(isSea(p.x, p.y), true, 'Malacca Strait center must remain sea');
+}
+assert.equal(routeExists([5.55,99.25],[1.10,103.25], { west:98.7, east:103.8, south:0.4, north:6.2 }), true, 'Malacca Strait route is disconnected');
 const ankara = cell(39.93, 32.86);
 assert.notEqual(Terrain.terrainAtCell(world, ankara.x, ankara.y).type, 'sea', 'Ankara must remain land');
 console.log(JSON.stringify({ ok:true, corridors:['dardanelles','bosporus'] }));

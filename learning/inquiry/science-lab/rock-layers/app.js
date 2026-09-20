@@ -19,16 +19,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const rulerGroup = document.getElementById('rulerGroup');
     const speedNote = document.getElementById('speedNote');
 
-    // Grain diameters in mm. Stokes' law makes settling speed go as d², so
-    // these three sizes fix the order in which they reach the bottom — the
-    // sorting inside every layer is a consequence of this, not a choice.
+    // Representative grain sizes; settling order is qualitative, not a universal speed law.
     const GRAINS = [
         { id: 'gravel', name: '자갈', mm: 4,    color: '#a8896a' },
         { id: 'sand',   name: '모래', mm: 1,    color: '#d6bd88' },
-        { id: 'mud',    name: '진흙', mm: 0.25, color: '#8f8570' },
+        { id: 'mud',    name: '진흙', mm: 0.02, color: '#8f8570' },
     ];
-    const REF_MM = 1;                                   // sand is the reference
-    const settlingSpeed = mm => (mm / REF_MM) ** 2;     // v ∝ d²
 
     const MIXES = {
         gravel: { label: '자갈이 많은 흙', gravel: .50, sand: .35, mud: .15 },
@@ -39,9 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const TANK = { x: 62, w: 336, bottom: 282, top: 42 };
     const LAYER_H = 34;
     const MAX_LAYERS = 6;
-    // Display durations are compressed: the true speed spread is 256:1 between
-    // gravel and mud, which no watchable animation can show literally. The
-    // order is exact and the real ratios are printed under the tank.
+    // Compressed illustrative timings, not measured settling velocities.
     const FALL_MS = { gravel: 700, sand: 1500, mud: 2600 };
 
     let layers = [];
@@ -88,17 +82,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function renderSpeeds() {
-        const rows = GRAINS.map(g => {
-            const v = settlingSpeed(g.mm);
-            // log scale, because the real spread is far too wide for a linear bar
-            const pct = Math.max(4, Math.min(100, ((Math.log2(v) + 5) / 9) * 100));
-            const label = v >= 1 ? `${v % 1 === 0 ? v : v.toFixed(2)}배` : `1/${Math.round(1 / v)}배`;
-            return `<div class="speed-row"><span class="speed-name">${g.name} ${g.mm} mm</span>` +
-                   `<span class="speed-track"><span class="speed-fill" style="width:${pct.toFixed(1)}%;background:${g.color}"></span></span>` +
-                   `<span class="speed-value">${label}</span></div>`;
-        }).join('');
-        speedNote.innerHTML = rows +
-            `<p class="speed-caption">가라앉는 빠르기는 알갱이 지름의 제곱에 비례합니다(모래를 1배로 본 값). 화면의 떨어지는 속도는 보기 좋게 줄여 표현했습니다.</p>`;
+        const labels = { gravel: '먼저', sand: '그다음', mud: '나중' };
+        const widths = { gravel: 100, sand: 62, mud: 28 };
+        speedNote.innerHTML = GRAINS.map(g => '<div class="speed-row"><span class="speed-name">' + g.name + ' ' + g.mm + ' mm</span><span class="speed-track"><span class="speed-fill" style="width:' + widths[g.id] + '%;background:' + g.color + '"></span></span><span class="speed-value">' + labels[g.id] + '</span></div>').join('') + '<p class="speed-caption">밀도·모양이 비슷한 알갱이를 잔잔한 물에 넣은 예입니다. 막대는 가라앉는 순서이며 실제 속도나 속도 비율이 아닙니다.</p>';
     }
 
     function pourAnimation(sub) {
@@ -201,7 +187,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const m = MIXES[mix];
         stageCaption.textContent = `${m.label}을 부어 ${layers.length}번째 층이 쌓였습니다.`;
         explanation.textContent =
-            `한 번 부을 때에도 큰 알갱이가 먼저 가라앉아 자갈이 아래, 진흙이 위에 놓입니다. ` +
+            `이 모형의 잔잔한 물에서는 밀도·모양이 비슷한 큰 알갱이가 먼저 가라앉아 자갈이 아래, 진흙이 위에 놓입니다. ` +
             `여러 번 부으면 나중에 부은 것이 위에 쌓이므로, 맨 아래층인 1번이 가장 오래된 층입니다.` +
             (withFossil ? ' 이 층에는 화석이 함께 묻혔습니다.' : '');
     }
@@ -265,7 +251,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     window.__layerModel = {
-        GRAINS, MIXES, TANK, LAYER_H, MAX_LAYERS, settlingSpeed, sublayersFor,
+        GRAINS, MIXES, TANK, LAYER_H, MAX_LAYERS, sublayersFor,
         layers: () => layers.map(l => ({ ...l })),
         setMix(k) { document.querySelector(`[data-mix="${k}"]`).click(); },
         setFossil(v) { if (withFossil !== v) fossilBtn.click(); },

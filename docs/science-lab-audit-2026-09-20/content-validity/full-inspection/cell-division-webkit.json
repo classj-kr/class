@@ -1,0 +1,53 @@
+{
+  "slug": "cell-division",
+  "engine": "webkit",
+  "modes": [
+    "initial"
+  ],
+  "cases": 9,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__divModel",
+      "methods": [
+        "MITOSIS",
+        "MEIOSIS",
+        "analyse",
+        "render",
+        "check",
+        "setKind",
+        "setChrom",
+        "setStage",
+        "getKind",
+        "getChrom",
+        "idx",
+        "list",
+        "runToEnd"
+      ]
+    }
+  ],
+  "paint": [],
+  "grades": [
+    {
+      "mode": "initial",
+      "results": [
+        {
+          "choice": "double",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "same",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        },
+        {
+          "choice": "half",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        }
+      ]
+    }
+  ]
+}

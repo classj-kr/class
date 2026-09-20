@@ -114,15 +114,13 @@ document.addEventListener('DOMContentLoaded', () => {
         // the two places where heat goes in but the temperature does not move
         out += `<line class="flat-mark" x1="${gx(T1).toFixed(1)}" y1="${gy(0).toFixed(1)}" x2="${gx(T2).toFixed(1)}" y2="${gy(0).toFixed(1)}"/>`;
         out += `<line class="flat-mark" x1="${gx(T3).toFixed(1)}" y1="${gy(100).toFixed(1)}" x2="${gx(T4).toFixed(1)}" y2="${gy(100).toFixed(1)}"/>`;
-        out += `<text class="flat-text" x="${gx((T1 + T2) / 2).toFixed(1)}" y="${(gy(0) - 15).toFixed(1)}" text-anchor="middle">얼음이 녹는 동안</text>`;
+        out += `<text class="flat-text" x="${gx(T1).toFixed(1)}" y="${(gy(0) - 30).toFixed(1)}" text-anchor="start">얼음이 녹는 동안</text>`;
         out += `<text class="flat-text" x="${gx((T3 + T4) / 2).toFixed(1)}" y="${(gy(100) - 8).toFixed(1)}" text-anchor="middle">물이 끓는 동안 — 온도가 그대로입니다</text>`;
 
         const px = gx(timeAt(temp)), py = gy(temp);
         out += `<line class="op-guide" x1="${G.x0}" y1="${py.toFixed(1)}" x2="${px.toFixed(1)}" y2="${py.toFixed(1)}"/>`;
         out += `<circle class="op-point" cx="${px.toFixed(1)}" cy="${py.toFixed(1)}" r="5"/>`;
-        const flip = px > (G.x0 + G.x1) / 2;
-        out += `<text class="op-text" x="${(px + (flip ? -9 : 9)).toFixed(1)}" y="${Math.max(G.y1 + 10, py - 9).toFixed(1)}"` +
-               `${flip ? ' text-anchor="end"' : ''}>지금 ${temp}℃</text>`;
+        // The selected temperature is already shown in the adjacent readout; no overlapping SVG label.
         graphGroup.innerHTML = out;
     }
 
