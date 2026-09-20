@@ -3,7 +3,7 @@ export const GROUPS = [
   ['map','지도 읽기','◎'], ['terrain','지형과 생활','△'], ['climate','기후와 바람','≋'], ['ocean','바다와 물','≈'],
   ['population','인구와 도시','◉'], ['culture','지역과 문화','◇'], ['economy','자원과 환경','◈'], ['earth','움직이는 지구','◌'],
 ].map(([id,title,icon])=>({id,title,icon}));
-export const LEVELS = {elementary:'초등 기초',middle:'중학 핵심',high:'고교 확장'};
+export const LEVELS = {elementary:'초(기초)',middle:'중(핵심)',high:'고(심화)'};
 export const SOURCES = {
   curriculum: {title:'교육부 고시 제2022-33호 · 사회과·과학과 교육과정',url:'https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=141&boardSeq=93458&lev=0'},
   density: {title:'World Bank · 인구밀도, 2023년 · 명/육지 km²',url:'https://data.worldbank.org/indicator/EN.POP.DNST'},

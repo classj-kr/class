@@ -1,8 +1,7 @@
-import {GROUPS,LEVELS,LESSONS,QUESTIONS,SOURCES} from './curriculum.mjs?v=20260920-18';
+import {GROUPS,LESSONS,QUESTIONS} from './curriculum.mjs?v=20260920-20';
 import {installAtlasLayers,CLIMATE_LEGEND,DENSITY_LEGEND} from './atlas-layers.mjs?v=20260920-18';
 import {renderVisual} from './atlas-visuals.mjs?v=20260920-18';
 const KEY='classj-atlas-progress-2022-v1';
-const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 export function readProgress(storage){
   try {const saved=JSON.parse(storage.getItem(KEY)||'{}');return saved&&typeof saved==='object'&&!Array.isArray(saved)?saved:{};}catch{return {};}
 }
@@ -11,11 +10,11 @@ export function updateProgress(progress,id,correct){
   return {...progress,[id]:{correct:(Number(old.correct)||0)+(correct?1:0),wrong:(Number(old.wrong)||0)+(correct?0:1),lastCorrect:correct}};
 }
 export function createAtlas(api){
-  let level='all',query='',current=null,layers=null,loaded=false,revision=0,quiz=null,progress;
+  let query='',current=null,layers=null,loaded=false,revision=0,quiz=null,progress;
   try{progress=readProgress(localStorage);}catch{progress={};}
   document.body.classList.add('atlas');
-  document.body.insertAdjacentHTML('afterbegin',`<header class="atlas-header"><button id="catalogToggle" aria-expanded="false" aria-controls="atlasCatalog" aria-label="학습 목록 열기">☰</button><a href="../../../index.html" class="atlas-brand" aria-label="학습 홈으로"><span>◎</span> 지리 탐구</a><div class="projection-toggle" role="group" aria-label="지도 보기 모드"><button data-view="globe" aria-pressed="true">지구본</button><button data-view="flat" aria-pressed="false">평면지도</button></div><button id="mixedPractice">섞어서 풀기</button></header>
-    <aside class="atlas-catalog" id="atlasCatalog" aria-label="학습 주제 목록"><div class="catalog-tabs" role="group" aria-label="목록 종류"><button id="topicsTab" aria-pressed="true">학습 주제</button><button id="layersTab" aria-pressed="false">지도 표시</button></div><section id="topicsPane"><label class="search-box"><span class="sr-only">학습 주제 검색</span><input id="topicSearch" type="search" placeholder="주제·개념 검색" autocomplete="off"></label><label class="level-label">학습 범위<select id="levelFilter"><option value="all">전체 범위</option>${Object.entries(LEVELS).map(([k,v])=>`<option value="${k}">${v}</option>`).join('')}</select></label><p id="catalogCount" class="catalog-count"></p><nav id="topicList" aria-label="주제별 학습 목록"></nav></section><section id="layersPane" hidden><p class="catalog-hint">보고 싶은 요소를 함께 켜세요.<br>학습 주제를 고르면 관련 지도로 맞춰집니다.</p></section><footer class="catalog-footer">2022 개정 교육과정 기반<button id="wrongPractice">틀린 문제 다시 보기</button><span id="studyProgress"></span></footer></aside>
+  document.body.insertAdjacentHTML('afterbegin',`<header class="atlas-header"><button id="catalogToggle" aria-expanded="false" aria-controls="atlasCatalog" aria-label="학습 목록 열기">☰</button><div class="projection-toggle" role="group" aria-label="지도 보기 모드"><button data-view="globe" aria-pressed="true">지구본</button><button data-view="flat" aria-pressed="false">평면지도</button></div></header>
+    <aside class="atlas-catalog" id="atlasCatalog" aria-label="학습 주제 목록"><div class="catalog-tabs" role="group" aria-label="목록 종류"><button id="topicsTab" aria-pressed="true">학습 주제</button><button id="layersTab" aria-pressed="false">지도 표시</button></div><section id="topicsPane"><label class="search-box"><span class="sr-only">학습 주제 검색</span><input id="topicSearch" type="search" placeholder="주제·개념 검색" autocomplete="off"></label><nav id="topicList" aria-label="주제별 학습 목록"></nav></section><section id="layersPane" hidden></section><footer class="catalog-footer"><button id="wrongPractice">오답 다시 풀기</button></footer></aside>
     <section class="atlas-lesson" id="lessonPanel" aria-label="주제 학습"><p class="loading-copy">지도를 준비하고 있습니다.</p></section>
     <button id="lessonReopen" hidden>학습 카드 열기</button><div class="map-caption" id="mapCaption" aria-live="polite"></div><div class="atlas-legend" id="atlasLegend" hidden></div><div class="map-tools" id="mapTools"></div>
     <dialog class="atlas-quiz" id="atlasQuiz" aria-label="확인 문제"><button class="quiz-close" aria-label="문제 닫기">×</button><div id="quizBody"></div></dialog>`);
@@ -29,31 +28,27 @@ export function createAtlas(api){
     $('topicsTab').setAttribute('aria-pressed',String(showTopics));$('layersTab').setAttribute('aria-pressed',String(!showTopics));
   };
   $('topicSearch').addEventListener('input',e=>{query=e.target.value.trim().toLowerCase();renderCatalog();});
-  $('levelFilter').onchange=e=>{level=e.target.value;renderCatalog();};
   document.querySelectorAll('[data-view]').forEach(b=>b.onclick=async()=>{
     if(!loaded)return;
     const buttons=[...document.querySelectorAll('[data-view]')];buttons.forEach(o=>o.disabled=true);
     try{await api.setView(b.dataset.view);buttons.forEach(o=>o.setAttribute('aria-pressed',String(o===b)));caption(b.dataset.view==='flat'?'메르카토르 평면지도 · 고위도 면적이 크게 보입니다.':'지구본 · 구면에서 위치와 분포를 비교하세요.');}
     finally{buttons.forEach(o=>o.disabled=false);}
   });
-  $('mixedPractice').onclick=()=>startQuiz(QUESTIONS.filter(q=>level==='all'||q.level===level),8);
   $('wrongPractice').onclick=()=>startQuiz(QUESTIONS.filter(q=>progress[q.id]?.lastCorrect===false),12,true);
   $('atlasQuiz').querySelector('.quiz-close').onclick=()=>$('atlasQuiz').close();
   $('atlasQuiz').addEventListener('close',()=>{quiz=null;});
   $('lessonReopen').onclick=()=>{document.body.classList.remove('lesson-closed');$('lessonReopen').hidden=true;api.map.resize();};
   document.addEventListener('keydown',e=>{if(e.key==='Escape'){setCatalog(false);}});
   function caption(text){$('mapCaption').textContent=text;}
-  function matched(){return LESSONS.filter(l=>(level==='all'||l.level===level)&&(!query||[l.title,...l.core,l.trap,...l.standards].join(' ').toLowerCase().includes(query)));}
+  function matched(){return LESSONS.filter(l=>(!query||[l.title,...l.core,l.trap,...l.standards].join(' ').toLowerCase().includes(query)));}
   function renderCatalog(){
-    const list=matched();$('catalogCount').textContent=`${list.length}개 주제 · 지도에서 보고 문제로 확인`;
+    const list=matched();
     const wasOpen=new Set([...$('topicList').querySelectorAll('details[open]')].map(d=>d.dataset.group));
     $('topicList').innerHTML=GROUPS.map(g=>{
       const items=list.filter(l=>l.group===g.id);if(!items.length)return '';
-      return `<details data-group="${g.id}" ${query||wasOpen.has(g.id)||current?.group===g.id?'open':''}><summary><span class="group-icon">${g.icon}</span>${g.title}<small>${items.length}</small></summary><div>${items.map(l=>`<button class="topic-item" data-lesson="${l.id}" ${current?.id===l.id?'aria-current="true"':''}><span>${l.title}</span><small>${LEVELS[l.level]}${l.quiz.every((_,i)=>progress[`atlas-2022-${l.id}-${i+1}`]?.lastCorrect===true)?' · ✓':''}</small></button>`).join('')}</div></details>`;
+      return `<details data-group="${g.id}" ${query||wasOpen.has(g.id)||current?.group===g.id?'open':''}><summary><span class="group-icon">${g.icon}</span>${g.title}<small>${items.length}</small></summary><div>${items.map(l=>`<button class="topic-item" data-lesson="${l.id}" ${current?.id===l.id?'aria-current="true"':''}><span>${l.title}</span></button>`).join('')}</div></details>`;
     }).join('')||'<p class="catalog-hint">일치하는 주제가 없습니다.</p>';
     $('topicList').querySelectorAll('[data-lesson]').forEach(b=>b.onclick=()=>choose(b.dataset.lesson));
-    const solved=QUESTIONS.filter(q=>progress[q.id]?.lastCorrect===true).length;
-    $('studyProgress').textContent=`확인한 문제 ${solved} / ${QUESTIONS.length}`;
   }
   async function choose(id){
     const lesson=LESSONS.find(l=>l.id===id);if(!lesson)return;
@@ -64,13 +59,13 @@ export function createAtlas(api){
     if(!loaded)return;
     api.clear();api.setLayers(lesson.layers.map(id=>id==='lake'?'river':id));
     api.map.easeTo({center:lesson.center,zoom:Math.max(api.map.getMinZoom(),lesson.zoom??api.map.getMinZoom()),duration:700});
-    layers.spots(lesson.spots);caption(lesson.task);
+    layers.spots(lesson.spots);caption('');
     renderLegend(lesson.overlay);
     try{await layers.show(lesson.overlay);if(version===revision)$('atlasLegend').removeAttribute('aria-busy');}
     catch{if(version===revision){$('atlasLegend').textContent='지도를 불러오지 못했습니다. 주제를 다시 선택해 주세요.';}}
   }
   function renderLesson(l){
-    $('lessonPanel').innerHTML=`<div class="lesson-heading"><p class="lesson-meta">${GROUPS.find(g=>g.id===l.group).title} <span>${LEVELS[l.level]}</span></p><button class="lesson-close" aria-label="학습 카드 닫기">×</button><h1>${l.title}</h1></div><div class="lesson-scroll"><p class="lesson-task">${l.task}</p><div class="spot-list" role="group" aria-label="지도에서 비교할 곳">${l.spots.map((s,i)=>`<button data-spot="${i}"><span>${i+1}</span>${s.name}</button>`).join('')}</div><p id="spotDetail" class="spot-detail" aria-live="polite"></p>${l.visual?'<div id="lessonVisual" class="lesson-visual"></div>':''}<h2>꼭 알아둘 것</h2><ol class="core-list">${l.core.map(c=>`<li>${c}</li>`).join('')}</ol><div class="misconception"><strong>헷갈리지 않기</strong><p>${l.trap}</p></div><details class="lesson-sources"><summary>교육과정과 자료 출처</summary><p>2022 개정 · 연결 성취기준</p><p>${l.standards.map(esc).join(' · ')}</p><ul>${['curriculum',...(l.sources||[])].map(k=>`<li><a href="${SOURCES[k].url}" target="_blank" rel="noopener noreferrer">${SOURCES[k].title}</a></li>`).join('')}</ul><p>학교·학년·선택 과목의 시험 범위와 함께 확인하세요. 이 목록은 전체 교육과정의 완전한 대체 자료가 아닙니다.</p></details></div><footer class="lesson-footer"><span>개념을 이해했나요?</span><button id="lessonPractice">확인 문제 2개</button></footer>`;
+    $('lessonPanel').innerHTML=`<div class="lesson-heading"><button class="lesson-close" aria-label="학습 카드 닫기">×</button><h1>${l.title}</h1></div><div class="lesson-scroll"><div class="spot-list" role="group" aria-label="지도에서 비교할 곳">${l.spots.map((s,i)=>`<button data-spot="${i}"><span>${i+1}</span>${s.name}</button>`).join('')}</div><p id="spotDetail" class="spot-detail" aria-live="polite"></p>${l.visual?'<div id="lessonVisual" class="lesson-visual"></div>':''}<div class="lesson-description">${l.core.map(c=>`<p>${c}</p>`).join('')}<p>${l.trap}</p></div></div><footer class="lesson-footer"><button id="lessonPractice">문제 풀기</button></footer>`;
     $('lessonPanel').querySelector('.lesson-close').onclick=()=>{document.body.classList.add('lesson-closed');$('lessonReopen').hidden=false;api.map.resize();};
     $('lessonPanel').querySelectorAll('[data-spot]').forEach(b=>b.onclick=()=>focusSpot(Number(b.dataset.spot)));
     if(l.visual)renderVisual($('lessonVisual'),l.visual);

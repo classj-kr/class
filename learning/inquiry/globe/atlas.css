@@ -25,3 +25,24 @@
 @keyframes plate-down{0%{transform:translateY(0);opacity:1}80%{transform:translateY(12px);opacity:1}100%{transform:translateY(12px);opacity:0}}
 
 @media(prefers-reduced-motion:reduce){.plate-model[data-motion] span{animation:none}}
+
+/* Keep the map and subject matter prominent; omit repeated teaching labels. */
+.atlas-header .projection-toggle{margin-left:auto;margin-right:0}
+.lesson-heading{padding:22px 46px 20px 24px;border-bottom:0}
+.lesson-heading h1{font-size:22px;line-height:1.5}
+.lesson-scroll>.spot-list{margin:0 0 24px}
+.lesson-description{margin-top:24px}
+.lesson-description p{margin:0 0 20px;color:#c4d5e0;font-size:14px;line-height:1.95;word-break:keep-all}
+.lesson-footer{justify-content:flex-end;background:transparent;border-top:0;padding:12px 24px 20px}
+.topic-item{min-height:42px;padding-top:11px;padding-bottom:11px}
+.map-caption:empty{display:none}
+@media(max-width:860px){.lesson-heading{padding:17px 48px 14px 18px}.lesson-heading h1{font-size:19px}.lesson-scroll>.spot-list{margin-bottom:18px}.lesson-description{margin-top:18px}.lesson-description p{font-size:13px;margin-bottom:16px}.lesson-footer{padding:8px 18px 12px}}
+
+/* No reserved header row: controls float over the map. */
+.atlas{--top:0px}
+.atlas-header{display:contents}
+.atlas-header .projection-toggle{position:fixed;z-index:4;top:12px;left:calc(var(--catalog) + (100vw - var(--catalog) - var(--lesson))/2);transform:translateX(-50%);width:max-content;margin:0;background:#112536e8;backdrop-filter:blur(8px)}
+.atlas-header .projection-toggle button{min-height:32px;padding:0 15px;font-size:12px}
+.map-caption{top:58px}
+.atlas #catalogToggle{position:fixed;top:12px;left:12px;z-index:10;background:#112536e8}
+@media(max-width:860px){.atlas{--top:0px}.atlas-catalog .catalog-tabs{padding-left:55px}.atlas-header .projection-toggle{top:12px}.atlas-header .projection-toggle button{font-size:11px;padding:0 12px}.map-caption{top:58px}}

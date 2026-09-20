@@ -2,8 +2,8 @@ import * as maplibregl from "./vendor/maplibre-gl-6.10.0/maplibre-gl.mjs";
 
 import { buildFlowModel, flowFrame, installFlowImages } from "./flow-textures.mjs?v=20260920-17";
 
-import { createAtlas } from "./atlas-study.mjs?v=20260920-18";
-import { animateProjection } from "./projection-morph.mjs?v=20260920-18";
+import { createAtlas } from "./atlas-study.mjs?v=20260920-21";
+import { animateProjection } from "./projection-morph.mjs?v=20260920-19";
 
 const data = window.GLOBE_DATA;
 // 자료 파일이 옛 판일 수 있다(배포 중 화면 코드와 자료가 어긋나는 때). 없는 갈래는 빈 것으로 둔다.
