@@ -364,7 +364,8 @@ button:focus-visible, a:focus-visible, select:focus-visible, summary:focus-visib
 }
 
 @media (max-width: 820px) {
-  .place-dialog[open] { grid-template-columns: 1fr; overflow-y: auto; }
+  .place-dialog[open] { display: block; overflow-y: auto; }
+  .place-side { grid-template-rows: 220px auto; }
   .place-side, .place-body { overflow: visible; }
   .relic-dialog[open] { grid-template-columns: 1fr; overflow-y: auto; }
   .relic-photo img { max-height: 42dvh; }

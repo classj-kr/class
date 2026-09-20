@@ -88,68 +88,7 @@ const NIGHT = [12, 22, 36], DAY = [24, 58, 84];
 
 const GROUND_Y = 150, SHORE_X = 214;
 
-function drawShore(g) {
-    const a = analyse();
-    // How high the sun is, which is what makes the sky light or dark.
-    const sunUp = clamp(Math.sin(Math.PI * (a.hour - 6) / 13), 0, 1);
-
-    g.appendChild(el('rect', { x: 0, y: 0, width: 460, height: GROUND_Y, class: 'sky', style: `fill:${mix(NIGHT, DAY, sunUp)}` }));
-    if (a.daylight) {
-        const sx = 40 + (a.hour - 6) / 13 * 380, sy = GROUND_Y - 18 - sunUp * 100;
-        g.appendChild(el('circle', { cx: sx, cy: sy, r: 11, class: 'sun-body' }));
-    } else {
-        g.appendChild(el('circle', { cx: 392, cy: 34, r: 9, class: 'moon-body' }));
-        g.appendChild(el('circle', { cx: 387, cy: 30, r: 7.5, style: `fill:${mix(NIGHT, DAY, sunUp)}` }));
-    }
-
-    for (let i = 0; i < a.sky.puffs; i += 1) {
-        const cx = 52 + i * (356 / Math.max(1, a.sky.puffs)) + Math.sin(state.phase * 0.4 + i) * 5;
-        const cy = 34 + (i % 2) * 20;
-        [0, 15, 30].forEach((dx, k) => g.appendChild(el('ellipse', { cx: cx + dx, cy: cy - (k === 1 ? 5 : 0), rx: 15, ry: 9, class: 'cloud-puff' })));
-    }
-
-    g.appendChild(el('rect', { x: 0, y: GROUND_Y, width: SHORE_X, height: 214 - GROUND_Y, class: 'sea' }));
-    g.appendChild(el('path', { d: `M ${SHORE_X} 214 L ${SHORE_X} ${GROUND_Y} L 460 ${GROUND_Y - 12} L 460 214 Z`, class: 'land' }));
-    g.appendChild(el('text', { x: 96, y: 206, 'text-anchor': 'middle', class: 'small-label' }, '바다'));
-    g.appendChild(el('text', { x: 340, y: 206, 'text-anchor': 'middle', class: 'small-label' }, '육지'));
-
-    // The surface wind, plus the turning air above it.
-    if (a.wind.dir !== 'calm') {
-        const toLand = a.wind.dir === 'sea';
-        const y = GROUND_Y - 22;
-        const x1 = toLand ? 70 : 358, x2 = toLand ? 350 : 78;
-        const p = (state.phase * (0.25 + a.wind.speed * 0.08)) % 1;
-        g.appendChild(el('line', { x1, y1: y, x2, y2: y, class: 'wind-arrow' }));
-        const hx = x1 + (x2 - x1) * 0.5, s = toLand ? 1 : -1;
-        g.appendChild(el('polygon', { points: `${hx + s * 9},${y} ${hx - s * 3},${y - 5} ${hx - s * 3},${y + 5}` , class: 'wind-head' }));
-        for (let i = 0; i < 4; i += 1) {
-            const q = ((p + i / 4) % 1);
-            const px = x1 + (x2 - x1) * q;
-            g.appendChild(el('circle', { cx: px, cy: y, r: 2.6, class: 'wind-head', style: 'opacity:.7' }));
-        }
-        const warmX = toLand ? 340 : 96, coolX = toLand ? 96 : 340;
-        g.appendChild(el('path', { d: `M ${warmX} ${GROUND_Y - 30} q 8 -22 0 -44`, class: 'rise-arrow' }));
-        g.appendChild(el('path', { d: `M ${coolX} ${GROUND_Y - 74} q 8 22 0 44`, class: 'sink-arrow' }));
-        g.appendChild(el('text', { x: warmX, y: GROUND_Y - 80, 'text-anchor': 'middle', class: 'tiny-label' }, '더운 공기가 올라감'));
-    } else {
-        g.appendChild(el('text', { x: 230, y: GROUND_Y - 28, 'text-anchor': 'middle', class: 'note-text' }, '땅과 바다의 온도가 비슷해 바람이 멎었습니다'));
-    }
-
-    // Two thermometers, read the way the numbers are read.
-    [[96, a.sea, '바다'], [340, a.land, '육지']].forEach(([x, t, label]) => {
-        const h = clamp((t - 12) / 18, 0, 1);
-        g.appendChild(el('rect', { x: x - 7, y: GROUND_Y + 8, width: 14, height: 44, rx: 7, class: 'thermo' }));
-        g.appendChild(el('rect', { x: x - 4, y: GROUND_Y + 48 - h * 36, width: 8, height: h * 36 + 2, rx: 4, class: 'thermo-fill', style: `fill:${label === '육지' ? '#9a3412' : '#075985'}` }));
-        g.appendChild(el('text', { x, y: GROUND_Y + 4, 'text-anchor': 'middle', class: 'read-text', style: `fill:${label === '육지' ? '#ffb26b' : '#0284c7'}` }, `${fmt(t, 1)}℃`));
-    });
-
-    g.appendChild(el('text', { x: 16, y: 22, class: 'big-read' }, koHour(a.hour)));
-    g.appendChild(el('text', { x: 16, y: 40, class: 'tiny-label' }, `하늘 ${a.sky.name} · 구름 ${a.sky.cover}`));
-    g.appendChild(el('text', { x: 444, y: 22, 'text-anchor': 'end', class: 'read-text' },
-        a.wind.dir === 'sea' ? '바닷바람' : (a.wind.dir === 'land' ? '뭍바람' : '바람 멎음')));
-    g.appendChild(el('text', { x: 444, y: 38, 'text-anchor': 'end', class: 'tiny-label' },
-        a.wind.dir === 'calm' ? '' : `${fmt(a.wind.speed, 1)} m/s`));
-}
+function drawShore(g) { g.innerHTML = window.ScienceScenes.weather(analyse(), state.phase, koHour(state.hour)); }
 
 function drawGraph(g) {
     const a = analyse();

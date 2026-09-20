@@ -347,7 +347,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/earth-system/app.js",
-      "sha256": "d2fc5b54c2f9172499d8d827a4dd6d80eb730566e56d55890201a44e05f1a243"
+      "sha256": "178c1d8655eae1bf9c9500432b228ebd2fa6eeb2839f45c72b1c8fd0c9a0595e"
     },
     {
       "path": "learning/inquiry/science-lab/earth-system/earth-visual.css",
@@ -355,7 +355,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/earth-system/index.html",
-      "sha256": "049911c64c7851b3709fcbe544d81154820aef46f8c6dd55e688737b0cf984d5"
+      "sha256": "eddbcf6fe35b0d1939ed915560024a369822d2a502f77523215d7949fd7eff94"
     },
     {
       "path": "learning/inquiry/science-lab/earth-system/quiz.css",
@@ -659,7 +659,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/heat-engine/app.js",
-      "sha256": "cfea5444b94b6f404aeadd77b216b26974abf1d14a0e63133122794733f72ce2"
+      "sha256": "18180b529f10bf7509e0dadbe759a7191761565358201a4965e179bc20b26a69"
     },
     {
       "path": "learning/inquiry/science-lab/heat-engine/engine-visual.css",
@@ -667,7 +667,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/heat-engine/index.html",
-      "sha256": "9da3697d818de8f09fb6c027d38e40ce26a51b0bd8ffe6f875b4f05cfac7e0e0"
+      "sha256": "a0c33417bd00484cd0160b10abbd98e6834335d274ae62544bdd2a7dc364b8a7"
     },
     {
       "path": "learning/inquiry/science-lab/heat-engine/quiz.css",
@@ -1071,11 +1071,11 @@
     },
     {
       "path": "learning/inquiry/science-lab/minerals-rocks/app.js",
-      "sha256": "68537391627fa44c1a573008938606e0eb4cf66433a85b3b9c6ec7394385c56d"
+      "sha256": "b16ac35c0e87094031c9d99255208dda30f553e63d2407d2076fc6b4e22ea105"
     },
     {
       "path": "learning/inquiry/science-lab/minerals-rocks/index.html",
-      "sha256": "ac0a8202cba50825f4caefc3a68f1293c2f094d8255ed031f7267a9f476adba4"
+      "sha256": "0220845df8aef5db7155dcb03cdcc1893bc40ea56e9fc5433ec0d79a1653d706"
     },
     {
       "path": "learning/inquiry/science-lab/minerals-rocks/quiz.css",
@@ -1083,7 +1083,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/minerals-rocks/rock-visual.css",
-      "sha256": "90746f701c7eaa54faeb8dfde8337a898841d535aab1a07a8ee7e3072de56112"
+      "sha256": "3e4a9cbf25518fc23fcffcaa5010197e9e82dd9be4ec0df83bd6f576765a4a9a"
     },
     {
       "path": "learning/inquiry/science-lab/minerals-rocks/styles.css",
@@ -1690,6 +1690,10 @@
       "sha256": "1a839ae2d0e7c787d1c4f9577651645ddb442b5c1444e10629c8ae54669d81f7"
     },
     {
+      "path": "learning/inquiry/science-lab/scene-refinements.js",
+      "sha256": "d1d978d6d3f7159be1427f8fb82d5f07b2858af072aef88bfe52b5e41582c954"
+    },
+    {
       "path": "learning/inquiry/science-lab/science-reading.css",
       "sha256": "cbf2ed4b897414b4d9635846a9faa542f41ad052fe8b0d6f998614de414b0b79"
     },
@@ -1795,11 +1799,11 @@
     },
     {
       "path": "learning/inquiry/science-lab/separation-methods/app.js",
-      "sha256": "9084f99694fde5bf031ca138ff76f90e3d6cae140e41c25d1fb654d3df5697a2"
+      "sha256": "aac43e0828d3776b1607e2324224a989ec3b15321d9f0009112f27eb112fd378"
     },
     {
       "path": "learning/inquiry/science-lab/separation-methods/index.html",
-      "sha256": "1b426734c644607320a1e3f56f40c5fa3d892407d5beeea3e7ba3b3e0d095c29"
+      "sha256": "b2146aa91c4ee3250eb33df631993ab4dde37ffd24c9e433f3b14727735cfe72"
     },
     {
       "path": "learning/inquiry/science-lab/separation-methods/quiz.css",
@@ -1915,11 +1919,11 @@
     },
     {
       "path": "learning/inquiry/science-lab/star-elements/app.js",
-      "sha256": "82cd2a886fb9af43aaf6e044d991af652a562c752decdd9c27c1aaff1440ec73"
+      "sha256": "7a7983fdd5c8ee378c025f9f6fa5a12eb4dd480d0b8ee33903384a8b359d227a"
     },
     {
       "path": "learning/inquiry/science-lab/star-elements/index.html",
-      "sha256": "6a2fcb90b1bf5e794b410c0ed59dab5f79e9a40832d2b3c9de98424e2f2a42eb"
+      "sha256": "72debc0a5768f910af2055795aa81a71e27691e33b5fd94939e38c380a8028cf"
     },
     {
       "path": "learning/inquiry/science-lab/star-elements/quiz.css",
@@ -2155,11 +2159,11 @@
     },
     {
       "path": "learning/inquiry/science-lab/weather-watch/app.js",
-      "sha256": "02db46b6497ce091189d580de2253ced6f5650e7a738c7066cb3270512971322"
+      "sha256": "d0d7f114cbe24842b9ebd4b38038cfcc3ad891cc072769671c2ef7bf1ab262e8"
     },
     {
       "path": "learning/inquiry/science-lab/weather-watch/index.html",
-      "sha256": "1cddc3a19a1f0b18ac47cf56b7a3a46f781ed8972d8711734d5aacf9cd9b88fa"
+      "sha256": "a5d279e43b5edb38a8956e74e0768bf971472b9bd4552b406a96528b651c6b1d"
     },
     {
       "path": "learning/inquiry/science-lab/weather-watch/quiz.css",

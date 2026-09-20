@@ -218,10 +218,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* -------------------------------------------------------- distillation */
-    function renderDistill(a,p) {
-        const started=p>.2,alcohol=a.mix.id==='waterEthanol';
-        return '<rect x="45" y="75" width="115" height="110" rx="8" fill="#bdd8e7"/><path d="M103 75 V50 H290 V115" fill="none" stroke="#7893a0" stroke-width="8"/><rect x="255" y="125" width="90" height="60" rx="8" fill="'+(started?'#a4c6e0':'#edf4f7')+'"/><text class="part-label" x="55" y="210">'+a.mix.label+'</text><text class="part-label" x="185" y="35">증기 → 냉각</text><text class="note-text" x="265" y="205">받은 액체</text><text class="note-text" x="20" y="65">'+(started?(alcohol?'에탄올 비율이 높아진 혼합 액체':'물은 기화·응결, 녹아 있던 소금은 남음'):'기화한 물질을 냉각해 받을 준비')+'</text>';
-    }
+    function renderDistill(a,p) { return window.ScienceScenes.distill(a,p); }
 
     /* ----------------------------------------------------- chromatography */
     function renderChroma(a, p) {
@@ -317,9 +314,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return out;
     }
 
-    function graphDistill(a) {
-        return '<text class="axis-title" x="30" y="30">증류 관찰의 핵심</text><text class="note-text" x="30" y="70">기화 → 냉각 → 응결한 액체를 받음</text><text class="note-text" x="30" y="110">혼합물은 끓는 동안 온도가 변할 수 있음</text><text class="note-text" x="30" y="150">한 번에 두 순물질로 완전히 분리한다고 단정하지 않음</text>';
-    }
+    function graphDistill(a) { return window.ScienceScenes.distillGraph(progress()); }
 
     function graphChroma(a) {
         const gx = rf => GRAPH.x0 + rf * (GRAPH.x1 - GRAPH.x0);

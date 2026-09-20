@@ -321,16 +321,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function render() {
-        const a=analyse(),pump=a.kind==='pump',invalid=a.kind==='flow'&&state.eff==='e100';
-        const progress=state.progress,phase=Math.min(3,Math.floor(progress*4));
-        const labels=['열을 받아 팽창','열 출입 없이 팽창','열을 내보내며 압축','열 출입 없이 압축'];
-        const width=a.kind==='carnot'?80+50*Math.sin(Math.PI*progress)**2:90;
-        mainGroup.innerHTML='<rect x="30" y="35" width="130" height="40" rx="8" fill="#fee2e2"/><text x="95" y="60" text-anchor="middle" fill="#991b1b">'+(pump?'차가운 바깥':'고온 열원')+'</text><rect x="280" y="135" width="145" height="40" rx="8" fill="#dbeafe"/><text x="352" y="160" text-anchor="middle" fill="#1e40af">'+(pump?'따뜻한 실내':'저온 열원')+'</text><rect x="175" y="82" width="'+width+'" height="40" fill="#d97706" opacity=".75"/><text x="200" y="108" fill="#172f3b">'+(pump?'열펌프':'기관')+'</text><text x="140" y="88" fill="#334155">↘ 열</text><text x="285" y="132" fill="#334155">열 ↘</text><text x="190" y="170" fill="#334155">'+(pump?'일을 공급 ↑':'↓ 일을 함')+'</text><text x="20" y="208" fill="#334155">'+(invalid?'배출 열이 없는 순환 기관: 불가능':a.kind==='carnot'?labels[phase]:'화살표는 에너지 이동 방향을 나타냅니다.')+'</text>';
-        graphGroup.innerHTML=a.kind==='carnot'?'<text x="20" y="45" fill="#334155">저온 열원 고정 → 고온 열원 온도 ↑ → 한계 효율 ↑</text><text x="20" y="85" fill="#334155">고온 열원 고정 → 저온 열원 온도 ↓ → 한계 효율 ↑</text>':'<text x="20" y="45" fill="#334155">열은 저절로 고온에서 저온으로 흐릅니다.</text><text x="20" y="85" fill="#334155">반대로 옮길 때는 외부에서 일을 공급합니다.</text>';
-        stageBadge.textContent=a.kind==='carnot'?HOTS[state.hot].label+' / '+COLDS[state.cold].label:pump?OUTS[state.out].label+' → '+INS[state.inn].label:invalid?'배출 열 없음':'열의 일부를 일로';
-        methodHint.textContent=pump?'열을 옮기는 데 외부의 일이 필요합니다.':'받은 열의 일부는 일로, 나머지는 저온 열원으로 이동합니다.';
-        dataNote.innerHTML='<p>'+(pump?'실내로 전달한 열 = 바깥에서 가져온 열 + 공급한 일':invalid?'하나의 열원에서 받은 열을 전부 일로 바꾸는 순환 기관은 만들 수 없습니다.':'고온에서 받은 열 = 한 일 + 저온으로 배출한 열')+'</p><p>화살표와 상자는 과정의 모형이며, 크기로 에너지의 수치를 계산하지 않습니다.</p>';
-        liftProse();return a;
+        const a = analyse(), pump = a.kind === 'pump', invalid = a.kind === 'flow' && a.verdict !== 'ok';
+        const cycle = a.kind === 'carnot' ? carnotState(a, state.progress >= 1 ? 1 - 1e-9 : state.progress) : null;
+        mainGroup.innerHTML = window.ScienceScenes.engine(a, state, cycle);
+        graphGroup.innerHTML = window.ScienceScenes.engineGraph(a, state);
+        stageBadge.textContent = a.kind === 'carnot' ? HOTS[state.hot].label + ' / ' + COLDS[state.cold].label : pump ? OUTS[state.out].label + ' → ' + INS[state.inn].label : invalid ? '배출 열 없음 · 불가능' : '열의 일부를 일로';
+        methodHint.textContent = pump ? '열을 옮기는 데 외부의 일이 필요합니다.' : '받은 열의 일부는 일로, 나머지는 저온 열원으로 이동합니다.';
+        dataNote.innerHTML = '<p>' + (pump ? '실내로 전달한 열 = 바깥에서 가져온 열 + 공급한 일' : invalid ? '하나의 열원에서 받은 열을 전부 일로 바꾸는 순환 기관은 만들 수 없습니다.' : '고온에서 받은 열 = 한 일 + 저온으로 배출한 열') + '</p><p>' + (pump ? '막대는 선택한 두 온도에서의 이상적 열펌프를 비교한 값입니다. 실제 기기의 성능을 예측한 값이 아닙니다.' : a.kind === 'carnot' ? '막대는 한 주기의 에너지 배분입니다. 고온 열원을 높이거나 저온 열원을 낮추면 한계 효율이 증가합니다.' : '막대는 선택한 기관이 내세우는 에너지 배분입니다. 에너지의 합이 같더라도 모두 실현 가능한 것은 아닙니다.') + '</p>';
+        liftProse();
+        return a;
     }
 
     /* --------------------------------------------------------------- run */

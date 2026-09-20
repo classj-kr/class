@@ -165,67 +165,8 @@ document.addEventListener('DOMContentLoaded', () => {
     /* ----------------------------------------------------------- visuals */
     const CAT_LABEL = { 'geo-hydro': '지권과 수권', 'geo-atmo': '지권과 기권', 'hydro-atmo': '수권과 기권', bio: '생물권과 다른 권', space: '외권과 다른 권' };
 
-    function renderSpheres(a) {
-        const { ph } = a;
-        const p = state.progress;
-        const started = p > 0;
-        let out = '';
-        LINKS.forEach(([s, t]) => {
-            const active = started && ((ph.from === s && ph.to === t) || (ph.from === t && ph.to === s));
-            if (active) return;
-            out += `<line class="link" x1="${SPHERES[s].pos[0]}" y1="${SPHERES[s].pos[1]}" x2="${SPHERES[t].pos[0]}" y2="${SPHERES[t].pos[1]}"/>`;
-        });
-        const F = SPHERES[ph.from].pos, T = SPHERES[ph.to].pos;
-        if (started) {
-            const ang = Math.atan2(T[1] - F[1], T[0] - F[0]);
-            const ex = T[0] - 24 * Math.cos(ang), ey = T[1] - 24 * Math.sin(ang);
-            out += `<line class="link active" x1="${F[0]}" y1="${F[1]}" x2="${ex.toFixed(1)}" y2="${ey.toFixed(1)}"/>`;
-            out += `<polygon fill="#d97706" points="${ex.toFixed(1)},${ey.toFixed(1)} ${(ex - 8 * Math.cos(ang - 0.4)).toFixed(1)},${(ey - 8 * Math.sin(ang - 0.4)).toFixed(1)} ${(ex - 8 * Math.cos(ang + 0.4)).toFixed(1)},${(ey - 8 * Math.sin(ang + 0.4)).toFixed(1)}"/>`;
-        }
-        SPHERE_KEYS.forEach(k => {
-            const s = SPHERES[k], on = started && (k === ph.from || k === ph.to);
-            out += `<circle class="sphere ${on ? 'active' : ''}" fill="${s.color}" cx="${s.pos[0]}" cy="${s.pos[1]}" r="20"/>`;
-            out += `<text class="sphere-text" x="${s.pos[0]}" y="${s.pos[1] + 3.5}" text-anchor="middle">${s.label}</text>`;
-        });
-        // the parcel crossing three times
-        if (started && p < 1) {
-            const f = (p * 3) % 1;
-            const px = F[0] + (T[0] - F[0]) * f, py = F[1] + (T[1] - F[1]) * f;
-            out += `<circle class="parcel" cx="${px.toFixed(1)}" cy="${py.toFixed(1)}" r="5"/>`;
-        }
-        // description on the right
-        const IX = 316;
-        ph.lines.forEach((ln, i) => { out += `<text class="trait-text" style="fill:#0f172a" x="${IX}" y="${46 + i * 14}">${ln}</text>`; });
-        const y0 = 46 + ph.lines.length * 14 + 6;
-        out += `<text class="small-label" x="${IX}" y="${y0}">옮겨 가는 것</text>`;
-        out += `<text class="trait-text" style="fill:#d97706" x="${IX}" y="${y0 + 13}">${started ? ph.carry : '?'}</text>`;
-        out += `<text class="small-label" x="${IX}" y="${y0 + 29}">실제 예</text>`;
-        ph.example.forEach((ln, i) => { out += `<text class="trait-text" x="${IX}" y="${y0 + 42 + i * 13}">${ln}</text>`; });
-        out += `<text class="verdict-text" fill="#d97706" x="20" y="16">${p >= 1 ? `${ph.label}: ${SPHERES[ph.from].label} → ${SPHERES[ph.to].label} (${CAT_LABEL[ph.cat]})` : `${ph.label} — 어느 권에서 어느 권으로?`}</text>`;
-        out += `<text class="note-text" x="20" y="208">한 권의 변화가 다른 권을 바꿉니다 · 화살표 방향은 물질이나 에너지가 옮겨 가는 쪽</text>`;
-        return out;
-    }
-
-    // a 5 × 5 record of what has been checked: rows give, columns receive
-    function graphSpheres(a) {
-        const X0 = 92, Y0 = 40, CW = 66, CH = 24;
-        let out = `<text class="axis-title" x="24" y="18">확인한 상호작용 기록표 — 세로: 주는 권, 가로: 받는 권</text>`;
-        SPHERE_KEYS.forEach((k, c) => { out += `<text class="cell-head" x="${X0 + c * CW + CW / 2}" y="${Y0 - 6}" text-anchor="middle">${SPHERES[k].label}</text>`; });
-        SPHERE_KEYS.forEach((rk, r) => {
-            out += `<text class="cell-head" x="${X0 - 6}" y="${Y0 + r * CH + CH / 2 + 3.5}" text-anchor="end">${SPHERES[rk].label}</text>`;
-            SPHERE_KEYS.forEach((ck, c) => {
-                const x = X0 + c * CW, y = Y0 + r * CH;
-                const items = Object.entries(PHENOMENA).filter(([k, v]) => v.from === rk && v.to === ck && (state.seen.has(k) || (state.progress >= 1 && k === state.phenomenon)));
-                const mine = state.progress >= 1 && a.ph.from === rk && a.ph.to === ck;
-                if (rk === ck) { out += `<rect class="cell" x="${x}" y="${y}" width="${CW}" height="${CH}" opacity=".35"/>`; return; }
-                out += `<rect class="cell ${items.length ? 'filled' : ''}" x="${x}" y="${y}" width="${CW}" height="${CH}" ${mine ? 'stroke="#d97706" stroke-width="2"' : ''}/>`;
-                items.slice(0, 2).forEach(([k, v], i) => { out += `<text class="cell-text" x="${x + CW / 2}" y="${y + (items.length > 1 ? 10 + i * 10 : 15.5)}" text-anchor="middle">${v.short}</text>`; });
-            });
-        });
-        const count = new Set([...state.seen, ...(state.progress >= 1 ? [state.phenomenon] : [])]).size;
-        out += `<text class="axis-text" x="24" y="${Y0 + 5 * CH + 18}">채운 현상 ${count}/${Object.keys(PHENOMENA).length} — 같은 두 권이라도 방향이 다르면 다른 칸입니다</text>`;
-        return out;
-    }
+    function renderSpheres(a) { return window.ScienceScenes.earth(a, state, SPHERES, SPHERE_KEYS); }
+    function graphSpheres(a) { return window.ScienceScenes.earthGraph(a, state, SPHERES, SPHERE_KEYS, PHENOMENA); }
 
     function renderWater(a) {
         const { r, tau } = a;
@@ -354,7 +295,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const warning = '<p>저장량·유출입량은 고정된 예시입니다. 현재 관측값이나 실제 미래 예측이 아니며, 체류 시간은 평균적 추정치입니다. 탱크는 유입·유출량이 같고 물이 완전히 섞이는 예시로, 평균 체류 시간이 지나도 처음 물의 약 37%가 남습니다. 실제 저장소의 혼합과 이동 경로는 다릅니다.</p>';
         if (a.kind === 'spheres') {
             const { ph } = a;
-            return warning + `<div class="data-row"><span class="data-name">현상</span><span class="data-val">${ph.label} — ${ph.lines.join(' ')}</span></div>` +
+            return `<div class="data-row"><span class="data-name">현상</span><span class="data-val">${ph.label} — ${ph.lines.join(' ')}</span></div>` +
                 `<div class="data-row"><span class="data-name">주는 권 → 받는 권</span><span class="data-val">${state.progress > 0 ? `${SPHERES[ph.from].label} → ${SPHERES[ph.to].label}` : '따라가 보면 나옵니다'}</span></div>` +
                 `<div class="data-row"><span class="data-name">옮겨 가는 것</span><span class="data-val">${state.progress > 0 ? ph.carry : '?'}</span></div>` +
                 `<div class="data-row match"><span class="data-name">실제 예</span><span class="data-val">${ph.example.join(' ')}</span></div>`;

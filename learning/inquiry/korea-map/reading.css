@@ -1,0 +1,44 @@
+/* 사용자가 선택한 KoPubWorld 바탕체: 설명·문항 본문에 공통 적용. */
+@font-face {
+  font-family: "Korea KoPubWorld Batang";
+  src: url("../../games/sphinx/assets/fonts/kopub-world/KoPubWorld-Batang-Medium.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root { --reading-font: "Korea KoPubWorld Batang", "Batang", serif; }
+
+:is(.place-description, .place-mission, #relicDocent, #relicContext,
+  .concept-points, #focusBody, .reading-steps, .concept-trap,
+  .visual-comparison, .visual-evidence, .concept-visual, .model-location-note,
+  #questionTitle, #questionStimulus, .answer-button, .answer-feedback,
+  .question-map-caption, .question-graph, .note-popup p) {
+  font-family: var(--reading-font);
+  font-weight: 400;
+}
+
+:is(.place-description, .place-mission, #relicDocent, #relicContext,
+  #focusBody, .reading-steps li, .concept-point, .concept-trap,
+  .visual-evidence p, .answer-button, .answer-feedback p) {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.85;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+#questionTitle { font-size: 21px; font-weight: 400; line-height: 1.7; letter-spacing: 0; }
+#questionStimulus { font-size: 15px; line-height: 1.8; }
+.comparison-cell :is(strong, p, small) { font-weight: 400; line-height: 1.8; }
+.comparison-cell :is(p, small) { font-size: 14px; }
+.concept-visual svg, .question-graph svg, .focus-graph svg { font-family: var(--reading-font); font-weight: 400; }
+.place-description p + p { margin-top: 1em; }
+.place-description { margin-bottom: 20px; }
+
+@media (max-width: 600px) {
+  :is(.place-description, .place-mission, #relicDocent, #relicContext,
+    #focusBody, .reading-steps li, .concept-point, .concept-trap,
+    .visual-evidence p, .answer-button, .answer-feedback p) { font-size: 15px; }
+  #questionTitle { font-size: 19px; }
+}

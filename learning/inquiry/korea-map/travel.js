@@ -152,7 +152,11 @@
       badge.textContent = CATEGORY_LABEL[key] || key;
       return badge;
     }));
-    $("placeDescription").textContent = place.description;
+    $("placeDescription").replaceChildren(...place.description.split(/\n\s*\n/).map((text) => {
+      const paragraph = document.createElement("p");
+      paragraph.textContent = text;
+      return paragraph;
+    }));
     $("placeMission").textContent = place.mission;
     $("placeMissionBlock").hidden = !place.mission;
     renderPhoto(place);

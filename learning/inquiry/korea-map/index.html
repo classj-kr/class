@@ -6,8 +6,9 @@
   <meta name="theme-color" content="#123c46">
   <title>국내 지도</title>
   <link rel="stylesheet" href="vendor/leaflet/leaflet.css">
-  <link rel="stylesheet" href="styles.css?v=20260920-31">
+  <link rel="stylesheet" href="styles.css?v=20260920-32">
   <link rel="stylesheet" href="study.css?v=20260920-31">
+  <link rel="stylesheet" href="reading.css?v=20260920-2">
 </head>
 <body>
   <div class="app-shell">
@@ -26,7 +27,6 @@
     <main class="study-layout">
       <section class="map-stage" aria-label="국내 지도 주제 지도">
         <div id="map" role="application" aria-label="국내 지도"></div>
-        <button id="studyMapToggle" class="study-map-toggle" type="button" hidden>주제 지도 전체 보기</button>
         <button class="map-progress" id="progressButton" type="button" aria-label="학습 기록 보기"><span>누적</span><strong id="progressScore">0 / 0</strong></button>
         <button class="map-toggle" id="labelToggle" type="button" aria-pressed="false">지역명</button>
         <button class="map-tool" id="profileButton" type="button" aria-pressed="false" hidden>
@@ -140,7 +140,7 @@
       <h2 id="placeName"></h2>
       <div class="place-badges" id="placeCategories"></div>
       <a class="place-site" id="placeSite" href="#" target="_blank" rel="noopener noreferrer">공식 누리집 ↗</a>
-      <p class="place-description" id="placeDescription"></p>
+      <div class="place-description" id="placeDescription"></div>
       <div id="placeMissionBlock">
         <h3>관찰 미션</h3>
         <p class="place-mission" id="placeMission"></p>
@@ -188,8 +188,8 @@
   <script src="data/principles.js?v=20260920-28"></script>
   <script src="data/heritage-data.js?v=20260920-28"></script>
   <script src="heritage.js?v=20260920-28"></script>
-  <script src="data/travel-data.js?v=20260920-28"></script>
-  <script src="travel.js?v=20260920-28"></script>
+  <script src="data/travel-data.js?v=20260920-32"></script>
+  <script src="travel.js?v=20260920-32"></script>
   <script src="climate-graph.js?v=20260920-31"></script>
   <script src="data/study-lessons.js?v=20260920-31"></script>
   <script src="study-visuals.js?v=20260920-31"></script>

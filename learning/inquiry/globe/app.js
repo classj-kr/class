@@ -2,7 +2,7 @@ import * as maplibregl from "./vendor/maplibre-gl-6.10.0/maplibre-gl.mjs";
 
 import { buildFlowModel, flowFrame, installFlowImages } from "./flow-textures.mjs?v=20260920-17";
 
-import { createAtlas } from "./atlas-study.mjs?v=20260920-36";
+import { createAtlas } from "./atlas-study.mjs?v=20260920-38";
 import { animateProjection } from "./projection-morph.mjs?v=20260920-29";
 
 import { createAxisView } from "./axis-view.mjs?v=20260920-31";

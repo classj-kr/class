@@ -1,0 +1,1536 @@
+{
+  "engine": "chromium",
+  "apps": 6,
+  "modes": 15,
+  "cases": 106,
+  "reports": [
+    {
+      "slug": "separation-methods",
+      "engine": "chromium",
+      "modes": [
+        "filter",
+        "distill",
+        "chroma"
+      ],
+      "cases": 21,
+      "errors": [],
+      "issues": [],
+      "models": [
+        {
+          "key": "__sepModel",
+          "methods": [
+            "PORE_MM",
+            "MIXTURES",
+            "analyse",
+            "schedule",
+            "tempAt",
+            "collectedAt",
+            "render",
+            "round",
+            "setMode",
+            "setMix",
+            "setProgress",
+            "runToEnd",
+            "tick",
+            "finish",
+            "getMode",
+            "getMix",
+            "runSeconds"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "filter",
+          "results": [
+            {
+              "choice": "full",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "partial",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "none",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        },
+        {
+          "mode": "distill",
+          "results": [
+            {
+              "choice": "full",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "partial",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "none",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        },
+        {
+          "mode": "chroma",
+          "results": [
+            {
+              "choice": "full",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "partial",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "none",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "weather-watch",
+      "engine": "chromium",
+      "modes": [
+        "initial"
+      ],
+      "cases": 7,
+      "errors": [],
+      "issues": [],
+      "models": [
+        {
+          "key": "__weatherModel",
+          "methods": [
+            "state",
+            "analyse",
+            "tick",
+            "render",
+            "landTemp",
+            "seaTemp",
+            "windAt",
+            "verdictFor",
+            "amp",
+            "tMax",
+            "tMin",
+            "SKIES",
+            "T_MIN_H",
+            "T_MAX_H",
+            "T_MEAN",
+            "AMP",
+            "CALM",
+            "setSky",
+            "setHour",
+            "check",
+            "runToEnd"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "initial",
+          "results": [
+            {
+              "choice": "p1",
+              "visible": true,
+              "text": "예상은 바다에서 육지로였지만 결과는 육지에서 바다로입니다."
+            },
+            {
+              "choice": "p2",
+              "visible": true,
+              "text": "예상이 맞았습니다 — 육지에서 바다로."
+            },
+            {
+              "choice": "p3",
+              "visible": true,
+              "text": "예상은 거의 안 분다였지만 결과는 육지에서 바다로입니다."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "minerals-rocks",
+      "engine": "chromium",
+      "modes": [
+        "mineral",
+        "rock"
+      ],
+      "cases": 22,
+      "errors": [],
+      "issues": [],
+      "models": [
+        {
+          "key": "__rockModel",
+          "methods": [
+            "MINERALS",
+            "ROCKS",
+            "K_CRYSTAL",
+            "N_CRYSTAL",
+            "FINE_MM",
+            "COARSE_MM",
+            "LOG_MIN",
+            "LOG_MAX",
+            "COOL_K",
+            "state",
+            "analyseMineral",
+            "analyseRock",
+            "analyse",
+            "daysFor",
+            "crystalFor",
+            "timeText",
+            "render",
+            "check",
+            "setMode",
+            "set"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "mineral",
+          "results": [
+            {
+              "choice": "a",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "b",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "none",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        },
+        {
+          "mode": "rock",
+          "results": [
+            {
+              "choice": "fine",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "medium",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "coarse",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "earth-system",
+      "engine": "chromium",
+      "modes": [
+        "spheres",
+        "water",
+        "carbon"
+      ],
+      "cases": 24,
+      "errors": [],
+      "issues": [],
+      "models": [
+        {
+          "key": "__earthModel",
+          "methods": [
+            "SPHERES",
+            "PHENOMENA",
+            "RESERVOIRS",
+            "FLUX",
+            "EMITS",
+            "state",
+            "analyse",
+            "render",
+            "tauOf",
+            "carbonAt",
+            "fmtTime",
+            "fmtVol",
+            "runSeconds",
+            "setMode",
+            "set",
+            "setProgress",
+            "runToEnd",
+            "tick",
+            "finish"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "spheres",
+          "results": [
+            {
+              "choice": "geo-hydro",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "geo-atmo",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "hydro-atmo",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "bio",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "space",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        },
+        {
+          "mode": "water",
+          "results": [
+            {
+              "choice": "days",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "years",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "ages",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        },
+        {
+          "mode": "carbon",
+          "results": [
+            {
+              "choice": "down",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "same",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "up",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "heat-engine",
+      "engine": "chromium",
+      "modes": [
+        "carnot",
+        "flow",
+        "pump"
+      ],
+      "cases": 17,
+      "errors": [],
+      "issues": [
+        {
+          "mode": "carnot",
+          "condition": {
+            "kind": "initial"
+          },
+          "issues": [
+            {
+              "kind": "unanswerable-prediction",
+              "verdict": "high",
+              "choices": [
+                {
+                  "key": "yes",
+                  "text": "고온 열원을 높이면 한계 효율 증가"
+                },
+                {
+                  "key": "no",
+                  "text": "고온 열원을 높이면 한계 효율 감소"
+                }
+              ]
+            }
+          ],
+          "choices": [
+            {
+              "key": "yes",
+              "text": "고온 열원을 높이면 한계 효율 증가"
+            },
+            {
+              "key": "no",
+              "text": "고온 열원을 높이면 한계 효율 감소"
+            }
+          ],
+          "values": [
+            {
+              "kind": "carnot",
+              "Th": 773.15,
+              "Tc": 293.15,
+              "eta": 0.6208368363189549,
+              "V3": 8.566250855844416,
+              "V4": 4.283125427922208,
+              "Qh": 4455.528658391449,
+              "Qc": 1689.3723419872642,
+              "W": 2766.1563164041854,
+              "verdict": "high"
+            }
+          ]
+        },
+        {
+          "mode": "carnot",
+          "condition": {
+            "kind": "button",
+            "attrs": [
+              [
+                "data-value",
+                "h150"
+              ]
+            ],
+            "group": "hot"
+          },
+          "issues": [
+            {
+              "kind": "unanswerable-prediction",
+              "verdict": "mid",
+              "choices": [
+                {
+                  "key": "yes",
+                  "text": "고온 열원을 높이면 한계 효율 증가"
+                },
+                {
+                  "key": "no",
+                  "text": "고온 열원을 높이면 한계 효율 감소"
+                }
+              ]
+            }
+          ],
+          "choices": [
+            {
+              "key": "yes",
+              "text": "고온 열원을 높이면 한계 효율 증가"
+            },
+            {
+              "key": "no",
+              "text": "고온 열원을 높이면 한계 효율 감소"
+            }
+          ],
+          "values": [
+            {
+              "kind": "carnot",
+              "Th": 423.15,
+              "Tc": 293.15,
+              "eta": 0.3072196620583717,
+              "V3": 3.468459803007966,
+              "V4": 1.734229901503983,
+              "Qh": 2438.539677680064,
+              "Qc": 1689.3723419872642,
+              "W": 749.1673356927997,
+              "verdict": "mid"
+            }
+          ]
+        },
+        {
+          "mode": "carnot",
+          "condition": {
+            "kind": "button",
+            "attrs": [
+              [
+                "data-value",
+                "h300"
+              ]
+            ],
+            "group": "hot"
+          },
+          "issues": [
+            {
+              "kind": "unanswerable-prediction",
+              "verdict": "mid",
+              "choices": [
+                {
+                  "key": "yes",
+                  "text": "고온 열원을 높이면 한계 효율 증가"
+                },
+                {
+                  "key": "no",
+                  "text": "고온 열원을 높이면 한계 효율 감소"
+                }
+              ]
+            }
+          ],
+          "choices": [
+            {
+              "key": "yes",
+              "text": "고온 열원을 높이면 한계 효율 증가"
+            },
+            {
+              "key": "no",
+              "text": "고온 열원을 높이면 한계 효율 감소"
+            }
+          ],
+          "values": [
+            {
+              "kind": "carnot",
+              "Th": 573.15,
+              "Tc": 293.15,
+              "eta": 0.4885283084707319,
+              "V3": 5.4676108039323745,
+              "V4": 2.7338054019661873,
+              "Qh": 3302.963526556372,
+              "Qc": 1689.3723419872642,
+              "W": 1613.5911845691078,
+              "verdict": "mid"
+            }
+          ]
+        },
+        {
+          "mode": "carnot",
+          "condition": {
+            "kind": "button",
+            "attrs": [
+              [
+                "data-value",
+                "h500"
+              ]
+            ],
+            "group": "hot"
+          },
+          "issues": [
+            {
+              "kind": "unanswerable-prediction",
+              "verdict": "high",
+              "choices": [
+                {
+                  "key": "yes",
+                  "text": "고온 열원을 높이면 한계 효율 증가"
+                },
+                {
+                  "key": "no",
+                  "text": "고온 열원을 높이면 한계 효율 감소"
+                }
+              ]
+            }
+          ],
+          "choices": [
+            {
+              "key": "yes",
+              "text": "고온 열원을 높이면 한계 효율 증가"
+            },
+            {
+              "key": "no",
+              "text": "고온 열원을 높이면 한계 효율 감소"
+            }
+          ],
+          "values": [
+            {
+              "kind": "carnot",
+              "Th": 773.15,
+              "Tc": 293.15,
+              "eta": 0.6208368363189549,
+              "V3": 8.566250855844416,
+              "V4": 4.283125427922208,
+              "Qh": 4455.528658391449,
+              "Qc": 1689.3723419872642,
+              "W": 2766.1563164041854,
+              "verdict": "high"
+            }
+          ]
+        },
+        {
+          "mode": "carnot",
+          "condition": {
+            "kind": "button",
+            "attrs": [
+              [
+                "data-value",
+                "h800"
+              ]
+            ],
+            "group": "hot"
+          },
+          "issues": [
+            {
+              "kind": "unanswerable-prediction",
+              "verdict": "high",
+              "choices": [
+                {
+                  "key": "yes",
+                  "text": "고온 열원을 높이면 한계 효율 증가"
+                },
+                {
+                  "key": "no",
+                  "text": "고온 열원을 높이면 한계 효율 감소"
+                }
+              ]
+            }
+          ],
+          "choices": [
+            {
+              "key": "yes",
+              "text": "고온 열원을 높이면 한계 효율 증가"
+            },
+            {
+              "key": "no",
+              "text": "고온 열원을 높이면 한계 효율 감소"
+            }
+          ],
+          "values": [
+            {
+              "kind": "carnot",
+              "Th": 1073.15,
+              "Tc": 293.15,
+              "eta": 0.7268322228952151,
+              "V3": 14.008311572238602,
+              "V4": 7.004155786119301,
+              "Qh": 6184.3763561440655,
+              "Qc": 1689.3723419872642,
+              "W": 4495.0040141568015,
+              "verdict": "high"
+            }
+          ]
+        },
+        {
+          "mode": "carnot",
+          "condition": {
+            "kind": "button",
+            "attrs": [
+              [
+                "data-value",
+                "c20"
+              ]
+            ],
+            "group": "cold"
+          },
+          "issues": [
+            {
+              "kind": "unanswerable-prediction",
+              "verdict": "high",
+              "choices": [
+                {
+                  "key": "yes",
+                  "text": "고온 열원을 높이면 한계 효율 증가"
+                },
+                {
+                  "key": "no",
+                  "text": "고온 열원을 높이면 한계 효율 감소"
+                }
+              ]
+            }
+          ],
+          "choices": [
+            {
+              "key": "yes",
+              "text": "고온 열원을 높이면 한계 효율 증가"
+            },
+            {
+              "key": "no",
+              "text": "고온 열원을 높이면 한계 효율 감소"
+            }
+          ],
+          "values": [
+            {
+              "kind": "carnot",
+              "Th": 1073.15,
+              "Tc": 293.15,
+              "eta": 0.7268322228952151,
+              "V3": 14.008311572238602,
+              "V4": 7.004155786119301,
+              "Qh": 6184.3763561440655,
+              "Qc": 1689.3723419872642,
+              "W": 4495.0040141568015,
+              "verdict": "high"
+            }
+          ]
+        },
+        {
+          "mode": "carnot",
+          "condition": {
+            "kind": "button",
+            "attrs": [
+              [
+                "data-value",
+                "c100"
+              ]
+            ],
+            "group": "cold"
+          },
+          "issues": [
+            {
+              "kind": "unanswerable-prediction",
+              "verdict": "high",
+              "choices": [
+                {
+                  "key": "yes",
+                  "text": "고온 열원을 높이면 한계 효율 증가"
+                },
+                {
+                  "key": "no",
+                  "text": "고온 열원을 높이면 한계 효율 감소"
+                }
+              ]
+            }
+          ],
+          "choices": [
+            {
+              "key": "yes",
+              "text": "고온 열원을 높이면 한계 효율 증가"
+            },
+            {
+              "key": "no",
+              "text": "고온 열원을 높이면 한계 효율 감소"
+            }
+          ],
+          "values": [
+            {
+              "kind": "carnot",
+              "Th": 1073.15,
+              "Tc": 373.15,
+              "eta": 0.6522853282392955,
+              "V3": 9.754285695405656,
+              "V4": 4.877142847702828,
+              "Qh": 6184.3763561440655,
+              "Qc": 2150.398394721295,
+              "W": 4033.9779614227705,
+              "verdict": "high"
+            }
+          ]
+        },
+        {
+          "mode": "flow",
+          "condition": {
+            "kind": "initial"
+          },
+          "issues": [
+            {
+              "kind": "unanswerable-prediction",
+              "verdict": "ok",
+              "choices": [
+                {
+                  "key": "yes",
+                  "text": "가능한 기관"
+                },
+                {
+                  "key": "no",
+                  "text": "불가능한 기관"
+                }
+              ]
+            }
+          ],
+          "choices": [
+            {
+              "key": "yes",
+              "text": "가능한 기관"
+            },
+            {
+              "key": "no",
+              "text": "불가능한 기관"
+            }
+          ],
+          "values": [
+            {
+              "kind": "flow",
+              "eta": 0.2,
+              "Th": 773.15,
+              "Tc": 293.15,
+              "etaC": 0.6208368363189549,
+              "W": 200,
+              "Qc": 800,
+              "dS": 1.4355682630699471,
+              "verdict": "ok"
+            }
+          ]
+        },
+        {
+          "mode": "flow",
+          "condition": {
+            "kind": "button",
+            "attrs": [
+              [
+                "data-value",
+                "e20"
+              ]
+            ],
+            "group": "eff"
+          },
+          "issues": [
+            {
+              "kind": "unanswerable-prediction",
+              "verdict": "ok",
+              "choices": [
+                {
+                  "key": "yes",
+                  "text": "가능한 기관"
+                },
+                {
+                  "key": "no",
+                  "text": "불가능한 기관"
+                }
+              ]
+            }
+          ],
+          "choices": [
+            {
+              "key": "yes",
+              "text": "가능한 기관"
+            },
+            {
+              "key": "no",
+              "text": "불가능한 기관"
+            }
+          ],
+          "values": [
+            {
+              "kind": "flow",
+              "eta": 0.2,
+              "Th": 773.15,
+              "Tc": 293.15,
+              "etaC": 0.6208368363189549,
+              "W": 200,
+              "Qc": 800,
+              "dS": 1.4355682630699471,
+              "verdict": "ok"
+            }
+          ]
+        },
+        {
+          "mode": "flow",
+          "condition": {
+            "kind": "button",
+            "attrs": [
+              [
+                "data-value",
+                "e100"
+              ]
+            ],
+            "group": "eff"
+          },
+          "issues": [
+            {
+              "kind": "unanswerable-prediction",
+              "verdict": "perpetual",
+              "choices": [
+                {
+                  "key": "yes",
+                  "text": "가능한 기관"
+                },
+                {
+                  "key": "no",
+                  "text": "불가능한 기관"
+                }
+              ]
+            }
+          ],
+          "choices": [
+            {
+              "key": "yes",
+              "text": "가능한 기관"
+            },
+            {
+              "key": "no",
+              "text": "불가능한 기관"
+            }
+          ],
+          "values": [
+            {
+              "kind": "flow",
+              "eta": 1,
+              "Th": 773.15,
+              "Tc": 293.15,
+              "etaC": 0.6208368363189549,
+              "W": 1000,
+              "Qc": 0,
+              "dS": -1.2934100756644895,
+              "verdict": "perpetual"
+            }
+          ]
+        },
+        {
+          "mode": "pump",
+          "condition": {
+            "kind": "initial"
+          },
+          "issues": [
+            {
+              "kind": "unanswerable-prediction",
+              "verdict": "mid",
+              "choices": [
+                {
+                  "key": "yes",
+                  "text": "외부에서 일을 공급해야 한다"
+                },
+                {
+                  "key": "no",
+                  "text": "일 없이 저절로 옮긴다"
+                }
+              ]
+            }
+          ],
+          "choices": [
+            {
+              "key": "yes",
+              "text": "외부에서 일을 공급해야 한다"
+            },
+            {
+              "key": "no",
+              "text": "일 없이 저절로 옮긴다"
+            }
+          ],
+          "values": [
+            {
+              "kind": "pump",
+              "Tc": 273.15,
+              "Th": 291.15,
+              "cop": 16.174999999999997,
+              "copReal": 5.661249999999999,
+              "Qc": 15.174999999999997,
+              "verdict": "mid"
+            }
+          ]
+        },
+        {
+          "mode": "pump",
+          "condition": {
+            "kind": "button",
+            "attrs": [
+              [
+                "data-value",
+                "o10"
+              ]
+            ],
+            "group": "out"
+          },
+          "issues": [
+            {
+              "kind": "unanswerable-prediction",
+              "verdict": "high",
+              "choices": [
+                {
+                  "key": "yes",
+                  "text": "외부에서 일을 공급해야 한다"
+                },
+                {
+                  "key": "no",
+                  "text": "일 없이 저절로 옮긴다"
+                }
+              ]
+            }
+          ],
+          "choices": [
+            {
+              "key": "yes",
+              "text": "외부에서 일을 공급해야 한다"
+            },
+            {
+              "key": "no",
+              "text": "일 없이 저절로 옮긴다"
+            }
+          ],
+          "values": [
+            {
+              "kind": "pump",
+              "Tc": 283.15,
+              "Th": 291.15,
+              "cop": 36.39375,
+              "copReal": 12.737812499999999,
+              "Qc": 35.39375,
+              "verdict": "high"
+            }
+          ]
+        },
+        {
+          "mode": "pump",
+          "condition": {
+            "kind": "button",
+            "attrs": [
+              [
+                "data-value",
+                "o0"
+              ]
+            ],
+            "group": "out"
+          },
+          "issues": [
+            {
+              "kind": "unanswerable-prediction",
+              "verdict": "mid",
+              "choices": [
+                {
+                  "key": "yes",
+                  "text": "외부에서 일을 공급해야 한다"
+                },
+                {
+                  "key": "no",
+                  "text": "일 없이 저절로 옮긴다"
+                }
+              ]
+            }
+          ],
+          "choices": [
+            {
+              "key": "yes",
+              "text": "외부에서 일을 공급해야 한다"
+            },
+            {
+              "key": "no",
+              "text": "일 없이 저절로 옮긴다"
+            }
+          ],
+          "values": [
+            {
+              "kind": "pump",
+              "Tc": 273.15,
+              "Th": 291.15,
+              "cop": 16.174999999999997,
+              "copReal": 5.661249999999999,
+              "Qc": 15.174999999999997,
+              "verdict": "mid"
+            }
+          ]
+        },
+        {
+          "mode": "pump",
+          "condition": {
+            "kind": "button",
+            "attrs": [
+              [
+                "data-value",
+                "om10"
+              ]
+            ],
+            "group": "out"
+          },
+          "issues": [
+            {
+              "kind": "unanswerable-prediction",
+              "verdict": "mid",
+              "choices": [
+                {
+                  "key": "yes",
+                  "text": "외부에서 일을 공급해야 한다"
+                },
+                {
+                  "key": "no",
+                  "text": "일 없이 저절로 옮긴다"
+                }
+              ]
+            }
+          ],
+          "choices": [
+            {
+              "key": "yes",
+              "text": "외부에서 일을 공급해야 한다"
+            },
+            {
+              "key": "no",
+              "text": "일 없이 저절로 옮긴다"
+            }
+          ],
+          "values": [
+            {
+              "kind": "pump",
+              "Tc": 263.15,
+              "Th": 291.15,
+              "cop": 10.398214285714285,
+              "copReal": 3.639375,
+              "Qc": 9.398214285714285,
+              "verdict": "mid"
+            }
+          ]
+        },
+        {
+          "mode": "pump",
+          "condition": {
+            "kind": "button",
+            "attrs": [
+              [
+                "data-value",
+                "om20"
+              ]
+            ],
+            "group": "out"
+          },
+          "issues": [
+            {
+              "kind": "unanswerable-prediction",
+              "verdict": "low",
+              "choices": [
+                {
+                  "key": "yes",
+                  "text": "외부에서 일을 공급해야 한다"
+                },
+                {
+                  "key": "no",
+                  "text": "일 없이 저절로 옮긴다"
+                }
+              ]
+            }
+          ],
+          "choices": [
+            {
+              "key": "yes",
+              "text": "외부에서 일을 공급해야 한다"
+            },
+            {
+              "key": "no",
+              "text": "일 없이 저절로 옮긴다"
+            }
+          ],
+          "values": [
+            {
+              "kind": "pump",
+              "Tc": 253.14999999999998,
+              "Th": 291.15,
+              "cop": 7.661842105263157,
+              "copReal": 2.681644736842105,
+              "Qc": 6.661842105263157,
+              "verdict": "low"
+            }
+          ]
+        },
+        {
+          "mode": "pump",
+          "condition": {
+            "kind": "button",
+            "attrs": [
+              [
+                "data-value",
+                "i18"
+              ]
+            ],
+            "group": "inn"
+          },
+          "issues": [
+            {
+              "kind": "unanswerable-prediction",
+              "verdict": "low",
+              "choices": [
+                {
+                  "key": "yes",
+                  "text": "외부에서 일을 공급해야 한다"
+                },
+                {
+                  "key": "no",
+                  "text": "일 없이 저절로 옮긴다"
+                }
+              ]
+            }
+          ],
+          "choices": [
+            {
+              "key": "yes",
+              "text": "외부에서 일을 공급해야 한다"
+            },
+            {
+              "key": "no",
+              "text": "일 없이 저절로 옮긴다"
+            }
+          ],
+          "values": [
+            {
+              "kind": "pump",
+              "Tc": 253.14999999999998,
+              "Th": 291.15,
+              "cop": 7.661842105263157,
+              "copReal": 2.681644736842105,
+              "Qc": 6.661842105263157,
+              "verdict": "low"
+            }
+          ]
+        },
+        {
+          "mode": "pump",
+          "condition": {
+            "kind": "button",
+            "attrs": [
+              [
+                "data-value",
+                "i24"
+              ]
+            ],
+            "group": "inn"
+          },
+          "issues": [
+            {
+              "kind": "unanswerable-prediction",
+              "verdict": "low",
+              "choices": [
+                {
+                  "key": "yes",
+                  "text": "외부에서 일을 공급해야 한다"
+                },
+                {
+                  "key": "no",
+                  "text": "일 없이 저절로 옮긴다"
+                }
+              ]
+            }
+          ],
+          "choices": [
+            {
+              "key": "yes",
+              "text": "외부에서 일을 공급해야 한다"
+            },
+            {
+              "key": "no",
+              "text": "일 없이 저절로 옮긴다"
+            }
+          ],
+          "values": [
+            {
+              "kind": "pump",
+              "Tc": 253.14999999999998,
+              "Th": 297.15,
+              "cop": 6.7534090909090905,
+              "copReal": 2.3636931818181814,
+              "Qc": 5.7534090909090905,
+              "verdict": "low"
+            }
+          ]
+        }
+      ],
+      "models": [
+        {
+          "key": "__engineModel",
+          "methods": [
+            "HOTS",
+            "COLDS",
+            "EFFS",
+            "PAIRS",
+            "OUTS",
+            "INS",
+            "state",
+            "analyse",
+            "render",
+            "runSeconds",
+            "setMode",
+            "set",
+            "setProgress",
+            "runToEnd",
+            "tick",
+            "finish"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "carnot",
+          "results": [
+            {
+              "choice": "yes",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "no",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        },
+        {
+          "mode": "flow",
+          "results": [
+            {
+              "choice": "yes",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "no",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        },
+        {
+          "mode": "pump",
+          "results": [
+            {
+              "choice": "yes",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "no",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "star-elements",
+      "engine": "chromium",
+      "modes": [
+        "fusion",
+        "mass",
+        "origin"
+      ],
+      "cases": 15,
+      "errors": [],
+      "issues": [
+        {
+          "mode": "fusion",
+          "condition": {
+            "kind": "initial"
+          },
+          "issues": [
+            {
+              "kind": "unanswerable-prediction",
+              "verdict": "lots",
+              "choices": [
+                {
+                  "key": "yes",
+                  "text": "에너지 방출"
+                },
+                {
+                  "key": "no",
+                  "text": "에너지가 전혀 나오지 않음"
+                }
+              ]
+            }
+          ],
+          "choices": [
+            {
+              "key": "yes",
+              "text": "에너지 방출"
+            },
+            {
+              "key": "no",
+              "text": "에너지가 전혀 나오지 않음"
+            }
+          ],
+          "values": [
+            {
+              "kind": "fusion",
+              "ratio": 100,
+              "massPct": 0.71658615136876,
+              "jPerKg": 644137500000000,
+              "coalKg": 21471250,
+              "verdict": "lots"
+            }
+          ]
+        },
+        {
+          "mode": "fusion",
+          "condition": {
+            "kind": "button",
+            "attrs": [
+              [
+                "data-value",
+                "h"
+              ]
+            ],
+            "group": "step"
+          },
+          "issues": [
+            {
+              "kind": "unanswerable-prediction",
+              "verdict": "lots",
+              "choices": [
+                {
+                  "key": "yes",
+                  "text": "에너지 방출"
+                },
+                {
+                  "key": "no",
+                  "text": "에너지가 전혀 나오지 않음"
+                }
+              ]
+            }
+          ],
+          "choices": [
+            {
+              "key": "yes",
+              "text": "에너지 방출"
+            },
+            {
+              "key": "no",
+              "text": "에너지가 전혀 나오지 않음"
+            }
+          ],
+          "values": [
+            {
+              "kind": "fusion",
+              "ratio": 100,
+              "massPct": 0.71658615136876,
+              "jPerKg": 644137500000000,
+              "coalKg": 21471250,
+              "verdict": "lots"
+            }
+          ]
+        },
+        {
+          "mode": "fusion",
+          "condition": {
+            "kind": "button",
+            "attrs": [
+              [
+                "data-value",
+                "he"
+              ]
+            ],
+            "group": "step"
+          },
+          "issues": [
+            {
+              "kind": "unanswerable-prediction",
+              "verdict": "tenth",
+              "choices": [
+                {
+                  "key": "yes",
+                  "text": "에너지 방출"
+                },
+                {
+                  "key": "no",
+                  "text": "에너지가 전혀 나오지 않음"
+                }
+              ]
+            }
+          ],
+          "choices": [
+            {
+              "key": "yes",
+              "text": "에너지 방출"
+            },
+            {
+              "key": "no",
+              "text": "에너지가 전혀 나오지 않음"
+            }
+          ],
+          "values": [
+            {
+              "kind": "fusion",
+              "ratio": 9.078651685393256,
+              "massPct": 0.06505636070853461,
+              "jPerKg": 58478999999999.984,
+              "coalKg": 1949299.9999999995,
+              "verdict": "tenth"
+            }
+          ]
+        }
+      ],
+      "models": [
+        {
+          "key": "__starModel",
+          "methods": [
+            "BINDING",
+            "STEPS",
+            "STARS",
+            "ORIGINS",
+            "UNIVERSE",
+            "state",
+            "analyse",
+            "render",
+            "beOf",
+            "lifeYears",
+            "fmtShare",
+            "runSeconds",
+            "setMode",
+            "set",
+            "setProgress",
+            "runToEnd",
+            "tick",
+            "finish"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "fusion",
+          "results": [
+            {
+              "choice": "yes",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "no",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        },
+        {
+          "mode": "mass",
+          "results": [
+            {
+              "choice": "he",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "co",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "sn",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        },
+        {
+          "mode": "origin",
+          "results": [
+            {
+              "choice": "bigbang",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "star",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "merger",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

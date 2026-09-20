@@ -42,7 +42,7 @@
   let mapDetailsVisible = false;
   let session = { questions: [], answers: [], index: 0, answered: false, mode: "theme" };
   let mainMap, questionMap;
-  let study, lessonMapLayer, lessonMapFocused = false;
+  let study, lessonMapLayer;
   let mainBoundaryLayer, mainThemeLayer, mainLabelLayer;
   let questionBoundaryLayer, questionThemeLayer, questionLabelLayer, questionFocusLayer;
   const zoomSyncHandlers = new WeakMap();
@@ -185,17 +185,6 @@
     $("#reviewWrong").addEventListener("click", reviewWrongQuestions);
     $("#focusClose").addEventListener("click", clearFeatureFocus);
     $("#labelToggle").addEventListener("click", toggleMapDetails);
-    $("#studyMapToggle").addEventListener("click", () => {
-      if (!lessonMapFocused) { focusLesson(study.current); return; }
-      lessonMapFocused = false;
-      lessonMapLayer.clearLayers();
-      const theme = themes[currentTheme];
-      drawThemeOnMap(mainMap, mainThemeLayer, theme, {interactive:true});
-      drawLabels(mainMap, mainLabelLayer, {admin:!theme.provinceNames,city:!theme.provinceNames,annotations:theme.annotations||[]});
-      renderLegend(theme.legend||[]);
-      fitKorea(mainMap);
-      $("#studyMapToggle").textContent = "현재 개념의 지도 사례 보기";
-    });
     // 지도 자료 출처는 자료를 쓰는 조건이라 없앨 수 없어 ⓘ 단추 안에 접어 둔다.
     $("#creditButton").addEventListener("click", () => {
       const open = $("#creditText").hidden;
@@ -377,10 +366,7 @@
 
   function focusLesson(lesson) {
     lessonMapLayer.clearLayers();
-    lessonMapFocused = !!lesson;
-    $("#studyMapToggle").hidden = !lesson;
     if (!lesson) return;
-    $("#studyMapToggle").textContent = "주제 지도 전체 보기";
     renderLegend((themes[currentTheme].legend || []).filter(item=>item.type === "relief"));
     drawThemeOnMap(mainMap, mainThemeLayer, themes[currentTheme], { interactive: true, skipFeatures: true, baseOnly: true });
     drawLabels(mainMap, mainLabelLayer, { admin: true, city: true, annotations: [] });

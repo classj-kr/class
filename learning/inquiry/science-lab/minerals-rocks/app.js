@@ -217,51 +217,8 @@ document.addEventListener('DOMContentLoaded', () => {
         return `rgb(${mix.join(',')})`;
     }
 
-    function renderRock(a) {
-        let out = '';
-        // where this melt cooled
-        const GY = 92;
-        out += `<rect class="crust" x="20" y="${GY}" width="210" height="96" rx="3"/>`;
-        out += `<line class="ground-line" x1="20" y1="${GY}" x2="230" y2="${GY}"/>`;
-        out += `<text class="small-label" x="24" y="${GY - 6}">지표</text>`;
-        if (a.depthKm < 0.4) {
-            out += `<path class="magma" d="M96,${GY} q30,-16 60,0 q-30,8 -60,0 Z"/>`;
-            out += `<rect class="magma" x="60" y="${GY - 5}" width="130" height="6" rx="3"/>`;
-            out += `<text class="small-label" x="125" y="${GY - 16}" text-anchor="middle">지표로 흘러나온 용암</text>`;
-        } else {
-            // kept high enough that its caption clears the line of notes below
-            const dy = GY + 10 + (a.depthKm / 10) * 44;
-            out += `<ellipse class="magma deep" cx="125" cy="${dy.toFixed(1)}" rx="52" ry="18"/>`;
-            out += `<text class="depth-label" x="125" y="${(dy + 32).toFixed(1)}" text-anchor="middle">깊이 약 ${a.depthKm.toFixed(1)} km</text>`;
-        }
-        out += `<text class="note-text" x="20" y="200">식는 데 걸린 시간 ${timeText(a.days)} · 결정 크기 ${a.mm.toFixed(2)} mm</text>`;
+    function renderRock(a) { mainGroup.innerHTML = window.ScienceScenes.rock(a, crystalColour, timeText(a.days)); }
 
-        // the same rock seen through a lens
-        out += `<rect class="field-box" x="${FIELD.x}" y="${FIELD.y}" width="${FIELD.w}" height="${FIELD.h}" rx="4"/>`;
-        const px = Math.max(2, a.mm * PX_PER_MM);
-        const rand = rng(Math.round(a.silica) * 131 + Math.round(a.mm * 100));
-        let grains = '';
-        for (let y = FIELD.y - px; y < FIELD.y + FIELD.h + px; y += px) {
-            for (let x = FIELD.x - px; x < FIELD.x + FIELD.w + px; x += px) {
-                const jx = x + (rand() - 0.5) * px * 0.4, jy = y + (rand() - 0.5) * px * 0.4;
-                const s = px * (0.55 + rand() * 0.5);
-                grains += `<rect class="crystal" x="${jx.toFixed(1)}" y="${jy.toFixed(1)}" width="${s.toFixed(1)}" height="${s.toFixed(1)}" ` +
-                          `rx="${(s * 0.2).toFixed(1)}" fill="${crystalColour(a.silica, 0.6 + rand() * 0.7)}"/>`;
-            }
-        }
-        out += `<g clip-path="url(#fieldClip)">${grains}</g>`;
-        out += `<rect class="field-box" fill="none" x="${FIELD.x}" y="${FIELD.y}" width="${FIELD.w}" height="${FIELD.h}" rx="4"/>`;
-        out += `<text class="small-label" x="${FIELD.x + FIELD.w / 2}" y="${FIELD.y - 6}" text-anchor="middle">확대해서 본 모습 (가로 ${FIELD.mm} mm)</text>`;
-        out += `<line class="scale-bar" x1="${FIELD.x + 8}" y1="${FIELD.y + FIELD.h - 8}" x2="${FIELD.x + 8 + PX_PER_MM}" y2="${FIELD.y + FIELD.h - 8}"/>`;
-        out += `<text class="scale-text" x="${FIELD.x + 12 + PX_PER_MM}" y="${FIELD.y + FIELD.h - 5}">1 mm</text>`;
-
-        out += `<text class="rock-name" x="${FIELD.x + FIELD.w / 2}" y="${FIELD.y + FIELD.h + 22}" text-anchor="middle">${a.name}</text>`;
-        out += `<text class="small-label" x="${FIELD.x + FIELD.w / 2}" y="${FIELD.y + FIELD.h + 38}" text-anchor="middle">${a.row.family} · ${a.row.texture}</text>`;
-        out += `<text class="part-label" x="20" y="24">이산화규소 ${a.silica}% · ${a.silica < 52 ? '어두운 색' : a.silica < 63 ? '중간 색' : '밝은 색'}</text>`;
-        mainGroup.innerHTML = out;
-    }
-
-    /* ------------------------------------------------------------ graphs */
     function graphMineral(a) {
         const list = Object.entries(MINERALS);
         const gx = h => GRAPH.x0 + (h / 10) * (GRAPH.x1 - GRAPH.x0);
@@ -323,7 +280,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (s) s.textContent = `${state.silica} %`;
         methodHint.textContent = state.mode === 'mineral'
             ? '굳기가 큰 광물이 작은 광물을 긁습니다'
-            : '천천히 식을수록 결정이 크게 자랍니다';
+            : '천천히 식을수록 결정이 큽니다. 관찰 폭이 자동으로 바뀌므로 눈금으로 비교하세요.';
         stageBadge.textContent = a.kind === 'mineral'
             ? `${a.A.name} ${a.A.h} vs ${a.B.name} ${a.B.h}`
             : `${a.name} · 결정 ${a.mm.toFixed(2)} mm`;
