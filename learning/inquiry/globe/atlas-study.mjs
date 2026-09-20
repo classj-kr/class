@@ -13,10 +13,10 @@ export function updateProgress(progress,id,correct){
 export function createAtlas(api){
   let query='',current=null,layers=null,loaded=false,revision=0,quiz=null,progress;
   try{progress=readProgress(localStorage);}catch{progress={};}
-  document.body.classList.add('atlas');
+  document.body.classList.add('atlas','lesson-closed');
   document.body.insertAdjacentHTML('afterbegin',`<header class="atlas-header"><button id="catalogToggle" aria-expanded="false" aria-controls="atlasCatalog" aria-label="학습 목록 열기">☰</button><div class="projection-toggle" role="group" aria-label="지도 보기 모드"><button data-view="globe" aria-pressed="true">지구본</button><button data-view="flat" aria-pressed="false" title="메르카토르 도법: 고위도일수록 면적이 크게 보입니다.">평면지도</button></div></header>
     <aside class="atlas-catalog" id="atlasCatalog" aria-label="학습 주제 목록"><div class="catalog-tabs" role="group" aria-label="목록 종류"><button id="topicsTab" aria-pressed="true">학습 주제</button><button id="layersTab" aria-pressed="false">지도 표시</button></div><section id="topicsPane"><label class="search-box"><span class="sr-only">학습 주제 검색</span><input id="topicSearch" type="search" placeholder="주제·개념 검색" autocomplete="off"></label><nav id="topicList" aria-label="주제별 학습 목록"></nav></section><section id="layersPane" hidden></section><footer class="catalog-footer"><button id="wrongPractice">오답 다시 풀기</button></footer></aside>
-    <section class="atlas-lesson" id="lessonPanel" aria-label="주제 학습"><p class="loading-copy">지도를 준비하고 있습니다.</p></section>
+    <section class="atlas-lesson" id="lessonPanel" aria-label="주제 학습"></section>
     <button id="lessonReopen" hidden>학습 카드 열기</button><div class="map-caption" id="mapCaption" aria-live="polite"></div><div class="atlas-legend" id="atlasLegend" hidden></div><div class="map-tools" id="mapTools"></div>
     <dialog class="atlas-quiz" id="atlasQuiz" aria-label="확인 문제"><button class="quiz-close" aria-label="문제 닫기">×</button><div id="quizBody"></div></dialog>`);
   const $=id=>document.getElementById(id);
@@ -54,7 +54,7 @@ export function createAtlas(api){
   async function choose(id){
     const lesson=LESSONS.find(l=>l.id===id);if(!lesson)return;
     current=lesson;const version=++revision;
-    history.replaceState(null,'','#'+lesson.id);setCatalog(false);
+    setCatalog(false);
     document.body.classList.remove('lesson-closed');$('lessonReopen').hidden=true;
     renderCatalog();renderLesson(lesson);api.map.resize();
     if(!loaded)return;
@@ -121,15 +121,13 @@ export function createAtlas(api){
     if(wrong.length)$('retryQuiz').onclick=()=>startQuiz(wrong,true);
     $('returnMap').onclick=()=>$('atlasQuiz').close();
   }
-  const legacy={'terrain-conflict':'landforms','korea-location':'coordinates','korea-terrain':'landforms',world:'regions',terrain:'landforms',climate:'climate-zones',population:'density',region:'regions'};
-  let hash='';
-  try{hash=decodeURIComponent(location.hash.slice(1));}catch{/* A malformed bookmark opens the default lesson. */}
-  const initial=LESSONS.some(l=>l.id===hash)?hash:legacy[hash]||'currents';
-  renderCatalog();choose(initial);
+  // Every entry starts with an unselected map, including old automatically saved topic hashes.
+  if(location.hash)history.replaceState(null,'',location.pathname+location.search);
+  renderCatalog();
   return {async ready(){
     layers=await installAtlasLayers(api.map,pick=>{caption(pick.text);if(pick.spot!==undefined)focusSpot(pick.spot);});
     loaded=true;api.map.resize();
     if(document.body.dataset.startView==='flat'){await api.setView('flat',true);document.querySelectorAll('[data-view]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.view==='flat')));}
-    await choose(current.id);
+    if(current)await choose(current.id);
   }};
 }

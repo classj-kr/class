@@ -368,15 +368,6 @@ html, body {
   word-break: keep-all;
 }
 
-.info-credit {
-  margin: 12px 0 0;
-  font-size: 12px;
-  line-height: 1.5;
-}
-
-.info-credit a { color: var(--muted); text-decoration: none; }
-.info-credit a:hover { text-decoration: underline; }
-
 @media (max-width: 640px) {
   .info-panel {
     top: auto;
@@ -402,3 +393,6 @@ html, body {
 /* 움직임을 멈춰도 이름과 방향은 그대로 읽을 수 있다. */
 .layer-bar .flow-motion[hidden] { display: none; }
 .layer-bar .flow-motion { color: var(--text); }
+
+.photo-source{display:block;border-radius:15px 15px 0 0}
+.photo-source:focus-visible{outline:3px solid #60a5fa;outline-offset:-3px}

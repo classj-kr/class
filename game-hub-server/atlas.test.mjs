@@ -53,6 +53,6 @@ test('progress tolerates blocked/corrupt storage and tracks retry results separa
 });
 test('old geography entry uses the shared app and the home menu has one atlas link',()=>{
   const old=read('learning/inquiry/world-geography/index.html');assert.match(old,/data-start-view="flat"/);assert.match(old,/\.\.\/globe\/app\.js/);assert.doesNotMatch(old,/leaflet|map-layers|climate-graph|src="data\.js/);
-  const home=read('index.html');assert.match(home,/<strong>세계 지리<\/strong>/);assert.doesNotMatch(home,/href="learning\/inquiry\/world-geography\/"/);
+  const home=read('index.html');assert.match(home,/<strong>세계 지도<\/strong>/);assert.doesNotMatch(home,/href="learning\/inquiry\/world-geography\/"/);
   assert.match(read('learning/inquiry/globe/app.js'),/new URL\("\.", import\.meta\.url\)/);
 });

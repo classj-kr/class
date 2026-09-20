@@ -2,7 +2,7 @@ import * as maplibregl from "./vendor/maplibre-gl-6.10.0/maplibre-gl.mjs";
 
 import { buildFlowModel, flowFrame, installFlowImages } from "./flow-textures.mjs?v=20260920-17";
 
-import { createAtlas } from "./atlas-study.mjs?v=20260920-26";
+import { createAtlas } from "./atlas-study.mjs?v=20260920-28";
 import { animateProjection } from "./projection-morph.mjs?v=20260920-19";
 
 const data = window.GLOBE_DATA;
@@ -56,7 +56,6 @@ const BACKDROPS = [
 const CHIPS = [...KINDS, ...BACKDROPS];
 const membersOf = (chip) => chip.members || [chip.id];
 const chipOfKind = new Map(CHIPS.flatMap((chip) => membersOf(chip).map((kind) => [kind, chip])));
-const DEFAULT_ON = new Set(["mountain", "plateau", "plain", "basin", "desert", "river", "peninsula", "island", "other", "peak", "sea", "grid"]);
 
 // 설명 창 윗줄에 적는 갈래 이름
 const KIND_NAME = {
@@ -89,7 +88,8 @@ const CURRENT_LOCAL_LAYERS = ["currents-line-local", "currents-flow-local", "cur
 // 아무것도 고르지 않았을 때 켜짐 층에 거는 조건(어떤 선과도 맞지 않음)
 const NOTHING = ["boolean", false];
 
-const enabled = loadSettings();
+// Start without labels or thematic overlays; selections belong to this visit.
+const enabled = new Set();
 // 계절풍을 여름 것으로 볼지 겨울 것으로 볼지
 let season = loadSeason();
 
@@ -909,14 +909,6 @@ function loadSeason() {
   return "summer";
 }
 
-function loadSettings() {
-  try {
-    const saved = JSON.parse(localStorage.getItem(SETTINGS_KEY) || "null");
-    if (Array.isArray(saved)) return new Set(saved);
-  } catch (_) {}
-  return new Set(DEFAULT_ON);
-}
-
 function saveSettings() {
   try {
     localStorage.setItem(SETTINGS_KEY, JSON.stringify([...enabled]));
@@ -1092,7 +1084,7 @@ const panelWhere = panel.querySelector(".info-where");
 const panelText = panel.querySelector(".info-text");
 const panelExam = panel.querySelector(".info-exam");
 const panelExamBox = panel.querySelector(".info-exam-box");
-const panelCredit = panel.querySelector(".info-credit");
+const panelPhotoSource = panelPhoto.querySelector(".photo-source");
 panel.querySelector(".info-close").addEventListener("click", clearSelection);
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape" && selected) clearSelection();
@@ -1146,17 +1138,14 @@ function showPanel(item) {
     panelImage.src = `${BASE}${photo.src}?v=${DATA_VERSION}`;
     panelImage.alt = photo.caption?.replace(/^사진 속 · /, "") || item.name;
     panelCaption.textContent = photo.caption || "";
-    panelCredit.replaceChildren();
-    const credit = document.createElement("a");
-    credit.href = photo.page;
-    credit.target = "_blank";
-    credit.rel = "noopener";
-    credit.textContent = `사진 · ${photo.author} · ${photo.license} · 위키미디어 공용`;
-    panelCredit.append(credit);
-    panelCredit.hidden = false;
+    panelPhotoSource.href = photo.page;
+    panelPhotoSource.title = `사진 출처 · ${photo.author} · ${photo.license}`;
+    panelPhotoSource.setAttribute("aria-label", `${panelImage.alt} — 사진 원본 보기. ${photo.author}, ${photo.license}`);
   } else {
     panelImage.removeAttribute("src");
-    panelCredit.hidden = true;
+    panelPhotoSource.removeAttribute("href");
+    panelPhotoSource.removeAttribute("title");
+    panelPhotoSource.removeAttribute("aria-label");
   }
   panel.scrollTop = 0;
 }

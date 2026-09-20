@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#0b1522">
   <title>지리 탐구 · 지구본과 지도</title>
   <link rel="stylesheet" href="vendor/maplibre-gl-6.10.0/maplibre-gl.css">
-  <link rel="stylesheet" href="styles.css?v=20260920-19">
+  <link rel="stylesheet" href="styles.css?v=20260920-27">
   <link rel="stylesheet" href="atlas.css?v=20260920-22">
 </head>
 <body>
@@ -23,7 +23,7 @@
   <aside class="info-panel" id="infoPanel" aria-label="설명" hidden>
     <button type="button" class="info-close" aria-label="설명 닫기"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
     <figure class="info-photo" hidden>
-      <img alt="" decoding="async">
+      <a class="photo-source" target="_blank" rel="noopener"><img alt="" decoding="async"></a>
       <figcaption></figcaption>
     </figure>
     <div class="info-body">
@@ -35,11 +35,10 @@
         <h3>함께 볼 특징</h3>
         <ul class="info-exam"></ul>
       </section>
-      <p class="info-credit" hidden></p>
     </div>
   </aside>
 
   <script src="data/globe-data.js?v=20260920-26"></script>
-  <script type="module" src="app.js?v=20260920-26"></script>
+  <script type="module" src="app.js?v=20260920-28"></script>
 </body>
 </html>

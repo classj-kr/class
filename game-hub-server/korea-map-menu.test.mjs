@@ -5,7 +5,7 @@ const html = fs.readFileSync(new URL('../index.html', import.meta.url), 'utf8');
 const groups = [...html.matchAll(/<details class="worksheet-group" data-access-group="([^"]+)">[\s\S]*?<\/details>/g)];
 const groupByName = new Map(groups.map((match) => [match[1], match[0]]));
 
-for (const groupName of ['story-books', 'grammar', 'vocabulary', 'information-computing', 'world-maps', 'space-observation', 'arts-appreciation', 'arts-experience', 'music-theory']) {
+for (const groupName of ['story-books', 'grammar', 'vocabulary', 'information-computing', 'world-maps', 'science-models', 'arts-appreciation', 'arts-experience', 'music-theory']) {
   assert.ok(groupByName.has(groupName), `Missing disclosure menu: ${groupName}`);
 }
 
@@ -59,23 +59,22 @@ assert.match(grammar, /href="learning\/literacy-numeracy\/sentence-building\/"[^
 assert.match(grammar, /<strong>문장 고르기<\/strong><small>\(Sentence Choice\)<\/small>/);
 assert.doesNotMatch(grammar, /<strong>문장 만들기<\/strong>/);
 
-const space = groupByName.get('space-observation') || '';
-assert.ok(space, 'Space observation must be grouped directly on the portal.');
-assert.match(space, /data-content-paths="learning\/inquiry\/space\/"/);
-const orderedSpaceItems = [
-  ['learning/inquiry/space/solar-system/', '태양계'],
-  ['learning/inquiry/space/constellations/', '별과 별자리'],
-  ['learning/inquiry/space/earth-moon/', '지구와 달의 운동'],
+const scienceModels = groupByName.get('science-models') || '';
+assert.ok(scienceModels, 'Science models must be grouped directly on the portal.');
+assert.match(scienceModels, /data-content-paths="learning\/inquiry\/human-body\/\|learning\/inquiry\/space\/\|learning\/inquiry\/periodic-table\/"/);
+const orderedScienceModelItems = [
+  ['learning/inquiry/human-body/', '인체 구조 모형'],
+  ['learning/inquiry/space/', '지구·우주 모형'],
+  ['learning/inquiry/periodic-table/', '시험용 단주기표'],
 ];
-let previousIndex = -1;
-for (const [href, label] of orderedSpaceItems) {
-  const itemPattern = new RegExp(`href="${href}"[^>]*data-access-parent="space-observation"[\\s\\S]*?<strong>${label}<\\/strong>`);
-  assert.match(space, itemPattern);
-  const itemIndex = space.indexOf(`href="${href}"`);
-  assert.ok(itemIndex > previousIndex, `Space item ${label} must follow the requested order.`);
-  previousIndex = itemIndex;
+let previousScienceIndex = -1;
+for (const [href, label] of orderedScienceModelItems) {
+  const itemPattern = new RegExp(`href="${href}"[^>]*data-access-parent="science-models"[\\s\\S]*?<strong>${label}<\\/strong>`);
+  assert.match(scienceModels, itemPattern);
+  const itemIndex = scienceModels.indexOf(`href="${href}"`);
+  assert.ok(itemIndex > previousScienceIndex, `Science model item ${label} must follow the requested order.`);
+  previousScienceIndex = itemIndex;
 }
-assert.doesNotMatch(html, /<a href="learning\/inquiry\/space\/"/);
 
 assert.match(html, /body\.content-access-editing \.worksheet-group-options \{[\s\S]*?display: none;/);
 assert.match(html, /Promise\.all\(paths\.map\(\(path\) => api\('\/api\/teacher\/home-content-access'/);
