@@ -4,7 +4,7 @@ const all=Object.values(models).flat(),find=id=>all.find(s=>s.id===id),view=(id,
 function states(spec){let out=[{}];for(const f of spec.fields)out=out.flatMap(s=>f.items.map(o=>({...s,[f.key]:o.value})));return out;}
 test('required experiment source evidence, all valid choices and independent invariants',()=>{
  const source=fs.readFileSync(path.resolve(lab,'../../../references/moe/2022-revised-curriculum/extracted/09-science.txt'),'utf8');let n=0;
- assert.equal(all.length,11);
+ assert.equal(all.length,18);
  for(const[slug,specs]of Object.entries(models))for(const spec of specs){for(const code of spec.codes){assert(source.includes('['+code+']'));assert(map[slug].codes.includes(code),slug+' '+code);}for(const s of states(spec)){const r=spec.view(s);assert(r.svg&&r.text&&r.note&&r.check);assert(!/NaN|undefined|Infinity/.test(JSON.stringify(r)));assert.equal(r.check.choices.length,3);assert(r.check.answer>=0&&r.check.answer<3);for(const v of Object.values(r.metrics))if(typeof v==='number')assert(Number.isFinite(v));n++;}}
  assert.equal(view('spring',{mass:'0'}).metrics.extension,0);
  assert.equal(view('spring',{mass:'200'}).metrics.extension,2*view('spring',{mass:'100'}).metrics.extension);
@@ -20,6 +20,12 @@ test('required experiment source evidence, all valid choices and independent inv
  assert(view('blind-spot',{eye:'right'}).metrics.dot>view('blind-spot',{eye:'right'}).metrics.cross);
  assert(view('blind-spot',{eye:'left'}).metrics.dot<view('blind-spot',{eye:'left'}).metrics.cross);
  for(const fuel of ['candle','alcohol']){assert(view('combustion-products',{fuel,step:'1'}).metrics.water);assert(view('combustion-products',{fuel,step:'1'}).metrics.carbonDioxide);}
+ assert.equal(view('photosynthesis-co2',{co2:'absent',step:'1'}).metrics.starch,false);
+ assert.equal(view('photosynthesis-co2',{co2:'present',light:'on',step:'1'}).metrics.starch,true);
+ assert.equal(view('heating-device',{reaction:'water',step:'1'}).metrics.temp,20);
+ assert.equal(view('dna-model',{sequence:'ATGC',partner:'TACG'}).metrics.matches,4);
+ assert.equal(view('energy-budget',{greenhouse:'strong',stage:'balanced'}).metrics.net,0);
+ assert(view('energy-budget',{greenhouse:'strong',stage:'initial'}).metrics.net>0);
  console.log(n+' new experiment conditions verified');
 });
 test('new experiments: controls, records, all answers, reset and Chromebook/iPad layout',{timeout:240000},async()=>{
@@ -39,7 +45,15 @@ test('new experiments: controls, records, all answers, reset and Chromebook/iPad
    for(const width of [1366,1024,820,768]){await page.setViewportSize({width,height:width>=1024?768:1024});const result=await page.locator('.required-experiments').evaluate(panel=>{const svg=panel.querySelector('svg'),b=svg.getBoundingClientRect(),bad=[...svg.querySelectorAll('text')].filter(t=>{const a=t.getBoundingClientRect();return a.left<b.left-2||a.right>b.right+2||a.top<b.top-2||a.bottom>b.bottom+2;}).map(t=>t.textContent);return{overflow:document.documentElement.scrollWidth>innerWidth+1,bad};});assert.deepEqual(result,{overflow:false,bad:[]},slug+' '+spec.id+' '+width);
     if(process.env.SCIENCE_CAPTURE&&width===1024){const dir=path.resolve(lab,'../../../docs/science-lab-audit-2026-09-20/required-gap-screenshots');fs.mkdirSync(dir,{recursive:true});await page.locator('.required-experiments').screenshot({path:path.join(dir,spec.id+'-1024.png')});}
    }
-  }await page.close();
+  }
+  if(specs.length>1){
+   await page.locator('[data-experiment="'+specs[0].id+'"]').click();await page.locator('[data-record]').click();
+   await page.locator('[data-experiment="'+specs[1].id+'"]').click();await page.locator('[data-record]').click();
+   await page.locator('[data-experiment="'+specs[0].id+'"]').click();assert.equal((await page.evaluate(()=>window.__requiredExperiments.getRecords())).length,1);
+   await page.locator('[data-reset]').click();await page.locator('[data-experiment="'+specs[1].id+'"]').click();assert.equal((await page.evaluate(()=>window.__requiredExperiments.getRecords())).length,1);
+  }
+  assert.equal(await page.evaluate(()=>String(window.render||'').includes('.required-tabs')),false,'UI render must not replace app animation');
+  await page.close();
  }assert.deepEqual(errors,[]);console.log(cases+' browser conditions, '+cases*3+' answers checked');
  }finally{await browser?.close();await new Promise(r=>server.close(r));}
 });

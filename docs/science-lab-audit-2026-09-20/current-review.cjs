@@ -106,3 +106,5 @@ galaxy-hubble|은하 분류·적색편이·허블; 우주론적 적색편이에 
 cell-structure|중1 동물/식물 표본·배율·염색·핵/세포막/세포벽 비교와 4문항 신설; 기존 앱 관찰 유지|세포막은 구조 설명용 강조이며 실제로 항상 따로 보이는 것은 아님
 neutralization-common|고1 같은 농도·전체 부피에서 혼합 비율별 중화 온도·그래프와 4문항 신설; 기존 앱 관찰 유지|가상 온도. 다른 농도에 동일 부피 규칙 적용 금지, pH 적정곡선·엔탈피 제외
 `.trim().split('\n').map(row=>{const [slug,current,boundary]=row.split('|');return{slug,current,boundary};});
+
+for(const r of require('./required-gap-review.cjs')){const entry=module.exports.find(x=>x.slug===r.slug);entry.current+='; 추가 실험: '+r.title+' (조건 조작·관찰 기록·확인 문제)';}

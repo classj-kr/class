@@ -15,7 +15,7 @@
 | [초5 빛의 직진·반사·굴절과 그림자](<E:/webprojects/class/learning/inquiry/science-lab/light-shadow/index.html>) | 6과02-01, 6과02-02 | 초5 볼록·오목 렌즈의 굴절 경향과 물체에서 눈으로 오는 빛 비교 | 정성 경로 그림. 초점 거리·배율·물체 거리별 상 계산 제외 |
 | [중2 거울·렌즈와 빛의 반사·굴절](<E:/webprojects/class/learning/inquiry/science-lab/refraction/index.html>) | 9과10-02 | 중2 평면·볼록·오목 거울과 볼록·오목 렌즈의 상을 두 물체 위치에서 비교 | 두 대표 조건만 비교. 상의 위치 계산·실상/허상 분류 제외 |
 | [초3 물체의 무게와 세 가지 상태](<E:/webprojects/class/learning/inquiry/science-lab/weight-compare/index.html>) | 4과05-02 | 초3 용기를 바꾼 고체·액체의 모양/부피, 컵의 공기 공간 비교 | 같은 물질을 옮기는 관찰. 물질의 상태 변화·입자 설명은 제외 |
-| [초4 화산과 화성암 관찰](<E:/webprojects/class/learning/inquiry/science-lab/volcano-model/index.html>) | 4과11-03 | 초4 현무암·화강암의 색·알갱이·표면을 확대 비교 | 설명 그림. 실제 표본마다 색·구멍·조직이 다를 수 있음 |
+| [초4 땅의 변화·화산과 화성암](<E:/webprojects/class/learning/inquiry/science-lab/volcano-model/index.html>) | 4과11-03 | 초4 현무암·화강암의 색·알갱이·표면을 확대 비교 | 설명 그림. 실제 표본마다 색·구멍·조직이 다를 수 있음 |
 | [초3 힘의 작용과 지레](<E:/webprojects/class/learning/inquiry/science-lab/lever-balance/index.html>) | 4과01-01 | 초3 같은 상자를 밀고 당기기 전후 움직임 비교 | 충분한 힘을 가정한 정성 모형. 실제 힘·거리 비례 측정 아님 |
 | [초6 태양 고도·계절과 지구의 운동](<E:/webprojects/class/learning/inquiry/science-lab/seasons/index.html>) | 6과12-01, 6과12-02, 6과12-03 | 초6 하루 천체 위치·자전과 낮밤·계절별 대표 별자리 비교 | 별자리 설명 그림이며 실제 관측 프로그램·정확한 천체력 아님 |
 | [중1 입자 운동·상태 변화·기체](<E:/webprojects/class/learning/inquiry/science-lab/diffusion/index.html>) | 9과04-02, 9과04-03, 9과04-04, 9과06-01, 9과06-02, 9과06-03 | 중1 입자 배열과 상태 변화·가열 곡선·기체의 압력/온도와 부피 비교 | 정지 입자/이상적 가열·피스톤 모형. 실제 질량·부피 측정 아님 |

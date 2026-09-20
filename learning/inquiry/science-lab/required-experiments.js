@@ -53,10 +53,12 @@ function requiredExperimentModels(){
   return{svg,metrics:{angle:a,height:h,shadow},readings:[['모형 고도',a+'°'],['막대 높이',h.toFixed(1)+' m'],['그림자 길이',shadow.toFixed(2)+' m']],text:'평평한 바닥에 막대를 수직으로 세우고 그림자 끝을 표시합니다. 같은 막대에서 그림자가 짧아질수록 태양 고도가 높습니다. 높이와 그림자를 기록해 삼각형으로 나타내면 각도기로 고도를 읽을 수 있습니다.',note:'그림자 길이로 재는 장치의 모형입니다. 태양을 직접 보거나 렌즈로 바라보지 않습니다. 화면의 수치를 실제 관측값으로 제출하지 않습니다.',check:q('같은 막대에서 그림자가 가장 짧을 때는?',['태양 고도가 가장 높을 때','태양 고도가 가장 낮을 때','막대가 수평일 때'],0,'막대를 수직으로 세운 같은 조건에서 태양이 높을수록 그림자가 짧습니다.')};}});
  add('senses',{id:'blind-spot',title:'화면으로 맹점 확인',codes:['9과20-01'],activity:'9과20#1',line:2471,initial:{eye:'right',gap:'140',seen:'unchecked'},fields:[f('eye','뜬 눈',[['right','오른눈'],['left','왼눈']]),f('gap','두 표시 사이 간격',[[90,'좁게'],[140,'중간'],[190,'넓게']]),f('seen','내가 관찰한 결과',[['unchecked','아직 확인 전'],['visible','점이 보임'],['hidden','점이 안 보임']])],view(s){const right=s.eye==='right',cross=right?230- +s.gap/2:230+ +s.gap/2,dot=right?230+ +s.gap/2:230- +s.gap/2;return{svg:r(15,30,430,240,'#fff')+l(cross-10,150,cross+10,150,'#172b39',3)+l(cross,140,cross,160,'#172b39',3)+c(dot,150,8,'#172b39'),metrics:{cross,dot,gap:+s.gap},readings:[['고정해서 볼 표시','십자(+)'],['관찰할 표시','옆의 검은 점'],['내 관찰',{unchecked:'아직 확인 전',visible:'점이 보임',hidden:'점이 안 보임'}[s.seen]]],text:(right?'왼눈':'오른눈')+'을 가볍게 가리고, 뜬 눈으로 십자만 계속 봅니다. 편안한 범위에서 화면과의 거리를 천천히 바꿔 옆의 점이 안 보이는 위치가 있는지 관찰하세요. 화면은 점을 자동으로 숨기지 않습니다.',note:'눈을 누르지 말고 불편하면 중단합니다. 화면 크기·거리·개인차에 따라 관찰 위치가 달라집니다. 의료 검사나 시력 판정이 아닙니다.',check:q('한 위치에서 점이 안 보이는 까닭과 관련된 것은?',['시각 신경이 나가는 곳에는 시각 세포가 없다','화면이 점을 자동으로 지운다','점에서 빛이 전혀 나오지 않는다'],0,'맹점에는 빛을 받아들이는 시각 세포가 없어 그곳에 맺힌 자극을 느끼지 못합니다.')};}});
  add('periodic-bonding',{id:'compound-conductivity',title:'화합물의 전기 전도성 비교',codes:['10통과1-02-04'],activity:'10통과1-02#4',line:2907,initial:{sample:'salt',state:'solution'},fields:[f('sample','비교 시료',[['salt','염화 나트륨'],['sugar','설탕']]),f('state','시료의 상태',[['solid','고체'],['solution','물에 녹임']])],view(s){const conducts=s.sample==='salt'&&s.state==='solution';let svg=r(140,120,180,125,'#eaf3f6')+r(145,165,170,73,s.state==='solution'?'#a9d5e8':'#eee6d5')+l(175,85,175,205)+l(285,85,285,205)+l(175,85,210,85)+l(250,85,285,85)+c(230,85,20,conducts?'#f3cb64':'#dbe3e8');return{svg,metrics:{conducts},readings:[['모형 전구',conducts?'켜짐':'켜지지 않음']],text:conducts?'염화 나트륨 수용액에서는 이온이 이동할 수 있어 전류가 흐릅니다.':'고체 염화 나트륨에서는 이온이 자유롭게 이동하지 못합니다. 설탕은 물에 녹아도 이온으로 나뉘지 않아 이 비교에서 전류가 거의 흐르지 않습니다.',note:'같은 장치·같은 조건의 정성 모형입니다. 모든 공유 결합 물질의 수용액이 전류를 흘리지 않는다는 뜻은 아닙니다. 실제 가정용 전원을 연결하지 않습니다.',check:q('염화 나트륨 수용액에 전류가 흐르는 까닭은?',['이온이 이동할 수 있어서','물에 녹으면 모든 물질이 금속이 되어서','고체 모양이 남아 있어서'],0,'전하를 띤 입자가 이동할 수 있는지 비교합니다.')};}});
+ const more=typeof module!=='undefined'?require('./required-experiments-more.js').requiredMoreModels:window.requiredMoreModels;
+ more?.({add,t,r,l,c,f,q,step,modelNote});
  return specs;
 }
 if(typeof module!=='undefined')module.exports={requiredExperimentModels};
-if(typeof window!=='undefined'){
+if(typeof window!=='undefined')(()=>{
  window.requiredExperimentModels=requiredExperimentModels;
  const parts=location.pathname.split('/').filter(Boolean),slug=parts.at(-1)==='index.html'?parts.at(-2):parts.at(-1),specs=requiredExperimentModels()[slug];
  if(specs){
@@ -64,9 +66,10 @@ if(typeof window!=='undefined'){
   const panel=document.createElement('section');panel.className='panel required-experiments';panel.setAttribute('aria-label','실험과 관찰 기록');
   panel.innerHTML='<h2>실험과 관찰 기록</h2><nav class="required-tabs" aria-label="실험 선택"></nav><div class="required-layout"><div class="required-controls"></div><div><svg class="required-figure" viewBox="0 0 460 310" role="img"></svg><p class="required-observation" aria-live="polite"></p><dl class="required-readings"></dl></div></div><div class="required-actions"><button type="button" data-record>관찰 기록</button><button type="button" data-reset>처음으로</button></div><div class="required-history"></div><div class="required-check"></div><p class="required-note"></p>';
   const anchor=document.querySelector('.meaning-panel,.interpretation,.quiz-section');if(anchor)anchor.before(panel);else document.querySelector('main').append(panel);
-  let selected=0,state={...specs[0].initial},records=[],last;
+  const saved=specs.map(s=>({state:{...s.initial},records:[]}));
+  let selected=0,state={...saved[0].state},records=saved[0].records,last;
   const at=s=>panel.querySelector(s),el=(tag,txt)=>{const e=document.createElement(tag);e.textContent=txt;return e;};
-  at('.required-tabs').replaceChildren(...specs.map((v,i)=>{const b=el('button',v.title);b.type='button';b.dataset.experiment=v.id;b.setAttribute('aria-pressed',String(i===selected));b.onclick=()=>{selected=i;state={...v.initial};records=[];render();at(`[data-experiment="${v.id}"]`).focus({preventScroll:true});};return b;}));
+  at('.required-tabs').replaceChildren(...specs.map((v,i)=>{const b=el('button',v.title);b.type='button';b.dataset.experiment=v.id;b.setAttribute('aria-pressed',String(i===selected));b.onclick=()=>{saved[selected]={state:{...state},records};selected=i;state={...saved[i].state};records=saved[i].records;render();at(`[data-experiment="${v.id}"]`).focus({preventScroll:true});};return b;}));
   function render(){const spec=specs[selected];
    at('.required-tabs').querySelectorAll('button').forEach((b,i)=>b.setAttribute('aria-pressed',String(i===selected)));
    at('.required-controls').replaceChildren(...spec.fields.map(f=>{const label=el('label',f.title),select=document.createElement('select');select.dataset.requiredField=f.key;select.setAttribute('aria-label',f.title);for(const o of f.items){const option=el('option',o.text);option.value=o.value;select.append(option);}select.value=state[f.key];select.onchange=()=>{state[f.key]=select.value;render();at(`[data-required-field="${f.key}"]`).focus({preventScroll:true});};label.append(select);return label;}));
@@ -75,8 +78,8 @@ if(typeof window!=='undefined'){
    at('.required-history').replaceChildren();if(records.length){const table=document.createElement('table'),head=document.createElement('tr');for(const x of ['조건','관찰 기록'])head.append(el('th',x));table.append(head);for(const row of records){const tr=document.createElement('tr');tr.append(el('td',row.condition),el('td',row.readings));table.append(tr);}at('.required-history').append(table);}
    const check=at('.required-check');check.replaceChildren(el('h3',last.check.question));const feedback=el('p','');feedback.setAttribute('aria-live','polite');last.check.choices.forEach((choice,i)=>{const b=el('button',choice);b.type='button';b.dataset.requiredAnswer=String(i);b.onclick=()=>{const correct=i===last.check.answer;feedback.textContent=(correct?'정답입니다. ':'다시 생각해 보세요. ')+last.check.why;feedback.dataset.correct=String(correct);};check.append(b);});check.append(feedback);
   }
-  at('[data-record]').onclick=()=>{const spec=specs[selected];records.push({condition:spec.fields.map(f=>f.title+': '+f.items.find(o=>o.value===state[f.key]).text).join(' · '),readings:last.readings.map(([a,b])=>a+': '+b).join(' · ')});if(records.length>12)records.shift();render();};
+  at('[data-record]').onclick=()=>{const spec=specs[selected];records.push({condition:spec.fields.map(f=>f.title+': '+f.items.find(o=>o.value===state[f.key]).text).join(' · '),readings:last.readings.map(([a,b])=>a+': '+b).join(' · ')});render();};
   at('[data-reset]').onclick=()=>{state={...specs[selected].initial};records=[];render();};render();
   window.__requiredExperiments={getState:()=>({...state}),getId:()=>specs[selected].id,getRecords:()=>records.map(r=>({...r}))};
  }
-}
+})();

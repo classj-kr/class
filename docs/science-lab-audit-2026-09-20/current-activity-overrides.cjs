@@ -60,3 +60,6 @@ module.exports=`
 10통과1-03#5|cell-membrane|모의활동|고1 효소 작용의 생감자·가열한 감자·물 대조군을 비교한다. 속도식·Km은 제외했다.
 10통과2-02#4|energy-conversion|모의활동|고1 자석/코일의 상대 운동·정지·극·빠르기에 따른 유도 전류의 정성 비교를 추가했다.
 `.trim().split('\n').map(r=>{const[id,slugs,status,note]=r.split('|');return{id,slugs:slugs?slugs.split(','):[],status,note};});
+
+// Evidence-backed additions from the current required experiment implementation.
+for(const r of require('./required-gap-review.cjs'))for(const id of r.activities){const entry={id,slugs:[r.slug],status:r.status,note:r.note};const i=module.exports.findIndex(x=>x.id===id);if(i<0)module.exports.push(entry);else module.exports[i]=entry;}
