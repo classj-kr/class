@@ -99,8 +99,8 @@ assert.match(server, /const trapped = p\.mode === 'sea'/, '얼음에 갇히면 �
 // 빠져나가는 규칙 자체는 lib/ship-motion.js에 있고 v85 시험이 본다.
 assert.match(server, /ShipMotion\.canEnter\(/, '적도 쪽으로는 언제나 나아갈 수 있어야 함');
 assert.match(server, /function iceSlowdownFor/, '얼음 앞에서 서서히 느려져야 함');
-assert.match(server, /얼음이 녹는 여름을 기다리세요/, '계절 얼음에 막히면 까닭을 알려야 함');
-assert.match(server, /으로 뱃머리를 돌리/, '막혔을 때 빠져나갈 방향을 알려야 함');
+assert.match(server, /얼음 바다 - 항해가 어려움/, '얼음 안내는 짧게 표시해야 함');
+assert.doesNotMatch(server, /1520년의 나무배로는 얼음을 뚫고|얼음이 녹는 여름을 기다리세요/, '긴 얼음 안내를 되살리면 안 됨');
 const page = fs.readFileSync(path.join(root, 'public', 'index.html'), 'utf8');
 assert.match(page, /function drawIceLayer/, '학생 지도에 얼음을 그려야 함');
 assert.match(page, /isIceAtDay/, '학생 화면도 계절 얼음을 그려야 함');

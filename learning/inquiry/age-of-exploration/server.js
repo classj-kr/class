@@ -2993,9 +2993,8 @@ function movePlayer(p, dt) {
   if (!moved) {
     p.speedKmh = 0;
     if (p.target) { p.target = null; p.route = null; }
-    const equatorWord = p.y < WORLD_PIXEL_H / 2 ? '남쪽' : '북쪽';
     if (blockedTerrain?.type === 'seasonIce') setNotice(p, '얼음 바다 - 항해가 어려움');
-    if (blockedTerrain?.type === 'ice') setNotice(p, p.mode === 'sea' ? '얼음 바다 - 항해가 어려움' : '얼음 지대 - 이동이 어려움');
+    else if (blockedTerrain?.type === 'ice') setNotice(p, p.mode === 'sea' ? '얼음 바다 - 항해가 어려움' : '얼음 지대 - 이동이 어려움');
     else if (p.mode === 'land' && blockedTerrain?.type === 'sea') setNotice(p, '탐험대는 바다를 건널 수 없습니다. 항구로 돌아가 배를 이용하세요.');
     else if (p.mode === 'sea' && blockedTerrain?.type !== 'sea') setNotice(p, '육지입니다. 가까운 항구를 통해 입항하세요.');
   }

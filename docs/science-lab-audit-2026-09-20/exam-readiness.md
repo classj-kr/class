@@ -38,6 +38,10 @@
 
 문항과 연결된 기존 안내도 함께 맞췄다. 날씨 시각을 고정된 법칙으로 단정하지 않고, 힘의 평형에서는 방향도 일정함을 명시했다. 물 순환 탱크는 평균 체류 시간을 완전 교체 시간으로 표현하던 오류를 수정하여 완전 혼합 예시에서는 처음 물의 약 37%가 남게 했다. 평균 체류 시간의 해석은 [USGS 물 수지 자료](https://water.usgs.gov/watercensus/AdHocComm/Background/WaterBudgets-FoundationsforEffectiveWater-ResourcesandEnvironmentalManagement.pdf)와 대조했다.
 
+## 크롬북·아이패드 우선 후속 검사
+
+터치 영역을 보완하고 Windows WebKit 터치 입력 및 Chrome 키보드 검사를 추가했다. [기기 우선 검사 범위](school-device-check.md)에서 실제 기기 검사와의 차이를 확인한다.
+
 ## 검증 방법과 경계
 
 - `tests/science-exam-review.test.cjs`: 220개 기준과 정확히 대응하는지 확인, 241문항의 723개 선택지 판정, 61개 단원 필터, 답안 유지·초기화, 6개 앱 통합 및 목록 연결 검사.

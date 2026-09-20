@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex">
+<title>조형 요소 · 미술 실험</title>
+<link rel="stylesheet" href="../color-mixing/styles.css?v=20260920-type"><link rel="stylesheet" href="styles.css?v=20260920">
+<script src="model.js?v=20260920" defer></script><script src="app.js?v=20260920" defer></script>
+</head>
+<body><main class="lab-shell">
+<nav class="lesson-links" aria-label="차시 선택"><a href="../color-mixing/">색의 혼합</a><a href="../color-properties/">색상·명도·채도</a><a href="../color-harmony/">색의 관계와 배색</a><a href="./" aria-current="page">조형 요소</a></nav>
+<header class="lesson-header"><h1>조형 요소</h1><button type="button" id="resetStudy" class="text-button">초기화</button></header>
+<p class="intro">하나만 바꾸고 나란히 보세요. 화면의 느낌은 어떻게 달라지나요?</p>
+<div class="axis-switch" role="group" aria-label="바꿀 요소">
+<button type="button" data-axis="angle" aria-pressed="true">선의 방향</button><button type="button" data-axis="width" aria-pressed="false">선의 굵기</button><button type="button" data-axis="shape" aria-pressed="false">형태</button><button type="button" data-axis="size" aria-pressed="false">크기</button><button type="button" data-axis="texture" aria-pressed="false">질감</button>
+</div>
+<section class="elements-workspace" aria-label="조형 요소 비교">
+<div class="comparison-board">
+<div class="scene-pair">
+<figure><figcaption>기준 모습</figcaption><svg id="referenceScene" viewBox="0 0 380 340" role="img"></svg><p id="referenceValue" class="scene-value"></p></figure>
+<figure><figcaption>바꾼 모습</figcaption><svg id="currentScene" viewBox="0 0 380 340" role="img"></svg><p id="currentValue" class="scene-value"></p></figure>
+</div>
+<div class="comparison-actions"><button type="button" id="setReference" class="secondary-button">현재 모습을 기준으로</button><button type="button" id="restoreReference" class="text-button">기준으로 되돌리기</button></div>
+<p id="comparisonStatus" role="status"></p>
+</div>
+<aside class="elements-controls" aria-labelledby="controlTitle">
+<h2 id="controlTitle">선의 방향</h2>
+<div id="rangeControl"><label for="elementRange"><span id="rangeLabel">기울기</span><output id="rangeOutput" for="elementRange"></output></label><input id="elementRange" type="range" min="0" max="90" value="0"><div class="range-ends"><span id="rangeMin"></span><span id="rangeMax"></span></div></div>
+<div id="choiceControl" class="element-choices" role="group" aria-label="모습 선택" hidden></div>
+<p id="fixedNote" class="control-note"></p>
+</aside>
+</section>
+<section class="observation-note"><h2>살펴볼 점</h2><p id="observationPrompt"></p></section>
+<section class="comparison-records" aria-labelledby="recordTitle">
+<h2 id="recordTitle">비교 기록</h2>
+<div class="record-entry"><label for="observationText">발견한 차이 <span>(선택)</span></label><div class="record-input"><input id="observationText" type="text" maxlength="200" placeholder="어느 쪽에서 무엇이 다르게 보였나요?"><button type="button" id="saveRecord" class="secondary-button">지금 비교 기록하기</button></div></div>
+<p id="recordStatus" role="status"></p><div id="records"></div>
+</section>
+<noscript><p class="no-script">직접 비교하려면 자바스크립트를 켜 주세요.</p></noscript>
+</main></body></html>

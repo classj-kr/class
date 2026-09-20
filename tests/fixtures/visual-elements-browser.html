@@ -1,0 +1,59 @@
+<!doctype html><meta charset="utf-8"><style>body{margin:0}iframe{height:100vh;border:0;display:block}pre{display:none}</style><iframe src="../../learning/arts/art-theory/visual-elements/index.html"></iframe><pre id="result">pending</pre><script>
+const frame=document.querySelector('iframe');const viewport=Number(new URLSearchParams(location.search).get('width'))||1440;frame.style.width=viewport+'px';
+frame.onload=async()=>{try{
+ const d=frame.contentDocument,w=frame.contentWindow,checks=[],$=s=>d.querySelector(s);
+ const ok=(value,message)=>{if(!value)throw Error(message);checks.push(message)};
+ const click=s=>$(s).click();const set=value=>{const input=$('#elementRange');input.value=value;input.dispatchEvent(new w.Event('input',{bubbles:true}))};
+ const fits=()=>d.documentElement.scrollWidth<=d.documentElement.clientWidth;
+ const reference=()=>$('#referenceScene').innerHTML;
+ async function pixels(id){
+  const svg=$(id).cloneNode(true);svg.setAttribute('xmlns','http://www.w3.org/2000/svg');svg.setAttribute('width','380');svg.setAttribute('height','340');
+  const url=URL.createObjectURL(new Blob([new XMLSerializer().serializeToString(svg)],{type:'image/svg+xml'})),img=new Image();
+  await new Promise((resolve,reject)=>{img.onload=resolve;img.onerror=reject;img.src=url});
+  const canvas=document.createElement('canvas');canvas.width=380;canvas.height=340;const ctx=canvas.getContext('2d');ctx.drawImage(img,0,0);URL.revokeObjectURL(url);return ctx.getImageData(0,0,380,340).data;
+ }
+ ok(w.innerWidth===viewport,'requested viewport');ok(fits(),'initial layout fits');
+ click('#saveRecord');ok(!$('.comparison-record'),'unchanged scene is not recorded');
+ const initial=reference();set(45);ok(reference()===initial,'direction keeps reference fixed');
+ const baselinePixels=await pixels('#referenceScene'),turnedPixels=await pixels('#currentScene');
+ ok(baselinePixels.some((v,i)=>v!==turnedPixels[i]),'direction changes rendered pixels');
+ ok($('#currentScene g').getAttribute('stroke-width')==='4','direction preserves width');
+ $('#observationText').value='<b>내 관찰</b>';click('#saveRecord');
+ ok($('.record-description p').textContent==='<b>내 관찰</b>'&&!$('.record-description b'),'observation saved as literal text');
+ click('#setReference');const rotated=reference();ok($('#referenceScene g').getAttribute('transform').includes('-45'),'custom reference pinned');
+ click('[data-axis="width"]');ok(reference()===rotated,'switching line control retains pinned reference');set(16);
+ ok($('#currentScene g').getAttribute('transform')===$('#referenceScene g').getAttribute('transform'),'width preserves direction');
+ const thinPixels=await pixels('#referenceScene'),thickPixels=await pixels('#currentScene');
+ const count=data=>{let n=0;for(let i=3;i<data.length;i+=4)if(data[i]>128)n++;return n;};
+ ok(count(thickPixels)>count(thinPixels)*3,'thicker lines cover more of the actual image');
+ click('#restoreReference');ok($('#currentScene').innerHTML===reference(),'restore returns exact baseline');
+ click('[data-axis="shape"]');const round=reference();click('[data-value="triangle"]');
+ ok(reference()===round&&$('#currentScene').querySelectorAll('polygon').length===3,'shape changes only edited side');
+ const positions=[...$('#currentScene').querySelectorAll('polygon')].map(el=>el.getAttribute('transform'));
+ click('#setReference');click('[data-axis="size"]');set(120);
+ ok([...$('#currentScene').querySelectorAll('polygon')].every((el,i)=>el.getAttribute('transform')===positions[i]),'size preserves object centers');
+ click('#saveRecord');click('[data-axis="texture"]');
+ ok($('#currentValue').textContent==='민무늬','changing axis discards unpinned size');
+ click('[data-value="grain"]');
+ const leftPixels=await pixels('#referenceScene'),grainPixels=await pixels('#currentScene');
+ ok(leftPixels.some((v,i)=>v!==grainPixels[i]),'texture changes visible surface');
+ ok($('#referenceScene polygon').getAttribute('points')===$('#currentScene polygon').getAttribute('points'),'texture preserves outline');
+ ok($('#currentScene pattern').id!==$('#referenceScene pattern')?.id,'separate texture IDs');
+ click('#setReference');click('[data-value="hatch"]');click('#saveRecord');
+ const grainReference=reference();click('#resetStudy');ok(d.querySelectorAll('.comparison-record').length===3,'reset keeps records');
+ click('[data-restore="3"]');ok(reference()===grainReference&&$('#currentValue').textContent==='빗금','record restores both textured scenes');
+ ok(d.activeElement.dataset.axis==='texture','record restoration returns focus to active element');
+ click('[data-restore="1"]');ok($('#elementRange').value==='45'&&$('#referenceScene g').getAttribute('transform').includes('rotate(0 '),'record is immutable after repinning');
+ click('[data-delete="2"]');ok(d.querySelectorAll('.comparison-record').length===2&&d.activeElement.id==='saveRecord','delete removes one record and restores focus');
+ for(const axis of ['angle','width','shape','size','texture']){
+  click(`[data-axis="${axis}"]`);
+  if(!$('#rangeControl').hidden){for(const value of [$('#elementRange').min,$('#elementRange').max]){set(value);ok(fits(),axis+' range fits');}}
+  else{for(const button of [...$('#choiceControl').children]){button.click();ok(fits(),axis+' choice fits');ok(d.activeElement!==null,'focus remains available');}}
+  ok(w.getComputedStyle($('#controlTitle')).fontSize==='18px','subheading size');
+ }
+ ok(w.getComputedStyle($('h1')).fontSize==='22px','title size');ok(w.getComputedStyle($('#saveRecord')).fontSize==='16px','button size');
+ ok(d.querySelectorAll('.lesson-links a').length===4,'four lessons connected');
+ click('#resetStudy');click('[data-axis="angle"]');set(45);if(viewport===390){click('[data-axis="texture"]');click('[data-value="grain"]');}w.scrollTo(0,0);d.activeElement.blur();
+ document.querySelector('#result').textContent=JSON.stringify({passed:checks.length});document.title='PASS';
+}catch(error){document.querySelector('#result').textContent='FAIL '+error.stack;document.title='FAIL'}};
+</script>

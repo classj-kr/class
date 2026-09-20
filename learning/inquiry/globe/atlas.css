@@ -73,3 +73,6 @@
 .atlas .map-tools #axisView[aria-pressed="true"]{background:#203e3d;border-color:#a4edcf;color:#dcfff1}
 .atlas .map-tools #axisView[hidden]{display:none}
 @media(max-width:860px){.axis-explanation{left:12px;right:55px;bottom:57px;font-size:11px}.axis-labels{font-size:10px}.axis-reference-label{font-size:9px}}
+
+.atlas .season-switch{align-items:center}
+.atlas .season-hemisphere{font-size:11px;color:#a8b9c8;padding:0 5px 0 8px;white-space:nowrap}

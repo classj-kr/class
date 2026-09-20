@@ -56,6 +56,6 @@ const server = fs.readFileSync(path.join(ROOT, 'server.js'), 'utf8');
 assert.match(server, /caption: credit\?\.caption/, '서버가 사진 설명을 보내지 않음');
 const page = fs.readFileSync(path.join(ROOT, 'public', 'index.html'), 'utf8');
 assert.match(page, /storyCaption/, '화면이 사진 설명을 보여 주지 않음');
-assert.match(page, /왜 여기에 도시가 생겼을까\?/, '이야기 첫 칸 제목이 없음');
+assert.match(page, /도시의 형성 배경/, '도시 설명 첫 칸 제목이 없음');
 
 console.log(`v83 city story unit ok · 이야기 ${stories.length} · 사진 ${photos.length} · 사진 설명 ${Object.values(credits).filter((c) => c.caption).length}`);

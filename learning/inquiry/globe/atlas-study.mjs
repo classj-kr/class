@@ -21,7 +21,7 @@ export function createAtlas(api){
     <dialog class="atlas-quiz" id="atlasQuiz" aria-label="확인 문제"><button class="quiz-close" aria-label="문제 닫기">×</button><div id="quizBody"></div></dialog>`);
   const $=id=>document.getElementById(id);
   $('layersPane').append($('layerBar'));
-  for(const id of ['seasonSwitch','flowMotion'])if($(id))$('mapTools').append($(id));
+  if($('seasonSwitch'))$('mapTools').append($('seasonSwitch'));
   $('catalogToggle').onclick=()=>setCatalog(!document.body.classList.contains('catalog-open'));
   function setCatalog(open){document.body.classList.toggle('catalog-open',open);$('catalogToggle').setAttribute('aria-expanded',String(open));}
   for(const [id,showTopics] of [['topicsTab',true],['layersTab',false]])$(id).onclick=()=>{

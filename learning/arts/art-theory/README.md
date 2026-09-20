@@ -31,6 +31,16 @@
 - 기준 배색을 고정한 뒤 색 또는 면적을 비교합니다. 기록은 배경·색·면적·기준 배색을 함께 저장하고 다시 불러옵니다.
 - 배경에 따른 색의 지각은 개인과 환경에 따라 차이가 있으므로 느낌을 정답으로 채점하지 않습니다.
 
+### 조형 요소 — `visual-elements/`
+
+- 선의 방향·굵기, 평면 형태·크기·시각적 질감을 기준 화면과 나란히 비교합니다.
+- 선택한 요소 하나만 바뀝니다. 요소를 전환하면 편집 화면은 고정해 둔 기준으로 돌아옵니다.
+- 도형은 원·사각형·정삼각형으로 바꿀 수 있습니다. 형태 비교는 각 도형의 면적과 중심을 같게 유지합니다.
+- 크기의 비율은 길이에 적용합니다. 예를 들어 길이가 2배이면 면적은 4배가 됩니다. 중심 위치는 고정합니다.
+- 선의 굵기는 SVG 좌표의 2~16 단계이며 실제 길이 단위가 아닙니다. 방향은 수평 0도에서 수직 90도까지 바뀝니다.
+- 무늬로 시각적 질감을 비교합니다. 화면상의 무늬를 실제 촉감으로 동일시하거나 느낌을 채점하지 않습니다. 무늬에 따라 평균 밝기도 달라질 수 있습니다.
+- 기준 모습과 바꾼 모습, 선택적인 관찰 메모를 함께 기록하고 복원합니다. 초기화해도 기록은 남으며 페이지를 새로 열면 지워집니다.
+
 ## 화면 원칙
 
 - 본문·버튼·수치 16px, 소제목 18px, 제목 22px.
@@ -40,7 +50,7 @@
 
 ## 남은 순서
 
-조형 요소 → 조형 원리 → 공간과 구도 → 실제 작품 적용. 오방색은 문화 자료를 중심으로 별도 구성합니다. 검토되지 않은 빈 차시를 미리 노출하지 않습니다.
+조형 원리 → 공간과 구도 → 실제 작품 적용. 오방색은 문화 자료를 중심으로 별도 구성합니다. 검토되지 않은 빈 차시를 미리 노출하지 않습니다.
 
 ## 검증
 
@@ -49,9 +59,11 @@ node --test tests/color-mixing-model.test.cjs tests/color-properties-model.test.
 node tests/color-mixing-browser-smoke.cjs
 node tests/color-properties-browser-smoke.cjs
 node tests/color-harmony-browser-smoke.cjs
+node --test tests/visual-elements-model.test.cjs
+node tests/visual-elements-browser-smoke.cjs
 ```
 
-Chrome 또는 Edge를 사용합니다. 실행 파일을 찾지 못하면 `CHROME_PATH`를 설정합니다. 스크린샷 출력 폴더는 `COLOR_MIXING_SCREENSHOTS`, `COLOR_PROPERTIES_SCREENSHOTS`, `COLOR_HARMONY_SCREENSHOTS`로 지정합니다. 임시 브라우저 프로필은 시스템 임시 폴더에서 만들고 검사 종료 시 삭제합니다.
+Chrome 또는 Edge를 사용합니다. 실행 파일을 찾지 못하면 `CHROME_PATH`를 설정합니다. 스크린샷 출력 폴더는 `COLOR_MIXING_SCREENSHOTS`, `COLOR_PROPERTIES_SCREENSHOTS`, `COLOR_HARMONY_SCREENSHOTS`, `VISUAL_ELEMENTS_SCREENSHOTS`로 지정합니다. 임시 브라우저 프로필은 시스템 임시 폴더에서 만들고 검사 종료 시 삭제합니다.
 
 ## 근거 자료
 
@@ -60,3 +72,5 @@ Chrome 또는 Edge를 사용합니다. 실행 파일을 찾지 못하면 `CHROME
 - [W3C CSS Color 4: Oklab·OKLCH와 색 공간 변환](https://www.w3.org/TR/css-color-4/)
 
 - [알버스 재단: One Color Becomes Two](https://www.albersfoundation.org/learning/workshops/one-color-becomes-two)
+
+- [Getty: 조형 요소와 형식 분석](https://www.getty.edu/education/teachers/building_lessons/formal_analysis.html)

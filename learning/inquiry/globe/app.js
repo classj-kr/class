@@ -2,7 +2,7 @@ import * as maplibregl from "./vendor/maplibre-gl-6.10.0/maplibre-gl.mjs";
 
 import { buildFlowModel, flowFrame, installFlowImages } from "./flow-textures.mjs?v=20260920-17";
 
-import { createAtlas } from "./atlas-study.mjs?v=20260920-28";
+import { createAtlas } from "./atlas-study.mjs?v=20260920-35";
 import { animateProjection } from "./projection-morph.mjs?v=20260920-29";
 
 import { createAxisView } from "./axis-view.mjs?v=20260920-31";
@@ -16,7 +16,6 @@ const windModel = buildFlowModel(data.winds, "wind");
 const currentModel = buildFlowModel(data.currents, "current");
 const flowTracks = [...windModel.tracks, ...currentModel.tracks];
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-let flowPaused = reducedMotion.matches;
 let flowSeconds = 0;
 const BASE = new URL(".", import.meta.url).href;
 const TILE_VERSION = 2;
@@ -121,7 +120,6 @@ map.addControl(new maplibregl.AttributionControl({ compact: true, customAttribut
 
 renderLayerBar();
 renderSeasonSwitch();
-renderFlowControl();
 bindViewControls();
 
 // 극점은 글자 이름표 층(위도 85도까지)에 놓을 수 없어 따로 붙인다. 지구 뒤편으로 가면 숨는다.
@@ -498,7 +496,7 @@ function animate(time) {
   requestAnimationFrame(animate);
   const delta = lastFrame ? Math.min(time - lastFrame, 100) : 0;
   lastFrame = time;
-  if (!ready || document.hidden || flowPaused) return;
+  if (!ready || document.hidden || reducedMotion.matches) return;
   const flowing = enabled.has("current") || enabled.has("wind") || selected?.kind === "river";
   if (flowing) flowSeconds += delta / 1000;
   if (flowing && time - lastTextureFrame >= 50) {
@@ -539,23 +537,6 @@ function highlightFlow(item) {
   for (const id of ["currents-texture-main", "currents-texture-local"]) {
     map.setLayoutProperty(id, "icon-image", ["case", current, "flow-water-lit", ["case", ["get", "warm"], "flow-warm", "flow-cold"]]);
   }
-}
-
-function renderFlowControl() {
-  const button = document.createElement("button");
-  button.id = "flowMotion";
-  button.type = "button";
-  button.className = "flow-motion";
-  const sync = () => {
-    button.textContent = flowPaused ? "▶ 흐름 재생" : "Ⅱ 흐름 멈춤";
-    button.setAttribute("aria-label", flowPaused ? "흐름 애니메이션 재생" : "흐름 애니메이션 멈춤");
-    button.setAttribute("aria-pressed", String(flowPaused));
-    button.hidden = !enabled.has("wind") && !enabled.has("current");
-  };
-  button.addEventListener("click", () => { flowPaused = !flowPaused; sync(); });
-  reducedMotion.addEventListener("change", (event) => { flowPaused = event.matches; sync(); });
-  document.getElementById("layerBar").append(button);
-  sync();
 }
 
 // 해류·바람 줄기 끝에 화살촉을 단다. 방향은 마지막 두 점으로 잰 방위각.
@@ -829,7 +810,6 @@ function applyLayerFilters() {
   for (const id of ["belts-fill", "belts-edge"]) map.setLayoutProperty(id, "visibility", visibility("wind"));
   const switchBox = document.getElementById("seasonSwitch");
   if (switchBox) switchBox.hidden = !enabled.has("wind");
-  document.getElementById("flowMotion").hidden = !enabled.has("wind") && !enabled.has("current");
   refreshFlowTextures();
   if (selected?.kind === "wind" && !data.winds.features.some((f) => f.properties.name === selected.name
     && (f.properties.season === "always" || f.properties.season === season))) clearSelection();
@@ -876,7 +856,11 @@ function renderSeasonSwitch() {
   box.className = "season-switch";
   box.id = "seasonSwitch";
   box.setAttribute("role", "group");
-  box.setAttribute("aria-label", "계절풍 철");
+  box.setAttribute("aria-label", "북반구 기준 계절풍");
+  const label = document.createElement("span");
+  label.className = "season-hemisphere";
+  label.textContent = "북반구";
+  box.append(label);
   box.hidden = !enabled.has("wind");
   document.getElementById("layerBar").append(box);
   for (const [id, label] of SEASONS) {
