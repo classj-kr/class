@@ -12,7 +12,7 @@
       map.getPane("geographyAnnotations").style.pointerEvents = "none";
     }
     const marks = L.layerGroup().addTo(map);
-    const state = {theme:"",lesson:null,river:"all",season:"summer",pair:0,paused:false,loaded:false,failed:false};
+    const state = {theme:"",lesson:null,river:"all",season:"summer",pair:0,loaded:false,failed:false};
     let tracks = [];
     const toolbar = document.createElement("section");
     toolbar.className = "scene-toolbar"; toolbar.hidden = true;
@@ -25,7 +25,6 @@
     const observer = new MutationObserver(syncSuspension);
     document.querySelectorAll("dialog").forEach(dialog => observer.observe(dialog,{attributes:true,attributeFilter:["open"]}));
     observer.observe(map.getContainer(),{attributes:true,attributeFilter:["class"]});
-    reduced.addEventListener("change",renderToolbar);
     function active() { return state.theme === "terrain" || state.theme === "climate"; }
     function updateFlow() {
       let visibleTracks = [];
@@ -33,22 +32,19 @@
         const names = state.river === "all" ? null : data.rivers[state.river].related || [state.river];
         visibleTracks = tracks.filter(track => !names || names.includes(track.name)).map(track => ({...track,selected:track.name===state.river}));
       } else if (state.theme === "climate") visibleTracks = data.windTracks(state.season);
-      flow.setTracks(visibleTracks); flow.setVisible(active()); flow.setPaused(state.paused);
+      flow.setTracks(visibleTracks); flow.setVisible(active());
       syncSuspension();
     }
     function renderToolbar() {
       toolbar.hidden = !active();
       if (!active()) return;
       const terrain = state.theme === "terrain";
-      toolbar.innerHTML = `<div class="scene-controls">${terrain ? `<label class="scene-river-picker"><span>물길</span><select id="sceneRiver" aria-label="따라갈 강" ${state.loaded?"":"disabled"}><option value="all">주요 하천 전체</option>${Object.keys(data.rivers).map(name=>`<option ${state.river===name?"selected":""}>${esc(name)}</option>`).join("")}</select></label>` : `<div class="scene-seasons" role="group" aria-label="계절 선택"><button data-season="summer" aria-pressed="${state.season==="summer"}">여름</button><button data-season="winter" aria-pressed="${state.season==="winter"}">겨울</button></div><button id="sceneCompare">지역 비교</button>`}<button id="scenePause" aria-pressed="${state.paused}" ${reduced.matches?"disabled":""}>${reduced.matches?"정지 화면":state.paused?"흐름 재생":"일시 정지"}</button></div><p class="scene-caption" role="status">${terrain ? state.failed?"하천 자료를 불러오지 못했습니다. 새로고침해 주세요.":!state.loaded?"하천 자료를 불러오는 중…":"물빛은 하류로 이동 · 속도는 모형" : (state.season==="summer"?"남서풍 ↗":"북서풍 ↘") + " · 대표적인 계절풍 모형, 실시간 날씨 아님"}</p>`;
+      toolbar.innerHTML = `<div class="scene-controls">${terrain ? `<label class="scene-river-picker"><span>물길</span><select id="sceneRiver" aria-label="따라갈 강" ${state.loaded?"":"disabled"}><option value="all">주요 하천 전체</option>${Object.keys(data.rivers).map(name=>`<option ${state.river===name?"selected":""}>${esc(name)}</option>`).join("")}</select></label>` : `<div class="scene-seasons" role="group" aria-label="계절 선택"><button data-season="summer" aria-pressed="${state.season==="summer"}">여름</button><button data-season="winter" aria-pressed="${state.season==="winter"}">겨울</button></div><button id="sceneCompare">지역 비교</button>`}</div><p class="scene-caption" role="status">${terrain ? state.failed?"하천 자료를 불러오지 못했습니다. 새로고침해 주세요.":!state.loaded?"하천 자료를 불러오는 중…":"물빛은 하류로 이동 · 속도는 모형" : (state.season==="summer"?"남서풍 ↗":"북서풍 ↘") + " · 대표적인 계절풍 모형, 실시간 날씨 아님"}</p>`;
       toolbar.querySelector("#sceneRiver")?.addEventListener("change",event=>selectRiver(event.target.value));
       toolbar.querySelectorAll("[data-season]").forEach(button=>button.addEventListener("click",()=>{
         state.season = button.dataset.season; updateFlow(); renderToolbar(); renderInsight(); renderMarks();
         toolbar.querySelector(`[data-season="${state.season}"]`).focus();
       }));
-      toolbar.querySelector("#scenePause").addEventListener("click",()=>{
-        state.paused = !state.paused; flow.setPaused(state.paused); renderToolbar(); toolbar.querySelector("#scenePause").focus();
-      });
       toolbar.querySelector("#sceneCompare")?.addEventListener("click",()=>{
         focusPair(); const panel = document.querySelector("#sceneInsight");
         panel?.scrollIntoView({block:"nearest",behavior:reduced.matches?"instant":"smooth"}); panel?.focus({preventScroll:true});
@@ -119,7 +115,7 @@
       setContext, selectRiver, renderInsight,
       setRivers(collection) { tracks = data.riverTracks(collection); state.loaded = tracks.length>0; state.failed = !state.loaded; updateFlow(); renderToolbar(); },
       failRivers() { state.failed = true; renderToolbar(); },
-      destroy() { observer.disconnect(); reduced.removeEventListener("change",renderToolbar); flow.remove(); marks.remove(); toolbar.remove(); document.querySelector("#sceneInsight")?.remove(); }
+      destroy() { observer.disconnect(); flow.remove(); marks.remove(); toolbar.remove(); document.querySelector("#sceneInsight")?.remove(); }
     };
   }
   window.KoreaScene = {create};

@@ -1,17 +1,20 @@
 (function () {
   "use strict";
+  // Copied verbatim from ../globe/app.js (DASH_STEPS / river-selected-flow).
+  // The engine adapter below is Canvas; the frames, colours, widths and 50 ms cadence are the globe's.
+  const DASH_STEPS = [
+    [0, 4, 3], [0.5, 4, 2.5], [1, 4, 2], [1.5, 4, 1.5], [2, 4, 1], [2.5, 4, 0.5], [3, 4, 0],
+    [0, 0.5, 3, 3.5], [0, 1, 3, 3], [0, 1.5, 3, 2.5], [0, 2, 3, 2], [0, 2.5, 3, 1.5], [0, 3, 3, 1], [0, 3.5, 3, 0.5],
+  ];
+  const RIVER_STYLE = { baseColor:"#5cc0ff", baseWidth:3.2, flowColor:"#e6f6ff", flowWidth:2.4 };
   const FlowLayer = L.Layer.extend({
     initialize() {
       this.tracks = []; this.projected = []; this.seconds = 0; this.frames = 0;
-      this.paused = false; this.suspended = false; this.visible = true; this.inView = true; this.dirty = true;
+      this.dashStep = 0;
+      this.suspended = false; this.visible = true; this.inView = true; this.dirty = true;
       this.motion = matchMedia("(prefers-reduced-motion: reduce)");
       this._tick = this.tick.bind(this); this._reset = this.reset.bind(this);
       this._visibility = this.refresh.bind(this);
-      this.waterPalette = Array.from({length:32}, (_,index) => {
-        const light = index / 31;
-        return `rgb(${Math.round(8+76*light)},${Math.round(126+77*light)},${Math.round(175+43*light)})`;
-      });
-      this.waterBuckets = this.waterPalette.map(() => []);
     },
     onAdd(map) {
       if (!map.getPane("geographyFlow")) {
@@ -38,11 +41,10 @@
       this.canvas.remove();
     },
     setTracks(tracks) { this.tracks = tracks; this.dirty = true; this.refresh(); return this; },
-    setPaused(paused) { this.paused = paused; this.refresh(); },
     setSuspended(suspended) { this.suspended = suspended; this.refresh(); },
     setVisible(visible) { this.visible = visible; this.refresh(); },
     reset() { this.dirty = true; this.refresh(); },
-    running() { return this.visible && this.inView && this.tracks.length && !this.paused && !this.suspended && !this.motion.matches && !document.hidden; },
+    running() { return this.visible && this.inView && this.tracks.length && !this.suspended && !this.motion.matches && !document.hidden; },
     refresh() {
       if (!this._map || !this.canvas) return;
       this.canvas.hidden = !this.visible || this.suspended;
@@ -55,7 +57,10 @@
       if (!this.running()) return;
       if (this.lastTime) this.seconds += Math.min(time - this.lastTime, 100) / 1000;
       this.lastTime = time;
-      if (!this.lastDraw || time - this.lastDraw >= 50) { this.draw(); this.lastDraw = time; }
+      if (!this.lastDraw || time - this.lastDraw >= 50) {
+        this.dashStep = (this.dashStep + 1) % DASH_STEPS.length;
+        this.draw(); this.lastDraw = time;
+      }
       this.raf = requestAnimationFrame(this._tick);
     },
     project() {
@@ -66,32 +71,22 @@
       L.DomUtil.setPosition(this.canvas, map.containerPointToLayerPoint([0,0]));
       this.ctx.setTransform(ratio,0,0,ratio,0,0);
       this.waterPath = new Path2D();
-      const waterBounds = L.bounds([-3,-3],size.add([3,3]));
+      let waterSamples=0;
       this.projected = this.tracks.map(track => {
         const points = L.LineUtil.simplify(track.coordinates.map(([lng,lat]) => map.latLngToContainerPoint([lat,lng])), .5);
         const distances = [0];
         for (let i=1;i<points.length;i++) distances.push(distances[i-1] + points[i].distanceTo(points[i-1]));
-        const waterPieces = [];
         if (track.kind === "river") {
-          for (let i=1;i<points.length;i++) {
-            const clipped = L.LineUtil.clipSegment(points[i-1],points[i],waterBounds,false,true);
-            if (!clipped) continue;
-            const [a,b] = clipped, length = a.distanceTo(b);
-            if (!length) continue;
-            this.waterPath.moveTo(a.x,a.y); this.waterPath.lineTo(b.x,b.y);
-            const start = distances[i-1]+a.distanceTo(points[i-1]);
-            // Cache short colour samples on the FIXED channel, not moving capsule shapes.
-            const divisions = Math.ceil(length/4);
-            for (let part=0;part<divisions;part++) {
-              const from=part/divisions, to=(part+1)/divisions;
-              waterPieces.push({ ax:a.x+(b.x-a.x)*from, ay:a.y+(b.y-a.y)*from,
-                bx:a.x+(b.x-a.x)*to, by:a.y+(b.y-a.y)*to,
-                distance:start+length*(from+to)/2 });
-            }
-          }
+          // A continuous upstream-to-downstream path keeps the dash phase through every bend.
+          points.forEach((point,index) => {
+            if (!index) this.waterPath.moveTo(point.x,point.y);
+            else this.waterPath.lineTo(point.x,point.y);
+          });
+          waterSamples+=points.length;
         }
-        return { ...track, points, distances, waterPieces, length: distances.at(-1) };
+        return { ...track, points, distances, length: distances.at(-1) };
       }).filter(track => track.length > 1);
+      this.waterSamples=waterSamples;
       this.dirty = false;
     },
     sample(track, distance) {
@@ -103,32 +98,20 @@
       return { x:a.x+(b.x-a.x)*t, y:a.y+(b.y-a.y)*t, angle:Math.atan2(b.y-a.y,b.x-a.x) };
     },
     drawWater() {
-      const ctx=this.ctx;
-      this.waterBuckets.forEach(bucket => { bucket.length=0; });
-      let samples=0;
-      for (const track of this.projected) {
-        if (track.kind !== "river") continue;
-        for (const piece of track.waterPieces) {
-          // Broad, smooth colour waves travel downstream. No heads, tails, outlines or yellow beads.
-          const wave = .5+.5*Math.cos((piece.distance-this.seconds*18)*Math.PI*2/120);
-          const light = track.selected ? .16+.84*wave : wave;
-          this.waterBuckets[Math.round(light*31)].push(piece); samples++;
-        }
-      }
-      if (!samples) return 0;
+      if (!this.waterSamples) return 0;
+      const ctx=this.ctx, frame=DASH_STEPS[this.dashStep];
       ctx.save(); ctx.globalAlpha=1; ctx.lineCap="round"; ctx.lineJoin="round";
-      // The entire painted footprint stays still and <= 1 CSS pixel wide, inside the blue river.
-      ctx.lineWidth=Math.min(1,.72+Math.max(0,this._map.getZoom()-6)*.07);
-      ctx.strokeStyle=this.waterPalette[0]; ctx.stroke(this.waterPath);
-      // Colour is clipped to that fixed footprint, including the anti-aliased edges.
-      ctx.globalCompositeOperation="source-atop"; ctx.lineWidth=4;
-      this.waterBuckets.forEach((pieces,index) => {
-        if (!pieces.length) return;
-        ctx.beginPath();
-        for (const piece of pieces) { ctx.moveTo(piece.ax,piece.ay); ctx.lineTo(piece.bx,piece.by); }
-        ctx.strokeStyle=this.waterPalette[index]; ctx.stroke();
-      });
-      ctx.restore(); return samples;
+      ctx.lineWidth=RIVER_STYLE.baseWidth; ctx.strokeStyle=RIVER_STYLE.baseColor;
+      ctx.stroke(this.waterPath);
+      ctx.globalCompositeOperation="source-atop";
+      ctx.lineWidth=RIVER_STYLE.flowWidth; ctx.strokeStyle=RIVER_STYLE.flowColor;
+      ctx.lineCap="butt"; // Same default as the globe flow layer, without round capsule ends.
+      // MapLibre dash units are line widths. Canvas doubles odd arrays, so append a zero gap
+      // to preserve the globe's seven-unit cycle instead of making a fourteen-unit cycle.
+      const canvasFrame=frame.length%2 ? [...frame,0] : frame;
+      ctx.setLineDash(canvasFrame.map(length=>length*RIVER_STYLE.flowWidth));
+      ctx.stroke(this.waterPath);
+      ctx.restore(); return this.waterSamples;
     },
     drawWind() {
       const ctx=this.ctx, size=this.size;
@@ -174,7 +157,8 @@
       this.canvas.dataset.phase=this.seconds.toFixed(3);
       this.canvas.dataset.particles=String(windParticles);
       this.canvas.dataset.waterSamples=String(waterSamples);
-      this.canvas.dataset.riverStyle="continuous-water";
+      this.canvas.dataset.riverStyle="globe-dash";
+      this.canvas.dataset.dashStep=String(this.dashStep);
       this.canvas.dataset.tracks=String(this.projected.length);
       this.canvas.dataset.state=this.running()?"running":"paused";
     }

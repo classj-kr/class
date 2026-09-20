@@ -6,6 +6,24 @@ const vm = require('node:vm');
 const puppeteer = require('puppeteer-core');
 const root = path.resolve(__dirname, '..'), base = path.join(root,'learning/inquiry/korea-map');
 const output = path.join(root,'outputs/korea-map-flow');
+const globeSource = fs.readFileSync(path.join(root,'learning/inquiry/globe/app.js'),'utf8');
+const flowSource = fs.readFileSync(path.join(base,'flow-layer.js'),'utf8');
+const dashFrames = source => JSON.parse(JSON.stringify(vm.runInNewContext('('+source.match(/const DASH_STEPS = (\[[\s\S]*?\n\s*\]);/)[1]+')')));
+assert.deepEqual(dashFrames(flowSource),dashFrames(globeSource),'reuse all 14 globe river frames unchanged');
+for(const frame of dashFrames(flowSource)) {
+  const canvasFrame=frame.length%2?[...frame,0]:frame;
+  assert.equal(canvasFrame.length%2,0,'Canvas must not double an odd dash pattern');
+  assert.equal(canvasFrame.reduce((sum,length)=>sum+length,0),7,'preserve the globe dash period');
+}
+assert.match(flowSource,/time - this\.lastDraw >= 50/,'same 50 ms animation cadence');
+assert.match(globeSource,/time - lastTextureFrame >= 50/);
+const riverStyle=vm.runInNewContext('('+flowSource.match(/const RIVER_STYLE = (\{[^\n]+\});/)[1]+')');
+for(const [layer,color,width] of [['river-selected',riverStyle.baseColor,riverStyle.baseWidth],['river-selected-flow',riverStyle.flowColor,riverStyle.flowWidth]]) {
+  const start=globeSource.indexOf('id: "'+layer+'"');
+  const definition=globeSource.slice(start,globeSource.indexOf('});',start));
+  assert.ok(definition.includes('"line-color": "'+color+'"'),layer+' colour matches globe');
+  assert.ok(definition.includes('"line-width": '+width),layer+' width matches globe');
+}
 const context = {window:{}};
 vm.runInNewContext(fs.readFileSync(path.join(base,'data/flow-data.js'),'utf8'),context);
 const source = JSON.parse(fs.readFileSync(path.join(base,'data/major-rivers.geojson'),'utf8'));
@@ -37,13 +55,16 @@ async function snapshot(page) {
   return page.evaluate(()=>{
     const canvas=document.querySelector('.geography-flow-canvas');
     const pixels=canvas.getContext('2d').getImageData(0,0,canvas.width,canvas.height).data;
-    let hash=0,alphaHash=0,painted=0;
+    let hash=0,alphaHash=0,painted=0,changed=0;
+    const previous=window.flowTestPreviousPixels;
     for(let i=0;i<pixels.length;i+=4) {
       if(pixels[i+3])painted++;
+      if(previous?.length===pixels.length&&pixels[i+3]>64&&Math.abs(pixels[i]-previous[i])+Math.abs(pixels[i+1]-previous[i+1])+Math.abs(pixels[i+2]-previous[i+2])>60) changed++;
       alphaHash=(Math.imul(alphaHash,31)+pixels[i+3])|0;
       for(let channel=0;channel<4;channel++) hash=(Math.imul(hash,31)+pixels[i+channel])|0;
     }
-    return {...canvas.dataset,hidden:canvas.hidden,hash,alphaHash,painted};
+    window.flowTestPreviousPixels=pixels;
+    return {...canvas.dataset,hidden:canvas.hidden,hash,alphaHash,painted,changed,changedFraction:changed/painted};
   });
 }
 (async()=>{
@@ -67,19 +88,27 @@ async function snapshot(page) {
     const first=await snapshot(page); await delay(450); const next=await snapshot(page);
     assert.ok(Number(next.phase)>Number(first.phase)); assert.notEqual(next.hash,first.hash); assert.ok(next.painted>500);
     assert.equal(next.alphaHash,first.alphaHash,'only water colour moves; the river silhouette must stay fixed');
-    assert.equal(next.riverStyle,'continuous-water');
+    assert.equal(next.riverStyle,'globe-dash');
+    assert.ok(next.changedFraction>.15,'water movement must have visible contrast, not merely a different pixel hash');
+    assert.equal(next.state,'running','flows automatically without a playback button');
+    assert.equal(await page.$$eval('#scenePause',nodes=>nodes.length),0);
+    assert.ok(!(await page.$eval('.scene-toolbar',el=>el.textContent)).match(/흐름 재생|일시\s*정지/));
     assert.equal(next.particles,'0','no moving capsule/arrow particles on rivers');
     assert.ok(Number(next.waterSamples)>0);
     report.movement={first,next};
     await page.screenshot({path:path.join(output,'terrain-flow.png')});
     if(process.env.KOREA_FLOW_RECORD==='1') {
       const crop=await page.$eval('#map',el=>{const box=el.getBoundingClientRect();return {x:Math.ceil(box.x),y:Math.ceil(box.y),width:Math.floor(box.width),height:Math.floor(box.height)};});
-      const recorder=await page.screencast({path:path.join(output,'continuous-water.webm'),crop,fps:20,quality:18,ffmpegPath:process.env.KOREA_FFMPEG||'ffmpeg'});
+      const recorder=await page.screencast({path:path.join(output,'globe-river-flow.webm'),crop,fps:20,quality:18,ffmpegPath:process.env.KOREA_FFMPEG||'ffmpeg'});
       await delay(6500);await recorder.stop();
     }
-    await page.click('#scenePause'); const paused=await snapshot(page); await delay(350);
-    assert.equal((await snapshot(page)).hash,paused.hash); assert.equal((await snapshot(page)).phase,paused.phase);
-    await page.click('#scenePause');
+    // Reproduce the user's selected-river view as well as the nationwide overview.
+    await page.select('#sceneRiver','두만강');
+    const selectedFirst=await snapshot(page);await delay(220);const selectedNext=await snapshot(page);
+    assert.equal(selectedNext.tracks,'1');assert.equal(selectedNext.state,'running');
+    assert.ok(Number(selectedNext.phase)>Number(selectedFirst.phase));
+    assert.ok(selectedNext.changedFraction>.15,'selected river also visibly flows without controls');
+    report.selectedRiver={name:'두만강',changedFraction:selectedNext.changedFraction};
     await page.select('#sceneRiver','한강');
     assert.equal((await snapshot(page)).tracks,'4');
     assert.ok((await page.$eval('#sceneInsight',el=>el.textContent)).includes('두물머리'));
@@ -112,7 +141,7 @@ async function snapshot(page) {
     await page.click('#closePractice'); await delay(150); assert.ok(!(await snapshot(page)).hidden);
     await page.emulateMediaFeatures([{name:'prefers-reduced-motion',value:'reduce'}]); await delay(100);
     const reduced=await snapshot(page); await delay(250); assert.equal((await snapshot(page)).phase,reduced.phase); assert.ok(reduced.painted>0);
-    assert.ok(await page.$eval('#scenePause',el=>el.disabled));
+    assert.equal(await page.$$eval('#scenePause',nodes=>nodes.length),0);
     await page.emulateMediaFeatures([{name:'prefers-reduced-motion',value:'no-preference'}]);
     const foreground = await browser.newPage(); await foreground.bringToFront(); await delay(100);
     assert.ok(await page.evaluate(()=>document.hidden));
@@ -146,6 +175,12 @@ async function snapshot(page) {
       await page.screenshot({path:path.join(output,'climate-'+width+'.png')});
       await page.click('#sceneCompare');
       assert.ok((await page.$eval('#sceneInsight',el=>getComputedStyle(el).fontFamily)).includes('Korea KoPubWorld Batang'));
+      await page.click('[data-theme="terrain"]');
+      await page.$eval('#map',el=>el.scrollIntoView({block:'start',behavior:'instant'}));
+      await page.waitForFunction(()=>document.querySelector('.geography-flow-canvas')?.dataset.state==='running');
+      const mobileFirst=await snapshot(page);await delay(220);const mobileNext=await snapshot(page);
+      assert.ok(Number(mobileNext.phase)>Number(mobileFirst.phase),'automatic river flow at '+width+'px');
+      assert.equal(await page.$$eval('#scenePause',nodes=>nodes.length),0);
       report['layout'+width]=layout;
     }
     failRivers=true;
@@ -155,7 +190,7 @@ async function snapshot(page) {
     assert.ok(await page.$eval('#sceneRiver',el=>el.disabled));
     assert.ok(await page.$('#quickPractice'));
     assert.deepEqual(errors,[]);
-    report.errors=errors;report.verified=['moving pixels','pause/resume','reduced motion','background tab pause','quiz isolation','downstream anchors','confluences','actual river click','season switch','comparison values','pan/zoom alignment','mobile fit','data failure'];
+    report.errors=errors;report.verified=['globe dash frame/style parity','visible moving pixels','automatic playback without playback buttons','reduced motion','background tab pause','quiz isolation','downstream anchors','confluences','actual river click','season switch','comparison values','pan/zoom alignment','mobile fit','data failure'];
     fs.writeFileSync(path.join(output,'verification.json'),JSON.stringify(report,null,2));
     console.log(JSON.stringify(report,null,2));
   } finally {
