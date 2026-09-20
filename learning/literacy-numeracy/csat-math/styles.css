@@ -397,16 +397,6 @@ main { max-width: 940px; margin: 0 auto; padding: 18px 16px 48px; }
   font-size: 0.95rem;
 }
 
-.foot {
-  max-width: 940px;
-  margin: 0 auto;
-  padding: 16px 16px 36px;
-  color: rgba(255, 255, 255, 0.72);
-  font-size: 0.8rem;
-  text-align: center;
-}
-.foot p { margin: 0; }
-
 /* 수식 */
 .katex {
   font-size: 1.08em;

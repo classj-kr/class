@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex">
+  <title>색상·명도·채도 · 미술 실험</title>
+  <link rel="stylesheet" href="../color-mixing/styles.css?v=20260920-type">
+  <link rel="stylesheet" href="styles.css?v=20260920">
+  <script src="model.js?v=20260920" defer></script><script src="app.js?v=20260920" defer></script>
+</head>
+<body>
+<main class="lab-shell">
+  <nav class="lesson-links" aria-label="차시 선택"><a href="../color-mixing/">색의 혼합</a><a href="./" aria-current="page">색상·명도·채도</a></nav>
+  <header class="lesson-header"><h1>색상·명도·채도</h1><button type="button" id="startMatch" class="primary-button">색 맞추기</button></header>
+  <p class="intro">하나만 바꿔 보세요. 두 색의 차이가 더 분명해집니다.</p>
+  <section id="matchTask" class="match-task" aria-labelledby="taskTitle" hidden>
+    <div class="task-heading"><h2 id="taskTitle" tabindex="-1">색 맞추기</h2><button type="button" id="exitMatch" class="text-button">자유 비교로</button></div>
+    <p>오른쪽 색을 왼쪽과 같게 맞추세요. 어떤 속성을 바꿔야 할까요?</p>
+    <div class="task-actions"><button type="button" id="checkMatch" class="secondary-button">비교 결과 확인</button><button type="button" id="hintButton" class="text-button">힌트</button><button type="button" id="nextMatch" class="primary-button" hidden>다음 색 →</button></div>
+    <p id="matchFeedback" role="status"></p>
+  </section>
+  <section class="attribute-workspace" aria-label="색 속성 비교">
+    <div class="property-board">
+      <div class="comparison-pair">
+        <figure><figcaption id="referenceLabel">기준 색</figcaption><div class="color-field"><div id="referenceSwatch" class="color-swatch" role="img" aria-label="기준 색"></div></div></figure>
+        <figure><figcaption>바꾼 색</figcaption><div class="color-field"><div id="changedSwatch" class="color-swatch" role="img" aria-label="바꾼 색"></div></div></figure>
+      </div>
+      <div id="comparisonReadout" class="comparison-readout" aria-label="두 색의 속성 비교"></div>
+      <p id="comparisonDescription" class="comparison-description" role="status"></p>
+    </div>
+    <aside class="attribute-controls" aria-label="속성 조절">
+      <div class="control-heading"><h2>바꿀 속성</h2><button type="button" id="resetProperty" class="text-button">초기화</button></div>
+      <div class="attribute-tabs" role="group" aria-label="바꿀 속성 선택"><button type="button" data-axis="h" aria-pressed="true">색상</button><button type="button" data-axis="l" aria-pressed="false">명도</button><button type="button" data-axis="c" aria-pressed="false">채도</button></div>
+      <p id="axisDescription"></p>
+      <label id="propertyLabel" for="propertyControl">색의 종류</label>
+      <div id="propertyScale" class="property-scale" aria-hidden="true"></div>
+      <input type="range" id="propertyControl" min="0" max="7" value="5" step="1" aria-describedby="axisDescription">
+      <div class="scale-labels"><span id="scaleStart"></span><output id="propertyOutput" for="propertyControl"></output><span id="scaleEnd"></span></div>
+      <p id="fixedAttributes" class="fixed-attributes"></p>
+      <div id="baselineControls" class="baseline-controls"><h3>다른 기준 색으로</h3><div id="baselineColors" class="baseline-colors"></div></div>
+    </aside>
+  </section>
+  <section id="matchSummary" class="match-summary" aria-labelledby="summaryTitle" hidden><h2 id="summaryTitle" tabindex="-1">세 가지 차이를 구별했습니다.</h2><div id="matchRecords"></div><button type="button" id="retryMatch" class="secondary-button">다시 맞춰 보기</button></section>
+  <section class="observation-note"><div><h2>밝은 색과 선명한 색</h2></div><p>명도를 높인 색과 채도를 낮춘 색을 각각 비교해 보세요. 밝아지는 것과 회색에 가까워지는 것은 어떻게 다른가요?</p></section>
+</main>
+</body>
+</html>

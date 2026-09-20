@@ -1,0 +1,45 @@
+<!doctype html><meta charset="utf-8"><style>body{margin:0}iframe{height:100vh;border:0;display:block}pre{display:none}</style><iframe src="../../learning/arts/art-theory/color-properties/index.html"></iframe><pre id="result">pending</pre><script>
+const frame=document.querySelector('iframe');const viewport=Number(new URLSearchParams(location.search).get('width'))||1440;frame.style.width=viewport+'px';
+frame.onload=()=>{try{
+ const d=frame.contentDocument,w=frame.contentWindow,checks=[],$=s=>d.querySelector(s);
+ const ok=(value,message)=>{if(!value)throw Error(message);checks.push(message)};
+ const click=s=>$(s).click();
+ const color=id=>w.getComputedStyle($(id)).backgroundColor;
+ const set=value=>{const input=$('#propertyControl');input.value=value;input.dispatchEvent(new w.Event('input',{bubbles:true}))};
+ ok(w.innerWidth===viewport,'requested viewport');
+ ok(color('#referenceSwatch')===color('#changedSwatch'),'initial colors match');
+ const original=color('#referenceSwatch');
+ set(0);ok(color('#changedSwatch')!==original&&color('#referenceSwatch')===original,'hue changes one swatch only');
+ ok($('#comparisonReadout').children[1].textContent.includes('같음'),'lightness stays fixed during hue change');
+ click('[data-axis="l"]');ok(color('#changedSwatch')===original,'switching attribute restores baseline');
+ set(80);ok(color('#changedSwatch')!==original,'lightness changes color');
+ ok($('#comparisonReadout').children[2].textContent.includes('같음'),'chroma stays fixed during lightness change');
+ click('[data-axis="c"]');set(0);const values=color('#changedSwatch').match(/\d+/g);ok(values[0]===values[1]&&values[1]===values[2],'zero chroma displays gray');
+ click('#resetProperty');ok(color('#changedSwatch')===original,'reset restores comparison color');
+ for(let h=0;h<8;h++){
+  click(`[data-baseline="${h}"]`);
+  for(const axis of ['h','l','c']){
+   click(`[data-axis="${axis}"]`);set($('#propertyControl').max);
+   ok(d.documentElement.scrollWidth<=d.documentElement.clientWidth,'baseline '+h+' '+axis+' fits viewport');
+  }
+ }
+ click('[data-baseline="5"]');click('[data-axis="l"]');set(73);const saved=color('#changedSwatch');
+ click('#startMatch');ok(!$('#matchTask').hidden&&$('#comparisonReadout').hidden,'task hides attribute answer');
+ click('#checkMatch');ok(!$('#matchFeedback').textContent.includes('맞췄습니다'),'wrong guess cannot complete task');
+ click('#hintButton');ok($('#matchFeedback').textContent.includes('밝고 어두운'),'hint guides observation');
+ for(const [axis,value] of [['l',80],['c',4],['h',3]]){
+  click(`[data-axis="${axis}"]`);set(value);click('#checkMatch');
+  ok($('#matchFeedback').textContent.includes('맞췄습니다'),'matching '+axis+' succeeds');
+  ok($('#propertyControl').disabled,'successful result is locked until next task');
+  ok(d.documentElement.scrollWidth<=d.documentElement.clientWidth,'task fits viewport');
+  click('#nextMatch');
+ }
+ ok(!$('#matchSummary').hidden&&d.querySelectorAll('.match-record').length===3,'three observed differences recorded');
+ ok(color('#changedSwatch')===saved,'completed task restores free comparison');
+ click('#retryMatch');click('#exitMatch');ok(color('#changedSwatch')===saved,'exit restores free comparison');
+ click('#startMatch');w.dispatchEvent(new w.CustomEvent('sitebackrequest',{cancelable:true}));ok($('#matchTask').hidden,'common back leaves task');
+ ok(!d.querySelector('.source-links'),'no source links in lesson');
+ click('[data-axis="c"]');set(4);w.scrollTo(0,0);d.activeElement.blur();
+ document.querySelector('#result').textContent=JSON.stringify({passed:checks.length});document.title='PASS';
+}catch(error){document.querySelector('#result').textContent='FAIL '+error.stack;document.title='FAIL'}};
+</script>
