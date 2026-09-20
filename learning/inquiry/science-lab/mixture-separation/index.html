@@ -8,7 +8,7 @@
     <meta name="description" content="자석·체·물을 이용해 섞여 있는 물질을 성질에 따라 분리해 보는 초등 과학 모의실험">
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
     <link rel="stylesheet" href="styles.css?v=5">
-    <link rel="stylesheet" href="mixture-visual.css?v=12">
+    <link rel="stylesheet" href="mixture-visual.css?v=13">
     <link rel="stylesheet" href="quiz.css?v=3">
     <link rel="stylesheet" href="../exam-scope.css?v=1">
     <link rel="stylesheet" href="../lab-ui.css?v=4">
@@ -28,7 +28,7 @@
             <li>섞여 있는 물질의 성질을 살펴봅니다.</li>
             <li>어떤 성질을 이용할지 정합니다.</li>
             <li>알맞은 도구로 분리합니다.</li>
-            <li>다섯 가지를 모두 나눌 때까지 반복합니다.</li>
+            <li>섞인 무리는 다시 나누고, 소금물에서는 소금을 회수합니다.</li>
         </ol>
 
         <div class="experiment-layout">
@@ -64,7 +64,7 @@
                     <div id="resultContent" hidden>
                         <div class="result-numbers">
                             <article><span>남은 물질</span><strong id="resultLeft">5가지</strong></article>
-                            <article><span>분리한 물질</span><strong id="resultDone">0가지</strong></article>
+                            <article><span>따로 받은 무리</span><strong id="resultDone">0가지</strong></article>
                         </div>
                         <p class="explanation" id="elementaryExplanation"></p>
                     </div>
@@ -83,11 +83,12 @@
                         <g id="mixtureGroup"></g>
                         <g id="toolGroup"></g>
 
-                        <text class="tray-title" x="352" y="26" text-anchor="middle">분리한 물질</text>
+                        <text class="tray-title" x="352" y="26" text-anchor="middle">따로 받은 무리</text>
                         <g id="trayGroup"></g>
                     </svg>
                 </div>
 
+                <div id="groupControls" class="mixture-group-controls" aria-label="받아 둔 무리 다시 분리"></div>
                 <div class="stage-readout" id="stageReadout"></div>
                 <p class="stage-note" id="stageNote"></p>
                 <p class="stage-caption" id="stageCaption">자석·물·체 가운데 알맞은 도구를 골라 보세요.</p>
@@ -167,9 +168,9 @@
             </div>
         </details>
     </main>
-    <script src="app.js?v=55ab84b6296c"></script>
+    <script src="app.js?v=0430b8d2eeda"></script>
     <script src="../curriculum-map.js?v=3f7264a2b189"></script>
-    <script src="../exam-scope.js?v=ab08f0f36ca8"></script>
+    <script src="../exam-scope.js?v=1249bc531e88"></script>
     <script src="../lab-ui.js?v=c295eda1bdab"></script>
 </body>
 </html>

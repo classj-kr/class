@@ -12333,7 +12333,7 @@
     "isOriginalCity": true,
     "originalIndex": 123,
     "originalCitySize": 2,
-    "displayOnMap": true,
+    "displayOnMap": false,
     "category": "항구 도시",
     "access": "port",
     "canEnterFromSea": true,
@@ -12435,7 +12435,16 @@
     "originalName": "케이프",
     "in1520": "코이코이족의 목초지",
     "todayCountry": "남아프리카공화국",
-    "artKey": "cape-town"
+    "artKey": "cape-town",
+    "retired": true,
+    "retiredReason": "도시 성립 1652년: 1520년 도시로 사용하지 않음",
+    "historicalEvidence": {
+      "status": "after-start-year",
+      "foundedYear": 1652,
+      "sources": [
+        "https://www.capetown.gov.za/Local%20and%20communities/Heritage-and-the-community/Our-history-and-heritage/What-is-our-history"
+      ]
+    }
   },
   {
     "id": "original_city_122",
@@ -26562,7 +26571,7 @@
     "isOriginalCity": true,
     "originalIndex": 8,
     "originalCitySize": 2,
-    "displayOnMap": true,
+    "displayOnMap": false,
     "category": "항구 도시",
     "access": "port",
     "canEnterFromSea": true,
@@ -26663,7 +26672,16 @@
     "libraryRegion": "아메리카",
     "in1520": "케란디족이 오가던 초원",
     "todayCountry": "아르헨티나",
-    "artKey": "buenos-aires"
+    "artKey": "buenos-aires",
+    "retired": true,
+    "retiredReason": "도시 성립 1536년: 1520년 도시로 사용하지 않음",
+    "historicalEvidence": {
+      "status": "after-start-year",
+      "foundedYear": 1536,
+      "sources": [
+        "https://buenosaires.gob.ar/gcaba_historico/laciudad/ciudad"
+      ]
+    }
   },
   {
     "id": "original_city_007",
@@ -27573,7 +27591,7 @@
     "isOriginalCity": true,
     "originalIndex": 0,
     "originalCitySize": 2,
-    "displayOnMap": true,
+    "displayOnMap": false,
     "category": "도시",
     "access": "land",
     "canEnterFromSea": false,
@@ -27669,7 +27687,16 @@
     "libraryRegion": "아메리카",
     "in1520": "잉카 제국의 높은 산골 · 마을 없음",
     "todayCountry": "볼리비아",
-    "artKey": "potosi"
+    "artKey": "potosi",
+    "retired": true,
+    "retiredReason": "도시 성립 1545년: 1520년 도시로 사용하지 않음",
+    "historicalEvidence": {
+      "status": "after-start-year",
+      "foundedYear": 1545,
+      "sources": [
+        "https://potosi.bo/history/"
+      ]
+    }
   },
   {
     "id": "mbanza_kongo",

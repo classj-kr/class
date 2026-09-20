@@ -1,0 +1,50 @@
+/* 역사 테마만 적용. 기존 지형·기후·유물 화면의 스타일은 바꾸지 않는다. */
+.history-map .border-label-wrapper { display: none; }
+#map.history-map ~ #mapKey { display: none; }
+.history-panel { max-width: 680px; margin: 0 auto; padding: 4px 2px 18px; }
+.history-heading { margin-bottom: 16px; }
+.history-kicker { color: #8a632c; font-size: 12px; font-weight: 750; letter-spacing: .04em; }
+.history-heading h2 { margin: 7px 0 0; font-size: 24px; letter-spacing: -.04em; }
+.history-eras { display: flex; flex-wrap: wrap; gap: 6px; padding-bottom: 16px; border-bottom: 1px solid var(--line); }
+.history-button { min-height: 44px; border: 1px solid #d8d9cd; border-radius: 8px; background: #fffdf7; color: #445553; padding: 8px 11px; font-size: 13px; font-weight: 650; }
+.history-button:hover:not(:disabled) { background: #f3ecd9; border-color: #b8a778; }
+.history-button:focus-visible, .history-select:focus-visible, .history-panel summary:focus-visible { outline: 3px solid #ba7e24; outline-offset: 3px; }
+.history-button:disabled { opacity: .4; cursor: default; }
+.history-eras [aria-pressed="true"] { color: #fff; background: #74592f; border-color: #74592f; }
+.history-select-label { display: block; margin: 16px 0 8px; color: var(--muted); font-size: 12px; }
+.history-select { display: block; width: 100%; min-width: 0; min-height: 46px; padding: 9px 30px 9px 10px; color: var(--ink); border: 1px solid #c8cdbf; border-radius: 8px; background: #fffdfa; font-size: 14px; text-overflow: ellipsis; }
+.history-navigation { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin: 8px 0 20px; }
+.history-navigation .history-button { border: 0; background: transparent; padding: 6px 3px; }
+.history-position { color: var(--muted); font-variant-numeric: tabular-nums; font-size: 12px; }
+.history-scene-heading { padding: 16px 17px; border-left: 4px solid #ad8244; background: #f4efe3; border-radius: 0 8px 8px 0; }
+.history-period { margin: 0 0 5px; color: #805e2c; font-size: 13px; font-weight: 750; }
+.history-scene-heading h3 { margin: 0; font-size: 21px; line-height: 1.4; letter-spacing: -.04em; word-break: keep-all; }
+.history-subtitle { font-size: 12px; color: var(--muted); margin: 21px 0 9px; }
+.history-cues { margin: 0; }
+.history-cues > div { padding: 11px 0; border-bottom: 1px solid #e7e6de; }
+.history-cues dt { margin-bottom: 5px; color: #345b5f; font-size: 13px; font-weight: 750; }
+.history-cues dd { margin: 0; font-family: var(--reading-font); font-size: 16px; line-height: 1.8; word-break: keep-all; overflow-wrap: anywhere; }
+.history-trap { margin: 16px 0; padding: 12px 14px; border-radius: 8px; background: #fbf1e6; font-family: var(--reading-font); font-size: 15px; line-height: 1.8; word-break: keep-all; }
+.history-trap strong { display: block; margin-bottom: 3px; color: #9b522f; font-family: Pretendard, system-ui, sans-serif; font-size: 12px; }
+.history-panel summary { cursor: pointer; min-height: 44px; padding: 12px 0; color: #536564; font-size: 13px; }
+.history-places ol { margin: 0 0 8px; padding: 0; list-style: none; }
+.history-places li .history-button { width: 100%; text-align: left; margin-bottom: 4px; }
+.history-note { font-size: 12px; line-height: 1.7; color: #746b5b; }
+.history-sources { border-top: 1px solid var(--line); }
+.history-sources a { display: block; color: #306b72; padding: 7px 0; font-size: 12px; line-height: 1.6; }
+.history-sources p { color: var(--muted); font-size: 12px; line-height: 1.7; }
+.history-map-caption { position: absolute; top: 12px; right: 12px; z-index: 590; max-width: calc(100% - 130px); padding: 9px 13px; border: 1px solid #d9c9a9; border-radius: 8px; background: #fffaf0ed; box-shadow: 0 3px 12px #39302114; pointer-events: none; }
+.history-map-caption[hidden] { display: none; }
+.history-map-caption strong { display: block; color: #805e2c; font-size: 12px; }
+.history-map-caption span { display: block; margin-top: 3px; color: #3d453b; font-size: 14px; font-weight: 750; }
+.history-point { display: grid; place-items: center; width: 22px; height: 22px; background: #74592f; border: 2px solid #fffdf7; border-radius: 50%; color: #fff; font: 700 11px/1 system-ui, sans-serif; box-shadow: 0 1px 5px #0004; }
+.history-map-label { display: flex; align-items: center; min-height: 27px; padding: 3px 6px; border: 1px solid #d2c6b0; border-radius: 5px; color: #453c2e; background: #fffdf5f2; font: 650 12px/18px Pretendard, system-ui, sans-serif; word-break: keep-all; overflow-wrap: anywhere; box-shadow: 0 1px 3px #0001; }
+.history-country { display: block; width: 80px; color: #334b3b; font: 800 21px/30px Pretendard, system-ui, sans-serif; text-align: center; text-shadow: 0 0 4px #fff, 0 0 4px #fff; }
+.history-arrow { display: block; width: 22px; height: 22px; font: 700 23px/22px system-ui, sans-serif; text-shadow: 0 0 2px white; }
+.history-point-wrap, .history-label-wrap, .history-country-wrap, .history-arrow-wrap { background: transparent; border: 0; }
+@media (max-width: 600px) {
+  .history-heading h2 { font-size: 22px; }
+  .history-map-caption { padding: 7px 9px; }
+  .history-map-caption span { font-size: 12px; }
+  .history-cues dd { font-size: 15px; }
+}

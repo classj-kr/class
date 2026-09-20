@@ -1,0 +1,60 @@
+{
+  "slug": "specific-heat",
+  "engine": "webkit",
+  "modes": [
+    "heat",
+    "expand"
+  ],
+  "cases": 11,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__heat2Model",
+      "methods": [
+        "SUBS",
+        "METALS",
+        "POWER",
+        "T0",
+        "MAX_TIME",
+        "L0_MM",
+        "EXAGGERATION",
+        "PX_PER_MM",
+        "tempOf",
+        "expansionMM",
+        "tempScaleMax",
+        "setMode",
+        "setMass",
+        "setTime",
+        "setDelta",
+        "stepFrame",
+        "elapsed",
+        "mass",
+        "deltaT",
+        "render"
+      ]
+    }
+  ],
+  "paint": [],
+  "grades": [
+    {
+      "mode": "heat",
+      "results": [
+        {
+          "choice": "water",
+          "visible": true,
+          "text": "아직 가열 전입니다. 가열한 뒤 온도 변화를 비교하세요."
+        },
+        {
+          "choice": "iron",
+          "visible": true,
+          "text": "아직 가열 전입니다. 가열한 뒤 온도 변화를 비교하세요."
+        }
+      ]
+    },
+    {
+      "mode": "expand",
+      "results": []
+    }
+  ]
+}

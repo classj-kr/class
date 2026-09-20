@@ -14,137 +14,132 @@
             '<path d="M -5 -36 L 5 -36" stroke="#7c2d12" stroke-width="2"/>' +
             '<path d="M -8 -35 L 8 -35" stroke="#facc15" stroke-width="3" stroke-linecap="round"/></g>';
     }
+    const MOON_IMAGE = 'assets/images/moon-nearside-nasa.jpg';
+    const PLANET_IMAGES = '../solar-system/assets/images/';
+    const fmt = value => Number(value.toFixed(3));
+    const svgCircle = (b, fill, more='') => `<circle cx="${b.x}" cy="${b.y}" r="${b.r}" fill="${fill}" ${more}/>`;
+    const svgText = (x,y,value,more='') => `<text x="${x}" y="${y}" text-anchor="middle" ${more}>${value}</text>`;
+    function shadowGeometry(source, body, endX) {
+        const outer=[G.tangent(source,body,false,1),G.tangent(source,body,false,-1)];
+        const inner=[G.tangent(source,body,true,-1),G.tangent(source,body,true,1)];
+        const tip=source.x+(body.x-source.x)*source.r/(source.r-body.r);
+        const polygon=(lines,end)=>[lines[0].b,{x:end,y:lines[0].at(end)},{x:end,y:lines[1].at(end)},lines[1].b].map(p=>`${fmt(p.x)},${fmt(p.y)}`).join(' ');
+        return {pen:polygon(inner,endX),umb:polygon(outer,Math.min(endX,tip)),rays:[...outer,...inner].map(l=>`<line x1="${fmt(l.a.x)}" y1="${fmt(l.a.y)}" x2="${endX}" y2="${fmt(l.at(endX))}"/>`).join('')};
+    }
     function mount(pane) {
+        if(pane.eclipseCleanup) pane.eclipseCleanup();
         pane.classList.add('eclipse-lab');
-        pane.innerHTML = `
-            <div class="ecl-controls">
-                <div class="ecl-modes" role="group" aria-label="식의 종류">
-                    <button type="button" data-ecl-mode="solar" aria-pressed="true">일식</button>
-                    <button type="button" data-ecl-mode="lunar" aria-pressed="false">월식</button>
-                </div>
-                <div class="ecl-options"><label><input type="checkbox" data-ecl-rays checked> 빛의 경로</label><label><input type="checkbox" data-ecl-labels checked> 명칭</label></div>
-            </div>
-            <div class="ecl-layout">
-                <div class="ecl-diagram-panel">
-                    <div class="ecl-arrangement" data-ecl-order></div>
-                    <svg class="ecl-diagram" preserveAspectRatio="xMidYMin meet" viewBox="0 80 500 856" role="img" aria-label="태양과 가리는 천체가 만드는 본그림자와 반그림자의 단면" data-ecl-diagram></svg>
-                    <div class="ecl-legend"><span><i class="ecl-umbra-key"></i>본그림자 · 직접 오는 태양빛이 모두 가려짐</span><span><i class="ecl-penumbra-key"></i>반그림자 · 태양빛의 일부만 가려짐</span></div>
-                </div>
-                <aside class="ecl-observation">
-                    <h2 data-ecl-view-title></h2>
-                    <svg viewBox="0 0 280 260" class="ecl-view" role="img" data-ecl-view></svg>
-                    <div class="ecl-result" aria-live="polite"><strong data-ecl-result></strong><p data-ecl-reason></p></div>
-                </aside>
-            </div>
-            <div class="ecl-position">
-                <label for="eclPosition" data-ecl-position-label></label>
-                <input id="eclPosition" type="range" min="-86" max="86" value="0" step="1">
-                <div class="ecl-presets" role="group" aria-label="위치 예시" data-ecl-presets></div>
-            </div>
-            <p class="ecl-note">크기·거리·이동은 원리를 보여 주기 위한 모형입니다. 본그림자·반그림자는 공간의 영역이며, 그림은 그 단면입니다.</p>
-            <details class="ecl-more"><summary>매달 식이 생기지 않는 이유</summary><p>달의 공전 궤도면은 지구의 공전 궤도면에 약 5° 기울어져 있습니다. 삭이나 보름이어도 달이 궤도면의 교점 부근에 있지 않으면 그림자가 빗나갑니다. 월식 모형에서 달을 그림자 밖으로 옮겨 비교하세요. 위치 조절값은 실제 궤도 경사각이 아닙니다.</p></details>
-            <details class="ecl-more"><summary>금환일식과 반영월식</summary><p>달이 작게 보이면 태양을 전부 가리지 못해 금환일식이 일어날 수 있습니다. 이 일식 모형은 본그림자가 지구에 닿는 경우로 고정했습니다. 달이 지구의 반그림자만 통과하는 반영월식은 달이 조금 어두워지는 현상으로, 부분월식과 구분합니다.</p></details>`;
-        // Keep supporting information beside the scene, so it does not consume its height.
-        const observationPanel=pane.querySelector('.ecl-observation');
-        observationPanel.append(pane.querySelector('.ecl-legend'));
-        const modelNote=document.createElement('details');modelNote.className='ecl-more';
-        const noteSummary=document.createElement('summary');noteSummary.textContent='모형 안내';
-        modelNote.append(noteSummary,pane.querySelector('.ecl-note'));
-        observationPanel.append(modelNote);
-        pane.querySelectorAll(':scope > .ecl-more').forEach(detail=>observationPanel.append(detail));
-        const content=document.createElement('div');content.className='ecl-content';
-        Array.from(pane.children).forEach(child=>content.append(child));pane.append(content);
-        let mode = 'solar';
-        const slider = pane.querySelector('#eclPosition');
-        const diagram = pane.querySelector('[data-ecl-diagram]');
-        const view = pane.querySelector('[data-ecl-view]');
-        const rays = pane.querySelector('[data-ecl-rays]');
-        const labels = pane.querySelector('[data-ecl-labels]');
-        const presetValues = { solar: [['본그림자', 0], ['반그림자', 38], ['그림자 밖', 86]], lunar: [['개기', 0], ['부분', 36], ['반영', 100], ['그림자 밖', 210]] };
-        const f = value => Number(value.toFixed(3));
-        const point = p => `${f(p.x)},${f(p.y)}`;
-        const circle = (body, fill, extra = '') => `<circle cx="${body.x}" cy="${body.y}" r="${body.r}" fill="${fill}" ${extra}/>`;
-        const text = (x, y, value, extra = '') => `<text x="${x}" y="${y}" text-anchor="middle" ${extra}>${value}</text>`;
-        function geometry(body, endX) {
-            const ou = G.tangent(G.SUN, body, false, 1), ol = G.tangent(G.SUN, body, false, -1);
-            const pu = G.tangent(G.SUN, body, true, -1), pl = G.tangent(G.SUN, body, true, 1);
-            const tip = G.SUN.x + (body.x - G.SUN.x) * G.SUN.r / (G.SUN.r - body.r);
-            const umbraEnd = Math.min(endX, tip);
-            const pen = [pu.b, {x:endX,y:pu.at(endX)}, {x:endX,y:pl.at(endX)}, pl.b].map(point).join(' ');
-            const umb = [ou.b, {x:umbraEnd,y:ou.at(umbraEnd)}, {x:umbraEnd,y:ol.at(umbraEnd)}, ol.b].map(point).join(' ');
-            return { pen, umb, rays: [ou,ol,pu,pl].map(ray => `<line x1="${f(ray.a.x)}" y1="${f(ray.a.y)}" x2="${endX}" y2="${f(ray.at(endX))}"/>`).join('') };
+        const presets={solar:[['개기',0],['부분',25],['식 없음',86]],lunar:[['개기',0],['부분',65],['반영',125],['식 없음',215]]};
+        const titles={solar:{total:'개기일식',partial:'부분일식',annular:'금환일식',none:'일식 없음'},lunar:{total:'개기월식',partial:'부분월식',penumbral:'반영월식',none:'월식 없음'}};
+        const reasons={solar:{total:'달의 본그림자 안 · 태양 전체가 가려짐',partial:'달의 반그림자 안 · 태양 일부가 가려짐',annular:'달이 작게 보여 태양 가장자리가 남음',none:'달의 그림자 밖 · 태양이 가려지지 않음'},lunar:{total:'달 전체가 지구의 본그림자 안 · 어두운 붉은 달',partial:'달의 일부가 지구의 본그림자 안',penumbral:'지구의 반그림자만 통과 · 약간 어두워짐',none:'지구의 그림자 밖 · 밝은 보름달'}};
+        const card=mode=>`<section class="ecl-observation" data-ecl-card="${mode}" aria-label="${mode==='solar'?'일식':'월식'} 관측">
+            <header class="ecl-card-heading"><h2>${mode==='solar'?'일식 <span>삭</span>':'월식 <span>보름</span>'}</h2><span>${mode==='solar'?'태양 → 달 → 지구':'태양 → 지구 → 달'}</span></header>
+            <div class="ecl-sky"><canvas class="ecl-view" data-ecl-view="${mode}" width="720" height="360" role="img"></canvas><div class="ecl-sky-caption">${mode==='solar'?'낮인 지역의 관측자에게 보이는 태양':'밤인 지역에서 보이는 달'}</div></div>
+            <div class="ecl-result" aria-live="polite"><strong data-ecl-result="${mode}"></strong><p data-ecl-reason="${mode}"></p></div>
+            <div class="ecl-position"><button type="button" class="ecl-play" data-ecl-play="${mode}" aria-pressed="false" aria-label="${mode==='solar'?'일식':'월식'} 변화 재생">▶ 재생</button><label for="ecl-${mode}-position">${mode==='solar'?'관측 위치':'달 위치'}</label><input id="ecl-${mode}-position" type="range" data-ecl-slider="${mode}" min="0" max="${mode==='solar'?86:215}" value="0" step="1"><div class="ecl-presets" role="group" aria-label="${mode==='solar'?'일식':'월식'} 위치 예시">${presets[mode].map(([label,value])=>`<button type="button" data-ecl-preset="${mode}" data-value="${value}">${label}</button>`).join('')}</div></div>
+        </section>`;
+        pane.innerHTML=`<div class="ecl-content">
+            <div class="ecl-controls"><span class="ecl-time-note">서로 다른 시점의 위치 비교</span><div class="ecl-options"><label><input type="checkbox" data-ecl-rays checked> 빛의 경로</label><label><input type="checkbox" data-ecl-labels checked> 명칭</label></div></div>
+            <div class="ecl-diagram-panel"><svg class="ecl-diagram" viewBox="0 0 1120 400" role="img" data-ecl-diagram aria-label="태양은 왼쪽, 지구는 가운데. 지구 왼쪽의 달은 일식 때, 오른쪽의 달은 월식 때 위치이며 서로 다른 시점입니다."></svg></div>
+            <div class="ecl-comparison">${card('solar')}${card('lunar')}</div>
+            <details class="ecl-more"><summary>본그림자·반그림자와 모형 안내</summary><div class="ecl-info-grid"><p><b>본그림자</b> · 직접 오는 태양빛이 모두 가려지는 공간.<br><b>반그림자</b> · 태양빛의 일부만 가려지는 공간.</p><p>두 달은 서로 다른 시점의 위치입니다. 크기·거리·이동은 원리를 보여 주기 위한 모형이며 실제 비율이 아닙니다. 오른쪽 달의 이동은 그림자 통과를 비교하는 조작입니다.</p><p><b>매달 식이 생기지 않는 이유</b><br>달의 공전 궤도면이 지구의 공전 궤도면에 약 5° 기울어져 있어, 삭·보름이어도 대부분 그림자가 빗나갑니다.</p><p><b>금환일식과 반영월식</b><br>달이 작게 보이면 태양의 가장자리가 남는 금환일식이 생깁니다. 이 모형의 달 크기는 개기일식이 가능한 경우로 고정했습니다. 반영월식은 반그림자만 통과하며 부분월식과 다릅니다.</p></div></details>
+        </div>`;
+        const state={solar:0,lunar:0},playing={solar:false,lunar:false},direction={solar:1,lunar:1};
+        const diagram=pane.querySelector('[data-ecl-diagram]'),rays=pane.querySelector('[data-ecl-rays]'),labels=pane.querySelector('[data-ecl-labels]');
+        const refs=Object.fromEntries(['solar','lunar'].map(mode=>[mode,{card:pane.querySelector(`[data-ecl-card="${mode}"]`),canvas:pane.querySelector(`[data-ecl-view="${mode}"]`),slider:pane.querySelector(`[data-ecl-slider="${mode}"]`),result:pane.querySelector(`[data-ecl-result="${mode}"]`),reason:pane.querySelector(`[data-ecl-reason="${mode}"]`),play:pane.querySelector(`[data-ecl-play="${mode}"]`)}]));
+        const moonImage=new Image();moonImage.onload=()=>draw();moonImage.src=MOON_IMAGE;
+        const model=G.COMPARISON;
+        const solarGeo=shadowGeometry(model.sun,model.newMoon,model.earth.x);
+        const lunarGeo=shadowGeometry(model.sun,model.earth,1120);
+        const cones=(geo,extra='')=>`<g ${extra}><polygon points="${geo.pen}" class="ecl-penumbra"/><polygon points="${geo.umb}" class="ecl-umbra"/></g>`;
+        const texture=(body,file,id,crop)=>`<g clip-path="url(#${id})"><image href="${file}" x="${body.x-body.r*crop[0]}" y="${body.y-body.r*crop[1]}" width="${body.r*crop[2]}" height="${body.r*crop[2]}" preserveAspectRatio="none"/></g>`;
+        const stars=Array.from({length:65},(_,i)=>{const x=(i*179.37+39)%1120,y=(i*97.71+18)%400;return `<circle cx="${fmt(x)}" cy="${fmt(y)}" r="${i%7===0?1:.5}" fill="#b8cbe4" opacity="${i%3===0?.32:.13}"/>`;}).join('');
+        function drawModel(solar,lunar) {
+            const fullMoon={...model.fullMoon,y:model.fullMoon.y+lunar.offset};
+            const nightObserver={x:model.earth.x+model.earth.r,y:model.earth.y};
+            const moonLabelY=fullMoon.y+46;
+            diagram.innerHTML=`<defs>
+                <clipPath id="eclEarthClip">${svgCircle(model.earth,'white')}</clipPath><clipPath id="eclNewMoonClip">${svgCircle(model.newMoon,'white')}</clipPath><clipPath id="eclFullMoonClip">${svgCircle(fullMoon,'white')}</clipPath><clipPath id="eclSourceClip">${svgCircle(model.sun,'white')}</clipPath>
+                <radialGradient id="eclSourceHalo"><stop offset=".48" stop-color="#ffd179" stop-opacity=".2"/><stop offset="1" stop-color="#fda243" stop-opacity="0"/></radialGradient>
+                <linearGradient id="eclNight"><stop offset="0" stop-color="#020611" stop-opacity="0"/><stop offset=".46" stop-color="#020611" stop-opacity="0"/><stop offset=".56" stop-color="#020611" stop-opacity=".72"/><stop offset="1" stop-color="#020611" stop-opacity=".93"/></linearGradient>
+                <radialGradient id="eclSphere" cx="32%" cy="30%" r="72%"><stop offset=".3" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".65"/></radialGradient>
+            </defs>${stars}
+            <g class="ecl-world"><path d="M 178 250 H 1120" class="ecl-axis"/>
+            ${cones(lunarGeo,'class="ecl-earth-shadow"')}${cones(solarGeo,'class="ecl-moon-shadow"')}
+            <g class="ecl-rays" ${rays.checked?'':'visibility="hidden"'}>${lunarGeo.rays}${solarGeo.rays}</g>
+            ${svgCircle({...model.sun,r:205},'url(#eclSourceHalo)')}${svgCircle(model.sun,'#ffba43')}${texture(model.sun,PLANET_IMAGES+'sun.jpg','eclSourceClip',[1.86,1.87,3.66])}
+            ${svgCircle(model.earth,'#1676ad','stroke="#73caf9" stroke-opacity=".6" stroke-width="3"')}${texture(model.earth,PLANET_IMAGES+'earth.jpg','eclEarthClip',[1.46,1.47,2.94])}${svgCircle(model.earth,'url(#eclNight)')}
+            <g clip-path="url(#eclEarthClip)">${cones(solarGeo)}</g>
+            ${svgCircle(model.newMoon,'#adb6c1')}${texture(model.newMoon,MOON_IMAGE,'eclNewMoonClip',[1.025,1,2.05])}${svgCircle(model.newMoon,'url(#eclNight)')}
+            ${svgCircle(fullMoon,'#cad0d7')}${texture(fullMoon,MOON_IMAGE,'eclFullMoonClip',[1.025,1,2.05])}<g clip-path="url(#eclFullMoonClip)"><polygon points="${lunarGeo.pen}" fill="#080b1d" opacity=".15"/><polygon points="${lunarGeo.umb}" fill="#87391e" opacity=".72"/></g>${svgCircle(fullMoon,'url(#eclSphere)')}
+            ${observerMarkup(solar.observer,model.earth,.72)}${observerMarkup(nightObserver,model.earth,.72)}</g>
+            ${labels.checked?`<g class="ecl-labels">${svgText(80,95,'태양','class="ecl-sun-label"')}${svgText(650,137,'지구')}${svgText(475,185,'일식 때 달','class="ecl-solar-label"')}${svgText(475,206,'삭','class="ecl-sub-label"')}${svgText(fullMoon.x,moonLabelY,'월식 때 달','class="ecl-lunar-label"')}${svgText(fullMoon.x,moonLabelY+21,'보름','class="ecl-sub-label"')}${svgText(620,369,'낮','class="ecl-observer-label"')}${svgText(690,369,'밤','class="ecl-observer-label"')}
+            <path d="M 550 312 L 591 250 M 515 352 L 535 280 M 1025 249 L 990 260 M 1025 355 L 982 348" class="ecl-label-leader"/>
+            ${svgText(548,332,'본그림자','class="ecl-shadow-name"')}${svgText(510,374,'반그림자','class="ecl-shadow-name"')}${svgText(1040,242,'본그림자','class="ecl-shadow-name"')}${svgText(1040,376,'반그림자','class="ecl-shadow-name"')}</g>`:''}`;
+        }
+        function paintSky(mode,result) {
+            const canvas=refs[mode].canvas,ctx=canvas.getContext('2d'),w=canvas.width,h=canvas.height;
+            const cx=w/2,cy=h/2,r=120;
+            ctx.clearRect(0,0,w,h);ctx.fillStyle='#02050b';ctx.fillRect(0,0,w,h);
+            const disc=(x,y,radius)=>{ctx.beginPath();ctx.arc(x,y,radius,0,Math.PI*2);};
+            if(mode==='solar') {
+                const total=result.type==='total';
+                if(total) {
+                    const halo=ctx.createRadialGradient(cx,cy,r*.94,cx,cy,r*2.15);
+                    halo.addColorStop(0,'rgba(242,247,255,.85)');halo.addColorStop(.12,'rgba(207,225,255,.45)');halo.addColorStop(.5,'rgba(187,207,235,.09)');halo.addColorStop(1,'rgba(160,185,225,0)');
+                    ctx.fillStyle=halo;disc(cx,cy,r*2.15);ctx.fill();
+                    ctx.save();ctx.translate(cx,cy);ctx.globalCompositeOperation='screen';
+                    for(let i=0;i<260;i++) {
+                        const a=i*2.39996323,reach=r*(1.3+.48*(.5+.5*Math.sin(i*4.31))+.44*Math.abs(Math.cos(a*2)));
+                        const inner=r*(1.01+.05*Math.sin(i)),bend=.035*Math.sin(i*2.7);
+                        const ray=ctx.createLinearGradient(Math.cos(a)*inner,Math.sin(a)*inner,Math.cos(a+bend)*reach,Math.sin(a+bend)*reach);
+                        ray.addColorStop(0,'rgba(234,244,255,.24)');ray.addColorStop(.36,'rgba(203,219,246,.07)');ray.addColorStop(1,'rgba(190,211,240,0)');
+                        ctx.strokeStyle=ray;ctx.lineWidth=.7+(i%4)*.65;ctx.beginPath();ctx.moveTo(Math.cos(a)*inner,Math.sin(a)*inner);ctx.quadraticCurveTo(Math.cos(a+.018)*r*1.23,Math.sin(a+.018)*r*1.23,Math.cos(a+bend)*reach,Math.sin(a+bend)*reach);ctx.stroke();
+                    }ctx.restore();
+                }
+                const face=ctx.createRadialGradient(cx-r*.23,cy-r*.23,r*.1,cx,cy,r);
+                face.addColorStop(0,'#fff6cf');face.addColorStop(.72,'#ffe6a2');face.addColorStop(1,'#f3b855');
+                ctx.fillStyle=face;disc(cx,cy,r);ctx.fill();
+                ctx.save();disc(cx,cy,r);ctx.clip();
+                for(let i=0;i<1800;i++){const a=i*2.39996323,rr=r*Math.sqrt(i/1800);ctx.fillStyle=i%3?'rgba(160,85,20,.045)':'rgba(255,255,255,.16)';ctx.fillRect(cx+Math.cos(a)*rr,cy+Math.sin(a)*rr,1.5,1.5);}ctx.restore();
+                // Apparent angular sizes and separation come from the same geometry as the observer.
+                if(result.type!=='none') {const scale=r/result.sunAngle,shift=result.separation*scale;ctx.fillStyle='#02040a';disc(cx,cy+shift,result.moonAngle*scale);ctx.fill();}
+            } else {
+                ctx.save();disc(cx,cy,r);ctx.clip();ctx.fillStyle='#c5cbd0';ctx.fillRect(cx-r,cy-r,r*2,r*2);
+                if(moonImage.complete&&moonImage.naturalWidth)ctx.drawImage(moonImage,cx-r*1.025,cy-r,r*2.05,r*2);
+                const scale=r/model.fullMoon.r,shadowY=cy-result.offset*scale;
+                // Red light dims the surface; its texture remains visible, unlike a luminous ring.
+                const pen=ctx.createRadialGradient(cx,shadowY,result.umbra*scale,cx,shadowY,result.penumbra*scale);
+                pen.addColorStop(0,'rgba(5,9,24,.22)');pen.addColorStop(.7,'rgba(5,9,24,.13)');pen.addColorStop(1,'rgba(5,9,24,0)');
+                ctx.fillStyle=pen;ctx.fillRect(cx-r,cy-r,r*2,r*2);
+                ctx.save();disc(cx,shadowY,result.umbra*scale);ctx.clip();
+                ctx.globalCompositeOperation='multiply';const red=ctx.createRadialGradient(cx,shadowY,0,cx,shadowY,result.umbra*scale);red.addColorStop(0,'#ad4827');red.addColorStop(.68,'#c56842');red.addColorStop(1,'#d98a59');ctx.fillStyle=red;ctx.fillRect(cx-r,cy-r,r*2,r*2);ctx.restore();
+                const limb=ctx.createRadialGradient(cx-r*.12,cy-r*.12,r*.4,cx,cy,r);limb.addColorStop(0,'rgba(0,0,0,0)');limb.addColorStop(1,'rgba(0,0,0,.3)');ctx.fillStyle=limb;ctx.fillRect(cx-r,cy-r,r*2,r*2);ctx.restore();
+            }
+            canvas.setAttribute('aria-label',(mode==='solar'?'지구 관측자에게 보이는 태양: ':'지구에서 보이는 달: ')+titles[mode][result.type]);
         }
         function draw() {
-            const solarMode = mode === 'solar';
-            const result = solarMode ? G.solar(-Number(slider.value)) : G.lunar(-Number(slider.value));
-            pane.dataset.eclipseMode = mode;
-            pane.dataset.eclipseState = result.type;
-            const blocker = solarMode ? G.SOLAR_MOON : G.LUNAR_EARTH;
-            const receiver = solarMode ? G.SOLAR_EARTH : {...G.LUNAR_MOON, y:250+result.offset};
-            const geo = geometry(blocker, solarMode ? G.SOLAR_EARTH.x : 920);
-            const fills = `<polygon points="${geo.pen}" class="ecl-penumbra"/><polygon points="${geo.umb}" class="ecl-umbra"/>`;
-            // Rotate the geometry into a downward light path. Keep labels upright.
-            const screen = p => ({x:500-p.y,y:p.x});
-            const receiverScreen=screen(receiver);
-            const nameLayer = labels.checked ?
-                text(390,170,'태양') +
-                text(330,blocker.x+7,solarMode?'달':'지구') +
-                text(receiverScreen.x>380?receiverScreen.x-receiver.r-32:receiverScreen.x+receiver.r+32,receiver.x+12,solarMode?'지구':'달') +
-                text(415,solarMode?644:645,'본그림자','class="ecl-shadow-name"') +
-                text(415,solarMode?685:730,'반그림자','class="ecl-shadow-name"') : '';
-            const shadowPointers=labels.checked?[['umbra',solarMode?638:639],['penumbra',solarMode?679:724]].map(([kind,y])=>{
-                const inner=Math.abs(G.tangent(G.SUN,blocker,false,1).at(y)-250);
-                const outer=Math.abs(G.tangent(G.SUN,blocker,true,1).at(y)-250);
-                const x=kind==='umbra'?250:250+(inner+outer)/2;
-                return '<path d="M 365 '+y+' L '+f(x)+' '+y+'" stroke="#a8c4e6" stroke-width="1" fill="none"/>';
-            }).join(''):'';
-            const observer = solarMode ? result.observer : {x:G.LUNAR_EARTH.x+G.LUNAR_EARTH.r,y:G.LUNAR_EARTH.y};
-            const earth = solarMode ? G.SOLAR_EARTH : G.LUNAR_EARTH;
-            const observerScreen=screen(observer);
-            const labelX=observerScreen.x>=250?410:90,labelY=solarMode?765:575;
-            const observerLabel=labels.checked?'<path d="M '+f(observerScreen.x)+' '+f(observerScreen.y)+' L '+labelX+' '+(labelY-16)+'" stroke="#6ee7b7" stroke-dasharray="3 5" fill="none"/>'+text(labelX,labelY,'관측자','class="ecl-observer-label"'):'';
-            diagram.innerHTML = `<defs><clipPath id="eclReceiver">${circle(receiver,'white')}</clipPath><linearGradient id="eclEarth"><stop offset="0" stop-color="#38bdf8"/><stop offset=".48" stop-color="#177dc4"/><stop offset=".51" stop-color="#0d304f"/><stop offset="1" stop-color="#061727"/></linearGradient></defs>
-                <g class="ecl-world" transform="matrix(0 1 -1 0 500 0)"><line x1="190" y1="250" x2="915" y2="250" class="ecl-axis"/>
-                ${fills}<g class="ecl-rays" ${rays.checked?'':'visibility="hidden"'}>${geo.rays}</g>
-                ${circle(G.SUN,'#fbbf24')}${circle(blocker,solarMode?'#cbd5e1':'url(#eclEarth)')}${circle(receiver,solarMode?'url(#eclEarth)':'#e2e8f0')}
-                <g clip-path="url(#eclReceiver)">${fills}</g>${observerMarkup(observer,earth)}</g>${shadowPointers}${observerLabel}${nameLayer}`;
-            let title, reason;
-            if (solarMode) {
-                title = {total:'개기일식',partial:'부분일식',annular:'금환일식',none:'이 위치에서는 일식 없음'}[result.type];
-                reason = {total:'관측자가 달의 본그림자 안에 있어 태양 전체가 가려집니다.',partial:'관측자가 달의 반그림자 안에 있어 태양의 일부만 가려집니다.',annular:'달이 태양보다 작게 보여 태양 가장자리가 고리처럼 남습니다.',none:'관측자가 달의 그림자 밖에 있어 태양이 가려지지 않습니다.'}[result.type];
-                const scale = 62 / result.sunAngle;
-                const shift = (result.offset < 0 ? -1 : 1) * result.separation * scale;
-                view.innerHTML = `<defs><clipPath id="eclSunView"><circle cx="140" cy="125" r="62"/></clipPath></defs><circle cx="140" cy="125" r="62" fill="#fbbf24"/><g clip-path="url(#eclSunView)"><circle cx="${f(140+shift)}" cy="125" r="${f(result.moonAngle*scale)}" fill="#030712"/></g><circle cx="140" cy="125" r="62" fill="none" stroke="#526078" stroke-width="1"/>${text(140,228,'관측 위치에 따라 다르게 보임')}`;
-            } else {
-                title = {total:'개기월식',partial:'부분월식',penumbral:'반영월식',none:'월식 없음'}[result.type];
-                reason = {total:'달 전체가 지구의 본그림자 안에 들어갔습니다. 대기를 지난 붉은빛 때문에 붉게 보일 수 있습니다.',partial:'달의 일부만 지구의 본그림자 안에 들어갔습니다. 반그림자에만 들어간 경우와 다릅니다.',penumbral:'달이 지구의 반그림자만 지나 조금 어두워집니다. 본그림자에는 들어가지 않았습니다.',none:'달이 지구의 그림자를 벗어나 태양빛을 받습니다. 보름달이어도 월식이 일어나지 않을 수 있습니다.'}[result.type];
-                const scale = 62/G.LUNAR_MOON.r;
-                view.innerHTML = `<defs><clipPath id="eclMoonView"><circle cx="140" cy="125" r="62"/></clipPath></defs><circle cx="140" cy="125" r="62" fill="#e2e8f0"/><g clip-path="url(#eclMoonView)"><circle cx="${f(140+result.offset*scale)}" cy="125" r="${f(result.penumbra*scale)}" fill="#677180" opacity=".38"/><circle cx="${f(140+result.offset*scale)}" cy="125" r="${f(result.umbra*scale)}" fill="#703b30" opacity=".96"/></g>${text(140,228,'달이 보이는 밤인 지역에서 관측')}`;
+            const results={solar:G.comparisonSolar(-state.solar),lunar:G.comparisonLunar(-state.lunar)};
+            pane.dataset.eclipseSolarState=results.solar.type;pane.dataset.eclipseLunarState=results.lunar.type;
+            drawModel(results.solar,results.lunar);
+            for(const mode of ['solar','lunar']){
+                const ref=refs[mode],result=results[mode];
+                if(ref.result.textContent!==titles[mode][result.type]){ref.result.textContent=titles[mode][result.type];ref.reason.textContent=reasons[mode][result.type];}
+                ref.card.dataset.state=result.type;ref.slider.value=state[mode];ref.slider.setAttribute('aria-valuetext',titles[mode][result.type]);
+                ref.card.querySelectorAll('[data-ecl-preset]').forEach(b=>b.setAttribute('aria-pressed',String(Number(b.dataset.value)===Math.round(state[mode]))));
+                paintSky(mode,result);
             }
-            pane.querySelector('[data-ecl-result]').textContent = title;
-            pane.querySelector('[data-ecl-reason]').textContent = reason;
-            view.setAttribute('aria-label', (solarMode?'지구 관측자에게 보이는 태양: ':'지구에서 보이는 달: ')+title);
-            diagram.setAttribute('aria-label', `${solarMode?'태양–달–지구':'태양–지구–달'} 위에서 아래 배열과 본그림자·반그림자. 현재 ${title}.`);
-            slider.setAttribute('aria-valuetext', (solarMode?'관측자 위치: ':'달 위치: ')+title);
-            pane.querySelectorAll('[data-ecl-position]').forEach(button => button.setAttribute('aria-pressed',String(Number(button.dataset.eclPosition)===Number(slider.value))));
         }
-        function selectMode(next) {
-            mode=next; slider.min=mode==='solar'?-86:-210; slider.max=mode==='solar'?86:210; slider.value=0;
-            pane.querySelectorAll('[data-ecl-mode]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.eclMode===mode)));
-            pane.querySelector('[data-ecl-order]').textContent=mode==='solar'?'일식 · 삭 무렵':'월식 · 보름 무렵';
-            pane.querySelector('[data-ecl-view-title]').textContent=mode==='solar'?'관측자에게 보이는 태양':'지구에서 보이는 달';
-            pane.querySelector('[data-ecl-position-label]').textContent=mode==='solar'?'관측 위치':'달 위치';
-            pane.querySelector('[data-ecl-presets]').innerHTML=presetValues[mode].map(([label,value])=>`<button type="button" data-ecl-position="${value}">${label}</button>`).join('');
-            draw();
-        }
-        pane.addEventListener('click',event=>{
-            const modeButton=event.target.closest('[data-ecl-mode]');
-            if(modeButton) selectMode(modeButton.dataset.eclMode);
-            const positionButton=event.target.closest('[data-ecl-position]');
-            if(positionButton){slider.value=positionButton.dataset.eclPosition;draw();}
-        });
-        slider.addEventListener('input',draw);rays.addEventListener('change',draw);labels.addEventListener('change',draw);
-        selectMode('solar');
+        let frame=0,lastTime=0;
+        function setPlaying(mode,value) {playing[mode]=value;refs[mode].play.textContent=value?'Ⅱ 멈춤':'▶ 재생';refs[mode].play.setAttribute('aria-pressed',String(value));refs[mode].play.setAttribute('aria-label',(mode==='solar'?'일식':'월식')+' 변화 '+(value?'멈춤':'재생'));}
+        function tick(now){frame=0;if(!playing.solar&&!playing.lunar)return;const dt=Math.min((now-lastTime)/1000,.1);if(now-lastTime>=40){lastTime=now;for(const mode of ['solar','lunar'])if(playing[mode]){const max=mode==='solar'?86:215;state[mode]+=direction[mode]*dt*(mode==='solar'?12:27);if(state[mode]>=max){state[mode]=max;direction[mode]=-1;}if(state[mode]<=0){state[mode]=0;direction[mode]=1;}}draw();}frame=requestAnimationFrame(tick);}
+        pane.addEventListener('input',event=>{const mode=event.target.dataset.eclSlider;if(mode){state[mode]=Number(event.target.value);setPlaying(mode,false);draw();}});
+        pane.addEventListener('click',event=>{const preset=event.target.closest('[data-ecl-preset]');if(preset){const mode=preset.dataset.eclPreset;state[mode]=Number(preset.dataset.value);setPlaying(mode,false);draw();}const play=event.target.closest('[data-ecl-play]');if(play){const mode=play.dataset.eclPlay;setPlaying(mode,!playing[mode]);if(!frame&&(playing.solar||playing.lunar)){lastTime=performance.now();frame=requestAnimationFrame(tick);}}});
+        rays.addEventListener('change',draw);labels.addEventListener('change',draw);
+        const pause=()=>{if(document.hidden||document.body.dataset.topicView!=='observe'){setPlaying('solar',false);setPlaying('lunar',false);cancelAnimationFrame(frame);frame=0;}};
+        document.addEventListener('visibilitychange',pause);const visibility=new MutationObserver(pause);visibility.observe(document.body,{attributes:true,attributeFilter:['data-topic-view']});
+        pane.eclipseCleanup=()=>{cancelAnimationFrame(frame);visibility.disconnect();document.removeEventListener('visibilitychange',pause);moonImage.onload=null;};
+        draw();
     }
     function questionFigure(kind) {
         if (kind !== 'solar-observers') return null;

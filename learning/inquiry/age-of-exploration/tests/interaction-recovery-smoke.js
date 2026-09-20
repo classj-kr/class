@@ -12,6 +12,7 @@ process.on('message',message=>{try{
     if(!p)throw Error('missing player');
     if(message.command==='place'){
       stopPlayer(p);p.transition=null;p.mode=message.mode==='sea'?'sea':'land';p.currentCityId=null;
+      if(Number.isFinite(message.fatigue))p.fatigue=Fatigue.clamp(message.fatigue);
       if(message.city){const city=[...RESOLVED_PLACES.values()].find(c=>c.name===message.city);Object.assign(p,p.mode==='sea'?city.seaPoint:city.landPoint);}
       else Object.assign(p,{x:(message.lon+180)/360*WORLD_PIXEL_W,y:(90-message.lat)/180*WORLD_PIXEL_H});
       if(message.anchor){p.shipAnchorX=p.x+8;p.shipAnchorY=p.y;p.shipLandingX=p.x+80;p.shipLandingY=p.y;p.shipAnchorDir=2;p.shipPortId=null;}

@@ -131,13 +131,13 @@ document.addEventListener('DOMContentLoaded', () => {
         if (p >= 0.8) {
             const topY = SEED.y - 10 - stemLen - 20 * trueLeaf;
             labels += `<line class="part-line" x1="${SEED.x + 34}" y1="${topY.toFixed(1)}" x2="${SEED.x + 62}" y2="${topY.toFixed(1)}"/>`;
-            labels += `<text class="part-label" x="${SEED.x + 66}" y="${(topY + 4).toFixed(1)}">잎</text>`;
+            labels += `<text class="part-label" data-part="leaf" x="${SEED.x + 66}" y="${(topY + 4).toFixed(1)}">잎</text>`;
             const midY = SEED.y - 10 - stemLen * .5;
             labels += `<line class="part-line" x1="${SEED.x + 8}" y1="${midY.toFixed(1)}" x2="${SEED.x + 62}" y2="${midY.toFixed(1)}"/>`;
             labels += `<text class="part-label" x="${SEED.x + 66}" y="${(midY + 4).toFixed(1)}">줄기</text>`;
             const rootY = SEED.y + 10 + rootLen * .7;
             labels += `<line class="part-line" x1="${SEED.x + 6}" y1="${rootY.toFixed(1)}" x2="${SEED.x + 62}" y2="${rootY.toFixed(1)}"/>`;
-            labels += `<text class="part-label" x="${SEED.x + 66}" y="${(rootY + 4).toFixed(1)}">뿌리</text>`;
+            labels += `<text class="part-label" data-part="root" style="fill:#fff7e6" x="${SEED.x + 66}" y="${(rootY + 4).toFixed(1)}">뿌리</text>`;
         }
         labelGroup.innerHTML = labels;
     }

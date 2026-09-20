@@ -2,7 +2,7 @@ const {test} = require('node:test');
 const assert = require('node:assert/strict');
 const fs = require('node:fs'), path = require('node:path'), http = require('node:http');
 const root = path.resolve(__dirname, '../learning/inquiry/science-lab');
-const output = path.resolve(__dirname, '../docs/science-lab-audit-2026-09-20/six-redesign');
+const output = path.resolve(process.env.SCIENCE_TEST_ARTIFACTS || path.resolve(__dirname, '../docs/science-lab-audit-2026-09-20'), 'six-redesign');
 for (const engine of ['chromium', 'webkit']) test(`${engine}: six refined scenes preserve controls, process direction and visible state`, {timeout:180000}, async () => {
     const server = http.createServer((req, res) => {
         let f = path.resolve(root, '.' + new URL(req.url, 'http://localhost').pathname);

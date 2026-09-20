@@ -9,6 +9,8 @@
   <link rel="stylesheet" href="styles.css?v=20260920-34">
   <link rel="stylesheet" href="study.css?v=20260920-35">
   <link rel="stylesheet" href="reading.css?v=20260920-2">
+  <link rel="stylesheet" href="scene.css?v=20260920-1">
+  <link rel="stylesheet" href="history.css?v=20260920-1">
 </head>
 <body>
   <div class="app-shell">
@@ -21,12 +23,14 @@
       <button class="theme-tab" type="button" data-theme="transport" aria-pressed="false"><span>🚆</span> 교통</button>
       <button class="theme-tab" type="button" data-theme="region" aria-pressed="false"><span>🧭</span> 행정구역</button>
       <button class="theme-tab" type="button" data-theme="heritage" aria-pressed="false"><span>🏛️</span> 유물·유적</button>
+      <button class="theme-tab" type="button" data-theme="history" aria-pressed="false"><span>📜</span> 역사</button>
       <button class="theme-tab" type="button" data-theme="travel" aria-pressed="false"><span>🎡</span> 체험·관광</button>
     </nav>
 
     <main class="study-layout">
       <section class="map-stage" aria-label="국내 지도 주제 지도">
         <div id="map" role="application" aria-label="국내 지도"></div>
+        <div id="historyMapCaption" class="history-map-caption" hidden></div>
         <button class="map-progress" id="progressButton" type="button" aria-label="학습 기록 보기"><span>누적</span><strong id="progressScore">0 / 0</strong></button>
         <button class="map-toggle" id="labelToggle" type="button" aria-pressed="false">지역명</button>
         <button class="map-tool" id="profileButton" type="button" aria-pressed="false" hidden>
@@ -189,10 +193,16 @@
   <script src="heritage.js?v=20260920-33"></script>
   <script src="data/travel-data.js?v=20260920-32"></script>
   <script src="travel.js?v=20260920-32"></script>
+  <script src="data/history-data.js?v=20260920-1"></script>
+  <script src="history.js?v=20260920-1"></script>
   <script src="climate-graph.js?v=20260920-31"></script>
   <script src="data/study-lessons.js?v=20260920-31"></script>
   <script src="study-visuals.js?v=20260920-31"></script>
-  <script src="study.js?v=20260920-34"></script>
-  <script src="app.js?v=20260920-35"></script>
+  <script src="study.js?v=20260920-36"></script>
+  <script src="data/flow-data.js?v=20260920-1"></script>
+  <script src="data/scene-climate.js?v=20260920-1"></script>
+  <script src="flow-layer.js?v=20260920-1"></script>
+  <script src="scene-controller.js?v=20260920-1"></script>
+  <script src="app.js?v=20260920-history-1"></script>
 </body>
 </html>

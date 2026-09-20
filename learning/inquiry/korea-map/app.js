@@ -16,7 +16,7 @@
     type: "Feature", properties: { name: province.name, north: true },
     geometry: { type: "MultiPolygon", coordinates: province.rings.map((ring) => [ring.map(([lat, lng]) => [lng, lat])]) }
   }));
-  const THEME_ORDER = ["territory", "terrain", "climate", "population", "industry", "transport", "region", "heritage", "travel"];
+  const THEME_ORDER = ["territory", "terrain", "climate", "population", "industry", "transport", "region", "heritage", "history", "travel"];
   const KOREA_BOUNDS = L.latLngBounds([[32.95, 123.85], [43.15, 131.35]]);
   // 중국·몽골·러시아 인근과 일본까지 허용하되, 지형 타일이 끝나는 곳까지 벗어나지 않는다.
   const NAVIGATION_BOUNDS = L.latLngBounds([[15, 90], [60, 155]]);
@@ -42,7 +42,7 @@
   let mapDetailsVisible = false;
   let session = { questions: [], answers: [], index: 0, answered: false, mode: "theme" };
   let mainMap, questionMap;
-  let study, lessonMapLayer;
+  let study, lessonMapLayer, scene;
   let mainBoundaryLayer, mainThemeLayer, mainLabelLayer;
   let questionBoundaryLayer, questionThemeLayer, questionLabelLayer, questionFocusLayer;
   const zoomSyncHandlers = new WeakMap();
@@ -56,7 +56,8 @@
     initMaps();
     bindControls();
     lessonMapLayer = L.layerGroup().addTo(mainMap);
-    study = window.KoreaStudy.create({ focus: focusLesson, focusSpot: focusStudySpot, practice: startLessonPractice, progress: readProgress });
+    scene = window.KoreaScene.create(mainMap);
+    study = window.KoreaStudy.create({ focus: focusLesson, focusSpot: focusStudySpot, practice: startLessonPractice, progress: readProgress, rendered: () => scene.renderInsight() });
     const hashTheme = (location.hash || "").replace("#", "");
     renderTheme(themes[hashTheme] ? hashTheme : currentTheme);
     renderProgress();
@@ -113,7 +114,7 @@
       const size = map.getSize();
       // 문제·경로 지도는 숨겨진 상태에서 생성되므로 실제 크기가 생긴 뒤 계산한다.
       if (!size.x || !size.y) return;
-      map.setMinZoom(Math.max(minimumZoom, map.getBoundsZoom(NAVIGATION_BOUNDS, true)));
+      setNavigationMinimum(map, map.options.themeMinZoom ?? minimumZoom);
       map.panInsideBounds(NAVIGATION_BOUNDS, { animate: false });
     };
     map.on("resize", updateNavigationLimits);
@@ -131,7 +132,16 @@
     return map;
   }
 
-  // 국경(압록강·두만강)과 휴전선. 주제와 상관없이 늘 그린다.
+  function setNavigationMinimum(map, minimum) {
+    // Leaflet getBoundsZoom clamps to the old minimum; release it while measuring.
+    const previous = map.options.minZoom;
+    map.options.minZoom = 0;
+    const regionalMinimum = map.getBoundsZoom(NAVIGATION_BOUNDS, true);
+    map.options.minZoom = previous;
+    map.setMinZoom(Math.max(minimum, regionalMinimum));
+  }
+
+  // 국경(압록강·두만강)과 휴전선. 역사 탭에서는 현재 경계를 숨긴다.
   function drawBorders(map) {
     (borders.national || []).forEach((line) => {
       L.polyline(line, { pane: "borderLines", color: "#ffffff", weight: 4.5, opacity: 0.7, interactive: false }).addTo(map);
@@ -170,6 +180,11 @@
   // 주제에 따로 정한 범위가 있으면(국토: 독도·이어도·표준 경선까지) 그 범위로 맞춘다.
   function fitKorea(map, themeKey) {
     const theme = themes[themeKey || (map === mainMap ? currentTheme : questionThemeKey())];
+    if (map === mainMap) {
+      map.options.themeMinZoom = theme && theme.minZoom !== undefined ? theme.minZoom : 5;
+      map.options.zoomSnap = theme && theme.historical ? 0.25 : 1;
+      setNavigationMinimum(map, map.options.themeMinZoom);
+    }
     const bounds = theme && theme.bounds ? L.latLngBounds(theme.bounds) : KOREA_BOUNDS;
     map.fitBounds(bounds, { padding: [18, 18], animate: false });
   }
@@ -237,9 +252,14 @@
       const response = await fetch("data/major-rivers.geojson?v=20260901-3");
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
       majorRivers = await response.json();
-      if (themes[currentTheme] && themes[currentTheme].rivers) renderTheme(currentTheme);
+      scene.setRivers(majorRivers);
+      if (themes[currentTheme] && (themes[currentTheme].rivers || study.current)) {
+        // Late data must also reach a direct #climate visit, without resetting the selected lesson/view.
+        drawThemeOnMap(mainMap, mainThemeLayer, themes[currentTheme], {interactive:true,baseOnly:!!study.current});
+      }
     } catch (error) {
       console.warn("주요 하천 선형을 불러오지 못했습니다.", error);
+      scene.failRivers();
     }
   }
 
@@ -251,6 +271,7 @@
     group.clearLayers();
     if (!provinceFeatures.length && !northFeatures.length) return;
     const theme = themes[map === mainMap ? currentTheme : questionThemeKey()] || {};
+    if (theme.historical) return;
     const fillByRegion = !!theme.regionFill;
     if (!fillByRegion && map.getZoom() > 9) return;
     L.geoJSON({ type: "FeatureCollection", features: [...provinceFeatures, ...northFeatures] }, {
@@ -342,7 +363,8 @@
     $("#conceptPoints").hidden = !theme.points.length;
     $("#themeExtra").replaceChildren(...(theme.panel ? [theme.panel(themeApi)] : []));
     // 행정구역 탭은 시·도 이름이 늘 보이므로 지역명 단추가 필요 없다.
-    $("#labelToggle").hidden = !!theme.provinceNames;
+    $("#labelToggle").hidden = !!theme.provinceNames || !!theme.historical;
+    $("#historyMapCaption").hidden = !theme.historical;
     clearFeatureFocus(false);
     stopProfile();
     mainMap.closePopup();
@@ -354,7 +376,7 @@
     syncMapDetailsButton();
     setReliefTone(mainMap, theme);
     drawThemeOnMap(mainMap, mainThemeLayer, theme, { interactive: true });
-    drawLabels(mainMap, mainLabelLayer, { admin: !theme.provinceNames, city: !theme.provinceNames, annotations: theme.annotations || [] });
+    drawLabels(mainMap, mainLabelLayer, { admin: !theme.provinceNames && !theme.historical, city: !theme.provinceNames && !theme.historical, annotations: theme.annotations || [] });
     drawBoundaries(mainMap, mainBoundaryLayer, true);
     fitKorea(mainMap);
     updatePracticeButton();
@@ -364,11 +386,13 @@
   function focusLesson(lesson) {
     mainMap.invalidateSize({ pan: false });
     lessonMapLayer.clearLayers();
-    if (!lesson) return;
+    if (!lesson) { scene.setContext(currentTheme, null); return; }
     renderLegend((themes[currentTheme].legend || []).filter(item=>item.type === "relief"));
     drawThemeOnMap(mainMap, mainThemeLayer, themes[currentTheme], { interactive: true, skipFeatures: true, baseOnly: true });
     drawLabels(mainMap, mainLabelLayer, { admin: true, city: true, annotations: [] });
     lesson.spots.forEach((spot, index) => {
+      // The temperature scene already places A/B at the observed stations; do not stack duplicate pins.
+      if (currentTheme === "climate" && lesson.id === "temperature") return;
       const marker = L.marker([spot.lat, spot.lng], { pane: "studyMarkers", icon: L.divIcon({ className: "lesson-pin-wrap", html: '<span class="lesson-pin">'+(index+1)+'</span>', iconSize:[32,32],iconAnchor:[16,16] }) });
       marker.bindTooltip(spot.name, { permanent:true, direction:"top", offset:[0,-17], className:"study-tooltip" });
       marker.on("click", () => focusStudySpot(spot));
@@ -376,6 +400,7 @@
     });
     if (lesson.spots.length > 1) mainMap.fitBounds(L.latLngBounds(lesson.spots.map(s=>[s.lat,s.lng])), {padding:[65,65],maxZoom:8,animate:false});
     else mainMap.setView([lesson.spots[0].lat,lesson.spots[0].lng],7,{animate:false});
+    scene.setContext(currentTheme, lesson);
   }
 
   function focusStudySpot(spot) {
@@ -443,6 +468,8 @@
   // 지형이 주제가 아닌 탭에서는 바탕 색을 옅게 해 주제 표지가 잘 보이게 한다.
   function setReliefTone(map, theme) {
     map.getContainer().classList.toggle("relief-muted", !theme.relief);
+    map.getContainer().classList.toggle("history-map", !!theme.historical);
+    map.getPane("borderLines").hidden = !!theme.historical;
   }
 
   // 지형 이름표를 누르면 그 자리에 설명 풍선을 띄운다(지도를 옮기지 않는다).
@@ -569,13 +596,17 @@
           const midpoint = coordinates[Math.floor(coordinates.length / 2)];
           const weight = riverWidthAt(name, midpoint, maxDistance);
           const latLngs = coordinates.map((coordinate) => [coordinate[1], coordinate[0]]);
-          const casing = L.polyline(latLngs, { pane: "themeLines", color: "#ffffff", weight: weight + 2.4, opacity: 0.8, lineCap: "round", lineJoin: "round", interactive: false, className: "major-river-casing" }).addTo(group);
-          const path = L.polyline(latLngs, { pane: "themeLines", color: "#087eaf", weight, opacity: 0.96, lineCap: "round", lineJoin: "round", interactive, className: "major-river-path" }).addTo(group);
+          const casing = L.polyline(latLngs, { pane: "themeLines", color: "#ffffff", weight: weight + 2.4, opacity: 0.8, lineCap: "round", lineJoin: "round", interactive: false, className: "major-river-casing" });
+          const path = L.polyline(latLngs, { pane: "themeLines", color: "#087eaf", weight, opacity: 0.96, lineCap: "round", lineJoin: "round", interactive, className: "major-river-path" });
           if (interactive) path.bindTooltip(system ? `${name} · ${system}` : name, { sticky: true, className: "river-tooltip" });
+          if (interactive && map === mainMap) path.on("click", () => { if (!profile.active) scene.selectRiver(name); });
           strokes.push({ casing, path, weight });
         }
       });
     });
+    // Draw every casing BEFORE the blue strokes: chunk ends must not cover their neighbours in white.
+    strokes.forEach(({ casing }) => casing.addTo(group));
+    strokes.forEach(({ path }) => path.addTo(group));
     setZoomSync(map, "riverWidth", () => {
       const zoom = map.getZoom();
       const scale = zoom <= 5 ? 0.45 : zoom === 6 ? 0.6 : zoom === 7 ? 0.8 : 1;

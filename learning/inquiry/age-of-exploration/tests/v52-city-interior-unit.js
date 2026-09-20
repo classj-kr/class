@@ -7,10 +7,11 @@ const books=JSON.parse(fs.readFileSync(path.join(__dirname,'..','public','data',
 const server=fs.readFileSync(path.join(__dirname,'..','server.js'),'utf8');
 const student=fs.readFileSync(path.join(__dirname,'..','public','index.html'),'utf8');
 const dir=path.join(__dirname,'..','public','assets','cities','1520');
-const live=cities.filter(c=>!c.retired);
-const keys=new Set(live.map(c=>c.artKey));
+const regional=require('../data/catalog/regional-sites.json').settlements;
+const live=[...cities.filter(c=>!c.retired),...regional];
+const keys=new Set([...cities,...regional].filter(c=>c.artKey).map(c=>c.artKey));
 assert.equal(cities.length,229);
-assert.equal(keys.size,live.length,'도시마다 그림 이름이 하나씩');
+assert.equal(new Set(live.map(c=>c.artKey)).size,live.length,'도시마다 그림 이름이 하나씩');
 assert.ok(live.every(c=>/^[a-z0-9-]+$/.test(c.artKey||'')),'그림 이름은 영어 소문자');
 const files=fs.existsSync(dir)?fs.readdirSync(dir).filter(x=>x.endsWith('.webp')):[];
 for(const file of files){

@@ -1,0 +1,92 @@
+{
+  "slug": "night-sky",
+  "engine": "webkit",
+  "modes": [
+    "moon",
+    "stars"
+  ],
+  "cases": 8,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__skyModel",
+      "methods": [
+        "DAYS",
+        "SEASONS",
+        "DIPPER",
+        "CASS",
+        "state",
+        "analyseMoon",
+        "analyseStars",
+        "analyse",
+        "elongation",
+        "moonHA",
+        "where",
+        "polar",
+        "side",
+        "render",
+        "runSeconds",
+        "setMode",
+        "set",
+        "setProgress",
+        "runToEnd",
+        "tick",
+        "finish"
+      ]
+    }
+  ],
+  "paint": [],
+  "grades": [
+    {
+      "mode": "moon",
+      "results": [
+        {
+          "choice": "east",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        },
+        {
+          "choice": "south",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "west",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "hidden",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        }
+      ]
+    },
+    {
+      "mode": "stars",
+      "results": [
+        {
+          "choice": "up",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "right",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        },
+        {
+          "choice": "left",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "down",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        }
+      ]
+    }
+  ]
+}

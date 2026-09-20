@@ -83,7 +83,7 @@
 | [고2~3 DNA 추출과 유전 자료 분석](<E:/webprojects/class/learning/inquiry/science-lab/dna-gel/index.html>) | 12유전01-05, 12유전03-03, 12유전03-04 | 생물의 유전 추출·전기영동; 로그에 반비례라는 표현 수정 | DNA 복제·전사·번역 전체는 별도 |
 | [고1 자연 선택 — 부리와 털 색](<E:/webprojects/class/learning/inquiry/science-lab/natural-selection/index.html>) | 10통과2-01-02 | 고1 변이·자연선택; 분포 변화만으로 종 분화 확정 금지 | 실제 종 분화의 모든 기작을 재현하지 않음 |
 | [고2~3 생물의 분류와 계통수](<E:/webprojects/class/learning/inquiry/science-lab/phylogeny/index.html>) | 12생과03-04, 12생과03-05 | 생명과학 분류 단계·공통 조상·계통수 | 문 수준 전체 생물 다양성과 직접 계통수 구성은 별도 |
-| [초3 동물의 한살이와 먹이 관계](<E:/webprojects/class/learning/inquiry/science-lab/life-cycle/index.html>) | 4과04-01, 4과04-03, 4과14-02 | 초3 동물 한살이·먹이 | 실제 사육·장기 관찰은 별도 |
+| [초3 동물의 한살이와 먹이 관계](<E:/webprojects/class/learning/inquiry/science-lab/life-cycle/index.html>) | 4과04-01, 4과04-03, 4과14-02 | 초3 동물 한살이·먹이; 추가 실험: 한해살이·여러해살이 비교 (조건 조작·관찰 기록·확인 문제) | 실제 사육·장기 관찰은 별도 |
 | [초4 강낭콩·먹이 관계와 기후변화](<E:/webprojects/class/learning/inquiry/science-lab/living-environment/index.html>) | 4과04-02, 4과14-01, 4과14-02, 4과14-03, 4과16-02 | 초4 물/햇빛 생장과 먹이 관계; 여러 경로 먹이그물 추가; 추가 실험: 해수면 상승 피해 모형 (조건 조작·관찰 기록·확인 문제) | 정확한 개체 수 변화 예측·생태계 실측은 아님 |
 | [고2~3 개체군 성장과 방형구 조사](<E:/webprojects/class/learning/inquiry/science-lab/population/index.html>) | 12생과01-07 | 생명과학 개체군·환경수용력·방형구 | 군집 상대밀도·빈도·피도 전체 분석은 별도 |
 | [초5 지층·퇴적암·화석](<E:/webprojects/class/learning/inquiry/science-lab/rock-layers/index.html>) | 6과01-01, 6과01-02, 6과01-03 | 초5 지층·퇴적·화석; 조개/나뭇잎 특징으로 환경 추리 추가 | 그림은 실물 표본 사진·직접 본뜨기 활동과 다름 |

@@ -4,7 +4,7 @@ const all=Object.values(models).flat(),find=id=>all.find(s=>s.id===id),view=(id,
 function states(spec){let out=[{}];for(const f of spec.fields)out=out.flatMap(s=>f.items.map(o=>({...s,[f.key]:o.value})));return out;}
 test('required experiment source evidence, all valid choices and independent invariants',()=>{
  const source=fs.readFileSync(path.resolve(lab,'../../../references/moe/2022-revised-curriculum/extracted/09-science.txt'),'utf8');let n=0;
- assert.equal(all.length,24);
+ assert.equal(all.length,25);
  for(const[slug,specs]of Object.entries(models))for(const spec of specs){for(const code of spec.codes){assert(source.includes('['+code+']'));assert(map[slug].codes.includes(code),slug+' '+code);}for(const s of states(spec)){const r=spec.view(s);assert(r.svg&&r.text&&r.note&&r.check);assert(!/NaN|undefined|Infinity/.test(JSON.stringify(r)));assert.equal(r.check.choices.length,3);assert(r.check.answer>=0&&r.check.answer<3);for(const v of Object.values(r.metrics))if(typeof v==='number')assert(Number.isFinite(v));n++;}}
  assert.equal(view('spring',{mass:'0'}).metrics.extension,0);
  assert.equal(view('spring',{mass:'200'}).metrics.extension,2*view('spring',{mass:'100'}).metrics.extension);

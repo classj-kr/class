@@ -1,0 +1,71 @@
+{
+  "version": 10,
+  "rooms": {
+    "6752": {
+      "activeMission": null,
+      "progress": {},
+      "settings": {
+        "paused": false,
+        "locked": false,
+        "roomType": "free",
+        "started": true
+      },
+      "clock": {
+        "gameMinutes": 0
+      },
+      "discoveries": {
+        "상호작용검사": []
+      },
+      "hunts": {},
+      "host": {
+        "tokenHash": "ed949548e6dd14e1b36ffcc91c785f62c3cc0eb7c9a4ce1a8e6806ee1282dd44",
+        "createdAt": 1789911892762,
+        "lastActiveAt": 1789911892795
+      }
+    },
+    "9176": {
+      "activeMission": null,
+      "progress": {},
+      "settings": {
+        "paused": false,
+        "locked": false,
+        "roomType": "free",
+        "started": true
+      },
+      "clock": {
+        "gameMinutes": 0
+      },
+      "discoveries": {
+        "상호작용검사": []
+      },
+      "hunts": {},
+      "host": {
+        "tokenHash": "c4f73a93694ab9d81b339ba893bcce637a9752996b0a4a3a3e1dc161f57dba8c",
+        "createdAt": 1789912560076,
+        "lastActiveAt": 1789912560098
+      }
+    },
+    "9428": {
+      "activeMission": null,
+      "progress": {},
+      "settings": {
+        "paused": false,
+        "locked": false,
+        "roomType": "free",
+        "started": true
+      },
+      "clock": {
+        "gameMinutes": 0
+      },
+      "discoveries": {
+        "상호작용검사": []
+      },
+      "hunts": {},
+      "host": {
+        "tokenHash": "1d81255c933b738015dee2315c805c04204c2dd3d046dc41fac832cb958677f8",
+        "createdAt": 1789912963327,
+        "lastActiveAt": 1789912963378
+      }
+    }
+  }
+}

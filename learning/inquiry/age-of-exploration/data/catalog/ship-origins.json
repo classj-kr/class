@@ -543,15 +543,6 @@
       "sourceRow": 102,
       "sourceCityName": "르완다"
     },
-    "original_city_123": {
-      "name": "케이프타운",
-      "shipType": "coastal",
-      "shipScale": 0.9,
-      "role": "연안항",
-      "sourceShipyard": false,
-      "sourceRow": 103,
-      "sourceCityName": "케이프"
-    },
     "original_city_122": {
       "name": "소팔라",
       "shipType": "dhow",
@@ -1082,15 +1073,6 @@
       "sourceShipyard": true,
       "sourceRow": 218,
       "sourceCityName": "리우데자네이루"
-    },
-    "buenos_aires": {
-      "name": "부에노스아이레스",
-      "shipType": "canoe",
-      "shipScale": 0.9,
-      "role": "현지 수운 거점",
-      "sourceShipyard": false,
-      "sourceRow": 219,
-      "sourceCityName": "부에노스아이레스"
     },
     "kaminokuni": {
       "name": "가미노쿠니",
