@@ -22,7 +22,7 @@ SOURCE='https://theme.archives.go.kr/next/625/process/frontline.do'
 BLUE='#83b9d6'
 RED='#e0a096'
 REFERENCE=[[124.35,38],[129,38]]
-EXTENT=[120.5,32,133,44]
+EXTENT=[80,5,170,70]  # Beyond the app's pan limits; never expose a clipping frame.
 CARD_EXTENT=[123.4,33,131.6,43.15]
 
 

@@ -825,7 +825,7 @@
         "regions": [
           {
             "name": "고구려",
-            "area": 22.5544,
+            "area": 35.5481,
             "visibleArea": 1.149
           },
           {
@@ -850,7 +850,7 @@
         "regions": [
           {
             "name": "고구려",
-            "area": 17.0437,
+            "area": 30.0374,
             "visibleArea": 0.028
           },
           {
@@ -929,7 +929,7 @@
           },
           {
             "name": "당의 지배·고구려 유민",
-            "area": 69.5395,
+            "area": 2644.986,
             "visibleArea": 7.5395
           }
         ]
@@ -941,7 +941,7 @@
         "regions": [
           {
             "name": "발해",
-            "area": 79.4642,
+            "area": 79.9681,
             "visibleArea": 61.8303
           },
           {
@@ -951,17 +951,17 @@
           },
           {
             "name": "당",
-            "area": 66.2199,
+            "area": 645.5076,
             "visibleArea": 15.8044
           },
           {
             "name": "일본",
-            "area": 28.7959,
+            "area": 29.0668,
             "visibleArea": 18.8065
           },
           {
             "name": "거란·말갈 등",
-            "area": 130.1273,
+            "area": 1919.5103,
             "visibleArea": 28.292
           }
         ]
@@ -973,7 +973,7 @@
         "regions": [
           {
             "name": "발해",
-            "area": 25.2149,
+            "area": 79.9681,
             "visibleArea": 0.7507
           },
           {
@@ -983,17 +983,17 @@
           },
           {
             "name": "당",
-            "area": 117.1599,
+            "area": 645.5076,
             "visibleArea": 26.2136
           },
           {
             "name": "일본",
-            "area": 15.8482,
+            "area": 29.0668,
             "visibleArea": 7.8443
           },
           {
             "name": "거란·말갈 등",
-            "area": 15.7858,
+            "area": 1919.5103,
             "visibleArea": 0.0
           }
         ]
@@ -1020,7 +1020,7 @@
           },
           {
             "name": "발해",
-            "area": 22.4195,
+            "area": 80.4148,
             "visibleArea": 0.5732
           }
         ]
@@ -1037,7 +1037,7 @@
           },
           {
             "name": "요·여진 세력권",
-            "area": 105.4812,
+            "area": 2642.2293,
             "visibleArea": 21.6906
           },
           {
@@ -1057,7 +1057,7 @@
           },
           {
             "name": "요·여진 세력권",
-            "area": 105.4812,
+            "area": 2642.2293,
             "visibleArea": 21.6906
           },
           {
@@ -1079,7 +1079,7 @@
           },
           {
             "name": "요·여진 세력권",
-            "area": 105.4812,
+            "area": 2642.2293,
             "visibleArea": 21.6906
           }
         ]
@@ -1096,7 +1096,7 @@
           },
           {
             "name": "요·여진 세력권",
-            "area": 105.4812,
+            "area": 2642.2293,
             "visibleArea": 21.6906
           }
         ]
@@ -1113,7 +1113,7 @@
           },
           {
             "name": "원 직할지",
-            "area": 27.2204,
+            "area": 2645.307,
             "visibleArea": 0.0
           }
         ]
@@ -1128,7 +1128,7 @@
           },
           {
             "name": "원 직할지",
-            "area": 27.3938,
+            "area": 2645.4804,
             "visibleArea": 0.1734
           }
         ]
@@ -1145,7 +1145,7 @@
           },
           {
             "name": "원",
-            "area": 105.9031,
+            "area": 2642.6512,
             "visibleArea": 22.1125
           }
         ]
@@ -1160,7 +1160,7 @@
           },
           {
             "name": "원",
-            "area": 105.4812,
+            "area": 2642.2293,
             "visibleArea": 21.6906
           },
           {
@@ -1177,12 +1177,12 @@
         "regions": [
           {
             "name": "조선",
-            "area": 19.0705,
+            "area": 19.2439,
             "visibleArea": 9.4694
           },
           {
             "name": "명·여진 세력권",
-            "area": 99.2953,
+            "area": 2638.8326,
             "visibleArea": 18.5717
           }
         ]
@@ -1192,12 +1192,12 @@
         "regions": [
           {
             "name": "조선",
-            "area": 22.5536,
+            "area": 22.727,
             "visibleArea": 12.9526
           },
           {
             "name": "명·여진 세력권",
-            "area": 95.8121,
+            "area": 2635.3494,
             "visibleArea": 15.0885
           },
           {
@@ -1219,12 +1219,12 @@
           },
           {
             "name": "명",
-            "area": 41.4756,
+            "area": 916.7301,
             "visibleArea": 0.1293
           },
           {
             "name": "일본",
-            "area": 7.8443,
+            "area": 37.8612,
             "visibleArea": 0.064
           }
         ]
@@ -1241,17 +1241,17 @@
           },
           {
             "name": "청",
-            "area": 54.2591,
+            "area": 916.7301,
             "visibleArea": 1.3566
           },
           {
             "name": "일본",
-            "area": 8.7129,
+            "area": 37.8612,
             "visibleArea": 0.0685
           },
           {
             "name": "러시아",
-            "area": 7.0513,
+            "area": 1549.4299,
             "visibleArea": 0.0
           }
         ]
@@ -1268,17 +1268,17 @@
           },
           {
             "name": "청",
-            "area": 54.2591,
+            "area": 916.7301,
             "visibleArea": 1.3566
           },
           {
             "name": "일본",
-            "area": 8.7129,
+            "area": 37.8612,
             "visibleArea": 0.0685
           },
           {
             "name": "러시아",
-            "area": 7.0513,
+            "area": 1549.4299,
             "visibleArea": 0.0
           }
         ]
@@ -1290,17 +1290,22 @@
         "regions": [
           {
             "name": "조선",
-            "area": 19.2734,
+            "area": 22.727,
             "visibleArea": 3.4236
           },
           {
             "name": "청",
-            "area": 4.505,
+            "area": 916.7301,
             "visibleArea": 0.0
           },
           {
             "name": "일본",
-            "area": 4.324,
+            "area": 37.8612,
+            "visibleArea": 0.0
+          },
+          {
+            "name": "러시아",
+            "area": 1549.4299,
             "visibleArea": 0.0
           }
         ]
@@ -1317,7 +1322,7 @@
           },
           {
             "name": "청",
-            "area": 185.2904,
+            "area": 916.3146,
             "visibleArea": 70.0745
           },
           {
@@ -1327,12 +1332,12 @@
           },
           {
             "name": "러시아 제국",
-            "area": 27.9649,
+            "area": 1549.4299,
             "visibleArea": 0.0
           },
           {
             "name": "일본",
-            "area": 5.3583,
+            "area": 37.8612,
             "visibleArea": 0.0
           }
         ]
@@ -1344,22 +1349,22 @@
         "regions": [
           {
             "name": "조선 · 일제강점기",
-            "area": 22.5536,
+            "area": 22.727,
             "visibleArea": 13.3087
           },
           {
             "name": "중화민국",
-            "area": 141.3687,
+            "area": 916.7301,
             "visibleArea": 57.9766
           },
           {
             "name": "일본",
-            "area": 9.9986,
+            "area": 37.8612,
             "visibleArea": 0.0
           },
           {
             "name": "러시아 제국",
-            "area": 50.014,
+            "area": 1549.4299,
             "visibleArea": 7.1533
           }
         ]
@@ -1371,17 +1376,22 @@
         "regions": [
           {
             "name": "조선 · 일제강점기",
-            "area": 12.7353,
+            "area": 22.727,
             "visibleArea": 0.5574
           },
           {
             "name": "중화민국",
-            "area": 110.0141,
+            "area": 916.7301,
             "visibleArea": 28.6166
           },
           {
             "name": "일본",
-            "area": 2.6362,
+            "area": 37.8612,
+            "visibleArea": 0.0
+          },
+          {
+            "name": "러시아 내전기",
+            "area": 1549.4299,
             "visibleArea": 0.0
           }
         ]
@@ -1393,17 +1403,22 @@
         "regions": [
           {
             "name": "조선 · 일제강점기",
-            "area": 14.5036,
+            "area": 22.727,
             "visibleArea": 1.5386
           },
           {
             "name": "중화민국",
-            "area": 57.3255,
+            "area": 916.7301,
             "visibleArea": 6.2382
           },
           {
+            "name": "일본",
+            "area": 37.8612,
+            "visibleArea": 0.0
+          },
+          {
             "name": "러시아 내전기",
-            "area": 13.0608,
+            "area": 1549.4299,
             "visibleArea": 0.189
           }
         ]
@@ -1415,22 +1430,22 @@
         "regions": [
           {
             "name": "조선 · 일제강점기",
-            "area": 22.4794,
+            "area": 22.727,
             "visibleArea": 11.2483
           },
           {
             "name": "중화민국",
-            "area": 129.9695,
+            "area": 916.7301,
             "visibleArea": 27.4883
           },
           {
             "name": "일본",
-            "area": 30.1227,
+            "area": 37.8612,
             "visibleArea": 24.1241
           },
           {
             "name": "소련",
-            "area": 0.0295,
+            "area": 1549.4299,
             "visibleArea": 0.0
           }
         ]
@@ -1442,27 +1457,27 @@
         "regions": [
           {
             "name": "중화민국",
-            "area": 5.2292,
+            "area": 770.2205,
             "visibleArea": 0.0
           },
           {
             "name": "만주국 · 일본 괴뢰국",
-            "area": 124.5957,
+            "area": 146.5096,
             "visibleArea": 51.6711
           },
           {
             "name": "조선 · 일제강점기",
-            "area": 19.0109,
+            "area": 22.727,
             "visibleArea": 7.4153
           },
           {
             "name": "일본",
-            "area": 0.0219,
+            "area": 37.8612,
             "visibleArea": 0.0
           },
           {
             "name": "소련",
-            "area": 42.387,
+            "area": 1549.4299,
             "visibleArea": 1.9737
           }
         ]
@@ -1474,8 +1489,28 @@
         "regions": [
           {
             "name": "중화민국",
-            "area": 230.0141,
+            "area": 770.2205,
             "visibleArea": 80.0
+          },
+          {
+            "name": "만주국 · 일본 괴뢰국",
+            "area": 146.5096,
+            "visibleArea": 0.0
+          },
+          {
+            "name": "조선 · 일제강점기",
+            "area": 22.727,
+            "visibleArea": 0.0
+          },
+          {
+            "name": "일본",
+            "area": 37.8612,
+            "visibleArea": 0.0
+          },
+          {
+            "name": "소련",
+            "area": 1549.4299,
+            "visibleArea": 0.0
           }
         ]
       }
@@ -1486,8 +1521,28 @@
         "regions": [
           {
             "name": "중화민국",
-            "area": 264.4738,
+            "area": 770.2205,
             "visibleArea": 88.0
+          },
+          {
+            "name": "만주국 · 일본 괴뢰국",
+            "area": 146.5096,
+            "visibleArea": 0.0
+          },
+          {
+            "name": "조선 · 일제강점기",
+            "area": 22.727,
+            "visibleArea": 0.0
+          },
+          {
+            "name": "일본",
+            "area": 37.8612,
+            "visibleArea": 0.0
+          },
+          {
+            "name": "소련",
+            "area": 1549.4299,
+            "visibleArea": 0.0
           }
         ]
       }
@@ -1508,12 +1563,12 @@
           },
           {
             "name": "중국",
-            "area": 79.1015,
+            "area": 916.7301,
             "visibleArea": 8.2222
           },
           {
             "name": "일본",
-            "area": 10.0644,
+            "area": 37.8612,
             "visibleArea": 0.6413
           }
         ]
@@ -1533,12 +1588,12 @@
           },
           {
             "name": "중국",
-            "area": 79.1015,
+            "area": 916.7301,
             "visibleArea": 8.2222
           },
           {
             "name": "일본",
-            "area": 10.0644,
+            "area": 37.8612,
             "visibleArea": 0.6413
           }
         ]
