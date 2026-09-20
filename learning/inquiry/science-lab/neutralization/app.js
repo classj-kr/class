@@ -186,6 +186,7 @@ document.addEventListener('DOMContentLoaded', () => {
         volOutput.textContent = `${addedML().toFixed(0)} mL`;
         stageBadge.textContent = `${addedML().toFixed(0)} mL · pH ${a.pH.toFixed(2)}`;
         dataRows(a);
+        if (!resultContent.hidden) showResult();
         return a;
     }
 
@@ -229,6 +230,17 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!playing) lastT = null;
         } else { rafId = null; lastT = null; }
     }
+
+    function stopPlayback() {
+        playing = false;
+        if (rafId !== null) cancelAnimationFrame(rafId);
+        rafId = null; lastT = null; animV = null;
+        playBtn.textContent = '한 방울씩 넣기';
+    }
+    document.querySelectorAll('.control-panel input[type="range"]').forEach(el => el.addEventListener('input', stopPlayback, true));
+    document.querySelectorAll('.control-panel button').forEach(el => {
+        if (el !== playBtn && el !== resetBtn) el.addEventListener('click', stopPlayback, true);
+    });
 
     playBtn.addEventListener('click', () => {
         playing = !playing;

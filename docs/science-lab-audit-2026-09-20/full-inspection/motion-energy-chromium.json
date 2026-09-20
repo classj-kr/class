@@ -36,20 +36,7 @@
       ]
     }
   ],
-  "paint": [
-    {
-      "mode": "energy",
-      "items": [
-        {
-          "tag": "line",
-          "cls": "expect-line",
-          "fill": "rgb(0, 0, 0)",
-          "stroke": "none",
-          "html": "<line class=\"expect-line\" x1=\"62\" y1=\"69.7\" x2=\"424\" y2=\"69.7\"></line>"
-        }
-      ]
-    }
-  ],
+  "paint": [],
   "grades": [
     {
       "mode": "incline",

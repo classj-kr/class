@@ -43,12 +43,12 @@
         {
           "choice": "water",
           "visible": true,
-          "text": "예상이 맞았습니다."
+          "text": "아직 가열 전입니다. 가열한 뒤 온도 변화를 비교하세요."
         },
         {
           "choice": "iron",
-          "visible": false,
-          "text": ""
+          "visible": true,
+          "text": "아직 가열 전입니다. 가열한 뒤 온도 변화를 비교하세요."
         }
       ]
     },

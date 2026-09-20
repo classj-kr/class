@@ -408,6 +408,9 @@ document.addEventListener('DOMContentLoaded', () => {
         render();
     }));
     predictionButtons.forEach(button => button.addEventListener('click', () => {
+        running = false;
+        if (rafId !== null) cancelAnimationFrame(rafId);
+        rafId = null; lastT = null; runBtn.textContent = '순환 시작';
         prediction = button.dataset.prediction; window.scienceInvalidatePrediction?.();
         predictionButtons.forEach(item => item.classList.toggle('selected', item === button));
     }));

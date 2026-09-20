@@ -1,0 +1,102 @@
+{
+  "slug": "molecule-shape",
+  "engine": "webkit",
+  "modes": [
+    "shape",
+    "polar",
+    "mix"
+  ],
+  "cases": 24,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__shapeModel",
+      "methods": [
+        "MOLS",
+        "SHAPE_LIST",
+        "POLAR_LIST",
+        "SOLVENTS",
+        "SOLUTES",
+        "state",
+        "analyse",
+        "render",
+        "runSeconds",
+        "setMode",
+        "set",
+        "setProgress",
+        "runToEnd",
+        "tick",
+        "finish"
+      ]
+    }
+  ],
+  "paint": [],
+  "grades": [
+    {
+      "mode": "shape",
+      "results": [
+        {
+          "choice": "linear",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "trigonal",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "tetra",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "lone",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        }
+      ]
+    },
+    {
+      "mode": "polar",
+      "results": [
+        {
+          "choice": "polar",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        },
+        {
+          "choice": "cancel",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "nonbond",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        }
+      ]
+    },
+    {
+      "mode": "mix",
+      "results": [
+        {
+          "choice": "mix",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        },
+        {
+          "choice": "partly",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "no",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        }
+      ]
+    }
+  ]
+}

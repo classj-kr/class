@@ -167,7 +167,7 @@ document.addEventListener('DOMContentLoaded', () => {
         ERAS.forEach(e => {
             const x1 = xOf(dayOf(e.from)), x2 = xOf(dayOf(e.to));
             out += `<rect class="era" fill="${e.color}" x="${x1.toFixed(1)}" y="${Y}" width="${(x2 - x1).toFixed(1)}" height="${H}"/>`;
-            if (x2 - x1 > 60) out += `<text class="era-text" x="${((x1 + x2) / 2).toFixed(1)}" y="${Y + H / 2 + 3}" text-anchor="middle">${e.name} 시대 — 세균과 작은 생물만</text>`;
+            if (x2 - x1 > 60) out += `<text class="era-text" x="${((x1 + x2) / 2).toFixed(1)}" y="${Y + H / 2 + 3}" text-anchor="middle">${e.name}</text>`;
         });
         let acc = 0;
         MONTHS.forEach((len, m) => { const x = xOf(acc); out += `<line class="tick" x1="${x.toFixed(1)}" y1="${Y + H}" x2="${x.toFixed(1)}" y2="${Y + H + 5}"/><text class="axis-text" x="${(xOf(acc + len / 2)).toFixed(1)}" y="${Y + H + 16}" text-anchor="middle">${m + 1}월</text>`; acc += len; });

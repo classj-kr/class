@@ -1,0 +1,59 @@
+{
+  "slug": "collision",
+  "engine": "webkit",
+  "modes": [
+    "initial"
+  ],
+  "cases": 13,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__collideModel",
+      "methods": [
+        "TRACK_Y",
+        "X0",
+        "PX_PER_M",
+        "CART_M",
+        "START1",
+        "START2",
+        "E_OF",
+        "analyse",
+        "freshSim",
+        "step",
+        "render",
+        "check",
+        "setKind",
+        "setM1",
+        "setM2",
+        "setV1",
+        "runToEnd",
+        "getSim",
+        "tick"
+      ]
+    }
+  ],
+  "paint": [],
+  "grades": [
+    {
+      "mode": "initial",
+      "results": [
+        {
+          "choice": "forward",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "stop",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        },
+        {
+          "choice": "back",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        }
+      ]
+    }
+  ]
+}

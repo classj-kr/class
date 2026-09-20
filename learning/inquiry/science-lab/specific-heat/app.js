@@ -221,7 +221,10 @@ document.addEventListener('DOMContentLoaded', () => {
         deltaOutput.textContent = `${dT} ℃`;
     }
 
-    const render = () => (mode === 'heat' ? renderHeat() : renderExpand());
+    const render = () => {
+        mode === 'heat' ? renderHeat() : renderExpand();
+        if (!resultContent.hidden) showResult();
+    };
 
     function frame(now) {
         const t = now / 1000;
@@ -242,6 +245,13 @@ document.addEventListener('DOMContentLoaded', () => {
         resultContent.hidden = false;
         if (mode === 'heat') {
             const t = elapsed(), m = mass();
+            if (t <= 0) {
+                labelA.textContent = '현재 온도'; labelB.textContent = '가열 시간';
+                valueA.textContent = '모두 ' + T0 + ' ℃'; valueB.textContent = '0초';
+                predictionResult.textContent = '아직 가열 전입니다. 가열한 뒤 온도 변화를 비교하세요.';
+                explanation.textContent = '처음 온도와 질량이 같은 물질에 같은 양의 열을 줍니다.';
+                return;
+            }
             const ranked = [...SUBS].sort((a, b) => tempOf(b, t, m) - tempOf(a, t, m));
             labelA.textContent = '가장 뜨거운 물질';
             labelB.textContent = '가장 덜 오른 물질';
@@ -271,6 +281,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 `실제 변화는 몇 mm 정도라 화면에서는 ${EXAGGERATION}배 확대해 그렸습니다.`;
         }
     }
+
+    function stopPlayback() {
+        playing = false;
+        if (rafId !== null) cancelAnimationFrame(rafId);
+        rafId = null; lastT = null; animTime = null;
+        playBtn.textContent = mode === 'heat' ? '가열 시작' : '결과 확인하기';
+    }
+    document.querySelectorAll('.control-panel input[type="range"]').forEach(el => el.addEventListener('input', stopPlayback, true));
+    document.querySelectorAll('.control-panel button').forEach(el => {
+        if (el !== playBtn && el !== resetBtn) el.addEventListener('click', stopPlayback, true);
+    });
 
     playBtn.addEventListener('click', () => {
         if (mode === 'expand') { showResult(); return; }

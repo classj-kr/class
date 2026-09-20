@@ -37,17 +37,17 @@
         {
           "choice": "swell",
           "visible": true,
-          "text": "예상과 다른 결과입니다."
+          "text": "변화를 관찰 중입니다. 20분 뒤의 부피로 예상을 확인하세요."
         },
         {
           "choice": "same",
-          "visible": false,
-          "text": ""
+          "visible": true,
+          "text": "변화를 관찰 중입니다. 20분 뒤의 부피로 예상을 확인하세요."
         },
         {
           "choice": "shrink",
           "visible": true,
-          "text": "예상과 다른 결과입니다."
+          "text": "변화를 관찰 중입니다. 20분 뒤의 부피로 예상을 확인하세요."
         }
       ]
     }

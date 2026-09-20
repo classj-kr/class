@@ -45,8 +45,8 @@
         },
         {
           "choice": "cw",
-          "visible": false,
-          "text": ""
+          "visible": true,
+          "text": "예상과 다른 결과입니다. 북쪽 하늘에서는 시계 반대 방향으로 돕니다."
         }
       ]
     }

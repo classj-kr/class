@@ -51,8 +51,8 @@
         },
         {
           "choice": "center",
-          "visible": false,
-          "text": ""
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
         },
         {
           "choice": "hcl",

@@ -669,20 +669,7 @@
           ]
         }
       ],
-      "paint": [
-        {
-          "mode": "energy",
-          "items": [
-            {
-              "tag": "line",
-              "cls": "expect-line",
-              "fill": "rgb(0, 0, 0)",
-              "stroke": "none",
-              "html": "<line class=\"expect-line\" x1=\"62\" y1=\"69.7\" x2=\"424\" y2=\"69.7\"></line>"
-            }
-          ]
-        }
-      ],
+      "paint": [],
       "grades": [
         {
           "mode": "incline",
@@ -1007,20 +994,7 @@
           ]
         }
       ],
-      "paint": [
-        {
-          "mode": "force",
-          "items": [
-            {
-              "tag": "line",
-              "cls": "ruler",
-              "fill": "rgb(0, 0, 0)",
-              "stroke": "none",
-              "html": "<line class=\"ruler\" x1=\"96\" y1=\"196\" x2=\"152.0\" y2=\"196\"></line>"
-            }
-          ]
-        }
-      ],
+      "paint": [],
       "grades": [
         {
           "mode": "force",
@@ -2356,12 +2330,12 @@
             {
               "choice": "water",
               "visible": true,
-              "text": "예상이 맞았습니다."
+              "text": "아직 가열 전입니다. 가열한 뒤 온도 변화를 비교하세요."
             },
             {
               "choice": "iron",
-              "visible": false,
-              "text": ""
+              "visible": true,
+              "text": "아직 가열 전입니다. 가열한 뒤 온도 변화를 비교하세요."
             }
           ]
         },
@@ -3999,8 +3973,8 @@
             },
             {
               "choice": "center",
-              "visible": false,
-              "text": ""
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
             },
             {
               "choice": "hcl",
@@ -4185,116 +4159,7 @@
           ]
         }
       ],
-      "paint": [
-        {
-          "mode": "flame",
-          "items": [
-            {
-              "tag": "rect",
-              "cls": "burner",
-              "fill": "rgb(0, 0, 0)",
-              "stroke": "none",
-              "html": "<rect class=\"burner\" x=\"243\" y=\"168\" width=\"14\" height=\"24\" rx=\"2\"></rect>"
-            },
-            {
-              "tag": "line",
-              "cls": "wire",
-              "fill": "rgb(0, 0, 0)",
-              "stroke": "none",
-              "html": "<line class=\"wire\" x1=\"14.0\" y1=\"86.0\" x2=\"84.0\" y2=\"146.0\"></line>"
-            },
-            {
-              "tag": "circle",
-              "cls": "wire-loop",
-              "fill": "rgb(0, 0, 0)",
-              "stroke": "none",
-              "html": "<circle class=\"wire-loop\" cx=\"84.0\" cy=\"150.0\" r=\"4.5\"></circle>"
-            },
-            {
-              "tag": "rect",
-              "cls": "handle",
-              "fill": "rgb(0, 0, 0)",
-              "stroke": "none",
-              "html": "<rect class=\"handle\" x=\"0.0\" y=\"74.0\" width=\"18\" height=\"16\" rx=\"3\" transform=\"rotate(41 9.0 82.0)\"></rect>"
-            },
-            {
-              "tag": "rect",
-              "cls": "spec-bg",
-              "fill": "rgb(0, 0, 0)",
-              "stroke": "none",
-              "html": "<rect class=\"spec-bg\" x=\"60\" y=\"28\" width=\"360\" height=\"42\" rx=\"3\"></rect>"
-            },
-            {
-              "tag": "line",
-              "cls": "ruler",
-              "fill": "rgb(0, 0, 0)",
-              "stroke": "none",
-              "html": "<line class=\"ruler\" x1=\"348.0\" y1=\"160\" x2=\"348.0\" y2=\"166\"></line>"
-            }
-          ]
-        },
-        {
-          "mode": "ion",
-          "items": [
-            {
-              "tag": "rect",
-              "cls": "supply",
-              "fill": "rgb(0, 0, 0)",
-              "stroke": "none",
-              "html": "<rect class=\"supply\" x=\"350\" y=\"14\" width=\"80\" height=\"34\" rx=\"6\"></rect>"
-            },
-            {
-              "tag": "path",
-              "cls": "lead lead-plus",
-              "fill": "rgb(0, 0, 0)",
-              "stroke": "none",
-              "html": "<path class=\"lead lead-plus\" d=\"M366,48 L366,56 L66,56 L66,102\"></path>"
-            },
-            {
-              "tag": "path",
-              "cls": "lead lead-minus",
-              "fill": "rgb(0, 0, 0)",
-              "stroke": "none",
-              "html": "<path class=\"lead lead-minus\" d=\"M414,48 L414,64 L394,64 L394,102\"></path>"
-            },
-            {
-              "tag": "rect",
-              "cls": "clip clip-plus",
-              "fill": "rgb(0, 0, 0)",
-              "stroke": "none",
-              "html": "<rect class=\"clip clip-plus\" x=\"61\" y=\"102\" width=\"10\" height=\"40\" rx=\"2\"></rect>"
-            },
-            {
-              "tag": "rect",
-              "cls": "clip clip-minus",
-              "fill": "rgb(0, 0, 0)",
-              "stroke": "none",
-              "html": "<rect class=\"clip clip-minus\" x=\"389\" y=\"102\" width=\"10\" height=\"40\" rx=\"2\"></rect>"
-            },
-            {
-              "tag": "rect",
-              "cls": "strip",
-              "fill": "rgb(0, 0, 0)",
-              "stroke": "none",
-              "html": "<rect class=\"strip\" x=\"80\" y=\"104\" width=\"300\" height=\"36\" rx=\"3\"></rect>"
-            },
-            {
-              "tag": "line",
-              "cls": "mid-mark",
-              "fill": "rgb(0, 0, 0)",
-              "stroke": "none",
-              "html": "<line class=\"mid-mark\" x1=\"230\" y1=\"98\" x2=\"230\" y2=\"146\"></line>"
-            },
-            {
-              "tag": "line",
-              "cls": "ruler",
-              "fill": "rgb(0, 0, 0)",
-              "stroke": "none",
-              "html": "<line class=\"ruler\" x1=\"380.0\" y1=\"142\" x2=\"380.0\" y2=\"145\"></line>"
-            }
-          ]
-        }
-      ],
+      "paint": [],
       "grades": [
         {
           "mode": "flame",
@@ -4598,8 +4463,8 @@
             },
             {
               "choice": "at",
-              "visible": false,
-              "text": ""
+              "visible": true,
+              "text": "예상이 맞았습니다."
             },
             {
               "choice": "after",
@@ -5339,17 +5204,17 @@
             {
               "choice": "swell",
               "visible": true,
-              "text": "예상과 다른 결과입니다."
+              "text": "변화를 관찰 중입니다. 20분 뒤의 부피로 예상을 확인하세요."
             },
             {
               "choice": "same",
-              "visible": false,
-              "text": ""
+              "visible": true,
+              "text": "변화를 관찰 중입니다. 20분 뒤의 부피로 예상을 확인하세요."
             },
             {
               "choice": "shrink",
               "visible": true,
-              "text": "예상과 다른 결과입니다."
+              "text": "변화를 관찰 중입니다. 20분 뒤의 부피로 예상을 확인하세요."
             }
           ]
         }
@@ -8022,8 +7887,8 @@
             },
             {
               "choice": "same",
-              "visible": false,
-              "text": ""
+              "visible": true,
+              "text": "예상이 맞았습니다."
             },
             {
               "choice": "more",
@@ -8523,8 +8388,8 @@
             },
             {
               "choice": "cw",
-              "visible": false,
-              "text": ""
+              "visible": true,
+              "text": "예상과 다른 결과입니다. 북쪽 하늘에서는 시계 반대 방향으로 돕니다."
             }
           ]
         }

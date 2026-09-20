@@ -250,7 +250,10 @@ document.addEventListener('DOMContentLoaded', () => {
         gasTimeOutput.textContent = `${t.toFixed(0)} 초`;
     }
 
-    const render = () => (mode === 'diff' ? renderDiff() : renderGas());
+    const render = () => {
+        mode === 'diff' ? renderDiff() : renderGas();
+        if (!resultContent.hidden) showResult();
+    };
     const clearResult = () => { resultEmpty.hidden = false; resultContent.hidden = true; };
 
     function showResult() {
@@ -300,6 +303,17 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!playing) lastT = null;
         } else { rafId = null; lastT = null; }
     }
+
+    function stopPlayback() {
+        playing = false;
+        if (rafId !== null) cancelAnimationFrame(rafId);
+        rafId = null; lastT = null; animT = null;
+        playBtn.textContent = '시간 흘려보내기';
+    }
+    document.querySelectorAll('.control-panel input[type="range"]').forEach(el => el.addEventListener('input', stopPlayback, true));
+    document.querySelectorAll('.control-panel button').forEach(el => {
+        if (el !== playBtn && el !== resetBtn) el.addEventListener('click', stopPlayback, true);
+    });
 
     playBtn.addEventListener('click', () => {
         playing = !playing;

@@ -35,20 +35,7 @@
       ]
     }
   ],
-  "paint": [
-    {
-      "mode": "force",
-      "items": [
-        {
-          "tag": "line",
-          "cls": "ruler",
-          "fill": "rgb(0, 0, 0)",
-          "stroke": "none",
-          "html": "<line class=\"ruler\" x1=\"96\" y1=\"196\" x2=\"152.0\" y2=\"196\"></line>"
-        }
-      ]
-    }
-  ],
+  "paint": [],
   "grades": [
     {
       "mode": "force",

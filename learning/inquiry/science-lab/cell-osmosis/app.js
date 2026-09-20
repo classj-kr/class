@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const v = burst ? BURST_V : volumeAt(t, c, kind);
         let label, tone;
         if (kind === 'animal') {
-            if (burst) { label = '터짐 (용혈)'; tone = '#dc2626'; }
+            if (burst) { label = '터짐'; tone = '#dc2626'; }
             else if (v > 1.02) { label = '부풀어 오름'; tone = '#0284c7'; }
             else if (v < 0.98) { label = '쭈그러듦'; tone = '#ea580c'; }
             else { label = '정상'; tone = '#059669'; }
@@ -116,7 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const pw = W * k, ph = H * k;
             out += `<rect class="gap-fill" x="${CX - W / 2}" y="${CY - H / 2}" width="${W}" height="${H}" rx="6"/>`;
             out += `<g transform="translate(${(CX - 50 * k).toFixed(1)}, ${(CY - 50 * k).toFixed(1)}) scale(${k.toFixed(3)})">` +
-                   `<rect class="protoplast membrane" x="18" y="18" width="64" height="64" rx="10"/>` +
+                   `<rect class="protoplast membrane" x="${50 - W / 2}" y="${50 - H / 2}" width="${W}" height="${H}" rx="6"/>` +
                    `<path class="vacuole" d="M 38 28 C 64 26 76 34 76 56 C 76 76 58 80 38 78 C 24 76 22 62 24 48 C 26 34 32 30 38 28 Z"/>` +
                    `<path class="nucleus" d="M 74 66 C 80 66 84 70 84 76 C 84 82 80 86 74 86 C 68 86 64 82 64 76 C 64 70 68 66 74 66 Z"/></g>`;
             out += `<rect class="wall" x="${CX - W / 2}" y="${CY - H / 2}" width="${W}" height="${H}" rx="6"/>`;
@@ -149,7 +149,7 @@ document.addEventListener('DOMContentLoaded', () => {
         out += `<text class="state-label" fill="${s.tone}" x="358" y="60">${s.label}</text>`;
         out += `<text class="part-label" x="358" y="78">부피 ${(s.v * 100).toFixed(0)}%</text>`;
         out += `<text class="part-label" x="358" y="96">바깥 농도 ${c.toFixed(2)}</text>`;
-        out += `<text class="part-label" x="358" y="114">세포 속 1.00</text>`;
+        out += `<text class="part-label" x="358" y="114">처음 세포 속 1.00</text>`;
         mainGroup.innerHTML = out;
         return s;
     }
@@ -181,7 +181,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             out += `<path class="trace${kind === cell ? '' : ' dim'}" style="stroke:${col}" d="M${pts.join('L')}"/>`;
         });
-        out += `<text class="zone-text" fill="#6fbf73" x="${gx(0.35).toFixed(1)}" y="${(gy(1) - 8).toFixed(1)}">식물세포 — 세포벽이 100%에서 멈춤</text>`;
+        out += `<text class="zone-text" fill="#6fbf73" x="${gx(0.35).toFixed(1)}" y="${(gy(1) - 8).toFixed(1)}">식물세포 — 처음부터 팽팽한 모형</text>`;
         out += `<circle class="trace-dot" cx="${gx(conc()).toFixed(1)}" cy="${gy(Math.min(2.2, s.v)).toFixed(1)}" r="5" fill="#d97706"/>`;
         graphGroup.innerHTML = out;
     }
@@ -194,9 +194,10 @@ document.addEventListener('DOMContentLoaded', () => {
         stageBadge.textContent = `${cell === 'animal' ? '동물세포' : '식물세포'} · ${s.label}`;
         const dir = conc() < 0.98 ? '세포 안으로' : conc() > 1.02 ? '세포 밖으로' : '양쪽이 균형';
         dataNote.innerHTML =
-            `<div class="data-row"><span class="data-name">농도 비교</span><span class="data-val">바깥 ${conc().toFixed(2)} vs 세포 속 1.00 → 물이 ${dir}</span></div>` +
+            `<div class="data-row"><span class="data-name">농도 비교</span><span class="data-val">바깥 ${conc().toFixed(2)} vs 처음 세포 속 1.00 → 물이 ${dir}</span></div>` +
             `<div class="data-row"><span class="data-name">최종 부피</span><span class="data-val">1.00 ÷ ${conc().toFixed(2)} = ${((C_IN0 * V0) / conc()).toFixed(2)}${cell === 'plant' && (C_IN0 * V0) / conc() > 1 ? ' → 세포벽이 1.00으로 제한' : ''}</span></div>` +
             `<div class="data-row${s.burst ? '' : ' match'}"><span class="data-name">지금 상태</span><span class="data-val">부피 ${(s.v * 100).toFixed(0)}% · ${s.label}</span></div>`;
+        if (!resultContent.hidden) showResult();
         return s;
     }
 
@@ -209,20 +210,22 @@ document.addEventListener('DOMContentLoaded', () => {
         valueA.textContent = `${(s.v * 100).toFixed(0)} %`;
         valueB.textContent = s.label;
         const actual = s.v > 1.02 ? 'swell' : s.v < 0.98 ? 'shrink' : 'same';
-        predictionResult.textContent = !prediction
+        predictionResult.textContent = elapsed() < 20
+            ? '변화를 관찰 중입니다. 20분 뒤의 부피로 예상을 확인하세요.'
+            : !prediction
             ? '다음에는 결과를 먼저 예상해 보세요.'
             : prediction === actual ? '예상이 맞았습니다.' : '예상과 다른 결과입니다.';
         const c = conc();
-        let s2 = `물은 농도가 낮은 쪽에서 높은 쪽으로 이동합니다. 바깥이 ${c.toFixed(2)}, 세포 속이 1.00 이므로 `;
+        let s2 = `물은 농도가 낮은 쪽에서 높은 쪽으로 이동합니다. 바깥이 ${c.toFixed(2)}, 처음 세포 속이 1.00 이므로 `;
         s2 += c < 0.98 ? '물이 세포 안으로 들어옵니다. ' : c > 1.02 ? '물이 세포 밖으로 빠져나갑니다. ' : '물의 출입이 균형을 이룹니다. ';
         if (cell === 'animal') {
             s2 += s.burst
-                ? `동물세포는 세포벽이 없어 부피가 ${(BURST_V * 100).toFixed(0)}%를 넘자 터졌습니다. 이것을 용혈이라고 합니다.`
+                ? `동물세포는 세포벽이 없어 부피가 ${(BURST_V * 100).toFixed(0)}%를 넘자 터졌습니다. 적혈구가 이렇게 터지는 현상을 용혈이라고 합니다.`
                 : `동물세포는 세포벽이 없어 부피가 ${(s.v * 100).toFixed(0)}% 까지 그대로 변합니다.`;
         } else {
             s2 += s.v < 0.98
                 ? `식물세포는 세포질이 줄어들어도 세포벽은 그대로여서, 세포막이 세포벽에서 떨어지는 원형질 분리가 일어납니다.`
-                : `식물세포는 단단한 세포벽이 있어 물이 들어와도 100%를 넘지 못하고 팽팽해질 뿐 터지지 않습니다.`;
+                : `이 모형의 식물세포는 처음부터 팽팽한 상태이며, 세포벽이 팽창을 제한합니다. 실제 세포의 부피 변화는 처음 상태와 팽압에 따라 달라집니다.`;
         }
         explanation.textContent = s2;
     }
@@ -240,6 +243,17 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!playing) lastT = null;
         } else { rafId = null; lastT = null; }
     }
+
+    function stopPlayback() {
+        playing = false;
+        if (rafId !== null) cancelAnimationFrame(rafId);
+        rafId = null; lastT = null; animT = null;
+        playBtn.textContent = '시간 흘려보내기';
+    }
+    document.querySelectorAll('.control-panel input[type="range"]').forEach(el => el.addEventListener('input', stopPlayback, true));
+    document.querySelectorAll('.control-panel button').forEach(el => {
+        if (el !== playBtn && el !== resetBtn) el.addEventListener('click', stopPlayback, true);
+    });
 
     playBtn.addEventListener('click', () => {
         playing = !playing;

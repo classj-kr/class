@@ -145,6 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         resultAngle.textContent = `${(starRotation() % 360).toFixed(1)}°`;
         resultMoon.textContent = moonriseLabel(days());
+        if (!resultContent.hidden) showResult();
     }
 
     function showResult() {
@@ -176,6 +177,17 @@ document.addEventListener('DOMContentLoaded', () => {
             rafId = requestAnimationFrame(frame);
         } else { rafId = null; lastT = null; }
     }
+
+    function stopPlayback() {
+        playing = false;
+        if (rafId !== null) cancelAnimationFrame(rafId);
+        rafId = null; lastT = null; animHours = null;
+        playBtn.textContent = '시간 흘려보내기';
+    }
+    document.querySelectorAll('.control-panel input[type="range"]').forEach(el => el.addEventListener('input', stopPlayback, true));
+    document.querySelectorAll('.control-panel button').forEach(el => {
+        if (el !== playBtn && el !== resetBtn) el.addEventListener('click', stopPlayback, true);
+    });
 
     playBtn.addEventListener('click', () => {
         playing = !playing;

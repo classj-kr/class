@@ -88,3 +88,17 @@
 
 .run-row { display: grid; grid-template-columns: 1.8fr 1fr; gap: 8px; align-items: stretch; margin-top: 10px; }
 .run-row .run-button, .run-row .reset-button { width: 100%; margin: 0; }
+
+/* Every apparatus part has explicit paint; open wire paths must never fill. */
+.burner { fill: #64748b; stroke: #334155; stroke-width: 1.5; }
+.wire, .wire-loop { fill: none; stroke: #94a3b8; stroke-width: 2.5; }
+.handle { fill: #92400e; stroke: #78350f; stroke-width: 1.2; }
+.spec-bg { fill: #0f172a; stroke: #334155; stroke-width: 1; }
+.ruler { stroke: #64748b; stroke-width: 1; }
+.supply { fill: #f1f5f9; stroke: #64748b; stroke-width: 1.5; }
+.lead { fill: none; stroke-width: 2.5; stroke-linejoin: round; }
+.lead-plus { stroke: #dc2626; } .lead-minus { stroke: #2563eb; }
+.clip { stroke-width: 1.5; } .clip-plus { fill: #fecaca; stroke: #dc2626; }
+.clip-minus { fill: #bfdbfe; stroke: #2563eb; }
+.strip { fill: #eff8ff; stroke: #94a3b8; stroke-width: 1; }
+.mid-mark { stroke: #64748b; stroke-width: 1; stroke-dasharray: 3 3; }

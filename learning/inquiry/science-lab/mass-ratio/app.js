@@ -208,7 +208,10 @@ document.addEventListener('DOMContentLoaded', () => {
             `<div class="data-row match"><span class="data-name">종류</span><span class="data-val">${r.kind} 반응 — 열을 ${r.delta > 0 ? '내놓아 주위가 따뜻해집니다' : '흡수해 주위가 차가워집니다'}</span></div>`;
     }
 
-    const render = () => (mode === 'mass' ? renderMass() : renderHeat());
+    const render = () => {
+        mode === 'mass' ? renderMass() : renderHeat();
+        if (!resultContent.hidden) showResult();
+    };
     const clearResult = () => { resultEmpty.hidden = false; resultContent.hidden = true; };
 
     function showResult() {
@@ -257,6 +260,17 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!playing) lastT = null;
         } else { rafId = null; lastT = null; }
     }
+
+    function stopPlayback() {
+        playing = false;
+        if (rafId !== null) cancelAnimationFrame(rafId);
+        rafId = null; lastT = null; animT = null;
+        runBtn.textContent = mode === 'mass' ? '결과 확인하기' : '반응 시작';
+    }
+    document.querySelectorAll('.control-panel input[type="range"]').forEach(el => el.addEventListener('input', stopPlayback, true));
+    document.querySelectorAll('.control-panel button').forEach(el => {
+        if (el !== runBtn && el !== resetBtn) el.addEventListener('click', stopPlayback, true);
+    });
 
     runBtn.addEventListener('click', () => {
         if (mode === 'mass') { showResult(); return; }

@@ -267,7 +267,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const at = ionAt(p, a);
         const X0 = 80, X1 = 380, Y = 104, H = 36, MID = 230;
         const pxPerMm = (X1 - X0) / (STRIP_M * 1000);
-        const plusX = state.leftPlus ? X0 - 14 : X1 + 14, minusX = state.leftPlus ? X1 + 14 : X0 - 14;
+        const plusX = state.leftPlus ? X0 : X1, minusX = state.leftPlus ? X1 : X0;
         let out = '';
 
         // power supply and wires

@@ -54,3 +54,8 @@ body .view-title{font-size:14px;font-weight:600}
 
 /* School devices: summaries and answer labels are full-sized touch targets. */
 body .quiz-heading{min-height:44px}body .quiz-options label{min-height:44px;box-sizing:border-box;display:flex;align-items:center;gap:8px}body .quiz-options input{flex:none}body button,body summary{touch-action:manipulation}body .control-panel button{min-width:44px}
+
+/* Light caption cards and dark astronomical stages need different ink. */
+.sky-stage .stage-caption, .moon-stage .stage-caption { color: #334155; }
+.sky-stage .rate-name { color: #cbd5e1; }
+.sky-stage .rate-value { color: #f8fafc; }

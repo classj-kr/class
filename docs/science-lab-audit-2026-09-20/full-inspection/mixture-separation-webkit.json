@@ -1,0 +1,30 @@
+{
+  "slug": "mixture-separation",
+  "engine": "webkit",
+  "modes": [
+    "initial"
+  ],
+  "cases": 4,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__mixtureModel",
+      "methods": [
+        "SUBSTANCES",
+        "remaining",
+        "separated",
+        "setMesh",
+        "reset",
+        "grainCount"
+      ]
+    }
+  ],
+  "paint": [],
+  "grades": [
+    {
+      "mode": "initial",
+      "results": []
+    }
+  ]
+}

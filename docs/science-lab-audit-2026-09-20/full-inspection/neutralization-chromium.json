@@ -40,8 +40,8 @@
         },
         {
           "choice": "at",
-          "visible": false,
-          "text": ""
+          "visible": true,
+          "text": "예상이 맞았습니다."
         },
         {
           "choice": "after",

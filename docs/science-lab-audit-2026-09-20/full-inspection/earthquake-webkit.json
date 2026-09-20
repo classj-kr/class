@@ -1,0 +1,18 @@
+{
+  "slug": "earthquake",
+  "engine": "webkit",
+  "modes": [
+    "initial"
+  ],
+  "cases": 1,
+  "errors": [],
+  "issues": [],
+  "models": [],
+  "paint": [],
+  "grades": [
+    {
+      "mode": "initial",
+      "results": []
+    }
+  ]
+}
