@@ -86,3 +86,60 @@
 
 .run-row { display: grid; grid-template-columns: 1.8fr 1fr; gap: 8px; align-items: stretch; margin-top: 10px; }
 .run-row .run-button, .run-row .reset-button { width: 100%; margin: 0; }
+
+/* Biological observations: one detailed specimen, then selectable stages. */
+.life-stage .life-focus {display:grid;grid-template-columns:minmax(180px,1.1fr) minmax(160px,1fr);gap:22px;align-items:center;}
+.life-stage .life-focus .main-svg{width:100%;max-width:320px;min-width:0;margin:auto;}
+.life-stage .life-feature h3 {font-size:18px;line-height:1.4;margin:0 0 12px;color:#254c39;}
+.life-stage .life-feature p {font-size:16px;line-height:1.75;margin:0 0 12px;word-break:keep-all;}
+.life-stage .life-food {padding-top:10px;border-top:1px solid #dae5d6;}
+.life-food span {color:#607667;margin-right:8px;}
+.life-motion-control{display:flex;justify-content:space-between;gap:12px;align-items:center;color:#526b5f;font-size:14px;}
+.life-motion-control button{min-height:44px;min-width:108px;padding:8px 12px;border:1px solid #a7bdb0;border-radius:9px;color:#325d46;background:#fff;font:inherit;cursor:pointer;}
+.life-stage .life-stages{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;}
+.life-stage .life-stages:has(button:nth-child(3):last-child){grid-template-columns:repeat(3,minmax(0,1fr));}
+.life-stages button{position:relative;min-width:0;border:1px solid #cbd8cc;border-radius:12px;background:#fff;color:#33483a;padding:7px;font:inherit;font-size:14px;cursor:pointer;}
+.life-stages button:not(:last-child)::after{content:'→';position:absolute;right:0;top:42%;z-index:1;color:#667d6b;background:#fff;border-radius:50%;}
+.life-stages button[aria-pressed=true]{border:2px solid #518362;background:#f0f6e9;padding:6px;}
+.life-stages .miniature{display:block;width:100%;max-height:84px;margin:auto;}
+.life-stages button span{display:block;min-height:40px;align-content:center;line-height:1.35;}
+.life-timeline{display:flex;gap:14px;align-items:center;font-size:14px;color:#526b5f;}
+.life-timeline progress{flex:1;min-width:60px;height:6px;accent-color:#638957;}
+.life-stage .life-cycle-note{margin:0;color:#526b5f;font-size:15px;line-height:1.6;}
+.life-food-chain summary{min-height:44px;align-content:center;cursor:pointer;color:#325d46;font-size:15px;}
+.life-food-chain .graph-svg{max-width:460px;}
+.life-specimen{overflow:visible;}
+.life-wing{transform-box:view-box;transform-origin:100px 96px;animation:life-wingbeat .8s ease-in-out infinite;}
+.life-hover{animation:life-hover 3s ease-in-out infinite;}
+.life-crawl{animation:life-crawl 5s ease-in-out infinite alternate;}
+.life-chew{transform-box:fill-box;transform-origin:20% 60%;animation:life-chew 1.2s ease-in-out infinite;}
+.life-proleg{transform-box:fill-box;transform-origin:50% 0;animation:life-leg 1.6s ease-in-out infinite alternate;}
+.life-proleg.leg-1{animation-delay:-.8s;}
+.life-mantis{transform-box:fill-box;transform-origin:50% 100%;animation:life-sway 4s ease-in-out infinite;}
+.life-foreleg{transform-box:fill-box;transform-origin:50% 50%;animation:life-grasp 3s ease-in-out infinite;}
+.life-swim{animation:life-swim 4s ease-in-out infinite alternate;}
+.life-tail{transform-box:view-box;transform-origin:101px 102px;animation:life-tail .65s ease-in-out infinite alternate;}
+.life-kick{transform-box:fill-box;transform-origin:0 50%;animation:life-grasp 1.3s ease-in-out infinite;}
+.life-hop{transform-box:fill-box;transform-origin:50% 100%;animation:life-hop 4s ease-in-out infinite;}
+.life-peck-head{transform-box:view-box;transform-origin:94px 104px;animation:life-peck 3s ease-in-out infinite;}
+.life-motion-paused [data-life-motion],.life-motion-paused .life-proleg,.miniature [data-life-motion],.miniature .life-proleg{animation-play-state:paused!important;}
+@keyframes life-wingbeat{0%,100%{transform:scaleX(1)}50%{transform:scaleX(.28)}}
+@keyframes life-hover{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+@keyframes life-crawl{from{transform:translateX(-10px)}to{transform:translateX(8px)}}
+@keyframes life-chew{0%,50%,100%{transform:rotate(0)}25%,75%{transform:rotate(8deg)}}
+@keyframes life-leg{from{transform:rotate(-12deg)}to{transform:rotate(16deg)}}
+@keyframes life-sway{0%,100%{transform:rotate(-2deg)}50%{transform:rotate(2deg)}}
+@keyframes life-grasp{0%,100%{transform:scaleX(1)}50%{transform:scaleX(.75)}}
+@keyframes life-swim{from{transform:translateX(-7px)}to{transform:translateX(7px)}}
+@keyframes life-tail{from{transform:rotate(-10deg)}to{transform:rotate(10deg)}}
+@keyframes life-hop{0%,55%,100%{transform:translateY(0) scaleY(1)}62%{transform:scaleY(.85)}76%{transform:translateY(-16px) scaleY(1.07)}90%{transform:translateY(0) scaleY(.9)}}
+@keyframes life-peck{0%,45%,100%{transform:rotate(0)}60%,76%{transform:rotate(-50deg)}68%,84%{transform:rotate(-38deg)}}
+@media(min-width:821px) and (max-width:1100px){.life-stage .life-focus{gap:14px;}.life-stage .life-feature h3{font-size:17px;}}
+@media(max-width:600px){.life-stage .life-focus{grid-template-columns:1fr;}.life-stage .life-focus .main-svg{max-width:230px;}.life-stage .life-stages{gap:6px;}}
+
+.life-stage .life-focus .main-svg{background:#f5f7e9;border-radius:20px;}
+.control-panel .pick-buttons.cols4{grid-template-columns:repeat(2,minmax(0,1fr));}
+.control-panel .pick-buttons button{word-break:keep-all;padding:10px 6px;font-size:14px;}
+.control-panel .prediction-buttons.three{grid-template-columns:1fr;}
+.control-panel .prediction-buttons button{word-break:keep-all;min-height:44px;padding:9px;}
+.control-panel .water-standard{border:0;background:none;border-radius:0;padding:0;box-shadow:none;font-size:14px;}

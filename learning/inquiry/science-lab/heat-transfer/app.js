@@ -155,11 +155,11 @@ document.addEventListener('DOMContentLoaded', () => {
             g.setAttribute('opacity', drop > 150 ? '0' : '1');
         });
 
-        flame.hidden = !heating;
+        flame.style.display = heating ? '' : 'none';
         const fallen = beadFallAt.filter(v => v !== null).length;
         resultEndTemp.textContent = `${Math.round(temps[N - 1])} ℃`;
         resultBeads.textContent = `${fallen}개`;
-        materialBadge.textContent = `${MATERIALS[material].label} · ${heating ? '가열 중' : '가열 전'}`;
+        materialBadge.textContent = `${MATERIALS[material].label} · ${heating ? '가열 중' : simTime > 0 ? '가열 멈춤' : '가열 전'}`;
     }
 
     function frame(now) {

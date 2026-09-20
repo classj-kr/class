@@ -155,7 +155,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const colour = ratio > 1.02 ? row.colour : ratio < 0.98 ? '#ea580c' : '#475569';
             out += `<text class="axis-text" x="${GRAPH.x0 - 6}" y="${(y + 4).toFixed(1)}" text-anchor="end">${row.name}</text>`;
             out += `<rect class="bar" x="${GRAPH.x0}" y="${y - 5}" width="${Math.max(2, gx(ratio) - GRAPH.x0).toFixed(1)}" height="13" rx="3" fill="${colour}" opacity=".82"/>`;
-            const label = `${ratio.toFixed(2)}배 · ${value.toFixed(row.digits ?? 0)} ${row.unit}`;
+            const label = `${ratio.toFixed(2)}배`;
             const flip = gx(ratio) > GRAPH.x1 - 110;
             out += `<text class="bar-text" style="fill:${flip ? '#ffffff' : colour}" x="${(gx(ratio) + (flip ? -6 : 6)).toFixed(1)}" y="${(y + 5).toFixed(1)}"${flip ? ' text-anchor="end"' : ''}>${label}</text>`;
         });

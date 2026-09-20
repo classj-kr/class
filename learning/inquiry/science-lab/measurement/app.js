@@ -245,9 +245,9 @@ document.addEventListener('DOMContentLoaded', () => {
         ['old', 'mid', 'now'].forEach((k, i) => {
             const d = defs[k], x = 24 + i * 140, shown = p > 0 && year >= d.year - 1, active = k === state.era;
             out += `<rect class="card ${active && p >= 1 ? 'active' : ''}" x="${x}" y="30" width="130" height="86" rx="6" opacity="${shown ? 1 : 0.35}"/>`;
-            out += `<text class="card-title" x="${x + 8}" y="46">${ERAS[k].label} · ${d.year}년</text>`;
+            out += `<text class="card-title" x="${x + 8}" y="46">${ERAS[k].label}</text>`;
             if (shown) {
-                wrap(d.text, 13).slice(0, 3).forEach((ln, j) => { out += `<text class="card-text" x="${x + 8}" y="${62 + j * 13}">${ln}</text>`; });
+                out += `<text class="card-text" x="${x + 8}" y="70">${d.year}년</text>`;
                 if (p >= 1 || !active) out += `<text class="card-text" style="fill:${d.cat === 'constant' ? '#059669' : d.cat === 'artifact' ? '#d97706' : '#0284c7'}" x="${x + 8}" y="108">${CAT_LABEL[d.cat]}</text>`;
             } else out += `<text class="card-text" x="${x + 8}" y="62">?</text>`;
             out += `<line class="tick major" x1="${xOf(d.year).toFixed(1)}" y1="${TY - 10}" x2="${xOf(d.year).toFixed(1)}" y2="${TY}"/>`;

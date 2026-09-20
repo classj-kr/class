@@ -8,7 +8,7 @@
     <meta name="description" content="배추흰나비와 사마귀, 개구리, 닭이 자라는 차례를 따라가 보고 무엇을 먹는지, 먹이 사슬에서 어디에 있는지 알아보는 초등 과학 모의실험">
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
     <link rel="stylesheet" href="styles.css?v=5">
-    <link rel="stylesheet" href="life-visual.css?v=5">
+    <link rel="stylesheet" href="life-visual.css?v=6">
     <link rel="stylesheet" href="quiz.css?v=3">
     <link rel="stylesheet" href="../exam-scope.css?v=1">
     <link rel="stylesheet" href="../lab-ui.css?v=4">
@@ -34,15 +34,15 @@
         <div class="experiment-layout">
             <section class="panel control-panel" aria-labelledby="control-title">
                 <h2 id="control-title">실험 조건</h2>
-                <p class="water-standard">걸리는 날수는 따뜻한 봄철을 기준으로 삼았습니다</p>
+                <p class="water-standard">성장 기간은 예시이며, 종류와 온도에 따라 달라집니다.</p>
 
                 <fieldset class="pick-field">
                     <legend>어떤 동물을 볼까요</legend>
                     <div class="pick-buttons cols4">
-                        <button type="button" data-animal="butterfly">배추흰나비<small>번데기가 있음</small></button>
-                        <button type="button" data-animal="mantis">사마귀<small>번데기가 없음</small></button>
-                        <button type="button" data-animal="frog">개구리<small>물에서 뭍으로</small></button>
-                        <button type="button" data-animal="chick">닭<small>알을 낳는 새</small></button>
+                        <button type="button" data-animal="butterfly">배추흰나비</button>
+                        <button type="button" data-animal="mantis">사마귀</button>
+                        <button type="button" data-animal="frog">개구리</button>
+                        <button type="button" data-animal="chick">닭</button>
                     </div>
                 </fieldset>
 
@@ -58,7 +58,7 @@
                     <div class="prediction-buttons three">
                         <button type="button" data-prediction="p1">번데기를 거친다</button>
                         <button type="button" data-prediction="p2">번데기 없이 모습이 크게 바뀐다</button>
-                        <button type="button" data-prediction="p3">처음부터 어른과 닮았다</button>
+                        <button type="button" data-prediction="p3">알에서 나온 모습이 어른과 닮았다</button>
                     </div>
                 </fieldset>
 
@@ -72,7 +72,7 @@
                     <p id="resultEmpty">동물을 고르고 키워 보세요.</p>
                     <div id="resultContent" hidden>
                         <div class="result-numbers">
-                            <article><span>어른이 되기까지</span><strong id="valueA">-</strong></article>
+                            <article><span>어른이 되기까지 · 기간 예시</span><strong id="valueA">-</strong></article>
                             <article><span>지금 먹는 것</span><strong id="valueB">-</strong></article>
                         </div>
                         <p class="prediction-result" id="predictionResult"></p>
@@ -85,18 +85,21 @@
                 <div class="stage-heading"><h2>관찰</h2><span id="stageBadge">-</span></div>
                 <p class="stage-verdict" id="stageVerdict"></p>
 
-                <div class="stage-views">
-                    <svg class="main-svg" viewBox="0 0 460 214" aria-hidden="true">
-                        <g id="mainGroup"></g>
-                    </svg>
-                    <svg class="graph-svg" viewBox="0 0 460 196" aria-hidden="true">
-                        <g id="graphGroup"></g>
-                    </svg>
+                <div class="stage-views life-observation">
+                    <div class="life-focus">
+                        <svg class="main-svg" viewBox="0 0 200 200" role="img" aria-label="선택한 성장 단계의 생김새와 움직임" aria-describedby="lifeFeature"><g id="mainGroup"></g></svg>
+                        <div id="lifeFeature" class="life-feature"></div>
+                    </div>
+                    <div class="life-motion-control"><span>확대 모형 · 성장 과정은 압축 재생</span><button id="lifeMotionBtn" type="button" aria-pressed="false">움직임 멈추기</button></div>
+                    <div id="lifeStages" class="life-stages" aria-label="성장 단계 선택"></div>
+                    <div class="life-timeline"><progress id="lifeProgress" max="1" value="0" aria-label="예시 성장 기간"></progress><span id="lifeDay"></span></div>
+                    <p id="lifeCycleNote" class="life-cycle-note"></p>
+                    <details class="life-food-chain"><summary>먹이 관계 비교</summary><svg class="graph-svg" viewBox="0 0 460 196" aria-label="먹이가 되는 생물에서 먹는 생물로 이어지는 먹이 사슬"><g id="graphGroup"></g></svg></details>
                 </div>
 
                 <div class="stage-readout" id="stageReadout"></div>
                 <p class="stage-note" id="stageNote"></p>
-                <p class="stage-caption" id="stageCaption">같은 동물이라도 어릴 때와 어른일 때 먹는 것이 다를 수 있습니다. 사는 곳도 달라지기 때문입니다.</p>
+                <p class="stage-caption" id="stageCaption">같은 동물이라도 어릴 때와 어른일 때 먹는 것이 다를 수 있습니다. 몸의 구조와 생활 방식이 달라지기 때문입니다.</p>
                 <div class="data-note" id="dataNote"></div>
             </section>
         </div>
@@ -167,9 +170,10 @@
             </div>
         </details>
     </main>
-    <script src="app.js?v=dd4b080bc6a1"></script>
+    <script src="life-observation-art.js?v=8baf623cca30"></script>
+    <script src="app.js?v=7e53b8f94485"></script>
     <script src="../curriculum-map.js?v=3f7264a2b189"></script>
-    <script src="../exam-scope.js?v=ab08f0f36ca8"></script>
+    <script src="../exam-scope.js?v=1249bc531e88"></script>
     <script src="../lab-ui.js?v=c295eda1bdab"></script>
 </body>
 </html>
