@@ -42,6 +42,7 @@
   let mapDetailsVisible = false;
   let session = { questions: [], answers: [], index: 0, answered: false, mode: "theme" };
   let mainMap, questionMap;
+  let study, lessonMapLayer;
   let mainBoundaryLayer, mainThemeLayer, mainLabelLayer;
   let questionBoundaryLayer, questionThemeLayer, questionLabelLayer, questionFocusLayer;
   const zoomSyncHandlers = new WeakMap();
@@ -54,6 +55,8 @@
   function init() {
     initMaps();
     bindControls();
+    lessonMapLayer = L.layerGroup().addTo(mainMap);
+    study = window.KoreaStudy.create({ focus: focusLesson, focusSpot: focusStudySpot, practice: startLessonPractice, progress: readProgress });
     const hashTheme = (location.hash || "").replace("#", "");
     renderTheme(themes[hashTheme] ? hashTheme : currentTheme);
     renderProgress();
@@ -357,6 +360,33 @@
     drawBoundaries(mainMap, mainBoundaryLayer, true);
     fitKorea(mainMap);
     updatePracticeButton();
+    study.show(themeKey);
+  }
+
+  function focusLesson(lesson) {
+    lessonMapLayer.clearLayers();
+    if (!lesson) return;
+    drawThemeOnMap(mainMap, mainThemeLayer, themes[currentTheme], { interactive: true, skipFeatures: true, baseOnly: true });
+    drawLabels(mainMap, mainLabelLayer, { admin: false, city: false, annotations: [] });
+    lesson.spots.forEach((spot, index) => {
+      const marker = L.marker([spot.lat, spot.lng], { pane: "studyMarkers", icon: L.divIcon({ className: "lesson-pin-wrap", html: '<span class="lesson-pin">'+(index+1)+'</span>', iconSize:[32,32],iconAnchor:[16,16] }) });
+      marker.bindTooltip(spot.name, { permanent:true, direction:"top", offset:[0,-17], className:"study-tooltip" });
+      marker.on("click", () => focusStudySpot(spot));
+      marker.addTo(lessonMapLayer);
+    });
+    if (lesson.spots.length > 1) mainMap.fitBounds(L.latLngBounds(lesson.spots.map(s=>[s.lat,s.lng])), {padding:[65,65],maxZoom:8,animate:false});
+    else mainMap.setView([lesson.spots[0].lat,lesson.spots[0].lng],7,{animate:false});
+  }
+
+  function focusStudySpot(spot) {
+    mainMap.setView([spot.lat,spot.lng],8,{animate:false});
+    if (matchMedia("(max-width: 1050px)").matches) $(".map-stage").scrollIntoView({block:"start",behavior:"smooth"});
+  }
+
+  function startLessonPractice(pool) {
+    if (!pool.length) return;
+    session = { mode:"lesson", questions:shuffle(pool).map(shuffleQuestionOptions), answers:[],index:0,answered:false };
+    openPracticeDialog();
   }
 
   function renderFeatureButtons(features) {
@@ -978,6 +1008,16 @@
     caption.classList.remove("is-hint");
     renderAnswerOptions(question);
 
+    const diagram = dataset.lessons.find(l => l.id === question.diagram);
+    $("#questionDiagram").hidden = !diagram;
+    $(".question-map-wrap").classList.toggle("has-diagram", !!diagram);
+    if (diagram) {
+      $("#questionMap").hidden = true;
+      $("#questionGraph").hidden = true;
+      window.KoreaVisuals.render($("#questionDiagram"), diagram, { quiz:true });
+      caption.textContent = "A·B 표식과 자료를 근거로 답을 고르세요.";
+      return;
+    }
     const graphStations = graphStationsOf(question);
     $("#questionGraph").hidden = !graphStations;
     $("#questionMap").hidden = !!graphStations;
@@ -1187,6 +1227,7 @@
     $("#showHint").disabled = true;
     $("#questionProgressBar").style.width = `${((session.index + 1) / session.questions.length) * 100}%`;
     showAnswerLocation(question);
+    study.refresh();
     $("#nextQuestion").focus();
   }
 
@@ -1202,6 +1243,11 @@
   }
 
   function showAnswerLocation(question) {
+    if (question.diagram) {
+      window.KoreaVisuals.render($("#questionDiagram"), dataset.lessons.find(l=>l.id===question.diagram), { quiz:true, revealed:true });
+      $("#questionMapCaption").textContent = "개념 이름과 정답 근거를 같은 그림에서 확인하세요.";
+      return;
+    }
     const caption = $("#questionMapCaption");
     caption.classList.remove("is-hint");
     const graphStations = graphStationsOf(question);

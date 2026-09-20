@@ -1,0 +1,67 @@
+(function () {
+  'use strict';
+  const esc = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const colors = ['#176c78','#bb5934','#7153a2'];
+  const text = (x,y,s,extra='') => `<text x="${x}" y="${y}" ${extra}>${esc(s)}</text>`;
+  const badge = (x,y,s,i=0) => `<circle cx="${x}" cy="${y}" r="17" fill="${colors[i]}"/><text x="${x}" y="${y+6}" text-anchor="middle" fill="white" font-weight="800">${s}</text>`;
+  const arrow = (x,y,tx,ty,c='#176c78') => {
+    const a = Math.atan2(ty-y,tx-x), dx=Math.cos(a),dy=Math.sin(a);
+    return `<path d="M${x} ${y}L${tx} ${ty}" fill="none" stroke="${c}" stroke-width="4"/><path d="M${tx-12*dx+6*dy} ${ty-12*dy-6*dx}L${tx} ${ty}L${tx-12*dx-6*dy} ${ty-12*dy+6*dx}" fill="none" stroke="${c}" stroke-width="3"/>`;
+  };
+  const path = (d,fill='#c9d5b1',stroke='#6f8666') => `<path d="${d}" fill="${fill}" stroke="${stroke}" stroke-width="2"/>`;
+  const box = (x,y,w,h,fill='#e3eef0') => `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="10" fill="${fill}"/>`;
+  const house = (x,y) => `${path(`M${x} ${y}h20v20h-20z`,'#fff8e5','#916a4d')}${path(`M${x-4} ${y}l14 -12 14 12z`,'#b66f51','#916a4d')}`;
+  function art(kind) {
+    switch (kind) {
+      case 'relief': return `${box(12,173,496,44,'#cce6ee')}${path('M40 173L90 166 150 149 215 145 275 119 332 106 390 51 434 147 465 173Z')}${text(24,228,'서해')}${text(455,228,'동해')}${text(344,28,'산맥·분수계')}${arrow(345,122,150,164)}${arrow(412,93,455,161,colors[1])}${badge(185,107,'A')}${badge(455,99,'B',1)}`;
+      case 'river': return `${path('M20 196L86 39 147 106 196 78 266 148 350 190 490 205Z')}${path('M91 83Q129 93 128 128T199 151T248 165T321 187L390 211','none','#2586b1')}${box(352,195,156,43,'#cce6ee')}${path('M328 184L439 231 367 231Z','#e1c98e','#c1a671')}${arrow(188,103,315,160)}${badge(142,80,'A')}${badge(403,171,'B',1)}${text(22,232,'산지')}${text(454,223,'바다')}`;
+      case 'floodplain': return `${path('M12 155L155 155 226 113 260 133 270 191 310 191 320 133 352 113 416 155 508 155V218H12Z','#ddcd9f','#a89468')}${path('M263 151H317L310 191H270Z','#91cedf','#4c9eb9')}${house(213,95)}${path('M67 143h64m-64 -7h64m-64 -7h64','none','#77955e')}${badge(232,57,'A')}${badge(97,85,'B',1)}${text(266,233,'하천')}${text(178,34,'상대적으로 높음')}${text(35,57,'낮은 땅')}${text(355,200,'범람 방향')}${arrow(325,95,413,124,'#3d87aa')}`;
+      case 'coast': return `${box(12,45,155,165,'#cce6ee')}${box(182,45,155,165,'#cce6ee')}${box(352,45,155,165,'#cce6ee')}${path('M12 45H85Q106 95 86 148L105 210H12Z')}${path('M78 95Q101 121 79 146Q57 120 78 95','#cce6ee','#87b3bd')}${path('M182 45H237L269 88 247 120 282 163 250 210H182Z')}${path('M242 62L293 91 274 124 312 167 270 210H250L282 163 247 120 269 88Z','#dec991','#bcad81')}${path('M352 45H437L405 77 452 91 411 123 454 150 399 174 431 210H352Z')}${[[470,70],[467,121],[480,181],[443,192]].map(([x,y])=>`<ellipse cx="${x}" cy="${y}" rx="9" ry="6" fill="#a9bb93"/>`).join('')}${badge(88,23,'A')}${badge(259,23,'B',1)}${badge(430,23,'C',2)}${text(55,236,'단조로움')}${text(218,236,'넓은 갯벌')}${text(390,236,'많은 섬')}`;
+      case 'volcano': return `${path('M18 189Q100 175 144 129Q192 177 247 189Z')}${path('M277 189L372 68 391 93 413 68 503 189Z','#d6c7ae','#8e7a62')}${badge(130,78,'A')}${badge(391,30,'B',1)}`;
+      case 'karst': return `${path('M15 77H125Q159 143 195 77H505V218H15Z','#e3d9bd','#b3a582')}${[40,80,120,200,240,280,320,360,400,440,480].map(x=>`<path d="M${x} 88v35m-20 0h40m-20 0v30" stroke="#c2b79c" fill="none"/>`).join('')}${path('M67 198Q78 138 128 172T207 158T317 173T452 149L475 198Z','#f6fafb','#8b9182')}${arrow(166,25,166,88,'#398bad')}${badge(224,40,'A')}${badge(287,183,'B',1)}${text(335,66,'물이 스며듦')}`;
+      case 'basin': return `${path('M13 206L62 74 104 171H172L217 65 250 206Z')}${path('M277 206L321 139H417L449 80 505 206Z')}${badge(137,130,'A')}${badge(369,90,'B',1)}${text(58,233,'산으로 둘러싸인 바닥')}${text(300,233,'높은 곳의 완만한 땅')}`;
+      case 'temperature': {
+        const a=[-5,-2,5,12,18,23,26,27,21,14,6,-2],b=[2,3,7,12,17,21,24,25,21,16,10,5];
+        const x=i=>48+i*39,y=t=>202-(t+10)*4.5;
+        return `${[-10,0,10,20,30].map(t=>`<path d="M48 ${y(t)}H480" stroke="#d7e0dd"/>${text(15,y(t)+5,String(t))}`).join('')}${text(12,23,'℃')}${[a,b].map((v,i)=>`<polyline points="${v.map((t,n)=>`${x(n)},${y(t)}`).join(' ')}" fill="none" stroke="${colors[i]}" stroke-width="4" ${i?'stroke-dasharray="7 4"':''}/>`).join('')}${[0,3,6,9,11].map(i=>text(x(i)-9,231,`${i+1}월`)).join('')}${badge(88,74,'A')}${badge(310,166,'B',1)}${text(112,80,'실선')}${text(334,172,'점선')}`;
+      }
+      case 'monsoon': return `${box(20,56,190,132,'#d9dec4')}${box(310,56,190,132,'#cce6ee')}${text(70,90,'대륙')}${text(377,90,'바다')}${arrow(180,115,343,115)}${arrow(343,163,180,163,colors[1])}${badge(260,70,'A')}${badge(260,208,'B',1)}`;
+      case 'foehn': return `${path('M28 217L260 80 492 217Z')}${arrow(63,144,210,54)}${arrow(293,54,457,145,colors[1])}${box(105,29,100,38,'#d7e5ea')}${text(129,55,'구름')}${[120,141,162,183].map(x=>path(`M${x} 75l-9 16`,'none','#368bb2')).join('')}${badge(91,194,'A')}${badge(429,194,'B',1)}${text(28,114,'상승·냉각')}${text(374,114,'하강·가열')}`;
+      case 'heat': return `${[45,83,123,167,203,240,276,316,359,402,444].map((x,i)=>box(x,210-[22,26,40,68,82,98,83,72,44,28,22][i],24,[22,26,40,68,82,98,83,72,44,28,22][i],'#bacbd0')).join('')}${path('M26 126Q101 132 160 83T262 50Q326 49 374 92T498 126','none','#b65a35')}${badge(263,27,'A')}${badge(67,82,'B',1)}${text(28,235,'교외')}${text(226,235,'도시 중심')}${text(457,235,'교외')}`;
+      case 'waters': return `${box(15,53,85,139,'#d7dec0')}${box(100,53,125,139,'#a1d3df')}${box(225,53,280,139,'#daedf1')}${text(30,128,'육지')}${badge(163,114,'A')}${badge(365,114,'B',1)}${text(81,30,'기선')}${text(179,224,'12해리')}${text(388,224,'200해리 이내')}${arrow(100,40,490,40)}${path('M100 45V200','none','#344f56')}`;
+      case 'longitude': return `${box(20,40,480,165)}${path('M140 40V205M366 40V205','none','#698e98')}${badge(140,95,'A')}${badge(366,95,'B',1)}${text(88,158,'동경 127.5°')}${text(321,158,'동경 135°')}${text(151,231,'360° ÷ 24시간 = 15°/시간')}`;
+      case 'statmaps': return `${[0,1,2,3].map(i=>box(35+i%2*80,50+Math.floor(i/2)*70,70,60,['#d9eeeb','#a8d2cb','#6dadab','#246d78'][i])).join('')}${badge(215,115,'A')}${[[322,65],[460,70],[385,180]].map(([x,y])=>`<circle cx="${x}" cy="${y}" r="16" fill="#b5c8c6"/>`).join('')}${arrow(335,70,440,70)}${arrow(453,86,399,164,colors[1])}${path('M330 80L377 165','none','#176c78')}${badge(475,180,'B',1)}${text(33,225,'옅음 → 진함')}${text(317,225,'방향 + 굵기')}`;
+      case 'flow': return `${box(20,65,174,130)}${box(326,65,174,130,'#f4e6d9')}${badge(107,40,'A')}${badge(413,40,'B',1)}${text(53,116,'일자리·교육')}${text(55,151,'기회 집중')}${text(362,116,'청장년층')}${text(366,151,'순유출')}${arrow(319,128,207,128)}${text(200,197,'인구 이동')}`;
+      case 'pyramid': {
+        // Each sex's bars are percentages of the whole population; each model sums to 100%.
+        const vals=[[16,29,5],[6,29,15]],centers=[125,395],scale=2.6;
+        return vals.map((v,i)=>`${badge(centers[i],25,String.fromCharCode(65+i),i)}${v.map((n,j)=>`<rect x="${centers[i]-n*scale}" y="${169-j*51}" width="${n*scale}" height="30" fill="${colors[i]}"/><rect x="${centers[i]+2}" y="${169-j*51}" width="${n*scale}" height="30" fill="${colors[i]}" opacity=".65"/>`).join('')}${path(`M${centers[i]} 60V206`,'none','#82969b')}${[-30,0,30].map(n=>text(centers[i]+n*scale,228,`${Math.abs(n)}%`,'text-anchor="middle"')).join('')}`).join('')+`${text(260,90,'65세+','text-anchor="middle"')}${text(260,141,'15~64','text-anchor="middle"')}${text(260,192,'0~14','text-anchor="middle"')}`;
+      }
+      case 'city': return `${box(30,76,160,135)}${[55,92,129].map((x,i)=>box(x,144-i*16,28,67+i*16,'#7e9da4')).join('')}${house(358,145)}${house(401,145)}${house(444,145)}${arrow(338,115,206,115)}${badge(110,38,'A')}${badge(403,38,'B',1)}${text(214,90,'낮의 통근')}${text(73,236,'업무·상업')}${text(378,205,'주거')}`;
+      case 'village': return `${path('M15 153L75 50 143 153Z')}${path('M110 153L150 85 200 153Z')}${path('M20 219Q140 174 239 216','none','#3186aa')}${house(93,161)}${house(132,164)}${[0,1,2,3,4].map(i=>house(321+i%3*40,113+Math.floor(i/3)*45)).join('')}${badge(235,83,'A')}${badge(405,50,'B',1)}${text(30,239,'산·마을·하천')}${text(336,220,'가옥 분포')}`;
+      case 'port': return `${box(15,140,220,70,'#cce6ee')}${path('M35 156h134l-23 29H61Z','#537786','#537786')}${box(90,126,50,29,'#d9ae77')}${arrow(168,135,218,90)}${box(194,54,60,50,'#b5c3c5')}${badge(90,40,'A')}${box(327,80,137,119)}${[342,381,420].map(x=>box(x,106,25,70,'#829da6')).join('')}${badge(394,40,'B',1)}${text(25,236,'원료 → 항만 → 공장')}${text(331,231,'기업·고객 연결')}`;
+      case 'network': return `${[[82,75],[190,75],[135,177]].map(([x,y],i)=>`${box(x-47,y-23,94,46)}${text(x,y+5,['대학','연구소','기업'][i],'text-anchor="middle"')}`).join('')}${arrow(104,111,120,145)}${arrow(174,111,150,145)}${badge(30,30,'A')}${box(318,60,165,55)}${text(345,94,'수도권 공장')}${arrow(399,122,399,168,colors[1])}${text(363,204,'충청권')}${badge(485,30,'B',1)}`;
+      case 'farming': return `${path('M15 210L70 124H197L249 210Z')}${path('M75 155h108m-95 17h113m-106 17h127','none','#5b956c')}${badge(132,72,'A')}${[330,370,410].map(x=>box(x,100,28,75,'#7c9ba2')).join('')}${path('M301 220Q338 146 376 220Z','#d9e8cb','#8fac82')}${arrow(374,199,438,170,colors[1])}${badge(408,50,'B',1)}${text(60,236,'높은 땅')}${text(318,90,'대도시 시장')}`;
+      case 'energy': return `${path('M20 152L90 55 166 152Z','#d7d1c2','#9d978b')}${arrow(108,173,215,173)}${box(192,80,65,67,'#b4c6c9')}${text(24,220,'원료 산지 → 공장')}${box(290,158,212,65,'#cce6ee')}${path('M339 158Q332 95 369 95Q403 95 398 158Z','#c3d1d1','#7c969b')}${arrow(445,194,399,139,colors[1])}${badge(40,30,'A')}${badge(460,60,'B',1)}${text(424,231,'냉각수')}`;
+      case 'transport': return `${box(20,157,220,55,'#cce6ee')}${path('M42 149H217L181 185H71Z','#72959e','#476d76')}${[70,105,140,175].map(x=>box(x,120,30,27,'#d7b280')).join('')}${path('M295 135L470 93 442 123 485 151 466 161 409 138 333 169Z','#b2c7d0','#557e8b')}${badge(130,65,'A')}${badge(391,50,'B',1)}${text(60,236,'대량 운송')}${text(337,215,'긴급 운송')}`;
+      case 'route': return `${path('M35 50L158 130 245 50M158 130L60 220M158 130L249 220','none','#5a8e99')}${badge(158,130,'A')}${box(310,50,180,60)}${text(340,88,'이동 시간 감소')}${arrow(400,118,400,165,colors[1])}${text(341,201,'생활권 확대')}${badge(490,30,'B',1)}`;
+      case 'regions': return `${path('M66 45L180 55 211 119 171 199 65 214 37 121Z')}${path('M334 45L444 39 490 120 449 207 334 214 299 134Z','#ead7bc','#b5a07d')}${[80,110,140].map(x=>path(`M${x} 116v48m-8 -42h16m-16 17h16`,'none','#779359')).join('')}${box(152,160,30,30,'#7e969b')}${box(355,140,30,50,'#82999d')}${box(401,129,30,60,'#82999d')}${badge(121,75,'A')}${badge(392,75,'B',1)}${text(73,239,'평야 + 공업')}${text(336,239,'해안·내륙 공업')}`;
+      case 'division': return `${box(25,65,145,140)}${box(187,65,145,140,'#efe5d4')}${box(349,65,145,140,'#e6dff1')}${text(70,116,'서울')}${text(232,116,'인천')}${text(396,116,'경기')}${arrow(320,159,80,159)}${arrow(379,184,139,184,colors[1])}${badge(90,30,'A')}${badge(422,30,'B',1)}${text(193,237,'경계를 넘는 통근')}`;
+      case 'north': return `${box(25,60,205,150)}${path('M200 90Q145 103 161 141T50 184','none','#3487a8')}${arrow(127,164,70,182)}${box(287,60,205,150,'#eae4d5')}${path('M303 179L350 82 376 134 415 80 480 179Z','#c1c9ac','#829070')}${badge(126,30,'A')}${badge(389,30,'B',1)}${text(45,235,'서해로 흐르는 하천')}${text(321,235,'북동부 산지·고원')}`;
+      case 'compare': return `${box(30,50,190,160,'#ece4cf')}${path('M55 170L80 95 119 157 157 70 191 182','none','#8a986e')}${path('M67 62Q160 111 91 200','none','#5393a3')}${box(298,50,190,160,'#f0e8d8')}${[80,110,140,170].map(y=>path(`M325 ${y}h136`,'none','#ac9c7d')).join('')}${badge(125,25,'A')}${badge(392,25,'B',1)}`;
+      default: throw new Error(`Unknown study visual: ${kind}`);
+    }
+  }
+  const chartNotes = {
+    temperature: '월평균 기온 모형 · 두 선은 같은 ℃ 눈금 · 실제 관측값 아님',
+    pyramid: '연령 3구간 비교 모형 · 왼쪽 남자 / 오른쪽 여자 · 전체 인구 중 비율(%) · 실제 통계 아님',
+    heat: '밤의 상대적인 기온 분포 모형 · 높이·거리·기온의 실측값 아님',
+    regions: '권역 특징을 비교하는 모형 · 실제 행정 경계 모양 아님'
+  };
+  function render(host, lesson, options={}) {
+    const hidden = options.quiz && !options.revealed;
+    const note = chartNotes[lesson.kind] || '개념을 비교하는 학습 모형 · 실제 거리·높이·경계와 비례하지 않음';
+    host.innerHTML = `<figure class="concept-visual ${options.revealed?'is-revealed':''}"><svg viewBox="0 0 520 250" role="img" aria-label="${hidden?'A·B 비교 자료':esc(lesson.title)}"><title>${hidden?'A·B의 모양과 화살표, 아래 자료를 비교하세요.':esc(lesson.title)}</title>${art(lesson.kind)}</svg><figcaption>${note}</figcaption></figure><div class="visual-comparison">${lesson.slots.map((s,i)=>`<div class="comparison-cell" style="--slot-color:${colors[i]}"><span class="comparison-letter">${String.fromCharCode(65+i)}</span><div><strong>${esc(hidden?s.clue:s.name)}</strong><p>${esc(hidden?'':s.clue)}</p>${hidden?'':`<small>${esc(s.detail)}</small>`}</div></div>`).join('')}</div>${options.revealed?`<div class="visual-evidence"><strong>그림에서 찾은 근거</strong><p>${esc(lesson.evidence)}</p></div>`:''}`;
+  }
+  window.KoreaVisuals = { render, art, esc };
+})();

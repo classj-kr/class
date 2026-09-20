@@ -5,6 +5,8 @@ import { buildFlowModel, flowFrame, installFlowImages } from "./flow-textures.mj
 import { createAtlas } from "./atlas-study.mjs?v=20260920-28";
 import { animateProjection } from "./projection-morph.mjs?v=20260920-29";
 
+import { createAxisView } from "./axis-view.mjs?v=20260920-31";
+
 const data = window.GLOBE_DATA;
 // 자료 파일이 옛 판일 수 있다(배포 중 화면 코드와 자료가 어긋나는 때). 없는 갈래는 빈 것으로 둔다.
 const NO_FEATURES = { type: "FeatureCollection", features: [] };
@@ -142,7 +144,9 @@ const poleMarks = [
 
 let ready = false;
 let viewMode = "globe";
+let axisView;
 const atlas = createAtlas({ map, clear: clearSelection, select, setView: setViewMode, setLayers: setStudyLayers });
+axisView = createAxisView({ map, host: document.getElementById("mapTools"), getZoom: wholeGlobeZoom, reducedMotion });
 map.on("load", () => {
   ready = true;
   // 출처 표시는 접힌 채(ⓘ)로 시작해 이름표를 가리지 않게 한다.
@@ -154,6 +158,7 @@ map.on("load", () => {
   refreshZoomRules();
   refreshGridLabels();
   bindSelection();
+  axisView.ready();
   atlas.ready();
 });
 map.on("moveend", () => {
@@ -732,7 +737,7 @@ function wholeGlobeZoom() {
   if (viewMode === "flat") return Math.min(1, Math.log2(Math.max(180, map.getCanvas().clientWidth) / 512)) - 0.12;
   const canvas = map.getCanvas();
   const shortSide = Math.min(canvas.clientWidth, canvas.clientHeight - 90);
-  const r = shortSide * 0.44;
+  const r = shortSide * (axisView?.active ? 0.35 : 0.44);
   const halfFov = (map.getVerticalFieldOfView() * Math.PI) / 360;
   const f = (0.5 / Math.tan(halfFov)) * canvas.clientHeight;
   const R = (r * r + r * Math.sqrt(r * r + f * f)) / f;
@@ -740,6 +745,7 @@ function wholeGlobeZoom() {
 }
 
 function fitWholeGlobe(animate) {
+  axisView?.disable(false);
   const zoom = wholeGlobeZoom();
   map.setMinZoom(zoom);
   const view = { center: viewMode === "flat" ? [20, 15] : HOME.center, zoom: zoom + latitudeShift(HOME.lat) };
@@ -1160,6 +1166,7 @@ function setStudyLayers(ids) {
 
 async function setViewMode(mode, instant = false) {
   if (mode === viewMode) return;
+  axisView?.projection(mode);
   viewMode = mode;
   map.getContainer().dataset.viewMode = mode;
   const center = map.getCenter();

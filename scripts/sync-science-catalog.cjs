@@ -17,7 +17,7 @@ for(const [slug,m]of Object.entries(map))for(const code of m.codes)if(!source.in
 const mapText='// Related standards are partial links, not a claim of unit completion. Grade = app placement, not mandated school pacing.\nconst scienceCurriculum = '+JSON.stringify(map,null,2)+';\nif (typeof window !== \'undefined\') window.scienceCurriculum = scienceCurriculum;\nif (typeof module !== \'undefined\') module.exports = scienceCurriculum;\n';
 edit(lab+'curriculum-map.js',()=>mapText);
 const hash=s=>crypto.createHash('sha256').update(s.replace(/\r\n/g,'\n')).digest('hex').slice(0,12);
-function cache(s,dir){return s.replace(/(<script\b[^>]*\bsrc=")([^"?]+\.js)(?:\?[^" ]*)?("[^>]*>)/g,(all,start,url,end)=>{
+function cache(s,dir){s=s.replace(/(href=")([^"?]*science-reading\.css)(?:\?[^" ]*)?("[^>]*>)/g,(all,start,url,end)=>start+url+'?v='+hash(fs.readFileSync(path.resolve(dir,url),'utf8'))+end);return s.replace(/(<script\b[^>]*\bsrc=")([^"?]+\.js)(?:\?[^" ]*)?("[^>]*>)/g,(all,start,url,end)=>{
  if(/^(?:https?:)?\/\//.test(url))return all;const target=path.resolve(dir,url);if(!fs.existsSync(target))throw Error('Missing script '+target);
  return start+url+'?v='+hash(target===path.resolve(lab+'curriculum-map.js')?mapText:fs.readFileSync(target,'utf8'))+end;
 });}

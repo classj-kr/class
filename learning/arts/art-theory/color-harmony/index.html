@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex">
+  <title>색의 관계와 배색 · 미술 실험</title>
+  <link rel="stylesheet" href="../color-mixing/styles.css?v=20260920-type"><link rel="stylesheet" href="styles.css?v=20260920">
+  <script src="../color-properties/model.js?v=20260920" defer></script><script src="model.js?v=20260920" defer></script><script src="app.js?v=20260920" defer></script>
+</head>
+<body>
+<main class="lab-shell">
+  <nav class="lesson-links" aria-label="차시 선택"><a href="../color-mixing/">색의 혼합</a><a href="../color-properties/">색상·명도·채도</a><a href="./" aria-current="page">색의 관계와 배색</a></nav>
+  <header class="lesson-header"><h1>색의 관계와 배색</h1><button type="button" id="resetStudy" class="text-button">초기화</button></header>
+  <p class="intro" id="studyIntro">가운데 두 색을 비교하세요. 배경을 바꾸면 어떻게 보이나요?</p>
+  <div class="study-switch" role="group" aria-label="비교할 내용"><button type="button" data-study="context" aria-pressed="true">주변 색 비교</button><button type="button" data-study="area" aria-pressed="false">관계와 면적 비교</button></div>
+
+  <section id="contextStudy" class="harmony-workspace" aria-label="주변 색 비교">
+    <div class="comparison-board">
+      <div class="context-pair">
+        <figure><figcaption>왼쪽 배경</figcaption><div id="leftField" class="context-field"><div id="leftCenter" class="center-color" role="img" aria-label="왼쪽 가운데 색"></div></div></figure>
+        <figure><figcaption>오른쪽 배경</figcaption><div id="rightField" class="context-field"><div id="rightCenter" class="center-color" role="img" aria-label="오른쪽 가운데 색"></div></div></figure>
+      </div>
+      <div class="context-actions"><button type="button" id="neutralBackgrounds" class="secondary-button" aria-pressed="false">같은 배경에서 확인</button><button type="button" id="swapBackgrounds" class="text-button">배경 맞바꾸기</button></div>
+      <p id="contextFeedback" class="observation-feedback" role="status"></p>
+    </div>
+    <aside class="harmony-controls" aria-label="배경과 가운데 색 조절">
+      <h2>배경의 밝기</h2>
+      <label for="leftLightness">왼쪽 배경 <output id="leftOutput" for="leftLightness">90</output></label><input id="leftLightness" type="range" min="20" max="90" value="90">
+      <label for="rightLightness">오른쪽 배경 <output id="rightOutput" for="rightLightness">25</output></label><input id="rightLightness" type="range" min="20" max="90" value="25">
+      <div class="color-choice-group"><h3>가운데 색</h3><div id="centerChoices" class="color-choices"></div></div>
+      <p class="control-explanation">가운데 색은 함께 바뀝니다. 배경의 차이만 비교해 보세요.</p>
+    </aside>
+  </section>
+
+  <section id="areaStudy" class="harmony-workspace" aria-label="색 관계와 면적 비교" hidden>
+    <div class="comparison-board">
+      <div class="area-pair">
+        <figure><figcaption>기준 배색</figcaption><div id="referenceComposition" class="composition" role="img"></div><p id="referenceRatio" class="ratio-caption"></p></figure>
+        <figure><figcaption>바꾼 배색</figcaption><div id="currentComposition" class="composition" role="img"></div><p id="currentRatio" class="ratio-caption"></p></figure>
+      </div>
+      <div class="area-actions"><button type="button" id="setReference" class="secondary-button">현재 배색을 기준으로</button><button type="button" id="restoreReference" class="text-button">기준으로 되돌리기</button></div>
+      <p id="areaFeedback" class="observation-feedback" role="status"></p>
+    </div>
+    <aside class="harmony-controls" aria-label="배색 조절">
+      <h2>색의 관계</h2>
+      <div class="scheme-switch" role="group" aria-label="색의 관계"><button type="button" data-scheme="near" aria-pressed="true">이웃한 색</button><button type="button" data-scheme="opposite" aria-pressed="false">마주 보는 색</button></div>
+      <p id="schemeDescription" class="control-explanation"></p>
+      <label for="mainArea">첫째 색 면적 <output id="mainOutput" for="mainArea"></output></label><input id="mainArea" type="range" min="10" max="85" value="60">
+      <label for="accentArea">셋째 색 면적 <output id="accentOutput" for="accentArea"></output></label><input id="accentArea" type="range" min="5" max="35" value="10">
+      <p class="remaining-area">둘째 색은 남은 <output id="secondaryOutput"></output>를 채웁니다.</p>
+      <div class="color-choice-group"><h3>첫째 색 바꾸기</h3><div id="paletteChoices" class="color-choices"></div></div>
+    </aside>
+  </section>
+
+  <section class="observation-note"><div><h2 id="observationTitle">다르게 보이는 이유</h2></div><p id="observationPrompt">같은 색도 주변 색에 따라 다르게 보일 수 있습니다. 같은 배경으로 바꿔 확인해 보세요.</p></section>
+  <section class="comparison-records" aria-labelledby="recordTitle"><div class="record-heading"><h2 id="recordTitle">비교 기록</h2><button type="button" id="saveRecord" class="secondary-button">지금 비교 기록하기</button></div><p id="recordStatus" role="status"></p><div id="records"></div></section>
+</main>
+</body>
+</html>

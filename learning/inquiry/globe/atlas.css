@@ -54,3 +54,22 @@
 .atlas #topicList .topic-item{font-size:13px;font-weight:400;line-height:1.55;min-height:40px;padding:9px 12px 9px 42px}
 .atlas #topicList .topic-item[aria-current="true"]{font-weight:600}
 @media(max-width:860px){.atlas #topicList .topic-item{min-height:44px}}
+
+/* Axial view follows the projected poles; it never intercepts map gestures. */
+.axis-diagram{position:absolute;inset:0;pointer-events:none;z-index:2}
+.axis-diagram[hidden]{display:none}
+.axis-diagram svg{width:100%;height:100%;overflow:hidden}
+.axis-lines{fill:none;stroke-linecap:round}
+.axis-shaft{stroke:#99eadf;stroke-width:2;stroke-dasharray:8 5}
+.axis-reference{stroke:#b9c7d6;stroke-width:1;stroke-dasharray:4 5}
+.axis-angle{stroke:#ffe09a;stroke-width:1.5}
+.axis-labels{font:12px Pretendard,"Malgun Gothic",sans-serif;fill:#def9f2;paint-order:stroke;stroke:#06101a;stroke-width:3px;stroke-linejoin:round}
+.axis-degrees{fill:#ffe09a;font-size:14px}
+.axis-reference-label{fill:#abbcca;font-size:11px}
+.axis-labels [data-lat]{fill:#ffe09a}
+.axis-labels [data-lat="0"]{fill:#ffb9aa}
+.axis-explanation{position:absolute;left:20px;right:20px;bottom:62px;width:fit-content;max-width:430px;margin:0;color:#bdcecf;font-size:12px;line-height:1.75;text-wrap:pretty;text-shadow:0 1px 3px #000}
+.atlas .map-tools #axisView{font-size:12px;white-space:nowrap}
+.atlas .map-tools #axisView[aria-pressed="true"]{background:#203e3d;border-color:#a4edcf;color:#dcfff1}
+.atlas .map-tools #axisView[hidden]{display:none}
+@media(max-width:860px){.axis-explanation{left:12px;right:55px;bottom:57px;font-size:11px}.axis-labels{font-size:10px}.axis-reference-label{font-size:9px}}

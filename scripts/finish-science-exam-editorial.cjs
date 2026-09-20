@@ -1,0 +1,8 @@
+const {edit,replace,apply,lab}=require('./science-scope-patch.cjs');
+edit(lab+'science-reading.css',s=>s+'\nbody :is(.prediction-field legend,.prediction-options label,.prediction-options button,#predictionLegend,.prediction-result,.supplement-check label){font-family:var(--science-reading-font)!important}\n');
+edit(lab+'exam-review.css',s=>s+'\n.exam-widget .exam-question{color:#20272d}.exam-widget .exam-answers button:nth-child(1)::before{content:"①"}.exam-widget .exam-answers button:nth-child(2)::before{content:"②"}.exam-widget .exam-answers button:nth-child(3)::before{content:"③"}\n');
+for(const file of ['exam-review.html','index.html','exam-review.js'])edit(lab+file,s=>s.replaceAll('exam-review.css?v=2','exam-review.css?v=3'));
+edit(lab+'exam-scope.js',s=>replace(s,'exam-review.js?v=2','exam-review.js?v=3'));
+edit('tests/science-exam-editorial.test.cjs',s=>replace(s,"assert.notEqual(initial.before,'none');","assert(initial.before.includes('①'));"));
+edit('docs/science-lab-audit-2026-09-20/exam-readiness.md',s=>replace(s,'## 기존 문항 정정','## 후속 문항·서체 개선\n\n- 새 241문항 전체의 선택지를 다시 읽고, 194문항에서 질문 또는 오답을 수정했다. 엉뚱한 속성·도덕적으로 나쁜 행동만 고르면 되는 오답을 실제 오개념·변인 혼동·수치 비교로 바꿨다. 유지한 47문항은 순서·계산·개념 구별형이었다. 이는 실측 난이도나 변별도 검증을 뜻하지 않는다.\n- 교육과정 코드와 문항 수는 유지했다. 편집 내역은 `scripts/science-exam-choice-review.cjs`, 일치·화면 검사는 `tests/science-exam-editorial.test.cjs`로 확인한다.\n- 별도 문제 페이지의 보이는 제목과 반복 단원 이름, 문제·선택지 외곽선을 제거하고 선택지를 ①②③으로 표시했다. 화면 낭독기용 제목은 남겼다.\n- 104개 실험 앱과 문제 페이지의 설명·문제·선택지에 Noto Serif KR 명조체를 적용했다. 조작 버튼·학년 탭·수치 표시는 기존 서체로 유지한다. 웹폰트가 실제 로딩되는지 Chrome에서 확인했다. 네트워크로 글꼴을 받지 못하면 바탕·AppleMyungjo·기본 serif 순으로 대체된다.\n\n## 기존 문항 정정'));
+apply();

@@ -15,6 +15,7 @@
     <script src="../../../../assets/sound/music-control.js?v=20260910-click-cache-1" defer></script>
     <script src="../topic-catalog.js?v=20260920-eclipse"></script>
     <link rel="stylesheet" href="../topic-page.css?v=20260920-eclipse">
+    <link rel="stylesheet" href="stellar-simulator.css?v=20260920-stellar">
 </head>
 <body>
     <audio id="bgm" src="assets/audio/galaxy-breath.ogg" preload="auto" loop aria-label="은하의 숨결 배경음악"></audio>
@@ -616,63 +617,6 @@
         <section class="tab-pane" id="tab-calc">
             <div class="calc-container" style="padding: 20px; max-width: 1200px; margin: 0 auto;">
                 
-                <!-- Header -->
-                <div style="margin-bottom: 24px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;">
-                    <div>
-                        <h2 style="font-size: 24px; color: #fff; margin-bottom: 6px; display:flex; align-items:center; gap:10px;">
-                            <span>✨</span> 별의 일생
-                        </h2>
-                        <p style="color: #94a3b8; font-size: 14px;">성운의 가스와 먼지가 중력으로 수축해 원시별을 형성하고, 질량에 따라 적색거성·초거성 단계를 거쳐 백색왜성·중성자별·블랙홀로 진화하는 과정을 보여줍니다.</p>
-                    </div>
-                    
-                    <!-- Track Switcher Buttons -->
-                    <div style="display:flex; gap:8px;">
-                        <button class="phase-chip active" id="btnTrackSun" style="padding:8px 16px; font-size:13px; font-weight:800; border-radius:20px; background:#0284c7; color:#fff; border:1px solid #38bdf8; cursor:pointer;">☀️ 태양 질량 별의 일생 (보통 별)</button>
-                        <button class="phase-chip" id="btnTrackMassive" style="padding:8px 16px; font-size:13px; font-weight:800; border-radius:20px; background:rgba(15,23,42,0.85); color:#94a3b8; border:1px solid rgba(255,255,255,0.2); cursor:pointer;">💥 초대질량 별의 일생 (거대 별)</button>
-                    </div>
-                </div>
-
-                <!-- 1. Interactive Stellar Evolution Visual Stage (5 Stages Flowchart) -->
-                <div style="background: rgba(10, 15, 29, 0.95); border: 1px solid rgba(56, 189, 248, 0.4); border-radius: 16px; padding: 24px; margin-bottom: 28px; backdrop-filter: blur(12px); box-shadow: 0 12px 35px rgba(0,0,0,0.8);">
-                    
-                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 18px;">
-                        <h3 id="lifeTrackTitle" style="font-size: 18px; color: #fbbf24; font-weight: 900;">☀️ [태양급 별의 일생] 성운 ➔ 주계열성 ➔ 적색거성 ➔ 행성상 성운 ➔ 백색왜성</h3>
-                    </div>
-
-                    <!-- 5 Interactive Stage Nodes Bar -->
-                    <div id="stellarStageNodes" style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-bottom: 24px;">
-                        <!-- Injected by JS -->
-                    </div>
-
-                    <!-- Selected Stage Detail Graphic Box -->
-                    
-                    <!-- Interactive Life Cycle Time Knob Slider -->
-                    <div style="background: rgba(15, 23, 42, 0.85); border: 1px solid rgba(56, 189, 248, 0.3); border-radius: 12px; padding: 14px 0; margin-bottom: 20px;">
-                        <div style="display:flex; align-items:center; justify-content:space-between; gap:20px; padding:0 4px 10px;">
-                            <div style="font-weight: 800; color: #fbbf24; font-size: 14px; display: flex; align-items: center; gap: 8px;">
-                                <span>🎛️</span> 별의 진화 단계:
-                            </div>
-                            <span id="stellarTimeValText" style="font-size: 13.5px; font-weight: 800; color: #38bdf8; text-align: right;">진화 0% ~ 10% (탄생기)</span>
-                        </div>
-                        <input type="range" id="stellarTimeKnob" min="0" max="100" value="10" style="display:block; width:100%; margin:0; box-sizing:border-box; accent-color: #38bdf8; height: 8px; cursor: pointer;">
-                    </div>
-
-                    <div id="stageDetailBox" style="background: rgba(15, 23, 42, 0.9); border: 1px solid rgba(56, 189, 248, 0.35); border-radius: 14px; padding: 20px; display: flex; gap: 24px; align-items: center; box-shadow: inset 0 0 20px rgba(0,0,0,0.6);">
-                        <div style="width: 200px; height: 200px; max-width: 100%; flex-shrink: 0; border-radius: 16px; overflow: hidden; border: 2px solid #38bdf8; box-shadow: 0 0 30px rgba(56,189,248,0.45); background: #030712; display:flex; align-items:center; justify-content:center; padding: 4px;">
-                            <img id="stageRealImage" src="assets/images/stellar/nebula.jpg" style="max-width:100%; max-height:100%; object-fit:contain; display:block; transition: opacity 0.3s ease;" onerror="this.src='assets/images/stellar/nebula.jpg'">
-                        </div>
-                        <div style="flex:1;">
-                            <div id="stageName" style="font-size: 20px; font-weight: 900; color: #38bdf8; margin-bottom: 6px;">1단계: 성간 물질 &amp; 성운 (Stellar Nebula)</div>
-                            <div id="stageDesc" style="font-size: 14.5px; color: #f1f5f9; line-height: 1.7; font-weight: 500;">
-                                우주 공간에 흩어져 있던 수소 가스와 미세한 먼지들이 중력에 의해 밀집하며 수축하기 시작합니다. 내부 중심 온도가 약 1,000만 K에 도달하면 수소 핵융합 반응이 시작되며 새로운 별이 탄생합니다.
-                            </div>
-                            <div id="stageSpecs" style="margin-top: 10px; font-size: 13.5px; color: #fbbf24; font-weight: 800;">
-                                • 대표 예시: 오리온 성운 (M42) | 소요 시간: 수백만 년
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
                 <!-- 2. Visual Star Specs & Brightness/Temperature Table -->
                 <div style="background: rgba(10, 15, 29, 0.95); border: 1px solid rgba(251, 191, 36, 0.4); border-radius: 16px; padding: 24px; backdrop-filter: blur(12px);">
                     <h3 style="font-size: 18px; color: #fff; font-weight: 900; margin-bottom: 16px; display:flex; align-items:center; gap:8px;">
@@ -766,8 +710,10 @@
     </main>
 
     <script src="../quiz-board.js?v=20260920-eclipse"></script>
-    <script src="app.js?v=20260920-topics"></script>
+    <script src="app.js?v=20260920-stellar"></script>
 
-    <script src="../topic-page.js?v=20260920-eclipse"></script>
+    <script src="stellar-evolution.js?v=20260920-stellar"></script>
+    <script src="stellar-simulator.js?v=20260920-stellar"></script>
+    <script src="../topic-page.js?v=20260920-stellar"></script>
 </body>
 </html>

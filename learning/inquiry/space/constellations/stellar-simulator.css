@@ -1,0 +1,22 @@
+html:has(body[data-space-topic="stellar-life"]) { background: #030712; }
+.space-topic-page #tab-stellar { max-width: 1580px; padding: 62px 18px 28px; margin: 0 auto; color: #dce7f6; }
+.sl-modes { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
+.stellar-lab button, .stellar-lab select { background: #0e1b30; color: #bfcee1; border: 1px solid #30445f; border-radius: 8px; padding: 10px 16px; cursor: pointer; font: inherit; font-size: 14px; }
+.stellar-lab button[aria-pressed="true"] { background: #0b6b90; color: #fff; border-color: #38bdf8; }
+.stellar-lab button:focus-visible,.stellar-lab input:focus-visible,.stellar-lab select:focus-visible { outline: 2px solid #7dd3fc; outline-offset: 3px; }
+.sl-layout { display: grid; grid-template-columns: minmax(0,3fr) minmax(250px,1fr); gap: 16px; }
+.sl-scene { position: relative; border: 1px solid #263953; border-radius: 14px; overflow: hidden; background: #020611; }
+.sl-scene canvas { display: block; width: 100%; height: clamp(380px,60vh,650px); }
+.sl-scene-label { position: absolute; bottom: 24px; left: 26px; pointer-events: none; }
+.sl-scene-label span { display: block; font-size: 12px; color: #829cbd; margin-bottom: 6px; }
+.sl-scene-label strong { font-size: 27px; color: #e7f2ff; font-weight: 700; text-shadow: 0 2px 8px #000; }
+.sl-explanation { padding: 22px; border: 1px solid #263953; border-radius: 14px; background: #0a1424; display: flex; flex-direction: column; }
+.sl-explanation p { font-size: 15px; line-height: 1.85; word-break: keep-all; color: #c8d7e9; }
+.sl-explanation dl { margin-top: 24px; }.sl-explanation dt { color: #7793b5; font-size: 12px; margin-top: 20px; }.sl-explanation dd { font-size: 14px; line-height: 1.7; margin: 6px 0 0; color: #81d6f8; }
+.sl-remnant { margin-top: auto; padding-top: 26px; }.sl-remnant>span { font-size: 12px; color: #8da5c3; }.sl-remnant>div { display:flex; flex-wrap:wrap; gap:6px; margin-top:9px; }.sl-remnant button { padding: 8px 10px; font-size: 13px; }.sl-remnant small { display:block; font-size:11px; line-height:1.6; color:#8194ad; margin-top:10px; }
+.sl-player { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; margin: 14px 0; padding: 14px; border: 1px solid #263953; background: #0b1525; border-radius: 10px; }
+.sl-player input { flex: 1; min-width: 140px; accent-color: #38bdf8; cursor: pointer; }.sl-player label { display:flex; align-items:center; gap:8px; font-size:12px; color:#9eb1ca; }.sl-player select { padding: 8px; }
+.sl-stages { display: grid; grid-template-columns: repeat(6,minmax(0,1fr)); gap: 8px; }.sl-stages button { font-size:13px; padding:12px 6px; }.sl-stages small { display:block; font-size:10px; color:#8098b6; margin-bottom:6px; }.sl-stages button[aria-pressed="true"] small { color:#bae6fd; }
+.sl-note { font-size: 12px; color: #7f95b1; line-height:1.6; margin: 14px 2px 0; }
+@media(max-width:850px){.sl-layout{grid-template-columns:1fr;}.sl-scene canvas{height:440px;}.sl-explanation{display:grid;grid-template-columns:1fr 1fr;gap:18px;}.sl-explanation dl{margin:0;}.sl-explanation dt:first-child{margin-top:0;}.sl-remnant{grid-column:1/-1;padding-top:0;}}
+@media(max-width:520px){.space-topic-page #tab-stellar{padding:60px 10px 22px;}.sl-scene canvas{height:340px;}.sl-scene-label{bottom:18px;left:18px;}.sl-scene-label strong{font-size:23px;}.sl-explanation{padding:16px;grid-template-columns:1fr;gap:12px;}.sl-explanation p{font-size:14px;}.sl-explanation dl{display:grid;grid-template-columns:105px 1fr;gap:6px;}.sl-explanation dt,.sl-explanation dd{margin:0;}.sl-stages{grid-template-columns:repeat(3,minmax(0,1fr));}.sl-player{gap:8px;}.sl-player input{order:3;flex-basis:100%;}.sl-player label{margin-left:auto;}.stellar-lab button{padding:9px 11px;}.sl-modes button{font-size:13px;}}

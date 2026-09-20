@@ -8,7 +8,7 @@ const slugs=picked||Object.keys(map),capture=process.argv.includes('--capture');
  const server=http.createServer((req,res)=>{let file=path.resolve(root,'.'+new URL(req.url,'http://localhost').pathname);if(file!==root&&!file.startsWith(root+path.sep)){res.writeHead(403);res.end();return;}if(fs.existsSync(file)&&fs.statSync(file).isDirectory())file=path.join(file,'index.html');fs.readFile(file,(err,data)=>{if(err){res.writeHead(404);res.end();return;}res.setHeader('Content-Type',{'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8'}[path.extname(file)]||'application/octet-stream');res.end(data);});});
  await new Promise(r=>server.listen(0,'127.0.0.1',r));let browser;const failures=[];
  try{browser=await chromium.launch({headless:true,executablePath:process.env.SCIENCE_BROWSER});
- for(const slug of slugs){const page=await browser.newPage();const errors=[];page.on('pageerror',e=>errors.push(e.message));await page.route('**/*',r=>new URL(r.request().url()).hostname==='127.0.0.1'?r.continue():r.abort());
+ for(const slug of slugs){const page=await browser.newPage();const errors=[];page.on('pageerror',e=>errors.push(e.message));await page.route('**/*',r=>(new URL(r.request().url()).hostname==='127.0.0.1'||process.env.SCIENCE_LIVE_FONTS&&['fonts.googleapis.com','fonts.gstatic.com'].includes(new URL(r.request().url()).hostname))?r.continue():r.abort());
  try{await page.goto(`http://127.0.0.1:${server.address().port}/${slug}/`);await page.evaluate(()=>document.fonts.ready);
  for(const width of [1366,1024,820,768]){await page.setViewportSize({width,height:width>=1024?768:1024});
  const modes=await page.locator('button[data-mode]').evaluateAll(nodes=>nodes.map(n=>n.dataset.mode));

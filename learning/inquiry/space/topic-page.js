@@ -51,7 +51,7 @@
             table.classList.add('topic-table-wrap');
             concepts.append(table);
         }
-        if (calc && topic.mode === 'stellar') calc.lastElementChild.hidden = true;
+
         if (topic.extras === 'seasons') {
             const cards = document.querySelector('#tab-cards > div');
             if (cards && cards.firstElementChild) concepts.append(cards.firstElementChild);
@@ -64,7 +64,14 @@
             const atlas = document.getElementById('tab-atlas');
             Array.from(atlas.children).forEach(child => concepts.append(child));
         }
-        let observation = document.getElementById(topic.mode === 'stellar' ? 'tab-calc' : 'tab-sim');
+        let observation = document.getElementById('tab-sim');
+        if (topic.mode === 'stellar') {
+            observation = document.createElement('section');
+            observation.id = 'tab-stellar';
+            observation.className = 'tab-pane';
+            main.append(observation);
+            window.StellarLab.mount(observation);
+        }
         if (topic.mode === 'eclipse') {
             observation = document.createElement('section');
             observation.id = 'tab-eclipse';

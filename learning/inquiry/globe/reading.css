@@ -1,0 +1,53 @@
+@font-face {
+  font-family: "Atlas KoPubWorld Batang";
+  src: url("/learning/games/sphinx/assets/fonts/kopub-world/KoPubWorld-Batang-Medium.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+.atlas {
+  --reading-font: "Atlas KoPubWorld Batang", "Batang", "Songti SC", serif;
+  --interface-font: Pretendard, "Noto Sans KR", "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
+}
+
+/* Reading content, including dynamically opened descriptions and quiz results. */
+.atlas :is(.lesson-description, .lesson-task, .spot-detail, .core-list,
+  .misconception, .info-text, .info-exam-box, .info-where,
+  .info-photo figcaption, .visual-caption, .population-model,
+  .axis-explanation, #quizBody) {
+  font-family: var(--reading-font);
+  font-weight: 400;
+}
+
+.atlas .lesson-description p,
+.atlas .info-panel .info-text p {
+  font-size: 16px;
+  line-height: 1.9;
+  font-weight: 400;
+}
+.atlas .info-panel .info-exam li { font-size: 15px; line-height: 1.85; }
+.atlas :is(.spot-detail, .visual-caption, .info-photo figcaption) { line-height: 1.85; }
+
+/* Answer choices are reading content even though they are buttons. */
+.atlas #quizBody { font-size: 16px; line-height: 1.85; }
+.atlas #quizBody :is(button, .quiz-meta, .quiz-topic) { font-family: var(--interface-font); }
+.atlas #quizBody .quiz-options button {
+  font-family: var(--reading-font);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.85;
+}
+.atlas #questionTitle { font-size: 20px; font-weight: 400; line-height: 1.75; }
+.atlas #answerFeedback { font-size: 16px; line-height: 1.9; }
+.atlas .result-topics { font-size: 16px; }
+.atlas .question-table { font-size: 14px; line-height: 1.8; }
+.atlas :is(.question-grid svg, .lesson-visual svg) { font-family: var(--reading-font); }
+
+@media (max-width: 860px) {
+  .atlas .lesson-description p,
+  .atlas .info-panel .info-text p,
+  .atlas #quizBody .quiz-options button,
+  .atlas #answerFeedback { font-size: 15px; }
+  .atlas #questionTitle { font-size: 18px; }
+}

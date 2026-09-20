@@ -6,7 +6,8 @@
   <meta name="theme-color" content="#123c46">
   <title>국내 지도</title>
   <link rel="stylesheet" href="vendor/leaflet/leaflet.css">
-  <link rel="stylesheet" href="styles.css?v=20260920-28">
+  <link rel="stylesheet" href="styles.css?v=20260920-31">
+  <link rel="stylesheet" href="study.css?v=20260920-31">
 </head>
 <body>
   <div class="app-shell">
@@ -41,6 +42,8 @@
       </section>
 
       <aside class="study-panel">
+        <section id="studyWorkspace" aria-label="개념별 시각 학습"></section>
+        <details id="studyReference" class="study-reference"><summary>주제 요약 · 필수 지점 · 핵심 원리</summary>
         <section class="concept-card" aria-labelledby="conceptTitle">
           <h1 class="visually-hidden" id="conceptTitle"></h1>
           <aside class="feature-focus" id="featureFocus" aria-live="polite" hidden>
@@ -60,6 +63,7 @@
           </details>
         </section>
 
+        </details>
         <section class="practice-launch" aria-label="문제 풀기">
           <button class="primary-button" id="startPractice" type="button">지형 문제 풀기</button>
           <button class="secondary-button" id="startMixed" type="button">전 주제 섞어 풀기</button>
@@ -86,6 +90,7 @@
       </div>
       <div class="question-map-wrap">
         <div id="questionMap" aria-label="문제 관련 위치 지도"></div>
+        <div id="questionDiagram" class="question-diagram" hidden></div>
         <div id="questionGraph" class="question-graph" hidden></div>
         <div class="question-map-caption" id="questionMapCaption"></div>
       </div>
@@ -185,6 +190,9 @@
   <script src="data/travel-data.js?v=20260920-28"></script>
   <script src="travel.js?v=20260920-28"></script>
   <script src="climate-graph.js?v=20260906-1"></script>
-  <script src="app.js?v=20260920-30"></script>
+  <script src="data/study-lessons.js?v=20260920-31"></script>
+  <script src="study-visuals.js?v=20260920-31"></script>
+  <script src="study.js?v=20260920-31"></script>
+  <script src="app.js?v=20260920-31"></script>
 </body>
 </html>
