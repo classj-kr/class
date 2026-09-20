@@ -105,13 +105,19 @@ def build(countries_path):
             output.append(f'<path d="{line(state["front"])}" fill="none" stroke="#873d32" stroke-width="4"/>')
             for name,coord in [('평양',[125.75432,39.03385]),('서울',[126.9784,37.566]),('부산',[129.05,35.16])]:
                 px,py=map(float,xy(*coord).split(','))
-                output.append(f'<circle cx="{px}" cy="{py}" r="5" fill="#344c52"/><text x="{px+10}" y="{py+9}" font-family="sans-serif" font-size="29" fill="#243b43">{name}</text>')
+                output.append(f'<circle cx="{px}" cy="{py}" r="7" fill="#344c52"/><text x="{px+12}" y="{py+14}" font-family="sans-serif" font-size="50" fill="#243b43">{name}</text>')
         output.append('</svg>')
         return ''.join(output)+'\n'
 
     OUT.mkdir(exist_ok=True)
     manifest=[]
     core=['nakdong','north','retreat','1953']
+    descriptions={
+      'nakdong':'국군·유엔군 확보 지역이 부산을 포함한 한반도 남동부에 좁게 남아 있고, 나머지 본토는 상대측 지배 지역이다.',
+      'north':'국군·유엔군 확보 지역이 서울과 평양을 포함해 한반도 북부 대부분으로 확대되어 있다.',
+      'retreat':'전선이 38선과 서울의 남쪽에 있다. 부산뿐 아니라 한반도 남부의 넓은 지역이 국군·유엔군 확보 지역이다.',
+      '1953':'서울은 국군·유엔군 쪽에 있다. 두 지역을 나누는 선이 38선 부근을 비스듬하게 가로지르며 38선과 일치하지 않는다.'
+    }
     audit=[]
     for index,state in enumerate(states):
         filename=f'war-{state["id"]}.svg'
@@ -125,10 +131,11 @@ def build(countries_path):
         southmid=state['south'].representative_point()
         labels=[{'name':state['northName'],'xy':[mid.x,mid.y]}, {'name':state['southName'],'xy':[southmid.x,southmid.y]}]
         lines=[{'label':'군사분계선' if state['id']=='1953' else '전선' if state['id']!='1950' else '38선',
-                'coords':state['front'],'color':'#963f35','kind':'armistice' if state['id']=='1953' else 'front'}]
+                'coords':state['front'],'color':'#69777b' if state['id']=='1950' else '#963f35','kind':'division' if state['id']=='1950' else 'armistice' if state['id']=='1953' else 'front'}]
         if state['id']!='1950':lines.append({'label':'38선(기준)','coords':REFERENCE,'color':'#69777b','kind':'division'})
         note='국가기록원 전선 도판을 도시 기준점에 맞춰 재구성한 개략도입니다. 색은 육상의 작전상 지배·점령 범위이며 법적 영토 변경이나 세부 부대 배치를 뜻하지 않습니다.'
-        manifest.append(dict(id=state['id'],date=state['date'],stageTitle=state['title'],order=index,card=card,
+        if state['id']=='1953':note='국가기록원의 정전 설명과 현대 군사분계선 자료를 바탕으로 단순화한 개략도입니다. 색은 육상의 군사적 지배 범위이며 법적 영토나 해상 경계의 확정을 뜻하지 않습니다.'
+        manifest.append(dict(id=state['id'],date=state['date'],stageTitle=state['title'],order=index,card=card,cardDescription=descriptions.get(state['id']),
           overlay=f'history/territories/{filename}?v=20260921-war-1',overlayBounds=EXTENT,
           legend=[{'label':state['southName']+' 확보 지역','color':BLUE},{'label':state['northName']+' 지배 지역','color':RED}],
           labels=labels,sources=[['국가기록원 · 전선의 변화',SOURCE]],note=note,lines=lines,

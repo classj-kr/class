@@ -79,17 +79,21 @@ const server = http.createServer((req, res) => {
         const map = testMaps.map;
         const id = document.querySelector('#historyScene').value;
         const scene = KOREA_HISTORY.scenes.find(s => s.id === id);
+        const active = document.querySelector('[data-territory][aria-pressed="true"]')?.dataset.territory;
+        const variant = KOREA_HISTORY_TERRITORIES.scenes[id]?.find(s => s.id === active);
+        const marks = variant?.lesson?.marks || scene.marks;
         return {
           title:document.querySelector('.history-scene-heading h3').textContent,
           count:document.querySelectorAll('.history-point').length,
           labels:document.querySelectorAll('.history-map-label').length,
-          allInView:scene.marks.every(m => map.getBounds().contains([m.xy[1],m.xy[0]])),
+          expectedCount:marks.length,
+          allInView:marks.every(m => map.getBounds().contains([m.xy[1],m.xy[0]])),
           handlers:(map._events.moveend || []).length
         };
       });
       assert.equal(state.title, scene.title);
-      assert.equal(state.count, scene.marks.length, scene.id);
-      assert.equal(state.labels, scene.marks.length, scene.id);
+      assert.equal(state.count, state.expectedCount, scene.id);
+      assert.equal(state.labels, state.expectedCount, scene.id);
       assert.ok(state.allInView, `${scene.id}: out of view`);
       assert.ok(state.handlers < 20, `${scene.id}: event handlers leaked`);
     }

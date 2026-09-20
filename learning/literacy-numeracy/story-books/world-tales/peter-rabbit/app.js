@@ -139,7 +139,7 @@ const CHAPTERS = [
                 "art": "05-net.webp",
                 "emoji": "🥅",
                 "left": [
-                    "그때 참새 세 마리가 날아왔습니다. 피터 둘레를 빙빙 돌며 짹짹거렸지요.",
+                    "그때 참새 두 마리가 날아왔습니다. 피터 둘레를 빙빙 돌며 짹짹거렸지요.",
                     "\"힘내! 조금만 더! 포기하면 안 돼!\"",
                     "피터는 이를 악물었습니다. 마지막 힘을 다해 몸을 비틀었지요."
                 ],
@@ -459,7 +459,7 @@ const QUIZ = [
         "choices": [
             "금붕어",
             "하얀 고양이",
-            "참새 세 마리"
+            "참새 두 마리"
         ],
         "answer": 2
     },
@@ -734,7 +734,7 @@ const EN = {
                     art: '05-net.webp',
                     emoji: '🐦',
                     left: [
-                        "And then three sparrows came flying down.",
+                        "And then two sparrows came flying down.",
                         "They flew round and round Peter, chirping at him.",
                         "\"Come on! A little more!\"",
                         "\"You mustn't give up!\"",
@@ -1020,7 +1020,7 @@ const EN = {
             { word: 'squeeze shut', meaning: '꼭 감다', sentence: "Peter squeezed his eyes shut." }
         ],
         '05-net.webp': [
-            { word: 'sparrow', meaning: '참새', sentence: 'Three sparrows came flying down.' },
+            { word: 'sparrow', meaning: '참새', sentence: 'Two sparrows came flying down.' },
             { word: 'chirp', meaning: '짹짹거리다', sentence: 'Chirping at him.' },
             { word: 'give up', meaning: '포기하다', sentence: "You mustn't give up!" },
             { word: 'set one’s teeth', meaning: '이를 악물다', sentence: 'Peter set his teeth.' },

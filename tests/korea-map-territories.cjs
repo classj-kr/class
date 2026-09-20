@@ -6,7 +6,7 @@ const puppeteer = require('puppeteer-core');
 const app = path.resolve(__dirname, '../learning/inquiry/korea-map');
 const output = path.resolve(__dirname, '../outputs/korea-map-history');
 const ctx = {window:{}};
-for (const file of ['history-data.js','history-territories.js']) vm.runInNewContext(fs.readFileSync(path.join(app,'data',file),'utf8'),ctx);
+for (const file of ['history-data.js','history-territories.js','history-war.js']) vm.runInNewContext(fs.readFileSync(path.join(app,'data',file),'utf8'),ctx);
 const scenes = ctx.window.KOREA_HISTORY.scenes;
 const territories = ctx.window.KOREA_HISTORY_TERRITORIES.scenes;
 assert.equal(Object.keys(territories).length,scenes.length);

@@ -11,7 +11,8 @@
     const variants = territories[scene.id] || [];
     // A gained frontier is the useful initial view; the earlier state remains
     // one click away. Never stack two dates on top of one another.
-    const index = territorySelection[scene.id] ?? (variants.length - 1);
+    const preferred = variants.findIndex(state => state.id === scene.defaultTerritory);
+    const index = territorySelection[scene.id] ?? (preferred < 0 ? variants.length - 1 : preferred);
     return variants[index] || scene;
   }
   const colors = ["#42778a", "#b96c45", "#6d8450"];
@@ -106,8 +107,9 @@
 
   function renderPanel() {
     if (!panelHost) return;
-    const scene = scenes[selected];
-    const state = territory(scene);
+    const base = scenes[selected];
+    const state = territory(base);
+    const scene = { ...base, ...(state.lesson || {}) };
     panelHost.querySelector("#historyScene").value = scene.id;
     panelHost.querySelector("#historyPrevious").disabled = selected === 0;
     panelHost.querySelector("#historyNext").disabled = selected === scenes.length - 1;
@@ -119,13 +121,15 @@
     title.append(el("p", "history-period", scene.period), el("h3", "", scene.title));
     const territoryNav = el("div", "history-territory-dates");
     territoryNav.setAttribute("role", "group");
-    territoryNav.setAttribute("aria-label", "영토 기준 시점");
+    territoryNav.setAttribute("aria-label", scene.id === "korean-war" ? "전쟁 전개 시점" : "영토 기준 시점");
     const variants = territories[scene.id] || [];
     if (variants.length > 1) variants.forEach((variant, index) => {
       const node = button(variant.date, null, () => {
         territorySelection[scene.id] = index;
         renderPanel();
         panelApi.refresh();
+        if (state.lesson) fit(panelApi);
+        panelHost.querySelector('[data-territory][aria-pressed="true"]')?.focus({ preventScroll: true });
       });
       node.setAttribute("aria-pressed", String(variant === state));
       node.dataset.territory = variant.id;
@@ -163,18 +167,22 @@
     if (state.note) sources.append(el("p", "", state.note));
     if (scene.exam) sources.append(sourceLink(`관련 기출 · ${scene.exam[0]} ↗`, scene.exam[1]));
     sources.append(el("p", "", data.scope), el("p", "", data.chronology), el("p", "", "현대 지형 바탕 위에 역사 위치를 표시한 학습용 개략도입니다. 당시 해안선의 정밀 복원도가 아닙니다. 점선 원은 대표 권역, 화살표는 이동·진출 방향입니다."));
-    content.replaceChildren(title, territoryNav, el("h4", "history-subtitle", "객관식 판별 단서"), cues, trap, places, note, sources);
+    const quiz = scene.id === "korean-war" && window.KoreaHistoryOrder
+      ? button("지도 순서 문제", null, () => window.KoreaHistoryOrder.open()) : null;
+    if (quiz) quiz.classList.add("history-order-launch");
+    content.replaceChildren(title, territoryNav, ...(quiz ? [quiz] : []), el("h4", "history-subtitle", "객관식 판별 단서"), cues, trap, places, note, sources);
   }
 
   function draw(map, group) {
-    const scene = scenes[selected];
-    const state = territory(scene);
+    const base = scenes[selected];
+    const state = territory(base);
+    const scene = { ...base, ...(state.lesson || {}) };
     const countryLabels = state.labels || scene.labels;
     // Keep these vector renderers in the scene group so cleanup is self-contained.
     const zoneRenderer = L.svg({pane:"themeZones"}).addTo(group);
     const lineRenderer = L.svg({pane:"themeLines"}).addTo(group);
     const caption = document.querySelector("#historyMapCaption");
-    caption.replaceChildren(el("strong", "", state.date || scene.period), el("span", "", scene.title));
+    caption.replaceChildren(el("strong", "", state.date || scene.period), el("span", "", state.stageTitle || scene.title));
     const legend = document.querySelector("#mapKey");
     legend.replaceChildren(...(state.legend || []).map(item => {
       const row = el("span", "key-item");
@@ -185,10 +193,15 @@
       return row;
     }));
     if (state.overlay) L.imageOverlay(state.overlay, bounds({bounds:state.overlayBounds || scene.bounds}), { pane: "themeZones", opacity: 0.9, interactive: false, alt: `${scene.title} · ${state.date || scene.period} 영역` }).addTo(group);
-    (state.lines || []).forEach(line => {
-      L.polyline(line.coords.map(latLng), {renderer:lineRenderer,pane:"themeLines",color:"#fffdf7",weight:5,interactive:false}).addTo(group);
-      L.polyline(line.coords.map(latLng), {renderer:lineRenderer,pane:"themeLines",color:"#9e3b36",weight:2.5,dashArray:"8 5",interactive:false}).addTo(group);
+    (state.lines || []).slice().sort((a,b) => Number(b.kind === "division") - Number(a.kind === "division")).forEach(line => {
+      const color = line.color || "#9e3b36";
+      const division = line.kind === "division";
+      const solid = line.kind === "front";
+      L.polyline(line.coords.map(latLng), {renderer:lineRenderer,pane:"themeLines",color:"#fffdf7",weight:division ? 3 : 5,interactive:false}).addTo(group);
+      L.polyline(line.coords.map(latLng), {renderer:lineRenderer,pane:"themeLines",color,weight:division ? 1.5 : 2.5,dashArray:solid ? null : "8 5",interactive:false}).addTo(group);
       const row = el("span", "key-item history-line-key", line.label);
+      row.style.setProperty("--history-line-color", color);
+      row.style.setProperty("--history-line-style", solid ? "solid" : "dashed");
       legend.append(row);
     });
     scene.routes.forEach(route => {
