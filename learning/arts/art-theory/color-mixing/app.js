@@ -55,11 +55,19 @@
       ctx.beginPath(); ctx.arc(x,y,radius,0,Math.PI*2); ctx.stroke();
     });
     ctx.setLineDash([]);
-    const names = M.modes[state.mode].names;
-    const labels = state.separated ? [[180,415],[450,415],[720,415]] : [[157,130],[743,130],[450,550]];
-    ctx.textAlign = 'center'; ctx.font = '500 22px "Noto Sans KR", "Malgun Gothic", sans-serif';
+    const names = isLight ? ['빨강','초록','파랑'] : ['시안','마젠타','노랑'];
+    const compact = canvas.clientWidth < 600;
+    const labels = state.separated ? [[180,415],[450,415],[720,415]] : [[120,140],[780,140],[450,550]];
+    const displayScale = Math.min(canvas.clientWidth / canvas.width, canvas.clientHeight / canvas.height);
+    const labelSize = 16 / Math.max(0.1, displayScale);
+    ctx.textAlign = 'center'; ctx.font = `500 ${labelSize}px "Noto Sans KR", "Malgun Gothic", sans-serif`;
     ctx.fillStyle = isLight ? '#c5cbd0' : '#434947';
-    labels.forEach(([x,y], index) => ctx.fillText(`${names[index]} ${state.values[index]}%`, x,y));
+    labels.forEach(([x,y], index) => {
+      if (compact && (state.separated || index < 2)) {
+        ctx.fillText(names[index], x, y);
+        ctx.fillText(`${state.values[index]}%`, x, y + labelSize * 1.25);
+      } else ctx.fillText(`${names[index]} ${state.values[index]}%`, x, y);
+    });
     if (!state.separated) {
       // Center target lies within all three discs. Its pixels match the model output.
       ctx.strokeStyle = isLight ? '#ffffff99' : '#00000080'; ctx.lineWidth = 1;
@@ -193,4 +201,5 @@
     event.preventDefault(); leaveExperiment(); $('#startExperiment').focus();
   });
   buildControls(); render();
+  if ('ResizeObserver' in window) new ResizeObserver(draw).observe(canvas);
 })();
