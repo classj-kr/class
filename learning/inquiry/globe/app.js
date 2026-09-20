@@ -2,6 +2,9 @@ import * as maplibregl from "./vendor/maplibre-gl-6.10.0/maplibre-gl.mjs";
 
 import { buildFlowModel, flowFrame, installFlowImages } from "./flow-textures.mjs?v=20260920-17";
 
+import { createAtlas } from "./atlas-study.mjs?v=20260920-18";
+import { animateProjection } from "./projection-morph.mjs?v=20260920-18";
+
 const data = window.GLOBE_DATA;
 // 자료 파일이 옛 판일 수 있다(배포 중 화면 코드와 자료가 어긋나는 때). 없는 갈래는 빈 것으로 둔다.
 const NO_FEATURES = { type: "FeatureCollection", features: [] };
@@ -13,7 +16,7 @@ const flowTracks = [...windModel.tracks, ...currentModel.tracks];
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 let flowPaused = reducedMotion.matches;
 let flowSeconds = 0;
-const BASE = new URL(".", location.href).href;
+const BASE = new URL(".", import.meta.url).href;
 const TILE_VERSION = 2;
 const FLAG_VERSION = 2;
 // 모양(shapes.json)·설명(info.json)·사진을 바꾸면 올린다.
@@ -138,6 +141,8 @@ const poleMarks = [
 });
 
 let ready = false;
+let viewMode = "globe";
+const atlas = createAtlas({ map, clear: clearSelection, select, setView: setViewMode, setLayers: setStudyLayers });
 map.on("load", () => {
   ready = true;
   // 출처 표시는 접힌 채(ⓘ)로 시작해 이름표를 가리지 않게 한다.
@@ -149,6 +154,7 @@ map.on("load", () => {
   refreshZoomRules();
   refreshGridLabels();
   bindSelection();
+  atlas.ready();
 });
 map.on("moveend", () => {
   if (!ready) return;
@@ -156,7 +162,13 @@ map.on("moveend", () => {
   refreshGridLabels();
 });
 window.addEventListener("resize", () => {
-  if (ready) fitWholeGlobe(false);
+  if (ready) {
+    map.resize();
+    map.setMinZoom(wholeGlobeZoom());
+    if (map.getZoom() < map.getMinZoom()) map.setZoom(map.getMinZoom());
+    refreshZoomRules();
+    refreshGridLabels();
+  }
 });
 
 function buildStyle() {
@@ -692,6 +704,7 @@ function refreshGridLabels() {
 
 // 지구본은 위도에 따라 배율 값이 달라진다(메르카토르 기준이라서). 적도에서 잰 값으로 바꿔 쓴다.
 function latitudeShift(lat = map.getCenter().lat) {
+  if (viewMode === "flat") return 0;
   return Math.log2(Math.cos((Math.min(Math.abs(lat), 85) * Math.PI) / 180));
 }
 
@@ -716,6 +729,7 @@ function refreshZoomRules() {
 // 지구 전체가 화면에 들어오는 배율(적도 기준). 보이는 지구본 지름이 화면 짧은 변의 88%가 되게 한다.
 // 사진기가 가까이 있어 보이는 반지름 r은 실제 반지름 R보다 작다: r = f·R / √(f² + 2fR).
 function wholeGlobeZoom() {
+  if (viewMode === "flat") return Math.min(1, Math.log2(Math.max(180, map.getCanvas().clientWidth) / 512)) - 0.12;
   const canvas = map.getCanvas();
   const shortSide = Math.min(canvas.clientWidth, canvas.clientHeight - 90);
   const r = shortSide * 0.44;
@@ -728,7 +742,7 @@ function wholeGlobeZoom() {
 function fitWholeGlobe(animate) {
   const zoom = wholeGlobeZoom();
   map.setMinZoom(zoom);
-  const view = { center: HOME.center, zoom: zoom + latitudeShift(HOME.lat) };
+  const view = { center: viewMode === "flat" ? [20, 15] : HOME.center, zoom: zoom + latitudeShift(HOME.lat) };
   if (animate) map.flyTo({ ...view, duration: 900 });
   else map.jumpTo(view);
 }
@@ -795,7 +809,7 @@ function visibility(id) {
 
 function applyLayerFilters() {
   for (const tier of [1, 2, 3, 4]) map.setFilter(`labels-${tier}`, labelFilter(tier));
-  for (const mark of poleMarks) mark.getElement().hidden = !enabled.has("grid");
+  for (const mark of poleMarks) mark.getElement().hidden = !enabled.has("grid") || viewMode === "flat";
   for (const id of ["borders-casing", "borders"]) map.setLayoutProperty(id, "visibility", visibility("country"));
   if (enabled.has("country")) loadFlags();
   for (const id of ["grid-coarse", "grid-fine", "grid-special", "grid-labels"]) {
@@ -839,12 +853,15 @@ function renderLayerBar() {
     });
     return button;
   };
-  KINDS.forEach((item) => bar.append(chip(item)));
-  const divider = document.createElement("span");
-  divider.className = "divider";
-  divider.setAttribute("aria-hidden", "true");
-  bar.append(divider);
-  BACKDROPS.forEach((item) => bar.append(chip(item)));
+  for (const [title, ids] of [["지형과 물", KINDS], ["바다·대기·위치", BACKDROPS]]) {
+    const group = document.createElement("details");
+    group.open = true;
+    const summary = document.createElement("summary");
+    summary.textContent = title;
+    group.append(summary);
+    ids.forEach(item => group.append(chip(item)));
+    bar.append(group);
+  }
 }
 
 // 바람을 켰을 때만 보이는 여름·겨울 단추
@@ -978,6 +995,7 @@ function clearSelection() {
   pulseMarker?.remove();
   pulseMarker = null;
   panel.hidden = true;
+  map.setPadding({top:0,bottom:0,left:0,right:0});
   highlightFlow(null);
 }
 
@@ -1056,7 +1074,9 @@ function keepInView(item) {
   const covered = x > box.left - 20 && x < box.right + 20 && y > box.top - 20 && y < box.bottom + 20;
   if (!covered) return;
   const sheet = box.width > canvas.width * 0.8;
-  const padding = sheet ? { top: 0, bottom: box.height, left: 0, right: 0 } : { top: 0, bottom: 0, left: box.right, right: 0 };
+  const padding = sheet
+    ? { top: 0, bottom: Math.min(box.height, canvas.height * 0.45), left: 0, right: 0 }
+    : { top: 0, bottom: 0, left: 0, right: Math.min(canvas.right - box.left + 20, canvas.width * 0.45) };
   map.easeTo({ center: item.lngLat, padding, duration: 700 });
 }
 
@@ -1139,4 +1159,34 @@ function showPanel(item) {
     panelCredit.hidden = true;
   }
   panel.scrollTop = 0;
+}
+
+function setStudyLayers(ids) {
+  enabled.clear();
+  for (const id of ids) if (CHIPS.some(c => c.id === id)) enabled.add(id);
+  document.querySelectorAll('[data-layer]').forEach(b => b.setAttribute('aria-pressed', String(enabled.has(b.dataset.layer))));
+  saveSettings();
+  if (ready) applyLayerFilters();
+}
+
+async function setViewMode(mode, instant = false) {
+  if (mode === viewMode) return;
+  viewMode = mode;
+  const center = map.getCenter();
+  const zoom = map.getZoom();
+  map.setMinZoom(Math.min(-1, map.getMinZoom()));
+  try {
+    await animateProjection(map, mode, {
+      reduced: instant || reducedMotion.matches,
+      targetZoom: Math.max(wholeGlobeZoom(), zoom + (mode === 'flat' ? -1.3 : 1.3)),
+      center: [center.lng, Math.max(-70, Math.min(70, center.lat))],
+    });
+  } catch (_) {
+    map.setProjection({type: mode === 'flat' ? 'mercator' : 'globe'});
+  }
+  map.setMinZoom(wholeGlobeZoom());
+  if (map.getZoom() < map.getMinZoom()) map.setZoom(map.getMinZoom());
+  for (const mark of poleMarks) mark.getElement().hidden = mode === 'flat' || !enabled.has('grid');
+  refreshZoomRules();
+  refreshGridLabels();
 }

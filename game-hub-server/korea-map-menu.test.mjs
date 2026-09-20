@@ -29,8 +29,7 @@ const worldMaps = groupByName.get('world-maps') || '';
 assert.ok(worldMaps, 'The world-map tools must be grouped in one disclosure menu.');
 assert.match(worldMaps, /<strong>세계 지도<\/strong><small>\(World Maps\)<\/small>/);
 assert.match(worldMaps, /data-content-paths="learning\/inquiry\/world-geography\/\|learning\/inquiry\/globe\/\|\/learn\/world-voyage\/"/);
-assert.match(worldMaps, /href="learning\/inquiry\/globe\/"[^>]*data-access-parent="world-maps"[\s\S]*?<strong>지구본<\/strong><small>\(Globe\)<\/small>/);
-assert.match(worldMaps, /href="learning\/inquiry\/world-geography\/"[^>]*data-access-parent="world-maps"[\s\S]*?<strong>지리<\/strong><small>\(Geography\)<\/small>/);
+assert.match(worldMaps, /href="learning\/inquiry\/globe\/"[^>]*data-access-parent="world-maps"[\s\S]*?<strong>지리 탐구<\/strong>/);
 assert.match(worldMaps, /id="cds95GameLink"[\s\S]*?href="\/learn\/world-voyage\/"[\s\S]*?data-player-handoff="query"[\s\S]*?data-access-parent="world-maps"[\s\S]*?<strong>대항해시대<\/strong>/);
 
 const vocabulary = groupByName.get('vocabulary') || '';

@@ -55,6 +55,8 @@ function requiredExperimentModels(){
  add('periodic-bonding',{id:'compound-conductivity',title:'화합물의 전기 전도성 비교',codes:['10통과1-02-04'],activity:'10통과1-02#4',line:2907,initial:{sample:'salt',state:'solution'},fields:[f('sample','비교 시료',[['salt','염화 나트륨'],['sugar','설탕']]),f('state','시료의 상태',[['solid','고체'],['solution','물에 녹임']])],view(s){const conducts=s.sample==='salt'&&s.state==='solution';let svg=r(140,120,180,125,'#eaf3f6')+r(145,165,170,73,s.state==='solution'?'#a9d5e8':'#eee6d5')+l(175,85,175,205)+l(285,85,285,205)+l(175,85,210,85)+l(250,85,285,85)+c(230,85,20,conducts?'#f3cb64':'#dbe3e8');return{svg,metrics:{conducts},readings:[['모형 전구',conducts?'켜짐':'켜지지 않음']],text:conducts?'염화 나트륨 수용액에서는 이온이 이동할 수 있어 전류가 흐릅니다.':'고체 염화 나트륨에서는 이온이 자유롭게 이동하지 못합니다. 설탕은 물에 녹아도 이온으로 나뉘지 않아 이 비교에서 전류가 거의 흐르지 않습니다.',note:'같은 장치·같은 조건의 정성 모형입니다. 모든 공유 결합 물질의 수용액이 전류를 흘리지 않는다는 뜻은 아닙니다. 실제 가정용 전원을 연결하지 않습니다.',check:q('염화 나트륨 수용액에 전류가 흐르는 까닭은?',['이온이 이동할 수 있어서','물에 녹으면 모든 물질이 금속이 되어서','고체 모양이 남아 있어서'],0,'전하를 띤 입자가 이동할 수 있는지 비교합니다.')};}});
  const more=typeof module!=='undefined'?require('./required-experiments-more.js').requiredMoreModels:window.requiredMoreModels;
  more?.({add,t,r,l,c,f,q,step,modelNote});
+ const final=typeof module!=='undefined'?require('./required-experiments-final.js').requiredFinalModels:window.requiredFinalModels;
+ final?.({add,t,r,l,c,f,q,step,modelNote});
  return specs;
 }
 if(typeof module!=='undefined')module.exports={requiredExperimentModels};

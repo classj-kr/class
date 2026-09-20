@@ -27,7 +27,7 @@
 | [고1 발전과 에너지 전환](<E:/webprojects/class/learning/inquiry/science-lab/energy-conversion/index.html>) | 10통과2-02-05 | 고1 자석/코일의 상대 운동·정지·극·속도에 따른 유도 전류 비교 | 검류계 방향은 정한 단자 기준. 정량 전류 측정·발전기 제작은 별도 |
 | [중3 화학 반응의 질량·부피 관계](<E:/webprojects/class/learning/inquiry/science-lab/mass-ratio/index.html>) | 9과16-05 | 중3 수소·산소·수증기 부피비, 전체 배수와 과량 반응물 자료 해석 | 같은 온도·압력, 물이 기체인 이상화 자료. 직접 점화 실험 아님 |
 | [중3 세포분열과 멘델 유전](<E:/webprojects/class/learning/inquiry/science-lab/pea-genetics/index.html>) | 9과21-01, 9과21-02 | 중3 체세포분열·생식세포 형성의 염색체 행동과 결과 비교 | 실제 분열 표본·교차의 분자 기작·발생 전체는 별도 |
-| [고1 세포막과 효소 작용](<E:/webprojects/class/learning/inquiry/science-lab/cell-membrane/index.html>) | 10통과1-03-05 | 고1 생감자·가열한 감자·물 대조군의 효소 작용 비교 | 같은 시작 온도와 양을 통제한 모형. 실제 효소 속도 정량 측정 아님 |
+| [고1 세포막·DNA·효소와 검출 원리](<E:/webprojects/class/learning/inquiry/science-lab/cell-membrane/index.html>) | 10통과1-03-05 | 고1 생감자·가열한 감자·물 대조군의 효소 작용 비교 | 같은 시작 온도와 양을 통제한 모형. 실제 효소 속도 정량 측정 아님 |
 | [중2 원소의 성질과 이온](<E:/webprojects/class/learning/inquiry/science-lab/flame-ions/index.html>) | 9과11-03 | 중2 같은 족 원소의 유사성: 나트륨/칼륨, 헬륨/네온 자료 비교 | 위험한 금속 반응의 직접 실험 지시가 아닌 시범 자료 설명 그림 |
 | [고1 중화 반응과 온도 변화](<E:/webprojects/class/learning/inquiry/science-lab/neutralization-common/index.html>) | 10통과2-01-04, 10통과2-01-05 | 고1 같은 농도·전체 부피에서 혼합 비율별 중화 온도·그래프와 4문항 신설 | 가상 온도. 다른 농도에 동일 부피 규칙 적용 금지, pH 적정곡선·엔탈피 제외 |
 | [중2 밀도·부력·기체 압력](<E:/webprojects/class/learning/inquiry/science-lab/density-buoyancy/index.html>) | 9과08-01 | 중2 순수한 가상 물질 A/B와 양을 바꾸어 녹는점·끓는점의 일정 구간 비교 | 같은 압력의 가상 자료. 실제 시약·가열 시간·측정값 아님 |

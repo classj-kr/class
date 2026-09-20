@@ -15,7 +15,7 @@
 | [고2~3 렌즈와 상](<E:/webprojects/class/learning/inquiry/science-lab/lens-image/index.html>) | 12물리03-02 | 고교 물리학 광선 추적; 결상·배율 계산 제거 | 반도체 공정 조사·설계는 별도 |
 | [고2~3 광전 효과와 물질파](<E:/webprojects/class/learning/inquiry/science-lab/photoelectric/index.html>) | 12물리03-03, 12물리03-04, 12전자02-04, 12전자03-04 | 광전 효과·준위·물질파; 문턱 조건 문항과 분해능 설명 교정 | 전자 현미경의 실제 분해능·보어 모형 한계 구별 |
 | [초3 소리와 진동](<E:/webprojects/class/learning/inquiry/science-lab/sound-vibration/index.html>) | 4과07-01, 4과07-02, 4과07-03 | 떨림·길이 비교에 실 전화기·소음 저감 관찰 안내 추가; 추가 실험: 소리굽쇠의 떨림 확인 (조건 조작·관찰 기록·확인 문제) | 소리를 실제 재생·측정하는 실험은 아님 |
-| [중2 파동의 전달](<E:/webprojects/class/learning/inquiry/science-lab/wave-transfer/index.html>) | 9과10-04 | 중2 진폭·진동수와 정성적 파동; 속력 공식 평가 제거 | 실제 소리 파형 분석은 별도 |
+| [중2 파동과 소리 파형 분석](<E:/webprojects/class/learning/inquiry/science-lab/wave-transfer/index.html>) | 9과10-04 | 중2 진폭·진동수와 정성적 파동; 속력 공식 평가 제거; 디지털 측정: 합성 신호·마이크 파형 분석, 조건별 상대 진폭·주파수 기록·내려받기 | 실제 소리 파형 분석은 별도 |
 | [고2~3 파동의 간섭과 정상파](<E:/webprojects/class/learning/inquiry/science-lab/interference/index.html>) | 12물리03-01, 12역학03-04, 12역학03-05 | 같은 진동수·출발 위상·진폭 조건을 문항에 명시 | 음파 속력 측정·악기 제작은 별도 |
 | [초3 힘의 작용과 지레](<E:/webprojects/class/learning/inquiry/science-lab/lever-balance/index.html>) | 4과01-01, 4과01-03, 4과01-04 | 초3 같은 상자를 밀고 당기기 전후 움직임 비교; 기존 앱 관찰 유지; 추가 실험: 무겁고 가벼운 물체 밀기 (조건 조작·관찰 기록·확인 문제) | 충분한 힘을 가정한 정성 모형. 실제 힘·거리 비례 측정 아님 |
 | [초6 빠르기 비교와 속력](<E:/webprojects/class/learning/inquiry/science-lab/speed/index.html>) | 6과10-01, 6과10-02 | 같은 시간/거리 비교·속력 계산·안전 관련 설명 확인 | 실제 이동 기록과 안전 실천은 별도 |
@@ -32,13 +32,13 @@
 | [고2~3 다이오드와 특수 상대성 이론](<E:/webprojects/class/learning/inquiry/science-lab/semiconductor-relativity/index.html>) | 12물리03-05, 12물리03-06 | 물리학 다이오드·시간 팽창/길이 수축 정성 모형 | 로런츠·쇼클리 정량식은 학생 화면에서 제외 |
 | [고2~3 전동기와 자성체](<E:/webprojects/class/learning/inquiry/science-lab/motor-magnet/index.html>) | 12물리02-04, 12물리02-05, 12전자01-03, 12전자01-04 | 전동기·정류자·자성체 비교 | 스피커 직접 설계·제작은 별도 |
 | [초5 열의 이동과 에너지 절약](<E:/webprojects/class/learning/inquiry/science-lab/heat-transfer/index.html>) | 6과07-01, 6과07-02, 6과07-03, 6과07-04, 6과08-03 | 전도에 접촉 온도·대류·복사·단열 비교 추가; 추가 실험: 에너지를 아끼는 집 비교 (조건 조작·관찰 기록·확인 문제) | 실제 온도계 측정·단열장치 제작은 별도 |
-| [중1 비열과 열팽창](<E:/webprojects/class/learning/inquiry/science-lab/specific-heat/index.html>) | 9과03-03 | 중1 같은 질량/열의 비열·열팽창 비교 | 모형 가열값과 센서 실측을 구별 |
+| [중1 비열과 열팽창](<E:/webprojects/class/learning/inquiry/science-lab/specific-heat/index.html>) | 9과03-02, 9과03-03 | 중1 같은 질량/열의 비열·열팽창 비교; 추가 실험: 고체의 열전도 비교 (조건 조작·관찰 기록·확인 문제) | 모형 가열값과 센서 실측을 구별 |
 | [고2~3 역학적 에너지와 열](<E:/webprojects/class/learning/inquiry/science-lab/energy-heat/index.html>) | 12물리01-04, 12물리01-05, 12역학02-03 | 물리학/역학과 에너지의 마찰·에너지 전환 | 정지/운동 마찰을 단순화한 조건 |
 | [고2~3 열기관의 효율과 열펌프](<E:/webprojects/class/learning/inquiry/science-lab/heat-engine/index.html>) | 12역학02-04 | 역학과 에너지의 열 이동·효율·열펌프 정성 모형 | 카르노·COP·엔트로피 계산을 학생 화면에서 제외 |
 | [고1 발전과 에너지 전환](<E:/webprojects/class/learning/inquiry/science-lab/energy-conversion/index.html>) | 10통과2-02-05, 10통과2-02-06 | 고1 자석/코일의 상대 운동·정지·극·속도에 따른 유도 전류 비교; 기존 앱 관찰 유지 | 검류계 방향은 정한 단자 기준. 정량 전류 측정·발전기 제작은 별도 |
 | [초3 물체의 무게와 세 가지 상태](<E:/webprojects/class/learning/inquiry/science-lab/weight-compare/index.html>) | 4과01-03, 4과05-01, 4과05-02 | 초3 용기를 바꾼 고체·액체의 모양/부피, 컵의 공기 공간 비교; 기존 앱 관찰 유지 | 같은 물질을 옮기는 관찰. 물질의 상태 변화·입자 설명은 제외 |
 | [중2 밀도·부력·기체 압력](<E:/webprojects/class/learning/inquiry/science-lab/density-buoyancy/index.html>) | 9과08-01, 9과05-02, 9과06-01, 9과06-02 | 중2 순수한 가상 물질 A/B와 양을 바꾸어 녹는점·끓는점의 일정 구간 비교 | 같은 압력의 가상 자료. 실제 시약·가열 시간·측정값 아님 |
-| [고1 자연의 규모와 측정 단위](<E:/webprojects/class/learning/inquiry/science-lab/measurement/index.html>) | 10통과1-01-01, 10통과1-01-02, 10통과1-01-03, 10과탐1-01-02 | 고1 규모·단위·반복 측정 | 실제 센서 아날로그/디지털 자료 취득은 별도 |
+| [고1 길이·시간과 디지털 측정](<E:/webprojects/class/learning/inquiry/science-lab/measurement/index.html>) | 10과탐1-01-02, 10통과1-01-01, 10통과1-01-02, 10통과1-01-03, 10통과1-01-04, 10통과2-03-02 | 고1 규모·단위·반복 측정; 디지털 측정: 합성 신호·마이크 파형 분석, 조건별 상대 진폭·주파수 기록·내려받기 및 실제 자 보정 길이·기기 시계 시간 측정 | 실제 센서 아날로그/디지털 자료 취득은 별도 |
 | [초5 물질 분류와 혼합물 분리](<E:/webprojects/class/learning/inquiry/science-lab/mixture-separation/index.html>) | 6과05-01, 6과05-02 | 물·기름 층 분리, 소금/모래 용해→거름→증발 회수 추가 | 가열·기구 취급은 교사 지도 실물 활동 |
 | [중2 거름·증류·크로마토그래피](<E:/webprojects/class/learning/inquiry/science-lab/separation-methods/index.html>) | 9과08-02, 9과08-03 | 증류의 순물질/혼합물 혼동 수정; 에탄올과 물 동시 기화·부분 분리 | 실제 온도·수율 계산이나 실물 절차 전체는 아님 |
 | [초4 물의 상태 변화](<E:/webprojects/class/learning/inquiry/science-lab/state-change/index.html>) | 4과10-01, 4과10-02, 4과10-03 | 초4 증발·끓음의 공통점과 차이, 차가운 컵 바깥 응결 비교; 기존 앱 관찰 유지 | 수증기 자체는 보이지 않음. 실제 가열·저울 측정은 별도 |
@@ -48,7 +48,7 @@
 | [중2 용해도 곡선 읽기](<E:/webprojects/class/learning/inquiry/science-lab/solubility-curve/index.html>) | 9과08-01, 9과08-03 | 중2 온도별 용해도·포화·석출 곡선 읽기 | 모든 물질의 용해도가 온도와 함께 증가하는 것은 아님 |
 | [중2 냉각과 결정 석출량](<E:/webprojects/class/learning/inquiry/science-lab/recrystallise/index.html>) | 9과08-03 | 중2 혼합물 분리로 재배치; 물의 양과 석출량 조건 수정 | 실제 회수율·순도 항상 증가를 보장하지 않음 |
 | [중2 원소의 성질과 이온](<E:/webprojects/class/learning/inquiry/science-lab/flame-ions/index.html>) | 9과11-01, 9과11-04, 9과11-03 | 중2 같은 족 원소의 유사성: 나트륨/칼륨, 헬륨/네온 자료 비교; 기존 앱 관찰 유지 | 위험한 금속 반응의 직접 실험 지시가 아닌 시범 자료 설명 그림 |
-| [고1 주기율표와 화학 결합](<E:/webprojects/class/learning/inquiry/science-lab/periodic-bonding/index.html>) | 10통과1-02-03, 10통과1-02-04 | 고1 원소 1~20 모형의 한계·헬륨 예외·공유 결합 일반화 수정; 추가 실험: 화합물의 전기 전도성 비교 (조건 조작·관찰 기록·확인 문제) | 모든 원소·가능한 이온 전체를 예측하는 모형 아님 |
+| [고1 주기율표와 화학 결합](<E:/webprojects/class/learning/inquiry/science-lab/periodic-bonding/index.html>) | 10통과1-02-03, 10통과1-02-04 | 고1 원소 1~20 모형의 한계·헬륨 예외·공유 결합 일반화 수정; 추가 실험: 화합물의 전기 전도성 비교 (조건 조작·관찰 기록·확인 문제); 추가 실험: 같은 족 원소 비교 실험 설계 (조건 조작·관찰 기록·확인 문제) | 모든 원소·가능한 이온 전체를 예측하는 모형 아님 |
 | [고2~3 분자 구조와 극성](<E:/webprojects/class/learning/inquiry/science-lab/molecule-shape/index.html>) | 12화학02-02, 12화학02-03, 12화학02-04 | 화학 분자 모양·극성; 이중결합 한 전자쌍 오표기와 균일 전기장 조건 수정 | 용해성의 모든 조건을 예측하지 않음 |
 | [초6 용액의 성질과 지시약](<E:/webprojects/class/learning/inquiry/science-lab/acid-base/index.html>) | 6과09-01, 6과09-02 | 초6 산성 용액과 탄산 칼슘, 염기성 용액과 단백질의 전후 반응 비교; 기존 앱 관찰 유지 | 교사 준비 시료의 모형. 반응 시간·농도·실제 측정은 별도 |
 | [고2~3 산·염기의 성질과 중화](<E:/webprojects/class/learning/inquiry/science-lab/neutralization/index.html>) | 12화학04-01, 12화학04-03 | 정량 pH·중화는 고1에서 화학 선택과목으로 이동 | 초등 혼합 색 변화와 구별 |
@@ -63,7 +63,7 @@
 | [초4 균류·원생생물·세균 관찰](<E:/webprojects/class/learning/inquiry/science-lab/microbes/index.html>) | 4과12-01 | 초4 버섯·곰팡이·해캄·짚신벌레·세균의 형태와 사는 곳 비교; 기존 앱 관찰 유지 | 준비된 표본의 설명 그림. 실제 사진·현미경·움직임 관찰은 별도 |
 | [초6 현미경과 세포 관찰](<E:/webprojects/class/learning/inquiry/science-lab/microscope/index.html>) | 6과11-01, 6과11-02 | 초6 식물 세포만 남김; 핵/막/벽·줄기 물 이동·녹말 반응·잎 물방울 모형 추가 | 현미경 실물 조작과 전처리·측정은 별도 |
 | [고2~3 세포막 수송과 삼투](<E:/webprojects/class/learning/inquiry/science-lab/cell-osmosis/index.html>) | 12세포01-05 | 삼투·원형질 분리는 세포와 물질대사로 이동 | 식물 세포와 적혈구의 차이 및 비투과성 용질 조건 명시 |
-| [고1 세포막과 효소 작용](<E:/webprojects/class/learning/inquiry/science-lab/cell-membrane/index.html>) | 10통과1-02-05, 10통과1-03-05 | 고1 생감자·가열한 감자·물 대조군의 효소 작용 비교; 기존 앱 관찰 유지; 추가 실험: DNA 염기쌍 모형 만들기 (조건 조작·관찰 기록·확인 문제) | 같은 시작 온도와 양을 통제한 모형. 실제 효소 속도 정량 측정 아님 |
+| [고1 세포막·DNA·효소와 검출 원리](<E:/webprojects/class/learning/inquiry/science-lab/cell-membrane/index.html>) | 10통과1-02-05, 10통과1-03-05, 10통과2-03-01 | 고1 생감자·가열한 감자·물 대조군의 효소 작용 비교; 기존 앱 관찰 유지; 추가 실험: DNA 염기쌍 모형 만들기 (조건 조작·관찰 기록·확인 문제); 추가 실험: 핵산·단백질 검출 원리 비교 (조건 조작·관찰 기록·확인 문제) | 같은 시작 온도와 양을 통제한 모형. 실제 효소 속도 정량 측정 아님 |
 | [고2~3 체세포 분열과 감수 분열](<E:/webprojects/class/learning/inquiry/science-lab/cell-division/index.html>) | 12생과03-01, 12생과03-02 | 생명과학 체세포/감수분열·DNA 양 | 중학교 발생·사람 유전 전체를 대신하지 않음 |
 | [초3 씨의 발아와 식물의 자람](<E:/webprojects/class/learning/inquiry/science-lab/seed-germination/index.html>) | 4과04-02, 4과04-03 | 초3 발아 물/온도·생장 물/햇빛 범위로 정리 | 실제 장기 재배·기록은 별도 |
 | [중2 광합성](<E:/webprojects/class/learning/inquiry/science-lab/photosynthesis/index.html>) | 9과12-01, 9과12-02, 9과12-03 | 중2 검정말 비교에 녹말 반응·호흡·산물 이용 추가; 추가 실험: 광합성에 필요한 물질 확인 (조건 조작·관찰 기록·확인 문제) | 기포는 조건을 통제한 상대 비교; 실측 자료 아님 |
@@ -93,7 +93,7 @@
 | [고2~3 마그마의 점성과 화산 분출](<E:/webprojects/class/learning/inquiry/science-lab/magma/index.html>) | 12지구02-03, 12지시01-04 | 고교 점성·분출; 계산 시간을 실제 분출 시간으로 제시하지 않음 | 마그마 생성 과정·편광현미경 관찰은 별도 |
 | [중2 지진과 판의 이동](<E:/webprojects/class/learning/inquiry/science-lab/plate-tectonics/index.html>) | 9과09-05 | 중2 판 경계와 지진 분포 | 실제 빅데이터·이론 발전사 전체는 별도 |
 | [고2~3 지진파와 진앙](<E:/webprojects/class/learning/inquiry/science-lab/earthquake/index.html>) | 12지시01-05 | 지구시스템과학 주시곡선·PS시·세 관측소 진앙 | 지각 두께·내부 구조 추론과는 다른 활동 |
-| [고1 지구 시스템의 상호작용](<E:/webprojects/class/learning/inquiry/science-lab/earth-system/index.html>) | 10통과1-03-01, 10통과2-02-03 | 고1 권역·물/탄소 순환; 체류 시간 오해·현재값/미래 예측 표현 정정; 추가 실험: 온실효과와 지구 열수지 (조건 조작·관찰 기록·확인 문제) | 고정 매개변수 시나리오이지 실제 기후 예측 아님 |
+| [고1 지구 시스템·개체군과 열수지](<E:/webprojects/class/learning/inquiry/science-lab/earth-system/index.html>) | 10통과1-03-01, 10통과2-02-02, 10통과2-02-03 | 고1 권역·물/탄소 순환; 체류 시간 오해·현재값/미래 예측 표현 정정; 추가 실험: 온실효과와 지구 열수지 (조건 조작·관찰 기록·확인 문제); 추가 실험: 환경에 따른 개체군 변동 (조건 조작·관찰 기록·확인 문제) | 고정 매개변수 시나리오이지 실제 기후 예측 아님 |
 | [초5 기온·바람·구름 관측](<E:/webprojects/class/learning/inquiry/science-lab/weather-watch/index.html>) | 6과06-01, 6과06-02, 6과06-03 | 초5 이슬/안개/구름 위치·고기압→저기압 바람 모형 추가; 추가 실험: 이슬·안개 발생 조건 비교 (조건 조작·관찰 기록·확인 문제); 추가 실험: 바람 발생 모형실험 (조건 조작·관찰 기록·확인 문제) | 실제 발생 실험·기상 관측과 구별 |
 | [중3 전선과 구름 생성](<E:/webprojects/class/learning/inquiry/science-lab/weather-front/index.html>) | 9과17-03, 9과17-04 | 중3 빠른 팽창·냉각·응결, 건조한 대조 조건과 다시 압축한 결과 비교; 기존 앱 관찰 유지 | 응결핵이 있는 모형. 디지털 센서 측정·실제 압력 장치 실험 아님 |
 | [고2~3 기상 자료와 대기 안정도](<E:/webprojects/class/learning/inquiry/science-lab/air-stability/index.html>) | 12지시03-03 | 지구시스템과학 안정도·푄; 구름 없는 단열 조건과 실제 푄 구별 | 고정 습윤 감률은 모든 기상 조건의 실측값 아님 |
@@ -103,13 +103,13 @@
 | [중3 수온 분포와 염분](<E:/webprojects/class/learning/inquiry/science-lab/seawater/index.html>) | 9과18-02 | 중3 수온 분포·염분; 고교 심층 순환/침강 계산 제거 | 표층 순환·실제 주변 바다 자료 분석은 별도 |
 | [고2~3 대기 대순환과 해수의 순환](<E:/webprojects/class/learning/inquiry/science-lab/ocean-circulation/index.html>) | 12지시02-01 | 지구시스템과학 전향·에크만·환류; 이상 조건 명시 | 모든 실제 표층 흐름이 45도라는 뜻 아님 |
 | [고2~3 해수의 수온·염분·밀도](<E:/webprojects/class/learning/inquiry/science-lab/ocean-layers/index.html>) | 12지구01-01, 12지구01-02 | 지구과학 해수 층·염분·밀도; 보편값/모든 해역 단정 완화 | ARGO·용존산소 실측과 전지구 순환 분포는 별도 |
-| [초4 달의 모양과 북극성 찾기](<E:/webprojects/class/learning/inquiry/science-lab/night-sky/index.html>) | 4과13-01, 4과13-03 | 초4 달 관찰·북극성; 계절 별자리 원리와 각속도 계산 제거 | 행성 특징 모형은 아직 없음 |
+| [초4 달의 모양과 북극성 찾기](<E:/webprojects/class/learning/inquiry/science-lab/night-sky/index.html>) | 4과13-01, 4과13-02, 4과13-03 | 초4 달 관찰·북극성; 계절 별자리 원리와 각속도 계산 제거; 추가 실험: 태양계 행성 모형 구성 (조건 조작·관찰 기록·확인 문제) | 행성 특징 모형은 아직 없음 |
 | [초6 태양 고도·계절과 지구의 운동](<E:/webprojects/class/learning/inquiry/science-lab/seasons/index.html>) | 6과12-01, 6과12-02, 6과12-03, 6과13-01, 6과13-02, 6과13-03 | 초6 하루 천체 위치·자전과 낮밤·계절별 대표 별자리 비교; 기존 앱 관찰 유지; 추가 실험: 그림자로 태양 고도 재기 (조건 조작·관찰 기록·확인 문제) | 별자리 설명 그림이며 실제 관측 프로그램·정확한 천체력 아님 |
 | [중1 달의 모양 변화](<E:/webprojects/class/learning/inquiry/science-lab/moon-phases/index.html>) | 9과07-04 | 달 위상 변화의 원리를 중1로 이동; 공전/위상 주기 구별 | 초등 관찰과 원리 설명을 구별 |
 | [중1 달과 별의 겉보기 운동](<E:/webprojects/class/learning/inquiry/science-lab/apparent-motion/index.html>) | 9과07-03 | 중1 겉보기 운동; 달 출몰 시각 차이는 평균값임을 보강 | 관측 위도에 따른 천체 운동 변화는 다루지 않음 |
 | [고2~3 행성의 겉보기 운동과 식](<E:/webprojects/class/learning/inquiry/science-lab/planet-motion/index.html>) | 12지구03-01 | 지구과학 역행·행성 위상·식 | 실제 관측 자료와 정밀 천체력은 별도 |
 | [중2 별의 밝기와 우주 팽창](<E:/webprojects/class/learning/inquiry/science-lab/stars-universe/index.html>) | 9과15-01, 9과15-02, 9과15-03 | 중2 거리 공식·허블 법칙 제외; 연주 시차·은하/성운/성단 추가 | 실제 천체 프로그램·우주탐사 계획은 별도 |
-| [고1 핵융합과 원소의 기원](<E:/webprojects/class/learning/inquiry/science-lab/star-elements/index.html>) | 10통과1-02-02, 10통과2-02-04 | 고1 원소 기원·별 질량별 결과 정성 모형 | 질량결손·결합에너지 정량과 상세 핵반응 제외 |
+| [고1 원소의 기원과 스펙트럼](<E:/webprojects/class/learning/inquiry/science-lab/star-elements/index.html>) | 10통과1-02-01, 10통과1-02-02, 10통과2-02-04 | 고1 원소 기원·별 질량별 결과 정성 모형; 추가 실험: 원소의 선스펙트럼 비교 (조건 조작·관찰 기록·확인 문제) | 질량결손·결합에너지 정량과 상세 핵반응 제외 |
 | [고2~3 별의 스펙트럼과 HR도](<E:/webprojects/class/learning/inquiry/science-lab/stars/index.html>) | 12지구03-02, 12지구03-03, 12행우02-02 | 고교 시차·스펙트럼·H-R도 | 정적 위치 관찰이 모든 질량별 진화 경로를 대체하지 않음 |
 | [고2~3 은하의 분류와 허블 법칙](<E:/webprojects/class/learning/inquiry/science-lab/galaxy-hubble/index.html>) | 12지구03-04, 12지구03-05, 12행우03-04 | 은하 분류·적색편이·허블; 우주론적 적색편이에 SR 속도식을 적용하던 오류 제거 | 관측 자료 전체 분석·우주론 모형 비교는 별도 |
 | [중1 동물·식물 세포 관찰](<E:/webprojects/class/learning/inquiry/science-lab/cell-structure/index.html>) | 9과02-01 | 중1 동물/식물 표본·배율·염색·핵/세포막/세포벽 비교와 4문항 신설; 기존 앱 관찰 유지 | 세포막은 구조 설명용 강조이며 실제로 항상 따로 보이는 것은 아님 |

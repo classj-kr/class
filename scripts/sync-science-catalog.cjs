@@ -7,6 +7,9 @@ const titles={'gravity-motion':'중력과 운동 — 낙하·충격',immune:'면
 Object.assign(titles,{"microbes":"균류·원생생물·세균 관찰","solubility":"용해량과 용액 진하기","refraction":"거울·렌즈와 빛의 반사·굴절","weight-compare":"물체의 무게와 세 가지 상태","volcano-model":"화산과 화성암 관찰","lever-balance":"힘의 작용과 지레","seasons":"태양 고도·계절과 지구의 운동","diffusion":"입자 운동·상태 변화·기체","weather-front":"전선과 구름 생성","motion-energy":"자유 낙하·빗면과 에너지","ohms-law":"전기 회로·정전기·코일","burning-conditions":"연소와 물질의 변화","mass-ratio":"화학 반응의 질량·부피 관계","pea-genetics":"세포분열과 멘델 유전","cell-membrane":"세포막과 효소 작용","flame-ions":"원소의 성질과 이온"});
 Object.assign(additions,{'volcano-model':[...(additions['volcano-model']||[]),'4과11-01'],'cell-membrane':['10통과1-02-05'],'heat-transfer':['6과08-03'],'living-environment':['4과16-02']});
 Object.assign(titles,{'volcano-model':'땅의 변화·화산과 화성암','heat-transfer':'열의 이동과 에너지 절약','living-environment':'강낭콩·먹이 관계와 기후변화','force-motion':'힘의 평형·탄성력·부력 측정','senses':'감각 기관과 맹점 확인'});
+Object.assign(additions,{'night-sky':['4과13-02'],'star-elements':['10통과1-02-01'],'earth-system':['10통과2-02-02'],'cell-membrane':[...(additions['cell-membrane']||[]),'10통과2-03-01'],'measurement':['10통과1-01-04','10통과2-03-02'],'specific-heat':['9과03-02']});
+Object.assign(titles,{'star-elements':'원소의 기원과 스펙트럼','earth-system':'지구 시스템·개체군과 열수지','measurement':'길이·시간과 디지털 측정','wave-transfer':'파동과 소리 파형 분석','cell-membrane':'세포막·DNA·효소와 검출 원리'});
+for(const slug of ['measurement','cell-membrane'])map[slug].subjects=[...new Set([...map[slug].subjects,'통합과학2'])];
 for(const [slug,codes]of Object.entries(additions))map[slug].codes=[...new Set([...map[slug].codes,...codes])].sort();
 for(const [slug,title]of Object.entries(titles))map[slug].title=title;
 const source=fs.readFileSync('references/moe/2022-revised-curriculum/extracted/09-science.txt','utf8');

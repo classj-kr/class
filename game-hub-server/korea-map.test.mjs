@@ -331,9 +331,9 @@ assert.match(server, /app\.use\(`\/learning\/inquiry\/\$\{oldFolder\}`, \(_req, 
 assert.ok(server.indexOf("${oldFolder}`, (_req, res)") < server.indexOf("classroomPlatform.requireSiteAccess)"), "옛 주소 보내기는 로그인 확인보다 앞이어야 합니다.");
 const platform = fs.readFileSync(new URL("game-hub-server/classroom-platform.js", root), "utf8");
 assert.match(platform, /WITH moved AS \(\s*DELETE FROM classroom_content_enabled\s*WHERE content_path IN \('\/learning\/inquiry\/korean-museum', '\/learning\/inquiry\/korea-travel-map',\s*'\/learning\/inquiry\/korea-geography', '\/learning\/inquiry\/korea-terrain'\)\s*RETURNING class_id, updated_by\s*\)\s*INSERT INTO classroom_content_enabled[\s\S]*?'\/learning\/inquiry\/korea-map'[\s\S]*?ON CONFLICT \(class_id, content_path\) DO NOTHING/);
-// 세계 지리는 국내 지도에 둔 Leaflet을 함께 쓴다.
+// 세계 지리의 옛 주소도 통합 지구본 렌더러를 사용한다.
 const worldHtml = fs.readFileSync(new URL("learning/inquiry/world-geography/index.html", root), "utf8");
-assert.match(worldHtml, /\.\.\/korea-map\/vendor\/leaflet\/leaflet\.js/);
+assert.match(worldHtml, /\.\.\/globe\/app\.js/);
 // 사이트 공통 흐름: 오답이면 다시 고르게 하고, 처음 고른 답으로 기록한다.
 assert.match(app, /다시 생각하고 다른 답을 골라보세요/);
 assert.match(app, /const firstTry = !session\.answers\[session\.index\]/);

@@ -108,3 +108,5 @@ neutralization-common|고1 같은 농도·전체 부피에서 혼합 비율별 �
 `.trim().split('\n').map(row=>{const [slug,current,boundary]=row.split('|');return{slug,current,boundary};});
 
 for(const r of require('./required-gap-review.cjs')){const entry=module.exports.find(x=>x.slug===r.slug);entry.current+='; 추가 실험: '+r.title+' (조건 조작·관찰 기록·확인 문제)';}
+
+for(const slug of ['measurement','wave-transfer']){const r=module.exports.find(x=>x.slug===slug);r.current+='; 디지털 측정: 합성 신호·마이크 파형 분석, 조건별 상대 진폭·주파수 기록·내려받기'+(slug==='measurement'?' 및 실제 자 보정 길이·기기 시계 시간 측정':'');}
