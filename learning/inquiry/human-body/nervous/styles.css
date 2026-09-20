@@ -722,3 +722,6 @@
 .eye-optics-tag.on, .brain-tag.on, .autonomic-tag.picked {
     animation: hb-tag-breathe 1.6s ease-in-out infinite;
 }
+
+.pupil-tag.note { width: 44%; white-space: normal; text-align: center; line-height: 1.5; }
+.pupil-tag.warm, .pupil-tag.step { max-width: 39%; white-space: normal; line-height: 1.5; }

@@ -408,3 +408,5 @@
 [class$="-tag"].on, [class$="-tag"].picked {
     animation: hb-tag-breathe 1.6s ease-in-out infinite;
 }
+
+.enzyme-tag.warm { max-width: 90%; white-space: normal; text-align: center; }

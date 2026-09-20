@@ -141,7 +141,7 @@
         wrap.appendChild(layer);
 
         svg = document.createElementNS(SVG_NS, 'svg');
-        svg.setAttribute('viewBox', '0 0 1000 520');
+        svg.setAttribute('viewBox', '0 0 1000 560');
         svg.setAttribute('preserveAspectRatio', 'xMidYMid meet');
         var body = layer.querySelector('.enzyme-lab-body');
         body.appendChild(svg);
@@ -207,8 +207,7 @@
             g.appendChild(el('line', { x1: x, y1: 210, x2: x, y2: 216, stroke: '#64748b', 'stroke-width': 2 }));
             tag(620 + x, 292, String(p), 'dim');
         }
-        tag(612, 88, '활', 'dim', 'end');
-        tag(612, 112, '성', 'dim', 'end');
+        tag(590, 100, '활성', 'dim', 'end');
 
         curvePath = el('path', { fill: 'none', stroke: '#fbbf24', 'stroke-width': 3 });
         g.appendChild(curvePath);
@@ -216,9 +215,9 @@
         marker = el('circle', { r: 8, fill: '#f43f5e', stroke: '#ffffff', 'stroke-width': 2.5 });
         g.appendChild(marker);
 
-        headline = tag(620, 348, '', 'warm', 'start');
-        summary = tag(620, 372, '', 'dim', 'start');
-        pairNote = tag(620, 396, '', 'dim', 'start');
+        headline = tag(500, 434, '', 'warm');
+        summary = tag(500, 476, '', 'dim');
+        pairNote = tag(500, 520, '', 'dim');
     }
 
     /* ── 현재 조작 상태 읽기 (app.js 를 건드리지 않으려고 화면에서 직접 읽는다) ── */

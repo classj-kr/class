@@ -101,7 +101,7 @@
         tagLayer = document.createElement('div');
         tagLayer.className = 'pupil-tags';
 
-        svg = el('svg', { viewBox: '0 0 1000 560', preserveAspectRatio: 'xMidYMid meet' });
+        svg = el('svg', { viewBox: '0 0 1000 620', preserveAspectRatio: 'xMidYMid meet' });
         layer.appendChild(svg);
         layer.appendChild(tagLayer);   // 글씨는 그림 밖에 얹는다
 
@@ -157,7 +157,7 @@
         g.appendChild(el('line', { x1: CX + 148, y1: CY + 144, x2: CX + 109, y2: CY + 82, stroke: '#22d3ee', 'stroke-width': 2 }));
         pupilLabel = tag(CX, CY + 178, '', '#f8fafc');
         g.appendChild(pupilLabel);
-        muscleNote = htmlTag(CX, 522, '', 'note');
+        muscleNote = htmlTag(CX, 556, '', 'note');
     }
 
     function drawPath() {
@@ -185,8 +185,8 @@
             }
         }
 
-        htmlTag(590, 506, '중추는 중간뇌입니다.', 'warm', 'start');
-        htmlTag(590, 528, '대뇌를 거치지 않아 나도 모르게 일어납니다 (무조건 반사).', 'warm', 'start');
+        htmlTag(590, 506, '빛에 대한 축동 반사의 중추: 중간뇌', 'warm', 'start');
+        htmlTag(590, 560, '대뇌를 거치지 않아 나도 모르게 일어납니다 (무조건 반사).', 'warm', 'start');
     }
 
     function watchControls() {
@@ -246,7 +246,7 @@
             bright ? '밝은 빛 (자극)' : '어두움 (자극이 줄어듦)',
             '망막 (감각기)',
             '시각 신경 (감각 신경)',
-            '중간뇌 (중추)',
+            bright ? '중간뇌 (중추)' : '시상하부 · 척수의 교감신경 경로',
             bright ? '부교감신경' : '교감신경',
             bright ? '홍채의 원형근 수축 (반응기)' : '홍채의 방사근 수축 (반응기)',
             bright ? '동공 축소' : '동공 확대'

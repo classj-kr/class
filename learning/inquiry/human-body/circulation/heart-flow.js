@@ -47,10 +47,10 @@
         { id: 'leftAtrium', text: '좌심방', fx: 0.5, fy: 0.65 },
         { id: 'leftVentricle', text: '좌심실', fx: 0.55, fy: 0.55 },
         { id: 'septum', text: '심실 사이막', fx: 0.5, fy: 0.88 },
-        { id: 'valveTricuspid', text: '삼첨판', fx: 0.5, fy: 0.35 },
-        { id: 'valveMitral', text: '이첨판', fx: 0.5, fy: 0.35 },
-        { id: 'valvePulmonary', text: '폐동맥판', fx: 0.5, fy: -0.6 },
-        { id: 'valveAortic', text: '대동맥판', fx: 0.5, fy: -0.6 },
+        { id: 'valveTricuspid', text: '삼첨판', sx: 375, sy: 340, ax: 140, ay: 400 },
+        { id: 'valveMitral', text: '이첨판', sx: 625, sy: 340, ax: 880, ay: 400 },
+        { id: 'valvePulmonary', text: '폐동맥판', sx: 456, sy: 344, ax: 140, ay: 315 },
+        { id: 'valveAortic', text: '대동맥판', sx: 544, sy: 344, ax: 880, ay: 315 },
         { id: 'vesselVenaCava', text: '대정맥', fx: 0.164, fy: 0.45 },
         { id: 'vesselPulmonaryArtery', text: '폐동맥', fx: 0.81, fy: 0.28 },
         { id: 'vesselPulmonaryVein', text: '폐정맥', fx: 0.58, fy: 0.32 },
@@ -239,6 +239,9 @@
         pathSys = svg.querySelector('#flowSystemic');
         if (!pathPul || !pathSys) return;
 
+        // Each route ends in the receiving atrium. Never close a path across the septum.
+        pathPul.setAttribute('d', 'M360 470 C350 410 410 380 456 348 L456 235 C456 195 405 175 385 165 C370 128 402 82 450 82 L500 82 L550 82 C590 82 615 115 620 165 L620 238 L620 320');
+        pathSys.setAttribute('d', 'M620 440 C620 395 565 375 544 348 L544 220 C544 155 580 135 650 135 C740 135 755 175 755 265 L755 586 C755 612 720 628 650 628 L500 628 L350 628 C280 628 193.35 612 193.35 586 L193.35 345 C193.35 285 265 238 320 238 L370 238 L370 320');
         lenPul = pathPul.getTotalLength();
         lenSys = pathSys.getTotalLength();
 
@@ -413,17 +416,30 @@
 
     function flapValves() {
         var s = Math.sin(phase);
-        // 심방이 짤 때 방실판막이 열리고, 심실이 짤 때 동맥판막이 열린다
-        setValve('valveTricuspid', s > 0);
-        setValve('valveMitral', s > 0);
-        setValve('valvePulmonary', s < 0);
-        setValve('valveAortic', s < 0);
+        setValve('valveTricuspid', Math.max(0, s), 335, 415, 338, 1);
+        setValve('valveMitral', Math.max(0, s), 585, 665, 338, 1);
+        setValve('valvePulmonary', Math.max(0, -s), 432, 480, 348, -1);
+        setValve('valveAortic', Math.max(0, -s), 520, 568, 348, -1);
     }
 
-    function setValve(id, open) {
-        var el = svg.querySelector('#' + id);
-        if (!el) return;
-        el.setAttribute('opacity', open ? 0.35 : 1);
+    function setValve(id, opening, left, right, y, direction) {
+        var group = svg.querySelector('#' + id);
+        var leaflet = group && group.querySelector('path');
+        if (!leaflet) return;
+        var mid = (left + right) / 2;
+        var gap = (right - left) * .37 * opening;
+        var tipY = y + direction * (5 + opening * 24);
+        leaflet.setAttribute('d',
+            'M' + left + ' ' + y + ' Q' + left + ' ' + tipY + ' ' + (mid - gap) + ' ' + tipY +
+            ' M' + right + ' ' + y + ' Q' + right + ' ' + tipY + ' ' + (mid + gap) + ' ' + tipY);
+        leaflet.style.fill = 'none';
+        leaflet.style.strokeLinecap = 'round';
+        group.dataset.opening = opening.toFixed(3);
+        var cords = group.querySelectorAll('line');
+        cords.forEach(function (cord, i) {
+            cord.setAttribute('x1', i === 0 ? mid - gap : mid + gap);
+            cord.setAttribute('y1', tipY);
+        });
     }
 
     // file:/// 실행 시 브라우저 CORS 차단 대비용 내장 SVG

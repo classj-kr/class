@@ -18,6 +18,8 @@ const ShipMotion = require('./lib/ship-motion.js');
 const ArrivalZones = require('./lib/arrival-zones.js');
 const CompletionRewards = require('./lib/completion-rewards.js');
 const FinalQuiz = require('./lib/final-quiz.js');
+const VoyageShips = require('./public/js/ship-designs.js');
+const SHIP_ORIGINS = require('./data/catalog/ship-origins.json').ports;
 const ARRIVAL_ZONES = require('./data/catalog/arrival-zones.json');
 
 const PORT = Number(process.env.PORT || 3000);
@@ -1673,6 +1675,11 @@ function publicPlayer(p, nowGameMinutes = classGameMinutes(p.roomCode)) {
   const activeMission = store.room(p.roomCode).activeMission;
   const currentCity = currentCityForPlayer(p);
   const raceProgress = isArrivalRace(activeMission) ? progressFor(p.roomCode, p.name, activeMission.id, false) : null;
+  // Derive appearance from the persisted choice, never from the current port.
+  // This also restores the same ship after reconnect without extra saved state.
+  const shipProgress = raceProgress || (isStartChoiceSet(activeMission) ? progressFor(p.roomCode, p.name, activeMission.id, false) : null);
+  const ship = VoyageShips.selection(isFreeRoom(p.roomCode) ? 'free' : 'race', activeMission, shipProgress,
+    id => { const city = RESOLVED_PLACES.get(id); return city ? { ...city, ...SHIP_ORIGINS[id] } : null; });
   const raceCompleted = raceProgress?.status === 'completed';
   const finishRank = Number.isFinite(raceProgress?.finishRank) ? raceProgress.finishRank : null;
   const transition = p.transition ? (() => {
@@ -1717,6 +1724,11 @@ function publicPlayer(p, nowGameMinutes = classGameMinutes(p.roomCode)) {
     currentCityRegion: currentCity?.region || '',
     currentCityImage: currentCity?.interiorImage || '',
     lastCityId: p.lastCityId || null,
+    shipType: ship?.type || null,
+    shipName: ship?.name || '',
+    shipOriginId: ship?.originId || null,
+    shipOriginName: ship?.originName || '',
+    shipScale: ship?.scale || 1,
     shipPortId: p.shipPortId || null,
     shipPortName: RESOLVED_PLACES.get(String(p.shipPortId || ''))?.name
       || (Number.isFinite(p.shipAnchorX) ? '해안 상륙 지점' : ''),

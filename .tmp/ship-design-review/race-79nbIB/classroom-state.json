@@ -1,0 +1,281 @@
+{
+  "version": 10,
+  "rooms": {
+    "3182": {
+      "activeMission": {
+        "hunt": null,
+        "id": "arrival-race-mu9g97yt-xz5964",
+        "roomCode": "3182",
+        "kind": "arrivalRace",
+        "mode": "any",
+        "title": "크림반도 도착 미션",
+        "instructions": "크림반도에 도착한 뒤 최종 문제 3개를 모두 제출하면 완주합니다. 출발 도시 네 곳 중 하나를 선택하세요.",
+        "atlasInstruction": "",
+        "markerMode": "hidden",
+        "targetPlace": {
+          "id": "crimea_peninsula",
+          "name": "크림반도",
+          "category": "반도",
+          "region": "흑해 북부",
+          "continent": "유럽",
+          "atlasHint": "흑해 북쪽으로 돌출된 큰 반도",
+          "mode": "land",
+          "point": {
+            "x": 23784,
+            "y": 5016
+          },
+          "radiusTiles": 18
+        },
+        "finalQuiz": {
+          "version": 1,
+          "questionCount": 3,
+          "targetPlaceId": "crimea_peninsula",
+          "targetPlaceName": "크림반도",
+          "targetRegion": "흑해 북부",
+          "questions": [
+            {
+              "id": "regional",
+              "type": "regional-reading",
+              "label": "지역 역사·지리",
+              "passage": "목적지 ‘크림반도’ 주변의 흑해 북부 지역에 관한 자료이다.\n\n바다와 맞닿은 육지나 여러 섬으로 이루어진 지역에서는 연안 항로와 내륙 이동로가 항구에서 이어진다. 바람과 해류에 따라 접근하기 좋은 해안이 달라지고, 항구 사이의 짧은 항해가 장거리 항로와 연결되기도 한다.",
+              "prompt": "이 자료에 나타난 해안 지역의 교통 특징을 가장 잘 정리한 것은?",
+              "choices": [
+                "바람과 해류와 상관없이 가까운 해안에 배를 대면 된다",
+                "바다 쪽 조건이 좋으면 육상 연결은 살피지 않아도 된다",
+                "연안의 자연조건과 육상 연결을 함께 고려해야 한다",
+                "짧은 연안 항해는 장거리 항로와 이어지지 않고 따로 운영된다"
+              ],
+              "answerIndex": 2,
+              "explanation": "해안 접근 조건과 항구에서 이어지는 육상·연안 교통을 함께 살펴야 합니다."
+            },
+            {
+              "id": "reading",
+              "type": "general-reading",
+              "label": "자료 해석",
+              "passage": "어느 선단은 빠른 배에 값비싼 상품을 싣고 먼저 출발시켰다. 무거운 보급품은 큰 배에 나누어 실었고, 두 배는 폭풍이 잦은 해역을 지난 뒤 정해 둔 항구에서 다시 만나기로 했다.",
+              "prompt": "이 선단이 사용한 전략을 가장 잘 정리한 것은?",
+              "choices": [
+                "화물의 성격에 따라 운송 방식과 합류 지점을 나누었다",
+                "큰 배의 적재 공간을 확보하기 위해 상품 가격을 조정했다",
+                "폭풍 해역에서 두 배의 이동 속도를 같게 맞추었다",
+                "빠른 배의 안전을 위해 보급품 사용을 줄였다"
+              ],
+              "answerIndex": 0,
+              "explanation": "상품과 보급품을 서로 다른 배에 배치하고 합류 장소를 정했습니다."
+            },
+            {
+              "id": "calculation",
+              "type": "calculation",
+              "label": "계산",
+              "passage": "선원 11명이 6일 동안 항해한다. 한 사람은 하루에 식수 3통을 사용하며, 비상용 식수 50통도 싣기로 했다.",
+              "prompt": "준비해야 할 식수는 모두 몇 통인가?",
+              "choices": [
+                "182통",
+                "248통",
+                "298통",
+                "266통"
+              ],
+              "answerIndex": 1,
+              "explanation": "11×6×3+50=248통입니다."
+            }
+          ]
+        },
+        "startOptions": [
+          {
+            "id": "original_city_223",
+            "startPlace": {
+              "id": "original_city_223",
+              "name": "포르투",
+              "region": "이베리아",
+              "continent": "",
+              "atlasHint": "",
+              "point": {
+                "x": 19032,
+                "y": 5432
+              }
+            }
+          },
+          {
+            "id": "original_city_215",
+            "startPlace": {
+              "id": "original_city_215",
+              "name": "말라가",
+              "region": "이베리아",
+              "continent": "",
+              "atlasHint": "",
+              "point": {
+                "x": 19512,
+                "y": 5928
+              }
+            }
+          },
+          {
+            "id": "nagasaki",
+            "startPlace": {
+              "id": "nagasaki",
+              "name": "나가사키",
+              "region": "동북아시아",
+              "continent": "",
+              "atlasHint": "",
+              "point": {
+                "x": 34440,
+                "y": 6376
+              }
+            }
+          },
+          {
+            "id": "original_city_020",
+            "startPlace": {
+              "id": "original_city_020",
+              "name": "아카풀코",
+              "region": "중앙아메리카",
+              "continent": "",
+              "atlasHint": "",
+              "point": {
+                "x": 8904,
+                "y": 8136
+              }
+            }
+          }
+        ],
+        "createdAt": 1789886579861,
+        "phase": "selecting",
+        "startedAtGameMinutes": null
+      },
+      "progress": {
+        "선박검증0": {
+          "arrival-race-mu9g97yt-xz5964": {
+            "status": "assigned",
+            "stageIndex": 0,
+            "cargoItemId": null,
+            "selectedMissionId": null,
+            "selectedStartPlaceId": "original_city_223",
+            "shipPortId": "original_city_223",
+            "finalQuizStatus": "none",
+            "finalQuizArrivedAt": null,
+            "finalQuizAnswers": [
+              null,
+              null,
+              null
+            ],
+            "finalCorrectCount": null,
+            "finalSubmittedAt": null,
+            "completedAt": null,
+            "completedGameMinutes": null,
+            "finishRank": null
+          }
+        },
+        "선박검증2": {
+          "arrival-race-mu9g97yt-xz5964": {
+            "status": "assigned",
+            "stageIndex": 0,
+            "cargoItemId": null,
+            "selectedMissionId": null,
+            "selectedStartPlaceId": "nagasaki",
+            "shipPortId": "nagasaki",
+            "finalQuizStatus": "none",
+            "finalQuizArrivedAt": null,
+            "finalQuizAnswers": [
+              null,
+              null,
+              null
+            ],
+            "finalCorrectCount": null,
+            "finalSubmittedAt": null,
+            "completedAt": null,
+            "completedGameMinutes": null,
+            "finishRank": null
+          }
+        },
+        "선박검증3": {
+          "arrival-race-mu9g97yt-xz5964": {
+            "status": "assigned",
+            "stageIndex": 0,
+            "cargoItemId": null,
+            "selectedMissionId": null,
+            "selectedStartPlaceId": "original_city_020",
+            "shipPortId": "original_city_020",
+            "finalQuizStatus": "none",
+            "finalQuizArrivedAt": null,
+            "finalQuizAnswers": [
+              null,
+              null,
+              null
+            ],
+            "finalCorrectCount": null,
+            "finalSubmittedAt": null,
+            "completedAt": null,
+            "completedGameMinutes": null,
+            "finishRank": null
+          }
+        },
+        "선박검증1": {
+          "arrival-race-mu9g97yt-xz5964": {
+            "status": "assigned",
+            "stageIndex": 0,
+            "cargoItemId": null,
+            "selectedMissionId": null,
+            "selectedStartPlaceId": "original_city_215",
+            "shipPortId": "original_city_215",
+            "finalQuizStatus": "none",
+            "finalQuizArrivedAt": null,
+            "finalQuizAnswers": [
+              null,
+              null,
+              null
+            ],
+            "finalCorrectCount": null,
+            "finalSubmittedAt": null,
+            "completedAt": null,
+            "completedGameMinutes": null,
+            "finishRank": null
+          }
+        }
+      },
+      "settings": {
+        "paused": false,
+        "locked": false,
+        "roomType": "race",
+        "started": false
+      },
+      "clock": {
+        "gameMinutes": 747
+      },
+      "discoveries": {
+        "선박검증0": [],
+        "선박검증1": [],
+        "선박검증2": [],
+        "선박검증3": [],
+        "선박관찰자": []
+      },
+      "hunts": {},
+      "host": {
+        "tokenHash": "2095384011405fd4f7a0c89f73eb323a8dbeed6b309bf972316b71d9e02e43bd",
+        "createdAt": 1789886576190,
+        "lastActiveAt": 1789886579860
+      }
+    },
+    "3705": {
+      "activeMission": null,
+      "progress": {},
+      "settings": {
+        "paused": false,
+        "locked": false,
+        "roomType": "free",
+        "started": false
+      },
+      "clock": {
+        "gameMinutes": 0
+      },
+      "discoveries": {
+        "자유항해검증": []
+      },
+      "hunts": {},
+      "host": {
+        "tokenHash": "e1bf8b6acacb0327154b80df437e4174a7490971dca8427024e7e57223f52fbd",
+        "createdAt": 1789886579954,
+        "lastActiveAt": 1789886579955
+      }
+    }
+  }
+}

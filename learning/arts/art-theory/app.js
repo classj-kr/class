@@ -288,6 +288,7 @@
             <button type="button" class="light-btn" data-light="cool-led"><i style="background:#8bc4ff;box-shadow:0 0 8px #8bc4ff"></i> 차가운 LED (6500K)</button>
             <button type="button" class="light-btn" data-light="candle"><i style="background:#ff6122;box-shadow:0 0 8px #ff6122"></i> 촛불 (1900K)</button>
           </div>
+          <p class="screen-color-note">사진에 색 필터를 적용한 비교입니다. 실제 조명 아래에서 보이는 색과는 차이가 있습니다.</p>
           <div class="study-output" id="lightOutput">
             <h3>자연광 (5500K)</h3>
             <p>자연의 햇빛은 가시광선 전 영역을 고르게 포함하고 있어, 흰 벽의 청량함과 노란 옷감, 울트라마린 파랑이 왜곡 없이 각자의 본래 색채로 균형 있게 반사됩니다.</p>
@@ -338,6 +339,7 @@
             <div class="scale-block"><header><h3>채도 Chroma</h3><output id="chromaOutput">8</output></header><div class="chroma-scale" id="chromaScale"></div><input id="chromaControl" type="range" min="0" max="12" step="2" value="8" aria-label="채도"></div>
           </section>
         </div>
+        <p class="screen-color-note">화면의 색은 속성 변화를 비교하기 위한 근사 예시이며, 표준 먼셀 색표와 일치하지 않습니다.</p>
         <div class="claim"><strong>먼셀 기호 읽기</strong> — 표기 <strong>B 5/8</strong>은 파랑(B), 명도 5, 채도 8을 뜻합니다. 색상은 각도가 아니라 색상환의 위치와 기호로 읽습니다.</div>`;
       
       let selectedHue = tenHues[6];

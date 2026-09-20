@@ -164,7 +164,8 @@
                 drop.progress = 0.0;
                 drop.side = Math.random() > 0.5 ? 'left' : 'right';
                 // Accumulate urine in bladder
-                bladderVolume = Math.min(100, bladderVolume + 0.22 * (hydration / 50));
+                if (!document.querySelector('.urine-layer:not([hidden])'))
+                    bladderVolume = Math.min(100, bladderVolume + 0.22 * (hydration / 50));
                 updateBladderUI();
             }
         }
@@ -394,7 +395,7 @@
 
         if (urinateBtn) {
             urinateBtn.addEventListener('click', function () {
-                bladderVolume = 0;
+                if (!document.querySelector('.urine-layer:not([hidden])')) bladderVolume = 0;
                 updateBladderUI();
                 if (typeof SimEngine !== 'undefined' && SimEngine.SoundFX) SimEngine.SoundFX.playClick();
             });
@@ -483,6 +484,15 @@
         if (organDescEl) organDescEl.textContent = data.desc;
         if (organDetailCard) organDetailCard.style.display = 'block';
     }
+
+    window.ExcretionState = {
+        getVolume: function () { return bladderVolume / 100; },
+        setVolume: function (level) {
+            bladderVolume = Math.max(0, Math.min(100, level * 100));
+            updateBladderUI();
+        },
+        tone: urineTone
+    };
 
     function updateBladderUI() {
         if (bladderProgressEl) bladderProgressEl.style.width = bladderVolume + '%';

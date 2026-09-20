@@ -126,6 +126,7 @@ button,input{font:inherit}button{border:1px solid var(--line);background:#17313b
 <script src="/learn/world-voyage/socket.io/socket.io.js"></script>
 <script src="/learn/world-voyage/js/terrain.js?v=81"></script>
 <script src="/learn/world-voyage/js/city-icons.js?v=1"></script>
+<script src="/learn/world-voyage/js/ship-designs.js?v=1"></script>
 <script src="/learn/world-voyage/js/geo-motion.js?v=75"></script>
 <script src="/learn/world-voyage/js/ocean-current.js"></script>
 <script src="/learn/world-voyage/js/wind.js?v=77"></script>
@@ -519,7 +520,7 @@ function applyModeUI(){
   const medal=missionProgress?.status==='completed'?`${medalText(missionProgress.finishRank)} `:'';
   identity.textContent=mode==='sea'?`${roomCodeCurrent} · ${medal}${self.name}의 배`:mode==='city'?`${roomCodeCurrent} · ${medal}${self.name} · ${serverSelf?.currentCityName||'도시'}`:`${roomCodeCurrent} · ${medal}${self.name} 탐험대`;
   const shipInfo=mode==='land'&&serverSelf?.shipPortName?` · 배 정박: ${serverSelf.shipPortName}`:'';
-  modeHud.textContent=`현재 상태: ${busy?(serverSelf.transition.label||'전환 중'):modeLabel(mode)}${shipInfo}`;
+  modeHud.textContent=`현재 상태: ${busy?(serverSelf.transition.label||'전환 중'):modeLabel(mode)}${shipInfo}${mode==='sea'&&serverSelf?.shipName?' · '+serverSelf.shipName:''}`;
   syncBackgroundMusic();
 }
 
@@ -603,13 +604,13 @@ socket.on('snapshot',snap=>{
   if(!self)self={...serverSelf};
   const ex=dxWrap(serverSelf.x,self.x),ey=serverSelf.y-self.y,err=Math.hypot(ex,ey);
   if(err>100||previousMode!==mode){self.x=serverSelf.x;self.y=serverSelf.y}else{self.x=wrapX(self.x+ex*.32);self.y+=ey*.32}
-  self.dir=serverSelf.dir;self.name=serverSelf.name;self.finishRank=serverSelf.finishRank;self.missionCompleted=serverSelf.missionCompleted;self.speedBoostMultiplier=serverSelf.speedBoostMultiplier;self.shipPortId=serverSelf.shipPortId;self.shipPortName=serverSelf.shipPortName;self.shipAnchoredAtShore=serverSelf.shipAnchoredAtShore;self.shipAnchorX=serverSelf.shipAnchorX;self.shipAnchorY=serverSelf.shipAnchorY;self.shipAnchorDir=serverSelf.shipAnchorDir;
+  self.dir=serverSelf.dir;self.name=serverSelf.name;self.moving=serverSelf.moving;self.shipType=serverSelf.shipType;self.shipName=serverSelf.shipName;self.shipOriginId=serverSelf.shipOriginId;self.shipOriginName=serverSelf.shipOriginName;self.shipScale=serverSelf.shipScale;self.finishRank=serverSelf.finishRank;self.missionCompleted=serverSelf.missionCompleted;self.speedBoostMultiplier=serverSelf.speedBoostMultiplier;self.shipPortId=serverSelf.shipPortId;self.shipPortName=serverSelf.shipPortName;self.shipAnchoredAtShore=serverSelf.shipAnchoredAtShore;self.shipAnchorX=serverSelf.shipAnchorX;self.shipAnchorY=serverSelf.shipAnchorY;self.shipAnchorDir=serverSelf.shipAnchorDir;
   onlineEl.textContent=snap.online;nearbyEl.textContent=snap.nearby.length;nearbyGroup.hidden=roomType==='free';
   if(serverSelf.noticeSeq>lastNoticeSeq){lastNoticeSeq=serverSelf.noticeSeq;if(serverSelf.noticeText)showToast(serverSelf.noticeText,serverSelf.noticeText.includes('완료')||serverSelf.noticeText.includes('도착')||serverSelf.noticeText.includes('입항')||serverSelf.noticeText.includes('보급')?'good':serverSelf.noticeText.includes('없')||serverSelf.noticeText.includes('떨어')?'warn':'info')}
   const seen=new Set();
   for(const p of snap.nearby){
     seen.add(p.id);const old=remote.get(p.id);
-    if(old){old.fromX=old.x;old.fromY=old.y;old.targetX=p.x;old.targetY=p.y;old.name=p.name;old.dir=p.dir;old.mode=p.mode;old.finishRank=p.finishRank;old.missionCompleted=p.missionCompleted;old.speedBoostMultiplier=p.speedBoostMultiplier;old.missionStatus=p.missionStatus;old.shipAnchoredAtShore=p.shipAnchoredAtShore;old.shipAnchorX=p.shipAnchorX;old.shipAnchorY=p.shipAnchorY;old.shipAnchorDir=p.shipAnchorDir;old.received=performance.now()}
+    if(old){old.fromX=old.x;old.fromY=old.y;old.targetX=p.x;old.targetY=p.y;old.name=p.name;old.dir=p.dir;old.mode=p.mode;old.moving=p.moving;old.shipType=p.shipType;old.shipName=p.shipName;old.shipOriginId=p.shipOriginId;old.shipOriginName=p.shipOriginName;old.shipScale=p.shipScale;old.finishRank=p.finishRank;old.missionCompleted=p.missionCompleted;old.speedBoostMultiplier=p.speedBoostMultiplier;old.missionStatus=p.missionStatus;old.shipAnchoredAtShore=p.shipAnchoredAtShore;old.shipAnchorX=p.shipAnchorX;old.shipAnchorY=p.shipAnchorY;old.shipAnchorDir=p.shipAnchorDir;old.received=performance.now()}
     else remote.set(p.id,{...p,fromX:p.x,fromY:p.y,targetX:p.x,targetY:p.y,received:performance.now()});
   }
   for(const id of remote.keys())if(!seen.has(id))remote.delete(id);
@@ -1022,7 +1023,17 @@ function drawFinishedUfoAt(p,isMine,cw,ch){
   ctx.restore();
   drawNameLabel(s.x,s.y-r+18,p.name,isMine,completionSuffix(p));drawMedalBadge(s.x,s.y-r-43,p.finishRank);
 }
-function drawShipAt(p,isMine,cw,ch){const s=screenPoint(p.x,p.y,cw,ch);if(s.x<-80||s.x>cw+80||s.y<-80||s.y>ch+80)return;const scale=Math.max(.64,Math.min(1.25,zoom*.69)),size=48*scale;ctx.save();ctx.imageSmoothingEnabled=false;ctx.shadowColor='#000';ctx.shadowBlur=5;ctx.drawImage(shipAtlas,p.dir*48,0,48,48,Math.round(s.x-size/2),Math.round(s.y-size/2),Math.round(size),Math.round(size));ctx.shadowBlur=0;drawNameLabel(s.x,s.y-size/2+18,p.name,isMine,completionSuffix(p));drawMedalBadge(s.x,s.y-size/2-42,p.finishRank);ctx.restore()}
+function drawShipAt(p,isMine,cw,ch){
+  if(roomType==='race'&&VoyageShips.validType(p.shipType)){
+    const s=screenPoint(p.x,p.y,cw,ch);if(s.x<-90||s.x>cw+90||s.y<-90||s.y>ch+90)return;
+    const scale=Math.max(.65,Math.min(1.08,zoom*.68))*(p.shipScale||1);
+    ctx.save();VoyageShips.draw(ctx,p.shipType,p.dir,s.x,s.y,scale,{mine:isMine,moving:p.moving&&!p.shipAnchoredAtShore});
+    drawNameLabel(s.x,s.y-54*scale+30,p.name,isMine,completionSuffix(p));
+    drawMedalBadge(s.x,s.y-54*scale-12,p.finishRank);ctx.restore();return;
+  }
+  drawOriginalShipAt(p,isMine,cw,ch);
+}
+function drawOriginalShipAt(p,isMine,cw,ch){const s=screenPoint(p.x,p.y,cw,ch);if(s.x<-80||s.x>cw+80||s.y<-80||s.y>ch+80)return;const scale=Math.max(.64,Math.min(1.25,zoom*.69)),size=48*scale;ctx.save();ctx.imageSmoothingEnabled=false;ctx.shadowColor='#000';ctx.shadowBlur=5;ctx.drawImage(shipAtlas,p.dir*48,0,48,48,Math.round(s.x-size/2),Math.round(s.y-size/2),Math.round(size),Math.round(size));ctx.shadowBlur=0;drawNameLabel(s.x,s.y-size/2+18,p.name,isMine,completionSuffix(p));drawMedalBadge(s.x,s.y-size/2-42,p.finishRank);ctx.restore()}
 function drawAnchoredShipAt(p,isMine,cw,ch){if(!p?.shipAnchoredAtShore||!Number.isFinite(p.shipAnchorX)||!Number.isFinite(p.shipAnchorY))return;drawShipAt({...p,x:p.shipAnchorX,y:p.shipAnchorY,dir:Number.isInteger(p.shipAnchorDir)?p.shipAnchorDir:0,name:`⚓ ${p.name}의 배`,finishRank:null,missionCompleted:false},isMine,cw,ch)}
 function drawExplorerAt(p,isMine,cw,ch){const s=screenPoint(p.x,p.y,cw,ch);if(s.x<-60||s.x>cw+60||s.y<-60||s.y>ch+60)return;const size=Math.max(13,Math.min(23,zoom*11));ctx.save();ctx.translate(Math.round(s.x),Math.round(s.y));ctx.shadowColor='#000';ctx.shadowBlur=4;ctx.fillStyle=isMine?'#f2cf78':'#d9eef5';ctx.beginPath();ctx.arc(0,-size*.62,size*.24,0,Math.PI*2);ctx.fill();ctx.fillRect(-size*.22,-size*.38,size*.44,size*.62);ctx.fillStyle=isMine?'#7f5426':'#42616c';ctx.fillRect(size*.18,-size*.30,size*.22,size*.42);ctx.strokeStyle='#1a2528';ctx.lineWidth=Math.max(2,size*.10);ctx.beginPath();ctx.moveTo(-size*.12,size*.22);ctx.lineTo(-size*.28,size*.60);ctx.moveTo(size*.12,size*.22);ctx.lineTo(size*.28,size*.60);ctx.stroke();ctx.shadowBlur=0;ctx.restore();drawNameLabel(s.x,s.y-size*.65,p.name,isMine,completionSuffix(p)||'탐험대');drawMedalBadge(s.x,s.y-size*.65-55,p.finishRank)}
 function drawCityMarker(p,isMine,cw,ch){const s=screenPoint(p.x,p.y,cw,ch);ctx.save();ctx.fillStyle=isMine?'#ffe49a':'#fff';ctx.strokeStyle='#4b321c';ctx.lineWidth=2;ctx.beginPath();ctx.arc(s.x,s.y,7,0,Math.PI*2);ctx.fill();ctx.stroke();ctx.restore();drawNameLabel(s.x,s.y-2,p.name,isMine,'입항 중')}

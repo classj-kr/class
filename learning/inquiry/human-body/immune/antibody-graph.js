@@ -101,9 +101,7 @@
         g.appendChild(el('line', { x1: X0, y1: Y0, x2: X1, y2: Y0, stroke: '#64748b', 'stroke-width': 2.5 }));
         g.appendChild(el('line', { x1: X0, y1: Y0, x2: X0, y2: Y1, stroke: '#64748b', 'stroke-width': 2.5 }));
         htmlTag((X0 + X1) / 2, Y0 + 44, '시간', 'dim');
-        htmlTag(X0 - 46, (Y0 + Y1) / 2 - 14, '항', 'dim');
-        htmlTag(X0 - 46, (Y0 + Y1) / 2 + 8, '체', 'dim');
-        htmlTag(X0 - 46, (Y0 + Y1) / 2 + 30, '양', 'dim');
+        htmlTag(X0 - 46, (Y0 + Y1) / 2, '항체 양', 'dim').style.writingMode = 'vertical-rl';
 
         // 기억 세포가 남아 있는 구간
         memoryBand = el('rect', { y: Y1, height: Y0 - Y1, fill: 'rgba(139, 92, 246, 0.10)', x: X0, width: 0 });

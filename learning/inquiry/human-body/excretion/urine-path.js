@@ -64,7 +64,10 @@
     }
 
     function setVisible(on) {
-        if (on) { setTimeout(placeTags, 0); setTimeout(placeTags, 80); }
+        if (on) {
+            if (window.ExcretionState) bladderLevel = ExcretionState.getVolume();
+            setTimeout(placeTags, 0); setTimeout(placeTags, 80);
+        }
         if (!layer) return;
         layer.hidden = !on;
         var canvas = document.getElementById('excretionCanvas');
@@ -78,7 +81,7 @@
         layer.hidden = true;
         wrap.appendChild(layer);
 
-        svg = el('svg', { viewBox: '0 0 1000 660', preserveAspectRatio: 'xMidYMid meet' });
+        svg = el('svg', { viewBox: '0 0 1000 700', preserveAspectRatio: 'xMidYMid meet' });
         layer.appendChild(svg);
 
         // 글씨는 그림 안에 넣지 않는다. 그림 안 글씨는 창이 커지면 같이 커진다.
@@ -92,7 +95,7 @@
     function draw() {
         var g = el('g'); svg.appendChild(g);
         htmlTag(500, 48, '콩팥에서 만든 오줌은 양쪽 오줌관을 통해 방광으로 이동합니다.', 'lead');
-        htmlTag(500, 624, '몸을 앞에서 본 모습 · 오줌관 두 개는 각각 방광으로 이어집니다.', 'dim');
+        htmlTag(500, 660, '몸을 앞에서 본 모습 · 오줌관 두 개는 각각 방광으로 이어집니다.', 'dim');
         [LEFT_KIDNEY, RIGHT_KIDNEY].forEach(function (k, i) {
             var side = i === 0 ? 1 : -1;
             var shape = 'M' + (k.x + 16 * side) + ' ' + (k.y - 65) +
@@ -217,8 +220,9 @@
         bladderFill.setAttribute('height', (BLADDER.y + 86 - top).toFixed(1));
 
         // 진하기: 물을 적게 마시고 호르몬이 많으면 진하다
-        var dark = 1 - rate;
-        bladderFill.setAttribute('fill', dark > 0.6 ? '#b45309' : (dark > 0.35 ? '#d97706' : '#fde047'));
+        var tone = window.ExcretionState ? ExcretionState.tone() : {color:'#f5d065',name:'오줌'};
+        bladderFill.setAttribute('fill', tone.color);
+        if (window.ExcretionState) ExcretionState.setVolume(bladderLevel);
 
         // 요도로 나가는 줄기
         if (voiding > 0) {
@@ -235,7 +239,7 @@
             (bladderLevel > 0.85 ? ' — 가득 찼습니다. [배뇨하기]를 눌러 보세요' : '');
         rateText.style.color = bladderLevel > 0.85 ? '#fca5a5' : '#fde68a';
 
-        colorText.textContent = dark > 0.6 ? '진한 오줌' : (dark > 0.35 ? '보통' : '묽은 오줌');
+        colorText.textContent = tone.name;
         colorText.style.opacity = bladderLevel > 0.12 ? 1 : 0;
     }
 

@@ -209,7 +209,7 @@
             if (!state.topic) {
                 if (el.guide) {
                     el.guide.hidden = false;
-                    el.guide.textContent = '주제를 고르면 그 주제의 문제가 나옵니다.';
+                    el.guide.textContent = '단원을 고르면 해당 단원의 문제가 나옵니다.';
                 }
                 if (el.moreWrap) el.moreWrap.hidden = true;
                 return;
@@ -232,7 +232,12 @@
         if (config.scopedTopic) {
             var heading = el.grid.closest('.quiz-panel').querySelector('h2');
             if (heading) heading.textContent = config.scopedTopic.title + ' 확인 문제';
-            if (el.tabs) el.tabs.closest('.quiz-picker-row').hidden = true;
+            if (el.tabs) {
+                var unitRow = el.tabs.closest('.quiz-picker-row');
+                unitRow.hidden = topics.length <= 1;
+                var unitLabel = unitRow.querySelector('.quiz-picker-label');
+                if (unitLabel) unitLabel.textContent = '단원';
+            }
             var subLabel = el.subRow && el.subRow.querySelector('.quiz-picker-label');
             if (subLabel) subLabel.textContent = '개념별 문제';
         }

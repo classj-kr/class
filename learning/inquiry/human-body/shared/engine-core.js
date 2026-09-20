@@ -606,6 +606,23 @@
             var bar = document.querySelector('.scene-switcher');
             var active = bar && bar.querySelector('.scene-btn.active');
             if (!active) return;
+            var stage = document.querySelector('.sim-stage-area');
+            var back = document.querySelector('.nav-back-btn');
+            var actions = document.querySelector('.sim-header-right');
+            var area = stage.getBoundingClientRect();
+            var left = back ? back.getBoundingClientRect().right - area.left + 12 : 12;
+            var right = actions && actions.getBoundingClientRect().width ?
+                actions.getBoundingClientRect().left - area.left - 12 : area.width - 12;
+            // Measure the actual controls: scene-specific actions have different widths.
+            if (window.innerWidth > 900 && right - left >= 120) {
+                bar.style.left = left + 'px';
+                bar.style.top = '9px';
+                bar.style.maxWidth = (right - left) + 'px';
+            } else {
+                bar.style.left = '12px';
+                bar.style.top = '54px';
+                bar.style.maxWidth = Math.max(120, area.width - 24) + 'px';
+            }
             if (active.offsetLeft < bar.scrollLeft) bar.scrollLeft = active.offsetLeft - 6;
             if (active.offsetLeft + active.offsetWidth > bar.scrollLeft + bar.clientWidth)
                 bar.scrollLeft = active.offsetLeft + active.offsetWidth - bar.clientWidth + 6;
@@ -620,11 +637,20 @@
                     return tab.getAttribute('data-for-scene') && wants(tab, scene);
                 })[0];
                 if (related && !related.hidden) related.click();
+                var viewport = document.querySelector('.sim-stage-area > [class$="-viewport"]');
+                if (viewport) { viewport.scrollLeft = 0; viewport.scrollTop = 0; }
                 revealScene();
             }, 0);
         });
         window.addEventListener('resize', revealScene);
+        if (window.ResizeObserver) {
+            var navObserver = new ResizeObserver(revealScene);
+            var actions = document.querySelector('.sim-header-right');
+            if (actions) navObserver.observe(actions);
+            navObserver.observe(document.querySelector('.sim-stage-area'));
+        }
         apply();
+        requestAnimationFrame(revealScene);
     }
 
     function litPart(svgEl, ids, activeId) {

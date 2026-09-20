@@ -828,3 +828,26 @@ canvas.sim-canvas {
 @media (max-width: 900px) {
     .sim-stage-area .scene-switcher { left: 12px; max-width: calc(100% - 24px); }
 }
+
+
+/* Preserve legible diagrams on phones; the diagram viewport can be panned. */
+@media (max-width: 600px) {
+    .sim-stage-area > [class$="-viewport"] { overflow: auto; }
+    .sim-stage-area .scene-switcher {
+        position: fixed; z-index: 125; top: 54px; left: 12px;
+    }
+    .sim-header-right { max-width: calc(100% - 88px); overflow-x: auto; }
+    .sim-header-right > button { flex-shrink: 0; }
+    .sim-stage-area :is(.stomach-layer,.villus-layer,.enzyme-lab-layer,
+        .excretion-map-layer,.urine-layer,.nephron-layer,.ear-layer,.pupil-layer,
+        .skin-layer,.glucose-layer,.defense-layer,.antibody-layer,.joint-layer) {
+        top: 96px; bottom: auto; min-width: 780px; height: 620px;
+    }
+    .sim-stage-area :is(.stomach-layer,.villus-layer,.excretion-map-layer,
+        .nephron-layer,.ear-layer,.glucose-layer,.defense-layer,.joint-layer) > [class$="-stage"] {
+        margin-top: 10px;
+    }
+    .sim-stage-area :is(.enzyme-lab-layer,.urine-layer,.pupil-layer,.skin-layer,.antibody-layer) {
+        padding-top: 10px;
+    }
+}

@@ -5,7 +5,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     // State management
     const state = {
-        currentTab: 'explore',
+        currentTab: 'models',
         searchQuery: '',
         selectedCategory: 'all',
         selectedState: 'all',
@@ -123,6 +123,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (targetPane) targetPane.classList.add('active');
 
                 state.currentTab = target;
+                document.body.dataset.activeTab = target;
+                document.title = target === 'models' ? '원소·물질 모형' : target === 'quiz' ? '원소 문제' : target === 'molecule' ? '분자 모형' : state.tableMode === 'exam' ? '단주기 주기율표' : '실제 주기율표';
                 if (target === 'quiz' && !state.quiz.currentQuestion) {
                     loadNewQuestion();
                 }
@@ -322,7 +324,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateTableModeUI() {
         const isExam = state.tableMode === 'exam';
         document.body.dataset.tableMode = state.tableMode;
-        document.title = isExam
+        if (state.currentTab === 'explore') document.title = isExam
             ? '단주기 주기율표'
             : '실제 주기율표';
 

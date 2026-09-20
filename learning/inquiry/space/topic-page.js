@@ -8,16 +8,12 @@
         document.title = topic.title + ' · 우주';
         const header = document.querySelector('.top-header');
         const nav = header.querySelector('.nav-tabs');
-        const identity = document.createElement('div');
-        identity.className = 'topic-identity';
         const back = document.createElement('a');
         back.href = '../';
         back.className = 'topic-back';
-        back.textContent = '← 우주';
-        const title = document.createElement('h1');
-        title.textContent = topic.title;
-        identity.append(back, title);
-        header.prepend(identity);
+        back.textContent = '←';
+        back.setAttribute('aria-label', '우주 메뉴로 돌아가기');
+        document.body.prepend(back);
         header.removeAttribute('style');
         const main = document.querySelector('.view-container');
         const concepts = document.createElement('section');
@@ -25,15 +21,28 @@
         concepts.className = 'tab-pane topic-concepts';
         const intro = document.createElement('div');
         intro.className = 'topic-concept-grid';
-        topic.concepts.forEach(([heading, text]) => {
+        function conceptCard([heading, text], parent) {
             const article = document.createElement('article');
             const h2 = document.createElement('h2');
             h2.textContent = heading;
             const p = document.createElement('p');
             p.textContent = text;
             article.append(h2, p);
-            intro.append(article);
-        });
+            parent.append(article);
+        }
+        if (topic.conceptSections) {
+            intro.classList.add('topic-concept-sections');
+            topic.conceptSections.forEach(section => {
+                const details = document.createElement('details');
+                const summary = document.createElement('summary');
+                summary.textContent = section.title;
+                const content = document.createElement('div');
+                content.className = 'topic-concept-section-content';
+                section.concepts.forEach(concept => conceptCard(concept, content));
+                details.append(summary, content);
+                intro.append(details);
+            });
+        } else topic.concepts.forEach(concept => conceptCard(concept, intro));
         concepts.append(intro);
         main.append(concepts);
         const calc = document.querySelector('#tab-calc .calc-container');
@@ -63,27 +72,8 @@
             const atlas = document.getElementById('tab-atlas');
             Array.from(atlas.children).forEach(child => concepts.append(child));
         }
-        const related = document.createElement('nav');
-        related.className = 'topic-related';
-        related.setAttribute('aria-label', '관련 주제');
-        const relatedLabel = document.createElement('strong');
-        relatedLabel.textContent = '관련 주제';
-        related.append(relatedLabel);
-        window.SpaceTopics.topics.filter(other => other.group === topic.group && other.id !== topic.id).forEach(other => {
-            const a = document.createElement('a');
-            a.href = '../' + window.SpaceTopics.href(other);
-            a.textContent = other.title;
-            related.append(a);
-        });
-        concepts.append(related);
         const observation = document.getElementById(topic.mode === 'stellar' ? 'tab-calc' : 'tab-sim');
         const hasObservation = topic.app === 'solar-system' || Boolean(topic.mode);
-        if (hasObservation && topic.observe) {
-            const guide = document.createElement('p');
-            guide.className = 'topic-observation-guide';
-            guide.textContent = topic.observe;
-            observation.prepend(guide);
-        }
         if (topic.app === 'constellations' && topic.mode && topic.mode !== 'stellar') {
             const button = document.querySelector('[data-sim-mode="' + topic.mode + '"]');
             if (button) button.click();
@@ -130,10 +120,8 @@
         }
         window.addEventListener('hashchange', fromHash);
         fromHash();
-        // Keep viewport accounting correct after all application initialization.
-        const sizeHeader = () => document.documentElement.style.setProperty('--space-header-height', header.offsetHeight + 'px');
-        sizeHeader();
-        if (typeof ResizeObserver !== 'undefined') new ResizeObserver(sizeHeader).observe(header);
+        // Floating controls do not reserve a title row above the content.
+        document.documentElement.style.setProperty('--space-header-height', '0px');
     }
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start);
     else start();

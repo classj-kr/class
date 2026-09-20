@@ -1,0 +1,1105 @@
+{
+  "source": "해설지.xls / 도시(자세) H열(항구), J열(조선소); 선박,기술 A2:J9",
+  "sourceMapping": "해설지에는 현재 카탈로그에 없는 페구(순번 159)가 포함되어 말라카 이후 원작 순번에 1을 더해 연결. 도시 이름으로 주요 연결을 교차 검증.",
+  "note": "선박 배정과 크기는 게임 디자인. 원작 조선소 유무는 참고 정보이며 실제 입항 가능 여부는 현재 서버 판정을 따른다.",
+  "ports": {
+    "lisbon": {
+      "name": "리스본",
+      "shipType": "galleon",
+      "shipScale": 1.08,
+      "role": "원양 중심항",
+      "sourceShipyard": true,
+      "sourceRow": 2,
+      "sourceCityName": "리스본"
+    },
+    "original_city_223": {
+      "name": "포르투",
+      "shipType": "caravel",
+      "shipScale": 1,
+      "role": "지역 교역항",
+      "sourceShipyard": true,
+      "sourceRow": 3,
+      "sourceCityName": "오포르토"
+    },
+    "original_city_222": {
+      "name": "아코루냐",
+      "shipType": "caravel",
+      "shipScale": 1,
+      "role": "지역 교역항",
+      "sourceShipyard": true,
+      "sourceRow": 4,
+      "sourceCityName": "라코루냐"
+    },
+    "original_city_221": {
+      "name": "빌바오",
+      "shipType": "caravel",
+      "shipScale": 1,
+      "role": "지역 교역항",
+      "sourceShipyard": true,
+      "sourceRow": 5,
+      "sourceCityName": "빌바오"
+    },
+    "original_city_217": {
+      "name": "세비야",
+      "shipType": "galleon",
+      "shipScale": 1.08,
+      "role": "원양 중심항",
+      "sourceShipyard": true,
+      "sourceRow": 9,
+      "sourceCityName": "세빌리아"
+    },
+    "original_city_216": {
+      "name": "카디스",
+      "shipType": "caravel",
+      "shipScale": 1,
+      "role": "지역 교역항",
+      "sourceShipyard": true,
+      "sourceRow": 10,
+      "sourceCityName": "카디스"
+    },
+    "original_city_215": {
+      "name": "말라가",
+      "shipType": "coaster",
+      "shipScale": 0.9,
+      "role": "연안항",
+      "sourceShipyard": false,
+      "sourceRow": 11,
+      "sourceCityName": "말라가"
+    },
+    "original_city_213": {
+      "name": "발렌시아",
+      "shipType": "caravel",
+      "shipScale": 1,
+      "role": "지역 교역항",
+      "sourceShipyard": true,
+      "sourceRow": 13,
+      "sourceCityName": "발렌시아"
+    },
+    "original_city_212": {
+      "name": "바르셀로나",
+      "shipType": "caravel",
+      "shipScale": 1,
+      "role": "지역 교역항",
+      "sourceShipyard": true,
+      "sourceRow": 14,
+      "sourceCityName": "바르셀로나"
+    },
+    "original_city_211": {
+      "name": "팔마",
+      "shipType": "coaster",
+      "shipScale": 0.9,
+      "role": "연안항",
+      "sourceShipyard": false,
+      "sourceRow": 15,
+      "sourceCityName": "마요르카"
+    },
+    "original_city_209": {
+      "name": "루앙",
+      "shipType": "carrack",
+      "shipScale": 1,
+      "role": "지역 교역항",
+      "sourceShipyard": true,
+      "sourceRow": 17,
+      "sourceCityName": "루앙"
+    },
+    "original_city_207": {
+      "name": "낭트",
+      "shipType": "carrack",
+      "shipScale": 1,
+      "role": "지역 교역항",
+      "sourceShipyard": true,
+      "sourceRow": 19,
+      "sourceCityName": "낭트"
+    },
+    "original_city_206": {
+      "name": "보르도",
+      "shipType": "carrack",
+      "shipScale": 1,
+      "role": "지역 교역항",
+      "sourceShipyard": true,
+      "sourceRow": 20,
+      "sourceCityName": "보르도"
+    },
+    "original_city_203": {
+      "name": "마르세유",
+      "shipType": "carrack",
+      "shipScale": 1,
+      "role": "지역 교역항",
+      "sourceShipyard": true,
+      "sourceRow": 23,
+      "sourceCityName": "마르세유"
+    },
+    "original_city_202": {
+      "name": "브뤼허",
+      "shipType": "carrack",
+      "shipScale": 1,
+      "role": "지역 교역항",
+      "sourceShipyard": true,
+      "sourceRow": 24,
+      "sourceCityName": "브뤼즈"
+    },
+    "original_city_201": {
+      "name": "안트베르펜",
+      "shipType": "carrack",
+      "shipScale": 1,
+      "role": "지역 교역항",
+      "sourceShipyard": true,
+      "sourceRow": 25,
+      "sourceCityName": "앤트워프"
+    },
+    "amsterdam": {
+      "name": "암스테르담",
+      "shipType": "carrack",
+      "shipScale": 1,
+      "role": "지역 교역항",
+      "sourceShipyard": true,
+      "sourceRow": 26,
+      "sourceCityName": "암스테르담"
+    },
+    "genoa": {
+      "name": "제노바",
+      "shipType": "galley",
+      "shipScale": 1,
+      "role": "지역 교역항",
+      "sourceShipyard": true,
+      "sourceRow": 30,
+      "sourceCityName": "제노바"
+    },
+    "original_city_195": {
+      "name": "베네치아",
+      "shipType": "galley",
+      "shipScale": 1,
+      "role": "지역 교역항",
+      "sourceShipyard": true,
+      "sourceRow": 31,
+      "sourceCityName": "베니스"
+    },
+    "original_city_193": {
+      "name": "피사",
+      "shipType": "galley",
+      "shipScale": 1,
+      "role": "지역 교역항",
+      "sourceShipyard": true,
+      "sourceRow": 33,
+      "sourceCityName": "피사"
+    },
+    "original_city_192": {
+      "name": "안코나",
+      "shipType": "galley",
+      "shipScale": 1,
+      "role": "지역 교역항",
+      "sourceShipyard": true,
+      "sourceRow": 34,
+      "sourceCityName": "안코나"
+    },
+    "original_city_190": {
+      "name": "나폴리",
+      "shipType": "galley",
+      "shipScale": 1,
+      "role": "지역 교역항",
+      "sourceShipyard": true,
+      "sourceRow": 36,
+      "sourceCityName": "나폴리"
+    },
+    "original_city_189": {
+      "name": "칼리아리",
+      "shipType": "galley",
+      "shipScale": 1,
+      "role": "지역 교역항",
+      "sourceShipyard": true,
+      "sourceRow": 37,
+      "sourceCityName": "칼리아리"
+    },
+    "original_city_188": {
+      "name": "팔레르모",
+      "shipType": "galley",
+      "shipScale": 1,
+      "role": "지역 교역항",
+      "sourceShipyard": true,
+      "sourceRow": 38,
+      "sourceCityName": "팔레르모"
+    },
+    "original_city_187": {
+      "name": "시라쿠사",
+      "shipType": "galley",
+      "shipScale": 1,
+      "role": "지역 교역항",
+      "sourceShipyard": true,
+      "sourceRow": 39,
+      "sourceCityName": "시라쿠사"
+    },
+    "london": {
+      "name": "런던",
+      "shipType": "carrack",
+      "shipScale": 1,
+      "role": "지역 교역항",
+      "sourceShipyard": true,
+      "sourceRow": 40,
+      "sourceCityName": "런던"
+    },
+    "original_city_185": {
+      "name": "사우샘프턴",
+      "shipType": "carrack",
+      "shipScale": 1,
+      "role": "지역 교역항",
+      "sourceShipyard": true,
+      "sourceRow": 41,
+      "sourceCityName": "사우샘프턴"
+    },
+    "original_city_184": {
+      "name": "브리스틀",
+      "shipType": "carrack",
+      "shipScale": 1,
+      "role": "지역 교역항",
+      "sourceShipyard": true,
+      "sourceRow": 42,
+      "sourceCityName": "브리스틀"
+    },
+    "original_city_181": {
+      "name": "더블린",
+      "shipType": "carrack",
+      "shipScale": 1,
+      "role": "지역 교역항",
+      "sourceShipyard": true,
+      "sourceRow": 45,
+      "sourceCityName": "더블린"
+    },
+    "original_city_180": {
+      "name": "함부르크",
+      "shipType": "carrack",
+      "shipScale": 1,
+      "role": "지역 교역항",
+      "sourceShipyard": true,
+      "sourceRow": 46,
+      "sourceCityName": "함부르크"
+    },
+    "original_city_179": {
+      "name": "뤼베크",
+      "shipType": "carrack",
+      "shipScale": 1,
+      "role": "지역 교역항",
+      "sourceShipyard": true,
+      "sourceRow": 47,
+      "sourceCityName": "뤼베크"
+    },
+    "original_city_178": {
+      "name": "브레멘",
+      "shipType": "carrack",
+      "shipScale": 1,
+      "role": "지역 교역항",
+      "sourceShipyard": true,
+      "sourceRow": 48,
+      "sourceCityName": "브레멘"
+    },
+    "original_city_168": {
+      "name": "그단스크",
+      "shipType": "carrack",
+      "shipScale": 1,
+      "role": "지역 교역항",
+      "sourceShipyard": true,
+      "sourceRow": 58,
+      "sourceCityName": "단치히"
+    },
+    "original_city_167": {
+      "name": "칼리닌그라드",
+      "shipType": "carrack",
+      "shipScale": 1,
+      "role": "지역 교역항",
+      "sourceShipyard": true,
+      "sourceRow": 59,
+      "sourceCityName": "쾨니히스베르크"
+    },
+    "original_city_166": {
+      "name": "리가",
+      "shipType": "carrack",
+      "shipScale": 1,
+      "role": "지역 교역항",
+      "sourceShipyard": true,
+      "sourceRow": 60,
+      "sourceCityName": "리가"
+    },
+    "original_city_160": {
+      "name": "스톡홀름",
+      "shipType": "carrack",
+      "shipScale": 1,
+      "role": "지역 교역항",
+      "sourceShipyard": true,
+      "sourceRow": 66,
+      "sourceCityName": "스톡홀롬"
+    },
+    "original_city_159": {
+      "name": "비스뷔",
+      "shipType": "cog",
+      "shipScale": 1,
+      "role": "북유럽 연안 교역항",
+      "sourceShipyard": true,
+      "sourceRow": 67,
+      "sourceCityName": "비즈비"
+    },
+    "original_city_158": {
+      "name": "코펜하겐",
+      "shipType": "carrack",
+      "shipScale": 1,
+      "role": "지역 교역항",
+      "sourceShipyard": true,
+      "sourceRow": 68,
+      "sourceCityName": "코펜하겐"
+    },
+    "original_city_157": {
+      "name": "오슬로",
+      "shipType": "carrack",
+      "shipScale": 1,
+      "role": "지역 교역항",
+      "sourceShipyard": true,
+      "sourceRow": 69,
+      "sourceCityName": "오슬로"
+    },
+    "original_city_156": {
+      "name": "베르겐",
+      "shipType": "cog",
+      "shipScale": 1,
+      "role": "북유럽 연안 교역항",
+      "sourceShipyard": true,
+      "sourceRow": 70,
+      "sourceCityName": "베르겐"
+    },
+    "original_city_153": {
+      "name": "두브로브니크",
+      "shipType": "galley",
+      "shipScale": 1,
+      "role": "지역 교역항",
+      "sourceShipyard": true,
+      "sourceRow": 73,
+      "sourceCityName": "라구사"
+    },
+    "original_city_151": {
+      "name": "테살로니키",
+      "shipType": "galley",
+      "shipScale": 1,
+      "role": "지역 교역항",
+      "sourceShipyard": true,
+      "sourceRow": 75,
+      "sourceCityName": "살로니카"
+    },
+    "original_city_150": {
+      "name": "이라클리온",
+      "shipType": "galley",
+      "shipScale": 1,
+      "role": "지역 교역항",
+      "sourceShipyard": true,
+      "sourceRow": 76,
+      "sourceCityName": "간디아"
+    },
+    "original_city_149": {
+      "name": "파마구스타",
+      "shipType": "galley",
+      "shipScale": 1,
+      "role": "지역 교역항",
+      "sourceShipyard": true,
+      "sourceRow": 77,
+      "sourceCityName": "파마가스타"
+    },
+    "original_city_148": {
+      "name": "바르나",
+      "shipType": "galley",
+      "shipScale": 1,
+      "role": "지역 교역항",
+      "sourceShipyard": true,
+      "sourceRow": 78,
+      "sourceCityName": "바르나"
+    },
+    "original_city_147": {
+      "name": "빌호로드드니스트로우스키",
+      "shipType": "galley",
+      "shipScale": 1,
+      "role": "지역 교역항",
+      "sourceShipyard": true,
+      "sourceRow": 79,
+      "sourceCityName": "몬카스트로"
+    },
+    "alexandria": {
+      "name": "알렉산드리아",
+      "shipType": "dhow",
+      "shipScale": 1,
+      "role": "지역 교역항",
+      "sourceShipyard": true,
+      "sourceRow": 80,
+      "sourceCityName": "알렉산드리아"
+    },
+    "tripoli": {
+      "name": "트리폴리",
+      "shipType": "dhow",
+      "shipScale": 1,
+      "role": "지역 교역항",
+      "sourceShipyard": true,
+      "sourceRow": 83,
+      "sourceCityName": "트리폴리"
+    },
+    "original_city_141": {
+      "name": "알제",
+      "shipType": "dhow",
+      "shipScale": 1,
+      "role": "지역 교역항",
+      "sourceShipyard": true,
+      "sourceRow": 85,
+      "sourceCityName": "알제"
+    },
+    "original_city_140": {
+      "name": "세우타",
+      "shipType": "dhow",
+      "shipScale": 1,
+      "role": "지역 교역항",
+      "sourceShipyard": true,
+      "sourceRow": 86,
+      "sourceCityName": "세우타"
+    },
+    "original_city_139": {
+      "name": "카사블랑카",
+      "shipType": "dhow",
+      "shipScale": 0.9,
+      "role": "연안항",
+      "sourceShipyard": false,
+      "sourceRow": 87,
+      "sourceCityName": "카사블랑카"
+    },
+    "original_city_138": {
+      "name": "폰타델가다",
+      "shipType": "coaster",
+      "shipScale": 0.9,
+      "role": "연안항",
+      "sourceShipyard": false,
+      "sourceRow": 88,
+      "sourceCityName": "아조레스"
+    },
+    "original_city_137": {
+      "name": "푼샬",
+      "shipType": "coaster",
+      "shipScale": 0.9,
+      "role": "연안항",
+      "sourceShipyard": false,
+      "sourceRow": 89,
+      "sourceCityName": "마디라"
+    },
+    "original_city_136": {
+      "name": "라스팔마스",
+      "shipType": "coaster",
+      "shipScale": 0.9,
+      "role": "연안항",
+      "sourceShipyard": false,
+      "sourceRow": 90,
+      "sourceCityName": "라스팔마스"
+    },
+    "original_city_135": {
+      "name": "아르킨",
+      "shipType": "coastal",
+      "shipScale": 0.9,
+      "role": "연안항",
+      "sourceShipyard": false,
+      "sourceRow": 91,
+      "sourceCityName": "아르킨"
+    },
+    "original_city_134": {
+      "name": "다카르",
+      "shipType": "coastal",
+      "shipScale": 0.9,
+      "role": "연안항",
+      "sourceShipyard": false,
+      "sourceRow": 92,
+      "sourceCityName": "베르데 곶"
+    },
+    "original_city_133": {
+      "name": "프리타운",
+      "shipType": "coastal",
+      "shipScale": 0.9,
+      "role": "연안항",
+      "sourceShipyard": false,
+      "sourceRow": 93,
+      "sourceCityName": "시에라리온"
+    },
+    "original_city_127": {
+      "name": "엘미나",
+      "shipType": "coastal",
+      "shipScale": 1,
+      "role": "지역 교역항",
+      "sourceShipyard": true,
+      "sourceRow": 99,
+      "sourceCityName": "산호르헤"
+    },
+    "original_city_125": {
+      "name": "상투메",
+      "shipType": "coastal",
+      "shipScale": 0.9,
+      "role": "연안항",
+      "sourceShipyard": false,
+      "sourceRow": 101,
+      "sourceCityName": "산토메"
+    },
+    "original_city_124": {
+      "name": "루안다",
+      "shipType": "coastal",
+      "shipScale": 0.9,
+      "role": "연안항",
+      "sourceShipyard": false,
+      "sourceRow": 102,
+      "sourceCityName": "르완다"
+    },
+    "original_city_123": {
+      "name": "케이프타운",
+      "shipType": "coastal",
+      "shipScale": 0.9,
+      "role": "연안항",
+      "sourceShipyard": false,
+      "sourceRow": 103,
+      "sourceCityName": "케이프"
+    },
+    "original_city_122": {
+      "name": "소팔라",
+      "shipType": "dhow",
+      "shipScale": 0.9,
+      "role": "연안항",
+      "sourceShipyard": false,
+      "sourceRow": 104,
+      "sourceCityName": "소팔라"
+    },
+    "original_city_121": {
+      "name": "모잠비크섬",
+      "shipType": "dhow",
+      "shipScale": 1,
+      "role": "지역 교역항",
+      "sourceShipyard": true,
+      "sourceRow": 105,
+      "sourceCityName": "모잠비크"
+    },
+    "original_city_119": {
+      "name": "킬와",
+      "shipType": "dhow",
+      "shipScale": 0.9,
+      "role": "연안항",
+      "sourceShipyard": false,
+      "sourceRow": 107,
+      "sourceCityName": "킬와"
+    },
+    "original_city_118": {
+      "name": "잔지바르",
+      "shipType": "dhow",
+      "shipScale": 0.9,
+      "role": "연안항",
+      "sourceShipyard": false,
+      "sourceRow": 108,
+      "sourceCityName": "잔지바르"
+    },
+    "mombasa": {
+      "name": "몸바사",
+      "shipType": "dhow",
+      "shipScale": 0.9,
+      "role": "연안항",
+      "sourceShipyard": false,
+      "sourceRow": 109,
+      "sourceCityName": "몸바사"
+    },
+    "original_city_116": {
+      "name": "말린디",
+      "shipType": "dhow",
+      "shipScale": 1,
+      "role": "지역 교역항",
+      "sourceShipyard": true,
+      "sourceRow": 110,
+      "sourceCityName": "말린디"
+    },
+    "original_city_115": {
+      "name": "모가디슈",
+      "shipType": "dhow",
+      "shipScale": 1,
+      "role": "지역 교역항",
+      "sourceShipyard": true,
+      "sourceRow": 111,
+      "sourceCityName": "모가디슈"
+    },
+    "istanbul": {
+      "name": "이스탄불",
+      "shipType": "dhow",
+      "shipScale": 1,
+      "role": "지역 교역항",
+      "sourceShipyard": true,
+      "sourceRow": 114,
+      "sourceCityName": "이스탄불"
+    },
+    "original_city_111": {
+      "name": "페오도시야",
+      "shipType": "dhow",
+      "shipScale": 1,
+      "role": "지역 교역항",
+      "sourceShipyard": true,
+      "sourceRow": 115,
+      "sourceCityName": "카파"
+    },
+    "original_city_110": {
+      "name": "아조우",
+      "shipType": "dhow",
+      "shipScale": 1,
+      "role": "지역 교역항",
+      "sourceShipyard": true,
+      "sourceRow": 116,
+      "sourceCityName": "타나"
+    },
+    "original_city_109": {
+      "name": "시노프",
+      "shipType": "dhow",
+      "shipScale": 0.9,
+      "role": "연안항",
+      "sourceShipyard": false,
+      "sourceRow": 117,
+      "sourceCityName": "시높"
+    },
+    "original_city_108": {
+      "name": "트라브존",
+      "shipType": "dhow",
+      "shipScale": 1,
+      "role": "지역 교역항",
+      "sourceShipyard": true,
+      "sourceRow": 118,
+      "sourceCityName": "트레비존드"
+    },
+    "original_city_103": {
+      "name": "베이루트",
+      "shipType": "dhow",
+      "shipScale": 1,
+      "role": "지역 교역항",
+      "sourceShipyard": true,
+      "sourceRow": 123,
+      "sourceCityName": "베이루트"
+    },
+    "original_city_100": {
+      "name": "아덴",
+      "shipType": "dhow",
+      "shipScale": 1,
+      "role": "지역 교역항",
+      "sourceShipyard": true,
+      "sourceRow": 126,
+      "sourceCityName": "아덴"
+    },
+    "original_city_099": {
+      "name": "무스카트",
+      "shipType": "dhow",
+      "shipScale": 1,
+      "role": "지역 교역항",
+      "sourceShipyard": true,
+      "sourceRow": 127,
+      "sourceCityName": "무스카트"
+    },
+    "original_city_098": {
+      "name": "바스라",
+      "shipType": "dhow",
+      "shipScale": 1,
+      "role": "지역 교역항",
+      "sourceShipyard": true,
+      "sourceRow": 128,
+      "sourceCityName": "바스라"
+    },
+    "original_city_096": {
+      "name": "호르무즈",
+      "shipType": "dhow",
+      "shipScale": 1,
+      "role": "지역 교역항",
+      "sourceShipyard": true,
+      "sourceRow": 130,
+      "sourceCityName": "호르무즈"
+    },
+    "original_city_076": {
+      "name": "디우",
+      "shipType": "dhow",
+      "shipScale": 1,
+      "role": "지역 교역항",
+      "sourceShipyard": true,
+      "sourceRow": 150,
+      "sourceCityName": "디우"
+    },
+    "original_city_074": {
+      "name": "고아",
+      "shipType": "dhow",
+      "shipScale": 1,
+      "role": "지역 교역항",
+      "sourceShipyard": true,
+      "sourceRow": 152,
+      "sourceCityName": "고아"
+    },
+    "original_city_073": {
+      "name": "칸누르",
+      "shipType": "dhow",
+      "shipScale": 0.9,
+      "role": "연안항",
+      "sourceShipyard": false,
+      "sourceRow": 153,
+      "sourceCityName": "카나놀"
+    },
+    "calicut": {
+      "name": "코지코드",
+      "shipType": "dhow",
+      "shipScale": 1,
+      "role": "지역 교역항",
+      "sourceShipyard": true,
+      "sourceRow": 154,
+      "sourceCityName": "캘리컷"
+    },
+    "original_city_070": {
+      "name": "코치",
+      "shipType": "dhow",
+      "shipScale": 1,
+      "role": "지역 교역항",
+      "sourceShipyard": true,
+      "sourceRow": 156,
+      "sourceCityName": "코친"
+    },
+    "original_city_069": {
+      "name": "콜롬보",
+      "shipType": "dhow",
+      "shipScale": 1,
+      "role": "지역 교역항",
+      "sourceShipyard": true,
+      "sourceRow": 157,
+      "sourceCityName": "콜롬보"
+    },
+    "original_city_067": {
+      "name": "콜카타",
+      "shipType": "dhow",
+      "shipScale": 0.9,
+      "role": "연안항",
+      "sourceShipyard": false,
+      "sourceRow": 159,
+      "sourceCityName": "캘커타"
+    },
+    "malacca": {
+      "name": "말라카",
+      "shipType": "jong",
+      "shipScale": 0.9,
+      "role": "연안항",
+      "sourceShipyard": false,
+      "sourceRow": 162,
+      "sourceCityName": "말라카"
+    },
+    "original_city_064": {
+      "name": "나콘시탐마랏",
+      "shipType": "jong",
+      "shipScale": 0.9,
+      "role": "연안항",
+      "sourceShipyard": false,
+      "sourceRow": 163,
+      "sourceCityName": "리골"
+    },
+    "original_city_063": {
+      "name": "아유타야",
+      "shipType": "jong",
+      "shipScale": 0.9,
+      "role": "연안항",
+      "sourceShipyard": false,
+      "sourceRow": 164,
+      "sourceCityName": "아유타야"
+    },
+    "original_city_060": {
+      "name": "하이퐁",
+      "shipType": "junk",
+      "shipScale": 0.9,
+      "role": "연안항",
+      "sourceShipyard": false,
+      "sourceRow": 167,
+      "sourceCityName": "교도"
+    },
+    "original_city_059": {
+      "name": "반다아체",
+      "shipType": "jong",
+      "shipScale": 0.9,
+      "role": "연안항",
+      "sourceShipyard": false,
+      "sourceRow": 168,
+      "sourceCityName": "아친"
+    },
+    "original_city_058": {
+      "name": "팔렘방",
+      "shipType": "jong",
+      "shipScale": 0.9,
+      "role": "연안항",
+      "sourceShipyard": false,
+      "sourceRow": 169,
+      "sourceCityName": "파렌반"
+    },
+    "original_city_057": {
+      "name": "세랑",
+      "shipType": "jong",
+      "shipScale": 0.9,
+      "role": "연안항",
+      "sourceShipyard": false,
+      "sourceRow": 170,
+      "sourceCityName": "반탐"
+    },
+    "original_city_056": {
+      "name": "수라바야",
+      "shipType": "jong",
+      "shipScale": 0.9,
+      "role": "연안항",
+      "sourceShipyard": false,
+      "sourceRow": 171,
+      "sourceCityName": "수라바야"
+    },
+    "original_city_055": {
+      "name": "반다르스리브가완",
+      "shipType": "jong",
+      "shipScale": 0.9,
+      "role": "연안항",
+      "sourceShipyard": false,
+      "sourceRow": 172,
+      "sourceCityName": "브루나이"
+    },
+    "original_city_054": {
+      "name": "테르나테",
+      "shipType": "jong",
+      "shipScale": 0.9,
+      "role": "연안항",
+      "sourceShipyard": false,
+      "sourceRow": 173,
+      "sourceCityName": "테르나테"
+    },
+    "original_city_053": {
+      "name": "암본",
+      "shipType": "jong",
+      "shipScale": 0.9,
+      "role": "연안항",
+      "sourceShipyard": false,
+      "sourceRow": 174,
+      "sourceCityName": "암보이나"
+    },
+    "original_city_052": {
+      "name": "마카오",
+      "shipType": "junk",
+      "shipScale": 0.9,
+      "role": "연안항",
+      "sourceShipyard": false,
+      "sourceRow": 175,
+      "sourceCityName": "오문"
+    },
+    "original_city_051": {
+      "name": "광저우",
+      "shipType": "junk",
+      "shipScale": 1,
+      "role": "지역 교역항",
+      "sourceShipyard": true,
+      "sourceRow": 176,
+      "sourceCityName": "광주"
+    },
+    "original_city_050": {
+      "name": "취안저우",
+      "shipType": "junk",
+      "shipScale": 0.9,
+      "role": "연안항",
+      "sourceShipyard": false,
+      "sourceRow": 177,
+      "sourceCityName": "천주"
+    },
+    "original_city_049": {
+      "name": "푸저우",
+      "shipType": "junk",
+      "shipScale": 0.9,
+      "role": "연안항",
+      "sourceShipyard": false,
+      "sourceRow": 178,
+      "sourceCityName": "복주"
+    },
+    "original_city_048": {
+      "name": "항저우",
+      "shipType": "junk",
+      "shipScale": 1,
+      "role": "지역 교역항",
+      "sourceShipyard": true,
+      "sourceRow": 179,
+      "sourceCityName": "항주"
+    },
+    "original_city_047": {
+      "name": "난징",
+      "shipType": "junk",
+      "shipScale": 0.9,
+      "role": "연안항",
+      "sourceShipyard": false,
+      "sourceRow": 180,
+      "sourceCityName": "남경"
+    },
+    "original_city_036": {
+      "name": "다롄",
+      "shipType": "junk",
+      "shipScale": 0.9,
+      "role": "연안항",
+      "sourceShipyard": false,
+      "sourceRow": 191,
+      "sourceCityName": "요동"
+    },
+    "original_city_035": {
+      "name": "서울",
+      "shipType": "hanseon",
+      "shipScale": 0.9,
+      "role": "연안항",
+      "sourceShipyard": false,
+      "sourceRow": 192,
+      "sourceCityName": "한양"
+    },
+    "nagasaki": {
+      "name": "나가사키",
+      "shipType": "wasen",
+      "shipScale": 1,
+      "role": "지역 교역항",
+      "sourceShipyard": true,
+      "sourceRow": 193,
+      "sourceCityName": "나가사키"
+    },
+    "original_city_033": {
+      "name": "사카이",
+      "shipType": "wasen",
+      "shipScale": 0.9,
+      "role": "연안항",
+      "sourceShipyard": false,
+      "sourceRow": 194,
+      "sourceCityName": "사카이"
+    },
+    "original_city_031": {
+      "name": "산토도밍고",
+      "shipType": "coaster",
+      "shipScale": 0.9,
+      "role": "연안항",
+      "sourceShipyard": false,
+      "sourceRow": 196,
+      "sourceCityName": "산토도밍고"
+    },
+    "original_city_030": {
+      "name": "산티아고데쿠바",
+      "shipType": "coaster",
+      "shipScale": 0.9,
+      "role": "연안항",
+      "sourceShipyard": false,
+      "sourceRow": 197,
+      "sourceCityName": "산티아고"
+    },
+    "havana": {
+      "name": "아바나",
+      "shipType": "caravel",
+      "shipScale": 1,
+      "role": "지역 교역항",
+      "sourceShipyard": true,
+      "sourceRow": 198,
+      "sourceCityName": "아바나"
+    },
+    "original_city_028": {
+      "name": "킹스턴",
+      "shipType": "canoe",
+      "shipScale": 0.9,
+      "role": "현지 수운 거점",
+      "sourceShipyard": false,
+      "sourceRow": 199,
+      "sourceCityName": "자메이카"
+    },
+    "original_city_027": {
+      "name": "산후안",
+      "shipType": "coaster",
+      "shipScale": 0.9,
+      "role": "연안항",
+      "sourceShipyard": false,
+      "sourceRow": 200,
+      "sourceCityName": "산후안"
+    },
+    "original_city_026": {
+      "name": "베라크루스",
+      "shipType": "caravel",
+      "shipScale": 1,
+      "role": "지역 교역항",
+      "sourceShipyard": true,
+      "sourceRow": 201,
+      "sourceCityName": "베라크루스"
+    },
+    "original_city_020": {
+      "name": "아카풀코",
+      "shipType": "canoe",
+      "shipScale": 1,
+      "role": "현지 수운 거점",
+      "sourceShipyard": true,
+      "sourceRow": 207,
+      "sourceCityName": "아카풀코"
+    },
+    "original_city_017": {
+      "name": "트루히요",
+      "shipType": "canoe",
+      "shipScale": 0.9,
+      "role": "현지 수운 거점",
+      "sourceShipyard": false,
+      "sourceRow": 210,
+      "sourceCityName": "투르히요"
+    },
+    "original_city_015": {
+      "name": "파나마시티",
+      "shipType": "caravel",
+      "shipScale": 1,
+      "role": "지역 교역항",
+      "sourceShipyard": true,
+      "sourceRow": 212,
+      "sourceCityName": "파나마"
+    },
+    "original_city_014": {
+      "name": "산타마르타",
+      "shipType": "canoe",
+      "shipScale": 0.9,
+      "role": "현지 수운 거점",
+      "sourceShipyard": false,
+      "sourceRow": 213,
+      "sourceCityName": "산타마르타"
+    },
+    "original_city_012": {
+      "name": "쿠마나",
+      "shipType": "canoe",
+      "shipScale": 0.9,
+      "role": "현지 수운 거점",
+      "sourceShipyard": false,
+      "sourceRow": 215,
+      "sourceCityName": "쿠마나"
+    },
+    "original_city_011": {
+      "name": "헤시피",
+      "shipType": "coaster",
+      "shipScale": 0.9,
+      "role": "연안항",
+      "sourceShipyard": false,
+      "sourceRow": 216,
+      "sourceCityName": "페르남부쿠"
+    },
+    "original_city_010": {
+      "name": "사우바도르",
+      "shipType": "canoe",
+      "shipScale": 0.9,
+      "role": "현지 수운 거점",
+      "sourceShipyard": false,
+      "sourceRow": 217,
+      "sourceCityName": "바이앙"
+    },
+    "rio": {
+      "name": "리우데자네이루",
+      "shipType": "canoe",
+      "shipScale": 1,
+      "role": "현지 수운 거점",
+      "sourceShipyard": true,
+      "sourceRow": 218,
+      "sourceCityName": "리우데자네이루"
+    },
+    "buenos_aires": {
+      "name": "부에노스아이레스",
+      "shipType": "canoe",
+      "shipScale": 0.9,
+      "role": "현지 수운 거점",
+      "sourceShipyard": false,
+      "sourceRow": 219,
+      "sourceCityName": "부에노스아이레스"
+    },
+    "original_city_005": {
+      "name": "툼베스",
+      "shipType": "balsa",
+      "shipScale": 0.9,
+      "role": "현지 수운 거점",
+      "sourceShipyard": false,
+      "sourceRow": 222,
+      "sourceCityName": "툼베스"
+    }
+  }
+}
