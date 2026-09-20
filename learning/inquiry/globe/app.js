@@ -1,10 +1,18 @@
 import * as maplibregl from "./vendor/maplibre-gl-6.10.0/maplibre-gl.mjs";
 
+import { buildFlowModel, flowFrame, installFlowImages } from "./flow-textures.mjs?v=20260920-17";
+
 const data = window.GLOBE_DATA;
 // 자료 파일이 옛 판일 수 있다(배포 중 화면 코드와 자료가 어긋나는 때). 없는 갈래는 빈 것으로 둔다.
 const NO_FEATURES = { type: "FeatureCollection", features: [] };
 for (const name of ["labels", "borders", "rivers", "currents", "winds", "belts"]) data[name] ||= NO_FEATURES;
 data.dateLine ||= { type: "Feature", properties: { special: "dateline" }, geometry: { type: "MultiLineString", coordinates: [] } };
+const windModel = buildFlowModel(data.winds, "wind");
+const currentModel = buildFlowModel(data.currents, "current");
+const flowTracks = [...windModel.tracks, ...currentModel.tracks];
+const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+let flowPaused = reducedMotion.matches;
+let flowSeconds = 0;
 const BASE = new URL(".", location.href).href;
 const TILE_VERSION = 2;
 const FLAG_VERSION = 2;
@@ -73,8 +81,8 @@ const DASH_STEPS = [
 ];
 
 const WIND_LAYERS = ["wind-line", "wind-flow", "wind-arrows"];
-const CURRENT_MAIN_LAYERS = ["currents-line-main", "currents-flow-main", "currents-arrows-main"];
-const CURRENT_LOCAL_LAYERS = ["currents-line-local", "currents-flow-local", "currents-arrows-local"];
+const CURRENT_MAIN_LAYERS = ["currents-line-main", "currents-flow-main", "currents-texture-main", "currents-arrows-main"];
+const CURRENT_LOCAL_LAYERS = ["currents-line-local", "currents-flow-local", "currents-texture-local", "currents-arrows-local"];
 // 아무것도 고르지 않았을 때 켜짐 층에 거는 조건(어떤 선과도 맞지 않음)
 const NOTHING = ["boolean", false];
 
@@ -108,6 +116,7 @@ map.addControl(new maplibregl.AttributionControl({ compact: true, customAttribut
 
 renderLayerBar();
 renderSeasonSwitch();
+renderFlowControl();
 bindViewControls();
 
 // 극점은 글자 이름표 층(위도 85도까지)에 놓을 수 없어 따로 붙인다. 지구 뒤편으로 가면 숨는다.
@@ -134,6 +143,7 @@ map.on("load", () => {
   // 출처 표시는 접힌 채(ⓘ)로 시작해 이름표를 가리지 않게 한다.
   document.querySelector(".maplibregl-ctrl-attrib")?.classList.remove("maplibregl-compact-show");
   addArrowImages();
+  installFlowImages(map);
   fitWholeGlobe(false);
   applyLayerFilters();
   refreshZoomRules();
@@ -195,8 +205,9 @@ function buildStyle() {
       layout: { visibility: visibility("current"), "line-join": "round", "line-cap": "round" },
       paint: {
         "line-color": ["case", ["get", "warm"], WARM.line, COLD.line],
-        "line-width": ["interpolate", ["linear"], ["zoom"], 1, 3, 5, 4.6],
-        "line-opacity": 0.9,
+        "line-width": ["interpolate", ["linear"], ["zoom"], 1, 12, 5, 21],
+        "line-opacity": 0.28,
+        "line-blur": 2,
       },
     },
     {
@@ -208,12 +219,17 @@ function buildStyle() {
       layout: { visibility: visibility("current"), "line-join": "round" },
       paint: {
         "line-color": ["case", ["get", "warm"], WARM.flow, COLD.flow],
-        "line-width": ["interpolate", ["linear"], ["zoom"], 1, 1.2, 5, 1.8],
-        "line-dasharray": DASH_STEPS[0],
+        "line-width": ["interpolate", ["linear"], ["zoom"], 1, 3.5, 5, 6],
+        "line-opacity": 0.28,
+        "line-blur": 1,
       },
     },
     {
-      id: `currents-arrows-${group}`,
+      ...flowTextureLayer(
+        "currents-texture-" + group, "current", ["all", ["==", ["get", "kind"], "current"], filter], minzoom),
+    },
+    {
+      id: "currents-arrows-" + group,
       type: "symbol",
       source: "currentArrows",
       minzoom,
@@ -236,16 +252,9 @@ function buildStyle() {
       source: "winds",
       filter: seasonFilter(),
       layout: { visibility: visibility("wind"), "line-join": "round", "line-cap": "round" },
-      paint: { "line-color": WIND.line, "line-width": ["interpolate", ["linear"], ["zoom"], 1, 3, 5, 4.6], "line-opacity": 0.9 },
+      paint: { "line-color": WIND.line, "line-width": 18, "line-opacity": 0.035, "line-blur": 6 },
     },
-    {
-      id: "wind-flow",
-      type: "line",
-      source: "winds",
-      filter: seasonFilter(),
-      layout: { visibility: visibility("wind"), "line-join": "round" },
-      paint: { "line-color": WIND.flow, "line-width": ["interpolate", ["linear"], ["zoom"], 1, 1.2, 5, 1.8], "line-dasharray": DASH_STEPS[0] },
-    },
+    flowTextureLayer("wind-flow", "wind", ["all", ["==", ["get", "kind"], "wind"], seasonFilter()]),
     {
       id: "wind-arrows",
       type: "symbol",
@@ -284,8 +293,9 @@ function buildStyle() {
       labels: { type: "geojson", data: data.labels },
       borders: { type: "geojson", data: data.borders },
       rivers: { type: "geojson", data: data.rivers },
-      currents: { type: "geojson", data: data.currents },
-      winds: { type: "geojson", data: data.winds },
+      currents: { type: "geojson", data: currentModel.collection },
+      winds: { type: "geojson", data: windModel.collection },
+      flowTextures: { type: "geojson", data: flowFrame(flowTracks, 0) },
       belts: { type: "geojson", data: data.belts },
       windArrows: { type: "geojson", data: arrowPoints(data.winds) },
       currentArrows: { type: "geojson", data: arrowPoints(data.currents) },
@@ -360,15 +370,13 @@ function buildStyle() {
         filter: NOTHING,
         paint: { "line-color": "#fff3b0", "line-width": 5, "line-blur": 2, "line-opacity": 0.85 },
       },
-      ...currentLayers,
-      ...windLayers,
       {
         id: "wind-selected",
         type: "line",
         source: "winds",
         filter: NOTHING,
         layout: { "line-join": "round", "line-cap": "round" },
-        paint: { "line-color": WIND.line, "line-width": 9, "line-blur": 4, "line-opacity": 0.85 },
+        paint: { "line-color": "#dfff64", "line-width": 28, "line-blur": 16, "line-opacity": 0.65 },
       },
       {
         id: "current-selected",
@@ -376,8 +384,10 @@ function buildStyle() {
         source: "currents",
         filter: NOTHING,
         layout: { "line-join": "round", "line-cap": "round" },
-        paint: { "line-color": ["case", ["get", "warm"], WARM.line, COLD.line], "line-width": 9, "line-blur": 4, "line-opacity": 0.8 },
+        paint: { "line-color": "#f3ff79", "line-width": 22, "line-blur": 10, "line-opacity": 0.65 },
       },
+      ...currentLayers,
+      ...windLayers,
       {
         id: "river-selected-glow",
         type: "line",
@@ -458,22 +468,30 @@ function buildStyle() {
   };
 }
 
-// ── 흐름 무늬 ─────────────────────────────────────────────
+// 바람결·물빛 이미지를 경로를 따라 이동시킨다. 위치 갱신은 초당 20회로 제한한다.
 let dashStep = 0;
-let lastDash = 0;
+let lastFrame = 0;
+let lastTextureFrame = 0;
+function refreshFlowTextures() {
+  const tracks = flowTracks.filter((track) => enabled.has(track.kind)
+    && (track.kind !== "wind" || track.properties.season === "always" || track.properties.season === season));
+  map.getSource("flowTextures")?.setData(flowFrame(tracks, flowSeconds));
+}
 function animate(time) {
   requestAnimationFrame(animate);
-  if (!ready) return;
+  const delta = lastFrame ? Math.min(time - lastFrame, 100) : 0;
+  lastFrame = time;
+  if (!ready || document.hidden || flowPaused) return;
   const flowing = enabled.has("current") || enabled.has("wind") || selected?.kind === "river";
-  if (flowing && time - lastDash > 70) {
-    lastDash = time;
-    dashStep = (dashStep + 1) % DASH_STEPS.length;
-    const dash = DASH_STEPS[dashStep];
-    if (enabled.has("current")) for (const id of ["currents-flow-main", "currents-flow-local"]) map.setPaintProperty(id, "line-dasharray", dash);
-    if (enabled.has("wind")) map.setPaintProperty("wind-flow", "line-dasharray", dash);
-    if (selected?.kind === "river") map.setPaintProperty("river-selected-flow", "line-dasharray", dash);
+  if (flowing) flowSeconds += delta / 1000;
+  if (flowing && time - lastTextureFrame >= 50) {
+    lastTextureFrame = time;
+    if (enabled.has("current") || enabled.has("wind")) refreshFlowTextures();
+    if (selected?.kind === "river") {
+      dashStep = (dashStep + 1) % DASH_STEPS.length;
+      map.setPaintProperty("river-selected-flow", "line-dasharray", DASH_STEPS[dashStep]);
+    }
   }
-  // 칠한 곳은 천천히 숨 쉬듯 밝아졌다 어두워진다.
   if (selected?.shaped) {
     const pulse = 0.5 + 0.5 * Math.sin(time / 420);
     map.setPaintProperty("highlight-fill", "fill-opacity", 0.2 + 0.16 * pulse);
@@ -481,6 +499,47 @@ function animate(time) {
   }
 }
 requestAnimationFrame(animate);
+
+function flowTextureLayer(id, kind, filter, minzoom = 0) {
+  return {
+    id, type: "symbol", source: "flowTextures", filter, minzoom,
+    layout: {
+      visibility: visibility(kind),
+      "icon-image": kind === "wind" ? "flow-wind" : ["case", ["get", "warm"], "flow-warm", "flow-cold"],
+      "icon-rotate": ["get", "bearing"],
+      "icon-rotation-alignment": "map", "icon-pitch-alignment": "map",
+      "icon-allow-overlap": true, "icon-ignore-placement": true,
+      "icon-size": ["*", ["get", "size"], kind === "wind" ? 0.9 : 0.72],
+    },
+    paint: { "icon-opacity": ["get", "opacity"], "icon-opacity-transition": { duration: 0 } },
+  };
+}
+
+function highlightFlow(item) {
+  const wind = item?.kind === "wind" ? ["==", ["get", "name"], item.name] : NOTHING;
+  const current = item?.kind === "current" ? ["==", ["get", "name"], item.name] : NOTHING;
+  map.setLayoutProperty("wind-flow", "icon-image", ["case", wind, "flow-wind-lit", "flow-wind"]);
+  for (const id of ["currents-texture-main", "currents-texture-local"]) {
+    map.setLayoutProperty(id, "icon-image", ["case", current, "flow-water-lit", ["case", ["get", "warm"], "flow-warm", "flow-cold"]]);
+  }
+}
+
+function renderFlowControl() {
+  const button = document.createElement("button");
+  button.id = "flowMotion";
+  button.type = "button";
+  button.className = "flow-motion";
+  const sync = () => {
+    button.textContent = flowPaused ? "▶ 흐름 재생" : "Ⅱ 흐름 멈춤";
+    button.setAttribute("aria-label", flowPaused ? "흐름 애니메이션 재생" : "흐름 애니메이션 멈춤");
+    button.setAttribute("aria-pressed", String(flowPaused));
+    button.hidden = !enabled.has("wind") && !enabled.has("current");
+  };
+  button.addEventListener("click", () => { flowPaused = !flowPaused; sync(); });
+  reducedMotion.addEventListener("change", (event) => { flowPaused = event.matches; sync(); });
+  document.getElementById("layerBar").append(button);
+  sync();
+}
 
 // 해류·바람 줄기 끝에 화살촉을 단다. 방향은 마지막 두 점으로 잰 방위각.
 function arrowPoints(collection) {
@@ -504,7 +563,7 @@ function arrowPoints(collection) {
 }
 
 function addArrowImages() {
-  for (const [id, color] of [["arrow-warm", WARM.line], ["arrow-cold", COLD.line]]) {
+  for (const [id, color] of [["arrow-warm", WARM.line], ["arrow-cold", COLD.line], ["arrow-wind", WIND.line]]) {
     const size = 48;
     const canvas = document.createElement("canvas");
     canvas.width = canvas.height = size;
@@ -745,11 +804,15 @@ function applyLayerFilters() {
   for (const id of [...CURRENT_MAIN_LAYERS, ...CURRENT_LOCAL_LAYERS]) map.setLayoutProperty(id, "visibility", visibility("current"));
   for (const id of WIND_LAYERS) {
     map.setLayoutProperty(id, "visibility", visibility("wind"));
-    map.setFilter(id, seasonFilter());
+    map.setFilter(id, id === "wind-flow" ? ["all", ["==", ["get", "kind"], "wind"], seasonFilter()] : seasonFilter());
   }
   for (const id of ["belts-fill", "belts-edge"]) map.setLayoutProperty(id, "visibility", visibility("wind"));
   const switchBox = document.getElementById("seasonSwitch");
   if (switchBox) switchBox.hidden = !enabled.has("wind");
+  document.getElementById("flowMotion").hidden = !enabled.has("wind") && !enabled.has("current");
+  refreshFlowTextures();
+  if (selected?.kind === "wind" && !data.winds.features.some((f) => f.properties.name === selected.name
+    && (f.properties.season === "always" || f.properties.season === season))) clearSelection();
   // 칠해 둔 것의 단추를 끄면 칠한 것과 설명 창도 닫는다.
   if (selected && !isShown(selected.kind)) clearSelection();
   refreshGridLabels();
@@ -871,12 +934,12 @@ function bindSelection() {
     if (label) return label;
     const lineLayers = [
       ...(enabled.has("current") ? ["currents-line-main", "currents-line-local"] : []),
-      ...(enabled.has("wind") ? ["wind-line"] : []),
+      ...(enabled.has("wind") ? ["wind-line", "wind-flow", "wind-arrows"] : []),
     ];
     if (!lineLayers.length) return null;
     const line = map.queryRenderedFeatures(near(point, 8), { layers: lineLayers })[0];
     if (!line) return null;
-    const kind = line.layer.id === "wind-line" ? "wind" : "current";
+    const kind = line.layer.id.startsWith("wind-") ? "wind" : "current";
     return { properties: { key: `${kind}:${line.properties.name}`, kind, name: line.properties.name, warm: line.properties.warm }, geometry: null };
   };
   map.on("click", (event) => {
@@ -909,16 +972,18 @@ async function select(item, lngLat) {
 function clearSelection() {
   selected = null;
   map.getSource("highlight")?.setData({ type: "FeatureCollection", features: [] });
-  for (const id of ["river-selected-glow", "river-selected", "river-selected-flow", "current-selected", "grid-selected"]) {
+  for (const id of ["river-selected-glow", "river-selected", "river-selected-flow", "current-selected", "wind-selected", "belt-selected", "grid-selected"]) {
     map.setFilter(id, NOTHING);
   }
   pulseMarker?.remove();
   pulseMarker = null;
   panel.hidden = true;
+  highlightFlow(null);
 }
 
 let pulseMarker = null;
 function lightUp(item) {
+  highlightFlow(item);
   const nameIs = ["==", ["get", "name"], item.name];
   map.setFilter("river-selected-glow", item.kind === "river" ? nameIs : NOTHING);
   map.setFilter("river-selected", item.kind === "river" ? nameIs : NOTHING);

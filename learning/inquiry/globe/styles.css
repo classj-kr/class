@@ -398,3 +398,7 @@ html, body {
   .layer-bar button { height: 32px; padding: 0 10px; font-size: 13.5px; }
   .layer-bar .divider { display: none; }
 }
+
+/* 움직임을 멈춰도 이름과 방향은 그대로 읽을 수 있다. */
+.layer-bar .flow-motion[hidden] { display: none; }
+.layer-bar .flow-motion { color: var(--text); }
