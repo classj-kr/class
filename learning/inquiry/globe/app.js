@@ -1,11 +1,15 @@
 import * as maplibregl from "./vendor/maplibre-gl-6.10.0/maplibre-gl.mjs";
 
 const data = window.GLOBE_DATA;
+// 자료 파일이 옛 판일 수 있다(배포 중 화면 코드와 자료가 어긋나는 때). 없는 갈래는 빈 것으로 둔다.
+const NO_FEATURES = { type: "FeatureCollection", features: [] };
+for (const name of ["labels", "borders", "rivers", "currents", "winds", "belts"]) data[name] ||= NO_FEATURES;
+data.dateLine ||= { type: "Feature", properties: { special: "dateline" }, geometry: { type: "MultiLineString", coordinates: [] } };
 const BASE = new URL(".", location.href).href;
 const TILE_VERSION = 2;
 const FLAG_VERSION = 2;
 // 모양(shapes.json)·설명(info.json)·사진을 바꾸면 올린다.
-const DATA_VERSION = "20260920-15";
+const DATA_VERSION = "20260920-16";
 const HOME = { center: [127.5, 30], lat: 30 };
 // 켜고 끄는 항목이 늘면 판을 올린다(옛 저장값에는 새 항목이 없어 꺼진 채로 보이므로).
 const SETTINGS_KEY = "classj-globe-layers-v3";
@@ -744,7 +748,8 @@ function applyLayerFilters() {
     map.setFilter(id, seasonFilter());
   }
   for (const id of ["belts-fill", "belts-edge"]) map.setLayoutProperty(id, "visibility", visibility("wind"));
-  document.getElementById("seasonSwitch").hidden = !enabled.has("wind");
+  const switchBox = document.getElementById("seasonSwitch");
+  if (switchBox) switchBox.hidden = !enabled.has("wind");
   // 칠해 둔 것의 단추를 끄면 칠한 것과 설명 창도 닫는다.
   if (selected && !isShown(selected.kind)) clearSelection();
   refreshGridLabels();
