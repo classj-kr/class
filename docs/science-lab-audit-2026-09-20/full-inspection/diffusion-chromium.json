@@ -1,65 +1,13 @@
 {
   "slug": "diffusion",
   "engine": "chromium",
-  "modes": [
-    "diff"
+  "modes": [],
+  "cases": 0,
+  "errors": [
+    "page.goto: Target page, context or browser has been closed"
   ],
-  "cases": 7,
-  "errors": [],
   "issues": [],
-  "models": [
-    {
-      "key": "__diffModel",
-      "methods": [
-        "NH3",
-        "HCL",
-        "TUBE_CM",
-        "SURFACE",
-        "CACO3_G",
-        "CACO3_M",
-        "HCL_VOL_L",
-        "MOLAR_VOL_ML",
-        "speed",
-        "meetPoint",
-        "meetTime",
-        "fronts",
-        "gasModel",
-        "gasVolume",
-        "setMode",
-        "setGrain",
-        "setTemp",
-        "setTime",
-        "setConc",
-        "setGasTime",
-        "tempK",
-        "elapsed",
-        "conc",
-        "gasElapsed",
-        "render"
-      ]
-    }
-  ],
+  "models": [],
   "paint": [],
-  "grades": [
-    {
-      "mode": "diff",
-      "results": [
-        {
-          "choice": "nh3",
-          "visible": true,
-          "text": "예상과 다른 결과입니다."
-        },
-        {
-          "choice": "center",
-          "visible": true,
-          "text": "예상과 다른 결과입니다."
-        },
-        {
-          "choice": "hcl",
-          "visible": true,
-          "text": "예상이 맞았습니다."
-        }
-      ]
-    }
-  ]
+  "grades": []
 }

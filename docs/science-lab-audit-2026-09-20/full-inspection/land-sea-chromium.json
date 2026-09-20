@@ -1,80 +1,13 @@
 {
   "slug": "land-sea",
   "engine": "chromium",
-  "modes": [
-    "area",
-    "salt"
+  "modes": [],
+  "cases": 0,
+  "errors": [
+    "page.goto: Target page, context or browser has been closed"
   ],
-  "cases": 11,
-  "errors": [],
   "issues": [],
-  "models": [
-    {
-      "key": "__landSeaModel",
-      "methods": [
-        "LAND",
-        "LAND_SHARE",
-        "WATERS",
-        "DOT_COUNTS",
-        "state",
-        "analyseArea",
-        "analyseSalt",
-        "analyse",
-        "dropDots",
-        "tallyArea",
-        "render",
-        "runSeconds",
-        "setMode",
-        "set",
-        "setSeed",
-        "setProgress",
-        "runToEnd",
-        "tick",
-        "finish"
-      ]
-    }
-  ],
+  "models": [],
   "paint": [],
-  "grades": [
-    {
-      "mode": "area",
-      "results": [
-        {
-          "choice": "sea-more",
-          "visible": true,
-          "text": "예상이 맞았습니다."
-        },
-        {
-          "choice": "even",
-          "visible": true,
-          "text": "예상과 다른 결과입니다."
-        },
-        {
-          "choice": "land-more",
-          "visible": true,
-          "text": "예상과 다른 결과입니다."
-        }
-      ]
-    },
-    {
-      "mode": "salt",
-      "results": [
-        {
-          "choice": "none",
-          "visible": true,
-          "text": "예상과 다른 결과입니다."
-        },
-        {
-          "choice": "some",
-          "visible": true,
-          "text": "예상이 맞았습니다."
-        },
-        {
-          "choice": "lots",
-          "visible": true,
-          "text": "예상과 다른 결과입니다."
-        }
-      ]
-    }
-  ]
+  "grades": []
 }

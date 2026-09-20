@@ -1,81 +1,13 @@
 {
   "slug": "weather-front",
   "engine": "chromium",
-  "modes": [
-    "wind",
-    "front"
+  "modes": [],
+  "cases": 0,
+  "errors": [
+    "page.goto: Target page, context or browser has been closed"
   ],
-  "cases": 10,
-  "errors": [],
   "issues": [],
-  "models": [
-    {
-      "key": "__weatherModel",
-      "methods": [
-        "RHO",
-        "CORIOLIS",
-        "DP_HPA",
-        "CROSS",
-        "MAP_SCALE",
-        "MAP_CX",
-        "MAP_CY",
-        "EXAG",
-        "PASS_H",
-        "FRONTS",
-        "state",
-        "analyseWind",
-        "analyseFront",
-        "analyse",
-        "tempAt",
-        "windVector",
-        "render",
-        "check",
-        "setMode",
-        "set"
-      ]
-    }
-  ],
+  "models": [],
   "paint": [],
-  "grades": [
-    {
-      "mode": "wind",
-      "results": [
-        {
-          "choice": "strong",
-          "visible": true,
-          "text": "예상과 다른 결과입니다."
-        },
-        {
-          "choice": "medium",
-          "visible": true,
-          "text": "예상이 맞았습니다."
-        },
-        {
-          "choice": "weak",
-          "visible": true,
-          "text": "예상과 다른 결과입니다."
-        }
-      ]
-    },
-    {
-      "mode": "front",
-      "results": [
-        {
-          "choice": "up",
-          "visible": true,
-          "text": "예상과 다른 결과입니다."
-        },
-        {
-          "choice": "same",
-          "visible": true,
-          "text": "예상과 다른 결과입니다."
-        },
-        {
-          "choice": "down",
-          "visible": true,
-          "text": "예상이 맞았습니다."
-        }
-      ]
-    }
-  ]
+  "grades": []
 }

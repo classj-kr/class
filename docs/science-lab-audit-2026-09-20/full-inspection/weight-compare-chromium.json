@@ -1,56 +1,13 @@
 {
   "slug": "weight-compare",
   "engine": "chromium",
-  "modes": [
-    "initial"
+  "modes": [],
+  "cases": 0,
+  "errors": [
+    "page.goto: Target page, context or browser has been closed"
   ],
-  "cases": 10,
-  "errors": [],
   "issues": [],
-  "models": [
-    {
-      "key": "__weightModel",
-      "methods": [
-        "state",
-        "analyse",
-        "tick",
-        "render",
-        "weightOf",
-        "refWeight",
-        "sunkFraction",
-        "floats",
-        "MATERIALS",
-        "SIZES",
-        "REF",
-        "WATER",
-        "setMat",
-        "setSize",
-        "check",
-        "runToEnd"
-      ]
-    }
-  ],
+  "models": [],
   "paint": [],
-  "grades": [
-    {
-      "mode": "initial",
-      "results": [
-        {
-          "choice": "p1",
-          "visible": true,
-          "text": "예상이 맞았습니다 — 뜬다."
-        },
-        {
-          "choice": "p2",
-          "visible": true,
-          "text": "예상은 아슬아슬하게 뜬다였지만 결과는 뜬다입니다."
-        },
-        {
-          "choice": "p3",
-          "visible": true,
-          "text": "예상은 가라앉는다였지만 결과는 뜬다입니다."
-        }
-      ]
-    }
-  ]
+  "grades": []
 }

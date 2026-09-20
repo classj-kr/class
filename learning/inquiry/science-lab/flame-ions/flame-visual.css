@@ -102,3 +102,8 @@
 .clip-minus { fill: #bfdbfe; stroke: #2563eb; }
 .strip { fill: #eff8ff; stroke: #94a3b8; stroke-width: 1; }
 .mid-mark { stroke: #64748b; stroke-width: 1; stroke-dasharray: 3 3; }
+
+.ion-arrow { stroke-width: 2; }
+.ion-arrow.ghost { stroke: #64748b; stroke-dasharray: 3 2; }
+.pole-text.plus { fill: #b91c1c; }
+.pole-text.minus { fill: #1d4ed8; }

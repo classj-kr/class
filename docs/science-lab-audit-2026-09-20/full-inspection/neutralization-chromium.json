@@ -1,54 +1,13 @@
 {
   "slug": "neutralization",
   "engine": "chromium",
-  "modes": [
-    "initial"
+  "modes": [],
+  "cases": 0,
+  "errors": [
+    "page.goto: Target page, context or browser has been closed"
   ],
-  "cases": 13,
-  "errors": [],
   "issues": [],
-  "models": [
-    {
-      "key": "__neutModel",
-      "methods": [
-        "ACID_ML",
-        "T0",
-        "KW",
-        "DH_NEUT",
-        "C_WATER",
-        "MAX_ML",
-        "analyse",
-        "indicatorColor",
-        "setAcid",
-        "setBase",
-        "setVol",
-        "setIndicator",
-        "addedML",
-        "render"
-      ]
-    }
-  ],
+  "models": [],
   "paint": [],
-  "grades": [
-    {
-      "mode": "initial",
-      "results": [
-        {
-          "choice": "before",
-          "visible": true,
-          "text": "예상과 다른 결과입니다. 온도는 중화점에서 가장 높습니다."
-        },
-        {
-          "choice": "at",
-          "visible": true,
-          "text": "예상이 맞았습니다."
-        },
-        {
-          "choice": "after",
-          "visible": true,
-          "text": "예상과 다른 결과입니다. 온도는 중화점에서 가장 높습니다."
-        }
-      ]
-    }
-  ]
+  "grades": []
 }

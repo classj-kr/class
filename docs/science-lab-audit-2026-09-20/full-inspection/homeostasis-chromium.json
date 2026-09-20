@@ -1,100 +1,13 @@
 {
   "slug": "homeostasis",
   "engine": "chromium",
-  "modes": [
-    "glucose",
-    "temp",
-    "water"
+  "modes": [],
+  "cases": 0,
+  "errors": [
+    "page.goto: Target page, context or browser has been closed"
   ],
-  "cases": 18,
-  "errors": [],
   "issues": [],
-  "models": [
-    {
-      "key": "__homeoModel",
-      "methods": [
-        "MEALS",
-        "BODIES",
-        "WEATHERS",
-        "STATES",
-        "INTAKES",
-        "state",
-        "analyse",
-        "render",
-        "glucoseRun",
-        "heatRun",
-        "waterRun",
-        "runSeconds",
-        "setMode",
-        "set",
-        "setProgress",
-        "runToEnd",
-        "tick",
-        "finish"
-      ]
-    }
-  ],
+  "models": [],
   "paint": [],
-  "grades": [
-    {
-      "mode": "glucose",
-      "results": [
-        {
-          "choice": "normal",
-          "visible": true,
-          "text": "이 모형의 예상이 맞았습니다."
-        },
-        {
-          "choice": "elevated",
-          "visible": true,
-          "text": "이 모형의 결과와 다릅니다."
-        },
-        {
-          "choice": "high",
-          "visible": true,
-          "text": "이 모형의 결과와 다릅니다."
-        }
-      ]
-    },
-    {
-      "mode": "temp",
-      "results": [
-        {
-          "choice": "hold",
-          "visible": true,
-          "text": "이 모형의 예상이 맞았습니다."
-        },
-        {
-          "choice": "rise",
-          "visible": true,
-          "text": "이 모형의 결과와 다릅니다."
-        },
-        {
-          "choice": "drop",
-          "visible": true,
-          "text": "이 모형의 결과와 다릅니다."
-        }
-      ]
-    },
-    {
-      "mode": "water",
-      "results": [
-        {
-          "choice": "much",
-          "visible": true,
-          "text": "이 모형의 예상이 맞았습니다."
-        },
-        {
-          "choice": "little",
-          "visible": true,
-          "text": "이 모형의 결과와 다릅니다."
-        },
-        {
-          "choice": "usual",
-          "visible": true,
-          "text": "이 모형의 결과와 다릅니다."
-        }
-      ]
-    }
-  ]
+  "grades": []
 }

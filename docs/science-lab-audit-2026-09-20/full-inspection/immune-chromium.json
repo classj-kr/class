@@ -1,83 +1,13 @@
 {
   "slug": "immune",
   "engine": "chromium",
-  "modes": [
-    "infect",
-    "vaccine"
+  "modes": [],
+  "cases": 0,
+  "errors": [
+    "page.goto: Target page, context or browser has been closed"
   ],
-  "cases": 13,
-  "errors": [],
   "issues": [],
-  "models": [
-    {
-      "key": "__immuneModel",
-      "methods": [
-        "INFECTS",
-        "DOSES",
-        "SHOTS",
-        "WHENS",
-        "ABO",
-        "RHS",
-        "state",
-        "analyse",
-        "render",
-        "immuneRun",
-        "runSeconds",
-        "setMode",
-        "set",
-        "setProgress",
-        "runToEnd",
-        "tick",
-        "finish"
-      ]
-    }
-  ],
+  "models": [],
   "paint": [],
-  "grades": [
-    {
-      "mode": "infect",
-      "results": [
-        {
-          "choice": "week",
-          "visible": true,
-          "text": "이 가상 모형의 예상이 맞았습니다."
-        },
-        {
-          "choice": "days",
-          "visible": true,
-          "text": "이 가상 모형의 결과와 다릅니다."
-        },
-        {
-          "choice": "none",
-          "visible": true,
-          "text": "이 가상 모형의 결과와 다릅니다."
-        },
-        {
-          "choice": "unbeaten",
-          "visible": true,
-          "text": "이 가상 모형의 결과와 다릅니다."
-        }
-      ]
-    },
-    {
-      "mode": "vaccine",
-      "results": [
-        {
-          "choice": "week",
-          "visible": true,
-          "text": "이 가상 모형의 예상이 맞았습니다."
-        },
-        {
-          "choice": "days",
-          "visible": true,
-          "text": "이 가상 모형의 결과와 다릅니다."
-        },
-        {
-          "choice": "none",
-          "visible": true,
-          "text": "이 가상 모형의 결과와 다릅니다."
-        }
-      ]
-    }
-  ]
+  "grades": []
 }

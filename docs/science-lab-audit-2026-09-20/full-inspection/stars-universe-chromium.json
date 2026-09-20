@@ -1,71 +1,13 @@
 {
   "slug": "stars-universe",
   "engine": "chromium",
-  "modes": [
-    "bright",
-    "expand"
+  "modes": [],
+  "cases": 0,
+  "errors": [
+    "page.goto: Target page, context or browser has been closed"
   ],
-  "cases": 18,
-  "errors": [],
   "issues": [],
-  "models": [
-    {
-      "key": "__starsModel",
-      "methods": [
-        "STARS",
-        "GALAXIES",
-        "BASE_PC",
-        "MULTIPLES",
-        "STRETCH",
-        "state",
-        "analyseBright",
-        "analyseExpand",
-        "analyse",
-        "apparent",
-        "brightAt",
-        "stretchAt",
-        "render",
-        "runSeconds",
-        "setMode",
-        "set",
-        "setProgress",
-        "runToEnd",
-        "tick",
-        "finish"
-      ]
-    }
-  ],
+  "models": [],
   "paint": [],
-  "grades": [
-    {
-      "mode": "bright",
-      "results": [
-        {
-          "choice": "square",
-          "visible": true,
-          "text": "예상이 맞았습니다."
-        },
-        {
-          "choice": "no",
-          "visible": true,
-          "text": "예상과 다른 결과입니다."
-        }
-      ]
-    },
-    {
-      "mode": "expand",
-      "results": [
-        {
-          "choice": "faster",
-          "visible": true,
-          "text": "예상이 맞았습니다."
-        },
-        {
-          "choice": "no",
-          "visible": true,
-          "text": "예상과 다른 결과입니다."
-        }
-      ]
-    }
-  ]
+  "grades": []
 }

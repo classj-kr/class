@@ -2,11 +2,12 @@
   "slug": "wave-transfer",
   "engine": "chromium",
   "modes": [
-    "transverse",
-    "longitudinal"
+    "transverse"
   ],
-  "cases": 20,
-  "errors": [],
+  "cases": 0,
+  "errors": [
+    "locator.screenshot: UNKNOWN: unknown error, open 'E:\\webprojects\\class\\docs\\science-lab-audit-2026-09-20\\full-inspection\\wave-transfer-transverse-chromium.png'"
+  ],
   "issues": [],
   "models": [
     {
@@ -35,46 +36,5 @@
     }
   ],
   "paint": [],
-  "grades": [
-    {
-      "mode": "transverse",
-      "results": [
-        {
-          "choice": "longer",
-          "visible": true,
-          "text": "예상과 다른 결과입니다."
-        },
-        {
-          "choice": "same",
-          "visible": true,
-          "text": "예상이 맞았습니다."
-        },
-        {
-          "choice": "shorter",
-          "visible": true,
-          "text": "예상과 다른 결과입니다."
-        }
-      ]
-    },
-    {
-      "mode": "longitudinal",
-      "results": [
-        {
-          "choice": "longer",
-          "visible": true,
-          "text": "예상과 다른 결과입니다."
-        },
-        {
-          "choice": "same",
-          "visible": true,
-          "text": "예상과 다른 결과입니다."
-        },
-        {
-          "choice": "shorter",
-          "visible": true,
-          "text": "예상이 맞았습니다."
-        }
-      ]
-    }
-  ]
+  "grades": []
 }

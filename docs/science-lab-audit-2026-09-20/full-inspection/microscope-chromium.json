@@ -1,57 +1,13 @@
 {
   "slug": "microscope",
   "engine": "chromium",
-  "modes": [
-    "initial"
+  "modes": [],
+  "cases": 0,
+  "errors": [
+    "page.goto: Target page, context or browser has been closed"
   ],
-  "cases": 8,
-  "errors": [],
   "issues": [],
-  "models": [
-    {
-      "key": "__scopeModel",
-      "methods": [
-        "state",
-        "analyse",
-        "tick",
-        "render",
-        "power",
-        "fieldMm",
-        "brightness",
-        "share",
-        "verdictFor",
-        "SPECIMENS",
-        "EYEPIECES",
-        "OBJECTIVES",
-        "setSpec",
-        "setEye",
-        "setObj",
-        "check",
-        "runToEnd"
-      ]
-    }
-  ],
+  "models": [],
   "paint": [],
-  "grades": [
-    {
-      "mode": "initial",
-      "results": [
-        {
-          "choice": "p1",
-          "visible": true,
-          "text": "예상이 맞았습니다 — 잘 보인다."
-        },
-        {
-          "choice": "p2",
-          "visible": true,
-          "text": "예상은 겨우 보인다였지만 결과는 잘 보인다입니다."
-        },
-        {
-          "choice": "p3",
-          "visible": true,
-          "text": "예상은 너무 작아 안 보인다였지만 결과는 잘 보인다입니다."
-        }
-      ]
-    }
-  ]
+  "grades": []
 }

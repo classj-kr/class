@@ -1,59 +1,13 @@
 {
   "slug": "ocean-circulation",
   "engine": "chromium",
-  "modes": [
-    "initial"
+  "modes": [],
+  "cases": 0,
+  "errors": [
+    "page.goto: Target page, context or browser has been closed"
   ],
-  "cases": 9,
-  "errors": [],
   "issues": [],
-  "models": [
-    {
-      "key": "__oceanModel",
-      "methods": [
-        "state",
-        "analyse",
-        "tick",
-        "render",
-        "coriolis",
-        "stress",
-        "inertialHours",
-        "belt",
-        "OMEGA",
-        "RHO_A",
-        "RHO_W",
-        "CD",
-        "AZ",
-        "HALF_DAY_H",
-        "setHemi",
-        "setLat",
-        "setWind",
-        "check",
-        "runToEnd"
-      ]
-    }
-  ],
+  "models": [],
   "paint": [],
-  "grades": [
-    {
-      "mode": "initial",
-      "results": [
-        {
-          "choice": "p1",
-          "visible": true,
-          "text": "예상이 맞았습니다 — 하루보다 짧다."
-        },
-        {
-          "choice": "p2",
-          "visible": true,
-          "text": "예상은 하루쯤였지만 결과는 하루보다 짧다입니다."
-        },
-        {
-          "choice": "p3",
-          "visible": true,
-          "text": "예상은 하루보다 길다였지만 결과는 하루보다 짧다입니다."
-        }
-      ]
-    }
-  ]
+  "grades": []
 }

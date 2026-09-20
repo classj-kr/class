@@ -25,6 +25,15 @@ for(const engine of ['chromium','webkit'])test(`${engine}: real animation frames
   await page.locator('[data-distance="A"]').fill('100');await page.locator('[data-distance="A"]').dispatchEvent('input');assert.equal(await page.locator('#resultPanel').getAttribute('data-state'),null);await click('#newDataBtn');
  }await page.screenshot({path:path.join(out,'special-earthquake-'+engine+'.png'),fullPage:true});
  for(const slug of ['cell-structure','neutralization-common']){await open(slug);assert.ok(await page.locator('.curriculum-supplement').count()||await page.locator('[data-science-supplement]').count()||await page.locator('.supplement-lab').count(),'supplement loaded: '+slug);await page.screenshot({path:path.join(out,'special-'+slug+'-'+engine+'.png'),fullPage:true});}
+
+
+ await open('density-buoyancy');await click('[data-fluid="oil"]');await range('massRange',240);await range('volRange',240);await page.clock.runFor(32);assert.ok(!(await text('#stageReadout')).includes('0.37'),'obsolete force label must be removed');await click('[data-mode="gas"]');await page.clock.runFor(32);assert.ok(!(await text('#stageReadout')).includes('바닥'),'gas mode cannot retain buoyancy force');
+ await open('reflex-nerve');for(const path of ['conscious','pupil','knee'])for(const choice of ['yes','no']){await click('[data-path="'+path+'"]');await click('[data-prediction="'+choice+'"]');await click('#checkBtn');for(let step=0;step<4;step++)await click('#nextBtn');assert.equal(/맞았습니다/.test(await text('#predictionResult')),choice===(path==='conscious'?'yes':'no'));}
+ await open('acid-base');await click('[data-solution=vinegar]');for(const choice of await page.locator('[data-prediction]').evaluateAll(es=>es.map(e=>e.dataset.prediction))){await click('[data-prediction="'+choice+'"]');await click('#dipButton');await page.clock.runFor(800);assert.equal(await page.locator('#resultContent').isVisible(),true);assert.match(await text('#predictionResult'),/맞았습니다|다른 결과/);}
+ // Numeric model verdicts and conceptual question answers are different fields.
+ for(const [slug,model,modes] of [['heat-engine','__engineModel',['flow','carnot','pump']],['star-elements','__starModel',['fusion']],['semiconductor-relativity','__semiModel',['energy','muon']]]){
+  await open(slug);for(const mode of modes){await click('[data-mode="'+mode+'"]');for(const choice of ['yes','no']){await click('[data-prediction="'+choice+'"]');await page.evaluate(()=>{for(const k of Object.keys(window))if(k.startsWith('__')&&k.endsWith('Model')&&typeof window[k].runToEnd==='function')window[k].runToEnd(.25);});assert.equal(/맞았습니다/.test(await text('#predictionResult')),choice==='yes',slug+'/'+mode);}}
+ }
  assert.deepEqual(errors,[]);
  }finally{await browser?.close();await new Promise(r=>server.close(r));}
 });

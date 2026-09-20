@@ -1,97 +1,13 @@
 {
   "slug": "typhoon",
   "engine": "chromium",
-  "modes": [
-    "genesis",
-    "track",
-    "enso"
+  "modes": [],
+  "cases": 0,
+  "errors": [
+    "page.goto: Target page, context or browser has been closed"
   ],
-  "cases": 18,
-  "errors": [],
   "issues": [],
-  "models": [
-    {
-      "key": "__typhoonModel",
-      "methods": [
-        "SSTS",
-        "LATS",
-        "HIGHS",
-        "SPEEDS",
-        "TRADES",
-        "state",
-        "analyse",
-        "render",
-        "runSeconds",
-        "setMode",
-        "set",
-        "setProgress",
-        "runToEnd",
-        "tick",
-        "finish"
-      ]
-    }
-  ],
+  "models": [],
   "paint": [],
-  "grades": [
-    {
-      "mode": "genesis",
-      "results": [
-        {
-          "choice": "none",
-          "visible": true,
-          "text": "예상과 다른 결과입니다."
-        },
-        {
-          "choice": "mid",
-          "visible": true,
-          "text": "예상이 맞았습니다."
-        },
-        {
-          "choice": "high",
-          "visible": true,
-          "text": "예상과 다른 결과입니다."
-        }
-      ]
-    },
-    {
-      "mode": "track",
-      "results": [
-        {
-          "choice": "china",
-          "visible": true,
-          "text": "예상과 다른 결과입니다."
-        },
-        {
-          "choice": "korea",
-          "visible": true,
-          "text": "예상이 맞았습니다."
-        },
-        {
-          "choice": "japan",
-          "visible": true,
-          "text": "예상과 다른 결과입니다."
-        }
-      ]
-    },
-    {
-      "mode": "enso",
-      "results": [
-        {
-          "choice": "elnino",
-          "visible": true,
-          "text": "예상이 맞았습니다."
-        },
-        {
-          "choice": "normal",
-          "visible": true,
-          "text": "예상과 다른 결과입니다."
-        },
-        {
-          "choice": "lanina",
-          "visible": true,
-          "text": "예상과 다른 결과입니다."
-        }
-      ]
-    }
-  ]
+  "grades": []
 }

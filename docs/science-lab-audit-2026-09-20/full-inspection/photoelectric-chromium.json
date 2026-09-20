@@ -2,12 +2,12 @@
   "slug": "photoelectric",
   "engine": "chromium",
   "modes": [
-    "photo",
-    "hydrogen",
-    "matter"
+    "photo"
   ],
-  "cases": 26,
-  "errors": [],
+  "cases": 0,
+  "errors": [
+    "locator.screenshot: UNKNOWN: unknown error, open 'E:\\webprojects\\class\\docs\\science-lab-audit-2026-09-20\\full-inspection\\photoelectric-photo-chromium.png'"
+  ],
   "issues": [],
   "models": [
     {
@@ -33,71 +33,5 @@
     }
   ],
   "paint": [],
-  "grades": [
-    {
-      "mode": "photo",
-      "results": [
-        {
-          "choice": "none",
-          "visible": true,
-          "text": "예상과 다른 결과입니다."
-        },
-        {
-          "choice": "slow",
-          "visible": true,
-          "text": "예상이 맞았습니다."
-        },
-        {
-          "choice": "fast",
-          "visible": true,
-          "text": "예상과 다른 결과입니다."
-        }
-      ]
-    },
-    {
-      "mode": "hydrogen",
-      "results": [
-        {
-          "choice": "visible",
-          "visible": true,
-          "text": "예상이 맞았습니다."
-        },
-        {
-          "choice": "uv",
-          "visible": true,
-          "text": "예상과 다른 결과입니다."
-        },
-        {
-          "choice": "ir",
-          "visible": true,
-          "text": "예상과 다른 결과입니다."
-        },
-        {
-          "choice": "none",
-          "visible": true,
-          "text": "예상과 다른 결과입니다."
-        }
-      ]
-    },
-    {
-      "mode": "matter",
-      "results": [
-        {
-          "choice": "big",
-          "visible": true,
-          "text": "예상과 다른 결과입니다."
-        },
-        {
-          "choice": "atom",
-          "visible": true,
-          "text": "예상이 맞았습니다."
-        },
-        {
-          "choice": "tiny",
-          "visible": true,
-          "text": "예상과 다른 결과입니다."
-        }
-      ]
-    }
-  ]
+  "grades": []
 }

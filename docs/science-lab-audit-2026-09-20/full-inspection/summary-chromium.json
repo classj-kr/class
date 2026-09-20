@@ -2071,7 +2071,175 @@
           ]
         }
       ],
-      "paint": [],
+      "paint": [
+        {
+          "mode": "diode",
+          "condition": {
+            "kind": "initial"
+          },
+          "items": [
+            {
+              "tag": "line",
+              "cls": "wind",
+              "fill": "rgb(0, 0, 0)",
+              "stroke": "none",
+              "html": "<line class=\"wind\" x1=\"376.0\" y1=\"126.0\" x2=\"302.0\" y2=\"126.0\"></line>"
+            },
+            {
+              "tag": "polygon",
+              "cls": "wind-head",
+              "fill": "rgb(0, 0, 0)",
+              "stroke": "none",
+              "html": "<polygon class=\"wind-head\" points=\"296.0,126.0 302.0,123.0 302.0,129.0\"></polygon>"
+            }
+          ]
+        },
+        {
+          "mode": "diode",
+          "condition": {
+            "kind": "button",
+            "attrs": [
+              [
+                "data-value",
+                "p05"
+              ]
+            ],
+            "group": "volt"
+          },
+          "items": [
+            {
+              "tag": "line",
+              "cls": "wind",
+              "fill": "rgb(0, 0, 0)",
+              "stroke": "none",
+              "html": "<line class=\"wind\" x1=\"376.0\" y1=\"126.0\" x2=\"302.0\" y2=\"126.0\"></line>"
+            },
+            {
+              "tag": "polygon",
+              "cls": "wind-head",
+              "fill": "rgb(0, 0, 0)",
+              "stroke": "none",
+              "html": "<polygon class=\"wind-head\" points=\"296.0,126.0 302.0,123.0 302.0,129.0\"></polygon>"
+            }
+          ]
+        },
+        {
+          "mode": "diode",
+          "condition": {
+            "kind": "button",
+            "attrs": [
+              [
+                "data-value",
+                "p07"
+              ]
+            ],
+            "group": "volt"
+          },
+          "items": [
+            {
+              "tag": "line",
+              "cls": "wind",
+              "fill": "rgb(0, 0, 0)",
+              "stroke": "none",
+              "html": "<line class=\"wind\" x1=\"376.0\" y1=\"126.0\" x2=\"302.0\" y2=\"126.0\"></line>"
+            },
+            {
+              "tag": "polygon",
+              "cls": "wind-head",
+              "fill": "rgb(0, 0, 0)",
+              "stroke": "none",
+              "html": "<polygon class=\"wind-head\" points=\"296.0,126.0 302.0,123.0 302.0,129.0\"></polygon>"
+            }
+          ]
+        },
+        {
+          "mode": "diode",
+          "condition": {
+            "kind": "button",
+            "attrs": [
+              [
+                "data-value",
+                "p2"
+              ]
+            ],
+            "group": "volt"
+          },
+          "items": [
+            {
+              "tag": "line",
+              "cls": "wind",
+              "fill": "rgb(0, 0, 0)",
+              "stroke": "none",
+              "html": "<line class=\"wind\" x1=\"376.0\" y1=\"126.0\" x2=\"302.0\" y2=\"126.0\"></line>"
+            },
+            {
+              "tag": "polygon",
+              "cls": "wind-head",
+              "fill": "rgb(0, 0, 0)",
+              "stroke": "none",
+              "html": "<polygon class=\"wind-head\" points=\"296.0,126.0 302.0,123.0 302.0,129.0\"></polygon>"
+            }
+          ]
+        },
+        {
+          "mode": "diode",
+          "condition": {
+            "kind": "button",
+            "attrs": [
+              [
+                "data-value",
+                "t300"
+              ]
+            ],
+            "group": "temp"
+          },
+          "items": [
+            {
+              "tag": "line",
+              "cls": "wind",
+              "fill": "rgb(0, 0, 0)",
+              "stroke": "none",
+              "html": "<line class=\"wind\" x1=\"376.0\" y1=\"126.0\" x2=\"302.0\" y2=\"126.0\"></line>"
+            },
+            {
+              "tag": "polygon",
+              "cls": "wind-head",
+              "fill": "rgb(0, 0, 0)",
+              "stroke": "none",
+              "html": "<polygon class=\"wind-head\" points=\"296.0,126.0 302.0,123.0 302.0,129.0\"></polygon>"
+            }
+          ]
+        },
+        {
+          "mode": "diode",
+          "condition": {
+            "kind": "button",
+            "attrs": [
+              [
+                "data-value",
+                "t400"
+              ]
+            ],
+            "group": "temp"
+          },
+          "items": [
+            {
+              "tag": "line",
+              "cls": "wind",
+              "fill": "rgb(0, 0, 0)",
+              "stroke": "none",
+              "html": "<line class=\"wind\" x1=\"376.0\" y1=\"126.0\" x2=\"302.0\" y2=\"126.0\"></line>"
+            },
+            {
+              "tag": "polygon",
+              "cls": "wind-head",
+              "fill": "rgb(0, 0, 0)",
+              "stroke": "none",
+              "html": "<polygon class=\"wind-head\" points=\"296.0,126.0 302.0,123.0 302.0,129.0\"></polygon>"
+            }
+          ]
+        }
+      ],
       "grades": [
         {
           "mode": "diode",
@@ -7812,12 +7980,12 @@
             {
               "choice": "sea-more",
               "visible": true,
-              "text": "예상이 맞았습니다."
+              "text": "예상과 다른 결과입니다."
             },
             {
               "choice": "even",
               "visible": true,
-              "text": "예상과 다른 결과입니다."
+              "text": "예상이 맞았습니다."
             },
             {
               "choice": "land-more",

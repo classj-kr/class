@@ -1,37 +1,13 @@
 {
   "slug": "reflex-nerve",
   "engine": "chromium",
-  "modes": [
-    "initial"
+  "modes": [],
+  "cases": 0,
+  "errors": [
+    "page.goto: Target page, context or browser has been closed"
   ],
-  "cases": 4,
-  "errors": [],
   "issues": [],
-  "models": [
-    {
-      "key": "__reflexModel",
-      "methods": [
-        "PATHS",
-        "state"
-      ]
-    }
-  ],
+  "models": [],
   "paint": [],
-  "grades": [
-    {
-      "mode": "initial",
-      "results": [
-        {
-          "choice": "yes",
-          "visible": false,
-          "text": ""
-        },
-        {
-          "choice": "no",
-          "visible": false,
-          "text": ""
-        }
-      ]
-    }
-  ]
+  "grades": []
 }

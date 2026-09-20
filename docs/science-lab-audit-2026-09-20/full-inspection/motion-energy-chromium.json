@@ -5,8 +5,10 @@
     "incline",
     "energy"
   ],
-  "cases": 13,
-  "errors": [],
+  "cases": 7,
+  "errors": [
+    "locator.screenshot: UNKNOWN: unknown error, open 'E:\\webprojects\\class\\docs\\science-lab-audit-2026-09-20\\full-inspection\\motion-energy-energy-chromium.png'"
+  ],
   "issues": [],
   "models": [
     {
@@ -53,26 +55,6 @@
         },
         {
           "choice": "narrow",
-          "visible": true,
-          "text": "예상과 다른 결과입니다."
-        }
-      ]
-    },
-    {
-      "mode": "energy",
-      "results": [
-        {
-          "choice": "pass",
-          "visible": true,
-          "text": "예상이 맞았습니다."
-        },
-        {
-          "choice": "stop",
-          "visible": true,
-          "text": "예상과 다른 결과입니다."
-        },
-        {
-          "choice": "back",
           "visible": true,
           "text": "예상과 다른 결과입니다."
         }

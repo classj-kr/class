@@ -1,64 +1,13 @@
 {
   "slug": "air-stability",
   "engine": "chromium",
-  "modes": [
-    "initial"
+  "modes": [],
+  "cases": 0,
+  "errors": [
+    "page.goto: Target page, context or browser has been closed"
   ],
-  "cases": 13,
-  "errors": [],
   "issues": [],
-  "models": [
-    {
-      "key": "__airModel",
-      "methods": [
-        "state",
-        "analyse",
-        "tick",
-        "render",
-        "crossing",
-        "parcelAt",
-        "envAt",
-        "liftedAt",
-        "freeConvection",
-        "esat",
-        "dewFrom",
-        "rhFrom",
-        "mixing",
-        "pressAt",
-        "GD",
-        "GM",
-        "GDEW",
-        "Z_TOP",
-        "setHeight",
-        "setRh",
-        "setTemp",
-        "setLapse",
-        "check",
-        "runToEnd"
-      ]
-    }
-  ],
+  "models": [],
   "paint": [],
-  "grades": [
-    {
-      "mode": "initial",
-      "results": [
-        {
-          "choice": "p1",
-          "visible": true,
-          "text": "예상은 절대 안정였지만 결과는 조건부 불안정입니다."
-        },
-        {
-          "choice": "p2",
-          "visible": true,
-          "text": "예상이 맞았습니다 — 조건부 불안정."
-        },
-        {
-          "choice": "p3",
-          "visible": true,
-          "text": "예상은 절대 불안정였지만 결과는 조건부 불안정입니다."
-        }
-      ]
-    }
-  ]
+  "grades": []
 }

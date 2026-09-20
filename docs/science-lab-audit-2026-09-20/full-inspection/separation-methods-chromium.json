@@ -1,99 +1,13 @@
 {
   "slug": "separation-methods",
   "engine": "chromium",
-  "modes": [
-    "filter",
-    "distill",
-    "chroma"
+  "modes": [],
+  "cases": 0,
+  "errors": [
+    "page.goto: Target page, context or browser has been closed"
   ],
-  "cases": 21,
-  "errors": [],
   "issues": [],
-  "models": [
-    {
-      "key": "__sepModel",
-      "methods": [
-        "PORE_MM",
-        "MIXTURES",
-        "analyse",
-        "schedule",
-        "tempAt",
-        "collectedAt",
-        "render",
-        "round",
-        "setMode",
-        "setMix",
-        "setProgress",
-        "runToEnd",
-        "tick",
-        "finish",
-        "getMode",
-        "getMix",
-        "runSeconds"
-      ]
-    }
-  ],
+  "models": [],
   "paint": [],
-  "grades": [
-    {
-      "mode": "filter",
-      "results": [
-        {
-          "choice": "full",
-          "visible": true,
-          "text": "예상이 맞았습니다."
-        },
-        {
-          "choice": "partial",
-          "visible": true,
-          "text": "예상과 다른 결과입니다."
-        },
-        {
-          "choice": "none",
-          "visible": true,
-          "text": "예상과 다른 결과입니다."
-        }
-      ]
-    },
-    {
-      "mode": "distill",
-      "results": [
-        {
-          "choice": "full",
-          "visible": true,
-          "text": "예상이 맞았습니다."
-        },
-        {
-          "choice": "partial",
-          "visible": true,
-          "text": "예상과 다른 결과입니다."
-        },
-        {
-          "choice": "none",
-          "visible": true,
-          "text": "예상과 다른 결과입니다."
-        }
-      ]
-    },
-    {
-      "mode": "chroma",
-      "results": [
-        {
-          "choice": "full",
-          "visible": true,
-          "text": "예상이 맞았습니다."
-        },
-        {
-          "choice": "partial",
-          "visible": true,
-          "text": "예상과 다른 결과입니다."
-        },
-        {
-          "choice": "none",
-          "visible": true,
-          "text": "예상과 다른 결과입니다."
-        }
-      ]
-    }
-  ]
+  "grades": []
 }

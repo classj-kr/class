@@ -1,123 +1,13 @@
 {
   "slug": "energy-conversion",
   "engine": "chromium",
-  "modes": [
-    "solar",
-    "wind",
-    "chain"
+  "modes": [],
+  "cases": 0,
+  "errors": [
+    "page.goto: Target page, context or browser has been closed"
   ],
-  "cases": 20,
-  "errors": [],
   "issues": [],
-  "models": [
-    {
-      "key": "__energyModel",
-      "methods": [
-        "SEASONS",
-        "WEATHERS",
-        "TILTS",
-        "WINDS",
-        "BLADES",
-        "REF",
-        "PLANTS",
-        "LAMPS",
-        "GRID_EFF",
-        "SUPPLY_J",
-        "state",
-        "analyse",
-        "render",
-        "panelPower",
-        "panelIrradiance",
-        "sunAt",
-        "windPower",
-        "chainOf",
-        "dayCurves",
-        "runSeconds",
-        "setMode",
-        "set",
-        "setProgress",
-        "runToEnd",
-        "tick",
-        "finish"
-      ]
-    }
-  ],
+  "models": [],
   "paint": [],
-  "grades": [
-    {
-      "mode": "solar",
-      "results": [
-        {
-          "choice": "0",
-          "visible": true,
-          "text": "예상과 다른 결과입니다."
-        },
-        {
-          "choice": "35",
-          "visible": true,
-          "text": "예상이 맞았습니다."
-        },
-        {
-          "choice": "70",
-          "visible": true,
-          "text": "예상과 다른 결과입니다."
-        }
-      ]
-    },
-    {
-      "mode": "wind",
-      "results": [
-        {
-          "choice": "tiny",
-          "visible": true,
-          "text": "예상과 다른 결과입니다."
-        },
-        {
-          "choice": "less",
-          "visible": true,
-          "text": "예상과 다른 결과입니다."
-        },
-        {
-          "choice": "same",
-          "visible": true,
-          "text": "예상과 다른 결과입니다."
-        },
-        {
-          "choice": "more",
-          "visible": true,
-          "text": "예상과 다른 결과입니다."
-        },
-        {
-          "choice": "huge",
-          "visible": true,
-          "text": "예상이 맞았습니다."
-        }
-      ]
-    },
-    {
-      "mode": "chain",
-      "results": [
-        {
-          "choice": "tiny",
-          "visible": true,
-          "text": "예상이 맞았습니다."
-        },
-        {
-          "choice": "small",
-          "visible": true,
-          "text": "예상과 다른 결과입니다."
-        },
-        {
-          "choice": "mid",
-          "visible": true,
-          "text": "예상과 다른 결과입니다."
-        },
-        {
-          "choice": "big",
-          "visible": true,
-          "text": "예상과 다른 결과입니다."
-        }
-      ]
-    }
-  ]
+  "grades": []
 }

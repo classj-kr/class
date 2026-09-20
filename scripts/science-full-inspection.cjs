@@ -2,7 +2,7 @@
 // This does not claim an exhaustive Cartesian product or independently prove every science fact.
 const fs=require('node:fs'),path=require('node:path'),http=require('node:http');
 const root=path.resolve(__dirname,'../learning/inquiry/science-lab'),slugs=Object.keys(require(path.join(root,'curriculum-map.js')));
-const output=path.resolve(__dirname,'../docs/science-lab-audit-2026-09-20/full-inspection');fs.mkdirSync(output,{recursive:true});
+const output=path.resolve(__dirname,'../docs/science-lab-audit-2026-09-20',process.argv.find(a=>a.startsWith('--output='))?.slice(9)||'full-inspection');fs.mkdirSync(output,{recursive:true});
 const picked=process.argv.find(a=>a.startsWith('--slugs='))?.slice(8).split(',')||slugs;
 const engine=process.argv.includes('--webkit')?'webkit':'chromium';
 (async()=>{let browser;const reports=[];const server=http.createServer((req,res)=>{let f=path.resolve(root,'.'+new URL(req.url,'http://localhost').pathname);if(!f.startsWith(root+path.sep)){res.writeHead(403).end();return;}if(fs.existsSync(f)&&fs.statSync(f).isDirectory())f=path.join(f,'index.html');fs.readFile(f,(e,b)=>{if(e){res.writeHead(404).end();return;}res.setHeader('Content-Type',{'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8'}[path.extname(f)]||'application/octet-stream');res.end(b);});});await new Promise(r=>server.listen(0,'127.0.0.1',r));
@@ -14,7 +14,7 @@ const engine=process.argv.includes('--webkit')?'webkit':'chromium';
  for(const mode of modes.length?modes:['initial']){
   await page.evaluate(m=>document.querySelector(`button[data-mode="${m}"]`)?.click(),mode);report.modes.push(mode);
   const stage=page.locator('.experiment-layout').first();if(await stage.count())await stage.screenshot({path:path.join(output,slug+'-'+mode+'-'+engine+'.png')});
-  const paint=await page.evaluate(()=>{
+  const readPaint=async()=>page.evaluate(()=>{
    const rules=[];function collect(list){for(const r of list){if(r.cssRules)collect(r.cssRules);if(r.selectorText&&r.style&&(r.style.fill||r.style.stroke))rules.push(r.selectorText);}}
    for(const sheet of document.styleSheets){try{collect(sheet.cssRules);}catch{}}
    const result=[];for(const e of document.querySelectorAll('svg path,svg rect,svg circle,svg ellipse,svg line,svg polyline,svg polygon')){
@@ -24,7 +24,7 @@ const engine=process.argv.includes('--webkit')?'webkit':'chromium';
     let styled=false;for(let node=e;node instanceof SVGElement;node=node.parentElement){if(explicit(node)){styled=true;break;}}
     if(!styled)result.push({tag:e.tagName,cls:e.getAttribute('class'),fill:c.fill,stroke:c.stroke,html:e.outerHTML.slice(0,170)});
    }return [...new Map(result.map(r=>[r.tag+' '+r.cls,r])).values()];
-  });if(paint.length)report.paint.push({mode,items:paint});
+  });const paint=await readPaint();if(paint.length)report.paint.push({mode,items:paint});
   const grade=await page.evaluate(()=>{
    const visible=e=>!!e?.getClientRects().length&&!e.closest('[hidden]'),models=Object.keys(window).filter(k=>k.startsWith('__')&&k.endsWith('Model')).map(k=>window[k]);
    const choices=[...document.querySelectorAll('[data-prediction]')].filter(visible).map(b=>b.dataset.prediction),results=[];
@@ -52,7 +52,9 @@ const engine=process.argv.includes('--webkit')?'webkit':'chromium';
    const values=[];for(const m of models){if(typeof m.analyse==='function'){try{const a=m.analyse();if(a&&typeof a==='object'){const flat=Object.fromEntries(Object.entries(a).filter(([k,v])=>v===null||['string','number','boolean'].includes(typeof v)));values.push(flat);if(flat.verdict&&choices.length&&!choices.some(x=>x.key===flat.verdict))issues.push({kind:'unanswerable-prediction',verdict:flat.verdict,choices});}}catch(e){issues.push({kind:'analysis-error',message:e.message});}}}
    return{issues,choices,values};
   },c);if(state.issues.length)report.issues.push({mode,condition:c,...state});
+  const dynamicPaint=await readPaint();if(dynamicPaint.length)report.paint.push({mode,condition:c,items:dynamicPaint});
   }
+  if(await stage.count())await stage.screenshot({path:path.join(output,slug+'-'+mode+'-end-'+engine+'.png')});
  }
  }catch(e){report.errors.push(e.message);}console.log(slug+': '+report.modes.length+' modes / '+report.cases+' cases / '+report.issues.length+' findings');fs.writeFileSync(path.join(output,slug+'-'+engine+'.json'),JSON.stringify(report,null,2));
  }

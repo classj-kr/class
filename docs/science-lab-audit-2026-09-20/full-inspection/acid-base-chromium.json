@@ -1,29 +1,13 @@
 {
   "slug": "acid-base",
   "engine": "chromium",
-  "modes": [
-    "initial"
+  "modes": [],
+  "cases": 0,
+  "errors": [
+    "page.goto: Target page, context or browser has been closed"
   ],
-  "cases": 5,
-  "errors": [],
   "issues": [],
   "models": [],
   "paint": [],
-  "grades": [
-    {
-      "mode": "initial",
-      "results": [
-        {
-          "choice": "acid",
-          "visible": false,
-          "text": ""
-        },
-        {
-          "choice": "base",
-          "visible": false,
-          "text": ""
-        }
-      ]
-    }
-  ]
+  "grades": []
 }

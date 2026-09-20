@@ -2,12 +2,12 @@
   "slug": "motor-magnet",
   "engine": "chromium",
   "modes": [
-    "motor",
-    "material",
-    "curie"
+    "motor"
   ],
-  "cases": 23,
-  "errors": [],
+  "cases": 8,
+  "errors": [
+    "page.evaluate: Target page, context or browser has been closed"
+  ],
   "issues": [],
   "models": [
     {
@@ -49,46 +49,6 @@
         },
         {
           "choice": "still",
-          "visible": true,
-          "text": "예상과 다른 결과입니다."
-        }
-      ]
-    },
-    {
-      "mode": "material",
-      "results": [
-        {
-          "choice": "strong",
-          "visible": true,
-          "text": "예상이 맞았습니다."
-        },
-        {
-          "choice": "weak",
-          "visible": true,
-          "text": "예상과 다른 결과입니다."
-        },
-        {
-          "choice": "repel",
-          "visible": true,
-          "text": "예상과 다른 결과입니다."
-        }
-      ]
-    },
-    {
-      "mode": "curie",
-      "results": [
-        {
-          "choice": "strong",
-          "visible": true,
-          "text": "예상이 맞았습니다."
-        },
-        {
-          "choice": "weak",
-          "visible": true,
-          "text": "예상과 다른 결과입니다."
-        },
-        {
-          "choice": "none",
           "visible": true,
           "text": "예상과 다른 결과입니다."
         }

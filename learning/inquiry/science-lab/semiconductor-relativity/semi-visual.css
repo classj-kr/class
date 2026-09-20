@@ -120,3 +120,7 @@
 .stage-note:empty { display: none; }
 .run-row { display: grid; grid-template-columns: 1.8fr 1fr; gap: 8px; align-items: stretch; margin-top: 10px; }
 .run-row .run-button, .run-row .reset-button { width: 100%; margin: 0; }
+
+/* Charge-flow arrow: visible only when the forward-biased junction conducts. */
+.wind { stroke: #0284c7; stroke-width: 2; }
+.wind-head { fill: #0284c7; }

@@ -1,60 +1,13 @@
 {
   "slug": "seawater",
   "engine": "chromium",
-  "modes": [
-    "initial"
+  "modes": [],
+  "cases": 0,
+  "errors": [
+    "page.goto: Target page, context or browser has been closed"
   ],
-  "cases": 13,
-  "errors": [],
   "issues": [],
-  "models": [
-    {
-      "key": "__seaModel",
-      "methods": [
-        "RHO0",
-        "T0",
-        "S0",
-        "ALPHA",
-        "BETA",
-        "MEAN_RHO",
-        "DEEP_T",
-        "THERMO_M",
-        "MAX_DEPTH",
-        "SALTS",
-        "PLACES",
-        "analyse",
-        "tempAt",
-        "render",
-        "check",
-        "setPlace",
-        "setTemp",
-        "setSalt",
-        "setWind",
-        "getPlace"
-      ]
-    }
-  ],
+  "models": [],
   "paint": [],
-  "grades": [
-    {
-      "mode": "initial",
-      "results": [
-        {
-          "choice": "heavier",
-          "visible": true,
-          "text": "예상이 맞았습니다."
-        },
-        {
-          "choice": "same",
-          "visible": true,
-          "text": "예상과 다른 결과입니다."
-        },
-        {
-          "choice": "lighter",
-          "visible": true,
-          "text": "예상과 다른 결과입니다."
-        }
-      ]
-    }
-  ]
+  "grades": []
 }

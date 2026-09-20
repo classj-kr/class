@@ -1,98 +1,13 @@
 {
   "slug": "ocean-layers",
   "engine": "chromium",
-  "modes": [
-    "profile",
-    "salinity",
-    "density"
+  "modes": [],
+  "cases": 0,
+  "errors": [
+    "page.goto: Target page, context or browser has been closed"
   ],
-  "cases": 20,
-  "errors": [],
   "issues": [],
-  "models": [
-    {
-      "key": "__layersModel",
-      "methods": [
-        "REGIONS",
-        "SEASONS",
-        "EVENTS",
-        "TEMPS",
-        "SALTS",
-        "state",
-        "analyse",
-        "render",
-        "rho",
-        "runSeconds",
-        "setMode",
-        "set",
-        "setProgress",
-        "runToEnd",
-        "tick",
-        "finish"
-      ]
-    }
-  ],
+  "models": [],
   "paint": [],
-  "grades": [
-    {
-      "mode": "profile",
-      "results": [
-        {
-          "choice": "shallow",
-          "visible": true,
-          "text": "예상이 맞았습니다."
-        },
-        {
-          "choice": "deep",
-          "visible": true,
-          "text": "예상과 다른 결과입니다."
-        },
-        {
-          "choice": "none",
-          "visible": true,
-          "text": "예상과 다른 결과입니다."
-        }
-      ]
-    },
-    {
-      "mode": "salinity",
-      "results": [
-        {
-          "choice": "up",
-          "visible": true,
-          "text": "예상이 맞았습니다."
-        },
-        {
-          "choice": "same",
-          "visible": true,
-          "text": "예상과 다른 결과입니다."
-        },
-        {
-          "choice": "down",
-          "visible": true,
-          "text": "예상과 다른 결과입니다."
-        }
-      ]
-    },
-    {
-      "mode": "density",
-      "results": [
-        {
-          "choice": "sink",
-          "visible": true,
-          "text": "예상이 맞았습니다."
-        },
-        {
-          "choice": "same",
-          "visible": true,
-          "text": "예상과 다른 결과입니다."
-        },
-        {
-          "choice": "float",
-          "visible": true,
-          "text": "예상과 다른 결과입니다."
-        }
-      ]
-    }
-  ]
+  "grades": []
 }

@@ -1,53 +1,13 @@
 {
   "slug": "life-cycle",
   "engine": "chromium",
-  "modes": [
-    "initial"
+  "modes": [],
+  "cases": 0,
+  "errors": [
+    "page.goto: Target page, context or browser has been closed"
   ],
-  "cases": 8,
-  "errors": [],
   "issues": [],
-  "models": [
-    {
-      "key": "__lifeModel",
-      "methods": [
-        "state",
-        "analyse",
-        "tick",
-        "render",
-        "daysToAdult",
-        "verdictFor",
-        "pyramid",
-        "ANIMALS",
-        "PASS",
-        "setAnimal",
-        "setStep",
-        "check",
-        "runToEnd"
-      ]
-    }
-  ],
+  "models": [],
   "paint": [],
-  "grades": [
-    {
-      "mode": "initial",
-      "results": [
-        {
-          "choice": "p1",
-          "visible": true,
-          "text": "예상이 맞았습니다 — 번데기를 거친다."
-        },
-        {
-          "choice": "p2",
-          "visible": true,
-          "text": "예상은 번데기 없이 모습이 크게 바뀐다였지만 결과는 번데기를 거친다입니다."
-        },
-        {
-          "choice": "p3",
-          "visible": true,
-          "text": "예상은 처음부터 어른과 닮았다였지만 결과는 번데기를 거친다입니다."
-        }
-      ]
-    }
-  ]
+  "grades": []
 }

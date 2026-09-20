@@ -1,57 +1,13 @@
 {
   "slug": "plate-tectonics",
   "engine": "chromium",
-  "modes": [
-    "initial"
+  "modes": [],
+  "cases": 0,
+  "errors": [
+    "page.goto: Target page, context or browser has been closed"
   ],
-  "cases": 11,
-  "errors": [],
   "issues": [],
-  "models": [
-    {
-      "key": "__plateModel",
-      "methods": [
-        "DEPTH_MAX",
-        "PX_PER_KM",
-        "SHALLOW",
-        "MIDDLE",
-        "KINDS",
-        "analyse",
-        "quakes",
-        "moved",
-        "render",
-        "check",
-        "setKind",
-        "setSpeed",
-        "setYears",
-        "runToEnd",
-        "getKind",
-        "speed",
-        "years"
-      ]
-    }
-  ],
+  "models": [],
   "paint": [],
-  "grades": [
-    {
-      "mode": "initial",
-      "results": [
-        {
-          "choice": "shallow",
-          "visible": true,
-          "text": "예상이 맞았습니다."
-        },
-        {
-          "choice": "deep",
-          "visible": true,
-          "text": "예상과 다른 결과입니다."
-        },
-        {
-          "choice": "none",
-          "visible": true,
-          "text": "예상과 다른 결과입니다."
-        }
-      ]
-    }
-  ]
+  "grades": []
 }

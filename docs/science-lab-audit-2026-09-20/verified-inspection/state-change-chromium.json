@@ -1,0 +1,34 @@
+{
+  "slug": "state-change",
+  "engine": "chromium",
+  "modes": [
+    "initial"
+  ],
+  "cases": 4,
+  "errors": [],
+  "issues": [],
+  "models": [],
+  "paint": [],
+  "grades": [
+    {
+      "mode": "initial",
+      "results": [
+        {
+          "choice": "solid",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "liquid",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        },
+        {
+          "choice": "gas",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        }
+      ]
+    }
+  ]
+}

@@ -618,8 +618,8 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             [...drop].sort((x, y) => x - y).forEach(k => takeOut(items[k].t));
         });
-        // 옮긴 것이 없는 실행은 우리 자신이 일으킨 메아리다. 그때 지우면 방금 옮긴 글이 사라진다.
-        if (!rows.length && !notes.length && !verdicts.length) return;
+        // A new drawing may contain no lifted prose. Clear the previous
+        // drawing's copy too; takeRecords below already consumes our own edits.
         if (stageVerdict) stageVerdict.textContent = verdicts.join(' ');
         stageReadout.textContent = '';
         rows.forEach(r => {
@@ -643,5 +643,5 @@ document.addEventListener('DOMContentLoaded', () => {
     obs = new MutationObserver(run);
     pairs.forEach(([g]) => obs.observe(g, { childList: true, subtree: true }));
     run();
-    document.addEventListener('DOMContentLoaded', run);
+    // The observer sees the app's DOMContentLoaded render; do not run twice.
 })();

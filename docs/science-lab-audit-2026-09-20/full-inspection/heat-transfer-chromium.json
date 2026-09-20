@@ -4,8 +4,10 @@
   "modes": [
     "initial"
   ],
-  "cases": 5,
-  "errors": [],
+  "cases": 0,
+  "errors": [
+    "locator.screenshot: Target page, context or browser has been closed\nCall log:\n\u001b[2m  - taking element screenshot\u001b[22m\n\u001b[2m  - waiting for fonts to load...\u001b[22m\n\u001b[2m  - fonts loaded\u001b[22m\n\u001b[2m  - attempting scroll into view action\u001b[22m\n\u001b[2m    - waiting for element to be stable\u001b[22m\n"
+  ],
   "issues": [],
   "models": [
     {
@@ -37,26 +39,5 @@
     }
   ],
   "paint": [],
-  "grades": [
-    {
-      "mode": "initial",
-      "results": [
-        {
-          "choice": "faster",
-          "visible": true,
-          "text": "예상과 다른 결과입니다."
-        },
-        {
-          "choice": "slower",
-          "visible": false,
-          "text": ""
-        },
-        {
-          "choice": "same",
-          "visible": true,
-          "text": "예상이 맞았습니다."
-        }
-      ]
-    }
-  ]
+  "grades": []
 }

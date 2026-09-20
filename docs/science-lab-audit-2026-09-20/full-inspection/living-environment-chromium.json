@@ -1,82 +1,13 @@
 {
   "slug": "living-environment",
   "engine": "chromium",
-  "modes": [
-    "bean",
-    "web"
+  "modes": [],
+  "cases": 0,
+  "errors": [
+    "page.goto: Target page, context or browser has been closed"
   ],
-  "cases": 10,
-  "errors": [],
   "issues": [],
-  "models": [
-    {
-      "key": "__livingModel",
-      "methods": [
-        "EVENTS",
-        "START",
-        "WEB",
-        "BEAN_DAYS",
-        "WEB_MONTHS",
-        "EVENT_MONTH",
-        "state",
-        "analyseBean",
-        "analyseWeb",
-        "analyse",
-        "simulateWeb",
-        "heightAt",
-        "beanProfile",
-        "render",
-        "runSeconds",
-        "setMode",
-        "set",
-        "setProgress",
-        "runToEnd",
-        "tick",
-        "finish"
-      ]
-    }
-  ],
+  "models": [],
   "paint": [],
-  "grades": [
-    {
-      "mode": "bean",
-      "results": [
-        {
-          "choice": "green",
-          "visible": true,
-          "text": "예상이 맞았습니다."
-        },
-        {
-          "choice": "yellow",
-          "visible": true,
-          "text": "예상과 다른 결과입니다."
-        },
-        {
-          "choice": "none",
-          "visible": true,
-          "text": "예상과 다른 결과입니다."
-        }
-      ]
-    },
-    {
-      "mode": "web",
-      "results": [
-        {
-          "choice": "rabbit-up",
-          "visible": true,
-          "text": "예상이 맞았습니다."
-        },
-        {
-          "choice": "rabbit-down",
-          "visible": true,
-          "text": "예상과 다른 결과입니다."
-        },
-        {
-          "choice": "steady",
-          "visible": true,
-          "text": "예상과 다른 결과입니다."
-        }
-      ]
-    }
-  ]
+  "grades": []
 }

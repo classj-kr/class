@@ -1,81 +1,13 @@
 {
   "slug": "minerals-rocks",
   "engine": "chromium",
-  "modes": [
-    "mineral",
-    "rock"
+  "modes": [],
+  "cases": 0,
+  "errors": [
+    "page.goto: Target page, context or browser has been closed"
   ],
-  "cases": 22,
-  "errors": [],
   "issues": [],
-  "models": [
-    {
-      "key": "__rockModel",
-      "methods": [
-        "MINERALS",
-        "ROCKS",
-        "K_CRYSTAL",
-        "N_CRYSTAL",
-        "FINE_MM",
-        "COARSE_MM",
-        "LOG_MIN",
-        "LOG_MAX",
-        "COOL_K",
-        "state",
-        "analyseMineral",
-        "analyseRock",
-        "analyse",
-        "daysFor",
-        "crystalFor",
-        "timeText",
-        "render",
-        "check",
-        "setMode",
-        "set"
-      ]
-    }
-  ],
+  "models": [],
   "paint": [],
-  "grades": [
-    {
-      "mode": "mineral",
-      "results": [
-        {
-          "choice": "a",
-          "visible": true,
-          "text": "예상이 맞았습니다."
-        },
-        {
-          "choice": "b",
-          "visible": true,
-          "text": "예상과 다른 결과입니다."
-        },
-        {
-          "choice": "none",
-          "visible": true,
-          "text": "예상과 다른 결과입니다."
-        }
-      ]
-    },
-    {
-      "mode": "rock",
-      "results": [
-        {
-          "choice": "fine",
-          "visible": true,
-          "text": "예상이 맞았습니다."
-        },
-        {
-          "choice": "medium",
-          "visible": true,
-          "text": "예상과 다른 결과입니다."
-        },
-        {
-          "choice": "coarse",
-          "visible": true,
-          "text": "예상과 다른 결과입니다."
-        }
-      ]
-    }
-  ]
+  "grades": []
 }

@@ -1,30 +1,13 @@
 {
   "slug": "mixture-separation",
   "engine": "chromium",
-  "modes": [
-    "initial"
+  "modes": [],
+  "cases": 0,
+  "errors": [
+    "page.goto: Target page, context or browser has been closed"
   ],
-  "cases": 4,
-  "errors": [],
   "issues": [],
-  "models": [
-    {
-      "key": "__mixtureModel",
-      "methods": [
-        "SUBSTANCES",
-        "remaining",
-        "separated",
-        "setMesh",
-        "reset",
-        "grainCount"
-      ]
-    }
-  ],
+  "models": [],
   "paint": [],
-  "grades": [
-    {
-      "mode": "initial",
-      "results": []
-    }
-  ]
+  "grades": []
 }

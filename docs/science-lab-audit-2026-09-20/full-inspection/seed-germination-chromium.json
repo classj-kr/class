@@ -1,44 +1,13 @@
 {
   "slug": "seed-germination",
   "engine": "chromium",
-  "modes": [
-    "initial"
+  "modes": [],
+  "cases": 0,
+  "errors": [
+    "page.goto: Target page, context or browser has been closed"
   ],
-  "cases": 3,
-  "errors": [],
   "issues": [],
-  "models": [
-    {
-      "key": "__seedModel",
-      "methods": [
-        "germinates",
-        "missingConditions",
-        "stageName",
-        "setConditions",
-        "conditions",
-        "setProgress",
-        "progress",
-        "SOIL_Y",
-        "SEED"
-      ]
-    }
-  ],
+  "models": [],
   "paint": [],
-  "grades": [
-    {
-      "mode": "initial",
-      "results": [
-        {
-          "choice": "yes",
-          "visible": true,
-          "text": "예상이 맞았습니다."
-        },
-        {
-          "choice": "no",
-          "visible": false,
-          "text": ""
-        }
-      ]
-    }
-  ]
+  "grades": []
 }

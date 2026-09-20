@@ -1,52 +1,13 @@
 {
   "slug": "body-systems",
   "engine": "chromium",
-  "modes": [
-    "initial"
+  "modes": [],
+  "cases": 0,
+  "errors": [
+    "page.goto: Target page, context or browser has been closed"
   ],
-  "cases": 8,
-  "errors": [],
   "issues": [],
-  "models": [
-    {
-      "key": "__bodyModel",
-      "methods": [
-        "ACTS",
-        "DEAD_SPACE",
-        "O2_PER_GLUCOSE",
-        "BLOOD_VOLUME",
-        "AIR_O2",
-        "derive",
-        "render",
-        "check",
-        "setAct",
-        "setMinutes",
-        "getAct",
-        "minutes"
-      ]
-    }
-  ],
+  "models": [],
   "paint": [],
-  "grades": [
-    {
-      "mode": "initial",
-      "results": [
-        {
-          "choice": "more",
-          "visible": true,
-          "text": "예상과 다른 결과입니다."
-        },
-        {
-          "choice": "same",
-          "visible": true,
-          "text": "예상이 맞았습니다."
-        },
-        {
-          "choice": "less",
-          "visible": true,
-          "text": "예상과 다른 결과입니다."
-        }
-      ]
-    }
-  ]
+  "grades": []
 }

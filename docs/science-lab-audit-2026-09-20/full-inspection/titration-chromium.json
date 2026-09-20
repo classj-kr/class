@@ -1,60 +1,13 @@
 {
   "slug": "titration",
   "engine": "chromium",
-  "modes": [
-    "initial"
+  "modes": [],
+  "cases": 0,
+  "errors": [
+    "page.goto: Target page, context or browser has been closed"
   ],
-  "cases": 12,
-  "errors": [],
   "issues": [],
-  "models": [
-    {
-      "key": "__titrModel",
-      "methods": [
-        "VA",
-        "KA",
-        "KB",
-        "KW",
-        "DROP",
-        "CASES",
-        "INDS",
-        "pHAt",
-        "analyse",
-        "freshSim",
-        "step",
-        "render",
-        "check",
-        "setCase",
-        "setInd",
-        "setCa",
-        "setCb",
-        "runToEnd",
-        "getSim",
-        "tick"
-      ]
-    }
-  ],
+  "models": [],
   "paint": [],
-  "grades": [
-    {
-      "mode": "initial",
-      "results": [
-        {
-          "choice": "basic",
-          "visible": true,
-          "text": "예상과 다른 결과입니다."
-        },
-        {
-          "choice": "neutral",
-          "visible": true,
-          "text": "예상이 맞았습니다."
-        },
-        {
-          "choice": "acidic",
-          "visible": true,
-          "text": "예상과 다른 결과입니다."
-        }
-      ]
-    }
-  ]
+  "grades": []
 }

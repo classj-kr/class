@@ -1,62 +1,13 @@
 {
   "slug": "mass-ratio",
   "engine": "chromium",
-  "modes": [
-    "mass",
-    "heat"
+  "modes": [],
+  "cases": 0,
+  "errors": [
+    "page.goto: Target page, context or browser has been closed"
   ],
-  "cases": 15,
-  "errors": [],
   "issues": [],
-  "models": [
-    {
-      "key": "__massModel",
-      "methods": [
-        "R_MG",
-        "R_OX",
-        "R_PROD",
-        "MAX_G",
-        "REACTIONS",
-        "T0",
-        "react",
-        "tempAt",
-        "setMode",
-        "setRxn",
-        "setMg",
-        "setOx",
-        "setTime",
-        "mg",
-        "ox",
-        "elapsed",
-        "render"
-      ]
-    }
-  ],
+  "models": [],
   "paint": [],
-  "grades": [
-    {
-      "mode": "mass",
-      "results": [
-        {
-          "choice": "less",
-          "visible": true,
-          "text": "예상과 다른 결과입니다. 전체 질량은 변하지 않습니다."
-        },
-        {
-          "choice": "same",
-          "visible": true,
-          "text": "예상이 맞았습니다."
-        },
-        {
-          "choice": "more",
-          "visible": true,
-          "text": "예상과 다른 결과입니다. 전체 질량은 변하지 않습니다."
-        }
-      ]
-    },
-    {
-      "mode": "heat",
-      "results": []
-    }
-  ]
+  "grades": []
 }

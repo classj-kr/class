@@ -1,51 +1,13 @@
 {
   "slug": "combustion",
   "engine": "chromium",
-  "modes": [
-    "initial"
+  "modes": [],
+  "cases": 0,
+  "errors": [
+    "page.goto: Target page, context or browser has been closed"
   ],
-  "cases": 8,
-  "errors": [],
   "issues": [],
-  "models": [
-    {
-      "key": "__oxideModel",
-      "methods": [
-        "MATERIALS",
-        "state",
-        "analyse",
-        "step",
-        "render",
-        "runSeconds",
-        "set",
-        "setProgress",
-        "runToEnd",
-        "tick",
-        "finish"
-      ]
-    }
-  ],
+  "models": [],
   "paint": [],
-  "grades": [
-    {
-      "mode": "initial",
-      "results": [
-        {
-          "choice": "up",
-          "visible": true,
-          "text": "예상이 맞았습니다."
-        },
-        {
-          "choice": "same",
-          "visible": true,
-          "text": "예상과 다른 결과입니다."
-        },
-        {
-          "choice": "down",
-          "visible": true,
-          "text": "예상과 다른 결과입니다."
-        }
-      ]
-    }
-  ]
+  "grades": []
 }

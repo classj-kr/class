@@ -1,61 +1,13 @@
 {
   "slug": "dna-gel",
   "engine": "chromium",
-  "modes": [
-    "initial"
+  "modes": [],
+  "cases": 0,
+  "errors": [
+    "page.goto: Target page, context or browser has been closed"
   ],
-  "cases": 14,
-  "errors": [],
   "issues": [],
-  "models": [
-    {
-      "key": "__gelModel",
-      "methods": [
-        "state",
-        "analyse",
-        "tick",
-        "render",
-        "fragments",
-        "travel",
-        "mobility",
-        "readSize",
-        "yieldNow",
-        "piled",
-        "LADDER",
-        "PLASMID",
-        "SITES",
-        "CIRCULAR_APPARENT",
-        "setDet",
-        "setSalt",
-        "setCold",
-        "setCut",
-        "setTime",
-        "check",
-        "runToEnd"
-      ]
-    }
-  ],
+  "models": [],
   "paint": [],
-  "grades": [
-    {
-      "mode": "initial",
-      "results": [
-        {
-          "choice": "p1",
-          "visible": true,
-          "text": "예상이 맞았습니다 — 거의 다."
-        },
-        {
-          "choice": "p2",
-          "visible": true,
-          "text": "예상은 절반쯤였지만 결과는 거의 다입니다."
-        },
-        {
-          "choice": "p3",
-          "visible": true,
-          "text": "예상은 거의 못 건짐였지만 결과는 거의 다입니다."
-        }
-      ]
-    }
-  ]
+  "grades": []
 }

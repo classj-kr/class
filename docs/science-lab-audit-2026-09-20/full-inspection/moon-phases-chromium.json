@@ -1,53 +1,13 @@
 {
   "slug": "moon-phases",
   "engine": "chromium",
-  "modes": [
-    "initial"
+  "modes": [],
+  "cases": 0,
+  "errors": [
+    "page.goto: Target page, context or browser has been closed"
   ],
-  "cases": 4,
-  "errors": [],
   "issues": [],
-  "models": [
-    {
-      "key": "__moonModel",
-      "methods": [
-        "SYNODIC",
-        "EARTH",
-        "ORBIT_R",
-        "MOON_R",
-        "PHASE_C",
-        "PHASE_R",
-        "elongationDeg",
-        "litFraction",
-        "phaseName",
-        "litPath",
-        "sunlitHalfPath",
-        "setDay",
-        "day"
-      ]
-    }
-  ],
+  "models": [],
   "paint": [],
-  "grades": [
-    {
-      "mode": "initial",
-      "results": [
-        {
-          "choice": "right",
-          "visible": true,
-          "text": "예상이 맞았습니다."
-        },
-        {
-          "choice": "left",
-          "visible": true,
-          "text": "예상과 다른 결과입니다."
-        },
-        {
-          "choice": "full",
-          "visible": true,
-          "text": "예상과 다른 결과입니다."
-        }
-      ]
-    }
-  ]
+  "grades": []
 }
