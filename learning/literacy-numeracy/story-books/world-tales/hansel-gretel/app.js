@@ -243,7 +243,7 @@ const CHAPTERS = [
 function artFrame(src, emoji) {
     return `
         <div class="art-frame">
-            <img src="images/${src}?v=20260918" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <img src="images/${src}?v=20260920" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
             <div class="art-fallback" style="display:none">${emoji}</div>
         </div>`;
 }

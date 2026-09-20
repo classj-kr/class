@@ -262,7 +262,7 @@ const CHAPTERS = [
                 ],
                 "right": [
                     "다들 지난번 일이 아직 생생했거든요. 재판정에 숨소리 하나 없자 임금님이 헛기침을 했습니다. \"오늘은 이만 하자꾸나.\"",
-                    "짐승들은 하나둘 집으로 돌아갔지요. 숲에는 꽃잎만 사르르 떨어졌습니다.",
+                    "짐승들은 하나둘 집으로 돌아갔지요. 숲에는 낙엽만 사르르 떨어졌습니다.",
                     "그 뒤로도 숲에는 여우 이야기가 끊이지 않았답니다."
                 ]
             }
@@ -274,7 +274,7 @@ const CHAPTERS = [
 function artFrame(src, emoji) {
     return `
         <div class="art-frame">
-            <img src="images/${src}?v=20260918" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <img src="images/${src}?v=20260920" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
             <div class="art-fallback" style="display:none">${emoji}</div>
         </div>`;
 }
@@ -561,7 +561,7 @@ const EN = {
                     emoji: '🦁',
                     left: [
                         "The king of the forest was Noble the lion, a lion with a mane like gold.",
-                        "Every spring a great court was held. Anybody with a grievance could stand up and speak.",
+                        "Every autumn a great court was held. Anybody with a grievance could stand up and speak.",
                         "This year, too, the beasts gathered in the wide meadow. From the smallest mouse to the biggest bear, they sat in a ring."
                     ],
                     right: [
@@ -819,7 +819,7 @@ const EN = {
                     right: [
                         "When the king cleared his throat, they all flinched.",
                         "\"That will do for today,\" said the king, and he brought the court to an end.",
-                        "The beasts went home, and petals came drifting down.",
+                        "The beasts went home, and leaves came drifting down.",
                         "And the fox stories never stopped."
                     ]
                 }
@@ -902,7 +902,7 @@ const EN = {
         ],
         '01-court.webp': [
             { word: 'mane', meaning: '갈기', sentence: 'A lion with a mane like gold.' },
-            { word: 'court', meaning: '재판', sentence: 'Every spring a great court was held.' },
+            { word: 'court', meaning: '재판', sentence: 'Every autumn a great court was held.' },
             { word: 'grievance', meaning: '억울한 일', sentence: 'Anybody with a grievance could stand up and speak.' },
             { word: 'meadow', meaning: '풀밭', sentence: 'The beasts gathered in the wide meadow.' },
             { word: 'mossy', meaning: '이끼 낀', sentence: 'The king took his place on a mossy rock.' }
@@ -1004,7 +1004,7 @@ const EN = {
             { word: 'flinch', meaning: '움찔하다', sentence: 'They all flinched.' },
             { word: 'fresh', meaning: '생생한', sentence: 'Last time was still fresh in their minds.' },
             { word: 'bring to an end', meaning: '끝내다', sentence: 'He brought the court to an end.' },
-            { word: 'drift down', meaning: '사르르 떨어지다', sentence: 'Petals came drifting down.' }
+            { word: 'drift down', meaning: '사르르 떨어지다', sentence: 'Leaves came drifting down.' }
         ],
         'end.webp': [
             { word: 'collect', meaning: '따로 묶다', sentence: 'Whole books collect the tales of Reynard.' },

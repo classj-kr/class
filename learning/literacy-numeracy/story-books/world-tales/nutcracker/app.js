@@ -197,7 +197,7 @@ const CHAPTERS = [
                 "left": [
                     "눈송이들이 스르르 길을 열어 주었습니다. 두 사람은 그 사이를 지나갔지요. 숲이 끝나자 넓은 강이 나왔습니다.",
                     "그런데 흐르는 것이 물이 아니었지요. 노란 오렌지 주스였습니다. 강가에는 작은 배가 기다리고 있었지요.",
-                    "조개껍데기로 만든 배였습니다. 돌고래 두 마리가 그 배를 끌었지요."
+                    "조개껍데기로 만든 배였습니다. 돌고래 세 마리가 그 배를 끌었지요."
                 ],
                 "right": [
                     "왕자가 손을 내밀었습니다. \"타시지요.\"",
@@ -285,7 +285,7 @@ const CHAPTERS = [
 function artFrame(src, emoji) {
     return `
         <div class="art-frame">
-            <img src="images/${src}?v=20260918" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <img src="images/${src}?v=20260920" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
             <div class="art-fallback" style="display:none">${emoji}</div>
         </div>`;
 }
@@ -797,7 +797,7 @@ const EN = {
                         "The snowflakes drew back and opened a path, and the two of them went through.",
                         "Past the wood was a wide river. But it was not water.",
                         "It was orange juice!",
-                        "A little boat made of a seashell waited at the bank, and two dolphins were harnessed to it."
+                        "A little boat made of a seashell waited at the bank, and three dolphins were harnessed to it."
                     ],
                     right: [
                         "The prince held out his hand. \"Do get in.\"",
@@ -1041,7 +1041,7 @@ const EN = {
         '06-snow-2.webp': [
             { word: 'draw back', meaning: '물러나다', sentence: 'The snowflakes drew back and opened a path.' },
             { word: 'seashell', meaning: '조개껍데기', sentence: 'A boat made of a seashell.' },
-            { word: 'harness', meaning: '매어 끌게 하다', sentence: 'Two dolphins were harnessed to it.' },
+            { word: 'harness', meaning: '매어 끌게 하다', sentence: 'Three dolphins were harnessed to it.' },
             { word: 'dip', meaning: '담그다', sentence: 'Marie dipped a fingertip in the river.' }
         ],
         '07-candy.webp': [

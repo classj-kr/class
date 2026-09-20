@@ -12,7 +12,7 @@ const CHAPTERS = [
                     "옛날 주석 숟가락 하나를 녹여 만든 병정들이었습니다. 한 숟가락에서 나온 형제들이었지요."
                 ],
                 "right": [
-                    "푸른 웃옷에 붉은 바지를 입고 있었습니다. 어깨에는 총을 척 메고 있었지요. 아이는 병정들을 탁자에 죽 세웠습니다.",
+                    "붉은 웃옷에 검은 바지를 입고 있었습니다. 어깨에는 총을 척 메고 있었지요. 아이는 병정들을 탁자에 죽 세웠습니다.",
                     "그런데 마지막 하나가 좀 달랐지요. 다리가 한쪽뿐이었던 것입니다. \"어? 이 병정은 왜 이래?\"",
                     "아이는 그 병정을 손바닥에 올려놓고 들여다봤지요."
                 ]
@@ -268,7 +268,7 @@ const CHAPTERS = [
 function artFrame(src, emoji) {
     return `
         <div class="art-frame">
-            <img src="images/${src}?v=20260918" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <img src="images/${src}?v=20260920" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
             <div class="art-fallback" style="display:none">${emoji}</div>
         </div>`;
 }
@@ -562,7 +562,7 @@ const EN = {
                         "They were cast out of melted tin from one old spoon, so they were all brothers."
                     ],
                     right: [
-                        "They wore blue coats and red trousers, with muskets smartly on their shoulders. The child stood them in a row along the table.",
+                        "They wore red coats and black trousers, with muskets smartly on their shoulders. The child stood them in a row along the table.",
                         "But the last one was different. He had only one leg! \"Hey? What is wrong with this one?\"",
                         "The child set him on his palm and looked at him."
                     ]
