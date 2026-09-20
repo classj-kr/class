@@ -75,8 +75,10 @@ for (const engine of ['chromium', 'webkit']) test(engine + ': life anatomy, forw
         assert(egg.x > 0 && egg.y > 0 && egg.right < 200 && egg.bottom < 200);
       }
       if (animal === 'butterfly' && step === 1) {
+        assert.equal(await page.locator('#mainGroup [data-crawl-segment]').count(), 14, '13 body segments and a head');
         assert.equal(await part('thoracic-leg-pair').count(), 3);
         assert.equal(await part('proleg-pair').count(), 5);
+        assert.deepEqual(await part('proleg-pair').evaluateAll(es => es.map(e => Number(e.parentElement.dataset.crawlSegment))), [0, 4, 5, 6, 7], 'anal pair and abdominal A3-A6');
         const positions = [];
         for (let ms = 0; ms <= 10400; ms += 200) {
           await seek(ms);
@@ -122,6 +124,14 @@ for (const engine of ['chromium', 'webkit']) test(engine + ': life anatomy, forw
       }
       await page.setViewportSize({ width: 1024, height: 768 });
     }
+    // Human review remains necessary: DOM assertions do not certify the appearance.
+    const sharp = require('sharp');
+    const sheetCases = cases.filter(([animal, step]) => !(animal === 'mantis' && step === 1));
+    const layers = await Promise.all(sheetCases.map(async ([animal, step], i) => ({
+      input: await sharp(path.join(out, animal + '-' + step + '-specimen-' + engine + '.png')).resize(320, 320).png().toBuffer(),
+      left: (i % 3) * 320, top: Math.floor(i / 3) * 320,
+    })));
+    await sharp({ create: { width: 960, height: 640, channels: 3, background: '#ffffff' } }).composite(layers).jpeg({ quality: 85 }).toFile(path.join(out, 'review-' + engine + '.jpg'));
     assert.deepEqual(errors, []);
     console.log(engine + ': 7 corrected stages; 28 layouts × 4 motion phases; anatomy anchors, digits, forward-only crawling and SVG paints passed');
   } finally {

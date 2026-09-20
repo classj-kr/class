@@ -14,21 +14,22 @@
         <path d="M95 86 C89 100 88 115 89 126" fill="none" stroke="#fff9d9" stroke-width="2.1" stroke-linecap="round" opacity=".8"/>
         <path d="M88 135 Q100 140 113 135" fill="none" stroke="#d9be76" stroke-width=".9"/>
     </g>`;
-    const larvalSegments = [34,46,58,70,82,94,106,118,130,141];
+    // Tail to head: ten abdominal segments, then three thoracic segments.
+    const larvalSegments = [33,42,51,60,69,78,87,96,105,114,123,132,141];
     const larva = `<g data-life-part="caterpillar">
         ${larvalSegments.map((x,i)=>{
-            const y=109-Math.sin(i/9*Math.PI)*3, proleg=[0,3,4,5,6].includes(i), thoracic=i>=7;
+            const y=109-Math.sin(i/12*Math.PI)*3, proleg=[0,4,5,6,7].includes(i), thoracic=i>=10;
             return `<g class="life-crawl-segment" data-life-motion="crawl" data-crawl-segment="${i}" style="--crawl-delay:${i*.09}s">
                 ${proleg?`<g data-life-part="proleg-pair"><path d="M${x-3} ${y+6} q-3 9 0 11 l4 0 q3-4 2-11" fill="#71914c" stroke="#506e38" stroke-width=".85"/><path d="M${x-1} ${y+7} q-2 8 0 11 q4 2 6-1 l1-8" fill="#93b55b" stroke="#587e3e" stroke-width=".85"/><path d="M${x} ${y+17} l4 0" stroke="#4d6835" stroke-width="1.2"/></g>`:''}
                 ${thoracic?`<g data-life-part="thoracic-leg-pair" fill="none" stroke-linecap="round"><path d="M${x-2} ${y+7} l1 7 5 3" stroke="#486539" stroke-width="1.5"/><path d="M${x+2} ${y+8} l2 7 5 3 1-2" stroke="#637c3a" stroke-width="1.8"/></g>`:''}
-                <ellipse cx="${x}" cy="${y}" rx="${i===0?8:9.5}" ry="${i===0?8:10.5}" fill="url(#specimen-larva)" stroke="#648b41" stroke-width=".65"/>
+                <ellipse cx="${x}" cy="${y}" rx="${i===0?6.5:7.5}" ry="${i===0?7:10.5}" fill="url(#specimen-larva)" stroke="#648b41" stroke-width=".65"/>
                 <path d="M${x-6} ${y-7} Q${x} ${y-9} ${x+7} ${y-7}" fill="none" stroke="#dae483" stroke-width="1.5"/>
                 <path d="M${x-4} ${y+5} l5 .2" stroke="#d4db79" stroke-width="1.2" stroke-linecap="round"/>
                 <ellipse cx="${x+3}" cy="${y+3}" rx=".7" ry="1" fill="#6c793e"/>
                 <path d="M${x-3} ${y-8} l-1-2 M${x+3} ${y-8} l1-2 M${x-5} ${y} l-2-1" stroke="#b8cf88" stroke-width=".45"/>
             </g>`;
         }).join('')}
-        <g class="life-crawl-segment" data-life-motion="crawl-head" data-crawl-segment="head" style="--crawl-delay:.9s">
+        <g class="life-crawl-segment" data-life-motion="crawl-head" data-crawl-segment="head" style="--crawl-delay:1.17s">
             <path data-life-part="head" d="M146 102 C153 99 157 104 158 110 L155 117 Q148 119 145 113 Q142 107 146 102Z" fill="url(#specimen-larva)" stroke="#526f38" stroke-width=".9"/>
             <path d="M151 103 Q148 109 153 113" fill="none" stroke="#809a4a" stroke-width=".65"/>
             <g fill="#3d4e2d">${[[154,109],[155,110.5],[155,112],[154,113.4],[152.6,113],[152.5,111.2]].map(([x,y])=>`<circle cx="${x}" cy="${y}" r=".45"/>`).join('')}</g>
@@ -187,7 +188,7 @@
     };
     const features = {
         butterfly: [
-            ['잎에 붙은 작은 알','배춧잎에 하나씩 붙어 있습니다. 표면에 세로줄이 있고, 알 속에서 애벌레가 자랍니다.'],
+            ['잎에 붙은 작은 알','끝이 둥글고 표면에 세로줄이 있는 알입니다. 밑부분이 배춧잎에 붙어 있고, 알 속에서 애벌레가 자랍니다.'],
             ['기어가며 잎을 먹는 애벌레','초록색 몸에 마디와 노란 줄이 있습니다. 머리 뒤의 가슴다리 세 쌍과 배다리로 잎을 딛고 앞으로 기어가며, 작은 턱으로 잎을 갉아 먹습니다.'],
             ['실로 몸을 고정한 번데기','몸 뒤쪽과 몸통을 받치는 실로 붙어 있습니다. 먹지 않으며, 몸 안에서 성충의 모습이 만들어집니다.'],
             ['날개를 펼친 어른벌레','머리·가슴·배가 구별됩니다. 가슴에 다리 세 쌍과 날개 두 쌍이 붙어 있습니다. 흰 날개에는 검은 무늬가 있고 꽃의 꿀을 빨아 먹습니다.'],
