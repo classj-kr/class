@@ -34,5 +34,68 @@
         "finish"
       ]
     }
+  ],
+  "paint": [],
+  "grades": [
+    {
+      "mode": "scale",
+      "results": [
+        {
+          "choice": "near",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "mid",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        },
+        {
+          "choice": "far",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        }
+      ]
+    },
+    {
+      "mode": "units",
+      "results": [
+        {
+          "choice": "nature",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "artifact",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "constant",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        }
+      ]
+    },
+    {
+      "mode": "measure",
+      "results": [
+        {
+          "choice": "cm",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "mm",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        },
+        {
+          "choice": "vernier",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        }
+      ]
+    }
   ]
 }

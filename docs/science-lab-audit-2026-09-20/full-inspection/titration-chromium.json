@@ -33,5 +33,28 @@
         "tick"
       ]
     }
+  ],
+  "paint": [],
+  "grades": [
+    {
+      "mode": "initial",
+      "results": [
+        {
+          "choice": "basic",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "neutral",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        },
+        {
+          "choice": "acidic",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        }
+      ]
+    }
   ]
 }

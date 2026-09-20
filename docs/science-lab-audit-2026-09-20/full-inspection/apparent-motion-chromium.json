@@ -32,5 +32,23 @@
         "render"
       ]
     }
+  ],
+  "paint": [],
+  "grades": [
+    {
+      "mode": "initial",
+      "results": [
+        {
+          "choice": "ccw",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        },
+        {
+          "choice": "cw",
+          "visible": false,
+          "text": ""
+        }
+      ]
+    }
   ]
 }

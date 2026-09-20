@@ -34,5 +34,38 @@
         "finish"
       ]
     }
+  ],
+  "paint": [],
+  "grades": [
+    {
+      "mode": "bright",
+      "results": [
+        {
+          "choice": "square",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        },
+        {
+          "choice": "no",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        }
+      ]
+    },
+    {
+      "mode": "expand",
+      "results": [
+        {
+          "choice": "faster",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        },
+        {
+          "choice": "no",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        }
+      ]
+    }
   ]
 }

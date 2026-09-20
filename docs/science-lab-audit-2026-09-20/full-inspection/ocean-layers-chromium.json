@@ -31,5 +31,68 @@
         "finish"
       ]
     }
+  ],
+  "paint": [],
+  "grades": [
+    {
+      "mode": "profile",
+      "results": [
+        {
+          "choice": "shallow",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        },
+        {
+          "choice": "deep",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "none",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        }
+      ]
+    },
+    {
+      "mode": "salinity",
+      "results": [
+        {
+          "choice": "up",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        },
+        {
+          "choice": "same",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "down",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        }
+      ]
+    },
+    {
+      "mode": "density",
+      "results": [
+        {
+          "choice": "sink",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        },
+        {
+          "choice": "same",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "float",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        }
+      ]
+    }
   ]
 }

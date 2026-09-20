@@ -27,5 +27,28 @@
         "finish"
       ]
     }
+  ],
+  "paint": [],
+  "grades": [
+    {
+      "mode": "initial",
+      "results": [
+        {
+          "choice": "burn",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        },
+        {
+          "choice": "out",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "none",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        }
+      ]
+    }
   ]
 }

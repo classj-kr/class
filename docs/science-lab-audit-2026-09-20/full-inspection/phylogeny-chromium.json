@@ -29,5 +29,68 @@
         "finish"
       ]
     }
+  ],
+  "paint": [],
+  "grades": [
+    {
+      "mode": "rank",
+      "results": [
+        {
+          "choice": "close",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "mid",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        },
+        {
+          "choice": "far",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        }
+      ]
+    },
+    {
+      "mode": "tree",
+      "results": [
+        {
+          "choice": "first",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        },
+        {
+          "choice": "second",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "equal",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        }
+      ]
+    },
+    {
+      "mode": "clock",
+      "results": [
+        {
+          "choice": "recent",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "mid",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        },
+        {
+          "choice": "old",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        }
+      ]
+    }
   ]
 }

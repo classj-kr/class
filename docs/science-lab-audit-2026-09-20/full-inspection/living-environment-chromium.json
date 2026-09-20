@@ -35,5 +35,48 @@
         "finish"
       ]
     }
+  ],
+  "paint": [],
+  "grades": [
+    {
+      "mode": "bean",
+      "results": [
+        {
+          "choice": "green",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        },
+        {
+          "choice": "yellow",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "none",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        }
+      ]
+    },
+    {
+      "mode": "web",
+      "results": [
+        {
+          "choice": "rabbit-up",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        },
+        {
+          "choice": "rabbit-down",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "steady",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        }
+      ]
+    }
   ]
 }

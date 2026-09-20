@@ -174,5 +174,63 @@
         "finish"
       ]
     }
+  ],
+  "paint": [],
+  "grades": [
+    {
+      "mode": "fusion",
+      "results": [
+        {
+          "choice": "yes",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        },
+        {
+          "choice": "no",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        }
+      ]
+    },
+    {
+      "mode": "mass",
+      "results": [
+        {
+          "choice": "he",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "co",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        },
+        {
+          "choice": "sn",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        }
+      ]
+    },
+    {
+      "mode": "origin",
+      "results": [
+        {
+          "choice": "bigbang",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "star",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        },
+        {
+          "choice": "merger",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        }
+      ]
+    }
   ]
 }

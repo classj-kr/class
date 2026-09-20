@@ -31,5 +31,53 @@
         "finish"
       ]
     }
+  ],
+  "paint": [],
+  "grades": [
+    {
+      "mode": "infect",
+      "results": [
+        {
+          "choice": "week",
+          "visible": true,
+          "text": "이 가상 모형의 예상이 맞았습니다."
+        },
+        {
+          "choice": "days",
+          "visible": true,
+          "text": "이 가상 모형의 결과와 다릅니다."
+        },
+        {
+          "choice": "none",
+          "visible": true,
+          "text": "이 가상 모형의 결과와 다릅니다."
+        },
+        {
+          "choice": "unbeaten",
+          "visible": true,
+          "text": "이 가상 모형의 결과와 다릅니다."
+        }
+      ]
+    },
+    {
+      "mode": "vaccine",
+      "results": [
+        {
+          "choice": "week",
+          "visible": true,
+          "text": "이 가상 모형의 예상이 맞았습니다."
+        },
+        {
+          "choice": "days",
+          "visible": true,
+          "text": "이 가상 모형의 결과와 다릅니다."
+        },
+        {
+          "choice": "none",
+          "visible": true,
+          "text": "이 가상 모형의 결과와 다릅니다."
+        }
+      ]
+    }
   ]
 }

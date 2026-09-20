@@ -33,5 +33,48 @@
         "set"
       ]
     }
+  ],
+  "paint": [],
+  "grades": [
+    {
+      "mode": "superpose",
+      "results": [
+        {
+          "choice": "constructive",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        },
+        {
+          "choice": "partial",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "destructive",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        }
+      ]
+    },
+    {
+      "mode": "standing",
+      "results": [
+        {
+          "choice": "high",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "near",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "low",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        }
+      ]
+    }
   ]
 }

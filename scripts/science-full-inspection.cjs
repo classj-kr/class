@@ -8,12 +8,31 @@ const engine=process.argv.includes('--webkit')?'webkit':'chromium';
 (async()=>{let browser;const reports=[];const server=http.createServer((req,res)=>{let f=path.resolve(root,'.'+new URL(req.url,'http://localhost').pathname);if(!f.startsWith(root+path.sep)){res.writeHead(403).end();return;}if(fs.existsSync(f)&&fs.statSync(f).isDirectory())f=path.join(f,'index.html');fs.readFile(f,(e,b)=>{if(e){res.writeHead(404).end();return;}res.setHeader('Content-Type',{'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8'}[path.extname(f)]||'application/octet-stream');res.end(b);});});await new Promise(r=>server.listen(0,'127.0.0.1',r));
  try{browser=await require('playwright')[engine].launch({headless:true,...(engine==='chromium'?{executablePath:process.env.SCIENCE_BROWSER||'C:/Program Files/Google/Chrome/Application/chrome.exe'}:{})});let cursor=0;
  await Promise.all(Array.from({length:3},async()=>{const page=await browser.newPage({viewport:{width:1024,height:768},hasTouch:true});await page.route('**/*',r=>new URL(r.request().url()).hostname==='127.0.0.1'?r.continue():r.abort());let active;page.on('pageerror',e=>active?.errors.push(e.message));
- while(cursor<picked.length){const slug=picked[cursor++],report={slug,engine,modes:[],cases:0,errors:[],issues:[],models:[]};active=report;reports.push(report);
+ while(cursor<picked.length){const slug=picked[cursor++],report={slug,engine,modes:[],cases:0,errors:[],issues:[],models:[],paint:[],grades:[]};active=report;reports.push(report);
  try{await page.goto('http://127.0.0.1:'+server.address().port+'/'+slug+'/');await page.evaluate(()=>document.fonts.ready);report.models=await page.evaluate(()=>Object.keys(window).filter(k=>k.startsWith('__')&&k.endsWith('Model')).map(k=>({key:k,methods:Object.keys(window[k])})));
  const modes=await page.locator('button[data-mode]').evaluateAll(es=>es.map(e=>e.dataset.mode));
  for(const mode of modes.length?modes:['initial']){
   await page.evaluate(m=>document.querySelector(`button[data-mode="${m}"]`)?.click(),mode);report.modes.push(mode);
   const stage=page.locator('.experiment-layout').first();if(await stage.count())await stage.screenshot({path:path.join(output,slug+'-'+mode+'-'+engine+'.png')});
+  const paint=await page.evaluate(()=>{
+   const rules=[];function collect(list){for(const r of list){if(r.cssRules)collect(r.cssRules);if(r.selectorText&&r.style&&(r.style.fill||r.style.stroke))rules.push(r.selectorText);}}
+   for(const sheet of document.styleSheets){try{collect(sheet.cssRules);}catch{}}
+   const result=[];for(const e of document.querySelectorAll('svg path,svg rect,svg circle,svg ellipse,svg line,svg polyline,svg polygon')){
+    if(e.closest('defs')||e.closest('[hidden]')||!e.getClientRects().length)continue;
+    const c=getComputedStyle(e);if(c.display==='none'||Number(c.opacity)===0)continue;
+    const explicit=node=>node.hasAttribute('fill')||node.hasAttribute('stroke')||node.style.fill||node.style.stroke||rules.some(r=>{try{return node.matches(r);}catch{return false;}});
+    let styled=false;for(let node=e;node instanceof SVGElement;node=node.parentElement){if(explicit(node)){styled=true;break;}}
+    if(!styled)result.push({tag:e.tagName,cls:e.getAttribute('class'),fill:c.fill,stroke:c.stroke,html:e.outerHTML.slice(0,170)});
+   }return [...new Map(result.map(r=>[r.tag+' '+r.cls,r])).values()];
+  });if(paint.length)report.paint.push({mode,items:paint});
+  const grade=await page.evaluate(()=>{
+   const visible=e=>!!e?.getClientRects().length&&!e.closest('[hidden]'),models=Object.keys(window).filter(k=>k.startsWith('__')&&k.endsWith('Model')).map(k=>window[k]);
+   const choices=[...document.querySelectorAll('[data-prediction]')].filter(visible).map(b=>b.dataset.prediction),results=[];
+   for(const choice of choices){document.querySelector('[data-prediction="'+choice+'"]')?.click();let driven=false;for(const m of models){if(typeof m.runToEnd==='function'){m.runToEnd(.25);driven=true;}else if(typeof m.check==='function'){m.check();driven=true;}}
+    if(!driven)document.querySelector('.control-panel .run-button')?.click();
+    const f=document.getElementById('predictionResult');results.push({choice,visible:visible(f),text:f?.textContent||'',correct:f?.dataset.correct});
+   }return results;
+  });report.grades.push({mode,results:grade});
   const cases=await page.evaluate(()=>{const visible=e=>!!e.getClientRects().length&&!e.closest('[hidden]');const out=[{kind:'initial'}];
    for(const b of [...document.querySelectorAll('.control-panel button')].filter(visible)){if(b.matches('[data-prediction],[data-mode],.run-button,.reset-button,.answer-button')||!Object.keys(b.dataset).length)continue;out.push({kind:'button',attrs:[...b.attributes].filter(a=>a.name.startsWith('data-')).map(a=>[a.name,a.value]),group:b.closest('[data-pick]')?.dataset.pick});}
    for(const r of [...document.querySelectorAll('.control-panel input[type=range]')].filter(visible)){const min=Number(r.min||0),max=Number(r.max||100),step=Number(r.step)||1;for(const value of [...new Set([min,min+Math.round((max-min)/2/step)*step,max])])out.push({kind:'range',id:r.id,value});}

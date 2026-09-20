@@ -30,5 +30,48 @@
         "finish"
       ]
     }
+  ],
+  "paint": [],
+  "grades": [
+    {
+      "mode": "elements",
+      "results": [
+        {
+          "choice": "cation",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        },
+        {
+          "choice": "anion",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "none",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        }
+      ]
+    },
+    {
+      "mode": "bonds",
+      "results": [
+        {
+          "choice": "1:1",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        },
+        {
+          "choice": "1:2",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "2:1",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        }
+      ]
+    }
   ]
 }

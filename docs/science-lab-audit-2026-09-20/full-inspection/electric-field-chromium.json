@@ -34,5 +34,68 @@
         "finish"
       ]
     }
+  ],
+  "paint": [],
+  "grades": [
+    {
+      "mode": "field",
+      "results": [
+        {
+          "choice": "left",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "zero",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        },
+        {
+          "choice": "right",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        }
+      ]
+    },
+    {
+      "mode": "accel",
+      "results": [
+        {
+          "choice": "slow",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "mid",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "fast",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        }
+      ]
+    },
+    {
+      "mode": "cap",
+      "results": [
+        {
+          "choice": "store",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        },
+        {
+          "choice": "release",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "none",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        }
+      ]
+    }
   ]
 }

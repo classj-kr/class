@@ -34,5 +34,27 @@
         "render"
       ]
     }
+  ],
+  "paint": [],
+  "grades": [
+    {
+      "mode": "heat",
+      "results": [
+        {
+          "choice": "water",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        },
+        {
+          "choice": "iron",
+          "visible": false,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "mode": "expand",
+      "results": []
+    }
   ]
 }

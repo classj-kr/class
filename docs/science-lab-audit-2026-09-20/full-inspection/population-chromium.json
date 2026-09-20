@@ -41,5 +41,48 @@
         "sampleStats"
       ]
     }
+  ],
+  "paint": [],
+  "grades": [
+    {
+      "mode": "growth",
+      "results": [
+        {
+          "choice": "p1",
+          "visible": true,
+          "text": "예상은 계속 늘어난다였지만 결과는 K에 멈춘다입니다."
+        },
+        {
+          "choice": "p2",
+          "visible": true,
+          "text": "예상이 맞았습니다 — K에 멈춘다."
+        },
+        {
+          "choice": "p3",
+          "visible": true,
+          "text": "예상은 K로 줄어든다였지만 결과는 K에 멈춘다입니다."
+        }
+      ]
+    },
+    {
+      "mode": "survey",
+      "results": [
+        {
+          "choice": "p1",
+          "visible": true,
+          "text": "예상은 잘 맞는다였지만 결과는 그럭저럭입니다."
+        },
+        {
+          "choice": "p2",
+          "visible": true,
+          "text": "예상이 맞았습니다 — 그럭저럭."
+        },
+        {
+          "choice": "p3",
+          "visible": true,
+          "text": "예상은 크게 흔들린다였지만 결과는 그럭저럭입니다."
+        }
+      ]
+    }
   ]
 }

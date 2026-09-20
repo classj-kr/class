@@ -36,3 +36,13 @@
 @media (max-width: 760px) { .topic-concept-section-content { grid-template-columns: 1fr; } }
 
 .space-topic-page .viewport-header-bar:has(#simModeSwitcher) { right: auto; border-bottom: 0 !important; padding-right: 0 !important; }
+/* Subject quizzes begin with their filters or first question, without a title strip. */
+.space-topic-page .tab-pane#tab-quiz { padding-top: 56px; }
+.space-topic-page #tab-quiz .quiz-panel { margin: 0 auto 20px; }
+.space-topic-page #tab-quiz .quiz-panel-heading,
+.space-topic-page #tab-quiz .quiz-guide:empty,
+.space-topic-page #tab-quiz .quiz-picker:not(:has(.quiz-picker-row:not([hidden]))) { display: none; }
+.space-topic-page #tab-quiz .quiz-picker-row[hidden] + .quiz-picker-row { border-top: 0; }
+@media (min-width: 1500px) {
+    .space-topic-page .tab-pane#tab-quiz { padding-top: 8px; }
+}

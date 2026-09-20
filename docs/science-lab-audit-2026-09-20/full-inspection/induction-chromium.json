@@ -26,5 +26,48 @@
         "set"
       ]
     }
+  ],
+  "paint": [],
+  "grades": [
+    {
+      "mode": "induce",
+      "results": [
+        {
+          "choice": "more",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "near",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "less",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        }
+      ]
+    },
+    {
+      "mode": "circuit",
+      "results": [
+        {
+          "choice": "up",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "peak",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "down",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        }
+      ]
+    }
   ]
 }

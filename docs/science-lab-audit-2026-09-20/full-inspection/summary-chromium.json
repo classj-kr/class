@@ -13,7 +13,30 @@
       "cases": 7,
       "errors": [],
       "issues": [],
-      "models": []
+      "models": [],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "initial",
+          "results": [
+            {
+              "choice": "bigger",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "smaller",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "same",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            }
+          ]
+        }
+      ]
     },
     {
       "slug": "refraction",
@@ -36,6 +59,29 @@
             "setAngle",
             "setMedium",
             "setDir"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "initial",
+          "results": [
+            {
+              "choice": "smaller",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "larger",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "same",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
           ]
         }
       ]
@@ -68,6 +114,29 @@
             "getLens",
             "focal",
             "dist"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "initial",
+          "results": [
+            {
+              "choice": "real",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "virtual",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "none",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
           ]
         }
       ]
@@ -105,6 +174,74 @@
             "finish"
           ]
         }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "photo",
+          "results": [
+            {
+              "choice": "none",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "slow",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "fast",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        },
+        {
+          "mode": "hydrogen",
+          "results": [
+            {
+              "choice": "visible",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "uv",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "ir",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "none",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        },
+        {
+          "mode": "matter",
+          "results": [
+            {
+              "choice": "big",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "atom",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "tiny",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        }
       ]
     },
     {
@@ -131,6 +268,29 @@
             "state",
             "renderAt",
             "forceRing"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "initial",
+          "results": [
+            {
+              "choice": "higher",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "lower",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "same",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            }
           ]
         }
       ]
@@ -170,6 +330,49 @@
             "getMode"
           ]
         }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "transverse",
+          "results": [
+            {
+              "choice": "longer",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "same",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "shorter",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        },
+        {
+          "mode": "longitudinal",
+          "results": [
+            {
+              "choice": "longer",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "same",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "shorter",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            }
+          ]
+        }
       ]
     },
     {
@@ -207,6 +410,49 @@
             "set"
           ]
         }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "superpose",
+          "results": [
+            {
+              "choice": "constructive",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "partial",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "destructive",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        },
+        {
+          "mode": "standing",
+          "results": [
+            {
+              "choice": "high",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "near",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "low",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            }
+          ]
+        }
       ]
     },
     {
@@ -224,6 +470,24 @@
           "methods": [
             "lifted",
             "state"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "initial",
+          "results": [
+            {
+              "choice": "yes",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "no",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            }
           ]
         }
       ]
@@ -255,6 +519,49 @@
             "runToEnd",
             "tick",
             "finish"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "distance",
+          "results": [
+            {
+              "choice": "a",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "b",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "same",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        },
+        {
+          "mode": "time",
+          "results": [
+            {
+              "choice": "a",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "b",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "same",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            }
           ]
         }
       ]
@@ -294,6 +601,34 @@
             "getFloor"
           ]
         }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "initial",
+          "results": [
+            {
+              "choice": "rest",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "constant",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "faster",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "slower",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        }
       ]
     },
     {
@@ -331,6 +666,62 @@
             "runToEnd",
             "tick",
             "finish"
+          ]
+        }
+      ],
+      "paint": [
+        {
+          "mode": "energy",
+          "items": [
+            {
+              "tag": "line",
+              "cls": "expect-line",
+              "fill": "rgb(0, 0, 0)",
+              "stroke": "none",
+              "html": "<line class=\"expect-line\" x1=\"62\" y1=\"69.7\" x2=\"424\" y2=\"69.7\"></line>"
+            }
+          ]
+        }
+      ],
+      "grades": [
+        {
+          "mode": "incline",
+          "results": [
+            {
+              "choice": "widen",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "same",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "narrow",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        },
+        {
+          "mode": "energy",
+          "results": [
+            {
+              "choice": "pass",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "stop",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "back",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
           ]
         }
       ]
@@ -374,6 +765,49 @@
             "finish"
           ]
         }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "drop",
+          "results": [
+            {
+              "choice": "drop-first",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "throw-first",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "same",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            }
+          ]
+        },
+        {
+          "mode": "impact",
+          "results": [
+            {
+              "choice": "low",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "mid",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "high",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            }
+          ]
+        }
       ]
     },
     {
@@ -412,6 +846,69 @@
             "finish"
           ]
         }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "seesaw",
+          "results": [
+            {
+              "choice": "left",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "balance",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "right",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            }
+          ]
+        },
+        {
+          "mode": "tip",
+          "results": [
+            {
+              "choice": "stay",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "slide",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "tip",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            }
+          ]
+        },
+        {
+          "mode": "plank",
+          "results": [
+            {
+              "choice": "left",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "right",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "tip",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        }
       ]
     },
     {
@@ -446,6 +943,29 @@
             "runToEnd",
             "getSim",
             "tick"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "initial",
+          "results": [
+            {
+              "choice": "forward",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "stop",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "back",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
           ]
         }
       ]
@@ -486,6 +1006,62 @@
             "finish"
           ]
         }
+      ],
+      "paint": [
+        {
+          "mode": "force",
+          "items": [
+            {
+              "tag": "line",
+              "cls": "ruler",
+              "fill": "rgb(0, 0, 0)",
+              "stroke": "none",
+              "html": "<line class=\"ruler\" x1=\"96\" y1=\"196\" x2=\"152.0\" y2=\"196\"></line>"
+            }
+          ]
+        }
+      ],
+      "grades": [
+        {
+          "mode": "force",
+          "results": [
+            {
+              "choice": "stick",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "push",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "still",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        },
+        {
+          "mode": "compass",
+          "results": [
+            {
+              "choice": "toS",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "toN",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "north",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        }
       ]
     },
     {
@@ -511,6 +1087,33 @@
             "state"
           ]
         }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "circuit",
+          "results": [
+            {
+              "choice": "dimmer",
+              "visible": true,
+              "text": "전지 1개는 비교 기준입니다. 2개로 바꾼 뒤 예상을 확인하세요."
+            },
+            {
+              "choice": "same",
+              "visible": true,
+              "text": "전지 1개는 비교 기준입니다. 2개로 바꾼 뒤 예상을 확인하세요."
+            },
+            {
+              "choice": "brighter",
+              "visible": true,
+              "text": "전지 1개는 비교 기준입니다. 2개로 바꾼 뒤 예상을 확인하세요."
+            }
+          ]
+        },
+        {
+          "mode": "magnet",
+          "results": []
+        }
       ]
     },
     {
@@ -534,6 +1137,29 @@
             "niceMax",
             "set",
             "state"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "initial",
+          "results": [
+            {
+              "choice": "bigger",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "smaller",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "same",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
           ]
         }
       ]
@@ -574,6 +1200,69 @@
             "finish"
           ]
         }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "field",
+          "results": [
+            {
+              "choice": "left",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "zero",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "right",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        },
+        {
+          "mode": "accel",
+          "results": [
+            {
+              "choice": "slow",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "mid",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "fast",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            }
+          ]
+        },
+        {
+          "mode": "cap",
+          "results": [
+            {
+              "choice": "store",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "release",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "none",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        }
       ]
     },
     {
@@ -602,6 +1291,49 @@
             "check",
             "setMode",
             "set"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "induce",
+          "results": [
+            {
+              "choice": "more",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "near",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "less",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            }
+          ]
+        },
+        {
+          "mode": "circuit",
+          "results": [
+            {
+              "choice": "up",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "peak",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "down",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            }
           ]
         }
       ]
@@ -1364,6 +2096,59 @@
             "finish"
           ]
         }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "diode",
+          "results": [
+            {
+              "choice": "well",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "some",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "none",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        },
+        {
+          "mode": "muon",
+          "results": [
+            {
+              "choice": "yes",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "no",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        },
+        {
+          "mode": "energy",
+          "results": [
+            {
+              "choice": "yes",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "no",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        }
       ]
     },
     {
@@ -1397,6 +2182,69 @@
             "runToEnd",
             "tick",
             "finish"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "motor",
+          "results": [
+            {
+              "choice": "spin",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "wobble",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "still",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        },
+        {
+          "mode": "material",
+          "results": [
+            {
+              "choice": "strong",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "weak",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "repel",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        },
+        {
+          "mode": "curie",
+          "results": [
+            {
+              "choice": "strong",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "weak",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "none",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
           ]
         }
       ]
@@ -1438,6 +2286,29 @@
             "render"
           ]
         }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "initial",
+          "results": [
+            {
+              "choice": "faster",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "slower",
+              "visible": false,
+              "text": ""
+            },
+            {
+              "choice": "same",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            }
+          ]
+        }
       ]
     },
     {
@@ -1476,6 +2347,28 @@
             "render"
           ]
         }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "heat",
+          "results": [
+            {
+              "choice": "water",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "iron",
+              "visible": false,
+              "text": ""
+            }
+          ]
+        },
+        {
+          "mode": "expand",
+          "results": []
+        }
       ]
     },
     {
@@ -1505,6 +2398,29 @@
             "runToEnd",
             "getSim",
             "tick"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "initial",
+          "results": [
+            {
+              "choice": "little",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "half",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "most",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
           ]
         }
       ]
@@ -2399,6 +3315,54 @@
             "finish"
           ]
         }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "carnot",
+          "results": [
+            {
+              "choice": "yes",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "no",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        },
+        {
+          "mode": "flow",
+          "results": [
+            {
+              "choice": "yes",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "no",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        },
+        {
+          "mode": "pump",
+          "results": [
+            {
+              "choice": "yes",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "no",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        }
       ]
     },
     {
@@ -2444,6 +3408,84 @@
             "finish"
           ]
         }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "solar",
+          "results": [
+            {
+              "choice": "0",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "35",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "70",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        },
+        {
+          "mode": "wind",
+          "results": [
+            {
+              "choice": "tiny",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "less",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "same",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "more",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "huge",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            }
+          ]
+        },
+        {
+          "mode": "chain",
+          "results": [
+            {
+              "choice": "tiny",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "small",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "mid",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "big",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        }
       ]
     },
     {
@@ -2475,6 +3517,29 @@
             "setSize",
             "check",
             "runToEnd"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "initial",
+          "results": [
+            {
+              "choice": "p1",
+              "visible": true,
+              "text": "예상이 맞았습니다 — 뜬다."
+            },
+            {
+              "choice": "p2",
+              "visible": true,
+              "text": "예상은 아슬아슬하게 뜬다였지만 결과는 뜬다입니다."
+            },
+            {
+              "choice": "p3",
+              "visible": true,
+              "text": "예상은 가라앉는다였지만 결과는 뜬다입니다."
+            }
           ]
         }
       ]
@@ -2510,6 +3575,28 @@
             "gasVol",
             "render"
           ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "buoy",
+          "results": [
+            {
+              "choice": "float",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "sink",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        },
+        {
+          "mode": "gas",
+          "results": []
         }
       ]
     },
@@ -2549,6 +3636,69 @@
             "finish"
           ]
         }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "scale",
+          "results": [
+            {
+              "choice": "near",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "mid",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "far",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        },
+        {
+          "mode": "units",
+          "results": [
+            {
+              "choice": "nature",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "artifact",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "constant",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            }
+          ]
+        },
+        {
+          "mode": "measure",
+          "results": [
+            {
+              "choice": "cm",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "mm",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "vernier",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        }
       ]
     },
     {
@@ -2571,6 +3721,13 @@
             "reset",
             "grainCount"
           ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "initial",
+          "results": []
         }
       ]
     },
@@ -2608,6 +3765,69 @@
             "runSeconds"
           ]
         }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "filter",
+          "results": [
+            {
+              "choice": "full",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "partial",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "none",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        },
+        {
+          "mode": "distill",
+          "results": [
+            {
+              "choice": "full",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "partial",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "none",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        },
+        {
+          "mode": "chroma",
+          "results": [
+            {
+              "choice": "full",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "partial",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "none",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        }
       ]
     },
     {
@@ -2619,7 +3839,30 @@
       "cases": 4,
       "errors": [],
       "issues": [],
-      "models": []
+      "models": [],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "initial",
+          "results": [
+            {
+              "choice": "solid",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "liquid",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "gas",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        }
+      ]
     },
     {
       "slug": "gases",
@@ -2656,6 +3899,49 @@
             "runToEnd",
             "tick",
             "finish"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "make",
+          "results": [
+            {
+              "choice": "flare",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "out",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "steady",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        },
+        {
+          "mode": "press",
+          "results": [
+            {
+              "choice": "smaller",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "bigger",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "same",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
           ]
         }
       ]
@@ -2700,6 +3986,29 @@
             "render"
           ]
         }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "diff",
+          "results": [
+            {
+              "choice": "nh3",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "center",
+              "visible": false,
+              "text": ""
+            },
+            {
+              "choice": "hcl",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            }
+          ]
+        }
       ]
     },
     {
@@ -2711,7 +4020,25 @@
       "cases": 7,
       "errors": [],
       "issues": [],
-      "models": []
+      "models": [],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "initial",
+          "results": [
+            {
+              "choice": "all",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "some",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            }
+          ]
+        }
+      ]
     },
     {
       "slug": "solubility-curve",
@@ -2739,6 +4066,24 @@
             "temp",
             "coolTemp",
             "render"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "initial",
+          "results": [
+            {
+              "choice": "all",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "left",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
           ]
         }
       ]
@@ -2773,6 +4118,29 @@
             "runToEnd",
             "getSim",
             "tick"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "initial",
+          "results": [
+            {
+              "choice": "pure",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "slight",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "dirty",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
           ]
         }
       ]
@@ -2816,6 +4184,168 @@
             "finish"
           ]
         }
+      ],
+      "paint": [
+        {
+          "mode": "flame",
+          "items": [
+            {
+              "tag": "rect",
+              "cls": "burner",
+              "fill": "rgb(0, 0, 0)",
+              "stroke": "none",
+              "html": "<rect class=\"burner\" x=\"243\" y=\"168\" width=\"14\" height=\"24\" rx=\"2\"></rect>"
+            },
+            {
+              "tag": "line",
+              "cls": "wire",
+              "fill": "rgb(0, 0, 0)",
+              "stroke": "none",
+              "html": "<line class=\"wire\" x1=\"14.0\" y1=\"86.0\" x2=\"84.0\" y2=\"146.0\"></line>"
+            },
+            {
+              "tag": "circle",
+              "cls": "wire-loop",
+              "fill": "rgb(0, 0, 0)",
+              "stroke": "none",
+              "html": "<circle class=\"wire-loop\" cx=\"84.0\" cy=\"150.0\" r=\"4.5\"></circle>"
+            },
+            {
+              "tag": "rect",
+              "cls": "handle",
+              "fill": "rgb(0, 0, 0)",
+              "stroke": "none",
+              "html": "<rect class=\"handle\" x=\"0.0\" y=\"74.0\" width=\"18\" height=\"16\" rx=\"3\" transform=\"rotate(41 9.0 82.0)\"></rect>"
+            },
+            {
+              "tag": "rect",
+              "cls": "spec-bg",
+              "fill": "rgb(0, 0, 0)",
+              "stroke": "none",
+              "html": "<rect class=\"spec-bg\" x=\"60\" y=\"28\" width=\"360\" height=\"42\" rx=\"3\"></rect>"
+            },
+            {
+              "tag": "line",
+              "cls": "ruler",
+              "fill": "rgb(0, 0, 0)",
+              "stroke": "none",
+              "html": "<line class=\"ruler\" x1=\"348.0\" y1=\"160\" x2=\"348.0\" y2=\"166\"></line>"
+            }
+          ]
+        },
+        {
+          "mode": "ion",
+          "items": [
+            {
+              "tag": "rect",
+              "cls": "supply",
+              "fill": "rgb(0, 0, 0)",
+              "stroke": "none",
+              "html": "<rect class=\"supply\" x=\"350\" y=\"14\" width=\"80\" height=\"34\" rx=\"6\"></rect>"
+            },
+            {
+              "tag": "path",
+              "cls": "lead lead-plus",
+              "fill": "rgb(0, 0, 0)",
+              "stroke": "none",
+              "html": "<path class=\"lead lead-plus\" d=\"M366,48 L366,56 L66,56 L66,102\"></path>"
+            },
+            {
+              "tag": "path",
+              "cls": "lead lead-minus",
+              "fill": "rgb(0, 0, 0)",
+              "stroke": "none",
+              "html": "<path class=\"lead lead-minus\" d=\"M414,48 L414,64 L394,64 L394,102\"></path>"
+            },
+            {
+              "tag": "rect",
+              "cls": "clip clip-plus",
+              "fill": "rgb(0, 0, 0)",
+              "stroke": "none",
+              "html": "<rect class=\"clip clip-plus\" x=\"61\" y=\"102\" width=\"10\" height=\"40\" rx=\"2\"></rect>"
+            },
+            {
+              "tag": "rect",
+              "cls": "clip clip-minus",
+              "fill": "rgb(0, 0, 0)",
+              "stroke": "none",
+              "html": "<rect class=\"clip clip-minus\" x=\"389\" y=\"102\" width=\"10\" height=\"40\" rx=\"2\"></rect>"
+            },
+            {
+              "tag": "rect",
+              "cls": "strip",
+              "fill": "rgb(0, 0, 0)",
+              "stroke": "none",
+              "html": "<rect class=\"strip\" x=\"80\" y=\"104\" width=\"300\" height=\"36\" rx=\"3\"></rect>"
+            },
+            {
+              "tag": "line",
+              "cls": "mid-mark",
+              "fill": "rgb(0, 0, 0)",
+              "stroke": "none",
+              "html": "<line class=\"mid-mark\" x1=\"230\" y1=\"98\" x2=\"230\" y2=\"146\"></line>"
+            },
+            {
+              "tag": "line",
+              "cls": "ruler",
+              "fill": "rgb(0, 0, 0)",
+              "stroke": "none",
+              "html": "<line class=\"ruler\" x1=\"380.0\" y1=\"142\" x2=\"380.0\" y2=\"145\"></line>"
+            }
+          ]
+        }
+      ],
+      "grades": [
+        {
+          "mode": "flame",
+          "results": [
+            {
+              "choice": "red",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "yellow",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "violet",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "orange",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "green",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        },
+        {
+          "mode": "ion",
+          "results": [
+            {
+              "choice": "plus",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "minus",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "none",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        }
       ]
     },
     {
@@ -2848,6 +4378,49 @@
             "runToEnd",
             "tick",
             "finish"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "elements",
+          "results": [
+            {
+              "choice": "cation",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "anion",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "none",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        },
+        {
+          "mode": "bonds",
+          "results": [
+            {
+              "choice": "1:1",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "1:2",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "2:1",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
           ]
         }
       ]
@@ -2884,6 +4457,74 @@
             "finish"
           ]
         }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "shape",
+          "results": [
+            {
+              "choice": "linear",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "trigonal",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "tetra",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "lone",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            }
+          ]
+        },
+        {
+          "mode": "polar",
+          "results": [
+            {
+              "choice": "polar",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "cancel",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "nonbond",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        },
+        {
+          "mode": "mix",
+          "results": [
+            {
+              "choice": "mix",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "partly",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "no",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        }
       ]
     },
     {
@@ -2895,7 +4536,25 @@
       "cases": 5,
       "errors": [],
       "issues": [],
-      "models": []
+      "models": [],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "initial",
+          "results": [
+            {
+              "choice": "acid",
+              "visible": false,
+              "text": ""
+            },
+            {
+              "choice": "base",
+              "visible": false,
+              "text": ""
+            }
+          ]
+        }
+      ]
     },
     {
       "slug": "neutralization",
@@ -2924,6 +4583,29 @@
             "setIndicator",
             "addedML",
             "render"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "initial",
+          "results": [
+            {
+              "choice": "before",
+              "visible": true,
+              "text": "예상과 다른 결과입니다. 온도는 중화점에서 가장 높습니다."
+            },
+            {
+              "choice": "at",
+              "visible": false,
+              "text": ""
+            },
+            {
+              "choice": "after",
+              "visible": true,
+              "text": "예상과 다른 결과입니다. 온도는 중화점에서 가장 높습니다."
+            }
           ]
         }
       ]
@@ -2963,6 +4645,29 @@
             "tick"
           ]
         }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "initial",
+          "results": [
+            {
+              "choice": "basic",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "neutral",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "acidic",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        }
       ]
     },
     {
@@ -2997,6 +4702,33 @@
             "elapsed",
             "render"
           ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "mass",
+          "results": [
+            {
+              "choice": "less",
+              "visible": true,
+              "text": "예상과 다른 결과입니다. 전체 질량은 변하지 않습니다."
+            },
+            {
+              "choice": "same",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "more",
+              "visible": true,
+              "text": "예상과 다른 결과입니다. 전체 질량은 변하지 않습니다."
+            }
+          ]
+        },
+        {
+          "mode": "heat",
+          "results": []
         }
       ]
     },
@@ -3036,6 +4768,69 @@
             "finish"
           ]
         }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "count",
+          "results": [
+            {
+              "choice": "less",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "one",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "more",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            }
+          ]
+        },
+        {
+          "mode": "react",
+          "results": [
+            {
+              "choice": "aLeft",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "exact",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "bLeft",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        },
+        {
+          "mode": "molar",
+          "results": [
+            {
+              "choice": "low",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "mid",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "high",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        }
       ]
     },
     {
@@ -3072,6 +4867,49 @@
             "set"
           ]
         }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "rate",
+          "results": [
+            {
+              "choice": "faster",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "similar",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "slower",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        },
+        {
+          "mode": "eq",
+          "results": [
+            {
+              "choice": "darker",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "same",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "lighter",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        }
       ]
     },
     {
@@ -3103,6 +4941,29 @@
             "finish"
           ]
         }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "initial",
+          "results": [
+            {
+              "choice": "burn",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "out",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "none",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        }
       ]
     },
     {
@@ -3129,6 +4990,29 @@
             "runToEnd",
             "tick",
             "finish"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "initial",
+          "results": [
+            {
+              "choice": "up",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "same",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "down",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
           ]
         }
       ]
@@ -3160,6 +5044,49 @@
             "check",
             "setMode",
             "set"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "cell",
+          "results": [
+            {
+              "choice": "a",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "none",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "b",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        },
+        {
+          "mode": "elec",
+          "results": [
+            {
+              "choice": "more",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "near",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "less",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            }
           ]
         }
       ]
@@ -3194,6 +5121,44 @@
             "runToEnd",
             "tick",
             "finish"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "sort",
+          "results": [
+            {
+              "choice": "few",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "mid",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "many",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        },
+        {
+          "mode": "habitat",
+          "results": [
+            {
+              "choice": "fit",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "unfit",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
           ]
         }
       ]
@@ -3233,6 +5198,49 @@
             "finish"
           ]
         }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "mould",
+          "results": [
+            {
+              "choice": "lots",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "some",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "none",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        },
+        {
+          "mode": "germ",
+          "results": [
+            {
+              "choice": "double",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "tens",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "huge",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            }
+          ]
+        }
       ]
     },
     {
@@ -3267,6 +5275,29 @@
             "runToEnd"
           ]
         }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "initial",
+          "results": [
+            {
+              "choice": "p1",
+              "visible": true,
+              "text": "예상이 맞았습니다 — 잘 보인다."
+            },
+            {
+              "choice": "p2",
+              "visible": true,
+              "text": "예상은 겨우 보인다였지만 결과는 잘 보인다입니다."
+            },
+            {
+              "choice": "p3",
+              "visible": true,
+              "text": "예상은 너무 작아 안 보인다였지만 결과는 잘 보인다입니다."
+            }
+          ]
+        }
       ]
     },
     {
@@ -3297,6 +5328,29 @@
             "conc",
             "elapsed",
             "render"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "initial",
+          "results": [
+            {
+              "choice": "swell",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "same",
+              "visible": false,
+              "text": ""
+            },
+            {
+              "choice": "shrink",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
           ]
         }
       ]
@@ -3337,6 +5391,49 @@
             "finish"
           ]
         }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "diffusion",
+          "results": [
+            {
+              "choice": "far",
+              "visible": true,
+              "text": "이 모형의 예상이 맞았습니다."
+            },
+            {
+              "choice": "mid",
+              "visible": true,
+              "text": "이 모형의 결과와 다릅니다."
+            },
+            {
+              "choice": "same",
+              "visible": true,
+              "text": "이 모형의 결과와 다릅니다."
+            }
+          ]
+        },
+        {
+          "mode": "osmosis",
+          "results": [
+            {
+              "choice": "swell",
+              "visible": true,
+              "text": "이 모형의 예상이 맞았습니다."
+            },
+            {
+              "choice": "same",
+              "visible": true,
+              "text": "이 모형의 결과와 다릅니다."
+            },
+            {
+              "choice": "shrink",
+              "visible": true,
+              "text": "이 모형의 결과와 다릅니다."
+            }
+          ]
+        }
       ]
     },
     {
@@ -3367,6 +5464,29 @@
             "runToEnd"
           ]
         }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "initial",
+          "results": [
+            {
+              "choice": "double",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "same",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "half",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        }
       ]
     },
     {
@@ -3391,6 +5511,24 @@
             "progress",
             "SOIL_Y",
             "SEED"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "initial",
+          "results": [
+            {
+              "choice": "yes",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "no",
+              "visible": false,
+              "text": ""
+            }
           ]
         }
       ]
@@ -3421,6 +5559,29 @@
             "co2",
             "temp",
             "render"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "initial",
+          "results": [
+            {
+              "choice": "light",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "co2",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "temp",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
           ]
         }
       ]
@@ -3461,6 +5622,49 @@
             "runToEnd"
           ]
         }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "leaf",
+          "results": [
+            {
+              "choice": "p1",
+              "visible": true,
+              "text": "예상은 크게 는다였지만 결과는 거의 그대로입니다."
+            },
+            {
+              "choice": "p2",
+              "visible": true,
+              "text": "예상은 조금 는다였지만 결과는 거의 그대로입니다."
+            },
+            {
+              "choice": "p3",
+              "visible": true,
+              "text": "예상이 맞았습니다 — 거의 그대로."
+            }
+          ]
+        },
+        {
+          "mode": "atp",
+          "results": [
+            {
+              "choice": "p1",
+              "visible": true,
+              "text": "예상이 맞았습니다 — 32개."
+            },
+            {
+              "choice": "p2",
+              "visible": true,
+              "text": "예상은 30개였지만 결과는 32개입니다."
+            },
+            {
+              "choice": "p3",
+              "visible": true,
+              "text": "예상은 2개였지만 결과는 32개입니다."
+            }
+          ]
+        }
       ]
     },
     {
@@ -3492,6 +5696,34 @@
             "runToEnd"
           ]
         }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "initial",
+          "results": [
+            {
+              "choice": "p1",
+              "visible": true,
+              "text": "선택한 기관의 하는 일을 다시 확인하세요."
+            },
+            {
+              "choice": "p2",
+              "visible": true,
+              "text": "선택한 기관의 하는 일을 다시 확인하세요."
+            },
+            {
+              "choice": "p3",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "p4",
+              "visible": true,
+              "text": "선택한 기관의 하는 일을 다시 확인하세요."
+            }
+          ]
+        }
       ]
     },
     {
@@ -3519,6 +5751,29 @@
             "setMinutes",
             "getAct",
             "minutes"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "initial",
+          "results": [
+            {
+              "choice": "more",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "same",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "less",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
           ]
         }
       ]
@@ -3554,6 +5809,79 @@
             "runToEnd",
             "tick",
             "finish"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "reagent",
+          "results": [
+            {
+              "choice": "starch",
+              "visible": true,
+              "text": "🎉 예상이 맞았습니다!"
+            },
+            {
+              "choice": "sugar",
+              "visible": true,
+              "text": "💡 예상과 다른 결과입니다. 원리를 확인해 보세요."
+            },
+            {
+              "choice": "protein",
+              "visible": true,
+              "text": "💡 예상과 다른 결과입니다. 원리를 확인해 보세요."
+            },
+            {
+              "choice": "fat",
+              "visible": true,
+              "text": "💡 예상과 다른 결과입니다. 원리를 확인해 보세요."
+            },
+            {
+              "choice": "none",
+              "visible": true,
+              "text": "💡 예상과 다른 결과입니다. 원리를 확인해 보세요."
+            }
+          ]
+        },
+        {
+          "mode": "benedict",
+          "results": [
+            {
+              "choice": "none",
+              "visible": true,
+              "text": "🎉 예상이 맞았습니다!"
+            },
+            {
+              "choice": "some",
+              "visible": true,
+              "text": "💡 예상과 다른 결과입니다. 원리를 확인해 보세요."
+            },
+            {
+              "choice": "much",
+              "visible": true,
+              "text": "💡 예상과 다른 결과입니다. 원리를 확인해 보세요."
+            }
+          ]
+        },
+        {
+          "mode": "amylase",
+          "results": [
+            {
+              "choice": "digested",
+              "visible": true,
+              "text": "🎉 예상이 맞았습니다!"
+            },
+            {
+              "choice": "partial",
+              "visible": true,
+              "text": "💡 예상과 다른 결과입니다. 원리를 확인해 보세요."
+            },
+            {
+              "choice": "none",
+              "visible": true,
+              "text": "💡 예상과 다른 결과입니다. 원리를 확인해 보세요."
+            }
           ]
         }
       ]
@@ -3593,6 +5921,69 @@
             "finish"
           ]
         }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "glucose",
+          "results": [
+            {
+              "choice": "normal",
+              "visible": true,
+              "text": "이 모형의 예상이 맞았습니다."
+            },
+            {
+              "choice": "elevated",
+              "visible": true,
+              "text": "이 모형의 결과와 다릅니다."
+            },
+            {
+              "choice": "high",
+              "visible": true,
+              "text": "이 모형의 결과와 다릅니다."
+            }
+          ]
+        },
+        {
+          "mode": "temp",
+          "results": [
+            {
+              "choice": "hold",
+              "visible": true,
+              "text": "이 모형의 예상이 맞았습니다."
+            },
+            {
+              "choice": "rise",
+              "visible": true,
+              "text": "이 모형의 결과와 다릅니다."
+            },
+            {
+              "choice": "drop",
+              "visible": true,
+              "text": "이 모형의 결과와 다릅니다."
+            }
+          ]
+        },
+        {
+          "mode": "water",
+          "results": [
+            {
+              "choice": "much",
+              "visible": true,
+              "text": "이 모형의 예상이 맞았습니다."
+            },
+            {
+              "choice": "little",
+              "visible": true,
+              "text": "이 모형의 결과와 다릅니다."
+            },
+            {
+              "choice": "usual",
+              "visible": true,
+              "text": "이 모형의 결과와 다릅니다."
+            }
+          ]
+        }
       ]
     },
     {
@@ -3626,6 +6017,54 @@
             "runToEnd",
             "tick",
             "finish"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "infect",
+          "results": [
+            {
+              "choice": "week",
+              "visible": true,
+              "text": "이 가상 모형의 예상이 맞았습니다."
+            },
+            {
+              "choice": "days",
+              "visible": true,
+              "text": "이 가상 모형의 결과와 다릅니다."
+            },
+            {
+              "choice": "none",
+              "visible": true,
+              "text": "이 가상 모형의 결과와 다릅니다."
+            },
+            {
+              "choice": "unbeaten",
+              "visible": true,
+              "text": "이 가상 모형의 결과와 다릅니다."
+            }
+          ]
+        },
+        {
+          "mode": "vaccine",
+          "results": [
+            {
+              "choice": "week",
+              "visible": true,
+              "text": "이 가상 모형의 예상이 맞았습니다."
+            },
+            {
+              "choice": "days",
+              "visible": true,
+              "text": "이 가상 모형의 결과와 다릅니다."
+            },
+            {
+              "choice": "none",
+              "visible": true,
+              "text": "이 가상 모형의 결과와 다릅니다."
+            }
           ]
         }
       ]
@@ -3669,6 +6108,29 @@
             "measureThroughput"
           ]
         }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "initial",
+          "results": [
+            {
+              "choice": "p1",
+              "visible": true,
+              "text": "예상은 Km만 오른다였지만 결과는 둘 다 그대로입니다."
+            },
+            {
+              "choice": "p2",
+              "visible": true,
+              "text": "예상은 Vmax만 내린다였지만 결과는 둘 다 그대로입니다."
+            },
+            {
+              "choice": "p3",
+              "visible": true,
+              "text": "예상이 맞았습니다 — 둘 다 그대로."
+            }
+          ]
+        }
       ]
     },
     {
@@ -3703,6 +6165,29 @@
             "runToEnd"
           ]
         }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "initial",
+          "results": [
+            {
+              "choice": "p1",
+              "visible": true,
+              "text": "모형의 예상이 맞았습니다."
+            },
+            {
+              "choice": "p2",
+              "visible": true,
+              "text": "모형의 예상과 다른 결과입니다."
+            },
+            {
+              "choice": "p3",
+              "visible": true,
+              "text": "모형의 예상과 다른 결과입니다."
+            }
+          ]
+        }
       ]
     },
     {
@@ -3720,6 +6205,24 @@
           "methods": [
             "PATHS",
             "state"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "initial",
+          "results": [
+            {
+              "choice": "yes",
+              "visible": false,
+              "text": ""
+            },
+            {
+              "choice": "no",
+              "visible": false,
+              "text": ""
+            }
           ]
         }
       ]
@@ -3755,6 +6258,69 @@
             "runToEnd",
             "tick",
             "finish"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "spike",
+          "results": [
+            {
+              "choice": "none",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "one",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "many",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            }
+          ]
+        },
+        {
+          "mode": "conduct",
+          "results": [
+            {
+              "choice": "fast",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "mid",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "slow",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        },
+        {
+          "mode": "synapse",
+          "results": [
+            {
+              "choice": "normal",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "none",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "long",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
           ]
         }
       ]
@@ -3795,6 +6361,59 @@
             "finish"
           ]
         }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "one",
+          "results": [
+            {
+              "choice": "all-dom",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "3-1",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "1-1",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "all-rec",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        },
+        {
+          "mode": "two",
+          "results": [
+            {
+              "choice": "all-same",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "9-3-3-1",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "1-1-1-1",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "3-1",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        }
       ]
     },
     {
@@ -3833,6 +6452,29 @@
             "runToEnd"
           ]
         }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "initial",
+          "results": [
+            {
+              "choice": "p1",
+              "visible": true,
+              "text": "예상이 맞았습니다 — 거의 다."
+            },
+            {
+              "choice": "p2",
+              "visible": true,
+              "text": "예상은 절반쯤였지만 결과는 거의 다입니다."
+            },
+            {
+              "choice": "p3",
+              "visible": true,
+              "text": "예상은 거의 못 건짐였지만 결과는 거의 다입니다."
+            }
+          ]
+        }
       ]
     },
     {
@@ -3869,6 +6511,54 @@
             "finish"
           ]
         }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "beak",
+          "results": [
+            {
+              "choice": "small",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "large",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "split",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "same",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        },
+        {
+          "mode": "coat",
+          "results": [
+            {
+              "choice": "light",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "dark",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "mixed",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        }
       ]
     },
     {
@@ -3902,6 +6592,69 @@
             "finish"
           ]
         }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "rank",
+          "results": [
+            {
+              "choice": "close",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "mid",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "far",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        },
+        {
+          "mode": "tree",
+          "results": [
+            {
+              "choice": "first",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "second",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "equal",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        },
+        {
+          "mode": "clock",
+          "results": [
+            {
+              "choice": "recent",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "mid",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "old",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        }
       ]
     },
     {
@@ -3930,6 +6683,29 @@
             "setStep",
             "check",
             "runToEnd"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "initial",
+          "results": [
+            {
+              "choice": "p1",
+              "visible": true,
+              "text": "예상이 맞았습니다 — 번데기를 거친다."
+            },
+            {
+              "choice": "p2",
+              "visible": true,
+              "text": "예상은 번데기 없이 모습이 크게 바뀐다였지만 결과는 번데기를 거친다입니다."
+            },
+            {
+              "choice": "p3",
+              "visible": true,
+              "text": "예상은 처음부터 어른과 닮았다였지만 결과는 번데기를 거친다입니다."
+            }
           ]
         }
       ]
@@ -3969,6 +6745,49 @@
             "runToEnd",
             "tick",
             "finish"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "bean",
+          "results": [
+            {
+              "choice": "green",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "yellow",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "none",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        },
+        {
+          "mode": "web",
+          "results": [
+            {
+              "choice": "rabbit-up",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "rabbit-down",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "steady",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
           ]
         }
       ]
@@ -4016,6 +6835,49 @@
             "sampleStats"
           ]
         }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "growth",
+          "results": [
+            {
+              "choice": "p1",
+              "visible": true,
+              "text": "예상은 계속 늘어난다였지만 결과는 K에 멈춘다입니다."
+            },
+            {
+              "choice": "p2",
+              "visible": true,
+              "text": "예상이 맞았습니다 — K에 멈춘다."
+            },
+            {
+              "choice": "p3",
+              "visible": true,
+              "text": "예상은 K로 줄어든다였지만 결과는 K에 멈춘다입니다."
+            }
+          ]
+        },
+        {
+          "mode": "survey",
+          "results": [
+            {
+              "choice": "p1",
+              "visible": true,
+              "text": "예상은 잘 맞는다였지만 결과는 그럭저럭입니다."
+            },
+            {
+              "choice": "p2",
+              "visible": true,
+              "text": "예상이 맞았습니다 — 그럭저럭."
+            },
+            {
+              "choice": "p3",
+              "visible": true,
+              "text": "예상은 크게 흔들린다였지만 결과는 그럭저럭입니다."
+            }
+          ]
+        }
       ]
     },
     {
@@ -4043,6 +6905,24 @@
             "setFossil",
             "pour",
             "reset"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "initial",
+          "results": [
+            {
+              "choice": "bottom",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "top",
+              "visible": true,
+              "text": "예상과 다른 결과입니다. 맨 아래층이 가장 먼저 쌓인 층입니다."
+            }
           ]
         }
       ]
@@ -4083,6 +6963,49 @@
             "set"
           ]
         }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "mineral",
+          "results": [
+            {
+              "choice": "a",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "b",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "none",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        },
+        {
+          "mode": "rock",
+          "results": [
+            {
+              "choice": "fine",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "medium",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "coarse",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        }
       ]
     },
     {
@@ -4118,6 +7041,74 @@
             "runToEnd",
             "tick",
             "finish"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "calendar",
+          "results": [
+            {
+              "choice": "early",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "mid",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "late",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "end",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        },
+        {
+          "mode": "extinction",
+          "results": [
+            {
+              "choice": "low",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "mid",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "high",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            }
+          ]
+        },
+        {
+          "mode": "diversity",
+          "results": [
+            {
+              "choice": "most",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "half",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "gone",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
           ]
         }
       ]
@@ -4158,6 +7149,49 @@
             "runToEnd"
           ]
         }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "decay",
+          "results": [
+            {
+              "choice": "p1",
+              "visible": true,
+              "text": "예상은 절반 이상였지만 결과는 거의 없음입니다."
+            },
+            {
+              "choice": "p2",
+              "visible": true,
+              "text": "예상은 절반 이하였지만 결과는 거의 없음입니다."
+            },
+            {
+              "choice": "p3",
+              "visible": true,
+              "text": "예상이 맞았습니다 — 거의 없음."
+            }
+          ]
+        },
+        {
+          "mode": "strata",
+          "results": [
+            {
+              "choice": "p1",
+              "visible": true,
+              "text": "예상이 맞았습니다 — 잴 수 있다."
+            },
+            {
+              "choice": "p2",
+              "visible": true,
+              "text": "예상은 너무 오래됨였지만 결과는 잴 수 있다입니다."
+            },
+            {
+              "choice": "p3",
+              "visible": true,
+              "text": "예상은 너무 젊음였지만 결과는 잴 수 있다입니다."
+            }
+          ]
+        }
       ]
     },
     {
@@ -4194,6 +7228,69 @@
             "finish"
           ]
         }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "facies",
+          "results": [
+            {
+              "choice": "low",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "mid",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "high",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        },
+        {
+          "mode": "grade",
+          "results": [
+            {
+              "choice": "weak",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "strong",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "high",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        },
+        {
+          "mode": "contact",
+          "results": [
+            {
+              "choice": "hornfels",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "baked",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "none",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        }
       ]
     },
     {
@@ -4227,6 +7324,29 @@
             "setSoda",
             "check",
             "runToEnd"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "initial",
+          "results": [
+            {
+              "choice": "p1",
+              "visible": true,
+              "text": "예상은 소다가 남는다였지만 결과는 둘 다 딱 맞다입니다."
+            },
+            {
+              "choice": "p2",
+              "visible": true,
+              "text": "예상은 식초가 남는다였지만 결과는 둘 다 딱 맞다입니다."
+            },
+            {
+              "choice": "p3",
+              "visible": true,
+              "text": "예상이 맞았습니다 — 둘 다 딱 맞다."
+            }
           ]
         }
       ]
@@ -4269,6 +7389,29 @@
             "runToEnd"
           ]
         }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "initial",
+          "results": [
+            {
+              "choice": "p1",
+              "visible": true,
+              "text": "예상이 맞았습니다 — 조용히 흘러넘친다."
+            },
+            {
+              "choice": "p2",
+              "visible": true,
+              "text": "예상은 중간쯤였지만 결과는 조용히 흘러넘친다입니다."
+            },
+            {
+              "choice": "p3",
+              "visible": true,
+              "text": "예상은 크게 폭발한다였지만 결과는 조용히 흘러넘친다입니다."
+            }
+          ]
+        }
       ]
     },
     {
@@ -4303,6 +7446,29 @@
             "years"
           ]
         }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "initial",
+          "results": [
+            {
+              "choice": "shallow",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "deep",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "none",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        }
       ]
     },
     {
@@ -4314,7 +7480,14 @@
       "cases": 1,
       "errors": [],
       "issues": [],
-      "models": []
+      "models": [],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "initial",
+          "results": []
+        }
+      ]
     },
     {
       "slug": "earth-system",
@@ -4350,6 +7523,79 @@
             "runToEnd",
             "tick",
             "finish"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "spheres",
+          "results": [
+            {
+              "choice": "geo-hydro",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "geo-atmo",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "hydro-atmo",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "bio",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "space",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        },
+        {
+          "mode": "water",
+          "results": [
+            {
+              "choice": "days",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "years",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "ages",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        },
+        {
+          "mode": "carbon",
+          "results": [
+            {
+              "choice": "down",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "same",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "up",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            }
           ]
         }
       ]
@@ -4390,6 +7636,29 @@
             "runToEnd"
           ]
         }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "initial",
+          "results": [
+            {
+              "choice": "p1",
+              "visible": true,
+              "text": "예상은 바다에서 육지로였지만 결과는 육지에서 바다로입니다."
+            },
+            {
+              "choice": "p2",
+              "visible": true,
+              "text": "예상이 맞았습니다 — 육지에서 바다로."
+            },
+            {
+              "choice": "p3",
+              "visible": true,
+              "text": "예상은 거의 안 분다였지만 결과는 육지에서 바다로입니다."
+            }
+          ]
+        }
       ]
     },
     {
@@ -4426,6 +7695,49 @@
             "check",
             "setMode",
             "set"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "wind",
+          "results": [
+            {
+              "choice": "strong",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "medium",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "weak",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        },
+        {
+          "mode": "front",
+          "results": [
+            {
+              "choice": "up",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "same",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "down",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            }
           ]
         }
       ]
@@ -4469,6 +7781,29 @@
             "runToEnd"
           ]
         }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "initial",
+          "results": [
+            {
+              "choice": "p1",
+              "visible": true,
+              "text": "예상은 절대 안정였지만 결과는 조건부 불안정입니다."
+            },
+            {
+              "choice": "p2",
+              "visible": true,
+              "text": "예상이 맞았습니다 — 조건부 불안정."
+            },
+            {
+              "choice": "p3",
+              "visible": true,
+              "text": "예상은 절대 불안정였지만 결과는 조건부 불안정입니다."
+            }
+          ]
+        }
       ]
     },
     {
@@ -4501,6 +7836,69 @@
             "runToEnd",
             "tick",
             "finish"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "genesis",
+          "results": [
+            {
+              "choice": "none",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "mid",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "high",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        },
+        {
+          "mode": "track",
+          "results": [
+            {
+              "choice": "china",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "korea",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "japan",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        },
+        {
+          "mode": "enso",
+          "results": [
+            {
+              "choice": "elnino",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "normal",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "lanina",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
           ]
         }
       ]
@@ -4540,6 +7938,49 @@
             "finish"
           ]
         }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "area",
+          "results": [
+            {
+              "choice": "sea-more",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "even",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "land-more",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        },
+        {
+          "mode": "salt",
+          "results": [
+            {
+              "choice": "none",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "some",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "lots",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        }
       ]
     },
     {
@@ -4566,6 +8007,29 @@
             "setSun",
             "setTemp",
             "reset"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "initial",
+          "results": [
+            {
+              "choice": "less",
+              "visible": true,
+              "text": "예상과 다른 결과입니다. 물의 총량은 변하지 않습니다."
+            },
+            {
+              "choice": "same",
+              "visible": false,
+              "text": ""
+            },
+            {
+              "choice": "more",
+              "visible": true,
+              "text": "예상과 다른 결과입니다. 물의 총량은 변하지 않습니다."
+            }
           ]
         }
       ]
@@ -4605,6 +8069,29 @@
             "getPlace"
           ]
         }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "initial",
+          "results": [
+            {
+              "choice": "heavier",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "same",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "lighter",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        }
       ]
     },
     {
@@ -4641,6 +8128,29 @@
             "runToEnd"
           ]
         }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "initial",
+          "results": [
+            {
+              "choice": "p1",
+              "visible": true,
+              "text": "예상이 맞았습니다 — 하루보다 짧다."
+            },
+            {
+              "choice": "p2",
+              "visible": true,
+              "text": "예상은 하루쯤였지만 결과는 하루보다 짧다입니다."
+            },
+            {
+              "choice": "p3",
+              "visible": true,
+              "text": "예상은 하루보다 길다였지만 결과는 하루보다 짧다입니다."
+            }
+          ]
+        }
       ]
     },
     {
@@ -4674,6 +8184,69 @@
             "runToEnd",
             "tick",
             "finish"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "profile",
+          "results": [
+            {
+              "choice": "shallow",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "deep",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "none",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        },
+        {
+          "mode": "salinity",
+          "results": [
+            {
+              "choice": "up",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "same",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "down",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        },
+        {
+          "mode": "density",
+          "results": [
+            {
+              "choice": "sink",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "same",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "float",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
           ]
         }
       ]
@@ -4715,6 +8288,59 @@
             "finish"
           ]
         }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "moon",
+          "results": [
+            {
+              "choice": "east",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "south",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "west",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "hidden",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        },
+        {
+          "mode": "stars",
+          "results": [
+            {
+              "choice": "up",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "right",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "left",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "down",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        }
       ]
     },
     {
@@ -4752,6 +8378,49 @@
             "finish"
           ]
         }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "path",
+          "results": [
+            {
+              "choice": "high",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "mid",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "low",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        },
+        {
+          "mode": "orbit",
+          "results": [
+            {
+              "choice": "summer",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "winter",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "none",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        }
       ]
     },
     {
@@ -4780,6 +8449,29 @@
             "sunlitHalfPath",
             "setDay",
             "day"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "initial",
+          "results": [
+            {
+              "choice": "right",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "left",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "full",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
           ]
         }
       ]
@@ -4816,6 +8508,24 @@
             "setMoon",
             "isPlaying",
             "render"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "initial",
+          "results": [
+            {
+              "choice": "ccw",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "cw",
+              "visible": false,
+              "text": ""
+            }
           ]
         }
       ]
@@ -4856,6 +8566,79 @@
             "finish"
           ]
         }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "retro",
+          "results": [
+            {
+              "choice": "short",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "mid",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "long",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        },
+        {
+          "mode": "phase",
+          "results": [
+            {
+              "choice": "crescent",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "half",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "fullFar",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "fullNear",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        },
+        {
+          "mode": "eclipse",
+          "results": [
+            {
+              "choice": "total",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "annular",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "partial",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "none",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        }
       ]
     },
     {
@@ -4892,6 +8675,39 @@
             "runToEnd",
             "tick",
             "finish"
+          ]
+        }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "bright",
+          "results": [
+            {
+              "choice": "square",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "no",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        },
+        {
+          "mode": "expand",
+          "results": [
+            {
+              "choice": "faster",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "no",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
           ]
         }
       ]
@@ -5072,6 +8888,64 @@
             "finish"
           ]
         }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "fusion",
+          "results": [
+            {
+              "choice": "yes",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "no",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        },
+        {
+          "mode": "mass",
+          "results": [
+            {
+              "choice": "he",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "co",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "sn",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        },
+        {
+          "mode": "origin",
+          "results": [
+            {
+              "choice": "bigbang",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "star",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "merger",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        }
       ]
     },
     {
@@ -5116,6 +8990,29 @@
             "runToEnd"
           ]
         }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "initial",
+          "results": [
+            {
+              "choice": "p1",
+              "visible": true,
+              "text": "예상이 맞았습니다 — 주계열."
+            },
+            {
+              "choice": "p2",
+              "visible": true,
+              "text": "예상은 거성였지만 결과는 주계열입니다."
+            },
+            {
+              "choice": "p3",
+              "visible": true,
+              "text": "예상은 백색왜성였지만 결과는 주계열입니다."
+            }
+          ]
+        }
       ]
     },
     {
@@ -5151,6 +9048,74 @@
             "finish"
           ]
         }
+      ],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "classify",
+          "results": [
+            {
+              "choice": "e",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "s",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "sb",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "irr",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        },
+        {
+          "mode": "redshift",
+          "results": [
+            {
+              "choice": "slow",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "mid",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "fast",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        },
+        {
+          "mode": "hubble",
+          "results": [
+            {
+              "choice": "ok",
+              "visible": true,
+              "text": "예상이 맞았습니다."
+            },
+            {
+              "choice": "low",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            },
+            {
+              "choice": "high",
+              "visible": true,
+              "text": "예상과 다른 결과입니다."
+            }
+          ]
+        }
       ]
     },
     {
@@ -5162,7 +9127,14 @@
       "cases": 1,
       "errors": [],
       "issues": [],
-      "models": []
+      "models": [],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "initial",
+          "results": []
+        }
+      ]
     },
     {
       "slug": "neutralization-common",
@@ -5173,7 +9145,14 @@
       "cases": 1,
       "errors": [],
       "issues": [],
-      "models": []
+      "models": [],
+      "paint": [],
+      "grades": [
+        {
+          "mode": "initial",
+          "results": []
+        }
+      ]
     }
   ]
 }

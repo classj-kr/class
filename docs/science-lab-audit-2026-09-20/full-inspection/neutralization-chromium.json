@@ -27,5 +27,28 @@
         "render"
       ]
     }
+  ],
+  "paint": [],
+  "grades": [
+    {
+      "mode": "initial",
+      "results": [
+        {
+          "choice": "before",
+          "visible": true,
+          "text": "예상과 다른 결과입니다. 온도는 중화점에서 가장 높습니다."
+        },
+        {
+          "choice": "at",
+          "visible": false,
+          "text": ""
+        },
+        {
+          "choice": "after",
+          "visible": true,
+          "text": "예상과 다른 결과입니다. 온도는 중화점에서 가장 높습니다."
+        }
+      ]
+    }
   ]
 }

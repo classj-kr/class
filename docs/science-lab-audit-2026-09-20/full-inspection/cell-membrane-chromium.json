@@ -34,5 +34,48 @@
         "finish"
       ]
     }
+  ],
+  "paint": [],
+  "grades": [
+    {
+      "mode": "diffusion",
+      "results": [
+        {
+          "choice": "far",
+          "visible": true,
+          "text": "이 모형의 예상이 맞았습니다."
+        },
+        {
+          "choice": "mid",
+          "visible": true,
+          "text": "이 모형의 결과와 다릅니다."
+        },
+        {
+          "choice": "same",
+          "visible": true,
+          "text": "이 모형의 결과와 다릅니다."
+        }
+      ]
+    },
+    {
+      "mode": "osmosis",
+      "results": [
+        {
+          "choice": "swell",
+          "visible": true,
+          "text": "이 모형의 예상이 맞았습니다."
+        },
+        {
+          "choice": "same",
+          "visible": true,
+          "text": "이 모형의 결과와 다릅니다."
+        },
+        {
+          "choice": "shrink",
+          "visible": true,
+          "text": "이 모형의 결과와 다릅니다."
+        }
+      ]
+    }
   ]
 }

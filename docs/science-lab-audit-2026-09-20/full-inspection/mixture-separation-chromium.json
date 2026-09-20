@@ -19,5 +19,12 @@
         "grainCount"
       ]
     }
+  ],
+  "paint": [],
+  "grades": [
+    {
+      "mode": "initial",
+      "results": []
+    }
   ]
 }

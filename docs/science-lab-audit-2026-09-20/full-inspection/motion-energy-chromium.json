@@ -35,5 +35,61 @@
         "finish"
       ]
     }
+  ],
+  "paint": [
+    {
+      "mode": "energy",
+      "items": [
+        {
+          "tag": "line",
+          "cls": "expect-line",
+          "fill": "rgb(0, 0, 0)",
+          "stroke": "none",
+          "html": "<line class=\"expect-line\" x1=\"62\" y1=\"69.7\" x2=\"424\" y2=\"69.7\"></line>"
+        }
+      ]
+    }
+  ],
+  "grades": [
+    {
+      "mode": "incline",
+      "results": [
+        {
+          "choice": "widen",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        },
+        {
+          "choice": "same",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "narrow",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        }
+      ]
+    },
+    {
+      "mode": "energy",
+      "results": [
+        {
+          "choice": "pass",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        },
+        {
+          "choice": "stop",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "back",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        }
+      ]
+    }
   ]
 }

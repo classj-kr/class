@@ -30,5 +30,27 @@
         "render"
       ]
     }
+  ],
+  "paint": [],
+  "grades": [
+    {
+      "mode": "buoy",
+      "results": [
+        {
+          "choice": "float",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        },
+        {
+          "choice": "sink",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        }
+      ]
+    },
+    {
+      "mode": "gas",
+      "results": []
+    }
   ]
 }

@@ -7,5 +7,12 @@
   "cases": 1,
   "errors": [],
   "issues": [],
-  "models": []
+  "models": [],
+  "paint": [],
+  "grades": [
+    {
+      "mode": "initial",
+      "results": []
+    }
+  ]
 }

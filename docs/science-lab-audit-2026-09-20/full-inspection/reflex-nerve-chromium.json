@@ -15,5 +15,23 @@
         "state"
       ]
     }
+  ],
+  "paint": [],
+  "grades": [
+    {
+      "mode": "initial",
+      "results": [
+        {
+          "choice": "yes",
+          "visible": false,
+          "text": ""
+        },
+        {
+          "choice": "no",
+          "visible": false,
+          "text": ""
+        }
+      ]
+    }
   ]
 }

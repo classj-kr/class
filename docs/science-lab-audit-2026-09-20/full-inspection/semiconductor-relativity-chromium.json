@@ -756,5 +756,58 @@
         "finish"
       ]
     }
+  ],
+  "paint": [],
+  "grades": [
+    {
+      "mode": "diode",
+      "results": [
+        {
+          "choice": "well",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        },
+        {
+          "choice": "some",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "none",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        }
+      ]
+    },
+    {
+      "mode": "muon",
+      "results": [
+        {
+          "choice": "yes",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        },
+        {
+          "choice": "no",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        }
+      ]
+    },
+    {
+      "mode": "energy",
+      "results": [
+        {
+          "choice": "yes",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        },
+        {
+          "choice": "no",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        }
+      ]
+    }
   ]
 }

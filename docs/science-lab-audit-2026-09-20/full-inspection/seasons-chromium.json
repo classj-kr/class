@@ -33,5 +33,48 @@
         "finish"
       ]
     }
+  ],
+  "paint": [],
+  "grades": [
+    {
+      "mode": "path",
+      "results": [
+        {
+          "choice": "high",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        },
+        {
+          "choice": "mid",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "low",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        }
+      ]
+    },
+    {
+      "mode": "orbit",
+      "results": [
+        {
+          "choice": "summer",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        },
+        {
+          "choice": "winter",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "none",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        }
+      ]
+    }
   ]
 }

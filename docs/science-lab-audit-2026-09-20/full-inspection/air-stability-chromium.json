@@ -37,5 +37,28 @@
         "runToEnd"
       ]
     }
+  ],
+  "paint": [],
+  "grades": [
+    {
+      "mode": "initial",
+      "results": [
+        {
+          "choice": "p1",
+          "visible": true,
+          "text": "예상은 절대 안정였지만 결과는 조건부 불안정입니다."
+        },
+        {
+          "choice": "p2",
+          "visible": true,
+          "text": "예상이 맞았습니다 — 조건부 불안정."
+        },
+        {
+          "choice": "p3",
+          "visible": true,
+          "text": "예상은 절대 불안정였지만 결과는 조건부 불안정입니다."
+        }
+      ]
+    }
   ]
 }

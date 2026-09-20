@@ -31,5 +31,78 @@
         "finish"
       ]
     }
+  ],
+  "paint": [],
+  "grades": [
+    {
+      "mode": "reagent",
+      "results": [
+        {
+          "choice": "starch",
+          "visible": true,
+          "text": "🎉 예상이 맞았습니다!"
+        },
+        {
+          "choice": "sugar",
+          "visible": true,
+          "text": "💡 예상과 다른 결과입니다. 원리를 확인해 보세요."
+        },
+        {
+          "choice": "protein",
+          "visible": true,
+          "text": "💡 예상과 다른 결과입니다. 원리를 확인해 보세요."
+        },
+        {
+          "choice": "fat",
+          "visible": true,
+          "text": "💡 예상과 다른 결과입니다. 원리를 확인해 보세요."
+        },
+        {
+          "choice": "none",
+          "visible": true,
+          "text": "💡 예상과 다른 결과입니다. 원리를 확인해 보세요."
+        }
+      ]
+    },
+    {
+      "mode": "benedict",
+      "results": [
+        {
+          "choice": "none",
+          "visible": true,
+          "text": "🎉 예상이 맞았습니다!"
+        },
+        {
+          "choice": "some",
+          "visible": true,
+          "text": "💡 예상과 다른 결과입니다. 원리를 확인해 보세요."
+        },
+        {
+          "choice": "much",
+          "visible": true,
+          "text": "💡 예상과 다른 결과입니다. 원리를 확인해 보세요."
+        }
+      ]
+    },
+    {
+      "mode": "amylase",
+      "results": [
+        {
+          "choice": "digested",
+          "visible": true,
+          "text": "🎉 예상이 맞았습니다!"
+        },
+        {
+          "choice": "partial",
+          "visible": true,
+          "text": "💡 예상과 다른 결과입니다. 원리를 확인해 보세요."
+        },
+        {
+          "choice": "none",
+          "visible": true,
+          "text": "💡 예상과 다른 결과입니다. 원리를 확인해 보세요."
+        }
+      ]
+    }
   ]
 }

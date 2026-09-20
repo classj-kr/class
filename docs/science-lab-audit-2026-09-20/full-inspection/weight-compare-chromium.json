@@ -29,5 +29,28 @@
         "runToEnd"
       ]
     }
+  ],
+  "paint": [],
+  "grades": [
+    {
+      "mode": "initial",
+      "results": [
+        {
+          "choice": "p1",
+          "visible": true,
+          "text": "예상이 맞았습니다 — 뜬다."
+        },
+        {
+          "choice": "p2",
+          "visible": true,
+          "text": "예상은 아슬아슬하게 뜬다였지만 결과는 뜬다입니다."
+        },
+        {
+          "choice": "p3",
+          "visible": true,
+          "text": "예상은 가라앉는다였지만 결과는 뜬다입니다."
+        }
+      ]
+    }
   ]
 }

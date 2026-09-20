@@ -24,5 +24,28 @@
         "reset"
       ]
     }
+  ],
+  "paint": [],
+  "grades": [
+    {
+      "mode": "initial",
+      "results": [
+        {
+          "choice": "less",
+          "visible": true,
+          "text": "예상과 다른 결과입니다. 물의 총량은 변하지 않습니다."
+        },
+        {
+          "choice": "same",
+          "visible": false,
+          "text": ""
+        },
+        {
+          "choice": "more",
+          "visible": true,
+          "text": "예상과 다른 결과입니다. 물의 총량은 변하지 않습니다."
+        }
+      ]
+    }
   ]
 }
