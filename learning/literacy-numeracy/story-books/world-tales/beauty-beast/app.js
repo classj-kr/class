@@ -151,7 +151,7 @@ const CHAPTERS = [
                 "art": "05-castle-2.webp",
                 "emoji": "📚",
                 "left": [
-                    "야수는 저녁마다 밥상에 나타났습니다. 처음에는 벨도 말을 제대로 붙이지 못했지요. 커다란 몸이 작은 의자에 겨우 앉아 있었습니다.",
+                    "야수는 저녁마다 밥상에 나타났습니다. 처음에는 벨도 말을 제대로 붙이지 못했지요. 커다란 몸이 큰 의자에 웅크리듯 앉아 있었습니다.",
                     "야수도 무슨 말을 할지 몰라 헛기침만 했습니다. 포크가 손에서 자꾸 미끄러졌지요.",
                     "\"오늘…… 그 책은 재미있었습니까?\""
                 ],
@@ -711,7 +711,7 @@ const EN = {
                     emoji: '🏰',
                     left: [
                         "The Beast came to the table every evening. At first Belle could hardly get a word out to him.",
-                        "His great body barely fitted the small chair. He did not know what to say either, and he only cleared his throat.",
+                        "His great body sat hunched in the big chair. He did not know what to say either, and he only cleared his throat.",
                         "The fork kept slipping out of his hand. \"Was the book… good today?\""
                     ],
                     right: [

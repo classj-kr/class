@@ -250,9 +250,9 @@ const CHAPTERS = [
                     "\"따라오너라.\""
                 ],
                 "right": [
-                    "늙은 사슴은 숲 깊은 곳으로 걸어갔습니다. 밤비도 뒤를 따랐지요. 길도 없는 곳이었습니다.",
+                    "늙은 사슴은 숲 깊은 곳으로 걸어갔습니다. 밤비도 뒤를 따랐지요. 좁은 길이 하나 나 있었습니다.",
                     "이윽고 늙은 사슴이 멈춰 서서 낮게 말했지요. \"잘 보아라.\"",
-                    "발밑에 사람 발자국이 나 있었지요."
+                    "발밑에서 사람 냄새가 훅 끼쳤지요."
                 ]
             },
             {
@@ -812,9 +812,9 @@ const EN = {
                         "\"Come with me,\" said the old stag."
                     ],
                     right: [
-                        "The old stag walked into the deep part of the wood, and Bambi followed. There was no path at all.",
+                        "The old stag walked into the deep part of the wood, and Bambi followed. A narrow path ran through it.",
                         "At last the old stag stopped. \"Look closely,\" he said, low.",
-                        "On the ground at their feet were the footprints of a person."
+                        "The smell of a person came up from the ground at their feet."
                     ]
                 },
                 {

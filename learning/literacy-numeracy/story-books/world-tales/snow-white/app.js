@@ -75,7 +75,7 @@ const CHAPTERS = [
                 "left": [
                     "숲 한가운데 작은 집이 있었습니다. 문이 살짝 열려 있었지요.",
                     "공주가 조심스레 불렀습니다. \"계세요? 아무도 안 계세요?\"",
-                    "안은 아주 깔끔했습니다. 상에 접시가 일곱 놓였지요. 잔도 일곱, 의자도 일곱이었습니다."
+                    "안은 아주 깔끔했습니다. 상에는 작은 접시와 잔이 나란히 놓였지요. 걸상도 그만큼 있었습니다."
                 ],
                 "right": [
                     "벽 쪽에는 침대가 일곱이었습니다. 공주는 배가 몹시 고팠지요.",
@@ -608,7 +608,7 @@ const EN = {
                         "In the middle of the forest stood a little house. The door was open a crack.",
                         "Snow White called softly, \"Hello? Is anybody home?\"",
                         "Inside, everything was neat and tidy.",
-                        "On the table were seven plates. Seven cups, and seven chairs."
+                        "On the table small plates and cups stood in a row, with stools to match."
                     ],
                     right: [
                         "Along the wall were seven beds. Snow White was terribly hungry.",

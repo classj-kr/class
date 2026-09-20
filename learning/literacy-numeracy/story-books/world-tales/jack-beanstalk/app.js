@@ -266,7 +266,7 @@ const CHAPTERS = [
                     "잭이 땅에 내려서자마자 도끼를 받아 들었습니다. 그러고는 있는 힘껏 줄기를 내리쳤지요.",
                     "한 번, 두 번, 세 번.",
                     "우지끈.",
-                    "줄기가 쩍 갈라지더니 콩나무가 천천히 기울었습니다. 거인은 놀라 급히 구름 위로 기어 올라갔지요."
+                    "줄기가 쩍 갈라지더니 콩나무가 천천히 기울었습니다. 거인은 중심을 잃고 구름 속으로 떨어졌지요."
                 ],
                 "right": [
                     "그러고는 다시 내려오지 않았습니다. 콩나무는 밭 쪽으로 쿵 쓰러졌지요. 온 마을이 흔들릴 만큼 큰 소리가 났습니다.",
@@ -848,7 +848,7 @@ const EN = {
                     left: [
                         "Jack landed and grabbed the axe. He swung at the stem with all his strength.",
                         "Once. Twice. Three times. Crack!",
-                        "The stem split open. The beanstalk began to lean over, and the giant scrambled back up into the clouds."
+                        "The stem split open. The beanstalk began to lean over, and the giant lost his balance and fell away into the clouds."
                     ],
                     right: [
                         "He never came down again.",
@@ -1026,7 +1026,7 @@ const EN = {
             { word: 'swing at', meaning: '내리치다', sentence: 'He swung at the stem with all his strength.' },
             { word: 'split open', meaning: '쩍 갈라지다', sentence: 'The stem split open.' },
             { word: 'lean over', meaning: '기울다', sentence: 'The beanstalk began to lean over.' },
-            { word: 'scramble', meaning: '허둥지둥 기어오르다', sentence: 'The giant scrambled back up into the clouds.' }
+            { word: 'lose balance', meaning: '중심을 잃다', sentence: 'The giant lost his balance and fell away into the clouds.' }
         ],
         'end.webp': [
             { word: 'gather', meaning: '모으다', sentence: 'It was gathered into the shape we know.' },

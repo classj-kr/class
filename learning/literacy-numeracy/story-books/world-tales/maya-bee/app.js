@@ -234,7 +234,7 @@ const CHAPTERS = [
                 "left": [
                     "며칠이 지났습니다. 마야는 낡은 나무 곁을 지나고 있었지요. 나무에 커다란 구멍이 뚫려 있었습니다.",
                     "그 안에서 낮은 소리가 들렸지요. 마야는 나무껍질에 몸을 붙였습니다. 안을 들여다보니 말벌들이 모여 있었지요.",
-                    "몸집이 꿀벌의 몇 배나 되었습니다."
+                    "턱이 억세고 허리가 잘록한 벌들이었지요."
                 ],
                 "right": [
                     "무언가를 의논하는 중이었지요.",
@@ -864,7 +864,7 @@ const EN = {
                         "A few days went by. Maya was passing an old tree.",
                         "There was a great hole in the trunk, and low voices came out of it.",
                         "Maya pressed herself against the bark and looked in.",
-                        "Hornets were gathered inside! They were several times the size of a honeybee."
+                        "Hornets were gathered inside! They had hard jaws and narrow waists."
                     ],
                     right: [
                         "They were making a plan together.",

@@ -55,13 +55,13 @@ const CHAPTERS = [
                 "left": [
                     "알라딘은 두리번거리며 램프를 찾았습니다. 구석에 먼지 쌓인 낡은 램프 하나가 놓여 있었지요. 알라딘은 그것을 품에 넣었습니다.",
                     "돌아 나오는 길에 반짝이는 보석이 자꾸 눈에 밟혔지요. 알라딘은 참지 못하고 몇 개를 주머니에 슬쩍 넣었습니다.",
-                    "마침내 계단 꼭대기에 다다랐지만 마지막 한 칸이 너무 높았지요. \"삼촌, 손 좀 잡아 주세요!\""
+                    "동굴 바닥에서 올려다보니 입구가 아득히 높았지요. \"삼촌, 손 좀 잡아 주세요!\""
                 ],
                 "right": [
                     "\"램프부터 이리 내라!\" 아저씨가 손을 내밀며 재촉했습니다.",
                     "\"올라가서 드릴게요. 먼저 좀 꺼내 주세요.\"",
                     "그러자 아저씨의 얼굴이 무섭게 일그러졌지요. 아저씨가 원한 것은 알라딘이 아니라 램프뿐이었거든요.",
-                    "\"이 괘씸한 놈!\" 아저씨가 가루를 뿌리자 땅이 쿵 하고 닫혀 버렸습니다."
+                    "\"이 괘씸한 놈!\" 아저씨가 돌 뚜껑을 힘껏 밀자 쿵 하고 닫혀 버렸습니다."
                 ]
             }
         ]
@@ -109,7 +109,7 @@ const CHAPTERS = [
                 "emoji": "👸",
                 "left": [
                     "그날부터 알라딘네는 더 이상 굶지 않았습니다. 램프의 지니가 필요한 것을 무엇이든 가져다주었거든요.",
-                    "그러던 어느 날, 병사들이 거리를 돌며 외쳤습니다. \"공주님이 지나가신다! 모두 문을 닫고 집 안으로 들어가라!\"",
+                    "그러던 어느 날, 병사들이 거리를 돌며 외쳤습니다. \"공주님이 지나가신다! 모두 길을 비켜라!\"",
                     "알라딘은 공주님 얼굴이 몹시 궁금했지요. 그래서 몰래 담 뒤에 숨어 기다렸습니다."
                 ],
                 "right": [
@@ -608,13 +608,13 @@ const EN = {
                     left: [
                         "Aladdin looked about for the lamp. He found it in a corner and put it in his coat.",
                         "On the way back, he could not help it. He slipped a few jewels into his pockets.",
-                        "At the top of the steps, the last step was too high. \"Uncle, give me your hand!\""
+                        "From the cave floor the mouth of the cave looked far above him. \"Uncle, give me your hand!\""
                     ],
                     right: [
                         "\"Hand up the lamp first!\" said the man, holding out his hand.",
                         "\"Pull me out first,\" said Aladdin. \"Then I'll give it to you.\"",
                         "The man's face twisted. He wanted the lamp, not Aladdin.",
-                        "\"You wretched boy!\" He threw his powder, and the ground slammed shut. Aladdin was sealed in."
+                        "\"You wretched boy!\" He shoved the stone slab back, and the ground slammed shut. Aladdin was sealed in."
                     ]
                 }
             ]
@@ -664,7 +664,7 @@ const EN = {
                     emoji: '👸',
                     left: [
                         "From that day there was plenty in the house, for the genie brought whatever they needed.",
-                        "Then one day soldiers marched through the streets, shouting, \"The princess is passing! Shut your doors and go inside!\"",
+                        "Then one day soldiers marched through the streets, shouting, \"The princess is passing! Stand back, all of you!\"",
                         "But Aladdin was far too curious to go in. He hid behind a wall to see her face."
                     ],
                     right: [

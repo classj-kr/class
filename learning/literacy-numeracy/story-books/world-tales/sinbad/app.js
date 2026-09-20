@@ -88,7 +88,7 @@ const CHAPTERS = [
                 "emoji": "🥚",
                 "left": [
                     "그때 하늘이 갑자기 어두워졌습니다.",
-                    "해가 무언가에 가려진 것이었지요. 고개를 들자 커다란 그림자가 내려오고 있었습니다.",
+                    "달이 무언가에 가려진 것이었지요. 고개를 들자 커다란 그림자가 내려오고 있었습니다.",
                     "날개가 구름처럼 큰 새였습니다. 옛이야기에서 듣던 로크라는 새가 틀림없었지요. 신드바드는 알 뒤에 숨었습니다."
                 ],
                 "right": [
@@ -672,7 +672,7 @@ const EN = {
                     emoji: '🥚',
                     left: [
                         "And then the sky went dark.",
-                        "Something had come in front of the sun.",
+                        "Something had come in front of the moon.",
                         "He looked up and an enormous shadow was coming down.",
                         "It was a bird with wings as big as clouds.",
                         "It could only be the roc he had heard of in old stories.",

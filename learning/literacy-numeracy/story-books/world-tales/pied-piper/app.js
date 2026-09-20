@@ -142,7 +142,7 @@ const CHAPTERS = [
                 "art": "05-children.webp",
                 "emoji": "🚸",
                 "left": [
-                    "이튿날 아침이었습니다. 어른들은 모두 교회에 갔지요. 골목에는 아이들만 남았습니다.",
+                    "이튿날 아침이었습니다. 어른들은 창가에서 내다보기만 했지요. 골목에는 아이들이 쏟아져 나왔습니다.",
                     "다들 공놀이를 하고 있었지요. 공이 담벼락에 통통 튀었습니다.",
                     "그때 광장 쪽에서 소리가 났습니다. 어제 그 피리였지요.",
                     "그런데 소리가 어제와 달랐습니다."
@@ -699,7 +699,7 @@ const EN = {
                     art: '05-children.webp',
                     emoji: '🧒',
                     left: [
-                        "It was the next morning. All the grown-ups had gone to church,",
+                        "It was the next morning. The grown-ups only watched from their windows,",
                         "and only the children were left in the streets,",
                         "playing ball. The ball went bouncing off the walls.",
                         "Then a sound came from the square. It was yesterday's pipe,",

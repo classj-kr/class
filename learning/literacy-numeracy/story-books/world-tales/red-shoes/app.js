@@ -47,7 +47,7 @@ const CHAPTERS = [
                 ],
                 "right": [
                     "부인이 카렌의 손을 잡았지요. \"우리 집에서 함께 살자꾸나.\"",
-                    "카렌은 부인을 따라갔습니다. 부인의 집은 따뜻하고 깨끗했지요. 난롯불이 늘 타고 있었습니다.",
+                    "카렌은 다 해진 신을 벗어 손에 들고 부인을 따라갔습니다. 부인의 집은 따뜻하고 깨끗했지요. 난롯불이 늘 타고 있었습니다.",
                     "부인은 카렌에게 좋은 옷을 입히고 글과 바느질을 가르쳤지요."
                 ]
             },
@@ -603,7 +603,7 @@ const EN = {
                     ],
                     right: [
                         "The lady took Karen's hand. \"Then come and live with me.\"",
-                        "So Karen went with her. The lady's house was warm and clean, and the fire was always burning.",
+                        "Karen slipped off the worn-out shoes, carried them in her hand and went with her. The lady's house was warm and clean, and the fire was always burning.",
                         "She gave Karen good clothes and taught her her letters and how to sew."
                     ]
                 },

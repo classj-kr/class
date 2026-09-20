@@ -17,7 +17,7 @@ const FABLES = [
                     "그런데 거북이는 화도 내지 않았지요. 천천히 고개를 들고 토끼를 바라봤습니다.",
                     "눈빛이 아주 차분했지요.",
                     "\"그럼 우리 경주할까?\"",
-                    "\"저 산꼭대기까지 말이야.\""
+                    "\"저 숲길 끝까지 말이야.\""
                 ]
             },
             {
@@ -45,7 +45,7 @@ const FABLES = [
                 ],
                 "right": [
                     "그러고는 쿨쿨 잠이 들었지요. 그 틈에 거북이는 조금도 쉬지 않고 걷고 또 걸었습니다.",
-                    "눈을 뜬 토끼가 산꼭대기를 올려다봤습니다. 거북이가 벌써 깃발 옆에 서 있었지요. 동물들이 손뼉을 치며 환호했습니다.",
+                    "눈을 뜬 토끼가 길 끝을 바라봤습니다. 거북이가 벌써 결승 띠 앞에 서 있었지요. 동물들이 손뼉을 치며 환호했습니다.",
                     "\"이겼다, 이겼다! 만세!\""
                 ]
             }
@@ -963,7 +963,7 @@ const EN = {
                         "But the tortoise did not lose his temper. He lifted his head slowly and looked at the hare.",
                         "His eyes were perfectly steady.",
                         "\"Shall we race, then?\"",
-                        "\"To the top of that hill.\""
+                        "\"To the end of that forest path.\""
                     ]
                 },
                 {
@@ -991,7 +991,7 @@ const EN = {
                     ],
                     right: [
                         "And there he fell fast asleep. Meanwhile the tortoise walked on and on without stopping once.",
-                        "When the hare opened his eyes he looked up at the top of the hill. The tortoise was already standing beside the flag, and the animals were clapping and cheering.",
+                        "When the hare opened his eyes he looked down the path. The tortoise was already standing at the red ribbon, and the animals were clapping and cheering.",
                         "\"He's done it! Hurrah!\""
                     ]
                 }
