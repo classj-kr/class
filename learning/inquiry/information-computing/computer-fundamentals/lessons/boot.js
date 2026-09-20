@@ -7,7 +7,12 @@
     const version = (current.src.split("?v=")[1] || "");
     const base = current.src.replace(/[^/]*$/, "");
     const requested = new URLSearchParams(location.search).get("lesson");
-    const id = /^[a-j][0-9]{2}$/.test(requested || "") ? requested : "a01";
+    const valid = ["a01","a02","a03","a04","a05","b01","b02","b03","c01","c02","c03","c04","d01","d02","d03","e01","e02","e03","e04","e05","f01","f02","f03","g01","g02","g03","h01","h02","h03","h04","h05","i01","i02","j01","j02","j03"];
+    const id = valid.includes(requested) ? requested : "a01";
+    if (id === "a01") {
+        location.replace("../textbook/a01.html" + location.hash);
+        return;
+    }
 
     const withLab = ["a04","a05","b02","b03","c01","c02","c03","c04","d01","d02","d03","e01","e02","e03","e04","e05","f01","f02","f03","g01","g02","g03","h01","h02","h03","h04","h05","i01","i02","j01","j02","j03"];
     const withReview = ["a02","a03","a05","b01","b02","b03","c01","c02","c03","c04","d01","d02","d03","e01","e02","e03","e04","e05","f01","f03","g01","g02","g03","h01","h02","h03","h04","h05","i01","i02","j01","j02","j03"];
@@ -16,7 +21,7 @@
     const tag = (file) => base + file + (version ? "?v=" + version : "");
 
     // 공용 꾸밈이 먼저, 차시 전용 꾸밈이 뒤에 온다.
-    for (const sheet of ["shell.css", "labs/" + id + ".css"]) {
+    for (const sheet of ["shell.css", "labs/" + id + ".css", "../textbook/edition.css"]) {
         const link = document.createElement("link");
         link.rel = "stylesheet";
         link.href = tag(sheet);
@@ -28,7 +33,8 @@
     if (detailed.includes(id)) files.push("detail/" + id + ".js");
     else files.push("foundation-compact.js", letterFile[id[0]] + ".js");
     if (withReview.includes(id)) files.push("reviews/" + id + ".js");
-    files.push("shell.js");
+    const editionGroup = {a:"abc",b:"abc",c:"abc",d:"de",e:"de",f:"fg",g:"fg",h:"h",i:"ij",j:"ij"}[id[0]];
+    files.push("shell.js", "../textbook/edition-" + editionGroup + ".js", "../textbook/edition.js");
 
     // 화면 뼈대를 다 읽은 뒤에 넣는다. 넣은 차례대로 실행된다.
     const load = () => {

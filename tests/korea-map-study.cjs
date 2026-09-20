@@ -42,6 +42,8 @@ const server=http.createServer((req,res)=>{
     const select=async lesson=>{
       await page.evaluate(l=>{document.querySelector(`[data-theme="${l.topic}"]`).click();const el=document.querySelector('#lessonSelect');el.value=l.id;el.dispatchEvent(new Event('change',{bubbles:true}));},lesson);
       assert.equal(await page.$eval('#lessonSelect',el=>el.value),lesson.id);
+      assert.ok(await page.$eval('.practice-launch',el=>el.hidden));
+      assert.equal(await page.$('#startMixed'),null);
     };
     const activeQuestion=()=>page.evaluate(()=>{
       const prompt=document.querySelector('#questionTitle').innerHTML;
@@ -111,7 +113,16 @@ const server=http.createServer((req,res)=>{
     await page.screenshot({path:path.join(output,'mobile-question.png')});
     assert.ok(await page.$eval('#practiceDialog',el=>el.scrollWidth<=el.clientWidth));
     await page.evaluate(()=>document.querySelector('#closePractice').click());
-    for(const topic of ['heritage','travel']){await page.evaluate(t=>document.querySelector(`[data-theme="${t}"]`).click(),topic);assert.ok(await page.$eval('#studyWorkspace',el=>el.hidden));}
+    for(const topic of ['heritage','travel']){
+      await page.evaluate(t=>document.querySelector(`[data-theme="${t}"]`).click(),topic);
+      assert.ok(await page.$eval('#studyWorkspace',el=>el.hidden));
+      assert.equal(await page.$eval('.practice-launch',el=>el.hidden),topic==='travel');
+      if(topic==='heritage'){
+        await page.$eval('#startPractice',el=>el.click());
+        assert.ok(await page.$eval('#practiceDialog',el=>el.open));
+        await page.$eval('#practiceDialog',el=>el.close());
+      }
+    }
     assert.deepEqual(errors,[]);
     console.log('Study passed: 28 lessons / 195 questions; all existing questions mapped; all visual questions render and reveal; first-answer records persist; graph/map/mixed sessions complete; mobile and exploration tabs work.');
   } finally {if(browser)await browser.close();await new Promise(r=>server.close(r));}

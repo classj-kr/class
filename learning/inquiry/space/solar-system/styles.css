@@ -1129,91 +1129,59 @@ body {
     min-height: 300px;
 }
 
+/* Give the controls only the width they need; planet buttons use the remaining space. */
 #tab-sim .sim-controls-panel {
     flex: 0 0 auto;
     display: grid;
-    grid-template-columns: 82px minmax(540px, 1fr) minmax(240px, 0.9fr);
+    grid-template-columns: 70px max-content minmax(0,1fr);
     grid-template-areas: "time controls quick";
     align-items: center;
-    column-gap: 12px;
+    gap: 8px 12px;
     padding: 6px 10px;
-    overflow: hidden;
+    overflow: visible;
 }
-
-#tab-sim .sim-time-display {
-    grid-area: time;
-}
-
-#tab-sim .sim-time-label {
-    font-size: 9px;
-}
-
-#tab-sim .sim-time-val {
-    margin-top: 0;
-    font-size: 17px;
-}
-
+#tab-sim .sim-time-display { grid-area: time; }
+#tab-sim .sim-time-label { font-size: 9px; }
+#tab-sim .sim-time-val { margin-top: 0; font-size: 17px; }
 #tab-sim .control-rows {
     grid-area: controls;
     display: grid;
-    grid-template-columns: minmax(210px, 1fr) auto auto;
+    grid-template-columns: 220px auto auto;
     align-items: center;
     gap: 10px;
-    width: 100%;
+    width: auto;
     max-width: none;
+    min-width: 0;
 }
-
-#tab-sim .ctrl-row {
-    gap: 8px;
-}
-
-#tab-sim .ctrl-label {
-    min-width: auto;
-    font-size: 12px;
-    white-space: nowrap;
-}
-
-#tab-sim .slider-group {
-    gap: 7px;
-}
-
+#tab-sim .ctrl-row { gap: 8px; min-width: 0; }
+#tab-sim .ctrl-label { min-width: auto; font-size: 12px; white-space: nowrap; }
+#tab-sim .slider-group { gap: 7px; min-width: 0; }
+#tab-sim .sim-slider { min-width: 0; width: 100%; }
+#tab-sim .slider-val-badge { flex-shrink: 0; font-variant-numeric: tabular-nums; }
 #tab-sim .planet-quick-bar {
     grid-area: quick;
-    flex-wrap: nowrap !important;
+    flex-wrap: wrap !important;
     justify-content: flex-start !important;
     gap: 6px !important;
     min-width: 0;
     padding: 0 !important;
     border-top: 0 !important;
+    overflow: visible;
 }
-
-#tab-sim .planet-chip {
-    min-height: 44px;
-}
-
-@media (max-width: 1050px) {
+#tab-sim .planet-chip { min-height: 40px; }
+@media(max-width: 1280px) {
     #tab-sim .sim-controls-panel {
-        grid-template-columns: 76px minmax(470px, 1fr) minmax(160px, 0.7fr);
-        column-gap: 8px;
+        grid-template-columns: 70px minmax(0,1fr);
+        grid-template-areas: "time controls" "quick quick";
     }
-
-    #tab-sim .control-rows {
-        grid-template-columns: minmax(170px, 1fr) auto auto;
-        gap: 8px;
-    }
+    #tab-sim .control-rows { justify-content: start; }
 }
-
-@media (max-width: 760px) {
-    #tab-sim .sim-controls-panel {
-        grid-template-columns: 72px minmax(455px, 1fr) minmax(150px, 0.6fr);
-        grid-template-areas: "time controls quick";
-        overflow-x: auto;
-        padding: 5px 8px;
-    }
-
-    #tab-sim .control-rows {
-        grid-template-columns: minmax(160px, 1fr) auto auto;
-    }
+@media(max-width: 760px) {
+    #tab-sim .sim-controls-panel { grid-template-columns: 62px minmax(0,1fr); gap: 8px; padding: 6px 8px; }
+    #tab-sim .control-rows { display: flex; flex-flow: row wrap; gap: 10px; }
+    #tab-sim .ctrl-row:first-child { flex: 1 1 100%; max-width: 300px; }
+    #tab-sim .ctrl-row { justify-content: flex-start; }
+    #tab-sim .planet-chip { min-height: 40px; padding: 6px 10px; }
 }
 /* Compact UFO room and rebalanced planet modal */
 .modal-feature-box {

@@ -177,7 +177,6 @@
   function bindControls() {
     $$(".theme-tab").forEach((button) => button.addEventListener("click", () => renderTheme(button.dataset.theme)));
     $("#startPractice").addEventListener("click", () => startPractice("theme"));
-    $("#startMixed").addEventListener("click", () => startPractice("mixed"));
     $("#showHint").addEventListener("click", showQuestionHint);
     $("#nextQuestion").addEventListener("click", nextQuestion);
     $("#closePractice").addEventListener("click", () => $("#practiceDialog").close());
@@ -342,10 +341,8 @@
     $("#conceptPoints").replaceChildren(...theme.points.map((text) => element("div", "concept-point", text)));
     $("#conceptPoints").hidden = !theme.points.length;
     $("#themeExtra").replaceChildren(...(theme.panel ? [theme.panel(themeApi)] : []));
-    $("#startMixed").hidden = !!theme.buildQuestions;
     // 행정구역 탭은 시·도 이름이 늘 보이므로 지역명 단추가 필요 없다.
     $("#labelToggle").hidden = !!theme.provinceNames;
-    $(".practice-launch").hidden = theme.practice === false;
     clearFeatureFocus(false);
     stopProfile();
     mainMap.closePopup();
@@ -947,9 +944,8 @@
   }
 
   // ───────────── 문제 풀이 ─────────────
-  // 유물·유적처럼 문제를 그때그때 만드는 주제는 buildQuestions로 받는다. 섞어 풀기는 지리 문제은행만 섞는다.
+  // 유물·유적처럼 문제를 그때그때 만드는 주제는 buildQuestions로 받는다.
   function poolFor(mode) {
-    if (mode === "mixed") return questions;
     if (mode === "review") {
       const items = readProgress().items;
       return allQuestions().filter((question) => items[question.id] && items[question.id].wrong);
@@ -964,11 +960,15 @@
   }
 
   function updatePracticeButton() {
+    const theme = themes[currentTheme] || {};
+    const hasLessons = (dataset.lessons || []).some((lesson) => lesson.topic === currentTheme);
+    // 개념 학습은 개념별 연습만 제공한다. 별도 개념이 없는 유물 등의 연습은 유지한다.
+    $(".practice-launch").hidden = theme.practice === false || hasLessons;
+    if ($(".practice-launch").hidden) return;
     const pool = poolFor("theme");
     const label = themes[currentTheme]?.label || "현재 주제";
     $("#startPractice").textContent = `${label} 문제 ${pool.length}개 풀기`;
     $("#startPractice").disabled = pool.length === 0;
-    $("#startMixed").textContent = `지리 주제 섞어 풀기 (${questions.length}문제)`;
   }
 
   // 한 판은 그 주제의 문제 전부다. 수를 미리 자르지 않는다. 중간에 닫아도 문제별 기록은 남는다.

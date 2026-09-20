@@ -18,25 +18,38 @@
         }
         return figure;
     }
+    // Point size is fixed. Light intensity and surrounding bloom show apparent brightness.
+    function lightStyle(relativeFlux){
+        const gain=Math.pow(Math.min(1,Math.max(0,relativeFlux)),1/2.2);
+        return '--sp-light:'+gain.toFixed(4)+';--sp-bloom:'+Math.pow(gain,1.5).toFixed(4);
+    }
+    function starPoint(name,flux,key=''){
+        return '<div class="sp-sky-star" '+(key?'data-sp-star="'+key+'"':'')+' data-flux="'+flux+'" style="'+lightStyle(flux)+'"><div class="sp-star-stage" aria-hidden="true"><i class="sp-star-halo"></i><i class="sp-star-rays"></i><i class="sp-star-core"></i></div><span class="sp-star-name">'+name+'</span></div>';
+    }
+    function sky(stars,extra=''){
+        return '<div class="sp-night-sky '+extra+'" role="img">'+stars.join('')+'</div>';
+    }
+    function setLight(node,flux){node.style.cssText=lightStyle(flux);node.dataset.flux=flux;}
     function mount(pane){
         const root=document.createElement('div');root.className='star-properties';
         root.innerHTML=`<div class="sp-grid">
         <section><h2>거리와 밝기</h2><div data-sp-distance></div>
         <div class="sp-controls"><label>거리 <input type="range" min="1" max="4" step="1" value="1" data-sp-range><output data-sp-d>1배</output></label><label>광도 <select data-sp-power><option value="1">1배</option><option value="4">4배</option></select></label></div>
-        <div class="sp-output" role="status" data-sp-brightness></div><div class="sp-meter" aria-hidden="true"><i data-sp-meter></i></div>
+        ${sky([starPoint('기준 별',.25,'reference'),starPoint('조절한 별',.25,'distance')],'sp-distance-sky')}<div class="sp-output" role="status" data-sp-brightness></div><div class="sp-meter" aria-hidden="true"><i data-sp-meter></i></div>
         <p><b>겉보기 밝기 ∝ 광도 ÷ 거리²</b></p><p>같은 별이 2배 멀어지면 1/4배, 3배 멀어지면 1/9배 밝게 보인다. 밝게 보인다는 사실만으로 가까운 별이라고 판단할 수 없다.</p><small>광도 1배·거리 1배를 기준으로 비교 · 성간 흡수는 제외</small></section>
-        <section><h2>등급은 작을수록 밝다</h2><div class="sp-magnitude-scale" aria-label="밝은 쪽부터 마이너스 1등급, 0등급, 1등급, 2등급, 3등급, 4등급"><span>−1</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span></div><div class="sp-temp-direction"><span>더 밝음</span><span>→</span><span>더 어두움</span></div>
+        <section><h2>등급은 작을수록 밝다</h2>${sky([-1,0,1,2,3,4].map(m=>starPoint((m===-1?'−1':m)+'등급',100**(-(m+1)/5))),'sp-magnitude-sky')}<div class="sp-temp-direction"><span>더 밝음</span><span>→</span><span>더 어두움</span></div>
         <label class="sp-gap-control">등급 차이 <select data-sp-gap><option value="1">1등급</option><option value="2">2등급</option><option value="5" selected>5등급</option></select></label>
-        <div class="sp-output" role="status" data-sp-ratio></div><div class="sp-ratio-bars" aria-hidden="true"><span>등급이 작은 별</span><div><i style="width:100%"></i></div><span>등급이 큰 별</span><div><i data-sp-dim-bar></i></div></div><p><b>1등급 차이 ≈ 2.512배 · 5등급 차이 = 100배</b></p><p>1등급 별은 6등급 별보다 100배 밝다. 등급 숫자를 나눈 6배가 아니다. 음수 등급도 있다.</p></section>
-        <section><h2>겉보기 등급과 절대 등급</h2>${comparisonTable()}<div class="sp-view-modes" role="group" aria-label="밝기 비교 기준"><button type="button" data-sp-compare="apparent" aria-pressed="true">지구에서 보기</button><button type="button" data-sp-compare="absolute" aria-pressed="false">모두 10 pc에 놓기</button></div><div class="sp-output" role="status" data-sp-ranking></div>
+        ${sky([starPoint('1등급',1,'brighter'),starPoint('6등급',.01,'dimmer')],'sp-gap-sky')}<small class="sp-light-note">점 크기는 고정 · 빛 번짐으로 밝기 비교</small><div class="sp-output" role="status" data-sp-ratio></div><div class="sp-ratio-bars" aria-hidden="true"><span>등급이 작은 별</span><div><i style="width:100%"></i></div><span>등급이 큰 별</span><div><i data-sp-dim-bar></i></div></div><p><b>1등급 차이 ≈ 2.512배 · 5등급 차이 = 100배</b></p><p>1등급 별은 6등급 별보다 100배 밝다. 등급 숫자를 나눈 6배가 아니다. 음수 등급도 있다.</p></section>
+        <section><h2>겉보기 등급과 절대 등급</h2>${comparisonTable()}<div class="sp-view-modes" role="group" aria-label="밝기 비교 기준"><button type="button" data-sp-compare="apparent" aria-pressed="true">지구에서 보기</button><button type="button" data-sp-compare="absolute" aria-pressed="false">모두 10 pc에 놓기</button></div>${sky([starPoint('A',100**(-2/5),'A'),starPoint('B',.01,'B'),starPoint('C',100**(-3/5),'C')],'sp-ranking-sky')}<div class="sp-output" role="status" data-sp-ranking></div>
         <p><b>겉보기 등급 m</b>: 지금 보이는 밝기.<br><b>절대 등급 M</b>: 10 pc에 놓았다고 가정한 밝기.</p><div class="sp-distance-rule"><span>m &lt; M<br><b>10 pc보다 가까움</b></span><span>m = M<br><b>10 pc</b></span><span>m &gt; M<br><b>10 pc보다 멂</b></span></div><small>같은 파장대·성간 흡수를 무시한 비교</small></section>
         <section><h2>별의 색과 표면 온도</h2>${colors()}<p><b>청백색 별이 붉은 별보다 표면 온도가 높다.</b></p><p>색은 표면 온도를 판단하는 단서다. 색만 보고 거리나 전체 광도를 단정할 수는 없다.</p><div class="sp-distinction"><b>무엇을 비교하는지 먼저 확인</b><p>보이는 밝기 → 겉보기 등급<br>같은 거리에 놓은 밝기 → 절대 등급<br>표면 온도 → 별의 색</p></div></section>
         </div><a class="sp-practice" href="#quiz">비교·계산 문제 풀기 →</a>`;
         pane.replaceChildren(root);
+        root.querySelector('.sp-magnitude-sky').setAttribute('aria-label','같은 크기의 별빛 여섯 개. 마이너스 1등급부터 4등급까지 오른쪽으로 갈수록 희미해진다.');
         const distance=root.querySelector('[data-sp-range]'),power=root.querySelector('[data-sp-power]'),gap=root.querySelector('[data-sp-gap]');
-        function updateDistance(){const d=Number(distance.value),l=Number(power.value),brightness=l/d**2;root.querySelector('[data-sp-distance]').innerHTML=distanceFigure(d,l);root.querySelector('[data-sp-d]').textContent=d+'배';distance.setAttribute('aria-valuetext',d+'배');root.querySelector('[data-sp-brightness]').textContent=brightness===1?'기준과 같은 밝기':'기준의 '+brightness.toLocaleString('ko-KR',{maximumFractionDigits:3})+'배 밝기';root.querySelector('[data-sp-meter]').style.width=brightness/4*100+'%';root.dataset.brightness=brightness;}
-        function updateGap(){const n=Number(gap.value);root.querySelector('[data-sp-dim-bar]').style.width=(100/(100**(n/5)))+'%';root.querySelector('[data-sp-ratio]').textContent='등급이 작은 별이 '+(n===5?'100':(100**(n/5)).toFixed(3))+'배 밝음';}
-        function compare(mode){root.querySelectorAll('[data-sp-compare]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.spCompare===mode)));root.querySelector('[data-sp-ranking]').textContent=mode==='apparent'?'지구에서는 A → C → B 순으로 밝음':'10 pc에서는 B → C → A 순으로 밝음';}
+        function updateDistance(){const d=Number(distance.value),l=Number(power.value),brightness=l/d**2;root.querySelector('[data-sp-distance]').innerHTML=distanceFigure(d,l);root.querySelector('[data-sp-d]').textContent=d+'배';distance.setAttribute('aria-valuetext',d+'배');root.querySelector('[data-sp-brightness]').textContent=brightness===1?'기준과 같은 밝기':'기준의 '+brightness.toLocaleString('ko-KR',{maximumFractionDigits:3})+'배 밝기';root.querySelector('[data-sp-meter]').style.width=brightness/4*100+'%';root.dataset.brightness=brightness;setLight(root.querySelector('[data-sp-star="distance"]'),brightness/4);root.querySelector('.sp-distance-sky').setAttribute('aria-label','같은 점 크기의 기준 별과 조절한 별. 조절한 별의 밝기는 기준의 '+brightness.toLocaleString('ko-KR',{maximumFractionDigits:3})+'배');}
+        function updateGap(){const n=Number(gap.value),dim=root.querySelector('[data-sp-star="dimmer"]');setLight(dim,100**(-n/5));dim.querySelector('.sp-star-name').textContent=(1+n)+'등급';root.querySelector('.sp-gap-sky').setAttribute('aria-label','1등급 별과 '+(1+n)+'등급 별의 빛 비교. 1등급 별이 '+(100**(n/5)).toLocaleString('ko-KR',{maximumFractionDigits:3})+'배 밝음');root.querySelector('[data-sp-dim-bar]').style.width=(100/(100**(n/5)))+'%';root.querySelector('[data-sp-ratio]').textContent='등급이 작은 별이 '+(n===5?'100':(100**(n/5)).toFixed(3))+'배 밝음';}
+        function compare(mode){const magnitudes=mode==='apparent'?[1,4,2]:[4,-1,2];['A','B','C'].forEach((name,i)=>setLight(root.querySelector('[data-sp-star="'+name+'"]'),100**(-(magnitudes[i]+1)/5)));root.querySelector('.sp-ranking-sky').setAttribute('aria-label',mode==='apparent'?'지구에서는 A, C, B 순으로 밝은 별빛':'모두 10 pc에 놓으면 B, C, A 순으로 밝은 별빛');root.querySelectorAll('[data-sp-compare]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.spCompare===mode)));root.querySelector('[data-sp-ranking]').textContent=mode==='apparent'?'지구에서는 A → C → B 순으로 밝음':'10 pc에서는 B → C → A 순으로 밝음';}
         distance.addEventListener('input',updateDistance);power.addEventListener('change',updateDistance);gap.addEventListener('change',updateGap);root.querySelectorAll('[data-sp-compare]').forEach(b=>b.addEventListener('click',()=>compare(b.dataset.spCompare)));updateDistance();updateGap();compare('apparent');
     }
     window.StarProperties={mount,questionFigure};

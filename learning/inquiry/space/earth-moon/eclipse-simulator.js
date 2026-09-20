@@ -44,6 +44,16 @@
             <p class="ecl-note">크기·거리·이동은 원리를 보여 주기 위한 모형입니다. 본그림자·반그림자는 공간의 영역이며, 그림은 그 단면입니다.</p>
             <details class="ecl-more"><summary>매달 식이 생기지 않는 이유</summary><p>달의 공전 궤도면은 지구의 공전 궤도면에 약 5° 기울어져 있습니다. 삭이나 보름이어도 달이 궤도면의 교점 부근에 있지 않으면 그림자가 빗나갑니다. 월식 모형에서 달을 그림자 밖으로 옮겨 비교하세요. 위치 조절값은 실제 궤도 경사각이 아닙니다.</p></details>
             <details class="ecl-more"><summary>금환일식과 반영월식</summary><p>달이 작게 보이면 태양을 전부 가리지 못해 금환일식이 일어날 수 있습니다. 이 일식 모형은 본그림자가 지구에 닿는 경우로 고정했습니다. 달이 지구의 반그림자만 통과하는 반영월식은 달이 조금 어두워지는 현상으로, 부분월식과 구분합니다.</p></details>`;
+        // Keep supporting information beside the scene, so it does not consume its height.
+        const observationPanel=pane.querySelector('.ecl-observation');
+        observationPanel.append(pane.querySelector('.ecl-legend'));
+        const modelNote=document.createElement('details');modelNote.className='ecl-more';
+        const noteSummary=document.createElement('summary');noteSummary.textContent='모형 안내';
+        modelNote.append(noteSummary,pane.querySelector('.ecl-note'));
+        observationPanel.append(modelNote);
+        pane.querySelectorAll(':scope > .ecl-more').forEach(detail=>observationPanel.append(detail));
+        const content=document.createElement('div');content.className='ecl-content';
+        Array.from(pane.children).forEach(child=>content.append(child));pane.append(content);
         let mode = 'solar';
         const slider = pane.querySelector('#eclPosition');
         const diagram = pane.querySelector('[data-ecl-diagram]');
@@ -123,7 +133,7 @@
             pane.querySelectorAll('[data-ecl-mode]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.eclMode===mode)));
             pane.querySelector('[data-ecl-order]').textContent=mode==='solar'?'일식 · 삭 무렵':'월식 · 보름 무렵';
             pane.querySelector('[data-ecl-view-title]').textContent=mode==='solar'?'관측자에게 보이는 태양':'지구에서 보이는 달';
-            pane.querySelector('[data-ecl-position-label]').textContent=mode==='solar'?'지구의 관측 위치':'달의 위치 · 그림자 중심에서 이동';
+            pane.querySelector('[data-ecl-position-label]').textContent=mode==='solar'?'관측 위치':'달 위치';
             pane.querySelector('[data-ecl-presets]').innerHTML=presetValues[mode].map(([label,value])=>`<button type="button" data-ecl-position="${value}">${label}</button>`).join('');
             draw();
         }

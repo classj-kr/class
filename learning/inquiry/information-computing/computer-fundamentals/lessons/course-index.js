@@ -8,7 +8,12 @@
     const completed = new Set();
     lessons.forEach((item) => {
         try {
-            if (JSON.parse(localStorage.getItem(`computer-literacy:${item.id}`) || "null")?.completed) completed.add(item.id);
+            const old = JSON.parse(localStorage.getItem('computer-literacy:' + item.id) || "null");
+            const edition = JSON.parse(localStorage.getItem('classj:textbook:' + item.id + ':v1') || "null");
+            const done = item.id === "a01"
+                ? edition?.photo && edition?.transfer && edition?.answers?.length === 4 && edition.answers.every(a => a.solved)
+                : edition?.completed;
+            if (done || old?.completed) completed.add(item.id);
         } catch (_) { /* 망가진 기록은 못 본 것으로 한다. */ }
     });
 

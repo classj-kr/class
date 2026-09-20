@@ -1,0 +1,5666 @@
+[
+  {
+    "id": "a02",
+    "title": "2차시. 하드웨어와 소프트웨어는 어떻게 다를까?",
+    "layouts": [
+      {
+        "width": 1440,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 390,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      }
+    ],
+    "controls": [
+      {
+        "tag": "BUTTON",
+        "text": "처음 상태 Reset",
+        "id": "",
+        "attrs": "data-a02-reset=",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "화면에 파란 원 보기Show a Blue Circle",
+        "id": "",
+        "attrs": "data-a02-task=display",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "스피커로 ‘도’ 듣기Hear a C Note",
+        "id": "",
+        "attrs": "data-a02-task=speaker",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "문서 한 장 인쇄하기Print One Page",
+        "id": "",
+        "attrs": "data-a02-task=printer",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "프로그램 상태그림 앱 실행 중 · On",
+        "id": "",
+        "attrs": "data-a02-presence=software",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "장치 상태디스플레이 연결됨 · Connected",
+        "id": "",
+        "attrs": "data-a02-presence=hardware",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "함께 실행 Run Together",
+        "id": "",
+        "attrs": "data-a02-run=",
+        "type": "button",
+        "value": "",
+        "visible": true
+      }
+    ],
+    "labText": "하드웨어·소프트웨어 모형\nHardware–Software Model\n할 일을 고르고, 프로그램과 장치가 각각 무엇을 하는지 확인하세요.\n처음 상태\nReset\n명령과 장치의 협업\nSoftware + Hardware\n1\n만들 결과를 고르세요.Choose a Result\n\n결과를 고르면 필요한 프로그램과 물리 장치가 한 쌍으로 나타납니다.\n\n화면에 파란 원 보기\nShow a Blue Circle\n스피커로 ‘도’ 듣기\nHear a C Note\n문서 한 장 인쇄하기\nPrint One Page\n소프트웨어\nSoftware\n그림 앱\n\n“파란 원을 그려 주세요.”\n\n→\n운영체제·드라이버\nOS & Driver\n명령 전달\n\n디스플레이가 알아들을 신호로 전달합니다.\n\n→\n하드웨어\nHardware\n디스플레이\n\n픽셀을 빛내 화면을 보여 줍니다.\n\n→\n실행 전\n\n프로그램과 장치가 모두 준비되어 있습니다.\n\n2\n두 준비 상태를 바꾸고 실행해 보세요.Change a State and Run\n\n프로그램이나 장치 중 하나가 없으면 결과가 만들어지지 않습니다.\n\n프로그램 상태\n그림 앱 실행 중 · On\n장치 상태\n디스플레이 연결됨 · Connected\n함께 실행\nRun Together\n지금 확인한 것 What You Observed\n소프트웨어\n선택한 프로그램이 명령을 준비했습니다.\n하드웨어\n디스플레이가 연결되어 있습니다.\n실행 결과\n아직 실행하지 않았습니다.",
+    "errors": []
+  },
+  {
+    "id": "a03",
+    "title": "3차시. 기기·운영체제·앱은 무엇이 다를까?",
+    "layouts": [
+      {
+        "width": 1440,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 390,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      }
+    ],
+    "controls": [
+      {
+        "tag": "BUTTON",
+        "text": "처음 상태 Reset",
+        "id": "",
+        "attrs": "data-a03-reset=",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "PC Personal Computer",
+        "id": "",
+        "attrs": "data-a03-device=pc",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Chromebook",
+        "id": "",
+        "attrs": "data-a03-device=chromebook",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "iPad Tablet",
+        "id": "",
+        "attrs": "data-a03-device=ipad",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Phone Android형",
+        "id": "",
+        "attrs": "data-a03-device=phone",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Windows",
+        "id": "",
+        "attrs": "data-a03-os=windows",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "ChromeOS",
+        "id": "",
+        "attrs": "data-a03-os=chromeos",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "iPadOS",
+        "id": "",
+        "attrs": "data-a03-os=ipados",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Android",
+        "id": "",
+        "attrs": "data-a03-os=android",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "PC 그림판 Windows App",
+        "id": "",
+        "attrs": "data-a03-app=paint",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "파일 앱 ChromeOS App",
+        "id": "",
+        "attrs": "data-a03-app=chrome-files",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "iPad 스케치 iPadOS App",
+        "id": "",
+        "attrs": "data-a03-app=ipad-sketch",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "카메라 Android App",
+        "id": "",
+        "attrs": "data-a03-app=android-camera",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "호환성 확인 Check & Run",
+        "id": "",
+        "attrs": "data-a03-run=",
+        "type": "button",
+        "value": "",
+        "visible": true
+      }
+    ],
+    "labText": "층 조합 실험\nCompatibility Layer Lab\n기기–운영체제–앱을 바꿔 쌓고, 어디에서 실행이 멈추는지 증거로 확인하세요.\n처음 상태\nReset\n기기·OS·앱 세 층\nDevice · OS · App\n1. 기기 Device\nPC\nPersonal Computer\nChromebook\niPad\nTablet\nPhone\nAndroid형\n2. 운영체제 Operating System\nWindows\nChromeOS\niPadOS\nAndroid\n3. 앱 Application\nPC 그림판\nWindows App\n파일 앱\nChromeOS App\niPad 스케치\niPadOS App\n카메라\nAndroid App\n앱\nApp\nPC 그림판\nWindows Drawing App\n\nWindows용 .exe와 Windows API 요청\n\n↕\n운영체제\nOperating System\nWindows\n\n지원되는 PC의 장치 드라이버와 Windows API 제공\n\n↕\n기기\nDevice\nPC\nPersonal Computer\n\nPC 펌웨어·CPU·메모리·화면\n\n실행 확인 전\n\n세 층을 고른 뒤 호환성을 확인하세요.\n\n① 기기 ↔ OS\n확인 전\n② OS ↔ 앱\n확인 전\n③ 실행 결과\n확인 전\n호환성 확인\nCheck & Run",
+    "errors": []
+  },
+  {
+    "id": "a04",
+    "title": "4차시. 아날로그와 디지털은 무엇이 다를까?",
+    "layouts": [
+      {
+        "width": 1440,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [
+          "DIV.",
+          "SPAN."
+        ],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 390,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [
+          "DIV.",
+          "SPAN."
+        ],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      }
+    ],
+    "controls": [
+      {
+        "tag": "BUTTON",
+        "text": "처음 상태 Reset",
+        "id": "",
+        "attrs": "data-a04-reset=",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "text": "공기의 실제 온도",
+        "id": "",
+        "attrs": "data-a04-slider=",
+        "type": "range",
+        "value": "2014",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "이 순간 기록 Capture This Moment",
+        "id": "",
+        "attrs": "data-a04-capture=",
+        "type": "button",
+        "value": "",
+        "visible": true
+      }
+    ],
+    "labText": "아날로그→디지털 변환\nAnalog-to-Digital Conversion\n온도를 움직이고, 기록 순간에 어느 숫자 칸이 선택되는지 보세요.\n처음 상태\nReset\n이어지는 값→숫자 칸\nContinuous to Discrete\n공기의 실제 온도\nReal Temperature\n20.14°C\n이 순간 기록\nCapture This Moment\n센서 신호\nAnalog Signal\n중간에서 끊기지 않음\n\n슬라이더의 0.01°C 사이에도 더 많은 실제 값이 존재할 수 있습니다.\n\n측정 순간\nADC\n가까운 숫자 칸 선택\n→\n숫자 기록\nDigital Record\n지금 기록하면 20.0°C\n20.0°C\n20.5°C\n21.0°C\n21.5°C\n22.0°C\n아직 기록하지 않음\n\n이 모형의 기록 간격은 0.5°C입니다.\n\n기록 두 칸\nTwo Captures\n첫 번째 기록 전\n두 번째 기록 전\n측정 기록 Measurement Record\n\n온도를 정한 뒤 ‘이 순간 기록’을 누르세요.\n\n이어지는 실제 값\n20.14°C\n가장 가까운 숫자 칸\n20.0°C\n최근 기록 차이\n기록 전",
+    "errors": []
+  },
+  {
+    "id": "a05",
+    "title": "5차시. 현실의 소리는 어떻게 숫자 데이터가 될까?",
+    "layouts": [
+      {
+        "width": 1440,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 390,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      }
+    ],
+    "controls": [
+      {
+        "tag": "BUTTON",
+        "text": "처음 상태 Reset",
+        "id": "",
+        "attrs": "data-a05-reset=",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "4번/초4 samples/s",
+        "id": "",
+        "attrs": "data-a05-rate=4",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "8번/초8 samples/s",
+        "id": "",
+        "attrs": "data-a05-rate=8",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "16번/초16 samples/s",
+        "id": "",
+        "attrs": "data-a05-rate=16",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "2비트 · 4단계2-bit · 4 levels",
+        "id": "",
+        "attrs": "data-a05-bits=2",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "3비트 · 8단계3-bit · 8 levels",
+        "id": "",
+        "attrs": "data-a05-bits=3",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "4비트 · 16단계4-bit · 16 levels",
+        "id": "",
+        "attrs": "data-a05-bits=4",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "1초 기록 Record One Second",
+        "id": "",
+        "attrs": "data-a05-record=",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "현재 기록을 A에 저장 Save as A",
+        "id": "",
+        "attrs": "data-a05-save=a",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "현재 기록을 B에 저장 Save as B",
+        "id": "",
+        "attrs": "data-a05-save=b",
+        "type": "button",
+        "value": "",
+        "visible": true
+      }
+    ],
+    "labText": "소리의 숫자 기록\nSound Digitization\n같은 파형의 측정 횟수와 숫자 단계 수를 바꾸어 기록하세요.\n처음 상태\nReset\n소리→측정점→비트\nSound to Bits\n시간 방향: 1초에 몇 번 측정할까? Sampling Rate\n4번/초\n4 samples/s\n8번/초\n8 samples/s\n16번/초\n16 samples/s\n높이 방향: 한 값을 몇 칸으로 나눌까? Bit Depth\n2비트 · 4단계\n2-bit · 4 levels\n3비트 · 8단계\n3-bit · 8 levels\n4비트 · 16단계\n4-bit · 16 levels\n1초 기록\nRecord One Second\n이어지는 마이크 신호와 기록점\nContinuous Signal and Recorded Samples\n이어지는 신호\n측정 높이\n숫자 단계\n기록값을 이은 재생 모형\n\n점 사이의 청록 점선은 저장된 선이 아니라, 기록값을 시간 순서대로 재생한 모습을 단순화한 것입니다.\n\n선택한 샘플\nSelected Sample\n기록 전\n측정 높이\n—\n가까운 단계\n—\n비트 코드\n—\n양자화 차이\n—\n\n설정을 기록하면 각 측정값의 비트 코드가 나타납니다.\n\n측정 횟수\n4번/초\n높이 단계\n2비트 · 4단계\n이 모형의 기록량\n4 × 2 = 8비트\nA와 B 비교 Compare Two Records\n한 번에 한 조건만 바꾸면 어느 설정이 결과를 바꾸었는지 알 수 있습니다.\n현재 기록을 A에 저장\nSave as A\nA: 기록 전\n현재 기록을 B에 저장\nSave as B\nB: 기록 전\n\nA와 B에 기록을 하나씩 저장하세요.\n\n기록 상태 Recording State\n\n두 설정을 고른 뒤 ‘1초 기록’을 누르세요.",
+    "errors": []
+  },
+  {
+    "id": "b01",
+    "title": "6차시. 본체 안에는 어떤 부품이 있을까?",
+    "layouts": [
+      {
+        "width": 1440,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [
+          "SPAN.",
+          "STRONG.",
+          "SMALL.",
+          "BUTTON.",
+          "IMG.",
+          "SPAN.",
+          "STRONG.",
+          "SMALL."
+        ],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 390,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [
+          "SPAN.",
+          "STRONG.",
+          "SMALL.",
+          "BUTTON.",
+          "IMG.",
+          "SPAN.",
+          "STRONG.",
+          "SMALL."
+        ],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      }
+    ],
+    "controls": [
+      {
+        "tag": "BUTTON",
+        "text": "1",
+        "id": "",
+        "attrs": "data-cutaway-part-index=0",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "2",
+        "id": "",
+        "attrs": "data-cutaway-part-index=1",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "3",
+        "id": "",
+        "attrs": "data-cutaway-part-index=2",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "4",
+        "id": "",
+        "attrs": "data-cutaway-part-index=3",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "5",
+        "id": "",
+        "attrs": "data-cutaway-part-index=4",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "6",
+        "id": "",
+        "attrs": "data-cutaway-part-index=6",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "7",
+        "id": "",
+        "attrs": "data-cutaway-part-index=5",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "8",
+        "id": "",
+        "attrs": "data-cutaway-part-index=7",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "CPU중앙 처리 장치",
+        "id": "componentTab0",
+        "attrs": "data-part-index=0",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "RAM주기억장치(작업 메모리)",
+        "id": "componentTab1",
+        "attrs": "data-part-index=1",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "GPU그래픽 처리 장치",
+        "id": "componentTab2",
+        "attrs": "data-part-index=2",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "SSD반도체 저장 장치",
+        "id": "componentTab3",
+        "attrs": "data-part-index=3",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "HDD하드 디스크 드라이브",
+        "id": "componentTab4",
+        "attrs": "data-part-index=4",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "메인보드주기판",
+        "id": "componentTab5",
+        "attrs": "data-part-index=5",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "PSU전원 공급 장치",
+        "id": "componentTab6",
+        "attrs": "data-part-index=6",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "냉각 장치방열판과 냉각 팬",
+        "id": "componentTab7",
+        "attrs": "data-part-index=7",
+        "type": "button",
+        "value": "",
+        "visible": true
+      }
+    ],
+    "labText": "본체 위치와 부품 확대 Inside the Case and Component Close-ups\n전체 위치에서 부품 하나까지 이어서 보기\n\n본체 사진의 번호나 아래 부품 단추를 누르세요. 같은 선택이 확대 사진과 설명에 이어집니다.\n\n1\n2\n3\n4\n5\n6\n7\n8\n번호를 누르면 그 자리에 있는 부품의 확대 사진과 이름의 뜻, 역할, 연결 방식을 함께 볼 수 있습니다.\nCPU\n중앙 처리 장치\nRAM\n주기억장치(작업 메모리)\nGPU\n그래픽 처리 장치\nSSD\n반도체 저장 장치\nHDD\n하드 디스크 드라이브\n메인보드\n주기판\nPSU\n전원 공급 장치\n냉각 장치\n방열판과 냉각 팬\n실물의 대표적인 형태입니다. 제품에 따라 크기·색·덮개 모양은 달라질 수 있습니다.\nCPU\nCentral Processing Unit\n중앙 처리 장치\n명칭과 어원\nName and Origin\n\nCentral은 컴퓨터의 여러 작업을 중심에서 맡는다는 뜻, Processing은 명령과 데이터를 처리한다는 뜻, Unit은 하나의 기능 장치를 뜻합니다.\n\n생김새\nWhat It Looks Like\n손바닥보다 작은 네모난 부품입니다. 윗면의 금속 덮개는 내부 칩의 열을 방열판으로 전달하고, 아랫면의 접점은 메인보드와 전기 신호를 주고받습니다.\n맡은 일\nWhat It Does\n프로그램의 기계 명령을 가져오고 해석한 뒤 계산·비교·이동 명령을 실행합니다. 입력 처리, 파일 열기, 앱의 진행 순서처럼 종류가 다른 작업을 빠르게 바꿔 가며 처리합니다.\n연결 방식\nHow It Connects\n메인보드의 CPU 소켓에 장착되고 RAM에서 명령과 데이터를 읽습니다. 필요한 화면 계산은 GPU에 요청하고 결과를 다시 받습니다.\n구별할 점\nDistinction\nCPU가 사람의 뇌처럼 뜻을 이해하거나 스스로 목표를 정하는 것은 아닙니다. 작성된 명령과 현재 데이터에 따라 회로가 동작합니다.",
+    "errors": []
+  },
+  {
+    "id": "b02",
+    "title": "7차시. 휴대전화와 태블릿 안에도 컴퓨터가 있을까?",
+    "layouts": [
+      {
+        "width": 1440,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 390,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [
+          "BUTTON.",
+          "I.",
+          "B.",
+          "SMALL.",
+          "BUTTON.",
+          "I.",
+          "B.",
+          "SMALL."
+        ],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      }
+    ],
+    "controls": [
+      {
+        "tag": "BUTTON",
+        "text": "스마트폰 Smartphone",
+        "id": "",
+        "attrs": "data-device-choice=phone",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "태블릿·iPad Tablet / iPad",
+        "id": "",
+        "attrs": "data-device-choice=tablet",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "로직 보드Logic Board · SoC·RAM·저장 칩",
+        "id": "",
+        "attrs": "data-mobile-part=board",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "배터리Battery · 전력 보관·공급",
+        "id": "",
+        "attrs": "data-mobile-part=battery",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "카메라·센서Cameras & Sensors · 입력",
+        "id": "",
+        "attrs": "data-mobile-part=camera",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "터치 화면Touch Display · 입력·출력",
+        "id": "",
+        "attrs": "data-mobile-part=display",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "1",
+        "id": "",
+        "attrs": "data-mobile-chip-choice=soc",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "2",
+        "id": "",
+        "attrs": "data-mobile-chip-choice=ram",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "3",
+        "id": "",
+        "attrs": "data-mobile-chip-choice=storage",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "4",
+        "id": "",
+        "attrs": "data-mobile-chip-choice=power",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "5",
+        "id": "",
+        "attrs": "data-mobile-chip-choice=radio",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "1SoCSystem on a Chip",
+        "id": "",
+        "attrs": "data-mobile-chip-choice=soc",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "2RAMRandom Access Memory",
+        "id": "",
+        "attrs": "data-mobile-chip-choice=ram",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "3저장 칩NAND Flash Storage",
+        "id": "",
+        "attrs": "data-mobile-chip-choice=storage",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "4전원 관리 칩Power Management IC",
+        "id": "",
+        "attrs": "data-mobile-chip-choice=power",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "5통신 칩Radio / Modem",
+        "id": "",
+        "attrs": "data-mobile-chip-choice=radio",
+        "type": "button",
+        "value": "",
+        "visible": true
+      }
+    ],
+    "labText": "분해 사진에서 부품의 실제 자리 찾기\nLocate Parts Inside Mobile Devices\n스마트폰\nSmartphone\n태블릿·iPad\nTablet / iPad\n로직 보드\nLogic Board · SoC·RAM·저장 칩\n배터리\nBattery · 전력 보관·공급\n카메라·센서\nCameras & Sensors · 입력\n터치 화면\nTouch Display · 입력·출력\n로직 보드\n선택한 부품\nSelected Part\n로직 보드\nLogic Board\n\n계산을 맡는 SoC, 작업 중 데이터를 두는 RAM, 파일을 보관하는 저장 칩이 좁은 기판에 모여 있습니다.\n\n현재 기기\nDevice\n스마트폰 · Smartphone\n사진 속 위치\nLocation in Photo\n사진 가운데 오른쪽의 좁은 기판\n로직 보드를 한 단계 더 확대하기\nInside the Logic Board\n\n칩은 겉모양이 비슷해 보여도 연결된 회로와 맡은 일이 다릅니다. 번호를 눌러 PC 부품과의 관계까지 확인하세요.\n\n1\n2\n3\n4\n5\n1\nSoC\nSystem on a Chip\n2\nRAM\nRandom Access Memory\n3\n저장 칩\nNAND Flash Storage\n4\n전원 관리 칩\nPower Management IC\n5\n통신 칩\nRadio / Modem\nSoC\nSystem on a Chip\n\nCPU·GPU와 여러 제어 기능을 한 칩에 모아 계산과 장치 제어를 맡습니다.\n\n이름 뜻 Name\n‘한 칩 위의 시스템’이라는 뜻입니다.\nPC에서 대응 PC Counterpart\nPC의 CPU·GPU와 여러 제어 칩이 한 패키지에 합쳐진 모습에 가깝습니다.\n\n실제 기기마다 배치가 다릅니다. Layout Varies by Device\n번호는 이 교육용 대표 이미지에서 역할을 구분하기 위한 위치입니다. 실제 제품을 분해하거나 수리할 때는 해당 모델의 분해도와 회로 자료를 따로 확인해야 합니다.\n\n휴대전화도 입력·처리·출력·저장을 수행하는 컴퓨터입니다. 다만 부품을 작게 합치고 배터리로 작동하도록 설계합니다.",
+    "errors": []
+  },
+  {
+    "id": "b03",
+    "title": "8차시. 주변 기기와 단자는 어떻게 연결될까?",
+    "layouts": [
+      {
+        "width": 1440,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 390,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      }
+    ],
+    "controls": [
+      {
+        "tag": "BUTTON",
+        "text": "외부 모니터 External Monitor",
+        "id": "",
+        "attrs": "data-port-device=monitor",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "그림 태블릿 Drawing Tablet",
+        "id": "",
+        "attrs": "data-port-device=tablet",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "충전 전용Power Only전력 ✓ 데이터 — 영상 —",
+        "id": "",
+        "attrs": "data-port-cable-choice=charge",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "데이터 케이블Power + Data전력 ✓ 데이터 ✓ 영상 —",
+        "id": "",
+        "attrs": "data-port-cable-choice=data",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "영상 지원 케이블Power + Data + Video전력 ✓ 데이터 ✓ 영상 ✓",
+        "id": "",
+        "attrs": "data-port-cable-choice=video",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "이 연결 시험하기 Test This Connection",
+        "id": "",
+        "attrs": "data-port-connect=",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "처음 상태 Reset",
+        "id": "",
+        "attrs": "data-port-reset=",
+        "type": "button",
+        "value": "",
+        "visible": true
+      }
+    ],
+    "labText": "모양이 같은 USB-C 케이블도 할 수 있는 일이 다르다\nSame Connector Shape, Different Capabilities\n\n케이블을 연결 자리에 끌어다 놓거나 누른 뒤 시험하세요. 물리적으로 꽂히는지와 데이터·영상·전력 신호가 지나가는지는 따로 확인합니다.\n\n포트와 케이블의 겉모양은 첫 확인 단계입니다.\n외부 모니터\nExternal Monitor\n그림 태블릿\nDrawing Tablet\n학생의 노트북\nLaptop\n과제 화면\nUSB-C\n충전 전용 케이블\n여기에 케이블 놓기\nDrop Cable Here\n외부 모니터\nExternal Monitor\n연결 시험 전\nUSB-C\n충전 전용\nPower Only\n전력 ✓　데이터 —　영상 —\n데이터 케이블\nPower + Data\n전력 ✓　데이터 ✓　영상 —\n영상 지원 케이블\nPower + Data + Video\n전력 ✓　데이터 ✓　영상 ✓\n물리적 모양\nPhysical Fit\n시험 전\n전력\nPower\n시험 전\n데이터\nData\n시험 전\n영상\nVideo\n시험 전\n드라이버\nDriver\n해당 없음\n이 연결 시험하기 Test This Connection\n처음 상태 Reset\n\n외부 모니터:\n세 케이블은 모두 USB-C 모양이라 꽂힙니다. 그러나 화면을 보내려면 영상 신호를 지원하는 케이블과 포트가 필요합니다.\n\n모양이 맞는 단자, 기능을 지원하는 규격, 장치를 이해하는 드라이버가 함께 맞아야 제대로 작동합니다.",
+    "errors": []
+  },
+  {
+    "id": "c01",
+    "title": "9차시. 하드웨어·운영체제·앱은 어떻게 이어질까?",
+    "layouts": [
+      {
+        "width": 1440,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 390,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [
+          "I.",
+          "B.",
+          "SMALL.",
+          "SPAN.",
+          "DIV.",
+          "I.",
+          "B.",
+          "SMALL."
+        ],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      }
+    ],
+    "controls": [
+      {
+        "tag": "BUTTON",
+        "text": "카메라 권한허용됨 · Allowed",
+        "id": "",
+        "attrs": "data-relay-permission=",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "카메라 장치켜짐 · On",
+        "id": "",
+        "attrs": "data-relay-hardware=",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "사진 찍기 Take Photo",
+        "id": "",
+        "attrs": "data-relay-run=",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "처음 상태 Reset",
+        "id": "",
+        "attrs": "data-relay-reset=",
+        "type": "button",
+        "value": "",
+        "visible": true
+      }
+    ],
+    "labText": "카메라 권한\n허용됨 · Allowed\n카메라 장치\n켜짐 · On\n사진 앱\nApp\n→\n운영체제·권한\nOS & Permission\n→\n드라이버\nDriver\n→\n카메라 센서\nHardware\n아직 사진 없음\n\n앱은 직접 센서를 움직이지 않고 운영체제에 요청합니다.\n\n사진 찍기\nTake Photo\n처음 상태\nReset\n\n준비:\n권한과 카메라 장치 상태를 바꾼 뒤 사진 요청이 어디에서 멈추는지 확인하세요.\n\n사람이 앱의 버튼을 누르면 앱이 운영체제에 요청하고, 운영체제는 드라이버와 하드웨어가 필요한 신호를 주고받도록 관리합니다. 끝난 결과는 다시 앱 화면에 나타납니다.",
+    "errors": []
+  },
+  {
+    "id": "c02",
+    "title": "10차시. Windows·ChromeOS·Android·iOS·iPadOS는 무엇이 다를까?",
+    "layouts": [
+      {
+        "width": 1440,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 390,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 128.53125
+      },
+      {
+        "width": 390,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [],
+        "top": 128.53125
+      },
+      {
+        "width": 390,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 128.53125
+      },
+      {
+        "width": 390,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 128.53125
+      }
+    ],
+    "controls": [
+      {
+        "tag": "BUTTON",
+        "text": "Windows",
+        "id": "",
+        "attrs": "data-os-choice=windows",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "ChromeOS",
+        "id": "",
+        "attrs": "data-os-choice=chromeos",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Android",
+        "id": "",
+        "attrs": "data-os-choice=android",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "iPhone iOS",
+        "id": "",
+        "attrs": "data-os-choice=ios",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "iPad iPadOS",
+        "id": "",
+        "attrs": "data-os-choice=ipados",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "←",
+        "id": "",
+        "attrs": "data-os-back=",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "처음부터 Reset",
+        "id": "",
+        "attrs": "data-os-reset=",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "사진Pictures",
+        "id": "",
+        "attrs": "data-os-open-location=",
+        "type": "button",
+        "value": "",
+        "visible": true
+      }
+    ],
+    "labText": "운영체제마다 화면은 달라도 파일의 상태는 같다\nDifferent Interfaces, the Same File State\n\n운영체제를 고른 뒤, 아래 모형 화면 안에서 직접 사진 위치를 열고 파일을 선택해 이름을 바꾸세요.\n\nPC·Chromebook·휴대전화·iPad의 대표 화면\nWindows\nChromeOS\nAndroid\niPhone\niOS\niPad\niPadOS\n● ● ●\n파일 탐색기\n10:24\n←\n내 PC › 사진\n처음부터\nReset\n사진\nPictures\n\n파일 탐색기의 사진 폴더를 누르세요.\n\n파일 0개 선택\n운영체제\nOperating System\nWindows\n현재 위치\nCurrent Location\n내 PC › 사진\n파일 이름\nFilename\n바다.jpg\n현재 동작\nCurrent Action\n위치 열기 전\n\nWindows:\n파일 탐색기의 사진 폴더를 누르세요. 운영체제가 파일을 보관하는 장치 자체는 아니며, 저장 장치의 파일을 찾고 다루는 화면과 규칙을 제공합니다.\n\nWindows의 작업 표시줄, ChromeOS의 선반, Android와 iOS의 홈 화면, iPadOS의 Dock은 생김새가 다릅니다. 그래도 앱 열기, 파일 찾기, 입력 받기, 화면 보여 주기라는 기본 일은 같습니다.",
+    "errors": []
+  },
+  {
+    "id": "c03",
+    "title": "11차시. 앱·프로그램·프로세스·창은 같은 말일까?",
+    "layouts": [
+      {
+        "width": 1440,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 390,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      }
+    ],
+    "controls": [
+      {
+        "tag": "BUTTON",
+        "text": "프로그램 실행 Run",
+        "id": "",
+        "attrs": "data-program-action=run",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "새 창 New Window",
+        "id": "",
+        "attrs": "data-program-action=new",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "창 숨기기 Keep in Background",
+        "id": "",
+        "attrs": "data-program-action=background",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "프로세스 끝내기 End Process",
+        "id": "",
+        "attrs": "data-program-action=end",
+        "type": "button",
+        "value": "",
+        "visible": true
+      }
+    ],
+    "labText": "저장 장치\nStorage\n그림 앱\nDrawing App · 저장된 명령과 자료\n실행 요청\n→\n실행 중인 프로세스\nRunning Process\n실행 중인 프로세스 없음\n화면 표시\n→\n창\nWindow\n열린 창 없음\n프로그램 실행\nRun\n새 창\nNew Window\n창 숨기기\nKeep in Background\n프로세스 끝내기\nEnd Process\n\n저장된 그림 앱:\n앱의 명령과 자료는 저장 장치에 있지만, 운영체제가 시작한 프로세스와 그 프로세스가 보여 주는 창은 아직 없습니다.\n\n프로세스는 RAM 자체가 아니라 운영체제가 관리하는 실행 상태입니다. 이 실험의 그림 앱은 한 프로세스가 CPU 시간과 RAM 공간을 사용하며 여러 창을 관리하는 모형이고, 실제 앱은 여러 프로세스를 사용하기도 합니다.\n\n아이콘을 누르면 저장된 프로그램이 실행을 시작합니다. 실행 중인 상태를 프로세스라고 하며, 프로세스가 만든 화면을 창과 탭에서 봅니다. 창 하나와 프로세스 하나가 늘 같은 것은 아닙니다.",
+    "errors": []
+  },
+  {
+    "id": "c04",
+    "title": "12차시. 설정에서 무엇을 바꾸고 관리할까?",
+    "layouts": [
+      {
+        "width": 1440,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 390,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      }
+    ],
+    "controls": [
+      {
+        "tag": "BUTTON",
+        "text": "개인정보 Privacy",
+        "id": "",
+        "attrs": "data-settings-choice=privacy",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "디스플레이 Display",
+        "id": "",
+        "attrs": "data-settings-choice=display",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "업데이트 Update",
+        "id": "",
+        "attrs": "data-settings-choice=update",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "전원 Power",
+        "id": "",
+        "attrs": "data-settings-choice=power",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "꺼짐",
+        "id": "",
+        "attrs": "data-permission-toggle=",
+        "type": "button",
+        "value": "",
+        "visible": true
+      }
+    ],
+    "labText": "관찰 Observe\n학생이 기기 설정에서 카메라 사용 허락과 업데이트 상태를 확인하는 장면\n설정\nSettings\n개인정보\nPrivacy\n디스플레이\nDisplay\n업데이트\nUpdate\n전원\nPower\n\n개인 정보 › 카메라\n\n카메라를 사용할 수 있는 앱\n그림 교실\n사진을 찍어 과제에 넣는 앱\n꺼짐\n\n카메라를 열 수 없습니다.\n앱은 설치되어 있어도 카메라 사용 허락이 필요합니다.\n\n제어판 Control Panel은 Windows에서 일부 시스템 설정을 여는 기존 도구이며, 최신 설정 앱과 역할이 겹치는 항목이 있습니다.\n\n권한:\n앱이 카메라·마이크 같은 장치를 써도 되는지 앱별로 허락합니다.\n\n같은 ‘설정’이라도 한 앱만 바꾸는 값, 내 계정만 바꾸는 값, 기기 전체를 바꾸는 값이 있습니다. 적용하기 전에 무엇이 달라지는지와 되돌리는 방법을 확인합니다.",
+    "errors": []
+  },
+  {
+    "id": "d01",
+    "title": "13차시. 포인터·텍스트 커서·클릭·드래그는 어떻게 다를까?",
+    "layouts": [
+      {
+        "width": 1440,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 390,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [
+          "BUTTON.",
+          "SMALL.",
+          "BUTTON.",
+          "SMALL."
+        ],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      }
+    ],
+    "controls": [
+      {
+        "tag": "BUTTON",
+        "text": "단추 눌러 보기Click · 0회",
+        "id": "",
+        "attrs": "data-demo-button=",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "전체 초기화 Reset All",
+        "id": "",
+        "attrs": "data-demo-reset=",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "text": "텍스트 커서 위치를 확인할 문장",
+        "id": "",
+        "attrs": "data-demo-text=",
+        "type": "text",
+        "value": "파일을 폴더로 옮깁니다.",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "TXT관찰 기록.txt누른 채 폴더까지 이동",
+        "id": "",
+        "attrs": "data-demo-file=",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "수업 자료비어 있음",
+        "id": "",
+        "attrs": "data-demo-folder=",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "더블클릭 Double-click",
+        "id": "",
+        "attrs": "data-pointer-command=double",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "우클릭·길게 누르기 Context Menu",
+        "id": "",
+        "attrs": "data-pointer-command=context",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "휠·두 손가락 이동 Scroll",
+        "id": "",
+        "attrs": "data-pointer-command=scroll",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "수업 사진짧은 간격으로 두 번 누르기",
+        "id": "",
+        "attrs": "data-double-target=",
+        "type": "button",
+        "value": "",
+        "visible": true
+      }
+    ],
+    "labText": "입력 상태 관찰 Input State Lab\n포인터·커서·클릭·드래그를 직접 구분하세요\n\n1가리키기　2입력 위치　3짧게 누르기　4누른 채 옮기기\n\n포인터\nPointer\n화면에서 가리키는 위치\n텍스트 커서\nText Cursor\n다음 글자가 들어갈 위치\n클릭\nClick\n같은 자리에서 눌렀다 놓기\n드래그 앤 드롭\nDrag and Drop\n누른 채 이동해 목표에서 놓기\n단추 눌러 보기\nClick · 0회\n전체 초기화\nReset All\n문장 안의 입력 위치\nPlace the Text Cursor\nTXT\n관찰 기록.txt\n누른 채 폴더까지 이동\n수업 자료\n비어 있음\n\n포인터: 작업판 안에서 가리키는 위치가 바뀝니다.\n\n추가 조작 실험\nDouble-click · Context Menu · Scroll\n각 조작 뒤 대상의 상태가 실제로 바뀝니다.\n더블클릭\nDouble-click\n우클릭·길게 누르기\nContext Menu\n휠·두 손가락 이동\nScroll\n수업 사진\n짧은 간격으로 두 번 누르기\n\n한 번 누르면 선택, 짧은 간격으로 두 번 누르면 폴더가 열립니다.\n\n더블클릭: 한 번은 선택, 짧은 간격의 두 번째 누름은 폴더 열기입니다.",
+    "errors": []
+  },
+  {
+    "id": "d02",
+    "title": "14차시. 터치·탭·길게 누르기·스크롤·확대는 어떻게 작동할까?",
+    "layouts": [
+      {
+        "width": 1440,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 390,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [
+          "DIV.photo-card photo-card-next",
+          "SPAN.",
+          "B."
+        ],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      }
+    ],
+    "controls": [
+      {
+        "tag": "BUTTON",
+        "text": "탭 Tap",
+        "id": "",
+        "attrs": "data-gesture-choice=tap",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "길게 누르기 Long Press",
+        "id": "",
+        "attrs": "data-gesture-choice=long",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "스와이프 Swipe",
+        "id": "",
+        "attrs": "data-gesture-choice=swipe",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "핀치 Pinch",
+        "id": "",
+        "attrs": "data-gesture-choice=pinch",
+        "type": "button",
+        "value": "",
+        "visible": true
+      }
+    ],
+    "labText": "관찰 Observe\n태블릿 화면에서 한 손가락과 두 손가락의 위치, 이동, 누른 시간이 신호로 측정되는 장면\n사진 1\n사진 2\n손가락\n1\n개\n누른 시간\n0.1\n초\n이동 거리\n0\n\n동작 이름을 고른 뒤, 사진 화면에서 직접 탭·길게 누르기·스와이프·핀치를 해 보세요.\n\n탭\nTap\n길게 누르기\nLong Press\n스와이프\nSwipe\n핀치\nPinch\n\n탭\n은 한 손가락으로 짧게 눌렀다 놓는 동작입니다. 앱은 위치와 누른 시간을 함께 봅니다.\n\n터치 센서가 손가락 위치를 계속 재면 운영체제와 앱이 ‘짧게 누름’, ‘오래 누름’, ‘한 손가락 이동’, ‘두 손가락 간격 변화’로 구분합니다.",
+    "errors": []
+  },
+  {
+    "id": "d03",
+    "title": "15차시. 키보드·단축키·클립보드는 어떻게 이어질까?",
+    "layouts": [
+      {
+        "width": 1440,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 390,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      }
+    ],
+    "controls": [
+      {
+        "tag": "BUTTON",
+        "text": "고양이 Cat",
+        "id": "",
+        "attrs": "data-select-text=고양이",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "강아지 Dog",
+        "id": "",
+        "attrs": "data-select-text=강아지",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "공원 Park",
+        "id": "",
+        "attrs": "data-select-text=공원",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "복사 Ctrl/Cmd+C",
+        "id": "",
+        "attrs": "data-clipboard-action=copy",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "잘라내기 Ctrl/Cmd+X",
+        "id": "",
+        "attrs": "data-clipboard-action=cut",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "붙여넣기 Ctrl/Cmd+V",
+        "id": "",
+        "attrs": "data-clipboard-action=paste",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "처음 상태 Reset",
+        "id": "",
+        "attrs": "data-clipboard-action=reset",
+        "type": "button",
+        "value": "",
+        "visible": true
+      }
+    ],
+    "labText": "원문\nSource Document\n클립보드\nClipboard\n비어 있음\n복사·잘라내기한 내용의 임시 사본\n붙여넣을 문서\nDestination Document\n선택 Select\n고양이 Cat\n강아지 Dog\n공원 Park\n복사\nCtrl/Cmd+C\n잘라내기\nCtrl/Cmd+X\n붙여넣기\nCtrl/Cmd+V\n처음 상태\nReset\n\n선택:\n원문에서 직접 드래그하거나 말 단추를 누른 뒤 복사·잘라내기를 실행하세요. 붙여넣기는 아래 문서의 커서 위치에 들어갑니다.\n\nWindows와 ChromeOS에서는 주로 Ctrl, iPadOS와 macOS 키보드에서는 주로 Command를 씁니다. 먼저 대상을 선택해야 복사할 내용이 정해집니다.",
+    "errors": []
+  },
+  {
+    "id": "e01",
+    "title": "16차시. 드라이브·폴더·파일·경로는 어떤 관계일까?",
+    "layouts": [
+      {
+        "width": 1440,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 390,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [
+          "BUTTON.",
+          "SMALL.",
+          "I.",
+          "BUTTON.",
+          "SMALL."
+        ],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      }
+    ],
+    "controls": [
+      {
+        "tag": "BUTTON",
+        "text": "기기 저장소 Device Storage",
+        "id": "",
+        "attrs": "data-path-choice=drive",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "민준 Minjun",
+        "id": "",
+        "attrs": "data-path-choice=user",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "그림 Pictures",
+        "id": "",
+        "attrs": "data-path-choice=pictures",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "여행 Trip",
+        "id": "",
+        "attrs": "data-path-choice=trip",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "민준",
+        "id": "",
+        "attrs": "data-path-choice=user",
+        "type": "button",
+        "value": "",
+        "visible": true
+      }
+    ],
+    "labText": "파일 관리 실습 File Manager\n—　□　×\n기기 저장소 Device Storage\n›\n민준 Minjun\n›\n그림 Pictures\n›\n여행 Trip\n민준\n\n경로\nPath\n기기 저장소\n\n저장소는 폴더와 파일을 담는 큰 저장 공간입니다. 여기에서 사용자 폴더로 들어갈 수 있습니다.\n\n‘내 드라이브 > 과학 > 곤충 > 나비.webp’처럼 드라이브부터 파일까지 이어 쓴 주소가 경로입니다. 파일 이름이 같아도 들어 있는 폴더가 다르면 경로가 다릅니다.",
+    "errors": []
+  },
+  {
+    "id": "e02",
+    "title": "17차시. 파일 이름·확장자·형식·앱은 어떻게 연결될까?",
+    "layouts": [
+      {
+        "width": 1440,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 390,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      }
+    ],
+    "controls": [
+      {
+        "tag": "BUTTON",
+        "text": "이름 끝만 .png로 바꾸기 Rename Extension Only",
+        "id": "",
+        "attrs": "data-format-action=rename",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "PNG 방식으로 변환해 저장 Convert and Save as PNG",
+        "id": "",
+        "attrs": "data-format-action=convert",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "처음으로 Reset",
+        "id": "",
+        "attrs": "data-format-action=reset",
+        "type": "button",
+        "value": "",
+        "visible": true
+      }
+    ],
+    "labText": "바다\n.\njpg\n파일 안의 저장 방법\nJPEG 방식의 사진 데이터\n어떤 앱이 읽을까?\n사진 앱이 JPG 형식으로 읽음\n이름 끝만 .png로 바꾸기 Rename Extension Only\nPNG 방식으로 변환해 저장 Convert and Save as PNG\n처음으로 Reset\n\n확장자 .jpg\n는 사진 데이터가 어떤 방법으로 저장되었는지 알려 주는 이름표입니다.\n\n‘나비사진.webp’에서 ‘나비사진’은 이름이고 ‘.webp’는 확장자입니다. 확장자는 안쪽 저장 방식을 알려 주는 표지이므로 글자만 바꿔서는 실제 형식이 바뀌지 않습니다.",
+    "errors": []
+  },
+  {
+    "id": "e03",
+    "title": "18차시. 저장·다른 이름으로 저장·복사·이동·삭제는 무엇이 다를까?",
+    "layouts": [
+      {
+        "width": 1440,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 390,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      }
+    ],
+    "controls": [
+      {
+        "tag": "BUTTON",
+        "text": "처음 상태 Reset",
+        "id": "",
+        "attrs": "data-file-operation=start",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "저장 Save",
+        "id": "",
+        "attrs": "data-file-operation=save",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "다른 이름으로 저장 Save As",
+        "id": "",
+        "attrs": "data-file-operation=save-as",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "복사 Copy",
+        "id": "",
+        "attrs": "data-file-operation=copy",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "이동 Move",
+        "id": "",
+        "attrs": "data-file-operation=move",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "삭제 Delete",
+        "id": "",
+        "attrs": "data-file-operation=delete",
+        "type": "button",
+        "value": "",
+        "visible": true
+      }
+    ],
+    "labText": "파일 Files\n—　□　×\n처음 상태\nReset\n저장\nSave\n다른 이름으로 저장\nSave As\n복사\nCopy\n이동\nMove\n삭제\nDelete\n명령 뒤 무엇이 바뀌었나?\nWhat Changed?\n파일 ID\nA\n파일 수\n1 → 1\n이름\n그대로\n위치\n문서\n내용\n내용 1\n문서\nDocuments\nDOCX\n보고서_원본.docx\n파일 A · 내용 1\n과제\nHomework\n휴지통\nTrash\n\n처음 상태:\n문서 폴더에 파일 A 한 개가 있습니다. 각 명령은 이 상태에서 시작합니다.\n\n명령 뒤에 출발 폴더와 도착 폴더를 모두 확인합니다. 파일 내용이 바뀌었는지, 파일이 하나 더 생겼는지, 원래 자리에서 사라졌는지를 보면 명령을 구분할 수 있습니다.",
+    "errors": []
+  },
+  {
+    "id": "e04",
+    "title": "19차시. 아이콘·원본·바로가기·북마크·즐겨찾기는 같은 것일까?",
+    "layouts": [
+      {
+        "width": 1440,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 390,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      }
+    ],
+    "controls": [
+      {
+        "tag": "BUTTON",
+        "text": "아이콘 Icon",
+        "id": "",
+        "attrs": "data-reference-choice=icon",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "바로가기 Shortcut",
+        "id": "",
+        "attrs": "data-reference-choice=shortcut",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "북마크·즐겨찾기 Bookmark / Favorite",
+        "id": "",
+        "attrs": "data-reference-choice=bookmark",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "PDF↗보고서 바로가기",
+        "id": "",
+        "attrs": "data-reference-marker=shortcut",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "★ 과학 보고서 웹페이지 Science Report Webpage",
+        "id": "",
+        "attrs": "data-reference-marker=bookmark",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "바로가기로 열기 Open the Shortcut",
+        "id": "",
+        "attrs": "data-reference-action=open",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "원본을 완료 폴더로 이동 Move the Original",
+        "id": "",
+        "attrs": "data-reference-action=change",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "바로가기 삭제 Delete the Shortcut",
+        "id": "",
+        "attrs": "data-reference-action=delete",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "처음 상태 Reset",
+        "id": "",
+        "attrs": "data-reference-action=reset",
+        "type": "button",
+        "value": "",
+        "visible": true
+      }
+    ],
+    "labText": "아이콘 Icon\n바로가기 Shortcut\n북마크·즐겨찾기 Bookmark / Favorite\n같은 목적, 다른 화면 이름 Same Goal, Different Device Features\n자주 쓰는 대상을 빨리 여는 기능은 기기마다 위치와 이름이 다릅니다.\nWindows PC\n파일·폴더 바로가기, 작업 표시줄 고정\nShortcut · Pin to Taskbar\nChromebook\n앱을 선반에 고정, 파일 앱에서 위치 열기\nPin to Shelf · Files\niPad\n앱을 Dock·홈 화면에 두고 파일 위치를 즐겨찾기\nDock · Home Screen · Files Favorite\n웹페이지 Web Page\nChrome·Safari 북마크 또는 홈 화면 웹 아이콘\nBookmark · Add to Home Screen\nPDF\n과학보고서.pdf\n문서/과학보고서.pdf\nPDF\n↗\n보고서 바로가기\n저장 경로: 문서/과학보고서.pdf\n파일 화면\nFile Screen\n☆\nhttps://science.example/report\n★ 과학 보고서 웹페이지 Science Report Webpage\n저장 주소: https://science.example/report\n브라우저\nBrowser\n원본 파일\n남아 있음\n바로가기\n연결됨\n웹페이지\n서버에 있음\n북마크\n주소 연결됨\n바로가기로 열기\nOpen the Shortcut\n원본을 완료 폴더로 이동\nMove the Original\n바로가기 삭제\nDelete the Shortcut\n처음 상태\nReset\n\n바로가기\n에는 원본 파일의 경로가 기록되어 있습니다. 열기·이동·삭제를 실행해 원본과 연결의 상태를 비교하세요.\n\n바로가기와 북마크는 원본의 사본이 아니라 ‘어디로 갈지’ 적어 둔 연결입니다. 연결만 지우면 원본은 남지만, 원본 파일이 옮겨지거나 웹 주소가 바뀌면 열리지 않을 수 있습니다.",
+    "errors": []
+  },
+  {
+    "id": "e05",
+    "title": "20차시. USB·클라우드·동기화·백업·ZIP은 어떻게 다를까?",
+    "layouts": [
+      {
+        "width": 1440,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 390,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [
+          "BUTTON.",
+          "SMALL.",
+          "BUTTON.",
+          "SMALL."
+        ],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      }
+    ],
+    "controls": [
+      {
+        "tag": "BUTTON",
+        "text": "USB USB Storage",
+        "id": "",
+        "attrs": "data-storage-mode-choice=usb",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "클라우드 Cloud Storage",
+        "id": "",
+        "attrs": "data-storage-mode-choice=cloud",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "동기화 Synchronization",
+        "id": "",
+        "attrs": "data-storage-mode-choice=sync",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "백업 Backup",
+        "id": "",
+        "attrs": "data-storage-mode-choice=backup",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "ZIP ZIP Archive",
+        "id": "",
+        "attrs": "data-storage-mode-choice=zip",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "USB에 사본 만들기 Copy to USB",
+        "id": "",
+        "attrs": "data-storage-action=",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "이 실험 처음부터 Reset Experiment",
+        "id": "",
+        "attrs": "data-storage-reset=",
+        "type": "button",
+        "value": "",
+        "visible": true
+      }
+    ],
+    "labText": "현재 작업본\nCurrent Working File\n발표.pptx · v1 · 내 Chromebook\nUSB\nUSB Storage\n클라우드\nCloud Storage\n동기화\nSynchronization\n백업\nBackup\nZIP\nZIP Archive\n내 Chromebook\n발표.pptx · v1\n사본 만들기\nCopy →\nUSB 저장 장치\n아직 사본 없음\nUSB에 사본 만들기\nCopy to USB\n이 실험 처음부터\nReset Experiment\n무엇인가?\n직접 꽂는 별도 저장 위치\n자동으로 맞춰지나?\n아니요\n과거 상태를 되찾나?\n사본을 따로 남겼을 때 가능\n여러 파일을 묶나?\n아니요\n\nUSB 저장 장치:\n기기에 직접 꽂는 별도 저장 위치입니다. 먼저 작업본의 사본을 만들어 보세요.\n\nUSB·클라우드는 ‘어디에 둘지’, 동기화·백업은 ‘파일 사이를 어떻게 유지할지’, ZIP은 ‘여러 파일을 어떤 형식으로 묶을지’를 나타냅니다. 하나를 했다고 나머지가 자동으로 일어나는 것은 아닙니다.",
+    "errors": []
+  },
+  {
+    "id": "f01",
+    "title": "21차시. 픽셀·해상도·화면 크기·배율은 어떻게 다를까?",
+    "layouts": [
+      {
+        "width": 1440,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 390,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [
+          "DIV.scale-ui",
+          "SPAN.",
+          "I.",
+          "I.",
+          "I.",
+          "I."
+        ],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      }
+    ],
+    "controls": [
+      {
+        "tag": "BUTTON",
+        "text": "같은 화면 크기 Same Screen Size",
+        "id": "",
+        "attrs": "data-display-mode=same-size",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "같은 해상도 Same Resolution",
+        "id": "",
+        "attrs": "data-display-mode=same-resolution",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "열기 Open",
+        "id": "",
+        "attrs": "data-scale-open=",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "100%",
+        "id": "",
+        "attrs": "data-ui-scale-choice=100",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "150%",
+        "id": "",
+        "attrs": "data-ui-scale-choice=150",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "200%",
+        "id": "",
+        "attrs": "data-ui-scale-choice=200",
+        "type": "button",
+        "value": "",
+        "visible": true
+      }
+    ],
+    "labText": "같은 화면 크기\nSame Screen Size\n같은 해상도\nSame Resolution\n12 × 8 픽셀 모형\n픽셀 칸이 큼\n24 × 16 픽셀 모형\n가로·세로 2배, 전체 픽셀 4배\n\n같은 화면 크기:\n오른쪽은 같은 넓이에 가로·세로 픽셀이 2배라 전체 픽셀 수가 4배입니다. 한 칸이 더 작고 촘촘합니다.\n\n표시 배율 Display Scaling\n100%\n과제 파일\n열기 Open\n글자와 단추는 더 많은 픽셀을 차지하지만 화면 해상도는 그대로입니다.\n100%\n150%\n200%\n\n학습 모형: 12×8과 24×16은 차이를 크게 보여 주기 위한 격자입니다. 실제 화면은 훨씬 많은 픽셀을 사용합니다.\n\n1920×1080은 화면의 실제 길이가 아니라 가로와 세로 픽셀 수입니다. 글씨가 작으면 권장 해상도는 유지하고 표시 배율이나 글자 크기를 올릴 수 있습니다.",
+    "errors": []
+  },
+  {
+    "id": "f02",
+    "title": "22차시. RGB 색과 래스터·벡터·JPG·PNG·WebP는 어떤 관계일까?",
+    "layouts": [
+      {
+        "width": 1440,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 390,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      }
+    ],
+    "controls": [
+      {
+        "tag": "BUTTON",
+        "text": "1. RGB 빛 RGB Light",
+        "id": "",
+        "attrs": "data-image-panel-choice=rgb",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "2. 래스터·벡터 Raster and Vector",
+        "id": "",
+        "attrs": "data-image-panel-choice=structure",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "3. JPG·PNG·WebP File Formats",
+        "id": "",
+        "attrs": "data-image-panel-choice=format",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "text": "",
+        "id": "",
+        "attrs": "data-color-channel=red",
+        "type": "range",
+        "value": "210",
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "text": "",
+        "id": "",
+        "attrs": "data-color-channel=green",
+        "type": "range",
+        "value": "126",
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "text": "",
+        "id": "",
+        "attrs": "data-color-channel=blue",
+        "type": "range",
+        "value": "48",
+        "visible": true
+      }
+    ],
+    "labText": "1. RGB 빛\nRGB Light\n2. 래스터·벡터\nRaster and Vector\n3. JPG·PNG·WebP\nFile Formats\nR 210 · G 126 · B 48\n빨강 빛\nRed\n초록 빛\nGreen\n파랑 빛\nBlue\n\nRGB는 파일 형식이 아니라 화면 픽셀에서 빨강·초록·파랑 빛의 밝기를 정하는 값입니다.\n\nRGB:\n세 빛의 밝기 값을 바꿔 화면 픽셀이 내는 색을 관찰하세요. RGB는 파일 형식이 아닙니다.\n\nRGB는 화면이 색을 만드는 방법입니다. 래스터와 벡터는 그림을 기록하는 구조이고, JPG·PNG·WebP·SVG는 그 그림을 파일로 저장하는 형식입니다.",
+    "errors": []
+  },
+  {
+    "id": "f03",
+    "title": "23차시. 소리 샘플·영상 프레임·스크린샷·화면 녹화는 무엇일까?",
+    "layouts": [
+      {
+        "width": 1440,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [
+          "BUTTON.",
+          "I."
+        ],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 390,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [
+          "BUTTON.",
+          "I.",
+          "BUTTON.",
+          "I.",
+          "BUTTON.",
+          "I."
+        ],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      }
+    ],
+    "controls": [
+      {
+        "tag": "BUTTON",
+        "text": "영상 프레임 Video Frames",
+        "id": "media-tab-video",
+        "attrs": "data-media-panel-choice=video",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "소리 샘플링 Audio Sampling",
+        "id": "media-tab-audio",
+        "attrs": "data-media-panel-choice=audio",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "화면 캡처 Screen Capture",
+        "id": "media-tab-capture",
+        "attrs": "data-media-panel-choice=capture",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "순서대로 재생Play in Order",
+        "id": "",
+        "attrs": "data-video-play=",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "공이 화면 왼쪽에서 움직이기 시작합니다.",
+        "id": "",
+        "attrs": "data-media-video-frame=0,data-frame-x=12%,data-frame-y=0px,data-frame-description=공이 화면 왼쪽에서 움직이기 시작합니다.",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "다음 그림에서는 공이 오른쪽 위로 이동했습니다.",
+        "id": "",
+        "attrs": "data-media-video-frame=1,data-frame-x=26%,data-frame-y=-24px,data-frame-description=다음 그림에서는 공이 오른쪽 위로 이동했습니다.",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "그림을 시간 순서대로 빠르게 보면 움직임으로 느껴집니다.",
+        "id": "",
+        "attrs": "data-media-video-frame=2,data-frame-x=42%,data-frame-y=-38px,data-frame-description=그림을 시간 순서대로 빠르게 보면 움직임으로 느껴집니다.",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "각 프레임은 서로 조금씩 다른 한 장의 그림입니다.",
+        "id": "",
+        "attrs": "data-media-video-frame=3,data-frame-x=58%,data-frame-y=-30px,data-frame-description=각 프레임은 서로 조금씩 다른 한 장의 그림입니다.",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "뒤의 프레임일수록 공이 화면 오른쪽에 있습니다.",
+        "id": "",
+        "attrs": "data-media-video-frame=4,data-frame-x=74%,data-frame-y=-10px,data-frame-description=뒤의 프레임일수록 공이 화면 오른쪽에 있습니다.",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "마지막 그림까지 순서대로 이어져 하나의 영상이 됩니다.",
+        "id": "",
+        "attrs": "data-media-video-frame=5,data-frame-x=86%,data-frame-y=0px,data-frame-description=마지막 그림까지 순서대로 이어져 하나의 영상이 됩니다.",
+        "type": "button",
+        "value": "",
+        "visible": true
+      }
+    ],
+    "labText": "영상 프레임\nVideo Frames\n소리 샘플링\nAudio Sampling\n화면 캡처\nScreen Capture\n영상은 시간 순서대로 이어진 여러 장의 그림입니다.\nA video is a sequence of frames shown over time.\n\n공이 화면 왼쪽에서 움직이기 시작합니다.\n\n순서대로 재생\nPlay in Order\n\n필름스트립의 그림을 누르면 그 순간을 자세히 볼 수 있습니다.\n\n스크린샷은 한 순간을 남기고, 화면 녹화는 누르기 전부터 결과가 나타날 때까지의 변화를 남깁니다. 소리는 짧은 간격의 측정값, 영상은 시간 순서로 이어지는 프레임으로 기록됩니다.",
+    "errors": []
+  },
+  {
+    "id": "g01",
+    "title": "24차시. 아날로그와 디지털, 0과 1은 어떤 관계일까?",
+    "layouts": [
+      {
+        "width": 1440,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 390,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      }
+    ],
+    "controls": [
+      {
+        "tag": "INPUT",
+        "text": "",
+        "id": "",
+        "attrs": "data-sample-index=",
+        "type": "range",
+        "value": "3",
+        "visible": true
+      }
+    ],
+    "labText": "따뜻함\n센서가 잰 값\n23.4°C\n정해진 칸으로 기록\n23°C\n00010111\n측정할 순간 움직이기\n\n이 실험의 기록 규칙: 온도를 1℃ 단위 정수로 반올림한 뒤, 그 숫자를 8칸 이진수로 적습니다.\n\n현실의 온도는 이어져 바뀝니다. 센서는 정한 순간의 값을 재고, 기기는 정해 둔 기록 규칙에 따라 숫자로 바꿉니다.\n\n목소리를 녹음할 때는 공기의 이어지는 진동을 마이크가 전기 신호로 바꾸고, 컴퓨터가 그 신호를 매우 짧은 간격으로 재어 숫자로 저장합니다.",
+    "errors": []
+  },
+  {
+    "id": "g02",
+    "title": "25차시. bit·byte·KB·MB·GB·TB는 어떻게 커질까?",
+    "layouts": [
+      {
+        "width": 1440,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 390,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      }
+    ],
+    "controls": [
+      {
+        "tag": "BUTTON",
+        "text": "128의 자리0",
+        "id": "",
+        "attrs": "data-bit-index=0,data-bit-place=128",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "64의 자리0",
+        "id": "",
+        "attrs": "data-bit-index=1,data-bit-place=64",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "32의 자리0",
+        "id": "",
+        "attrs": "data-bit-index=2,data-bit-place=32",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "16의 자리0",
+        "id": "",
+        "attrs": "data-bit-index=3,data-bit-place=16",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "8의 자리0",
+        "id": "",
+        "attrs": "data-bit-index=4,data-bit-place=8",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "4의 자리0",
+        "id": "",
+        "attrs": "data-bit-index=5,data-bit-place=4",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "2의 자리0",
+        "id": "",
+        "attrs": "data-bit-index=6,data-bit-place=2",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "1의 자리0",
+        "id": "",
+        "attrs": "data-bit-index=7,data-bit-place=1",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "BByte",
+        "id": "",
+        "attrs": "data-unit-index=0",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "KBKilobyte",
+        "id": "",
+        "attrs": "data-unit-index=1",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "MBMegabyte",
+        "id": "",
+        "attrs": "data-unit-index=2",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "GBGigabyte",
+        "id": "",
+        "attrs": "data-unit-index=3",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "TBTerabyte",
+        "id": "",
+        "attrs": "data-unit-index=4",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "text": "",
+        "id": "",
+        "attrs": "data-unit-amount=",
+        "type": "range",
+        "value": "3",
+        "visible": true
+      }
+    ],
+    "labText": "8개의 비트로 한 바이트 읽기\nReading One Byte from 8 Bits\n\n버튼을 눌러 0과 1을 바꾸세요. 왼쪽 자리는 128, 오른쪽 자리는 1의 값을 가집니다.\n\n128의 자리\n0\n64의 자리\n0\n32의 자리\n0\n16의 자리\n0\n8의 자리\n0\n4의 자리\n0\n2의 자리\n0\n1의 자리\n0\n8비트 패턴\n8-bit Pattern\n0000 0000\n십진값\nDecimal Value\n0\n0부터 255\n1의 개수\nNumber of 1s\n0\n켜진 비트 수\n바이트 수\nByte Count\n1 B\n8칸 전체\n\n1의 개수와 바이트 수는 다릅니다. 0000 0000도 1은 0개이지만, 비트 자리가 8개이므로 크기는 1바이트입니다.\n\n바이트 단위 사다리\nDecimal Byte-unit Ladder\n\n단위를 선택하고 데이터 양을 바꾸어 같은 크기가 서로 다른 숫자로 적히는 모습을 관찰하세요.\n\nB\nByte\nKB\nKilobyte\nMB\nMegabyte\nGB\nGigabyte\nTB\nTerabyte\n선택한 단위의 양\nAmount\n3\n같은 데이터 양\nSame Data Size\n3 MB = 3,000 KB = 3,000,000 B\n\nMB에서 KB로 한 칸 내려오면 숫자는 1000배가 됩니다.\n\n1000 기준과 1024 기준\nDecimal and Binary Prefixes\n\n이 사다리의 KB·MB·GB·TB는 SI 십진 단위라서 한 칸마다 1000배입니다. KiB·MiB·GiB는 이진 접두어를 쓴 1024배 단위입니다. 따라서 1 KB = 1000 B, 1 KiB = 1024 B입니다.\n\n단위는 bit < byte < KB < MB < GB < TB 순으로 커집니다. 소문자 b는 bit, 대문자 B는 byte를 뜻하므로 ‘100 Mb/s’와 ‘100 MB/s’는 같은 양이 아닙니다.",
+    "errors": []
+  },
+  {
+    "id": "g03",
+    "title": "26차시. 인코딩·압축·파일 크기·전송 속도는 어떤 관계일까?",
+    "layouts": [
+      {
+        "width": 1440,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 390,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      }
+    ],
+    "controls": [
+      {
+        "tag": "INPUT",
+        "text": "",
+        "id": "",
+        "attrs": "data-utf8-input=",
+        "type": "text",
+        "value": "A가",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "UTF-8 바이트 확인 Encode",
+        "id": "",
+        "attrs": "data-utf8-run=",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "text": "",
+        "id": "",
+        "attrs": "data-compression-quality=",
+        "type": "range",
+        "value": "75",
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "text": "",
+        "id": "",
+        "attrs": "data-transfer-speed=",
+        "type": "range",
+        "value": "2",
+        "visible": true
+      }
+    ],
+    "labText": "글자를 실제 바이트로 바꾸기\nEncode Text as UTF-8 Bytes\n\nUTF-8은 글자마다 저장할 바이트의 순서를 정한 문자 인코딩입니다. 같은 두 글자라도 어떤 글자인지에 따라 바이트 수가 달라집니다.\n\n저장할 글자\nText to Encode\nUTF-8 바이트 확인\nEncode\n입력\n확인 전\n바이트 수\n— B\n버튼을 눌러 실제 값을 확인하세요.\n\n영문 A와 한글 가를 함께 인코딩해 바이트 묶음을 비교해 보세요.\n\n같은 그림을 WebP 파일로 저장하기\nSave the Same Image as a WebP File\n\n그림은 그대로 두고 사진 품질만 바꿉니다. 저장된 파일의 크기와 전송 시간을 직접 비교하세요.\n\n인코딩 전 픽셀\nSource Pixels\nCanvas 768 × 512 px\nWebP\n파일로 저장\n→\n실제 인코딩 결과\nEncoded Result\n품질 75% · 실제 결과\n저장 전 그림 데이터\nImage Data Before Saving\n1,572,864 B\n작업할 때 펼쳐 둔 데이터의 양\n저장된 WebP 파일\nSaved WebP File\n14.5 KB\n14,534 B\n저장 전 데이터와 비교\nSize Compared with Image Data\n0.9%\nimage/webp\n사진 품질\nImage Quality\n75%\n전송 속도\nTransfer Speed\n2.0 MB/s\n파일 크기\n0.0145 MB\n전송 속도\n2.0 MB/s\n예상 전송 시간 0.0073\n초 seconds\n실제 측정 방식 더 알아보기\nHow the Browser Measures It\n보내는 시간은 대략 ‘파일 크기 ÷ 실제 전송 속도’로 구합니다. 8 MB 파일을 초당 2 MB로 보내면 약 4초가 걸리지만, 실제로는 Wi-Fi 상태와 서버 처리 때문에 더 길어질 수 있습니다.",
+    "errors": []
+  },
+  {
+    "id": "h01",
+    "title": "27차시. 네트워크·Wi-Fi·공유기·인터넷은 어떻게 이어질까?",
+    "layouts": [
+      {
+        "width": 1440,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 390,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      }
+    ],
+    "controls": [
+      {
+        "tag": "BUTTON",
+        "text": "Wi-Fi 연결켜짐기기 ↔ 공유기",
+        "id": "",
+        "attrs": "data-network-link=wifi",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "인터넷 회선켜짐공유기 ↔ 인터넷",
+        "id": "",
+        "attrs": "data-network-link=internet",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "서버 연결켜짐인터넷 ↔ 서버",
+        "id": "",
+        "attrs": "data-network-link=server",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "패킷 한 단계 보내기 Send Packet One Step",
+        "id": "",
+        "attrs": "data-network-send=",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "모두 켜고 처음부터 Reset All Links",
+        "id": "",
+        "attrs": "data-network-reset=",
+        "type": "button",
+        "value": "",
+        "visible": true
+      }
+    ],
+    "labText": "요청 패킷의 길을 직접 시험하기\nNetwork Path Test\n\n연결을 끄거나 켠 뒤 패킷을 한 단계씩 보내, 어느 연결 지점에서 멈추는지 확인하세요.\n\n기기→공유기→인터넷→서버\nDevice → Router → Internet → Server\n1\n내 기기\nDevice\n\n수업 사이트 요청을 작은 패킷으로 준비합니다.\n\n요청 패킷\nWi-Fi 연결\n켜짐\n기기 ↔ 공유기\n2\nWi-Fi 공유기\nRouter\n\n목적지를 보고 인터넷 쪽 길로 전달합니다.\n\n인터넷 회선\n켜짐\n공유기 ↔ 인터넷\n3\n인터넷\nInternet\n\n이어진 여러 네트워크가 서버까지 길을 만듭니다.\n\n서버 연결\n켜짐\n인터넷 ↔ 서버\n4\n수업 서버\nServer\n\n도착한 요청을 읽고 필요한 페이지를 찾습니다.\n\n패킷 한 단계 보내기\nSend Packet One Step\n모두 켜고 처음부터 Reset All Links\n\n패킷은 내 기기에 있습니다. 연결 하나를 끄거나 그대로 첫 단계를 보내 보세요.\n\nWi-Fi 표시는 내 기기와 가까운 공유기의 연결 상태를 보여 줍니다. 그 뒤의 인터넷 회선이나 목적지 서버에 문제가 생기면 Wi-Fi가 연결되어도 웹페이지가 열리지 않을 수 있습니다.",
+    "errors": []
+  },
+  {
+    "id": "h02",
+    "title": "28차시. 클라이언트·서버·요청·응답·URL·DNS는 어떻게 이어질까?",
+    "layouts": [
+      {
+        "width": 1440,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 390,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      }
+    ],
+    "controls": [
+      {
+        "tag": "INPUT",
+        "text": "",
+        "id": "webRequestAddress",
+        "attrs": "data-request-address=",
+        "type": "text",
+        "value": "https://animals.example/otter",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "주소 읽기 Read the Address",
+        "id": "",
+        "attrs": "data-request-action=",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "처음부터 Reset",
+        "id": "",
+        "attrs": "data-request-reset=",
+        "type": "button",
+        "value": "",
+        "visible": true
+      }
+    ],
+    "labText": "주소에서 페이지가 나타날 때까지 실행하기\nWeb Request States\n\n한 번 누를 때마다 URL 읽기, DNS 조회, 요청, 응답, 화면 표시가 한 단계씩 실제로 바뀝니다.\n\nURL→DNS→서버→페이지\nURL → DNS → Server → Page\n브라우저 주소창 Address Bar · URL (Uniform Resource Locator)\n통신 방법\n읽기 전\n도메인 이름\n읽기 전\n페이지 경로\n읽기 전\nDNS 이름 조회\nDomain Name System\n조회 전\n묻는 이름\n—\n찾은 IP 주소\nInternet Protocol Address\n—\n브라우저의 요청\n↓\n웹 서버\nWeb Server\n요청 대기\n받은 요청\n아직 요청 없음\n찾은 자료\n—\n브라우저\nBrowser\n— □ ×\n서버 응답\nResponse\n아직 응답 없음\n페이지 표시 전\n주소 읽기\nRead the Address\n처음부터 Reset\n\n주소창의 URL을 읽기 전입니다. URL은 서버의 숫자 주소나 페이지 내용 그 자체가 아닙니다.\n\n웹페이지는 주소 입력 → 서버 위치 찾기 → 페이지 요청 → 서버의 응답 → 화면 표시 순서로 열립니다. 어느 단계에서 멈췄는지 나누어 보면 문제의 위치도 찾기 쉽습니다.",
+    "errors": []
+  },
+  {
+    "id": "h03",
+    "title": "29차시. 브라우저·검색 엔진·웹사이트·탭·링크는 무엇이 다를까?",
+    "layouts": [
+      {
+        "width": 1440,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 390,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      }
+    ],
+    "controls": [
+      {
+        "tag": "BUTTON",
+        "text": "교실 검색",
+        "id": "",
+        "attrs": "data-browser-tab-id=1",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "＋ 새 탭 New Tab",
+        "id": "",
+        "attrs": "data-browser-new-tab=",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "←뒤로",
+        "id": "",
+        "attrs": "data-browser-back=",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "text": "",
+        "id": "browserSearchInput",
+        "attrs": "data-browser-search-input=",
+        "type": "text",
+        "value": "혜성의 꼬리는 왜 생길까?",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "검색 Search",
+        "id": "",
+        "attrs": "",
+        "type": "submit",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "혜성 Comet",
+        "id": "",
+        "attrs": "data-browser-suggestion=혜성",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "수달 Otter",
+        "id": "",
+        "attrs": "data-browser-suggestion=수달",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "강 River",
+        "id": "",
+        "attrs": "data-browser-suggestion=강",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "달 Moon",
+        "id": "",
+        "attrs": "data-browser-suggestion=달",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "날씨 Weather",
+        "id": "",
+        "attrs": "data-browser-suggestion=날씨",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "주소 Address",
+        "id": "",
+        "attrs": "data-browser-term=address",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "탭 Tab",
+        "id": "",
+        "attrs": "data-browser-term=tab",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "검색 엔진 Search Engine",
+        "id": "",
+        "attrs": "data-browser-term=search",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "웹사이트 Website",
+        "id": "",
+        "attrs": "data-browser-term=site",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "웹페이지 Webpage",
+        "id": "",
+        "attrs": "data-browser-term=page",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "링크 Link",
+        "id": "",
+        "attrs": "data-browser-term=link",
+        "type": "button",
+        "value": "",
+        "visible": true
+      }
+    ],
+    "labText": "교실 검색\n＋ 새 탭\nNew Tab\n←\n뒤로\n현재 주소\nCurrent URL\nhttps://search.local/\n교실 검색\nClass Search\n\n검색어와 관련된 로컬 웹페이지를 찾아 결과 목록으로 보여 주는 검색 서비스입니다.\n\n찾고 싶은 내용 Search Query\n검색\nSearch\n검색 가능한 자료 Available Topics\n혜성\nComet\n수달\nOtter\n강\nRiver\n달\nMoon\n날씨\nWeather\n\n검색어를 직접 입력하고 검색을 실행해 보세요. 검색 결과도 브라우저 안에 표시되는 웹페이지입니다.\n\n현재 화면에서 찾기\nLocate the Term\n주소 Address\n탭 Tab\n검색 엔진 Search Engine\n웹사이트 Website\n웹페이지 Webpage\n링크 Link\nChrome과 Safari는 웹페이지를 여는 브라우저입니다. Google Search와 Bing은 찾을 말을 받아 관련 페이지를 골라 주는 검색 엔진입니다.",
+    "errors": []
+  },
+  {
+    "id": "h04",
+    "title": "30차시. 온라인 문제를 제출하면 어디에서 채점할까?",
+    "layouts": [
+      {
+        "width": 1440,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 390,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      }
+    ],
+    "controls": [
+      {
+        "tag": "BUTTON",
+        "text": "2",
+        "id": "",
+        "attrs": "data-stack-answer=2",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "3",
+        "id": "",
+        "attrs": "data-stack-answer=3",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "4",
+        "id": "",
+        "attrs": "data-stack-answer=4",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "답 제출 Submit Answer",
+        "id": "",
+        "attrs": "data-stack-start=",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "다음 단계 Next Step",
+        "id": "",
+        "attrs": "data-stack-next=",
+        "type": "button",
+        "value": "",
+        "visible": true
+      }
+    ],
+    "labText": "학생의 기기\nStudent Device\n문제 화면\nFrontend\n\n2 + 1은?\n\n2\n3\n4\n아직 점수 없음\n답 요청 봉투\nRequest Data\nPOST /answers\n{ answer: — }\nAPI\n주소·방법·데이터 이름·결과 모양의 약속\n채점 결과 봉투\nResponse Data\n200 OK\n{ score: — }\n수업 서버\nLesson Server\n채점 규칙\nBackend\n\n받은 답과 정답을 비교\n\n— = 3 ?\n처리 전\n정답 읽기 ↓\n점수 쓰기 ↑\n점수표\nDatabase\n학생\t정답\t점수\n학생 17\t3\t4\n고른 답\nSelected Answer\n선택 전\n서버 계산\nBackend Result\n처리 전\n저장된 점수\nStored Score\n4점\n화면 점수\nDisplayed Score\n표시 전\n답 제출\nSubmit Answer\n\n먼저 문제 화면에서 답 하나를 고르세요. 답은 아직 학생 기기 안에만 있습니다.\n\n다음 단계\nNext Step\n정답표와 다른 학생의 점수는 내 문제 화면에 모두 두지 않습니다. 서버가 필요한 내용을 확인하고 내 결과만 화면으로 보내 줍니다.",
+    "errors": []
+  },
+  {
+    "id": "h05",
+    "title": "31차시. 다운로드·업로드·쿠키·캐시·배포는 어떤 역할일까?",
+    "layouts": [
+      {
+        "width": 1440,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 390,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      }
+    ],
+    "controls": [
+      {
+        "tag": "BUTTON",
+        "text": "다운로드 Download",
+        "id": "transfer-tab-download",
+        "attrs": "data-transfer-mode-choice=download",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "업로드 Upload",
+        "id": "transfer-tab-upload",
+        "attrs": "data-transfer-mode-choice=upload",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "쿠키 Cookie",
+        "id": "transfer-tab-cookie",
+        "attrs": "data-transfer-mode-choice=cookie",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "캐시 Cache",
+        "id": "transfer-tab-cache",
+        "attrs": "data-transfer-mode-choice=cache",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "배포 Deployment",
+        "id": "transfer-tab-deploy",
+        "attrs": "data-transfer-mode-choice=deploy",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "내 기기로 다운로드 Download to My Device",
+        "id": "",
+        "attrs": "data-transfer-action=",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "초기화 Reset",
+        "id": "",
+        "attrs": "data-transfer-reset=",
+        "type": "button",
+        "value": "",
+        "visible": true
+      }
+    ],
+    "labText": "다운로드 Download\n업로드 Upload\n쿠키 Cookie\n캐시 Cache\n배포 Deployment\n서버 파일을 내 기기로 받기\nDownload\n\n서버의 원본을 없애지 않고 내 기기에 사본을 만듭니다.\n\n웹 서버\nServer\n별자리\n.webp\n원본 1개\n서버 → 내 기기\n→\n내 기기 · 다운로드 폴더\nDevice\n파일 없음\n\n서버에는 원본 1개가 있고, 내 기기에는 아직 사본이 없습니다.\n\n내 기기로 다운로드\nDownload to My Device\n초기화 Reset\n다운로드·업로드는 데이터가 움직이는 방향, 쿠키는 사이트의 작은 상태 정보, 캐시는 다시 쓰는 임시 사본, 배포는 완성한 새 버전을 공개 서버에 올리는 과정입니다.",
+    "errors": []
+  },
+  {
+    "id": "i01",
+    "title": "32차시. 계정·프로필·로그인·권한·2단계 인증은 어떻게 이어질까?",
+    "layouts": [
+      {
+        "width": 1440,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 390,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      }
+    ],
+    "controls": [
+      {
+        "tag": "INPUT",
+        "text": "",
+        "id": "",
+        "attrs": "data-account-name=",
+        "type": "text",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "text": "",
+        "id": "",
+        "attrs": "data-account-secret=",
+        "type": "password",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "이전 Previous",
+        "id": "",
+        "attrs": "data-account-prev=",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "확인하고 다음 Check and Continue",
+        "id": "",
+        "attrs": "data-account-next=",
+        "type": "button",
+        "value": "",
+        "visible": true
+      }
+    ],
+    "labText": "관찰 Observe\n학생이 자기 계정을 고르고 비밀 정보와 등록 기기로 두 번 확인한 뒤 학생에게 허용된 과제와 파일에 들어가는 장면\n배움 교실\n과제\n내 파일\n학급 관리\n1. 연습용 계정으로 로그인\nSign In\n실습 계정 카드\n계정 이름\nstudent01\n연습용 비밀번호\ncedar27\n계정 이름\nUsername\n연습용 비밀번호\nPractice Password\n1\n식별·비밀번호\nIdentity & Password\n2\n등록 기기 확인\nSecond Factor\n3\n기능별 권한 확인\nAuthorization\n이전\nPrevious\n\n1. 식별·첫 번째 인증　계정 카드와 같은 두 정보를 직접 입력하세요.\n\n확인하고 다음\nCheck and Continue\n아이디를 입력하면 ‘나는 이 계정 사용자다’라고 알립니다. 비밀번호 등으로 맞는지 확인하는 것이 인증이고, 확인 뒤 할 수 있는 일을 정한 것이 권한입니다.",
+    "errors": []
+  },
+  {
+    "id": "i02",
+    "title": "33차시. 피싱·개인정보·저작권·디지털 발자국·기기 건강은 어떻게 판단할까?",
+    "layouts": [
+      {
+        "width": 1440,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 390,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      }
+    ],
+    "controls": [
+      {
+        "tag": "BUTTON",
+        "text": "오늘 10:18 Received Time",
+        "id": "",
+        "attrs": "data-evidence-choice=time,data-evidence-correct=false",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "학교 포털 지원팀notice@school-help.exampleVisible Sender Name",
+        "id": "",
+        "attrs": "data-evidence-choice=name,data-evidence-correct=false",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "10분 안에 계정을 확인하세요 Urgency",
+        "id": "",
+        "attrs": "data-evidence-choice=urgency,data-evidence-correct=true",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "계정을 계속 쓰려면 비밀번호와 등록 기기에 온 인증번호를 입력하세요. Password and Verification Code ",
+        "id": "",
+        "attrs": "data-evidence-choice=secret,data-evidence-correct=true",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "https://school.kr.login-help.example/login Link Address",
+        "id": "",
+        "attrs": "data-evidence-choice=link,data-evidence-correct=true",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "근거 확인 Check Evidence",
+        "id": "",
+        "attrs": "data-evidence-check=",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "다시 고르기 Choose Again",
+        "id": "",
+        "attrs": "data-evidence-reset=",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "개인정보 Privacy",
+        "id": "",
+        "attrs": "data-citizenship-choice=privacy",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "저작권·라이선스 Copyright & License",
+        "id": "",
+        "attrs": "data-citizenship-choice=copyright",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "디지털 발자국 Digital Footprint",
+        "id": "",
+        "attrs": "data-citizenship-choice=footprint",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "기기 건강 Digital Well-being",
+        "id": "",
+        "attrs": "data-citizenship-choice=wellbeing",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "누구나 Public",
+        "id": "",
+        "attrs": "data-privacy-audience=public",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "우리 학급 Class",
+        "id": "",
+        "attrs": "data-privacy-audience=class",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "나만 보기 Private",
+        "id": "",
+        "attrs": "data-privacy-audience=private",
+        "type": "button",
+        "value": "",
+        "visible": true
+      }
+    ],
+    "labText": "메시지 원문에서 위험 근거 세 곳을 직접 찾는다\nInspect the Message Itself\n\n이름이나 느낌이 아니라 실제 주소, 요구하는 정보, 재촉하는 표현을 원문에서 눌러 검사 기록에 담으세요.\n\n주소와 요구 정보 대조\nCompare the Address and Request\n받은 메시지\n오늘 10:18\nReceived Time\n학교가 알려 준 공식 주소\nhttps://portal.school.kr\nOfficial School Portal\n?\n학교 포털 지원팀\nnotice@school-help.example\nVisible Sender Name\n10분 안에 계정을 확인하세요\nUrgency\n계정을 계속 쓰려면 비밀번호와 등록 기기에 온 인증번호를 입력하세요.\nPassword and Verification Code Request\nhttps://school.kr.login-help.example/login\nLink Address\n주소 확대와 검사 기록 Address Magnifier and Evidence Record\n공식 주소 Official\nportal.\nschool.kr\n메시지 링크 Message Link\nschool.kr.\nlogin-help.example\n/login\n\n앞쪽의\nschool.kr\n이 아니라 주소 끝의 login-help.example이 실제 소유 부분입니다.\n\n1\n선택 안 함\n2\n선택 안 함\n3\n선택 안 함\n근거 확인\nCheck Evidence\n다시 고르기\nChoose Again\n\n메시지 안에서 근거 세 곳을 누르세요. 세 곳을 모두 고른 뒤에만 전체 판단을 확인할 수 있습니다.\n\n개인정보·저작권·디지털 발자국·기기 건강\nPrivacy, Copyright, Digital Footprint, and Device Health\n로고와 말투는 복사할 수 있습니다. 안전을 판단할 때는 주소창의 실제 사이트 주소, 요구하는 정보, 게시물을 볼 사람, 그림과 음악의 사용 조건처럼 확인 가능한 근거를 봅니다.",
+    "errors": []
+  },
+  {
+    "id": "j01",
+    "title": "34차시. 문제를 분해하고 순서가 분명한 알고리즘으로 만들려면?",
+    "layouts": [
+      {
+        "width": 1440,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 390,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      }
+    ],
+    "controls": [
+      {
+        "tag": "BUTTON",
+        "text": "처음부터 Reset",
+        "id": "",
+        "attrs": "data-algo-reset=",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "←",
+        "id": "",
+        "attrs": "data-algo-back=",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "이동 Move",
+        "id": "",
+        "attrs": "data-algo-move=",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "다운로드Downloads",
+        "id": "",
+        "attrs": "data-algo-location=downloads",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "과제 사진Assignment Photos",
+        "id": "",
+        "attrs": "data-algo-location=assignment",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "결과 확인 Verify Move",
+        "id": "",
+        "attrs": "data-algo-verify=",
+        "type": "button",
+        "value": "",
+        "visible": true
+      }
+    ],
+    "labText": "파일을 실제로 옮기며 실행 순서를 만든다\nBuild an Algorithm by Operating a File Manager\n\n문장 카드를 먼저 맞히지 않습니다. 파일 관리자에서 할 수 있는 동작을 차례로 실행하면 그 기록이 알고리즘이 됩니다.\n\n처음부터\nReset\n파일 관리자\nFile Manager\n— □ ×\n←\n내 파일\n이동\nMove\n다운로드\nDownloads\n과제 사진\nAssignment Photos\n다운로드\nDownloads\n과제 사진\nAssignment Photos\n\n이곳을 목적지로 고르거나 river.webp를 끌어 놓으세요.\n\n왼쪽 위치 목록에서 다운로드 폴더를 먼저 여세요.\n1\n다운로드 열기\nOpen Downloads\n다음 동작\n2\nriver.webp 선택\nSelect File\n대기\n3\n목적지 정하기\nChoose Destination\n대기\n4\n파일 이동\nMove File\n대기\n5\n출발·도착 확인\nVerify Both Locations\n대기\n결과 확인\nVerify Move\n\n실행 전입니다. 알고리즘은 컴퓨터가 실행할 수 있을 만큼 대상과 순서가 분명해야 합니다.\n\n‘사진을 잘 정리해’만으로는 어느 사진을 어디로 옮길지 알 수 없습니다. 시작 자료, 한 단계의 정확한 행동, 다음 단계로 가는 조건, 끝난 모습을 분명히 적습니다.",
+    "errors": []
+  },
+  {
+    "id": "j02",
+    "title": "35차시. 이벤트·조건·반복은 프로그램의 흐름을 어떻게 바꿀까?",
+    "layouts": [
+      {
+        "width": 1440,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 390,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "lab",
+        "overflow": true,
+        "culprits": [
+          "LI.",
+          "SPAN.",
+          "SMALL.",
+          "EM.",
+          "DIV.control-observation",
+          "P.lab-readout",
+          "BUTTON.",
+          "SMALL."
+        ],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      }
+    ],
+    "controls": [
+      {
+        "tag": "BUTTON",
+        "text": "로봇 누르기Click Robot",
+        "id": "",
+        "attrs": "data-control-robot=",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "← 왼쪽Move Left",
+        "id": "",
+        "attrs": "data-control-move=-1",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "오른쪽 →Move Right",
+        "id": "",
+        "attrs": "data-control-move=1",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "처음부터 Reset",
+        "id": "",
+        "attrs": "data-control-reset=",
+        "type": "button",
+        "value": "",
+        "visible": true
+      }
+    ],
+    "labText": "로봇을 별과 같은 칸에 놓고 로봇을 누른다\nPlace the Robot on the Star, Then Click It\n\n화살표는 위치만 바꿉니다. 로봇을 누르는 순간 프로그램이 조건을 검사하고 서로 다른 명령을 실행합니다.\n\n모은 별\nCollected\n0 / 3\n왼쪽\nLeft\n가운데\nCenter\n오른쪽\nRight\n로봇 누르기\nClick Robot\n← 왼쪽\nMove Left\n오른쪽 →\nMove Right\n로봇 칸\nRobot Lane\n왼쪽\n별 칸\nStar Lane\n오른쪽\n조건 결과\nCondition\n아직 검사 안 함\n1\n로봇을 누름\nEvent\n대기\n2\n로봇 칸 = 별 칸?\nCondition\n대기\n3\n참: 별 +1\n거짓: 그대로\nBranch\n대기\n4\n별이 남으면 새 위치로 반복\nLoop\n대기\n\n현재 로봇은 왼쪽, 별은 오른쪽에 있습니다. 위치를 바꾸고 로봇을 눌러 보세요.\n\n실행 기록이 여기에 쌓입니다.\n처음부터\nReset\n로봇을 누르면 클릭 사건이 생깁니다. 프로그램은 로봇과 별의 칸이 같은지 비교하고, 참이면 별을 더하고 거짓이면 점수를 그대로 둡니다. 별이 남아 있으면 새 위치에서 같은 검사를 반복합니다.",
+    "errors": []
+  },
+  {
+    "id": "j03",
+    "title": "36차시. 사진이 보이지 않는 프로그램을 입력·처리·출력·저장으로 점검하려면?",
+    "layouts": [
+      {
+        "width": 1440,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 1440,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 768,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 101.5
+      },
+      {
+        "width": 390,
+        "view": "read",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "lab",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "apply",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      },
+      {
+        "width": 390,
+        "view": "check",
+        "overflow": false,
+        "culprits": [],
+        "top": 104.1875
+      }
+    ],
+    "controls": [
+      {
+        "tag": "BUTTON",
+        "text": "실행 Run",
+        "id": "",
+        "attrs": "data-debug-run=",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "text": "",
+        "id": "",
+        "attrs": "data-debug-code=",
+        "type": "text",
+        "value": "/picture/",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "cat.webpSame-input Retest",
+        "id": "",
+        "attrs": "data-debug-case=cat,data-debug-src=../assets/images/j03-cat-file.webp,data-debug-alt=주황색 고양이 사진",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "dog.webpExisting File",
+        "id": "",
+        "attrs": "data-debug-case=dog,data-debug-src=../assets/images/j03-dog-file.webp,data-debug-alt=갈색 강아지 사진",
+        "type": "button",
+        "value": "",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "text": "bird.webpMissing File",
+        "id": "",
+        "attrs": "data-debug-case=missing",
+        "type": "button",
+        "value": "",
+        "visible": true
+      }
+    ],
+    "labText": "오류 재현 → 경로 수정 → 재시험\nReproduce → Fix Path → Retest\n디버깅 절차 Debugging Workflow\n같은 입력으로 오류를 다시 만든 뒤 원인 하나만 고친다\n\ncat.webp는 그대로 두고 프로그램의 기본 폴더만 비교합니다. 고친 뒤에는 같은 사진, 다른 사진, 없는 사진을 차례로 시험합니다.\n\n파일 경로 검사기\nFile Path Tester\n실행\nRun\n실제 저장 폴더\nActual Storage Folder\n/pictures/\n2개 파일\ncat.webp\nImage File\ndog.webp\nImage File\n▶\n실행 전\n실행하면 프로그램이 찾은 사진이나 오류가 이곳에 나타납니다.\n\n선택한 사진\nSelected Input\ncat.webp\n\n프로그램에 적힌 기본 폴더\nBase Folder in the Program\n\n파일 앱에서 확인한 실제 폴더\nActual Folder in the File App\n/pictures/\n\n사진 입력은 cat.webp로 그대로 두고, 프로그램이 앞에 붙이는 폴더 이름의 한 글자를 고치세요.\n아직 실행하지 않았습니다.\n나머지 입력 두 개 시험하기\nRegression Test\n\n고양이 사진 재시험이 통과하면 다른 파일과 없는 파일이 활성화됩니다. 수정이 한 사례에만 맞춘 것은 아닌지 확인하세요.\n\ncat.webp\nSame-input Retest\ndog.webp\nExisting File\nbird.webp\nMissing File\ncat.webp: 같은 입력 재시험 전\ndog.webp: 아직 시험하지 않음\nbird.webp: 아직 시험하지 않음\n입력\nInput\n선택한 사진 cat.webp\n저장\nStorage\n실제 파일 /pictures/cat.webp\n처리\nProcessing\n기본 폴더 /picture/ + 파일 이름 → 실행 전\n출력\nOutput\n아직 결과 없음\n1\n오류 다시 만들기\nReproduce\n2\n두 경로 비교하기\nObserve\n3\n원인 하나 고치기\nFix\n4\n같은 입력 재시험\nRetest\n5\n다른 입력 시험\nRegression Test\n디버깅은 코드를 여러 곳 한꺼번에 바꾸는 일이 아닙니다. ‘같은 문제 만들기 → 예상과 실제 비교 → 달라지기 시작한 단계 찾기 → 한 곳 수정 → 다시 시험’ 순서로 진행합니다.",
+    "errors": []
+  }
+]

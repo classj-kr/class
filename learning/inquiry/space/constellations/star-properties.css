@@ -16,8 +16,6 @@
 .sp-output { padding: 12px; margin-top: 14px; background: #102740; border-radius: 8px; color: #9ce8ff; font-size: 15px; font-weight: 700; }
 .sp-meter { height: 8px; background: #263b52; margin-top: 8px; border-radius: 4px; overflow: hidden; }
 .sp-meter i { display: block; height: 100%; background: #ffce63; }
-.sp-magnitude-scale { display: flex; justify-content: space-between; gap: 8px; margin-top: 36px; }
-.sp-magnitude-scale span { display: grid; place-items: center; flex: 1; min-height: 55px; border: 1px solid #52708c; border-radius: 8px; font-size: 22px; }
 .sp-temp-direction { display: flex; justify-content: space-between; align-items: center; gap: 8px; color: #a9c1db; font-size: 12px; margin: 12px 0 22px; }
 .sp-gap-control { display: flex; align-items: center; gap: 14px; margin-top: 28px; }
 .star-properties table { border-collapse: collapse; width: 100%; font-size: 14px; text-align: center; }
@@ -39,3 +37,18 @@ html:has(body[data-space-topic="star-properties"]) { background: #030712; }
 .sp-ratio-bars { display: grid; grid-template-columns: 108px 1fr; align-items: center; gap: 12px; margin-top: 24px; color: #aec6e2; font-size: 12px; }
 .sp-ratio-bars > div { height: 14px; background: #263b52; border-radius: 3px; overflow: hidden; }
 .sp-ratio-bars i { display: block; height: 100%; background: #ffda7d; min-width: 1px; }
+.sp-night-sky { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0,1fr); align-items: end; margin: 18px 0 0; padding: 12px 6px; overflow: hidden; border: 1px solid #1c314d; border-radius: 10px; background: radial-gradient(ellipse at 50% 120%,#0b1d35 0, #020611 70%); }
+.sp-sky-star { min-width: 0; text-align: center; }
+.sp-star-stage { height: 100px; position: relative; display: grid; place-items: center; }
+.sp-star-stage i { display: block; position: absolute; pointer-events: none; }
+.sp-star-core { width: 6px; height: 6px; border-radius: 50%; background: #fff8e4; opacity: var(--sp-light); box-shadow: 0 0 5px 1px #ffe8bd; }
+.sp-star-halo { width: 100px; height: 100px; border-radius: 50%; background: radial-gradient(circle,#fff1cd 0%,rgba(255,224,161,.8) 4%,rgba(255,212,132,.26) 14%,rgba(255,217,151,.1) 32%,transparent 65%); opacity: var(--sp-bloom); }
+.sp-star-rays { width: 44px; height: 44px; opacity: var(--sp-bloom); background: linear-gradient(90deg,transparent 0%,rgba(255,233,189,.55) 49%,rgba(255,233,189,.55) 51%,transparent 100%),linear-gradient(transparent 0%,rgba(255,233,189,.55) 49%,rgba(255,233,189,.55) 51%,transparent 100%); clip-path: polygon(49% 0,51% 0,53% 47%,100% 49%,100% 51%,53% 53%,51% 100%,49% 100%,47% 53%,0 51%,0 49%,47% 47%); }
+.sp-star-name { display: block; color: #d0e0f4; font-size: 13px; line-height: 1.5; }
+.sp-gap-sky,.sp-distance-sky { padding-left: 28px; padding-right: 28px; }
+.sp-gap-sky .sp-star-stage,.sp-distance-sky .sp-star-stage { height: 110px; }
+.sp-light-note { margin-top: 6px !important; font-size: 11px !important; }
+.sp-gap-control { margin-top: 16px; }
+.sp-ratio-bars { margin-top: 14px; gap: 8px; }
+.sp-ranking-sky .sp-star-stage { height: 86px; }
+@media(max-width: 760px) { .sp-magnitude-sky { padding: 8px 0; } .sp-magnitude-sky .sp-star-stage { height: 84px; } .sp-magnitude-sky .sp-star-halo { width: 72px; height: 72px; } .sp-magnitude-sky .sp-star-rays { width: 32px; height: 32px; } .sp-star-name { font-size: 12px; } }
