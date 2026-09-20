@@ -6878,8 +6878,12 @@ function createClassroomPlatform(options = {}) {
   // 요일/교시에 다른 반에 또 배정하면 school_master_timetable_teacher_slot_idx가 막는다.
   router.get("/school-admin/specialist-teachers", asyncRoute(async (req, res) => {
     const { profile } = await requireSchoolAdmin(req);
+    // id로 내보내는 값은 classroom_teachers.id가 아니라 user_id다. 이 목록에서 고른
+    // 값이 그대로 school_master_timetable.teacher_user_id로 들어가는데, 그 칸은
+    // classroom_users(id)를 가리키는 외래 키다. 교사 표의 id를 내보내면 배정할 때
+    // 외래 키 위반으로 500이 나거나, 번호가 우연히 겹치면 엉뚱한 사람에게 붙는다.
     const result = await pool.query(
-      `SELECT id, teacher_name, teacher_type, grade, class_number
+      `SELECT user_id, teacher_name, teacher_type, grade, class_number
        FROM classroom_teachers
        WHERE school_id = $1 AND active = TRUE AND user_id IS NOT NULL
          AND teacher_type NOT IN ('관리자', '교장', '교감')
@@ -6888,7 +6892,7 @@ function createClassroomPlatform(options = {}) {
     );
     res.json({
       teachers: result.rows.map(row => ({
-        id: String(row.id),
+        id: String(row.user_id),
         name: row.teacher_name,
         type: row.teacher_type,
         homeroomGrade: row.grade,
@@ -6927,7 +6931,11 @@ function createClassroomPlatform(options = {}) {
       const classNumber = Number(cell.classNumber);
       const dayOfWeek = Number(cell.dayOfWeek);
       const period = Number(cell.period);
-      if (!(grade >= 1 && grade <= 12 && classNumber >= 1 && classNumber <= 30 && dayOfWeek >= 1 && dayOfWeek <= 5 && period >= 1 && period <= 8)) continue;
+      // 잘못 입력한 칸을 조용히 건너뛰면 아무 말 없이 표가 그대로라 왜 안 들어갔는지
+      // 알 길이 없다. 무엇이 틀렸는지 알려 주고 멈춘다.
+      if (!(grade >= 1 && grade <= 12 && classNumber >= 1 && classNumber <= 30 && dayOfWeek >= 1 && dayOfWeek <= 5 && period >= 1 && period <= 8)) {
+        throw new HttpError(400, "INVALID_CELL", "학년과 반은 숫자로 입력하세요. (학년 1~12, 반 1~30)");
+      }
 
       if (cell.clear) {
         await pool.query(
@@ -6955,6 +6963,9 @@ function createClassroomPlatform(options = {}) {
       } catch (error) {
         if (error.code === "23505") {
           throw new HttpError(409, "TEACHER_ALREADY_BOOKED", `이 교사는 이 요일·교시에 이미 다른 반 수업이 배정되어 있습니다.`);
+        }
+        if (error.code === "23503") {
+          throw new HttpError(400, "INVALID_TEACHER", "선택한 교사의 계정을 찾지 못했습니다. 교사 목록을 새로 고친 뒤 다시 선택하세요.");
         }
         throw error;
       }
@@ -7022,7 +7033,11 @@ function createClassroomPlatform(options = {}) {
       const classNumber = Number(cell.classNumber);
       const dayOfWeek = Number(cell.dayOfWeek);
       const period = Number(cell.period);
-      if (!(grade >= 1 && grade <= 12 && classNumber >= 1 && classNumber <= 30 && dayOfWeek >= 1 && dayOfWeek <= 5 && period >= 1 && period <= 8)) continue;
+      // 잘못 입력한 칸을 조용히 건너뛰면 아무 말 없이 표가 그대로라 왜 안 들어갔는지
+      // 알 길이 없다. 무엇이 틀렸는지 알려 주고 멈춘다.
+      if (!(grade >= 1 && grade <= 12 && classNumber >= 1 && classNumber <= 30 && dayOfWeek >= 1 && dayOfWeek <= 5 && period >= 1 && period <= 8)) {
+        throw new HttpError(400, "INVALID_CELL", "학년과 반은 숫자로 입력하세요. (학년 1~12, 반 1~30)");
+      }
 
       if (cell.clear) {
         await pool.query(
