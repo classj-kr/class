@@ -14,6 +14,7 @@ const ClassroomStore = require('./lib/classroom-store.js');
 const MissionCatalog = require('./lib/mission-catalog.js');
 const Fatigue = require('./lib/fatigue.js');
 const NavGrid = require('./lib/nav-grid.js');
+const ShipMotion = require('./lib/ship-motion.js');
 const ArrivalZones = require('./lib/arrival-zones.js');
 const CompletionRewards = require('./lib/completion-rewards.js');
 const FinalQuiz = require('./lib/final-quiz.js');
@@ -2751,7 +2752,7 @@ function moveWithTerrainCollision(p, deltaX, deltaY) {
   const trapped = p.mode === 'sea'
     ? here.type !== 'sea' || (seasonDay !== null && seasonalIceAt(p.x, p.y, seasonDay) !== null)
     : here.type === 'sea' || here.passable === false;
-  const hereLat = Math.abs(90 - (p.y / WORLD_PIXEL_H) * 180);
+  const hereLat = 90 - (p.y / WORLD_PIXEL_H) * 180;
   const maxSubstep = TILE * 0.45;
   const substeps = Math.max(1, Math.ceil(Math.max(Math.abs(deltaX), Math.abs(deltaY)) / maxSubstep));
   const stepX = deltaX / substeps;
@@ -2772,18 +2773,17 @@ function moveWithTerrainCollision(p, deltaX, deltaY) {
       const ny = Math.max(TILE, Math.min(WORLD_PIXEL_H - TILE, rawY));
       const nextTerrain = terrainAtPixel(nx, ny);
       const frozenAhead = seasonDay !== null && seasonalIceAt(nx, ny, seasonDay) !== null;
-      let allowed = p.mode === 'sea' ? nextTerrain.type === 'sea' : nextTerrain.type !== 'sea' && nextTerrain.passable !== false;
-      if (allowed && frozenAhead) {
-        allowed = false;
-        blockedTerrain = { type: 'seasonIce', season: true };
-      }
-      if (!allowed && trapped) {
-        // 갇힌 배와 탐험대는 적도 쪽으로는 언제나 나아갈 수 있다. 얼음 위를 천천히 헤쳐 나온다.
-        const towardEquator = Math.abs(90 - (ny / WORLD_PIXEL_H) * 180) < hereLat - 0.0001;
-        const sameElement = p.mode === 'sea' ? nextTerrain.type === 'sea' || nextTerrain.type === 'ice' : nextTerrain.type !== 'sea';
-        if (towardEquator && sameElement) allowed = true;
-      }
+      const allowed = ShipMotion.canEnter({
+        mode: p.mode,
+        nextType: nextTerrain.type,
+        nextPassable: nextTerrain.passable,
+        frozenAhead,
+        trapped,
+        hereLat,
+        nextLat: 90 - (ny / WORLD_PIXEL_H) * 180
+      });
       if (!allowed) {
+        if (frozenAhead && nextTerrain.type === 'sea') blockedTerrain = { type: 'seasonIce', season: true };
         blockedTerrain = blockedTerrain || nextTerrain;
         continue;
       }
@@ -2892,14 +2892,12 @@ function movePlayer(p, dt) {
   // 해안에 막히면 해안선을 따라 돈다. 예전에는 "목적지에 가까워질 때만" 비껴 갔는데,
   // 만 안쪽이나 섬 사이처럼 한동안 멀어져야 빠져나오는 곳에서 배가 얼어붙었다.
   // 이제는 한쪽 방향을 정해 벽을 따라 계속 돌고, 너무 오래 돌면 길을 다시 찾는다.
-  if (!moved && p.target) {
-    const distanceToTarget = () => GeoMotion.initialDirection(p.x, p.y, p.target.x, p.target.y, WORLD_PIXEL_W, WORLD_PIXEL_H).distancePixels;
+  // 손으로 몰 때도 똑같이 비껴 간다. 그러지 않으면 좁은 만이나 얼음 앞에서 뱃머리가 박힌 채
+  // 아무 데로도 못 가고, 아이들은 배가 고장 난 줄 안다.
+  if (!moved) {
+    const distanceToTarget = () => (p.target ? GeoMotion.initialDirection(p.x, p.y, p.target.x, p.target.y, WORLD_PIXEL_W, WORLD_PIXEL_H).distancePixels : 0);
     const before = distanceToTarget();
-    const preferredSign = p.slideSign === -1 ? -1 : 1;
-    const angles = [];
-    for (const magnitude of [Math.PI / 6, Math.PI / 3, Math.PI / 2, (Math.PI * 2) / 3, (Math.PI * 5) / 6]) {
-      angles.push(magnitude * preferredSign, magnitude * -preferredSign);
-    }
+    const angles = ShipMotion.slideAngles(!!p.target, p.slideSign);
     for (const angle of angles) {
       const startX = p.x;
       const startY = p.y;
@@ -2916,7 +2914,7 @@ function movePlayer(p, dt) {
       if (slide.moved) {
         moved = true;
         p.slideSign = angle >= 0 ? 1 : -1;
-        if (distanceToTarget() >= before - 0.05) p.slideAwayMs = (p.slideAwayMs || 0) + dt * 1000;
+        if (p.target && distanceToTarget() >= before - 0.05) p.slideAwayMs = (p.slideAwayMs || 0) + dt * 1000;
         else p.slideAwayMs = 0;
         break;
       }

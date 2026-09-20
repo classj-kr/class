@@ -705,12 +705,17 @@ function movePrediction(dt){
   let windMult=1;if(mode==='sea'){const wind=CDS95Wind.windAtPixel(ox,oy,classGameMinutes),windAlignment=vx*wind.x+vy*wind.y;windMult=CDS95Wind.speedMultiplier(windAlignment,wind.strength,WIND_TAIL_FACTOR,WIND_HEAD_FACTOR)}
   const step=baseSpeed*mult*fatigueMult*completionMult*windMult*dt;
   let driftEast=0,driftSouth=0;if(mode==='sea'){const flow=CDS95Current.currentAtPixel(ox,oy),alignment=vx*flow.x+vy*flow.y,localTailFactor=Number.isFinite(flow.tailFactor)?flow.tailFactor:CURRENT_TAIL_FACTOR,factor=CDS95Current.movementFactor(alignment,localTailFactor,CURRENT_HEAD_FACTOR,CURRENT_CROSS_FACTOR),driftSpeed=SEA_BASE_SPEED*factor*flow.strength*completionMult;driftEast=flow.x*driftSpeed*dt;driftSouth=flow.y*driftSpeed*dt}
-  const delta=CDS95GeoMotion.localDeltaToMap(vx*step+driftEast,vy*step+driftSouth,oy,MAP_H),substeps=Math.max(1,Math.ceil(Math.max(Math.abs(delta.x),Math.abs(delta.y))/(TS*.45))),stepX=delta.x/substeps,stepY=delta.y/substeps;let blocked=null,moved=false;
+  const delta=CDS95GeoMotion.localDeltaToMap(vx*step+driftEast,vy*step+driftSouth,oy,MAP_H);let blocked=null;
   // 얼음에 갇힌 배·탐험대는 적도 쪽으로는 언제나 나아갈 수 있다(서버와 같은 규칙).
   const hereLat=Math.abs(90-(self.y/MAP_H)*180),trapped=mode==='sea'?current.type!=='sea'||frozenNow(self.x,self.y):current.type==='sea'||current.passable===false;
-  for(let i=0;i<substeps;i++){const px=self.x,py=self.y,tries=[[px+stepX,py+stepY]];if(Math.abs(stepX)>.001&&Math.abs(stepY)>.001)tries.push([px+stepX,py],[px,py+stepY]);let advanced=false;for(const [rx,ry] of tries){const nx=wrapX(rx),ny=Math.max(TS,Math.min(MAP_H-TS,ry)),next=terrainAtPixel(nx,ny);let allowed=mode==='sea'?next.type==='sea':next.type!=='sea'&&next.passable!==false;if(allowed&&mode==='sea'&&frozenNow(nx,ny)){allowed=false;blocked={type:'seasonIce'}}
-    if(!allowed&&trapped&&Math.abs(90-(ny/MAP_H)*180)<hereLat-.0001&&(mode==='sea'?next.type==='sea'||next.type==='ice':next.type!=='sea'))allowed=true;
-    if(!allowed){blocked=next.type?blocked||next:blocked;continue}self.x=nx;self.y=ny;advanced=true;moved=true;break}if(!advanced)break}
+  const tryMove=(dx,dy)=>{const substeps=Math.max(1,Math.ceil(Math.max(Math.abs(dx),Math.abs(dy))/(TS*.45))),stepX=dx/substeps,stepY=dy/substeps;let moved=false;
+    for(let i=0;i<substeps;i++){const px=self.x,py=self.y,tries=[[px+stepX,py+stepY]];if(Math.abs(stepX)>.001&&Math.abs(stepY)>.001)tries.push([px+stepX,py],[px,py+stepY]);let advanced=false;for(const [rx,ry] of tries){const nx=wrapX(rx),ny=Math.max(TS,Math.min(MAP_H-TS,ry)),next=terrainAtPixel(nx,ny);let allowed=mode==='sea'?next.type==='sea':next.type!=='sea'&&next.passable!==false;if(allowed&&mode==='sea'&&frozenNow(nx,ny)){allowed=false;blocked={type:'seasonIce'}}
+      if(!allowed&&trapped&&Math.abs(90-(ny/MAP_H)*180)<hereLat-.0001&&(mode==='sea'?next.type==='sea'||next.type==='ice':next.type!=='sea'))allowed=true;
+      if(!allowed){blocked=next.type?blocked||next:blocked;continue}self.x=nx;self.y=ny;advanced=true;moved=true;break}if(!advanced)break}
+    return moved};
+  let moved=tryMove(delta.x,delta.y);
+  // 해안이나 얼음에 뱃머리가 박히면 그 자리에 서지 않고 옆으로 비껴 간다(서버와 같은 규칙).
+  if(!moved)for(const angle of [Math.PI/6,-Math.PI/6,Math.PI/3,-Math.PI/3,Math.PI/2,-Math.PI/2]){const c=Math.cos(angle),s=Math.sin(angle),d2=CDS95GeoMotion.localDeltaToMap((vx*c-vy*s)*step,(vx*s+vy*c)*step,oy,MAP_H);if(tryMove(d2.x,d2.y)){moved=true;break}}
   if(moved){self.dir=vectorToDir(vx,vy);return}
   const equatorWord=self.y<MAP_H/2?'남쪽':'북쪽';
   if(blocked?.type==='seasonIce')localBlock(`이 계절에는 이 앞바다가 얼어붙었습니다. ${equatorWord}으로 뱃머리를 돌리세요.`);

@@ -26,6 +26,17 @@ for (const [name, lat, lon] of [['바렌츠해 76도', 76, 40], ['노르카프 �
 }
 const ice = Terrain.terrainAtCell(world, ...cellOf(82, 0));
 assert.equal(ice.passable, false, '얼음은 지나갈 수 없음');
+// 얼음 속도가 0이면 얼음에 닿은 배가 그 자리에 영영 갇힌다.
+assert.ok(ice.multiplier > 0, '얼음 위에서도 빠져나올 속도는 있어야 함');
+
+// 벽처럼 갑자기 멈추지 않고, 얼음 앞에서부터 천천히 느려진다.
+const SUMMER_DAY = 256;
+assert.equal(Terrain.iceSlowdownAt(25, 40, true, SUMMER_DAY), 1, '먼 바다에서는 느려지지 않아야 함');
+const near = Terrain.iceSlowdownAt(25, Terrain.iceLimitNorthAt(25, SUMMER_DAY) - 2, true, SUMMER_DAY);
+assert.ok(near > Terrain.ICE_SLOW.floor && near < 1, `얼음 2도 앞에서는 느려져야 함(${near.toFixed(2)})`);
+assert.ok(Terrain.iceSlowdownAt(25, 89, true, SUMMER_DAY) >= Terrain.ICE_SLOW.floor, '얼음 안에서도 속도가 0이면 안 됨');
+assert.ok(Terrain.iceSlowdownAt(25, Terrain.iceLimitNorthAt(25, SUMMER_DAY) - 1, true, SUMMER_DAY)
+  < Terrain.iceSlowdownAt(25, Terrain.iceLimitNorthAt(25, SUMMER_DAY) - 4, true, SUMMER_DAY), '가까울수록 더 느려야 함');
 
 // 계절: 한여름(9월 중순)에는 열리고 한겨울(3월 중순)에는 언다.
 const SUMMER = 256;
@@ -71,7 +82,12 @@ const server = fs.readFileSync(path.join(root, 'server.js'), 'utf8');
 assert.match(server, /blockedTerrain\?\.type === 'ice'/, '얼음에 막히면 알려야 함');
 assert.match(server, /function warnNearIce/, '얼음 앞에서 미리 알려야 함');
 assert.match(server, /function seasonalIceAt/, '계절 얼음을 서버가 막아야 함');
-assert.match(server, /얼음이 녹는 여름을 기다리거나/, '계절 얼음에 막히면 까닭을 알려야 함');
+assert.match(server, /const trapped = p\.mode === 'sea'/, '얼음에 갇히면 빠져나갈 길을 열어야 함');
+// 빠져나가는 규칙 자체는 lib/ship-motion.js에 있고 v85 시험이 본다.
+assert.match(server, /ShipMotion\.canEnter\(/, '적도 쪽으로는 언제나 나아갈 수 있어야 함');
+assert.match(server, /function iceSlowdownFor/, '얼음 앞에서 서서히 느려져야 함');
+assert.match(server, /얼음이 녹는 여름을 기다리세요/, '계절 얼음에 막히면 까닭을 알려야 함');
+assert.match(server, /으로 뱃머리를 돌리/, '막혔을 때 빠져나갈 방향을 알려야 함');
 const page = fs.readFileSync(path.join(root, 'public', 'index.html'), 'utf8');
 assert.match(page, /function drawIceLayer/, '학생 지도에 얼음을 그려야 함');
 assert.match(page, /isIceAtDay/, '학생 화면도 계절 얼음을 그려야 함');

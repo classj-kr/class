@@ -33,10 +33,13 @@ const server = fs.readFileSync(path.join(__dirname, '..', 'server.js'), 'utf8');
 const client = fs.readFileSync(path.join(__dirname, '..', 'public', 'index.html'), 'utf8');
 // 산은 모두 지나갈 수 있다. 막는 곳은 얼음 바다(북극·남극) 하나뿐이다(2026-09-20).
 assert.equal((terrainSource.match(/passable: false/g) || []).length, 1);
-assert.match(terrainSource, /ICE_TERRAIN = Object\.freeze\(\{ type: 'ice', multiplier: 0, passable: false \}\)/);
+// 얼음은 들어갈 수 없지만(passable:false), 갇혔을 때 빠져나오는 속도는 있어야 한다.
+assert.match(terrainSource, /ICE_TERRAIN = Object\.freeze\(\{ type: 'ice', multiplier: SPEED\.ice, passable: false \}\)/);
 assert.ok(!server.includes('높은 산맥은 통과할 수 없습니다'));
 assert.ok(!client.includes('높은 산맥은 통과할 수 없습니다'));
-assert.ok(server.includes("nextTerrain.type !== 'sea'"));
+// 갈 수 있는 칸인지 정하는 규칙은 lib/ship-motion.js 하나로 모았다(2026-09-20).
+assert.ok(require('../lib/ship-motion.js').canEnter({ mode: 'land', nextType: 'mountain', nextPassable: true, frozenAhead: false, trapped: false, hereLat: 40, nextLat: 40 }), '탐험대는 산을 넘을 수 있어야 함');
+assert.ok(server.includes('ShipMotion.canEnter('));
 assert.ok(client.includes("next.type!=='sea'"));
 
 console.log(JSON.stringify({

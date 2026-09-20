@@ -8,5 +8,6 @@ const visualHigh=firstHighMountain();
 assert.equal(type(10,25).type,'desert');assert.equal(type(-60,-5).type,'forest');
 assert.notEqual(type(85,30).type,'highMountain','좌표 범위만으로 고산이 되면 안 된다.');
 assert.equal(visualHigh.terrain.type,'highMountain');assert.equal(visualHigh.terrain.passable,true);assert.equal(type(-9.1,38.7).passable,true);
-assert.deepEqual(T.SPEED,{sea:1,plain:.88,coast:.76,river:.58,forest:.54,desert:.43,mountain:.30,highMountain:.18});
+// ice는 얼음에 갇힌 배가 빠져나오는 속도다(0이면 영영 갇힌다).
+assert.deepEqual(T.SPEED,{sea:1,plain:.88,coast:.76,river:.58,forest:.54,desert:.43,mountain:.30,highMountain:.18,ice:.26});
 console.log(JSON.stringify({ok:true,sahara:type(10,25),amazon:type(-60,-5),formerCoordinateFalsePositive:type(85,30),visualHigh}));
