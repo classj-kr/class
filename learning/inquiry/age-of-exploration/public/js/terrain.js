@@ -278,6 +278,14 @@
     return ICE_SLOW.floor + (1 - ICE_SLOW.floor) * (gap / ICE_SLOW.degrees);
   }
 
+  // 지구본 지도의 배율. 지도 라이브러리는 화면 가운데 배율을 평면지도(메르카토르)와 같게 맞추는데,
+  // 그러면 위도가 높을수록 땅이 크게 그려져(북위 64.5도 아이슬란드가 북위 37.5도 한국보다 1.84배)
+  // 평면지도의 문제가 그대로 남는다. 위도만큼 배율을 깎아 화면 1픽셀이 어디서나 같은 거리가 되게 한다.
+  function globeMapZoom(gameZoom, lat, tileSize) {
+    const worldPixels = WORLD_W * TILE;
+    return Math.log2((worldPixels / (tileSize || 512)) * gameZoom) + Math.log2(Math.max(0.035, Math.cos(lat * Math.PI / 180)));
+  }
+
   const ICE_TERRAIN = Object.freeze({ type: 'ice', multiplier: SPEED.ice, passable: false });
 
   function terrainAtCell(world, cx, cy) {
@@ -309,6 +317,6 @@
 
   return Object.freeze({
     WORLD_W, WORLD_H, TILE, WORLD_PIXEL_W, WORLD_PIXEL_H,
-    SPEED, LABEL, ICE, ICE_WINTER, ICE_DAYS, ICE_SLOW, iceSlowdownAt, HIGH_MOUNTAIN_FAMILIES, NAVIGABLE_SEA_CORRIDORS, iceLimitNorth, iceLimitSouth, isIceAt, iceLimitNorthAt, iceLimitSouthAt, isIceAtDay, dayOfYear, seasonOpenness, wrapCellX, wrapPixelX, cellValue, setNaturalEarthLandMask, navigableSeaCorridorAtCell, terrainAtCell, terrainAtPixel, lonLat
+    SPEED, LABEL, ICE, ICE_WINTER, ICE_DAYS, ICE_SLOW, iceSlowdownAt, globeMapZoom, HIGH_MOUNTAIN_FAMILIES, NAVIGABLE_SEA_CORRIDORS, iceLimitNorth, iceLimitSouth, isIceAt, iceLimitNorthAt, iceLimitSouthAt, isIceAtDay, dayOfYear, seasonOpenness, wrapCellX, wrapPixelX, cellValue, setNaturalEarthLandMask, navigableSeaCorridorAtCell, terrainAtCell, terrainAtPixel, lonLat
   });
 }));
