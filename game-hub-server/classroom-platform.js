@@ -6705,12 +6705,32 @@ function createClassroomPlatform(options = {}) {
     if (grades.length === 0) {
       throw new HttpError(400, "INVALID_GRADES", "적용할 학년을 1개 이상 선택하세요.");
     }
-    const arrivalStart = req.body?.arrivalStart || null;
-    const arrivalEnd = req.body?.arrivalEnd || null;
-    const periodTimes = typeof req.body?.periodTimes === "object" && req.body?.periodTimes !== null ? req.body.periodTimes : {};
+    // 저장하는 칸은 TIME 열이라 "오후 1:40" 같은 글이 그대로 오면 데이터베이스가
+    // 거부하고 영어 500이 뜬다. 여기서 먼저 걸러 무엇이 잘못됐는지 알려 준다.
+    const parseBellTime = (value) => {
+      if (value === null || value === undefined || value === "") return null;
+      const text = String(value).trim();
+      const matched = text.match(/^([01][0-9]|2[0-3]):([0-5][0-9])(:[0-5][0-9])?$/);
+      if (!matched) {
+        throw new HttpError(400, "INVALID_TIME", `시각은 13:40처럼 24시간 형식으로 입력하세요. (받은 값: ${text})`);
+      }
+      return `${matched[1]}:${matched[2]}`;
+    };
+
+    const arrivalStart = parseBellTime(req.body?.arrivalStart);
+    const arrivalEnd = parseBellTime(req.body?.arrivalEnd);
+    const rawPeriodTimes = typeof req.body?.periodTimes === "object" && req.body?.periodTimes !== null ? req.body.periodTimes : {};
+    const periodTimes = {};
+    for (const [key, slot] of Object.entries(rawPeriodTimes)) {
+      const periodNumber = Number(key);
+      if (!Number.isInteger(periodNumber) || periodNumber < 1 || periodNumber > 8) continue;
+      const start = parseBellTime(slot?.start);
+      const end = parseBellTime(slot?.end);
+      if (start || end) periodTimes[String(periodNumber)] = { start, end };
+    }
     const lunchAfterPeriod = Math.min(8, Math.max(0, Number(req.body?.lunchAfterPeriod || 0)));
-    const lunchStart = req.body?.lunchStart || null;
-    const lunchEnd = req.body?.lunchEnd || null;
+    const lunchStart = parseBellTime(req.body?.lunchStart);
+    const lunchEnd = parseBellTime(req.body?.lunchEnd);
 
     for (const grade of grades) {
       await pool.query(

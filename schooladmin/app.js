@@ -1069,6 +1069,32 @@ document.addEventListener('DOMContentLoaded', () => {
     const BELL_MAX_PERIODS = 8;
     const WEEKDAY_NAMES = ['월', '화', '수', '목', '금'];
 
+    // <input type="time">은 브라우저 지역 설정을 그대로 따라가서 우리 크롬에서는
+    // "오후 01:40"으로 나온다. 시정표는 13:40처럼 24시간으로 읽는 편이 빠르고
+    // 헷갈리지 않아 직접 입력 칸으로 바꿨다. 840, 1340처럼 숫자만 쳐도 받아 준다.
+    function formatTimeHHMM(value) {
+        const matched = String(value ?? '').match(/^([0-9]{1,2}):([0-9]{2})/);
+        if (!matched) return '';
+        const hour = Number(matched[1]);
+        const minute = Number(matched[2]);
+        if (hour > 23 || minute > 59) return '';
+        return `${String(hour).padStart(2, '0')}:${String(minute).padStart(2, '0')}`;
+    }
+
+    function normalizeTimeInput(raw) {
+        const text = String(raw ?? '').trim();
+        if (!text) return '';
+        if (text.includes(':')) return formatTimeHHMM(text);
+        const digits = text.replace(/[^0-9]/g, '');
+        if (digits.length === 3) return formatTimeHHMM(`${digits.slice(0, 1)}:${digits.slice(1)}`);
+        if (digits.length === 4) return formatTimeHHMM(`${digits.slice(0, 2)}:${digits.slice(2)}`);
+        return '';
+    }
+
+    function bellTimeInputHtml(className, value) {
+        return `<input type="text" class="form-input ${className}" inputmode="numeric" maxlength="5" placeholder="13:40" value="${formatTimeHHMM(value)}" style="width:92px; text-align:center;">`;
+    }
+
     function computeDurationMinutes(start, end) {
         if (!start || !end) return null;
         const [sh, sm] = start.split(':').map(Number);
@@ -1119,8 +1145,8 @@ document.addEventListener('DOMContentLoaded', () => {
         let rowsHtml = `
             <tr data-row="arrival">
                 <td>등교시간</td>
-                <td><input type="time" class="form-input bell-start" value="${arrivalStart}"></td>
-                <td><input type="time" class="form-input bell-end" value="${arrivalEnd}"></td>
+                <td>${bellTimeInputHtml('bell-start', arrivalStart)}</td>
+                <td>${bellTimeInputHtml('bell-end', arrivalEnd)}</td>
                 <td class="bell-duration">${computeDurationMinutes(arrivalStart, arrivalEnd) ?? ''}</td>
             </tr>
         `;
@@ -1130,8 +1156,8 @@ document.addEventListener('DOMContentLoaded', () => {
             rowsHtml += `
                 <tr data-row="period" data-period="${p}">
                     <td>${p}교시</td>
-                    <td><input type="time" class="form-input bell-start" value="${t.start || ''}"></td>
-                    <td><input type="time" class="form-input bell-end" value="${t.end || ''}"></td>
+                    <td>${bellTimeInputHtml('bell-start', t.start)}</td>
+                    <td>${bellTimeInputHtml('bell-end', t.end)}</td>
                     <td class="bell-duration">${computeDurationMinutes(t.start, t.end) ?? ''}</td>
                 </tr>
             `;
@@ -1139,8 +1165,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 rowsHtml += `
                     <tr data-row="lunch" style="color:#f87171; font-weight:700;">
                         <td>점심시간</td>
-                        <td><input type="time" class="form-input bell-start" value="${lunchStart}"></td>
-                        <td><input type="time" class="form-input bell-end" value="${lunchEnd}"></td>
+                        <td>${bellTimeInputHtml('bell-start', lunchStart)}</td>
+                        <td>${bellTimeInputHtml('bell-end', lunchEnd)}</td>
                         <td class="bell-duration">${computeDurationMinutes(lunchStart, lunchEnd) ?? ''}</td>
                     </tr>
                 `;
@@ -1159,6 +1185,12 @@ document.addEventListener('DOMContentLoaded', () => {
             };
             startInput.addEventListener('input', recompute);
             endInput.addEventListener('input', recompute);
+            [startInput, endInput].forEach(input => {
+                input.addEventListener('change', () => {
+                    input.value = normalizeTimeInput(input.value);
+                    recompute();
+                });
+            });
         });
     }
 
@@ -1167,8 +1199,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!tbodyEl) return result;
         tbodyEl.querySelectorAll('tr').forEach(tr => {
             const rowType = tr.dataset.row;
-            const start = tr.querySelector('.bell-start')?.value || null;
-            const end = tr.querySelector('.bell-end')?.value || null;
+            const start = normalizeTimeInput(tr.querySelector('.bell-start')?.value) || null;
+            const end = normalizeTimeInput(tr.querySelector('.bell-end')?.value) || null;
             if (rowType === 'arrival') {
                 result.arrivalStart = start;
                 result.arrivalEnd = end;
@@ -1199,11 +1231,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     dismissal = periodTimes[lastPeriod].end || '';
                 }
             }
-            const lunchText = s && s.lunch_start && s.lunch_end ? `${s.lunch_start}~${s.lunch_end}` : '-';
+            const lunchText = s && s.lunch_start && s.lunch_end ? `${formatTimeHHMM(s.lunch_start)}~${formatTimeHHMM(s.lunch_end)}` : '-';
             tr.innerHTML = `
                 <td style="font-weight:800;">${grade}학년</td>
-                <td>${s?.arrival_start || '-'}</td>
-                <td>${dismissal || '-'}</td>
+                <td>${formatTimeHHMM(s?.arrival_start) || '-'}</td>
+                <td>${formatTimeHHMM(dismissal) || '-'}</td>
                 <td>${lunchText}</td>
                 <td><button type="button" class="primary-button secondary load-bell-grade-btn" data-grade="${grade}" style="padding:4px 10px; height:32px;">불러와서 수정</button></td>
             `;
