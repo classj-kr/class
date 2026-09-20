@@ -90,3 +90,20 @@ node tests/korea-map-war.cjs
 - `node tests/korea-map-flow.cjs`: 기존 강물 흐름·기후 장면 회귀 검사.
 
 사용자의 기존 지형/기후 변경사항을 유지한 채 독립된 데이터·JS·CSS 모듈로 추가했다. 배포는 하지 않았다.
+
+### 2026-09-21 · 영역 잘림과 해안 빈 띠 보정
+
+- 원인: `scene.bounds`에 4도만 더한 사각형으로 국가 영역을 잘라 저장했다. 백제 천도처럼 최초 확대 범위가 작은 장면에서 북쪽 영토가 잘렸고, 확대를 줄이면 발해·통일신라·고려 및 6·25 주변 국가의 색칠이 직사각형으로 끊겼다.
+- 카메라의 표시 범위와 영역 생성 범위를 완전히 분리했다. 공통 SVG 범위와 주변 육지 연산 범위를 앱의 전체 이동 제한(90~155°E, 15~60°N)보다 넓은 80~170°E, 5~70°N으로 통일했다. 이동 가능한 화면 안에 이미지·연산의 절단면이 드러나지 않는다. 장면과 기준 시점 수는 28개/39개 그대로다.
+- 삼국 도판은 원본 지도의 해안선과 실제 바탕 해안선이 달라, 원본 색면을 단순히 육지에 잘라내는 것만으로는 안쪽에 빈 띠가 남았다. `tools/history_coast.py`가 기존 영역 밖의 가까운 해안 육지만 보정한다. 원래 색칠된 육지와 내륙 경계는 유지하고, 바다·먼 섬·내륙의 미상 지역은 새 영토로 채우지 않는다.
+- 보정 한계는 Web Mercator 32km(한반도 실제 지표 거리는 이보다 짧음), 최근접 영역 할당 간격은 1km이다. 이는 출처 도판의 해안을 바탕 지형에 맞추는 제도 보정이며 정복 범위나 정확한 고대 국경을 새로 확정한 것이 아니다. 보정 면적·허용 범위·미처리 면적은 `provenance.json`에 남긴다.
+- 현대 해안 바탕은 Natural Earth 1:10m 자료로 정밀화했다. 한국만 정밀 자료로 바꿀 때 공유 하천에 틈이 생기는 것을 방지하기 위해 중국·러시아·몽골·일본도 같은 원본으로 맞춘다. 6·25 지도와 문제 카드의 해안도 같은 원본으로 재생성했다.
+
+```text
+python learning/inquiry/korea-map/tools/build_history_territories.py --countries /path/to/ne_50m_admin_0_countries.geojson --coast /path/to/ne_10m_admin_0_countries.geojson
+python learning/inquiry/korea-map/tools/build_korean_war.py --countries /path/to/ne_10m_admin_0_countries.geojson
+python tests/test_history_coast.py
+node tests/korea-map-fill.cjs
+```
+
+추가 검증: 사용자 지적 13개 장면 계열의 각 시점, 최대 축소에서도 이미지 절단면 비노출, 옛 절단면 바깥 육지의 실제 SVG 픽셀 채색, 390/1600/2560px 화면. 해안 보정 단위 검사에서는 바다·먼 섬·내륙 미상 지역 비확장, 기존 영역 유지와 단일 해안 할당을 확인한다.

@@ -109,26 +109,26 @@
 .life-food-chain summary{min-height:44px;align-content:center;cursor:pointer;color:#325d46;font-size:15px;}
 .life-food-chain .graph-svg{max-width:460px;}
 .life-specimen{overflow:visible;}
-.life-wing{transform-box:view-box;transform-origin:100px 96px;animation:life-wingbeat .8s ease-in-out infinite;}
+.life-wing{transform-box:view-box;transform-origin:100px 84px;animation:life-wingbeat 1.8s ease-in-out infinite;}
 .life-hover{animation:life-hover 3s ease-in-out infinite;}
-.life-crawl{animation:life-crawl 5s ease-in-out infinite alternate;}
-.life-chew{transform-box:fill-box;transform-origin:20% 60%;animation:life-chew 1.2s ease-in-out infinite;}
-.life-proleg{transform-box:fill-box;transform-origin:50% 0;animation:life-leg 1.6s ease-in-out infinite alternate;}
-.life-proleg.leg-1{animation-delay:-.8s;}
+/* Two forward steps with a tail-to-head wave; then feeding. No backwards/reset motion. */
+.life-crawl-segment{animation:life-crawl-step 7.2s ease-in-out 1 both;animation-delay:var(--crawl-delay,0s);}
+.life-chew{transform-box:view-box;transform-origin:155px 116px;animation:life-chew 1.2s ease-in-out infinite;}
+
 .life-mantis{transform-box:fill-box;transform-origin:50% 100%;animation:life-sway 4s ease-in-out infinite;}
-.life-foreleg{transform-box:fill-box;transform-origin:50% 50%;animation:life-grasp 3s ease-in-out infinite;}
+.life-foreleg{transform-box:view-box;transform-origin:83px 69px;animation:life-foreleg-fold 3s ease-in-out infinite;}
 .life-swim{animation:life-swim 4s ease-in-out infinite alternate;}
 .life-tail{transform-box:view-box;transform-origin:101px 102px;animation:life-tail .65s ease-in-out infinite alternate;}
 .life-kick{transform-box:fill-box;transform-origin:0 50%;animation:life-grasp 1.3s ease-in-out infinite;}
 .life-hop{transform-box:fill-box;transform-origin:50% 100%;animation:life-hop 4s ease-in-out infinite;}
 .life-peck-head{transform-box:view-box;transform-origin:94px 104px;animation:life-peck 3s ease-in-out infinite;}
 .life-motion-paused [data-life-motion],.life-motion-paused .life-proleg,.miniature [data-life-motion],.miniature .life-proleg{animation-play-state:paused!important;}
-@keyframes life-wingbeat{0%,100%{transform:scaleX(1)}50%{transform:scaleX(.28)}}
-@keyframes life-hover{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
-@keyframes life-crawl{from{transform:translateX(-10px)}to{transform:translateX(8px)}}
+@keyframes life-wingbeat{0%,100%{transform:scaleX(1)}50%{transform:scaleX(.82)}}
+@keyframes life-hover{0%,100%{transform:translateY(0)}50%{transform:translateY(-2px)}}
+@keyframes life-crawl-step{0%,18%{transform:translate(0,0)}28%{transform:translate(3px,-1.4px)}38%,62%{transform:translate(8px,0)}72%{transform:translate(11px,-1.4px)}82%,100%{transform:translate(16px,0)}}
 @keyframes life-chew{0%,50%,100%{transform:rotate(0)}25%,75%{transform:rotate(8deg)}}
-@keyframes life-leg{from{transform:rotate(-12deg)}to{transform:rotate(16deg)}}
-@keyframes life-sway{0%,100%{transform:rotate(-2deg)}50%{transform:rotate(2deg)}}
+@keyframes life-foreleg-fold{0%,60%,100%{transform:rotate(0)}78%{transform:rotate(-7deg)}}
+@keyframes life-sway{0%,100%{transform:rotate(-1deg)}50%{transform:rotate(1deg)}}
 @keyframes life-grasp{0%,100%{transform:scaleX(1)}50%{transform:scaleX(.75)}}
 @keyframes life-swim{from{transform:translateX(-7px)}to{transform:translateX(7px)}}
 @keyframes life-tail{from{transform:rotate(-10deg)}to{transform:rotate(10deg)}}

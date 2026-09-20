@@ -125,7 +125,7 @@ def build(countries_path):
         card=None
         if state['id'] in core:
             # Neutral filenames and SVG titles do not disclose dates in a quiz.
-            card=f'history/territories/war-card-{core.index(state["id"])+1}.svg?v=20260921-war-1'
+            card=f'history/territories/war-card-{core.index(state["id"])+1}.svg?v=20260921-fill-2'
             (ROOT/card.split('?')[0]).write_text(svg(state,CARD_EXTENT,True),encoding='utf-8')
         mid=state['north'].representative_point()
         southmid=state['south'].representative_point()
@@ -136,7 +136,7 @@ def build(countries_path):
         note='국가기록원 전선 도판을 도시 기준점에 맞춰 재구성한 개략도입니다. 색은 육상의 작전상 지배·점령 범위이며 법적 영토 변경이나 세부 부대 배치를 뜻하지 않습니다.'
         if state['id']=='1953':note='국가기록원의 정전 설명과 현대 군사분계선 자료를 바탕으로 단순화한 개략도입니다. 색은 육상의 군사적 지배 범위이며 법적 영토나 해상 경계의 확정을 뜻하지 않습니다.'
         manifest.append(dict(id=state['id'],date=state['date'],stageTitle=state['title'],order=index,card=card,cardDescription=descriptions.get(state['id']),
-          overlay=f'history/territories/{filename}?v=20260921-war-1',overlayBounds=EXTENT,
+          overlay=f'history/territories/{filename}?v=20260921-fill-2',overlayBounds=EXTENT,
           legend=[{'label':state['southName']+' 확보 지역','color':BLUE},{'label':state['northName']+' 지배 지역','color':RED}],
           labels=labels,sources=[['국가기록원 · 전선의 변화',SOURCE]],note=note,lines=lines,
           lesson={'marks':state['marks'],'routes':state['routes'],'cues':state['cues'],'trap':state['trap'],'note':'색은 군사적 지배·점령 지역, 선은 해당 시기의 전선입니다.'}))
