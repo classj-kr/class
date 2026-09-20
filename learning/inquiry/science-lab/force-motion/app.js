@@ -265,7 +265,7 @@ document.addEventListener('DOMContentLoaded', () => {
         predictionResult.textContent = !prediction
             ? '다음에는 결과를 먼저 예상해 보세요.'
             : prediction === a.motion ? '예상이 맞았습니다.' : '예상과 다른 결과입니다.';
-        const s = Math.abs(a.net) < 1e-9 ? '서로 반대 방향의 힘이 같은 크기여서 힘의 평형을 이룹니다. 멈춰 있던 물체는 멈춰 있고, 움직이던 물체는 같은 속력으로 움직입니다.' : '알짜힘이 작용하면 물체의 운동이 변합니다. 미는 힘과 마찰력의 화살표를 비교해 보세요.';
+        const s = Math.abs(a.net) < 1e-9 ? '서로 반대 방향의 힘이 같은 크기여서 힘의 평형을 이룹니다. 멈춰 있던 물체는 멈춰 있고, 움직이던 물체는 같은 속력과 방향으로 움직입니다.' : '알짜힘이 작용하면 물체의 운동이 변합니다. 미는 힘과 마찰력의 화살표를 비교해 보세요.';
         explanation.textContent = s;
     }
 

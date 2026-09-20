@@ -173,7 +173,7 @@ document.addEventListener('DOMContentLoaded', () => {
             `<div class="data-row"><span class="data-name">산소 소비량</span><span class="data-val">심박출량 ${fmt(a.co)} L/분 × 1 L당 ${fmt(a.avDiff, 0)} mL = ${a.d.vo2} mL/분</span></div>` +
             `<div class="data-row"><span class="data-name">숨</span><span class="data-val">${a.d.rr} 회 × ${a.d.tv} mL = ${fmt(a.ve)} L/분 · 내쉰 숨의 산소 ${fmt(a.feO2 * 100, 1)} %</span></div>` +
             `<div class="data-row"><span class="data-name">양분</span><span class="data-val">포도당 ${fmt(a.glucose, 2)} g/분 · ${t} 분이면 ${fmt(a.glucose * t, 1)} g (${fmt(a.kcal * t, 0)} kcal)</span></div>` +
-            `<div class="data-row"><span class="data-name">콩팥</span><span class="data-val">포도당 ${fmt(a.filteredGlucose, 0)} mg/분을 걸렀다가 모두 되찾습니다</span></div>` +
+            `<div class="data-row"><span class="data-name">콩팥</span><span class="data-val">포도당 ${fmt(a.filteredGlucose, 0)} mg/분을 거른 뒤 재흡수합니다 (정상 조건 모형)</span></div>` +
             `<div class="data-row match"><span class="data-name">${t} 분 동안</span><span class="data-val">산소 ${fmt((a.d.vo2 * t) / 1000, 1)} L · 오줌 ${fmt(a.d.urine * t, 0)} mL</span></div>`;
         return a;
     }
@@ -202,7 +202,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         if (a.verdict === 'less') s += `피가 근육으로 몰려 콩팥으로 가는 피가 줄었습니다. 사구체 여과량이 ${base.d.gfr} 에서 ${a.d.gfr} mL/분으로 줄어 오줌도 ${fmt(a.d.urine, 1)} mL/분으로 적어졌습니다.`;
         else if (a.verdict === 'more') s += `물을 마셔 몸속 물이 많아지자 콩팥이 물을 덜 되찾아 오줌이 ${fmt(a.d.urine, 1)} mL/분으로 늘었습니다. 몸속 물의 양을 콩팥이 조절합니다.`;
-        else s += `콩팥은 걸러 낸 포도당 ${fmt(a.filteredGlucose, 0)} mg/분을 모두 되찾아 오줌으로는 내보내지 않습니다.`;
+        else s += `콩팥은 걸러 낸 포도당 ${fmt(a.filteredGlucose, 0)} mg/분을 재흡수하는 정상 조건 모형입니다. 실제 재흡수량은 혈당 등 조건에 따라 달라집니다.`;
         explanation.textContent = s;
     }
 

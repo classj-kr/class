@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const LINKS = [['atmo', 'hydro'], ['atmo', 'geo'], ['hydro', 'geo'], ['bio', 'atmo'], ['bio', 'hydro'], ['bio', 'geo'], ['space', 'atmo'], ['space', 'hydro']];
     // Which pair of spheres each phenomenon joins, what crosses, and a real case.
     const PHENOMENA = {
-        volcano: { label: '화산 폭발과 기온', short: '화산과 기온', from: 'geo', to: 'atmo', carry: '화산재·이산화 황 (물질)', cat: 'geo-atmo', lines: ['화산이 터져 화산재와', '이산화 황이 하늘을 덮고', '햇빛을 가려 몇 해 동안', '기온이 내려감'], example: ['1815년 탐보라 화산 →', '1816년 여름이 없던 해'] },
+        volcano: { label: '화산 폭발과 기온', short: '화산과 기온', from: 'geo', to: 'atmo', carry: '화산재·이산화 황 (물질)', cat: 'geo-atmo', lines: ['성층권의 이산화황에서', '황산염 에어로졸이 생성됨', '햇빛 일부를 반사하여', '일시적 냉각에 기여함'], example: ['1815년 탐보라 화산 →', '1816년 여름이 없던 해'] },
         typhoon: { label: '태풍의 발달', short: '태풍', from: 'hydro', to: 'atmo', carry: '수증기와 열 (물질·에너지)', cat: 'hydro-atmo', lines: ['따뜻한 바다에서 증발한', '수증기가 구름이 되며 열을', '내놓아 태풍이 힘을 얻음'], example: ['바다 표면 26.5 ℃ 넘는', '곳에서 태풍이 생김'] },
         river: { label: '강이 깎은 계곡', short: '강과 계곡', from: 'hydro', to: 'geo', carry: '흙과 모래 (물질)', cat: 'geo-hydro', lines: ['강물이 바위를 깎아', '계곡을 만들고 흙과 모래를', '하류와 바다로 옮김'], example: ['그랜드 캐니언,', '한강 하류의 삼각주'] },
         photo: { label: '식물의 광합성', short: '광합성', from: 'atmo', to: 'bio', carry: '이산화 탄소 (물질)', cat: 'bio', lines: ['식물이 공기 속 이산화', '탄소를 빨아들여 양분을', '만들고 산소를 내놓음'], example: ['한 해 약 1,200억 t의', '탄소가 공기에서 식물로'] },
@@ -228,8 +228,8 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderWater(a) {
         const { r, tau } = a;
         const p = state.progress;
-        const t = p * tau * 1.1;                       // the dyed water is gone a little before the end
-        const dyed = clamp(1 - t / tau, 0, 1);
+        const t = p * tau; // One mean residence time, not complete replacement.
+        const dyed = Math.exp(-t / tau); // Constant-volume, completely mixed illustrative reservoir.
         let out = '';
         // the budget on the left
         out += `<rect class="sky" x="20" y="28" width="280" height="34" rx="4"/>`;
@@ -253,10 +253,10 @@ document.addEventListener('DOMContentLoaded', () => {
         out += `<rect class="tank" x="${TX}" y="${TY}" width="${TW}" height="${TH}" rx="4"/>`;
         out += `<rect class="new-water" x="${TX + 2}" y="${TY + 2}" width="${TW - 4}" height="${(TH - 4) * (1 - dyed)}"/>`;
         out += `<rect class="old-water" x="${TX + 2}" y="${(TY + 2 + (TH - 4) * (1 - dyed)).toFixed(1)}" width="${TW - 4}" height="${((TH - 4) * dyed).toFixed(1)}"/>`;
-        out += `<text class="trait-text" x="${TX + TW / 2}" y="${TY + TH / 2 + 3}" text-anchor="middle">${p === 0 ? '처음 물 100 %' : dyed > 0 ? `처음 물 ${Math.round(dyed * 100)} %` : '모두 새 물'}</text>`;
-        out += `<text class="trait-text" x="${TX + TW / 2}" y="${TY + TH + 14}" text-anchor="middle">지난 시간 ${fmtTime(Math.min(t, tau))}${t >= tau ? ' — 다 바뀜' : ''}</text>`;
-        out += `<text class="verdict-text" fill="#d97706" x="20" y="16">${p >= 1 ? `${r.label}의 물은 ${fmtTime(tau)} 만에 모두 바뀜` : `${r.label} — ${r.out ? `한 해 ${r.out}천 km³가 드나듦` : '대표값으로 재 봅니다'}`}</text>`;
-        out += `<text class="note-text" x="20" y="208">화살표 숫자는 한 해에 옮겨 가는 물 (천 km³) · 나가는 양 = 들어오는 양이어서 각 곳의 물은 거의 일정</text>`;
+        out += `<text class="trait-text" x="${TX + TW / 2}" y="${TY + TH / 2 + 3}" text-anchor="middle">처음 물 ${Math.round(dyed * 100)} %</text>`;
+        out += `<text class="trait-text" x="${TX + TW / 2}" y="${TY + TH + 14}" text-anchor="middle">지난 시간 ${fmtTime(t)}</text>`;
+        out += `<text class="verdict-text" fill="#d97706" x="20" y="16">${p >= 1 ? `${r.label} 평균 체류 시간 ${fmtTime(tau)}` : `${r.label} — ${r.out ? `한 해 ${r.out}천 km³가 드나듦` : '대표값으로 재 봅니다'}`}</text>`;
+        out += `<text class="note-text" x="20" y="208">물 흐름: 천 km³/년 · 탱크는 완전 혼합 예시 · 평균 체류 시간 뒤에도 처음 물이 남음</text>`;
         return out;
     }
 
@@ -349,7 +349,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function noteFor(a) {
-        const warning = '<p>저장량·유출입량은 고정된 예시입니다. 현재 관측값이나 실제 미래 예측이 아니며, 체류 시간은 평균적 추정치입니다.</p>';
+        const warning = '<p>저장량·유출입량은 고정된 예시입니다. 현재 관측값이나 실제 미래 예측이 아니며, 체류 시간은 평균적 추정치입니다. 탱크는 유입·유출량이 같고 물이 완전히 섞이는 예시로, 평균 체류 시간이 지나도 처음 물의 약 37%가 남습니다. 실제 저장소의 혼합과 이동 경로는 다릅니다.</p>';
         if (a.kind === 'spheres') {
             const { ph } = a;
             return warning + `<div class="data-row"><span class="data-name">현상</span><span class="data-val">${ph.label} — ${ph.lines.join(' ')}</span></div>` +
@@ -425,10 +425,10 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (a.kind === 'water') {
             const { r, tau } = a;
             labelA.textContent = '든 물'; valueA.textContent = fmtVol(r.volume);
-            labelB.textContent = '모두 바뀌는 데'; valueB.textContent = fmtTime(tau);
+            labelB.textContent = '평균 체류 시간'; valueB.textContent = fmtTime(tau);
             s = `${r.label}에는 물이 ${fmtVol(r.volume)} 들어 있고, ${r.out ? `한 해 ${r.out}천 km³가 ${r.how} 나갑니다(들어오는 양도 같습니다)` : `${r.how} 나갑니다`}. `;
             s += r.out ? `든 양을 한 해 드나드는 양으로 나누면 ${fmtTime(tau)} — 평균적인 체류 시간의 추정치이며 모든 물이 그 시간에 완전히 교체되는 것은 아닙니다. ` : `${r.label}는 곳마다 달라 한 숫자로 재기 어렵지만, 대표값으로 ${fmtTime(tau)}쯤 머뭅니다. `;
-            if (r.cat === 'days') s += `양이 적고 드나듦이 많아 아주 빨리 바뀝니다. 그래서 공기 속 물에 섞인 오염 물질은 곧 비로 씻겨 내립니다. `;
+            if (r.cat === 'days') s += `양에 비해 드나듦이 많아 평균 체류 시간이 짧습니다. 오염 물질이 제거되는 정도는 물질의 성질과 다른 과정에도 영향을 받습니다. `;
             else if (r.cat === 'years') s += `대기보다는 훨씬 오래, 바다보다는 훨씬 짧게 머무는 중간 자리입니다. `;
             else s += `양이 엄청 많은데 드나듦은 그 아주 작은 부분이라 아주 오래 머뭅니다. 그래서 바다·지하수·빙하에 들어간 것은 오랫동안 남고, 빙하 속 공기로 옛 기후를 알 수 있습니다. `;
             s += `물 순환 전체를 보면 한 해 증발 ${FLUX.evapSea + FLUX.evapLand}천 km³ = 강수 ${FLUX.rainSea + FLUX.rainLand}천 km³로 같고, 바다에서 증발한 물 가운데 ${FLUX.runoff}천 km³가 육지에 내려 강물이 되어 돌아옵니다. 이 모든 순환을 움직이는 에너지는 태양에서 옵니다.`;

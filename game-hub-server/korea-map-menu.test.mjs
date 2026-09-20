@@ -65,7 +65,7 @@ assert.match(scienceModels, /data-content-paths="learning\/inquiry\/human-body\/
 const orderedScienceModelItems = [
   ['learning/inquiry/human-body/', '인체 구조 모형'],
   ['learning/inquiry/space/', '지구·우주 모형'],
-  ['learning/inquiry/periodic-table/', '시험용 단주기표'],
+  ['learning/inquiry/periodic-table/', '원소·물질 모형'],
 ];
 let previousScienceIndex = -1;
 for (const [href, label] of orderedScienceModelItems) {
