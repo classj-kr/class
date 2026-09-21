@@ -210,6 +210,265 @@ function add({ id, grade, unit, prompt, sentence, answer, wrongs, explanation })
   });
 }
 
+// ── 초1~초3 기본 계산 ────────────────────────────────────
+//
+// 이 학년의 학습지는 문제를 화면 코드 안에서 세로셈·빈칸 모양으로 만든다.
+// 한 줄 퀴즈로는 옮겨지지 않아 여기서 따로 낸다. 수의 크기와 받아올림 조건은
+// 학습지와 같은 범위로 맞춘다.
+
+function randomFor(seed) {
+  let value = seed >>> 0;
+  return () => {
+    value += 0x6d2b79f5;
+    let next = value;
+    next = Math.imul(next ^ (next >>> 15), next | 1);
+    next ^= next + Math.imul(next ^ (next >>> 7), next | 61);
+    return ((next ^ (next >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
+const pick = (random, low, high) => low + Math.floor(random() * (high - low + 1));
+
+// 각 자리를 따로 더하고 올림을 흘려 버린 답. 받아올림을 잊은 아이의 답이다.
+function sumWithoutCarry(left, right) {
+  let result = 0;
+  let unit = 1;
+  while (left > 0 || right > 0) {
+    result += ((left % 10) + (right % 10)) % 10 * unit;
+    left = Math.floor(left / 10);
+    right = Math.floor(right / 10);
+    unit *= 10;
+  }
+  return result;
+}
+
+// 자리마다 큰 수에서 작은 수를 뺀 답. 받아내림을 잊으면 이렇게 나온다.
+function differenceWithoutBorrow(left, right) {
+  let result = 0;
+  let unit = 1;
+  while (left > 0 || right > 0) {
+    result += Math.abs((left % 10) - (right % 10)) * unit;
+    left = Math.floor(left / 10);
+    right = Math.floor(right / 10);
+    unit *= 10;
+  }
+  return result;
+}
+
+// 곱셈에서 올림을 더하지 않고 자리마다 따로 적은 답.
+function productWithoutCarry(left, right) {
+  let result = 0;
+  let unit = 1;
+  while (left > 0) {
+    result += ((left % 10) * right) % 10 * unit;
+    left = Math.floor(left / 10);
+    unit *= 10;
+  }
+  return result;
+}
+
+function addSumProblem({ id, grade, unit, left, right, operator }) {
+  const answer = operator === "+" ? left + right : left - right;
+  const slipped = operator === "+" ? sumWithoutCarry(left, right) : differenceWithoutBorrow(left, right);
+  const step = left >= 100 ? 100 : left >= 20 ? 10 : 1;
+  add({
+    id,
+    grade,
+    unit,
+    prompt: operator === "+" ? "덧셈의 답을 고르세요." : "뺄셈의 답을 고르세요.",
+    sentence: `${left} ${operator} ${right}`,
+    answer,
+    // 받아올림·받아내림을 잊은 답, 한 자리 어긋난 답.
+    wrongs: [slipped, answer + step, answer - step, answer + 1],
+    explanation: `${left} ${operator} ${right} = ${answer}`,
+  });
+}
+
+// 초1 한 자리 수 덧셈·뺄셈
+for (const seed of [20260101, 20260102, 20260103]) {
+  const random = randomFor(seed);
+  for (let index = 0; index < 30; index += 1) {
+    // 2 + 2 같은 문제는 찍어도 맞고 배울 것도 없다. 받아올림·받아내림이 있는 것만 낸다.
+    const left = pick(random, 3, 9);
+    const right = pick(random, 3, 9);
+    if (left + right >= 11) {
+      addSumProblem({ id: `g1add-${left}-${right}`, grade: "초1", unit: "한 자리 수 덧셈·뺄셈", left, right, operator: "+" });
+    }
+    const big = pick(random, 11, 18);
+    const small = pick(random, 3, 9);
+    if (big - small < 10 && big % 10 < small) {
+      addSumProblem({ id: `g1sub-${big}-${small}`, grade: "초1", unit: "한 자리 수 덧셈·뺄셈", left: big, right: small, operator: "−" });
+    }
+  }
+}
+
+// 초1 보수: 10이 되려면 얼마가 더 있어야 하는지
+for (let left = 1; left <= 9; left += 1) {
+  const answer = 10 - left;
+  add({
+    id: `g1comp-${left}`,
+    grade: "초1",
+    unit: "10 만들기",
+    prompt: "□에 알맞은 수를 고르세요.",
+    sentence: `${left} + □ = 10`,
+    answer,
+    // 하나씩 어긋난 답, 더한 수를 그대로 쓴 답.
+    wrongs: [answer + 1, answer - 1, left, 10],
+    explanation: `${left}${particle(left, "과", "와")} ${answer}${particle(answer, "을", "를")} 더하면 10입니다.`,
+  });
+}
+
+// 초2 두 자리 수 덧셈·뺄셈 (받아올림·받아내림이 있는 것만)
+for (const seed of [20260201, 20260202, 20260203]) {
+  const random = randomFor(seed);
+  for (let index = 0; index < 20; index += 1) {
+    const left = pick(random, 23, 89);
+    const right = pick(random, 14, 79);
+    if ((left % 10) + (right % 10) >= 10) {
+      addSumProblem({ id: `g2add-${left}-${right}`, grade: "초2", unit: "두 자리 수 덧셈·뺄셈", left, right, operator: "+" });
+    }
+    if (left > right && (left % 10) < (right % 10)) {
+      addSumProblem({ id: `g2sub-${left}-${right}`, grade: "초2", unit: "두 자리 수 덧셈·뺄셈", left, right, operator: "−" });
+    }
+  }
+}
+
+// 초2 뛰어세기
+for (const step of [2, 3, 4, 5, 6, 7, 8, 9]) {
+  for (const start of [step, step * 3, step * 5]) {
+    const shown = [start, start + step, start + step * 2];
+    const answer = start + step * 3;
+    add({
+      id: `g2skip-${step}-${start}`,
+      grade: "초2",
+      unit: "뛰어세기",
+      prompt: "□에 알맞은 수를 고르세요.",
+      sentence: `${shown.join(", ")}, □`,
+      answer,
+      // 한 칸 덜 뛴 답, 한 칸 더 뛴 답, 마지막 수의 두 배.
+      wrongs: [answer - step, answer + step, shown[2] * 2, answer + 1],
+      explanation: `${step}씩 뛰어 세고 있으므로 ${shown[2]} 다음은 ${answer}입니다.`,
+    });
+  }
+}
+
+// 초3 세 자리 수 덧셈·뺄셈
+for (const seed of [20260211, 20260212, 20260213]) {
+  const random = randomFor(seed);
+  for (let index = 0; index < 20; index += 1) {
+    const left = pick(random, 145, 899);
+    const right = pick(random, 118, 699);
+    if ((left % 10) + (right % 10) >= 10) {
+      addSumProblem({ id: `g3add-${left}-${right}`, grade: "초3", unit: "세 자리 수 덧셈·뺄셈", left, right, operator: "+" });
+    }
+    if (left > right && (left % 10) < (right % 10)) {
+      addSumProblem({ id: `g3sub-${left}-${right}`, grade: "초3", unit: "세 자리 수 덧셈·뺄셈", left, right, operator: "−" });
+    }
+  }
+}
+
+// 초3 나눗셈: 몫과 나머지
+for (const seed of [20260221, 20260222]) {
+  const random = randomFor(seed);
+  for (let index = 0; index < 22; index += 1) {
+    const divisor = pick(random, 3, 9);
+    const quotient = pick(random, 2, 9);
+    const remainder = pick(random, 1, divisor - 1);
+    const dividend = divisor * quotient + remainder;
+    add({
+      id: `g3divq-${dividend}-${divisor}`,
+      grade: "초3",
+      unit: "나눗셈의 몫과 나머지",
+      prompt: "몫을 고르세요.",
+      sentence: `${dividend} ÷ ${divisor}의 몫`,
+      answer: quotient,
+      // 몫과 나머지를 맞바꾼 답, 한 칸 어긋난 답.
+      wrongs: [remainder, quotient + 1, quotient - 1, divisor],
+      explanation: `${dividend} ÷ ${divisor} = ${quotient} … ${remainder}`,
+    });
+    add({
+      id: `g3divr-${dividend}-${divisor}`,
+      grade: "초3",
+      unit: "나눗셈의 몫과 나머지",
+      prompt: "나머지를 고르세요.",
+      sentence: `${dividend} ÷ ${divisor}의 나머지`,
+      answer: remainder,
+      wrongs: [quotient, remainder + 1, remainder - 1, divisor],
+      explanation: `${dividend} ÷ ${divisor} = ${quotient} … ${remainder}`,
+    });
+  }
+}
+
+// 초3 두 자리 수 × 한 자리 수
+for (const seed of [20260231, 20260232]) {
+  const random = randomFor(seed);
+  for (let index = 0; index < 22; index += 1) {
+    const left = pick(random, 13, 89);
+    const right = pick(random, 3, 9);
+    const answer = left * right;
+    add({
+      id: `g3mul-${left}-${right}`,
+      grade: "초3",
+      unit: "두 자리 수 곱셈",
+      prompt: "곱셈의 답을 고르세요.",
+      sentence: `${left} × ${right}`,
+      answer,
+      // 올림을 더하지 않고 자리마다 따로 적은 답, 십의 자리만 곱한 답.
+      wrongs: [productWithoutCarry(left, right), Math.floor(left / 10) * 10 * right + (left % 10), answer + 10, answer - right],
+      explanation: `${left} × ${right} = ${answer}`,
+    });
+  }
+}
+
+// 초4 여러 자리 수의 곱셈 (세 자리 × 두 자리)
+for (const seed of [20260241, 20260242]) {
+  const random = randomFor(seed);
+  for (let index = 0; index < 20; index += 1) {
+    const left = pick(random, 124, 899);
+    const right = pick(random, 13, 79);
+    const answer = left * right;
+    add({
+      id: `g4mul-${left}-${right}`,
+      grade: "초4",
+      unit: "여러 자리 수의 곱셈",
+      prompt: "곱셈의 답을 고르세요.",
+      sentence: `${left} × ${right}`,
+      answer,
+      // 십의 자리를 한 칸 밀어 쓰지 않고 더한 답, 일의 자리만 곱한 답.
+      wrongs: [
+        left * (right % 10) + left * Math.floor(right / 10),
+        left * (right % 10) + left * Math.floor(right / 10) * 100,
+        answer - left,
+        answer + left,
+      ],
+      explanation: `${left} × ${right} = ${answer}`,
+    });
+  }
+}
+
+// 초4 세 자리 수 ÷ 두 자리 수
+for (const seed of [20260251, 20260252]) {
+  const random = randomFor(seed);
+  for (let index = 0; index < 22; index += 1) {
+    const divisor = pick(random, 12, 47);
+    const quotient = pick(random, 4, 29);
+    const remainder = pick(random, 1, divisor - 1);
+    const dividend = divisor * quotient + remainder;
+    if (dividend < 100 || dividend > 999) continue;
+    add({
+      id: `g4divq-${dividend}-${divisor}`,
+      grade: "초4",
+      unit: "세 자리 수 ÷ 두 자리 수",
+      prompt: "몫을 고르세요.",
+      sentence: `${dividend} ÷ ${divisor}의 몫`,
+      answer: quotient,
+      // 몫과 나머지를 맞바꾼 답, 한 칸 어긋난 답.
+      wrongs: [remainder, quotient + 1, quotient - 1, quotient + 10],
+      explanation: `${dividend} ÷ ${divisor} = ${quotient} … ${remainder}`,
+    });
+  }
+}
+
 // ── 초2 구구단 ───────────────────────────────────────────
 
 for (const seed of [20260301, 20260302, 20260303]) {

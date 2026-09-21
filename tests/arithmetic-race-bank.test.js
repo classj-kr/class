@@ -165,6 +165,24 @@ test("문제 글을 그대로 계산하면 적어 둔 정답이 나온다", () =
     } else if (question.unit === "분수만큼") {
       // "35의 6/7" 은 35 × 6/7 이다.
       assert.ok(equal(evaluate(question.sentence.replace("의", "×")), answer), `${where}: 분수만큼의 값이 다릅니다.`);
+    } else if (question.unit === "10 만들기") {
+      // "7 + □ = 10"
+      const [left, right] = question.sentence.split("=").map((side) => side.trim());
+      assert.ok(equal(evaluate(left.replace("□", question.answer)), parseNumber(right)), `${where}: 10이 되지 않습니다.`);
+    } else if (question.unit === "뛰어세기") {
+      // "3, 6, 9, □"
+      const shown = question.sentence.split(",").map((part) => part.trim()).filter((part) => part !== "□").map(Number);
+      const step = shown[1] - shown[0];
+      shown.forEach((value, index) => {
+        if (index) assert.equal(value - shown[index - 1], step, `${where}: 뛰는 폭이 고르지 않습니다.`);
+      });
+      assert.equal(Number(question.answer), shown[shown.length - 1] + step, `${where}: 다음 수가 다릅니다.`);
+    } else if (/의 (몫|나머지)$/.test(question.sentence)) {
+      // "38 ÷ 5의 몫" / "38 ÷ 5의 나머지"
+      const [, dividend, divisor, wanted] = question.sentence.match(/^(\d+) ÷ (\d+)의 (몫|나머지)$/) ?? [];
+      assert.ok(dividend, `${where}: 문제 글을 읽을 수 없습니다.`);
+      const expected = wanted === "몫" ? Math.floor(Number(dividend) / Number(divisor)) : Number(dividend) % Number(divisor);
+      assert.equal(Number(question.answer), expected, `${where}: ${wanted}이 다릅니다.`);
     } else if (question.unit === "비례식") {
       const [left, right] = question.sentence.split("=").map((side) => side.split(":").map((part) => part.trim()));
       const filled = [...left, ...right].map((part) => (part === "□" ? question.answer : part));
