@@ -397,6 +397,11 @@
             white-space: nowrap;
         }
 
+        .hub-title-divider {
+            margin: 0 6px;
+            opacity: 0.45;
+        }
+
         .hub-title-link a {
             display: inline-block;
             color: #fff8e8;
@@ -1005,7 +1010,14 @@
     <div id="hubContent" hidden data-nosnippet>
         <div class="hub-title-row">
             <h1 class="learning-hub-title">기초학력</h1>
-            <p class="hub-title-link"><a href="/room/" data-requires-player="true" data-always-open="true">방번호 입력 <span aria-hidden="true">→</span></a></p>
+            <!-- 두 입구를 한 줄에 둔다. hub-title-link 는 절대 위치라 따로 두면 겹친다.
+                 학급 순위전은 선생님이 연 학급 코드로 들어가고, 교사 계정이면 그 화면에서
+                 학급 만들기 단추가 열린다. 방번호 입구처럼 늘 열어 둔다. -->
+            <p class="hub-title-link">
+                <a href="/room/" data-requires-player="true" data-always-open="true">방번호 입력 <span aria-hidden="true">→</span></a>
+                <span class="hub-title-divider" aria-hidden="true">·</span>
+                <a href="learning/class-race/" data-requires-player="true" data-always-open="true">학급 순위전 <span aria-hidden="true">→</span></a>
+            </p>
         </div>
         <section class="hub-section worksheet-section category-section" data-category-section aria-labelledby="worksheet-title">
         <h2 id="worksheet-title" class="category-heading"><button id="category-literacy-toggle" class="category-toggle" type="button" aria-expanded="false" aria-controls="category-literacy-panel"><span class="category-number" aria-hidden="true">01</span><span class="category-label">문해·수리</span><span class="category-chevron" aria-hidden="true"></span></button></h2>
