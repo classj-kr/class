@@ -138,7 +138,12 @@
     map.options.minZoom = 0;
     const regionalMinimum = map.getBoundsZoom(NAVIGATION_BOUNDS, true);
     map.options.minZoom = previous;
-    map.setMinZoom(Math.max(minimum, regionalMinimum));
+    const nextMinimum = Math.max(minimum, regionalMinimum);
+    // setMinZoom implicitly animates an out-of-range map. Its pending zoom can
+    // overwrite the lesson's subsequent fitBounds when leaving a history scene.
+    // Bring it into range synchronously before changing the minimum.
+    if (map.getZoom() < nextMinimum) map.setZoom(nextMinimum, { animate: false });
+    map.setMinZoom(nextMinimum);
   }
 
   // 국경(압록강·두만강)과 휴전선. 역사 탭에서는 현재 경계를 숨긴다.
