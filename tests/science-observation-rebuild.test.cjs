@@ -36,7 +36,7 @@ test('rebuilt observations: real media, apparatus, state changes and tablet layo
    for(const [slug,state,scene]of cases){
     if(slug!==currentSlug){await page.goto(`http://127.0.0.1:${server.address().port}/${slug}/`,{waitUntil:'load'});currentSlug=slug;}
     const panel=page.locator('.curriculum-supplement');await panel.waitFor();
-    for(const [key,value]of Object.entries(state))await panel.locator(`[data-supplement-choice="${key}"][data-value="${value}"]`).click();
+    for(const [key,value]of Object.entries(state))await panel.locator(`[data-supplement-choice="${key}"][data-value="${value}"]`)[device.touch?'tap':'click']();
     if(scene==='photo'){
      await page.waitForFunction(()=>[...document.querySelectorAll('.supplement-photo-frame img')].every(i=>i.complete&&i.naturalWidth>=800));
      assert.equal(await panel.locator('.supplement-photo-frame img:visible').count(),1);
@@ -78,8 +78,8 @@ test('rebuilt observations: real media, apparatus, state changes and tablet layo
     await page.goto(`http://127.0.0.1:${server.address().port}/${slug}/`,{waitUntil:'load'});
     await page.locator('.curriculum-supplement').waitFor();
     const initial=await page.evaluate(()=>window.__scienceSupplement.getState());
-    const other=page.locator('.curriculum-supplement [data-supplement-choice][aria-pressed="false"]').first();await other.click();
-    await page.locator('.supplement-reset').click();
+    const other=page.locator('.curriculum-supplement [data-supplement-choice][aria-pressed="false"]').first();await other[device.touch?'tap':'click']();
+    await page.locator('.supplement-reset')[device.touch?'tap':'click']();
     assert.deepEqual(await page.evaluate(()=>window.__scienceSupplement.getState()),initial,slug+' reset');
    }
    console.log(device.name+': '+cases.length+' observation states, source credits, image loading, geometry and resets verified');
