@@ -2092,5 +2092,37 @@
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
     "source": "https://commons.wikimedia.org/wiki/File:Torresian_imperial-pigeon_(Ducula_spilorrhoa)_Darwin_2.jpg"
+  },
+  "batur-caldera": {
+    "author": "TropicaLiving",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Mount_batur_and_lake.jpg",
+    "changes": "크기 축소 및 WebP 변환",
+    "title": "Mount_batur_and_lake.jpg"
+  },
+  "milford-sound": {
+    "author": "Wikikiwiman",
+    "license": "Public domain",
+    "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:MilfordSound.jpg",
+    "changes": "크기 축소 및 WebP 변환",
+    "title": "MilfordSound.jpg"
+  },
+  "chocolate-hills": {
+    "author": "Mmlibranda",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:The_Chocolate_Hills_of_Bohol.jpg",
+    "changes": "크기 축소 및 WebP 변환",
+    "title": "The_Chocolate_Hills_of_Bohol.jpg"
+  },
+  "palawan-underground-river": {
+    "author": "Mike Gonzalez",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Puerto_Princesa_Underground_River.jpg",
+    "changes": "크기 축소 및 WebP 변환",
+    "title": "Puerto_Princesa_Underground_River.jpg"
   }
 }

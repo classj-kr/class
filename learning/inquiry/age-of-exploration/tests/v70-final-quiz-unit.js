@@ -69,13 +69,13 @@ for (const target of [
   }
 }
 
-assert.match(server, /finalQuiz: FinalQuiz\.createFinalQuiz\(target\)/);
+assert.match(server, /finalQuiz: studyTargets \? null : FinalQuiz\.createFinalQuiz\(target\)/);
 assert.match(server, /socket\.on\('submitFinalQuiz'/);
 assert.match(server, /b\.progress\.finalCorrectCount/);
 assert.match(server, /a\.progress\.completedAt/);
 assert.match(student, /3문제 제출하고 완주/);
 assert.match(student, /missionProgress\?\.finalQuizStatus==='answering'/);
-assert.match(teacher, /최종 문제 \$\{score\}\/3 정답/);
+assert.ok(teacher.includes("'최종 문제 '+score+'/3 정답'"));
 
 console.log(JSON.stringify({
   ok: true,

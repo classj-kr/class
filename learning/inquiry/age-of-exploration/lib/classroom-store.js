@@ -2,6 +2,7 @@
 
 const fs = require('node:fs');
 const path = require('node:path');
+const PlaceStudy = require('./place-study.js');
 
 function emptyRoom() {
   return {
@@ -30,6 +31,7 @@ function minimalProgress(value) {
   while (finalQuizAnswers.length < 3) finalQuizAnswers.push(null);
   return {
     status,
+    placeStudy: PlaceStudy.normalizeProgress(value?.placeStudy),
     stageIndex,
     cargoItemId,
     selectedMissionId,
@@ -113,6 +115,7 @@ class ClassroomStore {
     if (!room.progress[studentName][missionId] && create) {
       room.progress[studentName][missionId] = {
         status: 'assigned',
+        placeStudy: { places: {} },
         stageIndex: 0,
         cargoItemId: null,
         selectedMissionId: null,

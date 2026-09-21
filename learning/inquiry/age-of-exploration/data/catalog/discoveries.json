@@ -800,13 +800,26 @@
     "reach": "any",
     "discoveryArea": {
       "type": "waterbody",
-      "seed": [41.5, 51],
-      "bounds": {"west": 46, "east": 56, "south": 36, "north": 48}
+      "seed": [
+        41.5,
+        51
+      ],
+      "bounds": {
+        "west": 46,
+        "east": 56,
+        "south": 36,
+        "north": 48
+      }
     },
     "todayCountry": "러시아·카자흐스탄·투르크메니스탄·이란·아제르바이잔",
     "in1520": "페르시아의 비단과 러시아의 모피가 오가던 안쪽 바다였습니다.",
     "text": "바다라고 부르지만 바깥 바다와 이어지지 않은, 세상에서 가장 큰 호수입니다. 넓이는 수위에 따라 달라지며 약 37만 제곱킬로미터로 알려져 있습니다. 물은 일반적인 바닷물보다 덜 짜고, 볼가강의 민물이 들어오는 북쪽과 남쪽의 환경도 다릅니다. 해안에 서서도 이 넓은 내륙 수역을 살펴볼 수 있습니다.",
-    "sources": [{"title": "NASA Earth Observatory: Caspian Sea", "url": "https://science.nasa.gov/earth/earth-observatory/caspian-sea-44253/"}]
+    "sources": [
+      {
+        "title": "NASA Earth Observatory: Caspian Sea",
+        "url": "https://science.nasa.gov/earth/earth-observatory/caspian-sea-44253/"
+      }
+    ]
   },
   {
     "id": "monte-cassino",
@@ -3084,5 +3097,90 @@
     "todayCountry": "칠레·남극 사이 공해",
     "in1520": "아직 아무도 몰랐고, 마젤란 일행이 이듬해 북쪽 해협으로 지나갑니다.",
     "text": "남아메리카 끝과 남극 사이의 800킬로미터 바닷길로, 세상에서 파도가 가장 사나운 바다로 꼽힙니다. 이 위도에는 물길을 막는 뭍이 없어 바닷물과 바람이 지구를 한 바퀴 돌며 거세집니다. 파도가 20미터까지 솟기도 해서, 뱃사람들이 가장 두려워하는 구간입니다."
+  },
+  {
+    "id": "batur-caldera",
+    "name": "바투르 칼데라",
+    "lat": -8.24,
+    "lon": 115.38,
+    "reach": "land",
+    "todayCountry": "인도네시아",
+    "in1520": "화산 활동으로 만들어진 커다란 함몰 지형이 발리섬에 자리하고 있었습니다.",
+    "text": "화산이 크게 분화한 뒤 땅이 내려앉아 생긴 분지를 칼데라라고 합니다. 바투르는 큰 칼데라 안에 작은 칼데라가 겹쳐 있고, 그 안에 화산과 초승달 모양의 호수가 자리합니다. 둘러선 산줄기를 보면 분지의 테두리를 알아볼 수 있습니다.",
+    "sources": [
+      {
+        "title": "UNESCO Batur Global Geopark",
+        "url": "https://www.unesco.org/en/iggp/batur-unesco-global-geopark?hub=67817"
+      }
+    ],
+    "kind": "자연"
+  },
+  {
+    "id": "milford-sound",
+    "name": "밀퍼드사운드",
+    "lat": -44.62,
+    "lon": 167.87,
+    "reach": "any",
+    "todayCountry": "뉴질랜드",
+    "in1520": "빙하가 깎아 놓은 깊은 골짜기에 바닷물이 들어와 있었습니다.",
+    "text": "빙하가 산 사이를 깊게 깎고 물러난 뒤 바닷물이 들어온 피오르입니다. 물가에서 가파른 암벽이 솟고, 비가 오면 절벽을 따라 폭포가 쏟아집니다. 마오리어 이름은 피오피오타히입니다.",
+    "sources": [
+      {
+        "title": "New Zealand DOC Milford Sound",
+        "url": "https://www.doc.govt.nz/parks-and-recreation/places-to-go/fiordland/places/fiordland-national-park/places-to-go/milford-road-milford-sound-area/"
+      }
+    ],
+    "kind": "자연"
+  },
+  {
+    "id": "chocolate-hills",
+    "name": "초콜릿 힐스",
+    "lat": 9.82,
+    "lon": 124.14,
+    "reach": "land",
+    "todayCountry": "필리핀",
+    "in1520": "오랜 세월 석회암이 깎여 생긴 둥근 언덕들이 보홀섬에 펼쳐져 있었습니다.",
+    "text": "보홀섬 내륙에 둥근 원뿔 모양의 석회암 언덕들이 모여 있습니다. 빗물에 석회암이 녹고 깎이면서 만들어진 지형입니다. 언덕을 덮은 풀이 건기에 갈색으로 변해 초콜릿을 닮아 보입니다.",
+    "sources": [
+      {
+        "title": "UNESCO Bohol Island Geopark",
+        "url": "https://www.unesco.org/en/iggp/geoparks/bohol-island"
+      }
+    ],
+    "kind": "자연"
+  },
+  {
+    "id": "palawan-underground-river",
+    "name": "팔라완 지하강",
+    "lat": 10.2,
+    "lon": 118.925,
+    "reach": "any",
+    "todayCountry": "필리핀",
+    "in1520": "석회암 산속을 흐르는 강물이 동굴을 빠져나와 바다로 이어졌습니다.",
+    "text": "물이 석회암을 녹여 만든 동굴 속으로 강이 흐릅니다. 약 8.2킬로미터의 지하 하천이 바다로 이어지며, 하류는 밀물과 썰물의 영향을 받습니다. 해안의 동굴 입구에서 강과 바다가 만나는 모습을 볼 수 있습니다.",
+    "sources": [
+      {
+        "title": "UNESCO Puerto-Princesa Subterranean River",
+        "url": "https://whc.unesco.org/en/list/652"
+      }
+    ],
+    "kind": "자연"
+  },
+  {
+    "id": "lm-table-mountain",
+    "name": "테이블산",
+    "kind": "자연",
+    "todayCountry": "남아프리카공화국",
+    "in1520": "도시는 없었고 코이코이 사람들이 소와 양을 먹이던 풀밭이었습니다.",
+    "text": "산꼭대기가 넓고 평평해 탁자를 닮은 산입니다. 단단한 사암층이 침식에 견디면서 가파른 절벽과 평평한 정상부가 남았습니다. 습한 바닷바람이 산을 타고 올라가 식으면 정상에 구름이 상보처럼 걸립니다.",
+    "lat": -33.96,
+    "lon": 18.41,
+    "reach": "any",
+    "sources": [
+      {
+        "title": "SANParks Table Mountain geology",
+        "url": "https://www.sanparks.org/parks/table-mountain/explore/geology"
+      }
+    ]
   }
 ]
