@@ -5,6 +5,51 @@
     const PLAYER_NAME_KEY = "classPlayerName";
     // 답을 보냈는데 이만큼 기다려도 서버가 말이 없으면 다시 누를 수 있게 풀어 준다.
     const ANSWER_WAIT_MS = 6000;
+    const reduceMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches === true;
+
+    // 연속으로 맞힐수록 크게 알려 준다. 위에서부터 먼저 걸리는 것을 쓴다.
+    const STREAK_STEPS = [
+        { at: 10, label: "10연속 정답!", mark: "\u2728", sound: "bell", confetti: 60 },
+        { at: 7, label: "7연속 정답!", mark: "\u26a1", sound: "bell", confetti: 40 },
+        { at: 5, label: "5연속 정답!", mark: "\u2b50", sound: "card", confetti: 26 },
+        { at: 3, label: "3연속 정답!", mark: "\ud83d\udd25", sound: "card", confetti: 16 }
+    ];
+
+    // 틀릴 때마다 같은 말이 뜨면 더 김이 샌다. 돌아가며 다르게 말한다.
+    const WRONG_NUDGES = [
+        { title: "아깝다!", detail: "잠깐 더 생각하고 다른 답을 골라 보세요." },
+        { title: "다시 한 번!", detail: "계산을 처음부터 짚어 보세요." },
+        { title: "거의 왔어요.", detail: "남은 보기 가운데 답이 있어요." },
+        { title: "천천히 해도 괜찮아요.", detail: "차분히 다시 세어 보세요." }
+    ];
+
+    function sfx(name) {
+        try { window.ClassGameSfx?.play(name); } catch (_) {}
+    }
+
+    function streakStep(streak) {
+        return STREAK_STEPS.find((step) => streak >= step.at) || null;
+    }
+
+    function throwConfetti(count) {
+        if (reduceMotion) return;
+        const colors = ["#e0523f", "#2f7fd1", "#2f9e5b", "#e3b021", "#8a5bd6", "#ee8a2f"];
+        const layer = document.createElement("div");
+        layer.className = "confetti";
+        layer.setAttribute("aria-hidden", "true");
+        for (let index = 0; index < count; index += 1) {
+            const piece = document.createElement("span");
+            piece.style.setProperty("--x", `${Math.random() * 100}%`);
+            piece.style.setProperty("--drift", `${(Math.random() - 0.5) * 240}px`);
+            piece.style.setProperty("--spin", `${(Math.random() - 0.5) * 1440}deg`);
+            piece.style.setProperty("--delay", `${Math.random() * 0.6}s`);
+            piece.style.setProperty("--fall", `${1.8 + Math.random() * 1.4}s`);
+            piece.style.background = colors[index % colors.length];
+            layer.append(piece);
+        }
+        document.body.append(layer);
+        setTimeout(() => layer.remove(), 4200);
+    }
 
     const elements = {
         backLink: document.querySelector(".back-link"),
@@ -53,6 +98,7 @@
         rankingWaiting: document.getElementById("rankingWaiting"),
         perfectReview: document.getElementById("perfectReview"),
         missedList: document.getElementById("missedList"),
+        lastCall: document.getElementById("lastCall"),
         announcer: document.getElementById("announcer")
     };
 
@@ -68,6 +114,7 @@
         pendingButton: null,
         pendingTimer: 0,
         review: [],
+        wrongCount: 0,
         sessionId: "",
         finished: false,
         race: null,
@@ -329,12 +376,26 @@
         flash.setAttribute("aria-hidden", "true");
         document.body.append(flash);
         flash.addEventListener("animationend", () => flash.remove());
+        sfx("bell");
         elements.announcer.textContent = "출발! 첫 문제입니다.";
     }
 
     // 수학 문항에는 $수식$ 이 섞여 있다. KaTeX 가 실렸을 때만 그린다.
+    // KaTeX 는 CDN 에서 온다. 학교 망이 막혀 오지 않으면 $y^2+18y+81$ 처럼 달러가
+    // 그대로 보인다. 그때는 달러만 떼어 적어도 읽히게 한다.
+    function stripMathMarks(element) {
+        const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT);
+        const targets = [];
+        while (walker.nextNode()) if (walker.currentNode.nodeValue.includes("$")) targets.push(walker.currentNode);
+        targets.forEach((node) => { node.nodeValue = node.nodeValue.replace(/\$+/g, ""); });
+    }
+
     function renderMath(element) {
-        if (!element || !window.renderMathInElement) return;
+        if (!element) return;
+        if (!window.renderMathInElement) {
+            stripMathMarks(element);
+            return;
+        }
         window.renderMathInElement(element, {
             delimiters: [
                 { left: "$$", right: "$$", display: true },
@@ -360,7 +421,13 @@
         elements.feedback.classList.add("hidden");
         elements.feedback.classList.remove("is-wrong");
         elements.streakBadge.classList.add("hidden");
-        elements.nextButton.textContent = state.currentIndex === total() - 1 ? "결과 보기" : "다음 문제";
+        const lastOne = state.currentIndex === total() - 1;
+        elements.nextButton.textContent = lastOne ? "결과 보기" : "다음 문제";
+        elements.lastCall.classList.toggle("hidden", !lastOne);
+        if (lastOne) {
+            sfx("turn");
+            elements.announcer.textContent = "마지막 문제입니다.";
+        }
 
         question.choices.forEach((choice, index) => {
             const button = document.createElement("button");
@@ -455,12 +522,14 @@
         state.pendingButton = null;
 
         if (!reply.correct) {
+            sfx("error");
             if (button) {
                 button.classList.add("is-wrong");
                 replay(button, "shake");
             }
             unlockChoices();
-            showWrongFeedback("다시 생각해 보세요.", "다른 답을 골라 보세요.");
+            const nudge = WRONG_NUDGES[state.wrongCount++ % WRONG_NUDGES.length];
+            showWrongFeedback(nudge.title, nudge.detail);
             elements.announcer.textContent = "다시 생각하고 다른 답을 골라 보세요.";
             return;
         }
@@ -479,10 +548,21 @@
         }
         if (reply.finished) takeReview(reply.review);
         const streak = Number(reply.streak) || 0;
-        elements.streakBadge.classList.toggle("hidden", !(reply.firstTry && streak >= 3));
-        if (reply.firstTry && streak >= 3) {
-            elements.streakBadge.textContent = `${streak}연속 정답!`;
+        const step = reply.firstTry ? streakStep(streak) : null;
+        elements.streakBadge.classList.toggle("hidden", !step);
+        elements.streakBadge.classList.toggle("is-hot", Boolean(step) && streak >= 5);
+        if (step) {
+            elements.streakBadge.textContent = `${step.mark} ${streak}연속 정답!`;
             replay(elements.streakBadge, "pop");
+            // 단계를 새로 밟은 그 문제에서만 터뜨린다. 계속 터지면 눈이 아프다.
+            if (streak === step.at) {
+                sfx(step.sound);
+                throwConfetti(step.confetti);
+            } else {
+                sfx("success");
+            }
+        } else {
+            sfx("success");
         }
         elements.feedbackTitle.textContent = reply.firstTry ? "정답이에요! 한 칸 앞으로!" : "맞았어요. 처음에 틀린 문제라 이번엔 칸이 늘지 않아요.";
         elements.feedback.classList.remove("is-wrong");
@@ -525,7 +605,11 @@
             return;
         }
         const ahead = race.participants.filter((entry) => entry.score > mine.score).length;
-        elements.liveRank.textContent = `지금 ${ahead + 1}위 / ${race.participants.length}명`;
+        const top = Math.max(...race.participants.map((entry) => Number(entry.score) || 0), 0);
+        const gap = top - (Number(mine.score) || 0);
+        elements.liveRank.textContent = ahead === 0
+            ? `지금 1위 / ${race.participants.length}명`
+            : `지금 ${ahead + 1}위 / ${race.participants.length}명 · 1위와 ${gap}점 차`;
         elements.liveRank.classList.remove("is-team");
     }
 
@@ -591,6 +675,8 @@
         renderReview();
         renderClassRanking();
         setScreen(elements.resultScreen);
+        sfx(state.score === total() ? "bell" : "success");
+        if (state.score === total() && total() > 0) throwConfetti(80);
         window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
