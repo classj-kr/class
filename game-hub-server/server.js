@@ -1024,6 +1024,24 @@ function dobbleBroadcast(room) {
       state: Dobble.stateFor(room.dobble, id)
     });
   }
+  scheduleDobblePenaltyEnd(room);
+}
+
+// 오답 페널티는 시간이 지나면 저절로 풀린다. 그런데 모두가 잠겨 있으면 아무도 행동을
+// 못 해 방송할 일도 없으므로, 페널티가 끝나는 순간에 서버가 깨어나 상태를 다시 보낸다.
+function scheduleDobblePenaltyEnd(room) {
+  clearTimeout(room?.dobbleTimer);
+  const game = room?.dobble;
+  if (!game || game.phase !== "playing") return;
+  const endsAt = Dobble.nextPenaltyEndsAt(game);
+  if (!endsAt) return;
+  const expectedAction = game.actionNumber;
+  room.dobbleTimer = setTimeout(() => {
+    if (rooms.get(roomKey(room.gameId, room.roomCode)) !== room) return;
+    if (game.phase !== "playing" || game.actionNumber !== expectedAction) return;
+    dobbleBroadcast(room);
+  }, Math.max(50, endsAt - Date.now()));
+  room.dobbleTimer.unref?.();
 }
 
 function dobbleError(socket, message) {
@@ -3734,8 +3752,8 @@ wss.on("connection", (socket, request) => {
 
       if (!result.ok) {
         dobbleError(socket, result.error || "행동을 처리하지 못했습니다.");
-        // 오답 페널티(대기 시간)는 실패한 CLAIM에서도 게임 상태를 바꾸므로, 그 갱신된
-        // 상태(myPenaltyUntil)를 클라이언트가 받을 수 있도록 이때도 방송한다.
+        // 오답 페널티는 실패한 CLAIM에서도 게임 상태를 바꾸므로, 그 갱신된 상태
+        // (myLocked/myLockedMs)를 클라이언트가 받을 수 있도록 이때도 방송한다.
         if (action === "CLAIM") dobbleBroadcast(room);
         return;
       }
@@ -4241,6 +4259,7 @@ wss.on("connection", (socket, request) => {
         clearTimeout(currentRoom.lastcardTimer);
         clearTimeout(currentRoom.bomb77Timer);
         clearTimeout(currentRoom.codenamesTimer);
+        clearTimeout(currentRoom.dobbleTimer);
         clearTimeout(currentRoom.avalonTimer);
         for (const [id, client] of currentRoom.clients) {
           if (id !== playerId) {
