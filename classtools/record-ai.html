@@ -560,6 +560,13 @@
                 throw new Error('구글이 요청을 받아 주지 않았습니다 (' + status + ')' + (why ? ': ' + why : ''));
             }
 
+            // gemini-3.8-flash 처럼 이름에 박힌 판 번호를 견줄 수 있는 수로 바꾼다.
+            function modelRank(name) {
+                const matched = String(name).match(/gemini-(\d+)(?:\.(\d+))?/i);
+                if (!matched) return -1;
+                return Number(matched[1]) * 1000 + Number(matched[2] || 0);
+            }
+
             async function pickModel(apiKey) {
                 const remembered = store.get('gemini_model');
                 if (remembered) return remembered;
@@ -575,9 +582,10 @@
                 if (names.length === 0) throw new Error('이 키로 쓸 수 있는 모델이 없습니다.');
 
                 // 글 다듬는 데에는 가벼운 것으로 넉넉하고, 공짜로 쓸 수 있는 몫도 많다.
-                const model = names.find(name => /flash/i.test(name) && !/(preview|exp|thinking)/i.test(name))
-                    || names.find(name => /flash/i.test(name))
-                    || names[0];
+                const flashes = names.filter(name => /flash/i.test(name)
+                    && !/(preview|exp|thinking|lite)/i.test(name));
+                const pool = flashes.length > 0 ? flashes : names;
+                const model = pool.slice().sort((a, b) => modelRank(b) - modelRank(a) || a.length - b.length)[0];
                 store.set('gemini_model', model);
                 return model;
             }
@@ -640,10 +648,20 @@
             async function ask(apiKey, prompt) {
                 let data = await callGemini(await pickModel(apiKey), apiKey, prompt);
                 if (data === null) {
-                    // 골라 둔 모델이 사라졌을 수 있다. 목록을 다시 받아 한 번 더.
+                    // 구글이 "이건 그만 쓰고 이걸 쓰라"며 이름을 적어 보내기도 한다.
+                    // 그러면 그대로 따라가고, 아니면 목록을 다시 받아 고른다.
+                    const suggested = /use\s+models\/([A-Za-z0-9._-]+)/i.exec(lastGoogleMessage || '');
                     store.remove('gemini_model');
-                    data = await callGemini(await pickModel(apiKey), apiKey, prompt);
+                    let next;
+                    if (suggested) {
+                        next = suggested[1];
+                        store.set('gemini_model', next);
+                    } else {
+                        next = await pickModel(apiKey);
+                    }
+                    data = await callGemini(next, apiKey, prompt);
                     if (data === null) {
+                        store.remove('gemini_model');
                         throw new Error('구글이 요청을 받아 주지 않았습니다.'
                             + (lastGoogleMessage ? ' 구글이 알려 온 까닭: ' + lastGoogleMessage : ''));
                     }

@@ -1,9 +1,10 @@
 // 생활기록부 화면을 진짜 크롬으로 열어, 키 저장부터 결과 그리기까지 돌려 본다.
 // 학급 명단과 구글 API 는 가짜 답으로 바꿔치기해서 실제로 부르지 않는다.
 //
-// 구글이 주소를 interactions 로 옮기는 중이라 두 가지를 다 본다.
-//  - 'new'    : 새 주소가 살아 있는 경우
-//  - 'legacy' : 새 주소가 404 라서 옛 주소로 돌아가야 하는 경우
+// 구글이 주소도 모델 이름도 바꾸는 중이라 세 가지를 다 본다.
+//  - 'new'     : 새 주소가 살아 있는 경우
+//  - 'legacy'  : 새 주소가 404 라서 옛 주소로 돌아가야 하는 경우
+//  - 'retired' : 고른 모델이 은퇴해서, 구글이 알려 준 이름으로 갈아타야 하는 경우
 const fs = require('fs');
 const http = require('http');
 const path = require('path');
@@ -42,8 +43,14 @@ const json = (body, status) => ({
 
 const SENTENCES = '1. 첫째 문장임.\n2. 둘째 문장임.\n3. 셋째 문장임.';
 
+// 은퇴한 모델을 부르면 구글이 대신 쓸 이름을 적어 보낸다.
+const SUCCESSOR = 'gemini-3.6-flash';
+const retiredMessage = (name) => 'This model models/' + name
+  + ' is no longer available to new users. Please update your code to use models/'
+  + SUCCESSOR + ' for the latest features and improvements.';
+
 async function run(browser, port, mode) {
-  const state = { calls: 0, wrongFallback: false, badBody: null, keySeen: [], consoleErrors: [], pageErrors: [] };
+  const state = { calls: 0, wrongFallback: false, badBody: null, modelsUsed: [], keySeen: [], consoleErrors: [], pageErrors: [] };
   // 판마다 새 방을 쓴다. 한 방을 같이 쓰면 앞 판이 브라우저에 남긴 키와
   // 수행평가가 뒤 판에 그대로 딸려 와 엉뚱한 수를 센다.
   const context = browser.createBrowserContext
@@ -70,9 +77,12 @@ async function run(browser, port, mode) {
         return request.respond(json({ classroom: { grade: 6, classNumber: 2, students: STUDENTS } }));
       }
       if (google && url.endsWith('/v1beta/models')) {
+        // 목록에는 은퇴한 옛 모델이 앞에 섞여 있다. 순서대로 집으면 안 된다.
         return request.respond(json({
           models: [
+            { name: 'models/gemini-2.5-flash' },
             { name: 'models/gemini-3.8-flash-image' },
+            { name: 'models/gemini-3.6-flash' },
             { name: 'models/gemini-3.8-flash' },
             { name: 'models/gemini-3.8-pro' }
           ]
@@ -88,12 +98,25 @@ async function run(browser, port, mode) {
           state.badBody = Object.keys(sent).join(', ');
           return request.respond(json({ error: { message: "흉내: Unknown parameter 'temperature'." } }, 400));
         }
+        state.modelsUsed.push(sent.model);
+        if (mode === 'retired' && sent.model !== SUCCESSOR) {
+          return request.respond(json({ error: { message: retiredMessage(sent.model) } }, 400));
+        }
         state.calls += 1;
         // 새 주소는 steps 안에 글을 담아 보낸다. 훑어서 찾아내야 한다.
         return request.respond(json({ steps: [{ content: [{ text: SENTENCES }] }] }));
       }
       if (url.includes(':generateContent')) {
-        if (mode !== 'legacy') state.wrongFallback = true;
+        const used = (url.match(/models\/([^:]+):generateContent/) || [])[1] || '';
+        state.modelsUsed.push(used);
+        if (mode === 'retired') {
+          // 은퇴한 모델은 어느 주소로 불러도 거절당한다.
+          if (used !== SUCCESSOR) {
+            return request.respond(json({ error: { message: retiredMessage(used) } }, 400));
+          }
+        } else if (mode !== 'legacy') {
+          state.wrongFallback = true;
+        }
         state.calls += 1;
         return request.respond(json({ candidates: [{ content: { parts: [{ text: SENTENCES }] } }] }));
       }
@@ -150,6 +173,16 @@ async function run(browser, port, mode) {
     assert.equal(state.badBody, null,
       'temperature·max_output_tokens 는 generation_config 안에 넣어야 한다. 보낸 바깥 칸: ' + state.badBody);
     assert.ok(!state.wrongFallback, '새 주소가 되는데도 옛 주소로 넘어갔음');
+    // 목록에서 가장 새 판을 골라야 한다. 은퇴한 2.5 를 집으면 안 된다.
+    assert.ok(!state.modelsUsed.includes('gemini-2.5-flash'),
+      '은퇴한 모델을 골랐음: ' + state.modelsUsed.join(', '));
+    if (mode === 'retired') {
+      assert.ok(state.modelsUsed.includes(SUCCESSOR),
+        '구글이 알려 준 모델로 갈아타지 않았음: ' + state.modelsUsed.join(', '));
+    } else {
+      assert.equal(state.modelsUsed[0], 'gemini-3.8-flash',
+        '가장 새 모델을 고르지 않았음: ' + state.modelsUsed.join(', '));
+    }
     assert.equal(state.calls, 2, '수행평가 두 줄이면 두 번 불러야 함. 실제: ' + state.calls);
 
     // 키는 주소가 아니라 머리말로 가야 한다
@@ -213,7 +246,7 @@ async function run(browser, port, mode) {
       args: ['--no-first-run', '--no-default-browser-check']
     });
     console.log('생활기록부 화면');
-    for (const mode of ['new', 'legacy']) {
+    for (const mode of ['new', 'legacy', 'retired']) {
       await run(browser, port, mode);
     }
     console.log('모두 통과');
