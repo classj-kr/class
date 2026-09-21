@@ -333,28 +333,42 @@ function spinStyle(symbols, ccw) {
 
 function renderCard(container, symbols, clickable, spin) {
   // 판이 새로 그려질 때마다 도는 것이 0도로 되돌아간다. 내용이 그대로면 손대지 않는다.
-  const signature = JSON.stringify([symbols || [], Boolean(clickable), spin || null]);
-  if (container.dataset.cardSignature === signature) return;
-  container.dataset.cardSignature = signature;
+  // 누를 수 있는지는 오답 페널티 때문에 카드가 그대로여도 바뀌므로 서명에 넣지 않는다.
+  // 넣으면 틀릴 때와 페널티가 풀릴 때마다 판이 처음 각도로 튄다.
+  const signature = JSON.stringify([symbols || [], spin || null]);
+  if (container.dataset.cardSignature !== signature) {
+    container.dataset.cardSignature = signature;
 
-  const inner = (symbols || []).map((symbol, index) => {
-    const slot = SLOT_LAYOUT[index % SLOT_LAYOUT.length];
-    const seed = `${symbol}:${index}`;
-    const scale = 0.72 + seededUnit(seed + ":scale") * 0.2; // 0.72~0.92, 슬롯끼리 겹치지 않는 안전 범위 안에서 최대한 크게
-    const rotate = -35 + seededUnit(seed + ":rotate") * 70; // -35~35도
-    const size = 29 * scale;
-    return `<div class="symbol${clickable ? " clickable" : ""}" data-symbol="${esc(symbol)}"
-      style="top:${slot.top};left:${slot.left};width:${size}%;--rotate:${rotate}deg">
-      <img src="${avatarUrl(symbol)}" alt=""></div>`;
-  }).join("");
-  container.innerHTML = spin
-    ? `<div class="spinLayer${spin.ccw ? " ccw" : ""}" style="--spin:${spin.seconds}s">${inner}</div>`
-    : inner;
-  if (clickable) {
-    container.querySelectorAll(".symbol").forEach(node => {
-      node.addEventListener("click", () => sendAction("CLAIM", { symbolKey: node.dataset.symbol }));
-    });
+    const inner = (symbols || []).map((symbol, index) => {
+      const slot = SLOT_LAYOUT[index % SLOT_LAYOUT.length];
+      const seed = `${symbol}:${index}`;
+      const scale = 0.72 + seededUnit(seed + ":scale") * 0.2; // 0.72~0.92, 슬롯끼리 겹치지 않는 안전 범위 안에서 최대한 크게
+      const rotate = -35 + seededUnit(seed + ":rotate") * 70; // -35~35도
+      const size = 29 * scale;
+      return `<div class="symbol" data-symbol="${esc(symbol)}"
+        style="top:${slot.top};left:${slot.left};width:${size}%;--rotate:${rotate}deg">
+        <img src="${avatarUrl(symbol)}" alt=""></div>`;
+    }).join("");
+    container.innerHTML = spin
+      ? `<div class="spinLayer${spin.ccw ? " ccw" : ""}" style="--spin:${spin.seconds}s">${inner}</div>`
+      : inner;
   }
+  setCardClickable(container, clickable);
+}
+
+// 클릭은 카드에 한 번만 걸어 두고, 지금 누를 수 있는지는 누르는 순간에 본다. 그래야
+// 페널티가 걸리고 풀릴 때 그림을 다시 그리지 않아도 되고, 돌던 판이 그대로 돈다.
+function setCardClickable(container, clickable) {
+  const on = Boolean(clickable);
+  container.dataset.clickable = on ? "true" : "false";
+  container.querySelectorAll(".symbol").forEach(node => node.classList.toggle("clickable", on));
+  if (container.dataset.claimBound === "true") return;
+  container.dataset.claimBound = "true";
+  container.addEventListener("click", event => {
+    if (container.dataset.clickable !== "true") return;
+    const node = event.target.closest(".symbol");
+    if (node && container.contains(node)) sendAction("CLAIM", { symbolKey: node.dataset.symbol });
+  });
 }
 
 function canStartClient(s) {
