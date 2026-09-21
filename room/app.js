@@ -5,6 +5,21 @@
   const status = document.getElementById("status");
   const button = form.querySelector("button");
 
+  // 선생님에게만 학급 만들기를 보인다. 서버가 답하지 않으면 숨긴 채로 둔다.
+  async function revealCreateForTeacher() {
+    const link = document.getElementById("createRaceLink");
+    if (!link) return;
+    try {
+      const response = await fetch("/api/auth/me", { credentials: "same-origin" });
+      if (!response.ok) return;
+      const session = await response.json();
+      const canCreate = session?.isTeacher === true || session?.user?.role === "admin";
+      link.classList.toggle("is-hidden", !canCreate);
+    } catch (_) {
+      // 로그인 상태를 알 수 없으면 그대로 숨겨 둔다.
+    }
+  }
+
   input.addEventListener("input", () => { input.value = input.value.replace(/\D/g, "").slice(0, 4); });
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
@@ -30,4 +45,6 @@
       input.select();
     }
   });
+
+  revealCreateForTeacher();
 })();
