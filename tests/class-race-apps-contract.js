@@ -47,7 +47,7 @@ const registry = sandbox.window.ClassRaceApps;
 assert.ok(registry, "ClassRaceApps 를 만들지 못했다.");
 
 // 국어만 있던 목록을 넓혔다. 줄어들면 알아채야 한다.
-const EXPECTED = ["spelling", "proverbs", "idioms", "cci", "hanja", "mathox", "english"];
+const EXPECTED = ["spelling", "proverbs", "idioms", "cci", "hanja", "arithmetic", "mathox", "english"];
 // 흉내 낸 창에서 온 배열이라 deepEqual 은 모양이 같아도 어긋난다. 글자로 견준다.
 const listed = registry.list();
 assert.equal(listed.map((app) => app.id).join(" "), EXPECTED.join(" "),
