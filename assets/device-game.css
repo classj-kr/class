@@ -98,3 +98,6 @@ table {
         overflow: auto;
     }
 }
+
+/* In-match room metadata remains available to network code, not the play UI. */
+.room-lockup[hidden],.roomBadge[hidden],.roomMini[hidden],.roomTag[hidden],.room-pill[hidden]{display:none!important}

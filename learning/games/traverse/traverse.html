@@ -35,27 +35,36 @@ button,input{font:inherit}.hidden{display:none!important}.screen{min-height:100v
 @media(max-width:840px){.game-layout{grid-template-columns:1fr}.side-panel{display:grid;grid-template-columns:1fr 1fr}.log{height:100px}}
 @media(max-width:620px){.screen{padding:0}.panel,.game-shell{min-height:100vh;border-radius:0;border-left:0;border-right:0;padding:13px}.game-head{grid-template-columns:1fr}.game-title,.head-actions{text-align:center}.board-stage{padding:28px}.side-panel{grid-template-columns:1fr}.share-row{grid-template-columns:1fr}.shape.triangle{border-left-width:11px;border-right-width:11px;border-bottom-width:21px}.music-control{gap:5px}.music-segment{width:20px;height:18px}}
 
-/* Active traverse match: remove vertical centering and fit the board first. */
-@media (min-width:700px){
-body:has(#gameScreen:not(.hidden)){height:100dvh;min-height:0;overflow:hidden}
-#gameScreen:not(.hidden){height:100dvh;min-height:0;align-items:flex-start;padding:8px}
-#gameScreen .game-shell{height:calc(100dvh - 16px);min-height:0;padding:8px;overflow:hidden}
-#gameScreen .game-head{padding-bottom:6px}
-#gameScreen .turn-box{min-width:160px;padding:5px 10px}
-#gameScreen .game-layout{grid-template-columns:minmax(0,1fr) 245px;min-height:0;height:calc(100% - 52px);gap:8px;margin-top:8px}
-#gameScreen .board-area{min-height:0;overflow:hidden}
-#gameScreen .board-stage{width:min(690px,calc(100dvh - 118px),calc(100dvw - 286px));padding:16px}
-#gameScreen .message{min-height:36px;margin-top:6px;padding:6px 8px}
-#gameScreen .side-panel{display:flex;flex-direction:column;min-height:0;gap:6px;overflow:hidden}
-#gameScreen .info-card{padding:8px}
-#gameScreen .log{height:auto;min-height:52px;flex:1 1 auto;overflow:auto}
-#gameScreen .music-control{display:none}
+
+/* The board owns the full available height; match information lives beside it. */
+#gameScreen{padding:8px;min-height:560px;height:100dvh;align-items:stretch}
+#gameScreen .game-shell{width:min(1320px,100%);height:100%;min-height:0;padding:8px}
+#gameScreen .game-layout{height:100%;min-height:0;margin:0;grid-template-columns:minmax(0,1fr) 250px;gap:10px}
+#gameScreen .board-area{container-type:size;display:grid;place-items:center;min-height:0}
+#gameScreen .board-stage{width:min(100cqw,100cqh);aspect-ratio:1;padding:18px}
+#gameScreen .game-head{display:flex;flex-direction:column;align-items:stretch;gap:8px;padding-bottom:8px}
+#gameScreen .game-title{font-size:18px;text-align:center}
+#gameScreen .head-actions{display:flex;gap:8px;justify-content:center}
+#gameScreen .turn-box{min-width:0}
+#gameScreen .message{margin:0;min-height:0;font-size:14px}
+#gameScreen .side-panel{display:flex;flex-direction:column;gap:8px;min-height:0;overflow:auto}
+#gameScreen .info-card{padding:8px;flex-shrink:0}
+#gameScreen .log{height:90px}
+#gameScreen .info-card:has(.game-music){display:none}
+#gameScreen button{min-height:44px}
+@media(max-width:899px) and (orientation:portrait){
+ #gameScreen .game-layout{grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,1fr) auto}
+ #gameScreen .side-panel{display:grid;grid-template-columns:1fr 1fr;max-height:32dvh}
+ #gameScreen .game-head{grid-row:1/3}
+ #gameScreen .game-title{display:none}
+ #gameScreen .message{grid-column:2;grid-row:1}
+ #gameScreen .info-card:has(.chain-actions){grid-column:2;grid-row:2}
 }
 </style>
 <script src="../../../assets/network/game-network.js?v=20260821"></script>
 <script src="../../../assets/network/multiplayer-lobby.js?v=20260906b"></script>
 <script src="../../../assets/sound/music-control.js?v=20260910-click-cache-1" defer></script>
-<link rel="stylesheet" href="../../../assets/device-game.css">
+<link rel="stylesheet" href="../../../assets/device-game.css?v=20260921c">
 </head>
 <body>
 <audio id="bgm" src="/learning/games/traverse/assets/sound/bgm.ogg" loop preload="auto"></audio>
@@ -71,9 +80,9 @@ body:has(#gameScreen:not(.hidden)){height:100dvh;min-height:0;overflow:hidden}
 <div class="music-control"><strong>MUSIC</strong><button class="btn" type="button" data-mute>MUTE</button><div class="music-bars"><button class="music-segment" type="button" data-level="1"></button><button class="music-segment" type="button" data-level="2"></button><button class="music-segment" type="button" data-level="3"></button><button class="music-segment" type="button" data-level="4"></button><button class="music-segment" type="button" data-level="5"></button></div></div>
 </div></section>
 <section id="gameScreen" class="screen hidden"><div class="game-shell">
-<div class="game-head"><div class="game-title">SHAPE CROSSING</div><div id="turnBox" class="turn-box"><div class="turn-line"><span id="turnText">게임 준비 중</span><span id="turnSeconds" class="turn-seconds">30초</span></div><div class="turn-track"><div id="turnTimerBar" class="turn-bar"></div></div></div><div class="head-actions"><button id="rulesBtnGame" class="btn" type="button">RULES</button> <button id="leaveBtn" class="btn" type="button">나가기</button></div></div>
-<div class="game-layout"><div class="board-area"><div class="board-stage"><div id="labelTop" class="side-label top">-</div><div id="labelRight" class="side-label right">-</div><div id="labelBottom" class="side-label bottom">-</div><div id="labelLeft" class="side-label left">-</div><div id="board" class="board" aria-label="도형 건너기 게임판"></div></div><div id="message" class="message">게임 준비 중입니다.</div></div>
-<aside class="side-panel"><div class="info-card"><div class="info-title">PLAYERS</div><div id="playerStatus"></div></div><div class="info-card"><div class="info-title">TURN ACTION</div><div class="chain-actions"><button id="endJumpBtn" class="btn primary" type="button" disabled>점프 종료</button><button id="cancelSelectBtn" class="btn" type="button">선택 취소</button></div></div><div class="info-card"><div class="info-title">GAME LOG</div><div id="gameLog" class="log"></div></div><div class="info-card"><div class="info-title">MUSIC</div><div class="music-control game-music"><button class="btn" type="button" data-mute>MUTE</button><div class="music-bars"><button class="music-segment" type="button" data-level="1" aria-label="음악 볼륨 1"></button><button class="music-segment" type="button" data-level="2" aria-label="음악 볼륨 2"></button><button class="music-segment" type="button" data-level="3" aria-label="음악 볼륨 3"></button><button class="music-segment" type="button" data-level="4" aria-label="음악 볼륨 4"></button><button class="music-segment" type="button" data-level="5" aria-label="음악 볼륨 5"></button></div></div></div></aside></div>
+
+<div class="game-layout"><div class="board-area"><div class="board-stage"><div id="labelTop" class="side-label top">-</div><div id="labelRight" class="side-label right">-</div><div id="labelBottom" class="side-label bottom">-</div><div id="labelLeft" class="side-label left">-</div><div id="board" class="board" aria-label="도형 건너기 게임판"></div></div></div>
+<aside class="side-panel"><div class="game-head"><div class="game-title">SHAPE CROSSING</div><div id="turnBox" class="turn-box"><div class="turn-line"><span id="turnText">게임 준비 중</span><span id="turnSeconds" class="turn-seconds">30초</span></div><div class="turn-track"><div id="turnTimerBar" class="turn-bar"></div></div></div><div class="head-actions"><button id="rulesBtnGame" class="btn" type="button">RULES</button> <button id="leaveBtn" class="btn" type="button">나가기</button></div></div><div id="message" class="message">게임 준비 중입니다.</div><div class="info-card"><div class="info-title">PLAYERS</div><div id="playerStatus"></div></div><div class="info-card"><div class="info-title">TURN ACTION</div><div class="chain-actions"><button id="endJumpBtn" class="btn primary" type="button" disabled>점프 종료</button><button id="cancelSelectBtn" class="btn" type="button">선택 취소</button></div></div><div class="info-card"><div class="info-title">GAME LOG</div><div id="gameLog" class="log"></div></div><div class="info-card"><div class="info-title">MUSIC</div><div class="music-control game-music"><button class="btn" type="button" data-mute>MUTE</button><div class="music-bars"><button class="music-segment" type="button" data-level="1" aria-label="음악 볼륨 1"></button><button class="music-segment" type="button" data-level="2" aria-label="음악 볼륨 2"></button><button class="music-segment" type="button" data-level="3" aria-label="음악 볼륨 3"></button><button class="music-segment" type="button" data-level="4" aria-label="음악 볼륨 4"></button><button class="music-segment" type="button" data-level="5" aria-label="음악 볼륨 5"></button></div></div></div></aside></div>
 </div></section>
 <div id="overlay" class="mp-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="mp-modal"><h2 id="modalTitle">RULES</h2><div id="modalBody"></div><button id="modalClose" class="btn primary mp-modal-close" type="button">확인</button></div></div>
 <div id="toast" class="toast"></div>
@@ -267,7 +276,7 @@ function renderBoard(){
 
   board.replaceChildren(fragment);
   const move=state.lastMove,moved=move&&board.querySelector(`.piece[data-piece-id="${move.pieceId}"]`),before=move&&previousRects.get(move.pieceId),after=moved?.getBoundingClientRect();
-  if(before&&after&&moved?.animate&&move.seq!==lastAnimatedMoveSeq){lastAnimatedMoveSeq=move.seq;const dx=before.left-after.left,dy=before.top-after.top,frames=move.kind==='jump'?[{transform:`translate(${dx}px,${dy}px)`,offset:0},{transform:`translate(${dx/2}px,${dy/2-18}px) scale(1.08)`,offset:.5},{transform:'translate(0,0)',offset:1}]:[{transform:`translate(${dx}px,${dy}px)`},{transform:'translate(0,0)'}];moved.animate(frames,{duration:move.kind==='jump'?220:130,easing:'linear'})}
+  if(before&&after&&moved?.animate&&move.seq!==lastAnimatedMoveSeq&&!matchMedia('(prefers-reduced-motion: reduce)').matches){lastAnimatedMoveSeq=move.seq;const dx=before.left-after.left,dy=before.top-after.top,frames=move.kind==='jump'?[{transform:`translate(${dx}px,${dy}px)`,offset:0},{transform:`translate(${dx/2}px,${dy/2-18}px) scale(1.08)`,offset:.5},{transform:'translate(0,0)',offset:1}]:[{transform:`translate(${dx}px,${dy}px)`},{transform:'translate(0,0)'}];moved.animate(frames,{duration:move.kind==='jump'?360:260,easing:'linear'})}
 
   for(const displaySide of ["top","right","bottom","left"]){
     const logicalSide=["top","right","bottom","left"].find(side=>logicalSideToDisplay(side)===displaySide);

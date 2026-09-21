@@ -28,7 +28,8 @@ body:has(#gameScreen:not(.hidden)) .shell{height:calc(100dvh - 16px)}
 <script src="../../../assets/network/game-network.js?v=20260821"></script>
 <script src="../../../assets/network/multiplayer-lobby.js?v=20260906b"></script>
 <script src="../../../assets/sound/music-control.js?v=20260910-click-cache-1" defer></script>
-<link rel="stylesheet" href="../../../assets/device-game.css">
+<link rel="stylesheet" href="../../../assets/device-game.css?v=20260921c">
+<script src="../../../assets/game-motion.js?v=20260921a"></script>
 </head>
 <body>
 <main class="shell">
@@ -82,7 +83,7 @@ body:has(#gameScreen:not(.hidden)) .shell{height:calc(100dvh - 16px)}
       <aside class="gameSidebar">
         <div class="panel">
           <div class="row spread">
-            <div><div class="eyebrow">ROOM CODE</div><div id="gameRoomCode" class="code">----</div></div>
+            <div hidden><div id="gameRoomCode">----</div></div>
           </div>
           <div class="row" style="margin-top:10px">
             <button id="rulesBtnGame" class="secondary" type="button">RULES</button>
@@ -420,8 +421,12 @@ function renderGame(){
     cell.classList.toggle("flipped",flipped.has(key));
     cell.classList.toggle("legal",isLegal&&canPlay);
     cell.setAttribute("aria-label",(row+1)+"행 "+(col+1)+"열"+(value?(value===1?" 흑돌":" 백돌"):isLegal?" 둘 수 있음":" 빈 자리"));
+    const previousValue=Number(cell.dataset.stoneValue||0);
+    cell.dataset.stoneValue=String(value);
+    if(value&&value===previousValue)return;
     if(value){
       cell.innerHTML='<span class="disc '+(value===1?"black":"white")+'"></span>';
+      if(previousValue)window.ClassGameMotion?.flip(cell.firstElementChild,'disc '+(previousValue===1?'black':'white'));else window.ClassGameMotion?.appear(cell.firstElementChild);
     }else if(isLegal){
       cell.innerHTML='<span class="hint"></span>';
     }else{

@@ -578,3 +578,14 @@ button.building { cursor: pointer; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; }
 }
+
+.gameShell{height:100dvh;min-height:560px;display:flex;flex-direction:column}
+.gameShell.hidden{display:none}
+.gameHeader{flex-shrink:0}
+.gameLayout{flex:1;min-height:0;height:auto}
+.boardPanel{min-height:0;aspect-ratio:auto}
+.boardViewport{container-type:size;min-height:0}
+.boardStage{width:min(100cqw,100cqh);height:auto;aspect-ratio:1}
+@media(orientation:portrait){.gameLayout{grid-template-rows:minmax(0,1fr) 280px}.boardPanel{height:100%;aspect-ratio:auto}.controlPanel{min-height:0;overflow:auto}.boardStage{width:min(100cqw,100cqh)}}
+
+.boardStage .node[data-start]{width:min(94px,14cqw,14cqh)}

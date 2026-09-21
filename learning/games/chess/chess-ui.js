@@ -25,6 +25,7 @@ let toastTimer = null;
 let unreadChat = 0;
 const chatMessages = [];
 const seenChatIds = new Set();
+const pieceMotions = new Set();
 
 function escapeHtml(value) {
   return String(value).replace(/[&<>"']/g, character => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[character]));
@@ -153,7 +154,7 @@ function myColor() { return gameState?.myColor || "w"; }
 function isMyPiece(piece) { return piece && piece[0] === gameState?.myColor; }
 
 function selectSquare(square) {
-  if (!gameState || gameState.phase !== "playing" || actionPending || gameState.turn !== gameState.myColor) return;
+  if (!gameState || gameState.phase !== "playing" || actionPending || pieceMotions.size || gameState.turn !== gameState.myColor) return;
   const piece = gameState.board[square];
   if (selected != null) {
     const candidates = legalTargets.filter(move => move.to === square);
@@ -201,6 +202,7 @@ function submitMove(from, to, promotion) {
 
 function renderBoard() {
   if (!gameState) return;
+  cancelPieceMotions();
   const board = $("board");
   const fragment = document.createDocumentFragment();
   const reverse = myColor() === "b";
@@ -232,6 +234,77 @@ function renderBoard() {
   }
   board.replaceChildren(fragment);
 }
+
+// Animate only a newly accepted, consecutive server move. Reconnect snapshots and
+// clock/draw updates must not replay the last move.
+function cancelPieceMotions() {
+  for (const motion of [...pieceMotions]) { motion.animation.cancel(); motion.cleanup(); }
+}
+
+function playPieceMotion(element, frames, duration, cleanup) {
+  const animation = element.animate(frames, { duration, easing: "cubic-bezier(.25,.65,.3,1)", fill: "both" });
+  const motion = { animation, cleanup: () => {
+    if (!pieceMotions.delete(motion)) return;
+    cleanup();
+    animation.cancel();
+  }};
+  pieceMotions.add(motion);
+  animation.finished.then(motion.cleanup, motion.cleanup);
+}
+
+function animateAcceptedMove(previous) {
+  const move = gameState?.lastMove;
+  if (!previous || !move || previous.matchNumber !== gameState.matchNumber
+    || previous.myColor !== gameState.myColor
+    || gameState.moves?.length !== (previous.moves?.length || 0) + 1
+    || !previous.board[move.from] || gameState.board[move.from]
+    || window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    || typeof Element.prototype.animate !== "function") return;
+  const movingPiece = previous.board[move.from];
+  const square = index => $("board").querySelector(`[data-square="${index}"]`);
+  const travel = (from, to, piece, promotion = false) => {
+    const origin = square(from), destination = square(to);
+    const finalPiece = destination?.querySelector(".piece-svg");
+    if (!origin || !finalPiece) return;
+    const a = origin.getBoundingClientRect(), b = destination.getBoundingClientRect();
+    const dx = a.left - b.left, dy = a.top - b.top;
+    let actor = finalPiece;
+    if (promotion) {
+      finalPiece.style.visibility = "hidden";
+      destination.insertAdjacentHTML("beforeend", pieceSvg(piece, "moving-ghost"));
+      actor = destination.lastElementChild;
+      actor.setAttribute("aria-hidden", "true");
+    }
+    destination.classList.add("piece-moving");
+    const frames = [{ transform: `translate(${dx}px,${dy}px)` }];
+    if (piece[1] === "N") {
+      // The knight jumps over pieces; a raised L-shaped path makes its move legible.
+      frames.push({ transform: `translate(${Math.abs(dx) > Math.abs(dy) ? 0 : dx}px,${Math.abs(dy) > Math.abs(dx) ? 0 : dy}px) scale(1.08)`, offset: .65 });
+    }
+    frames.push({ transform: "translate(0,0)" });
+    const distance = Math.max(Math.abs(from % 8 - to % 8), Math.abs(Math.floor(from / 8) - Math.floor(to / 8)));
+    playPieceMotion(actor, frames, piece[1] === "N" ? 360 : Math.min(400, 220 + distance * 25), () => {
+      destination.classList.remove("piece-moving");
+      if (promotion) { actor.remove(); finalPiece.style.removeProperty("visibility"); }
+    });
+  };
+  travel(move.from, move.to, movingPiece, Boolean(move.promotion));
+  if (move.castle) {
+    const rank = Math.floor(move.from / 8) * 8;
+    travel(rank + (move.castle === "K" ? 7 : 0), rank + (move.castle === "K" ? 5 : 3), movingPiece[0] + "R");
+  }
+  const capturedAt = move.enPassant ? Math.floor(move.from / 8) * 8 + move.to % 8 : move.to;
+  const captured = previous.board[capturedAt];
+  if (captured && captured[0] !== movingPiece[0]) {
+    const target = square(capturedAt);
+    target.insertAdjacentHTML("beforeend", pieceSvg(captured, "capture-ghost"));
+    const ghost = target.lastElementChild;
+    ghost.setAttribute("aria-hidden", "true");
+    playPieceMotion(ghost, [{ opacity: 1, transform: "scale(1)" }, { opacity: 0, transform: "scale(.65)" }], 240, () => ghost.remove());
+  }
+}
+
+window.addEventListener("resize", cancelPieceMotions);
 
 function playerFor(color) { return gameState?.players?.find(player => player.color === color) || { name: color === "w" ? "백" : "흑", color }; }
 
@@ -329,13 +402,22 @@ function renderGame() {
 
 function applyServerMessage(message) {
   if (message.type === SERVER_MESSAGE.STATE) {
-    const previousRevision = gameState?.revision;
+    const previous = gameState;
+    const previousRevision = previous?.revision;
     gameState = message.state;
     receivedAt = performance.now();
     actionPending = false;
     if (previousRevision !== gameState.revision) { selected = null; legalTargets = []; }
     if (gameState.phase === "playing" || gameState.phase === "ended") showGame();
-    renderGame();
+    const sameBoard = previous && previous.matchNumber === gameState.matchNumber
+      && previous.myColor === gameState.myColor
+      && previous.board.every((piece, index) => piece === gameState.board[index]);
+    if (sameBoard && pieceMotions.size) {
+      renderPlayerBars(); renderMoves(); renderCaptures(); renderStatus();
+    } else {
+      renderGame();
+      animateAcceptedMove(previous);
+    }
     return;
   }
   if (message.type === SERVER_MESSAGE.ERROR) {

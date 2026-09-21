@@ -25,12 +25,39 @@ body{background-image:linear-gradient(rgba(7,10,16,.66),rgba(7,10,16,.88)),url("
 <script src="../../../assets/network/game-network.js?v=20260821"></script>
 <script src="../../../assets/network/multiplayer-lobby.js?v=20260906b"></script>
 <script src="../../../assets/sound/music-control.js?v=20260910-click-cache-1" defer></script>
-<link rel="stylesheet" href="../../../assets/device-game.css">
+<link rel="stylesheet" href="../../../assets/device-game.css?v=20260921c">
+<style>
+body:has(#game:not(.hide)){padding:8px}
+body:has(#game:not(.hide)) .shell{max-width:1280px;width:100%}
+body:has(#game:not(.hide)) .brand{display:none}
+#game:not(.hide){display:grid;height:calc(100dvh - 16px);min-height:560px;grid-template-columns:300px minmax(0,1fr);grid-template-rows:auto auto minmax(0,1fr);gap:8px}
+#game>.card{margin:0;padding:12px;min-height:0}
+#game>.card:first-child{grid-column:2;grid-row:1}
+#game>#secret{grid-column:1;grid-row:1/4;overflow:auto}
+#game>.card:nth-child(3){grid-column:2;grid-row:2}
+#game>.card:nth-child(4){grid-column:2;grid-row:3;overflow:auto}
+#game .identityCard{width:min(230px,100%)}
+#game .players{gap:6px}
+#game .missions{margin-top:8px}
+#game h3{margin:4px 0 8px}
+#game .cardHint,#game .cardPrivacy{font-size:12px;margin:6px 0}
+#game .actionCardChoice{max-height:240px;width:auto}
+@media(max-width:899px) and (orientation:portrait){
+ #game:not(.hide){grid-template-columns:220px minmax(0,1fr);grid-template-rows:auto auto minmax(0,1fr)}
+ #game>.card:first-child{grid-column:1/-1;grid-row:1}
+ #game>#secret{grid-column:1;grid-row:2/4}
+ #game>.card:nth-child(3){grid-column:2;grid-row:2}
+ #game>.card:nth-child(4){grid-column:2;grid-row:3}
+ #game .identityCard{width:180px}
+}
+</style><style>
+body:has(#game:not(.hide)) #musicControl{position:fixed;left:24px;bottom:16px;width:270px;z-index:2;margin:0;padding:6px}body:has(#game:not(.hide)) #musicControl .music-label,body:has(#game:not(.hide)) #musicTrack{display:none}#game>#secret{padding-bottom:60px}
+</style>
 </head>
 <body><main class="shell"><header class="brand"><b>QUEST DEDUCTION</b><span>원정대 추리</span></header>
 <section id="missingScreen" class="card hidden"><h2>GAME LOBBY</h2><div class="entryPlayer">이름이 없습니다. 이름 변경은 메인 화면에서만 가능합니다.</div><button type="button" onclick="location.href='../../../'">메인 화면으로</button></section>
 <section id="entry" class="card hidden mp-lobby-fit" data-multiplayer-lobby><h2>GAME LOBBY</h2><div class="entryPlayer">PLAYER · <strong id="savedPlayerName">-</strong></div><div class="characterPicker"><span class="characterPickerTitle">캐릭터 스타일 선택</span><div class="characterChoices" role="radiogroup" aria-label="캐릭터 스타일"><label class="characterOption"><input type="radio" name="characterStyle" value="random" checked><span>선택하지 않음 · 랜덤</span></label><label class="characterOption"><input type="radio" name="characterStyle" value="male"><span>남성형 캐릭터</span></label><label class="characterOption"><input type="radio" name="characterStyle" value="female"><span>여성형 캐릭터</span></label></div><p class="characterChoiceHelp">선택 내용은 다른 학생에게 공개되지 않으며 역할 카드 그림에만 적용됩니다.</p></div><div class="entryActions"><button id="create" type="button">CREATE ROOM</button><button id="joinMode" type="button" aria-label="방 번호 입력 방식 선택" role="tab">JOIN ROOM</button><button class="secondary" id="rulesEntry" type="button">HOW TO PLAY</button><button class="secondary" id="leaveEntry" type="button">메인 화면으로</button></div><div id="createPane" class="entryPane hidden"><div class="status">캐릭터 스타일을 고른 뒤 CREATE ROOM을 누르세요.</div></div><div id="joinPane" class="entryPane hidden"><input id="code" inputmode="numeric" maxlength="4" placeholder="ROOM CODE · 4 DIGITS"><button id="join" type="button" aria-label="입력한 방 번호로 참가">JOIN</button></div><div id="entryStatus" class="status"></div></section>
-<section id="game" class="hide"><section class="card"><div class="row"><div><small>ROOM CODE</small><div id="roomCode" class="code"></div><button class="secondary" id="rulesGame" type="button">RULES</button><button class="secondary" id="leaveGame" type="button">메인 화면으로</button></div><div><small>현재 단계</small><h3 id="phaseText">대기실</h3></div><div id="turnClock" class="turn-clock hide"><span id="turnSeconds" class="turn-clock-label">60초</span><div class="turn-track"><div id="turnTimerBar" class="turn-bar"></div></div></div></div><div id="notice" class="notice hide"></div><div id="missions" class="missions"></div></section>
+<section id="game" class="hide"><section class="card"><div class="row"><div><div id="roomCode" class="code" hidden></div><button class="secondary" id="rulesGame" type="button">RULES</button><button class="secondary" id="leaveGame" type="button">메인 화면으로</button></div><div><small>현재 단계</small><h3 id="phaseText">대기실</h3></div><div id="turnClock" class="turn-clock hide"><span id="turnSeconds" class="turn-clock-label">60초</span><div class="turn-track"><div id="turnTimerBar" class="turn-bar"></div></div></div></div><div id="notice" class="notice hide"></div><div id="missions" class="missions"></div></section>
 <section id="secret" class="card secret hide"><h3 id="secretTitle">나의 정체</h3><p id="cardHint" class="cardHint">카드를 누르고 있는 동안만 정체가 보입니다</p><button id="identityCard" class="identityCard" type="button" aria-expanded="false" aria-label="누르고 있는 동안 정체 카드 확인"><span class="identityCardInner"><span class="identityCardSide identityCardBack"><img class="roleCardImage" src="/learning/games/avalon/assets/images/cards/role-card-back.webp" alt="원정대 추리 역할 카드 뒷면" draggable="false"></span><span class="identityCardSide identityCardFace"><img id="roleCardImage" class="roleCardImage" alt="" draggable="false"><span id="roleCardTitleOverlay" class="roleCardTitleOverlay"></span><span class="roleCardFooterOverlay">원정대 추리 · 비밀 역할</span></span></span></button><div id="roleDetails" class="roleDetails hide" aria-hidden="true"><div id="faction" class="cardFaction"></div><div id="role" class="cardRole"></div><span id="ability" class="cardAbility"></span><span id="goal" class="cardGoal"></span><div id="vision" class="cardVision"></div></div><p id="cardPrivacy" class="cardPrivacy">손가락이나 마우스를 떼는 즉시 카드와 역할 안내가 자동으로 덮입니다.</p></section>
 <section class="card"><h3>원정대원 <span id="count"></span></h3><div id="players" class="players"></div></section>
 <section id="lobby" class="card"><h3>역할 구성</h3><div id="setupGuide" class="setupGuide"></div><div class="checks"><label><input type="checkbox" data-role="percival"> 수호자 (Guardian)</label><label><input type="checkbox" data-role="morgana"> 환영술사 (Illusionist)</label><label><input type="checkbox" data-role="mordred"> 잠입자 (Infiltrator)</label><label><input type="checkbox" data-role="oberon"> 고독한 첩자 (Lone Spy)</label></div><p class="setupHelp">체크를 해제하면 해당 특수 역할이 일반 원정대원 또는 어둠의 추종자로 교체됩니다. 추격자와 예언자는 항상 포함됩니다. 수호자와 환영술사는 함께 사용할 때 능력이 제대로 작동합니다.</p><div id="roleComposition" class="roleComposition"></div><div class="lobbyButtons"><button id="resetRecommended" class="secondary" type="button">RESET RECOMMENDED</button><button id="start" type="button">START GAME · 5–8 PLAYERS</button></div></section>

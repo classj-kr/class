@@ -92,8 +92,20 @@ h1,h2,h3,p{margin-top:0}
 <script src="../../../assets/network/game-network.js?v=20260821"></script>
 <script src="../../../assets/network/multiplayer-lobby.js?v=20260906b"></script>
 <script src="../../../assets/sound/music-control.js?v=20260910-click-cache-1" defer></script>
-<link rel="stylesheet" href="../../../assets/device-game.css">
-</head>
+<link rel="stylesheet" href="../../../assets/device-game.css?v=20260921c">
+<style>
+body:has(#playArea:not(.hidden)){padding:8px}
+body:has(#playArea:not(.hidden)) .shell{width:min(1440px,100%)}
+#game:has(#playArea:not(.hidden)){height:calc(100dvh - 16px);display:grid;grid-template-rows:auto minmax(0,1fr);gap:8px}
+#game>.panel{margin:0;padding:10px}
+#playArea .playLayout{height:100%;grid-template-columns:minmax(0,1fr) 230px;gap:10px;align-items:stretch}
+#playArea .playMain{min-height:0;display:flex;flex-direction:column}
+#playArea .boards{flex:1;min-height:0;align-items:center}
+#playArea .cardWrap{min-height:0;container-type:inline-size}
+#playArea .dobbleCard{width:min(100%,calc(100dvh - 160px))}
+#playArea .standings{overflow:auto;min-height:0}
+@media(orientation:portrait){#playArea .playLayout{grid-template-columns:1fr;grid-template-rows:minmax(0,1fr) 240px}#playArea .standings{display:flex;flex-direction:column}#playArea #standingsList{display:grid;grid-template-columns:1fr 1fr;gap:6px}}
+</style></head>
 <body>
 <main class="shell">
   <section id="missingScreen" class="panel hidden">
@@ -134,7 +146,7 @@ h1,h2,h3,p{margin-top:0}
 
   <section id="game" class="hidden">
     <div class="panel row spread">
-      <div><div class="eyebrow">ROOM CODE</div><div id="gameRoomCode" class="code">----</div></div>
+      <div hidden><div id="gameRoomCode">----</div></div>
       <div class="row">
         <button id="rulesGameBtn" class="secondary" type="button">RULES</button>
         <button id="leaveGameBtn" class="secondary" type="button">메인 화면</button>

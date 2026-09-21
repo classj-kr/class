@@ -69,6 +69,7 @@
         const seats = gameState.players.map(player => {
             const seat = document.createElement("article");
             seat.className = "player-seat";
+            seat.dataset.playerId = player.id;
             seat.classList.toggle("is-current", gameState.turnPlayerId === player.id);
             seat.classList.toggle("is-me", player.id === myId());
 
@@ -144,6 +145,7 @@
             const button = document.createElement("button");
             button.type = "button";
             button.className = "hand-option";
+            button.dataset.cardId = card.id;
             button.classList.toggle("is-selected", selectedCardId === card.id);
             button.disabled = !canAct || !isPlayable(card);
             button.setAttribute("aria-label", `${card.kind === "number" ? card.value : card.kind} 카드 선택`);
@@ -221,6 +223,11 @@
     }
 
     function installState(state) {
+        const previous = gameState;
+        // Clock-only snapshots must not replace cards in the middle of a move.
+        const withoutClock = value => JSON.stringify(value, (key, item) => key === "turnDeadline" ? 0 : item);
+        if(previous && withoutClock(previous) === withoutClock(state)) { gameState=state; renderTurnClock(); return; }
+        const before = window.ClassGameMotion?.captureCards();
         gameState = state;
         if (state.actionNumber !== lastActionNumber) {
             lastActionNumber = state.actionNumber;
@@ -237,6 +244,7 @@
         $("lobbyScreen").classList.add("hidden");
         $("gameScreen").classList.remove("hidden");
         renderGame();
+        if(before)window.ClassGameMotion.cards(previous,state,before,"topCard","topCard");
     }
 
     function handleServerMessage(message) {

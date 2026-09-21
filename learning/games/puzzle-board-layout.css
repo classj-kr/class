@@ -1,0 +1,27 @@
+
+/* The puzzle occupies the full available height; controls form a separate column. */
+body:has(#gameScreen:not([hidden])) .page-shell{height:100dvh;min-height:0;box-sizing:border-box;padding:8px;width:100%}
+#gameScreen:not([hidden]){display:grid;width:100%;height:100%;min-height:0;box-sizing:border-box;padding:12px;grid-template-columns:minmax(0,1fr) 240px;grid-template-rows:auto auto auto minmax(0,1fr) auto;gap:10px;container-type:size}
+#gameScreen .game-layout,#gameScreen .play-column{display:contents}
+#gameScreen .game-topbar{grid-column:2;grid-row:1;margin:0}
+#gameScreen .stats{grid-column:2;grid-row:2;margin:0}
+#gameScreen .tool-switch{grid-column:2;grid-row:3;margin:0}
+#gameScreen .status{grid-column:2;grid-row:4;align-self:start;margin:0}
+#gameScreen .actions{grid-column:2;grid-row:5;display:flex;flex-direction:column;margin:0}
+#gameScreen .board-wrap{grid-column:1;grid-row:1/6;width:min(calc(100cqw - 250px),100cqh);max-width:none;aspect-ratio:1;box-sizing:border-box;margin:auto;padding:10px;container-type:inline-size;overflow:visible}
+#gameScreen #board{width:100%;height:100%;min-height:0}
+#gameScreen .guide-panel{position:fixed;inset:12px 12px 12px auto;width:min(420px,90vw);max-height:none;z-index:51;overflow:auto}
+#gameScreen .nono-board.size-5{--cell:calc((100cqw - 10px)/6);--clue:var(--cell)}
+#gameScreen .nono-board.size-10{--cell:calc((100cqw - 20px)/11);--clue:var(--cell)}
+#gameScreen .nono-board.size-15{--cell:calc((100cqw - 30px)/16);--clue:var(--cell)}
+@media(orientation:portrait){
+ #gameScreen:not([hidden]){grid-template-columns:1fr 1fr;grid-template-rows:auto auto minmax(0,1fr) auto auto}
+ #gameScreen .game-topbar{grid-column:1/-1;grid-row:1}
+ #gameScreen .stats{grid-column:1;grid-row:2}
+ #gameScreen .tool-switch{grid-column:2;grid-row:2}
+ #gameScreen .board-wrap{grid-column:1/-1;grid-row:3;width:min(100cqw,calc(100cqh - 220px))}
+ #gameScreen .status{grid-column:1/-1;grid-row:4}
+ #gameScreen .actions{grid-column:1/-1;grid-row:5;flex-direction:row;justify-content:center}
+}
+
+#gameScreen .nb-cell{border-color:rgba(255,240,199,.32)}

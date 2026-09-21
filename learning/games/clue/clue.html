@@ -180,7 +180,33 @@ h1,h2,h3,p{margin-top:0}
 <script src="../../../assets/network/game-network.js?v=20260821"></script>
 <script src="../../../assets/network/multiplayer-lobby.js?v=20260906b"></script>
 <script src="../../../assets/sound/music-control.js?v=20260910-click-cache-1" defer></script>
-<link rel="stylesheet" href="../../../assets/device-game.css">
+<link rel="stylesheet" href="../../../assets/device-game.css?v=20260921c">
+<style>
+body:has(#gameScreen:not(.hidden)){padding:8px}
+body:has(#gameScreen:not(.hidden)) .shell{width:100%;max-width:1440px}
+#gameScreen .gameLayout{height:calc(100dvh - 16px);min-height:560px;display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:8px;align-items:stretch}
+#gameScreen .gameSidebar{grid-column:2;grid-row:1;min-height:0;overflow:auto;gap:6px}
+#gameScreen .gameSidebar>.panel{padding:8px;flex-shrink:0}
+#gameScreen .roomPanel .row{margin:0!important}
+#gameScreen .gameMain{grid-column:1;grid-row:1;min-height:0;container-type:size;justify-content:center}
+#gameScreen .gameMain>.panel{padding:0;border:0;background:transparent;box-shadow:none}
+#gameScreen .boardWrap{width:min(100cqw,100cqh);height:auto;margin:auto}
+#gameScreen #board{display:block;width:100%;height:auto;aspect-ratio:1}
+#gameScreen .boardLegend{display:none}
+#gameScreen .notebookGrid{grid-template-columns:1fr;max-height:280px;overflow:auto}
+#gameScreen .notebookPanel>summary{cursor:pointer;min-height:32px}
+#gameScreen .handRow{max-height:180px;overflow:auto}
+@media(max-width:899px) and (orientation:portrait){
+ #gameScreen .gameLayout{grid-template-columns:1fr;grid-template-rows:minmax(0,1fr) minmax(300px,34dvh)}
+ #gameScreen .gameMain{grid-column:1;grid-row:1;width:auto}
+ #gameScreen .gameSidebar{grid-column:1;grid-row:2;display:grid;grid-template-columns:1fr 1fr;align-content:start;width:auto}
+ #gameScreen .turnPanel{grid-column:2;grid-row:1/3}
+ #gameScreen .notebookPanel{grid-column:1/-1}
+}
+</style>
+<style>
+#gameScreen .gameSidebar{display:flex;flex-direction:column}#gameScreen .gameSidebar>.playersPanel{order:2;overflow:auto;flex:1 1 80px;min-height:65px}#gameScreen .gameSidebar>.roomPanel{order:0}#gameScreen .gameSidebar>.turnPanel{order:1}#gameScreen .gameSidebar>section{order:3}#gameScreen .notebookPanel{order:4}#gameScreen .handRow{max-height:130px}@media(max-width:899px) and (orientation:portrait){#gameScreen .gameSidebar{display:grid}}
+</style>
 </head>
 <body>
 <main class="shell">
@@ -234,7 +260,7 @@ h1,h2,h3,p{margin-top:0}
       <aside class="gameSidebar">
         <div class="panel roomPanel">
           <div class="row spread">
-            <div><div class="eyebrow">ROOM CODE</div><div id="gameRoomCode" class="code">----</div></div>
+            <div hidden><div id="gameRoomCode">----</div></div>
           </div>
           <div class="row" style="margin-top:10px">
             <button id="rulesBtnGame" class="secondary" type="button">RULES</button>
@@ -250,6 +276,20 @@ h1,h2,h3,p{margin-top:0}
           <div class="turnControls"><div class="diceRow"><div class="diceFaces" aria-label="주사위 두 개"><div id="dieFace1" class="dieFace" aria-label="Die not rolled"></div><div id="dieFace2" class="dieFace" aria-label="Die not rolled"></div></div><div id="turnTimer" class="turnTimer">--</div></div><div id="actionBar" class="actionBar"></div></div>
           <div id="logLine" class="logLine"></div>
         </div>
+<section class="panel">
+          <div class="row spread">
+            <div class="eyebrow">내 카드</div>
+            <button id="handToggleBtn" class="secondary miniBtn" type="button">카드 보기</button>
+          </div>
+          <div id="handRow" class="handRow"></div>
+        </section><details class="panel notebookPanel"><summary>추리 메모장</summary>
+          <div class="eyebrow">추리 메모장 · 클릭해서 표시(✕/✓)</div>
+          <div class="notebookGrid">
+            <div class="notebookGroup"><h4>용의자</h4><div id="notebookSuspects"></div></div>
+            <div class="notebookGroup"><h4>도구</h4><div id="notebookWeapons"></div></div>
+            <div class="notebookGroup"><h4>장소</h4><div id="notebookRooms"></div></div>
+          </div>
+        </details>
       </aside>
 
       <div class="gameMain">
@@ -261,22 +301,9 @@ h1,h2,h3,p{margin-top:0}
           <div id="pendingBanner" class="pendingBanner hidden"></div>
         </section>
 
-        <section class="panel">
-          <div class="row spread">
-            <div class="eyebrow">내 카드</div>
-            <button id="handToggleBtn" class="secondary miniBtn" type="button">카드 보기</button>
-          </div>
-          <div id="handRow" class="handRow"></div>
-        </section>
 
-        <section class="panel">
-          <div class="eyebrow">추리 메모장 · 클릭해서 표시(✕/✓)</div>
-          <div class="notebookGrid">
-            <div class="notebookGroup"><h4>용의자</h4><div id="notebookSuspects"></div></div>
-            <div class="notebookGroup"><h4>도구</h4><div id="notebookWeapons"></div></div>
-            <div class="notebookGroup"><h4>장소</h4><div id="notebookRooms"></div></div>
-          </div>
-        </section>
+
+
       </div>
     </div>
   </section>

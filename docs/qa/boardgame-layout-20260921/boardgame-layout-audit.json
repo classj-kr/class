@@ -1,0 +1,4666 @@
+{
+  "generatedAt": "2026-09-21T11:57:06.070294+00:00",
+  "playerMode": "minimum configured",
+  "note": "Local Chromium touch fixtures, using actual renderer and generated match state. Intentional internal scrolling is reported separately. No live multiplayer session or physical iPad/Safari was tested.",
+  "results": [
+    {
+      "game": "avalon",
+      "playerCount": 5,
+      "coverage": "rendered match fixture",
+      "fixtureError": null,
+      "errors": [],
+      "screen": "game",
+      "checks": [
+        {
+          "width": 1366,
+          "height": 768,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1280,
+          "height": 600,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1024,
+          "height": 768,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 768,
+          "height": 1024,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1180,
+          "height": 820,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 820,
+          "height": 1180,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        }
+      ]
+    },
+    {
+      "game": "baduk",
+      "playerCount": 2,
+      "coverage": "rendered match fixture",
+      "fixtureError": null,
+      "errors": [],
+      "screen": "gameScreen",
+      "checks": [
+        {
+          "width": 1366,
+          "height": 768,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board-frame",
+              "width": 718,
+              "height": 718,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            },
+            {
+              "selector": "board",
+              "width": 684,
+              "height": 684,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1366,
+          "height": 768,
+          "state": "ended",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board-frame",
+              "width": 718,
+              "height": 718,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            },
+            {
+              "selector": "board",
+              "width": 684,
+              "height": 684,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1280,
+          "height": 600,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board-frame",
+              "width": 550,
+              "height": 550,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            },
+            {
+              "selector": "board",
+              "width": 516,
+              "height": 516,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1280,
+          "height": 600,
+          "state": "ended",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board-frame",
+              "width": 550,
+              "height": 550,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            },
+            {
+              "selector": "board",
+              "width": 516,
+              "height": 516,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1024,
+          "height": 768,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board-frame",
+              "width": 702,
+              "height": 702,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            },
+            {
+              "selector": "board",
+              "width": 671,
+              "height": 671,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1024,
+          "height": 768,
+          "state": "ended",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board-frame",
+              "width": 702,
+              "height": 702,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            },
+            {
+              "selector": "board",
+              "width": 671,
+              "height": 671,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 768,
+          "height": 1024,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board-frame",
+              "width": 689,
+              "height": 689,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            },
+            {
+              "selector": "board",
+              "width": 657,
+              "height": 658,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 768,
+          "height": 1024,
+          "state": "ended",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board-frame",
+              "width": 689,
+              "height": 689,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            },
+            {
+              "selector": "board",
+              "width": 657,
+              "height": 658,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1180,
+          "height": 820,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board-frame",
+              "width": 770,
+              "height": 770,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            },
+            {
+              "selector": "board",
+              "width": 736,
+              "height": 736,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1180,
+          "height": 820,
+          "state": "ended",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board-frame",
+              "width": 770,
+              "height": 770,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            },
+            {
+              "selector": "board",
+              "width": 736,
+              "height": 736,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 820,
+          "height": 1180,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board-frame",
+              "width": 770,
+              "height": 770,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            },
+            {
+              "selector": "board",
+              "width": 737,
+              "height": 737,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 820,
+          "height": 1180,
+          "state": "ended",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board-frame",
+              "width": 770,
+              "height": 770,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            },
+            {
+              "selector": "board",
+              "width": 737,
+              "height": 737,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        }
+      ]
+    },
+    {
+      "game": "blokus",
+      "playerCount": 2,
+      "coverage": "rendered match fixture",
+      "fixtureError": null,
+      "errors": [],
+      "screen": "gameScreen",
+      "checks": [
+        {
+          "width": 1366,
+          "height": 768,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board-frame",
+              "width": 730,
+              "height": 730,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            },
+            {
+              "selector": "board",
+              "width": 718,
+              "height": 718,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1280,
+          "height": 600,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board-frame",
+              "width": 562,
+              "height": 562,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            },
+            {
+              "selector": "board",
+              "width": 550,
+              "height": 550,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1024,
+          "height": 768,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board-frame",
+              "width": 666,
+              "height": 666,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            },
+            {
+              "selector": "board",
+              "width": 654,
+              "height": 654,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 768,
+          "height": 1024,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board-frame",
+              "width": 512,
+              "height": 512,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            },
+            {
+              "selector": "board",
+              "width": 500,
+              "height": 500,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1180,
+          "height": 820,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board-frame",
+              "width": 790,
+              "height": 790,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            },
+            {
+              "selector": "board",
+              "width": 778,
+              "height": 778,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 820,
+          "height": 1180,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board-frame",
+              "width": 615,
+              "height": 615,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            },
+            {
+              "selector": "board",
+              "width": 603,
+              "height": 603,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        }
+      ]
+    },
+    {
+      "game": "bomb77",
+      "playerCount": 2,
+      "coverage": "rendered match fixture",
+      "fixtureError": null,
+      "errors": [],
+      "screen": "gameScreen",
+      "checks": [
+        {
+          "width": 1366,
+          "height": 768,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1280,
+          "height": 600,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1024,
+          "height": 768,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 768,
+          "height": 1024,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1180,
+          "height": 820,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 820,
+          "height": 1180,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        }
+      ]
+    },
+    {
+      "game": "chess",
+      "playerCount": 2,
+      "coverage": "rendered match fixture",
+      "fixtureError": null,
+      "errors": [],
+      "screen": "gameScreen",
+      "checks": [
+        {
+          "width": 1366,
+          "height": 768,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board",
+              "width": 732,
+              "height": 732,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1366,
+          "height": 768,
+          "state": "ended",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board",
+              "width": 732,
+              "height": 732,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1280,
+          "height": 600,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board",
+              "width": 564,
+              "height": 564,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1280,
+          "height": 600,
+          "state": "ended",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board",
+              "width": 564,
+              "height": 564,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1024,
+          "height": 768,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board",
+              "width": 728,
+              "height": 728,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1024,
+          "height": 768,
+          "state": "ended",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board",
+              "width": 728,
+              "height": 728,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 768,
+          "height": 1024,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board",
+              "width": 663,
+              "height": 663,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 768,
+          "height": 1024,
+          "state": "ended",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board",
+              "width": 663,
+              "height": 663,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1180,
+          "height": 820,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board",
+              "width": 784,
+              "height": 784,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1180,
+          "height": 820,
+          "state": "ended",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board",
+              "width": 784,
+              "height": 784,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 820,
+          "height": 1180,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board",
+              "width": 784,
+              "height": 784,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 820,
+          "height": 1180,
+          "state": "ended",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board",
+              "width": 784,
+              "height": 784,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        }
+      ]
+    },
+    {
+      "game": "citychase",
+      "playerCount": 2,
+      "coverage": "rendered match fixture",
+      "fixtureError": null,
+      "errors": [],
+      "screen": "gameScreen",
+      "checks": [
+        {
+          "width": 1366,
+          "height": 768,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "boardViewport",
+              "width": 1054,
+              "height": 700,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1280,
+          "height": 600,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "boardViewport",
+              "width": 968,
+              "height": 532,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1024,
+          "height": 768,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "boardViewport",
+              "width": 732,
+              "height": 700,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 768,
+          "height": 1024,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "boardViewport",
+              "width": 756,
+              "height": 668,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1180,
+          "height": 820,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "boardViewport",
+              "width": 868,
+              "height": 752,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 820,
+          "height": 1180,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "boardViewport",
+              "width": 808,
+              "height": 824,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        }
+      ]
+    },
+    {
+      "game": "clue",
+      "playerCount": 3,
+      "coverage": "rendered match fixture",
+      "fixtureError": null,
+      "errors": [],
+      "screen": "gameScreen",
+      "checks": [
+        {
+          "width": 1366,
+          "height": 768,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board",
+              "width": 752,
+              "height": 752,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1280,
+          "height": 600,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board",
+              "width": 584,
+              "height": 584,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1024,
+          "height": 768,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board",
+              "width": 680,
+              "height": 680,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 768,
+          "height": 1024,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board",
+              "width": 652,
+              "height": 652,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1180,
+          "height": 820,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board",
+              "width": 804,
+              "height": 804,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 820,
+          "height": 1180,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board",
+              "width": 755,
+              "height": 755,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        }
+      ]
+    },
+    {
+      "game": "codenames",
+      "playerCount": 4,
+      "coverage": "rendered match fixture",
+      "fixtureError": null,
+      "errors": [],
+      "screen": "game",
+      "checks": [
+        {
+          "width": 1366,
+          "height": 768,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board",
+              "width": 583,
+              "height": 443,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1280,
+          "height": 600,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board",
+              "width": 415,
+              "height": 317,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1024,
+          "height": 768,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board",
+              "width": 583,
+              "height": 443,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 768,
+          "height": 1024,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board",
+              "width": 640,
+              "height": 486,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1180,
+          "height": 820,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board",
+              "width": 635,
+              "height": 482,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 820,
+          "height": 1180,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board",
+              "width": 640,
+              "height": 486,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        }
+      ]
+    },
+    {
+      "game": "coinweighing",
+      "playerCount": 0,
+      "coverage": "rendered match fixture",
+      "fixtureError": null,
+      "errors": [],
+      "screen": "game-board",
+      "checks": [
+        {
+          "width": 1366,
+          "height": 768,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1280,
+          "height": 600,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1024,
+          "height": 768,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 768,
+          "height": 1024,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1180,
+          "height": 820,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 820,
+          "height": 1180,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        }
+      ]
+    },
+    {
+      "game": "connect6",
+      "playerCount": 2,
+      "coverage": "rendered match fixture",
+      "fixtureError": null,
+      "errors": [],
+      "screen": "gameScreen",
+      "checks": [
+        {
+          "width": 1366,
+          "height": 768,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "boardFrame",
+              "width": 726,
+              "height": 726,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            },
+            {
+              "selector": "board",
+              "width": 704,
+              "height": 704,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1366,
+          "height": 768,
+          "state": "ended",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "boardFrame",
+              "width": 726,
+              "height": 726,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            },
+            {
+              "selector": "board",
+              "width": 704,
+              "height": 704,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1280,
+          "height": 600,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "boardFrame",
+              "width": 558,
+              "height": 558,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            },
+            {
+              "selector": "board",
+              "width": 536,
+              "height": 536,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1280,
+          "height": 600,
+          "state": "ended",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "boardFrame",
+              "width": 558,
+              "height": 558,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            },
+            {
+              "selector": "board",
+              "width": 536,
+              "height": 536,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1024,
+          "height": 768,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "boardFrame",
+              "width": 722,
+              "height": 722,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            },
+            {
+              "selector": "board",
+              "width": 700,
+              "height": 700,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1024,
+          "height": 768,
+          "state": "ended",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "boardFrame",
+              "width": 722,
+              "height": 722,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            },
+            {
+              "selector": "board",
+              "width": 700,
+              "height": 700,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 768,
+          "height": 1024,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "boardFrame",
+              "width": 726,
+              "height": 726,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            },
+            {
+              "selector": "board",
+              "width": 704,
+              "height": 704,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 768,
+          "height": 1024,
+          "state": "ended",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "boardFrame",
+              "width": 708,
+              "height": 708,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            },
+            {
+              "selector": "board",
+              "width": 686,
+              "height": 686,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1180,
+          "height": 820,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "boardFrame",
+              "width": 778,
+              "height": 778,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            },
+            {
+              "selector": "board",
+              "width": 756,
+              "height": 756,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1180,
+          "height": 820,
+          "state": "ended",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "boardFrame",
+              "width": 778,
+              "height": 778,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            },
+            {
+              "selector": "board",
+              "width": 756,
+              "height": 756,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 820,
+          "height": 1180,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "boardFrame",
+              "width": 778,
+              "height": 778,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            },
+            {
+              "selector": "board",
+              "width": 756,
+              "height": 756,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 820,
+          "height": 1180,
+          "state": "ended",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "boardFrame",
+              "width": 778,
+              "height": 778,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            },
+            {
+              "selector": "board",
+              "width": 756,
+              "height": 756,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        }
+      ]
+    },
+    {
+      "game": "davincicode",
+      "playerCount": 2,
+      "coverage": "rendered match fixture",
+      "fixtureError": null,
+      "errors": [],
+      "screen": "gameScreen",
+      "checks": [
+        {
+          "width": 1366,
+          "height": 768,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1280,
+          "height": 600,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1024,
+          "height": 768,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 768,
+          "height": 1024,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1180,
+          "height": 820,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 820,
+          "height": 1180,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        }
+      ]
+    },
+    {
+      "game": "diamondgame",
+      "playerCount": 2,
+      "coverage": "rendered match fixture",
+      "fixtureError": null,
+      "errors": [],
+      "screen": "gameScreen",
+      "checks": [
+        {
+          "width": 1366,
+          "height": 768,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board-frame",
+              "width": 738,
+              "height": 738,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            },
+            {
+              "selector": "board",
+              "width": 732,
+              "height": 732,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1366,
+          "height": 768,
+          "state": "ended",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board-frame",
+              "width": 738,
+              "height": 738,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            },
+            {
+              "selector": "board",
+              "width": 732,
+              "height": 732,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1280,
+          "height": 600,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board-frame",
+              "width": 570,
+              "height": 570,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            },
+            {
+              "selector": "board",
+              "width": 564,
+              "height": 564,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1280,
+          "height": 600,
+          "state": "ended",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board-frame",
+              "width": 570,
+              "height": 570,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            },
+            {
+              "selector": "board",
+              "width": 564,
+              "height": 564,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1024,
+          "height": 768,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board-frame",
+              "width": 736,
+              "height": 736,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            },
+            {
+              "selector": "board",
+              "width": 730,
+              "height": 730,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1024,
+          "height": 768,
+          "state": "ended",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board-frame",
+              "width": 736,
+              "height": 736,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            },
+            {
+              "selector": "board",
+              "width": 730,
+              "height": 730,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 768,
+          "height": 1024,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board-frame",
+              "width": 641,
+              "height": 641,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            },
+            {
+              "selector": "board",
+              "width": 635,
+              "height": 635,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 768,
+          "height": 1024,
+          "state": "ended",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board-frame",
+              "width": 617,
+              "height": 617,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            },
+            {
+              "selector": "board",
+              "width": 611,
+              "height": 611,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1180,
+          "height": 820,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board-frame",
+              "width": 790,
+              "height": 790,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            },
+            {
+              "selector": "board",
+              "width": 784,
+              "height": 784,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1180,
+          "height": 820,
+          "state": "ended",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board-frame",
+              "width": 790,
+              "height": 790,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            },
+            {
+              "selector": "board",
+              "width": 784,
+              "height": 784,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 820,
+          "height": 1180,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board-frame",
+              "width": 790,
+              "height": 790,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            },
+            {
+              "selector": "board",
+              "width": 784,
+              "height": 784,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 820,
+          "height": 1180,
+          "state": "ended",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board-frame",
+              "width": 748,
+              "height": 748,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            },
+            {
+              "selector": "board",
+              "width": 742,
+              "height": 742,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        }
+      ]
+    },
+    {
+      "game": "dobble",
+      "playerCount": 2,
+      "coverage": "rendered match fixture",
+      "fixtureError": null,
+      "errors": [],
+      "screen": "game",
+      "checks": [
+        {
+          "width": 1366,
+          "height": 768,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1280,
+          "height": 600,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1024,
+          "height": 768,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 768,
+          "height": 1024,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1180,
+          "height": 820,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 820,
+          "height": 1180,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        }
+      ]
+    },
+    {
+      "game": "drawrelay",
+      "playerCount": 4,
+      "coverage": "rendered match fixture",
+      "fixtureError": null,
+      "errors": [],
+      "screen": "gameScreen",
+      "checks": [
+        {
+          "width": 1366,
+          "height": 768,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "drawingCanvas",
+              "width": 620,
+              "height": 434,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1280,
+          "height": 600,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "drawingCanvas",
+              "width": 380,
+              "height": 266,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1024,
+          "height": 768,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "drawingCanvas",
+              "width": 629,
+              "height": 440,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 768,
+          "height": 1024,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "drawingCanvas",
+              "width": 683,
+              "height": 478,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1180,
+          "height": 820,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "drawingCanvas",
+              "width": 696,
+              "height": 487,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 820,
+          "height": 1180,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "drawingCanvas",
+              "width": 762,
+              "height": 533,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        }
+      ]
+    },
+    {
+      "game": "expedition",
+      "playerCount": 3,
+      "coverage": "rendered match fixture",
+      "fixtureError": null,
+      "errors": [],
+      "screen": "gameScreen",
+      "checks": [
+        {
+          "width": 1366,
+          "height": 768,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1280,
+          "height": 600,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1024,
+          "height": 768,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 768,
+          "height": 1024,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1180,
+          "height": 820,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 820,
+          "height": 1180,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        }
+      ]
+    },
+    {
+      "game": "fruitbell",
+      "playerCount": 2,
+      "coverage": "rendered match fixture",
+      "fixtureError": null,
+      "errors": [],
+      "screen": "gameScreen",
+      "checks": [
+        {
+          "width": 1366,
+          "height": 768,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board",
+              "width": 954,
+              "height": 510,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1280,
+          "height": 600,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board",
+              "width": 954,
+              "height": 342,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1024,
+          "height": 768,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board",
+              "width": 954,
+              "height": 510,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 768,
+          "height": 1024,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board",
+              "width": 726,
+              "height": 715,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1180,
+          "height": 820,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board",
+              "width": 954,
+              "height": 562,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 820,
+          "height": 1180,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board",
+              "width": 778,
+              "height": 922,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        }
+      ]
+    },
+    {
+      "game": "gemguild",
+      "playerCount": 2,
+      "coverage": "rendered match fixture",
+      "fixtureError": null,
+      "errors": [],
+      "screen": "gameScreen",
+      "checks": [
+        {
+          "width": 1366,
+          "height": 768,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1280,
+          "height": 600,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1024,
+          "height": 768,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 768,
+          "height": 1024,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1180,
+          "height": 820,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 820,
+          "height": 1180,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        }
+      ]
+    },
+    {
+      "game": "hanoitower",
+      "playerCount": 0,
+      "coverage": "rendered match fixture",
+      "fixtureError": null,
+      "errors": [],
+      "screen": "game-container",
+      "checks": [
+        {
+          "width": 1366,
+          "height": 768,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board-wrapper",
+              "width": 1062,
+              "height": 732,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1280,
+          "height": 600,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board-wrapper",
+              "width": 976,
+              "height": 564,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1024,
+          "height": 768,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board-wrapper",
+              "width": 720,
+              "height": 732,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 768,
+          "height": 1024,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board-wrapper",
+              "width": 732,
+              "height": 803,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1180,
+          "height": 820,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board-wrapper",
+              "width": 876,
+              "height": 784,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 820,
+          "height": 1180,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board-wrapper",
+              "width": 784,
+              "height": 959,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        }
+      ]
+    },
+    {
+      "game": "honeycomb",
+      "playerCount": 2,
+      "coverage": "rendered match fixture",
+      "fixtureError": null,
+      "errors": [],
+      "screen": "gameScreen",
+      "checks": [
+        {
+          "width": 1366,
+          "height": 768,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board-frame",
+              "width": 1008,
+              "height": 730,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            },
+            {
+              "selector": "board",
+              "width": 996,
+              "height": 718,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1366,
+          "height": 768,
+          "state": "ended",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1280,
+          "height": 600,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board-frame",
+              "width": 922,
+              "height": 562,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            },
+            {
+              "selector": "board",
+              "width": 910,
+              "height": 550,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1280,
+          "height": 600,
+          "state": "ended",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1024,
+          "height": 768,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board-frame",
+              "width": 666,
+              "height": 730,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            },
+            {
+              "selector": "board",
+              "width": 654,
+              "height": 718,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1024,
+          "height": 768,
+          "state": "ended",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 768,
+          "height": 1024,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board-frame",
+              "width": 738,
+              "height": 512,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            },
+            {
+              "selector": "board",
+              "width": 726,
+              "height": 500,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 768,
+          "height": 1024,
+          "state": "ended",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1180,
+          "height": 820,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board-frame",
+              "width": 822,
+              "height": 790,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            },
+            {
+              "selector": "board",
+              "width": 810,
+              "height": 778,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1180,
+          "height": 820,
+          "state": "ended",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 820,
+          "height": 1180,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board-frame",
+              "width": 790,
+              "height": 615,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            },
+            {
+              "selector": "board",
+              "width": 778,
+              "height": 603,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 820,
+          "height": 1180,
+          "state": "ended",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        }
+      ]
+    },
+    {
+      "game": "janggi",
+      "playerCount": 2,
+      "coverage": "rendered match fixture",
+      "fixtureError": null,
+      "errors": [],
+      "screen": "game",
+      "checks": [
+        {
+          "width": 1366,
+          "height": 768,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board",
+              "width": 659,
+              "height": 732,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1280,
+          "height": 600,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board",
+              "width": 508,
+              "height": 564,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1024,
+          "height": 768,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board",
+              "width": 659,
+              "height": 732,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 768,
+          "height": 1024,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board",
+              "width": 504,
+              "height": 560,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1180,
+          "height": 820,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board",
+              "width": 706,
+              "height": 784,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 820,
+          "height": 1180,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board",
+              "width": 642,
+              "height": 713,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        }
+      ]
+    },
+    {
+      "game": "kingdom-trails",
+      "playerCount": 2,
+      "coverage": "rendered match fixture",
+      "fixtureError": null,
+      "errors": [],
+      "screen": "gameScreen",
+      "checks": [
+        {
+          "width": 1366,
+          "height": 768,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "boardViewport",
+              "width": 934,
+              "height": 578,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1280,
+          "height": 600,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "boardViewport",
+              "width": 848,
+              "height": 410,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1024,
+          "height": 768,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "boardViewport",
+              "width": 810,
+              "height": 578,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 768,
+          "height": 1024,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "boardViewport",
+              "width": 562,
+              "height": 800,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1180,
+          "height": 820,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "boardViewport",
+              "width": 966,
+              "height": 630,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 820,
+          "height": 1180,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "boardViewport",
+              "width": 614,
+              "height": 958,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        }
+      ]
+    },
+    {
+      "game": "lastcard",
+      "playerCount": 2,
+      "coverage": "rendered match fixture",
+      "fixtureError": null,
+      "errors": [],
+      "screen": "gameScreen",
+      "checks": [
+        {
+          "width": 1366,
+          "height": 768,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1280,
+          "height": 600,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [],
+          "buttonsOutside": [],
+          "scrollableButtons": [
+            "999LAST\nCARDMATCH TO WIN"
+          ]
+        },
+        {
+          "width": 1024,
+          "height": 768,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 768,
+          "height": 1024,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [],
+          "buttonsOutside": [],
+          "scrollableButtons": [
+            "999LAST\nCARDMATCH TO WIN"
+          ]
+        },
+        {
+          "width": 1180,
+          "height": 820,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 820,
+          "height": 1180,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        }
+      ]
+    },
+    {
+      "game": "loveletter",
+      "playerCount": 3,
+      "coverage": "rendered match fixture",
+      "fixtureError": null,
+      "errors": [],
+      "screen": "gameScreen",
+      "checks": [
+        {
+          "width": 1366,
+          "height": 768,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1280,
+          "height": 600,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1024,
+          "height": 768,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 768,
+          "height": 1024,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1180,
+          "height": 820,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 820,
+          "height": 1180,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        }
+      ]
+    },
+    {
+      "game": "nimgame",
+      "playerCount": 2,
+      "coverage": "rendered match fixture",
+      "fixtureError": null,
+      "errors": [],
+      "screen": "game-screen",
+      "checks": [
+        {
+          "width": 1366,
+          "height": 768,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1280,
+          "height": 600,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [],
+          "buttonsOutside": [],
+          "scrollableButtons": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ]
+        },
+        {
+          "width": 1024,
+          "height": 768,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 768,
+          "height": 1024,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1180,
+          "height": 820,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 820,
+          "height": 1180,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        }
+      ]
+    },
+    {
+      "game": "nonogram",
+      "playerCount": 0,
+      "coverage": "rendered match fixture",
+      "fixtureError": null,
+      "errors": [],
+      "screen": "gameScreen",
+      "checks": [
+        {
+          "width": 1366,
+          "height": 768,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board",
+              "width": 704,
+              "height": 704,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1280,
+          "height": 600,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board",
+              "width": 536,
+              "height": 536,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1024,
+          "height": 768,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board",
+              "width": 704,
+              "height": 704,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 768,
+          "height": 1024,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board",
+              "width": 704,
+              "height": 704,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1180,
+          "height": 820,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board",
+              "width": 756,
+              "height": 756,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 820,
+          "height": 1180,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board",
+              "width": 756,
+              "height": 756,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        }
+      ]
+    },
+    {
+      "game": "omok",
+      "playerCount": 2,
+      "coverage": "rendered match fixture",
+      "fixtureError": null,
+      "errors": [],
+      "screen": "gameScreen",
+      "checks": [
+        {
+          "width": 1366,
+          "height": 768,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "boardFrame",
+              "width": 726,
+              "height": 726,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            },
+            {
+              "selector": "board",
+              "width": 704,
+              "height": 704,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1366,
+          "height": 768,
+          "state": "ended",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "boardFrame",
+              "width": 726,
+              "height": 726,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            },
+            {
+              "selector": "board",
+              "width": 704,
+              "height": 704,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1280,
+          "height": 600,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "boardFrame",
+              "width": 558,
+              "height": 558,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            },
+            {
+              "selector": "board",
+              "width": 536,
+              "height": 536,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1280,
+          "height": 600,
+          "state": "ended",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "boardFrame",
+              "width": 558,
+              "height": 558,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            },
+            {
+              "selector": "board",
+              "width": 536,
+              "height": 536,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1024,
+          "height": 768,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "boardFrame",
+              "width": 722,
+              "height": 722,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            },
+            {
+              "selector": "board",
+              "width": 700,
+              "height": 700,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1024,
+          "height": 768,
+          "state": "ended",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "boardFrame",
+              "width": 722,
+              "height": 722,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            },
+            {
+              "selector": "board",
+              "width": 700,
+              "height": 700,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 768,
+          "height": 1024,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "boardFrame",
+              "width": 726,
+              "height": 726,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            },
+            {
+              "selector": "board",
+              "width": 704,
+              "height": 704,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 768,
+          "height": 1024,
+          "state": "ended",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "boardFrame",
+              "width": 708,
+              "height": 708,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            },
+            {
+              "selector": "board",
+              "width": 686,
+              "height": 686,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1180,
+          "height": 820,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "boardFrame",
+              "width": 778,
+              "height": 778,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            },
+            {
+              "selector": "board",
+              "width": 756,
+              "height": 756,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1180,
+          "height": 820,
+          "state": "ended",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "boardFrame",
+              "width": 778,
+              "height": 778,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            },
+            {
+              "selector": "board",
+              "width": 756,
+              "height": 756,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 820,
+          "height": 1180,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "boardFrame",
+              "width": 778,
+              "height": 778,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            },
+            {
+              "selector": "board",
+              "width": 756,
+              "height": 756,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 820,
+          "height": 1180,
+          "state": "ended",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "boardFrame",
+              "width": 778,
+              "height": 778,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            },
+            {
+              "selector": "board",
+              "width": 756,
+              "height": 756,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        }
+      ]
+    },
+    {
+      "game": "reversi",
+      "playerCount": 2,
+      "coverage": "rendered match fixture",
+      "fixtureError": null,
+      "errors": [],
+      "screen": "gameScreen",
+      "checks": [
+        {
+          "width": 1366,
+          "height": 768,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "boardFrame",
+              "width": 722,
+              "height": 722,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            },
+            {
+              "selector": "board",
+              "width": 700,
+              "height": 700,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1280,
+          "height": 600,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "boardFrame",
+              "width": 554,
+              "height": 554,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            },
+            {
+              "selector": "board",
+              "width": 532,
+              "height": 532,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1024,
+          "height": 768,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "boardFrame",
+              "width": 722,
+              "height": 722,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            },
+            {
+              "selector": "board",
+              "width": 700,
+              "height": 700,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 768,
+          "height": 1024,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "boardFrame",
+              "width": 474,
+              "height": 474,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            },
+            {
+              "selector": "board",
+              "width": 452,
+              "height": 452,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1180,
+          "height": 820,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "boardFrame",
+              "width": 760,
+              "height": 760,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            },
+            {
+              "selector": "board",
+              "width": 738,
+              "height": 738,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 820,
+          "height": 1180,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "boardFrame",
+              "width": 526,
+              "height": 526,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            },
+            {
+              "selector": "board",
+              "width": 504,
+              "height": 504,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        }
+      ]
+    },
+    {
+      "game": "rummikub",
+      "playerCount": 2,
+      "coverage": "rendered match fixture",
+      "fixtureError": null,
+      "errors": [],
+      "screen": "gameScreen",
+      "checks": [
+        {
+          "width": 1366,
+          "height": 768,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board",
+              "width": 1330,
+              "height": 343,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1280,
+          "height": 600,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board",
+              "width": 1244,
+              "height": 175,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1024,
+          "height": 768,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board",
+              "width": 988,
+              "height": 343,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 768,
+          "height": 1024,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board",
+              "width": 728,
+              "height": 415,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1180,
+          "height": 820,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board",
+              "width": 1140,
+              "height": 340,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 820,
+          "height": 1180,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board",
+              "width": 780,
+              "height": 571,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        }
+      ]
+    },
+    {
+      "game": "setgame",
+      "playerCount": 1,
+      "coverage": "rendered match fixture",
+      "fixtureError": null,
+      "errors": [],
+      "screen": "game-container",
+      "checks": [
+        {
+          "width": 1366,
+          "height": 768,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "card-grid",
+              "width": 696,
+              "height": 508,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1280,
+          "height": 600,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "card-grid",
+              "width": 696,
+              "height": 340,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1024,
+          "height": 768,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "card-grid",
+              "width": 696,
+              "height": 508,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 768,
+          "height": 1024,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "card-grid",
+              "width": 728,
+              "height": 653,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1180,
+          "height": 820,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "card-grid",
+              "width": 696,
+              "height": 560,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 820,
+          "height": 1180,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "card-grid",
+              "width": 780,
+              "height": 809,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        }
+      ]
+    },
+    {
+      "game": "sliding-puzzle",
+      "playerCount": 0,
+      "coverage": "rendered match fixture",
+      "fixtureError": null,
+      "errors": [],
+      "screen": "gameScreen",
+      "checks": [
+        {
+          "width": 1366,
+          "height": 768,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board",
+              "width": 704,
+              "height": 704,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1280,
+          "height": 600,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board",
+              "width": 536,
+              "height": 536,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1024,
+          "height": 768,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board",
+              "width": 704,
+              "height": 704,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 768,
+          "height": 1024,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board",
+              "width": 704,
+              "height": 704,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1180,
+          "height": 820,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board",
+              "width": 756,
+              "height": 756,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 820,
+          "height": 1180,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board",
+              "width": 756,
+              "height": 756,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        }
+      ]
+    },
+    {
+      "game": "sphinx",
+      "playerCount": 0,
+      "coverage": "rendered match fixture",
+      "fixtureError": null,
+      "errors": [],
+      "screen": "display-area",
+      "checks": [
+        {
+          "width": 1366,
+          "height": 768,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1280,
+          "height": 600,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1024,
+          "height": 768,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 768,
+          "height": 1024,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1180,
+          "height": 820,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 820,
+          "height": 1180,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        }
+      ]
+    },
+    {
+      "game": "traverse",
+      "playerCount": 2,
+      "coverage": "rendered match fixture",
+      "fixtureError": null,
+      "errors": [],
+      "screen": "gameScreen",
+      "checks": [
+        {
+          "width": 1366,
+          "height": 768,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board",
+              "width": 694,
+              "height": 694,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1366,
+          "height": 768,
+          "state": "ended",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board",
+              "width": 694,
+              "height": 694,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1280,
+          "height": 600,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board",
+              "width": 526,
+              "height": 526,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1280,
+          "height": 600,
+          "state": "ended",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board",
+              "width": 526,
+              "height": 526,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1024,
+          "height": 768,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board",
+              "width": 690,
+              "height": 690,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1024,
+          "height": 768,
+          "state": "ended",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board",
+              "width": 690,
+              "height": 690,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 768,
+          "height": 1024,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board",
+              "width": 668,
+              "height": 668,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 768,
+          "height": 1024,
+          "state": "ended",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board",
+              "width": 668,
+              "height": 668,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1180,
+          "height": 820,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board",
+              "width": 746,
+              "height": 746,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 1180,
+          "height": 820,
+          "state": "ended",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board",
+              "width": 746,
+              "height": 746,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 820,
+          "height": 1180,
+          "state": "playing",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board",
+              "width": 746,
+              "height": 746,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        },
+        {
+          "width": 820,
+          "height": 1180,
+          "state": "ended",
+          "visibleRoomCodes": [],
+          "pageOverflow": false,
+          "boards": [
+            {
+              "selector": "board",
+              "width": 746,
+              "height": 746,
+              "collapsed": false,
+              "clipped": false,
+              "outside": false
+            }
+          ],
+          "buttonsOutside": [],
+          "scrollableButtons": []
+        }
+      ]
+    }
+  ]
+}

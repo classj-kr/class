@@ -34,3 +34,17 @@ assert.match(html,/addEventListener\("ended",playNextBgm\)/,"세 곡을 순서�
 assert.doesNotMatch(html,/<audio[^>]+\bloop\b/,"한 곡만 반복 재생하면 안 됩니다.");
 assert.doesNotMatch(html,/localStorage\.setItem\s*\(/,"이름 변경은 게임 페이지에서 허용하지 않습니다.");
 console.log("diamondgame-unit: 121 cells, six 10-cell camps, 2-3 players ok");
+
+// Every neighboring edge stays equilateral for all viewer orientations.
+for(const viewer of ["red","blue","yellow"]){
+ vm.runInContext(`myId="${viewer}"`,context);
+ const distances=vm.runInContext(`CELLS.flatMap(c=>[[2,0],[1,1],[-1,1]].filter(([dx,dy])=>CELL_KEYS.has(key(c.x+dx,c.y+dy))).map(([dx,dy])=>{const a=point(c),b=point({x:c.x+dx,y:c.y+dy});return Math.hypot(a.x-b.x,a.y-b.y)}))`,context);
+ assert.ok(distances.every(d=>Math.abs(d-34)<1e-8),viewer+": distorted lattice");
+ const tips=vm.runInContext(`[[0,-8],[12,-4],[12,4],[0,8],[-12,4],[-12,-4]].map(([x,y])=>point({x,y}))`,context);
+ const radius=Math.hypot(tips[0].x-280,tips[0].y-280);
+ for(let i=0;i<6;i++){
+  assert.ok(Math.abs(Math.hypot(tips[i].x-280,tips[i].y-280)-radius)<1e-8,"Unequal star tips");
+  assert.ok(Math.abs(Math.hypot(tips[i].x-tips[(i+1)%6].x,tips[i].y-tips[(i+1)%6].y)-radius)<1e-8,"Star tips are not 60 degrees apart");
+ }
+}
+console.log("diamondgame geometry: equilateral neighbors and sixfold symmetry PASS");

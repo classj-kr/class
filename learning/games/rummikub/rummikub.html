@@ -40,7 +40,29 @@ body.game-active{background:linear-gradient(180deg,rgba(1,9,13,.78),rgba(1,13,14
 </style>
 <script src="../../../assets/network/game-network.js?v=20260821"></script>
 <script src="../../../assets/network/multiplayer-lobby.js?v=20260906b"></script>
-<link rel="stylesheet" href="../../../assets/device-game.css">
+<link rel="stylesheet" href="../../../assets/device-game.css?v=20260921c">
+<style>
+
+body.game-active{height:100dvh;min-height:0;padding:8px}
+body.game-active .shell{height:100%}
+#gameScreen:not(.hidden){height:100%;display:grid;grid-template-rows:auto auto minmax(0,1fr);gap:6px}
+.game-active #gameScreen .panel{margin:0}
+.game-active .gameHeader{grid-template-columns:auto minmax(0,1fr) auto auto;gap:8px;padding:8px}
+.game-active .headerActions{grid-column:auto}
+.game-active .playerBar{margin:0;grid-template-columns:repeat(4,minmax(0,1fr))}
+#playArea{display:grid;min-height:0;grid-template-rows:minmax(0,1fr) auto;gap:6px}
+.game-active .boardPanel{display:flex;flex-direction:column;min-height:0}
+.game-active .board{flex:1;height:auto;min-height:0;overflow:auto}
+.game-active .emptyBoard{min-height:80px}
+.game-active .myPanel{padding:8px}
+.game-active .controls{grid-template-columns:minmax(0,1fr) repeat(5,auto)}
+@media(max-width:899px) and (orientation:portrait){
+ .game-active .gameHeader{grid-template-columns:1fr auto auto}.game-active .headerCenter{grid-row:auto;grid-column:auto}.game-active .headerActions{grid-column:1/-1}
+ .game-active .controls{grid-template-columns:repeat(5,minmax(0,1fr))}.game-active .helpText{grid-column:1/-1}.game-active .controls button{padding:8px 3px;font-size:12px}
+}
+
+</style>
+<script src="../../../assets/game-motion.js?v=20260921a"></script>
 </head>
 <body>
 <main class="shell">
@@ -95,7 +117,7 @@ body.game-active{background:linear-gradient(180deg,rgba(1,9,13,.78),rgba(1,13,14
     <header class="panel gameHeader">
       <div><div class="eyebrow">NUMBER TILES</div><div class="brandMini">숫자 타일</div></div>
       <div class="headerCenter">
-        <div class="eyebrow">ROOM <span id="gameRoomCode">----</span></div>
+        <div hidden class="eyebrow">ROOM <span id="gameRoomCode">----</span></div>
         <div id="turnStatus" class="statusPill"><span class="statusDot"></span><span>게임 준비 중</span></div>
       </div>
       <div class="deckBadge"><span class="eyebrow">POOL</span><strong id="deckCount">0</strong><span>타일</span></div>
@@ -312,6 +334,7 @@ function renderPlayers(){
   const fragment=document.createDocumentFragment();
   for(const player of gameState.players){
     const seat=document.createElement("article");
+    seat.dataset.playerId=player.id;
     seat.className=`playerSeat${player.id===gameState.turnPlayerId&&gameState.phase==="playing"?" active":""}${player.id===gameState.winnerId?" winner":""}`;
     const face=lobby?.playerAvatar(player.id);
     seat.innerHTML=`<div class="playerTop">${face?`<img class="mp-face" src="${face}" alt="">`:""}<span class="playerName">${html(player.name)}${player.id===myId()?" · 나":""}</span><span class="playerCount">${player.tileCount}개</span></div><div class="playerMeta">${player.opened?"최초 등록 완료":"최초 등록 전"}</div>`;
@@ -373,7 +396,19 @@ function renderControls(){
   $("draftSummary").textContent=count?`이번 배치 · 내 타일 ${count}개${mine?.opened?"":` · ${score}점`}`:"보드의 타일을 선택해 이동할 수 있습니다.";
 }
 
-function renderDraft(){if(!gameState||gameState.phase!=="playing")return;const before=new Map([...document.querySelectorAll("[data-tile-id]")].map(tile=>[tile.dataset.tileId,tile.getBoundingClientRect()]));renderBoard();renderRack();renderControls();document.querySelectorAll("[data-tile-id]").forEach(tile=>{const first=before.get(tile.dataset.tileId),last=tile.getBoundingClientRect();if(!first||!tile.animate||(first.left===last.left&&first.top===last.top))return;tile.animate([{transform:`translate(${first.left-last.left}px,${first.top-last.top}px)`,zIndex:5},{transform:"translate(0,0)",zIndex:5}],{duration:180,easing:"cubic-bezier(.2,.8,.2,1)"})})}
+let tileMotionOrigin=null;
+function renderDraft(){
+  if(!gameState||gameState.phase!=="playing")return;
+  window.ClassGameMotion?.cancel();
+  const before=new Map([...document.querySelectorAll("[data-tile-id]")].map(tile=>[tile.dataset.tileId,tile.getBoundingClientRect()]));
+  renderBoard();renderRack();renderControls();
+  for(const tile of document.querySelectorAll("[data-tile-id]")){
+    const first=before.get(tile.dataset.tileId);
+    const origin=first||(before.size ? (tile.closest("#rack")?document.querySelector(".deckBadge")?.getBoundingClientRect():tileMotionOrigin) : null);
+    if(origin)window.ClassGameMotion?.travel(tile,origin);
+  }
+  tileMotionOrigin=null;
+}
 
 function renderResult(){
   const ended=gameState.phase==="ended";
@@ -420,6 +455,8 @@ function renderTurnClock(){
 }
 
 function installState(state){
+  if(gameState?.revision===state.revision && gameState?.phase===state.phase){gameState=state;renderTurnClock();return;}
+  tileMotionOrigin=document.querySelector(`[data-player-id="${gameState?.turnPlayerId}"]`)?.getBoundingClientRect();
   gameState=state;
   actionPending=false;
   if(state.revision!==lastRevision){lastRevision=state.revision;draftGroups=(state.board||[]).map(group=>group.map(tile=>tile.id));selectedTileId=null}

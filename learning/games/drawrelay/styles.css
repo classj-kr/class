@@ -270,3 +270,14 @@ button:disabled { cursor: not-allowed; opacity: .38; box-shadow: none; transform
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
 }
+
+body:has(#gameScreen:not(.hidden)){padding:8px}
+#gameScreen:not(.hidden){height:calc(100dvh - 16px);min-height:560px;max-height:none}
+#gameScreen .guess-workspace{min-height:0}
+#gameScreen .canvas-frame{overflow:hidden}
+#gameScreen #drawingCanvas{max-width:100%;max-height:100%;object-fit:contain}
+@media(orientation:portrait){#gameScreen .play-layout{grid-template-rows:auto minmax(0,1fr)}#gameScreen .prompt-panel{max-height:230px;overflow:auto}}
+
+#gameScreen #drawingCanvas{min-height:0}
+
+#gameScreen .canvas-frame{container-type:size;align-items:center;justify-content:center}#gameScreen #drawingCanvas{width:min(100cqw,calc(100cqh * 10 / 7));height:auto;aspect-ratio:10/7}

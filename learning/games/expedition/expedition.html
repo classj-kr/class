@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>탐사대</title>
 <link rel="stylesheet" href="../../../assets/network/multiplayer-lobby.css?v=20260906">
+<link rel="stylesheet" href="../../../assets/device-game.css?v=20260921c">
 <style>
 :root{font-family:"Malgun Gothic","Apple SD Gothic Neo",sans-serif;color:#f2ecdf;background:#12100c;--accent:#e0a03c;--accent-soft:#8a5f22;--panel:#1e1a14;--panel-edge:#4a3d2a;--danger:#d1503f;--relic:#a878d8;--safe:#4f9d69}
 *{box-sizing:border-box}
@@ -310,7 +311,30 @@ body:has(#gameScreen:not(.hidden)) .shell{height:calc(100dvh - 16px)}
 <script src="../../../assets/network/multiplayer-lobby.js?v=20260906b"></script>
 <script src="../../../assets/sound/music-control.js?v=20260910-click-cache-1" defer></script>
 <script src="expedition-sfx.js" defer></script>
-</head>
+<style>
+
+@media(min-width:700px){
+#gameScreen:not(.hidden){display:grid;grid-template-columns:minmax(0,1fr) 300px;grid-template-rows:auto auto auto minmax(0,1fr);gap:8px}
+#gameScreen .topbar{grid-column:2;grid-row:1}
+#gameScreen .scene{grid-column:1;grid-row:1/5;min-height:0;display:flex;flex-direction:column}
+#gameScreen .tunnel{flex:1;min-height:0;overflow:auto;grid-template-columns:90px minmax(0,1fr)}
+#gameScreen .trail{display:flex;flex-wrap:wrap;align-content:flex-start;min-height:0}
+#gameScreen .pack{grid-column:2;grid-row:2;grid-template-columns:1fr;margin:0}
+#gameScreen .situation{grid-column:2;grid-row:3;margin:0}
+#gameScreen .decisionBox{grid-column:2;grid-row:4;margin:0;align-self:start}
+#gameScreen .decisionButtons{grid-template-columns:1fr}
+}
+@media(min-width:700px) and (orientation:portrait){
+ #gameScreen:not(.hidden){grid-template-columns:1fr 1fr;grid-template-rows:auto minmax(0,1fr) auto auto}
+ #gameScreen .topbar{grid-column:1/-1;grid-row:1}
+ #gameScreen .scene{grid-column:1/-1;grid-row:2}
+ #gameScreen .pack{grid-column:1;grid-row:3/5}
+ #gameScreen .situation{grid-column:2;grid-row:3}
+ #gameScreen .decisionBox{grid-column:2;grid-row:4}
+}
+
+</style>
+<style>@media(min-width:700px) and (orientation:landscape){#gameScreen .decisionBox{grid-row:2}#gameScreen .pack{grid-row:3;grid-template-columns:1fr 1fr}#gameScreen .situation{grid-row:4;min-height:0;overflow:auto}}</style></head>
 <body>
 <main class="shell">
   <section id="missingScreen" class="panel hidden">
@@ -369,7 +393,7 @@ body:has(#gameScreen:not(.hidden)) .shell{height:calc(100dvh - 16px)}
     <div class="topbar">
       <div class="topbarLeft">
         <span class="gameTag">탐사대</span>
-        <span class="roomTag">ROOM <b id="gameRoomCode">----</b></span>
+        <span hidden class="roomTag">ROOM <b id="gameRoomCode">----</b></span>
       </div>
       <div class="topbarRight">
         <button id="rulesBtnGame" class="ghost" type="button">RULES</button>
@@ -1107,7 +1131,7 @@ function cinematicRenderDecision(){
   const box=$('decisionBox');
   const deciding=state.phase==='deciding';
   const me=state.players.find(player=>player.id===myId());
-  const warningKinds=(state.hazardCounts||[]).filter(count=>count===1).length;
+  const warningKinds=Object.values(state.hazardCounts||{}).filter(count=>count===1).length;
   const deadly=state.remaining?.deadly||0;
   const stake=state.players.filter(player=>player.inCave)
     .reduce((sum,player)=>sum+player.carrying,0)+(state.path?.gems||0);

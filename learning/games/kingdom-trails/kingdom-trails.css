@@ -52,3 +52,15 @@ h1,h2,p{margin-top:0}.button,.icon-button,.claim-button{min-height:44px;border:1
 }
 @media(max-width:520px){.rule-steps{grid-template-columns:1fr}.lobby-heading p{display:none}.learning-strip{display:none}.result-actions{flex-direction:column}.result-actions .button{width:100%}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+
+body:has(.game-screen:not(.hidden)){padding:8px;min-height:0}
+.game-screen:not(.hidden){display:grid;height:calc(100dvh - 16px);grid-template-rows:auto auto minmax(0,1fr);gap:6px;min-height:560px}
+.game-screen .player-strip{margin:0}
+.game-screen .game-layout{height:100%;min-height:0;display:grid;grid-template-columns:188px minmax(0,1fr) 210px}
+.game-screen .board-panel{height:auto;min-height:0}
+.game-screen .turn-panel{overflow:auto;display:flex;flex-direction:column}
+.game-screen .info-panel{min-height:0;overflow:auto}
+@media(max-width:1200px){.game-screen .game-layout{grid-template-columns:188px minmax(0,1fr)}}
+@media(orientation:portrait){.game-screen .game-layout{grid-template-columns:180px minmax(0,1fr)}.game-screen .turn-panel{padding:10px;gap:8px}.game-screen .tile-preview{width:100%;height:auto;aspect-ratio:1}.game-screen .board-panel{height:100%;min-height:0}.game-screen .info-panel{display:none}}
+
+body:has(.game-screen:not(.hidden)) .app-shell{padding:0;min-height:0}@media(max-width:1200px){.game-screen .info-panel{display:none}}

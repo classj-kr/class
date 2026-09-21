@@ -9,10 +9,11 @@
     <link rel="stylesheet" href="cards.css">
     <script src="../../../assets/sound/game-sfx.js?v=20260912-feedback-scope-1" defer></script>
     <script src="../../../assets/sound/music-control.js?v=20260910-click-cache-1" defer></script>
-    <link rel="stylesheet" href="game.css">
-    <link rel="stylesheet" href="../../../assets/device-game.css">
+    <link rel="stylesheet" href="game.css?v=20260921c">
+    <link rel="stylesheet" href="../../../assets/device-game.css?v=20260921c">
     <script src="../../../assets/network/game-network.js?v=20260821"></script>
     <script src="../../../assets/network/multiplayer-lobby.js?v=20260906b"></script>
+<script src="../../../assets/game-motion.js?v=20260921a"></script>
 </head>
 <body>
     <audio id="bgm" src="/learning/games/lastcard/assets/sound/bgm.ogg" loop preload="metadata"></audio>
@@ -75,7 +76,7 @@
         <section id="gameScreen" class="hidden">
             <header class="game-header">
                 <div>
-                    <p class="eyebrow">ROOM <span id="gameRoomCode">----</span></p>
+                    <p hidden class="eyebrow">ROOM <span id="gameRoomCode">----</span></p>
                     <h1><span>LAST</span> CARD</h1>
                 </div>
                 <div class="game-stats">
@@ -174,6 +175,6 @@
     <div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
 
     <script src="cards.js"></script>
-    <script src="game.js"></script>
+    <script src="game.js?v=20260921c"></script>
 </body>
 </html>

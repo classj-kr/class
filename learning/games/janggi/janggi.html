@@ -76,13 +76,35 @@ body:has(#game:not(.hidden)) .shell{width:calc(100dvw - 8px);max-width:none;min-
 }
 .box{width:min(620px,100%);max-height:calc(100dvh - 40px);overflow:auto}
 
-.rule-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin:0 0 8px}.rule-card{display:flex;flex-direction:column;align-items:center;gap:6px;padding:8px;border:1px solid #bda969;border-radius:8px;background:#fff9e4}.rule-card p{margin:0;align-self:stretch;font-size:14px;line-height:1.5}.rule-board{max-width:100%;height:auto;background:#e3b56e;border:2px solid #6a3b18}.rule-board line{stroke:#6a3b18;stroke-width:1.2}.rb-piece{fill:#f1d49c;stroke:#6a3b18;stroke-width:2}.rb-hot{stroke:#d93e35;stroke-width:3.5}.rb-cho,.rb-han{font:900 17px Batang,"Noto Serif KR",serif;text-anchor:middle}.rb-cho{fill:#114e91}.rb-han{fill:#a51f19}.rb-dot{fill:#246fa7}.rb-x{stroke:#d93e35;stroke-width:3;stroke-linecap:round}.rule-list{margin:10px 0 0}.rule-list dt{margin-top:8px;font-weight:800}.rule-list dd{margin:2px 0 0}@media(max-width:420px){.rule-grid{grid-template-columns:1fr}}</style>
+.rule-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin:0 0 8px}.rule-card{display:flex;flex-direction:column;align-items:center;gap:6px;padding:8px;border:1px solid #bda969;border-radius:8px;background:#fff9e4}.rule-card p{margin:0;align-self:stretch;font-size:14px;line-height:1.5}.rule-board{max-width:100%;height:auto;background:#e3b56e;border:2px solid #6a3b18}.rule-board line{stroke:#6a3b18;stroke-width:1.2}.rb-piece{fill:#f1d49c;stroke:#6a3b18;stroke-width:2}.rb-hot{stroke:#d93e35;stroke-width:3.5}.rb-cho,.rb-han{font:900 17px Batang,"Noto Serif KR",serif;text-anchor:middle}.rb-cho{fill:#114e91}.rb-han{fill:#a51f19}.rb-dot{fill:#246fa7}.rb-x{stroke:#d93e35;stroke-width:3;stroke-linecap:round}.rule-list{margin:10px 0 0}.rule-list dt{margin-top:8px;font-weight:800}.rule-list dd{margin:2px 0 0}@media(max-width:420px){.rule-grid{grid-template-columns:1fr}}
+body:has(#game:not(.hidden)){padding:8px;min-height:100dvh;height:auto;overflow:visible}
+body:has(#game:not(.hidden)) .shell{height:calc(100dvh - 16px);min-height:560px;padding:8px;overflow:visible}
+#game .boardwrap{container-type:size;display:grid;place-items:center;min-height:0}
+#game .board{width:min(100cqw,90cqh);height:auto;aspect-ratio:9/10}
+#game .side .match-actions{display:grid;grid-template-columns:1fr 1fr;gap:6px;flex-shrink:0}
+#game .match-actions .btn{min-height:44px;margin:0}
+#game .music{display:none}
+@media(max-width:899px){
+ #game:not(.hidden){height:100%;min-height:0;grid-template-rows:minmax(0,1fr) auto auto}
+ #game .gamehead{padding:0;gap:6px}
+ #game .gamehead .chip{font-size:11px;padding:4px}
+ #game .turn{min-width:0;padding:5px}
+ #game .clock{min-width:0;padding:3px}
+ #game .side{display:grid;grid-template-columns:1fr 1fr;max-height:28dvh;min-height:0;overflow:auto;gap:6px}
+ #game .match-actions{grid-column:2;grid-row:1/3}
+ #game .side>h3{display:none}
+ #game .notice{grid-column:1;grid-row:1;margin:0}
+ #game .capture-area{grid-column:1;grid-row:2;margin:0}
+ #game .log{height:65px}
+ #game .chat-title{margin:0}
+}
+</style>
 <link rel="stylesheet" href="../../../assets/network/multiplayer-lobby.css?v=20260906">
 <script src="../../../assets/network/game-network.js?v=20260821"></script>
 <script src="../../../assets/network/multiplayer-lobby.js?v=20260906b"></script>
 <script src="../../../assets/network/room-call.js?v=20260822e"></script>
 <script src="../../../assets/sound/music-control.js?v=20260910-click-cache-1" defer></script>
-<link rel="stylesheet" href="../../../assets/device-game.css">
+<link rel="stylesheet" href="../../../assets/device-game.css?v=20260921c">
 </head>
 <body>
 <audio id="bgm" src="/learning/games/janggi/assets/sound/bgm.ogg" loop></audio>
@@ -119,7 +141,7 @@ body:has(#game:not(.hidden)) .shell{width:calc(100dvw - 8px);max-width:none;min-
 </section>
 <section id="game" class="hidden">
 <div class="gamehead"><div><span id="roleChip" class="chip"></span></div><div class="turnwrap"><div id="turnText" class="turn">대기 중</div><div id="turnClock" class="clock">00:30</div></div><div class="right"><span id="connectionChip" class="chip">● 연결됨</span></div></div>
-<div class="gamebody"><div class="boardwrap"><div id="board" class="board"></div></div><aside class="side"><h3>대국 상태</h3><div id="notice" class="notice">말을 선택하세요.</div><div class="capture-area"><div class="capture-card"><span class="capture-label">초가 잡은 말</span><div id="choCaptures" class="captures"></div></div><div class="capture-card"><span class="capture-label">한이 잡은 말</span><div id="hanCaptures" class="captures"></div></div></div><div id="log" class="log"></div><button type="button" class="chat-title chat-toggle" onclick="toggleChatPanel()">채팅<span id="chatBadge" class="chat-badge hidden">0</span><span id="chatCaret" class="chat-caret">▸</span></button><div id="chatPanel" class="chat-panel collapsed"><div id="chatLog" class="chat-log"><div class="chat-msg">상대방과 간단한 메시지를 주고받을 수 있습니다.</div></div><div class="chat-row"><input id="chatInput" class="chat-input" maxlength="100" autocomplete="off" placeholder="메시지 입력" onkeydown="if(event.key==='Enter'){event.preventDefault();sendChat()}"><button class="btn chat-send" onclick="sendChat()">보내기</button></div></div><button class="btn danger" onclick="resign()">기권</button><button id="rematchBtn" class="btn" onclick="requestRematch()">재대국 요청</button><button id="rulesBtnGame" class="btn" type="button">규칙</button><button id="leaveBtnGame" class="btn" type="button">메인 화면으로</button><div class="music"><button id="mute2" class="btn" onclick="toggleMute()">음소거</button><div class="segments"><button class="seg" onclick="setVolume(1)"></button><button class="seg" onclick="setVolume(2)"></button><button class="seg" onclick="setVolume(3)"></button><button class="seg" onclick="setVolume(4)"></button><button class="seg" onclick="setVolume(5)"></button></div></div></aside></div>
+<div class="gamebody"><div class="boardwrap"><div id="board" class="board"></div></div><aside class="side"><div class="match-actions"><button class="btn danger" onclick="resign()">기권</button><button id="rematchBtn" class="btn" onclick="requestRematch()">재대국 요청</button><button id="rulesBtnGame" class="btn" type="button">규칙</button><button id="leaveBtnGame" class="btn" type="button">메인 화면으로</button></div><h3>대국 상태</h3><div id="notice" class="notice">말을 선택하세요.</div><div class="capture-area"><div class="capture-card"><span class="capture-label">초가 잡은 말</span><div id="choCaptures" class="captures"></div></div><div class="capture-card"><span class="capture-label">한이 잡은 말</span><div id="hanCaptures" class="captures"></div></div></div><div id="log" class="log"></div><button type="button" class="chat-title chat-toggle" onclick="toggleChatPanel()">채팅<span id="chatBadge" class="chat-badge hidden">0</span><span id="chatCaret" class="chat-caret">▸</span></button><div id="chatPanel" class="chat-panel collapsed"><div id="chatLog" class="chat-log"><div class="chat-msg">상대방과 간단한 메시지를 주고받을 수 있습니다.</div></div><div class="chat-row"><input id="chatInput" class="chat-input" maxlength="100" autocomplete="off" placeholder="메시지 입력" onkeydown="if(event.key==='Enter'){event.preventDefault();sendChat()}"><button class="btn chat-send" onclick="sendChat()">보내기</button></div></div><div class="music"><button id="mute2" class="btn" onclick="toggleMute()">음소거</button><div class="segments"><button class="seg" onclick="setVolume(1)"></button><button class="seg" onclick="setVolume(2)"></button><button class="seg" onclick="setVolume(3)"></button><button class="seg" onclick="setVolume(4)"></button><button class="seg" onclick="setVolume(5)"></button></div></div></aside></div>
 </section>
 </div>
 <div id="modal" class="modal" onclick="if(event.target===this)closeModal()"><div class="box"><h2 id="modalTitle"></h2><div id="modalBody"></div><div class="actions"><button class="btn primary" onclick="closeModal()">확인</button></div></div></div>

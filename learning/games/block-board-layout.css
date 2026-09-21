@@ -1,0 +1,65 @@
+/* Use the SVG's own aspect ratio inside a height-constrained board area. */
+body:has(#gameScreen:not(.hidden)){padding:8px}
+#gameScreen:not(.hidden){display:grid;width:min(1400px,100%);height:calc(100dvh - 16px);min-height:560px;grid-template-columns:minmax(0,1fr) 320px;grid-template-rows:auto auto minmax(0,1fr);gap:8px}
+#gameScreen .game-header{grid-column:2;grid-row:1;grid-template-columns:1fr auto;gap:6px;padding:8px;margin:0}
+#gameScreen .brand-mark,#gameScreen .brand-lockup .eyebrow{display:none}
+#gameScreen .brand-name{font-size:18px}
+#gameScreen .room-lockup{grid-column:2;grid-row:1;padding:0;border:0}
+#gameScreen .header-actions{grid-column:1/-1;justify-content:flex-start}
+#gameScreen .header-actions .quiet{min-height:44px}
+#gameScreen .player-strip{grid-column:2;grid-row:2;grid-template-columns:1fr 1fr;gap:4px;margin:0}
+#gameScreen .player-card{padding:5px 7px;font-size:12px}
+#gameScreen .player-piece-count{display:none}
+#gameScreen .color-dots{margin-top:4px}
+#gameScreen .game-layout{display:contents}
+#gameScreen .board-panel{grid-column:1;grid-row:1/4;display:flex;min-width:0;min-height:0;padding:6px}
+#gameScreen .board-scroll{display:flex;width:100%;height:100%;min-height:0;overflow:visible;background:transparent}
+#gameScreen .board-frame{width:100%;height:100%;padding:6px;display:flex;background:#101827;border-radius:14px}
+#gameScreen #board{width:100%;height:100%;min-height:0;object-fit:contain}
+#gameScreen .board-legend{display:none}
+#gameScreen .side-panel{grid-column:2;grid-row:3;position:static;display:flex;flex-direction:column;min-height:0}
+#gameScreen .side-panel>*{flex-shrink:0}
+#gameScreen .turn-banner{padding:8px;gap:6px;min-height:44px}
+#gameScreen .turn-title{font-size:16px;margin:0}
+#gameScreen .turn-color{width:8px;height:28px}
+#gameScreen .turn-copy{gap:6px}
+#gameScreen .turn-message,#gameScreen .turn-tag,#gameScreen .keyboard-tip{display:none}
+#gameScreen .turn-clock{min-width:64px}
+#gameScreen .turn-track{width:64px}
+#gameScreen .side-head{padding:5px 8px}
+#gameScreen .side-head>.eyebrow{display:none}
+#gameScreen .side-title{font-size:17px}
+#gameScreen .selection-zone{grid-template-columns:60px 1fr;min-height:0;padding:6px 8px;gap:8px}
+#gameScreen .piece-stage{min-height:60px}
+#gameScreen .piece-list-wrap{flex:1 1 80px;min-height:60px;max-height:none;overflow:auto;padding:6px}
+#gameScreen .piece-grid{gap:5px}
+#gameScreen .piece-button{min-height:52px;padding:4px}
+#gameScreen .side-actions{padding:6px 8px 8px}
+#gameScreen .placement-status{min-height:0;margin:0 0 5px;padding:4px;font-size:11px}
+@media(max-width:899px) and (orientation:portrait){
+ #gameScreen:not(.hidden){grid-template-columns:minmax(0,1fr);grid-template-rows:auto auto minmax(0,1fr) minmax(340px,34dvh)}
+ #gameScreen .game-header{grid-column:1;grid-row:1;grid-template-columns:1fr auto auto}
+ #gameScreen .room-lockup{grid-column:2}
+ #gameScreen .header-actions{grid-column:3;grid-row:1}
+ #gameScreen .player-strip{grid-column:1;grid-row:2;grid-template-columns:repeat(3,minmax(0,1fr))}
+ #gameScreen .board-panel{grid-column:1;grid-row:3}
+ #gameScreen .side-panel{grid-column:1;grid-row:4;display:grid;grid-template-columns:220px minmax(0,1fr);grid-template-rows:auto auto minmax(0,1fr);overflow:auto}
+ #gameScreen .turn-banner{grid-column:1/-1;grid-row:1}
+ #gameScreen .side-head{display:none}
+ #gameScreen .selection-zone{grid-column:1;grid-row:2}
+ #gameScreen .piece-list-wrap{grid-column:2;grid-row:2/4}
+ #gameScreen .side-actions{grid-column:1;grid-row:3}
+}
+
+#gameScreen #resultPanel{grid-column:1/-1;grid-row:3;overflow:auto;min-height:0;padding:16px}
+
+#gameScreen .board-scroll{container-type:size;display:grid;place-items:center}
+#gameScreen .board-frame:has(#board:not(svg)){width:min(100cqw,100cqh);height:auto;aspect-ratio:1;padding:6px}
+#gameScreen .board-frame:has(#board:not(svg)) #board{aspect-ratio:1;height:auto}
+
+#gameScreen .board-frame:has(svg#board){width:100cqw;height:100cqh;min-height:0;min-width:0}
+#gameScreen .hexCell{transform-box:fill-box;transform-origin:center}
+
+#gameScreen .selection-name{font-size:16px}#gameScreen .selection-guide{font-size:11px;margin:3px 0}#gameScreen .piece-list-wrap{min-height:52px}#gameScreen .side-panel{padding:0}
+
+#gameScreen .player-strip:has(.player-card:nth-child(5)){grid-template-columns:repeat(3,minmax(0,1fr))}#gameScreen .player-card{min-width:0}

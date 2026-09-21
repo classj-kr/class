@@ -107,7 +107,7 @@ body:has(#boardArea:not(.hidden)) #game>.panel:first-child{margin-bottom:8px;pad
 <script src="../../../assets/network/game-network.js?v=20260821"></script>
 <script src="../../../assets/network/multiplayer-lobby.js?v=20260906b"></script>
 <script src="../../../assets/sound/music-control.js?v=20260910-click-cache-1" defer></script>
-<link rel="stylesheet" href="../../../assets/device-game.css">
+<link rel="stylesheet" href="../../../assets/device-game.css?v=20260921c">
 </head>
 <body>
 <main class="shell">
@@ -149,7 +149,7 @@ body:has(#boardArea:not(.hidden)) #game>.panel:first-child{margin-bottom:8px;pad
 
   <section id="game" class="hidden">
     <div class="panel row spread">
-      <div><div class="eyebrow">ROOM CODE</div><div id="gameRoomCode" class="code">----</div></div>
+      <div hidden><div id="gameRoomCode">----</div></div>
       <div class="row">
         <button id="rulesGameBtn" class="secondary" type="button">RULES</button>
         <button id="leaveGameBtn" class="secondary" type="button">메인 화면</button>

@@ -125,7 +125,7 @@ assert.deepEqual(guestView.hand, [6], "각 플레이어에게 자기 손패만 �
 
 const projectRoot = path.resolve(__dirname, "..");
 for (const file of ["guard.webp", "wizard.webp", "knight.webp", "fairy.webp", "prince.webp", "king.webp", "queen.webp", "princess.webp"]) {
-    assert.equal(fs.existsSync(path.join(projectRoot, "assets", "images", "loveletter-cards", file)), true, `${file} 카드 이미지가 필요합니다.`);
+    assert.equal(fs.existsSync(path.join(projectRoot, "learning", "games", "loveletter", "assets", "images", "cards", file)), true, `${file} 카드 이미지가 필요합니다.`);
 }
 const html = fs.readFileSync(path.join(projectRoot, "learning", "games", "loveletter", "loveletter.html"), "utf8");
 assert.match(html, /allowedPlayerCounts:\[3,4\]/, "러브레터는 3~4인 전용이어야 합니다.");

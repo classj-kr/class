@@ -1,0 +1,44 @@
+/* Shared viewport layout for the 15- and 19-line boards. */
+body:has(#gameScreen:not(.hidden)){
+  --game-inset:10px;
+  padding:max(var(--game-inset),env(safe-area-inset-top)) max(var(--game-inset),env(safe-area-inset-right)) max(var(--game-inset),env(safe-area-inset-bottom)) max(var(--game-inset),env(safe-area-inset-left));
+}
+.shell:has(#gameScreen:not(.hidden)){width:min(1200px,100%)}
+#gameScreen{
+  display:grid;grid-template-rows:auto minmax(0,1fr);gap:10px;
+  height:calc(100vh - 20px);
+  height:calc(100dvh - max(var(--game-inset),env(safe-area-inset-top)) - max(var(--game-inset),env(safe-area-inset-bottom)));
+  min-height:480px;
+}
+#gameScreen>.panel{min-width:0;margin:0;padding:10px}
+#gameScreen>section.panel{display:flex;flex-direction:column;gap:8px;min-height:0}
+#gameScreen .boardStage{container-type:size;flex:1;min-height:0;min-width:0;display:grid;place-items:center}
+#gameScreen .boardFrame{width:min(100cqw,100cqh);aspect-ratio:1;margin:0;padding:7px}
+#gameScreen .playersLegend{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:8px 0}
+#gameScreen .playerCard{min-width:0;padding:8px;gap:8px}
+#gameScreen .playerMeta{min-width:0;overflow-wrap:anywhere}
+#gameScreen .stoneSample{width:24px;height:24px}
+#gameScreen .turnArea{margin:0;grid-template-columns:minmax(0,1fr) auto}
+#gameScreen .turnBanner{min-height:44px;padding:8px;font-size:16px;overflow-wrap:anywhere}
+#gameScreen .turnClock{min-width:56px;padding:6px 8px;font-size:24px}
+#gameScreen .code{font-size:20px;letter-spacing:.1em}
+#gameScreen .eyebrow{margin-bottom:2px;font-size:10px}
+#gameScreen button:not(.point){min-height:44px}
+#gameScreen .gameNote{margin:0;flex:none}
+#gameScreen .resultActions{margin:0;flex:none}
+@media(min-width:900px) and (orientation:landscape){
+  #gameScreen{grid-template-columns:250px minmax(0,1fr);grid-template-rows:minmax(0,1fr)}
+  #gameScreen>header{align-self:start}
+  #gameScreen .playersLegend{grid-template-columns:minmax(0,1fr);margin:12px 0}
+  #gameScreen header>.row{gap:12px}
+}
+@media(max-width:560px){
+  body:has(#gameScreen:not(.hidden)){--game-inset:8px}
+  #gameScreen{gap:8px}
+  #gameScreen>.panel{padding:8px}
+  #gameScreen .playerCard{font-size:13px;gap:6px}
+  #gameScreen .turnBanner{font-size:14px}
+}
+
+#gameScreen header .gameNote{margin:10px 0}
+#gameScreen header .resultActions{margin-top:8px}

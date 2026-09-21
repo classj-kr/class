@@ -435,7 +435,7 @@ body:has(#gameScreen:not(.hidden)) .game-shell{height:calc(100dvh - 16px)}
 #gameScreen .game-header .eyebrow{margin:0 0 4px}
 #gameScreen .game-stats>div{min-width:64px;padding:6px 8px}
 #gameScreen .game-stats strong{margin-top:3px;font-size:18px}
-#gameScreen .game-board{display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,360px);grid-template-rows:auto minmax(0,1fr) auto;gap:8px;min-height:0;padding:8px;overflow:hidden}
+#gameScreen .game-board{display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,360px);grid-template-rows:auto auto minmax(0,1fr);gap:8px;min-height:0;padding:8px;overflow:hidden}
 #gameScreen .player-seats{grid-column:1/-1;gap:6px;margin:0}
 #gameScreen .player-seat{min-height:62px;padding:8px}
 #gameScreen .player-seat__count{margin-top:7px}
@@ -448,8 +448,12 @@ body:has(#gameScreen:not(.hidden)) .game-shell{height:calc(100dvh - 16px)}
 #gameScreen .play-controls{grid-column:2;grid-row:2;min-height:52px;margin:0;padding:6px;gap:7px;flex-wrap:wrap}
 #gameScreen .last-call-button{min-height:44px;padding:0 14px}
 #gameScreen .play-button{min-width:140px}
-#gameScreen .hand-zone{grid-column:2;grid-row:3;min-height:0;padding:10px;overflow:hidden}
+#gameScreen .hand-zone{display:flex;flex-direction:column;grid-column:2;grid-row:3;min-height:0;padding:10px;overflow:hidden}
 #gameScreen .hand-heading h2{font-size:21px}
-#gameScreen .hand{height:100%;min-height:0;padding:8px 2px 2px;gap:6px;overflow:auto}
+#gameScreen .hand{flex:1;height:auto;min-height:0;align-content:start;align-items:start;padding:8px 2px 2px;gap:6px;overflow:auto}
 #gameScreen .hand-option .last-card{--card-width:92px}
 }
+
+@media(min-width:700px) and (orientation:portrait){#gameScreen .game-board{grid-template-columns:minmax(0,1fr);grid-template-rows:auto minmax(0,1fr) auto minmax(230px,30dvh)}#gameScreen .table-zone{grid-column:1;grid-row:2}#gameScreen .play-controls{grid-column:1;grid-row:3}#gameScreen .hand-zone{grid-column:1;grid-row:4}#gameScreen .game-menu{grid-column:auto}#gameScreen .status-zone{grid-column:auto;border:0}}
+
+@media(min-width:700px){#gameScreen .hand{flex-wrap:wrap;justify-content:flex-start}#gameScreen .hand-option{flex:0 0 auto}}

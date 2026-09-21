@@ -10,27 +10,34 @@
 body{background:linear-gradient(rgba(7,10,16,.18),rgba(8,9,13,.24)),url("/learning/games/diamondgame/assets/images/diamond-bg.webp") center/cover fixed no-repeat,#10131a}body:has(#lobbyScreen:not(.hidden)){background:url("/learning/games/diamondgame/assets/images/diamond-bg.webp") center/cover fixed no-repeat,#10131a}.orientation{position:absolute;z-index:2;right:8px;padding:4px 10px;border:1px solid #8c6339;border-radius:999px;background:#28190ed9;color:#f5deb6;font-size:11px;font-weight:900;letter-spacing:.05em;pointer-events:none}.orientation.goal{top:8px}.orientation.home{bottom:8px}@media(max-width:520px){.orientation{padding:3px 8px;font-size:9px}}
 .turn-clock{display:grid;grid-template-columns:1fr auto;align-items:center;gap:8px;margin:7px 0 10px}.turn-clock-label{color:#88df9d;font-weight:900;font-variant-numeric:tabular-nums}.turn-clock.urgent .turn-clock-label{color:#ff776d}.turn-track{grid-column:1/-1;height:6px;overflow:hidden;border-radius:999px;background:#ffffff1f}.turn-bar{width:100%;height:100%;transform-origin:left center;background:linear-gradient(90deg,#66d985,#efd365,#ed6259)}
 
-/* Active match: keep the board and essential actions in one viewport. */
-@media (min-width:700px){
-body:has(#gameScreen:not(.hidden)){height:100dvh;min-height:0;overflow:hidden;padding:8px}
-body:has(#gameScreen:not(.hidden)) .shell{height:calc(100dvh - 16px)}
-#gameScreen:not(.hidden){display:grid;grid-template-rows:auto minmax(0,1fr);height:100%}
-#gameScreen>header.panel{margin-bottom:8px;padding:8px 12px}
-#gameScreen .game-layout{grid-template-columns:minmax(0,calc(100dvh - 136px)) 260px;justify-content:center;min-height:0;height:100%;gap:8px}
-#gameScreen .board-panel{min-height:0;margin-bottom:0;padding:6px}
-#gameScreen .board-frame{width:min(720px,calc(100dvh - 136px),calc(100dvw - 294px))}
-#gameScreen .side{display:flex;flex-direction:column;min-height:0;gap:7px;overflow:hidden}
-#gameScreen .info{padding:9px}
+
+body:has(#gameScreen:not(.hidden)){padding:8px}
+body:has(#gameScreen:not(.hidden)) .shell{width:min(1320px,100%)}
+#gameScreen{height:calc(100dvh - 16px);min-height:560px}
+#gameScreen .game-layout{height:100%;margin:0;grid-template-columns:minmax(0,1fr) 250px;grid-template-rows:minmax(0,1fr);align-items:stretch;gap:8px}
+#gameScreen .board-panel{display:grid;place-items:center;container-type:size;min-height:0;padding:6px;margin:0}
+#gameScreen .board-frame{width:min(100cqw,100cqh);aspect-ratio:1;padding:0;margin:0}
+#gameScreen .board{display:block;width:100%;height:100%}
+#gameScreen .side{display:flex;flex-direction:column;min-height:0;overflow:auto;gap:8px}
+#gameScreen .side>*{flex-shrink:0}
+#gameScreen .actions{grid-template-columns:1fr 1fr}
+#gameScreen .message{min-height:0}
 #gameScreen .info h2,#gameScreen .info h3{margin-bottom:6px}
-#gameScreen .message{min-height:32px}
-#gameScreen .side .info:last-child{flex:1 1 auto;min-height:0;overflow:hidden}
-#gameScreen .log{height:100%;max-height:none;overflow:auto}
+#gameScreen .player-row{padding:6px}
+#gameScreen .side>.info:last-child{min-height:50px;flex:1;overflow:auto}
+#gameScreen .side>.panel{padding:8px;margin:0}
+#gameScreen .info{padding:10px}
+#gameScreen .log{max-height:100px}
+#gameScreen button{min-height:44px}
+@media(max-width:899px) and (orientation:portrait){
+ #gameScreen .game-layout{grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,1fr) auto}
+ #gameScreen .side{display:grid;grid-template-columns:1fr 1fr;max-height:36dvh}
 }
 </style>
 <script src="../../../assets/network/game-network.js?v=20260821"></script>
 <script src="../../../assets/network/multiplayer-lobby.js?v=20260906b"></script>
 <script src="../../../assets/sound/music-control.js?v=20260910-click-cache-1" defer></script>
-<link rel="stylesheet" href="../../../assets/device-game.css">
+<link rel="stylesheet" href="../../../assets/device-game.css?v=20260921c">
 </head>
 <body>
 <main class="shell">
@@ -52,10 +59,11 @@ body:has(#gameScreen:not(.hidden)) .shell{height:calc(100dvh - 16px)}
   </section>
 
   <section id="gameScreen" class="hidden">
-    <header class="panel"><div class="row spread"><div><div class="eyebrow">ROOM CODE</div><div id="gameRoomCode" class="code">----</div></div><div class="row"><button id="rulesBtnGame" class="secondary" type="button">RULES</button><button id="leaveBtnGame" class="secondary" type="button">메인 화면</button></div></div></header>
+
     <div class="game-layout">
-      <section class="panel board-panel"><div class="board-frame"><span class="orientation goal">내 도착 진영</span><svg id="board" class="board" viewBox="0 0 500 524" role="grid" aria-label="내 진영이 아래쪽에 배치된 다이아몬드 게임판"></svg><span class="orientation home">내 출발 진영</span></div></section>
+      <section class="panel board-panel"><div class="board-frame"><span class="orientation goal">내 도착 진영</span><svg id="board" class="board" viewBox="0 0 560 560" role="grid" aria-label="내 진영이 아래쪽에 배치된 다이아몬드 게임판"></svg><span class="orientation home">내 출발 진영</span></div></section>
       <aside class="side">
+    <header class="panel"><div class="row spread"><div hidden><div id="gameRoomCode">----</div></div><div class="row"><button id="rulesBtnGame" class="secondary" type="button">RULES</button><button id="leaveBtnGame" class="secondary" type="button">메인 화면</button></div></div></header>
         <section class="info"><h2 id="turnText">게임 준비 중</h2><div id="turnClock" class="turn-clock"><span>TURN TIME</span><span id="turnSeconds" class="turn-clock-label">30초</span><div class="turn-track"><div id="turnTimerBar" class="turn-bar"></div></div></div><div id="message" class="message"></div><div id="resultBox" class="result hidden"></div></section>
         <section class="info"><h3>PLAYERS</h3><div id="playerStatus"></div></section>
         <section class="info"><h3>TURN ACTION</h3><div class="actions"><button id="endJumpBtn" class="primary" type="button" disabled>점프 종료</button><button id="cancelBtn" class="secondary" type="button" disabled>선택 취소</button><button id="rematchBtn" class="primary hidden" type="button">다시 하기</button><button id="returnLobbyBtn" class="secondary hidden" type="button">대기실로</button></div></section>
@@ -138,7 +146,7 @@ function chooseCell(x,y){
 }
 function refreshLegal(){if(!selectedKey||!state){legalOptions=[];return}const [x,y]=selectedKey.split(",").map(Number);legalOptions=legalMoves(myId,x,y)}
 function viewerRotation(){const index=state?.order?.indexOf(myId)??-1;return[180,-60,60][index]||0}
-function point(c){const x=c.x*17.3,y=c.y*29,angle=viewerRotation()*Math.PI/180;return{x:250+x*Math.cos(angle)-y*Math.sin(angle),y:262+x*Math.sin(angle)+y*Math.cos(angle)}}
+function point(c){const x=c.x*17,y=c.y*17*Math.sqrt(3),angle=viewerRotation()*Math.PI/180;return{x:280+x*Math.cos(angle)-y*Math.sin(angle),y:280+x*Math.sin(angle)+y*Math.cos(angle)}}
 function svgEl(name,attrs={}){const el=document.createElementNS("http://www.w3.org/2000/svg",name);Object.entries(attrs).forEach(([k,v])=>el.setAttribute(k,String(v)));return el}
 function addPieceMovement(piece,move){
  const [fromX,fromY]=move.from.split(",").map(Number),from=point({x:fromX,y:fromY});
@@ -151,8 +159,11 @@ function addPieceMovement(piece,move){
 }
 function renderBoard(){
  const board=$("board"),fragment=document.createDocumentFragment();
- const animateMove=Boolean(state?.lastMove&&state.moveCount!==animatedMoveCount);
- const bg=svgEl("polygon",{class:"board-bg",points:"250,8 326,126 466,146 392,262 466,378 326,398 250,516 174,398 34,378 108,262 34,146 174,126"});fragment.appendChild(bg);
+ const animateMove=Boolean(state?.lastMove&&state.moveCount!==animatedMoveCount)&&!window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+ // The 12 outline vertices come from the same equilateral lattice as the holes.
+ const outline=[[0,-8],[4,-4],[12,-4],[8,0],[12,4],[4,4],[0,8],[-4,4],[-12,4],[-8,0],[-12,-4],[-4,-4]];
+ const points=outline.map(([x,y])=>{const p=point({x,y});return `${280+(p.x-280)*1.08},${280+(p.y-280)*1.08}`}).join(" ");
+ const bg=svgEl("polygon",{class:"board-bg",points});fragment.appendChild(bg);
  const links=svgEl("g");for(const c of CELLS){for(const [dx,dy] of [[2,0],[1,1],[-1,1]]){if(!CELL_KEYS.has(key(c.x+dx,c.y+dy)))continue;const a=point(c),b=point({x:c.x+dx,y:c.y+dy});links.appendChild(svgEl("line",{class:"link",x1:a.x,y1:a.y,x2:b.x,y2:b.y}))}}fragment.appendChild(links);
  const holes=svgEl("g");for(const c of CELLS){const p=point(c),camp=campAt(c.x,c.y),circle=svgEl("circle",{class:`hole ${camp!=="center"?"foreign":""}`,cx:p.x,cy:p.y,r:6.1});const campColor=COLORS.find(color=>color.start===camp||color.goal===camp);if(campColor)circle.setAttribute("style",`fill:${campColor.hex}77`);if(legalOptions.some(o=>o.x===c.x&&o.y===c.y)){circle.setAttribute("class","hole legal");circle.removeAttribute("style")}holes.appendChild(circle)}fragment.appendChild(holes);
  const piecesGroup=svgEl("g");for(const c of CELLS){const owner=pieceAt(c.x,c.y);if(!owner)continue;const p=point(c),color=colorForPlayer(owner);const piece=svgEl("circle",{class:`piece ${selectedKey===key(c.x,c.y)?"selected":""}`,cx:p.x,cy:p.y,r:10.2,fill:color?.hex||"#777"});if(animateMove&&state.lastMove.to===key(c.x,c.y))addPieceMovement(piece,state.lastMove);piecesGroup.appendChild(piece)}fragment.appendChild(piecesGroup);

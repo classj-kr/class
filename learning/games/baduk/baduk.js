@@ -175,7 +175,11 @@ function renderGame(){
     const row=Number(point.dataset.row),col=Number(point.dataset.col),value=gameState.board[boardIndex(row,col,gameState.size)];
     point.disabled=ended||activeId!==snapshot.myId||Boolean(value);
     point.classList.toggle("last",Boolean(gameState.lastMove&&gameState.lastMove.row===row&&gameState.lastMove.col===col));
+    const previousValue=Number(point.dataset.stoneValue||0);
+    point.dataset.stoneValue=String(value);
+    if(value===previousValue)return;
     point.innerHTML=value?`<span class="stone ${value===1?"black":"white"}"></span>`:"";
+    if(value)window.ClassGameMotion?.appear(point.firstElementChild);
   });
   $("turnBanner").textContent=gameState.draw?"무승부":gameState.winner?`${playerName(gameState.playerOrder[gameState.winner-1])} 승리`:activeId===snapshot.myId?"내 차례":"상대 차례";
   $("gameStatus").textContent=gameState.scores?`흑 ${gameState.scores.black} · 백 ${gameState.scores.white}`:gameState.mode==="territory"?`${gameState.moveCount}/40수`:gameState.mode==="capture"?"돌 3개를 먼저 잡으면 승리":"두 사람이 연속으로 패스하면 자동 계가";
