@@ -381,8 +381,21 @@
     }
 
     // 수학 문항에는 $수식$ 이 섞여 있다. KaTeX 가 실렸을 때만 그린다.
+    // KaTeX 는 CDN 에서 온다. 학교 망이 막혀 오지 않으면 $y^2+18y+81$ 처럼 달러가
+    // 그대로 보인다. 그때는 달러만 떼어 적어도 읽히게 한다.
+    function stripMathMarks(element) {
+        const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT);
+        const targets = [];
+        while (walker.nextNode()) if (walker.currentNode.nodeValue.includes("$")) targets.push(walker.currentNode);
+        targets.forEach((node) => { node.nodeValue = node.nodeValue.replace(/\$+/g, ""); });
+    }
+
     function renderMath(element) {
-        if (!element || !window.renderMathInElement) return;
+        if (!element) return;
+        if (!window.renderMathInElement) {
+            stripMathMarks(element);
+            return;
+        }
         window.renderMathInElement(element, {
             delimiters: [
                 { left: "$$", right: "$$", display: true },
