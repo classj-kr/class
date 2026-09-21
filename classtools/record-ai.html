@@ -249,8 +249,7 @@
             <!-- 교과면 과목을, 창체면 영역을 하나 더 묻는다. -->
             <div class="form-group" id="sub-group" style="display: none;">
                 <label for="sub-input" id="sub-label">과목</label>
-                <input type="text" id="sub-input" class="form-control" list="sub-options" placeholder="예: 국어">
-                <datalist id="sub-options"></datalist>
+                <select id="sub-input" class="form-control"></select>
             </div>
 
             <div class="form-group">
@@ -317,7 +316,6 @@
             const subGroup = $('sub-group');
             const subLabel = $('sub-label');
             const subInput = $('sub-input');
-            const subOptions = $('sub-options');
             const topicsLabel = $('topics-label');
             const topicsHint = $('topics-hint');
             const topicsInput = $('topics-input');
@@ -403,15 +401,18 @@
                 if (area.sub) {
                     subGroup.style.display = '';
                     subLabel.textContent = area.sub;
-                    subInput.placeholder = '예: ' + area.subList[0];
-                    subOptions.replaceChildren(...area.subList.map(name => {
+                    // 칸을 다시 채우면 고른 것이 풀린다. 쓰던 것이 목록에 있으면 되살린다.
+                    const chosen = subInput.value;
+                    subInput.replaceChildren(...area.subList.map(name => {
                         const opt = document.createElement('option');
                         opt.value = name;
+                        opt.textContent = name;
                         return opt;
                     }));
+                    if (area.subList.includes(chosen)) subInput.value = chosen;
                 } else {
                     subGroup.style.display = 'none';
-                    subInput.value = '';
+                    subInput.replaceChildren();
                 }
             }
             areaSelect.addEventListener('change', () => { applyArea(); swapTopics(); });
@@ -553,6 +554,10 @@
                 if (status === 429) {
                     throw new Error('오늘 쓸 수 있는 무료 몫을 다 썼습니다. 잠시 뒤에, 또는 내일 다시 눌러 주세요. 요금이 붙지는 않습니다.');
                 }
+                if (TRANSIENT.includes(status)) {
+                    throw new Error('지금 구글 쪽이 붐빕니다. 잠시 뒤에 다시 눌러 주세요.'
+                        + (why ? ' (구글: ' + why + ')' : ''));
+                }
                 if (status === 401 || status === 403) {
                     throw new Error('API 키를 받아 주지 않습니다. 예전에 만든 AIza 로 시작하는 키라면 새로 만들어 주세요.'
                         + (why ? ' (구글: ' + why + ')' : ''));
@@ -567,9 +572,9 @@
                 return Number(matched[1]) * 1000 + Number(matched[2] || 0);
             }
 
-            async function pickModel(apiKey) {
+            async function pickModel(apiKey, exclude) {
                 const remembered = store.get('gemini_model');
-                if (remembered) return remembered;
+                if (remembered && remembered !== exclude) return remembered;
 
                 const res = await fetch(API_ROOT + '/models', { headers: authHeaders(apiKey, false) });
                 if (!res.ok) throwForStatus(res.status, await readError(res));
@@ -578,7 +583,8 @@
                 // 다루지 못하는 모델만 걸러 낸다.
                 const names = ((await res.json()).models || [])
                     .map(m => String(m.name || '').replace(/^models\//, ''))
-                    .filter(name => name && !/(vision|image|audio|live|embedding|tts|banana|veo|imagen)/i.test(name));
+                    .filter(name => name && name !== exclude
+                        && !/(vision|image|audio|live|embedding|tts|banana|veo|imagen)/i.test(name));
                 if (names.length === 0) throw new Error('이 키로 쓸 수 있는 모델이 없습니다.');
 
                 // 글 다듬는 데에는 가벼운 것으로 넉넉하고, 공짜로 쓸 수 있는 몫도 많다.
@@ -606,6 +612,10 @@
                 return found.join('\n');
             }
 
+            // 500·502·503·504 는 구글 쪽 사정이다. 곧 풀리는 경우가 많다.
+            const TRANSIENT = [500, 502, 503, 504];
+            const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
             async function callOnce(url, apiKey, body) {
                 const res = await fetch(url, {
                     method: 'POST',
@@ -616,7 +626,19 @@
                 return { status: res.status, why: await readError(res) };
             }
 
-            async function callGemini(model, apiKey, prompt) {
+            // 붐빌 때는 기다리는 시간을 늘려 가며 세 번까지 다시 넣어 본다.
+            async function callWithRetry(url, apiKey, body, note) {
+                let wait = 2000;
+                for (let attempt = 1; ; attempt += 1) {
+                    const result = await callOnce(url, apiKey, body);
+                    if (result.data || !TRANSIENT.includes(result.status) || attempt >= 4) return result;
+                    if (note) note('구글 쪽이 붐벼서 ' + (wait / 1000) + '초 뒤에 다시 넣어 봅니다…');
+                    await sleep(wait);
+                    wait *= 2;
+                }
+            }
+
+            async function callGemini(model, apiKey, prompt, note) {
                 const attempts = [
                     [API_ROOT + '/interactions', {
                         model,
@@ -631,7 +653,7 @@
 
                 let firstWhy = '';
                 for (const [url, body] of attempts) {
-                    const result = await callOnce(url, apiKey, body);
+                    const result = await callWithRetry(url, apiKey, body, note);
                     if (result.data) return result.data;
                     if (!firstWhy) firstWhy = result.why;
                     // 404 는 그 주소가 없다는 뜻, 400 은 보내는 모양이 안 맞는다는 뜻이다.
@@ -645,8 +667,20 @@
                 return null;
             }
 
-            async function ask(apiKey, prompt) {
-                let data = await callGemini(await pickModel(apiKey), apiKey, prompt);
+            async function ask(apiKey, prompt, note) {
+                const first = await pickModel(apiKey);
+                let data;
+                try {
+                    data = await callGemini(first, apiKey, prompt, note);
+                } catch (error) {
+                    if (!/붐빕니다/.test(error.message)) throw error;
+                    // 이 모델이 붐빈다. 다른 모델로 한 번만 더.
+                    store.remove('gemini_model');
+                    const other = await pickModel(apiKey, first);
+                    if (other === first) throw error;
+                    if (note) note('다른 모델(' + other + ')로 다시 해 봅니다…');
+                    data = await callGemini(other, apiKey, prompt, note);
+                }
                 if (data === null) {
                     // 구글이 "이건 그만 쓰고 이걸 쓰라"며 이름을 적어 보내기도 한다.
                     // 그러면 그대로 따라가고, 아니면 목록을 다시 받아 고른다.
@@ -659,7 +693,7 @@
                     } else {
                         next = await pickModel(apiKey);
                     }
-                    data = await callGemini(next, apiKey, prompt);
+                    data = await callGemini(next, apiKey, prompt, note);
                     if (data === null) {
                         store.remove('gemini_model');
                         throw new Error('구글이 요청을 받아 주지 않았습니다.'
@@ -803,26 +837,45 @@
                 genStatus.className = 'status';
                 const perStudent = Array.from({ length: count }, () => []);
 
+                const missed = [];
                 try {
                     // 활동을 한 번에 다 보내면 답이 길어져 잘린다. 활동마다 따로 받아
                     // 학생별로 모은다. 그래야 한 칸에 여러 활동이 이어져 들어간다.
                     for (let t = 0; t < topics.length; t += 1) {
-                        genStatus.textContent = topics.length + '가지 중 ' + (t + 1) + '번째 만드는 중… (' + topics[t] + ')';
-                        const text = await ask(apiKey, buildPrompt(area, sub, topics[t], count));
-                        const sentences = parseNumbered(text, count);
-                        if (sentences.length === 0) {
-                            throw new Error('문장을 읽어 내지 못했습니다. 다시 한번 눌러 주세요.');
-                        }
-                        const order = shuffled(count);
-                        for (let i = 0; i < count; i += 1) {
-                            // 모자라면 있는 것을 돌려 쓴다. 빈 칸으로 두는 것보다 낫다.
-                            perStudent[i].push(sentences[order[i] % sentences.length]);
+                        const head = topics.length + '가지 중 ' + (t + 1) + '번째';
+                        genStatus.textContent = head + ' 만드는 중… (' + topics[t] + ')';
+                        try {
+                            const text = await ask(apiKey, buildPrompt(area, sub, topics[t], count),
+                                (message) => { genStatus.textContent = head + ' — ' + message; });
+                            const sentences = parseNumbered(text, count);
+                            if (sentences.length === 0) {
+                                throw new Error('문장을 읽어 내지 못했습니다.');
+                            }
+                            const order = shuffled(count);
+                            for (let i = 0; i < count; i += 1) {
+                                // 모자라면 있는 것을 돌려 쓴다. 빈 칸으로 두는 것보다 낫다.
+                                perStudent[i].push(sentences[order[i] % sentences.length]);
+                            }
+                        } catch (error) {
+                            console.error(error);
+                            missed.push({ topic: topics[t], why: error.message });
                         }
                     }
 
+                    if (perStudent.every(list => list.length === 0)) {
+                        throw new Error(missed.length > 0 ? missed[0].why : '문장을 하나도 받지 못했습니다.');
+                    }
+
                     renderResult(perStudent.map(list => list.join(' ')));
-                    genStatus.className = 'status';
-                    genStatus.textContent = count + '명분을 만들었습니다. 아이마다 실제 모습에 맞게 고쳐 주세요.';
+                    if (missed.length > 0) {
+                        genStatus.className = 'status error';
+                        genStatus.textContent = missed.map(item => '「' + item.topic + '」').join(', ')
+                            + '은(는) 받지 못해 빠졌습니다. 나머지는 아래에 있습니다. '
+                            + missed[0].why;
+                    } else {
+                        genStatus.className = 'status';
+                        genStatus.textContent = count + '명분을 만들었습니다. 아이마다 실제 모습에 맞게 고쳐 주세요.';
+                    }
                     resultSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 } catch (e) {
                     console.error(e);

@@ -5,6 +5,8 @@
 //  - 'new'     : 새 주소가 살아 있는 경우
 //  - 'legacy'  : 새 주소가 404 라서 옛 주소로 돌아가야 하는 경우
 //  - 'retired' : 고른 모델이 은퇴해서, 구글이 알려 준 이름으로 갈아타야 하는 경우
+//  - 'busy'    : 구글 쪽이 붐벼 503 을 내는 경우. 스스로 다시 넣어 봐야 한다
+//  - 'partial' : 수행평가 하나만 끝내 실패하는 경우. 받은 것은 살려야 한다
 const fs = require('fs');
 const http = require('http');
 const path = require('path');
@@ -45,12 +47,13 @@ const SENTENCES = '1. 첫째 문장임.\n2. 둘째 문장임.\n3. 셋째 문장�
 
 // 은퇴한 모델을 부르면 구글이 대신 쓸 이름을 적어 보낸다.
 const SUCCESSOR = 'gemini-3.6-flash';
+const SECOND_TOPIC = '도형의 넓이 구하기';
 const retiredMessage = (name) => 'This model models/' + name
   + ' is no longer available to new users. Please update your code to use models/'
   + SUCCESSOR + ' for the latest features and improvements.';
 
 async function run(browser, port, mode) {
-  const state = { calls: 0, wrongFallback: false, badBody: null, modelsUsed: [], keySeen: [], consoleErrors: [], pageErrors: [] };
+  const state = { calls: 0, attempts: 0, perPrompt: new Map(), wrongFallback: false, badBody: null, modelsUsed: [], keySeen: [], consoleErrors: [], pageErrors: [] };
   // 판마다 새 방을 쓴다. 한 방을 같이 쓰면 앞 판이 브라우저에 남긴 키와
   // 수행평가가 뒤 판에 그대로 딸려 와 엉뚱한 수를 센다.
   const context = browser.createBrowserContext
@@ -99,6 +102,20 @@ async function run(browser, port, mode) {
           return request.respond(json({ error: { message: "흉내: Unknown parameter 'temperature'." } }, 400));
         }
         state.modelsUsed.push(sent.model);
+        state.attempts += 1;
+        // 수행평가 하나마다 두 번은 붐빈다고 튕긴다. 모델을 바꿔 봐야 소용없고,
+        // 기다렸다 다시 넣어야만 통과한다.
+        const promptKey = String(sent.input || '').slice(0, 60);
+        const tries = (state.perPrompt.get(promptKey) || 0) + 1;
+        state.perPrompt.set(promptKey, tries);
+        if (mode === 'busy' && tries <= 2) {
+          return request.respond(json({
+            error: { message: sent.model + ' is currently experiencing high demand, spikes in demand are usually temporary. Please try again later.' }
+          }, 503));
+        }
+        if (mode === 'partial' && String(sent.input || '').includes(SECOND_TOPIC)) {
+          return request.respond(json({ error: { message: '흉내: 이 내용은 받아 줄 수 없습니다.' } }, 400));
+        }
         if (mode === 'retired' && sent.model !== SUCCESSOR) {
           return request.respond(json({ error: { message: retiredMessage(sent.model) } }, 400));
         }
@@ -109,7 +126,13 @@ async function run(browser, port, mode) {
       if (url.includes(':generateContent')) {
         const used = (url.match(/models\/([^:]+):generateContent/) || [])[1] || '';
         state.modelsUsed.push(used);
-        if (mode === 'retired') {
+        if (mode === 'partial') {
+          const sent = JSON.parse(request.postData() || '{}');
+          const asked = JSON.stringify(sent.contents || '');
+          if (asked.includes(SECOND_TOPIC)) {
+            return request.respond(json({ error: { message: '흉내: 이 내용은 받아 줄 수 없습니다.' } }, 400));
+          }
+        } else if (mode === 'retired') {
           // 은퇴한 모델은 어느 주소로 불러도 거절당한다.
           if (used !== SUCCESSOR) {
             return request.respond(json({ error: { message: retiredMessage(used) } }, 400));
@@ -152,6 +175,9 @@ async function run(browser, port, mode) {
       '과목별인데 학기 칸이 안 열림');
     assert.ok(await page.$eval('#sub-group', el => getComputedStyle(el).display !== 'none'),
       '과목별인데 과목 칸이 안 열림');
+    // 아무 말이나 쳐 넣지 못하도록 고르는 칸이어야 한다.
+    assert.equal(await page.$eval('#sub-input', el => el.tagName), 'SELECT', '과목이 고르는 칸이 아님');
+    assert.ok(await page.$eval('#sub-input', el => el.options.length > 5), '과목 목록이 비어 있음');
     assert.ok((await page.$eval('#topics-hint', el => el.textContent)).includes('수행평가'),
       '수행평가 안내가 안 보임');
 
@@ -161,14 +187,27 @@ async function run(browser, port, mode) {
     await page.waitForFunction("document.getElementById('key-status').textContent.includes('저장')", { timeout: 3000 });
 
     // 4) 수행평가 두 줄 적고 돌리기
-    await page.type('#sub-input', '수학');
+    await page.select('#sub-input', '수학');
     await page.click('#topics-input');
     await page.type('#topics-input', '분수의 덧셈과 뺄셈 계산하기\n도형의 넓이 구하기');
     await page.click('#generate-btn');
-    await page.waitForFunction("document.getElementById('result-section').style.display === 'block'", { timeout: 20000 });
+    await page.waitForFunction("document.getElementById('result-section').style.display === 'block'", { timeout: 40000 });
 
     const status = await page.$eval('#gen-status', el => el.textContent);
-    assert.ok(!status.includes('오류'), '오류가 났음: ' + status);
+    assert.ok(!status.includes('오류가 발생'), '오류가 났음: ' + status);
+    if (mode === 'partial') {
+      // 하나가 빠졌다고 통째로 버리면 안 된다. 받은 것은 보여 주고 빠진 것만 알린다.
+      assert.ok(status.includes(SECOND_TOPIC), '빠진 수행평가를 알려 주지 않음: ' + status);
+      const rows = await page.evaluate(() => Array.from(document.querySelectorAll('#result-list > div'))
+        .map(el => el.textContent));
+      assert.equal(rows.length, 3, '받은 것까지 버렸음: ' + rows.length);
+      const body = rows[0].replace('1번 김하늘', '').replace('복사', '').trim();
+      assert.equal(body.split('문장임.').length - 1, 1,
+        '빠진 수행평가 자리에 엉뚱한 문장이 들어감: ' + body);
+      assert.equal(state.calls, 1, '성공한 것은 하나여야 함. 실제: ' + state.calls);
+      console.log('  ' + mode + ': 통과');
+      return;
+    }
     assert.ok(status.includes('3명분'), '결과 안내가 이상함: ' + status);
     assert.equal(state.badBody, null,
       'temperature·max_output_tokens 는 generation_config 안에 넣어야 한다. 보낸 바깥 칸: ' + state.badBody);
@@ -176,6 +215,10 @@ async function run(browser, port, mode) {
     // 목록에서 가장 새 판을 골라야 한다. 은퇴한 2.5 를 집으면 안 된다.
     assert.ok(!state.modelsUsed.includes('gemini-2.5-flash'),
       '은퇴한 모델을 골랐음: ' + state.modelsUsed.join(', '));
+    if (mode === 'busy') {
+      assert.equal(state.attempts, 6,
+        '수행평가 두 줄이면 붐빌 때 여섯 번 넣어 봐야 함(줄마다 튕김 2 + 성공 1). 실제: ' + state.attempts);
+    }
     if (mode === 'retired') {
       assert.ok(state.modelsUsed.includes(SUCCESSOR),
         '구글이 알려 준 모델로 갈아타지 않았음: ' + state.modelsUsed.join(', '));
@@ -246,7 +289,7 @@ async function run(browser, port, mode) {
       args: ['--no-first-run', '--no-default-browser-check']
     });
     console.log('생활기록부 화면');
-    for (const mode of ['new', 'legacy', 'retired']) {
+    for (const mode of ['new', 'legacy', 'retired', 'busy', 'partial']) {
       await run(browser, port, mode);
     }
     console.log('모두 통과');
