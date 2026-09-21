@@ -1,0 +1,13 @@
+#placeStudyView[hidden]{display:none}#placeStudyView{position:fixed;inset:0;z-index:95;display:grid;place-items:center;padding:16px;background:#041015df;touch-action:auto}#placeStudyCard{box-sizing:border-box;width:min(94vw,620px);max-height:92dvh;overflow:auto;padding:22px;background:var(--paper,#f3f0e8);color:var(--paper-ink,#25231f);border:1px solid #d8d2c5;border-radius:12px;font-family:var(--reading-font,serif);font-weight:400;line-height:1.8;word-break:keep-all;overflow-wrap:anywhere}#placeStudyCard header{display:flex;align-items:center;justify-content:space-between;gap:12px}#placeStudyCard h2{margin:0;font-size:23px}#placeStudyCard h3{font-size:18px}#placeStudyCard button{font-family:inherit}#placeStudyReading img{width:100%;max-height:320px;object-fit:contain;border-radius:6px}#placeStudyCard .studyText{white-space:pre-line;font-size:17px}#placeStudyCard .studyCredit{font-family:sans-serif;font-size:11px;color:#665f55}#placeStudyCard a{color:inherit}#placeStudyStatus{font-family:sans-serif;font-size:14px;color:#544b3f}#placeStudyQuestion>p{padding:14px;background:#e8e3d9;border-radius:6px;font-size:18px}#placeStudyQuestion label{display:flex;gap:10px;align-items:baseline;border:1px solid #c8c0b0;padding:12px;margin:8px 0;border-radius:6px;cursor:pointer;font-size:17px}#placeStudyQuestion input{flex-shrink:0;accent-color:#72552c}#placeStudySubmit{width:100%;margin-top:16px}#placeStudyClose{flex-shrink:0}.studyTargetButton{display:block;width:100%;text-align:left;margin:8px 0}@media(max-width:480px){#placeStudyCard{padding:16px}#placeStudyCard h2{font-size:21px}}
+
+
+.photoFigure{position:relative;margin:0 0 16px}
+.photoFigure:has(>img[hidden]){display:none}
+.photoFigure>img,#discoveryPhoto>img{display:block;margin:0!important}
+.photoInfo{position:absolute;right:8px;bottom:8px;z-index:2;font-family:sans-serif;font-size:12px;line-height:1.5}
+.photoInfo>summary{display:grid;place-items:center;width:32px;height:32px;border-radius:50%;border:1px solid #ffffff91;background:#142b35db;color:#fff;font:18px/1 sans-serif;cursor:pointer;list-style:none}
+.photoInfo>summary::-webkit-details-marker{display:none}
+.photoInfo>summary:focus-visible{outline:3px solid #fff;outline-offset:2px}
+.photoInfo>.photoCreditText,#discoveryCredit.photoCreditText{position:absolute;right:0;bottom:calc(100% + 8px);box-sizing:border-box;width:min(330px,72vw);padding:12px;margin:0;border:1px solid #c8c0b0;border-radius:8px;background:#f3f0e8;color:#39342d;box-shadow:0 3px 16px #0005;font:12px/1.6 sans-serif;text-align:left;word-break:normal;overflow-wrap:anywhere}
+.photoInfo a{color:inherit;text-decoration:underline}
+.photoInfo:has(>.photoCreditText[hidden]){display:none}

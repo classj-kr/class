@@ -129,6 +129,7 @@ button,input{font:inherit}button{border:1px solid var(--line);background:#17313b
 @media(max-width:650px){#discoveryCard{padding:20px 17px}#discoveryText{font-size:16px;line-height:1.9}#discoveryText .storyHead{font-size:16px}#bookReader{padding:22px 18px}#bookReader h2{font-size:24px}#bookIntro,#bookSections p{font-size:16px;line-height:1.9}#finalQuizQuestions{padding:12px 10px}.finalQuestion{padding:13px}.finalPassage{font-size:15px!important}.finalPrompt{font-size:15px!important}.finalChoice{font-size:15px!important}}#cityRest{margin-top:5px;font-size:14px;font-weight:700;color:#e9f3d5}#cityArtCaption{display:block;margin-top:3px;font-size:10px;color:#cbd5d3}
 @media(max-width:650px){#cityMenu button{flex:1 1 calc(50% - 8px);max-width:none}}
 </style>
+<link rel="stylesheet" href="/learn/world-voyage/css/place-study.css">
 </head>
 <body>
 <div id="globeBase"></div>
@@ -200,7 +201,7 @@ button,input{font:inherit}button{border:1px solid var(--line);background:#17313b
   <div id="missionFeedback"></div>
   <div class="missionActions"><button id="missionClose">접기</button></div>
 </aside>
-<div id="discoveryView"><div id="discoveryCard"><h2 id="discoveryName">발견!</h2><div id="discoveryKind"></div><img id="discoveryImage" alt="" hidden><div id="discoveryCredit" hidden></div><div id="discoveryText"></div><div id="discoveryCount"></div><div id="discoveryButtons"><button id="discoveryNext" type="button" hidden>다음 명소</button><button id="discoveryClose" type="button">계속 탐험하기</button></div></div></div><div id="hostBar" class="panel" hidden><span>방번호 <b id="hostCode"></b></span><button id="hostStartBtn" type="button">모두 출발</button></div><div id="transitionOverlay"><div id="transitionCard"><div id="transitionLabel">입항 준비 중</div><div id="transitionBar"><div id="transitionFill"></div></div></div></div><div id="pauseOverlay"><div id="lockTitle">방장이 게임을 잠시 멈췄습니다.</div><span id="lockDetail" style="font-size:14px;font-weight:400">설명을 듣고 다시 시작할 때까지 기다리세요.</span></div>
+<div id="discoveryView"><div id="discoveryCard"><h2 id="discoveryName">발견!</h2><div id="discoveryKind"></div><div id="discoveryPhoto" class="photoFigure"><img id="discoveryImage" alt="" hidden><details id="discoveryPhotoInfo" class="photoInfo"><summary aria-label="사진 출처와 이용 조건" title="사진 정보">ⓘ</summary><div id="discoveryCredit" class="photoCreditText" hidden></div></details></div><div id="discoveryText"></div><div id="discoveryCount"></div><div id="discoveryButtons"><button id="discoveryNext" type="button" hidden>다음 명소</button><button id="discoveryClose" type="button">계속 탐험하기</button></div></div></div><div id="hostBar" class="panel" hidden><span>방번호 <b id="hostCode"></b></span><button id="hostStartBtn" type="button">모두 출발</button></div><div id="transitionOverlay"><div id="transitionCard"><div id="transitionLabel">입항 준비 중</div><div id="transitionBar"><div id="transitionFill"></div></div></div></div><div id="pauseOverlay"><div id="lockTitle">방장이 게임을 잠시 멈췄습니다.</div><span id="lockDetail" style="font-size:14px;font-weight:400">설명을 듣고 다시 시작할 때까지 기다리세요.</span></div>
 <div id="messageWindow" class="panel" aria-live="polite"><div id="messageHeader">항해 안내</div><div id="messageLines"><div class="guideLine system">서버에 접속한 뒤 안내 메시지가 여기에 표시됩니다.</div></div></div>
 <script src="/learn/world-voyage/socket.io/socket.io.js"></script>
 <script src="/learn/world-voyage/js/terrain.js?v=82"></script>
@@ -363,7 +364,7 @@ function currentStage(){if(activeMission?.kind!=='staged')return null;return act
 function awaitingStartChoice(){return activeMission?.kind==='arrivalRace'&&activeMission.phase!=='running'&&!missionProgress?.selectedStartPlaceId&&missionProgress?.status!=='completed'}
 function waitingForTeacherStart(){return activeMission?.kind==='arrivalRace'&&!!missionProgress?.selectedStartPlaceId&&activeMission.phase!=='running'&&missionProgress?.status!=='completed'}
 function missedTeacherStart(){return activeMission?.kind==='arrivalRace'&&activeMission.phase==='running'&&!missionProgress?.selectedStartPlaceId&&missionProgress?.status!=='completed'}
-function canTravelNow(){if(!joined||!connectionReady||!socket.connected||performance.now()-lastSnapshotAt>3000||classSettings.paused||serverSelf?.transition)return false;if(roomType==='free')return classSettings.started===true;if(missionProgress?.finalQuizStatus==='answering')return false;return !!(activeMission?.kind==='arrivalRace'&&activeMission.phase==='running'&&missionProgress?.selectedStartPlaceId)}
+function canTravelNow(){if(window.VoyageStudyUI?.isOpen())return false;if(!joined||!connectionReady||!socket.connected||performance.now()-lastSnapshotAt>3000||classSettings.paused||serverSelf?.transition)return false;if(roomType==='free')return classSettings.started===true;if(missionProgress?.finalQuizStatus==='answering')return false;return !!(activeMission?.kind==='arrivalRace'&&activeMission.phase==='running'&&missionProgress?.selectedStartPlaceId)}
 function updateTravelLockOverlay(){
   if(!joined){pauseOverlay.classList.remove('show');return}
   if(roomType==='free'){const waiting=!classSettings.paused&&!classSettings.started;const title=classSettings.paused?'방장이 게임을 잠시 멈췄습니다.':waiting?'출발 대기 중':'';lockTitle.textContent=title;lockDetail.textContent=waiting?(isHost?'친구들에게 방번호를 알려 주고, 모두 들어오면 "모두 출발"을 누르세요.':'방장이 출발 버튼을 누르면 모두 출발합니다.'):'';pauseOverlay.classList.toggle('show',!!title);if(title)clearKeys();return}
@@ -376,7 +377,7 @@ function updateTravelLockOverlay(){
   lockTitle.textContent=title;lockDetail.textContent=detail;pauseOverlay.classList.toggle('show',!!title);if(title)clearKeys();
 }
 function setMissionPanelOpen(open){if(!open&&awaitingStartChoice())return;missionPanel.classList.toggle('show',open);missionToggle.classList.toggle('show',!open&&!!activeMission);if(open)clearKeys()}
-function updateMissionBanner(){if(!activeMission){const sailing=roomType==='free'&&classSettings.started;missionBanner.className=sailing?'panel':'panel show';missionBanner.textContent=sailing?'':roomType==='free'?'자유 항해 · 방장의 출발 신호를 기다리는 중':'방장의 미션 설정을 기다리는 중';return}const target=activeMission.targetPlace?.name||activeMission.title;if(awaitingStartChoice()){missionBanner.className='panel show';missionBanner.textContent=`공통 미션: ${target} 도착 · 출발 도시를 선택하세요`;return}const start=missionProgress?.selectedStartPlaceName||'출발지';if(missionProgress?.status==='completed'){const boost=formatSpeedBoost(completionBoost()),score=Number.isFinite(missionProgress?.finalCorrectCount)?` · ${missionProgress.finalCorrectCount}/3 정답`:'';missionBanner.className='panel show done';missionBanner.textContent=`${medalText(missionProgress.finishRank)} 미션 성공${score} · ${start} → ${target} · 이동속도 ${boost}배 자유 탐험`;return}if(missionProgress?.finalQuizStatus==='answering'){missionBanner.className='panel show';missionBanner.textContent=`${target} 도착 · 최종 문제 3개 풀이 중`;return}missionBanner.className='panel show';missionBanner.textContent=waitingForTeacherStart()?`출발 준비 완료 · ${start} → ${target} · 방장 신호 대기`:`미션: ${start} → ${target}`}
+function updateMissionBanner(){if(activeMission?.studyTargets){const done=(missionProgress?.studyPlaces||[]).filter(p=>p.phase==='completed').length;missionBanner.className='panel show'+(missionProgress?.status==='completed'?' done':'');missionBanner.textContent='장소 학습 '+done+'/'+activeMission.studyTargets.length+' · '+(awaitingStartChoice()?'출발 도시를 선택하세요':waitingForTeacherStart()?'출발 신호 대기':missionProgress?.status==='completed'?'모든 장소 발견 성공':activeMission.studyTargets.map(t=>t.name).join(' · '));return;}if(!activeMission){const sailing=roomType==='free'&&classSettings.started;missionBanner.className=sailing?'panel':'panel show';missionBanner.textContent=sailing?'':roomType==='free'?'자유 항해 · 방장의 출발 신호를 기다리는 중':'방장의 미션 설정을 기다리는 중';return}const target=activeMission.targetPlace?.name||activeMission.title;if(awaitingStartChoice()){missionBanner.className='panel show';missionBanner.textContent=`공통 미션: ${target} 도착 · 출발 도시를 선택하세요`;return}const start=missionProgress?.selectedStartPlaceName||'출발지';if(missionProgress?.status==='completed'){const boost=formatSpeedBoost(completionBoost()),score=Number.isFinite(missionProgress?.finalCorrectCount)?` · ${missionProgress.finalCorrectCount}/3 정답`:'';missionBanner.className='panel show done';missionBanner.textContent=`${medalText(missionProgress.finishRank)} 미션 성공${score} · ${start} → ${target} · 이동속도 ${boost}배 자유 탐험`;return}if(missionProgress?.finalQuizStatus==='answering'){missionBanner.className='panel show';missionBanner.textContent=`${target} 도착 · 최종 문제 3개 풀이 중`;return}missionBanner.className='panel show';missionBanner.textContent=waitingForTeacherStart()?`출발 준비 완료 · ${start} → ${target} · 방장 신호 대기`:`미션: ${start} → ${target}`}
 function missionConditionText(){if(!activeMission)return'';if(activeMission.kind==='staged'){const stage=currentStage();if(!stage)return'모든 단계 완료';return `${(missionProgress?.stageIndex||0)+1}/${activeMission.stages.length}단계 · ${stage.label}`;}if(activeMission.kind==='location')return `목표 지점: ${activeMission.target?.label||'학습 지점'} · 반경 ${activeMission.target?.radiusTiles||2}칸`;if(activeMission.kind==='terrain'){const t=activeMission.criteria?.terrainType;return `${TERRAIN_LABEL[t]||t} 지형에서 ${activeMission.criteria?.minDistanceTiles||0}칸 이동`;}return `총 ${activeMission.criteria?.minDistanceTiles||0}칸 이동 · 서로 다른 지형 ${activeMission.criteria?.minTerrainTypes||1}종`}
 function renderMission(){
   if(!activeMission){missionTitle.textContent=roomType==='free'?'자유 항해':'방장의 미션을 기다리는 중';missionInstructions.textContent=roomType==='free'?'정해진 목적지 없이 바다와 육지를 자유롭게 탐험하세요.':'도착 미션이 배포되면 여기에 내용이 표시됩니다.';missionMeta.replaceChildren();missionTarget.textContent='';missionFeedback.textContent='';missionPanel.classList.remove('show','choiceRequired');missionToggle.classList.remove('show');missionClose.hidden=false;updateMissionBanner();return}
@@ -419,6 +420,7 @@ function renderMission(){
   }else{
     missionTarget.textContent=missionConditionText();const completed=missionProgress?.status==='completed';missionFeedback.className=completed?'missionDone':'';missionFeedback.textContent=completed?'수행 완료':'';
   }
+  if(activeMission?.studyTargets&&missionProgress?.selectedStartPlaceId){window.VoyageStudyUI?.renderTargets(missionTarget);const done=(missionProgress.studyPlaces||[]).filter(p=>p.phase==='completed').length;missionFeedback.textContent='발견 성공 '+done+'/'+activeMission.studyTargets.length;}
   updateMissionBanner();if(!missionPanel.classList.contains('show'))missionToggle.classList.add('show');
 }
 
@@ -454,12 +456,12 @@ function chooseStartCity(optionId,placeId,cityName,selectedCard){
 }
 function escapeHtml(v){return String(v||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 let lastMissionRenderKey='';
-function missionRenderKey(mission,progress){return [mission?.id||'',mission?.phase||'',progress?.selectedStartPlaceId||'',progress?.selectedStartPlaceName||'',progress?.status||'',progress?.finishRank||'',progress?.finalQuizStatus||'',progress?.finalCorrectCount??'',(progress?.finalQuizAnswers||[]).join(','),progress?.stageIndex||0,startChoicePending?pendingStartChoice?.optionId||'pending':''].join('|')}
+function missionRenderKey(mission,progress){return [mission?.id||'',mission?.phase||'',progress?.selectedStartPlaceId||'',progress?.selectedStartPlaceName||'',progress?.status||'',progress?.finishRank||'',progress?.finalQuizStatus||'',progress?.finalCorrectCount??'',(progress?.finalQuizAnswers||[]).join(','),JSON.stringify(progress?.studyPlaces||[]),progress?.stageIndex||0,startChoicePending?pendingStartChoice?.optionId||'pending':''].join('|')}
 function mergePendingStartChoice(progress){if(!startChoicePending||!pendingStartChoice||progress?.selectedStartPlaceId)return progress;return {...(progress||{}),selectedStartPlaceId:pendingStartChoice.placeId,selectedStartPlaceName:pendingStartChoice.cityName,status:'assigned',statusLabel:'수행 전'}}
-function applyMissionState(mission,progress,announce=false){const changed=mission?.id&&mission?.id!==activeMission?.id,wasCompleted=missionProgress?.status==='completed';if(changed)dismissedFinalQuizMissionId='';activeMission=mission||null;missionProgress=mergePendingStartChoice(progress)||null;const justCompleted=!wasCompleted&&missionProgress?.status==='completed',renderKey=missionRenderKey(activeMission,missionProgress);if(renderKey!==lastMissionRenderKey){lastMissionRenderKey=renderKey;renderMission()}renderFinalQuiz();updateTravelLockOverlay();syncBackgroundMusic();if(justCompleted)showToast(`${medalText(missionProgress.finishRank)} 미션 성공! ${missionProgress?.finalCorrectCount??0}/3 정답 · 이동속도 ${formatSpeedBoost(completionBoost())}배 자유 탐험`,'good');if(announce&&activeMission){showToast(`새 수행 미션: ${activeMission.title}`);setMissionPanelOpen(true)}else if(changed&&activeMission)setMissionPanelOpen(true)}
+function applyMissionState(mission,progress,announce=false){const changed=mission?.id&&mission?.id!==activeMission?.id,wasCompleted=missionProgress?.status==='completed';if(changed)dismissedFinalQuizMissionId='';activeMission=mission||null;missionProgress=mergePendingStartChoice(progress)||null;const justCompleted=!wasCompleted&&missionProgress?.status==='completed',renderKey=missionRenderKey(activeMission,missionProgress);if(renderKey!==lastMissionRenderKey){lastMissionRenderKey=renderKey;renderMission()}renderFinalQuiz();updateTravelLockOverlay();syncBackgroundMusic();if(justCompleted&&activeMission?.studyTargets)showToast('모든 장소 발견 성공!','good');else if(justCompleted)showToast(`${medalText(missionProgress.finishRank)} 미션 성공! ${missionProgress?.finalCorrectCount??0}/3 정답 · 이동속도 ${formatSpeedBoost(completionBoost())}배 자유 탐험`,'good');if(announce&&activeMission){showToast(`새 수행 미션: ${activeMission.title}`);setMissionPanelOpen(true)}else if(changed&&activeMission)setMissionPanelOpen(true)}
 function applyClassSettings(next){const before=displayedGameMinutes();classSettings={...classSettings,...(next||{})};clockAnchorGameMinutes=before;clockAnchorAt=performance.now();classGameMinutes=before;updateHostBar();updateMissionBanner();updateTravelLockOverlay();if(classSettings.paused)clearKeys()}
 function updateHostBar(){hostBar.hidden=!(joined&&isHost&&roomType==='free'&&!classSettings.started)}
-function finalQuizOpen(){return finalQuizView.classList.contains('show')}
+function finalQuizOpen(){return finalQuizView.classList.contains('show')||window.VoyageStudyUI?.isOpen()}
 function finalQuizAnswersFromForm(){return (missionProgress?.finalQuiz?.questions||[]).map((_,index)=>{const checked=finalQuizQuestions.querySelector(`input[name="finalQuiz${index}"]:checked`);return checked?Number(checked.value):null})}
 function updateFinalQuizSubmitState(){const answers=finalQuizAnswersFromForm(),complete=answers.length===3&&answers.every(Number.isInteger);finalQuizSubmit.disabled=finalQuizSubmitting||!complete;finalQuizStatus.textContent=finalQuizSubmitting?'제출하는 중…':complete?'세 문제를 모두 선택했습니다. 제출하면 답을 바꿀 수 없습니다.':'세 문제에 모두 답하세요.';finalQuizStatus.className=`finalQuizStatus ${complete?'good':'warn'}`}
 function saveFinalQuizDraft(){
@@ -628,12 +630,22 @@ socket.on('missionCleared',()=>{applyMissionState(null,null,false);showToast('�
 socket.on('missionProgress',data=>{applyMissionState(data?.mission||activeMission,data?.progress||missionProgress,false)});
 socket.on('classControl',applyClassSettings);
 function showDiscovery(item,found,total,first,label='발견! '){
+  document.getElementById('discoveryPhotoInfo').open=false;
   discoveryName.textContent=`${first?label:''}${item.name}`;
   discoveryKind.textContent=[item.kind,item.built?`세운 때 ${item.built}`:'',item.todayCountry?`오늘날 ${item.todayCountry}`:''].filter(Boolean).join(' · ');
   discoveryText.textContent=[item.text,item.in1520?`1520년에는 ${item.in1520}`:''].filter(Boolean).join('\n\n');
   if(item.image){discoveryImage.src=item.image;discoveryImage.alt=`${item.name} 오늘날 사진`;discoveryImage.hidden=false}
   else{discoveryImage.removeAttribute('src');discoveryImage.hidden=true}
-  discoveryCredit.textContent=item.image&&item.imageCredit?item.imageCredit:'';discoveryCredit.hidden=!discoveryCredit.textContent;
+  discoveryCredit.textContent=item.image&&item.imageCredit?'오늘날 모습 · '+item.imageCredit:'';
+  if(discoveryCredit.textContent){
+    for(const [label,url] of [['원본',item.imageSource],['이용 조건',item.imageLicenseUrl]]){
+      if(!url||!/^https?:\/\//.test(url))continue;
+      const link=document.createElement('a');link.href=url;link.textContent=label;link.target='_blank';link.rel='noopener noreferrer';link.style.color='inherit';
+      discoveryCredit.append(' · ',link);
+    }
+    if(item.imageChanges)discoveryCredit.append(' · '+item.imageChanges);
+  }
+  discoveryCredit.hidden=!discoveryCredit.textContent;
   discoveryCount.textContent=`지금까지 찾은 것 ${found}곳 / 모두 ${total}곳`;
   discoveryView.classList.add('show');clearKeys();
 }
@@ -644,6 +656,7 @@ function doDiscoveryAction(item=discoveryInteraction){
   socket.emit('inspectDiscovery',{id:item.id},result=>{
     if(!result?.ok){showToast(result?.error||'살펴보지 못했습니다.','warn');return}
     if(result.self){serverSelf=result.self;self={...result.self}}
+    if(result.study){window.VoyageStudyUI.show(result);return;}
     showDiscovery(result.discovery,result.found,result.total,result.first);
   });
 }
@@ -655,6 +668,7 @@ function openLandmark(index){
   socket.emit('inspectLandmark',{id:item.id},result=>{
     if(!result?.ok){showToast(result?.error||'명소를 보지 못했습니다.','warn');return}
     if(result.self){serverSelf=result.self;self={...result.self}}
+    if(result.study){window.VoyageStudyUI.show(result);return;}
     showDiscovery(result.landmark,result.found,result.total,result.first,'명소 · ');
     discoveryNext.hidden=landmarkQueue.length<2;
     if(!discoveryNext.hidden)discoveryNext.textContent=`다음 명소 · ${landmarkQueue[(index+1)%landmarkQueue.length].name}`;
@@ -663,6 +677,8 @@ function openLandmark(index){
 landmarkBtn.addEventListener('click',()=>{if(landmarkQueue.length)openLandmark(0)});
 // 도시별로 고른 역사·인물·문화 주제를 데이터 순서대로 표시한다.
 function openCityStory(){
+  document.getElementById('discoveryPhotoInfo').open=false;
+  const key='city:'+serverSelf?.currentCityId;if(activeMission?.studyTargets?.some(t=>t.key===key)){window.VoyageStudyUI.request(key);return;}
   const city=cityCatalogById.get(String(serverSelf?.currentCityId||''));const story=city?.story;if(!story)return;
   discoveryName.textContent=`${city.name} ${city.settlementKind==='village'?'설명':'도시 설명'}`;
   discoveryKind.textContent=[city.todayCountry,city.region].filter(Boolean).join(' · ');
@@ -1174,5 +1190,6 @@ requestAnimationFrame(loop);
 setInterval(()=>{if(joined&&self)updateHud()},100);
 setInterval(()=>{if(joined&&performance.now()-lastSnapshotAt>3000){connectionReady=false;for(const k in keys)keys[k]=false;net.textContent='● 연결 복구 중';net.className='bad';restoreVoyagerConnection()}},1000);
 </script>
+<script src="/learn/world-voyage/js/place-study-ui.js"></script>
 </body>
 </html>

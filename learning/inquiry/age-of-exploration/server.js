@@ -19,6 +19,7 @@ const ArrivalZones = require('./lib/arrival-zones.js');
 const { createDiscoveryAccess } = require('./lib/discovery-access.js');
 const CompletionRewards = require('./lib/completion-rewards.js');
 const FinalQuiz = require('./lib/final-quiz.js');
+const PlaceStudy = require('./lib/place-study.js');
 const VoyageShips = require('./public/js/ship-designs.js');
 const SHIP_ORIGINS = require('./data/catalog/ship-origins.json').ports;
 const ARRIVAL_ZONES = require('./data/catalog/arrival-zones.json');
@@ -393,7 +394,7 @@ const RESOLVED_PLACES = resolveCatalog();
 // V70 이전에 저장된 도착 미션은 최종 문제가 없으므로 현재 목적지 기준으로 보완한다.
 for (const room of Object.values(store.state?.rooms || {})) {
   const mission = room?.activeMission;
-  if (!isArrivalRace(mission) || mission.finalQuiz) continue;
+  if (!isArrivalRace(mission) || mission.finalQuiz || mission.studyTargets) continue;
   const target = RESOLVED_PLACES.get(String(mission.targetPlace?.id || '')) || mission.targetPlace;
   mission.finalQuiz = FinalQuiz.createFinalQuiz(target);
   mission.instructions = `${mission.targetPlace?.name || '목적지'}에 도착한 뒤 최종 문제 3개를 모두 제출하면 완주합니다. 출발 도시 네 곳 중 하나를 선택하세요.`;
@@ -856,6 +857,7 @@ function missionForStudent(mission) {
       mode: mission.targetPlace.mode,
       radiusTiles: mission.targetPlace.radiusTiles
     } : null,
+    studyTargets: mission.studyTargets?.map(t=>({key:t.key,id:t.id,type:t.type,name:t.name})) || null,
     hasFinalQuiz: isArrivalRace(mission) && !!mission.finalQuiz,
     finalQuizQuestionCount: isArrivalRace(mission) ? Number(mission.finalQuiz?.questionCount || 3) : null,
     startOptions: Array.isArray(mission.startOptions) ? mission.startOptions.map(startOptionSummary) : null,
@@ -903,6 +905,7 @@ function publicProgress(progress, mission = null) {
   return {
     status: progress.status || 'assigned',
     statusLabel: missionStatusLabel(progress.status || 'assigned'),
+    studyPlaces: PlaceStudy.publicState(progress.placeStudy,mission?.studyTargets),
     stageIndex,
     stageCount,
     cargoItemId: progress.cargoItemId || null,
@@ -1236,6 +1239,63 @@ function pickSeaAnimal(roomCode, starts = []) {
   return chosen;
 }
 
+
+function studyReading(type, item) {
+  const city = type === 'city', story = city ? CITY_STORIES.get(item.id) : null;
+  const photo = city ? cityTodayPhoto(item.artKey) : null, credit = PHOTO_CREDITS[item.id];
+  const text = city ? (story?.sections || []).map(s => [s.heading, s.text].filter(Boolean).join('\n')).join('\n\n') : [item.text, item.in1520 ? '1520년에는 '+item.in1520 : ''].filter(Boolean).join('\n\n');
+  return { id:item.id, name:item.name, kind:city?'도시 설명':item.kind, todayCountry:item.todayCountry||'', text,
+    image:city?photo?.url:landmarkArtUrl(item.id), imageCredit:city?photo?.credit:'오늘날 모습 · '+photoCreditFor(item.id), imageChanges:city?'':credit?.changes,
+    imageSource:city?CITY_PHOTO_CREDITS[item.artKey]?.source:credit?.source,
+    imageLicenseUrl:city?CITY_PHOTO_CREDITS[item.artKey]?.licenseUrl:credit?.licenseUrl };
+}
+function studyTarget(key) {
+  const [type,id,...extra] = String(key).split(':');
+  if(extra.length)throw Error('학습 장소를 다시 선택하세요.');
+  const item=type==='city'?RESOLVED_PLACES.get(id):type==='discovery'?RESOLVED_DISCOVERIES.find(d=>d.id===id):type==='landmark'?LANDMARK_BY_ID.get(id):null;
+  if(!item || (type==='city'&&!item.isOriginalCity))throw Error('학습 장소를 찾지 못했습니다.');
+  const reading=studyReading(type,item);
+  if(!reading.text)throw Error(item.name+'의 설명이 준비되지 않았습니다.');
+  return {key,type,id,name:item.name,point:type==='city'?item.cityPoint:type==='landmark'?RESOLVED_PLACES.get(item.cityId)?.cityPoint:{x:item.x,y:item.y},reading,text:type==='city'?(CITY_STORIES.get(item.id)?.sections||[]).map(s=>s.text).join('\n'):reading.text};
+}
+function buildStudyTargets(keys) {
+  if(!Array.isArray(keys)||keys.length<1||keys.length>5||new Set(keys).size!==keys.length)throw Error('도시·발견물을 중복 없이 1~5곳 선택하세요.');
+  const pool=[...MissionCatalog.PLACES.filter(p=>p.isOriginalCity).map(p=>({id:p.id,text:(CITY_STORIES.get(p.id)?.sections||[]).map(s=>s.text).join(' ')})),...MissionCatalog.DISCOVERIES];
+  return keys.map(key=>{const t=studyTarget(key);return {...t,questions:PlaceStudy.createQuestions(t,pool)};});
+}
+function atStudyTarget(p,target) {
+  if(p.transition)return false;
+  if(target.type==='city')return p.mode==='city'&&p.currentCityId===target.id;
+  if(target.type==='landmark')return p.mode==='city'&&p.currentCityId===LANDMARK_BY_ID.get(target.id)?.cityId;
+  const item=RESOLVED_DISCOVERIES.find(d=>d.id===target.id);
+  const access=item&&discoveryProximity(p,item);
+  return !!access?.canUse&&access.distance<=3.2*TILE;
+}
+function studyContext(p,key,missionId,create=false) {
+  if(!p)throw Error('접속 상태가 아닙니다.');
+  const gate=arrivalRaceTravelGate(p),mission=store.room(p.roomCode).activeMission;
+  if(!gate.ok)throw Error(gate.error);
+  if(!mission?.studyTargets || (missionId&&mission.id!==missionId))throw Error('현재 학습 미션이 아닙니다.');
+  if(store.room(p.roomCode).settings.paused)throw Error('게임이 일시정지 상태입니다.');
+  const target=mission.studyTargets.find(t=>t.key===key);
+  if(!target)throw Error('교사가 지정한 장소가 아닙니다.');
+  if(!atStudyTarget(p,target))throw Error(target.type==='discovery'?'발견물에 더 가까이 가세요.':'먼저 해당 도시에 들어가세요.');
+  const progress=gate.progress;
+  progress.placeStudy ||= {places:{}};
+  if(!progress.placeStudy.places[key]&&!create)throw Error('먼저 장소 설명을 열어 읽으세요.');
+  const state=progress.placeStudy.places[key] ||= {phase:'reading',streak:0,token:null,order:null,completedAt:null};
+  return {mission,target,progress,state};
+}
+function studyResult(p,context) {
+  const {mission,target,progress,state}=context;
+  return {ok:true,study:PlaceStudy.publicSession(target,state),mission:missionForStudent(mission),progress:publicProgress(progress,mission),self:publicPlayer(p)};
+}
+function beginPlaceStudy(p,key,missionId) {
+  const context=studyContext(p,key,missionId,true);
+  stopPlayer(p);store.scheduleSave();
+  return studyResult(p,context);
+}
+
 function buildArrivalRace(payload, roomCode) {
   const ids = Array.isArray(payload?.startPlaceIds) ? payload.startPlaceIds.map(String) : [];
   const unique = [...new Set(ids.filter(Boolean))];
@@ -1248,9 +1308,12 @@ function buildArrivalRace(payload, roomCode) {
   let requestedAnimal = payload?.huntAnimalId ? seaAnimalById(payload.huntAnimalId) : null;
   if (payload?.huntAnimalId && !requestedAnimal) throw new Error('그런 동물을 찾지 못했습니다.');
   if (!requestedAnimal && payload?.hunt === true) requestedAnimal = pickSeaAnimal(roomCode, starts);
-  const target = requestedAnimal ? huntTargetPlace(requestedAnimal) : catalogPlace(payload?.targetPlaceId, '도착 도시 또는 지형');
+  const studyTargets = payload?.studyTargets !== undefined ? buildStudyTargets(payload.studyTargets) : null;
+  if(studyTargets && requestedAnimal)throw Error('장소 학습과 동물 미션은 함께 설정할 수 없습니다.');
+  const firstStudy=studyTargets?.[0];
+  const target = firstStudy ? {id:firstStudy.id,name:studyTargets.map(t=>t.name).join(' · '),access:'any',seaPoint:firstStudy.point,landPoint:firstStudy.point,point:firstStudy.point,arrivalRadiusTiles:3.2} : requestedAnimal ? huntTargetPlace(requestedAnimal) : catalogPlace(payload?.targetPlaceId, '도착 도시 또는 지형');
   for (const place of starts) {
-    if (place.id === target.id) throw new Error(`${josaEun(place.name)} 도착지와 같아 출발 도시로 사용할 수 없습니다.`);
+    if (place.id === target.id || studyTargets?.some(t=>t.type==='city'&&t.id===place.id)) throw new Error(`${josaEun(place.name)} 도착지와 같아 출발 도시로 사용할 수 없습니다.`);
   }
   const huntAnimal = requestedAnimal;
   const targetMode = target.access === 'land' ? 'land' : 'sea';
@@ -1263,7 +1326,8 @@ function buildArrivalRace(payload, roomCode) {
     kind: 'arrivalRace',
     mode: 'any',
     title,
-    instructions: huntAnimal
+    studyTargets,
+    instructions: studyTargets ? '지정된 장소를 원하는 순서로 방문하세요. 각 장소의 설명을 읽고 두 문제를 연속으로 맞히면 발견 성공입니다. 모든 장소를 완료하면 완주합니다.' : huntAnimal
       ? `${target.name}에서 ${josaEul(huntAnimal.animal)} 찾아 만난 뒤 최종 문제 3개를 모두 제출하면 완주합니다. 출발 도시 네 곳 중 하나를 선택하세요.`
       : `${target.name}에 도착한 뒤 최종 문제 3개를 모두 제출하면 완주합니다. 출발 도시 네 곳 중 하나를 선택하세요.`,
     atlasInstruction: '',
@@ -1279,7 +1343,7 @@ function buildArrivalRace(payload, roomCode) {
       point: { x: targetPoint.x, y: targetPoint.y },
       radiusTiles: target.arrivalRadiusTiles
     },
-    finalQuiz: FinalQuiz.createFinalQuiz(target),
+    finalQuiz: studyTargets ? null : FinalQuiz.createFinalQuiz(target),
     startOptions: starts.map((start) => ({
       id: start.id,
       startPlace: {
@@ -1863,7 +1927,7 @@ function recomputeArrivalRaceRanks(roomCode, mission) {
     .filter((item) => item.progress?.status === 'completed')
     .sort((a, b) => {
       const scoreGap = (Number(b.progress.finalCorrectCount) || 0) - (Number(a.progress.finalCorrectCount) || 0);
-      if (scoreGap) return scoreGap;
+      if (scoreGap && !mission.studyTargets) return scoreGap;
       const timeGap = (Number(a.progress.completedAt) || Infinity) - (Number(b.progress.completedAt) || Infinity);
       if (timeGap) return timeGap;
       return a.name.localeCompare(b.name, 'ko');
@@ -1892,7 +1956,7 @@ function emitArrivalProgressUpdates(roomCode, mission, entries = null) {
 }
 
 function beginFinalQuiz(roomCode, p, mission, progress) {
-  if (!isArrivalRace(mission) || progress.status === 'completed' || progress.finalQuizStatus === 'answering') return;
+  if (!isArrivalRace(mission) || mission.studyTargets || progress.status === 'completed' || progress.finalQuizStatus === 'answering') return;
   progress.status = 'inProgress';
   progress.finalQuizStatus = 'answering';
   progress.finalQuizArrivedAt = Date.now();
@@ -1921,7 +1985,7 @@ function completeMission(roomCode, p, mission, progress, label) {
   p.mission = `${mission.title} · 완료`;
   const rankText = progress.finishRank ? ` ${progress.finishRank}위로` : '';
   const speedBoost = CompletionRewards.speedMultiplier(progress.finishRank);
-  const scoreText = arrivalRace ? ` 최종 문제 ${Number(progress.finalCorrectCount) || 0}/3 정답,` : '';
+  const scoreText = activeMission?.studyTargets ? ' 모든 장소 학습 완료,' : arrivalRace ? ` 최종 문제 ${Number(progress.finalCorrectCount) || 0}/3 정답,` : '';
   setNotice(p, `미션 성공!${scoreText}${rankText} 완주했습니다. 메달을 달고 이동속도 ${speedBoost}배로 자유 탐험할 수 있습니다.`);
   store.scheduleSave();
   if (arrivalRace) {
@@ -2110,11 +2174,49 @@ io.on('connection', (socket) => {
     p.lastSeen = Date.now();
   });
 
+
+  socket.on('readStudyPlace',(payload,ack=()=>{})=>{
+    try{ack(beginPlaceStudy(playerForSocket(socket),payload?.key,payload?.missionId));}
+    catch(error){ack({ok:false,error:error.message});}
+  });
+  socket.on('startStudyQuiz',(payload,ack=()=>{})=>{
+    try{
+      const p=playerForSocket(socket),context=studyContext(p,payload?.key,payload?.missionId);
+      if(context.state.phase==='reading')PlaceStudy.issue(context.state);
+      store.scheduleSave();ack(studyResult(p,context));
+    }catch(error){ack({ok:false,error:error.message});}
+  });
+  socket.on('answerStudyQuestion',(payload,ack=()=>{})=>{
+    try{
+      const p=playerForSocket(socket),context=studyContext(p,payload?.key,payload?.missionId);
+      const {mission,target,progress,state}=context;
+      const result=PlaceStudy.answer(target,state,payload?.token,payload?.choice);
+      if(state.phase==='completed'){
+        if(target.type!=='city'){
+          const found=discoveryListFor(p.roomCode,p.name);
+          if(!found.includes(target.id))found.push(target.id);
+        }
+        setNotice(p,target.name+' 발견 성공!');
+        if(mission.studyTargets.every(t=>progress.placeStudy.places[t.key]?.phase==='completed')){
+          progress.finalSubmittedAt=Date.now();
+          completeMission(p.roomCode,p,mission,progress,'모든 장소 학습 완료');
+        }
+      }
+      store.scheduleSave();
+      io.to('teacher:'+p.roomCode).emit('teacherMissionProgress',{name:p.name,progress:publicProgress(progress,mission),missionId:mission.id});
+      ack({...studyResult(p,context),...result});
+    }catch(error){ack({ok:false,error:error.message});}
+  });
+
   socket.on('inspectDiscovery', (payload, ack = () => {}) => {
     const p = playerForSocket(socket);
     if (!p) return ack({ ok:false, error:'접속 상태가 아닙니다.' });
     const item = RESOLVED_DISCOVERIES.find((entry) => entry.id === String(payload?.id || ''));
     if (!item) return ack({ ok:false, error:'그런 곳을 찾지 못했습니다.' });
+    const studyMission=store.room(p.roomCode).activeMission;
+    if(studyMission?.studyTargets?.some(t=>t.key==='discovery:'+item.id)){
+      try{return ack(beginPlaceStudy(p,'discovery:'+item.id,studyMission.id));}catch(error){return ack({ok:false,error:error.message});}
+    }
     const access = discoveryProximity(p, item);
     if (!access.canUse) return ack({ ok:false, error: item.reach === 'sea' ? '배를 타고 가야 살펴볼 수 있습니다.' : '뭍에 내려서 가야 살펴볼 수 있습니다.' });
     if (access.distance > DISCOVERY_RADIUS_TILES * TILE) return ack({ ok:false, error:`${item.name}에 더 가까이 가세요.` });
@@ -2126,7 +2228,7 @@ io.on('connection', (socket) => {
       setNotice(p, `발견! ${item.name}`);
       io.to(`teacher:${p.roomCode}`).emit('teacherEvent', { type:'discovery', name:p.name, discovery:item.name, at:Date.now() });
     }
-    ack({ ok:true, first, discovery:{ id:item.id, name:item.name, kind:item.kind, todayCountry:item.todayCountry, in1520:item.in1520, text:item.text, image:landmarkArtUrl(item.id), imageCredit:photoCreditFor(item.id) }, found:found.length, total:FOUND_TOTAL, self:publicPlayer(p) });
+    ack({ ok:true, first, discovery:{ id:item.id, name:item.name, kind:item.kind, todayCountry:item.todayCountry, in1520:item.in1520, text:item.text, image:landmarkArtUrl(item.id), imageCredit:photoCreditFor(item.id), imageSource:PHOTO_CREDITS[item.id]?.source, imageLicenseUrl:PHOTO_CREDITS[item.id]?.licenseUrl, imageChanges:PHOTO_CREDITS[item.id]?.changes }, found:found.length, total:FOUND_TOTAL, self:publicPlayer(p) });
   });
 
   socket.on('meetAnimal', (payload, ack = () => {}) => {
@@ -2155,6 +2257,7 @@ io.on('connection', (socket) => {
     if (!p) return ack({ ok:false, error:'접속 상태가 아닙니다.' });
     const item = LANDMARK_BY_ID.get(String(payload?.id || ''));
     if (!item) return ack({ ok:false, error:'그런 명소를 찾지 못했습니다.' });
+    if(store.room(p.roomCode).activeMission?.studyTargets?.some(t=>t.key==='landmark:'+item.id)){try{return ack(beginPlaceStudy(p,'landmark:'+item.id));}catch(error){return ack({ok:false,error:error.message});}}
     if (p.mode !== 'city' || p.currentCityId !== item.cityId) return ack({ ok:false, error:`${josaEun(item.name)} 그 도시 안에서만 볼 수 있습니다.` });
     const found = discoveryListFor(p.roomCode, p.name);
     const first = !found.includes(item.id);
@@ -2743,6 +2846,7 @@ function updateMissionProgress(roomCode, p) {
       p.mission = '교사 출발 신호 대기';
       return;
     }
+    if(activeMission.studyTargets){p.mission=activeMission.studyTargets.map(t=>(progress.placeStudy?.places[t.key]?.phase==='completed'?'✓ ':'')+t.name).join(' · ');return;}
     const target = activeMission.targetPlace;
     p.mission = `${target.name} 도착`;
     const resolvedTarget = RESOLVED_PLACES.get(target.id);

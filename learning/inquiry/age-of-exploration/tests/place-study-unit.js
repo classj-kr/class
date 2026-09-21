@@ -1,0 +1,21 @@
+'use strict';
+const assert=require('node:assert/strict'),fs=require('node:fs'),os=require('node:os'),path=require('node:path');
+const Study=require('../lib/place-study'),Catalog=require('../lib/mission-catalog'),Store=require('../lib/classroom-store');
+const stories=require('../data/catalog/city-stories.json');
+const pool=[...Catalog.DISCOVERIES,...Catalog.CITY_LANDMARKS,...Catalog.PLACES.filter(p=>p.isOriginalCity).map(p=>({...p,text:(stories.find(t=>t.cityId===p.id)?.sections||Catalog.ADDITIONAL_SETTLEMENTS.find(t=>t.id===p.id)?.story.sections||[]).map(t=>t.text).join(' ')}))];
+for(const p of pool){const qs=Study.createQuestions(p,pool);assert.equal(qs.length,2,p.name);assert.notEqual(qs[0].explanation,qs[1].explanation);for(const q of qs){assert.equal(q.choices.length,4);assert.equal(new Set(q.choices).size,4);assert.ok(q.choices.includes(q.answer));assert.ok(p.text.includes(q.explanation));}}
+const target={key:'discovery:test',name:'검증',questions:Study.createQuestions(pool[0],pool),reading:{text:pool[0].text}};
+const state={phase:'reading',streak:0};Study.issue(state);const publicQ=Study.publicSession(target,state).question;
+assert.equal(publicQ.answer,undefined);assert.equal(publicQ.answerIndex,undefined);
+const correct=()=>state.order.findIndex(i=>target.questions[state.streak].choices[i]===target.questions[state.streak].answer);
+const old=state.token;Study.answer(target,state,old,correct());assert.equal(state.streak,1);
+assert.throws(()=>Study.answer(target,state,old,0));
+Study.answer(target,state,state.token,(correct()+1)%4);assert.equal(state.streak,0);assert.equal(state.phase,'reading');
+Study.issue(state);Study.answer(target,state,state.token,correct());Study.answer(target,state,state.token,correct());assert.equal(state.phase,'completed');
+assert.throws(()=>Study.answer(target,state,state.token,0));
+const dataDir=fs.mkdtempSync(path.join(os.tmpdir(),'voyage-study-store-')),store=new Store({dataDir});
+store.room('1234').host={tokenHash:'test',createdAt:Date.now()};store.room('1234').activeMission={id:'study-test'};
+const p=store.studentProgress('1234','학생','study-test');p.placeStudy={places:{[target.key]:state}};
+fs.writeFileSync(store.filePath,JSON.stringify(store.state));
+const restored=new Store({dataDir}).studentProgress('1234','학생','study-test');assert.equal(restored.placeStudy.places[target.key].phase,'completed');
+console.log(JSON.stringify({ok:true,readings:pool.length,consecutiveAnswers:true,replayRejected:true,persistence:true}));
