@@ -115,8 +115,8 @@ async function run(browser, port, mode) {
 
     // 사진으로 확인하고 싶을 때만 찍는다.
     if (process.env.RECORD_SHOT && mode === 'new') {
-      const section = await page.evaluateHandle(() => document.getElementById('roster-list').closest('section'));
-      await section.asElement().screenshot({ path: process.env.RECORD_SHOT });
+      const main = await page.evaluateHandle(() => document.querySelector('main'));
+      await main.asElement().screenshot({ path: process.env.RECORD_SHOT });
     }
 
     // 2) 첫 화면이 과목별이고 학기·과목 칸이 열려 있는가
