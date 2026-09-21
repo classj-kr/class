@@ -71,6 +71,10 @@ function sharedSymbol(cardA, cardB) {
   return cardA.find(symbol => setB.has(symbol)) || null;
 }
 
+// 오답 페널티 길이. 그림 8개를 순서대로 눌러보는 것을 막을 만큼은 길고, 수업 흐름을
+// 끊지 않을 만큼은 짧게 잡았다.
+const WRONG_GUESS_PENALTY_MS = 3000;
+
 const MODES = Object.freeze(["tower", "catalog"]);
 const MODE_LABELS = Object.freeze({ tower: "타워", catalog: "카탈로그" });
 const DEFAULT_MODE = "tower";
@@ -82,8 +86,8 @@ function createPlayer(id, name) {
     stack: [], // (타워) 앞으로 뒤집을 카드들, [0]이 다음 카드
     finishedAt: null, // (타워) 자기 카드를 다 없앤 순서 (1등, 2등, ...)
     collected: [], // (카탈로그) 맞혀서 모은 카드들
-    lockedRound: -1 // 오답을 낸 시점의 actionNumber. 그 카드 조합이 바뀔 때까지(다음 정답이
-    // 나와 actionNumber가 올라갈 때까지) 이 사람은 같은 판에서 다시 찍을 수 없다.
+    lockedRound: -1, // 오답을 낸 시점의 actionNumber. 그 카드 조합에서만 페널티가 유효하다.
+    lockedUntil: 0 // 그 오답 페널티가 풀리는 시각(ms).
   };
 }
 
@@ -137,7 +141,7 @@ function canStart(game) {
 // 타워: 카드 57장 중 1장을 중앙에 놓고, 나머지를 인원수만큼 최대한 고르게 나눈다.
 function startTower(game, deck, players) {
   const centerCard = deck.pop();
-  players.forEach(player => { player.stack = []; player.finishedAt = null; player.lockedRound = -1; });
+  players.forEach(player => { player.stack = []; player.finishedAt = null; player.lockedRound = -1; player.lockedUntil = 0; });
   deck.forEach((card, index) => players[index % players.length].stack.push(card));
   game.centerPile = [centerCard];
   game.drawPile = [];
@@ -147,7 +151,7 @@ function startTower(game, deck, players) {
 
 // 카탈로그: 카드 1장을 기준 카드로 놓고, 나머지는 모두가 함께 보는 더미로 쌓는다.
 function startCatalog(game, deck, players) {
-  players.forEach(player => { player.collected = []; player.lockedRound = -1; });
+  players.forEach(player => { player.collected = []; player.lockedRound = -1; player.lockedUntil = 0; });
   game.centerCard = deck.pop();
   game.drawPile = deck;
   game.centerPile = [];
@@ -231,20 +235,47 @@ function claimCatalog(game, player, safeSymbol) {
   return { ok: true };
 }
 
+// 남은 오답 페널티(ms). 카드 조합이 그대로이고(= actionNumber가 그대로) 페널티 시간도
+// 아직 안 지났을 때만 0보다 크다.
+function penaltyLeft(game, player, at) {
+  if (!player || player.lockedRound !== game.actionNumber) return 0;
+  return Math.max(0, player.lockedUntil - at);
+}
+
+// 아직 살아 있는 페널티 중 가장 먼저 끝나는 시각. 하나도 없으면 0. 서버가 그 순간에
+// 맞춰 상태를 다시 방송하는 데 쓴다.
+function nextPenaltyEndsAt(game, now = Date.now) {
+  const at = now();
+  let soonest = 0;
+  for (const player of game.players) {
+    if (penaltyLeft(game, player, at) <= 0) continue;
+    if (soonest === 0 || player.lockedUntil < soonest) soonest = player.lockedUntil;
+  }
+  return soonest;
+}
+
 // 플레이어가 "겹치는 그림"을 지목한다. 서버가 실제로 두 카드에 그 그림이 모두
-// 있는지 검증하므로 클라이언트를 신뢰하지 않는다. 오답을 내면 지금 나와 있는
-// 카드 조합에서는 더 이상 못 찍는다 — 8개를 순서대로 마구 눌러보는 것을 막는
-// 페널티라, 시간이 아니라 "다음 정답이 나올 때까지"로 건다.
-function claim(game, playerId, symbolKey) {
+// 있는지 검증하므로 클라이언트를 신뢰하지 않는다. 오답을 내면 같은 카드 조합에서
+// 잠깐 못 찍는다 — 그림 8개를 순서대로 마구 눌러보는 것을 막는 페널티다.
+// 페널티는 다음 정답이 나와 카드가 바뀌면 곧바로 풀리고, 카드가 그대로여도
+// WRONG_GUESS_PENALTY_MS가 지나면 풀린다. 시간 제한 없이 "다음 정답이 나올 때까지"로만
+// 걸면 남아 있는 사람이 모두 오답을 낸 순간 아무도 찍을 수 없어 게임이 그대로 멈춘다
+// (2명이면 둘 다 틀리는 즉시).
+function claim(game, playerId, symbolKey, now = Date.now) {
   if (game.phase !== "playing") return { ok: false, error: "진행 중인 게임이 없습니다." };
   const player = playerById(game, playerId);
   if (!player) return { ok: false, error: "참가자를 찾을 수 없습니다." };
-  if (player.lockedRound === game.actionNumber) {
-    return { ok: false, error: "오답으로 이번 카드에서는 제외되었습니다. 다음 카드를 기다리세요." };
+  const at = now();
+  const waiting = penaltyLeft(game, player, at);
+  if (waiting > 0) {
+    return { ok: false, error: `오답 페널티 중입니다. ${Math.ceil(waiting / 1000)}초 뒤에 다시 찍을 수 있습니다.` };
   }
   const safeSymbol = String(symbolKey || "");
   const result = game.mode === "catalog" ? claimCatalog(game, player, safeSymbol) : claimTower(game, player, safeSymbol);
-  if (result.wrongGuess) player.lockedRound = game.actionNumber;
+  if (result.wrongGuess) {
+    player.lockedRound = game.actionNumber;
+    player.lockedUntil = at + WRONG_GUESS_PENALTY_MS;
+  }
   return result;
 }
 
@@ -260,14 +291,15 @@ function resetToLobby(game, notice = "대기실로 돌아왔습니다.") {
   game.centerCard = null;
   game.lastMatch = null;
   game.winner = null;
-  game.players.forEach(player => { player.stack = []; player.finishedAt = null; player.collected = []; player.lockedRound = -1; });
+  game.players.forEach(player => { player.stack = []; player.finishedAt = null; player.collected = []; player.lockedRound = -1; player.lockedUntil = 0; });
   game.log = notice;
   game.actionNumber += 1;
 }
 
-function stateFor(game, viewerId) {
+function stateFor(game, viewerId, now = Date.now) {
   const viewer = playerById(game, String(viewerId));
   const isCatalog = game.mode === "catalog";
+  const penaltyMs = penaltyLeft(game, viewer, now());
   return {
     phase: game.phase,
     mode: game.mode,
@@ -281,7 +313,8 @@ function stateFor(game, viewerId) {
     myCard: !isCatalog && viewer && viewer.stack.length > 0 ? viewer.stack[0] : null,
     myCardsLeft: viewer ? viewer.stack.length : 0,
     myFinishedAt: viewer ? viewer.finishedAt : null,
-    myLocked: Boolean(viewer && viewer.lockedRound === game.actionNumber),
+    myLocked: penaltyMs > 0,
+    myLockedMs: penaltyMs,
     centerCard: isCatalog ? game.centerCard : (game.centerPile.length > 0 ? game.centerPile[game.centerPile.length - 1] : null),
     challengerCard: isCatalog && game.drawPile.length > 0 ? game.drawPile[game.drawPile.length - 1] : null,
     drawPileCount: game.drawPile.length,
@@ -295,6 +328,7 @@ function stateFor(game, viewerId) {
 module.exports = {
   MIN_PLAYERS,
   MAX_PLAYERS,
+  WRONG_GUESS_PENALTY_MS,
   SYMBOLS_PER_CARD,
   TOTAL_CARDS,
   MODES,
@@ -307,6 +341,7 @@ module.exports = {
   setMode,
   startGame,
   claim,
+  nextPenaltyEndsAt,
   newGame,
   resetToLobby,
   stateFor,

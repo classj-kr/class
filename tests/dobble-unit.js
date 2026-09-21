@@ -51,7 +51,7 @@ assert.equal(badResult.wrongGuess, true, "오답에는 wrongGuess 플래그가 �
 assert.equal(claimGame.centerPile.length, 1, "오답이면 중앙 카드가 바뀌지 않아야 합니다.");
 assert.equal(Dobble.stateFor(claimGame, player.id).myLocked, true, "오답을 내면 이번 카드에서 잠겨야 합니다.");
 
-// 같은 카드 조합에서는 정답을 알아도 다시 찍을 수 없다 — 시간이 아니라 "이번 판" 단위 페널티.
+// 오답을 낸 직후에는 같은 카드 조합에서 정답을 알아도 다시 찍을 수 없다.
 const tooSoonResult = Dobble.claim(claimGame, player.id, realMatch);
 assert.equal(tooSoonResult.ok, false, "오답을 낸 카드에서는 정답이라도 거부되어야 합니다.");
 assert.equal(claimGame.centerPile.length, 1, "잠긴 상태의 시도는 카드에 영향을 주면 안 됩니다.");
@@ -141,5 +141,89 @@ while (catalogWinGame.drawPile.length > 0) {
 assert.equal(catalogWinGame.phase, "gameEnd", "더미가 소진되면 게임이 끝나야 합니다.");
 assert.equal(catalogWinGame.winner, catalogWinner.id, "가장 많이 모은 사람이 승리해야 합니다.");
 assert.equal(catalogWinner.collected.length, Dobble.TOTAL_CARDS - 1, "혼자 다 맞혔다면 기준 카드를 제외한 전부를 모아야 합니다.");
+
+// 오답 페널티는 시간이 지나면 반드시 풀린다. 카드가 바뀔 때까지로만 묶어 두면, 남아 있는
+// 사람이 모두 오답을 낸 순간 아무도 찍을 수 없어 게임이 그대로 멈춰 버린다(2명이면 둘 다 틀리는 즉시).
+const stuckGame = gameWithTwoPlayers();
+Dobble.startGame(stuckGame, () => 0);
+const [first, second] = stuckGame.players;
+const stuckCenter = stuckGame.centerPile[0];
+const wrongOf = target => target.stack[0].find(symbol => symbol !== Dobble.sharedSymbol(target.stack[0], stuckCenter));
+let clock = 10000;
+const stuckNow = () => clock;
+
+assert.equal(Dobble.claim(stuckGame, first.id, wrongOf(first), stuckNow).wrongGuess, true);
+assert.equal(Dobble.claim(stuckGame, second.id, wrongOf(second), stuckNow).wrongGuess, true);
+assert.equal(Dobble.stateFor(stuckGame, first.id, stuckNow).myLocked, true, "둘 다 오답을 내면 둘 다 잠겨야 합니다.");
+assert.equal(Dobble.stateFor(stuckGame, second.id, stuckNow).myLocked, true, "둘 다 오답을 내면 둘 다 잠겨야 합니다.");
+assert.equal(
+  Dobble.stateFor(stuckGame, first.id, stuckNow).myLockedMs,
+  Dobble.WRONG_GUESS_PENALTY_MS,
+  "남은 페널티 시간이 상태에 실려야 클라이언트가 카운트다운을 보여줄 수 있습니다."
+);
+
+// 페널티가 끝나기 직전까지는 정답이라도 막힌다 — 마구 눌러보는 것을 막는 원래 목적은 그대로다.
+clock += Dobble.WRONG_GUESS_PENALTY_MS - 1;
+assert.equal(
+  Dobble.claim(stuckGame, first.id, Dobble.sharedSymbol(first.stack[0], stuckCenter), stuckNow).ok,
+  false,
+  "페널티가 남아 있으면 정답이라도 거부되어야 합니다."
+);
+
+// 페널티가 끝나면 카드가 그대로여도 다시 찍을 수 있다. 여기서 풀리지 않으면 게임이 영영 멈춘다.
+clock += 1;
+assert.equal(Dobble.stateFor(stuckGame, first.id, stuckNow).myLocked, false, "페널티 시간이 지나면 잠금이 풀려야 합니다.");
+assert.equal(Dobble.stateFor(stuckGame, first.id, stuckNow).myLockedMs, 0);
+const stuckCardsBefore = first.stack.length;
+const recovered = Dobble.claim(stuckGame, first.id, Dobble.sharedSymbol(first.stack[0], stuckCenter), stuckNow);
+assert.equal(recovered.ok, true, "모두 오답을 낸 뒤에도 페널티가 끝나면 게임이 이어져야 합니다.");
+assert.equal(first.stack.length, stuckCardsBefore - 1);
+assert.equal(stuckGame.phase, "playing");
+
+// 카탈로그 규칙에서도 마찬가지다.
+const stuckCatalog = gameWithTwoPlayers();
+Dobble.setMode(stuckCatalog, "catalog");
+Dobble.startGame(stuckCatalog, () => 0);
+let catalogClock = 500;
+const catalogNow = () => catalogClock;
+const stuckChallenger = stuckCatalog.drawPile[stuckCatalog.drawPile.length - 1];
+const stuckCatalogMatch = Dobble.sharedSymbol(stuckCatalog.centerCard, stuckChallenger);
+const stuckCatalogWrong = stuckCatalog.centerCard.find(symbol => symbol !== stuckCatalogMatch);
+stuckCatalog.players.forEach(player => {
+  assert.equal(Dobble.claim(stuckCatalog, player.id, stuckCatalogWrong, catalogNow).wrongGuess, true);
+});
+catalogClock += Dobble.WRONG_GUESS_PENALTY_MS;
+assert.equal(
+  Dobble.claim(stuckCatalog, stuckCatalog.players[0].id, stuckCatalogMatch, catalogNow).ok,
+  true,
+  "카탈로그에서도 모두 오답을 낸 뒤 페널티가 끝나면 게임이 이어져야 합니다."
+);
+
+// 서버가 페널티가 풀리는 순간에 맞춰 상태를 다시 방송할 수 있도록, 가장 이른 만료 시각을 알려준다.
+const timerGame = gameWithTwoPlayers();
+Dobble.startGame(timerGame, () => 0);
+let timerClock = 1000;
+const timerNow = () => timerClock;
+assert.equal(Dobble.nextPenaltyEndsAt(timerGame, timerNow), 0, "페널티가 없으면 0이어야 합니다.");
+
+const timerCenter = timerGame.centerPile[0];
+const [early, late] = timerGame.players;
+const timerWrongOf = target => target.stack[0].find(symbol => symbol !== Dobble.sharedSymbol(target.stack[0], timerCenter));
+Dobble.claim(timerGame, early.id, timerWrongOf(early), timerNow);
+timerClock += 500;
+Dobble.claim(timerGame, late.id, timerWrongOf(late), timerNow);
+assert.equal(
+  Dobble.nextPenaltyEndsAt(timerGame, timerNow),
+  1000 + Dobble.WRONG_GUESS_PENALTY_MS,
+  "먼저 오답을 낸 사람의 페널티가 먼저 끝나야 합니다."
+);
+timerClock = 1000 + Dobble.WRONG_GUESS_PENALTY_MS;
+assert.equal(
+  Dobble.nextPenaltyEndsAt(timerGame, timerNow),
+  1500 + Dobble.WRONG_GUESS_PENALTY_MS,
+  "이미 끝난 페널티는 빼고 다음 만료 시각을 알려줘야 합니다."
+);
+timerClock = 1500 + Dobble.WRONG_GUESS_PENALTY_MS;
+assert.equal(Dobble.nextPenaltyEndsAt(timerGame, timerNow), 0, "페널티가 모두 끝나면 다시 0이어야 합니다.");
 
 console.log("dobble-unit.js: all assertions passed");
