@@ -6,8 +6,9 @@ const puppeteer = require('puppeteer-core');
 const app = path.resolve(__dirname, '../learning/inquiry/korea-map');
 const output = path.resolve(__dirname, '../outputs/korea-map-history');
 const ctx = {window:{}};
-for (const file of ['history-data.js','history-territories.js','history-war.js']) vm.runInNewContext(fs.readFileSync(path.join(app,'data',file),'utf8'),ctx);
-const scenes = ctx.window.KOREA_HISTORY.scenes;
+for (const file of ['history-data.js','history-bronze.js','history-territories.js','history-war.js']) vm.runInNewContext(fs.readFileSync(path.join(app,'data',file),'utf8'),ctx);
+// Distribution symbols are not territorial fills; covered by the bronze test.
+const scenes = ctx.window.KOREA_HISTORY.scenes.filter(scene=>!scene.distribution);
 const territories = ctx.window.KOREA_HISTORY_TERRITORIES.scenes;
 assert.equal(Object.keys(territories).length,scenes.length);
 for (const scene of scenes) for (const state of territories[scene.id]) {

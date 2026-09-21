@@ -78,14 +78,16 @@ const place = payload => new Promise((resolve, reject) => {
     const oldToken=r.study.question.token;
     r=await step('answerStudyQuestion',batur,{token:oldToken,choice:choice(r)});assert.equal(r.study.streak,1);
     assert.equal((await step('answerStudyQuestion',batur,{token:oldToken,choice:0})).ok,false,'duplicate answer rejected');
+    r=await step('answerStudyQuestion',batur,{token:r.study.question.token,choice:choice(r)});assert.equal(r.study.streak,2);assert.equal(r.study.phase,'quiz');
     r=await step('answerStudyQuestion',batur,{token:r.study.question.token,choice:(choice(r)+1)%4});assert.equal(r.study.streak,0);assert.equal(r.study.phase,'reading');
     r=await step('startStudyQuiz',batur);r=await step('answerStudyQuestion',batur,{token:r.study.question.token,choice:choice(r)});assert.equal(r.study.streak,1);
+    r=await step('answerStudyQuestion',batur,{token:r.study.question.token,choice:choice(r)});assert.equal(r.study.streak,2);assert.equal(r.study.phase,'quiz');
     const continuing=r;
     await place({lat:0,lon:0,mode:'sea'});
     assert.equal((await step('answerStudyQuestion',batur,{token:r.study.question.token,choice:choice(r)})).ok,false,'must still be at target');
     await place({lat:-8.24,lon:115.38});
     socket.disconnect();await delay(120);const recon=once('connect');socket.connect();await recon;
-    const resumed=await ack('resumeVoyager',{resumeToken:joined.resumeToken});assert.equal(resumed.ok,true);assert.equal(resumed.progress.studyPlaces.find(p=>p.key===batur).streak,1);
+    const resumed=await ack('resumeVoyager',{resumeToken:joined.resumeToken});assert.equal(resumed.ok,true);assert.equal(resumed.progress.studyPlaces.find(p=>p.key===batur).streak,2);
     r=await step('readStudyPlace',batur);assert.equal(r.study.question.token,continuing.study.question.token);
     await teach('teacherSetPaused',{paused:true});
     assert.equal((await step('answerStudyQuestion',batur,{token:r.study.question.token,choice:choice(r)})).ok,false);
@@ -100,7 +102,7 @@ const place = payload => new Promise((resolve, reject) => {
       await place(position);
       if(position.city){assert.equal((await step('readStudyPlace',key)).ok,false);const entered=await ack('enterCity',{placeId:'lisbon'});assert.equal(entered.ok,true,entered.error);}
       r=await step('readStudyPlace',key);assert.equal(r.ok,true,r.error);r=await step('startStudyQuiz',key);
-      for(let i=0;i<2;i++)r=await step('answerStudyQuestion',key,{token:r.study.question.token,choice:choice(r)});
+      for(let i=0;i<3;i++){r=await step('answerStudyQuestion',key,{token:r.study.question.token,choice:choice(r)});assert.equal(r.study.phase,i===2?'completed':'quiz');}
       assert.equal(r.study.phase,'completed');
     }
     assert.equal(r.progress.status,'completed');assert.equal(r.progress.finishRank,1);

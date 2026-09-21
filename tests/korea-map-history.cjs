@@ -8,6 +8,7 @@ const root = path.resolve(__dirname, '..');
 const app = path.join(root, 'learning/inquiry/korea-map');
 const context = { window: {} };
 vm.runInNewContext(fs.readFileSync(path.join(app, 'data/history-data.js'), 'utf8'), context);
+vm.runInNewContext(fs.readFileSync(path.join(app, 'data/history-bronze.js'), 'utf8'), context);
 const scenes = context.window.KOREA_HISTORY.scenes;
 const boundaryData = JSON.parse(fs.readFileSync(path.join(app,'history/boundaries.json'),'utf8'));
 for (const scene of scenes.filter(s => s.overlay)) {

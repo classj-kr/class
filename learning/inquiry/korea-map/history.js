@@ -1,4 +1,4 @@
-// 역사 탭: 시작 연대순 주제 선택 → 지도 읽기 → 객관식 판별 단서.
+// 역사 탭: 시작 연대순 주제 선택 → 지도와 설명 읽기.
 (function () {
   "use strict";
   const data = window.KOREA_HISTORY;
@@ -141,10 +141,9 @@
       row.append(el("dt", "", heading), el("dd", "", text));
       cues.append(row);
     });
-    const trap = el("p", "history-trap");
-    trap.append(el("strong", "", "선지 구별"), document.createTextNode(scene.trap));
-    const places = el("details", "history-places");
-    places.append(el("summary", "", `지도의 지점 · ${scene.marks.length}곳`));
+    const trap = el("p", "history-trap", scene.trap);
+    const places = el("section", "history-places");
+    places.setAttribute("aria-label", "지도 지점");
     const list = el("ol");
     scene.marks.forEach((mark, index) => {
       const li = el("li");
@@ -156,21 +155,40 @@
       list.append(li);
     });
     places.append(list, button("지도 전체 보기", null, () => fit(panelApi)));
-    const note = el("p", "history-note", scene.note);
-    const sources = el("details", "history-sources");
-    sources.append(el("summary", "", "출처 · 지도 안내"));
-    sources.append(sourceLink("역사 내용 근거 ↗", scene.source));
+    // Keep provenance available without placing editorial notes in the lesson.
+    const resourceDialog = el("dialog", "history-resource-dialog");
+    resourceDialog.setAttribute("aria-labelledby", "historyResourceTitle");
+    const resourceHeading = el("header", "history-resource-heading");
+    const resourceTitle = el("h3", "", "자료 정보");
+    resourceTitle.id = "historyResourceTitle";
+    const closeResource = button("닫기", "자료 정보 닫기", () => resourceDialog.close());
+    resourceHeading.append(resourceTitle, closeResource);
+    const sources = el("div", "history-sources");
+    sources.append(sourceLink("역사 자료 ↗", scene.source));
     if (scene.mapSource) sources.append(sourceLink(`영역선 원본 · ${scene.mapSource[0]} ↗`, scene.mapSource[1]));
     (state.sources || []).forEach(([label, url]) => {
       if (url !== scene.source && url !== scene.mapSource?.[1]) sources.append(sourceLink(`${label} ↗`, url));
     });
-    if (state.note) sources.append(el("p", "", state.note));
     if (scene.exam) sources.append(sourceLink(`관련 기출 · ${scene.exam[0]} ↗`, scene.exam[1]));
-    sources.append(el("p", "", data.scope), el("p", "", data.chronology), el("p", "", "현대 지형 바탕 위에 역사 위치를 표시한 학습용 개략도입니다. 당시 해안선의 정밀 복원도가 아닙니다. 점선 원은 대표 권역, 화살표는 이동·진출 방향입니다."));
+    const notes = [...new Set([scene.note, state.note].filter(Boolean))];
+    if (notes.length) {
+      sources.append(el("h4", "", "지도 참고"));
+      notes.forEach(note => sources.append(el("p", "", note)));
+    }
+    resourceDialog.append(resourceHeading, sources);
+    const resourceButton = button("자료 정보", null, () => {
+      resourceDialog.showModal();
+      closeResource.focus();
+    });
+    resourceButton.classList.add("history-resource-trigger");
+    resourceButton.setAttribute("aria-haspopup", "dialog");
+    resourceDialog.addEventListener("close", () => resourceButton.focus({ preventScroll: true }));
     const quiz = scene.id === "korean-war" && window.KoreaHistoryOrder
       ? button("지도 순서 문제", null, () => window.KoreaHistoryOrder.open()) : null;
     if (quiz) quiz.classList.add("history-order-launch");
-    content.replaceChildren(title, territoryNav, ...(quiz ? [quiz] : []), el("h4", "history-subtitle", "객관식 판별 단서"), cues, trap, places, note, sources);
+    const study = scene.distribution && window.KoreaHistoryBronze
+      ? [window.KoreaHistoryBronze.panel()] : [cues, trap];
+    content.replaceChildren(title, territoryNav, ...(quiz ? [quiz] : []), ...study, places, resourceButton, resourceDialog);
   }
 
   function draw(map, group) {
@@ -192,6 +210,7 @@
       row.append(swatch, document.createTextNode(item.label));
       return row;
     }));
+    if (scene.distribution && window.KoreaHistoryBronze) window.KoreaHistoryBronze.draw(map, group);
     if (state.overlay) L.imageOverlay(state.overlay, bounds({bounds:state.overlayBounds || scene.bounds}), { pane: "themeZones", opacity: 0.9, interactive: false, alt: `${scene.title} · ${state.date || scene.period} 영역` }).addTo(group);
     (state.lines || []).slice().sort((a,b) => Number(b.kind === "division") - Number(a.kind === "division")).forEach(line => {
       const color = line.color || "#9e3b36";

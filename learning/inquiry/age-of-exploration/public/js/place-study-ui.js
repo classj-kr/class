@@ -18,8 +18,9 @@ window.VoyageStudyUI = (() => {
   });
   function draw(message=''){
     const s=session;if(!s)return;
+    const total=s.questionCount||3;
     $('placeStudyTitle').textContent=s.name+(s.phase==='completed'?' · 발견 성공':'');
-    $('placeStudyStatus').textContent=message || (s.phase==='completed'?'두 문제 연속 정답 · 완료':s.phase==='reading'?'설명을 읽고 문제를 시작하세요.':'연속 정답 '+s.streak+'/2');
+    $('placeStudyStatus').textContent=message || (s.phase==='completed'?total+'문제 연속 정답 · 완료':s.phase==='reading'?'설명을 읽고 문제를 시작하세요.':'연속 정답 '+s.streak+'/'+total);
     const reading=$('placeStudyReading');reading.replaceChildren();
     const body=document.createElement(s.phase==='quiz'?'details':'div');
     if(s.phase==='quiz'){const summary=document.createElement('summary');summary.textContent='설명 다시 읽기';body.append(summary);}
@@ -49,7 +50,8 @@ window.VoyageStudyUI = (() => {
     missionId=result.mission.id;session=result.study;
     applyMissionState(result.mission,result.progress,false);
     overlay.hidden=false;clearKeys();
-    draw(result.correct===false?'오답입니다. 연속 정답은 0/2로 초기화됐어요. 설명을 다시 읽어 보세요.':result.correct===true&&session.phase!=='completed'?'정답! 한 문제 더 맞히면 발견 성공입니다.':'');
+    const total=session.questionCount||3;
+    draw(result.correct===false?'오답입니다. 연속 정답은 0/'+total+'로 초기화됐어요. 설명을 다시 읽어 보세요.':result.correct===true&&session.phase!=='completed'?'정답! '+(total-session.streak)+'문제 더 맞히면 발견 성공입니다.':'');
     $('placeStudyClose').focus();
   }
   async function call(event,payload){

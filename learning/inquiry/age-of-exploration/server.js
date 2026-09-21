@@ -1258,9 +1258,15 @@ function studyTarget(key) {
   if(!reading.text)throw Error(item.name+'의 설명이 준비되지 않았습니다.');
   return {key,type,id,name:item.name,point:type==='city'?item.cityPoint:type==='landmark'?RESOLVED_PLACES.get(item.cityId)?.cityPoint:{x:item.x,y:item.y},reading,text:type==='city'?(CITY_STORIES.get(item.id)?.sections||[]).map(s=>s.text).join('\n'):reading.text};
 }
+function studyQuestionPool() {
+  return [...MissionCatalog.PLACES.filter(p=>p.isOriginalCity).map(p=>({id:p.id,name:p.name,text:(CITY_STORIES.get(p.id)?.sections||[]).map(s=>s.text).join(' ')})),...MissionCatalog.DISCOVERIES];
+}
+for(const room of Object.values(store.state?.rooms||{})){
+  if(room.activeMission?.studyTargets && PlaceStudy.upgradeMission(room.activeMission,studyQuestionPool()))store.scheduleSave();
+}
 function buildStudyTargets(keys) {
   if(!Array.isArray(keys)||keys.length<1||keys.length>5||new Set(keys).size!==keys.length)throw Error('도시·발견물을 중복 없이 1~5곳 선택하세요.');
-  const pool=[...MissionCatalog.PLACES.filter(p=>p.isOriginalCity).map(p=>({id:p.id,text:(CITY_STORIES.get(p.id)?.sections||[]).map(s=>s.text).join(' ')})),...MissionCatalog.DISCOVERIES];
+  const pool=studyQuestionPool();
   return keys.map(key=>{const t=studyTarget(key);return {...t,questions:PlaceStudy.createQuestions(t,pool)};});
 }
 function atStudyTarget(p,target) {
@@ -1327,7 +1333,7 @@ function buildArrivalRace(payload, roomCode) {
     mode: 'any',
     title,
     studyTargets,
-    instructions: studyTargets ? '지정된 장소를 원하는 순서로 방문하세요. 각 장소의 설명을 읽고 두 문제를 연속으로 맞히면 발견 성공입니다. 모든 장소를 완료하면 완주합니다.' : huntAnimal
+    instructions: studyTargets ? PlaceStudy.INSTRUCTIONS : huntAnimal
       ? `${target.name}에서 ${josaEul(huntAnimal.animal)} 찾아 만난 뒤 최종 문제 3개를 모두 제출하면 완주합니다. 출발 도시 네 곳 중 하나를 선택하세요.`
       : `${target.name}에 도착한 뒤 최종 문제 3개를 모두 제출하면 완주합니다. 출발 도시 네 곳 중 하나를 선택하세요.`,
     atlasInstruction: '',
