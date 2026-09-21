@@ -243,6 +243,7 @@
     dialog.addEventListener("close", () => { routeRequest += 1; });
   });
 
+  window.KoreaTravel = {open(id,map,api) { const place=places.find(item=>item.id===id); if(place)openPlace(place,map,api); }};
   dataset.themes.travel = {
     label: "체험·관광",
     points: [],

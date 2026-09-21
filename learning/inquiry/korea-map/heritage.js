@@ -520,6 +520,7 @@
     return sentences.length ? sentences : [text];
   }
 
+  window.KoreaHeritage = {open(id) { const relic=window.KOREA_HERITAGE.find(item=>item.id===id); if(relic)openRelic(relic); }};
   dataset.themes.heritage = {
     label: "유물·유적",
     points: [],

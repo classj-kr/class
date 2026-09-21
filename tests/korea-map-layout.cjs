@@ -56,7 +56,8 @@ const server = http.createServer((req, res) => {
           const select = document.querySelector('#lessonSelect');
           select.value = lesson.id; select.dispatchEvent(new Event('change', { bubbles: true }));
         }, lesson);
-        const overflow = await page.$$eval('#lessonDiagram svg text', nodes => nodes.filter(node => { const box = node.getBBox(); return box.x < -1 || box.x + box.width > 521 || box.y < -1 || box.y + box.height > 251; }).map(node => node.textContent));
+        if(lesson.id==='foehn')await page.waitForFunction(()=>document.querySelector('#lessonDiagram').dataset.status==='ready');
+        const overflow = await page.$$eval('#lessonDiagram svg text', nodes => nodes.filter(node => { const box = node.getBBox(),view=node.ownerSVGElement.viewBox.baseVal; return box.x < view.x-1 || box.x + box.width > view.x+view.width+1 || box.y < view.y-1 || box.y + box.height > view.y+view.height+1; }).map(node => node.textContent));
         assert.deepEqual(overflow, [], lesson.id + ' / ' + width);
       }
       await page.evaluate(() => {
@@ -91,4 +92,3 @@ const server = http.createServer((req, res) => {
     await new Promise(resolve => server.close(resolve));
   }
 })().catch(error => { console.error(error); process.exitCode = 1; });
-
