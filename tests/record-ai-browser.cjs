@@ -43,7 +43,7 @@ const json = (body, status) => ({
 const SENTENCES = '1. 첫째 문장임.\n2. 둘째 문장임.\n3. 셋째 문장임.';
 
 async function run(browser, port, mode) {
-  const state = { calls: 0, keySeen: [], consoleErrors: [], pageErrors: [] };
+  const state = { calls: 0, wrongFallback: false, badBody: null, keySeen: [], consoleErrors: [], pageErrors: [] };
   // 판마다 새 방을 쓴다. 한 방을 같이 쓰면 앞 판이 브라우저에 남긴 키와
   // 수행평가가 뒤 판에 그대로 딸려 와 엉뚱한 수를 센다.
   const context = browser.createBrowserContext
@@ -82,14 +82,18 @@ async function run(browser, port, mode) {
         if (mode === 'legacy') {
           return request.respond(json({ error: { message: '흉내: 이 주소는 없습니다.' } }, 404));
         }
+        // 구글은 temperature 를 바깥에 두면 Unknown parameter 라며 400 을 낸다.
+        const sent = JSON.parse(request.postData() || '{}');
+        if ('temperature' in sent || 'max_output_tokens' in sent) {
+          state.badBody = Object.keys(sent).join(', ');
+          return request.respond(json({ error: { message: "흉내: Unknown parameter 'temperature'." } }, 400));
+        }
         state.calls += 1;
         // 새 주소는 steps 안에 글을 담아 보낸다. 훑어서 찾아내야 한다.
         return request.respond(json({ steps: [{ content: [{ text: SENTENCES }] }] }));
       }
       if (url.includes(':generateContent')) {
-        if (mode !== 'legacy') {
-          throw new Error('새 주소가 되는데도 옛 주소를 불렀다');
-        }
+        if (mode !== 'legacy') state.wrongFallback = true;
         state.calls += 1;
         return request.respond(json({ candidates: [{ content: { parts: [{ text: SENTENCES }] } }] }));
       }
@@ -143,6 +147,9 @@ async function run(browser, port, mode) {
     const status = await page.$eval('#gen-status', el => el.textContent);
     assert.ok(!status.includes('오류'), '오류가 났음: ' + status);
     assert.ok(status.includes('3명분'), '결과 안내가 이상함: ' + status);
+    assert.equal(state.badBody, null,
+      'temperature·max_output_tokens 는 generation_config 안에 넣어야 한다. 보낸 바깥 칸: ' + state.badBody);
+    assert.ok(!state.wrongFallback, '새 주소가 되는데도 옛 주소로 넘어갔음');
     assert.equal(state.calls, 2, '수행평가 두 줄이면 두 번 불러야 함. 실제: ' + state.calls);
 
     // 키는 주소가 아니라 머리말로 가야 한다
