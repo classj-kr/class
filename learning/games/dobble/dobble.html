@@ -67,10 +67,12 @@ h1,h2,h3,p{margin-top:0}
 .symbol img{width:100%;height:100%;object-fit:contain;display:block;transform:rotate(var(--rotate,0deg));animation:dobbleUpright var(--spin,56s) linear infinite}
 .spinLayer.ccw .symbol img{animation-direction:reverse}
 @keyframes dobbleUpright{from{transform:rotate(var(--rotate,0deg))}to{transform:rotate(calc(var(--rotate,0deg) - 360deg))}}
+.rock{width:100%;height:100%;animation:dobbleRock var(--rockTime,3.4s) ease-in-out infinite alternate}
+@keyframes dobbleRock{from{transform:rotate(calc(var(--rock,22deg) * -1))}to{transform:rotate(var(--rock,22deg))}}
 .symbol.clickable{cursor:pointer}
 .symbol.clickable:hover{transform:translate(-50%,-50%) scale(1.15);z-index:2;filter:drop-shadow(0 0 9px var(--accent)) drop-shadow(0 2px 3px #00000080)}
 .symbol.clickable:active{transform:translate(-50%,-50%) scale(0.98)}
-@media(prefers-reduced-motion:reduce){.spinLayer,.symbol img{animation:none}}
+@media(prefers-reduced-motion:reduce){.spinLayer,.symbol img,.rock{animation:none}}
 
 #playArea .standings{padding:14px;border:1px solid var(--panel-edge);border-radius:12px;background:#1b1729}
 #playArea .standings h3{margin:0 0 8px;font-size:13px;letter-spacing:.05em;color:#c9bfe0}
@@ -345,9 +347,15 @@ function renderCard(container, symbols, clickable, spin) {
       const scale = 0.72 + seededUnit(seed + ":scale") * 0.2; // 0.72~0.92, 슬롯끼리 겹치지 않는 안전 범위 안에서 최대한 크게
       const rotate = -35 + seededUnit(seed + ":rotate") * 70; // -35~35도
       const size = 29 * scale;
+      // 가운데는 도는 축 위라 판이 돌아도 자리가 그대로다. 저 혼자 멈춰 있는 것처럼
+      // 보이지 않게, 그 하나만 좌우로 기울며 왔다 갔다 하게 한다.
+      const middle = slot.top === "50%" && slot.left === "50%";
+      const rock = 18 + seededUnit(seed + ":rock") * 14;          // 18~32도까지만
+      const rockTime = 2.8 + seededUnit(seed + ":rocktime") * 1.6; // 2.8~4.4초에 한 번 왕복
+      const img = `<img src="${avatarUrl(symbol)}" alt="">`;
       return `<div class="symbol" data-symbol="${esc(symbol)}"
         style="top:${slot.top};left:${slot.left};width:${size}%;--rotate:${rotate}deg">
-        <img src="${avatarUrl(symbol)}" alt=""></div>`;
+        ${middle ? `<div class="rock" style="--rock:${rock}deg;--rockTime:${rockTime}s">${img}</div>` : img}</div>`;
     }).join("");
     container.innerHTML = spin
       ? `<div class="spinLayer${spin.ccw ? " ccw" : ""}" style="--spin:${spin.seconds}s">${inner}</div>`

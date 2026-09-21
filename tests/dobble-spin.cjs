@@ -117,6 +117,30 @@ const ANGLE_OF = `(el) => {
 
     console.log('도블 판 돌리기: 통과');
     console.log('  한 바퀴 ' + quarter + '초, 1/4 지점에서 그림이 ' + Math.round(moved) + 'px 옮겨 감');
+    // 가운데 그림은 도는 축 위라 자리가 안 바뀐다. 대신 좌우로 기울며 왔다 갔다 해야 한다.
+    const rock = await page.evaluate((angleOf) => {
+      const at = eval(angleOf);
+      const el = document.querySelector('#centerCard .rock');
+      if (!el) return null;
+      const anim = el.getAnimations()[0];
+      if (!anim) return { missing: 'animation' };
+      const duration = anim.effect.getTiming().duration;
+      anim.currentTime = 0;
+      const from = at(el);
+      anim.currentTime = duration;
+      const to = at(el);
+      anim.currentTime = 0;
+      return { from, to, seconds: duration / 1000 };
+    }, ANGLE_OF);
+
+    assert.ok(rock && !rock.missing, '가운데 그림이 기울며 움직이지 않음: ' + JSON.stringify(rock));
+    assert.ok(Math.abs(rock.to - rock.from) >= 30,
+      '기우는 폭이 너무 좁음: ' + rock.from + '도 ~ ' + rock.to + '도');
+    assert.ok(Math.abs(rock.from) <= 35 && Math.abs(rock.to) <= 35,
+      '다른 그림이 기운 만큼(35도)을 넘어섬: ' + rock.from + '도 ~ ' + rock.to + '도');
+    assert.ok(rock.seconds >= 2.8 && rock.seconds <= 4.4,
+      '왔다 갔다 하는 시간이 2.8~4.4초 밖임: ' + rock.seconds);
+
     if (process.env.SPIN_SHOT) {
       const shot = async (name) => {
         const boards = await page.$('.boards');
@@ -129,7 +153,18 @@ const ANGLE_OF = `(el) => {
         document.getAnimations().forEach(a => { a.currentTime = seconds * 1000 / 4; });
       });
       await shot('quarter');
+      // 가운데 그림이 가장 왼쪽으로, 가장 오른쪽으로 기운 순간
+      for (const [name, at] of [['rock-left', 0], ['rock-right', 1]]) {
+        await page.evaluate((ratio) => {
+          document.querySelectorAll('.rock').forEach(el => {
+            const anim = el.getAnimations()[0];
+            if (anim) anim.currentTime = anim.effect.getTiming().duration * ratio;
+          });
+        }, at);
+        await shot(name);
+      }
     }
+    console.log('  가운데 그림은 ' + rock.from + '도 ~ ' + rock.to + '도로 ' + rock.seconds.toFixed(1) + '초에 한 번 왕복');
     console.log('  그림이 선 각도 ' + uprightFirst + '도 → ' + uprightLater + '도 (차이 ' + drift.toFixed(2) + '도)');
   } finally {
     if (browser) await browser.close();
