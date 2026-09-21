@@ -46,6 +46,8 @@ const server = http.createServer((req, res) => {
               accordions:content.querySelectorAll('details, summary').length,
               places:[...content.querySelectorAll('.history-places li button')].map(b=>b.getBoundingClientRect().height>0),
               mapPoints:document.querySelectorAll('.history-point').length,
+              titleSize:getComputedStyle(content.querySelector('.history-scene-heading h3')).fontSize,
+              reading:[...content.querySelectorAll('.history-cues dt,.history-cues dd,.history-trap,.bronze-prompt,.bronze-artifacts p,.bronze-choice')].map(n=>{const s=getComputedStyle(n);return {size:s.fontSize,weight:s.fontWeight};}),
               obsolete:content.textContent.includes(KOREA_HISTORY.scope) || content.textContent.includes(KOREA_HISTORY.chronology),
               overflow:document.documentElement.scrollWidth-innerWidth
             };
@@ -53,6 +55,8 @@ const server = http.createServer((req, res) => {
           assert.equal(result.dialogOpen,false,id);
           assert.equal(result.obsolete,false,id);
           assert.equal(result.accordions,0,id);
+          assert.equal(result.titleSize,'16px',id);
+          assert.ok(result.reading.length>0&&result.reading.every(s=>s.size==='15px'&&s.weight==='400'),id+': consistent reading typography');
           assert.equal(result.places.length,result.mapPoints,id);
           assert.ok(result.places.length>0 && result.places.every(Boolean),id+': places must be visible without expanding');
           assert.doesNotMatch(result.visible,/출처 · 지도 안내|역사 내용 근거|정밀 복원도|공식 출제 범위|자료 정보 닫기|객관식 판별 단서|선지 구별/);

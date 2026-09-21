@@ -18,14 +18,29 @@ function scienceCoreFactory({line,label,rect,jar,field},existing={}) {
  }
  add('microbes',{
   title:'버섯·곰팡이·해캄·짚신벌레·세균 관찰',codes:['4과12-01'],initial:{sample:'mushroom',focus:'whole'},
-  fields:[field('sample','준비된 표본',[['mushroom','버섯'],['mold','곰팡이'],['algae','해캄'],['paramecium','짚신벌레'],['bacteria','세균']]),field('focus','관찰 초점',[['whole','전체 모습'],['detail','특징 살피기']])],
+  fields:[field('sample','준비된 표본',[['mushroom','버섯'],['mold','곰팡이'],['algae','해캄'],['paramecium','짚신벌레'],['bacteria','세균']]),field('focus','관찰 초점',[['whole','전체 보기'],['detail','특징 살피기']])],
   view(s){let svg='',text='',detail=s.focus==='detail';
-   if(s.sample==='mushroom'){svg=rect(205,120,50,115,'#e7d9bd')+'<path d="M115 130 Q135 20 230 35 Q325 20 345 130 Z" fill="#bc8c60"/>'+ellipse(230,130,114,20,'#e5c39b');if(detail)for(let i=0;i<11;i++)svg+=line(230,136,125+i*21,130,'#9b7557',2);svg+=label(detail?'갓 아래 주름':'갓과 자루',230,280);text='버섯은 갓과 자루가 있는 종류가 있습니다. 갓 아래에 주름이 보입니다. 썩은 나무나 축축한 땅 등에서 볼 수 있으며, 종류에 따라 모습과 사는 곳이 다릅니다.';}
-   if(s.sample==='mold'){for(let i=0;i<8;i++){const x=110+i*34,y=85+(i%3)*30;svg+=line(230,240,x,y,'#91a285',3)+circle(x,y,detail?13:8,'#57675c');}svg+=label('실처럼 얽힌 부분',230,280);text='곰팡이는 가느다란 실처럼 얽힌 부분과 끝의 둥근 부분이 관찰되는 종류가 있습니다. 습기가 있는 빵이나 과일 등에 자랄 수 있습니다.';}
-   if(s.sample==='algae'){for(let i=0;i<6;i++){svg+=rect(85+i*48,95,46,95,'#b5da99');svg+='<path d="M'+(89+i*48)+' 170 Q'+(110+i*48)+' 75 '+(125+i*48)+' 165" fill="none" stroke="#428448" stroke-width="5"/>';}svg+=label(detail?'초록색 띠가 나선처럼 보임':'여러 마디가 실처럼 이어짐',230,260);text='해캄은 연못이나 물살이 느린 민물에서 볼 수 있습니다. 초록색이며 여러 마디가 실처럼 이어져 있고, 확대하면 안쪽에 나선 모양의 초록색 띠가 보입니다.';}
+
+   let media;
+   const photo=(name,file,author,source,license,alt,caption,origin='50% 50%')=>({name,src:'assets/observations/'+file+'.jpg',author,source,license,licenseUrl:license==='CC0'?'https://creativecommons.org/publicdomain/zero/1.0/':'https://creativecommons.org/licenses/by-sa/3.0/',collection:'',alt,caption,origin});
+   if(s.sample==='mushroom'){
+    media={items:[photo('버섯의 갓 아래','mushroom','sethonfire87','https://wordpress.org/photos/photo/6376536a28/','CC0','버섯의 자루 둘레에서 갓 가장자리까지 방사상으로 뻗은 촘촘한 주름 사진','자루에서 갓 가장자리로 뻗은 주름을 따라 보세요.','55% 40%')],enlarged:detail,zoom:1.7};
+    text='버섯의 갓을 아래에서 본 사진입니다. 가운데 자루 주변에서 갓 가장자리까지 촘촘한 주름이 뻗어 있습니다. 버섯은 종류에 따라 갓 아래의 모습이 다릅니다.';
+   }
+   if(s.sample==='mold'){
+    media={items:[detail?
+     photo('곰팡이의 둥근 끝 부분','mold','Agong1','https://commons.wikimedia.org/wiki/File:Rhizopus_fungus.jpg','CC0','둥근 포자낭과 연결된 가느다란 자루가 보이는 빵곰팡이 현미경 사진','둥근 끝 부분과 그곳에 이어진 가느다란 부분을 구별하세요.'):
+     photo('실처럼 얽힌 곰팡이','mold-whole','Curtis Clark','https://commons.wikimedia.org/wiki/File:Rhizopus_clonal_sporangia.jpg','CC BY-SA 3.0','여러 가닥의 실 같은 균사가 얽히고 둥근 포자낭이 보이는 염색 현미경 사진','실처럼 뻗은 부분들이 여러 방향으로 얽혀 있습니다.')],enlarged:false,modeLabel:detail?'현미경 사진 · 둥근 끝 부분':'현미경 사진 · 실 같은 구조'};
+    text='빵곰팡이의 현미경 사진입니다. 가느다란 실 같은 부분과 둥근 끝 부분이 함께 보입니다. 특징 살피기를 누르면 다른 표본에서 둥근 부분을 더 자세히 관찰할 수 있습니다.';
+   }
+   if(s.sample==='algae'){
+    media={items:[photo('해캄의 나선 모양 띠','spirogyra','Keisotyo · NEON(원본 보정)','https://commons.wikimedia.org/wiki/File:Spirogyra_sp.jpg','CC BY-SA 3.0','길게 이어진 해캄 세포 안에 여러 초록색 띠가 나선 모양으로 감겨 있는 현미경 사진','마디를 나누는 경계와 그 안의 초록색 나선 모양 띠를 찾아보세요.')],enlarged:detail,zoom:1.65,modeLabel:detail?'현미경 사진 · 부분 확대':'현미경 사진 · 전체 시야'};
+    text='해캄은 초록색의 여러 마디가 실처럼 이어져 있습니다. 세포 안에서 띠처럼 감겨 있는 초록색 부분은 엽록체입니다. 이 사진에서는 여러 나선 모양 띠가 보입니다.';
+   }
+   if(media)media.info='사진마다 표본과 확대 정도가 다릅니다. 현미경 표본은 준비 방법에 따라 색이 다르게 보일 수 있습니다. 확대는 사진의 일부를 크게 보여 줍니다. 배포용 사진은 크기 조정·JPEG 압축을 했으며, 확대 시 화면에서 일부가 잘려 보입니다.';
    if(s.sample==='paramecium'){svg=ellipse(230,145,110,65,'#cbdcd9');for(let i=0;i<30;i++){const a=i*Math.PI/15;svg+=line(230+110*Math.cos(a),145+65*Math.sin(a),230+123*Math.cos(a),145+78*Math.sin(a),'#759793',2);}svg+=ellipse(215,140,17,24,'#90aaa9')+label(detail?'몸 둘레의 짧은 털':'길쭉한 몸',230,270);text='짚신벌레는 유기물이 있는 민물 등에서 볼 수 있습니다. 길쭉한 몸 둘레에 짧은 털이 많고, 이를 움직여 헤엄칩니다. 정지 그림에서는 실제 움직임을 관찰할 수 없습니다.';}
    if(s.sample==='bacteria'){for(let i=0;i<9;i++)svg+=rect(110+(i%3)*85,65+Math.floor(i/3)*65,40,18,'#90bab0');svg+=label('막대 모양 세균의 확대 그림',230,285);text='세균에는 막대 모양이나 둥근 모양 등 여러 모습이 있습니다. 흙과 물, 다른 생물의 몸 등 다양한 곳에 살며, 눈으로 하나하나 구별하기 어렵습니다.';}
-   return{svg,text,note:'그림마다 확대 정도가 다릅니다. 곰팡이나 세균은 직접 만지거나 냄새 맡지 마세요.',check:check('해캄의 관찰 특징으로 맞는 것은?',['실처럼 이어진 초록색 모습','갓과 자루가 있는 모습','모든 종류가 막대 모양'],'0','해캄은 초록색 마디가 실처럼 이어진 모습을 보입니다. 사는 곳과 모습으로 관찰 기록을 정리합니다.')};}
+   return{svg,media,text,note:'사진과 모형마다 확대 정도가 다릅니다. 곰팡이나 세균은 직접 만지거나 냄새 맡지 마세요.',check:check(...({mushroom:['사진에서 갓 아래 주름은 어떻게 배열되어 있나요?',['자루 둘레에서 갓 가장자리 쪽으로 뻗어 있다','갓 가장자리와 나란한 동심원으로 이어져 있다','자루의 길이 방향으로만 뻗어 있다'],'0','갓 아래 주름은 자루 주변에서 가장자리 쪽으로 뻗어 있습니다. 사진에서 주름 하나를 따라가 보세요.'],mold:['두 곰팡이 사진에서 공통으로 찾을 수 있는 구조는?',['가느다란 실 같은 부분과 둥근 끝 부분','마디 안에서 나선 모양으로 감긴 초록색 띠','자루 주변에서 갓 가장자리로 뻗은 주름'],'0','실 같은 구조와 그 끝의 둥근 구조가 보입니다. 갓의 주름이나 해캄의 초록색 띠와 구별합니다.'],algae:['해캄 사진에서 마디 안의 초록색 부분은 어떤 모습인가요?',['띠가 나선 모양으로 감겨 있다','작은 알갱이들이 서로 떨어져 흩어져 있다','마디의 바깥쪽에 짧은 털처럼 나 있다'],'0','해캄의 초록색 띠 모양 엽록체가 나선 모양으로 감겨 있습니다. 마디 경계와 안쪽의 띠를 구분해 보세요.'],paramecium:['이 짚신벌레 모형에서 짧은 털은 어디에 있나요?',['몸 둘레에 있다','몸 한쪽 끝에만 있다','몸 안쪽에 모여 있다'],'0','짚신벌레는 몸 둘레의 짧은 털을 움직여 헤엄칩니다. 정지 모형은 털의 위치를 보여 줍니다.'],bacteria:['이 모형에 그린 세균의 모양은?',['짧은 막대 모양','둥근 공 모양','긴 나선 모양'],'0','이 모형은 짧은 막대 모양 세균을 보여 줍니다. 실제 세균에는 다른 모양도 있습니다.']}[s.sample]))};}
  });
  add('solubility',{
   title:'용질 종류·용액 진하기 비교',codes:['6과03-01','6과03-02'],initial:{kind:'solute',dose:'small',amount:'more',water:'same'},

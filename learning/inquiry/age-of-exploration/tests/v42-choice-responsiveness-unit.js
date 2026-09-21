@@ -9,7 +9,7 @@ assert.ok(student.includes('missionRenderKey'),'스냅샷마다 선택 버튼 DO
 assert.ok(student.includes('missionChoiceCard.isSelecting'),'선택 즉시 표시 누락');
 assert.ok(student.includes('paintEvery=choiceModalActive()?250:moving?0:50'),'선택창 렌더링 경량화 누락');
 assert.ok(student.includes("if(mode!=='sea'||choiceModalActive())return"),'선택창 해류 정지 누락');
-assert.ok(student.includes("if(mode!=='sea'||choiceModalActive()||!windCloudAtlas.complete)return"),'선택창 바람 정지 누락');
+assert.ok(student.includes("if(mode!=='sea'||choiceModalActive()||!windCloudAtlas.complete||!windCloudAtlas.naturalWidth)return"),'선택창 바람 정지 누락');
 assert.ok(!student.includes('requestAnimationFrame(()=>requestAnimationFrame(()=>'),'출발 선택 요청이 두 프레임 지연됨');
 assert.ok(!student.includes('사회과부도'),'학생 화면 불필요 문구 잔존');
 assert.ok(!server.includes('사회과부도'),'서버 불필요 문구 잔존');

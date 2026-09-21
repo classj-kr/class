@@ -509,7 +509,7 @@ app.get('/health', (_req, res) => res.json({
   oceanCurrentAnimation: 'major-current-flow-tracers',
   oceanCurrentAffectsMovement: true,
   majorWindSystem: ['trade-winds','westerlies','polar-easterlies','seasonal-monsoon'],
-  windCloudAnimation: 'original-CLOUD.CDS-12-frame-sprite',
+  windCloudAnimation: 'soft-alpha-cloud-atlas-wind-driven',
   windAffectsMovement: true,
   visualWeather: [],
   sharedClassClock: true,

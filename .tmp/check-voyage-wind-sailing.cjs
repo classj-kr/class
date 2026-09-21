@@ -1,0 +1,18 @@
+const fs=require('node:fs');
+const p='.tmp/voyage-cloud-review/check.cjs';
+let s=fs.readFileSync(p,'utf8');
+s=s.replace("  await page.setViewport({width:390,height:844,deviceScaleFactor:1});await delay(500);",`  await page.bringToFront();
+  await page.keyboard.down('ArrowRight');await page.keyboard.down('ArrowUp');
+  await page.waitForFunction('serverSelf?.moving && serverSelf.windAssistPercent>20');
+  const tail=await page.evaluate(()=>({assist:serverSelf.windAssistPercent,speed:serverSelf.speedKmh}));
+  await page.keyboard.up('ArrowRight');await page.keyboard.up('ArrowUp');
+  await place({lat:37,lon:-13,mode:'sea',fatigue:0});
+  await page.keyboard.down('ArrowLeft');await page.keyboard.down('ArrowDown');
+  await page.waitForFunction('serverSelf?.moving && serverSelf.windAssistPercent < -20');
+  const head=await page.evaluate(()=>({assist:serverSelf.windAssistPercent,speed:serverSelf.speedKmh}));
+  await page.keyboard.up('ArrowLeft');await page.keyboard.up('ArrowDown');
+  assert(tail.speed>head.speed,'downwind sailing should be faster than upwind sailing');
+  console.log(JSON.stringify({actualSailing:{tail,head}}));
+  await place({lat:37,lon:-13,mode:'sea',fatigue:0});
+  await page.setViewport({width:390,height:844,deviceScaleFactor:1});await delay(500);`);
+fs.writeFileSync('.tmp/voyage-cloud-review/sailing.cjs',s);

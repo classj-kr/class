@@ -7,6 +7,38 @@
  const jar=(x,height,color)=>rect(x,60,110,180,'#edf4f8')+rect(x+6,230-height,98,height,color)+line(x,55,x,235)+line(x,235,x+110,235)+line(x+110,235,x+110,55);
  const field=(key,title,items)=>({key,title,items:items.map(([value,text])=>({value,text}))});
  const steps=field('stage','관찰 시점',[['before','처음'],['after','변화 뒤']]);
+
+ function saltSeparationScene(stage) {
+  const text=(s,x,y)=>label(s,x,y,'#284651',14);
+  const sand=(x,y,n=25)=>Array.from({length:n},(_,i)=>'<ellipse data-sand cx="'+(x+(i*19)%68)+'" cy="'+(y+(i*7)%16)+'" rx="'+(2+i%3)+'" ry="2" fill="'+['#a88455','#c4a479','#85765d'][i%3]+'"/>').join('');
+  const salt=(x,y,n=12)=>Array.from({length:n},(_,i)=>'<path data-salt-crystal d="M'+(x+i%4*14)+' '+(y+Math.floor(i/4)*10)+' l7 -2 3 7 -8 2 Z" fill="#fffaf0" stroke="#b8b3a5" stroke-width=".8"/>').join('');
+  const beaker=(x,y,w,h)=>'<path d="M'+x+' '+y+' v'+h+' q0 7 7 7 h'+(w-14)+' q7 0 7 -7 v-'+h+'" fill="#eef5f6" fill-opacity=".23" stroke="#7b9aa5" stroke-width="2"/>';
+  let svg='';
+  if(stage==='mixed')svg='<ellipse cx="230" cy="174" rx="143" ry="62" fill="#e5eaeb" stroke="#a2b4bb"/><ellipse cx="230" cy="165" rx="131" ry="50" fill="#fafbfa" stroke="#c4d0d4"/>'+sand(161,157,48)+salt(235,149,16)+text('모래 알갱이',144,77)+line(145,85,182,154,'#829aa1',1.5)+text('소금 알갱이',322,77)+line(314,85,273,149,'#829aa1',1.5)+text('물에 넣기 전 · 서로 다른 두 고체',230,269);
+  if(stage==='dissolve')svg='<path d="M158 129 Q230 123 302 129 V244 H158 Z" fill="#c4e4eb" fill-opacity=".7"/>'+sand(192,229,34)+beaker(151,72,158,175)+'<path d="M248 47 L216 224" stroke="#8aabb5" stroke-width="5"/><path d="M245 48 L215 220" stroke="#e0ecef" stroke-width="2"/>'+text('물에 녹은 소금',353,111)+line(309,135,340,119,'#829aa1',1.5)+text('녹지 않은 모래',354,231)+line(266,241,320,236,'#829aa1',1.5)+text('저은 뒤 · 소금 알갱이는 보이지 않음',230,285);
+  if(stage==='filter')svg=
+   '<path d="M355 48 V277 M311 279 H398 M355 126 H301" fill="none" stroke="#81949b" stroke-width="6" stroke-linecap="round"/>'+
+   '<g transform="rotate(25 108 56)">'+beaker(59,15,83,66)+'<path d="M65 68 L136 34 V78 H65 Z" fill="#b8dce7" opacity=".8"/>'+sand(68,65,15)+'</g>'+
+   '<path d="M156 33 Q155 49 174 65 L220 126" fill="none" stroke="#acd5e2" stroke-width="5"/><path d="M163 49 L233 139" stroke="#7798a5" stroke-width="4"/><path d="M163 49 L233 139" stroke="#e1edf0" stroke-width="1.5"/>'+
+   '<path d="M181 105 L240 173 V209 M299 105 L250 173 V209" fill="#e7f1f4" fill-opacity=".55" stroke="#7c9aa7" stroke-width="2"/>'+
+   '<path data-filter-paper d="M187 103 L245 164 293 103 Q245 115 187 103 Z" fill="#fffcf0" stroke="#c6ba9f" stroke-width="1.4"/>'+
+   '<path d="M215 133 L245 162 269 134 Q244 141 215 133" fill="#c6b697"/>'+sand(219,134,10)+
+   '<ellipse cx="241" cy="106" rx="59" ry="9" fill="none" stroke="#8aa3ac" stroke-width="1.7"/>'+
+   '<path data-filtrate d="M232 244 H314 V266 H232 Z" fill="#b8dfea" fill-opacity=".8"/>'+beaker(227,205,92,63)+
+   '<path data-filtrate-flow d="M245 210 V239" fill="none" stroke="#71b2c9" stroke-width="3" stroke-dasharray="4 5"/>'+
+   text('유리 막대',249,44)+line(226,49,190,82,'#829aa1',1.5)+
+   text('거름종이',371,94)+line(326,97,285,111,'#829aa1',1.5)+
+   text('남은 모래',104,161)+line(148,158,224,144,'#829aa1',1.5)+
+   text('깔때기',117,204)+line(152,199,239,177,'#829aa1',1.5)+
+   text('거른 소금물',274,299);
+  if(stage==='evaporate')svg=
+   '<rect x="137" y="210" width="186" height="49" rx="9" fill="#d6dfe1" stroke="#7c929a"/><rect x="151" y="201" width="158" height="13" rx="6" fill="#747f85"/><circle cx="292" cy="238" r="8" fill="#74878e"/><circle cx="164" cy="238" r="3" fill="#d97943"/>'+
+   '<path d="M125 163 Q145 213 230 207 Q315 213 335 163" fill="#f0f1ed" stroke="#94a2a2" stroke-width="2"/><ellipse cx="230" cy="162" rx="105" ry="25" fill="#fffef5" stroke="#a6b1ad" stroke-width="2"/>'+salt(204,149,12)+
+   '<path d="M174 119 v-42 m-5 6 5 -6 5 6 M231 104 V57 m-5 6 5 -6 5 6 M286 119 V77 m-5 6 5 -6 5 6" fill="none" stroke="#7398a5" stroke-width="2" stroke-dasharray="4 4"/>'+
+   text('물이 수증기가 되어 나감',230,35)+text('증발 접시에 남은 소금',230,286);
+  return '<g data-observation-scene="salt-separation" data-stage="'+stage+'">'+svg+'</g>';
+ }
+
  const specs={
   'state-change':{
    title:'물이 얼고 다시 녹을 때',codes:['4과10-02'],initial:{phase:'water'},
@@ -22,7 +54,7 @@
    title:'액체 혼합물 분리와 소금 회수',codes:['6과05-01','6과05-02'],initial:{kind:'oil',stage:'mixed'},
    fields:s=>[field('kind','혼합물',[['oil','물과 기름'],['salt','소금과 모래']]),field('stage','분리 과정',s.kind==='oil'?[['mixed','흔든 직후'],['settle','가만히 두기'],['drain','아래층 물을 받아 분리']]:[['mixed','처음'],['dissolve','물에 넣기'],['filter','거르기'],['evaporate','거른 소금물의 물을 증발']])],
    view(s){if(s.kind==='oil'){const drained=s.stage==='drain',mixed=s.stage==='mixed';return{svg:jar(80,drained?50:130,drained?'#f8d16d':mixed?'#a3c5a8':'#72bce6')+(!mixed&&!drained?rect(86,100,98,50,'#f8d16d'):'')+(drained?jar(280,80,'#72bce6'):label('받을 용기',335,180))+label(mixed?'흔든 직후':'기름이 위, 물이 아래',135,35),text:mixed?'흔들면 물과 기름이 잠시 흩어져 섞여 보입니다. 가만히 두고 관찰합니다.':drained?'아래층 물을 먼저 받아 내고, 두 층의 경계에서 멈추면 물과 기름을 나눌 수 있습니다.':'가만히 두면 물과 기름이 골고루 섞이지 않고 두 층으로 나뉩니다. 이 성질을 이용해 분리합니다.',note:''};}
-    const dry=s.stage==='mixed'||s.stage==='evaporate';let svg=jar(170,dry?0:115,'#91c7e7');if(s.stage==='mixed')svg+=rect(183,200,45,25,'#b09573')+rect(235,208,30,17,'#fff');if(s.stage==='dissolve')svg+=rect(182,212,85,15,'#b09573');if(s.stage==='filter')svg+=label('모래는 거름종이에 남음',230,35);if(s.stage==='evaporate')svg+=rect(190,205,20,20,'#fff')+rect(220,210,20,15,'#fff')+rect(249,204,15,21,'#fff');
+    const svg=saltSeparationScene(s.stage);
     return{svg,text:{mixed:'소금과 모래는 서로 섞여도 각각의 성질이 남아 있습니다.',dissolve:'소금은 물에 녹고 모래는 녹지 않습니다. 물에 녹는 성질의 차이를 이용합니다.',filter:'거름종이에는 모래가 남고 소금물은 통과합니다. 소금은 아직 물에 녹아 있으므로 소금 회수가 끝난 것이 아닙니다.',evaporate:'거른 소금물에서 물을 증발시키면 소금이 남습니다. 용해 → 거르기 → 증발 순서로 두 고체를 회수합니다.'}[s.stage]||'물에 녹는 성질의 차이를 이용합니다.',note:'증발과 가열 실험은 교사의 지도 아래 진행하세요.'};}
   },
   'heat-transfer':{
@@ -59,7 +91,7 @@
  Object.assign(specs,window.scienceCoreExtensions?.({line,label,rect,jar,field},specs)||{});
  const path=location.pathname.split('/').filter(Boolean);const slug=path.at(-1)==='index.html'?path.at(-2):path.at(-1),spec=specs[slug];
  if(!spec)return;
- const css=document.createElement('link');css.rel='stylesheet';css.href=new URL('supplement-labs.css?v=4',document.currentScript.src);document.head.append(css);
+ const css=document.createElement('link');css.rel='stylesheet';css.href=new URL('supplement-labs.css?v=5',document.currentScript.src);document.head.append(css);
  const assetBase=new URL('.',document.currentScript.src);
  const section=document.createElement('section');section.className='panel curriculum-supplement';section.setAttribute('aria-label',spec.title);
  const h=document.createElement('h2');h.textContent=spec.title;const controls=document.createElement('div');controls.className='supplement-controls';
@@ -88,17 +120,17 @@
    for(const item of result.media.items){
     const figure=document.createElement('figure'),title=document.createElement('h3');title.textContent=item.name;
     const frame=document.createElement('div');frame.className='supplement-photo-frame';frame.classList.toggle('is-enlarged',result.media.enlarged);
-    const img=document.createElement('img');img.src=new URL(item.src,assetBase);img.alt=item.alt;img.decoding='async';frame.append(img);
+    const img=document.createElement('img');img.src=new URL(item.src,assetBase);img.alt=item.alt;img.decoding='async';if(item.origin)img.style.transformOrigin=item.origin;if(result.media.zoom)img.style.setProperty('--specimen-zoom',String(result.media.zoom));frame.append(img);
     const failure=document.createElement('p');failure.className='supplement-photo-error';failure.textContent='사진을 불러오지 못했습니다. 잠시 후 다시 열어 주세요.';failure.hidden=true;frame.append(failure);
     img.addEventListener('error',()=>{img.hidden=true;failure.hidden=false;});
     const caption=document.createElement('figcaption');caption.textContent=item.caption;
     figure.append(title,frame,caption);gallery.append(figure);
-    const credit=document.createElement('p'),link=document.createElement('a');link.href=item.source;link.target='_blank';link.rel='noopener';link.textContent=item.name+' · '+item.author+' / GeoDIL';
-    const license=document.createElement('a');license.href='https://creativecommons.org/publicdomain/zero/1.0/';license.target='_blank';license.rel='noopener';license.textContent='CC0';credit.append(link,' · ',license);sources.append(credit);
+    const credit=document.createElement('p'),link=document.createElement('a');link.href=item.source;link.target='_blank';link.rel='noopener';link.textContent=item.name+' · '+item.author+(item.collection===undefined?' / GeoDIL':item.collection?' / '+item.collection:'');
+    const license=document.createElement('a');license.href=item.licenseUrl||'https://creativecommons.org/publicdomain/zero/1.0/';license.target='_blank';license.rel='noopener';license.textContent=item.license||'CC0';credit.append(link,' · ',license);sources.append(credit);
    }
-   const mode=document.createElement('p');mode.className='supplement-photo-mode';mode.textContent=result.media.enlarged?'실제 표본 사진 · 중앙 부분 확대':'실제 표본 사진 · 전체 모습';
+   const mode=document.createElement('p');mode.className='supplement-photo-mode';mode.textContent=result.media.modeLabel||(result.media.enlarged?'실제 표본 사진 · 부분 확대':'실제 표본 사진 · 전체 보기');
    visual.append(gallery,mode);
-   const photoInfo=document.createElement('p');photoInfo.textContent='두 표본의 실제 크기 비율과 화면의 크기는 다릅니다. 확대는 사진의 일부를 크게 보여 줍니다. 숫자와 색칠한 부분은 표본 관리 표시입니다.';sources.append(photoInfo);
+   const photoInfo=document.createElement('p');photoInfo.textContent=result.media.info||'두 표본의 실제 크기 비율과 화면의 크기는 다릅니다. 확대는 사진의 일부를 크게 보여 줍니다. 숫자와 색칠한 부분은 표본 관리 표시입니다.';sources.append(photoInfo);
   }else{svg.innerHTML=result.svg;visual.append(svg);}
   observation.textContent=result.text;note.textContent=result.note;note.hidden=!result.note;
   checkpoint.replaceChildren();if(result.check){const q=result.check;const heading=document.createElement('h3');heading.textContent=q.question;const feedback=document.createElement('p');feedback.className='supplement-check-feedback';feedback.setAttribute('aria-live','polite');checkpoint.append(heading);q.choices.forEach((choice,i)=>{const button=document.createElement('button');button.type='button';button.dataset.checkAnswer=String(i);button.textContent=choice;button.setAttribute('aria-pressed','false');button.addEventListener('click',()=>{const correct=String(i)===q.answer;

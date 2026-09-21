@@ -1,0 +1,79 @@
+[
+  {
+    "slug": "minerals-rocks",
+    "choices": {
+      "process": "change"
+    },
+    "file": "1-minerals-rocks.png",
+    "title": "암석의 생성 과정과 순환",
+    "observation": "암석이 녹지 않은 상태에서 높은 열과 압력으로 성질이 바뀌면 변성암이 됩니다. 편암·편마암·대리암·규암이 있습니다."
+  },
+  {
+    "slug": "microbes",
+    "choices": {
+      "sample": "mold",
+      "focus": "detail"
+    },
+    "file": "2-microbes.png",
+    "title": "버섯·곰팡이·해캄·짚신벌레·세균 관찰",
+    "observation": "곰팡이는 가느다란 실처럼 얽힌 부분과 끝의 둥근 부분이 관찰되는 종류가 있습니다. 습기가 있는 빵이나 과일 등에 자랄 수 있습니다."
+  },
+  {
+    "slug": "microbes",
+    "choices": {
+      "sample": "algae",
+      "focus": "detail"
+    },
+    "file": "3-microbes.png",
+    "title": "버섯·곰팡이·해캄·짚신벌레·세균 관찰",
+    "observation": "해캄은 연못이나 물살이 느린 민물에서 볼 수 있습니다. 초록색이며 여러 마디가 실처럼 이어져 있고, 확대하면 안쪽에 나선 모양의 초록색 띠가 보입니다."
+  },
+  {
+    "slug": "microbes",
+    "choices": {
+      "sample": "mushroom",
+      "focus": "detail"
+    },
+    "file": "4-microbes.png",
+    "title": "버섯·곰팡이·해캄·짚신벌레·세균 관찰",
+    "observation": "버섯은 갓과 자루가 있는 종류가 있습니다. 갓 아래에 주름이 보입니다. 썩은 나무나 축축한 땅 등에서 볼 수 있으며, 종류에 따라 모습과 사는 곳이 다릅니다."
+  },
+  {
+    "slug": "mixture-separation",
+    "choices": {
+      "kind": "salt",
+      "stage": "filter"
+    },
+    "file": "5-mixture-separation.png",
+    "title": "액체 혼합물 분리와 소금 회수",
+    "observation": "거름종이에는 모래가 남고 소금물은 통과합니다. 소금은 아직 물에 녹아 있으므로 소금 회수가 끝난 것이 아닙니다."
+  },
+  {
+    "slug": "microscope",
+    "choices": {
+      "kind": "stem",
+      "stage": "after"
+    },
+    "file": "6-microscope.png",
+    "title": "식물 세포의 구조와 기관의 연결",
+    "observation": "색소 물에 꽂아 둔 줄기의 일부가 물들어 있습니다. 줄기가 물의 이동 통로임을 추리할 수 있습니다. 뿌리에서 흡수한 물은 줄기를 지나 잎으로 이동합니다."
+  },
+  {
+    "slug": "rock-layers",
+    "choices": {
+      "fossil": "shell"
+    },
+    "file": "7-rock-layers.png",
+    "title": "화석의 특징으로 과거 환경 추리하기",
+    "observation": "껍데기 모양이 남은 바다 조개 화석은 이 지층이 만들어질 당시 바다 환경이었을 가능성을 뒷받침합니다. 화석이 옮겨져 쌓였을 가능성 등도 함께 살핍니다."
+  },
+  {
+    "slug": "weather-watch",
+    "choices": {
+      "kind": "dew"
+    },
+    "file": "8-weather-watch.png",
+    "title": "이슬·안개·구름과 기압에 따른 바람",
+    "observation": "수증기가 작은 물방울로 변한 모습을 비교합니다. 이슬은 물체 표면에 맺히며, 안개는 지표 가까운 공기 중에, 구름은 높은 공기 중에 떠 있습니다. 구름에는 작은 얼음 알갱이가 포함되기도 합니다."
+  }
+]

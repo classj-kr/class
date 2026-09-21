@@ -1,5 +1,5 @@
 import {selectPracticeQuestions,questionDataHTML} from './question-session.mjs?v=20260920-22';
-import {GROUPS,WORLD_LESSONS as LESSONS,WORLD_QUESTIONS as QUESTIONS} from './curriculum.mjs?v=20260920-38';
+import {GROUPS,WORLD_LESSONS as LESSONS,WORLD_QUESTIONS as QUESTIONS} from './curriculum.mjs?v=20260922-copy1';
 import {installAtlasLayers,CLIMATE_LEGEND,DENSITY_LEGEND} from './atlas-layers.mjs?v=20260920-24';
 import {renderVisual} from './atlas-visuals.mjs?v=20260920-18';
 const KEY='classj-atlas-progress-2022-v1';
@@ -66,7 +66,7 @@ export function createAtlas(api){
     catch{if(version===revision){$('atlasLegend').textContent='지도를 불러오지 못했습니다. 주제를 다시 선택해 주세요.';}}
   }
   function renderLesson(l){
-    $('lessonPanel').innerHTML=`<div class="lesson-heading"><button class="lesson-close" aria-label="학습 카드 닫기">×</button><h1>${l.title}</h1></div><div class="lesson-scroll"><div class="spot-list" role="group" aria-label="지도에서 비교할 곳">${l.spots.map((s,i)=>`<button data-spot="${i}"><span>${i+1}</span>${s.name}</button>`).join('')}</div><p id="spotDetail" class="spot-detail" aria-live="polite"></p>${l.visual?'<div id="lessonVisual" class="lesson-visual"></div>':''}<div class="lesson-description">${l.core.map(c=>`<p>${c}</p>`).join('')}<p>${l.trap}</p></div></div><footer class="lesson-footer"><button id="lessonPractice">문제 풀기</button></footer>`;
+    $('lessonPanel').innerHTML=`<div class="lesson-heading"><button class="lesson-close" aria-label="학습 카드 닫기">×</button><h1>${l.title}</h1></div><div class="lesson-scroll"><div class="spot-list" role="group" aria-label="지도에서 비교할 곳">${l.spots.map((s,i)=>`<button data-spot="${i}"><span>${i+1}</span>${s.name}</button>`).join('')}</div><p id="spotDetail" class="spot-detail" aria-live="polite"></p>${l.visual?'<div id="lessonVisual" class="lesson-visual"></div>':''}<div class="lesson-description">${l.core.map(c=>`<p>${c}</p>`).join('')}${l.trap?`<p>${l.trap}</p>`:''}</div></div><footer class="lesson-footer"><button id="lessonPractice">문제 풀기</button></footer>`;
     $('lessonPanel').querySelector('.lesson-close').onclick=()=>{document.body.classList.add('lesson-closed');$('lessonReopen').hidden=false;api.map.resize();};
     $('lessonPanel').querySelectorAll('[data-spot]').forEach(b=>b.onclick=()=>focusSpot(Number(b.dataset.spot)));
     if(l.visual)renderVisual($('lessonVisual'),l.visual);

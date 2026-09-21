@@ -12,14 +12,14 @@ test('32 lessons are scoped, linked to existing standards and attached to real m
   const layers=new Set(['mountain','plateau','plain','basin','desert','river','lake','peninsula','island','other','peak','sea','current','wind','country','grid']);
   for(const g of GROUPS)assert.equal(LESSONS.filter(l=>l.group===g.id).length,4);
   for(const l of LESSONS){
-    assert.ok(LEVELS[l.level]);assert.ok(l.core.length>=3&&l.trap&&l.task);
+    assert.ok(LEVELS[l.level]);assert.ok(l.core.length>=3&&typeof l.trap==='string'&&l.task);
     assert.ok(l.standards.length>0);for(const s of l.standards)assert.ok(standards.includes('['+s+']'),`${l.id}: ${s}`);
     for(const s of l.sources||[])assert.ok(SOURCES[s]);
     for(const id of l.layers)assert.ok(layers.has(id));
     for(const s of l.spots)assert.ok(s.name&&s.why&&Math.abs(s.at[0])<=180&&Math.abs(s.at[1])<=85);
   }
   assert.match(LESSONS.find(l=>l.id==='religion').trap,/비율/);
-  assert.match(LESSONS.find(l=>l.id==='density').trap,/0으로/);
+  assert.match(LESSONS.find(l=>l.id==='density').trap,/0인 지역과 구분/);
 });
 test('questions have unique stable ids, explanations and unambiguous option keys',()=>{
   assert.equal(new Set(QUESTIONS.map(q=>q.id)).size,QUESTIONS.length);

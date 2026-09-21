@@ -68,6 +68,8 @@ assert.ok(area('nakdong')<area('retreat') && area('retreat')<area('1953') && are
       await page.click('.history-order-launch');
       await page.waitForFunction(()=>[...document.querySelectorAll('.history-order-card img')].every(n=>n.complete&&n.naturalWidth>0));
       assert.equal(await page.$eval('.history-order-dialog',n=>n.open),true);
+      assert.equal(await page.$eval('.history-order-header h2',n=>getComputedStyle(n).fontSize),'16px');
+      assert.ok(await page.$$eval('.history-order-prompt,.history-order-choice',ns=>ns.every(n=>{const s=getComputedStyle(n);return s.fontSize==='15px'&&s.fontWeight==='400'&&s.fontFamily.includes('Batang');})));
       for (let attempt=0;attempt<2;attempt++) {
         const before = await page.$eval('.history-order-dialog',n=>({
           text:n.innerText,

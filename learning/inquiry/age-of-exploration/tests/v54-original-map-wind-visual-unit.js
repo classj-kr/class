@@ -12,7 +12,7 @@ assert.doesNotMatch(html,/ocean_original_tiles|biome_palette_mask|forestAtlas|de
 const loop=html.match(/function drawMap\(cw,ch\)[\s\S]*?drawOceanCurrents/)?.[0]||'';
 assert.match(loop,/drawNaturalEarthLayer\(cw,ch,left,top\)/);
 assert.match(loop,/drawSeaSurface\(cw,ch,left,top\)/);
-assert.match(html,/WIND_VISUAL_FLOW_RATE=5\.6/);
-assert.match(html,/WIND_CLOUD_FRAME_MS=64/);
+assert.match(html,/WIND_VISUAL_FLOW_RATE=3\.2/);
+assert.doesNotMatch(html,/WIND_CLOUD_FRAME_MS|WIND_CLOUD_SEQUENCE_FRAMES/);
 assert.match(html,/now\*\.000015\*WIND_VISUAL_FLOW_RATE/);
-console.log(JSON.stringify({ok:true,naturalEarthMap:true,windVisualFlowRate:5.6,cloudFrameMs:64}));
+console.log(JSON.stringify({ok:true,naturalEarthMap:true,windVisualFlowRate:3.2,continuousCloudTravel:true}));
