@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <title>모의 나이스 화면 (시험용)</title>
+    <style>
+        body { font-family: sans-serif; margin: 0; padding: 12px; font-size: 13px; }
+        .top { display: flex; gap: 16px; align-items: center; margin-bottom: 8px; }
+        .grid { border: 1px solid #ccc; height: 420px; overflow-y: auto; }
+        .r { display: flex; align-items: center; border-bottom: 1px solid #ddd; height: 80px; box-sizing: border-box; }
+        .c { padding: 4px 8px; }
+        .no { width: 40px; text-align: center; }
+        .nm { width: 120px; }
+        .r textarea { width: 600px; height: 64px; }
+        .other { display: none; }
+        .panel { margin-top: 10px; white-space: pre-wrap; font-family: monospace; font-size: 12px; }
+    </style>
+</head>
+<body>
+    <div class="top"><b>서울계상초등학교</b> <span>박화송</span> <span id="mode"></span></div>
+    <div class="app-tit"><span class="cl-text" id="title">학기말종합의견</span></div>
+    <div class="grid" id="grid"></div>
+    <div role="tablist" style="margin-top:6px; font-size:12px; color:#666;"><span role="tab">초기화면</span> · <span role="tab">교과학습발달상황</span> · <span role="tab">교과평가</span> · <span role="tab">학기말종합의견</span></div>
+    <!-- 다른 탭(숨겨진 화면)의 글 칸: 채우면 안 된다 -->
+    <div class="other"><div class="r"><div class="c no">1</div><div class="c nm">김두리</div><textarea id="hidden-ta"></textarea></div></div>
+    <div class="panel" id="panel"></div>
+    <script src="parse.js"></script>
+    <script src="page.js"></script>
+    <script>
+        // 모의 틀: 나이스 실행기(엑스빌더6)처럼 값을 따로 들고, 화면 글 칸의 값은 blur 때만 받아들인다(input 은 무시).
+        const ROSTER = ['김두리', '김은빛', '김지현', '박하은', '송민경', '신채원', '오채은', '유하린', '이서준', '이준호', '장예린', '정민재', '조은서', '최유나', '김지현', '한도윤', '홍서아', '강민준', '고은채', '남주원', '문서윤', '배지훈', '서하늘', '안지호', '전입생'];
+        const model = ROSTER.map(() => '');
+        model[1] = '기존에 써 둔 글.';
+        const params = new URLSearchParams(location.search);
+        const virtual = params.get('virtual') === '1';
+        const withCpr = params.get('cpr') === '1';
+        const editOnly = params.get('editonly') === '1';   // 편집 중인 첫 줄에만 글 칸이 있는 목록
+        const noBlur = params.get('noblur') === '1';       // 화면 값을 실행기가 받아들이지 않는 경우
+        const dupMode = params.get('dup') === '1';         // 번호를 '3번' 꼴로 적어 못 읽게 함(동명이인 보호 시험)
+        if (params.get('title')) document.getElementById('title').textContent = params.get('title');
+        document.getElementById('mode').textContent = (virtual ? '(보이는 줄만 그림' : '(전부 그림') + (withCpr ? ', 실행기 흉내' : '') + (editOnly ? ', 첫 줄만 글 칸' : '') + (noBlur ? ', blur 무시' : '') + (dupMode ? ', 번호 못 읽음' : '') + ')';
+        const grid = document.getElementById('grid');
+
+        function rowEl(i) {
+            const r = document.createElement('div');
+            r.className = 'r';
+            r.dataset.i = i;
+            const cell = (editOnly && i !== 0) ? '<div class="c"><div class="box" style="width:600px;height:64px;border:1px solid #aaa;overflow:hidden;white-space:pre-wrap;"></div></div>' : '<div class="c"><textarea></textarea></div>';
+            r.innerHTML = '<div class="c"><input type="checkbox"></div><div class="c no"><a href="#">' + (dupMode ? (i + 1) + '번' : (i + 1)) + '</a></div>'
+                + '<div class="c nm">' + ROSTER[i] + '</div><div class="c"><button type="button">조회/가져오기</button></div>' + cell;
+            const ta = r.querySelector('textarea');
+            if (ta) {
+                ta.value = model[i];
+                if (!noBlur) ta.addEventListener('blur', () => { if (ta.value !== model[i]) { model[i] = ta.value; show(); } });
+            } else {
+                r.querySelector('.box').textContent = model[i];
+            }
+            return r;
+        }
+
+        // 실행기 흉내: 공개 이름만 흉내 낸다(Platform.INSTANCE, Grid, TextArea, dataSet, detail).
+        if (withCpr) {
+            class Grid {
+                // GRD(학년)·SEM(학기)은 모든 줄이 같은 값이다. 번호 열로 잘못 잡히면 안 된다.
+                constructor() { this.dataSet = { getColumnNames: () => ['GRD', 'SEM', 'CHK', 'NO', 'NM', 'OPINION', 'ETC'] }; this.detail = { getCellIndices: () => [0, 1, 2, 3, 4, 5, 6], getColumn: (ci) => ({ columnName: this.dataSet.getColumnNames()[ci], control: ci === 5 ? new TextArea() : null }) }; this.redraws = 0; }
+                getRowCount() { return ROSTER.length; }
+                getCellValue(i, col) { return { GRD: '3', SEM: '2', CHK: '', NO: dupMode ? (i + 1) + '번' : String(i + 1), NM: ROSTER[i], OPINION: model[i], ETC: 'x' }[col]; }
+                setCellValue(i, col, v) { if (col !== 'OPINION') return false; if (model[i] === v) return false; model[i] = v; show(); return true; }
+                getRowState() { return 'UPDATED'; }
+                redraw() { this.redraws += 1; if (virtual) renderVirtual(); else renderAll(); }
+                isShowing() { return true; }
+            }
+            class TextArea {}
+            const theGrid = new Grid();
+            const container = { isShowing: () => true, getAllRecursiveChildren: () => [theGrid] };
+            const hiddenGrid = new Grid(); hiddenGrid.isShowing = () => false;
+            const hiddenContainer = { isShowing: () => false, getAllRecursiveChildren: () => [hiddenGrid] };
+            window.cpr = {
+                core: { Platform: { INSTANCE: {
+                    getAllRunningAppInstances: () => [{ getContainer: () => hiddenContainer }, { getContainer: () => container }],
+                    findControlsAt: (x, y) => (grid.contains(document.elementFromPoint(x, y)) ? [new TextArea(), theGrid] : [])
+                } } },
+                controls: { Grid, TextArea }
+            };
+            window.__mockGrid = theGrid;
+        }
+
+        function renderAll() {
+            grid.replaceChildren(...ROSTER.map((_, i) => rowEl(i)));
+        }
+
+        // 가상 그리기: 스크롤 위치에 따라 보이는 줄 앞뒤 두 줄만 둔다.
+        function renderVirtual() {
+            const H = 80;
+            const from = Math.max(0, Math.floor(grid.scrollTop / H) - 1);
+            const to = Math.min(ROSTER.length, Math.ceil((grid.scrollTop + grid.clientHeight) / H) + 1);
+            const pad = document.createElement('div');
+            pad.style.height = (from * H) + 'px';
+            const tail = document.createElement('div');
+            tail.style.height = ((ROSTER.length - to) * H) + 'px';
+            const rows = [];
+            for (let i = from; i < to; i += 1) rows.push(rowEl(i));
+            grid.replaceChildren(pad, ...rows, tail);
+        }
+
+        function show() {
+            document.getElementById('panel').textContent = '모의 자료(사건으로 받은 값):\n' + model.map((v, i) => (i + 1) + ' ' + ROSTER[i] + ': ' + (v.length ? v.length + '자 「' + v.slice(0, 24) + '」' : '-')).join('\n');
+        }
+
+        if (virtual) {
+            renderVirtual();
+            grid.addEventListener('scroll', () => { renderVirtual(); });
+            // 뒤 탭에서는 스크롤 사건이 안 오므로, 프로그램이 scrollTop 을 바꾸면 바로 다시 그린다.
+            const desc = Object.getOwnPropertyDescriptor(Element.prototype, 'scrollTop');
+            Object.defineProperty(grid, 'scrollTop', {
+                get() { return desc.get.call(this); },
+                set(v) { desc.set.call(this, v); renderVirtual(); }
+            });
+        } else {
+            renderAll();
+        }
+        show();
+        window.__mock = { model, ROSTER };
+    </script>
+</body>
+</html>

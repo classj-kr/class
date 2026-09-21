@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <title>나이스 채우기</title>
+    <style>
+        :root {
+            --ink: #18211d;
+            --muted: #647069;
+            --paper: #fffdf8;
+            --line: #d8d2c6;
+            --brand: #246b55;
+            --brand-dark: #18503f;
+            --danger: #b43c36;
+        }
+        body {
+            width: 440px;
+            margin: 0;
+            padding: 14px 16px 16px;
+            font-family: Pretendard, "Noto Sans KR", sans-serif;
+            font-size: 14px;
+            color: var(--ink);
+            background: var(--paper);
+        }
+        h1 { margin: 0 0 8px; font-size: 16px; }
+        textarea {
+            width: 100%;
+            height: 110px;
+            box-sizing: border-box;
+            padding: 8px 10px;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            font: inherit;
+            font-size: 13px;
+            resize: vertical;
+        }
+        .row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin-top: 8px; }
+        button {
+            font: inherit;
+            padding: 7px 12px;
+            border-radius: 8px;
+            border: 1px solid var(--line);
+            background: #fff;
+            cursor: pointer;
+        }
+        button.primary { background: var(--brand); border-color: var(--brand); color: #fff; font-weight: 700; }
+        button.primary:hover { background: var(--brand-dark); }
+        button.armed { background: var(--danger); border-color: var(--danger); }
+        button:disabled { opacity: 0.5; cursor: not-allowed; }
+        .muted { color: var(--muted); font-size: 12.5px; }
+        .status { margin-top: 8px; font-size: 13px; line-height: 1.5; }
+        .status.error { color: var(--danger); }
+        ul { margin: 6px 0 0; padding-left: 18px; max-height: 200px; overflow: auto; font-size: 13px; line-height: 1.5; }
+        li.bad { color: var(--danger); }
+        label { display: inline-flex; gap: 4px; align-items: center; }
+        .box { margin-top: 10px; border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; }
+        details { margin-top: 6px; }
+        details pre { white-space: pre-wrap; font-size: 11.5px; color: var(--muted); margin: 4px 0 0; }
+        input[type="text"] { font: inherit; padding: 4px 6px; border: 1px solid var(--line); border-radius: 6px; }
+    </style>
+</head>
+<body>
+    <h1>나이스 채우기</h1>
+    <p class="muted" style="margin: 0 0 6px;">생활기록부 도우미에서 「전체 복사」한 글을 여기에 붙여넣으세요(Ctrl+V).</p>
+    <textarea id="raw" placeholder="1번 김두리&#10;문장…&#10;&#10;2번 김은빛&#10;문장…"></textarea>
+    <div class="row">
+        <span id="parsed" class="muted"></span>
+    </div>
+    <ul id="list"></ul>
+
+    <div class="box">
+        <div class="row" style="margin-top: 0;">
+            <button type="button" id="inspect-btn">화면 살펴보기</button>
+            <label><input type="radio" name="mode" value="overwrite" checked> 덮어쓰기</label>
+            <label><input type="radio" name="mode" value="append"> 이어쓰기</label>
+        </div>
+        <div class="row">
+            <label>번호 <input type="text" id="only" size="3" placeholder="전부" title="한 명만 넣어 볼 때 번호를 적습니다"></label>
+            <button type="button" id="fill-btn" class="primary">채우기</button>
+            <button type="button" id="undo-btn" hidden>되돌리기</button>
+            <label id="skip-title-wrap" hidden><input type="checkbox" id="skip-title"> 화면 제목 검사 건너뛰기</label>
+        </div>
+        <div id="status" class="status"></div>
+        <ul id="result"></ul>
+        <details id="tech" hidden>
+            <summary class="muted">화면 정보</summary>
+            <pre id="tech-body"></pre>
+        </details>
+    </div>
+    <p class="muted" style="margin: 10px 0 0;">채운 뒤에는 나이스에서 저장 단추를 직접 누르세요. 이 도구는 저장하지 않습니다. 저장 전이면 나이스의 조회 단추로 되돌릴 수 있습니다.</p>
+    <div class="row" style="justify-content: space-between;">
+        <span class="muted">처음 쓸 때는 번호 하나만 넣고 저장한 뒤 다시 조회해 남는지 확인하세요.</span>
+        <button type="button" id="clear-btn" title="붙여넣은 학생 글을 이 브라우저에서 지웁니다">지우기</button>
+    </div>
+    <script src="parse.js"></script>
+    <script src="popup.js"></script>
+</body>
+</html>
