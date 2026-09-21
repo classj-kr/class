@@ -2544,20 +2544,20 @@
         else soundOnly(midi);
     }
 
-    function fitKeyboard(question) {
-        const board = question && question.keyboard;
-        const midis = board
-            ? board.given.map(given => given.midi).concat(board.answer)
-            : [KEY_LOW, KEY_HIGH];
-        const low = Math.floor((Math.min.apply(null, midis) - 2) / 12) * 12;
-        const high = Math.ceil((Math.max.apply(null, midis) + 3) / 12) * 12 - 1;
+    function fitKeyboard() {
+        /* 문제의 정답에 따라 건반 수와 위치가 바뀌지 않도록 연습별 음역을 고정한다. */
+        const drillId = session.drill.id;
+        const low = drillId === "chord" ? 36
+            : drillId === "scale" || drillId === "melody" ? 48 : KEY_LOW;
+        const high = 83;
         if (keyRange && keyRange.low === low && keyRange.high === high) return;
         keyRange = { low: low, high: high };
         keyboard = window.Keyboard.build(els.pianoKeys, low, high, drillKeyPress);
+        els.pianoKeys.scrollLeft = 0;
     }
 
     function setupInput(question) {
-        fitKeyboard(question);
+        fitKeyboard();
         keyboard.clearMarks();
         keyboard.setEnabled(true);
         if (session.drill.pairAnswer) {
@@ -2577,7 +2577,6 @@
 
         if (useKeyboard) {
             question.keyboard.given.forEach(given => keyboard.mark(given.midi, "given", given.text));
-            keyboard.centerOn(question.keyboard.given[0].midi);
             els.typedCount.hidden = question.keyboard.answer.length < 2;
             els.typedCount.textContent = "0 / " + question.keyboard.answer.length;
             return;

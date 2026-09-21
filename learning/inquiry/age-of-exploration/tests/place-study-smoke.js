@@ -51,13 +51,13 @@ const place = payload => new Promise((resolve, reject) => {
     teacher=await connect();socket=await connect();
     const teach=(event,payload={})=>new Promise((resolve,reject)=>teacher.timeout(7000).emit(event,payload,(e,r)=>e?reject(e):resolve(r)));
     const room=await teach('createRoom',{roomType:'race'}),starts=catalog.places.filter(p=>p.isOriginalCity&&p.canEnterFromSea&&p.id!=='lisbon').slice(0,4).map(p=>p.id);
-    const targets=['city:lisbon','discovery:batur-caldera','discovery:milford-sound','discovery:chocolate-hills','discovery:palawan-underground-river'];
+    const targets=['city:lisbon','discovery:batur-caldera','discovery:milford-sound'];
     for(const bad of [[],[...targets,'discovery:lm-table-mountain'],[targets[0],targets[0]],['city:missing']]){
       assert.equal((await teach('teacherPublishArrivalRace',{startPlaceIds:starts,studyTargets:bad})).ok,false);
     }
     assert.equal((await ack('teacherPublishArrivalRace',{startPlaceIds:starts,studyTargets:targets})).ok,false,'student cannot publish');
     const published=await teach('teacherPublishArrivalRace',{startPlaceIds:starts,studyTargets:targets});
-    assert.equal(published.ok,true,published.error);assert.equal(published.mission.studyTargets.length,5);
+    assert.equal(published.ok,true,published.error);assert.equal(published.mission.studyTargets.length,3);assert.deepEqual(published.mission.studyTargets.map(t=>t.key),targets,'only teacher-selected places');assert.ok(!published.mission.hunt,'no automatic animal mission');
     const mid=published.mission.id,privateTargets=published.mission.studyTargets;
     const joined=await ack('joinClass',{roomCode:room.roomCode,name:'장소학습검사'});assert.equal(joined.ok,true);
     assert.ok(joined.mission.studyTargets.every(t=>!t.questions&&!t.reading),'answers not in student mission');
@@ -94,9 +94,7 @@ const place = payload => new Promise((resolve, reject) => {
     await teach('teacherSetPaused',{paused:false});
     r=await step('answerStudyQuestion',batur,{token:r.study.question.token,choice:choice(r)});assert.equal(r.study.phase,'completed');assert.notEqual(r.progress.status,'completed');
     for(const [key,position] of [
-      [targets[4],{lat:10.24,lon:118.925,mode:'sea'}],
       [targets[0],{city:'리스본'}],
-      [targets[3],{lat:9.82,lon:124.14}],
       [targets[2],{lat:-44.62,lon:167.75,mode:'sea'}]
     ]){
       await place(position);
@@ -106,15 +104,15 @@ const place = payload => new Promise((resolve, reject) => {
       assert.equal(r.study.phase,'completed');
     }
     assert.equal(r.progress.status,'completed');assert.equal(r.progress.finishRank,1);
-    assert.equal(r.progress.studyPlaces.filter(p=>p.phase==='completed').length,5);
+    assert.equal(r.progress.studyPlaces.filter(p=>p.phase==='completed').length,3);
     const stamp=r.progress.completedAt;
     assert.equal((await step('answerStudyQuestion',targets[2],{token:'old',choice:0})).ok,false);
     r=await step('readStudyPlace',targets[2]);assert.equal(r.progress.completedAt,stamp);
     const board=await new Promise(resolve=>teacher.once('teacherSnapshot',resolve));
-    assert.equal(board.progress[0].studyPlaces.filter(p=>p.phase==='completed').length,5);
+    assert.equal(board.progress[0].studyPlaces.filter(p=>p.phase==='completed').length,3);
     const replacement=await teach('teacherPublishArrivalRace',{startPlaceIds:starts,studyTargets:[targets[1]]});
     assert.equal(replacement.ok,true);
     assert.equal((await step('startStudyQuiz',batur)).ok,false,'stale mission rejected');
-    console.log(JSON.stringify({ok:true,mixedTargets:5,unorderedVisits:true,consecutiveReset:true,replayRejected:true,reconnect:true,paused:true,cityRequiresEntry:true,teacherProgress:true}));
+    console.log(JSON.stringify({ok:true,mixedTargets:3,unorderedVisits:true,consecutiveReset:true,replayRejected:true,reconnect:true,paused:true,cityRequiresEntry:true,teacherProgress:true}));
   } finally { socket?.disconnect(); teacher?.disconnect(); server.kill(); }
 })().catch(error => { console.error(error); console.error(logs); process.exitCode = 1; });

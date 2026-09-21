@@ -2,7 +2,7 @@
 
 /* Match the CSAT maths reading face; retain sans-serif for controls and readouts. */
 :root{--science-reading-font:'Noto Serif KR','KoPubWorld Batang','Batang','AppleMyungjo',serif}
-body :is(.meaning-body,.explanation,.answer-explanation,.answer-result,.stage-caption,.stage-note,.data-note,.figure-notes,.supplement-observation,.supplement-note,.required-observation,.required-note,.exam-feedback){font-family:var(--science-reading-font)!important}
+body :is(.meaning-body,.explanation,.answer-explanation,.answer-result,.stage-caption,.stage-note,.data-note,.figure-notes,.supplement-observation,.supplement-guidance,.supplement-note,.required-observation,.required-note,.exam-feedback){font-family:var(--science-reading-font)!important}
 body :is(.panel p,.method-steps li,.quiz-card h3,.quiz-options label,.supplement-check h3,.supplement-check p,.supplement-check button,.required-check h3,.required-check p,.required-check button,.exam-question h2,.exam-answers button,.exam-data caption){font-family:var(--science-reading-font)!important}
 body :is(.quiz-card h3,.supplement-check h3,.required-check h3,.exam-question h2){font-weight:600;line-height:1.85}
 body :is(.quiz-options label,.answer-explanation,.supplement-check button,.required-check button,.exam-answers button,.exam-feedback){font-size:16px!important;font-weight:400;line-height:1.85}

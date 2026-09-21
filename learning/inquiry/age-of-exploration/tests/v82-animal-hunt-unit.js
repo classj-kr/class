@@ -30,15 +30,9 @@ for (const animal of animals) {
   assert.ok(FREE_LICENSE.test(credit.license), `${animal.animal} 사진이 자유 이용이 아님: ${credit.license}`);
 }
 
-// 교사 현황판에서 동물 잡기를 고를 수 있어야 한다.
+// 새 교사 미션은 지정한 장소만 사용한다. 기존 동물 자료는 유지한다.
 const teacher = fs.readFileSync(path.join(__dirname, '..', 'public', 'teacher.html'), 'utf8');
-assert.match(teacher, /id="missionKind"/, '미션 종류를 고르는 칸이 있어야 한다');
-assert.match(teacher, /value="hunt">바다 동물 만나기/, '동물 만나기 선택지가 있어야 한다');
-// 잡는 것이 아니라 만나는 것이다. 한 반이 고래를 서른 마리 잡을 수는 없다.
-assert.doesNotMatch(teacher, /동물 잡기/, '잡기라는 말이 남아 있으면 안 된다');
-assert.match(teacher, /payload\.hunt\s*=\s*true/, '동물 잡기라고 알려야 한다');
-// 교사가 동물을 고르지 않는다. 게임이 알아서 고른다.
-assert.doesNotMatch(teacher, /id="huntAnimal"/, '교사가 동물을 고르는 칸이 있으면 안 된다');
-assert.match(teacher, /만날 동물과 바다는 게임이 알아서 고릅니다/, '동물은 게임이 고른다고 알려야 한다');
+assert.doesNotMatch(teacher, /id="missionKind"|id="huntNote"|payload\.hunt|바다 동물 만나기|게임이 알아서 고릅니다/, '별도 동물 모드와 자동 선택 안내를 제거해야 한다');
+assert.match(teacher, /studyTargets:\[\.\.\.studySelection\]/, '교사가 선택한 장소를 미션으로 전달해야 한다');
 
 console.log(JSON.stringify({ ok: true, animals: animals.length, regions: [...new Set(animals.map((a) => discoveries.get(a.placeId).name))].length }));

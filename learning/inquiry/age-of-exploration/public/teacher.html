@@ -13,7 +13,7 @@
 <header class="header"><div><h2>방번호 <span id="roomLabel"></span> · 도착 경주</h2><span id="status" class="ok">서버 연결</span></div><div class="summary"><span>게임 날짜 <b id="classClock">1520년 1월 1일 00:00</b></span><span>접속 <b id="count">0</b>명</span></div></header>
 <div class="layout">
 <section class="setup">
-<div class="panel"><h3 style="margin-top:0">미션 설정</h3><p class="muted">도시·발견물 1~5곳과 출발 항구 네 곳을 지정합니다.</p><label>미션 종류<select id="missionKind"><option value="study">장소 탐험 · 설명 읽고 세 문제</option><option value="hunt">바다 동물 만나기</option></select></label><p id="huntNote" class="muted" hidden>만날 동물과 바다는 게임이 알아서 고릅니다. 낼 때마다 달라집니다.</p><div id="studyRows"><label>도시·발견물 찾기<input id="studySearch" type="search" placeholder="장소·나라 이름 검색"></label><label>학습 장소<select id="studyChoice"></select></label><button type="button" id="studyAdd">목록에 추가</button><b id="studyCount">0/5곳</b><ul id="studySelected"></ul><p class="muted">방문 순서는 자유입니다. 각 장소에서 설명을 읽고 세 문제를 연속으로 맞혀야 완료됩니다.</p></div><div id="arriveRows"><label>도착지 지역<select id="targetRegion"></select></label><label>도착 도시·지형<select id="target"></select></label></div><div class="startGrid"><label>출발 도시 1<select id="start1"></select></label><label>출발 도시 2<select id="start2"></select></label><label>출발 도시 3<select id="start3"></select></label><label>출발 도시 4<select id="start4"></select></label></div><button id="publish" class="publish">미션 준비 · 출발지 선택 시작</button><button id="startRace" class="startRace" disabled>전원 출발</button><button id="clear" class="danger">미션 종료</button><p id="missionError" class="err"></p></div>
+<div class="panel"><h3 style="margin-top:0">미션 설정</h3><p class="muted">도시·발견물 1~3곳과 출발 항구 네 곳을 지정합니다.</p><div id="studyRows"><label>도시·발견물 찾기<input id="studySearch" type="search" placeholder="장소·나라 이름 검색"></label><label>학습 장소<select id="studyChoice"></select></label><button type="button" id="studyAdd">목록에 추가</button><b id="studyCount">0/3곳</b><ul id="studySelected"></ul><p class="muted">방문 순서는 자유입니다. 각 장소에서 설명을 읽고 세 문제를 연속으로 맞혀야 완료됩니다.</p></div><div class="startGrid"><label>출발 도시 1<select id="start1"></select></label><label>출발 도시 2<select id="start2"></select></label><label>출발 도시 3<select id="start3"></select></label><label>출발 도시 4<select id="start4"></select></label></div><button id="publish" class="publish">미션 준비 · 출발지 선택 시작</button><button id="startRace" class="startRace" disabled>전원 출발</button><button id="clear" class="danger">미션 종료</button><p id="missionError" class="err"></p></div>
 <div id="activeMission" class="panel"><p class="muted">아직 미션이 없습니다.</p></div>
 </section>
 <section id="monitor" class="monitor">
@@ -28,14 +28,8 @@ const WORLD_PIXEL_W=2500*16,WORLD_PIXEL_H=1250*16,worldImage=new Image(),mapCanv
 worldImage.src='/learn/world-voyage/assets/maps/natural-earth-v58/overview.jpg?v=58';worldImage.onload=()=>{worldImageReady=true;drawWorldMap()};
 function ack(e,p={}){return new Promise(r=>socket.emit(e,p,r))}function esc(v){return String(v||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}function formatGameDate(m){const d=new Date(Date.UTC(1520,0,1)+Math.max(0,m||0)*60000);return `${d.getUTCFullYear()}년 ${d.getUTCMonth()+1}월 ${d.getUTCDate()}일 ${String(d.getUTCHours()).padStart(2,'0')}:${String(d.getUTCMinutes()).padStart(2,'0')}`}function teacherClockShouldRun(){return activeMission?.phase==='running'&&!classSettings.paused}function teacherMinutes(){return teacherClockShouldRun()?clockBaseMinutes+(Date.now()-clockBaseReal)/1000*clockRate*60:clockBaseMinutes}function resetClock(m){clockBaseMinutes=Math.max(0,Number(m)||0);clockBaseReal=Date.now();$('classClock').textContent=formatGameDate(m)}setInterval(()=>{if(!teacherClockActive)return;const m=teacherMinutes();$('classClock').textContent=formatGameDate(m);socket.emit('teacherClockSync',{gameMinutes:m})},500);
 function opt(sel,v,t){const o=document.createElement('option');o.value=v;o.textContent=t;sel.append(o)}
-const ORIGINAL_REGION_ORDER=['이베리아','프랑스','네덜란드','이탈리아','브리튼','독일','동유럽','북유럽','발칸','북아프리카','서아프리카','동아프리카','흑해','근동','중동','중앙아시아','인도','동남아시아','동북아시아','서인도제도','중앙아메리카','남동아메리카','남서아메리카'];
-const LANDMARK_REGION_ORDER=['유럽','아프리카','서아시아·중앙아시아','남아시아','동아시아','동남아시아','북아메리카','중앙아메리카·카리브','남아메리카','오세아니아','극지·대양','복합 지역','기타'];
-const CATEGORY_ORDER=['해협','반도','제도','열도','섬','강','폭포','삼각주','산맥','사막','지협','곶','지구대'];
-function landmarkRegion(p){const c=String(p.continent||'');if(c.includes('·')||c.includes('유럽·')||c.includes('아시아·')||c.includes('아프리카·'))return'복합 지역';if(c.includes('유럽'))return'유럽';if(c.includes('아프리카'))return'아프리카';if(c.includes('북아메리카'))return'북아메리카';if(c.includes('남아메리카'))return'남아메리카';if(c.includes('오세아니아'))return'오세아니아';const lat=Number(p.lat),lon=Number(p.lon);if(!Number.isFinite(lat)||!Number.isFinite(lon))return'기타';if(lat>66||lat<-60)return'극지·대양';if(lon>=-25&&lon<45&&lat>=35)return'유럽';if(lon>=-20&&lon<55&&lat<35)return'아프리카';if(lon>=45&&lon<75&&lat>=5)return'서아시아·중앙아시아';if(lon>=65&&lon<100&&lat>=5)return'남아시아';if(lon>=100&&lon<=150&&lat>=20)return'동아시아';if(lon>=90&&lon<=150&&lat<20&&lat>-15)return'동남아시아';if(lon>150||lon<-150)return lat<10?'오세아니아':'극지·대양';if(lon>=-170&&lon<-50&&lat>=15)return lat<30?'중앙아메리카·카리브':'북아메리카';if(lon>=-120&&lon<-30&&lat<15)return'남아메리카';return'기타'}
 function originalOrder(p){const n=Number(p.originalOrder);return Number.isFinite(n)?n:9999}
 function appendOriginalCities(select,items,labelCategory=false){select.replaceChildren();let current='',group=null;for(const p of [...items].sort((a,b)=>originalOrder(a)-originalOrder(b))){const region=p.originalRegion||p.region||'원작 도시';if(region!==current){current=region;group=document.createElement('optgroup');group.label=region;select.append(group)}const o=document.createElement('option');o.value=p.id;o.textContent=labelCategory?`도시 · ${p.name}`:p.name;group.append(o)}}
-function appendLandmarks(select,items){let current='',group=null;const catRank=p=>{const i=CATEGORY_ORDER.indexOf(p.category||'');return i<0?999:i},regionRank=p=>{const i=LANDMARK_REGION_ORDER.indexOf(landmarkRegion(p));return i<0?999:i};for(const p of [...items].sort((a,b)=>regionRank(a)-regionRank(b)||catRank(a)-catRank(b)||(a.name||'').localeCompare(b.name||'','ko'))){const region=`주요 지형 · ${landmarkRegion(p)}`;if(region!==current){current=region;group=document.createElement('optgroup');group.label=region;select.append(group)}const o=document.createElement('option');o.value=p.id;o.textContent=`${p.category||'지형'} · ${p.name}`;group.append(o)}}
-function renderTargetOptions(){const region=$('targetRegion').value,previous=$('target').value;const cities=catalog.places.filter(p=>p.isOriginalCity&&(!region||region===(p.originalRegion||p.region)));const landmarks=catalog.places.filter(p=>!p.isOriginalCity&&(!region||region==='주요 지형'));appendOriginalCities($('target'),cities,true);appendLandmarks($('target'),landmarks);const all=[...cities,...landmarks];if(all.some(p=>p.id===previous))$('target').value=previous}
 
 let studySelection=[];
 function studyChoices(){
@@ -51,8 +45,8 @@ function renderStudyChoices(){
   select.replaceChildren();
   for(const item of studyChoices().filter(p=>!studySelection.includes(p.key)&&[p.name,p.type,p.region].join(' ').toLocaleLowerCase().includes(query)))opt(select,item.key,item.type+' · '+item.name+' · '+item.region);
   if([...select.options].some(o=>o.value===previous))select.value=previous;
-  $('studyAdd').disabled=studySelection.length>=5||!select.value;
-  $('studyCount').textContent=studySelection.length+'/5곳';
+  $('studyAdd').disabled=studySelection.length>=3||!select.value;
+  $('studyCount').textContent=studySelection.length+'/3곳';
   $('studySelected').replaceChildren();
   for(const key of studySelection){
     const item=studyChoices().find(p=>p.key===key),li=document.createElement('li'),remove=document.createElement('button');
@@ -60,8 +54,7 @@ function renderStudyChoices(){
   }
 }
 
-function syncMissionKind(){const hunt=$('missionKind').value==='hunt';$('huntNote').hidden=!hunt;$('arriveRows').hidden=hunt||$('missionKind').value==='study';$('studyRows').hidden=$('missionKind').value!=='study';$('publish').textContent=hunt?'동물 만나기 준비 · 출발지 선택 시작':'미션 준비 · 출발지 선택 시작'}
-async function loadCatalog(){const r=await fetch('/learn/world-voyage/api/mission-catalog?v=85');catalog=await r.json();renderStudyChoices();syncMissionKind();const cities=catalog.places.filter(p=>p.isOriginalCity),ports=cities.filter(p=>p.canEnterFromSea===true);$('targetRegion').replaceChildren();opt($('targetRegion'),'','전체');for(const region of ORIGINAL_REGION_ORDER){if(cities.some(p=>(p.originalRegion||p.region)===region))opt($('targetRegion'),region,region)}opt($('targetRegion'),'주요 지형','주요 지형');renderTargetOptions();for(const id of ['start1','start2','start3','start4'])appendOriginalCities($(id),ports,false);$('targetRegion').onchange=renderTargetOptions;$('target').value='crimea_peninsula';$('start1').value='lisbon';$('start2').value='london';$('start3').value='istanbul';$('start4').value='original_city_111'}
+async function loadCatalog(){const r=await fetch('/learn/world-voyage/api/mission-catalog?v=85');catalog=await r.json();renderStudyChoices();const ports=catalog.places.filter(p=>p.isOriginalCity&&p.canEnterFromSea===true);for(const id of ['start1','start2','start3','start4'])appendOriginalCities($(id),ports,false);$('start1').value='lisbon';$('start2').value='london';$('start3').value='istanbul';$('start4').value='original_city_111'}
 function progressOf(name){return progress.find(p=>p.name===name)||{status:'assigned'}}function formatArrival(m){return Number.isFinite(m)?formatGameDate(m).replace(/^1492년 /,''):'-'}
 function durationText(minutes){const n=Math.max(0,Math.round(Number(minutes)||0)),d=Math.floor(n/1440),h=Math.floor(n%1440/60),m=n%60;return[d?`${d}일`:null,h?`${h}시간`:null,`${m}분`].filter(Boolean).join(' ')}
 function medalText(rank){const n=Number(rank)||0;return n===1?'🥇':n===2?'🥈':n===3?'🥉':`${n}위`}function rankClass(rank){return Number(rank)===1?'gold':Number(rank)===2?'silver':Number(rank)===3?'bronze':''}
@@ -84,15 +77,11 @@ async function enterHost(){
   showLoginError('게임 첫 화면에서 "방 만들기 → 도착 경주"를 고르면 현황판이 열립니다.');
 }
 socket.on('connect',()=>{$('status').textContent='서버 연결';$('status').className='ok';enterHost()});socket.on('disconnect',()=>{teacherClockActive=false;$('status').textContent='재연결 중';$('status').className='err'});socket.on('teacherSnapshot',s=>{players=s.players||[];activeMission=s.mission||null;progress=s.progress||[];classSettings={...classSettings,...(s.settings||{})};resetClock(s.classGameMinutes);renderAll()});socket.on('teacherMissionChanged',d=>{activeMission=d?.mission||null;renderAll()});socket.on('teacherMissionProgress',d=>{const i=progress.findIndex(p=>p.name===d.name);if(i>=0)progress[i]={name:d.name,...d.progress};else progress.push({name:d.name,...d.progress});renderAll()});
-$('missionKind').onchange=syncMissionKind;
 $('studySearch').oninput=renderStudyChoices;
-$('studyAdd').onclick=()=>{const key=$('studyChoice').value;if(key&&studySelection.length<5&&!studySelection.includes(key)){studySelection.push(key);renderStudyChoices();}};
+$('studyAdd').onclick=()=>{const key=$('studyChoice').value;if(key&&studySelection.length<3&&!studySelection.includes(key)){studySelection.push(key);renderStudyChoices();}};
 $('publish').onclick=async()=>{
- const hunt=$('missionKind').value==='hunt',study=$('missionKind').value==='study';
- const payload={startPlaceIds:['start1','start2','start3','start4'].map(id=>$(id).value)};
- if(study){if(!studySelection.length){$('missionError').textContent='학습 장소를 1~5곳 추가하세요.';return;}payload.studyTargets=[...studySelection];}
- else if(hunt)payload.hunt=true;
- else payload.targetPlaceId=$('target').value;
+ if(!studySelection.length||studySelection.length>3){$('missionError').textContent='학습 장소를 1~3곳 추가하세요.';return;}
+ const payload={startPlaceIds:['start1','start2','start3','start4'].map(id=>$(id).value),studyTargets:[...studySelection]};
  $('publish').disabled=true;
  try{const r=await ack('teacherPublishArrivalRace',payload);if(!r?.ok){$('missionError').textContent=r?.error||'배포 실패';return}
  $('missionError').textContent='학생들이 출발 도시를 선택하면 전원 출발을 누르세요.';activeMission=r.mission;progress=r.progress||[];if(Number.isFinite(r.classGameMinutes))resetClock(r.classGameMinutes);renderAll();

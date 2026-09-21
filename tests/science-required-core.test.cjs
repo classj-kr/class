@@ -12,7 +12,7 @@ test('23 repaired common-curriculum paths have source evidence and observation c
  for(const[slug,spec]of Object.entries(specs)){
   assert(!map[slug].grade.startsWith('고2')&&!map[slug].grade.startsWith('고3'));
   for(const c of spec.codes){assert(source.includes('['+c+']'),c);assert(map[slug].codes.includes(c),slug+': missing map code '+c);assert(!c.startsWith('12'));}
-  for(const{state:s}of states(spec)){const r=spec.view(s);assert(r.svg&&r.text&&r.note&&r.check,slug);assert(!/NaN|undefined/.test(JSON.stringify(r)),slug);assert.equal(r.check.choices.length,3);assert(['0','1','2'].includes(r.check.answer));assert(r.check.why.length>10);count++;}
+  for(const{state:s}of states(spec)){const r=spec.view(s);assert((r.svg||r.media?.items.length)&&r.text&&typeof r.note==='string'&&r.check,slug);assert(!/NaN|undefined/.test(JSON.stringify(r)),slug);assert.equal(r.check.choices.length,3);assert(['0','1','2'].includes(r.check.answer));assert(r.check.why.length>10);count++;}
  }
  console.log(count+' core state/observation/check combinations verified');
 });
@@ -58,7 +58,7 @@ test('all required observation controls, wrong/correct answers and resets work i
     const cases=states(spec).map(({state,fields})=>({state,fields:fields.map(f=>f.key),expected:spec.view(state)}));
     const checks=await page.evaluate(cases=>{const errors=[];let n=0;const section=document.querySelector('.curriculum-supplement');for(const c of cases){for(const key of c.fields){const b=section.querySelector(`[data-supplement-choice="${key}"][data-value="${c.state[key]}"]`);if(!b){errors.push('Missing '+key+':'+c.state[key]);continue;}b.click();}
       if(section.querySelector('.supplement-observation').textContent!==c.expected.text)errors.push('Observation mismatch '+JSON.stringify(c.state));
-      for(const i of ['0','1','2']){section.querySelector(`[data-check-answer="${i}"]`).click();const feedback=section.querySelector('.supplement-check-feedback');if(feedback.dataset.correct!==String(i===c.expected.check.answer))errors.push('Wrong grading '+i);if(!feedback.textContent.includes(c.expected.check.why))errors.push('Missing explanation');}
+      for(const i of ['0','1','2'].filter(i=>i!==c.expected.check.answer).concat(c.expected.check.answer)){section.querySelector(`[data-check-answer="${i}"]`).click();const feedback=section.querySelector('.supplement-check-feedback');const correct=i===c.expected.check.answer;if(feedback.dataset.correct!==String(correct))errors.push('Wrong grading '+i);if(feedback.textContent.includes(c.expected.check.why)!==correct)errors.push('Explanation must appear only after correct answer');if(!correct&&section.querySelector(`[data-check-answer="${c.expected.check.answer}"]`).disabled)errors.push('Correct retry was locked');}
       if(/NaN|undefined/.test(section.textContent))errors.push('Invalid number');n++;
      }section.querySelector('.supplement-reset').click();return{errors,n,state:window.__scienceSupplement.getState(),overflow:document.documentElement.scrollWidth>innerWidth+1};},cases);
     assert.deepEqual(checks.errors,[],slug);assert.equal(checks.overflow,false,slug);for(const[key,value]of Object.entries(spec.initial))assert.equal(checks.state[key],value,slug+' reset '+key);assert.deepEqual(errors,[],slug);total+=checks.n;

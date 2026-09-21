@@ -1265,7 +1265,7 @@ for(const room of Object.values(store.state?.rooms||{})){
   if(room.activeMission?.studyTargets && PlaceStudy.upgradeMission(room.activeMission,studyQuestionPool()))store.scheduleSave();
 }
 function buildStudyTargets(keys) {
-  if(!Array.isArray(keys)||keys.length<1||keys.length>5||new Set(keys).size!==keys.length)throw Error('도시·발견물을 중복 없이 1~5곳 선택하세요.');
+  if(!Array.isArray(keys)||keys.length<1||keys.length>3||new Set(keys).size!==keys.length)throw Error('도시·발견물을 중복 없이 1~3곳 선택하세요.');
   const pool=studyQuestionPool();
   return keys.map(key=>{const t=studyTarget(key);return {...t,questions:PlaceStudy.createQuestions(t,pool)};});
 }

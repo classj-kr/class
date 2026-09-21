@@ -21,7 +21,7 @@ test('all supplement choices return finite, curriculum-referenced observations',
   while(pending.length){const state=pending.pop(),fields=typeof spec.fields==='function'?spec.fields(state):spec.fields;
    for(const f of fields)if(!f.items.some(x=>x.value===state[f.key]))state[f.key]=f.items[0].value;
    const key=JSON.stringify(state);if(seen.has(key))continue;seen.add(key);
-   const result=spec.view(state);assert(result.svg&&result.text&&result.note,slug);assert(!/NaN|undefined/.test(JSON.stringify(result)),slug+': '+key);
+   const result=spec.view(state);assert((result.svg||result.media?.items.length)&&result.text&&typeof result.note==='string',slug);assert(!/NaN|undefined/.test(JSON.stringify(result)),slug+': '+key);
    for(const f of fields)for(const choice of f.items)pending.push({...state,[f.key]:choice.value});
   }
   assert(seen.size>1,slug);console.log(slug+': '+seen.size+' valid states');
