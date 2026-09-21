@@ -182,14 +182,20 @@ function expressionText(operands, operators) {
 const questions = [];
 const seen = new Set();
 
-function add({ id, grade, unit, prompt, sentence, answer, wrongs, explanation }) {
+// 순위전 서버는 보기를 120자까지 받는다(quizrace.js). 식이 깨져 들어오는 것도 막는다.
+function isSaneLatex(text) {
+  if (text.length > 110 || /undefined|NaN|Infinity/.test(text)) return false;
+  return (text.match(/{/g) ?? []).length === (text.match(/}/g) ?? []).length;
+}
+
+function add({ id, grade, unit, prompt, sentence, answer, wrongs, explanation, math = false }) {
   const correct = String(answer);
   const choices = [];
   for (const candidate of wrongs) {
     if (candidate === null || candidate === undefined) continue;
     const text = String(candidate);
     if (!text || text === correct || choices.includes(text)) continue;
-    if (!/^-?[\d./가-힣 ]+$/.test(text)) continue;
+    if (math ? !isSaneLatex(text) : !/^-?[\d./가-힣 ]+$/.test(text)) continue;
     choices.push(text);
     if (choices.length === 3) break;
   }
@@ -754,9 +760,194 @@ for (const seed of [20261301, 20261302, 20261303, 20261304, 20261305, 20261306])
   }
 }
 
+// ── 중·고등 ─────────────────────────────────────────────
+//
+// 중·고등 학습지 생성기는 선택지와 풀이까지 만들어 준다. 두 가지 모양이 있다.
+//   가. { latex, answerLatex, distractors[], solutionHint }
+//   나. { label, prompt, latex, correctLatex, choices: [{ latex, correct }] }
+// 순위전 화면은 KaTeX 를 그리므로(learning/class-race/app.js) 식을 $…$ 로 감싸
+// 그대로 보낸다. 오답 보기도 학습지가 쓰던 것을 그대로 쓴다. 학년 이름은
+// 학습지 차례표(lib/arithmetic-worksheets.ts)가 쓰는 말 그대로 적는다.
+
+const SECONDARY_SEEDS = [20260901, 20261015, 20261123, 20260217];
+
+// 중학 핵심 연산은 한 생성기가 중1~중3을 함께 낸다. 갈래마다 학년을 적어 둔다.
+const MIDDLE_CORE_GRADE = {
+  "prime-factorization": "중1", "gcd-lcm": "중1", "linear-equation": "중1", "linear-equation-application": "중1",
+  "repeating-decimal": "중2", "exponent-laws": "중2", "monomial-multiply": "중2", "monomial-divide": "중2",
+  "monomial-comprehensive": "중2", "polynomial-add-subtract": "중2", "linear-inequality": "중2",
+  "linear-inequality-application": "중2", "simultaneous-substitution": "중2", "simultaneous-elimination": "중2",
+  "simultaneous-application": "중2", "simultaneous-special": "중2",
+  "square-roots-real": "중3", "radical-calculation": "중3", "polynomial-mul": "중3",
+};
+
+const { targetQuestion } = await lib("worksheet-question");
+
+const SECONDARY_SOURCES = [
+  { lib: "middle-core-workouts", fn: "createMiddleCoreProblemSet", kinds: "MIDDLE_CORE_KINDS", titles: "MIDDLE_CORE_TITLES", grade: (kind) => MIDDLE_CORE_GRADE[kind] ?? "중2" },
+  { lib: "middle-curriculum-workouts", fn: "createMiddleCurriculumProblemSet", kinds: "MIDDLE_CURRICULUM_KINDS", titles: "MIDDLE_CURRICULUM_TITLES", grades: "MIDDLE_CURRICULUM_GRADES" },
+  { lib: "middle-rational-add-subtract", fn: "createMiddleRationalProblemSet", grade: "중1", unit: "정수와 유리수의 덧셈·뺄셈" },
+  { lib: "middle-rational-multiply-divide", fn: "createMiddleRationalMultiplyProblemSet", grade: "중1", unit: "정수와 유리수의 곱셈·나눗셈" },
+  { lib: "middle-rational-mixed", fn: "createMiddleRationalMixedProblemSet", grade: "중1", unit: "정수와 유리수의 혼합계산" },
+  { lib: "middle-factorization-workouts", fn: "createMiddleFactorizationProblemSet", kinds: "MIDDLE_FACTORIZATION_KINDS", titles: "MIDDLE_FACTORIZATION_TITLES", grade: "중3" },
+  { lib: "middle-quadratic-equation-workouts", fn: "createMiddleQuadraticEquationProblemSet", kinds: "MIDDLE_QUADRATIC_EQUATION_KINDS", titles: "MIDDLE_QUADRATIC_EQUATION_TITLES", grade: "중3" },
+  { lib: "middle-quadratic-function-workouts", fn: "createMiddleQuadraticFunctionProblemSet", kinds: "MIDDLE_QUADRATIC_FUNCTION_KINDS", titles: "MIDDLE_QUADRATIC_FUNCTION_TITLES", grade: "중3" },
+  { lib: "middle-trigonometry-workouts", fn: "createMiddleTrigonometryProblemSet", kinds: "MIDDLE_TRIGONOMETRY_KINDS", titles: "MIDDLE_TRIGONOMETRY_TITLES", grade: "중3" },
+  { lib: "middle-circle-properties-workouts", fn: "createMiddleCirclePropertiesProblemSet", kinds: "MIDDLE_CIRCLE_PROPERTIES_KINDS", titles: "MIDDLE_CIRCLE_PROPERTIES_TITLES", grade: "중3" },
+  { lib: "middle-statistics-workouts", fn: "createMiddleStatisticsProblemSet", kinds: "MIDDLE_STATISTICS_KINDS", titles: "MIDDLE_STATISTICS_TITLES", grade: "중3" },
+
+  { lib: "polynomial-worksheets", fn: "createPolynomialProblemSet", grade: "공수1", unit: "다항식의 연산" },
+  { lib: "polynomial-division-remainder-workouts", fn: "createPolynomialDivisionProblems", grade: "공수1", unit: "다항식의 나눗셈·조립제법" },
+  { lib: "polynomial-identity-remainder-workouts", fn: "createPolynomialIdentityRemainderProblems", grade: "공수1", unit: "항등식과 나머지정리" },
+  { lib: "high-cubic-factorization-workouts", fn: "createHighCubicFactorizationProblemSet", grade: "공수1", unit: "세제곱의 합·차 인수분해" },
+  { lib: "high-advanced-factorization-workouts", fn: "createHighAdvancedFactorizationProblems", grade: "공수1", unit: "고차식·대칭식 인수분해" },
+  { lib: "rational-expression-worksheets", fn: "createRationalExpressionProblemSet", grade: "공수1", unit: "분수식의 계산" },
+  { lib: "complex-number-workouts", fn: "createComplexProblemSet", grade: "공수1", unit: "복소수" },
+  { lib: "exponent-radical-worksheets", fn: "createExponentRadicalProblemSet", grade: "공수1", unit: "지수와 근호" },
+  { lib: "quadratic-foundation-workouts", fn: "createQuadraticRootRelationProblems", grade: "공수1", unit: "이차방정식: 판별식·근과 계수" },
+  { lib: "quadratic-foundation-workouts", fn: "createQuadraticFunctionRelationProblems", grade: "공수1", unit: "이차방정식과 이차함수" },
+  { lib: "quadratic-foundation-workouts", fn: "createSimultaneousQuadraticProblems", grade: "공수1", unit: "연립이차방정식" },
+  { lib: "cubic-quartic-equation-workouts", fn: "createCubicQuarticEquationProblems", grade: "공수1", unit: "삼차방정식과 사차방정식" },
+  { lib: "equation-workouts", fn: "createEquationProblemSet", grade: "공수1", unit: "유리·무리·절댓값 방정식" },
+  { lib: "inequality-workouts", fn: "createInequalityProblemSet", grade: "공수1", unit: "연립·절댓값·이차부등식" },
+  { lib: "permutations-combinations-workouts", fn: "createCommonCountingProblemSet", grade: "공수1", unit: "경우의 수·순열·조합" },
+  { lib: "matrix-workouts", fn: "createMatrixProblems", grade: "공수1", unit: "행렬의 뜻과 기본 연산" },
+
+  // 좌표·원의 방정식·유리함수처럼 답을 적어 넣는 학습지는 보기가 없어 넣지 않았다.
+  { lib: "sets-propositions-workouts", fn: "createLogicProblemSet", grade: "공수2", unit: "집합의 연산과 원소 개수" },
+  { lib: "function-foundation-workouts", fn: "createFunctionFoundationProblemSet", grade: "공수2", unit: "합성함수와 역함수" },
+
+  { lib: "logarithm-workouts", fn: "createLogarithmProblemSet", grade: "대수", unit: "로그의 값과 성질" },
+  { lib: "exponential-log-function-workouts", fn: "createExponentialLogFunctionProblems", grade: "대수", unit: "지수함수·로그함수 계산과 활용" },
+  { lib: "exponential-log-equation-workouts", fn: "createExponentialLogEquationProblemSet", grade: "대수", unit: "지수·로그 방정식" },
+  { lib: "foundation-generated-workouts", fn: "createRadianArcSectorProblems", grade: "대수", unit: "일반각·호도법·부채꼴" },
+  { lib: "sine-cosine-law-workouts", fn: "createSineCosineLawProblems", grade: "대수", unit: "사인법칙과 코사인법칙" },
+  { lib: "sequence-workouts", fn: "createSequenceSet", grade: "대수", unit: "등차수열과 등비수열" },
+  { lib: "financial-sequence-workouts", fn: "createFinancialSequenceProblems", grade: "대수", unit: "등비수열의 활용" },
+  { lib: "sigma-recurrence-workouts", fn: "createSigmaRecurrenceSet", grade: "대수", unit: "시그마와 점화식" },
+  { lib: "mathematical-induction-workouts", fn: "createMathematicalInductionProblems", grade: "대수", unit: "수학적 귀납법" },
+
+  { lib: "limit-continuity-workouts", fn: "createLimitSet", grade: "미적1", unit: "함수의 극한과 연속" },
+  { lib: "derivative-workouts", fn: "createDerivativeProblemSet", grade: "미적1", unit: "다항함수의 미분" },
+  { lib: "derivative-application-workouts", fn: "createDerivativeApplicationSet", grade: "미적1", unit: "미분의 활용" },
+  { lib: "mean-value-theorem-workouts", fn: "createMeanValueTheoremProblems", grade: "미적1", unit: "평균값정리" },
+  { lib: "polynomial-integral-workouts", fn: "createIntegralSet", grade: "미적1", unit: "다항함수의 적분" },
+
+  { lib: "sequence-limits-series-workouts", fn: "createSequenceLimitsSeriesProblems", grade: "미적2", unit: "수열의 극한과 급수" },
+  { lib: "exponential-log-derivative-workouts", fn: "createExponentialLogDerivativeProblemSet", grade: "미적2", unit: "지수·로그함수 미분" },
+  { lib: "advanced-differentiation-workouts", fn: "createAdvancedDifferentiationProblems", grade: "미적2", unit: "매개변수·음함수·역함수 미분" },
+  { lib: "second-derivative-application-workouts", fn: "createSecondDerivativeApplicationProblems", grade: "미적2", unit: "이계도함수·변곡점·그래프 개형" },
+  { lib: "integration-technique-workouts", fn: "createIntegrationTechniqueProblemSet", grade: "미적2", unit: "치환적분과 부분적분" },
+  { lib: "definite-integral-workouts", fn: "createDefiniteIntegralProblemSet", grade: "미적2", unit: "정적분 계산" },
+  { lib: "definite-integral-application-workouts", fn: "createDefiniteIntegralApplicationSet", grade: "미적2", unit: "정적분의 활용" },
+  { lib: "arc-length-surface-area-workouts", fn: "createArcLengthProblems", grade: "미적2", unit: "곡선의 길이" },
+  { lib: "solid-of-revolution-workouts", fn: "createSolidOfRevolutionProblems", grade: "미적2", unit: "회전체의 부피" },
+
+  { lib: "geometry-generated-workouts", fn: "createConicProblems", grade: "기하", unit: "이차곡선의 방정식" },
+  { lib: "geometry-generated-workouts", fn: "createConicMoveTangentProblems", grade: "기하", unit: "이차곡선의 접선" },
+  { lib: "geometry-generated-workouts", fn: "createPlaneVectorProblems", grade: "기하", unit: "평면벡터의 연산" },
+  { lib: "geometry-generated-workouts", fn: "createProjectionProblems", grade: "기하", unit: "벡터의 내적과 정사영" },
+  { lib: "geometry-generated-workouts", fn: "createVectorGeometryProblems", grade: "기하", unit: "도형과 벡터" },
+  { lib: "geometry-generated-workouts", fn: "createSpaceGeometryProjectionProblems", grade: "기하", unit: "공간도형의 위치 관계와 정사영" },
+  { lib: "geometry-generated-workouts", fn: "createSpaceCoordinateProblems", grade: "기하", unit: "공간좌표" },
+];
+
+function problemsOf(result) {
+  if (Array.isArray(result)) return result.flat(Infinity);
+  const list = result?.problems ?? Object.values(result ?? {}).find(Array.isArray);
+  return Array.isArray(list) ? list.flat(Infinity) : [];
+}
+
+// 문제를 묻는 말. 학습지가 적어 둔 말을 쓰되, 순위전은 이 자리에 수식을 그리지
+// 못하므로 $ 를 떼고, 떼어도 남는 수식 기호가 있으면 갈래 이름으로 묻는다.
+function askText(problem, unit) {
+  const raw = String(problem.question ?? problem.prompt ?? "").trim();
+  const plain = raw.replace(/\$/g, "");
+  if (plain && !plain.includes("\\")) return plain.slice(0, 110);
+  const label = String(problem.label ?? "").trim();
+  // "완전제곱식" → "완전제곱식은?" 처럼 학습지가 쓰는 말투로 묻는다.
+  return (label ? targetQuestion(label) : `${unit}의 답을 고르세요.`).slice(0, 110);
+}
+
+// 학습지마다 보기를 적어 두는 자리가 다르다. 정답과 오답을 꺼내 온다.
+function choicesOf(problem) {
+  if (Array.isArray(problem.distractors)) {
+    return { answer: problem.answerLatex ?? problem.correctLatex, wrongs: problem.distractors };
+  }
+  if (Array.isArray(problem.options) && Number.isInteger(problem.answerIndex)) {
+    return {
+      answer: problem.options[problem.answerIndex],
+      wrongs: problem.options.filter((_, index) => index !== problem.answerIndex),
+    };
+  }
+  if (Array.isArray(problem.choices)) {
+    const answer = problem.answerLatex ?? problem.correctLatex
+      ?? problem.choices.find((choice) => choice?.correct)?.latex
+      ?? problem.answer;
+    return {
+      answer,
+      wrongs: problem.choices
+        .map((choice) => (typeof choice === "string" ? choice : choice?.latex))
+        .filter((latex) => latex && latex !== String(answer)),
+    };
+  }
+  return { answer: problem.answerLatex ?? problem.correctLatex, wrongs: [] };
+}
+
+function addLatexProblem({ problem, grade, unit, idPrefix }) {
+  const { answer: answerLatex, wrongs: distractors } = choicesOf(problem);
+  const body = problem.latex;
+  if (!answerLatex || !body) return;
+  const answer = `$${answerLatex}$`;
+  const sentence = `$${body}$`;
+  if (!isSaneLatex(answer) || sentence.length > 380) return;
+  add({
+    id: `${idPrefix}-${hash(`${unit}${body}${answerLatex}`)}`,
+    grade,
+    unit,
+    prompt: askText(problem, unit),
+    sentence,
+    answer,
+    wrongs: distractors.filter(Boolean).map((latex) => `$${latex}$`),
+    explanation: String(problem.solutionHint ?? problem.label ?? unit).slice(0, 200),
+    math: true,
+  });
+}
+
+for (const source of SECONDARY_SOURCES) {
+  const loaded = await lib(source.lib);
+  const kinds = source.kinds ? loaded[source.kinds] : [null];
+  const titles = source.titles ? loaded[source.titles] : null;
+  const grades = source.grades ? loaded[source.grades] : null;
+  for (const kind of kinds ?? [null]) {
+    const unit = source.unit ?? titles?.[kind] ?? String(kind);
+    const grade = grades?.[kind] ?? (typeof source.grade === "function" ? source.grade(kind) : source.grade);
+    if (!grade || !unit) continue;
+    for (const seed of SECONDARY_SEEDS) {
+      let result;
+      try {
+        result = kind === null ? loaded[source.fn](seed) : loaded[source.fn](kind, seed);
+      } catch (cause) {
+        throw new Error(`${source.lib}.${source.fn}(${kind ?? ""}) 가 문제를 만들지 못했습니다: ${cause.message}`);
+      }
+      for (const problem of problemsOf(result)) {
+        addLatexProblem({ problem, grade, unit, idPrefix: source.lib });
+      }
+    }
+  }
+}
+
 // ── 파일로 내보내기 ──────────────────────────────────────
 
-questions.sort((left, right) => left.grade.localeCompare(right.grade, "ko")
+const GRADE_ORDER = ["초1", "초2", "초3", "초4", "초5", "초6", "중1", "중2", "중3", "공수1", "공수2", "대수", "미적1", "미적2", "기하"];
+const gradeRank = (grade) => {
+  const rank = GRADE_ORDER.indexOf(grade);
+  return rank < 0 ? GRADE_ORDER.length : rank;
+};
+
+// 교사 화면의 차시 차례가 이 차례를 그대로 따른다. 초1부터 기하까지 학교 차례대로.
+questions.sort((left, right) => gradeRank(left.grade) - gradeRank(right.grade)
+  || left.grade.localeCompare(right.grade, "ko")
   || left.unit.localeCompare(right.unit, "ko")
   || left.id.localeCompare(right.id, "en"));
 
@@ -785,6 +976,6 @@ ${body}
 `, "utf8");
 
 console.log(`${questions.length}문제를 ${path.relative(SITE_ROOT, OUTPUT)} 에 적었습니다.`);
-for (const [unit, count] of [...byUnit].sort((left, right) => left[0].localeCompare(right[0], "ko"))) {
+for (const [unit, count] of byUnit) {
   console.log(`  ${unit} · ${count}문제`);
 }

@@ -141,9 +141,11 @@ test("모든 연산 문항은 필수 정보와 고를 만한 보기를 가진다
     assert.ok(question.choices.length >= 3 && question.choices.length <= 4, `${where}: 보기가 ${question.choices.length}개입니다.`);
     assert.equal(new Set(question.choices).size, question.choices.length, `${where}: 보기가 겹칩니다.`);
     assert.ok(question.choices.includes(question.answer), `${where}: 보기에 정답이 없습니다.`);
+    // 서버가 받는 길이는 120자다(quizrace.js). 숫자 답은 그보다 훨씬 짧아야 한다.
+    const longest = question.answer.includes("$") ? 120 : 20;
     for (const choice of question.choices) {
       assert.ok(String(choice).trim(), `${where}: 빈 보기가 있습니다.`);
-      assert.ok(String(choice).length <= 20, `${where}: 보기가 너무 깁니다(${choice}).`);
+      assert.ok(String(choice).length <= longest, `${where}: 보기가 너무 깁니다(${choice}).`);
     }
     assert.ok(question.category === undefined, `${where}: category는 apps.js에서 만듭니다.`);
   }
@@ -155,6 +157,22 @@ test("문제 글을 그대로 계산하면 적어 둔 정답이 나온다", () =
 
   for (const question of questions) {
     const where = `${question.id} · ${question.sentence} → ${question.answer}`;
+
+    // 중·고등 문제는 식이라 여기서 되풀어 볼 수 없다. 대신 답과 보기가 학습지
+    // 생성기가 준 식 그대로 온전히 실려 있는지 본다(학습지 쪽 검사가 값을 맡는다).
+    if (question.sentence.includes("$")) {
+      assert.match(question.sentence, /^\$.+\$$/, `${where}: 식이 $…$ 로 감싸이지 않았습니다.`);
+      assert.match(question.answer, /^\$.+\$$/, `${where}: 정답이 $…$ 로 감싸이지 않았습니다.`);
+      for (const choice of question.choices) {
+        assert.match(choice, /^\$.+\$$/, `${where}: 보기 ${choice}가 $…$ 로 감싸이지 않았습니다.`);
+        assert.equal((choice.match(/{/g) ?? []).length, (choice.match(/}/g) ?? []).length, `${where}: 보기 ${choice}의 중괄호가 맞지 않습니다.`);
+        assert.doesNotMatch(choice, /undefined|NaN|Infinity/, `${where}: 보기 ${choice}가 깨졌습니다.`);
+      }
+      assert.doesNotMatch(question.prompt, /[$\\]/, `${where}: 묻는 말에 그려지지 않는 수식이 남았습니다.`);
+      checked += 1;
+      continue;
+    }
+
     const answer = parseNumber(question.answer);
     assert.ok(answer, `${where}: 정답을 읽을 수 없습니다.`);
 
