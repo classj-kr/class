@@ -8,12 +8,22 @@ const fs = require("node:fs");
 const path = require("node:path");
 
 const indexHtml = fs.readFileSync(path.join(__dirname, "..", "index.html"), "utf8");
+const roomHtml = fs.readFileSync(path.join(__dirname, "..", "room", "index.html"), "utf8");
+const roomApp = fs.readFileSync(path.join(__dirname, "..", "room", "app.js"), "utf8");
 
-// 1. 버튼에 표가 붙어 있어야 한다.
-const raceLink = indexHtml.match(/<a[^>]*href="learning\/class-race\/"[^>]*>/);
-assert.ok(raceLink, "학급 순위전 링크를 찾지 못했다.");
-assert.match(raceLink[0], /data-always-open="true"/,
-  "학급 순위전은 늘 열어 두는 버튼으로 표시해야 한다.");
+// 1. 순위전으로 가는 문은 방번호 입구 하나다. 학생은 코드를 넣으면 서버가
+//    순위전인지 알아보고 보내 주고(voting.js 의 resolve), 코드가 없는 선생님은
+//    그 화면에서 학급을 만든다. 그 입구에 늘 열어 두는 표가 붙어 있어야 한다.
+const roomLink = indexHtml.match(/<a[^>]*href="\/room\/"[^>]*>/);
+assert.ok(roomLink, "방번호 입구 링크를 찾지 못했다.");
+assert.match(roomLink[0], /data-always-open="true"/,
+  "방번호 입구는 늘 열어 두는 버튼으로 표시해야 한다.");
+assert.doesNotMatch(indexHtml, /href="learning\/class-race\/"/,
+  "순위전 입구를 첫 화면에 따로 두지 않는다. 방번호 입구 하나로 들어간다.");
+assert.match(roomHtml, /id="createRaceLink"[^>]*class="[^"]*is-hidden[^"]*"[^>]*href="\/learning\/class-race\/teacher"/,
+  "방번호 화면의 학급 만들기 문은 처음에는 숨어 있어야 한다.");
+assert.match(roomApp, /session\?\.isTeacher === true \|\| session\?\.user\?\.role === "admin"/,
+  "교사이거나 사이트 관리자일 때만 학급 만들기를 열어야 한다.");
 
 // 2. 잠금 표시를 그리는 곳에서 먼저 걸러야 한다.
 assert.match(indexHtml, /hubLinks\.forEach\(\(link\) => \{[\s\S]{0,400}?link\.dataset\.alwaysOpen === 'true'/,
