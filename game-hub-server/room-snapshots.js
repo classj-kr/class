@@ -34,11 +34,21 @@ function clientMatchesToken(client, clientToken) {
   return crypto.timingSafeEqual(Buffer.from(expected), Buffer.from(actual));
 }
 
+// 저장하면 안 되는 값인가. 적어 둔 이름에 더해, 이름이 Timer 로 끝나거나 실제로
+// setTimeout 핸들처럼 생긴 것도 거른다. 하나라도 섞이면 그 방은 저장 자체가 실패한다.
+function isTransientRoomValue(key, value) {
+  if (TRANSIENT_ROOM_KEYS.has(key)) return true;
+  if (/Timer$/.test(key)) return true;
+  if (typeof value === "function") return true;
+  return Boolean(value) && typeof value === "object"
+    && typeof value.unref === "function" && typeof value.refresh === "function";
+}
+
 function snapshotRoom(room) {
   if (!room || typeof room !== "object" || !room.gameId || !room.roomCode || !room.hostId) return null;
   const state = {};
   for (const [key, value] of Object.entries(room)) {
-    if (!TRANSIENT_ROOM_KEYS.has(key)) state[key] = value;
+    if (!isTransientRoomValue(key, value)) state[key] = value;
   }
   const participants = [];
   for (const [playerId, client] of room.clients || []) {
@@ -79,4 +89,4 @@ function restoreRoom(snapshot, options = {}) {
   return { ...state, clients };
 }
 
-module.exports = { clientMatchesToken, hashClientToken, restoreRoom, snapshotRoom };
+module.exports = { clientMatchesToken, hashClientToken, isTransientRoomValue, restoreRoom, snapshotRoom };

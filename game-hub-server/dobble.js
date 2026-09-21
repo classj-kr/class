@@ -71,9 +71,9 @@ function sharedSymbol(cardA, cardB) {
   return cardA.find(symbol => setB.has(symbol)) || null;
 }
 
-// 오답 페널티 길이. 그림 8개를 순서대로 눌러보는 것을 막을 만큼은 길고, 수업 흐름을
-// 끊지 않을 만큼은 짧게 잡았다.
-const WRONG_GUESS_PENALTY_MS = 3000;
+// 오답 페널티 길이. 그림 8개를 순서대로 눌러보는 것을 막을 만큼 길어야 한다.
+// 3초로는 찍어서 눌러보는 것이 여전히 이득이라 10초로 올렸다.
+const WRONG_GUESS_PENALTY_MS = 10000;
 
 const MODES = Object.freeze(["tower", "catalog"]);
 const MODE_LABELS = Object.freeze({ tower: "타워", catalog: "카탈로그" });

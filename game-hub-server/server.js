@@ -2037,6 +2037,7 @@ wss.on("connection", (socket, request) => {
         if (existingRoom.honeycomb) honeycombBroadcast(existingRoom);
         if (existingRoom.drawrelay) drawRelayBroadcast(existingRoom);
         if (existingRoom.expedition) expeditionBroadcast(existingRoom);
+        if (existingRoom.clue) clueBroadcast(existingRoom);
         if (existingRoom.codenames) codenamesBroadcast(existingRoom);
         if (existingRoom.dobble) dobbleBroadcast(existingRoom);
         if (existingRoom.spelling) spellingBroadcast(existingRoom);
@@ -2249,7 +2250,9 @@ wss.on("connection", (socket, request) => {
         if (room.honeycomb) honeycombBroadcast(room);
         if (room.drawrelay) drawRelayBroadcast(room);
         if (room.expedition) expeditionBroadcast(room);
-      if (room.clue) clueBroadcast(room);
+        if (room.clue) clueBroadcast(room);
+        if (room.codenames) codenamesBroadcast(room);
+        if (room.dobble) dobbleBroadcast(room);
         if (room.spelling) spellingBroadcast(room);
         if (room.quizrace) {
           quizraceBroadcast(room);
