@@ -155,8 +155,8 @@ const CHAPTERS = [
                 "art": "05-web.webp",
                 "emoji": "🕸️",
                 "left": [
-                    "어느 저녁이었습니다.",
-                    "해가 기울며 들판이 붉어졌지요. 마야는 반짝이는 것을 보았습니다.",
+                    "어느 한낮이었습니다.",
+                    "햇살이 들판에 가득했지요. 마야는 반짝이는 것을 보았습니다.",
                     "풀잎 사이에 실이 촘촘히 걸려 있었지요. 이슬이 맺혀 보석처럼 빛났습니다.",
                     "\"어머, 참 예쁘다.\""
                 ],
@@ -772,8 +772,8 @@ const EN = {
                     art: '05-web.webp',
                     emoji: '🕸️',
                     left: [
-                        "It was one evening.",
-                        "The sun was going down and the meadow had turned red.",
+                        "It was the middle of the day.",
+                        "The sunlight lay all over the meadow.",
                         "Maya saw something glittering.",
                         "Fine threads were strung between the grass stems.",
                         "Dew hung on them and shone like jewels.",

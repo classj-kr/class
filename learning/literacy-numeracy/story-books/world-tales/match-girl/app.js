@@ -94,7 +94,7 @@ const CHAPTERS = [
                 "right": [
                     "아이는 성냥을 또 하나 꺼냈지요. 이번에도 벽에 대고 죽 그었습니다.",
                     "치익— 불꽃이 벽을 환하게 비췄지요.",
-                    "그러자 벽이 얇은 천처럼 변하더니 그 너머가 훤히 보였습니다."
+                    "그러자 벽이 얇은 천처럼 변하더니 그 너머가 훤히 보였습니다. 난롯불이 타오르고 크리스마스 나무가 반짝이는 방이었지요."
                 ]
             }
         ]
@@ -624,7 +624,7 @@ const EN = {
                         "She took out another and drew it down the wall.",
                         "Ssst —",
                         "The flame lit the whole wall up.",
-                        "And the wall turned as thin as a sheet of cloth, so that she could see right through it."
+                        "And the wall turned as thin as a sheet of cloth, so that she could see right through it — a room with a fire burning and a Christmas tree shining in it."
                     ]
                 }
             ]
