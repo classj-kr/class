@@ -1,0 +1,14 @@
+{
+  "engine": "webkit",
+  "counts": {
+    "evaporation": 6,
+    "samples": 2000,
+    "recrystallization": 288,
+    "respiration": 4,
+    "impacts": 12,
+    "massBalance": 121,
+    "seawater": 36,
+    "moon": 5
+  },
+  "pageErrors": []
+}

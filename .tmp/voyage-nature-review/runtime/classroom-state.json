@@ -1,0 +1,89 @@
+{
+  "version": 10,
+  "rooms": {
+    "4390": {
+      "activeMission": null,
+      "progress": {},
+      "settings": {
+        "paused": false,
+        "locked": false,
+        "roomType": "free",
+        "started": true
+      },
+      "clock": {
+        "gameMinutes": 0
+      },
+      "discoveries": {
+        "상호작용검사": [
+          "batur-caldera",
+          "milford-sound",
+          "chocolate-hills",
+          "palawan-underground-river",
+          "lm-table-mountain"
+        ]
+      },
+      "hunts": {},
+      "host": {
+        "tokenHash": "906198cd7e21876dea0c44d1ad420b3f935fd9b4350742ed38ac614a0b94f3e0",
+        "createdAt": 1789963384282,
+        "lastActiveAt": 1789963384305
+      }
+    },
+    "5034": {
+      "activeMission": null,
+      "progress": {},
+      "settings": {
+        "paused": false,
+        "locked": false,
+        "roomType": "free",
+        "started": true
+      },
+      "clock": {
+        "gameMinutes": 0
+      },
+      "discoveries": {
+        "상호작용검사": [
+          "batur-caldera",
+          "milford-sound",
+          "chocolate-hills",
+          "palawan-underground-river",
+          "lm-table-mountain"
+        ]
+      },
+      "hunts": {},
+      "host": {
+        "tokenHash": "ef4089f690bb984a3631d4aa7b5ba077f46c8a8687d07a05ba30f47332bd9552",
+        "createdAt": 1789964308752,
+        "lastActiveAt": 1789964308808
+      }
+    },
+    "8411": {
+      "activeMission": null,
+      "progress": {},
+      "settings": {
+        "paused": false,
+        "locked": false,
+        "roomType": "free",
+        "started": true
+      },
+      "clock": {
+        "gameMinutes": 0
+      },
+      "discoveries": {
+        "상호작용검사": [
+          "batur-caldera",
+          "milford-sound",
+          "chocolate-hills",
+          "palawan-underground-river",
+          "lm-table-mountain"
+        ]
+      },
+      "hunts": {},
+      "host": {
+        "tokenHash": "352880e98d0ea81813634a0f1ed4b2ea9996d050782539de09a6b1ad7236b70c",
+        "createdAt": 1789966095008,
+        "lastActiveAt": 1789966095033
+      }
+    }
+  }
+}

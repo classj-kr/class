@@ -1,0 +1,81 @@
+{
+  "slug": "cell-membrane",
+  "engine": "webkit",
+  "modes": [
+    "diffusion",
+    "osmosis"
+  ],
+  "cases": 10,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__membraneModel",
+      "methods": [
+        "CONCS",
+        "TEMPS",
+        "SOLUTIONS",
+        "C_IN",
+        "VB",
+        "BURST",
+        "state",
+        "analyse",
+        "render",
+        "countsAt",
+        "volumeAt",
+        "volumeTarget",
+        "burstTime",
+        "runSeconds",
+        "setMode",
+        "set",
+        "setProgress",
+        "runToEnd",
+        "tick",
+        "finish"
+      ]
+    }
+  ],
+  "paint": [],
+  "grades": [
+    {
+      "mode": "diffusion",
+      "results": [
+        {
+          "choice": "far",
+          "visible": true,
+          "text": "이 모형의 예상이 맞았습니다."
+        },
+        {
+          "choice": "mid",
+          "visible": true,
+          "text": "이 모형의 결과와 다릅니다."
+        },
+        {
+          "choice": "same",
+          "visible": true,
+          "text": "이 모형의 결과와 다릅니다."
+        }
+      ]
+    },
+    {
+      "mode": "osmosis",
+      "results": [
+        {
+          "choice": "swell",
+          "visible": true,
+          "text": "이 모형의 예상이 맞았습니다."
+        },
+        {
+          "choice": "same",
+          "visible": true,
+          "text": "이 모형의 결과와 다릅니다."
+        },
+        {
+          "choice": "shrink",
+          "visible": true,
+          "text": "이 모형의 결과와 다릅니다."
+        }
+      ]
+    }
+  ]
+}

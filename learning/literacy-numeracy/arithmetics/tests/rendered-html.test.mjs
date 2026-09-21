@@ -2391,7 +2391,6 @@ test("uses arrived-only mistake-first ranking with correction attempts", async (
   const routeSource = await readFile(new URL("../app/api/arithmetic-race/route.ts", import.meta.url), "utf8");
   const controllerSource = await readFile(new URL("../app/components/arithmetic-race-controller.tsx", import.meta.url), "utf8");
   const rankingSource = await readFile(new URL("../lib/arithmetic-race-ranking.ts", import.meta.url), "utf8");
-  const storeSource = await readFile(new URL("../lib/arithmetic-race-store.ts", import.meta.url), "utf8");
   const schemaSource = await readFile(new URL("../db/schema.ts", import.meta.url), "utf8");
   const migrationSource = await readFile(new URL("../drizzle/0001_youthful_king_cobra.sql", import.meta.url), "utf8");
   const hosting = JSON.parse(await readFile(new URL("../.openai/hosting.json", import.meta.url), "utf8"));
@@ -2401,12 +2400,9 @@ test("uses arrived-only mistake-first ranking with correction attempts", async (
   assert.match(rankingSource, /Number\(a\.mistake_count\)[\s\S]*?- \(Number\(b\.mistake_count\)/);
   assert.match(rankingSource, /Number\(a\.submitted_at\)[\s\S]*?- \(Number\(b\.submitted_at\)/);
   assert.match(routeSource, /const completed = wrongCount === 0/);
-  assert.match(storeSource, /mistake_count = CASE WHEN total_count IS NULL THEN \? ELSE mistake_count END/);
+  assert.match(routeSource, /mistake_count = CASE WHEN total_count IS NULL THEN \? ELSE mistake_count END/);
   assert.match(routeSource, /rank: completed \? ranking\.find/);
   assert.match(routeSource, /hostToken/);
-  assert.doesNotMatch(routeSource, /cloudflare:workers/);
-  assert.match(storeSource, /await import\("cloudflare:workers"\)/);
-  assert.match(storeSource, /return memoryRaceStore\(\);/);
   assert.doesNotMatch(routeSource, /ARITHMETIC_TEACHER_PIN|2468/);
   assert.doesNotMatch(controllerSource, /최종 제출 후에는 답을 고칠 수 없습니다/);
   assert.match(controllerSource, /if \(!result\.completed\) setAttemptMessage/);

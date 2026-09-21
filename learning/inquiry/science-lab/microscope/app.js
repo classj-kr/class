@@ -1,12 +1,15 @@
 'use strict';
 
-/* Magnification and field width follow the stated eyepiece/lens model.
-   Shading and specimen shapes are illustrative, not measured photomicrographs. */
+/* Three facts about a microscope, all of them arithmetic a child can do.
+   Magnification is the two lens powers multiplied. The width you can see is
+   the eyepiece's field number divided by the objective, so raising the power
+   narrows the view in exact proportion. And the light you started with is
+   spread over that magnified image, so brightness falls as the square. */
 
 const SPECIMENS = {
     onion: { name: '양파 표피', mm: 0.35, wide: 0.09, kind: 'brick', tint: 'rgba(214,226,190,.55)', back: 'rgba(60,72,52,.35)', note: '세포벽이 있어 벽돌처럼 반듯합니다' },
     cheek: { name: '입안 상피', mm: 0.06, wide: 0.06, kind: 'blob', tint: 'rgba(226,196,214,.5)', back: 'rgba(70,54,66,.35)', note: '세포벽이 없어 둥글고 제각각입니다' },
-    stoma: { name: '잎의 기공', mm: 0.02, wide: 0.02, kind: 'stoma', tint: 'rgba(150,205,150,.5)', back: 'rgba(48,74,52,.4)', note: '콩팥 모양 공변세포 한 쌍 사이에 기공이 있습니다' },
+    stoma: { name: '잎의 기공', mm: 0.02, wide: 0.02, kind: 'stoma', tint: 'rgba(150,205,150,.5)', back: 'rgba(48,74,52,.4)', note: '숨구멍 둘레의 두 세포가 여닫습니다' },
     para: { name: '짚신벌레', mm: 0.2, wide: 0.09, kind: 'para', tint: 'rgba(200,220,225,.5)', back: 'rgba(46,66,74,.35)', note: '물속을 헤엄쳐 다니는 한 세포짜리 생물' },
 };
 // The field number belongs to the eyepiece: a stronger eyepiece also shows less.
@@ -26,7 +29,7 @@ const fmt = (v, d) => v.toFixed(d).replace('-', '−');
 
 function power(eye, obj) { return eye * obj; }
 function fieldMm(eye, obj) { return EYEPIECES[eye].fn / obj; }
-// Objective-dependent shading only; real brightness also depends on illumination.
+// Against the widest, dimmest-free setting: brightness falls as 1/power².
 function brightness(eye, obj) { return ({4:1,10:0.8,40:0.6})[obj]; } // Illustrative shading, not a photometric law.
 
 function share(spec, eye, obj) { return SPECIMENS[spec].mm / fieldMm(eye, obj); }
@@ -72,9 +75,8 @@ function drawScope(g) {
     // length ran the numbers into each other.
     OBJECTIVES.forEach((o, i) => {
         const on = o === state.obj;
-        const slot = (i - OBJECTIVES.indexOf(state.obj) + 4) % 3;
-        const bx = 74 + slot * 20, len = 12 + i * 7;
-        g.appendChild(el('rect', { x: bx, y: 96, width: 15, height: len, rx: 3, 'data-objective': o, class: `lens-barrel${on ? ' on' : ''}` }));
+        const bx = 74 + i * 20, len = 12 + i * 7;
+        g.appendChild(el('rect', { x: bx, y: 96, width: 15, height: len, rx: 3, class: `lens-barrel${on ? ' on' : ''}` }));
         g.appendChild(el('text', { x: bx + 7.5, y: 131, 'text-anchor': 'middle', class: 'tiny-label', style: on ? 'fill:#059669' : '' }, String(o)));
     });
     g.appendChild(el('text', { x: 66, y: 131, 'text-anchor': 'end', class: 'tiny-label' }, '대물'));
@@ -149,15 +151,9 @@ function drawField(g) {
         const n = Math.ceil((FIELD.r * 2) / step) + 2;
         for (let r = 0; r < n; r += 1) for (let c = 0; c < n; c += 1) {
             const x = FIELD.cx - FIELD.r + (c + ((r % 2) ? 0.5 : 0)) * step, y = FIELD.cy - FIELD.r + r * step;
-            const pair = el('g', { transform: `translate(${x} ${y}) scale(${w})`, 'data-specimen': 'stoma' });
-            pair.appendChild(el('ellipse', { cx: 0, cy: 0, rx: .12, ry: .31, class: 'pore' }));
-            for (const side of [-1, 1]) {
-                const cell = el('g', { transform: `scale(${side} 1)` });
-                cell.appendChild(el('path', { d: 'M0 -.47 C-.62 -.58 -.7 .56 0 .47 C-.30 .26 -.30 -.26 0 -.47Z', class: 'guard-cell', style: `fill:${s.tint};stroke-width:.055` }));
-                if (w > 8) for (const [cx, cy] of [[-.24,-.32],[-.36,-.1],[-.36,.14],[-.24,.33]]) cell.appendChild(el('circle', {cx,cy,r:.045,fill:'#3e743f',class:'chloroplast'}));
-                pair.appendChild(cell);
-            }
-            holder.appendChild(pair);
+            holder.appendChild(el('ellipse', { cx: x - w * 0.28, cy: y, rx: w * 0.3, ry: w * 0.55, class: 'guard-cell', style: `fill:${s.tint}` }));
+            holder.appendChild(el('ellipse', { cx: x + w * 0.28, cy: y, rx: w * 0.3, ry: w * 0.55, class: 'guard-cell', style: `fill:${s.tint}` }));
+            if (w > 10) holder.appendChild(el('ellipse', { cx: x, cy: y, rx: w * 0.11, ry: w * 0.4, class: 'pore' }));
         }
     } else {
         const step = w * 1.5;
@@ -224,7 +220,7 @@ function drawGraph(g) {
         g.appendChild(el('text', { x: cx, y: yBot + 14, 'text-anchor': 'middle', class: 'axis-text', style: on ? 'fill:#059669' : '' }, `${mag}배`));
     });
 
-    g.appendChild(el('text', { x: (x0 + x1) / 2, y: 172, 'text-anchor': 'middle', class: 'legend-text figure-caption', style: 'fill:#475569' },
+    g.appendChild(el('text', { x: (x0 + x1) / 2, y: 172, 'text-anchor': 'middle', class: 'legend-text', style: 'fill:#475569' },
         `막대 위의 숫자는 ${a.spec.name}가 가로로 몇 개 들어가는지입니다`));
     g.appendChild(el('text', { x: (x0 + x1) / 2, y: 191, 'text-anchor': 'middle', class: 'axis-title' }, '배율 — 세로는 한눈에 보이는 너비 (mm)'));
 }
@@ -246,7 +242,7 @@ function updateReadout() {
     const rows = [
         ['배율 계산', `접안 ${state.eye} × 대물 ${state.obj} = ${a.mag}배`, false],
         ['모형의 세포 크기', `${fmt(a.spec.mm, 2)} mm · ${Math.round(a.spec.mm * 1000)} μm`, false],
-        ['배율로 환산한 길이', `${fmt(a.apparent, 1)} mm`, false],
+        ['눈에 보이는 크기', `${fmt(a.apparent, 1)} mm`, false],
         ['가로로 몇 개', a.overflows ? '한 개도 다 안 들어옵니다' : `${fmt(a.across, a.across < 10 ? 1 : 0)}개`, false],
         ['이 세포의 특징', a.spec.note, false],
     ];
@@ -269,10 +265,23 @@ function explain(a) {
         $('predictionResult').className = 'prediction-result';
     }
 
-    let s = `접안 ${state.eye}배 × 대물 ${state.obj}배 = ${a.mag}배입니다. `;
-    s += `한눈에 보이는 너비는 ${a.field >= 1 ? `${fmt(a.field, 2)} mm` : `${Math.round(a.field * 1000)} μm`}입니다. `;
-    s += '배율을 높이면 표본은 커 보이고 관찰 범위는 좁아집니다. 낮은 배율로 먼저 찾은 뒤 배율을 높입니다. ';
-    s += a.spec.note + '.';
+    let s = `접안렌즈 ${state.eye}배에 대물렌즈 ${state.obj}배를 끼웠으니 배율은 ${state.eye} × ${state.obj} = ${a.mag}배입니다. `;
+    s += `${a.spec.name}의 모형 크기는 ${Math.round(a.spec.mm * 1000)} μm, 곧 ${fmt(a.spec.mm, 2)} mm인데 ${a.mag}배로 보면 ${fmt(a.apparent, 1)} mm짜리로 보입니다. `;
+    s += `이 배율에서 한눈에 들어오는 너비는 ${a.field >= 1 ? `${fmt(a.field, 2)} mm` : `${Math.round(a.field * 1000)} μm`}이므로, `;
+    s += a.overflows
+        ? `${a.spec.name} 한 개도 다 담기지 않습니다. 너무 크게 본 셈입니다. `
+        : `${a.spec.name}가 가로로 ${fmt(a.across, a.across < 10 ? 1 : 0)}개쯤 들어갑니다. `;
+
+    if (v === 'p1') {
+        s += `화면을 꽤 차지하므로 모양을 또렷이 살펴볼 수 있습니다. `;
+    } else if (v === 'p2') {
+        s += `화면에서 차지하는 자리가 작아 있는 줄은 알겠지만 모양까지는 알아보기 어렵습니다. 대물렌즈를 더 높은 것으로 바꿔 보세요. `;
+    } else {
+        s += `화면에서 차지하는 자리가 너무 작아 무엇이 있는지도 알아보기 어렵습니다. 대물렌즈를 높은 것으로 바꿔야 합니다. `;
+    }
+    s += `배율을 올리면 크게 보이지만 그만큼 보이는 범위가 좁아집니다. 대물렌즈를 4배에서 40배로 바꾸면 너비가 정확히 10분의 1이 됩니다. `;
+    s += "실제 밝기는 렌즈와 조명 조건에 따라 달라집니다. 화면이 어두우면 조명과 조리개를 조절합니다. ";
+    s += `그래서 현미경은 늘 낮은 배율로 먼저 찾아 가운데에 놓고, 그다음에 배율을 올립니다. ${a.spec.note}.`;
     $('elementaryExplanation').textContent = s;
 }
 

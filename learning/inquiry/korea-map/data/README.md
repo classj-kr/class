@@ -1,8 +1,5 @@
 # 국내 지도 자료 출처
 
-- `watersheds.geojson`: HydroBASINS Asia level 6 v1.c의 10개 내륙 유역 파생 자료, 12개 하천 이름에 대응. 원본 ID·SHA-256·수정 내용 포함. 공식 고시 유역이 아니며 한강·영산강 하구 등 일부는 원 자료에서 바다로 처리되어 빠진다. `scripts/build-korea-watersheds.py`로 재현한다.
-  **HydroSHEDS 자체 이용조건** 적용(CC BY 아님). `watershed-notice.html`의 출처·필수 저작권 문구와 `watershed-license.pdf` Appendix A 전문을 함께 유지한다. 독립 유역 상품으로 재배포하는 용도가 아니다.
-
 - `major-rivers.geojson`: 큰 강 12개(한강·남한강·북한강·임진강·낙동강·금강·영산강·섬진강·압록강·두만강·대동강·청천강)의 중심선.
   OpenStreetMap 기여자(ODbL), Nominatim으로 2026-09-01에 받음. `system`은 수계 이름(한강·남한강·북한강·임진강은 한강 수계).
   강 경계를 법적으로 정한 자료가 아니라 지도에 그리는 선이다. 다시 받기: `scripts/update-korea-major-rivers.mjs`.

@@ -9,11 +9,10 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
-    <link rel="stylesheet" href="styles.css?v=20260921-2">
+    <link rel="stylesheet" href="styles.css?v=20260918-7">
     <script src="/assets/network/game-network.js?v=20260821" defer></script>
     <script src="/assets/network/multiplayer-lobby.js?v=20260918-1" defer></script>
-    <script data-class-game-sfx="true" src="/assets/sound/game-sfx.js?v=20260912-feedback-scope-1" defer></script>
-    <script src="app.js?v=20260921-2" defer></script>
+    <script src="app.js?v=20260918-5" defer></script>
 </head>
 <body>
     <div class="page-shell">
@@ -37,7 +36,7 @@
                         <button id="joinBtn" class="primary-button" type="button">학급 참가</button>
                     </div>
                     <p id="joinStatus" class="lobby-status" role="status">선생님이 알려 준 네 자리 학급 코드를 넣으세요.</p>
-                    <a id="createRaceLink" class="create-race-link hidden" href="teacher.html">학급 만들기</a>
+                    <a id="createRaceLink" class="create-race-link hidden" href="teacher.html">CREATE ROOM</a>
                 </div>
 
                 <div id="waitingPane" class="hidden">
@@ -72,7 +71,6 @@
 
                 <article class="panel question-panel">
                     <span id="questionCategory" class="question-category"></span>
-                    <p id="lastCall" class="last-call hidden" aria-live="polite">마지막 문제!</p>
                     <p id="questionPrompt" class="question-prompt"></p>
                     <h2 id="questionText" class="question-text"></h2>
                     <div id="choiceList" class="choice-list" aria-label="답 선택"></div>

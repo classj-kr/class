@@ -1,0 +1,48 @@
+{
+  "slug": "refraction",
+  "engine": "webkit",
+  "modes": [
+    "initial"
+  ],
+  "cases": 8,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__rayModel",
+      "methods": [
+        "MEDIA",
+        "N_AIR",
+        "P",
+        "L",
+        "solve",
+        "setAngle",
+        "setMedium",
+        "setDir"
+      ]
+    }
+  ],
+  "paint": [],
+  "grades": [
+    {
+      "mode": "initial",
+      "results": [
+        {
+          "choice": "smaller",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        },
+        {
+          "choice": "larger",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "same",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        }
+      ]
+    }
+  ]
+}

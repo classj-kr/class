@@ -114,7 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const PRED_MOULD = [{ value: 'lots', label: '많이 자란다' }, { value: 'some', label: '조금 자란다' }, { value: 'none', label: '거의 안 자란다' }];
-    const PRED_GERM = [{ value: 'double', label: '1~2배' }, { value: 'tens', label: '몇 배에서 수십 배' }, { value: 'huge', label: '수천 배 넘게' }];
+    const PRED_GERM = [{ value: 'double', label: '2배 안팎' }, { value: 'tens', label: '몇 배에서 수십 배' }, { value: 'huge', label: '수천 배 넘게' }];
 
     function buildPrediction() {
         state.prediction = null;
@@ -136,13 +136,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const cover = a.coverAt(day);
         const BX = 40, BY = 48, BW = 210, BH = 140;
         let out = `<rect class="tray-dish" x="${BX - 14}" y="${BY - 12}" width="${BW + 28}" height="${BH + 24}" rx="10"/>`;
-        const breadOutline = `M${BX + 10},${BY + 26} Q${BX},${BY} ${BX + 38},${BY + 4} Q${BX + BW / 2},${BY - 10} ${BX + BW - 38},${BY + 4} Q${BX + BW},${BY} ${BX + BW - 10},${BY + 26} L${BX + BW - 4},${BY + BH - 8} Q${BX + BW - 4},${BY + BH} ${BX + BW - 12},${BY + BH} L${BX + 12},${BY + BH} Q${BX + 4},${BY + BH} ${BX + 4},${BY + BH - 8} Z`;
-        out += `<defs><clipPath id="mouldBreadClip"><path d="${breadOutline}"/></clipPath></defs><path class="bread" d="${breadOutline}"/>`;
+        out += `<path class="bread" d="M${BX + 10},${BY + 26} Q${BX},${BY} ${BX + 38},${BY + 4} Q${BX + BW / 2},${BY - 10} ${BX + BW - 38},${BY + 4} Q${BX + BW},${BY} ${BX + BW - 10},${BY + 26} L${BX + BW - 4},${BY + BH - 8} Q${BX + BW - 4},${BY + BH} ${BX + BW - 12},${BY + BH} L${BX + 12},${BY + BH} Q${BX + 4},${BY + BH} ${BX + 4},${BY + BH - 8} Z"/>`;
         [[0.3, 0.45, 6], [0.62, 0.66, 5], [0.5, 0.3, 4], [0.78, 0.35, 4], [0.2, 0.75, 4]].forEach(([fx, fy, r]) => {
             out += `<circle class="bread-hole" cx="${(BX + fx * BW).toFixed(1)}" cy="${(BY + 20 + fy * (BH - 30)).toFixed(1)}" r="${r}"/>`;
         });
-        // Illustrative colonies overlap; the percentage is the model value, not pixel area.
-        out += '<g class="mould-colonies" clip-path="url(#mouldBreadClip)">';
+        // each spot takes an equal share of the covered area
         if (cover > 0.002) {
             const area = cover * BW * (BH - 20);
             const r = Math.sqrt(area / SPOTS.length / Math.PI);
@@ -154,14 +152,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 out += `<circle class="mould-core" cx="${cx.toFixed(1)}" cy="${cy.toFixed(1)}" r="${(rr * 0.45).toFixed(1)}"/>`;
             });
         }
-        out += '</g>';
         out += `<text class="day-text" x="${BX - 8}" y="${BY - 14}">${Math.floor(day) === 0 && p < 0.02 ? '빵을 놓은 날' : `${Math.min(MOULD_DAYS, Math.floor(day) + (p >= 1 ? 0 : 1))}일째`}</text>`;
         // condition and readings on the right
         out += `<text class="cond-text" x="290" y="60">${a.t.label}</text>`;
         out += `<text class="cond-text" x="290" y="76">${a.m.label}</text>`;
         out += `<text class="part-label" x="290" y="108">곰팡이가 덮은 넓이</text>`;
         out += `<text class="read-text" x="290" y="130">빵의 ${Math.round(cover * 100)} %</text>`;
-        out += `<text class="note-text" x="290" y="156">${cover < 0.01 ? '아직 보이지 않습니다' : cover < 0.1 ? '작은 점들이 생겼습니다' : cover < 0.4 ? '군데군데 퍼졌습니다' : cover < 0.75 ? '넓게 퍼졌습니다' : '거의 다 덮였습니다'}</text>`;
+        out += `<text class="note-text" x="290" y="156">${cover < 0.01 ? '아직 보이지 않습니다' : cover < 0.1 ? '작은 점들이 생겼습니다' : cover < 0.4 ? '군데군데 퍼졌습니다' : '거의 다 덮였습니다'}</text>`;
         const VERD = { lots: '많이 자란다', some: '조금 자란다', none: '거의 안 자란다' };
         out += `<text class="verdict-text" fill="#9fc98a" x="20" y="16">${a.t.label} · ${a.m.label} → ${MOULD_DAYS}일 뒤 ${VERD[a.verdict]}</text>`;
         return out;
@@ -188,8 +185,8 @@ document.addEventListener('DOMContentLoaded', () => {
         out += `<text class="part-label" x="270" y="148">세균 수</text>`;
         out += `<text class="count-text" x="270" y="172">${fmtCount(n)}마리</text>`;
         out += `<text class="note-text" x="270" y="190">${Math.floor(h * 60 / a.t.minutes)}번 나뉨 · 1마리에서 시작</text>`;
-        const VERD = { double: '1~2배', tens: '몇 배에서 수십 배', huge: '수천 배 넘게' };
-        out += `<text class="verdict-text" fill="#ea580c" x="20" y="16">${a.t.label} · ${a.hours}시간 → 처음 수의 ${VERD[a.verdict]}</text>`;
+        const VERD = { double: '2배 안팎', tens: '몇 배에서 수십 배', huge: '수천 배 넘게' };
+        out += `<text class="verdict-text" fill="#ea580c" x="20" y="16">${a.t.label} · ${a.hours}시간 → ${VERD[a.verdict]} 늘어난다</text>`;
         return out;
     }
 
@@ -261,7 +258,7 @@ document.addEventListener('DOMContentLoaded', () => {
         out += `<circle class="trace-dot" cx="${gx(h).toFixed(1)}" cy="${gy(a.countAt(h)).toFixed(1)}" r="5" fill="#ea580c"/>`;
         // the halfway mark shows how little has happened by then
         const half = a.countAt(a.hours / 2);
-        out += `<text class="note-text" x="${GRAPH.x0 + 8}" y="${GRAPH.y1 + 14}">${a.splits === 0 ? '이 조건에서는 관찰 시간 동안 아직 분열하지 않습니다' : `절반인 ${a.hours / 2}시간 때는 ${fmtCount(half)}마리 · 마지막에는 ${fmtCount(a.final)}마리`} </text>`;
+        out += `<text class="note-text" x="${GRAPH.x0 + 8}" y="${GRAPH.y1 + 14}">절반인 ${a.hours / 2}시간 때는 ${fmtCount(half)}마리 — 늘어난 것이 거의 끝에 몰립니다</text>`;
         return out;
     }
 
@@ -289,7 +286,7 @@ document.addEventListener('DOMContentLoaded', () => {
         stageBadge.textContent = a.kind === 'mould' ? `${a.t.temp} ℃ · ${a.m.label}` : `${a.t.temp} ℃ · ${a.hours}시간`;
         methodHint.textContent = state.mode === 'mould'
             ? '곰팡이는 따뜻하고 축축한 곳에서 잘 자랍니다'
-            : '세균의 분열 간격은 종류와 환경에 따라 다릅니다. 여기서는 세 온도의 가상 조건을 비교합니다';
+            : '세균은 둘로 나뉘어 늘어나고, 따뜻할수록 빨리 나뉩니다';
         dataNote.innerHTML = noteFor(a);
         return a;
     }
@@ -330,7 +327,7 @@ document.addEventListener('DOMContentLoaded', () => {
             predictionResult.textContent = !state.prediction ? '다음에는 결과를 먼저 예상해 보세요.'
                 : state.prediction === a.verdict ? '예상이 맞았습니다.' : '예상과 다른 결과입니다.';
             let s = `${a.t.label}에 둔 ${a.m.label}은 ${MOULD_DAYS}일 뒤 곰팡이가 빵의 ${Math.round(a.finalCover * 100)} %를 덮었습니다. `;
-            if (a.verdict === 'lots') s += `따뜻하고 축축해서 곰팡이가 자라기 딱 좋은 조건입니다. ${Math.ceil(a.firstDay)}일째부터 점이 보이더니 며칠 동안 ${a.finalCover >= .75 ? '빵을 거의 다 덮었습니다' : '넓게 퍼졌습니다'}.`;
+            if (a.verdict === 'lots') s += `따뜻하고 축축해서 곰팡이가 자라기 딱 좋은 조건입니다. ${Math.ceil(a.firstDay)}일째부터 점이 보이더니 며칠 만에 빵을 거의 다 덮었습니다.`;
             else if (a.verdict === 'some') s += `물기는 있지만 온도가 낮아 곰팡이가 천천히 자랍니다. 같은 빵을 따뜻한 곳에 두면 훨씬 빨리 퍼집니다.`;
             else if (state.moist === 'dry') s += `물기가 없으면 온도가 알맞아도 곰팡이가 거의 자라지 못합니다. 그래서 음식을 말려 보관합니다.`;
             else s += `냉장고처럼 차가운 곳에서는 곰팡이가 아주 느리게 자라 ${MOULD_DAYS}일이 지나도 거의 보이지 않습니다. 그래서 음식을 냉장고에 넣어 둡니다.`;
@@ -343,11 +340,11 @@ document.addEventListener('DOMContentLoaded', () => {
         predictionResult.textContent = !state.prediction ? '다음에는 결과를 먼저 예상해 보세요.'
             : state.prediction === a.verdict ? '예상이 맞았습니다.' : '예상과 다른 결과입니다.';
         const every = a.t.minutes >= 60 ? `${a.t.minutes / 60}시간` : `${a.t.minutes}분`;
-        let s = `이 모형은 ${a.t.label}에서 세균이 ${every}마다 둘로 나뉜다고 가정했습니다. ` +
+        let s = `${a.t.label}에서는 세균이 ${every}마다 둘로 나뉩니다. ` +
             (a.splits === 0 ? `${a.hours}시간 동안은 아직 한 번도 나뉘지 못해 그대로 1마리입니다. `
                 : `${a.hours}시간 동안 ${a.splits}번 나뉘어 1마리가 ${fmtCount(a.final)}마리가 되었습니다. `);
         if (a.verdict === 'huge') s += `나뉠 때마다 2배가 되기 때문에 처음에는 조금 늘다가 뒤로 갈수록 엄청나게 불어납니다. 따뜻한 곳에 둔 음식이 금방 상하는 까닭입니다.`;
-        else if (a.verdict === 'tens') s += `나뉠 때마다 2배가 되니 ${a.splits}번이면 ${fmtCount(a.final)}배입니다. 조건이 유지되면 분열할 때마다 수가 늘어납니다. 실제로는 종류와 온도, 먹이 등에 따라 달라집니다.`;
+        else if (a.verdict === 'tens') s += `나뉠 때마다 2배가 되니 ${a.splits}번이면 ${fmtCount(a.final)}배입니다. 더 따뜻한 곳에 두거나 더 오래 두면 훨씬 많아집니다.`;
         else s += `차가운 곳에서는 나뉘는 데 아주 오래 걸려 몇 시간이 지나도 거의 늘지 않습니다. 세균이 죽는 것은 아니어서, 냉장고 속 음식도 오래 두면 상합니다.`;
         explanation.textContent = s;
     }

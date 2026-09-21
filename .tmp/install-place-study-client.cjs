@@ -1,0 +1,12 @@
+const fs=require('fs');const p='learning/inquiry/age-of-exploration/public/index.html';let s=fs.readFileSync(p,'utf8').replace(/\r\n/g,'\n');const rep=(a,b)=>{if(!s.includes(a))throw Error(a.slice(0,80));s=s.replace(a,b);};
+rep('</head>','<link rel="stylesheet" href="/learn/world-voyage/css/place-study.css">\n</head>');
+rep('</body>','<script src="/learn/world-voyage/js/place-study-ui.js"></script>\n</body>');
+rep("function finalQuizOpen(){return finalQuizView.classList.contains('show')}","function finalQuizOpen(){return finalQuizView.classList.contains('show')||window.VoyageStudyUI?.isOpen()}");
+rep("function updateMissionBanner(){","function updateMissionBanner(){if(activeMission?.studyTargets){const done=(missionProgress?.studyPlaces||[]).filter(p=>p.phase==='completed').length;missionBanner.className='panel show'+(missionProgress?.status==='completed'?' done':'');missionBanner.textContent='장소 학습 '+done+'/'+activeMission.studyTargets.length+' · '+(awaitingStartChoice()?'출발 도시를 선택하세요':waitingForTeacherStart()?'출발 신호 대기':missionProgress?.status==='completed'?'모든 장소 발견 성공':activeMission.studyTargets.map(t=>t.name).join(' · '));return;}");
+rep('  updateMissionBanner();if(!missionPanel.classList.contains', "  if(activeMission?.studyTargets&&missionProgress?.selectedStartPlaceId){window.VoyageStudyUI?.renderTargets(missionTarget);const done=(missionProgress.studyPlaces||[]).filter(p=>p.phase==='completed').length;missionFeedback.textContent='발견 성공 '+done+'/'+activeMission.studyTargets.length;}\n  updateMissionBanner();if(!missionPanel.classList.contains");
+rep("progress?.stageIndex||0,startChoicePending?", "JSON.stringify(progress?.studyPlaces||[]),progress?.stageIndex||0,startChoicePending?");
+rep("if(justCompleted)showToast(`", "if(justCompleted&&activeMission?.studyTargets)showToast('모든 장소 발견 성공!','good');else if(justCompleted)showToast(`");
+rep("    showDiscovery(result.discovery,result.found,result.total,result.first);","    if(result.study){window.VoyageStudyUI.show(result);return;}\n    showDiscovery(result.discovery,result.found,result.total,result.first);");
+rep("    showDiscovery(result.landmark", "    if(result.study){window.VoyageStudyUI.show(result);return;}\n    showDiscovery(result.landmark");
+rep('function openCityStory(){', "function openCityStory(){\n  const key='city:'+serverSelf?.currentCityId;if(activeMission?.studyTargets?.some(t=>t.key===key)){window.VoyageStudyUI.request(key);return;}");
+fs.writeFileSync(p,s);

@@ -14,10 +14,7 @@ const mimeTypes = {
     ".mp3": "audio/mpeg",
     ".ogg": "audio/ogg",
     ".png": "image/png",
-    ".webp": "image/webp",
-    ".svg": "image/svg+xml",
-    ".woff2": "font/woff2",
-    ".geojson": "application/geo+json"
+    ".webp": "image/webp"
 };
 
 http.createServer((request, response) => {

@@ -116,24 +116,3 @@ button:disabled { opacity: 0.55; cursor: wait; box-shadow: none; }
   .card { margin-top: 7vh; }
   form { grid-template-columns: 1fr; }
 }
-
-.create-link {
-  display: inline-block;
-  margin-top: 18px;
-  padding: 9px 18px;
-  border: 2px solid var(--gold);
-  border-radius: 999px;
-  color: #6b4415;
-  font-size: 15px;
-  font-weight: 800;
-  letter-spacing: 0.02em;
-  text-decoration: none;
-}
-
-.create-link:hover,
-.create-link:focus-visible {
-  background: var(--gold);
-  color: #241202;
-}
-
-.create-link.is-hidden { display: none; }

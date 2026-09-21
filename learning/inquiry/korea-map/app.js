@@ -56,8 +56,8 @@
     initMaps();
     bindControls();
     lessonMapLayer = L.layerGroup().addTo(mainMap);
-    scene = window.KoreaScene.create(mainMap, {elevationAt:point=>elevationAt(L.latLng(point),10,true),themeApi});
-    study = window.KoreaStudy.create({ focus: focusLesson, focusSpot: focusStudySpot, practice: startLessonPractice, progress: readProgress, rendered: () => scene.renderInsight(), renderVisual: (host,lesson,options)=>scene.renderLesson(host,lesson,options) });
+    scene = window.KoreaScene.create(mainMap);
+    study = window.KoreaStudy.create({ focus: focusLesson, focusSpot: focusStudySpot, practice: startLessonPractice, progress: readProgress, rendered: () => scene.renderInsight() });
     const hashTheme = (location.hash || "").replace("#", "");
     renderTheme(themes[hashTheme] ? hashTheme : currentTheme);
     renderProgress();
@@ -138,12 +138,7 @@
     map.options.minZoom = 0;
     const regionalMinimum = map.getBoundsZoom(NAVIGATION_BOUNDS, true);
     map.options.minZoom = previous;
-    const nextMinimum = Math.max(minimum, regionalMinimum);
-    // setMinZoom implicitly animates an out-of-range map. Its pending zoom can
-    // overwrite the lesson's subsequent fitBounds when leaving a history scene.
-    // Bring it into range synchronously before changing the minimum.
-    if (map.getZoom() < nextMinimum) map.setZoom(nextMinimum, { animate: false });
-    map.setMinZoom(nextMinimum);
+    map.setMinZoom(Math.max(minimum, regionalMinimum));
   }
 
   // 국경(압록강·두만강)과 휴전선. 역사 탭에서는 현재 경계를 숨긴다.
@@ -397,7 +392,7 @@
     drawLabels(mainMap, mainLabelLayer, { admin: true, city: true, annotations: [] });
     lesson.spots.forEach((spot, index) => {
       // The temperature scene already places A/B at the observed stations; do not stack duplicate pins.
-      if (currentTheme === "climate" && ["temperature","foehn"].includes(lesson.id)) return;
+      if (currentTheme === "climate" && lesson.id === "temperature") return;
       const marker = L.marker([spot.lat, spot.lng], { pane: "studyMarkers", icon: L.divIcon({ className: "lesson-pin-wrap", html: '<span class="lesson-pin">'+(index+1)+'</span>', iconSize:[32,32],iconAnchor:[16,16] }) });
       marker.bindTooltip(spot.name, { permanent:true, direction:"top", offset:[0,-17], className:"study-tooltip" });
       marker.on("click", () => focusStudySpot(spot));
@@ -891,17 +886,15 @@
     if (!demTiles.has(key)) {
       demTiles.set(key, new Promise((resolve) => {
         const image = new Image();
-        const finish = value => { clearTimeout(timeout); image.onload=null; image.onerror=null; if(!value)demTiles.delete(key); resolve(value); };
-        const timeout = setTimeout(()=>finish(null),8000);
         image.onload = () => {
           const canvas = document.createElement("canvas");
           canvas.width = image.width;
           canvas.height = image.height;
           const context = canvas.getContext("2d", { willReadFrequently: true });
           context.drawImage(image, 0, 0);
-          finish(context.getImageData(0, 0, image.width, image.height));
+          resolve(context.getImageData(0, 0, image.width, image.height));
         };
-        image.onerror = () => finish(null);
+        image.onerror = () => resolve(null);
         image.src = DEM_URL.replace("{z}", z).replace("{x}", x).replace("{y}", y);
       }));
     }
@@ -909,7 +902,7 @@
   }
 
   // 높이 조각은 6·8·9·10단만 둔다. 10단은 남북한 땅에만 있고, 8·9단은 한반도 둘레, 6단은 그 밖이다.
-  async function elevationAt(latlng, zoom, strict = false) {
+  async function elevationAt(latlng, zoom) {
     const z = DETAIL_BOUNDS.contains(latlng) ? zoom : 6;
     const n = 2 ** z;
     const fx = ((latlng.lng + 180) / 360) * n;
@@ -917,9 +910,9 @@
     const fy = ((1 - Math.log(Math.tan(rad) + 1 / Math.cos(rad)) / Math.PI) / 2) * n;
     const x = Math.floor(fx);
     const y = Math.floor(fy);
-    if (z === 10 && !hasSparseTile(10, x, y)) return elevationAt(latlng, 9, strict);
+    if (z === 10 && !hasSparseTile(10, x, y)) return elevationAt(latlng, 9);
     const tile = await demTile(z, x, y);
-    if (!tile) return z === 6 ? (strict ? null : 0) : elevationAt(latlng, z > 8 ? z - 1 : 6, strict);
+    if (!tile) return z === 6 ? 0 : elevationAt(latlng, z > 8 ? z - 1 : 6);
     const px = Math.min(tile.width - 1, Math.floor((fx - x) * tile.width));
     const py = Math.min(tile.height - 1, Math.floor((fy - y) * tile.height));
     const i = (py * tile.width + px) * 4;

@@ -136,7 +136,7 @@
       const side=sides(state.direction);
       [SECTION.west,SECTION.east].forEach((place,index)=>{
         L.circleMarker(place.coordinates,{renderer,pane:"mountainWind",radius:6,color:"#fff",weight:2,fillColor:index===side.up?"#16758f":"#b85330",fillOpacity:1,interactive:false})
-          .bindTooltip(`${index?"B":"A"} ${place.name}`,{permanent:true,direction:"auto",offset:[0,0],className:"scene-map-label"}).addTo(layer);
+          .bindTooltip(`${index?"B":"A"} ${place.name}`,{permanent:true,direction:index?"right":"left",offset:index?[8,0]:[-8,0],className:"scene-map-label"}).addTo(layer);
       });
       const points=profile?.points||[SECTION.west.coordinates,SECTION.east.coordinates];
       L.polyline(points,{renderer,pane:"mountainWind",color:"#fff",weight:6,opacity:.9,interactive:false}).addTo(layer);

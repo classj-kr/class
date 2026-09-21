@@ -266,53 +266,6 @@
             }
         },
         {
-            id: "arithmetic",
-            // 이름을 그냥 "연산"으로 두면 공용 뒤로가기 스크립트(assets/site-back-navigation.js)가
-            // 옛 "연산으로 돌아가기" 단추로 알아보고 카드를 숨긴다.
-            title: "기초 연산",
-            subject: "수학",
-            scripts: ["/learning/literacy-numeracy/arithmetic-race/data.js?v=20260921"],
-            getBank() {
-                const entries = Array.isArray(window.ARITHMETIC_RACE_DATA) ? window.ARITHMETIC_RACE_DATA : [];
-                const questions = new Map();
-                const unitOrder = [];
-                const byUnit = new Map();
-                entries.forEach((entry) => {
-                    if (!entry?.sentence || !Array.isArray(entry.choices) || !entry.choices.includes(entry.answer)) return;
-                    const id = `ar-${entry.id}`;
-                    const unitKey = `${entry.grade} · ${entry.unit}`;
-                    questions.set(id, {
-                        id,
-                        category: unitKey.slice(0, 40),
-                        prompt: entry.prompt,
-                        sentence: entry.sentence,
-                        choices: entry.choices,
-                        answer: entry.answer,
-                        explanation: entry.explanation
-                    });
-                    if (!byUnit.has(unitKey)) { byUnit.set(unitKey, []); unitOrder.push(unitKey); }
-                    byUnit.get(unitKey).push(id);
-                });
-                // 한 차시가 스무 문제를 넘으면 한 시간에 다 못 푼다. 단원 안에서 끊는다.
-                const lessons = [];
-                unitOrder.forEach((unitKey, index) => {
-                    const ids = byUnit.get(unitKey);
-                    const parts = chunkLessons(ids, 20,
-                        (number) => `${unitKey} ${number}묶음`,
-                        (slice) => `${slice.length}문제`
-                    );
-                    parts.forEach((lesson, part) => {
-                        lessons.push({
-                            ...lesson,
-                            id: `unit-${index + 1}-${part + 1}`,
-                            title: parts.length > 1 ? lesson.title : unitKey
-                        });
-                    });
-                });
-                return { questions, lessons };
-            }
-        },
-        {
             id: "mathox",
             title: "수학 OX",
             subject: "수학",

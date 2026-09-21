@@ -22,27 +22,9 @@ function scienceCoreFactory({line,label,rect,jar,field},existing={}) {
   fields:[field('sample','준비된 표본',[['mushroom','버섯'],['mold','곰팡이'],['algae','해캄'],['paramecium','짚신벌레'],['bacteria','세균']]),field('focus','관찰 초점',[['whole','전체 모습'],['detail','특징 살피기']])],
   view(s){let svg='',text='',detail=s.focus==='detail';
    if(s.sample==='mushroom'){svg=rect(205,120,50,115,'#e7d9bd')+'<path d="M115 130 Q135 20 230 35 Q325 20 345 130 Z" fill="#bc8c60"/>'+ellipse(230,130,114,20,'#e5c39b');if(detail)for(let i=0;i<11;i++)svg+=line(230,136,125+i*21,130,'#9b7557',2);svg+=label(detail?'갓 아래 주름':'갓과 자루',230,280);text='버섯은 갓과 자루가 있는 종류가 있습니다. 갓 아래에 주름이 보입니다. 썩은 나무나 축축한 땅 등에서 볼 수 있으며, 종류에 따라 모습과 사는 곳이 다릅니다.';}
-   if(s.sample==='mold'){
-    svg='<g data-observation="mold-hyphae" stroke-linecap="round"><path d="M72 230 Q135 187 220 223 T389 224 M89 250 Q178 202 275 243 T395 242 M106 207 Q165 245 300 207 T385 214 M148 218 Q137 177 103 172 M256 224 Q302 188 342 190" fill="none" stroke="#9caa89" stroke-width="3"/>';
-    for(let i=0;i<5;i++){const x=112+i*58,y=83+(i%3)*22;svg+=`<path d="M${x+12} 224 Q${x-9} 177 ${x} ${y+9}" fill="none" stroke="#829471" stroke-width="4"/>`+circle(x,y,detail?16:13,'#616b50');if(detail)for(let j=0;j<7;j++){const a=j*Math.PI*2/7;svg+=circle(x+8*Math.cos(a),y+8*Math.sin(a),2.2,'#bbc4a4');}}
-    svg+='</g>'+label('가지 치며 얽힌 균사와 끝의 둥근 부분',230,283);
-    text='이 곰팡이 예에서는 가느다란 실 같은 균사가 가지를 치며 얽혀 있고, 위로 뻗은 부분 끝에 둥근 포자주머니가 보입니다. 곰팡이의 모습은 종류에 따라 다릅니다.';
-   }
-   if(s.sample==='algae'){
-    svg='<g data-observation="spirogyra"><rect x="62" y="99" width="336" height="92" rx="12" fill="#e0eed8" stroke="#91ae82" stroke-width="3"/>';
-    // One ribbon winds through the tubular cells: alternating front/back half-turns.
-    for(let i=0;i<8;i++){const x=70+Math.floor(i/2)*84+(i%2)*34,side=i%2?1:-1;svg+=`<path data-spiral="${i%2?'front':'back'}" data-algal-cell="${Math.floor(i/2)}" d="M${x} 145 C${x+11} ${145+side*45} ${x+23} ${145+side*45} ${x+34} 145" fill="none" stroke="${i%2?'#378657':'#90b886'}" stroke-width="9" stroke-linecap="round"/>`;if(detail)svg+=circle(x+17,145+side*33,3.5,i%2?'#285f3f':'#628b62');}
-    for(let i=1;i<4;i++)svg+=line(62+i*84,101,62+i*84,189,'#829e79',2);
-    svg+='</g>'+label(detail?'세포 안을 감아 도는 초록색 띠':'세포가 한 줄로 이어진 해캄',230,260);
-    text='해캄은 연못이나 물살이 느린 민물에서 볼 수 있습니다. 여러 세포가 실처럼 이어져 있고, 세포 안쪽의 초록색 엽록체는 띠 모양으로 나선처럼 감겨 있습니다.';
-   }
-   if(s.sample==='paramecium'){
-    const curves=[[[-110,0],[-96,-52],[-22,-68],[50,-55]],[[50,-55],[117,-42],[126,16],[66,48]],[[66,48],[15,78],[-76,55],[-110,0]]];
-    svg='<g data-observation="paramecium" transform="translate(230 140)"><path class="sample-para-body" d="M-110 0 C-96 -52 -22 -68 50 -55 C117 -42 126 16 66 48 C15 78 -76 55 -110 0Z" fill="#d5e5df" stroke="#73968b" stroke-width="2"/>';
-    for(const q of curves)for(let i=0;i<12;i++){const t=i/12,u=1-t,x=u*u*u*q[0][0]+3*u*u*t*q[1][0]+3*u*t*t*q[2][0]+t*t*t*q[3][0],y=u*u*u*q[0][1]+3*u*u*t*q[1][1]+3*u*t*t*q[2][1]+t*t*t*q[3][1],dx=3*u*u*(q[1][0]-q[0][0])+6*u*t*(q[2][0]-q[1][0])+3*t*t*(q[3][0]-q[2][0]),dy=3*u*u*(q[1][1]-q[0][1])+6*u*t*(q[2][1]-q[1][1])+3*t*t*(q[3][1]-q[2][1]),n=Math.hypot(dx,dy);svg+=`<path class="sample-cilium" d="M${x} ${y} q${dy/n*12} ${-dx/n*12} ${dy/n*14+dx/n*4} ${-dx/n*14+dy/n*4}" fill="none" stroke="#759793" stroke-width="1.6" stroke-linecap="round"/>`;}
-    svg+='<path class="sample-oral-groove" d="M69 10 Q42 -14 17 14 Q5 28 -9 26" fill="none" stroke="#85a89a" stroke-width="5" stroke-linecap="round"/>'+ellipse(-26,-10,18,22,'#8ba799')+ellipse(-63,-10,10,10,'#eef5e7')+ellipse(64,-15,9,9,'#eef5e7')+'</g>'+label(detail?'몸 둘레의 섬모와 오목한 홈':'한 세포로 된 길쭉한 몸',230,270);
-    text='짚신벌레는 유기물이 있는 민물 등에서 볼 수 있습니다. 길쭉한 한 세포의 몸 둘레에 짧은 섬모가 많고, 이를 움직여 헤엄칩니다. 이 정지 확대 그림에서는 몸의 구조를 비교합니다.';
-   }
+   if(s.sample==='mold'){for(let i=0;i<8;i++){const x=110+i*34,y=85+(i%3)*30;svg+=line(230,240,x,y,'#91a285',3)+circle(x,y,detail?13:8,'#57675c');}svg+=label('실처럼 얽힌 부분',230,280);text='곰팡이는 가느다란 실처럼 얽힌 부분과 끝의 둥근 부분이 관찰되는 종류가 있습니다. 습기가 있는 빵이나 과일 등에 자랄 수 있습니다.';}
+   if(s.sample==='algae'){for(let i=0;i<6;i++){svg+=rect(85+i*48,95,46,95,'#b5da99');svg+='<path d="M'+(89+i*48)+' 170 Q'+(110+i*48)+' 75 '+(125+i*48)+' 165" fill="none" stroke="#428448" stroke-width="5"/>';}svg+=label(detail?'초록색 띠가 나선처럼 보임':'여러 마디가 실처럼 이어짐',230,260);text='해캄은 연못이나 물살이 느린 민물에서 볼 수 있습니다. 초록색이며 여러 마디가 실처럼 이어져 있고, 확대하면 안쪽에 나선 모양의 초록색 띠가 보입니다.';}
+   if(s.sample==='paramecium'){svg=ellipse(230,145,110,65,'#cbdcd9');for(let i=0;i<30;i++){const a=i*Math.PI/15;svg+=line(230+110*Math.cos(a),145+65*Math.sin(a),230+123*Math.cos(a),145+78*Math.sin(a),'#759793',2);}svg+=ellipse(215,140,17,24,'#90aaa9')+label(detail?'몸 둘레의 짧은 털':'길쭉한 몸',230,270);text='짚신벌레는 유기물이 있는 민물 등에서 볼 수 있습니다. 길쭉한 몸 둘레에 짧은 털이 많고, 이를 움직여 헤엄칩니다. 정지 그림에서는 실제 움직임을 관찰할 수 없습니다.';}
    if(s.sample==='bacteria'){for(let i=0;i<9;i++)svg+=rect(110+(i%3)*85,65+Math.floor(i/3)*65,40,18,'#90bab0');svg+=label('막대 모양 세균의 확대 그림',230,285);text='세균에는 막대 모양이나 둥근 모양 등 여러 모습이 있습니다. 흙과 물, 다른 생물의 몸 등 다양한 곳에 살며, 눈으로 하나하나 구별하기 어렵습니다.';}
    return{svg,text,note:schematic+' 서로 같은 배율이 아닙니다. 교사가 준비한 표본·사진으로 관찰하고, 곰팡이와 세균을 직접 배양하거나 만지거나 냄새 맡지 않습니다.',check:check('해캄의 관찰 특징으로 맞는 것은?',['실처럼 이어진 초록색 모습','갓과 자루가 있는 모습','모든 종류가 막대 모양'],'0','해캄은 초록색 마디가 실처럼 이어진 모습을 보입니다. 사는 곳과 모습으로 관찰 기록을 정리합니다.')};}
  });

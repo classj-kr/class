@@ -1,0 +1,2360 @@
+{
+  "version": 10,
+  "rooms": {
+    "3132": {
+      "activeMission": {
+        "hunt": null,
+        "id": "arrival-race-muare566-66dzx0",
+        "roomCode": "3132",
+        "kind": "arrivalRace",
+        "mode": "any",
+        "title": "리스본 · 바투르 칼데라 · 밀퍼드사운드 · 초콜릿 힐스 · 팔라완 지하강 도착 미션",
+        "studyTargets": [
+          {
+            "key": "city:lisbon",
+            "type": "city",
+            "id": "lisbon",
+            "name": "리스본",
+            "point": {
+              "x": 18984,
+              "y": 5704,
+              "terrain": "plain"
+            },
+            "reading": {
+              "id": "lisbon",
+              "name": "리스본",
+              "kind": "도시 설명",
+              "todayCountry": "포르투갈",
+              "text": "대항해시대의 관문\n인도로 가는 바닷길이 열린 뒤 후추와 향신료를 실은 배가 들어오는, 유럽에서 손꼽히는 항구였습니다. 마누엘 1세가 다스렸고, 강 어귀에는 막 완성된 벨렝탑이 배들을 맞았습니다.\n\n대지진 뒤 다시 세운 도시\n1755년 큰 지진과 해일, 불이 한꺼번에 덮쳐 도시 대부분이 무너졌습니다. 그 뒤 거리를 바둑판처럼 반듯하게 다시 지었습니다. 지금은 포르투갈의 수도입니다.",
+              "image": "/learn/world-voyage/assets/city-today/lisbon.webp?v=1789791026004",
+              "imageCredit": "오늘날 모습 · 사진 Vitor Oliveira · CC BY-SA 2.0 · 위키미디어 공용",
+              "imageSource": "https://commons.wikimedia.org/wiki/File:Lisboa_-_Portugal_(52597836992).jpg"
+            },
+            "text": "대항해시대의 관문\n인도로 가는 바닷길이 열린 뒤 후추와 향신료를 실은 배가 들어오는, 유럽에서 손꼽히는 항구였습니다. 마누엘 1세가 다스렸고, 강 어귀에는 막 완성된 벨렝탑이 배들을 맞았습니다.\n\n대지진 뒤 다시 세운 도시\n1755년 큰 지진과 해일, 불이 한꺼번에 덮쳐 도시 대부분이 무너졌습니다. 그 뒤 거리를 바둑판처럼 반듯하게 다시 지었습니다. 지금은 포르투갈의 수도입니다.",
+            "questions": [
+              {
+                "prompt": "읽은 설명의 빈칸에 들어갈 말은?",
+                "passage": "인도로 가는 바닷길이 열린 뒤 후추와 (          )를 실은 배가 들어오는, 유럽에서 손꼽히는 항구였습니다.",
+                "choices": [
+                  "향신료",
+                  "포도주",
+                  "비단",
+                  "도자기"
+                ],
+                "answer": "향신료",
+                "explanation": "인도로 가는 바닷길이 열린 뒤 후추와 향신료를 실은 배가 들어오는, 유럽에서 손꼽히는 항구였습니다.",
+                "id": "q0"
+              },
+              {
+                "prompt": "읽은 설명의 빈칸에 들어갈 말은?",
+                "passage": "대(          ) 뒤 다시 세운 도시",
+                "choices": [
+                  "가뭄",
+                  "해일",
+                  "홍수",
+                  "지진"
+                ],
+                "answer": "지진",
+                "explanation": "대지진 뒤 다시 세운 도시",
+                "id": "q1"
+              }
+            ]
+          },
+          {
+            "key": "discovery:batur-caldera",
+            "type": "discovery",
+            "id": "batur-caldera",
+            "name": "바투르 칼데라",
+            "point": {
+              "x": 32820,
+              "y": 10915.555555555555
+            },
+            "reading": {
+              "id": "batur-caldera",
+              "name": "바투르 칼데라",
+              "kind": "자연",
+              "todayCountry": "인도네시아",
+              "text": "화산이 크게 분화한 뒤 땅이 내려앉아 생긴 분지를 칼데라라고 합니다. 바투르는 큰 칼데라 안에 작은 칼데라가 겹쳐 있고, 그 안에 화산과 초승달 모양의 호수가 자리합니다. 둘러선 산줄기를 보면 분지의 테두리를 알아볼 수 있습니다.\n\n1520년에는 화산 활동으로 만들어진 커다란 함몰 지형이 발리섬에 자리하고 있었습니다.",
+              "image": "/learn/world-voyage/assets/landmarks/batur-caldera.webp?v=1789964215781",
+              "imageCredit": "사진 TropicaLiving · CC BY-SA 3.0 · 위키미디어 공용",
+              "imageSource": "https://commons.wikimedia.org/wiki/File:Mount_batur_and_lake.jpg",
+              "imageLicenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+            },
+            "text": "화산이 크게 분화한 뒤 땅이 내려앉아 생긴 분지를 칼데라라고 합니다. 바투르는 큰 칼데라 안에 작은 칼데라가 겹쳐 있고, 그 안에 화산과 초승달 모양의 호수가 자리합니다. 둘러선 산줄기를 보면 분지의 테두리를 알아볼 수 있습니다.\n\n1520년에는 화산 활동으로 만들어진 커다란 함몰 지형이 발리섬에 자리하고 있었습니다.",
+            "questions": [
+              {
+                "prompt": "읽은 설명의 빈칸에 들어갈 말은?",
+                "passage": "화산이 크게 분화한 뒤 땅이 내려앉아 생긴 분지를 (          )라고 합니다.",
+                "choices": [
+                  "칼데라",
+                  "피오르",
+                  "삼각주",
+                  "사구"
+                ],
+                "answer": "칼데라",
+                "explanation": "화산이 크게 분화한 뒤 땅이 내려앉아 생긴 분지를 칼데라라고 합니다.",
+                "id": "q0"
+              },
+              {
+                "prompt": "읽은 설명의 빈칸에 들어갈 말은?",
+                "passage": "바투르는 큰 칼데라 안에 작은 칼데라가 겹쳐 있고, 그 안에 (          )과 초승달 모양의 호수가 자리합니다.",
+                "choices": [
+                  "강물",
+                  "빙하",
+                  "바닷바람",
+                  "화산"
+                ],
+                "answer": "화산",
+                "explanation": "바투르는 큰 칼데라 안에 작은 칼데라가 겹쳐 있고, 그 안에 화산과 초승달 모양의 호수가 자리합니다.",
+                "id": "q1"
+              }
+            ]
+          },
+          {
+            "key": "discovery:milford-sound",
+            "type": "discovery",
+            "id": "milford-sound",
+            "name": "밀퍼드사운드",
+            "point": {
+              "x": 38652.22222222222,
+              "y": 14957.77777777778
+            },
+            "reading": {
+              "id": "milford-sound",
+              "name": "밀퍼드사운드",
+              "kind": "자연",
+              "todayCountry": "뉴질랜드",
+              "text": "빙하가 산 사이를 깊게 깎고 물러난 뒤 바닷물이 들어온 피오르입니다. 물가에서 가파른 암벽이 솟고, 비가 오면 절벽을 따라 폭포가 쏟아집니다. 마오리어 이름은 피오피오타히입니다.\n\n1520년에는 빙하가 깎아 놓은 깊은 골짜기에 바닷물이 들어와 있었습니다.",
+              "image": "/learn/world-voyage/assets/landmarks/milford-sound.webp?v=1789964216779",
+              "imageCredit": "사진 Wikikiwiman · Public domain · 위키미디어 공용",
+              "imageSource": "https://commons.wikimedia.org/wiki/File:MilfordSound.jpg",
+              "imageLicenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/"
+            },
+            "text": "빙하가 산 사이를 깊게 깎고 물러난 뒤 바닷물이 들어온 피오르입니다. 물가에서 가파른 암벽이 솟고, 비가 오면 절벽을 따라 폭포가 쏟아집니다. 마오리어 이름은 피오피오타히입니다.\n\n1520년에는 빙하가 깎아 놓은 깊은 골짜기에 바닷물이 들어와 있었습니다.",
+            "questions": [
+              {
+                "prompt": "읽은 설명의 빈칸에 들어갈 말은?",
+                "passage": "빙하가 산 사이를 깊게 깎고 물러난 뒤 바닷물이 들어온 (          )입니다.",
+                "choices": [
+                  "칼데라",
+                  "삼각주",
+                  "피오르",
+                  "사구"
+                ],
+                "answer": "피오르",
+                "explanation": "빙하가 산 사이를 깊게 깎고 물러난 뒤 바닷물이 들어온 피오르입니다.",
+                "id": "q0"
+              },
+              {
+                "prompt": "읽은 설명의 빈칸에 들어갈 말은?",
+                "passage": "1520년에는 (          )가 깎아 놓은 깊은 골짜기에 바닷물이 들어와 있었습니다.",
+                "choices": [
+                  "화산",
+                  "빙하",
+                  "강물",
+                  "바닷바람"
+                ],
+                "answer": "빙하",
+                "explanation": "1520년에는 빙하가 깎아 놓은 깊은 골짜기에 바닷물이 들어와 있었습니다.",
+                "id": "q1"
+              }
+            ]
+          },
+          {
+            "key": "discovery:chocolate-hills",
+            "type": "discovery",
+            "id": "chocolate-hills",
+            "name": "초콜릿 힐스",
+            "point": {
+              "x": 33793.333333333336,
+              "y": 8908.888888888889
+            },
+            "reading": {
+              "id": "chocolate-hills",
+              "name": "초콜릿 힐스",
+              "kind": "자연",
+              "todayCountry": "필리핀",
+              "text": "보홀섬 내륙에 둥근 원뿔 모양의 석회암 언덕들이 모여 있습니다. 빗물에 석회암이 녹고 깎이면서 만들어진 지형입니다. 언덕을 덮은 풀이 건기에 갈색으로 변해 초콜릿을 닮아 보입니다.\n\n1520년에는 오랜 세월 석회암이 깎여 생긴 둥근 언덕들이 보홀섬에 펼쳐져 있었습니다.",
+              "image": "/learn/world-voyage/assets/landmarks/chocolate-hills.webp?v=1789964241544",
+              "imageCredit": "사진 Mmlibranda · CC BY-SA 4.0 · 위키미디어 공용",
+              "imageSource": "https://commons.wikimedia.org/wiki/File:The_Chocolate_Hills_of_Bohol.jpg",
+              "imageLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+            },
+            "text": "보홀섬 내륙에 둥근 원뿔 모양의 석회암 언덕들이 모여 있습니다. 빗물에 석회암이 녹고 깎이면서 만들어진 지형입니다. 언덕을 덮은 풀이 건기에 갈색으로 변해 초콜릿을 닮아 보입니다.\n\n1520년에는 오랜 세월 석회암이 깎여 생긴 둥근 언덕들이 보홀섬에 펼쳐져 있었습니다.",
+            "questions": [
+              {
+                "prompt": "읽은 설명의 빈칸에 들어갈 말은?",
+                "passage": "보홀섬 내륙에 둥근 원뿔 모양의 (          ) 언덕들이 모여 있습니다.",
+                "choices": [
+                  "현무암",
+                  "사암",
+                  "석회암",
+                  "화강암"
+                ],
+                "answer": "석회암",
+                "explanation": "보홀섬 내륙에 둥근 원뿔 모양의 석회암 언덕들이 모여 있습니다.",
+                "id": "q0"
+              },
+              {
+                "prompt": "읽은 설명에 맞게 문장을 완성한 것은?",
+                "passage": "빗물에 석회암이 녹고 (          )",
+                "choices": [
+                  "정치와 시민 생활의 흔적이 남아 있습니다.",
+                  "깎이면서 만들어진 지형입니다.",
+                  "이들이 배를 고치며 지냈음을 알 수 있습니다.",
+                  "다스리는 골짜기였습니다."
+                ],
+                "answer": "깎이면서 만들어진 지형입니다.",
+                "explanation": "빗물에 석회암이 녹고 깎이면서 만들어진 지형입니다.",
+                "id": "q1"
+              }
+            ]
+          },
+          {
+            "key": "discovery:palawan-underground-river",
+            "type": "discovery",
+            "id": "palawan-underground-river",
+            "name": "팔라완 지하강",
+            "point": {
+              "x": 33213.88888888889,
+              "y": 8866.666666666666
+            },
+            "reading": {
+              "id": "palawan-underground-river",
+              "name": "팔라완 지하강",
+              "kind": "자연",
+              "todayCountry": "필리핀",
+              "text": "물이 석회암을 녹여 만든 동굴 속으로 강이 흐릅니다. 약 8.2킬로미터의 지하 하천이 바다로 이어지며, 하류는 밀물과 썰물의 영향을 받습니다. 해안의 동굴 입구에서 강과 바다가 만나는 모습을 볼 수 있습니다.\n\n1520년에는 석회암 산속을 흐르는 강물이 동굴을 빠져나와 바다로 이어졌습니다.",
+              "image": "/learn/world-voyage/assets/landmarks/palawan-underground-river.webp?v=1789964243617",
+              "imageCredit": "사진 Mike Gonzalez · CC BY-SA 3.0 · 위키미디어 공용",
+              "imageSource": "https://commons.wikimedia.org/wiki/File:Puerto_Princesa_Underground_River.jpg",
+              "imageLicenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+            },
+            "text": "물이 석회암을 녹여 만든 동굴 속으로 강이 흐릅니다. 약 8.2킬로미터의 지하 하천이 바다로 이어지며, 하류는 밀물과 썰물의 영향을 받습니다. 해안의 동굴 입구에서 강과 바다가 만나는 모습을 볼 수 있습니다.\n\n1520년에는 석회암 산속을 흐르는 강물이 동굴을 빠져나와 바다로 이어졌습니다.",
+            "questions": [
+              {
+                "prompt": "읽은 설명의 빈칸에 들어갈 말은?",
+                "passage": "물이 (          )을 녹여 만든 동굴 속으로 강이 흐릅니다.",
+                "choices": [
+                  "사암",
+                  "현무암",
+                  "석회암",
+                  "화강암"
+                ],
+                "answer": "석회암",
+                "explanation": "물이 석회암을 녹여 만든 동굴 속으로 강이 흐릅니다.",
+                "id": "q0"
+              },
+              {
+                "prompt": "읽은 설명의 빈칸에 들어갈 말은?",
+                "passage": "2킬로미터의 지하 하천이 (          )로 이어지며, 하류는 밀물과 썰물의 영향을 받습니다.",
+                "choices": [
+                  "호수",
+                  "운하",
+                  "바다",
+                  "강"
+                ],
+                "answer": "바다",
+                "explanation": "2킬로미터의 지하 하천이 바다로 이어지며, 하류는 밀물과 썰물의 영향을 받습니다.",
+                "id": "q1"
+              }
+            ]
+          }
+        ],
+        "instructions": "지정된 장소를 원하는 순서로 방문하세요. 각 장소의 설명을 읽고 두 문제를 연속으로 맞히면 발견 성공입니다. 모든 장소를 완료하면 완주합니다.",
+        "atlasInstruction": "",
+        "markerMode": "hidden",
+        "targetPlace": {
+          "id": "lisbon",
+          "name": "리스본 · 바투르 칼데라 · 밀퍼드사운드 · 초콜릿 힐스 · 팔라완 지하강",
+          "category": "",
+          "region": "",
+          "continent": "",
+          "atlasHint": "",
+          "mode": "sea",
+          "point": {
+            "x": 18984,
+            "y": 5704
+          },
+          "radiusTiles": 3.2
+        },
+        "finalQuiz": null,
+        "startOptions": [
+          {
+            "id": "original_city_223",
+            "startPlace": {
+              "id": "original_city_223",
+              "name": "포르투",
+              "region": "이베리아",
+              "continent": "",
+              "atlasHint": "",
+              "point": {
+                "x": 19032,
+                "y": 5432
+              }
+            }
+          },
+          {
+            "id": "original_city_222",
+            "startPlace": {
+              "id": "original_city_222",
+              "name": "아코루냐",
+              "region": "이베리아",
+              "continent": "",
+              "atlasHint": "",
+              "point": {
+                "x": 19064,
+                "y": 5160
+              }
+            }
+          },
+          {
+            "id": "original_city_221",
+            "startPlace": {
+              "id": "original_city_221",
+              "name": "빌바오",
+              "region": "이베리아",
+              "continent": "",
+              "atlasHint": "",
+              "point": {
+                "x": 19656,
+                "y": 5176
+              }
+            }
+          },
+          {
+            "id": "original_city_217",
+            "startPlace": {
+              "id": "original_city_217",
+              "name": "세비야",
+              "region": "이베리아",
+              "continent": "",
+              "atlasHint": "",
+              "point": {
+                "x": 19272,
+                "y": 5896
+              }
+            }
+          }
+        ],
+        "createdAt": 1789965751470,
+        "phase": "running",
+        "startedAtGameMinutes": 0,
+        "startedAt": 1789965751833
+      },
+      "progress": {
+        "화면학습검사": {
+          "arrival-race-muare566-66dzx0": {
+            "status": "inProgress",
+            "placeStudy": {
+              "places": {
+                "discovery:batur-caldera": {
+                  "phase": "completed",
+                  "streak": 2,
+                  "token": null,
+                  "order": null,
+                  "completedAt": 1789965752549
+                }
+              }
+            },
+            "stageIndex": 0,
+            "cargoItemId": null,
+            "selectedMissionId": null,
+            "selectedStartPlaceId": "original_city_223",
+            "shipPortId": "original_city_223",
+            "finalQuizStatus": "none",
+            "finalQuizArrivedAt": null,
+            "finalQuizAnswers": [
+              null,
+              null,
+              null
+            ],
+            "finalCorrectCount": null,
+            "finalSubmittedAt": null,
+            "completedAt": null,
+            "completedGameMinutes": null,
+            "finishRank": null
+          }
+        }
+      },
+      "settings": {
+        "paused": false,
+        "locked": false,
+        "roomType": "race",
+        "started": false
+      },
+      "clock": {
+        "gameMinutes": 824.4
+      },
+      "discoveries": {
+        "화면학습검사": [
+          "batur-caldera"
+        ]
+      },
+      "hunts": {},
+      "host": {
+        "tokenHash": "849b5b389b6f5145b25a515cdb3bb74777d183f11b4c89723a1552a8da55566d",
+        "createdAt": 1789965750383,
+        "lastActiveAt": 1789965751556
+      }
+    },
+    "3657": {
+      "activeMission": {
+        "hunt": null,
+        "id": "arrival-race-muara680-5rcq3k",
+        "roomCode": "3657",
+        "kind": "arrivalRace",
+        "mode": "any",
+        "title": "리스본 · 바투르 칼데라 · 밀퍼드사운드 · 초콜릿 힐스 · 팔라완 지하강 도착 미션",
+        "studyTargets": [
+          {
+            "key": "city:lisbon",
+            "type": "city",
+            "id": "lisbon",
+            "name": "리스본",
+            "point": {
+              "x": 18984,
+              "y": 5704,
+              "terrain": "plain"
+            },
+            "reading": {
+              "id": "lisbon",
+              "name": "리스본",
+              "kind": "도시 설명",
+              "todayCountry": "포르투갈",
+              "text": "대항해시대의 관문\n인도로 가는 바닷길이 열린 뒤 후추와 향신료를 실은 배가 들어오는, 유럽에서 손꼽히는 항구였습니다. 마누엘 1세가 다스렸고, 강 어귀에는 막 완성된 벨렝탑이 배들을 맞았습니다.\n\n대지진 뒤 다시 세운 도시\n1755년 큰 지진과 해일, 불이 한꺼번에 덮쳐 도시 대부분이 무너졌습니다. 그 뒤 거리를 바둑판처럼 반듯하게 다시 지었습니다. 지금은 포르투갈의 수도입니다.",
+              "image": "/learn/world-voyage/assets/city-today/lisbon.webp?v=1789791026004",
+              "imageCredit": "오늘날 모습 · 사진 Vitor Oliveira · CC BY-SA 2.0 · 위키미디어 공용",
+              "imageSource": "https://commons.wikimedia.org/wiki/File:Lisboa_-_Portugal_(52597836992).jpg"
+            },
+            "text": "대항해시대의 관문\n인도로 가는 바닷길이 열린 뒤 후추와 향신료를 실은 배가 들어오는, 유럽에서 손꼽히는 항구였습니다. 마누엘 1세가 다스렸고, 강 어귀에는 막 완성된 벨렝탑이 배들을 맞았습니다.\n\n대지진 뒤 다시 세운 도시\n1755년 큰 지진과 해일, 불이 한꺼번에 덮쳐 도시 대부분이 무너졌습니다. 그 뒤 거리를 바둑판처럼 반듯하게 다시 지었습니다. 지금은 포르투갈의 수도입니다.",
+            "questions": [
+              {
+                "prompt": "읽은 설명의 빈칸에 들어갈 말은?",
+                "passage": "인도로 가는 바닷길이 열린 뒤 후추와 (          )를 실은 배가 들어오는, 유럽에서 손꼽히는 항구였습니다.",
+                "choices": [
+                  "포도주",
+                  "향신료",
+                  "도자기",
+                  "비단"
+                ],
+                "answer": "향신료",
+                "explanation": "인도로 가는 바닷길이 열린 뒤 후추와 향신료를 실은 배가 들어오는, 유럽에서 손꼽히는 항구였습니다.",
+                "id": "q0"
+              },
+              {
+                "prompt": "읽은 설명의 빈칸에 들어갈 말은?",
+                "passage": "대(          ) 뒤 다시 세운 도시",
+                "choices": [
+                  "가뭄",
+                  "해일",
+                  "홍수",
+                  "지진"
+                ],
+                "answer": "지진",
+                "explanation": "대지진 뒤 다시 세운 도시",
+                "id": "q1"
+              }
+            ]
+          },
+          {
+            "key": "discovery:batur-caldera",
+            "type": "discovery",
+            "id": "batur-caldera",
+            "name": "바투르 칼데라",
+            "point": {
+              "x": 32820,
+              "y": 10915.555555555555
+            },
+            "reading": {
+              "id": "batur-caldera",
+              "name": "바투르 칼데라",
+              "kind": "자연",
+              "todayCountry": "인도네시아",
+              "text": "화산이 크게 분화한 뒤 땅이 내려앉아 생긴 분지를 칼데라라고 합니다. 바투르는 큰 칼데라 안에 작은 칼데라가 겹쳐 있고, 그 안에 화산과 초승달 모양의 호수가 자리합니다. 둘러선 산줄기를 보면 분지의 테두리를 알아볼 수 있습니다.\n\n1520년에는 화산 활동으로 만들어진 커다란 함몰 지형이 발리섬에 자리하고 있었습니다.",
+              "image": "/learn/world-voyage/assets/landmarks/batur-caldera.webp?v=1789964215781",
+              "imageCredit": "사진 TropicaLiving · CC BY-SA 3.0 · 위키미디어 공용",
+              "imageSource": "https://commons.wikimedia.org/wiki/File:Mount_batur_and_lake.jpg",
+              "imageLicenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+            },
+            "text": "화산이 크게 분화한 뒤 땅이 내려앉아 생긴 분지를 칼데라라고 합니다. 바투르는 큰 칼데라 안에 작은 칼데라가 겹쳐 있고, 그 안에 화산과 초승달 모양의 호수가 자리합니다. 둘러선 산줄기를 보면 분지의 테두리를 알아볼 수 있습니다.\n\n1520년에는 화산 활동으로 만들어진 커다란 함몰 지형이 발리섬에 자리하고 있었습니다.",
+            "questions": [
+              {
+                "prompt": "읽은 설명의 빈칸에 들어갈 말은?",
+                "passage": "화산이 크게 분화한 뒤 땅이 내려앉아 생긴 분지를 (          )라고 합니다.",
+                "choices": [
+                  "삼각주",
+                  "칼데라",
+                  "사구",
+                  "피오르"
+                ],
+                "answer": "칼데라",
+                "explanation": "화산이 크게 분화한 뒤 땅이 내려앉아 생긴 분지를 칼데라라고 합니다.",
+                "id": "q0"
+              },
+              {
+                "prompt": "읽은 설명의 빈칸에 들어갈 말은?",
+                "passage": "바투르는 큰 칼데라 안에 작은 칼데라가 겹쳐 있고, 그 안에 (          )과 초승달 모양의 호수가 자리합니다.",
+                "choices": [
+                  "빙하",
+                  "강물",
+                  "바닷바람",
+                  "화산"
+                ],
+                "answer": "화산",
+                "explanation": "바투르는 큰 칼데라 안에 작은 칼데라가 겹쳐 있고, 그 안에 화산과 초승달 모양의 호수가 자리합니다.",
+                "id": "q1"
+              }
+            ]
+          },
+          {
+            "key": "discovery:milford-sound",
+            "type": "discovery",
+            "id": "milford-sound",
+            "name": "밀퍼드사운드",
+            "point": {
+              "x": 38652.22222222222,
+              "y": 14957.77777777778
+            },
+            "reading": {
+              "id": "milford-sound",
+              "name": "밀퍼드사운드",
+              "kind": "자연",
+              "todayCountry": "뉴질랜드",
+              "text": "빙하가 산 사이를 깊게 깎고 물러난 뒤 바닷물이 들어온 피오르입니다. 물가에서 가파른 암벽이 솟고, 비가 오면 절벽을 따라 폭포가 쏟아집니다. 마오리어 이름은 피오피오타히입니다.\n\n1520년에는 빙하가 깎아 놓은 깊은 골짜기에 바닷물이 들어와 있었습니다.",
+              "image": "/learn/world-voyage/assets/landmarks/milford-sound.webp?v=1789964216779",
+              "imageCredit": "사진 Wikikiwiman · Public domain · 위키미디어 공용",
+              "imageSource": "https://commons.wikimedia.org/wiki/File:MilfordSound.jpg",
+              "imageLicenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/"
+            },
+            "text": "빙하가 산 사이를 깊게 깎고 물러난 뒤 바닷물이 들어온 피오르입니다. 물가에서 가파른 암벽이 솟고, 비가 오면 절벽을 따라 폭포가 쏟아집니다. 마오리어 이름은 피오피오타히입니다.\n\n1520년에는 빙하가 깎아 놓은 깊은 골짜기에 바닷물이 들어와 있었습니다.",
+            "questions": [
+              {
+                "prompt": "읽은 설명의 빈칸에 들어갈 말은?",
+                "passage": "빙하가 산 사이를 깊게 깎고 물러난 뒤 바닷물이 들어온 (          )입니다.",
+                "choices": [
+                  "칼데라",
+                  "사구",
+                  "삼각주",
+                  "피오르"
+                ],
+                "answer": "피오르",
+                "explanation": "빙하가 산 사이를 깊게 깎고 물러난 뒤 바닷물이 들어온 피오르입니다.",
+                "id": "q0"
+              },
+              {
+                "prompt": "읽은 설명의 빈칸에 들어갈 말은?",
+                "passage": "1520년에는 (          )가 깎아 놓은 깊은 골짜기에 바닷물이 들어와 있었습니다.",
+                "choices": [
+                  "바닷바람",
+                  "빙하",
+                  "강물",
+                  "화산"
+                ],
+                "answer": "빙하",
+                "explanation": "1520년에는 빙하가 깎아 놓은 깊은 골짜기에 바닷물이 들어와 있었습니다.",
+                "id": "q1"
+              }
+            ]
+          },
+          {
+            "key": "discovery:chocolate-hills",
+            "type": "discovery",
+            "id": "chocolate-hills",
+            "name": "초콜릿 힐스",
+            "point": {
+              "x": 33793.333333333336,
+              "y": 8908.888888888889
+            },
+            "reading": {
+              "id": "chocolate-hills",
+              "name": "초콜릿 힐스",
+              "kind": "자연",
+              "todayCountry": "필리핀",
+              "text": "보홀섬 내륙에 둥근 원뿔 모양의 석회암 언덕들이 모여 있습니다. 빗물에 석회암이 녹고 깎이면서 만들어진 지형입니다. 언덕을 덮은 풀이 건기에 갈색으로 변해 초콜릿을 닮아 보입니다.\n\n1520년에는 오랜 세월 석회암이 깎여 생긴 둥근 언덕들이 보홀섬에 펼쳐져 있었습니다.",
+              "image": "/learn/world-voyage/assets/landmarks/chocolate-hills.webp?v=1789964241544",
+              "imageCredit": "사진 Mmlibranda · CC BY-SA 4.0 · 위키미디어 공용",
+              "imageSource": "https://commons.wikimedia.org/wiki/File:The_Chocolate_Hills_of_Bohol.jpg",
+              "imageLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+            },
+            "text": "보홀섬 내륙에 둥근 원뿔 모양의 석회암 언덕들이 모여 있습니다. 빗물에 석회암이 녹고 깎이면서 만들어진 지형입니다. 언덕을 덮은 풀이 건기에 갈색으로 변해 초콜릿을 닮아 보입니다.\n\n1520년에는 오랜 세월 석회암이 깎여 생긴 둥근 언덕들이 보홀섬에 펼쳐져 있었습니다.",
+            "questions": [
+              {
+                "prompt": "읽은 설명의 빈칸에 들어갈 말은?",
+                "passage": "보홀섬 내륙에 둥근 원뿔 모양의 (          ) 언덕들이 모여 있습니다.",
+                "choices": [
+                  "화강암",
+                  "사암",
+                  "석회암",
+                  "현무암"
+                ],
+                "answer": "석회암",
+                "explanation": "보홀섬 내륙에 둥근 원뿔 모양의 석회암 언덕들이 모여 있습니다.",
+                "id": "q0"
+              },
+              {
+                "prompt": "읽은 설명에 맞게 문장을 완성한 것은?",
+                "passage": "빗물에 석회암이 녹고 (          )",
+                "choices": [
+                  "항구 카나놀이었습니다.",
+                  "만든 마을이라 이런 이름이 붙었습니다.",
+                  "날아온 돌에 사람이 다치기도 했습니다.",
+                  "깎이면서 만들어진 지형입니다."
+                ],
+                "answer": "깎이면서 만들어진 지형입니다.",
+                "explanation": "빗물에 석회암이 녹고 깎이면서 만들어진 지형입니다.",
+                "id": "q1"
+              }
+            ]
+          },
+          {
+            "key": "discovery:palawan-underground-river",
+            "type": "discovery",
+            "id": "palawan-underground-river",
+            "name": "팔라완 지하강",
+            "point": {
+              "x": 33213.88888888889,
+              "y": 8866.666666666666
+            },
+            "reading": {
+              "id": "palawan-underground-river",
+              "name": "팔라완 지하강",
+              "kind": "자연",
+              "todayCountry": "필리핀",
+              "text": "물이 석회암을 녹여 만든 동굴 속으로 강이 흐릅니다. 약 8.2킬로미터의 지하 하천이 바다로 이어지며, 하류는 밀물과 썰물의 영향을 받습니다. 해안의 동굴 입구에서 강과 바다가 만나는 모습을 볼 수 있습니다.\n\n1520년에는 석회암 산속을 흐르는 강물이 동굴을 빠져나와 바다로 이어졌습니다.",
+              "image": "/learn/world-voyage/assets/landmarks/palawan-underground-river.webp?v=1789964243617",
+              "imageCredit": "사진 Mike Gonzalez · CC BY-SA 3.0 · 위키미디어 공용",
+              "imageSource": "https://commons.wikimedia.org/wiki/File:Puerto_Princesa_Underground_River.jpg",
+              "imageLicenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+            },
+            "text": "물이 석회암을 녹여 만든 동굴 속으로 강이 흐릅니다. 약 8.2킬로미터의 지하 하천이 바다로 이어지며, 하류는 밀물과 썰물의 영향을 받습니다. 해안의 동굴 입구에서 강과 바다가 만나는 모습을 볼 수 있습니다.\n\n1520년에는 석회암 산속을 흐르는 강물이 동굴을 빠져나와 바다로 이어졌습니다.",
+            "questions": [
+              {
+                "prompt": "읽은 설명의 빈칸에 들어갈 말은?",
+                "passage": "물이 (          )을 녹여 만든 동굴 속으로 강이 흐릅니다.",
+                "choices": [
+                  "사암",
+                  "화강암",
+                  "석회암",
+                  "현무암"
+                ],
+                "answer": "석회암",
+                "explanation": "물이 석회암을 녹여 만든 동굴 속으로 강이 흐릅니다.",
+                "id": "q0"
+              },
+              {
+                "prompt": "읽은 설명의 빈칸에 들어갈 말은?",
+                "passage": "2킬로미터의 지하 하천이 (          )로 이어지며, 하류는 밀물과 썰물의 영향을 받습니다.",
+                "choices": [
+                  "바다",
+                  "호수",
+                  "운하",
+                  "강"
+                ],
+                "answer": "바다",
+                "explanation": "2킬로미터의 지하 하천이 바다로 이어지며, 하류는 밀물과 썰물의 영향을 받습니다.",
+                "id": "q1"
+              }
+            ]
+          }
+        ],
+        "instructions": "지정된 장소를 원하는 순서로 방문하세요. 각 장소의 설명을 읽고 두 문제를 연속으로 맞히면 발견 성공입니다. 모든 장소를 완료하면 완주합니다.",
+        "atlasInstruction": "",
+        "markerMode": "hidden",
+        "targetPlace": {
+          "id": "lisbon",
+          "name": "리스본 · 바투르 칼데라 · 밀퍼드사운드 · 초콜릿 힐스 · 팔라완 지하강",
+          "category": "",
+          "region": "",
+          "continent": "",
+          "atlasHint": "",
+          "mode": "sea",
+          "point": {
+            "x": 18984,
+            "y": 5704
+          },
+          "radiusTiles": 3.2
+        },
+        "finalQuiz": null,
+        "startOptions": [
+          {
+            "id": "original_city_223",
+            "startPlace": {
+              "id": "original_city_223",
+              "name": "포르투",
+              "region": "이베리아",
+              "continent": "",
+              "atlasHint": "",
+              "point": {
+                "x": 19032,
+                "y": 5432
+              }
+            }
+          },
+          {
+            "id": "original_city_222",
+            "startPlace": {
+              "id": "original_city_222",
+              "name": "아코루냐",
+              "region": "이베리아",
+              "continent": "",
+              "atlasHint": "",
+              "point": {
+                "x": 19064,
+                "y": 5160
+              }
+            }
+          },
+          {
+            "id": "original_city_221",
+            "startPlace": {
+              "id": "original_city_221",
+              "name": "빌바오",
+              "region": "이베리아",
+              "continent": "",
+              "atlasHint": "",
+              "point": {
+                "x": 19656,
+                "y": 5176
+              }
+            }
+          },
+          {
+            "id": "original_city_217",
+            "startPlace": {
+              "id": "original_city_217",
+              "name": "세비야",
+              "region": "이베리아",
+              "continent": "",
+              "atlasHint": "",
+              "point": {
+                "x": 19272,
+                "y": 5896
+              }
+            }
+          }
+        ],
+        "createdAt": 1789965566208,
+        "phase": "selecting",
+        "startedAtGameMinutes": null
+      },
+      "progress": {
+        "화면학습검사": {
+          "arrival-race-muara680-5rcq3k": {
+            "status": "assigned",
+            "placeStudy": {
+              "places": {}
+            },
+            "stageIndex": 0,
+            "cargoItemId": null,
+            "selectedMissionId": null,
+            "selectedStartPlaceId": null,
+            "shipPortId": null,
+            "finalQuizStatus": "none",
+            "finalQuizArrivedAt": null,
+            "finalQuizAnswers": [
+              null,
+              null,
+              null
+            ],
+            "finalCorrectCount": null,
+            "finalSubmittedAt": null,
+            "completedAt": null,
+            "completedGameMinutes": null,
+            "finishRank": null
+          }
+        }
+      },
+      "settings": {
+        "paused": false,
+        "locked": false,
+        "roomType": "race",
+        "started": false
+      },
+      "clock": {
+        "gameMinutes": 0
+      },
+      "discoveries": {
+        "화면학습검사": []
+      },
+      "hunts": {},
+      "host": {
+        "tokenHash": "b3179b5ae627b7d9b42499fc288d8e48725db96b705df68f0ef16bd523967f29",
+        "createdAt": 1789965565094,
+        "lastActiveAt": 1789965566300
+      }
+    },
+    "3953": {
+      "activeMission": {
+        "hunt": null,
+        "id": "arrival-race-muar7jl8-og7oyk",
+        "roomCode": "3953",
+        "kind": "arrivalRace",
+        "mode": "any",
+        "title": "리스본 · 바투르 칼데라 · 밀퍼드사운드 · 초콜릿 힐스 · 팔라완 지하강 도착 미션",
+        "studyTargets": [
+          {
+            "key": "city:lisbon",
+            "type": "city",
+            "id": "lisbon",
+            "name": "리스본",
+            "point": {
+              "x": 18984,
+              "y": 5704,
+              "terrain": "plain"
+            },
+            "reading": {
+              "id": "lisbon",
+              "name": "리스본",
+              "kind": "도시 설명",
+              "todayCountry": "포르투갈",
+              "text": "대항해시대의 관문\n인도로 가는 바닷길이 열린 뒤 후추와 향신료를 실은 배가 들어오는, 유럽에서 손꼽히는 항구였습니다. 마누엘 1세가 다스렸고, 강 어귀에는 막 완성된 벨렝탑이 배들을 맞았습니다.\n\n대지진 뒤 다시 세운 도시\n1755년 큰 지진과 해일, 불이 한꺼번에 덮쳐 도시 대부분이 무너졌습니다. 그 뒤 거리를 바둑판처럼 반듯하게 다시 지었습니다. 지금은 포르투갈의 수도입니다.",
+              "image": "/learn/world-voyage/assets/city-today/lisbon.webp?v=1789791026004",
+              "imageCredit": "오늘날 모습 · 사진 Vitor Oliveira · CC BY-SA 2.0 · 위키미디어 공용",
+              "imageSource": "https://commons.wikimedia.org/wiki/File:Lisboa_-_Portugal_(52597836992).jpg"
+            },
+            "text": "대항해시대의 관문\n인도로 가는 바닷길이 열린 뒤 후추와 향신료를 실은 배가 들어오는, 유럽에서 손꼽히는 항구였습니다. 마누엘 1세가 다스렸고, 강 어귀에는 막 완성된 벨렝탑이 배들을 맞았습니다.\n\n대지진 뒤 다시 세운 도시\n1755년 큰 지진과 해일, 불이 한꺼번에 덮쳐 도시 대부분이 무너졌습니다. 그 뒤 거리를 바둑판처럼 반듯하게 다시 지었습니다. 지금은 포르투갈의 수도입니다.",
+            "questions": [
+              {
+                "prompt": "읽은 설명의 빈칸에 들어갈 말은?",
+                "passage": "인도로 가는 바닷길이 열린 뒤 후추와 (          )를 실은 배가 들어오는, 유럽에서 손꼽히는 항구였습니다.",
+                "choices": [
+                  "비단",
+                  "도자기",
+                  "포도주",
+                  "향신료"
+                ],
+                "answer": "향신료",
+                "explanation": "인도로 가는 바닷길이 열린 뒤 후추와 향신료를 실은 배가 들어오는, 유럽에서 손꼽히는 항구였습니다.",
+                "id": "q0"
+              },
+              {
+                "prompt": "읽은 설명의 빈칸에 들어갈 말은?",
+                "passage": "대(          ) 뒤 다시 세운 도시",
+                "choices": [
+                  "해일",
+                  "홍수",
+                  "지진",
+                  "가뭄"
+                ],
+                "answer": "지진",
+                "explanation": "대지진 뒤 다시 세운 도시",
+                "id": "q1"
+              }
+            ]
+          },
+          {
+            "key": "discovery:batur-caldera",
+            "type": "discovery",
+            "id": "batur-caldera",
+            "name": "바투르 칼데라",
+            "point": {
+              "x": 32820,
+              "y": 10915.555555555555
+            },
+            "reading": {
+              "id": "batur-caldera",
+              "name": "바투르 칼데라",
+              "kind": "자연",
+              "todayCountry": "인도네시아",
+              "text": "화산이 크게 분화한 뒤 땅이 내려앉아 생긴 분지를 칼데라라고 합니다. 바투르는 큰 칼데라 안에 작은 칼데라가 겹쳐 있고, 그 안에 화산과 초승달 모양의 호수가 자리합니다. 둘러선 산줄기를 보면 분지의 테두리를 알아볼 수 있습니다.\n\n1520년에는 화산 활동으로 만들어진 커다란 함몰 지형이 발리섬에 자리하고 있었습니다.",
+              "image": "/learn/world-voyage/assets/landmarks/batur-caldera.webp?v=1789964215781",
+              "imageCredit": "사진 TropicaLiving · CC BY-SA 3.0 · 위키미디어 공용",
+              "imageSource": "https://commons.wikimedia.org/wiki/File:Mount_batur_and_lake.jpg",
+              "imageLicenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+            },
+            "text": "화산이 크게 분화한 뒤 땅이 내려앉아 생긴 분지를 칼데라라고 합니다. 바투르는 큰 칼데라 안에 작은 칼데라가 겹쳐 있고, 그 안에 화산과 초승달 모양의 호수가 자리합니다. 둘러선 산줄기를 보면 분지의 테두리를 알아볼 수 있습니다.\n\n1520년에는 화산 활동으로 만들어진 커다란 함몰 지형이 발리섬에 자리하고 있었습니다.",
+            "questions": [
+              {
+                "prompt": "읽은 설명의 빈칸에 들어갈 말은?",
+                "passage": "화산이 크게 분화한 뒤 땅이 내려앉아 생긴 분지를 (          )라고 합니다.",
+                "choices": [
+                  "피오르",
+                  "칼데라",
+                  "사구",
+                  "삼각주"
+                ],
+                "answer": "칼데라",
+                "explanation": "화산이 크게 분화한 뒤 땅이 내려앉아 생긴 분지를 칼데라라고 합니다.",
+                "id": "q0"
+              },
+              {
+                "prompt": "읽은 설명의 빈칸에 들어갈 말은?",
+                "passage": "바투르는 큰 칼데라 안에 작은 칼데라가 겹쳐 있고, 그 안에 (          )과 초승달 모양의 호수가 자리합니다.",
+                "choices": [
+                  "강물",
+                  "바닷바람",
+                  "화산",
+                  "빙하"
+                ],
+                "answer": "화산",
+                "explanation": "바투르는 큰 칼데라 안에 작은 칼데라가 겹쳐 있고, 그 안에 화산과 초승달 모양의 호수가 자리합니다.",
+                "id": "q1"
+              }
+            ]
+          },
+          {
+            "key": "discovery:milford-sound",
+            "type": "discovery",
+            "id": "milford-sound",
+            "name": "밀퍼드사운드",
+            "point": {
+              "x": 38652.22222222222,
+              "y": 14957.77777777778
+            },
+            "reading": {
+              "id": "milford-sound",
+              "name": "밀퍼드사운드",
+              "kind": "자연",
+              "todayCountry": "뉴질랜드",
+              "text": "빙하가 산 사이를 깊게 깎고 물러난 뒤 바닷물이 들어온 피오르입니다. 물가에서 가파른 암벽이 솟고, 비가 오면 절벽을 따라 폭포가 쏟아집니다. 마오리어 이름은 피오피오타히입니다.\n\n1520년에는 빙하가 깎아 놓은 깊은 골짜기에 바닷물이 들어와 있었습니다.",
+              "image": "/learn/world-voyage/assets/landmarks/milford-sound.webp?v=1789964216779",
+              "imageCredit": "사진 Wikikiwiman · Public domain · 위키미디어 공용",
+              "imageSource": "https://commons.wikimedia.org/wiki/File:MilfordSound.jpg",
+              "imageLicenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/"
+            },
+            "text": "빙하가 산 사이를 깊게 깎고 물러난 뒤 바닷물이 들어온 피오르입니다. 물가에서 가파른 암벽이 솟고, 비가 오면 절벽을 따라 폭포가 쏟아집니다. 마오리어 이름은 피오피오타히입니다.\n\n1520년에는 빙하가 깎아 놓은 깊은 골짜기에 바닷물이 들어와 있었습니다.",
+            "questions": [
+              {
+                "prompt": "읽은 설명의 빈칸에 들어갈 말은?",
+                "passage": "빙하가 산 사이를 깊게 깎고 물러난 뒤 바닷물이 들어온 (          )입니다.",
+                "choices": [
+                  "사구",
+                  "삼각주",
+                  "피오르",
+                  "칼데라"
+                ],
+                "answer": "피오르",
+                "explanation": "빙하가 산 사이를 깊게 깎고 물러난 뒤 바닷물이 들어온 피오르입니다.",
+                "id": "q0"
+              },
+              {
+                "prompt": "읽은 설명의 빈칸에 들어갈 말은?",
+                "passage": "1520년에는 (          )가 깎아 놓은 깊은 골짜기에 바닷물이 들어와 있었습니다.",
+                "choices": [
+                  "강물",
+                  "빙하",
+                  "화산",
+                  "바닷바람"
+                ],
+                "answer": "빙하",
+                "explanation": "1520년에는 빙하가 깎아 놓은 깊은 골짜기에 바닷물이 들어와 있었습니다.",
+                "id": "q1"
+              }
+            ]
+          },
+          {
+            "key": "discovery:chocolate-hills",
+            "type": "discovery",
+            "id": "chocolate-hills",
+            "name": "초콜릿 힐스",
+            "point": {
+              "x": 33793.333333333336,
+              "y": 8908.888888888889
+            },
+            "reading": {
+              "id": "chocolate-hills",
+              "name": "초콜릿 힐스",
+              "kind": "자연",
+              "todayCountry": "필리핀",
+              "text": "보홀섬 내륙에 둥근 원뿔 모양의 석회암 언덕들이 모여 있습니다. 빗물에 석회암이 녹고 깎이면서 만들어진 지형입니다. 언덕을 덮은 풀이 건기에 갈색으로 변해 초콜릿을 닮아 보입니다.\n\n1520년에는 오랜 세월 석회암이 깎여 생긴 둥근 언덕들이 보홀섬에 펼쳐져 있었습니다.",
+              "image": "/learn/world-voyage/assets/landmarks/chocolate-hills.webp?v=1789964241544",
+              "imageCredit": "사진 Mmlibranda · CC BY-SA 4.0 · 위키미디어 공용",
+              "imageSource": "https://commons.wikimedia.org/wiki/File:The_Chocolate_Hills_of_Bohol.jpg",
+              "imageLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+            },
+            "text": "보홀섬 내륙에 둥근 원뿔 모양의 석회암 언덕들이 모여 있습니다. 빗물에 석회암이 녹고 깎이면서 만들어진 지형입니다. 언덕을 덮은 풀이 건기에 갈색으로 변해 초콜릿을 닮아 보입니다.\n\n1520년에는 오랜 세월 석회암이 깎여 생긴 둥근 언덕들이 보홀섬에 펼쳐져 있었습니다.",
+            "questions": [
+              {
+                "prompt": "읽은 설명의 빈칸에 들어갈 말은?",
+                "passage": "보홀섬 내륙에 둥근 원뿔 모양의 (          ) 언덕들이 모여 있습니다.",
+                "choices": [
+                  "현무암",
+                  "석회암",
+                  "화강암",
+                  "사암"
+                ],
+                "answer": "석회암",
+                "explanation": "보홀섬 내륙에 둥근 원뿔 모양의 석회암 언덕들이 모여 있습니다.",
+                "id": "q0"
+              },
+              {
+                "prompt": "읽은 설명에 맞게 문장을 완성한 것은?",
+                "passage": "빗물에 석회암이 녹고 (          )",
+                "choices": [
+                  "가장 깊은 곳도 90미터가 되지 않습니다.",
+                  "아주 귀해 금과 바꾸었습니다.",
+                  "깎이면서 만들어진 지형입니다.",
+                  "인도양 곳곳으로 팔려 나갔습니다."
+                ],
+                "answer": "깎이면서 만들어진 지형입니다.",
+                "explanation": "빗물에 석회암이 녹고 깎이면서 만들어진 지형입니다.",
+                "id": "q1"
+              }
+            ]
+          },
+          {
+            "key": "discovery:palawan-underground-river",
+            "type": "discovery",
+            "id": "palawan-underground-river",
+            "name": "팔라완 지하강",
+            "point": {
+              "x": 33213.88888888889,
+              "y": 8866.666666666666
+            },
+            "reading": {
+              "id": "palawan-underground-river",
+              "name": "팔라완 지하강",
+              "kind": "자연",
+              "todayCountry": "필리핀",
+              "text": "물이 석회암을 녹여 만든 동굴 속으로 강이 흐릅니다. 약 8.2킬로미터의 지하 하천이 바다로 이어지며, 하류는 밀물과 썰물의 영향을 받습니다. 해안의 동굴 입구에서 강과 바다가 만나는 모습을 볼 수 있습니다.\n\n1520년에는 석회암 산속을 흐르는 강물이 동굴을 빠져나와 바다로 이어졌습니다.",
+              "image": "/learn/world-voyage/assets/landmarks/palawan-underground-river.webp?v=1789964243617",
+              "imageCredit": "사진 Mike Gonzalez · CC BY-SA 3.0 · 위키미디어 공용",
+              "imageSource": "https://commons.wikimedia.org/wiki/File:Puerto_Princesa_Underground_River.jpg",
+              "imageLicenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+            },
+            "text": "물이 석회암을 녹여 만든 동굴 속으로 강이 흐릅니다. 약 8.2킬로미터의 지하 하천이 바다로 이어지며, 하류는 밀물과 썰물의 영향을 받습니다. 해안의 동굴 입구에서 강과 바다가 만나는 모습을 볼 수 있습니다.\n\n1520년에는 석회암 산속을 흐르는 강물이 동굴을 빠져나와 바다로 이어졌습니다.",
+            "questions": [
+              {
+                "prompt": "읽은 설명의 빈칸에 들어갈 말은?",
+                "passage": "물이 (          )을 녹여 만든 동굴 속으로 강이 흐릅니다.",
+                "choices": [
+                  "화강암",
+                  "석회암",
+                  "현무암",
+                  "사암"
+                ],
+                "answer": "석회암",
+                "explanation": "물이 석회암을 녹여 만든 동굴 속으로 강이 흐릅니다.",
+                "id": "q0"
+              },
+              {
+                "prompt": "읽은 설명의 빈칸에 들어갈 말은?",
+                "passage": "2킬로미터의 지하 하천이 (          )로 이어지며, 하류는 밀물과 썰물의 영향을 받습니다.",
+                "choices": [
+                  "운하",
+                  "호수",
+                  "바다",
+                  "강"
+                ],
+                "answer": "바다",
+                "explanation": "2킬로미터의 지하 하천이 바다로 이어지며, 하류는 밀물과 썰물의 영향을 받습니다.",
+                "id": "q1"
+              }
+            ]
+          }
+        ],
+        "instructions": "지정된 장소를 원하는 순서로 방문하세요. 각 장소의 설명을 읽고 두 문제를 연속으로 맞히면 발견 성공입니다. 모든 장소를 완료하면 완주합니다.",
+        "atlasInstruction": "",
+        "markerMode": "hidden",
+        "targetPlace": {
+          "id": "lisbon",
+          "name": "리스본 · 바투르 칼데라 · 밀퍼드사운드 · 초콜릿 힐스 · 팔라완 지하강",
+          "category": "",
+          "region": "",
+          "continent": "",
+          "atlasHint": "",
+          "mode": "sea",
+          "point": {
+            "x": 18984,
+            "y": 5704
+          },
+          "radiusTiles": 3.2
+        },
+        "finalQuiz": null,
+        "startOptions": [
+          {
+            "id": "original_city_223",
+            "startPlace": {
+              "id": "original_city_223",
+              "name": "포르투",
+              "region": "이베리아",
+              "continent": "",
+              "atlasHint": "",
+              "point": {
+                "x": 19032,
+                "y": 5432
+              }
+            }
+          },
+          {
+            "id": "original_city_222",
+            "startPlace": {
+              "id": "original_city_222",
+              "name": "아코루냐",
+              "region": "이베리아",
+              "continent": "",
+              "atlasHint": "",
+              "point": {
+                "x": 19064,
+                "y": 5160
+              }
+            }
+          },
+          {
+            "id": "original_city_221",
+            "startPlace": {
+              "id": "original_city_221",
+              "name": "빌바오",
+              "region": "이베리아",
+              "continent": "",
+              "atlasHint": "",
+              "point": {
+                "x": 19656,
+                "y": 5176
+              }
+            }
+          },
+          {
+            "id": "original_city_217",
+            "startPlace": {
+              "id": "original_city_217",
+              "name": "세비야",
+              "region": "이베리아",
+              "continent": "",
+              "atlasHint": "",
+              "point": {
+                "x": 19272,
+                "y": 5896
+              }
+            }
+          }
+        ],
+        "createdAt": 1789965443564,
+        "phase": "selecting",
+        "startedAtGameMinutes": null
+      },
+      "progress": {
+        "화면학습검사": {
+          "arrival-race-muar7jl8-og7oyk": {
+            "status": "assigned",
+            "placeStudy": {
+              "places": {}
+            },
+            "stageIndex": 0,
+            "cargoItemId": null,
+            "selectedMissionId": null,
+            "selectedStartPlaceId": null,
+            "shipPortId": null,
+            "finalQuizStatus": "none",
+            "finalQuizArrivedAt": null,
+            "finalQuizAnswers": [
+              null,
+              null,
+              null
+            ],
+            "finalCorrectCount": null,
+            "finalSubmittedAt": null,
+            "completedAt": null,
+            "completedGameMinutes": null,
+            "finishRank": null
+          }
+        }
+      },
+      "settings": {
+        "paused": false,
+        "locked": false,
+        "roomType": "race",
+        "started": false
+      },
+      "clock": {
+        "gameMinutes": 0
+      },
+      "discoveries": {
+        "화면학습검사": []
+      },
+      "hunts": {},
+      "host": {
+        "tokenHash": "510c8f3c53c335c09150c2a5a94cb69cca94db8bcabf2b1006458723812ca9d3",
+        "createdAt": 1789965442204,
+        "lastActiveAt": 1789965443661
+      }
+    },
+    "4903": {
+      "activeMission": {
+        "hunt": null,
+        "id": "arrival-race-muarc3zy-m8o6bp",
+        "roomCode": "4903",
+        "kind": "arrivalRace",
+        "mode": "any",
+        "title": "리스본 · 바투르 칼데라 · 밀퍼드사운드 · 초콜릿 힐스 · 팔라완 지하강 도착 미션",
+        "studyTargets": [
+          {
+            "key": "city:lisbon",
+            "type": "city",
+            "id": "lisbon",
+            "name": "리스본",
+            "point": {
+              "x": 18984,
+              "y": 5704,
+              "terrain": "plain"
+            },
+            "reading": {
+              "id": "lisbon",
+              "name": "리스본",
+              "kind": "도시 설명",
+              "todayCountry": "포르투갈",
+              "text": "대항해시대의 관문\n인도로 가는 바닷길이 열린 뒤 후추와 향신료를 실은 배가 들어오는, 유럽에서 손꼽히는 항구였습니다. 마누엘 1세가 다스렸고, 강 어귀에는 막 완성된 벨렝탑이 배들을 맞았습니다.\n\n대지진 뒤 다시 세운 도시\n1755년 큰 지진과 해일, 불이 한꺼번에 덮쳐 도시 대부분이 무너졌습니다. 그 뒤 거리를 바둑판처럼 반듯하게 다시 지었습니다. 지금은 포르투갈의 수도입니다.",
+              "image": "/learn/world-voyage/assets/city-today/lisbon.webp?v=1789791026004",
+              "imageCredit": "오늘날 모습 · 사진 Vitor Oliveira · CC BY-SA 2.0 · 위키미디어 공용",
+              "imageSource": "https://commons.wikimedia.org/wiki/File:Lisboa_-_Portugal_(52597836992).jpg"
+            },
+            "text": "대항해시대의 관문\n인도로 가는 바닷길이 열린 뒤 후추와 향신료를 실은 배가 들어오는, 유럽에서 손꼽히는 항구였습니다. 마누엘 1세가 다스렸고, 강 어귀에는 막 완성된 벨렝탑이 배들을 맞았습니다.\n\n대지진 뒤 다시 세운 도시\n1755년 큰 지진과 해일, 불이 한꺼번에 덮쳐 도시 대부분이 무너졌습니다. 그 뒤 거리를 바둑판처럼 반듯하게 다시 지었습니다. 지금은 포르투갈의 수도입니다.",
+            "questions": [
+              {
+                "prompt": "읽은 설명의 빈칸에 들어갈 말은?",
+                "passage": "인도로 가는 바닷길이 열린 뒤 후추와 (          )를 실은 배가 들어오는, 유럽에서 손꼽히는 항구였습니다.",
+                "choices": [
+                  "포도주",
+                  "향신료",
+                  "도자기",
+                  "비단"
+                ],
+                "answer": "향신료",
+                "explanation": "인도로 가는 바닷길이 열린 뒤 후추와 향신료를 실은 배가 들어오는, 유럽에서 손꼽히는 항구였습니다.",
+                "id": "q0"
+              },
+              {
+                "prompt": "읽은 설명의 빈칸에 들어갈 말은?",
+                "passage": "대(          ) 뒤 다시 세운 도시",
+                "choices": [
+                  "지진",
+                  "해일",
+                  "홍수",
+                  "가뭄"
+                ],
+                "answer": "지진",
+                "explanation": "대지진 뒤 다시 세운 도시",
+                "id": "q1"
+              }
+            ]
+          },
+          {
+            "key": "discovery:batur-caldera",
+            "type": "discovery",
+            "id": "batur-caldera",
+            "name": "바투르 칼데라",
+            "point": {
+              "x": 32820,
+              "y": 10915.555555555555
+            },
+            "reading": {
+              "id": "batur-caldera",
+              "name": "바투르 칼데라",
+              "kind": "자연",
+              "todayCountry": "인도네시아",
+              "text": "화산이 크게 분화한 뒤 땅이 내려앉아 생긴 분지를 칼데라라고 합니다. 바투르는 큰 칼데라 안에 작은 칼데라가 겹쳐 있고, 그 안에 화산과 초승달 모양의 호수가 자리합니다. 둘러선 산줄기를 보면 분지의 테두리를 알아볼 수 있습니다.\n\n1520년에는 화산 활동으로 만들어진 커다란 함몰 지형이 발리섬에 자리하고 있었습니다.",
+              "image": "/learn/world-voyage/assets/landmarks/batur-caldera.webp?v=1789964215781",
+              "imageCredit": "사진 TropicaLiving · CC BY-SA 3.0 · 위키미디어 공용",
+              "imageSource": "https://commons.wikimedia.org/wiki/File:Mount_batur_and_lake.jpg",
+              "imageLicenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+            },
+            "text": "화산이 크게 분화한 뒤 땅이 내려앉아 생긴 분지를 칼데라라고 합니다. 바투르는 큰 칼데라 안에 작은 칼데라가 겹쳐 있고, 그 안에 화산과 초승달 모양의 호수가 자리합니다. 둘러선 산줄기를 보면 분지의 테두리를 알아볼 수 있습니다.\n\n1520년에는 화산 활동으로 만들어진 커다란 함몰 지형이 발리섬에 자리하고 있었습니다.",
+            "questions": [
+              {
+                "prompt": "읽은 설명의 빈칸에 들어갈 말은?",
+                "passage": "화산이 크게 분화한 뒤 땅이 내려앉아 생긴 분지를 (          )라고 합니다.",
+                "choices": [
+                  "칼데라",
+                  "피오르",
+                  "삼각주",
+                  "사구"
+                ],
+                "answer": "칼데라",
+                "explanation": "화산이 크게 분화한 뒤 땅이 내려앉아 생긴 분지를 칼데라라고 합니다.",
+                "id": "q0"
+              },
+              {
+                "prompt": "읽은 설명의 빈칸에 들어갈 말은?",
+                "passage": "바투르는 큰 칼데라 안에 작은 칼데라가 겹쳐 있고, 그 안에 (          )과 초승달 모양의 호수가 자리합니다.",
+                "choices": [
+                  "빙하",
+                  "강물",
+                  "화산",
+                  "바닷바람"
+                ],
+                "answer": "화산",
+                "explanation": "바투르는 큰 칼데라 안에 작은 칼데라가 겹쳐 있고, 그 안에 화산과 초승달 모양의 호수가 자리합니다.",
+                "id": "q1"
+              }
+            ]
+          },
+          {
+            "key": "discovery:milford-sound",
+            "type": "discovery",
+            "id": "milford-sound",
+            "name": "밀퍼드사운드",
+            "point": {
+              "x": 38652.22222222222,
+              "y": 14957.77777777778
+            },
+            "reading": {
+              "id": "milford-sound",
+              "name": "밀퍼드사운드",
+              "kind": "자연",
+              "todayCountry": "뉴질랜드",
+              "text": "빙하가 산 사이를 깊게 깎고 물러난 뒤 바닷물이 들어온 피오르입니다. 물가에서 가파른 암벽이 솟고, 비가 오면 절벽을 따라 폭포가 쏟아집니다. 마오리어 이름은 피오피오타히입니다.\n\n1520년에는 빙하가 깎아 놓은 깊은 골짜기에 바닷물이 들어와 있었습니다.",
+              "image": "/learn/world-voyage/assets/landmarks/milford-sound.webp?v=1789964216779",
+              "imageCredit": "사진 Wikikiwiman · Public domain · 위키미디어 공용",
+              "imageSource": "https://commons.wikimedia.org/wiki/File:MilfordSound.jpg",
+              "imageLicenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/"
+            },
+            "text": "빙하가 산 사이를 깊게 깎고 물러난 뒤 바닷물이 들어온 피오르입니다. 물가에서 가파른 암벽이 솟고, 비가 오면 절벽을 따라 폭포가 쏟아집니다. 마오리어 이름은 피오피오타히입니다.\n\n1520년에는 빙하가 깎아 놓은 깊은 골짜기에 바닷물이 들어와 있었습니다.",
+            "questions": [
+              {
+                "prompt": "읽은 설명의 빈칸에 들어갈 말은?",
+                "passage": "빙하가 산 사이를 깊게 깎고 물러난 뒤 바닷물이 들어온 (          )입니다.",
+                "choices": [
+                  "사구",
+                  "칼데라",
+                  "삼각주",
+                  "피오르"
+                ],
+                "answer": "피오르",
+                "explanation": "빙하가 산 사이를 깊게 깎고 물러난 뒤 바닷물이 들어온 피오르입니다.",
+                "id": "q0"
+              },
+              {
+                "prompt": "읽은 설명의 빈칸에 들어갈 말은?",
+                "passage": "1520년에는 (          )가 깎아 놓은 깊은 골짜기에 바닷물이 들어와 있었습니다.",
+                "choices": [
+                  "강물",
+                  "바닷바람",
+                  "화산",
+                  "빙하"
+                ],
+                "answer": "빙하",
+                "explanation": "1520년에는 빙하가 깎아 놓은 깊은 골짜기에 바닷물이 들어와 있었습니다.",
+                "id": "q1"
+              }
+            ]
+          },
+          {
+            "key": "discovery:chocolate-hills",
+            "type": "discovery",
+            "id": "chocolate-hills",
+            "name": "초콜릿 힐스",
+            "point": {
+              "x": 33793.333333333336,
+              "y": 8908.888888888889
+            },
+            "reading": {
+              "id": "chocolate-hills",
+              "name": "초콜릿 힐스",
+              "kind": "자연",
+              "todayCountry": "필리핀",
+              "text": "보홀섬 내륙에 둥근 원뿔 모양의 석회암 언덕들이 모여 있습니다. 빗물에 석회암이 녹고 깎이면서 만들어진 지형입니다. 언덕을 덮은 풀이 건기에 갈색으로 변해 초콜릿을 닮아 보입니다.\n\n1520년에는 오랜 세월 석회암이 깎여 생긴 둥근 언덕들이 보홀섬에 펼쳐져 있었습니다.",
+              "image": "/learn/world-voyage/assets/landmarks/chocolate-hills.webp?v=1789964241544",
+              "imageCredit": "사진 Mmlibranda · CC BY-SA 4.0 · 위키미디어 공용",
+              "imageSource": "https://commons.wikimedia.org/wiki/File:The_Chocolate_Hills_of_Bohol.jpg",
+              "imageLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+            },
+            "text": "보홀섬 내륙에 둥근 원뿔 모양의 석회암 언덕들이 모여 있습니다. 빗물에 석회암이 녹고 깎이면서 만들어진 지형입니다. 언덕을 덮은 풀이 건기에 갈색으로 변해 초콜릿을 닮아 보입니다.\n\n1520년에는 오랜 세월 석회암이 깎여 생긴 둥근 언덕들이 보홀섬에 펼쳐져 있었습니다.",
+            "questions": [
+              {
+                "prompt": "읽은 설명의 빈칸에 들어갈 말은?",
+                "passage": "보홀섬 내륙에 둥근 원뿔 모양의 (          ) 언덕들이 모여 있습니다.",
+                "choices": [
+                  "현무암",
+                  "사암",
+                  "석회암",
+                  "화강암"
+                ],
+                "answer": "석회암",
+                "explanation": "보홀섬 내륙에 둥근 원뿔 모양의 석회암 언덕들이 모여 있습니다.",
+                "id": "q0"
+              },
+              {
+                "prompt": "읽은 설명에 맞게 문장을 완성한 것은?",
+                "passage": "빗물에 석회암이 녹고 (          )",
+                "choices": [
+                  "시가지가 세계유산입니다.",
+                  "깎이면서 만들어진 지형입니다.",
+                  "붙들어, 인도에 비를 쏟고 북쪽에는 사막을 만듭니다.",
+                  "작은 공화국이었습니다."
+                ],
+                "answer": "깎이면서 만들어진 지형입니다.",
+                "explanation": "빗물에 석회암이 녹고 깎이면서 만들어진 지형입니다.",
+                "id": "q1"
+              }
+            ]
+          },
+          {
+            "key": "discovery:palawan-underground-river",
+            "type": "discovery",
+            "id": "palawan-underground-river",
+            "name": "팔라완 지하강",
+            "point": {
+              "x": 33213.88888888889,
+              "y": 8866.666666666666
+            },
+            "reading": {
+              "id": "palawan-underground-river",
+              "name": "팔라완 지하강",
+              "kind": "자연",
+              "todayCountry": "필리핀",
+              "text": "물이 석회암을 녹여 만든 동굴 속으로 강이 흐릅니다. 약 8.2킬로미터의 지하 하천이 바다로 이어지며, 하류는 밀물과 썰물의 영향을 받습니다. 해안의 동굴 입구에서 강과 바다가 만나는 모습을 볼 수 있습니다.\n\n1520년에는 석회암 산속을 흐르는 강물이 동굴을 빠져나와 바다로 이어졌습니다.",
+              "image": "/learn/world-voyage/assets/landmarks/palawan-underground-river.webp?v=1789964243617",
+              "imageCredit": "사진 Mike Gonzalez · CC BY-SA 3.0 · 위키미디어 공용",
+              "imageSource": "https://commons.wikimedia.org/wiki/File:Puerto_Princesa_Underground_River.jpg",
+              "imageLicenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+            },
+            "text": "물이 석회암을 녹여 만든 동굴 속으로 강이 흐릅니다. 약 8.2킬로미터의 지하 하천이 바다로 이어지며, 하류는 밀물과 썰물의 영향을 받습니다. 해안의 동굴 입구에서 강과 바다가 만나는 모습을 볼 수 있습니다.\n\n1520년에는 석회암 산속을 흐르는 강물이 동굴을 빠져나와 바다로 이어졌습니다.",
+            "questions": [
+              {
+                "prompt": "읽은 설명의 빈칸에 들어갈 말은?",
+                "passage": "물이 (          )을 녹여 만든 동굴 속으로 강이 흐릅니다.",
+                "choices": [
+                  "사암",
+                  "현무암",
+                  "화강암",
+                  "석회암"
+                ],
+                "answer": "석회암",
+                "explanation": "물이 석회암을 녹여 만든 동굴 속으로 강이 흐릅니다.",
+                "id": "q0"
+              },
+              {
+                "prompt": "읽은 설명의 빈칸에 들어갈 말은?",
+                "passage": "2킬로미터의 지하 하천이 (          )로 이어지며, 하류는 밀물과 썰물의 영향을 받습니다.",
+                "choices": [
+                  "운하",
+                  "호수",
+                  "바다",
+                  "강"
+                ],
+                "answer": "바다",
+                "explanation": "2킬로미터의 지하 하천이 바다로 이어지며, 하류는 밀물과 썰물의 영향을 받습니다.",
+                "id": "q1"
+              }
+            ]
+          }
+        ],
+        "instructions": "지정된 장소를 원하는 순서로 방문하세요. 각 장소의 설명을 읽고 두 문제를 연속으로 맞히면 발견 성공입니다. 모든 장소를 완료하면 완주합니다.",
+        "atlasInstruction": "",
+        "markerMode": "hidden",
+        "targetPlace": {
+          "id": "lisbon",
+          "name": "리스본 · 바투르 칼데라 · 밀퍼드사운드 · 초콜릿 힐스 · 팔라완 지하강",
+          "category": "",
+          "region": "",
+          "continent": "",
+          "atlasHint": "",
+          "mode": "sea",
+          "point": {
+            "x": 18984,
+            "y": 5704
+          },
+          "radiusTiles": 3.2
+        },
+        "finalQuiz": null,
+        "startOptions": [
+          {
+            "id": "original_city_223",
+            "startPlace": {
+              "id": "original_city_223",
+              "name": "포르투",
+              "region": "이베리아",
+              "continent": "",
+              "atlasHint": "",
+              "point": {
+                "x": 19032,
+                "y": 5432
+              }
+            }
+          },
+          {
+            "id": "original_city_222",
+            "startPlace": {
+              "id": "original_city_222",
+              "name": "아코루냐",
+              "region": "이베리아",
+              "continent": "",
+              "atlasHint": "",
+              "point": {
+                "x": 19064,
+                "y": 5160
+              }
+            }
+          },
+          {
+            "id": "original_city_221",
+            "startPlace": {
+              "id": "original_city_221",
+              "name": "빌바오",
+              "region": "이베리아",
+              "continent": "",
+              "atlasHint": "",
+              "point": {
+                "x": 19656,
+                "y": 5176
+              }
+            }
+          },
+          {
+            "id": "original_city_217",
+            "startPlace": {
+              "id": "original_city_217",
+              "name": "세비야",
+              "region": "이베리아",
+              "continent": "",
+              "atlasHint": "",
+              "point": {
+                "x": 19272,
+                "y": 5896
+              }
+            }
+          }
+        ],
+        "createdAt": 1789965656638,
+        "phase": "running",
+        "startedAtGameMinutes": 0,
+        "startedAt": 1789965657018
+      },
+      "progress": {
+        "화면학습검사": {
+          "arrival-race-muarc3zy-m8o6bp": {
+            "status": "inProgress",
+            "placeStudy": {
+              "places": {
+                "discovery:batur-caldera": {
+                  "phase": "completed",
+                  "streak": 2,
+                  "token": null,
+                  "order": null,
+                  "completedAt": 1789965657769
+                }
+              }
+            },
+            "stageIndex": 0,
+            "cargoItemId": null,
+            "selectedMissionId": null,
+            "selectedStartPlaceId": "original_city_223",
+            "shipPortId": "original_city_223",
+            "finalQuizStatus": "none",
+            "finalQuizArrivedAt": null,
+            "finalQuizAnswers": [
+              null,
+              null,
+              null
+            ],
+            "finalCorrectCount": null,
+            "finalSubmittedAt": null,
+            "completedAt": null,
+            "completedGameMinutes": null,
+            "finishRank": null
+          }
+        }
+      },
+      "settings": {
+        "paused": false,
+        "locked": false,
+        "roomType": "race",
+        "started": false
+      },
+      "clock": {
+        "gameMinutes": 1260
+      },
+      "discoveries": {
+        "화면학습검사": [
+          "batur-caldera"
+        ]
+      },
+      "hunts": {},
+      "host": {
+        "tokenHash": "58fe38a4a44e1b7e05d4445a924ab7848ba7b80c978565877bf95858e9beeb82",
+        "createdAt": 1789965655318,
+        "lastActiveAt": 1789965656740
+      }
+    },
+    "5722": {
+      "activeMission": {
+        "hunt": null,
+        "id": "arrival-race-muarm9ca-jx5xr8",
+        "roomCode": "5722",
+        "kind": "arrivalRace",
+        "mode": "any",
+        "title": "리스본 · 바투르 칼데라 · 밀퍼드사운드 · 초콜릿 힐스 · 팔라완 지하강 도착 미션",
+        "studyTargets": [
+          {
+            "key": "city:lisbon",
+            "type": "city",
+            "id": "lisbon",
+            "name": "리스본",
+            "point": {
+              "x": 18984,
+              "y": 5704,
+              "terrain": "plain"
+            },
+            "reading": {
+              "id": "lisbon",
+              "name": "리스본",
+              "kind": "도시 설명",
+              "todayCountry": "포르투갈",
+              "text": "대항해시대의 관문\n인도로 가는 바닷길이 열린 뒤 후추와 향신료를 실은 배가 들어오는, 유럽에서 손꼽히는 항구였습니다. 마누엘 1세가 다스렸고, 강 어귀에는 막 완성된 벨렝탑이 배들을 맞았습니다.\n\n대지진 뒤 다시 세운 도시\n1755년 큰 지진과 해일, 불이 한꺼번에 덮쳐 도시 대부분이 무너졌습니다. 그 뒤 거리를 바둑판처럼 반듯하게 다시 지었습니다. 지금은 포르투갈의 수도입니다.",
+              "image": "/learn/world-voyage/assets/city-today/lisbon.webp?v=1789791026004",
+              "imageCredit": "오늘날 모습 · 사진 Vitor Oliveira · CC BY-SA 2.0 · 위키미디어 공용",
+              "imageChanges": "",
+              "imageSource": "https://commons.wikimedia.org/wiki/File:Lisboa_-_Portugal_(52597836992).jpg"
+            },
+            "text": "인도로 가는 바닷길이 열린 뒤 후추와 향신료를 실은 배가 들어오는, 유럽에서 손꼽히는 항구였습니다. 마누엘 1세가 다스렸고, 강 어귀에는 막 완성된 벨렝탑이 배들을 맞았습니다.\n1755년 큰 지진과 해일, 불이 한꺼번에 덮쳐 도시 대부분이 무너졌습니다. 그 뒤 거리를 바둑판처럼 반듯하게 다시 지었습니다. 지금은 포르투갈의 수도입니다.",
+            "questions": [
+              {
+                "prompt": "읽은 설명의 빈칸에 들어갈 말은?",
+                "passage": "인도로 가는 바닷길이 열린 뒤 후추와 (          )를 실은 배가 들어오는, 유럽에서 손꼽히는 항구였습니다.",
+                "choices": [
+                  "포도주",
+                  "향신료",
+                  "도자기",
+                  "비단"
+                ],
+                "answer": "향신료",
+                "explanation": "인도로 가는 바닷길이 열린 뒤 후추와 향신료를 실은 배가 들어오는, 유럽에서 손꼽히는 항구였습니다.",
+                "id": "q0"
+              },
+              {
+                "prompt": "읽은 설명의 빈칸에 들어갈 말은?",
+                "passage": "지금은 (          )의 수도입니다.",
+                "choices": [
+                  "포르투갈",
+                  "일본",
+                  "스페인",
+                  "중국"
+                ],
+                "answer": "포르투갈",
+                "explanation": "지금은 포르투갈의 수도입니다.",
+                "id": "q1"
+              }
+            ]
+          },
+          {
+            "key": "discovery:batur-caldera",
+            "type": "discovery",
+            "id": "batur-caldera",
+            "name": "바투르 칼데라",
+            "point": {
+              "x": 32820,
+              "y": 10915.555555555555
+            },
+            "reading": {
+              "id": "batur-caldera",
+              "name": "바투르 칼데라",
+              "kind": "자연",
+              "todayCountry": "인도네시아",
+              "text": "화산이 크게 분화한 뒤 땅이 내려앉아 생긴 분지를 칼데라라고 합니다. 바투르는 큰 칼데라 안에 작은 칼데라가 겹쳐 있고, 그 안에 화산과 초승달 모양의 호수가 자리합니다. 둘러선 산줄기를 보면 분지의 테두리를 알아볼 수 있습니다.\n\n1520년에는 화산 활동으로 만들어진 커다란 함몰 지형이 발리섬에 자리하고 있었습니다.",
+              "image": "/learn/world-voyage/assets/landmarks/batur-caldera.webp?v=1789964215781",
+              "imageCredit": "오늘날 모습 · 사진 TropicaLiving · CC BY-SA 3.0 · 위키미디어 공용",
+              "imageChanges": "크기 축소 및 WebP 변환",
+              "imageSource": "https://commons.wikimedia.org/wiki/File:Mount_batur_and_lake.jpg",
+              "imageLicenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+            },
+            "text": "화산이 크게 분화한 뒤 땅이 내려앉아 생긴 분지를 칼데라라고 합니다. 바투르는 큰 칼데라 안에 작은 칼데라가 겹쳐 있고, 그 안에 화산과 초승달 모양의 호수가 자리합니다. 둘러선 산줄기를 보면 분지의 테두리를 알아볼 수 있습니다.\n\n1520년에는 화산 활동으로 만들어진 커다란 함몰 지형이 발리섬에 자리하고 있었습니다.",
+            "questions": [
+              {
+                "prompt": "읽은 설명의 빈칸에 들어갈 말은?",
+                "passage": "화산이 크게 분화한 뒤 땅이 내려앉아 생긴 분지를 (          )라고 합니다.",
+                "choices": [
+                  "사구",
+                  "삼각주",
+                  "피오르",
+                  "칼데라"
+                ],
+                "answer": "칼데라",
+                "explanation": "화산이 크게 분화한 뒤 땅이 내려앉아 생긴 분지를 칼데라라고 합니다.",
+                "id": "q0"
+              },
+              {
+                "prompt": "읽은 설명의 빈칸에 들어갈 말은?",
+                "passage": "바투르는 큰 칼데라 안에 작은 칼데라가 겹쳐 있고, 그 안에 (          )과 초승달 모양의 호수가 자리합니다.",
+                "choices": [
+                  "화산",
+                  "강물",
+                  "빙하",
+                  "바닷바람"
+                ],
+                "answer": "화산",
+                "explanation": "바투르는 큰 칼데라 안에 작은 칼데라가 겹쳐 있고, 그 안에 화산과 초승달 모양의 호수가 자리합니다.",
+                "id": "q1"
+              }
+            ]
+          },
+          {
+            "key": "discovery:milford-sound",
+            "type": "discovery",
+            "id": "milford-sound",
+            "name": "밀퍼드사운드",
+            "point": {
+              "x": 38652.22222222222,
+              "y": 14957.77777777778
+            },
+            "reading": {
+              "id": "milford-sound",
+              "name": "밀퍼드사운드",
+              "kind": "자연",
+              "todayCountry": "뉴질랜드",
+              "text": "빙하가 산 사이를 깊게 깎고 물러난 뒤 바닷물이 들어온 피오르입니다. 물가에서 가파른 암벽이 솟고, 비가 오면 절벽을 따라 폭포가 쏟아집니다. 마오리어 이름은 피오피오타히입니다.\n\n1520년에는 빙하가 깎아 놓은 깊은 골짜기에 바닷물이 들어와 있었습니다.",
+              "image": "/learn/world-voyage/assets/landmarks/milford-sound.webp?v=1789964216779",
+              "imageCredit": "오늘날 모습 · 사진 Wikikiwiman · Public domain · 위키미디어 공용",
+              "imageChanges": "크기 축소 및 WebP 변환",
+              "imageSource": "https://commons.wikimedia.org/wiki/File:MilfordSound.jpg",
+              "imageLicenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/"
+            },
+            "text": "빙하가 산 사이를 깊게 깎고 물러난 뒤 바닷물이 들어온 피오르입니다. 물가에서 가파른 암벽이 솟고, 비가 오면 절벽을 따라 폭포가 쏟아집니다. 마오리어 이름은 피오피오타히입니다.\n\n1520년에는 빙하가 깎아 놓은 깊은 골짜기에 바닷물이 들어와 있었습니다.",
+            "questions": [
+              {
+                "prompt": "읽은 설명의 빈칸에 들어갈 말은?",
+                "passage": "빙하가 산 사이를 깊게 깎고 물러난 뒤 바닷물이 들어온 (          )입니다.",
+                "choices": [
+                  "칼데라",
+                  "피오르",
+                  "사구",
+                  "삼각주"
+                ],
+                "answer": "피오르",
+                "explanation": "빙하가 산 사이를 깊게 깎고 물러난 뒤 바닷물이 들어온 피오르입니다.",
+                "id": "q0"
+              },
+              {
+                "prompt": "읽은 설명의 빈칸에 들어갈 말은?",
+                "passage": "1520년에는 (          )가 깎아 놓은 깊은 골짜기에 바닷물이 들어와 있었습니다.",
+                "choices": [
+                  "화산",
+                  "강물",
+                  "빙하",
+                  "바닷바람"
+                ],
+                "answer": "빙하",
+                "explanation": "1520년에는 빙하가 깎아 놓은 깊은 골짜기에 바닷물이 들어와 있었습니다.",
+                "id": "q1"
+              }
+            ]
+          },
+          {
+            "key": "discovery:chocolate-hills",
+            "type": "discovery",
+            "id": "chocolate-hills",
+            "name": "초콜릿 힐스",
+            "point": {
+              "x": 33793.333333333336,
+              "y": 8908.888888888889
+            },
+            "reading": {
+              "id": "chocolate-hills",
+              "name": "초콜릿 힐스",
+              "kind": "자연",
+              "todayCountry": "필리핀",
+              "text": "보홀섬 내륙에 둥근 원뿔 모양의 석회암 언덕들이 모여 있습니다. 빗물에 석회암이 녹고 깎이면서 만들어진 지형입니다. 언덕을 덮은 풀이 건기에 갈색으로 변해 초콜릿을 닮아 보입니다.\n\n1520년에는 오랜 세월 석회암이 깎여 생긴 둥근 언덕들이 보홀섬에 펼쳐져 있었습니다.",
+              "image": "/learn/world-voyage/assets/landmarks/chocolate-hills.webp?v=1789964241544",
+              "imageCredit": "오늘날 모습 · 사진 Mmlibranda · CC BY-SA 4.0 · 위키미디어 공용",
+              "imageChanges": "크기 축소 및 WebP 변환",
+              "imageSource": "https://commons.wikimedia.org/wiki/File:The_Chocolate_Hills_of_Bohol.jpg",
+              "imageLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+            },
+            "text": "보홀섬 내륙에 둥근 원뿔 모양의 석회암 언덕들이 모여 있습니다. 빗물에 석회암이 녹고 깎이면서 만들어진 지형입니다. 언덕을 덮은 풀이 건기에 갈색으로 변해 초콜릿을 닮아 보입니다.\n\n1520년에는 오랜 세월 석회암이 깎여 생긴 둥근 언덕들이 보홀섬에 펼쳐져 있었습니다.",
+            "questions": [
+              {
+                "prompt": "읽은 설명의 빈칸에 들어갈 말은?",
+                "passage": "보홀섬 내륙에 둥근 원뿔 모양의 (          ) 언덕들이 모여 있습니다.",
+                "choices": [
+                  "석회암",
+                  "사암",
+                  "화강암",
+                  "현무암"
+                ],
+                "answer": "석회암",
+                "explanation": "보홀섬 내륙에 둥근 원뿔 모양의 석회암 언덕들이 모여 있습니다.",
+                "id": "q0"
+              },
+              {
+                "prompt": "읽은 설명에 맞게 문장을 완성한 것은?",
+                "passage": "빗물에 석회암이 녹고 (          )",
+                "choices": [
+                  "사람과 짐승이 아시아에서 아메리카로 걸어 건넜다고 봅니다.",
+                  "사람과 사자와 개를 실물 크기로 새긴 그림입니다.",
+                  "바다에 바싹 붙은 곳에 있습니다.",
+                  "깎이면서 만들어진 지형입니다."
+                ],
+                "answer": "깎이면서 만들어진 지형입니다.",
+                "explanation": "빗물에 석회암이 녹고 깎이면서 만들어진 지형입니다.",
+                "id": "q1"
+              }
+            ]
+          },
+          {
+            "key": "discovery:palawan-underground-river",
+            "type": "discovery",
+            "id": "palawan-underground-river",
+            "name": "팔라완 지하강",
+            "point": {
+              "x": 33213.88888888889,
+              "y": 8866.666666666666
+            },
+            "reading": {
+              "id": "palawan-underground-river",
+              "name": "팔라완 지하강",
+              "kind": "자연",
+              "todayCountry": "필리핀",
+              "text": "물이 석회암을 녹여 만든 동굴 속으로 강이 흐릅니다. 약 8.2킬로미터의 지하 하천이 바다로 이어지며, 하류는 밀물과 썰물의 영향을 받습니다. 해안의 동굴 입구에서 강과 바다가 만나는 모습을 볼 수 있습니다.\n\n1520년에는 석회암 산속을 흐르는 강물이 동굴을 빠져나와 바다로 이어졌습니다.",
+              "image": "/learn/world-voyage/assets/landmarks/palawan-underground-river.webp?v=1789964243617",
+              "imageCredit": "오늘날 모습 · 사진 Mike Gonzalez · CC BY-SA 3.0 · 위키미디어 공용",
+              "imageChanges": "크기 축소 및 WebP 변환",
+              "imageSource": "https://commons.wikimedia.org/wiki/File:Puerto_Princesa_Underground_River.jpg",
+              "imageLicenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+            },
+            "text": "물이 석회암을 녹여 만든 동굴 속으로 강이 흐릅니다. 약 8.2킬로미터의 지하 하천이 바다로 이어지며, 하류는 밀물과 썰물의 영향을 받습니다. 해안의 동굴 입구에서 강과 바다가 만나는 모습을 볼 수 있습니다.\n\n1520년에는 석회암 산속을 흐르는 강물이 동굴을 빠져나와 바다로 이어졌습니다.",
+            "questions": [
+              {
+                "prompt": "읽은 설명의 빈칸에 들어갈 말은?",
+                "passage": "물이 (          )을 녹여 만든 동굴 속으로 강이 흐릅니다.",
+                "choices": [
+                  "화강암",
+                  "현무암",
+                  "석회암",
+                  "사암"
+                ],
+                "answer": "석회암",
+                "explanation": "물이 석회암을 녹여 만든 동굴 속으로 강이 흐릅니다.",
+                "id": "q0"
+              },
+              {
+                "prompt": "읽은 설명의 빈칸에 들어갈 말은?",
+                "passage": "2킬로미터의 지하 하천이 (          )로 이어지며, 하류는 밀물과 썰물의 영향을 받습니다.",
+                "choices": [
+                  "호수",
+                  "바다",
+                  "운하",
+                  "강"
+                ],
+                "answer": "바다",
+                "explanation": "2킬로미터의 지하 하천이 바다로 이어지며, 하류는 밀물과 썰물의 영향을 받습니다.",
+                "id": "q1"
+              }
+            ]
+          }
+        ],
+        "instructions": "지정된 장소를 원하는 순서로 방문하세요. 각 장소의 설명을 읽고 두 문제를 연속으로 맞히면 발견 성공입니다. 모든 장소를 완료하면 완주합니다.",
+        "atlasInstruction": "",
+        "markerMode": "hidden",
+        "targetPlace": {
+          "id": "lisbon",
+          "name": "리스본 · 바투르 칼데라 · 밀퍼드사운드 · 초콜릿 힐스 · 팔라완 지하강",
+          "category": "",
+          "region": "",
+          "continent": "",
+          "atlasHint": "",
+          "mode": "sea",
+          "point": {
+            "x": 18984,
+            "y": 5704
+          },
+          "radiusTiles": 3.2
+        },
+        "finalQuiz": null,
+        "startOptions": [
+          {
+            "id": "original_city_223",
+            "startPlace": {
+              "id": "original_city_223",
+              "name": "포르투",
+              "region": "이베리아",
+              "continent": "",
+              "atlasHint": "",
+              "point": {
+                "x": 19032,
+                "y": 5432
+              }
+            }
+          },
+          {
+            "id": "original_city_222",
+            "startPlace": {
+              "id": "original_city_222",
+              "name": "아코루냐",
+              "region": "이베리아",
+              "continent": "",
+              "atlasHint": "",
+              "point": {
+                "x": 19064,
+                "y": 5160
+              }
+            }
+          },
+          {
+            "id": "original_city_221",
+            "startPlace": {
+              "id": "original_city_221",
+              "name": "빌바오",
+              "region": "이베리아",
+              "continent": "",
+              "atlasHint": "",
+              "point": {
+                "x": 19656,
+                "y": 5176
+              }
+            }
+          },
+          {
+            "id": "original_city_217",
+            "startPlace": {
+              "id": "original_city_217",
+              "name": "세비야",
+              "region": "이베리아",
+              "continent": "",
+              "atlasHint": "",
+              "point": {
+                "x": 19272,
+                "y": 5896
+              }
+            }
+          }
+        ],
+        "createdAt": 1789966130122,
+        "phase": "running",
+        "startedAtGameMinutes": 0,
+        "startedAt": 1789966130523
+      },
+      "progress": {
+        "화면학습검사": {
+          "arrival-race-muarm9ca-jx5xr8": {
+            "status": "inProgress",
+            "placeStudy": {
+              "places": {
+                "discovery:batur-caldera": {
+                  "phase": "completed",
+                  "streak": 2,
+                  "token": null,
+                  "order": null,
+                  "completedAt": 1789966131403
+                }
+              }
+            },
+            "stageIndex": 0,
+            "cargoItemId": null,
+            "selectedMissionId": null,
+            "selectedStartPlaceId": "original_city_223",
+            "shipPortId": "original_city_223",
+            "finalQuizStatus": "none",
+            "finalQuizArrivedAt": null,
+            "finalQuizAnswers": [
+              null,
+              null,
+              null
+            ],
+            "finalCorrectCount": null,
+            "finalSubmittedAt": null,
+            "completedAt": null,
+            "completedGameMinutes": null,
+            "finishRank": null
+          }
+        }
+      },
+      "settings": {
+        "paused": false,
+        "locked": false,
+        "roomType": "race",
+        "started": false
+      },
+      "clock": {
+        "gameMinutes": 1346.4000000000003
+      },
+      "discoveries": {
+        "화면학습검사": [
+          "batur-caldera"
+        ]
+      },
+      "hunts": {},
+      "host": {
+        "tokenHash": "427b2fec0a3fc8a06aadf76662c4672a1ad2cbb42c29c3c813c9a2c73f7ccbeb",
+        "createdAt": 1789966128876,
+        "lastActiveAt": 1789966130216
+      }
+    },
+    "5903": {
+      "activeMission": {
+        "hunt": null,
+        "id": "arrival-race-muarbfp1-zaswmd",
+        "roomCode": "5903",
+        "kind": "arrivalRace",
+        "mode": "any",
+        "title": "리스본 · 바투르 칼데라 · 밀퍼드사운드 · 초콜릿 힐스 · 팔라완 지하강 도착 미션",
+        "studyTargets": [
+          {
+            "key": "city:lisbon",
+            "type": "city",
+            "id": "lisbon",
+            "name": "리스본",
+            "point": {
+              "x": 18984,
+              "y": 5704,
+              "terrain": "plain"
+            },
+            "reading": {
+              "id": "lisbon",
+              "name": "리스본",
+              "kind": "도시 설명",
+              "todayCountry": "포르투갈",
+              "text": "대항해시대의 관문\n인도로 가는 바닷길이 열린 뒤 후추와 향신료를 실은 배가 들어오는, 유럽에서 손꼽히는 항구였습니다. 마누엘 1세가 다스렸고, 강 어귀에는 막 완성된 벨렝탑이 배들을 맞았습니다.\n\n대지진 뒤 다시 세운 도시\n1755년 큰 지진과 해일, 불이 한꺼번에 덮쳐 도시 대부분이 무너졌습니다. 그 뒤 거리를 바둑판처럼 반듯하게 다시 지었습니다. 지금은 포르투갈의 수도입니다.",
+              "image": "/learn/world-voyage/assets/city-today/lisbon.webp?v=1789791026004",
+              "imageCredit": "오늘날 모습 · 사진 Vitor Oliveira · CC BY-SA 2.0 · 위키미디어 공용",
+              "imageSource": "https://commons.wikimedia.org/wiki/File:Lisboa_-_Portugal_(52597836992).jpg"
+            },
+            "text": "대항해시대의 관문\n인도로 가는 바닷길이 열린 뒤 후추와 향신료를 실은 배가 들어오는, 유럽에서 손꼽히는 항구였습니다. 마누엘 1세가 다스렸고, 강 어귀에는 막 완성된 벨렝탑이 배들을 맞았습니다.\n\n대지진 뒤 다시 세운 도시\n1755년 큰 지진과 해일, 불이 한꺼번에 덮쳐 도시 대부분이 무너졌습니다. 그 뒤 거리를 바둑판처럼 반듯하게 다시 지었습니다. 지금은 포르투갈의 수도입니다.",
+            "questions": [
+              {
+                "prompt": "읽은 설명의 빈칸에 들어갈 말은?",
+                "passage": "인도로 가는 바닷길이 열린 뒤 후추와 (          )를 실은 배가 들어오는, 유럽에서 손꼽히는 항구였습니다.",
+                "choices": [
+                  "비단",
+                  "도자기",
+                  "포도주",
+                  "향신료"
+                ],
+                "answer": "향신료",
+                "explanation": "인도로 가는 바닷길이 열린 뒤 후추와 향신료를 실은 배가 들어오는, 유럽에서 손꼽히는 항구였습니다.",
+                "id": "q0"
+              },
+              {
+                "prompt": "읽은 설명의 빈칸에 들어갈 말은?",
+                "passage": "대(          ) 뒤 다시 세운 도시",
+                "choices": [
+                  "가뭄",
+                  "홍수",
+                  "해일",
+                  "지진"
+                ],
+                "answer": "지진",
+                "explanation": "대지진 뒤 다시 세운 도시",
+                "id": "q1"
+              }
+            ]
+          },
+          {
+            "key": "discovery:batur-caldera",
+            "type": "discovery",
+            "id": "batur-caldera",
+            "name": "바투르 칼데라",
+            "point": {
+              "x": 32820,
+              "y": 10915.555555555555
+            },
+            "reading": {
+              "id": "batur-caldera",
+              "name": "바투르 칼데라",
+              "kind": "자연",
+              "todayCountry": "인도네시아",
+              "text": "화산이 크게 분화한 뒤 땅이 내려앉아 생긴 분지를 칼데라라고 합니다. 바투르는 큰 칼데라 안에 작은 칼데라가 겹쳐 있고, 그 안에 화산과 초승달 모양의 호수가 자리합니다. 둘러선 산줄기를 보면 분지의 테두리를 알아볼 수 있습니다.\n\n1520년에는 화산 활동으로 만들어진 커다란 함몰 지형이 발리섬에 자리하고 있었습니다.",
+              "image": "/learn/world-voyage/assets/landmarks/batur-caldera.webp?v=1789964215781",
+              "imageCredit": "사진 TropicaLiving · CC BY-SA 3.0 · 위키미디어 공용",
+              "imageSource": "https://commons.wikimedia.org/wiki/File:Mount_batur_and_lake.jpg",
+              "imageLicenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+            },
+            "text": "화산이 크게 분화한 뒤 땅이 내려앉아 생긴 분지를 칼데라라고 합니다. 바투르는 큰 칼데라 안에 작은 칼데라가 겹쳐 있고, 그 안에 화산과 초승달 모양의 호수가 자리합니다. 둘러선 산줄기를 보면 분지의 테두리를 알아볼 수 있습니다.\n\n1520년에는 화산 활동으로 만들어진 커다란 함몰 지형이 발리섬에 자리하고 있었습니다.",
+            "questions": [
+              {
+                "prompt": "읽은 설명의 빈칸에 들어갈 말은?",
+                "passage": "화산이 크게 분화한 뒤 땅이 내려앉아 생긴 분지를 (          )라고 합니다.",
+                "choices": [
+                  "피오르",
+                  "사구",
+                  "삼각주",
+                  "칼데라"
+                ],
+                "answer": "칼데라",
+                "explanation": "화산이 크게 분화한 뒤 땅이 내려앉아 생긴 분지를 칼데라라고 합니다.",
+                "id": "q0"
+              },
+              {
+                "prompt": "읽은 설명의 빈칸에 들어갈 말은?",
+                "passage": "바투르는 큰 칼데라 안에 작은 칼데라가 겹쳐 있고, 그 안에 (          )과 초승달 모양의 호수가 자리합니다.",
+                "choices": [
+                  "강물",
+                  "화산",
+                  "바닷바람",
+                  "빙하"
+                ],
+                "answer": "화산",
+                "explanation": "바투르는 큰 칼데라 안에 작은 칼데라가 겹쳐 있고, 그 안에 화산과 초승달 모양의 호수가 자리합니다.",
+                "id": "q1"
+              }
+            ]
+          },
+          {
+            "key": "discovery:milford-sound",
+            "type": "discovery",
+            "id": "milford-sound",
+            "name": "밀퍼드사운드",
+            "point": {
+              "x": 38652.22222222222,
+              "y": 14957.77777777778
+            },
+            "reading": {
+              "id": "milford-sound",
+              "name": "밀퍼드사운드",
+              "kind": "자연",
+              "todayCountry": "뉴질랜드",
+              "text": "빙하가 산 사이를 깊게 깎고 물러난 뒤 바닷물이 들어온 피오르입니다. 물가에서 가파른 암벽이 솟고, 비가 오면 절벽을 따라 폭포가 쏟아집니다. 마오리어 이름은 피오피오타히입니다.\n\n1520년에는 빙하가 깎아 놓은 깊은 골짜기에 바닷물이 들어와 있었습니다.",
+              "image": "/learn/world-voyage/assets/landmarks/milford-sound.webp?v=1789964216779",
+              "imageCredit": "사진 Wikikiwiman · Public domain · 위키미디어 공용",
+              "imageSource": "https://commons.wikimedia.org/wiki/File:MilfordSound.jpg",
+              "imageLicenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/"
+            },
+            "text": "빙하가 산 사이를 깊게 깎고 물러난 뒤 바닷물이 들어온 피오르입니다. 물가에서 가파른 암벽이 솟고, 비가 오면 절벽을 따라 폭포가 쏟아집니다. 마오리어 이름은 피오피오타히입니다.\n\n1520년에는 빙하가 깎아 놓은 깊은 골짜기에 바닷물이 들어와 있었습니다.",
+            "questions": [
+              {
+                "prompt": "읽은 설명의 빈칸에 들어갈 말은?",
+                "passage": "빙하가 산 사이를 깊게 깎고 물러난 뒤 바닷물이 들어온 (          )입니다.",
+                "choices": [
+                  "피오르",
+                  "칼데라",
+                  "삼각주",
+                  "사구"
+                ],
+                "answer": "피오르",
+                "explanation": "빙하가 산 사이를 깊게 깎고 물러난 뒤 바닷물이 들어온 피오르입니다.",
+                "id": "q0"
+              },
+              {
+                "prompt": "읽은 설명의 빈칸에 들어갈 말은?",
+                "passage": "1520년에는 (          )가 깎아 놓은 깊은 골짜기에 바닷물이 들어와 있었습니다.",
+                "choices": [
+                  "빙하",
+                  "바닷바람",
+                  "화산",
+                  "강물"
+                ],
+                "answer": "빙하",
+                "explanation": "1520년에는 빙하가 깎아 놓은 깊은 골짜기에 바닷물이 들어와 있었습니다.",
+                "id": "q1"
+              }
+            ]
+          },
+          {
+            "key": "discovery:chocolate-hills",
+            "type": "discovery",
+            "id": "chocolate-hills",
+            "name": "초콜릿 힐스",
+            "point": {
+              "x": 33793.333333333336,
+              "y": 8908.888888888889
+            },
+            "reading": {
+              "id": "chocolate-hills",
+              "name": "초콜릿 힐스",
+              "kind": "자연",
+              "todayCountry": "필리핀",
+              "text": "보홀섬 내륙에 둥근 원뿔 모양의 석회암 언덕들이 모여 있습니다. 빗물에 석회암이 녹고 깎이면서 만들어진 지형입니다. 언덕을 덮은 풀이 건기에 갈색으로 변해 초콜릿을 닮아 보입니다.\n\n1520년에는 오랜 세월 석회암이 깎여 생긴 둥근 언덕들이 보홀섬에 펼쳐져 있었습니다.",
+              "image": "/learn/world-voyage/assets/landmarks/chocolate-hills.webp?v=1789964241544",
+              "imageCredit": "사진 Mmlibranda · CC BY-SA 4.0 · 위키미디어 공용",
+              "imageSource": "https://commons.wikimedia.org/wiki/File:The_Chocolate_Hills_of_Bohol.jpg",
+              "imageLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+            },
+            "text": "보홀섬 내륙에 둥근 원뿔 모양의 석회암 언덕들이 모여 있습니다. 빗물에 석회암이 녹고 깎이면서 만들어진 지형입니다. 언덕을 덮은 풀이 건기에 갈색으로 변해 초콜릿을 닮아 보입니다.\n\n1520년에는 오랜 세월 석회암이 깎여 생긴 둥근 언덕들이 보홀섬에 펼쳐져 있었습니다.",
+            "questions": [
+              {
+                "prompt": "읽은 설명의 빈칸에 들어갈 말은?",
+                "passage": "보홀섬 내륙에 둥근 원뿔 모양의 (          ) 언덕들이 모여 있습니다.",
+                "choices": [
+                  "현무암",
+                  "화강암",
+                  "석회암",
+                  "사암"
+                ],
+                "answer": "석회암",
+                "explanation": "보홀섬 내륙에 둥근 원뿔 모양의 석회암 언덕들이 모여 있습니다.",
+                "id": "q0"
+              },
+              {
+                "prompt": "읽은 설명에 맞게 문장을 완성한 것은?",
+                "passage": "빗물에 석회암이 녹고 (          )",
+                "choices": [
+                  "깎이면서 만들어진 지형입니다.",
+                  "나무 창고 거리가 세계유산입니다.",
+                  "좁은 곳은 폭이 30킬로미터가 안 됩니다.",
+                  "바다에 바싹 붙은 곳에 있습니다."
+                ],
+                "answer": "깎이면서 만들어진 지형입니다.",
+                "explanation": "빗물에 석회암이 녹고 깎이면서 만들어진 지형입니다.",
+                "id": "q1"
+              }
+            ]
+          },
+          {
+            "key": "discovery:palawan-underground-river",
+            "type": "discovery",
+            "id": "palawan-underground-river",
+            "name": "팔라완 지하강",
+            "point": {
+              "x": 33213.88888888889,
+              "y": 8866.666666666666
+            },
+            "reading": {
+              "id": "palawan-underground-river",
+              "name": "팔라완 지하강",
+              "kind": "자연",
+              "todayCountry": "필리핀",
+              "text": "물이 석회암을 녹여 만든 동굴 속으로 강이 흐릅니다. 약 8.2킬로미터의 지하 하천이 바다로 이어지며, 하류는 밀물과 썰물의 영향을 받습니다. 해안의 동굴 입구에서 강과 바다가 만나는 모습을 볼 수 있습니다.\n\n1520년에는 석회암 산속을 흐르는 강물이 동굴을 빠져나와 바다로 이어졌습니다.",
+              "image": "/learn/world-voyage/assets/landmarks/palawan-underground-river.webp?v=1789964243617",
+              "imageCredit": "사진 Mike Gonzalez · CC BY-SA 3.0 · 위키미디어 공용",
+              "imageSource": "https://commons.wikimedia.org/wiki/File:Puerto_Princesa_Underground_River.jpg",
+              "imageLicenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+            },
+            "text": "물이 석회암을 녹여 만든 동굴 속으로 강이 흐릅니다. 약 8.2킬로미터의 지하 하천이 바다로 이어지며, 하류는 밀물과 썰물의 영향을 받습니다. 해안의 동굴 입구에서 강과 바다가 만나는 모습을 볼 수 있습니다.\n\n1520년에는 석회암 산속을 흐르는 강물이 동굴을 빠져나와 바다로 이어졌습니다.",
+            "questions": [
+              {
+                "prompt": "읽은 설명의 빈칸에 들어갈 말은?",
+                "passage": "물이 (          )을 녹여 만든 동굴 속으로 강이 흐릅니다.",
+                "choices": [
+                  "화강암",
+                  "사암",
+                  "현무암",
+                  "석회암"
+                ],
+                "answer": "석회암",
+                "explanation": "물이 석회암을 녹여 만든 동굴 속으로 강이 흐릅니다.",
+                "id": "q0"
+              },
+              {
+                "prompt": "읽은 설명의 빈칸에 들어갈 말은?",
+                "passage": "2킬로미터의 지하 하천이 (          )로 이어지며, 하류는 밀물과 썰물의 영향을 받습니다.",
+                "choices": [
+                  "강",
+                  "호수",
+                  "바다",
+                  "운하"
+                ],
+                "answer": "바다",
+                "explanation": "2킬로미터의 지하 하천이 바다로 이어지며, 하류는 밀물과 썰물의 영향을 받습니다.",
+                "id": "q1"
+              }
+            ]
+          }
+        ],
+        "instructions": "지정된 장소를 원하는 순서로 방문하세요. 각 장소의 설명을 읽고 두 문제를 연속으로 맞히면 발견 성공입니다. 모든 장소를 완료하면 완주합니다.",
+        "atlasInstruction": "",
+        "markerMode": "hidden",
+        "targetPlace": {
+          "id": "lisbon",
+          "name": "리스본 · 바투르 칼데라 · 밀퍼드사운드 · 초콜릿 힐스 · 팔라완 지하강",
+          "category": "",
+          "region": "",
+          "continent": "",
+          "atlasHint": "",
+          "mode": "sea",
+          "point": {
+            "x": 18984,
+            "y": 5704
+          },
+          "radiusTiles": 3.2
+        },
+        "finalQuiz": null,
+        "startOptions": [
+          {
+            "id": "original_city_223",
+            "startPlace": {
+              "id": "original_city_223",
+              "name": "포르투",
+              "region": "이베리아",
+              "continent": "",
+              "atlasHint": "",
+              "point": {
+                "x": 19032,
+                "y": 5432
+              }
+            }
+          },
+          {
+            "id": "original_city_222",
+            "startPlace": {
+              "id": "original_city_222",
+              "name": "아코루냐",
+              "region": "이베리아",
+              "continent": "",
+              "atlasHint": "",
+              "point": {
+                "x": 19064,
+                "y": 5160
+              }
+            }
+          },
+          {
+            "id": "original_city_221",
+            "startPlace": {
+              "id": "original_city_221",
+              "name": "빌바오",
+              "region": "이베리아",
+              "continent": "",
+              "atlasHint": "",
+              "point": {
+                "x": 19656,
+                "y": 5176
+              }
+            }
+          },
+          {
+            "id": "original_city_217",
+            "startPlace": {
+              "id": "original_city_217",
+              "name": "세비야",
+              "region": "이베리아",
+              "continent": "",
+              "atlasHint": "",
+              "point": {
+                "x": 19272,
+                "y": 5896
+              }
+            }
+          }
+        ],
+        "createdAt": 1789965625141,
+        "phase": "running",
+        "startedAtGameMinutes": 0,
+        "startedAt": 1789965625503
+      },
+      "progress": {
+        "화면학습검사": {
+          "arrival-race-muarbfp1-zaswmd": {
+            "status": "inProgress",
+            "placeStudy": {
+              "places": {}
+            },
+            "stageIndex": 0,
+            "cargoItemId": null,
+            "selectedMissionId": null,
+            "selectedStartPlaceId": "original_city_223",
+            "shipPortId": "original_city_223",
+            "finalQuizStatus": "none",
+            "finalQuizArrivedAt": null,
+            "finalQuizAnswers": [
+              null,
+              null,
+              null
+            ],
+            "finalCorrectCount": null,
+            "finalSubmittedAt": null,
+            "completedAt": null,
+            "completedGameMinutes": null,
+            "finishRank": null
+          }
+        }
+      },
+      "settings": {
+        "paused": false,
+        "locked": false,
+        "roomType": "race",
+        "started": false
+      },
+      "clock": {
+        "gameMinutes": 47872.8
+      },
+      "discoveries": {
+        "화면학습검사": []
+      },
+      "hunts": {},
+      "host": {
+        "tokenHash": "e14921d9cbc998b93390f352602ef8d20bbde7981aec43e2e2bf9554ed1d93cd",
+        "createdAt": 1789965623960,
+        "lastActiveAt": 1789965625232
+      }
+    }
+  }
+}

@@ -27,12 +27,9 @@ const server=http.createServer((req,res)=>{
     await new Promise(resolve=>setTimeout(resolve,600));
     const view=await page.evaluate(()=>{
      const map=testMaps.map,a=map.latLngToContainerPoint(KoreaMountainScene.section.west.coordinates),b=map.latLngToContainerPoint(KoreaMountainScene.section.east.coordinates),size=map.getSize();
-     const box=map.getContainer().getBoundingClientRect();
-     const labels=[...document.querySelectorAll('.scene-map-label')].filter(e=>/^[AB] (진부|강릉)/.test(e.textContent));
-     const labelsInside=labels.length===2&&labels.every(e=>{const r=e.getBoundingClientRect();return r.left>=box.left&&r.right<=box.right&&r.top>=box.top&&r.bottom<=box.bottom;});
-     return {zoom:map.getZoom(),minimum:map.getMinZoom(),separation:a.distanceTo(b),inside:[a,b].every(p=>p.x>0&&p.x<size.x&&p.y>0&&p.y<size.y),labelsInside};
+     return {zoom:map.getZoom(),minimum:map.getMinZoom(),separation:a.distanceTo(b),inside:[a,b].every(p=>p.x>0&&p.x<size.x&&p.y>0&&p.y<size.y)};
     });
-    assert.ok(view.zoom>=9,JSON.stringify({width,pass,...view}));assert.ok(view.separation>100);assert.ok(view.inside);assert.ok(view.labelsInside,JSON.stringify({width,pass,...view}));report.push({width,pass,...view});
+    assert.ok(view.zoom>=9,JSON.stringify({width,pass,...view}));assert.ok(view.separation>100);assert.ok(view.inside);report.push({width,pass,...view});
    }
   }
   assert.deepEqual(errors,[]);console.log(JSON.stringify({report,errors},null,2));

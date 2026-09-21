@@ -1,5 +1,7 @@
 const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),http=require('node:http'),vm=require('node:vm');
-const puppeteer=require('puppeteer-core'),root=path.resolve(__dirname,'..'),app=path.join(root,'learning/inquiry/korea-map'),out=path.join(root,'outputs/korea-map-water');
+const puppeteer=require('puppeteer-core'),root=path.resolve(__dirname,'..'),app=path.join(root,'learning/inquiry/korea-map');
+const deployedURL=process.env.MAP_TEST_URL;
+const out=path.join(root,deployedURL?'outputs/korea-map-water-deployed':'outputs/korea-map-water');
 const ctx={window:{}};
 for(const file of ['data/flow-data.js','water-scene.js','coast-scene.js'])vm.runInNewContext(fs.readFileSync(path.join(app,file),'utf8'),ctx);
 const collection=JSON.parse(fs.readFileSync(path.join(app,'data/watersheds.geojson'),'utf8'));
@@ -32,12 +34,15 @@ const server=http.createServer((req,res)=>{
 });
 const delay=ms=>new Promise(resolve=>setTimeout(resolve,ms));
 (async()=>{
- await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));let browser;
+ if(!deployedURL)await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));let browser;
  try{
   fs.mkdirSync(out,{recursive:true});browser=await puppeteer.launch({headless:true,executablePath:process.env.MAP_TEST_BROWSER||'C:/Program Files/Google/Chrome/Application/chrome.exe',args:['--no-first-run','--disable-background-networking']});
-  const page=await browser.newPage(),errors=[],report={};page.on('pageerror',e=>errors.push(e.message));
-  await page.setRequestInterception(true);page.on('request',r=>r.url().startsWith('http://127.0.0.1:')||r.url().startsWith('data:')?r.continue():r.abort());
-  const url='http://127.0.0.1:'+server.address().port+'/learning/inquiry/korea-map/index.html';
+  const page=await browser.newPage(),errors=[],report={testedURL:deployedURL||'local fixture',physicalDevice:false};page.on('pageerror',e=>errors.push(e.message));
+  const url=deployedURL||'http://127.0.0.1:'+server.address().port+'/learning/inquiry/korea-map/index.html';
+  await page.setRequestInterception(true);page.on('request',r=>{
+   if(failBasins&&r.url().includes('/watersheds.geojson'))return r.respond({status:503,body:'Test-only response failure'});
+   return r.url().startsWith(new URL(url).origin+'/')||r.url().startsWith('data:')?r.continue():r.abort();
+  });
   await page.setViewport({width:1440,height:1000});await page.goto(url+'?lesson=river#terrain',{waitUntil:'networkidle0'});
   await page.waitForFunction(()=>document.querySelector('#sceneInsight')?.dataset.basin==='한강');
   assert.equal(await page.$eval('#sceneRiver',e=>e.value),'남한강');
@@ -98,5 +103,5 @@ const delay=ms=>new Promise(resolve=>setTimeout(resolve,ms));
   await page.waitForFunction(()=>document.querySelector('.watershed-status')?.textContent.includes('불러오지 못'));
   assert.ok(await page.$('#waterProgress'));failBasins=false;await page.click('[data-water-retry]');await page.waitForFunction(()=>document.querySelector('#sceneInsight')?.dataset.basin==='한강');
   assert.deepEqual(errors,[]);report.errors=errors;fs.writeFileSync(path.join(out,'report.json'),JSON.stringify(report,null,2));console.log(JSON.stringify(report,null,2));
- }finally{if(browser)await browser.close();server.close();}
+ }finally{if(browser)await browser.close();if(server.listening)server.close();}
 })().catch(error=>{console.error(error);process.exitCode=1;});

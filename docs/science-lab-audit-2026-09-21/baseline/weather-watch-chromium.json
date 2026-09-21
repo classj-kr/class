@@ -1,0 +1,61 @@
+{
+  "slug": "weather-watch",
+  "engine": "chromium",
+  "modes": [
+    "initial"
+  ],
+  "cases": 7,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__weatherModel",
+      "methods": [
+        "state",
+        "analyse",
+        "tick",
+        "render",
+        "landTemp",
+        "seaTemp",
+        "windAt",
+        "verdictFor",
+        "amp",
+        "tMax",
+        "tMin",
+        "SKIES",
+        "T_MIN_H",
+        "T_MAX_H",
+        "T_MEAN",
+        "AMP",
+        "CALM",
+        "setSky",
+        "setHour",
+        "check",
+        "runToEnd"
+      ]
+    }
+  ],
+  "paint": [],
+  "grades": [
+    {
+      "mode": "initial",
+      "results": [
+        {
+          "choice": "p1",
+          "visible": true,
+          "text": "예상은 바다에서 육지로였지만 결과는 육지에서 바다로입니다."
+        },
+        {
+          "choice": "p2",
+          "visible": true,
+          "text": "예상이 맞았습니다 — 육지에서 바다로."
+        },
+        {
+          "choice": "p3",
+          "visible": true,
+          "text": "예상은 거의 안 분다였지만 결과는 육지에서 바다로입니다."
+        }
+      ]
+    }
+  ]
+}

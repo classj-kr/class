@@ -6,7 +6,6 @@
     "build": "npm --prefix game-hub-server install",
     "start": "npm --prefix game-hub-server start",
     "test:math-ox": "node --test tests/math-ox-data.test.js",
-    "test:arithmetic-race": "node --test tests/arithmetic-race-bank.test.js",
     "test:curriculum": "node tests/curriculum-reference-contract.js && node tests/science-lab-curriculum-contract.js",
     "test:science-scope": "node --test tests/science-grade-scope.test.cjs",
     "test:science-apps": "node --test tests/science-all-apps.test.cjs",

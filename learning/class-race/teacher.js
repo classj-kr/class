@@ -4,17 +4,6 @@
     const GAME_ID = "quizrace";
     const registry = window.ClassRaceApps;
     const reduceMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches === true;
-    // 스물다섯 명이 한꺼번에 맞히면 소리가 쏟아진다. 사이를 두고 하나만 낸다.
-    const SOUND_GAP_MS = 260;
-    const TOAST_SOUND = { "is-lead": "turn", "is-fire": "card", "is-finish": "bell" };
-    let lastSoundAt = 0;
-
-    function sfx(name) {
-        const now = Date.now();
-        if (now - lastSoundAt < SOUND_GAP_MS) return;
-        lastSoundAt = now;
-        try { window.ClassGameSfx?.play(name); } catch (_) {}
-    }
 
     const elements = {
         portalBackLink: document.querySelector('.back-link[href="/classtools/"]'),
@@ -372,7 +361,6 @@
     }
 
     function toast(text, tone) {
-        sfx(TOAST_SOUND[tone] || "select");
         const item = document.createElement("div");
         item.className = `race-toast ${tone || ""}`.trim();
         item.textContent = text;
@@ -385,7 +373,6 @@
     }
 
     function flashStart() {
-        sfx("bell");
         if (reduceMotion) return;
         const flash = document.createElement("div");
         flash.className = "start-flash is-board";
@@ -644,21 +631,8 @@
     }
 
     // ── 끝난 뒤: 시상대·많이 틀린 문제·순위 ───────────────
-    // KaTeX 는 CDN 에서 온다. 학교 망이 막혀 오지 않으면 $y^2+18y+81$ 처럼 달러가
-    // 그대로 보인다. 그때는 달러만 떼어 적어도 읽히게 한다.
-    function stripMathMarks(element) {
-        const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT);
-        const targets = [];
-        while (walker.nextNode()) if (walker.currentNode.nodeValue.includes("$")) targets.push(walker.currentNode);
-        targets.forEach((node) => { node.nodeValue = node.nodeValue.replace(/\$+/g, ""); });
-    }
-
     function renderMath(element) {
-        if (!element) return;
-        if (!window.renderMathInElement) {
-            stripMathMarks(element);
-            return;
-        }
+        if (!element || !window.renderMathInElement) return;
         window.renderMathInElement(element, {
             delimiters: [
                 { left: "$$", right: "$$", display: true },
@@ -806,7 +780,6 @@
     }
 
     function throwConfetti() {
-        sfx("success");
         if (reduceMotion) return;
         const colors = ["#e0523f", "#2f7fd1", "#2f9e5b", "#e3b021", "#8a5bd6", "#ee8a2f"];
         const layer = document.createElement("div");

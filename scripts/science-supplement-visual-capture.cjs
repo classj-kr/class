@@ -2,7 +2,7 @@ const fs=require('node:fs'),path=require('node:path'),http=require('node:http');
 const {chromium}=require('playwright'),sharp=require('sharp');
 const root=path.resolve(__dirname,'../learning/inquiry/science-lab'),map=require(path.join(root,'curriculum-map.js'));
 const slugs=Object.keys(map).filter(s=>map[s].level!=='high'||map[s].grades.includes('고1'));
-const output=path.resolve(__dirname,'../docs/science-lab-audit-2026-09-20',process.argv.find(a=>a.startsWith('--output='))?.slice(9)||'visual-recheck/supplements');fs.mkdirSync(output,{recursive:true});
+const output=path.resolve(__dirname,'../docs/science-lab-audit-2026-09-20/visual-recheck/supplements');fs.mkdirSync(output,{recursive:true});
 const required=require(path.join(root,'required-experiments.js')).requiredExperimentModels();
 (async()=>{
  const server=http.createServer((req,res)=>{let f=path.resolve(root,'.'+new URL(req.url,'http://localhost').pathname);if(!f.startsWith(root+path.sep))return res.writeHead(403).end();if(fs.existsSync(f)&&fs.statSync(f).isDirectory())f=path.join(f,'index.html');fs.readFile(f,(e,b)=>{if(e)return res.writeHead(404).end();res.setHeader('Content-Type',{'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8'}[path.extname(f)]||'application/octet-stream');res.end(b);});});

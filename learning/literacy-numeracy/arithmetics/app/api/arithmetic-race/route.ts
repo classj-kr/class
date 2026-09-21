@@ -1,6 +1,28 @@
 import { raceWorksheetByRoute } from "../../../lib/arithmetic-worksheets";
 import { rankArrivedParticipants } from "../../../lib/arithmetic-race-ranking";
-import { raceStore, type ParticipantRow, type RaceRow } from "../../../lib/arithmetic-race-store";
+
+type RaceRow = {
+  room_code: string;
+  teacher_token: string;
+  worksheet_name: string;
+  worksheet_route: string;
+  seed: number;
+  status: string;
+  created_at: number;
+  started_at: number | null;
+};
+
+type ParticipantRow = {
+  id: string;
+  room_code: string;
+  name: string;
+  participant_token: string;
+  joined_at: number;
+  submitted_at: number | null;
+  correct_count: number | null;
+  total_count: number | null;
+  mistake_count: number;
+};
 
 function error(message: string, status = 400) {
   return Response.json({ error: message }, { status });
@@ -38,6 +60,26 @@ function rankedParticipants(rows: ParticipantRow[]) {
   }));
 }
 
+type RuntimeEnvironment = { DB: D1Database };
+
+async function runtimeEnvironment() {
+  const runtime = await import("cloudflare:workers");
+  return runtime.env as unknown as RuntimeEnvironment;
+}
+
+async function loadRace(db: D1Database, code: string) {
+  return db.prepare("SELECT * FROM arithmetic_races WHERE room_code = ?")
+    .bind(code)
+    .first<RaceRow>();
+}
+
+async function loadParticipants(db: D1Database, code: string) {
+  const result = await db.prepare("SELECT * FROM arithmetic_race_participants WHERE room_code = ? ORDER BY joined_at ASC")
+    .bind(code)
+    .all<ParticipantRow>();
+  return result.results ?? [];
+}
+
 export async function GET(request: Request) {
   try {
     const url = new URL(request.url);
@@ -46,10 +88,11 @@ export async function GET(request: Request) {
     const participantId = url.searchParams.get("participant") ?? "";
     const participantToken = url.searchParams.get("participantToken") ?? "";
     if (!/^\d{6}$/.test(code)) return error("방 번호를 확인하세요.");
-    const store = await raceStore();
-    const race = await store.race(code);
+    const runtime = await runtimeEnvironment();
+    const db = runtime.DB;
+    const race = await loadRace(db, code);
     if (!race) return error("없는 방입니다.", 404);
-    const participants = await store.participants(code);
+    const participants = await loadParticipants(db, code);
     const ranking = rankedParticipants(participants);
 
     if (teacherToken) {
@@ -96,7 +139,8 @@ export async function POST(request: Request) {
   try {
     const payload = await request.json() as Record<string, unknown>;
     const action = String(payload.action ?? "");
-    const store = await raceStore();
+    const runtime = await runtimeEnvironment();
+    const db = runtime.DB;
 
     if (action === "create") {
       const worksheetRoute = String(payload.worksheetRoute ?? "");
@@ -111,31 +155,19 @@ export async function POST(request: Request) {
       const now = Date.now();
       for (let attempt = 0; attempt < 8; attempt += 1) {
         const code = roomCode();
-        const opened = await store.openRace({
-          room_code: code,
-          teacher_token: hostToken,
-          worksheet_name: worksheetName,
-          worksheet_route: worksheet.route,
-          seed: 20260720,
-          status: "waiting",
-          created_at: now,
-          started_at: null,
-        }, {
-          id: participantId,
-          room_code: code,
-          name,
-          participant_token: participantToken,
-          joined_at: now,
-          submitted_at: null,
-          correct_count: null,
-          total_count: null,
-          mistake_count: 0,
-        });
-        if (!opened) continue;
-        const race = { roomCode: code, worksheetName, worksheetRoute: worksheet.route, seed: 20260720, status: "waiting", createdAt: now, startedAt: null };
-        return Response.json({ roomCode: code, hostToken, participantId, participantToken, race }, { status: 201 });
+        try {
+          await db.batch([
+            db.prepare("INSERT INTO arithmetic_races (room_code, teacher_token, worksheet_name, worksheet_route, seed, status, created_at) VALUES (?, ?, ?, ?, ?, 'waiting', ?)")
+              .bind(code, hostToken, worksheetName, worksheet.route, 20260720, now),
+            db.prepare("INSERT INTO arithmetic_race_participants (id, room_code, name, participant_token, joined_at) VALUES (?, ?, ?, ?, ?)")
+              .bind(participantId, code, name, participantToken, now),
+          ]);
+          const race = { roomCode: code, worksheetName, worksheetRoute: worksheet.route, seed: 20260720, status: "waiting", createdAt: now, startedAt: null };
+          return Response.json({ roomCode: code, hostToken, participantId, participantToken, race }, { status: 201 });
+        } catch (cause) {
+          if (attempt === 7) throw cause;
+        }
       }
-      return error("빈 방 번호를 찾지 못했습니다. 잠시 후 다시 시도하세요.", 503);
     }
 
     if (action === "join") {
@@ -143,23 +175,18 @@ export async function POST(request: Request) {
       const name = String(payload.name ?? "").trim().slice(0, 20);
       if (!/^\d{6}$/.test(code)) return error("방 번호를 확인하세요.");
       if (!name) return error("이름을 입력하세요.");
-      const race = await store.race(code);
+      const race = await loadRace(db, code);
       if (!race) return error("없는 방입니다.", 404);
       if (race.status !== "waiting") return error("이미 시작한 방입니다.");
       const id = crypto.randomUUID();
       const participantToken = crypto.randomUUID();
-      const joined = await store.joinRace({
-        id,
-        room_code: code,
-        name,
-        participant_token: participantToken,
-        joined_at: Date.now(),
-        submitted_at: null,
-        correct_count: null,
-        total_count: null,
-        mistake_count: 0,
-      });
-      if (!joined) return error("같은 이름이 이미 입장했습니다.", 409);
+      try {
+        await db.prepare("INSERT INTO arithmetic_race_participants (id, room_code, name, participant_token, joined_at) VALUES (?, ?, ?, ?, ?)")
+          .bind(id, code, name, participantToken, Date.now())
+          .run();
+      } catch {
+        return error("같은 이름이 이미 입장했습니다.", 409);
+      }
       return Response.json({ participantId: id, participantToken, race: publicRace(race) }, { status: 201 });
     }
 
@@ -167,8 +194,10 @@ export async function POST(request: Request) {
       const code = String(payload.roomCode ?? "").trim();
       const hostToken = String(payload.hostToken ?? payload.teacherToken ?? "");
       const startedAt = Date.now();
-      const started = await store.startRace(code, hostToken, startedAt);
-      if (!started) return error("방 상태 또는 방장 권한을 확인하세요.", 403);
+      const result = await db.prepare("UPDATE arithmetic_races SET status = 'running', started_at = ? WHERE room_code = ? AND teacher_token = ? AND status = 'waiting'")
+        .bind(startedAt, code, hostToken)
+        .run();
+      if (!result.meta.changes) return error("방 상태 또는 방장 권한을 확인하세요.", 403);
       return Response.json({ ok: true, startedAt });
     }
 
@@ -179,27 +208,25 @@ export async function POST(request: Request) {
       const correctCount = Number(payload.correctCount);
       const totalCount = Number(payload.totalCount);
       if (!Number.isInteger(totalCount) || totalCount < 1 || totalCount > 500 || !Number.isInteger(correctCount) || correctCount < 0 || correctCount > totalCount) return error("채점 결과를 확인하세요.");
-      const race = await store.race(code);
+      const race = await loadRace(db, code);
       if (!race || race.status !== "running" || !race.started_at) return error("진행 중인 방이 아닙니다.");
-      const participant = (await store.participants(code)).find((row) => row.id === participantId && row.participant_token === participantToken);
+      const participant = (await loadParticipants(db, code)).find((row) => row.id === participantId && row.participant_token === participantToken);
       if (!participant) return error("학생 입장 정보를 확인하세요.", 403);
       if (participant.submitted_at !== null) return error("이미 도착했습니다.", 409);
 
       const wrongCount = totalCount - correctCount;
       const completed = wrongCount === 0;
       const submittedAt = completed ? Date.now() : null;
-      const recorded = await store.recordAttempt({
-        roomCode: code,
-        participantId,
-        participantToken,
-        correctCount,
-        totalCount,
-        wrongCount,
-        submittedAt,
-      });
-      if (!recorded) return error("도착 상태 또는 입장 정보를 확인하세요.", 409);
+      const result = completed
+        ? await db.prepare("UPDATE arithmetic_race_participants SET submitted_at = ?, correct_count = ?, total_count = ? WHERE id = ? AND room_code = ? AND participant_token = ? AND submitted_at IS NULL")
+          .bind(submittedAt, correctCount, totalCount, participantId, code, participantToken)
+          .run()
+        : await db.prepare("UPDATE arithmetic_race_participants SET mistake_count = CASE WHEN total_count IS NULL THEN ? ELSE mistake_count END, correct_count = ?, total_count = ? WHERE id = ? AND room_code = ? AND participant_token = ? AND submitted_at IS NULL")
+          .bind(wrongCount, correctCount, totalCount, participantId, code, participantToken)
+          .run();
+      if (!result.meta.changes) return error("도착 상태 또는 입장 정보를 확인하세요.", 409);
 
-      const participants = await store.participants(code);
+      const participants = await loadParticipants(db, code);
       const updated = participants.find((row) => row.id === participantId);
       const ranking = rankedParticipants(participants);
       return Response.json({
@@ -216,9 +243,12 @@ export async function POST(request: Request) {
     if (action === "delete") {
       const code = String(payload.roomCode ?? "").trim();
       const hostToken = String(payload.hostToken ?? payload.teacherToken ?? "");
-      const race = await store.race(code);
+      const race = await loadRace(db, code);
       if (!race || race.teacher_token !== hostToken) return error("방장 권한을 확인하세요.", 403);
-      await store.closeRace(code, hostToken);
+      await db.batch([
+        db.prepare("DELETE FROM arithmetic_race_participants WHERE room_code = ?").bind(code),
+        db.prepare("DELETE FROM arithmetic_races WHERE room_code = ? AND teacher_token = ?").bind(code, hostToken),
+      ]);
       return Response.json({ ok: true });
     }
 
