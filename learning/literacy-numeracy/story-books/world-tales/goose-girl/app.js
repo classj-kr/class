@@ -72,7 +72,7 @@ const CHAPTERS = [
                 "art": "03-swap.webp",
                 "emoji": "👗",
                 "left": [
-                    "하녀가 말에서 내려 성큼성큼 다가왔습니다. 여느 때와 걸음걸이부터 달랐지요.",
+                    "하녀가 수레에서 내려 성큼성큼 다가왔습니다. 여느 때와 걸음걸이부터 달랐지요.",
                     "\"옷을 벗으세요. 제 옷과 바꿔 입자고요.\"",
                     "\"뭐라고?\"",
                     "\"이제부터 제가 공주입니다. 아가씨는 제 하녀고요.\" 공주는 말문이 막혔습니다."
@@ -639,7 +639,7 @@ const EN = {
                     art: '03-swap.webp',
                     emoji: '👗',
                     left: [
-                        "The maid got down from her horse and came striding over. Even the way she walked was different.",
+                        "The maid got down from the cart and came striding over. Even the way she walked was different.",
                         "\"Take off your clothes. You'll swap them for mine.\"",
                         "\"What did you say?\"",
                         "\"From now on I am the princess. And you are my maid.\"",

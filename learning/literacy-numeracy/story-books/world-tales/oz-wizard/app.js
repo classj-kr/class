@@ -7,7 +7,7 @@ const CHAPTERS = [
                 "art": "01-twister.webp",
                 "emoji": "🌪️",
                 "left": [
-                    "캔자스 벌판 한가운데에 작은 집이 있었습니다. 둘레가 온통 잿빛이었지요.",
+                    "캔자스 벌판 한가운데에 작은 집이 있었습니다. 둘레는 메마른 벌판뿐이었지요.",
                     "도로시는 엠 아주머니, 헨리 아저씨와 그 집에 살았습니다. 두 어른은 일에 지쳐 좀처럼 웃지 않았지요.",
                     "웃고 뛰노는 것은 강아지 토토뿐이었습니다. 그날도 토토는 도로시 발밑을 빙빙 돌았지요."
                 ],
@@ -28,7 +28,7 @@ const CHAPTERS = [
                 "right": [
                     "얼마나 지났을까요. 흔들림에 차츰 익숙해지자 도로시는 그만 잠이 들었지요.",
                     "쿵! 요란한 소리에 도로시는 눈을 떴습니다. 집이 땅에 내려앉은 것이었지요.",
-                    "문을 열자 눈이 부셨습니다. 잿빛은 어디에도 없었지요. 온통 초록과 노랑이었습니다."
+                    "문을 열자 눈이 부셨습니다. 메마른 벌판은 어디에도 없었지요. 온통 초록과 노랑이었습니다."
                 ]
             }
         ]
@@ -564,7 +564,7 @@ const EN = {
                     art: '01-twister.webp',
                     emoji: '🌪️',
                     left: [
-                        "A little house stood in the middle of the Kansas prairie. Everything round it was grey.",
+                        "A little house stood in the middle of the Kansas prairie. Round it lay nothing but dry, empty fields.",
                         "Dorothy lived there with Aunt Em and Uncle Henry. They worked so hard that they hardly ever smiled.",
                         "Only her little dog Toto laughed and played. That day, as always, he was running round her feet."
                     ],
@@ -585,7 +585,7 @@ const EN = {
                     right: [
                         "How long it lasted, nobody could say. Little by little Dorothy got used to the rocking, and she fell asleep.",
                         "Bump! The noise woke her up. The house had come down on solid ground.",
-                        "She opened the door and the light dazzled her. There was no grey anywhere — everything was green and yellow."
+                        "She opened the door and the light dazzled her. There were no dry, empty fields anywhere — everything was green and yellow."
                     ]
                 }
             ]

@@ -94,7 +94,7 @@ const CHAPTERS = [
                 ],
                 "right": [
                     "연기 속에서 천장에 머리가 닿을 만큼 커다란 지니가 나타났지요. \"저는 램프의 지니입니다. 무엇이든 말씀만 하십시오.\"",
-                    "어머니는 너무 놀라 뒤로 벌렁 넘어졌습니다. 알라딘이 떨리는 목소리로 앞에 나섰지요. \"머, 먹을 것을 좀 주세요.\"",
+                    "어머니는 너무 놀라 그 자리에 굳어 버렸습니다. 알라딘이 떨리는 목소리로 앞에 나섰지요. \"머, 먹을 것을 좀 주세요.\"",
                     "그러자 눈 깜짝할 사이에 상 가득 음식이 차려졌습니다."
                 ]
             }
@@ -649,7 +649,7 @@ const EN = {
                     ],
                     right: [
                         "Out of the smoke came a genie so big that his head touched the ceiling. \"I am the genie of the lamp. Only say the word, master.\"",
-                        "His mother fell over backwards in fright. Aladdin stepped forward, shaking. \"G-give us something to eat.\"",
+                        "His mother froze in fright where she sat. Aladdin stepped forward, shaking. \"G-give us something to eat.\"",
                         "In a flash, a whole table was laid in front of them."
                     ]
                 }
@@ -941,7 +941,7 @@ const EN = {
         '03-genie-2.webp': [
             { word: 'fetch out', meaning: '꺼내다', sentence: 'His mother fetched out the lamp.' },
             { word: 'fill', meaning: '가득 채우다', sentence: 'A great cloud of smoke filled the room.' },
-            { word: 'in fright', meaning: '놀라서', sentence: 'His mother fell over backwards in fright.' },
+            { word: 'in fright', meaning: '놀라서', sentence: 'His mother froze in fright where she sat.' },
             { word: 'lay', meaning: '차려지다', sentence: 'A whole table was laid in front of them.' }
         ],
         '04-princess.webp': [

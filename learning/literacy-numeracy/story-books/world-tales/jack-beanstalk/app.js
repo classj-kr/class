@@ -256,7 +256,7 @@ const CHAPTERS = [
                 "right": [
                     "잭은 겨우 콩나무 꼭대기에 닿았지요. 그러고는 줄기를 타고 그대로 미끄러져 내려갔습니다.",
                     "그런데 거인도 줄기를 붙잡고 따라 내려왔지요. 콩나무가 크게 휘청였습니다. 잎이 우수수 떨어졌지요.",
-                    "\"어머니, 도끼!\" 잭이 목이 터져라 외치자 어머니가 도끼를 들고 뛰어나왔지요."
+                    "\"어머니, 도끼!\" 잭이 목이 터져라 외치자 어머니가 도끼를 두 자루나 안고 뛰어나왔지요."
                 ]
             },
             {
@@ -839,7 +839,7 @@ const EN = {
                         "At last Jack reached the top of the beanstalk and slid straight down the stem.",
                         "But the giant grabbed the stem and came climbing down after him. The whole beanstalk swayed. Leaves came showering down.",
                         "\"Mother — the axe!\" Jack shouted as loud as he could.",
-                        "His mother came running out with it."
+                        "His mother came running out with two axes in her arms."
                     ]
                 },
                 {

@@ -364,8 +364,8 @@ const FABLES = [
             {
                 "art": "story-08-lion.webp",
                 "left": [
-                    "낮잠을 자던 사자의 코 위로 작은 생쥐 한 마리가 쪼르르 지나갔습니다. 사자는 재채기를 하며 벌떡 깨어났지요. 그러고는 앞발로 생쥐를 콱 붙잡았습니다.",
-                    "생쥐는 꼼짝도 할 수 없었지요.",
+                    "낮잠을 자던 사자의 코 위로 작은 생쥐 한 마리가 쪼르르 지나갔습니다. 사자는 재채기를 하며 벌떡 깨어났지요. 그러고는 생쥐 앞을 떡 가로막고 으르렁거렸습니다.",
+                    "생쥐는 바위 위에서 꼼짝도 할 수 없었지요.",
                     "\"감히 내 잠을 깨워?\"",
                     "\"오늘 너를 한 입에 삼켜 주마!\""
                 ],
@@ -1310,8 +1310,8 @@ const EN = {
                 {
                     art: 'story-08-lion.webp',
                     left: [
-                        "A little mouse went scurrying over the nose of a sleeping lion. The lion woke with a sneeze and pinned the mouse down under one paw.",
-                        "The mouse could not move an inch.",
+                        "A little mouse went scurrying over the nose of a sleeping lion. The lion woke with a sneeze and blocked the mouse's way with a growl.",
+                        "The mouse could not move an inch on his rock.",
                         "\"You dare wake me?\"",
                         "\"I shall have you in one mouthful!\""
                     ],
@@ -1840,7 +1840,7 @@ const EN = {
         'story-08-lion.webp': [
             { word: 'scurry', meaning: '쪼르르 달리다', sentence: 'A little mouse went scurrying over his nose.' },
             { word: 'sneeze', meaning: '재채기', sentence: 'The lion woke with a sneeze.' },
-            { word: 'pin down', meaning: '콱 붙잡다', sentence: 'He pinned the mouse down under one paw.' },
+            { word: "block one's way", meaning: '앞을 가로막다', sentence: "He blocked the mouse's way with a growl." },
             { word: 'spare', meaning: '살려 주다', sentence: 'Lion, please spare me!' },
             { word: 'repay', meaning: '갚다', sentence: 'One day I shall repay you.' }
         ],

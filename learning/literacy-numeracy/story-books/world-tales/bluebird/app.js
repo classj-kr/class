@@ -124,7 +124,7 @@ const CHAPTERS = [
                     "오누이는 뛸 듯이 기뻐하며 새장을 안았습니다. 할아버지 할머니가 손을 흔들어 주셨지요. \"또 놀러 오너라.\""
                 ],
                 "right": [
-                    "그런데 돌아오는 길에 새장을 들여다본 치르치르가 걸음을 멈췄습니다. 파랑새가 그만 새까만 새로 변해 있었던 것입니다.",
+                    "그런데 돌아오는 길에 새장을 들여다본 치르치르가 걸음을 멈췄습니다. 파랑새의 빛이 그만 흐릿하게 바래 있었던 것입니다.",
                     "\"이건 진짜 파랑새가 아니구나.\" 오누이는 어깨가 축 처졌습니다.",
                     "그래도 다시 길을 나섰지요. 빛의 요정이 앞에서 길을 밝혀 주었습니다."
                 ]
@@ -723,7 +723,7 @@ const EN = {
                         "Their grandparents waved them off. \"Come and see us again.\""
                     ],
                     right: [
-                        "But on the way back, Tyltyl looked into the cage and stopped. The blue bird had turned quite black.",
+                        "But on the way back, Tyltyl looked into the cage and stopped. The blue bird had gone dull.",
                         "\"This isn't the real blue bird,\" he said, and their shoulders dropped.",
                         "Still, they set off again. The Fairy of Light lit the road in front of them."
                     ]
@@ -1034,7 +1034,7 @@ const EN = {
         '04-memory-2.webp': [
             { word: 'cage', meaning: '새장', sentence: 'They took the cage in their arms.' },
             { word: 'wave off', meaning: '손을 흔들어 배웅하다', sentence: 'Their grandparents waved them off.' },
-            { word: 'turn', meaning: '변하다', sentence: 'The blue bird had turned quite black.' },
+            { word: 'dull', meaning: '빛이 바랜', sentence: 'The blue bird had gone dull.' },
             { word: 'light', meaning: '밝히다', sentence: 'The Fairy of Light lit the road in front of them.' }
         ],
         '05-night.webp': [
