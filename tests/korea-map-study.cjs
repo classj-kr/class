@@ -42,6 +42,7 @@ const server=http.createServer((req,res)=>{
     const select=async lesson=>{
       await page.evaluate(l=>{document.querySelector(`[data-theme="${l.topic}"]`).click();const el=document.querySelector('#lessonSelect');el.value=l.id;el.dispatchEvent(new Event('change',{bubbles:true}));},lesson);
       assert.equal(await page.$eval('#lessonSelect',el=>el.value),lesson.id);
+      if(lesson.id==='foehn')await page.waitForFunction(()=>document.querySelector('#lessonDiagram').dataset.status==='ready');
       assert.ok(await page.$eval('.practice-launch',el=>el.hidden));
       assert.equal(await page.$('#startMixed'),null);
     };
@@ -55,7 +56,7 @@ const server=http.createServer((req,res)=>{
     for(const lesson of dataset.lessons){
       await select(lesson);
       assert.equal(await page.$$eval('#lessonDiagram svg',e=>e.length),1);
-      const overflow=await page.$$eval('#lessonDiagram svg text',nodes=>nodes.filter(n=>{const b=n.getBBox();return b.x < -1 || b.x+b.width > 521 || b.y < -1 || b.y+b.height > 251;}).map(n=>n.textContent));
+      const overflow=await page.$$eval('#lessonDiagram svg text',nodes=>nodes.filter(n=>{const b=n.getBBox(),v=n.ownerSVGElement.viewBox.baseVal;return b.x < v.x-1 || b.x+b.width > v.x+v.width+1 || b.y < v.y-1 || b.y+b.height > v.y+v.height+1;}).map(n=>n.textContent));
       if(overflow.length)overflows.push({id:lesson.id,overflow});
       await page.evaluate(()=>document.querySelector('#practiceLesson').click());
       assert.ok(await page.$eval('#practiceDialog',el=>el.open));

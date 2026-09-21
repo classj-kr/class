@@ -1,0 +1,41 @@
+.mountain-scene { padding:12px; border:1px solid #c9d9d2; border-radius:10px; background:#fffefa; font-family:var(--reading-font); }
+#lessonDiagram.mountain-scene { display:block; }
+.visual-lesson:has(.mountain-scene) .lesson-locations[hidden] { display:none; }
+.mountain-controls { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px; }
+.mountain-controls [role="group"] { display:flex; gap:4px; }
+.mountain-scene button { min-height:44px; padding:7px 10px; border:1px solid #b9cdca; border-radius:7px; background:#fff; color:#224e57; font:inherit; font-size:13px; }
+.mountain-scene button[aria-pressed="true"] { color:#fff; background:#175868; border-color:#175868; }
+.mountain-scene :is(button,input,summary):focus-visible { outline:3px solid #db9d32; outline-offset:2px; }
+.mountain-controls label { display:flex; align-items:center; min-height:44px; font-size:13px; gap:5px; cursor:pointer; }
+.mountain-controls input { width:18px; height:18px; accent-color:#175868; }
+.mountain-chart { min-height:200px; margin:8px 0 0; }
+.mountain-chart svg { display:block; width:100%; height:auto; font-family:var(--reading-font); font-size:13px; fill:#25474d; }
+.mountain-grid { stroke:#dbe4dd; stroke-width:1; }
+.mountain-axis { fill:#5d7475; font-size:11px; }
+.mountain-ground { fill:#c9d5b6; stroke:#7b9066; stroke-width:1.5; }
+.mountain-direction { fill:#175868; }
+.mountain-cloud-note { fill:#16758f; font-size:12px; }
+.mountain-air-base { fill:none; stroke-width:3.5; stroke-linejoin:round; }
+.mountain-air-base.windward { stroke:#16758f; }
+.mountain-air-base.leeward { stroke:#b85330; }
+.mountain-air { fill:none; stroke:#fff8df; stroke-width:1.7; stroke-dasharray:8 16; animation:mountain-flow 1.1s linear infinite; pointer-events:none; }
+.mountain-map-air { stroke-dasharray:10 14; animation:mountain-flow 1.1s linear infinite; }
+@keyframes mountain-flow { to { stroke-dashoffset:-24; } }
+.mountain-stopped :is(.mountain-air,.mountain-map-air) { animation-play-state:paused; }
+.mountain-sides { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; }
+.mountain-side { padding:9px; border-top:2px solid; background:#f3f7f4; border-radius:5px; min-width:0; }
+.mountain-side.windward { border-color:#16758f; }
+.mountain-side.leeward { border-color:#b85330; }
+.mountain-side h3 { font-size:14px; font-weight:400; margin:0 0 4px; }
+.mountain-side p { margin:0; font-size:14px; line-height:1.65; }
+.mountain-side small { display:block; color:#587071; font-size:12px; line-height:1.65; margin-top:4px; }
+.mountain-explanation { font-size:15px; line-height:1.85; margin:10px 0 6px; word-break:keep-all; overflow-wrap:anywhere; }
+.mountain-note { font-size:12px; line-height:1.7; color:#5d7271; margin:6px 0; }
+.mountain-source { display:flex; align-items:flex-start; justify-content:space-between; gap:8px; font-size:12px; line-height:1.7; }
+.mountain-source > button { flex-shrink:0; }
+.mountain-source details { max-width:65%; }
+.mountain-source summary { cursor:pointer; min-height:44px; padding:10px 0; box-sizing:border-box; }
+.mountain-source p { margin:4px 0 8px; }
+.mountain-source a { display:block; color:#426570; text-underline-offset:3px; }
+@media(prefers-reduced-motion:reduce) { .mountain-air,.mountain-map-air { animation:none; } }
+@media(max-width:600px) { .mountain-scene { padding:9px; } .mountain-side { padding:7px; } }
