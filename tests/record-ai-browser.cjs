@@ -1,5 +1,9 @@
 // 생활기록부 화면을 진짜 크롬으로 열어, 키 저장부터 결과 그리기까지 돌려 본다.
-// 구글 API 와 학급 명단은 가짜 답으로 바꿔치기해서 실제로 부르지 않는다.
+// 학급 명단과 구글 API 는 가짜 답으로 바꿔치기해서 실제로 부르지 않는다.
+//
+// 구글이 주소를 interactions 로 옮기는 중이라 두 가지를 다 본다.
+//  - 'new'    : 새 주소가 살아 있는 경우
+//  - 'legacy' : 새 주소가 404 라서 옛 주소로 돌아가야 하는 경우
 const fs = require('fs');
 const http = require('http');
 const path = require('path');
@@ -9,7 +13,6 @@ const pp = require('puppeteer-core');
 const ROOT = path.join(__dirname, '..');
 const PAGE = fs.readFileSync(path.join(ROOT, 'classtools/record-ai.html'), 'utf8');
 const CHROME = 'C:/Program Files/Google/Chrome/Application/chrome.exe';
-const PROMPT_LOG = path.join(require('os').tmpdir(), 'record-ai-prompt.log');
 
 const STUDENTS = [
   { number: '1', name: '김하늘' },
@@ -30,54 +33,65 @@ const CORS = {
   'Access-Control-Allow-Methods': 'GET,POST,OPTIONS'
 };
 
-const json = (body) => ({
-  status: 200,
+const json = (body, status) => ({
+  status: status || 200,
   contentType: 'application/json; charset=utf-8',
   headers: CORS,
   body: JSON.stringify(body)
 });
 
-(async () => {
-  await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
-  const port = server.address().port;
-  let browser;
-  let page;
-  const state = { generateCalls: 0, consoleErrors: [], pageErrors: [] };
+const SENTENCES = '1. 첫째 문장임.\n2. 둘째 문장임.\n3. 셋째 문장임.';
+
+async function run(browser, port, mode) {
+  const state = { calls: 0, keySeen: [], consoleErrors: [], pageErrors: [] };
+  // 판마다 새 방을 쓴다. 한 방을 같이 쓰면 앞 판이 브라우저에 남긴 키와
+  // 수행평가가 뒤 판에 그대로 딸려 와 엉뚱한 수를 센다.
+  const context = browser.createBrowserContext
+    ? await browser.createBrowserContext()
+    : await browser.createIncognitoBrowserContext();
+  const page = await context.newPage();
+  page.on('console', m => { if (m.type() === 'error') state.consoleErrors.push(m.text()); });
+  page.on('pageerror', e => state.pageErrors.push(String(e)));
 
   try {
-    browser = await pp.launch({
-      executablePath: CHROME,
-      headless: true,
-      args: ['--no-first-run', '--no-default-browser-check']
-    });
-    page = await browser.newPage();
-    page.on('console', m => { if (m.type() === 'error') state.consoleErrors.push(m.text()); });
-    page.on('pageerror', e => state.pageErrors.push(String(e)));
-
     await page.setRequestInterception(true);
     page.on('request', request => {
       const url = request.url();
-      if (request.method() === 'OPTIONS' && url.includes('generativelanguage')) {
+      const google = url.includes('generativelanguage.googleapis.com');
+      if (request.method() === 'OPTIONS' && google) {
         return request.respond({ status: 204, headers: CORS, body: '' });
       }
+      if (google) state.keySeen.push({ url, header: request.headers()['x-goog-api-key'] || null });
+
       if (url.includes('/api/teacher/available-classes')) {
         return request.respond(json({ classes: [{ id: '10', academicYear: 2026, grade: 6, classNumber: 2 }] }));
       }
       if (url.includes('/api/teacher/class')) {
         return request.respond(json({ classroom: { grade: 6, classNumber: 2, students: STUDENTS } }));
       }
-      if (url.includes('generativelanguage.googleapis.com') && url.includes('/models?')) {
+      if (google && url.endsWith('/v1beta/models')) {
         return request.respond(json({
-          models: [{ name: 'models/gemini-2.5-flash', supportedGenerationMethods: ['generateContent'] }]
+          models: [
+            { name: 'models/gemini-3.8-flash-image' },
+            { name: 'models/gemini-3.8-flash' },
+            { name: 'models/gemini-3.8-pro' }
+          ]
         }));
       }
+      if (url.endsWith('/v1beta/interactions')) {
+        if (mode === 'legacy') {
+          return request.respond(json({ error: { message: '흉내: 이 주소는 없습니다.' } }, 404));
+        }
+        state.calls += 1;
+        // 새 주소는 steps 안에 글을 담아 보낸다. 훑어서 찾아내야 한다.
+        return request.respond(json({ steps: [{ content: [{ text: SENTENCES }] }] }));
+      }
       if (url.includes(':generateContent')) {
-        state.generateCalls += 1;
-        const body = JSON.parse(request.postData() || '{}');
-        fs.appendFileSync(PROMPT_LOG, body.contents[0].parts[0].text + '\n=====\n');
-        return request.respond(json({
-          candidates: [{ content: { parts: [{ text: '1. 첫째 문장임.\n2. 둘째 문장임.\n3. 셋째 문장임.' }] } }]
-        }));
+        if (mode !== 'legacy') {
+          throw new Error('새 주소가 되는데도 옛 주소를 불렀다');
+        }
+        state.calls += 1;
+        return request.respond(json({ candidates: [{ content: { parts: [{ text: SENTENCES }] } }] }));
       }
       return request.continue();
     });
@@ -87,9 +101,8 @@ const json = (body) => ({
     // 1) 명단이 뜨는가
     await page.waitForFunction("document.getElementById('roster-list').children.length > 0", { timeout: 5000 });
     const rosterText = await page.$eval('#roster-list', el => el.textContent);
-    const rosterStatus = await page.$eval('#roster-status', el => el.textContent);
     assert.ok(rosterText.includes('김하늘') && rosterText.includes('이도윤'), '명단 이름이 안 보임: ' + rosterText);
-    assert.ok(rosterStatus.includes('3명'), '명단 인원 표시가 이상함: ' + rosterStatus);
+    assert.ok((await page.$eval('#roster-status', el => el.textContent)).includes('3명'), '명단 인원 표시가 이상함');
     assert.ok(await page.$eval('#manual-count-group', el => getComputedStyle(el).display === 'none'),
       '명단이 있는데 인원수 칸이 떠 있음');
     assert.ok(await page.$eval('#class-group', el => getComputedStyle(el).display === 'none'),
@@ -105,7 +118,7 @@ const json = (body) => ({
       '수행평가 안내가 안 보임');
 
     // 3) 키 저장
-    await page.type('#api-key-input', 'AIzaSyFAKEKEYFORTEST');
+    await page.type('#api-key-input', 'AQ.AbFAKEKEYFORTEST');
     await page.click('#save-key-btn');
     await page.waitForFunction("document.getElementById('key-status').textContent.includes('저장')", { timeout: 3000 });
 
@@ -119,7 +132,17 @@ const json = (body) => ({
     const status = await page.$eval('#gen-status', el => el.textContent);
     assert.ok(!status.includes('오류'), '오류가 났음: ' + status);
     assert.ok(status.includes('3명분'), '결과 안내가 이상함: ' + status);
-    assert.equal(state.generateCalls, 2, '수행평가 두 줄이면 두 번 불러야 함. 실제: ' + state.generateCalls);
+    assert.equal(state.calls, 2, '수행평가 두 줄이면 두 번 불러야 함. 실제: ' + state.calls);
+
+    // 키는 주소가 아니라 머리말로 가야 한다
+    assert.ok(state.keySeen.length > 0, '구글을 부른 적이 없음');
+    for (const call of state.keySeen) {
+      assert.ok(!call.url.includes('key='), '키가 주소에 실려 나감: ' + call.url);
+      assert.equal(call.header, 'AQ.AbFAKEKEYFORTEST', '키가 머리말에 없음: ' + call.url);
+    }
+    // 글을 다루지 못하는 모델은 고르지 않는다
+    assert.ok(state.keySeen.some(c => c.url.includes('gemini-3.8-flash') && !c.url.includes('image'))
+      || mode !== 'legacy', '그림 모델을 골랐음');
 
     // 5) 결과가 이름에 붙었는가
     const rows = await page.$$eval('#result-list > div', els => els.map(el => el.textContent));
@@ -136,8 +159,8 @@ const json = (body) => ({
     assert.equal(await page.$eval('#topics-input', el => el.value), '',
       '2학기로 옮겼는데 1학기 내용이 남아 있음');
     await page.select('#semester-select', '1학기');
-    const back = await page.$eval('#topics-input', el => el.value);
-    assert.ok(back.includes('분수의 덧셈'), '1학기로 돌아왔는데 적어 둔 것이 사라짐: ' + JSON.stringify(back));
+    assert.ok((await page.$eval('#topics-input', el => el.value)).includes('분수의 덧셈'),
+      '1학기로 돌아왔는데 적어 둔 것이 사라짐');
 
     // 7) 행발로 옮기면 학기 칸이 닫히는가
     await page.select('#area-select', 'behavior');
@@ -145,20 +168,37 @@ const json = (body) => ({
       '행발인데 학기 칸이 남아 있음');
 
     assert.equal(state.pageErrors.length, 0, '스크립트 오류: ' + state.pageErrors.join(' | '));
-    console.log('생활기록부 화면: 모두 통과');
-    if (state.consoleErrors.length) console.log('(콘솔에 찍힌 오류: ' + state.consoleErrors.join(' | ') + ')');
+    console.log('  ' + mode + ': 통과');
   } catch (err) {
-    console.log('--- 그때 화면 상태 ---');
-    if (page) {
-      for (const id of ['gen-status', 'key-status', 'roster-status']) {
-        try { console.log(id + ':', await page.$eval('#' + id, el => el.textContent)); } catch (_) {}
-      }
-      try { console.log('topics:', JSON.stringify(await page.$eval('#topics-input', el => el.value))); } catch (_) {}
+    console.log('  --- ' + mode + ' 에서 멈춤. 그때 화면 상태 ---');
+    for (const id of ['gen-status', 'key-status', 'roster-status']) {
+      try { console.log('  ' + id + ':', await page.$eval('#' + id, el => el.textContent)); } catch (_) {}
     }
-    console.log('구글 부른 횟수:', state.generateCalls);
-    console.log('스크립트 오류:', state.pageErrors.join(' | ') || '없음');
-    console.log('콘솔 오류:', state.consoleErrors.join(' | ') || '없음');
+    console.log('  구글 부른 횟수:', state.calls);
+    console.log('  스크립트 오류:', state.pageErrors.join(' | ') || '없음');
+    console.log('  콘솔 오류:', state.consoleErrors.join(' | ') || '없음');
     throw err;
+  } finally {
+    await page.close();
+    await context.close();
+  }
+}
+
+(async () => {
+  await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
+  const port = server.address().port;
+  let browser;
+  try {
+    browser = await pp.launch({
+      executablePath: CHROME,
+      headless: true,
+      args: ['--no-first-run', '--no-default-browser-check']
+    });
+    console.log('생활기록부 화면');
+    for (const mode of ['new', 'legacy']) {
+      await run(browser, port, mode);
+    }
+    console.log('모두 통과');
   } finally {
     if (browser) await browser.close();
     server.close();
