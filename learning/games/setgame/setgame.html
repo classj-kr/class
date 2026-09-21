@@ -1390,15 +1390,26 @@ textarea,
 
         const playerName = players[peerId].name;
         delete players[peerId];
+        blockedPlayersThisBoard.delete(peerId);
 
         if (activeSetter === peerId) {
             releaseSetLockdown();
             broadcastState({ type: "SET_CANCELLED", peerId: peerId });
         }
 
-        broadcastState({ type: "PLAYER_DISCONNECTED", peerId: peerId });
+        // 제한이 안 걸린 사람이 나가면 남은 사람이 전부 제한된 상태가 될 수 있다. 오답 처리
+        // 때만 보던 검사를 여기서도 한 번 더 해야 판이 멈추지 않는다.
+        const unblocked = clearBlocksIfEveryoneBlocked();
+
+        broadcastState({
+            type: "PLAYER_DISCONNECTED",
+            peerId: peerId,
+            blockedPlayers: [...blockedPlayersThisBoard]
+        });
+        syncCallSetButton();
         renderScoreboard();
         logToMonitor(`* Player disconnected: ${playerName}`);
+        if (unblocked) logToMonitor("* 남은 참가자가 모두 제한되어 참여 제한을 초기화합니다.");
     }
 
     // 호스트가 공용 WebSocket 서버를 통해 방 전체에 전송
@@ -1458,6 +1469,8 @@ textarea,
         }
         else if (data.type === "PLAYER_DISCONNECTED") {
             if (players[data.peerId]) delete players[data.peerId];
+            if (Array.isArray(data.blockedPlayers)) blockedPlayersThisBoard = new Set(data.blockedPlayers);
+            syncCallSetButton();
             renderScoreboard();
         }
         else if (data.type === "RETURN_LOBBY") {
@@ -1596,6 +1609,20 @@ textarea,
 
     // --- 4. 핵심 실시간 게임 메커니즘 ("세트!" 선언 및 판정) ---
 
+    // 세트 선언은 제한이 안 걸린 사람만 할 수 있고, 카드판도 그래야 바뀐다. 남아 있는 사람이
+    // 전부 제한되면 아무도 아무것도 못 해 판이 그대로 멈추므로, 그때는 제한을 풀어 준다.
+    function clearBlocksIfEveryoneBlocked() {
+        const remaining = Object.keys(players);
+        if (remaining.length === 0 || !remaining.every(id => blockedPlayersThisBoard.has(id))) return false;
+        blockedPlayersThisBoard.clear();
+        return true;
+    }
+
+    function syncCallSetButton() {
+        document.getElementById("call-set-btn").disabled =
+            !gameStarted || activeSetter !== null || blockedPlayersThisBoard.has(myId);
+    }
+
     // 세트 선언 버튼 클릭
     function declareSet() {
         if (!gameStarted || activeSetter !== null || blockedPlayersThisBoard.has(myId)) {
@@ -1682,7 +1709,7 @@ textarea,
         overlay.style.display = "none";
         overlay.style.background = "rgba(0,0,0,0.5)";
         overlay.style.backdropFilter = "blur(2px)";
-        document.getElementById("call-set-btn").disabled = !gameStarted || blockedPlayersThisBoard.has(myId);
+        syncCallSetButton();
         renderScoreboard();
     }
 
@@ -1899,9 +1926,7 @@ textarea,
                 logMsg = `* [오답] ${players[setterId].name} -1점`;
             }
 
-            const allPlayerIds = Object.keys(players);
-            if (allPlayerIds.length > 0 && allPlayerIds.every(id => blockedPlayersThisBoard.has(id))) {
-                blockedPlayersThisBoard.clear();
+            if (clearBlocksIfEveryoneBlocked()) {
                 logMsg += " / 모든 플레이어가 제한되어 참여 제한을 초기화합니다.";
             }
 
