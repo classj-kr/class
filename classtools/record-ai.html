@@ -228,7 +228,7 @@
             </div>
 
             <div id="roster-status" class="status"></div>
-            <div id="roster-list" style="display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px;"></div>
+            <div id="roster-list" style="margin-top: 10px;"></div>
 
             <!-- 명단을 못 불러오는 경우에만 쓴다. 인원수만 있으면 문장은 만들 수 있다. -->
             <div class="form-group" id="manual-count-group" style="display: none; margin-top: 14px;">
@@ -454,12 +454,23 @@
             // 문장을 여기서 번호대로 이름에 붙인다.
             let roster = [];
 
+            // 출석부처럼 한 줄에 한 명씩 내려 적는다. 옆으로 늘어놓으면 몇 번이
+            // 누구인지 눈으로 따라가기 어렵다.
             function renderRoster() {
-                rosterList.replaceChildren(...roster.map(student => {
-                    const chip = document.createElement('span');
-                    chip.textContent = student.number + ' ' + student.name;
-                    chip.style.cssText = 'border:1px solid var(--line); border-radius:999px; padding:3px 12px; font-size:0.9rem; background:var(--paper);';
-                    return chip;
+                rosterList.replaceChildren(...roster.map((student, index) => {
+                    const row = document.createElement('div');
+                    row.style.cssText = 'display:flex; gap:12px; padding:5px 2px; font-size:0.95rem;'
+                        + (index < roster.length - 1 ? ' border-bottom:1px solid var(--line);' : '');
+
+                    const no = document.createElement('span');
+                    no.textContent = student.number;
+                    no.style.cssText = 'width:2.4em; text-align:right; color:var(--muted);';
+
+                    const name = document.createElement('span');
+                    name.textContent = student.name;
+
+                    row.append(no, name);
+                    return row;
                 }));
                 manualCountGroup.style.display = roster.length > 0 ? 'none' : '';
             }

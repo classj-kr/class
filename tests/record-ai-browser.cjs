@@ -103,10 +103,21 @@ async function run(browser, port, mode) {
     const rosterText = await page.$eval('#roster-list', el => el.textContent);
     assert.ok(rosterText.includes('김하늘') && rosterText.includes('이도윤'), '명단 이름이 안 보임: ' + rosterText);
     assert.ok((await page.$eval('#roster-status', el => el.textContent)).includes('3명'), '명단 인원 표시가 이상함');
+    // 한 줄에 한 명씩 내려 적혀야 한다. 옆으로 늘어놓으면 줄 맨 위 자리가 같아진다.
+    const rowTops = await page.evaluate(() => Array.from(document.getElementById('roster-list').children)
+      .map(el => Math.round(el.getBoundingClientRect().top)));
+    assert.ok(rowTops.length === 3 && rowTops[0] < rowTops[1] && rowTops[1] < rowTops[2],
+      '명단이 세로로 쌓이지 않음: ' + JSON.stringify(rowTops));
     assert.ok(await page.$eval('#manual-count-group', el => getComputedStyle(el).display === 'none'),
       '명단이 있는데 인원수 칸이 떠 있음');
     assert.ok(await page.$eval('#class-group', el => getComputedStyle(el).display === 'none'),
       '반이 하나인데 학급 고르는 칸이 떠 있음');
+
+    // 사진으로 확인하고 싶을 때만 찍는다.
+    if (process.env.RECORD_SHOT && mode === 'new') {
+      const section = await page.evaluateHandle(() => document.getElementById('roster-list').closest('section'));
+      await section.asElement().screenshot({ path: process.env.RECORD_SHOT });
+    }
 
     // 2) 첫 화면이 과목별이고 학기·과목 칸이 열려 있는가
     assert.equal(await page.$eval('#area-select', el => el.value), 'subject');
