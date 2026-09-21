@@ -397,11 +397,6 @@
             white-space: nowrap;
         }
 
-        .hub-title-divider {
-            margin: 0 6px;
-            opacity: 0.45;
-        }
-
         .hub-title-link a {
             display: inline-block;
             color: #fff8e8;
@@ -1010,15 +1005,9 @@
     <div id="hubContent" hidden data-nosnippet>
         <div class="hub-title-row">
             <h1 class="learning-hub-title">기초학력</h1>
-            <!-- 학생은 방번호 하나로 들어간다. 코드가 순위전이면 서버가 알아보고
-                 /learning/class-race/?room=코드 로 보낸다(voting.js 의 resolve).
-                 코드가 없는 선생님만 옆 문으로 들어와 학급을 연다. 그래서 이 문은
-                 교사로 로그인했을 때만 보인다. hub-title-link 는 절대 위치라
-                 따로 두면 겹치므로 한 줄에 모았다. -->
-            <p class="hub-title-link">
-                <a href="/room/" data-requires-player="true" data-always-open="true">방번호 입력 <span aria-hidden="true">→</span></a>
-                <span id="classRaceEntry" hidden><span class="hub-title-divider" aria-hidden="true">·</span><a href="learning/class-race/" data-requires-player="true" data-always-open="true">학급 순위전 열기 <span aria-hidden="true">→</span></a></span>
-            </p>
+            <!-- 방 문은 여기 하나다. 학생은 코드를 넣고, 선생님은 그 화면에서
+                 학급 순위전을 만든다(room/app.js 가 교사에게만 문을 연다). -->
+            <p class="hub-title-link"><a href="/room/" data-requires-player="true" data-always-open="true">방번호 입력 <span aria-hidden="true">→</span></a></p>
         </div>
         <section class="hub-section worksheet-section category-section" data-category-section aria-labelledby="worksheet-title">
         <h2 id="worksheet-title" class="category-heading"><button id="category-literacy-toggle" class="category-toggle" type="button" aria-expanded="false" aria-controls="category-literacy-panel"><span class="category-number" aria-hidden="true">01</span><span class="category-label">문해·수리</span><span class="category-chevron" aria-hidden="true"></span></button></h2>
@@ -1396,7 +1385,6 @@
             let restrictedPreview = false;
             let currentPlayerName = '';
             let isTeacherSignedIn = false;
-            const classRaceEntry = document.getElementById('classRaceEntry');
             let contentAccessEditing = false;
             let globalContentAccessEditing = false;
             let classContentAccessApplies = false;
@@ -1528,8 +1516,6 @@
                 classContentAccessApplies = result.hasClassAccess === true && !canBypassGlobalContentLock;
                 contentAccessButton.hidden = !result.canManage;
                 globalContentAccessButton.hidden = !result.canManageGlobally;
-                // 학급을 열 수 있는 사람에게만 순위전 문을 보인다. 학생은 방번호로 들어간다.
-                if (classRaceEntry) classRaceEntry.hidden = !(result.canManage || result.canManageGlobally);
                 renderClassLocks();
             }
 
