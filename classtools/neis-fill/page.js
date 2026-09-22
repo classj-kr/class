@@ -8,9 +8,15 @@
 // 넣기 전에 화면을 한 바퀴 훑어(살펴보기) 같은 학생이 두 줄에 걸리면 그 학생은 넣지 않는다.
 // 저장은 절대 누르지 않는다.
 (function () {
-    if (window.__classjNeis) return;
+    // 판 번호. page.js 를 고칠 때마다 manifest.json 의 version 과 함께 올린다.
+    // 확장을 새로 읽어도 이미 열린 나이스 화면에는 먼저 들어간 스크립트가 남는다. 판이 다르면 새 판이 갈아 끼우고,
+    // 같으면 그대로 둔다(넣는 중인 상태와 마지막 결과를 지키려고). 넣는 중이면 갈아 끼우지 않는다.
+    const VERSION = '0.3.0';
+    const prev = window.__classjNeis;
+    if (prev && prev.version === VERSION) return;
+    if (prev && typeof prev.busy === 'function' && prev.busy()) return;
 
-    const state = { running: false, last: null };
+    const state = { running: false, last: (prev && typeof prev.last === 'function') ? (prev.last() || null) : null };
 
     const squash = (s) => String(s == null ? '' : s).replace(/\s+/g, '');
     const uniq = (arr) => Array.from(new Set(arr));
@@ -689,6 +695,7 @@
         const skipped = Array.from(excluded).filter(([k]) => targetKeys.has(k)).map(([k, why]) => (targetOf.get(k).number + '번 ' + targetOf.get(k).name + ': ' + why));
         const unmatched = targets.filter(s => !done.has(keyOf(s)) && !excluded.has(keyOf(s))).map(s => s.number + '번 ' + s.name);
         const result = {
+            version: VERSION,
             url: location.href,
             frame: window === window.top ? 'top' : 'iframe',
             mode,
@@ -712,6 +719,7 @@
     }
 
     window.__classjNeis = {
+        version: VERSION,
         run,
         scan,
         leafTexts,

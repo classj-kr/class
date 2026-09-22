@@ -122,6 +122,12 @@
         return frames.slice().sort((a, b) => ((b.matched || []).length - (a.matched || []).length) || ((b.textareas || 0) - (a.textareas || 0)))[0] || null;
     }
 
+    // 화면 스크립트가 넣기를 거부한 결과(옛 판의 제목 검사 등). 새 판은 판이 다르면 스스로 갈아 끼우므로 보통은 오지 않는다.
+    function refused(best) {
+        if (!best || !best.blocked || typeof best.blocked !== 'string') return '';
+        return '화면 스크립트가 넣지 않았습니다(' + best.blocked + '). 나이스 탭을 새로 고친 뒤 다시 해 보세요.';
+    }
+
     function apiLine(best) {
         const a = best.api;
         if (!a || !a.available) return '실행기: 없음. 화면 글 칸으로만 넣고, 실행기 자료는 확인하지 못합니다.';
@@ -180,8 +186,13 @@
     function showReport(best, mode, isUndo) {
         result.replaceChildren();
         tech.hidden = false;
+        if (best) {
+            // 화면에 남아 있던 옛 판 스크립트가 다른 모양을 돌려줘도 팝업이 죽지 않게 빈 값으로 채운다.
+            best.matched = best.matched || []; best.skipped = best.skipped || []; best.unmatched = best.unmatched || []; best.rowNotes = best.rowNotes || [];
+            best.textareas = best.textareas || 0; best.scans = best.scans || 0;
+        }
         techBody.textContent = best
-            ? ['주소: ' + best.url,
+            ? ['확장 ' + chrome.runtime.getManifest().version + ' / 화면 스크립트 ' + (best.version || '옛 판') + ' / 주소: ' + best.url,
                (best.frame === 'top' ? '바깥 화면' : '안쪽 틀') + ', 글 칸 ' + best.textareas + '개, 훑은 횟수 ' + best.scans + ', 스크롤 ' + (best.scrollable ? best.scrolls + '번' : '없음') + (best.namelessRows ? ', 이름 없는 줄 ' + best.namelessRows + '개' : ''),
                '화면 제목(참고): ' + ((best.titles || []).join(' / ') || '못 찾음'),
                '화면 조건: ' + filtersLine(best.filters) + (meta.subject || meta.semester ? ' / 글: ' + [meta.area, meta.semester, meta.subject].filter(Boolean).join(' · ') : ''),
@@ -244,6 +255,7 @@
                 if (best) frameId = best.frameId;
                 if (best && best.busy) { setStatus('아직 넣는 중입니다. 잠시 뒤 다시 열어 주세요.', true); return; }
                 showReport(best, 'inspect', false);
+                if (refused(best)) setStatus(refused(best), true);
                 return;
             }
             // 넣기 전에 한 번 살펴보아 틀(frame)을 고른다. 그 틀에만 넣는다.
@@ -256,6 +268,7 @@
             frames = await runInPage(mode, targets, true);
             const best = frames[0] || null;
             if (best && best.busy) { setStatus('아직 넣는 중입니다. 잠시 뒤 다시 열어 주세요.', true); return; }
+            if (refused(best)) { showReport(best, 'inspect', false); setStatus(refused(best), true); return; }
             showReport(best, mode, isUndo);
             if (best && !isUndo) rememberUndo(best);
             if (isUndo) { lastBefore = null; undoBtn.hidden = true; }
