@@ -259,7 +259,6 @@
             </div>
 
             <div id="roster-status" class="status"></div>
-            <div id="roster-list" style="margin-top: 10px;"></div>
 
             <!-- 명단을 못 불러오는 경우에만 쓴다. 인원수만 있으면 문장은 만들 수 있다. -->
             <div class="form-group" id="manual-count-group" style="display: none; margin-top: 14px;">
@@ -309,7 +308,6 @@
             const classGroup = $('class-group');
             const classSelect = $('class-select');
             const rosterStatus = $('roster-status');
-            const rosterList = $('roster-list');
             const manualCountGroup = $('manual-count-group');
             const generateBtn = $('generate-btn');
             const genStatus = $('gen-status');
@@ -508,22 +506,9 @@
 
             // 출석부처럼 한 줄에 한 명씩 내려 적는다. 옆으로 늘어놓으면 몇 번이
             // 누구인지 눈으로 따라가기 어렵다.
+            // 명단은 굳이 늘어놓지 않는다. 몇 반 몇 명인지만 알려 주고,
+            // 이름은 아래 결과에서 문장과 함께 보인다.
             function renderRoster() {
-                rosterList.replaceChildren(...roster.map((student, index) => {
-                    const row = document.createElement('div');
-                    row.style.cssText = 'display:flex; gap:12px; padding:5px 2px; font-size:0.95rem;'
-                        + (index < roster.length - 1 ? ' border-bottom:1px solid var(--line);' : '');
-
-                    const no = document.createElement('span');
-                    no.textContent = student.number;
-                    no.style.cssText = 'width:2.4em; text-align:right; color:var(--muted);';
-
-                    const name = document.createElement('span');
-                    name.textContent = student.name;
-
-                    row.append(no, name);
-                    return row;
-                }));
                 manualCountGroup.style.display = roster.length > 0 ? 'none' : '';
             }
 
