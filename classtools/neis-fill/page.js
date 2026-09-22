@@ -118,7 +118,61 @@
             const t = (el.textContent || '').trim();
             if (t && t.length <= 30) out.push(t);
         });
+        // 머리글 선택자에 안 걸리면(나이스 판마다 다르다) 화면 위쪽의 큼직한 글씨(16px 이상) 짧은 글을 제목으로 본다.
+        // 왼쪽 메뉴·아래 탭·빵부스러기 단추의 같은 글자는 작아서 걸리지 않는다. 배치 계산은 800개까지만 한다.
+        if (!out.length) {
+            let looked = 0;
+            for (const l of leafTexts(document.body)) {
+                if (looked > 800) break;
+                if (l.text.length > 30 || l.el.tagName === 'INPUT') continue;
+                if (l.el.closest('[role="grid"], [role="row"], [role="tab"], [role="tablist"], [role="tree"], [role="menu"], [role="menubar"], .cl-grid, .cl-tabfolder, button')) continue;
+                looked += 1;
+                if (!isShown(l.el)) continue;
+                if (parseFloat(getComputedStyle(l.el).fontSize) < 16) continue;
+                if (l.el.getBoundingClientRect().top > window.innerHeight * 0.6) continue;
+                out.push(l.text);
+            }
+        }
         return uniq(out).slice(0, 12);
+    }
+
+    // 조건 줄(학년도·학기·학년·반·교과(목))의 값. 이름표 글자와 같은 높이에서 오른쪽으로 가장 가까운 입력 칸의 값을 읽는다.
+    // 팝업이 붙여넣은 글의 과목·학기와 대조해 다른 과목 칸에 넣는 실수를 막는 데 쓴다. 못 읽어도 넣기 자체는 막지 않는다.
+    const FILTER_KEYS = [['학년도', 'year'], ['교과(목)', 'subject'], ['교과목', 'subject'], ['과목', 'subject'], ['학기', 'semester'], ['학년', 'grade'], ['반', 'klass']];
+    function fieldValue(el) {
+        if (el.tagName === 'SELECT') { const o = el.options[el.selectedIndex]; return o ? o.text.trim() : ''; }
+        if (el.tagName === 'INPUT') return (el.value || '').trim();
+        const inp = el.querySelector('input');
+        if (inp && inp.value) return inp.value.trim();
+        return (el.textContent || '').trim();
+    }
+    function readFilters() {
+        const out = {};
+        try {
+            const labels = [];
+            for (const l of leafTexts(document.body)) {
+                if (l.el.tagName === 'INPUT') continue;
+                const t = squash(l.text).replace(/^[*＊]+/, '');
+                const hit = FILTER_KEYS.find(([k]) => k === t);
+                if (!hit) continue;
+                if (l.el.closest('[role="grid"], [role="row"], [role="tab"], [role="tablist"], [role="tree"], [role="menu"], .cl-grid')) continue;
+                if (!isShown(l.el)) continue;
+                labels.push({ key: hit[1], rect: l.el.getBoundingClientRect() });
+            }
+            if (!labels.length) return out;
+            const fields = Array.from(document.querySelectorAll('input, select, [role="combobox"]')).filter(isShown).map(el => ({ el, rect: el.getBoundingClientRect() }));
+            for (const lb of labels) {
+                if (out[lb.key]) continue;
+                const mid = (lb.rect.top + lb.rect.bottom) / 2;
+                const right = fields
+                    .filter(f => f.rect.left >= lb.rect.right - 2 && f.rect.top <= mid && f.rect.bottom >= mid && f.rect.left - lb.rect.right < 260)
+                    .sort((a, b) => a.rect.left - b.rect.left)[0];
+                if (!right) continue;
+                const v = fieldValue(right.el);
+                if (v) out[lb.key] = v;
+            }
+        } catch (e) { /* 조건 줄을 못 읽어도 넣기에는 지장 없다 */ }
+        return out;
     }
 
     // 지금 화면에 있는 textarea 마다 같은 줄에 놓인 이름·번호 글자를 모은다.
@@ -326,11 +380,11 @@
             if (!bad) stats.push({ col, nameHits, noHits, distinct: seen.size });
         }
         const nameCands = stats.filter(s => s.nameHits > 0).sort((a, b) => b.nameHits - a.nameHits);
-        if (!nameCands.length) return { rowCount, cols: cols.length, nameCol: null };
+        if (!nameCands.length) return { rowCount, cols: cols.length, colNames: cols, nameCol: null };
         const nameCol = nameCands[0].col;
         // 번호 열: 값이 거의 다 다르고(중복이 줄 수의 1할 미만) 학생 번호와 겹치는 열. 동점이면 정하지 않는다.
-        const noCands = stats.filter(s => s.col !== nameCol && s.noHits > 0 && (rowCount - s.distinct) <= Math.floor(rowCount / 10))
-            .sort((a, b) => b.noHits - a.noHits);
+        const noAll = stats.filter(s => s.col !== nameCol && s.noHits > 0).sort((a, b) => b.noHits - a.noHits);
+        const noCands = noAll.filter(s => (rowCount - s.distinct) <= Math.floor(rowCount / 10));
         let noCol = null;
         if (noCands.length === 1 || (noCands.length > 1 && noCands[0].noHits > noCands[1].noHits)) noCol = noCands[0].col;
         let textCol = null;
@@ -353,7 +407,11 @@
         const byCtrl = textColumnsByControl(grid);
         if (!textCol && byCtrl.length === 1) { textCol = byCtrl[0].name; textHow = '글 칸 컨트롤'; }
         if (textCol) { const hit = byCtrl.find(c => c.name === textCol); if (hit) textControl = hit.control; }
-        return { rowCount, cols: cols.length, nameCol, nameHits: nameCands[0].nameHits, noCol, textCol, textHow, textControl, textCtrlCount: byCtrl.length };
+        return {
+            rowCount, cols: cols.length, colNames: cols, nameCol, nameHits: nameCands[0].nameHits, noCol, textCol, textHow, textControl, textCtrlCount: byCtrl.length,
+            // 진단용: 번호 열 후보마다 맞은 수와 서로 다른 값의 수. 동점이라 못 정했는지 볼 수 있다.
+            noCands: noAll.map(s => s.col + '(' + s.noHits + '맞음/' + s.distinct + '가지)')
+        };
     }
 
     // 종합의견 열 컨트롤의 길이 한계(있으면). lengthUnit 이 바이트 계열이면 바이트로 잰다.
@@ -398,6 +456,7 @@
 
         const titles = screenTitles();
         const titleOk = titles.some(t => squash(t).includes('학기말종합의견'));
+        const filters = readFilters();   // 학년도·학기·학년·반·교과(목). 팝업이 글의 과목과 대조한다.
         if (mode !== 'inspect' && titles.length && !titleOk && !opts.skipTitle) {
             return { blocked: 'title', titles, url: location.href, frame: window === window.top ? 'top' : 'iframe' };
         }
@@ -524,7 +583,10 @@
                     if (!api.notes.length) api.notes.push(cands.length ? '이름 열이 있는 목록을 못 찾음' : '보이는 목록 없음');
                 } else {
                     const { g, info } = best;
-                    api.grid = { rows: info.rowCount, cols: info.cols, nameCol: !!info.nameCol, noCol: !!info.noCol, textCol: !!info.textCol, textHow: info.textHow || '', textCtrlCount: info.textCtrlCount };
+                    api.grid = {
+                        rows: info.rowCount, cols: info.cols, nameCol: !!info.nameCol, noCol: !!info.noCol, textCol: !!info.textCol, textHow: info.textHow || '', textCtrlCount: info.textCtrlCount,
+                        colNames: info.colNames || [], nameColName: info.nameCol || '', noColName: info.noCol || '', textColName: info.textCol || '', noCands: info.noCands || []
+                    };
                     if (!info.textCol) {
                         api.notes.push(info.textCtrlCount > 1 ? '글 칸 열이 ' + info.textCtrlCount + '개라 종합의견 열을 못 정함' : '종합의견 열을 못 정해 실행기로는 넣지 않음');
                     } else {
@@ -639,6 +701,7 @@
             mode,
             titles,
             titleOk,
+            filters,
             textareas: shownTextareas().length,
             scans,
             scrolls,
@@ -662,6 +725,6 @@
         leafTexts,
         last: () => state.last,
         busy: () => state.running,
-        _debug: { readGrid, decide, indexByName, cellValue, screenTitles, visibleGrids, controlsAt }
+        _debug: { readGrid, decide, indexByName, cellValue, screenTitles, readFilters, visibleGrids, controlsAt }
     };
 })();

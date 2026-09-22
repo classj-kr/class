@@ -20,6 +20,7 @@
 
     let students = [];
     let problems = [];
+    let meta = {};             // 붙여넣은 글 맨 위 표시줄(칸·학기·과목). 화면 조건과 대조한다.
     let armedUntil = 0;
     let lastBefore = null;     // 마지막 채우기 직전 값들. 되돌리기에 쓴다.
     let frameId = null;        // 살펴보기에서 고른 틀
@@ -40,7 +41,9 @@
         const r = parseStudents(raw.value);
         students = r.students;
         problems = r.problems;
-        parsed.textContent = students.length ? students.length + '명' : (raw.value.trim() ? '학생을 못 읽었습니다. "1번 이름" 줄이 있어야 합니다.' : '');
+        meta = r.meta || {};
+        const tag = [meta.area, meta.semester, meta.subject].filter(Boolean).join(' · ');
+        parsed.textContent = students.length ? students.length + '명' + (tag ? ' · ' + tag : '') : (raw.value.trim() ? '학생을 못 읽었습니다. "1번 이름" 줄이 있어야 합니다.' : '');
         list.replaceChildren(
             ...problems.map(p => li(p, true)),
             ...students.map(s => li(s.number + '번 ' + s.name + ' · ' + s.text.length + '자, ' + neisBytes(s.text) + '바이트'))
@@ -128,6 +131,10 @@
         if (a.grid) {
             bits.push('목록 ' + a.grid.rows + '줄·' + a.grid.cols + '열, 이름 열 ' + (a.grid.nameCol ? '찾음' : '못 찾음') + ', 번호 열 ' + (a.grid.noCol ? '찾음' : '못 찾음')
                 + ', 종합의견 열 ' + (a.grid.textCol ? '찾음(' + a.grid.textHow + ')' : '못 찾음'));
+            if (a.grid.colNames && a.grid.colNames.length) bits.push('열 이름: ' + a.grid.colNames.join(', '));
+            bits.push('이름 열=' + (a.grid.nameColName || '?') + ', 번호 열=' + (a.grid.noColName || '?')
+                + (a.grid.noCands && a.grid.noCands.length ? ' (번호 후보: ' + a.grid.noCands.join(', ') + ')' : '')
+                + ', 종합의견 열=' + (a.grid.textColName || '?'));
         }
         if (a.checked) bits.push('화면으로 넣은 ' + a.checked + '명 가운데 자료 일치 ' + a.agreed + '명, 실행기로 다시 넣음 ' + a.fixed + '명');
         if (a.filled || a.same) bits.push('화면 밖 줄을 실행기로 넣음 ' + a.filled + '명' + (a.same ? ', 이미 같음 ' + a.same + '명' : ''));
@@ -137,6 +144,40 @@
         return bits.concat(a.notes || []).join('\n');
     }
 
+    const norm = (s) => String(s || '').replace(/\s+/g, '').replace(/[()（）·]/g, '');
+    const semNo = (s) => { const m = String(s || '').match(/\d/); return m ? m[0] : ''; };
+
+    // 나이스 조건 줄을 한 줄로: "2026학년도 2학기 6학년 2반 · 교과(목) 국어"
+    function filtersLine(f) {
+        if (!f) return '못 읽음';
+        const bits = [];
+        if (f.year) bits.push(f.year.replace(/학년도$/, '') + '학년도');
+        if (f.semester) bits.push(f.semester.replace(/학기$/, '') + '학기');
+        if (f.grade) bits.push(f.grade.replace(/학년$/, '') + '학년');
+        if (f.klass) bits.push(f.klass.replace(/반$/, '') + '반');
+        if (f.subject) bits.push('· 교과(목) ' + f.subject);
+        return bits.length ? bits.join(' ') : '못 읽음';
+    }
+
+    // 붙여넣은 글의 과목·학기와 화면 조건이 다르면 그 까닭. 국어 글이 수학 칸에 들어가는 실수를 막는다.
+    function mismatch(f) {
+        if (!f) return '';
+        if (meta.subject && f.subject && norm(meta.subject) !== norm(f.subject)) {
+            return '붙여넣은 글은 「' + meta.subject + '」 것인데 화면의 교과(목)은 「' + f.subject + '」입니다. 넣지 않았습니다. 나이스에서 과목을 바꿔 조회하거나, 도우미에서 그 과목 글을 다시 복사하세요.';
+        }
+        if (meta.semester && f.semester && semNo(meta.semester) && semNo(f.semester) && semNo(meta.semester) !== semNo(f.semester)) {
+            return '붙여넣은 글은 ' + semNo(meta.semester) + '학기 것인데 화면은 ' + semNo(f.semester) + '학기입니다. 넣지 않았습니다.';
+        }
+        return '';
+    }
+
+    // 상태 줄 끝에 붙이는 과목 확인: "화면 과목 국어(글과 같음)" / "화면 과목 국어(글은 수학!)" / "글에 과목 표시 없음"
+    function subjectNote(f) {
+        if (!f || !f.subject) return meta.subject ? ' 화면 과목을 못 읽어 「' + meta.subject + '」 글인지 대조하지 못했습니다.' : '';
+        if (!meta.subject) return ' 화면 과목 ' + f.subject + '(글에 과목 표시 없음).';
+        return ' 화면 과목 ' + f.subject + (norm(meta.subject) === norm(f.subject) ? '(글과 같음).' : '(글은 ' + meta.subject + '!).');
+    }
+
     function showReport(best, mode, isUndo) {
         result.replaceChildren();
         tech.hidden = false;
@@ -144,6 +185,7 @@
             ? ['주소: ' + best.url,
                (best.frame === 'top' ? '바깥 화면' : '안쪽 틀') + ', 글 칸 ' + best.textareas + '개, 훑은 횟수 ' + best.scans + ', 스크롤 ' + (best.scrollable ? best.scrolls + '번' : '없음') + (best.namelessRows ? ', 이름 없는 줄 ' + best.namelessRows + '개' : ''),
                '화면 제목: ' + ((best.titles || []).join(' / ') || '못 찾음') + (best.titleOk ? ' (학기말종합의견 맞음)' : ''),
+               '화면 조건: ' + filtersLine(best.filters) + (meta.subject || meta.semester ? ' / 글: ' + [meta.area, meta.semester, meta.subject].filter(Boolean).join(' · ') : ''),
                best.sample ? '칸 위치: ' + best.sample.textarea.join(' < ') + (best.sample.maxLength > 0 ? ' (최대 ' + best.sample.maxLength + '자)' : '') : '',
                apiLine(best)].filter(Boolean).join('\n')
             : '';
@@ -155,13 +197,15 @@
         const flagged = best.matched.length - okCount;
         const strays = best.api && best.api.strays && best.api.strays.length;
         if (mode === 'inspect' && students.length === 0) {
-            setStatus('글 칸 ' + best.textareas + '개를 찾았습니다. 학생 글을 붙여넣으면 이름을 대조합니다. 아직 아무것도 바꾸지 않았습니다.', best.textareas === 0);
+            setStatus('글 칸 ' + best.textareas + '개를 찾았습니다. 학생 글을 붙여넣으면 이름을 대조합니다.' + subjectNote(best.filters) + ' 아직 아무것도 바꾸지 않았습니다.', best.textareas === 0);
         } else if (mode === 'inspect') {
+            const bad = mismatch(best.filters);
             setStatus('글 칸 ' + best.textareas + '개, 이름이 맞는 줄 ' + best.matched.length + '개'
                 + (flagged ? ', 확인할 줄 ' + flagged + '개' : '')
                 + (best.skipped.length ? ', 넣지 않을 학생 ' + best.skipped.length + '명' : '')
-                + (best.unmatched.length ? ', 화면에 없는 학생 ' + best.unmatched.length + '명' : '') + '. 아직 아무것도 바꾸지 않았습니다.',
-                best.matched.length === 0);
+                + (best.unmatched.length ? ', 화면에 없는 학생 ' + best.unmatched.length + '명' : '') + '.' + subjectNote(best.filters) + ' 아직 아무것도 바꾸지 않았습니다.'
+                + (bad ? ' 이대로 채우기를 누르면 넣지 않습니다.' : ''),
+                best.matched.length === 0 || !!bad);
         } else if (isUndo) {
             setStatus(okCount + '명을 원래 글로 되돌렸습니다. 저장하지 않으면 나이스에는 아무 변화도 없습니다.', okCount === 0);
         } else {
@@ -207,6 +251,9 @@
             const look = pickFrame(await runInPage('inspect', targets, false));
             if (!look || (look.textareas === 0 && look.matched.length === 0)) { showReport(look, 'inspect', false); return; }
             frameId = look.frameId;
+            // 글의 과목·학기와 화면 조건이 다르면 넣지 않는다(되돌리기는 예외: 원래 글로 되돌리는 것이므로).
+            const bad = isUndo ? '' : mismatch(look.filters);
+            if (bad) { showReport(look, 'inspect', false); setStatus(bad, true); return; }
             frames = await runInPage(mode, targets, true);
             const best = frames[0] || null;
             if (best && best.busy) { setStatus('아직 넣는 중입니다. 잠시 뒤 다시 열어 주세요.', true); return; }

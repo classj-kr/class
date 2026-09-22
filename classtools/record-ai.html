@@ -296,7 +296,7 @@
             </div>
             <p class="hint" style="margin: 0 0 14px; color: var(--muted); font-size: 0.9rem; line-height: 1.7;">
                 그대로 옮겨 적는 완성글이 아니라 고쳐 쓰기 위한 밑글입니다. 아이마다 실제로 있었던 일에 맞게 손봐 주세요.
-                「전체 복사」한 글은 크롬 확장 「나이스 채우기」에 붙여넣으면 나이스 학기말종합의견 화면에 이름을 대조해 한 번에 들어갑니다.
+                「전체 복사」한 글은 크롬 확장 「NEIS 붙여넣기 - ClassJ」에 붙여넣으면 나이스 학기말종합의견 화면에 이름을 대조해 한 번에 들어갑니다. 복사한 글 맨 위에 과목·학기 표시가 붙어, 나이스 화면의 과목과 다르면 확장이 넣지 않습니다.
             </p>
             <div id="result-list"></div>
             <textarea id="result-area" class="form-control" style="display: none;"></textarea>
@@ -331,6 +331,7 @@
             const resultSection = $('result-section');
             const resultList = $('result-list');
             const resultArea = $('result-area');
+            let generatedFor = null;   // 마지막으로 만든 글의 칸·학기·과목. 「전체 복사」 표시줄에 쓴다.
             const copyBtn = $('copy-btn');
 
             // 기록할 칸마다 담는 것이 다르다. 교과는 무엇을 알게 되었는지를,
@@ -833,6 +834,7 @@
                     subInput.focus();
                     return;
                 }
+                generatedFor = { area: area.label, semester: area.semester ? semesterSelect.value : '', subKey: area.sub || '', sub };
 
                 generateBtn.disabled = true;
                 genStatus.className = 'status';
@@ -887,8 +889,20 @@
                 }
             });
 
+            // 「전체 복사」 글 맨 위에 어느 칸·학기·과목의 글인지 적어 둔다. 크롬 확장이 나이스 화면의
+            // 교과(목)·학기와 대조해, 국어 글이 수학 칸에 들어가는 실수를 막는다. 만들 때 고른 값을 쓴다
+            // (만든 뒤 과목을 바꿔 두었더라도 글은 만들 때 과목의 것이다).
+            function metaLines() {
+                const g = generatedFor;
+                if (!g) return '';
+                const out = ['칸: ' + g.area];
+                if (g.semester) out.push('학기: ' + g.semester);
+                if (g.sub) out.push((g.subKey === '영역' ? '영역' : '과목') + ': ' + g.sub);
+                return out.join('\n') + '\n\n';
+            }
+
             copyBtn.addEventListener('click', async () => {
-                await navigator.clipboard.writeText(resultArea.value);
+                await navigator.clipboard.writeText(metaLines() + resultArea.value);
                 copyBtn.textContent = '복사됨';
                 setTimeout(() => { copyBtn.textContent = '전체 복사'; }, 1500);
             });
