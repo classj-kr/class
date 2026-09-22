@@ -7,6 +7,7 @@ const { Pool } = require("pg");
 const { createReadingBank } = require("./reading-bank");
 const { createMetacognition } = require("./metacognition");
 const { createVoting } = require("./voting");
+const { createSchoolElection } = require("./school-election");
 const { createSeating } = require("./seating");
 
 const SESSION_COOKIE = "class_session";
@@ -1332,6 +1333,7 @@ function createClassroomPlatform(options = {}) {
       await readingBank.initialize();
       await metacognition.initialize();
       await voting.initialize();
+      await schoolElection.initialize();
       await seating.initialize();
       databaseReady = true;
       initializationError = null;
@@ -1543,6 +1545,7 @@ function createClassroomPlatform(options = {}) {
     isLiveQuizRaceCode: options.isLiveQuizRaceCode,
     isReservedCode: (code) => seating.hasRoomCode(code),
     resolveRoomCode: (code) => seating.resolveCode(code),
+    resolveSchoolElectionCode: (code) => schoolElection.resolveCode(code),
     HttpError,
     asyncRoute
   });
@@ -1561,6 +1564,10 @@ function createClassroomPlatform(options = {}) {
   });
 
   router.use("/vote", voting.router);
+  const schoolElection = createSchoolElection({
+    pool, sessionUser, requireTeacher, requireDatabase, teacherRegistration, HttpError, asyncRoute
+  });
+  router.use("/school-election", schoolElection.router);
   router.use("/seating", seating.router);
 
   // Every request under /learning, /admin, /classtools, etc. passes through
@@ -1901,6 +1908,7 @@ function createClassroomPlatform(options = {}) {
           // 돌려보내지 않는다. 하위 CSS/JS 요청도 함께 허용한다.
           || requestPath === "/room" || requestPath.startsWith("/room/")
           || requestPath === "/vote" || requestPath.startsWith("/vote/")
+          || requestPath === "/school-election" || requestPath.startsWith("/school-election/")
           || requestPath === "/learning/class-race" || requestPath.startsWith("/learning/class-race/");
         if (classId && requestPath && !isAlwaysAllowed) {
           const enabled = await pool.query(

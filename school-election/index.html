@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#102d2b">
+  <title>전교 임원선거</title>
+  <link rel="stylesheet" href="/vote/style.css">
+  <link rel="stylesheet" href="/school-election/style.css">
+</head>
+<body>
+  <header class="topbar"><a class="back" href="/">← 메인</a><a class="back" href="/classtools/">교직원 메뉴</a></header>
+  <main class="shell">
+    <div class="page-heading"><p class="eyebrow">우리 학교 · 한 사람의 한 표</p><h1>전교 임원선거</h1><p class="muted">함께 선택하는 우리 학교의 대표</p></div>
+    <p id="status" class="status" role="status" aria-live="polite"></p>
+    <section id="loading" class="panel center"><div class="loader"></div><p>선거를 준비하고 있어요.</p></section>
+    <section id="joinView" class="panel narrow hidden">
+      <h2>전교선거 참여</h2><p class="muted">학교 명단에 등록된 학생 계정으로 로그인한 뒤<br>안내받은 방번호 6자리를 입력해 주세요.</p>
+      <form id="joinForm" class="join-form"><label for="joinCode">방번호</label><input id="joinCode" maxlength="6" pattern="[0-9]{6}" inputmode="numeric" autocomplete="one-time-code" placeholder="000000" required><button class="primary" type="submit">선거 열기</button></form>
+      <a id="loginLink" class="back hidden" href="/">메인에서 계정 로그인하기 →</a>
+    </section>
+    <section id="teacherView" class="hidden">
+      <div class="section-head"><div><p id="schoolName" class="eyebrow"></p><h2>선거 준비</h2></div><button id="newElection" class="secondary" type="button">새 선거</button></div>
+      <form id="createForm" class="panel create-form">
+        <label>선거 제목<input id="title" maxlength="80" placeholder="예: 2026학년도 전교 임원선거" required></label>
+        <div class="scope-grid"><label>명단 학년도<input id="year" type="number" min="2000" max="2100" required></label><fieldset class="grades"><legend>투표 대상 학년</legend><div id="grades"></div></fieldset></div>
+        <p class="muted form-note">선택한 학년의 모든 반이 참여합니다. 학생 계정은 <a href="/classtools/school-roster">전교생 명단</a>에서 미리 등록해 주세요.</p>
+        <div class="section-head"><h3>선출 직책과 후보</h3><button id="addPosition" class="secondary small" type="button">+ 직책 추가</button></div>
+        <p class="muted form-note">직책별 후보 2~20명 · 모든 유권자가 각 직책에서 1명씩 선택합니다. 후보의 학년·반은 이름과 함께 적을 수 있습니다.</p>
+        <div id="positions" class="position-list"></div>
+        <button id="saveElection" class="primary wide" type="submit">저장하고 명부 확인하기</button>
+      </form>
+      <section class="rooms-section"><div class="section-head"><h2>내 전교선거</h2><button id="refreshList" class="secondary small" type="button">새로고침</button></div><div id="electionList" class="room-list"></div></section>
+    </section>
+    <section id="detailView" class="hidden">
+      <div class="section-head detail-nav"><button id="backButton" class="secondary small" type="button">목록으로</button><button id="refreshDetail" class="secondary small" type="button">새로고침</button></div>
+      <div id="detail"></div>
+    </section>
+  </main>
+  <script src="/school-election/app.js"></script>
+</body>
+</html>
+

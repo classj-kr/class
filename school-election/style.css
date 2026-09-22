@@ -1,0 +1,32 @@
+:root { --accent:#34d399; --line:rgba(110,231,183,.22); }
+body { background:radial-gradient(ellipse at 10% 0,#134e4a 0,transparent 42%),#0b171c; }
+.page-heading { padding:8px 0 10px; } .eyebrow,.back { color:#a7f3d0; } .page-heading h1 { font-size:clamp(2rem,5vw,3rem); }
+.panel,.room-card,.ballot-card { background:rgba(15,35,40,.94); } .teacherView { display:grid;gap:20px; }
+#teacherView > .section-head { margin-bottom:20px; } .primary { background:linear-gradient(135deg,#047857,#065f46);box-shadow:0 8px 22px #022c2233; }
+.primary:hover { background:#047857; } button:disabled { opacity:.5;cursor:not-allowed; }
+input:focus,button:focus-visible,a:focus-visible { outline:3px solid #6ee7b7;outline-offset:3px; } input { background:#0b171c; }
+label { color:#d1fae5; } a { color:#a7f3d0; } h3 { margin:0; } .form-note { margin:-8px 0 0;font-size:.92rem; }
+.scope-grid { display:grid;grid-template-columns:150px 1fr;gap:24px;align-items:end; }
+.grades { margin:0;padding:0;border:0; } .grades legend { margin-bottom:10px;color:#d1fae5;font-weight:800; }
+#grades { display:flex;flex-wrap:wrap;gap:10px; } #grades label { display:flex;align-items:center;gap:7px;border:1px solid var(--line);padding:12px;border-radius:12px; }
+#grades input { width:18px;height:18px;accent-color:#10b981; } #grades label:has(input:checked) { background:#064e3b;border-color:#34d399; }
+.position-editor { background:#09181c; } .candidate-name-row { display:grid;grid-template-columns:1fr 42px;gap:8px;align-items:end; }
+.candidate-name-row button { height:46px; } .secondary { background:#263e43; } .candidate-name-row label { font-size:.85rem; }
+.detail-nav { margin-bottom:20px; } .steps { display:flex;gap:8px;flex-wrap:wrap;margin:18px 0; }
+.step { padding:7px 12px;border:1px solid var(--line);border-radius:99px;color:#9caeb0;font-size:.85rem; } .step.current { background:#064e3b;color:#a7f3d0;border-color:#34d399; }
+.election-heading h2 { font-size:clamp(1.6rem,4vw,2.3rem);overflow-wrap:anywhere; } .code-panel { display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;margin:22px 0; }
+.code-panel strong { font:900 clamp(2rem,8vw,4rem)/1.2 monospace;letter-spacing:.12em;color:#fde68a; } .code-panel p { margin:0 0 5px; }
+.summary-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0; }
+.summary-stat { background:#09181c;border:1px solid var(--line);border-radius:16px;padding:20px; }
+.summary-stat strong { display:block;font-size:2rem;color:#a7f3d0; } .summary-stat span { color:#b8c8c9;font-size:.9rem; }
+.table-wrap { overflow:auto;margin:18px 0; } table { border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums; } th,td { padding:13px 14px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap; }
+th { color:#a7f3d0;font-size:.9rem; } .actions { display:flex;gap:10px;flex-wrap:wrap;margin-top:22px; } .notice { padding:18px;border:1px solid #a16207;border-radius:14px;background:#422d16;color:#fde68a;line-height:1.6; }
+.ready { border-color:#047857;background:#063e31;color:#a7f3d0; } .issues { max-height:260px;overflow:auto;line-height:1.8; } .subpanel { margin-top:20px; }
+.candidate-option { position:relative; } .candidate-option input { width:1px;height:1px;left:0;top:0;margin:0; }
+.candidate-option input:checked + span { background:#064e3b;border-color:#34d399; } .candidate-option input:focus-visible + span { outline:3px solid #a7f3d0;outline-offset:3px; }
+.candidate-option span { background:#09181c; } .ballot-card fieldset { border:0;padding:0;margin:0; } .ballot-card legend { margin-bottom:18px;font-size:1.3rem;font-weight:800; }
+.result-label span:last-child { color:#a7f3d0; } .bar span { background:linear-gradient(90deg,#059669,#6ee7b7); } #loginLink { display:block;margin-top:20px; }
+details { border:1px solid var(--line);border-radius:14px;padding:18px;margin-top:18px; } summary { cursor:pointer;font-weight:800; }
+#status:empty { min-height:0;margin:0; } .participant-list { display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px;padding:0;list-style:none; }
+.participant-list li { padding:10px;border-radius:9px;background:#09181c; } .participant-list .done { color:#a7f3d0; }
+@media(max-width:560px) { .scope-grid { grid-template-columns:1fr;gap:20px; } .summary-grid { gap:6px; } .summary-stat { padding:12px; } .summary-stat strong { font-size:1.55rem; } .summary-stat span { font-size:.8rem; } .actions button { width:100%; } th,td { padding:10px; } .page-heading { padding-top:0; } }

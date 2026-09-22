@@ -56,8 +56,6 @@ test("results preserve candidate-number order and show only rank and vote totals
   assert.match(votingSource, /localeCompare[\s\S]*numeric: true/);
   assert.match(votingSource, /CREATE TABLE IF NOT EXISTS vote_room_participants/);
   assert.match(votingSource, /ON CONFLICT \(room_id, voter_key\) DO UPDATE SET updated_at=NOW\(\)/);
-  assert.match(votingSource, /const guest = guestAccess\(req\)/);
-  assert.match(votingSource, /async function guestScope/);
   assert.match(voteAppSource, /title:"투표 완료"/);
   assert.match(voteAppSource, /title:"준비"/);
   assert.match(voteAppSource, /title:"미참여"/);

@@ -406,7 +406,7 @@ app.use("/fraction", (req, res) => {
   const query = req.originalUrl.indexOf("?");
   res.redirect(301, "/arithmetic/grade-3-fraction-2" + (query >= 0 ? req.originalUrl.slice(query) : ""));
 });
-app.use(["/admin", "/schooladmin", "/arithmetic", "/api/arithmetic-race", "/classtools", "/learning", "/learn", "/notice", "/teacher", "/room", "/vote"], classroomPlatform.requireSiteAccess);
+app.use(["/admin", "/schooladmin", "/arithmetic", "/api/arithmetic-race", "/classtools", "/learning", "/learn", "/notice", "/teacher", "/room", "/vote", "/school-election"], classroomPlatform.requireSiteAccess);
 app.use("/arithmetic", proxyToLearningApp(ARITHMETIC_PORT));
 app.use("/api/arithmetic-race", proxyToLearningApp(ARITHMETIC_PORT));
 // 한능검 기출은 정적 페이지가 되었다. 예전 주소로 온 사람은 새 자리로 보낸다.
@@ -468,7 +468,7 @@ for (const [route, file] of [
   app.get(route, (req, res, next) => sendSiteHtml(req, res, path.join(SITE_ROOT, file), next));
 }
 
-const CLEAN_HTML_ROOTS = ["/admin", "/classboard", "/schooladmin", "/classtools", "/learning", "/notice", "/teacher", "/room", "/vote"];
+const CLEAN_HTML_ROOTS = ["/admin", "/classboard", "/schooladmin", "/classtools", "/learning", "/notice", "/teacher", "/room", "/vote", "/school-election"];
 app.use((req, res, next) => {
   if (req.method !== "GET" && req.method !== "HEAD") return next();
 
@@ -520,7 +520,7 @@ app.use((req, res, next) => {
   });
 });
 
-for (const directory of ["admin", "classboard", "classtools", "css", "js", "learning", "notice", "schooladmin", "teacher", "room", "vote"]) {
+for (const directory of ["admin", "classboard", "classtools", "css", "js", "learning", "notice", "schooladmin", "teacher", "room", "vote", "school-election"]) {
   app.use(`/${directory}`, express.static(path.join(SITE_ROOT, directory), staticAssetOptions));
 }
 

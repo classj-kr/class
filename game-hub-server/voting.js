@@ -2,7 +2,7 @@ const express = require("express");
 
 const ROOM_CODE_LENGTH = 4;
 
-function createVoting({ pool, sessionUser, guestAccess, requireUser, requireTeacher, requireDatabase, teacherRegistration, isLiveQuizRaceCode, isReservedCode, resolveRoomCode, HttpError, asyncRoute }) {
+function createVoting({ pool, sessionUser, guestAccess, requireUser, requireTeacher, requireDatabase, teacherRegistration, isLiveQuizRaceCode, isReservedCode, resolveRoomCode, resolveSchoolElectionCode, HttpError, asyncRoute }) {
   const router = express.Router();
 
   async function initialize() {
@@ -97,37 +97,13 @@ function createVoting({ pool, sessionUser, guestAccess, requireUser, requireTeac
 
   async function votingActor(req) {
     const user = await sessionUser(req);
-    if (user) return { user, guest: null };
-    const guest = guestAccess(req);
-    if (guest) return { user: null, guest };
-    throw new HttpError(401, "AUTH_REQUIRED", "학생 계정 또는 게스트로 먼저 들어와 주세요.");
-  }
-
-  async function guestScope(room, guest) {
-    if (room.academic_year == null || room.grade == null || room.class_number == null) return null;
-    const result = await pool.query(
-      `SELECT school_id, academic_year, grade, class_number, voter_key FROM (
-         SELECT s.school_id, s.academic_year, s.grade, s.class_number,
-                'school:' || s.id::TEXT AS voter_key, 1 AS priority
-         FROM school_students s
-         WHERE s.school_id=$1 AND s.academic_year=$2 AND s.grade=$3 AND s.class_number=$4
-           AND s.roster_name=$5
-         UNION ALL
-         SELECT c.school_id, c.academic_year, c.grade, c.class_number,
-                'classroom:' || s.id::TEXT AS voter_key, 2 AS priority
-         FROM classroom_students s
-         JOIN classroom_classes c ON c.id=s.class_id
-         WHERE c.school_id=$1 AND c.academic_year=$2 AND c.grade=$3 AND c.class_number=$4
-           AND s.roster_name=$5
-       ) matches ORDER BY priority`,
-      [room.school_id, room.academic_year, room.grade, room.class_number, guest.name]
-    );
-    return result.rows[0] || null;
+    if (user) return { user };
+    throw new HttpError(401, "AUTH_REQUIRED", "투표는 계정 로그인이 필요합니다. 메인 화면에서 학생 계정으로 로그인해 주세요.");
   }
 
   async function voterScope(actor, room) {
-    const scope = actor.user ? await studentScope(actor.user) : await guestScope(room, actor.guest);
-    if (!scope) throw new HttpError(403, "STUDENT_REQUIRED", "우리 반 명단에 있는 이름으로 들어와 주세요.");
+    const scope = await studentScope(actor.user);
+    if (!scope) throw new HttpError(403, "STUDENT_REQUIRED", "우리 반 명단에 등록된 학생 계정으로 로그인해 주세요.");
     if (!studentMatchesRoom(scope, room)) throw new HttpError(403, "CLASS_MISMATCH", "우리 반에서 만든 투표만 참여할 수 있습니다.");
     return scope;
   }
@@ -286,7 +262,6 @@ function createVoting({ pool, sessionUser, guestAccess, requireUser, requireTeac
   router.get("/me", asyncRoute(async (req, res) => {
     requireDatabase();
     const actor = await votingActor(req);
-    if (!actor.user) return res.json({ name: actor.guest.name, isTeacher: false, isStudent: true, guest: true });
     const user = actor.user;
     const [teacher, schoolId] = await Promise.all([teacherRegistration(user), studentSchool(user)]);
     res.json({ name: user.display_name, isTeacher: Boolean(teacher), isStudent: Boolean(schoolId) });
@@ -294,11 +269,23 @@ function createVoting({ pool, sessionUser, guestAccess, requireUser, requireTeac
 
   router.get("/resolve/:code", asyncRoute(async (req, res) => {
     requireDatabase();
-    await votingActor(req);
+    // 방번호 입구는 순위전·자리 고르기도 공유하므로 그 활동의 게스트 입장은 유지한다.
+    const user = await sessionUser(req);
+    if (!user && !guestAccess(req)) throw new HttpError(401, "AUTH_REQUIRED", "메인 화면에서 먼저 로그인해 주세요.");
+    const electionCode = String(req.params.code || "").trim();
+    if (/^\d{6}$/.test(electionCode)) {
+      await votingActor(req);
+      const resolved = typeof resolveSchoolElectionCode === "function" ? await resolveSchoolElectionCode(electionCode) : null;
+      if (resolved) return res.json(resolved);
+      throw new HttpError(404, "ROOM_NOT_FOUND", "해당 전교선거를 찾을 수 없습니다.");
+    }
     const code = cleanCode(req.params.code);
     if (code.length !== ROOM_CODE_LENGTH) throw new HttpError(400, "INVALID_ROOM_CODE", "방번호 4자리를 입력해 주세요.");
     if (await hasQuizRaceCode(code)) return res.json({ type: "quizrace", href: `/learning/class-race/?room=${code}` });
-    if (await hasRoomCode(code)) return res.json({ type: "vote", href: `/vote/?room=${code}` });
+    if (await hasRoomCode(code)) {
+      await votingActor(req);
+      return res.json({ type: "vote", href: `/vote/?room=${code}` });
+    }
     const resolved = typeof resolveRoomCode === "function" ? await resolveRoomCode(code) : null;
     if (resolved) return res.json(resolved);
     throw new HttpError(404, "ROOM_NOT_FOUND", "해당 방을 찾을 수 없습니다.");
@@ -382,7 +369,7 @@ function createVoting({ pool, sessionUser, guestAccess, requireUser, requireTeac
         `INSERT INTO vote_room_participants (room_id, voter_user_id, voter_key)
          VALUES ($1,$2,$3)
          ON CONFLICT (room_id, voter_key) DO UPDATE SET updated_at=NOW()`,
-        [room.id, actor.user?.id || null, actor.voterKey]
+        [room.id, actor.user.id, actor.voterKey]
       );
     }
     res.json({ room: await serializeRoom(room, actor, isOwner || room.status === "closed"), isOwner });
@@ -419,7 +406,7 @@ function createVoting({ pool, sessionUser, guestAccess, requireUser, requireTeac
       if (previous.rowCount) throw new HttpError(409, "ALREADY_VOTED", "이미 이 방에서 투표를 완료했습니다.");
       for (const selection of selections) {
         await client.query(`INSERT INTO vote_ballots (room_id,position_id,candidate_id,voter_user_id,voter_key) VALUES ($1,$2,$3,$4,$5)`,
-          [room.id, selection.positionId, selection.candidateId, actor.user?.id || null, actor.voterKey]);
+          [room.id, selection.positionId, selection.candidateId, actor.user.id, actor.voterKey]);
       }
       await client.query("COMMIT");
       res.status(201).json({ ok: true });

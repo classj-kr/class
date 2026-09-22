@@ -5,7 +5,10 @@
   "scripts": {
     "start": "node server.js",
     "postinstall": "node render-postinstall.mjs",
-    "build:reading-seed": "node ../scripts/build-reading-seed.js"
+    "build:reading-seed": "node ../scripts/build-reading-seed.js",
+    "test:school-election": "node --test school-election.test.mjs voting-auth.test.mjs voting-contract.test.mjs",
+    "test:school-election:ui": "node -e \"process.env.RUN_ELECTION_UI='1'; import('./school-election-ui.test.mjs')\"",
+    "preview:school-election": "node school-election-preview.mjs"
   },
   "dependencies": {
     "express": "^4.21.2",
@@ -15,5 +18,9 @@
   },
   "engines": {
     "node": ">=22"
+  },
+  "devDependencies": {
+    "@electric-sql/pglite": "^0.5.8",
+    "playwright": "^1.63.0"
   }
 }

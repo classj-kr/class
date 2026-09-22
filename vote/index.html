@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#312e81">
-  <title>우리 학교 투표</title>
+  <title>학급선거</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -17,6 +17,7 @@
 
     <section id="joinView" class="panel narrow hidden">
       <h1>투표방 입장</h1>
+      <p class="muted">투표는 학급 명단에 등록된 학생 계정으로 로그인한 뒤 참여할 수 있습니다.</p>
       <form id="joinForm" class="join-form">
         <input id="joinCode" inputmode="numeric" maxlength="4" autocomplete="one-time-code" placeholder="0000" aria-label="투표 방번호">
         <button class="primary" type="submit">투표방 열기</button>
@@ -26,7 +27,7 @@
 
     <section id="teacherView" class="hidden">
       <form id="createForm" class="panel create-form">
-        <label>투표 제목<input id="voteTitle" maxlength="80" placeholder="예: 2026학년도 전교 학생회 선거" required></label>
+        <label>투표 제목<input id="voteTitle" maxlength="80" placeholder="예: 2026학년도 학급 임원선거" required></label>
         <div class="section-head actions-only"><button id="addPosition" class="secondary small" type="button">+ 항목 추가</button></div>
         <div id="positionList" class="position-list"></div>
         <button id="createButton" class="primary wide" type="submit">방 만들기</button>
