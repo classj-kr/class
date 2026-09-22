@@ -140,7 +140,7 @@ const CHAPTERS = [
                 "art": "05-robber.webp",
                 "emoji": "🗡️",
                 "left": [
-                    "게르다는 그 길로 다시 떠났습니다. 이내 어두운 숲길로 접어들었지요.",
+                    "게르다는 공주가 내어 준 마차를 타고 다시 떠났습니다. 이내 어두운 숲길로 접어들었지요.",
                     "그때 까마귀 한 마리가 나뭇가지에서 내려왔습니다. \"북쪽으로 간 아이를 봤어.\"",
                     "게르다는 북쪽으로 향했지요. 그런데 얼마 못 가 도둑들을 만나고 말았습니다."
                 ],
@@ -161,7 +161,7 @@ const CHAPTERS = [
                 "right": [
                     "비둘기들이 말을 이었습니다. \"눈의 여왕 썰매에 앉아 있었어요. 북쪽 라플란드로 갔지요.\"",
                     "구석에 매여 있던 순록이 고개를 번쩍 들었습니다. \"라플란드는 제 고향이에요.\"",
-                    "도둑 소녀는 한참 동안 아무 말이 없었지요. 그러더니 이튿날 새벽 순록의 밧줄을 슬그머니 풀어 주었습니다."
+                    "도둑 소녀는 한참 동안 아무 말이 없었지요. 그러더니 이튿날 새벽 게르다를 순록 등에 태우고, 칼로 밧줄을 싹둑 끊어 주었습니다."
                 ]
             }
         ]
@@ -262,7 +262,7 @@ const CHAPTERS = [
                 ],
                 "right": [
                     "창밖 나무 상자에는 장미가 활짝 피어 있었지요. 두 아이는 예전처럼 나란히 앉았습니다.",
-                    "그런데 앉고 보니 둘 다 훌쩍 커 있었지요. 게르다가 웃었습니다. \"우리 많이 컸네.\"",
+                    "그런데 앉고 보니 둘 다 키가 한 뼘은 자라 있었지요. 게르다가 웃었습니다. \"우리 많이 컸네.\"",
                     "그래도 마음은 그대로였습니다. 창으로 여름 햇살이 들고 장미가 소리 없이 흔들렸지요."
                 ]
             }
@@ -723,7 +723,7 @@ const EN = {
                     art: '05-robber.webp',
                     emoji: '🗝️',
                     left: [
-                        "Gerda left that same hour, and soon the road went into a dark wood.",
+                        "Gerda left that same hour in the carriage the princess gave her, and soon the road went into a dark wood.",
                         "A crow came down out of a tree.",
                         "\"I saw a boy who went north.\"",
                         "So Gerda turned north.",
@@ -751,7 +751,7 @@ const EN = {
                         "\"He was in the Snow Queen's sleigh,\" said the pigeons. \"They went north, to Lapland.\"",
                         "The reindeer in the corner lifted his head. \"Lapland is my home.\"",
                         "The robber girl said nothing for a long while.",
-                        "Before dawn she quietly untied the reindeer's rope."
+                        "Before dawn she lifted Gerda onto the reindeer and cut the rope with her knife."
                     ]
                 }
             ]
@@ -1010,7 +1010,7 @@ const EN = {
             { word: 'pigeon', meaning: '비둘기', sentence: 'The room was full of pigeons.' },
             { word: 'reindeer', meaning: '순록', sentence: 'And a reindeer as well.' },
             { word: 'coo', meaning: '구구 울다', sentence: 'Up above them the pigeons cooed.' },
-            { word: 'untie', meaning: '풀어 주다', sentence: "She quietly untied the reindeer's rope." }
+            { word: 'cut', meaning: '끊다', sentence: "She cut the rope with her knife." }
         ],
         '06-reindeer.webp': [
             { word: 'pack', meaning: '챙겨 주다', sentence: 'She packed her a loaf and a piece of meat.' },
