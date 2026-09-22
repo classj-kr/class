@@ -125,4 +125,8 @@ test("seatIndexOf accepts only the 36 desk indexes", () => {
   assert.equal(seatIndexOf("3.5"), null);
   assert.equal(seatIndexOf(undefined), null);
   assert.equal(seatIndexOf(""), null);
+  assert.equal(seatIndexOf(null), null);
+  assert.equal(seatIndexOf(true), null);
+  assert.equal(seatIndexOf([]), null);
+  assert.equal(seatIndexOf(" 12 "), 12);
 });

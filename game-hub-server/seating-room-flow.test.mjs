@@ -40,6 +40,7 @@ const USERS = {
   21: { id: 21, email: "s1@example.kr", display_name: "김하나", role: "student" },
   22: { id: 22, email: "s2@example.kr", display_name: "이학생", role: "student" },
   23: { id: 23, email: "s3@example.kr", display_name: "박셋", role: "student" },
+  24: { id: 24, email: "s4@example.kr", display_name: "최넷", role: "student" },
   25: { id: 25, email: "s5@example.kr", display_name: "박고정", role: "student" },
   31: { id: 31, email: "s31@example.kr", display_name: "옆반", role: "student" },
   99: { id: 99, email: "nobody@example.kr", display_name: "명단없음", role: "student" }
@@ -174,7 +175,8 @@ const userOf = (req) => USERS[req.get("x-user")] || null;
 const seating = createSeating({
   pool,
   sessionUser: async (req) => userOf(req),
-  guestAccess: (req) => (req.get("x-guest") ? { name: req.get("x-guest") } : null),
+  // 헤더에는 한글을 못 실으므로 시험에서는 퍼센트 부호화해서 넘긴다.
+  guestAccess: (req) => (req.get("x-guest") ? { name: decodeURIComponent(req.get("x-guest")) } : null),
   requireTeacher: async (req) => {
     const user = userOf(req);
     if (!user) throw new HttpError(401, "AUTH_REQUIRED", "sign in");
@@ -209,7 +211,7 @@ async function call(method, path, { user, guest, body } = {}) {
     headers: {
       "Content-Type": "application/json",
       ...(user ? { "x-user": String(user) } : {}),
-      ...(guest ? { "x-guest": guest } : {})
+      ...(guest ? { "x-guest": encodeURIComponent(guest) } : {})
     },
     body: body === undefined ? undefined : JSON.stringify(body)
   });
@@ -277,33 +279,36 @@ test("picks obey the conditions, go to the first student, and cannot be changed"
   assert.equal((await pick({ user: 25 }, 8)).body.error, "SEAT_FIXED");
   assert.equal((await pick({ user: 31 }, 8)).body.error, "CLASS_MISMATCH");
 
-  const first = await pick({ user: 21 }, 1);
+  const first = await pick({ user: 21 }, 11);
   assert.equal(first.status, 201, JSON.stringify(first.body));
-  assert.equal(first.body.seatIndex, 1);
+  assert.equal(first.body.seatIndex, 11);
 
   // 게스트(명단 이름으로 들어온 학생)가 같은 자리를 누르면 늦은 사람이 진다.
-  const late = await pick({ guest: "이학생" }, 1);
+  const late = await pick({ guest: "이학생" }, 11);
   assert.equal(late.status, 409);
   assert.equal(late.body.error, "SEAT_TAKEN");
   assert.equal((await pick({ guest: "이학생" }, 7)).status, 201);
+  // 남학생 고정 자리는 남학생이 고를 수 있다.
+  assert.equal((await pick({ user: 23 }, 1)).status, 201);
 
   // 한 번 고른 자리는 이 방에서 바꿀 수 없다. 빈자리를 눌러도 마찬가지.
   const change = await pick({ user: 21 }, 8);
   assert.equal(change.status, 409);
   assert.equal(change.body.error, "ALREADY_PICKED");
   assert.equal((await pick({ guest: "이학생" }, 9)).body.error, "ALREADY_PICKED");
+  assert.equal((await pick({ user: 23 }, 1)).body.error, "ALREADY_PICKED");
 
   const view = await call("GET", `/api/seating/rooms/${room.code}`, { user: 22 });
   assert.equal(view.body.room.me.seatIndex, 7);
   assert.deepEqual(
     view.body.room.picks.map((entry) => [entry.seatIndex, entry.number, entry.mine, entry.avatarUrl]),
-    [[1, "1", false, "/assets/avatars/animal-cat.webp"], [7, "2", true, ""]]
+    [[11, "1", false, "/assets/avatars/animal-cat.webp"], [7, "2", true, ""], [1, "3", false, ""]]
   );
 
   const owner = await call("GET", `/api/seating/rooms/active?classId=${CLASS.id}`, { user: 7 });
   assert.equal(owner.body.room.code, room.code);
-  assert.equal(owner.body.room.pickedCount, 2);
-  assert.deepEqual(owner.body.room.pending.map((student) => student.number), ["3", "4"]);
+  assert.equal(owner.body.room.pickedCount, 3);
+  assert.deepEqual(owner.body.room.pending.map((student) => student.number), ["4"]);
   assert.equal((await call("GET", `/api/seating/rooms/active?classId=${CLASS.id}`, { user: 8 })).body.room, null);
 });
 
@@ -312,9 +317,9 @@ test("closing freezes the room; a new room for the class closes the old one; can
   const closed = await call("POST", `/api/seating/rooms/${room.id}/close`, { user: 7 });
   assert.equal(closed.status, 200);
   assert.equal(closed.body.room.status, "closed");
-  assert.equal(closed.body.room.pickedCount, 2);
+  assert.equal(closed.body.room.pickedCount, 3);
 
-  const lateJoin = await call("POST", `/api/seating/rooms/${room.code}/pick`, { user: 23, body: { seatIndex: 9 } });
+  const lateJoin = await call("POST", `/api/seating/rooms/${room.code}/pick`, { user: 24, body: { seatIndex: 9 } });
   assert.equal(lateJoin.body.error, "SEATING_ROOM_CLOSED");
   const after = await call("GET", `/api/seating/rooms/${room.code}`, { user: 22 });
   assert.equal(after.body.room.status, "closed");

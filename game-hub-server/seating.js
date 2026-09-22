@@ -12,9 +12,15 @@ const GENDERS = ["남", "여"];
 const ROOM_RETENTION = "7 days";
 const SEAT_PAGE_PATH = "/room/seat";
 
+// 0~35 사이의 자리 번호만 받는다. 빈 문자열은 Number("")가 0이 되므로 따로 막는다.
 function seatIndexOf(value) {
-  const index = Number(value);
-  return Number.isInteger(index) && index >= 0 && index < TOTAL_DESKS ? index : null;
+  let index = value;
+  if (typeof index === "string") {
+    if (!/^\d{1,2}$/.test(index.trim())) return null;
+    index = Number(index.trim());
+  }
+  if (typeof index !== "number" || !Number.isInteger(index)) return null;
+  return index >= 0 && index < TOTAL_DESKS ? index : null;
 }
 
 function cleanStudentNumber(value) {

@@ -500,7 +500,7 @@
                 <aside class="seating-sidebar-panel">
                     <button class="btn btn-primary btn-xl" id="shuffle-btn" type="button" style="width: 100%; font-size: 1.1rem; font-weight: 900; padding: 14px; margin-bottom: 6px; border-radius: 14px; box-shadow: 0 4px 12px rgba(23,63,69,0.3);">🎲 자리 무작위 섞기</button>
 
-                    <div class="sidebar-group">
+                    <div class="sidebar-group" id="live-open-group">
                         <label class="sidebar-label">학생이 직접 고르기 (선착순)</label>
                         <button class="btn btn-live" id="live-open-btn" type="button" style="width: 100%;">📱 방번호 열어 학생이 고르기</button>
                     </div>
@@ -577,6 +577,7 @@
             const liveProgress = document.getElementById('live-progress');
             const livePending = document.getElementById('live-pending');
             const liveOpenBtn = document.getElementById('live-open-btn');
+            const liveOpenGroup = document.getElementById('live-open-group');
             const liveCloseBtn = document.getElementById('live-close-btn');
             const liveCancelBtn = document.getElementById('live-cancel-btn');
             const TOTAL_DESKS = 36;
@@ -1027,6 +1028,7 @@
                 document.body.classList.toggle('is-live', active);
                 livePanel.hidden = !active;
                 liveOpenBtn.hidden = active;
+                liveOpenGroup.hidden = active;
                 liveControls().forEach((control) => { control.disabled = active; });
             }
 
