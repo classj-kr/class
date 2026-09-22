@@ -14,11 +14,21 @@
         .r textarea { width: 600px; height: 64px; }
         .other { display: none; }
         .panel { margin-top: 10px; white-space: pre-wrap; font-family: monospace; font-size: 12px; }
+        .cond label { white-space: nowrap; flex: 0 0 auto; }   /* 나이스처럼 이름표와 입력 칸이 한 줄에 놓인다 */
     </style>
 </head>
 <body>
     <div class="top"><b>서울계상초등학교</b> <span>박화송</span> <span id="mode"></span></div>
-    <div class="app-tit"><span class="cl-text" id="title">학기말종합의견</span></div>
+    <div class="app-tit" id="title-wrap"><span class="cl-text" id="title">학기말종합의견</span></div>
+    <!-- 조건 줄: 나이스처럼 이름표(빨간 * 는 딴 요소) 오른쪽에 읽기 전용 입력 칸. 확장이 여기서 과목·학기를 읽는다. -->
+    <div class="cond" style="display:flex; gap:18px; align-items:center; background:#f3f4f8; padding:8px; margin-bottom:8px;">
+        <label><span style="color:#c00">*</span><span>학년도</span> <input value="2026" readonly size="6"></label>
+        <label><span style="color:#c00">*</span><span>학기</span> <input value="2" readonly size="3"></label>
+        <label><span style="color:#c00">*</span><span>학년</span> <input value="6" readonly size="3"></label>
+        <label><span style="color:#c00">*</span><span>반</span> <input value="2" readonly size="3"></label>
+        <label><span style="color:#c00">*</span><span>교과(목)</span> <span role="combobox" style="display:inline-block; border:1px solid #aaa;"><input id="subject" value="국어" readonly size="8" style="border:0"></span></label>
+        <button type="button">조회</button>
+    </div>
     <div class="grid" id="grid"></div>
     <div role="tablist" style="margin-top:6px; font-size:12px; color:#666;"><span role="tab">초기화면</span> · <span role="tab">교과학습발달상황</span> · <span role="tab">교과평가</span> · <span role="tab">학기말종합의견</span></div>
     <!-- 다른 탭(숨겨진 화면)의 글 칸: 채우면 안 된다 -->
@@ -38,6 +48,14 @@
         const noBlur = params.get('noblur') === '1';       // 화면 값을 실행기가 받아들이지 않는 경우
         const dupMode = params.get('dup') === '1';         // 번호를 '3번' 꼴로 적어 못 읽게 함(동명이인 보호 시험)
         if (params.get('title')) document.getElementById('title').textContent = params.get('title');
+        if (params.get('subject')) document.getElementById('subject').value = params.get('subject');   // 화면 과목을 바꿔 과목 대조 시험
+        if (params.get('notitle') === '1') {
+            // 머리글 선택자에 안 걸리는 판: 클래스 없이 큼직한 글씨만. 확장의 글씨 크기 대체 찾기를 시험한다.
+            const w = document.getElementById('title-wrap');
+            w.className = '';
+            document.getElementById('title').className = '';
+            w.style.cssText = 'font-size:18px; font-weight:bold; margin:6px 0;';
+        }
         document.getElementById('mode').textContent = (virtual ? '(보이는 줄만 그림' : '(전부 그림') + (withCpr ? ', 실행기 흉내' : '') + (editOnly ? ', 첫 줄만 글 칸' : '') + (noBlur ? ', blur 무시' : '') + (dupMode ? ', 번호 못 읽음' : '') + ')';
         const grid = document.getElementById('grid');
 
