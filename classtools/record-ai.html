@@ -407,6 +407,7 @@
             const topicsInput = $('topics-input');
             const planStatus = $('plan-status');
             const charTarget = $('char-target');
+            const lengthGroup = $('length-group');
             const lengthStatus = $('length-status');
             const countInput = $('count-input');
             const scopeGroup = $('scope-group');
@@ -505,7 +506,7 @@
             let planLoadToken = 0;
 
             // 행동특성은 목록을 함께 쓰지 않고 분량만 함께 쓴다.
-            const DEFAULT_CHARS = { behavior: 300, subject: 150, activity: 200 };
+            const DEFAULT_CHARS = { behavior: 300 };
 
             function planQuery() {
                 const area = currentArea();
@@ -522,7 +523,7 @@
 
             function targetChars() {
                 const n = Number(charTarget.value);
-                return (n >= 20 && n <= 2000) ? Math.round(n) : (DEFAULT_CHARS[areaSelect.value] || 150);
+                return (n >= 20 && n <= 2000) ? Math.round(n) : DEFAULT_CHARS.behavior;
             }
 
             async function loadPlan() {
@@ -534,11 +535,13 @@
                     if (!res.ok) return false;
                     const body = await res.json();
                     if (token !== planLoadToken) return true;   // 그새 다른 과목으로 옮겼다
-                    charTarget.value = body.charTarget || DEFAULT_CHARS[areaSelect.value] || 150;
-                    lengthStatus.textContent = body.charTarget
-                        ? '학년이 함께 쓰는 분량입니다.'
-                        : '아직 정하지 않았습니다. 적어 두면 같은 학년 선생님도 씁니다.';
-                    if (areaSelect.value === 'behavior') return false;   // 목록은 행발에 없다
+                    if (areaSelect.value === 'behavior') {
+                        charTarget.value = body.charTarget || DEFAULT_CHARS.behavior;
+                        lengthStatus.textContent = body.charTarget
+                            ? '학년이 함께 쓰는 분량입니다.'
+                            : '아직 정하지 않았습니다. 적어 두면 같은 학년 선생님도 씁니다.';
+                        return false;   // 목록은 행발에 없다
+                    }
                     topicsInput.value = body.items || '';
                     planStatus.textContent = body.updatedAt
                         ? (body.updatedByName ? body.updatedByName + ' 선생님이 ' : '')
@@ -559,14 +562,15 @@
                         const res = await fetch('/api/teacher/record-plan', {
                             method: 'PUT',
                             headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify(Object.assign({
-                                items: areaSelect.value === 'behavior' ? '' : topicsInput.value,
-                                charTarget: targetChars()
-                            }, key))
+                            body: JSON.stringify(Object.assign(
+                                areaSelect.value === 'behavior'
+                                    ? { items: '', charTarget: targetChars() }
+                                    : { items: topicsInput.value },
+                                key))
                         });
                         if (res.ok) {
-                            lengthStatus.textContent = '학년이 함께 쓰도록 저장했습니다.';
-                            if (areaSelect.value !== 'behavior') planStatus.textContent = '학년이 함께 쓰도록 저장했습니다.';
+                            const where = areaSelect.value === 'behavior' ? lengthStatus : planStatus;
+                            where.textContent = '학년이 함께 쓰도록 저장했습니다.';
                         }
                     } catch (_) { /* 못 보내면 이 브라우저 것만 남는다 */ }
                 }, 800);
@@ -575,7 +579,7 @@
             async function swapTopics() {
                 planStatus.textContent = '';
                 // 학년을 모르면 서버 것이 없다. 그래도 분량 칸은 기본값으로 채워 둔다.
-                charTarget.value = DEFAULT_CHARS[areaSelect.value] || 150;
+                charTarget.value = DEFAULT_CHARS.behavior;
                 lengthStatus.textContent = '';
                 if (await loadPlan()) return;
                 swapTopicsLocal();
@@ -638,6 +642,8 @@
                 areaGroup.style.display = allowed.length > 1 ? '' : 'none';
 
                 const area = currentArea();
+                // 분량을 학년이 맞춰야 하는 것은 행동특성뿐이다. 교과·창체는 예전 그대로 둔다.
+                lengthGroup.style.display = allowed.includes('behavior') && areaSelect.value === 'behavior' ? '' : 'none';
                 topicsLabel.textContent = area.topics;
                 topicsInput.placeholder = area.example;
                 semesterGroup.style.display = area.semester ? '' : 'none';
@@ -1399,9 +1405,6 @@
                 const vary = VARY[areaSelect.value] || VARY.behavior;
                 const item = area.item || '활동';
                 const pool = areaWordPool(areaSelect.value);
-                const chars = targetChars();
-                const topicCount = Math.max(1, topicsInput.value.split('\n').map(t => t.trim()).filter(Boolean).length);
-                const perTopic = Math.max(20, Math.round(chars / topicCount));
                 return '초등학교 생활기록부 \'' + semester + where + '\' 칸에 넣을 문장을 만듭니다.\n\n'
                     + '[' + item + '] ' + topic + '\n\n'
                     + '선생님은 ' + item + ' 이름만 적었습니다. 초등학교 ' + item + '에서 학생들이 무엇을 하고\n'
@@ -1426,8 +1429,7 @@
                     + '- 솜씨를 재는 말(잘함, 뛰어남, 훌륭함, 탁월함, 우수함, 소질이 있음)을 쓰지 마세요.\n'
                     + '  무엇을 어떻게 하더라는 모습으로 씁니다. \'리코더를 잘 붊\' 이 아니라\n'
                     + '  \'친구 소리에 맞추어 손가락을 짚음\' 처럼 씁니다.\n'
-                    + '- 한 문장은 ' + perTopic + '자 안팎으로 합니다. 한 학생이 받는 글 전체가\n'
-                    + '  ' + chars + '자 안팎이 되도록 맞춘 길이입니다.\n'
+                    + '- 한 문장은 40자 안팎으로 합니다.\n'
                     + '- 학생 이름이나 번호는 문장 안에 넣지 않습니다.\n\n'
                     + '\'1. \' 처럼 번호를 붙여 한 줄에 하나씩만 적고, 다른 말은 덧붙이지 마세요.';
             }
