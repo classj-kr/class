@@ -30,7 +30,7 @@
 
 ## 시험
 
-`_mock.html` 이 모의 나이스 화면입니다. 화면에서 `__classjNeis.run(학생목록, {mode:'inspect'|'overwrite'|'append', roster: 전체명단})` 를 부르면 확장 팝업과 같은 결과를 돌려줍니다. 주소 뒤에 붙이는 조건:
+`mock.html` 이 모의 나이스 화면입니다. 화면에서 `__classjNeis.run(학생목록, {mode:'inspect'|'overwrite'|'append', roster: 전체명단})` 를 부르면 확장 팝업과 같은 결과를 돌려줍니다. 주소 뒤에 붙이는 조건:
 
 - `?virtual=1` 보이는 줄만 그리는 목록
 - `?cpr=1` 실행기 흉내(공개 이름만, 학년·학기처럼 늘 같은 값인 열 포함)
