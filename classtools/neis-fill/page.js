@@ -108,31 +108,17 @@
         return byName;
     }
 
-    // 화면 제목 후보. 목록·줄·탭 이름표 안의 글자는 뺀다(아래 탭 줄에도 화면 이름이 적혀 있다).
+    // 화면 제목 후보(참고용, 화면 정보에만 보인다). 어느 화면인지는 교사가 알고 있으므로 이것으로 막지 않는다.
+    // 목록·줄·탭 이름표 안의 글자는 뺀다(아래 탭 줄에도 열린 화면 이름이 적혀 있다).
     function screenTitles() {
         const out = [];
         const els = document.querySelectorAll('[role="heading"], h1, h2, h3, .app-tit, .neis-main-tit, .app-tit .cl-text, .neis-main-tit .cl-text, .h3 .cl-text');
         els.forEach(el => {
             if (!isShown(el)) return;
-            if (el.closest('[role="grid"], [role="row"], [role="tab"], [role="tablist"], .cl-grid, .cl-tabfolder')) return;
+            if (el.closest('[role="grid"], [role="row"], [role="tab"], [role="tablist"], .cl-grid')) return;
             const t = (el.textContent || '').trim();
             if (t && t.length <= 30) out.push(t);
         });
-        // 머리글 선택자에 안 걸리면(나이스 판마다 다르다) 화면 위쪽의 큼직한 글씨(16px 이상) 짧은 글을 제목으로 본다.
-        // 왼쪽 메뉴·아래 탭·빵부스러기 단추의 같은 글자는 작아서 걸리지 않는다. 배치 계산은 800개까지만 한다.
-        if (!out.length) {
-            let looked = 0;
-            for (const l of leafTexts(document.body)) {
-                if (looked > 800) break;
-                if (l.text.length > 30 || l.el.tagName === 'INPUT') continue;
-                if (l.el.closest('[role="grid"], [role="row"], [role="tab"], [role="tablist"], [role="tree"], [role="menu"], [role="menubar"], .cl-grid, .cl-tabfolder, button')) continue;
-                looked += 1;
-                if (!isShown(l.el)) continue;
-                if (parseFloat(getComputedStyle(l.el).fontSize) < 16) continue;
-                if (l.el.getBoundingClientRect().top > window.innerHeight * 0.6) continue;
-                out.push(l.text);
-            }
-        }
         return uniq(out).slice(0, 12);
     }
 
@@ -387,6 +373,17 @@
         const noCands = noAll.filter(s => (rowCount - s.distinct) <= Math.floor(rowCount / 10));
         let noCol = null;
         if (noCands.length === 1 || (noCands.length > 1 && noCands[0].noHits > noCands[1].noHits)) noCol = noCands[0].col;
+        else if (noCands.length > 1) {
+            // 동점: 그 열들이 모든 줄에서 같은 값이면 어느 것을 써도 같으니 첫 열을 쓴다.
+            // 실제 나이스 학기말종합의견 목록에는 번호 값을 든 열이 둘(stdntInfo, stdntCn) 있다.
+            const top = noCands.filter(s => s.noHits === noCands[0].noHits);
+            let same = true;
+            for (let i = 0; i < rowCount && same; i += 1) {
+                const v0 = intStr(cellValue(grid, i, top[0].col));
+                for (const s of top.slice(1)) { if (intStr(cellValue(grid, i, s.col)) !== v0) { same = false; break; } }
+            }
+            if (same) noCol = top[0].col;
+        }
         let textCol = null;
         let textHow = '';
         let textControl = null;
@@ -409,8 +406,8 @@
         if (textCol) { const hit = byCtrl.find(c => c.name === textCol); if (hit) textControl = hit.control; }
         return {
             rowCount, cols: cols.length, colNames: cols, nameCol, nameHits: nameCands[0].nameHits, noCol, textCol, textHow, textControl, textCtrlCount: byCtrl.length,
-            // 진단용: 번호 열 후보마다 맞은 수와 서로 다른 값의 수. 동점이라 못 정했는지 볼 수 있다.
-            noCands: noAll.map(s => s.col + '(' + s.noHits + '맞음/' + s.distinct + '가지)')
+            // 진단용: 번호 열 후보마다 맞은 수, 서로 다른 값의 수, 앞 세 줄의 값. 동점이라 못 정했는지 볼 수 있다.
+            noCands: noAll.map(s => s.col + '(' + s.noHits + '맞음/' + s.distinct + '가지: ' + [0, 1, 2].filter(i => i < rowCount).map(i => cellValue(grid, i, s.col)).join(',') + ')')
         };
     }
 
@@ -454,12 +451,8 @@
         let scans = 0;
         let scrolls = 0;
 
-        const titles = screenTitles();
-        const titleOk = titles.some(t => squash(t).includes('학기말종합의견'));
-        const filters = readFilters();   // 학년도·학기·학년·반·교과(목). 팝업이 글의 과목과 대조한다.
-        if (mode !== 'inspect' && titles.length && !titleOk && !opts.skipTitle) {
-            return { blocked: 'title', titles, url: location.href, frame: window === window.top ? 'top' : 'iframe' };
-        }
+        const titles = screenTitles();   // 참고용
+        const filters = readFilters();   // 학년도·학기·학년·반·교과(목). 팝업이 글의 학기·과목과 대조해 다르면 넣지 않는다.
 
         // 0) 한 바퀴 훑기: 학생마다 화면에서 몇 줄에 걸리는지 센다. 두 줄이면 넣지 않는다.
         const rowsByKey = new Map();      // 학생 key → 그 학생으로 판정된 줄들
@@ -700,7 +693,6 @@
             frame: window === window.top ? 'top' : 'iframe',
             mode,
             titles,
-            titleOk,
             filters,
             textareas: shownTextareas().length,
             scans,

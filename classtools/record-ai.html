@@ -433,6 +433,11 @@
                 remove(key) { try { localStorage.removeItem(key); } catch (_) {} }
             };
 
+            // 학기 기본값: 8월~1월은 2학기, 그 밖은 1학기. 「전체 복사」 글의 「학기:」 표시가 나이스 화면의 학기와
+            // 맞아야 확장이 넣으므로, 늘 1학기로 시작하면 2학기에 만든 글이 번번이 막힌다.
+            const month = new Date().getMonth() + 1;
+            semesterSelect.value = (month >= 8 || month <= 1) ? '2학기' : '1학기';
+
             // store 를 갖춘 뒤라야 적어 둔 것을 되살릴 수 있다.
             swapTopics();
 

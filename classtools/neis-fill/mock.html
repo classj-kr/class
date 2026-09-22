@@ -47,15 +47,9 @@
         const editOnly = params.get('editonly') === '1';   // 편집 중인 첫 줄에만 글 칸이 있는 목록
         const noBlur = params.get('noblur') === '1';       // 화면 값을 실행기가 받아들이지 않는 경우
         const dupMode = params.get('dup') === '1';         // 번호를 '3번' 꼴로 적어 못 읽게 함(동명이인 보호 시험)
+        const seqMode = params.get('seq') || '';           // 번호 값을 든 열이 하나 더 있는 목록: 'same'(NO 와 같은 값) / 'diff'(다른 값)
         if (params.get('title')) document.getElementById('title').textContent = params.get('title');
         if (params.get('subject')) document.getElementById('subject').value = params.get('subject');   // 화면 과목을 바꿔 과목 대조 시험
-        if (params.get('notitle') === '1') {
-            // 머리글 선택자에 안 걸리는 판: 클래스 없이 큼직한 글씨만. 확장의 글씨 크기 대체 찾기를 시험한다.
-            const w = document.getElementById('title-wrap');
-            w.className = '';
-            document.getElementById('title').className = '';
-            w.style.cssText = 'font-size:18px; font-weight:bold; margin:6px 0;';
-        }
         document.getElementById('mode').textContent = (virtual ? '(보이는 줄만 그림' : '(전부 그림') + (withCpr ? ', 실행기 흉내' : '') + (editOnly ? ', 첫 줄만 글 칸' : '') + (noBlur ? ', blur 무시' : '') + (dupMode ? ', 번호 못 읽음' : '') + ')';
         const grid = document.getElementById('grid');
 
@@ -80,9 +74,10 @@
         if (withCpr) {
             class Grid {
                 // GRD(학년)·SEM(학기)은 모든 줄이 같은 값이다. 번호 열로 잘못 잡히면 안 된다.
-                constructor() { this.dataSet = { getColumnNames: () => ['GRD', 'SEM', 'CHK', 'NO', 'NM', 'OPINION', 'ETC'] }; this.detail = { getCellIndices: () => [0, 1, 2, 3, 4, 5, 6], getColumn: (ci) => ({ columnName: this.dataSet.getColumnNames()[ci], control: ci === 5 ? new TextArea() : null }) }; this.redraws = 0; }
+                // SEQ 는 실제 나이스처럼 번호 값을 든 열이 둘일 때를 흉내 낸다(?seq=same 이면 NO 와 같은 값, diff 면 거꾸로 센 값).
+                constructor() { const names = ['GRD', 'SEM', 'CHK', 'NO'].concat(seqMode ? ['SEQ'] : []).concat(['NM', 'OPINION', 'ETC']); this.dataSet = { getColumnNames: () => names }; this.detail = { getCellIndices: () => names.map((_, i) => i), getColumn: (ci) => ({ columnName: names[ci], control: names[ci] === 'OPINION' ? new TextArea() : null }) }; this.redraws = 0; }
                 getRowCount() { return ROSTER.length; }
-                getCellValue(i, col) { return { GRD: '3', SEM: '2', CHK: '', NO: dupMode ? (i + 1) + '번' : String(i + 1), NM: ROSTER[i], OPINION: model[i], ETC: 'x' }[col]; }
+                getCellValue(i, col) { const no = dupMode ? (i + 1) + '번' : String(i + 1); return { GRD: '3', SEM: '2', CHK: '', NO: no, SEQ: seqMode === 'diff' ? String(ROSTER.length - i) : no, NM: ROSTER[i], OPINION: model[i], ETC: 'x' }[col]; }
                 setCellValue(i, col, v) { if (col !== 'OPINION') return false; if (model[i] === v) return false; model[i] = v; show(); return true; }
                 getRowState() { return 'UPDATED'; }
                 redraw() { this.redraws += 1; if (virtual) renderVirtual(); else renderAll(); }

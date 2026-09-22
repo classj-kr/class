@@ -12,8 +12,6 @@
     const only = document.getElementById('only');
     const undoBtn = document.getElementById('undo-btn');
     const clearBtn = document.getElementById('clear-btn');
-    const skipTitle = document.getElementById('skip-title');
-    const skipTitleWrap = document.getElementById('skip-title-wrap');
 
     // 붙여넣은 글은 브라우저를 닫으면 지워지는 저장소에 둔다(학생 개인정보).
     const store = chrome.storage.session || chrome.storage.local;
@@ -104,7 +102,7 @@
             target,
             world: 'MAIN',
             func: (arr, opts) => (window.__classjNeis ? window.__classjNeis.run(arr, opts) : null),
-            args: [targets, { mode, roster: students, skipTitle: skipTitle.checked }]
+            args: [targets, { mode, roster: students }]
         });
         return results.filter(r => r && r.result).map(r => Object.assign({ frameId: r.frameId }, r.result));
     }
@@ -166,7 +164,8 @@
             return '붙여넣은 글은 「' + meta.subject + '」 것인데 화면의 교과(목)은 「' + f.subject + '」입니다. 넣지 않았습니다. 나이스에서 과목을 바꿔 조회하거나, 도우미에서 그 과목 글을 다시 복사하세요.';
         }
         if (meta.semester && f.semester && semNo(meta.semester) && semNo(f.semester) && semNo(meta.semester) !== semNo(f.semester)) {
-            return '붙여넣은 글은 ' + semNo(meta.semester) + '학기 것인데 화면은 ' + semNo(f.semester) + '학기입니다. 넣지 않았습니다.';
+            return '붙여넣은 글은 ' + semNo(meta.semester) + '학기 것인데 화면은 ' + semNo(f.semester) + '학기입니다. 넣지 않았습니다. '
+                + '지금 학기 화면이 맞으면 글 맨 위 「학기: 」 줄을 고치거나 도우미에서 학기를 바꿔 다시 복사하세요. 지난 학기 화면에 덮어쓰면 그때 쓴 글이 지워집니다.';
         }
         return '';
     }
@@ -184,7 +183,7 @@
         techBody.textContent = best
             ? ['주소: ' + best.url,
                (best.frame === 'top' ? '바깥 화면' : '안쪽 틀') + ', 글 칸 ' + best.textareas + '개, 훑은 횟수 ' + best.scans + ', 스크롤 ' + (best.scrollable ? best.scrolls + '번' : '없음') + (best.namelessRows ? ', 이름 없는 줄 ' + best.namelessRows + '개' : ''),
-               '화면 제목: ' + ((best.titles || []).join(' / ') || '못 찾음') + (best.titleOk ? ' (학기말종합의견 맞음)' : ''),
+               '화면 제목(참고): ' + ((best.titles || []).join(' / ') || '못 찾음'),
                '화면 조건: ' + filtersLine(best.filters) + (meta.subject || meta.semester ? ' / 글: ' + [meta.area, meta.semester, meta.subject].filter(Boolean).join(' · ') : ''),
                best.sample ? '칸 위치: ' + best.sample.textarea.join(' < ') + (best.sample.maxLength > 0 ? ' (최대 ' + best.sample.maxLength + '자)' : '') : '',
                apiLine(best)].filter(Boolean).join('\n')
@@ -257,12 +256,6 @@
             frames = await runInPage(mode, targets, true);
             const best = frames[0] || null;
             if (best && best.busy) { setStatus('아직 넣는 중입니다. 잠시 뒤 다시 열어 주세요.', true); return; }
-            if (best && best.blocked === 'title') {
-                skipTitleWrap.hidden = false;
-                setStatus('이 화면 제목에서 「학기말종합의견」을 찾지 못해 넣지 않았습니다. 찾은 제목: ' + (best.titles.join(' / ') || '없음')
-                    + '. 정말 학기말종합의견 화면이면 「화면 제목 검사 건너뛰기」를 켜고 다시 누르세요.', true);
-                return;
-            }
             showReport(best, mode, isUndo);
             if (best && !isUndo) rememberUndo(best);
             if (isUndo) { lastBefore = null; undoBtn.hidden = true; }
