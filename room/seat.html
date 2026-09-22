@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#173f45">
+  <title>자리 고르기</title>
+  <link rel="stylesheet" href="seat.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <a class="back" href="/">← 메인</a>
+      <p class="room-code"><span>방번호</span><strong id="roomCode">----</strong></p>
+    </header>
+
+    <section id="loading" class="panel center"><div class="loader"></div><p>자리 배치도를 가져오고 있어요.</p></section>
+
+    <section id="joinView" class="panel narrow" hidden>
+      <h1>자리 고르기</h1>
+      <p class="muted">선생님이 알려 준 방번호 4자리를 입력하세요.</p>
+      <form id="joinForm" class="join-form">
+        <input id="joinCode" inputmode="numeric" pattern="[0-9]*" maxlength="4" autocomplete="one-time-code" placeholder="0000" aria-label="자리 고르기 방번호">
+        <button class="primary" type="submit">들어가기</button>
+      </form>
+      <p id="joinStatus" class="status" role="status"></p>
+    </section>
+
+    <section id="messageView" class="panel narrow" hidden>
+      <h1 id="messageTitle"></h1>
+      <p id="messageBody" class="muted"></p>
+      <a id="messageLink" class="primary link-button" href="/">메인으로</a>
+    </section>
+
+    <section id="seatView" hidden>
+      <div class="heading">
+        <h1 id="seatTitle">자리 고르기</h1>
+        <p id="seatGuide" class="guide"></p>
+      </div>
+      <div class="blackboard">칠 판 (앞)</div>
+      <div id="seatGrid" class="seat-grid" aria-label="6행 6열 자리 배치"></div>
+      <p id="seatStatus" class="status" role="status"></p>
+      <p id="seatProgress" class="progress"></p>
+      <p class="legend">
+        <span class="legend-empty">빈자리</span>
+        <span class="legend-male">남학생 자리</span>
+        <span class="legend-female">여학생 자리</span>
+        <span class="legend-locked">선생님이 정한 자리</span>
+        <span class="legend-unused">사용 안 함</span>
+      </p>
+    </section>
+  </main>
+
+  <dialog id="confirmDialog" class="confirm">
+    <form method="dialog">
+      <h2 id="confirmTitle"></h2>
+      <p>한 번 고르면 이 방에서는 자리를 바꿀 수 없어요.</p>
+      <div class="dialog-actions">
+        <button class="secondary" value="cancel" type="submit">다시 볼래요</button>
+        <button class="primary" id="confirmButton" value="confirm" type="submit">여기 앉을래요</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="seat.js"></script>
+</body>
+</html>
