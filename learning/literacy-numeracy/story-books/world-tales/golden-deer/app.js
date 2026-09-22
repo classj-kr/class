@@ -7,7 +7,7 @@ const CHAPTERS = [
                 "art": "01-forest.webp",
                 "emoji": "🌳",
                 "left": [
-                    "아주 오랜 옛날 인도의 큰 숲에서 있었던 일입니다. 그 숲에 사슴 무리가 살았지요. 수백 마리나 되는 큰 무리였습니다.",
+                    "아주 오랜 옛날 어느 큰 숲에서 있었던 일입니다. 그 숲에 사슴 무리가 살았지요. 수백 마리나 되는 큰 무리였습니다.",
                     "무리를 이끄는 사슴이 하나 있었지요. 털빛이 금처럼 빛나는 사슴이었습니다. 뿔은 은빛으로 반짝였지요.",
                     "사람들은 그 사슴을 황금 사슴이라 불렀습니다."
                 ],
@@ -142,7 +142,7 @@ const CHAPTERS = [
                 "emoji": "🦌",
                 "left": [
                     "그렇게 여러 날이 지났습니다. 어느 날 아침 차례가 된 사슴은 아주 어린 암사슴이었지요. 눈이 크고 몸이 가늘었습니다.",
-                    "그런데 배가 불룩했습니다. 곧 새끼를 낳을 몸이었거든요. 암사슴은 한참을 망설이다 황금 사슴을 찾아왔지요."
+                    "그런데 곧 새끼를 낳을 몸이었지요. 암사슴은 한참을 망설이다 황금 사슴을 찾아왔지요."
                 ],
                 "right": [
                     "암사슴이 가늘게 떨리는 목소리로 말했습니다. \"제 차례를 조금만 미룰 수 있을까요? 새끼를 낳고 나서 가고 싶습니다.\"",
@@ -552,7 +552,7 @@ const EN = {
                     art: '01-forest.webp',
                     emoji: '🌳',
                     left: [
-                        "This happened long ago in a great forest in India.",
+                        "This happened long ago in a great forest far away.",
                         "A herd of deer lived in that forest.",
                         "There were hundreds of them.",
                         "And there was one deer who led them.",
@@ -731,7 +731,7 @@ const EN = {
                         "Many days went by like that.",
                         "One morning, it was the turn of a very young doe,",
                         "with large eyes and a slight body.",
-                        "But her belly was round. She was close to bearing a fawn.",
+                        "But she was close to bearing a fawn.",
                         "The doe hesitated a long time,",
                         "and then she came to the Golden Deer."
                     ],

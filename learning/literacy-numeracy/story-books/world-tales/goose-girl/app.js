@@ -223,13 +223,13 @@ const CHAPTERS = [
                 "art": "07-stove-2.webp",
                 "emoji": "🔥",
                 "left": [
-                    "임금님은 방을 나가며 문을 닫아 주었습니다. 공주는 부엌으로 가 난로 문을 열었지요.",
+                    "임금님은 조용히 문간으로 물러섰습니다. 공주는 부엌으로 가 난로 문을 열었지요.",
                     "공주는 무릎을 꿇고 앉아 한참을 말없이 불빛만 바라보았습니다. 장작이 탁 하고 튀었지요.",
                     "공주가 겨우 입을 열었습니다. \"저는 이 나라에 시집오려던 공주입니다.\""
                 ],
                 "right": [
                     "한번 터진 말은 멈추지 않았습니다. 냇가에서 손수건을 잃은 일, 벌판에서 옷을 바꿔 입은 일, 성문 위 팔라다 이야기까지 모두 털어놓았지요.",
-                    "말하는 내내 눈물이 볼을 타고 흘렀습니다. 다 말하고 나자 어깨가 한결 가벼워졌지요. 임금님은 문밖에서 그 이야기를 하나도 빠짐없이 듣고 있었습니다."
+                    "말하는 내내 눈물이 볼을 타고 흘렀습니다. 다 말하고 나자 어깨가 한결 가벼워졌지요. 임금님은 문간에서 그 이야기를 하나도 빠짐없이 듣고 있었습니다."
                 ]
             }
         ]
@@ -824,7 +824,7 @@ const EN = {
                         "She told the stove everything: the lost handkerchief, the swapped clothes, Falada over the gate.",
                         "Tears ran down her face.",
                         "When she had finished, her shoulders felt lighter.",
-                        "The king had been outside the door, hearing every word."
+                        "The king had been standing in the doorway, hearing every word."
                     ]
                 }
             ]
@@ -1029,7 +1029,7 @@ const EN = {
             { word: 'kneel', meaning: '무릎을 꿇다', sentence: 'She knelt down and looked into the fire.' },
             { word: 'crack and spit', meaning: '탁 하고 튀다', sentence: 'A log cracked and spat.' },
             { word: 'once it has started', meaning: '한번 터지자', sentence: 'Once it had started it did not stop.' },
-            { word: 'every word', meaning: '하나도 빠짐없이', sentence: 'The king had been outside the door, hearing every word.' }
+            { word: 'every word', meaning: '하나도 빠짐없이', sentence: 'The king had been standing in the doorway, hearing every word.' }
         ],
         '08-ending.webp': [
             { word: 'make sense of', meaning: '영문을 알다', sentence: 'The maid could make no sense of it.' },

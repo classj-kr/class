@@ -123,7 +123,7 @@ const CHAPTERS = [
                 "art": "04-prince-2.webp",
                 "emoji": "🎵",
                 "left": [
-                    "왕자는 며칠을 숨어서 지켜보았습니다. 덤불 뒤에 몸을 낮추고 기다렸지요. 모기가 물어도 꼼짝하지 않았습니다.",
+                    "왕자는 며칠을 두고 그 길을 다시 찾아왔습니다. 말을 세우고 탑을 올려다보며 기다렸지요. 모기가 물어도 꼼짝하지 않았습니다.",
                     "해가 기울 무렵이면 늘 한 사람이 왔습니다. 자줏빛 망토를 두른 여인이었지요. 여인이 탑 아래에 서서 외쳤습니다.",
                     "\"라푼젤, 라푼젤, 머리카락을 내려라!\""
                 ],
@@ -694,7 +694,7 @@ const EN = {
                     art: '04-prince-2.webp',
                     emoji: '🐎',
                     left: [
-                        "For several days the prince watched from hiding, crouched behind a bush.",
+                        "For several days the prince came back to that path, halting his horse and watching the tower.",
                         "He did not move, even when the midges bit him.",
                         "Each evening at sunset, a woman in a purple cloak came.",
                         "She stood at the foot of the tower and called out,",
@@ -974,8 +974,8 @@ const EN = {
             { word: 'look as he might', meaning: '아무리 찾아도', sentence: 'Look as he might, there was no door.' }
         ],
         '04-prince-2.webp': [
-            { word: 'from hiding', meaning: '숨어서', sentence: 'The prince watched from hiding.' },
-            { word: 'crouch', meaning: '몸을 낮추다', sentence: 'Crouched behind a bush.' },
+            { word: 'halt', meaning: '세우다', sentence: 'Halting his horse and watching the tower.' },
+            { word: 'halt', meaning: '세우다', sentence: 'Halting his horse and watching the tower.' },
             { word: 'midge', meaning: '모기, 날벌레', sentence: 'Even when the midges bit him.' },
             { word: 'in a low voice', meaning: '목소리를 낮추어', sentence: 'He called the same words in a low voice.' }
         ],

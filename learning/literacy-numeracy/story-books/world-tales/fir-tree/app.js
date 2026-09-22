@@ -179,7 +179,7 @@ const CHAPTERS = [
                 "left": [
                     "그런데 잔치는 하룻밤으로 끝났습니다.",
                     "이튿날 아침 사람들이 들어왔지요. 금색 사과도 종이꽃도 떼어 냈습니다.",
-                    "그런데 꼭대기 별은 깜빡 잊고 그대로 두었지요. 가지에는 촛농과 별만 남았습니다.",
+                    "가지에는 촛농 자국만 남았습니다.",
                     "하인들이 전나무를 끌고 나갔지요. 마른 바늘잎이 바닥에 우수수 떨어졌지만 아무도 줍지 않았습니다."
                 ],
                 "right": [
@@ -786,7 +786,7 @@ const EN = {
                     left: [
                         "But the party was over in one night.",
                         "Next morning people took off the gold apples and paper flowers.",
-                        "They forgot the star on the very top, though.",
+                        "Only the marks of the candles were left on the branches.",
                         "Servants dragged the fir tree away.",
                         "Dry needles fell onto the floor, but nobody picked them up."
                     ],
