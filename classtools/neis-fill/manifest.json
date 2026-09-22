@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": "NEIS 붙여넣기 - ClassJ",
-  "version": "0.3.4",
-  "description": "ClassJ 생활기록부 도우미의 학생별 문장을 NEIS 학생 칸에 넣습니다.",
+  "version": "0.3.5",
+  "description": "ClassJ 생활기록부 문장을 NEIS에 넣습니다.",
   "homepage_url": "https://classj.kr/classtools/neis-fill/",
   "icons": {
     "16": "icon16.png",
