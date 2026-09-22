@@ -388,8 +388,8 @@
                 return 'record_result:' + currentClassId + ':' + areaSelect.value + ':' + semester + ':' + sub;
             }
 
-            function saveResult(items) {
-                store.set(resultStoreKey(), JSON.stringify({ at: Date.now(), meta: generatedFor, items }));
+            function saveResult(items, at) {
+                store.set(resultStoreKey(), JSON.stringify({ at: at || Date.now(), meta: generatedFor, items }));
             }
 
             function savedResult() {
@@ -403,10 +403,11 @@
                 const saved = savedResult();
                 if (saved) {
                     generatedFor = saved.meta || null;
-                    renderResult(saved.items);
+                    renderResult(saved.items, saved.at);
                     resultNote.textContent = new Date(saved.at).toLocaleString('ko-KR') + '에 만든 문장입니다.';
                 } else {
                     generatedFor = null;
+                    shownItems = [];
                     resultList.replaceChildren();
                     resultArea.value = '';
                     resultNote.textContent = '';
@@ -805,8 +806,27 @@
             }
 
             // items: [{ number, name, text }]. 명단 없이 만든 것은 name 이 빈 값이다.
-            function renderResult(items) {
-                const label = (it) => (it.number + '번 ' + (it.name || '')).trim();
+            // 화면에 떠 있는 문장들. 고치면 이 배열이 함께 바뀌고 그대로 저장된다.
+            let shownItems = [];
+            let shownAt = null;
+
+            function resultLabel(it) {
+                return (it.number + '번 ' + (it.name || '')).trim();
+            }
+
+            function syncResultText() {
+                resultArea.value = shownItems.map(it => resultLabel(it) + '\n' + it.text).join('\n\n');
+            }
+
+            function fitBox(box) {
+                box.style.height = 'auto';
+                box.style.height = box.scrollHeight + 'px';
+            }
+
+            function renderResult(items, at) {
+                shownItems = items;
+                shownAt = at || Date.now();
+                const boxes = [];
                 resultList.replaceChildren(...items.map((it) => {
                     const row = document.createElement('div');
                     row.style.cssText = 'border:1px solid var(--line); border-radius:10px; padding:12px 14px; margin-bottom:10px; background:var(--paper);';
@@ -815,7 +835,7 @@
                     head.style.cssText = 'display:flex; justify-content:space-between; align-items:center; gap:10px; margin-bottom:6px;';
 
                     const no = document.createElement('strong');
-                    no.textContent = label(it);
+                    no.textContent = resultLabel(it);
                     no.style.cssText = 'color:var(--brand); font-size:0.9rem;';
 
                     const one = document.createElement('button');
@@ -831,15 +851,26 @@
 
                     head.append(no, one);
 
-                    const body = document.createElement('div');
-                    body.textContent = it.text;
-                    body.style.cssText = 'line-height:1.7;';
+                    // 문장은 그 자리에서 고친다. 고친 글이 복사와 저장에 그대로 쓰인다.
+                    const body = document.createElement('textarea');
+                    body.value = it.text;
+                    body.rows = 1;
+                    body.style.cssText = 'width:100%; border:0; padding:0; margin:0; background:transparent;'
+                        + ' color:inherit; font:inherit; line-height:1.7; resize:none; overflow:hidden; outline:none;';
+                    body.addEventListener('input', () => {
+                        it.text = body.value;
+                        fitBox(body);
+                        syncResultText();
+                        saveResult(shownItems, shownAt);
+                    });
+                    boxes.push(body);
 
                     row.append(head, body);
                     return row;
                 }));
-                resultArea.value = items.map(it => label(it) + '\n' + it.text).join('\n\n');
+                syncResultText();
                 resultSection.style.display = 'block';
+                boxes.forEach(fitBox);
             }
 
             generateBtn.addEventListener('click', async () => {
