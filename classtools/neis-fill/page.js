@@ -71,7 +71,7 @@
         return ta.closest('[role="grid"], .cl-grid, table, form') || scrollParent(ta) || ancestorUp(ta, 8);
     }
 
-    // 글 조각을 텍스트 노드 하나하나 따로 모은다. 셀 사이가 붙어 "1김두리조회" 가 되지 않게.
+    // 글 조각을 텍스트 노드 하나하나 따로 모은다. 셀 사이가 붙어 "1홍길동조회" 가 되지 않게.
     // textarea 안 글(예전 종합의견)은 이름 대조에서 뺀다.
     function leafTexts(root) {
         const out = [];

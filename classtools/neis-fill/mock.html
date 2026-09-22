@@ -24,21 +24,22 @@
     <div class="cond" style="display:flex; gap:18px; align-items:center; background:#f3f4f8; padding:8px; margin-bottom:8px;">
         <label><span style="color:#c00">*</span><span>학년도</span> <input value="2026" readonly size="6"></label>
         <label><span style="color:#c00">*</span><span>학기</span> <input value="2" readonly size="3"></label>
-        <label><span style="color:#c00">*</span><span>학년</span> <input value="6" readonly size="3"></label>
-        <label><span style="color:#c00">*</span><span>반</span> <input value="2" readonly size="3"></label>
+        <label><span style="color:#c00">*</span><span>학년</span> <input value="4" readonly size="3"></label>
+        <label><span style="color:#c00">*</span><span>반</span> <input value="3" readonly size="3"></label>
         <label><span style="color:#c00">*</span><span>교과(목)</span> <span role="combobox" style="display:inline-block; border:1px solid #aaa;"><input id="subject" value="국어" readonly size="8" style="border:0"></span></label>
         <button type="button">조회</button>
     </div>
     <div class="grid" id="grid"></div>
     <div role="tablist" style="margin-top:6px; font-size:12px; color:#666;"><span role="tab">초기화면</span> · <span role="tab">교과학습발달상황</span> · <span role="tab">교과평가</span> · <span role="tab">학기말종합의견</span></div>
     <!-- 다른 탭(숨겨진 화면)의 글 칸: 채우면 안 된다 -->
-    <div class="other"><div class="r"><div class="c no">1</div><div class="c nm">김두리</div><textarea id="hidden-ta"></textarea></div></div>
+    <div class="other"><div class="r"><div class="c no">1</div><div class="c nm">홍길동</div><textarea id="hidden-ta"></textarea></div></div>
     <div class="panel" id="panel"></div>
     <script src="parse.js"></script>
     <script src="page.js"></script>
     <script>
         // 모의 틀: 나이스 실행기(엑스빌더6)처럼 값을 따로 들고, 화면 글 칸의 값은 blur 때만 받아들인다(input 은 무시).
-        const ROSTER = ['김두리', '김은빛', '김지현', '박하은', '송민경', '신채원', '오채은', '유하린', '이서준', '이준호', '장예린', '정민재', '조은서', '최유나', '김지현', '한도윤', '홍서아', '강민준', '고은채', '남주원', '문서윤', '배지훈', '서하늘', '안지호', '전입생'];
+        // 지어낸 이름만 쓴다(실제 학급 명단 금지). 3번과 15번은 동명이인 시험용.
+        const ROSTER = ['홍길동', '김철수', '이영희', '박민수', '최미영', '정수진', '강준호', '윤지혜', '임성민', '한가람', '오정민', '류지원', '고은솔', '문지호', '이영희', '배성우', '신유리', '조현진', '황민석', '전하윤', '남기훈', '서지수', '차민재', '엄하진', '전입생'];
         const model = ROSTER.map(() => '');
         model[1] = '기존에 써 둔 글.';
         const params = new URLSearchParams(location.search);
