@@ -45,7 +45,9 @@
             ...problems.map(p => li(p, true)),
             ...students.map(s => li(s.number + '번 ' + s.name + ' · ' + s.text.length + '자, ' + neisBytes(s.text) + '바이트'))
         );
-        inspectBtn.disabled = fillBtn.disabled = students.length === 0;
+        // 살펴보기는 글이 없어도 된다(화면 구조만 읽는다). 채우기는 학생 글이 있어야 한다.
+        inspectBtn.disabled = false;
+        fillBtn.disabled = students.length === 0;
         disarm();
     }
 
@@ -152,7 +154,9 @@
         const okCount = best.matched.filter(m => m.ok && !m.note).length;
         const flagged = best.matched.length - okCount;
         const strays = best.api && best.api.strays && best.api.strays.length;
-        if (mode === 'inspect') {
+        if (mode === 'inspect' && students.length === 0) {
+            setStatus('글 칸 ' + best.textareas + '개를 찾았습니다. 학생 글을 붙여넣으면 이름을 대조합니다. 아직 아무것도 바꾸지 않았습니다.', best.textareas === 0);
+        } else if (mode === 'inspect') {
             setStatus('글 칸 ' + best.textareas + '개, 이름이 맞는 줄 ' + best.matched.length + '개'
                 + (flagged ? ', 확인할 줄 ' + flagged + '개' : '')
                 + (best.skipped.length ? ', 넣지 않을 학생 ' + best.skipped.length + '명' : '')
@@ -219,14 +223,16 @@
             console.error(e);
             setStatus('실패: ' + koreanError(e), true);
         } finally {
-            inspectBtn.disabled = fillBtn.disabled = students.length === 0;
+            inspectBtn.disabled = false;
+            fillBtn.disabled = students.length === 0;
             undoBtn.disabled = false;
         }
     }
 
     inspectBtn.addEventListener('click', () => {
         disarm();
-        try { go('inspect', chosen(), false); } catch (e) { setStatus(e.message, true); }
+        // 글을 아직 안 붙였으면 빈 목록으로 화면만 읽는다.
+        try { go('inspect', students.length ? chosen() : [], false); } catch (e) { setStatus(e.message, true); }
     });
 
     fillBtn.addEventListener('click', () => {
