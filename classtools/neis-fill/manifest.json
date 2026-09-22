@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "NEIS 채우기 - ClassJ",
+  "name": "NEIS 붙여넣기 - ClassJ",
   "version": "0.2.0",
   "description": "생활기록부 도우미가 만든 학생별 문장을 나이스 학기말종합의견 화면에 이름을 대조해 한 번에 채웁니다. 저장은 나이스에서 직접 누릅니다.",
   "icons": {
@@ -9,7 +9,7 @@
     "128": "icon128.png"
   },
   "action": {
-    "default_title": "NEIS 채우기 - ClassJ",
+    "default_title": "NEIS 붙여넣기 - ClassJ",
     "default_popup": "popup.html",
     "default_icon": {
       "16": "icon16.png",
