@@ -8041,6 +8041,50 @@ function createClassroomPlatform(options = {}) {
     res.json({ ok: true });
   }));
 
+  // 그룹(담임반·동아리·방과후 등) 명단. 생기부 도우미가 "누구에게 쓸지"를 고를 때 쓴다.
+  // 자기가 만든 그룹만 열 수 있다. 학급은 /teacher/class 가, 그룹은 여기가 맡는다.
+  router.get("/teacher/groups/:groupId/students", asyncRoute(async (req, res) => {
+    const teacher = await requireTeacher(req);
+    const groupId = Number(req.params.groupId);
+    const groupResult = await pool.query(
+      `SELECT id, school_id, academic_year, group_name, group_type, grade, class_number
+       FROM teacher_groups WHERE id = $1 AND teacher_user_id = $2`,
+      [groupId, teacher.id]
+    );
+    const group = groupResult.rows[0];
+    if (!group) throw new HttpError(404, "GROUP_NOT_FOUND", "그룹을 찾을 수 없습니다.");
+
+    // 소속을 정하는 규칙은 게시판 권한이 쓰는 것과 같은 것(GROUP_MEMBER_SQL)을 쓴다.
+    // 인원수 쿼리의 통짜 검색(ILIKE)을 쓰면 '1' 같은 이름의 그룹에 전교생이 들어온다.
+    const studentsResult = await pool.query(
+      `SELECT DISTINCT ss.id, ss.grade, ss.class_number, ss.student_number, ss.roster_name
+       FROM school_students ss
+       JOIN teacher_groups g ON g.id = $1
+       WHERE ss.school_id = g.school_id AND ss.academic_year = g.academic_year
+         AND (${GROUP_MEMBER_SQL})
+       ORDER BY ss.grade, ss.class_number,
+                CASE WHEN ss.student_number ~ '^[0-9]+$' THEN ss.student_number::INTEGER END,
+                ss.student_number`,
+      [group.id]
+    );
+
+    res.json({
+      group: {
+        id: group.id,
+        name: group.group_name,
+        type: group.group_type,
+        grade: group.grade,
+        classNumber: group.class_number
+      },
+      students: studentsResult.rows.map((student) => ({
+        number: student.student_number,
+        name: student.roster_name,
+        grade: student.grade,
+        classNumber: student.class_number
+      }))
+    });
+  }));
+
   // Must be registered after every router.get/post/put/delete call above --
   // Express only routes a thrown error to the error-handling middleware
   // that comes AFTER the route that threw it, so any route added below

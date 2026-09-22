@@ -218,7 +218,14 @@
         <section class="card">
             <h2>📝 무엇을 쓰시나요</h2>
 
-            <div class="form-group">
+            <!-- 담임 학급, 전담으로 들어가는 반의 과목, 맡은 동아리. 고른 대상에 따라
+                 아래의 기록할 칸과 과목이 정해진다. -->
+            <div class="form-group" id="scope-group" style="display: none;">
+                <label for="scope-select">대상</label>
+                <select id="scope-select" class="form-control"></select>
+            </div>
+
+            <div class="form-group" id="area-group">
                 <label for="area-select">기록할 칸</label>
                 <select id="area-select" class="form-control">
                     <option value="subject">과목별 학기말 종합의견</option>
@@ -252,11 +259,6 @@
         <!-- 우리 반 -->
         <section class="card">
             <h2>👥 우리 반</h2>
-
-            <div class="form-group" id="class-group" style="display: none;">
-                <label for="class-select">학급</label>
-                <select id="class-select" class="form-control"></select>
-            </div>
 
             <div id="roster-status" class="status"></div>
 
@@ -297,6 +299,12 @@
             const saveKeyBtn = $('save-key-btn');
             const keyStatus = $('key-status');
             const areaSelect = $('area-select');
+
+            // 쓸 수 있는 대상(담임 학급·전담 학급·동아리). applyArea 가 첫 그리기에서
+            // 바로 읽으므로 화면 요소 옆에 미리 둔다.
+            let scopes = [];
+            let currentScope = null;
+            const areaGroup = $('area-group');
             const semesterGroup = $('semester-group');
             const semesterSelect = $('semester-select');
             const subGroup = $('sub-group');
@@ -305,8 +313,8 @@
             const topicsLabel = $('topics-label');
             const topicsInput = $('topics-input');
             const countInput = $('count-input');
-            const classGroup = $('class-group');
-            const classSelect = $('class-select');
+            const scopeGroup = $('scope-group');
+            const scopeSelect = $('scope-select');
             const rosterStatus = $('roster-status');
             const manualCountGroup = $('manual-count-group');
             const generateBtn = $('generate-btn');
@@ -421,22 +429,30 @@
             }
 
             function applyArea() {
+                // 고른 대상이 쓸 수 있는 칸만 남긴다. 전담이면 교과 하나, 동아리면 창체 하나다.
+                const allowed = scopeAreas(currentScope);
+                Array.from(areaSelect.options).forEach(opt => { opt.hidden = !allowed.includes(opt.value); });
+                if (!allowed.includes(areaSelect.value)) areaSelect.value = allowed[0];
+                areaGroup.style.display = allowed.length > 1 ? '' : 'none';
+
                 const area = currentArea();
                 topicsLabel.textContent = area.topics;
                 topicsInput.placeholder = area.example;
                 semesterGroup.style.display = area.semester ? '' : 'none';
-                if (area.sub) {
-                    subGroup.style.display = '';
+                const subList = scopeSubList(currentScope, area);
+                if (area.sub && subList.length) {
+                    // 고를 것이 하나뿐이면(전담 한 과목, 동아리) 칸을 보여 주지 않는다.
+                    subGroup.style.display = subList.length > 1 ? '' : 'none';
                     subLabel.textContent = area.sub;
                     // 칸을 다시 채우면 고른 것이 풀린다. 쓰던 것이 목록에 있으면 되살린다.
                     const chosen = subInput.value;
-                    subInput.replaceChildren(...area.subList.map(name => {
+                    subInput.replaceChildren(...subList.map(name => {
                         const opt = document.createElement('option');
                         opt.value = name;
                         opt.textContent = name;
                         return opt;
                     }));
-                    if (area.subList.includes(chosen)) subInput.value = chosen;
+                    if (subList.includes(chosen)) subInput.value = chosen;
                 } else {
                     subGroup.style.display = 'none';
                     subInput.replaceChildren();
@@ -505,36 +521,53 @@
             let roster = [];
             let currentClassId = '';   // 지금 보는 반. 만든 문장을 반마다 따로 남기는 데 쓴다(담임 학급 하나면 빈 값).
 
-            // 출석부처럼 한 줄에 한 명씩 내려 적는다. 옆으로 늘어놓으면 몇 번이
-            // 누구인지 눈으로 따라가기 어렵다.
-            // 명단은 굳이 늘어놓지 않는다. 몇 반 몇 명인지만 알려 주고,
+            // 명단은 굳이 늘어놓지 않는다. 몇 명인지만 알려 주고,
             // 이름은 아래 결과에서 문장과 함께 보인다.
             function renderRoster() {
                 manualCountGroup.style.display = roster.length > 0 ? 'none' : '';
             }
 
-            function classLabel(item) {
-                return item.grade + '학년 ' + item.classNumber + '반';
+            // 쓸 수 있는 대상. 나이스가 그렇듯 한 학생을 담임과 전담·동아리 교사가
+            // 나누어 쓰므로, 여기서도 "누구에게" 가 아니라 "어느 자격으로" 를 고른다.
+            //   담임 학급  → 세 칸 모두, 과목은 전 과목
+            //   전담 학급  → 과목별 학기말 종합의견만, 과목은 맡은 것으로 고정
+            //   동아리     → 창의적 체험활동 특기사항만, 영역은 동아리활동으로 고정
+            function scopeAreas(scope) {
+                if (!scope) return ['subject', 'activity', 'behavior'];
+                if (scope.kind === 'club') return ['activity'];
+                if (scope.kind === 'teaching') return ['subject'];
+                return ['subject', 'activity', 'behavior'];
             }
 
-            async function loadRoster(classId) {
-                currentClassId = classId || '';
+            function scopeSubList(scope, area) {
+                if (scope && scope.kind === 'club' && area.sub) return ['동아리활동'];
+                if (scope && scope.kind === 'teaching' && area.sub) return scope.subjects.slice();
+                return area.subList ? area.subList.slice() : [];
+            }
+
+            async function loadRoster(scope) {
+                currentScope = scope || null;
+                currentClassId = scope ? scope.key : '';
                 rosterStatus.className = 'status';
                 rosterStatus.textContent = '명단을 불러오는 중…';
                 try {
-                    const res = await fetch('/api/teacher/class' + (classId ? '?classId=' + encodeURIComponent(classId) : ''));
+                    const url = (scope && scope.kind === 'club')
+                        ? '/api/teacher/groups/' + encodeURIComponent(scope.groupId) + '/students'
+                        : '/api/teacher/class' + (scope && scope.classId ? '?classId=' + encodeURIComponent(scope.classId) : '');
+                    const res = await fetch(url);
                     if (!res.ok) throw new Error('명단을 불러오지 못했습니다.');
-                    const room = (await res.json()).classroom || {};
-                    roster = (room.students || []).map(student => ({
+                    const body = await res.json();
+                    const list = (scope && scope.kind === 'club') ? (body.students || []) : ((body.classroom || {}).students || []);
+                    roster = list.map(student => ({
                         number: String(student.number || ''),
                         name: String(student.name || '')
                     })).filter(student => student.name);
                     if (roster.length === 0) {
                         rosterStatus.className = 'status error';
-                        rosterStatus.textContent = '이 학급에 등록된 학생이 없습니다. 인원수를 직접 적어 주세요.';
+                        rosterStatus.textContent = '등록된 학생이 없습니다. 인원수를 직접 적어 주세요.';
                     } else {
                         rosterStatus.className = 'status';
-                        rosterStatus.textContent = room.grade + '학년 ' + room.classNumber + '반 ' + roster.length + '명';
+                        rosterStatus.textContent = (scope ? scope.label + ' ' : '') + roster.length + '명';
                     }
                 } catch (e) {
                     roster = [];
@@ -542,30 +575,62 @@
                     rosterStatus.textContent = '명단을 불러오지 못했습니다. 인원수를 직접 적어 주세요.';
                 }
                 renderRoster();
-                swapResult();   // 반이 정해진 뒤에 그 반에 만들어 둔 문장을 되살린다
+                applyArea();    // 대상이 바뀌면 쓸 수 있는 칸과 과목도 바뀐다
+                swapResult();   // 대상이 정해진 뒤에 거기에 만들어 둔 문장을 되살린다
             }
 
-            // 교과를 맡은 선생님은 여러 반을 쓴다. 반이 하나뿐이면 고를 칸을 두지 않는다.
-            async function loadClasses() {
+            function buildScopes(classes, groups) {
+                const out = [];
+                classes.forEach(item => {
+                    const label = item.grade + '학년 ' + item.classNumber + '반';
+                    const subjects = (item.myTeachingSubjects || []).filter(Boolean);
+                    if (item.isMyTeaching && subjects.length) {
+                        // 전담으로 들어가는 반. 맡은 과목만 쓸 수 있다.
+                        out.push({
+                            kind: 'teaching', key: 'c' + item.id, classId: item.id,
+                            label: label + ' · ' + subjects.join('·'), subjects
+                        });
+                    } else {
+                        out.push({ kind: 'homeroom', key: 'c' + item.id, classId: item.id, label: label, subjects: [] });
+                    }
+                });
+                groups.forEach(g => {
+                    if (g.group_type === 'homeroom') return;   // 담임 학급은 위에서 이미 넣었다
+                    if (g.group_type !== 'club') return;        // 생기부에 쓰는 것은 동아리뿐이다
+                    out.push({
+                        kind: 'club', key: 'g' + g.id, groupId: g.id,
+                        label: g.group_name, subjects: []
+                    });
+                });
+                return out;
+            }
+
+            async function loadScopes() {
+                let classes = [];
+                let groups = [];
                 try {
                     const res = await fetch('/api/teacher/available-classes');
-                    const list = res.ok ? ((await res.json()).classes || []) : [];
-                    if (list.length > 1) {
-                        classGroup.style.display = '';
-                        classSelect.replaceChildren(...list.map(item => {
-                            const opt = document.createElement('option');
-                            opt.value = item.id;
-                            opt.textContent = classLabel(item);
-                            return opt;
-                        }));
-                        classSelect.addEventListener('change', () => loadRoster(classSelect.value));
-                        await loadRoster(classSelect.value);
-                        return;
-                    }
-                } catch (_) { /* 반 목록이 없으면 담임 학급 하나로 본다 */ }
-                await loadRoster('');
+                    if (res.ok) classes = (await res.json()).classes || [];
+                } catch (_) { /* 담임 학급 하나로 본다 */ }
+                try {
+                    const res = await fetch('/api/teacher/groups');
+                    if (res.ok) groups = (await res.json()).groups || [];
+                } catch (_) { /* 동아리가 없으면 없는 대로 */ }
+
+                scopes = buildScopes(classes, groups);
+                if (scopes.length > 1) {
+                    scopeGroup.style.display = '';
+                    scopeSelect.replaceChildren(...scopes.map((scope, i) => {
+                        const opt = document.createElement('option');
+                        opt.value = String(i);
+                        opt.textContent = scope.label;
+                        return opt;
+                    }));
+                    scopeSelect.addEventListener('change', () => loadRoster(scopes[Number(scopeSelect.value)]));
+                }
+                await loadRoster(scopes[0] || null);
             }
-            loadClasses();
+            loadScopes();
 
             // ── 모델 고르기와 부르기 ───────────────────────────────────────
             // 구글은 주소도 모델 이름도 수시로 바꾼다. 실제로 그동안 두 번 깨졌다.
