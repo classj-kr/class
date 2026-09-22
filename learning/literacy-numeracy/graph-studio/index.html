@@ -3,107 +3,63 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="함수 그래프 도구">
-  <title>수학 그래프</title>
+  <meta name="description" content="직접 움직이고 비교하며 설명하는 수업용 그래프 칠판">
+  <title>그래프 칠판</title>
   <link rel="stylesheet" href="vendor/katex.min.css">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <main class="page">
-    <header class="header">
-      <div>
-        <a href="../../../" class="back">← 기초학력</a>
-        <h1>수학 그래프</h1>
-      </div>
-      <div class="headerActions">
-        <button type="button" id="printButton">수업 자료 인쇄</button>
-        <button type="button" class="primary" id="saveButton">PNG 저장</button>
-      </div>
+  <main class="board">
+    <header class="topbar">
+      <div class="brand"><a href="/classtools/" aria-label="수업 도구로 돌아가기">←</a><div><span class="eyebrow">MATH BOARD</span><h1>그래프 칠판</h1></div></div>
+      <div class="document-title"><input id="lessonTitle" aria-label="수업 이름" maxlength="80" value="나의 그래프 수업"><span id="saveStatus" role="status">이 브라우저에 자동 저장</span></div>
+      <nav class="top-actions" aria-label="수업 관리"><button id="teachingButton" aria-pressed="false">수업 모드</button><button id="scenesButton">수업 보관함</button><button id="exportButton" class="primary">내보내기 <span aria-hidden="true">↗</span></button></nav>
     </header>
     <section class="workspace">
-      <aside class="library">
-        <div class="sectionHeading"><span>01</span><div><strong>함수 목록</strong></div></div>
-        <div id="presetLibrary"></div>
+      <aside class="sidebar" id="sidebar" aria-label="수식과 계수">
+        <div class="sidebar-heading"><div><span class="eyebrow">EXPRESSIONS</span><h2>수식</h2></div><button id="addFunctionButton" class="quiet">＋ 추가</button></div>
+        <div id="functionRows" class="function-list"></div>
+        <details class="drawer" id="presetDrawer"><summary>함수 골라 넣기 <span>18가지</span></summary><div id="presetLibrary" class="preset-library"></div></details>
+        <details class="drawer" id="keyboardDrawer"><summary>수학 키패드 <span>x² · √ · π</span></summary>
+          <div id="mathKeyboard" class="math-keyboard">
+            <button data-insert="x">x</button><button data-insert="^2">x²</button><button data-insert="^">xⁿ</button><button data-insert="(">(</button><button data-insert=")">)</button>
+            <button data-insert="+">＋</button><button data-insert="-">−</button><button data-insert="*">×</button><button data-insert="/">÷</button><button data-insert="pi">π</button>
+            <button data-wrap="sqrt">√</button><button data-wrap="abs">|x|</button><button data-wrap="sin">sin</button><button data-wrap="cos">cos</button><button data-wrap="tan">tan</button>
+            <button data-wrap="ln">ln</button><button data-wrap="log10">log</button><button data-wrap="exp">eˣ</button><button data-action="backspace" aria-label="한 글자 지우기">⌫</button><button data-action="clear">지우기</button>
+          </div><p class="help">2x, 2(x+1), -x^2처럼 입력하세요.<br>각 함수의 a, b, c, h, k는 따로 움직입니다.</p>
+        </details>
+        <section class="parameter-panel" aria-labelledby="parameterTitle"><div class="section-label"><h2 id="parameterTitle">계수 조절</h2><button id="resetParams" class="text-button">초기화</button></div><div id="sliders"></div><p id="handleHelp" class="help"></p></section>
+        <section class="compare-panel"><div class="section-label"><h2>변화 비교</h2><button id="clearGhosts" class="text-button">비교 지우기</button></div><button id="snapshotButton" class="snapshot-button"><span aria-hidden="true">◌</span> 지금 모양 남기기</button><p class="help" id="compareHelp">선택한 그래프를 점선으로 남겨 비교해요.</p></section>
+        <div class="display-options"><label><input id="showHandles" type="checkbox" checked> 조절점</label><label><input id="showCoordinates" type="checkbox" checked> 좌표·보조선</label></div>
+        <p class="sidebar-note">삼각함수의 각도는 라디안입니다.</p>
       </aside>
-      <section class="stage">
-        <div class="formulaBar">
-          <span>ƒ(x)</span>
-          <div class="formulaDisplay" id="formulaDisplay"></div>
-          <small id="formulaHelp">선택한 함수의 교과서식 표현</small>
+      <section class="stage" aria-label="그래프 작업 공간">
+        <div class="stage-toolbar"><div class="tool-group"><button id="sidebarButton" aria-expanded="true" aria-controls="sidebar">수식 패널</button><span class="divider"></span><button id="panButton" class="tool active" aria-pressed="true">이동</button><button id="traceButton" class="tool" aria-pressed="false">좌표 탐색</button><button id="analysisButton" class="tool" aria-pressed="false">분석</button></div><div class="tool-group"><button id="undoButton" aria-label="실행 취소" title="실행 취소 (Ctrl+Z)">↶</button><button id="redoButton" aria-label="다시 실행" title="다시 실행 (Ctrl+Shift+Z)">↷</button></div></div>
+        <div class="canvas-wrap" id="canvasWrap"><canvas id="graphCanvas" tabindex="0" aria-label="함수 그래프. 방향키로 이동, 더하기와 빼기로 확대 축소, Home으로 원점 복귀."></canvas>
+          <div id="formulaDisplay" class="graph-formula" aria-live="polite"></div>
+          <div id="traceReadout" class="trace-readout" role="status" hidden></div>
+          <aside id="analysisPanel" class="analysis-panel" aria-label="그래프 분석" hidden>
+            <header><div><strong>그래프 분석</strong><small id="analysisTarget"></small></div><button id="closeAnalysis" aria-label="분석 닫기">×</button></header>
+            <div class="analysis-tabs" aria-label="분석 종류"><button data-analysis="intersections" aria-pressed="false">교점</button><button data-analysis="tangent" aria-pressed="false">접선</button><button data-analysis="integral" aria-pressed="false">정적분·넓이</button></div>
+            <div id="intersectionControls"><label for="analysisOther">함께 비교할 함수</label><select id="analysisOther"></select><p class="help">현재 보이는 x 범위에서 근사 교점을 찾습니다.</p></div>
+            <div id="tangentControls" hidden><label for="tangentX">접점의 x 좌표</label><input id="tangentX" type="number" step="any" min="-1000000" max="1000000" value="1"><p class="help">주황색 점을 좌우로 끌면 접선이 움직입니다.</p></div>
+            <div id="integralControls" hidden><div class="bound-inputs"><label>시작 x<input id="integralFrom" type="number" step="any" min="-1000000" max="1000000" value="-2"></label><label>끝 x<input id="integralTo" type="number" step="any" min="-1000000" max="1000000" value="2"></label></div><p class="help">시작·끝 점을 끌어 구간을 바꾸세요. 주황색은 x축 아래의 부분입니다.</p></div>
+            <div id="analysisResult" class="analysis-result" aria-live="polite"></div>
+          </aside>
+          <div class="canvas-bottom"><p id="gestureHint">빈 곳을 끌어 이동 · 조절점을 끌어 그래프 변경</p><div class="range-control"><button data-zoom="out" aria-label="축소">−</button><output id="zoomLevel">100%</output><button data-zoom="in" aria-label="확대">＋</button><button id="homeButton">원점</button></div></div>
         </div>
-        <section class="functionComposer" aria-labelledby="composerTitle">
-          <header>
-            <div><strong id="composerTitle">함수 직접 입력</strong><small>여러 함수와 합성함수를 동시에 그릴 수 있습니다.</small></div>
-            <button type="button" id="addFunctionButton">＋ 함수 추가</button>
-          </header>
-          <div class="functionRows" id="functionRows"></div>
-          <div class="mathKeyboard" id="mathKeyboard">
-            <div class="keyboardHeading">
-              <strong>수학 키패드</strong>
-              <span id="activeFunctionLabel">y1 편집 중</span>
-            </div>
-            <div class="keyboardKeys" aria-label="수학 수식 키패드">
-              <button type="button" data-insert="x">x</button>
-              <button type="button" data-insert="(">(</button>
-              <button type="button" data-insert=")">)</button>
-              <button type="button" data-insert="^2">x²</button>
-              <button type="button" data-insert="^">xⁿ</button>
-              <button type="button" data-insert="+">＋</button>
-              <button type="button" data-insert="-">−</button>
-              <button type="button" data-insert="×">×</button>
-              <button type="button" data-insert="÷">÷</button>
-              <button type="button" data-wrap-before="sin(" data-wrap-after=")">sin</button>
-              <button type="button" data-wrap-before="cos(" data-wrap-after=")">cos</button>
-              <button type="button" data-wrap-before="tan(" data-wrap-after=")">tan</button>
-              <button type="button" data-wrap-before="ln(" data-wrap-after=")">ln</button>
-              <button type="button" data-wrap-before="log10(" data-wrap-after=")">log</button>
-              <button type="button" data-wrap-before="sqrt(" data-wrap-after=")">√</button>
-              <button type="button" data-wrap-before="abs(" data-wrap-after=")">|x|</button>
-              <button type="button" data-wrap-before="exp(" data-wrap-after=")">eˣ</button>
-              <button type="button" data-insert="pi">π</button>
-              <button type="button" class="keyboardUtility" data-action="backspace">⌫</button>
-              <button type="button" class="keyboardUtility" data-action="clear">지우기</button>
-            </div>
-            <div class="formulaExamples">
-              <span>합성함수 예시</span>
-              <button type="button" data-example="sin(x^2)">sin(x²)</button>
-              <button type="button" data-example="ln(x^2+1)">ln(x²+1)</button>
-              <button type="button" data-example="exp(sin(x))">e<sup>sin x</sup></button>
-              <button type="button" data-example="sqrt(abs(x))">√|x|</button>
-              <button type="button" data-example="(x^2+1)/(x-1)">유리함수</button>
-            </div>
-          </div>
-          <p class="syntaxGuide">
-            <b>도움말:</b> 수식창을 먼저 선택한 뒤 키패드를 누르세요.
-            곱셈 기호는 <span class="inlineMath" data-latex="2x">2x</span>,
-            <span class="inlineMath" data-latex="a(x-h)">a(x-h)</span>처럼 생략해도 됩니다.
-          </p>
-        </section>
-        <div class="canvasWrap">
-          <canvas id="graphCanvas" aria-label="함수 그래프" title="마우스 휠로 확대·축소하고, 두 번 클릭하면 초기화됩니다."></canvas>
-          <div class="legend" id="legend"><span><i style="background:#6558d9"></i>ƒ(x)</span></div>
-          <div class="rangeControl" aria-label="그래프 확대와 축소">
-            <button type="button" data-zoom="out" aria-label="축소">−</button>
-            <output id="zoomLevel" aria-live="polite">100%</output>
-            <button type="button" data-zoom="in" aria-label="확대">+</button>
-            <button type="button" data-range="10" aria-label="확대 축소 초기화">초기화</button>
-          </div>
-        </div>
+        <footer class="stage-footer"><span><i></i> <span id="graphCount">1개의 그래프</span></span><span id="viewRange"></span></footer>
       </section>
-      <aside class="controls">
-        <div class="sectionHeading"><span>02</span><div><strong>그래프 움직이기</strong><small>값을 드래그하세요</small></div></div>
-        <div id="sliders"></div>
-        <button type="button" class="reset" id="resetButton">계수 초기화</button>
-        <div class="sectionHeading"><span>03</span><div><strong>수업 보조선</strong><small>설명 요소를 켜세요</small></div></div>
-        <label class="toggle"><span><b>좌표점 표시</b><small>x = −2, −1, 0, 1, 2</small></span><input id="showPoints" type="checkbox" checked></label>
-        <label class="toggle"><span><b>도함수 표시</b><small>원함수와 변화율 비교</small></span><input id="showDerivative" type="checkbox"></label>
-        <label class="toggle"><span><b>정적분 넓이</b><small>x = −2부터 2까지</small></span><input id="showIntegral" type="checkbox"></label>
-        <div class="tip"><strong>수업 질문</strong><p id="lessonQuestion">a의 부호가 바뀌면 그래프의 모양은 어떻게 달라질까요?</p></div>
-      </aside>
     </section>
   </main>
+  <dialog id="scenesDialog" aria-labelledby="scenesTitle"><div class="dialog-heading"><div><span class="eyebrow">MY LESSONS</span><h2 id="scenesTitle">수업 보관함</h2></div><button data-close aria-label="닫기">×</button></div><p class="help">이 브라우저에 보관됩니다. 다른 기기로 옮길 때는 수업 파일을 내보내세요.</p><form id="saveSceneForm" class="save-scene"><input id="sceneName" aria-label="보관할 수업 이름" maxlength="80" required placeholder="예: 이차함수의 평행이동"><button class="primary" type="submit">현재 수업 보관</button></form><div id="sceneList" class="scene-list"></div><div class="dialog-footer"><button id="importButton">수업 파일 불러오기</button><button id="jsonButton">수업 파일 내보내기</button></div></dialog>
+  <dialog id="exportDialog" aria-labelledby="exportTitle"><div class="dialog-heading"><div><span class="eyebrow">TAKE IT TO CLASS</span><h2 id="exportTitle">내보내기</h2></div><button data-close aria-label="닫기">×</button></div><p class="help">현재 화면 범위와 비교 그래프, 선택한 좌표를 함께 담습니다.</p><button id="pngButton" class="export-choice"><b>그래프 이미지</b><span>수식과 계수를 포함한 PNG</span><i>↗</i></button><button id="printButton" class="export-choice"><b>설명용 그래프 인쇄</b><span>수식·계수와 함께 수업 자료로</span><i>↗</i></button><button id="blankPrintButton" class="export-choice"><b>빈 좌표평면 인쇄</b><span>학생이 직접 그리는 활동지</span><i>↗</i></button></dialog>
+  <input type="file" id="importFile" accept=".json,application/json" hidden>
+  <div id="toast" class="toast" role="status" hidden></div>
+  <section id="printSheet" aria-label="인쇄용 수업 자료"></section>
   <script src="vendor/katex.min.js"></script>
-  <script src="math-format.js"></script>
+  <script src="graph-core.js"></script>
+  <script src="graph-analysis.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
