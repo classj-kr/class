@@ -148,7 +148,9 @@
         return bits.concat(a.notes || []).join('\n');
     }
 
-    const norm = (s) => String(s || '').replace(/\s+/g, '').replace(/[()（）·]/g, '');
+    // 과목 이름 비교용: 글자와 숫자만 남긴다. "바른 생활, 슬기로운 생활, 즐거운 생활"처럼 띄어쓰기·쉼표·가운뎃점이
+    // 나이스 화면과 도우미에서 다르게 찍혀도 같은 과목으로 본다.
+    const norm = (s) => String(s || '').replace(/[^0-9A-Za-z가-힣ㄱ-ㅎㅏ-ㅣ]/g, '');
     const semNo = (s) => { const m = String(s || '').match(/\d/); return m ? m[0] : ''; };
 
     // 나이스 조건 줄을 한 줄로: "2026학년도 2학기 6학년 2반 · 교과(목) 국어"
