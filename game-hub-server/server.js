@@ -2060,7 +2060,7 @@ wss.on("connection", (socket, request) => {
         safeSend(socket, { type: "ROOM_EXISTS", gameId, roomCode });
         return;
       }
-      if (gameId === "quizrace" && await classroomPlatform.hasVotingRoomCode(roomCode)) {
+      if (gameId === "quizrace" && (await classroomPlatform.hasVotingRoomCode(roomCode) || await classroomPlatform.hasSeatingRoomCode(roomCode))) {
         safeSend(socket, { type: "ROOM_EXISTS", gameId, roomCode });
         return;
       }

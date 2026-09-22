@@ -2,7 +2,7 @@ const express = require("express");
 
 const ROOM_CODE_LENGTH = 4;
 
-function createVoting({ pool, sessionUser, guestAccess, requireUser, requireTeacher, requireDatabase, teacherRegistration, isLiveQuizRaceCode, HttpError, asyncRoute }) {
+function createVoting({ pool, sessionUser, guestAccess, requireUser, requireTeacher, requireDatabase, teacherRegistration, isLiveQuizRaceCode, isReservedCode, resolveRoomCode, HttpError, asyncRoute }) {
   const router = express.Router();
 
   async function initialize() {
@@ -299,6 +299,8 @@ function createVoting({ pool, sessionUser, guestAccess, requireUser, requireTeac
     if (code.length !== ROOM_CODE_LENGTH) throw new HttpError(400, "INVALID_ROOM_CODE", "방번호 4자리를 입력해 주세요.");
     if (await hasQuizRaceCode(code)) return res.json({ type: "quizrace", href: `/learning/class-race/?room=${code}` });
     if (await hasRoomCode(code)) return res.json({ type: "vote", href: `/vote/?room=${code}` });
+    const resolved = typeof resolveRoomCode === "function" ? await resolveRoomCode(code) : null;
+    if (resolved) return res.json(resolved);
     throw new HttpError(404, "ROOM_NOT_FOUND", "해당 방을 찾을 수 없습니다.");
   }));
 
@@ -338,6 +340,7 @@ function createVoting({ pool, sessionUser, guestAccess, requireUser, requireTeac
       for (let attempt = 0; attempt < 20 && !room; attempt += 1) {
         const code = makeCode();
         if (await hasQuizRaceCode(code)) continue;
+        if (typeof isReservedCode === "function" && await isReservedCode(code)) continue;
         const inserted = await client.query(
           `INSERT INTO vote_rooms (room_code, title, school_id, creator_user_id, academic_year, grade, class_number) VALUES ($1,$2,$3,$4,$5,$6,$7)
            ON CONFLICT (room_code) DO NOTHING RETURNING *`,
@@ -453,7 +456,7 @@ function createVoting({ pool, sessionUser, guestAccess, requireUser, requireTeac
     res.json({ ok: true, code: result.rows[0].room_code.trim() });
   }));
 
-  return { router, initialize, hasRoomCode };
+  return { router, initialize, hasRoomCode, hasQuizRaceCode };
 }
 
 module.exports = { createVoting };

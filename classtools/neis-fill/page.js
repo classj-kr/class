@@ -8,9 +8,15 @@
 // 넣기 전에 화면을 한 바퀴 훑어(살펴보기) 같은 학생이 두 줄에 걸리면 그 학생은 넣지 않는다.
 // 저장은 절대 누르지 않는다.
 (function () {
-    if (window.__classjNeis) return;
+    // 판 번호. page.js 를 고칠 때마다 manifest.json 의 version 과 함께 올린다.
+    // 확장을 새로 읽어도 이미 열린 나이스 화면에는 먼저 들어간 스크립트가 남는다. 판이 다르면 새 판이 갈아 끼우고,
+    // 같으면 그대로 둔다(넣는 중인 상태와 마지막 결과를 지키려고). 넣는 중이면 갈아 끼우지 않는다.
+    const VERSION = '0.3.0';
+    const prev = window.__classjNeis;
+    if (prev && prev.version === VERSION) return;
+    if (prev && typeof prev.busy === 'function' && prev.busy()) return;
 
-    const state = { running: false, last: null };
+    const state = { running: false, last: (prev && typeof prev.last === 'function') ? (prev.last() || null) : null };
 
     const squash = (s) => String(s == null ? '' : s).replace(/\s+/g, '');
     const uniq = (arr) => Array.from(new Set(arr));
@@ -108,17 +114,57 @@
         return byName;
     }
 
-    // 화면 제목 후보. 목록·줄·탭 이름표 안의 글자는 뺀다(아래 탭 줄에도 화면 이름이 적혀 있다).
+    // 화면 제목 후보(참고용, 화면 정보에만 보인다). 어느 화면인지는 교사가 알고 있으므로 이것으로 막지 않는다.
+    // 목록·줄·탭 이름표 안의 글자는 뺀다(아래 탭 줄에도 열린 화면 이름이 적혀 있다).
     function screenTitles() {
         const out = [];
         const els = document.querySelectorAll('[role="heading"], h1, h2, h3, .app-tit, .neis-main-tit, .app-tit .cl-text, .neis-main-tit .cl-text, .h3 .cl-text');
         els.forEach(el => {
             if (!isShown(el)) return;
-            if (el.closest('[role="grid"], [role="row"], [role="tab"], [role="tablist"], .cl-grid, .cl-tabfolder')) return;
+            if (el.closest('[role="grid"], [role="row"], [role="tab"], [role="tablist"], .cl-grid')) return;
             const t = (el.textContent || '').trim();
             if (t && t.length <= 30) out.push(t);
         });
         return uniq(out).slice(0, 12);
+    }
+
+    // 조건 줄(학년도·학기·학년·반·교과(목))의 값. 이름표 글자와 같은 높이에서 오른쪽으로 가장 가까운 입력 칸의 값을 읽는다.
+    // 팝업이 붙여넣은 글의 과목·학기와 대조해 다른 과목 칸에 넣는 실수를 막는 데 쓴다. 못 읽어도 넣기 자체는 막지 않는다.
+    const FILTER_KEYS = [['학년도', 'year'], ['교과(목)', 'subject'], ['교과목', 'subject'], ['과목', 'subject'], ['학기', 'semester'], ['학년', 'grade'], ['반', 'klass']];
+    function fieldValue(el) {
+        if (el.tagName === 'SELECT') { const o = el.options[el.selectedIndex]; return o ? o.text.trim() : ''; }
+        if (el.tagName === 'INPUT') return (el.value || '').trim();
+        const inp = el.querySelector('input');
+        if (inp && inp.value) return inp.value.trim();
+        return (el.textContent || '').trim();
+    }
+    function readFilters() {
+        const out = {};
+        try {
+            const labels = [];
+            for (const l of leafTexts(document.body)) {
+                if (l.el.tagName === 'INPUT') continue;
+                const t = squash(l.text).replace(/^[*＊]+/, '');
+                const hit = FILTER_KEYS.find(([k]) => k === t);
+                if (!hit) continue;
+                if (l.el.closest('[role="grid"], [role="row"], [role="tab"], [role="tablist"], [role="tree"], [role="menu"], .cl-grid')) continue;
+                if (!isShown(l.el)) continue;
+                labels.push({ key: hit[1], rect: l.el.getBoundingClientRect() });
+            }
+            if (!labels.length) return out;
+            const fields = Array.from(document.querySelectorAll('input, select, [role="combobox"]')).filter(isShown).map(el => ({ el, rect: el.getBoundingClientRect() }));
+            for (const lb of labels) {
+                if (out[lb.key]) continue;
+                const mid = (lb.rect.top + lb.rect.bottom) / 2;
+                const right = fields
+                    .filter(f => f.rect.left >= lb.rect.right - 2 && f.rect.top <= mid && f.rect.bottom >= mid && f.rect.left - lb.rect.right < 260)
+                    .sort((a, b) => a.rect.left - b.rect.left)[0];
+                if (!right) continue;
+                const v = fieldValue(right.el);
+                if (v) out[lb.key] = v;
+            }
+        } catch (e) { /* 조건 줄을 못 읽어도 넣기에는 지장 없다 */ }
+        return out;
     }
 
     // 지금 화면에 있는 textarea 마다 같은 줄에 놓인 이름·번호 글자를 모은다.
@@ -326,13 +372,24 @@
             if (!bad) stats.push({ col, nameHits, noHits, distinct: seen.size });
         }
         const nameCands = stats.filter(s => s.nameHits > 0).sort((a, b) => b.nameHits - a.nameHits);
-        if (!nameCands.length) return { rowCount, cols: cols.length, nameCol: null };
+        if (!nameCands.length) return { rowCount, cols: cols.length, colNames: cols, nameCol: null };
         const nameCol = nameCands[0].col;
         // 번호 열: 값이 거의 다 다르고(중복이 줄 수의 1할 미만) 학생 번호와 겹치는 열. 동점이면 정하지 않는다.
-        const noCands = stats.filter(s => s.col !== nameCol && s.noHits > 0 && (rowCount - s.distinct) <= Math.floor(rowCount / 10))
-            .sort((a, b) => b.noHits - a.noHits);
+        const noAll = stats.filter(s => s.col !== nameCol && s.noHits > 0).sort((a, b) => b.noHits - a.noHits);
+        const noCands = noAll.filter(s => (rowCount - s.distinct) <= Math.floor(rowCount / 10));
         let noCol = null;
         if (noCands.length === 1 || (noCands.length > 1 && noCands[0].noHits > noCands[1].noHits)) noCol = noCands[0].col;
+        else if (noCands.length > 1) {
+            // 동점: 그 열들이 모든 줄에서 같은 값이면 어느 것을 써도 같으니 첫 열을 쓴다.
+            // 실제 나이스 학기말종합의견 목록에는 번호 값을 든 열이 둘(stdntInfo, stdntCn) 있다.
+            const top = noCands.filter(s => s.noHits === noCands[0].noHits);
+            let same = true;
+            for (let i = 0; i < rowCount && same; i += 1) {
+                const v0 = intStr(cellValue(grid, i, top[0].col));
+                for (const s of top.slice(1)) { if (intStr(cellValue(grid, i, s.col)) !== v0) { same = false; break; } }
+            }
+            if (same) noCol = top[0].col;
+        }
         let textCol = null;
         let textHow = '';
         let textControl = null;
@@ -353,7 +410,11 @@
         const byCtrl = textColumnsByControl(grid);
         if (!textCol && byCtrl.length === 1) { textCol = byCtrl[0].name; textHow = '글 칸 컨트롤'; }
         if (textCol) { const hit = byCtrl.find(c => c.name === textCol); if (hit) textControl = hit.control; }
-        return { rowCount, cols: cols.length, nameCol, nameHits: nameCands[0].nameHits, noCol, textCol, textHow, textControl, textCtrlCount: byCtrl.length };
+        return {
+            rowCount, cols: cols.length, colNames: cols, nameCol, nameHits: nameCands[0].nameHits, noCol, textCol, textHow, textControl, textCtrlCount: byCtrl.length,
+            // 진단용: 번호 열 후보마다 맞은 수, 서로 다른 값의 수, 앞 세 줄의 값. 동점이라 못 정했는지 볼 수 있다.
+            noCands: noAll.map(s => s.col + '(' + s.noHits + '맞음/' + s.distinct + '가지: ' + [0, 1, 2].filter(i => i < rowCount).map(i => cellValue(grid, i, s.col)).join(',') + ')')
+        };
     }
 
     // 종합의견 열 컨트롤의 길이 한계(있으면). lengthUnit 이 바이트 계열이면 바이트로 잰다.
@@ -396,11 +457,8 @@
         let scans = 0;
         let scrolls = 0;
 
-        const titles = screenTitles();
-        const titleOk = titles.some(t => squash(t).includes('학기말종합의견'));
-        if (mode !== 'inspect' && titles.length && !titleOk && !opts.skipTitle) {
-            return { blocked: 'title', titles, url: location.href, frame: window === window.top ? 'top' : 'iframe' };
-        }
+        const titles = screenTitles();   // 참고용
+        const filters = readFilters();   // 학년도·학기·학년·반·교과(목). 팝업이 글의 학기·과목과 대조해 다르면 넣지 않는다.
 
         // 0) 한 바퀴 훑기: 학생마다 화면에서 몇 줄에 걸리는지 센다. 두 줄이면 넣지 않는다.
         const rowsByKey = new Map();      // 학생 key → 그 학생으로 판정된 줄들
@@ -524,7 +582,10 @@
                     if (!api.notes.length) api.notes.push(cands.length ? '이름 열이 있는 목록을 못 찾음' : '보이는 목록 없음');
                 } else {
                     const { g, info } = best;
-                    api.grid = { rows: info.rowCount, cols: info.cols, nameCol: !!info.nameCol, noCol: !!info.noCol, textCol: !!info.textCol, textHow: info.textHow || '', textCtrlCount: info.textCtrlCount };
+                    api.grid = {
+                        rows: info.rowCount, cols: info.cols, nameCol: !!info.nameCol, noCol: !!info.noCol, textCol: !!info.textCol, textHow: info.textHow || '', textCtrlCount: info.textCtrlCount,
+                        colNames: info.colNames || [], nameColName: info.nameCol || '', noColName: info.noCol || '', textColName: info.textCol || '', noCands: info.noCands || []
+                    };
                     if (!info.textCol) {
                         api.notes.push(info.textCtrlCount > 1 ? '글 칸 열이 ' + info.textCtrlCount + '개라 종합의견 열을 못 정함' : '종합의견 열을 못 정해 실행기로는 넣지 않음');
                     } else {
@@ -634,11 +695,12 @@
         const skipped = Array.from(excluded).filter(([k]) => targetKeys.has(k)).map(([k, why]) => (targetOf.get(k).number + '번 ' + targetOf.get(k).name + ': ' + why));
         const unmatched = targets.filter(s => !done.has(keyOf(s)) && !excluded.has(keyOf(s))).map(s => s.number + '번 ' + s.name);
         const result = {
+            version: VERSION,
             url: location.href,
             frame: window === window.top ? 'top' : 'iframe',
             mode,
             titles,
-            titleOk,
+            filters,
             textareas: shownTextareas().length,
             scans,
             scrolls,
@@ -657,11 +719,12 @@
     }
 
     window.__classjNeis = {
+        version: VERSION,
         run,
         scan,
         leafTexts,
         last: () => state.last,
         busy: () => state.running,
-        _debug: { readGrid, decide, indexByName, cellValue, screenTitles, visibleGrids, controlsAt }
+        _debug: { readGrid, decide, indexByName, cellValue, screenTitles, readFilters, visibleGrids, controlsAt }
     };
 })();

@@ -29,6 +29,8 @@ const sandbox = {
     if (specifier === "pg") return { Pool: class {} };
     if (specifier === "./reading-bank") return { createReadingBank: () => ({ router: {} }) };
     if (specifier === "./metacognition") return { createMetacognition: () => ({ router: {}, initialize: async () => {} }) };
+    if (specifier === "./voting") return { createVoting: () => ({ router: {}, initialize: async () => {}, hasRoomCode: async () => false, hasQuizRaceCode: async () => false }) };
+    if (specifier === "./seating") return { createSeating: () => ({ router: {}, initialize: async () => {}, hasRoomCode: async () => false, resolveCode: async () => null }) };
     throw new Error(`Unexpected dependency: ${specifier}`);
   }
 };

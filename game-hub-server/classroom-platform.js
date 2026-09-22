@@ -7,6 +7,7 @@ const { Pool } = require("pg");
 const { createReadingBank } = require("./reading-bank");
 const { createMetacognition } = require("./metacognition");
 const { createVoting } = require("./voting");
+const { createSeating } = require("./seating");
 
 const SESSION_COOKIE = "class_session";
 const GUEST_ACCESS_COOKIE = "class_guest_access";
@@ -1303,6 +1304,7 @@ function createClassroomPlatform(options = {}) {
       await readingBank.initialize();
       await metacognition.initialize();
       await voting.initialize();
+      await seating.initialize();
       databaseReady = true;
       initializationError = null;
       console.log("Classroom database is ready.");
@@ -1500,6 +1502,8 @@ function createClassroomPlatform(options = {}) {
     asyncRoute
   });
 
+  // 투표방·자리 고르기 방·학급 순위전은 같은 4자리 방번호를 나눠 쓴다. 서로의
+  // 번호를 피해서 만들고, 메인의 「방번호 입력」 한 곳에서 셋 다 찾아간다.
   const voting = createVoting({
     pool,
     sessionUser,
@@ -1509,11 +1513,27 @@ function createClassroomPlatform(options = {}) {
     requireDatabase,
     teacherRegistration,
     isLiveQuizRaceCode: options.isLiveQuizRaceCode,
+    isReservedCode: (code) => seating.hasRoomCode(code),
+    resolveRoomCode: (code) => seating.resolveCode(code),
+    HttpError,
+    asyncRoute
+  });
+
+  const seating = createSeating({
+    pool,
+    sessionUser,
+    guestAccess,
+    requireTeacher,
+    requireDatabase,
+    teacherRegistration,
+    avatarUrl,
+    isReservedCode: async (code) => (await voting.hasQuizRaceCode(code)) || (await voting.hasRoomCode(code)),
     HttpError,
     asyncRoute
   });
 
   router.use("/vote", voting.router);
+  router.use("/seating", seating.router);
 
   // Every request under /learning, /admin, /classtools, etc. passes through
   // requireSiteAccess, which used to call getSiteAccessMode() fresh each
@@ -8055,7 +8075,8 @@ function createClassroomPlatform(options = {}) {
     saveMultiplayerRoomSnapshot,
     loadMultiplayerRoomSnapshot,
     deleteMultiplayerRoomSnapshot,
-    hasVotingRoomCode: voting.hasRoomCode
+    hasVotingRoomCode: voting.hasRoomCode,
+    hasSeatingRoomCode: seating.hasRoomCode
   };
 }
 

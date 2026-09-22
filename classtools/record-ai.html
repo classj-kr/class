@@ -292,12 +292,17 @@
         <section class="card" id="result-section" style="display: none;">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; gap: 12px; flex-wrap: wrap;">
                 <h2 style="margin: 0;">결과 (초안)</h2>
-                <button type="button" id="copy-btn" class="btn btn-outline" style="padding: 6px 16px; font-size: 0.9rem;">전체 복사</button>
+                <div style="display: flex; gap: 8px;">
+                    <button type="button" id="copy-btn" class="btn btn-outline" style="padding: 6px 16px; font-size: 0.9rem;">전체 복사</button>
+                    <button type="button" id="clear-result-btn" class="btn btn-outline" style="padding: 6px 16px; font-size: 0.9rem;" title="이 학기·과목의 문장을 이 브라우저에서 지웁니다">지우기</button>
+                </div>
             </div>
             <p class="hint" style="margin: 0 0 14px; color: var(--muted); font-size: 0.9rem; line-height: 1.7;">
                 그대로 옮겨 적는 완성글이 아니라 고쳐 쓰기 위한 밑글입니다. 아이마다 실제로 있었던 일에 맞게 손봐 주세요.
-                「전체 복사」한 글은 크롬 확장 「나이스 채우기」에 붙여넣으면 나이스 학기말종합의견 화면에 이름을 대조해 한 번에 들어갑니다.
+                「전체 복사」한 글은 크롬 확장 「NEIS 붙여넣기 - ClassJ」에 붙여넣으면 나이스 학기말종합의견 화면에 이름을 대조해 한 번에 들어갑니다. 복사한 글 맨 위에 과목·학기 표시가 붙어, 나이스 화면의 과목과 다르면 확장이 넣지 않습니다.
+                만든 문장은 학기·과목·반마다 따로 이 브라우저에 남아, 나갔다 와도 그대로 있습니다. 공용 컴퓨터라면 다 쓴 뒤 「지우기」를 누르세요.
             </p>
+            <p id="result-note" class="hint" style="margin: 0 0 10px; color: var(--muted); font-size: 0.85rem;"></p>
             <div id="result-list"></div>
             <textarea id="result-area" class="form-control" style="display: none;"></textarea>
         </section>
@@ -331,6 +336,9 @@
             const resultSection = $('result-section');
             const resultList = $('result-list');
             const resultArea = $('result-area');
+            const resultNote = $('result-note');
+            const clearResultBtn = $('clear-result-btn');
+            let generatedFor = null;   // 마지막으로 만든 글의 칸·학기·과목. 「전체 복사」 표시줄에 쓴다.
             const copyBtn = $('copy-btn');
 
             // 기록할 칸마다 담는 것이 다르다. 교과는 무엇을 알게 되었는지를,
@@ -349,8 +357,9 @@
                     semester: true,
                     item: '수행평가',
                     sub: '과목',
-                    subList: ['국어', '수학', '사회', '과학', '영어', '도덕', '실과', '체육', '음악', '미술',
-                              '바른 생활', '슬기로운 생활', '즐거운 생활'],
+                    // 나이스 학기말종합의견 화면의 교과(목) 순서와 같게 둔다(3~6학년). 1·2학년의 바른 생활·슬기로운 생활·즐거운 생활은
+                    // 한 칸에 한 번에 쓰고, 생활기록부에도 세 이름을 이은 한 교과명으로 찍히므로 그 이름 그대로 맨 뒤에 둔다.
+                    subList: ['국어', '사회', '도덕', '수학', '과학', '실과', '체육', '음악', '미술', '영어', '바른 생활, 슬기로운 생활, 즐거운 생활'],
                     topics: '이번 학기에 실시한 수행평가 (한 줄에 하나씩)',
                     example: '분수의 덧셈과 뺄셈 계산하기\n직사각형과 삼각형의 넓이 구하기\n실생활 문제를 식으로 나타내고 해결하기',
                     hint: '수행평가 이름이나 평가한 내용을 한 줄에 하나씩 적으시면 됩니다. 점수나 등급은 적지 않으셔도 됩니다. 수행평가 하나가 문장 하나가 되어, 세 개를 적으면 학생마다 세 문장이 이어져 학기말 종합의견 한 칸이 채워집니다.',
@@ -393,6 +402,48 @@
                 topicsInput.value = store.get(topicsKey) || '';
             }
 
+            // ── 만든 문장 남기기 ──────────────────────────────────────────
+            // 만든 문장은 학기·과목·반마다 따로 이 브라우저에 남긴다. 페이지를 나갔다 와도 그대로 있고,
+            // 학기·과목·반을 바꾸면 그쪽에 만들어 둔 것으로 바뀐다. 이름과 문장이 함께 남으므로
+            // 공용 컴퓨터라면 「지우기」로 지운다. 서버로는 보내지 않는다.
+            function resultStoreKey() {
+                const area = currentArea();
+                const semester = area.semester ? semesterSelect.value : '';
+                const sub = area.sub ? subInput.value.trim() : '';
+                return 'record_result:' + currentClassId + ':' + areaSelect.value + ':' + semester + ':' + sub;
+            }
+
+            function saveResult(items) {
+                store.set(resultStoreKey(), JSON.stringify({ at: Date.now(), meta: generatedFor, items }));
+            }
+
+            function savedResult() {
+                try {
+                    const saved = JSON.parse(store.get(resultStoreKey()) || 'null');
+                    return (saved && Array.isArray(saved.items) && saved.items.length) ? saved : null;
+                } catch (_) { return null; }
+            }
+
+            function swapResult() {
+                const saved = savedResult();
+                if (saved) {
+                    generatedFor = saved.meta || null;
+                    renderResult(saved.items);
+                    resultNote.textContent = new Date(saved.at).toLocaleString('ko-KR') + '에 만든 문장입니다.';
+                } else {
+                    generatedFor = null;
+                    resultList.replaceChildren();
+                    resultArea.value = '';
+                    resultNote.textContent = '';
+                    resultSection.style.display = 'none';
+                }
+            }
+
+            function clearResult() {
+                store.remove(resultStoreKey());
+                swapResult();
+            }
+
             function applyArea() {
                 const area = currentArea();
                 topicsLabel.textContent = area.topics;
@@ -416,9 +467,12 @@
                     subInput.replaceChildren();
                 }
             }
-            areaSelect.addEventListener('change', () => { applyArea(); swapTopics(); });
-            semesterSelect.addEventListener('change', swapTopics);
-            subInput.addEventListener('change', swapTopics);
+            areaSelect.addEventListener('change', () => { applyArea(); swapTopics(); swapResult(); });
+            semesterSelect.addEventListener('change', () => { swapTopics(); swapResult(); });
+            subInput.addEventListener('change', () => { swapTopics(); swapResult(); });
+            clearResultBtn.addEventListener('click', () => {
+                if (confirm('이 학기·과목의 문장을 이 브라우저에서 지웁니다. 나이스에 이미 넣은 글은 그대로입니다. 지울까요?')) clearResult();
+            });
             topicsInput.addEventListener('input', saveTopics);
             applyArea();
 
@@ -431,6 +485,11 @@
                 set(key, value) { try { localStorage.setItem(key, value); } catch (_) {} },
                 remove(key) { try { localStorage.removeItem(key); } catch (_) {} }
             };
+
+            // 학기 기본값: 8월~1월은 2학기, 그 밖은 1학기. 「전체 복사」 글의 「학기:」 표시가 나이스 화면의 학기와
+            // 맞아야 확장이 넣으므로, 늘 1학기로 시작하면 2학기에 만든 글이 번번이 막힌다.
+            const month = new Date().getMonth() + 1;
+            semesterSelect.value = (month >= 8 || month <= 1) ? '2학기' : '1학기';
 
             // store 를 갖춘 뒤라야 적어 둔 것을 되살릴 수 있다.
             swapTopics();
@@ -456,6 +515,7 @@
             // 이름은 이 브라우저 안에만 머문다. 구글로는 인원수만 나가고, 받아 온
             // 문장을 여기서 번호대로 이름에 붙인다.
             let roster = [];
+            let currentClassId = '';   // 지금 보는 반. 만든 문장을 반마다 따로 남기는 데 쓴다(담임 학급 하나면 빈 값).
 
             // 출석부처럼 한 줄에 한 명씩 내려 적는다. 옆으로 늘어놓으면 몇 번이
             // 누구인지 눈으로 따라가기 어렵다.
@@ -483,6 +543,7 @@
             }
 
             async function loadRoster(classId) {
+                currentClassId = classId || '';
                 rosterStatus.className = 'status';
                 rosterStatus.textContent = '명단을 불러오는 중…';
                 try {
@@ -506,6 +567,7 @@
                     rosterStatus.textContent = '명단을 불러오지 못했습니다. 인원수를 직접 적어 주세요.';
                 }
                 renderRoster();
+                swapResult();   // 반이 정해진 뒤에 그 반에 만들어 둔 문장을 되살린다
             }
 
             // 교과를 맡은 선생님은 여러 반을 쓴다. 반이 하나뿐이면 고를 칸을 두지 않는다.
@@ -768,17 +830,18 @@
                 return order;
             }
 
-            function renderResult(perStudent) {
-                resultList.replaceChildren(...perStudent.map((text, i) => {
+            // items: [{ number, name, text }]. 명단 없이 만든 것은 name 이 빈 값이다.
+            function renderResult(items) {
+                const label = (it) => (it.number + '번 ' + (it.name || '')).trim();
+                resultList.replaceChildren(...items.map((it) => {
                     const row = document.createElement('div');
                     row.style.cssText = 'border:1px solid var(--line); border-radius:10px; padding:12px 14px; margin-bottom:10px; background:var(--paper);';
 
                     const head = document.createElement('div');
                     head.style.cssText = 'display:flex; justify-content:space-between; align-items:center; gap:10px; margin-bottom:6px;';
 
-                    const student = roster[i];
                     const no = document.createElement('strong');
-                    no.textContent = student ? student.number + '번 ' + student.name : (i + 1) + '번';
+                    no.textContent = label(it);
                     no.style.cssText = 'color:var(--brand); font-size:0.9rem;';
 
                     const one = document.createElement('button');
@@ -787,7 +850,7 @@
                     one.style.cssText = 'padding:2px 10px; font-size:0.8rem;';
                     one.textContent = '복사';
                     one.addEventListener('click', async () => {
-                        await navigator.clipboard.writeText(text);
+                        await navigator.clipboard.writeText(it.text);
                         one.textContent = '복사됨';
                         setTimeout(() => { one.textContent = '복사'; }, 1200);
                     });
@@ -795,16 +858,13 @@
                     head.append(no, one);
 
                     const body = document.createElement('div');
-                    body.textContent = text;
+                    body.textContent = it.text;
                     body.style.cssText = 'line-height:1.7;';
 
                     row.append(head, body);
                     return row;
                 }));
-                resultArea.value = perStudent.map((t, i) => {
-                    const student = roster[i];
-                    return (student ? student.number + '번 ' + student.name : (i + 1) + '번') + '\n' + t;
-                }).join('\n\n');
+                resultArea.value = items.map(it => label(it) + '\n' + it.text).join('\n\n');
                 resultSection.style.display = 'block';
             }
 
@@ -833,6 +893,8 @@
                     subInput.focus();
                     return;
                 }
+                if (savedResult() && !confirm('이 학기·과목에 만들어 둔 문장이 있습니다. 새로 만들면 그 문장은 사라집니다. 계속할까요?')) return;
+                generatedFor = { area: area.label, semester: area.semester ? semesterSelect.value : '', subKey: area.sub || '', sub };
 
                 generateBtn.disabled = true;
                 genStatus.className = 'status';
@@ -867,7 +929,13 @@
                         throw new Error(missed.length > 0 ? missed[0].why : '문장을 하나도 받지 못했습니다.');
                     }
 
-                    renderResult(perStudent.map(list => list.join(' ')));
+                    const items = perStudent.map((list, i) => {
+                        const student = roster[i];
+                        return { number: student ? student.number : String(i + 1), name: student ? student.name : '', text: list.join(' ') };
+                    });
+                    renderResult(items);
+                    saveResult(items);
+                    resultNote.textContent = new Date().toLocaleString('ko-KR') + '에 만든 문장입니다.';
                     if (missed.length > 0) {
                         genStatus.className = 'status error';
                         genStatus.textContent = missed.map(item => '「' + item.topic + '」').join(', ')
@@ -887,8 +955,20 @@
                 }
             });
 
+            // 「전체 복사」 글 맨 위에 어느 칸·학기·과목의 글인지 적어 둔다. 크롬 확장이 나이스 화면의
+            // 교과(목)·학기와 대조해, 국어 글이 수학 칸에 들어가는 실수를 막는다. 만들 때 고른 값을 쓴다
+            // (만든 뒤 과목을 바꿔 두었더라도 글은 만들 때 과목의 것이다).
+            function metaLines() {
+                const g = generatedFor;
+                if (!g) return '';
+                const out = ['칸: ' + g.area];
+                if (g.semester) out.push('학기: ' + g.semester);
+                if (g.sub) out.push((g.subKey === '영역' ? '영역' : '과목') + ': ' + g.sub);
+                return out.join('\n') + '\n\n';
+            }
+
             copyBtn.addEventListener('click', async () => {
-                await navigator.clipboard.writeText(resultArea.value);
+                await navigator.clipboard.writeText(metaLines() + resultArea.value);
                 copyBtn.textContent = '복사됨';
                 setTimeout(() => { copyBtn.textContent = '전체 복사'; }, 1500);
             });
