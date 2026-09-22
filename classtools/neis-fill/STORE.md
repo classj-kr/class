@@ -39,4 +39,4 @@ ClassJ(classj.kr) 생활기록부 도우미에서 만든 학생별 문장을 NEI
 
 ## 배포
 
-미등록(Unlisted)으로 제출. 통과하면 스토어 주소를 `index.html` 의 `#store-link` 에 넣는다.
+미등록(Unlisted)으로 제출. 스토어 주소 `https://chromewebstore.google.com/detail/nfpcffopnkolcpgpfbkaelofdeamddpa` 는 `index.html` 의 `#store-link` 에 넣어 두었고, 통과하면 그 단추의 `pending` 클래스만 뗀다.
