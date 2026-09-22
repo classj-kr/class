@@ -61,6 +61,7 @@ assert.ok(musicControlSource.includes('id="musicVolumeSlider"'), "Shared music v
 assert.ok(musicControlSource.includes('id="sfxVolumeSlider"'), "Shared effect volume should use the compact linear slider.");
 assert.ok(musicControlSource.includes('step="0.01"'), "Shared audio sliders should adjust continuously.");
 assert.ok(musicControlSource.includes('DEFAULT_MUSIC_VOLUME = 0.3'), "Default music volume for initial visitors should be 30%.");
+assert.ok(musicControlSource.includes('DEFAULT_MUSIC_MUTED = false'), "Music should be enabled by default for first-time visitors.");
 assert.ok(musicControlSource.includes('DEFAULT_SFX_VOLUME = 0.65'), "Default SFX volume for initial visitors should be 65%.");
 assert.ok(!musicControlSource.includes("unified-music-segment"), "The oversized segmented volume bar should not return.");
 
@@ -75,6 +76,8 @@ assert.ok(voyage.includes('window.ClassMusicController=backgroundMusic'), "Share
 assert.ok(!voyage.includes('id="bgmVolume"'), "World Voyage should not keep its old oversized volume slider.");
 
 const hub = fs.readFileSync(hubPath, "utf8");
+assert.ok(hub.includes('<audio id="bgm" preload="none"></audio>'), "The hub should keep the shared music control without loading a track.");
+assert.ok(!hub.includes("`assets/sound/${currentMonth}.ogg`"), "The hub should not load monthly background music.");
 const gameLinks = [...hub.matchAll(/href="(learning\/games\/[^"]+)"/g)].map((match) => {
     const href = match[1].split(/[?#]/, 1)[0];
     return href.endsWith("/") ? `${href}index.html` : `${href}.html`;

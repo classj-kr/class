@@ -962,11 +962,9 @@
             }
         }
     </script>
-    <audio id="bgm" autoplay loop preload="auto"></audio>
-    <script>
-        document.getElementById('bgm').src = `assets/sound/${currentMonth}.ogg`;
-    </script>
-    <script src="assets/sound/music-control.js?v=20260910-click-cache-1"></script>
+    <!-- 메인은 무음으로 두되 공용 음악 설정과 볼륨 버튼은 유지한다. -->
+    <audio id="bgm" preload="none"></audio>
+    <script src="assets/sound/music-control.js?v=20260922-home-silent-1"></script>
     <div class="auth-panel" aria-live="polite">
         <button id="toggleGuestMode" class="guest-card-button" type="button" aria-label="게스트 로그인">게스트</button>
         <div id="authTitle" class="auth-title">SCHOOL ACCOUNT</div>

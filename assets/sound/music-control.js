@@ -15,7 +15,7 @@
     const PLAYBACK_POSITIONS_KEY = "classMusicPlaybackPositions";
     const DEFAULT_MUSIC_VOLUME = 0.3;
     const DEFAULT_SFX_VOLUME = 0.65;
-    const DEFAULT_MUSIC_MUTED = true;
+    const DEFAULT_MUSIC_MUTED = false;
     const DEFAULT_MUSIC_LEVEL = Math.max(1, Math.round(DEFAULT_MUSIC_VOLUME * 5));
     const DEFAULT_SFX_LEVEL = Math.max(1, Math.round(DEFAULT_SFX_VOLUME * 5));
 

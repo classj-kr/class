@@ -39,7 +39,7 @@ async function waitForServer() {
     await waitForServer();
 
     // 1. Test Audio asset Cache-Control header
-    const audioResponse = await fetch(`http://127.0.0.1:${port}/assets/sound/1.ogg`);
+    const audioResponse = await fetch(`http://127.0.0.1:${port}/assets/sound/sfx/select.ogg`);
     assert.equal(audioResponse.status, 200);
     assert.equal(audioResponse.headers.get("cache-control"), "public, max-age=31536000, immutable");
 
