@@ -33,7 +33,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 20px 24px;
+            padding: 12px 24px;
             color: var(--muted);
             font-size: 0.9rem;
         }
@@ -47,21 +47,15 @@
         main {
             width: min(100% - 48px, 900px);
             margin: 0 auto;
-            padding: 20px 0 80px;
-        }
-
-        h1 {
-            margin: 0 0 8px;
-            font-size: 2.5rem;
-            letter-spacing: -0.03em;
+            padding: 4px 0 60px;
         }
 
         .card {
             background: var(--paper);
             border: 1px solid var(--line);
             border-radius: 20px;
-            padding: 30px;
-            margin-bottom: 24px;
+            padding: 20px 24px;
+            margin-bottom: 14px;
             box-shadow: var(--shadow);
         }
 
@@ -97,7 +91,7 @@
         }
 
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 14px;
         }
 
         .form-group label {
@@ -176,7 +170,7 @@
             color: #fff;
         }
 
-        /* 아이별·낱말별을 오가는 두 갈래 단추 */
+        /* 학생별·낱말별을 오가는 두 갈래 단추 */
         .seg { display: inline-flex; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
         .seg-btn {
             padding: 7px 16px;
@@ -188,7 +182,7 @@
         }
         .seg-btn.on { background: var(--brand); color: #fff; }
 
-        /* 아이 한 줄, 낱말 한 줄 */
+        /* 학생 한 줄, 낱말 한 줄 */
         .pick-row {
             border-top: 1px solid var(--line);
             padding: 10px 2px;
@@ -269,7 +263,6 @@
     </header>
 
     <main>
-        <h1>생활기록부</h1>
         <!-- API Key 설정. 키를 넣고 나면 다시 볼 일이 없으므로 접어 둔다(아래 스크립트가 연다). -->
         <details class="card" id="key-card">
             <summary>🔑 구글 API 키 <span class="sub" id="key-summary">설정 (최초 1회)</span></summary>
@@ -293,8 +286,6 @@
 
         <!-- 생성 양식 -->
         <section class="card">
-            <h2>📝 무엇을 쓰시나요</h2>
-
             <!-- 담임 학급, 전담으로 들어가는 반의 과목, 맡은 동아리. 고른 대상에 따라
                  아래의 기록할 칸과 과목이 정해진다. -->
             <div class="form-group" id="scope-group" style="display: none;">
@@ -331,13 +322,12 @@
                 <textarea id="topics-input" class="form-control" rows="5"></textarea>
             </div>
 
-            <!-- 행동특성은 아이마다 다른 글이라 아이마다 따로 받는다.
-                 같은 자료를 아이 쪽에서도, 낱말 쪽에서도 고를 수 있게 둔다. -->
+            <!-- 행동특성은 학생마다 다른 글이라 학생마다 따로 받는다.
+                 같은 자료를 학생 쪽에서도, 낱말 쪽에서도 고를 수 있게 둔다. -->
             <div id="traits-group" style="display: none;">
-                <div class="form-group" style="margin-bottom: 12px;">
-                    <label>아이마다 고르기</label>
+                <div class="form-group" style="margin-bottom: 10px;">
                     <div class="seg" role="tablist">
-                        <button type="button" class="seg-btn on" id="by-student-btn" role="tab">아이별</button>
+                        <button type="button" class="seg-btn on" id="by-student-btn" role="tab">학생별</button>
                         <button type="button" class="seg-btn" id="by-word-btn" role="tab">낱말별</button>
                     </div>
                 </div>
@@ -349,8 +339,6 @@
 
         <!-- 우리 반 -->
         <section class="card">
-            <h2>👥 우리 반</h2>
-
             <div id="roster-status" class="status"></div>
 
             <!-- 명단을 못 불러오는 경우에만 쓴다. 인원수만 있으면 문장은 만들 수 있다. -->
@@ -749,9 +737,9 @@
             }
             loadScopes();
 
-            // ── 아이마다 낱말 고르기 ───────────────────────────────────────
-            // 행동특성·창체·교과 모두 아이마다 다른 글이다. 갈래별 특성(책임감·배려심…)을
-            // 아이마다 고르면, 그 특성의 키워드를 AI 에게 말 주머니로 넘겨 아이마다 다른
+            // ── 학생마다 낱말 고르기 ───────────────────────────────────────
+            // 행동특성·창체·교과 모두 학생마다 다른 글이다. 갈래별 특성(책임감·배려심…)을
+            // 학생마다 고르면, 그 특성의 키워드를 AI 에게 말 주머니로 넘겨 학생마다 다른
             // 말로 쓰게 한다. 말 주머니는 record-traits.js 에 있다.
             const BANK = window.ClassjTraitBank;
 
@@ -857,7 +845,7 @@
                 return chips;
             }
 
-            // 아이 쪽에서 고르기: 한 아이를 열고 낱말을 누른다.
+            // 학생 쪽에서 고르기: 한 학생을 열고 낱말을 누른다.
             function renderByStudent() {
                 return traitStudents().map(student => {
                     const t = traitOf(student.key);
@@ -878,7 +866,7 @@
                         });
 
                         // 고른 특성마다 그 말 주머니를 보여 준다. 굳이 고르지 않으면
-                        // AI 가 주머니 안에서 아이마다 다른 말을 골라 쓴다.
+                        // AI 가 주머니 안에서 학생마다 다른 말을 골라 쓴다.
                         t.words.forEach(word => {
                             const words = BANK.wordsOf(word);
                             if (!words.length) return;
@@ -908,7 +896,7 @@
                         const note = document.createElement('input');
                         note.type = 'text';
                         note.className = 'form-control';
-                        note.placeholder = '이 아이만의 한 줄 (예: 학급 문고를 일 년 내내 정리함)';
+                        note.placeholder = '이 학생만의 한 줄 (예: 학급 문고를 일 년 내내 정리함)';
                         note.value = t.note || '';
                         note.addEventListener('input', () => { t.note = note.value; saveTraits(); });
                         parts.push(note);
@@ -989,7 +977,7 @@
                 const done = students.filter(s => traitOf(s.key).words.length > 0).length;
                 traitsStatus.className = done === students.length ? 'status' : 'status error';
                 traitsStatus.textContent = students.length + '명 가운데 ' + done + '명 골랐습니다'
-                    + (done === students.length ? '.' : '. 낱말이 없는 아이는 문장을 만들지 않습니다.');
+                    + (done === students.length ? '.' : '. 낱말이 없는 학생은 문장을 만들지 않습니다.');
             }
 
             byStudentBtn.addEventListener('click', () => { traitView = 'student'; openRow = null; renderTraits(); });
@@ -1223,7 +1211,7 @@
                 + '  · 특정 대학·학과 이름, 특정 기관이나 상표 이름\n'
                 + '  · 학생의 병명이나 장애, 심리 검사 결과\n';
 
-            // 행발은 아이마다 고른 낱말이 다르므로 한 묶음을 한 번에 보내고 번호로 받는다.
+            // 행발은 학생마다 고른 낱말이 다르므로 한 묶음을 한 번에 보내고 번호로 받는다.
             // 한 명씩 따로 부르면 서로 본 적이 없어 오히려 다 비슷해진다.
             function buildTraitPrompt(area, group) {
                 const lines = group.map((student, i) => {
@@ -1236,8 +1224,8 @@
                         + (note ? ' / 있었던 일: ' + note : '');
                 }).join('\n');
 
-                // 고른 특성마다 말 주머니를 함께 보낸다. 같은 특성을 고른 아이끼리
-                // 글이 닮지 않게, AI 가 아이마다 다른 말을 골라 쓰게 하려는 것이다.
+                // 고른 특성마다 말 주머니를 함께 보낸다. 같은 특성을 고른 학생끼리
+                // 글이 닮지 않게, AI 가 학생마다 다른 말을 골라 쓰게 하려는 것이다.
                 const used = [];
                 group.forEach(student => student.trait.words.forEach(word => {
                     if (!used.includes(word)) used.push(word);
@@ -1247,15 +1235,15 @@
                     return words.length ? '- ' + word + ': ' + words.join(', ') : '';
                 }).filter(Boolean).join('\n');
                 return '초등학교 생활기록부 \'' + area.label + '\' 칸에 넣을 문장을 만듭니다.\n\n'
-                    + '아이마다 선생님이 고른 낱말입니다. 낱말은 그 아이에게서 본 모습입니다.\n\n'
+                    + '학생마다 선생님이 고른 낱말입니다. 낱말은 그 학생에게서 본 모습입니다.\n\n'
                     + lines + '\n\n'
-                    + (bank ? '낱말마다 쓸 수 있는 말입니다. 아이마다 다른 말을 골라 쓰세요.\n' + bank + '\n\n' : '')
-                    + '각 번호마다 그 아이의 문장을 하나씩, 모두 ' + group.length + '개 만들어 주세요.\n\n'
+                    + (bank ? '낱말마다 쓸 수 있는 말입니다. 학생마다 다른 말을 골라 쓰세요.\n' + bank + '\n\n' : '')
+                    + '각 번호마다 그 학생의 문장을 하나씩, 모두 ' + group.length + '개 만들어 주세요.\n\n'
                     + '지켜야 할 것\n'
                     + '- ' + area.rule + '\n'
                     + '- 고른 낱말이 모두 드러나게 하되 낱말을 그대로 나열하지 말고, 그 낱말이 학교생활\n'
                     + '  어디에서 어떻게 보였을지 헤아려 풀어 씁니다.\n'
-                    + '- 같은 낱말을 고른 아이가 여럿이면 위 말 주머니에서 서로 다른 말을 골라 씁니다.\n'
+                    + '- 같은 낱말을 고른 학생이 여럿이면 위 말 주머니에서 서로 다른 말을 골라 씁니다.\n'
                     + '- \'꼭 넣을 말\'이 적혀 있으면 그 말은 반드시 살려 씁니다.\n'
                     + '- \'있었던 일\'이 적혀 있으면 그 일을 문장 안에 살려 씁니다.\n'
                     + '- 한 사람에 한 문장에서 두 문장. \'~함.\' \'~임.\' 처럼 ㅁ 받침으로 끝나는\n'
@@ -1266,7 +1254,7 @@
                     + '  이끄는 모습은 직책을 빼고 행동으로만 씁니다.\n'
                     + '- 잘한 점을 좋게 적습니다. 단점이나 부족한 점은 쓰지 않습니다.\n'
                     + '- 지나친 칭찬이나 과장은 쓰지 않습니다. 상장 문구처럼 들리면 안 됩니다.\n'
-                    + '- 한 아이 글은 60자 안팎으로 합니다.\n'
+                    + '- 한 학생 글은 60자 안팎으로 합니다.\n'
                     + '- 학생 이름이나 번호는 문장 안에 넣지 않습니다.\n\n'
                     + '\'1. \' 처럼 번호를 붙여 한 줄에 하나씩만 적고, 다른 말은 덧붙이지 마세요.';
             }
@@ -1278,7 +1266,7 @@
                 const item = area.item || '활동';
                 return '초등학교 생활기록부 \'' + semester + where + '\' 칸에 넣을 문장을 만듭니다.\n\n'
                     + '[' + item + '] ' + topic + '\n\n'
-                    + '선생님은 ' + item + ' 이름만 적었습니다. 초등학교 ' + item + '에서 아이들이 무엇을 하고\n'
+                    + '선생님은 ' + item + ' 이름만 적었습니다. 초등학교 ' + item + '에서 학생들이 무엇을 하고\n'
                     + '무엇을 배우는지 헤아려, 학생 ' + count + '명에게 각각 적어 줄 문장을 ' + count + '개 만들어 주세요.\n\n'
                     + '지켜야 할 것\n'
                     + '- ' + area.rule + '\n'
@@ -1289,7 +1277,7 @@
                     + '- ' + item + '의 구체적인 내용이 한 군데는 드러나게 씁니다. 어느 ' + item + '에나 갖다 붙일\n'
                     + '  수 있는 두루뭉술한 문장만 늘어놓지 마세요.\n'
                     + BANNED_RULE
-                    + '- 아이마다 잘한 점을 찾아 좋게 적습니다. 단점이나 부족한 점은 쓰지 않습니다.\n'
+                    + '- 학생마다 잘한 점을 찾아 좋게 적습니다. 단점이나 부족한 점은 쓰지 않습니다.\n'
                     + '  다만 실제로 있었던 일로 볼 수 있는 범위에서만 씁니다.\n'
                     + '- 지나친 칭찬이나 과장은 쓰지 않습니다. 상장 문구처럼 들리면 안 됩니다.\n'
                     + '- 한 문장은 40자 안팎으로 합니다.\n'
@@ -1401,7 +1389,7 @@
                     : [];
                 const topics = byTraits ? [] : topicsInput.value.split('\n').map(t => t.trim()).filter(Boolean);
                 if (byTraits && picked.length === 0) {
-                    alert('아이마다 낱말을 골라 주세요.');
+                    alert('학생마다 낱말을 골라 주세요.');
                     return;
                 }
                 if (!byTraits && topics.length === 0) {
@@ -1409,7 +1397,7 @@
                     topicsInput.focus();
                     return;
                 }
-                // 명단이 있으면 그 인원 그대로 만든다. 40에서 자르면 뒤쪽 아이들이
+                // 명단이 있으면 그 인원 그대로 만든다. 40에서 자르면 뒤쪽 학생들이
                 // 말없이 빠진다.
                 const count = roster.length > 0
                     ? roster.length
@@ -1435,7 +1423,7 @@
                     // 활동을 한 번에 다 보내면 답이 길어져 잘린다. 활동마다 따로 받아
                     // 학생별로 모은다. 그래야 한 칸에 여러 활동이 이어져 들어간다.
                     if (byTraits) {
-                        // 아이마다 낱말이 다르니 여덟 명씩 묶어 한 번에 보내고 번호로 받는다.
+                        // 학생마다 낱말이 다르니 여덟 명씩 묶어 한 번에 보내고 번호로 받는다.
                         const groups = [];
                         for (let i = 0; i < picked.length; i += 8) groups.push(picked.slice(i, i + 8));
                         const indexOf = new Map(traitStudents().map((student, i) => [student.key, i]));
