@@ -1284,6 +1284,25 @@ function createClassroomPlatform(options = {}) {
       `CREATE UNIQUE INDEX IF NOT EXISTS school_master_timetable_room_slot_idx
         ON school_master_timetable (school_id, academic_year, room_name, day_of_week, period)
         WHERE room_name IS NOT NULL`,
+      /* ──────────────────────────────────────────────
+         학년이 함께 쓰는 수행평가·활동 목록 (record_plan_items)
+         6학년 국어 2학기 수행평가는 6학년 선생님이 다 같은 것을 쓴다. 한 사람이
+         적어 두면 나머지가 가져다 쓰고, 잘못 적혔으면 옆 반 선생님이 고친다.
+         학생 개인정보가 아니라 교육과정 정보라서 서버에 둔다.
+      ────────────────────────────────────────────── */
+      `CREATE TABLE IF NOT EXISTS record_plan_items (
+        id BIGSERIAL PRIMARY KEY,
+        school_id BIGINT NOT NULL REFERENCES classroom_schools(id) ON DELETE CASCADE,
+        academic_year INTEGER NOT NULL,
+        grade INTEGER NOT NULL CHECK (grade BETWEEN 1 AND 12),
+        area TEXT NOT NULL CHECK (area IN ('subject', 'activity')),
+        semester TEXT NOT NULL DEFAULT '',
+        subject_name TEXT NOT NULL DEFAULT '',
+        items TEXT NOT NULL DEFAULT '',
+        updated_by BIGINT REFERENCES classroom_users(id) ON DELETE SET NULL,
+        updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+        UNIQUE (school_id, academic_year, grade, area, semester, subject_name)
+      )`,
       `CREATE TABLE IF NOT EXISTS classroom_teacher_dashboard_settings (
         id BIGSERIAL PRIMARY KEY,
         user_id BIGINT NOT NULL UNIQUE REFERENCES classroom_users(id) ON DELETE CASCADE,
@@ -8039,6 +8058,58 @@ function createClassroomPlatform(options = {}) {
       client.release();
     }
     res.json({ ok: true });
+  }));
+
+  // 학년이 함께 쓰는 수행평가·활동 목록. 같은 학교 교사면 누구나 읽고 고친다.
+  // 옆 반 선생님이 잘못 적힌 것을 바로잡을 수 있어야 해서 일부러 열어 둔다.
+  function planKey(req) {
+    const year = Number(req.query.year || req.body?.year) || new Date().getFullYear();
+    const grade = Number(req.query.grade || req.body?.grade) || 0;
+    const area = String(req.query.area || req.body?.area || 'subject');
+    const semester = String(req.query.semester || req.body?.semester || '').slice(0, 20);
+    const subject = String(req.query.subject || req.body?.subject || '').slice(0, 60);
+    if (!(grade >= 1 && grade <= 12)) throw new HttpError(400, "BAD_GRADE", "학년이 없습니다.");
+    if (area !== 'subject' && area !== 'activity') throw new HttpError(400, "BAD_AREA", "칸이 잘못되었습니다.");
+    return { year, grade, area, semester, subject };
+  }
+
+  router.get("/teacher/record-plan", asyncRoute(async (req, res) => {
+    const teacher = await requireTeacher(req);
+    const registration = await teacherRegistration(teacher);
+    if (!registration) return res.json({ items: '', updatedAt: null, updatedByName: '' });
+    const key = planKey(req);
+    const result = await pool.query(
+      `SELECT p.items, p.updated_at, u.display_name
+       FROM record_plan_items p
+       LEFT JOIN classroom_users u ON u.id = p.updated_by
+       WHERE p.school_id = $1 AND p.academic_year = $2 AND p.grade = $3
+         AND p.area = $4 AND p.semester = $5 AND p.subject_name = $6`,
+      [registration.school_id, key.year, key.grade, key.area, key.semester, key.subject]
+    );
+    const row = result.rows[0];
+    res.json({
+      items: row ? row.items : '',
+      updatedAt: row ? row.updated_at : null,
+      updatedByName: row ? (row.display_name || '') : ''
+    });
+  }));
+
+  router.put("/teacher/record-plan", asyncRoute(async (req, res) => {
+    const teacher = await requireTeacher(req);
+    const registration = await teacherRegistration(teacher);
+    if (!registration) throw new HttpError(403, "NO_SCHOOL", "학교에 등록된 교사만 쓸 수 있습니다.");
+    const key = planKey(req);
+    const items = String(req.body?.items || '').slice(0, 4000);
+    const result = await pool.query(
+      `INSERT INTO record_plan_items
+         (school_id, academic_year, grade, area, semester, subject_name, items, updated_by, updated_at)
+       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, NOW())
+       ON CONFLICT (school_id, academic_year, grade, area, semester, subject_name)
+       DO UPDATE SET items = EXCLUDED.items, updated_by = EXCLUDED.updated_by, updated_at = NOW()
+       RETURNING updated_at`,
+      [registration.school_id, key.year, key.grade, key.area, key.semester, key.subject, items, teacher.id]
+    );
+    res.json({ ok: true, updatedAt: result.rows[0].updated_at });
   }));
 
   // 그룹(담임반·동아리·방과후 등) 명단. 생기부 도우미가 "누구에게 쓸지"를 고를 때 쓴다.
