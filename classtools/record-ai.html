@@ -136,6 +136,8 @@
 
         .btn:hover { background: var(--brand-dark); }
         .btn:disabled { background: var(--muted); cursor: not-allowed; }
+        /* 만드는 동안은 잿빛으로 죽이지 않는다. 일하고 있다는 것이 보여야 한다. */
+        .btn.busy:disabled { background: var(--brand-dark); cursor: progress; }
         
         .btn-outline {
             background: transparent;
@@ -179,6 +181,33 @@
             margin-top: 10px;
             font-size: 0.9rem;
             color: var(--muted);
+        }
+
+        /* 만드는 동안 단추 안에서 도는 고리. 글보다 이것이 기다리는 마음에 낫다. */
+        .spinner {
+            width: 18px;
+            height: 18px;
+            border: 2px solid rgba(255, 255, 255, 0.35);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: spin 0.7s linear infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* 만든 개수만큼 차오르는 줄 */
+        .progress {
+            height: 4px;
+            border-radius: 999px;
+            background: var(--line);
+            overflow: hidden;
+            margin-top: 12px;
+        }
+        .progress > i {
+            display: block;
+            height: 100%;
+            width: 0;
+            background: var(--brand);
+            transition: width 0.4s ease;
         }
         
         .error { color: var(--danger); }
@@ -268,7 +297,8 @@
                 <input type="number" id="count-input" class="form-control" min="1" max="40" value="30">
             </div>
 
-            <button type="button" id="generate-btn" class="btn" style="width: 100%; margin-top: 18px;">✨ 초안 만들기</button>
+            <button type="button" id="generate-btn" class="btn" style="width: 100%; margin-top: 18px; gap: 8px;">✨ 초안 만들기</button>
+            <div class="progress" id="gen-progress" hidden><i id="gen-bar"></i></div>
             <div id="gen-status" class="status" style="text-align: center; margin-top: 12px;"></div>
         </section>
 
@@ -318,6 +348,28 @@
             const rosterStatus = $('roster-status');
             const manualCountGroup = $('manual-count-group');
             const generateBtn = $('generate-btn');
+            const genProgress = $('gen-progress');
+            const genBar = $('gen-bar');
+
+            // 기다리는 동안은 글 대신 움직이는 것을 보여 준다.
+            function setBusy(busy) {
+                generateBtn.replaceChildren();
+                generateBtn.classList.toggle('busy', busy);
+                if (busy) {
+                    const ring = document.createElement('span');
+                    ring.className = 'spinner';
+                    generateBtn.append(ring, document.createTextNode('만드는 중'));
+                    genProgress.hidden = false;
+                    genBar.style.width = '0%';
+                } else {
+                    generateBtn.textContent = '✨ 초안 만들기';
+                    genProgress.hidden = true;
+                }
+            }
+
+            function setProgress(done, total) {
+                genBar.style.width = Math.round((done / Math.max(total, 1)) * 100) + '%';
+            }
             const genStatus = $('gen-status');
             const resultSection = $('result-section');
             const resultList = $('result-list');
@@ -653,9 +705,29 @@
                 try { return ((await res.json()) || {}).error?.message || ''; } catch (_) { return ''; }
             }
 
+            // 429 는 대개 "하루치를 다 썼다"가 아니라 "잠깐 너무 자주 불렀다"이다.
+            // 몇 초면 풀리는 것을 하루치 소진이라 적었다가 거짓말을 한 적이 있다.
+            // 구글이 하루 단위라고 말할 때만 그렇게 적는다.
+            function isDailyQuota(why) {
+                return /per\s*day|PerDay|GenerateRequestsPerDay|daily/i.test(String(why || ''));
+            }
+
+            // 구글이 "27초 뒤에 다시" 하고 알려 주면 그만큼 기다린다.
+            function retryDelayFrom(why) {
+                const text = String(why || '');
+                const matched = text.match(/retry(?:Delay)?["'\s:]*([\d.]+)\s*s/i)
+                    || text.match(/in\s+([\d.]+)\s*seconds?/i);
+                if (!matched) return 0;
+                return Math.min(Math.round(Number(matched[1]) * 1000) + 500, 65000);
+            }
+
             function throwForStatus(status, why) {
                 if (status === 429) {
-                    throw new Error('오늘 쓸 수 있는 무료 몫을 다 썼습니다. 잠시 뒤에, 또는 내일 다시 눌러 주세요. 요금이 붙지는 않습니다.');
+                    if (isDailyQuota(why)) {
+                        throw new Error('오늘 쓸 수 있는 무료 몫을 다 썼습니다. 내일 다시 눌러 주세요. 요금이 붙지는 않습니다.');
+                    }
+                    throw new Error('구글이 잠깐 쉬라고 합니다. 조금 뒤에 다시 눌러 주세요. 요금이 붙지는 않습니다.'
+                        + (why ? ' (구글: ' + why + ')' : ''));
                 }
                 if (TRANSIENT.includes(status)) {
                     throw new Error('지금 구글 쪽이 붐빕니다. 잠시 뒤에 다시 눌러 주세요.'
@@ -715,8 +787,9 @@
                 return found.join('\n');
             }
 
-            // 500·502·503·504 는 구글 쪽 사정이다. 곧 풀리는 경우가 많다.
-            const TRANSIENT = [500, 502, 503, 504];
+            // 429·500·502·503·504 는 구글 쪽 사정이다. 곧 풀리는 경우가 많다.
+            // 429 는 "1분에 몇 번" 한도에 걸린 것이 대부분이라 기다렸다 다시 넣으면 된다.
+            const TRANSIENT = [429, 500, 502, 503, 504];
             const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
             async function callOnce(url, apiKey, body) {
@@ -729,14 +802,16 @@
                 return { status: res.status, why: await readError(res) };
             }
 
-            // 붐빌 때는 기다리는 시간을 늘려 가며 세 번까지 다시 넣어 본다.
+            // 붐빌 때는 기다리는 시간을 늘려 가며 다시 넣어 본다. 하루치를 다 썼다면
+            // 기다려도 소용없으니 곧바로 돌려보낸다.
             async function callWithRetry(url, apiKey, body, note) {
                 let wait = 2000;
                 for (let attempt = 1; ; attempt += 1) {
                     const result = await callOnce(url, apiKey, body);
-                    if (result.data || !TRANSIENT.includes(result.status) || attempt >= 4) return result;
-                    if (note) note('구글 쪽이 붐벼서 ' + (wait / 1000) + '초 뒤에 다시 넣어 봅니다…');
-                    await sleep(wait);
+                    if (result.data || !TRANSIENT.includes(result.status) || attempt >= 5) return result;
+                    if (result.status === 429 && isDailyQuota(result.why)) return result;
+                    if (note) note();   // 다시 넣는다는 말은 굳이 하지 않는다. 도는 고리로 보인다.
+                    await sleep(retryDelayFrom(result.why) || wait);
                     wait *= 2;
                 }
             }
@@ -967,7 +1042,9 @@
                 generatedFor = { area: area.label, semester: area.semester ? semesterSelect.value : '', subKey: area.sub || '', sub };
 
                 generateBtn.disabled = true;
+                setBusy(true);
                 genStatus.className = 'status';
+                genStatus.textContent = '';
                 const perStudent = Array.from({ length: count }, () => []);
 
                 const missed = [];
@@ -975,11 +1052,9 @@
                     // 활동을 한 번에 다 보내면 답이 길어져 잘린다. 활동마다 따로 받아
                     // 학생별로 모은다. 그래야 한 칸에 여러 활동이 이어져 들어간다.
                     for (let t = 0; t < topics.length; t += 1) {
-                        const head = topics.length + '가지 중 ' + (t + 1) + '번째';
-                        genStatus.textContent = head + ' 만드는 중… (' + topics[t] + ')';
+                        setProgress(t, topics.length);
                         try {
-                            const text = await ask(apiKey, buildPrompt(area, sub, topics[t], count),
-                                (message) => { genStatus.textContent = head + ' — ' + message; });
+                            const text = await ask(apiKey, buildPrompt(area, sub, topics[t], count), () => {});
                             const sentences = parseNumbered(text, count);
                             if (sentences.length === 0) {
                                 throw new Error('문장을 읽어 내지 못했습니다.');
@@ -1013,7 +1088,7 @@
                             + missed[0].why;
                     } else {
                         genStatus.className = 'status';
-                        genStatus.textContent = count + '명분을 만들었습니다. 아이마다 실제 모습에 맞게 고쳐 주세요.';
+                        genStatus.textContent = count + '명분을 만들었습니다.';
                     }
                     resultSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 } catch (e) {
@@ -1022,6 +1097,7 @@
                     genStatus.textContent = '오류가 발생했습니다: ' + e.message;
                 } finally {
                     generateBtn.disabled = false;
+                    setBusy(false);
                 }
             });
 
