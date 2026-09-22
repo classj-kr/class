@@ -382,6 +382,7 @@
         </section>
     </main>
 
+    <script src="record-traits.js?v=1"></script>
     <script>
         (() => {
             'use strict';
@@ -748,17 +749,11 @@
             }
             loadScopes();
 
-            // ── 행동특성: 아이마다 낱말 고르기 ─────────────────────────────
-            // 행발은 아이마다 다른 글이라 활동 이름 하나로는 안 된다. 아이마다 낱말을
-            // 골라 두고, 그 낱말을 묶어 보내 아이마다 다른 문장을 받는다.
-            // 같은 자료를 아이 쪽에서도, 낱말 쪽에서도 고를 수 있다.
-            const TRAIT_WORDS = [
-                ['성품', ['성실', '정직', '배려', '책임감', '예의', '침착', '밝음', '너그러움']],
-                ['관계', ['친구 사귀기', '협동', '나눔', '이끌기', '도움 주기', '경청', '갈등 풀기']],
-                ['배움', ['집중', '끈기', '호기심', '질문하기', '스스로 하기', '꼼꼼함', '생각 나누기']],
-                ['재능', ['음악', '운동', '미술', '글쓰기', '만들기', '발표', '셈하기', '컴퓨터']],
-                ['생활', ['정리정돈', '시간 지키기', '건강', '준비물 챙기기', '청소', '안전']]
-            ];
+            // ── 아이마다 낱말 고르기 ───────────────────────────────────────
+            // 행동특성·창체·교과 모두 아이마다 다른 글이다. 갈래별 특성(책임감·배려심…)을
+            // 아이마다 고르면, 그 특성의 키워드를 AI 에게 말 주머니로 넘겨 아이마다 다른
+            // 말로 쓰게 한다. 말 주머니는 record-traits.js 에 있다.
+            const BANK = window.ClassjTraitBank;
 
             const traitsGroup = $('traits-group');
             const traitsPanel = $('traits-panel');
@@ -784,8 +779,16 @@
                 return traits[key];
             }
 
+            // 지금 칸에서 보여 줄 갈래. [갈래 이름, [특성 이름…]] 꼴로 돌려준다.
+            function traitGroups() {
+                const groups = BANK.groupsFor(areaSelect.value)
+                    .map(group => [group.name, group.traits.map(trait => trait.name)]);
+                const more = extraWords();
+                return more.length ? groups.concat([['더 넣은 낱말', more]]) : groups;
+            }
+
             function extraWords() {
-                const known = new Set(TRAIT_WORDS.flatMap(pair => pair[1]));
+                const known = new Set(BANK.GROUPS.flatMap(g => g.traits.map(t => t.name)));
                 const more = [];
                 Object.values(traits).forEach(t => (t.words || []).forEach(w => {
                     if (!known.has(w) && !more.includes(w)) more.push(w);
@@ -860,7 +863,7 @@
                     const t = traitOf(student.key);
                     return pickRow('s:' + student.key, student.label, t.words, () => {
                         const parts = [];
-                        TRAIT_WORDS.concat([['더 넣은 낱말', extraWords()]]).forEach(pair => {
+                        traitGroups().forEach(pair => {
                             const title = pair[0];
                             const words = pair[1];
                             if (!words.length) return;
@@ -871,6 +874,21 @@
                             box.append(label, wordChips(words,
                                 word => t.words.includes(word),
                                 word => toggleWord(student.key, word)));
+                            parts.push(box);
+                        });
+
+                        // 고른 특성마다 그 말 주머니를 보여 준다. 굳이 고르지 않으면
+                        // AI 가 주머니 안에서 아이마다 다른 말을 골라 쓴다.
+                        t.words.forEach(word => {
+                            const words = BANK.wordsOf(word);
+                            if (!words.length) return;
+                            const box = document.createElement('div');
+                            box.className = 'cat';
+                            const label = document.createElement('span');
+                            label.textContent = word + ' — 꼭 넣을 말이 있으면 고르세요';
+                            box.append(label, wordChips(words,
+                                w => (t.picks || []).includes(w),
+                                w => togglePick(student.key, w)));
                             parts.push(box);
                         });
 
@@ -903,7 +921,7 @@
             function renderByWord() {
                 const students = traitStudents();
                 const rows = [];
-                TRAIT_WORDS.concat([['더 넣은 낱말', extraWords()]]).forEach(pair => {
+                traitGroups().forEach(pair => {
                     const title = pair[0];
                     const words = pair[1];
                     if (!words.length) return;
@@ -932,16 +950,34 @@
                 return rows;
             }
 
+            // 키워드는 '꼭 넣을 말'로 따로 둔다. 안 고르면 AI 가 주머니에서 알아서 쓴다.
+            function togglePick(key, word) {
+                const t = traitOf(key);
+                if (!t.picks) t.picks = [];
+                const at = t.picks.indexOf(word);
+                if (at >= 0) t.picks.splice(at, 1);
+                else t.picks.push(word);
+                saveTraits();
+                renderTraits();
+            }
+
             function toggleWord(key, word) {
                 const t = traitOf(key);
                 const at = t.words.indexOf(word);
-                if (at >= 0) t.words.splice(at, 1);
-                else t.words.push(word);
+                if (at >= 0) {
+                    t.words.splice(at, 1);
+                    const gone = BANK.wordsOf(word);
+                    if (t.picks) t.picks = t.picks.filter(pick => !gone.includes(pick));
+                } else {
+                    t.words.push(word);
+                }
                 saveTraits();
                 renderTraits();
             }
 
             function renderTraits() {
+                // 낱말 판은 행동특성에서만 쓴다. 교과·창체는 실제로 한 수행평가·활동
+                // 이름을 적는 것이 맞고, 그 이름이 문장에 들어가야 한다.
                 const on = areaSelect.value === 'behavior';
                 traitsGroup.style.display = on ? '' : 'none';
                 topicsGroup.style.display = on ? 'none' : '';
@@ -1178,18 +1214,35 @@
             function buildTraitPrompt(area, group) {
                 const lines = group.map((student, i) => {
                     const t = student.trait;
+                    const picks = (t.picks || []);
                     const words = t.words.join(', ');
                     const note = (t.note || '').trim();
-                    return (i + 1) + '. ' + words + (note ? ' / 있었던 일: ' + note : '');
+                    return (i + 1) + '. ' + words
+                        + (picks.length ? ' / 꼭 넣을 말: ' + picks.join(', ') : '')
+                        + (note ? ' / 있었던 일: ' + note : '');
                 }).join('\n');
+
+                // 고른 특성마다 말 주머니를 함께 보낸다. 같은 특성을 고른 아이끼리
+                // 글이 닮지 않게, AI 가 아이마다 다른 말을 골라 쓰게 하려는 것이다.
+                const used = [];
+                group.forEach(student => student.trait.words.forEach(word => {
+                    if (!used.includes(word)) used.push(word);
+                }));
+                const bank = used.map(word => {
+                    const words = BANK.wordsOf(word);
+                    return words.length ? '- ' + word + ': ' + words.join(', ') : '';
+                }).filter(Boolean).join('\n');
                 return '초등학교 생활기록부 \'' + area.label + '\' 칸에 넣을 문장을 만듭니다.\n\n'
                     + '아이마다 선생님이 고른 낱말입니다. 낱말은 그 아이에게서 본 모습입니다.\n\n'
                     + lines + '\n\n'
+                    + (bank ? '낱말마다 쓸 수 있는 말입니다. 아이마다 다른 말을 골라 쓰세요.\n' + bank + '\n\n' : '')
                     + '각 번호마다 그 아이의 문장을 하나씩, 모두 ' + group.length + '개 만들어 주세요.\n\n'
                     + '지켜야 할 것\n'
                     + '- ' + area.rule + '\n'
                     + '- 고른 낱말이 모두 드러나게 하되 낱말을 그대로 나열하지 말고, 그 낱말이 학교생활\n'
                     + '  어디에서 어떻게 보였을지 헤아려 풀어 씁니다.\n'
+                    + '- 같은 낱말을 고른 아이가 여럿이면 위 말 주머니에서 서로 다른 말을 골라 씁니다.\n'
+                    + '- \'꼭 넣을 말\'이 적혀 있으면 그 말은 반드시 살려 씁니다.\n'
                     + '- \'있었던 일\'이 적혀 있으면 그 일을 문장 안에 살려 씁니다.\n'
                     + '- 한 사람에 한 문장에서 두 문장. \'~함.\' \'~임.\' 처럼 ㅁ 받침으로 끝나는\n'
                     + '  명사형으로 맺습니다. \'~하였다.\' \'~했습니다.\' 로 끝내면 안 됩니다.\n'
