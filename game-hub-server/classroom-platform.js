@@ -1295,7 +1295,7 @@ function createClassroomPlatform(options = {}) {
         school_id BIGINT NOT NULL REFERENCES classroom_schools(id) ON DELETE CASCADE,
         academic_year INTEGER NOT NULL,
         grade INTEGER NOT NULL CHECK (grade BETWEEN 1 AND 12),
-        area TEXT NOT NULL CHECK (area IN ('subject', 'activity')),
+        area TEXT NOT NULL CHECK (area IN ('subject', 'activity', 'behavior')),
         semester TEXT NOT NULL DEFAULT '',
         subject_name TEXT NOT NULL DEFAULT '',
         items TEXT NOT NULL DEFAULT '',
@@ -1303,6 +1303,15 @@ function createClassroomPlatform(options = {}) {
         updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
         UNIQUE (school_id, academic_year, grade, area, semester, subject_name)
       )`,
+      // 행동특성은 목록을 함께 쓰는 것이 아니라 '몇 자로 쓸지'를 함께 쓴다.
+      // 한 반은 500자, 옆 반은 200자로 쓰면 학년이 들쭉날쭉해진다.
+      `ALTER TABLE record_plan_items
+        ADD COLUMN IF NOT EXISTS char_target INTEGER`,
+      `ALTER TABLE record_plan_items
+        DROP CONSTRAINT IF EXISTS record_plan_items_area_check`,
+      `ALTER TABLE record_plan_items
+        ADD CONSTRAINT record_plan_items_area_check
+        CHECK (area IN ('subject', 'activity', 'behavior'))`,
       `CREATE TABLE IF NOT EXISTS classroom_teacher_dashboard_settings (
         id BIGSERIAL PRIMARY KEY,
         user_id BIGINT NOT NULL UNIQUE REFERENCES classroom_users(id) ON DELETE CASCADE,
@@ -8069,7 +8078,7 @@ function createClassroomPlatform(options = {}) {
     const semester = String(req.query.semester || req.body?.semester || '').slice(0, 20);
     const subject = String(req.query.subject || req.body?.subject || '').slice(0, 60);
     if (!(grade >= 1 && grade <= 12)) throw new HttpError(400, "BAD_GRADE", "학년이 없습니다.");
-    if (area !== 'subject' && area !== 'activity') throw new HttpError(400, "BAD_AREA", "칸이 잘못되었습니다.");
+    if (!['subject', 'activity', 'behavior'].includes(area)) throw new HttpError(400, "BAD_AREA", "칸이 잘못되었습니다.");
     return { year, grade, area, semester, subject };
   }
 
@@ -8079,7 +8088,7 @@ function createClassroomPlatform(options = {}) {
     if (!registration) return res.json({ items: '', updatedAt: null, updatedByName: '' });
     const key = planKey(req);
     const result = await pool.query(
-      `SELECT p.items, p.updated_at, u.display_name
+      `SELECT p.items, p.char_target, p.updated_at, u.display_name
        FROM record_plan_items p
        LEFT JOIN classroom_users u ON u.id = p.updated_by
        WHERE p.school_id = $1 AND p.academic_year = $2 AND p.grade = $3
@@ -8089,6 +8098,7 @@ function createClassroomPlatform(options = {}) {
     const row = result.rows[0];
     res.json({
       items: row ? row.items : '',
+      charTarget: row && row.char_target ? Number(row.char_target) : null,
       updatedAt: row ? row.updated_at : null,
       updatedByName: row ? (row.display_name || '') : ''
     });
@@ -8100,14 +8110,17 @@ function createClassroomPlatform(options = {}) {
     if (!registration) throw new HttpError(403, "NO_SCHOOL", "학교에 등록된 교사만 쓸 수 있습니다.");
     const key = planKey(req);
     const items = String(req.body?.items || '').slice(0, 4000);
+    const rawTarget = Number(req.body?.charTarget);
+    const charTarget = (rawTarget >= 20 && rawTarget <= 2000) ? Math.round(rawTarget) : null;
     const result = await pool.query(
       `INSERT INTO record_plan_items
-         (school_id, academic_year, grade, area, semester, subject_name, items, updated_by, updated_at)
-       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, NOW())
+         (school_id, academic_year, grade, area, semester, subject_name, items, char_target, updated_by, updated_at)
+       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, NOW())
        ON CONFLICT (school_id, academic_year, grade, area, semester, subject_name)
-       DO UPDATE SET items = EXCLUDED.items, updated_by = EXCLUDED.updated_by, updated_at = NOW()
+       DO UPDATE SET items = EXCLUDED.items, char_target = EXCLUDED.char_target,
+                     updated_by = EXCLUDED.updated_by, updated_at = NOW()
        RETURNING updated_at`,
-      [registration.school_id, key.year, key.grade, key.area, key.semester, key.subject, items, teacher.id]
+      [registration.school_id, key.year, key.grade, key.area, key.semester, key.subject, items, charTarget, teacher.id]
     );
     res.json({ ok: true, updatedAt: result.rows[0].updated_at });
   }));

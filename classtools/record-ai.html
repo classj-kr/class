@@ -302,6 +302,17 @@
                 </select>
             </div>
 
+            <!-- 몇 자로 쓸지는 학년이 맞춰야 한다. 한 반은 500자, 옆 반은 200자면 들쭉날쭉해진다.
+                 길이에 따라 문장 수도 달라진다. -->
+            <div class="form-group" id="length-group">
+                <label for="char-target">한 학생 분량</label>
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <input type="number" id="char-target" class="form-control" min="20" max="2000" step="10" style="width: 8em;">
+                    <span class="muted" style="color: var(--muted); font-size: 0.9rem;">자 안팎</span>
+                </div>
+                <div class="status" id="length-status"></div>
+            </div>
+
             <!-- 과목별 종합의견은 학기마다 따로 쓴다. 학년말에 쓰는 창체·행발에는 없다. -->
             <div class="form-group" id="semester-group" style="display: none;">
                 <label for="semester-select">학기</label>
@@ -395,6 +406,8 @@
             const topicsLabel = $('topics-label');
             const topicsInput = $('topics-input');
             const planStatus = $('plan-status');
+            const charTarget = $('char-target');
+            const lengthStatus = $('length-status');
             const countInput = $('count-input');
             const scopeGroup = $('scope-group');
             const scopeSelect = $('scope-select');
@@ -491,19 +504,25 @@
             let planSaveTimer = null;
             let planLoadToken = 0;
 
+            // 행동특성은 목록을 함께 쓰지 않고 분량만 함께 쓴다.
+            const DEFAULT_CHARS = { behavior: 300, subject: 150, activity: 200 };
+
             function planQuery() {
                 const area = currentArea();
                 if (!currentScope || !currentScope.grade) return null;
-                // 행동특성은 학생마다 고르는 것이라 학년이 함께 쓰는 목록이 없다.
-                if (areaSelect.value === 'behavior') return null;
-                if (!area.topics) return null;
+                const byTraits = areaSelect.value === 'behavior';
                 return {
                     year: new Date().getFullYear(),
                     grade: currentScope.grade,
                     area: areaSelect.value,
-                    semester: area.semester ? semesterSelect.value : '',
-                    subject: area.sub ? subInput.value.trim() : ''
+                    semester: (!byTraits && area.semester) ? semesterSelect.value : '',
+                    subject: (!byTraits && area.sub) ? subInput.value.trim() : ''
                 };
+            }
+
+            function targetChars() {
+                const n = Number(charTarget.value);
+                return (n >= 20 && n <= 2000) ? Math.round(n) : (DEFAULT_CHARS[areaSelect.value] || 150);
             }
 
             async function loadPlan() {
@@ -515,6 +534,11 @@
                     if (!res.ok) return false;
                     const body = await res.json();
                     if (token !== planLoadToken) return true;   // 그새 다른 과목으로 옮겼다
+                    charTarget.value = body.charTarget || DEFAULT_CHARS[areaSelect.value] || 150;
+                    lengthStatus.textContent = body.charTarget
+                        ? '학년이 함께 쓰는 분량입니다.'
+                        : '아직 정하지 않았습니다. 적어 두면 같은 학년 선생님도 씁니다.';
+                    if (areaSelect.value === 'behavior') return false;   // 목록은 행발에 없다
                     topicsInput.value = body.items || '';
                     planStatus.textContent = body.updatedAt
                         ? (body.updatedByName ? body.updatedByName + ' 선생님이 ' : '')
@@ -535,15 +559,24 @@
                         const res = await fetch('/api/teacher/record-plan', {
                             method: 'PUT',
                             headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify(Object.assign({ items: topicsInput.value }, key))
+                            body: JSON.stringify(Object.assign({
+                                items: areaSelect.value === 'behavior' ? '' : topicsInput.value,
+                                charTarget: targetChars()
+                            }, key))
                         });
-                        if (res.ok) planStatus.textContent = '학년이 함께 쓰도록 저장했습니다.';
+                        if (res.ok) {
+                            lengthStatus.textContent = '학년이 함께 쓰도록 저장했습니다.';
+                            if (areaSelect.value !== 'behavior') planStatus.textContent = '학년이 함께 쓰도록 저장했습니다.';
+                        }
                     } catch (_) { /* 못 보내면 이 브라우저 것만 남는다 */ }
                 }, 800);
             }
 
             async function swapTopics() {
                 planStatus.textContent = '';
+                // 학년을 모르면 서버 것이 없다. 그래도 분량 칸은 기본값으로 채워 둔다.
+                charTarget.value = DEFAULT_CHARS[areaSelect.value] || 150;
+                lengthStatus.textContent = '';
                 if (await loadPlan()) return;
                 swapTopicsLocal();
             }
@@ -634,6 +667,7 @@
                 if (confirm('이 학기·과목의 문장을 이 브라우저에서 지웁니다. 나이스에 이미 넣은 글은 그대로입니다. 지울까요?')) clearResult();
             });
             topicsInput.addEventListener('input', () => { saveTopics(); savePlan(); });
+            charTarget.addEventListener('input', savePlan);
             applyArea();
 
             // ── API 키 ─────────────────────────────────────────────────────
@@ -1294,6 +1328,7 @@
             // 행발은 학생마다 고른 낱말이 다르므로 한 묶음을 한 번에 보내고 번호로 받는다.
             // 한 명씩 따로 부르면 서로 본 적이 없어 오히려 다 비슷해진다.
             function buildTraitPrompt(area, group) {
+                const chars = targetChars();
                 const lines = group.map((student, i) => {
                     const t = student.trait;
                     const picks = (t.picks || []);
@@ -1326,7 +1361,12 @@
                     + '- 같은 낱말을 고른 학생이 여럿이면 위 말 주머니에서 서로 다른 말을 골라 씁니다.\n'
                     + '- \'꼭 넣을 말\'이 적혀 있으면 그 말은 반드시 살려 씁니다.\n'
                     + '- \'있었던 일\'이 적혀 있으면 그 일을 문장 안에 살려 씁니다.\n'
-                    + '- 한 사람에 한두 문장. \'~함.\' \'~임.\' 처럼 ㅁ 받침으로 끝나는\n'
+                    + '- 한 학생 글은 ' + chars + '자 안팎으로 합니다. 길면 여러 문장으로 나누어 쓰되\n'
+                    + '  문장마다 다른 모습을 담고, 같은 말을 돌려 쓰며 길이만 채우지 마세요.\n'
+                    + '- 고른 낱말이 하나뿐인 학생도 같은 분량으로 씁니다. 낱말이 적다고 짧게 쓰지 마세요.\n'
+                    + '  그 낱말 하나가 수업 시간, 쉬는 시간, 모둠 활동, 당번 일처럼 서로 다른 자리에서\n'
+                    + '  어떻게 보였을지 헤아려 여러 장면으로 풀어 씁니다.\n'
+                    + '- \'~함.\' \'~임.\' 처럼 ㅁ 받침으로 끝나는\n'
                     + '  명사형으로 맺습니다. \'~하였다.\' \'~했습니다.\' 로 끝내면 안 됩니다.\n'
                     + '- 번호끼리 겹치면 안 됩니다. 같은 낱말을 고른 학생이라도 문장 첫머리와 보는 곳을\n'
                     + '  서로 달리하세요.\n'
@@ -1340,7 +1380,7 @@
                     + '- 솜씨를 재는 말(잘함, 뛰어남, 훌륭함, 탁월함, 우수함, 소질이 있음)을 쓰지 마세요.\n'
                     + '  무엇을 어떻게 하더라는 모습으로 씁니다. \'리코더를 잘 붊\' 이 아니라\n'
                     + '  \'친구 소리에 맞추어 손가락을 짚음\' 처럼 씁니다.\n'
-                    + '- 한 학생 글은 60자 안팎으로 합니다.\n'
+
                     + '- 학생 이름이나 번호는 문장 안에 넣지 않습니다.\n\n'
                     + '\'1. \' 처럼 번호를 붙여 한 줄에 하나씩만 적고, 다른 말은 덧붙이지 마세요.';
             }
@@ -1359,6 +1399,9 @@
                 const vary = VARY[areaSelect.value] || VARY.behavior;
                 const item = area.item || '활동';
                 const pool = areaWordPool(areaSelect.value);
+                const chars = targetChars();
+                const topicCount = Math.max(1, topicsInput.value.split('\n').map(t => t.trim()).filter(Boolean).length);
+                const perTopic = Math.max(20, Math.round(chars / topicCount));
                 return '초등학교 생활기록부 \'' + semester + where + '\' 칸에 넣을 문장을 만듭니다.\n\n'
                     + '[' + item + '] ' + topic + '\n\n'
                     + '선생님은 ' + item + ' 이름만 적었습니다. 초등학교 ' + item + '에서 학생들이 무엇을 하고\n'
@@ -1383,7 +1426,8 @@
                     + '- 솜씨를 재는 말(잘함, 뛰어남, 훌륭함, 탁월함, 우수함, 소질이 있음)을 쓰지 마세요.\n'
                     + '  무엇을 어떻게 하더라는 모습으로 씁니다. \'리코더를 잘 붊\' 이 아니라\n'
                     + '  \'친구 소리에 맞추어 손가락을 짚음\' 처럼 씁니다.\n'
-                    + '- 한 문장은 40자 안팎으로 합니다.\n'
+                    + '- 한 문장은 ' + perTopic + '자 안팎으로 합니다. 한 학생이 받는 글 전체가\n'
+                    + '  ' + chars + '자 안팎이 되도록 맞춘 길이입니다.\n'
                     + '- 학생 이름이나 번호는 문장 안에 넣지 않습니다.\n\n'
                     + '\'1. \' 처럼 번호를 붙여 한 줄에 하나씩만 적고, 다른 말은 덧붙이지 마세요.';
             }
