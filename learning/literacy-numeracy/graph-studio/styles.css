@@ -84,13 +84,6 @@ button.text-button {
   min-height:30px
 }
 
-.eyebrow {
-  font-size:10px;
-  letter-spacing:.17em;
-  font-weight:800;
-  color:var(--muted)
-}
-
 h1,h2,p {
   margin:0
 }
@@ -107,78 +100,84 @@ h2 {
 
 .board {
   height:100dvh;
-  min-height:560px;
   display:flex;
-  flex-direction:column
+  flex-direction:column;
+  overflow:hidden
 }
 
-.topbar {
-  height:86px;
-  flex-shrink:0;
-  background:#fff;
-  border-bottom:1px solid var(--line);
-  display:flex;
-  align-items:center;
-  gap:32px;
-  padding:0 26px
+.sr-only {
+  position:absolute;
+  width:1px;
+  height:1px;
+  padding:0;
+  margin:-1px;
+  overflow:hidden;
+  clip-path:inset(50%);
+  white-space:nowrap;
+  border:0
 }
 
-.brand {
-  display:flex;
-  align-items:center;
-  gap:16px;
-  min-width:230px
-}
+/* The host is inserted by the shared site navigation on classj.kr. */
+site-back-navigation { top:auto; bottom:8px; left:296px; }
+.sidebar-hidden site-back-navigation { left:8px; }
 
-.brand a {
+.board-menu { position:relative; }
+.board-menu summary {
   display:grid;
   place-items:center;
-  color:var(--ink);
-  text-decoration:none;
-  width:34px;
-  height:34px;
+  width:38px;
+  height:38px;
+  border-radius:6px;
+  cursor:pointer;
+  list-style:none;
+  font-size:24px;
+  line-height:1
+}
+.board-menu summary::-webkit-details-marker { display:none; }
+.board-menu summary:hover,.board-menu[open] summary { background:#e8efe8; }
+.menu-content {
+  position:absolute;
+  top:calc(100% + 8px);
+  right:-3px;
+  width:260px;
+  max-width:calc(100vw - 16px);
+  max-height:calc(100dvh - 72px);
+  overflow:auto;
+  padding:12px;
+  background:#fff;
   border:1px solid var(--line);
-  border-radius:50%
+  border-radius:10px;
+  box-shadow:0 8px 28px #193e2a22
 }
-
-.brand .eyebrow {
-  display:block;
-  margin-bottom:4px
-}
-
-.document-title {
-  flex:1;
-  min-width:80px;
-  display:grid;
-  gap:5px
-}
-
+.document-title { display:grid; gap:7px; padding:2px 2px 12px; }
+.document-title label { font-size:12px; color:var(--muted); }
 .document-title input {
-  width:min(100%,340px);
-  border:0;
-  background:transparent;
+  width:100%;
+  min-width:0;
+  padding:8px;
+  border:1px solid var(--line);
+  border-radius:6px;
   color:var(--ink);
-  font-weight:650;
-  font-size:14px;
-  text-overflow:ellipsis;
-  padding:2px 0
+  font-size:14px
 }
-
-.document-title span {
-  font-size:11px;
-  color:var(--muted)
+.document-title span { font-size:11px; color:var(--muted); }
+.menu-content nav { display:grid; border-top:1px solid var(--line); padding-top:6px; }
+.menu-content nav button,.menu-content nav a {
+  display:block;
+  width:100%;
+  padding:10px;
+  border:0;
+  text-align:left;
+  text-decoration:none;
+  border-radius:6px;
+  color:var(--ink);
+  font:500 13px/20px Pretendard,"Malgun Gothic",sans-serif
 }
-
-.top-actions {
-  display:flex;
-  align-items:center;
-  gap:8px;
-  white-space:nowrap
-}
+.menu-content nav a:hover { background:#e8efe8; }
 
 .workspace {
   display:grid;
-  grid-template-columns:336px minmax(0,1fr);
+  grid-template-columns:288px minmax(0,1fr);
   flex:1;
   min-height:0
 }
@@ -187,7 +186,7 @@ h2 {
   background:#fff;
   overflow:auto;
   border-right:1px solid var(--line);
-  padding:24px 20px 14px;
+  padding:12px;
   scrollbar-width:thin
 }
 
@@ -195,12 +194,11 @@ h2 {
   display:flex;
   align-items:center;
   justify-content:space-between;
-  margin-bottom:19px
+  margin-bottom:10px
 }
 
 .sidebar-heading h2 {
-  font-size:20px;
-  margin-top:5px
+  font-size:15px
 }
 
 .function-list {
@@ -261,7 +259,8 @@ h2 {
 }
 
 .function-preview .katex {
-  font-size:1em
+  font-size:1em;
+  white-space:nowrap
 }
 
 .remove-function {
@@ -475,30 +474,45 @@ h2 {
 }
 
 .stage {
+  position:relative;
   min-width:0;
   min-height:0;
   display:flex;
-  flex-direction:column;
-  padding:18px 22px 0
+  flex-direction:column
 }
 
 .stage-toolbar {
+  position:absolute;
+  z-index:5;
+  top:8px;
+  left:8px;
+  right:8px;
   display:flex;
-  align-items:center;
+  align-items:flex-start;
   justify-content:space-between;
-  margin-bottom:14px;
-  gap:10px
+  gap:4px;
+  pointer-events:none
 }
 
 .tool-group {
   display:flex;
-  gap:5px;
-  align-items:center
+  gap:2px;
+  align-items:center;
+  padding:2px;
+  border:1px solid var(--line);
+  border-radius:8px;
+  background:#fffffff5;
+  box-shadow:0 2px 8px #193e2a0d;
+  pointer-events:auto
 }
 
 .stage-toolbar button {
   background:transparent;
-  border-color:transparent
+  border-color:transparent;
+  min-height:38px;
+  min-width:36px;
+  padding:6px 9px;
+  border-radius:6px
 }
 
 .stage-toolbar button:hover {
@@ -510,22 +524,12 @@ h2 {
   color:#22664f
 }
 
-.divider {
-  height:18px;
-  width:1px;
-  background:#ccd8cf;
-  margin:0 7px
-}
-
 .canvas-wrap {
   position:relative;
   flex:1;
-  min-height:260px;
-  border:1px solid #d3dfd5;
-  border-radius:12px;
+  min-height:0;
   background:#fff;
-  overflow:hidden;
-  box-shadow:0 4px 20px #233c2b04
+  overflow:hidden
 }
 
 canvas {
@@ -547,16 +551,14 @@ canvas.dragging {
 .graph-formula {
   pointer-events:none;
   position:absolute;
-  top:20px;
-  left:22px;
-  max-width:calc(100% - 44px);
-  padding:10px 14px;
-  background:#fffffff0;
-  border:1px solid #e3eae3;
-  border-radius:9px;
+  top:62px;
+  left:12px;
+  max-width:calc(100% - 24px);
+  padding:5px 8px;
+  background:#ffffffed;
+  border-radius:5px;
   overflow:auto;
-  font-size:19px;
-  box-shadow:0 2px 8px #17332904
+  font-size:18px
 }
 
 .graph-formula .katex {
@@ -564,21 +566,18 @@ canvas.dragging {
 }
 
 .graph-formula small {
-  display:block;
-  color:var(--muted);
-  font:11px Pretendard,"Malgun Gothic",sans-serif;
-  margin-top:8px
+  display:none
 }
 
 .trace-readout {
   position:absolute;
-  right:18px;
-  top:20px;
-  max-width:calc(100% - 36px);
+  right:12px;
+  top:62px;
+  max-width:calc(100% - 24px);
   border:1px solid #c2d9d0;
-  border-radius:9px;
+  border-radius:7px;
   background:#eff8f2;
-  padding:10px 13px;
+  padding:8px 10px;
   font:16px var(--math-font);
   pointer-events:none
 }
@@ -586,22 +585,11 @@ canvas.dragging {
 .canvas-bottom {
   pointer-events:none;
   position:absolute;
-  bottom:14px;
-  left:18px;
-  right:14px;
+  bottom:8px;
+  right:8px;
   display:flex;
   align-items:flex-end;
-  justify-content:space-between;
-  gap:12px
-}
-
-.canvas-bottom p {
-  font-size:11px;
-  line-height:1.6;
-  color:var(--muted);
-  background:#ffffffed;
-  padding:5px 8px;
-  border-radius:5px
+  justify-content:flex-end
 }
 
 .range-control {
@@ -631,25 +619,6 @@ canvas.dragging {
   color:var(--muted)
 }
 
-.stage-footer {
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:12px 2px;
-  font-size:11px;
-  color:var(--muted);
-  gap:8px
-}
-
-.stage-footer i {
-  display:inline-block;
-  width:6px;
-  height:6px;
-  border-radius:50%;
-  background:#439677;
-  margin-right:4px
-}
-
 .sidebar-hidden .workspace {
   grid-template-columns:minmax(0,1fr)
 }
@@ -659,7 +628,7 @@ canvas.dragging {
 }
 
 .teaching .workspace {
-  grid-template-columns:300px minmax(0,1fr)
+  grid-template-columns:288px minmax(0,1fr)
 }
 
 .teaching.sidebar-hidden .workspace {
@@ -849,152 +818,31 @@ dialog::backdrop {
   display:none!important
 }
 
-@media(min-width:1500px) {
-  .workspace {
-    grid-template-columns:360px minmax(0,1fr)
-  }
-  .sidebar {
-    padding:27px 25px
-  }
-  .stage {
-    padding:22px 30px 0
-  }
-}
-
-@media(max-width:1050px) {
-  .topbar {
-    gap:14px;
-    padding:0 16px
-  }
-  .brand {
-    min-width:180px
-  }
-  .document-title {
-    display:none
-  }
-  .top-actions {
-    margin-left:auto
-  }
-  .workspace {
-    grid-template-columns:300px minmax(0,1fr)
-  }
-  .sidebar {
-    padding:20px 16px
-  }
-  .stage {
-    padding:14px 14px 0
-  }
-  .canvas-bottom p {
-    display:none
-  }
-  .graph-formula {
-    font-size:17px;
-    left:14px;
-    top:14px
-  }
-  .trace-readout {
-    top:90px
-  }
-  .stage-footer #viewRange {
-    display:none
-  }
-}
-
 @media(max-width:760px) {
-  .board {
-    min-height:460px
-  }
-  .topbar {
-    height:76px;
-    padding:0 12px;
-    gap:8px
-  }
-  .brand {
-    min-width:0;
-    gap:8px
-  }
-  .brand a {
-    width:28px;
-    height:28px
-  }
-  .brand h1 {
-    font-size:18px
-  }
-  .brand .eyebrow {
-    font-size:8px
-  }
-  .top-actions {
-    gap:4px
-  }
-  .top-actions button {
-    font-size:11px;
-    min-height:34px;
-    padding:7px
-  }
-  #teachingButton {
-    display:none
-  }
+  site-back-navigation { left:8px; }
   .workspace,.teaching .workspace {
     position:relative;
     display:flex
   }
-  .stage {
-    width:100%;
-    padding:10px 10px 0
-  }
+  .stage { width:100%; }
   .sidebar {
     position:absolute;
-    z-index:3;
-    top:56px;
-    bottom:36px;
-    left:10px;
-    width:min(320px,calc(100% - 20px));
+    z-index:4;
+    top:60px;
+    bottom:8px;
+    left:8px;
+    width:min(300px,calc(100% - 16px));
     border:1px solid var(--line);
-    border-radius:12px;
-    box-shadow:0 10px 35px #233c2b22
+    border-radius:8px;
+    box-shadow:0 8px 24px #233c2b22
   }
-  .sidebar-hidden .sidebar {
-    display:none
-  }
-  .stage-toolbar {
-    margin-bottom:10px
-  }
-  .stage-toolbar button {
-    font-size:12px;
-    padding:7px 8px
-  }
-  .divider {
-    margin:0 2px
-  }
-  .graph-formula {
-    font-size:16px;
-    max-width:calc(100% - 28px);
-    padding:8px 10px
-  }
-  .range-control {
-    padding:2px
-  }
-  .canvas-bottom {
-    bottom:10px;
-    right:10px;
-    left:10px;
-    justify-content:flex-end
-  }
-  .save-scene {
-    flex-direction:column
-  }
-  .dialog-footer {
-    flex-direction:column
-  }
-  dialog {
-    padding:22px
-  }
-  .trace-readout {
-    font-size:14px
-  }
-  .stage-footer {
-    padding:9px 2px
-  }
+  .stage-toolbar button { font-size:12px; min-height:40px; min-width:38px; padding:6px; }
+  .board-menu summary { width:38px; height:40px; }
+  .graph-formula { font-size:16px; }
+  .range-control { padding:2px; }
+  .save-scene,.dialog-footer { flex-direction:column; }
+  dialog { padding:22px; }
+  .trace-readout { font-size:14px; }
 }
 
 @media print {
@@ -1094,11 +942,11 @@ dialog::backdrop {
 }
 .analysis-panel {
   position: absolute;
-  top: 82px;
-  right: 18px;
+  top: 62px;
+  right: 8px;
   width: 290px;
   max-width: calc(100% - 28px);
-  max-height: calc(100% - 154px);
+  max-height: calc(100% - 124px);
   overflow: auto;
   background: #fffffff7;
   border: 1px solid #cdded4;
@@ -1127,10 +975,9 @@ dialog::backdrop {
 .analysis-result .katex { font-size: 1em; }
 .analysis-open .trace-readout { top: auto; bottom: 72px; }
 @media (max-width: 760px) {
-  .analysis-panel { top: 84px; right: 10px; padding: 12px; width: 260px; max-height: 250px; }
+  .analysis-panel { padding: 12px; width: 260px; max-height: min(300px,calc(100% - 124px)); }
   .analysis-panel header { margin-bottom: 7px; }
   .analysis-tabs { margin-bottom: 9px; }
-  .stage-toolbar button { padding: 7px 6px; }
 }
 @media print {
   .print-analysis { margin-top: 12px; border-top: 1px solid #ccc; padding-top: 8px; font: 12px/1.6 sans-serif; break-inside: avoid; }

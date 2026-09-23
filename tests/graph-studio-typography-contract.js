@@ -17,7 +17,6 @@ assert.equal(C.latex(C.compile('x^2^3').ast),'x^{2^{3}}');
 assert.match(html, /vendor\/katex.min.css/);
 assert.match(html, /vendor\/katex.min.js/);
 assert.match(html, /graph-core.js/);
-assert.match(html, /<h1>그래프 칠판<\/h1>/);
 console.log('graph board math typography passed');
 
 assert.equal(C.latex(C.compile('1e-8^2').ast),'\\left(1\\times 10^{-8}\\right)^{2}');

@@ -41,7 +41,7 @@
   function flushSave() {
     clearTimeout(saveTimer); if (!pendingSave) return; pendingSave = false;
     try { localStorage.setItem(KEY, JSON.stringify(state)); storageAvailable = true; $('saveStatus').textContent = '이 브라우저에 자동 저장됨'; }
-    catch { storageAvailable = false; $('saveStatus').textContent = '자동 저장 불가 · 수업 파일을 내보내세요'; }
+    catch { if (storageAvailable) notify('자동 저장할 수 없어요. 더보기 메뉴에서 수업 파일을 내보내세요.'); storageAvailable = false; $('saveStatus').textContent = '자동 저장 불가 · 수업 파일을 내보내세요'; }
   }
   function changed() { pendingSave = true; clearTimeout(saveTimer); $('saveStatus').textContent = storageAvailable ? '저장 중…' : '자동 저장 불가 · 수업 파일을 내보내세요'; saveTimer = setTimeout(flushSave, 220); requestDraw(); historyButtons(); }
   function requestDraw() { if (!frame) frame = requestAnimationFrame(() => { frame = 0; draw(); }); }
@@ -356,9 +356,12 @@
   $('panButton').onclick = () => setMode('pan'); $('traceButton').onclick = () => { if (!state.showCoordinates) { checkpoint(); state.showCoordinates = true; $('showCoordinates').checked = true; changed(); } setMode('trace'); };
   $('undoButton').onclick = () => travel(true); $('redoButton').onclick = () => travel(false); $('homeButton').onclick = home;
   document.querySelectorAll('[data-zoom]').forEach(node => node.onclick = () => { checkpoint(); zoom(node.dataset.zoom === 'in' ? .8 : 1.25); });
+  const boardMenu = $('boardMenu');
+  boardMenu.addEventListener('click', event => { if (event.target.closest('button')) boardMenu.open = false; });
+  document.addEventListener('pointerdown', event => { if (!boardMenu.contains(event.target)) boardMenu.open = false; });
   $('lessonTitle').onfocus = checkpoint; $('lessonTitle').oninput = event => { state.title = event.target.value; changed(); };
   document.addEventListener('keydown', event => {
-    if (event.key === 'Escape') { pointers.clear(); dragging = null; canvas.classList.remove('dragging'); if (document.body.classList.contains('teaching')) $('teachingButton').click(); }
+    if (event.key === 'Escape') { if (boardMenu.open) { boardMenu.open = false; $('menuButton').focus(); return; } pointers.clear(); dragging = null; canvas.classList.remove('dragging'); if (document.body.classList.contains('teaching')) $('teachingButton').click(); }
     if (!(event.ctrlKey || event.metaKey) || ['INPUT', 'TEXTAREA'].includes(event.target.tagName) || document.querySelector('dialog[open]')) return;
     if (event.key.toLowerCase() === 'z') { event.preventDefault(); travel(!event.shiftKey); } else if (event.key.toLowerCase() === 'y') { event.preventDefault(); travel(false); }
   });

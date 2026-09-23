@@ -8,6 +8,7 @@ const root = path.resolve(__dirname,'..'), output = path.join(root,'outputs','gr
 let browser, server, url, context, page, errors;
 const types = {'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.woff2':'font/woff2'};
 const saved = () => page.evaluate(()=>JSON.parse(localStorage.getItem('graph-board:current:v1')));
+async function menuAction(id) { await page.locator('#menuButton').click(); await page.locator('#'+id).click(); }
 async function settled() { await page.waitForFunction(()=>document.getElementById('saveStatus').textContent.includes('자동 저장됨')); }
 async function parameter(name,value) { await page.getByRole('spinbutton',{name:`${name} 값`,exact:true}).fill(String(value)); await page.keyboard.press('Tab'); await settled(); }
 async function openPreset(name) { await page.locator('#presetDrawer').evaluate(el=>el.open=true); await page.getByRole('button',{name,exact:true}).click(); }
@@ -57,22 +58,22 @@ test('pan, zoom, coordinate exploration and reload preserve state',async()=>{
   const box=await page.locator('#graphCanvas').boundingBox();await page.mouse.move(box.x+box.width*.6,box.y+box.height*.6);await page.mouse.wheel(0,-150);await settled();assert.ok((await saved()).view.range<6);
   await page.locator('#traceButton').click();await page.mouse.click(box.x+box.width*.55,box.y+box.height*.55);await settled();await page.locator('#traceReadout').waitFor({state:'visible'});
   const before=await saved();await page.reload();await page.waitForFunction(()=>document.getElementById('graphCanvas').width>100);assert.deepEqual(await saved(),before);
-  await page.locator('#teachingButton').click();assert.equal(await page.locator('.function-source').first().isVisible(),false);assert.equal(await page.locator('#sliders').isVisible(),true);await page.screenshot({path:path.join(output,'teaching.png')});
+  await menuAction('teachingButton');assert.equal(await page.locator('.function-source').first().isVisible(),false);assert.equal(await page.locator('#sliders').isVisible(),true);await page.screenshot({path:path.join(output,'teaching.png')});
 });
 test('named scene save/open and file export/import round trip',async()=>{
-  await parameter('h',3);await page.locator('#snapshotButton').click();await settled();await page.locator('#scenesButton').click();await page.locator('#sceneName').fill('평행이동 수업');await page.getByRole('button',{name:'현재 수업 보관',exact:true}).click();await settled();
+  await parameter('h',3);await page.locator('#snapshotButton').click();await settled();await menuAction('scenesButton');await page.locator('#sceneName').fill('평행이동 수업');await page.getByRole('button',{name:'현재 수업 보관',exact:true}).click();await settled();
   const downloadPromise=page.waitForEvent('download');await page.locator('#jsonButton').click();const download=await downloadPromise;const file=path.join(output,'lesson.graph.json');await download.saveAs(file);const exported=JSON.parse(await fs.readFile(file,'utf8'));
   assert.equal(exported.state.functions[0].params.h,3);assert.equal(exported.state.ghosts.length,1);
-  await page.locator('#scenesDialog [data-close]').click();await parameter('h',-2);await page.locator('#scenesButton').click();await page.getByRole('button',{name:'평행이동 수업 열기',exact:true}).click();await settled();assert.equal((await saved()).functions[0].params.h,3);
-  await parameter('h',-4);await page.locator('#scenesButton').click();await page.locator('#importFile').setInputFiles(file);await page.locator('#scenesDialog').waitFor({state:'hidden'});await settled();assert.deepEqual(await saved(),exported.state);
-  await page.locator('#scenesButton').click();await page.locator('#importFile').setInputFiles({name:'bad.json',mimeType:'application/json',buffer:Buffer.from('{"app":"class-graph-board","state":{"version":9}}')});await page.waitForFunction(()=>document.getElementById('toast').textContent.includes('올바른'));assert.deepEqual(await saved(),exported.state);
+  await page.locator('#scenesDialog [data-close]').click();await parameter('h',-2);await menuAction('scenesButton');await page.getByRole('button',{name:'평행이동 수업 열기',exact:true}).click();await settled();assert.equal((await saved()).functions[0].params.h,3);
+  await parameter('h',-4);await menuAction('scenesButton');await page.locator('#importFile').setInputFiles(file);await page.locator('#scenesDialog').waitFor({state:'hidden'});await settled();assert.deepEqual(await saved(),exported.state);
+  await menuAction('scenesButton');await page.locator('#importFile').setInputFiles({name:'bad.json',mimeType:'application/json',buffer:Buffer.from('{"app":"class-graph-board","state":{"version":9}}')});await page.waitForFunction(()=>document.getElementById('toast').textContent.includes('올바른'));assert.deepEqual(await saved(),exported.state);
 });
 test('PNG download includes graph and lesson; full and blank printing work',async()=>{
-  await parameter('h',2);await page.locator('#snapshotButton').click();await settled();await page.locator('#exportButton').click();const downloadPromise=page.waitForEvent('download');await page.locator('#pngButton').click();const download=await downloadPromise;const file=path.join(output,'export.png');await download.saveAs(file);const png=await fs.readFile(file);assert.equal(png.toString('ascii',1,4),'PNG');assert.ok(png.readUInt32BE(16)>800);assert.ok(png.readUInt32BE(20)>600);
+  await parameter('h',2);await page.locator('#snapshotButton').click();await settled();await menuAction('exportButton');const downloadPromise=page.waitForEvent('download');await page.locator('#pngButton').click();const download=await downloadPromise;const file=path.join(output,'export.png');await download.saveAs(file);const png=await fs.readFile(file);assert.equal(png.toString('ascii',1,4),'PNG');assert.ok(png.readUInt32BE(16)>800);assert.ok(png.readUInt32BE(20)>600);
   await page.evaluate(()=>{window.printCount=0;window.print=()=>{window.printCount++;window.dispatchEvent(new Event('beforeprint'));};});
-  await page.locator('#exportButton').click();await page.locator('#printButton').click();await page.waitForFunction(()=>window.printCount===1);assert.equal(await page.locator('#printSheet .print-formulas>div').count(),2);
+  await menuAction('exportButton');await page.locator('#printButton').click();await page.waitForFunction(()=>window.printCount===1);assert.equal(await page.locator('#printSheet .print-formulas>div').count(),2);
   await page.emulateMedia({media:'print'});await page.screenshot({path:path.join(output,'print-full.png'),fullPage:true});await page.pdf({path:path.join(output,'lesson.pdf'),preferCSSPageSize:true,printBackground:true});
-  await page.emulateMedia({media:'screen'});await page.locator('#exportButton').click();await page.locator('#blankPrintButton').click();await page.waitForFunction(()=>window.printCount===2);assert.equal(await page.locator('#printSheet .print-formulas').count(),0);assert.match(await page.locator('#printSheet').textContent(),/이름/);
+  await page.emulateMedia({media:'screen'});await menuAction('exportButton');await page.locator('#blankPrintButton').click();await page.waitForFunction(()=>window.printCount===2);assert.equal(await page.locator('#printSheet .print-formulas').count(),0);assert.match(await page.locator('#printSheet').textContent(),/이름/);
   await page.emulateMedia({media:'print'});await page.screenshot({path:path.join(output,'print-blank.png'),fullPage:true});
 });
 test('phone layout, panel control and touch pinch',async()=>{
@@ -106,7 +107,7 @@ test('integral endpoints drag, signed values differ from area, exports include a
   await page.waitForFunction(()=>document.getElementById('analysisResult').textContent.includes('넓이 ≈ 4'));assert.match(await page.locator('#analysisResult').textContent(),/정적분 ≈ 0/);
   await drag(await graphPoint(-2,0),await graphPoint(-1,0));await settled();assert.equal((await saved()).analysis.from,-1);await page.waitForFunction(()=>document.getElementById('analysisResult').textContent.includes('정적분 ≈ 1.5'));assert.match(await page.locator('#analysisResult').textContent(),/넓이 ≈ 2.5/);
   await page.locator('#sidebar').evaluate(el=>el.scrollTop=0);await page.screenshot({path:path.join(output,'integral.png')});
-  await page.evaluate(()=>{window.printCount=0;window.print=()=>window.printCount++;});await page.locator('#exportButton').click();await page.locator('#printButton').click();await page.waitForFunction(()=>window.printCount===1);assert.match(await page.locator('#printSheet .print-analysis').textContent(),/정적분 ≈ 1.5/);
+  await page.evaluate(()=>{window.printCount=0;window.print=()=>window.printCount++;});await menuAction('exportButton');await page.locator('#printButton').click();await page.waitForFunction(()=>window.printCount===1);assert.match(await page.locator('#printSheet .print-analysis').textContent(),/정적분 ≈ 1.5/);
   await page.getByRole('textbox',{name:'1번 함수 수식',exact:true}).fill('1/x');await settled();await page.waitForFunction(()=>document.querySelector('#analysisResult .analysis-error'));assert.match(await page.locator('#analysisResult').textContent(),/수렴/);
 });
 test('mobile analysis stays within screen and accepts exact bounds',async()=>{
