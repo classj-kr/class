@@ -663,22 +663,22 @@ const EN = {
         }
     ],
     quiz: [
-        { q: "Why did the king say to throw the seventh child away?", choices: ["The child was ill", "It was a girl again", "A fortune teller told him to"], answer: 1 },
+        { q: "What did the queen put in the jade box with the baby?", choices: ["The queen's own silver knife", "One set of clothes and a paper with her name", "Straw shoes and a bowl of porridge"], answer: 1 },
         { q: "What does the name Barideggi mean?", choices: ["The child from the river", "The thrown-away child", "The seventh child"], answer: 1 },
-        { q: "Who fished out the jade box and raised her?", choices: ["A couple who worked a ferry", "An old monk at a mountain temple", "A young king of the next country"], answer: 0 },
-        { q: "What did the six sisters do when asked to go?", choices: ["Drew lots and one went", "Each gave a reason and did not go", "All six set out together"], answer: 1 },
-        { q: "What did the old woman call the black river?", choices: ["The river the dead cross", "The river the healing water runs in", "The river only kings cross"], answer: 0 },
-        { q: "What did Barideggi do to pay for the water?", choices: ["Gave up the silver knife", "Worked for nine years", "Offered the three flowers"], answer: 1 },
+        { q: "Where did the old woman say Barideggi had come from?", choices: ["The river brought her", "A servant brought her from the palace", "A ferry passenger left her"], answer: 0 },
+        { q: "Why did the king look for his seventh daughter after fifteen years?", choices: ["The queen saw the seventh girl in a dream", "The old couple brought the jade box to the palace", "None of the six daughters would go for the water"], answer: 2 },
+        { q: "How did the boat on the black river take Barideggi across?", choices: ["The old woman rowed it for her", "It took the silver knife as fare", "It moved by itself when she stepped in"], answer: 2 },
+        { q: "What did the guardian tell Barideggi to do, since she had no money?", choices: ["Pay with the silver knife", "Pay with work", "Fetch three flowers"], answer: 1 },
         { q: "What was coming out when she reached the palace?", choices: ["The king's hunting party", "The sisters' wedding chairs", "The king's and queen's biers"], answer: 2 },
         { q: "What work did she choose after saving them?", choices: ["Ruling half the country", "Guiding the road of the dead", "Bringing the old couple to the palace"], answer: 1 },
         {
             q: "Which reaction to this book does NOT fit?",
             wide: true,
             choices: [
-                "The six sisters each gave a reason, so having been given a lot does not mean you pay it back.",
-                "The water she carried for nine years was the healing water, so what is precious can be in your hands already.",
-                "She chose to guide the dead instead of half a country, so somebody thrown away knows the thrown-away.",
-                "The king never knelt to his daughter in the end, so he could not own what he had done to the last."
+                "The six sisters each found an excuse when the water was spoken of, so having been given a lot does not mean you pay it back.",
+                "She helped the old man weed and the old woman wash before asking the way, so she earned the road with her hands first.",
+                "She set out saying that being born was gift enough, so whoever counts a gift as large pays it back large.",
+                "The six sisters stood beside Barideggi and laid the flowers with her, so they added their hearts late but still."
             ],
             answer: 3
         }
@@ -895,22 +895,22 @@ const EN = {
 };
 
 const QUIZ = [
-    { q: "임금이 일곱째 아이를 버리라고 한 까닭은 무엇인가요?", choices: ["아이가 병을 앓아서", "또 딸이어서", "점쟁이가 그리 말해서"], answer: 1 },
+    { q: "왕비가 옥함에 아기와 함께 넣은 것은 무엇인가요?", choices: ["왕비가 늘 차던 은장도", "옷 한 벌과 이름 적은 종이", "짚신 몇 켤레와 죽 한 그릇"], answer: 1 },
     { q: "바리데기라는 이름은 무슨 뜻인가요?", choices: ["강에서 온 아이", "버려진 아이", "일곱째 아이"], answer: 1 },
-    { q: "옥함을 건져 바리데기를 기른 사람은 누구인가요?", choices: ["나룻배 부리는 부부", "산속 절의 늙은 스님", "이웃 나라의 젊은 임금"], answer: 0 },
-    { q: "여섯 언니는 약수를 구하러 가자는 말에 어떻게 했나요?", choices: ["제비를 뽑아 한 사람이 갔다", "저마다 까닭을 대고 가지 않았다", "여섯이 함께 길을 떠났다"], answer: 1 },
-    { q: "검은 강가의 노파는 그 강을 무엇이라 했나요?", choices: ["죽은 이들이 건너는 강", "약수가 흐르는 강", "임금만 건너는 강"], answer: 0 },
-    { q: "바리데기는 약수 값으로 무엇을 했나요?", choices: ["은장도를 내주었다", "아홉 해 동안 일을 했다", "꽃 세 송이를 바쳤다"], answer: 1 },
+    { q: "할머니는 바리데기가 어디서 왔다고 말해 주었나요?", choices: ["강물이 데려왔다", "궁에서 신하가 데려왔다", "나룻배 손님이 두고 갔다"], answer: 0 },
+    { q: "임금이 열다섯 해 만에 일곱째 딸을 찾게 된 까닭은 무엇인가요?", choices: ["왕비가 꿈에서 일곱째 딸을 보아서", "늙은 부부가 옥함을 들고 궁에 찾아와서", "여섯 딸이 아무도 약수를 구하러 안 가서"], answer: 2 },
+    { q: "검은 강의 나룻배는 어떻게 바리데기를 태웠나요?", choices: ["노파가 대신 노를 저어 주었다", "은장도를 뱃삯으로 받고 태웠다", "오르자 저절로 스르르 움직였다"], answer: 2 },
+    { q: "무장승은 돈이 없는 바리데기에게 무엇을 하라고 했나요?", choices: ["은장도를 물값으로 내라", "일로 갚아라", "꽃 세 송이를 구해 오라"], answer: 1 },
     { q: "바리데기가 궁에 닿았을 때 무엇이 나오고 있었나요?", choices: ["임금의 사냥 행렬", "언니들의 혼례 가마", "임금과 왕비의 상여"], answer: 2 },
     { q: "부모를 살린 뒤 바리데기가 고른 일은 무엇인가요?", choices: ["나라의 반을 다스리는 일", "죽은 이의 길을 이끄는 일", "늙은 부부를 궁에 모시는 일"], answer: 1 },
     {
         q: "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
         wide: true,
         choices: [
-            "여섯 언니가 저마다 까닭을 댄 것을 보면, 받은 것이 많다고 갚는 것은 아니구나.",
-            "바리데기가 아홉 해 동안 길어 나른 물이 약수였던 것을 보면, 귀한 것은 이미 손에 쥐고 있을 때가 있네.",
-            "바리데기가 나라의 반 대신 죽은 이의 길잡이를 고른 것을 보면, 버려져 본 사람이 버려진 이들을 알아본 거야.",
-            "임금이 끝내 딸에게 무릎을 꿇지 않은 것을 보면, 버린 일을 끝까지 인정하지 못했나 봐."
+            "여섯 언니가 약수 이야기에 저마다 핑계를 댄 것을 보면, 받은 것이 많다고 갚는 것은 아니구나.",
+            "바리데기가 밭 매는 노인과 빨래하는 할머니의 일을 먼저 거들고 길을 물은 것을 보면, 길은 묻기 전에 손부터 보태서 얻었구나.",
+            "바리데기가 낳아 주신 것을 받았다며 길을 나선 것을 보면, 받은 것을 크게 세는 사람이 크게 갚는구나.",
+            "여섯 언니가 살아 돌아온 바리데기 곁에서 함께 꽃을 얹은 것을 보면, 늦게라도 마음을 보탰구나."
         ],
         answer: 3
     }

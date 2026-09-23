@@ -620,17 +620,17 @@ const EN = {
         }
     ],
     quiz: [
-        { q: "Where did the woodcutter hide the deer?", choices: ["In the thorn bush", "In the chest", "In the woodpile"], answer: 2 },
-        { q: "What did he pick out of the thorn bush?", choices: ["A golden bucket", "A feather robe", "A horse of the sky"], answer: 1 },
-        { q: "Where did he put the robe he found?", choices: ["Folded neatly on the rock", "Pushed into the woodpile", "Laid on his carrying frame"], answer: 0 },
-        { q: "Why could the fairy not go up that day?", choices: ["Her robe was torn", "She had forgotten the way", "The gate of the sky was shut"], answer: 2 },
-        { q: "What did the woodcutter ride up to the sky?", choices: ["A great well bucket", "A boat made of cloud", "The back of the deer"], answer: 0 },
-        { q: "Why did the woodcutter fall off the horse?", choices: ["He set a foot on the earth", "He spilled the hot porridge", "The bucket came down"], answer: 1 },
+        { q: "Where did the woodcutter hide the deer?", choices: ["Behind the rock", "In the woodpile", "Under his carrying frame"], answer: 1 },
+        { q: "How did the feather robe end up in the thorn bush?", choices: ["The deer carried it there", "The fairy threw it off", "The valley wind blew it there"], answer: 2 },
+        { q: "Where did he put the robe he found?", choices: ["Folded neatly on the rock", "Tucked inside his coat", "Laid on his carrying frame"], answer: 0 },
+        { q: "Why could the fairy not go up that day?", choices: ["The thorns had torn her robe", "The gate of the sky was already shut", "The other fairies had gone up ahead"], answer: 1 },
+        { q: "What did the woodcutter ride up to the sky?", choices: ["A horse of the sky", "A great well bucket", "The back of the deer"], answer: 1 },
+        { q: "What did his wife tell him as she gave him the horse of the sky?", choices: ["Do not set a foot on the ground", "Bring your mother back with you", "Be back before the sun goes down"], answer: 0 },
         {
             q: "Which reaction to this book does NOT fit?",
             wide: true,
             choices: [
-                "He gave the robe back instead of hiding it, so because he did not hold on to her she could choose to stay.",
+                "He kept the deer's request to the letter, so because he did not hold on to her she could choose to stay.",
                 "One bowl of hot porridge undid the whole thing, so a big trouble does not always come from a big cause.",
                 "She took the robe and put it back in the chest, so it was the fairy who made up her mind that day.",
                 "The fairy went up to the sky alone and left the children, so she must have missed the sky that much."
@@ -851,17 +851,17 @@ const EN = {
 };
 
 const QUIZ = [
-    { q: "나무꾼은 사슴을 어디에 숨겼나요?", choices: ["가시덤불 속", "궤 속", "나뭇더미 속"], answer: 2 },
-    { q: "나무꾼이 가시덤불에서 주운 것은 무엇인가요?", choices: ["금빛 두레박", "날개옷 한 벌", "하늘 말 한 필"], answer: 1 },
-    { q: "나무꾼은 주운 날개옷을 어디에 두었나요?", choices: ["바위 위에 곱게 개어 두었다", "나뭇더미 속에 밀어 넣었다", "지게에 얹어 두었다"], answer: 0 },
-    { q: "선녀는 왜 그날 못 올라갔나요?", choices: ["날개옷이 찢어져서", "길을 잊어버려서", "하늘 문이 닫혀서"], answer: 2 },
-    { q: "나무꾼이 하늘로 올라갈 때 탄 것은 무엇인가요?", choices: ["커다란 두레박", "구름으로 만든 배", "사슴의 등"], answer: 0 },
-    { q: "나무꾼이 말에서 떨어진 까닭은 무엇인가요?", choices: ["땅에 발을 딛어서", "뜨거운 죽을 쏟아서", "두레박이 내려와서"], answer: 1 },
+    { q: "나무꾼은 사슴을 어디에 숨겼나요?", choices: ["커다란 바위 뒤에", "쌓아 둔 나뭇더미 속에", "내려놓은 지게 밑에"], answer: 1 },
+    { q: "날개옷은 어떻게 가시덤불에 걸렸나요?", choices: ["사슴이 물어다 두어서", "선녀가 벗어 던져서", "골짜기 바람에 날려서"], answer: 2 },
+    { q: "나무꾼은 주운 날개옷을 어디에 두었나요?", choices: ["바위 위에 곱게 개어 두었다", "품속에 넣어 감추어 두었다", "지게 위에 얹어 두었다"], answer: 0 },
+    { q: "선녀는 왜 그날 못 올라갔나요?", choices: ["날개옷이 가시에 찢어져서", "하늘 문이 벌써 닫혀서", "다른 선녀들이 먼저 올라가 버려서"], answer: 1 },
+    { q: "나무꾼이 하늘로 올라갈 때 탄 것은 무엇인가요?", choices: ["하늘 말", "커다란 두레박", "사슴의 등"], answer: 1 },
+    { q: "아내는 하늘 말을 내주며 무엇을 당부했나요?", choices: ["땅에 발을 딛지 마세요", "어머니를 모시고 오세요", "해 지기 전에 돌아오세요"], answer: 0 },
     {
         q: "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
         wide: true,
         choices: [
-            "날개옷을 감추지 않고 돌려준 것을 보면, 붙잡지 않았기에 남는 쪽을 고를 수 있었구나.",
+            "나무꾼이 사슴의 부탁을 그대로 지킨 것을 보면, 붙잡지 않았기에 남는 쪽을 고를 수 있었구나.",
             "뜨거운 죽 한 그릇에 다 어긋난 것을 보면, 큰일이 늘 큰 데서 나는 건 아니야.",
             "선녀가 옷을 받아 들고도 도로 궤에 넣은 것을 보면, 그날 마음을 정한 것은 선녀였네.",
             "선녀가 아이들을 두고 혼자 하늘로 올라간 것을 보면, 하늘이 그만큼 그리웠나 봐."

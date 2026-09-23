@@ -411,12 +411,12 @@ const EN = {
         }
     ],
     quiz: [
-        { q: "Why did the scholar say he had to pass the examination?", choices: ["To inherit his father's bow", "To look his mother in the eye", "To avoid a night on the road"], answer: 1 },
-        { q: "What happened to the snake when the scholar shot?", choices: ["It hid inside the nest", "It dropped to the foot of the tree", "It flew up into the sky"], answer: 1 },
-        { q: "Why did the snake blame the scholar?", choices: ["He took her young away", "He rang the temple bell", "He shot her husband dead"], answer: 2 },
+        { q: "Why did the scholar say he had to pass the examination?", choices: ["To show the country his skill with a bow", "To look his mother in the eye", "To make his name known back home"], answer: 1 },
+        { q: "How were the magpies fighting the snake climbing to the nest?", choices: ["Covering the chicks with their wings", "Circling over the scholar's head and crying", "Diving at the snake's head and bouncing off"], answer: 2 },
+        { q: "Why did the snake blame the scholar?", choices: ["He aimed his bow at her young", "He shot her husband", "He ate and slept in her house"], answer: 1 },
         { q: "What condition did the snake set?", choices: ["Running away before dawn", "Bringing the magpies back", "The bell ringing three times"], answer: 2 },
-        { q: "How did the bell ring three times?", choices: ["Two birds threw themselves at it", "A monk pulled the rope", "The snake struck it with its body"], answer: 0 },
-        { q: "What did the scholar do afterwards?", choices: ["He looked after the hurt birds", "He left for Hanyang at once", "He stayed seven days at the temple"], answer: 0 },
+        { q: "What did the scholar do when day broke?", choices: ["Ran up to the temple on the hill", "Left for Hanyang at once", "Went looking for the woman of the house"], answer: 0 },
+        { q: "What did the magpies do from then on?", choices: ["Followed the scholar to Hanyang", "Lived under the bell at the temple", "Nested in that yard every year"], answer: 2 },
         {
             q: "Which reaction to this book does NOT fit?",
             wide: true,
@@ -610,12 +610,12 @@ const EN = {
 };
 
 const QUIZ = [
-    { q: "선비가 과거에 붙어야 한다고 한 까닭은 무엇인가요?", choices: ["아버지에게 활을 물려받으려고", "어머니께 떳떳하려고", "산길에서 밤을 새우지 않으려고"], answer: 1 },
-    { q: "선비가 활을 쏘자 구렁이는 어떻게 되었나요?", choices: ["둥지 속으로 숨었다", "나무 아래로 툭 떨어졌다", "하늘로 날아올랐다"], answer: 1 },
-    { q: "구렁이가 선비를 원망한 까닭은 무엇인가요?", choices: ["제 새끼를 데려가서", "절의 종을 울려서", "제 남편을 쏘아 죽여서"], answer: 2 },
+    { q: "선비가 과거에 붙어야 한다고 한 까닭은 무엇인가요?", choices: ["활 솜씨를 나라에 보이려고", "어머니께 떳떳하려고", "고향에 이름을 알리려고"], answer: 1 },
+    { q: "까치들은 둥지로 오르는 구렁이에게 어떻게 맞서고 있었나요?", choices: ["둥지 위에서 날개로 새끼를 덮었다", "선비 머리 위를 맴돌며 울었다", "머리로 달려들다 튕겨 나기를 되풀이했다"], answer: 2 },
+    { q: "구렁이가 선비를 원망한 까닭은 무엇인가요?", choices: ["제 새끼들을 활로 겨누어서", "제 남편을 쏘아서", "제 집에서 밥을 얻어먹고 잠들어서"], answer: 1 },
     { q: "구렁이는 무슨 조건을 걸었나요?", choices: ["날 밝기 전 도망가기", "까치를 데려오기", "종이 세 번 울리기"], answer: 2 },
-    { q: "종은 어떻게 세 번 울렸나요?", choices: ["새 두 마리가 몸을 던져서", "스님이 줄을 당겨서", "구렁이가 몸으로 쳐서"], answer: 0 },
-    { q: "선비는 그 뒤에 어떻게 했나요?", choices: ["다친 새들을 돌봤다", "곧장 한양으로 떠났다", "절에 일곱 날을 머물렀다"], answer: 0 },
+    { q: "날이 밝자 선비는 무엇을 했나요?", choices: ["산 위 절로 뛰어 올라갔다", "곧장 한양으로 떠났다", "외딴집 여인을 찾아 나섰다"], answer: 0 },
+    { q: "그 뒤로 까치들은 어떻게 했나요?", choices: ["선비를 따라 한양까지 갔다", "산 위 절 종 아래에 살았다", "해마다 그 집 마당에 둥지를 틀었다"], answer: 2 },
     {
         q: "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
         wide: true,

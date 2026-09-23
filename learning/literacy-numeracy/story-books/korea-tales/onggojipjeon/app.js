@@ -657,25 +657,25 @@ function chapterSpreadPage(spread) {
 }
 
 const QUIZ = [
-    { q: "옹고집은 어떤 사람이었습니까?", choices: ["가난한데 마음이 넉넉한 사람", "재물이 많은데 몹시 인색한 사람", "글은 많이 읽었으나 겁이 많은 사람"], answer: 1 },
-    { q: "옹고집이 어머니를 어떻게 모셨습니까?", choices: ["불도 안 땐 방에 두었다", "의원을 불러 돌보게 했다", "날마다 문안을 드렸다"], answer: 0 },
+    { q: "옹고집은 곳간의 쌀이 상하면 어떻게 했습니까?", choices: ["종들에게 나누어 먹였다", "개천에 내다 버렸다", "값을 내려 팔았다"], answer: 1 },
+    { q: "옹고집은 어머니 방에 왜 불을 때지 않았습니까?", choices: ["땔감이 다 떨어져서", "어머니가 더운 것을 싫어하셔서", "누워만 계시니 이불이면 된다고"], answer: 2 },
     { q: "시주를 청하러 온 스님에게 옹고집은 무엇을 했습니까?", choices: ["매질하여 내쫓았다", "쌀 한 되를 주었다", "그냥 못 본 척했다"], answer: 0 },
     { q: "취암사 노승은 무엇으로 가짜 옹고집을 만들었습니까?", choices: ["나무를 깎은 인형", "흙으로 빚은 사람", "짚으로 엮은 허수아비"], answer: 2 },
-    { q: "식구들이 두 옹고집을 가리지 못한 까닭은 무엇입니까?", choices: ["생김새가 털끝 하나까지 같아서", "둘 다 얼굴을 가리고 있어서", "날이 너무 어두워서"], answer: 0 },
+    { q: "가짜 옹고집은 식구들이 못 알아보는 까닭을 무어라 했습니까?", choices: ["제가 부적으로 눈을 흐려 놓아서", "얼굴도 목소리도 똑같아서", "얼굴 말고는 아는 것이 없어서"], answer: 2 },
     { q: "고을 원님은 무엇으로 진짜를 가리려 했습니까?", choices: ["글씨를 똑같이 써 보게 해서", "집안 살림을 물어서", "서로 힘을 겨루어 보게 해서"], answer: 1 },
-    { q: "재판에서 진짜 옹고집이 진 까닭은 무엇입니까?", choices: ["제 살림을 도무지 몰라서", "겁이 나서 말을 더듬어서", "편들어 줄 증인이 없어서"], answer: 0 },
-    { q: "집에서 쫓겨난 옹고집은 어떻게 되었습니까?", choices: ["관가에 붙들려 갇혔다", "산속 절로 들어갔다", "빌어먹으며 떠돌았다"], answer: 2 },
-    { q: "옹고집이 남의 집 문간에서 깨달은 것은 무엇입니까?", choices: ["제가 스님을 그렇게 내쫓았다는 것", "제 집이 세상에서 제일 좋다는 것", "재물이 다 헛된 것이라는 것"], answer: 0 },
-    { q: "노승이 옹고집에게 준 것은 무엇입니까?", choices: ["쌀 한 자루", "지팡이 하나", "부적 한 장"], answer: 2 },
-    { q: "부적을 던지자 가짜 옹고집은 어떻게 되었습니까?", choices: ["짚단으로 변해 흩어졌다", "빗장을 걸고 달아났다", "곳간으로 몸을 숨겼다"], answer: 0 },
+    { q: "원님의 마지막 물음은 무엇이었습니까?", choices: ["곳간에 무엇이 얼마나 들어 있느냐", "어머니께서 무엇을 잡숫고 계시냐", "종이 몇이며 이름이 무엇이냐"], answer: 1 },
+    { q: "고을 어귀에 던져진 옹고집을 마을 사람들은 어떻게 했습니까?", choices: ["아무도 부축해 주지 않았다", "몰래 밥을 싸 주었다", "관가에 다시 끌고 갔다"], answer: 0 },
+    { q: "물벼락을 맞고 돌아선 옹고집은 무슨 생각을 했습니까?", choices: ["스님이 이렇게 앙갚음을 하는구나", "재물이 없으니 사람 대접도 없구나", "내가 저 짓을 했구나"], answer: 2 },
+    { q: "노승은 눈 위에 쓰러진 옹고집에게 먼저 무엇을 했습니까?", choices: ["주먹밥을 손에 쥐여 주었다", "지팡이로 어깨를 두드려 깨웠다", "부적을 이마에 붙여 주었다"], answer: 0 },
+    { q: "부적을 맞는 순간 가짜 옹고집은 어떻게 했습니까?", choices: ["몸을 돌려 안채로 달아났다", "피하지 않고 그대로 서 있었다", "부적을 손으로 쳐 냈다"], answer: 1 },
     { q: "집에 돌아온 옹고집이 가장 먼저 한 일은 무엇입니까?", choices: ["곳간부터 열어 살펴보았다", "뒤꼍에서 장작을 안고 왔다", "종들을 마당에 불러 모았다"], answer: 1 },
     {
         q: "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
         wide: true,
         choices: [
-            "제 살림을 몰라 재판에서 진 것을 보면, 가진 것이 많아도 아는 것이 없으면 제 것이 아니구나.",
-            "쫓겨나 빌어먹으며 떠돌고서야 스님 생각이 난 것을 보면, 겪어 봐야 아는 일이 있네.",
-            "짚으로 엮은 허수아비가 사람 노릇을 그대로 한 것을 보면, 남이 보는 나는 껍데기로도 되는 거야.",
+            "가짜가 반년 만에 한 일을 옹고집은 삼십 년 동안 하지 않은 것을 보면, 집은 가진 사람이 아니라 돌보는 사람의 것이구나.",
+            "손을 내밀면서 늘 고개를 숙였다는 것을 보면, 겪어 봐야 아는 일이 있네.",
+            "가짜가 사람 노릇을 그대로 한 것을 보면, 남이 보는 나는 껍데기로도 되는 거야.",
             "돌아온 옹고집이 곳간부터 열어 살펴본 것을 보면, 그래도 살림 걱정이 먼저였겠다."
         ],
         answer: 3
@@ -1325,25 +1325,25 @@ const EN = {
         ]
     },
     quiz: [
-        { q: "What kind of man was Onggojip?", choices: ["Poor but generous", "Rich but very mean", "Well read but timid"], answer: 1 },
-        { q: "How did Onggojip treat his mother?", choices: ["He left her in a room with no fire", "He called a physician to care for her", "He greeted her every morning"], answer: 0 },
+        { q: "What did Onggojip do when rice in his storehouse went bad?", choices: ["Fed it to the servants", "Threw it into the stream", "Sold it cheap"], answer: 1 },
+        { q: "Why did Onggojip keep no fire in his mother's room?", choices: ["The firewood had run out", "His mother disliked the heat", "He said a quilt was enough for someone who only lay there"], answer: 2 },
         { q: "What did Onggojip do to the monk who came for alms?", choices: ["He beat him and drove him off", "He gave him a measure of rice", "He pretended not to see him"], answer: 0 },
         { q: "What did the old monk of Chwiamsa make the false Onggojip out of?", choices: ["A doll carved from wood", "A figure moulded from clay", "A straw figure"], answer: 2 },
-        { q: "Why could the family not tell the two Onggojips apart?", choices: ["They were alike to the last hair", "Both of them had their faces covered", "It was too dark to see"], answer: 0 },
+        { q: "How did the false Onggojip explain why the family could not tell them apart?", choices: ["He had clouded their eyes with a charm", "Face and voice were exactly the same", "They knew nothing of him but his face"], answer: 2 },
         { q: "How did the magistrate try to find the real one?", choices: ["By making them write the same characters", "By asking about the household", "By making them try their strength"], answer: 1 },
-        { q: "Why did the real Onggojip lose at the hearing?", choices: ["He knew nothing about his own household", "He was frightened and stammered", "He had no witness to speak for him"], answer: 0 },
-        { q: "What happened to Onggojip after he was driven out?", choices: ["He was caught and shut in the town prison", "He went into a mountain temple", "He wandered about begging"], answer: 2 },
-        { q: "What did Onggojip understand at other people's gates?", choices: ["That he had driven the monk off just so", "That his own house was the best in the world", "That wealth is all empty"], answer: 0 },
-        { q: "What did the old monk give Onggojip?", choices: ["A sack of rice", "A staff", "A paper charm"], answer: 2 },
-        { q: "What happened to the false Onggojip when the charm was thrown?", choices: ["He turned to straw and scattered", "He barred the gate and ran", "He hid himself in the storehouse"], answer: 0 },
+        { q: "What was the magistrate's last question?", choices: ["What is in the storehouses, and how much", "What does your mother eat", "How many servants have you, and their names"], answer: 1 },
+        { q: "What did the villagers do when Onggojip was thrown down at the edge of town?", choices: ["Nobody helped him up", "They slipped him food in secret", "They dragged him back to the magistrate"], answer: 0 },
+        { q: "What did Onggojip think as he turned away drenched with water?", choices: ["So this is the monk's revenge", "With no money there is no respect", "I did that to people myself"], answer: 2 },
+        { q: "What did the old monk do first for Onggojip lying in the snow?", choices: ["Put a rice ball in his hand", "Tapped his shoulder with the staff to wake him", "Stuck a charm to his forehead"], answer: 0 },
+        { q: "What did the false Onggojip do as the charm struck him?", choices: ["Turned and ran into the house", "Did not move aside at all", "Knocked the charm away with his hand"], answer: 1 },
         { q: "What was the first thing Onggojip did when he came home?", choices: ["He opened the storehouses to check them", "He fetched firewood from the back", "He called the servants into the yard"], answer: 1 },
         {
             q: "Which reaction to this book does NOT fit?",
             wide: true,
             choices: [
-                "He lost because he did not know his own household, so having a great deal is not owning it.",
-                "Only after begging on the road did he think of the monk, so some things are learned by going through them.",
-                "A straw figure did his part exactly, so the self other people see can be made of husks.",
+                "The double did in half a year what Onggojip had not done in thirty, so a house belongs to whoever cares for it, not whoever owns it.",
+                "He always bowed his head when he held out his hand, so some things are learned by going through them.",
+                "The double did his part exactly, so the self other people see can be made of husks.",
                 "Back home he went to the storehouse first, so the state of his property was still what mattered most."
             ],
             answer: 3

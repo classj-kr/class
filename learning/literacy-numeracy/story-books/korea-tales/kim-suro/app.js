@@ -581,10 +581,10 @@ const EN = {
     quiz: [
         { q: "Where did the Nine Gan hear the voice?", choices: ["At the landing by the sea", "On Guji Peak", "By the Nakdong River"], answer: 1 },
         { q: "How does the song the voice taught begin?", choices: ["Heaven told me to set up a country", "Is there anybody here", "Turtle, turtle, put out your head"], answer: 2 },
-        { q: "What was in the golden box inside the red cloth?", choices: ["Six golden eggs", "One gold crown", "Six jade beads"], answer: 0 },
-        { q: "What did the Nine Gan say about the child who broke out of his egg first?", choices: ["That he was their king", "That they would give a daughter", "That he should take a valley"], answer: 0 },
+        { q: "What did the people do while they sang?", choices: ["Dug the earth and stamped their feet", "Circled the peak with torches", "Folded their hands and bowed to the sky"], answer: 0 },
+        { q: "What happened to Suro after he came out of the egg?", choices: ["He slept for twelve days", "He sailed off to sea with his five brothers", "He grew to a man's size in ten days"], answer: 2 },
         { q: "What became of the other five children?", choices: ["They became Suro's officers", "Each set up a country", "They all went back to the sky"], answer: 1 },
-        { q: "What did Heo Hwangok bring on her ship?", choices: ["Iron and ploughs", "A golden box", "Seed and books"], answer: 2 },
+        { q: "What did Heo Hwangok bring on her ship?", choices: ["Seed and books", "Silk and beads", "Horses and cattle"], answer: 0 },
         {
             q: "Which reaction to this book does NOT fit?",
             wide: true,
@@ -592,7 +592,7 @@ const EN = {
                 "The nine villages made one voice for the first time while singing, so coming together starts with making a sound together.",
                 "Iron came out of the ground and ships came and went, so a story carries what that district lived by.",
                 "They took a woman from over the sea as queen, so it was a country that was not frightened of strangers.",
-                "Suro became king the very day he came out on Guji Peak, so what heaven decides brings no quarrel with it."
+                "Suro became king the very day he came out of the egg, so what heaven decides brings no quarrel with it."
             ],
             answer: 3
         }
@@ -787,10 +787,10 @@ const EN = {
 const QUIZ = [
     { q: "아홉 간이 소리를 들은 곳은 어디인가요?", choices: ["바닷가 나루", "구지봉", "낙동강 가"], answer: 1 },
     { q: "소리가 일러 준 노래는 어떻게 시작하나요?", choices: ["하늘이 나라를 세우라 하셨다", "여기에 사람이 있느냐", "거북아 거북아 머리를 내어라"], answer: 2 },
-    { q: "붉은 보자기 속 금상자에 무엇이 들어 있었나요?", choices: ["황금 알 여섯 개", "금관 하나", "옥구슬 여섯 개"], answer: 0 },
-    { q: "아홉 간은 가장 먼저 알을 깨고 나온 아이를 보고 무엇이라 했나요?", choices: ["우리 임금이라고", "제 딸을 주겠다고", "골짜기를 맡으라고"], answer: 0 },
+    { q: "사람들은 노래를 부르며 무엇을 했나요?", choices: ["흙을 파며 발을 굴렀다", "횃불을 들고 봉우리를 돌았다", "두 손을 모으고 하늘에 절했다"], answer: 0 },
+    { q: "수로는 알에서 나온 뒤 어떻게 되었나요?", choices: ["열두 날 동안 잠만 잤다", "다섯 형제와 함께 바다로 나갔다", "열흘 만에 어른만큼 자랐다"], answer: 2 },
     { q: "나머지 다섯 아이는 어떻게 되었나요?", choices: ["수로를 도와 신하가 되었다", "저마다 나라를 세웠다", "모두 하늘로 돌아갔다"], answer: 1 },
-    { q: "허황옥이 배에 싣고 온 것은 무엇인가요?", choices: ["쇠와 쟁기", "금빛 상자", "씨앗과 책"], answer: 2 },
+    { q: "허황옥이 배에 싣고 온 것은 무엇인가요?", choices: ["씨앗과 책", "비단과 구슬", "말과 소"], answer: 0 },
     {
         q: "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
         wide: true,
@@ -798,7 +798,7 @@ const QUIZ = [
             "아홉 마을이 노래를 부르며 처음으로 한목소리를 낸 것을 보면, 뭉치는 일은 함께 소리 내는 데서 시작하는구나.",
             "쇠가 많이 나서 배가 드나들었다는 것을 보면, 이야기 속에도 그 고장이 무엇으로 살았는지 담겨 있네.",
             "바다 건너에서 온 여인을 왕비로 맞은 것을 보면, 낯선 것을 겁내지 않는 나라였어.",
-            "수로가 구지봉에서 나온 그날로 곧장 임금이 된 것을 보면, 하늘이 정한 일에는 다툼이 없었네."
+            "수로가 알에서 나온 그날로 곧장 임금이 된 것을 보면, 하늘이 정한 일에는 다툼이 없었네."
         ],
         answer: 3
     }

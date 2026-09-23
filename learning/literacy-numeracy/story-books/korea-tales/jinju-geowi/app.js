@@ -410,18 +410,18 @@ const EN = {
         }
     ],
     quiz: [
-        { q: "What did the owner keep in the back of his chest?", choices: ["A travelling bundle", "A silk pouch", "An oil lamp"], answer: 1 },
-        { q: "What did the owner do to look for what he had lost?", choices: ["Called all his servants together", "Went straight to the magistrate", "Searched the bedding and the drawers"], answer: 2 },
-        { q: "What did the traveller do when he was asked to be searched?", choices: ["He spread both arms at once", "He hid his pack", "He nodded without a word"], answer: 0 },
-        { q: "What made the owner freeze the next morning?", choices: ["A white bead in the droppings", "An empty silk pouch", "A rope that had come untied"], answer: 0 },
-        { q: "Why did the traveller not tell the truth?", choices: ["He was afraid of the magistrate", "The night wind was cold", "They would have cut the goose open"], answer: 2 },
-        { q: "What did the goose do beside the traveller all night?", choices: ["Tucked in its neck and dozed", "Dipped its bill in the water bowl", "Waddled off to a new spot"], answer: 0 },
+        { q: "How did the pearl get into the goose's mouth?", choices: ["The traveller tossed it to the goose", "It slipped from the owner's fingers and rolled", "The goose shook it out of the pouch"], answer: 1 },
+        { q: "What did the owner do to look for the lost pearl?", choices: ["Called his servants to search the traveller", "Caught the goose and shook it", "Lifted the bedding and pulled out the drawers"], answer: 2 },
+        { q: "What did the traveller do when he was asked to be searched?", choices: ["Spread his arms and even opened his pack", "Refused, saying he would answer before the magistrate", "Only then said the goose had swallowed it"], answer: 0 },
+        { q: "What did the owner do to the traveller once the pearl appeared?", choices: ["Killed the goose to feast him", "Untied the rope with shaking hands and apologised", "Gave him the pearl"], answer: 1 },
+        { q: "Why did the traveller not tell the truth?", choices: ["They would have cut the goose open", "He thought the owner would not believe him", "He hoped the owner would work it out himself"], answer: 0 },
+        { q: "Why did the traveller ask for the goose to be tied beside him?", choices: ["He feared the servants would eat it", "He thought it would be warmer next to the goose", "So the pearl would come out in the morning where they could see"], answer: 2 },
         {
             q: "Which reaction to this book does NOT fit?",
             wide: true,
             choices: [
                 "He never once said the goose swallowed it, so staying quiet can do something this big.",
-                "He asked for the goose to be tied beside him, so he wasn't only enduring — he was waiting for morning.",
+                "He said one night tied up was nothing to him, so he wasn't only enduring — he knew what he was protecting.",
                 "The owner said you are the only person who was in this room, so suspicion starts with whoever is nearest.",
                 "The owner turned up his lamp all night and couldn't sleep, so he must have missed that pearl badly."
             ],
@@ -643,18 +643,18 @@ const EN = {
 };
 
 const QUIZ = [
-    { q: "주인이 장롱 깊숙이 넣어 두었던 것은 무엇인가요?", choices: ["봇짐 하나", "비단 주머니", "등잔 하나"], answer: 1 },
-    { q: "주인은 잃어버린 것을 찾으려고 무엇을 했나요?", choices: ["하인들을 불러 모았다", "곧바로 관아로 갔다", "이불과 서랍을 뒤졌다"], answer: 2 },
-    { q: "나그네는 뒤져도 좋으냐는 말에 어떻게 했나요?", choices: ["순순히 두 팔을 벌렸다", "봇짐을 감추었다", "말없이 고개를 끄덕였다"], answer: 0 },
-    { q: "주인은 이튿날 아침 무엇을 보고 얼어붙었나요?", choices: ["똥 속의 하얀 구슬", "빈 비단 주머니 하나", "풀려 있는 밧줄"], answer: 0 },
-    { q: "나그네가 사실을 말하지 않은 까닭은 무엇인가요?", choices: ["사또에게 끌려갈까 봐", "밤바람이 차가워서", "배를 갈랐을 것이라서"], answer: 2 },
-    { q: "밤새 나그네 옆에서 거위는 무엇을 했나요?", choices: ["목을 파묻고 졸았다", "물그릇에 부리를 담갔다", "뒤뚱뒤뚱 자리를 옮겼다"], answer: 0 },
+    { q: "진주는 어떻게 거위 입으로 들어갔나요?", choices: ["나그네가 거위에게 던져 주어서", "주인 손끝에서 미끄러져 굴러가서", "거위가 주머니를 물고 흔들어서"], answer: 1 },
+    { q: "주인은 잃어버린 진주를 찾으려고 무엇을 했나요?", choices: ["하인들을 불러 나그네를 뒤지게 했다", "거위를 붙잡아 흔들어 보았다", "이불을 들추고 서랍을 뺐다"], answer: 2 },
+    { q: "나그네는 뒤져도 좋으냐는 말에 어떻게 했나요?", choices: ["두 팔을 벌리고 봇짐까지 풀어 보였다", "사또 앞에서 밝히겠다며 마다했다", "거위가 삼켰다고 그제야 말했다"], answer: 0 },
+    { q: "진주가 나오자 주인은 나그네에게 어떻게 했나요?", choices: ["거위를 잡아 아침상에 올려 대접했다", "떨리는 손으로 밧줄을 풀고 사과했다", "진주를 나그네에게 그냥 주어 버렸다"], answer: 1 },
+    { q: "나그네가 사실을 말하지 않은 까닭은 무엇인가요?", choices: ["거위의 배를 갈랐을 것이라서", "주인이 믿어 주지 않을 것 같아서", "주인이 스스로 알아차리기를 바라서"], answer: 0 },
+    { q: "나그네가 거위를 제 옆에 매어 달라고 한 까닭은 무엇인가요?", choices: ["하인들이 거위를 잡아먹을까 봐", "거위 곁이 덜 추울 것 같아서", "아침에 진주가 나오는 것을 보이려고"], answer: 2 },
     {
         q: "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
         wide: true,
         choices: [
             "거위가 삼켰다는 말 한마디를 끝내 하지 않은 것을 보면, 참는 것이 이렇게 큰일을 하는구나.",
-            "나그네가 거위를 제 옆에 매어 달라고 한 것을 보면, 참기만 한 것이 아니라 아침을 기다린 거야.",
+            "나그네가 저는 하룻밤 묶여 있으면 그만이라고 한 것을 보면, 참기만 한 것이 아니라 무엇을 지키는지 알고 견딘 거야.",
             "주인이 방에 있던 사람은 당신뿐이라고 한 것을 보면, 의심은 늘 가장 가까운 데서 시작하네.",
             "주인이 밤새 등잔불을 돋우며 잠들지 못한 것을 보면, 잃은 진주가 그만큼 아까웠나 봐."
         ],

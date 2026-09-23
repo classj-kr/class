@@ -409,19 +409,19 @@ const EN = {
     ],
     quiz: [
         { q: "What did the farmer drop into the jar first?", choices: ["A copper coin", "A mattock", "A lump of gold"], answer: 1 },
-        { q: "What happened when you put something in the jar?", choices: ["It disappeared", "It turned to gold", "It kept multiplying"], answer: 2 },
-        { q: "What did the rich man do when he heard the story?", choices: ["Threw his spoon down", "Opened his storehouse", "Peered over the wall"], answer: 0 },
-        { q: "Who fell into the jar?", choices: ["The farmer's wife", "The village magistrate", "The rich man's father"], answer: 2 },
-        { q: "What did the fathers filling the yard say?", choices: ["That they were hungry", "They broke the jar", "They left the house"], answer: 0 },
-        { q: "What became of the greedy rich man?", choices: ["He gave the jar back", "His gold and fields went", "He left the village"], answer: 1 },
+        { q: "What did the farmer and his wife do while counting the coins?", choices: ["Forgot supper and stayed up all night", "Called the neighbours in to show off", "Buried the jar back in the field"], answer: 0 },
+        { q: "What excuse did the rich man give for taking the jar?", choices: ["That the farmer had stolen it", "That the field had always been his family's land", "That it was a treasure owed to the king"], answer: 1 },
+        { q: "Why did the rich man's father fall into the jar?", choices: ["He was trying to sneak out a lump of gold", "He lost his footing while moving the jar", "He was curious and leaned in on tiptoe"], answer: 2 },
+        { q: "What did all those fathers do to the rich man?", choices: ["Feeding them ate up his storehouse and his fields", "He took them all and left the village", "He shared his gold out among them"], answer: 0 },
+        { q: "What did the rich man do in the end?", choices: ["Smashed the jar", "Buried the jar back in the field", "Returned it to the farmer and begged forgiveness"], answer: 2 },
         {
             q: "Which reaction to this book does NOT fit?",
             wide: true,
             choices: [
-                "A heap of mattocks came first, so the thing that astonished him at the start was not gold but a mattock.",
-                "The rich man carried the jar off saying the land was his family's, so back then whoever had power had the law.",
+                "The farmer only tried a coin once the jar was moved indoors, so he was careful not to be seen.",
+                "The rich man carried the jar off without giving the farmer a chance to speak, so back then whoever had power had the law.",
                 "The couple shared rice with their neighbours, so people who have gone without know how to share.",
-                "He emptied his storehouses feeding all those fathers, so in the end he looked after his father well."
+                "The rich man covered his ears and sank down in front of all those fathers, so that was when he finally saw how dear his father was."
             ],
             answer: 3
         }
@@ -600,19 +600,19 @@ const EN = {
 
 const QUIZ = [
     { q: "농부가 항아리에 처음 빠뜨린 것은 무엇인가요?", choices: ["엽전", "괭이", "금덩이"], answer: 1 },
-    { q: "항아리에 물건을 넣으면 어떻게 되었나요?", choices: ["사라져 버렸다", "금으로 변했다", "자꾸 늘어났다"], answer: 2 },
-    { q: "부자가 소문을 듣고 한 일은 무엇인가요?", choices: ["숟가락을 던지듯 놓았다", "곳간을 열었다", "담 너머로 기웃거렸다"], answer: 0 },
-    { q: "항아리 속에 빠진 사람은 누구였나요?", choices: ["농부의 아내", "마을 원님", "부자의 아버지"], answer: 2 },
-    { q: "마당에 가득한 아버지들은 무어라 했나요?", choices: ["배고프다고 했다", "항아리를 깼다", "집을 나갔다"], answer: 0 },
-    { q: "부자는 마지막에 어떻게 했나요?", choices: ["항아리를 팔아 버렸다", "항아리를 돌려주었다", "마을을 떠나 버렸다"], answer: 1 },
+    { q: "농부 부부는 엽전을 세다가 어떻게 했나요?", choices: ["저녁도 잊고 밤을 새웠다", "이웃을 불러 자랑했다", "항아리를 땅에 도로 묻었다"], answer: 0 },
+    { q: "부자는 무슨 핑계로 항아리를 가져갔나요?", choices: ["농부가 훔친 항아리라고", "그 밭이 본래 제 조상 땅이라고", "나라에 바쳐야 하는 보물이라고"], answer: 1 },
+    { q: "부자의 아버지는 왜 항아리 속에 빠졌나요?", choices: ["아들 몰래 금덩이를 꺼내려다가", "항아리를 옮기다 발을 헛디뎌서", "궁금해서 까치발로 들여다보다가"], answer: 2 },
+    { q: "아버지들 때문에 부자는 어떻게 되었나요?", choices: ["밥을 대느라 곳간과 논밭이 줄어 갔다", "아버지들을 데리고 마을을 떠났다", "아버지들에게 금덩이를 나누어 주었다"], answer: 0 },
+    { q: "부자는 마지막에 어떻게 했나요?", choices: ["항아리를 깨뜨려 버렸다", "항아리를 도로 밭에 묻었다", "농부에게 돌려주고 빌었다"], answer: 2 },
     {
         q: "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
         wide: true,
         choices: [
-            "괭이가 마당 가득 쌓인 것을 보면, 처음 놀란 것은 금이 아니라 괭이였구나.",
-            "부자가 조상 땅이라며 항아리를 안고 가 버린 것을 보면, 힘 있는 쪽의 말이 곧 법이던 때였나 보다.",
+            "농부가 항아리를 방으로 옮기고 나서야 엽전을 넣어 본 것을 보면, 남 눈에 띌까 조심한 거구나.",
+            "부자가 농부에게 말할 틈도 주지 않고 항아리를 안고 가 버린 것을 보면, 힘 있는 쪽의 말이 곧 법이던 때였나 보다.",
             "농부 내외가 이웃에게도 쌀을 나누어 준 것을 보면, 없이 살아 본 사람이 나눌 줄도 아는구나.",
-            "부자가 아버지들 밥을 대느라 곳간을 다 연 것을 보면, 끝내는 아버지를 잘 모신 셈이구나."
+            "부자가 아버지들 앞에서 귀를 막고 주저앉은 것을 보면, 그제야 아버지가 소중한 줄 알았던 거구나."
         ],
         answer: 3
     }

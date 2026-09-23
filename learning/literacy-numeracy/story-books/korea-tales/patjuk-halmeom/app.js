@@ -633,20 +633,20 @@ const EN = {
         }
     ],
     quiz: [
-        { q: "When did the old woman tell the tiger to come back?", choices: ["In autumn", "In spring", "In summer"], answer: 0 },
-        { q: "What hid in the stove?", choices: ["The turtle", "The mortar", "The chestnut"], answer: 2 },
-        { q: "What hid in the water jar?", choices: ["The turtle", "The chestnut", "The dog dirt"], answer: 0 },
-        { q: "What sat up above the door?", choices: ["The mat", "The carrying frame", "The mortar"], answer: 2 },
-        { q: "What rolled the tiger up?", choices: ["The mortar", "The mat", "The carrying frame"], answer: 1 },
-        { q: "What carried the tiger off at the end?", choices: ["The carrying frame", "The mat", "The mortar"], answer: 0 },
+        { q: "What was the old woman doing when the tiger appeared?", choices: ["Boiling the beans she had picked", "Weeding the patch", "Napping on the porch"], answer: 1 },
+        { q: "Why did the tiger push his face into the stove?", choices: ["To blow the embers alive and warm the porridge pot", "To look for the old woman hiding in the ash", "To warm himself because he was cold"], answer: 0 },
+        { q: "What happened when the tiger dipped his paw in the water jar?", choices: ["The water was boiling and scalded him", "The jar tipped over and he slipped", "The turtle bit him hard"], answer: 2 },
+        { q: "Why did the tiger go flat on his back on the kitchen floor?", choices: ["He stepped on the dog dirt and slipped", "The mortar hit him on the head", "His foot caught in the mat"], answer: 0 },
+        { q: "What became of the tiger once the mat had rolled him up?", choices: ["He lay tied in the yard all night and was let go", "The carrying frame took him and threw him in the river", "He begged never to come back and went to the hills"], answer: 1 },
+        { q: "Why was the kitchen dark when the tiger came in?", choices: ["The stove fire had gone out", "The mortar knocked the lamp off the doorframe", "The old woman had put the lamp out on purpose"], answer: 2 },
         {
             q: "Which reaction to this book does NOT fit?",
             wide: true,
             choices: [
                 "A chestnut, a turtle, dog dirt, a mortar, a mat and a frame each took a bowl and stood up, so small things together were too much even for a tiger.",
                 "Each of them took its own place, the stove, the water jar, the doorframe, so what each one is good at is different.",
-                "The old woman had put the kitchen lamp out beforehand, so she was frightened and still thinking all the same.",
-                "She told the tiger to come in autumn, so she must have meant to pack up and run away in the meantime."
+                "The old woman hid in the corner of the kitchen holding her breath, so she was frightened and still trusted the six.",
+                "She had called the villagers in before the six arrived, so she did not just sit and cry."
             ],
             answer: 3
         }
@@ -865,20 +865,20 @@ const EN = {
 };
 
 const QUIZ = [
-    { q: "할멈은 호랑이에게 언제 다시 오라고 했나요?", choices: ["가을에", "봄에", "여름에"], answer: 0 },
-    { q: "아궁이에 숨은 것은 무엇인가요?", choices: ["자라", "절구", "밤"], answer: 2 },
-    { q: "물동이에 숨은 것은 무엇인가요?", choices: ["자라", "밤", "개똥"], answer: 0 },
-    { q: "문틀 위에 올라앉은 것은 무엇인가요?", choices: ["멍석", "지게", "절구"], answer: 2 },
-    { q: "호랑이를 둘둘 말아 버린 것은 무엇인가요?", choices: ["절구", "멍석", "지게"], answer: 1 },
-    { q: "마지막에 호랑이를 지고 나간 것은 무엇인가요?", choices: ["지게", "멍석", "절구"], answer: 0 },
+    { q: "호랑이가 나타났을 때 할머니는 무엇을 하고 있었나요?", choices: ["팥을 거두어 솥에 삶고 있었다", "김을 매고 있었다", "마루에서 낮잠을 자고 있었다"], answer: 1 },
+    { q: "호랑이는 왜 아궁이에 얼굴을 들이밀었나요?", choices: ["잿불을 살려 팥죽 솥을 데우려고", "잿속에 숨은 할머니를 찾으려고", "추워서 몸을 녹이려고"], answer: 0 },
+    { q: "호랑이가 물동이에 앞발을 담그자 무슨 일이 일어났나요?", choices: ["물이 끓어 데었다", "물동이가 엎어져 미끄러졌다", "자라가 콱 물었다"], answer: 2 },
+    { q: "호랑이가 부엌 바닥에서 벌러덩 나자빠진 까닭은 무엇인가요?", choices: ["개똥을 밟고 미끄러져서", "절구에 머리를 맞아서", "멍석에 발이 걸려서"], answer: 0 },
+    { q: "멍석에 말린 호랑이는 어떻게 되었나요?", choices: ["마당에 밤새 묶여 있다가 풀려났다", "지게에 실려 강물에 던져졌다", "다시는 안 오겠다고 빌고 산으로 갔다"], answer: 1 },
+    { q: "호랑이가 들어왔을 때 부엌이 캄캄했던 까닭은 무엇인가요?", choices: ["아궁이 불이 다 꺼져서", "절구가 문틀에서 등잔을 떨어뜨려서", "할머니가 일부러 등잔불을 꺼 두어서"], answer: 2 },
     {
         q: "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
         wide: true,
         choices: [
             "밤과 자라와 개똥과 절구와 멍석과 지게가 팥죽 한 그릇씩 얻어먹고 나선 것을 보면, 작은 것들이 모이니 호랑이도 못 당하는구나.",
             "저마다 아궁이며 물동이며 제 자리를 알아서 잡은 것을 보면, 잘하는 일이 다 다르네.",
-            "할멈이 부엌 등잔불을 꺼 두었던 것을 보면, 겁이 나면서도 궁리는 하고 있었어.",
-            "할멈이 가을에 오라고 한 것을 보면, 그사이에 짐을 싸서 달아날 셈이었겠다."
+            "할멈이 부엌 구석에 숨어 숨을 죽인 것을 보면, 겁이 나면서도 여섯을 믿고 있었어.",
+            "할멈이 여섯이 오기 전에 미리 마을 사람들을 불러 둔 것을 보면, 혼자 앉아 울고만 있지는 않았어."
         ],
         answer: 3
     }

@@ -411,19 +411,19 @@ const EN = {
         }
     ],
     quiz: [
-        { q: "Why did the pedlar stop on the road?", choices: ["The load was too heavy", "To rest in the shade from the heat", "The sun had gone down"], answer: 1 },
-        { q: "What did the magistrate order the constables to arrest?", choices: ["The silk pedlar", "The stone post", "The onlookers"], answer: 1 },
-        { q: "How did the stone answer the magistrate?", choices: ["It said nothing", "It shouted loudly", "It shook its head"], answer: 0 },
-        { q: "What did the magistrate do when the crowd laughed?", choices: ["Glared at the stone", "Stroked his beard and thought", "Struck the table"], answer: 2 },
-        { q: "What was piled in the court yard by evening?", choices: ["A heap of rope", "All the silk in the district", "Several stone posts"], answer: 1 },
-        { q: "Why did the magistrate really put the stone on trial?", choices: ["To bring people together", "In case the stone spoke", "To hand out a punishment"], answer: 0 },
+        { q: "What kind of silk had the pedlar lost?", choices: ["Silk bought at the market", "Silk his whole family had woven all winter", "Silk meant as a gift for the magistrate"], answer: 1 },
+        { q: "What did the constables do when told to arrest the stone?", choices: ["Told him a stone cannot be arrested", "Looked at each other, then fetched the rope and went", "Burst out laughing on the spot"], answer: 1 },
+        { q: "What did the onlookers do at first while the magistrate shouted at the stone?", choices: ["All burst out laughing", "Answered in the stone's place", "Stood with their mouths open, lost for words"], answer: 2 },
+        { q: "What did the magistrate do when the crowd laughed?", choices: ["Struck the table", "Glared at the stone", "Stroked his beard and thought"], answer: 0 },
+        { q: "How did the pedlar know his own silk?", choices: ["Its pattern was the only one in the district", "He had woven one character of his name into the end", "It carried his family's fingermarks"], answer: 1 },
+        { q: "How was the thief found out?", choices: ["He was the one person who had not laughed", "He confessed in front of the stone", "He had handed in the pedlar's silk and sold more of it to others"], answer: 2 },
         {
             q: "Which reaction to this book does NOT fit?",
             wide: true,
             choices: [
                 "The whole district came for a stone's trial, so what he was after was not the stone but the people.",
                 "He took silk as the price of a laugh, so he set a net while pretending to punish.",
-                "The pedlar had woven one character of his name in, so you know a thing your own hands made.",
+                "The pedlar picked out several bolts at once, so you know a thing your own hands made.",
                 "The constables understood the magistrate's plan as they dragged the post in, so his men trusted him."
             ],
             answer: 3
@@ -603,19 +603,19 @@ const EN = {
 };
 
 const QUIZ = [
-    { q: "장수는 왜 길에서 걸음을 멈췄나요?", choices: ["짐이 무거워 못 들어서", "더워서 그늘에 쉬려고", "해가 저물어서"], answer: 1 },
-    { q: "원님이 포졸들에게 잡아 오라고 한 것은 무엇인가요?", choices: ["비단 장수", "돌기둥", "구경꾼들"], answer: 1 },
-    { q: "돌은 원님의 물음에 어떻게 했나요?", choices: ["아무 말이 없었다", "크게 소리쳤다", "고개를 저었다"], answer: 0 },
-    { q: "구경꾼들이 웃자 원님은 어떻게 했나요?", choices: ["돌을 노려보았다", "수염을 쓸며 생각했다", "상을 탁 내리쳤다"], answer: 2 },
-    { q: "이튿날 낮에 관아 마당에 무엇이 쌓였나요?", choices: ["밧줄 더미", "온 고을의 비단", "돌기둥 여러 개"], answer: 1 },
-    { q: "원님이 돌을 재판한 진짜 까닭은 무엇인가요?", choices: ["사람을 모으려고", "돌이 말할까 봐", "벌을 주려고"], answer: 0 },
+    { q: "장수가 잃어버린 비단은 어떤 비단이었나요?", choices: ["장에서 사 온 것", "온 식구가 겨우내 짠 것", "사또에게 바치려던 것"], answer: 1 },
+    { q: "돌을 잡아 오라는 말에 포졸들은 어떻게 했나요?", choices: ["돌은 잡을 수 없다고 말씀드렸다", "서로 얼굴만 보다가 밧줄을 챙겨 나갔다", "그 자리에서 웃음을 터뜨렸다"], answer: 1 },
+    { q: "원님이 돌에게 호통칠 때 구경꾼들은 처음에 어떻게 했나요?", choices: ["참지 못하고 다 같이 웃음을 터뜨렸다", "돌을 대신해 도둑 이름을 대 주었다", "어이가 없어 입만 벌리고 서 있었다"], answer: 2 },
+    { q: "구경꾼들이 웃자 원님은 어떻게 했나요?", choices: ["상을 탁 내리쳤다", "돌을 노려보았다", "수염을 쓸며 생각했다"], answer: 0 },
+    { q: "장수는 제 비단을 어떻게 알아보았나요?", choices: ["비단 무늬가 고을에 하나뿐이라서", "끝에 제 이름 한 글자를 넣어 짜서", "식구들 손때가 묻어 있어서"], answer: 1 },
+    { q: "도둑은 어떻게 드러났나요?", choices: ["구경꾼 가운데 혼자 웃지 않은 사람이라서", "돌 앞에서 겁을 먹고 스스로 털어놓아서", "비단을 바치고 남에게도 판 사람이라서"], answer: 2 },
     {
         q: "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
         wide: true,
         choices: [
             "돌을 재판한다는 소문에 온 고을이 모인 것을 보면, 원님이 노린 것은 돌이 아니라 사람이었구나.",
             "웃은 값으로 비단을 받은 것을 보면, 벌을 주는 척하면서 그물을 친 거야.",
-            "장수가 제 이름 한 글자를 짜 넣었다는 것을 보면, 제 손으로 만든 것은 제가 알아보네.",
+            "장수가 비단 여러 필을 단번에 골라낸 것을 보면, 제 손으로 만든 것은 제가 알아보네.",
             "포졸들이 돌기둥을 끌고 오며 사또의 뜻을 알아챈 것을 보면, 아랫사람들도 사또를 믿고 따랐나 봐."
         ],
         answer: 3

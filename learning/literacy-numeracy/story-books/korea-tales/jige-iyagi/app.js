@@ -471,12 +471,12 @@ const EN = {
         }
     ],
     quiz: [
-        { q: "What was the saying going round that district?", choices: ["That the mountain makes you live long", "That old parents are left on the mountain", "That old people are sent to a temple"], answer: 1 },
-        { q: "Who went up the mountain with them?", choices: ["The son's wife", "The seven-year-old son", "The villagers"], answer: 1 },
-        { q: "What did the boy do when his father said to go home?", choices: ["Pulled his hand away and ran back", "Took his hand without a word", "Held on to the gatepost"], answer: 0 },
+        { q: "How did the father get on the frame at dawn?", choices: ["Asking where they were going", "Refusing at first", "Without asking anything at all"], answer: 2 },
+        { q: "Why did the boy follow them?", choices: ["He wanted to see Grandfather being carried", "He could not bear to part from Grandfather", "He wanted to go up and play on the mountain"], answer: 0 },
+        { q: "Why did the son mean to leave the frame on the mountain?", choices: ["It was too old to be of use", "Seeing it would remind him of his father", "His father told him to leave it"], answer: 1 },
         { q: "What did the son do when he heard the boy?", choices: ["Threw the frame away", "Took the boy's hand and went down", "Put both hands over his face"], answer: 2 },
         { q: "What did the son do when he ran back up?", choices: ["Left the rice there", "Left the frame there", "Went down on his knees"], answer: 2 },
-        { q: "What did the people who heard the story bring down?", choices: ["Their parents", "Only their frames", "Only rice and water"], answer: 0 },
+        { q: "How was the son's wife different after that?", choices: ["She went back to her own family", "She kept the boy off the mountain", "She stopped grumbling"], answer: 2 },
         {
             q: "Which reaction to this book does NOT fit?",
             wide: true,
@@ -484,7 +484,7 @@ const EN = {
                 "A seven-year-old brought the frame back, so children grow by what they see, not what they are told.",
                 "The saying was going round the whole district, so it was not one family's doing but the time they lived in.",
                 "Everyone who heard it went up the mountain, so when one person turns round, others turn with them.",
-                "The grandfather got on the frame without a word, so he cannot have known where they were going."
+                "The son's wife woke the boy at dawn and sent him along, so she must have hoped he would see something."
             ],
             answer: 3
         }
@@ -680,12 +680,12 @@ const EN = {
 };
 
 const QUIZ = [
-    { q: "그 고장에 떠돌던 말은 무엇이었나요?", choices: ["산에 가면 오래 산다는 말", "늙은 어버이는 산에 둔다는 말", "노인은 절에 보낸다는 말"], answer: 1 },
-    { q: "산으로 갈 때 누가 함께 따라갔나요?", choices: ["며느리", "일곱 살 난 아들", "마을 사람들"], answer: 1 },
-    { q: "아들이 집에 가자고 하자 아이는 어떻게 했나요?", choices: ["손을 빼고 되돌아 뛰어갔다", "말없이 손을 잡았다", "대문 기둥을 붙들었다"], answer: 0 },
+    { q: "새벽에 아버지는 지게에 어떻게 올랐나요?", choices: ["어디로 가느냐고 물으며", "가지 않겠다고 버티다가", "묻지도 않고 말없이"], answer: 2 },
+    { q: "아이는 왜 따라나섰나요?", choices: ["할아버지를 지고 가는 것이 궁금해서", "할아버지와 헤어지는 것이 싫어서", "산에 올라가 놀아 보고 싶어서"], answer: 0 },
+    { q: "아들은 왜 지게를 산에 두고 가려 했나요?", choices: ["너무 낡아서 더는 쓸 수가 없어서", "보면 아버지 생각이 날 것 같아서", "아버지가 두고 내려가라고 해서"], answer: 1 },
     { q: "아이의 말을 들은 아들은 어떻게 했나요?", choices: ["지게를 빼앗아 던졌다", "아이의 손을 잡고 내려갔다", "두 손으로 얼굴을 감쌌다"], answer: 2 },
     { q: "산으로 되돌아 뛰어간 아들은 무엇을 했나요?", choices: ["밥을 내려놓고 왔다", "지게를 두고 왔다", "무릎을 꿇고 빌었다"], answer: 2 },
-    { q: "이야기를 들은 사람들은 산에서 무엇을 하고 내려왔나요?", choices: ["부모를 다시 모시고", "지게만 지고", "밥과 물만 두고"], answer: 0 },
+    { q: "그 뒤로 며느리는 어떻게 달라졌나요?", choices: ["친정으로 돌아갔다", "아이를 산에 못 가게 했다", "더는 볼멘소리를 하지 않았다"], answer: 2 },
     {
         q: "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
         wide: true,
@@ -693,7 +693,7 @@ const QUIZ = [
             "일곱 살 아이가 지게를 도로 가져온 것을 보면, 아이는 들은 대로가 아니라 본 대로 자라는구나.",
             "온 고장에 그런 말이 떠돌았다는 것을 보면, 한 집의 일이 아니라 그 시절의 일이었네.",
             "이야기를 들은 사람들이 저마다 산으로 올라간 것을 보면, 한 사람이 돌아서면 여럿이 따라 돌아서는 거야.",
-            "할아버지가 말없이 지게에 오른 것을 보면, 어디로 가는지 끝내 모르셨겠다."
+            "며느리가 새벽에 아이를 깨워 함께 보낸 것을 보면, 아이가 무언가를 보고 오길 바랐나 봐."
         ],
         answer: 3
     }

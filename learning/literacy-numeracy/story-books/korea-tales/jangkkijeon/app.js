@@ -499,11 +499,11 @@ const EN = {
         }
     ],
     quiz: [
-        { q: "Why did the family go out into the snow?", choices: ["The food had run out", "For a spring outing", "To a neighbour's feast"], answer: 0 },
+        { q: "Why did the family go out into the snow?", choices: ["The food had run out", "The children begged to go and see the snow", "To visit relatives over the mountain"], answer: 0 },
         { q: "What did Katuri think odd about the bean?", choices: ["Its colour was quite black", "Only one lay on the snow", "It sat in a bean field"], answer: 1 },
         { q: "What was Katuri's dream the night before?", choices: ["Beans piled in a heap", "The children flying", "Jangkki in a black hat"], answer: 2 },
-        { q: "What did Jangkki do with what Katuri said?", choices: ["Shook it off as woman's talk", "Weighed it and then agreed", "Asked the children first"], answer: 0 },
-        { q: "What happened as Jangkki pecked the bean?", choices: ["A hunter came running", "The bean rolled away", "A trap caught his neck"], answer: 2 },
+        { q: "When Katuri caught hold of his wing, what did Jangkki do?", choices: ["Laughed and said a dream is whatever you make of it", "Shook her off and asked what a woman would know", "Told her to hush in front of the children"], answer: 1 },
+        { q: "What happened as Jangkki pecked the bean?", choices: ["A trap caught his neck", "A net fell on him out of the snow", "A hunter came running"], answer: 0 },
         { q: "What did Jangkki say as he died?", choices: ["Never marry again", "Give the bean to the children", "Bury me up the mountain"], answer: 0 },
         { q: "Which bird came to mourn first?", choices: ["The owl", "The crow", "The duck"], answer: 1 },
         { q: "What did the spring pheasant do about the bean?", choices: ["Swallowed it quickly", "Shared it with the children", "Asked Katuri first"], answer: 2 },
@@ -511,10 +511,10 @@ const EN = {
             q: "Which reaction to this book does NOT fit?",
             wide: true,
             choices: [
-                "Jangkki brushed her off as woman's talk, so what he paid for not listening was his life.",
+                "Jangkki read the dream the way he wanted it, so hearing only what you like cost him his life.",
                 "The birds who came to mourn talked themselves up instead of grieving, so some people count their own gain even at a grief.",
-                "The spring pheasant saw a bean and asked her first, so Katuri had found a careful mate who asked what she thought too.",
-                "Katuri lived alone to the end as her husband told her, so the words of the dead came before the living."
+                "The new pheasant asked each child's name in turn, so this time Katuri met a mate who cared about the family.",
+                "Katuri gave up her plan as soon as her eldest brought up his father's words, so she was a mother who put the children's feelings first."
             ],
             answer: 3
         }
@@ -691,11 +691,11 @@ const EN = {
 };
 
 const QUIZ = [
-    { q: "장끼네 식구가 눈밭으로 나선 까닭은 무엇인가요?", choices: ["먹을 것이 다 떨어져서", "봄나들이를 가려고", "이웃 잔치에 가려고"], answer: 0 },
+    { q: "장끼네 식구가 눈밭으로 나선 까닭은 무엇인가요?", choices: ["먹을 것이 다 떨어져서", "눈 구경을 가자고 아이들이 졸라서", "산 너머 친척을 찾아가려고"], answer: 0 },
     { q: "까투리가 콩을 보고 이상하게 여긴 것은 무엇인가요?", choices: ["콩 빛깔이 새까매서", "눈 위에 한 알만 있어서", "콩밭 한가운데 있어서"], answer: 1 },
     { q: "까투리가 간밤에 꾼 꿈은 무엇인가요?", choices: ["콩이 산더미처럼 쌓이는 꿈", "아이들이 하늘을 나는 꿈", "장끼가 검은 갓을 쓰는 꿈"], answer: 2 },
-    { q: "장끼는 까투리의 말을 어떻게 했나요?", choices: ["아녀자 말이라며 뿌리쳤다", "곰곰이 따져 본 뒤 따랐다", "아이들에게 먼저 물어보았다"], answer: 0 },
-    { q: "장끼가 콩을 쪼는 순간 무슨 일이 있었나요?", choices: ["사냥꾼이 달려왔다", "콩이 굴러 달아났다", "덫이 목을 물었다"], answer: 2 },
+    { q: "까투리가 붙들고 말리자 장끼는 어떻게 했나요?", choices: ["웃으며 꿈은 좋게 풀면 그만이라고 했다", "날개를 뿌리치며 아녀자가 무얼 아느냐고 했다", "아이들 보는 앞이니 조용히 하라고 했다"], answer: 1 },
+    { q: "장끼가 콩을 쪼는 순간 무슨 일이 있었나요?", choices: ["덫이 목을 물었다", "눈 속에서 그물이 덮쳤다", "사냥꾼이 달려 나왔다"], answer: 0 },
     { q: "장끼가 숨을 거두며 남긴 말은 무엇인가요?", choices: ["다시 시집가지 마오", "콩을 아이들에게 주오", "나를 산 위에 묻어 주오"], answer: 0 },
     { q: "제일 먼저 조문을 온 새는 누구인가요?", choices: ["부엉이", "까마귀", "물오리"], answer: 1 },
     { q: "봄에 찾아온 장끼는 콩을 보고 어떻게 했나요?", choices: ["얼른 집어 삼켰다", "아이들에게 나눠 주었다", "까투리에게 먼저 물었다"], answer: 2 },
@@ -703,10 +703,10 @@ const QUIZ = [
         q: "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
         wide: true,
         choices: [
-            "장끼가 아녀자 말이라며 흘려들은 것을 보면, 안 들은 값이 목숨이었구나.",
+            "장끼가 꿈을 제 좋을 대로 풀어 버린 것을 보면, 듣고 싶은 것만 들은 값이 목숨이었구나.",
             "조문 온 새들이 슬퍼하기보다 제 자랑부터 한 것을 보면, 남의 슬픔에도 제 셈을 하는 이가 있네.",
-            "봄에 온 장끼가 콩을 보고 먼저 물어본 것을 보면, 까투리는 자기의 의견도 물어보는 신중한 짝을 찾았어.",
-            "까투리가 남편 말대로 끝까지 혼자 산 것을 보면, 죽은 이의 말이 산 이보다 앞섰나 봐."
+            "새 장끼가 아이들 이름을 하나하나 물은 것을 보면, 까투리는 이번에는 식구를 아끼는 짝을 만났어.",
+            "맏아들이 아버지 말을 꺼내자 까투리가 뜻을 접은 것을 보면, 아이들 마음을 먼저 헤아린 어머니였어."
         ],
         answer: 3
     }

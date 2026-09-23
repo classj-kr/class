@@ -572,20 +572,20 @@ const EN = {
         ]
     },
     quiz: [
-        { q: "What did the six chiefs meet to talk about?", choices: ["Taking a king", "Pulling walls down for roads", "Digging a new well"], answer: 0 },
-        { q: "What was by the well at Najeong?", choices: ["A great white rock", "A ladder let down from the sky", "A white horse on its knees"], answer: 2 },
-        { q: "What was left where the horse had been?", choices: ["One red egg", "A box made of gold", "One blue bead"], answer: 0 },
+        { q: "Why did the six chiefs want to set up a king?", choices: ["The six villages kept quarrelling", "They had seen a shaft of light over a well", "Scattered, they could not hold if a great force came"], answer: 2 },
+        { q: "What did the chiefs see first by the well at Najeong?", choices: ["A dragon with a hen's head", "A white horse on its knees", "A boy who glowed"], answer: 1 },
+        { q: "What lay there after the light faded?", choices: ["One red egg", "One whole gourd", "One shining bead"], answer: 0 },
         { q: "What does the name Hyeokgeose mean?", choices: ["A gourd", "The one who lights the world", "The child from that well"], answer: 1 },
-        { q: "What appeared at the Aryeong well?", choices: ["A horse with a white coat", "A dragon with a hen's head", "One red egg"], answer: 1 },
-        { q: "What did people call the king and queen?", choices: ["The Two Holy Ones", "The Six Chiefs", "The Two Queens"], answer: 0 },
+        { q: "How did Aryeong's long beak come off?", choices: ["The six chiefs prayed all night", "It fell off by itself as she grew", "An old woman washed her in the stream"], answer: 2 },
+        { q: "What did people call the king and queen?", choices: ["The Two Kings", "The Two Holy Ones", "The Two Parents"], answer: 1 },
         {
             q: "Which reaction to this book does NOT fit?",
             wide: true,
             choices: [
-                "The six chiefs kept their own places and still asked for a king, so they must have thought that scattered they could not hold.",
+                "Hyeokgeose said the full barns came from six villages joining, so even as king he saw himself as only the one in the middle.",
                 "The king and queen went round the villages on foot and not in a palanquin, so ruling then meant going and looking.",
                 "They pulled down the walls between the villages and made roads, so becoming one begins with opening a way.",
-                "The chiefs quarrelled over the egg, each wanting it for his own village, so a good thing divides people."
+                "The chiefs left the egg untouched, went home and came back at dawn, so they were people who knew how to wait."
             ],
             answer: 3
         }
@@ -778,20 +778,20 @@ const EN = {
 };
 
 const QUIZ = [
-    { q: "여섯 촌장이 모여 의논한 것은 무엇인가요?", choices: ["임금을 모실 일", "담을 헐고 길을 낼 일", "우물을 새로 팔 일"], answer: 0 },
-    { q: "나정 우물가에 있던 것은 무엇인가요?", choices: ["커다란 흰 바위", "하늘에서 내린 사다리", "무릎 꿇고 우는 흰말"], answer: 2 },
-    { q: "말이 사라진 자리에 남은 것은 무엇인가요?", choices: ["붉은 알 하나", "금으로 된 상자", "푸른 구슬 하나"], answer: 0 },
+    { q: "여섯 촌장이 임금을 세우자고 한 까닭은 무엇인가요?", choices: ["여섯 마을이 서로 자주 다투어서", "우물가에 빛줄기가 서 있는 것을 보아서", "큰 무리가 밀려오면 흩어져서는 못 버텨서"], answer: 2 },
+    { q: "나정 우물가에서 촌장들이 처음 본 것은 무엇인가요?", choices: ["닭 머리를 한 용", "무릎 꿇고 우는 흰말", "빛을 내는 사내아이"], answer: 1 },
+    { q: "빛이 스러진 자리에 놓여 있던 것은 무엇인가요?", choices: ["붉은 알 하나", "박 한 통", "빛나는 구슬 하나"], answer: 0 },
     { q: "혁거세라는 이름은 무슨 뜻인가요?", choices: ["바가지", "세상을 밝힌다", "그 우물에서 나온 아이"], answer: 1 },
-    { q: "알영 우물에 나타난 것은 무엇인가요?", choices: ["털이 흰 말", "닭 머리를 한 용", "붉은 알 하나"], answer: 1 },
-    { q: "임금과 왕비가 된 두 사람을 사람들은 뭐라고 불렀나요?", choices: ["두 성인", "여섯 촌장", "두 왕비"], answer: 0 },
+    { q: "알영의 길쭉한 부리는 어떻게 떨어졌나요?", choices: ["여섯 촌장이 밤새 빌어서", "자라면서 저절로 떨어져서", "할머니가 냇물에 씻겨 주어서"], answer: 2 },
+    { q: "임금과 왕비가 된 두 사람을 사람들은 뭐라고 불렀나요?", choices: ["두 임금", "두 성인", "두 어버이"], answer: 1 },
     {
         q: "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
         wide: true,
         choices: [
-            "여섯 촌장이 저마다 촌장 자리를 지키고도 임금을 모시자고 한 것을 보면, 흩어져서는 버티기 어렵다고 여겼구나.",
+            "혁거세가 곳간이 찬 것을 여섯 마을이 모인 덕이라고 한 것을 보면, 임금이 되고도 제 자리를 가운데라고만 여겼구나.",
             "임금과 왕비가 가마도 안 타고 걸어서 마을을 돈 것을 보면, 다스리는 일이 곧 살피는 일이던 시절 같다.",
             "마을과 마을 사이의 담을 헐어 길을 낸 것을 보면, 하나가 되는 일은 문을 여는 데서 시작하는구나.",
-            "촌장들이 알을 보고 저마다 제 마을로 가져가려 다툰 것을 보면, 좋은 것 앞에서는 마음이 갈라지는구나."
+            "촌장들이 알을 건드리지 않고 저마다 집으로 돌아가 아침에 다시 온 것을 보면, 기다릴 줄 아는 사람들이었구나."
         ],
         answer: 3
     }

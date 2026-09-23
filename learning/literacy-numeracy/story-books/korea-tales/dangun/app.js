@@ -572,12 +572,12 @@ const EN = {
         ]
     },
     quiz: [
-        { q: "Who did Hwanung bring down from the sky?", choices: ["The lords of bear, tiger and deer", "The lords of wind, rain and cloud", "The lords of sun, moon and stars"], answer: 1 },
+        { q: "Who did Hwanung bring down from the sky?", choices: ["The lords of mountain, river and tree", "The lords of wind, rain and cloud", "The lords of sun, moon and stars"], answer: 1 },
         { q: "What was the place Hwanung opened called?", choices: ["Joseon", "Sinsi", "Asadal"], answer: 1 },
         { q: "What were the bear and the tiger given?", choices: ["Mugwort and garlic", "Grain and herbs", "Meat and water"], answer: 0 },
-        { q: "What became of the tiger?", choices: ["Became a person before the bear", "Fell asleep in the cave", "Could not bear it and ran out"], answer: 2 },
+        { q: "What became of the tiger after it went into the cave?", choices: ["Became a person before the bear", "Ran out after only seven days", "Lasted the hundred days and went back to the mountain"], answer: 1 },
         { q: "What was the bear that became a person called?", choices: ["Ungnyeo", "Hwanin", "Wanggeom"], answer: 0 },
-        { q: "Where did Dangun set his capital?", choices: ["Sinsi", "Asadal", "Mount Taebaek"], answer: 1 },
+        { q: "What kind of place did Dangun open his new country in?", choices: ["The mountaintop where the Sindansu stood", "The valley by the cave the bear had entered", "A place with a wide river and rich fields"], answer: 2 },
         {
             q: "Which reaction to this book does NOT fit?",
             wide: true,
@@ -777,12 +777,12 @@ const EN = {
 };
 
 const QUIZ = [
-    { q: "환웅이 하늘에서 데리고 내려온 이들은 누구인가요?", choices: ["곰과 호랑이와 사슴을 맡은 이", "바람과 비와 구름을 맡은 이", "해와 달과 별을 맡은 이"], answer: 1 },
+    { q: "환웅이 하늘에서 데리고 내려온 이들은 누구인가요?", choices: ["산과 강과 나무를 맡은 이", "바람과 비와 구름을 맡은 이", "해와 달과 별을 맡은 이"], answer: 1 },
     { q: "환웅이 내려와 연 곳의 이름은 무엇인가요?", choices: ["조선", "신시", "아사달"], answer: 1 },
     { q: "곰과 호랑이가 받은 것은 무엇인가요?", choices: ["쑥과 마늘", "곡식과 약초", "고기와 물"], answer: 0 },
-    { q: "호랑이는 어떻게 되었나요?", choices: ["곰보다 먼저 사람이 되었다", "동굴에서 잠들었다", "못 참고 뛰쳐나갔다"], answer: 2 },
+    { q: "동굴에 들어간 호랑이는 어떻게 되었나요?", choices: ["곰보다 먼저 사람이 되었다", "이레 만에 뛰쳐나가 버렸다", "백 일을 채우고 산으로 돌아갔다"], answer: 1 },
     { q: "사람이 된 곰을 무엇이라 불렀나요?", choices: ["웅녀", "환인", "왕검"], answer: 0 },
-    { q: "단군이 도읍으로 정한 곳은 어디인가요?", choices: ["신시", "아사달", "태백산"], answer: 1 },
+    { q: "단군이 새 나라를 연 곳은 어떤 곳이었나요?", choices: ["신단수가 서 있는 산꼭대기", "곰이 들어갔던 동굴 앞 골짜기", "강이 넓고 들이 기름진 곳"], answer: 2 },
     {
         q: "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
         wide: true,

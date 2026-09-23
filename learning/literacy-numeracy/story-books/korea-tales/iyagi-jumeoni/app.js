@@ -471,20 +471,20 @@ const EN = {
         }
     ],
     quiz: [
-        { q: "How many people had the young master told stories to before his wedding?", choices: ["Only his friends", "Not one", "The elders in the front room"], answer: 1 },
-        { q: "Why were the stories in the bag angry?", choices: ["He had forgotten them", "They had quarrelled", "They could not get out"], answer: 2 },
-        { q: "Who overheard the stories talking?", choices: ["An old servant", "The young master's mother", "A child from next door"], answer: 0 },
-        { q: "What did the servant stop first?", choices: ["Drinking from the well", "Picking the strawberries", "Going into the wedding room"], answer: 0 },
-        { q: "What did the servant prod with the club in the wedding room?", choices: ["The bag on the wall", "The feast table", "The raised bedding"], answer: 2 },
-        { q: "What did the young master do after that?", choices: ["Bought a new bag", "Told his stories", "Stopped listening to stories"], answer: 1 },
+        { q: "Why were the stories in the bag angry?", choices: ["They had been shut in for ten years", "The young master had got them wrong", "They were fighting over room"], answer: 0 },
+        { q: "How did the servant learn what the stories were plotting?", choices: ["The young master told him a dream", "He overheard the bag talking in the night", "The stories warned him first"], answer: 1 },
+        { q: "What did the servant do when told to draw water from the well?", choices: ["Drew some and tasted it first", "Said there was poison in the well", "Rode straight past the well"], answer: 2 },
+        { q: "What did the servant do when the young master scolded him at the bride's house?", choices: ["Told everything he had heard the night before", "Bowed his head and said nothing", "Grabbed a club and ran to the wedding room"], answer: 1 },
+        { q: "What came out from under the bedding in the wedding room?", choices: ["A dipper of poisoned water", "A great snake", "A basket of strawberries"], answer: 1 },
+        { q: "What did the young master do with the bag when he got home?", choices: ["Burned it in the stove", "Gave it to the servant", "Untied it and let the stories out"], answer: 2 },
         {
             q: "Which reaction to this book does NOT fit?",
             wide: true,
             choices: [
-                "He shut every story he heard into a bag, so what is never shared turns on you in the end.",
+                "What he collected for ten years turned out to be stuffiness, so what is never shared turns on you in the end.",
                 "The stories got angry and planned to pay him back, so the old people thought of stories as alive.",
-                "The old servant could explain nothing and took a beating for it, so you can do right and still be misunderstood.",
-                "The young master bowed low to the servant the moment he saw the snake, so it did not take him long to see his fault."
+                "The old servant opened the wedding-room door while they called him mad, so you can do right and still be misunderstood.",
+                "The young master bowed low to the servant the moment he saw what came out, so it did not take him long to see his fault."
             ],
             answer: 3
         }
@@ -686,20 +686,20 @@ const EN = {
 };
 
 const QUIZ = [
-    { q: "장가들기 전까지 도련님은 이야기를 몇 사람에게 들려주었나요?", choices: ["동무들에게만", "한 사람도 없었다", "사랑방 어른들에게"], answer: 1 },
-    { q: "주머니 속 이야기들은 왜 화가 났나요?", choices: ["도련님이 다 잊어버려서", "서로 다투어서", "밖으로 못 나가서"], answer: 2 },
-    { q: "이야기들의 말을 엿들은 사람은 누구인가요?", choices: ["늙은 하인", "도련님 어머니", "이웃집 아이"], answer: 0 },
-    { q: "하인은 첫 번째로 무엇을 막았나요?", choices: ["우물물을 마시는 것", "딸기를 따 오는 것", "신방에 들어가는 것"], answer: 0 },
-    { q: "하인이 신방에서 몽둥이로 건드린 것은 무엇인가요?", choices: ["벽에 걸린 주머니", "차려 둔 잔칫상", "부풀어 있던 이불"], answer: 2 },
-    { q: "그 뒤로 도련님은 어떻게 했나요?", choices: ["주머니를 새로 샀다", "이야기를 들려주었다", "이야기를 안 들었다"], answer: 1 },
+    { q: "주머니 속 이야기들은 왜 화가 났나요?", choices: ["열 해나 밖으로 못 나가서", "도련님이 이야기를 잘못 외워서", "서로 자리를 다투어서"], answer: 0 },
+    { q: "하인은 어떻게 이야기들의 꾀를 알게 되었나요?", choices: ["도련님이 꿈 이야기를 해 주어서", "밤에 주머니에서 나는 소리를 엿들어서", "이야기들이 하인에게 먼저 일러 주어서"], answer: 1 },
+    { q: "우물물을 뜨라는 말에 하인은 어떻게 했나요?", choices: ["물을 떠서 먼저 맛을 보았다", "우물에 독이 있다고 말씀드렸다", "우물가를 그대로 지나쳐 버렸다"], answer: 2 },
+    { q: "신부 집에서 도련님이 꾸짖자 하인은 어떻게 했나요?", choices: ["지난밤 들은 이야기를 다 털어놓았다", "고개만 조아리고 아무 말도 하지 않았다", "몽둥이를 들고 신방으로 달려갔다"], answer: 1 },
+    { q: "신방 이불 밑에서 나온 것은 무엇인가요?", choices: ["독이 든 물 한 바가지", "커다란 뱀 한 마리", "딸기 한 광주리"], answer: 1 },
+    { q: "집에 돌아온 도련님은 주머니를 어떻게 했나요?", choices: ["아궁이에 넣어 태워 버렸다", "하인에게 주었다", "끈을 풀어 이야기를 내보냈다"], answer: 2 },
     {
         q: "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
         wide: true,
         choices: [
-            "들은 이야기를 하나도 안 내주고 주머니에 가둔 것을 보면, 나누지 않은 것은 결국 해가 되는구나.",
+            "도련님이 십 년 동안 모은 것이 답답함이었다는 말을 보면, 나누지 않은 것은 결국 해가 되는구나.",
             "이야기들이 화가 나서 앙갚음을 꾸민 것을 보면, 옛사람들은 이야기를 살아 있는 것으로 여겼네.",
-            "늙은 하인이 아무 설명도 못 하고 매를 각오한 것을 보면, 옳은 일을 하고도 오해를 사는 때가 있어.",
-            "도련님이 뱀을 보고 그 자리에서 하인에게 큰절을 올린 것을 보면, 잘못을 아는 데 오래 걸리지 않았나 봐."
+            "늙은 하인이 미쳤다는 소리를 들으면서도 신방 문을 연 것을 보면, 옳은 일을 하고도 오해를 사는 때가 있어.",
+            "도련님이 신방에서 나온 것을 보자마자 하인에게 큰절을 올린 것을 보면, 잘못을 아는 데 오래 걸리지 않았나 봐."
         ],
         answer: 3
     }

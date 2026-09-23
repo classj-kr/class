@@ -556,20 +556,20 @@ const EN = {
         }
     ],
     quiz: [
-        { q: "What did the Jaringobi hang from the ceiling?", choices: ["A dish of bean paste", "One dried fish", "A handful of dried greens"], answer: 1 },
+        { q: "Why did the villagers not take the Jaringobi's house for a rich man's?", choices: ["The family always went about in rags", "The roof sagged and the wall leaned", "The gate always stood open"], answer: 1 },
         { q: "What did he say when the youngest looked twice?", choices: ["That he would let it go once", "That he should eat more rice", "That it was salty, drink water"], answer: 2 },
         { q: "What did he do to save the fan?", choices: ["Held it still and shook his head", "Cut the fan in half to use it", "Borrowed a fan from next door"], answer: 0 },
-        { q: "How far did he chase the fly?", choices: ["The next village", "Over the hill", "Hanyang"], answer: 2 },
-        { q: "What did he do at dawn when the harvest failed?", choices: ["Counted his sacks all night", "Pushed the storehouse doors wide", "Glanced over the wall"], answer: 1 },
-        { q: "What did the villagers understand then?", choices: ["That he was not rich at all", "Why he had saved so hard", "That the fish was a fake"], answer: 1 },
+        { q: "What did the Jaringobi do when he lost the fly in Hanyang?", choices: ["Went into the tiled house and asked them to find the fly", "Bought new straw shoes and kept hunting the fly", "Laughed out loud and turned home empty-handed"], answer: 2 },
+        { q: "What did the villagers do at first when they saw the rice sacks in the yard?", choices: ["Nobody could reach out a hand", "They rushed to shoulder the sacks", "They bowed down to the Jaringobi"], answer: 0 },
+        { q: "What was on the Jaringobi's table that evening, after the rice was given away?", choices: ["The dried fish, taken down and served at last", "Side dishes sent over by the villagers", "Still nothing but rice and water"], answer: 2 },
         {
             q: "Which reaction to this book does NOT fit?",
             wide: true,
             choices: [
                 "He hung the fish up and took one look for each spoonful, so even saving was done with a plan behind it.",
-                "He pushed the storehouse doors open himself in a bad year, so thirty years of saving had a reason.",
+                "His face showed no regret as he handed out the rice, so thirty years of saving had a reason.",
                 "The miser from Gyeongsang never looked at the fish once, so there is always somebody above.",
-                "He chased the fly to Hanyang and got his bean paste back in the end, so he saw a thing through once he began it."
+                "He chased the fly to Hanyang and made them pay for his bean paste there, so he saw a thing through once he began it."
             ],
             answer: 3
         }
@@ -763,20 +763,20 @@ const EN = {
 };
 
 const QUIZ = [
-    { q: "자린고비는 천장에 무엇을 매달았나요?", choices: ["된장 한 종지", "굴비 한 마리", "말린 나물 한 줌"], answer: 1 },
+    { q: "동네 사람들이 자린고비 집을 부잣집인 줄 몰랐던 까닭은 무엇인가요?", choices: ["식구들이 늘 남루한 옷을 입고 다녀서", "지붕이 내려앉고 담이 기울어 있어서", "대문을 늘 열어 두고 살아서"], answer: 1 },
     { q: "막내가 굴비를 두 번 보자 자린고비는 뭐라고 했나요?", choices: ["이번 한 번은 봐준다고", "밥을 더 먹으라고", "짜다며 물을 마시라고"], answer: 2 },
     { q: "자린고비가 부채를 아끼려고 한 일은 무엇인가요?", choices: ["부채는 두고 고개를 흔들었다", "부채를 반으로 잘라서 썼다", "부채를 이웃집에서 빌려 왔다"], answer: 0 },
-    { q: "파리를 쫓아 어디까지 갔나요?", choices: ["이웃 마을", "산 너머", "한양"], answer: 2 },
-    { q: "흉년이 들자 자린고비는 새벽에 무엇을 했나요?", choices: ["쌀가마를 밤새 세었다", "곳간 문을 밀어젖혔다", "담 밖을 흘깃거렸다"], answer: 1 },
-    { q: "마을 사람들은 그제야 무엇을 알았나요?", choices: ["그가 부자가 아니라는 것", "왜 그토록 아꼈는지", "굴비가 가짜였다는 것"], answer: 1 },
+    { q: "한양에서 파리를 놓친 자린고비는 어떻게 했나요?", choices: ["기와집에 들어가 파리를 찾아 달라고 했다", "새 짚신을 사 신고 파리를 더 찾아다녔다", "껄껄 웃고는 빈손으로 돌아섰다"], answer: 2 },
+    { q: "마당에 나온 쌀가마를 본 마을 사람들은 처음에 어떻게 했나요?", choices: ["아무도 손을 내밀지 못했다", "앞다투어 가마를 졌다", "자린고비에게 절을 했다"], answer: 0 },
+    { q: "쌀을 나눠 준 날 저녁 자린고비네 밥상은 어땠나요?", choices: ["처음으로 굴비를 내려 상에 올렸다", "마을 사람들이 보낸 반찬이 가득했다", "여전히 밥과 물뿐이었다"], answer: 2 },
     {
         q: "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
         wide: true,
         choices: [
             "굴비를 천장에 매달고 한 술에 한 번씩 본 것을 보면, 아끼는 일도 저렇게 궁리를 해 가며 했구나.",
-            "흉년에 곳간 문을 손수 밀어젖힌 것을 보면, 삼십 년을 아낀 데에는 까닭이 있었네.",
+            "쌀을 내주는 자린고비 얼굴에 아까워하는 기색이 없었던 것을 보면, 삼십 년을 아낀 데에는 까닭이 있었네.",
             "경상도 구두쇠가 굴비를 한 번도 안 쳐다본 것을 보면, 위에는 위가 있는 거야.",
-            "파리를 한양까지 쫓아가 기어이 된장을 되찾아 온 것을 보면, 한번 마음먹으면 끝을 보는 사람이겠다."
+            "파리를 쫓아간 한양에서 된장 값을 받아 낸 것을 보면, 한번 마음먹으면 끝을 보는 사람이겠다."
         ],
         answer: 3
     }

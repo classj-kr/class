@@ -477,12 +477,12 @@ const EN = {
         }
     ],
     quiz: [
-        { q: "What did the father-in-law do when her colour changed?", choices: ["Asked if she was ill", "Pretended not to notice", "Went off to his own room"], answer: 0 },
+        { q: "What did the father-in-law do once she told them the reason?", choices: ["Told her to go and get medicine", "Laughed and told her to let it out at once", "Sent her off to her parents' home"], answer: 1 },
         { q: "What did her husband hold on to?", choices: ["The pillar", "The door handle", "The pot lid"], answer: 2 },
         { q: "What happened to the mother-in-law in the blast?", choices: ["Flew into the yard with the door", "Spun round and round on the pillar", "Went up on top of the roof"], answer: 0 },
         { q: "Who did the two of them meet on the road?", choices: ["Rice cake sellers", "Salt sellers", "Pear sellers"], answer: 2 },
-        { q: "What did the bride tell the people at the tree?", choices: ["To get back, all of them", "To lend her a long pole", "That she would climb up"], answer: 0 },
-        { q: "What became of the bride after that?", choices: ["Stayed at her old home", "Came back home again", "Went off with the sellers"], answer: 1 },
+        { q: "What did the bride say as she stepped out before the sellers?", choices: ["To lend her a long pole", "To stand well back and shut their eyes", "To fetch her a ladder"], answer: 1 },
+        { q: "After the sellers paid them, what did her husband say?", choices: ["Let us stay a few days at your parents' home", "Let us build a new house with this money", "Let us just go home"], answer: 2 },
         {
             q: "Which reaction to this book does NOT fit?",
             wide: true,
@@ -490,7 +490,7 @@ const EN = {
                 "She held it in till her face turned yellow, so holding a thing in is not always the better way.",
                 "They meant to send her away over one fault, so you can see how little room a bride had in those days.",
                 "The rule became to say so first, so they looked for a way to live with it instead of getting rid of it.",
-                "The father-in-law was planning to send her off from the start, so he never thought well of her at all."
+                "She gave all the sellers' pay away to the villagers, so she never used her gift to make money."
             ],
             answer: 3
         }
@@ -669,12 +669,12 @@ const EN = {
 };
 
 const QUIZ = [
-    { q: "며느리의 얼굴빛이 이상해지자 시아버지는 무엇을 했나요?", choices: ["걱정스레 까닭을 물었다", "못 본 척 지나쳤다", "그길로 방에 들어가 버렸다"], answer: 0 },
+    { q: "며느리가 까닭을 말하자 시아버지는 어떻게 했나요?", choices: ["약을 지어 먹이라고 했다", "껄껄 웃으며 어서 뀌라고 했다", "친정에 다녀오라고 했다"], answer: 1 },
     { q: "남편은 무엇을 붙잡았나요?", choices: ["기둥", "문고리", "솥뚜껑"], answer: 2 },
     { q: "방귀 바람에 시어머니는 어떻게 되었나요?", choices: ["문짝과 함께 마당으로 날아갔다", "기둥을 안고 빙글빙글 돌았다", "지붕 위까지 올라갔다"], answer: 0 },
     { q: "친정 가는 길에 만난 사람들은 누구인가요?", choices: ["떡 장수들", "소금 장수들", "배 장수들"], answer: 2 },
-    { q: "며느리가 배나무 앞에서 사람들에게 뭐라고 했나요?", choices: ["물러서서 눈을 감으라고", "장대를 빌려 달라고", "나무에 올라가겠다고"], answer: 0 },
-    { q: "며느리는 그 뒤에 어떻게 되었나요?", choices: ["친정에서 계속 살았다", "시댁으로 다시 돌아왔다", "배 장수를 따라갔다"], answer: 1 },
+    { q: "며느리가 장수들 앞에 나서며 뭐라고 했나요?", choices: ["장대를 빌려 달라고", "뒤로 물러나 눈을 감으라고", "사다리를 가져다 달라고"], answer: 1 },
+    { q: "장수들에게 삯을 받은 뒤 남편은 며느리에게 뭐라고 했나요?", choices: ["친정에 며칠만 있다 옵시다", "이 돈으로 새집을 지읍시다", "우리 그냥 집으로 갑시다"], answer: 2 },
     {
         q: "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
         wide: true,
@@ -682,7 +682,7 @@ const QUIZ = [
             "며느리가 얼굴빛이 노래지도록 참은 것을 보면, 참는 것이 늘 좋기만 한 것은 아니구나.",
             "흠 하나로 친정에 보내려 한 것을 보면, 그때 며느리 자리가 얼마나 좁았는지 알겠다.",
             "뀌기 전에 미리 말만 해 달라는 규칙이 생긴 것을 보면, 흠을 없애기보다 같이 사는 길을 찾았구나.",
-            "시아버지가 처음부터 며느리를 내보낼 궁리를 한 것을 보면, 며느리를 곱게 보지 않았구나."
+            "며느리가 장수들에게 받은 삯을 마을 사람들에게 다 나누어 준 것을 보면, 재주를 돈벌이로 쓰지 않았구나."
         ],
         answer: 3
     }

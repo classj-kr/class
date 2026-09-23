@@ -475,19 +475,19 @@ const EN = {
         }
     ],
     quiz: [
-        { q: "Who did the two mice mean their daughter to marry?", choices: ["The young mouse next door", "One the matchmaker brought", "The strongest in the world"], answer: 2 },
+        { q: "Why did none of the marriage offers satisfy the two mice?", choices: ["They thought their daughter fit to marry a king", "They thought she was still too young", "She shook her head at every one"], answer: 0 },
         { q: "Which is the order they went in?", choices: ["Wind - sun - Buddha - cloud", "Sun - cloud - wind - Buddha", "Cloud - wind - sun - Buddha"], answer: 1 },
-        { q: "What happened in the field when they called?", choices: ["It came and laid the grass flat", "Shade fell on the village below", "The hill ridges all went warm"], answer: 0 },
         { q: "What did the stone Buddha fear?", choices: ["A hard blowing wind", "Being covered by cloud", "Digging under its feet"], answer: 2 },
-        { q: "What did the Buddha say happens when a mouse digs?", choices: ["It stands a thousand more years", "It does not even blink", "It comes straight down"], answer: 2 },
-        { q: "Who did the daughter marry in the end?", choices: ["The sun far away", "The young mouse next door", "The stone Buddha on the pass"], answer: 1 },
+        { q: "What did the two mice do on the way home after hearing the Buddha?", choices: ["Laughed together until the tears came", "Walked along cursing the Buddha", "Only worried how to tell their daughter"], answer: 0 },
+        { q: "Why did the sun say the cloud was stronger than itself?", choices: ["The cloud is higher up", "The cloud brings rain", "Once the cloud covers it, it can do nothing"], answer: 2 },
+        { q: "Who was the groom at the wedding under the storehouse?", choices: ["A mouse the matchmaker brought", "The young mouse next door", "A rich mouse from a far-off district"], answer: 1 },
         {
             q: "Which reaction to this book does NOT fit?",
             wide: true,
             choices: [
                 "After going to the sun and the cloud and the wind the answer was themselves, so it was not a thing to look for far away.",
                 "The daughter sighed from the very start, so nobody asked the one who was actually getting married.",
-                "The stone Buddha feared what was under its own feet, so big hard things are helpless once the ground goes.",
+                "Even the Buddha that stood a thousand years had something it feared, so big hard things have a weak spot too.",
                 "The two went round all four without one word of complaint, so for their daughter they did not feel the hardship."
             ],
             answer: 3
@@ -663,19 +663,19 @@ const EN = {
 };
 
 const QUIZ = [
-    { q: "쥐 부부는 딸을 누구에게 보내려 했나요?", choices: ["이웃집 총각 쥐", "중매쟁이가 데려온 이", "세상에서 가장 센 이"], answer: 2 },
+    { q: "혼인 이야기가 들어와도 쥐 부부의 마음에 차지 않은 까닭은 무엇인가요?", choices: ["임금님께 보내도 아깝지 않은 딸이라서", "딸이 아직 시집갈 나이가 아니라고 여겨서", "딸이 하나같이 싫다고 고개를 저어서"], answer: 0 },
     { q: "쥐 부부가 찾아간 차례로 맞는 것은 무엇인가요?", choices: ["바람 - 해 - 돌부처 - 구름", "해 - 구름 - 바람 - 돌부처", "구름 - 바람 - 해 - 돌부처"], answer: 1 },
-    { q: "쥐 부부가 부르자 들판에서는 무슨 일이 있었나요?", choices: ["억새가 눕도록 몰려왔다", "아래쪽 마을에 그늘이 졌다", "산등성이가 다 따뜻해졌다"], answer: 0 },
     { q: "돌부처가 무서워한 것은 무엇인가요?", choices: ["세차게 부는 바람", "구름이 가리는 것", "발밑을 파는 것"], answer: 2 },
-    { q: "돌부처는 쥐가 발밑을 파면 어떻게 된다고 했나요?", choices: ["천 년을 더 선다고", "눈 하나 깜짝 않는다고", "그대로 쓰러지고 만다고"], answer: 2 },
-    { q: "딸은 결국 누구와 혼인했나요?", choices: ["멀리 사는 해", "이웃집 총각 쥐", "산 위의 돌부처"], answer: 1 },
+    { q: "돌부처의 말을 듣고 집으로 돌아오는 길에 부부는 어떻게 했나요?", choices: ["마주 보고 웃다가 눈물까지 흘렸다", "돌부처를 원망하며 걸었다", "딸에게 뭐라 할지 걱정만 했다"], answer: 0 },
+    { q: "해는 왜 구름을 자기보다 세다고 했나요?", choices: ["구름이 해보다 더 높이 떠 있어서", "구름이 비를 내려 땅을 적셔서", "구름이 가리면 아무것도 못 해서"], answer: 2 },
+    { q: "곳간 밑 혼례식의 신랑은 누구였나요?", choices: ["중매쟁이가 데려온 쥐", "이웃집 총각 쥐", "먼 고을의 부잣집 쥐"], answer: 1 },
     {
         q: "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
         wide: true,
         choices: [
             "해와 구름과 바람을 다 찾아다닌 끝에 답이 저희였던 것을 보면, 먼 데서 찾을 것이 아니었구나.",
             "딸이 처음부터 한숨을 쉰 것을 보면, 정작 시집갈 사람의 뜻은 묻지 않았네.",
-            "돌부처가 제 발밑을 무서워한 것을 보면, 크고 단단한 것도 밑이 무너지면 별수 없어.",
+            "천 년을 서 있던 돌부처도 무서운 것이 있다고 한 것을 보면, 크고 단단한 것에도 약한 데가 있구나.",
             "쥐 부부가 힘들다는 말 한마디 없이 네 곳을 다 돌아본 것을 보면, 딸 일이라 힘든 줄도 몰랐나 봐."
         ],
         answer: 3

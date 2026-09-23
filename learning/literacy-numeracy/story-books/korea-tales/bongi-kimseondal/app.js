@@ -465,18 +465,18 @@ const EN = {
         }
     ],
     quiz: [
-        { q: "What did the merchants from Hanyang boast?", choices: ["That money could buy anything", "That Pyongyang had good water", "That they had come a long way"], answer: 0 },
+        { q: "What did the merchants from Hanyang boast?", choices: ["That money could buy anything", "That the Daedong's water tasted best", "That Hanyang silk was the finest"], answer: 0 },
         { q: "What did Kim Seondal ask the water carriers to do?", choices: ["Not to come out for water", "To bow low to the merchants", "To lay the coin back down"], answer: 2 },
-        { q: "How did the merchants offer to buy the river?", choices: ["They pushed over a whole chest", "They gave up their silk coats", "They handed over water frames"], answer: 0 },
-        { q: "What did the water carriers do when told to pay?", choices: ["They turned pale and went away", "They held their sides laughing", "They stamped their feet and shouted"], answer: 1 },
-        { q: "What did Kim Seondal do with the money?", choices: ["Slipped away with it", "Shared it with the carriers", "Gave it all back"], answer: 2 },
-        { q: "What did Kim Seondal say at the end?", choices: ["That the river came from his forefathers", "That the river belongs to nobody", "That he charged for every load"], answer: 1 },
+        { q: "How did the merchants come to buy the river?", choices: ["Kim Seondal came to them first and pressed them to buy", "They went to Kim Seondal at dawn and begged him to sell", "They paid the carriers' water fees and took it over"], answer: 1 },
+        { q: "What did the water carriers do when told to pay?", choices: ["They held their sides laughing", "They turned pale and went away", "They stamped their feet and shouted"], answer: 0 },
+        { q: "What was Kim Seondal doing when the fooled merchants stormed to his house?", choices: ["He had slipped out the back and was gone", "He was sitting in his room, waiting", "He was counting coins on the riverside rock"], answer: 1 },
+        { q: "What else did Kim Seondal say nobody can buy, like the river?", choices: ["The sky and the wind", "The sun and the moon", "The wind and a person's heart"], answer: 2 },
         {
             q: "Which reaction to this book does NOT fit?",
             wide: true,
             choices: [
                 "He handed every coin back without spending one, so it was the boast he was after and not the money.",
-                "The carriers laughed out loud at being asked to pay, so everybody already knew the river was nobody's.",
+                "The carriers told the merchants to go buy the sky and the wind too, so everybody already knew the river was nobody's.",
                 "The merchants boasted the moment they reached Pyongyang, so money made a person look big in those days.",
                 "Kim Seondal grew famous for this and was given an official post, so a talent finds someone who values it."
             ],
@@ -657,18 +657,18 @@ const EN = {
 };
 
 const QUIZ = [
-    { q: "한양 상인들이 큰소리친 것은 무엇인가요?", choices: ["돈으로 못 살 게 없다고", "우는 아이도 웃긴다고", "글도 잘 읽고 셈도 밝다고"], answer: 0 },
+    { q: "한양 상인들이 큰소리친 것은 무엇인가요?", choices: ["돈으로 못 살 게 없다고", "대동강 물맛이 제일이라고", "한양 비단이 제일 곱다고"], answer: 0 },
     { q: "김선달이 물장수들에게 부탁한 것은 무엇인가요?", choices: ["물을 길으러 나오지 말라고", "상인들에게 인사를 올리라고", "엽전을 도로 내놓으라고"], answer: 2 },
-    { q: "상인들은 강을 사겠다며 어떻게 했나요?", choices: ["궤짝을 통째로 내밀었다", "비단옷을 벗어 주었다", "물지게를 내주었다"], answer: 0 },
-    { q: "물장수들은 물값을 내라는 말에 어떻게 했나요?", choices: ["얼굴이 파랗게 질렸다", "배를 잡고 웃었다", "발을 구르며 소리쳤다"], answer: 1 },
-    { q: "김선달은 받은 돈을 어떻게 했나요?", choices: ["몰래 챙겨 달아났다", "물장수에게 나눠 줬다", "그대로 돌려주었다"], answer: 2 },
-    { q: "김선달이 마지막에 한 말은 무엇인가요?", choices: ["조상 대대로 물려받았다고", "강물은 누구의 것도 아니라고", "물 한 지게에 얼마씩 받는다고"], answer: 1 },
+    { q: "상인들은 어떻게 강을 사게 되었나요?", choices: ["김선달이 먼저 찾아와 강을 사라고 졸랐다", "새벽부터 김선달을 찾아가 팔라고 졸랐다", "물장수들에게 물값을 대신 내 주고 샀다"], answer: 1 },
+    { q: "물장수들은 물값을 내라는 말에 어떻게 했나요?", choices: ["배를 잡고 웃었다", "얼굴이 파랗게 질렸다", "발을 구르며 소리쳤다"], answer: 0 },
+    { q: "속은 것을 안 상인들이 몰려갔을 때 김선달은 무엇을 하고 있었나요?", choices: ["뒷문으로 달아나고 집에 없었다", "방 안에 앉아 기다리고 있었다", "강가 바위에서 엽전을 세고 있었다"], answer: 1 },
+    { q: "김선달이 강물처럼 아무도 못 사는 것으로 든 것은 무엇인가요?", choices: ["하늘과 바람", "해와 달", "바람과 사람 마음"], answer: 2 },
     {
         q: "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
         wide: true,
         choices: [
             "김선달이 돈을 한 푼도 안 쓰고 그대로 돌려준 것을 보면, 돈이 아니라 그 말을 노린 것이었구나.",
-            "물장수들이 물값을 내라는 말에 배를 잡고 웃은 것을 보면, 강은 누구 것도 아니라는 걸 다들 알고 있었구나.",
+            "물장수들이 하늘도 사고 바람도 사라고 한 것을 보면, 강은 누구 것도 아니라는 걸 다들 알고 있었구나.",
             "한양 상인들이 평양에 와서 큰소리부터 친 것을 보면, 돈이 많으면 사람이 커 보이던 때였나 보다.",
             "김선달이 이 일로 이름이 나 벼슬자리에 오른 것을 보면, 재주는 언젠가 알아주는 이를 만나는구나."
         ],

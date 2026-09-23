@@ -393,20 +393,20 @@ const EN = {
         }
     ],
     quiz: [
-        { q: "What did the mother do at night by the lamp?", choices: ["Gathered herbs", "Sewed clothes for other people", "Hung out the washing"], answer: 1 },
-        { q: "What happened at the eldest daughter's house?", choices: ["The gate never opened", "She stayed one night", "She ate and turned back"], answer: 0 },
-        { q: "What did the second daughter say to her?", choices: ["To finish hanging the washing", "To pay the ferryman", "That the house was busy, come another time"], answer: 2 },
-        { q: "What happened to the old woman halfway down the hill?", choices: ["She took the wrong path", "She hurt her leg", "Her strength gave out and she sat down"], answer: 2 },
-        { q: "Who found the old woman?", choices: ["The youngest daughter", "The second daughter", "A passer-by"], answer: 0 },
-        { q: "What does the grandmother flower look like?", choices: ["It faces the sky", "It hangs its head", "It lies on its side"], answer: 1 },
+        { q: "What did the mother say as she saw her daughters off?", choices: ["To be sure to visit at the holidays", "That they need not come often", "To send a letter now and then"], answer: 1 },
+        { q: "What did the old woman hear at the eldest daughter's gate?", choices: ["A shout not to knock", "An offer to call the ferryman", "Footsteps moving away inside"], answer: 2 },
+        { q: "What did the second daughter say to her?", choices: ["That the house was busy, come another time", "To finish hanging the washing", "To pay the ferryman"], answer: 0 },
+        { q: "What happened to the old woman halfway down the hill?", choices: ["She walked on into the youngest's yard", "Her strength gave out and she sank down", "Her stick broke and she tumbled"], answer: 1 },
+        { q: "Why did the youngest run up the hill that day?", choices: ["Word had come that her mother was on the way", "Her sisters sent word they had turned her away", "She had been uneasy about her mother since morning"], answer: 2 },
+        { q: "Where did the old woman close her eyes for the last time?", choices: ["On the grass halfway down the hill", "In the warm room at the youngest's house", "On the youngest's back on the way down"], answer: 1 },
         {
             q: "Which reaction to this book does NOT fit?",
             wide: true,
             choices: [
                 "Only the poorest daughter went looking for her, so looking after a parent has nothing to do with money.",
-                "The eldest daughter's gate never opened, so one door can put that much distance between people.",
+                "She turned from the closed gate without a word, so it was hurt more than anger she felt.",
                 "The youngest wept because her mother was so light, so you can tell how thin she had grown.",
-                "She told them they needn't come often, so she did not much want to see her daughters."
+                "The second daughter came down to the river to see her mother off, so she had not forgotten her entirely."
             ],
             answer: 3
         }
@@ -587,20 +587,20 @@ const EN = {
 };
 
 const QUIZ = [
-    { q: "어머니가 밤에 등잔 밑에서 한 일은 무엇인가요?", choices: ["나물 캐기", "남의 옷 만들기", "빨래 널기"], answer: 1 },
-    { q: "첫째 딸 집에서 할머니는 어떻게 되었나요?", choices: ["문이 끝내 열리지 않았다", "하룻밤 자고 돌아왔다", "밥만 먹고 돌아섰다"], answer: 0 },
-    { q: "둘째 딸은 할머니에게 뭐라고 했나요?", choices: ["빨래를 마저 널어 달라고", "배 타는 값을 내 달라고", "집안이 바빠 다음에 오라고"], answer: 2 },
-    { q: "언덕 중턱에서 할머니는 어떻게 되었나요?", choices: ["길을 잘못 들었다", "다리를 다쳤다", "기운이 다해 앉았다"], answer: 2 },
-    { q: "할머니를 찾아낸 사람은 누구인가요?", choices: ["막내딸", "둘째 딸", "지나던 사람"], answer: 0 },
-    { q: "할미꽃은 어떤 모습인가요?", choices: ["하늘을 보고 있다", "고개를 숙이고 있다", "옆으로 누워 있다"], answer: 1 },
+    { q: "어머니는 딸들을 배웅하며 뭐라고 했나요?", choices: ["명절에는 꼭 다녀가라고", "자주 오지 않아도 된다고", "편지라도 자주 보내라고"], answer: 1 },
+    { q: "첫째 딸네 대문 앞에서 할머니가 들은 것은 무엇인가요?", choices: ["문 두드리지 말라는 호통", "사공을 불러 주겠다는 말", "안에서 멀어져 가는 발소리"], answer: 2 },
+    { q: "둘째 딸은 할머니에게 뭐라고 했나요?", choices: ["집안이 바빠 다음에 오라고", "빨래를 마저 널어 달라고", "배 타는 값을 내 달라고"], answer: 0 },
+    { q: "언덕 중턱에서 할머니는 어떻게 되었나요?", choices: ["막내네 마당까지 걸어 들어갔다", "기운이 다해 주저앉았다", "지팡이가 부러져 굴렀다"], answer: 1 },
+    { q: "막내는 그날 왜 언덕으로 뛰어갔나요?", choices: ["어머니가 온다는 기별을 받아서", "언니들이 어머니를 돌려보냈다고 알려 와서", "아침부터 어머니 생각에 마음이 어지러워서"], answer: 2 },
+    { q: "할머니는 어디에서 눈을 감았나요?", choices: ["언덕 중턱 풀밭에서", "막내네 따뜻한 방 아랫목에서", "막내 등에 업혀 내려오다가"], answer: 1 },
     {
         q: "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
         wide: true,
         choices: [
             "세 딸 중에 제일 가난한 막내만 어머니를 찾아 나선 것을 보면, 모시는 마음은 살림과 상관이 없구나.",
-            "첫째 딸네 문이 끝내 열리지 않은 것을 보면, 문 하나가 사람 사이를 이렇게 갈라놓는구나.",
+            "할머니가 닫힌 문 앞에서 아무 말 없이 돌아선 것을 보면, 원망보다 서운함이 앞섰겠다.",
             "막내가 어머니를 업고 너무 가벼워 울었다는 것을 보면, 그동안 얼마나 여위셨는지 알겠다.",
-            "어머니가 자주 오지 않아도 된다고 한 것을 보면, 딸들을 보고 싶은 마음이 크지는 않았구나."
+            "둘째 딸이 강가까지 나와 어머니를 배웅한 것을 보면, 어머니를 아주 잊은 것은 아니었구나."
         ],
         answer: 3
     }

@@ -639,8 +639,8 @@ const EN = {
         ]
     },
     quiz: [
-        { q: "What did Yuhwa give birth to?", choices: ["One golden bead", "One great egg", "Twin brothers"], answer: 1 },
-        { q: "What did the pigs do with the egg in the sty?", choices: ["Trod on it going past", "Nosed it over to a dry place", "Covered it with their wings"], answer: 1 },
+        { q: "What strange thing happened to Yuhwa at the palace?", choices: ["The sound of the river reached her room every night", "A shaft of sunlight followed her about", "Birds crowded at her window"], answer: 1 },
+        { q: "What did the pigs do with the egg in the sty?", choices: ["Trod on it going past", "Rushed at it to eat it", "Nosed it over to a dry place"], answer: 2 },
         { q: "What does the name Jumong mean?", choices: ["A good archer", "One come from the sky", "A good rider"], answer: 0 },
         { q: "What did Jumong do about the good horse?", choices: ["Hid it in the stable", "Paid its price and bought it", "Put a needle under its tongue"], answer: 2 },
         { q: "What helped Jumong across the river?", choices: ["Fish and turtles", "A boatman with a boat", "A bridge from the sky"], answer: 0 },
@@ -650,9 +650,9 @@ const EN = {
             wide: true,
             choices: [
                 "Sent off to the stable he watched the horses instead of complaining, so what you look at matters more than where you are.",
-                "He made the good horse thin on purpose, so he was somebody who knew how to wait for the right moment.",
+                "He was handed the skinny horse and let nothing show on his face, so he was somebody who knew how to wait for the right moment.",
                 "A man being hunted called out at a river that he was heaven's grandson, so this is how founding stories get made.",
-                "Jumong beat the princes at shooting and won the king's love, so doing something well is always noticed."
+                "King Geumwa gave the egg back to Yuhwa, so he must have treasured the child from the start."
             ],
             answer: 3
         }
@@ -869,8 +869,8 @@ const EN = {
 };
 
 const QUIZ = [
-    { q: "유화가 낳은 것은 무엇인가요?", choices: ["금빛 구슬 하나", "커다란 알 하나", "쌍둥이 형제"], answer: 1 },
-    { q: "알을 돼지우리에 던졌더니 돼지들은 어떻게 했나요?", choices: ["알을 밟고 지나갔다", "주둥이로 밀어 옮겼다", "날개로 덮어 주었다"], answer: 1 },
+    { q: "궁에 온 유화에게 일어난 이상한 일은 무엇인가요?", choices: ["밤마다 강물 소리가 방까지 들렸다", "햇빛 한 줄기가 졸졸 따라다녔다", "새들이 창가에 몰려들었다"], answer: 1 },
+    { q: "알을 돼지우리에 던졌더니 돼지들은 어떻게 했나요?", choices: ["발로 밟고 지나갔다", "먹으려고 달려들었다", "주둥이로 살살 밀어 옮겼다"], answer: 2 },
     { q: "주몽이라는 이름은 무슨 뜻인가요?", choices: ["활을 잘 쏘는 사람", "하늘에서 온 사람", "말을 잘 타는 사람"], answer: 0 },
     { q: "주몽이 좋은 말을 알아보고 한 일은 무엇인가요?", choices: ["마구간에 몰래 감춰 두었다", "제값을 치르고 사들였다", "혀에 바늘을 꽂아 두었다"], answer: 2 },
     { q: "강을 건널 때 주몽을 도운 것은 무엇인가요?", choices: ["물고기와 자라", "배를 몰던 사공", "하늘에서 내린 다리"], answer: 0 },
@@ -880,9 +880,9 @@ const QUIZ = [
         wide: true,
         choices: [
             "마구간으로 쫓겨나서 불평 대신 말을 살핀 것을 보면, 어디 있느냐보다 무엇을 보느냐가 다음을 만드는구나.",
-            "좋은 말을 일부러 여위게 만든 것을 보면, 때를 기다릴 줄 아는 사람이야.",
+            "비쩍 마른 말을 받고도 겉으로 조금도 내색하지 않은 것을 보면, 때를 기다릴 줄 아는 사람이야.",
             "쫓기는 사람이 강 앞에서 하늘의 손자라고 외친 것을 보면, 나라를 세운 이야기는 이렇게 지어지나 보다.",
-            "주몽이 활 솜씨로 왕자들을 이겨 임금의 사랑을 받은 것을 보면, 잘하면 알아주는 법이겠다."
+            "금와왕이 알을 도로 유화에게 돌려준 것을 보면, 처음부터 그 아이를 귀하게 여긴 거야."
         ],
         answer: 3
     }

@@ -407,17 +407,17 @@ const EN = {
         }
     ],
     quiz: [
-        { q: "Where was the tiger trapped?", choices: ["In a deep river", "In a hunter's pit", "In a great net"], answer: 1 },
-        { q: "What did the tiger promise if he was let out?", choices: ["To go back to the mountain", "To lay a log across", "To pay back the kindness"], answer: 2 },
-        { q: "Why did the pine side with the tiger?", choices: ["People cut trees down", "It was afraid of the tiger", "It disliked the traveller"], answer: 0 },
-        { q: "Why did the ox side with the tiger?", choices: ["It disliked the traveller", "It was afraid of the pit", "People work oxen too hard"], answer: 2 },
-        { q: "What did the rabbit ask the tiger to do?", choices: ["Fill in the pit", "Show her just once", "Come out of the pit"], answer: 1 },
-        { q: "What happened once the tiger was back in the pit?", choices: ["He jumped straight out", "The log was taken away", "The traveller pulled him out"], answer: 1 },
+        { q: "What was the pit the tiger had fallen into?", choices: ["Ground that had caved in after rain", "A trap dug by a hunter", "The burrow the rabbit lived in"], answer: 1 },
+        { q: "Who did the tiger and the traveller ask first?", choices: ["The old pine", "The ox pulling the plough", "The rabbit passing by"], answer: 0 },
+        { q: "Why did the first two they asked side with the tiger?", choices: ["They were afraid of the tiger", "People cut them down and work them to death", "The traveller had not asked them first"], answer: 1 },
+        { q: "What did the rabbit ask the tiger to do?", choices: ["Fill in the pit", "Let the traveller go", "Show her just once"], answer: 2 },
+        { q: "What did the traveller do once he saw what the rabbit was up to?", choices: ["Told the tiger to climb down into the pit", "Bowed low to the rabbit", "Kept his mouth shut"], answer: 2 },
+        { q: "What did the rabbit say to do with the log?", choices: ["Push it down into the pit", "Put it back where it had been", "Hide it where the tiger could not see"], answer: 1 },
         {
             q: "Which reaction to this book does NOT fit?",
             wide: true,
             choices: [
-                "The rabbit played dumb and turned the scene back, so showing beats arguing sometimes.",
+                "The rabbit ended by telling the traveller to be more careful next time, so the one who did the saving was not entirely in the right either.",
                 "He changed his story the moment he was out, so a promise made in trouble can last only that long.",
                 "The traveller softened at the tiger's tears, so tears can cloud what you decide.",
                 "The traveller put the tiger back and shovelled earth on top, so once burned, people turn hard too."
@@ -604,17 +604,17 @@ const EN = {
 };
 
 const QUIZ = [
-    { q: "호랑이는 어디에 빠져 있었나요?", choices: ["깊은 강물", "사냥꾼의 함정", "커다란 그물"], answer: 1 },
-    { q: "호랑이는 꺼내 주면 어떻게 하겠다고 했나요?", choices: ["산으로 가겠다", "나무를 걸쳐 주겠다", "은혜를 갚겠다"], answer: 2 },
-    { q: "소나무는 왜 호랑이 편을 들었나요?", choices: ["사람이 베어 가서", "호랑이가 무서워서", "나그네가 미워서"], answer: 0 },
-    { q: "소는 왜 호랑이 편을 들었나요?", choices: ["나그네가 미워서", "구덩이가 무서워서", "사람이 부려먹어서"], answer: 2 },
-    { q: "토끼가 호랑이에게 부탁한 것은 무엇인가요?", choices: ["구덩이를 메워 달라고", "딱 한 번만 보여 달라고", "구덩이에서 나와 달라고"], answer: 1 },
-    { q: "구덩이에 다시 들어간 호랑이는 어떻게 되었나요?", choices: ["곧바로 뛰어나왔다", "나무가 치워졌다", "나그네가 꺼내 주었다"], answer: 1 },
+    { q: "호랑이가 빠진 구덩이는 무엇이었나요?", choices: ["비가 와서 무너진 땅", "사냥꾼이 파 놓은 함정", "토끼가 숨어 살던 굴"], answer: 1 },
+    { q: "호랑이와 나그네가 맨 처음 물어본 것은 누구인가요?", choices: ["늙은 소나무", "쟁기를 끌던 소", "지나가던 토끼"], answer: 0 },
+    { q: "먼저 물어본 둘은 왜 호랑이 편을 들었나요?", choices: ["호랑이가 무서워서", "사람이 저희를 베어 가고 부려먹어서", "나그네가 먼저 물어보지 않아서"], answer: 1 },
+    { q: "토끼가 호랑이에게 부탁한 것은 무엇인가요?", choices: ["구덩이를 메워 달라고", "나그네를 놓아 달라고", "딱 한 번만 보여 달라고"], answer: 2 },
+    { q: "토끼의 속을 알아챈 나그네는 어떻게 했나요?", choices: ["호랑이에게 구덩이로 내려가라고 했다", "토끼에게 넙죽 절을 했다", "입을 다물었다"], answer: 2 },
+    { q: "토끼는 걸쳐 놓은 나무를 어떻게 하라고 했나요?", choices: ["구덩이 속으로 밀어 넣으라고", "처음 자리에 도로 갖다 놓으라고", "호랑이가 못 보게 감추라고"], answer: 1 },
     {
         q: "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
         wide: true,
         choices: [
-            "토끼가 모르는 척 되물으며 판을 되돌린 것을 보면, 따지기보다 되돌려 보이는 편이 빨랐구나.",
+            "토끼가 마지막에 그래도 다음부터는 조심하라고 한 것을 보면, 살려 준 나그네 쪽도 잘한 것만은 아니었네.",
             "구덩이에서 나오자마자 말을 바꾼 것을 보면, 급할 때 한 약속은 그때뿐이기도 하네.",
             "나그네가 호랑이의 눈물을 보고 마음이 약해진 것을 보면, 우는 것 앞에서는 판단이 흐려지는 거야.",
             "나그네가 호랑이를 도로 구덩이에 넣고 흙까지 덮어 버린 것을 보면, 한번 데고 나면 사람도 모질어지나 봐."

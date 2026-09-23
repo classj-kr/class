@@ -499,22 +499,22 @@ const EN = {
         }
     ],
     quiz: [
-        { q: "What did their mother say as she left?", choices: ["Not to go near the well", "To keep the door locked", "To have the rice cooked"], answer: 1 },
-        { q: "What did the tiger say on every hill?", choices: ["Step aside and I will let you pass", "Sing me a song and I will spare you", "Give me a cake and I will not eat you"], answer: 2 },
+        { q: "What did their mother say as she left?", choices: ["Not to go outside", "To keep the door locked", "To have the rice cooked"], answer: 1 },
+        { q: "What did the mother do at the last hill, when the basket was empty?", choices: ["Threw the basket and ran", "Took off her clothes and gave them to the tiger", "Turned the basket over to show it and begged"], answer: 2 },
         { q: "How did they know it was not their mother?", choices: ["The hairy hand at the door crack", "The great load it carried on its back", "The old cloth it wore on its head"], answer: 0 },
         { q: "Where did the tiger think the children were?", choices: ["Up the tree", "In the well", "In the cupboard"], answer: 1 },
         { q: "What made the tiger look up into the tree?", choices: ["The sister laughed", "The brother shouted", "A branch broke off"], answer: 0 },
-        { q: "What came down out of the sky for them?", choices: ["A ladder made of gold", "A strong new rope", "A great bridge of cloud"], answer: 1 },
-        { q: "Where did the one on the rotten rope fall?", choices: ["Into the well", "Over the hill", "Into a sorghum field"], answer: 2 },
+        { q: "When the tiger could not climb, what did the sister shout?", choices: ["Rub sesame oil on and climb!", "Just chop steps with the axe, silly!", "Get a ladder and climb!"], answer: 1 },
+        { q: "Where did the tiger fall?", choices: ["In the middle of the yard", "Into the woods over the hill", "Into a sorghum field"], answer: 2 },
         { q: "What did the sister do after she became the sun?", choices: ["Showed her face only at night", "Always hid behind the clouds", "Made herself dazzling to look at"], answer: 2 },
         {
             q: "Which reaction to this book does NOT fit?",
             wide: true,
             choices: [
-                "The brother asked to see a hand, so a body gives itself away before a voice does.",
+                "The brother held the door handle and hesitated because the voice sounded wrong, so he was a child who missed nothing.",
                 "Their mother handed over a cake at every hill, so there are things that ask for more the more you give.",
                 "The brother became the moon because his sister feared the night, so they looked after each other to the last.",
-                "The tiger tried to climb with sesame oil on, so there must have been something simple and trusting about it."
+                "The tiger put on the mother's clothes and even faked her voice, so it never meant the children any harm from the start."
             ],
             answer: 3
         }
@@ -690,22 +690,22 @@ const EN = {
 };
 
 const QUIZ = [
-    { q: "어머니가 집을 나서며 오누이에게 한 말은 무엇인가요?", choices: ["우물가에 가지 말라고", "문 꼭 잠그고 있으라고", "밥을 지어 놓으라고"], answer: 1 },
-    { q: "호랑이가 고개마다 한 말은 무엇인가요?", choices: ["길을 비켜 주면 봐주지", "노래를 하면 살려 주지", "떡 하나 주면 안 잡아먹지"], answer: 2 },
+    { q: "어머니가 집을 나서며 오누이에게 한 말은 무엇인가요?", choices: ["집 밖에 나가지 말라고", "문 꼭 잠그고 있으라고", "밥을 지어 놓으라고"], answer: 1 },
+    { q: "마지막 고개에서 광주리가 비자 어머니는 어떻게 했나요?", choices: ["광주리를 던지고 달아났다", "호랑이에게 옷을 벗어 주었다", "광주리를 뒤집어 보이며 사정했다"], answer: 2 },
     { q: "오누이는 무엇을 보고 어머니가 아닌 줄 알았나요?", choices: ["문틈으로 내민 털북숭이 손", "등에 지고 온 커다란 짐", "머리에 쓰고 온 낡은 수건"], answer: 0 },
     { q: "호랑이는 오누이가 어디 있다고 여겼나요?", choices: ["나무 위", "우물 속", "장롱 안"], answer: 1 },
     { q: "호랑이가 나무 위를 올려다본 것은 무엇 때문인가요?", choices: ["누이가 그만 웃어서", "오빠가 소리를 질러서", "나뭇가지가 부러져서"], answer: 0 },
-    { q: "하늘에서 오누이에게 내려온 것은 무엇인가요?", choices: ["금으로 만든 사다리", "튼튼한 새 동아줄", "커다란 구름 다리"], answer: 1 },
-    { q: "썩은 동아줄을 타던 이는 어디로 떨어졌나요?", choices: ["우물 속", "고개 너머", "수수밭"], answer: 2 },
+    { q: "호랑이가 나무에 오르지 못하자 누이는 무어라 소리쳤나요?", choices: ["참기름을 바르고 올라와!", "도끼로 찍고 올라오면 되잖아!", "사다리를 놓고 올라와!"], answer: 1 },
+    { q: "호랑이는 어디로 떨어졌나요?", choices: ["마당 한가운데", "고개 너머 숲", "수수밭"], answer: 2 },
     { q: "누이가 해가 된 뒤에 한 일은 무엇인가요?", choices: ["밤에만 얼굴을 내밀었다", "구름 뒤에 늘 숨었다", "쳐다보면 눈부시게 했다"], answer: 2 },
     {
         q: "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
         wide: true,
         choices: [
-            "오빠가 손을 보여 달라고 한 것을 보면, 목소리보다 몸이 먼저 들통나는구나.",
+            "오빠가 목소리가 이상하다며 문고리를 잡고 망설인 것을 보면, 낌새를 놓치지 않는 아이였구나.",
             "어머니가 고개마다 떡을 하나씩 내준 것을 보면, 내주면 내줄수록 더 달라고 하는 게 있어.",
             "누이가 밤이 무섭다고 해서 오빠가 달이 된 것을 보면, 마지막까지 서로를 챙긴 남매네.",
-            "호랑이가 참기름을 바르고 나무에 오르려 한 것을 보면, 오빠 말을 그대로 믿을 만큼 순한 데가 있었겠다."
+            "호랑이가 어머니 옷을 입고 목소리까지 꾸민 것을 보면, 오누이를 처음부터 해칠 생각은 없었던 거야."
         ],
         answer: 3
     }

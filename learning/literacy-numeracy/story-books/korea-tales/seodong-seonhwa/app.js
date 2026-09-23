@@ -423,19 +423,19 @@ const EN = {
         }
     ],
     quiz: [
-        { q: "What did Seodong dig on the mountain every day?", choices: ["Wild ginseng", "Yams", "Bellflower root"], answer: 1 },
-        { q: "What did Seodong get the children of Seorabeol to do for a yam?", choices: ["Learn a song", "Carry a letter", "Show him the way"], answer: 0 },
-        { q: "What did the king do to the princess after hearing the song?", choices: ["Married her to Seodong", "Shut her in her room", "Sent her out of the capital"], answer: 2 },
-        { q: "What did Seodong call the gold the princess brought out?", choices: ["A treasure he had never seen", "Common stones on his yam mountain", "Stones found only in Silla"], answer: 1 },
-        { q: "Who sent the gold to the Silla palace in one night?", choices: ["The monk Jimyeong", "Princess Seonhwa", "The king of Baekje"], answer: 0 },
-        { q: "What was built where the Buddhas rose from the pond?", choices: ["A great fortress", "The king's palace", "Mireuksa temple"], answer: 2 },
+        { q: "What did his mother say when Seodong said he was going to Silla?", choices: ["To sell yams on the way for travel money", "Why go to a country that was on bad terms with theirs", "To be sure to hand the princess a letter"], answer: 1 },
+        { q: "What did the song Seodong taught the children say?", choices: ["That Baekje yams were better than Silla gold", "That Seodong would marry the princess of Silla", "That Princess Seonhwa went secretly to meet Seodong every night"], answer: 2 },
+        { q: "What did the king do to the princess after hearing the song?", choices: ["Sent her out of the capital", "Married her to Seodong", "Shut her in her room"], answer: 0 },
+        { q: "What did Seodong do when the princess opened the bag of gold?", choices: ["Marvelled at a treasure he had never seen", "Said such stones lay all over his yam mountain", "Said it was Silla's and should be sent back"], answer: 1 },
+        { q: "How did the monk Jimyeong send the gold to Silla?", choices: ["Loaded it on a boat down the river", "Sent it bit by bit with envoys", "Chanted and sent it flying through the sky"], answer: 2 },
+        { q: "Why did the queen ask for a temple to be built by the pond?", choices: ["Three Buddhas rose out of the water", "It was where Seodong used to dig yams", "Her father, the king of Silla, wished it"], answer: 0 },
         {
             q: "Which reaction to this book does NOT fit?",
             wide: true,
             choices: [
                 "He taught the song to children, so a rumour spreads from children's mouths, not from grown-ups'.",
-                "She sat down when he called gold a stone, so a thing is only worth what somebody knows it to be worth.",
-                "The king was only sorry once the gold arrived, so what a song lost him, gold won back.",
+                "The princess said they should build a house with the one bag of gold, so even outside the palace she thought first of how to live.",
+                "The king only accepted him as a son-in-law once the gold arrived, so what a song had spoiled, gold put right.",
                 "The princess never found out the song was false, so she married him still deceived."
             ],
             answer: 3
@@ -603,19 +603,19 @@ const EN = {
 };
 
 const QUIZ = [
-    { q: "서동이 날마다 산에서 캔 것은 무엇인가요?", choices: ["산삼", "마", "도라지"], answer: 1 },
-    { q: "서동이 서라벌 아이들에게 마를 주며 시킨 일은 무엇인가요?", choices: ["노래 배우기", "편지 전하기", "길 안내하기"], answer: 0 },
-    { q: "노래를 들은 임금은 공주를 어떻게 했나요?", choices: ["서동에게 시집보냈다", "방에 가두었다", "궁 밖으로 내보냈다"], answer: 2 },
-    { q: "서동은 공주가 꺼낸 금을 무엇이라 했나요?", choices: ["처음 보는 귀한 보물", "마 캐던 산에 흔한 돌", "신라에만 나는 돌"], answer: 1 },
-    { q: "금을 하룻밤에 신라 궁으로 보낸 것은 누구인가요?", choices: ["지명 스님", "선화공주", "백제 임금"], answer: 0 },
-    { q: "못에서 부처님이 솟아오른 자리에 세운 것은 무엇인가요?", choices: ["큰 성", "임금의 궁", "미륵사"], answer: 2 },
+    { q: "서동이 신라로 떠나겠다고 하자 어머니는 뭐라고 했나요?", choices: ["가는 길에 마를 팔아 노잣돈을 하라고", "사이가 나쁜 나라에 무엇 하러 가느냐고", "공주를 만나면 꼭 편지를 전하라고"], answer: 1 },
+    { q: "서동이 아이들에게 가르친 노래는 무슨 내용이었나요?", choices: ["백제의 마가 신라 금보다 낫다는 것", "서동이 신라 공주와 혼인할 것이라는 것", "선화공주가 밤마다 서동을 만나러 간다는 것"], answer: 2 },
+    { q: "노래를 들은 임금은 공주를 어떻게 했나요?", choices: ["궁 밖으로 내보냈다", "서동에게 시집보냈다", "방에 가두었다"], answer: 0 },
+    { q: "공주가 금 자루를 풀자 서동은 어떻게 했나요?", choices: ["처음 보는 귀한 보물이라며 놀랐다", "마 캐던 산에 흔한 돌이라고 했다", "신라 것이니 도로 보내자고 했다"], answer: 1 },
+    { q: "지명 스님은 금을 어떻게 신라로 보냈나요?", choices: ["배에 실어 강으로 띄워 보냈다", "사신 편에 조금씩 나누어 보냈다", "주문을 외워 하늘로 띄워 보냈다"], answer: 2 },
+    { q: "왕비가 못가에 절을 세워 달라고 청한 까닭은 무엇인가요?", choices: ["물속에서 부처님 셋이 솟아올라서", "서동이 마를 캐던 곳이라서", "아버지 신라 임금이 바라서"], answer: 0 },
     {
         q: "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
         wide: true,
         choices: [
             "서동이 노래를 아이들에게 가르친 것을 보면, 소문은 어른이 아니라 아이 입에서 퍼지는구나.",
-            "공주가 금을 돌이라 부르는 서동을 보고 주저앉은 것을 보면, 값은 아는 사람에게만 값이네.",
-            "임금이 금을 받고서야 딸을 내친 일을 뉘우친 것을 보면, 노래로 잃은 것을 금으로 되찾은 셈이야.",
+            "공주가 금 한 자루로 집을 짓고 살자고 한 것을 보면, 궁 밖에서도 살길을 먼저 생각했네.",
+            "임금이 금을 받고서야 사위로 인정한 것을 보면, 노래로 어그러진 일을 금이 되돌린 셈이야.",
             "공주가 서동의 노래가 거짓인 줄 끝까지 몰랐던 것을 보면, 속은 채로 혼인했나 봐."
         ],
         answer: 3

@@ -637,18 +637,18 @@ const EN = {
         }
     ],
     quiz: [
-        { q: "What sort of child was Princess Pyeonggang?", choices: ["A child who said little", "A child who cried a lot", "A child who was often ill"], answer: 1 },
-        { q: "What did the king do when she turned sixteen?", choices: ["Chose a son-in-law for her", "Tried to send her out", "Gave her a horse"], answer: 0 },
-        { q: "What did she bring away from the palace?", choices: ["One suit of silk clothes", "A few gold bracelets", "One palanquin"], answer: 1 },
-        { q: "What sort of horse did she send him to buy?", choices: ["The dearest in the market", "One with a shining coat", "One the country had sold off"], answer: 2 },
-        { q: "Where did Ondal make his name?", choices: ["The hunt on the third moon", "A great feast in the palace", "A wrestling ring at market"], answer: 0 },
-        { q: "What did the king say when he saw Ondal?", choices: ["Leave the palace at once", "My son-in-law indeed", "You shall have no reward"], answer: 1 },
+        { q: "What did Ondal do when the market children teased him?", choices: ["Picked up the stones and threw them back", "Grinned and helped up a child who had fallen", "Ran to tell his mother"], answer: 1 },
+        { q: "What did the king do when the princess said she would go to Ondal?", choices: ["Shouted that if she wanted to go she could get out", "Had Ondal brought to the palace", "Locked her in her room"], answer: 0 },
+        { q: "How did Ondal learn the archery the princess taught him?", choices: ["He hit every mark within a day", "He drew the bow all night until his palms split", "He went to the warriors for separate lessons"], answer: 1 },
+        { q: "What sort of horse did she send him to buy?", choices: ["The dearest in the market", "A warhorse the soldiers had ridden", "One the country had sold off as too thin"], answer: 2 },
+        { q: "Why did nobody notice Ondal at first at the hunt?", choices: ["He rode at the very back", "He had his face covered", "His clothes and his horse looked shabby"], answer: 2 },
+        { q: "What did the king do at first when he heard the name Ondal?", choices: ["Gripped his shoulder at once and called him son-in-law", "His face set and for a long while he could not speak", "Shouted for the princess to be fetched"], answer: 1 },
         {
             q: "Which reaction to this book does NOT fit?",
             wide: true,
             choices: [
                 "She kept a word said in joke for ten years, so the princess was much the more serious of the two.",
-                "She chose a thin horse the country had sold off, so she had the eye to see it had only gone hungry.",
+                "Ondal repeated each lesson ten times over, so being called a fool meant slow, not stupid.",
                 "The children who called him a fool looked up to him later, so what people call you changes as easily as that.",
                 "Ondal's mother welcomed the princess from the first day, so she knew a daughter-in-law when she met one."
             ],
@@ -869,18 +869,18 @@ const EN = {
 };
 
 const QUIZ = [
-    { q: "평강 공주는 어릴 때 어떤 아이였나요?", choices: ["말이 없는 아이", "울음이 많은 아이", "몸이 약한 아이"], answer: 1 },
-    { q: "공주가 열여섯이 되자 임금은 무엇을 했나요?", choices: ["사윗감을 골라 놓았다", "궁 밖으로 내보내려 했다", "말을 한 필 내주었다"], answer: 0 },
-    { q: "공주가 궁을 나올 때 가져온 것은 무엇인가요?", choices: ["비단옷 한 벌", "금팔찌 몇 개", "가마 한 채"], answer: 1 },
-    { q: "공주가 온달에게 사 오게 한 말은 어떤 말인가요?", choices: ["장에서 가장 값비싼 말", "털에 윤이 흐르는 말", "나라에서 내다 판 말"], answer: 2 },
-    { q: "온달이 이름을 알린 곳은 어디인가요?", choices: ["삼월 삼짇날 사냥 대회", "궁궐에서 열린 큰 잔치", "저잣거리에 선 씨름판"], answer: 0 },
-    { q: "임금은 온달을 보고 뭐라고 했나요?", choices: ["당장 궁에서 나가라", "과연 내 사위로다", "상을 내리지 않겠다"], answer: 1 },
+    { q: "저잣거리에서 놀림을 받으면 온달은 어떻게 했나요?", choices: ["돌멩이를 주워 도로 던져 버렸다", "씩 웃고 넘어진 아이를 일으켜 주었다", "어머니에게 달려가 울며 일렀다"], answer: 1 },
+    { q: "공주가 온달에게 가겠다고 하자 임금은 어떻게 했나요?", choices: ["그리 가고 싶거든 나가라고 소리쳤다", "온달을 당장 궁으로 불러들이게 했다", "공주를 방에 가두고 문을 잠갔다"], answer: 0 },
+    { q: "온달은 공주가 가르친 활쏘기를 어떻게 익혔나요?", choices: ["하루 만에 백발백중이 되었다", "손바닥이 터지도록 밤새 활을 당겼다", "무사들을 찾아가 따로 배웠다"], answer: 1 },
+    { q: "공주가 온달에게 사 오게 한 말은 어떤 말인가요?", choices: ["장에서 가장 값비싸고 좋은 말", "무사들이 타던 크고 힘센 싸움말", "나라에서 여위었다고 내다 판 말"], answer: 2 },
+    { q: "사냥 대회에서 처음에 아무도 온달을 눈여겨보지 않은 까닭은 무엇인가요?", choices: ["맨 뒤에서 달려서", "얼굴을 가리고 있어서", "옷도 말도 초라해 보여서"], answer: 2 },
+    { q: "온달이라는 이름을 듣고 임금은 처음에 어떻게 했나요?", choices: ["곧바로 사위라며 어깨를 잡았다", "굳은 얼굴로 한참 말을 못 했다", "공주를 찾아오라고 소리쳤다"], answer: 1 },
     {
         q: "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
         wide: true,
         choices: [
             "농담으로 한 말을 열 해나 새겨 둔 것을 보면, 공주 쪽이 훨씬 진지했구나.",
-            "나라에서 내다 판 여윈 말을 고른 것을 보면, 굶었을 뿐이라는 것을 알아본 눈이 있었네.",
+            "온달이 하나를 가르치면 열 번을 되풀이한 것을 보면, 바보라 불린 것은 느린 것이지 모자란 것이 아니었네.",
             "바보라 부르던 아이들이 나중에 우러러본 것을 보면, 사람을 부르는 말은 이렇게 쉽게 바뀌는 거야.",
             "온달의 어머니가 공주를 첫날부터 반겨 아랫목을 내준 것을 보면, 며느리를 한눈에 알아봤나 봐."
         ],

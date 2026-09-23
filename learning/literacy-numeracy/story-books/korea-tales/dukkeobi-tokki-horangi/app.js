@@ -417,20 +417,20 @@ const EN = {
         }
     ],
     quiz: [
-        { q: "What were the three arguing about?", choices: ["Who was faster", "Who would eat the cake", "Who was stronger"], answer: 1 },
-        { q: "Who suggested the bet?", choices: ["The tiger", "The rabbit", "The toad"], answer: 2 },
-        { q: "Who was to eat all the cake?", choices: ["The strongest", "The fastest", "Whoever caught the pot"], answer: 2 },
-        { q: "What happened each time the pot turned over?", choices: ["It broke on a rock", "A piece of cake dropped out", "A tree blocked its way"], answer: 1 },
-        { q: "What was inside the pot at the bottom of the hill?", choices: ["Nothing at all", "It was full of cake", "It was full of water"], answer: 0 },
-        { q: "What did the toad do after the other two ran off?", choices: ["Ran raising a cloud of dust", "Kept his eyes on the ground", "Turned the pot over to look"], answer: 1 },
+        { q: "What did the toad do while the tiger and rabbit argued?", choices: ["Stepped between them to stop it", "Sat by the pot and only blinked", "Covered the pot to keep the cake warm"], answer: 1 },
+        { q: "What was the bet the toad proposed?", choices: ["Whoever carried the pot down the hill first would eat", "Whoever rolled the pot the farthest would eat", "Roll the pot, and whoever caught it first would eat"], answer: 2 },
+        { q: "What did the tiger and rabbit do when they heard the bet?", choices: ["Each warmed up, sure of winning", "Questioned the toad suspiciously", "Said the cake was cooling and offered to share"], answer: 0 },
+        { q: "How did the pot stop at the bottom of the hill?", choices: ["The rabbit dived in and caught it", "It hit a big tree", "The tiger pressed it down with a paw"], answer: 1 },
+        { q: "What did the tiger and rabbit do once they saw the cake was gone?", choices: ["Threw the pot at a tree", "Went down to the village to find the toad", "Hurried back up the hill"], answer: 2 },
+        { q: "What did the toad do after the other two ran off?", choices: ["Went down slowly, picking up the scattered cake", "Took a short cut and waited for the pot", "Stayed sitting at the top of the hill"], answer: 0 },
         {
             q: "Which reaction to this book does NOT fit?",
             wide: true,
             choices: [
-                "The two who boasted of strength and speed held an empty pot, so while you race each other the food goes.",
+                "The two who boasted of strength and speed stood before an empty pot, so while you race each other the food goes.",
                 "The toad was the one who offered the bet, so in a quarrel the quiet one sometimes sets the rules.",
                 "They agreed to share the cake first after that, so people settle things once they have been caught out.",
-                "The toad gave the other two a piece each of what he had picked up, so he never meant to have it all."
+                "The tiger and rabbit caught the pot and did not argue over who was first, so the run had softened them."
             ],
             answer: 3
         }
@@ -606,20 +606,20 @@ const EN = {
 };
 
 const QUIZ = [
-    { q: "셋이 다툰 까닭은 무엇인가요?", choices: ["누가 더 빠른지", "떡을 누가 먹을지", "누가 더 힘센지"], answer: 1 },
-    { q: "내기를 하자고 한 것은 누구인가요?", choices: ["호랑이", "토끼", "두꺼비"], answer: 2 },
-    { q: "떡은 누가 다 먹기로 했나요?", choices: ["제일 힘센 이", "제일 빠른 이", "먼저 잡는 이"], answer: 2 },
-    { q: "시루가 구를 때마다 무슨 일이 있었나요?", choices: ["시루가 돌에 부딪혀 깨졌다", "한 조각씩 툭툭 흘렸다", "가는 길이 나무에 막혔다"], answer: 1 },
-    { q: "언덕 아래에서 시루 안은 어땠나요?", choices: ["텅 비어 있었다", "떡이 가득했다", "물이 차 있었다"], answer: 0 },
-    { q: "호랑이와 토끼가 달려간 뒤 두꺼비는 어떻게 했나요?", choices: ["흙먼지를 일으키며 달렸다", "땅바닥만 내려다보았다", "시루를 뒤집어 보았다"], answer: 1 },
+    { q: "호랑이와 토끼가 다투는 동안 두꺼비는 무엇을 했나요?", choices: ["둘 사이에 끼어 말렸다", "시루 옆에서 눈만 껌뻑였다", "떡이 식지 않게 시루를 덮어 두었다"], answer: 1 },
+    { q: "두꺼비가 내놓은 내기는 무엇이었나요?", choices: ["시루를 이고 언덕을 먼저 내려가는 이가 먹기", "시루를 굴려 가장 멀리 보내는 이가 먹기", "시루를 굴려 먼저 잡는 이가 먹기"], answer: 2 },
+    { q: "내기 이야기를 들은 호랑이와 토끼는 어떻게 했나요?", choices: ["저마다 이길 거라며 몸을 풀었다", "두꺼비를 의심하며 따져 물었다", "떡이 식는다며 그냥 나누자고 했다"], answer: 0 },
+    { q: "언덕 아래에서 시루는 어떻게 멈췄나요?", choices: ["토끼가 먼저 뛰어들어 붙잡아서", "커다란 나무에 부딪혀서", "호랑이가 앞발로 눌러서"], answer: 1 },
+    { q: "떡이 없어진 것을 안 호랑이와 토끼는 어떻게 했나요?", choices: ["시루를 나무에 던져 버렸다", "두꺼비를 찾아 마을로 내려갔다", "부랴부랴 언덕을 도로 올라갔다"], answer: 2 },
+    { q: "호랑이와 토끼가 달려간 뒤 두꺼비는 어떻게 했나요?", choices: ["흩어진 떡을 주우며 천천히 내려갔다", "지름길로 먼저 내려가 시루를 기다렸다", "언덕 위에 그대로 앉아 기다렸다"], answer: 0 },
     {
         q: "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
         wide: true,
         choices: [
-            "힘과 빠르기를 자랑하던 둘이 빈 시루만 붙잡은 것을 보면, 앞다투는 사이에 정작 먹을 것을 놓치는구나.",
+            "힘과 빠르기를 자랑하던 둘이 빈 시루 앞에 선 것을 보면, 앞다투는 사이에 정작 먹을 것을 놓치는구나.",
             "두꺼비가 내기를 먼저 내놓은 것을 보면, 다투는 자리에서는 조용한 쪽이 판을 짜기도 하는구나.",
             "셋이 그 뒤로 떡을 미리 나누기로 한 것을 보면, 한 번 당해 봐야 정하는 것이 사람 사는 일 같다.",
-            "두꺼비가 주운 떡을 둘에게도 한 조각씩 나누어 준 것을 보면, 혼자 다 가질 마음은 아니었나 봐."
+            "호랑이와 토끼가 시루를 잡고도 서로 먼저라고 다투지 않은 것을 보면, 달리는 사이 마음이 누그러졌구나."
         ],
         answer: 3
     }
