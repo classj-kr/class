@@ -1,7 +1,7 @@
 :root { --accent:#34d399; --line:rgba(110,231,183,.22); }
 body { background:radial-gradient(ellipse at 10% 0,#134e4a 0,transparent 42%),#0b171c; }
-.page-heading { padding:8px 0 10px; } .eyebrow,.back { color:#a7f3d0; } .page-heading h1 { font-size:clamp(2rem,5vw,3rem); }
-.panel,.room-card,.ballot-card { background:rgba(15,35,40,.94); } .teacherView { display:grid;gap:20px; }
+.shell { padding:24px 0 64px; } .eyebrow,.back { color:#a7f3d0; } .muted { color:#c7d1d4; }
+.panel,.room-card,.ballot-card { border-radius:18px;background:rgba(15,35,40,.96); } .panel { padding:clamp(18px,3vw,28px); } .ballot-card { padding:20px; } .teacherView { display:grid;gap:20px; }
 #teacherView > .section-head { margin-bottom:20px; } .primary { background:linear-gradient(135deg,#047857,#065f46);box-shadow:0 8px 22px #022c2233; }
 .primary:hover { background:#047857; } button:disabled { opacity:.5;cursor:not-allowed; }
 input:focus,button:focus-visible,a:focus-visible { outline:3px solid #6ee7b7;outline-offset:3px; } input { background:#0b171c; }
@@ -12,10 +12,10 @@ label { color:#d1fae5; } a { color:#a7f3d0; } h3 { margin:0; } .form-note { marg
 #grades input { width:18px;height:18px;accent-color:#10b981; } #grades label:has(input:checked) { background:#064e3b;border-color:#34d399; }
 .position-editor { background:#09181c; } .candidate-name-row { display:grid;grid-template-columns:1fr 42px;gap:8px;align-items:end; }
 .candidate-name-row button { height:46px; } .secondary { background:#263e43; } .candidate-name-row label { font-size:.85rem; }
-.detail-nav { margin-bottom:20px; } .steps { display:flex;gap:8px;flex-wrap:wrap;margin:18px 0; }
+.detail-nav { margin-bottom:12px; } .steps { display:flex;gap:8px;flex-wrap:wrap;margin:12px 0; }
 .step { padding:7px 12px;border:1px solid var(--line);border-radius:99px;color:#9caeb0;font-size:.85rem; } .step.current { background:#064e3b;color:#a7f3d0;border-color:#34d399; }
-.election-heading h2 { font-size:clamp(1.6rem,4vw,2.3rem);overflow-wrap:anywhere; } .code-panel { display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;margin:22px 0; }
-.code-panel strong { font:900 clamp(2rem,8vw,4rem)/1.2 monospace;letter-spacing:.12em;color:#fde68a; } .code-panel p { margin:0 0 5px; }
+.election-heading h2 { font-size:clamp(1.4rem,3vw,1.9rem);line-height:1.35;overflow-wrap:anywhere; } .code-panel { display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin:14px 0 0; }
+.code-panel strong { font:900 clamp(2rem,6vw,3.1rem)/1.2 monospace;letter-spacing:.1em;color:#fde68a; } .code-panel p { margin:0 0 5px; }
 .summary-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0; }
 .summary-stat { background:#09181c;border:1px solid var(--line);border-radius:16px;padding:20px; }
 .summary-stat strong { display:block;font-size:2rem;color:#a7f3d0; } .summary-stat span { color:#b8c8c9;font-size:.9rem; }
@@ -29,4 +29,4 @@ th { color:#a7f3d0;font-size:.9rem; } .actions { display:flex;gap:10px;flex-wrap
 details { border:1px solid var(--line);border-radius:14px;padding:18px;margin-top:18px; } summary { cursor:pointer;font-weight:800; }
 #status:empty { min-height:0;margin:0; } .participant-list { display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px;padding:0;list-style:none; }
 .participant-list li { padding:10px;border-radius:9px;background:#09181c; } .participant-list .done { color:#a7f3d0; }
-@media(max-width:560px) { .scope-grid { grid-template-columns:1fr;gap:20px; } .summary-grid { gap:6px; } .summary-stat { padding:12px; } .summary-stat strong { font-size:1.55rem; } .summary-stat span { font-size:.8rem; } .actions button { width:100%; } th,td { padding:10px; } .page-heading { padding-top:0; } }
+@media(max-width:560px) { .shell { padding-top:16px; } .scope-grid { grid-template-columns:1fr;gap:20px; } .summary-grid { gap:6px; } .summary-stat { padding:12px; } .summary-stat strong { font-size:1.55rem; } .summary-stat span { font-size:.8rem; } .actions button { width:100%; } th,td { padding:10px; } }
