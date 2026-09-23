@@ -38,7 +38,7 @@ test("teacher and student school-election browser flow", { skip: process.env.RUN
   await teacher.getByRole("heading",{name:"선거인 명부 확인",exact:true}).waitFor();
   assert.match(await teacher.locator("#detail").innerText(),/대상 8명/);
   const code=await teacher.locator(".code-panel strong").innerText();
-  assert.match(code,/^\d{6}$/);
+  assert.match(code,/^\d{4}$/);
   await teacher.screenshot({path:path.join(screenshots,"teacher-roster.png"),fullPage:true});
   teacher.once("dialog",(dialog)=>dialog.accept());
   await teacher.getByRole("button",{name:"명부 확정하고 투표 시작",exact:true}).click();

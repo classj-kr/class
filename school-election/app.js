@@ -211,7 +211,7 @@
     try { const data = await api(editCode ? "/elections/" + editCode : "/elections", { method: editCode ? "PATCH" : "POST", body: JSON.stringify(config()) }); editCode = null; await openElection(data.election.code); }
     catch (error) { status(error.message, true); } finally { actionPending = false; $("saveElection").disabled = false; }
   });
-  $("joinCode").addEventListener("input", () => { $("joinCode").value = $("joinCode").value.replace(/\D/g, "").slice(0, 6); });
+  $("joinCode").addEventListener("input", () => { $("joinCode").value = $("joinCode").value.replace(/\D/g, "").slice(0, 4); });
   $("joinForm").addEventListener("submit", (event) => { event.preventDefault(); openElection($("joinCode").value).catch((error) => status(error.message, true)); });
   $("addPosition").addEventListener("click", () => addPosition());
   $("newElection").addEventListener("click", () => { resetForm(); status(); $("title").focus(); });

@@ -5,13 +5,13 @@
   const status = document.getElementById("status");
   const button = form.querySelector("button");
 
-  input.addEventListener("input", () => { input.value = input.value.replace(/\D/g, "").slice(0, 6); });
+  input.addEventListener("input", () => { input.value = input.value.replace(/\D/g, "").slice(0, 4); });
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
     const code = input.value.replace(/\D/g, "");
     status.classList.remove("error");
-    if (code.length !== 4 && code.length !== 6) {
-      status.textContent = "방번호 4자리 또는 전교선거 방번호 6자리를 입력해 주세요.";
+    if (code.length !== 4) {
+      status.textContent = "방번호 4자리를 입력해 주세요.";
       status.classList.add("error");
       input.focus();
       return;

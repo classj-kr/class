@@ -19,13 +19,13 @@ test("seating rooms are mounted, initialized, and reachable from the room-number
   assert.match(platformSource, /await seating\.initialize\(\)/);
   assert.match(platformSource, /router\.use\("\/seating", seating\.router\)/);
   assert.match(platformSource, /hasSeatingRoomCode: seating\.hasRoomCode/);
-  // 세 활동(투표·자리 고르기·학급 순위전)이 같은 4자리 방번호를 나눠 쓴다.
-  assert.match(platformSource, /isReservedCode: \(code\) => seating\.hasRoomCode\(code\)/);
+  // 네 활동(투표·자리 고르기·학급 순위전·전교선거)이 같은 4자리 방번호를 나눠 쓴다.
+  assert.match(platformSource, /isReservedCode: async \(code\) => \(await seating\.hasRoomCode\(code\)\) \|\| \(await schoolElection\.hasRoomCode\(code\)\)/);
   assert.match(platformSource, /resolveRoomCode: \(code\) => seating\.resolveCode\(code\)/);
-  assert.match(platformSource, /await voting\.hasQuizRaceCode\(code\)\) \|\| \(await voting\.hasRoomCode\(code\)/);
+  assert.match(platformSource, /await voting\.hasQuizRaceCode\(code\)\) \|\| \(await voting\.hasRoomCode\(code\)\) \|\| \(await schoolElection\.hasRoomCode\(code\)/);
   assert.match(votingSource, /isReservedCode\(code\)\) continue/);
   assert.match(votingSource, /resolveRoomCode\(code\)/);
-  assert.match(serverSource, /hasVotingRoomCode\(roomCode\) \|\| await classroomPlatform\.hasSeatingRoomCode\(roomCode\)/);
+  assert.match(serverSource, /hasVotingRoomCode\(roomCode\)[\s\S]*hasSchoolElectionRoomCode\(roomCode\)[\s\S]*hasSeatingRoomCode\(roomCode\)/);
   // 학생 화면은 /room 아래에 있어 학생 접근 예외(content=locked 우회)를 그대로 받는다.
   assert.equal(SEAT_PAGE_PATH, "/room/seat");
   assert.match(platformSource, /requestPath === "\/room" \|\| requestPath\.startsWith\("\/room\/"\)/);

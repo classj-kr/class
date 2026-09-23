@@ -1532,7 +1532,7 @@ function createClassroomPlatform(options = {}) {
     asyncRoute
   });
 
-  // 투표방·자리 고르기 방·학급 순위전은 같은 4자리 방번호를 나눠 쓴다. 서로의
+  // 학급선거·전교선거·자리 고르기·학급 순위전은 같은 4자리 방번호를 나눠 쓴다. 서로의
   // 번호를 피해서 만들고, 메인의 「방번호 입력」 한 곳에서 셋 다 찾아간다.
   const voting = createVoting({
     pool,
@@ -1543,7 +1543,7 @@ function createClassroomPlatform(options = {}) {
     requireDatabase,
     teacherRegistration,
     isLiveQuizRaceCode: options.isLiveQuizRaceCode,
-    isReservedCode: (code) => seating.hasRoomCode(code),
+    isReservedCode: async (code) => (await seating.hasRoomCode(code)) || (await schoolElection.hasRoomCode(code)),
     resolveRoomCode: (code) => seating.resolveCode(code),
     resolveSchoolElectionCode: (code) => schoolElection.resolveCode(code),
     HttpError,
@@ -1558,14 +1558,16 @@ function createClassroomPlatform(options = {}) {
     requireDatabase,
     teacherRegistration,
     avatarUrl,
-    isReservedCode: async (code) => (await voting.hasQuizRaceCode(code)) || (await voting.hasRoomCode(code)),
+    isReservedCode: async (code) => (await voting.hasQuizRaceCode(code)) || (await voting.hasRoomCode(code)) || (await schoolElection.hasRoomCode(code)),
     HttpError,
     asyncRoute
   });
 
   router.use("/vote", voting.router);
   const schoolElection = createSchoolElection({
-    pool, sessionUser, requireTeacher, requireDatabase, teacherRegistration, HttpError, asyncRoute
+    pool, sessionUser, requireTeacher, requireDatabase, teacherRegistration,
+    isReservedCode: async (code) => (await voting.hasQuizRaceCode(code)) || (await voting.hasRoomCode(code)) || (await seating.hasRoomCode(code)),
+    HttpError, asyncRoute
   });
   router.use("/school-election", schoolElection.router);
   router.use("/seating", seating.router);
@@ -8212,6 +8214,7 @@ function createClassroomPlatform(options = {}) {
     loadMultiplayerRoomSnapshot,
     deleteMultiplayerRoomSnapshot,
     hasVotingRoomCode: voting.hasRoomCode,
+    hasSchoolElectionRoomCode: schoolElection.hasRoomCode,
     hasSeatingRoomCode: seating.hasRoomCode
   };
 }

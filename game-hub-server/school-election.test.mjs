@@ -21,6 +21,8 @@ async function fixture(t) {
     CREATE TABLE classroom_schools(id BIGINT PRIMARY KEY);
     CREATE TABLE classroom_users(id BIGINT PRIMARY KEY,email TEXT,display_name TEXT);
     CREATE TABLE school_students(id BIGINT PRIMARY KEY,school_id BIGINT,academic_year INTEGER,grade INTEGER,class_number INTEGER,student_number TEXT,roster_name TEXT,user_id BIGINT,student_email TEXT);
+    CREATE TABLE vote_rooms(room_code CHAR(4));
+    CREATE TABLE multiplayer_room_snapshots(game_id TEXT,room_code CHAR(4),expires_at TIMESTAMPTZ);
     INSERT INTO classroom_schools VALUES(1),(2);
     INSERT INTO classroom_users VALUES(10,'teacher@school.test','담임'),(11,'other@school.test','다른교사'),(12,'elsewhere@school.test','타학교');
     INSERT INTO classroom_users SELECT id,'student'||id||'@school.test','학생'||id FROM generate_series(21,28) id;
@@ -56,7 +58,11 @@ async function fixture(t) {
     if (!await teacherRegistration(user)) throw new HttpError(403, "TEACHER_REQUIRED", "교사");
     return user;
   };
-  const election = createSchoolElection({ pool, sessionUser, requireTeacher, teacherRegistration, requireDatabase() {}, HttpError, asyncRoute });
+  let nextRoomCode = 1233;
+  const checkedRoomCodes = [];
+  const election = createSchoolElection({ pool, sessionUser, requireTeacher, teacherRegistration, requireDatabase() {},
+    generateRoomCode: () => String(++nextRoomCode),
+    isReservedCode: async (code) => { checkedRoomCodes.push(code); return code === "1234"; }, HttpError, asyncRoute });
   await election.initialize();
   await election.initialize(); // migration is repeatable
   const voting = createVoting({ pool, sessionUser, guestAccess: (req) => req.get("x-guest") ? { name: "김동명" } : null,
@@ -78,7 +84,7 @@ async function fixture(t) {
   const detail = async (e, user) => (await call("GET", path(e), undefined, user)).data;
   const start = async (e) => call("POST", path(e) + "/start", { rosterVersion: (await detail(e)).roster.version });
   const choices = (e, index = 0) => ({ selections: e.positions.map((p) => ({ positionId: p.id, candidateId: p.candidates[index].id })) });
-  return { db, pool, call, config, create, path, detail, start, choices, failStorage(value) { failBallot = value; } };
+  return { db, pool, call, config, create, path, detail, start, choices, checkedRoomCodes, failStorage(value) { failBallot = value; } };
 }
 
 test("school election PostgreSQL lifecycle and privacy", async (t) => {
@@ -86,7 +92,7 @@ test("school election PostgreSQL lifecycle and privacy", async (t) => {
   const { db, call, create, path, detail, start, choices, config } = f;
   let e;
   await t.test("guests cannot access APIs and students cannot create elections", async () => {
-    for (const [method, route] of [["GET","/me"],["GET","/roster?year=2026&grades=3"],["GET","/mine"],["POST","/elections"],["GET","/elections/123456"],["POST","/elections/123456/ballots"]]) {
+    for (const [method, route] of [["GET","/me"],["GET","/roster?year=2026&grades=3"],["GET","/mine"],["POST","/elections"],["GET","/elections/1234"],["POST","/elections/1234/ballots"]]) {
       assert.equal((await call(method, route, method === "POST" ? {} : undefined, null)).status, 401);
     }
     assert.equal((await call("POST", "/elections", config, 21)).status, 403);
@@ -95,7 +101,9 @@ test("school election PostgreSQL lifecycle and privacy", async (t) => {
     assert.equal((await call("POST","/elections",{ ...config, positions: [{ title:"회장", candidates:Array.from({length:21},(_,i)=>"후보"+i) }] })).status,400);
     assert.equal((await call("POST","/elections",{ ...config, grades:[] })).status,400);
     e = await create();
-    assert.match(e.code,/^\d{6}$/);
+    assert.match(e.code,/^\d{4}$/);
+    assert.notEqual(e.code,"1234");
+    assert.deepEqual(f.checkedRoomCodes.slice(0,2),["1234","1235"]);
     assert.equal((await detail(e)).roster.total,4);
     assert.equal((await call("GET","/api/vote/resolve/"+e.code)).data.type,"school-election");
     assert.equal((await call("GET","/api/vote/resolve/"+e.code,undefined,null)).status,401);

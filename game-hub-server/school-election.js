@@ -2,8 +2,11 @@ const crypto = require("crypto");
 const express = require("express");
 
 // Voters and ballots have no shared identifier. Ballots store no account or timestamp.
-function createSchoolElection({ pool, sessionUser, requireTeacher, requireDatabase, teacherRegistration, HttpError, asyncRoute }) {
+function createSchoolElection({ pool, sessionUser, requireTeacher, requireDatabase, teacherRegistration, isReservedCode, generateRoomCode, HttpError, asyncRoute }) {
   const router = express.Router();
+  const makeRoomCode = typeof generateRoomCode === "function"
+    ? generateRoomCode
+    : () => String(crypto.randomInt(1000, 10000));
   const fail = (status, code, message) => { throw new HttpError(status, code, message); };
   const text = (value) => typeof value === "string" ? value.normalize("NFC").trim().replace(/\s+/g, " ") : "";
   function scope(body) {
@@ -32,7 +35,7 @@ function createSchoolElection({ pool, sessionUser, requireTeacher, requireDataba
   async function initialize() {
     for (const sql of [
       `CREATE TABLE IF NOT EXISTS school_elections (
-        id BIGSERIAL PRIMARY KEY, room_code CHAR(6) NOT NULL UNIQUE,
+        id BIGSERIAL PRIMARY KEY, room_code VARCHAR(6) NOT NULL UNIQUE,
         school_id BIGINT NOT NULL REFERENCES classroom_schools(id),
         creator_user_id BIGINT NOT NULL REFERENCES classroom_users(id),
         title TEXT NOT NULL, academic_year INTEGER NOT NULL, grades INTEGER[] NOT NULL,
@@ -41,6 +44,7 @@ function createSchoolElection({ pool, sessionUser, requireTeacher, requireDataba
         created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(), opened_at TIMESTAMPTZ,
         closed_at TIMESTAMPTZ, published_at TIMESTAMPTZ
       )`,
+      `ALTER TABLE school_elections ALTER COLUMN room_code TYPE VARCHAR(6) USING BTRIM(room_code)`,
       `CREATE INDEX IF NOT EXISTS school_elections_owner_idx ON school_elections(creator_user_id, created_at DESC)`,
       `CREATE TABLE IF NOT EXISTS school_election_voters (
         election_id BIGINT NOT NULL REFERENCES school_elections(id) ON DELETE CASCADE,
@@ -78,7 +82,7 @@ function createSchoolElection({ pool, sessionUser, requireTeacher, requireDataba
     return { user, registration };
   }
   async function find(db, code, lock = "") {
-    if (!/^\d{6}$/.test(String(code))) fail(400, "INVALID_CODE", "전교선거 방번호 6자리를 입력해 주세요.");
+    if (!/^\d{4}$/.test(String(code)) && !/^\d{6}$/.test(String(code))) fail(400, "INVALID_CODE", "전교선거 방번호 4자리를 입력해 주세요.");
     const { rows } = await db.query("SELECT * FROM school_elections WHERE room_code=$1" + lock, [code]);
     if (!rows[0]) fail(404, "ELECTION_NOT_FOUND", "전교선거를 찾을 수 없습니다.");
     return rows[0];
@@ -153,10 +157,13 @@ function createSchoolElection({ pool, sessionUser, requireTeacher, requireDataba
     return { ballots: rows.length, positions: election.positions.map((p) => ({ ...p,
       candidates: p.candidates.map((c) => ({ ...c, votes: counts.get(c.id) || 0 })) })) };
   }
-  async function resolveCode(code) {
-    if (!pool || !/^\d{6}$/.test(String(code))) return null;
+  async function hasRoomCode(code) {
+    if (!pool || (!/^\d{4}$/.test(String(code)) && !/^\d{6}$/.test(String(code)))) return false;
     const result = await pool.query("SELECT 1 FROM school_elections WHERE room_code=$1", [code]);
-    return result.rowCount ? { type: "school-election", href: "/school-election/?room=" + code } : null;
+    return result.rowCount > 0;
+  }
+  async function resolveCode(code) {
+    return await hasRoomCode(code) ? { type: "school-election", href: "/school-election/?room=" + code } : null;
   }
 
   router.get("/me", asyncRoute(async (req, res) => {
@@ -180,7 +187,9 @@ function createSchoolElection({ pool, sessionUser, requireTeacher, requireDataba
     const config = configuration(req.body || {});
     const election = await transaction(async (db) => {
       for (let attempt = 0; attempt < 20; attempt++) {
-        const code = String(crypto.randomInt(100000, 1000000));
+        const code = String(makeRoomCode());
+        if (!/^\d{4}$/.test(code)) continue;
+        if (typeof isReservedCode === "function" && await isReservedCode(code)) continue;
         const inserted = await db.query(
           `INSERT INTO school_elections(room_code,school_id,creator_user_id,title,academic_year,grades,positions)
            VALUES($1,$2,$3,$4,$5,$6,$7::JSONB) ON CONFLICT(room_code) DO NOTHING RETURNING *`,
@@ -295,6 +304,6 @@ function createSchoolElection({ pool, sessionUser, requireTeacher, requireDataba
     });
     res.json({ ok: true });
   }));
-  return { router, initialize, resolveCode };
+  return { router, initialize, hasRoomCode, resolveCode };
 }
 module.exports = { createSchoolElection };

@@ -286,6 +286,11 @@ function createVoting({ pool, sessionUser, guestAccess, requireUser, requireTeac
       await votingActor(req);
       return res.json({ type: "vote", href: `/vote/?room=${code}` });
     }
+    const election = typeof resolveSchoolElectionCode === "function" ? await resolveSchoolElectionCode(code) : null;
+    if (election) {
+      await votingActor(req);
+      return res.json(election);
+    }
     const resolved = typeof resolveRoomCode === "function" ? await resolveRoomCode(code) : null;
     if (resolved) return res.json(resolved);
     throw new HttpError(404, "ROOM_NOT_FOUND", "해당 방을 찾을 수 없습니다.");

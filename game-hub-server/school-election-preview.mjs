@@ -13,6 +13,7 @@ await db.exec(`
   CREATE TABLE classroom_schools(id BIGINT PRIMARY KEY);
   CREATE TABLE classroom_users(id BIGINT PRIMARY KEY,email TEXT,display_name TEXT);
   CREATE TABLE school_students(id BIGINT PRIMARY KEY,school_id BIGINT,academic_year INTEGER,grade INTEGER,class_number INTEGER,student_number TEXT,roster_name TEXT,user_id BIGINT,student_email TEXT);
+  CREATE TABLE multiplayer_room_snapshots(game_id TEXT,room_code TEXT,expires_at TIMESTAMPTZ);
   INSERT INTO classroom_schools VALUES(1);
   INSERT INTO classroom_users VALUES(10,'teacher@preview.test','미리보기 교사');
   INSERT INTO classroom_users SELECT id,'student'||id||'@preview.test','연습학생'||id FROM generate_series(21,28) id;
@@ -39,6 +40,7 @@ const requireTeacher = async (req) => {
 const election = createSchoolElection({pool,sessionUser,requireTeacher,teacherRegistration,requireDatabase(){},HttpError,asyncRoute});
 await election.initialize();
 const voting = createVoting({pool,sessionUser,guestAccess:()=>null,resolveSchoolElectionCode:election.resolveCode,requireDatabase(){},HttpError,asyncRoute});
+await voting.initialize();
 const app=express();app.use(express.json());
 app.get("/preview/as/:id",(req,res)=>{res.cookie("preview_user",String(Number(req.params.id)),{httpOnly:true,sameSite:"strict"});res.redirect("/school-election/"+(req.params.id==="10"?"?mode=teacher":""));});
 app.get("/",(_req,res)=>res.type("html").send('<h1>전교선거 로컬 미리보기 · 가상 데이터</h1><a href="/preview/as/10">교사 화면</a><p><a href="/preview/as/21">학생 21 화면</a></p><p><a href="/preview/as/22">학생 22 화면</a></p><a href="/room/">방번호 입장</a>'));
