@@ -101,11 +101,25 @@
       positions: [...$("positions").children].map((card) => ({ title: card.querySelector(".position-title").value,
         candidates: [...card.querySelectorAll(".candidate-inputs input")].map((i) => i.value) })) };
   }
+  function participationMeter(voted, total, label) {
+    const percent = total ? Math.min(100, Math.max(0, voted / total * 100)) : 0;
+    const meter = el("progress", Math.round(percent) + "%", "participation-meter");
+    meter.max = 100; meter.value = percent;
+    meter.setAttribute("aria-label", label);
+    meter.setAttribute("aria-valuetext", total + "명 중 " + voted + "명 투표 완료, " + Math.round(percent) + "%");
+    return meter;
+  }
   function stats(data) {
-    const box = el("div", null, "summary-grid");
-    for (const [title, number] of [["선거인", data.total + "명"], ["투표 완료", data.voted + "명"], ["참여율", (data.total ? Math.round(data.voted / data.total * 100) : 0) + "%"]]) {
-      const stat = el("div", null, "summary-stat"); stat.append(el("strong", number), el("span", title)); box.append(stat);
-    }
+    const box = el("div", null, "turnout-summary"), header = el("div", null, "turnout-header"), legend = el("div", null, "turnout-legend");
+    const meter = participationMeter(data.voted, data.total, "전체 투표 참여율");
+    header.append(el("span", "전체 " + data.total + "명"), el("strong", Math.round(meter.value) + "%"));
+    legend.append(el("span", "완료 " + data.voted + "명", "is-voted"), el("span", "미투표 " + Math.max(0, data.total - data.voted) + "명"));
+    box.append(header, meter, legend);
+    return box;
+  }
+  function classParticipation(c) {
+    const box = el("div", null, "class-turnout");
+    box.append(el("span", c.voted + " / " + c.total + "명"), participationMeter(c.voted, c.total, c.grade + "학년 " + c.classNumber + "반 투표 참여율"));
     return box;
   }
   function previewPositions(e) {
@@ -134,7 +148,7 @@
   function progressView(data, container) {
     const e = data.election; container.append(el("h3", "투표 참여 현황", "subpanel"), stats(data.progress));
     const participantBox = el("section", null, "subpanel");
-    container.append(table(["학년", "반", "참여", "현황"], data.progress.classes.map((c) => [c.grade + "학년", c.classNumber + "반", c.voted + " / " + c.total + "명",
+    container.append(table(["학년", "반", "참여", "현황"], data.progress.classes.map((c) => [c.grade + "학년", c.classNumber + "반", classParticipation(c),
       button("명단 보기", async () => {
         participantClass = { grade: c.grade, classNumber: c.classNumber };
         await openElection(e.code);
