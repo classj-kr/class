@@ -47,6 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const bohrCanvas = document.getElementById('bohrAtomCanvas');
     const ctx = bohrCanvas ? bohrCanvas.getContext('2d') : null;
     const EXAM_MAX_ATOMIC_NUMBER = 20;
+    let modalReturnFocus = null;
 
     // Include plausible misspellings and related terms, not just other elements.
     const QUIZ_DISTRACTORS = {
@@ -380,13 +381,27 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
+            if (!modalOverlay.classList.contains('active')) return;
+            if (e.key === 'Escape') {
+                e.preventDefault();
                 closeModal();
+            } else if (e.key === 'Tab') {
+                const controls = [...modalOverlay.querySelectorAll('button:not(:disabled), a[href], input:not(:disabled), select:not(:disabled), [tabindex="0"]')]
+                    .filter(control => control.getClientRects().length);
+                const first = controls[0], last = controls[controls.length - 1];
+                if (e.shiftKey && (document.activeElement === first || !modalOverlay.contains(document.activeElement))) {
+                    e.preventDefault();
+                    last?.focus();
+                } else if (!e.shiftKey && (document.activeElement === last || !modalOverlay.contains(document.activeElement))) {
+                    e.preventDefault();
+                    first?.focus();
+                }
             }
         });
     }
 
     function openElementModal(el) {
+        modalReturnFocus = document.activeElement;
         state.selectedElement = el;
         const cat = window.PERIODIC_CATEGORIES[el.category] || {};
 
@@ -428,12 +443,17 @@ document.addEventListener('DOMContentLoaded', () => {
             usesContainer.innerHTML = (el.uses || []).map(use => `<span class="use-tag"># ${use}</span>`).join('');
         }
 
+        modalOverlay.setAttribute('aria-hidden', 'false');
         modalOverlay.classList.add('active');
+        closeModalBtn.focus({ preventScroll: true });
         drawBohrAtom(el);
     }
 
     function closeModal() {
         modalOverlay.classList.remove('active');
+        if (modalReturnFocus?.isConnected) modalReturnFocus.focus({ preventScroll: true });
+        modalReturnFocus = null;
+        modalOverlay.setAttribute('aria-hidden', 'true');
         if (state.bohrAnimationId) {
             cancelAnimationFrame(state.bohrAnimationId);
             state.bohrAnimationId = null;
@@ -890,6 +910,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (status) status.textContent = '';
             clearMoleculeCanvas();
             stopMoleculeAnimation();
+            render3DCompoundList();
             return;
         }
 

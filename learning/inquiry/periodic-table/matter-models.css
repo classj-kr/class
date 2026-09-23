@@ -156,3 +156,11 @@ body[data-active-tab="models"] .top-header { padding:4px 16px; gap:8px; }
 @media(max-width:1190px) {
     .model-layout { grid-template-areas:"stage" "controls" "inspector"; }
 }
+
+/* The orbital is rotated by touch, so its complete canvas must fit the viewport. */
+.model-stage canvas[data-orbital="true"] { min-width:0; width:100%; }
+.model-stage-panel:has(canvas[data-orbital="true"]) .model-stage-top::after,
+.model-stage-panel:has(canvas[data-portrait="true"]) .model-stage-top::after { content:none; }
+@media(max-width:800px) {
+    .model-answers button { flex:0 0 auto; min-height:52px; }
+}
