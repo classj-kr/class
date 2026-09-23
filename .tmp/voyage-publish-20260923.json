@@ -1,0 +1,27 @@
+{
+  "base": "6981561faeb9ddd5fb7bb0cd1018aa9fc99de1d7",
+  "localHead": "236aaf9b6bb41e3767b60d283712fd6e15a8a5f2",
+  "tree": "6fae56034b6c6c7bab01252d4f9ea121aa4c5963",
+  "index": "E:\\webprojects\\class\\.tmp\\voyage-publish-20260923.index",
+  "files": [
+    "learning/inquiry/age-of-exploration/data/catalog/discoveries.json",
+    "learning/inquiry/age-of-exploration/lib/discovery-access.js",
+    "learning/inquiry/age-of-exploration/lib/place-study.js",
+    "learning/inquiry/age-of-exploration/package.json",
+    "learning/inquiry/age-of-exploration/public/index.html",
+    "learning/inquiry/age-of-exploration/public/js/place-study-ui.js",
+    "learning/inquiry/age-of-exploration/server.js",
+    "learning/inquiry/age-of-exploration/tests/place-study-smoke.js",
+    "learning/inquiry/age-of-exploration/tests/place-study-unit.js",
+    "learning/inquiry/age-of-exploration/MISSION-AUDIT-20260923.md",
+    "learning/inquiry/age-of-exploration/data/catalog/discovery-regions.json",
+    "learning/inquiry/age-of-exploration/lib/discovery-regions.js",
+    "learning/inquiry/age-of-exploration/lib/study-concepts.js",
+    "learning/inquiry/age-of-exploration/lib/study-question-bank.js",
+    "learning/inquiry/age-of-exploration/lib/study-question-builder.js",
+    "learning/inquiry/age-of-exploration/tests/discovery-regions-unit.js",
+    "learning/inquiry/age-of-exploration/tests/place-study-recovery-ui.js",
+    "learning/inquiry/age-of-exploration/tests/study-question-quality-unit.js"
+  ],
+  "commit": "7c6168e1293b7660ce620a55840bd00edce5647e"
+}

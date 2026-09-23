@@ -9,8 +9,8 @@ import {
 } from "../lib/middle-core-workouts.ts";
 import { middleSchoolWorksheetCatalog } from "../lib/arithmetic-worksheets.ts";
 
-test("학등 핵심 연산 23개 유형이 각각 8문제를 생성한다", () => {
-  assert.equal(MIDDLE_CORE_KINDS.length, 23);
+test("중등 핵심 연산 24개 유형이 각각 8문제를 생성한다", () => {
+  assert.equal(MIDDLE_CORE_KINDS.length, 24);
   for (const kind of MIDDLE_CORE_KINDS) {
     const set = createMiddleCoreProblemSet(kind, 20260803);
     assert.equal(set.problems.length, 8);

@@ -12,7 +12,11 @@ test("plane measurement uses four composite figures", () => {
 
 test("solid measurement replaces elementary cylinder formula drills", () => {
   const problems = createElementaryGeometryMeasurementSet("solid", 20260823);
-  assert.deepEqual(problems.map((problem) => problem.kind), ["open-box", "joined-cubes", "stacked-prisms", "corner-cut-cube"]);
+  assert.equal(problems.length, 4);
+  assert.equal(new Set(problems.map(problem => problem.kind)).size, 4);
+  const kinds = new Set(Array.from({length: 200}, (_, seed) => createElementaryGeometryMeasurementSet("solid", seed)).flat().map(problem => problem.kind));
+  assert.equal(kinds.size, 8);
+  assert.notDeepEqual(problems.map(problem => problem.kind), createElementaryGeometryMeasurementSet("solid", 20260824).map(problem => problem.kind));
   assert.ok(problems.every((problem) => problem.firstLabel === "겉넓이" && problem.secondLabel === "부피"));
 });
 

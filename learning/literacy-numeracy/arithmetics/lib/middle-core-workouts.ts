@@ -56,6 +56,7 @@ export const MIDDLE_CORE_KINDS: MiddleCoreKind[] = [
   "simultaneous-elimination",
   "simultaneous-application",
   "simultaneous-special",
+  "linear-system-comprehensive",
   "square-roots-real",
   "radical-calculation",
   "polynomial-multiply",
@@ -205,7 +206,10 @@ function monomial(coef: number, xPower: number, yPower = 0) {
 }
 
 function uniqueDistractors(answer: string, candidates: string[]) {
-  const realisticFallbacks = [
+  const assignment = /^([a-z])=(-?\d+)$/.exec(answer);
+  const realisticFallbacks = assignment
+    ? [1, 2, 3, 4].map(offset => `${assignment[1]}=${Number(assignment[2]) + offset}`)
+    : /^-?\d+$/.test(answer) ? [1, 2, 3, 4].map(offset => String(Number(answer) + offset)) : [
     `-(${answer})`,
     `2(${answer})`,
     `\\dfrac{1}{2}(${answer})`,
@@ -307,7 +311,7 @@ function make(
   answerLatex: string,
   solutionHint: string,
   distractors: string[],
-  structure = kind,
+  structure: string = kind,
   label = MIDDLE_CORE_TITLES[kind],
 ): MiddleCoreProblem {
   return {
@@ -324,155 +328,88 @@ function make(
   };
 }
 
-function buildPrimeFactorization(id: string, index: number): MiddleCoreProblem {
-  const exercises = [
-    ["84", "2^2\\times3\\times7", "factor-three-primes", "세 소인수로 분해", "작은 소수 2부터 차례로 나누고 같은 소인수는 거듭제곱으로 묶는다.", ["2\\times3\\times14", "2^2\\times3^2\\times7", "2^2\\times21"]],
-    ["180", "2^2\\times3^2\\times5", "factor-repeated-primes", "거듭제곱으로 나타내기", "2와 3으로 반복하여 나눈 뒤 남은 소수 5까지 곱한다.", ["2\\times3^2\\times10", "2^2\\times3\\times5", "2^2\\times3^2\\times5^2"]],
-    ["756", "2^2\\times3^3\\times7", "factor-large", "세 자리 수의 소인수분해", "756을 2로 두 번, 3으로 세 번 나누면 마지막 소인수 7이 남는다.", ["2^2\\times3^2\\times7", "2^3\\times3^3\\times7", "2^2\\times3^3\\times9"]],
-    ["1260", "2^2\\times3^2\\times5\\times7", "factor-four-primes", "네 소인수로 분해", "2, 3, 5, 7 순서로 나누어 모든 소인수와 지수를 빠짐없이 적는다.", ["2^2\\times3\\times5\\times7", "2\\times3^2\\times5\\times7", "2^2\\times3^2\\times5^2\\times7"]],
-    ["2772", "2^2\\times3^2\\times7\\times11", "factor-four-digit", "네 자리 수의 소인수분해", "2772를 작은 소수부터 나누면 2²×3²×7×11이 된다.", ["2\\times3^2\\times7\\times11", "2^2\\times3\\times7\\times11", "2^2\\times3^2\\times7^2\\times11"]],
-    ["540n\\text{이 어떤 자연수의 제곱일 때}", "15", "make-perfect-square-product", "완전제곱수 만들기", "540=2²×3³×5이므로 홀수인 3과 5의 지수를 짝수로 만들기 위해 3×5를 곱한다.", ["3", "5", "30"]],
-    ["\\dfrac{360}{n}\\text{이 어떤 자연수의 제곱일 때}", "10", "make-perfect-square-quotient", "완전제곱수 만들기", "360=2³×3²×5에서 지수가 홀수인 2와 5를 나누면 36=6²이 된다.", ["2", "5", "15"]],
-    ["N=2^a\\times3^2\\text{의 약수의 개수가 }15\\text{일 때}", "4", "divisor-count-exponent", "약수의 개수와 지수", "약수의 개수는 (a+1)(2+1)=15이므로 a+1=5이다.", ["3", "5", "12"]],
-  ] as const;
-  const [latex, answer, structure, label, hint, distractors] = exercises[index];
-  return make(id, "prime-factorization", latex, answer, hint, [...distractors], structure, label);
+function primePowers(primes: number[], exponents: number[]) {
+  return primes.map((prime, index) => exponents[index] === 1 ? String(prime) : `${prime}^{${exponents[index]}}`).join("\\times");
 }
 
-function buildGcdLcm(id: string, index: number): MiddleCoreProblem {
-  const direct = [
-    {
-      latex: "2^4\\times3^2,\\quad2^2\\times3^3\\times5",
-      answer: "\\text{최대공약수 }36,\\quad\\text{최소공배수 }2160",
-      structure: "factored-two-both", label: "두 수의 지수 비교",
-    },
-    {
-      latex: "2^4\\times3^2,\\quad2^3\\times3^3,\\quad2^2\\times3^2\\times5",
-      answer: "36", structure: "factored-three-gcd", label: "세 수의 지수 비교",
-    },
-    {
-      latex: "120,\\quad168",
-      answer: "\\text{최대공약수 }24,\\quad\\text{최소공배수 }840",
-      structure: "two-both", label: "두 수를 직접 소인수분해",
-    },
-    {
-      latex: "72,\\quad108,\\quad180",
-      answer: "36", structure: "three-gcd", label: "세 수를 직접 소인수분해",
-    },
-    {
-      latex: "60,\\quad84,\\quad90",
-      answer: "1260", structure: "three-lcm", label: "세 수를 직접 소인수분해",
-    },
-    {
-      latex: "\\begin{gathered}\\text{두 자연수 중 한 수는 }144,\\\\\\text{최대공약수는 }12,\\ \\text{최소공배수는 }720\\text{이다.}\\end{gathered}",
-      answer: "60", structure: "product-relation", label: "한 수 역산",
-    },
-    {
-      latex: "\\begin{gathered}A=2^a\\times3^2,\\quad B=2^3\\times3^b\\\\\\text{최대공약수는 }36,\\ \\text{최소공배수는 }216\\text{이다.}\\end{gathered}",
-      answer: "5", structure: "missing-exponents", label: "지수 역산",
-    },
-    {
-      latex: "\\begin{gathered}\\text{두 자연수 중 한 수는 }72,\\\\\\text{최대공약수는 }12,\\ \\text{최소공배수는 }360\\text{이다.}\\end{gathered}",
-      answer: "60", structure: "gcd-lcm-condition", label: "조건에 맞는 수",
-    },
-  ] as const;
-  const exercise = direct[index];
-  const numericAnswer = Number(exercise.answer);
-  const distractors = Number.isFinite(numericAnswer)
-    ? [`${numericAnswer * 2}`, `${Math.max(1, numericAnswer / 2)}`, `${numericAnswer + 12}`]
-    : [
-      "\\text{최대공약수 }72,\\quad\\text{최소공배수 }2160",
-      "\\text{최대공약수 }36,\\quad\\text{최소공배수 }1080",
-      "\\text{최대공약수 }12,\\quad\\text{최소공배수 }2160",
-    ];
-  const hint = index < 2
-    ? "최대공약수는 공통 소인수의 작은 지수, 최소공배수는 모든 소인수의 큰 지수를 택한다."
-    : index < 5
-      ? "각 수를 먼저 소인수분해한 뒤 소인수별 지수를 비교한다."
-      : index === 6
-        ? "최대공약수와 최소공배수의 소인수 지수를 비교하면 a=2, b=3이다."
-        : "두 자연수의 곱은 최대공약수와 최소공배수의 곱과 같다.";
-  return make(id, "gcd-lcm", exercise.latex, exercise.answer, hint, distractors, exercise.structure, exercise.label);
+function buildPrimeFactorization(id: string, index: number, next: () => number): MiddleCoreProblem {
+  const structures = ["factor-three-primes", "factor-repeated-primes", "factor-large", "factor-four-primes", "factor-four-digit", "make-perfect-square-product", "make-perfect-square-quotient", "divisor-count-exponent"];
+  const labels = ["세 소인수로 분해", "거듭제곱으로 나타내기", "세 자리 수의 소인수분해", "네 소인수로 분해", "네 자리 수의 소인수분해", "완전제곱수 만들기", "완전제곱수 만들기", "약수의 개수와 지수"];
+  if (index === 7) {
+    const a = integer(next, 1, 6), b = integer(next, 1, 4), prime = [3, 5, 7][integer(next, 0, 2)];
+    return make(id, "prime-factorization", `N=2^a\\times${prime}^{${b}}\\text{의 약수의 개수가 }${(a+1)*(b+1)}\\text{일 때}`, String(a), "약수의 개수는 각 소인수의 지수에 1을 더한 값들의 곱이다.", [String(a+1), String(a+2), String(a+3)], structures[index], labels[index]);
+  }
+  const primes = index < 3 || index > 4 ? [2, 3, [5, 7, 11][integer(next, 0, 2)]] : [2, 3, 5, [7, 11, 13][integer(next, 0, 2)]];
+  const exponents = primes.map((_, i) => i < 2 ? integer(next, index === 4 ? 2 : 1, 3) : 1);
+  if (index < 5) exponents[0] = 2;
+  if (index === 2) { primes[2] = [5, 7][integer(next, 0, 1)]; exponents[1] = integer(next, 2, 3); }
+  const value = primes.reduce((product, prime, i) => product * prime ** exponents[i], 1);
+  if (index === 5 || index === 6) {
+    const answer = primes.reduce((product, prime, i) => product * (exponents[i] % 2 ? prime : 1), 1);
+    const expression = index === 5 ? `${value}n` : `\\dfrac{${value}}{n}`;
+    return make(id, "prime-factorization", expression + "\\text{이 어떤 자연수의 제곱일 때}", String(answer), "소인수분해하여 지수가 홀수인 소인수를 한 번씩 곱한다.", [String(answer*2), String(answer*3), String(answer+1)], structures[index], labels[index]);
+  }
+  const answer = primePowers(primes, exponents);
+  const distractors = [0,1,2].map(i => primePowers(primes, exponents.map((power,j) => j===i ? power+1 : power)));
+  return make(id,"prime-factorization",String(value),answer,"작은 소수부터 나누고 같은 소인수를 거듭제곱으로 묶는다.",distractors,structures[index],labels[index]);
 }
 
-function buildPolynomialAddSubtract(id: string, index: number): MiddleCoreProblem {
-  const exercises = [
-    {
-      latex: "(3x^2-2x+5)+(-5x^2+7x-9)",
-      answer: "-2x^2+5x-4",
-      structure: "two-add",
-      label: "두 다항식의 덧셈",
-      hint: "괄호를 풀고 x²항, x항, 상수항끼리 각각 더한다.",
-      distractors: ["8x^2+5x-4", "-2x^2+9x-14", "-2x^2-5x+4"],
-    },
-    {
-      latex: "(4x^2-3x+2)-(-2x^2+5x-7)",
-      answer: "6x^2-8x+9",
-      structure: "two-subtract",
-      label: "괄호 앞의 음수",
-      hint: "두 번째 괄호 안 모든 항의 부호를 바꾼 뒤 동류항을 계산한다.",
-      distractors: ["2x^2+2x-5", "6x^2+2x-5", "6x^2-8x-5"],
-    },
-    {
-      latex: "2(x^2-3x+4)-3(2x^2+x-5)",
-      answer: "-4x^2-9x+23",
-      structure: "scalar-two-polynomials",
-      label: "계수가 있는 두 다항식",
-      hint: "각 괄호에 2와 -3을 먼저 분배한 다음 동류항을 정리한다.",
-      distractors: ["-4x^2-3x-7", "8x^2-9x+23", "-4x^2-9x-7"],
-    },
-    {
-      latex: "(2x^2-x+3)-(-x^2+4x-5)+(3x^2-2x-1)",
-      answer: "6x^2-7x+7",
-      structure: "three-polynomials",
-      label: "세 다항식의 계산",
-      hint: "가운데 괄호의 부호를 모두 바꾸고 세 식의 동류항을 한 번에 모은다.",
-      distractors: ["4x^2+x-3", "6x^2+x-3", "6x^2-7x-3"],
-    },
-    {
-      latex: "(3x^2-2xy+y^2)-2(x^2+3xy-2y^2)",
-      answer: "x^2-8xy+5y^2",
-      structure: "two-variables",
-      label: "두 문자 다항식",
-      hint: "x², xy, y²는 서로 다른 항이므로 같은 문자와 차수의 항끼리만 계산한다.",
-      distractors: ["x^2+4xy-3y^2", "x^2-8xy-3y^2", "5x^2-8xy+5y^2"],
-    },
-    {
-      latex: "\\left(\\dfrac12x^2-\\dfrac23x+\\dfrac14\\right)+\\left(\\dfrac34x^2+\\dfrac16x-\\dfrac58\\right)",
-      answer: "\\dfrac54x^2-\\dfrac12x-\\dfrac38",
-      structure: "fraction-coefficients",
-      label: "분수 계수의 계산",
-      hint: "각 동류항의 분모를 통분하여 계수를 더하고 뺀다.",
-      distractors: ["\\dfrac54x^2-\\dfrac56x-\\dfrac38", "\\dfrac58x^2-\\dfrac12x-\\dfrac14", "\\dfrac54x^2+\\dfrac12x+\\dfrac78"],
-    },
-    {
-      latex: "3\\left\\{2(x^2-x+1)-(2x^2+3x-4)\\right\\}",
-      answer: "-15x+18",
-      structure: "nested-parentheses",
-      label: "이중 괄호 계산",
-      hint: "중괄호 안을 먼저 정리하면 -5x+6이고, 마지막으로 3을 분배한다.",
-      distractors: ["-5x+6", "-15x+6", "12x^2-15x+18"],
-    },
-    {
-      latex: "A+(2x^2-3x+4)=-x^2+5x-7",
-      answer: "A=-3x^2+8x-11",
-      structure: "missing-polynomial",
-      label: "다항식 역산",
-      hint: "A는 오른쪽 다항식에서 더해진 다항식을 빼서 구한다.",
-      distractors: ["A=x^2+2x-3", "A=-3x^2+2x-3", "A=-3x^2+8x+11"],
-    },
-  ] as const;
-  const exercise = exercises[index];
-  return make(
-    id,
-    "polynomial-add-subtract",
-    exercise.latex,
-    exercise.answer,
-    exercise.hint,
-    [...exercise.distractors],
-    exercise.structure,
-    exercise.label,
-  );
+function buildGcdLcm(id: string, index: number, next: () => number): MiddleCoreProblem {
+  const structures = ["factored-two-both", "factored-three-gcd", "two-both", "three-gcd", "three-lcm", "product-relation", "missing-exponents", "gcd-lcm-condition"];
+  const labels = ["두 수의 지수 비교", "세 수의 지수 비교", "두 수를 직접 소인수분해", "세 수를 직접 소인수분해", "세 수를 직접 소인수분해", "한 수 역산", "지수 역산", "조건에 맞는 수"];
+  const p = integer(next,1,3), q = integer(next,1,3), common = 2**p * 3**q;
+  const u = [5,7,11][integer(next,0,2)], v = [13,17,19][integer(next,0,2)];
+  const a = common*u, b = common*v, c = common*2, lcm = common*u*v;
+  let latex: string, answer: string;
+  if (index === 0 || index === 2) {
+    latex = index === 0 ? `${primePowers([2,3,u],[p,q,1])},\\quad${primePowers([2,3,v],[p,q,1])}` : `${a},\\quad${b}`;
+    answer = `\\text{최대공약수 }${common},\\quad\\text{최소공배수 }${lcm}`;
+  } else if (index === 1 || index === 3 || index === 4) {
+    latex = index === 1 ? `${primePowers([2,3,u],[p,q,1])},\\quad${primePowers([2,3,v],[p,q,1])},\\quad${primePowers([2,3],[p+1,q])}` : `${a},\\quad${b},\\quad${c}`;
+    answer = String(index === 4 ? lcm*2 : common);
+  } else if (index === 6) {
+    const highP=p+integer(next,1,2), highQ=q+integer(next,1,2);
+    latex = `\\begin{gathered}A=2^a\\times3^{${q}},\\quad B=2^{${p}}\\times3^b\\\\\\text{최대공약수는 }${common},\\ \\text{최소공배수는 }${2**highP*3**highQ}\\text{이다.}\\end{gathered}`;
+    answer=String(highP+highQ);
+  } else {
+    latex = `\\begin{gathered}\\text{두 자연수 중 한 수는 }${a},\\\\\\text{최대공약수는 }${common},\\ \\text{최소공배수는 }${lcm}\\text{이다.}\\end{gathered}`;
+    answer=String(b);
+  }
+  const numeric=Number(answer);
+  const distractors=Number.isFinite(numeric) ? [String(numeric+1),String(numeric*2),String(numeric+3)] : [
+    `\\text{최대공약수 }${common*2},\\quad\\text{최소공배수 }${lcm}`,
+    `\\text{최대공약수 }${common},\\quad\\text{최소공배수 }${lcm*2}`,
+    `\\text{최대공약수 }${common*3},\\quad\\text{최소공배수 }${lcm*3}`,
+  ];
+  const hint=index<5 ? "소인수분해한 뒤 최대공약수에는 작은 지수, 최소공배수에는 큰 지수를 택한다." : index===6 ? "소인수별로 지수의 최솟값과 최댓값을 비교한다." : "두 자연수의 곱은 최대공약수와 최소공배수의 곱과 같다.";
+  return make(id,"gcd-lcm",latex,answer,hint,distractors,structures[index],labels[index]);
+}
+
+function buildPolynomialAddSubtract(id: string, index: number, next: () => number): MiddleCoreProblem {
+  const a=nonzero(next,-6,6), b=nonzero(next,-7,7), c=nonzero(next,-8,8), d=nonzero(next,-5,5), e=nonzero(next,-6,6), f=nonzero(next,-7,7);
+  const P=polynomial2(a,b,c), Q=polynomial2(d,e,f);
+  const structures=["two-add","two-subtract","scalar-two-polynomials","three-polynomials","two-variables","fraction-coefficients","nested-parentheses","missing-polynomial"];
+  const labels=["두 다항식의 덧셈","괄호 앞의 음수","계수가 있는 두 다항식","세 다항식의 계산","두 문자 다항식","분수 계수의 계산","이중 괄호 계산","다항식 역산"];
+  let latex: string, answer: string;
+  if (index===0 || index===1) {
+    const sign=index===0 ? 1 : -1;
+    latex=`(${P})${sign===1?"+":"-"}(${Q})`; answer=polynomial2(a+sign*d,b+sign*e,c+sign*f);
+  } else if (index===2) {
+    latex=`2(${P})-3(${Q})`; answer=polynomial2(2*a-3*d,2*b-3*e,2*c-3*f);
+  } else if (index===3) {
+    latex=`(${P})-(${Q})+(${polynomial2(1,2,3)})`; answer=polynomial2(a-d+1,b-e+2,c-f+3);
+  } else if (index===4) {
+    const two=(x: number,xy: number,y: number) => [[x,"x^2"],[xy,"xy"],[y,"y^2"]].filter(([value]) => value !== 0).map(([value,symbol],i) => (i > 0 && Number(value) > 0 ? "+" : "") + coefficient(Number(value),String(symbol))).join("") || "0";
+    latex=`(${two(a,b,c)})-2(${two(d,e,f)})`; answer=two(a-2*d,b-2*e,c-2*f);
+  } else if (index===5) {
+    latex=`\\frac{${P}}{2}+\\frac{${Q}}{2}`; answer=`\\frac{${polynomial2(a+d,b+e,c+f)}}{2}`;
+  } else if (index===6) {
+    latex=`3\\{2(${P})-(${Q})\\}`; answer=polynomial2(6*a-3*d,6*b-3*e,6*c-3*f);
+  } else {
+    latex=`A+(${P})=${Q}`; answer=`A=${polynomial2(d-a,e-b,f-c)}`;
+  }
+  const wrong=index===7 ? [`A=${polynomial2(d+a,e+b,f+c)}`,`A=${polynomial2(d-a+1,e-b,f-c)}`,`A=${polynomial2(d-a,e-b+1,f-c)}`] : [`(${answer})+1`,`(${answer})-1`,`(${answer})+2`];
+  return make(id,"polynomial-add-subtract",latex,answer,"괄호를 풀고 같은 문자와 차수의 항끼리 계수를 계산한다.",wrong,structures[index],labels[index]);
 }
 
 function build(
@@ -481,9 +418,9 @@ function build(
   id: string,
   index: number,
 ): MiddleCoreProblem {
-  if (kind === "prime-factorization") return buildPrimeFactorization(id, index);
-  if (kind === "gcd-lcm") return buildGcdLcm(id, index);
-  if (kind === "polynomial-add-subtract") return buildPolynomialAddSubtract(id, index);
+  if (kind === "prime-factorization") return buildPrimeFactorization(id, index, next);
+  if (kind === "gcd-lcm") return buildGcdLcm(id, index, next);
+  if (kind === "polynomial-add-subtract") return buildPolynomialAddSubtract(id, index, next);
 
   if (kind === "linear-equation") {
     const solution = nonzero(next, -8, 8);
@@ -556,15 +493,15 @@ function build(
         [fraction(value, 100), fraction(value, 9), fraction(value, 90)], "two-digit");
     }
     if (mode === 2) {
-      const first = 1 + (index % 7);
-      const repeat = 1 + ((index + 3) % 8);
+      const first = integer(next, 1, 8);
+      const repeat = integer(next, 1, 8);
       const numerator = first * 9 + repeat;
       const answer = fraction(numerator, 90);
       return make(id, kind, `0.${first}\\overline{${repeat}}`, answer,
         `100x-10x=${first * 10 + repeat}-${first}를 이용해 분수로 고친다.`,
         [fraction(first * 10 + repeat, 99), fraction(numerator, 99), fraction(first * 10 + repeat, 90)], "mixed-repeat");
     }
-    const value = 123 + index * 11;
+    const value = integer(next, 101, 998);
     const answer = fraction(value, 999);
     return make(id, kind, `0.\\overline{${value}}`, answer,
       `1000x-x=${value}을 이용해 x를 분수로 나타내고 약분한다.`,
@@ -572,8 +509,8 @@ function build(
   }
 
   if (kind === "exponent-laws") {
-    const m = 2 + (index % 5);
-    const n = 2 + ((index + 2) % 4);
+    const m = integer(next, 2, 8);
+    const n = integer(next, 2, 7);
     const mode = index % 5;
     if (mode === 0) {
       return make(id, kind, `x^{${m}}\\times x^{${n}}`, `x^{${m + n}}`,
@@ -628,27 +565,6 @@ function build(
       "계수끼리 나누고 같은 문자의 지수끼리 뺀다.",
       [monomial(divisorCoef * quotientCoef, quotientX, quotientY), monomial(quotientCoef, divisorX + quotientX, divisorY + quotientY), monomial(-quotientCoef, quotientX, quotientY)],
       divisorY === 0 ? "single-divisor-variable" : "two-divisor-variables");
-  }
-
-  if (kind === "polynomial-add-subtract") {
-    const a = nonzero(next, -5, 5);
-    const b = nonzero(next, -7, 7);
-    const c = integer(next, -9, 9);
-    const d = nonzero(next, -5, 5);
-    const e = nonzero(next, -7, 7);
-    const f = integer(next, -9, 9);
-    const subtract = index % 2 === 1;
-    const answer = polynomial2(a + (subtract ? -d : d), b + (subtract ? -e : e), c + (subtract ? -f : f));
-    return make(id, kind,
-      `(${polynomial2(a, b, c)})${subtract ? "-" : "+"}(${polynomial2(d, e, f)})`,
-      answer,
-      subtract ? "두 번째 괄호의 각 항의 부호를 바꾼 뒤 동류항끼리 계산한다." : "같은 차수의 동류항끼리 계수를 더한다.",
-      [
-        polynomial2(a + d, b + e, c + f),
-        polynomial2(a - d, b - e, c - f),
-        polynomial2(a + (subtract ? -d : d), b + (subtract ? e : -e), c + (subtract ? -f : f)),
-      ],
-      subtract ? "subtract" : "add");
   }
 
   if (kind === "linear-inequality") {
@@ -848,8 +764,8 @@ function build(
 
   if (kind === "square-roots-real") {
     const mode = index % 4;
-    const root = 2 + index;
-    const squareFree = SQUARE_FREE[index % SQUARE_FREE.length];
+    const root = integer(next, 2, 10);
+    const squareFree = SQUARE_FREE[integer(next, 0, SQUARE_FREE.length - 1)];
     if (mode === 0) {
       return make(id, kind, `\\sqrt{${root * root * squareFree}}`, `${root}\\sqrt{${squareFree}}`,
         `근호 안의 제곱인수 ${root * root}을 밖으로 꺼낸다.`,
@@ -874,9 +790,9 @@ function build(
 
   if (kind === "radical-calculation") {
     const mode = index % 8;
-    const n = SQUARE_FREE[index % SQUARE_FREE.length];
-    const a = 2 + (index % 5);
-    const b = 1 + ((index + 2) % 4);
+    const n = SQUARE_FREE[integer(next, 0, SQUARE_FREE.length - 1)];
+    const a = integer(next, 2, 8);
+    const b = integer(next, 1, 7);
     if (mode === 0) {
       return make(id, kind, `\\sqrt{${a * a}}`, `${a}`,
         `제곱해서 ${a * a}이 되는 양의 수는 ${a}이다.`,
@@ -910,14 +826,14 @@ function build(
         "radical-parentheses");
     }
     if (mode === 5) {
-      return make(id, kind, `2\\sqrt{3}\\times3\\sqrt{6}`, `18\\sqrt{2}`,
-        "계수끼리 곱하고 근호끼리 곱한 뒤 √18을 3√2로 간단히 한다.",
-        [`6\\sqrt{2}`, `6\\sqrt{18}`, `18\\sqrt{3}`], "radical-multiply");
+      return make(id, kind, `${a}\\sqrt{${n}}\\times${b}\\sqrt{${2*n}}`, `${a*b*n}\\sqrt{2}`,
+        "계수끼리 곱하고 근호 안의 제곱인수를 밖으로 꺼낸다.",
+        [`${a*b}\\sqrt{2}`, `${a*b*n+1}\\sqrt{2}`, `${a*b*n}\\sqrt{3}`], "radical-multiply");
     }
     if (mode === 6) {
-      return make(id, kind, `4\\sqrt{15}\\div2\\sqrt{3}`, `2\\sqrt{5}`,
-        "계수끼리 나누고 근호 안의 수를 나눈 뒤 √5로 정리한다.",
-        [`2\\sqrt{12}`, `2\\sqrt{18}`, `4\\sqrt{5}`], "radical-divide");
+      return make(id, kind, `\\dfrac{${a*(b+1)}\\sqrt{${3*n}}}{${b+1}\\sqrt{3}}`, `${a}\\sqrt{${n}}`,
+        "계수끼리 나누고 근호 안의 수끼리 나눈다.",
+        [`${a+1}\\sqrt{${n}}`, `${a}\\sqrt{${3*n}}`, `${a-1}\\sqrt{${n}}`], "radical-divide");
     }
     const numerator = n + 1;
     return make(id, kind, `\\dfrac{${numerator}}{\\sqrt{${n}}}`, `\\dfrac{${numerator}\\sqrt{${n}}}{${n}}`,
@@ -983,8 +899,8 @@ function build(
       b > 0 ? "plus-square" : "minus-square");
   }
 
-  const a = 1 + (index % 5);
-  const b = 2 + ((index + 1) % 7);
+  const a = integer(next, 1, 7);
+  const b = integer(next, 2, 9);
   return make(id, kind, `(${linear(a, b)})(${linear(a, -b)})`, polynomial2(a * a, 0, -b * b),
     "합과 차의 곱은 두 항의 제곱의 차로 계산한다.",
     [

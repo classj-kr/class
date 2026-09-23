@@ -1,0 +1,9 @@
+{
+  "ok": true,
+  "students": 33,
+  "placesPerStudent": 3,
+  "answers": 297,
+  "completed": 33,
+  "uniqueRanks": true,
+  "maxLocalAckMs": 22
+}

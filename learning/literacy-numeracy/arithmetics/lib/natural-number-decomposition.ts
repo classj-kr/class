@@ -72,7 +72,7 @@ function makeProblem(number: number): NaturalNumberDecompositionProblem {
 
 export function createNaturalNumberDecompositionSet(seed: number, count = 14): NaturalNumberDecompositionProblem[] {
   const next = random(seed);
-  const pool = naturalNumberDecompositionBank.filter((number) => number !== PRIME_EXAMPLE_NUMBER && number !== COMPOSITE_EXAMPLE_NUMBER);
+  const pool = naturalNumberDecompositionBank.filter((number) => number !== COMPOSITE_EXAMPLE_NUMBER);
   const shuffled = [...pool];
   for (let index = shuffled.length - 1; index > 0; index -= 1) {
     const target = Math.floor(next() * (index + 1));

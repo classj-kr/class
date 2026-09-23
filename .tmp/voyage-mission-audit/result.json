@@ -1,0 +1,39 @@
+{
+  "ok": true,
+  "actualBrowserFlow": true,
+  "wrongThirdResets": true,
+  "manualRecoveryWorks": true,
+  "lostAck": {
+    "serverStreak": 1,
+    "shownQuestion": "1번 · 읽은 설명의 빈칸에 들어갈 말은?",
+    "error": "현재 문제의 답을 선택하세요."
+  },
+  "completion": {
+    "status": "completed",
+    "rank": 1,
+    "places": [
+      {
+        "key": "city:lisbon",
+        "name": "리스본",
+        "type": "city",
+        "phase": "completed",
+        "streak": 3
+      },
+      {
+        "key": "discovery:batur-caldera",
+        "name": "바투르 칼데라",
+        "type": "discovery",
+        "phase": "completed",
+        "streak": 3
+      },
+      {
+        "key": "discovery:milford-sound",
+        "name": "밀퍼드사운드",
+        "type": "discovery",
+        "phase": "completed",
+        "streak": 3
+      }
+    ]
+  },
+  "errors": []
+}

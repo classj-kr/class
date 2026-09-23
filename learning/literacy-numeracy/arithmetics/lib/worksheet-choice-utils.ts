@@ -49,3 +49,13 @@ export function createNumericChoices(values: number[], stableKey: string): Numer
     correct: tupleKey(candidate) === tupleKey(correct),
   }));
 }
+
+/** Formatting can turn different numeric tuples into the same mathematical answer. */
+export function uniqueFormattedChoices<T extends { latex: string; correct: boolean }>(choices: T[]): T[] {
+  const unique = new Map<string, T>();
+  for (const choice of choices) {
+    const key = choice.latex.replace(/\s+/g, "");
+    if (!unique.has(key) || choice.correct) unique.set(key, choice);
+  }
+  return [...unique.values()];
+}

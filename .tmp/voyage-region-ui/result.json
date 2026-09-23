@@ -1,0 +1,34 @@
+{
+  "ok": true,
+  "actualBrowserFlow": true,
+  "regions": 3,
+  "desktopAndMobile": true,
+  "completion": {
+    "status": "completed",
+    "rank": 1,
+    "places": [
+      {
+        "key": "discovery:andes",
+        "name": "안데스산맥",
+        "type": "discovery",
+        "phase": "completed",
+        "streak": 3
+      },
+      {
+        "key": "discovery:alps",
+        "name": "알프스산맥",
+        "type": "discovery",
+        "phase": "completed",
+        "streak": 3
+      },
+      {
+        "key": "discovery:sahara",
+        "name": "사하라 사막",
+        "type": "discovery",
+        "phase": "completed",
+        "streak": 3
+      }
+    ]
+  },
+  "errors": []
+}

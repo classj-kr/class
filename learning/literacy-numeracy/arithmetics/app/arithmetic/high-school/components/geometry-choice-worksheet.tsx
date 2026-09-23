@@ -4,11 +4,11 @@ import { useEffect, useMemo, useState } from "react";
 import MathFormula from "../../../components/math-formula";
 import InlineMathText from "../../../components/inline-math-text";
 import MiddleCurriculumVisual from "../../../components/middle-curriculum-visual";
-import WorksheetQuestionPrompt from "../../../components/worksheet-question-prompt";
+import WorksheetQuestionPrompt, { worksheetQuestion } from "../../../components/worksheet-question-prompt";
 import { rotateChoices } from "../../../../lib/worksheet-choice-utils";
 import WorksheetChoicePanel, { type WorksheetChoiceProblem } from "./worksheet-choice-panel";
 
-export type GeometryChoiceItem = WorksheetChoiceProblem & {
+export type GeometryChoiceItem = Omit<WorksheetChoiceProblem, "prompt"> & {
   latex: string;
   prompt?: string;
   difficulty?: "basic" | "application" | "advanced";
@@ -45,6 +45,7 @@ export default function GeometryChoiceWorksheet({ subject = "기하", title, see
   }, [arrangement, problemFactory, problemSets, problems, worksheetSeed]);
   const panelProblems = useMemo(() => displayedProblems.map((problem) => ({
     ...problem,
+    prompt: worksheetQuestion(problem.label, problem.prompt),
     visual: problem.visualVariant
       ? <MiddleCurriculumVisual visual={{ type: "geometry", variant: problem.visualVariant, labels: [] }} />
       : problem.visual,

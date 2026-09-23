@@ -63,7 +63,7 @@ test("모든 유형은 실제 실수 원인이 다른 네 개의 선택지를 �
     assert.equal(new Set(choices.map(({ latex }) => latex)).size, 4);
     assert.ok(choices.every(({ latex }) => latex.length > 7));
 
-    const misconceptions = new Set(choices.map(({ misconception }) => misconception));
+    const misconceptions = new Set<string>(choices.map(({ misconception }) => misconception));
     assert.ok(misconceptions.has("correct"));
     assert.ok(misconceptions.has("inner-derivative"));
     assert.ok(misconceptions.has("sign"));

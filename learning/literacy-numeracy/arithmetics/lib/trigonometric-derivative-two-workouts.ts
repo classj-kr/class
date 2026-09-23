@@ -180,7 +180,7 @@ function patternLatex(pattern: DerivedTrigonometricPattern, argument: string) {
 
 function buildProblem(kind: TrigonometricDerivativeTwoKind, next: () => number, id: string): TrigonometricDerivativeTwoProblem {
   if (kind === "secant-chain" || kind === "cosecant-chain" || kind === "cotangent-chain") {
-    const variant = pick(next, CHAIN_VARIANTS[kind]);
+    const variant = pick<{ coefficient: number; rate: number; constant: number }>(next, CHAIN_VARIANTS[kind]);
     const pattern = chainPattern(kind);
     const coefficient = chainSign(kind) * variant.coefficient * variant.rate;
     const argument = latexArgument(variant.rate, variant.constant);
@@ -253,6 +253,7 @@ export function formatTrigonometricDerivativeTwoProblemLatex(problem: Trigonomet
   if (problem.kind === "secant-power") {
     return `f(x)=${latexCoefficient(problem.coefficient)}${latexFunctionPower("sec", problem.power, latexArgument(problem.rate, problem.constant))}`;
   }
+  if (problem.kind !== "derived-product") throw new Error("Unknown derivative problem kind");
   return `f(x)=${latexCoefficient(problem.coefficient)}${latexXPower(problem.power)}${latexFunction(problem.trig, latexArgument(problem.rate))}`;
 }
 

@@ -229,7 +229,7 @@ function make(
   latex: string,
   answerLatex: string,
   distractors: string[],
-  structure = kind,
+  structure: string = kind,
   difficulty: MiddleFactorizationDifficulty = "basic",
 ): MiddleFactorizationProblem {
   return {

@@ -139,7 +139,7 @@ function make(
   answerLatex: string,
   solutionHint: string,
   distractors: string[],
-  structure = kind,
+  structure: string = kind,
 ): MiddleTrigonometryProblem {
   const question = questionFor(kind, structure);
   return {

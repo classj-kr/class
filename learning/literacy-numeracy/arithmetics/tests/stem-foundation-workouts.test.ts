@@ -295,7 +295,7 @@ test("144문항 모두 무엇을 구할지 질문 또는 지시문에 명시한�
     createStemFoundationProblems(kind, 20260910).map(({ prompt }) => prompt)
   ));
   assert.equal(prompts.length, 144);
-  assert.ok(prompts.every((prompt) => typeof prompt === "string" && prompt.length >= 3));
+  assert.ok(prompts.every((prompt): prompt is string => typeof prompt === "string" && prompt.length >= 3));
   assert.ok(prompts.every((prompt) => !prompt.includes("값이나 식")));
   assert.ok(prompts.every((prompt) => /[?？]$/.test(prompt) || /구하세요|나타내세요|판정하세요|쓰세요/.test(prompt)));
 });
@@ -305,6 +305,7 @@ test("이공계 질문의 수학 기호는 모두 수식 구간 안에서 표준
     createStemFoundationProblems(kind, 20260910).map(({ prompt }) => prompt)
   ));
   for (const prompt of prompts) {
+    assert.ok(prompt);
     const delimiters = prompt.match(/\$/g) ?? [];
     assert.equal(delimiters.length % 2, 0, prompt);
     const proseOnly = prompt.replace(/\$[^$]+\$/g, "");

@@ -1,0 +1,37 @@
+{
+  "commit": "7c6168e1293b7660ce620a55840bd00edce5647e",
+  "checkedAt": "2026-09-23T03:36:38.064Z",
+  "githubPages": [
+    {
+      "file": "public/index.html",
+      "url": "https://classj-kr.github.io/class/learning/inquiry/age-of-exploration/public/index.html?verify=7c6168e1293b7660ce620a55840bd00edce5647e-1790134594810",
+      "bytes": 155237,
+      "match": true
+    },
+    {
+      "file": "public/js/place-study-ui.js",
+      "url": "https://classj-kr.github.io/class/learning/inquiry/age-of-exploration/public/js/place-study-ui.js?verify=7c6168e1293b7660ce620a55840bd00edce5647e-1790134595565",
+      "bytes": 9377,
+      "match": true
+    },
+    {
+      "file": "data/catalog/discovery-regions.json",
+      "url": "https://classj-kr.github.io/class/learning/inquiry/age-of-exploration/data/catalog/discovery-regions.json?verify=7c6168e1293b7660ce620a55840bd00edce5647e-1790134596290",
+      "bytes": 61259,
+      "match": true
+    },
+    {
+      "file": "lib/study-question-builder.js",
+      "url": "https://classj-kr.github.io/class/learning/inquiry/age-of-exploration/lib/study-question-builder.js?verify=7c6168e1293b7660ce620a55840bd00edce5647e-1790134596902",
+      "bytes": 4643,
+      "match": true
+    },
+    {
+      "file": "lib/study-question-bank.js",
+      "url": "https://classj-kr.github.io/class/learning/inquiry/age-of-exploration/lib/study-question-bank.js?verify=7c6168e1293b7660ce620a55840bd00edce5647e-1790134597461",
+      "bytes": 18219,
+      "match": true
+    }
+  ],
+  "allMatch": true
+}

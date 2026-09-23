@@ -1,0 +1,82 @@
+function primePowers(primes: number[], exponents: number[]) {
+  return primes.map((prime, index) => exponents[index] === 1 ? String(prime) : `${prime}^{${exponents[index]}}`).join("\\times");
+}
+
+function buildPrimeFactorization(id: string, index: number, next: () => number): MiddleCoreProblem {
+  const structures = ["factor-three-primes", "factor-repeated-primes", "factor-large", "factor-four-primes", "factor-four-digit", "make-perfect-square-product", "make-perfect-square-quotient", "divisor-count-exponent"];
+  const labels = ["세 소인수로 분해", "거듭제곱으로 나타내기", "세 자리 수의 소인수분해", "네 소인수로 분해", "네 자리 수의 소인수분해", "완전제곱수 만들기", "완전제곱수 만들기", "약수의 개수와 지수"];
+  if (index === 7) {
+    const a = integer(next, 1, 6), b = integer(next, 1, 4), prime = [3, 5, 7][integer(next, 0, 2)];
+    return make(id, "prime-factorization", `N=2^a\times${prime}^{${b}}\text{의 약수의 개수가 }${(a+1)*(b+1)}\text{일 때}`, String(a), "약수의 개수는 각 소인수의 지수에 1을 더한 값들의 곱이다.", [String(a+1), String(a+2), String(a+3)], structures[index], labels[index]);
+  }
+  const primes = index < 3 || index > 4 ? [2, 3, [5, 7, 11][integer(next, 0, 2)]] : [2, 3, 5, [7, 11, 13][integer(next, 0, 2)]];
+  const exponents = primes.map((_, i) => i < 2 ? integer(next, index === 4 ? 2 : 1, 3) : 1);
+  if (index === 2) { exponents[0] = 2; exponents[1] = integer(next, 2, 3); }
+  const value = primes.reduce((product, prime, i) => product * prime ** exponents[i], 1);
+  if (index === 5 || index === 6) {
+    const answer = primes.reduce((product, prime, i) => product * (exponents[i] % 2 ? prime : 1), 1);
+    const expression = index === 5 ? `${value}n` : `\dfrac{${value}}{n}`;
+    return make(id, "prime-factorization", expression + "\\text{이 어떤 자연수의 제곱일 때}", String(answer), "소인수분해하여 지수가 홀수인 소인수를 한 번씩 곱한다.", [String(answer*2), String(answer*3), String(answer+1)], structures[index], labels[index]);
+  }
+  const answer = primePowers(primes, exponents);
+  const distractors = [0,1,2].map(i => primePowers(primes, exponents.map((power,j) => j===i ? power+1 : power)));
+  return make(id,"prime-factorization",String(value),answer,"작은 소수부터 나누고 같은 소인수를 거듭제곱으로 묶는다.",distractors,structures[index],labels[index]);
+}
+
+function buildGcdLcm(id: string, index: number, next: () => number): MiddleCoreProblem {
+  const structures = ["factored-two-both", "factored-three-gcd", "two-both", "three-gcd", "three-lcm", "product-relation", "missing-exponents", "gcd-lcm-condition"];
+  const labels = ["두 수의 지수 비교", "세 수의 지수 비교", "두 수를 직접 소인수분해", "세 수를 직접 소인수분해", "세 수를 직접 소인수분해", "한 수 역산", "지수 역산", "조건에 맞는 수"];
+  const p = integer(next,1,3), q = integer(next,1,3), common = 2**p * 3**q;
+  const u = [5,7,11][integer(next,0,2)], v = [13,17,19][integer(next,0,2)];
+  const a = common*u, b = common*v, c = common*2, lcm = common*u*v;
+  let latex: string, answer: string;
+  if (index === 0 || index === 2) {
+    latex = index === 0 ? `${primePowers([2,3,u],[p,q,1])},\quad${primePowers([2,3,v],[p,q,1])}` : `${a},\quad${b}`;
+    answer = `\text{최대공약수 }${common},\quad\text{최소공배수 }${lcm}`;
+  } else if (index === 1 || index === 3 || index === 4) {
+    latex = index === 1 ? `${primePowers([2,3,u],[p,q,1])},\quad${primePowers([2,3,v],[p,q,1])},\quad${primePowers([2,3],[p+1,q])}` : `${a},\quad${b},\quad${c}`;
+    answer = String(index === 4 ? lcm*2 : common);
+  } else if (index === 6) {
+    const highP=p+integer(next,1,2), highQ=q+integer(next,1,2);
+    latex = `\begin{gathered}A=2^a\times3^{${q}},\quad B=2^{${p}}\times3^b\\\text{최대공약수는 }${common},\ \text{최소공배수는 }${2**highP*3**highQ}\text{이다.}\end{gathered}`;
+    answer=String(highP+highQ);
+  } else {
+    latex = `\begin{gathered}\text{두 자연수 중 한 수는 }${a},\\\text{최대공약수는 }${common},\ \text{최소공배수는 }${lcm}\text{이다.}\end{gathered}`;
+    answer=String(b);
+  }
+  const numeric=Number(answer);
+  const distractors=Number.isFinite(numeric) ? [String(numeric+1),String(numeric*2),String(numeric+3)] : [
+    `\text{최대공약수 }${common*2},\quad\text{최소공배수 }${lcm}`,
+    `\text{최대공약수 }${common},\quad\text{최소공배수 }${lcm*2}`,
+    `\text{최대공약수 }${common*3},\quad\text{최소공배수 }${lcm*3}`,
+  ];
+  const hint=index<5 ? "소인수분해한 뒤 최대공약수에는 작은 지수, 최소공배수에는 큰 지수를 택한다." : index===6 ? "소인수별로 지수의 최솟값과 최댓값을 비교한다." : "두 자연수의 곱은 최대공약수와 최소공배수의 곱과 같다.";
+  return make(id,"gcd-lcm",latex,answer,hint,distractors,structures[index],labels[index]);
+}
+
+function buildPolynomialAddSubtract(id: string, index: number, next: () => number): MiddleCoreProblem {
+  const a=nonzero(next,-6,6), b=nonzero(next,-7,7), c=nonzero(next,-8,8), d=nonzero(next,-5,5), e=nonzero(next,-6,6), f=nonzero(next,-7,7);
+  const P=polynomial2(a,b,c), Q=polynomial2(d,e,f);
+  const structures=["two-add","two-subtract","scalar-two-polynomials","three-polynomials","two-variables","fraction-coefficients","nested-parentheses","missing-polynomial"];
+  const labels=["두 다항식의 덧셈","괄호 앞의 음수","계수가 있는 두 다항식","세 다항식의 계산","두 문자 다항식","분수 계수의 계산","이중 괄호 계산","다항식 역산"];
+  let latex: string, answer: string;
+  if (index===0 || index===1) {
+    const sign=index===0 ? 1 : -1;
+    latex=`(${P})${sign===1?"+":"-"}(${Q})`; answer=polynomial2(a+sign*d,b+sign*e,c+sign*f);
+  } else if (index===2) {
+    latex=`2(${P})-3(${Q})`; answer=polynomial2(2*a-3*d,2*b-3*e,2*c-3*f);
+  } else if (index===3) {
+    latex=`(${P})-(${Q})+(${polynomial2(1,2,3)})`; answer=polynomial2(a-d+1,b-e+2,c-f+3);
+  } else if (index===4) {
+    const two=(x: number,xy: number,y: number) => `${x}x^2${signed(xy)}xy${signed(y)}y^2`;
+    latex=`(${two(a,b,c)})-2(${two(d,e,f)})`; answer=two(a-2*d,b-2*e,c-2*f);
+  } else if (index===5) {
+    latex=`\frac{${P}}{2}+\frac{${Q}}{2}`; answer=`\frac{${polynomial2(a+d,b+e,c+f)}}{2}`;
+  } else if (index===6) {
+    latex=`3\{2(${P})-(${Q})\}`; answer=polynomial2(6*a-3*d,6*b-3*e,6*c-3*f);
+  } else {
+    latex=`A+(${P})=${Q}`; answer=`A=${polynomial2(d-a,e-b,f-c)}`;
+  }
+  const wrong=index===7 ? [`A=${polynomial2(d+a,e+b,f+c)}`,`A=${polynomial2(d-a+1,e-b,f-c)}`,`A=${polynomial2(d-a,e-b+1,f-c)}`] : [`(${answer})+1`,`(${answer})-1`,`(${answer})+2`];
+  return make(id,"polynomial-add-subtract",latex,answer,"괄호를 풀고 같은 문자와 차수의 항끼리 계수를 계산한다.",wrong,structures[index],labels[index]);
+}

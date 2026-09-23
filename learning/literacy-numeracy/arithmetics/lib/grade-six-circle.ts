@@ -78,7 +78,7 @@ export function createGradeSixCircleSet(seed: number): CircleProblem[] {
   const annulusOuter = annulusInner + annulusWidth;
   const sectorRadius = integer(next, 4, 10);
   const inscribedRadius = integer(next, 5, 10);
-  const inscribedSide = rounded(inscribedRadius * Math.SQRT2);
+  const inscribedSide = integer(next, inscribedRadius, Math.floor(inscribedRadius * 1.3));
   const semicircleCircleRadius = even(next, 8, 16);
   const semicircleHoleRadius = semicircleCircleRadius / 2;
   const squareSemicircleSide = even(next, 12, 24);

@@ -1,3 +1,4 @@
+import { rotateChoices } from "./worksheet-choice-utils.ts";
 import type { NumericWorksheetProblem } from "../app/arithmetic/high-school/components/numeric-choice-worksheet";
 
 export type MiddleRationalMixedKind =
@@ -197,4 +198,11 @@ export function formatMiddleRationalMixedChoice(
     return values[0] < 0 ? "<" : values[0] > 0 ? ">" : "=";
   }
   return values.length === 1 ? String(values[0]) : latex(values[0], values[1]);
+}
+
+export function createMiddleRationalMixedChoices(problem: NumericWorksheetProblem) {
+  const n = problem.answers[0], d = problem.answers[1] ?? 1;
+  const values = problem.kind === "fraction-comparison" ? [[-1], [0], [1]] : [[n, d], [n + d, d], [n - d, d], [n + 2 * d, d]];
+  const key = formatMiddleRationalMixedChoice(problem, problem.answers);
+  return rotateChoices(values.map((answer, index) => ({ id: `${problem.id}-choice-${index}`, values: answer, correct: formatMiddleRationalMixedChoice(problem, answer) === key })), problem.id);
 }

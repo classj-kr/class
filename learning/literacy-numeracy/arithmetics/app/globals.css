@@ -2844,6 +2844,13 @@ html[data-race-mode="true"] body { padding-bottom: 72px; }
 .circle-equation small { color: #44556c; font-size: 11px; font-weight: 800; }
 .circle-equation b { position: absolute; right: 1px; bottom: -8px; font-size: 7px; }
 
+.geometry-measurement-sheet .circle-grid { grid-template-rows: repeat(4, minmax(0, 1fr)); }
+.geometry-measurement-question { min-height: 0; }
+.geometry-measurement-question svg { height: 180px; max-height: 100%; }
+.solid-measurement-question { grid-template-columns: 18px minmax(0, 1.5fr) minmax(230px, 1fr); column-gap: 8px; }
+.solid-measurement-question .elementary-solid-diagram { height: 200px; overflow: hidden; }
+.solid-measurement-question .circle-answer-pair { gap: 14px; }
+.solid-measurement-note { margin: 0 0 2px; color: #40536a; font-size: 12px; font-weight: 500; line-height: 1.6; word-break: keep-all; }
 .cylinder-sheet { gap: 14px; padding-bottom: 28px; }
 .cylinder-guide { margin: 0; padding: 10px 15px; border-radius: 8px; background: #f4f0e8; color: #40536a; font-size: 13px; font-weight: 750; }
 .cylinder-grid { min-height: 0; flex: 1; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(2, minmax(0, 1fr)); overflow: hidden; border: 1px solid #cec5b8; border-radius: 14px; background: white; }

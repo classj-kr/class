@@ -1,0 +1,157 @@
+{
+  "ok": true,
+  "actualBrowserFlow": true,
+  "cases": [
+    "lost quiz-start acknowledgement",
+    "undelivered answer retains question",
+    "lost wrong third answer resets streak",
+    "accepted answer resumes next question",
+    "real socket disconnect and resume",
+    "lost final answer and failed recovery retry",
+    "closed window ignores late answer",
+    "closed window ignores late recovery",
+    "lost class-final acknowledgement preserves completion and rank"
+  ],
+  "completion": {
+    "status": "completed",
+    "rank": 1,
+    "places": [
+      {
+        "key": "city:lisbon",
+        "name": "리스본",
+        "type": "city",
+        "phase": "completed",
+        "streak": 3
+      },
+      {
+        "key": "discovery:batur-caldera",
+        "name": "바투르 칼데라",
+        "type": "discovery",
+        "phase": "completed",
+        "streak": 3
+      },
+      {
+        "key": "discovery:milford-sound",
+        "name": "밀퍼드사운드",
+        "type": "discovery",
+        "phase": "completed",
+        "streak": 3
+      }
+    ]
+  },
+  "requests": [
+    {
+      "event": "startStudyQuiz",
+      "ready": true
+    },
+    {
+      "event": "readStudyPlace",
+      "ready": true
+    },
+    {
+      "event": "answerStudyQuestion",
+      "ready": true
+    },
+    {
+      "event": "readStudyPlace",
+      "ready": true
+    },
+    {
+      "event": "answerStudyQuestion",
+      "ready": true
+    },
+    {
+      "event": "answerStudyQuestion",
+      "ready": true
+    },
+    {
+      "event": "answerStudyQuestion",
+      "ready": true
+    },
+    {
+      "event": "readStudyPlace",
+      "ready": true
+    },
+    {
+      "event": "startStudyQuiz",
+      "ready": true
+    },
+    {
+      "event": "answerStudyQuestion",
+      "ready": true
+    },
+    {
+      "event": "readStudyPlace",
+      "ready": true
+    },
+    {
+      "event": "answerStudyQuestion",
+      "ready": true
+    },
+    {
+      "event": "resumeVoyager",
+      "ready": false
+    },
+    {
+      "event": "readStudyPlace",
+      "ready": true
+    },
+    {
+      "event": "answerStudyQuestion",
+      "ready": true
+    },
+    {
+      "event": "readStudyPlace",
+      "ready": true
+    },
+    {
+      "event": "readStudyPlace",
+      "ready": true
+    },
+    {
+      "event": "startStudyQuiz",
+      "ready": true
+    },
+    {
+      "event": "answerStudyQuestion",
+      "ready": true
+    },
+    {
+      "event": "answerStudyQuestion",
+      "ready": true
+    },
+    {
+      "event": "readStudyPlace",
+      "ready": true
+    },
+    {
+      "event": "answerStudyQuestion",
+      "ready": true
+    },
+    {
+      "event": "readStudyPlace",
+      "ready": true
+    },
+    {
+      "event": "startStudyQuiz",
+      "ready": true
+    },
+    {
+      "event": "answerStudyQuestion",
+      "ready": true
+    },
+    {
+      "event": "answerStudyQuestion",
+      "ready": true
+    },
+    {
+      "event": "answerStudyQuestion",
+      "ready": true
+    },
+    {
+      "event": "readStudyPlace",
+      "ready": true
+    }
+  ],
+  "errors": []
+}

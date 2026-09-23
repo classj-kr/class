@@ -490,7 +490,7 @@ function suggest(game, playerId, suspect, weapon) {
   const checkOrder = [];
   for (let offset = 1; offset < game.players.length; offset += 1) {
     const candidate = game.players[(game.turnIndex + offset) % game.players.length];
-    if (candidate.active && candidate.id !== actor.id) checkOrder.push(candidate.id);
+    if (candidate.id !== actor.id) checkOrder.push(candidate.id);
   }
   game.suggestionUsed = true;
   game.pendingSuggestion = {

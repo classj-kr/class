@@ -220,7 +220,7 @@ function make(
   solutionHint: string,
   coefficients: readonly [number, number, number],
   distractors: string[],
-  structure = kind,
+  structure: string = kind,
 ): MiddleQuadraticEquationProblem {
   return {
     id,

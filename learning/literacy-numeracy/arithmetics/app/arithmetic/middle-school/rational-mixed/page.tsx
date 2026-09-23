@@ -5,6 +5,7 @@ import {
   createMiddleRationalMixedProblemSet,
   createMiddleRationalMixedReviewProblems,
   formatMiddleRationalMixedChoice,
+  createMiddleRationalMixedChoices,
 } from "../../../../lib/middle-rational-mixed";
 
 export default function MiddleRationalMixedPage() {
@@ -17,6 +18,7 @@ export default function MiddleRationalMixedPage() {
       createSet={createMiddleRationalMixedProblemSet}
       createReviews={createMiddleRationalMixedReviewProblems}
       formatChoice={formatMiddleRationalMixedChoice}
+      makeChoices={createMiddleRationalMixedChoices}
     />
   );
 }

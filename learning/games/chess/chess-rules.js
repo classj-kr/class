@@ -71,7 +71,6 @@
   function addMove(moves, state, from, to, extra = {}) {
     const target = state.board[to];
     if (target && pieceColor(target) === state.turn) return;
-    if (target && pieceType(target) === "K") return;
     moves.push({ from, to, piece: state.board[from], capture: target || null, ...extra });
   }
 
@@ -86,7 +85,7 @@
         const target = state.board[to];
         if (!target) moves.push({ from, to, piece: state.board[from], capture: null });
         else {
-          if (pieceColor(target) !== own && pieceType(target) !== "K") moves.push({ from, to, piece: state.board[from], capture: target });
+          if (pieceColor(target) !== own) moves.push({ from, to, piece: state.board[from], capture: target });
           break;
         }
         file += df;
@@ -172,7 +171,7 @@
         if (!inside(targetFile, nextRank)) continue;
         const to = indexOf(targetFile, nextRank);
         const target = state.board[to];
-        if (target && pieceColor(target) !== color && pieceType(target) !== "K") {
+        if (target && pieceColor(target) !== color) {
           if (nextRank === promotionRank) PROMOTIONS.forEach(promotion => addMove(moves, state, from, to, { promotion }));
           else addMove(moves, state, from, to);
         } else if (to === state.epSquare) {
@@ -205,24 +204,19 @@
           if (inside(targetFile, targetRank)) addMove(moves, state, from, indexOf(targetFile, targetRank));
         }
       }
-      const enemy = opposite(color);
       const homeRank = color === "w" ? 0 : 7;
       const kingStart = indexOf(4, homeRank);
-      if (from === kingStart && !isSquareAttacked(state, from, enemy)) {
+      if (from === kingStart) {
         const kingRight = color === "w" ? "K" : "k";
         const queenRight = color === "w" ? "Q" : "q";
         if (state.castling.includes(kingRight)
           && state.board[indexOf(7, homeRank)] === `${color}R`
-          && !state.board[indexOf(5, homeRank)] && !state.board[indexOf(6, homeRank)]
-          && !isSquareAttacked(state, indexOf(5, homeRank), enemy)
-          && !isSquareAttacked(state, indexOf(6, homeRank), enemy)) {
+          && !state.board[indexOf(5, homeRank)] && !state.board[indexOf(6, homeRank)]) {
           moves.push({ from, to: indexOf(6, homeRank), piece, capture: null, castle: "K" });
         }
         if (state.castling.includes(queenRight)
           && state.board[indexOf(0, homeRank)] === `${color}R`
-          && !state.board[indexOf(1, homeRank)] && !state.board[indexOf(2, homeRank)] && !state.board[indexOf(3, homeRank)]
-          && !isSquareAttacked(state, indexOf(3, homeRank), enemy)
-          && !isSquareAttacked(state, indexOf(2, homeRank), enemy)) {
+          && !state.board[indexOf(1, homeRank)] && !state.board[indexOf(2, homeRank)] && !state.board[indexOf(3, homeRank)]) {
           moves.push({ from, to: indexOf(2, homeRank), piece, capture: null, castle: "Q" });
         }
       }
@@ -280,10 +274,9 @@
   }
 
   function legalMoves(state, from) {
-    return pseudoMoves(state, from).filter(move => {
-      const next = makeMoveUnchecked(state, move);
-      return !isInCheck(next, pieceColor(move.piece));
-    });
+    // Learning rules: threats warn players but never restrict piece movement.
+    if (!state.board.includes("wK") || !state.board.includes("bK")) return [];
+    return pseudoMoves(state, from);
   }
 
   function allLegalMoves(state) {
@@ -311,20 +304,19 @@
   }
 
   function status(state) {
+    for (const color of ["w", "b"]) {
+      if (!state.board.includes(`${color}K`)) return { ended: true, reason: "king-captured", winner: opposite(color), checked: false };
+    }
     const moves = allLegalMoves(state);
     const checked = isInCheck(state, state.turn);
-    if (!moves.length) return checked
-      ? { ended: true, reason: "checkmate", winner: opposite(state.turn), checked: true }
-      : { ended: true, reason: "stalemate", winner: null, checked: false };
+    if (!moves.length) return { ended: true, reason: "no-legal-move", winner: null, checked };
     if (state.halfmove >= 100) return { ended: true, reason: "fifty-move", winner: null, checked };
     if (repetitionCount(state) >= 3) return { ended: true, reason: "threefold", winner: null, checked };
-    if (insufficientMaterial(state)) return { ended: true, reason: "insufficient", winner: null, checked };
     return { ended: false, reason: null, winner: null, checked };
   }
 
   function sanForMove(state, move, nextState) {
-    if (move.castle === "K") return `O-O${status(nextState).ended && status(nextState).reason === "checkmate" ? "#" : isInCheck(nextState) ? "+" : ""}`;
-    if (move.castle === "Q") return `O-O-O${status(nextState).ended && status(nextState).reason === "checkmate" ? "#" : isInCheck(nextState) ? "+" : ""}`;
+    if (move.castle) return `${move.castle === "K" ? "O-O" : "O-O-O"}${isInCheck(nextState) ? "+" : ""}`;
     const type = pieceType(move.piece);
     let notation = type === "P" ? "" : type;
     if (type !== "P") {
@@ -342,8 +334,7 @@
     notation += squareName(move.to);
     if (move.promotion) notation += `=${move.promotion}`;
     const nextStatus = status(nextState);
-    if (nextStatus.reason === "checkmate") notation += "#";
-    else if (nextStatus.checked) notation += "+";
+    if (nextStatus.checked) notation += "+";
     return notation;
   }
 

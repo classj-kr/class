@@ -1,0 +1,10 @@
+    if (mode === 5) {
+      return make(id, kind, `${a}\\sqrt{${n}}\\times${b}\\sqrt{${2*n}}`, `${a*b*n}\\sqrt{2}`,
+        "계수끼리 곱하고 근호 안의 제곱인수를 밖으로 꺼낸다.",
+        [`${a*b}\\sqrt{2}`, `${a*b*n+1}\\sqrt{2}`, `${a*b*n}\\sqrt{3}`], "radical-multiply");
+    }
+    if (mode === 6) {
+      return make(id, kind, `\\dfrac{${a*(b+1)}\\sqrt{${3*n}}}{${b+1}\\sqrt{3}}`, `${a}\\sqrt{${n}}`,
+        "계수끼리 나누고 근호 안의 수끼리 나눈다.",
+        [`${a+1}\\sqrt{${n}}`, `${a}\\sqrt{${3*n}}`, `${a-1}\\sqrt{${n}}`], "radical-divide");
+    }

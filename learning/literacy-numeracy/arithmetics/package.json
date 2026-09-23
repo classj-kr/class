@@ -6,16 +6,20 @@
     "node": ">=22.13.0"
   },
   "scripts": {
-    "pretest": "npm run audit:middle-repetition && npm run audit:high-repetition && npm run audit:stem-repetition && node --experimental-strip-types --test tests/high-school-catalog-audit.test.ts tests/middle-school-catalog-audit.test.ts tests/stem-foundation-catalog-audit.test.ts tests/stem-foundation-workouts.test.ts tests/middle-curriculum-workouts.test.ts tests/geometry-workouts.test.ts tests/geometry-generated-depth.test.ts tests/probability-statistics-depth.test.ts tests/high-school-foundation-workouts.test.ts tests/generated-choice-workouts.test.ts tests/exponential-log-function-workouts.test.ts tests/financial-sequence-workouts.test.ts tests/mathematical-induction-workouts.test.ts tests/sigma-recurrence-workouts.test.ts tests/limit-continuity-workouts.test.ts tests/derivative-workouts.test.ts tests/derivative-application-workouts.test.ts tests/mean-value-theorem-workouts.test.ts tests/polynomial-integral-workouts.test.ts tests/advanced-differentiation-workouts.test.ts tests/second-derivative-application-workouts.test.ts tests/stem-generated-workouts.test.ts tests/worksheet-choice-utils.test.ts tests/sequence-workouts.test.ts tests/middle-factorization-workouts.test.ts tests/middle-quadratic-equation-workouts.test.ts tests/middle-quadratic-function-workouts.test.ts tests/middle-trigonometry-workouts.test.ts tests/middle-circle-properties-workouts.test.ts tests/middle-statistics-workouts.test.ts tests/middle-core-workouts.test.ts tests/high-cubic-factorization-workouts.test.ts tests/high-advanced-factorization-workouts.test.ts",
+    "pretest": "npm run audit:middle-repetition && npm run audit:high-repetition && npm run audit:stem-repetition",
     "audit:middle-repetition": "node --experimental-strip-types scripts/audit-middle-repetition.ts",
     "audit:high-repetition": "node --experimental-strip-types scripts/audit-high-school-repetition.ts",
     "audit:stem-repetition": "node --experimental-strip-types scripts/audit-stem-foundation-repetition.ts",
     "dev": "vinext dev",
     "build": "vinext build",
     "start": "vinext start",
-    "test": "npm run build && node --test tests/rendered-html.test.mjs && node --experimental-strip-types --test tests/high-school-layout.test.ts tests/definite-integral-workouts.test.ts tests/integration-technique-workouts.test.ts tests/definite-integral-application-workouts.test.ts tests/fraction-engine.test.ts tests/fraction-answer-navigation.test.ts tests/arithmetic-race-ranking.test.ts tests/polynomial-worksheet.test.ts tests/rational-expression-worksheet.test.ts tests/exponent-radical-worksheet.test.ts tests/complex-number-workouts.test.ts tests/equation-workouts.test.ts tests/quadratic-foundation-workouts.test.ts tests/inequality-workouts.test.ts tests/permutations-combinations-workouts.test.ts tests/coordinate-line-workouts.test.ts tests/circle-equation-workouts.test.ts tests/geometric-transform-workouts.test.ts tests/function-transformation-workouts.test.ts tests/derivative-workouts.test.ts tests/trigonometric-derivative-workouts.test.ts tests/trigonometric-derivative-two-workouts.test.ts tests/mixed-calculation.test.ts tests/grade-six-mixed-calculation.test.ts tests/natural-number-decomposition.test.ts tests/prime-number-hundred-chart.test.ts tests/divisors-multiples.test.ts tests/multiplication-five.test.ts tests/angle-estimation.test.ts tests/grade-five-fraction-one.test.ts tests/grade-five-fraction-two.test.ts tests/grade-five-fraction-three.test.ts tests/grade-five-decimals.test.ts tests/grade-six-fraction.test.ts tests/grade-six-decimal-one.test.ts tests/grade-six-decimal-two.test.ts tests/grade-six-decimal-three.test.ts tests/grade-six-circle.test.ts",
+    "test": "npm run typecheck && npm run test:unit && npm run build && node --test tests/rendered-html.test.mjs",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
-    "db:generate": "drizzle-kit generate"
+    "db:generate": "drizzle-kit generate",
+    "test:unit": "node --experimental-strip-types --test tests/*.test.ts",
+    "typecheck": "tsc --noEmit",
+    "types:generate": "wrangler types --config wrangler.types.jsonc",
+    "audit:browser": "node scripts/audit-browser.cjs && node scripts/audit-measurement-grading.cjs"
   },
   "dependencies": {
     "drizzle-orm": "0.45.2",

@@ -137,11 +137,10 @@ function settleActiveClock(game, now) {
 }
 
 function reasonMessage(game, result) {
-  if (result.reason === "checkmate") return `체크메이트! ${playerNameForColor(game, result.winner)}님이 승리했습니다.`;
-  if (result.reason === "stalemate") return "스테일메이트로 무승부입니다.";
+  if (result.reason === "king-captured") return `킹을 잡았습니다! ${playerNameForColor(game, result.winner)}님이 승리했습니다.`;
+  if (result.reason === "no-legal-move") return "움직일 수 있는 말이 없어 무승부입니다.";
   if (result.reason === "threefold") return "같은 위치가 세 번 반복되어 무승부입니다.";
   if (result.reason === "fifty-move") return "50수 규칙에 따라 무승부입니다.";
-  if (result.reason === "insufficient") return "체크메이트가 불가능한 기물만 남아 무승부입니다.";
   return "대국이 종료되었습니다.";
 }
 

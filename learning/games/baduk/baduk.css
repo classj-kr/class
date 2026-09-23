@@ -33,3 +33,6 @@ body{--game-inset:12px;padding:max(var(--game-inset),env(safe-area-inset-top)) m
 }
 
 #gameScreen header .game-status{margin:10px 0 8px}
+
+.point.dead-stone .stone{opacity:.35;outline:3px dashed #ef4444;outline-offset:1px}
+#scoringActions:not(.hidden){display:flex;flex-wrap:wrap;gap:8px}

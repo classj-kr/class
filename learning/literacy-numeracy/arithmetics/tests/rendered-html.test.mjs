@@ -1825,7 +1825,8 @@ test("renders the fifth grade prime-number hundred chart from the workbook", asy
   assert.equal((html.match(/class="prime-number-question"/g) ?? []).length, 175);
   assert.equal((html.match(/aria-pressed="false"/g) ?? []).length, 100);
   assert.match(source, /gradePrimeNumberSelection\(selectedNumbers\)/);
-  assert.match(source, /<small>\/100 정답<\/small>/);
+  assert.match(html.replace(/<!-- -->/g, ""), /0<small>\/25점<\/small>/);
+  assert.match(html, /소수가 아닌 수를 고르면 1점 감점/);
   assert.match(css, /\.prime-number-grid\s*\{[\s\S]*?grid-template-columns:\s*repeat\(10,[\s\S]*?grid-template-rows:\s*repeat\(10,/);
   assert.match(css, /\.prime-number-question\.is-prime[\s\S]*?background:\s*#f2f8fd/);
 });
@@ -2105,7 +2106,7 @@ test("renders the sixth grade composite-circle worksheet with perimeter and area
   const engine = await readFile(new URL("../lib/grade-six-circle.ts", import.meta.url), "utf8");
   const css = await readFile(new URL("../app/globals.css", import.meta.url), "utf8");
   assert.match(html, /원의 둘레와 넓이/);
-  assert.match(html, /색칠한 도형의 둘레와 넓이를 구하세요/);
+  assert.match(html, /색칠한 부분의 둘레와 넓이를 구하고, 소수 셋째 자리에서 반올림하세요/);
   assert.match(html, /aria-label="A4 6학년 원의 둘레와 넓이 문제지"/);
   assert.match(html, /aria-label="A4 6학년 원의 둘레와 넓이 전체 답지"/);
   assert.equal((html.match(/data-testid="grade-six-circle-question"/g) ?? []).length, 6);

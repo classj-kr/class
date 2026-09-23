@@ -356,7 +356,7 @@ function make(
   answerLatex: string,
   solutionHint: string,
   distractors: string[],
-  structure = kind,
+  structure: string = kind,
 ): MiddleCurriculumProblem {
   return {
     id,
@@ -1255,7 +1255,7 @@ function buildFrequencyGraphs(method: string, next: () => number, id: string) {
     type: method === "frequency-polygon-maximum" ? "frequency-polygon" : "histogram",
     values,
     labels,
-  } as MiddleCurriculumVisual;
+  } satisfies MiddleCurriculumVisual;
   if (method === "frequency-table") {
     return make(id, method,
       `\\begin{array}{c|cccc}\\text{계급}&0\\sim10&10\\sim20&20\\sim30&30\\sim40\\\\\\hline\\text{도수}&${values[0]}&${values[1]}&${values[2]}&${values[3]}\\end{array}`,

@@ -75,7 +75,7 @@ export default function ArithmeticRaceController() {
   if (!credentials) return null;
 
   async function submit() {
-    if (!session || session.participant.submittedAt || submitting) return;
+    if (!credentials || !session || session.participant.submittedAt || submitting) return;
     setSubmitting(true);
     setError("");
     setAttemptMessage("");

@@ -6,7 +6,7 @@ const TURN_TIME_MS=30000;
 const MODES=Object.freeze({
   capture:{name:"돌 따먹기",size:7,description:"상대 돌 3개를 먼저 잡으면 승리"},
   territory:{name:"땅 따먹기",size:7,maxMoves:40,description:"40수 뒤 돌과 둘러싼 땅을 합산"},
-  standard:{name:"정식 바둑",size:9,komi:7.5,description:"연속 패스 뒤 백 7.5집을 더해 자동 계가"}
+  standard:{name:"정식 바둑",size:9,komi:7.5,description:"연속 패스 뒤 사석 확인·양쪽 동의로 계가"}
 });
 const MESSAGE=Object.freeze({ACTION:"BADUK_ACTION",STATE:"BADUK_STATE",RETURN_LOBBY:"BADUK_RETURN_LOBBY"});
 const savedName=String(localStorage.getItem("classPlayerName")||"").trim();
@@ -82,6 +82,29 @@ function areaScore(board,size,komi=0){
   return{black,white:white+komi};
 }
 
+function scoringBoard(state){const board=state.board.slice();for(const index of state.deadStones||[])board[index]=0;return board}
+function beginScoring(state){return {...state,scoring:true,deadStones:[],scoreAgreements:[],scoringRevision:(state.scoringRevision??-1)+1,turnDeadline:null,lastMove:null}}
+function scoringAction(state,action){
+  if(!state.scoring||!state.playerOrder.includes(action.playerId))return state;
+  if(action.kind==='resume')return {...state,scoring:false,deadStones:[],scoreAgreements:[],passCount:0};
+  if(action.revision!==state.scoringRevision)return state;
+  if(action.kind==='dead'){
+    const {row,col}=action;
+    if(!Number.isInteger(row)||!Number.isInteger(col)||!inside(row,col,state.size)||!state.board[boardIndex(row,col,state.size)])return state;
+    const group=collectGroup(state.board,state.size,row,col).stones.map(([r,c])=>boardIndex(r,c,state.size));
+    const dead=new Set(state.deadStones),remove=dead.has(group[0]);
+    for(const index of group){if(remove)dead.delete(index);else dead.add(index)}
+    return {...state,deadStones:[...dead],scoreAgreements:[],scoringRevision:state.scoringRevision+1};
+  }
+  if(action.kind==='agree'){
+    const scoreAgreements=[...new Set([...state.scoreAgreements,action.playerId])];
+    const next={...state,scoreAgreements};
+    if(scoreAgreements.length<state.playerOrder.length)return next;
+    return {...finishByScore({...next,board:scoringBoard(next)}),scoring:false,turnDeadline:null};
+  }
+  return state;
+}
+
 function playerName(id){return lobby.snapshot().players[id]?.name||"참가자"}
 function currentMode(){return MODES[gameState?.mode||selectedMode]}
 
@@ -104,10 +127,17 @@ function finishByScore(state){
   return{...state,scores,winner:scores.black===scores.white?0:scores.black>scores.white?1:2,draw:scores.black===scores.white};
 }
 
-function resetTurnClock(state){const now=Date.now();state.hostNow=now;state.turnDeadline=now+TURN_TIME_MS;state.turnToken+=1}
+function resetTurnClock(state){if(state.scoring){state.turnDeadline=null;return}const now=Date.now();state.hostNow=now;state.turnDeadline=now+TURN_TIME_MS;state.turnToken+=1}
 
 function applyAction(action){
   if(!gameState||gameState.winner||gameState.draw)return;
+  if(!gameState.playerOrder.includes(action.playerId))return;
+  if(gameState.scoring){
+    const next=scoringAction(gameState,action);
+    if(next===gameState)return;
+    if(action.kind==='resume')resetTurnClock(next);
+    installState(next,true);return;
+  }
   if(action.playerId!==gameState.playerOrder[gameState.turn])return;
   if(action.kind==="move"){
     const result=tryMove(gameState.board,gameState.size,action.row,action.col,gameState.turn+1,gameState.history);
@@ -119,13 +149,13 @@ function applyAction(action){
     resetTurnClock(next);installState(next,true);
   }else if(action.kind==="pass"&&gameState.mode==="standard"){
     let next={...gameState,turn:1-gameState.turn,passCount:gameState.passCount+1,lastMove:null};
-    if(next.passCount>=2)next=finishByScore(next);
+    if(next.passCount>=2)next=beginScoring(next);
     resetTurnClock(next);installState(next,true);
   }else if(action.kind==="resign")installState({...gameState,winner:gameState.turn===0?2:1},true);
 }
 
 function requestAction(kind,row=null,col=null){
-  const action={kind,row,col,playerId:lobby.snapshot().myId};
+  const action={kind,row,col,playerId:lobby.snapshot().myId,revision:gameState?.scoringRevision};
   if(lobby.snapshot().role==="host")applyAction(action);else lobby.send({type:MESSAGE.ACTION,action});
 }
 
@@ -139,10 +169,10 @@ function installState(next,broadcast){
 
 function scheduleHostTimeout(){
   clearTimeout(hostTimer);
-  if(!gameState||gameState.winner||gameState.draw||lobby.snapshot().role!=="host")return;
+  if(!gameState||gameState.scoring||gameState.winner||gameState.draw||lobby.snapshot().role!=="host")return;
   const token=gameState.turnToken;
   hostTimer=setTimeout(()=>{
-    if(!gameState||gameState.turnToken!==token||gameState.winner||gameState.draw)return;
+    if(!gameState||gameState.scoring||gameState.turnToken!==token||gameState.winner||gameState.draw)return;
     const next={...gameState,turn:1-gameState.turn,passCount:0,lastMove:null};
     resetTurnClock(next);installState(next,true);
   },Math.max(0,gameState.turnDeadline-Date.now())+20);
@@ -156,7 +186,7 @@ function buildBoard(){
     const point=document.createElement("button");
     point.type="button";point.dataset.row=row;point.dataset.col=col;
     point.className="point"+(col===0?" edge-left":"")+(col===gameState.size-1?" edge-right":"")+(row===0?" edge-top":"")+(row===gameState.size-1?" edge-bottom":"");
-    point.addEventListener("click",()=>requestAction("move",row,col));
+    point.addEventListener("click",()=>requestAction(gameState.scoring?"dead":"move",row,col));
     fragment.appendChild(point);
   }
   board.replaceChildren(fragment);
@@ -173,7 +203,8 @@ function renderGame(){
   $("blackCard").classList.toggle("active",!ended&&gameState.turn===0);$("whiteCard").classList.toggle("active",!ended&&gameState.turn===1);
   document.querySelectorAll(".point").forEach(point=>{
     const row=Number(point.dataset.row),col=Number(point.dataset.col),value=gameState.board[boardIndex(row,col,gameState.size)];
-    point.disabled=ended||activeId!==snapshot.myId||Boolean(value);
+    point.disabled=ended||(gameState.scoring?(!gameState.playerOrder.includes(snapshot.myId)||!value):(activeId!==snapshot.myId||Boolean(value)));
+    point.classList.toggle('dead-stone',!!gameState.scoring&&(gameState.deadStones||[]).includes(boardIndex(row,col,gameState.size)));
     point.classList.toggle("last",Boolean(gameState.lastMove&&gameState.lastMove.row===row&&gameState.lastMove.col===col));
     const previousValue=Number(point.dataset.stoneValue||0);
     point.dataset.stoneValue=String(value);
@@ -182,13 +213,22 @@ function renderGame(){
     if(value)window.ClassGameMotion?.appear(point.firstElementChild);
   });
   $("turnBanner").textContent=gameState.draw?"무승부":gameState.winner?`${playerName(gameState.playerOrder[gameState.winner-1])} 승리`:activeId===snapshot.myId?"내 차례":"상대 차례";
-  $("gameStatus").textContent=gameState.scores?`흑 ${gameState.scores.black} · 백 ${gameState.scores.white}`:gameState.mode==="territory"?`${gameState.moveCount}/40수`:gameState.mode==="capture"?"돌 3개를 먼저 잡으면 승리":"두 사람이 연속으로 패스하면 자동 계가";
-  $("passBtn").classList.toggle("hidden",gameState.mode!=="standard"||ended);$("resignBtn").classList.toggle("hidden",ended);$("resultActions").classList.toggle("hidden",!ended||snapshot.role!=="host");
+  $("gameStatus").textContent=gameState.scores?`흑 ${gameState.scores.black} · 백 ${gameState.scores.white}`:gameState.mode==="territory"?`${gameState.moveCount}/40수`:gameState.mode==="capture"?"돌 3개를 먼저 잡으면 승리":"두 사람이 연속으로 패스하면 사석 확인 후 계가";
+  $("scoringActions").classList.toggle("hidden",!gameState.scoring||ended);
+  if(gameState.scoring){
+    const preview=areaScore(scoringBoard(gameState),gameState.size,MODES[gameState.mode].komi||0);
+    $("turnBanner").textContent="사석 확인";
+    $("gameStatus").textContent='죽은 돌을 누르면 표시·취소됩니다. 예상 점수: 흑 '+preview.black+' · 백 '+preview.white+' / 동의 '+gameState.scoreAgreements.length+'/2';
+    const agreed=gameState.scoreAgreements.includes(snapshot.myId);
+    $("agreeScoreBtn").disabled=agreed;
+    $("agreeScoreBtn").textContent=agreed?'상대 동의 기다리는 중':'이 점수에 동의';
+  }
+  $("passBtn").classList.toggle("hidden",gameState.mode!=="standard"||ended||gameState.scoring);$("resignBtn").classList.toggle("hidden",ended||gameState.scoring);$("resultActions").classList.toggle("hidden",!ended||snapshot.role!=="host");
 }
 
 function updateClock(){
   const clock=$("turnClock");
-  if(!gameState||gameState.winner||gameState.draw){clock.classList.add("hidden");return}
+  if(!gameState||gameState.scoring||gameState.winner||gameState.draw){clock.classList.add("hidden");return}
   const seconds=Math.max(0,Math.ceil((localDeadline-Date.now())/1000));
   clock.classList.remove("hidden");clock.textContent=seconds;clock.classList.toggle("warning",seconds<=10&&seconds>5);clock.classList.toggle("danger",seconds<=5);
 }
@@ -221,7 +261,7 @@ function ruleDiagram(rows,caption){
 const RULE_GOALS=Object.freeze({
   capture:`상대 돌을 먼저 3개 따내면 이깁니다.`,
   territory:`40수를 다 두거나 판이 꽉 차면 점수를 셉니다. 점수는 내 돌 수 + 내 집 수이고, 많은 쪽이 이깁니다.`,
-  standard:`두 사람이 연달아 패스하면 점수를 셉니다(계가). 점수는 내 돌 수 + 내 집 수이고, 백은 나중에 두는 대신 덤 7.5점을 더 받습니다. 많은 쪽이 이깁니다.`
+  standard:`두 사람이 연달아 패스하면 사석 확인을 시작합니다. 죽은 돌을 눌러 표시하고 두 사람 모두 점수에 동의하면 계가합니다. 의견이 다르면 대국을 계속할 수 있습니다. 점수는 내 돌 수 + 내 집 수이고, 백은 나중에 두는 대신 덤 7.5점을 더 받습니다. 많은 쪽이 이깁니다.`
 });
 
 function ruleCard(figs,name,text){return`<div class="rule-card"><div class="rule-figs">${figs}</div><p><b>${name}</b> ${text}</p></div>`}
@@ -254,8 +294,8 @@ function showToast(message){clearTimeout(toastTimer);$("toast").textContent=mess
 function showGame(){$("lobbyScreen").classList.add("hidden");$("gameScreen").classList.remove("hidden");$("gameRoomCode").textContent=lobby.snapshot().roomCode||"----"}
 function showLobby(){clearTimeout(hostTimer);gameState=null;$("gameScreen").classList.add("hidden");$("lobbyScreen").classList.remove("hidden")}
 
-function handleGameMessage(_sender,payload){
-  if(payload?.type===MESSAGE.ACTION&&lobby.snapshot().role==="host")applyAction(payload.action);
+function handleGameMessage(sender,payload){
+  if(payload?.type===MESSAGE.ACTION&&lobby.snapshot().role==="host")applyAction({...payload.action,playerId:sender});
   else if(payload?.type===MESSAGE.STATE)installState(payload.state,false);
   else if(payload?.type===MESSAGE.RETURN_LOBBY){showLobby();lobby.returnToLobby()}
 }
@@ -278,6 +318,8 @@ function init(){
   }).mount();
   $("savedName").textContent=savedName;
   document.querySelectorAll(".mode-button").forEach(button=>button.addEventListener("click",()=>setMode(button.dataset.mode)));
+  $("agreeScoreBtn").addEventListener("click",()=>requestAction("agree"));
+  $("resumeGameBtn").addEventListener("click",()=>requestAction("resume"));
   $("passBtn").addEventListener("click",()=>requestAction("pass"));
   $("resignBtn").addEventListener("click",()=>{if(confirm("정말 기권하시겠습니까?"))requestAction("resign")});
   $("rematchBtn").addEventListener("click",()=>installState(createInitialState(lobby.snapshot(),gameState),true));
@@ -288,4 +330,4 @@ function init(){
 
 window.addEventListener("DOMContentLoaded",init);
 
-if(typeof module!=="undefined")module.exports={tryMove,areaScore,collectGroup,MODES,TURN_TIME_MS};
+if(typeof module!=="undefined")module.exports={tryMove,areaScore,collectGroup,MODES,TURN_TIME_MS,beginScoring,scoringAction,scoringBoard};

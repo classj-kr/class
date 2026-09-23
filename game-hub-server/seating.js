@@ -57,6 +57,40 @@ function normalizeLayout(raw, rosterNumbers = null) {
   return { unavailableSeats: [...unavailable].sort((a, b) => a - b), genderLocks, studentLocks };
 }
 
+// 교사의 학급별 배치. 학생 번호만 저장하고 이름/아바타는 현재 명단을 따른다.
+function normalizeSeatSettings(raw, rosterNumbers = null) {
+  const source = Array.isArray(raw) ? { unavailableSeats: raw } : (raw && typeof raw === "object" ? raw : {});
+  const layout = normalizeLayout(source, rosterNumbers);
+  const unavailable = new Set(layout.unavailableSeats);
+  const numbers = (values) => [...new Set((Array.isArray(values) ? values : [])
+    .map(cleanStudentNumber).filter((number) => number && (!rosterNumbers || rosterNumbers.has(number))))];
+  const vacant = new Set((Array.isArray(source.manualVacantSeats) ? source.manualVacantSeats : [])
+    .map(seatIndexOf).filter((seat) => seat !== null && !unavailable.has(seat)));
+  const unassigned = new Set(numbers(source.unassignedStudents));
+  for (const [seat, number] of Object.entries(layout.studentLocks)) {
+    if (vacant.has(Number(seat)) || unassigned.has(number)) delete layout.studentLocks[seat];
+  }
+  const assigned = new Set(Object.values(layout.studentLocks));
+  const manualAssignments = {};
+  const rawAssignments = source.manualAssignments && typeof source.manualAssignments === "object" ? source.manualAssignments : {};
+  for (const [key, value] of Object.entries(rawAssignments)) {
+    const seat = seatIndexOf(key);
+    const number = cleanStudentNumber(value);
+    if (seat === null || unavailable.has(seat) || vacant.has(seat) || layout.studentLocks[seat]) continue;
+    if (!number || assigned.has(number) || unassigned.has(number) || (rosterNumbers && !rosterNumbers.has(number))) continue;
+    manualAssignments[seat] = number;
+    assigned.add(number);
+  }
+  return {
+    ...layout,
+    manualAssignments,
+    manualVacantSeats: [...vacant].sort((a, b) => a - b),
+    unassignedStudents: [...unassigned],
+    studentOrder: numbers(source.studentOrder),
+    teacherView: source.teacherView === true
+  };
+}
+
 // 학생이 고른 자리를 받아 줄 수 없는 이유. 받아 줄 수 있으면 null.
 // 순서가 뜻을 가진다: 이미 고른 학생과 자리가 정해진 학생은 어떤 자리를
 // 눌러도 안 되고, 그다음에야 자리 자체를 본다.
@@ -94,6 +128,13 @@ function createSeating({
 
   async function initialize() {
     for (const statement of [
+      `CREATE TABLE IF NOT EXISTS seating_settings (
+        creator_user_id BIGINT NOT NULL REFERENCES classroom_users(id) ON DELETE CASCADE,
+        class_id BIGINT NOT NULL REFERENCES classroom_classes(id) ON DELETE CASCADE,
+        settings JSONB NOT NULL DEFAULT '{}'::jsonb,
+        updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+        PRIMARY KEY (creator_user_id, class_id)
+      )`,
       `CREATE TABLE IF NOT EXISTS seating_rooms (
         id BIGSERIAL PRIMARY KEY,
         room_code CHAR(4) NOT NULL UNIQUE,
@@ -335,6 +376,65 @@ function createSeating({
     };
   }
 
+  async function settingsScope(req) {
+    requireDatabase();
+    const user = await requireTeacher(req);
+    const registration = await teacherRegistration(user);
+    const classId = parseId(req.params.classId);
+    if (!classId) throw new HttpError(400, "CLASS_REQUIRED", "자리배치를 저장할 학급을 선택해 주세요.");
+    const result = await pool.query(
+      `SELECT id, school_id, academic_year, grade, class_number FROM classroom_classes WHERE id = $1 AND school_id = $2`,
+      [classId, registration?.school_id]
+    );
+    const classroom = result.rows[0];
+    if (!classroom) throw new HttpError(404, "CLASS_NOT_FOUND", "학급 정보를 찾을 수 없습니다.");
+    const roster = await classRoster(classroom);
+    return { user, classId, rosterNumbers: new Set(roster.map((student) => student.number)) };
+  }
+
+  router.get("/classes/:classId/settings", asyncRoute(async (req, res) => {
+    const { user, classId, rosterNumbers } = await settingsScope(req);
+    const result = await pool.query(
+      "SELECT settings, updated_at FROM seating_settings WHERE creator_user_id = $1 AND class_id = $2",
+      [user.id, classId]
+    );
+    const saved = result.rows[0];
+    res.set("Cache-Control", "no-store").json({
+      settings: saved ? normalizeSeatSettings(saved.settings, rosterNumbers) : null,
+      updatedAt: saved?.updated_at || null
+    });
+  }));
+
+  router.put("/classes/:classId/settings", asyncRoute(async (req, res) => {
+    const { user, classId, rosterNumbers } = await settingsScope(req);
+    const raw = req.body?.settings;
+    if (!raw || typeof raw !== "object" || Array.isArray(raw)) {
+      throw new HttpError(400, "INVALID_SEAT_SETTINGS", "저장할 자리배치가 올바르지 않습니다.");
+    }
+    const settings = normalizeSeatSettings(raw, rosterNumbers);
+    // 첫 이관 요청끼리 겹쳐도 이미 서버에 저장된 배치를 덮어쓰지 않는다.
+    const conflict = req.body?.ifMissing === true
+      ? "DO NOTHING"
+      : "DO UPDATE SET settings = EXCLUDED.settings, updated_at = NOW()";
+    let result = await pool.query(
+      `INSERT INTO seating_settings (creator_user_id, class_id, settings)
+       VALUES ($1, $2, $3::jsonb)
+       ON CONFLICT (creator_user_id, class_id) ${conflict}
+       RETURNING settings, updated_at`,
+      [user.id, classId, JSON.stringify(settings)]
+    );
+    if (!result.rowCount) {
+      result = await pool.query(
+        "SELECT settings, updated_at FROM seating_settings WHERE creator_user_id = $1 AND class_id = $2",
+        [user.id, classId]
+      );
+    }
+    res.set("Cache-Control", "no-store").json({
+      settings: normalizeSeatSettings(result.rows[0].settings, rosterNumbers),
+      updatedAt: result.rows[0].updated_at
+    });
+  }));
+
   router.get("/rooms/active", asyncRoute(async (req, res) => {
     requireDatabase();
     const user = await requireTeacher(req);
@@ -484,6 +584,7 @@ function createSeating({
 module.exports = {
   createSeating,
   normalizeLayout,
+  normalizeSeatSettings,
   pickRejection,
   seatIndexOf,
   TOTAL_DESKS,

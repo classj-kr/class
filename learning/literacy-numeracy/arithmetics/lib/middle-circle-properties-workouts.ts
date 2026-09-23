@@ -145,7 +145,7 @@ function make(
   answerLatex: string,
   solutionHint: string,
   distractors: string[],
-  structure = kind,
+  structure: string = kind,
 ): MiddleCirclePropertiesProblem {
   return {
     id,

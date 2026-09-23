@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { createMultiplicationFiveProblemSet } from "../../../lib/multiplication-five";
+import { createMultiplicationFiveProblemSet, type MultiplicationFiveProblem } from "../../../lib/multiplication-five";
 
 type PrintMode = "worksheet" | "answers" | "both";
 
@@ -60,7 +60,7 @@ export default function MultiplicationFivePage() {
     window.requestAnimationFrame(() => window.print());
   }
 
-  function renderProblem(problem: Problem, answerSheet: boolean) {
+  function renderProblem(problem: MultiplicationFiveProblem, answerSheet: boolean) {
     const graded = problem.id in results;
     const isCorrect = results[problem.id] === true;
     return (

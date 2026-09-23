@@ -1,0 +1,686 @@
+{
+  "version": 10,
+  "rooms": {
+    "1916": {
+      "activeMission": {
+        "hunt": null,
+        "id": "arrival-race-mudf6505-xy7wqp",
+        "roomCode": "1916",
+        "kind": "arrivalRace",
+        "mode": "any",
+        "title": "리스본 · 바투르 칼데라 · 밀퍼드사운드 도착 미션",
+        "studyTargets": [
+          {
+            "key": "city:lisbon",
+            "type": "city",
+            "id": "lisbon",
+            "name": "리스본",
+            "point": {
+              "x": 18984,
+              "y": 5704,
+              "terrain": "plain"
+            },
+            "reading": {
+              "id": "lisbon",
+              "name": "리스본",
+              "kind": "도시 설명",
+              "todayCountry": "포르투갈",
+              "text": "대항해시대의 관문\n인도로 가는 바닷길이 열린 뒤 후추와 향신료를 실은 배가 들어오는, 유럽에서 손꼽히는 항구였습니다. 마누엘 1세가 다스렸고, 강 어귀에는 막 완성된 벨렝탑이 배들을 맞았습니다.\n\n대지진 뒤 다시 세운 도시\n1755년 큰 지진과 해일, 불이 한꺼번에 덮쳐 도시 대부분이 무너졌습니다. 그 뒤 거리를 바둑판처럼 반듯하게 다시 지었습니다. 지금은 포르투갈의 수도입니다.",
+              "image": "/learn/world-voyage/assets/city-today/lisbon.webp?v=1789791026004",
+              "imageCredit": "오늘날 모습 · 사진 Vitor Oliveira · CC BY-SA 2.0 · 위키미디어 공용",
+              "imageChanges": "",
+              "imageSource": "https://commons.wikimedia.org/wiki/File:Lisboa_-_Portugal_(52597836992).jpg"
+            },
+            "text": "인도로 가는 바닷길이 열린 뒤 후추와 향신료를 실은 배가 들어오는, 유럽에서 손꼽히는 항구였습니다. 마누엘 1세가 다스렸고, 강 어귀에는 막 완성된 벨렝탑이 배들을 맞았습니다.\n1755년 큰 지진과 해일, 불이 한꺼번에 덮쳐 도시 대부분이 무너졌습니다. 그 뒤 거리를 바둑판처럼 반듯하게 다시 지었습니다. 지금은 포르투갈의 수도입니다.",
+            "questions": [
+              {
+                "prompt": "읽은 설명의 빈칸에 들어갈 말은?",
+                "passage": "인도로 가는 바닷길이 열린 뒤 후추와 (          )를 실은 배가 들어오는, 유럽에서 손꼽히는 항구였습니다.",
+                "choices": [
+                  "포도주",
+                  "도자기",
+                  "비단",
+                  "향신료"
+                ],
+                "answer": "향신료",
+                "explanation": "인도로 가는 바닷길이 열린 뒤 후추와 향신료를 실은 배가 들어오는, 유럽에서 손꼽히는 항구였습니다.",
+                "id": "q0"
+              },
+              {
+                "prompt": "읽은 설명의 빈칸에 들어갈 말은?",
+                "passage": "지금은 (          )의 수도입니다.",
+                "choices": [
+                  "포르투갈",
+                  "스페인",
+                  "중국",
+                  "일본"
+                ],
+                "answer": "포르투갈",
+                "explanation": "지금은 포르투갈의 수도입니다.",
+                "id": "q1"
+              },
+              {
+                "prompt": "읽은 설명에 맞게 문장을 완성한 것은?",
+                "passage": "마누엘 1세가 다스렸고, 강 어귀에는 (          )",
+                "choices": [
+                  "앞바다로 후추를 실은 배가 드나들었습니다.",
+                  "유적 치첸이트사가 있습니다.",
+                  "부려 설탕 농장을 일구었습니다.",
+                  "막 완성된 벨렝탑이 배들을 맞았습니다."
+                ],
+                "answer": "막 완성된 벨렝탑이 배들을 맞았습니다.",
+                "explanation": "마누엘 1세가 다스렸고, 강 어귀에는 막 완성된 벨렝탑이 배들을 맞았습니다.",
+                "id": "q2"
+              }
+            ]
+          },
+          {
+            "key": "discovery:batur-caldera",
+            "type": "discovery",
+            "id": "batur-caldera",
+            "name": "바투르 칼데라",
+            "point": {
+              "x": 32820,
+              "y": 10915.555555555555
+            },
+            "reading": {
+              "id": "batur-caldera",
+              "name": "바투르 칼데라",
+              "kind": "자연",
+              "todayCountry": "인도네시아",
+              "text": "화산이 크게 분화한 뒤 땅이 내려앉아 생긴 분지를 칼데라라고 합니다. 바투르는 큰 칼데라 안에 작은 칼데라가 겹쳐 있고, 그 안에 화산과 초승달 모양의 호수가 자리합니다. 둘러선 산줄기를 보면 분지의 테두리를 알아볼 수 있습니다.\n\n1520년에는 화산 활동으로 만들어진 커다란 함몰 지형이 발리섬에 자리하고 있었습니다.",
+              "image": "/learn/world-voyage/assets/landmarks/batur-caldera.webp?v=1789964215781",
+              "imageCredit": "오늘날 모습 · 사진 TropicaLiving · CC BY-SA 3.0 · 위키미디어 공용",
+              "imageChanges": "크기 축소 및 WebP 변환",
+              "imageSource": "https://commons.wikimedia.org/wiki/File:Mount_batur_and_lake.jpg",
+              "imageLicenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+            },
+            "text": "화산이 크게 분화한 뒤 땅이 내려앉아 생긴 분지를 칼데라라고 합니다. 바투르는 큰 칼데라 안에 작은 칼데라가 겹쳐 있고, 그 안에 화산과 초승달 모양의 호수가 자리합니다. 둘러선 산줄기를 보면 분지의 테두리를 알아볼 수 있습니다.\n\n1520년에는 화산 활동으로 만들어진 커다란 함몰 지형이 발리섬에 자리하고 있었습니다.",
+            "questions": [
+              {
+                "prompt": "읽은 설명의 빈칸에 들어갈 말은?",
+                "passage": "화산이 크게 분화한 뒤 땅이 내려앉아 생긴 분지를 (          )라고 합니다.",
+                "choices": [
+                  "삼각주",
+                  "피오르",
+                  "칼데라",
+                  "사구"
+                ],
+                "answer": "칼데라",
+                "explanation": "화산이 크게 분화한 뒤 땅이 내려앉아 생긴 분지를 칼데라라고 합니다.",
+                "id": "q0"
+              },
+              {
+                "prompt": "읽은 설명의 빈칸에 들어갈 말은?",
+                "passage": "바투르는 큰 칼데라 안에 작은 칼데라가 겹쳐 있고, 그 안에 (          )과 초승달 모양의 호수가 자리합니다.",
+                "choices": [
+                  "빙하",
+                  "바닷바람",
+                  "화산",
+                  "강물"
+                ],
+                "answer": "화산",
+                "explanation": "바투르는 큰 칼데라 안에 작은 칼데라가 겹쳐 있고, 그 안에 화산과 초승달 모양의 호수가 자리합니다.",
+                "id": "q1"
+              },
+              {
+                "prompt": "읽은 설명에 맞게 문장을 완성한 것은?",
+                "passage": "둘러선 산줄기를 보면 분지의 (          )",
+                "choices": [
+                  "지중해 사이를 잇는 가장 짧은 길목입니다.",
+                  "테두리를 알아볼 수 있습니다.",
+                  "들어가며 솟은 것이라 화산과 지진이 잦습니다.",
+                  "섬, 바람을 피할 수 있는 북동쪽 항구에 있습니다."
+                ],
+                "answer": "테두리를 알아볼 수 있습니다.",
+                "explanation": "둘러선 산줄기를 보면 분지의 테두리를 알아볼 수 있습니다.",
+                "id": "q2"
+              }
+            ]
+          },
+          {
+            "key": "discovery:milford-sound",
+            "type": "discovery",
+            "id": "milford-sound",
+            "name": "밀퍼드사운드",
+            "point": {
+              "x": 38652.22222222222,
+              "y": 14957.77777777778
+            },
+            "reading": {
+              "id": "milford-sound",
+              "name": "밀퍼드사운드",
+              "kind": "자연",
+              "todayCountry": "뉴질랜드",
+              "text": "빙하가 산 사이를 깊게 깎고 물러난 뒤 바닷물이 들어온 피오르입니다. 물가에서 가파른 암벽이 솟고, 비가 오면 절벽을 따라 폭포가 쏟아집니다. 마오리어 이름은 피오피오타히입니다.\n\n1520년에는 빙하가 깎아 놓은 깊은 골짜기에 바닷물이 들어와 있었습니다.",
+              "image": "/learn/world-voyage/assets/landmarks/milford-sound.webp?v=1789964216779",
+              "imageCredit": "오늘날 모습 · 사진 Wikikiwiman · Public domain · 위키미디어 공용",
+              "imageChanges": "크기 축소 및 WebP 변환",
+              "imageSource": "https://commons.wikimedia.org/wiki/File:MilfordSound.jpg",
+              "imageLicenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/"
+            },
+            "text": "빙하가 산 사이를 깊게 깎고 물러난 뒤 바닷물이 들어온 피오르입니다. 물가에서 가파른 암벽이 솟고, 비가 오면 절벽을 따라 폭포가 쏟아집니다. 마오리어 이름은 피오피오타히입니다.\n\n1520년에는 빙하가 깎아 놓은 깊은 골짜기에 바닷물이 들어와 있었습니다.",
+            "questions": [
+              {
+                "prompt": "읽은 설명의 빈칸에 들어갈 말은?",
+                "passage": "빙하가 산 사이를 깊게 깎고 물러난 뒤 바닷물이 들어온 (          )입니다.",
+                "choices": [
+                  "피오르",
+                  "삼각주",
+                  "사구",
+                  "칼데라"
+                ],
+                "answer": "피오르",
+                "explanation": "빙하가 산 사이를 깊게 깎고 물러난 뒤 바닷물이 들어온 피오르입니다.",
+                "id": "q0"
+              },
+              {
+                "prompt": "읽은 설명의 빈칸에 들어갈 말은?",
+                "passage": "1520년에는 (          )가 깎아 놓은 깊은 골짜기에 바닷물이 들어와 있었습니다.",
+                "choices": [
+                  "화산",
+                  "빙하",
+                  "바닷바람",
+                  "강물"
+                ],
+                "answer": "빙하",
+                "explanation": "1520년에는 빙하가 깎아 놓은 깊은 골짜기에 바닷물이 들어와 있었습니다.",
+                "id": "q1"
+              },
+              {
+                "prompt": "읽은 설명에 맞게 문장을 완성한 것은?",
+                "passage": "물가에서 가파른 암벽이 솟고, 비가 (          )",
+                "choices": [
+                  "오면 절벽을 따라 폭포가 쏟아집니다.",
+                  "지어서, 새로 지은 옛 도시가 세계유산이 되었습니다.",
+                  "이 나라의 왕이 됩니다.",
+                  "피할 수 있는 자리입니다."
+                ],
+                "answer": "오면 절벽을 따라 폭포가 쏟아집니다.",
+                "explanation": "물가에서 가파른 암벽이 솟고, 비가 오면 절벽을 따라 폭포가 쏟아집니다.",
+                "id": "q2"
+              }
+            ]
+          }
+        ],
+        "instructions": "지정된 장소를 원하는 순서로 방문하세요. 각 장소의 설명을 읽고 세 문제를 연속으로 맞히면 발견 성공입니다. 모든 장소를 완료하면 완주합니다.",
+        "atlasInstruction": "",
+        "markerMode": "hidden",
+        "targetPlace": {
+          "id": "lisbon",
+          "name": "리스본 · 바투르 칼데라 · 밀퍼드사운드",
+          "category": "",
+          "region": "",
+          "continent": "",
+          "atlasHint": "",
+          "mode": "sea",
+          "point": {
+            "x": 18984,
+            "y": 5704
+          },
+          "radiusTiles": 3.2
+        },
+        "finalQuiz": null,
+        "startOptions": [
+          {
+            "id": "original_city_223",
+            "startPlace": {
+              "id": "original_city_223",
+              "name": "포르투",
+              "region": "이베리아",
+              "continent": "",
+              "atlasHint": "",
+              "point": {
+                "x": 19032,
+                "y": 5432
+              }
+            }
+          },
+          {
+            "id": "original_city_222",
+            "startPlace": {
+              "id": "original_city_222",
+              "name": "아코루냐",
+              "region": "이베리아",
+              "continent": "",
+              "atlasHint": "",
+              "point": {
+                "x": 19064,
+                "y": 5160
+              }
+            }
+          },
+          {
+            "id": "original_city_221",
+            "startPlace": {
+              "id": "original_city_221",
+              "name": "빌바오",
+              "region": "이베리아",
+              "continent": "",
+              "atlasHint": "",
+              "point": {
+                "x": 19656,
+                "y": 5176
+              }
+            }
+          },
+          {
+            "id": "original_city_217",
+            "startPlace": {
+              "id": "original_city_217",
+              "name": "세비야",
+              "region": "이베리아",
+              "continent": "",
+              "atlasHint": "",
+              "point": {
+                "x": 19272,
+                "y": 5896
+              }
+            }
+          }
+        ],
+        "createdAt": 1790126621141,
+        "phase": "running",
+        "startedAtGameMinutes": 0,
+        "startedAt": 1790126621366
+      },
+      "progress": {
+        "미션검사학생": {
+          "arrival-race-mudf6505-xy7wqp": {
+            "status": "inProgress",
+            "placeStudy": {
+              "places": {
+                "discovery:batur-caldera": {
+                  "phase": "completed",
+                  "streak": 3,
+                  "token": null,
+                  "order": null,
+                  "completedAt": 1790126622367
+                }
+              }
+            },
+            "stageIndex": 0,
+            "cargoItemId": null,
+            "selectedMissionId": null,
+            "selectedStartPlaceId": "original_city_223",
+            "shipPortId": "original_city_223",
+            "finalQuizStatus": "none",
+            "finalQuizArrivedAt": null,
+            "finalQuizAnswers": [
+              null,
+              null,
+              null
+            ],
+            "finalCorrectCount": null,
+            "finalSubmittedAt": null,
+            "completedAt": null,
+            "completedGameMinutes": null,
+            "finishRank": null
+          }
+        }
+      },
+      "settings": {
+        "paused": false,
+        "locked": false,
+        "roomType": "race",
+        "started": false
+      },
+      "clock": {
+        "gameMinutes": 1339.2000000000003
+      },
+      "discoveries": {
+        "미션검사학생": [
+          "batur-caldera"
+        ]
+      },
+      "hunts": {},
+      "host": {
+        "tokenHash": "8b2ce52ca5d07956cfd3f1b63fa6b0be50717ff324393fa977432ec9489162b8",
+        "createdAt": 1790126620712,
+        "lastActiveAt": 1790126621232
+      }
+    },
+    "9466": {
+      "activeMission": {
+        "hunt": null,
+        "id": "arrival-race-mudf1ubu-yfus09",
+        "roomCode": "9466",
+        "kind": "arrivalRace",
+        "mode": "any",
+        "title": "리스본 · 바투르 칼데라 · 밀퍼드사운드 도착 미션",
+        "studyTargets": [
+          {
+            "key": "city:lisbon",
+            "type": "city",
+            "id": "lisbon",
+            "name": "리스본",
+            "point": {
+              "x": 18984,
+              "y": 5704,
+              "terrain": "plain"
+            },
+            "reading": {
+              "id": "lisbon",
+              "name": "리스본",
+              "kind": "도시 설명",
+              "todayCountry": "포르투갈",
+              "text": "대항해시대의 관문\n인도로 가는 바닷길이 열린 뒤 후추와 향신료를 실은 배가 들어오는, 유럽에서 손꼽히는 항구였습니다. 마누엘 1세가 다스렸고, 강 어귀에는 막 완성된 벨렝탑이 배들을 맞았습니다.\n\n대지진 뒤 다시 세운 도시\n1755년 큰 지진과 해일, 불이 한꺼번에 덮쳐 도시 대부분이 무너졌습니다. 그 뒤 거리를 바둑판처럼 반듯하게 다시 지었습니다. 지금은 포르투갈의 수도입니다.",
+              "image": "/learn/world-voyage/assets/city-today/lisbon.webp?v=1789791026004",
+              "imageCredit": "오늘날 모습 · 사진 Vitor Oliveira · CC BY-SA 2.0 · 위키미디어 공용",
+              "imageChanges": "",
+              "imageSource": "https://commons.wikimedia.org/wiki/File:Lisboa_-_Portugal_(52597836992).jpg"
+            },
+            "text": "인도로 가는 바닷길이 열린 뒤 후추와 향신료를 실은 배가 들어오는, 유럽에서 손꼽히는 항구였습니다. 마누엘 1세가 다스렸고, 강 어귀에는 막 완성된 벨렝탑이 배들을 맞았습니다.\n1755년 큰 지진과 해일, 불이 한꺼번에 덮쳐 도시 대부분이 무너졌습니다. 그 뒤 거리를 바둑판처럼 반듯하게 다시 지었습니다. 지금은 포르투갈의 수도입니다.",
+            "questions": [
+              {
+                "prompt": "읽은 설명의 빈칸에 들어갈 말은?",
+                "passage": "인도로 가는 바닷길이 열린 뒤 후추와 (          )를 실은 배가 들어오는, 유럽에서 손꼽히는 항구였습니다.",
+                "choices": [
+                  "향신료",
+                  "도자기",
+                  "포도주",
+                  "비단"
+                ],
+                "answer": "향신료",
+                "explanation": "인도로 가는 바닷길이 열린 뒤 후추와 향신료를 실은 배가 들어오는, 유럽에서 손꼽히는 항구였습니다.",
+                "id": "q0"
+              },
+              {
+                "prompt": "읽은 설명의 빈칸에 들어갈 말은?",
+                "passage": "지금은 (          )의 수도입니다.",
+                "choices": [
+                  "포르투갈",
+                  "스페인",
+                  "일본",
+                  "중국"
+                ],
+                "answer": "포르투갈",
+                "explanation": "지금은 포르투갈의 수도입니다.",
+                "id": "q1"
+              },
+              {
+                "prompt": "읽은 설명에 맞게 문장을 완성한 것은?",
+                "passage": "마누엘 1세가 다스렸고, 강 어귀에는 (          )",
+                "choices": [
+                  "2500년 전에 세운 도시 터입니다.",
+                  "빈틈없는지 칼날도 들어가지 않습니다.",
+                  "자라, 물고기 종류가 세계에서 손꼽히게 많습니다.",
+                  "막 완성된 벨렝탑이 배들을 맞았습니다."
+                ],
+                "answer": "막 완성된 벨렝탑이 배들을 맞았습니다.",
+                "explanation": "마누엘 1세가 다스렸고, 강 어귀에는 막 완성된 벨렝탑이 배들을 맞았습니다.",
+                "id": "q2"
+              }
+            ]
+          },
+          {
+            "key": "discovery:batur-caldera",
+            "type": "discovery",
+            "id": "batur-caldera",
+            "name": "바투르 칼데라",
+            "point": {
+              "x": 32820,
+              "y": 10915.555555555555
+            },
+            "reading": {
+              "id": "batur-caldera",
+              "name": "바투르 칼데라",
+              "kind": "자연",
+              "todayCountry": "인도네시아",
+              "text": "화산이 크게 분화한 뒤 땅이 내려앉아 생긴 분지를 칼데라라고 합니다. 바투르는 큰 칼데라 안에 작은 칼데라가 겹쳐 있고, 그 안에 화산과 초승달 모양의 호수가 자리합니다. 둘러선 산줄기를 보면 분지의 테두리를 알아볼 수 있습니다.\n\n1520년에는 화산 활동으로 만들어진 커다란 함몰 지형이 발리섬에 자리하고 있었습니다.",
+              "image": "/learn/world-voyage/assets/landmarks/batur-caldera.webp?v=1789964215781",
+              "imageCredit": "오늘날 모습 · 사진 TropicaLiving · CC BY-SA 3.0 · 위키미디어 공용",
+              "imageChanges": "크기 축소 및 WebP 변환",
+              "imageSource": "https://commons.wikimedia.org/wiki/File:Mount_batur_and_lake.jpg",
+              "imageLicenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+            },
+            "text": "화산이 크게 분화한 뒤 땅이 내려앉아 생긴 분지를 칼데라라고 합니다. 바투르는 큰 칼데라 안에 작은 칼데라가 겹쳐 있고, 그 안에 화산과 초승달 모양의 호수가 자리합니다. 둘러선 산줄기를 보면 분지의 테두리를 알아볼 수 있습니다.\n\n1520년에는 화산 활동으로 만들어진 커다란 함몰 지형이 발리섬에 자리하고 있었습니다.",
+            "questions": [
+              {
+                "prompt": "읽은 설명의 빈칸에 들어갈 말은?",
+                "passage": "화산이 크게 분화한 뒤 땅이 내려앉아 생긴 분지를 (          )라고 합니다.",
+                "choices": [
+                  "칼데라",
+                  "피오르",
+                  "삼각주",
+                  "사구"
+                ],
+                "answer": "칼데라",
+                "explanation": "화산이 크게 분화한 뒤 땅이 내려앉아 생긴 분지를 칼데라라고 합니다.",
+                "id": "q0"
+              },
+              {
+                "prompt": "읽은 설명의 빈칸에 들어갈 말은?",
+                "passage": "바투르는 큰 칼데라 안에 작은 칼데라가 겹쳐 있고, 그 안에 (          )과 초승달 모양의 호수가 자리합니다.",
+                "choices": [
+                  "강물",
+                  "바닷바람",
+                  "빙하",
+                  "화산"
+                ],
+                "answer": "화산",
+                "explanation": "바투르는 큰 칼데라 안에 작은 칼데라가 겹쳐 있고, 그 안에 화산과 초승달 모양의 호수가 자리합니다.",
+                "id": "q1"
+              },
+              {
+                "prompt": "읽은 설명에 맞게 문장을 완성한 것은?",
+                "passage": "둘러선 산줄기를 보면 분지의 (          )",
+                "choices": [
+                  "제국 땅이 되었습니다.",
+                  "라마 등에 싣고 산을 넘어 팔러 다녔습니다.",
+                  "되었고, 지금은 앙골라의 수도입니다.",
+                  "테두리를 알아볼 수 있습니다."
+                ],
+                "answer": "테두리를 알아볼 수 있습니다.",
+                "explanation": "둘러선 산줄기를 보면 분지의 테두리를 알아볼 수 있습니다.",
+                "id": "q2"
+              }
+            ]
+          },
+          {
+            "key": "discovery:milford-sound",
+            "type": "discovery",
+            "id": "milford-sound",
+            "name": "밀퍼드사운드",
+            "point": {
+              "x": 38652.22222222222,
+              "y": 14957.77777777778
+            },
+            "reading": {
+              "id": "milford-sound",
+              "name": "밀퍼드사운드",
+              "kind": "자연",
+              "todayCountry": "뉴질랜드",
+              "text": "빙하가 산 사이를 깊게 깎고 물러난 뒤 바닷물이 들어온 피오르입니다. 물가에서 가파른 암벽이 솟고, 비가 오면 절벽을 따라 폭포가 쏟아집니다. 마오리어 이름은 피오피오타히입니다.\n\n1520년에는 빙하가 깎아 놓은 깊은 골짜기에 바닷물이 들어와 있었습니다.",
+              "image": "/learn/world-voyage/assets/landmarks/milford-sound.webp?v=1789964216779",
+              "imageCredit": "오늘날 모습 · 사진 Wikikiwiman · Public domain · 위키미디어 공용",
+              "imageChanges": "크기 축소 및 WebP 변환",
+              "imageSource": "https://commons.wikimedia.org/wiki/File:MilfordSound.jpg",
+              "imageLicenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/"
+            },
+            "text": "빙하가 산 사이를 깊게 깎고 물러난 뒤 바닷물이 들어온 피오르입니다. 물가에서 가파른 암벽이 솟고, 비가 오면 절벽을 따라 폭포가 쏟아집니다. 마오리어 이름은 피오피오타히입니다.\n\n1520년에는 빙하가 깎아 놓은 깊은 골짜기에 바닷물이 들어와 있었습니다.",
+            "questions": [
+              {
+                "prompt": "읽은 설명의 빈칸에 들어갈 말은?",
+                "passage": "빙하가 산 사이를 깊게 깎고 물러난 뒤 바닷물이 들어온 (          )입니다.",
+                "choices": [
+                  "사구",
+                  "삼각주",
+                  "피오르",
+                  "칼데라"
+                ],
+                "answer": "피오르",
+                "explanation": "빙하가 산 사이를 깊게 깎고 물러난 뒤 바닷물이 들어온 피오르입니다.",
+                "id": "q0"
+              },
+              {
+                "prompt": "읽은 설명의 빈칸에 들어갈 말은?",
+                "passage": "1520년에는 (          )가 깎아 놓은 깊은 골짜기에 바닷물이 들어와 있었습니다.",
+                "choices": [
+                  "강물",
+                  "화산",
+                  "빙하",
+                  "바닷바람"
+                ],
+                "answer": "빙하",
+                "explanation": "1520년에는 빙하가 깎아 놓은 깊은 골짜기에 바닷물이 들어와 있었습니다.",
+                "id": "q1"
+              },
+              {
+                "prompt": "읽은 설명에 맞게 문장을 완성한 것은?",
+                "passage": "물가에서 가파른 암벽이 솟고, 비가 (          )",
+                "choices": [
+                  "쌓여 몸통은 묻히고 얼굴만 남았습니다.",
+                  "무너진 신전 위에 키가 4.",
+                  "오면 절벽을 따라 폭포가 쏟아집니다.",
+                  "큰 도시들이 일어났고, 인도라는 이름도 이 강 이름에서 나왔습니다."
+                ],
+                "answer": "오면 절벽을 따라 폭포가 쏟아집니다.",
+                "explanation": "물가에서 가파른 암벽이 솟고, 비가 오면 절벽을 따라 폭포가 쏟아집니다.",
+                "id": "q2"
+              }
+            ]
+          }
+        ],
+        "instructions": "지정된 장소를 원하는 순서로 방문하세요. 각 장소의 설명을 읽고 세 문제를 연속으로 맞히면 발견 성공입니다. 모든 장소를 완료하면 완주합니다.",
+        "atlasInstruction": "",
+        "markerMode": "hidden",
+        "targetPlace": {
+          "id": "lisbon",
+          "name": "리스본 · 바투르 칼데라 · 밀퍼드사운드",
+          "category": "",
+          "region": "",
+          "continent": "",
+          "atlasHint": "",
+          "mode": "sea",
+          "point": {
+            "x": 18984,
+            "y": 5704
+          },
+          "radiusTiles": 3.2
+        },
+        "finalQuiz": null,
+        "startOptions": [
+          {
+            "id": "original_city_223",
+            "startPlace": {
+              "id": "original_city_223",
+              "name": "포르투",
+              "region": "이베리아",
+              "continent": "",
+              "atlasHint": "",
+              "point": {
+                "x": 19032,
+                "y": 5432
+              }
+            }
+          },
+          {
+            "id": "original_city_222",
+            "startPlace": {
+              "id": "original_city_222",
+              "name": "아코루냐",
+              "region": "이베리아",
+              "continent": "",
+              "atlasHint": "",
+              "point": {
+                "x": 19064,
+                "y": 5160
+              }
+            }
+          },
+          {
+            "id": "original_city_221",
+            "startPlace": {
+              "id": "original_city_221",
+              "name": "빌바오",
+              "region": "이베리아",
+              "continent": "",
+              "atlasHint": "",
+              "point": {
+                "x": 19656,
+                "y": 5176
+              }
+            }
+          },
+          {
+            "id": "original_city_217",
+            "startPlace": {
+              "id": "original_city_217",
+              "name": "세비야",
+              "region": "이베리아",
+              "continent": "",
+              "atlasHint": "",
+              "point": {
+                "x": 19272,
+                "y": 5896
+              }
+            }
+          }
+        ],
+        "createdAt": 1790126420682,
+        "phase": "running",
+        "startedAtGameMinutes": 0,
+        "startedAt": 1790126420910
+      },
+      "progress": {
+        "미션검사학생": {
+          "arrival-race-mudf1ubu-yfus09": {
+            "status": "inProgress",
+            "placeStudy": {
+              "places": {
+                "discovery:batur-caldera": {
+                  "phase": "quiz",
+                  "streak": 1,
+                  "token": "08aead23-991c-45bd-9d15-d268e4a07b38",
+                  "order": [
+                    0,
+                    1,
+                    3,
+                    2
+                  ],
+                  "completedAt": null
+                }
+              }
+            },
+            "stageIndex": 0,
+            "cargoItemId": null,
+            "selectedMissionId": null,
+            "selectedStartPlaceId": "original_city_223",
+            "shipPortId": "original_city_223",
+            "finalQuizStatus": "none",
+            "finalQuizArrivedAt": null,
+            "finalQuizAnswers": [
+              null,
+              null,
+              null
+            ],
+            "finalCorrectCount": null,
+            "finalSubmittedAt": null,
+            "completedAt": null,
+            "completedGameMinutes": null,
+            "finishRank": null
+          }
+        }
+      },
+      "settings": {
+        "paused": false,
+        "locked": false,
+        "roomType": "race",
+        "started": false
+      },
+      "clock": {
+        "gameMinutes": 49527.00000000001
+      },
+      "discoveries": {
+        "미션검사학생": []
+      },
+      "hunts": {},
+      "host": {
+        "tokenHash": "94a6a0c7a7cdcc4256f09a8805993af6a5660942e3a5c3cfd8012f8f2663a520",
+        "createdAt": 1790126420270,
+        "lastActiveAt": 1790126420770
+      }
+    }
+  }
+}

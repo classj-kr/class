@@ -1,0 +1,22 @@
+HTTP/1.1 302 Found
+Date: Wed, 23 Sep 2026 03:27:56 GMT
+Content-Type: text/plain; charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+cf-cache-status: DYNAMIC
+content-security-policy: base-uri 'self'; object-src 'none'; frame-ancestors 'self'
+location: /?access=required
+permissions-policy: camera=(self), microphone=(self), geolocation=()
+referrer-policy: strict-origin-when-cross-origin
+rndr-id: bd54eb6d-93b1-487b
+Server: cloudflare
+strict-transport-security: max-age=31536000; includeSubDomains
+vary: Accept
+vary: Accept-Encoding
+x-content-type-options: nosniff
+x-frame-options: SAMEORIGIN
+x-permitted-cross-domain-policies: none
+x-render-origin-server: Render
+CF-RAY: a3f674d87dbde9f9-ICN
+alt-svc: h3=":443"; ma=86400
+

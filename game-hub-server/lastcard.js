@@ -56,6 +56,7 @@ function createGame(hostId, hostName) {
     direction: 1,
     turnIndex: 0,
     winnerId: null,
+    drawnCardId: null,
     round: 0,
     turnDeadline: null,
     lastAction: "플레이어를 기다리고 있습니다.",
@@ -87,6 +88,7 @@ function resetToLobby(game, message = "대기실로 돌아왔습니다.") {
   game.direction = 1;
   game.turnIndex = 0;
   game.winnerId = null;
+  game.drawnCardId = null;
   game.turnDeadline = null;
   game.lastAction = message;
   game.actionNumber += 1;
@@ -152,6 +154,7 @@ function startMatch(game, pick = randomInt) {
   game.direction = 1;
   game.turnIndex = 0;
   game.winnerId = null;
+  game.drawnCardId = null;
 
   for (let cardIndex = 0; cardIndex < HAND_SIZE; cardIndex += 1) {
     for (const player of game.players) drawCards(game, player.id, 1, pick);
@@ -176,6 +179,7 @@ function playCard(game, playerId, message, pick = randomInt) {
   const cardIndex = hand.findIndex(card => card.id === String(message.cardId || ""));
   if (cardIndex < 0) return { ok: false, error: "내 손에 없는 카드입니다." };
   const card = hand[cardIndex];
+  if (game.drawnCardId && card.id !== game.drawnCardId) return { ok: false, error: "방금 뽑은 카드만 낼 수 있습니다." };
   if (!isPlayable(card, topCard(game), game.activeColor)) {
     return { ok: false, error: "현재 카드와 색상, 숫자 또는 기호가 맞지 않습니다." };
   }
@@ -186,6 +190,7 @@ function playCard(game, playerId, message, pick = randomInt) {
     if (!COLORS.includes(chosenColor)) return { ok: false, error: "시프트 카드의 색상을 선택하세요." };
   }
 
+  game.drawnCardId = null;
   hand.splice(cardIndex, 1);
   game.discard.push(card);
   game.activeColor = card.kind === "shift" ? chosenColor : card.color;
@@ -233,16 +238,22 @@ function playCard(game, playerId, message, pick = randomInt) {
   return { ok: true };
 }
 
-function drawAndPass(game, playerId, pick = randomInt) {
-  if (game.phase !== "playing") return { ok: false, error: "진행 중인 게임이 없습니다." };
+function drawAndPass(game, playerId, pick = randomInt, forcePass = false) {
+  if (game.phase !== 'playing') return { ok: false, error: '진행 중인 게임이 없습니다.' };
   const actor = activePlayer(game);
-  if (!actor || actor.id !== String(playerId)) return { ok: false, error: "현재 차례가 아닙니다." };
-  const count = drawCards(game, actor.id, 1, pick).length;
-  game.turnIndex = advanceIndex(game, game.turnIndex, 1);
-  game.turnDeadline = Date.now() + TURN_SECONDS * 1000;
-  game.lastAction = count
-    ? `${actor.name}님이 카드 1장을 뽑고 차례를 넘겼습니다.`
-    : `${actor.name}님이 뽑을 카드가 없어 차례를 넘겼습니다.`;
+  if (!actor || actor.id !== String(playerId)) return { ok: false, error: '현재 차례가 아닙니다.' };
+  const alreadyDrawn = !!game.drawnCardId;
+  const drawn = alreadyDrawn ? null : drawCards(game, actor.id, 1, pick)[0];
+  if (!forcePass && drawn && isPlayable(drawn, topCard(game), game.activeColor)) {
+    game.drawnCardId = drawn.id;
+    game.turnDeadline = Date.now() + TURN_SECONDS * 1000;
+    game.lastAction = actor.name + '님이 카드 1장을 뽑았습니다. 방금 뽑은 카드를 내거나 차례를 넘길 수 있습니다.';
+  } else {
+    game.drawnCardId = null;
+    game.turnIndex = advanceIndex(game, game.turnIndex, 1);
+    game.turnDeadline = Date.now() + TURN_SECONDS * 1000;
+    game.lastAction = actor.name + (alreadyDrawn ? '님이 뽑은 카드를 보관하고 차례를 넘겼습니다.' : drawn ? '님이 카드 1장을 뽑고 차례를 넘겼습니다.' : '님이 뽑을 카드가 없어 차례를 넘겼습니다.');
+  }
   game.actionNumber += 1;
   return { ok: true };
 }
@@ -264,6 +275,7 @@ function stateFor(game, viewerId) {
     direction: game.direction,
     deckCount: game.deck.length,
     winnerId: game.winnerId,
+    drawnCardId: game.phase === "playing" && activePlayer(game)?.id === viewer ? game.drawnCardId || null : null,
     lastAction: game.lastAction,
     turnDeadline: game.turnDeadline || null,
     turnSeconds: TURN_SECONDS,

@@ -11,8 +11,9 @@ import { createNumericChoices } from "../../../../lib/worksheet-choice-utils";
 import NumericChoiceWorksheet, { type NumericWorksheetProblem } from "../components/numeric-choice-worksheet";
 
 function adapt(problem: ReturnType<typeof createFunctionTransformationWorksheetSet>["problems"][number]): NumericWorksheetProblem {
-  const polynomial = problem.answer.type === "polynomial";
-  const answers = polynomial ? [...problem.answer.coefficients] : [...problem.answer.numerator, ...problem.answer.denominator];
+  const answer = problem.answer;
+  const polynomial = answer.type === "polynomial";
+  const answers = answer.type === "polynomial" ? [...answer.coefficients] : [...answer.numerator, ...answer.denominator];
   return {
     ...problem,
     prompt: polynomial ? "합성함수를 계산하여 식을 간단히 하세요." : "역함수를 구하세요.",

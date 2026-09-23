@@ -1,0 +1,48 @@
+'use strict';
+const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm'),crypto=require('node:crypto');
+const root=path.resolve(__dirname,'..');
+const read=p=>fs.readFileSync(path.join(root,p),'utf8');
+const Clue=require('../game-hub-server/clue');
+const g=Clue.createGame('a','A');Clue.addPlayer(g,'b','B');Clue.addPlayer(g,'c','C');Clue.startMatch(g,()=>0);
+g.players[0].roomIndex=Clue.CENTER_ROOM;g.turnPhase='act';g.solution={suspect:1,weapon:7,room:13};
+assert.equal(Clue.accuse(g,'a',0,6,12).ok,true);assert.equal(g.players[0].active,false);
+g.hands={a:[0,6],b:[],c:[]};g.turnPhase='act';g.players[1].roomIndex=0;
+assert.equal(Clue.suggest(g,'b',0,6).ok,true);assert.equal(g.pendingSuggestion.refuterId,'a');
+assert.equal(Clue.stateFor(g,'a').pendingSuggestion.myChoices.length,2);assert.equal(Clue.stateFor(g,'c').pendingSuggestion.myChoices.length,0);
+const reply=Clue.chooseCard(g,'a',6);assert.equal(reply.ok,true);assert.equal(reply.reveals[0].playerId,'b');
+console.log('Clue: eliminated player still refutes privately');
+const janggi=read('learning/games/janggi/janggi.html');const jc=vm.createContext({});
+vm.runInContext(janggi.slice(janggi.indexOf('function legalMovesFor('),janggi.indexOf('function resign()')),jc);
+for(const y of [1,8]){
+ const rook={type:'rook',side:'cho',x:4,y};const corners=jc.rawMoves(rook,[rook]).filter(m=>[3,5].includes(m.x)&&[y-1,y+1].includes(m.y));assert.equal(corners.length,4);
+ const from={...rook,x:3,y:y-1},friend={type:'soldier',side:'cho',x:4,y},enemy={...friend,side:'han'};
+ assert.equal(jc.palaceLines(from,[from,friend]).length,0);assert.equal(jc.palaceLines(from,[from,enemy]).length,1);assert.equal(jc.palaceLines(from,[from,enemy])[0].capture,true);
+ assert.equal(jc.palaceLines(from,[from]).length,2);
+}
+console.log('Janggi: both palace centers, blocking and capture');
+const davinci=read('learning/games/davincicode/davincicode.html');const dc=vm.createContext({crypto,Math});
+vm.runInContext('const COLORS=["black","white"];'+davinci.slice(davinci.indexOf('function makeDeck('),davinci.indexOf('function sortHand(')),dc);
+const deck=dc.makeDeck();assert.equal(deck.length,24);assert.equal(new Set(deck.map(t=>t.id)).size,24);assert.ok(deck.every(t=>/^[0-9a-f-]{36}$/.test(t.id)));assert.equal(new Set(deck.map(t=>t.color+'-'+t.number)).size,24);
+vm.runInContext('let hostState={hands:{a:[],b:[],c:[]}},myRole="host",myId="a",myHand=[],sent=[];const lobby={sendServer:m=>sent.push(m)};'+davinci.slice(davinci.indexOf('function sendPrivateHands('),davinci.indexOf('function startDavinciGame(')),dc);
+vm.runInContext('sendPrivateHands()',dc);assert.equal(vm.runInContext('sent.length',dc),2);assert.deepEqual(Array.from(vm.runInContext('sent.map(m=>m.recipientId)',dc)),['b','c']);
+const server=read('game-hub-server/server.js');const start=server.indexOf('    if (type === "GAME_MESSAGE") {'),end=server.indexOf('\n  });',start);
+const route=new Function('type','socket','rooms','playerId','message','safeSend',server.slice(start,end));
+const clients=new Map([['a',{}],['b',{}],['c',{}]]),room={gameId:'davincicode',hostId:'a',clients},rooms=new Map([['room',room]]);
+function send(id,message){const delivered=[];route('GAME_MESSAGE',{meta:{roomKey:'room',role:id==='a'?'host':'guest'}},rooms,id,message,(client,packet)=>delivered.push({client,packet}));return delivered}
+let delivered=send('a',{recipientId:'b',payload:{type:'PRIVATE_HAND',targetId:'b',hand:[7]}});assert.equal(delivered.length,1);assert.equal(delivered[0].client,clients.get('b'));
+assert.equal(send('a',{recipientId:'outsider',payload:{type:'PRIVATE_HAND',targetId:'outsider'}}).length,0);
+assert.equal(send('b',{recipientId:'c',payload:{type:'PRIVATE_HAND',targetId:'c'}}).length,0);
+assert.equal(send('a',{payload:{type:'PRIVATE_HAND',targetId:'b'}}).length,1,'legacy private packets must not broadcast');
+assert.equal(send('a',{payload:{type:'STATE'}}).length,2);assert.equal(send('b',{payload:{type:'GUESS_REQ'}})[0].client,clients.get('a'));
+console.log('Davinci: opaque IDs and server recipient isolation, including legacy packets');
+const bc=vm.createContext({localStorage:{getItem:()=>''},window:{addEventListener:()=>{}},module:{exports:{}}});vm.runInContext(read('learning/games/baduk/baduk.js'),bc);const B=bc.module.exports;
+const base={mode:'standard',size:5,board:Array(25).fill(1),playerOrder:['a','b'],turn:0,passCount:2,winner:0,draw:false,captures:[0,0],history:[],turnToken:3};base.board[11]=0;base.board[12]=2;base.board[13]=0;
+let s=B.beginScoring(base);assert.equal(s.winner,0);assert.equal(s.turnDeadline,null);
+s=B.scoringAction(s,{kind:'agree',playerId:'a',revision:0});assert.equal(s.winner,0);
+s=B.scoringAction(s,{kind:'dead',playerId:'b',row:2,col:2,revision:0});assert.equal(s.scoreAgreements.length,0);assert.equal(s.board[12],2);
+assert.equal(B.scoringAction(s,{kind:'agree',playerId:'a',revision:0}),s,'stale agreement rejected');assert.equal(B.scoringAction(s,{kind:'agree',playerId:'outsider',revision:1}),s);
+const resumed=B.scoringAction(s,{kind:'resume',playerId:'b'});assert.equal(resumed.scoring,false);assert.equal(resumed.board[12],2);assert.equal(resumed.passCount,0);
+s=B.scoringAction(s,{kind:'agree',playerId:'a',revision:1});s=B.scoringAction(s,{kind:'agree',playerId:'b',revision:1});assert.equal(s.scoring,false);assert.equal(s.board[12],0);assert.equal(s.scores.black,25);assert.equal(s.scores.white,7.5);assert.equal(s.winner,1);
+console.log('Baduk: dead stones, two-person agreement, stale rejection and resume');
+for(const file of ['learning/games/janggi/janggi.html','learning/games/davincicode/davincicode.html'])for(const match of read(file).matchAll(/<script\b[^>]*>([\s\S]*?)<\/script>/g))new vm.Script(match[1],{filename:file});
+console.log('Boardgame fairness regression tests passed');

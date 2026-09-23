@@ -1,0 +1,25 @@
+HTTP/1.1 200 OK
+Connection: keep-alive
+Content-Length: 7180
+Server: GitHub.com
+Content-Type: application/javascript; charset=utf-8
+Last-Modified: Wed, 23 Sep 2026 02:48:22 GMT
+Access-Control-Allow-Origin: *
+Strict-Transport-Security: max-age=31556952
+ETag: "6ab33df6-1c0c"
+expires: Wed, 23 Sep 2026 03:43:22 GMT
+Cache-Control: max-age=600
+x-proxy-cache: MISS
+X-GitHub-Request-Id: E5CC:53B69:62834:71FC3:6AB34882
+x-github-edge-region: koreacentral
+Accept-Ranges: bytes
+Age: 0
+Date: Wed, 23 Sep 2026 03:33:22 GMT
+Via: 1.1 varnish
+X-Served-By: cache-icn1450092-ICN
+X-Cache: MISS
+X-Cache-Hits: 0
+X-Timer: S1790134402.458480,VS0,VE266
+Vary: Accept-Encoding
+X-Fastly-Request-ID: e80aecf45524137d47017ffe2b407df81d7a8258
+

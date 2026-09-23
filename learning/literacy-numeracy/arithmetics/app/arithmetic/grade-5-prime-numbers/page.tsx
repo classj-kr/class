@@ -5,6 +5,7 @@ import {
   gradePrimeNumberSelection,
   HUNDRED_CHART_NUMBERS,
   isPrimeNumberTo100,
+  PRIME_NUMBERS_TO_100,
 } from "../../../lib/prime-number-hundred-chart";
 
 type PrintMode = "worksheet" | "answers" | "both";
@@ -24,7 +25,9 @@ export default function GradeFivePrimeNumbersPage() {
     return () => window.removeEventListener("resize", fitA4Sheet);
   }, []);
 
-  const correct = Object.values(results).filter(Boolean).length;
+  const found = PRIME_NUMBERS_TO_100.filter(number => selectedNumbers.has(number) && results[number] === true).length;
+  const wrongSelections = [...selectedNumbers].filter(number => results[number] === false).length;
+  const correct = Math.max(0, found - wrongSelections);
 
   function toggleNumber(number: number) {
     setSelectedNumbers((current) => {
@@ -99,7 +102,7 @@ export default function GradeFivePrimeNumbersPage() {
         <div className="prime-number-grid">
           {HUNDRED_CHART_NUMBERS.map((number) => renderNumber(number, answerSheet))}
         </div>
-        {!answerSheet && <p className="prime-number-selection-count">선택한 수 <strong>{selectedNumbers.size}</strong>개</p>}
+        {!answerSheet && <p className="prime-number-selection-count">선택한 수 <strong>{selectedNumbers.size}</strong>개 · 소수를 맞히면 1점, 소수가 아닌 수를 고르면 1점 감점{Object.keys(results).length > 0 && <> · 찾은 소수 {found}개 / 잘못 고른 수 {wrongSelections}개</>}</p>}
       </div>
     );
   }
@@ -108,7 +111,7 @@ export default function GradeFivePrimeNumbersPage() {
     <main className="counting-page multiplication-page">
       <div className="counting-toolbar">
         <a className="counting-back" href="/arithmetic" aria-label="연산 목록으로 돌아가기">←</a>
-        <div className="counting-progress"><strong>{correct}<small>/100 정답</small></strong></div>
+        <div className="counting-progress"><strong>{correct}<small>/{PRIME_NUMBERS_TO_100.length}점</small></strong></div>
         <div className="toolbar">
           <button className="button ghost" type="button" onClick={resetAnswers}>다시 하기</button>
           <div className="print-control">

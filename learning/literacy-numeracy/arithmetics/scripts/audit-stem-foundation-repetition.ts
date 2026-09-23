@@ -27,7 +27,7 @@ const bridgeCatalog = stemWorksheetCatalog.slice(0, STEM_BRIDGE_KINDS.length);
 const kinds = bridgeCatalog.map(({ route, title }) => {
   if (!route) throw new Error(`주소가 없는 이공계 기초 학습지: ${title}`);
   const kind = new URL(route, "https://worksheet.local").searchParams.get("kind");
-  if (!kind || !STEM_BRIDGE_KINDS.includes(kind as StemFoundationKind)) {
+  if (!kind || !STEM_BRIDGE_KINDS.some(value => value === kind)) {
     throw new Error(`공개 이공계 기초 범위를 벗어난 학습지: ${route}`);
   }
   return kind as StemFoundationKind;

@@ -5,6 +5,7 @@ export type GeometryMeasurementProblem = {
   kind: string;
   dimensions: Record<string, number>;
   cells?: [number, number][];
+  cubes?: [number, number, number][];
   first: number;
   second: number;
   firstLabel: "둘레" | "겉넓이";
@@ -16,8 +17,10 @@ export type GeometryMeasurementProblem = {
 function seededRandom(seed: number) {
   let value = seed >>> 0;
   return () => {
-    value = (value * 1664525 + 1013904223) >>> 0;
-    return value / 0x100000000;
+    value += 0x6d2b79f5;
+    let mixed = Math.imul(value ^ (value >>> 15), value | 1);
+    mixed ^= mixed + Math.imul(mixed ^ (mixed >>> 7), mixed | 61);
+    return ((mixed ^ (mixed >>> 14)) >>> 0) / 0x100000000;
   };
 }
 
@@ -72,7 +75,7 @@ export function createElementaryGeometryMeasurementSet(mode: GeometryMeasurement
       const target = Math.floor(random() * (index + 1));
       [shuffled[index], shuffled[target]] = [shuffled[target], shuffled[index]];
     }
-    return shuffled.map((kind, index) => {
+    return shuffled.map((kind, index): GeometryMeasurementProblem => {
       if (kind === "l-shape") {
         const width = pick(random, [12, 14, 16, 18]);
         const height = pick(random, [9, 10, 12]);
@@ -101,6 +104,16 @@ export function createElementaryGeometryMeasurementSet(mode: GeometryMeasurement
       return { id: `c-shape-${seed}-${index}`, kind, dimensions: { width, height, cutWidth, cutHeight }, first: 2 * (width + height) + 2 * cutWidth, second: width * height - cutWidth * cutHeight, firstLabel: "둘레" as const, secondLabel: "넓이" as const, firstUnit: "cm" as const, secondUnit: "cm²" as const };
     });
   }
+  const bank = createElementarySolidMeasurementBank(seed);
+  for (let index = bank.length - 1; index > 0; index--) {
+    const target = Math.floor(random() * (index + 1));
+    [bank[index], bank[target]] = [bank[target], bank[index]];
+  }
+  return bank.slice(0, 4);
+}
+
+export function createElementarySolidMeasurementBank(seed: number): GeometryMeasurementProblem[] {
+  const random = seededRandom(seed ^ 0x60b5);
   const length = pick(random, [8, 10, 12]);
   const width = pick(random, [5, 6, 7]);
   const height = pick(random, [4, 5, 6]);
@@ -113,12 +126,25 @@ export function createElementaryGeometryMeasurementSet(mode: GeometryMeasurement
   const topHeight = pick(random, [2, 3, 4]);
   const side = pick(random, [6, 8, 10]);
   const removedSide = side / 2;
-  return [
+  const bank: GeometryMeasurementProblem[] = [
     { id: `open-${seed}`, kind: "open-box", dimensions: { length, width, height }, first: length * width + 2 * length * height + 2 * width * height, second: length * width * height, firstLabel: "겉넓이", secondLabel: "부피", firstUnit: "cm²", secondUnit: "cm³" },
-    { id: `joined-${seed}`, kind: "joined-cubes", dimensions: { side: cubeSide }, first: 10 * cubeSide ** 2, second: 2 * cubeSide ** 3, firstLabel: "겉넓이", secondLabel: "부피", firstUnit: "cm²", secondUnit: "cm³" },
+    { id: `l-stacked-${seed}`, kind: "l-stacked-cubes", dimensions: { side: cubeSide }, first: 14 * cubeSide ** 2, second: 3 * cubeSide ** 3, firstLabel: "겉넓이", secondLabel: "부피", firstUnit: "cm²", secondUnit: "cm³" },
     { id: `stacked-${seed}`, kind: "stacked-prisms", dimensions: { baseLength, baseWidth, baseHeight, topLength, topWidth, topHeight }, first: 2 * (baseLength * baseWidth + baseLength * baseHeight + baseWidth * baseHeight) + 2 * (topLength * topWidth + topLength * topHeight + topWidth * topHeight) - 2 * topLength * topWidth, second: baseLength * baseWidth * baseHeight + topLength * topWidth * topHeight, firstLabel: "겉넓이", secondLabel: "부피", firstUnit: "cm²", secondUnit: "cm³" },
     { id: `cut-${seed}`, kind: "corner-cut-cube", dimensions: { side, removedSide }, first: 6 * side ** 2, second: side ** 3 - removedSide ** 3, firstLabel: "겉넓이", secondLabel: "부피", firstUnit: "cm²", secondUnit: "cm³" },
   ];
+  const cubeShapes: { kind: string; cubes: [number, number, number][] }[] = [
+    { kind: "cube-stairs", cubes: [[0,0,0],[1,0,0],[2,0,0],[0,0,1],[1,0,1],[0,0,2]] },
+    { kind: "cube-bridge", cubes: [[0,0,0],[2,0,0],[0,0,1],[1,0,1],[2,0,1]] },
+    { kind: "cube-t", cubes: [[0,0,0],[1,0,0],[2,0,0],[1,0,1]] },
+    { kind: "cube-corner", cubes: [[0,0,0],[1,0,0],[0,1,0],[0,0,1]] },
+  ];
+  for (const { kind, cubes } of cubeShapes) {
+    const side = pick(random, [3, 4, 5]);
+    const occupied = new Set(cubes.map(cube => cube.join(",")));
+    const shared = cubes.reduce((sum, cube) => sum + [0,1,2].filter(axis => occupied.has(cube.map((value, i) => value + (axis === i ? 1 : 0)).join(","))).length, 0);
+    bank.push({ id: kind + "-" + seed, kind, cubes, dimensions: { side }, first: (6 * cubes.length - 2 * shared) * side ** 2, second: cubes.length * side ** 3, firstLabel: "겉넓이", secondLabel: "부피", firstUnit: "cm²", secondUnit: "cm³" });
+  }
+  return bank;
 }
 
 export function normalizeGeometryMeasurementAnswer(value: string) {

@@ -451,6 +451,7 @@
                 margin: 0;
                 break-inside: avoid;
             }
+            .save-feedback { display: none !important; }
             .desk { min-height: 0; height: 20mm; padding: 1mm; break-inside: avoid; box-shadow: none; }
             .desk:not(.is-occupied) { visibility: hidden !important; }
             .desk-num,
@@ -493,6 +494,10 @@
                     </section>
                     <div class="blackboard" style="margin-top: 4px; margin-bottom: 12px;">칠 판 (앞)</div>
                     <p class="seat-summary" id="seat-summary" aria-live="polite"></p>
+                    <div class="save-feedback" style="display:flex; align-items:center; gap:8px; margin-bottom:8px; font-size:0.85rem; color:var(--muted);">
+                        <span id="save-status" role="status" aria-live="polite">서버에서 자리배치를 불러오는 중…</span>
+                        <button class="btn" id="save-retry-btn" type="button" hidden>다시 시도</button>
+                    </div>
                     <div class="seating-grid" id="seating-grid" aria-label="6행 6열 자리 배치"></div>
                 </div>
 
@@ -520,6 +525,7 @@
 
                     <div class="sidebar-group" style="margin-top: auto; display: flex; flex-direction: column; gap: 8px;">
                         <button class="btn btn-toggle" id="teacher-view-btn" type="button" aria-pressed="false" style="width: 100%;">👩‍🏫 교사 시야로 보기</button>
+                        <button class="btn" id="clear-seats-btn" type="button" style="width: 100%;">□ 전체 빈자리 만들기</button>
                         <button class="btn" id="reset-unused-btn" type="button" style="width: 100%;">↺ X 표시 모두 해제</button>
                         <button class="btn" onclick="window.print()" type="button" style="width: 100%; background: #eae4d8;">🖨️ 배치도 인쇄하기</button>
                     </div>
@@ -583,7 +589,14 @@
             const TOTAL_DESKS = 36;
             const LIVE_POLL_MS = 2000;
 
-            let seatingClassKey = 'seating-demo';
+            const clearSeatsBtn = document.getElementById('clear-seats-btn');
+            const saveStatus = document.getElementById('save-status');
+            const saveRetryBtn = document.getElementById('save-retry-btn');
+            let settingsReady = false;
+            let isClassLoading = false;
+            let pendingSettings = null;
+            let saveTask = null;
+            let retryAction = null;
 
             function getAssignedAvatarUrl(student) {
                 const avatarUrl = String(student?.avatarUrl || '');
@@ -603,7 +616,6 @@
             let genderLockMode = null;
             let isStudentLockMode = false;
             let isTeacherView = false;
-            let storageKey = 'classroom-seating-unused-default';
             let currentUserId = '';
             let currentClassId = '';
             // 학생 선착순 자리 고르기 방. 열려 있는 동안은 학생이 고른 자리만 보여 주고,
@@ -747,21 +759,95 @@
                 return assignedSeats;
             }
 
-            function saveSeatSettings() {
-                localStorage.setItem(storageKey, JSON.stringify({
+            function seatSettingsSnapshot() {
+                // 학생 선택 중의 임시 배치는 기존 교사 배치를 덮어쓰지 않는다.
+                const base = liveRoom && liveSnapshot ? liveSnapshot : { manualAssignments, manualVacantSeats, unassignedStudents };
+                return {
                     unavailableSeats: [...unavailableSeats],
                     genderLocks: Object.fromEntries(genderLocks),
                     studentLocks: Object.fromEntries(studentLocks),
-                    manualAssignments: Object.fromEntries(manualAssignments),
-                    manualVacantSeats: [...manualVacantSeats],
-                    unassignedStudents: [...unassignedStudents],
+                    manualAssignments: Object.fromEntries(base.manualAssignments),
+                    manualVacantSeats: [...base.manualVacantSeats],
+                    unassignedStudents: [...base.unassignedStudents],
+                    studentOrder: students.map((student) => student.number),
                     teacherView: isTeacherView
-                }));
+                };
             }
 
-            function loadSeatSettings() {
+            function showSaveStatus(message, retry = null) {
+                saveStatus.textContent = message;
+                saveStatus.style.color = retry ? '#a33024' : '';
+                retryAction = retry;
+                saveRetryBtn.hidden = !retry;
+            }
+
+            function saveSeatSettings() {
+                if (!settingsReady || !currentClassId) return;
+                pendingSettings = { classId: currentClassId, settings: seatSettingsSnapshot() };
+                showSaveStatus('서버에 저장 중…');
+                void flushSeatSettings();
+            }
+
+            function flushSeatSettings() {
+                if (saveTask) return saveTask;
+                if (!pendingSettings) return Promise.resolve(true);
+                showSaveStatus('서버에 저장 중…');
+                saveTask = (async () => {
+                    while (pendingSettings) {
+                        const saving = pendingSettings;
+                        pendingSettings = null;
+                        try {
+                            await request(`/api/seating/classes/${encodeURIComponent(saving.classId)}/settings`, {
+                                method: 'PUT', body: JSON.stringify({ settings: saving.settings })
+                            });
+                        } catch (error) {
+                            pendingSettings = pendingSettings || saving;
+                            showSaveStatus('서버에 저장하지 못했습니다. 다시 시도해 주세요.', flushSeatSettings);
+                            return false;
+                        }
+                    }
+                    showSaveStatus('서버 저장 완료');
+                    return true;
+                })().finally(() => { saveTask = null; });
+                return saveTask;
+            }
+
+            async function loadSeatSettings() {
+                const endpoint = `/api/seating/classes/${encodeURIComponent(currentClassId)}/settings`;
+                let { settings } = await request(endpoint, { cache: 'no-store' });
+                let migratedKey = null;
+                if (!settings) {
+                    let legacy = {};
+                    const baseKey = `classroom-seating-unused-${currentClassId}`;
+                    const ownKey = `${baseKey}-u${currentUserId}`;
+                    // localStorage는 이전 버전 배치를 처음 한 번 읽는 용도로만 쓴다.
+                    for (const key of [ownKey, baseKey]) {
+                        try {
+                            const stored = localStorage.getItem(key);
+                            if (!stored) continue;
+                            const parsed = JSON.parse(stored);
+                            if (!parsed || typeof parsed !== 'object') continue;
+                            legacy = parsed;
+                            if (key === ownKey) migratedKey = key;
+                            break;
+                        } catch (_) { /* 브라우저 저장소가 차단되어도 서버 저장은 가능하다. */ }
+                    }
+                    applySeatSettings(legacy);
+                    ({ settings } = await request(endpoint, {
+                        method: 'PUT', body: JSON.stringify({ settings: seatSettingsSnapshot(), ifMissing: true })
+                    }));
+                }
+                applySeatSettings(settings);
+                if (migratedKey) {
+                    try { localStorage.removeItem(migratedKey); } catch (_) {}
+                }
+                settingsReady = true;
+                showSaveStatus('서버 저장 완료');
+            }
+
+            function applySeatSettings(value) {
                 try {
-                    const saved = JSON.parse(localStorage.getItem(storageKey) || '[]');
+                    const saved = value || {};
                     const savedUnavailableSeats = Array.isArray(saved) ? saved : saved.unavailableSeats;
                     unavailableSeats = new Set((savedUnavailableSeats || []).filter((seat) => Number.isInteger(seat) && seat >= 0 && seat < TOTAL_DESKS));
                     const savedLocks = Array.isArray(saved) ? {} : saved.genderLocks;
@@ -781,6 +867,9 @@
                     const savedUnassignedStudents = Array.isArray(saved) ? [] : saved.unassignedStudents;
                     unassignedStudents = new Set((savedUnassignedStudents || []).map(String).filter((studentNumber) => students.some((student) => student.number === studentNumber)));
                     isTeacherView = !Array.isArray(saved) && saved.teacherView === true;
+                    const order = Array.isArray(saved.studentOrder) ? saved.studentOrder.map(String) : [];
+                    const ranks = new Map(order.map((number, index) => [number, index]));
+                    students.sort((a, b) => (ranks.get(a.number) ?? order.length) - (ranks.get(b.number) ?? order.length));
                 } catch (_) {
                     unavailableSeats = new Set();
                     genderLocks = new Map();
@@ -835,6 +924,7 @@
             function handleDeskClick(index) {
                 // 학생들이 고르는 동안에는 교사가 자리를 건드리지 않는다.
                 if (liveRoom) return;
+                if (!settingsReady || isClassLoading || isShufflingSeats || liveBusy) return;
                 if (isUnusedMode || unavailableSeats.has(index)) {
                     toggleUnusedSeat(index);
                     return;
@@ -856,7 +946,11 @@
                     for (const [seat, lockedNumber] of studentLocks) {
                         if (lockedNumber === studentNumber) studentLocks.delete(seat);
                     }
+                    for (const [seat, assignedNumber] of manualAssignments) {
+                        if (assignedNumber === studentNumber) manualAssignments.delete(seat);
+                    }
                     studentLocks.set(index, studentNumber);
+                    unassignedStudents.delete(studentNumber);
                     genderLocks.delete(index);
                     manualAssignments.delete(index);
                     manualVacantSeats.delete(index);
@@ -950,6 +1044,21 @@
             }
 
             async function loadClassroom(classId = null) {
+                if (isClassLoading || isShufflingSeats || liveBusy) return;
+                isClassLoading = true;
+                syncControls();
+                if (!await flushSeatSettings()) {
+                    isClassLoading = false;
+                    classSwitcherSelect.value = currentClassId;
+                    syncControls();
+                    return;
+                }
+                settingsReady = false;
+                showSaveStatus('서버에서 자리배치를 불러오는 중…');
+                resetSeatModes();
+                students = [];
+                applySeatSettings({});
+                renderDesks();
                 // 다른 반으로 바꾸면 이전 반의 자리 고르기 화면은 접는다(방 자체는 서버에 남는다).
                 stopLivePolling();
                 liveRoom = null;
@@ -986,15 +1095,7 @@
                     if (classRes && classRes.classroom) {
                         const c = classRes.classroom;
                         classHeader.textContent = `${c.grade}학년 ${c.classNumber}반 (${c.teacherName} 선생님)`;
-                        seatingClassKey = c.id || `${c.schoolName}-${c.grade}-${c.classNumber}`;
                         currentClassId = c.id ? String(c.id) : '';
-                        // 교사마다 자리배치를 따로 저장한다(전담교사는 특별실 배치가 교실과 다르므로).
-                        // 예전 키(교사 구분 없음)에 저장된 배치는 처음 한 번 자동으로 이어받는다.
-                        const legacyStorageKey = `classroom-seating-unused-${seatingClassKey}`;
-                        storageKey = currentUserId ? `${legacyStorageKey}-u${currentUserId}` : legacyStorageKey;
-                        if (storageKey !== legacyStorageKey && !localStorage.getItem(storageKey) && localStorage.getItem(legacyStorageKey)) {
-                            localStorage.setItem(storageKey, localStorage.getItem(legacyStorageKey));
-                        }
                         students = (c.students || []).map(s => ({ number: String(s.number), name: s.name, gender: s.gender || '남' }));
                         students.forEach((student, index) => {
                             student.avatarKey = c.students[index]?.avatarKey || '';
@@ -1003,21 +1104,45 @@
                         if (c.id && classSwitcherSelect) classSwitcherSelect.value = c.id;
                     } else {
                         classHeader.textContent = '담임 학급 정보를 불러오지 못했습니다. 학교 관리자에게 학급 배정을 확인해 주세요.';
-                        students = [];
+                        throw new Error('학급 정보를 불러오지 못했습니다.');
                     }
-                } catch (_) {
-                    classHeader.textContent = '담임 학급 정보를 불러오지 못했습니다. 학교 관리자에게 학급 배정을 확인해 주세요.';
-                    students = [];
+                    if (!currentClassId) throw new Error('학급 정보를 불러오지 못했습니다.');
+                    await loadSeatSettings();
+                    updateTeacherViewButton();
+                    populateStudentLockOptions();
+                    renderDesks();
+                    await resumeLiveRoom(currentClassId);
+                } catch (error) {
+                    settingsReady = false;
+                    showSaveStatus('서버에서 자리배치를 불러오지 못했습니다. 다시 시도해 주세요.', () => loadClassroom(classId));
+                } finally {
+                    isClassLoading = false;
+                    syncControls();
                 }
-                loadSeatSettings();
-                updateTeacherViewButton();
-                populateStudentLockOptions();
-                renderDesks();
-                await resumeLiveRoom(currentClassId);
             }
 
             // ── 학생 선착순 자리 고르기 ──────────────────────────────────────
-            const liveControls = () => [shuffleBtn, unusedModeBtn, maleLockBtn, femaleLockBtn, studentLockSelect, studentLockBtn, resetUnusedBtn];
+            const liveControls = () => [shuffleBtn, unusedModeBtn, maleLockBtn, femaleLockBtn, studentLockSelect, studentLockBtn, resetUnusedBtn, clearSeatsBtn];
+
+            function syncControls(active = Boolean(liveRoom)) {
+                const busy = !settingsReady || isClassLoading || isShufflingSeats || liveBusy;
+                liveControls().forEach((control) => { control.disabled = active || busy; });
+                teacherViewBtn.disabled = busy;
+                liveOpenBtn.disabled = busy;
+                classSwitcherSelect.disabled = isClassLoading || isShufflingSeats || liveBusy;
+            }
+
+            function clearAllSeats() {
+                if (!settingsReady || isClassLoading || isShufflingSeats || liveBusy || liveRoom) return;
+                studentLocks.clear();
+                manualAssignments.clear();
+                manualVacantSeats = new Set(Array.from({ length: TOTAL_DESKS }, (_, index) => index)
+                    .filter((index) => !unavailableSeats.has(index)));
+                unassignedStudents = new Set(students.map((student) => student.number));
+                resetSeatModes();
+                saveSeatSettings();
+                renderDesks();
+            }
 
             function stopLivePolling() {
                 clearTimeout(livePollTimer);
@@ -1029,7 +1154,7 @@
                 livePanel.hidden = !active;
                 liveOpenBtn.hidden = active;
                 liveOpenGroup.hidden = active;
-                liveControls().forEach((control) => { control.disabled = active; });
+                syncControls(active);
             }
 
             function resetSeatModes() {
@@ -1107,13 +1232,15 @@
 
             async function pollLiveRoom() {
                 if (!liveRoom) return;
+                const pollingRoomId = liveRoom.id;
                 if (document.hidden) { scheduleLivePoll(); return; }
                 try {
                     const { room } = await request(`/api/seating/rooms/${liveRoom.code}`);
-                    if (!liveRoom) return;
+                    if (!liveRoom || liveRoom.id !== pollingRoomId) return;
                     if (room.status !== 'open') { finalizeLiveRoom(room); return; }
                     applyLiveRoom(room);
                 } catch (error) {
+                    if (!liveRoom || liveRoom.id !== pollingRoomId) return;
                     if (error.status === 404) { exitLive({ restore: true }); return; }
                     console.warn('Live seat poll:', error.message);
                 }
@@ -1149,13 +1276,14 @@
             }
 
             async function openLiveRoom() {
-                if (liveBusy || liveRoom) return;
+                if (liveBusy || liveRoom || !settingsReady || isClassLoading || isShufflingSeats) return;
                 if (!currentClassId) { alert('학급 정보를 먼저 불러와야 방을 열 수 있습니다.'); return; }
                 if (!students.length) { alert('학생 명단이 비어 있어 방을 열 수 없습니다.'); return; }
                 if (!confirm('학생들이 방번호로 들어와 빈자리를 선착순으로 고르는 방을 열까요?\n\n지금 정해 둔 X 표시·남녀 고정·학생 자리 고정은 그대로 지켜지고, 나머지 자리는 학생들이 고른 대로 배치됩니다. 한 번 고른 자리는 바꿀 수 없습니다.')) return;
                 liveBusy = true;
-                liveOpenBtn.disabled = true;
+                syncControls();
                 try {
+                    if (!await flushSeatSettings()) return;
                     const { room } = await request('/api/seating/rooms', {
                         method: 'POST',
                         body: JSON.stringify({ classId: currentClassId, layout: currentLayout() })
@@ -1165,7 +1293,7 @@
                     alert(error.message);
                 } finally {
                     liveBusy = false;
-                    liveOpenBtn.disabled = false;
+                    syncControls();
                 }
             }
 
@@ -1175,6 +1303,7 @@
                 if (!confirm(`자리 고르기를 마감하고 배치를 확정할까요?${pendingCount ? `\n아직 고르지 않은 학생 ${pendingCount}명은 남은 자리에 자동으로 배치됩니다.` : ''}`)) return;
                 liveBusy = true;
                 liveCloseBtn.disabled = true;
+                syncControls();
                 try {
                     const { room } = await request(`/api/seating/rooms/${liveRoom.id}/close`, { method: 'POST' });
                     finalizeLiveRoom(room);
@@ -1183,6 +1312,7 @@
                 } finally {
                     liveBusy = false;
                     liveCloseBtn.disabled = false;
+                    syncControls();
                 }
             }
 
@@ -1191,6 +1321,7 @@
                 if (!confirm('방을 닫고 학생들이 고른 자리를 모두 버릴까요? 방을 열기 전 배치로 돌아갑니다.')) return;
                 liveBusy = true;
                 liveCancelBtn.disabled = true;
+                syncControls();
                 try {
                     await request(`/api/seating/rooms/${liveRoom.id}`, { method: 'DELETE' });
                     exitLive({ restore: true });
@@ -1200,6 +1331,7 @@
                 } finally {
                     liveBusy = false;
                     liveCancelBtn.disabled = false;
+                    syncControls();
                 }
             }
 
@@ -1291,9 +1423,9 @@
             let isShufflingSeats = false;
 
             function shuffleStudents() {
-                if (isShufflingSeats) return;
+                if (isShufflingSeats || !settingsReady || isClassLoading || liveBusy || liveRoom) return;
                 isShufflingSeats = true;
-                shuffleBtn.disabled = true;
+                syncControls();
                 shuffleBtn.style.opacity = '0.7';
 
                 manualAssignments.clear();
@@ -1339,12 +1471,21 @@
                         });
 
                         isShufflingSeats = false;
-                        shuffleBtn.disabled = false;
+                        syncControls();
                         shuffleBtn.style.opacity = '1';
                     }
                 }, 55);
             }
 
+            clearSeatsBtn.addEventListener('click', clearAllSeats);
+            saveRetryBtn.addEventListener('click', () => { if (retryAction) void retryAction(); });
+            window.addEventListener('online', () => { if (pendingSettings) void flushSeatSettings(); });
+            window.addEventListener('beforeunload', (event) => {
+                if (pendingSettings || saveTask || isShufflingSeats) {
+                    event.preventDefault();
+                    event.returnValue = '';
+                }
+            });
             shuffleBtn.addEventListener('click', shuffleStudents);
             teacherViewBtn.addEventListener('click', toggleTeacherView);
             unusedModeBtn.addEventListener('click', () => setUnusedMode(!isUnusedMode));
@@ -1375,6 +1516,7 @@
             document.addEventListener('visibilitychange', () => {
                 if (!document.hidden && liveRoom) pollLiveRoom();
             });
+            syncControls();
             init();
         })();
     </script>

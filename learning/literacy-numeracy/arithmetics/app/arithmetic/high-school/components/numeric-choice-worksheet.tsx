@@ -1,7 +1,7 @@
 "use client";
 
 import { type ReactNode, useEffect, useMemo, useState } from "react";
-import { createNumericChoices } from "../../../../lib/worksheet-choice-utils";
+import { createNumericChoices, uniqueFormattedChoices } from "../../../../lib/worksheet-choice-utils";
 import MathFormula from "../../../components/math-formula";
 import WorksheetQuestionPrompt from "../../../components/worksheet-question-prompt";
 import WorksheetChoicePanel, { type WorksheetChoiceProblem } from "./worksheet-choice-panel";
@@ -59,11 +59,11 @@ export default function NumericChoiceWorksheet({ initialSeed, subject, title, in
     prompt: problem.prompt,
     latex: problem.latex,
     correctLatex: formatChoice(problem, problem.answers),
-    choices: (makeChoices?.(problem) ?? createNumericChoices(problem.answers, problem.id)).map((choice) => ({
+    choices: uniqueFormattedChoices((makeChoices?.(problem) ?? createNumericChoices(problem.answers, problem.id)).map((choice) => ({
       id: choice.id,
       latex: formatChoice(problem, choice.values),
       correct: choice.correct,
-    })),
+    }))),
   }));
 
   useEffect(() => {
@@ -120,7 +120,7 @@ export default function NumericChoiceWorksheet({ initialSeed, subject, title, in
         {formulaGuide && (showFormulaGuide || answerSheet) && (
           <div className="numeric-formula-guide" data-testid="numeric-formula-guide">{formulaGuide}</div>
         )}
-        {!formulaGuide && instruction && <div className="polynomial-instruction"><b>{instruction}</b><span>답안 입력에서 4지선다 채점</span></div>}
+        {!formulaGuide && instruction && <div className="polynomial-instruction"><b>{instruction}</b><span>답안 입력에서 선택형 채점</span></div>}
         <div className="polynomial-problem-grid logarithm-grid">{problems.map((problem, index) => row(problem, index, answerSheet))}</div>
       </div>
     );

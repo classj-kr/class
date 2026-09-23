@@ -1,0 +1,656 @@
+{
+  "version": 10,
+  "rooms": {
+    "6479": {
+      "activeMission": {
+        "hunt": null,
+        "id": "arrival-race-mudj6ykw-96526u",
+        "roomCode": "6479",
+        "kind": "arrivalRace",
+        "mode": "any",
+        "title": "안데스산맥 · 알프스산맥 · 사하라 사막 도착 미션",
+        "studyTargets": [
+          {
+            "key": "discovery:andes",
+            "type": "discovery",
+            "id": "andes",
+            "name": "안데스산맥",
+            "point": {
+              "x": 11944.444444444443,
+              "y": 11500
+            },
+            "reading": {
+              "id": "andes",
+              "name": "안데스산맥",
+              "kind": "자연",
+              "todayCountry": "남아메리카 서부 일곱 나라",
+              "text": "남아메리카 서쪽 가장자리를 북에서 남으로 7000킬로미터 이어지는, 세상에서 가장 긴 산맥입니다. 바다 밑 땅덩이가 대륙 밑으로 밀려 들어가며 솟은 것이라 화산과 지진이 잦습니다. 높은 곳에도 사람이 살아, 감자와 옥수수를 층층이 쌓은 밭에서 기르고 라마에 짐을 실어 날랐습니다.\n\n1520년에는 잉카 제국이 산줄기를 따라 4만 킬로미터의 돌길을 놓고 다스리던 때였습니다.",
+              "image": "/learn/world-voyage/assets/landmarks/andes.webp?v=1789698704482",
+              "imageCredit": "오늘날 모습 · 사진 Alexander Gerst · CC BY-SA 2.0 · 위키미디어 공용",
+              "imageSource": "https://commons.wikimedia.org/wiki/File:Andes_-_Anden_-_29526977937.jpg",
+              "imageLicenseUrl": "https://creativecommons.org/licenses/by-sa/2.0"
+            },
+            "text": "남아메리카 서쪽 가장자리를 북에서 남으로 7000킬로미터 이어지는, 세상에서 가장 긴 산맥입니다. 바다 밑 땅덩이가 대륙 밑으로 밀려 들어가며 솟은 것이라 화산과 지진이 잦습니다. 높은 곳에도 사람이 살아, 감자와 옥수수를 층층이 쌓은 밭에서 기르고 라마에 짐을 실어 날랐습니다.\n\n1520년에는 잉카 제국이 산줄기를 따라 4만 킬로미터의 돌길을 놓고 다스리던 때였습니다.",
+            "questions": [
+              {
+                "prompt": "읽은 설명에 맞는 것은?",
+                "passage": "이 산맥은 남아메리카의 어느 쪽을 따라 이어지나요?",
+                "answer": "서쪽 가장자리",
+                "choices": [
+                  "서쪽 가장자리",
+                  "북쪽 해안만",
+                  "대륙의 동서 중앙선",
+                  "동쪽 해안"
+                ],
+                "explanation": "남아메리카 서쪽 가장자리를 북에서 남으로 7000킬로미터 이어지는",
+                "id": "q0"
+              },
+              {
+                "prompt": "읽은 설명에 맞는 것은?",
+                "passage": "화산과 지진이 잦은 까닭은?",
+                "answer": "바다 밑 땅덩이가 대륙 밑으로 밀려 들어가서",
+                "choices": [
+                  "바람이 산 위에 모래를 쌓아서",
+                  "빙하가 대륙 전체를 덮어서",
+                  "강물이 산맥을 가로질러 흘러서",
+                  "바다 밑 땅덩이가 대륙 밑으로 밀려 들어가서"
+                ],
+                "explanation": "바다 밑 땅덩이가 대륙 밑으로 밀려 들어가며 솟은 것이라 화산과 지진이 잦습니다.",
+                "id": "q1"
+              },
+              {
+                "prompt": "읽은 설명에 맞는 것은?",
+                "passage": "높은 곳에 살던 사람들의 농사 모습은?",
+                "answer": "층층이 쌓은 밭에서 감자와 옥수수를 길렀다.",
+                "choices": [
+                  "평평한 밭에서 벼와 보리를 길렀다.",
+                  "강가의 밭에서 밀과 콩을 길렀다.",
+                  "층층이 쌓은 밭에서 감자와 옥수수를 길렀다.",
+                  "넓은 밭에서 목화와 사탕수수를 길렀다."
+                ],
+                "explanation": "높은 곳에도 사람이 살아, 감자와 옥수수를 층층이 쌓은 밭에서 기르고 라마에 짐을 실어 날랐습니다.",
+                "id": "q2"
+              }
+            ]
+          },
+          {
+            "key": "discovery:alps",
+            "type": "discovery",
+            "id": "alps",
+            "name": "알프스산맥",
+            "point": {
+              "x": 21055.555555555555,
+              "y": 4833.333333333333
+            },
+            "reading": {
+              "id": "alps",
+              "name": "알프스산맥",
+              "kind": "자연",
+              "todayCountry": "스위스·이탈리아·프랑스·오스트리아",
+              "text": "프랑스에서 오스트리아까지 1200킬로미터를 활처럼 휘어 이어지는 산맥으로, 4000미터가 넘는 봉우리가 여럿입니다. 아프리카 쪽 땅덩이가 유럽 쪽을 밀어붙여 바다 밑 지층이 솟아오른 것이라, 산꼭대기에서 조개 화석이 나옵니다. 유럽의 큰 강들이 모두 여기서 시작해 사방으로 흘러 나갑니다.\n\n1520년에는 고갯길마다 수도원과 여관이 있어 상인들이 짐을 지고 넘던 산이었습니다.",
+              "image": "/learn/world-voyage/assets/landmarks/alps.webp?v=1789698703971",
+              "imageCredit": "오늘날 모습 · 사진 Terra (EOS AM-1) satellite · Public domain · 위키미디어 공용",
+              "imageSource": "https://commons.wikimedia.org/wiki/File:Alps_2007-03-13_10.10UTC_1px-250m.jpg",
+              "imageLicenseUrl": ""
+            },
+            "text": "프랑스에서 오스트리아까지 1200킬로미터를 활처럼 휘어 이어지는 산맥으로, 4000미터가 넘는 봉우리가 여럿입니다. 아프리카 쪽 땅덩이가 유럽 쪽을 밀어붙여 바다 밑 지층이 솟아오른 것이라, 산꼭대기에서 조개 화석이 나옵니다. 유럽의 큰 강들이 모두 여기서 시작해 사방으로 흘러 나갑니다.\n\n1520년에는 고갯길마다 수도원과 여관이 있어 상인들이 짐을 지고 넘던 산이었습니다.",
+            "questions": [
+              {
+                "prompt": "읽은 설명에 맞는 것은?",
+                "passage": "산꼭대기에서 조개 화석이 나오는 까닭은?",
+                "answer": "바다 밑 지층이 솟아올랐기 때문",
+                "choices": [
+                  "화산이 바다에서 솟아올랐기 때문",
+                  "옛 호수의 퇴적층이 남았기 때문",
+                  "강이 운반한 퇴적물이 쌓였기 때문",
+                  "바다 밑 지층이 솟아올랐기 때문"
+                ],
+                "explanation": "아프리카 쪽 땅덩이가 유럽 쪽을 밀어붙여 바다 밑 지층이 솟아오른 것이라, 산꼭대기에서 조개 화석이 나옵니다.",
+                "id": "q0"
+              },
+              {
+                "prompt": "읽은 설명에 맞는 것은?",
+                "passage": "설명에 나온 산맥의 이어진 범위는?",
+                "answer": "프랑스에서 오스트리아까지",
+                "choices": [
+                  "스페인에서 영국까지",
+                  "독일에서 스웨덴까지",
+                  "포르투갈에서 모로코까지",
+                  "프랑스에서 오스트리아까지"
+                ],
+                "explanation": "프랑스에서 오스트리아까지 1200킬로미터를 활처럼 휘어 이어지는 산맥으로, 4000미터가 넘는 봉우리가 여럿입니다.",
+                "id": "q1"
+              },
+              {
+                "prompt": "읽은 설명에 맞는 것은?",
+                "passage": "여러 높은 봉우리의 높이에 대한 설명은?",
+                "answer": "4000미터가 넘는다.",
+                "choices": [
+                  "모두 8000미터가 넘는다.",
+                  "4000미터가 넘는다.",
+                  "400미터를 넘지 않는다.",
+                  "1000미터를 넘지 않는다."
+                ],
+                "explanation": "4000미터가 넘는 봉우리가 여럿입니다.",
+                "id": "q2"
+              }
+            ]
+          },
+          {
+            "key": "discovery:sahara",
+            "type": "discovery",
+            "id": "sahara",
+            "name": "사하라 사막",
+            "point": {
+              "x": 21444.444444444445,
+              "y": 7388.88888888889
+            },
+            "reading": {
+              "id": "sahara",
+              "name": "사하라 사막",
+              "kind": "자연",
+              "todayCountry": "북아프리카 여러 나라",
+              "text": "북아프리카를 동서로 가로지르는 세상에서 가장 큰 더운 사막으로, 넓이가 아프리카의 3분의 1에 이릅니다. 모래언덕은 일부일 뿐이고 자갈밭과 바위 고원이 훨씬 넓습니다. 사람들은 물이 솟는 오아시스를 징검다리 삼아 낙타로 건넜고, 이 길을 통해 아프리카의 금이 지중해로 갔습니다.\n\n1520년에는 낙타 상단이 소금과 금을 싣고 남북으로 오가던 때였습니다.",
+              "image": "/learn/world-voyage/assets/landmarks/sahara.webp?v=1789698711092",
+              "imageCredit": "오늘날 모습 · 사진 Project Apollo Archive · Public domain · 위키미디어 공용",
+              "imageSource": "https://commons.wikimedia.org/wiki/File:Sahara_real_color.jpg",
+              "imageLicenseUrl": ""
+            },
+            "text": "북아프리카를 동서로 가로지르는 세상에서 가장 큰 더운 사막으로, 넓이가 아프리카의 3분의 1에 이릅니다. 모래언덕은 일부일 뿐이고 자갈밭과 바위 고원이 훨씬 넓습니다. 사람들은 물이 솟는 오아시스를 징검다리 삼아 낙타로 건넜고, 이 길을 통해 아프리카의 금이 지중해로 갔습니다.\n\n1520년에는 낙타 상단이 소금과 금을 싣고 남북으로 오가던 때였습니다.",
+            "questions": [
+              {
+                "prompt": "읽은 설명에 맞는 것은?",
+                "passage": "이 사막에서 모래언덕보다 훨씬 넓은 것은?",
+                "answer": "자갈밭과 바위 고원",
+                "choices": [
+                  "갯벌과 습지",
+                  "빙하와 빙원",
+                  "침엽수림과 초원",
+                  "자갈밭과 바위 고원"
+                ],
+                "explanation": "모래언덕은 일부일 뿐이고 자갈밭과 바위 고원이 훨씬 넓습니다.",
+                "id": "q0"
+              },
+              {
+                "prompt": "읽은 설명에 맞는 것은?",
+                "passage": "사람들은 무엇을 징검다리 삼아 사막을 건넜나요?",
+                "answer": "물이 솟는 오아시스",
+                "choices": [
+                  "눈이 쌓인 산봉우리",
+                  "물이 솟는 오아시스",
+                  "바닷가의 항구",
+                  "강물이 만나는 삼각주"
+                ],
+                "explanation": "사람들은 물이 솟는 오아시스를 징검다리 삼아 낙타로 건넜고",
+                "id": "q1"
+              },
+              {
+                "prompt": "읽은 설명에 맞는 것은?",
+                "passage": "사막을 건너는 길을 통해 지중해로 운반된 것은?",
+                "answer": "아프리카의 금",
+                "choices": [
+                  "북유럽의 목재",
+                  "아프리카의 금",
+                  "동아시아의 도자기",
+                  "아메리카의 감자"
+                ],
+                "explanation": "이 길을 통해 아프리카의 금이 지중해로 갔습니다.",
+                "id": "q2"
+              }
+            ]
+          }
+        ],
+        "instructions": "지정된 장소를 원하는 순서로 방문하세요. 각 장소의 설명을 읽고 세 문제를 연속으로 맞히면 발견 성공입니다. 모든 장소를 완료하면 완주합니다.",
+        "atlasInstruction": "",
+        "markerMode": "hidden",
+        "targetPlace": {
+          "id": "andes",
+          "name": "안데스산맥 · 알프스산맥 · 사하라 사막",
+          "category": "",
+          "region": "",
+          "continent": "",
+          "atlasHint": "",
+          "mode": "sea",
+          "point": {
+            "x": 11944.444444444443,
+            "y": 11500
+          },
+          "radiusTiles": 3.2
+        },
+        "finalQuiz": null,
+        "startOptions": [
+          {
+            "id": "original_city_223",
+            "startPlace": {
+              "id": "original_city_223",
+              "name": "포르투",
+              "region": "이베리아",
+              "continent": "",
+              "atlasHint": "",
+              "point": {
+                "x": 19032,
+                "y": 5432
+              }
+            }
+          },
+          {
+            "id": "original_city_222",
+            "startPlace": {
+              "id": "original_city_222",
+              "name": "아코루냐",
+              "region": "이베리아",
+              "continent": "",
+              "atlasHint": "",
+              "point": {
+                "x": 19064,
+                "y": 5160
+              }
+            }
+          },
+          {
+            "id": "original_city_221",
+            "startPlace": {
+              "id": "original_city_221",
+              "name": "빌바오",
+              "region": "이베리아",
+              "continent": "",
+              "atlasHint": "",
+              "point": {
+                "x": 19656,
+                "y": 5176
+              }
+            }
+          },
+          {
+            "id": "original_city_217",
+            "startPlace": {
+              "id": "original_city_217",
+              "name": "세비야",
+              "region": "이베리아",
+              "continent": "",
+              "atlasHint": "",
+              "point": {
+                "x": 19272,
+                "y": 5896
+              }
+            }
+          }
+        ],
+        "createdAt": 1790133377936,
+        "phase": "selecting",
+        "startedAtGameMinutes": null
+      },
+      "progress": {
+        "미션검사학생": {
+          "arrival-race-mudj6ykw-96526u": {
+            "status": "assigned",
+            "placeStudy": {
+              "places": {}
+            },
+            "stageIndex": 0,
+            "cargoItemId": null,
+            "selectedMissionId": null,
+            "selectedStartPlaceId": null,
+            "shipPortId": null,
+            "finalQuizStatus": "none",
+            "finalQuizArrivedAt": null,
+            "finalQuizAnswers": [
+              null,
+              null,
+              null
+            ],
+            "finalCorrectCount": null,
+            "finalSubmittedAt": null,
+            "completedAt": null,
+            "completedGameMinutes": null,
+            "finishRank": null
+          }
+        }
+      },
+      "settings": {
+        "paused": false,
+        "locked": false,
+        "roomType": "race",
+        "started": false
+      },
+      "clock": {
+        "gameMinutes": 0
+      },
+      "discoveries": {
+        "미션검사학생": []
+      },
+      "hunts": {},
+      "host": {
+        "tokenHash": "a8479f6390d8826d26dc1546152f195609f34c039e77a1b781fe85c4c0dde6de",
+        "createdAt": 1790133377496,
+        "lastActiveAt": 1790133378004
+      }
+    },
+    "9058": {
+      "activeMission": {
+        "hunt": null,
+        "id": "arrival-race-mudja2od-pz28ti",
+        "roomCode": "9058",
+        "kind": "arrivalRace",
+        "mode": "any",
+        "title": "안데스산맥 · 알프스산맥 · 사하라 사막 도착 미션",
+        "studyTargets": [
+          {
+            "key": "discovery:andes",
+            "type": "discovery",
+            "id": "andes",
+            "name": "안데스산맥",
+            "point": {
+              "x": 11944.444444444443,
+              "y": 11500
+            },
+            "reading": {
+              "id": "andes",
+              "name": "안데스산맥",
+              "kind": "자연",
+              "todayCountry": "남아메리카 서부 일곱 나라",
+              "text": "남아메리카 서쪽 가장자리를 북에서 남으로 7000킬로미터 이어지는, 세상에서 가장 긴 산맥입니다. 바다 밑 땅덩이가 대륙 밑으로 밀려 들어가며 솟은 것이라 화산과 지진이 잦습니다. 높은 곳에도 사람이 살아, 감자와 옥수수를 층층이 쌓은 밭에서 기르고 라마에 짐을 실어 날랐습니다.\n\n1520년에는 잉카 제국이 산줄기를 따라 4만 킬로미터의 돌길을 놓고 다스리던 때였습니다.",
+              "image": "/learn/world-voyage/assets/landmarks/andes.webp?v=1789698704482",
+              "imageCredit": "오늘날 모습 · 사진 Alexander Gerst · CC BY-SA 2.0 · 위키미디어 공용",
+              "imageSource": "https://commons.wikimedia.org/wiki/File:Andes_-_Anden_-_29526977937.jpg",
+              "imageLicenseUrl": "https://creativecommons.org/licenses/by-sa/2.0"
+            },
+            "text": "남아메리카 서쪽 가장자리를 북에서 남으로 7000킬로미터 이어지는, 세상에서 가장 긴 산맥입니다. 바다 밑 땅덩이가 대륙 밑으로 밀려 들어가며 솟은 것이라 화산과 지진이 잦습니다. 높은 곳에도 사람이 살아, 감자와 옥수수를 층층이 쌓은 밭에서 기르고 라마에 짐을 실어 날랐습니다.\n\n1520년에는 잉카 제국이 산줄기를 따라 4만 킬로미터의 돌길을 놓고 다스리던 때였습니다.",
+            "questions": [
+              {
+                "prompt": "읽은 설명에 맞는 것은?",
+                "passage": "이 산맥은 남아메리카의 어느 쪽을 따라 이어지나요?",
+                "answer": "서쪽 가장자리",
+                "choices": [
+                  "북쪽 해안만",
+                  "동쪽 해안",
+                  "대륙의 동서 중앙선",
+                  "서쪽 가장자리"
+                ],
+                "explanation": "남아메리카 서쪽 가장자리를 북에서 남으로 7000킬로미터 이어지는",
+                "id": "q0"
+              },
+              {
+                "prompt": "읽은 설명에 맞는 것은?",
+                "passage": "화산과 지진이 잦은 까닭은?",
+                "answer": "바다 밑 땅덩이가 대륙 밑으로 밀려 들어가서",
+                "choices": [
+                  "바람이 산 위에 모래를 쌓아서",
+                  "빙하가 대륙 전체를 덮어서",
+                  "바다 밑 땅덩이가 대륙 밑으로 밀려 들어가서",
+                  "강물이 산맥을 가로질러 흘러서"
+                ],
+                "explanation": "바다 밑 땅덩이가 대륙 밑으로 밀려 들어가며 솟은 것이라 화산과 지진이 잦습니다.",
+                "id": "q1"
+              },
+              {
+                "prompt": "읽은 설명에 맞는 것은?",
+                "passage": "높은 곳에 살던 사람들의 농사 모습은?",
+                "answer": "층층이 쌓은 밭에서 감자와 옥수수를 길렀다.",
+                "choices": [
+                  "층층이 쌓은 밭에서 감자와 옥수수를 길렀다.",
+                  "강가의 밭에서 밀과 콩을 길렀다.",
+                  "평평한 밭에서 벼와 보리를 길렀다.",
+                  "넓은 밭에서 목화와 사탕수수를 길렀다."
+                ],
+                "explanation": "높은 곳에도 사람이 살아, 감자와 옥수수를 층층이 쌓은 밭에서 기르고 라마에 짐을 실어 날랐습니다.",
+                "id": "q2"
+              }
+            ]
+          },
+          {
+            "key": "discovery:alps",
+            "type": "discovery",
+            "id": "alps",
+            "name": "알프스산맥",
+            "point": {
+              "x": 21055.555555555555,
+              "y": 4833.333333333333
+            },
+            "reading": {
+              "id": "alps",
+              "name": "알프스산맥",
+              "kind": "자연",
+              "todayCountry": "스위스·이탈리아·프랑스·오스트리아",
+              "text": "프랑스에서 오스트리아까지 1200킬로미터를 활처럼 휘어 이어지는 산맥으로, 4000미터가 넘는 봉우리가 여럿입니다. 아프리카 쪽 땅덩이가 유럽 쪽을 밀어붙여 바다 밑 지층이 솟아오른 것이라, 산꼭대기에서 조개 화석이 나옵니다. 유럽의 큰 강들이 모두 여기서 시작해 사방으로 흘러 나갑니다.\n\n1520년에는 고갯길마다 수도원과 여관이 있어 상인들이 짐을 지고 넘던 산이었습니다.",
+              "image": "/learn/world-voyage/assets/landmarks/alps.webp?v=1789698703971",
+              "imageCredit": "오늘날 모습 · 사진 Terra (EOS AM-1) satellite · Public domain · 위키미디어 공용",
+              "imageSource": "https://commons.wikimedia.org/wiki/File:Alps_2007-03-13_10.10UTC_1px-250m.jpg",
+              "imageLicenseUrl": ""
+            },
+            "text": "프랑스에서 오스트리아까지 1200킬로미터를 활처럼 휘어 이어지는 산맥으로, 4000미터가 넘는 봉우리가 여럿입니다. 아프리카 쪽 땅덩이가 유럽 쪽을 밀어붙여 바다 밑 지층이 솟아오른 것이라, 산꼭대기에서 조개 화석이 나옵니다. 유럽의 큰 강들이 모두 여기서 시작해 사방으로 흘러 나갑니다.\n\n1520년에는 고갯길마다 수도원과 여관이 있어 상인들이 짐을 지고 넘던 산이었습니다.",
+            "questions": [
+              {
+                "prompt": "읽은 설명에 맞는 것은?",
+                "passage": "산꼭대기에서 조개 화석이 나오는 까닭은?",
+                "answer": "바다 밑 지층이 솟아올랐기 때문",
+                "choices": [
+                  "바다 밑 지층이 솟아올랐기 때문",
+                  "강이 운반한 퇴적물이 쌓였기 때문",
+                  "화산이 바다에서 솟아올랐기 때문",
+                  "옛 호수의 퇴적층이 남았기 때문"
+                ],
+                "explanation": "아프리카 쪽 땅덩이가 유럽 쪽을 밀어붙여 바다 밑 지층이 솟아오른 것이라, 산꼭대기에서 조개 화석이 나옵니다.",
+                "id": "q0"
+              },
+              {
+                "prompt": "읽은 설명에 맞는 것은?",
+                "passage": "설명에 나온 산맥의 이어진 범위는?",
+                "answer": "프랑스에서 오스트리아까지",
+                "choices": [
+                  "포르투갈에서 모로코까지",
+                  "독일에서 스웨덴까지",
+                  "스페인에서 영국까지",
+                  "프랑스에서 오스트리아까지"
+                ],
+                "explanation": "프랑스에서 오스트리아까지 1200킬로미터를 활처럼 휘어 이어지는 산맥으로, 4000미터가 넘는 봉우리가 여럿입니다.",
+                "id": "q1"
+              },
+              {
+                "prompt": "읽은 설명에 맞는 것은?",
+                "passage": "여러 높은 봉우리의 높이에 대한 설명은?",
+                "answer": "4000미터가 넘는다.",
+                "choices": [
+                  "모두 8000미터가 넘는다.",
+                  "4000미터가 넘는다.",
+                  "400미터를 넘지 않는다.",
+                  "1000미터를 넘지 않는다."
+                ],
+                "explanation": "4000미터가 넘는 봉우리가 여럿입니다.",
+                "id": "q2"
+              }
+            ]
+          },
+          {
+            "key": "discovery:sahara",
+            "type": "discovery",
+            "id": "sahara",
+            "name": "사하라 사막",
+            "point": {
+              "x": 21444.444444444445,
+              "y": 7388.88888888889
+            },
+            "reading": {
+              "id": "sahara",
+              "name": "사하라 사막",
+              "kind": "자연",
+              "todayCountry": "북아프리카 여러 나라",
+              "text": "북아프리카를 동서로 가로지르는 세상에서 가장 큰 더운 사막으로, 넓이가 아프리카의 3분의 1에 이릅니다. 모래언덕은 일부일 뿐이고 자갈밭과 바위 고원이 훨씬 넓습니다. 사람들은 물이 솟는 오아시스를 징검다리 삼아 낙타로 건넜고, 이 길을 통해 아프리카의 금이 지중해로 갔습니다.\n\n1520년에는 낙타 상단이 소금과 금을 싣고 남북으로 오가던 때였습니다.",
+              "image": "/learn/world-voyage/assets/landmarks/sahara.webp?v=1789698711092",
+              "imageCredit": "오늘날 모습 · 사진 Project Apollo Archive · Public domain · 위키미디어 공용",
+              "imageSource": "https://commons.wikimedia.org/wiki/File:Sahara_real_color.jpg",
+              "imageLicenseUrl": ""
+            },
+            "text": "북아프리카를 동서로 가로지르는 세상에서 가장 큰 더운 사막으로, 넓이가 아프리카의 3분의 1에 이릅니다. 모래언덕은 일부일 뿐이고 자갈밭과 바위 고원이 훨씬 넓습니다. 사람들은 물이 솟는 오아시스를 징검다리 삼아 낙타로 건넜고, 이 길을 통해 아프리카의 금이 지중해로 갔습니다.\n\n1520년에는 낙타 상단이 소금과 금을 싣고 남북으로 오가던 때였습니다.",
+            "questions": [
+              {
+                "prompt": "읽은 설명에 맞는 것은?",
+                "passage": "이 사막에서 모래언덕보다 훨씬 넓은 것은?",
+                "answer": "자갈밭과 바위 고원",
+                "choices": [
+                  "자갈밭과 바위 고원",
+                  "빙하와 빙원",
+                  "침엽수림과 초원",
+                  "갯벌과 습지"
+                ],
+                "explanation": "모래언덕은 일부일 뿐이고 자갈밭과 바위 고원이 훨씬 넓습니다.",
+                "id": "q0"
+              },
+              {
+                "prompt": "읽은 설명에 맞는 것은?",
+                "passage": "사람들은 무엇을 징검다리 삼아 사막을 건넜나요?",
+                "answer": "물이 솟는 오아시스",
+                "choices": [
+                  "강물이 만나는 삼각주",
+                  "눈이 쌓인 산봉우리",
+                  "물이 솟는 오아시스",
+                  "바닷가의 항구"
+                ],
+                "explanation": "사람들은 물이 솟는 오아시스를 징검다리 삼아 낙타로 건넜고",
+                "id": "q1"
+              },
+              {
+                "prompt": "읽은 설명에 맞는 것은?",
+                "passage": "사막을 건너는 길을 통해 지중해로 운반된 것은?",
+                "answer": "아프리카의 금",
+                "choices": [
+                  "아메리카의 감자",
+                  "동아시아의 도자기",
+                  "아프리카의 금",
+                  "북유럽의 목재"
+                ],
+                "explanation": "이 길을 통해 아프리카의 금이 지중해로 갔습니다.",
+                "id": "q2"
+              }
+            ]
+          }
+        ],
+        "instructions": "지정된 장소를 원하는 순서로 방문하세요. 각 장소의 설명을 읽고 세 문제를 연속으로 맞히면 발견 성공입니다. 모든 장소를 완료하면 완주합니다.",
+        "atlasInstruction": "",
+        "markerMode": "hidden",
+        "targetPlace": {
+          "id": "andes",
+          "name": "안데스산맥 · 알프스산맥 · 사하라 사막",
+          "category": "",
+          "region": "",
+          "continent": "",
+          "atlasHint": "",
+          "mode": "sea",
+          "point": {
+            "x": 11944.444444444443,
+            "y": 11500
+          },
+          "radiusTiles": 3.2
+        },
+        "finalQuiz": null,
+        "startOptions": [
+          {
+            "id": "original_city_223",
+            "startPlace": {
+              "id": "original_city_223",
+              "name": "포르투",
+              "region": "이베리아",
+              "continent": "",
+              "atlasHint": "",
+              "point": {
+                "x": 19032,
+                "y": 5432
+              }
+            }
+          },
+          {
+            "id": "original_city_222",
+            "startPlace": {
+              "id": "original_city_222",
+              "name": "아코루냐",
+              "region": "이베리아",
+              "continent": "",
+              "atlasHint": "",
+              "point": {
+                "x": 19064,
+                "y": 5160
+              }
+            }
+          },
+          {
+            "id": "original_city_221",
+            "startPlace": {
+              "id": "original_city_221",
+              "name": "빌바오",
+              "region": "이베리아",
+              "continent": "",
+              "atlasHint": "",
+              "point": {
+                "x": 19656,
+                "y": 5176
+              }
+            }
+          },
+          {
+            "id": "original_city_217",
+            "startPlace": {
+              "id": "original_city_217",
+              "name": "세비야",
+              "region": "이베리아",
+              "continent": "",
+              "atlasHint": "",
+              "point": {
+                "x": 19272,
+                "y": 5896
+              }
+            }
+          }
+        ],
+        "createdAt": 1790133523213,
+        "phase": "running",
+        "startedAtGameMinutes": 0,
+        "startedAt": 1790133523449
+      },
+      "progress": {
+        "미션검사학생": {
+          "arrival-race-mudja2od-pz28ti": {
+            "status": "inProgress",
+            "placeStudy": {
+              "places": {}
+            },
+            "stageIndex": 0,
+            "cargoItemId": null,
+            "selectedMissionId": null,
+            "selectedStartPlaceId": "original_city_223",
+            "shipPortId": "original_city_223",
+            "finalQuizStatus": "none",
+            "finalQuizArrivedAt": null,
+            "finalQuizAnswers": [
+              null,
+              null,
+              null
+            ],
+            "finalCorrectCount": null,
+            "finalSubmittedAt": null,
+            "completedAt": null,
+            "completedGameMinutes": null,
+            "finishRank": null
+          }
+        }
+      },
+      "settings": {
+        "paused": false,
+        "locked": false,
+        "roomType": "race",
+        "started": false
+      },
+      "clock": {
+        "gameMinutes": 0
+      },
+      "discoveries": {
+        "미션검사학생": []
+      },
+      "hunts": {},
+      "host": {
+        "tokenHash": "f0f6c0c73a3cbdabbf49f46b29b87e648c727698b0f5e1dffb21c23bf8af0020",
+        "createdAt": 1790133522808,
+        "lastActiveAt": 1790133523287
+      }
+    }
+  }
+}

@@ -1,0 +1,177 @@
+1/176 두 자리 수 덧셈·뺄셈: PASS
+2/176 한 자리 수 덧셈·뺄셈: PASS
+3/176 1부터 9까지 수 세기: PASS
+4/176 주고받은 뒤의 수 구하기: PASS
+5/176 10 모으기·가르기: PASS
+6/176 10을 넘는 덧셈·뺄셈: PASS
+7/176 덧셈·뺄셈 빈칸 채우기: PASS
+8/176 두 자리 수 읽기: PASS
+9/176 뛰어 세기: PASS
+10/176 두 자리 수 세로셈: PASS
+11/176 세로셈 빈칸: PASS
+12/176 덧셈·뺄셈 빈칸: PASS
+13/176 묶어 세기: PASS
+14/176 구구단(2·5단): PASS
+15/176 구구단(3·4단): PASS
+16/176 구구단(6·7단): PASS
+17/176 구구단(8·9단): PASS
+18/176 구구단(종합): PASS
+19/176 시각 읽기와 쓰기: PASS
+20/176 세 자리 수의 덧셈·뺄셈: PASS
+21/176 덧셈·뺄셈 빈칸: PASS
+22/176 보수 뺄셈(100): PASS
+23/176 보수 뺄셈(1000): PASS
+24/176 몇백에 가까운 수 계산: PASS
+25/176 나눗셈의 뜻: PASS
+26/176 두 자리 수 × 한 자리 수 세로셈: PASS
+27/176 두 자리 수 × 한 자리 수: PASS
+28/176 길이의 덧셈·뺄셈: PASS
+29/176 시간 단위 바꾸기: PASS
+30/176 시간의 덧셈·뺄셈: PASS
+31/176 여러 자리 수의 곱셈: PASS
+32/176 19단 곱셈: PASS
+33/176 제곱수: PASS
+34/176 몫과 나머지: PASS
+35/176 나눗셈 구구: PASS
+36/176 분수만큼 구하기: PASS
+37/176 대분수와 가분수: PASS
+38/176 무게와 들이의 계산: PASS
+39/176 분수와 단위: PASS
+40/176 큰 수 읽기·쓰기: PASS
+41/176 각도의 어림: PASS
+42/176 여러 자리 수의 곱셈: PASS
+43/176 만·억·조의 곱셈: PASS
+44/176 세 자리 수 ÷ 두 자리 수: PASS
+45/176 분모가 같은 대분수의 덧셈·뺄셈: PASS
+46/176 소수의 덧셈·뺄셈: PASS
+47/176 단위 변환: PASS
+48/176 자연수의 혼합 계산: PASS
+49/176 자연수를 소수의 곱으로 나타내기: PASS
+50/176 소수(素數) 찾기: PASS
+51/176 최대공약수·최소공배수: PASS
+52/176 분수의 덧셈·뺄셈·곱셈: PASS
+53/176 대분수의 덧셈·뺄셈·곱셈: PASS
+54/176 분수의 크기 비교: PASS
+55/176 소수의 곱셈: PASS
+56/176 다각형의 둘레와 넓이: PASS
+57/176 분수의 사칙 계산: PASS
+58/176 자연수÷자연수를 소수로 나타내기: PASS
+59/176 소수의 곱셈·나눗셈과 반올림: PASS
+60/176 소수의 나눗셈과 몫·나머지: PASS
+61/176 분수·소수 혼합 계산: PASS
+62/176 비례식·비례배분: PASS
+63/176 원의 둘레와 넓이: PASS
+64/176 직육면체의 겉넓이·부피: PASS
+65/176 쌓기나무의 개수와 세 방향 모양: PASS
+66/176 소인수분해: rows outside sheet; new rows outside sheet
+67/176 정수와 유리수의 기초·혼합계산: PASS
+68/176 최대공약수와 최소공배수: invalid math; rows outside sheet; new problems invalid math; new rows outside sheet
+69/176 좌표·정비례·반비례 계산: rows outside sheet; new rows outside sheet
+70/176 기본각·다각형·부채꼴 계산: rows outside sheet; new rows outside sheet
+71/176 일차방정식과 활용 계산: rows outside sheet; new rows outside sheet
+72/176 입체도형의 겉넓이와 부피: PASS
+73/176 대푯값·도수·상대도수: rows outside sheet; new rows outside sheet
+74/176 유리수와 순환소수: rows outside sheet; new rows outside sheet
+75/176 지수법칙: rows outside sheet; new rows outside sheet
+76/176 일차부등식과 활용: rows outside sheet; new rows outside sheet
+77/176 문자식 기본연산 종합: rows outside sheet; new rows outside sheet
+78/176 연립방정식: rows outside sheet; new rows outside sheet
+79/176 삼각형과 사각형의 계산: PASS
+80/176 일차함수: rows outside sheet; new rows outside sheet
+81/176 피타고라스 정리 계산: rows outside sheet; new rows outside sheet
+82/176 경우의 수와 확률 계산: rows outside sheet; new rows outside sheet
+83/176 제곱근과 근호 계산: rows outside sheet; new rows outside sheet
+84/176 인수분해: 완전제곱식: rows outside sheet; new rows outside sheet
+85/176 다항식의 곱셈과 곱셈공식: rows outside sheet; new rows outside sheet
+86/176 인수분해: 제곱의 차: rows outside sheet; new rows outside sheet
+87/176 인수분해: 일반 이차삼항식: rows outside sheet; new rows outside sheet
+88/176 인수분해: 세 문자식: rows outside sheet; new rows outside sheet
+89/176 인수분해: 3차식 공통인수: rows outside sheet; new rows outside sheet
+90/176 인수분해: 식 정리 후 인수분해: rows outside sheet; new rows outside sheet
+91/176 인수분해: rows outside sheet; new rows outside sheet
+92/176 이차방정식: 기본·인수분해: rows outside sheet; new rows outside sheet
+93/176 이차방정식: 근의 공식: rows outside sheet; new rows outside sheet
+94/176 이차방정식: 식 정리 후 풀기: rows outside sheet; new rows outside sheet
+95/176 이차방정식 활용 계산: rows outside sheet; new rows outside sheet
+96/176 이차방정식 종합: rows outside sheet; new rows outside sheet
+97/176 이차함수: rows outside sheet; new rows outside sheet
+98/176 삼각비의 값과 특수각: rows outside sheet; new rows outside sheet
+99/176 삼각비: 변의 길이 계산: rows outside sheet; new rows outside sheet
+100/176 원주각과 각의 응용: rows outside sheet; new rows outside sheet
+101/176 원의 성질: 접선과 현의 길이: rows outside sheet; new rows outside sheet
+102/176 사분위수와 상자그림 계산: rows outside sheet; new rows outside sheet
+103/176 통계: 산포도 계산: rows outside sheet; new rows outside sheet
+104/176 다항식의 연산: PASS
+105/176 대푯값과 산포도 계산 종합: rows outside sheet; new rows outside sheet
+106/176 다항식의 나눗셈·조립제법: PASS
+107/176 항등식과 나머지정리: PASS
+108/176 세제곱의 합·차 인수분해: rows outside sheet; new rows outside sheet
+109/176 고차식·대칭식 인수분해: PASS
+110/176 분수식의 계산: PASS
+111/176 복소수: PASS
+112/176 지수와 근호: choice lacks unique correct answer
+113/176 이차방정식: 판별식·근과 계수: PASS
+114/176 이차방정식과 이차함수: PASS
+115/176 연립이차방정식: PASS
+116/176 유리·무리·절댓값 방정식: choice lacks unique correct answer
+117/176 삼차방정식과 사차방정식: PASS
+118/176 연립·절댓값·이차부등식: PASS
+119/176 경우의 수·순열·조합: PASS
+120/176 행렬의 뜻과 기본 연산: PASS
+121/176 좌표와 직선의 방정식: rows outside sheet; new rows outside sheet
+122/176 원의 방정식: PASS
+123/176 집합의 연산과 원소 개수: PASS
+124/176 합성함수와 역함수: rows outside sheet; new rows outside sheet
+125/176 유리함수와 무리함수: PASS
+126/176 로그의 값과 성질: PASS
+127/176 지수·로그 방정식: PASS
+128/176 지수함수·로그함수 계산과 활용: PASS
+129/176 지수·로그 부등식: PASS
+130/176 일반각·호도법·부채꼴: PASS
+131/176 삼각함수의 값과 관계: PASS
+132/176 삼각함수 그래프의 성질: PASS
+133/176 삼각방정식·부등식: PASS
+134/176 등차수열과 등비수열: PASS
+135/176 사인법칙과 코사인법칙: PASS
+136/176 등비수열의 활용: PASS
+137/176 시그마와 점화식: PASS
+138/176 수학적 귀납법: PASS
+139/176 함수의 극한과 연속: PASS
+140/176 다항함수의 미분: PASS
+141/176 미분의 활용: PASS
+142/176 평균값정리: PASS
+143/176 다항함수의 적분: PASS
+144/176 수열의 극한과 급수: PASS
+145/176 삼각함수의 덧셈정리와 합·곱 변환: PASS
+146/176 지수·로그함수 미분: PASS
+147/176 삼각함수의 미분: PASS
+148/176 sec·csc·cot 미분: PASS
+149/176 매개변수·음함수·역함수 미분: PASS
+150/176 이계도함수·변곡점·그래프 개형: PASS
+151/176 여러 함수의 부정적분: PASS
+152/176 치환적분과 부분적분: PASS
+153/176 정적분 계산: PASS
+154/176 정적분의 활용: PASS
+155/176 곡선의 길이: PASS
+156/176 회전체의 부피: PASS
+157/176 이차곡선의 방정식: PASS
+158/176 이차곡선의 접선: PASS
+159/176 평면벡터의 연산: PASS
+160/176 벡터의 내적과 정사영: PASS
+161/176 도형과 벡터: PASS
+162/176 공간도형의 위치 관계와 정사영: PASS
+163/176 순열의 활용과 중복조합: rows outside sheet; new rows outside sheet
+164/176 공간좌표: PASS
+165/176 이항정리: PASS
+166/176 전체확률·베이즈 정리: PASS
+167/176 확률의 계산: PASS
+168/176 이산확률분포와 이항분포: PASS
+169/176 정규분포의 계산: PASS
+170/176 통계적 추정: PASS
+171/176 복소수의 극형식·오일러 공식: PASS
+172/176 행렬·행렬식·가우스 소거: PASS
+173/176 벡터공간·기저·고유값 입문: PASS
+174/176 편미분·그래디언트 입문: PASS
+175/176 이중적분·좌표변환 입문: PASS
+176/176 미분방정식 입문: PASS
+{"total":176,"flagged":42}

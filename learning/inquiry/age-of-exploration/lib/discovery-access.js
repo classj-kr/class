@@ -1,5 +1,6 @@
 'use strict';
 const GeoMotion = require('../public/js/geo-motion.js');
+const { createRegionAccess } = require('./discovery-regions.js');
 
 // A bounded flood fill identifies the actual lake, not every blue pixel in a box.
 // Built once per discovery; movement and snapshots only inspect its shore points.
@@ -35,6 +36,7 @@ function createDiscoveryAccess(items, terrainAtCell, terrain, radiusTiles) {
   const radius = radiusTiles * terrain.TILE;
   for (const item of items) {
     if (item.discoveryArea?.type === 'waterbody') areas.set(item.id, waterbodyArea(item.discoveryArea, terrainAtCell, terrain));
+    if (item.discoveryArea?.type === 'region') areas.set(item.id, createRegionAccess(item.id, terrainAtCell, terrain, radius));
   }
   const distance = (a, b) => GeoMotion.greatCircleDistancePixels(a.x, a.y, b.x, b.y, terrain.WORLD_PIXEL_W, terrain.WORLD_PIXEL_H);
   return function proximity(player, item) {
@@ -42,6 +44,7 @@ function createDiscoveryAccess(items, terrainAtCell, terrain, radiusTiles) {
     const area = areas.get(item.id);
     const canUse = item.reach === 'any' || item.reach === player.mode;
     if (!area) return { distance: distance(player, item), canUse };
+    if (typeof area === 'function') return area(player, canUse);
     // Allow an existing local boat to inspect the lake; land parties use its shores.
     const cellId = Math.floor(player.y / terrain.TILE) * terrain.WORLD_W + Math.floor(player.x / terrain.TILE);
     if (player.mode === 'sea' && area.water.has(cellId)) return { distance: 0, canUse, markerPoint: { x: player.x, y: player.y } };
