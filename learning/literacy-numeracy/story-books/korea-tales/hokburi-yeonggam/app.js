@@ -488,17 +488,17 @@ const EN = {
         }
     ],
     quiz: [
-        { q: "What was the old man good at?", choices: ["Cutting firewood", "Singing songs", "Carrying a frame"], answer: 1 },
-        { q: "Why did he sing in the empty hut?", choices: ["To call the goblins", "To drive the owl off", "Because he was afraid"], answer: 2 },
+        { q: "Why was the old man caught by night on the mountain?", choices: ["He lost the path and wandered the valley", "Cutting wood was such fun he forgot the time", "He waited on purpose to meet the goblins"], answer: 1 },
+        { q: "Why did he sing in the empty hut?", choices: ["To call the goblins", "Because he could not sleep", "Because he was afraid"], answer: 2 },
         { q: "What did the goblin ask him?", choices: ["Where the sound came from", "How much he should be paid", "To sing them one more song"], answer: 0 },
-        { q: "What did the goblins give him?", choices: ["A book of songs", "A large club", "Gold and beads"], answer: 2 },
-        { q: "Why did the greedy old man go up the mountain?", choices: ["To get treasure", "To learn to sing", "To cut firewood"], answer: 0 },
-        { q: "What happened to the greedy old man?", choices: ["All his lumps went", "He got one lump more", "He came back with treasure"], answer: 1 },
+        { q: "How did the goblin chief pay for the lump?", choices: ["He struck his club and treasure poured out", "He filled the carrying frame with wood", "He took the lump off without any pain"], answer: 0 },
+        { q: "Why were the goblins angry with the greedy old man?", choices: ["His singing cracked and lost the beat", "He asked far too high a price", "The last lump had made no sound at all"], answer: 2 },
+        { q: "Which lump did the goblins stick on the greedy old man?", choices: ["A new one made with the club", "The one they had taken last time", "The baby goblin's lump"], answer: 1 },
         {
             q: "Which reaction to this book does NOT fit?",
             wide: true,
             choices: [
-                "He sang to keep his fear down, so when you are frightened making a noise helps you bear it.",
+                "He beamed and said the lump was with him for life, so you can carry a flaw and still live brightly.",
                 "A lie he told on the spot turned into luck, so luck in a story does not come to the one who aims at it.",
                 "The greedy one pressed for the price first, so the same place with a different heart ends differently.",
                 "The goblins bought the lump because they wanted the songs, so they paid for it and were not cheated."
@@ -688,17 +688,17 @@ const EN = {
 };
 
 const QUIZ = [
-    { q: "혹부리 영감이 잘하는 것은 무엇이었나요?", choices: ["나무 하기", "노래 부르기", "지게 지기"], answer: 1 },
-    { q: "영감은 왜 빈 오두막에서 노래를 불렀나요?", choices: ["도깨비를 부르려고", "부엉이를 쫓으려고", "무서움을 달래려고"], answer: 2 },
+    { q: "혹부리 영감이 산에서 밤을 맞은 까닭은 무엇인가요?", choices: ["캄캄한 골짜기에서 길을 잃고 헤매서", "나무하기가 재미나 시간 가는 줄 몰라서", "도깨비를 만나려고 일부러 밤까지 기다려서"], answer: 1 },
+    { q: "영감은 왜 빈 오두막에서 노래를 불렀나요?", choices: ["도깨비를 부르려고", "잠이 오지 않아서", "무서움을 달래려고"], answer: 2 },
     { q: "도깨비가 영감에게 물은 것은 무엇인가요?", choices: ["그 소리가 어디서 나오느냐", "값을 얼마나 쳐주면 되겠느냐", "노래를 한 곡 더 해 보라고"], answer: 0 },
-    { q: "도깨비들은 영감에게 무엇을 주었나요?", choices: ["노래 책 한 권", "커다란 방망이", "금은과 구슬"], answer: 2 },
-    { q: "욕심쟁이 영감은 왜 산으로 갔나요?", choices: ["보물을 받으려고", "노래를 배우려고", "나무를 하려고"], answer: 0 },
-    { q: "욕심쟁이 영감은 어떻게 되었나요?", choices: ["혹이 모두 없어졌다", "혹이 하나 더 붙었다", "보물을 얻어 왔다"], answer: 1 },
+    { q: "도깨비 대장은 혹값을 어떻게 치렀나요?", choices: ["방망이를 두드려 보물을 쏟아 냈다", "지게에 나무를 가득 채워 주었다", "혹을 아프지 않게 떼어 주었다"], answer: 0 },
+    { q: "도깨비들은 왜 욕심쟁이 영감에게 화를 냈나요?", choices: ["노래가 갈라지고 박자가 안 맞아서", "값을 너무 많이 불러서", "지난번 혹에서 아무 소리도 안 나서"], answer: 2 },
+    { q: "도깨비들이 욕심쟁이 영감에게 붙인 혹은 어떤 혹이었나요?", choices: ["방망이로 새로 만든 혹", "지난번에 떼어 간 혹", "아기 도깨비의 혹"], answer: 1 },
     {
         q: "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
         wide: true,
         choices: [
-            "영감이 무서움을 달래려고 노래를 부른 것을 보면, 겁이 나면 소리라도 내야 견디는구나.",
+            "영감이 혹도 나하고 한평생이라며 싱글벙글한 것을 보면, 흠을 안고도 밝게 살 수 있구나.",
             "둘러댄 거짓말이 뜻밖에 복이 된 것을 보면, 이야기 속 복은 노린다고 오는 게 아니야.",
             "욕심쟁이가 값부터 재촉한 것을 보면, 같은 자리에 서도 마음이 다르면 끝이 다르네.",
             "도깨비들이 노래를 듣고 싶어 혹을 사 간 것을 보면, 값을 치르고 가져간 셈이니 속인 건 아니겠다."

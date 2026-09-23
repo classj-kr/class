@@ -440,19 +440,19 @@ const EN = {
         }
     ],
     quiz: [
-        { q: "What did the green frog do with his mother's words?", choices: ["Always obeyed them", "Always did the opposite", "Pretended not to hear"], answer: 1 },
-        { q: "When told to cry gae-gul, what did the son cry?", choices: ["Gae-gul", "Gul-gae", "Hoppity-hop"], answer: 1 },
+        { q: "When his mother begged, 'Just once, do as I say,' what did the son do?", choices: ["Said 'No!' and dived into the water", "Said 'Yes!' and hopped off the other way", "Said nothing and went off across the stream"], answer: 1 },
+        { q: "When the son cried his cry backwards, what did his mother do?", choices: ["Turned red and hid behind a lotus leaf", "Laughed along with the neighbourhood frogs", "Tried crying gul-gae along with him"], answer: 0 },
         { q: "Why did the mother ask to be buried by the stream?", choices: ["She expected him to bury her by the stream", "Because he played in the stream", "She expected him to bury her on the mountain"], answer: 2 },
         { q: "What did the green frog carry one at a time all night?", choices: ["Lotus leaves", "Stones", "Willow branches"], answer: 1 },
-        { q: "What kind of day was the day he built the grave?", choices: ["The first day he obeyed", "The first day he lied", "The first day he went up the mountain"], answer: 0 },
-        { q: "Why does the green frog cry when it rains?", choices: ["He dislikes rain", "He is worried about the grave", "He is hungry"], answer: 1 },
+        { q: "When his mother took to her bed, what did the son do?", choices: ["Went up the mountain to dig herbs", "Still did the opposite and played in the stream", "Brought water to her lips and stayed by her side"], answer: 2 },
+        { q: "Why does the green frog cry when it rains?", choices: ["He fears the grave will wash away", "His mother died on a rainy day", "Rain makes him think he hears her voice"], answer: 0 },
         {
             q: "Which reaction to this book does NOT fit?",
             wide: true,
             choices: [
                 "She asked to be buried by the stream, so it was not that she distrusted him — she knew him too well.",
                 "The first time he obeyed was after she had gone, so some things are only understood too late.",
-                "He built the grave stone by stone, so being sorry is done with the hands, not with words.",
+                "He built the grave until his front feet were raw, so being sorry is done with the hands, not with words.",
                 "The neighbourhood frogs copied his cry and played along with him, so at least he had friends."
             ],
             answer: 3
@@ -626,19 +626,19 @@ const EN = {
 };
 
 const QUIZ = [
-    { q: "청개구리는 엄마 말을 어떻게 했나요?", choices: ["늘 잘 들었다", "늘 반대로 했다", "못 들은 척했다"], answer: 1 },
-    { q: "엄마가 개굴개굴 울라고 하자 아들은 뭐라고 울었나요?", choices: ["개굴개굴", "굴개굴개", "폴짝폴짝"], answer: 1 },
+    { q: "엄마가 '제발 한 번만 엄마 말대로 해 보렴' 하자 아들은 어떻게 했나요?", choices: ["'싫어요!' 하고 물속으로 들어갔다", "'네!' 하고는 반대쪽으로 뛰어갔다", "아무 말 없이 개울 건너로 가 버렸다"], answer: 1 },
+    { q: "아들이 우는 소리를 거꾸로 내자 엄마는 어떻게 했나요?", choices: ["얼굴이 빨개져 연잎 뒤로 숨었다", "동네 개구리들과 같이 배를 잡고 웃었다", "아들을 따라 굴개굴개 하고 울어 보았다"], answer: 0 },
     { q: "엄마가 개울가에 묻어 달라고 한 까닭은 무엇인가요?", choices: ["아들이 개울가에 묻을 줄 알고", "아들이 개울에서 놀기 때문에", "아들이 산에 묻을 줄 알고"], answer: 2 },
     { q: "청개구리가 밤새 하나하나 옮긴 것은 무엇인가요?", choices: ["연잎", "돌", "버드나무 가지"], answer: 1 },
-    { q: "엄마 무덤을 만든 날은 청개구리에게 어떤 날이었나요?", choices: ["처음 말을 따른 날", "처음 거짓말한 날", "처음 산에 간 날"], answer: 0 },
-    { q: "비가 오면 청개구리는 왜 우나요?", choices: ["비를 싫어해서", "무덤이 걱정돼서", "배가 고파서"], answer: 1 },
+    { q: "엄마가 자리에 눕자 아들은 어떻게 했나요?", choices: ["산에 가서 약초를 캐 왔다", "그래도 반대로만 하며 개울에서 놀았다", "물을 떠다 입에 대 주고 곁을 지켰다"], answer: 2 },
+    { q: "비가 오면 청개구리는 왜 우나요?", choices: ["엄마 무덤이 떠내려갈까 봐", "엄마가 비 오는 날 세상을 떠나서", "비가 오면 엄마 목소리가 들리는 것 같아서"], answer: 0 },
     {
         q: "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
         wide: true,
         choices: [
             "엄마가 개울가에 묻어 달라고 한 것을 보면, 아들을 못 믿은 게 아니라 너무 잘 알았던 거야.",
             "아들이 처음으로 엄마 말대로 한 날이 하필 엄마가 떠난 뒤였던 것을 보면, 뒤늦게야 알게 되는 일도 있네.",
-            "돌을 하나하나 옮겨 무덤을 쌓은 것을 보면, 뉘우침은 말이 아니라 손으로 하는 거구나.",
+            "앞발이 다 까지도록 무덤을 쌓은 것을 보면, 뉘우침은 말이 아니라 손으로 하는 거구나.",
             "동네 개구리들이 아들의 우는 소리를 따라 하며 놀아 준 것을 보면, 그래도 동무는 있었겠다."
         ],
         answer: 3

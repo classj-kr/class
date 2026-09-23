@@ -395,18 +395,18 @@ const EN = {
         }
     ],
     quiz: [
-        { q: "What did the boy tell his mother as he left home?", choices: ["That he'd bring back rice", "That he'd see the wide world", "That he'd buy an ox"], answer: 1 },
-        { q: "What ate the grain of millet?", choices: ["A bird", "A dog", "A mouse"], answer: 2 },
-        { q: "What chased the mouse off?", choices: ["A cat", "A dog", "An ox"], answer: 0 },
-        { q: "How did the dog leave that house?", choices: ["It was chased over the wall", "It snapped its rope and ran", "It bit through the reins"], answer: 1 },
-        { q: "What did the boy get last of all?", choices: ["A horse", "A cat", "An ox"], answer: 2 },
-        { q: "What did the boy take out of his coat and open up?", choices: ["The ox's rope", "An old bundle", "A folded sheet of paper"], answer: 2 },
+        { q: "What did the boy tell his mother as he left home?", choices: ["That he'd bring back rice", "That he'd see the wide world", "That he'd look for work"], answer: 1 },
+        { q: "When the millet vanished, what did the first host do?", choices: ["Gave him a measure of millet instead", "Said sorry and cooked him breakfast", "Turned the house over and caught him the mouse"], answer: 2 },
+        { q: "What did the boy do each time the thing he left was lost?", choices: ["Took what was offered instead and went on his way", "Demanded to be paid for it", "Stayed at that house until it was found"], answer: 0 },
+        { q: "How did the cat leave that house?", choices: ["The dog chased it over the wall", "It snapped its rope and ran", "It ran into the grass after a mouse"], answer: 0 },
+        { q: "How did the horse leave the boy's hands?", choices: ["It kicked in the night, broke its rope and ran", "The ox and calf drove it out of the gate", "The host thought better of it and tied it back in the stall"], answer: 1 },
+        { q: "What did the boy take out of his coat and open up when he got home?", choices: ["The ox's rope", "An old bundle", "A folded sheet of paper"], answer: 2 },
         {
             q: "Which reaction to this book does NOT fit?",
             wide: true,
             choices: [
-                "He wrapped one grain of millet in paper and asked them to keep it, so it started with not treating a small thing lightly.",
-                "Every house felt sorry and handed him something bigger, so people then took another's property seriously.",
+                "He asked them to look after even one grain of millet, so it started with not treating a small thing lightly.",
+                "The hosts felt sorry because their own animals had done it, so people then took another's property seriously.",
                 "He said the same words each time, my whole fortune, so it is the way you carry a thing that makes it worth something.",
                 "He asked for something bigger every time he handed a thing over, so he had a sharp head for a bargain."
             ],
@@ -687,18 +687,18 @@ const EN = {
 };
 
 const QUIZ = [
-    { q: "소년은 집을 떠나며 어머니에게 뭐라고 했나요?", choices: ["쌀을 구해 오겠다고", "큰 세상을 보겠다고", "황소를 사 오겠다고"], answer: 1 },
-    { q: "좁쌀을 먹어 버린 것은 무엇인가요?", choices: ["새", "개", "쥐"], answer: 2 },
-    { q: "쥐를 쫓아 버린 것은 무엇인가요?", choices: ["고양이", "개", "황소"], answer: 0 },
-    { q: "개는 어떻게 그 집을 떠났나요?", choices: ["담 밖으로 쫓겨 갔다", "줄을 끊고 달아났다", "고삐를 물어뜯었다"], answer: 1 },
-    { q: "소년이 마지막으로 얻은 것은 무엇인가요?", choices: ["말", "고양이", "황소"], answer: 2 },
-    { q: "소년이 품에서 꺼내 편 것은 무엇인가요?", choices: ["황소의 고삐", "낡은 봇짐 하나", "접힌 종이 한 장"], answer: 2 },
+    { q: "소년은 집을 떠나며 어머니에게 뭐라고 했나요?", choices: ["쌀을 구해 오겠다고", "큰 세상을 보고 오겠다고", "일자리를 찾아보겠다고"], answer: 1 },
+    { q: "좁쌀이 없어지자 첫 집 주인은 어떻게 했나요?", choices: ["좁쌀 한 됫박을 대신 내주었다", "미안하다며 아침밥을 지어 주었다", "온 집을 뒤져 쥐를 잡아다 주었다"], answer: 2 },
+    { q: "소년은 맡긴 것이 없어질 때마다 어떻게 했나요?", choices: ["대신 주는 것을 받고 다시 길을 나섰다", "물어내라며 값을 달라고 했다", "다시 찾을 때까지 그 집에 머물렀다"], answer: 0 },
+    { q: "고양이는 어떻게 그 집을 떠났나요?", choices: ["개가 담 밖으로 쫓아냈다", "줄을 끊고 달아났다", "쥐를 쫓다가 풀숲으로 사라졌다"], answer: 0 },
+    { q: "말은 어떻게 소년의 손을 떠났나요?", choices: ["밤중에 뒷발질을 하다 줄을 끊고 달아났다", "황소와 송아지가 대문 밖으로 내쫓았다", "주인이 아까워 도로 외양간에 매어 두었다"], answer: 1 },
+    { q: "집에 온 소년이 품에서 꺼내 편 것은 무엇인가요?", choices: ["황소의 고삐", "낡은 봇짐 하나", "접힌 종이 한 장"], answer: 2 },
     {
         q: "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
         wide: true,
         choices: [
-            "좁쌀 한 톨을 종이에 싸서 맡긴 것을 보면, 작다고 함부로 하지 않는 마음이 시작이었구나.",
-            "집집마다 미안해하며 더 큰 것을 내준 것을 보면, 그때 사람들은 남의 것을 무겁게 여겼네.",
+            "좁쌀 한 톨도 잘 맡아 달라고 한 것을 보면, 작다고 함부로 하지 않는 마음이 시작이었구나.",
+            "제 집 짐승이 저지른 일이라며 미안해한 주인들을 보면, 그때 사람들은 남의 것을 무겁게 여겼네.",
             "소년이 끝까지 제가 가진 것 전부라고 말한 것을 보면, 값이 아니라 태도가 사람을 만드는 거야.",
             "소년이 맡길 때마다 더 큰 것으로 바꿔 달라고 한 것을 보면, 셈이 밝은 아이였나 봐."
         ],

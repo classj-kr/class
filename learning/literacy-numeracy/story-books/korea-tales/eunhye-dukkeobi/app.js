@@ -488,20 +488,20 @@ const EN = {
         }
     ],
     quiz: [
-        { q: "What did the girl do when she saw the toad?", choices: ["Drove it off with the stick", "Quietly put the stick down", "Called the mistress in"], answer: 1 },
-        { q: "What was the village's old worry?", choices: ["A drought coming every year", "A tiger off the mountain", "The centipede at the shrine"], answer: 2 },
-        { q: "Why did the village keep watch every year?", choices: ["The shrine was old and unsafe", "Thieves kept getting into it", "In case the centipede grew angry"], answer: 2 },
-        { q: "What was the sound from the ceiling at midnight?", choices: ["A slow dragging sound", "Wind whistling in the door cracks", "A mouth working at rice grains"], answer: 0 },
-        { q: "What did the toad and the centipede fight with?", choices: ["The light they gave off", "Shouting very loudly", "Pushing at each other"], answer: 0 },
-        { q: "What happened to the village after that?", choices: ["They built a new shrine", "Nobody kept watch again", "They kept toads at home"], answer: 1 },
+        { q: "What did the girl give the toad on the hearth?", choices: ["Her whole share of cold rice", "Grains of rice from her own bowl", "A handful of raw rice taken in secret"], answer: 1 },
+        { q: "How did the village choose who would spend the night at the shrine?", choices: ["They decided to send a child with no parents", "The mistress of the house picked someone", "They drew lots"], answer: 2 },
+        { q: "What did people say would happen if the centipede grew angry?", choices: ["Fields would dry up and animals fall sick", "The shrine would fall and the mountain cry out", "It would come down each night and bite people"], answer: 0 },
+        { q: "How did the girl find out the toad had followed her to the shrine?", choices: ["She saw it crawl in through the door crack", "Her skirt felt heavy and something wriggled", "She heard it crying in the dark"], answer: 1 },
+        { q: "What did the toad and the centipede fight with?", choices: ["Spitting poison", "Biting each other", "The light they gave off"], answer: 2 },
+        { q: "What became of the toad after the centipede was gone?", choices: ["It woke again and stayed with the girl for years", "It used up its light and faded like smoke", "It stayed at the shrine to guard the village"], answer: 0 },
         {
             q: "Which reaction to this book does NOT fit?",
             wide: true,
             choices: [
-                "She shared rice when she had not enough herself, so sharing is not something you do because you have plenty.",
-                "The girl with no parents was chosen before the lots were drawn, so you can see where the weak stood in those days.",
-                "The girl nursed the toad for seven days, so there is no telling who gave and who paid back.",
-                "The toad followed her all the way to the shrine, so the girl must have asked it to come with her."
+                "A girl with a single handful for supper shared it with a toad, so sharing is not something you do because you have plenty.",
+                "Everyone knew beforehand it would be the girl with no parents, so you can see where the weak stood in those days.",
+                "The girl carried the limp toad home and nursed it through the nights, so there is no telling who gave and who paid back.",
+                "The villagers walked up to the shrine with the girl, so they all felt sorry for her after all."
             ],
             answer: 3
         }
@@ -679,20 +679,20 @@ const EN = {
 };
 
 const QUIZ = [
-    { q: "부뚜막에서 두꺼비를 본 소녀는 어떻게 했나요?", choices: ["막대로 쫓아냈다", "막대를 슬며시 내려놓았다", "주인집 아주머니를 불렀다"], answer: 1 },
-    { q: "마을 사람들의 오랜 근심은 무엇이었나요?", choices: ["해마다 드는 가뭄", "산에서 오는 호랑이", "사당의 커다란 지네"], answer: 2 },
-    { q: "마을 사람들이 해마다 사당을 지킨 까닭은 무엇인가요?", choices: ["사당이 낡고 위험해서", "도둑이 자꾸 들어와서", "지네가 성을 낼까 봐"], answer: 2 },
-    { q: "한밤중 사당 천장에서 난 소리는 어땠나요?", choices: ["스르륵 쓸리는 소리", "문틈으로 바람이 휘휘 부는 소리", "밥알을 우물우물 먹는 소리"], answer: 0 },
-    { q: "두꺼비와 지네는 무엇으로 겨루었나요?", choices: ["뿜어내는 빛으로", "큰 소리를 질러서", "서로 밀어붙여서"], answer: 0 },
-    { q: "그 뒤로 마을은 어떻게 되었나요?", choices: ["사당을 새로 지었다", "밤을 지키지 않게 됐다", "두꺼비를 길렀다"], answer: 1 },
+    { q: "부뚜막의 두꺼비에게 소녀는 무엇을 주었나요?", choices: ["제 몫 식은 밥을 통째로 내주었다", "제 밥그릇에서 밥알을 덜어 주었다", "아주머니 몰래 쌀을 한 줌 퍼 주었다"], answer: 1 },
+    { q: "마을에서는 사당에서 밤을 지낼 사람을 어떻게 정했나요?", choices: ["부모 없는 아이를 보내기로 했다", "주인집 아주머니가 골랐다", "제비를 뽑아 골랐다"], answer: 2 },
+    { q: "마을에서는 지네가 성이 나면 어떤 일이 생긴다고 했나요?", choices: ["논밭이 마르고 짐승이 병든다", "사당이 무너지고 산이 운다", "밤마다 내려와 사람을 문다"], answer: 0 },
+    { q: "사당에서 소녀는 두꺼비가 따라온 것을 어떻게 알았나요?", choices: ["문틈으로 기어 들어오는 것을 보고", "치마폭이 묵직하고 꼼지락거려서", "어둠 속에서 우는 소리가 나서"], answer: 1 },
+    { q: "두꺼비와 지네는 무엇으로 겨루었나요?", choices: ["독을 뿜어서", "서로 물어뜯어서", "빛을 뿜어서"], answer: 2 },
+    { q: "지네가 사라진 뒤 두꺼비는 어떻게 되었나요?", choices: ["다시 깨어나 오래오래 소녀 곁에 있었다", "빛을 다 쓰고 연기처럼 사라졌다", "사당에 남아 마을을 지켰다"], answer: 0 },
     {
         q: "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
         wide: true,
         choices: [
-            "제 몫도 모자란 밥을 덜어 준 것을 보면, 나눌 것이 많아서 나누는 것은 아니구나.",
-            "부모 없는 아이가 제비를 뽑기도 전에 정해진 것을 보면, 그 시절 힘없는 쪽이 어떤 자리였는지 보인다.",
-            "소녀가 두꺼비를 일곱 날이나 돌본 것을 보면, 받은 쪽도 갚는 쪽도 따로 없구나.",
-            "두꺼비가 소녀를 따라 사당까지 간 것을 보면, 소녀가 데려가 달라고 부탁했구나."
+            "저녁 몫이 한 줌뿐인 아이가 두꺼비와 나눈 것을 보면, 나눌 것이 많아서 나누는 것은 아니구나.",
+            "부모 없는 아이로 정해질 줄 다들 미리 알고 있었던 것을 보면, 그 시절 힘없는 쪽이 어떤 자리였는지 보인다.",
+            "소녀가 축 늘어진 두꺼비를 집으로 데려가 밤새 돌본 것을 보면, 받은 쪽도 갚는 쪽도 따로 없구나.",
+            "마을 사람들이 소녀를 따라 사당까지 올라가 준 것을 보면, 미안한 마음은 다들 있었구나."
         ],
         answer: 3
     }

@@ -407,20 +407,20 @@ const EN = {
         }
     ],
     quiz: [
-        { q: "Where did Kim fall asleep?", choices: ["In the warm room at the inn", "In the field on the way home", "On a rock by the stream"], answer: 1 },
-        { q: "What happened in the field in the middle of the night?", choices: ["Rain poured down", "Snow fell", "A fire spread"], answer: 2 },
-        { q: "What did Nureongi do to wake his master?", choices: ["Barked and pulled his clothes", "Poured water on him", "Ran far away"], answer: 0 },
-        { q: "How did Nureongi stop the fire?", choices: ["By digging earth over it", "By barking loudly", "By rolling with a wet coat"], answer: 2 },
-        { q: "What did the field look like in the morning?", choices: ["Burnt black", "Green as before", "Under water"], answer: 0 },
+        { q: "Why was Kim so late coming home from market?", choices: ["He drank with a friend at the inn", "He lost Nureongi at the market", "He lost his way in the field"], answer: 0 },
+        { q: "How did the fire in the field start?", choices: ["Kim dropped his pipe", "Lightning struck the dry grass", "An ember someone left caught the dry grass"], answer: 2 },
+        { q: "What did Nureongi do to wake his master?", choices: ["Barked and tugged at his clothes", "Carried water in his mouth and sprayed him", "Ran back to the inn to fetch people"], answer: 0 },
+        { q: "How did Nureongi stop the fire?", choices: ["By digging earth round his master", "By rolling on the grass with a wet coat", "By dragging his master to the stream"], answer: 1 },
+        { q: "Where did Kim bury Nureongi?", choices: ["In the yard behind the house", "On the very spot where the fire had stopped", "By the stream near the inn"], answer: 1 },
         { q: "What did people call the tree that grew there?", choices: ["Nureongi's tree", "The dog tree", "The Osu tree"], answer: 1 },
         {
             q: "Which reaction to this book does NOT fit?",
             wide: true,
             choices: [
-                "He ran for the stream once barking failed, so when a thing is not working you look for another way.",
+                "Nureongi tried something else once his master would not wake, so when a thing is not working you look for another way.",
                 "Only one patch was left unburnt, so you can tell who kept that circle and how.",
-                "The district name came from the dog tree, so people left what they were grateful for in the name of the land.",
-                "Nureongi got up in the morning and walked home behind his master, so he was a tough dog indeed."
+                "The district name came from that tree, so people left what they were grateful for in the name of the land.",
+                "Kim left Nureongi under the inn floor and set off alone, so he was drunk enough that night to forget his dog."
             ],
             answer: 3
         }
@@ -595,20 +595,20 @@ const EN = {
 };
 
 const QUIZ = [
-    { q: "김 서방은 어디에서 잠이 들었나요?", choices: ["주막의 아랫목에", "집으로 가던 들판", "개울가 바위 위에"], answer: 1 },
-    { q: "한밤중에 들판에 무슨 일이 생겼나요?", choices: ["비가 쏟아졌다", "눈이 내렸다", "불이 번졌다"], answer: 2 },
-    { q: "누렁이는 주인을 깨우려고 무엇을 했나요?", choices: ["짖고 옷을 물었다", "물을 끼얹었다", "멀리 달아났다"], answer: 0 },
-    { q: "누렁이는 불을 어떻게 막았나요?", choices: ["흙을 파서 덮어서", "큰 소리로 짖어서", "젖은 몸으로 굴러서"], answer: 2 },
-    { q: "아침에 들판은 어떤 모습이었나요?", choices: ["까맣게 타 있었다", "푸르게 그대로였다", "물에 잠겨 있었다"], answer: 0 },
+    { q: "김 서방이 장에서 돌아오는 길에 늦어진 까닭은 무엇인가요?", choices: ["주막에서 아는 사람과 술을 마셔서", "장에서 누렁이를 잃어버려서", "들판에서 길을 잃어서"], answer: 0 },
+    { q: "들판에 불이 난 까닭은 무엇인가요?", choices: ["김 서방이 담뱃불을 떨어뜨려서", "번개가 마른 풀에 떨어져서", "버려진 불씨가 마른 풀에 옮아붙어서"], answer: 2 },
+    { q: "누렁이는 주인을 깨우려고 무엇을 했나요?", choices: ["짖고 옷자락을 물어 흔들었다", "개울물을 입에 머금어 끼얹었다", "주막으로 달려가 사람을 불러왔다"], answer: 0 },
+    { q: "누렁이는 불을 어떻게 막았나요?", choices: ["흙을 파서 주인 둘레에 덮어서", "젖은 몸으로 풀밭에 굴러서", "주인을 물고 개울까지 끌고 가서"], answer: 1 },
+    { q: "김 서방은 누렁이를 어디에 묻었나요?", choices: ["집 뒤뜰에", "불이 멈춘 그 자리에", "주막 앞 개울가에"], answer: 1 },
     { q: "사람들은 그 자리에 자란 나무를 뭐라고 불렀나요?", choices: ["누렁이 나무", "개 나무", "오수 나무"], answer: 1 },
     {
         q: "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
         wide: true,
         choices: [
-            "짖어도 안 되자 개울로 달려간 것을 보면, 안 되는 줄 알면 다른 길을 찾아야 하는 거야.",
+            "주인이 깨지 않자 누렁이가 다른 수를 낸 것을 보면, 안 되는 줄 알면 다른 길을 찾아야 하는 거야.",
             "타지 않은 자리가 딱 한 뼘이었다는 것을 보면, 그 둘레를 누가 어떻게 지켰는지 알겠다.",
-            "고을 이름이 개 나무에서 왔다는 것을 보면, 사람들은 고마운 일을 땅 이름에 남겨 두었구나.",
-            "누렁이가 아침에 스스로 일어나 주인을 따라 집까지 걸어온 것을 보면, 그만큼 다부진 개였어."
+            "고을 이름이 그 나무에서 왔다는 것을 보면, 사람들은 고마운 일을 땅 이름에 남겨 두었구나.",
+            "김 서방이 누렁이를 주막 마루 밑에 두고 혼자 먼저 떠난 것을 보면, 그날은 개를 잊을 만큼 취했던 거야."
         ],
         answer: 3
     }

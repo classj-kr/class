@@ -424,20 +424,20 @@ const EN = {
         }
     ],
     quiz: [
-        { q: "What did Josin pray for at Naksansa?", choices: ["That the temple land would prosper", "To live with the governor's daughter", "To be cured of an illness"], answer: 1 },
-        { q: "When did Josin fall asleep?", choices: ["Weeping because his wish was refused", "Worn out from work in the fields", "The night he parted from his wife"], answer: 0 },
-        { q: "How many children did Josin have in the dream?", choices: ["Two", "Five", "Seven"], answer: 1 },
-        { q: "What did Josin bury at the Haehyeon pass?", choices: ["The eldest child, who fell ill and died", "His wife's clothes", "A Buddha carved in stone"], answer: 0 },
-        { q: "Who said first that they should part?", choices: ["Josin", "The eldest daughter", "His wife"], answer: 2 },
-        { q: "What had happened to Josin's body when he woke?", choices: ["His hands were wrinkled", "His hair had gone white", "He was limping"], answer: 1 },
+        { q: "What did Josin do when he heard the governor's daughter had married?", choices: ["Ran to Myeongju to find her", "Wept before the Buddha, asking why his wish was refused", "Left the temple and went home for good"], answer: 1 },
+        { q: "How did Josin and his wife make a living in the dream?", choices: ["Selling herbs from the hills at the market", "Looking after the fields of the temple's land", "Ploughing other people's fields and sewing for pay"], answer: 2 },
+        { q: "Why did Josin's family leave home and wander in the dream?", choices: ["Year after year the harvest failed", "The governor sent men to fetch his daughter back", "Josin wanted to go back to the temple"], answer: 0 },
+        { q: "What did Josin bury at the Haehyeon pass?", choices: ["His wife's clothes", "The eldest child, who fell ill and died", "A Buddha carved in stone"], answer: 1 },
+        { q: "Why did his wife say they should part?", choices: ["She blamed him for losing the eldest child", "He said he would become a monk again", "Each had become a burden to the other"], answer: 2 },
+        { q: "What had happened to Josin's body when he woke?", choices: ["His hands were wrinkled", "His hair had gone white", "His back was bent"], answer: 1 },
         {
             q: "Which reaction to this book does NOT fit?",
             wide: true,
             choices: [
-                "His wife spoke of parting first, so it was not that love had ended — she did not want to be a burden.",
-                "He went and dug where the dream child was buried, so what happens in a dream still stays in the heart.",
+                "His wife spoke of parting and of splitting the children two and two, so it was not that love had ended — she was looking for a way to live.",
+                "He went straight to the Haehyeon pass when he woke, so what happens in a dream still stays in the heart.",
                 "He stopped wanting things afterwards, so seeing where a wish ends leaves you with fewer wishes.",
-                "He woke and went back to the governor's daughter, so the Buddha granted his wish after all."
+                "He went on managing the temple land after he woke, so he let the dream stay a dream."
             ],
             answer: 3
         }
@@ -604,20 +604,20 @@ const EN = {
 };
 
 const QUIZ = [
-    { q: "조신이 낙산사 부처님께 빈 것은 무엇인가요?", choices: ["절 땅이 잘되게 해 달라고", "태수의 딸과 살게 해 달라고", "병을 낫게 해 달라고"], answer: 1 },
-    { q: "조신이 잠든 것은 언제였나요?", choices: ["소원이 안 이루어져 울다가", "밭일을 하다 지쳐서", "아내와 헤어진 날 밤에"], answer: 0 },
-    { q: "꿈속에서 조신은 아이를 몇 낳았나요?", choices: ["둘", "다섯", "일곱"], answer: 1 },
-    { q: "조신이 해현 고개에 묻은 것은 무엇인가요?", choices: ["앓다 죽은 큰아이", "아내의 옷가지", "돌로 만든 부처님"], answer: 0 },
-    { q: "헤어지자고 먼저 말한 사람은 누구인가요?", choices: ["조신", "큰딸", "아내"], answer: 2 },
-    { q: "꿈에서 깬 조신의 몸은 어떻게 되어 있었나요?", choices: ["손등에 주름이 잡혀 있었다", "머리가 하얗게 세어 있었다", "다리를 절고 있었다"], answer: 1 },
+    { q: "태수의 딸이 시집갔다는 소식을 듣고 조신은 어떻게 했나요?", choices: ["명주로 달려가 여인을 찾았다", "부처님께 왜 안 들어주느냐며 울었다", "그길로 절을 떠나 고향으로 갔다"], answer: 1 },
+    { q: "꿈속에서 조신과 아내는 무슨 일을 하며 살았나요?", choices: ["산에서 캔 나물을 장터에 내다 팔았다", "절 땅을 맡아 논밭을 돌보았다", "남의 논을 갈고 삯바느질을 했다"], answer: 2 },
+    { q: "꿈속에서 조신네 식구는 왜 집을 떠나 떠돌게 되었나요?", choices: ["여러 해 잇달아 흉년이 들어서", "태수가 딸을 찾으러 사람을 보내서", "조신이 절로 돌아가고 싶어 해서"], answer: 0 },
+    { q: "조신이 해현 고개에 묻은 것은 무엇인가요?", choices: ["아내의 옷가지", "앓다 죽은 큰아이", "돌로 만든 부처님"], answer: 1 },
+    { q: "아내는 왜 헤어지자고 했나요?", choices: ["큰아이를 잃은 것이 조신 탓이라서", "조신이 다시 스님이 되겠다고 해서", "서로가 서로의 짐이 되어서"], answer: 2 },
+    { q: "꿈에서 깬 조신의 몸은 어떻게 되어 있었나요?", choices: ["손등에 주름이 잡혀 있었다", "머리가 하얗게 세어 있었다", "허리가 굽어 있었다"], answer: 1 },
     {
         q: "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
         wide: true,
         choices: [
-            "아내가 먼저 헤어지자고 한 것을 보면, 사랑이 끝난 게 아니라 짐이 되지 않으려던 거야.",
-            "깨어난 조신이 꿈속 아이 묻은 자리를 파 본 것을 보면, 꿈이라 해도 마음은 남는구나.",
+            "아내가 헤어지자면서 아이들을 둘씩 나누자 한 것을 보면, 정이 식은 게 아니라 살길을 찾은 거야.",
+            "깨어난 조신이 해현 고개로 곧장 간 것을 보면, 꿈이라 해도 마음은 남는구나.",
             "조신이 그 뒤로 바라는 일이 없어진 것을 보면, 소원 끝을 본 사람은 소원이 줄어드네.",
-            "조신이 꿈에서 깨어 태수의 딸을 다시 찾아간 것을 보면, 부처님이 뜻을 이뤄 주셨나 봐."
+            "조신이 꿈에서 깬 뒤 절 땅 맡은 일을 그대로 이어 간 것을 보면, 꿈은 꿈으로 두었구나."
         ],
         answer: 3
     }

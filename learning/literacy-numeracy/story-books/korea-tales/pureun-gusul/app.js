@@ -555,17 +555,17 @@ const EN = {
         }
     ],
     quiz: [
-        { q: "Why did the old man loosen the net again?", choices: ["The carp shed a tear", "The carp was too small", "The net was torn"], answer: 0 },
+        { q: "Why did the old man loosen the net again?", choices: ["The carp was too small", "A tear fell from the carp's eye", "The net was torn"], answer: 1 },
         { q: "What kind of bead was the blue bead?", choices: ["One that showed the future", "One that cured sickness", "One that gave you anything"], answer: 2 },
-        { q: "Who took the bead away?", choices: ["The greedy woman across the river", "An old traveller passing by", "Children from the next village"], answer: 0 },
+        { q: "How did the greedy old woman get hold of the bead?", choices: ["She begged to swap it for a basket of rice cakes", "She begged to see it and slipped it into her coat when nobody looked", "She climbed the wall at night and took it"], answer: 1 },
         { q: "How did the cat cross the river?", choices: ["By swimming over", "By getting a boat", "On the dog's back"], answer: 2 },
-        { q: "What did the cat set the rats to do?", choices: ["To gnaw the chest", "To swallow the bead", "To cross the river"], answer: 0 },
+        { q: "What did the cat set the rats to do?", choices: ["Fetch the key from beside the old woman's pillow", "Swallow the bead and sneak it out", "Gnaw a hole in the chest"], answer: 2 },
         { q: "Where did the cat find the bead again?", choices: ["In the sand by the river", "Inside a dead fish", "In the old woman's chest"], answer: 1 },
         {
             q: "Which reaction to this book does NOT fit?",
             wide: true,
             choices: [
-                "He loosened the net at the sight of the carp's tear, so looking away from it was harder for him than going hungry.",
+                "He went home with an empty net saying he would just go hungry again, so he counted another's life before his own supper.",
                 "The dog and the cat set out after the bead on their own, so they had not forgotten what they had been fed.",
                 "The story explains why dogs and cats do not get on, so old people put a reason to everything around them.",
                 "The cat answered even with the bead in her mouth, so she was thinking first of putting the dog's mind at rest."
@@ -771,17 +771,17 @@ const EN = {
 };
 
 const QUIZ = [
-    { q: "할아버지가 그물을 도로 푼 까닭은 무엇인가요?", choices: ["잉어가 눈물을 흘려서", "잉어가 너무 작아서", "그물이 찢어져서"], answer: 0 },
+    { q: "할아버지가 그물을 도로 푼 까닭은 무엇인가요?", choices: ["잉어가 너무 작아 보여서", "잉어 눈에 눈물이 고여서", "그물이 찢어져 있어서"], answer: 1 },
     { q: "푸른 구슬은 어떤 구슬이었나요?", choices: ["앞날이 보이는 구슬", "병을 고치는 구슬", "무엇이든 나오는 구슬"], answer: 2 },
-    { q: "구슬을 훔쳐 간 것은 누구인가요?", choices: ["강 건너 욕심쟁이 할멈", "지나가던 늙은 나그네", "이웃 마을 아이들"], answer: 0 },
+    { q: "욕심 많은 할멈은 구슬을 어떻게 가져갔나요?", choices: ["떡 한 소쿠리를 주며 바꾸자고 졸랐다", "한 번만 보여 달라 조르다 슬쩍 품에 넣었다", "밤에 몰래 담을 넘어 들어와 훔쳤다"], answer: 1 },
     { q: "고양이는 강을 어떻게 건넜나요?", choices: ["헤엄을 쳐서", "배를 얻어 타고", "개 등에 타고서"], answer: 2 },
-    { q: "고양이는 쥐들에게 무엇을 시켰나요?", choices: ["궤짝을 갉으라고", "구슬을 삼키라고", "강을 건너라고"], answer: 0 },
+    { q: "고양이는 쥐들에게 무엇을 시켰나요?", choices: ["할멈 머리맡에서 열쇠를 물어 오라고", "구슬을 삼켜서 몰래 가져오라고", "궤짝을 갉아 구멍을 내라고"], answer: 2 },
     { q: "고양이는 구슬을 어디에서 다시 찾았나요?", choices: ["강가 모래 속", "죽은 물고기 뱃속", "할멈의 궤짝 속"], answer: 1 },
     {
         q: "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
         wide: true,
         choices: [
-            "할아버지가 잉어의 눈물을 보고 그물을 푼 것을 보면, 굶는 것보다 눈물을 못 본 척하는 것이 더 어려웠구나.",
+            "할아버지가 빈 그물을 지고 오늘도 굶지 뭐 하며 돌아간 것을 보면, 제 저녁보다 남의 목숨을 먼저 센 사람이었구나.",
             "개와 고양이가 저희끼리 나서서 구슬을 찾으러 간 것을 보면, 얻어먹은 것을 잊지 않았네.",
             "개와 고양이 사이가 나빠진 까닭을 이렇게 풀어 놓은 것을 보면, 옛사람들은 둘레의 일마다 사연을 붙인 거야.",
             "고양이가 구슬을 입에 물고도 대답을 한 것을 보면, 개를 안심시키려는 마음이 앞섰나 봐."

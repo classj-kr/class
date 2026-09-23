@@ -548,21 +548,21 @@ const EN = {
         }
     ],
     quiz: [
-        { q: "What is Five-Fathom Tail, Five-Fathom Beak?", choices: ["A fox with a long tail", "A very big bird", "A snake that lives in water"], answer: 1 },
+        { q: "What did the oldest man in the village say when he saw the feather?", choices: ["That thing comes back to its nest at sunset", "Nobody that thing carried off has ever come back", "That thing has only one throat"], answer: 1 },
         { q: "About how long is a fathom?", choices: ["A grown-up's two arms spread wide", "One step of a grown-up", "A grown-up's hand span"], answer: 0 },
-        { q: "What did the son pick up on the hill?", choices: ["A broken branch", "A pair of straw shoes", "One black feather"], answer: 2 },
+        { q: "What did the son do when the old man caught his arm to stop him?", choices: ["Gently took the hand off and set out", "Said he would think it over one more night", "Took the village lads along with him"], answer: 0 },
         { q: "How did the son help the old woman?", choices: ["Trod the washing for her", "Weeded a whole field", "Made her straw shoes"], answer: 0 },
-        { q: "Where did the old man say to put the club?", choices: ["Into the thing's wing", "Into the nest", "Down the thing's throat"], answer: 2 },
-        { q: "Where was the monster bird's nest?", choices: ["Deep inside a cave", "On a sheer rock cliff", "Inside a great old tree"], answer: 1 },
-        { q: "What did the monster bird bite on?", choices: ["The red-hot club", "A dry branch", "The son's straw shoes"], answer: 0 },
+        { q: "Where did the son hide his mother after he found her in the nest?", choices: ["Under the branches of the nest", "Deep in a crack of the cliff rock", "In the bushes at the foot of the cliff"], answer: 1 },
+        { q: "When did the son climb up to the nest?", choices: ["Before sunset, while the nest was empty", "At midnight, while the bird slept", "At dawn, after the bird left to hunt"], answer: 0 },
+        { q: "What became of the monster bird once it bit the club?", choices: ["It spat the club out and fled into the sky", "It burned up together with the nest", "It shrieked and tumbled off the cliff"], answer: 2 },
         { q: "What did the son say with his mother on his back?", choices: ["That he would be back soon", "That he would bring her home", "That she was lighter than a basket"], answer: 2 },
         {
             q: "Which reaction to this book does NOT fit?",
             wide: true,
             choices: [
-                "Even in a hurry he trod the washing and weeded the field, so he got his road and his weapon where he stopped.",
+                "Even in a hurry he lent a hand to everyone he met, so he got his road and his weapon where he stopped.",
                 "The beak was five fathoms but the throat was only one, so even a huge thing has a weak place in it.",
-                "He said she was lighter than a greens basket, so you can tell how thin she had grown in that nest.",
+                "The son hid his torn palms behind his back, so he was a boy who never showed others his own hurts.",
                 "The son asked the old man for the iron club, so he must have known in advance what he would need."
             ],
             answer: 3
@@ -763,21 +763,21 @@ const EN = {
 };
 
 const QUIZ = [
-    { q: "꽁지 닷발 주둥이 닷발은 무엇인가요?", choices: ["꼬리가 긴 여우", "아주 커다란 새", "물속에 사는 뱀"], answer: 1 },
+    { q: "마을에서 가장 나이 많은 노인은 깃털을 보고 무어라 했나요?", choices: ["그놈은 해가 지면 둥지로 돌아온다", "그놈에게 끌려간 사람이 돌아온 적은 없다", "그놈은 목구멍이 하나뿐이다"], answer: 1 },
     { q: "발이라는 말은 얼마쯤의 길이를 말하는가요?", choices: ["어른의 두 팔을 벌린 길이", "어른의 한 걸음 길이", "어른의 손 한 뼘 길이"], answer: 0 },
-    { q: "아들이 뒷산에서 주워 든 것은 무엇인가요?", choices: ["부러진 나뭇가지", "짚신 한 켤레", "시커먼 깃털 하나"], answer: 2 },
+    { q: "노인이 팔을 붙잡으며 말리자 아들은 어떻게 했나요?", choices: ["그 손을 가만히 떼어 놓고 길을 나섰다", "하룻밤만 더 생각해 보겠다고 했다", "마을 젊은이들을 함께 데려갔다"], answer: 0 },
     { q: "아들은 할머니를 어떻게 도왔나요?", choices: ["빨래를 밟아 주었다", "밭 하나를 다 매 주었다", "짚신을 만들어 주었다"], answer: 0 },
-    { q: "노인은 몽둥이를 어디에 넣으라고 했나요?", choices: ["그놈 날개에", "둥지 속에", "그놈 목구멍에"], answer: 2 },
-    { q: "괴물 새의 둥지는 어디에 있었나요?", choices: ["아주 깊은 동굴 안쪽", "깎아지른 바위 절벽 위", "커다란 고목 나무 속"], answer: 1 },
-    { q: "괴물 새는 무엇을 덥석 물었나요?", choices: ["벌겋게 달군 몽둥이", "마른 나뭇가지", "아들의 짚신"], answer: 0 },
+    { q: "아들은 둥지에서 찾은 어머니를 어디에 숨겼나요?", choices: ["둥지 나뭇가지 밑에", "벼랑 바위 틈에", "벼랑 아래 덤불 속에"], answer: 1 },
+    { q: "아들이 둥지에 올라간 때는 언제였나요?", choices: ["해가 넘어가기 전, 새가 없는 때", "한밤중, 새가 잠든 때", "새벽, 새가 사냥을 나간 뒤"], answer: 0 },
+    { q: "몽둥이를 문 괴물 새는 어떻게 되었나요?", choices: ["몽둥이를 뱉고 하늘로 달아났다", "둥지째 불에 타 버렸다", "비명을 지르며 벼랑 아래로 떨어졌다"], answer: 2 },
     { q: "어머니를 업은 아들은 뭐라고 했나요?", choices: ["이제 곧 돌아온다고 했다", "제가 데려오겠다고 했다", "나물 바구니보다 가볍다고"], answer: 2 },
     {
         q: "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
         wide: true,
         choices: [
-            "급한 길에도 빨래를 밟아 주고 밭을 매 준 것을 보면, 멈춘 자리에서 길과 무기를 얻었구나.",
+            "급한 길에도 만난 사람마다 일을 거들어 준 것을 보면, 멈춘 자리에서 길과 무기를 얻었구나.",
             "부리는 다섯 발이어도 목구멍은 하나뿐이라고 한 것을 보면, 큰 것에도 약한 데가 있구나.",
-            "어머니를 업고 나물 바구니보다 가볍다고 한 것을 보면, 그동안 얼마나 여위셨는지 알겠다.",
+            "아들이 터진 손바닥을 등 뒤로 감춘 것을 보면, 제 아픈 것은 남에게 보이지 않는 아이였구나.",
             "아들이 노인에게 무쇠 몽둥이를 달라고 청한 것을 보면, 무엇이 필요한지 미리 알고 있었구나."
         ],
         answer: 3

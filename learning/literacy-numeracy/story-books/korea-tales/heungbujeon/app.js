@@ -660,23 +660,23 @@ function chapterSpreadPage(spread) {
 const QUIZ = [
     { q: "놀부가 흥부를 집에서 내보낸 까닭은 무엇입니까?", choices: ["흥부가 잘못을 저질러서", "재산을 혼자 차지하려고", "아버지가 그리 이르셔서"], answer: 1 },
     { q: "흥부가 형의 집에 쌀을 얻으러 갔을 때 받은 것은 무엇입니까?", choices: ["쌀 한 되를 얻었다", "문도 열어 주지 않았다", "주걱으로 뺨을 맞았다"], answer: 2 },
-    { q: "흥부는 부러진 다리를 무엇으로 감았습니까?", choices: ["나뭇조각과 실", "짚과 흙 한 줌", "지게 작대기 하나"], answer: 0 },
-    { q: "이듬해 봄에 제비가 물어다 준 것은 무엇입니까?", choices: ["금덩이 하나", "박씨 하나", "밥알 한 알"], answer: 1 },
+    { q: "새끼 제비가 둥지에서 떨어진 까닭은 무엇입니까?", choices: ["구렁이가 둥지를 물어뜯어서", "아이들이 벌레를 주다가 건드려서", "구렁이를 쫓느라 소동이 나서"], answer: 2 },
+    { q: "흥부는 돌아온 제비가 지난해의 그 새끼임을 어떻게 알아보았습니까?", choices: ["한쪽 다리를 조금 절어서", "다리에 실이 그대로 감겨 있어서", "흥부의 손끝에 먼저 앉아서"], answer: 0 },
     { q: "첫 번째 박에서 나온 것은 무엇입니까?", choices: ["쏟아져 나온 비단", "집 지으러 온 목수들", "흰쌀밥이 담긴 상"], answer: 2 },
     { q: "놀부가 흥부를 찾아온 까닭은 무엇입니까?", choices: ["그동안 저지른 일을 사과하려고", "어떻게 부자가 됐는지 캐물으려고", "쌀을 조금 나눠 주려고"], answer: 1 },
     { q: "놀부는 제비 다리를 부러뜨린 뒤 무엇을 했습니까?", choices: ["실과 나뭇조각으로 감았다", "둥지에 도로 올려만 두었다", "마당에 내려놓고 지켜보았다"], answer: 0 },
-    { q: "놀부의 박에서 처음 나온 것은 누구입니까?", choices: ["장부를 든 사람들", "굿을 하는 무당", "곳간을 갉는 벌레 떼"], answer: 0 },
+    { q: "놀부의 박에서 처음 나온 것은 누구입니까?", choices: ["장부를 든 사람들", "굿을 하는 무당", "밤새 노는 사당패"], answer: 0 },
     { q: "놀부의 박에서 마지막에 나온 것은 무엇입니까?", choices: ["갑옷을 입은 장수들", "커다란 구렁이 한 마리", "끝없이 쏟아진 흙탕물"], answer: 0 },
-    { q: "박이 하나씩 갈라질 때마다 놀부는 무엇을 했습니까?", choices: ["톱을 손에서 놓았다", "구경꾼들을 불러 모았다", "곳간 문을 열어야 했다"], answer: 2 },
+    { q: "박이 하나씩 갈라질 때마다 놀부는 무엇을 했습니까?", choices: ["종들에게 박을 치우게 했다", "구경꾼들을 불러 모았다", "곳간 문을 열어야 했다"], answer: 2 },
     { q: "흥부는 찾아온 형을 어떻게 대했습니까?", choices: ["버선발로 뛰어나와 맞았다", "지난 일을 먼저 따졌다", "새 집을 지어 주었다"], answer: 0 },
-    { q: "놀부는 마지막에 박을 타서 무엇을 만들었습니까?", choices: ["멍석", "비 가리개", "바가지"], answer: 2 },
+    { q: "놀부는 마지막에 만든 바가지 하나를 어디에 두었습니까?", choices: ["흥부네 곳간 안에", "마을 우물가에", "제비 둥지 밑에"], answer: 1 },
     {
         q: "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
         wide: true,
         choices: [
             "놀부가 제비를 기다리다 남의 집 제비집까지 헌 것을 보면, 욕심은 남의 것부터 부수는구나.",
-            "흥부가 형수의 주걱 이야기만은 끝내 하지 않은 것을 보면, 말하지 않는 것도 지키는 방법이야.",
-            "박이 갈라질 때마다 놀부가 곳간 문을 열어야 했던 것을 보면, 쌓아 둔 것에는 갚을 몫이 따라오네.",
+            "흥부가 네 번째 박의 금은보화 앞에서 기뻐하지 않은 것을 보면, 거저 얻은 것을 무겁게 여길 줄 아는 사람이구나.",
+            "놀부가 그만 타자고 하는데도 손이 말을 듣지 않은 것을 보면, 욕심은 제 손으로도 못 멈추는 것이네.",
             "놀부가 흥부가 내민 곳간 열쇠를 받아 살림을 도로 맡은 것을 보면, 형 노릇을 다시 하게 됐나 봐."
         ],
         answer: 3
@@ -1072,23 +1072,23 @@ const EN = {
     quiz: [
         { q: "Why did Nolbu turn Heungbu out of the house?", choices: ["Heungbu had done something wrong", "He wanted the property for himself", "Their father had told him to"], answer: 1 },
         { q: "What did Heungbu get when he went to ask his brother for rice?", choices: ["One measure of rice", "The gate shut in his face", "A blow on the cheek with a rice paddle"], answer: 2 },
-        { q: "What did Heungbu wind the broken leg with?", choices: ["Thread and a splinter of wood", "Straw and a handful of mud", "The pole from his carrying frame"], answer: 0 },
-        { q: "What did the swallow bring back the next spring?", choices: ["A lump of gold", "A gourd seed", "A grain of rice"], answer: 1 },
+        { q: "Why did the baby swallow fall from the nest?", choices: ["The snake tore at the nest", "The children knocked it while feeding it", "It fell in the uproar of driving off the snake"], answer: 2 },
+        { q: "How did Heungbu know the swallow that returned was last year's chick?", choices: ["It limped a little on one leg", "The thread was still wound round its leg", "It landed on his finger first"], answer: 0 },
         { q: "What came out of the first gourd?", choices: ["Silk pouring out", "Carpenters to build a house", "A table of white rice"], answer: 2 },
         { q: "Why did Nolbu come to Heungbu's house?", choices: ["To say sorry for what he had done", "To find out how he got rich", "To share some rice with him"], answer: 1 },
         { q: "What did Nolbu do after he broke the swallow's leg?", choices: ["He wound it with thread and a splinter", "He only put it back in the nest", "He set it down in the yard and watched"], answer: 0 },
-        { q: "Who came out of Nolbu's first gourd?", choices: ["People with ledgers", "A shaman holding a rite", "Insects eating the grain"], answer: 0 },
+        { q: "Who came out of Nolbu's first gourd?", choices: ["People with ledgers", "A shaman holding a rite", "A troupe of players who played all night"], answer: 0 },
         { q: "What came out of Nolbu's last gourd?", choices: ["Soldiers in armour", "A huge snake", "Muddy water"], answer: 0 },
-        { q: "What did Nolbu have to do each time a gourd split?", choices: ["Put down the saw", "Call the onlookers together", "Open the storehouse door"], answer: 2 },
+        { q: "What did Nolbu have to do each time a gourd split?", choices: ["Have the servants clear the gourd away", "Call the onlookers together", "Open the storehouse door"], answer: 2 },
         { q: "How did Heungbu treat the brother who came to him?", choices: ["He ran out in his stocking feet to meet him", "He brought up the past first", "He built him a new house"], answer: 0 },
-        { q: "What did Nolbu make out of the gourds at the end?", choices: ["A mat", "A straw cape", "Water dippers"], answer: 2 },
+        { q: "Where did Nolbu put one of the dippers he made at the end?", choices: ["In Heungbu's storehouse", "By the village well", "Under the swallows' nest"], answer: 1 },
         {
             q: "Which reaction to this book does NOT fit?",
             wide: true,
             choices: [
                 "Nolbu waited for swallows and then pulled down other people's nests, so greed breaks what belongs to others first.",
-                "Heungbu never once mentioned the rice paddle, so keeping quiet can be a way of keeping something safe.",
-                "Each time a gourd split Nolbu had to open his storehouse, so what you pile up brings its own bill.",
+                "Heungbu was not glad in front of the gold from the fourth gourd, so he knew how to feel the weight of what comes for nothing.",
+                "Nolbu's hands would not stop even when he cried out to stop sawing, so greed cannot be halted even by its own hands.",
                 "Nolbu took the storehouse key Heungbu held out, so he was the elder brother of that house again."
             ],
             answer: 3

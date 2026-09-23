@@ -622,17 +622,17 @@ const EN = {
         }
     ],
     quiz: [
-        { q: "What happened to the king's ears?", choices: ["Went pointed like a fox's", "Grew long like a donkey's", "Went flat like a turtle's"], answer: 1 },
-        { q: "Why did the crown come off at the hunt?", choices: ["The wind blew hard", "He fell from his horse", "On a branch, chasing the fox"], answer: 2 },
-        { q: "What did the official take the ears for?", choices: ["A beast he had never seen", "An enemy hiding there", "A very large leaf"], answer: 0 },
-        { q: "What did the official tell the hunters to do?", choices: ["Chase after the fox", "Look for the crown", "Shoot into the bush"], answer: 2 },
-        { q: "Where did the king go to escape the arrows?", choices: ["Into the bamboo wood", "Into the pond", "Into the bushes"], answer: 1 },
-        { q: "What was planted where the bamboo was cut?", choices: ["Several pine trees", "Cornel trees", "Peach trees"], answer: 1 },
+        { q: "What did the officials find odd about the king?", choices: ["He went hunting so often", "He never took his crown off", "He kept touching his ears"], answer: 1 },
+        { q: "Why did the crown come off at the hunt?", choices: ["The fox leapt up and took it", "The horse shied and it fell", "It caught on a branch as he chased the fox"], answer: 2 },
+        { q: "What did the official take the ears for?", choices: ["The king in hiding", "A beast he had never seen", "The fox in hiding"], answer: 1 },
+        { q: "What did the official call the hunters to do?", choices: ["Shoot where the ears stuck up", "Ring the bush and throw a net", "Wait till the beast came out"], answer: 0 },
+        { q: "What did the king come eye to eye with under the pond?", choices: ["A red fox", "A shoal of carp", "A great turtle"], answer: 2 },
+        { q: "What did the wind say once the cornel trees were planted?", choices: ["The king has donkey's ears", "The king's ears are long", "The king has fox's ears"], answer: 1 },
         {
             q: "Which reaction to this book does NOT fit?",
             wide: true,
             choices: [
-                "The king sweated because he could not take the crown off, so hiding a thing is the harder work of the two.",
+                "The fox held its sides laughing at the crown, so to other eyes the hiding shows before the thing hidden.",
                 "He put a hand over his own mouth night after night, so holding something in can make a person ill.",
                 "The sound came even after all the bamboo was cut down, so stopping mouths does not stop words.",
                 "The king burst out laughing in the end, so he can never have meant to hide the ears at all."
@@ -853,17 +853,17 @@ const EN = {
 };
 
 const QUIZ = [
-    { q: "임금님의 귀는 어떻게 되었나요?", choices: ["여우 귀처럼 뾰족해졌다", "당나귀 귀처럼 길어졌다", "거북이처럼 납작해졌다"], answer: 1 },
-    { q: "사냥터에서 왕관은 왜 벗겨졌나요?", choices: ["바람이 세게 불어서", "말에서 떨어지면서", "여우를 쫓다 나뭇가지에"], answer: 2 },
-    { q: "신하는 덤불 위의 귀를 무엇이라 여겼나요?", choices: ["처음 보는 짐승", "적이 숨어 있는 것", "커다란 나뭇잎"], answer: 0 },
-    { q: "신하는 사냥꾼들에게 무엇을 시켰나요?", choices: ["여우를 쫓으라고", "왕관을 찾으라고", "덤불을 쏘라고"], answer: 2 },
-    { q: "임금님은 화살을 피해 어디로 갔나요?", choices: ["대나무숲으로", "연못 속으로", "덤불 속으로"], answer: 1 },
-    { q: "대나무를 베고 무엇을 심었나요?", choices: ["소나무 여러 그루", "산수유 나무", "복숭아 나무"], answer: 1 },
+    { q: "신하들은 임금님의 무엇을 이상하게 여겼나요?", choices: ["사냥을 자주 나가는 것", "왕관을 도무지 벗지 않는 것", "귀를 자꾸 만지는 것"], answer: 1 },
+    { q: "사냥터에서 왕관은 왜 벗겨졌나요?", choices: ["여우가 뛰어올라 물어 가서", "말이 놀라 뛰는 바람에 떨어져서", "여우를 쫓다 나뭇가지에 걸려서"], answer: 2 },
+    { q: "신하는 덤불 위의 귀를 무엇이라 여겼나요?", choices: ["임금님이 숨은 것", "처음 보는 짐승", "여우가 숨은 것"], answer: 1 },
+    { q: "신하는 사냥꾼들을 불러 무엇을 하게 했나요?", choices: ["귀가 솟은 곳에 화살을 쏘게 했다", "덤불을 둘러싸고 그물을 던지게 했다", "짐승이 나올 때까지 지키게 했다"], answer: 0 },
+    { q: "연못에 뛰어든 임금님은 물속에서 무엇과 눈이 마주쳤나요?", choices: ["붉은 여우", "잉어 떼", "커다란 거북이"], answer: 2 },
+    { q: "산수유를 심은 뒤 바람이 불자 무슨 소리가 났나요?", choices: ["임금님 귀는 당나귀 귀", "임금님 귀는 길다", "임금님 귀는 여우 귀"], answer: 1 },
     {
         q: "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
         wide: true,
         choices: [
-            "임금이 왕관을 벗지 못해 땀을 뻘뻘 흘린 것을 보면, 감추는 쪽이 더 고생이구나.",
+            "여우가 왕관을 보고 배를 잡고 웃은 것을 보면, 남 눈에는 감춘 것보다 감추는 꼴이 먼저 보이는구나.",
             "말하고 싶어 밤마다 입을 틀어막았다는 것을 보면, 참는 것도 병이 되네.",
             "대나무를 다 베고도 소리가 났다는 것을 보면, 입을 막는다고 말이 없어지지는 않는 거야.",
             "임금이 끝내 웃음을 터뜨린 것을 보면, 처음부터 귀를 감출 생각이 없었나 봐."

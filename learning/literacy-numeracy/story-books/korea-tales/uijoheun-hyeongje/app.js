@@ -420,20 +420,20 @@ const EN = {
         }
     ],
     quiz: [
-        { q: "Where were the two brothers' fields?", choices: ["Far apart", "Right next to each other", "Over the mountain"], answer: 1 },
-        { q: "After the harvest, how did the two piles of sheaves compare?", choices: ["The elder had more", "The younger had more", "They were the same"], answer: 2 },
-        { q: "Why did the elder brother carry sheaves to the younger?", choices: ["He could not farm", "He had just set up a household", "He had a big family"], answer: 1 },
-        { q: "Why did the younger brother carry sheaves to the elder?", choices: ["His field was small", "He had just set up a household", "He had a big family"], answer: 2 },
-        { q: "What were the piles like each morning?", choices: ["Just as before", "Smaller", "Gone"], answer: 0 },
-        { q: "Where did the two brothers meet?", choices: ["At the village market", "On the paddy path at night", "At each other's houses"], answer: 1 },
+        { q: "Why did the brothers stand so long at the ditch?", choices: ["Measuring whose field was drier", "Blaming each other for the blocked channel", "Each telling the other to water his field first"], answer: 2 },
+        { q: "Why did the elder brother move the sheaves at night with nobody knowing?", choices: ["He thought his brother would refuse them if he knew", "He was too busy in the fields by day", "He was afraid the villagers would talk"], answer: 0 },
+        { q: "Why did the elder brother carry sheaves to the younger?", choices: ["The younger's field got too little water", "The younger had set up a new household that spring", "The younger had hurt his leg and could not farm"], answer: 1 },
+        { q: "Why did the younger brother carry sheaves to the elder?", choices: ["The elder's rice had ripened less", "The elder had run up debts last year", "The elder had five children to feed"], answer: 2 },
+        { q: "What did the elder say when the piles were just as before?", choices: ["That it was enough to make a ghost weep", "That his brother must have put them back", "That someone must have stolen them in the night"], answer: 0 },
+        { q: "What did the brothers do after they met in the moonlight?", choices: ["Carried the sheaves back to their own fields", "Sat on the bank and talked till dawn", "Started arguing again about who should take them"], answer: 1 },
         {
             q: "Which reaction to this book does NOT fit?",
             wide: true,
             choices: [
                 "Both of them thought an even split wasn't right, so the same amount isn't always the fair amount.",
                 "They went out in the middle of the night so as not to be found out, so even giving needs care.",
-                "After that they never counted the sheaves again, so once you know, there is nothing left to reckon up.",
-                "The two brothers met on the path and walked past pretending not to see, so being caught made them ashamed."
+                "After that they never wondered why the piles stayed the same, so once you know, there is nothing left to reckon up.",
+                "On the third night the elder hid by the bank to catch his brother, so he could not stand not knowing."
             ],
             answer: 3
         }
@@ -619,20 +619,20 @@ const EN = {
 };
 
 const QUIZ = [
-    { q: "두 형제의 논은 어떻게 있었나요?", choices: ["멀리 떨어져 있었다", "나란히 붙어 있었다", "산 너머에 있었다"], answer: 1 },
-    { q: "가을걷이가 끝난 뒤 두 형제의 볏단은 어땠나요?", choices: ["형 것이 더 많았다", "동생 것이 더 많았다", "똑같았다"], answer: 2 },
-    { q: "형은 왜 동생에게 볏단을 옮겼나요?", choices: ["농사를 못 지어서", "살림을 새로 차려서", "식구가 많아서"], answer: 1 },
-    { q: "동생은 왜 형에게 볏단을 옮겼나요?", choices: ["논이 좁아서", "살림을 새로 차려서", "식구가 많아서"], answer: 2 },
-    { q: "아침마다 볏단은 어떻게 되어 있었나요?", choices: ["그대로였다", "줄어 있었다", "없어졌다"], answer: 0 },
-    { q: "두 형제는 어디에서 마주쳤나요?", choices: ["마을 장터에서", "밤길 논둑에서", "서로의 집에서"], answer: 1 },
+    { q: "형제는 도랑 앞에서 왜 한참 서 있었나요?", choices: ["누구 논이 더 마른지 재느라", "물길이 막혀 서로 탓하느라", "서로 먼저 물을 대라고 양보하느라"], answer: 2 },
+    { q: "형은 왜 한밤중에 아무도 모르게 볏단을 옮겼나요?", choices: ["동생이 알면 안 받으려 할 것 같아서", "낮에는 논일이 바빠 틈이 없어서", "마을 사람들이 흉볼까 봐 걱정되어서"], answer: 0 },
+    { q: "형이 볏단을 옮긴 까닭은 무엇인가요?", choices: ["동생네 논에 물이 잘 안 들어서", "동생이 올봄에 새 살림을 차려서", "동생이 다리를 다쳐 농사를 못 지어서"], answer: 1 },
+    { q: "동생이 볏단을 옮긴 까닭은 무엇인가요?", choices: ["형님 논에 벼가 덜 여물어서", "형이 지난해 빚을 져서", "형네 조카들이 다섯이나 되어서"], answer: 2 },
+    { q: "볏단이 그대로인 것을 보고 형은 뭐라고 했나요?", choices: ["귀신이 곡할 노릇이라고", "동생이 도로 갖다 놓은 게 틀림없다고", "누가 밤새 훔쳐 간 모양이라고"], answer: 0 },
+    { q: "달빛 아래 마주친 뒤 형제는 어떻게 했나요?", choices: ["볏단을 도로 제 논에 갖다 놓았다", "논둑에 앉아 밤새 이야기를 나눴다", "서로 받으라며 다시 실랑이를 벌였다"], answer: 1 },
     {
         q: "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
         wide: true,
         choices: [
             "둘 다 똑같이 나눈 것이 아니라고 여긴 것을 보면, 똑같은 것이 늘 공평한 것은 아니구나.",
             "서로 모르게 하려고 한밤중에 오간 것을 보면, 주는 일에도 조심할 것이 있네.",
-            "그 뒤로는 볏단을 세어 보지 않았다는 것을 보면, 알고 나서는 셈할 것이 없어진 거야.",
-            "두 형제가 논둑에서 마주치고도 서로 못 본 척 지나친 것을 보면, 들킨 것이 부끄러웠나 봐."
+            "그 뒤로는 볏단이 왜 똑같은지 궁금해하지 않았다는 것을 보면, 알고 나서는 셈할 것이 없어진 거야.",
+            "형이 사흘째 밤에는 동생을 붙잡으려고 논둑에 숨어 기다린 것을 보면, 궁금증을 못 참았나 봐."
         ],
         answer: 3
     }

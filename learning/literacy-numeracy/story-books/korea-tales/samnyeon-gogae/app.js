@@ -438,19 +438,19 @@ const EN = {
         }
     ],
     quiz: [
-        { q: "What did people do once they were over the hill?", choices: ["Walked watching their feet", "Breathed out with relief", "Held their children's hands"], answer: 1 },
+        { q: "How did old Bak feel as he climbed the hill on his way home from market?", choices: ["Nervous, watching his feet in case he fell", "Easy, since he had never once fallen in all those years", "Weary, because the coins were heavy"], answer: 1 },
         { q: "What did old Bak do at the lamp every night?", choices: ["Counted coins", "Mended his carrying frame", "Made straw sandals"], answer: 2 },
         { q: "Why did old Bak fall on the hill?", choices: ["His foot caught a stone", "His frame was too heavy", "He walked into a pine"], answer: 0 },
-        { q: "What did the village doctor say about him?", choices: ["A leg bone was broken", "He must take medicine a long time", "There was nothing wrong with him"], answer: 2 },
-        { q: "How many years did Deoki say ten rolls would be?", choices: ["Thirty years", "Nine years", "Three hundred years"], answer: 0 },
-        { q: "What happened to old Bak after rolling on the hilltop?", choices: ["He was hurt worse", "He got his spirits back", "He took to his bed again"], answer: 1 },
+        { q: "What did the village doctor say about him?", choices: ["A leg bone was broken", "There was nothing wrong with him", "He must take medicine a long time"], answer: 1 },
+        { q: "How did Deoki win old Bak round?", choices: ["Said the tale of the hill was only a rumour", "Said his wife was crying, so he should eat first", "Said ten rolls would make thirty years"], answer: 2 },
+        { q: "What did the villagers do while old Bak rolled?", choices: ["Ran up and counted out loud for him", "Grabbed him to make him stop", "Went to fetch the doctor"], answer: 0 },
         {
             q: "Which reaction to this book does NOT fit?",
             wide: true,
             choices: [
                 "A healthy old man took to his bed just from a thought, so the mind gives way before the body does.",
-                "The doctor found nothing wrong, so there are illnesses medicine cannot reach.",
-                "A ten-year-old raised him with one sum, so a belief is changed by swapping in another belief.",
+                "The neighbours came to comfort him and it did no good, so there are illnesses other people's words cannot reach.",
+                "The old man kicked off his quilt at a ten-year-old's words, so grown-ups are not the only ones who can be right.",
                 "Deoki told him the saying was only a rumour, so plain truth is what saves a person."
             ],
             answer: 3
@@ -628,19 +628,19 @@ const EN = {
 };
 
 const QUIZ = [
-    { q: "고개를 다 넘고 나서 사람들은 어떻게 했나요?", choices: ["발밑만 보고 걸었다", "휴 하고 숨을 쉬었다", "아이 손을 붙들었다"], answer: 1 },
+    { q: "장에서 돌아오며 고개를 오르는 박 노인은 어떤 마음이었나요?", choices: ["혹시나 넘어질까 발밑만 보며 조마조마했다", "몇십 년을 넘어도 안 넘어졌으니 걱정이 없었다", "엽전 주머니가 무거워 걸음이 자꾸 처졌다"], answer: 1 },
     { q: "박 노인이 밤마다 등불 앞에서 한 일은 무엇인가요?", choices: ["엽전 세기", "지게 고치기", "짚신 만들기"], answer: 2 },
     { q: "박 노인은 왜 고개에서 넘어졌나요?", choices: ["돌부리에 발이 걸려서", "지게가 무거워서", "소나무에 부딪혀서"], answer: 0 },
-    { q: "마을 의원은 박 노인을 보고 뭐라고 했나요?", choices: ["다리뼈가 부러졌다", "약을 오래 먹어야 한다", "몸에 아픈 데가 없다"], answer: 2 },
-    { q: "덕이는 열 번 구르면 몇 년이라고 했나요?", choices: ["삼십 년", "구 년", "삼백 년"], answer: 0 },
-    { q: "고갯마루에서 구르고 난 박 노인은 어떻게 되었나요?", choices: ["더 크게 다쳤다", "기운을 되찾았다", "그대로 앓아누웠다"], answer: 1 },
+    { q: "마을 의원은 박 노인을 보고 뭐라고 했나요?", choices: ["다리뼈가 부러졌다", "몸에 아픈 데가 없다", "약을 오래 먹어야 한다"], answer: 1 },
+    { q: "덕이는 박 노인을 어떻게 설득했나요?", choices: ["삼년 고개 이야기는 헛소문이라고 했다", "할머니가 우시니 밥부터 드시라고 했다", "열 번 구르면 삼십 년 산다고 했다"], answer: 2 },
+    { q: "박 노인이 구르는 동안 마을 사람들은 어떻게 했나요?", choices: ["달려와 함께 세어 주었다", "말리려고 붙잡고 늘어졌다", "의원을 부르러 달려갔다"], answer: 0 },
     {
         q: "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
         wide: true,
         choices: [
             "멀쩡하던 노인이 넘어졌다는 생각만으로 앓아누운 것을 보면, 몸보다 마음이 먼저 무너지는구나.",
-            "의원이 아픈 데가 없다고 한 것을 보면, 약으로 못 고치는 병도 있네.",
-            "열 살짜리가 셈 하나로 노인을 일으킨 것을 보면, 믿음은 다른 믿음으로 갈아 끼우는 거야.",
+            "이웃들이 찾아와 달래도 소용없었다는 것을 보면, 남의 말로는 못 고치는 병도 있네.",
+            "열 살짜리 말에 노인이 이불을 걷어찬 것을 보면, 어른 말만 옳은 것은 아니구나.",
             "덕이가 그런 말은 헛소문이라고 일러 준 것을 보면, 바른말이 사람을 살리나 봐."
         ],
         answer: 3

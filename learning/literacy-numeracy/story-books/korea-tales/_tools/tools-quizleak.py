@@ -70,14 +70,14 @@ def check(slug):
             if h in qa:
                 hits.append((u'물음이 답을 품음', a + 1, None, h, ans))
         # 물음의 낱말 줄기(앞 두 글자)가 정답 보기에만 있으면 물음이 답을 가리킨다.
-        stems_q = {w[:2] for w in re.split(u'[\s,·?]+', qa) if len(w) >= 3}
+        stems_q = {w[:2] for w in re.split(u'[\\s,·?]+', qa) if len(w) >= 3}
         stems_q -= COMMON_Q
         for st in stems_q:
             if st in ans and st not in wrong:
                 hits.append((u'물음 말이 답에', a + 1, None, st, ans))
         # 줄기가 바뀌는 말(나오게→나와라)은 첫 글자로 잡는다. 정답이 그 글자로 시작하고
         # 오답은 아무것도 그 글자로 시작하지 않을 때만.
-        heads = {w[0] for w in re.split(u'[\s,·?]+', qa) if len(w) >= 3 and w[:2] not in COMMON_Q}
+        heads = {w[0] for w in re.split(u'[\\s,·?]+', qa) if len(w) >= 3 and w[:2] not in COMMON_Q}
         wrong_heads = {c[0] for k, c in enumerate(cha) if k != ansa and c}
         for hd in heads:
             if ans and ans[0] == hd and hd not in wrong_heads:

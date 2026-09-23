@@ -398,15 +398,15 @@ const EN = {
     quiz: [
         { q: "What did the tiger expect to find in the village?", choices: ["Rabbits or squirrels", "A pig or a calf", "Persimmons or rice cake"], answer: 1 },
         { q: "What did the baby do when the mother said the tiger would come?", choices: ["It stopped crying", "It fell asleep", "It cried even louder"], answer: 2 },
-        { q: "What made the baby stop crying?", choices: ["The tiger", "The dried persimmon", "The mother's voice"], answer: 1 },
+        { q: "What did the thief think when the back he touched in the shed was trembling?", choices: ["This cow must be cold", "This cow is glad to see me", "This cow must be sick"], answer: 2 },
         { q: "What did the tiger do when he heard the word persimmon?", choices: ["He gave a proud shrug", "He pricked up his ears to listen", "He backed slowly away"], answer: 2 },
-        { q: "What did the cattle thief think the tiger was?", choices: ["A cow", "A horse", "A dog"], answer: 0 },
+        { q: "When did the thief realise he was riding a tiger?", choices: ["When dawn came and he saw the stripes", "When the tiger leapt over the stream", "When he could not find the reins"], answer: 0 },
         { q: "How did the thief get off the tiger's back?", choices: ["He jumped into the stream", "He grabbed a branch", "He hit the tiger"], answer: 1 },
         {
             q: "Which reaction to this book does NOT fit?",
             wide: true,
             choices: [
-                "Crying that wouldn't stop for his own name stopped at the word persimmon, so no wonder the tiger was frightened.",
+                "The tiger decided the persimmon was scarier than himself without knowing what it was, so what you do not know is the scariest thing of all.",
                 "He took the thief on his back for the persimmon, so once you are scared, everything looks like the thing you fear.",
                 "Neither of them looked back once, so it was a night when each was terrified of the other.",
                 "The tiger finally found out what a persimmon was and laughed out loud, so fear goes away once you know."
@@ -609,15 +609,15 @@ const EN = {
 const QUIZ = [
     { q: "호랑이는 마을에 가면 무엇이 있겠거니 했나요?", choices: ["토끼나 다람쥐", "돼지나 송아지", "곶감이나 떡"], answer: 1 },
     { q: "호랑이가 온다고 하자 아기는 어떻게 했나요?", choices: ["울음을 그쳤다", "잠이 들었다", "더 크게 울었다"], answer: 2 },
-    { q: "아기가 울음을 그친 것은 무엇 때문이었나요?", choices: ["호랑이", "곶감", "엄마 목소리"], answer: 1 },
+    { q: "외양간에서 만진 등이 부들부들 떨리자 소도둑은 무슨 생각을 했나요?", choices: ["이 소가 추운가 보다", "이 소가 나를 반기는구나", "이 소가 어디 아픈가"], answer: 2 },
     { q: "곶감이라는 말을 들은 호랑이는 어떻게 했나요?", choices: ["어깨를 으쓱해 보였다", "귀를 쫑긋 세워 들었다", "슬금슬금 뒷걸음쳤다"], answer: 2 },
-    { q: "소도둑은 호랑이를 무엇으로 착각했나요?", choices: ["소", "말", "개"], answer: 0 },
+    { q: "소도둑은 언제 제가 탄 것이 호랑이인 줄 알았나요?", choices: ["동이 터서 줄무늬가 보였을 때", "호랑이가 개울을 뛰어넘었을 때", "고삐가 손에 잡히지 않았을 때"], answer: 0 },
     { q: "소도둑은 어떻게 호랑이 등에서 벗어났나요?", choices: ["개울로 뛰어들어서", "나뭇가지를 붙잡고", "호랑이를 때려서"], answer: 1 },
     {
         q: "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
         wide: true,
         choices: [
-            "제 이름에도 안 그치던 울음이 곶감 소리에 뚝 그친 것을 보면, 호랑이가 겁먹을 만도 했겠다.",
+            "호랑이가 곶감이 무엇인지도 모르면서 저보다 무서운 놈이라 여긴 것을 보면, 모르는 것이 제일 무서운 법이구나.",
             "소도둑이 등에 탄 것을 곶감이라 여긴 것을 보면, 한번 겁을 먹으면 뭐든 그것으로 보이네.",
             "둘 다 뒤도 안 돌아보고 달아난 것을 보면, 서로가 서로를 무서워한 밤이었구나.",
             "호랑이가 곶감이 무엇인지 끝내 알아내 껄껄 웃은 것을 보면, 겁이란 알고 나면 사라지는 거야."

@@ -471,20 +471,20 @@ const EN = {
         }
     ],
     quiz: [
-        { q: "What was the anchovy's dream?", choices: ["A dream of ruling the sea", "A dream of going up to the sky and back", "A dream of becoming important"], answer: 1 },
+        { q: "What was the anchovy's dream?", choices: ["Being shut in a deep cave under the sea", "Rising to the sky and dropping back into the sea", "Riding on a great whale's back"], answer: 1 },
         { q: "Who went to fetch the dream-teller?", choices: ["The cuttlefish", "The pomfret", "The goby"], answer: 2 },
-        { q: "How did the flatfish read the dream?", choices: ["As being caught and grilled", "As being given high office", "As living a long life"], answer: 0 },
-        { q: "What happened to the flatfish after he was struck?", choices: ["His mouth went very small", "His body was pressed flat", "Both his eyes went to one side"], answer: 2 },
-        { q: "Who tore his mouth by laughing?", choices: ["The catfish", "The pomfret", "The goby"], answer: 0 },
-        { q: "Why did the cuttlefish's eyes come down?", choices: ["The anchovy struck him", "He fell while backing away", "A current swept him off"], answer: 1 },
+        { q: "How did the flatfish read the dream?", choices: ["As being caught in a net and grilled", "As being eaten by a big fish", "As being washed ashore by a storm"], answer: 0 },
+        { q: "What did the anchovy do once he had heard the reading?", choices: ["Cleared the table and sent the flatfish back to the West Sea", "Said the reading was wrong and told him to read it again", "Slapped the flatfish across the face with his tail"], answer: 2 },
+        { q: "Why did the pomfret's mouth become so small?", choices: ["A bowl the anchovy threw hit it", "He pursed it tight, trying not to laugh", "He was too startled to close it"], answer: 1 },
+        { q: "Why did the cuttlefish's eyes come down?", choices: ["He fell while backing away", "The anchovy struck him", "A current swept him off"], answer: 0 },
         {
             q: "Which reaction to this book does NOT fit?",
             wide: true,
             choices: [
-                "He struck him for not reading it his way, so he only wanted to hear what suited him.",
-                "The flatfish said only what he saw, so there are places where telling the truth gets you hit.",
+                "He turned the feast table over for not reading it his way, so he only wanted to hear what suited him.",
+                "The flatfish said only what he saw, so there are places where telling the truth makes you hated.",
                 "All the shapes of the sea were settled in one day, so the old people gave reasons with a laugh.",
-                "The goby went all the way to the West Sea, so he must have been that fond of the anchovy."
+                "The cuttlefish helped the fallen flatfish up, so he was the most grown-up guest at the table."
             ],
             answer: 3
         }
@@ -685,20 +685,20 @@ const EN = {
 };
 
 const QUIZ = [
-    { q: "멸치가 꾼 꿈은 어떤 꿈이었나요?", choices: ["바다를 다스리게 되는 꿈", "하늘로 올라갔다 온 꿈", "대단한 사람이 되는 꿈"], answer: 1 },
+    { q: "멸치가 꾼 꿈은 어떤 꿈이었나요?", choices: ["바닷속 깊은 굴에 갇히는 꿈", "하늘로 올라갔다 바다로 떨어지는 꿈", "커다란 고래 등에 올라타는 꿈"], answer: 1 },
     { q: "꿈풀이할 이를 데리러 간 것은 누구인가요?", choices: ["꼴뚜기", "병어", "망둥이"], answer: 2 },
-    { q: "넙치는 그 꿈을 어떻게 풀었나요?", choices: ["잡혀서 구워질 꿈이라고", "큰 벼슬을 할 꿈이라고", "오래 살 꿈이라고"], answer: 0 },
-    { q: "넙치가 뺨을 맞은 뒤 어떻게 되었나요?", choices: ["입이 아주 작아져 버렸다", "몸이 납작하게 눌렸다", "두 눈이 한쪽으로 몰렸다"], answer: 2 },
-    { q: "웃다가 입이 찢어진 것은 누구인가요?", choices: ["메기", "병어", "망둥이"], answer: 0 },
-    { q: "꼴뚜기는 왜 눈이 아래로 내려갔나요?", choices: ["멸치에게 맞아서", "놀라 달아나다가", "물살에 휩쓸려서"], answer: 1 },
+    { q: "넙치는 그 꿈을 어떻게 풀었나요?", choices: ["그물에 걸려 구워질 꿈이라고", "큰 물고기에게 잡아먹힐 꿈이라고", "폭풍에 뭍으로 밀려날 꿈이라고"], answer: 0 },
+    { q: "꿈풀이를 들은 멸치는 어떻게 했나요?", choices: ["상을 물리고 넙치를 서해로 돌려보냈다", "꿈풀이가 틀렸다며 다시 풀라고 했다", "꼬리로 넙치의 뺨을 후려쳤다"], answer: 2 },
+    { q: "병어는 왜 입이 작아졌나요?", choices: ["멸치가 던진 그릇에 맞아서", "웃음을 참느라 입을 꼭 오므려서", "놀라서 입을 다물지 못해서"], answer: 1 },
+    { q: "꼴뚜기는 왜 눈이 아래로 내려갔나요?", choices: ["달아나다 넘어져서", "멸치에게 맞아서", "물살에 휩쓸려서"], answer: 0 },
     {
         q: "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
         wide: true,
         choices: [
-            "제 뜻대로 안 풀어 줬다고 뺨을 때린 것을 보면, 듣고 싶은 말만 들으려 한 것이구나.",
-            "넙치가 본 대로만 말한 것을 보면, 바른말을 하고도 매를 맞는 자리가 있어.",
+            "제 뜻대로 안 풀어 줬다고 잔칫상을 뒤엎은 것을 보면, 듣고 싶은 말만 들으려 한 것이구나.",
+            "넙치가 본 대로만 말한 것을 보면, 바른말을 하고도 미움을 사는 자리가 있어.",
             "바닷속 생김새를 하루 만에 다 정해 놓은 것을 보면, 옛사람들은 웃으면서 까닭을 붙였네.",
-            "망둥이가 서해까지 다녀온 것을 보면, 멸치를 그만큼 따르고 아꼈나 봐."
+            "꼴뚜기가 쓰러진 넙치를 부축해 일으킨 것을 보면, 잔칫상에 온 손님 가운데 제일 어른스러웠네."
         ],
         answer: 3
     }

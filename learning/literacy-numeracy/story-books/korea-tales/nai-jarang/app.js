@@ -397,19 +397,19 @@ const EN = {
         }
     ],
     quiz: [
-        { q: "Why did the three hesitate in front of the feast table?", choices: ["They did not know who would share the cake", "They did not know who should take the top seat", "They did not know when the feast began"], answer: 1 },
-        { q: "Who said they should settle it by age?", choices: ["The fox", "The deer", "The toad"], answer: 0 },
-        { q: "When did the fox say he was born?", choices: ["When the mountain was a hill", "When people counted the stars", "When three trees were planted"], answer: 1 },
-        { q: "How did the deer say the valley was made?", choices: ["A sky pillar fell over", "The star hammer struck it", "He scraped it with his antlers"], answer: 2 },
+        { q: "What was the toad doing while the fox and the deer argued?", choices: ["Helping himself to the rice cake first", "Sitting quietly under the table", "Trying hard to calm them down"], answer: 1 },
+        { q: "How did the deer react when it was said the eldest should take the top seat?", choices: ["He agreed at once", "He got angry and called it nonsense", "He said nothing and only blinked"], answer: 0 },
+        { q: "When did the fox say he was born?", choices: ["When the mountain was a hill", "When people counted the stars", "Before the sun and moon were hung"], answer: 1 },
+        { q: "What did the deer do after hearing the fox's story?", choices: ["Nodded and said the fox was right", "Snorted and called it a child's tale", "Asked the toad which of them was right"], answer: 1 },
         { q: "Why did the toad say he was crying?", choices: ["Old times came back to him", "He was hungry", "There was no seat for him"], answer: 0 },
-        { q: "What did the toad's third tree become?", choices: ["The handle of the star hammer", "The great pillar of the sky", "The pole the sun hangs from"], answer: 0 },
+        { q: "What did the toad say his third tree had become?", choices: ["The handle of the star hammer", "The great pillar of the sky", "The pole the sun hangs from"], answer: 0 },
         {
             q: "Which reaction to this book does NOT fit?",
             wide: true,
             choices: [
                 "They settled the top seat by age, so back then even where you sat had an order to it.",
                 "The toad wept instead of arguing, so the loudest one does not always win.",
-                "The story says nobody knows if he really planted them, so it does not simply take the toad's side.",
+                "The fox and the deer did not get a single piece of cake, so the quarrel over seats cost them the whole feast.",
                 "The toad planted three trees, so he must certainly be the oldest of the three."
             ],
             answer: 3
@@ -586,19 +586,19 @@ const EN = {
 };
 
 const QUIZ = [
-    { q: "셋이 잔칫상 앞에서 우물쭈물한 까닭은 무엇인가요?", choices: ["떡을 누가 나눌지 몰라서", "윗자리에 누가 앉을지 몰라서", "잔치를 언제 열지 몰라서"], answer: 1 },
-    { q: "나이를 견주어 정하자고 한 것은 누구인가요?", choices: ["여우", "사슴", "두꺼비"], answer: 0 },
-    { q: "여우는 언제 태어났다고 했나요?", choices: ["앞산이 언덕이던 시절", "별을 세던 시절", "나무 세 그루를 심을 때"], answer: 1 },
-    { q: "사슴은 골짜기가 어떻게 생겼다고 했나요?", choices: ["하늘 기둥이 넘어져서", "별 박는 망치로 쳐서", "자기 뿔로 긁어서"], answer: 2 },
+    { q: "여우와 사슴이 다투는 동안 두꺼비는 무엇을 하고 있었나요?", choices: ["떡을 먼저 집어 먹고 있었다", "상 아래에 가만히 앉아 있었다", "둘을 말리려고 애쓰고 있었다"], answer: 1 },
+    { q: "나이 많은 이가 윗자리에 앉자는 말에 사슴은 어떻게 했나요?", choices: ["얼른 맞장구를 쳤다", "말도 안 되는 소리라며 화를 냈다", "아무 말 없이 눈만 껌뻑였다"], answer: 0 },
+    { q: "여우는 언제 태어났다고 했나요?", choices: ["앞산이 언덕이던 시절", "별을 세던 시절", "해와 달이 걸리기 전"], answer: 1 },
+    { q: "사슴은 여우의 이야기를 듣고 어떻게 했나요?", choices: ["여우 말이 옳다며 고개를 끄덕였다", "코웃음을 치며 어린애 이야기라 했다", "두꺼비에게 누가 맞는지 물었다"], answer: 1 },
     { q: "두꺼비는 왜 울었다고 했나요?", choices: ["옛 생각이 나서", "배가 고파서", "자리가 없어서"], answer: 0 },
-    { q: "두꺼비가 심은 세 번째 나무는 무엇이 되었나요?", choices: ["별 박는 망치 자루", "하늘의 큰 기둥", "해를 매단 장대"], answer: 0 },
+    { q: "두꺼비가 심었다는 세 번째 나무는 무엇이 되었다고 했나요?", choices: ["별 박는 망치 자루", "하늘의 큰 기둥", "해를 매단 장대"], answer: 0 },
     {
         q: "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
         wide: true,
         choices: [
             "윗자리를 나이로 정하자고 한 것을 보면, 그때는 앉는 자리에도 순서가 있었구나.",
             "두꺼비가 다투지 않고 울음부터 터뜨린 것을 보면, 소리 지르는 쪽만 이기는 건 아니야.",
-            "정말 그 나무를 심었는지 아무도 모른다고 한 것을 보면, 이야기가 두꺼비 편만 들지는 않네.",
+            "여우와 사슴이 떡 한 조각도 못 먹은 것을 보면, 자리 다툼에 잔치를 통째로 잃은 셈이네.",
             "두꺼비가 나무 세 그루를 심은 것을 보면, 셋 중에 제일 오래 산 것이 틀림없겠다."
         ],
         answer: 3

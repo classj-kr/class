@@ -407,21 +407,21 @@ const EN = {
         }
     ],
     quiz: [
-        { q: "What did the woodcutter drop in the pond?", choices: ["A carrying frame", "A worn iron axe", "A whetstone"], answer: 1 },
+        { q: "How did the woodcutter come to drop his axe in the pond?", choices: ["The handle slipped in his sweaty hands", "A falling tree knocked it in", "He lost his footing and fell in with it"], answer: 0 },
         { q: "What did the woodcutter do every night?", choices: ["Mended his carrying frame", "Ground his axe on a whetstone", "Went out to the pond"], answer: 1 },
-        { q: "What did the spirit hold out first?", choices: ["The gold axe", "The silver axe", "The iron axe"], answer: 0 },
+        { q: "How did the mountain spirit appear?", choices: ["Came down from the sky in a blaze of light", "Stepped out from behind a tree by the pond", "Rose up onto the water as the pond parted"], answer: 2 },
         { q: "Which axe did the woodcutter say was his?", choices: ["The gold one", "The silver one", "The iron one"], answer: 2 },
-        { q: "What did the spirit give the woodcutter?", choices: ["All three axes", "Only the gold axe", "Only his iron axe back"], answer: 0 },
-        { q: "What did the greedy man do?", choices: ["Stole the woodcutter's gold axe", "Dropped his axe in on purpose", "Went looking for the spirit"], answer: 1 },
-        { q: "What did the spirit say to the greedy man?", choices: ["That is a rare thing these days", "You know it is not yours", "Take all three with you"], answer: 1 },
-        { q: "What happened to the greedy man?", choices: ["He took the gold axe home", "The spirit scolded him", "He lost his own axe too"], answer: 2 },
+        { q: "When the spirit offered all three axes, what did the woodcutter do?", choices: ["Fell flat and bowed his thanks", "Waved his hands and said the iron one was enough", "Picked out only the gold one"], answer: 1 },
+        { q: "How did the greedy man put his axe into the pond?", choices: ["Hurled it as hard as he could into the middle", "Pretended to chop and let it slip", "Laid it down gently at the water's edge"], answer: 0 },
+        { q: "What did the spirit say to the greedy man?", choices: ["Why does your crying sound so false", "How can you not know your own axe from gold and silver", "You know it is not yours"], answer: 2 },
+        { q: "What happened to the greedy man?", choices: ["He barely got a plain iron axe back", "He lost his own axe and went home empty-handed", "He was given the gold axe and then had it taken back"], answer: 1 },
         {
             q: "Which reaction to this book does NOT fit?",
             wide: true,
             choices: [
-                "His face only lit up at the battered iron axe, so you can see on someone's face what is really theirs.",
+                "His face only lit up at his own axe, so you can see on someone's face what is really theirs.",
                 "The greedy man's crying sounded wrong, so a put-on feeling shows somewhere.",
-                "He ground that axe every night, so you can tell what kind of axe it was to him.",
+                "The spirit studied the woodcutter's face for a while, so it trusted a face more than words.",
                 "The woodcutter bowed low the moment he was given three axes, so gratitude came before surprise."
             ],
             answer: 3
@@ -601,21 +601,21 @@ const EN = {
 };
 
 const QUIZ = [
-    { q: "나무꾼이 연못에 빠뜨린 것은 무엇인가요?", choices: ["지게 하나", "낡은 쇠도끼", "숫돌 한 덩이"], answer: 1 },
+    { q: "나무꾼은 어쩌다 도끼를 연못에 빠뜨렸나요?", choices: ["땀에 손잡이가 미끄러져서", "연못가 나무가 쓰러지며 쳐서", "발을 헛디뎌 함께 빠지면서"], answer: 0 },
     { q: "나무꾼은 밤마다 무엇을 했나요?", choices: ["지게를 손보고 고쳤다", "숫돌에 도끼를 갈았다", "연못가에 나가 보았다"], answer: 1 },
-    { q: "산신령이 가장 먼저 내민 것은 무엇인가요?", choices: ["금도끼", "은도끼", "쇠도끼"], answer: 0 },
+    { q: "산신령은 어떻게 나타났나요?", choices: ["하늘에서 빛과 함께 내려왔다", "연못가 나무 뒤에서 걸어 나왔다", "연못 물이 갈라지며 물 위로 올라섰다"], answer: 2 },
     { q: "나무꾼은 어느 도끼가 제 것이라고 했나요?", choices: ["금도끼", "은도끼", "쇠도끼"], answer: 2 },
-    { q: "산신령은 나무꾼에게 무엇을 주었나요?", choices: ["도끼 셋을 모두", "금도끼 하나만", "쇠도끼만 도로"], answer: 0 },
-    { q: "욕심쟁이는 어떻게 했나요?", choices: ["나무꾼의 금도끼를 훔쳤다", "일부러 도끼를 빠뜨렸다", "산신령을 찾아다녔다"], answer: 1 },
-    { q: "산신령은 욕심쟁이에게 뭐라고 했나요?", choices: ["요즘 세상에 드문 일이로구나", "네 것이 아닌 줄 알면서 그러느냐", "이 셋을 모두 가져가거라"], answer: 1 },
-    { q: "욕심쟁이는 어떻게 되었나요?", choices: ["금도끼를 얻어 갔다", "산신령에게 혼났다", "제 도끼마저 잃었다"], answer: 2 },
+    { q: "산신령이 도끼 셋을 다 주겠다고 하자 나무꾼은 어떻게 했나요?", choices: ["넙죽 엎드려 절을 올렸다", "쇠도끼면 된다며 손사래를 쳤다", "금도끼만 골라 받았다"], answer: 1 },
+    { q: "욕심쟁이는 도끼를 어떻게 연못에 넣었나요?", choices: ["있는 힘껏 한가운데로 던졌다", "나무를 찍는 척하다 슬쩍 떨어뜨렸다", "물가에 살며시 내려놓았다"], answer: 0 },
+    { q: "산신령은 욕심쟁이에게 뭐라고 했나요?", choices: ["우는 소리가 어찌 그리 어색하냐", "금과 은을 앞에 두고 어찌 제 것을 모르느냐", "네 것이 아닌 줄 알면서 그러느냐"], answer: 2 },
+    { q: "욕심쟁이는 어떻게 되었나요?", choices: ["쇠도끼 하나만 겨우 돌려받았다", "제 도끼마저 잃고 빈손으로 갔다", "금도끼를 받았다가 도로 빼앗겼다"], answer: 1 },
     {
         q: "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
         wide: true,
         choices: [
-            "낡은 쇠도끼를 보고서야 얼굴이 환해진 것을 보면, 제 것을 아는 사람은 표정부터 다르구나.",
+            "제 도끼를 보고서야 얼굴이 환해진 것을 보면, 제 것을 아는 사람은 표정부터 다르구나.",
             "욕심쟁이가 우는 소리가 어색했다는 것을 보면, 꾸민 마음은 어딘가 티가 나는구나.",
-            "나무꾼이 밤마다 도끼를 갈았다는 것을 보면, 그 도끼가 어떤 도끼였는지 알겠다.",
+            "산신령이 나무꾼의 얼굴을 가만히 살폈다는 것을 보면, 말보다 얼굴을 믿었던 거구나.",
             "나무꾼이 도끼 셋을 받고 넙죽 절부터 올린 것을 보면, 뜻밖의 복에 고마움이 앞섰구나."
         ],
         answer: 3

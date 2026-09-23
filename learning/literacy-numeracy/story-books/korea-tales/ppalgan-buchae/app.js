@@ -560,19 +560,19 @@ const EN = {
         }
     ],
     quiz: [
-        { q: "What did Kim Cheomji do up the mountain?", choices: ["Cut a load of wood", "Slept in the shade", "Looked all round him"], answer: 1 },
-        { q: "What happens if you fan with the red fan?", choices: ["A nose gets shorter", "A nose turns red", "A nose gets longer"], answer: 2 },
+        { q: "What did Kim Cheomji do up the mountain?", choices: ["Cut a load of wood", "Slept in the shade", "Went looking for the fans"], answer: 1 },
+        { q: "How did Kim Cheomji find out what the fans did?", choices: ["He read what was written on them", "He found out on his own nose", "The old man who left them told him"], answer: 1 },
         { q: "What did the rich man give up for the fans?", choices: ["All the rice in his store", "Whatever price was asked", "The tiled house, all of it"], answer: 2 },
-        { q: "What did the officials of heaven notice?", choices: ["A pillar up through the cloud", "Two very large fans", "A fallen chopstick"], answer: 0 },
-        { q: "What did heaven do with the risen nose?", choices: ["Tied it, thinking it a pillar", "Covered it over with cloud", "Left it alone and watched"], answer: 0 },
-        { q: "What did Kim Cheomji take out for the old man who fell onto the straw?", choices: ["The deed to the house", "The red fan", "The blue fan"], answer: 0 },
+        { q: "What did the officials of heaven see?", choices: ["A long nose", "Two very large fans", "A red pillar"], answer: 2 },
+        { q: "What was the Jade Emperor doing when he noticed the trouble?", choices: ["Eating, when his table began to shake", "Napping, when the cloud began to shake", "Nothing, until his officials came running"], answer: 0 },
+        { q: "Why was the old man pulled up into the sky?", choices: ["Too much fanning with the red fan", "The officials hauled him up on a rope", "He fanned with the blue fan while his nose was tied"], answer: 2 },
         {
             q: "Which reaction to this book does NOT fit?",
             wide: true,
             choices: [
-                "Kim Cheomji gave back the house he got with a fan, so a thing got by cheating does not stay long.",
-                "The old man gave a whole house for a fan, so once your eye is caught you cannot judge a price.",
-                "The officials tied the nose thinking it a pillar, so from above you cannot even tell what a thing is.",
+                "Kim Cheomji came of his own accord when he heard the news, so a thing got by cheating does not stay long.",
+                "The old man begged to pay whatever price was asked, so once your eye is caught you cannot judge a price.",
+                "The old man laughed and cried more, more as his nose grew, so a marvel makes you forget to be afraid.",
                 "The old man never touched the fans again after that, so being punished taught him to hold himself back."
             ],
             answer: 3
@@ -770,19 +770,19 @@ const EN = {
 };
 
 const QUIZ = [
-    { q: "김 첨지는 산에 올라가 무엇을 했나요?", choices: ["나무를 한 짐 했다", "그늘에서 낮잠을 잤다", "사방을 둘러보았다"], answer: 1 },
-    { q: "빨간 부채로 부치면 어떻게 되나요?", choices: ["코가 짧아진다", "코가 빨개진다", "코가 길어진다"], answer: 2 },
+    { q: "김 첨지는 산에 올라가 무엇을 했나요?", choices: ["나무를 한 짐 했다", "그늘에서 낮잠을 잤다", "부채를 찾아 돌아다녔다"], answer: 1 },
+    { q: "김 첨지는 부채가 무엇을 하는 물건인지 어떻게 알게 되었나요?", choices: ["부채에 적힌 글을 읽고", "제 코로 직접 겪어 보고", "부채를 두고 간 노인에게 듣고"], answer: 1 },
     { q: "부자는 부채를 얻으려고 무엇을 내주었나요?", choices: ["곳간의 쌀 전부", "값을 부르는 대로", "기와집을 통째로"], answer: 2 },
-    { q: "하늘 신하들의 눈에 띈 것은 무엇인가요?", choices: ["구름을 뚫고 솟은 기둥", "커다란 부채 두 자루", "떨어진 젓가락 한 짝"], answer: 0 },
-    { q: "하늘나라에서는 솟아오른 코를 어떻게 했나요?", choices: ["기둥인 줄 알고 묶었다", "구름으로 덮어 두었다", "그냥 두고 보았다"], answer: 0 },
-    { q: "김 첨지가 짚더미 위로 굴러떨어진 영감에게 꺼내 보인 것은 무엇인가요?", choices: ["집 문서", "빨간 부채", "파란 부채"], answer: 0 },
+    { q: "하늘 신하들의 눈에 띈 것은 무엇이었나요?", choices: ["긴 코 하나", "커다란 부채 두 자루", "벌건 기둥 하나"], answer: 2 },
+    { q: "옥황상제는 무엇을 하다가 소동을 알아챘나요?", choices: ["밥을 먹다가 상이 흔들려서", "낮잠을 자다가 구름이 흔들려서", "신하들이 달려와 아뢰어서"], answer: 0 },
+    { q: "영감이 하늘로 딸려 올라간 까닭은 무엇인가요?", choices: ["빨간 부채를 너무 오래 부쳐서", "하늘 신하들이 밧줄로 끌어 올려서", "코가 묶인 채 파란 부채를 부쳐서"], answer: 2 },
     {
         q: "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
         wide: true,
         choices: [
-            "김 첨지가 부채로 얻은 집을 도로 내준 것을 보면, 속이고 얻은 것은 오래 못 가지는구나.",
-            "영감이 집을 통째로 주고 부채를 산 것을 보면, 한번 눈이 멀면 값을 못 재네.",
-            "하늘 신하들이 코를 기둥인 줄 알고 묶은 것을 보면, 위에서 보면 무엇인지도 몰라.",
+            "김 첨지가 소문을 듣고 제 발로 찾아온 것을 보면, 속이고 얻은 것은 오래 못 가지는구나.",
+            "영감이 값을 부르는 대로 주겠다고 매달린 것을 보면, 한번 눈이 멀면 값을 못 재네.",
+            "영감이 코가 자랄수록 더, 더 하며 웃은 것을 보면, 신기한 것 앞에서는 무서운 줄을 모르네.",
             "영감이 그 뒤로 다시는 부채를 손에 대지 않았다는 것을 보면, 혼이 나고서야 스스로 자제할 줄 알게 됐구나."
         ],
         answer: 3

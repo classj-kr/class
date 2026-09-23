@@ -423,19 +423,19 @@ const EN = {
     ],
     quiz: [
         { q: "What did Yeono do at the sea every day?", choices: ["Caught fish", "Gathered seaweed", "Made salt"], answer: 1 },
-        { q: "What carried Yeono across the sea?", choices: ["A rock at the water's edge", "A great turtle", "A strange boat"], answer: 0 },
-        { q: "What did Seo find on the rock?", choices: ["A basket full of seaweed", "The silk she had woven", "One of Yeono's straw sandals"], answer: 2 },
-        { q: "What happened in Silla after the two left?", choices: ["The sun and moon lost their light", "The sea dried up", "The rain would not stop"], answer: 0 },
-        { q: "What did the envoy take back to Silla?", choices: ["Yeono's sandal", "A handful of island earth", "The silk Seo had woven"], answer: 2 },
-        { q: "What did the king do with the silk?", choices: ["Had clothes made from it", "Made an offering to heaven", "Gave it to the envoy as a reward"], answer: 1 },
+        { q: "Why did the islanders make Yeono their king?", choices: ["They took him for someone sent by heaven", "They had no king and chose the first newcomer", "He taught them to gather seaweed"], answer: 0 },
+        { q: "What did Seo find on the rock?", choices: ["An empty seaweed basket", "A set of wet clothes", "One of Yeono's straw sandals"], answer: 2 },
+        { q: "What happened in Silla once the light was gone?", choices: ["The sea froze solid", "The cocks stopped crowing and the crops would not grow", "People left one by one for the island"], answer: 1 },
+        { q: "What did Yeono say to the envoy's plea?", choices: ["That he needed the island king's leave", "That heaven had brought him there and he could not go back", "That he would go back and leave Seo behind"], answer: 1 },
+        { q: "What does Yeongil, the name of the hill where the offering was made, mean?", choices: ["The place that greets the sun", "The place the light came back to", "The place where the king bowed"], answer: 0 },
         {
             q: "Which reaction to this book does NOT fit?",
             wide: true,
             choices: [
                 "The light went with the two of them, so people thought the sun and moon were tied to particular people.",
-                "He sent silk instead of going back, so what crossed the sea was the care in it, not the person.",
-                "She climbed the rock at the sight of one sandal, so wanting to find him came before being afraid.",
-                "Yeono went back to Silla with the envoy, so he could not refuse the king in the end."
+                "A bolt of silk crossed the sea instead of a person, so what crossed was the care in it, not the person.",
+                "Seo said she was not afraid because it was the way her husband had gone, so wanting to find him came before being afraid.",
+                "On the island Seo left her loom and lived only as queen, so the silk must have been woven back in Silla."
             ],
             answer: 3
         }
@@ -610,19 +610,19 @@ const EN = {
 
 const QUIZ = [
     { q: "연오랑이 날마다 바다에서 한 일은 무엇인가요?", choices: ["고기 잡기", "미역 따기", "소금 만들기"], answer: 1 },
-    { q: "연오랑을 바다 건너로 데려간 것은 무엇인가요?", choices: ["물가의 바위", "커다란 거북", "낯선 배"], answer: 0 },
-    { q: "세오녀가 바위 위에서 찾은 것은 무엇인가요?", choices: ["미역이 가득한 바구니", "세오녀가 짠 비단", "연오랑의 짚신 한 짝"], answer: 2 },
-    { q: "두 사람이 떠난 뒤 신라에서 생긴 일은 무엇인가요?", choices: ["해와 달이 빛을 잃었다", "바다가 말라 버렸다", "큰비가 그치지 않았다"], answer: 0 },
-    { q: "사신이 신라로 가져간 것은 무엇인가요?", choices: ["연오랑의 짚신", "섬의 흙 한 줌", "세오녀가 짠 비단"], answer: 2 },
-    { q: "임금은 그 비단으로 무엇을 했나요?", choices: ["옷을 지어 입었다", "하늘에 제사를 지냈다", "사신에게 상으로 주었다"], answer: 1 },
+    { q: "섬사람들이 연오랑을 임금으로 모신 까닭은 무엇인가요?", choices: ["하늘이 보낸 사람이라 여겨서", "임금이 없어 처음 온 사람으로 정해서", "미역 따는 법을 가르쳐 주어서"], answer: 0 },
+    { q: "세오녀가 바위 위에서 찾은 것은 무엇인가요?", choices: ["빈 미역 바구니", "젖은 옷 한 벌", "연오랑의 짚신 한 짝"], answer: 2 },
+    { q: "신라에서 빛이 없어지자 어떤 일이 있었나요?", choices: ["바닷물이 그대로 얼어붙었다", "닭이 울지 않고 곡식이 자라지 않았다", "사람들이 하나둘 섬으로 떠났다"], answer: 1 },
+    { q: "사신의 부탁에 연오랑은 무어라 했나요?", choices: ["섬 임금의 허락을 받아야 한다고", "하늘의 뜻이라 돌아갈 수 없다고", "세오녀만 두고 돌아가겠다고"], answer: 1 },
+    { q: "제사를 지낸 언덕의 이름 영일은 무슨 뜻인가요?", choices: ["해를 맞이하는 곳", "빛이 돌아온 곳", "임금이 절한 곳"], answer: 0 },
     {
         q: "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
         wide: true,
         choices: [
             "빛이 두 사람을 따라간 것을 보면, 해와 달이 사람에게 매여 있다고 여겼구나.",
-            "연오랑이 돌아가지 않고 비단을 보낸 것을 보면, 사람이 아니라 정성이 건너간 거야.",
-            "세오녀가 짚신 한 짝을 보고 바위에 오른 것을 보면, 무서움보다 찾을 마음이 앞섰네.",
-            "연오랑이 사신을 따라 신라로 돌아온 것을 보면, 임금의 부탁을 끝내 거절하지 못했나 봐."
+            "사람 대신 비단 한 필이 바다를 건넌 것을 보면, 사람이 아니라 정성이 건너간 거야.",
+            "세오녀가 남편이 간 길이니 무섭지 않았다고 한 것을 보면, 무서움보다 찾을 마음이 앞섰네.",
+            "세오녀가 섬에서는 베틀을 놓고 왕비 노릇만 한 것을 보면, 비단은 신라에 있을 때 짜 둔 것이었나 봐."
         ],
         answer: 3
     }

@@ -553,19 +553,19 @@ const EN = {
         }
     ],
     quiz: [
-        { q: "What kind of work did Asadal do?", choices: ["A carpenter who cut wood", "A mason who worked stone", "A painter who made pictures"], answer: 1 },
-        { q: "Where was Asadal called to?", choices: ["A great temple in Baekje", "Bulguksa in Seorabeol", "The palace of Silla"], answer: 1 },
-        { q: "Why could Asanyeo not go inside?", choices: ["The pagoda was not finished", "She had lost her way there", "She had no money at all"], answer: 0 },
-        { q: "What did the monk tell Asanyeo?", choices: ["To come in by the back gate", "To come again next spring", "The shadow would show in the pond"], answer: 2 },
-        { q: "Did the pagoda's shadow show in the pond?", choices: ["It never showed at all", "It showed the first day", "It showed only in winter"], answer: 0 },
-        { q: "So what did people call this pagoda?", choices: ["The pagoda in the water", "The pagoda with no shadow", "The pagoda of Baekje"], answer: 1 },
+        { q: "What did Asadal tell Asanyeo as he left?", choices: ["That he would be back before spring", "That he would come straight home once the pagoda stood", "That she should come to Seorabeol and live with him"], answer: 1 },
+        { q: "How did Asadal spend his days at the building site?", choices: ["Teaching the other masons his craft", "Working by day and writing to his wife by night", "Speaking to no one and chipping stone late into the night"], answer: 2 },
+        { q: "Why did the gatekeeper stop Asanyeo?", choices: ["No one was allowed in until the pagoda was finished", "Women were not allowed in the temple", "Asadal had said he would not see her"], answer: 0 },
+        { q: "What did the old monk tell Asanyeo?", choices: ["A bell would ring when the pagoda stood, so come at the sound", "He would tell Asadal his wife had come", "The pagoda's shadow would show in the pond when it stood, so come then"], answer: 2 },
+        { q: "While she waited, what kept making Asanyeo jump up thinking it was the pagoda?", choices: ["The mountain reflected in the water", "A passing cloud", "A bird flying over"], answer: 1 },
+        { q: "How did Asadal learn that Asanyeo had come?", choices: ["A workman mentioned it in passing", "The old monk came and told him", "He saw his wife's face in the pond"], answer: 0 },
         {
             q: "Which reaction to this book does NOT fit?",
             wide: true,
             choices: [
                 "He shaped a stone for months and threw it away if it did not please him, so you can see why the pagoda took so long.",
                 "Asanyeo sat on that rock by the pond for years, so waiting can wear a person as thin as that.",
-                "Two faces showed in the water instead of a pagoda's shadow, so what the waiting was for was never the pagoda.",
+                "What showed in the water at the end was the two of them, so what the waiting was for was never the pagoda.",
                 "The old monk told Asadal at once that his wife had come, so the temple felt for the two of them as well."
             ],
             answer: 3
@@ -763,19 +763,19 @@ const EN = {
 };
 
 const QUIZ = [
-    { q: "아사달은 무엇을 하는 사람인가요?", choices: ["나무를 깎는 목수", "돌을 다듬는 석수", "그림을 그리는 화가"], answer: 1 },
-    { q: "아사달은 어디로 불려 갔나요?", choices: ["백제의 큰 절", "서라벌 불국사", "신라의 궁궐"], answer: 1 },
-    { q: "아사녀는 왜 절 안에 들어가지 못했나요?", choices: ["탑이 완성되기 전이라서", "오는 길을 잃어버려서", "가진 돈이 하나도 없어서"], answer: 0 },
-    { q: "스님이 아사녀에게 알려 준 것은 무엇인가요?", choices: ["절 뒷문으로 들어오라고", "다음 봄에 오라고", "못에 탑 그림자가 비친다고"], answer: 2 },
-    { q: "못에 탑 그림자가 비쳤나요?", choices: ["끝내 비치지 않았다", "첫날에 바로 비쳤다", "겨울에만 비쳤다"], answer: 0 },
-    { q: "그래서 이 탑을 무엇이라 부르게 되었나요?", choices: ["물에 비친 탑", "그림자 없는 탑", "백제의 탑"], answer: 1 },
+    { q: "아사달은 떠나며 아사녀에게 뭐라고 했나요?", choices: ["봄이 오기 전에 돌아오겠다고", "탑이 다 서면 곧바로 돌아오겠다고", "서라벌로 와서 함께 살자고"], answer: 1 },
+    { q: "공사판에서 아사달은 어떻게 지냈나요?", choices: ["다른 석수들에게 솜씨를 가르쳤다", "낮에는 일하고 밤이면 아내에게 편지를 썼다", "누구와도 말을 섞지 않고 밤늦도록 돌만 쪼았다"], answer: 2 },
+    { q: "문지기는 왜 아사녀를 막았나요?", choices: ["탑이 서기 전엔 아무도 못 들어간다고 해서", "여자는 절 안에 발을 들일 수 없다고 해서", "아사달이 아내를 만나지 않겠다고 해서"], answer: 0 },
+    { q: "노스님은 아사녀에게 무어라 했나요?", choices: ["탑이 다 서면 종을 칠 테니 그 소리를 듣고 오라고", "아사달에게 아내가 왔다고 전해 주겠다고", "탑이 다 서면 못에 그림자가 비칠 테니 그때 오라고"], answer: 2 },
+    { q: "못가에서 기다리던 아사녀가 번번이 탑인 줄 알고 일어선 것은 무엇이었나요?", choices: ["물에 비친 산", "지나가는 구름", "날아가는 새"], answer: 1 },
+    { q: "아사달은 어떻게 아사녀가 온 것을 알았나요?", choices: ["일꾼이 지나가는 말로 일러 주어서", "노스님이 찾아와 알려 주어서", "못에 아내의 모습이 비쳐서"], answer: 0 },
     {
         q: "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
         wide: true,
         choices: [
             "돌 하나를 몇 달씩 다듬고도 마음에 안 들면 버린 것을 보면, 그 탑이 왜 그리 오래 걸렸는지 알겠다.",
             "아사녀가 못가 바위에 몇 해를 앉아 있은 것을 보면, 기다림이 사람을 이렇게 여위게 하는구나.",
-            "끝내 탑 그림자 대신 두 얼굴이 물에 비친 것을 보면, 기다림이 향한 곳은 탑이 아니었구나.",
+            "마지막에 못에 비친 것이 두 사람의 얼굴이었던 것을 보면, 기다림이 향한 곳은 탑이 아니었구나.",
             "노스님이 아사달에게 아내가 왔다고 곧바로 알려 준 것을 보면, 절에서도 그 사정을 딱하게 여겼구나."
         ],
         answer: 3

@@ -466,19 +466,19 @@ const EN = {
         }
     ],
     quiz: [
-        { q: "What was Gyeonu's work?", choices: ["Weaving cloth at a loom", "Looking after cattle", "Counting the stars"], answer: 1 },
-        { q: "What was Jiknyeo's work?", choices: ["Herding the cattle", "Ploughing the fields", "Weaving cloth"], answer: 2 },
-        { q: "What happened to the sky when the two left their work?", choices: ["New clouds kept appearing", "The sunsets grew lovelier", "It was grey for days"], answer: 2 },
-        { q: "What was gone from the Milky Way after they were parted?", choices: ["The water", "The bridge", "The clouds"], answer: 1 },
-        { q: "Who laid the bridge?", choices: ["Magpies and crows", "The clouds and wind", "The sun and moon"], answer: 0 },
-        { q: "Why does it rain around Chilseok, the story says?", choices: ["Clouds gather then", "The two are crying", "A dragon is angry"], answer: 1 },
+        { q: "Why did the Jade Emperor pair Gyeonu and Jiknyeo?", choices: ["Because the two were in love", "Because both were unusually hard-working", "Because Jiknyeo was his only granddaughter"], answer: 1 },
+        { q: "Why did the magpies and crows fly up to the sky?", choices: ["The Jade Emperor summoned them", "Gyeonu's cattle trampled their fields", "They heard the two of them weeping"], answer: 2 },
+        { q: "What happened while the two were wrapped up in each other?", choices: ["The cattle scattered into other people's fields", "The loom fell to pieces from age", "The Milky Way ran dry"], answer: 0 },
+        { q: "How did the two live once they were parted across the Milky Way?", choices: ["They left their work and called to each other from the banks", "They sent letters back and forth by the birds", "They went back to the cattle and the loom, counting the days"], answer: 2 },
+        { q: "Why did the birds begin to come down one by one?", choices: ["Dawn was breaking and strength was giving out", "The Jade Emperor ordered them down", "The two had finished crossing"], answer: 0 },
+        { q: "Why does it rain around Chilseok, the story says?", choices: ["The Milky Way overflows", "The two are crying", "The birds shake the clouds"], answer: 1 },
         {
             q: "Which reaction to this book does NOT fit?",
             wide: true,
             choices: [
                 "The sky went dull once they dropped their work for love, so one person's work is tied to the whole world.",
                 "He still let them meet one day a year, so even while punishing them he could not cut them off completely.",
-                "The magpies and crows gather by themselves every year, so some things get done with nobody ordering them.",
+                "The magpies' and crows' heads go thin around that time, so helping others can cost you a little of yourself.",
                 "The Jade Emperor pulled the two apart, so he must have disliked the marriage from the very start."
             ],
             answer: 3
@@ -661,19 +661,19 @@ const EN = {
 };
 
 const QUIZ = [
-    { q: "견우가 하던 일은 무엇인가요?", choices: ["베를 짜는 일", "소를 돌보는 일", "별을 세는 일"], answer: 1 },
-    { q: "직녀가 하던 일은 무엇인가요?", choices: ["소를 치는 일", "밭을 가는 일", "베를 짜는 일"], answer: 2 },
-    { q: "견우와 직녀가 일을 놓아 버리자 하늘은 어떻게 되었나요?", choices: ["새 구름이 자꾸 걸렸다", "노을이 더 고와졌다", "며칠째 잿빛이었다"], answer: 2 },
-    { q: "두 사람이 갈라선 뒤 은하수에서 없어진 것은 무엇인가요?", choices: ["물", "다리", "구름"], answer: 1 },
-    { q: "다리를 놓아 준 것은 누구인가요?", choices: ["까치와 까마귀", "구름과 바람", "해와 달"], answer: 0 },
-    { q: "칠석 무렵에 비가 오는 까닭은 무엇이라고 했나요?", choices: ["구름이 몰려와서라고", "두 사람의 눈물이라고", "용이 노해서라고"], answer: 1 },
+    { q: "옥황상제가 견우와 직녀를 짝지어 준 까닭은 무엇인가요?", choices: ["둘이 서로 좋아해서", "둘 다 남달리 부지런해서", "직녀가 하나뿐인 손녀라서"], answer: 1 },
+    { q: "까치와 까마귀가 하늘로 날아오른 까닭은 무엇인가요?", choices: ["옥황상제가 불러 모아서", "견우의 소들이 밭을 밟아 놀라서", "두 사람의 울음소리를 듣고서"], answer: 2 },
+    { q: "두 사람이 서로에게 빠져 지내는 동안 무슨 일이 벌어졌나요?", choices: ["소들이 흩어져 남의 밭에 들어갔다", "베틀이 낡아 부서져 버렸다", "은하수 물이 말라 버렸다"], answer: 0 },
+    { q: "은하수 양쪽으로 갈라진 뒤 두 사람은 어떻게 지냈나요?", choices: ["일은 손에 놓고 강가에서 서로를 불렀다", "새들에게 편지를 보내 소식을 주고받았다", "다시 소를 몰고 베를 짜며 날을 세었다"], answer: 2 },
+    { q: "새들이 하나둘 내려앉기 시작한 까닭은 무엇인가요?", choices: ["동이 트고 힘이 다해서", "옥황상제가 내려오라고 해서", "두 사람이 다 건너가서"], answer: 0 },
+    { q: "칠석 무렵에 비가 오는 까닭은 무엇이라고 했나요?", choices: ["은하수 물이 넘쳐서라고", "두 사람의 눈물이라고", "새들이 구름을 흔들어서라고"], answer: 1 },
     {
         q: "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
         wide: true,
         choices: [
             "둘이 좋아하느라 일을 놓자 하늘빛이 흐려진 것을 보면, 한 사람의 일이 온 세상과 이어져 있구나.",
             "일 년에 하루라도 만나게 한 것을 보면, 벌을 주면서도 아주 끊지는 못했네.",
-            "까치와 까마귀가 해마다 저희끼리 모여 올라간다는 것을 보면, 시키지 않아도 하는 일이 따로 있는 거야.",
+            "까치와 까마귀의 머리털이 그 무렵 듬성듬성해진다는 것을 보면, 남을 돕다 보면 제 몸이 좀 상하기도 하는 거야.",
             "옥황상제가 둘을 갈라놓은 것을 보면, 처음부터 이 혼인을 마뜩잖게 여겼겠다."
         ],
         answer: 3

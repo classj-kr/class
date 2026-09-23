@@ -471,19 +471,19 @@ const EN = {
         }
     ],
     quiz: [
-        { q: "What was the envoy's first problem?", choices: ["Threading a bent bead", "Twisting a rope of ash", "Telling a log's ends apart"], answer: 1 },
+        { q: "What kind of boy was he?", choices: ["The best reader at the village school", "An orphan at his uncle's who had never been taught to read", "An errand boy at the magistrate's who learned by watching"], answer: 1 },
         { q: "How did the boy make the rope of ash?", choices: ["Rolled a rope in ash", "Painted a rope with lye", "Burned a twisted rope"], answer: 2 },
         { q: "What did he use to thread the bent bead?", choices: ["An ant and honey", "A thin cane", "A bundle of straw"], answer: 0 },
         { q: "How did he tell the two ends of the log apart?", choices: ["By weighing it", "By stripping the bark", "By putting it in water"], answer: 2 },
-        { q: "What did the envoy do at the end?", choices: ["Bowed low", "Unrolled a scroll", "Cleared his throat"], answer: 0 },
-        { q: "What did the boy ask for as his reward?", choices: ["Gold and silk for himself", "A school for the village", "A cow for his uncle"], answer: 1 },
+        { q: "What did the envoy say once all three problems were solved?", choices: ["That this country had wise people after all", "That he would set one more problem", "That he would take the boy back to his own country"], answer: 0 },
+        { q: "What did the boy ask for as his reward?", choices: ["A field for his uncle", "A school for the village", "A post at the magistrate's office"], answer: 1 },
         {
             q: "Which reaction to this book does NOT fit?",
             wide: true,
             choices: [
                 "A twelve-year-old solved what many grown-ups could not, so seeing it differently can beat knowing more.",
-                "He used an ant and some honey, so using what is already there beats making something out of nothing.",
-                "He asked for a school as his reward, so he was thinking of the next child before his own share.",
+                "He crouched in a corner of the yard and thought first, so using what is already there beats making something out of nothing.",
+                "He turned down gold and silk as his reward, so he was thinking of the next child before his own share.",
                 "The boy ran to the office the day the envoy named the time limit, so he knew when to step forward."
             ],
             answer: 3
@@ -661,19 +661,19 @@ const EN = {
 };
 
 const QUIZ = [
-    { q: "사신이 낸 첫 번째 문제는 무엇인가요?", choices: ["굽은 구슬에 실 꿰기", "재로 새끼줄 꼬기", "통나무 위아래 가리기"], answer: 1 },
+    { q: "소년은 어떻게 자란 아이였나요?", choices: ["서당에서 글을 제일 잘 읽는 아이", "삼촌 집에 얹혀살며 글은 배운 적이 없는 아이", "원님 집에서 심부름하며 어깨너머로 배운 아이"], answer: 1 },
     { q: "소년은 재 새끼줄을 어떻게 만들었나요?", choices: ["새끼를 재에 굴려서", "새끼에 잿물을 발라서", "꼰 새끼를 태워서"], answer: 2 },
     { q: "굽은 구슬에 실을 꿸 때 무엇을 썼나요?", choices: ["개미와 꿀", "가는 대나무", "짚 한 단"], answer: 0 },
     { q: "통나무의 위아래는 어떻게 가려냈나요?", choices: ["무게를 달아 보고", "껍질을 벗겨 보고", "물에 띄워 보고"], answer: 2 },
-    { q: "사신은 마지막에 어떻게 했나요?", choices: ["정중히 고개를 숙였다", "두루마리를 펼쳤다", "헛기침을 했다"], answer: 0 },
-    { q: "소년이 상으로 바란 것은 무엇인가요?", choices: ["금이나 비단 받기", "마을에 서당 짓기", "새끼줄 한 다발"], answer: 1 },
+    { q: "세 문제를 다 풀자 사신은 뭐라고 했나요?", choices: ["이 나라에는 지혜로운 이가 있다고", "문제를 하나 더 내겠다고", "소년을 제 나라로 데려가겠다고"], answer: 0 },
+    { q: "소년이 상으로 바란 것은 무엇인가요?", choices: ["삼촌네 논 한 마지기", "마을에 글방 짓기", "관아의 벼슬 자리"], answer: 1 },
     {
         q: "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
         wide: true,
         choices: [
             "어른 여럿이 못 푼 것을 열두 살이 푼 것을 보면, 아는 것보다 달리 보는 것이 셀 때가 있구나.",
-            "개미와 꿀을 쓴 것을 보면, 없는 것을 만들어 내기보다 있는 것을 잘 쓰는 편이야.",
-            "상으로 서당을 달라고 한 것을 보면, 제 몫보다 다음 사람을 먼저 생각했네.",
+            "소년이 마당 구석에 쪼그리고 앉아 궁리부터 한 것을 보면, 없는 것을 만들어 내기보다 있는 것을 잘 쓰는 편이야.",
+            "상으로 금도 비단도 마다한 것을 보면, 제 몫보다 다음 사람을 먼저 생각했네.",
             "사신이 기한을 말하자 소년이 그날로 관아에 달려간 것을 보면, 나설 자리를 알아보는 아이였나 봐."
         ],
         answer: 3

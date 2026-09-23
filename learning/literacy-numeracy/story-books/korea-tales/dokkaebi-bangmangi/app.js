@@ -473,12 +473,12 @@ const EN = {
         }
     ],
     quiz: [
-        { q: "What did the younger brother pick up on the mountain?", choices: ["A lump of gold", "Some hazelnuts", "An old club"], answer: 1 },
-        { q: "Who was the first hazelnut for?", choices: ["His mother", "His father", "His brother"], answer: 1 },
-        { q: "What did the goblins do with their clubs?", choices: ["Knocked out gold and silver", "Hit each other in play", "Dug up the ground"], answer: 0 },
-        { q: "What did the goblins think had happened when they ran?", choices: ["That somebody stole a club", "That day had broken", "That the house was coming down"], answer: 2 },
-        { q: "What happened to the greedy elder brother?", choices: ["His nose grew long", "He got a second lump", "He got a great deal of gold"], answer: 0 },
-        { q: "Where did the elder brother go with his long nose?", choices: ["Back up to the loft", "To his younger brother", "He stayed in the empty house"], answer: 1 },
+        { q: "Why did the younger brother bite a hazelnut up in the loft?", choices: ["To give the goblins a fright", "Because he was hungry", "Because he could not sleep"], answer: 1 },
+        { q: "Why did the younger brother spend the night in the empty house?", choices: ["Rain came pouring down", "He wanted to meet the goblins", "The sun had set and he could not see the path"], answer: 2 },
+        { q: "What did the goblins think had happened when they ran?", choices: ["That the house was coming down", "That day had broken", "That their club had been stolen"], answer: 0 },
+        { q: "What did the goblins do when the elder brother crunched a handful of nuts?", choices: ["Dropped everything and ran, as before", "Looked up at the loft and climbed up", "Threw him rice cakes and asked him to join in"], answer: 1 },
+        { q: "What happened to the greedy elder brother?", choices: ["He was soundly beaten with the clubs", "The goblins caught him and made him their servant", "His nose grew long"], answer: 2 },
+        { q: "What did the younger brother do when his brother came to him?", choices: ["Quietly took up the club and put him right", "Sent him home, saying it was his own greed", "Handed the club over to him"], answer: 0 },
         {
             q: "Which reaction to this book does NOT fit?",
             wide: true,
@@ -486,7 +486,7 @@ const EN = {
                 "He set aside one nut for each of the family, so he is somebody who thinks first of who to share with.",
                 "The goblins left gold and silver and everything behind, so even strong things get frightened.",
                 "The elder chewed a whole handful, so copying somebody always goes too far.",
-                "The elder gathered a whole sack of nuts, so he must have searched the mountain harder than his brother."
+                "The elder stood up before his brother had finished telling, so he must have worried his brother would hold something back."
             ],
             answer: 3
         }
@@ -683,12 +683,12 @@ const EN = {
 };
 
 const QUIZ = [
-    { q: "아우가 산에서 주운 것은 무엇인가요?", choices: ["금덩이 하나", "개암 몇 알", "낡은 방망이"], answer: 1 },
-    { q: "아우는 첫 번째 개암을 누구에게 주려 했나요?", choices: ["어머니", "아버지", "형님"], answer: 1 },
-    { q: "도깨비들이 방망이로 무엇을 했나요?", choices: ["두드려 금은을 냈다", "서로 때리며 놀았다", "땅을 파고 있었다"], answer: 0 },
-    { q: "도깨비들은 무슨 일이 났다고 여겨 달아났나요?", choices: ["누가 방망이를 훔쳤다고", "날이 밝았다고", "집이 무너진다고"], answer: 2 },
-    { q: "욕심쟁이 형은 어떻게 되었나요?", choices: ["코가 길게 늘어났다", "혹이 하나 더 붙었다", "금을 잔뜩 얻었다"], answer: 0 },
-    { q: "코가 늘어난 형은 어디로 갔나요?", choices: ["다시 다락에 올라갔다", "아우를 찾아갔다", "골짜기 빈 집에 남았다"], answer: 1 },
+    { q: "아우가 다락에서 개암을 깨문 까닭은 무엇인가요?", choices: ["도깨비를 놀라게 하려고", "배가 고파서", "잠이 오지 않아서"], answer: 1 },
+    { q: "아우가 골짜기 빈 집에서 하룻밤을 잔 까닭은 무엇인가요?", choices: ["갑자기 비가 쏟아져 길이 막혀서", "도깨비를 한번 만나 보고 싶어서", "해가 져서 길이 보이지 않아서"], answer: 2 },
+    { q: "도깨비들은 무슨 일이 났다고 여겨 달아났나요?", choices: ["집이 무너진다고", "날이 밝았다고", "방망이를 도둑맞았다고"], answer: 0 },
+    { q: "형이 개암을 한 움큼 깨물었을 때 도깨비들은 어떻게 했나요?", choices: ["지난번처럼 다 팽개치고 달아났다", "다락을 올려다보고 올라왔다", "떡을 던져 주며 같이 놀자고 했다"], answer: 1 },
+    { q: "욕심쟁이 형은 어떻게 되었나요?", choices: ["방망이에 실컷 얻어맞았다", "도깨비에게 붙들려 종이 되었다", "코가 길게 늘어났다"], answer: 2 },
+    { q: "형이 찾아오자 아우는 어떻게 했나요?", choices: ["잠자코 방망이로 도로 낫게 해 주었다", "제 욕심 탓이라며 그냥 돌려보냈다", "방망이를 아예 형에게 넘겨주었다"], answer: 0 },
     {
         q: "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
         wide: true,
@@ -696,7 +696,7 @@ const QUIZ = [
             "아우가 개암 네 알을 식구 수대로 챙긴 것을 보면, 무엇이 생기면 나눌 사람부터 떠올리는 사람이구나.",
             "도깨비들이 금이며 은이며 다 팽개치고 달아난 것을 보면, 힘센 것도 겁은 나는 모양이야.",
             "형이 개암을 한 움큼이나 씹은 것을 보면, 남을 따라 할 때는 늘 도가 지나치네.",
-            "형이 개암을 한 자루나 주워 간 것을 보면, 아우보다 더 부지런히 산을 뒤졌겠다."
+            "형이 아우의 말이 끝나기도 전에 일어선 것을 보면, 아우가 이야기를 감출까 봐 걱정했나 봐."
         ],
         answer: 3
     }

@@ -469,20 +469,20 @@ const EN = {
         }
     ],
     quiz: [
-        { q: "What did Deokgu do with his nail clippings?", choices: ["Gathered them up carefully", "Put them in the hole under the wall", "Flung them out into the yard"], answer: 2 },
-        { q: "What happened to the mouse after it ate them?", choices: ["Its body shrank", "It became a man with the same face", "It went into the hole under the wall"], answer: 1 },
+        { q: "What did the mouse do with the clippings in the yard?", choices: ["Carried them into its hole", "Sniffed them and went on", "Chewed up every last one"], answer: 2 },
+        { q: "Why could the family not tell the two apart side by side?", choices: ["They matched down to every mole and scar", "It was too dark to see their faces", "The false one kept his face covered"], answer: 0 },
         { q: "What was the false one doing when Deokgu opened the door?", choices: ["Going about the yard", "Turning his hands over", "Eating a meal"], answer: 2 },
-        { q: "What happened when his father asked about childhood?", choices: ["The real one kept stumbling", "The real one named the dates", "The real one put down his spoon"], answer: 0 },
-        { q: "What did the cat do when it saw the false one?", choices: ["Lay quietly in his arms", "Put its fur up and went for him", "Only sniffed about"], answer: 1 },
-        { q: "What kind of person did Deokgu become after that?", choices: ["Somebody who finishes what he begins", "Somebody who does everything by halves", "Somebody who works half a day and plays"], answer: 0 },
+        { q: "What happened when his father asked about childhood?", choices: ["The false one kept stumbling", "The real one kept stumbling", "Both answered smoothly"], answer: 1 },
+        { q: "Why did the old woman next door say to take the cat?", choices: ["The cat was fond of Deokgu", "The false one was afraid of cats", "A beast's nose cannot be fooled"], answer: 2 },
+        { q: "Where did Deokgu sleep in the days after he was thrown out?", choices: ["In the old woman's shed next door", "In other people's sheds and under a bridge", "Under the eaves of his own house"], answer: 1 },
         {
             q: "Which reaction to this book does NOT fit?",
             wide: true,
             choices: [
-                "The false one answered better about the family, so a man who lived by halves could not even prove he was himself.",
+                "Deokgu was still biting his nails as he crouched under the eaves, so a habit does not change just because trouble came.",
                 "A warning about nail clippings turned into a story, so what came off the body was not treated lightly.",
-                "One cat told them apart at once, so human eyes are not always the sharpest.",
-                "The old woman next door knew him and took him in for the night, so one person did believe him."
+                "The cat went for the false one the moment it was set down in the yard, so human eyes are not always the sharpest.",
+                "His mother held on to his arm to the last as he was pushed out of the gate, so she at least knew the real one."
             ],
             answer: 3
         }
@@ -675,20 +675,20 @@ const EN = {
 };
 
 const QUIZ = [
-    { q: "덕구는 깎은 손톱을 어떻게 했나요?", choices: ["잘 모아서 버렸다", "담 밑 구멍에 넣었다", "마당으로 훅 뿌렸다"], answer: 2 },
-    { q: "들쥐는 손톱을 먹고 어떻게 되었나요?", choices: ["몸이 쪼그라들었다", "똑같이 생긴 사람이 되었다", "담 밑 구멍으로 사라졌다"], answer: 1 },
+    { q: "들쥐는 마당에 흩어진 손톱 조각을 어떻게 했나요?", choices: ["구멍으로 물어다 모았다", "냄새만 맡고 지나갔다", "하나도 남김없이 씹어 먹었다"], answer: 2 },
+    { q: "식구들이 둘을 나란히 세우고도 가리지 못한 까닭은 무엇인가요?", choices: ["점 하나 흉터 하나까지 똑같아서", "밤이 어두워 얼굴이 안 보여서", "가짜가 얼굴을 가리고 있어서"], answer: 0 },
     { q: "돌아온 덕구가 문을 열었을 때 가짜는 무엇을 하고 있었나요?", choices: ["마당을 돌아다니고 있었다", "손을 이리저리 뒤집어 보고 있었다", "밥을 먹고 있었다"], answer: 2 },
-    { q: "아버지가 어릴 적 이야기를 묻자 진짜는 어땠나요?", choices: ["자꾸 더듬거렸다", "날짜까지 또박또박 짚었다", "숟가락을 놓고 일어섰다"], answer: 0 },
-    { q: "고양이는 가짜를 보고 어떻게 했나요?", choices: ["얌전히 안겨 있었다", "털을 곤두세우고 달려들었다", "코를 킁킁거리기만 했다"], answer: 1 },
-    { q: "덕구는 그날부터 어떤 사람이 되었나요?", choices: ["무슨 일이든 끝까지 하는 사람", "무엇이든 대충대충 하는 사람", "일을 반만 하고 나가 노는 사람"], answer: 0 },
+    { q: "아버지가 어릴 적 이야기를 묻자 어떻게 되었나요?", choices: ["가짜가 자꾸 더듬거렸다", "진짜가 자꾸 더듬거렸다", "둘 다 술술 대답했다"], answer: 1 },
+    { q: "이웃집 할머니는 왜 고양이를 데려가라고 했나요?", choices: ["고양이가 덕구를 잘 따르니까", "가짜가 고양이를 무서워하니까", "짐승 코는 못 속이니까"], answer: 2 },
+    { q: "쫓겨난 덕구는 며칠 동안 어디서 잤나요?", choices: ["이웃집 할머니네 헛간에서", "남의 집 헛간과 다리 밑에서", "제 집 처마 밑에서"], answer: 1 },
     {
         q: "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
         wide: true,
         choices: [
-            "가짜가 집안일을 더 잘 대답한 것을 보면, 제 삶을 대충 산 사람은 제가 저인 것도 못 밝히는구나.",
+            "덕구가 처마 밑에 웅크리고도 손톱을 물어뜯고 있던 것을 보면, 버릇이란 큰일을 겪고도 쉽게 안 바뀌는구나.",
             "손톱을 함부로 버리지 말라던 말이 이야기가 된 것을 보면, 몸에서 나온 것을 예사로 여기지 않았네.",
-            "고양이 한 마리가 단번에 가려낸 것을 보면, 사람 눈이 늘 제일 밝은 건 아니야.",
-            "이웃집 할머니가 덕구를 알아보고 집에 들여 재워 준 것을 보면, 한 사람은 그를 믿어 준 거였어."
+            "고양이가 마당에 내려서자마자 가짜에게 달려든 것을 보면, 사람 눈이 늘 제일 밝은 건 아니야.",
+            "덕구가 대문 밖으로 밀려날 때 어머니가 마지막까지 팔을 붙들어 준 것을 보면, 어머니만은 진짜를 알아본 거였어."
         ],
         answer: 3
     }

@@ -561,20 +561,20 @@ const EN = {
         }
     ],
     quiz: [
-        { q: "What errand did the stepmother give in midwinter?", choices: ["To go and fetch water", "To pick greens", "To go and cut firewood"], answer: 1 },
-        { q: "What happened when Yeoni sat under the willow?", choices: ["The snow stopped and the sun came", "Her stepmother came after her", "The rock slid aside"], answer: 2 },
-        { q: "What was inside the rock door?", choices: ["A place in full spring", "A pitch dark cave", "A heap of gold and silver"], answer: 0 },
-        { q: "What did the stepmother do to Yeoni?", choices: ["Went up the mountain alone", "Stopped sending her out", "Followed her in secret"], answer: 2 },
-        { q: "What brought the fallen Willow Boy back?", choices: ["Three flowers", "The green shoots", "A spray of azalea"], answer: 0 },
-        { q: "What happened on that mountain that winter?", choices: ["Snow lay up to the knee", "Snow melted and streams ran", "A cold wind blew hard"], answer: 1 },
+        { q: "What was all Yeoni could find on the snowy mountain?", choices: ["Frozen berries", "Dry roots of grass", "A spray of azalea"], answer: 1 },
+        { q: "Why did Yeoni sit down under the willow?", choices: ["Her basket was full and she wanted a rest", "She had no strength left to move a finger", "She heard somebody calling her"], answer: 1 },
+        { q: "What came out first when the rock door opened?", choices: ["A dazzling golden light", "The sound of singing", "A warm wind and the smell of grass"], answer: 2 },
+        { q: "How did the stepmother learn of the rock door?", choices: ["She tracked Yeoni's footprints in the snow", "Yeoni told her, boasting", "The Willow Boy came to the house"], answer: 0 },
+        { q: "What happened when the red flower was laid on him?", choices: ["His bent body straightened", "Colour came into his cheeks", "A faint breath came back"], answer: 2 },
+        { q: "What became of the rock door that winter?", choices: ["It stood wide open and would not shut", "It shut for good once the stepmother was out", "The Willow Boy locked it from inside"], answer: 0 },
         {
             q: "Which reaction to this book does NOT fit?",
             wide: true,
             choices: [
-                "She was told to pick greens in midwinter, so it was a task set to be failed and then found fault with.",
-                "Spring was only inside the rock door, so there are places that open for somebody who endures.",
+                "The stepmother said not to come home if she failed, so it was a task set to be failed and then found fault with.",
+                "Only in there could Yeoni laugh as much as she liked, so there are places that open for somebody who endures.",
                 "The door shut when the stepmother shoved him, so a door you try to open out of greed closes instead.",
-                "Yeoni only said the mountain when asked where the greens came from, so she must have wanted to keep it to herself."
+                "Yeoni took her stepmother in through the door to show her, so she wanted to share a good thing even with someone unkind."
             ],
             answer: 3
         }
@@ -776,20 +776,20 @@ const EN = {
 };
 
 const QUIZ = [
-    { q: "새어머니가 한겨울에 시킨 심부름은 무엇인가요?", choices: ["물을 길어 오라고", "나물을 뜯어 오라고", "나무를 해 오라고"], answer: 1 },
-    { q: "연이가 버드나무 아래 주저앉자 무슨 일이 있었나요?", choices: ["눈이 그치고 해가 났다", "새어머니가 뒤따라왔다", "바위가 옆으로 밀려났다"], answer: 2 },
-    { q: "바위 문 안은 어떤 곳이었나요?", choices: ["봄이 한창인 곳", "캄캄한 굴속", "금은이 쌓인 곳"], answer: 0 },
-    { q: "새어머니는 연이를 어떻게 했나요?", choices: ["혼자 산에 갔다", "심부름을 그만두게 했다", "몰래 뒤를 따라갔다"], answer: 2 },
-    { q: "쓰러진 버들 도령을 살린 것은 무엇인가요?", choices: ["세 송이 꽃", "파릇파릇한 나물", "진달래 한 가지"], answer: 0 },
-    { q: "그해 겨울 그 산에는 무슨 일이 있었나요?", choices: ["눈이 무릎까지 쌓였다", "눈이 녹고 개울이 흘렀다", "찬 바람이 쌩쌩 불었다"], answer: 1 },
+    { q: "연이가 눈 덮인 산에서 찾아낸 것은 무엇뿐이었나요?", choices: ["얼어붙은 열매", "마른 풀뿌리", "진달래 한 가지"], answer: 1 },
+    { q: "연이는 왜 버드나무 아래에 주저앉았나요?", choices: ["소쿠리가 다 차서 쉬려고", "손가락 하나 움직일 힘이 없어서", "누가 부르는 소리를 들어서"], answer: 1 },
+    { q: "바위 문이 열리자 무엇이 먼저 끼쳐 나왔나요?", choices: ["눈이 부신 금빛", "버들 도령의 노랫소리", "포근한 바람과 풀 냄새"], answer: 2 },
+    { q: "새어머니는 어떻게 바위 문을 알게 되었나요?", choices: ["눈 위 발자국을 따라 뒤를 밟아서", "연이가 자랑삼아 말해서", "버들 도령이 집으로 찾아와서"], answer: 0 },
+    { q: "빨간 꽃을 얹자 무슨 일이 있었나요?", choices: ["굽었던 몸이 반듯해졌다", "볼에 생기가 들었다", "가늘게 숨소리가 돌아왔다"], answer: 2 },
+    { q: "그해 겨울 바위 문은 어떻게 되었나요?", choices: ["활짝 열린 채 닫히지 않았다", "새어머니가 나온 뒤 영영 닫혔다", "버들 도령이 안에서 잠갔다"], answer: 0 },
     {
         q: "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
         wide: true,
         choices: [
-            "한겨울에 나물을 뜯어 오라 한 것을 보면, 못 할 일을 시켜 놓고 흠을 잡으려는 것이었구나.",
-            "바위 문 안에만 봄이 있었다는 것을 보면, 견디는 사람에게 열리는 자리가 따로 있네.",
+            "새어머니가 못 하면 들어올 생각도 말라고 한 것을 보면, 못 할 일을 시켜 놓고 흠을 잡으려는 것이었구나.",
+            "연이가 그 안에서만은 마음껏 웃을 수 있었다는 것을 보면, 견디는 사람에게 열리는 자리가 따로 있네.",
             "새어머니가 밀치자 문이 닫혀 버린 것을 보면, 욕심으로 열려는 문은 되레 닫히는 거야.",
-            "연이가 나물이 어디서 났느냐는 물음에 그냥 산이라고만 한 것을 보면, 혼자만 알고 싶었나 봐."
+            "연이가 새어머니를 문 안으로 데려가 보여 준 것을 보면, 미운 사람에게도 좋은 것을 나누고 싶었나 봐."
         ],
         answer: 3
     }

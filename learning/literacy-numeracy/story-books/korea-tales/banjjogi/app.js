@@ -517,22 +517,22 @@ const EN = {
         }
     ],
     quiz: [
-        { q: "Why was Banjjogi born a half?", choices: ["Heaven sent it as a punishment", "His mother did not eat all the carp", "His brothers were so jealous"], answer: 1 },
-        { q: "What did people say about Banjjogi at first?", choices: ["How will he get by on his own", "He has the strength of ten men", "They stared with round eyes"], answer: 0 },
-        { q: "What did the brothers do on the mountain?", choices: ["Tied him up with rope and left him", "Drove him out of the house", "Sent him on a far errand"], answer: 0 },
+        { q: "Why was Banjjogi born a half?", choices: ["The couple skipped one day of praying at the rock", "His mother did not eat all the carp", "The monk gave them only two carp"], answer: 1 },
+        { q: "What did the villagers say when Banjjogi lifted the A-frame with one arm?", choices: ["How will he ever get by on his own", "That boy is making fools of us", "Is that really the Banjjogi we know"], answer: 2 },
+        { q: "Why did the brothers take Banjjogi deep into the mountain?", choices: ["The best firewood grew deep in the mountain", "They wanted him to catch the tiger", "They wanted him far away from them"], answer: 2 },
         { q: "How did the tied-up Banjjogi get back?", choices: ["Bit through the rope", "Somebody passing untied him", "Carried the whole tree back"], answer: 2 },
         { q: "What did Banjjogi take to catch the tiger?", choices: ["A coil of rope", "The storehouse pillar", "A great big jar"], answer: 0 },
-        { q: "What was Kim's first contest?", choices: ["A trial of strength", "A race", "A trial of wits"], answer: 0 },
-        { q: "In which contest could he not use the bucket?", choices: ["Filling the jar with water", "Pulling out the storehouse pillar", "The race against two men"], answer: 0 },
-        { q: "What did Banjjogi do for his brothers at the end?", choices: ["Sat them in the seats of honour", "Took them up the mountain again", "Tied them up with rope"], answer: 0 },
+        { q: "What was Kim's first contest?", choices: ["A race", "A trial of wits", "A trial of strength"], answer: 2 },
+        { q: "How did Banjjogi manage the water contest without a bucket?", choices: ["Scooped water from the stream with one arm", "Carried the whole jar to the stream and filled it there", "Left it in the yard until it rained"], answer: 1 },
+        { q: "How did Banjjogi treat his brothers on his wedding day?", choices: ["Gave them half of the wealth he got from Kim", "Sat them in the seats of honour", "Handed them the reward for the tiger"], answer: 1 },
         {
             q: "Which reaction to this book does NOT fit?",
             wide: true,
             choices: [
                 "The child they said would never get by caught a tiger, so you cannot decide about somebody by the look of them.",
                 "Kim promised and then set contests to put it off, so a promise made to somebody weak was easily overturned then.",
-                "Banjjogi seated the brothers who tied him up in the seats of honour, so covering for their wrong is harder than paying back a wrong done to you.",
-                "The brothers took Banjjogi up the mountain, so they meant to share the hard work of cutting wood between the three of them."
+                "Banjjogi poured the first cup for the brothers who had tied him up, so covering for their wrong is harder than paying back a wrong done to you.",
+                "The brothers hurried to untie the rope when they saw Banjjogi in the yard, so they had already changed their hearts by then."
             ],
             answer: 3
         }
@@ -725,22 +725,22 @@ const EN = {
 };
 
 const QUIZ = [
-    { q: "반쪽이가 반쪽으로 태어난 까닭은 무엇인가요?", choices: ["하늘에서 벌을 내렸기 때문에", "어머니가 잉어를 다 못 먹어서", "형들이 몹시 시샘을 해서"], answer: 1 },
-    { q: "사람들이 처음에 반쪽이를 보고 뭐라고 했나요?", choices: ["혼자 살아가기나 하겠나", "힘이 어른 열 몫이라고 했다", "눈을 휘둥그레 뜨고 놀랐다"], answer: 0 },
-    { q: "형들은 반쪽이를 산으로 데려가 어떻게 했나요?", choices: ["밧줄로 꽁꽁 묶어 두고 왔다", "집 밖으로 내쫓아 버렸다", "멀리 심부름을 보냈다"], answer: 0 },
+    { q: "반쪽이가 반쪽으로 태어난 까닭은 무엇인가요?", choices: ["부부가 바위에 비는 날을 하루 걸러서", "어머니가 잉어를 다 못 먹어서", "스님이 잉어를 두 마리만 주어서"], answer: 1 },
+    { q: "반쪽이가 지게를 한 팔로 번쩍 들자 마을 사람들은 뭐라고 했나요?", choices: ["혼자 살아가기나 하겠나", "저 반쪽이 하나 때문에 우리가 우스워진다", "저 애가 정말 우리가 아는 반쪽이 맞나"], answer: 2 },
+    { q: "형들이 반쪽이를 깊은 산으로 데려간 까닭은 무엇인가요?", choices: ["깊은 산에 좋은 나무가 많아서", "호랑이를 잡게 하려고", "동생을 멀리 떼어 놓으려고"], answer: 2 },
     { q: "묶여 있던 반쪽이는 어떻게 돌아왔나요?", choices: ["밧줄을 이로 물어 끊고", "지나던 사람이 풀어 주어", "나무를 통째로 뽑아 지고"], answer: 2 },
     { q: "호랑이를 잡으러 나간 반쪽이가 들고 간 것은 무엇인가요?", choices: ["밧줄 한 타래", "곳간 기둥", "커다란 항아리"], answer: 0 },
-    { q: "김 부자가 시킨 첫 번째 내기는 무엇인가요?", choices: ["힘겨루기", "달리기", "슬기 겨루기"], answer: 0 },
-    { q: "김 부자가 두레박을 쓰지 말라고 한 내기는 무엇인가요?", choices: ["항아리에 물 채우기", "곳간 기둥 뽑기", "달리기"], answer: 0 },
-    { q: "반쪽이는 마지막에 형들을 어떻게 했나요?", choices: ["윗자리에 앉혔다", "산으로 다시 데려갔다", "밧줄로 묶어 두었다"], answer: 0 },
+    { q: "김 부자가 시킨 첫 번째 내기는 무엇인가요?", choices: ["달리기", "슬기 겨루기", "힘겨루기"], answer: 2 },
+    { q: "두레박 없이 물을 채우라는 내기에서 반쪽이는 어떻게 했나요?", choices: ["한 팔로 개울물을 퍼서 날랐다", "항아리째 안고 개울로 가서 담아 왔다", "비가 내릴 때까지 마당에 두었다"], answer: 1 },
+    { q: "혼례 날 반쪽이는 형들을 어떻게 대했나요?", choices: ["김 부자에게 받은 재산 절반을 나누어 주었다", "윗자리에 앉혔다", "호랑이 잡은 상을 형들에게 돌렸다"], answer: 1 },
     {
         q: "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
         wide: true,
         choices: [
             "혼자 살아가기나 하겠냐던 아이가 호랑이를 잡은 것을 보면, 겉만 보고 미리 정해 놓으면 안 되겠구나.",
             "김 부자가 약속해 놓고 내기를 걸어 미룬 것을 보면, 힘없는 쪽과 한 약속은 쉽게 뒤집히던 시절 같다.",
-            "반쪽이가 저를 묶어 두고 온 형들을 윗자리에 앉힌 것을 보면, 원수를 갚는 것보다 어려운 것이 잘못을 덮어 주는 일이구나.",
-            "형들이 반쪽이를 산에 데려간 것을 보면, 힘든 나무 일을 셋이 나누려 한 것이구나."
+            "반쪽이가 저를 묶어 두고 온 형들에게 먼저 술을 따라 올린 것을 보면, 원수를 갚는 것보다 어려운 것이 잘못을 덮어 주는 일이구나.",
+            "형들이 마당에 선 반쪽이를 보고 얼른 밧줄을 풀어 준 것을 보면, 그때 이미 마음을 고쳐먹었던 거야."
         ],
         answer: 3
     }

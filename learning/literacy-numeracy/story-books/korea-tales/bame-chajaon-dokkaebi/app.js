@@ -404,20 +404,20 @@ const EN = {
         }
     ],
     quiz: [
-        { q: "Where did Kim meet the goblin?", choices: ["Under the inn floor", "By the stream at night", "In the middle of the village"], answer: 1 },
-        { q: "What did the goblin want to do?", choices: ["Have a drink", "Walk the night road", "Have a wrestling match"], answer: 2 },
+        { q: "Where did Kim meet the goblin?", choices: ["Right outside the inn door", "In the middle of the village street", "On the stepping stones of the stream"], answer: 2 },
+        { q: "Why did Kim agree to wrestle the goblin?", choices: ["He felt he could not outrun those long legs", "The drink made him want to show off his strength", "He wanted to catch it and boast to the village"], answer: 0 },
         { q: "Where was the goblin weak?", choices: ["Its right leg", "Its left leg", "Its waist"], answer: 1 },
-        { q: "What did Kim do with the goblin?", choices: ["Took it home", "Let it go", "Tied it to a tree"], answer: 2 },
-        { q: "What was tied to the tree in the morning?", choices: ["An old broom", "A great rock", "A broken carrying frame"], answer: 0 },
-        { q: "What did Kim do after that?", choices: ["Wrestled every night", "Kept away from brooms", "Went looking for goblins"], answer: 1 },
+        { q: "What did Kim do with the goblin once it was down?", choices: ["Carried it home on his back", "Told it never to come back and let it go", "Tied it to the willow with his belt"], answer: 2 },
+        { q: "What did the villagers find when they crowded down next morning?", choices: ["A broken fire poker", "An old broom", "A worn pestle"], answer: 1 },
+        { q: "What did Kim say at the end of the story?", choices: ["I will never wrestle on a night road again", "I will never touch a drink again", "Next time I will catch a real goblin"], answer: 0 },
         {
             q: "Which reaction to this book does NOT fit?",
             wide: true,
             choices: [
-                "He wrestled all night with what turned out to be an old broom, so things seen in the dark always look bigger.",
+                "What he wrestled all night turned out, by daylight, to be something small and shabby, so things seen in the dark always look bigger.",
                 "He won by remembering what his grandfather said, so the things old people let drop are not said for nothing.",
                 "The whole village just laughed and let it go, so a story like this was not made to tell anyone off.",
-                "The goblin stood on the bridge to keep night travellers safe, so it was not only fierce."
+                "The goblin blocked the road to keep night travellers safe, so it was not only fierce."
             ],
             answer: 3
         }
@@ -597,20 +597,20 @@ const EN = {
 };
 
 const QUIZ = [
-    { q: "김 서방은 어디에서 도깨비를 만났나요?", choices: ["주막 마루 밑에서", "밤길 개울가에서", "마을 한복판에서"], answer: 1 },
-    { q: "도깨비가 하자고 한 것은 무엇인가요?", choices: ["술 한잔", "밤길 걷기", "씨름 한판"], answer: 2 },
+    { q: "김 서방은 어디에서 도깨비를 만났나요?", choices: ["주막 문 앞에서", "마을 한복판 길에서", "마을 앞 개울 징검다리에서"], answer: 2 },
+    { q: "김 서방은 왜 도깨비와 씨름하기로 했나요?", choices: ["달아나 봐야 못 따돌릴 것 같아서", "술김에 힘자랑을 하고 싶어서", "잡아서 마을에 자랑하고 싶어서"], answer: 0 },
     { q: "도깨비의 약한 곳은 어디라고 했나요?", choices: ["오른쪽 다리", "왼쪽 다리", "허리"], answer: 1 },
-    { q: "김 서방은 도깨비를 어떻게 했나요?", choices: ["집으로 데려갔다", "그냥 놓아주었다", "나무에 묶어 두었다"], answer: 2 },
-    { q: "아침에 나무에 묶여 있던 것은 무엇인가요?", choices: ["낡은 빗자루", "커다란 바위", "부러진 지게"], answer: 0 },
-    { q: "그 뒤로 김 서방은 어떻게 했나요?", choices: ["매일 밤 씨름했다", "빗자루를 피해 다녔다", "도깨비를 찾아다녔다"], answer: 1 },
+    { q: "김 서방은 넘어뜨린 도깨비를 어떻게 했나요?", choices: ["등에 업고 집으로 데려갔다", "다시는 나오지 말라 하고 놓아주었다", "허리띠를 풀어 버드나무에 묶었다"], answer: 2 },
+    { q: "이튿날 아침, 마을 사람들이 몰려가서 본 것은 무엇인가요?", choices: ["부러진 부지깽이", "낡은 빗자루", "닳은 절굿공이"], answer: 1 },
+    { q: "이야기 끝에 김 서방은 무어라 말했나요?", choices: ["다시는 밤길에 씨름 안 하겠소", "다시는 술을 안 마시겠소", "다음엔 진짜 도깨비를 잡겠소"], answer: 0 },
     {
         q: "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
         wide: true,
         choices: [
-            "밤새 씨름한 상대가 아침에 낡은 빗자루였던 것을 보면, 어두운 데서 본 것은 늘 크게 보이는구나.",
+            "밤새 씨름한 상대가 아침에 보니 그토록 작고 하찮은 것이었으니, 어두운 데서 본 것은 늘 크게 보이는구나.",
             "김 서방이 할아버지에게 들은 말을 떠올려 이긴 것을 보면, 어른들이 흘리던 말도 그냥 나온 게 아니구나.",
             "온 마을이 웃고 그냥 넘긴 것을 보면, 이런 이야기는 누구를 혼내려고 만든 것이 아닌 듯하다.",
-            "도깨비가 밤길 나그네를 지켜 주려고 다리를 지키고 섰던 것을 보면, 사납기만 한 것은 아니었구나."
+            "도깨비가 밤길 나그네를 지켜 주려고 길을 막고 섰던 것을 보면, 사납기만 한 것은 아니었구나."
         ],
         answer: 3
     }

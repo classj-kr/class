@@ -483,22 +483,22 @@ const EN = {
         }
     ],
     quiz: [
-        { q: "What did the old woman say as she held her child?", choices: ["I bore it, so it is my child", "Whatever am I to do about this", "Do not tell anybody about it"], answer: 0 },
-        { q: "What did the third daughter say when she saw the snake?", choices: ["You have borne Shinseonbi", "What a big snake it is", "How will you raise this child"], answer: 0 },
-        { q: "What did the bride see in the room on the wedding night?", choices: ["A skin laid at one side", "A letter inside a chest", "A blue flame in the fire"], answer: 0 },
-        { q: "How did Shinseonbi ask her to guard the skin?", choices: ["Keep it from fire", "Keep it from water", "Keep it from earth"], answer: 0 },
-        { q: "What did the sisters do with the skin?", choices: ["Burned it in the fire", "Put it deep in a chest", "Folded it away neatly"], answer: 0 },
-        { q: "What did the wife meet at the field?", choices: ["A flock of magpies", "A wild boar", "An old woman washing"], answer: 1 },
-        { q: "What did the wife do for the cold magpies?", choices: ["Gave them her coat", "Shared her food", "Mended their nest"], answer: 0 },
-        { q: "How did the wife find Shinseonbi?", choices: ["By treading washing and asking", "By asking the magpies", "By singing outside the wall"], answer: 2 },
+        { q: "What did the old woman say as she held her child?", choices: ["Whatever they say, I will raise it well", "I bore it, so it is my child", "I will give it a good name myself"], answer: 1 },
+        { q: "How did the third daughter feel when she looked at the snake?", choices: ["Disgusted, but she held it in", "Afraid, but sorry for it", "Not afraid at all, it looked lovely to her"], answer: 2 },
+        { q: "What was the room like when the bride opened her eyes on the wedding night?", choices: ["Bright, though no lamp was lit", "Pitch dark, nothing to be seen", "Full of bitter smoke"], answer: 0 },
+        { q: "What did Shinseonbi say would happen if the skin touched fire?", choices: ["He would turn back into a snake", "He would not be able to come back", "A new skin would grow"], answer: 1 },
+        { q: "When did the sisters open the chest?", choices: ["The night Shinseonbi left", "On the wedding night", "While their sister was out fetching water"], answer: 2 },
+        { q: "What did the boar want before it showed her the way?", choices: ["Help turning the whole field", "To be carried to the pass", "Water fetched for the field"], answer: 0 },
+        { q: "What did the wife do before the magpies pointed the way?", choices: ["Shared her food", "Gave them her coat", "Mended their nest"], answer: 1 },
+        { q: "How did Shinseonbi know his wife had come?", choices: ["The washing woman went ahead and told him", "He heard a song outside the wall calling his name", "The magpies flew into the wedding house"], answer: 1 },
         {
             q: "Which reaction to this book does NOT fit?",
             wide: true,
             choices: [
                 "Only the third one called him Gureongdeongdeong Shinseonbi, so what a thing is depends on what you call it.",
-                "She helped the magpies and the boar while asking her way, so a long road is not one you walk on your own.",
+                "She asked the magpies and the boar for the way, so a long road is not one you walk on your own.",
                 "She put the skin in a chest and locked it, so the wife tried hard to keep her husband's word.",
-                "The sisters burned the skin, so they must have been ashamed of how ugly it looked to other people."
+                "When Shinseonbi was overdue, the sisters set out to search with her, so they were sorry, if late."
             ],
             answer: 3
         }
@@ -684,22 +684,22 @@ const EN = {
 };
 
 const QUIZ = [
-    { q: "할머니가 아이를 안고 한 말은 무엇인가요?", choices: ["내가 낳았으니 내 자식이지", "이 일을 어쩌면 좋단 말이냐", "아무에게도 알리지 말아라"], answer: 0 },
-    { q: "셋째가 구렁이를 보고 한 말은 무엇인가요?", choices: ["구렁덩덩 신선비를 낳으셨네요", "구렁이가 참 크기도 하네요", "이 아이를 어찌 기르시려고요"], answer: 0 },
-    { q: "혼례를 올린 날 밤, 신부가 방에서 본 것은 무엇인가요?", choices: ["방 한쪽에 놓인 허물", "궤 속에 든 편지", "아궁이의 파아란 불꽃"], answer: 0 },
-    { q: "신선비는 허물을 어떻게 지켜 달라고 했나요?", choices: ["불에 닿지 않게", "물에 젖지 않게", "흙에 묻히지 않게"], answer: 0 },
-    { q: "언니들은 허물을 어떻게 했나요?", choices: ["아궁이에 넣어 태웠다", "궤 깊숙이 넣어 두었다", "곱게 접어 두었다"], answer: 0 },
-    { q: "아내가 밭에서 만난 것은 무엇인가요?", choices: ["까치 떼", "멧돼지", "빨래하는 할머니"], answer: 1 },
-    { q: "아내는 추워하는 까치들에게 무엇을 해 주었나요?", choices: ["겉옷을 벗어 덮어 줬다", "먹을 것을 나눠 줬다", "둥지를 고쳐 주었다"], answer: 0 },
-    { q: "아내는 어떻게 신선비를 찾아냈나요?", choices: ["빨래를 밟아 주고 물어서", "까치에게 물어서", "담 밖에서 노래를 불러서"], answer: 2 },
+    { q: "할머니가 아이를 안고 한 말은 무엇인가요?", choices: ["누가 뭐래도 곱게 기르마", "내가 낳았으니 내 자식이지", "이름은 내가 좋은 것으로 지어 주마"], answer: 1 },
+    { q: "셋째는 구렁이를 들여다보고 어떻게 느꼈나요?", choices: ["징그럽지만 꾹 참았다", "무섭지만 불쌍하다고 느꼈다", "무섭기는커녕 곱다고 느꼈다"], answer: 2 },
+    { q: "혼례를 올린 날 밤, 신부가 눈을 떴을 때 방 안은 어땠나요?", choices: ["등잔도 없이 환했다", "캄캄해서 아무것도 안 보였다", "매캐한 연기가 가득했다"], answer: 0 },
+    { q: "신선비는 허물이 불에 닿으면 어떻게 된다고 했나요?", choices: ["다시 구렁이로 돌아간다", "자기는 돌아오지 못한다", "허물이 새로 돋아난다"], answer: 1 },
+    { q: "언니들이 궤를 연 것은 언제였나요?", choices: ["신선비가 떠나던 날 밤에", "혼례를 올린 날 밤에", "동생이 물을 길으러 간 사이에"], answer: 2 },
+    { q: "멧돼지는 길을 일러 주기 전에 무엇을 바랐나요?", choices: ["밭을 끝까지 함께 뒤집어 주기", "고개까지 업어다 주기", "밭에 물을 길어다 주기"], answer: 0 },
+    { q: "까치들이 길을 가리키기 전에 아내는 무엇을 해 주었나요?", choices: ["먹을 것을 나눠 줬다", "겉옷을 벗어 덮어 줬다", "둥지를 고쳐 주었다"], answer: 1 },
+    { q: "신선비는 아내가 온 것을 어떻게 알았나요?", choices: ["빨래하던 할머니가 먼저 가서 알려서", "담 밖에서 제 이름을 부르는 노래를 듣고", "까치들이 잔칫집으로 날아들어서"], answer: 1 },
     {
         q: "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
         wide: true,
         choices: [
             "셋째만 구렁덩덩 신선비라고 불러 준 것을 보면, 같은 것을 보고도 무어라 부르느냐에 달렸네.",
-            "아내가 까치와 멧돼지를 도우며 길을 물어 간 것을 보면, 먼 길은 혼자 가는 게 아니야.",
+            "아내가 까치와 멧돼지에게 길을 물어 간 것을 보면, 먼 길은 혼자 가는 게 아니야.",
             "허물을 궤에 넣고 자물쇠를 채운 것을 보면, 아내는 남편의 말을 지키려고 애썼구나.",
-            "언니들이 허물을 태운 것을 보면, 허물이 흉해서 남 보기에 부끄러웠던 거겠다."
+            "신선비가 돌아올 때가 지나자 언니들이 함께 찾아 나선 것을 보면, 뒤늦게라도 미안했나 봐."
         ],
         answer: 3
     }

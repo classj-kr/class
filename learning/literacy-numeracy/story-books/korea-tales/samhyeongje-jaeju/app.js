@@ -484,18 +484,18 @@ const EN = {
         }
     ],
     quiz: [
-        { q: "What skill did the eldest bring back?", choices: ["Strength to hold a serpent", "Ears that hear far off", "Catching what falls down"], answer: 1 },
-        { q: "What skill did the second bring back?", choices: ["Catching whatever falls", "Climbing up a cliff face", "A bow that never misses"], answer: 2 },
-        { q: "What skill did the youngest bring back?", choices: ["Catching what falls", "Lifting heavy things", "Holding his breath long"], answer: 0 },
-        { q: "Who did the brothers set out to save?", choices: ["A traveller who was lost", "A fisherman in the water", "A child the serpent took"], answer: 2 },
-        { q: "How did the magistrate give the reward?", choices: ["Only to the youngest", "The same to all three", "Only to the eldest"], answer: 1 },
-        { q: "What did the brothers say about whose part was greatest?", choices: ["That the eldest was best", "That the second was best", "That none could be spared"], answer: 2 },
+        { q: "What skill did the eldest bring back?", choices: ["Strength to hold a serpent", "Ears that hear far away", "Climbing up a cliff face"], answer: 1 },
+        { q: "What did the elder brothers do when they heard the youngest's skill?", choices: ["Burst out laughing", "Praised it as the most useful", "Said to keep it from their father"], answer: 0 },
+        { q: "Where was the child's crying coming from?", choices: ["In a cowshed in the next village", "On a cliff top a hundred li away", "In the magistrate's back garden"], answer: 1 },
+        { q: "Why did the eldest stop the second from shooting?", choices: ["The arrow might hit the child", "The serpent had to be taken alive", "If the serpent uncoiled in fright the child would fall"], answer: 2 },
+        { q: "How did the youngest catch the falling child?", choices: ["He spread a net", "He opened his arms, stepped across and took the child to his chest", "He seized the serpent's tail and pulled it down"], answer: 1 },
+        { q: "What did the brothers do with the reward?", choices: ["Split it equally among the three", "Shared it out to the villagers", "Gave all of it to their father"], answer: 2 },
         {
             q: "Which reaction to this book does NOT fit?",
             wide: true,
             choices: [
-                "The one they laughed at for catching was the one who caught the child, so there is no such thing as a useless skill.",
-                "The eldest caught his brother's arm before he shot, so seeing what comes next is harder than hitting the mark.",
+                "The child was caught by the skill that took three years of nothing but catching, so there is no such thing as a useless skill.",
+                "The eldest caught the second's arm before he shot, so knowing when to use a skill is part of the skill.",
                 "All three took the same reward, so it was work that could not have been done with any one of them missing.",
                 "The second knocked the serpent down with a single shot, so his skill with a bow must have been remarkable."
             ],
@@ -679,18 +679,18 @@ const EN = {
 };
 
 const QUIZ = [
-    { q: "첫째가 익혀 온 재주는 무엇인가요?", choices: ["이무기를 잡는 힘", "백 리 밖 듣는 귀", "떨어지는 것 받기"], answer: 1 },
-    { q: "둘째가 익혀 온 재주는 무엇인가요?", choices: ["떨어지는 것 받는 재주", "절벽을 오르는 재주", "백발백중 활 솜씨"], answer: 2 },
-    { q: "셋째가 익혀 온 재주는 무엇인가요?", choices: ["떨어지는 것 받기", "무거운 것 들기", "오래 숨 참기"], answer: 0 },
-    { q: "삼형제가 구하러 나선 사람은 누구인가요?", choices: ["길을 잃은 나그네", "물에 빠진 어부", "이무기가 데려간 아이"], answer: 2 },
-    { q: "원님은 삼형제에게 상을 어떻게 내렸나요?", choices: ["셋째에게만 주었다", "셋에게 똑같이 주었다", "첫째에게만 주었다"], answer: 1 },
-    { q: "누구의 공이 크냐는 물음에 삼형제는 뭐라고 했나요?", choices: ["첫째가 가장 훌륭하다고", "둘째가 가장 훌륭하다고", "셋 다 없으면 안 된다고"], answer: 2 },
+    { q: "첫째가 익혀 온 재주는 무엇인가요?", choices: ["이무기를 잡는 힘", "먼 데 소리까지 듣는 귀", "절벽을 오르는 재주"], answer: 1 },
+    { q: "형들은 셋째의 재주를 듣고 어떻게 했나요?", choices: ["웃음을 터뜨렸다", "가장 쓸모 있다고 칭찬했다", "아버지께 숨기자고 했다"], answer: 0 },
+    { q: "아이 울음소리는 어디에서 들려왔나요?", choices: ["건넛마을 외양간", "백 리 밖 절벽 위", "원님댁 뒤뜰"], answer: 1 },
+    { q: "첫째가 둘째의 활을 막은 까닭은 무엇인가요?", choices: ["화살이 빗나가 아이에게 맞을까 봐", "이무기를 산 채로 잡아 상을 받아야 해서", "이무기가 놀라 몸을 풀면 아이가 떨어져서"], answer: 2 },
+    { q: "셋째는 떨어지는 아이를 어떻게 받았나요?", choices: ["형들과 그물을 펼쳐 들고 받았다", "두 팔을 벌리고 서서 품에 안았다", "이무기 꼬리를 잡고 끌어내렸다"], answer: 1 },
+    { q: "삼형제는 받은 상을 어떻게 했나요?", choices: ["셋이 똑같이 갈라 가졌다", "마을 사람들에게 나누어 주었다", "고스란히 아버지께 드렸다"], answer: 2 },
     {
         q: "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
         wide: true,
         choices: [
-            "받는 재주라며 웃음을 산 셋째가 정작 아이를 받은 것을 보면, 쓸데없어 보이는 재주가 따로 없구나.",
-            "활을 쏘려는 형을 첫째가 붙잡은 것을 보면, 맞히는 것보다 그다음을 보는 것이 어렵네.",
+            "아이를 받아 낸 것이 삼 년 동안 받는 것만 익힌 재주였던 것을 보면, 쓸데없어 보이는 재주가 따로 없구나.",
+            "활을 쏘려는 둘째를 첫째가 붙잡은 것을 보면, 재주는 쓸 때를 아는 것까지가 재주네.",
             "셋이 상을 똑같이 받겠다고 한 것을 보면, 누구 하나 빠져도 안 되는 일이었어.",
             "둘째가 이무기를 한 방에 맞혀 떨어뜨린 것을 보면, 활 솜씨가 그만큼 대단했겠다."
         ],

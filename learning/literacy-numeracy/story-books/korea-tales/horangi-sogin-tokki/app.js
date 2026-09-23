@@ -411,12 +411,12 @@ const EN = {
         }
     ],
     quiz: [
-        { q: "What did the rabbit say tasted good?", choices: ["Steamed fish", "Roast sparrow", "Mountain rice cake"], answer: 1 },
-        { q: "What happened when the tiger shut his eyes and opened his mouth?", choices: ["It rained", "It snowed", "A fire started"], answer: 2 },
-        { q: "What did the rabbit roast and call rice cake?", choices: ["Round stones", "Dry leaves", "Big potatoes"], answer: 0 },
-        { q: "What did the rabbit say she was going to fetch?", choices: ["Water", "Rice cake", "Honey"], answer: 2 },
-        { q: "What was the rabbit's way of fishing in winter?", choices: ["Dropping stones in the ice hole", "Putting your tail in the ice hole", "Breaking the ice and jumping in"], answer: 1 },
-        { q: "What did the tiger do about the rabbit after that?", choices: ["Searched the whole mountain", "Pinned her with a paw", "Quietly kept out of her way"], answer: 2 },
+        { q: "Why did the rabbit say the tiger should not eat her?", choices: ["Her little ones were waiting in the burrow", "She was all bone and gristle, no taste at all", "She was ill and would make him sick"], answer: 1 },
+        { q: "What did the rabbit do while the tiger sat with his eyes shut and mouth open?", choices: ["Quietly slipped away", "Pushed the tiger toward a thorn bush", "Set fire to the dry grass"], answer: 2 },
+        { q: "What did the rabbit roast and call rice cake?", choices: ["Round stones", "Lumps of clay", "Chestnuts"], answer: 0 },
+        { q: "What did the rabbit say she was going to fetch?", choices: ["Salt", "Honey", "Sparrows"], answer: 1 },
+        { q: "What was the rabbit's way of fishing in winter?", choices: ["Waiting with your mouth at the ice hole", "Lying flat on your belly on the ice", "Putting your tail in the ice hole"], answer: 2 },
+        { q: "What did the tiger do about the rabbit after that?", choices: ["Searched the whole mountain", "Quietly kept out of her way", "Pinned her with a paw"], answer: 1 },
         {
             q: "Which reaction to this book does NOT fit?",
             wide: true,
@@ -424,7 +424,7 @@ const EN = {
                 "He was fooled three times by the same rabbit, so a hungry animal has no time for doubting.",
                 "She always left first, so a good trick includes the way out.",
                 "There are so many tales of the strong one losing, so you can tell whose side the listeners were on.",
-                "He waited quietly as told until the stones were done, so he is very good at following instructions."
+                "The third time the rabbit really did drive fish to him, so she must have pitied the tiger in winter."
             ],
             answer: 3
         }
@@ -602,12 +602,12 @@ const EN = {
 };
 
 const QUIZ = [
-    { q: "토끼는 호랑이에게 무엇이 맛있다고 했나요?", choices: ["물고기 찜", "참새 구이", "산속 떡"], answer: 1 },
-    { q: "호랑이가 눈을 감고 입을 벌리자 무슨 일이 있었나요?", choices: ["비가 왔다", "눈이 왔다", "불이 났다"], answer: 2 },
-    { q: "토끼가 떡이라며 구운 것은 무엇이었나요?", choices: ["동글한 돌", "마른 나뭇잎", "커다란 감자"], answer: 0 },
-    { q: "토끼는 무엇을 가져온다며 자리를 떴나요?", choices: ["물", "떡", "꿀"], answer: 2 },
-    { q: "겨울에 토끼가 알려 준 물고기 잡는 법은 무엇인가요?", choices: ["얼음 구멍에 돌 넣기", "얼음 구멍에 꼬리 담그기", "얼음을 깨고 뛰어들기"], answer: 1 },
-    { q: "그 뒤로 호랑이는 토끼를 어떻게 했나요?", choices: ["온 산을 뒤지고 다녔다", "앞발로 콱 눌렀다", "슬금슬금 피해 다녔다"], answer: 2 },
+    { q: "토끼는 왜 자기를 먹지 말라고 했나요?", choices: ["새끼들이 굴에서 기다린다고", "살도 없고 질겨서 맛이 없다고", "병이 들어 먹으면 탈이 난다고"], answer: 1 },
+    { q: "호랑이가 눈을 감고 입을 벌린 사이 토끼는 무엇을 했나요?", choices: ["그 틈에 조용히 달아났다", "가시덤불 쪽으로 호랑이를 밀었다", "마른 풀에 불을 붙였다"], answer: 2 },
+    { q: "토끼가 떡이라며 구운 것은 무엇이었나요?", choices: ["동글동글한 돌", "진흙 덩이", "밤톨"], answer: 0 },
+    { q: "토끼는 무엇을 가져온다며 자리를 떴나요?", choices: ["소금", "꿀", "참새"], answer: 1 },
+    { q: "겨울에 토끼가 알려 준 물고기 잡는 법은 무엇인가요?", choices: ["얼음 구멍에 입을 대고 기다리기", "얼음 위에 배를 깔고 엎드리기", "얼음 구멍에 꼬리 담그기"], answer: 2 },
+    { q: "그 뒤로 호랑이는 토끼를 어떻게 했나요?", choices: ["온 산을 뒤지고 다녔다", "슬금슬금 피해 다녔다", "앞발로 콱 눌렀다"], answer: 1 },
     {
         q: "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
         wide: true,
@@ -615,7 +615,7 @@ const QUIZ = [
             "호랑이가 세 번이나 같은 토끼에게 속은 것을 보면, 배가 고프면 의심할 겨를이 없구나.",
             "토끼가 늘 먼저 자리를 뜬 것을 보면, 꾀는 달아날 길까지 함께 마련하는 것이구나.",
             "힘센 쪽이 번번이 당하는 이야기가 이렇게 많은 것을 보면, 듣는 사람들이 어느 편이었는지 알겠다.",
-            "호랑이가 돌이 다 익을 때까지 토끼 말대로 얌전히 기다린 것을 보면, 시키는 대로는 참 잘하네."
+            "토끼가 세 번째에는 물고기를 정말로 몰아다 준 것을 보면, 겨울에는 호랑이가 불쌍했나 봐."
         ],
         answer: 3
     }

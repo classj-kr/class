@@ -501,13 +501,13 @@ const EN = {
         }
     ],
     quiz: [
-        { q: "What was different about Uturi at birth?", choices: ["He had wings under his arms", "He was covered in scales", "He had all of his teeth"], answer: 0 },
+        { q: "Where did his mother find baby Uturi on his seventh day?", choices: ["By the well in the back yard", "Up on the ceiling beam", "In front of the mountain rock"], answer: 1 },
         { q: "What happened then if a winged child was born?", choices: ["The country gave out a reward", "The whole village was punished", "He was sent to a temple to grow up"], answer: 1 },
-        { q: "What did Uturi ask his mother for?", choices: ["A suit of armour to wear", "A horse of his own to ride", "Roasted beans and red beans"], answer: 2 },
+        { q: "Why did five-year-old Uturi say he would go to the mountain?", choices: ["To learn how to become a general", "His mother and the village would be hurt if he stayed", "The troops had already come to the house"], answer: 1 },
         { q: "What did Uturi ask his mother to keep?", choices: ["Not to say where he went, for three years", "To put food on the rock daily", "To warn him if troops came"], answer: 0 },
-        { q: "What did the beans become inside the rock?", choices: ["Rice and barley", "Soldiers and horses", "Gold and silver"], answer: 1 },
-        { q: "Why did his mother point at the rock?", choices: ["She feared he would go hungry", "She thought three years were up", "They would set fire to the village"], answer: 2 },
-        { q: "Why was one place in the line empty?", choices: ["His mother ate one bean", "There were too few red beans", "The troops took one away"], answer: 0 },
+        { q: "What did the beans become inside the rock?", choices: ["Armour and spears", "Soldiers and horses", "Gold and silver"], answer: 1 },
+        { q: "Why did his mother point at the rock?", choices: ["She feared he would go hungry", "She thought he was fully grown now", "They would set fire to the village"], answer: 2 },
+        { q: "Why was the last place in the line inside the rock empty?", choices: ["One red bean was missing", "An arrow from the troops had felled one", "His mother had eaten one bean while roasting"], answer: 2 },
         { q: "What did the dragon horse do after Uturi fell?", choices: ["Drove the troops away", "Cried and went into the pond", "Flew off with his mother"], answer: 1 },
         {
             q: "Which reaction to this book does NOT fit?",
@@ -515,7 +515,7 @@ const EN = {
             choices: [
                 "The whole village feared a child with wings, so being different could be a crime in those days.",
                 "His mother pointed at the rock in front of a torch, so it was not betrayal but a hand trying to save neighbours.",
-                "One bean left one place in the line empty, so a great thing can turn on one small one.",
+                "Uturi asked for the full three years, so great things have their proper time.",
                 "The dragon horse carried Uturi up into the sky, so the baby warrior got what he wanted in the end."
             ],
             answer: 3
@@ -700,13 +700,13 @@ const EN = {
 };
 
 const QUIZ = [
-    { q: "우투리가 태어났을 때 남다른 점은 무엇이었나요?", choices: ["겨드랑이에 날개가 있었다", "온몸에 비늘이 있었다", "이가 다 나 있었다"], answer: 0 },
+    { q: "태어난 지 이레 되던 날, 어머니는 아기 우투리를 어디에서 찾았나요?", choices: ["뒤뜰 우물가", "천장 대들보 위", "산속 바위 앞"], answer: 1 },
     { q: "그 시절 날개 달린 아이가 나면 어떻게 되었나요?", choices: ["나라에서 상을 내렸다", "온 마을이 벌을 받았다", "절에 보내 길렀다"], answer: 1 },
-    { q: "우투리가 산으로 가며 어머니에게 달라고 한 것은 무엇인가요?", choices: ["갑옷 한 벌", "말 한 마리", "볶은 콩과 팥"], answer: 2 },
+    { q: "다섯 살 우투리가 산으로 가겠다고 한 까닭은 무엇인가요?", choices: ["장수가 되는 법을 배우려고", "어머니와 마을이 다칠까 봐서", "관군이 벌써 집에 찾아와서"], answer: 1 },
     { q: "우투리가 어머니에게 지켜 달라고 한 것은 무엇인가요?", choices: ["들어간 곳을 삼 년 동안 말하지 말라", "날마다 바위에 밥을 놓아 달라", "관군이 오면 먼저 알려 달라"], answer: 0 },
-    { q: "바위 속에서 콩과 팥은 무엇이 되었나요?", choices: ["쌀과 보리", "군사와 말", "금과 은"], answer: 1 },
-    { q: "어머니가 바위를 가리킨 까닭은 무엇인가요?", choices: ["우투리가 밥을 굶을까 걱정되어서", "삼 년이 벌써 다 찼다고 여겨서", "관군이 마을에 불을 놓겠다고 해서"], answer: 2 },
-    { q: "군사 한 자리가 비어 있던 까닭은 무엇인가요?", choices: ["어머니가 콩 한 알을 먹어서", "팥이 모자라서", "관군이 하나를 빼앗아서"], answer: 0 },
+    { q: "바위 속에서 콩과 팥은 무엇이 되었나요?", choices: ["갑옷과 창", "군사와 말", "금과 은"], answer: 1 },
+    { q: "어머니가 바위를 가리킨 까닭은 무엇인가요?", choices: ["우투리가 밥을 굶을까 걱정되어서", "우투리가 이제 다 자랐다고 여겨서", "관군이 마을에 불을 놓겠다고 해서"], answer: 2 },
+    { q: "바위 속 줄의 맨 끝자리 하나가 비어 있던 까닭은 무엇인가요?", choices: ["팥 한 알이 모자라서", "관군의 화살에 하나가 쓰러져서", "어머니가 볶다가 한 알을 집어 먹어서"], answer: 2 },
     { q: "우투리가 쓰러진 뒤 용마는 어떻게 했나요?", choices: ["관군을 쫓아 버렸다", "울며 못 속으로 사라졌다", "어머니를 태우고 날아갔다"], answer: 1 },
     {
         q: "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
@@ -714,7 +714,7 @@ const QUIZ = [
         choices: [
             "날개 달린 아이를 온 마을이 두려워한 것을 보면, 남다른 것이 그때는 죄가 되기도 했구나.",
             "어머니가 횃불 앞에서 바위를 가리킨 것을 보면, 배신이 아니라 이웃을 살리려던 손이었네.",
-            "콩 한 알에 군사 한 자리가 빈 것을 보면, 큰일도 작은 것 하나에서 갈리는 거야.",
+            "우투리가 삼 년을 꼭 채워 달라고 한 것을 보면, 큰일에는 때가 있는 거야.",
             "용마가 우투리를 태우고 하늘로 올라간 것을 보면, 아기장수는 끝내 뜻을 이뤘나 봐."
         ],
         answer: 3

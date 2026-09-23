@@ -574,19 +574,19 @@ const EN = {
         ]
     },
     quiz: [
-        { q: "What did Talhae cross the sea in?", choices: ["A small fishing boat", "A great wooden chest", "A bundle of silk"], answer: 1 },
+        { q: "What did the king put in the chest along with the egg?", choices: ["Rice and drinking water", "Treasure and servants", "A letter from the queen"], answer: 1 },
         { q: "What showed that the chest had come in?", choices: ["The dogs barked in every house", "A bell rang at the temple", "A flock of magpies called"], answer: 2 },
-        { q: "Why did the old woman make the family name Seok?", choices: ["Magpies had shown the way", "He came out of a chest", "He crossed over the sea"], answer: 0 },
-        { q: "What was the spot Talhae chose from the mountain?", choices: ["The water's edge at Ajinpo", "The top of Mount Toham", "A hill curved like a new moon"], answer: 2 },
-        { q: "What did Talhae do about Hogong's house?", choices: ["Gave it back and made a friend", "Dug the charcoal up again", "Told the town office again"], answer: 0 },
-        { q: "What did Talhae become later?", choices: ["King of Gaya", "King of Silla", "A boat-building carpenter"], answer: 1 },
+        { q: "Why did the old woman name him Talhae?", choices: ["He was born from an egg", "He crossed over the sea", "He was freed from a chest"], answer: 2 },
+        { q: "What was Talhae's real reason for his trick over Hogong's house?", choices: ["To see whether anyone else had spotted that site", "To see whether the official would judge rightly", "To see whether Hogong could hold his house"], answer: 0 },
+        { q: "What did Talhae bury under the wall in the night?", choices: ["Treasure and silk", "Bits of his ancestors' pots", "Charcoal and a whetstone"], answer: 2 },
+        { q: "What did Talhae become later?", choices: ["King of Gaya", "King of Silla", "Magistrate of Seorabeol"], answer: 1 },
         {
             q: "Which reaction to this book does NOT fit?",
             wide: true,
             choices: [
                 "He spent seven days on a mountain top looking only at the land, so he took that much trouble even over choosing a spot.",
-                "He gave back that same evening the house he had won with buried charcoal, so the house was not what he wanted.",
-                "The old fisherwoman simply took home a child out of a chest, so such a thing cannot have been unheard of then.",
+                "He gave back that same evening the house he had won, so the house was not what he wanted.",
+                "The old fisherwoman simply took a strange child home, so such a thing cannot have been unheard of then.",
                 "Hogong won the case and still made Talhae his friend, so he had a big enough heart to take in the loser."
             ],
             answer: 3
@@ -791,19 +791,19 @@ const EN = {
 };
 
 const QUIZ = [
-    { q: "탈해는 무엇에 담겨 바다를 건너왔나요?", choices: ["작은 고깃배", "커다란 나무 궤", "비단 보따리"], answer: 1 },
+    { q: "왕은 알을 담은 궤에 무엇을 함께 넣어 주었나요?", choices: ["쌀과 마실 물", "보물과 종들", "왕비의 편지"], answer: 1 },
     { q: "궤가 닿은 것을 알려 준 것은 무엇인가요?", choices: ["집집마다 개가 짖어서", "절에서 종이 울려서", "까치 떼가 울어서"], answer: 2 },
-    { q: "할머니가 성을 석이라 지은 까닭은 무엇인가요?", choices: ["까치가 알려 주어서", "궤에서 나와서", "바다를 건너와서"], answer: 0 },
-    { q: "탈해가 산에서 고른 자리는 어떤 곳인가요?", choices: ["아진포 바닷가 물가", "토함산 꼭대기 자리", "초승달처럼 휜 언덕"], answer: 2 },
-    { q: "탈해가 호공의 집을 두고 한 일은 무엇인가요?", choices: ["되돌려주고 벗으로 삼았다", "숯과 숫돌을 도로 팠다", "관아에 다시 알렸다"], answer: 0 },
-    { q: "탈해는 나중에 무엇이 되었나요?", choices: ["가야의 임금", "신라의 임금", "배를 만드는 목수"], answer: 1 },
+    { q: "할머니가 이름을 탈해라 지은 까닭은 무엇인가요?", choices: ["알에서 태어났으니", "바다를 건너왔으니", "궤를 풀고 나왔으니"], answer: 2 },
+    { q: "탈해가 호공의 집을 두고 꾀를 부린 진짜 까닭은 무엇인가요?", choices: ["그 자리를 알아본 사람이 또 있는지 보려고", "관리가 옳게 판단하는지 보려고", "호공이 집을 지킬 힘이 있는지 보려고"], answer: 0 },
+    { q: "탈해가 한밤중에 담 밑에 묻은 것은 무엇인가요?", choices: ["보물과 비단", "조상의 그릇 조각", "숯과 숫돌"], answer: 2 },
+    { q: "탈해는 나중에 무엇이 되었나요?", choices: ["가야의 임금", "신라의 임금", "서라벌의 원님"], answer: 1 },
     {
         q: "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
         wide: true,
         choices: [
             "일곱 날 동안 산꼭대기에서 땅만 내려다본 것을 보면, 자리를 고르는 데에도 그만큼 공을 들였구나.",
-            "숯을 묻어 얻은 집을 그날 저녁에 도로 내준 것을 보면, 갖고 싶었던 것이 집이 아니었구나.",
-            "고기잡이 할머니가 궤에서 나온 아이를 그냥 데려간 것을 보면, 그때는 그런 일이 아주 없지는 않았나 보다.",
+            "탈해가 얻은 집을 그날 저녁에 도로 내준 것을 보면, 갖고 싶었던 것이 집이 아니었구나.",
+            "고기잡이 할머니가 낯선 아이를 그냥 집에 데려간 것을 보면, 그때는 그런 일이 아주 없지는 않았나 보다.",
             "호공이 재판에서 이기고도 탈해를 벗으로 삼은 것을 보면, 진 쪽을 품는 마음이 넓구나."
         ],
         answer: 3

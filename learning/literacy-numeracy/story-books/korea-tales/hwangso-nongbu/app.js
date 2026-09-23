@@ -406,11 +406,11 @@ const EN = {
     ],
     quiz: [
         { q: "Why did the farmer leave the house?", choices: ["To weed the field", "To get away from the scolding", "To sell an ox at the market"], answer: 1 },
-        { q: "What was the old man holding?", choices: ["An iron rope", "A long whip", "An ox-face mask"], answer: 2 },
-        { q: "What happened to the farmer's hands when he put the mask on?", choices: ["They became hooves", "Hair grew on them", "Horns grew on them"], answer: 0 },
-        { q: "What did the old man tell the buyer?", choices: ["Never use a whip", "Never let him sleep at night", "Never feed him radish"], answer: 2 },
+        { q: "What did the farmer do when the old man held out the mask?", choices: ["Asked the price first", "Snatched it and pulled it over his face", "Took it home to show his wife"], answer: 1 },
+        { q: "How did the farmer-turned-ox end up with his new owner?", choices: ["The old man roped him and led him to market", "His wife sold him at market without knowing", "The owner found him in the mountains and took him"], answer: 0 },
+        { q: "What did the ox think about night after night in the shed?", choices: ["I must find that old man and have it out with him", "If only I could take the mask off", "I should have just ploughed my own field"], answer: 2 },
         { q: "What happened to the ox's body after the radish?", choices: ["His hooves split open", "Yellow hair grew on him", "All the yellow hair fell off"], answer: 2 },
-        { q: "What did he say to people who were idling?", choices: ["That they'd turn into an ox", "That they should do it tomorrow", "That they should go to market"], answer: 0 },
+        { q: "How did the farmer go home once he was a man again?", choices: ["In new clothes from the ox's owner", "Running barefoot without even shoes", "Riding on the back of an ox"], answer: 1 },
         {
             q: "Which reaction to this book does NOT fit?",
             wide: true,
@@ -608,11 +608,11 @@ const EN = {
 
 const QUIZ = [
     { q: "농부는 왜 집을 나왔나요?", choices: ["밭에 잡초를 매러", "잔소리가 듣기 싫어서", "장에 소를 팔러"], answer: 1 },
-    { q: "노인이 손에 들고 있던 것은 무엇이었나요?", choices: ["쇠 고삐", "긴 채찍", "소 얼굴 탈"], answer: 2 },
-    { q: "탈을 쓰자 농부의 손은 어떻게 되었나요?", choices: ["발굽이 되었다", "털이 돋았다", "뿔이 돋았다"], answer: 0 },
-    { q: "노인이 소를 산 사람에게 당부한 것은 무엇인가요?", choices: ["매를 들지 말라", "밤에 재우지 말라", "무를 먹이지 말라"], answer: 2 },
+    { q: "노인이 탈을 건네자 농부는 어떻게 했나요?", choices: ["값을 먼저 물어보았다", "냉큼 받아 얼굴에 뒤집어썼다", "집에 가져가 아내에게 보여 주었다"], answer: 1 },
+    { q: "황소가 된 농부는 어떻게 소 임자에게 팔려 갔나요?", choices: ["노인이 고삐를 매어 장으로 끌고 갔다", "아내가 모르고 장에 내다 팔았다", "소 임자가 산속에서 보고 데려갔다"], answer: 0 },
+    { q: "외양간에서 황소는 밤마다 무슨 생각을 했나요?", choices: ["노인을 찾아가 따져야지", "탈만 벗으면 될 텐데", "집에서 밭이나 갈걸"], answer: 2 },
     { q: "무를 먹은 황소의 몸은 어떻게 되었나요?", choices: ["발굽이 쩍쩍 갈라졌다", "누런 털이 돋아났다", "누런 털이 다 떨어졌다"], answer: 2 },
-    { q: "그는 게으름 피우는 사람에게 뭐라고 했나요?", choices: ["그러다 소 된다고", "내일 하라고", "장에 가 보라고"], answer: 0 },
+    { q: "사람으로 돌아온 농부는 어떤 모습으로 집에 갔나요?", choices: ["소 임자가 준 새 옷을 입고", "신도 못 신은 맨발로 달려서", "황소 등에 올라타고"], answer: 1 },
     {
         q: "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
         wide: true,

@@ -675,28 +675,28 @@ function chapterSpreadPage(spread) {
 }
 
 const QUIZ = [
-    { q: "두 사람이 처음 만난 곳은 어디입니까?", choices: ["한양의 궁궐 앞", "남원 광한루", "남원 관가"], answer: 1 },
-    { q: "이몽룡이 춘향을 처음 본 것은 무엇을 할 때입니까?", choices: ["글을 읽고 있을 때", "옥에 갇혀 있을 때", "그네를 타고 있을 때"], answer: 2 },
-    { q: "두 사람이 헤어진 까닭은 무엇입니까?", choices: ["아버지가 한양으로 가게 되어서", "춘향이 멀리 이사를 가게 되어서", "변 사또가 두 사람을 갈라놓아서"], answer: 0 },
-    { q: "헤어질 때 춘향이 건넨 것은 무엇입니까?", choices: ["비단 손수건", "옥으로 만든 붓", "거울 하나"], answer: 2 },
+    { q: "이몽룡이 방자를 시켜 부르자 춘향은 뭐라고 했습니까?", choices: ["몸이 아파 오늘은 나갈 수 없다고", "저 혼자 정할 일이 아니라 못 간다고", "하실 말씀이 있으면 직접 오시라고"], answer: 2 },
+    { q: "이몽룡이 춘향을 처음 본 것은 무엇을 할 때입니까?", choices: ["글을 읽고 있을 때", "창포물에 머리를 감을 때", "그네를 타고 있을 때"], answer: 2 },
+    { q: "두 사람이 헤어진 까닭은 무엇입니까?", choices: ["아버지가 한양으로 올라가게 되어서", "이몽룡이 과거를 보러 혼자 떠나서", "변 사또가 두 사람을 갈라놓아서"], answer: 0 },
+    { q: "헤어질 때 춘향이 건넨 것은 무엇입니까?", choices: ["옥가락지", "비단 손수건", "거울 하나"], answer: 2 },
     { q: "새로 온 사또 변학도가 춘향에게 시킨 것은 무엇입니까?", choices: ["기생 명부에 이름을 올리라고", "관가에 들어와 밥을 지으라고", "남원 땅을 떠나 멀리 가라고"], answer: 0 },
-    { q: "춘향은 무엇이라고 대답했습니까?", choices: ["저는 이미 지아비가 있다고", "조금만 기다려 달라고", "아무 말도 하지 않았다고"], answer: 0 },
-    { q: "춘향은 어떻게 되었습니까?", choices: ["남원에서 쫓겨났다", "매를 맞고 옥에 갇혔다", "관가의 종이 되었다"], answer: 1 },
-    { q: "한양으로 간 이몽룡은 무엇을 했습니까?", choices: ["과거를 보아 어사가 되었다", "변학도 밑에서 일했다", "남원으로 곧장 돌아왔다"], answer: 0 },
-    { q: "이몽룡이 남원에 나타났을 때 차림은 어떠했습니까?", choices: ["비단옷 차림이었다", "거지꼴이었다", "마패를 들고 있었다"], answer: 1 },
-    { q: "옥에서 춘향은 이몽룡에게 무어라 했습니까?", choices: ["왜 이제 왔느냐고", "다시는 오지 말라고", "어머니를 잘 부탁한다고"], answer: 2 },
+    { q: "춘향은 무엇이라고 대답했습니까?", choices: ["조금만 기다려 달라고", "혼서 대신 종이가 있다고", "저는 이미 지아비가 있다고"], answer: 2 },
+    { q: "매를 맞으며 춘향은 어떻게 했습니까?", choices: ["소리를 지르며 용서를 빌었다", "매 한 대에 한마디씩 말을 했다", "입을 꾹 다물고 아무 말도 하지 않았다"], answer: 1 },
+    { q: "과거 시험에서 붓을 들고 이몽룡이 떠올린 것은 무엇입니까?", choices: ["그 책은 반쪽이라던 말", "오리정에서 헤어지던 날의 모습", "월매가 종이를 품에 넣던 모습"], answer: 0 },
+    { q: "이몽룡이 남원에 나타났을 때 차림은 어떠했습니까?", choices: ["비단옷에 갓을 갖춘 차림", "다 해진 옷에 부러진 갓", "어사 관복 차림"], answer: 1 },
+    { q: "옥에서 춘향은 이몽룡에게 무어라 했습니까?", choices: ["왜 이제 왔느냐고 물었다", "옥에서 꺼내 달라고 빌었다", "어머니를 부탁한다고 했다"], answer: 2 },
     { q: "이몽룡이 잔치에서 지은 시는 무엇에 대한 것입니까?", choices: ["좋은 술이 백성의 피라는 것", "봄날 광한루의 아름다운 경치", "고향을 그리워하는 나그네 마음"], answer: 0 },
     { q: "이몽룡이 잔치에서 높이 들어 보인 것은 무엇입니까?", choices: ["임금의 편지", "마패", "옥으로 만든 도장"], answer: 1 },
-    { q: "변학도는 어떻게 되었습니까?", choices: ["한양으로 끌려가 갇혔다", "그 자리에서 벼슬을 잃었다", "스스로 벼슬을 내놓았다"], answer: 1 },
-    { q: "춘향이 옥에서 나와 가장 먼저 한 일은 무엇입니까?", choices: ["변학도를 꾸짖었다", "광한루로 달려갔다", "어머니를 끌어안았다"], answer: 2 },
+    { q: "변학도는 어떻게 되었습니까?", choices: ["멀리 귀양을 갔다", "그 자리에서 벼슬을 잃었다", "스스로 벼슬을 내놓았다"], answer: 1 },
+    { q: "옥에서 나온 춘향은 어사 차림의 이몽룡에게 뭐라고 했습니까?", choices: ["어젯밤에 왜 말하지 않았느냐고", "이럴 줄 알고 기다렸다고", "이제 남원을 떠나자고"], answer: 0 },
     {
         q: "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
         wide: true,
         choices: [
-            "변 사또가 기생 명부에 이름을 올리라 한 것을 보면, 그때 벼슬아치가 백성을 어떻게 다루었는지 보인다.",
-            "춘향이 이미 지아비가 있다고만 하고 물러서지 않은 것을 보면, 지킨 것이 사랑만은 아니었구나.",
-            "이몽룡이 거지꼴로 나타나 사람들 속을 먼저 본 것을 보면, 벼슬이란 이렇게 쓰는 것이구나.",
-            "춘향이 옥에서 왜 이제 왔느냐고 물은 것을 보면, 기다린 마음이 그만큼 애가 탔구나."
+            "변 사또가 이듬해 세금까지 미리 걷어 잔치를 벌인 것을 보면, 그때 벼슬아치가 백성을 어떻게 다루었는지 보인다.",
+            "춘향이 옥 바닥에 사람 인 자를 쓰고 또 쓴 것을 보면, 지킨 것이 사랑만은 아니었구나.",
+            "이몽룡이 남원에 들어서자 논과 장터부터 살핀 것을 보면, 벼슬이란 이렇게 쓰는 것이구나.",
+            "월매가 삼 년 만에 돌아온 이몽룡을 보자마자 반갑게 맞아들인 것을 보면, 원망보다 반가움이 앞섰구나."
         ],
         answer: 3
     }
@@ -1417,28 +1417,28 @@ const EN = {
         ]
     },
     quiz: [
-        { q: "Where did the two of them first meet?", choices: ["In front of the palace in Hanyang", "At Gwanghallu in Namwon", "At the Namwon town office"], answer: 1 },
-        { q: "What was Chunhyang doing when Yi Mongnyong first saw her?", choices: ["Reading a book", "Sitting in the prison", "Riding a swing"], answer: 2 },
-        { q: "Why did the two of them have to part?", choices: ["His father was moved to Hanyang", "Chunhyang was moving far away", "The new magistrate separated them"], answer: 0 },
-        { q: "What did Chunhyang give him when they parted?", choices: ["A silk handkerchief", "A brush made of jade", "A mirror"], answer: 2 },
+        { q: "What did Chunhyang say when Yi Mongnyong sent Bangja to call her?", choices: ["That she was unwell and could not come out today", "That it was not hers alone to decide, so she could not come", "That if he had something to say he should come himself"], answer: 2 },
+        { q: "What was Chunhyang doing when Yi Mongnyong first saw her?", choices: ["Reading a book", "Washing her hair in iris water", "Riding a swing"], answer: 2 },
+        { q: "Why did the two of them have to part?", choices: ["His father was promoted and moved to Hanyang", "Yi Mongnyong left alone to sit the examination", "The new magistrate separated them"], answer: 0 },
+        { q: "What did Chunhyang give him when they parted?", choices: ["A jade ring", "A silk handkerchief", "A mirror"], answer: 2 },
         { q: "What did the new magistrate Byeon Hakdo order Chunhyang to do?", choices: ["To have her name entered in the courtesan register", "To come and cook at the town office", "To leave Namwon and go far away"], answer: 0 },
-        { q: "What did Chunhyang answer?", choices: ["That she already had a husband", "That she needed a little more time", "Nothing at all"], answer: 0 },
-        { q: "What happened to Chunhyang?", choices: ["She was driven out of Namwon", "She was beaten and shut in the prison", "She was made a servant at the town office"], answer: 1 },
-        { q: "What did Yi Mongnyong do in Hanyang?", choices: ["Sat the examination and became an inspector", "Worked under Byeon Hakdo", "Went straight back to Namwon"], answer: 0 },
-        { q: "How was Yi Mongnyong dressed when he came back to Namwon?", choices: ["In silk clothes", "Like a beggar", "Holding up the mapae"], answer: 1 },
-        { q: "What did Chunhyang say to him at the prison?", choices: ["That he should have come sooner", "That he should never come again", "That he should look after her mother"], answer: 2 },
+        { q: "What did Chunhyang answer?", choices: ["That she needed a little more time", "That she had a paper in place of a marriage document", "That she already had a husband"], answer: 2 },
+        { q: "What did Chunhyang do while she was being beaten?", choices: ["Cried out and begged forgiveness", "Spoke one line for every blow", "Kept her mouth shut and said nothing"], answer: 1 },
+        { q: "What came to Yi Mongnyong's mind as he lifted his brush in the examination?", choices: ["Her words that the book was only half a book", "The day they parted at Orijeong", "Wolmae folding the paper into her dress"], answer: 0 },
+        { q: "How was Yi Mongnyong dressed when he came back to Namwon?", choices: ["In silk clothes and a fine hat", "In worn-out clothes and a broken hat", "In an inspector's robes"], answer: 1 },
+        { q: "What did Chunhyang say to him at the prison?", choices: ["Asked why he had taken so long", "Begged him to get her out", "Asked him to look after her mother"], answer: 2 },
         { q: "What was the poem Yi Mongnyong made at the feast about?", choices: ["That the good wine is the people's blood", "The spring view from Gwanghallu", "A traveller missing his home"], answer: 0 },
         { q: "What did Yi Mongnyong hold up at the feast?", choices: ["A letter from the king", "The mapae", "A seal made of jade"], answer: 1 },
-        { q: "What happened to Byeon Hakdo?", choices: ["He was dragged to Hanyang and shut up", "He lost his post on the spot", "He gave up his post himself"], answer: 1 },
-        { q: "What was the first thing Chunhyang did when she came out of the prison?", choices: ["She scolded Byeon Hakdo", "She ran to Gwanghallu", "She held her mother"], answer: 2 },
+        { q: "What happened to Byeon Hakdo?", choices: ["He was sent into distant exile", "He lost his post on the spot", "He gave up his post himself"], answer: 1 },
+        { q: "What did Chunhyang say to Yi Mongnyong, now in inspector's robes, when she came out of the prison?", choices: ["Why he had not told her the night before", "That she had known and waited for this", "That they should leave Namwon now"], answer: 0 },
         {
             q: "Which reaction to this book does NOT fit?",
             wide: true,
             choices: [
-                "The new governor ordered her name onto the register, so we can see how an official treated ordinary people then.",
-                "She only said she already had a husband and would not step back, so what she kept was more than love.",
-                "Mongryong came back in rags and looked around before showing the tablet, so that is what an office is for.",
-                "In the prison she asked him why he had taken so long, so we can feel how hard the waiting had been."
+                "The new governor collected next year's taxes early to pay for his feasts, so we can see how an official treated ordinary people then.",
+                "She wrote the character for 'person' over and over on the prison floor, so what she kept was more than love.",
+                "Mongryong looked at the dry fields and the empty market as soon as he entered Namwon, so that is what an office is for.",
+                "Wolmae welcomed Mongryong warmly the moment she saw him after three years, so gladness came before reproach."
             ],
             answer: 3
         }

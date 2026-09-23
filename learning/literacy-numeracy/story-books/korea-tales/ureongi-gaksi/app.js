@@ -525,17 +525,17 @@ const EN = {
         { q: "What happened when he spoke to himself in the paddy?", choices: ["Rain began all at once", "An answer came from somewhere", "A cow bellowed loudly"], answer: 1 },
         { q: "Where did he put what he had picked up?", choices: ["Behind the straw pile", "Beside the stove", "In the water jar"], answer: 2 },
         { q: "What was different when he came home?", choices: ["A meal was laid out", "The yard was swept", "The door stood open"], answer: 0 },
-        { q: "What did the bride ask of him?", choices: ["To put the snail back", "To tell nobody at all", "To wait three more days"], answer: 2 },
-        { q: "What did he do a day early?", choices: ["Held the wedding", "Went to the paddy", "Laid the table"], answer: 0 },
-        { q: "What came of hurrying the wedding?", choices: ["The bride went away for good", "One day in three she is a snail", "Nothing at all happened to them"], answer: 1 },
+        { q: "What did the bride say would happen after three days?", choices: ["She would become a whole person", "She would turn back into a snail", "She would go up to the sky"], answer: 0 },
+        { q: "Why did he ask to bring it forward by a day?", choices: ["The date was a lucky one", "He feared she might vanish in the meantime", "He thought she cried in the jar at night"], answer: 1 },
+        { q: "What came of hurrying the wedding?", choices: ["The bride went away for good", "One day in three she is a snail", "The bride could not speak for three days"], answer: 1 },
         {
             q: "Which reaction to this book does NOT fit?",
             wide: true,
             choices: [
                 "He could not wait three days and brought it forward by one, so the more you care the more impatient you get.",
-                "An answer came back to what he said alone in a paddy, so that one word must have meant a lot to a lonely person.",
+                "He felt sad seeing his own face in the paddy water, so loneliness makes a person hungry before food does.",
                 "She asked him to wait three more days, so listening when somebody asks you to wait is a way of caring too.",
-                "She refused in the end to be married a day early, so a promise could not be broken by even one day."
+                "He put the snail back in the paddy the next day, so he put the bride before his own wishes."
             ],
             answer: 3
         }
@@ -725,17 +725,17 @@ const QUIZ = [
     { q: "총각이 논에서 혼잣말을 하자 무슨 일이 있었나요?", choices: ["갑자기 비가 내렸다", "어디선가 대답이 들렸다", "소가 크게 울었다"], answer: 1 },
     { q: "총각은 주워 온 것을 어디에 두었나요?", choices: ["짚더미 뒤", "아궁이 옆", "물독 속"], answer: 2 },
     { q: "집에 돌아오면 무엇이 달라져 있었나요?", choices: ["밥상이 차려져 있었다", "마당이 쓸려 있었다", "문이 열려 있었다"], answer: 0 },
-    { q: "색시는 총각에게 무엇을 부탁했나요?", choices: ["우렁이를 돌려주기", "아무에게도 말 않기", "사흘만 더 기다리기"], answer: 2 },
-    { q: "총각은 하루를 앞당겨 무엇을 했나요?", choices: ["혼례를 올렸다", "논에 나갔다", "밥상을 차렸다"], answer: 0 },
-    { q: "혼례를 서두른 탓에 어떻게 되었나요?", choices: ["색시가 영영 떠나 버렸다", "사흘에 하루는 우렁이가 된다", "아무 일도 일어나지 않았다"], answer: 1 },
+    { q: "색시는 사흘이 지나면 어떻게 될 거라고 했나요?", choices: ["온전한 사람이 된다", "우렁이로 돌아간다", "하늘로 올라간다"], answer: 0 },
+    { q: "총각이 하루를 앞당기자고 한 까닭은 무엇인가요?", choices: ["혼례 날짜가 좋은 날이어서", "그사이 색시가 사라질까 봐", "색시가 밤마다 물독에서 우는 것 같아서"], answer: 1 },
+    { q: "혼례를 서두른 탓에 어떻게 되었나요?", choices: ["색시가 영영 떠나 버렸다", "사흘에 하루는 우렁이가 된다", "색시가 사흘 동안 말을 못 하게 되었다"], answer: 1 },
     {
         q: "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
         wide: true,
         choices: [
             "사흘을 못 기다리고 하루를 앞당긴 것을 보면, 아끼는 마음이 클수록 조급해지는구나.",
-            "혼자 논에서 한 혼잣말에 대답이 돌아온 것을 보면, 외로운 사람에게는 그 한마디가 컸겠다.",
+            "총각이 논물에 비친 제 얼굴을 보고 서러워한 것을 보면, 외로움은 밥보다 먼저 사람을 허기지게 하네.",
             "색시가 사흘만 더 기다려 달라고 한 것을 보면, 기다려 달라는 말을 들어주는 것도 아끼는 일이야.",
-            "색시가 하루 앞당긴 혼례를 끝내 마다한 것을 보면, 약속은 하루도 어길 수 없는 거였나 봐."
+            "총각이 이튿날 우렁이를 논에 도로 놓아준 것을 보면, 제 욕심보다 색시를 먼저 생각한 거야."
         ],
         answer: 3
     }

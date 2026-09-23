@@ -472,18 +472,18 @@ const EN = {
         }
     ],
     quiz: [
-        { q: "How did the rich man regard the zelkova?", choices: ["He always took it for his own", "He took it for the village's", "He ignored anyone resting there"], answer: 0 },
+        { q: "What did the rich man think to himself once he had the coins?", choices: ["That the traveller must be up to something", "That here was a fool who paid money for shade", "That he might be asked to sell the tree next"], answer: 1 },
         { q: "What did the rich man do when the traveller lay in the shade?", choices: ["Sat down beside him", "Hummed to himself", "Struck the ground with his stick"], answer: 2 },
-        { q: "What did the traveller take from his belt?", choices: ["A fan", "A straw mat", "A string of coins"], answer: 2 },
-        { q: "Where did the shade move as the sun went down?", choices: ["Into the middle of the rich man's yard", "To the village entrance", "To the road outside the wall"], answer: 0 },
-        { q: "What did the rich man say when he could bear no more?", choices: ["That he would give the money back and undo it", "That he wanted to buy more shade", "That he would cut the tree down"], answer: 0 },
-        { q: "What did the traveller say at the end?", choices: ["That he wanted double his money", "That it belonged to the whole village", "That it was his now and he would sell it"], answer: 1 },
+        { q: "What did the traveller do the next day?", choices: ["Brought people he met on the road into the shade", "Paid the rich man more and bought the yard", "Sold straw mats at the village entrance"], answer: 0 },
+        { q: "Where had the shade moved by sunset on the first day?", choices: ["Up onto the wooden hall of the house", "To the village entrance", "Into the middle of the rich man's yard"], answer: 2 },
+        { q: "What did the traveller do when the rich man came to buy the shade back?", choices: ["Took double and handed the shade over", "Gave the money back but would not hand the shade over", "Took double and left the village"], answer: 1 },
+        { q: "Whose did the traveller say the shade was, at the end?", choices: ["The village children's", "Still his own", "The whole village's"], answer: 2 },
         {
             q: "Which reaction to this book does NOT fit?",
             wide: true,
             choices: [
-                "The man who sold the shade ended up a guest in his own yard, so selling what cannot be shared pushes you out of it.",
-                "The traveller left the money behind, so he had never been out to make money.",
+                "The man who sold the shade could not sleep at night, so selling what cannot be shared pushes you out of it.",
+                "The traveller never once lost his temper with the rich man, so from the start it was a lesson, not money, he was after.",
                 "The rich man was sitting on one side of the mat the next summer, so people can change like that.",
                 "The traveller came back to that zelkova the next summer, so the village must have stayed in his mind."
             ],
@@ -683,18 +683,18 @@ const EN = {
 };
 
 const QUIZ = [
-    { q: "부자는 느티나무를 어떻게 여겼나요?", choices: ["늘 제 것이라 여겼다", "마을 것이라 여겼다", "누가 쉬어도 모른 척했다"], answer: 0 },
+    { q: "부자는 엽전을 받고 속으로 무슨 생각을 했나요?", choices: ["나그네에게 무슨 꿍꿍이가 있을 거라고", "그늘을 돈 주고 사는 바보가 있다고", "나무까지 팔라고 할까 봐 걱정이라고"], answer: 1 },
     { q: "나그네가 그늘에 눕자 부자는 어떻게 했나요?", choices: ["옆에 나란히 앉았다", "콧노래를 흥얼거렸다", "지팡이로 땅을 찍었다"], answer: 2 },
-    { q: "나그네가 허리춤에서 꺼낸 것은 무엇인가요?", choices: ["부채 한 자루", "돗자리 한 장", "엽전 꾸러미"], answer: 2 },
-    { q: "해가 기울자 그늘은 어디까지 옮겨 갔나요?", choices: ["부잣집 마당 한복판", "마을 어귀 길목", "담 밖 길가"], answer: 0 },
-    { q: "부자가 견디다 못해 한 말은 무엇인가요?", choices: ["돈을 돌려줄 테니 무르자", "그늘을 더 사고 싶다", "나무를 베어 버리겠다"], answer: 0 },
-    { q: "나그네는 마지막에 뭐라고 했나요?", choices: ["돈을 곱절로 돌려받겠다고", "온 마을의 것이라고", "이제 제 것이니 팔겠다고"], answer: 1 },
+    { q: "이튿날 나그네는 무엇을 했나요?", choices: ["길에서 만난 사람들을 그늘로 데려왔다", "부자에게 돈을 더 주고 마당을 샀다", "마을 어귀에서 돗자리를 팔았다"], answer: 0 },
+    { q: "첫날 해가 기울자 그늘은 어디까지 옮겨 갔나요?", choices: ["부잣집 대청마루 위", "마을 어귀 길목", "부잣집 마당 한복판"], answer: 2 },
+    { q: "부자가 그늘을 도로 사겠다고 찾아오자 나그네는 어떻게 했나요?", choices: ["곱절을 받고 그늘을 넘겨주었다", "돈은 돌려주되 그늘은 넘겨주지 않았다", "돈을 곱절로 받고 마을을 떠났다"], answer: 1 },
+    { q: "나그네는 마지막에 그늘이 누구 것이라고 했나요?", choices: ["마을 아이들 것이라고", "여전히 제 것이라고", "온 마을 사람 것이라고"], answer: 2 },
     {
         q: "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
         wide: true,
         choices: [
-            "그늘을 판 부자가 제 마당에서 손님처럼 앉게 된 것을 보면, 나눌 수 없는 것을 팔면 제가 밀려나는구나.",
-            "나그네가 돈을 도로 놓고 떠난 것을 보면, 처음부터 돈을 벌 생각이 아니었네.",
+            "그늘을 판 부자가 밤마다 잠을 못 이룬 것을 보면, 나눌 수 없는 것을 팔면 제가 밀려나는구나.",
+            "나그네가 부자에게 화 한 번 내지 않은 것을 보면, 처음부터 돈이 아니라 가르칠 것이 있었네.",
             "이듬해 여름에 부자도 돗자리 한쪽에 앉아 있었다는 것을 보면, 사람은 이렇게도 달라지는 거야.",
             "나그네가 이듬해 여름에도 그 느티나무 아래로 돌아온 것을 보면, 그 마을이 마음에 남았겠다."
         ],

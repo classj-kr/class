@@ -632,22 +632,22 @@ const EN = {
         }
     ],
     quiz: [
-        { q: "What strange thing did Dolsoe first see at the stream?", choices: ["The stream ran back uphill", "A crab walked into the fire", "A great rock rolled by itself"], answer: 1 },
-        { q: "What came out of the empty air first?", choices: ["Two curved horns", "One cooked crab", "A bright red cloth"], answer: 0 },
-        { q: "How did Dolsoe get the cap?", choices: ["A goblin gave it to him", "Took it during the wrestling", "Found it under a rock"], answer: 1 },
-        { q: "What did Dolsoe see in the mirror?", choices: ["Two curved horns", "One bright red spot", "An empty room"], answer: 2 },
+        { q: "What strange thing did Dolsoe see at the stream?", choices: ["The stream ran back uphill", "A crab walked into the fire", "A great rock rolled by itself"], answer: 1 },
+        { q: "What came out of the empty air first when the goblin appeared?", choices: ["Two curved horns", "A big fan", "A black cap"], answer: 0 },
+        { q: "How did Dolsoe get the cap?", choices: ["A goblin left it as payment for the crabs", "He slipped it off a sleeping goblin", "He grabbed it from the rock while they wrestled"], answer: 2 },
+        { q: "What did Dolsoe see in the mirror with the cap on?", choices: ["Just the cap floating in the air", "An empty room", "One bright red spot"], answer: 1 },
         { q: "What happened when he got on the cow?", choices: ["It ran all round the village", "It sat down where it was", "It knew who Dolsoe was"], answer: 0 },
-        { q: "What did he mend the hole with?", choices: ["A piece of cloth", "Black thread", "A bit of washing line"], answer: 0 },
+        { q: "How did the cap get its hole?", choices: ["People at the market tugged at it", "A spark jumped on it while he dozed", "It tore when he fell off the cow"], answer: 1 },
         { q: "What did the people see that caught him?", choices: ["Footprints on the ground", "A shadow moving alone", "A floating red spot"], answer: 2 },
-        { q: "What did Dolsoe do with the cap at the end?", choices: ["Left it on the stream rock", "Put it away in a chest", "Burned it in the stove"], answer: 2 },
+        { q: "What did Dolsoe do with the cap at the end?", choices: ["Hid it deep in a chest", "Handed it over to the market people", "Threw it in the fire and burned it"], answer: 2 },
         {
             q: "Which reaction to this book does NOT fit?",
             wide: true,
             choices: [
                 "What began as a prank moved on to cakes and then to cloth, so once you keep doing wrong, you cannot stop.",
                 "He was counting every night how many he had taken, so his mind was never once at ease about it.",
-                "Only the mended patch could be seen, so the place you try to hide is the first thing anybody sees.",
-                "He got rid of the cap with his own hands, so he could not face giving it back to the goblin."
+                "His chest ached the very first time he took a rice cake, so that was the moment he should have stopped.",
+                "Once the whole affair was over he never went to find the goblin, so he could not face it."
             ],
             answer: 3
         }
@@ -866,22 +866,22 @@ const EN = {
 };
 
 const QUIZ = [
-    { q: "돌쇠가 개울가에서 처음 본 이상한 것은 무엇인가요?", choices: ["개울물이 거꾸로 흘러 올라갔다", "게가 저 혼자 불 위로 걸어갔다", "커다란 돌이 저 혼자 굴러다녔다"], answer: 1 },
-    { q: "도깨비가 나타날 때 허공에서 먼저 쑥 나온 것은 무엇인가요?", choices: ["굽은 뿔 두 개", "다 익은 게 한 마리", "새빨간 헝겊"], answer: 0 },
-    { q: "돌쇠는 감투를 어떻게 손에 넣었나요?", choices: ["도깨비가 벗어 주었다", "씨름하는 틈에 훔쳤다", "바위 밑에서 주웠다"], answer: 1 },
-    { q: "감투를 쓰고 거울 앞에 선 돌쇠는 무엇을 보았나요?", choices: ["굽은 뿔 두 개", "새빨간 점 하나", "텅 빈 방"], answer: 2 },
+    { q: "돌쇠가 개울가에서 본 이상한 일은 무엇인가요?", choices: ["개울물이 거꾸로 흘러 올라갔다", "게가 저 혼자 불 위로 걸어갔다", "커다란 돌이 저 혼자 굴러다녔다"], answer: 1 },
+    { q: "도깨비가 나타날 때 허공에서 먼저 쑥 나온 것은 무엇인가요?", choices: ["굽은 뿔 두 개", "커다란 부채 하나", "까만 감투 하나"], answer: 0 },
+    { q: "돌쇠는 감투를 어떻게 손에 넣었나요?", choices: ["도깨비가 게 값으로 주고 갔다", "도깨비들이 잠든 사이에 벗겨 왔다", "씨름하는 틈에 바위에서 집어 왔다"], answer: 2 },
+    { q: "감투를 쓰고 거울 앞에 선 돌쇠는 무엇을 보았나요?", choices: ["감투만 둥둥 떠 있는 모습", "텅 빈 방", "새빨간 점 하나"], answer: 1 },
     { q: "돌쇠가 소 등에 올라타자 어떻게 되었나요?", choices: ["소가 온 동네를 뛰어다녔다", "소가 그 자리에 주저앉았다", "소가 돌쇠를 알아보았다"], answer: 0 },
-    { q: "돌쇠는 구멍 난 자리를 무엇으로 기웠나요?", choices: ["헝겊 조각", "까만 실", "빨랫줄 한 도막"], answer: 0 },
+    { q: "감투에 구멍이 난 까닭은 무엇인가요?", choices: ["장터에서 사람들이 잡아당겨서", "잠든 사이 불티가 튀어서", "소 등에서 떨어지며 찢어져서"], answer: 1 },
     { q: "사람들은 무엇을 보고 돌쇠를 잡았나요?", choices: ["바닥에 찍힌 발자국", "혼자 흔들리는 그림자", "떠다니는 빨간 점"], answer: 2 },
-    { q: "돌쇠는 마지막에 감투를 어떻게 했나요?", choices: ["개울가 바위에 두고 왔다", "궤짝에 넣어 두었다", "아궁이에 넣어 태웠다"], answer: 2 },
+    { q: "돌쇠는 마지막에 감투를 어떻게 했나요?", choices: ["궤짝 깊숙이 넣어 두었다", "장터 사람들에게 내주었다", "불에 넣어 태워 버렸다"], answer: 2 },
     {
         q: "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
         wide: true,
         choices: [
             "처음에는 장난이던 것이 떡으로, 옷감으로 옮겨 간 것을 보면, 나쁜 짓을 계속하면 멈추지 못하는구나.",
             "돌쇠가 밤마다 가져온 개수를 세고 있었던 것을 보면, 마음이 편한 적은 한 번도 없었겠다.",
-            "기운 헝겊만 보였다는 것을 보면, 숨기려 한 자리가 오히려 제일 먼저 눈에 띄네.",
-            "돌쇠가 감투를 제 손으로 없앤 것을 보면, 도깨비에게 돌려줄 낯이 없었던 거야."
+            "돌쇠가 떡을 처음 집었을 때 가슴이 콕콕 쑤셨다는 것을 보면, 그때 그만두었으면 좋았을 텐데.",
+            "감투 일이 다 끝난 뒤에도 돌쇠가 도깨비를 찾아가지 않은 것을 보면, 볼 낯이 없었던 거야."
         ],
         answer: 3
     }

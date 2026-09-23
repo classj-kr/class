@@ -391,20 +391,20 @@ const EN = {
         }
     ],
     quiz: [
-        { q: "Where did the name Baduk come from?", choices: ["He was found on a snowy day", "He had a black spot on his back", "He liked soup and rice"], answer: 1 },
-        { q: "What was the man at the inn glancing at?", choices: ["The pedlar's empty pack", "The pedlar's bowl", "The pedlar's money pouch"], answer: 2 },
-        { q: "What did Baduk do on the mountain pass?", choices: ["Ran on ahead", "Kept looking back and slowing down", "Slept at the pedlar's feet"], answer: 1 },
+        { q: "How did the pedlar come to have Baduk?", choices: ["He bought him at the market", "He picked him up shivering by the road on a snowy day", "The innkeeper gave him a puppy"], answer: 1 },
+        { q: "What did Baduk do when he saw the man at the next table in the inn?", choices: ["Left his soup and hid behind the pedlar", "Rushed at him, barking, and drove him off", "Growled low"], answer: 2 },
+        { q: "What did Baduk do on the mountain pass?", choices: ["Kept looking back and slowing down", "Ran on ahead", "Barked and sprang at the man"], answer: 0 },
         { q: "Where did Baduk find the man?", choices: ["On the inn floor", "In the fog on the pass", "Behind a big rock"], answer: 2 },
-        { q: "What did Baduk do when the man shouted at him to get away?", choices: ["Lowered himself and watched", "Ran off into the wood", "Held on to his trouser leg"], answer: 2 },
-        { q: "Why did people come running?", choices: ["The pedlar shouted for them", "Because of the barking", "Because of a lot of smoke"], answer: 1 },
+        { q: "How did Baduk stop the man from running away?", choices: ["Held on to his trouser leg", "Snatched the pouch and ran", "Stood right in his way and stared"], answer: 0 },
+        { q: "Why did people come running?", choices: ["The pedlar shouted for them", "They heard the barking", "The man cried out for help"], answer: 1 },
         {
             q: "Which reaction to this book does NOT fit?",
             wide: true,
             choices: [
-                "Baduk stared at the man from the inn onwards, so an animal can know a thing before a person does.",
+                "Baduk suspected the man before the pedlar did, so an animal can know a thing before a person does.",
                 "The pedlar carried a year's earnings at his waist, so there was nowhere safe to leave money then.",
                 "Meat began to appear in Baduk's bowl, so the word family wasn't said lightly.",
-                "The pedlar bought Baduk at the market and paid for him, so he had his eye on that dog from the start."
+                "The pedlar chased the man through the fog all the way over the valley, so he was nearly as fast on his feet as the dog."
             ],
             answer: 3
         }
@@ -584,20 +584,20 @@ const EN = {
 };
 
 const QUIZ = [
-    { q: "바둑이라는 이름은 어디서 왔나요?", choices: ["눈 오는 날 주워 와서", "등에 까만 점이 박혀서", "국밥을 잘 먹어서"], answer: 1 },
-    { q: "주막에서 사내가 흘끔거리며 본 것은 무엇인가요?", choices: ["장수의 빈 봇짐", "장수의 국밥그릇", "장수의 돈주머니"], answer: 2 },
-    { q: "고갯길에서 바둑이는 어떻게 했나요?", choices: ["앞장서서 달려 나갔다", "자꾸 뒤를 돌아보며 늦추었다", "장수 발치에서 잠들었다"], answer: 1 },
+    { q: "장수는 바둑이를 어떻게 만났나요?", choices: ["장에서 값을 치르고 사 왔다", "눈 오는 날 길가에서 떨던 것을 안고 왔다", "주막 주인이 강아지 한 마리를 주었다"], answer: 1 },
+    { q: "주막에서 옆자리 사내를 본 바둑이는 어떻게 했나요?", choices: ["국밥을 먹다 말고 장수 뒤에 숨었다", "달려들어 짖어 쫓아냈다", "낮게 으르렁거렸다"], answer: 2 },
+    { q: "고갯길에서 바둑이는 어떻게 했나요?", choices: ["자꾸 뒤를 돌아보며 늦추었다", "앞장서서 달려 나갔다", "사내를 보고 짖으며 달려들었다"], answer: 0 },
     { q: "바둑이는 사내를 어디에서 찾아냈나요?", choices: ["주막 마루에서", "고갯마루 안개 속에서", "커다란 바위 뒤에서"], answer: 2 },
-    { q: "사내가 저리 가라고 소리치자 바둑이는 어떻게 했나요?", choices: ["몸을 낮추고 지켜보았다", "숲속으로 달아났다", "바짓자락을 물고 늘어졌다"], answer: 2 },
-    { q: "사람들이 달려온 까닭은 무엇인가요?", choices: ["장수가 소리쳐 불러서", "개 짖는 소리 때문에", "연기가 크게 나서"], answer: 1 },
+    { q: "사내가 달아나지 못하게 바둑이는 어떻게 했나요?", choices: ["바짓자락을 물고 늘어졌다", "돈주머니를 물고 달아났다", "바로 앞을 막고 서서 노려보았다"], answer: 0 },
+    { q: "사람들이 달려온 까닭은 무엇인가요?", choices: ["장수가 소리쳐 불러서", "개 짖는 소리를 듣고", "사내가 살려 달라고 외쳐서"], answer: 1 },
     {
         q: "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
         wide: true,
         choices: [
-            "바둑이가 주막에서부터 사내를 노려본 것을 보면, 짐승이 사람보다 먼저 아는 것도 있구나.",
+            "바둑이가 장수보다 먼저 사내를 수상히 여긴 것을 보면, 짐승이 사람보다 먼저 아는 것도 있구나.",
             "장수가 한 해 번 돈을 허리에 차고 다닌 것을 보면, 그때는 맡길 데가 마땅치 않았나 보다.",
             "바둑이 밥그릇에 고기가 놓이게 된 것을 보면, 식구라는 말이 그냥 나온 것이 아니구나.",
-            "장수가 바둑이를 장에서 값을 치르고 사 온 것을 보면, 처음부터 눈여겨본 개였구나."
+            "장수가 안개 속에서 사내를 뒤쫓아 골짜기까지 따라간 것을 보면, 개 못지않게 발이 빨랐구나."
         ],
         answer: 3
     }

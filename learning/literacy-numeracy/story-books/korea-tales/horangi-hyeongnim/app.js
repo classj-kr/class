@@ -466,19 +466,19 @@ const EN = {
     quiz: [
         { q: "What did the woodcutter do when the bushes parted?", choices: ["Ran off with his frame", "Dropped his axe and froze", "Shouted at the top of his voice"], answer: 1 },
         { q: "What did the tiger do when the woodcutter shouted?", choices: ["Came on step by step", "Backed into the bushes", "Stopped with a paw in the air"], answer: 2 },
-        { q: "What story did the woodcutter make up?", choices: ["That his brother had become a tiger", "That he was the tiger's son", "That the mountain spirit had sent him"], answer: 0 },
-        { q: "What did the tiger do when it heard that?", choices: ["Refused to believe it and raged", "Laughed out loud", "Wept great tears"], answer: 2 },
-        { q: "What did the tiger do after that?", choices: ["Left food in the yard every night", "Built them a new house", "Cut wood for them every day"], answer: 0 },
+        { q: "How did the woodcutter say his brother had become a tiger?", choices: ["The mountain spirit took him and made him one", "He got lost and was raised on wild milk", "He put on a tiger skin and could not take it off"], answer: 0 },
+        { q: "What did the tiger do when it heard that?", choices: ["Wept great tears", "Refused to believe it and raged", "Laughed out loud"], answer: 0 },
+        { q: "What did the tiger do after that?", choices: ["Built them a new house", "Cut wood for them every day", "Left food in the yard every night"], answer: 2 },
         { q: "What did the mother take it for?", choices: ["A gift from the mountain spirit", "Something sent by her elder son", "Something a neighbour left"], answer: 1 },
-        { q: "What did the woodcutter finally tell the tiger?", choices: ["That it had all been a lie", "That it should not come again", "That it should come and live with them"], answer: 0 },
-        { q: "What did the tiger say to the confession?", choices: ["Not to tell his mother", "That it was ashamed of its shape", "That it had known all along"], answer: 2 },
+        { q: "Years later, why did the woodcutter take to his bed for days?", choices: ["The tiger had stopped leaving food", "The tiger and his mother still believed the story he had made up", "It hurt him that his mother treated only the tiger as a son"], answer: 1 },
+        { q: "What did the tiger say when it heard him out?", choices: ["Not to tell his mother", "That it was ashamed of its shape", "That it had known all along"], answer: 2 },
         {
             q: "Which reaction to this book does NOT fit?",
             wide: true,
             choices: [
-                "He carried a lie told to save himself for ten years, so one word can grow that heavy.",
+                "He carried a word spoken to save himself to the very end, so one word can grow that heavy.",
                 "His mother put a bowl out every night, so she knew and let it be.",
-                "The tiger said it had known all along, so it was not fooled — it simply liked the name.",
+                "The tiger said he was the first ever to call it brother, so that one word meant more to it than any food.",
                 "The tiger carried the frame down and bowed to the mother, so it wanted a turn at being a son."
             ],
             answer: 3
@@ -666,19 +666,19 @@ const EN = {
 const QUIZ = [
     { q: "덤불이 갈라지자 나무꾼은 어떻게 했나요?", choices: ["지게를 지고 달아났다", "도끼를 놓치고 얼어붙었다", "큰 소리로 외쳤다"], answer: 1 },
     { q: "나무꾼이 소리치자 호랑이는 어떻게 했나요?", choices: ["한 발짝씩 다가왔다", "덤불 속으로 물러섰다", "앞발을 든 채로 멈췄다"], answer: 2 },
-    { q: "나무꾼이 둘러댄 이야기는 무엇인가요?", choices: ["형이 호랑이가 되었다고", "제가 호랑이의 아들이라고", "산신령이 보내서 왔다고"], answer: 0 },
-    { q: "그 말을 들은 호랑이는 어떻게 했나요?", choices: ["믿지 않고 화를 냈다", "껄껄 소리 내어 웃었다", "눈물을 뚝뚝 흘렸다"], answer: 2 },
-    { q: "호랑이는 그 뒤로 무엇을 했나요?", choices: ["밤마다 먹을 것을 놓고 갔다", "새 집을 지어다 주었다", "날마다 나무를 해다 주었다"], answer: 0 },
+    { q: "나무꾼은 형님이 어떻게 호랑이가 되었다고 했나요?", choices: ["산신령이 데려가서 호랑이가 되었다고", "길을 잃고 짐승 젖을 먹어 그리되었다고", "호랑이 가죽을 뒤집어쓰고 못 벗게 되었다고"], answer: 0 },
+    { q: "그 말을 들은 호랑이는 어떻게 했나요?", choices: ["눈물을 뚝뚝 흘렸다", "믿지 않고 화를 냈다", "껄껄 소리 내어 웃었다"], answer: 0 },
+    { q: "호랑이는 그 뒤로 무엇을 했나요?", choices: ["새 집을 지어다 주었다", "날마다 나무를 해다 주었다", "밤마다 먹을 것을 놓고 갔다"], answer: 2 },
     { q: "어머니는 그것을 무엇이라고 여겼나요?", choices: ["산신령이 준 것이라고", "큰아들이 보낸 것이라고", "이웃이 두고 간 것이라고"], answer: 1 },
-    { q: "나무꾼이 끝내 호랑이에게 한 말은 무엇인가요?", choices: ["사실은 거짓말이었다고", "이제는 오지 말아 달라고", "함께 내려가 살자고"], answer: 0 },
-    { q: "나무꾼의 고백을 들은 호랑이는 뭐라고 했나요?", choices: ["어머니께 말하지 말라고", "제 꼴이 부끄럽다고", "진작 알고 있었다고"], answer: 2 },
+    { q: "여러 해 뒤 나무꾼은 왜 며칠을 앓아누웠나요?", choices: ["호랑이가 더는 먹을 것을 놓고 가지 않아서", "지어낸 말을 호랑이와 어머니가 그대로 믿고 있어서", "어머니가 호랑이만 아들로 여기는 것이 서운해서"], answer: 1 },
+    { q: "나무꾼의 말을 들은 호랑이는 뭐라고 했나요?", choices: ["어머니께 말하지 말라고", "제 꼴이 부끄럽다고", "진작 알고 있었다고"], answer: 2 },
     {
         q: "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
         wide: true,
         choices: [
-            "살자고 뱉은 거짓말을 십 년이나 지고 간 것을 보면, 한 마디가 이렇게 무거워지는구나.",
+            "살자고 뱉은 한마디를 끝까지 지고 간 것을 보면, 말 한마디가 이렇게 무거워지는구나.",
             "어머니가 밤마다 밥 한 그릇을 내놓은 것을 보면, 알면서 모른 척해 준 거였네.",
-            "호랑이가 진작 알고 있었다고 한 것을 보면, 속은 게 아니라 그 이름이 좋았던 거야.",
+            "형님이라 불러 준 사람이 처음이었다는 말을 보면, 호랑이에게는 먹을 것보다 그 한마디가 더 귀했던 거야.",
             "호랑이가 지게를 져다 주고 어머니께 절까지 하고 간 것을 보면, 아들 노릇을 해 보고 싶었겠다."
         ],
         answer: 3
