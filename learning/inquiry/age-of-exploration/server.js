@@ -184,18 +184,24 @@ function discoveryListFor(roomCode, studentName) {
 function nearbyDiscovery(p) {
   if (!p || (p.mode !== 'sea' && p.mode !== 'land') || p.transition) return null;
   let best = null;
-  let bestDistance = Infinity;
+  let bestDistance = Infinity, bestPriority = Infinity;
+  const mission=store.room(p.roomCode).activeMission;
+  const progress=mission?.studyTargets?store.studentProgress(p.roomCode,p.name,mission.id):null;
   for (const item of RESOLVED_DISCOVERIES) {
     const access = discoveryProximity(p, item);
     const d = access.distance;
-    if (d > DISCOVERY_RADIUS_TILES * TILE || d >= bestDistance) continue;
+    if (d > DISCOVERY_RADIUS_TILES * TILE) continue;
+    const key='discovery:'+item.id;
+    const assigned=mission?.studyTargets?.some(t=>t.key===key)&&progress?.placeStudy?.places?.[key]?.phase!=='completed';
+    const priority=!access.canUse?3:assigned?0:item.discoveryArea?.type==='region'?2:1;
+    if(priority>bestPriority||(priority===bestPriority&&d>=bestDistance))continue;
     best = { ...item, discoveryAccess: access };
-    bestDistance = d;
+    bestDistance = d;bestPriority=priority;
   }
   if (!best) return null;
   return { id: best.id, name: best.name, kind: best.kind, canUse:best.discoveryAccess.canUse,
     markerPoint:best.discoveryAccess.markerPoint || null,
-    message:best.discoveryArea ? '해안에서 살펴보기' : best.reach === 'sea' ? '배에서 살펴보기' : '상륙해서 살펴보기',
+    message:best.discoveryArea?.type==='waterbody' ? '해안에서 살펴보기' : best.reach === 'sea' ? '배에서 살펴보기' : '상륙해서 살펴보기',
     found: discoveryListFor(p.roomCode, p.name).includes(best.id) };
 }
 

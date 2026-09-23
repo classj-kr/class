@@ -4,8 +4,24 @@ window.VoyageStudyUI = (() => {
   overlay.innerHTML='<section id="placeStudyCard" role="dialog" aria-modal="true" aria-labelledby="placeStudyTitle"><header><h2 id="placeStudyTitle"></h2><button type="button" id="placeStudyClose" aria-label="학습 창 닫기">닫기</button></header><p id="placeStudyStatus" role="status"></p><div id="placeStudyReading"></div><form id="placeStudyForm"><div id="placeStudyQuestion"></div><button id="placeStudySubmit" type="submit"></button></form></section>';
   document.body.append(overlay);
   const $=id=>document.getElementById(id);
-  let session=null,missionId='',pending=false,lastFocus=null;
-  const close=()=>{overlay.hidden=true;session=null;clearKeys();lastFocus?.focus?.();};
+  let session=null,missionId='',pending=false,lastFocus=null,requestId=0,needsSync=false;
+  function close(){
+    const wasOpen=!overlay.hidden;
+    ++requestId;pending=false;needsSync=false;overlay.hidden=true;session=null;missionId='';
+    if(wasOpen){clearKeys();lastFocus?.focus?.();}
+  }
+  function updateControls(){
+    const s=session;if(!s)return;
+    const button=$('placeStudySubmit');
+    button.textContent=needsSync?'진행 다시 불러오기':s.phase==='reading'?'설명 읽었어요 · 문제 시작':s.phase==='quiz'?'정답 확인':'계속 탐험하기';
+    button.disabled=pending||(needsSync&&(!socket.connected||!connectionReady));
+    button.formNoValidate=needsSync;
+    for(const input of $('placeStudyQuestion').querySelectorAll('input'))input.disabled=pending||needsSync;
+    $('placeStudyForm').setAttribute('aria-busy',String(pending));
+  }
+  function report(message){
+    if(overlay.hidden)showToast(message,'warn');else $('placeStudyStatus').textContent=message;
+  }
   $('placeStudyClose').onclick=close;
   overlay.addEventListener('keydown',e=>{
     if(e.key==='Escape'){e.preventDefault();close();}
@@ -39,35 +55,72 @@ window.VoyageStudyUI = (() => {
       const passage=document.createElement('p');passage.textContent=s.question.passage;qbox.append(title,passage);
       s.question.choices.forEach((choice,i)=>{const label=document.createElement('label'),input=document.createElement('input');input.type='radio';input.name='studyChoice';input.value=i;input.required=true;label.append(input,document.createTextNode(choice));qbox.append(label);});
     }
-    $('placeStudySubmit').textContent=s.phase==='reading'?'설명 읽었어요 · 문제 시작':s.phase==='quiz'?'정답 확인':'계속 탐험하기';
-    $('placeStudySubmit').disabled=pending;
+    updateControls();
     $('placeStudyCard').scrollTop=0;
   }
-  function show(result){
+  function show(result,recovered=false){
     if(!result?.study)return;
     if(result.mission?.id!==activeMission?.id)return;
     if(overlay.hidden)lastFocus=document.activeElement;
+    ++requestId;pending=false;needsSync=false;
     missionId=result.mission.id;session=result.study;
     applyMissionState(result.mission,result.progress,false);
     overlay.hidden=false;clearKeys();
     const total=session.questionCount||3;
-    draw(result.correct===false?'오답입니다. 연속 정답은 0/'+total+'로 초기화됐어요. 설명을 다시 읽어 보세요.':result.correct===true&&session.phase!=='completed'?'정답! '+(total-session.streak)+'문제 더 맞히면 발견 성공입니다.':'');
+    const restored=recovered&&session.phase!=='completed'?'진행을 불러왔어요. 연속 정답 '+session.streak+'/'+total+(session.phase==='reading'?' · 설명을 다시 읽어 보세요.':''):'';
+    draw(restored||(result.correct===false?'오답입니다. 연속 정답은 0/'+total+'로 초기화됐어요. 설명을 다시 읽어 보세요.':result.correct===true&&session.phase!=='completed'?'정답! '+(total-session.streak)+'문제 더 맞히면 발견 성공입니다.':''));
     $('placeStudyClose').focus();
   }
-  async function call(event,payload){
+  async function call(event,payload,recovered=false){
     if(pending)return;
-    pending=true;$('placeStudySubmit').disabled=true;
-    const sentMission=activeMission?.id;
+    if(!socket.connected||!connectionReady){
+      needsSync=!!session;report('연결되면 저장된 진행을 불러옵니다.');updateControls();return;
+    }
+    const id=++requestId,sentMission=activeMission?.id;
+    missionId=sentMission;
+    const current=()=>id===requestId&&sentMission===activeMission?.id;
+    let recover=false;
+    pending=true;updateControls();
     try{
       const result=await new Promise((resolve,reject)=>socket.timeout(7000).emit(event,{...payload,missionId:sentMission},(e,r)=>e?reject(e):resolve(r)));
-      if(sentMission!==activeMission?.id){close();return;}
-      if(!result?.ok){if(overlay.hidden)showToast(result?.error||'학습을 시작하지 못했습니다.','warn');else $('placeStudyStatus').textContent=result?.error||'다시 시도하세요.';return;}
-      show(result);
-    }catch{$('placeStudyStatus').textContent='연결을 확인한 뒤 다시 시도하세요.';}
-    finally{pending=false;$('placeStudySubmit').disabled=false;}
+      if(!current())return;
+      if(!result?.ok){
+        needsSync=!!session;recover=!!session&&event!=='readStudyPlace';
+        report(result?.error||'진행을 다시 불러오세요.');
+      }else show(result,recovered);
+    }catch{
+      if(!current())return;
+      needsSync=!!session;recover=!!session&&event!=='readStudyPlace';
+      report('응답을 받지 못했어요. 진행을 다시 불러오세요.');
+    }finally{
+      if(current()){pending=false;updateControls();}
+    }
+    // An answer may already be saved. Read its outcome; never resend it automatically.
+    if(current()&&recover)restore();
+  }
+  function restore(){
+    if(!session||overlay.hidden)return;
+    if(missionId!==activeMission?.id)return close();
+    needsSync=true;report('저장된 진행을 불러오는 중…');
+    return call('readStudyPlace',{key:session.key},true);
+  }
+  function connectionLost(){
+    ++requestId;pending=false;
+    if(session&&session.phase!=='completed'){
+      needsSync=true;report('연결되면 저장된 진행을 불러옵니다.');
+    }
+    updateControls();
+  }
+  function missionChanged(){
+    if(missionId&&missionId!==activeMission?.id)close();
+  }
+  function connectionRestored(){
+    missionChanged();
+    if(session&&session.phase!=='completed')return restore();
   }
   $('placeStudyForm').onsubmit=e=>{
     e.preventDefault();if(!session||pending)return;
+    if(needsSync)return restore();
     if(session.phase==='completed')return close();
     if(session.phase==='reading')return call('startStudyQuiz',{key:session.key});
     const choice=$('placeStudyQuestion').querySelector('input:checked');
@@ -83,7 +136,8 @@ window.VoyageStudyUI = (() => {
       b.disabled=activeMission.phase!=='running';b.onclick=()=>request(target.key);container.append(b);
     }
   }
-  socket.on('missionPublished',()=>{if(missionId!==activeMission?.id)close();});
+  socket.on('missionPublished',missionChanged);
   socket.on('missionCleared',close);
-  return {show,request,renderTargets,isOpen:()=>!overlay.hidden};
+  socket.on('disconnect',connectionLost);
+  return {show,request,renderTargets,close,missionChanged,connectionLost,connectionRestored,isOpen:()=>!overlay.hidden};
 })();

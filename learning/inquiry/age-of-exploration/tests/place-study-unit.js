@@ -3,7 +3,7 @@ const assert=require('node:assert/strict'),fs=require('node:fs'),os=require('nod
 const Study=require('../lib/place-study'),Catalog=require('../lib/mission-catalog'),Store=require('../lib/classroom-store');
 const stories=require('../data/catalog/city-stories.json');
 const pool=[...Catalog.DISCOVERIES,...Catalog.CITY_LANDMARKS,...Catalog.PLACES.filter(p=>p.isOriginalCity).map(p=>({...p,text:(stories.find(t=>t.cityId===p.id)?.sections||Catalog.ADDITIONAL_SETTLEMENTS.find(t=>t.id===p.id)?.story.sections||[]).map(t=>t.text).join(' ')}))];
-for(const p of pool){const qs=Study.createQuestions(p,pool);assert.equal(qs.length,3,p.name);assert.equal(new Set(qs.map(q=>q.explanation)).size,3,p.name);for(const q of qs){assert.equal(q.choices.length,4);assert.equal(new Set(q.choices).size,4);assert.ok(q.choices.includes(q.answer));assert.ok(p.text.includes(q.explanation));}}
+for(const p of pool){const qs=Study.createQuestions(p,pool);assert.equal(qs.length,3,p.name);assert.equal(new Set(qs.map(q=>q.passage+q.answer)).size,3,p.name);for(const q of qs){assert.equal(q.choices.length,4);assert.equal(new Set(q.choices).size,4);assert.ok(q.choices.includes(q.answer));assert.ok(p.text.includes(q.explanation),p.name);assert.notEqual(q.answer,p.name);assert.notEqual(q.prompt,'다음 설명에 해당하는 장소는?');}}
 const target={key:'discovery:test',name:'검증',questions:Study.createQuestions(pool[0],pool),reading:{text:pool[0].text}};
 const state={phase:'reading',streak:0};Study.issue(state);const publicQ=Study.publicSession(target,state).question;
 assert.equal(Study.publicSession(target,state).questionCount,3);

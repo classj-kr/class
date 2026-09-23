@@ -458,7 +458,7 @@ function escapeHtml(v){return String(v||'').replace(/[&<>"']/g,c=>({'&':'&amp;',
 let lastMissionRenderKey='';
 function missionRenderKey(mission,progress){return [mission?.id||'',mission?.phase||'',progress?.selectedStartPlaceId||'',progress?.selectedStartPlaceName||'',progress?.status||'',progress?.finishRank||'',progress?.finalQuizStatus||'',progress?.finalCorrectCount??'',(progress?.finalQuizAnswers||[]).join(','),JSON.stringify(progress?.studyPlaces||[]),progress?.stageIndex||0,startChoicePending?pendingStartChoice?.optionId||'pending':''].join('|')}
 function mergePendingStartChoice(progress){if(!startChoicePending||!pendingStartChoice||progress?.selectedStartPlaceId)return progress;return {...(progress||{}),selectedStartPlaceId:pendingStartChoice.placeId,selectedStartPlaceName:pendingStartChoice.cityName,status:'assigned',statusLabel:'수행 전'}}
-function applyMissionState(mission,progress,announce=false){const changed=mission?.id&&mission?.id!==activeMission?.id,wasCompleted=missionProgress?.status==='completed';if(changed)dismissedFinalQuizMissionId='';activeMission=mission||null;missionProgress=mergePendingStartChoice(progress)||null;const justCompleted=!wasCompleted&&missionProgress?.status==='completed',renderKey=missionRenderKey(activeMission,missionProgress);if(renderKey!==lastMissionRenderKey){lastMissionRenderKey=renderKey;renderMission()}renderFinalQuiz();updateTravelLockOverlay();syncBackgroundMusic();if(justCompleted&&activeMission?.studyTargets)showToast('모든 장소 발견 성공!','good');else if(justCompleted)showToast(`${medalText(missionProgress.finishRank)} 미션 성공! ${missionProgress?.finalCorrectCount??0}/3 정답 · 이동속도 ${formatSpeedBoost(completionBoost())}배 자유 탐험`,'good');if(announce&&activeMission){showToast(`새 수행 미션: ${activeMission.title}`);setMissionPanelOpen(true)}else if(changed&&activeMission)setMissionPanelOpen(true)}
+function applyMissionState(mission,progress,announce=false){const changed=mission?.id&&mission?.id!==activeMission?.id,wasCompleted=missionProgress?.status==='completed';if(changed)dismissedFinalQuizMissionId='';activeMission=mission||null;window.VoyageStudyUI?.missionChanged();missionProgress=mergePendingStartChoice(progress)||null;const justCompleted=!wasCompleted&&missionProgress?.status==='completed',renderKey=missionRenderKey(activeMission,missionProgress);if(renderKey!==lastMissionRenderKey){lastMissionRenderKey=renderKey;renderMission()}renderFinalQuiz();updateTravelLockOverlay();syncBackgroundMusic();if(justCompleted&&activeMission?.studyTargets)showToast('모든 장소 발견 성공!','good');else if(justCompleted)showToast(`${medalText(missionProgress.finishRank)} 미션 성공! ${missionProgress?.finalCorrectCount??0}/3 정답 · 이동속도 ${formatSpeedBoost(completionBoost())}배 자유 탐험`,'good');if(announce&&activeMission){showToast(`새 수행 미션: ${activeMission.title}`);setMissionPanelOpen(true)}else if(changed&&activeMission)setMissionPanelOpen(true)}
 function applyClassSettings(next){const before=displayedGameMinutes();classSettings={...classSettings,...(next||{})};clockAnchorGameMinutes=before;clockAnchorAt=performance.now();classGameMinutes=before;updateHostBar();updateMissionBanner();updateTravelLockOverlay();if(classSettings.paused)clearKeys()}
 function updateHostBar(){hostBar.hidden=!(joined&&isHost&&roomType==='free'&&!classSettings.started)}
 function finalQuizOpen(){return finalQuizView.classList.contains('show')||window.VoyageStudyUI?.isOpen()}
@@ -612,12 +612,12 @@ Promise.all([ungzipResponse('/learn/world-voyage/assets/maps/world.cds.gz?v=58')
 
 function restoreVoyagerConnection(){
   if(!joined||!socket.connected||resumePending)return;
-  if(!resumeToken){connectionReady=false;joined=false;join.style.display='grid';joinError.textContent='방에 다시 입장해 주세요.';return}
-  resumePending=true;connectionReady=false;net.textContent='● 연결 복구 중';net.className='bad';
+  if(!resumeToken){window.VoyageStudyUI?.close();connectionReady=false;joined=false;join.style.display='grid';joinError.textContent='방에 다시 입장해 주세요.';return}
+  resumePending=true;connectionReady=false;window.VoyageStudyUI?.connectionLost();net.textContent='● 연결 복구 중';net.className='bad';
   socket.timeout(5000).emit('resumeVoyager',{resumeToken},(error,result)=>{
     resumePending=false;if(!socket.connected)return;
     if(error)return;
-    if(!result?.ok){joined=false;connectionReady=false;join.style.display='grid';joinError.textContent=result?.error||'방에 다시 입장해 주세요.';return}
+    if(!result?.ok){window.VoyageStudyUI?.close();joined=false;connectionReady=false;join.style.display='grid';joinError.textContent=result?.error||'방에 다시 입장해 주세요.';return}
     finishJoin(result,true);showToast('연결이 복구되었습니다.','good');
   });
 }
@@ -743,6 +743,7 @@ function finishJoin(result,resumed=false){
   joined=true;if(!resumed)resetMapZoomForDevice();sessionMode=result.sessionMode||'competition';roomType=result.roomType||'race';isHost=!!result.isHost;roomCodeCurrent=result.roomLabel||`방 ${result.roomCode||''}`;hostCode.textContent=result.roomCode||'';self={...result.self};serverSelf={...result.self};syncClassClock(result.classGameMinutes);mode=result.self.mode;applyMissionState(result.mission,result.progress,false);missionInteraction=result.interaction||null;cityInteraction=result.cityInteraction||null;portInteraction=result.portInteraction||null;discoveryInteraction=result.discoveryInteraction||null;huntInteraction=result.huntInteraction||null;landmarkQueue=result.cityLandmarks||[];applyClassSettings(result.settings||{});join.style.display='none';joinError.textContent='';
   try{localStorage.setItem('uw3-room',result.roomCode||'')}catch{}if(!resumed)guideHistory.length=0;
   nearbyGroup.hidden=roomType==='free';
+  if(resumed)window.VoyageStudyUI?.connectionRestored();else window.VoyageStudyUI?.close();
   if(!resumed){showToast(isHost?`방을 만들었습니다. 방번호 ${result.roomCode}`:`방에 들어왔습니다. 방번호 ${result.roomCode}`,'good');showToast('바람·해류는 상단 ‘정보’에서 확인하세요.','system')}updateHostBar();applyModeUI();sendInput();
 }
 function joinRoom(roomCode,name){
@@ -1191,6 +1192,6 @@ requestAnimationFrame(loop);
 setInterval(()=>{if(joined&&self)updateHud()},100);
 setInterval(()=>{if(joined&&performance.now()-lastSnapshotAt>3000){connectionReady=false;for(const k in keys)keys[k]=false;net.textContent='● 연결 복구 중';net.className='bad';restoreVoyagerConnection()}},1000);
 </script>
-<script src="/learn/world-voyage/js/place-study-ui.js"></script>
+<script src="/learn/world-voyage/js/place-study-ui.js?v=90"></script>
 </body>
 </html>
