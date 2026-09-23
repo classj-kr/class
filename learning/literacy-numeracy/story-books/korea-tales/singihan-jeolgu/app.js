@@ -431,11 +431,11 @@ const EN = {
     ],
     quiz: [
         { q: "Who gave the woodcutter the mortar?", choices: ["A rich neighbour", "An old man in the mountains", "The village magistrate"], answer: 1 },
-        { q: "What words made things come out of the mortar?", choices: ["Stop", "Turn", "Come out"], answer: 2 },
+        { q: "What do you say to make the mortar stop?", choices: ["That will do", "Enough", "Don't come out"], answer: 1 },
         { q: "Where did the thief take the mortar?", choices: ["Out to sea in a boat", "Over the pass into the hills", "Across the river to the next village"], answer: 0 },
         { q: "What did the thief ask the mortar for?", choices: ["Rice", "Gold", "Salt"], answer: 2 },
-        { q: "Why could the thief not stop the salt?", choices: ["He did not know the word", "The mortar was broken", "The waves were too strong"], answer: 0 },
-        { q: "What happened to the mortar after it sank?", choices: ["It floated off on a plank", "The thief brought it up", "It does not know how to stop"], answer: 2 },
+        { q: "What did the thief do when the mortar would not stop?", choices: ["Put it in a sack on his back", "Shook it and tried to throw it into the sea", "Rowed back to the shore"], answer: 1 },
+        { q: "What became of the mortar at the bottom of the sea?", choices: ["The waves carried it back to land", "The thief brought it up again", "It is still making salt"], answer: 2 },
         {
             q: "Which reaction to this book does NOT fit?",
             wide: true,
@@ -628,11 +628,11 @@ const EN = {
 
 const QUIZ = [
     { q: "나무꾼은 절구를 누구에게 받았나요?", choices: ["이웃 부자", "산속의 노인", "마을 원님"], answer: 1 },
-    { q: "절구에서 물건이 나오게 하는 말은 무엇이었나요?", choices: ["멈춰라", "돌아라", "나와라"], answer: 2 },
+    { q: "절구를 멈추게 하려면 무어라 말해야 하나요?", choices: ["이만하면 됐다", "그만", "나오지 마"], answer: 1 },
     { q: "도둑은 절구를 훔쳐 어디로 갔나요?", choices: ["배를 타고 바다로", "고개 너머 산속으로", "강 건너 이웃 마을로"], answer: 0 },
     { q: "도둑은 절구에게 무엇을 달라고 했나요?", choices: ["쌀", "금", "소금"], answer: 2 },
-    { q: "도둑이 소금을 그치게 하지 못한 까닭은 무엇인가요?", choices: ["멈추는 말을 몰라서", "절구가 고장 나서", "파도가 너무 세서"], answer: 0 },
-    { q: "바닷속에 가라앉은 뒤에도 절구는 어떻게 되었나요?", choices: ["널빤지에 실려 갔다", "도둑이 건져 갔다", "멈추지 않고 소금을 낸다"], answer: 2 },
+    { q: "절구가 멈추지 않자 도둑은 어떻게 했나요?", choices: ["자루에 넣어 등에 졌다", "붙들고 흔들고 바다에 던지려 했다", "노를 저어 뭍으로 돌아갔다"], answer: 1 },
+    { q: "바닷속에 가라앉은 절구는 어떻게 되었나요?", choices: ["파도에 밀려 뭍으로 돌아왔다", "도둑이 다시 건져 올렸다", "지금도 소금을 내고 있다"], answer: 2 },
     {
         q: "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
         wide: true,
