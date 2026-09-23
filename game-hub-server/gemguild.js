@@ -104,6 +104,9 @@ function createGame(hostId, hostName) {
     patrons: [],
     turnIndex: 0,
     winnerId: null,
+    winnerIds: [],
+    finalRound: false,
+    pending: null,
     turnDeadline: null,
     lastAction: "2~4명이 모이면 시작할 수 있습니다.",
     revision: 0
@@ -145,6 +148,9 @@ function resetToLobby(game, message = "대기실로 돌아왔습니다.") {
   game.patrons = [];
   game.turnIndex = 0;
   game.winnerId = null;
+  game.winnerIds = [];
+  game.finalRound = false;
+  game.pending = null;
   game.turnDeadline = null;
   game.lastAction = message;
   game.revision += 1;
@@ -171,6 +177,9 @@ function startGame(game, randomIndex) {
   game.patrons = shuffle(PATRONS, randomIndex).slice(0, game.players.length + 1);
   game.turnIndex = 0;
   game.winnerId = null;
+  game.winnerIds = [];
+  game.finalRound = false;
+  game.pending = null;
   game.phase = "playing";
   game.turnDeadline = Date.now() + TURN_SECONDS * 1000;
   game.lastAction = `${game.players[0].name}님부터 시작합니다.`;
@@ -190,35 +199,74 @@ function tokenTotal(player) {
   return [...GEMS, "gold"].reduce((sum, gem) => sum + (player.tokens[gem] || 0), 0);
 }
 
-function validateTurn(game, playerId) {
+function validateTurn(game, playerId, allowPending = false) {
   if (game.phase !== "playing") return { error: "진행 중인 게임이 아닙니다." };
   const player = playerById(game, playerId);
   if (!player || currentPlayer(game)?.id !== player.id) return { error: "지금은 내 차례가 아닙니다." };
+  if (game.pending && !allowPending) return { error: "보석 반납 또는 후원자 선택을 먼저 마치세요." };
   return { player };
 }
 
+function eligiblePatrons(game, player) {
+  return game.patrons.filter(candidate => GEMS.every(gem => (player.bonuses[gem] || 0) >= (candidate.requirement[gem] || 0)));
+}
+function pendingChoice(game, type, message) {
+  game.pending = { type, message };
+  game.lastAction = message + (type === 'return' ? ' 초과한 보석을 골라 반납하세요.' : '방문할 후원자 한 명을 선택하세요.');
+  game.turnDeadline = Date.now() + TURN_SECONDS * 1000;
+  game.revision += 1;
+}
+function completeTurn(game, message, patron = null) {
+  const player = currentPlayer(game);
+  if (patron) {
+    player.patrons.push(patron.id); player.score += patron.points;
+    game.patrons = game.patrons.filter(candidate => candidate.id !== patron.id);
+    message += ' ' + patron.name + '의 후원을 받아 ' + patron.points + '점을 얻었습니다.';
+  }
+  game.pending = null;
+  if (player.score >= TARGET_SCORE) game.finalRound = true;
+  if (game.finalRound && game.turnIndex === game.players.length - 1) {
+    const score = Math.max(...game.players.map(p => p.score));
+    const candidates = game.players.filter(p => p.score === score);
+    const fewest = Math.min(...candidates.map(p => p.cards.length));
+    const winners = candidates.filter(p => p.cards.length === fewest);
+    game.winnerIds = winners.map(p => p.id); game.winnerId = game.winnerIds[0];
+    game.phase = 'ended'; game.turnDeadline = null;
+    game.lastAction = message + ' 마지막 라운드 종료 · ' + winners.map(p => p.name).join(', ') + '님 승리 (' + score + '점)!';
+  } else {
+    game.turnIndex = (game.turnIndex + 1) % game.players.length;
+    game.turnDeadline = Date.now() + TURN_SECONDS * 1000;
+    game.lastAction = message + (game.finalRound ? ' 마지막 라운드입니다. 남은 플레이어도 한 차례씩 진행합니다.' : '');
+  }
+  game.revision += 1;
+}
 function finishTurn(game, message) {
   const player = currentPlayer(game);
-  const patron = game.patrons.find(candidate => GEMS.every(gem => (player.bonuses[gem] || 0) >= (candidate.requirement[gem] || 0)));
-  let patronMessage = "";
-  if (patron) {
-    player.patrons.push(patron.id);
-    player.score += patron.points;
-    game.patrons = game.patrons.filter(candidate => candidate.id !== patron.id);
-    patronMessage = ` ${patron.name}의 후원을 받아 ${patron.points}점을 얻었습니다.`;
-  }
-  if (player.score >= TARGET_SCORE) {
-    game.phase = "ended";
-    game.winnerId = player.id;
-    game.turnDeadline = null;
-    game.lastAction = `${message}${patronMessage} ${player.name}님이 ${player.score}점으로 승리했습니다!`;
-    game.revision += 1;
-    return;
-  }
-  game.turnIndex = (game.turnIndex + 1) % game.players.length;
-  game.turnDeadline = Date.now() + TURN_SECONDS * 1000;
-  game.lastAction = `${message}${patronMessage}`;
-  game.revision += 1;
+  if (tokenTotal(player) > MAX_TOKENS) { pendingChoice(game, 'return', message); return; }
+  const patrons = eligiblePatrons(game, player);
+  if (patrons.length > 1) { pendingChoice(game, 'patron', message); return; }
+  completeTurn(game, message, patrons[0]);
+}
+function returnGems(game, playerId, requested) {
+  const { player, error } = validateTurn(game, playerId, true);
+  if (error) return { ok: false, error };
+  if (game.pending?.type !== 'return') return { ok: false, error: '지금은 반납할 차례가 아닙니다.' };
+  const gems = Array.isArray(requested) ? requested : [];
+  const excess = tokenTotal(player) - MAX_TOKENS;
+  if (gems.length !== excess || gems.some(g => ![...GEMS, 'gold'].includes(g))) return { ok: false, error: excess + '개를 골라 반납하세요.' };
+  const counts = Object.fromEntries([...GEMS, 'gold'].map(g => [g, gems.filter(v => v === g).length]));
+  if (Object.keys(counts).some(g => counts[g] > player.tokens[g])) return { ok: false, error: '가진 보석보다 많이 반납할 수 없습니다.' };
+  for (const gem of gems) { player.tokens[gem] -= 1; game.bank[gem] += 1; }
+  const message = game.pending.message + ' 보석 ' + excess + '개를 반납했습니다.';
+  game.pending = null; finishTurn(game, message); return { ok: true };
+}
+function choosePatron(game, playerId, patronId) {
+  const { player, error } = validateTurn(game, playerId, true);
+  if (error) return { ok: false, error };
+  if (game.pending?.type !== 'patron') return { ok: false, error: '지금은 후원자를 선택할 차례가 아닙니다.' };
+  const patron = eligiblePatrons(game, player).find(p => p.id === patronId);
+  if (!patron) return { ok: false, error: '조건을 충족한 후원자를 선택하세요.' };
+  completeTurn(game, game.pending.message, patron); return { ok: true };
 }
 
 function takeGems(game, playerId, requested) {
@@ -232,7 +280,6 @@ function takeGems(game, playerId, requested) {
   if (!double && used.length !== gems.length) return { ok: false, error: "같은 보석은 정확히 2개를 가져갈 때만 선택할 수 있습니다." };
   if (double && game.bank[used[0]] < 4) return { ok: false, error: "같은 보석 2개는 보관소에 4개 이상 남아 있을 때만 가져갈 수 있습니다." };
   if (gems.some(gem => game.bank[gem] < counts[gem])) return { ok: false, error: "보관소에 부족한 보석이 포함되어 있습니다." };
-  if (tokenTotal(player) + gems.length > MAX_TOKENS) return { ok: false, error: `보석 토큰은 최대 ${MAX_TOKENS}개까지 가질 수 있습니다.` };
   for (const gem of gems) {
     game.bank[gem] -= 1;
     player.tokens[gem] += 1;
@@ -268,7 +315,7 @@ function reserveCard(game, playerId, cardId, tierValue) {
   }
   player.reserved.push(card);
   let goldMessage = "";
-  if (game.bank.gold > 0 && tokenTotal(player) < MAX_TOKENS) {
+  if (game.bank.gold > 0) {
     game.bank.gold -= 1;
     player.tokens.gold += 1;
     goldMessage = " 황금 토큰 1개도 받았습니다.";
@@ -331,6 +378,11 @@ function passTurn(game, playerId) {
 function autoPlay(game) {
   const player = currentPlayer(game);
   if (!player || game.phase !== "playing") return { ok: false, error: "자동 진행할 차례가 없습니다." };
+  if (game.pending?.type === 'return') {
+    const gems = [...GEMS, 'gold'].flatMap(gem => Array(player.tokens[gem]).fill(gem));
+    return returnGems(game, player.id, gems.slice(0, tokenTotal(player) - MAX_TOKENS));
+  }
+  if (game.pending?.type === 'patron') return choosePatron(game, player.id, eligiblePatrons(game, player)[0].id);
   const allowance = MAX_TOKENS - tokenTotal(player);
   const available = GEMS.filter(gem => game.bank[gem] > 0);
   if (allowance >= 1 && available.length) return takeGems(game, player.id, available.slice(0, Math.min(3, allowance)));
@@ -366,6 +418,9 @@ function stateFor(game, playerId) {
     reserved: (me?.reserved || []).map(publicCard),
     turnPlayerId: currentPlayer(game)?.id || null,
     winnerId: game.winnerId,
+    winnerIds: [...(game.winnerIds || [])],
+    finalRound: !!game.finalRound,
+    pending: game.pending ? { type: game.pending.type, excess: Math.max(0, tokenTotal(currentPlayer(game)) - MAX_TOKENS), patronIds: eligiblePatrons(game, currentPlayer(game)).map(p => p.id) } : null,
     turnDeadline: game.turnDeadline,
     lastAction: game.lastAction,
     revision: game.revision
@@ -383,6 +438,8 @@ module.exports = {
   addPlayer,
   autoPlay,
   buyCard,
+  returnGems,
+  choosePatron,
   createGame,
   paymentFor,
   passTurn,

@@ -138,6 +138,22 @@ input{width:100%;min-height:44px;border:1px solid #987d42;border-radius:8px;back
 #gameScreen .music-control{margin:5px auto 0;padding:5px;flex-shrink:0}
 #gameScreen .message{margin:6px auto}
 @media(orientation:landscape) and (max-height:650px){#gameScreen .cardwrap{width:120px}#gameScreen .bell{width:110px}#gameScreen .board{gap:8px}}
+
+/* Keep every card inside its grid cell so mobile controls stay tappable. */
+#gameScreen .board{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr));padding:10px 12px;gap:16px}
+#gameScreen .board:not(:has(.cardwrap:nth-child(3))){grid-template-rows:minmax(0,1fr)}
+#gameScreen .cardwrap{height:min(220px,calc(100% - 20px));width:auto;max-width:calc(100% - 20px);aspect-ratio:5/7}
+#gameScreen .top,#gameScreen .message,#gameScreen .turn-timer,#gameScreen .flip,#gameScreen .team-scoreboard{flex-shrink:0}
+@media(orientation:landscape) and (max-height:650px){
+ #gameScreen .team-scoreboard{gap:6px;margin-bottom:4px}
+ #gameScreen .team-score{display:flex;align-items:center;justify-content:center;gap:8px;padding:3px 6px;font-size:12px}
+ #gameScreen .team-score strong{font-size:16px;margin:0}
+ #gameScreen .top{gap:4px}#gameScreen .score{padding:4px 6px;font-size:12px}
+ #gameScreen .top .small{padding:5px 8px;font-size:12px}
+ #gameScreen .board{gap:8px;padding:4px 12px}
+ #gameScreen .cardwrap{height:min(150px,calc(100% - 12px))}
+ #gameScreen .music-control{display:none}
+}
 </style></head>
 <body>
 <audio id="bgm" src="/learning/games/fruitbell/assets/sound/bgm.ogg" loop preload="auto"></audio>
@@ -156,7 +172,7 @@ input{width:100%;min-height:44px;border:1px solid #987d42;border-radius:8px;back
             <button id="soloModeBtn" class="mode-btn active" type="button" onclick="setGameMode('individual')">개인전</button>
             <button id="teamModeBtn" class="mode-btn" type="button" onclick="setGameMode('team')">2 대 2 팀전</button>
           </div>
-          <div id="modeHelp" class="mode-help">2~4명이 각자 획득한 카드 수로 대결합니다.</div>
+          <div id="modeHelp" class="mode-help">2~4명이 카드를 빼앗고 다시 사용하며 끝까지 살아남는 개인전입니다.</div>
         </div>
         <div class="mode-box">
           <div class="mode-title">종 조건</div>
@@ -220,11 +236,11 @@ input{width:100%;min-height:44px;border:1px solid #987d42;border-radius:8px;back
     <ul>
       <li>각 플레이어는 자기 차례에 <strong>내 카드 뒤집기</strong>를 눌러 카드 한 장을 공개합니다.</li>
       <li>공개된 카드들 가운데 같은 과일의 합이 정확히 <strong id="ruleTargetText">5개</strong>가 되면 종을 누릅니다.</li>
-      <li>정답일 때 가장 먼저 종을 누른 플레이어가 <strong>각 플레이어 앞에 누적된 공개 카드 더미 전부</strong>를 가져갑니다.</li>
+      <li>정답일 때 가장 먼저 종을 누른 플레이어가 <strong>누적된 공개 카드 전부</strong>를 자기 더미 아래에 넣어 다시 사용합니다.</li>
       <li>과일 합이 선택한 종 조건과 다를 때 종을 누르면 벌칙을 받습니다.</li>
       <li>제한 시간 안에 카드를 뒤집지 않으면 카드 1장 벌칙을 받거나 차례가 넘어갑니다.</li>
-      <li>개인전은 가장 많은 카드를 모은 플레이어가 승리합니다.</li>
-      <li>2 대 2 팀전은 파랑팀과 빨강팀의 획득 카드 합계로 승부합니다.</li>
+      <li>뒤집을 카드가 없으면 차례를 건너뜁니다. 자기 앞에 공개 카드가 남아 있으면 종을 눌러 복귀할 수 있습니다.</li>
+      <li>카드를 가진 사람 또는 팀이 하나만 남으면 승리합니다. 모두 뒤집을 카드가 없고 종 조건도 안 맞으면 보유 카드 수(팀전은 합계)로 승부합니다.</li>
     </ul>
     <button class="primary rules-close" type="button" onclick="closeRules()">확인</button>
   </div>
@@ -431,7 +447,7 @@ function applyGameMode(mode){
  $("teamModeBtn").classList.toggle("active",gameMode==="team");
  $("modeHelp").textContent=gameMode==="team"
     ?"4명 전용입니다. 각자 원하는 팀의 빈 자리를 선택하세요."
-    :"2~4명이 각자 획득한 카드 수로 대결합니다.";
+    :"2~4명이 카드를 빼앗고 다시 사용하며 끝까지 살아남는 개인전입니다.";
  renderTeamPicker();
 }
 function normalizedBellTarget(value){
@@ -487,7 +503,7 @@ function renderTeamPicker(){
 function teamTotal(team){
  return state.order
    .filter(id=>state.teams?.[id]===team)
-   .reduce((sum,id)=>sum+(state.wonCards?.[id]?.length||0),0);
+   .reduce((sum,id)=>sum+ownedCount(id),0);
 }
 
 function currentPlayerName(){return getSavedPlayerName()}
@@ -532,7 +548,7 @@ function createFruitBellStartData(){
  order.forEach(id=>{decks[id]=[];faceUp[id]=null;faceUpPiles[id]=[];scores[id]=0;wonCards[id]=[]});
  deck.forEach((c,i)=>decks[order[i%order.length]].push(c));
  state={turn:0,order,scores,decks,faceUp,faceUpPiles,wonCards,penaltyPot:[],locked:false,ended:false,turnDeadline:Date.now()+4000,gameMode,bellTarget,teams:gameMode==="team"?buildTeams(order):{}};
- return{state,gameMode,bellTarget}
+ updateScores();return{state,gameMode,bellTarget}
 }
 function startFruitBellGame(data){state=data?.state;if(!state)return;applyGameMode(data.gameMode||state.gameMode);applyBellTarget(data.bellTarget||state.bellTarget);showGame();renderGame();playFruitSfx("start",{gain:.75});startClientTimer();if(myRole==="host")scheduleHostTurnTimer()}
 function showGame(){$("lobby").classList.add("hidden");$("gameScreen").classList.remove("hidden")}
@@ -545,51 +561,54 @@ function getFaceUpPile(playerId){
  }
  return state.faceUpPiles[playerId];
 }
+function ownedCount(id){return (state.decks[id]?.length||0)+getFaceUpPile(id).length+(state.wonCards?.[id]?.length||0)}
+function updateScores(){
+ state.order.forEach(id=>{state.scores[id]=ownedCount(id);if(players[id])players[id].score=state.scores[id]});
+}
+function setNextTurn(startIndex){
+ const n=state.order.length;
+ for(let offset=0;offset<n;offset++){
+  const index=(startIndex+offset+n)%n;
+  if(state.decks[state.order[index]]?.length){state.turn=index;state.turnDeadline=Date.now()+4000;return}
+ }
+ state.turn=-1;state.turnDeadline=0;
+}
+function checkMatchEnd(){
+ updateScores();
+ const remaining=state.order.filter(id=>ownedCount(id)>0);
+ const teams=new Set(remaining.map(id=>state.teams?.[id]));
+ if(remaining.length<=1||(state.gameMode==='team'&&teams.size<=1)||
+    (state.order.every(id=>!state.decks[id]?.length)&&!validBell())){endMatch();return true}
+ return false;
+}
 function hostFlip(sender){
  if(state.ended||state.locked||state.order[state.turn]!==sender)return;
- const deck=state.decks[sender];if(!deck.length){endMatch();return}
- const card=deck.pop();
- getFaceUpPile(sender).push(card);
- state.faceUp[sender]=card;
- state.turn=(state.turn+1)%state.order.length;
- state.turnDeadline=Date.now()+4000;
- state.sfxCue=makeSfxCue("flip",{sender});
- syncState();
- scheduleHostTurnTimer();
- if(state.order.every(id=>state.decks[id].length===0))setTimeout(endMatch,500);
+ const deck=state.decks[sender];if(!deck?.length)return;
+ const card=deck.pop();getFaceUpPile(sender).push(card);state.faceUp[sender]=card;
+ setNextTurn(state.turn+1);state.sfxCue=makeSfxCue("flip",{sender});
+ if(checkMatchEnd())return;
+ syncState();scheduleHostTurnTimer();
 }
-
 function scheduleHostTurnTimer(){
- if(myRole!=="host"||state.ended)return;
  clearTimeout(hostTurnTimer);
- const delay=Math.max(0,(state.turnDeadline||Date.now()+4000)-Date.now());
- hostTurnTimer=setTimeout(()=>hostTurnExpired(),delay+60);
+ if(myRole!=='host'||state.ended||state.locked||state.turn<0||!state.turnDeadline)return;
+ const current=state,delay=Math.max(0,state.turnDeadline-Date.now());
+ hostTurnTimer=setTimeout(()=>{if(state===current)hostTurnExpired()},delay+60);
 }
 function takePenaltyCard(playerId){
- const owned=state.wonCards[playerId]||[];
- const deck=state.decks[playerId]||[];
- let card=null;
- if(owned.length) card=owned.pop();
- else if(deck.length) card=deck.pop();
- if(card) state.penaltyPot.push(card);
- state.scores[playerId]=(state.wonCards[playerId]||[]).length;
- if(players[playerId])players[playerId].score=state.scores[playerId];
- return !!card;
+ const card=state.decks[playerId]?.pop();
+ if(card)(state.penaltyPot??=[]).push(card);
+ updateScores();return !!card;
 }
 function hostTurnExpired(){
- if(myRole!=="host"||state.ended||state.locked)return;
- if(Date.now()+30<(state.turnDeadline||0)){scheduleHostTurnTimer();return}
- const lateId=state.order[state.turn];
- const lost=takePenaltyCard(lateId);
- state.notice={text:`${players[lateId]?.name||"플레이어"} 시간 초과! ${lost?"카드 1장 벌칙":"넘어갑니다."}`,ok:false};
- state.turn=(state.turn+1)%state.order.length;
- state.turnDeadline=Date.now()+4000;
- state.sfxCue=makeSfxCue("timeout",{sender:lateId});
- syncState();
- setTimeout(()=>{
-   if(state.notice?.text?.includes("시간 초과"))delete state.notice;
-   syncState();
- },700);
+ if(myRole!=='host'||state.ended||state.locked||state.turn<0)return;
+ if(Date.now()+30<state.turnDeadline){scheduleHostTurnTimer();return}
+ const lateId=state.order[state.turn],lost=takePenaltyCard(lateId);
+ state.notice={text:(players[lateId]?.name||'플레이어')+' 시간 초과! '+(lost?'카드 1장 벌칙':'넘어갑니다.'),ok:false};
+ setNextTurn(state.turn+1);state.sfxCue=makeSfxCue('timeout',{sender:lateId});
+ if(checkMatchEnd())return;
+ syncState();const current=state;
+ setTimeout(()=>{if(state!==current||state.ended)return;if(state.notice?.text?.includes('시간 초과'))delete state.notice;syncState()},700);
  scheduleHostTurnTimer();
 }
 function startClientTimer(){
@@ -662,49 +681,32 @@ function collectOpenCards(){
  return pile;
 }
 function givePenaltyToOthers(sender){
- const recipients=state.order.filter(id=>id!==sender);
+ const recipients=state.order.filter(id=>id!==sender&&ownedCount(id)>0);
  let given=0;
- for(const receiver of recipients){
-   let card=null;
-   const owned=state.wonCards[sender]||[];
-   const deck=state.decks[sender]||[];
-   if(owned.length) card=owned.pop();
-   else if(deck.length) card=deck.pop();
-   if(!card) break;
-   state.wonCards[receiver].push(card);
-   given++;
- }
- state.order.forEach(id=>{
-   state.scores[id]=(state.wonCards[id]||[]).length;
-   if(players[id])players[id].score=state.scores[id];
- });
- return given;
+ for(const receiver of recipients){const card=state.decks[sender]?.pop();if(!card)break;state.decks[receiver].unshift(card);given++}
+ updateScores();return given;
 }
 function hostBell(sender){
- if(state.ended||state.locked||!state.order.includes(sender))return;
- state.locked=true;
+ if(state.ended||state.locked||!state.order.includes(sender)||ownedCount(sender)===0)return;
+ state.locked=true;clearTimeout(hostTurnTimer);
  const ok=validBell();
-
  if(ok){
-   const pile=collectOpenCards();
-   state.wonCards[sender].push(...pile);
-   state.scores[sender]=state.wonCards[sender].length;
-   if(players[sender])players[sender].score=state.scores[sender];
-   state.turn=state.order.indexOf(sender);
-   state.turnDeadline=Date.now()+4000;
-   state.notice={text:`${players[sender].name} 성공! 공개 카드 ${pile.length}장 획득`,ok:true};
+  const pile=collectOpenCards();state.decks[sender].unshift(...pile);
+  setNextTurn(state.order.indexOf(sender));
+  state.notice={text:players[sender].name+' 성공! 공개 카드 '+pile.length+'장을 내 더미 아래에 넣었습니다.',ok:true};
  }else{
-   const given=givePenaltyToOthers(sender);
-   state.notice={text:`${players[sender].name} 오답! 다른 참가자에게 ${given}장 지급`,ok:false};
+  const given=givePenaltyToOthers(sender);
+  state.notice={text:players[sender].name+' 오답! 다른 참가자에게 '+given+'장 지급',ok:false};
+  if(!state.decks[state.order[state.turn]]?.length)setNextTurn(Math.max(0,state.turn));
  }
  state.sfxCue=makeSfxCue("bell-result",{sender,ok});
-
- syncState();
- scheduleHostTurnTimer();
+ if(checkMatchEnd())return;
+ syncState();const current=state;
  setTimeout(()=>{
-   state.locked=false;
-   delete state.notice;
-   syncState();
+  if(state!==current||state.ended)return;
+  state.locked=false;delete state.notice;
+  if(state.turn>=0)state.turnDeadline=Date.now()+4000;
+  syncState();scheduleHostTurnTimer();
  },900);
 }
 function syncState(){broadcast({type:"STATE",state,players});renderGame()}
@@ -720,8 +722,8 @@ function endMatch(){
      winners=[winningTeam==="A"?"파랑팀":"빨강팀"];
    }
  }else{
-   const max=Math.max(...state.order.map(id=>(state.wonCards[id]||[]).length));
-   winners=state.order.filter(id=>(state.wonCards[id]||[]).length===max).map(id=>players[id].name);
+   const max=Math.max(...state.order.map(id=>ownedCount(id)));
+   winners=state.order.filter(id=>ownedCount(id)===max).map(id=>players[id].name);
  }
  broadcast({type:"END",state,players,winners,winningTeam});renderGame();showEnd(winners,winningTeam);
 }
@@ -737,6 +739,7 @@ function fruitSVG(type){
 }
 function renderGame(){
  if(!started)return;
+ updateScores();
  const teamMode=state.gameMode==="team";
  $("teamScoreboard").classList.toggle("hidden",!teamMode);
  if(teamMode){
@@ -752,10 +755,11 @@ function renderGame(){
    return `<div class="score ${id===myId?"me":""} ${teamClass}">${cleanName(players[id]?.name)} ${tag}${personalScore}</div>`;
  }).join("");
  const noticeText=state.notice?.text||"";
- $("message").textContent=noticeText||(myTurn()?"내 차례입니다. 4초 안에 카드를 뒤집으세요.":`${players[state.order[state.turn]]?.name||""} 차례입니다.`);
+ $("message").textContent=noticeText||(state.turn<0?"뒤집을 카드가 없습니다. 조건에 맞으면 종을 누르세요.":myTurn()?"내 차례입니다. 4초 안에 카드를 뒤집으세요.":`${players[state.order[state.turn]]?.name||""} 차례입니다.`);
  $("potCount").textContent=state.order.reduce((total,id)=>total+getFaceUpPile(id).length,0)+(state.penaltyPot?.length||0);
  const flipBtn=$("flipBtn");
- flipBtn.disabled=!myTurn()||state.locked||state.ended;
+ flipBtn.disabled=!myTurn()||state.locked||state.ended||!state.decks[myId]?.length;
+ $("bellBtn").disabled=state.ended||state.locked||ownedCount(myId)===0;
  flipBtn.classList.toggle("my-turn",myTurn()&&!state.locked&&!state.ended);
  flipBtn.textContent=myTurn()?"카드 뒤집기":"상대 차례";
  startClientTimer();
@@ -774,7 +778,7 @@ function showEnd(w,winningTeam=null){
      `<p>파랑팀 ${teamTotal("A")}장<br><small>${teamA}</small></p>`+
      `<p>빨강팀 ${teamTotal("B")}장<br><small>${teamB}</small></p>`;
  }else{
-   $("modalBody").innerHTML=`<p><strong>${w.join(", ")}</strong> 승리!</p><p>${state.order.map(id=>`${players[id].name} ${state.wonCards[id]?.length||0}장`).join(" · ")}</p>`;
+   $("modalBody").innerHTML=`<p><strong>${w.join(", ")}</strong> 승리!</p><p>${state.order.map(id=>`${players[id].name} ${ownedCount(id)}장`).join(" · ")}</p>`;
  }
  $("overlay").classList.add("show");
 }

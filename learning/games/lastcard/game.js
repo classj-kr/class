@@ -41,6 +41,7 @@
     function isPlayable(card) {
         const top = gameState?.topCard;
         if (!card || !top) return false;
+        if (gameState.drawnCardId && card.id !== gameState.drawnCardId) return false;
         if (card.kind === "shift") return true;
         if (card.color === gameState.activeColor) return true;
         if (card.kind === "number" && top.kind === "number") return card.value === top.value;
@@ -115,6 +116,7 @@
             : "게임이 끝났습니다";
         $("actionLog").textContent = gameState.lastAction || "카드를 준비하고 있습니다.";
         $("drawButton").disabled = !myTurn() || actionPending;
+        $("drawButton").textContent = gameState.drawnCardId ? "차례 넘기기" : "카드 뽑기";
         renderTurnClock();
     }
 
@@ -175,7 +177,7 @@
         $("lastCallButton").classList.toggle("is-active", callLast);
         $("lastCallButton").textContent = callLast ? "LAST! 선언됨" : "LAST! 외치기";
 
-        const canPlay = myTurn() && !actionPending && Boolean(card) && (!needsShiftColor || COLORS.includes(selectedShiftColor));
+        const canPlay = myTurn() && !actionPending && Boolean(card) && isPlayable(card) && (!needsShiftColor || COLORS.includes(selectedShiftColor));
         $("playButton").disabled = !canPlay;
         $("playButton").textContent = card ? (canPlay ? "카드 내기" : "선택을 완료하세요") : "카드 선택";
     }
@@ -254,7 +256,7 @@
         }
         if (message.type === SERVER_MESSAGE.ERROR) {
             actionPending = false;
-            renderControls();
+            renderGame();
             showToast(message.message || "행동을 처리하지 못했습니다.");
         }
     }

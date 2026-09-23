@@ -750,7 +750,7 @@ function scheduleLastCardTimeout(room) {
     if (rooms.get(roomKey(room.gameId, room.roomCode)) !== room) return;
     if (game.phase !== "playing" || game.actionNumber !== expectedAction) return;
     const activeId = game.players[game.turnIndex]?.id;
-    if (activeId) LastCard.drawAndPass(game, activeId);
+    if (activeId) LastCard.drawAndPass(game, activeId, undefined, true);
     lastCardBroadcast(room);
   }, wait);
   room.lastcardTimer.unref?.();
@@ -3904,6 +3904,10 @@ wss.on("connection", (socket, request) => {
         result = GemGuild.buyCard(game, playerId, cleanToken(message.cardId, 40));
       } else if (action === "PASS") {
         result = GemGuild.passTurn(game, playerId);
+      } else if (action === "RETURN_GEMS") {
+        result = GemGuild.returnGems(game, playerId, message.gems);
+      } else if (action === "CHOOSE_PATRON") {
+        result = GemGuild.choosePatron(game, playerId, cleanToken(message.patronId, 40));
       } else if (action === "NEW_GAME") {
         if (playerId !== room.hostId) result = { ok: false, error: "방장만 새 게임을 시작할 수 있습니다." };
         else if (game.phase !== "ended") result = { ok: false, error: "게임이 끝난 뒤 새 게임을 시작할 수 있습니다." };
@@ -4228,6 +4232,16 @@ wss.on("connection", (socket, request) => {
         senderId: playerId,
         payload: message.payload
       };
+
+      // Private packets must be routed on the server, never filtered after broadcast.
+      const privateHand = room.gameId === "davincicode" && message.payload?.type === "PRIVATE_HAND";
+      if (Object.prototype.hasOwnProperty.call(message, "recipientId") || privateHand) {
+        if (socket.meta.role !== "host" || playerId !== room.hostId) return;
+        const recipientId = String(privateHand ? message.payload.targetId ?? "" : message.recipientId ?? "");
+        const recipient = room.clients.get(recipientId);
+        if (recipient && recipientId !== playerId) safeSend(recipient, packet);
+        return;
+      }
 
       if (socket.meta.role === "host") {
         for (const [id, client] of room.clients) {

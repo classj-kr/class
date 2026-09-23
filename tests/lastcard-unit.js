@@ -56,7 +56,7 @@ assert.equal(LastCard.TURN_SECONDS, 30);
 assert.ok(Number.isFinite(started.turnDeadline) && started.turnDeadline > Date.now(), "시작하면 제한시간이 설정돼야 합니다.");
 const firstPlayerId = started.players[started.turnIndex].id;
 const handBeforeTimeout = started.hands[firstPlayerId].length;
-const timeoutResult = LastCard.drawAndPass(started, firstPlayerId);
+const timeoutResult = LastCard.drawAndPass(started, firstPlayerId, undefined, true);
 assert.equal(timeoutResult.ok, true);
 assert.equal(started.hands[firstPlayerId].length, handBeforeTimeout + 1, "시간 초과로 뽑으면 손패가 한 장 늘어야 합니다.");
 assert.notEqual(started.players[started.turnIndex].id, firstPlayerId, "시간 초과 후에는 다음 사람 차례여야 합니다.");
