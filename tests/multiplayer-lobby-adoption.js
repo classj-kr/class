@@ -9,7 +9,9 @@ const expectedMultiplayerGames = [
     "avalon",
     "baduk",
     "blokus",
+    "bomb77",
     "chess",
+    "citychase",
     "clue",
     "codenames",
     "connect6",
@@ -19,8 +21,10 @@ const expectedMultiplayerGames = [
     "drawrelay",
     "expedition",
     "fruitbell",
+    "gemguild",
     "honeycomb",
     "janggi",
+    "kingdom-trails",
     "lastcard",
     "loveletter",
     "nimgame",
@@ -61,7 +65,7 @@ assert.deepEqual(
 for (const { id, file } of multiplayerGames) {
     const html = fs.readFileSync(file, "utf8");
     const externalSource = [...html.matchAll(/<script[^>]+src=["']([^"']+)["'][^>]*><\/script>/gi)]
-        .map(match => path.resolve(path.dirname(file), match[1]))
+        .map(match => path.resolve(path.dirname(file), match[1].split("?")[0]))
         .filter(scriptFile => scriptFile.startsWith(`${path.dirname(file)}${path.sep}`) && fs.existsSync(scriptFile))
         .map(scriptFile => fs.readFileSync(scriptFile, "utf8"))
         .join("\n");
@@ -113,7 +117,7 @@ const avalonFile = path.join(gamesRoot, "avalon", "avalon.html");
 const avalon = fs.readFileSync(avalonFile, "utf8");
 assert.match(
     avalon,
-    /\$\("copyRoom"\)\.classList\.toggle\("hide",state\.phase!=="lobby"\)/,
+    /\$\("roomShare"\)\.hidden=state\.phase!=="lobby"/,
     "avalon: 대기 단계가 끝나면 방 번호 복사 버튼을 숨겨야 합니다."
 );
 

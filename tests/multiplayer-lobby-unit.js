@@ -27,23 +27,27 @@ class FakeElement extends EventTarget {
         this.disabled = false;
         this.className = "";
     }
+    setAttribute(name, value) { (this.attributes ||= {})[name] = String(value); }
     appendChild(child) { this.children.push(child); return child; }
     replaceChildren(...children) { this.children = [...children.flatMap(child => child.children || [child])]; }
     focus() {}
 }
 
 const elements = new Map();
-global.document = {
+global.document = Object.assign(new EventTarget(), {
+    head: new FakeElement(),
     getElementById: id => elements.get(id) || null,
     createElement: () => new FakeElement(),
     createDocumentFragment: () => new FakeElement()
-};
+});
 Object.defineProperty(global, "navigator", {
     configurable: true,
     value: { clipboard: { writeText: async () => {} } }
 });
 global.location = { reload() {} };
 global.window = new EventTarget();
+window.setInterval = (callback, delay) => setInterval(callback, delay).unref();
+document.querySelectorAll = () => [];
 global.CustomEvent = class CustomEvent extends Event {
     constructor(type, options = {}) {
         super(type);

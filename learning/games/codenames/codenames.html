@@ -103,6 +103,7 @@ body:has(#boardArea:not(.hidden)) #game>.panel:first-child{margin-bottom:8px;pad
 #boardArea:not(.hidden) .board{gap:6px}
 #boardArea:not(.hidden) .actionBar{margin-top:4px}
 }
+#roomShare{padding-left:32px}
 </style>
 <script src="../../../assets/network/game-network.js?v=20260821"></script>
 <script src="../../../assets/network/multiplayer-lobby.js?v=20260906b"></script>
@@ -149,7 +150,11 @@ body:has(#boardArea:not(.hidden)) #game>.panel:first-child{margin-bottom:8px;pad
 
   <section id="game" class="hidden">
     <div class="panel row spread">
-      <div hidden><div id="gameRoomCode">----</div></div>
+      <div id="roomShare" hidden>
+        <div class="eyebrow">방 번호</div>
+        <div id="gameRoomCode" class="code" aria-live="polite">----</div>
+        <button id="copyBtn" class="secondary" type="button">방 번호 복사</button>
+      </div>
       <div class="row">
         <button id="rulesGameBtn" class="secondary" type="button">RULES</button>
         <button id="leaveGameBtn" class="secondary" type="button">메인 화면</button>
@@ -307,6 +312,7 @@ function syncLobbyTransport(snapshot) {
     $("game").classList.remove("hidden");
     $("gameRoomCode").textContent = snapshot.roomCode || "----";
     $("roomCode").textContent = snapshot.roomCode || "----";
+    $("roomShare").hidden = !!state && state.phase !== "lobby";
   }
 }
 
@@ -432,6 +438,7 @@ function rosterFace(player) {
 
 function render() {
   if (!state) return;
+  $("roomShare").hidden = state.phase !== "lobby";
   $("lobbySetup").classList.toggle("hidden", state.phase !== "lobby");
   $("boardArea").classList.toggle("hidden", state.phase === "lobby");
   $("resultPanel").classList.toggle("hidden", state.phase !== "gameEnd");
