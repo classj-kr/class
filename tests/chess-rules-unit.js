@@ -32,8 +32,8 @@ assert.equal(castle.castling.includes("K"), false);
 const blockedCastle = Chess.boardFromFen("r3k2r/8/8/8/2b5/8/8/R3K2R w KQkq - 0 1");
 assert.equal(
   Chess.legalMoves(blockedCastle, Chess.squareIndex("e1")).some(move => move.to === Chess.squareIndex("g1")),
-  false,
-  "킹이 지나가는 칸이 공격받으면 캐슬링할 수 없습니다."
+  true,
+  "학습 규칙에서는 공격받는 칸을 지나는 캐슬링도 허용합니다."
 );
 
 let enPassant = Chess.boardFromFen("4k3/8/8/3pP3/8/8/8/4K3 w - d6 0 2");
@@ -54,21 +54,21 @@ foolsMate = play(foolsMate, "e7", "e5");
 foolsMate = play(foolsMate, "g2", "g4");
 const mateResult = Chess.applyMove(foolsMate, "d8", "h4");
 assert.equal(mateResult.ok, true);
-assert.deepEqual(mateResult.status, { ended: true, reason: "checkmate", winner: "b", checked: true });
-assert.equal(mateResult.state.san.at(-1), "Qh4#");
+assert.deepEqual(mateResult.status, { ended: false, reason: null, winner: null, checked: true });
+assert.equal(mateResult.state.san.at(-1), "Qh4+");
 
 const stalemate = Chess.boardFromFen("7k/5Q2/6K1/8/8/8/8/8 b - - 0 1");
-assert.deepEqual(Chess.status(stalemate), { ended: true, reason: "stalemate", winner: null, checked: false });
+assert.deepEqual(Chess.status(stalemate), { ended: false, reason: null, winner: null, checked: false });
 
 const bareKings = Chess.boardFromFen("4k3/8/8/8/8/8/8/4K3 w - - 0 1");
 assert.equal(Chess.insufficientMaterial(bareKings), true);
-assert.equal(Chess.status(bareKings).reason, "insufficient");
+assert.equal(Chess.status(bareKings).ended, false, "왕끼리도 잡기를 계속할 수 있습니다.");
 
 const pinned = Chess.boardFromFen("4r1k1/8/8/8/8/8/4R3/4K3 w - - 0 1");
 assert.equal(
   Chess.legalMoves(pinned, Chess.squareIndex("e2")).some(move => Chess.squareName(move.to) === "d2"),
-  false,
-  "킹을 노출하는 핀된 말의 이동은 금지해야 합니다."
+  true,
+  "킹을 노출하는 말의 이동도 허용해야 합니다."
 );
 
 console.log("chess-rules-unit: moves, checks, castling, en passant, promotion and endings ok");

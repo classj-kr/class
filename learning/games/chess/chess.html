@@ -10,8 +10,8 @@
 <script src="../../../assets/network/game-network.js?v=20260821"></script>
 <script src="../../../assets/network/multiplayer-lobby.js?v=20260906b"></script>
 <script src="../../../assets/sound/music-control.js?v=20260910-click-cache-1" defer></script>
-<script src="chess-rules.js?v=20260917j"></script>
-<script src="chess-ui.js?v=20260921c" defer></script>
+<script src="chess-rules.js?v=20260923-learning"></script>
+<script src="chess-ui.js?v=20260923-learning" defer></script>
 </head>
 <body>
 <main class="shell">
@@ -75,7 +75,7 @@
   </section>
 </main>
 
-<section id="rulesModal" class="modal hidden" role="dialog" aria-modal="true" aria-label="규칙"><div class="modal-box"><div class="piece-guide" id="pieceGuide"></div><div class="piece-guide special-guide" id="specialGuide"></div><div class="piece-guide state-guide" id="stateGuide"></div><dl class="rule-list"><dt>순서</dt><dd>백이 먼저, 한 수씩 번갈아 둡니다.</dd><dt>이기기</dt><dd>체크메이트, 상대 기권, 상대 시간 다 떨어짐</dd><dt>그 밖에 비기기(Draw)</dt><dd>같은 판 세 번 · 50수 동안 폰 이동과 잡기 없음 · 체크메이트할 말 부족 · 서로 합의</dd><dt>시간 3+2</dt><dd>각자 3분, 한 수 둘 때마다 2초 더</dd></dl><button id="closeRulesBtn" class="btn primary" type="button">확인</button></div></section>
+<section id="rulesModal" class="modal hidden" role="dialog" aria-modal="true" aria-label="규칙"><div class="modal-box"><div class="piece-guide" id="pieceGuide"></div><div class="piece-guide special-guide" id="specialGuide"></div><div class="piece-guide state-guide" id="stateGuide"></div><dl class="rule-list"><dt>학습 규칙</dt><dd>말의 이동 규칙에 맞으면 위험한 칸에도 갈 수 있습니다. 체크는 경고이며, 킹을 실제로 잡으면 이깁니다.</dd><dt>순서</dt><dd>백이 먼저, 한 수씩 번갈아 둡니다.</dd><dt>이기기</dt><dd>상대 킹 잡기, 상대 기권, 상대 시간 다 떨어짐</dd><dt>그 밖에 비기기(Draw)</dt><dd>같은 판 세 번 · 50수 동안 폰 이동과 잡기 없음 · 이동 가능한 수 없음 · 서로 합의</dd><dt>시간 3+2</dt><dd>각자 3분, 한 수 둘 때마다 2초 더</dd></dl><button id="closeRulesBtn" class="btn primary" type="button">확인</button></div></section>
 
 <section id="promotionModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="promotionTitle"><div class="modal-box promotion-box"><h2 id="promotionTitle">어떤 말로 승격할까요?</h2><div id="promotionChoices" class="promotion-choices"></div><button id="cancelPromotionBtn" class="btn" type="button">취소</button></div></section>
 

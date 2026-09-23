@@ -60,7 +60,7 @@ function showGame() { $("lobbyScreen").classList.add("hidden"); $("gameScreen").
 
 function buildPieceGuide() {
   const guide = {
-    K: { name: "킹(King)", text: "모든 방향으로 한 칸씩 갑니다. 공격받는 칸으로는 갈 수 없습니다.", at: [2, 2], steps: [[-1, -1], [-1, 0], [-1, 1], [0, -1], [0, 1], [1, -1], [1, 0], [1, 1]] },
+    K: { name: "킹(King)", text: "모든 방향으로 한 칸씩 갑니다. 공격받는 칸으로도 갈 수 있으니 상대 말의 움직임을 살펴보세요.", at: [2, 2], steps: [[-1, -1], [-1, 0], [-1, 1], [0, -1], [0, 1], [1, -1], [1, 0], [1, 1]] },
     Q: { name: "퀸(Queen)", text: "가로·세로·대각선으로, 막히지 않으면 몇 칸이든 갑니다.", at: [2, 2], rays: [[-1, -1], [-1, 0], [-1, 1], [0, -1], [0, 1], [1, -1], [1, 0], [1, 1]] },
     R: { name: "룩(Rook)", text: "가로·세로로, 막히지 않으면 몇 칸이든 갑니다.", at: [2, 2], rays: [[-1, 0], [1, 0], [0, -1], [0, 1]] },
     B: { name: "비숍(Bishop)", text: "대각선으로, 막히지 않으면 몇 칸이든 갑니다. 처음 칸과 같은 색 칸만 다닙니다.", at: [2, 2], rays: [[-1, -1], [-1, 1], [1, -1], [1, 1]] },
@@ -103,7 +103,7 @@ function buildSpecialGuide() {
     + '<span class="guide-arrow" aria-hidden="true">↓</span>'
     + `<div class="guide-choices" aria-hidden="true" style="max-width:120px">${["Q", "R", "B", "N"].map(type => pieceSvg(`w${type}`)).join("")}</div>`;
   const items = [
-    ["캐슬링(Castling)", castling, "킹이 룩 쪽으로 두 칸 가고, 룩이 킹을 넘어 바로 옆에 섭니다. 킹과 그 룩이 한 번도 움직이지 않았고, 사이가 비었고, 킹이 체크 상태가 아니며 지나가는 칸도 공격받지 않을 때만 됩니다."],
+    ["캐슬링(Castling)", castling, "킹이 룩 쪽으로 두 칸 가고, 룩이 킹을 넘어 바로 옆에 섭니다. 킹과 그 룩이 한 번도 움직이지 않았고, 사이가 비어 있어야 합니다. 이 게임에서는 공격받는 칸을 지나거나 도착해도 됩니다."],
     ["앙파상(En passant)", enPassant, "상대 폰이 처음 자리에서 두 칸 나와 내 폰 바로 옆에 서면, 바로 다음 수에만 그 폰이 지나간 칸으로 대각선 이동하며 잡습니다."],
     ["승격(Promotion)", promotion, "폰이 맨 끝 줄에 닿으면 퀸·룩·비숍·나이트 가운데 하나로 바뀝니다."]
   ];
@@ -127,9 +127,9 @@ function buildStateGuide() {
     "2,1": { piece: "wQ" }, "2,2": { piece: "wK" }
   }, 1, 44);
   const items = [
-    ["체크(Check)", check, "킹이 공격받는 상태입니다. 다음 수에 킹을 옮기거나, 공격하는 말을 잡거나, 사이를 막아야 합니다."],
-    ["체크메이트(Checkmate)", mate, "체크를 풀 방법이 하나도 없습니다. 당한 쪽이 집니다."],
-    ["스테일메이트(Stalemate)", stale, "체크는 아닌데 둘 수 있는 수가 하나도 없습니다. 비깁니다."]
+    ["체크(Check)", check, "킹이 공격받는 상태입니다. 이동을 막지는 않지만, 그대로 두면 상대가 킹을 잡을 수 있습니다."],
+    ["체크메이트(Checkmate)", mate, "체크를 풀 방법이 없는 상태입니다. 이 게임에서는 자동으로 끝나지 않고, 킹을 실제로 잡을 때 승리합니다."],
+    ["스테일메이트(Stalemate)", stale, "정식 체스에서는 체크가 아닌데 둘 수 있는 수가 없으면 비깁니다. 이 게임에서는 위험한 칸도 이동할 수 있으므로 계속 둘 수 있습니다."]
   ];
   $("stateGuide").innerHTML = items.map(([name, art, text]) => `<div class="guide-piece">${art}<p><strong>${name}</strong> ${text}</p></div>`).join("");
 }
@@ -371,7 +371,7 @@ function renderCaptures() {
 
 function resultText() {
   if (!gameState?.result) return gameState?.lastAction || "대국을 준비하고 있습니다.";
-  const labels = { checkmate: "체크메이트", timeout: "시간패", resign: "기권", stalemate: "스테일메이트", threefold: "3회 동형 반복", "fifty-move": "50수 규칙", insufficient: "기물 부족", agreement: "합의 무승부" };
+  const labels = { "king-captured": "킹 잡기", timeout: "시간패", resign: "기권", "no-legal-move": "이동 불가", threefold: "3회 동형 반복", "fifty-move": "50수 규칙", agreement: "합의 무승부" };
   const result = gameState.result;
   if (!result.winner) return `${labels[result.reason] || "무승부"} · 무승부`;
   return `${labels[result.reason] || "대국 종료"} · ${result.winner === "w" ? "백" : "흑"} 승리`;
