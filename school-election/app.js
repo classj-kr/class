@@ -65,13 +65,32 @@
   }
   async function loadList() {
     const data = await api("/mine"); $("electionList").replaceChildren();
-    if (!data.elections.length) $("electionList").append(el("p", "아직 만든 전교선거가 없습니다.", "empty"));
+    $("electionListTitle").textContent = me.isSchoolAdmin ? "학교 전교선거" : "내 전교선거";
+    if (!data.elections.length) $("electionList").append(el("p", "표시할 전교선거가 없습니다.", "empty"));
     for (const e of data.elections) {
       const card = el("article", null, "room-card"), head = el("div", null, "room-card-head");
       head.append(el("strong", e.title), el("span", labels[e.status], "eyebrow"));
-      card.append(head, el("p", e.year + "학년도 · " + e.grades.join("·") + "학년 · 방번호 " + e.code, "muted"), button("선거 열기", () => openElection(e.code), "secondary small"));
+      const actions = el("div", null, "actions");
+      if (e.isOwner) actions.append(button("선거 열기", () => openElection(e.code), "secondary small"));
+      if (e.canDelete) actions.append(button(e.status === "draft" ? "준비 중 선거 삭제" : "선거 데이터 삭제", () => deleteElection(e), "danger small"));
+      card.append(head, el("p", e.year + "학년도 · " + e.grades.join("·") + "학년 · 방번호 " + e.code, "muted"), actions);
       $("electionList").append(card);
     }
+  }
+  async function deleteElection(e) {
+    let confirmationCode;
+    if (e.status === "draft") {
+      if (!confirm("준비 중인 이 선거를 삭제할까요?")) return;
+    } else {
+      const entered = prompt("「" + e.title + "」의 명부·투표·결과·진행 기록이 삭제되며 복구할 수 없습니다. 필요한 결과는 먼저 CSV로 저장해 주세요.\n\n삭제하려면 방번호 " + e.code + "를 입력하세요.");
+      if (entered === null) return;
+      confirmationCode = entered.trim();
+      if (confirmationCode !== e.code) return status("방번호가 일치하지 않아 삭제하지 않았습니다.", true);
+    }
+    await api("/elections/" + e.code, { method: "DELETE", body: JSON.stringify({ confirmationCode }) });
+    if ($("teacherView").classList.contains("hidden")) await teacherHome();
+    else { if (editCode === e.code) resetForm(); await loadList(); }
+    status("선거 데이터를 삭제했습니다.");
   }
   async function teacherHome(election) {
     show("teacherView"); history.replaceState(null, "", "?mode=teacher"); status(); resetForm(election); await loadList();
@@ -110,7 +129,7 @@
     const actions = el("div", null, "actions");
     const start = button("명부 확정하고 투표 시작", async () => { if (confirm(r.total + "명의 명부를 확정하고 투표를 시작할까요? 시작 후에는 대상 학생과 후보를 수정할 수 없습니다.")) await transition(e, "start", { rosterVersion: r.version }); }, "primary");
     start.disabled = !r.ready;
-    actions.append(start, button("설정 수정", () => teacherHome(e)), button("준비 중 선거 삭제", async () => { if (confirm("준비 중인 이 선거를 삭제할까요?")) { await api("/elections/" + e.code, { method: "DELETE" }); await teacherHome(); } }, "danger")); container.append(actions);
+    actions.append(start, button("설정 수정", () => teacherHome(e)), button("준비 중 선거 삭제", () => deleteElection(e), "danger")); container.append(actions);
   }
   function progressView(data, container) {
     const e = data.election; container.append(stats(data.progress));
@@ -144,7 +163,7 @@
     if (data.isOwner) {
       const actions = el("div", null, "actions");
       if (data.election.status === "closed") actions.append(button("학생들에게 결과 공개", async () => { if (confirm("선거인 명부에 있는 학생들에게 결과를 공개할까요?")) await transition(data.election, "publish"); }, "primary"));
-      actions.append(button("결과 CSV 저장", () => exportResults(data))); container.append(actions);
+      actions.append(button("결과 CSV 저장", () => exportResults(data)), button("선거 데이터 삭제", () => deleteElection(data.election), "danger")); container.append(actions);
     }
   }
   function exportResults(data) {

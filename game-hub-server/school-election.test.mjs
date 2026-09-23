@@ -25,6 +25,7 @@ async function fixture(t) {
     CREATE TABLE multiplayer_room_snapshots(game_id TEXT,room_code CHAR(4),expires_at TIMESTAMPTZ);
     INSERT INTO classroom_schools VALUES(1),(2);
     INSERT INTO classroom_users VALUES(10,'teacher@school.test','담임'),(11,'other@school.test','다른교사'),(12,'elsewhere@school.test','타학교');
+    INSERT INTO classroom_users VALUES(13,'admin@school.test','학교관리자'),(14,'admin@elsewhere.test','타학교관리자'),(15,'principal@school.test','교장'),(16,'vice@school.test','교감');
     INSERT INTO classroom_users SELECT id,'student'||id||'@school.test','학생'||id FROM generate_series(21,28) id;
     INSERT INTO school_students VALUES
       (101,1,2026,3,1,'1','김동명',21,'student21@school.test'),
@@ -51,7 +52,10 @@ async function fixture(t) {
     if (!id) return null;
     return (await pool.query("SELECT * FROM classroom_users WHERE id=$1", [id])).rows[0] || null;
   };
-  const teacherRegistration = async (u) => [10,11,12].includes(Number(u.id)) ? { school_id: Number(u.id) === 12 ? 2 : 1, school_name: "테스트초" } : null;
+  const teacherRegistration = async (u) => [10,11,12,13,14,15,16].includes(Number(u.id)) ? {
+    school_id: [12,14].includes(Number(u.id)) ? 2 : 1, school_name: "테스트초",
+    teacher_type: ({13:"관리자",14:"관리자",15:"교장",16:"교감"})[u.id] || "담임"
+  } : null;
   const requireTeacher = async (req) => {
     const user = await sessionUser(req);
     if (!user) throw new HttpError(401, "AUTH_REQUIRED", "로그인");
@@ -79,13 +83,95 @@ async function fixture(t) {
   }
   const config = { title: "2026 전교선거", year: 2026, grades: [3,4,5,6],
     positions: [{ title: "회장", candidates: ["후보 가","후보 나"] }, { title: "부회장", candidates: ["후보 다","후보 라"] }] };
-  const create = async (body = config) => { const r = await call("POST", "/elections", body); assert.equal(r.status, 201, JSON.stringify(r)); return r.data.election; };
+  const create = async (body = config, user = 10) => { const r = await call("POST", "/elections", body, user); assert.equal(r.status, 201, JSON.stringify(r)); return r.data.election; };
   const path = (e) => "/elections/" + e.code;
   const detail = async (e, user) => (await call("GET", path(e), undefined, user)).data;
-  const start = async (e) => call("POST", path(e) + "/start", { rosterVersion: (await detail(e)).roster.version });
+  const start = async (e, user = 10) => call("POST", path(e) + "/start", { rosterVersion: (await detail(e, user)).roster.version }, user);
   const choices = (e, index = 0) => ({ selections: e.positions.map((p) => ({ positionId: p.id, candidateId: p.candidates[index].id })) });
   return { db, pool, call, config, create, path, detail, start, choices, checkedRoomCodes, failStorage(value) { failBallot = value; } };
 }
+
+test("completed election deletion respects school roles and removes only its own data", async (t) => {
+  const { db, call, config, create, path, detail, start, choices } = await fixture(t);
+  async function createAt(state, user = 10) {
+    const e = await create(config, user);
+    if (state === "draft") return e;
+    assert.equal((await start(e, user)).status, 200);
+    assert.equal((await call("POST", path(e) + "/ballots", choices(e), user === 12 ? 26 : 21)).status, 200);
+    if (state === "open") return e;
+    assert.equal((await call("POST", path(e) + "/close", {}, user)).status, 200);
+    if (state === "published") assert.equal((await call("POST", path(e) + "/publish", {}, user)).status, 200);
+    return e;
+  }
+  const draft = await createAt("draft"), open = await createAt("open"), closed = await createAt("closed"), published = await createAt("published");
+  const otherSchool = await createAt("closed", 12), adminDraft = await createAt("draft", 13);
+  const list = async (user) => (await call("GET", "/mine", undefined, user)).data.elections;
+  const codes = (elections) => elections.map((e) => e.code).sort();
+  await t.test("administrators discover only their school's completed elections and their own drafts", async () => {
+    assert.equal((await call("GET", "/me", undefined, 13)).data.isSchoolAdmin, true);
+    assert.equal((await call("GET", "/me", undefined, 10)).data.isSchoolAdmin, false);
+    assert.deepEqual(codes(await list(13)), codes([closed, published, adminDraft]));
+    assert.deepEqual(codes(await list(14)), codes([otherSchool]));
+    assert.deepEqual(codes(await list(10)), codes([draft, open, closed, published]));
+    assert.deepEqual(await list(11), []);
+    const adminClosed = (await list(13)).find((e) => e.code === closed.code);
+    assert.equal(adminClosed.canDelete, true);
+    assert.equal(adminClosed.isOwner, false);
+    assert.equal((await list(10)).find((e) => e.code === open.code).canDelete, false);
+    // Deletion permission does not grant participant, unpublished-result, or lifecycle access.
+    assert.equal((await call("GET", path(closed), undefined, 13)).status, 403);
+    assert.equal((await call("GET", path(closed) + "/participants?grade=3&classNumber=1", undefined, 13)).status, 403);
+    assert.equal((await call("POST", path(closed) + "/publish", {}, 13)).status, 403);
+  });
+  await t.test("live elections stay protected and drafts still belong to their creator", async () => {
+    for (const user of [10,13]) {
+      assert.equal((await call("DELETE", path(open), {confirmationCode:open.code}, user)).status, 409);
+    }
+    assert.equal((await detail(open)).progress.voted, 1);
+    assert.equal((await call("DELETE", path(draft), {}, 13)).status, 403);
+    assert.equal((await call("DELETE", path(adminDraft), {}, 13)).status, 200);
+    assert.equal((await call("DELETE", path(draft))).status, 200);
+  });
+  await t.test("guests, students, unrelated teachers and other-school administrators cannot delete", async () => {
+    for (const user of [null,21,11,12,14]) {
+      const response = await call("DELETE", path(closed), {confirmationCode:closed.code,isSchoolAdmin:true}, user);
+      assert.equal(response.status, user === null ? 401 : 403);
+    }
+    for (const user of [10,13]) {
+      for (const body of [undefined, {}, {confirmationCode:"0000"}, {confirmationCode:[closed.code]}]) {
+        assert.equal((await call("DELETE", path(closed), body, user)).data.error, "DELETE_CONFIRMATION_REQUIRED");
+      }
+    }
+    assert.equal((await detail(closed)).results.ballots, 1);
+  });
+  await t.test("owners and school administrators can delete closed or published elections with cascading cleanup", async () => {
+    const originalRoster = (await db.query("SELECT * FROM school_students ORDER BY id")).rows;
+    const originalAccounts = (await db.query("SELECT * FROM classroom_users ORDER BY id")).rows;
+    for (const [user, state] of [[10,"closed"],[10,"published"],[13,"closed"],[13,"published"],[15,"closed"],[16,"published"]]) {
+      const e = await createAt(state);
+      const id = (await db.query("SELECT id FROM school_elections WHERE room_code=$1", [e.code])).rows[0].id;
+      for (const table of ["school_election_voters","school_election_ballots","school_election_events"]) {
+        assert.ok((await db.query(`SELECT COUNT(*)::INTEGER n FROM ${table} WHERE election_id=$1`, [id])).rows[0].n > 0);
+      }
+      assert.equal((await call("DELETE", path(e), {confirmationCode:e.code}, user)).status, 200);
+      assert.equal((await db.query("SELECT * FROM school_elections WHERE id=$1", [id])).rows.length, 0);
+      for (const table of ["school_election_voters","school_election_ballots","school_election_events"]) {
+        assert.equal((await db.query(`SELECT COUNT(*)::INTEGER n FROM ${table} WHERE election_id=$1`, [id])).rows[0].n, 0);
+      }
+      assert.equal((await call("GET", path(e))).status, 404);
+      assert.equal((await call("GET", path(e), undefined, 21)).status, 404);
+      assert.equal((await call("POST", path(e) + "/ballots", choices(e), 21)).status, 404);
+      assert.equal((await call("GET", "/api/vote/resolve/" + e.code)).status, 404);
+      assert.equal((await call("DELETE", path(e), {confirmationCode:e.code}, user)).status, 404);
+      assert.ok((await list(13)).every((item) => item.code !== e.code));
+    }
+    assert.deepEqual((await db.query("SELECT * FROM school_students ORDER BY id")).rows, originalRoster);
+    assert.deepEqual((await db.query("SELECT * FROM classroom_users ORDER BY id")).rows, originalAccounts);
+    assert.equal((await detail(closed)).results.ballots, 1);
+    assert.equal((await detail(published)).results.ballots, 1);
+    assert.equal((await detail(otherSchool, 12)).results.ballots, 1);
+  });
+});
 
 test("school election PostgreSQL lifecycle and privacy", async (t) => {
   const f = await fixture(t);

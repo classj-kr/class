@@ -90,6 +90,13 @@ function createSchoolElection({ pool, sessionUser, requireTeacher, requireDataba
   function owner(election, ctx) {
     if (String(election.creator_user_id) !== String(ctx.user.id) || String(election.school_id) !== String(ctx.registration.school_id)) fail(403, "OWNER_REQUIRED", "이 선거의 담당 교사만 관리할 수 있습니다.");
   }
+  const isSchoolAdmin = (registration) => ["관리자", "교장", "교감"].includes(registration?.teacher_type);
+  function canDelete(election, ctx) {
+    if (String(election.school_id) !== String(ctx.registration.school_id)) return false;
+    const isOwner = String(election.creator_user_id) === String(ctx.user.id);
+    if (election.status === "draft") return isOwner;
+    return ["closed", "published"].includes(election.status) && (isOwner || isSchoolAdmin(ctx.registration));
+  }
   async function transaction(work) {
     const db = await pool.connect();
     try { await db.query("BEGIN"); const result = await work(db); await db.query("COMMIT"); return result; }
@@ -170,7 +177,7 @@ function createSchoolElection({ pool, sessionUser, requireTeacher, requireDataba
     const profile = await teacherRegistration(req.electionUser);
     const parts = new Intl.DateTimeFormat("en", { timeZone: "Asia/Seoul", year: "numeric", month: "numeric" }).formatToParts(new Date());
     const year = Number(parts.find((p) => p.type === "year").value) - (Number(parts.find((p) => p.type === "month").value) < 3 ? 1 : 0);
-    res.json({ isTeacher: Boolean(profile), schoolName: profile?.school_name || "", year });
+    res.json({ isTeacher: Boolean(profile), isSchoolAdmin: isSchoolAdmin(profile), schoolName: profile?.school_name || "", year });
   }));
   router.get("/roster", asyncRoute(async (req, res) => {
     const ctx = await teacher(req);
@@ -179,8 +186,12 @@ function createSchoolElection({ pool, sessionUser, requireTeacher, requireDataba
   }));
   router.get("/mine", asyncRoute(async (req, res) => {
     const ctx = await teacher(req);
-    const result = await pool.query("SELECT * FROM school_elections WHERE creator_user_id=$1 AND school_id=$2 ORDER BY created_at DESC LIMIT 100", [ctx.user.id, ctx.registration.school_id]);
-    res.json({ elections: result.rows.map(metadata) });
+    const result = await pool.query(
+      `SELECT * FROM school_elections WHERE school_id=$2
+       AND (creator_user_id=$1 OR ($3::BOOLEAN AND status IN ('closed','published')))
+       ORDER BY created_at DESC LIMIT 100`, [ctx.user.id, ctx.registration.school_id, isSchoolAdmin(ctx.registration)]);
+    res.json({ elections: result.rows.map((e) => ({ ...metadata(e),
+      isOwner: String(e.creator_user_id) === String(ctx.user.id), canDelete: canDelete(e, ctx) })) });
   }));
   router.post("/elections", asyncRoute(async (req, res) => {
     const ctx = await teacher(req);
@@ -298,8 +309,16 @@ function createSchoolElection({ pool, sessionUser, requireTeacher, requireDataba
   router.delete("/elections/:code", asyncRoute(async (req, res) => {
     const ctx = await teacher(req);
     await transaction(async (db) => {
-      const e = await find(db, req.params.code, " FOR UPDATE"); owner(e, ctx);
-      if (e.status !== "draft") fail(409, "ELECTION_FROZEN", "투표를 시작한 선거는 삭제할 수 없습니다.");
+      const e = await find(db, req.params.code, " FOR UPDATE");
+      if (String(e.school_id) !== String(ctx.registration.school_id)
+        || (String(e.creator_user_id) !== String(ctx.user.id) && !isSchoolAdmin(ctx.registration))) {
+        fail(403, "DELETE_FORBIDDEN", "선거를 만든 교사와 해당 학교 관리자만 삭제할 수 있습니다.");
+      }
+      if (e.status === "open") fail(409, "ELECTION_FROZEN", "투표 중인 선거는 삭제할 수 없습니다. 먼저 투표를 마감해 주세요.");
+      if (!canDelete(e, ctx)) fail(403, "DELETE_FORBIDDEN", "준비 중인 선거는 만든 교사만 삭제할 수 있습니다.");
+      if (e.status !== "draft" && text(req.body?.confirmationCode) !== e.room_code.trim()) {
+        fail(400, "DELETE_CONFIRMATION_REQUIRED", "삭제할 선거의 방번호를 정확히 입력해 주세요.");
+      }
       await db.query("DELETE FROM school_elections WHERE id=$1", [e.id]);
     });
     res.json({ ok: true });

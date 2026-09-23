@@ -44,7 +44,13 @@ test("teacher and student school-election browser flow", { skip: process.env.RUN
   await teacher.getByRole("button",{name:"명부 확정하고 투표 시작",exact:true}).click();
   await teacher.getByRole("button",{name:"투표 마감하고 개표하기",exact:true}).waitFor();
   assert.equal(await teacher.getByRole("heading",{name:/개표 결과/}).count(),0);
+  assert.equal(await teacher.getByRole("button",{name:"선거 데이터 삭제",exact:true}).count(),0);
   await teacher.screenshot({path:path.join(screenshots,"teacher-progress.png"),fullPage:true});
+  const admin=await browser.newPage({viewport:{width:1280,height:1000}});
+  admin.on("pageerror",(e)=>errors.push(e.message));
+  await admin.goto(base+"/preview/as/11");
+  await admin.getByRole("heading",{name:"학교 전교선거",exact:true}).waitFor();
+  assert.equal(await admin.locator("#electionList .room-card").count(),0);
 
   const student=await browser.newPage({viewport:{width:390,height:844}});
   student.on("pageerror",(e)=>errors.push(e.message));
@@ -70,6 +76,9 @@ test("teacher and student school-election browser flow", { skip: process.env.RUN
   await teacher.getByRole("button",{name:"투표 마감하고 개표하기",exact:true}).click();
   await teacher.getByRole("heading",{name:"개표 결과 · 담당 교사 확인용",exact:true}).waitFor();
   assert.match(await teacher.locator("#detail").innerText(),/1표/);
+  teacher.once("dialog",(dialog)=>dialog.accept("0000"));
+  await teacher.getByRole("button",{name:"선거 데이터 삭제",exact:true}).click();
+  await teacher.getByText("방번호가 일치하지 않아 삭제하지 않았습니다.",{exact:true}).waitFor();
   await student.reload();
   await student.getByText("투표를 완료했습니다.",{exact:true}).waitFor();
   assert.equal(await student.getByRole("heading",{name:"공개된 선거 결과",exact:true}).count(),0);
@@ -78,6 +87,7 @@ test("teacher and student school-election browser flow", { skip: process.env.RUN
   await teacher.getByRole("heading",{name:"공개된 선거 결과",exact:true}).waitFor();
   await student.reload();
   await student.getByRole("heading",{name:"공개된 선거 결과",exact:true}).waitFor();
+  assert.equal(await student.getByRole("button",{name:"선거 데이터 삭제",exact:true}).count(),0);
   await student.screenshot({path:path.join(screenshots,"student-mobile-results.png"),fullPage:true});
   const downloadPromise=teacher.waitForEvent("download");
   await teacher.getByRole("button",{name:"결과 CSV 저장",exact:true}).click();
@@ -86,6 +96,33 @@ test("teacher and student school-election browser flow", { skip: process.env.RUN
   await guest.goto(base+"/school-election/?room="+code);
   await guest.getByRole("link",{name:"메인에서 계정 로그인하기 →",exact:true}).waitFor();
   assert.equal(await guest.locator("#joinForm").isVisible(),false);
+  await admin.getByRole("button",{name:"새로고침",exact:true}).click();
+  await admin.getByRole("button",{name:"선거 데이터 삭제",exact:true}).waitFor();
+  assert.equal(await admin.getByRole("button",{name:"선거 열기",exact:true}).count(),0);
+  admin.once("dialog",(dialog)=>dialog.dismiss());
+  await admin.getByRole("button",{name:"선거 데이터 삭제",exact:true}).click();
+  assert.equal(await admin.locator("#electionList .room-card").count(),1);
+  admin.once("dialog",(dialog)=>dialog.accept(code));
+  await admin.getByRole("button",{name:"선거 데이터 삭제",exact:true}).click();
+  await admin.getByText("선거 데이터를 삭제했습니다.",{exact:true}).waitFor();
+  assert.equal(await admin.locator("#electionList .room-card").count(),0);
+  await student.reload();
+  await student.locator("#status").filter({hasText:"전교선거를 찾을 수 없습니다."}).waitFor();
+
+  // Set up another closed election through the same API, then delete through the owner's result screen.
+  const created=await teacher.request.post(base+"/api/school-election/elections",{data:{title:"생성자 삭제 확인",year:2026,grades:[3,4,5,6],positions:[{title:"회장",candidates:["후보 가","후보 나"]}]}});
+  assert.equal(created.status(),201);
+  const ownerElection=(await created.json()).election;
+  const ownerUrl=base+"/api/school-election/elections/"+ownerElection.code;
+  const ownerDetail=await (await teacher.request.get(ownerUrl)).json();
+  assert.equal((await teacher.request.post(ownerUrl+"/start",{data:{rosterVersion:ownerDetail.roster.version}})).status(),200);
+  assert.equal((await teacher.request.post(ownerUrl+"/close",{data:{}})).status(),200);
+  await teacher.goto(base+"/school-election/?room="+ownerElection.code);
+  await teacher.getByRole("button",{name:"선거 데이터 삭제",exact:true}).waitFor();
+  teacher.once("dialog",(dialog)=>dialog.accept(ownerElection.code));
+  await teacher.getByRole("button",{name:"선거 데이터 삭제",exact:true}).click();
+  await teacher.getByText("선거 데이터를 삭제했습니다.",{exact:true}).waitFor();
+  assert.equal(await teacher.locator("#electionList .room-card").count(),0);
   assert.deepEqual(errors,[]);
   console.log("Election screenshots: "+screenshots);
 });
