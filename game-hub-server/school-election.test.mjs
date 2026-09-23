@@ -107,20 +107,22 @@ test("completed election deletion respects school roles and removes only its own
   const otherSchool = await createAt("closed", 12), adminDraft = await createAt("draft", 13);
   const list = async (user) => (await call("GET", "/mine", undefined, user)).data.elections;
   const codes = (elections) => elections.map((e) => e.code).sort();
-  await t.test("administrators discover only their school's completed elections and their own drafts", async () => {
+  await t.test("school-wide lists preserve draft privacy and restrict deletion to owners and administrators", async () => {
     assert.equal((await call("GET", "/me", undefined, 13)).data.isSchoolAdmin, true);
     assert.equal((await call("GET", "/me", undefined, 10)).data.isSchoolAdmin, false);
-    assert.deepEqual(codes(await list(13)), codes([closed, published, adminDraft]));
+    assert.deepEqual(codes(await list(13)), codes([open, closed, published, adminDraft]));
     assert.deepEqual(codes(await list(14)), codes([otherSchool]));
     assert.deepEqual(codes(await list(10)), codes([draft, open, closed, published]));
-    assert.deepEqual(await list(11), []);
+    assert.deepEqual(codes(await list(11)), codes([open, closed, published]));
+    assert.ok((await list(11)).every((e) => !e.canDelete && !e.isOwner));
     const adminClosed = (await list(13)).find((e) => e.code === closed.code);
     assert.equal(adminClosed.canDelete, true);
     assert.equal(adminClosed.isOwner, false);
     assert.equal((await list(10)).find((e) => e.code === open.code).canDelete, false);
-    // Deletion permission does not grant participant, unpublished-result, or lifecycle access.
-    assert.equal((await call("GET", path(closed), undefined, 13)).status, 403);
-    assert.equal((await call("GET", path(closed) + "/participants?grade=3&classNumber=1", undefined, 13)).status, 403);
+    // School staff may inspect participation, but unpublished results and lifecycle actions stay owner-only.
+    assert.equal((await detail(closed, 13)).results, undefined);
+    assert.equal((await detail(closed, 13)).progress.voted, 1);
+    assert.equal((await call("GET", path(closed) + "/participants?grade=3&classNumber=1", undefined, 13)).status, 200);
     assert.equal((await call("POST", path(closed) + "/publish", {}, 13)).status, 403);
   });
   await t.test("live elections stay protected and drafts still belong to their creator", async () => {
@@ -170,6 +172,91 @@ test("completed election deletion respects school roles and removes only its own
     assert.equal((await detail(closed)).results.ballots, 1);
     assert.equal((await detail(published)).results.ballots, 1);
     assert.equal((await detail(otherSchool, 12)).results.ballots, 1);
+  });
+});
+
+test("participation is shared with school staff and students only after their own vote", async (t) => {
+  const { call, config, create, path, detail, start, choices } = await fixture(t);
+  const e = await create();
+  const participants = (user, grade = 3, classNumber = 1, election = e) => call("GET", path(election) + "/participants?grade=" + grade + "&classNumber=" + classNumber, undefined, user);
+  await t.test("teachers find school elections through the menu and room entrance after opening", async () => {
+    assert.deepEqual((await call("GET", "/mine", undefined, 11)).data.elections, []);
+    assert.equal((await call("GET", path(e), undefined, 11)).status, 409);
+    assert.equal((await participants(11)).status, 409);
+    assert.equal((await start(e)).status, 200);
+    const listed = (await call("GET", "/mine", undefined, 11)).data.elections;
+    assert.equal(listed.length, 1);
+    assert.equal(listed[0].code, e.code);
+    assert.equal(listed[0].isOwner, false);
+    assert.equal(listed[0].canDelete, false);
+    assert.equal((await call("GET", "/api/vote/resolve/" + e.code, undefined, 11)).data.type, "school-election");
+    for (const user of [10,11,13,15,16]) {
+      const response = await detail(e, user);
+      assert.equal(response.isTeacher, true);
+      assert.equal(response.canViewProgress, true);
+      assert.equal(response.progress.total, 4);
+      assert.equal(response.progress.voted, 0);
+      assert.equal(response.results, undefined);
+      assert.deepEqual((await participants(user)).data.students, [{number:"1",name:"김동명",hasVoted:false}]);
+    }
+  });
+  await t.test("unvoted students and outsiders cannot access participation through direct APIs", async () => {
+    const response = await detail(e, 21);
+    assert.equal(response.isTeacher, false);
+    assert.equal(response.hasVoted, false);
+    assert.equal(response.canViewProgress, false);
+    assert.equal(response.progress, undefined);
+    assert.equal((await participants(21)).data.error, "VOTE_REQUIRED");
+    assert.equal((await call("GET", path(e) + "/participants?grade=3&classNumber=1&hasVoted=true&isTeacher=true", undefined, 21)).status, 403);
+    for (const user of [null,12,14,25,26,27,28]) {
+      assert.equal((await participants(user)).status, user === null ? 401 : 403);
+      assert.equal((await call("GET", path(e), undefined, user)).status, user === null ? 401 : 403);
+    }
+    assert.equal((await call("POST", path(e) + "/ballots", {selections:[]}, 21)).status, 400);
+    assert.equal((await participants(21)).status, 403);
+  });
+  await t.test("voted students see only roster names, numbers and completion across the election", async () => {
+    assert.equal((await call("POST", path(e) + "/ballots", choices(e), 21)).status, 200);
+    const response = await detail(e, 21);
+    assert.equal(response.hasVoted, true);
+    assert.equal(response.canViewProgress, true);
+    assert.equal(response.isTeacher, false);
+    assert.equal(response.isOwner, false);
+    assert.equal(response.progress.total, 4);
+    assert.equal(response.progress.voted, 1);
+    assert.equal(response.results, undefined);
+    const ownClass = (await participants(21)).data;
+    const otherClass = (await participants(21, 4, 2)).data;
+    assert.deepEqual(ownClass.students, [{number:"1",name:"김동명",hasVoted:true}]);
+    assert.deepEqual(otherClass.students, [{number:"1",name:"김동명",hasVoted:false}]);
+    assert.doesNotMatch(JSON.stringify([response, ownClass, otherClass]), /"votes"|"selections"|"selectedCandidateId"|"student_email"|"user_id"/);
+    assert.equal((await detail(e, 22)).progress, undefined);
+    assert.equal((await participants(22)).status, 403);
+    const another = await create();
+    assert.equal((await start(another)).status, 200);
+    assert.equal((await participants(21, 3, 1, another)).status, 403);
+    assert.equal((await detail(another, 21)).progress, undefined);
+    for (const user of [11,21]) {
+      assert.equal((await call("PATCH", path(e), config, user)).status, 403);
+      for (const action of ["start","close","publish"]) assert.equal((await call("POST", path(e) + "/" + action, {}, user)).status, 403);
+      assert.equal((await call("DELETE", path(e), {confirmationCode:e.code}, user)).status, 403);
+    }
+    assert.equal((await call("POST", path(e) + "/ballots", choices(e), 11)).status, 403);
+  });
+  await t.test("sharing participation does not release unpublished results", async () => {
+    assert.equal((await call("POST", path(e) + "/close", {})).status, 200);
+    for (const user of [11,13,21]) {
+      assert.equal((await detail(e, user)).progress.voted, 1);
+      assert.equal((await detail(e, user)).results, undefined);
+      assert.equal((await participants(user)).status, 200);
+    }
+    assert.equal((await participants(22)).status, 403);
+    assert.equal((await detail(e)).results.ballots, 1);
+    assert.equal((await call("POST", path(e) + "/publish", {})).status, 200);
+    for (const user of [11,13,21,22]) assert.equal((await detail(e, user)).results.ballots, 1);
+    assert.equal((await detail(e, 22)).progress, undefined);
+    assert.equal((await participants(22)).status, 403);
+    for (const user of [12,14,26]) assert.equal((await call("GET", path(e), undefined, user)).status, 403);
   });
 });
 

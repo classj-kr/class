@@ -50,7 +50,24 @@ test("teacher and student school-election browser flow", { skip: process.env.RUN
   admin.on("pageerror",(e)=>errors.push(e.message));
   await admin.goto(base+"/preview/as/11");
   await admin.getByRole("heading",{name:"학교 전교선거",exact:true}).waitFor();
-  assert.equal(await admin.locator("#electionList .room-card").count(),0);
+  await admin.getByRole("button",{name:"참여 현황 보기",exact:true}).waitFor();
+  assert.equal(await admin.locator("#electionList .room-card").count(),1);
+  assert.equal(await admin.getByRole("button",{name:"선거 데이터 삭제",exact:true}).count(),0);
+
+  const observer=await browser.newPage({viewport:{width:1280,height:1000}});
+  observer.on("pageerror",(e)=>errors.push(e.message));
+  await observer.goto(base+"/preview/as/12");
+  await observer.getByRole("button",{name:"참여 현황 보기",exact:true}).click();
+  await observer.getByRole("heading",{name:"투표 참여 현황",exact:true}).waitFor();
+  for (const name of ["투표 마감하고 개표하기","설정 수정","선거 데이터 삭제","선택한 후보에게 투표하기"]) {
+    assert.equal(await observer.getByRole("button",{name,exact:true}).count(),0);
+  }
+  await observer.goto(base+"/room/");
+  await observer.getByLabel("방번호",{exact:true}).fill(code);
+  await observer.getByRole("button",{name:"입장",exact:true}).click();
+  await observer.getByRole("heading",{name:"투표 참여 현황",exact:true}).waitFor();
+  await observer.getByRole("button",{name:"명단 보기",exact:true}).first().click();
+  await observer.getByText("1번 연습학생21 · 미투표",{exact:true}).waitFor();
 
   const student=await browser.newPage({viewport:{width:390,height:844}});
   student.on("pageerror",(e)=>errors.push(e.message));
@@ -59,6 +76,8 @@ test("teacher and student school-election browser flow", { skip: process.env.RUN
   await student.getByLabel("방번호",{exact:true}).fill(code);
   await student.getByRole("button",{name:"입장",exact:true}).click();
   await student.getByRole("button",{name:"선택한 후보에게 투표하기",exact:true}).waitFor();
+  assert.equal(await student.getByRole("heading",{name:"투표 참여 현황",exact:true}).count(),0);
+  assert.equal(await student.getByRole("button",{name:"명단 보기",exact:true}).count(),0);
   await student.getByText("기호 1번 · 6학년 1반 김하나",{exact:true}).click();
   assert.equal(await student.locator("input[type=radio]:checked").count(),1);
   await student.screenshot({path:path.join(screenshots,"student-mobile-ballot.png"),fullPage:true});
@@ -68,6 +87,29 @@ test("teacher and student school-election browser flow", { skip: process.env.RUN
   await student.getByText("투표를 완료했습니다.",{exact:true}).waitFor();
   await student.reload();
   await student.getByText("투표를 완료했습니다.",{exact:true}).waitFor();
+  await student.getByRole("heading",{name:"투표 참여 현황",exact:true}).waitFor();
+  await student.getByRole("button",{name:"명단 보기",exact:true}).first().click();
+  await student.getByText("1번 연습학생21 · 완료",{exact:true}).waitFor();
+  await student.getByText("2번 연습학생22 · 미투표",{exact:true}).waitFor();
+  assert.equal(await student.getByRole("button",{name:"투표 마감하고 개표하기",exact:true}).count(),0);
+  assert.ok(await student.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth),"No participation-panel mobile overflow");
+  await student.screenshot({path:path.join(screenshots,"student-mobile-progress.png"),fullPage:true});
+  await observer.getByRole("button",{name:"새로고침",exact:true}).click();
+  await observer.getByText("1번 연습학생21 · 완료",{exact:true}).waitFor();
+  await observer.getByText("2번 연습학생22 · 미투표",{exact:true}).waitFor();
+
+  const secondStudent=await browser.newPage();
+  secondStudent.on("pageerror",(e)=>errors.push(e.message));
+  await secondStudent.goto(base+"/preview/as/22");
+  await secondStudent.goto(base+"/school-election/?room="+code);
+  await secondStudent.getByText("기호 1번 · 6학년 1반 김하나",{exact:true}).click();
+  secondStudent.once("dialog",(dialog)=>dialog.accept());
+  await secondStudent.getByRole("button",{name:"선택한 후보에게 투표하기",exact:true}).click();
+  await secondStudent.getByText("투표를 완료했습니다.",{exact:true}).waitFor();
+  await student.bringToFront();
+  // The selected class and its names remain visible while the normal ten-second poll updates them.
+  await student.getByText("2번 연습학생22 · 완료",{exact:true}).waitFor({timeout:15000});
+  await student.getByRole("heading",{name:"3학년 1반 참여 현황",exact:true}).waitFor();
 
   await teacher.getByRole("button",{name:"새로고침",exact:true}).click();
   await teacher.getByRole("button",{name:"명단 보기",exact:true}).first().click();
@@ -75,7 +117,10 @@ test("teacher and student school-election browser flow", { skip: process.env.RUN
   teacher.once("dialog",(dialog)=>dialog.accept());
   await teacher.getByRole("button",{name:"투표 마감하고 개표하기",exact:true}).click();
   await teacher.getByRole("heading",{name:"개표 결과 · 담당 교사 확인용",exact:true}).waitFor();
-  assert.match(await teacher.locator("#detail").innerText(),/1표/);
+  assert.match(await teacher.locator("#detail").innerText(),/2표/);
+  await observer.getByRole("button",{name:"새로고침",exact:true}).click();
+  await observer.getByText("2번 연습학생22 · 완료",{exact:true}).waitFor();
+  assert.equal(await observer.getByRole("heading",{name:/개표 결과|공개된 선거 결과/}).count(),0);
   teacher.once("dialog",(dialog)=>dialog.accept("0000"));
   await teacher.getByRole("button",{name:"선거 데이터 삭제",exact:true}).click();
   await teacher.getByText("방번호가 일치하지 않아 삭제하지 않았습니다.",{exact:true}).waitFor();
@@ -85,6 +130,8 @@ test("teacher and student school-election browser flow", { skip: process.env.RUN
   teacher.once("dialog",(dialog)=>dialog.accept());
   await teacher.getByRole("button",{name:"학생들에게 결과 공개",exact:true}).click();
   await teacher.getByRole("heading",{name:"공개된 선거 결과",exact:true}).waitFor();
+  await observer.getByRole("button",{name:"새로고침",exact:true}).click();
+  await observer.getByRole("heading",{name:"공개된 선거 결과",exact:true}).waitFor();
   await student.reload();
   await student.getByRole("heading",{name:"공개된 선거 결과",exact:true}).waitFor();
   assert.equal(await student.getByRole("button",{name:"선거 데이터 삭제",exact:true}).count(),0);

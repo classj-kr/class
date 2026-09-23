@@ -149,6 +149,20 @@ function createSchoolElection({ pool, sessionUser, requireTeacher, requireDataba
     if (result.rows.length !== 1) fail(403, "NOT_ELIGIBLE", "이번 선거의 확정 명부에 등록된 학생 계정만 참여할 수 있습니다.");
     return result.rows[0];
   }
+  async function viewer(election, req) {
+    const isOwner = String(election.creator_user_id) === String(req.electionUser.id);
+    if (isOwner) {
+      owner(election, await teacher(req));
+      return { isOwner: true, isTeacher: true, canViewProgress: election.status !== "draft" };
+    }
+    if (election.status === "draft") fail(409, "NOT_STARTED", "아직 투표를 시작하지 않았습니다.");
+    const registration = await teacherRegistration(req.electionUser);
+    if (registration && String(registration.school_id) === String(election.school_id)) {
+      return { isOwner: false, isTeacher: true, canViewProgress: true };
+    }
+    const v = await voter(pool, election, req.electionUser);
+    return { isOwner: false, isTeacher: false, hasVoted: v.has_voted, canViewProgress: v.has_voted };
+  }
   async function progress(db, election) {
     const { rows } = await db.query(
       `SELECT grade, class_number, COUNT(*)::INTEGER AS total,
@@ -188,8 +202,8 @@ function createSchoolElection({ pool, sessionUser, requireTeacher, requireDataba
     const ctx = await teacher(req);
     const result = await pool.query(
       `SELECT * FROM school_elections WHERE school_id=$2
-       AND (creator_user_id=$1 OR ($3::BOOLEAN AND status IN ('closed','published')))
-       ORDER BY created_at DESC LIMIT 100`, [ctx.user.id, ctx.registration.school_id, isSchoolAdmin(ctx.registration)]);
+       AND (creator_user_id=$1 OR status IN ('open','closed','published'))
+       ORDER BY created_at DESC LIMIT 100`, [ctx.user.id, ctx.registration.school_id]);
     res.json({ elections: result.rows.map((e) => ({ ...metadata(e),
       isOwner: String(e.creator_user_id) === String(ctx.user.id), canDelete: canDelete(e, ctx) })) });
   }));
@@ -225,27 +239,22 @@ function createSchoolElection({ pool, sessionUser, requireTeacher, requireDataba
   }));
   router.get("/elections/:code", asyncRoute(async (req, res) => {
     const e = await find(pool, req.params.code);
-    const isOwner = String(e.creator_user_id) === String(req.electionUser.id);
-    const response = { election: metadata(e), isOwner };
-    if (isOwner) {
-      owner(e, await teacher(req));
-      if (e.status === "draft") {
-        response.roster = (await roster(pool, e.school_id, e.academic_year, e.grades)).preview;
-        response.roster.version = reviewVersion(e, response.roster.version);
-      }
-      else response.progress = await progress(pool, e);
-    } else {
-      if (e.status === "draft") fail(409, "NOT_STARTED", "아직 투표를 시작하지 않았습니다.");
-      const v = await voter(pool, e, req.electionUser);
-      response.hasVoted = v.has_voted;
+    const access = await viewer(e, req);
+    const response = { election: metadata(e), ...access };
+    if (access.isOwner && e.status === "draft") {
+      response.roster = (await roster(pool, e.school_id, e.academic_year, e.grades)).preview;
+      response.roster.version = reviewVersion(e, response.roster.version);
     }
+    if (access.canViewProgress) response.progress = await progress(pool, e);
     // Never query ballot choices before close, including for the owner.
-    if (e.status === "published" || (isOwner && e.status === "closed")) response.results = await results(pool, e);
+    if (e.status === "published" || (access.isOwner && e.status === "closed")) response.results = await results(pool, e);
     res.json(response);
   }));
   router.get("/elections/:code/participants", asyncRoute(async (req, res) => {
-    const ctx = await teacher(req);
-    const e = await find(pool, req.params.code); owner(e, ctx);
+    const e = await find(pool, req.params.code);
+    const access = await viewer(e, req);
+    if (e.status === "draft") fail(409, "NOT_STARTED", "아직 투표를 시작하지 않았습니다.");
+    if (!access.canViewProgress) fail(403, "VOTE_REQUIRED", "투표를 완료한 뒤 참여 현황을 확인할 수 있습니다.");
     const grade = Number(req.query.grade), classNumber = Number(req.query.classNumber);
     if (!Number.isInteger(grade) || !Number.isInteger(classNumber)) fail(400, "INVALID_CLASS", "확인할 학년과 반을 선택해 주세요.");
     const result = await pool.query(

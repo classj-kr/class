@@ -3,7 +3,7 @@
   const $ = (id) => document.getElementById(id);
   const params = new URLSearchParams(location.search);
   const labels = { draft: "준비", open: "투표 중", closed: "마감", published: "결과 공개" };
-  let me, currentCode, editCode = null, pollTimer, actionPending = false, loadVersion = 0, pollEnabled = false;
+  let me, currentCode, editCode = null, participantClass = null, pollTimer, actionPending = false, loadVersion = 0, pollEnabled = false;
   const el = (tag, value, cls) => { const node = document.createElement(tag); if (value != null) node.textContent = value; if (cls) node.className = cls; return node; };
   const status = (value = "", error = false) => { $("status").textContent = value; $("status").classList.toggle("error", error); };
   function show(id) { clearTimeout(pollTimer); pollEnabled = false; loadVersion++; for (const view of ["loading", "joinView", "teacherView", "detailView"]) $(view).classList.toggle("hidden", view !== id); }
@@ -11,7 +11,7 @@
     clearTimeout(pollTimer);
     if (!pollEnabled || $("detailView").classList.contains("hidden")) return;
     pollTimer = setTimeout(async () => {
-      if (actionPending || document.hidden || $("detail").contains(document.activeElement)) return scheduleRefresh();
+      if (actionPending || document.hidden) return scheduleRefresh();
       try { await openElection(currentCode, true); }
       catch (error) { status(error.message, true); pollEnabled = true; scheduleRefresh(); }
     }, 10000);
@@ -65,13 +65,13 @@
   }
   async function loadList() {
     const data = await api("/mine"); $("electionList").replaceChildren();
-    $("electionListTitle").textContent = me.isSchoolAdmin ? "학교 전교선거" : "내 전교선거";
+    $("electionListTitle").textContent = "학교 전교선거";
     if (!data.elections.length) $("electionList").append(el("p", "표시할 전교선거가 없습니다.", "empty"));
     for (const e of data.elections) {
       const card = el("article", null, "room-card"), head = el("div", null, "room-card-head");
       head.append(el("strong", e.title), el("span", labels[e.status], "eyebrow"));
       const actions = el("div", null, "actions");
-      if (e.isOwner) actions.append(button("선거 열기", () => openElection(e.code), "secondary small"));
+      actions.append(button(e.isOwner ? "선거 열기" : "참여 현황 보기", () => openElection(e.code), "secondary small"));
       if (e.canDelete) actions.append(button(e.status === "draft" ? "준비 중 선거 삭제" : "선거 데이터 삭제", () => deleteElection(e), "danger small"));
       card.append(head, el("p", e.year + "학년도 · " + e.grades.join("·") + "학년 · 방번호 " + e.code, "muted"), actions);
       $("electionList").append(card);
@@ -132,20 +132,24 @@
     actions.append(start, button("설정 수정", () => teacherHome(e)), button("준비 중 선거 삭제", () => deleteElection(e), "danger")); container.append(actions);
   }
   function progressView(data, container) {
-    const e = data.election; container.append(stats(data.progress));
+    const e = data.election; container.append(el("h3", "투표 참여 현황", "subpanel"), stats(data.progress));
     const participantBox = el("section", null, "subpanel");
     container.append(table(["학년", "반", "참여", "현황"], data.progress.classes.map((c) => [c.grade + "학년", c.classNumber + "반", c.voted + " / " + c.total + "명",
       button("명단 보기", async () => {
-        const payload = await api("/elections/" + e.code + "/participants?grade=" + c.grade + "&classNumber=" + c.classNumber);
-        participantBox.replaceChildren(el("h3", c.grade + "학년 " + c.classNumber + "반 참여 현황"));
-        const list = el("ul", null, "participant-list");
-        payload.students.sort((a, b) => a.number.localeCompare(b.number, "ko", { numeric: true })).forEach((s) => list.append(el("li", s.number + "번 " + s.name + " · " + (s.hasVoted ? "완료" : "미투표"), s.hasVoted ? "done" : "")));
-        participantBox.append(list);
+        participantClass = { grade: c.grade, classNumber: c.classNumber };
+        await openElection(e.code);
       }, "secondary small")])));
+    if (data.participants) {
+      const selected = data.participants;
+      participantBox.append(el("h3", selected.grade + "학년 " + selected.classNumber + "반 참여 현황"));
+      const list = el("ul", null, "participant-list");
+      selected.students.sort((a, b) => a.number.localeCompare(b.number, "ko", { numeric: true })).forEach((s) => list.append(el("li", s.number + "번 " + s.name + " · " + (s.hasVoted ? "완료" : "미투표"), s.hasVoted ? "done" : "")));
+      participantBox.append(list);
+    }
     container.append(participantBox);
     if (e.status === "open") {
       container.append(el("p", "투표 중에는 후보별 득표수가 공개되지 않습니다. 참여 현황은 10초마다 갱신됩니다.", "muted"));
-      container.append(button("투표 마감하고 개표하기", async () => { if (confirm("아직 투표하지 않은 학생이 " + (data.progress.total - data.progress.voted) + "명입니다. 투표를 마감할까요? 마감 후에는 다시 열 수 없습니다.")) await transition(e, "close"); }, "danger wide"));
+      if (data.isOwner) container.append(button("투표 마감하고 개표하기", async () => { if (confirm("아직 투표하지 않은 학생이 " + (data.progress.total - data.progress.voted) + "명입니다. 투표를 마감할까요? 마감 후에는 다시 열 수 없습니다.")) await transition(e, "close"); }, "danger wide"));
     }
   }
   function resultView(data, container) {
@@ -207,21 +211,31 @@
     if (data.isOwner) code.append(button("학생용 링크 복사", async () => { await navigator.clipboard.writeText(location.origin + "/school-election/?room=" + e.code); status("학생용 링크를 복사했습니다."); }));
     heading.append(code); container.append(heading);
     const panel = el("section", null, "panel subpanel"); container.append(panel);
-    if (data.isOwner) {
+    if (data.isTeacher) {
       if (e.status === "draft") draftView(data, panel); else progressView(data, panel);
       if (data.results) resultView(data, panel);
-      pollEnabled = e.status === "open";
-      scheduleRefresh();
-    } else ballotView(data, panel);
+    } else {
+      ballotView(data, panel);
+      if (data.canViewProgress) progressView(data, panel);
+    }
+    pollEnabled = data.canViewProgress && e.status === "open";
+    scheduleRefresh();
   }
   async function openElection(code, quiet = false) {
     if (!quiet) status(); show("detailView");
+    if (currentCode !== code) participantClass = null;
     currentCode = code; history.replaceState(null, "", "?room=" + code);
     const version = loadVersion;
     try {
       const data = await api("/elections/" + code);
       if (version !== loadVersion) return;
-      $("backButton").textContent = me?.isTeacher ? "내 선거 목록" : "다른 선거";
+      if (data.canViewProgress && participantClass) {
+        const selected = participantClass;
+        const participants = await api("/elections/" + code + "/participants?grade=" + selected.grade + "&classNumber=" + selected.classNumber);
+        if (version !== loadVersion) return;
+        data.participants = { ...selected, ...participants };
+      }
+      $("backButton").textContent = me?.isTeacher ? "학교 선거 목록" : "다른 선거";
       render(data);
     } catch (error) { if (!quiet) { $("detail").replaceChildren(el("p", error.message, "notice")); } throw error; }
   }

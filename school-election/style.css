@@ -28,5 +28,5 @@ th { color:#a7f3d0;font-size:.9rem; } .actions { display:flex;gap:10px;flex-wrap
 .result-label span:last-child { color:#a7f3d0; } .bar span { background:linear-gradient(90deg,#059669,#6ee7b7); } #loginLink { display:block;margin-top:20px; }
 details { border:1px solid var(--line);border-radius:14px;padding:18px;margin-top:18px; } summary { cursor:pointer;font-weight:800; }
 #status:empty { min-height:0;margin:0; } .participant-list { display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px;padding:0;list-style:none; }
-.participant-list li { padding:10px;border-radius:9px;background:#09181c; } .participant-list .done { color:#a7f3d0; }
+.participant-list li { padding:10px;border-radius:9px;background:#09181c;word-break:keep-all;overflow-wrap:anywhere; } .participant-list .done { color:#a7f3d0; }
 @media(max-width:560px) { .shell { padding-top:16px; } .scope-grid { grid-template-columns:1fr;gap:20px; } .summary-grid { gap:6px; } .summary-stat { padding:12px; } .summary-stat strong { font-size:1.55rem; } .summary-stat span { font-size:.8rem; } .actions button { width:100%; } th,td { padding:10px; } }
