@@ -59,9 +59,9 @@ test("teacher and student school-election browser flow", { skip: process.env.RUN
   assert.ok(await student.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth),"No mobile horizontal overflow");
   student.once("dialog",(dialog)=>dialog.accept());
   await student.getByRole("button",{name:"선택한 후보에게 투표하기",exact:true}).click();
-  await student.getByText("투표를 완료했습니다. 참여해 주셔서 감사합니다.",{exact:true}).waitFor();
+  await student.getByText("투표를 완료했습니다.",{exact:true}).waitFor();
   await student.reload();
-  await student.getByText("투표를 완료했습니다. 참여해 주셔서 감사합니다.",{exact:true}).waitFor();
+  await student.getByText("투표를 완료했습니다.",{exact:true}).waitFor();
 
   await teacher.getByRole("button",{name:"새로고침",exact:true}).click();
   await teacher.getByRole("button",{name:"명단 보기",exact:true}).first().click();
@@ -71,7 +71,7 @@ test("teacher and student school-election browser flow", { skip: process.env.RUN
   await teacher.getByRole("heading",{name:"개표 결과 · 담당 교사 확인용",exact:true}).waitFor();
   assert.match(await teacher.locator("#detail").innerText(),/1표/);
   await student.reload();
-  await student.getByText("투표를 완료했습니다. 참여해 주셔서 감사합니다.",{exact:true}).waitFor();
+  await student.getByText("투표를 완료했습니다.",{exact:true}).waitFor();
   assert.equal(await student.getByRole("heading",{name:"공개된 선거 결과",exact:true}).count(),0);
   teacher.once("dialog",(dialog)=>dialog.accept());
   await teacher.getByRole("button",{name:"학생들에게 결과 공개",exact:true}).click();

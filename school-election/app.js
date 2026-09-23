@@ -157,7 +157,7 @@
   function ballotView(data, container) {
     if (data.results) return resultView(data, container);
     if (data.hasVoted || data.election.status !== "open") {
-      container.append(el("div", data.hasVoted ? "투표를 완료했습니다. 참여해 주셔서 감사합니다." : "투표가 마감되었습니다.", "success"));
+      container.append(el("div", data.hasVoted ? "투표를 완료했습니다." : "투표가 마감되었습니다.", "success"));
       container.append(el("p", "결과가 공개된 후 새로고침하면 확인할 수 있습니다.", "muted")); return;
     }
     container.append(el("p", "각 직책에서 한 명씩 선택해 주세요. 제출한 표는 변경할 수 없습니다.", "muted"));
