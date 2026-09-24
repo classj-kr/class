@@ -85,7 +85,14 @@ button:disabled { cursor: not-allowed; opacity: .38; box-shadow: none; transform
 .mp-lobby-tabs { justify-content: flex-start; margin-bottom: 10px; }
 .mp-lobby-tab { min-width: 124px; min-height: 44px; }
 .mp-lobby-pane { padding: 14px 16px; border: 1px solid var(--line); border-radius: 14px; background: #faf6eb; }
-.mp-lobby-code { color: var(--paper); }
+/* The room number must remain readable on the light waiting-room panel. */
+.mp-lobby-code {
+  margin-top: 6px;
+  color: var(--deep-teal);
+  font: 900 clamp(36px, 8vw, 48px)/1.15 ui-monospace, SFMono-Regular, Consolas, monospace;
+  letter-spacing: .16em;
+  font-variant-numeric: tabular-nums;
+}
 .mp-lobby-status { margin-top: 9px; }
 .pack-section { margin-top: 10px; padding: 12px 14px; border: 1px dashed #9caa9d; border-radius: 14px; background: #f3f7ee; }
 .pack-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 10px; }

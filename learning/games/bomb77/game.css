@@ -65,3 +65,5 @@ body:has(#gameScreen:not(.hidden)) .game-shell{height:calc(100dvh - 16px)}
 #gameScreen .mini-brand{gap:10px}
 #gameScreen .mini-brand h1{font-size:24px}
 }
+
+#hostPane .room-code{display:block;margin-top:6px;font:900 clamp(36px,8vw,48px)/1.15 ui-monospace,Consolas,monospace;letter-spacing:.16em;font-variant-numeric:tabular-nums}

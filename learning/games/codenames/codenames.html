@@ -104,6 +104,9 @@ body:has(#boardArea:not(.hidden)) #game>.panel:first-child{margin-bottom:8px;pad
 #boardArea:not(.hidden) .actionBar{margin-top:4px}
 }
 #roomShare{padding-left:32px}
+
+/* Keep the shared room number prominent without changing game-board typography. */
+#roomCode,#roomShare #gameRoomCode{font-size:clamp(36px,8vw,44px);line-height:1.15;font-variant-numeric:tabular-nums}
 </style>
 <script src="../../../assets/network/game-network.js?v=20260821"></script>
 <script src="../../../assets/network/multiplayer-lobby.js?v=20260906b"></script>

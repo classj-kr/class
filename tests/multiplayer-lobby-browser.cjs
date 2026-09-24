@@ -62,7 +62,7 @@ async function clickControl(page, name) {
 }
 
 async function roomCodeMetrics(page) {
-  return page.evaluate(() => {
+  const metric = await page.evaluate(() => {
     const lobby = window.__roomTestLobby;
     const candidates = [...document.querySelectorAll('[id*="roomCode" i], [id*="room-code" i]')]
       .filter(element => !element.matches("input"));
@@ -71,14 +71,61 @@ async function roomCodeMetrics(page) {
     const rect = element.getBoundingClientRect();
     const style = getComputedStyle(element);
     const visible = element.checkVisibility({ checkOpacity: true, checkVisibilityCSS: true });
-    return {
-      value: element.textContent.trim(), expected: lobby.snapshot().roomCode,
-      visible, inViewport: visible && rect.width > 0 && rect.height > 0 && rect.left >= 0 &&
-        rect.top >= 0 && rect.right <= innerWidth + 1 && rect.bottom <= innerHeight + 1,
-      hidden: element.hidden, display: style.display,
-      width: innerWidth, height: innerHeight
+    const inViewport = visible && rect.width > 0 && rect.height > 0 && rect.left >= 0 &&
+      rect.top >= 0 && rect.right <= innerWidth + 1 && rect.bottom <= innerHeight + 1;
+    const range = document.createRange();range.selectNodeContents(element);
+    const textRect = range.getBoundingClientRect();
+    let opacity = 1;
+    for (let node = element; node; node = node.parentElement) opacity *= Number(getComputedStyle(node).opacity);
+    const result = {
+      value: element.textContent.trim(), expected: lobby.snapshot().roomCode, visible, inViewport,
+      hidden: element.hidden, display: style.display, fontSize: parseFloat(style.fontSize),
+      foreground: style.webkitTextFillColor || style.color, opacity,
+      width: innerWidth, height: innerHeight,
+      clip: { x: Math.floor(textRect.x), y: Math.floor(textRect.y), width: Math.ceil(textRect.width), height: Math.ceil(textRect.height) }
     };
+    if (inViewport) {
+      window.__roomContrastTarget = { element, style: element.getAttribute("style") };
+      // Keep the actual panel, gradients and background image; hide only the glyphs.
+      element.style.setProperty("-webkit-text-fill-color", "transparent", "important");
+      element.style.setProperty("text-shadow", "none", "important");
+    }
+    return result;
   });
+  if (!metric.inViewport) return { ...metric, contrastRatio: 0 };
+  let background;
+  try { background = await page.screenshot({ clip: metric.clip, encoding: "base64" }); }
+  finally {
+    await page.evaluate(() => {
+      const { element, style } = window.__roomContrastTarget;
+      if (style === null) element.removeAttribute("style");else element.setAttribute("style", style);
+      delete window.__roomContrastTarget;
+    });
+  }
+  // Measure contrast against rendered pixels, including alpha and image backgrounds.
+  metric.contrastRatio = await page.evaluate(async ({ background, foreground, opacity }) => {
+    const image = new Image();image.src = "data:image/png;base64," + background;await image.decode();
+    const canvas = document.createElement("canvas");canvas.width = image.width;canvas.height = image.height;
+    const ctx = canvas.getContext("2d", { willReadFrequently: true });
+    ctx.fillStyle = foreground;ctx.fillRect(0, 0, 1, 1);
+    const ink = [...ctx.getImageData(0, 0, 1, 1).data];
+    ctx.clearRect(0, 0, canvas.width, canvas.height);ctx.drawImage(image, 0, 0);
+    const pixels = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
+    const luminance = rgb => rgb.map(v => { const c = v / 255;return c <= .04045 ? c / 12.92 : ((c + .055) / 1.055) ** 2.4; })
+      .reduce((sum, c, i) => sum + c * [.2126, .7152, .0722][i], 0);
+    const ratios = [], alpha = ink[3] / 255 * opacity;
+    for (let y = Math.floor(image.height * .2); y < image.height * .8; y += 2) {
+      for (let x = 1; x < image.width - 1; x += 2) {
+        const offset = (y * image.width + x) * 4;
+        const bg = [...pixels.slice(offset, offset + 3)];
+        const fg = bg.map((c, i) => ink[i] * alpha + c * (1 - alpha));
+        const a = luminance(fg), b = luminance(bg);ratios.push((Math.max(a, b) + .05) / (Math.min(a, b) + .05));
+      }
+    }
+    return Math.min(...ratios);
+  }, { background, foreground: metric.foreground, opacity: metric.opacity });
+  delete metric.clip;
+  return metric;
 }
 
 async function joinPlayer(browser, game, name, code, errors, players) {
@@ -184,6 +231,9 @@ async function main() {
         result.checks.push({ afterJoin: true, ...await roomCodeMetrics(host.page) });
         assert.ok(result.checks.every(check => check.visible && check.inViewport && check.value === code),
           "The confirmed room code must be readable in the host lobby at every viewport and after joining.");
+        assert.ok(result.checks.every(check => check.fontSize >= 28 && check.contrastRatio >= 4.5),
+          "Room codes need at least 28px type and 4.5:1 contrast against the rendered background: " +
+          JSON.stringify(result.checks.map(({width,fontSize,contrastRatio})=>({width,fontSize,contrastRatio}))));
         await checkSharedScreenLifecycle(browser, game, code, result, players);
         assert.deepEqual(result.errors, [], "Unexpected browser runtime error");
       } catch (error) {
@@ -203,14 +253,14 @@ async function main() {
         }
       }
       results.push(result);
-      console.log(`${game}: ${result.failure ? "FAIL " + result.failure : "PASS create / visible code / join"}`);
+      console.log(`${game}: ${result.failure ? "FAIL " + result.failure : "PASS create / readable code (size + pixel contrast) / join"}`);
     }
   } finally {
     await browser.close();
   }
   fs.writeFileSync(path.join(output, "report.json"), JSON.stringify({
     generatedAt: new Date().toISOString(), origin,
-    coverage: "Real local server, browser host creation and guest joining, three host viewport sizes. Avalon, Codenames and Dobble also verify clipboard, minimum players, start and return to lobby after a departure. No physical-device or production validation.",
+    coverage: "Real local server, browser host creation and guest joining, three host viewport sizes, including minimum 28px room-code size and 4.5:1 contrast against rendered background pixels. Avalon, Codenames and Dobble also verify clipboard, minimum players, start and return to lobby after a departure. No physical-device or production validation.",
     results
   }, null, 2));
   console.log(`${results.filter(result => !result.failure).length}/${results.length} games passed`);

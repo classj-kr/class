@@ -89,6 +89,9 @@ h1,h2,h3,p{margin-top:0}
 .resultModal{text-align:center;width:min(460px,100%)}
 .resultModal .outcome{margin:4px 0 6px;font-size:clamp(26px,6vw,36px);font-weight:950;color:var(--accent)}
 #roomShare{padding-left:32px}
+
+/* Keep the shared room number prominent without changing game-board typography. */
+#roomCode,#roomShare #gameRoomCode{font-size:clamp(36px,8vw,44px);line-height:1.15;font-variant-numeric:tabular-nums}
 </style>
 <script src="../../../assets/network/game-network.js?v=20260821"></script>
 <script src="../../../assets/network/multiplayer-lobby.js?v=20260906b"></script>

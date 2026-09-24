@@ -94,7 +94,17 @@ button { -webkit-tap-highlight-color: transparent; }
 button:disabled { cursor: not-allowed; opacity: .38; box-shadow: none; transform: none; }
 
 /* Lobby */
-#lobbyScreen { width: min(760px, 100%); margin: 0 auto; }
+#lobbyScreen {
+  width: min(760px, 100%); margin: 0 auto;
+  --mp-card-background: #f8f5ed;
+  --mp-accent: #142238;
+  --mp-status-color: #35445a;
+  --mp-player-background: #fffdf7;
+  --mp-player-color: #142238;
+  --mp-input-background: #fffdf7;
+  --mp-input-color: #142238;
+  --mp-warning: #a12725;
+}
 #lobbyScreen .title { margin: 2px 0; font-size: clamp(34px, 5.2vw, 50px); line-height: 1; letter-spacing: -.045em; }
 #lobbyScreen .subtitle { margin: 2px 0 0; color: var(--muted); }
 #lobbyScreen .mp-lobby-player:not(.me) { border-color: #aab2b8; background: #fffdf7; color: #142238; }
