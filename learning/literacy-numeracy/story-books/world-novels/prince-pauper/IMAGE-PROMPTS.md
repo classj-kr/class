@@ -156,7 +156,7 @@ The Yorkshire man: a thin farmer with a quiet, steady, sorrowful face.
 | `images/story-10-a.webp` | Westminster Abbey packed with peers, the Archbishop lifting the crown above a small boy's head, everything gold and candlelight. |
 | `images/story-10-b.webp` | The same instant from the back of the nave: a barefoot boy in rags walking up the centre aisle, every head turning, guards starting toward him. |
 
-## 11장 · 옥새가 어디 있느냐
+## 11장 · 증거가 있어야 합니다
 
 | 파일명 | 장면 |
 |---|---|

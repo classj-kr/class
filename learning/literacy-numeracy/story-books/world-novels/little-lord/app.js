@@ -215,7 +215,7 @@ const CHAPTERS = [
     },
     {
         num: 8,
-        title: "지붕이 고쳐지다",
+        title: "언쇼가 달라지다",
         emoji: "🔨",
         art: ["story-08-a.webp", "story-08-b.webp"],
         paras: [

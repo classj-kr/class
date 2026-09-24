@@ -286,7 +286,7 @@ const CHAPTERS = [
     },
     {
         num: 10,
-        title: "다시 사람이 되는 값",
+        title: "올빼미가 한 말",
         emoji: "🪶",
         art: ["story-10-a.webp", "story-10-b.webp"],
         paras: [
@@ -610,7 +610,7 @@ const EN = {
             ]
         },
         {
-            title: 'The Price of Being Human Again',
+            title: 'What the Owls Said',
             paras: [
                 `But nobody knew how to become a human again. It seemed it might work if he met the tomte again, but nobody had seen the tomte since. The chest in the house was as it had been. Nils asked many animals. He asked the crow and he asked the squirrel. They all said they did not know. The tomte's business, they said, only the tomte knows. Then one day he heard an answer.`,
                 `He heard an owl telling it. It was said at night, up on a branch.`,

@@ -110,14 +110,14 @@ same clothes, same face.
 | `images/03-bread.webp` | A meadow with a stone bread oven whose door stands open, smoke curling out, a girl scooping golden loaves onto a paddle with reddened hands, homely and charming. 〔이 쪽에 실린 글 (5/16) — 그림에 글자는 넣지 마세요. 왼쪽: 한참을 걷는데 어디선가 목소리가 났습니다. 저를 꺼내 주세요! 다 타 버리겠어요! 아이는 걸음을 멈추고 두리번거렸지요. 길가에 빵 굽는 가마가 하나 있었습니다. 문틈으로 연기가 새어 나오고 있었지요. / 오른쪽: 가장자리가 벌써 거뭇해지고 있었지요. 아이는 얼른 주걱을 찾아 들었습니다. 그러고는 빵을 하나하나 꺼냈지요. 가마 안에서 뜨거운 김이 확 올라왔습니다. 뜨거워서 손이 발갛게 익었지만 멈추지 않았지요. 마지막 하나까지 다 꺼냈습니다.〕 |
 | `images/03-bread-2.webp` | Golden loaves laid out neatly to cool beside a stone oven while a girl walks on down a sunlit meadow path, warm and satisfying. 〔이 쪽에 실린 글 (6/16) — 그림에 글자는 넣지 마세요. 왼쪽: 빵을 다 꺼내고 나자 목소리가 다시 났습니다. 고마워요. 하마터면 새까맣게 탈 뻔했어요. 아이는 빵을 가지런히 늘어놓았습니다. 손을 호호 불면서요. / 오른쪽: 그러고는 손을 툭툭 털고 다시 길을 걸었습니다. 뒤에서 고소한 냄새가 따라왔지요. 아이는 조금 기분이 좋아졌습니다. 남을 도우니 마음이 가벼웠지요. 낯선 곳인데도 무섭지가 않았지요. 들판에는 해가 따뜻하게 내리쬐었습니다. 바람에 풀 냄새가 실려 왔지요.〕 |
 
-## 4장 · 사과를 흔들어 주세요
+## 4장 · 사과나무 아래에서
 
 | 파일명 | 장면 |
 |---|---|
 | `images/04-apples.webp` | A meadow apple tree bowed almost to the ground under its fruit, a girl hugging the trunk and shaking hard as apples rain down on her, bright and lively. 〔이 쪽에 실린 글 (7/16) — 그림에 글자는 넣지 마세요. 왼쪽: 조금 더 가니 사과나무가 서 있었습니다. 가지가 땅에 닿을 만큼 늘어져 있었지요. 저를 좀 흔들어 주세요. 열매가 너무 무거워서 가지가 부러지겠어요. 아이는 소리 나는 쪽을 올려다보았습니다. / 오른쪽: 그러고는 나무 앞으로 다가갔지요. 두 팔로 줄기를 안고 힘껏 흔들었지요. 사과가 우수수 떨어졌습니다. 머리에도 어깨에도 사과가 부딪혔지요. 아이는 나무가 가벼워질 때까지 흔들었습니다. 팔이 뻐근했지만 그만두지 않았지요. 머리에 나뭇잎이 잔뜩 앉았습니다.〕 |
 | `images/04-apples-2.webp` | A girl stacking apples neatly in the grass under a relieved apple tree that lifts its branches, then walking on eating one, a cottage visible far off, satisfying. 〔이 쪽에 실린 글 (8/16) — 그림에 글자는 넣지 마세요. 왼쪽: 아이는 떨어진 사과를 하나하나 주웠습니다. 풀밭에 가지런히 쌓아 놓았지요. 벌레 먹은 것은 따로 골라 두었습니다. 나무가 홀가분한 듯 가지를 폈지요. 잎사귀가 사르르 흔들렸습니다. 이제야 살 것 같네요! / 오른쪽: 고마워요. 조심해서 가세요. 아이는 사과 하나를 얻어 들고 다시 걸었습니다. 아삭아삭 씹으니 참 달았지요. 들판 저쪽에 작은 집이 보이기 시작했습니다. 굴뚝에서 연기가 오르고 있었지요. 아이는 그리로 걸음을 옮겼습니다.〕 |
 
-## 5장 · 이불을 터는 할머니
+## 5장 · 홀레 할머니의 집
 
 | 파일명 | 장면 |
 |---|---|

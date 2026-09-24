@@ -62,14 +62,14 @@ with a short beard and a green cloak.
 | `images/02-swans.webp` | Eleven great white swans rising from a castle and circling three times before flying toward the sea, empty princes' beds below, dramatic and moving. 〔이 쪽에 실린 글 (3/16) — 그림에 글자는 넣지 마세요. 왼쪽: 어느 날 아침이었습니다. 궁궐이 이상하게 조용했지요. 왕자들의 방이 텅 비어 있었습니다. 침대는 손도 대지 않은 채였지요. 사람들이 온 궁궐을 뒤졌습니다. 금관 열한 개만 나란히 놓여 있었지요. / 오른쪽: 그때 창밖에서 커다란 새 울음소리가 났습니다. 하늘에 하얀 새 열한 마리가 날고 있었지요. 목이 길고 날개가 넓은 백조들이었습니다. 백조들은 궁궐을 세 바퀴 돌았지요. 그러고는 바다 쪽으로 사라졌습니다. 울음소리가 오래도록 하늘에 남았습니다.〕 |
 | `images/02-swans-2.webp` | A grown girl turned away at a castle gate by a cold queen, then setting out alone along a road toward the distant sea, wistful and determined. 〔이 쪽에 실린 글 (4/16) — 그림에 글자는 넣지 마세요. 왼쪽: 엘리사는 시골집에서 그 소식을 들었습니다. 오빠들이 백조가 되었다니요? 엘리사는 그날부터 잠을 이루지 못했지요. 열다섯 살이 되던 해였습니다. 엘리사는 궁궐로 돌아가기로 했지요. / 오른쪽: 저런 아이는 내 딸이 아니다. 엘리사는 궁궐 밖으로 쫓겨났지요. 갈 곳이 없었습니다. 엘리사는 오빠들을 찾기로 했지요. 백조들이 날아간 바다 쪽으로 걸었습니다.〕 |
 
-## 3장 · 바닷가에서의 재회
+## 3장 · 몇 해 만의 만남
 
 | 파일명 | 장면 |
 |---|---|
 | `images/03-reunion.webp` | A rocky sea islet at sunset where a travel-worn girl watches eleven white swans descending from a golden sky, waves breaking below, beautiful. 〔이 쪽에 실린 글 (5/16) — 그림에 글자는 넣지 마세요. 왼쪽: 엘리사는 몇 날 며칠을 걸었습니다. 숲을 지나고 들을 지났지요. 나무 열매를 따 먹으며 버텼습니다. 발이 부르트고 옷이 해졌지요. 마침내 바닷가에 닿았습니다. 짠 바람이 얼굴을 때렸지요. / 오른쪽: 해가 뉘엿뉘엿 넘어갈 무렵이었지요. 하늘에서 하얀 것들이 내려왔습니다. 백조 열한 마리였지요. 날개 소리가 파도 소리보다 컸습니다. 엘리사는 벌떡 일어났습니다. 가슴이 터질 것 같았지요.〕 |
 | `images/03-reunion-2.webp` | Eleven swans transforming into young princes as the sun sets on a rocky islet, embracing a weeping girl, deeply emotional golden light. 〔이 쪽에 실린 글 (6/16) — 그림에 글자는 넣지 마세요. 왼쪽: 해가 물속으로 넘어갔습니다. 그 순간 백조들의 깃털이 벗겨졌지요. 오빠들의 모습이 드러났습니다. 엘리사는 그대로 달려갔지요. 오빠! / 오른쪽: 오빠들이 동생을 끌어안았습니다. 우리는 해가 뜨면 다시 백조가 된단다. 밤에만 사람으로 돌아올 수 있어.〕 |
 
-## 4장 · 쐐기풀 옷
+## 4장 · 꿈에 나타난 노인
 
 | 파일명 | 장면 |
 |---|---|

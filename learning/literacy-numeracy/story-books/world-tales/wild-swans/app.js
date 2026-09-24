@@ -69,7 +69,7 @@ const CHAPTERS = [
     },
     {
         "num": 3,
-        "title": "3장 · 바닷가에서의 재회",
+        "title": "3장 · 몇 해 만의 만남",
         "beats": [
             {
                 "art": "03-reunion.webp",
@@ -106,7 +106,7 @@ const CHAPTERS = [
     },
     {
         "num": 4,
-        "title": "4장 · 쐐기풀 옷",
+        "title": "4장 · 꿈에 나타난 노인",
         "beats": [
             {
                 "art": "04-nettles.webp",
@@ -646,7 +646,7 @@ const EN = {
         },
         {
             num: 3,
-            title: 'Chapter 3 · Together Again by the Sea',
+            title: 'Chapter 3 · Together After Years',
             beats: [
                 {
                     art: '03-reunion.webp',
@@ -684,7 +684,7 @@ const EN = {
         },
         {
             num: 4,
-            title: 'Chapter 4 · The Nettle Shirts',
+            title: 'Chapter 4 · The Old Man in the Dream',
             beats: [
                 {
                     art: '04-nettles.webp',

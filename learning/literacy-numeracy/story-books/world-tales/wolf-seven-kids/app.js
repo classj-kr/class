@@ -71,7 +71,7 @@ const CHAPTERS = [
     },
     {
         "num": 3,
-        "title": "3장 · 하얀 발과 고운 목소리",
+        "title": "3장 · 문이 열렸다",
         "beats": [
             {
                 "art": "03-disguise.webp",
@@ -108,7 +108,7 @@ const CHAPTERS = [
     },
     {
         "num": 4,
-        "title": "4장 · 시계 속에 숨은 막내",
+        "title": "4장 · 하나만 남았어요",
         "beats": [
             {
                 "art": "04-hiding.webp",
@@ -608,7 +608,7 @@ const EN = {
         },
         {
             num: 3,
-            title: 'Chapter 3 · White Feet, Soft Voice',
+            title: 'Chapter 3 · The Door Opens',
             beats: [
                 {
                     art: '03-disguise.webp',
@@ -645,7 +645,7 @@ const EN = {
         },
         {
             num: 4,
-            title: 'Chapter 4 · The Kid in the Clock',
+            title: 'Chapter 4 · Only One Left',
             beats: [
                 {
                     art: '04-hiding.webp',

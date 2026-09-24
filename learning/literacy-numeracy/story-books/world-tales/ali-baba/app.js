@@ -140,7 +140,7 @@ const CHAPTERS = [
     },
     {
         "num": 5,
-        "title": "5장 · 기름 항아리",
+        "title": "5장 · 마당의 항아리 마흔 개",
         "beats": [
             {
                 "art": "05-jars.webp",
@@ -676,7 +676,7 @@ const EN = {
         },
         {
             num: 5,
-            title: 'Chapter 5 · The Oil Jars',
+            title: 'Chapter 5 · Forty Jars in the Yard',
             beats: [
                 {
                     art: '05-jars.webp',

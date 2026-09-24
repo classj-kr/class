@@ -387,11 +387,11 @@ const QUIZ = [
         "answer": 1
     },
     {
-        "q": "막내가 집을 오래 지은 까닭은 무엇인가요?",
+        "q": "막내는 집을 다 짓고 나서 무엇을 해 보았나요?",
         "choices": [
-            "벽돌을 쌓아서",
-            "짚을 기대 세워서",
-            "가지를 모아서"
+            "벽을 발로 툭 차 보았다",
+            "지붕에 올라가 뛰어 보았다",
+            "형들을 불러 재워 보았다"
         ],
         "answer": 0
     },
@@ -762,8 +762,8 @@ const EN = {
             answer: 1
         },
         {
-            q: 'Why did the youngest pig take so long?',
-            choices: ['He laid bricks', 'He leaned straw up', 'He gathered sticks'],
+            q: 'What did the youngest pig do once the house was finished?',
+            choices: ['He gave the wall a kick to test it', 'He climbed up and jumped on the roof', 'He asked his brothers to sleep in it'],
             answer: 0
         },
         {

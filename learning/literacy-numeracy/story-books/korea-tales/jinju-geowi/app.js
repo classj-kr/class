@@ -116,7 +116,7 @@ const CHAPTERS = [
     },
     {
         num: 3,
-        title: "3장 · 아침에 반짝인 것",
+        title: "3장 · 진작 말하지 않은 까닭",
         beats: [
             {
                 art: "07-night.webp",
@@ -335,7 +335,7 @@ const EN = {
         },
         {
             num: 3,
-            title: "Chapter 3 · What Shone in the Morning",
+            title: "Chapter 3 · Why He Had Not Spoken",
             beats: [
                 {
                     art: "07-night.webp",

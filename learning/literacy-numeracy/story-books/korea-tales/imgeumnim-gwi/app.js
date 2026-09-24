@@ -72,7 +72,7 @@ const CHAPTERS = [
     },
     {
         num: 2,
-        title: "2장 · 여우를 쫓다가",
+        title: "2장 · 덤불 위로 솟은 것",
         beats: [
             {
                 art: "05-aim.webp",
@@ -392,7 +392,7 @@ const EN = {
         },
         {
             num: 2,
-            title: "Chapter 2 · Chasing a Fox",
+            title: "Chapter 2 · What Stuck Up Above the Bush",
             beats: [
                 {
                     art: "05-aim.webp",

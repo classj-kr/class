@@ -144,7 +144,7 @@ The parrot: a green parrot that appears from chapter 8 on.
 | `images/story-07-a.webp` | Green barley shoots growing improbably out of bare ground outside a palisade, a man on his knees in front of them. |
 | `images/story-07-b.webp` | A hollowed tree-stump mortar, clay pots standing in the embers of a fire, and a single small dark loaf on a board. |
 
-## 8장 · 염소와 앵무새
+## 8장 · 섬의 식구들
 
 | 파일명 | 장면 |
 |---|---|

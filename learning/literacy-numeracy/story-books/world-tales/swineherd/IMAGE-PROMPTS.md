@@ -77,14 +77,14 @@ waiting: a flock of identically dressed girls who move as one.
 | `images/04-pot.webp` | A small clay pot ringed with tiny bells steaming on a fire, musical notes rising, a swineherd holding his hand in the steam and seeing village kitchens, magical. 〔이 쪽에 실린 글 (7/16) — 그림에 글자는 넣지 마세요. 왼쪽: 왕자가 만든 것은 작은 냄비였습니다. 가장자리에 방울이 잔뜩 달려 있었지요. 냄비에 물을 붓고 불을 지폈습니다. 물이 끓기 시작하자 방울이 울렸지요. 딸랑딸랑, 노랫가락이 흘러나왔습니다. 그것만이 아니었지요. / 오른쪽: 냄비에서 나는 김에 손을 대면 신기한 일이 벌어졌습니다. 온 마을 부엌이 눈앞에 떠오르는 것이었지요. 어느 집이 무슨 음식을 하는지 다 알 수 있었습니다. 오늘 저 집은 팬케이크를 굽는군! 김에서 고소한 냄새까지 났지요. 왕자는 코를 킁킁거렸습니다. 왕자는 혼자 웃었지요.〕 |
 | `images/04-pot-2.webp` | A lady in waiting hearing bell music over a wall and running to tell a princess who leaps up from her balcony chair in excitement, lively and comic. 〔이 쪽에 실린 글 (8/16) — 그림에 글자는 넣지 마세요. 왼쪽: 냄비 소리는 담을 넘어 퍼졌습니다. 지나가던 시녀가 그 소리를 들었지요. 어머, 저게 무슨 소리야? 시녀는 궁궐로 달려가 공주에게 알렸습니다. 공주는 하품을 하다 눈이 번쩍 뜨였지요. / 오른쪽: 공주는 발코니로 나가 귀를 기울였습니다. 멀리서 딸랑딸랑 소리가 들려왔지요. 공주는 그 자리에서 발을 동동 굴렀습니다. 저걸 꼭 가져야겠어! 얼른 시녀를 뒷마당으로 보냈지요.〕 |
 
-## 5장 · 열 번의 입맞춤
+## 5장 · 냄비의 값
 
 | 파일명 | 장면 |
 |---|---|
 | `images/05-bargain.webp` | A lady in waiting bargaining across a pig-yard fence with a calm soot-smudged swineherd holding a belled pot, then walking back blushing furiously, comic. 〔이 쪽에 실린 글 (9/16) — 그림에 글자는 넣지 마세요. 왼쪽: 시녀가 돼지우리로 갔습니다. 저 냄비를 얼마에 파시겠소? 돼지치기는 잠시 생각하는 척했지요. 그러고는 태연하게 대답했습니다. / 오른쪽: 뭐, 뭐라고요? 열 번입니다. 하나도 깎아 드릴 수 없습니다. 시녀는 얼굴이 새빨개져서 돌아갔습니다. 그러고는 그대로 전했지요. 공주는 발을 굴렀습니다.〕 |
 | `images/05-bargain-2.webp` | A princess slamming a door in outrage, then pacing and reopening it with a sly look while her ladies exchange alarmed glances, comic inner struggle. 〔이 쪽에 실린 글 (10/16) — 그림에 글자는 넣지 마세요. 왼쪽: 무례하기 짝이 없구나! 당장 내쫓아 버려라! 공주는 문을 쾅 닫고 들어갔습니다. / 오른쪽: 결국 다시 문을 열었지요. …딱 열 번이라고 했지? 시녀들이 서로 얼굴을 마주 보았습니다.〕 |
 
-## 6장 · 시녀들의 담장
+## 6장 · 뒷마당에서
 
 | 파일명 | 장면 |
 |---|---|

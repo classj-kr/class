@@ -163,7 +163,7 @@ const CHAPTERS = [
     },
     {
         num: 8,
-        title: "염소와 앵무새",
+        title: "섬의 식구들",
         emoji: "🦜",
         art: ["story-08-a.webp", "story-08-b.webp"],
         paras: [

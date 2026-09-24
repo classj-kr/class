@@ -88,7 +88,7 @@ const CHAPTERS = [
     },
     {
         num: 2,
-        title: "2장 · 그림자 연못",
+        title: "2장 · 연못가에서",
         beats: [
             {
                 art: "06-refused.webp",
@@ -379,7 +379,7 @@ const EN = {
         },
         {
             num: 2,
-            title: "Chapter 2 · The Shadow Pond",
+            title: "Chapter 2 · By the Pond",
             beats: [
                 {
                     art: "06-refused.webp",

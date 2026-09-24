@@ -72,7 +72,7 @@ const CHAPTERS = [
     },
     {
         num: 2,
-        title: "2장 · 나무째 지고 온 아이",
+        title: "2장 · 깊은 산에서 돌아온 밤",
         beats: [
             {
                 art: "05-tie.webp",
@@ -345,7 +345,7 @@ const EN = {
         },
         {
             num: 2,
-            title: "Chapter 2 · Home with the Tree",
+            title: "Chapter 2 · Back from the Deep Mountain",
             beats: [
                 {
                     art: "05-tie.webp",

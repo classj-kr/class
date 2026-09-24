@@ -101,7 +101,7 @@ const CHAPTERS = [
     },
     {
         "num": 4,
-        "title": "4장 · 보석 골짜기",
+        "title": "4장 · 나갈 길 없는 골짜기",
         "beats": [
             {
                 "art": "04-valley.webp",
@@ -691,7 +691,7 @@ const EN = {
         },
         {
             num: 4,
-            title: 'Chapter 4 · The Valley of Jewels',
+            title: 'Chapter 4 · The Valley with No Way Out',
             beats: [
                 {
                     art: '04-valley.webp',

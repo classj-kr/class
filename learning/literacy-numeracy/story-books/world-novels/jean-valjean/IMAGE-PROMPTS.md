@@ -154,7 +154,7 @@ Marius: a slim serious young man of twenty in a shabby black coat.
 | `images/story-09-a.webp` | A bare hospital ward: a gaunt young woman propped on pillows smiling and pointing toward a curtain, a white-haired man seated holding her hand, a nun in the background. |
 | `images/story-09-b.webp` | The same ward an instant later: a tall inspector's hand clamped on the seated man's shoulder, the woman fallen back on the pillow, the man turning his head with a terrible calm. |
 
-## 10장 · 몽페르메유의 여관
+## 10장 · 코제트
 
 | 파일명 | 장면 |
 |---|---|
@@ -189,14 +189,14 @@ Marius: a slim serious young man of twenty in a shabby black coat.
 | `images/story-14-a.webp` | Behind the barricade at night: young men firing over piled stones and furniture, powder smoke, a grey-haired man climbing the pile to drag a wounded boy down. |
 | `images/story-14-b.webp` | A narrow lane behind the barricade: a grey-haired man cutting the ropes binding a rigid police inspector, the inspector staring at him without understanding, a knife in the man's hand. |
 
-## 15장 · 하수도
+## 15장 · 마리우스를 업고
 
 | 파일명 | 장면 |
 |---|---|
 | `images/story-15-a.webp` | Deep in the Paris sewers: a man wading chest-deep in mud through a stone tunnel, holding an unconscious young man up above his head with both arms, near total darkness. |
 | `images/story-15-b.webp` | A locked iron grating at a sewer mouth opening onto the river at dawn; a shabby innkeeper holding out a key from the shadows, the exhausted man with the body on his back facing him. |
 
-## 16장 · 은촛대 곁에서
+## 16장 · 마지막 밤
 
 | 파일명 | 장면 |
 |---|---|

@@ -82,7 +82,7 @@ same clothes, same face.
 | `images/03-share.webp` | A cottage where a mother hands a patched-coat youngest son a hard crust and sour beer while two brothers snigger from bed, and the son setting off cheerfully into a sunny forest. 〔이 쪽에 실린 글 (5/16) — 그림에 글자는 넣지 마세요. 왼쪽: 제가 나무를 하러 가겠어요. 형들이 이불 속에서 코웃음을 쳤습니다. 네가? 도끼나 들 줄 알아? / 오른쪽: 어머니는 딱딱하게 굳은 빵을 싸 주었습니다. 마실 것은 시어 버린 맥주뿐이었지요. 막내는 그것을 들고 기분 좋게 나섰습니다. 이거면 넉넉하지요. 숲에 도착하자 새들이 지저귀었습니다. 막내는 소매를 걷고 나무를 살폈지요.〕 |
 | `images/03-share-2.webp` | A sunny forest clearing where a patched-coat young man spreads a cloth to share with a small bearded old man, the hard crust becoming a fine loaf and the beer becoming wine, magical. 〔이 쪽에 실린 글 (6/16) — 그림에 글자는 넣지 마세요. 왼쪽: 점심때가 되자 노인이 또 나타났습니다. 배가 몹시 고픕니다. 조금만 나눠 주시겠습니까? / 오른쪽: 그런데 딱딱하던 빵이 고운 빵으로 바뀌어 있었지요. 신 맥주는 향긋한 포도주가 되어 있었습니다. 막내는 눈을 동그랗게 떴지요. 노인은 빙그레 웃기만 했습니다. 두 사람은 나란히 앉아 배불리 먹었습니다. 이야기도 도란도란 나누었지요.〕 |
 
-## 4장 · 나무 밑동의 거위
+## 4장 · 금빛 깃털
 
 | 파일명 | 장면 |
 |---|---|

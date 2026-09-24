@@ -89,7 +89,7 @@ bundled figures hurrying past. Families glimpsed through lit windows.
 | `images/05-tree.webp` | A vision of an enormous decorated tree blazing with thousands of candles, and as the match dies the candle flames rising into the night sky to become stars, breathtaking. 〔이 쪽에 실린 글 (9/14) — 그림에 글자는 넣지 마세요. 왼쪽: 이번에는 커다란 나무가 보였습니다. 천장에 닿을 만큼 큰 나무였지요. 가지마다 촛불이 켜져 있었습니다. 몇 천 개는 되어 보였지요. 반짝이는 장식이 가지 끝에서 흔들렸습니다. / 오른쪽: 아이는 저도 모르게 두 손을 뻗었지요. 그러자 성냥이 또 꺼졌습니다. 그런데 촛불만은 사라지지 않았지요. 위로, 위로 자꾸 올라가더니 하늘에 가서 걸렸습니다. 별이 된 것이었지요.〕 |
 | `images/05-tree-2.webp` | A night sky with a shooting star trailing light above a huddled girl, a soft memory of an old woman holding her on her knee glowing at the edge of the scene, tender and sad. 〔이 쪽에 실린 글 (10/14) — 그림에 글자는 넣지 마세요. 왼쪽: 그때 별 하나가 긴 빛줄기를 그리며 흘렀습니다. 아이는 할머니가 해 준 말을 떠올렸지요. 별이 떨어지면 말이야. 누군가 하늘로 가는 거란다. / 오른쪽: 우리 아가, 춥지? 아이를 아껴 준 사람은 할머니뿐이었지요. 무릎에 앉혀 주고 노래도 불러 주었습니다. 할머니, 보고 싶어요.〕 |
 
-## 6장 · 할머니
+## 6장 · 마지막 성냥들
 
 | 파일명 | 장면 |
 |---|---|

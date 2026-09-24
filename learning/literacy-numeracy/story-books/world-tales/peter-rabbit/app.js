@@ -100,7 +100,7 @@ const CHAPTERS = [
     },
     {
         "num": 4,
-        "title": "4장 · 갈퀴를 든 아저씨",
+        "title": "4장 · 맨발로 달리다",
         "beats": [
             {
                 "art": "04-chase.webp",
@@ -133,7 +133,7 @@ const CHAPTERS = [
     },
     {
         "num": 5,
-        "title": "5장 · 그물에 걸린 단추",
+        "title": "5장 · 마지막 힘을 다해",
         "beats": [
             {
                 "art": "05-net.webp",
@@ -682,7 +682,7 @@ const EN = {
         },
         {
             num: 4,
-            title: 'Chapter 4 · The Man with the Rake',
+            title: 'Chapter 4 · Running Barefoot',
             beats: [
                 {
                     art: '04-chase.webp',
@@ -728,7 +728,7 @@ const EN = {
         },
         {
             num: 5,
-            title: 'Chapter 5 · Buttons in the Net',
+            title: 'Chapter 5 · With His Last Strength',
             beats: [
                 {
                     art: '05-net.webp',

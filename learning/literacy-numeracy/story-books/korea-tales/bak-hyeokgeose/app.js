@@ -1,7 +1,7 @@
 const CHAPTERS = [
     {
         num: 1,
-        title: "1장 · 나정의 흰말",
+        title: "1장 · 나정 우물가",
         beats: [
             {
                 art: "01-six.webp",
@@ -292,7 +292,7 @@ const EN = {
     chapters: [
         {
             num: 1,
-            title: "Chapter 1 · The White Horse at Najeong",
+            title: "Chapter 1 · By Najeong Well",
             beats: [
                 {
                     art: "01-six.webp",

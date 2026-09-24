@@ -102,7 +102,7 @@ const CHAPTERS = [
     },
     {
         "num": 4,
-        "title": "4장 · 침대 밑의 완두콩",
+        "title": "4장 · 왕비의 꾀",
         "beats": [
             {
                 "art": "04-pea.webp",
@@ -240,7 +240,7 @@ const CHAPTERS = [
     },
     {
         "num": 8,
-        "title": "8장 · 박물관에 놓인 콩",
+        "title": "8장 · 그 콩은 지금",
         "beats": [
             {
                 "art": "08-ending.webp",
@@ -670,7 +670,7 @@ const EN = {
         },
         {
             num: 4,
-            title: 'Chapter 4 · The Pea Under the Bed',
+            title: "Chapter 4 · The Queen's Idea",
             beats: [
                 {
                     art: '04-pea.webp',
@@ -817,7 +817,7 @@ const EN = {
         },
         {
             num: 8,
-            title: 'Chapter 8 · The Pea in the Museum',
+            title: 'Chapter 8 · And the Pea?',
             beats: [
                 {
                     art: '08-ending.webp',

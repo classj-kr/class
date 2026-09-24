@@ -85,7 +85,7 @@ grand owl-like shape rather than a monster.
 | `images/05-window.webp` | A hushed ballroom where a prince raises his hand and announces his betrothal to a girl in black while a dark-cloaked figure laughs behind them, dramatic. 〔이 쪽에 실린 글 (9/16) — 그림에 글자는 넣지 마세요. 왼쪽: 왕자는 밤이 깊도록 춤을 추었습니다. 다른 아가씨는 눈에 들어오지도 않았지요. 이윽고 왕자가 손을 들었습니다. 악사들이 연주를 멈췄지요. 무도회장이 조용해졌습니다. 사람들이 왕자를 쳐다보았지요. / 오른쪽: 왕자는 큰 소리로 말했지요. 모두 들으십시오. 저는 이분과 혼인하겠습니다!〕 |
 | `images/05-window-2.webp` | A white swan-girl pressing against a tall ballroom window in anguish as guests turn, the prince ashen-faced and the black-gowned girl gone, powerful contrast. 〔이 쪽에 실린 글 (10/16) — 그림에 글자는 넣지 마세요. 왼쪽: 그 순간 창밖에서 흰 그림자가 스쳤습니다. 사람들이 일제히 창을 보았지요. 유리창에 오데트가 매달려 있었습니다. 두 손으로 창을 두드리고 있었지요. 얼굴이 눈물에 젖어 있었습니다. 왕자의 얼굴이 하얗게 질렸지요. 검은 옷 아가씨를 돌아보았습니다. 그 자리에는 아무도 없었지요. / 오른쪽: 검은 망토도 함께 사라졌습니다. 내가…… 내가 무슨 짓을 한 거지. 왕자는 그 자리에 주저앉을 뻔했지요. 창밖에서는 날갯짓 소리가 났습니다.〕 |
 
-## 6장 · 다시 호수로
+## 6장 · 속은 왕자
 
 | 파일명 | 장면 |
 |---|---|

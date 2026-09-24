@@ -105,7 +105,7 @@ side table, two armchairs by a coal fire, a bay window onto a foggy street.
 | `images/story-03-a.webp` | A narrow London street packed shoulder to shoulder with men who all have flaming red hair, queuing at a small office door, a stout red-haired shopkeeper among them looking bewildered. |
 | `images/story-03-b.webp` | A dark bank vault: crates stacked around, a paving stone pushed aside from below and a man's head and shoulders emerging with a lantern, while a tall figure lunges from behind the crates and a constable steps forward with handcuffs. |
 
-## 4편 · 얼룩 끈
+## 4편 · 스토크 모런
 
 | 파일명 | 장면 |
 |---|---|
@@ -119,7 +119,7 @@ side table, two armchairs by a coal fire, a bay window onto a foggy street.
 | `images/story-05-a.webp` | A Baker Street table on a winter morning: a battered old felt hat under a magnifying glass, and a uniformed commissionaire holding out his open palm with a brilliant blue gem blazing in it, the two men staring. |
 | `images/story-05-b.webp` | A crowded Covent Garden poultry market by gaslight at night: rows of hanging geese, a burly angry salesman with a ledger, a small frightened man hovering at the edge of the stall. |
 
-## 6편 · 짖지 않은 개
+## 6편 · 사라진 경주마
 
 | 파일명 | 장면 |
 |---|---|

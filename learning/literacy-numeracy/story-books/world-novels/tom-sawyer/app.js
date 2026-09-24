@@ -45,7 +45,7 @@ const CHAPTERS = [
     },
     {
         num: 2,
-        title: "울타리 칠하기",
+        title: "토요일 아침",
         emoji: "🖌️",
         art: ["story-02-a.webp", "story-02-b.webp"],
         paras: [
@@ -147,7 +147,7 @@ const CHAPTERS = [
     },
     {
         num: 5,
-        title: "피로 쓴 맹세",
+        title: "두 아이의 비밀",
         emoji: "🩸",
         art: ["story-05-a.webp", "story-05-b.webp"],
         paras: [
@@ -198,7 +198,7 @@ const CHAPTERS = [
     },
     {
         num: 7,
-        title: "자기 장례식",
+        title: "돌아온 세 아이",
         emoji: "⛪",
         art: ["story-07-a.webp", "story-07-b.webp"],
         paras: [
@@ -344,7 +344,7 @@ const CHAPTERS = [
     },
     {
         num: 12,
-        title: "사흘",
+        title: "길을 잃다",
         emoji: "🪁",
         art: ["story-12-a.webp", "story-12-b.webp"],
         paras: [
@@ -512,7 +512,7 @@ const EN = {
             ]
         },
         {
-            title: 'Whitewashing the Fence',
+            title: 'Saturday Morning',
             paras: [
                 `Saturday morning. The whole world was bright and every child had gone out to play, and only Tom stood before the fence with a bucket of whitewash and a brush. The sky was very blue.`,
                 `The fence was thirty yards long and nine feet high. There were a great many boards. Tom started to count them and stopped. Because counting seemed likely to make it worse. To Tom it was not a fence but a mountain. There was no end to it.`,
@@ -605,7 +605,7 @@ const EN = {
             ]
         },
         {
-            title: 'An Oath in Blood',
+            title: 'A Secret for Two',
             paras: [
                 `The two boys did not stop until they were inside the old tannery. A place that had closed long ago. It still smelled of leather inside. Both were gasping for breath. For a long while there was only the sound of each other's breathing. From the graveyard to town was half an hour's walk. They had run it in ten.`,
                 `"Tom, what'll we do?"<br>"I don't know. Should we tell?"<br>"No. If we tell, will that man leave us alone? That man killed somebody." Huck said.`,
@@ -650,7 +650,7 @@ const EN = {
             ]
         },
         {
-            title: 'His Own Funeral',
+            title: 'Three Boys Come Back',
             paras: [
                 `Tom crept into his own house in the middle of the night. Through the kitchen window. Tom knew the catch on that window was loose. He had gone in and out that way several times before. His clothes were soaked. A lamp was lit in the sitting room. Aunt Polly, Joe Harper's mother, Sid and Mary were sitting there.`,
                 `All their eyes were swollen. Faces that had been like that for days. Tom crawled under the bed and heard everything. Holding his breath.`,
@@ -781,7 +781,7 @@ const EN = {
             ]
         },
         {
-            title: 'Three Days',
+            title: 'Lost in the Cave',
             paras: [
                 `The two children walked in the dark. They walked touching the wall. The wall was wet. Their palms were always damp. That wetness got on their faces too. They walked holding hands. Let go, and they seemed likely to lose each other. Let go, and you must make a sound to find the other.`,
                 `How long they walked, they could not tell. Inside the cave, time seemed not to pass. They did not know whether it was day or night. They counted time by hunger. That did not last long either. Inside the cave it was always cool. A cave is the same temperature in summer and winter. So you cannot tell the season outside.`,

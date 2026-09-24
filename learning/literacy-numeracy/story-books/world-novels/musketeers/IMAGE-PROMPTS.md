@@ -91,7 +91,7 @@ Constance: a young woman of twenty-five in a modest respectable dress.
 | `images/cover.webp` (세로 2:3 비율) | A tall portrait-format cover: four men standing shoulder to shoulder in a narrow Paris street at dusk with their rapiers crossed high above them, plumed hats and cloaks, three seasoned musketeers and one much younger boy at the end of the line. The picture must bleed to all four edges: no white margin, no white border, no frame, no matting around the artwork. |
 | `images/end.webp` | Four hats laid side by side on a table beside four crossed rapiers and a folded letter, warm lamplight, an empty room. |
 
-## 1장 · 노란 말을 탄 소년
+## 1장 · 가스코뉴에서 온 소년
 
 | 파일명 | 장면 |
 |---|---|
@@ -154,14 +154,14 @@ Constance: a young woman of twenty-five in a modest respectable dress.
 | `images/story-09-a.webp` | A candlelit drawing room: a beautiful fair-haired woman turning sharply, her sleeve fallen from her shoulder, a young man across the room frozen at what he has seen. |
 | `images/story-09-b.webp` | A quiet room afterwards: a pale nobleman with an untouched glass in his hand telling something very old and very heavy, the young man listening without moving. |
 
-## 10장 · 생제르베 요새의 아침
+## 10장 · 생제르베 요새의 내기
 
 | 파일명 | 장면 |
 |---|---|
 | `images/story-10-a.webp` | A ruined bastion on a battlefield: four men calmly eating breakfast at a table laid on the parapet with a servant pouring wine, muskets propped in a row beside them. |
 | `images/story-10-b.webp` | The same men a moment later: two still seated eating while the other two fire over the wall, and a boulder being levered off the parapet onto the slope below. |
 
-## 11장 · 백지 위임장
+## 11장 · 종이 한 장
 
 | 파일명 | 장면 |
 |---|---|

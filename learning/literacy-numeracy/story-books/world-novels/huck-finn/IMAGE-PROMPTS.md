@@ -154,7 +154,7 @@ Mary Jane Wilks: a red-haired young woman of nineteen with an open kind face.
 | `images/story-09-a.webp` | A parlour full of mourners: two men embracing three weeping sisters with theatrical grief, a boy near the door watching with a set face. |
 | `images/story-09-b.webp` | A bedroom in morning light: a boy telling something urgent to a red-haired young woman who has gone very still, one hand at her throat. |
 
-## 10장 · 사십 달러
+## 10장 · 왕이 받은 값
 
 | 파일명 | 장면 |
 |---|---|
@@ -182,7 +182,7 @@ Mary Jane Wilks: a red-haired young woman of nineteen with an open kind face.
 | `images/story-13-a.webp` | A hidden riverbank camp: a wounded boy lying on a coat, another boy kneeling beside him, and a man stepping out of the bushes toward them instead of away. |
 | `images/story-13-b.webp` | A doctor working by lantern light with the man holding the lamp and steadying the patient, the whole night's work visible in both their faces. |
 
-## 14장 · 짐은 이미 자유였다
+## 14장 · 왓슨 아주머니의 유언
 
 | 파일명 | 장면 |
 |---|---|

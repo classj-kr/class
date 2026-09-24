@@ -92,14 +92,14 @@ The townspeople: a lively crowd of market folk.
 | `images/06-parents.webp` | A tower room where a princess happily tells her stout royal parents about a visitor while the king frowns and the queen looks curious, ornate robes, comic. 〔이 쪽에 실린 글 (11/16) — 그림에 글자는 넣지 마세요. 왼쪽: 어느 날 임금님과 왕비가 탑에 올라왔습니다. 공주가 부쩍 밝아진 것이 궁금했거든요. 공주는 숨기지 못하고 털어놓았지요. 하늘에서 오시는 분이 계세요. 이야기를 어찌나 재미나게 하시는지요. 공주의 얼굴이 환했습니다. / 오른쪽: 임금님은 눈살을 찌푸렸습니다. 왕비는 그래도 궁금해했지요. 이야기를 잘한다고? 우리도 한번 들어 보면 어떨까요.〕 |
 | `images/06-parents-2.webp` | A domed throne room where a young man tells a story with animated gestures, the queen dabbing her eyes and the king slapping his knee, courtiers delighted, festive. 〔이 쪽에 실린 글 (12/16) — 그림에 글자는 넣지 마세요. 왼쪽: 그날 저녁 아들이 궁궐로 갔습니다. 임금님과 왕비가 나란히 앉아 있었지요. 신하들도 빙 둘러섰습니다. 아들은 헛기침을 하고 이야기를 시작했지요. 이번에는 아주 긴 이야기였습니다. 홀 안이 물을 끼얹은 듯 조용해졌습니다. / 오른쪽: 이런 재주는 처음 보는구나! 이만한 사윗감이 어디 있겠소! 혼인 날짜가 그 자리에서 정해졌습니다. 공주는 얼굴이 발그레해졌지요. 온 나라가 잔치 준비로 들썩였습니다.〕 |
 
-## 7장 · 하늘에서 터진 불꽃
+## 7장 · 혼례 전날 밤
 
 | 파일명 | 장면 |
 |---|---|
 | `images/07-fireworks.webp` | A young man buying armfuls of fireworks at a lantern-lit market, then loading them into a trunk and rising into the night sky above a glowing city, festive. 〔이 쪽에 실린 글 (13/16) — 그림에 글자는 넣지 마세요. 왼쪽: 혼례 전날 밤이었습니다. 온 도시에 잔치가 벌어졌지요. 거리마다 등불이 걸리고 북소리가 울렸습니다. 아들은 사람들을 놀래 주고 싶었지요. 기왕이면 하늘에서 해야지. / 오른쪽: 남은 돈을 다 털어 넣었지요. 그것을 가방에 싣고 숲으로 갔습니다. 그러고는 가방을 타고 하늘로 올라갔지요. 도시가 발밑에서 반짝였습니다. 아들은 불꽃에 하나씩 불을 붙였습니다. 심지가 치익 소리를 내며 타들어 갔지요.〕 |
 | `images/07-fireworks-2.webp` | A night sky above a domed city bursting with fireworks launched from a flying trunk, crowds below cheering with upturned faces, spectacular and joyful. 〔이 쪽에 실린 글 (14/16) — 그림에 글자는 넣지 마세요. 왼쪽: 하늘에서 불꽃이 펑펑 터졌습니다. 빨강 파랑 노랑 빛이 쏟아졌지요. 사람들이 고개를 젖히고 환호했습니다. 저게 대체 뭐야! 하늘의 신이 축복을 내리신다! / 오른쪽: 아들은 그것을 흐뭇하게 내려다보았습니다. 가슴이 뿌듯했지요. 불꽃이 다 떨어질 무렵 가방을 내렸습니다. 숲 빈터에 가방을 세워 두었지요. 그러고는 잔치 구경을 하러 마을로 내려갔습니다. 아들은 뒤도 돌아보지 않았지요.〕 |
 
-## 8장 · 타 버린 가방
+## 8장 · 하늘을 보는 공주
 
 | 파일명 | 장면 |
 |---|---|

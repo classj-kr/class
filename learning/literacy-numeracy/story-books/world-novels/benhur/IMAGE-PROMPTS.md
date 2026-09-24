@@ -110,7 +110,7 @@ The four horses: matched Arabian bays with a white one on the left.
 | `images/story-01-a.webp` | A Jerusalem street: a Roman patrol marching through, and the local people standing back against the walls in silence, no one meeting the soldiers' eyes. |
 | `images/story-01-b.webp` | A courtyard garden: two young men of the same age facing each other, one in a Judean robe and one in Roman dress, the friendly moment already gone out of both faces. |
 
-## 2장 · 떨어진 기와
+## 2장 · 행렬이 지나가던 날
 
 | 파일명 | 장면 |
 |---|---|

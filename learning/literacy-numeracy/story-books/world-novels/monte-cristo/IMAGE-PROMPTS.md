@@ -90,7 +90,7 @@ Haydee: a young Greek woman with dark hair, in embroidered Greek dress.
 | `images/cover.webp` (세로 2:3 비율) | A tall portrait-format cover: a pale man in an immaculate black coat standing at a high window at night looking down over the rooftops of Paris, an old iron key in his hand; faint behind him, half in shadow, a barred prison window and the sea. The picture must bleed to all four edges: no white margin, no white border, no frame, no matting around the artwork. |
 | `images/end.webp` | An empty stone shore at sunrise with a single white sail already far out on the horizon, a folded letter left on the rock in the foreground. |
 
-## 1장 · 파라온 호가 돌아오다
+## 1장 · 돌아온 배
 
 | 파일명 | 장면 |
 |---|---|

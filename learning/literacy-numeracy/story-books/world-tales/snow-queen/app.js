@@ -67,7 +67,7 @@ const CHAPTERS = [
     },
     {
         "num": 3,
-        "title": "3장 · 하얀 썰매",
+        "title": "3장 · 사라진 카이",
         "beats": [
             {
                 "art": "03-sleigh.webp",
@@ -635,7 +635,7 @@ const EN = {
         },
         {
             num: 3,
-            title: 'Chapter 3 · The White Sleigh',
+            title: 'Chapter 3 · Kai Is Gone',
             beats: [
                 {
                     art: '03-sleigh.webp',

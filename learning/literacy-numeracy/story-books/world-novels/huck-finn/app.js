@@ -281,7 +281,7 @@ const CHAPTERS = [
     },
     {
         num: 10,
-        title: "사십 달러",
+        title: "왕이 받은 값",
         emoji: "🗞️",
         art: ["story-10-a.webp", "story-10-b.webp"],
         paras: [
@@ -392,7 +392,7 @@ const CHAPTERS = [
     },
     {
         num: 14,
-        title: "짐은 이미 자유였다",
+        title: "왓슨 아주머니의 유언",
         emoji: "📜",
         art: ["story-14-a.webp", "story-14-b.webp"],
         paras: [

@@ -137,7 +137,7 @@ Mrs Rachel Lynde: a stout busy woman always with knitting in her hands.
 | `images/story-07-a.webp` | A one-room country schoolhouse: a boy leaning across the aisle tugging a red braid with a grin, the girl already rising out of her seat, other children turning to look. |
 | `images/story-07-b.webp` | The same room a second later: a slate broken clean in two, the boy sitting stunned, the girl standing over him breathing hard, the teacher rising at the front. |
 
-## 8장 · 딸기 물
+## 8장 · 다이애나를 초대한 날
 
 | 파일명 | 장면 |
 |---|---|

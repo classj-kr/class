@@ -56,7 +56,7 @@ const CHAPTERS = [
     },
     {
         num: 3,
-        title: "장의사 집",
+        title: "소어베리 씨네",
         emoji: "⚰️",
         art: ["story-03-a.webp", "story-03-b.webp"],
         paras: [
@@ -81,7 +81,7 @@ const CHAPTERS = [
     },
     {
         num: 4,
-        title: "런던까지 이레",
+        title: "런던으로 가는 길",
         emoji: "🥾",
         art: ["story-04-a.webp", "story-04-b.webp"],
         paras: [

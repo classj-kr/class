@@ -30,7 +30,7 @@ const CHAPTERS = [
     },
     {
         num: 2,
-        title: "유리병 상자",
+        title: "손님의 짐",
         emoji: "🧪",
         art: ["story-02-a.webp", "story-02-b.webp"],
         paras: [
@@ -317,7 +317,7 @@ const EN = {
             ]
         },
         {
-            title: 'The Crates of Bottles',
+            title: "The Stranger's Luggage",
             paras: [
                 `The next day the guest's luggage arrived. It came from the station by cart. The carter grumbled that they were heavy. Every time a crate was set down, glass clinked inside. The carter was told several times to be careful. Each crate was packed with straw. There were six crates. Two carters could barely carry them.`,
                 `Inside were bottles, full to the brim. Big bottles and small, coloured bottles, bottles with glass stoppers. More than a hundred of them. Mrs Hall had never seen so many bottles in one place. Not even at the chemist's. So she guessed he was a doctor.`,

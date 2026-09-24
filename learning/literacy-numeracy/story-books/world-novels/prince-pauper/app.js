@@ -240,7 +240,7 @@ const CHAPTERS = [
     },
     {
         num: 11,
-        title: "옥새가 어디 있느냐",
+        title: "증거가 있어야 합니다",
         emoji: "📜",
         art: ["story-11-a.webp", "story-11-b.webp"],
         paras: [

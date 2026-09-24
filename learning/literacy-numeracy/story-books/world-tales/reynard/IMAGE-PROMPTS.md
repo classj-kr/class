@@ -79,7 +79,7 @@ scholar's cap.
 | `images/04-cat.webp` | A bear returning with a more swollen nose, and a striped cat setting off confidently to a fox's burrow where the fox greets him warmly, comic. 〔이 쪽에 실린 글 (7/16) — 그림에 글자는 넣지 마세요. 왼쪽: 곰은 겨우 빠져나와 돌아왔습니다. 코가 더 부어 있었지요. 임금님이 한숨을 쉬었습니다. 다른 자가 가 보아라. / 오른쪽: 고양이는 꼬리를 세우고 숲으로 갔습니다. 여우가 이번에도 웃으며 맞이했지요. 어서 오세요. 마침 잘 오셨네요. 저 헛간에 쥐가 어찌나 많은지 몰라요.〕 |
 | `images/04-cat-2.webp` | A barn doorway at dusk where a striped cat is caught by a rope snare and a farmer runs out with a stick, while a fox strolls away yawning, very funny. 〔이 쪽에 실린 글 (8/16) — 그림에 글자는 넣지 마세요. 왼쪽: 딱 한 마리만 잡고 가지요. 고양이는 침을 꼴깍 삼켰습니다. 그러고는 헛간으로 뛰어들었지요. 그런데 문턱에 밧줄이 걸려 있었습니다. 올가미가 목에 척 걸렸지요. / 오른쪽: 고양이는 대롱대롱 매달렸습니다. 농부가 몽둥이를 들고 달려 나왔지요. 여우는 그 소리를 뒤로하고 돌아섰습니다. 저런, 안됐군요. 그러고는 낮잠을 자러 갔지요. 헛간에서는 한참 소동이 났습니다.〕 |
 
-## 5장 · 오소리의 설득
+## 5장 · 친척이 찾아오다
 
 | 파일명 | 장면 |
 |---|---|

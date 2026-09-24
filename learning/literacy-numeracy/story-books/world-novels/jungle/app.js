@@ -254,7 +254,7 @@ const CHAPTERS = [
     },
     {
         num: 11,
-        title: "협곡",
+        title: "셰어 칸의 가죽",
         emoji: "🌄",
         art: ["story-11-a.webp", "story-11-b.webp"],
         paras: [

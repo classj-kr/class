@@ -1,7 +1,7 @@
 const CHAPTERS = [
     {
         "num": 1,
-        "title": "1장 · 황금 공",
+        "title": "1장 · 막내 공주",
         "beats": [
             {
                 "art": "01-ball.webp",
@@ -167,7 +167,7 @@ const CHAPTERS = [
     },
     {
         "num": 6,
-        "title": "6장 · 한 밥상에서",
+        "title": "6장 · 젖은 발자국",
         "beats": [
             {
                 "art": "06-dinner.webp",
@@ -552,7 +552,7 @@ const EN = {
     chapters: [
         {
             num: 1,
-            title: 'Chapter 1 · The Golden Ball',
+            title: 'Chapter 1 · The Youngest Princess',
             beats: [
                 {
                     art: '01-ball.webp',
@@ -764,7 +764,7 @@ const EN = {
         },
         {
             num: 6,
-            title: 'Chapter 6 · At the Same Table',
+            title: 'Chapter 6 · Wet Footprints',
             beats: [
                 {
                     art: '06-dinner.webp',

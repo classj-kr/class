@@ -63,7 +63,7 @@ a round jolly man with an enormous turban.
 | `images/01-stranger.webp` | A bustling desert-city street of awnings and spice stalls where a scruffy boy loafs on a wall, and a tall stranger in dark travelling robes approaching his humble doorway, warm gold light. 〔이 쪽에 실린 글 (1/16) — 그림에 글자는 넣지 마세요. 왼쪽: 옛날 어느 도시에 알라딘이 살았습니다. 아버지는 일찍 세상을 떠났지요. 알라딘은 어머니와 둘이 살았습니다. 살림이 몹시 어려웠지요. 그런데도 알라딘은 날마다 놀기만 했습니다. 어머니는 그때마다 한숨을 쉬었지요. / 오른쪽: 그러던 어느 날 낯선 아저씨가 찾아왔습니다. 먼 나라 옷차림이었지요. 내가 네 삼촌이란다. 오랜만에 고향에 왔지.〕 |
 | `images/01-stranger-2.webp` | A market where a stranger buys a boy fine clothes and food, and the two walking far out past the city into a barren rocky valley under a wide sky, ominous but bright. 〔이 쪽에 실린 글 (2/16) — 그림에 글자는 넣지 마세요. 왼쪽: 그런데 아저씨는 돈을 척척 냈습니다. 고기며 과일을 잔뜩 사 왔지요. 알라딘에게 새 옷도 사 주었습니다. 내일 좋은 곳에 가자꾸나. / 오른쪽: 이튿날 둘은 성 밖으로 나갔습니다. 한참을 걷고 또 걸었지요. 집도 사람도 보이지 않았습니다. 이윽고 메마른 바위산에 이르렀지요. 아저씨가 걸음을 뚝 멈췄습니다.〕 |
 
-## 2장 · 동굴 속 램프
+## 2장 · 닫혀 버린 돌문
 
 | 파일명 | 장면 |
 |---|---|
@@ -84,14 +84,14 @@ a round jolly man with an enormous turban.
 | `images/04-princess.webp` | A city street cleared for a royal procession where a boy peeks from behind a wall as a curtained litter passes and the veil lifts for an instant, sunlight and colour, charming. 〔이 쪽에 실린 글 (7/16) — 그림에 글자는 넣지 마세요. 왼쪽: 그날부터 알라딘의 집은 넉넉해졌습니다. 그러던 어느 날 거리가 소란했지요. 공주님이 지나가신다! / 오른쪽: 이윽고 가마가 지나갔습니다. 그때 휘장이 살짝 들렸지요. 알라딘은 그만 그 자리에 얼어붙었습니다. 그날 밤 도무지 잠이 오지 않았지요.〕 |
 | `images/04-princess-2.webp` | A palace hall where a woman in a worn headscarf presents a tray of blazing jewels to an astonished sultan, and a great procession of camels and gift-bearers filling the street outside, spectacular. 〔이 쪽에 실린 글 (8/16) — 그림에 글자는 넣지 마세요. 왼쪽: 이튿날 어머니는 궁궐로 갔습니다. 보석을 담은 쟁반을 들고서요. 동굴에서 알라딘이 가져온 것들이었지요. 쟁반을 본 임금님은 눈이 휘둥그레졌습니다. 이런 보석은 처음 보는군. / 오른쪽: 소식을 들은 알라딘은 얼른 지니를 불렀지요. 좋은 옷과 말이 필요해요. 선물도 잔뜩요.〕 |
 
-## 5장 · 하룻밤 사이의 궁전
+## 5장 · 하룻밤 사이에
 
 | 파일명 | 장면 |
 |---|---|
 | `images/05-palace.webp` | A sultan naming his condition in a palace hall, and next morning a vast jewelled palace standing where an empty lot had been, the whole court crowding the windows in astonishment, dazzling. 〔이 쪽에 실린 글 (9/16) — 그림에 글자는 넣지 마세요. 왼쪽: 임금님이 혼인을 허락했습니다. 다만 한 가지를 요구했지요. 공주가 살 궁전이 있어야 하네. 내 궁궐 맞은편에 말이야. / 오른쪽: 그날 밤 알라딘은 램프를 문질렀지요. 이튿날 아침이었습니다. 임금님이 창을 열자 눈앞이 온통 반짝였지요. 어제까지 빈터였던 곳이었습니다. 커다란 궁전이 떡하니 서 있었지요. 기둥마다 보석이 박혀 있었습니다. 임금님은 한참을 그 자리에 서 있었지요.〕 |
 | `images/05-palace-2.webp` | A grand wedding filling a city with music and lanterns, and far away a dark-robed sorcerer hearing the news at a caravan stop and packing to travel, threatening and comic. 〔이 쪽에 실린 글 (10/16) — 그림에 글자는 넣지 마세요. 왼쪽: 혼례가 크게 열렸습니다. 온 도시가 함께 잔치를 벌였지요. 알라딘과 공주는 사이좋게 잘 지냈습니다. 알라딘은 어려운 이들을 부지런히 도왔지요. 그래서 사람들이 그를 무척 좋아했습니다. 그렇게 몇 해가 흘렀지요. / 오른쪽: 그런데 먼 나라의 마법사도 그 소문을 들었습니다. 동굴에 알라딘을 가둔 바로 그 사람이었지요. 그놈이 살아 있었단 말인가! 램프도 가졌겠구나.〕 |
 
-## 6장 · 낡은 램프를 새 램프로
+## 6장 · 사라진 궁전
 
 | 파일명 | 장면 |
 |---|---|

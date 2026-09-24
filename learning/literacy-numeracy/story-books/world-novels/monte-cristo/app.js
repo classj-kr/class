@@ -5,7 +5,7 @@ const CHAPTER_LABEL = n => `${n}장 ·`;
 const CHAPTERS = [
     {
         num: 1,
-        title: "파라온 호가 돌아오다",
+        title: "돌아온 배",
         emoji: "⛵",
         art: ["story-01-a.webp", "story-01-b.webp"],
         paras: [

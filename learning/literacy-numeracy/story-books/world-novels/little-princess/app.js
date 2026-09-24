@@ -317,7 +317,7 @@ const CHAPTERS = [
     },
     {
         num: 12,
-        title: "원숭이가 넘어온 날",
+        title: "옆집 문 앞에서",
         emoji: "🐒",
         art: ["story-12-a.webp", "story-12-b.webp"],
         paras: [

@@ -170,7 +170,7 @@ Mr Carrisford: a gaunt, ill gentleman wrapped in shawls in a deep armchair.
 | `images/story-11-a.webp` | The attic transformed overnight: a blazing fire in the grate, a rug, curtains, a covered table with steaming food and a stack of books; a girl standing in the middle of it with her hands over her mouth. |
 | `images/story-11-b.webp` | Two girls eating together at the little table by firelight, one crying while she eats, the sloping attic ceiling now warm and golden. |
 
-## 12장 · 원숭이가 넘어온 날
+## 12장 · 옆집 문 앞에서
 
 | 파일명 | 장면 |
 |---|---|

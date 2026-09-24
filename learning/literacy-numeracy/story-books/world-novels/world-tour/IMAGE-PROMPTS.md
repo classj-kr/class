@@ -137,7 +137,7 @@ composed.
 | `images/story-07-a.webp` | A small twenty-ton schooner driving through a huge night storm, one mast bending, a wave breaking over the deck, a calm figure braced at the rail while another lies collapsed in the cockpit. |
 | `images/story-07-b.webp` | Morning at the mouth of Shanghai harbour: the little battered schooner firing a small signal gun with a distress flag at her masthead, while a big ocean steamer ahead begins to swing round toward her. |
 
-## 8장 · 요코하마의 곡예단
+## 8장 · 요코하마에서
 
 | 파일명 | 장면 |
 |---|---|

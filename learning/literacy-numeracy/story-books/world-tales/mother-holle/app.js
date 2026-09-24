@@ -101,7 +101,7 @@ const CHAPTERS = [
     },
     {
         "num": 4,
-        "title": "4장 · 사과를 흔들어 주세요",
+        "title": "4장 · 사과나무 아래에서",
         "beats": [
             {
                 "art": "04-apples.webp",
@@ -134,7 +134,7 @@ const CHAPTERS = [
     },
     {
         "num": 5,
-        "title": "5장 · 이불을 터는 할머니",
+        "title": "5장 · 홀레 할머니의 집",
         "beats": [
             {
                 "art": "05-holle.webp",
@@ -683,7 +683,7 @@ const EN = {
         },
         {
             num: 4,
-            title: 'Chapter 4 · Shake the Apples Down',
+            title: 'Chapter 4 · Under the Apple Tree',
             beats: [
                 {
                     art: '04-apples.webp',
@@ -723,7 +723,7 @@ const EN = {
         },
         {
             num: 5,
-            title: 'Chapter 5 · The Woman Shaking the Quilt',
+            title: "Chapter 5 · Mother Holle's House",
             beats: [
                 {
                     art: '05-holle.webp',

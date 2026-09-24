@@ -156,7 +156,7 @@ sailcloth pinned together with brass buttons and twigs, wild hair and beard.
 | `images/story-07-a.webp` | A tense cabin conference by lamplight: a stern captain standing very straight and speaking plainly, a red-faced squire half risen in anger, a calm doctor seated between them, a boy listening at the door. |
 | `images/story-07-b.webp` | A three-masted schooner under full sail leaving harbour at dawn, sailors singing on the forecastle, a boy at the rail looking back at the receding land. |
 
-## 8장 · 사과 통 속에서
+## 8장 · 짐이 엿들은 말
 
 | 파일명 | 장면 |
 |---|---|

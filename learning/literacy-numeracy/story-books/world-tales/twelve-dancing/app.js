@@ -140,7 +140,7 @@ const CHAPTERS = [
     },
     {
         "num": 5,
-        "title": "5장 · 침대 밑의 계단",
+        "title": "5장 · 잠든 척",
         "beats": [
             {
                 "art": "05-trapdoor.webp",
@@ -727,7 +727,7 @@ const EN = {
         },
         {
             num: 5,
-            title: 'Chapter 5 · The Stair Under the Bed',
+            title: 'Chapter 5 · Pretending to Sleep',
             beats: [
                 {
                     art: '05-trapdoor.webp',

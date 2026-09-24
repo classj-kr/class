@@ -59,7 +59,7 @@ const CHAPTERS = [
     },
     {
         num: 3,
-        title: "수레를 끄는 개",
+        title: "다시 일어선 개",
         emoji: "🛒",
         art: ["story-03-a.webp", "story-03-b.webp"],
         paras: [
@@ -420,7 +420,7 @@ const EN = {
             ]
         },
         {
-            title: 'The Dog Who Pulled the Cart',
+            title: 'The Dog Who Stood Up Again',
             paras: [
                 `Patrasche was soon well. His coat shone and flesh came back on his bones. Summer passed and autumn came. Patrasche basked in the yard and followed Nello about. Now he could run. When Nello called, he came across the yard. He seemed a different dog from the one who had first arrived.`,
                 `But Patrasche did not leave that house. Even with the door open, he did not go. One morning, as the grandfather was about to set off with the milk cart, Patrasche blocked his way. And he stepped in between the shafts and stood there. As if that place were his own. Nobody had told him to. He had gone in and stood there of his own accord.`,

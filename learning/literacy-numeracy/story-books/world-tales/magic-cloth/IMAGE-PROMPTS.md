@@ -91,7 +91,7 @@ The innkeeper: a plump smiling man with restless eyes and a fine waistcoat.
 | `images/06-cudgel.webp` | An inn table where a lad boasts about his sack while the innkeeper leans in with restless eyes, then the innkeeper creeping into a dark room at midnight, comic tension. 〔이 쪽에 실린 글 (11/16) — 그림에 글자는 넣지 마세요. 왼쪽: 막내는 저녁을 먹으며 일부러 큰소리를 쳤습니다. 이 자루 말입니까? 세상에서 제일 귀한 게 들었지요. / 오른쪽: 그건 말씀드릴 수 없습니다. 막내는 자루를 툭툭 두드리고 방으로 갔지요. 주인은 그날 밤을 뜬눈으로 기다렸습니다. 자정이 넘자 살금살금 방으로 들어갔지요. 막내는 코를 골고 있었습니다.〕 |
 | `images/06-cudgel-2.webp` | A dark inn room where a wooden cudgel leaps from a sack and chases a howling innkeeper around toppling furniture while a grinning lad sits up in bed, hilarious. 〔이 쪽에 실린 글 (12/16) — 그림에 글자는 넣지 마세요. 왼쪽: 주인이 자루로 손을 뻗었습니다. 바로 그 순간이었지요. 막내가 벌떡 일어나 외쳤습니다. 몽둥아, 자루에서 나와라! 자루가 벌렁 열렸지요. 몽둥이가 튀어나왔습니다. 그러고는 주인의 등을 톡톡 두드렸지요. / 오른쪽: 주인이 방 안을 빙빙 돌며 달아났습니다. 의자가 넘어지고 그릇이 굴렀지요. 몽둥이는 끈질기게 따라다녔습니다. 주인은 살려 달라고 소리쳤지요. 제가 다 잘못했습니다!〕 |
 
-## 7장 · 돌려받은 물건들
+## 7장 · 집으로 가는 길
 
 | 파일명 | 장면 |
 |---|---|

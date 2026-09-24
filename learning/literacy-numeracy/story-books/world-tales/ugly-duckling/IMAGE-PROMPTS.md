@@ -71,7 +71,7 @@ tall serene white birds with wide wings.
 | `images/03-leaving.webp` | A wide marshland at dawn where a grey duckling walks alone past wild ducks, and then flattening itself among reeds as gunshots crack and birds burst into the sky, tense but not gory. 〔이 쪽에 실린 글 (5/14) — 그림에 글자는 넣지 마세요. 왼쪽: 들판은 생각보다 아주 넓었습니다. 아기 오리는 밤새도록 걸었지요. 풀숲에 몸을 묻고 자다가 아침이면 또 걸었습니다. 며칠 만에 늪지에 사는 오리들을 만났지요. 넌 참 못생겼구나. / 오른쪽: 아기 오리는 그곳에서 며칠을 지냈습니다. 그러던 어느 아침이었지요. 탕!〕 |
 | `images/03-leaving-2.webp` | A storm-lashed field where a grey duckling squeezes under a cottage door, and inside a dim room with a squinting old woman, a smug cat and a hen looking the duckling up and down, comic and sad. 〔이 쪽에 실린 글 (6/14) — 그림에 글자는 넣지 마세요. 왼쪽: 아기 오리는 해가 질 때까지 숨을 죽이고 있었지요. 어두워지고 나서야 다시 길을 나섰습니다. 그런데 비바람이 세차게 몰아쳤지요. 겨우 낡은 오두막 하나를 찾아 문틈으로 몸을 밀어 넣었습니다. 안은 훈훈하고 조용했지요. 젖은 깃털에서 물이 뚝뚝 떨어졌습니다. / 오른쪽: 눈이 어두운 할머니가 고양이와 암탉과 함께 살고 있었습니다. 너는 알을 낳을 줄 아니? 등을 세워 소리를 낼 줄은 아니?〕 |
 
-## 4장 · 처음 본 하얀 새
+## 4장 · 가을이 오고
 
 | 파일명 | 장면 |
 |---|---|

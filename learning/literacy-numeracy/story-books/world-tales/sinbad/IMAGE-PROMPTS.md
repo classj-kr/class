@@ -70,7 +70,7 @@ various robed traders with beards and bundles of goods.
 | `images/03-roc.webp` | A castaway walking inland on a rocky island and stopping before a gigantic smooth white egg taller than a house, tiny beside it, awe-inspiring scale. 〔이 쪽에 실린 글 (5/16) — 그림에 글자는 넣지 마세요. 왼쪽: 신드바드는 나무통을 붙잡고 밤새 떠다녔습니다. 이튿날 물결이 그를 어느 섬으로 밀어 주었지요. 기운을 차리고 섬 안으로 들어가 보았습니다. 사람이라고는 그림자도 없었지요. 나무 열매를 따 먹고 샘물을 마셨습니다. 그러고 나니 겨우 살 것 같았지요. / 오른쪽: 한참을 걷다가 신드바드는 걸음을 멈췄습니다. 섬 한가운데 하얗고 둥근 것이 우뚝 서 있었거든요. 처음에는 커다란 지붕인 줄 알았습니다. 그런데 창문도 문도 없었지요. 가까이 가 보니 어마어마하게 큰 알이었습니다. 신드바드는 그것을 한 바퀴 돌아보았습니다.〕 |
 | `images/03-roc-2.webp` | The sky darkening as a colossal white bird descends onto a giant egg, a tiny man lashing himself to its tree-thick leg with a turban cloth, dramatic and awesome. 〔이 쪽에 실린 글 (6/16) — 그림에 글자는 넣지 마세요. 왼쪽: 그때 하늘이 갑자기 어두워졌습니다. 해가 무언가에 가려진 것이었지요. 고개를 들자 커다란 그림자가 내려오고 있었습니다. 날개가 구름처럼 큰 새였습니다. 옛이야기에서 듣던 로크라는 새가 틀림없었지요. 신드바드는 알 뒤에 숨었습니다. / 오른쪽: 새는 알 위에 조용히 내려앉았지요. 다리가 나무 기둥만큼 굵었지요. 신드바드는 터번을 풀어 그 다리에 몸을 묶었습니다. 어디로든 데려다만 다오!〕 |
 
-## 4장 · 보석 골짜기
+## 4장 · 나갈 길 없는 골짜기
 
 | 파일명 | 장면 |
 |---|---|

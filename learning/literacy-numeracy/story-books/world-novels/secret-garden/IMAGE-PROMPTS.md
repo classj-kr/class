@@ -111,7 +111,7 @@ put it in several pictures.
 | `images/story-03-a.webp` | A bedroom in morning light: a cheerful young housemaid kneeling at the grate lighting a fire, a girl sitting up in bed staring at her. |
 | `images/story-03-b.webp` | A girl standing alone on a grey gravel path outside the great house holding a brand-new skipping rope, not sure what to do with it. |
 
-## 4장 · 울새가 알려 준 것
+## 4장 · 문이 없는 담
 
 | 파일명 | 장면 |
 |---|---|

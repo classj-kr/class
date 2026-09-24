@@ -104,7 +104,7 @@ enough face held carefully closed; it opens only at the very end.
 | `images/story-02-a.webp` | A big dog collapsed in the dust by a roadside ditch in blazing heat, its harness ropes cut into its neck, an overloaded cart abandoned further along the road. |
 | `images/story-02-b.webp` | Inside the cottage: the dog lying on straw, a boy kneeling beside it dripping water into its mouth from a spoon, the old man holding a candle. |
 
-## 3장 · 수레를 끄는 개
+## 3장 · 다시 일어선 개
 
 | 파일명 | 장면 |
 |---|---|

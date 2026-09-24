@@ -137,7 +137,7 @@ Dougal: a huge deerhound that follows the Earl everywhere.
 | `images/story-07-a.webp` | A poor tenant village: sagging roofs with holes, standing water in the lane, barefoot children in doorways, a small well-dressed boy standing among them looking up at a broken roof. |
 | `images/story-07-b.webp` | The library: the boy standing before the old man's chair speaking earnestly, the old man's face closed and hard, the fire low. |
 
-## 8장 · 지붕이 고쳐지다
+## 8장 · 언쇼가 달라지다
 
 | 파일명 | 장면 |
 |---|---|

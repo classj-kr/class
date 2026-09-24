@@ -84,7 +84,7 @@ Everyone must look like the same person from picture to picture.
 | `images/03-doubt.webp` | A castle entrance hall where a dripping girl stands in a spreading puddle while servants run for towels and a young prince stares at her, warm candlelight. 〔이 쪽에 실린 글 (5/16) — 그림에 글자는 넣지 마세요. 왼쪽: 아가씨가 현관에 들어섰습니다. 발밑에 금세 물웅덩이가 생겼지요. 몰골이 말이 아니었습니다. 옷에서는 물이 계속 흘러내렸지요. 하인들이 수건을 가지러 뛰어갔습니다. / 오른쪽: 그러고는 아가씨에게서 눈을 떼지 못했지요. 젖은 몰골인데도 어딘가 남달랐거든요. 왕자의 가슴이 두근거렸습니다. 혹시 이번에는…… 왕자는 어머니를 돌아보았습니다. 어서 잠자리를 마련해 드리자고 말하려던 참이었지요.〕 |
 | `images/03-doubt-2.webp` | A sharp-eyed old queen in a lace cap looking a dripping girl up and down with folded arms while smiling politely, then heading upstairs alone, comic. 〔이 쪽에 실린 글 (6/16) — 그림에 글자는 넣지 마세요. 왼쪽: 왕비는 팔짱을 낀 채 바라보기만 했습니다. 눈이 아주 매서웠지요. 저 꼴을 하고 공주라니. 어디 두고 보자. / 오른쪽: 먼 길 오시느라 고생하셨겠어요. 잠자리는 제가 손수 보아 드리지요. 그러고는 아무 말 없이 손님방으로 올라갔습니다. 무언가 생각이 있는 얼굴이었지요. 왕자는 어머니의 뒷모습을 갸웃하며 보았습니다.〕 |
 
-## 4장 · 침대 밑의 완두콩
+## 4장 · 왕비의 꾀
 
 | 파일명 | 장면 |
 |---|---|
@@ -112,7 +112,7 @@ Everyone must look like the same person from picture to picture.
 | `images/07-reveal.webp` | A breakfast hall where an old queen holds out one small green pea on her open palm and everyone leans in astonished, bright and joyful. 〔이 쪽에 실린 글 (13/16) — 그림에 글자는 넣지 마세요. 왼쪽: 왕비가 밥상 앞에 섰습니다. 저 침대 밑에 무엇이 있었는지 아십니까? 모두 고개를 저었지요. 왕비는 천천히 손바닥을 폈습니다. 그 위에 작고 동그란 것이 놓여 있었지요. / 오른쪽: 그 위에 요를 스무 장 깔았습니다. 그 위에 이불을 또 스무 장 얹었고요. 사람들이 저마다 웅성거렸습니다. 아가씨도 눈이 동그래졌지요.〕 |
 | `images/07-reveal-2.webp` | A prince beaming and proposing across a breakfast table to a blushing girl while the old king claps and the queen smiles knowingly, radiant and warm. 〔이 쪽에 실린 글 (14/16) — 그림에 글자는 넣지 마세요. 왼쪽: 왕비가 아들을 돌아보았습니다. 요 스무 장, 이불 스무 장 아래였다. 그런데도 이걸 느낀 것이지. / 오른쪽: 그토록 찾아 헤매던 사람이 눈앞에 있었으니까요. 저와 결혼해 주시겠습니까? 왕자의 목소리가 조금 떨렸지요. 방 안이 쥐 죽은 듯 조용해졌습니다. 공주는 얼굴이 발그레해졌지요.〕 |
 
-## 8장 · 박물관에 놓인 콩
+## 8장 · 그 콩은 지금
 
 | 파일명 | 장면 |
 |---|---|

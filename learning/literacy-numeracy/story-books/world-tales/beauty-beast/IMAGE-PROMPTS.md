@@ -65,7 +65,7 @@ drawn like a big awkward animal rather than a monster.
 | `images/02-rose.webp` | A cottage doorway where a father in a travelling coat is besieged by two sisters demanding silks and pearls while the youngest asks only for a single rose, morning light. 〔이 쪽에 실린 글 (3/16) — 그림에 글자는 넣지 마세요. 왼쪽: 몇 해가 지난 어느 날이었습니다. 아버지에게 소식이 하나 왔습니다. 가라앉은 줄 알았던 배 한 척이 돌아왔다는 것이었지요. 아버지는 그 배를 찾으러 먼 길을 떠나게 되었습니다. 잘하면 다시 일어설 수 있을 것 같았지요. 두 언니는 아버지 소매를 붙잡고 졸랐습니다. / 오른쪽: 저는 비단옷이요! 저는 진주 목걸이요! 아버지가 막내를 돌아보았습니다.〕 |
 | `images/02-rose-2.webp` | A snowbound forest road at night where a lost traveller leads his horse toward the gates of a vast castle, and inside a warm hall with a laid table and no one present, eerie but inviting. 〔이 쪽에 실린 글 (4/16) — 그림에 글자는 넣지 마세요. 왼쪽: 그런데 항구에 가 보니 배는 이미 남의 손에 넘어간 뒤였습니다. 아버지는 빈손으로 돌아서야 했지요. 돌아오는 길에 그만 눈보라가 몰아쳤습니다. 길이 보이지 않았지요. 말을 이끌고 헤매던 아버지 앞에 커다란 문이 나타났습니다. 문이 저절로 스르르 열렸지요. / 오른쪽: 아주 큰 성이었지요. 안으로 들어가 보니 사람이 하나도 없었습니다. 발소리가 복도에 울렸지요. 그런데 난롯불이 타고 있고 밥상이 차려져 있었지요. 아버지는 배가 고파 밥을 먹고 그날 밤 그곳에서 잤습니다. 아침이 될 때까지 아무도 나타나지 않았지요. 촛불만 밤새 조용히 타올랐습니다.〕 |
 
-## 3장 · 꺾어서는 안 될 꽃
+## 3장 · 등 뒤의 목소리
 
 | 파일명 | 장면 |
 |---|---|
@@ -100,7 +100,7 @@ drawn like a big awkward animal rather than a monster.
 | `images/07-late.webp` | A cottage where a recovering father sits by the fire with his daughter tending him, while two sisters eye her fine dress and ring with envy and cling to her sleeves. 〔이 쪽에 실린 글 (13/16) — 그림에 글자는 넣지 마세요. 왼쪽: 아버지는 벨을 보자 눈에 띄게 기운을 차렸습니다. 며칠 만에 자리에서 일어나 마당까지 나왔지요. 벨은 아버지 곁에서 죽을 끓이고 약을 달였습니다. 집 안에 오랜만에 웃음소리가 났습니다. 아버지는 벨의 손을 놓지 않으려 했지요. 마당에 볕이 잘 드는 날이 이어졌습니다. / 오른쪽: 그런데 두 언니는 속이 편치 않았습니다. 벨의 반지와 옷차림이 자꾸 눈에 밟혔거든요. 조금만 더 있다 가. 며칠쯤 어때서. 언니들은 날마다 벨의 소매를 붙잡았습니다. 벨도 아버지 곁이 좋아 하루하루 미루었지요. 이레가 지난 것도 몰랐습니다.〕 |
 | `images/07-late-2.webp` | A girl waking in terror from a dream, checking a mirror that shows a fallen shaggy figure in a snowy rose garden, then turning a ring and appearing in that garden, urgent. 〔이 쪽에 실린 글 (14/16) — 그림에 글자는 넣지 마세요. 왼쪽: 그러다 여드레째 되던 밤이었습니다. 벨은 꿈을 꾸었습니다. 성의 장미밭에 야수가 쓰러져 있는 꿈이었지요. 부르는 소리도 들리는 듯했습니다. / 오른쪽: 벨은 거울을 들여다보았습니다. 손이 덜덜 떨렸지요. 거울 속에 야수가 쓰러져 있었습니다. 벨은 얼른 반지를 돌렸지요. 눈을 뜨니 성의 뜰이었습니다. 벨은 장미밭으로 달려갔습니다. 심장이 터질 것 같았지요. 맨발인 것도 몰랐습니다.〕 |
 
-## 8장 · 뜰에 쓰러진 야수
+## 8장 · 성으로 돌아가다
 
 | 파일명 | 장면 |
 |---|---|

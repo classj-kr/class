@@ -133,7 +133,7 @@ const CHAPTERS = [
     },
     {
         num: 3,
-        title: "3장 · 꼬리로 물고기를",
+        title: "3장 · 겨울엔 이렇게 잡지요",
         beats: [
             {
                 art: "08-winter.webp",
@@ -353,7 +353,7 @@ const EN = {
         },
         {
             num: 3,
-            title: "Chapter 3 · Fishing with Your Tail",
+            title: "Chapter 3 · This Is How You Fish in Winter",
             beats: [
                 {
                     art: "08-winter.webp",

@@ -157,7 +157,7 @@ Ermenrich: a white stork with a red bill, nesting on a castle roof.
 | `images/story-09-a.webp` | Lapland in summer under a low midnight sun: bare fells, a shallow lake, geese with goslings, a tiny boy sitting among them. |
 | `images/story-09-b.webp` | A farmhouse window at night seen from outside at sill height: a man and a woman sitting at a table not speaking, and on the sill a tiny figure looking in. |
 
-## 10장 · 다시 사람이 되는 값
+## 10장 · 올빼미가 한 말
 
 | 파일명 | 장면 |
 |---|---|

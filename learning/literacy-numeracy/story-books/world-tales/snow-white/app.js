@@ -102,7 +102,7 @@ const CHAPTERS = [
     },
     {
         "num": 4,
-        "title": "4장 · 빗과 허리끈",
+        "title": "4장 · 두 번 찾아온 할머니",
         "beats": [
             {
                 "art": "04-disguise.webp",
@@ -635,7 +635,7 @@ const EN = {
         },
         {
             num: 4,
-            title: 'Chapter 4 · The Sash and the Comb',
+            title: 'Chapter 4 · The Old Woman Comes Twice',
             beats: [
                 {
                     art: '04-disguise.webp',

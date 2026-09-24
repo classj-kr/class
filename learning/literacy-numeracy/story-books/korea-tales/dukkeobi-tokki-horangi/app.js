@@ -118,7 +118,7 @@ const CHAPTERS = [
     },
     {
         num: 3,
-        title: "3장 · 언덕에 흩어진 떡",
+        title: "3장 · 빈 시루",
         beats: [
             {
                 art: "07-scatter.webp",
@@ -341,7 +341,7 @@ const EN = {
         },
         {
             num: 3,
-            title: "Chapter 3 · Cake All Down the Hill",
+            title: "Chapter 3 · The Empty Pot",
             beats: [
                 {
                     art: "07-scatter.webp",

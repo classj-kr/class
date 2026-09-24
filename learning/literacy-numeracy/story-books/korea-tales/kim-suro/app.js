@@ -579,7 +579,7 @@ const EN = {
         ]
     },
     quiz: [
-        { q: "Where did the Nine Gan hear the voice?", choices: ["At the landing by the sea", "On Guji Peak", "By the Nakdong River"], answer: 1 },
+        { q: "Before the voice came, how did the nine villages live?", choices: ["Each farmed and feasted on its own", "Together under one king", "All gathered in one big village"], answer: 0 },
         { q: "How does the song the voice taught begin?", choices: ["Heaven told me to set up a country", "Is there anybody here", "Turtle, turtle, put out your head"], answer: 2 },
         { q: "What did the people do while they sang?", choices: ["Dug the earth and stamped their feet", "Circled the peak with torches", "Folded their hands and bowed to the sky"], answer: 0 },
         { q: "What happened to Suro after he came out of the egg?", choices: ["He slept for twelve days", "He sailed off to sea with his five brothers", "He grew to a man's size in ten days"], answer: 2 },
@@ -785,7 +785,7 @@ const EN = {
 };
 
 const QUIZ = [
-    { q: "아홉 간이 소리를 들은 곳은 어디인가요?", choices: ["바닷가 나루", "구지봉", "낙동강 가"], answer: 1 },
+    { q: "소리가 나기 전, 아홉 마을은 어떻게 지냈나요?", choices: ["저마다 따로 농사짓고 따로 잔치를 열었다", "한 임금을 모시고 함께 살았다", "큰 마을 하나에 모여 살았다"], answer: 0 },
     { q: "소리가 일러 준 노래는 어떻게 시작하나요?", choices: ["하늘이 나라를 세우라 하셨다", "여기에 사람이 있느냐", "거북아 거북아 머리를 내어라"], answer: 2 },
     { q: "사람들은 노래를 부르며 무엇을 했나요?", choices: ["흙을 파며 발을 굴렀다", "횃불을 들고 봉우리를 돌았다", "두 손을 모으고 하늘에 절했다"], answer: 0 },
     { q: "수로는 알에서 나온 뒤 어떻게 되었나요?", choices: ["열두 날 동안 잠만 잤다", "다섯 형제와 함께 바다로 나갔다", "열흘 만에 어른만큼 자랐다"], answer: 2 },

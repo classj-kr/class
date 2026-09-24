@@ -79,7 +79,7 @@ frightening. The thirty-nine robbers: figures glimpsed in cloaks and turbans.
 | `images/04-chalk.webp` | A desert road at night where a woodcutter leads laden donkeys home, and a courtyard where a quick-eyed young servant takes charge with her sleeves rolled up, calm and capable. 〔이 쪽에 실린 글 (7/14) — 그림에 글자는 넣지 마세요. 왼쪽: 카심은 끝내 돌아오지 못했습니다. 이튿날 알리바바가 산으로 갔지요. 동굴 앞에서 형을 찾아 겨우 집으로 모셔 왔습니다. 형수는 그 자리에 주저앉아 울었지요. 집안이 발칵 뒤집혔습니다. / 오른쪽: 형네 집 하녀인데 눈치가 아주 빨랐지요. 소문이 나면 큰일 납니다. 제가 알아서 하겠어요.〕 |
 | `images/04-chalk-2.webp` | A town alley at dawn where a young servant notices a chalk mark on her gate, then swiftly chalking the same mark on every door down the street, clever and lively. 〔이 쪽에 실린 글 (8/14) — 그림에 글자는 넣지 마세요. 왼쪽: 한편 도적들은 시신이 사라진 것을 알았습니다. 동굴을 아는 자가 또 있구나. 도적 하나가 마을로 내려갔지요. 이 집 저 집 다니며 이리저리 수소문했습니다. / 오른쪽: 이튿날 아침 모르지아나가 물을 길러 나왔지요. 표시를 보고는 걸음을 뚝 멈췄습니다. '이게 왜 여기 있지?' 모르지아나는 얼른 분필을 가져왔지요. 그러고는 온 동네 대문에 똑같은 표시를 그렸습니다. 스무 집, 서른 집이 되었지요.〕 |
 
-## 5장 · 기름 항아리
+## 5장 · 마당의 항아리 마흔 개
 
 | 파일명 | 장면 |
 |---|---|

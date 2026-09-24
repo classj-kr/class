@@ -105,7 +105,7 @@ dress. The mayor and councillors: pompous men in gold chains.
 | `images/04-sapphire.webp` | A cold attic where a thin young writer works by a guttering candle with no fire in the grate, seen from a statue's viewpoint across the rooftops, bleak but beautiful. 〔이 쪽에 실린 글 (7/14) — 그림에 글자는 넣지 마세요. 왼쪽: 아침이 되자 제비가 날개를 활짝 폈습니다. 오늘은 정말 떠나야 해요. 그때 왕자가 제비를 다시 불렀지요. / 오른쪽: 손가락이 곱아 글자가 삐뚤빼뚤했습니다. 난로에는 불씨 하나 없었지요. 책상 위에도 먹을 것이 보이지 않았습니다. 내 눈 하나를 빼 다오. 그러면 앞이 안 보이시잖아요.〕 |
 | `images/04-sapphire-2.webp` | A swallow leaving a sapphire on a writer's desk, and the same attic next day warm with a lit fire, bread on the table and the young man writing eagerly, hopeful and warm. 〔이 쪽에 실린 글 (8/14) — 그림에 글자는 넣지 마세요. 왼쪽: 제비는 사파이어를 조심조심 물고 다락 창으로 날아갔습니다. 젊은이가 잠깐 고개를 숙인 사이에 책상 위에 살며시 내려놓았지요. 이게 어디서 났지? 젊은이는 그것을 창가에 대고 이리저리 비춰 봤습니다. 파란빛이 손바닥에 어른거렸지요. / 오른쪽: 이튿날 젊은이는 장작을 한 다발 샀습니다. 빵도 사고 새 종이도 샀지요. 난롯불이 활활 타올라 방 안이 금세 따뜻해졌습니다. 이제 겨울이 무섭지 않구나. 얼었던 손이 풀리자 글이 술술 써졌지요. 제비는 그것을 다 보고 돌아와 왕자에게 이야기해 주었습니다.〕 |
 
-## 5장 · 제비의 눈이 되어
+## 5장 · 제비가 본 것들
 
 | 파일명 | 장면 |
 |---|---|

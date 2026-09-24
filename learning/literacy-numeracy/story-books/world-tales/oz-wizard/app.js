@@ -169,7 +169,7 @@ const CHAPTERS = [
     },
     {
         "num": 6,
-        "title": "6장 · 서쪽 마녀",
+        "title": "6장 · 황금 모자",
         "beats": [
             {
                 "art": "06-monkeys.webp",
@@ -422,11 +422,11 @@ function afterPage(spread, isFirst) {
 
 const QUIZ = [
     {
-        "q": "도로시를 오즈로 데려간 것은 무엇인가요?",
+        "q": "회오리가 집을 들어 올릴 때 도로시가 아직 집 안에 있던 까닭은 무엇인가요?",
         "choices": [
-            "회오리",
-            "열기구",
-            "은구두"
+            "침대 밑에 숨은 토토를 붙잡느라",
+            "잠이 들어 버려서",
+            "엠 아주머니가 집에 있으라고 해서"
         ],
         "answer": 0
     },
@@ -742,7 +742,7 @@ const EN = {
         },
         {
             num: 6,
-            title: 'Chapter 6 · The Witch of the West',
+            title: 'Chapter 6 · The Golden Cap',
             beats: [
                 {
                     art: '06-monkeys.webp',

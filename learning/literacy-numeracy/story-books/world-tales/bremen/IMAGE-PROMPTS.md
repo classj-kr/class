@@ -85,7 +85,7 @@ floppy hats, drawn as bumbling and comic, never menacing.
 | `images/05-robbers.webp` | Seen through a cottage window, three scruffy robbers feasting at a laden table with sacks of loot in the corner, a donkey's eyes peering over the sill, comic and enticing. 〔이 쪽에 실린 글 (9/16) — 그림에 글자는 넣지 마세요. 왼쪽: 방 안에는 사내 셋이 있었습니다. 상다리가 휘도록 차려 놓고 먹는 중이었지요. 고기며 빵이며 술이며 상 위에 가득했습니다. 구석에는 묵직한 자루가 몇 개 쌓여 있었지요. 한눈에 보아도 도둑들이었습니다. 뭐가 보이나? / 오른쪽: 먹을 게 산더미야. 당나귀가 침을 꼴깍 삼켰습니다. 저 정도면 우리 넷도 배부르게 먹겠는걸.〕 |
 | `images/05-robbers-2.webp` | Four animals stacking themselves one on top of another beneath a lit cottage window — donkey, hound, cat and rooster — wobbling comically, moonlight, hilarious. 〔이 쪽에 실린 글 (10/16) — 그림에 글자는 넣지 마세요. 왼쪽: 넷은 창 밑에 모여 머리를 맞댔습니다. 어떻게 하면 저들을 쫓아낼지 궁리했지요. 문을 두드려 볼까, 뒤로 돌아가 볼까 말이 오갔습니다. 다들 좋은 수가 떠오르지 않았습니다. 한참 만에 당나귀가 좋은 수를 냈습니다. / 오른쪽: 넷은 곧바로 자리를 잡았습니다. 당나귀가 앞발을 창턱에 올렸지요. 그 등에 개가 올라섰습니다. 개 등에는 고양이가, 고양이 등에는 수탉이 올라섰습니다. 넷이 겹겹이 쌓이자 창문 높이가 딱 맞았지요. 하나, 둘, 셋!〕 |
 
-## 6장 · 한꺼번에
+## 6장 · 창가에 선 넷
 
 | 파일명 | 장면 |
 |---|---|

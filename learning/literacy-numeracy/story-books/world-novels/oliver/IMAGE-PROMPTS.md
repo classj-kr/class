@@ -113,14 +113,14 @@ Monks: a tall pale man with dark eyes, always in a heavy cloak.
 | `images/story-02-a.webp` | Long tables of boys scraping empty bowls with their spoons in a cold stone hall. |
 | `images/story-02-b.webp` | The moment itself: a small boy standing with his bowl held out, the whole hall gone still, the master frozen with the ladle in the air. |
 
-## 3장 · 장의사 집
+## 3장 · 소어베리 씨네
 
 | 파일명 | 장면 |
 |---|---|
 | `images/story-03-a.webp` | An undertaker's shop at night: half-built coffins standing against the walls, and a small boy asleep on the floor between them. |
 | `images/story-03-b.webp` | A shop floor in uproar: a small boy on top of a much bigger youth, fists clenched, a woman rushing in from the doorway. |
 
-## 4장 · 런던까지 이레
+## 4장 · 런던으로 가는 길
 
 | 파일명 | 장면 |
 |---|---|

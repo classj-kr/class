@@ -175,7 +175,7 @@ const CHAPTERS = [
     },
     {
         "num": 6,
-        "title": "6장 · 벽장 문이 덜컹덜컹",
+        "title": "6장 · 셋이 낸 꾀",
         "beats": [
             {
                 "art": "06-rescue.webp",
@@ -209,7 +209,7 @@ const CHAPTERS = [
     },
     {
         "num": 7,
-        "title": "7장 · 큰길로만",
+        "title": "7장 · 집으로 가는 길",
         "beats": [
             {
                 "art": "07-lesson.webp",
@@ -718,7 +718,7 @@ const EN = {
         },
         {
             num: 6,
-            title: 'Chapter 6 · Out at Last',
+            title: 'Chapter 6 · Three Heads Together',
             beats: [
                 {
                     art: '06-rescue.webp',

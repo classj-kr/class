@@ -101,7 +101,7 @@ Colonel Adye: a police officer in a dark uniform coat.
 | `images/story-01-a.webp` | A snowbound village street at dusk, an inn sign swinging, and a heavily wrapped figure with a small case walking toward it out of the blizzard. |
 | `images/story-01-b.webp` | An inn parlour with a big fire: the wrapped figure sitting with hat and coat still on, water dripping off him onto the floor, an innkeeper's wife in the doorway with a tray. |
 
-## 2장 · 유리병 상자
+## 2장 · 손님의 짐
 
 | 파일명 | 장면 |
 |---|---|

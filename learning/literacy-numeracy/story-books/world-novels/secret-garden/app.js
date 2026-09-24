@@ -75,7 +75,7 @@ const CHAPTERS = [
     },
     {
         num: 4,
-        title: "울새가 알려 준 것",
+        title: "문이 없는 담",
         emoji: "🐦",
         art: ["story-04-a.webp", "story-04-b.webp"],
         paras: [

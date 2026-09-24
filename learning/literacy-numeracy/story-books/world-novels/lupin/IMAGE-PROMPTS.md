@@ -97,7 +97,7 @@ Wilson: his shorter, rounder English companion.
 | `images/story-01-a.webp` | A first-class deck of an ocean liner: passengers in deck chairs suddenly all looking sideways at one another, a telegram being passed from hand to hand. |
 | `images/story-01-b.webp` | A New York quay: a stocky policeman laying a hand on a young gentleman's arm at the foot of the gangway, and a little way off a young woman holding a camera, staring at it. |
 
-## 2편 · 감옥에서 성을 털다
+## 2편 · 예고 편지
 
 | 파일명 | 장면 |
 |---|---|

@@ -175,7 +175,7 @@ const CHAPTERS = [
     },
     {
         num: 3,
-        title: "3장 · 두레박",
+        title: "3장 · 하늘에서 내려온 것",
         beats: [
             {
                 art: "11-children.webp",
@@ -503,7 +503,7 @@ const EN = {
         },
         {
             num: 3,
-            title: "Chapter 3 · The Well Bucket",
+            title: "Chapter 3 · What Came Down from the Sky",
             beats: [
                 {
                     art: "11-children.webp",

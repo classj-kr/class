@@ -196,7 +196,7 @@ const CHAPTERS = [
     },
     {
         "num": 7,
-        "title": "7장 · 무타보르",
+        "title": "7장 · 다시 떠오른 말",
         "beats": [
             {
                 "art": "07-mutabor.webp",
@@ -758,7 +758,7 @@ const EN = {
         },
         {
             num: 7,
-            title: 'Chapter 7 · Mutabor',
+            title: 'Chapter 7 · The Word Comes Back',
             beats: [
                 {
                     art: '07-mutabor.webp',

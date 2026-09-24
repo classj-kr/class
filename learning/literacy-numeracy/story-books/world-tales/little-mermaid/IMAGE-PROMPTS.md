@@ -83,21 +83,21 @@ strange and grand rather than horrid. The prince: a young man in a blue coat.
 | `images/04-witch.webp` | A dark swirling trench at the edge of the sea where a young mermaid swims past skeletal corals into a grotto, a tall figure with drifting hair and octopus arms waiting inside, strange and grand. 〔이 쪽에 실린 글 (7/16) — 그림에 글자는 넣지 마세요. 왼쪽: 바다 끝에 마녀가 살았습니다. 아무도 가지 않는 곳이었지요. 인어공주는 그리로 헤엄쳐 갔습니다. 검은 물이 소용돌이쳤지요. 해골처럼 생긴 산호가 길가에 늘어서 있었습니다. 그래도 인어공주는 멈추지 않았지요. / 오른쪽: 동굴 안에 마녀가 있었습니다. 긴 머리가 물속에서 흐느적거렸지요. 네가 올 줄 알았다. 다리를 갖고 싶은 게지?〕 |
 | `images/04-witch-2.webp` | A grotto lit by pale glowing anemones where a sea witch names her price as a young mermaid presses a hand to her own throat, hesitating and then nodding, tense and solemn. 〔이 쪽에 실린 글 (8/16) — 그림에 글자는 넣지 마세요. 왼쪽: 무엇을 드리면 되나요? 네 목소리를 다오. 바다에서 제일 고운 목소리지. / 오른쪽: 마녀가 한 가지를 더 말했지요. 걸을 때마다 아플 것이다. 칼날 위를 걷는 것처럼.〕 |
 
-## 5장 · 목소리를 잃고
+## 5장 · 왕자의 곁에서
 
 | 파일명 | 장면 |
 |---|---|
 | `images/05-legs.webp` | A dawn beach where a mermaid drinks a potion and collapses, waking with two legs on the sand, and a young prince approaching in wonder as she tries to stand, painful and beautiful. 〔이 쪽에 실린 글 (9/16) — 그림에 글자는 넣지 마세요. 왼쪽: 인어공주는 물 위로 올라가 약을 마셨습니다. 그 순간 온몸이 불에 닿은 듯했지요. 인어공주는 그대로 정신을 잃었습니다. 눈을 뜨니 모래밭이었지요. 꼬리가 감쪽같이 없어져 있었습니다. 인어공주는 제 몸을 몇 번이나 내려다봤지요. 대신 두 다리가 생겨 있었지요. / 오른쪽: 일어서려 하자 발끝이 몹시 아팠습니다. 정말 칼날 위에 선 것 같았지요. 그래도 인어공주는 이를 악물고 일어섰습니다. 그때 저편에서 발소리가 났습니다. 고개를 드니 그 젊은이가 서 있었지요. 어디서 오셨나요?〕 |
 | `images/05-legs-2.webp` | A bright palace hall where a silent girl dances gracefully despite pain while a prince watches fondly, courtiers applauding, but his gaze drifting toward the window and the sea, wistful. 〔이 쪽에 실린 글 (10/16) — 그림에 글자는 넣지 마세요. 왼쪽: 인어공주는 대답할 수 없었습니다. 입을 열어도 소리가 나지 않았지요. 젊은이는 인어공주를 궁으로 데려갔습니다. 고운 옷도 입혀 주었지요. 말을 못 하는 모양이군요. / 오른쪽: 인어공주는 날마다 춤을 췄습니다. 발이 아파도 웃으며 췄지요. 왕자는 인어공주를 늘 곁에 두었습니다. 내 소중한 동무예요.〕 |
 
-## 6장 · 다른 나라의 공주
+## 6장 · 혼인 잔치
 
 | 파일명 | 장면 |
 |---|---|
 | `images/06-wedding.webp` | A ship's deck where a prince speaks earnestly to a silent girl who presses her hands to her chest unable to answer, and a harbour crowded with welcoming crowds ahead, aching. 〔이 쪽에 실린 글 (11/16) — 그림에 글자는 넣지 마세요. 왼쪽: 어느 날 왕자가 말했습니다. 이웃 나라에 가야 해요. 혼인 이야기가 오간답니다. / 오른쪽: 인어공주는 가슴이 쿵 뛰었습니다. '그건 저예요.' 하지만 말할 수 없었지요. 손짓으로도 도무지 전할 수가 없었습니다.〕 |
 | `images/06-wedding-2.webp` | A harbour where a prince recognises a princess with joy, and a great wedding feast on a ship at night where a silent girl stands smiling among the celebrations, alone in the crowd, deeply moving. 〔이 쪽에 실린 글 (12/16) — 그림에 글자는 넣지 마세요. 왼쪽: 이웃 나라 공주가 앞으로 나왔습니다. 그 얼굴을 본 왕자가 걸음을 뚝 멈췄지요. 당신이었군요! 바로 그 바닷가의 아가씨였습니다. 왕자는 무척 기뻐했지요. / 오른쪽: 그날로 혼인이 정해졌습니다. 온 나라가 잔치를 벌였지요. 인어공주도 그 자리에 있었습니다. 웃는 얼굴로 조용히 서 있었지요. 아무도 그 마음을 알지 못했습니다. 그렇게 밤이 깊어 갔지요.〕 |
 
-## 7장 · 단검을 바다에 던지고
+## 7장 · 해 뜨기 전에
 
 | 파일명 | 장면 |
 |---|---|

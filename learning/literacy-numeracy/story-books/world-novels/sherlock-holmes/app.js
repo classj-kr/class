@@ -78,7 +78,7 @@ const CHAPTERS = [
     },
     {
         num: 4,
-        title: "얼룩 끈",
+        title: "스토크 모런",
         emoji: "🐍",
         art: ["story-04-a.webp", "story-04-b.webp"],
         paras: [
@@ -137,7 +137,7 @@ const CHAPTERS = [
     },
     {
         num: 6,
-        title: "짖지 않은 개",
+        title: "사라진 경주마",
         emoji: "🐎",
         art: ["story-06-a.webp", "story-06-b.webp"],
         paras: [
@@ -304,7 +304,7 @@ const EN = {
             ]
         },
         {
-            title: 'The Speckled Band',
+            title: 'Stoke Moran',
             paras: [
                 `Early one morning in April 1883, Holmes shook me awake. It was a little past seven. <br>"A client has come. A badly frightened one."`,
                 `In the sitting room sat a young woman in black, her face veiled. When she lifted the veil, to my surprise, though she was not yet thirty her hair was streaked with grey. Her hands kept trembling.`,
@@ -357,7 +357,7 @@ const EN = {
             ]
         },
         {
-            title: 'The Dog That Did Not Bark',
+            title: 'The Missing Racehorse',
             paras: [
                 `"Watson, we must go to Dartmoor."<br>Holmes said it at the breakfast table. Every newspaper carried the same case. Dartmoor is a wide moor in the south-west of England. A place of rock and bog.`,
                 `Three nights before, at the King's Pyland stables on Dartmoor, two things had happened at once. Silver Blaze, the famous horse favoured to win the coming race, had vanished, and the trainer, Straker, had been found dead on the moor. He had been struck hard on the head, and a small knife was in his hand. Racing was a very big thing in England then. The whole country knew the name of a famous horse.`,

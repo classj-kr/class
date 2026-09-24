@@ -138,7 +138,7 @@ const CHAPTERS = [
     },
     {
         "num": 5,
-        "title": "5장 · 목소리를 잃고",
+        "title": "5장 · 왕자의 곁에서",
         "beats": [
             {
                 "art": "05-legs.webp",
@@ -172,7 +172,7 @@ const CHAPTERS = [
     },
     {
         "num": 6,
-        "title": "6장 · 다른 나라의 공주",
+        "title": "6장 · 혼인 잔치",
         "beats": [
             {
                 "art": "06-wedding.webp",
@@ -205,7 +205,7 @@ const CHAPTERS = [
     },
     {
         "num": 7,
-        "title": "7장 · 단검을 바다에 던지고",
+        "title": "7장 · 해 뜨기 전에",
         "beats": [
             {
                 "art": "07-dagger.webp",
@@ -708,7 +708,7 @@ const EN = {
         },
         {
             num: 5,
-            title: 'Chapter 5 · Without a Voice',
+            title: "Chapter 5 · At the Prince's Side",
             beats: [
                 {
                     art: '05-legs.webp',
@@ -744,7 +744,7 @@ const EN = {
         },
         {
             num: 6,
-            title: 'Chapter 6 · The Princess from the Other Country',
+            title: 'Chapter 6 · The Wedding Feast',
             beats: [
                 {
                     art: '06-wedding.webp',
@@ -779,7 +779,7 @@ const EN = {
         },
         {
             num: 7,
-            title: 'Chapter 7 · The Knife in the Sea',
+            title: 'Chapter 7 · Before Sunrise',
             beats: [
                 {
                     art: '07-dagger.webp',

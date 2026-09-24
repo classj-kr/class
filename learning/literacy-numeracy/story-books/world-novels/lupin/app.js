@@ -32,7 +32,7 @@ const CHAPTERS = [
     },
     {
         num: 2,
-        title: "감옥에서 성을 털다",
+        title: "예고 편지",
         emoji: "🏰",
         art: ["story-02-a.webp", "story-02-b.webp"],
         paras: [
@@ -242,7 +242,7 @@ const EN = {
             ]
         },
         {
-            title: 'Robbing a Castle from Prison',
+            title: 'The Letter of Warning',
             paras: [
                 `In Normandy there was an old castle called Malaquis. It was built on a rocky island in the middle of a river. The water came right up to the foot of the walls. It was joined to the land by a single bridge. Block that bridge, and nobody could come or go. The castle had been built that way on purpose.`,
                 `The master of the castle was a man called the Baron Cahorn. He was a very mean man. He kept hardly any servants. He was careful even with the lamps. In that great castle there were not five people. And yet there were remarkable things inside it.`,

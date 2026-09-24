@@ -234,7 +234,7 @@ const CHAPTERS = [
     },
     {
         num: 8,
-        title: "요코하마의 곡예단",
+        title: "요코하마에서",
         emoji: "🤸",
         art: ["story-08-a.webp", "story-08-b.webp"],
         paras: [

@@ -112,7 +112,7 @@ const CHAPTERS = [
     },
     {
         num: 3,
-        title: "3장 · 황소를 끌고",
+        title: "3장 · 제가 가진 것 전부입니다",
         beats: [
             {
                 art: "07-ox.webp",
@@ -324,7 +324,7 @@ const EN = {
         },
         {
             num: 3,
-            title: "Chapter 3 · Leading the Ox",
+            title: "Chapter 3 · All I Have in the World",
             beats: [
                 {
                     art: "07-ox.webp",

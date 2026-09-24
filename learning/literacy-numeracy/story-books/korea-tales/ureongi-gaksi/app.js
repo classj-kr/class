@@ -1,7 +1,7 @@
 const CHAPTERS = [
     {
         num: 1,
-        title: "1장 · 논에서 들려온 대답",
+        title: "1장 · 누구랑 먹고 사나",
         beats: [
             {
                 art: "01-field.webp",
@@ -75,7 +75,7 @@ const CHAPTERS = [
     },
     {
         num: 2,
-        title: "2장 · 차려진 밥상",
+        title: "2장 · 누가 다녀갔을까",
         beats: [
             {
                 art: "05-table.webp",
@@ -272,7 +272,7 @@ const EN = {
     chapters: [
         {
             num: 1,
-            title: "Chapter 1 · An Answer from the Paddy",
+            title: "Chapter 1 · Who Will I Eat With?",
             beats: [
                 {
                     art: "01-field.webp",
@@ -348,7 +348,7 @@ const EN = {
         },
         {
             num: 2,
-            title: "Chapter 2 · The Table Laid",
+            title: "Chapter 2 · Who Has Been Here?",
             beats: [
                 {
                     art: "05-table.webp",

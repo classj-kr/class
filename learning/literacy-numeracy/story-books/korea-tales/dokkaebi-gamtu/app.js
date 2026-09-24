@@ -195,7 +195,7 @@ const CHAPTERS = [
     },
     {
         num: 3,
-        title: "3장 · 둥둥 떠다니는 빨간 점",
+        title: "3장 · 장터에서 들킨 날",
         beats: [
             {
                 art: "12-rumor.webp",
@@ -533,7 +533,7 @@ const EN = {
         },
         {
             num: 3,
-            title: "Chapter 3 · The Floating Red Spot",
+            title: "Chapter 3 · Caught at the Market",
             beats: [
                 {
                     art: "12-rumor.webp",

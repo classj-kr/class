@@ -164,7 +164,7 @@ Buldeo: a village hunter with an old matchlock gun and a big moustache.
 | `images/story-10-a.webp` | A boy lying full length on the back of a buffalo in a wide pasture, the herd grazing around him, the jungle a dark wall on the horizon. |
 | `images/story-10-b.webp` | The edge of the pasture at dusk: a grey wolf standing just clear of the trees and a boy walking toward it with both arms out. |
 
-## 11장 · 협곡
+## 11장 · 셰어 칸의 가죽
 
 | 파일명 | 장면 |
 |---|---|

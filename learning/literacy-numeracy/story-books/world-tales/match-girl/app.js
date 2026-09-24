@@ -169,7 +169,7 @@ const CHAPTERS = [
     },
     {
         "num": 6,
-        "title": "6장 · 할머니",
+        "title": "6장 · 마지막 성냥들",
         "beats": [
             {
                 "art": "06-grandmother.webp",
@@ -704,7 +704,7 @@ const EN = {
         },
         {
             num: 6,
-            title: 'Chapter 6 · Grandmother',
+            title: 'Chapter 6 · The Last Matches',
             beats: [
                 {
                     art: '06-grandmother.webp',

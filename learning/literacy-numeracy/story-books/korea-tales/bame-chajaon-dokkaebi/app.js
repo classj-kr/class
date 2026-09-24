@@ -1,7 +1,7 @@
 const CHAPTERS = [
     {
         num: 1,
-        title: "1장 · 개울가의 사내",
+        title: "1장 · 밤길을 막은 사내",
         beats: [
             {
                 art: "01-nightroad.webp",
@@ -218,7 +218,7 @@ const EN = {
     chapters: [
         {
             num: 1,
-            title: "Chapter 1 · The Man at the Stream",
+            title: "Chapter 1 · The Man Who Blocked the Road",
             beats: [
                 {
                     art: "01-nightroad.webp",

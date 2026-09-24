@@ -84,14 +84,14 @@ The queen and courtiers in white Greek dress.
 | `images/05-itch.webp` | A cramped village house where a gaunt barber tosses in bed with both hands clamped over his mouth while his worried wife leans over him, candle guttering, comic misery. 〔이 쪽에 실린 글 (9/16) — 그림에 글자는 넣지 마세요. 왼쪽: 이발사는 밥을 먹다가도 그 생각이 났습니다. 숟가락을 들면 귀가 떠올랐지요. 잠을 자려고 누우면 더 또렷해졌습니다. 말하고 싶다. 딱 한 번만 말하고 싶다. / 오른쪽: 두 손으로 입을 틀어막았습니다. 아내가 걱정스레 물었지요. 여보, 무슨 일 있어요? 이발사는 고개만 저었습니다. 목구멍까지 말이 차올랐지요. 이발사는 이불을 더 꽉 끌어당겼습니다.〕 |
 | `images/05-itch-2.webp` | A gaunt barber refusing a friend's cup in a tavern with tight lips, then sitting hollow-eyed at his own table, months passing, comic and pitiable. 〔이 쪽에 실린 글 (10/16) — 그림에 글자는 넣지 마세요. 왼쪽: 친구가 술을 권해도 마찬가지였습니다. 이발사는 입을 꾹 다물었지요. 한 잔만 마셔도 말이 나올 것 같았거든요. 자네 요즘 왜 그러나? 아, 아무것도 아닐세. / 오른쪽: 그런데 배만 자꾸 불룩해졌습니다. 못 한 말이 그 안에 쌓이는 것 같았지요. 이러다 내가 병이 나겠구나. 아무한테도 말 못 한다면 어쩌지.〕 |
 
-## 6장 · 갈대밭 구덩이
+## 6장 · 땅에 대고 외친 말
 
 | 파일명 | 장면 |
 |---|---|
 | `images/06-hole.webp` | A barber with a spade hurrying to a riverside reed bed at dusk, checking that nobody is around and digging a deep hole in the earth, comic secrecy. 〔이 쪽에 실린 글 (11/16) — 그림에 글자는 넣지 마세요. 왼쪽: 어느 날 이발사가 벌떡 일어났습니다. 좋은 생각이 떠올랐거든요. 사람한테 말하지 말라고 했지. 땅한테 말하면 되지 않겠나. / 오른쪽: 사방을 둘러보았습니다. 지나가는 사람은 하나도 없었지요. 이발사는 땅을 팠습니다. 제법 깊은 구덩이가 생겼지요. 그러고는 구덩이에 얼굴을 처박았습니다. 흙냄새가 코를 찔렀지요. 심장이 쿵쿵 뛰었습니다. 이발사는 크게 숨을 들이켰지요.〕 |
 | `images/06-hole-2.webp` | A barber shouting into a hole among towering reeds at dusk, then filling it in and walking home light-footed, comic relief, golden light. 〔이 쪽에 실린 글 (12/16) — 그림에 글자는 넣지 마세요. 왼쪽: 이발사는 목청껏 소리쳤습니다. 임금님 귀는 당나귀 귀! 임금님 귀는 당나귀 귀라고! / 오른쪽: 발로 꼭꼭 밟기까지 했습니다. 손바닥에 흙이 잔뜩 묻었지요. 이발사는 그것도 모르고 씩 웃었습니다. 이제 아무도 모르겠지. 집에 돌아오는 발걸음이 가벼웠지요.〕 |
 
-## 7장 · 바람이 지나가자
+## 7장 · 온 나라에 퍼진 노래
 
 | 파일명 | 장면 |
 |---|---|

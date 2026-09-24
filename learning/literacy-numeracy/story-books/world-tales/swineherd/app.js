@@ -130,7 +130,7 @@ const CHAPTERS = [
     },
     {
         "num": 5,
-        "title": "5장 · 열 번의 입맞춤",
+        "title": "5장 · 냄비의 값",
         "beats": [
             {
                 "art": "05-bargain.webp",
@@ -162,7 +162,7 @@ const CHAPTERS = [
     },
     {
         "num": 6,
-        "title": "6장 · 시녀들의 담장",
+        "title": "6장 · 뒷마당에서",
         "beats": [
             {
                 "art": "06-kisses.webp",
@@ -682,7 +682,7 @@ const EN = {
         },
         {
             num: 5,
-            title: 'Chapter 5 · Ten Kisses',
+            title: 'Chapter 5 · The Price of the Pot',
             beats: [
                 {
                     art: '05-bargain.webp',
@@ -717,7 +717,7 @@ const EN = {
         },
         {
             num: 6,
-            title: 'Chapter 6 · A Wall of Maids',
+            title: 'Chapter 6 · In the Back Yard',
             beats: [
                 {
                     art: '06-kisses.webp',

@@ -72,7 +72,7 @@ const CHAPTERS = [
     },
     {
         num: 2,
-        title: "2장 · 밤마다 놓인 것",
+        title: "2장 · 어머니는 안녕하시냐",
         beats: [
             {
                 art: "05-tears.webp",
@@ -143,7 +143,7 @@ const CHAPTERS = [
     },
     {
         num: 3,
-        title: "3장 · 진작 알고 있었다",
+        title: "3장 · 호랑이의 대답",
         beats: [
             {
                 art: "09-years.webp",
@@ -319,7 +319,7 @@ const EN = {
         },
         {
             num: 2,
-            title: "Chapter 2 · What Came Every Night",
+            title: "Chapter 2 · Is Mother Well?",
             beats: [
                 {
                     art: "05-tears.webp",
@@ -390,7 +390,7 @@ const EN = {
         },
         {
             num: 3,
-            title: "Chapter 3 · I Knew All Along",
+            title: "Chapter 3 · The Tiger's Answer",
             beats: [
                 {
                     art: "09-years.webp",

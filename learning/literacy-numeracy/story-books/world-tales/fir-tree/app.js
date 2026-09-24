@@ -171,7 +171,7 @@ const CHAPTERS = [
     },
     {
         "num": 6,
-        "title": "6장 · 다락방의 겨울",
+        "title": "6장 · 생쥐들에게 들려준 이야기",
         "beats": [
             {
                 "art": "06-attic.webp",
@@ -778,7 +778,7 @@ const EN = {
         },
         {
             num: 6,
-            title: 'Chapter 6 · Winter in the Attic',
+            title: 'Chapter 6 · Stories for the Mice',
             beats: [
                 {
                     art: '06-attic.webp',

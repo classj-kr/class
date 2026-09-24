@@ -119,14 +119,14 @@ hands, kind eyes, always with books.
 | `images/story-04-a.webp` | A kitchen in complete disorder on the seventh day of doing no work: dishes stacked high, washing still hanging across the room, four sisters standing among it with nothing left to eat. |
 | `images/story-04-b.webp` | A riverside picnic in summer: young people with croquet mallets and a picnic basket spread on a rug, a quiet young tutor talking with the eldest sister a little apart from the rest. |
 
-## 5장 · 타 버린 원고
+## 5장 · 후회할 거야
 
 | 파일명 | 장면 |
 |---|---|
 | `images/story-05-a.webp` | An attic room: an open empty drawer, a girl standing frozen with both hands at her sides, ashes visible in the grate downstairs through the open door. |
 | `images/story-05-b.webp` | A frozen river: cracked ice and dark water, a girl going through, a boy and another girl throwing themselves down to reach her, skates scattered. |
 
-## 6장 · 베스의 피아노
+## 6장 · 베스와 로렌스 씨
 
 | 파일명 | 장면 |
 |---|---|

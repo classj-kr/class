@@ -89,7 +89,7 @@ cap, funny rather than scary. Glinda: a beautiful red-haired witch in a white go
 | `images/05-emerald.webp` | A dazzling green city gate where a gatekeeper fits green spectacles onto four wide-eyed travellers, and beyond the gate every street, roof and coat shines emerald green, splendid and slightly funny. 〔이 쪽에 실린 글 (9/16) — 그림에 글자는 넣지 마세요. 왼쪽: 멀리 초록빛 성이 반짝였습니다. 문지기가 상자에서 초록 안경을 꺼내 하나씩 씌워 주었지요. 안 쓰면 눈이 부셔서 못 다녀요. / 오른쪽: 오즈는 하루에 한 사람씩만 만나 주었습니다. 도로시 앞에 나타난 것은 커다란 얼굴 하나였지요. 몸도 팔도 없이 둥실 떠 있었습니다.〕 |
 | `images/05-order.webp` | A vast throne room shown as four glowing visions side by side: an enormous floating head, a beautiful winged lady, a strange shaggy beast and a ball of flame, with four astonished travellers small below them. 〔이 쪽에 실린 글 (10/16) — 그림에 글자는 넣지 마세요. 왼쪽: 오즈는 넷에게 똑같은 말을 했습니다. 서쪽 마녀를 물리치고 오너라. 그러면 소원을 들어주마. / 오른쪽: 서쪽 마녀는 눈이 하나뿐이었습니다. 그 눈으로 멀리까지 다 보았지요. 마녀는 늑대 떼를 보냈습니다. 나무꾼이 도끼로 막았지요. 까마귀 떼를 보냈습니다. 허수아비가 두 팔을 휘저어 쫓았지요.〕 |
 
-## 6장 · 서쪽 마녀
+## 6장 · 황금 모자
 
 | 파일명 | 장면 |
 |---|---|

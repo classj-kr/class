@@ -79,7 +79,7 @@ smile.
 | `images/04-wine.webp` | A castle hall where courtiers snigger at an old soldier volunteering before the king, and later a princess bringing him a goblet outside a bedroom door, candlelight. 〔이 쪽에 실린 글 (7/16) — 그림에 글자는 넣지 마세요. 왼쪽: 병사는 성으로 갔습니다. 제가 한번 해 보겠습니다. 신하들이 코웃음을 쳤지요. / 오른쪽: 저녁이 되자 병사는 좋은 옷을 얻어 입었습니다. 공주들의 방 앞에 자리를 잡았지요. 밤이 깊어 갈 무렵이었습니다. 큰공주가 술잔을 들고 나왔지요. 편히 주무시라고 가져왔어요.〕 |
 | `images/04-wine-2.webp` | An old soldier pretending to drink while wine trickles into his collar, then lying down snoring loudly as princesses peep out from a doorway, comic and sly. 〔이 쪽에 실린 글 (8/16) — 그림에 글자는 넣지 마세요. 왼쪽: 병사는 노파의 말을 떠올렸습니다. 잔을 입에 대고 마시는 시늉만 했지요. 술은 몰래 옷깃 뒤로 흘려보냈습니다. 잘 마셨습니다. 이제 좀 졸리는군요. 병사는 자리에 누웠지요. 그러고는 코를 드르렁드르렁 골았습니다. / 오른쪽: 자는 척을 아주 잘했지요. 방 안에서 소곤거리는 소리가 들렸습니다. 저 사람도 잠들었어. 거봐, 늙은 병사가 뭘 하겠어.〕 |
 
-## 5장 · 침대 밑의 계단
+## 5장 · 잠든 척
 
 | 파일명 | 장면 |
 |---|---|

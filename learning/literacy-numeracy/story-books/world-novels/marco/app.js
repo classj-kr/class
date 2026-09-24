@@ -67,7 +67,7 @@ const CHAPTERS = [
     },
     {
         num: 3,
-        title: "스물일곱 날",
+        title: "배 밑바닥에서",
         emoji: "🌊",
         art: ["story-03-a.webp", "story-03-b.webp"],
         paras: [
@@ -156,7 +156,7 @@ const CHAPTERS = [
     },
     {
         num: 6,
-        title: "소달구지 길",
+        title: "제일 긴 길",
         emoji: "🐂",
         art: ["story-06-a.webp", "story-06-b.webp"],
         paras: [

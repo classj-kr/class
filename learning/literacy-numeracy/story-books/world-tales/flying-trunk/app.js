@@ -206,7 +206,7 @@ const CHAPTERS = [
     },
     {
         "num": 7,
-        "title": "7장 · 하늘에서 터진 불꽃",
+        "title": "7장 · 혼례 전날 밤",
         "beats": [
             {
                 "art": "07-fireworks.webp",
@@ -241,7 +241,7 @@ const CHAPTERS = [
     },
     {
         "num": 8,
-        "title": "8장 · 타 버린 가방",
+        "title": "8장 · 하늘을 보는 공주",
         "beats": [
             {
                 "art": "08-ending.webp",
@@ -816,7 +816,7 @@ const EN = {
         },
         {
             num: 7,
-            title: 'Chapter 7 · Fireworks in the Sky',
+            title: 'Chapter 7 · The Night Before the Wedding',
             beats: [
                 {
                     art: '07-fireworks.webp',
@@ -858,7 +858,7 @@ const EN = {
         },
         {
             num: 8,
-            title: 'Chapter 8 · The Burnt Trunk',
+            title: 'Chapter 8 · The Princess Watching the Sky',
             beats: [
                 {
                     art: '08-ending.webp',

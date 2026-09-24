@@ -92,7 +92,7 @@ tall man in dark robes with a pointed beard, comically villainous.
 | `images/06-eavesdrop.webp` | A candlelit ruin where dark-robed figures gather around a low table while two storks and an owl press flat behind a broken wall, tense and thrilling. 〔이 쪽에 실린 글 (11/16) — 그림에 글자는 넣지 마세요. 왼쪽: 셋은 무너진 벽 뒤에 몸을 숨겼습니다. 숨소리도 내지 않았지요. 한밤중이 되자 발소리가 났습니다. 검은 옷을 입은 무리가 들어왔지요. 가운데 앉은 자가 카슈누어였습니다. 수염이 뾰족하고 눈이 매서웠지요. / 오른쪽: 무리는 낮은 상에 둘러앉았습니다. 저마다 그동안 한 일을 늘어놓았지요. 이윽고 카슈누어가 껄껄 웃었습니다. 내 이야기가 제일 재미있을걸.〕 |
 | `images/06-eavesdrop-2.webp` | Dark-robed figures laughing around a table as two storks behind a wall stare at each other in sudden realisation, an owl covering their beaks with a wing, thrilling. 〔이 쪽에 실린 글 (12/16) — 그림에 글자는 넣지 마세요. 왼쪽: 바그다드 임금이 황새가 되어 헤맨다지. 내가 등짐장수로 꾸미고 가루를 팔았거든. 주문이 무어냐고? / 오른쪽: 무타보르! 바로 그거였어! 하마터면 소리를 지를 뻔했습니다. 올빼미가 얼른 날개로 부리를 막아 주었지요. 셋은 모임이 끝나기를 기다렸습니다. 새벽이 되자 무리가 흩어졌지요. 발소리가 하나씩 멀어졌습니다. 셋은 그제야 숨을 크게 내쉬었지요.〕 |
 
-## 7장 · 무타보르
+## 7장 · 다시 떠오른 말
 
 | 파일명 | 장면 |
 |---|---|

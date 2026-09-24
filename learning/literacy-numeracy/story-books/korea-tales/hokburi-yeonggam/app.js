@@ -77,7 +77,7 @@ const CHAPTERS = [
     },
     {
         num: 2,
-        title: "2장 · 혹에서 나오는 소리",
+        title: "2장 · 도깨비들의 흥정",
         beats: [
             {
                 art: "05-question.webp",
@@ -333,7 +333,7 @@ const EN = {
         },
         {
             num: 2,
-            title: "Chapter 2 · The Sound in the Lump",
+            title: "Chapter 2 · The Goblins' Bargain",
             beats: [
                 {
                     art: "05-question.webp",

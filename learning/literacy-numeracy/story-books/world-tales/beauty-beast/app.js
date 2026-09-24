@@ -66,7 +66,7 @@ const CHAPTERS = [
     },
     {
         "num": 3,
-        "title": "3장 · 꺾어서는 안 될 꽃",
+        "title": "3장 · 등 뒤의 목소리",
         "beats": [
             {
                 "art": "03-plucked.webp",
@@ -231,7 +231,7 @@ const CHAPTERS = [
     },
     {
         "num": 8,
-        "title": "8장 · 뜰에 쓰러진 야수",
+        "title": "8장 · 성으로 돌아가다",
         "beats": [
             {
                 "art": "08-ending.webp",
@@ -619,7 +619,7 @@ const EN = {
         },
         {
             num: 3,
-            title: 'Chapter 3 · The Flower He Should Not Have Picked',
+            title: 'Chapter 3 · A Voice Behind Him',
             beats: [
                 {
                     art: '03-plucked.webp',
@@ -793,7 +793,7 @@ const EN = {
         },
         {
             num: 8,
-            title: 'Chapter 8 · The Beast in the Garden',
+            title: 'Chapter 8 · Back to the Castle',
             beats: [
                 {
                     art: '08-ending.webp',

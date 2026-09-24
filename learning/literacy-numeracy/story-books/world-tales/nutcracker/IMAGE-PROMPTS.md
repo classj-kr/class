@@ -60,7 +60,7 @@ with seven small crowns, comic and blustering.
 | `images/01-gift.webp` | A grand parlour on Christmas Eve where a huge candlelit tree glows over heaped presents as two children rush in, and a lean old clockmaker with an eyepatch arriving at the door, warm and festive. 〔이 쪽에 실린 글 (1/16) — 그림에 글자는 넣지 마세요. 왼쪽: 크리스마스이브였습니다. 거실 한가운데 커다란 나무가 서 있었지요. 가지마다 촛불이 켜지고 금박 사과가 대롱대롱 매달렸습니다. 마리와 프리츠는 문밖에서 발을 동동 구르며 기다렸지요. 아직 멀었어요? / 오른쪽: 조금만 더 참으렴. 드디어 문이 활짝 열렸습니다. 나무 아래에 선물이 잔뜩 쌓여 있었지요. 프리츠는 병정 인형을, 마리는 새 인형을 받았습니다. 그때 대부님이 들어오셨지요. 시계를 만드는 분이었습니다. 해마다 신기한 것을 만들어 오시는 분이었지요.〕 |
 | `images/01-gift-2.webp` | A clockwork castle with moving figures being wound up as everyone applauds, while a girl kneels apart under the tree holding a wooden nutcracker soldier in a red coat, tender. 〔이 쪽에 실린 글 (2/16) — 그림에 글자는 넣지 마세요. 왼쪽: 대부님이 커다란 상자를 열었습니다. 안에는 작은 성이 들어 있었지요. 태엽을 감자 성안의 인형들이 움직이기 시작했습니다. 문이 열리고 사람들이 줄줄이 걸어 나왔지요. 우와! / 오른쪽: 그런데 마리만은 다른 것을 보고 있었지요. 나무 아래에 인형이 하나 놓여 있었거든요. 빨간 옷을 입은 병정이었습니다. 턱이 아래위로 딱딱 벌어졌지요. 호두를 까는 인형이었습니다. 얼굴이 좀 우스꽝스러웠지요. 그래도 마리는 그 인형이 제일 마음에 들었습니다.〕 |
 
-## 2장 · 부러진 턱
+## 2장 · 프리츠의 장난
 
 | 파일명 | 장면 |
 |---|---|
@@ -81,7 +81,7 @@ with seven small crowns, comic and blustering.
 | `images/04-battle.webp` | A toy battlefield on a parlour rug where tin soldiers fire sugar-plum cannonballs at a mouse horde and a nutcracker faces a crowned mouse king, chaotic and comic. 〔이 쪽에 실린 글 (7/16) — 그림에 글자는 넣지 마세요. 왼쪽: 병정들이 한 걸음씩 앞으로 나아갔습니다. 대포에서 사탕이 펑펑 튀어나왔지요. 사탕에 맞은 생쥐들이 우수수 넘어졌습니다. 물러서지 마라! 그래도 생쥐들은 자꾸자꾸 몰려왔지요. 병정들이 하나씩 쓰러지면서 줄이 점점 짧아졌습니다. 호두까기 인형이 맨 앞에 나섰지요. / 오른쪽: 마침내 생쥐 왕과 마주 섰습니다. 덤벼라! 두 편이 쨍 하고 부딪쳤지요. 칼과 이빨이 부딪는 소리가 온 거실에 울렸습니다.〕 |
 | `images/04-battle-2.webp` | A parlour where a girl hurls her slipper across the room striking a mouse king, the mouse horde scattering into the floorboards, and the girl sinking down dizzy, dramatic and comic. 〔이 쪽에 실린 글 (8/16) — 그림에 글자는 넣지 마세요. 왼쪽: 끝내 인형이 쿵 넘어졌습니다. 생쥐 왕이 성큼성큼 다가갔지요. 마리는 저도 모르게 몸이 움직였습니다. 신고 있던 신발을 얼른 벗었지요. 저리 가! / 오른쪽: 그것이 생쥐 왕의 머리에 딱 맞았지요. 생쥐들이 놀라 우르르 흩어졌습니다. 마룻바닥 틈으로 순식간에 사라졌지요. 거실이 다시 조용해졌습니다. 마리는 그 자리에 주저앉았지요. 눈앞이 빙글빙글 돌더니 그대로 정신을 잃었습니다.〕 |
 
-## 5장 · 왕자가 된 인형
+## 5장 · 설탕 길
 
 | 파일명 | 장면 |
 |---|---|

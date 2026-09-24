@@ -102,7 +102,7 @@ const CHAPTERS = [
     },
     {
         "num": 4,
-        "title": "4장 · 나무 밑동의 거위",
+        "title": "4장 · 금빛 깃털",
         "beats": [
             {
                 "art": "04-goose.webp",
@@ -682,7 +682,7 @@ const EN = {
         },
         {
             num: 4,
-            title: 'Chapter 4 · The Goose in the Tree Stump',
+            title: 'Chapter 4 · Golden Feathers',
             beats: [
                 {
                     art: '04-goose.webp',

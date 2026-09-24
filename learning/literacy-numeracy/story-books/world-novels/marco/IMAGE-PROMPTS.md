@@ -104,7 +104,7 @@ descent — draw them as individuals, competent and matter-of-fact.
 | `images/story-02-a.webp` | The same kitchen at night: a boy standing and speaking, a father seated with his hands over his face, an older brother in the doorway. |
 | `images/story-02-b.webp` | A quayside shipping office: a small boy at the counter asking a busy clerk about the cheapest passage while dockers push past him, a stub of pencil and a scrap of paper in his hand. |
 
-## 3장 · 스물일곱 날
+## 3장 · 배 밑바닥에서
 
 | 파일명 | 장면 |
 |---|---|
@@ -125,7 +125,7 @@ descent — draw them as individuals, competent and matter-of-fact.
 | `images/story-05-a.webp` | A colonial-era street in Córdoba with white walls and a church tower, a boy going from door to door asking. |
 | `images/story-05-b.webp` | A yard where a line of ox carts is being loaded for a long journey, a boy talking up to the wagon-master. |
 
-## 6장 · 소달구지 길
+## 6장 · 제일 긴 길
 
 | 파일명 | 장면 |
 |---|---|

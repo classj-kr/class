@@ -71,7 +71,7 @@ prince: a small crowned figure with dragonfly wings.
 | `images/02-toad.webp` | A moonlit cottage window where a large warty toad in a bonnet lifts a walnut-shell bed with a sleeping tiny girl, and carries it down to a muddy stream where a slack-jawed young toad waits, comic. 〔이 쪽에 실린 글 (3/16) — 그림에 글자는 넣지 마세요. 왼쪽: 어느 밤 창문이 조금 열려 있었습니다. 그 틈으로 두꺼비 한 마리가 폴짝 들어왔지요. 커다랗고 축축한 두꺼비였습니다. 두꺼비는 호두 침대를 들여다봤지요. 우리 아들 신붓감이로구나. / 오른쪽: 엄지 공주는 잠든 채로 아무것도 몰랐지요. 그러고는 개울가 진흙 집으로 갔지요. 얘야, 이것 보렴.〕 |
 | `images/02-toad-2.webp` | A wide stream at sunrise where a tiny girl sits weeping alone on a floating lily pad surrounded by open water, silvery shapes moving beneath the surface, lonely and beautiful. 〔이 쪽에 실린 글 (4/16) — 그림에 글자는 넣지 마세요. 왼쪽: 두꺼비는 넓은 잎을 하나 골랐습니다. 개울 한가운데 떠 있는 잎이었지요. 거기에 엄지 공주를 살짝 올려놓았습니다. 여기 있으면 못 도망가지. 두꺼비는 집을 꾸미러 가 버렸지요. 잎 위에는 엄지 공주만 남았습니다. / 오른쪽: 이윽고 아침 해가 떠올랐지요. 눈을 떠 보니 사방이 온통 물이었습니다. 엄지 공주는 그만 울음을 터뜨렸지요. 엄마, 집에 가고 싶어요.〕 |
 
-## 3장 · 물고기들이 도와주었어요
+## 3장 · 개울을 따라
 
 | 파일명 | 장면 |
 |---|---|

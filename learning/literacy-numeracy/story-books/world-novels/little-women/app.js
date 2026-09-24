@@ -129,7 +129,7 @@ const CHAPTERS = [
     },
     {
         num: 5,
-        title: "타 버린 원고",
+        title: "후회할 거야",
         emoji: "🔥",
         art: ["story-05-a.webp", "story-05-b.webp"],
         paras: [
@@ -162,7 +162,7 @@ const CHAPTERS = [
     },
     {
         num: 6,
-        title: "베스의 피아노",
+        title: "베스와 로렌스 씨",
         emoji: "🎹",
         art: ["story-06-a.webp", "story-06-b.webp"],
         paras: [

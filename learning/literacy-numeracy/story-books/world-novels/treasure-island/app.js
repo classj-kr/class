@@ -154,7 +154,7 @@ const CHAPTERS = [
     },
     {
         num: 8,
-        title: "사과 통 속에서",
+        title: "짐이 엿들은 말",
         emoji: "🍎",
         art: ["story-08-a.webp", "story-08-b.webp"],
         paras: [

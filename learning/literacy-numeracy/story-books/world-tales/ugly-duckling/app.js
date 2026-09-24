@@ -109,7 +109,7 @@ const CHAPTERS = [
     },
     {
         "num": 4,
-        "title": "4장 · 처음 본 하얀 새",
+        "title": "4장 · 가을이 오고",
         "beats": [
             {
                 "art": "04-swans.webp",
@@ -648,7 +648,7 @@ const EN = {
         },
         {
             num: 4,
-            title: 'Chapter 4 · The White Birds',
+            title: 'Chapter 4 · Autumn Comes',
             beats: [
                 {
                     art: '04-swans.webp',

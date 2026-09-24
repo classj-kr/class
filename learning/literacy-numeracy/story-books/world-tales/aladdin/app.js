@@ -34,7 +34,7 @@ const CHAPTERS = [
     },
     {
         "num": 2,
-        "title": "2장 · 동굴 속 램프",
+        "title": "2장 · 닫혀 버린 돌문",
         "beats": [
             {
                 "art": "02-cave.webp",
@@ -134,7 +134,7 @@ const CHAPTERS = [
     },
     {
         "num": 5,
-        "title": "5장 · 하룻밤 사이의 궁전",
+        "title": "5장 · 하룻밤 사이에",
         "beats": [
             {
                 "art": "05-palace.webp",
@@ -167,7 +167,7 @@ const CHAPTERS = [
     },
     {
         "num": 6,
-        "title": "6장 · 낡은 램프를 새 램프로",
+        "title": "6장 · 사라진 궁전",
         "beats": [
             {
                 "art": "06-swap.webp",
@@ -585,7 +585,7 @@ const EN = {
         },
         {
             num: 2,
-            title: 'Chapter 2 · The Lamp in the Cave',
+            title: 'Chapter 2 · The Stone Door Shuts',
             beats: [
                 {
                     art: '02-cave.webp',
@@ -693,7 +693,7 @@ const EN = {
         },
         {
             num: 5,
-            title: 'Chapter 5 · A Palace Overnight',
+            title: 'Chapter 5 · In a Single Night',
             beats: [
                 {
                     art: '05-palace.webp',
@@ -729,7 +729,7 @@ const EN = {
         },
         {
             num: 6,
-            title: 'Chapter 6 · New Lamps for Old',
+            title: 'Chapter 6 · The Palace Vanishes',
             beats: [
                 {
                     art: '06-swap.webp',

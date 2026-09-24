@@ -207,7 +207,7 @@ const CHAPTERS = [
     },
     {
         "num": 7,
-        "title": "7장 · 돌려받은 물건들",
+        "title": "7장 · 집으로 가는 길",
         "beats": [
             {
                 "art": "07-return.webp",
@@ -778,7 +778,7 @@ const EN = {
         },
         {
             num: 7,
-            title: 'Chapter 7 · Everything Given Back',
+            title: 'Chapter 7 · The Road Home',
             beats: [
                 {
                     art: '07-return.webp',

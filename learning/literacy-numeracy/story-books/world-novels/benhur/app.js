@@ -32,7 +32,7 @@ const CHAPTERS = [
     },
     {
         num: 2,
-        title: "떨어진 기와",
+        title: "행렬이 지나가던 날",
         emoji: "🧱",
         art: ["story-02-a.webp", "story-02-b.webp"],
         paras: [

@@ -61,7 +61,7 @@ Everyone must look like the same person from picture to picture.
 | `images/cover.webp` (세로 2:3 비율) | A tall portrait-format cover: a golden ball resting at the edge of a dark forest pond with a small green frog perched beside it, a castle roof visible through the trees, low golden light on the water, charming and inviting. |
 | `images/end.webp` | A closed storybook resting under a starry night sky with soft golden sparkles rising from its pages, peaceful and warm closing scene. |
 
-## 1장 · 황금 공
+## 1장 · 막내 공주
 
 | 파일명 | 장면 |
 |---|---|
@@ -96,7 +96,7 @@ Everyone must look like the same person from picture to picture.
 | `images/05-king.webp` | A dining hall where a girl in yellow reluctantly confesses to a bearded king seated at the head of the table, sisters and courtiers listening, dignified and warm. 〔이 쪽에 실린 글 (9/16) — 그림에 글자는 넣지 마세요. 왼쪽: 임금님이 딸의 얼굴을 보고 물었습니다. 무슨 일이냐. 무엇이 그리 무서우냐. 공주는 얼른 대답하지 못했습니다. 개구리 이야기를 어떻게 꺼내야 할지 몰랐거든요. / 오른쪽: 거인은 아니고요…… 개구리예요. 임금님이 숟가락을 내려놓았습니다. 언니들은 서로 눈짓을 주고받았지요. 공주는 하는 수 없이 어제 일을 이야기했습니다. 공을 빠뜨린 것부터 약속한 것까지 다 말했습니다. 말하면서도 얼굴이 화끈거렸지요. 그러게 왜 그런 약속을 했을까 싶었습니다.〕 |
 | `images/05-king-2.webp` | A bearded king speaking gently but firmly while his daughter looks at her feet, and then the girl reopening the tall door where a patient frog still waits, quiet and moving. 〔이 쪽에 실린 글 (10/16) — 그림에 글자는 넣지 마세요. 왼쪽: 임금님은 잠시 말이 없었습니다. 그러다 수염을 한 번 쓸고 조용히 입을 열었지요. 네가 한 약속이면 지켜야 하지 않겠느냐. / 오른쪽: 공주는 발끝만 내려다보았습니다. 대꾸할 말이 없었지요. 아버지 말이 옳다는 것을 알고 있었으니까요. 결국 공주는 다시 문으로 갔습니다. 문을 열자 개구리가 그대로 앉아 있었습니다.〕 |
 
-## 6장 · 한 밥상에서
+## 6장 · 젖은 발자국
 
 | 파일명 | 장면 |
 |---|---|

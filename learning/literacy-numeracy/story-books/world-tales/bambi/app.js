@@ -1,7 +1,7 @@
 const CHAPTERS = [
     {
         "num": 1,
-        "title": "1장 · 덤불 속에서",
+        "title": "1장 · 태어난 아침",
         "beats": [
             {
                 "art": "01-birth.webp",
@@ -557,7 +557,7 @@ const EN = {
     chapters: [
         {
             num: 1,
-            title: 'Chapter 1 · In the Thicket',
+            title: 'Chapter 1 · The Morning He Was Born',
             beats: [
                 {
                     art: '01-birth.webp',

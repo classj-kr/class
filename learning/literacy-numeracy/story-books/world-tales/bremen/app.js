@@ -167,7 +167,7 @@ const CHAPTERS = [
     },
     {
         "num": 6,
-        "title": "6장 · 한꺼번에",
+        "title": "6장 · 창가에 선 넷",
         "beats": [
             {
                 "art": "06-noise.webp",
@@ -721,7 +721,7 @@ const EN = {
         },
         {
             num: 6,
-            title: 'Chapter 6 · All at Once',
+            title: 'Chapter 6 · Four at the Window',
             beats: [
                 {
                     art: '06-noise.webp',

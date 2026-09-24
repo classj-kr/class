@@ -35,7 +35,7 @@ const CHAPTERS = [
     },
     {
         "num": 2,
-        "title": "2장 · 부러진 턱",
+        "title": "2장 · 프리츠의 장난",
         "beats": [
             {
                 "art": "02-broken.webp",
@@ -139,7 +139,7 @@ const CHAPTERS = [
     },
     {
         "num": 5,
-        "title": "5장 · 왕자가 된 인형",
+        "title": "5장 · 설탕 길",
         "beats": [
             {
                 "art": "05-prince.webp",
@@ -606,7 +606,7 @@ const EN = {
         },
         {
             num: 2,
-            title: 'Chapter 2 · The Broken Jaw',
+            title: "Chapter 2 · Fritz's Rough Play",
             beats: [
                 {
                     art: '02-broken.webp',
@@ -728,7 +728,7 @@ const EN = {
         },
         {
             num: 5,
-            title: 'Chapter 5 · The Doll Becomes a Prince',
+            title: 'Chapter 5 · The Sugar Road',
             beats: [
                 {
                     art: '05-prince.webp',

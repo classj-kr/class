@@ -166,7 +166,7 @@ const CHAPTERS = [
     },
     {
         "num": 6,
-        "title": "6장 · 다시 호수로",
+        "title": "6장 · 속은 왕자",
         "beats": [
             {
                 "art": "06-return.webp",
@@ -763,7 +763,7 @@ const EN = {
         },
         {
             num: 6,
-            title: 'Chapter 6 · Back to the Lake',
+            title: 'Chapter 6 · The Prince Deceived',
             beats: [
                 {
                     art: '06-return.webp',

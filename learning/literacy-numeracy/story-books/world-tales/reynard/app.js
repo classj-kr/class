@@ -134,7 +134,7 @@ const CHAPTERS = [
     },
     {
         "num": 5,
-        "title": "5장 · 오소리의 설득",
+        "title": "5장 · 친척이 찾아오다",
         "beats": [
             {
                 "art": "05-badger.webp",
@@ -689,7 +689,7 @@ const EN = {
         },
         {
             num: 5,
-            title: "Chapter 5 · The Badger's Argument",
+            title: 'Chapter 5 · A Relative Comes Calling',
             beats: [
                 {
                     art: '05-badger.webp',

@@ -137,7 +137,7 @@ const CHAPTERS = [
     },
     {
         "num": 5,
-        "title": "5장 · 제비의 눈이 되어",
+        "title": "5장 · 제비가 본 것들",
         "beats": [
             {
                 "art": "05-eyes.webp",
@@ -685,7 +685,7 @@ const EN = {
         },
         {
             num: 5,
-            title: 'Chapter 5 · The Swallow Becomes His Eyes',
+            title: 'Chapter 5 · What the Swallow Saw',
             beats: [
                 {
                     art: '05-eyes.webp',

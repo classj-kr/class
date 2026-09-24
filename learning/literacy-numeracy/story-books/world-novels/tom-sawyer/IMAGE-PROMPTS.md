@@ -94,7 +94,7 @@ Draw him as a man, not a monster — the fear comes from the situation.
 | `images/story-01-a.webp` | A farmhouse kitchen: an old woman flinging open a cupboard door to find a boy crouched inside with jam around his mouth, her spectacles pushed up on her forehead. |
 | `images/story-01-b.webp` | Two boys circling each other in a dusty village street at evening, fists up, one in new clothes and shoes, one barefoot; a dog watching. |
 
-## 2장 · 울타리 칠하기
+## 2장 · 토요일 아침
 
 | 파일명 | 장면 |
 |---|---|
@@ -115,7 +115,7 @@ Draw him as a man, not a monster — the fear comes from the situation.
 | `images/story-04-a.webp` | Two boys creeping into a moonlit graveyard on a hill, crooked wooden grave markers and long grass, one boy carrying a dead cat by the tail, big elm trees. |
 | `images/story-04-b.webp` | Seen from behind a tree trunk at ground level: three men with a lantern arguing over a fresh grave, their shadows huge, two small faces watching from the dark in the foreground. |
 
-## 5장 · 피로 쓴 맹세
+## 5장 · 두 아이의 비밀
 
 | 파일명 | 장면 |
 |---|---|
@@ -129,7 +129,7 @@ Draw him as a man, not a monster — the fear comes from the situation.
 | `images/story-06-a.webp` | Three boys poling a stolen raft down a wide moonlit river at midnight, a bundle of food and a frying pan aboard, the town lights small behind them. |
 | `images/story-06-b.webp` | A campfire on a sandbar at dawn: bacon in a pan, three boys sprawled around it eating, an island of green trees behind, the great river beyond. |
 
-## 7장 · 자기 장례식
+## 7장 · 돌아온 세 아이
 
 | 파일명 | 장면 |
 |---|---|
@@ -164,7 +164,7 @@ Draw him as a man, not a monster — the fear comes from the situation.
 | `images/story-11-a.webp` | A picnic party of children with candles at the wide mouth of a limestone cave, names smoked onto the rock wall, laughter, bright day outside. |
 | `images/story-11-b.webp` | Deep inside the cave: two children with one candle between them in a narrow passage of pale rock, the darkness closing on all sides, bats overhead. |
 
-## 12장 · 사흘
+## 12장 · 길을 잃다
 
 | 파일명 | 장면 |
 |---|---|

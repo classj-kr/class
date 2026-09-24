@@ -96,7 +96,7 @@ lidless eyes, human hands; they shield their faces from any light.
 | `images/cover.webp` (세로 2:3 비율) | A tall portrait-format cover: a man on a strange brass and crystal machine mid-journey, the world around him blurred into streaks — a dark blue sky with the sun drawn as a band of fire across it, buildings rising and falling as smears on either side; his face lit and rigid. The picture must bleed to all four edges: no white margin, no white border, no frame, no matting around the artwork. |
 | `images/end.webp` | An empty Victorian workshop with the doors standing open, a bare patch of floor where something heavy used to stand, dust in the light. |
 
-## 1장 · 네 번째 방향
+## 1장 · 목요일 저녁의 손님들
 
 | 파일명 | 장면 |
 |---|---|

@@ -457,13 +457,13 @@ const QUIZ = [
         "answer": 0
     },
     {
-        "q": "콘라트가 머리카락을 움켜쥐자 공주는 어떻게 했나요?",
+        "q": "콘라트가 공주의 머리카락을 움켜쥔 까닭은 무엇인가요?",
         "choices": [
-            "팔라다를 불러 콘라트를 쫓게 했다",
-            "임금님께 달려가 일렀다",
-            "바람을 불러 콘라트의 모자를 날려 보냈다"
+            "한 올만 뽑아 보고 싶어서",
+            "공주를 놀리려고",
+            "임금님께 가져다 보이려고"
         ],
-        "answer": 2
+        "answer": 0
     },
     {
         "q": "공주가 난로에게 이야기하는 동안 임금님은 무엇을 했나요?",
@@ -890,9 +890,9 @@ const EN = {
             answer: 0
         },
         {
-            q: 'What did the princess do when Conrad grabbed her hair?',
-            choices: ['She called Falada to chase him off', 'She ran to the king and told on him', 'She called up the wind to blow his hat away'],
-            answer: 2
+            q: "Why did Conrad grab the princess's hair?",
+            choices: ['He wanted to pull out just one strand', 'To tease her', 'To take a strand to show the king'],
+            answer: 0
         },
         {
             q: 'What did the king do while the princess talked to the stove?',

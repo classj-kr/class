@@ -118,14 +118,14 @@ A friendly sparrow trio.
 | `images/03-parsley.webp` | A rabbit in a blue jacket clutching his round tummy and wandering toward a cucumber frame, then rounding a corner to face a huge boot, comic tension. 〔이 쪽에 실린 글 (5/16) — 그림에 글자는 넣지 마세요. 왼쪽: 배가 슬슬 아파 왔습니다. 피터는 배를 문질렀지요. 파슬리를 좀 먹으면 나을 텐데. 어머니가 그렇게 말한 적이 있었거든요. 피터는 파슬리를 찾아 나섰습니다. / 오른쪽: 그런데 모퉁이를 도는 순간이었지요. 눈앞에 커다란 장화가 있었습니다. 고개를 드니 맥그리거 아저씨였지요. 무릎을 꿇고 양배추를 심던 참이었지요. 손에는 흙이 잔뜩 묻어 있었습니다. 두 눈이 딱 마주쳤지요. 피터는 그대로 얼어붙었습니다.〕 |
 | `images/03-parsley-2.webp` | A vegetable garden where a stout gardener leaps up shaking a rake as a rabbit in a blue jacket bolts away between cabbage rows, hilarious motion. 〔이 쪽에 실린 글 (6/16) — 그림에 글자는 넣지 마세요. 왼쪽: 둘은 그대로 얼어붙었습니다. 피터도 놀라고 아저씨도 놀랐지요. 먼저 정신을 차린 것은 아저씨였습니다. 아저씨가 벌떡 일어났지요. 이 도둑놈아! 게 섰거라! / 오른쪽: 아저씨가 갈퀴를 흔들며 쫓아왔지요. 거기 서지 못해! 피터는 죽을힘을 다해 달렸습니다.〕 |
 
-## 4장 · 갈퀴를 든 아저씨
+## 4장 · 맨발로 달리다
 
 | 파일명 | 장면 |
 |---|---|
 | `images/04-chase.webp` | A garden chase where a rabbit in a blue jacket sprints between cabbages and potato rows, tiny shoes flying off behind him, a gardener pounding after with a rake, comic motion. 〔이 쪽에 실린 글 (7/16) — 그림에 글자는 넣지 마세요. 왼쪽: 피터는 양배추밭으로 뛰어들었습니다. 커다란 잎 사이를 헤치고 달렸지요. 그러다 신발 한 짝이 벗겨졌습니다. 뒤를 돌아볼 새도 없었지요. 이어서 감자밭을 가로질렀습니다. 거기서 나머지 한 짝도 잃었지요. / 오른쪽: 이제 맨발이었습니다. 그래도 오히려 잘 달릴 수 있었지요. 뒤에서 아저씨의 발소리가 쿵쿵 났습니다. 이놈, 어디로 갔느냐!〕 |
 | `images/04-chase-2.webp` | A gooseberry bush under a net where a rabbit is caught fast by his jacket buttons, struggling with tears in his eyes as a shadow approaches, funny and touching. 〔이 쪽에 실린 글 (8/16) — 그림에 글자는 넣지 마세요. 왼쪽: 피터는 몸을 숨길 곳을 찾았습니다. 마침 까치밥나무가 눈에 띄었지요. 위에 그물이 씌워져 있었습니다. 피터는 그 밑으로 뛰어들었지요. 몸을 웅크리고 숨을 죽였습니다. / 오른쪽: 웃옷 단추가 그물에 걸린 것이었습니다. 피터는 이리저리 버둥거렸지요. 그럴수록 더 단단히 걸렸습니다. 눈에서 눈물이 핑 돌았지요. 발소리가 점점 가까워졌지요. 피터는 눈을 꼭 감았습니다.〕 |
 
-## 5장 · 그물에 걸린 단추
+## 5장 · 마지막 힘을 다해
 
 | 파일명 | 장면 |
 |---|---|

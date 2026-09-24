@@ -89,7 +89,7 @@ Children's picture book illustration, adorable and cute storybook cartoon style,
 
 ---
 
-## 4장 · 빗과 허리끈
+## 4장 · 두 번 찾아온 할머니
 
 | 파일명 | 장면 프롬프트 |
 |---|---|

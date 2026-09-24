@@ -178,7 +178,7 @@ const CHAPTERS = [
     },
     {
         "num": 6,
-        "title": "6장 · 갈대밭 구덩이",
+        "title": "6장 · 땅에 대고 외친 말",
         "beats": [
             {
                 "art": "06-hole.webp",
@@ -214,7 +214,7 @@ const CHAPTERS = [
     },
     {
         "num": 7,
-        "title": "7장 · 바람이 지나가자",
+        "title": "7장 · 온 나라에 퍼진 노래",
         "beats": [
             {
                 "art": "07-reeds.webp",
@@ -778,7 +778,7 @@ const EN = {
         },
         {
             num: 6,
-            title: 'Chapter 6 · A Hole in the Reeds',
+            title: 'Chapter 6 · Shouted into the Ground',
             beats: [
                 {
                     art: '06-hole.webp',
@@ -818,7 +818,7 @@ const EN = {
         },
         {
             num: 7,
-            title: 'Chapter 7 · When the Wind Went Through',
+            title: 'Chapter 7 · A Song All Over the Land',
             beats: [
                 {
                     art: '07-reeds.webp',

@@ -123,7 +123,7 @@ const CHAPTERS = [
     },
     {
         num: 3,
-        title: "3장 · 바다가 짠 까닭",
+        title: "3장 · 멈추지 않는 절구",
         beats: [
             {
                 art: "07-more.webp",
@@ -351,7 +351,7 @@ const EN = {
         },
         {
             num: 3,
-            title: "Chapter 3 · Why the Sea Is Salty",
+            title: "Chapter 3 · The Mortar That Would Not Stop",
             beats: [
                 {
                     art: "07-more.webp",

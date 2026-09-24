@@ -92,7 +92,7 @@ Evans: a weather-beaten sailor of thirty.
 | `images/cover.webp` (세로 2:3 비율) | A tall portrait-format cover: a small schooner heeled over on a sandbar at dawn seen from the beach, and in the foreground the backs of a dozen boys of very different sizes standing in a ragged line looking at it, the smallest holding the hand of one of the biggest. The picture must bleed to all four edges: no white margin, no white border, no frame, no matting around the artwork. |
 | `images/end.webp` | A wooden marker post on a headland with a hand-drawn map nailed to it, an empty green island behind, an empty sea in front. |
 
-## 1장 · 밧줄이 풀린 밤
+## 1장 · 잠든 사이에
 
 | 파일명 | 장면 |
 |---|---|
@@ -134,7 +134,7 @@ Evans: a weather-beaten sailor of thirty.
 | `images/story-06-a.webp` | Boys kneeling around a big sheet of paper spread on the cave floor, drawing the outline of their island on it with the lake in the middle, one of them pointing at a bay. |
 | `images/story-06-b.webp` | The cave turned into a home in winter: bunks along the wall, a ship's stove with a pipe through the rock, a shelf of a hundred books, boys reading by lamplight. |
 
-## 7장 · 대장을 뽑다
+## 7장 · 모자 속의 이름
 
 | 파일명 | 장면 |
 |---|---|

@@ -92,14 +92,14 @@ spectacles. The huntsman: a broad man in a green coat with a shoulder bag.
 | `images/05-snoring.webp` | A cottage bedroom where a fat-bellied wolf sprawls snoring with the bedframe creaking, and outside a huntsman in a green coat pausing on the path with a hand cupped to his ear, comic. 〔이 쪽에 실린 글 (9/14) — 그림에 글자는 넣지 마세요. 왼쪽: 배가 잔뜩 부른 늑대였습니다. 이제 몹시 졸렸지요. 늑대는 침대에 다시 벌렁 누웠습니다. 그러고는 금세 잠이 들었지요. 드르렁, 드르렁. / 오른쪽: 그때 마침 사냥꾼이 그 앞을 지나갔지요. 늘 이 길로 다니는 사람이었습니다. 할머니가 웬 코를 저리 고시나? 어디 편찮으신가?〕 |
 | `images/05-snoring-2.webp` | A huntsman peering through a cottage window at a sleeping wolf with a bulging belly, then quietly opening his shoulder bag and drawing out a small tin of pepper, tense and careful. 〔이 쪽에 실린 글 (10/14) — 그림에 글자는 넣지 마세요. 왼쪽: 사냥꾼이 창으로 방 안을 들여다봤습니다. 침대에 늑대가 떡하니 누워 있었지요. 이런, 여기 있었구나! 오래 찾아다니던 늑대였습니다. 온 마을 양을 물어 간 바로 그 늑대였지요. / 오른쪽: 할머니는 어디 계시지? 늑대의 배가 유난히 불룩했습니다. 게다가 그 배가 꿈틀꿈틀 움직였지요. 사냥꾼은 창턱을 붙잡고 한참을 들여다봤습니다. 아직 살아 계실지도 몰라. 사냥꾼은 가방을 뒤져 후춧가루 통을 꺼냈습니다.〕 |
 
-## 6장 · 벽장 문이 덜컹덜컹
+## 6장 · 셋이 낸 꾀
 
 | 파일명 | 장면 |
 |---|---|
 | `images/06-rescue.webp` | A cottage room where a wolf on the bed erupts in an enormous sneeze that sends a girl in red tumbling out unharmed, while a huntsman shakes a pepper tin and a wardrobe door swings open with a grandmother stepping out, everyone laughing in relief, warm and very comic. 〔이 쪽에 실린 글 (11/14) — 그림에 글자는 넣지 마세요. 왼쪽: 사냥꾼은 살금살금 방으로 들어갔습니다. 늑대는 여전히 코를 골고 있었지요. 사냥꾼이 늑대 코앞에 후춧가루를 톡톡 뿌렸습니다. 에, 에, 에취! 늑대가 온 방이 울리도록 재채기를 했습니다. 그 바람에 빨간 모자가 쏙 튀어나왔지요. 아이고, 캄캄했어요! / 오른쪽: 그런데 할머니가 보이지 않았지요. 사냥꾼이 방을 이리저리 둘러보았습니다. 그때 벽장 문이 덜컹거렸지요. 진짜 할머니가 거기 계셨거든요. 아이고, 무서워 혼났다!〕 |
 | `images/06-rescue-2.webp` | A cottage room where a girl, a huntsman and a grandmother drop round stones one by one into the open mouth of a wolf snoring flat on his back, all three grinning, very comic. 〔이 쪽에 실린 글 (12/14) — 그림에 글자는 넣지 마세요. 왼쪽: 세 사람은 머리를 맞대고 꾀를 냈습니다. 마당에서 돌을 주워 왔지요. 동글동글하고 묵직한 돌이었습니다. 빨간 모자가 앞치마에 담아 날랐지요. 늑대는 입을 헤벌린 채 도로 잠들어 있었습니다. 셋은 그 입으로 돌을 하나씩 굴려 넣었지요. / 오른쪽: 데구르르, 데구르르. 돌이 하나씩 미끄러져 들어갔습니다. 그러는 동안에도 늑대는 코를 골았지요. 무슨 일이 벌어지는지 아무것도 몰랐습니다. 셋은 문 뒤에 숨어 숨을 죽였지요. 이윽고 늑대가 몸을 뒤척였습니다. 그러고는 천천히 눈을 떴지요.〕 |
 
-## 7장 · 큰길로만
+## 7장 · 집으로 가는 길
 
 | 파일명 | 장면 |
 |---|---|

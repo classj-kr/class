@@ -244,7 +244,7 @@ const CHAPTERS = [
     },
     {
         num: 10,
-        title: "몽페르메유의 여관",
+        title: "코제트",
         emoji: "🪣",
         art: ["story-10-a.webp", "story-10-b.webp"],
         paras: [
@@ -374,7 +374,7 @@ const CHAPTERS = [
     },
     {
         num: 15,
-        title: "하수도",
+        title: "마리우스를 업고",
         emoji: "🌊",
         art: ["story-15-a.webp", "story-15-b.webp"],
         paras: [
@@ -406,7 +406,7 @@ const CHAPTERS = [
     },
     {
         num: 16,
-        title: "은촛대 곁에서",
+        title: "마지막 밤",
         emoji: "🌙",
         art: ["story-16-a.webp", "story-16-b.webp", "story-16-c.webp"],
         paras: [

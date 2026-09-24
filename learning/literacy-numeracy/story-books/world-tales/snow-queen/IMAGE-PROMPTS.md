@@ -66,7 +66,7 @@ reindeer: a shaggy grey reindeer with kind eyes.
 | `images/02-shard.webp` | A shattering mirror scattering glittering dust across a wide sky, and a rooftop garden where a boy claps a hand to his eye as a girl peers at him anxiously, summer roses around, striking. 〔이 쪽에 실린 글 (3/16) — 그림에 글자는 넣지 마세요. 왼쪽: 아주 오래전 일이었습니다. 못된 요술쟁이가 거울을 하나 만들었지요. 무엇이든 밉게 비추는 거울이었습니다. 고운 것도 흉하게만 보였지요. 그런데 그 거울이 그만 쨍그랑 깨졌습니다. 가루가 바람을 타고 온 세상에 흩어졌지요. 그 가루가 눈에 들어가면 세상이 온통 밉게 보인답니다. / 오른쪽: 어느 여름날이었지요. 카이가 갑자기 소리쳤습니다. 앗, 눈에 뭐가 들어갔어!〕 |
 | `images/02-shard-2.webp` | A rooftop garden where a boy kicks over a rose box sneering while a girl stands hurt beside it, and the same boy running off with older children into falling snow, sad and cold. 〔이 쪽에 실린 글 (4/16) — 그림에 글자는 넣지 마세요. 왼쪽: 그날부터 카이가 달라졌습니다. 늘 좋아하던 장미를 보고 인상을 썼지요. 벌레 먹었잖아. 못생겼어. 카이는 상자를 발로 걷어찼습니다. 할머니 이야기도 코웃음을 쳤지요. / 오른쪽: 게르다에게도 차갑게 굴었습니다. 너는 왜 그렇게 유치하니? 게르다는 울음을 꾹 참았지요. 장미 상자는 그대로 마당에 나뒹굴었습니다.〕 |
 
-## 3장 · 하얀 썰매
+## 3장 · 사라진 카이
 
 | 파일명 | 장면 |
 |---|---|

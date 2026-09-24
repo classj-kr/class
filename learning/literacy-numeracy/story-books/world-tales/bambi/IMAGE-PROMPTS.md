@@ -50,7 +50,7 @@ antlers who appears and disappears without a sound.
 | `images/cover.webp` (세로 2:3 비율) | A tall portrait-format cover: a spotted fawn standing on thin legs in a sunlit forest thicket, its mother's head lowered protectively beside it, ferns and wildflowers all around, shafts of green light, tender and inviting. |
 | `images/end.webp` | A closed storybook resting under a starry night sky with soft golden sparkles rising from its pages, peaceful and warm closing scene. |
 
-## 1장 · 덤불 속에서
+## 1장 · 태어난 아침
 
 | 파일명 | 장면 |
 |---|---|

@@ -85,7 +85,7 @@ a round grandfather in a knitted vest.
 | `images/05-decorated.webp` | A warm parlour where people decorate a fir tree with gilded apples, paper flowers and sweets, setting a great star on top, cosy and expectant. 〔이 쪽에 실린 글 (9/16) — 그림에 글자는 넣지 마세요. 왼쪽: 전나무는 방 한가운데에 세워졌습니다. 통에 모래를 채워 단단히 받쳐 주었지요. 사람들이 상자를 가져왔습니다. 가지마다 금색 사과가 달렸지요. 종이꽃과 사탕도 매달렸습니다. 초록 가지가 알록달록해졌지요. / 오른쪽: 꼭대기에는 커다란 별이 얹혔습니다. 전나무는 가지가 뻐근할 지경이었지요. 그래도 기뻐서 견딜 수가 없었습니다. 오늘 밤 무슨 일이 벌어질까? 해가 지고 방이 어둑해졌지요. 전나무는 숨을 죽이고 기다렸습니다.〕 |
 | `images/05-decorated-2.webp` | A parlour where a fir tree blazes with candles as children in nightgowns rush in clapping and dance around it, family gathered, radiant and joyful. 〔이 쪽에 실린 글 (10/16) — 그림에 글자는 넣지 마세요. 왼쪽: 이윽고 촛불이 하나씩 켜졌습니다. 가지마다 불빛이 반짝였지요. 문이 활짝 열렸습니다. 아이들이 손뼉을 치며 뛰어들어 왔지요. 우와, 정말 예쁘다! / 오른쪽: 노래를 부르고 선물을 나누었지요. 전나무는 이보다 좋은 날이 없다고 생각했습니다. 내일도 이렇겠지. 모레도, 그다음 날도.〕 |
 
-## 6장 · 다락방의 겨울
+## 6장 · 생쥐들에게 들려준 이야기
 
 | 파일명 | 장면 |
 |---|---|

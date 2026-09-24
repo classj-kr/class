@@ -65,7 +65,7 @@ const CHAPTERS = [
     },
     {
         "num": 3,
-        "title": "3장 · 물고기들이 도와주었어요",
+        "title": "3장 · 개울을 따라",
         "beats": [
             {
                 "art": "03-fish.webp",
@@ -606,7 +606,7 @@ const EN = {
         },
         {
             num: 3,
-            title: 'Chapter 3 · The Fish Helped Her',
+            title: 'Chapter 3 · Down the Stream',
             beats: [
                 {
                     art: '03-fish.webp',

@@ -123,7 +123,7 @@ No title, no caption, no signature, no page number, no letters anywhere.
 | `images/story-06-hillel.webp` | An angry stern teacher chasing away a surprised visitor with a raised wooden ruler at a doorway, simple room with scrolls and books, dramatic warm light. |
 | `images/story-06-hillel-2.webp` | A kind elderly teacher balanced calmly on one leg with a gentle smile, teaching the same wide-eyed visitor who now looks amazed and enlightened, soft warm candlelight, a peaceful study room. |
 
-## 이야기 7 · 70년 동안 잠든 나그네
+## 이야기 7 · 캐럽나무를 심는 노인
 
 | 파일명 | 장면 |
 |---|---|
