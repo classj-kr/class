@@ -1,11 +1,21 @@
 [data-multiplayer-lobby] .mp-lobby-tabs,
 [data-multiplayer-lobby] .mp-lobby-row,
 [data-multiplayer-lobby] .mp-lobby-actions,
-[data-multiplayer-lobby] .mp-lobby-player-list {
+[data-multiplayer-lobby] .mp-lobby-player-list,
+[data-multiplayer-lobby] .mp-lobby-players {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 9px;
+}
+
+[data-multiplayer-lobby] .mp-lobby-player-list,
+[data-multiplayer-lobby] .mp-lobby-players {
+    margin-block: 8px 10px;
+}
+
+[data-multiplayer-lobby].mp-lobby-standard .mp-lobby-players {
+    justify-content: flex-start;
 }
 
 /* Keep waiting rooms compact without shrinking the actual game board. */
@@ -139,6 +149,10 @@
 }
 
 @media (max-width: 640px) {
+    [data-multiplayer-lobby] {
+        padding-top: 48px;
+    }
+
     [data-multiplayer-lobby].mp-lobby-standard > header.panel,
     [data-multiplayer-lobby].mp-lobby-standard > section.panel:last-child {
         display: block;
@@ -190,11 +204,13 @@
     text-align: center;
 }
 
-[data-multiplayer-lobby] .mp-lobby-status {
+[data-multiplayer-lobby] .mp-lobby-status,
+[data-multiplayer-lobby] .mp-lobby-guide {
     margin: 9px;
     color: var(--mp-status-color, #d9e0dd);
     line-height: 1.55;
     text-align: center;
+    word-break: keep-all;
 }
 
 [data-multiplayer-lobby] .mp-lobby-code-input {
@@ -209,6 +225,9 @@
 }
 
 [data-multiplayer-lobby] .mp-lobby-player {
+    display: inline-flex;
+    align-items: center;
+    line-height: 1.2;
     padding: 8px 12px;
     border: 1px solid var(--mp-player-border, #536574);
     border-radius: 18px;

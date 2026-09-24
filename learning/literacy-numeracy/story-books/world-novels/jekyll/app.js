@@ -747,7 +747,7 @@ const EN = {
     },
     quiz: [
         { q: 'What did Enfield witness in the early morning?', choices: ['A man walking over a fallen child', 'A man opening the door of an empty house', 'A man seizing somebody in the street and quarrelling'], answer: 0 },
-        { q: 'Whose cheque did Hyde pay with?', choices: ["Utterson the lawyer's", "Dr Henry Jekyll's", "Dr Lanyon's"], answer: 1 },
+        { q: 'What struck Enfield when the cheque was checked at the bank next morning?', choices: ['The cheque turned out to be forged', 'A respected man was supplying money to such a creature', 'There was no money in the account'], answer: 1 },
         { q: "What did Utterson find strangest in Jekyll's will?", choices: ['That it provided even for Jekyll disappearing', 'That it left the property to Hyde', 'That it named Utterson as executor'], answer: 0 },
         { q: 'What did everyone who saw Hyde say in common?', choices: ['That he was so tall he looked down on you', 'That they could not point to what was wrong, yet he was hard to bear', 'That his face was so ugly it was hard to look at'], answer: 1 },
         { q: 'Where did the door in the back lane lead?', choices: ["The back door of Dr Jekyll's laboratory", "Hyde's rented rooms in Soho", "The side door of Dr Lanyon's surgery"], answer: 0 },
@@ -756,13 +756,13 @@ const EN = {
         { q: 'What was the handwriting of the letter said to be from Hyde like?', choices: ['So shaky nobody could tell whose it was', "The same as Jekyll's except for the slant", "Nothing at all like Jekyll's"], answer: 1 },
         { q: 'Why did Dr Lanyon take to his bed?', choices: ['An old winter illness had come back', 'He had quarrelled badly with Jekyll and was hurt', 'He had seen the thing with his own eyes'], answer: 2 },
         { q: 'What did Poole the servant find strange?', choices: ['A light leaked from the laboratory every night', "The voice inside was not his master's", 'His master had taken no food for more than ten days'], answer: 1 },
-        { q: 'What did they find when they broke down the laboratory door?', choices: ['Jekyll slumped over the desk', "Hyde wearing Jekyll's oversized clothes", 'An empty room with nobody in it'], answer: 1 },
+        { q: 'What did Utterson and Poole find in the room when they broke the door down?', choices: ['Jekyll slumped over the desk', "Hyde wearing Jekyll's oversized clothes", 'An empty room with nobody in it'], answer: 1 },
         { q: 'Why did Jekyll try to separate his two minds?', choices: ['So the respected side and the hidden side could live apart', 'To cut only the sick part out of an ailing body', 'To find out how many minds a person has'], answer: 0 },
         { q: 'Why was Hyde small?', choices: ["Because that side had been a small part of Jekyll's life", 'Because he neither ate nor slept', 'Because he drank only a very little of the drug'], answer: 0 },
         { q: 'What does the name Jekyll gave Hyde mean?', choices: ['To chase', 'To divide', 'To hide'], answer: 2 },
-        { q: 'After two good months, what turned Jekyll back into Hyde?', choices: ['The moment the Carew case appeared in the papers', 'The moment he tried one more sip of the drug', 'The moment he thought himself better than other people'], answer: 2 },
-        { q: 'Why could Jekyll never make the drug again?', choices: ['He could not get the impurity that had been in the first powder', 'The chemists stopped selling that powder', 'He lost the notebook with the recipe'], answer: 0 },
-        { q: 'Which of these is NOT a fair thing to say after reading this book?', wide: true, choices: ['Seeing how Jekyll sealed up a will leaving everything to Hyde, no wonder Utterson disliked it from the start.', 'Seeing how Jekyll went two months without the drug and got on well with people, that was the end of Hyde.', 'Seeing how Lanyon became a dying man in a fortnight, what one sees with one’s own eyes can break a person that far.', 'Seeing how Jekyll’s own writing comes only at the end, the book is built so we look from the doorstep, then through others’ eyes, and only then hear the man himself.'], answer: 1 }
+        { q: 'Sitting on a park bench, what turned Jekyll into Hyde without any drug?', choices: ['The moment the Carew case appeared in the papers', 'The moment he tried one more sip of the drug', 'The moment he thought himself better than other people'], answer: 2 },
+        { q: 'Why could Jekyll not make the drug again at the end?', choices: ['He could not get the impurity that had been in the first powder', 'The chemists stopped selling that powder', 'He lost the notebook with the recipe'], answer: 0 },
+        { q: 'Which of these is NOT a fair thing to say after reading this book?', wide: true, choices: ['Seeing how Jekyll sealed up a will leaving everything to Hyde, no wonder Utterson disliked it from the start.', 'Seeing how Utterson locked Lanyon’s envelope in his safe and left it unopened, he cannot have been very curious about what was inside.', 'Seeing how Jekyll’s new will put Utterson’s name where Hyde’s had been, in the end he wanted to leave Hyde nothing at all.', 'Seeing how Jekyll’s own writing comes only at the end, the book is built so we look from the doorstep, then through others’ eyes, and only then hear the man himself.'], answer: 1 }
     ]
 };
 
@@ -1240,7 +1240,7 @@ function chapterSpreadPage(spread) {
 
 const QUIZ = [
     { q: "엔필드가 목격한 새벽의 사건은 무엇입니까?", choices: ["넘어진 아이를 밟고 지나간 일", "빈집 문을 열고 들어간 일", "길에서 사람을 붙잡고 다툰 일"], answer: 0 },
-    { q: "하이드가 물어낸 돈은 누구의 수표였습니까?", choices: ["어터슨 변호사", "헨리 지킬 박사", "래니언 박사"], answer: 1 },
+    { q: "아침에 은행에서 수표를 확인하고 엔필드가 이상하게 여긴 것은 무엇입니까?", choices: ["수표가 위조된 것이었다", "점잖은 사람이 그런 자에게 돈을 대 주고 있었다", "그 계좌에 돈이 하나도 없었다"], answer: 1 },
     { q: "지킬의 유언장에서 어터슨이 가장 이상하게 여긴 대목은 무엇입니까?", choices: ["지킬이 사라질 경우까지 적어 둔 것", "재산을 하이드에게 준다고 한 것", "어터슨을 집행인으로 세운 것"], answer: 0 },
     { q: "하이드를 본 사람들이 공통으로 말한 것은 무엇입니까?", choices: ["키가 아주 커서 위에서 내려다본다", "어디가 이상한지 못 짚겠는데 견디기 힘들다", "얼굴이 몹시 흉해서 보기가 어려웠다"], answer: 1 },
     { q: "그 뒷골목의 문은 어디로 이어져 있었습니까?", choices: ["지킬 박사 집 실험실 뒷문", "하이드가 세를 든 소호의 방", "래니언 박사의 진료실 옆문"], answer: 0 },
@@ -1249,13 +1249,13 @@ const QUIZ = [
     { q: "하이드가 보냈다는 편지의 글씨는 어떠했습니까?", choices: ["글씨가 흔들려 누구 것인지 알 수 없었다", "기울기만 다르고 지킬의 글씨와 같았다", "지킬의 글씨와 아무 데도 닮지 않았다"], answer: 1 },
     { q: "래니언 박사가 앓아누운 까닭은 무엇입니까?", choices: ["겨울에 오래 앓던 병이 도져서", "지킬과 크게 다투고 마음이 상해서", "그 일을 자기 눈으로 직접 보고 나서"], answer: 2 },
     { q: "하인 풀이 이상하다고 여긴 것은 무엇입니까?", choices: ["실험실에서 밤마다 불빛이 새어 나왔다", "안에서 나는 목소리가 주인 것이 아니었다", "주인이 열흘 넘게 밥을 들이지 않았다"], answer: 1 },
-    { q: "실험실 문을 부수고 들어가 발견한 것은 무엇입니까?", choices: ["책상에 엎드려 있는 지킬", "지킬의 큰 옷을 입은 하이드", "아무도 없이 비어 있는 방"], answer: 1 },
+    { q: "어터슨과 풀이 문을 부수고 들어갔을 때 방 안에 있던 것은 무엇입니까?", choices: ["책상에 엎드려 있는 지킬", "지킬의 큰 옷을 입은 하이드", "아무도 없이 비어 있는 방"], answer: 1 },
     { q: "지킬이 두 마음을 갈라놓으려 한 까닭은 무엇입니까?", choices: ["존경받는 쪽과 감추는 쪽을 따로 살게 하려고", "병든 몸에서 아픈 쪽만 떼어 내 보려고", "사람의 마음이 몇 개인지 알아보려고"], answer: 0 },
     { q: "하이드의 몸집이 작았던 까닭은 무엇입니까?", choices: ["지킬의 삶에서 그쪽이 작은 부분이어서", "먹지도 자지도 않고 지냈기 때문에", "약을 아주 조금만 마셨기 때문에"], answer: 0 },
     { q: "지킬이 하이드에게 붙인 이름의 뜻은 무엇입니까?", choices: ["쫓는다", "가른다", "숨는다"], answer: 2 },
-    { q: "두 달을 잘 지내던 지킬이 다시 하이드가 된 계기는 무엇입니까?", choices: ["커루 경 사건이 신문에 난 순간", "약을 다시 한 모금 마셔 본 순간", "자기가 남들보다 낫다고 생각한 순간"], answer: 2 },
-    { q: "지킬이 끝내 약을 다시 만들지 못한 까닭은 무엇입니까?", choices: ["처음 쓴 가루에 섞였던 것을 못 구해서", "약방들이 그 가루를 팔지 않게 되어서", "만드는 법을 적은 공책을 잃어버려서"], answer: 0 },
-    { q: "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?", wide: true, choices: ["지킬이 재산을 모두 하이드에게 물려준다는 유언장을 봉해서 맡긴 것을 보면, 어터슨이 처음부터 마음에 안 들어 한 것도 무리가 아니야.", "지킬이 두 달 동안 약을 끊고 사람들과 잘 지낸 것을 보면, 하이드는 그것으로 끝난 거야.", "래니언이 보름 사이에 죽어 가는 사람처럼 된 것을 보면, 제 눈으로 본 것이 사람을 그렇게까지 무너뜨리는구나.", "마지막에야 지킬 자신의 글이 나오는 것을 보면, 문 앞에서 보고 남의 눈으로 보고 나서야 당사자 말을 듣게 짜 놓았네."], answer: 1 }
+    { q: "공원 벤치에 앉아 있던 지킬이 약도 없이 하이드로 변한 계기는 무엇입니까?", choices: ["커루 경 사건이 신문에 난 순간", "약을 다시 한 모금 마셔 본 순간", "자기가 남들보다 낫다고 생각한 순간"], answer: 2 },
+    { q: "지킬이 마지막에 약을 다시 만들지 못한 까닭은 무엇입니까?", choices: ["처음 쓴 가루에 섞였던 것을 못 구해서", "약방들이 그 가루를 팔지 않게 되어서", "만드는 법을 적은 공책을 잃어버려서"], answer: 0 },
+    { q: "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?", wide: true, choices: ["지킬이 재산을 모두 하이드에게 물려준다는 유언장을 봉해서 맡긴 것을 보면, 어터슨이 처음부터 마음에 안 들어 한 것도 무리가 아니야.", "어터슨이 래니언의 봉투를 금고에 넣고 열지 않은 것을 보면, 그 안에 무엇이 있는지 별로 궁금하지 않았던 거지.", "지킬이 새 유언장에서 하이드의 자리에 어터슨의 이름을 적어 둔 것을 보면, 마지막에는 하이드에게 아무것도 남기고 싶지 않았던 거야.", "마지막에야 지킬 자신의 글이 나오는 것을 보면, 문 앞에서 보고 남의 눈으로 보고 나서야 당사자 말을 듣게 짜 놓았네."], answer: 1 }
 ];
 
 // 선지를 세로로 쌓으니 한 쪽에 열여섯 문항이 다 들어가지 않는다. 몇 개씩 나눠 싣는다.

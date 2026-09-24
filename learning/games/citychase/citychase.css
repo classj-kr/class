@@ -58,6 +58,7 @@ button:disabled { cursor: not-allowed; opacity: .36; box-shadow: none; }
   --mp-input-color: #172536;
   --mp-player-background: #edf3ef;
   --mp-player-color: #172536;
+  --mp-accent: #0f4c81;
   isolation: isolate;
   width: min(860px, calc(100% - 24px));
   min-height: 100dvh;

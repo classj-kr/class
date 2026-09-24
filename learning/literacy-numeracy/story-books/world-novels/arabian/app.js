@@ -541,22 +541,22 @@ const EN = {
     },
     quiz: [
         { q: 'Why did Scheherazade stop each story partway through every night?', choices: ['Because her throat hurt late at night', 'So the king would want to know what happened next', 'Because she had not yet made up the next story'], answer: 1 },
-        { q: 'What did the genie in the jar resolve during his last hundred years?', choices: ['To make whoever freed him a king', 'To kill whoever freed him', 'To make whoever freed him his slave'], answer: 1 },
-        { q: 'How did the fisherman get the genie back into the jar?', choices: ['By saying he could not believe so big a body had fitted inside', 'By reading aloud the letters carved on the jar', 'By using one of his three wishes on it'], answer: 0 },
+        { q: 'What did the genie in the jar resolve during his last hundred years?', choices: ['To give whoever freed him all the riches of the world', 'To kill whoever freed him', 'To grant whoever freed him three wishes'], answer: 1 },
+        { q: 'How did the fisherman get the genie back into the jar?', choices: ['By saying so big a body could never have fitted inside', "By reading out the king's name carved on the jar", 'By threatening to throw the jar back into the sea'], answer: 0 },
         { q: 'Who took Aladdin to the cave?', choices: ['A neighbour his mother had asked', 'A merchant from a neighbouring country', 'A sorcerer pretending to be his uncle'], answer: 2 },
         { q: 'Why was Aladdin shut in the cave?', choices: ['Because he would not throw up the lamp first', 'Because he touched the jewels in the cave', 'Because he said the spell backwards'], answer: 0 },
         { q: 'Why did Aladdin lose his palace?', choices: ['Because he never told his wife what the lamp was', 'Because he opened the palace gate to the sorcerer', 'Because he left the lamp on a windowsill and went hunting'], answer: 0 },
-        { q: 'Ali Baba did not take all the gold from the cave. Who did the opposite?', choices: ['The thieves, who refilled it every year', 'Morgiana, who never touched it at all', 'His brother Kasim, who went with ten donkeys'], answer: 2 },
+        { q: 'Why did Ali Baba take only as much gold as his three donkeys could carry?', choices: ['In case the thieves noticed some was missing', 'Because more would tire the donkeys and make people suspicious', 'Because he had agreed beforehand to share it with his brother'], answer: 1 },
         { q: 'Why could Kasim not get out of the cave?', choices: ['Because the thieves came back first', 'Because, looking at the gold, he forgot the word', 'Because his donkeys took fright and ran away'], answer: 1 },
-        { q: "Who saved Ali Baba's house again and again?", choices: ['Morgiana, who did the housework', 'The oil seller who lived next door', "Ali Baba's wife"], answer: 0 },
+        { q: 'How did Morgiana find out there were men inside the oil jars?', choices: ['She had seen the merchant’s face in the forest before', 'She thought thirty-seven jars was a strange number', 'The lamp ran dry, and fetching oil she heard someone breathing'], answer: 2 },
         { q: "Why did Sindbad tie himself to the roc's leg?", choices: ['Because he wanted to take its egg', 'Because he wanted to see the far side of the island', 'Because he would starve if he stayed on that island'], answer: 2 },
         { q: 'How did Sindbad get out of the valley of diamonds?', choices: ['He tied himself to a lump of meat thrown from above', 'He climbed the valley wall hand over hand', 'He walked out along the path the snakes used'], answer: 0 },
         { q: 'How did Sindbad get the Old Man of the Sea off his back?', choices: ['By going into the water and washing him off', 'By getting him to drink wine from a gourd', 'By rubbing against a tree to scrape him off'], answer: 1 },
         { q: 'What trouble did the prince meet the first time he rode the wooden horse?', choices: ['He had not asked beforehand how to come down', 'The horse broke apart in flight', 'He had learned the wrong way to mount'], answer: 0 },
-        { q: 'What was the first thing Abu Hasan did as caliph for a day?', choices: ['He cancelled a whole year of taxes for the country', 'He had a big house built for his mother', 'He had the four wicked men of his quarter arrested'], answer: 2 },
+        { q: 'What was the first thing Abu Hasan did as caliph for a day?', choices: ['He had money sent to his mother and neighbours', "He had the widow's leaking roof mended", 'He had the four wicked men of his quarter arrested'], answer: 2 },
         { q: 'What does this book reveal about the tales of Aladdin and Ali Baba?', choices: ['They were in the oldest manuscript from the start', 'They are not in the Arabic original and were added later', 'They are written as tales Scheherazade made up'], answer: 1 },
-        { q: 'How did Scheherazade stake her life?', choices: ['By confessing her fault to the king and begging forgiveness for years', 'By winning over the king’s ministers one by one', 'By telling other people’s stories for a thousand nights'], answer: 2 },
-        { q: 'Which of these is NOT a fair thing to say after reading this book?', wide: true, choices: ['Seeing how Scheherazade stopped every night at the most exciting point, curiosity can keep a person alive one more day.', 'Seeing how the one who guarded Ali Baba’s house was Morgiana, who cooked and drew water, it was not the master who protected the house but the servant.', 'Seeing how the princess traded the old lamp for a new one, she must have known what that lamp was.', 'Seeing how Sindbad carried the Old Man out of pity and still did not regret it, even after being tricked he did not take back the pity.'], answer: 2 }
+        { q: 'On the thousand and first night, after saying he would not kill her, what did the king tell Scheherazade?', choices: ['That for the children’s sake he would forgive her this once', 'That he had decided it long ago, not that day', 'That her stories were used up, so she was free to leave the palace'], answer: 1 },
+        { q: 'Which of these is NOT a fair thing to say after reading this book?', wide: true, choices: ['Seeing how Scheherazade never once begged for her life in a thousand nights, she chose to make the king listen rather than plead.', 'Seeing how the one who guarded Ali Baba’s house was Morgiana, who cooked and drew water, it was not the master who protected the house but the servant.', 'Seeing how the young king of the Black Isles led his people straight back to his own city and ruled there again once the spell broke, the years under water simply came to nothing.', 'Seeing how Sindbad carried the Old Man out of pity and still did not regret it, even after being tricked he did not take back the pity.'], answer: 2 }
     ]
 };
 
@@ -1046,22 +1046,22 @@ function chapterSpreadPage(spread) {
 
 const QUIZ = [
     { q: "셰에라자드가 이야기를 밤마다 중간에서 멈춘 까닭은 무엇입니까?", choices: ["밤이 깊어 목이 아팠기 때문에", "왕이 뒷이야기를 궁금해하게 하려고", "다음 이야기를 아직 못 지어서"], answer: 1 },
-    { q: "항아리 속 마신이 마지막 백 해 동안 한 결심은 무엇입니까?", choices: ["꺼내 준 이를 왕으로 만들겠다", "꺼내 준 이를 죽이겠다", "꺼내 준 이를 종으로 삼겠다"], answer: 1 },
-    { q: "어부가 마신을 다시 항아리에 넣은 방법은 무엇입니까?", choices: ["그 큰 몸이 들어갔다는 것을 못 믿겠다고 해서", "항아리에 새긴 글자를 소리 내어 읽어서", "소원 세 가지 가운데 하나로 그것을 빌어서"], answer: 0 },
+    { q: "항아리 속 마신이 마지막 백 해 동안 한 결심은 무엇입니까?", choices: ["꺼내 준 이에게 세상의 재물을 다 주겠다", "꺼내 준 이를 죽이겠다", "꺼내 준 이의 소원을 세 가지 들어주겠다"], answer: 1 },
+    { q: "어부가 마신을 다시 항아리에 넣은 방법은 무엇입니까?", choices: ["저렇게 큰 몸이 들어갔을 리 없다고 해서", "항아리에 새긴 왕의 이름을 읽어 보여서", "도로 바다에 던지겠다고 겁을 주어서"], answer: 0 },
     { q: "알라딘을 굴로 데려간 사람은 누구입니까?", choices: ["어머니가 부탁한 이웃", "이웃 나라에서 온 상인", "삼촌 행세를 한 마법사"], answer: 2 },
     { q: "알라딘이 굴에 갇힌 까닭은 무엇입니까?", choices: ["램프를 먼저 던져 올리지 않아서", "굴 안의 보석에 손을 대어서", "주문을 거꾸로 외웠기 때문에"], answer: 0 },
     { q: "알라딘이 궁전을 빼앗긴 까닭은 무엇입니까?", choices: ["램프가 무엇인지 아내에게 말하지 않아서", "마법사에게 궁전 문을 열어 주어서", "램프를 창가에 놓아둔 채 사냥을 나가서"], answer: 0 },
-    { q: "알리바바가 굴에서 금을 다 가져가지 않은 것은 무엇과 견주어 다릅니까?", choices: ["도둑들은 해마다 다시 채워 넣었다", "모르지아나는 아예 손을 대지 않았다", "형 카심은 나귀 열 마리를 끌고 갔다"], answer: 2 },
+    { q: "알리바바가 굴에서 금을 나귀 세 마리에 실을 만큼만 가져간 까닭은 무엇입니까?", choices: ["도둑들이 없어진 것을 알아챌까 봐", "더 실으면 나귀가 힘들고 남이 이상하게 여길까 봐", "형과 나누어 가지기로 미리 정해 두어서"], answer: 1 },
     { q: "카심이 굴에서 나오지 못한 까닭은 무엇입니까?", choices: ["도둑들이 먼저 돌아왔기 때문에", "금을 보는 동안 주문이 생각나지 않아서", "나귀가 놀라 달아나 버렸기 때문에"], answer: 1 },
-    { q: "알리바바의 집을 여러 번 구한 사람은 누구입니까?", choices: ["집안일을 하던 모르지아나", "이웃에 살던 기름 장수", "알리바바의 아내"], answer: 0 },
+    { q: "모르지아나가 기름 항아리 속에 사람이 있는 것을 알아챈 계기는 무엇입니까?", choices: ["장사꾼의 얼굴을 숲에서 본 적이 있어서", "항아리 수가 서른일곱인 것을 이상하게 여겨서", "등잔 기름이 떨어져 뜨러 갔다가 숨소리를 들어서"], answer: 2 },
     { q: "신드바드가 로크 새의 다리에 몸을 묶은 까닭은 무엇입니까?", choices: ["그 새의 알을 가져가고 싶어서", "섬 건너편을 보고 싶었기 때문에", "그 섬에 그대로 있으면 굶어 죽어서"], answer: 2 },
     { q: "다이아몬드 골짜기에서 신드바드가 빠져나온 방법은 무엇입니까?", choices: ["위에서 던져진 고깃덩이에 몸을 묶었다", "골짜기 벽을 손으로 짚고 기어올랐다", "뱀들이 다니는 길을 따라 걸어 나왔다"], answer: 0 },
     { q: "바다의 노인을 등에서 내려놓은 방법은 무엇입니까?", choices: ["물속으로 들어가 씻어 내려서", "조롱박에 담근 술을 마시게 해서", "나무에 몸을 비벼 떼어 내서"], answer: 1 },
     { q: "나무 말을 처음 탄 왕자가 겪은 문제는 무엇입니까?", choices: ["내리는 방법을 미리 묻지 않은 것", "말이 날다가 부서져 버린 것", "타는 방법을 잘못 배운 것"], answer: 0 },
-    { q: "아부 하산이 하루 동안 칼리프가 되어 제일 먼저 한 일은 무엇입니까?", choices: ["온 나라의 세금을 한 해 없앴다", "어머니에게 큰 집을 지어 주었다", "동네의 못된 사람 넷을 잡아들였다"], answer: 2 },
+    { q: "아부 하산이 하루 동안 칼리프가 되어 제일 먼저 한 일은 무엇입니까?", choices: ["어머니와 이웃들에게 돈을 보내게 했다", "과부네 새는 지붕을 고쳐 주게 했다", "동네의 못된 사람 넷을 잡아들였다"], answer: 2 },
     { q: "알라딘과 알리바바 이야기에 대해 이 책이 밝힌 사실은 무엇입니까?", choices: ["가장 오래된 사본에 처음부터 들어 있었다", "아랍어 원본에 없고 나중에 실린 이야기다", "셰에라자드가 지어낸 것으로 적혀 있다"], answer: 1 },
-    { q: "셰에라자드가 목숨을 건 방법은 무엇입니까?", choices: ["왕에게 잘못을 빌고 오래 용서를 구한 것", "왕의 신하들을 하나씩 자기 편으로 만든 것", "천 밤 동안 남의 이야기를 들려준 것"], answer: 2 },
-    { q: "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?", wide: true, choices: ["셰에라자드가 밤마다 이야기를 제일 재미있어지는 데서 멈춘 것을 보면, 궁금함이 사람을 하루 더 살리기도 하네.", "알리바바네 집을 지킨 사람이 밥 짓고 물 긷던 모르지아나였던 것을 보면, 집을 지킨 건 주인이 아니라 부리던 사람이었어.", "공주가 헌 램프를 새 램프로 바꿔 준 것을 보면, 공주도 그 램프가 무엇인지 알고 있었던 거야.", "신드바드가 바다의 노인을 딱해서 업어 주고도 후회하지 않는 것을 보면, 당한 뒤에도 딱하게 여긴 마음까지 물리지는 않는구나."], answer: 2 }
+    { q: "천 하룻날 밤, 죽이지 않겠다는 말에 이어 왕이 셰에라자드에게 한 말은 무엇입니까?", choices: ["아이들을 보아서 이번 한 번만 용서하겠다", "그것은 오늘 정한 것이 아니라 아주 오래되었다", "이야기가 다 떨어졌으니 이제 궁을 떠나도 좋다"], answer: 1 },
+    { q: "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?", wide: true, choices: ["셰에라자드가 천 밤 동안 살려 달라고 한 번도 빌지 않은 것을 보면, 비는 대신 듣게 하는 쪽을 고른 거야.", "알리바바네 집을 지킨 사람이 밥 짓고 물 긷던 모르지아나였던 것을 보면, 집을 지킨 건 주인이 아니라 부리던 사람이었어.", "검은 섬의 젊은 왕이 마법이 풀리자 백성을 이끌고 제 도시로 돌아가 다시 다스린 것을 보면, 물속에 있던 여러 해가 없던 일이 된 거야.", "신드바드가 바다의 노인을 딱해서 업어 주고도 후회하지 않는 것을 보면, 당한 뒤에도 딱하게 여긴 마음까지 물리지는 않는구나."], answer: 2 }
 ];
 
 // 선지를 세로로 쌓으니 한 쪽에 열여섯 문항이 다 들어가지 않는다. 몇 개씩 나눠 싣는다.

@@ -414,13 +414,13 @@ function afterPage(spread, isFirst) {
 
 const QUIZ = [
     {
-        "q": "벨이 아버지에게 부탁한 것은 무엇인가요?",
+        "q": "배가 가라앉아 오두막으로 옮긴 뒤 벨은 어떻게 했나요?",
         "choices": [
-            "장미 한 송이",
-            "옷과 보석",
-            "거울"
+            "언니들과 함께 주저앉아 울었다",
+            "소매를 걷고 불을 지펴 빵을 구웠다",
+            "책을 팔아 살림을 도왔다"
         ],
-        "answer": 0
+        "answer": 1
     },
     {
         "q": "아버지가 야수에게 붙잡힌 까닭은 무엇인가요?",
@@ -432,13 +432,13 @@ const QUIZ = [
         "answer": 2
     },
     {
-        "q": "벨의 방에 가득했던 것은 무엇인가요?",
+        "q": "성에서 벨의 시중을 든 것은 누구였나요?",
         "choices": [
-            "거울",
-            "책",
-            "장미"
+            "끝내 아무도 보이지 않았다",
+            "야수가 직접 들었다",
+            "성의 하인들이 들었다"
         ],
-        "answer": 1
+        "answer": 0
     },
     {
         "q": "벨이 손거울로 처음 본 것은 무엇인가요?",
@@ -459,13 +459,13 @@ const QUIZ = [
         "answer": 2
     },
     {
-        "q": "벨이 성으로 급히 돌아간 까닭은 무엇인가요?",
+        "q": "벨은 무엇 때문에 약속한 날이 지난 것을 알아차렸나요?",
         "choices": [
-            "아버지가 나아서",
-            "꿈을 꾸어서",
-            "약속을 어겨서"
+            "아버지가 이제 돌아가라고 해서",
+            "반지가 빛을 내서",
+            "야수가 쓰러진 꿈을 꾸어서"
         ],
-        "answer": 1
+        "answer": 2
     },
     {
         "q": "젊은이로 바뀐 뒤 벨이 알아본 것은 무엇인가요?",
@@ -827,9 +827,9 @@ const EN = {
     ],
     quiz: [
         {
-            q: 'What did Belle ask her father to bring her?',
-            choices: ['One rose', 'A silk dress', 'A pearl necklace'],
-            answer: 0
+            q: 'What did Belle do once the family had moved into the cottage?',
+            choices: ['Sat on the floor and wept with her sisters', 'Rolled up her sleeves, lit the fire and baked bread', 'Sold her books to help'],
+            answer: 1
         },
         {
             q: 'Why did the Beast get angry with the merchant?',
@@ -837,9 +837,9 @@ const EN = {
             answer: 2
         },
         {
-            q: 'Why did Belle go to the castle?',
-            choices: ['Her sisters made her go', 'It was her rose that had caused it', 'The Beast came and fetched her'],
-            answer: 1
+            q: 'Who waited on Belle in the castle?',
+            choices: ['Nobody she ever saw', 'The Beast himself', 'The castle servants'],
+            answer: 0
         },
         {
             q: 'What was in the room the castle had made ready for her?',
@@ -852,9 +852,9 @@ const EN = {
             answer: 2
         },
         {
-            q: 'Why was Belle late going back?',
-            choices: ['The ring stopped working', 'She was glad to be with her father and her sisters kept her', 'The snow blocked the road'],
-            answer: 1
+            q: 'How did Belle realise the promised week had passed?',
+            choices: ['Her father told her it was time to go', 'The ring began to glow', 'She dreamed of the Beast lying in the rose garden'],
+            answer: 2
         },
         {
             q: 'What broke the spell?',

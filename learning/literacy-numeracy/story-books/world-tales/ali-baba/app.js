@@ -390,78 +390,78 @@ function afterPage(spread, isFirst) {
 
 const QUIZ = [
     {
-        "q": "동굴 문을 여는 말은 무엇인가요?",
+        "q": "카심은 동굴에서 나오려고 무어라 외쳤나요?",
         "choices": [
+            "열려라 참깨",
             "닫혀라 참깨",
-            "열려라 바위",
-            "열려라 참깨"
+            "열려라 보리"
         ],
         "answer": 2
     },
     {
-        "q": "알리바바가 동굴에서 가져온 것은 무엇인가요?",
+        "q": "알리바바가 처음 동굴에서 가지고 나온 것은 무엇인가요?",
         "choices": [
-            "노새 열 마리",
             "금화 자루 셋",
-            "됫박"
-        ],
-        "answer": 1
-    },
-    {
-        "q": "형수가 됫박 바닥에 발라 둔 것은 무엇인가요?",
-        "choices": [
-            "밀랍",
-            "기름",
-            "금화"
+            "비단과 보석 한 자루",
+            "금화 한 닢"
         ],
         "answer": 0
     },
     {
-        "q": "도적이 알리바바의 집을 찾으려고 한 일은 무엇인가요?",
+        "q": "형수는 알리바바네에 금화가 있는 것을 어떻게 알았나요?",
         "choices": [
-            "항아리에 숨었다",
-            "장사꾼이 되었다",
-            "집에 표시를 했다"
-        ],
-        "answer": 2
-    },
-    {
-        "q": "모르지아나가 항아리에 부은 것은 무엇인가요?",
-        "choices": [
-            "밀랍",
-            "기름",
-            "금화"
+            "알리바바의 아내가 자랑을 해서",
+            "됫박 바닥에 밀랍을 발라 두어서",
+            "산으로 가는 알리바바를 뒤따라가서"
         ],
         "answer": 1
     },
     {
-        "q": "모르지아나가 두목을 알아본 것은 무엇 때문인가요?",
+        "q": "도적은 카심의 집을 어떻게 찾아냈나요?",
         "choices": [
-            "얼굴을 봐서",
-            "칼을 보고",
-            "표시를 보고"
+            "요즘 장례를 치른 집을 물어보고 다녔다",
+            "됫박에 붙은 금화를 보고 알았다",
+            "알리바바의 아들과 친해져 초대를 받았다"
         ],
         "answer": 0
     },
     {
-        "q": "알리바바가 모르지아나에게 한 말은 무엇인가요?",
+        "q": "항아리 속에 도적들이 숨은 것을 안 모르지아나는 어떻게 했나요?",
         "choices": [
-            "동굴로 가자",
-            "금화를 나누자",
-            "이제 종이 아니다"
+            "이웃들을 불러 항아리를 지키게 했다",
+            "항아리마다 뜨거운 기름을 부었다",
+            "두목이 자는 방문을 잠갔다"
         ],
-        "answer": 2
+        "answer": 1
+    },
+    {
+        "q": "모르지아나는 춤을 추다가 손님 앞에서 무엇을 했나요?",
+        "choices": [
+            "단검으로 옷자락을 젖혀 숨긴 칼을 보였다",
+            "잔을 떨어뜨려 이웃들에게 신호를 보냈다",
+            "등잔불을 얼굴에 비추어 알아보게 했다"
+        ],
+        "answer": 0
+    },
+    {
+        "q": "두목이 붙잡힌 뒤 알리바바는 모르지아나에게 무어라 말했나요?",
+        "choices": [
+            "이 집을 자네에게 주겠네",
+            "이제 자네는 종이 아닐세",
+            "금화를 반씩 나누세"
+        ],
+        "answer": 1
     },
     {
         "q": "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
         "wide": true,
         "choices": [
+                "카심이 노새를 열 마리나 끌고 간 것을 보면, 동생 몫까지 가져다주려 했구나.",
                 "알리바바가 세지 말고 그냥 묻어 두자고 한 것을 보면, 표가 날까 봐 걱정했네.",
                 "모르지아나가 온 동네 대문에 똑같은 표시를 그린 것을 보면, 지우는 대신 쓸모없게 만들었어.",
-                "모르지아나가 춤을 추기 전에 이웃들을 미리 불러 둔 것을 보면, 혼자 맞설 생각이 아니었구나.",
-                "형수가 됫박을 선뜻 빌려준 것을 보면, 가난한 동생네를 도우려 했네."
+                "모르지아나가 춤을 추기 전에 이웃들을 미리 불러 둔 것을 보면, 혼자 맞설 생각이 아니었구나."
             ],
-        "answer": 3
+        "answer": 0
     }
 ];
 
@@ -784,50 +784,50 @@ const EN = {
     ],
     quiz: [
         {
-            q: 'What was Ali Baba doing when he saw the thieves?',
-            choices: ['Taking grain to market', 'Visiting his brother', 'Cutting wood on the hill'],
+            q: 'What did Cassim shout when he tried to get out of the cave?',
+            choices: ['Open, Sesame', 'Shut, Sesame', 'Open, Barley'],
             answer: 2
         },
         {
-            q: 'How did Cassim’s wife find out about the gold?',
-            choices: ['She followed Ali Baba up the hill', 'She waxed the bottom of the measure she lent them', 'A thief told her'],
-            answer: 1
-        },
-        {
-            q: 'Why could Cassim not get out of the cave?',
-            choices: ['He had forgotten the words', 'The thieves had blocked the entrance', 'His sacks were too heavy'],
+            q: 'What did Ali Baba carry home from the cave the first time?',
+            choices: ['Three sacks of gold coins', 'A sack of silk and jewels', 'A single gold coin'],
             answer: 0
         },
         {
-            q: 'What did Morgiana do about the chalk mark?',
-            choices: ['She rubbed it off', 'She told the neighbours to watch', 'She put the same mark on every door in the neighbourhood'],
-            answer: 2
-        },
-        {
-            q: 'What was really inside the oil jars?',
-            choices: ['Gold from the cave', 'A thief in each one, and oil in only one', 'Nothing at all'],
+            q: 'How did Cassim’s wife find out that Ali Baba had gold?',
+            choices: ['Ali Baba’s wife boasted about it', 'She waxed the bottom of the measure she lent them', 'She followed Ali Baba up the hill'],
             answer: 1
         },
         {
-            q: 'How did Morgiana show who the guest was?',
-            choices: ['She brushed his coat open with her dagger and showed the sword', 'She asked him his name', 'She found his chalk'],
+            q: 'How did the thief find Cassim’s house?',
+            choices: ['He asked around for a house that had just held a funeral', 'He saw the coin stuck to the measure', 'He made friends with Ali Baba’s son and got invited in'],
             answer: 0
         },
         {
-            q: 'Why could the captain not escape through the door?',
-            choices: ['The son held him back', 'The door was locked', 'Morgiana had called the neighbours in beforehand'],
-            answer: 2
+            q: 'What did Morgiana do once she knew thieves were hiding in the jars?',
+            choices: ['She called the neighbours to guard the jars', 'She poured boiling oil into every jar', 'She locked the door of the captain’s room'],
+            answer: 1
+        },
+        {
+            q: 'What did Morgiana do in front of the guest while she was dancing?',
+            choices: ['She flicked his coat open with her dagger and showed the hidden sword', 'She dropped a cup as a signal to the neighbours', 'She held the lamp up to his face'],
+            answer: 0
+        },
+        {
+            q: 'What did Ali Baba say to Morgiana after the captain was caught?',
+            choices: ['I will give you this house', 'You are no longer a servant', 'We will share the gold half and half'],
+            answer: 1
         },
         {
             q: 'Which reaction to this book does NOT fit?',
             wide: true,
             choices: [
+                "Cassim took ten mules with him — he meant to bring back a share for his brother too.",
                 "Ali Baba said not to count it, just to bury it — he was afraid it would show.",
                 "Morgiana chalked the same mark on every door in the street — instead of rubbing it out she made it useless.",
-                "She called the neighbours in before she began to dance — she never meant to face him alone.",
-                "The sister-in-law lent them the measure readily — she wanted to help her poor relations."
+                "She called the neighbours in before she began to dance — she never meant to face him alone."
             ],
-            answer: 3
+            answer: 0
         }
     ],
     afterword: {
