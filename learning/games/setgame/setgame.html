@@ -1007,7 +1007,7 @@ textarea,
 </style>
 <link rel="stylesheet" href="../../../assets/network/multiplayer-lobby.css?v=20260906">
 <script src="../../../assets/network/game-network.js?v=20260821"></script>
-<script src="../../../assets/network/multiplayer-lobby.js?v=20260906b"></script>
+<script src="../../../assets/network/multiplayer-lobby.js?v=20260925-clean-lobby"></script>
 <script src="../../../assets/sound/music-control.js?v=20260910-click-cache-1" defer></script>
 <link rel="stylesheet" href="../../../assets/device-game.css?v=20260921c">
 <style>
@@ -1049,7 +1049,7 @@ body:has(#game-container[style*="flex"]){height:100dvh;min-height:0;box-sizing:b
             <div class="room-code-actions">
                 <button class="action-btn" id="new-room-btn" type="button">NEW CODE</button>
             </div>
-            <div class="room-share-status" id="room-share-status">방 번호를 상대방에게 알려주세요.</div>
+            <div class="room-share-status" id="room-share-status"></div>
         </div>
     </div>
 
@@ -1356,7 +1356,6 @@ body:has(#game-container[style*="flex"]){height:100dvh;min-height:0;box-sizing:b
                 joinCode: "join-room-code",
                 joinButton: "join-room-btn",
                 joinStatus: "connect-status",
-                copyButton: "copy-room-btn",
                 playerList: "lobby-player-list",
                 guide: "lobby-guide",
                 startButton: "start-game-btn"

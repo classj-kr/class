@@ -984,7 +984,7 @@ body{align-items:center;padding:18px}
 </style>
 <link rel="stylesheet" href="../../../assets/network/multiplayer-lobby.css?v=20260917">
 <script src="../../../assets/network/game-network.js?v=20260821"></script>
-<script src="../../../assets/network/multiplayer-lobby.js?v=20260906b"></script>
+<script src="../../../assets/network/multiplayer-lobby.js?v=20260925-clean-lobby"></script>
 <script src="../../../assets/sound/music-control.js?v=20260910-click-cache-1" defer></script>
 <link rel="stylesheet" href="../../../assets/device-game.css?v=20260921c">
 <style>
@@ -1198,7 +1198,7 @@ body:has(#game-screen:not(.hidden)) .app-shell{height:calc(100dvh - 16px);min-he
     </div>
 </div>
 
-<div class="toast" id="toast">복사되었습니다.</div>
+<div class="toast" id="toast"></div>
 
 <script>
     "use strict";
@@ -1284,7 +1284,6 @@ body:has(#game-screen:not(.hidden)) .app-shell{height:calc(100dvh - 16px);min-he
                 joinCode: "join-code-input",
                 joinButton: "join-room-btn",
                 joinStatus: "lobby-status-text",
-                copyButton: "copy-code-btn",
                 playerList: "lobby-players",
                 guide: "lobby-guide",
                 startButton: "start-btn"

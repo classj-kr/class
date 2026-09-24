@@ -144,12 +144,6 @@ async function checkSharedScreenLifecycle(browser, game, code, result, players) 
   const minimum = { avalon: 5, codenames: 4, dobble: 2 }[game];
   if (!minimum) return;
   const host = players[0];
-  result.step = "copy room code";
-  await host.context.overridePermissions(origin, ["clipboard-read", "clipboard-write", "clipboard-sanitized-write"]);
-  await host.page.bringToFront();
-  await clickControl(host.page, "copyButton");
-  await host.page.waitForFunction(async code => (await navigator.clipboard.readText()) === code, {}, code);
-  result.copied = true;
   result.step = "fill minimum players";
   for (const name of ["검증다람", "검증라온", "검증마루"].slice(0, minimum - 2)) {
     await joinPlayer(browser, game, name, code, result.errors, players);
@@ -241,7 +235,6 @@ async function main() {
         result.stack = error.stack;
         if (players[0]) {
           result.diagnostics = await players[0].page.evaluate(async () => ({
-            clipboard: await navigator.clipboard.readText().catch(error => error.message),
             notices: [...document.querySelectorAll("#notice, #toast")].map(element => element.textContent),
             phase: window.__roomTestState?.phase
           })).catch(() => null);
@@ -260,7 +253,7 @@ async function main() {
   }
   fs.writeFileSync(path.join(output, "report.json"), JSON.stringify({
     generatedAt: new Date().toISOString(), origin,
-    coverage: "Real local server, browser host creation and guest joining, three host viewport sizes, including minimum 28px room-code size and 4.5:1 contrast against rendered background pixels. Avalon, Codenames and Dobble also verify clipboard, minimum players, start and return to lobby after a departure. No physical-device or production validation.",
+    coverage: "Real local server, browser host creation and guest joining, three host viewport sizes, including minimum 28px room-code size and 4.5:1 contrast against rendered background pixels. Avalon, Codenames and Dobble also verify minimum players, start and return to lobby after a departure. No physical-device or production validation.",
     results
   }, null, 2));
   console.log(`${results.filter(result => !result.failure).length}/${results.length} games passed`);

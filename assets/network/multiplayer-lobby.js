@@ -22,7 +22,6 @@
         joinCode: "joinCode",
         joinButton: "joinBtn",
         joinStatus: "joinStatus",
-        copyButton: "copyBtn",
         playerList: "lobbyPlayers",
         guide: "lobbyGuide",
         startButton: "startBtn"
@@ -131,7 +130,6 @@
             this.elements.hostTab?.addEventListener("click", () => this.setMode("host"));
             this.elements.joinTab?.addEventListener("click", () => this.setMode("guest"));
             this.elements.joinButton?.addEventListener("click", () => this.joinRoom());
-            this.elements.copyButton?.addEventListener("click", () => this.copyRoomCode());
             this.elements.startButton?.addEventListener("click", () => this.startGame());
 
             const joinInput = this.elements.joinCode;
@@ -584,18 +582,6 @@
         _setStatus(text) {
             const element = this.role === "host" ? this.elements.hostStatus : this.elements.joinStatus;
             if (element) element.textContent = text;
-        }
-
-        async copyRoomCode() {
-            if (!this.roomCode) return;
-            const fallback = () => this.options.onNotice?.(`방 번호: ${this.roomCode}`);
-            if (!navigator.clipboard?.writeText) return fallback();
-            try {
-                await navigator.clipboard.writeText(this.roomCode);
-                this.options.onNotice?.(`방 번호 ${this.roomCode}가 복사되었습니다.`);
-            } catch (_) {
-                fallback();
-            }
         }
 
         updateLocalPlayer(patch) {

@@ -94,7 +94,7 @@ h1,h2,h3,p{margin-top:0}
 #roomCode,#roomShare #gameRoomCode{font-size:clamp(36px,8vw,44px);line-height:1.15;font-variant-numeric:tabular-nums}
 </style>
 <script src="../../../assets/network/game-network.js?v=20260821"></script>
-<script src="../../../assets/network/multiplayer-lobby.js?v=20260906b"></script>
+<script src="../../../assets/network/multiplayer-lobby.js?v=20260925-clean-lobby"></script>
 <script src="../../../assets/sound/music-control.js?v=20260910-click-cache-1" defer></script>
 <link rel="stylesheet" href="../../../assets/device-game.css?v=20260921c">
 <style>
@@ -153,7 +153,6 @@ body:has(#playArea:not(.hidden)) .shell{width:min(1440px,100%)}
       <div id="roomShare" hidden>
         <div class="eyebrow">방 번호</div>
         <div id="gameRoomCode" class="code" aria-live="polite">----</div>
-        <button id="copyBtn" class="secondary" type="button">방 번호 복사</button>
       </div>
       <div class="row">
         <button id="rulesGameBtn" class="secondary" type="button">RULES</button>
@@ -571,7 +570,6 @@ function init() {
       joinCode: "joinCode",
       joinButton: "joinBtn",
       joinStatus: "joinStatusText",
-      copyButton: "copyBtn"
     },
     getPlayerName: () => /^[가-힣]{2,6}$/.test(savedName) ? savedName : "",
     allowedPlayerCounts: [2, 3, 4, 5, 6, 7, 8],
