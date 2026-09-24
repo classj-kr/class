@@ -144,7 +144,7 @@ const CHAPTERS = [
                     "\"으악, 괴물이다! 도망가자!\""
                 ],
                 "right": [
-                    "문틈으로 붉은 눈들이 번쩍였지요. 오누이는 정신없이 달아났습니다.",
+                    "문틈으로 무언가 번쩍였지요. 오누이는 정신없이 달아났습니다.",
                     "그러다 숲속으로 뛰어들었지요. 나무들이 하늘을 가릴 만큼 높았습니다.",
                     "하지만 숲에서 더 무서운 일이 기다리고 있었습니다. 나무들이 스스로 움직이기 시작했거든요. 뿌리가 땅에서 쑥 뽑혀 나왔지요."
                 ]
@@ -744,7 +744,7 @@ const EN = {
                         "Each time, something frightful jumped out. \"A monster! Run!\""
                     ],
                     right: [
-                        "Red eyes flashed through the cracks of the doors, and the children fled.",
+                        "Something flashed through the cracks of the doors, and the children fled.",
                         "They ran into a wood where the trees were so tall they shut out the sky.",
                         "But something worse was waiting. The trees began to move, and their roots came pulling up out of the ground."
                     ]

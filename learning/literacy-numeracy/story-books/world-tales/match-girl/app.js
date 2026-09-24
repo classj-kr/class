@@ -26,7 +26,7 @@ const CHAPTERS = [
                 ],
                 "right": [
                     "남은 한 짝은 지나가던 사내아이가 냉큼 주워 들었지요. \"이걸로 배를 만들어야지!\"",
-                    "사내아이는 그것을 들고 저만치 달아났습니다. 성냥팔이 아이는 맨발로 눈길을 걸었지요. 발이 새빨갛게 얼어붙었습니다.",
+                    "사내아이는 그것을 들고 저만치 달아났습니다. 성냥팔이 아이는 맨발로 눈길을 걸었지요. 발이 꽁꽁 얼어붙었습니다.",
                     "발가락 사이로 눈이 자꾸 들어왔지요."
                 ]
             }
@@ -549,7 +549,7 @@ const EN = {
                     ],
                     right: [
                         "A boy going by snatched up the other one. \"This will make a fine boat!\" he cried, and off he ran with it.",
-                        "So the match girl walked the snowy street barefoot. Her feet turned bright red with cold.",
+                        "So the match girl walked the snowy street barefoot. Her feet were frozen stiff with cold.",
                         "The snow kept getting in between her toes."
                     ]
                 }

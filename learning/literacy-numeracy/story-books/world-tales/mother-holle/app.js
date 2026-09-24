@@ -20,7 +20,7 @@ const CHAPTERS = [
                 "emoji": "🧵",
                 "left": [
                     "그날도 아이는 우물가에서 실을 잣고 있었습니다.",
-                    "한참을 자으니 손끝이 갈라져 피가 났지요. 실을 감는 물레가락에도 빨간 피가 묻었습니다.",
+                    "한참을 자으니 손끝이 갈라져 피가 났지요. 실을 감는 물레가락에도 피가 묻었습니다.",
                     "아이는 그것을 씻으려고 우물물에 담갔지요. 그런데 그만 손이 미끄러졌습니다."
                 ],
                 "right": [
@@ -583,7 +583,7 @@ const EN = {
                     left: [
                         "That day too she was spinning at the well.",
                         "After a long while her fingertips cracked and bled.",
-                        "There was red blood on the spindle.",
+                        "There was blood on the spindle.",
                         "She dipped it in the well water to wash it off.",
                         "But her hand slipped."
                     ],
@@ -966,7 +966,7 @@ const EN = {
             { word: 'complain', meaning: '군소리하다', sentence: 'She never once complained.' }
         ],
         '01-well-2.webp': [
-            { word: 'spindle', meaning: '물레가락', sentence: 'There was red blood on the spindle.' },
+            { word: 'spindle', meaning: '물레가락', sentence: 'There was blood on the spindle.' },
             { word: 'dip', meaning: '담그다', sentence: 'She dipped it in the well water.' },
             { word: 'slip', meaning: '미끄러지다', sentence: 'And her hand slipped.' },
             { word: 'go white', meaning: '새하얗게 질리다', sentence: 'Her face had gone white.' }
