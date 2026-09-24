@@ -128,13 +128,37 @@ async function roomCodeMetrics(page) {
   return metric;
 }
 
-async function joinPlayer(browser, game, name, code, errors, players) {
+async function joinPlayer(browser, game, name, code, errors, players, result) {
   const guest = await openPlayer(browser, game, name, errors);
   players.push(guest);
   await clickControl(guest.page, "joinTab");
   const joinId = await guest.page.evaluate(() => window.__roomTestLobby.ids.joinCode);
+  if (result) {
+    result.joinChecks = [];
+    for (const [width, height] of [[1366, 768], [768, 1024], [390, 844]]) {
+      await guest.page.setViewport({ width, height });
+      await guest.page.evaluate(() => window.__roomTestLobby.elements.joinCode.scrollIntoView({ block: "center", inline: "nearest" }));
+      const metric = await guest.page.evaluate(() => {
+        const { joinCode, joinButton, joinPane } = window.__roomTestLobby.elements;
+        const input = joinCode.getBoundingClientRect(), button = joinButton.getBoundingClientRect();
+        const onScreen = rect => rect.left >= 0 && rect.top >= 0 && rect.right <= innerWidth + 1 && rect.bottom <= innerHeight + 1;
+        return {
+          width: innerWidth, height: innerHeight, inputWidth: input.width, inputHeight: input.height,
+          buttonWidth: button.width, buttonHeight: button.height, paneWidth: joinPane.getBoundingClientRect().width,
+          sameRow: Math.abs(input.top + input.height / 2 - button.top - button.height / 2) <= 2 && button.left >= input.right,
+          visible: joinCode.checkVisibility() && joinButton.checkVisibility() && onScreen(input) && onScreen(button)
+        };
+      });
+      result.joinChecks.push(metric);
+      await guest.page.screenshot({ path: path.join(output, `${game}-join-${width}.png`) });
+      assert.ok(metric.visible && metric.sameRow && metric.inputWidth >= 100 && metric.inputWidth <= 180 &&
+        metric.buttonWidth >= 60 && metric.buttonWidth <= 160 && metric.inputHeight >= 44 && metric.buttonHeight >= 44,
+        "The four-digit field and join button must stay compact, usable and on one row: " + JSON.stringify(metric));
+    }
+  }
   await guest.page.type("#" + joinId, code);
-  await clickControl(guest.page, "joinButton");
+  if (result && game === "connect6") await guest.page.keyboard.press("Enter");
+  else await clickControl(guest.page, "joinButton");
   await guest.page.waitForFunction(() => window.__roomTestLobby.connected, { timeout: 10000 });
   assert.equal(await guest.page.evaluate(() => window.__roomTestLobby.snapshot().roomCode), code);
   return guest;
@@ -219,7 +243,7 @@ async function main() {
           result.checks.push(metric);
           await host.page.screenshot({ path: path.join(output, `${game}-host-${width}.png`) });
         }
-        await joinPlayer(browser, game, "검증참가", code, result.errors, players);
+        await joinPlayer(browser, game, "검증참가", code, result.errors, players, result);
         await host.page.waitForFunction(() => Object.keys(window.__roomTestLobby.players).length === 2, { timeout: 10000 });
         result.joined = true;
         result.checks.push({ afterJoin: true, ...await roomCodeMetrics(host.page) });
@@ -253,7 +277,7 @@ async function main() {
   }
   fs.writeFileSync(path.join(output, "report.json"), JSON.stringify({
     generatedAt: new Date().toISOString(), origin,
-    coverage: "Real local server, browser host creation and guest joining, three host viewport sizes, including minimum 28px room-code size and 4.5:1 contrast against rendered background pixels. Avalon, Codenames and Dobble also verify minimum players, start and return to lobby after a departure. No physical-device or production validation.",
+    coverage: "Real local server, browser host creation and guest joining, three host and join-form viewport sizes, compact side-by-side code input and join button (Enter submits Connect Six), including minimum 28px room-code size and 4.5:1 contrast against rendered background pixels. Avalon, Codenames and Dobble also verify minimum players, start and return to lobby after a departure. No physical-device or production validation.",
     results
   }, null, 2));
   console.log(`${results.filter(result => !result.failure).length}/${results.length} games passed`);

@@ -119,6 +119,19 @@
                 joinButton.setAttribute("aria-label", "입력한 방 번호로 참가");
             }
 
+            const joinInput = this.elements.joinCode;
+            if (joinInput && joinButton) {
+                joinInput.classList.add("mp-lobby-join-input");
+                joinInput.placeholder = "방 번호 4자리";
+                joinInput.setAttribute("aria-label", "네 자리 방 번호");
+                joinButton.classList.add("mp-lobby-join-submit");
+                joinPane?.classList.add("mp-lobby-join-pane");
+                this.elements.joinStatus?.classList.add("mp-lobby-join-status");
+                if (joinInput.parentElement === joinButton.parentElement) {
+                    joinInput.parentElement.classList.add("mp-lobby-join-controls");
+                }
+            }
+
             const name = this.playerName;
             if (!name) {
                 this.elements.missingScreen?.classList.remove("hidden");
@@ -132,7 +145,6 @@
             this.elements.joinButton?.addEventListener("click", () => this.joinRoom());
             this.elements.startButton?.addEventListener("click", () => this.startGame());
 
-            const joinInput = this.elements.joinCode;
             joinInput?.addEventListener("input", event => {
                 event.target.value = event.target.value.replace(/\D/g, "").slice(0, 4);
             });
