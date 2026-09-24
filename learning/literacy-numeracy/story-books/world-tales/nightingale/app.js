@@ -425,74 +425,74 @@ function afterPage(spread, isFirst) {
 
 const QUIZ = [
     {
-        "q": "임금님이 밤꾀꼬리를 알게 된 것은 무엇을 보고인가요?",
+        "q": "임금님은 밤꾀꼬리 이야기를 어디서 처음 알았나요?",
         "choices": [
-            "신하의 말",
-            "이웃 나라 선물",
-            "책"
+            "먼 나라 사람들이 쓴 책에서",
+            "어부들의 노래에서",
+            "이웃 나라의 선물 상자에서"
         ],
-        "answer": 2
+        "answer": 0
     },
     {
-        "q": "밤꾀꼬리가 어디 있는지 아는 사람은 누구였나요?",
+        "q": "부엌 아이는 어떻게 밤꾀꼬리의 노래를 알고 있었나요?",
         "choices": [
-            "늙은 신하",
-            "부엌 아이",
-            "시계장이"
+            "숲에서 나물을 캐다가 들어서",
+            "바닷가 어머니께 다녀오는 길에 숲에서 들어서",
+            "어부들이 가르쳐 주어서"
         ],
         "answer": 1
     },
     {
-        "q": "숲으로 가는 길에 신하들이 잘못 안 소리는 무엇인가요?",
+        "q": "숲으로 가는 길에 신하들이 밤꾀꼬리로 잘못 안 소리는 무엇인가요?",
         "choices": [
-            "소 울음",
-            "은방울 꽃",
-            "기계 새"
+            "소 울음과 개구리 소리",
+            "은방울 꽃 소리",
+            "바닷물 소리"
         ],
         "answer": 0
     },
     {
         "q": "밤꾀꼬리는 어떻게 생겼나요?",
         "choices": [
-            "보석으로 덮인 새",
-            "은방울을 단 새",
+            "온몸에 보석이 박힌 새",
+            "은방울 꽃처럼 하얀 새",
             "볼품없는 잿빛 새"
         ],
         "answer": 2
     },
     {
-        "q": "밤꾀꼬리가 금목걸이보다 값지다고 한 것은 무엇인가요?",
+        "q": "임금님이 상으로 금목걸이를 주려 하자 밤꾀꼬리는 무어라 했나요?",
         "choices": [
-            "노래할 자리",
-            "흘려 준 눈물",
-            "궁궐의 등불"
-        ],
-        "answer": 1
-    },
-    {
-        "q": "기계 새를 고친 시계장이가 한 말은 무엇인가요?",
-        "choices": [
-            "일 년에 한 번만",
-            "이제 못 고친다",
-            "태엽을 감아라"
+            "임금님의 눈물이면 충분합니다",
+            "숲으로 돌려보내 주십시오",
+            "금빛 새장을 주십시오"
         ],
         "answer": 0
     },
     {
-        "q": "밤꾀꼬리가 마지막에 임금님께 한 말은 무엇인가요?",
+        "q": "기계 새를 고친 시계장이는 무어라 말했나요?",
         "choices": [
-            "궁궐에서 살겠다",
-            "다시는 안 오겠다",
-            "이따금 찾아오겠다"
+            "이제는 고칠 수 없습니다",
+            "새 태엽으로 갈면 예전 같을 겁니다",
+            "일 년에 한 번만 부르게 하십시오"
         ],
         "answer": 2
+    },
+    {
+        "q": "임금님이 궁궐에서 살아 달라고 하자 밤꾀꼬리는 뭐라고 했나요?",
+        "choices": [
+            "궁궐에서 살겠습니다",
+            "숲에 살며 이따금 찾아오겠습니다",
+            "기계 새를 치워 주시면 살겠습니다"
+        ],
+        "answer": 1
     },
     {
         "q": "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
         "wide": true,
         "choices": [
-                "그 노래를 아는 사람이 부엌일 하는 아이뿐이었던 것을 보면, 궁궐 밖을 오간 사람이 그 아이뿐이었구나.",
-                "밤꾀꼬리가 금목걸이를 사양한 것을 보면, 임금님의 눈물로 값을 이미 받았다고 여긴 거지.",
+                "신하가 저녁까지 못 데려오면 큰일 난다는 말에 새파랗게 질린 것을 보면, 처음 듣는 새였으니까.",
+                "사람들이 기계 새 노래를 서른세 번 듣는 사이 진짜 새가 날아간 것을 보면, 아무도 창가를 돌아보지 않았던 거지.",
                 "기계 새가 몇 번을 시켜도 한 음도 틀리지 않은 것을 보면, 사람들이 그것을 더 훌륭하다고 여긴 까닭이야.",
                 "밤꾀꼬리가 발에 실을 매어도 가만히 있은 것을 보면, 궁궐에 매여 지내는 것이 싫지만은 않았구나."
             ],
@@ -882,46 +882,46 @@ const EN = {
     ],
     quiz: [
         {
-            q: 'How did the emperor learn about the nightingale?',
-            choices: ['An official told him', 'He heard her from the palace', 'From a book written by people from far countries'],
-            answer: 2
+            q: 'Where did the emperor first learn of the nightingale?',
+            choices: ['From a book written by people from far countries', 'From the fishermen’s songs', 'From the gift box sent by the neighbouring country'],
+            answer: 0
         },
         {
-            q: 'Who in the palace knew where the nightingale was?',
-            choices: ['The head official', 'A child who worked in the kitchen', 'Nobody at all'],
+            q: 'How did the kitchen child know the nightingale’s song?',
+            choices: ['She heard it while picking herbs in the wood', 'She heard it in the wood on her way back from her mother’s by the sea', 'The fishermen had taught it to her'],
             answer: 1
         },
         {
             q: 'What did the officials mistake for the nightingale on the way?',
-            choices: ['A cow and a frog', 'The wind and the sea', 'Silver bells in the garden'],
+            choices: ['A cow and a frog', 'The silver bells in the garden', 'The sound of the sea'],
             answer: 0
         },
         {
-            q: 'What did the nightingale want as her reward?',
-            choices: ['A gold chain', 'A golden cage', 'Nothing but the emperor’s tears'],
+            q: 'What did the nightingale look like?',
+            choices: ['A bird covered in jewels', 'A bird as white as the silver-bell flowers', 'A plain little grey bird'],
             answer: 2
         },
         {
-            q: 'Why did people prefer the mechanical bird?',
-            choices: ['It was louder', 'It sang the same song exactly the same way every time', 'It could fly higher'],
+            q: 'What did the nightingale say when the emperor offered a gold chain?',
+            choices: ['Your tears are reward enough', 'Please send me back to the wood', 'Give me a golden cage'],
+            answer: 0
+        },
+        {
+            q: 'What did the clockmaker say after mending the mechanical bird?',
+            choices: ['It cannot be mended any more', 'A new spring will make it as good as before', 'Let it sing only once a year'],
+            answer: 2
+        },
+        {
+            q: 'What did the nightingale answer when the emperor asked it to live at the palace?',
+            choices: ['I will live at the palace', 'I will live in the wood and visit now and then', 'I will stay if you take the clockwork bird away'],
             answer: 1
-        },
-        {
-            q: 'What happened to the mechanical bird after a year?',
-            choices: ['A part inside wore out and the song stopped', 'It was given away', 'It flew out of the window'],
-            answer: 0
-        },
-        {
-            q: 'What did the nightingale ask for at the end?',
-            choices: ['A perch by the window', 'That the mechanical bird be broken up', 'That her visits be kept secret'],
-            answer: 2
         },
         {
             q: 'Which reaction to this book does NOT fit?',
             wide: true,
             choices: [
-                "Only the kitchen girl knew the song — she was the one person who went in and out of the palace.",
-                "The nightingale would not take the gold chain — it counted the emperor's tears as payment enough.",
+                "The official turned pale when told to bring the bird by evening or else — he had never even heard of it.",
+                "The real bird flew away while everyone listened to the clockwork bird thirty-three times — nobody looked at the window.",
                 "The clockwork bird never missed a note however often they wound it — that was why people thought it the better bird.",
                 "The nightingale let them tie a thread to its foot without a fuss — being kept at the palace did not really trouble it."
             ],

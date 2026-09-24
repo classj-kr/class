@@ -401,13 +401,13 @@ const QUIZ = [
         "answer": 0
     },
     {
-        "q": "왕자가 성냥 파는 아이에게 보낸 것은 무엇인가요?",
+        "q": "왕자가 제일 먼저 내어 준 것은 무엇인가요?",
         "choices": [
-            "금박",
-            "심장",
-            "사파이어"
+            "사파이어 눈 하나",
+            "칼자루의 루비",
+            "몸의 금박"
         ],
-        "answer": 2
+        "answer": 1
     },
     {
         "q": "제비가 앓는 아이 곁에서 한 일은 무엇인가요?",
@@ -419,38 +419,38 @@ const QUIZ = [
         "answer": 1
     },
     {
-        "q": "제비가 떠나지 않은 까닭은 무엇인가요?",
+        "q": "제비가 따뜻한 나라로 떠나지 않기로 한 까닭은 무엇인가요?",
         "choices": [
-            "눈이 되어 주려고",
-            "바람이 차가워서",
-            "금박을 얻으려고"
-        ],
-        "answer": 0
-    },
-    {
-        "q": "제비가 굶는 집에 날라 준 것은 무엇인가요?",
-        "choices": [
-            "사파이어",
-            "성냥",
-            "금박"
+            "날개가 무거워 날 수 없어서",
+            "동무들이 이미 떠나 버려서",
+            "왕자의 눈이 되어 주려고"
         ],
         "answer": 2
     },
     {
-        "q": "왕자의 심장이 갈라진 때는 언제인가요?",
+        "q": "다락방의 젊은이는 보석을 받고 무엇을 샀나요?",
         "choices": [
-            "용광로 안에서",
-            "첫눈 내린 밤",
-            "제비가 온 날"
+            "따뜻한 외투 한 벌",
+            "장작과 빵과 새 종이",
+            "오렌지 한 바구니"
         ],
         "answer": 1
     },
     {
-        "q": "용광로에서 녹지 않은 것은 무엇인가요?",
+        "q": "시장이 동상을 내리라고 한 까닭은 무엇인가요?",
         "choices": [
-            "납으로 된 심장",
-            "금박",
-            "사파이어"
+            "새 임금님이 자리에 올라서",
+            "기둥이 낡아 위험해서",
+            "루비도 눈도 금박도 없어 흉해서"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "성냥 파는 아이는 왜 울고 있었나요?",
+        "choices": [
+            "성냥을 도랑에 다 빠뜨려서",
+            "성냥이 하나도 안 팔려서",
+            "엄마를 잃어버려서"
         ],
         "answer": 0
     },
@@ -802,14 +802,9 @@ const EN = {
     ],
     quiz: [
         {
-            q: 'Why had the prince never seen anything sad while he was alive?',
-            choices: ['He lived only inside a high wall', 'He was too young to notice', 'Nobody in the city was poor then'],
-            answer: 0
-        },
-        {
             q: 'Why was the swallow still in the city?',
-            choices: ['His wing was broken', 'The prince had called him', 'He had stayed playing with the reeds and fallen behind'],
-            answer: 2
+            choices: ['He had stayed playing with the reeds and fallen behind', 'His wing was broken', 'Winter had come early'],
+            answer: 0
         },
         {
             q: 'What was the first thing the prince gave away?',
@@ -817,23 +812,28 @@ const EN = {
             answer: 1
         },
         {
-            q: 'What did the young man in the attic do with the sapphire?',
-            choices: ['He bought firewood, bread and paper', 'He kept it on his desk', 'He gave it to the match girl'],
-            answer: 0
-        },
-        {
-            q: 'Why did the swallow decide not to fly south?',
-            choices: ['His wings were too heavy to fly', 'The mayor had shut the gates', 'The prince was blind, so he stayed to be his eyes'],
-            answer: 2
-        },
-        {
-            q: 'Why did the mayor order the statue taken down?',
-            choices: ['It had fallen over in the snow', 'It had lost its jewels and its gold', 'The children had complained'],
+            q: 'What did the swallow do beside the sick child?',
+            choices: ['Sang to him', 'Fanned him with his wings', 'Brought him bread'],
             answer: 1
         },
         {
-            q: 'What would not melt in the furnace?',
-            choices: ['The leaden heart', 'The sword hilt', 'The gold leaf'],
+            q: 'Why did the swallow decide not to fly south?',
+            choices: ['His wings were too heavy to fly', 'His friends had already gone without him', 'The prince was blind, so he stayed to be his eyes'],
+            answer: 2
+        },
+        {
+            q: 'What did the young man in the attic buy with the jewel?',
+            choices: ['A warm coat', 'Firewood, bread and paper', 'A basket of oranges'],
+            answer: 1
+        },
+        {
+            q: 'Why did the mayor order the statue taken down?',
+            choices: ['A new king had come to the throne', 'The pillar was old and unsafe', 'It had lost its jewels and its gold and looked shabby'],
+            answer: 2
+        },
+        {
+            q: 'Why was the match girl crying?',
+            choices: ['She had dropped all her matches in the gutter', 'Nobody had bought a single match', 'She had lost her mother'],
             answer: 0
         },
         {

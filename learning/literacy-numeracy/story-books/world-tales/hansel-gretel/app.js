@@ -389,28 +389,28 @@ function afterPage(spread, isFirst) {
 
 const QUIZ = [
     {
-        "q": "헨젤이 첫날 길에 떨어뜨린 것은 무엇인가요?",
+        "q": "남매는 부모의 계획을 어떻게 알게 되었나요?",
         "choices": [
-            "빵 부스러기",
-            "조약돌",
-            "설탕"
+            "아버지가 미리 일러 줘서",
+            "벽에 귀를 대고 엿들어서",
+            "새어머니가 아침에 말해서"
         ],
         "answer": 1
     },
     {
-        "q": "두 번째에는 왜 길을 찾지 못했나요?",
+        "q": "두 번째로 숲에 갈 때 헨젤이 조약돌 대신 빵을 쓴 까닭은 무엇인가요?",
         "choices": [
-            "빵을 새가 먹어서",
-            "달이 안 떠서",
-            "눈이 내려서"
+            "새어머니가 문을 잠가 둬서",
+            "조약돌이 다 떨어져서",
+            "그레텔이 빵이 낫다고 해서"
         ],
         "answer": 0
     },
     {
         "q": "과자집의 지붕과 창문은 무엇으로 되어 있었나요?",
         "choices": [
-            "빵과 우유",
-            "진주와 보석",
+            "과자와 우유",
+            "빵과 꿀",
             "설탕과 엿"
         ],
         "answer": 2
@@ -425,19 +425,19 @@ const QUIZ = [
         "answer": 1
     },
     {
-        "q": "화덕 아궁이에 코를 박은 것은 누구인가요?",
+        "q": "할머니가 아궁이에 코를 박고 연기를 뒤집어쓴 사이 그레텔은 무엇을 했나요?",
         "choices": [
-            "할머니",
-            "헨젤",
-            "그레텔"
+            "부엌 문에 빗장을 걸고 우리 문을 열었다",
+            "물을 길어 와 불을 껐다",
+            "숲으로 먼저 달아났다"
         ],
         "answer": 0
     },
     {
         "q": "궤짝 안에 들어 있던 것은 무엇인가요?",
         "choices": [
-            "과자와 사과",
-            "빵과 우유",
+            "빵과 사과",
+            "금화가 든 자루",
             "진주와 보석"
         ],
         "answer": 2
@@ -447,7 +447,7 @@ const QUIZ = [
         "choices": [
             "하얀 새",
             "하얀 오리",
-            "아버지"
+            "빈 궤짝"
         ],
         "answer": 1
     },
@@ -783,33 +783,33 @@ const EN = {
     ],
     quiz: [
         {
-            q: 'Why could Hansel see the road on the first night?',
-            choices: ['He had marked the trees', 'The moon made the pebbles shine', 'The white bird led them'],
+            q: 'How did the children find out what was planned for them?',
+            choices: ['Their father warned them beforehand', 'They pressed their ears to the wall and listened', 'The stepmother told them in the morning'],
             answer: 1
         },
         {
-            q: 'What did Hansel say he was looking at while he dropped the pebbles?',
-            choices: ['The cat on the roof', 'A bird in a tree', 'The axe his father carried'],
+            q: 'Why did Hansel use bread instead of pebbles the second time?',
+            choices: ['The door was locked and he could not get out', 'The pebbles had all been used up', 'Gretel said bread was better'],
             answer: 0
         },
         {
-            q: 'Why did Hansel use bread the second time?',
-            choices: ['The pebbles had all been used up', 'Gretel told him bread was better', 'The door was locked and he could not fetch pebbles'],
+            q: 'What were the roof and windows of the house made of?',
+            choices: ['Cake and milk', 'Bread and honey', 'Sugar and clear candy'],
             answer: 2
         },
         {
-            q: 'What did Gretel do when she saw Hansel pocket his bread?',
-            choices: ['She told their father about it', 'She broke her own slice and gave him half', 'She filled her pockets with pebbles'],
+            q: 'Why did the old woman feel Hansel’s finger?',
+            choices: ['To see if he was asleep', 'To see if he had grown fat', 'To see how strong he was'],
             answer: 1
         },
         {
-            q: 'How did Hansel fool the old woman every morning?',
-            choices: ['He held out a chicken bone instead of his finger', 'He hid at the back of the cage', 'He ate none of the food she brought'],
+            q: 'What did Gretel do while the old woman was rubbing the smoke from her eyes?',
+            choices: ['She barred the kitchen door and opened the cage', 'She fetched water and put out the fire', 'She ran off into the forest alone'],
             answer: 0
         },
         {
-            q: 'What did Gretel say so that she would not have to climb into the oven?',
-            choices: ['That the fire was not hot enough yet', 'That her brother should do it instead', 'That she did not know how to get in'],
+            q: 'What was inside the chests?',
+            choices: ['Bread and apples', 'A sack of gold coins', 'Pearls and jewels'],
             answer: 2
         },
         {

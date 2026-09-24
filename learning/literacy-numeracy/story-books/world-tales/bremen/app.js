@@ -414,20 +414,20 @@ function afterPage(spread, isFirst) {
 
 const QUIZ = [
     {
-        "q": "주인이 당나귀를 쓸모없다고 한 까닭은 무엇인가요?",
+        "q": "주인은 늙은 당나귀를 두고 무어라 말했나요?",
         "choices": [
-            "먹이만 축내서",
-            "장터에 못 가서",
-            "밤에 울어서"
+            "그동안 고생했으니 이제 쉬게 해 주자",
+            "이제 저놈은 쓸모가 없구나, 먹이만 축내는걸",
+            "내일 장터에 내다 팔아야겠다"
         ],
-        "answer": 0
+        "answer": 1
     },
     {
-        "q": "당나귀가 브레멘에 가려 한 까닭은 무엇인가요?",
+        "q": "개는 왜 길가에 늘어져 있었나요?",
         "choices": [
-            "방앗간을 사려고",
-            "도둑을 잡으려고",
-            "악사가 되려고"
+            "이가 무뎌져 쥐를 못 잡는다고 쫓겨나서",
+            "내일 잔칫상에 오른다는 말을 들어서",
+            "사냥을 못 한다고 주인이 내쫓아서"
         ],
         "answer": 2
     },
@@ -441,38 +441,38 @@ const QUIZ = [
         "answer": 1
     },
     {
-        "q": "넷이 숲에서 본 불빛은 무엇이었나요?",
+        "q": "당나귀가 오두막 창으로 들여다본 것은 무엇이었나요?",
         "choices": [
-            "도둑들의 오두막",
-            "마을의 창문",
-            "브레멘의 불빛"
+            "사내 셋이 상을 차려 놓고 먹고 있었다",
+            "노인 혼자 불가에 앉아 졸고 있었다",
+            "아무도 없고 자루만 쌓여 있었다"
         ],
         "answer": 0
     },
     {
-        "q": "넷은 도둑들을 어떻게 쫓아냈나요?",
+        "q": "넷은 도둑들을 쫓아내려고 어떻게 했나요?",
         "choices": [
-            "몽둥이를 들고서",
-            "불을 질러서",
-            "한꺼번에 울어서"
+            "문을 두드려 사람이 온 척했다",
+            "뒤로 돌아가 자루를 몰래 끌어냈다",
+            "겹겹이 올라서서 한꺼번에 소리를 질렀다"
         ],
         "answer": 2
     },
     {
-        "q": "돌아온 도둑은 고양이를 무엇으로 보았나요?",
+        "q": "도둑은 두목에게 마당에서 무엇이 자기를 때려눕혔다고 말했나요?",
         "choices": [
             "칼 든 자",
             "마귀할멈",
             "몽둥이 든 놈"
         ],
-        "answer": 1
+        "answer": 2
     },
     {
         "q": "넷은 마지막에 어떻게 했나요?",
         "choices": [
             "오두막에서 살았다",
             "브레멘으로 갔다",
-            "주인에게 돌아갔다"
+            "방앗간으로 돌아갔다"
         ],
         "answer": 0
     },
@@ -482,10 +482,10 @@ const QUIZ = [
         "choices": [
                 "당나귀가 헛간에서 주인의 말을 듣고 그날 밤 잠을 못 이룬 것을 보면, 이대로 있다가는 큰일 나겠다 싶었나 봐.",
                 "당나귀가 개에게 짖는 것이 바로 노래라고 한 것을 보면, 남은 재주에 새로 이름을 붙여 준 거지.",
-                "도둑이 마귀할멈이며 칼 든 자며 재판관이 있었다고 한 것을 보면, 어둠 속에서 당한 일을 제 나름대로 짐작했네.",
-                "수탉이 나무 꼭대기에 올라 둘레를 살펴본 것을 보면, 넷이 쉴 곳을 찾아 주려고 망을 봐 준 거지."
+                "수탉이 나무 꼭대기에 올라 둘레를 살펴본 것을 보면, 넷이 쉴 곳을 찾아 주려고 망을 봐 준 거지.",
+                "도둑이 두목에게 집 안에 무서운 것들이 잔뜩 있다고 한 것을 보면, 어둠 속에서 당한 일을 제 나름대로 짐작했네."
             ],
-        "answer": 3
+        "answer": 2
     }
 ];
 
@@ -824,38 +824,38 @@ const EN = {
     ],
     quiz: [
         {
-            q: 'Why did the donkey leave home?',
-            choices: ['He heard his master say he was no use any more', 'He wanted to see Bremen', 'The robbers had frightened him'],
-            answer: 0
-        },
-        {
-            q: 'Why had the dog been turned out?',
-            choices: ['He had bitten his master', 'He barked all night', 'He could not hunt any more'],
-            answer: 2
-        },
-        {
-            q: 'Why could the cat not catch mice?',
-            choices: ['He had grown too fat', 'His teeth were worn down', 'He had hurt his paw'],
+            q: 'What did the master say about the old donkey?',
+            choices: ['He has worked hard, let him rest now', 'He is no use any more, he only eats my feed', 'I will sell him at market tomorrow'],
             answer: 1
         },
         {
-            q: 'Why was the cockerel crowing in the middle of the day?',
-            choices: ['They were going to put him on the table the next day', 'He had seen the light in the wood', 'He was calling the other three'],
-            answer: 0
-        },
-        {
-            q: 'How did they reach the height of the window?',
-            choices: ['They found a barrel to stand on', 'The donkey lifted them', 'They stood on one another’s backs'],
+            q: 'Why was the dog lying by the road?',
+            choices: ['He had been turned out for not catching mice', 'He had heard he would be cooked for a feast', 'His master had turned him out because he could not hunt any more'],
             answer: 2
         },
         {
-            q: 'What did the robber think the cat’s eyes were?',
-            choices: ['Two candles', 'Embers for lighting his lamp', 'A pair of coins'],
+            q: 'In what order did the donkey meet the others?',
+            choices: ['Cat, dog, cockerel', 'Dog, cat, cockerel', 'Cockerel, dog, cat'],
             answer: 1
         },
         {
-            q: 'What did the robber tell his captain?',
-            choices: ['That the house was full of a witch, a knife-man, a club-man and a judge', 'That the sacks had gone', 'That four animals had taken the house'],
+            q: 'What did the donkey see through the window of the hut?',
+            choices: ['Three men eating at a loaded table', 'An old man dozing alone by the fire', 'Nobody, only a pile of sacks'],
+            answer: 0
+        },
+        {
+            q: 'How did the four try to drive the robbers out?',
+            choices: ['They knocked on the door as if someone had come', 'They crept round the back and dragged out the sacks', 'They climbed onto one another and all cried out at once'],
+            answer: 2
+        },
+        {
+            q: 'What did the robber tell his captain had knocked him down in the yard?',
+            choices: ['A man with a knife', 'A witch', 'A man with a club'],
+            answer: 2
+        },
+        {
+            q: 'What did the four do in the end?',
+            choices: ['They stayed and lived in the hut', 'They went on to Bremen', 'They went back to the mill'],
             answer: 0
         },
         {
@@ -864,10 +864,10 @@ const EN = {
             choices: [
                 "The donkey heard his master outside the barn door and lay awake all night — he saw that staying would be the end of him.",
                 "He told the dog that barking was singing — he gave the one skill left to him a new name.",
-                "The robber spoke of a witch, a man with a knife, a judge on the roof — in the dark he had guessed at what happened to him.",
-                "The cockerel climbed to the treetop and looked all around — he was keeping watch to find the four a place to rest."
+                "The cockerel climbed to the treetop and looked all around — he was keeping watch to find the four a place to rest.",
+                "The robber told his captain the house was full of terrible things — in the dark he had guessed at what happened to him."
             ],
-            answer: 3
+            answer: 2
         }
     ],
     afterword: {

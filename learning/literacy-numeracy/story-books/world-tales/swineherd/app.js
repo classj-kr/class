@@ -408,40 +408,40 @@ function afterPage(spread, isFirst) {
 
 const QUIZ = [
     {
-        "q": "왕자가 공주에게 보낸 선물은 무엇인가요?",
+        "q": "공주는 밤꾀꼬리를 어떻게 했나요?",
         "choices": [
-            "장미와 밤꾀꼬리",
-            "냄비와 딸랑이",
-            "은 상자만"
-        ],
-        "answer": 0
-    },
-    {
-        "q": "공주가 그 선물을 마다한 까닭은 무엇인가요?",
-        "choices": [
-            "너무 작아서",
-            "은 상자라서",
-            "시들어서"
-        ],
-        "answer": 2
-    },
-    {
-        "q": "왕자가 궁궐에서 맡은 일은 무엇인가요?",
-        "choices": [
-            "냄비 만들기",
-            "뒷마당 일꾼",
-            "시녀 심부름"
+            "새장에 넣어 길렀다",
+            "창을 열고 날려 보냈다",
+            "왕자에게 돌려보냈다"
         ],
         "answer": 1
     },
     {
-        "q": "왕자가 처음 만든 것은 무엇인가요?",
+        "q": "공주가 선물을 마다했다는 소식을 듣고 왕자는 어땠나요?",
         "choices": [
-            "냄비",
-            "딸랑이",
-            "은 상자"
+            "화가 나기보다 궁금해졌다",
+            "화가 나서 싸움을 준비했다",
+            "슬퍼서 방에 틀어박혔다"
         ],
         "answer": 0
+    },
+    {
+        "q": "냄비에서 나는 김에 손을 대면 무엇을 알 수 있었나요?",
+        "choices": [
+            "내일 날씨가 어떨지",
+            "온 마을 부엌에서 무슨 음식을 하는지",
+            "공주가 무슨 생각을 하는지"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "공주는 노래하는 냄비 소리를 듣고 어떻게 했나요?",
+        "choices": [
+            "직접 뒷마당으로 달려갔다",
+            "시끄럽다며 창을 닫았다",
+            "값이 얼마든 사 오라고 시녀를 보냈다"
+        ],
+        "answer": 2
     },
     {
         "q": "돼지치기가 냄비 값으로 요구한 것은 무엇인가요?",
@@ -457,18 +457,18 @@ const QUIZ = [
         "choices": [
             "돼지를 몰았다",
             "치마로 둘러쌌다",
-            "노래를 불렀다"
+            "눈을 감고 돌아섰다"
         ],
         "answer": 1
     },
     {
-        "q": "그 일을 본 임금님은 어떻게 했나요?",
+        "q": "임금님은 뒷마당의 일을 어떻게 알게 되었나요?",
         "choices": [
-            "둘을 내쫓았다",
-            "혼인을 시켰다",
-            "안경을 고쳐 썼다"
+            "시녀 하나가 일러바쳐서",
+            "돼지치기가 직접 알려서",
+            "창밖을 내다보다 높은 데서 훤히 보여서"
         ],
-        "answer": 0
+        "answer": 2
     },
     {
         "q": "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
@@ -820,24 +820,24 @@ const EN = {
     ],
     quiz: [
         {
-            q: 'What were the prince’s two treasures?',
-            choices: ['A rose from his father’s grave and a nightingale', 'Two silver boxes', 'A singing pot and a rattle'],
-            answer: 0
-        },
-        {
-            q: 'Why did the princess dislike the presents?',
-            choices: ['Because they were too small', 'Because they came in silver boxes', 'Because they were real, not made'],
-            answer: 2
-        },
-        {
-            q: 'How did the prince get into the palace?',
-            choices: ['He came as a visiting prince', 'He blacked his face and took work minding the pigs', 'He climbed the wall at night'],
+            q: 'What did the princess do with the nightingale?',
+            choices: ['Kept it in a cage', 'Opened the window and let it fly away', 'Sent it back to the prince'],
             answer: 1
         },
         {
-            q: 'What could the pot do besides ring?',
-            choices: ['Its steam showed what every kitchen in town was cooking', 'It cooked by itself', 'It played dance tunes'],
+            q: 'How did the prince take the news that his gifts were refused?',
+            choices: ['He was more curious than angry', 'He was angry and prepared to fight', 'He shut himself in his room in grief'],
             answer: 0
+        },
+        {
+            q: 'What could you learn by touching the steam from the pot?',
+            choices: ['Tomorrow’s weather', 'What every kitchen in town was cooking', 'What the princess was thinking'],
+            answer: 1
+        },
+        {
+            q: 'What did the princess do when she heard the singing pot?',
+            choices: ['Ran down to the yard herself', 'Shut the window against the noise', 'Sent a maid to buy it whatever the price'],
+            answer: 2
         },
         {
             q: 'What did the swineherd ask for the pot?',
@@ -850,9 +850,9 @@ const EN = {
             answer: 1
         },
         {
-            q: 'What did the prince say at the gate?',
-            choices: ['That she would have nothing to do with a real rose or a real bird', 'That he forgave her', 'That he would come back'],
-            answer: 0
+            q: 'How did the king find out what was going on in the yard?',
+            choices: ['A maid told on the princess', 'The swineherd told him himself', 'He looked out of a high window and could see right into the ring'],
+            answer: 2
         },
         {
             q: 'Which reaction to this book does NOT fit?',

@@ -418,7 +418,7 @@ const QUIZ = [
         "q": "병정들은 무엇을 녹여 만들었나요?",
         "choices": [
             "주석 그릇",
-            "거울 조각",
+            "낡은 촛대",
             "옛날 숟가락"
         ],
         "answer": 2
@@ -435,29 +435,29 @@ const QUIZ = [
     {
         "q": "종이 무희의 다리는 사실 어땠나요?",
         "choices": [
-            "다리를 들고 있었다",
-            "정말 하나였다",
-            "치마 속에 있었다"
+            "한쪽 다리를 높이 들고 있었다",
+            "정말 하나뿐이었다",
+            "종이가 찢어져 있었다"
         ],
         "answer": 0
     },
     {
-        "q": "깜짝 상자에서 튀어나온 것은 무엇인가요?",
+        "q": "도깨비 인형은 병정에게 뭐라고 했나요?",
         "choices": [
-            "종이 무희",
-            "커다란 쥐",
-            "도깨비 인형"
-        ],
-        "answer": 2
-    },
-    {
-        "q": "길에서 병정을 주운 아이들은 무엇을 만들었나요?",
-        "choices": [
-            "종이 성",
-            "신문지 배",
-            "종이 무희"
+            "다리 하나로 뭘 하겠느냐",
+            "남의 것을 넘보지 마라",
+            "상자로 돌아가라"
         ],
         "answer": 1
+    },
+    {
+        "q": "병정은 어떻게 창밖으로 떨어졌나요?",
+        "choices": [
+            "도깨비 인형이 밀어서",
+            "아이가 실수로 떨어뜨려서",
+            "갑자기 센 바람이 불어서"
+        ],
+        "answer": 2
     },
     {
         "q": "굴속에서 통행세를 내라고 한 것은 누구인가요?",
@@ -469,13 +469,13 @@ const QUIZ = [
         "answer": 0
     },
     {
-        "q": "이튿날 난로의 재 속에서 나온 것은 무엇인가요?",
+        "q": "물고기 뱃속에 있던 병정은 어떻게 밖으로 나왔나요?",
         "choices": [
-            "총",
-            "깜짝 상자",
-            "작은 하트"
+            "물고기가 병정을 뱉어 내서",
+            "하녀가 부엌에서 물고기 배를 갈라서",
+            "어부가 그물에서 꺼내 주어서"
         ],
-        "answer": 2
+        "answer": 1
     },
     {
         "q": "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
@@ -817,39 +817,39 @@ const EN = {
     ],
     quiz: [
         {
-            q: 'Why did the soldier have only one leg?',
-            choices: ['He was broken in the box', 'The goblin took it', 'There was not enough tin left when he was poured'],
+            q: 'What were the soldiers made from?',
+            choices: ['A tin bowl', 'An old candlestick', 'An old tin spoon'],
             answer: 2
         },
         {
-            q: 'What did the soldier think about the paper dancer?',
-            choices: ['That she lived in the box too', 'That she had one leg like him', 'That she was made of tin'],
+            q: 'Why did the last soldier have only one leg?',
+            choices: ['A rat bit it off', 'There was not enough tin left when he was poured', 'He was made that way on purpose'],
             answer: 1
         },
         {
-            q: 'What came out of the jack-in-the-box at midnight?',
-            choices: ['A goblin on a spring', 'A paper dancer', 'A rat'],
+            q: 'What was the truth about the paper dancer’s legs?',
+            choices: ['She was holding one leg up high', 'She really had only one', 'The paper was torn'],
             answer: 0
         },
         {
-            q: 'How did the soldier end up in the street?',
-            choices: ['The boys took him out', 'The goblin pushed him', 'A gust of wind blew him off the windowsill'],
-            answer: 2
-        },
-        {
-            q: 'What did the rat in the tunnel want?',
-            choices: ['The paper boat', 'A toll for passing through', 'The soldier’s musket'],
+            q: 'What did the goblin say to the soldier?',
+            choices: ['What can you do with one leg?', 'Keep your eyes off what is not yours', 'Get back in your box'],
             answer: 1
         },
         {
-            q: 'How did the soldier get back to the house?',
-            choices: ['A fish swallowed him and was sold at the market', 'The boys found him again', 'The maid picked him up in the street'],
+            q: 'How did the soldier fall out of the window?',
+            choices: ['The goblin pushed him', 'The boy dropped him by mistake', 'A sudden gust of wind blew him off the sill'],
+            answer: 2
+        },
+        {
+            q: 'Who demanded a toll in the tunnel?',
+            choices: ['A rat', 'A fish', 'The goblin'],
             answer: 0
         },
         {
-            q: 'What was left in the ashes?',
-            choices: ['The musket', 'Nothing at all', 'A small tin heart and a blackened spangle'],
-            answer: 2
+            q: 'How did the soldier get out of the fish?',
+            choices: ['The fish spat him out', 'The maid cut the fish open in the kitchen', 'The fisherman took him out of the net'],
+            answer: 1
         },
         {
             q: 'Which reaction to this book does NOT fit?',

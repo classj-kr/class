@@ -580,10 +580,10 @@ const EN = {
         ]
     },
     quiz: [
-        { q: 'When the Europeans came, what struck the people of that land first?', choices: ['New boundaries dividing the hunting grounds', 'Fighting with guns and powder', 'Diseases brought over from Europe'], answer: 2 },
+        { q: "What does this book point out about the name 'Indian'?", choices: ['It was a name the nations agreed on together', 'It was a name wrongly given by others, not by the people themselves', 'It was the word for "people" in the languages of that land'], answer: 1 },
         { q: 'Why did the nations side with either Britain or France?', choices: ['Because they had long been close to one of them', 'Because taking no side was the most dangerous of all', 'Because they were promised land if they joined the winner'], answer: 1 },
-        { q: 'What fact does this book point out about the title?', choices: ['The Mohican people are still living in Wisconsin today', 'The year the last one died is on record', 'There was never any nation called Mohican'], answer: 0 },
-        { q: 'What was the real name of the man called Hawkeye?', choices: ['Natty Bumppo', 'Uncas', 'Chingachgook'], answer: 0 },
+        { q: 'In the cave behind the falls, what did Cora ask to be told to her father?', choices: ['That Alice should be rescued first', 'That they would surely return, so he should wait', 'That they had not been afraid'], answer: 2 },
+        { q: 'Which of these is true of the man called Hawkeye?', choices: ['He could not read books, but he could read the whole forest', 'He lived in a white settlement and came into the woods a few times a year', 'He had long served the British army as a guide'], answer: 0 },
         { q: 'Why did Magua come to hate Colonel Munro?', choices: ["Because his nation's land was taken", 'Because he was flogged in front of the men', 'Because he never received the pay he was promised'], answer: 1 },
         { q: "What did Cora say when she refused Magua's demand?", choices: ['That he should go and settle it with her father directly', "That her father's wrong was real, but making her pay for it was wrong too", "That what her father did had nothing to do with her"], answer: 1 },
         { q: 'In what order did Chingachgook say his people were reduced?', choices: ['First the land was lost, then the fighting came', 'First the fighting came, then the sickness', 'First the sickness came, then the land was lost'], answer: 2 },
@@ -596,7 +596,7 @@ const EN = {
         { q: "Why could Heyward not carry over Colonel Munro's last words as they were?", choices: ['Because he could not hear them clearly there', 'Because they were words hard to carry over in the white society of that time', 'Because Munro forbade him to translate them'], answer: 1 },
         { q: 'What law was made in America in 1830?', choices: ['A law to move the eastern nations west of the Mississippi', "A law requiring the nations' children to attend school", 'A law to give the nations title deeds to land'], answer: 0 },
         { q: "What do the Mohican people say today about this novel's title?", choices: ['It is not worth arguing about now', 'That name is not ours', 'We are still here'], answer: 2 },
-        { q: 'Which of these is NOT a fair thing to say after reading this book?', wide: true, choices: ['Seeing how chapter three tells why Magua became what he was, calling Magua alone bad is a story with no before.', 'Seeing how Hawkeye was a white man raised among the native peoples, he spoke both languages and belonged wholly to neither.', 'Seeing how Magua left after the flogging, he must have gone back to his nation and lived in peace.', 'Seeing how the son Uncas went first and Chingachgook remained, the last man of the title means a nation being cut off.'], answer: 2 }
+        { q: 'Which of these is NOT a fair thing to say after reading this book?', wide: true, choices: ['Seeing how chapter three tells why Magua became what he was, calling Magua alone bad is a story with no before.', 'Seeing how Hawkeye was a white man raised among the native peoples, he spoke both languages and belonged wholly to neither.', 'Seeing how Cora refused Magua’s demand on the hill without a moment’s hesitation, she must not have cared what became of her sister.', 'Seeing how Tamenund let Magua go and yet said he would not hold anyone back after sunset, he kept the law and kept what came after it apart.'], answer: 2 }
     ]
 };
 
@@ -1082,10 +1082,10 @@ function chapterSpreadPage(spread) {
 }
 
 const QUIZ = [
-    { q: "유럽 사람들이 오면서 그 땅 사람들에게 먼저 닥친 것은 무엇입니까?", choices: ["사냥터를 가르는 새 경계선", "총과 화약을 앞세운 싸움", "유럽에서 건너온 돌림병"], answer: 2 },
+    { q: "'인디언'이라는 이름에 대해 이 책이 짚은 것은 무엇입니까?", choices: ["여러 부족이 모여서 함께 정한 이름이다", "그 사람들이 아니라 남이 잘못 붙인 이름이다", "그 땅에서 사람이라는 뜻으로 쓰던 말이다"], answer: 1 },
     { q: "부족들이 영국이나 프랑스 한쪽 편에 선 까닭은 무엇입니까?", choices: ["어느 한쪽과 오래전부터 가까이 지내서", "어느 쪽에도 안 서는 것이 제일 위험해서", "이기는 쪽에 서면 땅을 준다고 해서"], answer: 1 },
-    { q: "이 책이 제목에 대해 밝힌 사실은 무엇입니까?", choices: ["모히컨 사람들은 지금도 위스콘신에 살고 있다", "마지막 사람이 죽은 해까지 기록에 남아 있다", "모히컨이라는 부족은 처음부터 없던 이름이다"], answer: 0 },
-    { q: "매의 눈이라 불린 사람의 본이름은 무엇입니까?", choices: ["내티 범포", "웅카스", "칭가치국"], answer: 0 },
+    { q: "폭포 뒤 동굴에서 코라가 아버지에게 전해 달라고 한 말은 무엇입니까?", choices: ["앨리스부터 먼저 구해 달라고요", "꼭 돌아올 테니 기다리라고요", "저희가 겁내지 않았다고요"], answer: 2 },
+    { q: "매의 눈이라 불린 사람에 대해 맞는 것은 무엇입니까?", choices: ["글은 못 읽었지만 숲은 다 읽었다", "백인 마을에 살면서 한 해에 몇 번 숲에 들어왔다", "영국군에서 길잡이로 오래 일했다"], answer: 0 },
     { q: "마과가 먼로 대령을 미워하게 된 까닭은 무엇입니까?", choices: ["제 부족 땅을 빼앗겼기 때문에", "사람들 앞에서 채찍으로 맞았기 때문에", "약속한 삯을 끝내 받지 못했기 때문에"], answer: 1 },
     { q: "코라가 마과의 요구를 거절하며 한 말은 무엇입니까?", choices: ["그 일은 아버지에게 직접 가서 따지는 것이 옳다", "아버지 잘못은 알지만 나에게 갚으라는 것도 잘못이다", "아버지가 한 일은 나와 아무 상관이 없는 일이다"], answer: 1 },
     { q: "칭가치국이 부족이 줄어든 순서로 말한 것은 무엇입니까?", choices: ["먼저 땅을 잃었고 그다음에 싸움이 났다", "먼저 싸움이 났고 그다음에 병이 왔다", "먼저 병이 왔고 그다음에 땅을 잃었다"], answer: 2 },
@@ -1098,7 +1098,7 @@ const QUIZ = [
     { q: "먼로 대령의 마지막 말을 헤이워드가 그대로 옮기지 못한 까닭은 무엇입니까?", choices: ["그 자리에서 말소리를 잘 알아듣지 못해서", "그 시절 백인 사회에서 옮기기 어려운 말이라서", "먼로가 옮기지 말라고 못을 박았기 때문에"], answer: 1 },
     { q: "1830년에 미국에서 만들어진 법은 무엇입니까?", choices: ["동쪽 부족들을 미시시피강 서쪽으로 옮기게 한 법", "부족 아이들을 학교에 보내게 정한 법", "부족들에게 땅문서를 나눠 주도록 정한 법"], answer: 0 },
     { q: "오늘날 모히컨 사람들이 이 소설 제목에 대해 하는 말은 무엇입니까?", choices: ["이제 와서 따질 일은 아닙니다", "그 이름은 우리 것이 아닙니다", "우리는 아직 여기 있습니다"], answer: 2 },
-    { q: "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?", wide: true, choices: ["마과가 왜 그렇게 되었는지 3장에 나오는 것을 보면, 마과만 나쁘다고 하면 앞이 안 보이는 이야기야.", "매의 눈이 백인인데 원주민 사이에서 자란 것을 보면, 양쪽 말을 다 하면서 어느 쪽에도 온전히 못 속한 사람이네.", "마과가 매를 맞은 뒤 그 자리를 떠난 것을 보면, 제 부족으로 돌아가 편히 지냈겠어.", "아들 웅카스가 먼저 가고 칭가치국이 남은 것을 보면, 제목의 마지막 사람은 한 부족이 끊긴다는 뜻이구나."], answer: 2 }
+    { q: "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?", wide: true, choices: ["마과가 왜 그렇게 되었는지 3장에 나오는 것을 보면, 마과만 나쁘다고 하면 앞이 안 보이는 이야기야.", "매의 눈이 백인인데 원주민 사이에서 자란 것을 보면, 양쪽 말을 다 하면서 어느 쪽에도 온전히 못 속한 사람이네.", "코라가 언덕에서 마과의 요구를 잠깐도 망설이지 않고 거절한 것을 보면, 동생이 어떻게 되든 상관없다고 여긴 거야.", "타메눈드가 마과를 보내 주고도 해가 진 뒤에는 막지 않겠다고 한 것을 보면, 법은 지키되 그다음은 따로 두었던 거지."], answer: 2 }
 ];
 
 // 선지를 세로로 쌓으니 한 쪽에 열여섯 문항이 다 들어가지 않는다. 몇 개씩 나눠 싣는다.

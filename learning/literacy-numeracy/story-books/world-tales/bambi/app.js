@@ -440,19 +440,19 @@ const QUIZ = [
         "answer": 1
     },
     {
-        "q": "밤비가 풀밭에서 처음 사귄 친구는 누구인가요?",
+        "q": "고보가 조금만 쉬었다 하자고 한 까닭은 무엇인가요?",
         "choices": [
-            "팔리네",
-            "고보",
-            "토끼"
+            "풀이 키만큼 자라 앞이 안 보여서",
+            "몸이 약해 금방 숨이 차서",
+            "어미가 부르는 소리가 나서"
         ],
-        "answer": 0
+        "answer": 1
     },
     {
         "q": "늙은 사슴이 나타났을 때 이상했던 점은 무엇인가요?",
         "choices": [
             "뿔이 없었다",
-            "잿빛이었다",
+            "풀밭에서 뛰어다녔다",
             "발소리가 안 났다"
         ],
         "answer": 2
@@ -467,19 +467,19 @@ const QUIZ = [
         "answer": 1
     },
     {
-        "q": "밤비가 어미를 잃은 것은 언제인가요?",
+        "q": "사냥꾼 소리가 나자 어미가 밤비에게 외친 말은 무엇인가요?",
         "choices": [
-            "겨울 아침",
-            "여름 아침",
-            "봄 저녁"
+            "숲 깊은 곳에 숨어라",
+            "내 뒤를 따라오너라",
+            "뒤돌아보지 말고 달려라"
         ],
-        "answer": 0
+        "answer": 2
     },
     {
         "q": "봄에 밤비가 팔리네에게 보여 준 것은 무엇인가요?",
         "choices": [
             "뿔로 겨루기",
-            "눈밭 뛰기",
+            "고보 찾아가기",
             "바람 냄새 맡기"
         ],
         "answer": 2
@@ -488,8 +488,8 @@ const QUIZ = [
         "q": "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
         "wide": true,
         "choices": [
-                "어미가 풀밭에 나가기 전 목을 길게 빼고 귀를 기울인 것을 보면, 몸을 숨길 데가 없는 곳이라 먼저 살핀 거야.",
-                "밤비가 팔리네 앞에서 걸음을 멈추고 바람 냄새를 맡은 것을 보면, 어미가 가르쳐 준 것을 잊지 않았네.",
+                "밤비가 뛰쳐나가자 어미가 얼른 뒤따라 나와 둘레를 살핀 것을 보면, 밤비가 잊은 것을 어미가 대신 지킨 거야.",
+                "밤비가 처음 본 눈에 코를 대 보고 놀란 것을 보면, 겨울이 무엇인지 아직 몰랐던 거지.",
                 "늙은 사슴이 말로 가르치지 않고 걸음을 멈추고 코만 든 것을 보면, 따라 하게 두는 것이 그의 방식이었구나.",
                 "어미가 제 몫을 자꾸 밤비 쪽으로 밀어 준 것을 보면, 겨울에는 어른 사슴이 덜 먹어도 되는 거야."
             ],
@@ -836,23 +836,23 @@ const EN = {
     ],
     quiz: [
         {
-            q: 'What did Bambi’s mother teach him about the meadow?',
-            choices: ['To run as fast as he could across it', 'Never to go out on it at all', 'To stand still, listen and smell the wind before going out'],
+            q: 'Where was Bambi born?',
+            choices: ['On the open meadow', 'On a forest path', 'In a thicket of fern'],
             answer: 2
         },
         {
-            q: 'What did Bambi actually do the first time he saw the meadow?',
-            choices: ['He waited as she had told him', 'He bolted straight out into it', 'He hid in the fern'],
+            q: 'Why did his mother say to be careful on the meadow?',
+            choices: ['There was nothing to eat there', 'There was nowhere to hide', 'The wind was too strong'],
             answer: 1
         },
         {
-            q: 'Who was Gobo?',
-            choices: ['A young deer who was not strong and tired quickly', 'The old stag’s son', 'The squirrel in the tree'],
-            answer: 0
+            q: 'Why did Gobo keep asking to rest?',
+            choices: ['The grass was too tall to see over', 'He was weak and quickly out of breath', 'He heard his mother calling'],
+            answer: 1
         },
         {
-            q: 'What did his mother do when the old stag appeared?',
-            choices: ['She told Bambi his name', 'She led Bambi away', 'She said nothing and bowed her head'],
+            q: 'What was strange about the old stag when he appeared?',
+            choices: ['He had no antlers', 'He ran about on the meadow', 'His steps made no sound at all'],
             answer: 2
         },
         {
@@ -861,21 +861,21 @@ const EN = {
             answer: 1
         },
         {
-            q: 'Why did Bambi not look back while he ran?',
-            choices: ['His mother had told him not to', 'The snow was in his eyes', 'The dogs were too close'],
-            answer: 0
+            q: 'What did his mother cry when the hunters came?',
+            choices: ['Hide deep in the wood', 'Follow close behind me', 'Run, and don’t look back'],
+            answer: 2
         },
         {
             q: 'What surprised Faline in the spring?',
-            choices: ['Bambi had grown antlers', 'Bambi ran faster than her', 'Bambi stopped to listen and smell before going out'],
+            choices: ['Bambi’s antlers had already branched out', 'Bambi went off to find Gobo', 'Bambi stopped to listen and smell the wind first'],
             answer: 2
         },
         {
             q: 'Which reaction to this book does NOT fit?',
             wide: true,
             choices: [
-                "Before the meadow his mother stretched her neck and listened — out there was nowhere to hide.",
-                "Bambi stopped in front of Faline and smelled the wind — he had not forgotten what his mother taught him.",
+                "When Bambi bolted, his mother came straight after him and kept looking round — she kept the rule he had forgotten.",
+                "Bambi touched the first snow with his nose and jumped back — he did not yet know what winter was.",
                 "The old stag taught nothing in words; he only halted and lifted his nose — letting Bambi copy him was his way.",
                 "His mother kept pushing her share over to him — a grown deer needs less food through the winter."
             ],

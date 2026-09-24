@@ -419,11 +419,11 @@ function afterPage(spread, isFirst) {
 
 const QUIZ = [
     {
-        "q": "나그네가 당나귀가 된 까닭은 무엇인가요?",
+        "q": "나그네가 언덕의 붉은 열매를 따 먹은 까닭은 무엇인가요?",
         "choices": [
-            "붉은 열매를 먹어서",
-            "노란 열매를 먹어서",
-            "장사꾼에게 잡혀서"
+            "아침부터 아무것도 못 먹어서",
+            "노란 열매는 손이 닿지 않아서",
+            "마을 사람이 맛있다고 해서"
         ],
         "answer": 0
     },
@@ -437,11 +437,11 @@ const QUIZ = [
         "answer": 2
     },
     {
-        "q": "나그네가 사람으로 돌아온 것은 무엇 덕분인가요?",
+        "q": "나그네는 어떻게 다시 사람이 되었나요?",
         "choices": [
-            "붉은 열매",
-            "노란 열매",
-            "마른 짚"
+            "짐을 다 날라 주어서",
+            "노란 열매를 따 먹어서",
+            "물웅덩이의 물을 마셔서"
         ],
         "answer": 1
     },
@@ -466,18 +466,18 @@ const QUIZ = [
     {
         "q": "주인이 사람으로 돌아온 그날 주막은 어땠나요?",
         "choices": [
-            "주인이 쫓겨났다",
+            "손님이 모두 떠났다",
             "잔치가 벌어졌다",
             "문을 닫았다"
         ],
         "answer": 1
     },
     {
-        "q": "주인이 마지막에 한 말은 무엇인가요?",
+        "q": "사람으로 돌아온 주인은 나그네에게 어떻게 했나요?",
         "choices": [
-            "욕심을 부렸다",
-            "손님이 그립다",
-            "열매를 더 달라"
+            "고개를 숙여 고마워했다",
+            "열매를 더 달라고 했다",
+            "당나귀 값을 물어내라 했다"
         ],
         "answer": 0
     },
@@ -486,9 +486,9 @@ const QUIZ = [
         "wide": true,
         "choices": [
                 "나그네가 길에서 마주치는 당나귀들이 달리 보였다고 한 것을 보면, 겪어 보고서야 눈에 들어왔네.",
-                "주막 주인이 어두워서 빛깔이 잘 보이지도 않는데 붉은 열매를 따 먹은 것을 보면, 마음이 급했던 거지.",
+                "주막 주인이 어둠 속에서 빛깔도 살피지 않고 열매를 집어 먹은 것을 보면, 마음이 급했던 거지.",
                 "나그네가 언덕까지 몇 걸음인지 세어 둔 것을 보면, 돌아갈 날을 밤마다 헤아렸구나.",
-                "나그네가 주막 주인에게 붉은 나무를 베어 없애자고 한 것을 보면, 뒷사람 걱정까지 했네."
+                "나그네가 주막 주인에게 두 나무를 베어 없애자고 한 것을 보면, 뒷사람 걱정까지 했네."
             ],
         "answer": 3
     }
@@ -837,8 +837,8 @@ const EN = {
     ],
     quiz: [
         {
-            q: 'Why did the traveller turn into a donkey?',
-            choices: ['He ate the red fruit', 'He ate the yellow fruit', 'The trader caught him'],
+            q: 'Why did the traveller eat the red fruit on the hill?',
+            choices: ['He had eaten nothing since morning', 'The yellow fruit was out of reach', 'A villager had said it was sweet'],
             answer: 0
         },
         {
@@ -847,8 +847,8 @@ const EN = {
             answer: 2
         },
         {
-            q: 'What made the traveller a person again?',
-            choices: ['The red fruit', 'The yellow fruit', 'The dry straw'],
+            q: 'How did the traveller become a person again?',
+            choices: ['He had carried all the loads', 'He ate the yellow fruit', 'He drank from the puddle'],
             answer: 1
         },
         {
@@ -863,12 +863,12 @@ const EN = {
         },
         {
             q: 'What happened at the inn the day he became a person again?',
-            choices: ['The innkeeper was driven out', 'There was a feast', 'The inn was shut up'],
+            choices: ['All the guests left', 'There was a feast', 'The inn was shut up'],
             answer: 1
         },
         {
-            q: 'What did the innkeeper say at the end?',
-            choices: ['That he had been greedy', 'That he missed the guests', 'That he wanted more fruit'],
+            q: 'What did the innkeeper do to the traveller once he was a person again?',
+            choices: ['He bowed and thanked him', 'He asked for more fruit', 'He demanded the price of a donkey'],
             answer: 0
         },
         {
@@ -876,9 +876,9 @@ const EN = {
             wide: true,
             choices: [
                 "He said every donkey he passed on the road looked different to him now — he only saw them after being one.",
-                "The innkeeper ate the red fruit in the dark where he could hardly tell the colour — he was in too much of a hurry.",
+                "The innkeeper picked and ate the fruit in the dark without checking its colour — he was in too much of a hurry.",
                 "The traveller counted how many steps it was to the hill — every night he was measuring the way back.",
-                "The traveller suggested they cut down the red tree — he was thinking of whoever came next."
+                "The traveller suggested they cut down both trees — he was thinking of whoever came next."
             ],
             answer: 3
         }

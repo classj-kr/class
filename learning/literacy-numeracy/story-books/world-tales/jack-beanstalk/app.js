@@ -428,78 +428,78 @@ function afterPage(spread, isFirst) {
 
 const QUIZ = [
     {
-        "q": "잭이 소를 주고 받은 것은 무엇인가요?",
+        "q": "잭이 소를 팔러 가게 된 까닭은 무엇인가요?",
         "choices": [
-            "금화 자루",
-            "하프",
-            "콩 다섯 알"
+            "소가 젖이 나오지 않아서",
+            "소가 늙어 걷지 못해서",
+            "콩을 사고 싶어서"
         ],
-        "answer": 2
+        "answer": 0
     },
     {
-        "q": "어머니가 콩을 어떻게 했나요?",
+        "q": "어머니는 콩을 어떻게 했나요?",
         "choices": [
-            "저녁에 먹었다",
+            "마당에 심었다",
             "창밖으로 던졌다",
-            "이불 밑에 뒀다"
+            "아저씨에게 돌려주러 갔다"
         ],
         "answer": 1
     },
     {
         "q": "잭이 거인의 성에서 처음 가져온 것은 무엇인가요?",
         "choices": [
-            "금화",
             "거위",
-            "하프"
-        ],
-        "answer": 0
-    },
-    {
-        "q": "거인의 거위가 낳은 것은 무엇인가요?",
-        "choices": [
-            "금화",
-            "콩",
-            "황금알"
+            "하프",
+            "금화"
         ],
         "answer": 2
     },
     {
-        "q": "하프가 노래하자 거인은 어떻게 되었나요?",
+        "q": "잭이 거위를 안고 나올 때 거인이 깬 까닭은 무엇인가요?",
         "choices": [
-            "배를 두드렸다",
-            "잠이 들었다",
-            "코를 킁킁거렸다"
+            "거위가 꽥 소리를 내서",
+            "잭이 접시를 떨어뜨려서",
+            "사람 냄새를 맡아서"
+        ],
+        "answer": 0
+    },
+    {
+        "q": "잭이 하프를 안아 들자 어떤 일이 벌어졌나요?",
+        "choices": [
+            "하프 소리에 거인이 더 깊이 잠들었다",
+            "하프가 주인님 하고 소리쳤다",
+            "아주머니가 잭을 솥에 숨겼다"
         ],
         "answer": 1
     },
     {
-        "q": "잭이 거인의 성에서 만난 사람은 누구인가요?",
+        "q": "거인이 돌아오자 아주머니는 잭을 어디에 숨겼나요?",
         "choices": [
-            "거인의 아주머니",
-            "챙 넓은 모자 아저씨",
-            "어머니"
-        ],
-        "answer": 0
-    },
-    {
-        "q": "잭이 마지막에 도끼로 한 일은 무엇인가요?",
-        "choices": [
-            "문을 두드렸다",
-            "구름 길을 끊었다",
-            "줄기를 내리쳤다"
+            "아궁이 뒤",
+            "식탁 밑",
+            "커다란 솥 안"
         ],
         "answer": 2
+    },
+    {
+        "q": "콩나무가 쓰러진 뒤 잭은 무어라 말했나요?",
+        "choices": [
+            "다시는 거인의 성에 가지 않을게요",
+            "콩을 다시 심어야겠어요",
+            "이제 흰둥이를 찾으러 가요"
+        ],
+        "answer": 0
     },
     {
         "q": "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
         "wide": true,
         "choices": [
-                "어머니가 콩을 창밖으로 확 던진 것을 보면, 홧김에 던진 것이 하필 마당에 떨어졌구나.",
+                "잭이 집이 손톱만 해질 때까지 올라간 것을 보면, 손바닥에 물집이 잡혀도 멈추지 않았구나.",
                 "거인의 아내가 목소리를 낮추면서도 잭을 들인 것을 보면, 남편이 무서운 줄 알면서 그냥 두지 못한 거지.",
-                "잭이 세 번째로 올라간 것을 보면, 살림이 이미 폈는데도 궁금해서 갔어.",
-                "잭이 거인의 아내에게 금화 한 자루를 남겨 두고 온 것을 보면, 숨겨 준 은혜를 갚았구나."
+                "잭이 거인의 아내에게 금화 한 자루를 남겨 두고 온 것을 보면, 숨겨 준 은혜를 갚았구나.",
+                "잭이 세 번째로 올라간 것을 보면, 살림이 이미 폈는데도 궁금해서 갔어."
             ],
-        "answer": 3
+        "answer": 2
     }
 ];
 
@@ -863,49 +863,49 @@ const EN = {
     quiz: [
         {
             q: 'Why did Jack have to sell the cow?',
-            choices: ['The man in the hat had asked for her', 'His mother wanted to buy beans', 'She had stopped giving milk and they had nothing left'],
-            answer: 2
-        },
-        {
-            q: 'What did the man at the roadside give Jack for the cow?',
-            choices: ['A bag of gold', 'Five beans', 'A small harp'],
-            answer: 1
-        },
-        {
-            q: 'How did the beanstalk come to grow by the window?',
-            choices: ['His mother flung the beans out into the yard', 'Jack planted them before going to bed', 'The man in the hat came and sowed them'],
+            choices: ['She had stopped giving milk', 'She was too old to walk', 'He wanted to buy beans'],
             answer: 0
         },
         {
-            q: 'Where did the giant’s wife hide Jack?',
+            q: 'What did his mother do with the beans?',
+            choices: ['She planted them in the yard', 'She flung them out of the window', 'She went to give them back to the man'],
+            answer: 1
+        },
+        {
+            q: 'What did Jack bring home from the giant’s castle the first time?',
+            choices: ['The goose', 'The harp', 'Gold coins'],
+            answer: 2
+        },
+        {
+            q: 'What woke the giant when Jack was carrying off the goose?',
+            choices: ['The goose squawked', 'Jack dropped a plate', 'He smelled a human'],
+            answer: 0
+        },
+        {
+            q: 'What happened when Jack lifted the harp?',
+            choices: ['Its music sent the giant into a deeper sleep', 'It cried out for its master', 'The giant’s wife hid Jack in the pot'],
+            answer: 1
+        },
+        {
+            q: 'Where did the giant’s wife hide Jack when the giant came home?',
             choices: ['Behind the hearth', 'Under the table', 'Inside a great cooking pot'],
             answer: 2
         },
         {
-            q: 'What was the giant doing when he fell asleep the first time?',
-            choices: ['Eating twenty loaves', 'Counting his gold coins', 'Listening to the harp'],
-            answer: 1
-        },
-        {
-            q: 'What woke the giant when Jack took the goose?',
-            choices: ['The goose squawked', 'The harp called out', 'Jack knocked over a plate'],
+            q: 'What did Jack say after the beanstalk fell?',
+            choices: ['I will never go to the giant’s castle again', 'I must plant the beans again', 'Now let us go and find our cow'],
             answer: 0
-        },
-        {
-            q: 'What did the harp do when Jack lifted it?',
-            choices: ['It went on singing', 'It broke in two', 'It cried out for its master'],
-            answer: 2
         },
         {
             q: 'Which reaction to this book does NOT fit?',
             wide: true,
             choices: [
-                "His mother flung the beans out of the window — that is why they came up in the yard of all places.",
+                "Jack kept climbing until his house looked no bigger than a fingernail — blisters or not, he did not stop.",
                 "The giant's wife lowered her voice and let him in anyway — she knew what her husband was and still could not turn him away.",
-                "Jack climbed a third time — they were doing well by then and he went because he wanted to know.",
-                "Jack left a bag of gold behind for the giant's wife — he was repaying her for hiding him."
+                "Jack left a bag of gold behind for the giant's wife — he was repaying her for hiding him.",
+                "Jack climbed a third time — they were doing well by then and he went because he wanted to know."
             ],
-            answer: 3
+            answer: 2
         }
     ],
     afterword: {

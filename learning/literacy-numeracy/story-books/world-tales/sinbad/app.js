@@ -420,7 +420,7 @@ function afterPage(spread, isFirst) {
 
 const QUIZ = [
     {
-        "q": "신드바드가 다시 장사를 나선 까닭은 무엇인가요?",
+        "q": "신드바드가 장사를 나선 까닭은 무엇인가요?",
         "choices": [
             "재산을 다 써서",
             "아버지가 시켜서",
@@ -431,8 +431,8 @@ const QUIZ = [
     {
         "q": "섬인 줄 알았던 것은 사실 무엇이었나요?",
         "choices": [
-            "로크 새의 알",
-            "절벽 위 둥지",
+            "가라앉은 배",
+            "모래톱",
             "커다란 물고기 등"
         ],
         "answer": 2
@@ -447,19 +447,19 @@ const QUIZ = [
         "answer": 1
     },
     {
-        "q": "신드바드는 무엇으로 제 몸을 붙들어 맸나요?",
+        "q": "신드바드가 제 몸을 새 다리에 묶은 까닭은 무엇인가요?",
         "choices": [
-            "터번",
-            "자루",
-            "허리띠"
+            "섬을 벗어나려고",
+            "알을 지키려고",
+            "새를 잡으려고"
         ],
         "answer": 0
     },
     {
         "q": "골짜기 바닥에 깔려 있던 것은 무엇인가요?",
         "choices": [
-            "고깃덩이",
-            "포도",
+            "조개껍데기",
+            "마른 뼈",
             "보석"
         ],
         "answer": 2
@@ -486,10 +486,10 @@ const QUIZ = [
         "q": "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
         "wide": true,
         "choices": [
-                "곳간을 열어 보고 그제야 정신이 번쩍 들었다 한 것을 보면, 다 떨어지고 나서야 움직였구나.",
-                "고기에 보석이 척척 달라붙는 것을 보고 무릎을 친 것을 보면, 상인들이 하던 방법을 거꾸로 쓴 거지.",
+                "선장이 서둘러 돛을 올려 배가 멀어진 것을 보면, 빠진 사람들보다 배를 먼저 살린 거지.",
+                "신드바드가 개울가 노인에게 선뜻 등을 내준 것을 보면, 딱해 보이는 사람을 그냥 지나치지 못하는 성미였구나.",
                 "부자가 되고 몇 달 만에 또 짐을 꾸린 것을 보면, 처음 나간 까닭과 다시 나간 까닭이 달랐어.",
-                "신드바드가 보석을 줍다 말고 문득 손을 멈춘 것을 보면, 남의 골짜기 것을 함부로 가져가는 게 마음에 걸렸구나."
+                "갑판에 누워 이제 정말 그만두어야겠다고 한 것을 보면, 배가 부서진 것이 다 제 탓이라 여겼구나."
             ],
         "answer": 3
     }
@@ -916,32 +916,32 @@ const EN = {
     quiz: [
         {
             q: 'Why did Sindbad first go to sea?',
-            choices: ['He had spent nearly all his money', 'He wanted adventures', 'His father sent him'],
+            choices: ['He had spent nearly all his money', 'His father sent him', 'He wanted to travel with his friends'],
             answer: 0
         },
         {
             q: 'What was the island the sailors landed on?',
-            choices: ['A floating raft', 'A sandbank', 'The back of a great fish'],
+            choices: ['A sunken ship', 'A sandbank', 'The back of a great fish'],
             answer: 2
         },
         {
-            q: 'What did Sindbad take for a great roof?',
-            choices: ['A white cliff', 'An enormous egg', 'A ship’s sail'],
+            q: 'Why did Sindbad hide behind the egg?',
+            choices: ['Merchants were coming', 'The roc was coming down', 'An eagle had seized him'],
             answer: 1
         },
         {
-            q: 'How did Sindbad get out of the valley of jewels?',
-            choices: ['He tied himself under a piece of meat', 'He climbed the cliff', 'The roc came back for him'],
+            q: 'Why did Sindbad tie himself to the bird’s leg?',
+            choices: ['To get off the island', 'To guard the egg', 'To catch the bird'],
             answer: 0
         },
         {
-            q: 'What did the merchants throw down into the valley?',
-            choices: ['Ropes', 'Empty baskets', 'Great pieces of meat'],
+            q: 'What covered the floor of the valley?',
+            choices: ['Sea shells', 'Dry bones', 'Jewels'],
             answer: 2
         },
         {
-            q: 'Why did Sindbad go to sea again after he was rich?',
-            choices: ['He had lost his money again', 'He kept thinking of the sound of the waves', 'The merchants asked him to'],
+            q: 'How did Sindbad get out of the valley?',
+            choices: ['Hanging from the bird’s leg', 'Tied under a big piece of meat', 'On a ship'],
             answer: 1
         },
         {
@@ -953,10 +953,10 @@ const EN = {
             q: 'Which reaction to this book does NOT fit?',
             wide: true,
             choices: [
-                "He looked into the storeroom and only then came to his senses — he moved when there was nothing left.",
-                "Seeing the jewels stick to the meat he slapped his knee — he turned the merchants' own method back to front.",
+                "The captain hoisted sail in a hurry and the ship drew away — he saved the ship before the men in the water.",
+                "Sindbad offered the old man by the stream his back at once — he could not walk past anyone who looked in need.",
                 "Rich again, he was packing within months — why he first went to sea and why he went back were not the same.",
-                "Sindbad stopped in the middle of gathering jewels — taking what belonged to someone else's valley weighed on him."
+                "Lying on the deck he said he really must stop now — he blamed himself for the wrecked ship."
             ],
             answer: 3
         }

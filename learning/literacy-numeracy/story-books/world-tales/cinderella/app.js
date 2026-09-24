@@ -774,12 +774,12 @@ const EN = {
     quiz: [
         {
             q: 'Why did they call her Cinderella?',
-            choices: ['She worked in the kitchen', 'Ashes on her clothes', 'Her hair was red'],
+            choices: ['She worked in the kitchen', 'Ashes on her clothes', 'Her dress was ragged'],
             answer: 1
         },
         {
-            q: 'What did the stepmother tell her to do before the ball?',
-            choices: ['Sort all the beans', 'Scrub all the floors', 'Wash all the dishes'],
+            q: 'What did the messenger say the ball was for?',
+            choices: ['The prince was looking for a bride', 'The king was giving a birthday feast', 'The princess was looking for a husband'],
             answer: 0
         },
         {
@@ -793,8 +793,8 @@ const EN = {
             answer: 1
         },
         {
-            q: 'What did she lose on the stairs?',
-            choices: ['A glass slipper', 'The gold invitation', 'The purple cloak'],
+            q: 'What did Cinderella do with the slipper she still had?',
+            choices: ['Held it to her chest and ran all the way home', 'Kicked it off in the road', 'Handed it to the prince'],
             answer: 0
         },
         {
@@ -803,8 +803,8 @@ const EN = {
             answer: 2
         },
         {
-            q: 'What did Cinderella do at the feast?',
-            choices: ['Sent her sisters away', 'Took her sisters by the hand', 'Went in alone'],
+            q: 'What did the prince say when he heard what her name meant?',
+            choices: ['That he would give her a new name', 'That it was nothing to be ashamed of', 'That she should forget that name now'],
             answer: 1
         },
         {

@@ -394,13 +394,13 @@ const EN = {
         ]
     },
     quiz: [
-        { q: 'Which of these was NOT something that set Lobo apart from other wolves?', choices: ['He kept a very small pack', 'He was friendly and came close to people', 'He never touched poisoned bait'], answer: 1 },
+        { q: 'Which of these was NOT something that set Lobo apart from other wolves?', choices: ['He kept a very small pack', 'He liked to feed on cattle that had died of sickness', 'He could tell where a trap was set and went around it'], answer: 1 },
         { q: 'How did Seton catch Lobo?', choices: ['He tracked him night after night without sleeping', 'He caught Blanca first and used her scent as a lure', 'He let the ranch dogs loose to chase the pack'], answer: 1 },
         { q: 'What became of Lobo after he was caught?', choices: ['He would not eat, looked only at the range, and died', 'He broke his chain and escaped to the mountains', 'He was kept in a pen for many years'], answer: 0 },
         { q: 'What did Silverspot do for his flock?', choices: ['He found feeding places on his own', 'He kept away from the villages where people lived', 'He took the young crows about and taught them'], answer: 2 },
         { q: 'What changed in the flock after Silverspot died?', choices: ['They could no longer do things as well as before', 'They grew into a much larger flock', 'The order of the sentries became even neater'], answer: 0 },
-        { q: 'Which of these did Molly NOT teach Raggylug?', choices: ['To slip through the thorn thicket', 'To cross water to cut the scent when chased', 'To cry out loudly when in danger'], answer: 2 },
-        { q: 'How did Molly throw off the hound?', choices: ['She ran round the field until the dog was worn out', 'She hid her young in the burrow and blocked the entrance', 'She let herself be chased and led it into deep water'], answer: 2 },
+        { q: 'Which of these did Molly NOT teach Raggylug?', choices: ['To slip through the thorn thicket', 'To dash straight into the burrow when chased', 'To freeze instead of running when in danger'], answer: 1 },
+        { q: 'How did Molly die?', choices: ['She ran out in front of Raggylug when a hunter was aiming at him, and was shot', 'She led a hound into deep water and went under with it', 'She starved in a leafless winter with nothing to eat'], answer: 0 },
         { q: 'What did Seton write at the end of the story of Raggylug?', choices: ['Animals love their young just as people do', 'A rabbit lives long because it knows so much', 'A rabbit survives by its speed alone'], answer: 1 },
         { q: 'What did the mother fox do every night for the chained cub?', choices: ['She dug a burrow while the people slept', 'She brought food and bit at the chain', 'She watched from far off and left at dawn'], answer: 1 },
         { q: 'In what situation did Bingo save Seton?', choices: ['When both his hands were caught in traps all night', 'When he lost his way in a blizzard', 'When he was surrounded by a wolf pack'], answer: 0 },
@@ -408,9 +408,9 @@ const EN = {
         { q: 'Why did Wahb grow up alone?', choices: ['He lost his family to hunters when he was very small', 'He fought with his brothers and left the family', 'His mother went away to another valley'], answer: 0 },
         { q: 'Why does a bear make its claw marks high on a tree?', choices: ['So that other bears see the height and go away', 'To sharpen its claws', 'While climbing to pick the fruit'], answer: 0 },
         { q: 'What did the mother partridge do in front of the fox?', choices: ['She rushed at it, making a loud noise', 'She hid her chicks under her body and held her ground', 'She pretended her wing was broken and led it away'], answer: 2 },
-        { q: 'Why did Seton not rewrite the sad endings into happy ones?', choices: ['Because his publisher told him to write them that way', 'Because it is true that the life of a wild animal always ends in tragedy', 'Because sad endings would sell more books'], answer: 1 },
+        { q: 'Why did Seton not rewrite the sad endings into happy ones?', choices: ['Because he did not know that a children’s book may change its ending', 'Because it is true that the life of a wild animal always ends in tragedy', 'Because he thought only sad endings would make people give up hunting'], answer: 1 },
         { q: "How do Seton's animal stories differ from the ones before them?", choices: ['He drew the animals only through a hunter’s eyes', 'He used the animals to stand for human qualities', 'He wrote down what he had observed by following them for years'], answer: 2 },
-        { q: 'Which of these is NOT a fair thing to say after reading this book?', wide: true, choices: ['Seeing how Seton caught Lobo’s mate Blanca first, it was the heart, not traps or poison, that brought down that wolf.', 'Seeing how Seton put a rope on Lobo and took him to the ranch alive, he did it to get a better price for a live wolf.', 'Seeing how the ranch people laid Lobo’s body beside Blanca, even the people who hunted them did not see those two as mere animals.', 'Seeing how a man who made his living by killing animals came to write on the animals’ side, this book stands on that reversal.'], answer: 1 }
+        { q: 'Which of these is NOT a fair thing to say after reading this book?', wide: true, choices: ['Seeing how Bingo, meeting Seton again after years, barked all night beside him to keep the wolves off, not being tamed and forgetting were two different things.', 'Seeing how Silverspot passed Seton by and then turned back after fifty paces to check, twenty years of life was habit, not luck.', 'Seeing how old Wahb walked into the valley of death, he must have lost his way without knowing what that valley was.', 'Seeing how a man who made his living by killing animals came to write on the animals’ side, this book stands on that reversal.'], answer: 2 }
     ]
 };
 
@@ -888,13 +888,13 @@ function chapterSpreadPage(spread) {
 }
 
 const QUIZ = [
-    { q: "로보가 다른 늑대와 달랐던 점이 아닌 것은 무엇입니까?", choices: ["무리를 아주 작게 데리고 다녔다", "사람을 잘 따르고 가까이 왔다", "독을 넣은 미끼를 건드리지 않았다"], answer: 1 },
+    { q: "로보가 다른 늑대와 달랐던 점이 아닌 것은 무엇입니까?", choices: ["무리를 아주 작게 데리고 다녔다", "병들어 죽은 소를 즐겨 먹었다", "덫을 놓은 자리를 알아보고 피해 갔다"], answer: 1 },
     { q: "시튼이 로보를 잡은 방법은 무엇입니까?", choices: ["여러 날 밤을 새우며 뒤를 밟았다", "블랑카를 먼저 잡아 그 냄새로 이끌었다", "목장 개들을 풀어 무리를 뒤쫓게 했다"], answer: 1 },
     { q: "잡힌 뒤 로보는 어떻게 되었습니까?", choices: ["먹지 않고 들판만 보다가 세상을 떠났다", "사슬을 끊고 산으로 달아나 버렸다", "여러 해 우리 안에서 길러졌다"], answer: 0 },
     { q: "은점박이가 무리를 위해 한 일은 무엇입니까?", choices: ["먹이가 있는 곳을 혼자 찾아 두었다", "사람 사는 마을에 가까이 가지 않았다", "어린 까마귀들을 데리고 다니며 가르쳤다"], answer: 2 },
     { q: "은점박이가 죽은 뒤 무리에 생긴 변화는 무엇입니까?", choices: ["예전만큼 잘 해내지 못하게 되었다", "더 큰 무리로 불어나게 되었다", "보초 서는 차례가 더 반듯해졌다"], answer: 0 },
-    { q: "몰리가 랙에게 가르친 것이 아닌 것은 무엇입니까?", choices: ["가시덤불 사이로 빠져나가기", "쫓길 때 물을 건너 냄새 끊기", "위험할 때 큰 소리로 울기"], answer: 2 },
-    { q: "몰리가 사냥개를 따돌린 방법은 무엇입니까?", choices: ["개가 지칠 때까지 들판을 빙빙 돌았다", "새끼를 굴에 넣고 입구를 막아 두었다", "일부러 자기가 쫓기며 깊은 물로 이끌었다"], answer: 2 },
+    { q: "몰리가 랙에게 가르친 것이 아닌 것은 무엇입니까?", choices: ["가시덤불 사이로 빠져나가기", "쫓기면 곧장 굴로 뛰어들기", "위험할 때 뛰지 않고 얼어붙기"], answer: 1 },
+    { q: "몰리는 어떻게 세상을 떠났습니까?", choices: ["사냥꾼이 노리던 랙 앞으로 나갔다가 총에 맞았다", "사냥개를 깊은 물로 끌고 들어갔다가 함께 빠졌다", "잎이 진 겨울에 먹을 것이 없어 굶었다"], answer: 0 },
     { q: "시튼이 랙 이야기 끝에 적은 말은 무엇입니까?", choices: ["짐승도 사람처럼 자식을 아끼는 법이다", "토끼가 오래 사는 것은 아는 것이 많아서다", "토끼는 빠른 발 하나로 살아남는 짐승이다"], answer: 1 },
     { q: "사슬에 매인 새끼 여우에게 어미가 밤마다 한 일은 무엇입니까?", choices: ["사람들이 잠든 사이 굴을 파 주었다", "먹이를 물어다 주고 사슬을 물어뜯었다", "멀리서 지켜보다가 날이 밝으면 갔다"], answer: 1 },
     { q: "빙고가 시튼을 구한 상황은 무엇입니까?", choices: ["두 손이 덫에 걸려 밤새 갇혔을 때", "눈보라 속에서 길을 잃었을 때", "늑대 무리에 둘러싸였을 때"], answer: 0 },
@@ -902,9 +902,9 @@ const QUIZ = [
     { q: "왑이 혼자 자란 까닭은 무엇입니까?", choices: ["아주 어릴 때 사냥꾼에게 식구를 잃어서", "형제들과 싸우고 무리에서 나와서", "어미가 다른 골짜기로 떠나 버려서"], answer: 0 },
     { q: "곰이 나무에 발톱 자국을 높이 내는 까닭은 무엇입니까?", choices: ["다른 곰이 그 높이를 보고 물러가라고", "발톱을 갈아 날카롭게 하려고", "나무 열매를 따 먹으려고 오르다가"], answer: 0 },
     { q: "어미 뇌조가 여우 앞에서 한 행동은 무엇입니까?", choices: ["큰 소리를 내며 마주 달려들었다", "새끼를 몸 아래 감추고 버텼다", "날개가 부러진 척하며 끌고 갔다"], answer: 2 },
-    { q: "시튼이 슬픈 끝을 좋게 바꿔 쓰지 않은 까닭은 무엇입니까?", choices: ["출판사에서 그렇게 쓰라고 권해서", "야생 동물의 삶은 늘 비극으로 끝나는 것이 사실이라서", "슬프게 끝나야 책이 더 많이 팔려서"], answer: 1 },
+    { q: "시튼이 슬픈 끝을 좋게 바꿔 쓰지 않은 까닭은 무엇입니까?", choices: ["아이들 책은 끝을 바꿔도 된다는 것을 몰라서", "야생 동물의 삶은 늘 비극으로 끝나는 것이 사실이라서", "슬픈 끝이라야 사람들이 사냥을 그만둘 것이라 여겨서"], answer: 1 },
     { q: "시튼의 동물 이야기가 그전 것들과 다른 점은 무엇입니까?", choices: ["사냥꾼의 눈으로만 짐승을 그렸다", "짐승에 사람 성질을 빗대어 그렸다", "여러 해 따라다니며 관찰한 것을 적었다"], answer: 2 },
-    { q: "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?", wide: true, choices: ["시튼이 로보를 잡으려고 짝 블랑카를 먼저 잡은 것을 보면, 덫도 독도 안 통하던 늑대를 무너뜨린 건 마음 쪽이었어.", "시튼이 붙잡은 로보의 목에 줄을 걸어 산 채로 목장에 데려간 것을 보면, 산 늑대 값을 더 받으려고 그런 거야.", "목장 사람들이 로보의 몸을 블랑카 옆에 놓아 준 것을 보면, 잡던 사람들도 그 둘을 짐승으로만 보지는 않았네.", "짐승을 잡아 돈을 벌던 사람이 짐승 편에서 글을 쓰게 된 것을 보면, 이 책은 그 뒤집힘 위에 서 있구나."], answer: 1 }
+    { q: "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?", wide: true, choices: ["빙고가 여러 해 만에 만난 시튼 곁에서 밤새 짖어 늑대를 쫓은 것을 보면, 길들여지지 않은 것과 잊은 것은 다른 일이었어.", "은점박이가 시튼을 지나쳤다가 오십 걸음 만에 돌아와 확인한 것을 보면, 스무 해를 산 건 운이 아니라 버릇이었네.", "왑이 늙어서 죽음의 골짜기로 걸어 들어간 것을 보면, 그 골짜기가 무엇인지 모르고 길을 잘못 든 거야.", "짐승을 잡아 돈을 벌던 사람이 짐승 편에서 글을 쓰게 된 것을 보면, 이 책은 그 뒤집힘 위에 서 있구나."], answer: 2 }
 ];
 
 // 선지를 세로로 쌓으니 한 쪽에 열여섯 문항이 다 들어가지 않는다. 몇 개씩 나눠 싣는다.

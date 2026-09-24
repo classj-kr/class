@@ -424,46 +424,46 @@ function afterPage(spread, isFirst) {
 
 const QUIZ = [
     {
-        "q": "이반이 밀밭에서 붙잡은 것은 무엇인가요?",
+        "q": "밀밭에 나타난 암말을 이반은 어떻게 했나요?",
         "choices": [
-            "불새",
-            "암말",
-            "조랑말"
+            "빵을 던져 주었다",
+            "갈기를 붙잡고 매달렸다",
+            "헛간으로 몰아넣었다"
         ],
         "answer": 1
     },
     {
-        "q": "암말이 이반에게 준 것은 무엇인가요?",
+        "q": "이반이 암말을 놓아준 까닭은 무엇인가요?",
         "choices": [
-            "말 세 마리",
-            "금빛 깃털",
-            "밀과 포도주"
+            "좋은 것을 주겠다고 약속해서",
+            "형들이 부르러 와서",
+            "날이 밝아 와서"
         ],
         "answer": 0
     },
     {
-        "q": "조랑말은 어떻게 생겼나요?",
+        "q": "암말은 조랑말을 두고 뭐라고 했나요?",
         "choices": [
-            "갈기가 금빛",
-            "날개에서 불꽃",
-            "등에 혹이 둘"
+            "도시에 내다 팔아라",
+            "임금님께 바쳐라",
+            "네 진짜 친구가 될 것이다"
         ],
         "answer": 2
     },
     {
-        "q": "이반이 숲길에서 주운 것은 무엇인가요?",
+        "q": "빛나는 깃털을 본 이반에게 조랑말은 뭐라고 했나요?",
         "choices": [
-            "은빛 옷",
-            "불새의 깃털",
-            "왕관"
+            "임금님께 갖다 바치자",
+            "주우면 걱정거리가 생긴다",
+            "촛불 대신 쓰면 되겠다"
         ],
         "answer": 1
     },
     {
         "q": "이반은 불새를 어떻게 잡았나요?",
         "choices": [
-            "밀을 뿌려서",
-            "천막을 쳐서",
+            "밀과 포도주를 놓아 두어서",
+            "그물을 던져서",
             "조랑말로 쫓아서"
         ],
         "answer": 0
@@ -491,8 +491,8 @@ const QUIZ = [
         "wide": true,
         "choices": [
                 "이반이 밀밭 한가운데 앉아 밤을 새운 것을 보면, 형들과 달리 시킨 대로 했네.",
-                "조랑말이 깃털을 주우면 걱정거리가 생긴다고 한 것을 보면, 이반이 그 말을 듣지 않은 거지.",
-                "조랑말이 가마솥 물을 식혀 준 것을 보면, 이반이 젊어진 것은 물 때문이 아니었구나.",
+                "임금님이 깃털을 주웠으니 새도 잡아 오라고 한 것을 보면, 이반이 가진 것이 도리어 짐이 됐네.",
+                "달의 공주가 빙그레 웃으며 따라나선 것을 보면, 궁금한 것이 있어서였지.",
                 "임금님이 이반더러 먼저 들어가 보라고 한 것을 보면, 어린 사람을 앞세워 지켜 주려 했네."
             ],
         "answer": 3
@@ -900,28 +900,28 @@ const EN = {
     ],
     quiz: [
         {
-            q: 'What did Ivan catch in the wheat field?',
-            choices: ['A firebird', 'A mare', 'A pony'],
+            q: 'What did Ivan do when the mare appeared in the wheat?',
+            choices: ['He threw her his bread', 'He grabbed her mane and hung on', 'He drove her into the barn'],
             answer: 1
         },
         {
-            q: 'What did the mare give Ivan?',
-            choices: ['Three horses', 'A golden feather', 'Wheat and wine'],
+            q: 'Why did Ivan let the mare go?',
+            choices: ['She promised him something good in return', 'His brothers came to fetch him', 'Day was breaking'],
             answer: 0
         },
         {
-            q: 'What did the little horse look like?',
-            choices: ['A golden mane', 'Sparks off his wings', 'Two humps on his back'],
+            q: 'What did the mare say about the little horse?',
+            choices: ['Sell him in the city', 'Give him to the Tsar', 'He will be your true friend'],
             answer: 2
         },
         {
-            q: 'What did Ivan pick up on the forest road?',
-            choices: ['A silver gown', "A firebird's feather", 'A crown'],
+            q: 'What did the little horse say when Ivan saw the glowing feather?',
+            choices: ['Take it to the Tsar', "Picking it up will bring trouble", 'It will do instead of a candle'],
             answer: 1
         },
         {
             q: 'How did Ivan catch the firebird?',
-            choices: ['By scattering wheat', 'By pitching a tent', 'By chasing it on the horse'],
+            choices: ['He set out wheat and wine', 'He threw a net', 'He chased it on the horse'],
             answer: 0
         },
         {
@@ -939,8 +939,8 @@ const EN = {
             wide: true,
             choices: [
                 "Ivan sat out in the middle of the wheat all night — unlike his brothers he actually did as he was told.",
-                "The pony warned him that picking up the feather would bring trouble — Ivan did not listen.",
-                "The pony cooled the water in the cauldron — it was not the water that made Ivan young.",
+                "The Tsar said that whoever picked up the feather could catch the bird too — what Ivan had became a burden.",
+                "The Moon Princess smiled and came along — there was something she wanted to know.",
                 "The Tsar told Ivan to go in first — he was putting the young man ahead to keep him safe."
             ],
             answer: 3

@@ -443,27 +443,27 @@ const QUIZ = [
     {
         "q": "처음 찾아간 집에서 들은 말은 무엇인가요?",
         "choices": [
-            "로사리오로 갔다",
-            "투쿠만에 있다",
-            "제노바로 갔다"
+            "식구들이 다른 도시로 이사 갔다",
+            "어머니가 시장에 나갔다",
+            "그런 사람은 온 적이 없다"
         ],
         "answer": 0
     },
     {
         "q": "로사리오에서 들은 말은 무엇인가요?",
         "choices": [
-            "로사리오에 있다",
-            "배를 탔다",
-            "투쿠만으로 옮겼다"
+            "어머니가 곧 돌아오실 것이다",
+            "어머니가 배를 타고 제노바로 갔다",
+            "그 집은 투쿠만으로 옮겨 갔다"
         ],
         "answer": 2
     },
     {
-        "q": "길에서 만난 사람들이 마르코에게 한 일은 무엇인가요?",
+        "q": "길에서 만난 사람들이 마르코를 도와준 까닭은 무엇인가요?",
         "choices": [
-            "뱃삯을 줬다",
-            "빵을 줬다",
-            "사진을 줬다"
+            "마르코가 일을 도와주어서",
+            "저마다 고향을 떠나온 사람들이라서",
+            "어머니를 아는 사람들이라서"
         ],
         "answer": 1
     },
@@ -490,8 +490,8 @@ const QUIZ = [
         "wide": true,
         "choices": [
                 "로사리오에서 주저앉아 그만 돌아갈까 생각한 것을 보면, 마르코에게도 그만두고 싶은 때가 있었구나.",
-                "가는 곳마다 사람들이 무엇이든 나눠 준 것을 보면, 저마다 두고 온 가족이 있었으니까.",
-                "어머니가 마르코를 보고서야 마음을 고쳐먹은 것을 보면, 앓던 몸보다 꺾인 마음이 먼저였어.",
+                "마르코가 도와준 사람들의 이름을 마음에 새기고 밤마다 되뇐 것을 보면, 받은 것을 잊지 않으려 했구나.",
+                "마르코가 배 위에서 어머니도 이 별을 보고 계실 거라 생각한 것을 보면, 그렇게 견딜 힘을 냈구나.",
                 "아버지가 아는 사람에게 부탁해 뱃삯을 마련해 준 것을 보면, 마르코를 보내는 데 처음부터 찬성했구나."
             ],
         "answer": 3
@@ -856,17 +856,17 @@ const EN = {
         },
         {
             q: 'What was he told at the first house?',
-            choices: ['She had gone to Rosario', 'She was in Tucumán', 'She had gone back to Genoa'],
+            choices: ['The family had moved to another city', 'His mother had gone to the market', 'Nobody of that name had ever come'],
             answer: 0
         },
         {
             q: 'What was he told in Rosario?',
-            choices: ['She was in Rosario', 'She had taken ship', 'She had moved on to Tucumán'],
+            choices: ['His mother would soon be back', 'His mother had taken ship for Genoa', 'The family had moved on to Tucumán'],
             answer: 2
         },
         {
-            q: 'What did the people he met on the road do for him?',
-            choices: ['They paid his fare', 'They gave him bread', 'They gave him a photograph'],
+            q: 'Why did the people he met on the road help Marco?',
+            choices: ['He worked for them', 'They had all left their own homes too', 'They knew his mother'],
             answer: 1
         },
         {
@@ -884,8 +884,8 @@ const EN = {
             wide: true,
             choices: [
                 "At Rosario he sat down and thought of turning back — even Marco had a moment when he wanted to stop.",
-                "Everywhere he went people shared what they had — each of them had left family behind too.",
-                "His mother took heart only once she saw him — what was killing her was not the illness but having given up.",
+                "He kept the names of everyone who helped him and said them over at night — he did not want to forget what he had been given.",
+                "On the ship he told himself his mother was looking at the same stars — that was how he found the strength to bear it.",
                 "His father asked a friend for a favour to find the fare — he had been in favour of sending Marco from the start."
             ],
             answer: 3

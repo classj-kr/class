@@ -677,7 +677,7 @@ const EN = {
         { q: 'Why was Pompeii preserved as it was?', choices: ['Because seawater covered it and kept out the air', 'Because that region is so dry that nothing rots', 'Because fine ash covered it so thickly that no air could pass'], answer: 2 },
         { q: 'Which of these was NOT found in the excavations?', choices: ['Eighty-one loaves still in the oven', "A great tomb where a Roman emperor was buried", 'Election posters asking for votes'], answer: 1 },
         { q: 'What were the empty holes in the volcanic ash?', choices: ['The places where people or animals had been', 'Holes dug later by grave robbers', 'Channels where water had flowed'], answer: 0 },
-        { q: 'What kind of girl was Nydia?', choices: ['A blind girl who had been sold and sold flowers', "A priest's daughter who ran errands at the temple", "A distant relative raised in Glaucus's house"], answer: 0 },
+        { q: 'Why did Glaucus take Nydia away from the tavern?', choices: ['Because Ione had asked him to bring the girl to her', 'He could not bear to watch her beaten, so he paid the price on the spot', 'Because he knew her face as the girl he often bought flowers from'], answer: 1 },
         { q: 'How did Arbaces give his oracles?', choices: ['He hid a man in a passage behind the statue and had him speak', 'He passed on exactly what he had seen in a dream', 'He worked it out from the movement of the stars'], answer: 0 },
         { q: 'Why was Vesuvius not thought to be a volcano?', choices: ['Because it had been quiet for so very long', 'Because it could not be seen well from the sea', 'Because its summit was always covered in snow'], answer: 0 },
         { q: 'What happened seventeen years before the eruption?', choices: ['A severe drought lasting several years', 'A terrible plague that swept the city', 'A great earthquake that brought down many buildings'], answer: 2 },
@@ -686,11 +686,11 @@ const EN = {
         { q: "Why did nobody believe Olinthus?", choices: ['Because he had falsely accused people before', 'Because he was hated for following the new faith', 'Because it was proved he had not even been there'], answer: 1 },
         { q: 'How did Nydia find the man locked in the cellar?', choices: ['By quietly asking somebody in the house', 'By hearing a very small sound', 'By seeing light leaking through the door'], answer: 1 },
         { q: 'Why, according to this book, did the lion go back into its cage?', choices: ['Because Glaucus had once kept that lion', 'Because it had not been starved and was not hungry', 'Because animals sense volcanic activity before people do'], answer: 2 },
-        { q: 'Who saw the eruption that day and left a written record?', choices: ['Fiorelli, the scholar who led the excavation', 'Bulwer-Lytton, who wrote this novel', 'Pliny the Younger, who watched from across the bay'], answer: 2 },
-        { q: 'What did Pliny the Younger compare that darkness to?', choices: ['The darkness you see when you close your eyes', 'The darkness of a seashore at dawn in thick fog', 'Not a moonless night, but a room with no window and the lamp put out'], answer: 2 },
+        { q: 'Why did Pliny the Elder take a ship toward the mountain that day?', choices: ['To watch the eruption from close by and write it down', 'To rescue people', 'To fetch his nephew'], answer: 1 },
+        { q: 'What did Pliny the Younger compare that darkness to?', choices: ['The darkness you see when you close your eyes', 'The darkness of a seashore at dawn in fog', 'A room with no window and the lamp put out'], answer: 2 },
         { q: 'Who led the three to the harbour through the darkness?', choices: ['Nydia, who had learned the streets with her feet', 'Glaucus, who went ahead with a lamp', 'A harbour sailor who knew the way'], answer: 0 },
-        { q: 'What does this book add at the end?', choices: ['The one who saved lives was the least of anyone in that city', 'Those who survived that day had all packed in advance', 'The city met that end because its people abandoned the gods'], answer: 0 },
-        { q: 'Which of these is NOT a fair thing to say after reading this book?', wide: true, choices: ['Seeing how Nydia led the way through streets blackened by ash, Nydia’s eyes must have opened that day.', 'Seeing how Arbaces did away with Apaecides and laid the crime on Glaucus, clearing two away in one stroke was how that man reckoned.', 'Seeing how people then thought it strange NOT to go to the arena, it was not only cruel people but a great festival the state put on.', 'Seeing how what that city thought most useless was the most useful for one day, usefulness turns over with the place.'], answer: 0 }
+        { q: 'What does this book add at the end?', choices: ['The one who saved lives was the least of anyone in that city', 'Not knowing the mountain was dangerous was not the fault of those people', 'Those who survived that day were mostly the ones who took a boat early'], answer: 0 },
+        { q: 'Which of these is NOT a fair thing to say after reading this book?', wide: true, choices: ['Seeing how Nydia left the blanket folded by the side of the boat and was gone, somebody must have taken her away in the night.', 'Seeing how Arbaces did away with Apaecides and laid the crime on Glaucus, clearing two away in one stroke was how that man reckoned.', 'Seeing how people then thought it strange NOT to go to the arena, it was not only cruel people but a great festival the state put on.', 'Seeing how Apaecides said it was better to believe nothing than to believe a lie, a twenty-year-old spoke the weightiest word in that place.'], answer: 0 }
     ]
 };
 
@@ -1188,7 +1188,7 @@ const QUIZ = [
     { q: "폼페이가 그대로 남은 까닭은 무엇입니까?", choices: ["바닷물이 덮어서 공기와 닿지 않게 되었기 때문에", "그 지방이 아주 메말라 무엇이든 잘 썩지 않아서", "고운 화산재가 두껍게 덮여 공기가 통하지 않아서"], answer: 2 },
     { q: "발굴에서 나온 것이 아닌 것은 무엇입니까?", choices: ["화덕 안에 그대로 있던 빵 여든한 덩이", "로마 황제가 묻힌 큰 무덤", "누구를 뽑아 달라고 적은 선거 벽보"], answer: 1 },
     { q: "화산재 속 빈 구멍의 정체는 무엇입니까?", choices: ["사람이나 짐승이 있던 자리", "나중에 도굴꾼이 판 구멍", "물이 흘러 지나가던 자리"], answer: 0 },
-    { q: "니디아는 어떤 아이였습니까?", choices: ["팔려 와 꽃을 팔던 앞 못 보는 아이", "신전에서 심부름을 하던 사제의 딸", "글라우쿠스의 집에서 자란 먼 친척"], answer: 0 },
+    { q: "글라우쿠스가 주막 앞에서 니디아를 데려온 까닭은 무엇입니까?", choices: ["이오네가 그 아이를 데려와 달라고 부탁해서", "맞는 것을 보기 싫어 그 자리에서 값을 치렀다", "꽃을 자주 사던 아이라 얼굴을 알아보아서"], answer: 1 },
     { q: "아르바케스가 신탁을 내리는 방법은 무엇이었습니까?", choices: ["신상 뒤 통로에 사람을 숨겨 놓고 말하게 했다", "잠에서 깨어난 뒤 꿈에서 본 것을 그대로 전했다", "별이 어떻게 움직이는지를 보고 헤아려 알아냈다"], answer: 0 },
     { q: "베수비오가 화산으로 여겨지지 않은 까닭은 무엇입니까?", choices: ["아주 오랫동안 조용했기 때문에", "바다 쪽에서는 잘 보이지 않아서", "산꼭대기가 늘 눈에 덮여 있어서"], answer: 0 },
     { q: "화산이 터지기 열일곱 해 전에 있었던 일은 무엇입니까?", choices: ["여러 해 이어진 심한 가뭄", "도시를 휩쓴 무서운 돌림병", "건물이 많이 무너진 큰 지진"], answer: 2 },
@@ -1197,11 +1197,11 @@ const QUIZ = [
     { q: "올린투스의 말을 아무도 믿지 않은 까닭은 무엇입니까?", choices: ["전에도 거짓으로 남을 고발한 일이 있었기 때문에", "새로운 신앙을 따른다는 이유로 미움을 받고 있어서", "그 자리에 있지도 않았다는 것이 밝혀졌기 때문에"], answer: 1 },
     { q: "니디아가 지하실에 갇힌 사람을 찾아낸 방법은 무엇입니까?", choices: ["집 사람에게 슬쩍 물어서 알아냈다", "아주 작은 소리를 듣고 찾아냈다", "문틈으로 새어 나온 빛을 보고 알았다"], answer: 1 },
     { q: "경기장에서 사자가 도로 우리로 들어간 까닭으로 이 책이 짚은 것은 무엇입니까?", choices: ["글라우쿠스가 전에 그 사자를 길렀기 때문에", "며칠 굶기지 않아 배가 고프지 않았기 때문에", "짐승은 화산 활동을 사람보다 먼저 느끼기 때문에"], answer: 2 },
-    { q: "그날 화산을 직접 보고 기록을 남긴 사람은 누구입니까?", choices: ["발굴을 지휘한 학자 피오렐리", "이 소설을 지은 불워리턴", "바다 건너에서 본 소플리니우스"], answer: 2 },
-    { q: "그 어둠을 소플리니우스는 무엇에 빗댔습니까?", choices: ["눈을 감았을 때 보이는 것과 같은 어둠", "짙은 안개가 낀 새벽 바닷가의 어둠", "달 없는 밤이 아니라 창 없는 방에서 불을 끈 어둠"], answer: 2 },
+    { q: "대플리니우스가 그날 배를 타고 그쪽으로 간 까닭은 무엇입니까?", choices: ["터지는 산을 가까이서 보고 적어 두려고", "사람들을 구하러", "조카를 데리러"], answer: 1 },
+    { q: "그 어둠을 소플리니우스는 무엇에 빗댔습니까?", choices: ["눈을 감았을 때 보이는 어둠", "안개 낀 새벽 바닷가의 어둠", "창 없는 방에서 불을 끈 어둠"], answer: 2 },
     { q: "어둠 속에서 세 사람을 항구까지 이끈 것은 누구입니까?", choices: ["그 도시의 길을 발로 익힌 니디아", "등불을 들고 나선 글라우쿠스", "길을 잘 아는 항구의 뱃사람 하나"], answer: 0 },
-    { q: "이 책이 마지막에 덧붙인 것은 무엇입니까?", choices: ["사람을 살린 것은 그 도시에서 가장 아무것도 아니던 사람이다", "그날 살아남은 사람은 다들 미리 짐을 싸 둔 사람들이었다", "그 도시가 그렇게 된 것은 사람들이 신을 저버렸기 때문이다"], answer: 0 },
-    { q: "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?", wide: true, choices: ["화산재로 캄캄해진 거리에서 니디아가 앞장선 것을 보면, 니디아는 그날 눈이 뜨인 거야.", "아르바케스가 아페키데스를 없애고 그 죄를 글라우쿠스에게 씌운 것을 보면, 한 번에 둘을 치우는 것이 그 사람이 셈하는 방식이었어.", "그 시절 사람들이 경기장에 안 가는 것을 오히려 이상하게 여긴 것을 보면, 잔인한 사람들만 그런 게 아니라 나라가 여는 큰 행사였네.", "그 도시에서 제일 쓸모없다고 여겨지던 것이 그날 하루 제일 쓸모 있었던 것을 보면, 쓸모라는 건 자리에 따라 뒤집히는구나."], answer: 0 }
+    { q: "이 책이 마지막에 덧붙인 것은 무엇입니까?", choices: ["사람을 살린 것은 그 도시에서 가장 아무것도 아니던 사람이다", "산이 위험한 줄 몰랐던 것은 그 사람들 잘못이 아니다", "그날 살아남은 사람은 대개 일찍 배를 탄 사람들이었다"], answer: 0 },
+    { q: "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?", wide: true, choices: ["니디아가 뱃전에 담요를 개어 두고 사라진 것을 보면, 밤사이 누가 데려간 거야.", "아르바케스가 아페키데스를 없애고 그 죄를 글라우쿠스에게 씌운 것을 보면, 한 번에 둘을 치우는 것이 그 사람이 셈하는 방식이었어.", "그 시절 사람들이 경기장에 안 가는 것을 오히려 이상하게 여긴 것을 보면, 잔인한 사람들만 그런 게 아니라 나라가 여는 큰 행사였네.", "아페키데스가 거짓을 믿느니 아무것도 안 믿는 편이 낫다고 한 것을 보면, 스무 살이 그 자리에서 제일 무거운 말을 한 거야."], answer: 0 }
 ];
 
 // 선지를 세로로 쌓으니 한 쪽에 열여섯 문항이 다 들어가지 않는다. 몇 개씩 나눠 싣는다.

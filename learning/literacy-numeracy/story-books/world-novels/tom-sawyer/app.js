@@ -958,7 +958,7 @@ const EN = {
         { q: 'Who was blamed for the crime?', choices: ['Injun Joe', 'Dr Robinson', 'Muff Potter'], answer: 2 },
         { q: 'What did Tom and Huck write on the board?', choices: ['An oath to keep silent', 'A promise to become pirates', 'A record of what they saw'], answer: 0 },
         { q: 'Where did the three boys go to be pirates?', choices: ['The woods across the river', "Jackson's Island", 'The valley by the cave'], answer: 1 },
-        { q: 'What did the town believe about the three boys?', choices: ['That somebody had taken them', 'That they had only run away from home', 'That they had drowned'], answer: 2 },
+        { q: 'What did Tom nearly leave beside his aunt when he crept home at night?', choices: ['A piece of bark saying they had gone to be pirates', 'A turtle egg from the island', "A letter for Joe Harper's mother"], answer: 0 },
         { q: 'Where did the three boys reappear?', choices: ['At the ferry landing', 'At school on Sunday morning', 'At their own funeral'], answer: 2 },
         { q: 'What did Tom do at the trial?', choices: ['Wrote it down and handed it to the judge', 'Sent Huck in his place', 'Went to the stand and told the truth'], answer: 2 },
         { q: 'What did the two men dig up in the haunted house?', choices: ['An old map', 'A box full of gold coins', "Injun Joe's knife"], answer: 1 },
@@ -966,7 +966,7 @@ const EN = {
         { q: 'How many days were Tom and Becky trapped in the cave?', choices: ['Seven', 'Three', 'One'], answer: 1 },
         { q: 'How did Tom find the way out?', choices: ['By tying a kite string and trying the forks', 'By following the direction of the wind', 'By going down the way the water flowed'], answer: 0 },
         { q: "Why did Huck run away from the Widow Douglas's house?", choices: ['Because there were too many rules to keep', 'Because Tom came to fetch him', 'Because the widow kept scolding him'], answer: 0 },
-        { q: 'Which of these is NOT a fair thing to say after reading this book?', wide: true, choices: ['Seeing how Tom went to court and told everything he saw that night, the oath sworn in blood with Huckleberry meant nothing to him.', 'Seeing how the boys even paid with treasures for a turn at the fence, a hateful job becomes something you want once somebody else enjoys it.', 'Seeing how not one witness in court lied and yet the answer was wrong, you can gather only true statements and still get a false answer.', 'Seeing how Huck went back to his empty barrel even with twelve thousand dollars, eating to the bell weighed more on Huck than money did.'], answer: 0 }
+        { q: 'Which of these is NOT a fair thing to say after reading this book?', wide: true, choices: ['Seeing how Tom saw Injun Joe holding a candle in the cave and said nothing to Becky, Tom cannot have recognised who it was.', "Seeing how Aunt Polly sewed Tom's collar with white thread every morning, she knew all along that he slipped off to swim.", 'Seeing how not one witness in court lied and yet the answer was wrong, you can gather only true statements and still get a false answer.', 'Seeing how Tom felt pity rather than fear at the sight of Injun Joe fallen inside the iron door, there are things only somebody who has been in there can know.'], answer: 0 }
     ]
 };
 
@@ -1466,7 +1466,7 @@ const QUIZ = [
     { q: "죄를 뒤집어쓴 사람은 누구입니까?", choices: ["흉터 조", "로빈슨 의사", "머프 포터"], answer: 2 },
     { q: "톰과 헉이 널빤지에 쓴 것은 무엇입니까?", choices: ["입을 다물겠다는 맹세", "해적이 되겠다는 약속", "본 것을 적은 기록"], answer: 0 },
     { q: "세 아이가 해적이 되겠다며 간 곳은 어디입니까?", choices: ["강 건너 숲", "잭슨 섬", "동굴 앞 골짜기"], answer: 1 },
-    { q: "마을에서 세 아이를 어떻게 여겼습니까?", choices: ["누가 데려간 줄 알았다", "집을 나간 줄로만 알았다", "물에 빠져 죽은 줄 알았다"], answer: 2 },
+    { q: "톰이 밤에 몰래 집에 들어갔다가 이모 옆에 두려다 만 것은 무엇입니까?", choices: ["해적이 되러 갔다고 쓴 나무껍질", "섬에서 가져온 거북 알", "조 하퍼 어머니께 보내는 편지"], answer: 0 },
     { q: "세 아이가 나타난 곳은 어디입니까?", choices: ["강가의 나루터", "일요일 아침 학교", "자기들 장례식 자리"], answer: 2 },
     { q: "재판정에서 톰이 한 일은 무엇입니까?", choices: ["종이에 적어 판사에게 냈다", "헉을 대신 내보냈다", "증인으로 나가 사실을 말했다"], answer: 2 },
     { q: "유령의 집에서 두 사람이 파낸 것은 무엇입니까?", choices: ["낡은 지도 한 장", "금화가 가득 든 상자", "흉터 조의 칼"], answer: 1 },
@@ -1474,7 +1474,7 @@ const QUIZ = [
     { q: "톰과 베키는 동굴에서 며칠을 갇혀 있었습니까?", choices: ["이레", "사흘", "하루"], answer: 1 },
     { q: "톰이 출구를 찾은 방법은 무엇입니까?", choices: ["연줄을 묶고 갈래길을 살펴서", "바람이 부는 쪽을 따라가서", "물이 흐르는 쪽으로 내려가서"], answer: 0 },
     { q: "헉이 더글러스 부인 댁에서 도망친 까닭은 무엇입니까?", choices: ["지킬 규칙이 너무 많아서", "톰이 부르러 왔기 때문에", "부인이 자꾸 나무라서"], answer: 0 },
-    { q: "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?", wide: true, choices: ["톰이 법정에 나가 그날 밤 본 것을 다 말한 것을 보면, 허클베리와 피로 쓴 맹세는 톰에게 아무것도 아니었던 거야.", "울타리 칠하는 차례를 아이들이 물건까지 주고 산 것을 보면, 하기 싫은 일도 남이 재미있어하면 갖고 싶어지네.", "법정에서 증언한 사람들이 하나도 거짓말을 안 했는데 답은 틀렸던 것을 보면, 다 맞는 말을 모아도 틀린 답이 나올 수 있구나.", "헉이 만이천 달러를 얻고도 빈 통 속으로 돌아간 것을 보면, 헉에게는 종에 맞춰 밥 먹는 게 돈보다 무거웠어."], answer: 0 }
+    { q: "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?", wide: true, choices: ["톰이 동굴에서 촛불을 든 흉터 조를 보고도 베키에게 말하지 않은 것을 보면, 톰은 그때 그 사람이 누군지 못 알아본 거야.", "폴리 이모가 아침마다 흰 실로 옷깃을 꿰매 둔 것을 보면, 톰이 몰래 헤엄치러 가는 걸 이모도 알고 있었던 거야.", "법정에서 증언한 사람들이 하나도 거짓말을 안 했는데 답은 틀렸던 것을 보면, 다 맞는 말을 모아도 틀린 답이 나올 수 있구나.", "쇠문 안쪽에 쓰러진 흉터 조를 보고 톰이 무서움이 아니라 딱한 마음을 느낀 것을 보면, 그 안이 어떤지 겪어 본 사람만 아는 게 있었던 거야."], answer: 0 }
 ];
 
 // 선지를 세로로 쌓으니 한 쪽에 열여섯 문항이 다 들어가지 않는다. 몇 개씩 나눠 싣는다.

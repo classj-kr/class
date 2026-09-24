@@ -387,61 +387,61 @@ const QUIZ = [
         "choices": [
             "값을 헐하게 받아서",
             "손님이 없어서",
-            "눈이 침침해서"
+            "가죽값이 올라서"
         ],
         "answer": 0
     },
     {
-        "q": "아침에 작업대에 놓여 있던 것은 무엇인가요?",
+        "q": "구두장이는 마지막 가죽을 오린 뒤 어떻게 했나요?",
         "choices": [
-            "오려 둔 가죽",
-            "작은 옷",
-            "다 만들어진 신발"
+            "밤새 꿰매어 신발을 다 지었다",
+            "작업대에 올려 두고 잠자리에 들었다",
+            "아내에게 꿰매 달라고 맡겼다"
         ],
-        "answer": 2
+        "answer": 1
     },
     {
         "q": "두 사람은 누가 신발을 만드는지 어떻게 알았나요?",
         "choices": [
-            "작업대에서 자면서",
-            "옷장 뒤에 숨어서",
-            "시계 소리를 듣고"
-        ],
-        "answer": 1
-    },
-    {
-        "q": "작은 것들의 옷차림은 어땠나요?",
-        "choices": [
-            "아무것도 안 입었다",
-            "낡은 앞치마를 둘렀다",
-            "새 구두를 신었다"
-        ],
-        "answer": 0
-    },
-    {
-        "q": "두 사람이 밤에 만들어 놓은 것은 무엇인가요?",
-        "choices": [
-            "가죽과 실",
-            "이불과 앞치마",
-            "옷 한 벌과 신"
+            "밤새 작업대 앞에 앉아 기다려서",
+            "눈 위에 남은 발자국을 따라가서",
+            "촛불을 끄고 옷장 뒤에 숨어서"
         ],
         "answer": 2
     },
     {
-        "q": "작은 것들은 그것을 보고 어떻게 했나요?",
+        "q": "작은 사람 둘의 차림은 어땠나요?",
         "choices": [
-            "옷을 도로 내려놓았다",
-            "춤추고 노래했다",
-            "신발을 마저 만들었다"
+            "얇은 홑옷 한 벌에 맨발이었다",
+            "빨간 웃옷에 초록 모자를 썼다",
+            "가죽 앞치마에 큰 구두를 신었다"
+        ],
+        "answer": 0
+    },
+    {
+        "q": "두 사람은 작은 사람들을 위해 무엇을 지었나요?",
+        "choices": [
+            "따뜻한 이불 한 채",
+            "작은 옷과 작은 구두",
+            "새 신발 여덟 켤레"
         ],
         "answer": 1
     },
     {
-        "q": "그 뒤 구둣방의 신발은 누가 만들었나요?",
+        "q": "옷을 입은 작은 사람들은 어떻게 했나요?",
         "choices": [
-            "두 사람이",
-            "작은 것들이",
-            "손님들이"
+            "고맙다며 신발 한 켤레를 더 지었다",
+            "옷을 벗어 도로 놓아두었다",
+            "춤을 추다가 나가서 다시 오지 않았다"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "겨울이 올 때마다 아내가 한 일은 무엇인가요?",
+        "choices": [
+            "아주 작은 옷을 지어 창가에 올려 두었다",
+            "작업대에 가죽 한 장을 올려 두었다",
+            "눈 위의 발자국을 찾아보았다"
         ],
         "answer": 0
     },
@@ -449,12 +449,12 @@ const QUIZ = [
         "q": "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
         "wide": true,
         "choices": [
-                "구두장이가 값을 헐하게 받다 살림이 기운 것을 보면, 딱한 사람에게 제값을 못 받은 거야.",
-                "가죽이 한 장 남았을 때도 재고 오려 작업대에 올려 둔 것을 보면, 마지막까지 제 일을 놓지 않았구나.",
-                "부부가 가죽 대신 옷과 구두를 올려놓은 것을 보면, 한겨울에 맨발인 것을 보고 그냥 있을 수 없었나 봐.",
-                "난쟁이들이 떠나며 작업대에 쪽지를 한 장 남긴 것을 보면, 말없이 가지는 않은 거야."
+                "손님이 신발을 보자마자 값을 두 배로 치른 것을 보면, 솜씨가 한눈에 보였던 거지.",
+                "작은 사람들이 떠나며 작업대에 쪽지를 한 장 남긴 것을 보면, 말없이 가지는 않은 거야.",
+                "아내가 설마 또 그럴까 하고 중얼거린 것을 보면, 아직은 믿기지 않았던 거지.",
+                "구두장이가 할 일을 다 했으니 간 거라고 한 것을 보면, 서운해하지 않고 받아들였구나."
             ],
-        "answer": 3
+        "answer": 1
     }
 ];
 
@@ -760,50 +760,50 @@ const EN = {
     ],
     quiz: [
         {
-            q: 'Why were the shoemaker and his wife so poor?',
-            choices: ['He charged far too little for his shoes', 'Nobody wanted his shoes', 'He had stopped working'],
+            q: 'Why had the shoemaker and his wife grown so poor?',
+            choices: ['He charged far too little for his shoes', 'Nobody came to buy shoes', 'The price of leather had gone up'],
             answer: 0
         },
         {
-            q: 'What was on the bench the next morning?',
-            choices: ['The cut pieces of leather', 'Tiny clothes', 'A finished pair of shoes'],
-            answer: 2
+            q: 'What did the shoemaker do after cutting out the last piece of leather?',
+            choices: ['He sewed all night and finished the shoes', 'He left the pieces on the bench and went to bed', 'He asked his wife to sew them'],
+            answer: 1
         },
         {
             q: 'How did they find out who was making the shoes?',
-            choices: ['They slept at the bench', 'They hid behind the wardrobe', 'They listened to the clock'],
-            answer: 1
-        },
-        {
-            q: 'What did the two little ones wear when they came in?',
-            choices: ['Nothing at all, not even shoes', 'Old aprons', 'New shoes'],
-            answer: 0
-        },
-        {
-            q: 'What did the shoemaker and his wife decide to make?',
-            choices: ['A bigger workbench', 'More shoes to sell', 'Tiny clothes and shoes for the two helpers'],
+            choices: ['They sat up at the bench all night', 'They followed footprints in the snow', 'They put out the candle and hid behind the wardrobe'],
             answer: 2
         },
         {
-            q: 'What did the little ones do when they saw the clothes?',
-            choices: ['They left the clothes and went on working', 'They dressed and danced and then went away', 'They took the clothes and hid them'],
+            q: 'What were the two little men wearing?',
+            choices: ['Thin shirts and nothing on their feet', 'Red jackets and green hats', 'Leather aprons and big boots'],
+            answer: 0
+        },
+        {
+            q: 'What did the couple make for the little men?',
+            choices: ['A warm quilt', 'Tiny clothes and tiny shoes', 'Eight new pairs of shoes'],
             answer: 1
         },
         {
-            q: 'Who made the shoes in the shop after that?',
-            choices: ['The shoemaker and his wife', 'The little men', 'The customers'],
+            q: 'What did the little men do once they had the clothes on?',
+            choices: ['They made one more pair of shoes as thanks', 'They took the clothes off and put them back', 'They danced, ran out and never came again'],
+            answer: 2
+        },
+        {
+            q: 'What did the wife do every winter after that?',
+            choices: ['She sewed tiny clothes and set them by the window', 'She laid a piece of leather on the bench', 'She looked for footprints in the snow'],
             answer: 0
         },
         {
             q: 'Which reaction to this book does NOT fit?',
             wide: true,
             choices: [
-                "He charged so little that they grew poor — he could not bring himself to take full price from people in need.",
-                "With one piece of leather left he still measured it, cut it and laid it out — he did not let go of his work even at the end.",
-                "Instead of leather the couple laid out clothes and little shoes — they could not watch them go barefoot through a winter.",
-                "The little men left a note on the workbench as they went — they did not simply vanish without a word."
+                "The customer paid double the moment he saw the shoes — the skill was plain at a glance.",
+                "The little men left a note on the workbench as they went — they did not simply vanish without a word.",
+                "The wife murmured that surely it would not happen again — she could not quite believe it yet.",
+                "The shoemaker said they had done their work and gone — he accepted it without feeling hurt."
             ],
-            answer: 3
+            answer: 1
         }
     ],
     afterword: {

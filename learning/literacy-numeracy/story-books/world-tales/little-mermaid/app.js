@@ -428,17 +428,17 @@ const QUIZ = [
         "q": "인어공주가 물 위에서 처음 본 것은 무엇인가요?",
         "choices": [
             "등대",
-            "종소리",
+            "흰 모래밭",
             "큰 배"
         ],
         "answer": 2
     },
     {
-        "q": "인어공주가 왕자를 눕힌 곳은 어디인가요?",
+        "q": "인어공주는 폭풍우 속에서 어떻게 했나요?",
         "choices": [
-            "산호 궁전",
-            "흰 모래밭",
-            "바다 끝"
+            "언니들을 불러 도움을 청했다",
+            "밤새 왕자의 머리를 물 위로 받쳤다",
+            "궁전으로 돌아가 할머니께 알렸다"
         ],
         "answer": 1
     },
@@ -447,16 +447,16 @@ const QUIZ = [
         "choices": [
             "목소리",
             "머리카락",
-            "꼬리"
+            "진주"
         ],
         "answer": 0
     },
     {
         "q": "다리를 얻은 인어공주가 겪은 일은 무엇인가요?",
         "choices": [
-            "노래를 못 했다",
-            "왕자를 못 알아봤다",
-            "걸을 때마다 아팠다"
+            "왕자가 못 알아보고 쫓아냈다",
+            "바닷물에 닿으면 안 되었다",
+            "걸을 때마다 칼날 위 같았다"
         ],
         "answer": 2
     },
@@ -465,25 +465,25 @@ const QUIZ = [
         "choices": [
             "말 못 하는 아가씨",
             "이웃 나라 공주",
-            "바다 마녀"
+            "왕자를 건져 낸 뱃사람"
         ],
         "answer": 1
     },
     {
-        "q": "언니들이 마녀에게 주고 단검을 얻은 것은 무엇인가요?",
+        "q": "언니들이 단검을 주며 한 말은 무엇인가요?",
         "choices": [
-            "머리카락",
-            "목소리",
-            "꼬리"
+            "왕자를 찌르면 다리가 도로 꼬리가 된다",
+            "단검을 지니고 있으면 물거품이 되지 않는다",
+            "단검을 마녀에게 돌려주면 마법이 풀린다"
         ],
         "answer": 0
     },
     {
         "q": "인어공주는 그 단검을 어떻게 했나요?",
         "choices": [
-            "왕자를 찔렀다",
+            "언니에게 돌려주었다",
             "바다에 던졌다",
-            "언니에게 돌려주었다"
+            "천막 안에 두고 나왔다"
         ],
         "answer": 1
     },
@@ -492,7 +492,7 @@ const QUIZ = [
         "wide": true,
         "choices": [
                 "인어공주가 왕자를 모래밭에 눕히고 바위 뒤로 숨은 것을 보면, 사람 앞에 나설 수 없는 몸이었구나.",
-                "하필 목소리를 값으로 낸 것을 보면, 제가 구했다는 말을 할 길이 아주 막혀 버렸어.",
+                "마녀의 동굴로 가는 길에 해골 같은 산호를 보고도 멈추지 않은 것을 보면, 이미 마음을 굳힌 뒤였구나.",
                 "단검을 쥔 손이 천천히 내려간 것을 보면, 돌아갈 길보다 왕자가 편한 쪽을 고른 거지.",
                 "할머니가 머리에 진주를 꽂아 주며 사람 세상에는 가지 말라고 이른 것을 보면, 손녀에게 닥칠 일을 미리 걱정했구나."
             ],
@@ -854,46 +854,46 @@ const EN = {
     ],
     quiz: [
         {
-            q: 'What was the rule about going up to the surface?',
-            choices: ['They could go once a year', 'Only the eldest could go', 'They could go when they turned fifteen'],
+            q: 'What did the little mermaid see first when she rose above the water?',
+            choices: ['A lighthouse', 'A white beach', 'A great ship'],
             answer: 2
         },
         {
             q: 'What did the little mermaid do during the storm?',
-            choices: ['She called her sisters for help', 'She held the prince’s head above the water all night', 'She swam back down to the palace'],
+            choices: ['She called her sisters to help her', 'She held the prince’s head above the water all night', 'She swam down to tell her grandmother'],
             answer: 1
-        },
-        {
-            q: 'Why did the prince think the other young woman had saved him?',
-            choices: ['She was the one there when he opened his eyes', 'The little mermaid told him so', 'She was wearing his ring'],
-            answer: 0
         },
         {
             q: 'What price did the sea witch ask?',
-            choices: ['Her hair', 'Her pearls', 'Her voice'],
+            choices: ['Her voice', 'Her hair', 'Her pearls'],
+            answer: 0
+        },
+        {
+            q: 'What happened to the little mermaid once she had legs?',
+            choices: ['The prince did not know her and sent her away', 'She could not let sea water touch her', 'Every step hurt as if she walked on knives'],
             answer: 2
         },
         {
-            q: 'What else did the witch warn her about?',
-            choices: ['She would never see her sisters again', 'Every step would hurt as though she walked on knives', 'She would forget the sea'],
+            q: 'Whom did the prince believe had saved him?',
+            choices: ['The girl who could not speak', 'The princess of the neighbouring country', 'A sailor who had pulled him out'],
             answer: 1
         },
         {
-            q: 'What had the sisters given the witch for the knife?',
-            choices: ['Their hair', 'Their voices', 'Their pearls'],
+            q: 'What did the sisters tell her when they gave her the knife?',
+            choices: ['Strike the prince and her legs would turn back into a tail', 'Keep the knife and she would not turn to foam', 'Return it to the witch and the spell would break'],
             answer: 0
         },
         {
             q: 'What did the little mermaid do with the knife?',
-            choices: ['She gave it back to her sisters', 'She left it in the tent', 'She threw it into the sea'],
-            answer: 2
+            choices: ['She gave it back to her sisters', 'She threw it into the sea', 'She left it in the tent'],
+            answer: 1
         },
         {
             q: 'Which reaction to this book does NOT fit?',
             wide: true,
             choices: [
                 "She laid him on the sand and hid behind a rock — she was not something that could be seen by people.",
-                "Of all things she paid with her voice — the one way of saying it was she who saved him was shut off.",
+                "She saw the skull-like coral on the way to the witch’s cave and did not stop — her mind was already made up.",
                 "The hand holding the knife came slowly down — she chose his peace over her own way home.",
                 "Grandmother pinned a pearl in her hair and warned her never to go up to the human world — she feared what lay ahead for her granddaughter."
             ],

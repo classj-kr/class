@@ -424,7 +424,7 @@ const QUIZ = [
         "choices": [
             "눈송이",
             "거울 가루",
-            "얼음 조각"
+            "장미 가시"
         ],
         "answer": 1
     },
@@ -432,8 +432,8 @@ const QUIZ = [
         "q": "그 뒤 카이는 장미를 보고 뭐라고 했나요?",
         "choices": [
             "벌레 먹었잖아",
-            "활짝 피었네",
-            "물을 주자"
+            "가시가 너무 많아",
+            "냄새가 지독해"
         ],
         "answer": 0
     },
@@ -449,9 +449,9 @@ const QUIZ = [
     {
         "q": "게르다가 강에 던진 것은 무엇인가요?",
         "choices": [
-            "장화",
+            "장미 상자",
             "빨간 구두",
-            "목도리"
+            "데운 동전"
         ],
         "answer": 1
     },
@@ -467,7 +467,7 @@ const QUIZ = [
     {
         "q": "아주머니는 게르다의 힘이 어디서 나왔다고 했나요?",
         "choices": [
-            "순록의 힘",
+            "열 사람 몫의 힘",
             "도둑 소녀의 장화",
             "맨발로 온 것"
         ],
@@ -486,10 +486,10 @@ const QUIZ = [
         "q": "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
         "wide": true,
         "choices": [
-                "카이가 장미를 보고 벌레 먹었다며 상자를 걷어찬 것을 보면, 거울 조각이 눈에 들어간 뒤로 세상이 밉게 보였구나.",
+                "게르다가 카이가 강에 빠졌다는 말을 믿지 않은 것을 보면, 카이가 어디선가 살아 있다고 굳게 믿었던 거지.",
                 "핀란드 아주머니가 줄 힘이 없다고 한 것을 보면, 게르다가 이미 그 힘을 지니고 있다고 본 거지.",
-                "게르다의 뜨거운 눈물이 가슴의 얼음 조각을 녹인 것을 보면, 그 자리를 푼 것이 셈이 아니었어.",
-                "도둑 소녀가 순록의 밧줄을 풀어 준 것을 보면, 처음부터 게르다를 보내 줄 생각이었구나."
+                "카이가 얼음 궁전에서 혼자 얼음 조각을 맞추고 있던 것을 보면, 여왕이 없는 동안에도 거기서 벗어날 생각을 못 했구나.",
+                "도둑 소녀가 게르다에게 장화와 목도리까지 내준 것을 보면, 처음부터 게르다를 보내 줄 생각이었구나."
             ],
         "answer": 3
     }
@@ -882,8 +882,8 @@ const EN = {
     ],
     quiz: [
         {
-            q: 'What happened to the magician’s mirror?',
-            choices: ['The Snow Queen took it north', 'It shattered and the dust blew all over the world', 'It was buried under the roses'],
+            q: 'What did the magician’s mirror do?',
+            choices: ['It showed whatever was far away', 'It made everything it reflected look ugly', 'It froze whoever looked into it'],
             answer: 1
         },
         {
@@ -920,10 +920,10 @@ const EN = {
             q: 'Which reaction to this book does NOT fit?',
             wide: true,
             choices: [
-                "Kai called the roses worm-eaten and kicked the box over — after the splinter, everything looked ugly to him.",
+                "Gerda would not believe that Kai had drowned in the river — she was sure he was alive somewhere.",
                 "The Finnish woman said she had no strength to give her — she could see Gerda already had it.",
-                "Gerda's hot tears melted the splinter in his chest — it was not clever thinking that set him free.",
-                "The robber girl untied the reindeer — she had meant to let Gerda go from the start."
+                "Kai sat alone on the ice fitting pieces together — even with the Queen away, it never occurred to him to leave.",
+                "The robber girl gave Gerda her own boots and her scarf — she had meant to let Gerda go from the start."
             ],
             answer: 3
         }

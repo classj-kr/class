@@ -463,65 +463,65 @@ function afterPage(spread, isFirst) {
 
 const QUIZ = [
     {
-        "q": "카산드라가 마야에게 한 말은 무엇인가요?",
+        "q": "카산드라가 마야에게 일러 준 규칙은 무엇인가요?",
         "choices": [
-            "말벌을 조심해라",
-            "문지기가 되어라",
-            "꽃과 벌집만 알아라"
+            "꿀은 밤에만 모아라",
+            "문지기 벌의 말을 따라라",
+            "해가 지기 전에 돌아와라"
         ],
         "answer": 2
     },
     {
-        "q": "마야가 벌집을 나간 때는 언제인가요?",
+        "q": "마야가 돌아가는 길을 잃고도 겁내지 않은 까닭은 무엇인가요?",
         "choices": [
-            "한밤중",
-            "이른 아침",
-            "저녁"
+            "페피가 길을 알려 주기로 해서",
+            "볼 것이 아직 많아서",
+            "카산드라가 데리러 올 것 같아서"
         ],
         "answer": 1
     },
     {
-        "q": "마야가 풀숲에서 만난 다리 긴 벌레는 누구인가요?",
+        "q": "페피는 마야가 벌집에서 나온 벌인 줄 어떻게 알았나요?",
         "choices": [
-            "페피",
-            "쿠르트",
-            "카산드라"
+            "몸에 꽃가루가 잔뜩 묻어서",
+            "카산드라가 미리 말해 줘서",
+            "마야가 스스로 말해서"
         ],
         "answer": 0
     },
     {
-        "q": "공을 굴리던 딱정벌레는 누구인가요?",
+        "q": "쿠르트가 공을 언덕 위로 올린 뒤 어떻게 했나요?",
         "choices": [
-            "페피",
-            "마야",
-            "쿠르트"
+            "마야에게 고맙다고 절을 했다",
+            "깃을 바로잡고 가 버렸다",
+            "땀을 뻘뻘 흘리면서도 웃었다"
         ],
         "answer": 2
     },
     {
-        "q": "마야가 몸이 감겨 꼼짝 못 한 것은 무엇인가요?",
+        "q": "거미줄에 걸린 마야에게 페피가 한 말은 무엇인가요?",
         "choices": [
-            "밧줄",
-            "거미줄",
-            "잠자리채"
+            "실을 이빨로 물어 끊어 봐",
+            "움직이면 더 감긴다",
+            "거미는 밤에만 나오니 걱정 마"
         ],
         "answer": 1
     },
     {
-        "q": "마야가 나무 구멍에서 들은 것은 무엇인가요?",
+        "q": "말벌들의 계획을 들은 마야는 어떻게 했나요?",
         "choices": [
-            "말벌들의 이야기",
-            "꿀벌들의 노래",
-            "카산드라의 말"
+            "높이 올라가 낯익은 나무를 찾았다",
+            "페피에게 달려가 도움을 청했다",
+            "나무 구멍에 숨어 밤을 기다렸다"
         ],
         "answer": 0
     },
     {
-        "q": "마야가 벌집으로 돌아가 알린 것은 무엇인가요?",
+        "q": "마야의 말을 들은 카산드라는 무엇을 시켰나요?",
         "choices": [
-            "거미가 온다",
-            "꽃이 피었다",
-            "밤에 쳐들어온다"
+            "모두 밖으로 나가 말벌과 싸워라",
+            "꿀을 숨기고 문을 열어 두어라",
+            "문을 좁히고 줄을 서라"
         ],
         "answer": 2
     },
@@ -953,38 +953,38 @@ const EN = {
     ],
     quiz: [
         {
-            q: 'What did Cassandra tell Maya?',
-            choices: ['Beware of hornets', 'Become a guard bee', 'Know only flowers and the hive'],
+            q: 'What rule did Cassandra give Maya?',
+            choices: ['Gather honey only at night', 'Do as the guard bees say', 'Be back before the sun goes down'],
             answer: 2
         },
         {
-            q: 'When did Maya leave the hive?',
-            choices: ['At midnight', 'Early in the morning', 'In the evening'],
+            q: 'Why was Maya not afraid when she could not find the way back?',
+            choices: ['Peppi had promised to show her the way', 'There was still so much to see', 'She thought Cassandra would come for her'],
             answer: 1
         },
         {
-            q: 'Who was the long-legged creature she met in the grass?',
-            choices: ['Peppi', 'Kurt', 'Cassandra'],
+            q: 'How did Peppi know Maya had come from a hive?',
+            choices: ['She was covered in pollen', 'Cassandra had told him', 'Maya told him herself'],
             answer: 0
         },
         {
-            q: 'Who was the beetle rolling a ball?',
-            choices: ['Peppi', 'Maya', 'Kurt'],
+            q: 'What did Kurt do once the ball was up the hill?',
+            choices: ['He bowed and thanked Maya', 'He straightened his collar and left', 'He was dripping with sweat and smiling'],
             answer: 2
         },
         {
-            q: 'What wound round Maya so she could not move?',
-            choices: ['A rope', "A spider's web", 'A butterfly net'],
+            q: 'What did Peppi tell Maya when she was caught in the web?',
+            choices: ['Bite through the threads', 'Keep still, moving winds it tighter', 'Spiders only come out at night'],
             answer: 1
         },
         {
-            q: 'What did Maya hear in the hole in the tree?',
-            choices: ['The hornets talking', 'The bees singing', 'Cassandra speaking'],
+            q: 'What did Maya do after she heard the hornets’ plan?',
+            choices: ['She flew up high to look for the tree she knew', 'She ran to Peppi for help', 'She hid in the hollow tree till night'],
             answer: 0
         },
         {
-            q: 'What did Maya go back to the hive to tell them?',
-            choices: ['A spider is coming', 'The flowers are out', 'They attack tonight'],
+            q: 'What did Cassandra order when she heard Maya’s news?',
+            choices: ['Everyone out to fight the hornets', 'Hide the honey and leave the door open', 'Narrow the door and form lines'],
             answer: 2
         },
         {

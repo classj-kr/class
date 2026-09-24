@@ -427,76 +427,76 @@ const QUIZ = [
     {
         "q": "남편이 마녀의 밭에 들어간 까닭은 무엇인가요?",
         "choices": [
-            "아이를 데려오려고",
-            "담이 낮아서",
-            "아내가 앓아누워서"
+            "아내가 그 나물을 못 먹어 앓아누워서",
+            "마녀가 나물을 가져가도 좋다고 해서",
+            "요람을 만들 나무가 필요해서"
         ],
-        "answer": 2
+        "answer": 0
     },
     {
         "q": "마녀가 아이에게 지어 준 이름은 무엇에서 온 것인가요?",
         "choices": [
-            "머리카락 이름",
-            "나물 이름",
-            "마녀의 이름"
+            "마녀의 어릴 적 이름",
+            "탑이 선 숲의 이름",
+            "어머니가 먹고 싶어 한 나물 이름"
         ],
-        "answer": 1
+        "answer": 2
     },
     {
-        "q": "탑을 오르내리는 길은 무엇이었나요?",
+        "q": "라푼젤이 지내게 된 탑은 어떻게 생겼나요?",
         "choices": [
-            "긴 머리카락",
-            "비단실 사다리",
-            "마녀의 자줏빛 망토"
+            "대문이 자물쇠로 잠겨 있었다",
+            "문도 계단도 없이 창문 하나뿐이었다",
+            "창문마다 쇠창살이 있었다"
         ],
-        "answer": 0
+        "answer": 1
     },
     {
         "q": "왕자가 탑을 찾은 것은 무엇 덕분인가요?",
         "choices": [
-            "머리카락",
-            "자줏빛 망토",
-            "노랫소리"
-        ],
-        "answer": 2
-    },
-    {
-        "q": "두 사람이 몰래 만들려 한 것은 무엇인가요?",
-        "choices": [
-            "흙집",
-            "사다리",
-            "비단옷"
+            "마녀의 뒤를 밟아서",
+            "라푼젤의 노랫소리",
+            "사냥개가 냄새를 맡아서"
         ],
         "answer": 1
     },
     {
-        "q": "머리카락이 잘린 뒤 라푼젤은 어디로 보내졌나요?",
+        "q": "왕자가 올 때마다 비단실을 가져온 까닭은 무엇인가요?",
         "choices": [
-            "먼 들판",
-            "마녀의 탑",
-            "가시덤불"
+            "라푼젤이 사다리를 엮어 내려오려고",
+            "라푼젤의 옷을 지으려고",
+            "머리카락을 묶으려고"
         ],
         "answer": 0
     },
     {
-        "q": "왕자의 눈이 다시 보이게 된 까닭은 무엇인가요?",
+        "q": "라푼젤이 왕자의 일을 들키게 된 까닭은 무엇인가요?",
         "choices": [
-            "마녀가 풀어 줘서",
-            "나물을 먹어서",
-            "뜨거운 눈물"
+            "마녀가 비단실 사다리를 찾아내서",
+            "왕자가 낮에 찾아와서",
+            "왕자보다 왜 무겁냐고 마녀에게 물어서"
         ],
         "answer": 2
+    },
+    {
+        "q": "왕자의 눈이 다시 보이게 된 까닭은 무엇인가요?",
+        "choices": [
+            "마녀가 마법을 풀어 주어서",
+            "라푼젤의 눈물이 눈에 떨어져서",
+            "들판의 나물을 먹어서"
+        ],
+        "answer": 1
     },
     {
         "q": "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
         "wide": true,
         "choices": [
+                "마녀가 잘린 머리카락을 창가 고리에 단단히 매어 둔 것을 보면, 라푼젤이 돌아오면 다시 쓰라고 남겨 뒀구나.",
                 "남편이 겁에 질려 태어날 아이를 주겠다고 한 것을 보면, 다른 생각을 할 겨를이 없었구나.",
-                "라푼젤이 무심코 할머니는 왜 그렇게 무겁냐고 물은 것을 보면, 숨겨야 하는 일인 줄을 몰랐던 거지.",
-                "들판에서도 들어 줄 사람 없이 노래를 부른 것을 보면, 탑에서 하던 버릇이 그대로 남았어.",
-                "마녀가 잘린 머리카락을 창가 고리에 단단히 매어 둔 것을 보면, 라푼젤이 돌아오면 다시 쓰라고 남겨 뒀구나."
+                "왕자가 모기가 물어도 꼼짝 않고 탑을 지켜본 것을 보면, 올라가는 법을 알아낼 때까지 기다린 거지.",
+                "들판에서도 들어 줄 사람 없이 노래를 부른 것을 보면, 탑에서 하던 버릇이 그대로 남았어."
             ],
-        "answer": 3
+        "answer": 0
     }
 ];
 
@@ -858,50 +858,50 @@ const EN = {
     ],
     quiz: [
         {
-            q: 'Why did the husband go over the wall?',
-            choices: ['He wanted to see the witch', 'He had lost something in the garden', 'His wife longed for the green in the witch’s garden'],
-            answer: 2
-        },
-        {
-            q: 'What did the witch ask for in return?',
-            choices: ['The wall behind the house', 'The child that would be born', 'All the greens he had picked'],
-            answer: 1
-        },
-        {
-            q: 'Where did Rapunzel’s name come from?',
-            choices: ['The green her mother had longed for', 'The witch’s own name', 'The wood the tower stood in'],
+            q: 'Why did the husband go into the witch’s garden?',
+            choices: ['His wife had fallen ill from longing for the green', 'The witch had said he could take the green', 'He needed wood for the cradle'],
             answer: 0
         },
         {
-            q: 'How did anyone get up the tower?',
-            choices: ['By a hidden stair', 'By a silk ladder', 'By climbing Rapunzel’s hair'],
+            q: 'Where did the name the witch gave the child come from?',
+            choices: ['The witch’s own childhood name', 'The wood the tower stood in', 'The green her mother had longed for'],
             answer: 2
+        },
+        {
+            q: 'What was the tower like where Rapunzel had to live?',
+            choices: ['Its gate was kept locked', 'It had no door and no stairs, only one window', 'Every window had iron bars'],
+            answer: 1
         },
         {
             q: 'How did the prince find the tower?',
-            choices: ['He saw it from the road', 'He followed the sound of her singing', 'The witch led him there'],
+            choices: ['He followed the witch', 'He followed the sound of Rapunzel’s singing', 'His hound picked up a scent'],
             answer: 1
         },
         {
-            q: 'What gave Rapunzel away?',
-            choices: ['She said the prince climbed up more lightly', 'The witch found the silk thread', 'The prince came in daylight'],
+            q: 'Why did the prince bring a skein of silk every time he came?',
+            choices: ['So Rapunzel could weave a ladder and climb down', 'To make Rapunzel a dress', 'To tie up her hair'],
             answer: 0
         },
         {
-            q: 'What happened to the prince at the tower?',
-            choices: ['The witch drove him away', 'He climbed down the ladder', 'He fell into thorns and lost his sight'],
+            q: 'How did the witch find out about the prince?',
+            choices: ['She found the silk ladder', 'The prince came in daylight', 'Rapunzel asked why she was so much heavier than the prince'],
             answer: 2
+        },
+        {
+            q: 'How did the prince get his sight back?',
+            choices: ['The witch lifted the spell', 'Rapunzel’s tears fell on his eyes', 'He ate the green from the plain'],
+            answer: 1
         },
         {
             q: 'Which reaction to this book does NOT fit?',
             wide: true,
             choices: [
+                "The witch tied the cut hair firmly to the peg by the window — she had left it there for Rapunzel to use again when she came back.",
                 "Frightened, the husband promised the child that was coming — he had no time to think.",
-                "Rapunzel asked without thinking why Grandmother was so heavy — she had no idea it was something to hide.",
-                "Out on the plain she sang with nobody to hear her — it was the habit she had kept from the tower.",
-                "The witch tied the cut hair firmly to the peg by the window — she had left it there for Rapunzel to use again when she came back."
+                "The prince sat watching the tower even while the mosquitoes bit — he waited until he had worked out the way up.",
+                "Out on the plain she sang with nobody to hear her — it was the habit she had kept from the tower."
             ],
-            answer: 3
+            answer: 0
         }
     ],
     afterword: {

@@ -408,16 +408,16 @@ const QUIZ = [
         "answer": 0
     },
     {
-        "q": "목소리가 고와지자 아기 염소들이 요구한 것은 무엇인가요?",
+        "q": "처음 쫓겨난 늑대는 마을에 가서 무엇을 했나요?",
         "choices": [
-            "방울을 울려 달라",
-            "목소리를 더 내라",
-            "발을 보여 달라"
+            "밀가루를 샀다",
+            "꿀을 마셨다",
+            "분필을 삼켰다"
         ],
         "answer": 2
     },
     {
-        "q": "늑대가 발을 하얗게 만든 곳은 어디인가요?",
+        "q": "늑대가 두 번째로 쫓겨난 뒤 찾아간 곳은 어디인가요?",
         "choices": [
             "개울",
             "방앗간",
@@ -437,8 +437,8 @@ const QUIZ = [
     {
         "q": "엄마 염소가 늑대를 찾아낸 곳은 어디인가요?",
         "choices": [
-            "시계 속",
             "개울가",
+            "우물가",
             "나무 밑"
         ],
         "answer": 2
@@ -457,7 +457,7 @@ const QUIZ = [
         "choices": [
             "덜그럭덜그럭",
             "드르렁드르렁",
-            "째깍째깍"
+            "딸랑딸랑"
         ],
         "answer": 0
     },
@@ -465,9 +465,9 @@ const QUIZ = [
         "q": "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
         "wide": true,
         "choices": [
-                "늑대가 분필을 삼키고 발에 밀가루를 묻힌 것을 보면, 들킨 데를 하나씩 고쳐 왔네.",
-                "아기 염소들이 목소리를 듣고 발도 살펴본 것을 보면, 어머니가 이른 것을 그대로 지킨 거지.",
-                "막내가 시계 속에 숨어 살아남은 것을 보면, 제일 작은 것이 그때는 도움이 됐구나.",
+                "늑대가 두 번 쫓겨나고도 세 번째로 찾아온 것을 보면, 들킨 데를 하나씩 고쳐 왔네.",
+                "일곱이 창가에 매달려 손을 흔들고 또 흔든 것을 보면, 엄마가 나가는 것이 그만큼 서운했던 거지.",
+                "엄마가 통째로 삼켰다면 아직 살아 있을지 모른다고 한 것을 보면, 울기보다 먼저 살릴 길을 생각했구나.",
                 "어머니 염소가 나가기 전에 문에 빗장을 하나 더 달아 준 것을 보면, 아무래도 마음이 놓이지 않았네."
             ],
         "answer": 3
@@ -800,13 +800,13 @@ const EN = {
             answer: 0
         },
         {
-            q: 'What did the wolf swallow to soften his voice?',
-            choices: ['Flour', 'Milk', 'Chalk'],
+            q: 'What did the wolf do in the village after being turned away the first time?',
+            choices: ['He bought honey', 'He drank milk', 'He swallowed chalk'],
             answer: 2
         },
         {
-            q: 'How did the wolf make his paws white?',
-            choices: ['Chalk from the shop', 'Flour from the mill', 'Snow from the hill'],
+            q: 'Where did the wolf go after he was turned away the second time?',
+            choices: ['To the hill', 'To the mill', 'To the dairy'],
             answer: 1
         },
         {
@@ -816,26 +816,26 @@ const EN = {
         },
         {
             q: 'What did Mother fetch from the kitchen?',
-            choices: ['A needle and a bell', 'Chalk and flour', 'The pepper tin'],
+            choices: ['A needle and thread', 'A rope and a sack', 'The pepper tin'],
             answer: 2
         },
         {
             q: 'What did they roll into the wolf’s mouth?',
-            choices: ['Flour', 'Stones', 'Plates'],
+            choices: ['Bread', 'Stones', 'Plates'],
             answer: 1
         },
         {
             q: 'How did the wolf fall into the well?',
-            choices: ['His heavy belly swung forward', 'The kids pushed him', 'He slipped on the stones'],
+            choices: ['His heavy belly swung forward', 'The kids pushed him', 'He slipped on the wet edge'],
             answer: 0
         },
         {
             q: 'Which reaction to this book does NOT fit?',
             wide: true,
             choices: [
-                "The wolf ate chalk and floured his paws — each time he was found out he mended that one thing.",
-                "The kids listened to the voice and looked at the paws — they did exactly as their mother had told them.",
-                "The youngest survived inside the clock case — being the smallest was the thing that helped him that day.",
+                "Chased off twice, the wolf still came back a third time — each time he was found out he mended that one thing.",
+                "The kids hung at the window waving and waving — they hated to see their mother go.",
+                "Mother said that if he had swallowed them whole they might still be alive — before crying she thought of how to save them.",
                 "Before she left, the mother goat fitted a second bar to the door — she could not quite set her mind at rest."
             ],
             answer: 3

@@ -387,31 +387,31 @@ function afterPage(spread, isFirst) {
 
 const QUIZ = [
     {
-        "q": "왕비가 날마다 거울에 물은 말은 무엇인가요?",
+        "q": "거울의 대답이 달라진 것은 언제인가요?",
         "choices": [
-            "공주는 어디 있냐",
-            "누가 제일 곱냐",
-            "사과는 어디 있냐"
+            "새 왕비가 성에 온 날",
+            "공주가 태어난 날",
+            "공주가 부쩍 자라 고와진 뒤"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "사냥꾼은 공주를 숲으로 데려가며 무어라 했나요?",
+        "choices": [
+            "왕비님이 부르십니다",
+            "저 꽃 좀 보십시오",
+            "길을 잃지 않게 손을 잡으십시오"
         ],
         "answer": 1
     },
     {
-        "q": "사냥꾼이 공주에게 한 말은 무엇인가요?",
+        "q": "공주가 난쟁이 집에서 접시마다 조금씩만 덜어 먹은 까닭은 무엇인가요?",
         "choices": [
-            "멀리 달아나라",
-            "성으로 돌아가라",
-            "난쟁이를 찾아라"
+            "한 사람 것만 축내기 싫어서",
+            "배가 별로 고프지 않아서",
+            "독이 들었을까 봐"
         ],
         "answer": 0
-    },
-    {
-        "q": "숲속 작은 집에서 공주를 맞아 준 것은 누구인가요?",
-        "choices": [
-            "사냥꾼",
-            "왕비",
-            "난쟁이들"
-        ],
-        "answer": 2
     },
     {
         "q": "왕비가 처음에 공주를 해치려고 쓴 것은 무엇인가요?",
@@ -425,18 +425,18 @@ const QUIZ = [
     {
         "q": "공주가 사과를 받아 든 까닭은 무엇인가요?",
         "choices": [
-            "하얀 쪽을 먹어서",
-            "빨간 쪽을 먹어서",
-            "겉에 표가 없어서"
+            "할머니가 하얀 쪽을 먼저 먹어 보여서",
+            "할머니가 빨간 쪽을 먼저 먹어 보여서",
+            "겉으로 독이 표가 나지 않아서"
         ],
         "answer": 0
     },
     {
         "q": "난쟁이들이 공주를 땅에 묻지 않은 까닭은 무엇인가요?",
         "choices": [
-            "왕자가 와서",
-            "사흘을 울어서",
-            "잠든 것 같아서"
+            "왕자가 곧 온다고 해서",
+            "사흘을 울어 기운이 없어서",
+            "꼭 잠든 것만 같아서"
         ],
         "answer": 2
     },
@@ -453,12 +453,12 @@ const QUIZ = [
         "q": "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
         "wide": true,
         "choices": [
-                "왕비가 끈에서 빗으로, 빗에서 사과로 바꿔 온 것을 보면, 들킬 때마다 더 그럴듯한 것을 골랐네.",
+                "왕비가 세 번 다 다른 차림으로 꾸미고 온 것을 보면, 같은 얼굴로는 다시 문을 못 열 줄 알았던 거지.",
                 "사냥꾼이 공주를 숲에 두고 온 것을 보면, 시킨 대로 하지 않기로 마음먹은 거지.",
-                "난쟁이들이 이야기를 다 듣고 함께 지내자고 한 것을 보면, 공주가 갈 곳이 없다는 것을 알아챘구나.",
-                "난쟁이들이 유리 관 곁을 늘 한 사람씩 지킨 것을 보면, 공주가 깨어날 것을 알고 기다렸네."
+                "난쟁이들이 유리 관 곁을 늘 한 사람씩 지킨 것을 보면, 공주가 깨어날 것을 알고 기다렸네.",
+                "난쟁이들이 이야기를 다 듣고 함께 지내자고 한 것을 보면, 공주가 갈 곳이 없다는 것을 알아챘구나."
             ],
-        "answer": 3
+        "answer": 2
     }
 ];
 
@@ -787,33 +787,33 @@ const EN = {
     ],
     quiz: [
         {
-            q: 'What did the queen ask her mirror every day?',
-            choices: ['Where the princess is', 'Who is fairest of all', 'Where the apple is'],
-            answer: 1
-        },
-        {
-            q: 'What did the huntsman tell Snow White?',
-            choices: ['Run far away', 'Go back to the castle', 'Find the dwarfs'],
-            answer: 0
-        },
-        {
-            q: 'How many plates were on the table?',
-            choices: ['One', 'Three', 'Seven'],
+            q: 'When did the mirror’s answer change?',
+            choices: ['The day the new queen came to the castle', 'The day the princess was born', 'After the princess had grown up and become beautiful'],
             answer: 2
         },
         {
-            q: 'What did the queen bring the first time?',
+            q: 'What did the huntsman say as he led Snow White into the wood?',
+            choices: ['The queen is calling for you', 'Look at those flowers over there', 'Hold my hand so you do not get lost'],
+            answer: 1
+        },
+        {
+            q: 'Why did Snow White take only a little from each plate in the dwarfs’ house?',
+            choices: ['She did not want to eat up any one person’s share', 'She was not very hungry', 'She was afraid of poison'],
+            answer: 0
+        },
+        {
+            q: 'What did the queen use the first time she tried to harm Snow White?',
             choices: ['A comb', 'A sash', 'An apple'],
             answer: 1
         },
         {
-            q: 'Why did Snow White trust the apple?',
-            choices: ['The old woman ate the white half', 'The old woman ate the red half', 'It looked perfectly plain'],
+            q: 'Why did Snow White take the apple?',
+            choices: ['The old woman ate the white half first', 'The old woman ate the red half first', 'The poison did not show on the outside'],
             answer: 0
         },
         {
             q: 'Why did the dwarfs not bury her?',
-            choices: ['The prince came', 'They wept for three days', 'She looked asleep'],
+            choices: ['The prince said he would soon come', 'They had wept for three days and had no strength', 'She looked as if she were only asleep'],
             answer: 2
         },
         {
@@ -825,12 +825,12 @@ const EN = {
             q: 'Which reaction to this book does NOT fit?',
             wide: true,
             choices: [
-                "The queen came with a sash, then a comb, then an apple — each time she was caught out she picked something more convincing.",
+                "The queen came in a different disguise all three times — she knew the same face would not get the door opened twice.",
                 "The huntsman left her alive in the wood — he had made up his mind not to do as he was told.",
-                "The dwarfs heard her out and asked her to stay with them — they saw she had nowhere else to go.",
-                "One of the dwarfs always kept watch beside the glass coffin — they knew she would wake and were waiting for her."
+                "One of the dwarfs always kept watch beside the glass coffin — they knew she would wake and were waiting for her.",
+                "The dwarfs heard her out and asked her to stay with them — they saw she had nowhere else to go."
             ],
-            answer: 3
+            answer: 2
         }
     ],
     afterword: {

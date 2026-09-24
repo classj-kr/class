@@ -421,8 +421,8 @@ const QUIZ = [
         "q": "고양이가 자루 안에 넣어 둔 것은 무엇인가요?",
         "choices": [
             "당근",
-            "토끼",
-            "꿩"
+            "빵 조각",
+            "치즈"
         ],
         "answer": 0
     },
@@ -430,7 +430,7 @@ const QUIZ = [
         "q": "고양이가 자루로 잡은 것은 무엇인가요?",
         "choices": [
             "쥐와 사자",
-            "당근과 풀",
+            "물고기와 오리",
             "토끼와 꿩"
         ],
         "answer": 2
@@ -448,7 +448,7 @@ const QUIZ = [
         "q": "고양이가 일꾼들에게 시킨 말은 무엇인가요?",
         "choices": [
             "카라바 후작 것이라고",
-            "임금님 것이라고",
+            "저희 것이라고",
             "마법사 것이라고"
         ],
         "answer": 0
@@ -465,7 +465,7 @@ const QUIZ = [
     {
         "q": "잔치에서 막내가 공주에게 한 말은 무엇인가요?",
         "choices": [
-            "카라바 후작이다",
+            "임금님의 사냥꾼이다",
             "방앗간에서 자랐다",
             "성의 주인이다"
         ],
@@ -475,10 +475,10 @@ const QUIZ = [
         "q": "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
         "wide": true,
         "choices": [
-                "고양이가 자루에 당근을 넣고 풀숲에 납작 엎드린 것을 보면, 토끼가 제 발로 들어오게 했구나.",
-                "고양이가 주인의 옷을 풀숲 깊이 밀어 넣은 것을 보면, 도둑이 가져갔다고 할 셈이었지.",
-                "일꾼들이 카라바가 누구냐고 물은 것을 보면, 그 이름을 그때 처음 들었어.",
-                "막내가 잔치에서 공주에게 제가 방앗간에서 자랐다고 말한 것을 보면, 고양이가 그렇게 말하라고 미리 일러 줬구나."
+                "고양이가 몇 달 동안 선물을 보내며 같은 이름을 덧붙인 것을 보면, 임금님 귀에 그 이름이 익숙해지길 바랐구나.",
+                "고양이가 마차보다 앞서 달려간 것을 보면, 임금님이 묻기 전에 손을 써 둬야 했구나.",
+                "막내가 마차에서 임금님 물음에 아무 말도 못 한 것을 보면, 제 것이 아닌 줄 알았던 거지.",
+                "고양이가 마법사 앞에서 태연한 척 수염을 쓸어 보인 것을 보면, 사자가 하나도 무섭지 않았던 거지."
             ],
         "answer": 3
     }
@@ -869,10 +869,10 @@ const EN = {
             q: 'Which reaction to this book does NOT fit?',
             wide: true,
             choices: [
-                "The cat put carrots in the sack and lay flat in the grass — he let the rabbit walk in on its own.",
-                "He pushed his master's clothes deep into the bushes — he meant to say thieves had taken them.",
-                "The field workers asked who Carabas was — that was the first they had heard of the name.",
-                "At the feast the youngest told the princess he had grown up at a mill — the cat had coached him to say exactly that."
+                "For months the cat sent gifts and always added the same name — he wanted the king to grow used to it.",
+                "The cat ran on ahead of the carriage — he had to get there before the king asked his questions.",
+                "In the carriage the youngest could not answer the king — he knew none of it was his.",
+                "The cat smoothed his whiskers and looked calm in front of the magician — the lion had not scared him at all."
             ],
             answer: 3
         }

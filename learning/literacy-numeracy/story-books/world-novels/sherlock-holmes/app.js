@@ -489,7 +489,7 @@ const EN = {
     quiz: [
         { q: 'What did Holmes guess about Watson at first sight?', choices: ['That he had one brother', 'That he had been in Afghanistan', 'That he had worked as a doctor'], answer: 1 },
         { q: 'What did Holmes say his profession was?', choices: ['The only consulting detective in the world', 'A scholar of chemistry', 'An investigator for the London police'], answer: 0 },
-        { q: 'What did the King of Bohemia want back?', choices: ['A ring he had given', 'A photograph taken together', 'A bundle of letters'], answer: 1 },
+        { q: 'How did Holmes know that the masked visitor was the King of Bohemia?', choices: ['By the royal crest on the carriage', 'By the notepaper, the way he spoke and his height', 'By the face showing beneath the mask'], answer: 1 },
         { q: 'How did Holmes find where the photograph was hidden?', choices: ['He bribed a servant', 'He searched the house secretly at night', 'He made her believe there was a fire'], answer: 2 },
         { q: 'What work did the Red-Headed League give Mr Wilson?', choices: ['Copying out the encyclopaedia', 'Keeping the ledgers every day', 'Keeping the shop open late'], answer: 0 },
         { q: "What did Holmes learn from the assistant's knees?", choices: ['That he had walked a long way', 'That he had hurt his knees', 'That he was digging'], answer: 2 },
@@ -499,11 +499,11 @@ const EN = {
         { q: 'Why did Holmes let Ryder go?', choices: ['Because Horner had already been released', 'Because he looked like a man who would never do it again', 'Because the evidence was not enough'], answer: 1 },
         { q: 'In the Silver Blaze case, what did Holmes take note of?', choices: ['That the dog did not bark that night', 'That the hoofprints had been wiped out', 'That the stable door had been left open'], answer: 0 },
         { q: 'What did the trainer take out onto the moor?', choices: ['A bottle of sleeping draught for the horse', 'A small surgical knife', 'A leather wallet full of money'], answer: 1 },
-        { q: 'What were the dancing men?', choices: ['A cipher standing for letters', "Children's scribbles", 'An old ornament carved on the sundial'], answer: 0 },
+        { q: 'What did Mrs Cubitt ask of her husband before they married?', choices: ['Never to open the letters that came from America', 'Never to ask about her past', 'Never to go near the sundial'], answer: 1 },
         { q: 'Which letter did Holmes look for first when solving the cipher?', choices: ['The one that appeared most often', 'The one drawn largest', 'The one that came first'], answer: 0 },
         { q: 'What sort of man was Professor Moriarty?', choices: ['The richest man in London', "Holmes's old teacher", 'A scholar who planned crimes'], answer: 2 },
         { q: 'Why did Holmes not tell even Watson for three years?', choices: ['For fear Watson would be in danger too', 'Because there was no way to send word', 'Because Watson would not be able to hide it'], answer: 2 },
-        { q: 'Which of these is NOT a fair thing to say after reading this book?', wide: true, choices: ['Seeing how Holmes asked about Afghanistan before even saying hello, a sunburned face and a carefully held left arm spoke to him before words did.', 'Seeing how Watson did not know the number of stairs he had climbed for seventeen years, seeing and counting are different things.', 'Seeing the two sets of footprints leading toward the falls, Holmes and Moriarty must have crossed the mountain together by that path.', 'Seeing how Holmes compared the mind to an attic, he lived believing that useless things push out useful ones.'], answer: 2 }
+        { q: 'Which of these is NOT a fair thing to say after reading this book?', wide: true, choices: ['Seeing how Holmes spent half a day in the stables dressed as a groom, he knew there are things nobody will say to a gentleman.', 'Seeing how Watson did not know the number of stairs he had climbed for seventeen years, seeing and counting are different things.', 'Seeing the two sets of footprints leading toward the falls, Holmes and Moriarty must have crossed the mountain together by that path.', 'Seeing how Holmes compared the mind to an attic, he lived believing that useless things push out useful ones.'], answer: 2 }
     ]
 };
 
@@ -982,7 +982,7 @@ function chapterSpreadPage(spread) {
 const QUIZ = [
     { q: "홈스가 왓슨을 처음 보고 알아맞힌 것은 무엇입니까?", choices: ["형이 하나 있다는 것", "아프가니스탄에 있었다는 것", "의사로 일해 왔다는 것"], answer: 1 },
     { q: "홈스가 스스로 밝힌 자기 직업은 무엇입니까?", choices: ["세상에 하나뿐인 자문 탐정", "화학을 연구하는 학자", "런던 경찰청의 조사관"], answer: 0 },
-    { q: "보헤미아 왕이 되찾으려 한 것은 무엇입니까?", choices: ["선물한 반지 하나", "함께 찍은 사진 한 장", "주고받은 편지 뭉치"], answer: 1 },
+    { q: "홈스가 가면을 쓴 손님을 보헤미아 왕이라고 알아본 근거는 무엇입니까?", choices: ["마차에 새겨진 왕실 문장", "편지지와 말투와 키", "가면 아래로 드러난 얼굴"], answer: 1 },
     { q: "홈스가 사진이 숨겨진 곳을 알아낸 방법은 무엇입니까?", choices: ["하인을 돈으로 사 두었다", "집을 밤에 몰래 뒤졌다", "불이 났다고 속여 보았다"], answer: 2 },
     { q: "빨간 머리 연맹이 윌슨 씨에게 시킨 일은 무엇입니까?", choices: ["백과사전을 베껴 쓰는 일", "장부를 날마다 정리하는 일", "가게 문을 늦게까지 여는 일"], answer: 0 },
     { q: "점원의 무릎을 보고 홈스가 알아낸 것은 무엇입니까?", choices: ["먼 길을 걸었다는 것", "무릎을 다쳤다는 것", "땅을 파고 있다는 것"], answer: 2 },
@@ -992,11 +992,11 @@ const QUIZ = [
     { q: "홈스가 라이더를 놓아준 까닭은 무엇입니까?", choices: ["호너가 이미 풀려났기 때문에", "다시는 안 할 사람으로 보여서", "증거가 넉넉하지 않아서"], answer: 1 },
     { q: "실버 블레이즈 사건에서 홈스가 눈여겨본 것은 무엇입니까?", choices: ["그날 밤 개가 짖지 않은 것", "말발굽 자국이 지워진 것", "마구간 문이 열려 있던 것"], answer: 0 },
     { q: "조련사가 벌판에 들고 나간 것은 무엇입니까?", choices: ["말을 재우는 약병", "수술에 쓰는 작은 칼", "돈이 든 가죽 지갑"], answer: 1 },
-    { q: "춤추는 인형은 무엇이었습니까?", choices: ["글자를 대신한 암호", "아이들이 그린 낙서", "해시계에 새긴 옛 장식"], answer: 0 },
+    { q: "큐빗 부인이 결혼 전에 남편에게 부탁한 것은 무엇입니까?", choices: ["미국에서 오는 편지는 열어 보지 말라는 것", "자기 지난 일은 묻지 말아 달라는 것", "해시계 근처에는 가지 말라는 것"], answer: 1 },
     { q: "홈스가 암호를 풀 때 가장 먼저 찾은 글자는 무엇입니까?", choices: ["가장 자주 나오는 글자", "가장 크게 그린 글자", "맨 앞에 오는 글자"], answer: 0 },
     { q: "모리아티 교수는 어떤 사람이었습니까?", choices: ["런던에서 제일 큰 부자", "홈스를 가르친 옛 스승", "범죄를 계획해 주는 학자"], answer: 2 },
     { q: "홈스가 세 해 동안 왓슨에게도 알리지 않은 까닭은 무엇입니까?", choices: ["왓슨까지 위험해질까 봐서", "연락할 방법이 없었기 때문에", "왓슨이 숨기지 못할 것 같아서"], answer: 2 },
-    { q: "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?", wide: true, choices: ["홈스가 인사도 하기 전에 아프가니스탄에서 돌아왔느냐고 물은 것을 보면, 볕에 탄 얼굴과 조심스럽게 쓰는 왼팔이 홈스에게는 말보다 먼저였어.", "왓슨이 열일곱 해를 오르내린 계단이 몇 개인지 몰랐던 것을 보면, 보는 것과 세는 것은 다른 일이네.", "폭포 쪽으로 난 두 사람 몫의 발자국을 보면, 홈스와 모리아티는 그 길로 함께 산을 넘어간 거야.", "홈스가 사람의 머리를 다락방에 빗댄 것을 보면, 쓸데없는 걸 넣으면 쓸 것이 밀려난다고 믿고 산 사람이구나."], answer: 2 }
+    { q: "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?", wide: true, choices: ["홈스가 마부 차림으로 마구간에서 반나절을 보낸 것을 보면, 신사 차림으로는 들을 수 없는 말이 있다는 걸 안 거야.", "왓슨이 열일곱 해를 오르내린 계단이 몇 개인지 몰랐던 것을 보면, 보는 것과 세는 것은 다른 일이네.", "폭포 쪽으로 난 두 사람 몫의 발자국을 보면, 홈스와 모리아티는 그 길로 함께 산을 넘어간 거야.", "홈스가 사람의 머리를 다락방에 빗댄 것을 보면, 쓸데없는 걸 넣으면 쓸 것이 밀려난다고 믿고 산 사람이구나."], answer: 2 }
 ];
 
 // 선지를 세로로 쌓으니 한 쪽에 열여섯 문항이 다 들어가지 않는다. 몇 개씩 나눠 싣는다.

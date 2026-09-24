@@ -430,38 +430,38 @@ function afterPage(spread, isFirst) {
 
 const QUIZ = [
     {
-        "q": "임금님이 이상하게 여긴 것은 무엇인가요?",
+        "q": "신발이 닳는 까닭을 임금님이 묻자 큰공주는 뭐라고 했나요?",
         "choices": [
-            "공주들이 늦잠 자는 것",
-            "창문이 열리는 것",
-            "신이 밤마다 닳는 것"
+            "밤마다 뜰을 거닐었어요",
+            "신발이 너무 작아서요",
+            "저희는 방에서 잤는걸요"
         ],
         "answer": 2
     },
     {
-        "q": "노파가 병사에게 일러 준 것은 무엇인가요?",
+        "q": "병사가 길에서 노파에게 해 준 일은 무엇인가요?",
         "choices": [
-            "망토를 벗지 말라",
-            "술을 마시지 말라",
-            "계단을 세라"
+            "먹을 것을 나누어 주었다",
+            "무거운 짐을 대신 들어 주었다",
+            "길을 건너게 해 주었다"
         ],
         "answer": 1
     },
     {
         "q": "노파가 병사에게 준 것은 무엇인가요?",
         "choices": [
-            "망토",
-            "은 나뭇가지",
-            "무도화"
+            "잿빛 망토",
+            "열쇠",
+            "술 한 병"
         ],
         "answer": 0
     },
     {
-        "q": "공주들의 침대 밑에 있던 것은 무엇인가요?",
+        "q": "큰공주가 제 침대를 툭 치자 어떻게 되었나요?",
         "choices": [
-            "호수",
-            "무도회장",
-            "계단"
+            "벽장이 열리며 무도화가 나왔다",
+            "창문이 저절로 열렸다",
+            "바닥이 열리며 계단이 나타났다"
         ],
         "answer": 2
     },
@@ -475,33 +475,33 @@ const QUIZ = [
         "answer": 1
     },
     {
-        "q": "막내 공주가 자꾸 뒤를 돌아본 까닭은 무엇인가요?",
+        "q": "계단에서 막내 공주가 화들짝 놀란 까닭은 무엇인가요?",
         "choices": [
-            "소리가 나서",
-            "병사가 보여서",
-            "신이 닳아서"
+            "병사가 치맛자락을 밟아서",
+            "은가지 꺾이는 소리가 나서",
+            "배가 무거워 나가지 않아서"
         ],
         "answer": 0
     },
     {
-        "q": "병사가 임금님께 내놓은 증거는 무엇인가요?",
+        "q": "비밀이 드러난 뒤 땅 밑 계단은 어떻게 되었나요?",
         "choices": [
-            "닳은 무도화",
-            "노파의 망토",
-            "나뭇가지 세 개"
+            "임금님이 구경하러 내려갔다",
+            "그날로 막아 버렸다",
+            "공주들이 그대로 썼다"
         ],
-        "answer": 2
+        "answer": 1
     },
     {
         "q": "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
         "wide": true,
         "choices": [
+                "임금님이 사흘 안에 알아내야 한다고 못 박은 것을 보면, 나선 사람이 오래 고생하지 않도록 기한을 짧게 잡아 줬네.",
                 "병사가 잔을 입에 대고 옷깃 뒤로 흘려보낸 것을 보면, 노파가 미리 일러 준 대로 했네.",
                 "막내 공주만 자꾸 뒤를 돌아본 것을 보면, 뒤에 누가 있다는 것을 혼자만 느낀 거지.",
-                "병사가 세 숲에서 가지를 하나씩 꺾어 품에 넣은 것을 보면, 말로만 해서는 아무도 믿지 않을 줄 알았구나.",
-                "임금님이 사흘 안에 알아내야 한다고 못 박은 것을 보면, 나선 사람이 오래 고생하지 않도록 기한을 짧게 잡아 줬네."
+                "병사가 세 숲에서 가지를 하나씩 꺾어 품에 넣은 것을 보면, 말로만 해서는 아무도 믿지 않을 줄 알았구나."
             ],
-        "answer": 3
+        "answer": 0
     }
 ];
 
@@ -892,50 +892,50 @@ const EN = {
     ],
     quiz: [
         {
-            q: 'What puzzled the king?',
-            choices: ['The princesses would not eat', 'The key kept going missing', 'The door was locked and the shoes were worn through anyway'],
+            q: 'What did the eldest princess say when the king asked why the shoes were worn through?',
+            choices: ['We walked in the garden every night', 'The shoes are too small for us', 'We slept in our room, of course'],
             answer: 2
         },
         {
-            q: 'Why did the princes all fail?',
-            choices: ['They ran away in the night', 'They drank the wine and fell asleep', 'They got lost in the woods'],
+            q: 'What did the soldier do for the old woman on the road?',
+            choices: ['He shared his food with her', 'He carried her heavy load for her', 'He helped her across the road'],
             answer: 1
         },
         {
             q: 'What did the old woman give the soldier?',
-            choices: ['A grey cloak that made him invisible', 'A key to the room', 'A cup of wine'],
+            choices: ['A grey cloak', 'A key', 'A bottle of wine'],
             answer: 0
         },
         {
-            q: 'What did the soldier do with the wine?',
-            choices: ['He drank only half of it', 'He gave it back', 'He pretended to drink and poured it away'],
+            q: 'What happened when the eldest princess tapped her bed?',
+            choices: ['A cupboard opened and dancing shoes came out', 'The window opened by itself', 'The floor opened and a stair appeared'],
             answer: 2
         },
         {
-            q: 'What was under the eldest princess’s bed?',
-            choices: ['A box of shoes', 'A long stair going down', 'A hidden door to the garden'],
+            q: 'What were the leaves of the first wood made of?',
+            choices: ['Gold', 'Silver', 'Diamonds'],
             answer: 1
         },
         {
-            q: 'Which princess kept noticing something was wrong?',
-            choices: ['The youngest', 'The eldest', 'None of them'],
+            q: 'Why did the youngest princess cry out on the stair?',
+            choices: ['The soldier trod on her skirt', 'She heard a silver branch snap', 'The boat was too heavy to row'],
             answer: 0
         },
         {
-            q: 'What proof did the soldier bring the king?',
-            choices: ['A worn-out shoe', 'One of the boats', 'Branches of silver, gold and diamond'],
-            answer: 2
+            q: 'What became of the stair under the bed once the secret was out?',
+            choices: ['The king went down to see it for himself', 'It was blocked up that very day', 'The princesses went on using it'],
+            answer: 1
         },
         {
             q: 'Which reaction to this book does NOT fit?',
             wide: true,
             choices: [
+                "The king insisted it be solved within three days — he had kept the deadline short so that no one would suffer over it for long.",
                 "He put the cup to his lips and let it run away behind his collar — he did exactly what the old woman had told him.",
                 "Only the youngest kept looking back — she was the one who felt someone was there.",
-                "He broke off a branch in each of the three woods and hid them in his coat — he knew nobody would take his word for it.",
-                "The king insisted it be solved within three days — he had kept the deadline short so that no one would suffer over it for long."
+                "He broke off a branch in each of the three woods and hid them in his coat — he knew nobody would take his word for it."
             ],
-            answer: 3
+            answer: 0
         }
     ],
     afterword: {

@@ -450,14 +450,14 @@ const EN = {
         { q: 'What did Lupin do in the railway carriage?', choices: ['Gave the police his name and got off', 'Took the purse of the gentleman beside him', 'Tied up the real criminal and put him in the luggage van'], answer: 2 },
         { q: 'What did the holes in the seven of hearts point to?', choices: ['The name of somebody hidden in the house', 'The place to press in the pattern on the wall', 'The seven numbers that opened a safe'], answer: 1 },
         { q: 'Why did Lupin not take the submarine plans?', choices: ['Because a boat built from them would kill a great many people', 'Because they had already been sold to another country', 'Because he saw that the plans were fakes'], answer: 0 },
-        { q: 'Who found the black pearl under the bed?', choices: ['The maid who worked in the house', 'Danègre, who went into the room later', 'Ganimard, who was the first to arrive'], answer: 1 },
+        { q: 'Why was Danègre able to find the black pearl?', choices: ['The maid had told him beforehand where it was hidden', 'The countess had been holding it and let it fall, so it was not hidden anywhere at all', 'The earlier visitor had found it and left it behind'], answer: 1 },
         { q: 'Why did Lupin have a letter printed in the newspaper?', choices: ["So that Danègre would not be blamed for what he had not done", 'Because he wanted to boast of what he had done', 'To warn Ganimard of his next move'], answer: 0 },
-        { q: "Who took the queen's necklace?", choices: ['Raoul, who was six years old at the time', 'A count who had come as a guest', 'The mother who worked in the house'], answer: 0 },
+        { q: 'Why did the count put Henriette and her son out of the house?', choices: ['Because a light had been seen in the attic on the night the necklace vanished', 'For no reason at all except that she was poor', 'Because Henriette herself asked to leave'], answer: 1 },
         { q: 'How did the six-year-old get into that room?', choices: ['Along the window ledge from the second floor', 'Down the chimney, too narrow for a grown person', 'Through an unlocked back door'], answer: 1 },
         { q: 'Why did Lupin not sell the necklace for twenty years?', choices: ['It was too well known to be sold', 'He was waiting for the price to rise', 'If he sold it, his mother would really be the mother of a thief'], answer: 2 },
         { q: 'Why was the name Sholmès used?', choices: ["Because the creator of Sherlock Holmes objected, so the name was twisted", 'Because the name was hard to read in France', 'To make clear that this was a different person'], answer: 0 },
         { q: 'What did Sholmès say to Wilson at the end?', choices: ['I shall never set foot in France again', 'The world is a little more complicated than we were taught', 'A man like that will end up in my hands one day'], answer: 1 },
-        { q: 'Which of these is NOT a fair thing to say after reading this book?', wide: true, choices: ['Seeing how one telegram saying Lupin was aboard set everyone suspecting each other, a single name shook a whole ship.', 'Seeing how Lupin told Ganimard in prison that he had been there all along, the castle robbery had nothing to do with him.', 'Seeing how Lupin never touched a poor house, even his stealing had a line it did not cross.', 'Seeing how Lupin never sold the necklace in twenty years, selling it really would have made his mother the mother of a thief.'], answer: 1 }
+        { q: 'Which of these is NOT a fair thing to say after reading this book?', wide: true, choices: ['Seeing how one telegram saying Lupin was aboard set everyone suspecting each other, a single name shook a whole ship.', "Seeing how Ganimard let the remark about the baron's rents pass and never looked into it afterwards, Lupin's words meant nothing to the inspector.", 'Seeing how Lupin never touched a poor house, even his stealing had a line it did not cross.', 'Seeing how the countess sent Henriette money every year yet could not tell her husband, she felt she had done wrong but could not say so in that house.'], answer: 1 }
     ]
 };
 
@@ -942,14 +942,14 @@ const QUIZ = [
     { q: "기차 안에서 뤼팽이 한 일은 무엇입니까?", choices: ["경찰에게 제 이름을 대고 내렸다", "옆자리 신사의 지갑을 가져갔다", "진짜 범인을 묶어 짐칸에 넣었다"], answer: 2 },
     { q: "하트 일곱 카드에 뚫린 구멍이 가리킨 것은 무엇입니까?", choices: ["그 집에 숨은 사람의 이름", "벽 무늬에서 눌러야 할 자리", "금고 문을 여는 숫자 일곱 개"], answer: 1 },
     { q: "뤼팽이 잠수함 설계도를 가져가지 않은 까닭은 무엇입니까?", choices: ["그것으로 배를 만들면 사람이 많이 죽어서", "이미 다른 나라에 팔린 뒤였기 때문에", "설계도가 가짜라는 것을 알아채서"], answer: 0 },
-    { q: "검은 진주를 침대 밑에서 찾은 사람은 누구입니까?", choices: ["그 집에서 일하던 하녀 하나", "나중에 그 방에 들어간 다니그레", "제일 먼저 달려온 가니마르"], answer: 1 },
+    { q: "다니그레가 검은 진주를 찾을 수 있었던 까닭은 무엇입니까?", choices: ["하녀가 숨긴 자리를 미리 일러 주어서", "부인이 손에 쥐고 있다가 떨어뜨려 어디에도 숨겨져 있지 않아서", "먼저 다녀간 사람이 찾아 놓고 두고 가서"], answer: 1 },
     { q: "뤼팽이 신문에 편지를 실은 까닭은 무엇입니까?", choices: ["다니그레가 안 한 일까지 뒤집어쓰지 않게", "자기가 한 일임을 자랑하고 싶어서", "가니마르에게 다음 일을 예고하려고"], answer: 0 },
-    { q: "왕비의 목걸이를 가져간 사람은 누구입니까?", choices: ["그때 여섯 살이던 라울", "손님으로 왔던 백작 하나", "그 집에서 일하던 어머니"], answer: 0 },
+    { q: "백작이 앙리에트와 아들을 집에서 내보낸 까닭은 무엇입니까?", choices: ["목걸이가 없어진 밤 다락방에 불이 켜져 있어서", "가난하다는 것 말고는 아무 까닭도 없었다", "앙리에트가 스스로 나가겠다고 해서"], answer: 1 },
     { q: "여섯 살 아이가 그 방에 들어간 길은 어디입니까?", choices: ["이층으로 이어진 창틀", "사람이 못 지나는 좁은 굴뚝", "잠기지 않은 뒤쪽 쪽문"], answer: 1 },
     { q: "뤼팽이 그 목걸이를 스무 해 동안 팔지 않은 까닭은 무엇입니까?", choices: ["너무 알려진 물건이라 팔 수가 없어서", "값이 더 오를 때를 기다리고 있어서", "팔면 어머니가 정말 도둑의 어머니가 되어서"], answer: 2 },
     { q: "숄메스라는 이름이 쓰인 까닭은 무엇입니까?", choices: ["셜록 홈스를 만든 작가가 항의해서 비튼 것", "프랑스에서는 그 이름이 읽기 어려워서", "다른 사람이라는 것을 밝히고 싶어서"], answer: 0 },
     { q: "숄메스가 마지막에 윌슨에게 한 말은 무엇입니까?", choices: ["다시는 프랑스 땅을 밟지 않을 것이다", "세상은 우리가 배운 것보다 조금 더 복잡하다", "저런 자는 언젠가 반드시 제 손에 잡힌다"], answer: 1 },
-    { q: "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?", wide: true, choices: ["배 안에 뤼팽이 탔다는 전보 하나에 사람들이 서로를 의심한 것을 보면, 이름 하나가 배 한 척을 흔들어 놓았네.", "뤼팽이 감옥에서 가니마르에게 저는 여기 있었다고 한 것을 보면, 성의 도둑질은 뤼팽과 상관없는 일이었어.", "뤼팽이 가난한 집 것은 건드리지 않은 것을 보면, 훔치는 데도 제 나름의 금이 있었구나.", "뤼팽이 목걸이를 스무 해 동안 팔지 않은 것을 보면, 팔면 정말로 도둑의 어머니가 되는 거였지."], answer: 1 }
+    { q: "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?", wide: true, choices: ["배 안에 뤼팽이 탔다는 전보 하나에 사람들이 서로를 의심한 것을 보면, 이름 하나가 배 한 척을 흔들어 놓았네.", "가니마르가 남작의 땅세 이야기를 흘려듣고 그 뒤로도 알아보지 않은 것을 보면, 뤼팽의 말은 형사에게 아무것도 아니었던 거야.", "뤼팽이 가난한 집 것은 건드리지 않은 것을 보면, 훔치는 데도 제 나름의 금이 있었구나.", "백작 부인이 해마다 앙리에트에게 돈을 보내면서 남편에게는 말하지 못한 것을 보면, 미안한 마음은 있어도 그 집에서 그 말을 꺼낼 수는 없었던 거야."], answer: 1 }
 ];
 
 // 선지를 세로로 쌓으니 한 쪽에 열여섯 문항이 다 들어가지 않는다. 몇 개씩 나눠 싣는다.

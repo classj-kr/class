@@ -391,67 +391,67 @@ function afterPage(spread, isFirst) {
 
 const QUIZ = [
     {
-        "q": "잔치에 부르지 않은 요정은 몇 번째였나요?",
+        "q": "요정 한 사람을 잔치에 부르지 않은 까닭은 무엇인가요?",
         "choices": [
-            "열세 번째",
-            "열두 번째",
-            "열한 번째"
+            "금접시가 열두 개뿐이어서",
+            "어디 사는지 몰라서",
+            "임금님과 다툰 적이 있어서"
         ],
         "answer": 0
     },
     {
-        "q": "그 요정이 공주에게 내린 말은 무엇인가요?",
+        "q": "열세 번째 요정이 공주에게 내린 말은 무엇인가요?",
         "choices": [
-            "목소리를 잃는다",
-            "잠에서 못 깬다",
-            "손을 찔린다"
-        ],
-        "answer": 2
-    },
-    {
-        "q": "열두 번째 요정은 그 말을 어떻게 바꿨나요?",
-        "choices": [
-            "하루만 잠든다",
+            "고운 목소리를 잃는다",
             "백 년 동안 잠든다",
-            "아무 일 없게 했다"
-        ],
-        "answer": 1
-    },
-    {
-        "q": "임금님이 내린 명은 무엇인가요?",
-        "choices": [
-            "물레를 모두 없애라",
-            "탑을 모두 헐어라",
-            "요정을 모두 잡아라"
-        ],
-        "answer": 0
-    },
-    {
-        "q": "공주가 탑 꼭대기에서 만난 사람은 누구인가요?",
-        "choices": [
-            "요정",
-            "왕자",
-            "할머니"
+            "물레 바늘에 찔려 죽는다"
         ],
         "answer": 2
     },
     {
-        "q": "공주가 쓰러진 그때 성에서는 무슨 일이 있었나요?",
+        "q": "공주의 열다섯 번째 생일에 임금님과 왕비는 어디에 있었나요?",
         "choices": [
-            "가시덤불이 자랐다",
-            "성이 우뚝 멈췄다",
-            "종이 밤새 울렸다"
+            "탑 아래에서 지키고 있었다",
+            "성을 비우고 나가 있었다",
+            "공주 곁에서 잔치를 열고 있었다"
         ],
         "answer": 1
     },
     {
-        "q": "왕자가 다가가자 가시덤불은 어떻게 되었나요?",
+        "q": "공주는 물레를 처음 보고 어떻게 했나요?",
         "choices": [
-            "스르르 갈라졌다",
-            "칼에 베어졌다",
-            "불에 탔다"
+            "무서워서 계단을 내려갔다",
+            "저도 해 봐도 되느냐고 물었다",
+            "할머니에게 물레를 치우라고 했다"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "공주가 쓰러졌을 때 임금님과 왕비는 어떻게 되었나요?",
+        "choices": [
+            "탑으로 달려 올라갔다",
+            "요정을 다시 불렀다",
+            "문턱을 넘다가 그대로 잠들었다"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "성이 다시 깨어나는 첫 신호는 무엇이었나요?",
+        "choices": [
+            "멈췄던 시계가 다시 가기 시작했다",
+            "마당의 개가 벌떡 일어나 짖었다",
+            "덤불에 장미가 피었다"
         ],
         "answer": 0
+    },
+    {
+        "q": "성에 들어간 왕자는 잠든 사람들을 보고 어떻게 했나요?",
+        "choices": [
+            "큰 소리로 사람들을 깨웠다",
+            "발소리를 죽이고 방마다 문을 열어 봤다",
+            "무서워서 성을 나왔다"
+        ],
+        "answer": 1
     },
     {
         "q": "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
@@ -804,29 +804,29 @@ const EN = {
             answer: 2
         },
         {
-            q: 'What could the twelfth fairy do about the curse?',
-            choices: ['Undo it completely', 'Change it, though she could not undo it', 'Pass it on to somebody else'],
+            q: 'Where were the king and queen on the princess’s fifteenth birthday?',
+            choices: ['Keeping watch at the foot of the tower', 'Away from the castle', 'Holding a feast at her side'],
             answer: 1
         },
         {
-            q: 'What did the king order after the feast?',
-            choices: ['That every spinning wheel in the kingdom be destroyed', 'That the tower be pulled down', 'That the princess never leave the castle'],
-            answer: 0
+            q: 'What did the princess do when she first saw the spinning wheel?',
+            choices: ['Ran back down the stairs in fright', 'Asked if she might try it herself', 'Told the old woman to take it away'],
+            answer: 1
         },
         {
-            q: 'Why did the princess not know what a spinning wheel was?',
-            choices: ['She had never left her own room', 'The old woman had hidden it from her', 'They had all been burnt when she was a baby'],
+            q: 'What happened to the king and queen when the princess fell?',
+            choices: ['They ran up to the tower', 'They sent for the fairy again', 'They fell asleep on the threshold as they came in'],
             answer: 2
-        },
-        {
-            q: 'How did the prince get through the hedge of thorns?',
-            choices: ['He cut a path with his sword', 'It parted on its own and the thorns turned to flowers', 'The villagers showed him a hidden gate'],
-            answer: 1
         },
         {
             q: 'What told the prince that the castle was waking?',
             choices: ['The stopped clock started ticking again', 'The dog began to bark', 'The roses came into bloom'],
             answer: 0
+        },
+        {
+            q: 'What did the prince do when he found everyone asleep?',
+            choices: ['Shouted to wake them', 'Crept from room to room opening the doors', 'Left the castle in fear'],
+            answer: 1
         },
         {
             q: 'Which reaction to this book does NOT fit?',

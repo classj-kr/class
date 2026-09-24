@@ -389,18 +389,18 @@ const QUIZ = [
     {
         "q": "아이가 슬리퍼를 잃어버린 까닭은 무엇인가요?",
         "choices": [
-            "눈싸움을 하다가",
+            "발이 아파 벗어 들고 걸어서",
             "마차를 피하다가",
-            "다락방에 두고 와서"
+            "눈길에 미끄러져 넘어져서"
         ],
         "answer": 1
     },
     {
-        "q": "아이의 집은 어떤 곳이었나요?",
+        "q": "아이가 두 집 사이 좁은 골목으로 들어간 까닭은 무엇인가요?",
         "choices": [
-            "다락방",
-            "좁은 골목",
-            "밝은 창가"
+            "바람이 조금 덜 들어서",
+            "집이 그 골목 안에 있어서",
+            "사람들 눈을 피하려고"
         ],
         "answer": 0
     },
@@ -414,38 +414,38 @@ const QUIZ = [
         "answer": 2
     },
     {
-        "q": "나무의 가지마다 무엇이 켜져 있었나요?",
+        "q": "세 번째 성냥이 꺼진 뒤 촛불들은 어떻게 되었나요?",
         "choices": [
-            "성냥개비",
-            "촛불",
-            "하얀 상보"
+            "나무와 함께 사라졌다",
+            "하늘로 올라가 별이 되었다",
+            "골목 바닥에 떨어졌다"
         ],
         "answer": 1
     },
     {
-        "q": "할머니는 별이 떨어지면 어떻게 된다고 했나요?",
+        "q": "할머니는 살아 계실 적에 아이에게 어떻게 해 주었나요?",
         "choices": [
-            "하늘로 간다",
-            "눈이 그친다",
-            "새해가 온다"
+            "언 손을 감싸 주고 노래를 불러 주었다",
+            "저녁마다 거위 요리를 해 주었다",
+            "새 슬리퍼를 사 주었다"
         ],
         "answer": 0
     },
     {
-        "q": "아이가 성냥을 모두 켠 까닭은 무엇인가요?",
+        "q": "아이가 성냥을 한꺼번에 모두 켠 까닭은 무엇인가요?",
         "choices": [
-            "몸을 녹이려고",
-            "거리가 밝아지라고",
-            "그 모습을 더 보려고"
+            "골목을 환하게 밝혀 사람을 부르려고",
+            "불꽃에 언 발을 녹이려고",
+            "할머니가 사라지지 않게 하려고"
         ],
         "answer": 2
     },
     {
         "q": "새해 저녁 그 골목에 놓인 것은 무엇인가요?",
         "choices": [
-            "성냥 다발",
+            "성냥 한 다발",
             "꽃 한 다발",
-            "슬리퍼 한 짝"
+            "따뜻한 목도리"
         ],
         "answer": 1
     },
@@ -453,12 +453,12 @@ const QUIZ = [
         "q": "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
         "wide": true,
         "choices": [
+                "지나가던 아주머니가 소녀에게 슬리퍼 한 켤레를 새로 사 준 것을 보면, 그날도 도와준 사람이 있었구나.",
                 "아이가 밝은 창가에서 물러나 다시 걸은 것을 보면, 성냥을 한 갑도 못 팔아 집에 갈 수 없었구나.",
-                "앞의 세 번은 난로와 거위와 나무였는데 마지막에 할머니가 온 것을 보면, 끝에 부른 것은 물건이 아니었어.",
-                "사람들이 몸을 녹이려 했나 보다고만 말하고 지나간 것을 보면, 아이가 무엇을 보았는지는 아무도 몰랐던 거지.",
-                "지나가던 아주머니가 소녀에게 슬리퍼 한 켤레를 새로 사 준 것을 보면, 그날도 도와준 사람이 있었구나."
+                "아이가 팔 성냥이지만 하나쯤은 켜 봐도 되겠지 한 것을 보면, 성냥 하나를 켜는 것도 조심스러웠던 거야.",
+                "사람들이 몸을 녹이려 했나 보다고만 말하고 지나간 것을 보면, 아이가 무엇을 보았는지는 아무도 몰랐던 거지."
             ],
-        "answer": 3
+        "answer": 0
     }
 ];
 
@@ -778,50 +778,50 @@ const EN = {
     ],
     quiz: [
         {
-            q: 'What happened to the slippers she came out in?',
-            choices: ['She sold them for a match box', 'One was lost in the snow and a boy took the other', 'She left them at home'],
+            q: 'How did the girl lose her slippers?',
+            choices: ['Her feet hurt, so she carried them', 'She lost them dodging a carriage', 'She slipped and fell in the snow'],
             answer: 1
         },
         {
-            q: 'Why did she not go home?',
-            choices: ['She had not sold a single box', 'The door was locked', 'It was too far to walk'],
+            q: 'Why did she go into the narrow gap between the two houses?',
+            choices: ['The wind was a little weaker there', 'Her home was in that alley', 'She wanted to keep out of people’s sight'],
             answer: 0
         },
         {
             q: 'What did she see in the first match?',
-            choices: ['A roast goose', 'A tree covered in candles', 'A great stove with a fire in it'],
+            choices: ['A roast goose', 'A great tree', 'A stove'],
             answer: 2
         },
         {
-            q: 'What did the goose do in the second match?',
-            choices: ['It flew out of the window', 'It got off the dish and walked toward her', 'It turned into a star'],
+            q: 'What happened to the candles after the third match went out?',
+            choices: ['They vanished with the tree', 'They rose up and became stars', 'They fell onto the ground of the alley'],
             answer: 1
         },
         {
-            q: 'What did the candles on the tree become?',
-            choices: ['Stars in the sky', 'A stove', 'Her grandmother'],
+            q: 'What had her grandmother done for her when she was alive?',
+            choices: ['Warmed her frozen hands and sung to her', 'Cooked her a goose every evening', 'Bought her new slippers'],
             answer: 0
         },
         {
-            q: 'What had her grandmother said about a falling star?',
-            choices: ['That it would bring good luck', 'That the year was ending', 'That somebody was going up to heaven'],
+            q: 'Why did she light the whole bundle at once?',
+            choices: ['To light up the alley and bring someone', 'To warm her frozen feet at the flame', 'So her grandmother would not disappear'],
             answer: 2
         },
         {
-            q: 'Why did she light the whole bundle at once?',
-            choices: ['To keep her hands warm', 'So her grandmother would not disappear', 'To be seen from the street'],
+            q: 'What was left in the alley on New Year’s evening?',
+            choices: ['A bundle of matches', 'A bunch of flowers', 'A warm scarf'],
             answer: 1
         },
         {
             q: 'Which reaction to this book does NOT fit?',
             wide: true,
             choices: [
+                "A woman passing by bought her a new pair of slippers — somebody did help her that day after all.",
                 "She stepped back from the bright window and walked on — she had not sold a single box and could not go home.",
-                "First a stove, then a goose, then a tree — and last of all her grandmother; what she called for at the end was not a thing.",
-                "People only said she must have been trying to warm herself, and walked on — nobody knew what she had seen.",
-                "A woman passing by bought her a new pair of slippers — somebody did help her that day after all."
+                "She told herself that one match out of all she had to sell would do no harm — even striking one felt like something she had to excuse.",
+                "People only said she must have been trying to warm herself, and walked on — nobody knew what she had seen."
             ],
-            answer: 3
+            answer: 0
         }
     ],
     afterword: {

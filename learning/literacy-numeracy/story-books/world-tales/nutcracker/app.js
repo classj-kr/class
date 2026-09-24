@@ -442,38 +442,38 @@ const QUIZ = [
     {
         "q": "프리츠가 인형을 망가뜨린 까닭은 무엇인가요?",
         "choices": [
-            "제일 큰 것을 물려서",
-            "바닥에 던져서",
-            "생쥐가 물어서"
+            "제일 큰 호두를 물려서",
+            "바닥에 내던져서",
+            "칼을 억지로 뽑아서"
         ],
         "answer": 0
     },
     {
-        "q": "마리가 인형의 턱에 감아 준 것은 무엇인가요?",
+        "q": "대부님이 들려준 인형의 사연은 무엇인가요?",
         "choices": [
-            "금박",
-            "이불",
-            "손수건"
-        ],
-        "answer": 2
-    },
-    {
-        "q": "한밤중에 나타난 생쥐 왕이 쓰고 있던 것은 무엇인가요?",
-        "choices": [
-            "금박 사과",
-            "왕관 여럿",
-            "손수건"
+            "먼 나라에서 만든 귀한 인형이다",
+            "생쥐 왕의 마법에 걸린 왕자다",
+            "호두를 제일 잘 까는 인형이다"
         ],
         "answer": 1
     },
     {
-        "q": "마리가 생쥐 왕에게 던진 것은 무엇인가요?",
+        "q": "열두 번째 종이 울리자 무슨 일이 일어났나요?",
         "choices": [
-            "신발",
-            "사탕",
-            "호두"
+            "촛불이 모두 꺼졌다",
+            "나무가 움직이기 시작했다",
+            "마룻바닥 틈에서 생쥐들이 쏟아져 나왔다"
         ],
-        "answer": 0
+        "answer": 2
+    },
+    {
+        "q": "호두까기 인형이 생쥐 왕에게 자꾸 밀린 까닭은 무엇인가요?",
+        "choices": [
+            "칼이 너무 작아서",
+            "턱이 부러진 탓에",
+            "병정들이 먼저 달아나서"
+        ],
+        "answer": 1
     },
     {
         "q": "설탕 길 너머 강에는 무엇이 흘렀나요?",
@@ -485,13 +485,13 @@ const QUIZ = [
         "answer": 2
     },
     {
-        "q": "과자 도시의 지붕과 담은 무엇으로 되어 있었나요?",
+        "q": "왕자가 함께 지내자고 하자 마리는 어떻게 했나요?",
         "choices": [
-            "설탕과 아몬드",
-            "초콜릿과 생강빵",
-            "얼음과 유리"
+            "기뻐하며 과자 나라에 남기로 했다",
+            "프리츠도 데려오겠다고 했다",
+            "집 생각이 나서 돌아가겠다고 했다"
         ],
-        "answer": 1
+        "answer": 2
     },
     {
         "q": "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
@@ -900,33 +900,33 @@ const EN = {
         },
         {
             q: 'How did the Nutcracker’s jaw break?',
-            choices: ['Fritz pushed the biggest nut into his mouth', 'Marie dropped him on the floor', 'The Mouse King bit it'],
+            choices: ['Fritz pushed the biggest nut into his mouth', 'Fritz threw him on the floor', 'Fritz tugged at his little sword'],
             answer: 0
         },
         {
             q: 'What did the godfather say about the doll?',
-            choices: ['That he was made in a far country', 'That he could not be mended', 'That he was a prince under the Mouse King’s spell'],
-            answer: 2
+            choices: ['That he was made in a far country', 'That he was a prince under the Mouse King’s spell', 'That he was the best nutcracker ever made'],
+            answer: 1
         },
         {
             q: 'What happened at the twelfth stroke of the clock?',
-            choices: ['The candles went out', 'Mice came pouring out of a crack in the floor', 'The tree began to move'],
-            answer: 1
-        },
-        {
-            q: 'What came out of the toy cannon?',
-            choices: ['Sweets', 'Nuts', 'Snowflakes'],
-            answer: 0
-        },
-        {
-            q: 'What did Marie do when the Nutcracker went down?',
-            choices: ['She picked the Nutcracker up and ran', 'She called for her mother', 'She threw her slipper at the Mouse King'],
+            choices: ['The candles went out', 'The tree began to move', 'Mice came pouring out of a crack in the floor'],
             answer: 2
         },
         {
-            q: 'Why did Marie decide to go home?',
-            choices: ['She did not like the Land of Sweets', 'She thought of home, her mother and Fritz', 'The prince asked her to go'],
+            q: 'Why did the Mouse King keep pushing the Nutcracker back?',
+            choices: ['His sword was too small', 'Because of his broken jaw', 'His soldiers had run away first'],
             answer: 1
+        },
+        {
+            q: 'What flowed in the river beyond the sugar road?',
+            choices: ['Chocolate', 'Water', 'Orange juice'],
+            answer: 2
+        },
+        {
+            q: 'What did Marie do when the prince asked her to stay?',
+            choices: ['Gladly stayed in the Land of Sweets', 'Said she would fetch Fritz too', 'Thought of home and said she must go back'],
+            answer: 2
         },
         {
             q: 'Which reaction to this book does NOT fit?',

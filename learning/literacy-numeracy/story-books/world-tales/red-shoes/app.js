@@ -421,16 +421,16 @@ function afterPage(spread, isFirst) {
 
 const QUIZ = [
     {
-        "q": "마을 아주머니가 카렌에게 만들어 준 신발은 어떤 것이었나요?",
+        "q": "부인은 어디에서 카렌을 처음 만났나요?",
         "choices": [
-            "빨간 헝겊 신",
-            "나막신",
-            "가죽 구두"
+            "구둣방에서",
+            "어머니를 묻는 날 그 앞을 지나다가",
+            "예배당에서"
         ],
-        "answer": 0
+        "answer": 1
     },
     {
-        "q": "부인이 그 신을 어떻게 했나요?",
+        "q": "부인은 카렌이 가져온 빨간 헝겊 신을 어떻게 했나요?",
         "choices": [
             "머리맡에 뒀다",
             "구둣방에 팔았다",
@@ -439,29 +439,29 @@ const QUIZ = [
         "answer": 2
     },
     {
-        "q": "카렌이 구둣방에서 고른 것은 무엇인가요?",
+        "q": "구둣방에서 카렌이 빨간 구두를 고른 까닭은 무엇인가요?",
         "choices": [
-            "가죽 구두",
-            "반짝이는 구두",
-            "나막신"
-        ],
-        "answer": 1
-    },
-    {
-        "q": "예배당에서 카렌은 어떤 마음이었나요?",
-        "choices": [
-            "어깨가 으쓱했다",
-            "발이 아팠다",
-            "부인이 걱정됐다"
+            "불에 탄 빨간 헝겊 신이 떠올라서",
+            "부인이 권해서",
+            "값이 제일 쌌기 때문에"
         ],
         "answer": 0
     },
     {
-        "q": "잔치에서 카렌의 구두는 어떻게 되었나요?",
+        "q": "앓아누운 부인이 물을 달라고 했을 때 카렌은 어떻게 했나요?",
         "choices": [
-            "벗겨졌다",
-            "흙이 묻었다",
-            "춤이 안 멈췄다"
+            "부르는 소리도 듣지 못했다",
+            "얼른 물을 떠다 드렸다",
+            "이웃 사람들을 불러왔다"
+        ],
+        "answer": 0
+    },
+    {
+        "q": "카렌은 어떻게 마을 잔치에 갔나요?",
+        "choices": [
+            "부인의 허락을 받고 갔다",
+            "이웃 사람들과 함께 갔다",
+            "부인이 잠든 사이 몰래 빠져나갔다"
         ],
         "answer": 2
     },
@@ -477,11 +477,11 @@ const QUIZ = [
     {
         "q": "집에 돌아온 카렌에게 부인이 한 말은 무엇인가요?",
         "choices": [
-            "돌아왔으면 됐다",
-            "다시는 오지 마라",
-            "구두는 어디 있냐"
+            "어디 다친 데는 없니",
+            "구두는 어디에 두고 왔니",
+            "돌아왔으면 됐다"
         ],
-        "answer": 0
+        "answer": 2
     },
     {
         "q": "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
@@ -830,39 +830,39 @@ const EN = {
     ],
     quiz: [
         {
-            q: 'What did the kind woman in the village make for Karen?',
-            choices: ['Red shoes sewn out of old rags', 'Wooden clogs', 'Red leather shoes'],
-            answer: 0
-        },
-        {
-            q: 'What did the old lady do with the rag shoes?',
-            choices: ['She kept them in a box', 'She gave them away', 'She put them into the fire'],
-            answer: 2
-        },
-        {
-            q: 'How did Karen get red leather shoes?',
-            choices: ['The shoemaker gave them to her', 'The lady’s eyes were weak and she thought they were black', 'She bought them herself'],
+            q: 'Where did the old lady first meet Karen?',
+            choices: ['At the shoemaker’s', 'Passing by on the day her mother was buried', 'In church'],
             answer: 1
         },
         {
-            q: 'What was Karen thinking about in church?',
-            choices: ['The red shoes and who would look at them', 'The lady’s illness', 'The feast in the square'],
-            answer: 0
-        },
-        {
-            q: 'What happened when the music started at the feast?',
-            choices: ['The shoes came off', 'She fell over', 'Her feet began to move and would not stop'],
+            q: 'What did the old lady do with the red rag shoes Karen brought?',
+            choices: ['She kept them by the bed', 'She sold them to the shoemaker', 'She put them into the fire'],
             answer: 2
         },
         {
-            q: 'What made Karen want the shoes off?',
-            choices: ['Her feet hurt too much', 'She remembered the lady lying ill at home', 'People laughed at her'],
+            q: 'Why did Karen choose the red shoes at the shoemaker’s?',
+            choices: ['They reminded her of the burnt rag shoes', 'The old lady recommended them', 'They were the cheapest pair'],
+            answer: 0
+        },
+        {
+            q: 'What did Karen do when the sick old lady asked for water?',
+            choices: ['She did not even hear her calling', 'She fetched it at once', 'She ran for the neighbours'],
+            answer: 0
+        },
+        {
+            q: 'How did Karen get to the feast?',
+            choices: ['With the old lady’s permission', 'Together with the neighbours', 'She slipped out while the old lady slept'],
+            answer: 2
+        },
+        {
+            q: 'When did the shoes come off?',
+            choices: ['When she grabbed hold of a tree', 'When she said she truly wanted them off', 'When she reached home'],
             answer: 1
         },
         {
-            q: 'Who stopped the dancing?',
-            choices: ['A woodcutter’s wife who took hold of her', 'The shoemaker', 'The old lady'],
-            answer: 0
+            q: 'What did the old lady say when Karen came home?',
+            choices: ['Are you hurt anywhere?', 'Where did you leave the shoes?', 'You came back, and that is enough'],
+            answer: 2
         },
         {
             q: 'Which reaction to this book does NOT fit?',

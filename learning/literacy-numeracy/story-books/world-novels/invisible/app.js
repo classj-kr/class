@@ -621,21 +621,21 @@ const EN = {
     quiz: [
         { q: 'How was the guest at the inn dressed?', choices: ['Wrapped from head to foot in bandages, a scarf and big glasses', 'In shabby but very neat gentleman’s clothes', 'Like a labourer, in muddy clothes with a hat pulled down'], answer: 0 },
         { q: "What was in the guest's crates?", choices: ['Many glass bottles of chemicals', 'Thick books and a bundle of old maps', 'Valuable clothes and silver plate'], answer: 0 },
-        { q: 'What startled Dr Cuss?', choices: ['An empty sleeve that moved by itself', 'A strange light leaking from a bottle', 'That the guest had no nose on his face'], answer: 0 },
-        { q: 'How did the guest reveal himself?', choices: ['He drank the drug in front of the people', 'He took off the bandages and the false nose', 'He told them his name and his research'], answer: 1 },
+        { q: 'What startled Dr Cuss?', choices: ['An empty sleeve that moved by itself', 'That the guest never touched a mouthful of food', 'That the guest had no nose on his face'], answer: 0 },
+        { q: 'In front of the people at the inn, what did the guest take off first?', choices: ['The thick gloves that came up to his wrists', 'The false nose made of wax', 'The big blue glasses'], answer: 1 },
         { q: 'How did he vanish in front of the people?', choices: ['He ran silently out of the back door', 'He took off his clothes one by one', 'He drank one more mouthful of the drug'], answer: 1 },
         { q: 'Why did Thomas Marvel become his errand runner?', choices: ['He was tempted by the offer to do research together', 'He was frightened by the words that he would be followed wherever he went', 'He was tempted by the promise of plenty of money'], answer: 1 },
-        { q: 'Why could the invisible man not carry things?', choices: ['Because his hands had no strength', 'Because things kept slipping from his hands', 'Because anything he held could be seen'], answer: 2 },
-        { q: 'Why could he not go among people after eating?', choices: ['Because his breathing grew loud after eating', 'Because he grew sleepy after eating', 'Because what he had eaten showed inside him'], answer: 2 },
+        { q: 'What was the first errand Marvel was given?', choices: ["To go into the vicarage and fetch the money box", 'To buy a train ticket to London', 'To fetch the notebooks and clothes left behind at the inn'], answer: 2 },
+        { q: 'Why could he not go among people after eating?', choices: ['Because after eating, steam rose from his body and showed his outline', 'Because dogs could smell the food in him from far off', 'Because what he had eaten showed inside him'], answer: 2 },
         { q: 'In what field did Griffin do his research on invisibility?', choices: ['The nature of heat that melts iron', 'The way blood flows in the body', 'The way light passes through things'], answer: 2 },
         { q: 'How did Griffin get money for his research?', choices: ['By doing other work every night and saving a little', 'By drawing ample research funds from the college', "By taking money his father held in trust for somebody else"], answer: 2 },
-        { q: 'Which of these was NOT a hardship he met when he first went out into London?', choices: ['Not being able to understand what people said', 'Being terribly cold with no clothes to wear', 'Being trodden on and leaving footprints'], answer: 0 },
-        { q: 'On the London streets, why did the children notice his footprints?', choices: ['Because the blood from his feet could be seen', 'Because his breath showed white in the air', 'Because he had left his shoes behind'], answer: 0 },
+        { q: 'Which of these did NOT happen when he first went out into London?', choices: ['People walked into him, not knowing he was there', 'When the fog came down, his body was hidden even better', 'A dog caught his scent and chased him to the end'], answer: 1 },
+        { q: 'On the London streets, why did the children notice his footprints?', choices: ['Because the blood from his feet could be seen', 'Because his breath showed white in the air', 'Because mud stuck to his feet and took their shape'], answer: 0 },
         { q: 'What did Griffin ask Kemp to do with him?', choices: ['Rule this district by force', 'Present the research to the society together', 'Look for a way to reverse the drug'], answer: 0 },
         { q: 'What did Kemp do after hearing Griffin\'s plan?', choices: ['Left the village together with Griffin', 'Secretly sent a note to the police', 'Burned the research notebooks'], answer: 1 },
         { q: 'Why did Kemp propose spreading powdered glass on the road?', choices: ['To help the dogs pick up the scent', 'Because Griffin went barefoot', 'To hear him coming'], answer: 1 },
         { q: "What was Griffin's face like when the people finally saw it?", choices: ['Twisted and terrible, like a beast’s', 'Hidden by bandages to the very end', 'Simply the face of a young man of about thirty'], answer: 2 },
-        { q: 'Which of these is NOT a fair thing to say after reading this book?', wide: true, choices: ['Seeing how the first things Griffin met once invisible were cold and hunger, being unseen was a burden, not a power.', 'Seeing how Kemp could not sit easy in his study the night he informed on his old friend, a right deed and an easy heart do not come together.', 'Seeing how Marvel keeps Griffin’s three notebooks, Marvel too may become invisible one day.', 'Seeing how the one person Griffin called by name after six years was Kemp, even Griffin could not live entirely without people.'], answer: 2 }
+        { q: 'Which of these is NOT a fair thing to say after reading this book?', wide: true, choices: ['Seeing how the first things Griffin met once invisible were cold and hunger, being unseen was a burden, not a power.', 'Seeing how Kemp sat so long in his study that night even though he knew he was doing the right thing, a right deed and an easy heart do not come together.', 'Seeing how Marvel pored over the three notebooks night after night and in the end managed to read them, the knowledge stayed even with a timid man.','Seeing how the one person Griffin called by name after six years was Kemp, even Griffin could not live entirely without people.'], answer: 2 }
     ]
 };
 
@@ -1149,21 +1149,21 @@ function chapterSpreadPage(spread) {
 const QUIZ = [
     { q: "여관에 온 손님의 차림새는 어떠했습니까?", choices: ["붕대와 목도리와 큰 안경으로 온몸을 감쌌다", "낡았지만 아주 깔끔한 신사 차림을 하고 있었다", "일꾼처럼 흙 묻은 옷에 모자만 눌러썼다"], answer: 0 },
     { q: "손님의 짐 상자에 들어 있던 것은 무엇입니까?", choices: ["약을 담은 유리병 여러 개", "두꺼운 책과 오래된 지도 뭉치", "값나가는 옷가지와 은식기들"], answer: 0 },
-    { q: "의사 커스가 보고 놀란 것은 무엇입니까?", choices: ["안이 빈 소매가 저절로 움직인 것", "병에서 이상한 빛이 새어 나온 것", "손님의 얼굴에 코가 없던 것"], answer: 0 },
-    { q: "손님이 정체를 드러낸 방식은 무엇입니까?", choices: ["사람들 앞에서 약을 마셔 보였다", "붕대와 가짜 코를 벗어 보였다", "자기 이름과 연구를 털어놓았다"], answer: 1 },
+    { q: "의사 커스가 보고 놀란 것은 무엇입니까?", choices: ["안이 빈 소매가 저절로 움직인 것", "손님이 밥을 한 술도 뜨지 않는 것", "손님의 얼굴에 코가 없던 것"], answer: 0 },
+    { q: "여관 사람들 앞에서 손님이 제일 먼저 떼어 낸 것은 무엇입니까?", choices: ["손목까지 올라오는 두꺼운 장갑", "밀랍으로 만든 가짜 코", "알이 큰 파란 안경"], answer: 1 },
     { q: "그가 사람들 앞에서 사라진 방법은 무엇입니까?", choices: ["뒷문으로 소리 없이 뛰어나갔다", "입고 있던 옷을 하나씩 벗었다", "약을 한 모금 더 마셔 버렸다"], answer: 1 },
     { q: "토머스 마블이 그의 심부름꾼이 된 까닭은 무엇입니까?", choices: ["연구를 함께 해 보자는 말에 솔깃해서", "어디로 가든 따라오겠다는 말에 겁을 먹어서", "돈을 넉넉히 주겠다는 말에 마음이 동해서"], answer: 1 },
-    { q: "보이지 않는 사람이 물건을 들고 다니지 못한 까닭은 무엇입니까?", choices: ["손에 힘이 들어가지 않기 때문에", "물건이 손에서 자꾸 미끄러지기 때문에", "들고 있는 물건은 그대로 보이기 때문에"], answer: 2 },
-    { q: "밥을 먹은 뒤 그가 사람 앞에 나서지 못한 까닭은 무엇입니까?", choices: ["먹고 나면 숨소리가 크게 나기 때문에", "먹고 나면 졸음이 몰려오기 때문에", "먹은 것이 배 속에서 그대로 보여서"], answer: 2 },
+    { q: "마블이 처음 맡은 심부름은 무엇입니까?", choices: ["목사관에 들어가 돈통을 가져오는 것", "런던으로 가는 기차표를 사 오는 것", "여관에 두고 온 노트와 옷가지를 가져오는 것"], answer: 2 },
+    { q: "밥을 먹은 뒤 그가 사람 앞에 나서지 못한 까닭은 무엇입니까?", choices: ["먹고 나면 몸에서 김이 올라 윤곽이 드러나서", "먹은 것의 냄새를 개가 멀리서도 맡기 때문에", "먹은 것이 배 속에서 그대로 보여서"], answer: 2 },
     { q: "그리핀이 투명해지는 연구를 한 분야는 무엇입니까?", choices: ["쇠를 녹이는 열의 성질", "몸속에서 피가 도는 이치와 길", "빛이 물체를 지나가는 성질"], answer: 2 },
     { q: "그리핀이 연구비를 마련한 방법은 무엇입니까?", choices: ["밤마다 다른 일을 해서 돈을 조금씩 모아서", "학교에서 연구비를 넉넉히 타 내어 쓰면서", "아버지가 남에게 맡아 둔 돈에 손을 대서"], answer: 2 },
-    { q: "런던 거리로 처음 나섰을 때 그가 겪은 어려움이 아닌 것은 무엇입니까?", choices: ["사람들 말을 알아들을 수 없는 것", "옷을 못 입어 몹시 춥고 시린 것", "길에 밟혀 발자국이 남고 마는 것"], answer: 0 },
-    { q: "런던 거리에서 아이들이 그의 발자국을 알아본 까닭은 무엇입니까?", choices: ["발에서 난 피는 그대로 보였기 때문에", "허공에 입김이 하얗게 보였기 때문에", "신발을 벗어 두고 나왔기 때문에"], answer: 0 },
+    { q: "런던 거리로 처음 나섰을 때 그가 겪은 일이 아닌 것은 무엇입니까?", choices: ["사람들이 그가 있는 줄 모르고 부딪쳐 온 것", "안개가 끼자 몸이 오히려 더 잘 감춰진 것", "개가 냄새를 맡고 끝까지 쫓아온 것"], answer: 1 },
+    { q: "런던 거리에서 아이들이 그의 발자국을 알아본 까닭은 무엇입니까?", choices: ["발에서 난 피는 그대로 보였기 때문에", "허공에 입김이 하얗게 보였기 때문에", "진흙이 발에 묻어 발 모양이 되었기 때문에"], answer: 0 },
     { q: "그리핀이 켐프에게 하자고 한 것은 무엇입니까?", choices: ["이 고장을 힘으로 다스려 보자", "연구를 학회에 함께 내놓자", "약을 되돌릴 방법을 찾아보자"], answer: 0 },
     { q: "그리핀의 계획을 들은 켐프가 한 일은 무엇입니까?", choices: ["그리핀과 함께 마을을 떠났다", "몰래 경찰에 쪽지를 보냈다", "연구 공책을 불태워 버렸다"], answer: 1 },
     { q: "켐프가 길에 유리 가루를 뿌리자고 한 까닭은 무엇입니까?", choices: ["개들이 냄새를 잘 맡게 하려고", "그리핀이 맨발로 다니기 때문에", "다가오는 소리를 들으려고"], answer: 1 },
     { q: "마지막에 사람들이 본 그리핀의 얼굴은 어떠했습니까?", choices: ["짐승처럼 무섭게 일그러진 얼굴 그대로였다", "붕대에 가려 끝내 보이지 않았다", "그저 서른 살쯤 된 젊은 사람 얼굴이었다"], answer: 2 },
-    { q: "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?", wide: true, choices: ["그리핀이 보이지 않게 되고서 제일 먼저 겪은 게 추위와 굶주림이었던 것을 보면, 안 보이는 게 힘이 아니라 짐이었네.", "켐프가 옛 친구를 신고하고도 그날 밤 서재에서 편히 앉아 있지 못한 것을 보면, 옳은 일과 편한 마음이 같이 오지는 않는구나.", "마블이 그리핀의 노트 세 권을 갖고 있는 것을 보면, 마블도 언젠가 투명해질 수 있겠어.", "그리핀이 여섯 해 만에 이름을 부른 사람이 켐프였던 것을 보면, 그리핀도 사람이 아주 없이는 못 살았던 거야."], answer: 2 }
+    { q: "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?", wide: true, choices: ["그리핀이 보이지 않게 되고서 제일 먼저 겪은 게 추위와 굶주림이었던 것을 보면, 안 보이는 게 힘이 아니라 짐이었네.", "켐프가 그날 밤 옳은 일을 하고 있다고 알면서도 서재에 오래 앉아 있었던 것을 보면, 옳은 일과 편한 마음이 같이 오지는 않는구나.", "마블이 노트 세 권을 밤마다 펴 보다가 끝내 읽어 낸 것을 보면, 겁 많은 사람에게도 그 앎은 남은 거야.","그리핀이 여섯 해 만에 이름을 부른 사람이 켐프였던 것을 보면, 그리핀도 사람이 아주 없이는 못 살았던 거야."], answer: 2 }
 ];
 
 // 선지를 세로로 쌓으니 한 쪽에 열여섯 문항이 다 들어가지 않는다. 몇 개씩 나눠 싣는다.

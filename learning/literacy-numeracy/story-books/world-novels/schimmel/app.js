@@ -641,22 +641,22 @@ const EN = {
     },
     quiz: [
         { q: 'What is the dyke to the people of North Frisia?', choices: ['A bank without which the land becomes sea in a day', 'A work for drawing in sea water to make salt', 'A channel dug so that ships can come and go'], answer: 0 },
-        { q: 'What did Hauke say was wrong with the old dyke?', choices: ['The sea side was steep, so the waves struck it', 'It was too low, so water came over the top', 'It was built of stone, so the waves broke it easily'], answer: 0 },
+        { q: 'What did his father do when twelve-year-old Hauke said the dyke was built wrong?', choices: ['Scolded him for talking nonsense about a three-hundred-year-old dyke', 'Laughed, then heard him out and gave him his own ruler', 'Took him straight to the dykemaster to say it there'], answer: 1 },
         { q: 'What shape of dyke did Hauke propose?', choices: ['Building the top up higher', 'Facing the sea side thickly with stone', 'Laying the sea side out long and gentle'], answer: 2 },
         { q: 'How did Hauke read the geometry book written in Dutch?', choices: ['He worked it out alone from the figures and numbers', 'The schoolmaster taught him', 'His father read it to him every night'], answer: 0 },
-        { q: 'Who was supposed to hold the post of dykemaster in those days?', choices: ['A man the villagers gathered and elected', 'The one man who knew dyke work best', 'The man who owned the most land in the village'], answer: 2 },
+        { q: 'What was the first job Hauke took on at eighteen in the dykemaster’s house?', choices: ['Keeping the books, reckoning wages and writing the papers', 'Walking the dyke to look for damaged places', 'Teaching the labourers how to tamp earth'], answer: 0 },
         { q: 'How did Hauke come to take that post?', choices: ["The authorities recognised Hauke's head for figures", "Elke declared she would inherit her father's land and marry him", 'Ole Peters stepped aside of his own accord'], answer: 1 },
-        { q: 'What side of Hauke did the cat incident show?', choices: ['That he knew what was right but had a quick temper', 'That he was timid and afraid of animals', "That he wanted other people's things and took them"], answer: 0 },
+        { q: 'What did Hauke do after he killed the cat?', choices: ['Told nobody and went home with only the bird', 'Went about the village saying the cat had attacked him first', 'Told the old woman he was sorry and later bought her another cat'], answer: 2 },
         { q: 'What was the biggest reason the villagers opposed the new dyke?', choices: ['Nobody had ever seen a dyke of that shape', "Too much of the village's money would go into the work", "A large part of the new land would become Hauke's"], answer: 2 },
-        { q: 'Why did the people try to put something living into the new dyke?', choices: ['The authorities ordered them to pay the sea god', 'The work kept running late and the people were angry', 'Because of an old superstition that otherwise the dyke would not hold'], answer: 2 },
+        { q: 'Why did the people try to put something living into the new dyke?', choices: ['The dog kept digging up the earth on the works and they were angry', 'The work kept running late and the people were angry', 'Because of an old superstition that otherwise the dyke would not hold'], answer: 2 },
         { q: 'What did Hauke say then?', choices: ["It is people's will that holds a dyke", 'It is earth and angle that hold a dyke', 'It is the old law that holds a dyke'], answer: 1 },
         { q: 'How did the rumour about the white horse arise?', choices: ['The vagrant came into the village and spread it about', 'A passing remark was repeated, and the third person stated it as fact', 'Hauke himself went about saying it'], answer: 1 },
-        { q: 'Where did the dyke actually break?', choices: ['At the lowest place on the old dyke', 'In the very middle of the new dyke', 'At the join where the new dyke met the old'], answer: 2 },
+        { q: 'What did Ole Peters say when Hauke asked to mend the join?', choices: ['That man got his post through a woman', 'And who made that join the way it is, if not you?', 'In spring the whole village will turn out'], answer: 1 },
         { q: 'Why did Hauke put off mending the join until spring?', choices: ['The earth freezes in winter and the work could not be done', 'He had been tired for years and gave way to the opposition', 'The authorities never granted permission'], answer: 1 },
         { q: 'Why did the people try to cut the new dyke that night?', choices: ['Out of a wish to take revenge on Hauke', 'They thought draining the water that way would let the old dyke hold', 'The new dyke seemed about to break first'], answer: 1 },
         { q: 'What became clear the next morning?', choices: ['The new dyke was not damaged in a single place', 'Both the new dyke and the old had collapsed', 'Only the old dyke was left standing'], answer: 0 },
         { q: 'What did the old schoolmaster say was the heart of this story?', choices: ['Knowing what is right and getting people to do it are different things', 'A person who knows what is right must also build the strength to defend it', 'Knowing what is right is no use if the time is not right'], answer: 0 },
-        { q: 'Which of these is NOT a fair thing to say after reading this book?', wide: true, choices: ['Seeing how Hauke worried about the place where the new dyke met the old, he must have thought he had built the new dyke wrong.', 'Seeing how Hauke worried about the place where new earth met three-hundred-year-old earth, the weakest spot was neither new nor old but the seam between.', 'Seeing how the people named the new dyke after Hauke and still never called it his doing, naming a thing and being grateful for it are different.', 'Seeing how Hauke, who knew what was right, sometimes acted wrongly, this story does not draw its hero as a man without fault.'], answer: 0 }
+        { q: 'Which of these is NOT a fair thing to say after reading this book?', wide: true, choices: ['Seeing how Hauke worried about the place where the new dyke met the old, he must have thought he had built the new dyke wrong.', 'Seeing how Hauke bought the starved white horse and fed it for months, he had read from its frame what kind of horse it was.', 'Seeing how the people named the new dyke after Hauke and still never called it his doing, naming a thing and being grateful for it are different.', 'Seeing how Hauke, who knew what was right, sometimes acted wrongly, this story does not draw its hero as a man without fault.'], answer: 0 }
     ]
 };
 
@@ -1136,22 +1136,22 @@ function chapterSpreadPage(spread) {
 
 const QUIZ = [
     { q: "북프리슬란트 사람들에게 제방이 무엇입니까?", choices: ["없으면 그 땅이 하루 만에 바다가 되는 둑", "바닷물을 끌어들여 소금을 얻어 내는 시설", "배가 드나들 수 있게 파 놓은 물길"], answer: 0 },
-    { q: "하우케가 옛 제방의 무엇이 잘못됐다고 했습니까?", choices: ["바다 쪽 면이 가팔라 파도가 때린다", "높이가 낮아서 물이 넘어 들어온다", "돌로 쌓아서 파도에 쉽게 깨진다"], answer: 0 },
+    { q: "열두 살 하우케가 제방이 잘못 만들어졌다고 말하자 아버지는 어떻게 했습니까?", choices: ["삼백 년 된 제방을 두고 헛소리 말라고 꾸짖었다", "웃었다가 이야기를 다 듣고 나서 자기 자를 주었다", "그 자리에서 감독관에게 데려가 말하게 했다"], answer: 1 },
     { q: "하우케가 제안한 제방 모양은 무엇입니까?", choices: ["위쪽을 더 높이 쌓아 올리는 것", "바다 쪽에 돌을 두껍게 붙이는 것", "바다 쪽 면을 길게 눕히는 것"], answer: 2 },
     { q: "하우케가 네덜란드 말로 된 기하학 책을 어떻게 읽었습니까?", choices: ["그림과 숫자만 보고 혼자 알아내서", "학교 선생에게 배워 익혔기 때문에", "아버지가 밤마다 읽어 주었기 때문에"], answer: 0 },
-    { q: "그 시절 제방 감독관 자리는 누가 맡게 되어 있었습니까?", choices: ["마을 사람들이 모여 뽑아 세운 사람", "제방 일을 가장 잘 아는 사람 하나", "그 마을에서 땅을 많이 가진 사람"], answer: 2 },
+    { q: "열여덟 살 하우케가 감독관 집에 들어가 처음 맡은 일은 무엇입니까?", choices: ["장부를 적고 삯을 셈하고 서류를 쓰는 일", "제방 위를 돌며 상한 자리를 살피는 일", "인부들에게 흙 다지는 법을 가르치는 일"], answer: 0 },
     { q: "하우케가 그 자리에 앉게 된 계기는 무엇입니까?", choices: ["관청에서 하우케의 셈이 밝은 것을 알아보아서", "엘케가 아버지 땅을 물려받고 혼인하겠다고 밝혀서", "올레 페테르스가 스스로 물러나 주었기 때문에"], answer: 1 },
-    { q: "고양이 일로 드러난 하우케의 모습은 무엇입니까?", choices: ["옳은 것을 알면서도 성질이 급한 모습", "짐승을 무서워하는 겁 많은 모습", "남의 것을 탐내 빼앗는 모습"], answer: 0 },
+    { q: "고양이를 죽인 뒤 하우케는 어떻게 했습니까?", choices: ["아무에게도 말하지 않고 물새만 들고 집에 갔다", "고양이가 먼저 덤볐다고 마을에 말하고 다녔다", "노파에게 잘못했다고 하고 나중에 다른 고양이를 사다 주었다"], answer: 2 },
     { q: "마을 사람들이 새 제방 공사에 반대한 가장 큰 까닭은 무엇입니까?", choices: ["그런 모양의 제방을 아무도 본 적이 없었기에", "공사에 마을 돈이 너무 많이 들어가게 되어서", "새로 생긴 땅의 상당 부분이 하우케 것이 되어서"], answer: 2 },
-    { q: "사람들이 새 제방에 산 것을 넣으려 한 까닭은 무엇입니까?", choices: ["바다 신에게 값을 치르라고 관청에서 시켰기 때문에", "공사가 자꾸 늦어져 사람들이 화가 났기 때문에", "그래야 제방이 안 무너진다는 오래된 미신 때문에"], answer: 2 },
+    { q: "사람들이 새 제방에 산 것을 넣으려 한 까닭은 무엇입니까?", choices: ["개가 공사장에서 자꾸 흙을 파헤쳐 화가 났기 때문에", "공사가 자꾸 늦어져 사람들이 화가 났기 때문에", "그래야 제방이 안 무너진다는 오래된 미신 때문에"], answer: 2 },
     { q: "하우케가 그때 한 말은 무엇입니까?", choices: ["제방은 사람의 뜻이 세우는 것이다", "제방은 흙과 각도가 세우는 것이다", "제방은 오래된 법이 세우는 것이다"], answer: 1 },
     { q: "백마에 대한 소문은 어떻게 생겼습니까?", choices: ["떠돌이가 마을에 들어와 그런 말을 퍼뜨리고 다녀서", "지나가는 말이 옮겨지고 세 번째 사람이 사실로 말하면서", "하우케가 스스로 그렇게 말하고 다녔기 때문에"], answer: 1 },
-    { q: "실제로 무너진 곳은 어디입니까?", choices: ["옛 제방에서 제일 낮은 쪽 자리", "새로 쌓은 제방의 한가운데 되는 곳", "새 제방과 옛 제방이 만나는 이음매"], answer: 2 },
+    { q: "하우케가 이음매 공사를 하자고 했을 때 올레 페테르스가 한 말은 무엇입니까?", choices: ["저 사람은 여자 덕에 그 자리에 앉았소", "그 이음매를 그렇게 만든 건 당신 아니오", "봄이 되면 마을 사람들이 다 나서겠소"], answer: 1 },
     { q: "하우케가 그 이음매 공사를 봄으로 미룬 까닭은 무엇입니까?", choices: ["겨울에는 흙이 얼어 공사를 할 수가 없어서", "여러 해 지쳐 있었고 사람들 반대에 물러서서", "관청에서 끝내 허가를 내주지 않았기 때문에"], answer: 1 },
     { q: "그날 밤 사람들이 새 제방을 파려고 한 까닭은 무엇입니까?", choices: ["하우케에게 앙갚음을 하려는 마음 때문에", "물을 그리로 빼면 옛 제방이 견딘다고 여겨서", "새 제방이 곧 먼저 무너질 것 같았기 때문에"], answer: 1 },
     { q: "이튿날 아침에 밝혀진 것은 무엇입니까?", choices: ["새 제방은 한 군데도 상하지 않았다", "새 제방과 옛 제방이 다 무너져 있었다", "옛 제방 쪽만 그대로 남아 있었다"], answer: 0 },
     { q: "늙은 선생이 말한 이 이야기의 핵심은 무엇입니까?", choices: ["옳은 것을 아는 것과 그것을 하게 만드는 것은 다르다", "옳은 것을 아는 사람은 그것을 지킬 힘도 길러야 한다", "옳은 것을 알아도 때를 못 만나면 아무 소용이 없다"], answer: 0 },
-    { q: "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?", wide: true, choices: ["하우케가 새 제방과 옛 제방이 맞붙은 자리를 걱정한 것을 보면, 새 제방을 잘못 쌓았다고 여긴 거야.", "새 흙과 삼백 년 된 흙이 맞붙은 자리를 하우케가 걱정한 것을 보면, 제일 약한 데는 새것도 옛것도 아닌 그 사이였어.", "사람들이 새 제방에 하우케의 이름을 붙이고도 그 덕이라고는 안 한 것을 보면, 이름을 붙이는 것과 고맙게 여기는 건 다른 일이네.", "옳은 걸 아는 하우케가 옳지 않게 굴기도 한 것을 보면, 이 이야기는 주인공을 흠 없는 사람으로 그리지 않았구나."], answer: 0 }
+    { q: "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?", wide: true, choices: ["하우케가 새 제방과 옛 제방이 맞붙은 자리를 걱정한 것을 보면, 새 제방을 잘못 쌓았다고 여긴 거야.", "하우케가 말라빠진 흰 말을 사서 여러 달 먹인 것을 보면, 뼈대를 보고 그 말이 어떤 말인지 알아본 거야.", "사람들이 새 제방에 하우케의 이름을 붙이고도 그 덕이라고는 안 한 것을 보면, 이름을 붙이는 것과 고맙게 여기는 건 다른 일이네.", "옳은 걸 아는 하우케가 옳지 않게 굴기도 한 것을 보면, 이 이야기는 주인공을 흠 없는 사람으로 그리지 않았구나."], answer: 0 }
 ];
 
 // 선지를 세로로 쌓으니 한 쪽에 열여섯 문항이 다 들어가지 않는다. 몇 개씩 나눠 싣는다.

@@ -419,65 +419,65 @@ function afterPage(spread, isFirst) {
 
 const QUIZ = [
     {
-        "q": "어머니가 가지 말라고 한 곳은 어디인가요?",
+        "q": "어머니가 그 밭에 가지 말라고 한 까닭은 무엇인가요?",
         "choices": [
-            "아저씨네 밭",
-            "들판",
-            "전나무 밑"
+            "아버지가 거기서 혼이 나 돌아오지 못해서",
+            "빵을 사 올 때까지 집을 지켜야 해서",
+            "밭에 그물이 쳐져 있어서"
         ],
         "answer": 0
     },
     {
-        "q": "세 남매가 들판에서 먹은 것은 무엇인가요?",
+        "q": "피터는 밭에서 무엇을 어떤 차례로 먹었나요?",
         "choices": [
-            "상추",
-            "파슬리",
-            "검은딸기"
-        ],
-        "answer": 2
-    },
-    {
-        "q": "피터가 배가 아파 찾은 것은 무엇인가요?",
-        "choices": [
-            "상추",
-            "파슬리",
-            "강낭콩"
+            "무, 상추, 강낭콩",
+            "상추, 강낭콩, 무",
+            "강낭콩, 무, 상추"
         ],
         "answer": 1
     },
     {
-        "q": "피터가 밭에서 잃어버린 것은 무엇인가요?",
+        "q": "피터가 파슬리를 찾다가 마주친 것은 무엇이었나요?",
         "choices": [
-            "신발과 웃옷",
-            "신발만",
-            "단추"
+            "연못가 바위 위의 하얀 고양이",
+            "허수아비",
+            "양배추를 심던 맥그리거 아저씨"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "피터의 웃옷은 어디에 남았나요?",
+        "choices": [
+            "새를 막으려고 씌운 그물에",
+            "양배추밭 잎 사이에",
+            "창고의 물뿌리개 속에"
         ],
         "answer": 0
     },
     {
-        "q": "그물에 걸린 피터를 응원한 것은 무엇인가요?",
+        "q": "단추가 걸려 꼼짝 못 하던 피터를 응원한 것은 무엇인가요?",
         "choices": [
             "금붕어",
-            "하얀 고양이",
-            "참새 두 마리"
+            "참새 두 마리",
+            "하얀 고양이"
         ],
-        "answer": 2
+        "answer": 1
     },
     {
         "q": "창고에서 피터가 들킨 까닭은 무엇인가요?",
         "choices": [
             "화분을 깨서",
-            "코가 간질거려서",
-            "물뿌리개를 넘어뜨려서"
+            "물뿌리개를 넘어뜨려서",
+            "코가 간질거려서"
         ],
-        "answer": 1
+        "answer": 2
     },
     {
-        "q": "집에 돌아온 피터의 저녁은 무엇이었나요?",
+        "q": "그날 저녁 피터는 무엇을 먹었나요?",
         "choices": [
-            "냄새만 맡았다",
-            "빵과 우유",
-            "검은딸기"
+            "캐모마일 차 한 숟갈",
+            "빵과 우유와 검은딸기",
+            "상추 한 포기"
         ],
         "answer": 0
     },
@@ -485,12 +485,12 @@ const QUIZ = [
         "q": "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
         "wide": true,
         "choices": [
-                "어머니가 아버지 이야기를 꺼낸 것을 보면, 그 밭이 얼마나 위험한지 알려 주려 했네.",
+                "가지 말라니까 피터의 눈이 오히려 밭 쪽으로 간 것을 보면, 말릴수록 더 궁금해진 거지.",
+                "피터가 연못가 고양이를 그냥 지나친 것을 보면, 고양이와 사이가 좋아 걱정하지 않았네.",
                 "피터가 파슬리를 찾아 나선 것을 보면, 너무 많이 먹어 배가 아팠던 거지.",
-                "허수아비가 작은 웃옷과 신발을 걸치고 있던 것을 보면, 피터가 두고 온 것이 거기 쓰였구나.",
-                "피터가 연못가 고양이를 그냥 지나친 것을 보면, 고양이와 사이가 좋아 걱정하지 않았네."
+                "허수아비가 작은 웃옷과 신발을 걸치고 있던 것을 보면, 피터가 두고 온 것이 거기 쓰였구나."
             ],
-        "answer": 3
+        "answer": 1
     }
 ];
 
@@ -893,50 +893,50 @@ const EN = {
     ],
     quiz: [
         {
-            q: 'What did their mother tell them not to do?',
-            choices: ["Go into Mr McGregor's garden", 'Eat blackberries in the lane', 'Play near the fir tree'],
+            q: 'Why did their mother tell them not to go into that garden?',
+            choices: ['Their father had come to grief there and never came back', 'They had to watch the house until she came back with the bread', 'There was a net stretched over it'],
             answer: 0
         },
         {
-            q: 'How did Peter get into the garden?',
-            choices: ['Over the wall', 'Through the shed', 'Through a gap under the wooden gate'],
-            answer: 2
-        },
-        {
-            q: 'Why was Peter looking for parsley?',
-            choices: ['His mother had asked for some', 'His stomach ached from eating too much', 'He wanted to take it home'],
+            q: 'What did Peter eat in the garden, and in what order?',
+            choices: ['Radishes, lettuces, beans', 'Lettuces, beans, radishes', 'Beans, radishes, lettuces'],
             answer: 1
         },
         {
-            q: 'What caught in the net over the gooseberry bush?',
-            choices: ['The buttons of his jacket', 'One of his shoes', 'His ear'],
+            q: 'Whom did Peter run into while looking for parsley?',
+            choices: ['The white cat on the rock by the pond', 'The scarecrow', 'Mr McGregor, planting cabbages'],
+            answer: 2
+        },
+        {
+            q: "Where was Peter's jacket left behind?",
+            choices: ['In the net over the fruit bushes', 'Among the cabbage leaves', 'In the watering can in the shed'],
             answer: 0
+        },
+        {
+            q: 'Who cheered Peter on while his buttons were caught?',
+            choices: ['The goldfish', 'Two sparrows', 'The white cat'],
+            answer: 1
         },
         {
             q: 'What gave Peter away in the shed?',
-            choices: ['He knocked over a flower pot', 'The cat found him', 'He sneezed'],
+            choices: ['He broke a flower pot', 'He knocked over the watering can', 'His nose began to tickle'],
             answer: 2
         },
         {
-            q: 'What did Peter get for supper?',
-            choices: ['Bread and milk and blackberries', 'Camomile tea and bed', 'Nothing at all'],
-            answer: 1
-        },
-        {
-            q: 'What was the scarecrow wearing next morning?',
-            choices: ['Peter’s jacket and one of his shoes', 'An old sack', 'Mr McGregor’s hat'],
+            q: 'What did Peter have that evening?',
+            choices: ['A spoonful of camomile tea', 'Bread and milk and blackberries', 'A head of lettuce'],
             answer: 0
         },
         {
             q: 'Which reaction to this book does NOT fit?',
             wide: true,
             choices: [
-                "Their mother brought up their father — she was telling them how dangerous that garden was.",
+                "Told not to go, Peter kept looking towards the garden — the more he was warned, the more he wanted to know.",
+                "Peter walked past the cat by the pond — they were on good terms and he was not worried.",
                 "Peter went looking for parsley — he had eaten far too much and his stomach hurt.",
-                "The scarecrow was wearing a little jacket and shoes — what Peter left behind had been put to use.",
-                "Peter walked past the cat by the pond — they were on good terms and he was not worried."
+                "The scarecrow was wearing a little jacket and shoes — what Peter left behind had been put to use."
             ],
-            answer: 3
+            answer: 1
         }
     ],
     afterword: {

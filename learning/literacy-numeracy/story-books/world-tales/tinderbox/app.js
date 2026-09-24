@@ -432,8 +432,8 @@ const QUIZ = [
         "q": "노파가 병사에게 꼭 가져오라고 한 것은 무엇인가요?",
         "choices": [
             "낡은 통",
-            "금화",
-            "앞치마"
+            "금화 한 자루",
+            "밧줄"
         ],
         "answer": 0
     },
@@ -447,20 +447,20 @@ const QUIZ = [
         "answer": 2
     },
     {
-        "q": "세 번째 방의 개는 어땠나요?",
+        "q": "은화가 든 궤짝을 본 병사는 어떻게 했나요?",
         "choices": [
-            "가장 작았다",
-            "덩치가 가장 컸다",
-            "눈이 하나였다"
+            "동전 위에 은화를 더 얹었다",
+            "동전을 쏟아 버리고 은화를 채웠다",
+            "은화는 그대로 두고 나왔다"
         ],
         "answer": 1
     },
     {
-        "q": "노파의 말을 뿌리친 병사는 어떻게 했나요?",
+        "q": "병사가 노파에게 통을 내주지 않은 까닭은 무엇인가요?",
         "choices": [
-            "그냥 걸어갔다",
-            "여관으로 갔다",
-            "나무로 돌아갔다"
+            "어디에 쓰는지 말해 주지 않아서",
+            "돈을 더 달라고 해서",
+            "노파가 도둑이라고 불러서"
         ],
         "answer": 0
     },
@@ -487,7 +487,7 @@ const QUIZ = [
         "choices": [
             "놀던 아이",
             "여관 주인",
-            "개"
+            "옛 친구"
         ],
         "answer": 0
     },
@@ -495,10 +495,10 @@ const QUIZ = [
         "q": "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
         "wide": true,
         "choices": [
-                "병사가 방마다 앞의 것을 쏟아 버리고 새로 담은 것을 보면, 더 나은 것이 나오자 앞의 것이 시들해졌구나.",
-                "노파가 돈은 얼마든지 가져가라면서 통만은 꼭 달라고 한 것을 보면, 값어치가 그 통에 있었던 거지.",
+                "병사가 성냥이 없어서야 통을 떠올린 것을 보면, 그때까지는 그 통을 잊고 있었네.",
+                "노파가 돈은 얼마든지 가져가라고 한 것을 보면, 노파가 바란 것은 돈이 아니었던 거지.",
                 "돈이 떨어지자 발길을 끊었던 친구들이 다시 넉넉해지자 돌아온 것을 보면, 무엇을 보고 온 사람들이었는지 드러났어.",
-                "노파가 병사의 허리에 밧줄을 매어 주고 앞치마까지 건넨 것을 보면, 병사가 다치지 않게 챙겨 준 것이었구나."
+                "임금님이 개 세 마리를 보고 껄껄 웃으며 병사를 풀어 준 것을 보면, 처음부터 벌을 줄 생각이 없었구나."
             ],
         "answer": 3
     }
@@ -911,7 +911,7 @@ const EN = {
     quiz: [
         {
             q: 'What did the old woman want from inside the tree?',
-            choices: ['Her tinderbox', 'The gold from the third room', 'The apron back'],
+            choices: ['Her tinderbox', 'The gold from the third room', 'The rope'],
             answer: 0
         },
         {
@@ -941,17 +941,17 @@ const EN = {
         },
         {
             q: 'Who fetched the tinderbox to the prison?',
-            choices: ['A child playing in the street', 'The innkeeper', 'One of his friends'],
+            choices: ['A child playing in the street', 'The innkeeper', 'One of his old friends'],
             answer: 0
         },
         {
             q: 'Which reaction to this book does NOT fit?',
             wide: true,
             choices: [
-                "In each room he tipped out what he had and filled up again — once something better appeared the old lot lost its shine.",
-                "She said take all the money you like but insisted on the box — the worth of the thing was in the box.",
+                "He only remembered the box when he had no matches — until then he had forgotten all about it.",
+                "She said take all the money you like — money was not what she was after.",
                 "The friends who dropped away when the money ran out came back when it returned — it showed what had brought them.",
-                "The old woman tied the rope round the soldier's waist and handed him an apron as well — she was looking after him so that he would not be hurt."
+                "The king laughed out loud at the three dogs and let the soldier go — he had never meant to punish him at all."
             ],
             answer: 3
         }

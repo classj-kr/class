@@ -395,18 +395,18 @@ const QUIZ = [
     {
         "q": "어머니가 빨간 모자에게 당부한 것은 무엇인가요?",
         "choices": [
-            "꽃을 꺾어 가기",
-            "바구니를 머리에 이기",
+            "할머니께 꽃을 꺾어 드리기",
+            "물레방아에 들렀다 가기",
             "큰길로만 가기"
         ],
         "answer": 2
     },
     {
-        "q": "늑대는 빨간 모자를 어떻게 길에서 멀어지게 했나요?",
+        "q": "빨간 모자가 늑대를 무서워하지 않은 까닭은 무엇인가요?",
         "choices": [
-            "물레방아를 물었다",
-            "꽃밭을 가리켰다",
-            "빵을 달라고 했다"
+            "늑대가 아주 작아서",
+            "늑대가 나쁜 줄 몰라서",
+            "할머니가 기르는 늑대라서"
         ],
         "answer": 1
     },
@@ -415,7 +415,7 @@ const QUIZ = [
         "choices": [
             "곱게 목소리를 냈다",
             "문을 부수고 들어갔다",
-            "두건을 쓰고 나왔다"
+            "창문으로 기어들었다"
         ],
         "answer": 0
     },
@@ -431,7 +431,7 @@ const QUIZ = [
     {
         "q": "빨간 모자가 이상하다고 여긴 까닭은 무엇인가요?",
         "choices": [
-            "목소리가 굵어서",
+            "숨소리가 거칠어서",
             "발이 보여서",
             "안경을 써서"
         ],
@@ -447,11 +447,11 @@ const QUIZ = [
         "answer": 0
     },
     {
-        "q": "집에 가는 길에 빨간 모자는 꽃밭을 어떻게 했나요?",
+        "q": "집에 가는 길에 꽃밭을 보고 빨간 모자는 뭐라고 했나요?",
         "choices": [
-            "꽃을 꺾었다",
-            "다시 들어갔다",
-            "그냥 지나쳤다"
+            "조금만 따 갈까",
+            "할머니가 좋아하시겠는데",
+            "오늘은 그냥 갈래"
         ],
         "answer": 2
     },
@@ -460,7 +460,7 @@ const QUIZ = [
         "wide": true,
         "choices": [
                 "늑대가 할머니 댁이 어디쯤이냐고 물은 것을 보면, 먼저 가 있으려고 길을 알아냈네.",
-                "늑대가 저기 꽃이 곱다고 손짓한 것을 보면, 빨간 모자를 큰길에서 떼어 놓으려 한 거지.",
+                "늑대가 꼬리를 잠옷 자락 밑으로 밀어 넣고 커튼을 반쯤 친 것을 보면, 들킬 만한 것을 미리 다 감춘 거지.",
                 "사냥꾼이 총을 들었다가 도로 내린 것을 보면, 배 속에 아직 살아 있는 사람이 있을지 모른다고 짚었구나.",
                 "우리 손녀가 다 살렸다는 할머니 말에 빨간 모자가 얼굴이 빨개진 것을 보면, 칭찬을 듣는 것이 기뻐서였네."
             ],
@@ -791,12 +791,12 @@ const EN = {
     quiz: [
         {
             q: "What did Little Red Riding Hood's mother tell her?",
-            choices: ['Pick some flowers', 'Carry the basket on her head', 'Keep to the big road'],
+            choices: ['Pick some flowers for Grandmother', 'Stop at the mill on the way', 'Keep to the big road'],
             answer: 2
         },
         {
-            q: 'How did the wolf get her off the road?',
-            choices: ['He asked about the mill', 'He pointed at the flowers', 'He asked for the bread'],
+            q: 'Why was Little Red Riding Hood not afraid of the wolf?',
+            choices: ['The wolf was very small', 'She did not know wolves were wicked', 'He was Grandmother’s own wolf'],
             answer: 1
         },
         {
@@ -811,7 +811,7 @@ const EN = {
         },
         {
             q: 'What made Little Red Riding Hood suspicious?',
-            choices: ['The voice was deep', 'A foot was showing', 'The spectacles'],
+            choices: ['His breathing was rough', 'A foot was showing', 'The spectacles'],
             answer: 1
         },
         {
@@ -820,8 +820,8 @@ const EN = {
             answer: 0
         },
         {
-            q: 'What did she do at the meadow on the way home?',
-            choices: ['She picked flowers', 'She went in again', 'She walked right past'],
+            q: 'What did she say when she saw the flowers on the way home?',
+            choices: ['Just a few to take along', 'Grandmother would love these', 'Not today, I’ll go straight on'],
             answer: 2
         },
         {
@@ -829,7 +829,7 @@ const EN = {
             wide: true,
             choices: [
                 "The wolf asked whereabouts the grandmother lived — he was finding out the way so as to get there first.",
-                "The wolf pointed out how pretty the flowers were — he was drawing her off the main road.",
+                "The wolf tucked his tail under the nightgown and half drew the curtains — he hid everything that might give him away.",
                 "The huntsman raised his gun and then lowered it again — he had worked out that someone might still be alive inside.",
                 "Red Riding Hood turned red when her grandmother said she had saved them all — she was flushed with pleasure at the praise."
             ],

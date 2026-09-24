@@ -430,11 +430,11 @@ function afterPage(spread, isFirst) {
 
 const QUIZ = [
     {
-        "q": "왕자들의 빈방에 남아 있던 것은 무엇인가요?",
+        "q": "왕비는 궁궐로 돌아온 엘리사를 어떻게 했나요?",
         "choices": [
-            "흰 깃털",
-            "금관 열한 개",
-            "쐐기풀"
+            "탑에 가두었다",
+            "얼굴에 검은 즙을 발라 몰라보게 했다",
+            "백조로 만들어 버렸다"
         ],
         "answer": 1
     },
@@ -448,20 +448,20 @@ const QUIZ = [
         "answer": 0
     },
     {
-        "q": "꿈에 나타난 노인이 시킨 일은 무엇인가요?",
+        "q": "오빠들은 언제 사람으로 돌아올 수 있었나요?",
         "choices": [
-            "금관 열한 개 만들기",
-            "바다를 건너기",
-            "쐐기풀로 옷 짓기"
+            "보름달이 뜨는 밤에만",
+            "엘리사가 이름을 부를 때만",
+            "해가 진 뒤 밤에만"
         ],
         "answer": 2
     },
     {
-        "q": "옷을 다 지을 때까지 엘리사가 지켜야 했던 것은 무엇인가요?",
+        "q": "노인은 엘리사가 말을 하면 어떻게 된다고 했나요?",
         "choices": [
-            "잠을 자지 않기",
-            "말을 하지 않기",
-            "밖에 나가지 않기"
+            "옷이 다 풀린다",
+            "오빠들이 죽는다",
+            "엘리사도 백조가 된다"
         ],
         "answer": 1
     },
@@ -475,22 +475,22 @@ const QUIZ = [
         "answer": 0
     },
     {
-        "q": "끌려갈 때에도 엘리사가 놓지 않은 것은 무엇인가요?",
+        "q": "임금님은 동굴의 엘리사를 왜 성으로 데려갔나요?",
         "choices": [
-            "금관",
-            "흰 깃털",
-            "짓던 옷"
-        ],
-        "answer": 2
-    },
-    {
-        "q": "막내 오빠의 팔이 날개로 남은 까닭은 무엇인가요?",
-        "choices": [
-            "쐐기풀이 떨어져서",
-            "소매를 못 엮어서",
-            "동생이 입을 열어서"
+            "마녀가 아닌지 알아보려고",
+            "그런 곳에 둘 수 없어서",
+            "곧바로 왕비로 삼으려고"
         ],
         "answer": 1
+    },
+    {
+        "q": "말을 할 수 있게 되자 엘리사가 처음 한 말은 무엇인가요?",
+        "choices": [
+            "오빠들, 보고 싶었어요",
+            "임금님, 용서해 주세요",
+            "저는 아무 잘못도 하지 않았어요"
+        ],
+        "answer": 2
     },
     {
         "q": "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
@@ -883,39 +883,39 @@ const EN = {
     ],
     quiz: [
         {
-            q: 'Why did the queen want the children out of the way?',
-            choices: ['They had stolen from her', 'She wanted the country for herself', 'The king had asked her to'],
+            q: 'What did the queen do to Elisa when she came back to the palace?',
+            choices: ['Locked her in a tower', 'Rubbed dark juice on her face so nobody would know her', 'Turned her into a swan'],
             answer: 1
         },
         {
-            q: 'What was left in the princes’ rooms?',
-            choices: ['Their eleven gold crowns', 'Eleven white feathers', 'Nothing at all'],
+            q: 'Where did Elisa meet her brothers again?',
+            choices: ['On a rock by the sea', 'In a cave in the forest', 'In the palace garden'],
             answer: 0
         },
         {
             q: 'When could the brothers be men again?',
-            choices: ['Only when Elisa called them', 'Only on the rocky island', 'Only at night, after the sun went down'],
+            choices: ['Only on nights of the full moon', 'Only when Elisa called their names', 'Only at night, after the sun went down'],
             answer: 2
         },
         {
-            q: 'What did the old man in the dream tell Elisa to do?',
-            choices: ['Go back to the palace and speak to the king', 'Weave eleven nettle shirts and say nothing until they were done', 'Wait on the island for a year'],
+            q: 'What did the old man say would happen if Elisa spoke?',
+            choices: ['The shirts would come undone', 'Her brothers would die', 'She too would become a swan'],
             answer: 1
         },
         {
-            q: 'Why did people begin calling Elisa a witch?',
-            choices: ['She went out at night for nettles and never spoke', 'She had eleven swans following her', 'She refused the fine clothes'],
+            q: 'Why did Elisa slip out of the castle at night?',
+            choices: ['To gather more nettles', 'To meet her brothers', 'To go back to her own palace'],
             answer: 0
         },
         {
-            q: 'What did Elisa hold on to even when she was taken to the square?',
-            choices: ['A gold crown', 'A white feather', 'The shirts she was making'],
-            answer: 2
+            q: 'Why did the king take Elisa from the cave to his castle?',
+            choices: ['To find out whether she was a witch', 'He could not leave her in such a place', 'To make her his queen at once'],
+            answer: 1
         },
         {
-            q: 'Why did the youngest brother keep one wing?',
-            choices: ['His shirt fell in the square', 'One sleeve was not finished', 'He asked to keep it'],
-            answer: 1
+            q: 'What were Elisa’s first words when she could speak again?',
+            choices: ['Brothers, how I missed you', 'Forgive me, my lord', 'I have done nothing wrong'],
+            answer: 2
         },
         {
             q: 'Which reaction to this book does NOT fit?',

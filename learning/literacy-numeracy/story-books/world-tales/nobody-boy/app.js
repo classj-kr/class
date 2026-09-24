@@ -428,29 +428,29 @@ function afterPage(spread, isFirst) {
 
 const QUIZ = [
     {
-        "q": "레미를 길러 준 사람은 누구인가요?",
+        "q": "아주머니가 레미에게 털어놓은 사실은 무엇인가요?",
         "choices": [
-            "비탈리스",
-            "아주머니",
-            "카피"
+            "아버지가 곧 파리에서 돌아온다",
+            "길에 버려진 아이를 데려다 길렀다",
+            "구리 냄비를 팔아야 한다"
         ],
         "answer": 1
     },
     {
-        "q": "레미를 데려간 떠돌이 악사는 누구인가요?",
+        "q": "비탈리스가 마을에서 공연할 때 개들은 무엇을 했나요?",
         "choices": [
-            "비탈리스",
-            "카피",
-            "레미"
+            "뒷발로 서서 춤을 추었다",
+            "모자를 벗어 인사했다",
+            "하프에 맞춰 노래했다"
         ],
         "answer": 0
     },
     {
-        "q": "할아버지가 레미에게 가르친 것은 무엇인가요?",
+        "q": "레미는 하프를 어떻게 배웠나요?",
         "choices": [
-            "노래",
-            "공연",
-            "하프"
+            "줄이 안 울려 금세 그만두었다",
+            "낮 공연에서만 켜 보았다",
+            "손끝이 부르터도 밤마다 연습했다"
         ],
         "answer": 2
     },
@@ -494,9 +494,9 @@ const QUIZ = [
         "q": "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
         "wide": true,
         "choices": [
-                "눈보라 속에서 할아버지가 제 외투를 벗어 덮어 준 것을 보면, 저보다 레미를 먼저 챙겼네.",
-                "갱도에 갇혔을 때 레미가 조용히 노래를 부른 것을 보면, 그때 할 수 있는 것이 그것뿐이었구나.",
-                "새 식구를 찾은 뒤 가장 먼저 바르브랭 아주머니를 모셔 온 것을 보면, 길러 준 이를 잊지 않은 거지.",
+                "할아버지가 쉬면 굶는다며 하프를 다시 멘 것을 보면, 아픈 몸으로도 걸음을 멈출 수 없었구나.",
+                "레미가 가을이 되자 배를 떠나 제 힘으로 살아 보려 한 것을 보면, 편한 자리에 오래 기대고 싶지 않았구나.",
+                "아픈 아이가 처음으로 웃자 부인이 네 덕분이라고 한 것을 보면, 레미의 하프가 약이 된 셈이지.",
                 "아주머니가 저분을 따라가라고 한 것을 보면, 레미가 하프를 배우기를 바랐네."
             ],
         "answer": 3
@@ -886,18 +886,18 @@ const EN = {
     ],
     quiz: [
         {
-            q: 'Who brought Rémi up?',
-            choices: ['Vitalis', 'Mother Barberin', 'Capi'],
+            q: 'What did Mother Barberin finally tell Rémi?',
+            choices: ['His father was coming home from Paris', 'He had been found abandoned in the road and taken in', 'The copper pot would have to be sold'],
             answer: 1
         },
         {
-            q: 'Who was the travelling musician who took Rémi away?',
-            choices: ['Vitalis', 'Capi', 'Rémi'],
+            q: 'What did the dogs do when Vitalis played in the village?',
+            choices: ['They stood on their hind legs and danced', 'They took off their hats and bowed', 'They sang along with the harp'],
             answer: 0
         },
         {
-            q: 'What did the old man teach Rémi?',
-            choices: ['Singing', 'Performing', 'The harp'],
+            q: 'How did Rémi learn the harp?',
+            choices: ['He gave up when the strings would not sound', 'He only tried it at the daytime shows', 'He practised every night though his fingertips split'],
             answer: 2
         },
         {
@@ -924,9 +924,9 @@ const EN = {
             q: 'Which reaction to this book does NOT fit?',
             wide: true,
             choices: [
-                "In the blizzard the old man took off his own coat and put it over him — he saw to Rémi before himself.",
-                "Trapped in the mine, Rémi began to sing quietly — it was the only thing left he could do.",
-                "The first thing he did after finding his family was to fetch Mother Barberin — he had not forgotten who raised him.",
+                "The old man said if he rested they would starve, and shouldered the harp again — ill as he was, he could not stop walking.",
+                "In autumn Rémi left the boat to try living by his own efforts — he did not want to lean on an easy place for long.",
+                "When the sick child laughed for the first time the lady said it was his doing — Rémi’s harp had been the medicine.",
                 "She told him to go with the old musician — she wanted him to learn the harp."
             ],
             answer: 3

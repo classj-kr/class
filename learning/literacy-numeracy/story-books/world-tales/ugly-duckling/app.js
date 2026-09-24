@@ -411,14 +411,14 @@ const QUIZ = [
         "choices": [
             "목덜미를 쪼였다",
             "밥을 맨 먼저 먹었다",
-            "엄마 뒤에 숨겨졌다"
+            "형제들이 감싸 주었다"
         ],
         "answer": 0
     },
     {
         "q": "낡은 오두막에서 아기 오리와 함께 지낸 것은 누구인가요?",
         "choices": [
-            "농부와 아이들",
+            "방앗간 주인과 강아지",
             "늪지 오리들",
             "고양이와 암탉"
         ],
@@ -434,27 +434,27 @@ const QUIZ = [
         "answer": 1
     },
     {
-        "q": "언 호수에서 아기 오리를 꺼내 준 사람은 누구인가요?",
+        "q": "얼음에 갇힌 아기 오리는 어떻게 되었나요?",
         "choices": [
-            "농부",
-            "할머니",
-            "아이들"
+            "농부가 얼음을 깨고 안아 갔다",
+            "늪지 오리들이 끌어내 주었다",
+            "스스로 얼음을 깨고 나왔다"
         ],
         "answer": 0
     },
     {
         "q": "봄에 물에 비친 제 모습은 어땠나요?",
         "choices": [
-            "잿빛 오리였다",
+            "아기 오리 그대로였다",
             "아무것도 안 보였다",
             "백조였다"
         ],
         "answer": 2
     },
     {
-        "q": "백조들은 다가와서 어떻게 했나요?",
+        "q": "연못의 큰 새들은 다가와서 어떻게 했나요?",
         "choices": [
-            "목덜미를 쪼았다",
+            "부리로 밀어냈다",
             "목을 굽혀 인사했다",
             "멀리 날아갔다"
         ],
@@ -465,9 +465,9 @@ const QUIZ = [
         "wide": true,
         "choices": [
                 "엄마 오리가 남은 큰 알을 하루 더 품은 것을 보면, 늦게 나오는 아이도 제 새끼로 여겼구나.",
-                "하얀 새 떼를 보고 처음 들어 보는 제 목소리가 나온 것을 보면, 이름도 모르면서 마음이 먼저 끌린 거지.",
+                "아기 오리가 물에 몸을 담그고 날개를 펴 봤지만 몇 번 퍼덕이다 만 것을 보면, 마음은 앞섰는데 힘이 아직 없었구나.",
                 "겨울 내내 갈대밭에서 마른 풀뿌리를 씹으며 버틴 것을 보면, 아무도 안 보는 그 시간에 날개가 자랐어.",
-                "아기 오리가 농부의 집에서 푸드덕 날아 문밖으로 뛰쳐나간 것을 보면, 신세를 더 지기 미안해 스스로 나왔구나."
+                "늪지 오리들이 못생겼다면서도 있어도 된다고 한 것을 보면, 아기 오리가 예뻐서 붙잡아 두려 한 거지."
             ],
         "answer": 3
     }
@@ -800,38 +800,38 @@ const EN = {
     ],
     quiz: [
         {
-            q: 'How was the last egg different from the others?',
-            choices: ['It was speckled brown', 'It was much bigger and hatched a day later', 'It never hatched at all'],
+            q: 'How was the duckling different from his brothers and sisters?',
+            choices: ['He said peep like the rest', 'He was big and grey all over', 'His feet were very small'],
             answer: 1
         },
         {
-            q: 'What did the mother duck say when she first saw him?',
-            choices: ['That he was hers all the same', 'That he should leave the yard', 'That he was the finest of them'],
+            q: 'What happened to the duckling in the farmyard?',
+            choices: ['A duck pecked him on the neck', 'He ate first at every meal', 'His brothers and sisters stood up for him'],
             answer: 0
         },
         {
-            q: 'Why did the duckling leave the farmyard?',
-            choices: ['He wanted to follow the white birds', 'The farmer had frightened him', 'He was pecked and shoved every single day'],
+            q: 'Who lived in the old cottage with the duckling?',
+            choices: ['The miller and his puppy', 'The marsh ducks', 'A cat and a hen'],
             answer: 2
         },
         {
-            q: 'Why did the duckling leave the old woman’s cottage?',
-            choices: ['The old woman turned him out', 'The hen and the cat told him he could do nothing', 'He was frightened of the fire'],
+            q: 'Why did the duckling’s heart pound one autumn evening?',
+            choices: ['Snow had begun to fall', 'He had seen a flock of white birds', 'He had heard gunshots'],
             answer: 1
         },
         {
-            q: 'What happened to the duckling in the middle of winter?',
-            choices: ['He was frozen into the ice and a farmer broke him out', 'He flew south with the swans', 'He went back to the farmyard'],
+            q: 'What happened when the duckling was frozen into the ice?',
+            choices: ['A farmer broke the ice and carried him home', 'The marsh ducks pulled him out', 'He broke the ice himself'],
             answer: 0
         },
         {
-            q: 'What did the duckling notice when spring came?',
-            choices: ['His feathers had turned grey', 'The lake had dried up', 'His wings had grown very wide'],
+            q: 'What did the duckling see in the water in spring?',
+            choices: ['The same duckling as before', 'Nothing at all', 'A swan'],
             answer: 2
         },
         {
-            q: 'What did the swans do when he came down on their pond?',
-            choices: ['They pecked him and drove him off', 'They bent their necks and welcomed him', 'They flew away at once'],
+            q: 'What did the great birds on the pond do when he came down?',
+            choices: ['They pushed him off with their beaks', 'They bent their necks and welcomed him', 'They flew away at once'],
             answer: 1
         },
         {
@@ -839,9 +839,9 @@ const EN = {
             wide: true,
             choices: [
                 "The mother duck sat on the last big egg one more day — the late one was still hers.",
-                "At the sight of the white birds a sound came out of him he had never heard before — he was drawn to them before he knew their name.",
+                "He settled in the water and spread his wings, but a few flaps was all he managed — his heart was ahead of his strength.",
                 "All winter he chewed dry roots in the reeds and held on — his wings grew in that time, where nobody was watching.",
-                "The duckling flapped up and burst out of the farmer's door — he left because he did not want to trouble them any longer."
+                "The marsh ducks called him ugly and yet said he could stay — they wanted to keep him because he was so pretty."
             ],
             answer: 3
         }

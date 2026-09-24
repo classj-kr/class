@@ -447,20 +447,20 @@ function afterPage(spread, isFirst) {
 
 const QUIZ = [
     {
-        "q": "빛의 요정이 오누이에게 준 것은 무엇인가요?",
+        "q": "옆집 할머니가 파랑새를 찾는 까닭은 무엇인가요?",
         "choices": [
-            "새장",
-            "지팡이",
-            "초록 모자"
+            "잔치에 쓰려고",
+            "아픈 딸이 보고 싶어 해서",
+            "기르던 새가 달아나서"
         ],
-        "answer": 2
+        "answer": 1
     },
     {
         "q": "모자의 다이아몬드를 돌리면 어떻게 되나요?",
         "choices": [
-            "파랑새가 나타난다",
-            "냄비도 살아 움직인다",
-            "눈이 그친다"
+            "파랑새가 있는 곳이 보인다",
+            "모든 것의 참모습이 보인다",
+            "오누이가 안 보이게 된다"
         ],
         "answer": 1
     },
@@ -476,7 +476,7 @@ const QUIZ = [
     {
         "q": "밤의 나라에서 오누이가 한 일은 무엇인가요?",
         "choices": [
-            "나무를 베었다",
+            "음식을 먹으려 했다",
             "배를 탔다",
             "문을 하나씩 열었다"
         ],
@@ -524,8 +524,8 @@ const QUIZ = [
         "choices": [
                 "오누이가 발이 시린 줄도 모르고 창가에 붙어 있던 것을 보면, 이웃집 잔치가 그만큼 부러웠구나.",
                 "잡은 새가 번번이 색이 바랜 것을 보면, 그 자리를 벗어나면 그 새가 아니게 되는 거지.",
-                "어제까지 잿빛으로만 보이던 새가 파랗게 반짝인 것을 보면, 달라진 것은 새가 아니라 아이들 눈이었어.",
-                "고양이 치레트가 줄곧 뒤에서 따라간 것을 보면, 오누이가 지칠까 봐 걸음을 맞춰 줬구나."
+                "오누이가 처음 받은 새를 뛸 듯이 기뻐하며 안은 것을 보면, 그때는 진짜라고 믿었던 거지.",
+                "할머니의 딸이 나은 뒤 새가 날아가 버리자 오누이가 울음을 터뜨린 것을 보면, 그 새를 되찾고 싶었나 봐."
             ],
         "answer": 3
     }
@@ -909,9 +909,9 @@ const EN = {
     ],
     quiz: [
         {
-            q: 'What did the old woman ask the children to do?',
-            choices: ['Bring food from the party next door', 'Look after her cat and dog', 'Find the blue bird for her sick daughter'],
-            answer: 2
+            q: 'Why did the old woman want the blue bird?',
+            choices: ['For a feast', 'Her sick daughter wished to see it', 'Her own bird had flown away'],
+            answer: 1
         },
         {
             q: 'What did the green hat do?',
@@ -954,8 +954,8 @@ const EN = {
             choices: [
                 "They stood at the window without noticing their cold feet — that is how much they envied the party next door.",
                 "Every bird they caught lost its colour — carried away from its place it was no longer that bird.",
-                "The bird that had looked grey the day before was shining blue — what changed was the children's eyes, not the bird.",
-                "Tylette the cat kept to the back the whole way — she was matching her pace to the children so they would not tire."
+                "They hugged the first bird they were given and jumped for joy — at that moment they believed it was the real one.",
+                "When the bird flew off after the daughter got well, the children burst into tears — they wanted it back."
             ],
             answer: 3
         }

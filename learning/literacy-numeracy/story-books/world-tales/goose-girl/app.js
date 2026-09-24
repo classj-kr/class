@@ -421,78 +421,78 @@ function afterPage(spread, isFirst) {
 
 const QUIZ = [
     {
-        "q": "어머니가 공주에게 준 것은 무엇인가요?",
+        "q": "어머니는 손수건을 어떻게 하라고 했나요?",
         "choices": [
-            "하얀 말",
-            "흰 손수건",
-            "밀짚모자"
-        ],
-        "answer": 1
-    },
-    {
-        "q": "공주가 손수건을 잃어버린 곳은 어디인가요?",
-        "choices": [
-            "냇물",
-            "벌판",
-            "성문"
+            "어려운 일이 생기면 꺼내 보라고",
+            "혼인날 머리에 두르라고",
+            "하녀에게 맡겨 두라고"
         ],
         "answer": 0
     },
     {
-        "q": "하녀가 공주에게 시킨 일은 무엇인가요?",
+        "q": "냇가에서 하녀는 공주에게 무어라 말했나요?",
         "choices": [
-            "밀짚모자 쓰기",
-            "거위 돌보기",
-            "옷을 바꿔 입기"
-        ],
-        "answer": 2
-    },
-    {
-        "q": "공주와 함께 거위를 돌본 아이의 이름은 무엇인가요?",
-        "choices": [
-            "팔라다",
-            "콘라트",
-            "하녀"
+            "제가 얼른 떠다 드리지요",
+            "목이 마르면 직접 가시지요",
+            "물이 더러우니 참으시지요"
         ],
         "answer": 1
     },
     {
-        "q": "콘라트가 모자를 쫓아다닌 까닭은 무엇인가요?",
+        "q": "벌판에서 하녀가 공주에게 시킨 것은 무엇인가요?",
         "choices": [
-            "바람이 불어서",
-            "언덕을 넘어가서",
-            "거위가 물어서"
+            "팔라다를 끌고 앞장서 걸을 것",
+            "성에 닿으면 왕자에게 하녀라고 소개할 것",
+            "옷을 바꿔 입고 이 일을 아무에게도 말하지 말 것"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "왕자가 저 아이는 누구냐고 묻자 하녀는 뭐라고 했나요?",
+        "choices": [
+            "길에서 데려온 하인입니다",
+            "제 동생입니다",
+            "길 잃은 아이라 데려왔습니다"
         ],
         "answer": 0
     },
     {
-        "q": "공주가 사연을 털어놓은 곳은 어디인가요?",
+        "q": "콘라트가 머리카락을 움켜쥐자 공주는 어떻게 했나요?",
         "choices": [
-            "들판",
-            "잔치 자리",
-            "난로 앞"
+            "팔라다를 불러 콘라트를 쫓게 했다",
+            "임금님께 달려가 일렀다",
+            "바람을 불러 콘라트의 모자를 날려 보냈다"
         ],
         "answer": 2
     },
     {
-        "q": "잔치에서 공주는 어떤 자리에 앉았나요?",
+        "q": "공주가 난로에게 이야기하는 동안 임금님은 무엇을 했나요?",
         "choices": [
-            "부엌",
-            "높은 자리",
-            "성문 밑"
+            "방을 나가 왕자를 불러왔다",
+            "문간에서 하나도 빠짐없이 들었다",
+            "잔치를 준비하러 갔다"
         ],
         "answer": 1
+    },
+    {
+        "q": "잔치에서 임금님의 물음에 하녀는 무어라 답했나요?",
+        "choices": [
+            "그런 자는 성 밖으로 내쫓아야 합니다",
+            "그런 자는 용서해 주어야 합니다",
+            "그런 자는 거위지기로 삼아야 합니다"
+        ],
+        "answer": 0
     },
     {
         "q": "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
         "wide": true,
         "choices": [
                 "냇가에서 손수건을 잃고 다리에 힘이 쭉 빠진 것을 보면, 마음을 붙들어 주던 것이 함께 떠내려갔구나.",
+                "콘라트가 임금님을 찾아가 저 아이와는 더 못 다니겠다고 한 것을 보면, 거위지기의 딱한 사정을 대신 알려 주려 했구나.",
                 "공주가 문지기에게 지닌 돈을 모두 내민 것을 보면, 그 성에서 저를 아는 것이 팔라다뿐이었으니까.",
-                "임금님이 난로에게라도 털어놓아 보라고 한 것을 보면, 억지로 캐물을 일이 아님을 알아본 거지.",
-                "콘라트가 임금님을 찾아가 저 아이와는 더 못 다니겠다고 한 것을 보면, 거위지기의 딱한 사정을 대신 알려 주려 했구나."
+                "임금님이 난로에게라도 털어놓아 보라고 한 것을 보면, 억지로 캐물을 일이 아님을 알아본 거지."
             ],
-        "answer": 3
+        "answer": 1
     }
 ];
 
@@ -870,50 +870,50 @@ const EN = {
     ],
     quiz: [
         {
-            q: 'What did her mother give the princess before she left?',
-            choices: ['A silver dish', 'A white handkerchief she had embroidered herself', 'A gold ring'],
-            answer: 1
-        },
-        {
-            q: 'What happened at the stream?',
-            choices: ['The handkerchief slipped out and was carried away', 'The maid fell into the water', 'Falada ran off'],
+            q: 'What did her mother tell the princess to do with the handkerchief?',
+            choices: ['Take it out whenever she was in trouble', 'Wear it in her hair on her wedding day', 'Give it to the maid to keep'],
             answer: 0
         },
         {
-            q: 'What did the maid make the princess do?',
-            choices: ['Walk home alone', 'Give her the horse', 'Change clothes and say nothing about it'],
-            answer: 2
-        },
-        {
-            q: 'Why did the maid really want Falada gone?',
-            choices: ['The horse had thrown her', 'She was afraid the horse would speak', 'The prince did not like him'],
+            q: 'What did the maid say to the princess at the stream?',
+            choices: ['I will fetch you some water at once', 'If you are thirsty, go yourself', 'The water is dirty, you had better wait'],
             answer: 1
         },
         {
-            q: 'What did the princess ask the gatekeeper to do?',
-            choices: ['Put Falada’s head above the gate', 'Let her out of the castle', 'Keep her secret'],
+            q: 'What did the maid make the princess do on the open road?',
+            choices: ['Lead Falada and walk in front', 'Tell the prince she was the maid when they arrived', 'Change clothes with her and never tell anyone'],
+            answer: 2
+        },
+        {
+            q: 'What did the maid say when the prince asked who the girl was?',
+            choices: ['A servant I picked up on the road', 'My younger sister', 'A lost child I brought along'],
             answer: 0
         },
         {
-            q: 'What did the princess do when Conrad grabbed at her hair?',
-            choices: ['She hit him with her comb', 'She ran back to the castle', 'She called up the wind to blow his hat away'],
+            q: 'What did the princess do when Conrad grabbed her hair?',
+            choices: ['She called Falada to chase him off', 'She ran to the king and told on him', 'She called up the wind to blow his hat away'],
             answer: 2
         },
         {
-            q: 'How did the king get the story out of her?',
-            choices: ['He ordered her to speak', 'He told her to tell it to the stove', 'He asked Conrad instead'],
+            q: 'What did the king do while the princess talked to the stove?',
+            choices: ['He left the room to fetch the prince', 'He stood in the doorway and heard every word', 'He went to get the feast ready'],
             answer: 1
+        },
+        {
+            q: 'What did the maid answer when the king asked his question at the feast?',
+            choices: ['Such a person should be driven out of the castle', 'Such a person should be forgiven', 'Such a person should be made a goose girl'],
+            answer: 0
         },
         {
             q: 'Which reaction to this book does NOT fit?',
             wide: true,
             choices: [
                 "She lost the handkerchief in the stream and the strength went out of her legs — what had been holding her up floated off with it.",
+                "Conrad went to the king to say he could not work with her any longer — he was speaking up about the goose girl's plight on her behalf.",
                 "She gave the gatekeeper every coin she had — Falada was the only one in that castle who knew her.",
-                "The king told her to say it to the stove instead — he saw this was not something to be forced out of her.",
-                "Conrad went to the king to say he could not work with her any longer — he was speaking up about the goose girl's plight on her behalf."
+                "The king told her to say it to the stove instead — he saw this was not something to be forced out of her."
             ],
-            answer: 3
+            answer: 1
         }
     ],
     afterword: {

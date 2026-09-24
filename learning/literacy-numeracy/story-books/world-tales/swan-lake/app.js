@@ -419,17 +419,17 @@ const QUIZ = [
         "q": "왕자가 잔치에서 빠져나온 까닭은 무엇인가요?",
         "choices": [
             "마음이 답답해서",
-            "백조를 보려고",
-            "활을 잃어버려서"
+            "백조를 사냥하려고",
+            "신붓감을 찾으러"
         ],
         "answer": 0
     },
     {
-        "q": "오데트가 밤에만 사람이 되는 까닭은 무엇인가요?",
+        "q": "왕자가 활을 떨어뜨린 까닭은 무엇인가요?",
         "choices": [
-            "달빛 때문에",
-            "깃털 옷 때문에",
-            "로트바르트의 마법"
+            "어머니가 불러서",
+            "검은 그림자가 지나가서",
+            "백조가 물가에서 아가씨로 변해서"
         ],
         "answer": 2
     },
@@ -443,20 +443,20 @@ const QUIZ = [
         "answer": 1
     },
     {
-        "q": "무도회에 들어선 검은 옷 아가씨는 누구였나요?",
+        "q": "무도회에서 왕자가 검은 옷 아가씨를 오데트로 여긴 까닭은 무엇인가요?",
         "choices": [
-            "로트바르트의 딸",
-            "오데트",
-            "이웃 나라 아가씨"
+            "오데트와 똑같은 얼굴이어서",
+            "하얀 깃털 옷을 입어서",
+            "오데트의 목소리로 말해서"
         ],
         "answer": 0
     },
     {
-        "q": "왕자가 잘못을 알아챈 것은 무엇 때문인가요?",
+        "q": "속은 것을 안 왕자는 어떻게 했나요?",
         "choices": [
-            "검은 망토",
-            "악사들의 연주",
-            "창밖의 오데트"
+            "어머니께 도움을 청했다",
+            "검은 망토를 쫓아갔다",
+            "숲을 달려 호수로 갔다"
         ],
         "answer": 2
     },
@@ -482,10 +482,10 @@ const QUIZ = [
         "q": "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
         "wide": true,
         "choices": [
-                "왕자가 정해 놓고 고르는 게 무슨 뜻이 있느냐고 한 것을 보면, 그 무도회가 답답했구나.",
-                "검은 옷 아가씨의 웃음이 어쩐지 날카로웠는데도 왕자가 알아채지 못한 것을 보면, 얼굴만 보고 있었던 거지.",
-                "해가 떠올랐는데도 아무 일이 일어나지 않은 것을 보면, 왕자의 마음이 거짓이 아니었어.",
-                "오데트가 창밖에 매달려 창을 두드린 것을 보면, 늦지 않게 닿아 그 맹세를 막으려 했구나."
+                "왕자가 다른 아가씨는 눈에 들어오지도 않았다는 것을 보면, 무도회에 온 까닭은 오직 하나였구나.",
+                "검은 망토를 두른 사람만 웃지 않은 것을 보면, 그 춤이 제 뜻대로 되어 가는지 지켜보고 있었던 거지.",
+                "왕자가 한 번 속았다고 마음까지 거짓이 되지는 않는다고 한 것을 보면, 물러서지 않을 작정이었어.",
+                "오데트가 창밖에 매달려 창을 두드린 것을 보면, 늦지 않게 닿아 왕자의 말을 막으려 했구나."
             ],
         "answer": 3
     }
@@ -892,48 +892,48 @@ const EN = {
     ],
     quiz: [
         {
-            q: 'Why did the prince go into the wood?',
-            choices: ['He felt shut in by the ball his mother had arranged', 'He was hunting swans', 'He had heard of the lake'],
+            q: 'Why did the prince slip away from the feast?',
+            choices: ['His heart felt heavy and shut in', 'He wanted to hunt swans', 'He went to look for a bride'],
             answer: 0
         },
         {
             q: 'What made him drop his bow?',
-            choices: ['Rothbart flew over the wood', 'His mother called him', 'A swan stepped ashore and her feathers slid away'],
+            choices: ['His mother called him', 'A black shadow passed overhead', 'A swan stepped ashore and turned into a maiden'],
             answer: 2
         },
         {
-            q: 'What would break the spell on Odette?',
-            choices: ['Killing Rothbart', 'Someone who had never loved another swearing his love to her alone', 'Waiting until dawn on the lake'],
+            q: 'What did the prince promise Odette?',
+            choices: ['Never to shoot a swan again', 'To swear his love before everyone at the ball', 'To come back to the lake'],
             answer: 1
         },
         {
-            q: 'Why did the prince not recognise the trick at the ball?',
-            choices: ['The lady in black had exactly Odette’s face', 'The room was too dark', 'Odette had told him to expect her in black'],
+            q: 'Why did the prince take the lady in black for Odette?',
+            choices: ['She had exactly Odette’s face', 'She wore the white feather dress', 'She spoke with Odette’s voice'],
             answer: 0
         },
         {
-            q: 'Where was Odette while the prince was swearing his promise?',
-            choices: ['Waiting at the lake', 'Hidden among the musicians', 'Outside the window, beating on the glass'],
+            q: 'What did the prince do once he knew he had been tricked?',
+            choices: ['He asked his mother for help', 'He ran after the man in the black cloak', 'He ran through the wood to the lake'],
             answer: 2
         },
         {
-            q: 'What did the prince say when he faced Rothbart?',
-            choices: ['That he would fight him for Odette', 'That one mistake did not make his heart a lie', 'That he would leave and never return'],
+            q: 'What did the swans do when Rothbart appeared at the lake?',
+            choices: ['They flew up into the sky', 'They came ashore and stood round', 'They hid under the water'],
             answer: 1
         },
         {
-            q: 'How did they know the spell was broken?',
-            choices: ['The sun came up and Odette stayed herself', 'Rothbart gave them his word', 'The lake turned to gold'],
+            q: 'What became of Odette when the sun rose?',
+            choices: ['She stayed as she was', 'She turned into a swan', 'She vanished'],
             answer: 0
         },
         {
             q: 'Which reaction to this book does NOT fit?',
             wide: true,
             choices: [
-                "The prince asked what choosing could mean when it was decided beforehand — the ball stifled him.",
-                "There was something sharp in the black-clad woman's smile and he missed it — he was going by the face.",
-                "The sun came up and nothing happened — the prince's heart had not been false after all.",
-                "Odette clung to the window and beat on the glass — she had arrived in time to stop the vow."
+                "He had eyes for none of the other ladies — he had come to the ball for one reason only.",
+                "Only the man in the black cloak did not smile — he was watching whether the dance went the way he meant.",
+                "The prince said one deception did not make his heart a lie — he was not going to step back.",
+                "Odette clung to the window and beat on the glass — she had got there in time to stop the prince’s words."
             ],
             answer: 3
         }

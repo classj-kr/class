@@ -411,20 +411,20 @@ function afterPage(spread, isFirst) {
 
 const QUIZ = [
     {
-        "q": "장수가 판 상자 안에 든 것은 무엇인가요?",
+        "q": "임금님이 등짐장수의 상자를 얼른 산 까닭은 무엇인가요?",
         "choices": [
-            "검은 가루",
-            "물담배",
-            "커피"
+            "신기한 것이라면 마다하지 않아서",
+            "글 아는 사람이 귀한 것이라고 해서",
+            "값이 아주 쌌기 때문에"
         ],
         "answer": 0
     },
     {
         "q": "그 가루를 쓰면 무엇을 할 수 있게 되나요?",
         "choices": [
-            "하늘을 날기",
-            "사람을 알아보기",
-            "짐승의 말을 알아듣기"
+            "하늘을 날아다니기",
+            "사람 속마음 알아보기",
+            "짐승의 말 알아듣기"
         ],
         "answer": 2
     },
@@ -449,23 +449,23 @@ const QUIZ = [
     {
         "q": "황새가 되어 궁궐에 갔을 때 어떻게 되었나요?",
         "choices": [
-            "신하들이 알아봤다",
-            "문을 열어 줬다",
-            "빗자루로 쫓겨났다"
+            "신하들이 알아보고 절을 했다",
+            "지붕 위에서 지켜보기만 했다",
+            "하인들이 빗자루로 쫓아냈다"
         ],
         "answer": 2
     },
     {
-        "q": "사막의 낡은 건물에서 만난 것은 누구인가요?",
+        "q": "올빼미가 마법사에게 당한 까닭은 무엇인가요?",
         "choices": [
-            "황새",
-            "올빼미",
-            "마법사"
+            "시집가지 않겠다고 해서",
+            "가루를 훔쳐서",
+            "마법사의 상자를 열어 봐서"
         ],
-        "answer": 1
+        "answer": 0
     },
     {
-        "q": "주문을 다시 알아낸 방법은 무엇인가요?",
+        "q": "잊었던 주문을 어떻게 알아냈나요?",
         "choices": [
             "벽 뒤에서 듣고",
             "종이를 다시 읽고",
@@ -477,7 +477,7 @@ const QUIZ = [
         "q": "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
         "wide": true,
         "choices": [
-                "임금님이 웃지만 않으면 되지 않느냐고 한 것을 보면, 그 조건을 대수롭지 않게 여겼어.",
+                "만소르가 걱정스러운 얼굴로 상자를 밀어낸 것을 보면, 처음부터 마음이 놓이지 않았던 거야.",
                 "궁궐 창가에서 나다, 임금이다 외쳤는데 새소리로만 들린 것을 보면, 말을 잃은 것이 가장 큰 일이었구나.",
                 "뒷날 황새 이야기가 나오면 얼굴이 붉어진 것을 보면, 그 일이 두고두고 부끄러웠나 봐.",
                 "등짐장수의 웃음이 어쩐지 이상했던 것을 보면, 임금님이 속는 것을 알고 안타까워했어."
@@ -829,13 +829,13 @@ const EN = {
     ],
     quiz: [
         {
-            q: 'What was in the box the pedlar sold?',
-            choices: ['A black powder', 'A water pipe', 'Coffee'],
+            q: 'Why did the caliph buy the pedlar’s box at once?',
+            choices: ['He never said no to anything curious', 'The scholar had called it precious', 'It cost almost nothing'],
             answer: 0
         },
         {
-            q: 'What could you do if you used the powder?',
-            choices: ['Fly through the sky', 'See who people really were', 'Understand the speech of beasts'],
+            q: 'What could you do once you had used the powder?',
+            choices: ['Fly through the sky', 'Read people’s minds', 'Understand the speech of beasts'],
             answer: 2
         },
         {
@@ -850,16 +850,16 @@ const EN = {
         },
         {
             q: 'What happened when the storks went to the palace?',
-            choices: ['The courtiers knew them', 'The doors were opened', 'They were chased out with brooms'],
+            choices: ['The courtiers knew them and bowed', 'They only watched from the roof', 'The servants chased them out with brooms'],
             answer: 2
         },
         {
-            q: 'Whom did they meet in the ruin in the desert?',
-            choices: ['A stork', 'An owl', 'A magician'],
-            answer: 1
+            q: 'Why had Kaschnur put his spell on the owl?',
+            choices: ['She had refused to marry him', 'She had stolen his powder', 'She had opened his box'],
+            answer: 0
         },
         {
-            q: 'How did they find out the word again?',
+            q: 'How did they find out the forgotten word?',
             choices: ['By listening from behind a wall', 'By reading the paper again', 'The owl told them'],
             answer: 0
         },
@@ -867,7 +867,7 @@ const EN = {
             q: 'Which reaction to this book does NOT fit?',
             wide: true,
             choices: [
-                "The caliph said surely it was easy enough not to laugh — he thought nothing of the condition.",
+                "Mansor pushed the box away with a worried face — he was uneasy from the very start.",
                 "He cried from the window that he was the caliph and it came out as a bird's call — losing speech was the worst of it.",
                 "Years later he still coloured whenever storks came up — the whole business stayed embarrassing.",
                 "There was something odd about the pedlar's smile — he knew the caliph was being taken in and felt sorry for him."

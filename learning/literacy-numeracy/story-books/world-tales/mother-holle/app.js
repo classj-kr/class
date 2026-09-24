@@ -432,11 +432,11 @@ const QUIZ = [
         "answer": 0
     },
     {
-        "q": "빵 가마가 아이에게 부탁한 것은 무엇인가요?",
+        "q": "우물 속 들판에서 아이가 처음 만난 것은 무엇인가요?",
         "choices": [
-            "가지를 흔들어 달라",
-            "이불을 털어 달라",
-            "빵을 꺼내 달라"
+            "사과나무",
+            "홀레 할머니",
+            "빵 가마"
         ],
         "answer": 2
     },
@@ -461,18 +461,18 @@ const QUIZ = [
     {
         "q": "부지런한 아이가 문을 지날 때 어떻게 되었나요?",
         "choices": [
-            "깃털이 날렸다",
-            "사과가 떨어졌다",
+            "송진이 쏟아졌다",
+            "눈이 내렸다",
             "금이 쏟아졌다"
         ],
         "answer": 2
     },
     {
-        "q": "게으른 딸은 빵 가마를 어떻게 했나요?",
+        "q": "게으른 딸은 저를 꺼내 달라는 소리를 듣고 어떻게 했나요?",
         "choices": [
-            "빵을 꺼내 주었다",
+            "빵을 꺼내 먹어 버렸다",
             "코를 막고 지나쳤다",
-            "불을 껐다"
+            "가마 문을 닫아 버렸다"
         ],
         "answer": 1
     },
@@ -489,10 +489,10 @@ const QUIZ = [
         "q": "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
         "wide": true,
         "choices": [
-                "부지런한 아이가 무서웠을 텐데도 우물로 뛰어든 것을 보면, 찾아오지 않으면 들어올 생각도 말라는 말을 들었구나.",
+                "아이가 손끝이 갈라져 피가 나도 군소리 한 번 하지 않은 것을 보면, 새어머니 집에서 그렇게 지내는 데 익숙했던 거지.",
                 "손이 발갛게 익도록 빵을 다 꺼낸 것을 보면, 제 갈 길이 급한 중에도 부탁을 지나치지 못했어.",
-                "게으른 딸이 가시로 손끝을 찔러 피를 낸 것을 보면, 실 잣기는 귀찮고 금은 받고 싶었던 거지.",
-                "우물가에서 수탉이 큰 소리로 운 것을 보면, 돌아온 딸을 반겨 준 것이었구나."
+                "게으른 딸이 가시로 손끝을 찔러 피를 낸 것을 보면, 일한 흉내만 내면 될 줄 알았던 거지.",
+                "새어머니가 아이의 이야기를 듣자마자 제 딸도 우물에 들어가라고 한 것을 보면, 딸도 그만큼 부지런해지길 바랐구나."
             ],
         "answer": 3
     }
@@ -891,8 +891,8 @@ const EN = {
             answer: 0
         },
         {
-            q: 'What did the bread in the oven ask for?',
-            choices: ['To be given away', 'To be put back in', 'To be taken out before it burned'],
+            q: 'What did the girl come to first in the meadow below?',
+            choices: ['The apple tree', 'Mother Holle’s house', 'The oven full of bread'],
             answer: 2
         },
         {
@@ -907,7 +907,7 @@ const EN = {
         },
         {
             q: 'Why did the first girl want to go home?',
-            choices: ['She did not like the work', 'Mother Holle sent her away', 'She missed it, even though she was well looked after'],
+            choices: ['She did not like the work', 'Mother Holle sent her away', 'She was homesick all the same'],
             answer: 2
         },
         {
@@ -924,10 +924,10 @@ const EN = {
             q: 'Which reaction to this book does NOT fit?',
             wide: true,
             choices: [
-                "Frightened as she was, she jumped into the well — she had been told not to come home without it.",
+                "Her fingers cracked and bled and still she never complained — that was how life was at her stepmother’s house.",
                 "She pulled out every loaf until her hands were scarlet — even in a hurry she could not walk past someone asking.",
-                "The other girl pricked her finger on a thorn for the blood — she wanted the gold without the spinning.",
-                "The cock by the well crowed at the top of its voice — it was welcoming the daughter home."
+                "The other girl pricked her finger on a thorn for the blood — she thought a show of work would be enough.",
+                "The stepmother sent her own daughter down the well the moment she heard the story — she wanted her to become just as hard-working."
             ],
             answer: 3
         }

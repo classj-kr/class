@@ -424,11 +424,11 @@ const QUIZ = [
         "answer": 1
     },
     {
-        "q": "동굴에 갇힌 알라딘을 꺼내 준 것은 무엇인가요?",
+        "q": "알라딘은 어떻게 집으로 돌아올 수 있었나요?",
         "choices": [
-            "반지의 지니",
-            "램프의 지니",
-            "마법사"
+            "반지의 지니가 보내 줘서",
+            "램프의 지니가 보내 줘서",
+            "마법사가 꺼내 줘서"
         ],
         "answer": 0
     },
@@ -451,20 +451,20 @@ const QUIZ = [
         "answer": 1
     },
     {
-        "q": "마법사는 궁전을 어떻게 빼앗았나요?",
+        "q": "마법사는 낡은 램프를 어떻게 손에 넣었나요?",
         "choices": [
-            "장사꾼 차림으로 와서",
-            "시녀에게 부탁해서",
-            "지니를 잡아서"
+            "새 램프와 바꿔 준다고 외쳐서",
+            "공주에게 사정해서",
+            "밤에 몰래 훔쳐서"
         ],
         "answer": 0
     },
     {
         "q": "알라딘은 마법사에게서 램프를 어떻게 되찾았나요?",
         "choices": [
-            "지니를 시켜서",
-            "반지를 문질러서",
-            "잠이 오는 가루를 먹여서"
+            "지니에게 빼앗아 오라고 시켜서",
+            "반지를 문질러 불러내서",
+            "잠드는 가루를 잔에 타서"
         ],
         "answer": 2
     },
@@ -473,7 +473,7 @@ const QUIZ = [
         "choices": [
             "임금님께 드렸다",
             "궤짝에 넣었다",
-            "마법사에게 줬다"
+            "공주에게 맡겼다"
         ],
         "answer": 1
     },
@@ -482,9 +482,9 @@ const QUIZ = [
         "wide": true,
         "choices": [
                 "알라딘이 램프를 먼저 올리라는 말에 먼저 올라가고 드리겠다고 한 것을 보면, 그 순간 마음이 놓이지 않았나 봐.",
-                "마법사가 제 손으로 끼워 준 반지가 알라딘을 동굴에서 꺼내 준 것을 보면, 제 물건이 제 계략을 무너뜨린 셈이지.",
+                "가짜 삼촌이 고기며 과일을 사 오고 새 옷까지 입힌 것을 보면, 알라딘의 마음을 먼저 사 두려던 거지.",
                 "공주를 처음 보고도 제 입으로 나서지 못한 것을 보면, 어머니께 대신 부탁할 수밖에 없었구나.",
-                "알라딘이 램프를 궤짝 깊이 넣어 둔 것을 보면, 지니를 오래 쉬게 해 주고 싶었나 봐."
+                "알라딘이 램프를 찾으러 내려가 보석을 몇 개 주머니에 넣은 것을 보면, 아저씨가 시킨 대로만 한 셈이지."
             ],
         "answer": 3
     }
@@ -866,7 +866,7 @@ const EN = {
         },
         {
             q: 'How did Aladdin get the lamp back from the magician?',
-            choices: ['He took it while the magician hunted', 'The princess gave him a sleeping draught at supper', 'The genie of the ring fetched it'],
+            choices: ['He took it while the magician was out hunting', 'The princess slipped a sleeping powder into his cup', 'The genie of the ring fetched it for him'],
             answer: 1
         },
         {
@@ -874,9 +874,9 @@ const EN = {
             wide: true,
             choices: [
                 "Told to hand up the lamp first, he said he would give it once he was out — at that moment something did not feel right.",
-                "The ring the magician put on his finger was what got him out of the cave — his own gift undid his own plan.",
+                "The false uncle bought meat and fruit and even new clothes for Aladdin — he was buying the boy’s trust first.",
                 "He could not speak for himself when he saw the princess — that is why he had to send his mother.",
-                "Aladdin put the lamp away at the bottom of a chest — he wanted to give the genie a long rest."
+                "Aladdin slipped a few jewels into his pocket on the way to the lamp — he did exactly as the man had told him."
             ],
             answer: 3
         }

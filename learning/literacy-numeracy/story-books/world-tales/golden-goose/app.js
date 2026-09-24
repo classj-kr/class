@@ -416,20 +416,20 @@ function afterPage(spread, isFirst) {
 
 const QUIZ = [
     {
-        "q": "노인이 세 아들에게 부탁한 것은 무엇인가요?",
+        "q": "큰아들은 숲에서 도끼질을 하다 어떻게 되었나요?",
         "choices": [
-            "빵을 좀 달라",
-            "나무를 베어 달라",
-            "포도주를 달라"
+            "나무가 넘어와 발등을 찧었다",
+            "손이 미끄러져 팔을 다쳤다",
+            "도끼날이 부러졌다"
         ],
-        "answer": 0
+        "answer": 1
     },
     {
-        "q": "둘째 아들에게 일어난 일은 무엇인가요?",
+        "q": "막내가 노인 앞에서 보자기를 펴자 어떤 일이 벌어졌나요?",
         "choices": [
-            "거위를 얻었다",
-            "노인과 밥을 먹었다",
-            "발등을 찧었다"
+            "노인이 빵을 다 먹어 버렸다",
+            "빵이 사라지고 금화가 놓여 있었다",
+            "딱딱한 빵이 고운 빵으로 바뀌어 있었다"
         ],
         "answer": 2
     },
@@ -443,40 +443,40 @@ const QUIZ = [
         "answer": 1
     },
     {
-        "q": "주막집 큰딸이 깃털에 손을 대자 어떻게 되었나요?",
+        "q": "막내는 임금님에게 무슨 상을 청했나요?",
         "choices": [
-            "손이 붙었다",
-            "깃털이 떨어졌다",
-            "언니들이 달아났다"
+            "공주와 혼인하게 해 달라",
+            "금과 땅을 달라",
+            "성에서 일하게 해 달라"
         ],
-        "answer": 0
+        "answer": 2
     },
     {
         "q": "줄줄이 매달린 사람은 누구인가요?",
         "choices": [
-            "임금님과 광대",
-            "어머니와 형들",
+            "임금님과 신하들",
+            "어머니와 두 형",
             "신부님과 농부들"
         ],
         "answer": 2
     },
     {
-        "q": "임금님의 걱정은 무엇이었나요?",
+        "q": "임금님이 공주를 위해 처음에 한 일은 무엇인가요?",
         "choices": [
-            "말을 안 하는 것",
-            "공주가 안 웃는 것",
-            "잠을 안 자는 것"
-        ],
-        "answer": 1
-    },
-    {
-        "q": "공주가 웃자 어떻게 되었나요?",
-        "choices": [
-            "붙은 손이 떨어졌다",
-            "거위가 날아갔다",
-            "노인이 나타났다"
+            "광대와 곡예사 같은 재주꾼을 불러들였다",
+            "온 나라에 상을 내리겠다고 알렸다",
+            "막내를 성으로 불러들였다"
         ],
         "answer": 0
+    },
+    {
+        "q": "상을 받은 뒤 막내는 거위를 어떻게 했나요?",
+        "choices": [
+            "임금님께 바쳤다",
+            "숲으로 돌려보냈다",
+            "성에서 길렀다"
+        ],
+        "answer": 1
     },
     {
         "q": "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
@@ -896,39 +896,39 @@ const EN = {
     ],
     quiz: [
         {
-            q: "What did the two elder brothers do when the old man asked for food?",
-            choices: ["They both refused him", "They both shared with him", "They gave him wine only"],
-            answer: 0
-        },
-        {
-            q: "What did the youngest take with him into the wood?",
-            choices: ["Good bread and wine", "Nothing at all", "Hard stale bread and sour beer"],
-            answer: 2
-        },
-        {
-            q: "What happened to the youngest son’s food?",
-            choices: ["The old man took it away", "It turned into fine bread and sweet wine", "It ran out at once"],
+            q: "What happened to the eldest son when he set to work with his axe?",
+            choices: ["A tree fell on his foot", "His hand slipped and he hurt his arm", "The axe blade broke"],
             answer: 1
         },
         {
-            q: "Where was the golden goose?",
-            choices: ["Inside a hollow tree stump", "At the inn", "In the castle garden"],
-            answer: 0
-        },
-        {
-            q: "Why did the second daughter stick fast?",
-            choices: ["She touched a feather herself", "She held the youngest son’s coat", "She pulled at her sister’s arm"],
+            q: "What did the youngest find when he opened his bundle for the old man?",
+            choices: ["The old man had eaten all the bread", "The bread was gone and gold lay there", "The stale bread had become fine bread and the sour beer wine"],
             answer: 2
         },
         {
-            q: "What made the princess laugh?",
-            choices: ["The clowns and acrobats", "The string of people trailing after the goose", "The golden feathers"],
+            q: "What did the old man tell the youngest to do?",
+            choices: ["Go to the inn", "Cut down the old tree", "Go to the castle"],
             answer: 1
         },
         {
             q: "What did the youngest ask the king for?",
-            choices: ["To work at the castle", "Gold and land", "To keep the golden goose"],
+            choices: ["To marry the princess", "Gold and land", "To work at the castle"],
+            answer: 2
+        },
+        {
+            q: "Who got stuck to the string while trying to pull it apart?",
+            choices: ["The king and his courtiers", "The mother and the two brothers", "The priest and the farmers"],
+            answer: 2
+        },
+        {
+            q: "What did the king try first to make the princess laugh?",
+            choices: ["He sent for clowns and acrobats", "He promised a reward to the whole land", "He called the youngest to the castle"],
             answer: 0
+        },
+        {
+            q: "What did the youngest do with the goose after his reward?",
+            choices: ["Gave it to the king", "Set it free in the wood", "Kept it at the castle"],
+            answer: 1
         },
         {
             q: "Which reaction to this book does NOT fit?",

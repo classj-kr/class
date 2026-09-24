@@ -752,11 +752,11 @@ const EN = {
     quiz: [
         { q: 'Why did Nils shrink?', choices: ['He caught the tomte and got greedy', 'He slept instead of reading ten pages of the Bible', 'He fell while chasing the geese'], answer: 0 },
         { q: 'What new ability did the shrunken Nils gain?', choices: ['His body became light enough to fly', 'He could understand what animals said', 'He could see well in the dark'], answer: 1 },
-        { q: 'What was the name of the goose that carried Nils away?', choices: ['Morten', 'Akka', 'Dunfin'], answer: 0 },
-        { q: 'Who was the leader of the flock of wild geese?', choices: ['Morten of Skåne', 'Akka of Kebnekaise', 'Dunfin of Lapland'], answer: 1 },
+        { q: 'When the farm goose Morten rose into the air, why did Nils grab his neck?', choices: ['Because his father would be furious if the goose flew away', 'Because he wanted to follow the wild geese to Lapland', 'Because he thought he could find the tomte from a goose’s back'], answer: 0 },
+        { q: 'Why, according to this book, does Akka fly at the head of the flock?', choices: ['Because she is the biggest and strongest of the flock', 'Because she is the oldest and knows the way best', 'Because she was born on the highest mountain in Sweden'], answer: 1 },
         { q: 'Why did Akka decide to take Nils along?', choices: ['Because Morten begged her to the last', 'Because he could pass on what humans said', 'Because he saved a goose the fox had caught'], answer: 2 },
         { q: 'How did Nils drive the rats out of Glimminge Castle?', choices: ['With an old wooden pipe he found in the cellar', 'By letting a cat loose in the castle', 'By opening an underground channel and flooding it'], answer: 0 },
-        { q: "Which old tale was Nils's driving out of the rats exactly like?", choices: ['The Pied Piper of Hamelin', 'The animals of the Bremen Town Musicians', 'The story of Puss in Boots'], answer: 0 },
+        { q: 'After the rats were gone, the stork asked what he could give Nils. What did Nils ask instead?', choices: ['Whether he knew where the tomte lived', 'How far it still was to Lapland', 'Whether he knew when Nils would be human again'], answer: 2 },
         { q: 'What is the rule of the gathering on Kullaberg?', choices: ['Only the birds come out to compete that day', 'No human climbs the mountain that day', 'For that one day nobody eats anybody'], answer: 2 },
         { q: 'What sentence did Smirre the fox receive for breaking the rule?', choices: ['Banishment, and nobody would speak to him', 'To lose his life on the spot', 'To be shut in a den for a year'], answer: 0 },
         { q: 'Why could Nils not buy anything in the city that appeared at night?', choices: ['Because he did not know the language of that city', 'Because he did not have a single coin', 'Because the shops were about to close'], answer: 1 },
@@ -765,8 +765,8 @@ const EN = {
         { q: 'For what purpose was this book originally written?', choices: ['As a Swedish geography textbook for schools', 'As a collection of old tales for children', 'As a record of the roads the wild geese fly'], answer: 0 },
         { q: 'What made Nils human again?', choices: ['He met the tomte again and begged forgiveness', 'For the first time he thought what he could do as a human', 'He went to Lapland and came safely home'], answer: 1 },
         { q: 'Once he was human, what was the first thing Nils asked of his father?', choices: ['Mother, Father, I am sorry', 'Where have I been all this time', 'Let those geese go'], answer: 2 },
-        { q: 'What did Nils lose once he was human again?', choices: ['The gift of flying on the clouds', 'All the memories of his childhood', 'Understanding what animals say'], answer: 2 },
-        { q: 'Which of these is NOT a fair thing to say after reading this book?', wide: true, choices: ['Seeing how Nils grabbed Morten’s neck as he flew up because he was worrying about the winter, one goose counted for that much in that house.', 'Seeing how Nils told Akka he did not know whether he wanted to be human again, he had forgotten his home and his mother.', 'Seeing how Nils heard that to be human again he would have to make one of his travelling friends small in his place, he had to choose between being human and keeping his friends.', 'Seeing how a boy who tormented animals rode on an animal’s back and saw his whole country, there are things you can see only once you are small.'], answer: 1 }
+        { q: 'How did Nils live once he was human again?', choices: ['He told the villagers everything from his eight months away', 'He stopped tormenting animals and watched the sky every spring', 'Every spring he followed the geese to Lapland'], answer: 1 },
+        { q: 'Which of these is NOT a fair thing to say after reading this book?', wide: true, choices: ['Seeing how Nils’s throat tightened at the dance of the cranes without knowing why, he was a boy who had never found anything beautiful before.','Seeing how Nils told Akka he did not know whether he wanted to be human again, he had forgotten his home and his mother.', 'Seeing how Nils heard that to be human again he would have to make one of his travelling friends small in his place, he had to choose between being human and keeping his friends.', 'Seeing how a boy who tormented animals rode on an animal’s back and saw his whole country, there are things you can see only once you are small.'], answer: 1 }
     ]
 };
 
@@ -1286,11 +1286,11 @@ function chapterSpreadPage(spread) {
 const QUIZ = [
     { q: "닐스가 작아진 까닭은 무엇입니까?", choices: ["톰테를 잡아 놓고 욕심을 부려서", "성경을 열 쪽 읽지 않고 자서", "거위를 쫓아 몰다가 넘어져서"], answer: 0 },
     { q: "작아진 닐스에게 생긴 능력은 무엇입니까?", choices: ["몸이 가벼워 날 수 있게 되었다", "짐승의 말을 알아듣게 되었다", "어둠 속에서도 잘 보게 되었다"], answer: 1 },
-    { q: "닐스를 태우고 날아간 거위의 이름은 무엇입니까?", choices: ["모르텐", "아카", "던핀"], answer: 0 },
-    { q: "기러기 무리의 우두머리는 누구입니까?", choices: ["스코네의 모르텐", "케브네카이세의 아카", "라플란드의 던핀"], answer: 1 },
+    { q: "집거위 모르텐이 날아오르자 닐스가 그 목을 붙잡은 까닭은 무엇입니까?", choices: ["거위가 날아가면 아버지에게 크게 야단맞을 것이라서", "기러기들을 따라 라플란드에 가 보고 싶어서", "거위 등에 타면 톰테를 찾을 수 있을 것 같아서"], answer: 0 },
+    { q: "아카가 기러기 무리의 맨 앞에 서는 까닭으로 이 책이 말한 것은 무엇입니까?", choices: ["무리에서 제일 크고 힘이 세기 때문에", "무리에서 제일 늙고 길을 잘 알기 때문에", "스웨덴에서 제일 높은 산에서 태어났기 때문에"], answer: 1 },
     { q: "아카가 닐스를 데려가기로 한 까닭은 무엇입니까?", choices: ["모르텐이 끝까지 부탁해서", "사람 말을 옮겨 줄 수 있어서", "여우에게 물린 기러기를 구해서"], answer: 2 },
     { q: "글리밍겐 성에서 닐스가 쥐를 몰아낸 방법은 무엇입니까?", choices: ["지하에서 찾은 오래된 나무 피리", "성 안에 고양이를 풀어놓은 것", "지하 물길을 터뜨려 물을 댄 것"], answer: 0 },
-    { q: "쥐를 몰아낸 닐스의 일은 어느 옛이야기와 꼭 같았습니까?", choices: ["하멜른의 피리 부는 사나이", "브레멘 음악대의 짐승들", "장화 신은 고양이 이야기"], answer: 0 },
+    { q: "쥐를 몰아낸 뒤 황새가 무엇을 주면 되겠느냐고 묻자 닐스가 물은 것은 무엇입니까?", choices: ["톰테가 어디 사는지 아느냐", "라플란드까지 얼마나 남았느냐", "언제 다시 사람이 되는지 아느냐"], answer: 2 },
     { q: "쿨라베리 모임의 규칙은 무엇입니까?", choices: ["그날은 새들만 나와서 겨룬다", "그날은 사람이 산에 오르지 않는다", "그날 하루는 서로 잡아먹지 않는다"], answer: 2 },
     { q: "규칙을 어긴 여우 스미레가 받은 벌은 무엇입니까?", choices: ["쫓겨나고 아무도 말을 섞지 않는 것", "그 자리에서 목숨을 잃게 되는 것", "한 해 동안 굴에 갇혀 지내는 것"], answer: 0 },
     { q: "밤에 나타난 도시에서 닐스가 물건을 사지 못한 까닭은 무엇입니까?", choices: ["그 도시 말을 몰랐기 때문에", "동전 한 닢이 없었기 때문에", "가게가 곧 문을 닫았기 때문에"], answer: 1 },
@@ -1299,8 +1299,8 @@ const QUIZ = [
     { q: "이 책이 원래 어떤 목적으로 쓰였습니까?", choices: ["학교에서 쓸 스웨덴 지리 교과서", "아이들에게 읽힐 옛이야기 모음", "기러기가 다니는 길을 적은 기록"], answer: 0 },
     { q: "닐스가 다시 사람이 된 계기는 무엇입니까?", choices: ["톰테를 다시 만나 잘못했다고 빌었기 때문에", "사람이면 무엇을 할 수 있는지 처음 생각해서", "라플란드까지 갔다가 무사히 돌아왔기 때문에"], answer: 1 },
     { q: "사람이 된 닐스가 아버지에게 제일 먼저 한 부탁은 무엇입니까?", choices: ["어머니 아버지 잘못했어요", "저는 그동안 어디 있었어요", "저 거위들을 놓아 주세요"], answer: 2 },
-    { q: "사람이 된 뒤 닐스가 잃은 것은 무엇입니까?", choices: ["구름을 타고 나는 재주", "어릴 때의 기억 전부", "짐승의 말을 알아듣는 것"], answer: 2 },
-    { q: "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?", wide: true, choices: ["닐스가 날아오르는 모르텐의 목을 붙잡은 것이 겨울 살림 걱정이었던 것을 보면, 그 집에서 거위 한 마리가 그만큼 컸어.", "닐스가 아카에게 사람으로 돌아가고 싶은지 모르겠다고 한 것을 보면, 집과 어머니를 잊어버린 거야.", "사람이 되려면 함께 다닌 벗 하나를 대신 작게 만들어야 한다는 말을 들은 것을 보면, 닐스는 사람이 되는 것과 벗을 지키는 것 사이에서 골라야 했네.", "짐승 괴롭히기를 일삼던 아이가 짐승 등에 얹혀 나라를 돌아본 것을 보면, 작아져야 보이는 것이 있구나."], answer: 1 }
+    { q: "사람이 된 뒤 닐스는 어떻게 지냈습니까?", choices: ["여덟 달 동안 겪은 일을 마을 사람들에게 들려주었다", "짐승을 괴롭히지 않았고 봄이면 하늘을 보았다", "해마다 봄이면 기러기를 따라 라플란드에 갔다"], answer: 1 },
+    { q: "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?", wide: true, choices: ["닐스가 학들의 춤을 보다가 까닭도 모르고 목이 멘 것을 보면, 그때까지 아름답다고 느껴 본 것이 없던 아이였네.", "닐스가 아카에게 사람으로 돌아가고 싶은지 모르겠다고 한 것을 보면, 집과 어머니를 잊어버린 거야.", "사람이 되려면 함께 다닌 벗 하나를 대신 작게 만들어야 한다는 말을 들은 것을 보면, 닐스는 사람이 되는 것과 벗을 지키는 것 사이에서 골라야 했네.", "짐승 괴롭히기를 일삼던 아이가 짐승 등에 얹혀 나라를 돌아본 것을 보면, 작아져야 보이는 것이 있구나."], answer: 1 }
 ];
 
 // 선지를 세로로 쌓으니 한 쪽에 열여섯 문항이 다 들어가지 않는다. 몇 개씩 나눠 싣는다.

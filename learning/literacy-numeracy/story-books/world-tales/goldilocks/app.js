@@ -454,11 +454,11 @@ const QUIZ = [
         "answer": 2
     },
     {
-        "q": "아이가 잠든 곳은 어디인가요?",
+        "q": "아이가 가운데 침대에서 도로 일어난 까닭은 무엇인가요?",
         "choices": [
-            "난롯가 의자",
-            "다락방 침대",
-            "식탁 밑"
+            "머리맡이 너무 높아서",
+            "발치가 너무 푹신해서",
+            "이불이 너무 차가워서"
         ],
         "answer": 1
     },
@@ -493,9 +493,9 @@ const QUIZ = [
         "q": "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
         "wide": true,
         "choices": [
-                "곰들이 나가면서 문 잠그는 것을 깜박한 것을 보면, 그날 일이 거기서 시작됐네.",
-                "아이가 세 번 다 작은 것이 맞았던 것을 보면, 좋은 것이 아니라 제 몸에 맞는 것을 고른 셈이지.",
-                "아기 곰이 창밖을 보며 저 아이 배가 고팠나 보다고 한 것을 보면, 화를 내기보다 딱하게 여겼구나.",
+                "아기 곰이 제일 먼저 숟가락을 들었다가 혀를 덴 것을 보면, 성미가 급했네.",
+                "아이가 빈 그릇을 그대로 두고 일어난 것을 보면, 치울 생각은 조금도 없었네.",
+                "아이가 마룻바닥이 삐거덕 소리를 내자 딱 멈춰 선 것을 보면, 남의 집에 들어간 것이 켕겼던 거지.",
                 "아이가 부서진 의자를 보고 멈칫한 것을 보면, 남의 물건을 부순 것이 미안했네."
             ],
         "answer": 3
@@ -959,10 +959,10 @@ const EN = {
             q: 'Which reaction to this book does NOT fit?',
             wide: true,
             choices: [
-                "The bears forgot to lock the door on their way out — that is where the whole day's trouble began.",
-                "All three times the small one fitted her — she was not choosing the best but the one her size.",
-                "Baby Bear looked out of the window and said the child must have been hungry — he felt sorry rather than angry.",
-                "The girl paused at the broken chair — she felt sorry for breaking something that wasn't hers."
+                "Baby Bear was the first to pick up his spoon and burnt his tongue — he was in too much of a hurry.",
+                "She got up and left the empty bowl where it was — clearing up never crossed her mind.",
+                "She froze when the floorboard creaked — she knew she had no business in someone else’s house.",
+                "Father Bear went up the stairs last — he wanted Baby Bear to be brave and lead the way."
             ],
             answer: 3
         }

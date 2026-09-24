@@ -425,67 +425,67 @@ function afterPage(spread, isFirst) {
 
 const QUIZ = [
     {
-        "q": "큰아들이 배운 일은 무엇인가요?",
+        "q": "아버지가 세 아들을 내보내며 한 말은 무엇인가요?",
         "choices": [
-            "방앗간 일",
-            "나무 깎는 일",
-            "목수 일"
-        ],
-        "answer": 2
-    },
-    {
-        "q": "식탁보에 무슨 말을 하면 음식이 차려지나요?",
-        "choices": [
-            "자루에서 나와라",
-            "펼치고 차려라",
-            "금화를 내어라"
+            "돈을 벌어 오너라",
+            "저마다 기술을 배워 오너라",
+            "신붓감을 찾아오너라"
         ],
         "answer": 1
     },
     {
-        "q": "주막 주인이 밤에 한 일은 무엇인가요?",
+        "q": "큰아들은 스승이 준 식탁보를 언제 처음 써 보았나요?",
         "choices": [
-            "천을 바꿔치기",
-            "자루를 열었다",
-            "창고를 뒤졌다"
+            "숲길에서 배가 고파졌을 때",
+            "주막에서 손님들 앞에서",
+            "집에 닿아 식구들 앞에서"
         ],
         "answer": 0
     },
     {
-        "q": "둘째가 방앗간에서 받은 것은 무엇인가요?",
+        "q": "주막 주인은 식탁보를 어떻게 가로챘나요?",
         "choices": [
-            "식탁보",
-            "몽둥이",
-            "당나귀"
+            "큰아들이 잠든 사이 훔쳐 달아났다",
+            "값을 치르고 사겠다고 졸랐다",
+            "창고에서 찾은 비슷한 천과 바꿔치기했다"
         ],
         "answer": 2
     },
     {
-        "q": "막내가 스승에게서 받은 것은 무엇인가요?",
+        "q": "둘째는 왜 주막 주인에게 당나귀의 재주를 보여 주었나요?",
         "choices": [
-            "식탁보",
-            "자루",
-            "당나귀"
+            "밥값을 치르려고",
+            "입이 근질거려 자랑하고 싶어서",
+            "형의 물건을 찾아 달라고 부탁하려고"
         ],
         "answer": 1
     },
     {
-        "q": "막내가 주막에서 외친 말은 무엇인가요?",
+        "q": "자루 속 몽둥이는 언제까지 멈추지 않는다고 했나요?",
         "choices": [
-            "몽둥아, 나와라",
-            "펼치고 차려라",
-            "창고를 열어라"
+            "주인이 잘못했다고 빌 때까지",
+            "날이 밝을 때까지",
+            "'자루로 들어가라' 할 때까지"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "막내는 언제 몽둥이를 자루로 불러들였나요?",
+        "choices": [
+            "주인이 물건을 다 돌려주겠다고 했을 때",
+            "주인이 처음 살려 달라고 소리쳤을 때",
+            "손님들이 창문으로 내다봤을 때"
         ],
         "answer": 0
     },
     {
-        "q": "당나귀가 쏟아 놓은 것은 무엇인가요?",
+        "q": "집에 돌아온 뒤 자루는 어떻게 되었나요?",
         "choices": [
-            "음식",
-            "몽둥이",
-            "금화"
+            "형들에게 나누어 주었다",
+            "처마 밑에 걸어 두고 다시 쓰지 않았다",
+            "주막 주인에게 돌려주었다"
         ],
-        "answer": 2
+        "answer": 1
     },
     {
         "q": "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
@@ -849,39 +849,39 @@ const EN = {
     ],
     quiz: [
         {
-            q: 'What trade did the eldest son learn?',
-            choices: ["The miller's trade", 'Woodturning', "The carpenter's trade"],
-            answer: 2
-        },
-        {
-            q: 'What must you say to the cloth to make it lay a meal?',
-            choices: ['Out of the sack', 'Spread yourself and set the table', 'Give out gold'],
+            q: 'What did the father tell his three sons to do?',
+            choices: ['Earn some money', 'Each learn a trade', 'Find a bride'],
             answer: 1
         },
         {
-            q: 'What did the landlord do at night?',
-            choices: ['He swapped the cloth', 'He opened the sack', 'He searched the storeroom'],
+            q: 'When did the eldest first try the cloth his master gave him?',
+            choices: ['On the forest road when he grew hungry', 'At the inn in front of the guests', 'At home in front of the family'],
             answer: 0
         },
         {
-            q: 'What did the second son get from the miller?',
-            choices: ['A cloth', 'A cudgel', 'A donkey'],
+            q: 'How did the landlord get hold of the cloth?',
+            choices: ['Stole it while the eldest slept and ran off', 'Begged to buy it', 'Swapped it for a look-alike cloth from his storeroom'],
             answer: 2
         },
         {
-            q: 'What did the youngest son get from his master?',
-            choices: ['A cloth', 'A sack', 'A donkey'],
+            q: 'Why did the second son show the landlord what the donkey could do?',
+            choices: ['To pay for his supper', 'He could not resist boasting', "To ask for help finding his brother's cloth"],
             answer: 1
         },
         {
-            q: 'What did the youngest call out at the inn?',
-            choices: ['Cudgel, out of the sack', 'Spread yourself and set the table', 'Open the storeroom'],
+            q: 'Until when would the cudgel keep going?',
+            choices: ['Until the landlord begged for mercy', 'Until daybreak', 'Until it was told "back into the sack"'],
+            answer: 2
+        },
+        {
+            q: 'When did the youngest call the cudgel back into the sack?',
+            choices: ['When the landlord promised to give everything back', 'When the landlord first cried for mercy', 'When the guests looked in at the windows'],
             answer: 0
         },
         {
-            q: 'What did the donkey pour out?',
-            choices: ['Food', 'A cudgel', 'Gold'],
-            answer: 2
+            q: 'What became of the sack once they were home?',
+            choices: ['It was shared out between the brothers', 'It hung under the eaves and was never needed again', 'It was given back to the landlord'],
+            answer: 1
         },
         {
             q: 'Which reaction to this book does NOT fit?',

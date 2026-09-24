@@ -392,11 +392,11 @@ function afterPage(spread, isFirst) {
 
 const QUIZ = [
     {
-        "q": "하멜른 사람들이 시청으로 몰려간 까닭은 무엇인가요?",
+        "q": "쥐를 없애려고 시장이 먼저 해 본 일은 무엇인가요?",
         "choices": [
-            "아이들이 사라져서",
-            "쥐가 늘어서",
-            "값을 안 줘서"
+            "의원들과 불을 놓았다",
+            "고양이를 사 오고 덫을 놓았다",
+            "창고 문을 모두 막았다"
         ],
         "answer": 1
     },
@@ -405,7 +405,7 @@ const QUIZ = [
         "choices": [
             "천 닢",
             "이만 닢",
-            "고양이 값"
+            "백 닢"
         ],
         "answer": 0
     },
@@ -428,19 +428,19 @@ const QUIZ = [
         "answer": 1
     },
     {
-        "q": "아이들이 따라나설 때 어른들은 어디 있었나요?",
+        "q": "두 번째 피리 소리는 첫 번째와 어떻게 달랐나요?",
         "choices": [
-            "교회",
-            "시청",
-            "강가"
+            "아주 밝고 신났다",
+            "가늘고 맑았다",
+            "낮고 느렸다"
         ],
         "answer": 0
     },
     {
         "q": "한 아이만 뒤처진 까닭은 무엇인가요?",
         "choices": [
-            "공놀이를 해서",
-            "교회에 가서",
+            "공놀이를 마저 해서",
+            "맨발이어서",
             "다리를 절어서"
         ],
         "answer": 2
@@ -460,8 +460,8 @@ const QUIZ = [
         "choices": [
                 "시장이 이만 닢인들 주겠다더니 쥐가 사라지자 오십 닢을 민 것을 보면, 곤란이 끝나자 셈이 달라졌구나.",
                 "사나이가 값을 두 번 청하지 않는다고 한 것을 보면, 그 자리에서 이미 다른 것을 받기로 마음먹은 거지.",
-                "목발 짚은 아이 앞에서 무릎을 굽히고 피리를 내린 것을 보면, 제가 무엇을 하려던 것인지 그제야 돌아봤어.",
-                "사나이가 아이들을 돌려보낸 뒤 목발 짚은 아이를 업고 마을까지 데려다준 것을 보면, 끝까지 마음을 썼구나."
+                "뒤처졌던 아이 앞에서 무릎을 굽히고 피리를 내린 것을 보면, 제가 무엇을 하려던 것인지 그제야 돌아봤어.",
+                "사나이가 아이들을 돌려보낸 뒤 뒤처졌던 아이를 업고 마을까지 데려다준 것을 보면, 끝까지 마음을 썼구나."
             ],
         "answer": 3
     }
@@ -815,12 +815,12 @@ const EN = {
     quiz: [
         {
             q: 'What did the mayor try before the stranger came?',
-            choices: ['Burning the storehouses', 'Buying cats and setting traps', 'Moving the town'],
+            choices: ['Setting fire to the storehouses', 'Buying cats and setting traps', 'Blocking up every cellar door'],
             answer: 1
         },
         {
             q: 'What did the stranger ask for?',
-            choices: ['A thousand gold pieces', 'A house in the town', 'Fifty gold pieces'],
+            choices: ['A thousand gold pieces', 'Twenty thousand gold pieces', 'A hundred gold pieces'],
             answer: 0
         },
         {
@@ -834,18 +834,18 @@ const EN = {
             answer: 1
         },
         {
-            q: 'Where were the grown-ups when the pipe played again?',
-            choices: ['At church', 'At the town hall', 'Down by the river'],
+            q: 'How was the second tune different from the first?',
+            choices: ['It was bright and merry', 'It was thin and clear', 'It was slow and low'],
             answer: 0
         },
         {
             q: 'Why did one child fall behind the others?',
-            choices: ['He had stayed to finish his game', 'He did not like the tune', 'He was lame and walked with a crutch'],
+            choices: ['He had stayed to finish his game', 'He had run out barefoot', 'He was lame and walked with a crutch'],
             answer: 2
         },
         {
-            q: 'What made the piper change his mind?',
-            choices: ['The mayor’s shouting', 'The child who came all that way on his own', 'The church bell'],
+            q: 'Why did the piper send the children back?',
+            choices: ['The children begged him to', 'The mayor had paid the fee', 'The rats had come back'],
             answer: 1
         },
         {
@@ -854,8 +854,8 @@ const EN = {
             choices: [
                 "He would have paid twenty thousand, and once the rats were gone he pushed over fifty — the sum changed the moment the trouble ended.",
                 "The piper said he never asks for his fee twice — right there he had decided to take something else instead.",
-                "He knelt in front of the child on crutches and lowered his pipe — only then did he look at what he had set out to do.",
-                "After sending the children back he carried the boy on crutches all the way home — he saw it through to the end."
+                "He knelt in front of the child who had fallen behind and lowered his pipe — only then did he look at what he had set out to do.",
+                "After sending the children back he carried the boy who had fallen behind all the way home — he saw it through to the end."
             ],
             answer: 3
         }

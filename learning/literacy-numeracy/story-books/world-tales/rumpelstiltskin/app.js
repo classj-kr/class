@@ -427,63 +427,63 @@ const QUIZ = [
     {
         "q": "방앗간 주인이 임금님께 한 허풍은 무엇인가요?",
         "choices": [
-            "딸이 금실을 잣는다",
-            "딸이 노래를 잘한다",
-            "딸이 왕비가 된다"
-        ],
-        "answer": 0
-    },
-    {
-        "q": "첫날 밤 딸이 작은 남자에게 준 것은 무엇인가요?",
-        "choices": [
-            "실패",
-            "아이",
-            "목걸이"
-        ],
-        "answer": 2
-    },
-    {
-        "q": "셋째 날 밤 딸이 약속한 것은 무엇인가요?",
-        "choices": [
-            "나라의 보물",
-            "첫아이",
-            "목걸이"
+            "딸이 세상에서 제일 곱다",
+            "딸이 짚으로 금실을 자을 줄 안다",
+            "딸이 물레를 제일 빨리 돌린다"
         ],
         "answer": 1
     },
     {
-        "q": "작은 남자가 보물을 마다한 까닭은 무엇인가요?",
+        "q": "둘째 날 밤 딸이 작은 남자에게 준 것은 무엇인가요?",
         "choices": [
-            "금붙이가 소용없어서",
-            "이름을 맞히려고",
-            "약속이라서"
-        ],
-        "answer": 0
-    },
-    {
-        "q": "왕비가 심부름꾼들을 온 나라로 보낸 까닭은 무엇인가요?",
-        "choices": [
-            "이름을 널리 알리려고",
-            "작은 남자를 찾으려고",
-            "이름을 모으려고"
-        ],
-        "answer": 2
-    },
-    {
-        "q": "심부름꾼이 그 이름을 알아낸 곳은 어디인가요?",
-        "choices": [
-            "방앗간",
-            "오두막 앞",
-            "창가"
+            "목걸이",
+            "반지",
+            "첫아이 약속"
         ],
         "answer": 1
     },
     {
-        "q": "그때 작은 남자가 하고 있던 것은 무엇인가요?",
+        "q": "셋째 날 밤 임금님은 딸에게 무슨 약속을 했나요?",
         "choices": [
-            "한 발로 뛰기",
-            "물레 돌리기",
-            "노래 듣기"
+            "해내면 집으로 보내 주겠다",
+            "해내면 금실을 반 나눠 주겠다",
+            "해내면 왕비로 삼겠다"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "왕비가 나라의 보물을 다 주겠다고 하자 작은 남자는 어떻게 했나요?",
+        "choices": [
+            "금붙이는 소용없다며 사흘 말미를 주었다",
+            "보물을 받고 아이는 두고 갔다",
+            "아이를 안고 그대로 사라졌다"
+        ],
+        "answer": 0
+    },
+    {
+        "q": "첫날 아침 금실을 본 임금님은 어떻게 했나요?",
+        "choices": [
+            "더 큰 방으로 데려가 또 시켰다",
+            "딸을 집으로 돌려보냈다",
+            "금실을 방앗간으로 보내 주었다"
+        ],
+        "answer": 0
+    },
+    {
+        "q": "심부름꾼이 숲에서 보고 온 것은 무엇인가요?",
+        "choices": [
+            "작은 남자가 물레를 돌리는 것",
+            "작은 남자가 오두막에서 자는 것",
+            "작은 남자가 한 발로 뛰며 노래하는 것"
+        ],
+        "answer": 2
+    },
+    {
+        "q": "왕비가 이름을 맞히자 작은 남자는 어떻게 했나요?",
+        "choices": [
+            "펄쩍 뛰며 소리 지르고 달아나 다시 오지 않았다",
+            "웃으며 아이를 축복하고 떠났다",
+            "금실을 도로 가져갔다"
         ],
         "answer": 0
     },
@@ -492,11 +492,11 @@ const QUIZ = [
         "wide": true,
         "choices": [
                 "방앗간 주인이 큰 인물 앞에 서니 입이 근질거렸다고 한 것을 보면, 자랑하고 싶은 마음이 앞섰나 봐.",
-                "임금님이 금실을 보고도 고마워하지 않고 더 넓은 방으로 데려간 것을 보면, 욕심이 먼저 난 거지.",
-                "작은 남자가 금붙이는 아무 소용이 없다고 한 것을 보면, 처음부터 아이를 노렸구나.",
-                "왕비가 마지막 밤에 콘라트냐 하인츠냐부터 물어본 것을 보면, 그때까지도 진짜 이름을 알아내지 못했나 봐."
+                "왕비가 아이를 낳고 약속을 까맣게 잊은 것을 보면, 두 해가 지나며 마음이 놓였던 거지.",
+                "왕비가 마지막 밤에 콘라트냐 하인츠냐부터 물어본 것을 보면, 그때까지도 진짜 이름을 알아내지 못했나 봐.",
+                "왕비가 심부름꾼에게 큰 상을 내린 것을 보면, 그 이름 하나가 아이를 지킬 값이었으니까."
             ],
-        "answer": 3
+        "answer": 2
     }
 ];
 
@@ -841,38 +841,38 @@ const EN = {
     ],
     quiz: [
         {
-            q: 'What did the miller tell the king about his daughter?',
-            choices: ['That she could spin straw into gold thread', 'That she was the cleverest girl alive', 'That she could sing better than anyone'],
-            answer: 0
-        },
-        {
-            q: 'What did the girl give the little man the first night?',
-            choices: ['Her ring', 'Her first child', 'Her necklace'],
-            answer: 2
-        },
-        {
-            q: 'Why did the king make her spin a third time?',
-            choices: ['He did not believe the first two rooms', 'He grew greedier and wanted more gold', 'The little man asked him to'],
+            q: 'What did the miller boast to the king?',
+            choices: ['That his daughter was the fairest girl alive', 'That his daughter could spin straw into gold thread', 'That his daughter spun faster than anyone'],
             answer: 1
         },
         {
-            q: 'What did the little man ask for the third night?',
-            choices: ['Her first child, once she was queen', 'The whole treasury', 'Her crown'],
-            answer: 0
-        },
-        {
-            q: 'What did the little man offer instead of taking the child?',
-            choices: ['All the gold thread back', 'One year’s delay', 'Three days to guess his name'],
-            answer: 2
-        },
-        {
-            q: 'How did the queen learn the name?',
-            choices: ['She read it in the scrolls', 'A messenger heard him singing it in the wood', 'The king told her'],
+            q: 'What did the girl give the little man on the second night?',
+            choices: ['Her necklace', 'Her ring', 'A promise of her first child'],
             answer: 1
         },
         {
-            q: 'What did the little man do when she said his name?',
-            choices: ['He leapt up, shrieked and never came back', 'He asked for gold instead', 'He took the child anyway'],
+            q: 'What did the king promise the girl on the third night?',
+            choices: ['To send her home if she succeeded', 'To share half the gold with her', 'To make her his queen if she succeeded'],
+            answer: 2
+        },
+        {
+            q: 'What did the little man do when the queen offered him all the treasure of the land?',
+            choices: ['He said gold was no use to him and gave her three days', 'He took the treasure and left the child', 'He picked up the child and vanished'],
+            answer: 0
+        },
+        {
+            q: 'What did the king do when he saw the gold thread the first morning?',
+            choices: ['He took her to a bigger room and made her do it again', 'He sent her home', 'He sent the gold thread to the mill'],
+            answer: 0
+        },
+        {
+            q: 'What did the messenger see in the wood?',
+            choices: ['The little man at a spinning wheel', 'The little man asleep in a hut', 'The little man hopping on one foot and singing'],
+            answer: 2
+        },
+        {
+            q: 'What did the little man do when the queen said his name?',
+            choices: ['He leapt up, shrieked and ran off, never to return', 'He blessed the child with a smile and left', 'He took back all the gold thread'],
             answer: 0
         },
         {
@@ -880,11 +880,11 @@ const EN = {
             wide: true,
             choices: [
                 "The miller said his tongue itched in front of so great a man — the wish to boast came first.",
-                "The king saw the gold and, instead of thanking her, took her to a larger room — greed came first.",
-                "The little man said gold was no use to him — the child was what he had been after all along.",
-                "On the last night the queen began by guessing Conrad and Heinz — she still had not found out his real name."
+                "After the baby came the queen forgot the promise entirely — two years had passed and she had stopped worrying.",
+                "On the last night the queen began by guessing Conrad and Heinz — she still had not found out his real name.",
+                "The queen gave the messenger a great reward — that one name was the price of keeping her child."
             ],
-            answer: 3
+            answer: 2
         }
     ],
     afterword: {

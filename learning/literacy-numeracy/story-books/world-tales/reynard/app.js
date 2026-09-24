@@ -422,9 +422,9 @@ const QUIZ = [
     {
         "q": "늑대 이젠그림이 여우를 고발한 까닭은 무엇인가요?",
         "choices": [
-            "꿀을 뺏어서",
+            "재판에 안 나와서",
             "닭을 물어 가서",
-            "올가미에 걸리게 해서"
+            "굴을 빼앗아서"
         ],
         "answer": 1
     },
@@ -432,16 +432,16 @@ const QUIZ = [
         "q": "곰 브라운이 여우에게 속아 겪은 일은 무엇인가요?",
         "choices": [
             "나무틈에 코가 끼었다",
-            "올가미에 걸렸다",
-            "꿀을 다 먹었다"
+            "농부에게 빗자루로 쫓겼다",
+            "여우 굴에 갇혔다"
         ],
         "answer": 0
     },
     {
         "q": "고양이 티베르가 겪은 일은 무엇인가요?",
         "choices": [
-            "코가 부었다",
-            "나무에 끼었다",
+            "쥐에게 물렸다",
+            "꼬리를 밟혔다",
             "올가미에 걸렸다"
         ],
         "answer": 2
@@ -459,16 +459,16 @@ const QUIZ = [
         "q": "재판정에서 여우가 한 말은 무엇인가요?",
         "choices": [
             "임금님 일을 했다",
-            "닭은 안 물었다",
-            "보물을 묻어 뒀다"
+            "늑대가 먼저 놀렸다",
+            "곰이 꿀을 훔쳤다"
         ],
         "answer": 0
     },
     {
-        "q": "여우가 지어낸 보물은 어디에 있다고 했나요?",
+        "q": "여우는 보물이 어디에 있다고 했나요?",
         "choices": [
-            "나무 틈",
-            "헛간 안",
+            "임금님 바위 밑",
+            "여우 굴 밑",
             "마른 우물 밑"
         ],
         "answer": 2
@@ -486,10 +486,10 @@ const QUIZ = [
         "q": "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
         "wide": true,
         "choices": [
-                "곰이 재판이고 뭐고 다 잊고 나무 틈에 머리부터 들이민 것을 보면, 꿀에 마음이 먼저 갔네.",
+                "곰이 저만 한 덩치면 겁먹을 거라고 한 것을 보면, 여우를 힘으로 겁줄 수 있다고 믿었네.",
                 "사흘 굶은 고양이가 헛간으로 뛰어든 것을 보면, 저마다 바라던 것을 따라갔다가 그리된 거지.",
-                "임금님이 보물이라는 말에 늑대의 말을 잊은 것을 보면, 속는 자리가 곧 바라는 자리였구나.",
-                "오소리가 여우를 데리고 온 것을 보면, 친척이라 여우를 감싸 주려 했네."
+                "아무도 여우를 데리러 가려 하지 않은 것을 보면, 여우와 얽히고 싶지 않았던 거지.",
+                "여우가 지팡이를 짚고 순례를 다녀오겠다고 한 것을 보면, 이번만은 정말 뉘우쳤구나."
             ],
         "answer": 3
     }
@@ -829,17 +829,17 @@ const EN = {
     quiz: [
         {
             q: 'Why did Isengrim the wolf accuse the fox?',
-            choices: ['He took his honey', 'He carried off his hens', 'He got him caught in a snare'],
+            choices: ['He stayed away from the trial', 'He carried off his hens', 'He took over his den'],
             answer: 1
         },
         {
             q: 'What happened to Bruin the bear through the fox?',
-            choices: ['His nose was caught in a tree', 'He was caught in a snare', 'He ate all the honey'],
+            choices: ['His nose was caught in a tree', 'A farmer chased him with a broom', 'He was shut in the fox’s den'],
             answer: 0
         },
         {
             q: 'What happened to Tibert the cat?',
-            choices: ['His nose swelled up', 'He was caught in a tree', 'He was caught in a snare'],
+            choices: ['He was bitten by a mouse', 'His tail was trodden on', 'He was caught in a snare'],
             answer: 2
         },
         {
@@ -849,12 +849,12 @@ const EN = {
         },
         {
             q: 'What did the fox say in court?',
-            choices: ['That he had been working for the king', 'That he never took the hens', 'That he had buried a treasure'],
+            choices: ['That he had been working for the king', 'That the wolf had mocked him first', 'That the bear had stolen honey'],
             answer: 0
         },
         {
             q: 'Where did the fox say the treasure was?',
-            choices: ['In a split tree', 'Inside a barn', 'Under a dry well'],
+            choices: ['Under the king’s rock', 'Under the fox’s den', 'Under a dry well'],
             answer: 2
         },
         {
@@ -866,10 +866,10 @@ const EN = {
             q: 'Which reaction to this book does NOT fit?',
             wide: true,
             choices: [
-                "The bear forgot all about the trial and put his head into the split tree — the honey came first.",
+                "The bear said a beast his size would frighten the fox — he believed he could scare him by force.",
                 "The cat, three days hungry, dived into the barn — each of them followed what he wanted and got caught by it.",
-                "At the word 'treasure' the king forgot the wolf's charge — you are fooled exactly where you are wishing.",
-                "The badger brought the fox in — being a relative, he was shielding him."
+                "Nobody wanted to go and fetch the fox — none of them wished to get tangled up with him.",
+                "The fox took a staff and said he was going on a pilgrimage — this once he had truly repented."
             ],
             answer: 3
         }

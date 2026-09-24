@@ -394,7 +394,7 @@ const QUIZ = [
     {
         "q": "임금님이 먼저 대신을 보낸 까닭은 무엇인가요?",
         "choices": [
-            "갈아입느라",
+            "옷을 갈아입느라 바빠서",
             "대신이 똑똑해서",
             "안 보일까 봐"
         ],
@@ -419,29 +419,29 @@ const QUIZ = [
         "answer": 0
     },
     {
-        "q": "거리에서 사람들은 뭐라고 외쳤나요?",
+        "q": "임금님이 처음 걸어 나왔을 때 거리의 사람들은 어떻게 했나요?",
         "choices": [
-            "벌거벗었다",
-            "아무 말도 안 했다",
-            "정말 곱다"
+            "벌거벗었다고 외쳤다",
+            "창문을 닫고 들어갔다",
+            "정말 곱다고 외쳤다"
         ],
         "answer": 2
     },
     {
-        "q": "임금님이 벌거벗었다고 말한 사람은 누구인가요?",
+        "q": "임금님이 벌거벗었다는 말을 들은 아버지는 어떻게 했나요?",
         "choices": [
-            "대신",
-            "아이",
-            "젊은 관리"
+            "아이의 입을 틀어막았다",
+            "함께 큰 소리로 외쳤다",
+            "아이를 안고 집으로 갔다"
         ],
-        "answer": 1
+        "answer": 0
     },
     {
         "q": "그날 밤 임금님은 어떻게 했나요?",
         "choices": [
             "옷장 문을 닫았다",
             "금실을 세어 봤다",
-            "다시 행진을 했다"
+            "두 사람을 잡아 오라고 했다"
         ],
         "answer": 0
     },
@@ -449,8 +449,8 @@ const QUIZ = [
         "q": "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
         "wide": true,
         "choices": [
-                "두 사람이 어리석은 사람에게는 안 보인다고 붙여 둔 것을 보면, 아무도 안 보인다는 말을 못 하게 막아 뒀네.",
-                "늙은 대신이 등에 식은땀을 흘리면서도 훌륭하다고 한 것을 보면, 거짓말을 하려던 것이 아니라 저만 못 보는 줄 알고 겁이 난 거지.",
+                "두 사람이 금실이 더 든다며 자꾸 받아 낸 것을 보면, 처음부터 옷감이 아니라 금실이 목적이었구나.",
+                "이튿날 임금님이 보이면 보인다고 하라고 한 것을 보면, 거짓 칭찬이 얼마나 무서운지 이번 일로 깨달은 거야.",
                 "임금님이 아이의 말을 듣고도 허리를 더 곧게 편 것을 보면, 멈추면 다 인정하는 셈이 되니 끝까지 걸었구나.",
                 "신하 넷이 행진이 끝날 때까지 없는 자락을 들고 뒤를 따른 것을 보면, 그제야 임금님이 딱해 끝까지 곁을 지켰네."
             ],
@@ -758,12 +758,12 @@ const EN = {
     quiz: [
         {
             q: 'What did the two weavers say about their cloth?',
-            choices: ['A fool, or anyone unfit for his post, could not see it', 'It was woven from real gold', 'It would never wear out'],
+            choices: ['Fools could not see it', 'It was woven from real gold', 'It would never wear out'],
             answer: 0
         },
         {
             q: 'Why did the emperor send the old minister first?',
-            choices: ['The minister had asked to go', 'He was too busy to go', 'He was afraid he might not see the cloth himself'],
+            choices: ['He was too busy changing clothes', 'The minister was the cleverest man', 'He feared he might not see it himself'],
             answer: 2
         },
         {
@@ -777,26 +777,26 @@ const EN = {
             answer: 0
         },
         {
-            q: 'What did the people in the street call out when the emperor first walked out?',
-            choices: ['That he had nothing on', 'Nothing at all', 'How beautiful his clothes were'],
+            q: 'What did the people do when the emperor first walked out?',
+            choices: ['They shouted that he had nothing on', 'They shut their windows and went in', 'They shouted how beautiful his clothes were'],
             answer: 2
         },
         {
-            q: 'Who said the emperor had nothing on?',
-            choices: ['The old minister', "A child on his father's shoulders", 'One of the weavers'],
-            answer: 1
+            q: 'What did the father do when he heard what his child said?',
+            choices: ['He clapped a hand over the child’s mouth', 'He shouted it out along with him', 'He carried the child home'],
+            answer: 0
         },
         {
             q: 'What did the emperor do that night?',
-            choices: ['He closed his wardrobe doors', 'He counted the gold thread', 'He walked in another procession'],
+            choices: ['He closed his wardrobe doors', 'He counted the gold thread', 'He sent men after the two weavers'],
             answer: 0
         },
         {
             q: 'Which reaction to this book does NOT fit?',
             wide: true,
             choices: [
-                "The weavers added that fools cannot see it — that one line stopped anybody from saying they could not.",
-                "The old minister broke into a cold sweat and still called it splendid — he was not lying but afraid he alone could not see.",
+                "The weavers kept asking for more gold thread — the gold, not the cloth, was what they were after from the start.",
+                "The next day the emperor ordered them to say what they saw and what they did not — he had learned how dangerous false praise is.",
                 "The emperor heard the child and drew himself up straighter — to stop now would be to admit the whole thing.",
                 "The four courtiers carried the invisible train right to the end of the procession — by then they pitied the emperor and stayed at his side."
             ],

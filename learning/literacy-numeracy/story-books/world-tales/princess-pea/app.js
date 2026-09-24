@@ -452,29 +452,29 @@ const QUIZ = [
         "answer": 1
     },
     {
-        "q": "하인들이 완두콩 위에 깐 요는 몇 장인가요?",
+        "q": "아가씨는 천장에 닿을 듯한 침대를 보고 어떻게 했나요?",
         "choices": [
-            "마흔 장",
-            "스무 장",
-            "한 장"
-        ],
-        "answer": 1
-    },
-    {
-        "q": "아가씨가 밤새 뒤척이는 것을 누가 엿들었나요?",
-        "choices": [
-            "왕비",
-            "왕자",
-            "하인들"
+            "아무 말 없이 사다리를 타고 올라갔다",
+            "다른 방을 달라고 했다",
+            "왜 이렇게 높으냐고 물었다"
         ],
         "answer": 0
     },
     {
-        "q": "왕비는 왜 아가씨를 진짜 공주라고 했나요?",
+        "q": "아가씨는 등에 무언가 배기자 무엇을 해 보았나요?",
         "choices": [
-            "얼굴이 고와서",
-            "말투가 공주 같아서",
-            "콩을 느껴서"
+            "하인을 불러 침대를 살펴 달라고 했다",
+            "일어나 앉아 이불을 하나하나 들춰 보았다",
+            "요를 모두 걷어 내고 나무판에서 잤다"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "아침에 아가씨가 한숨도 못 잤다고 하자 왕자는 어떻게 했나요?",
+        "choices": [
+            "기뻐서 손뼉을 쳤다",
+            "믿지 않고 고개를 저었다",
+            "잠자리가 불편했다니 미안하다고 했다"
         ],
         "answer": 2
     },
@@ -869,19 +869,19 @@ const EN = {
             answer: 1
         },
         {
-            q: 'How many mattresses and quilts went on top of it?',
-            choices: ['Twenty of each', 'Ten of each', 'Forty mattresses only'],
+            q: 'What did the young woman do when she saw the towering bed?',
+            choices: ['Climbed the ladder to the top without a word', 'Asked for a different room', 'Asked why it was so high'],
             answer: 0
         },
         {
-            q: 'What did the young woman say at breakfast?',
-            choices: ['That she had slept very well', 'That the bed was too high', 'That she had not slept at all'],
-            answer: 2
+            q: 'What did she do when something hard pressed into her back?',
+            choices: ['Called a servant to look at the bed', 'Sat up and lifted the quilts one by one', 'Took off all the mattresses and slept on the boards'],
+            answer: 1
         },
         {
-            q: 'Why did the queen decide she was a real princess?',
-            choices: ['She spoke like a princess', 'She felt the pea through forty layers', 'She had a fine dress'],
-            answer: 1
+            q: 'What did the prince do when she said she had not slept?',
+            choices: ['Clapped his hands for joy', 'Shook his head and did not believe her', 'Said he was sorry and that it was their fault'],
+            answer: 2
         },
         {
             q: 'What became of the pea?',

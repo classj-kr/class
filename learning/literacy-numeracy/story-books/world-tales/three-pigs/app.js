@@ -407,7 +407,7 @@ const QUIZ = [
     {
         "q": "늑대가 짚 집에 와서 한 말은 무엇인가요?",
         "choices": [
-            "후우우",
+            "두고 보자",
             "문 열어라",
             "이제 잡았다"
         ],
@@ -423,20 +423,20 @@ const QUIZ = [
         "answer": 0
     },
     {
-        "q": "늑대가 굴뚝으로 들어오려는 말을 누가 들었나요?",
+        "q": "늑대가 굴뚝으로 온다는 것을 알고 막내가 형들에게 시킨 일은 무엇인가요?",
         "choices": [
-            "첫째",
-            "둘째",
-            "막내"
+            "덧문 닫기",
+            "지붕에 올라가기",
+            "장작 가져오기"
         ],
         "answer": 2
     },
     {
         "q": "굴뚝 아래에서 늑대를 맞은 것은 무엇인가요?",
         "choices": [
-            "장작더미",
+            "커다란 그물",
             "뜨거운 김",
-            "빗장 걸린 문"
+            "차가운 물"
         ],
         "answer": 1
     },
@@ -446,8 +446,8 @@ const QUIZ = [
         "choices": [
                 "막내가 언덕에서 바람이 어느 쪽에서 오는지 살핀 것을 보면, 짓기 전에 자리부터 봤구나.",
                 "막내가 불을 피워 연기가 잘 빠지는지 보아 둔 것을 보면, 눈에 안 보이는 데까지 챙긴 거지.",
-                "두 형이 덧문과 빗장을 왜 다느냐고 물은 것을 보면, 그것이 무엇을 막는 것인지 아직 몰랐어.",
-                "막내가 두 형에게 벽돌 쌓는 법을 하나하나 가르쳐 준 것을 보면, 형들이 이듬해 제 집을 지을 수 있었던 까닭이구나."
+                "두 형이 막내더러 그러다 겨울 오겠다고 놀린 것을 보면, 오래 짓는 것을 어리석게 봤구나.",
+                "첫째가 반나절 만에 집을 다 짓고 낮잠을 잔 것을 보면, 밤에 바람이 불어도 끄떡없을 만큼 튼튼히 지은 거지."
             ],
         "answer": 3
     }
@@ -773,7 +773,7 @@ const EN = {
         },
         {
             q: 'What did the wolf say at the straw house?',
-            choices: ['Puuuff', 'Let me come in', 'Got you now'],
+            choices: ['Just you wait', 'Let me come in', 'Got you now'],
             answer: 1
         },
         {
@@ -782,13 +782,13 @@ const EN = {
             answer: 0
         },
         {
-            q: 'Who heard the wolf say he would come down the chimney?',
-            choices: ['The eldest', 'The second', 'The youngest'],
+            q: 'What did the youngest tell his brothers to do when he heard the wolf on the roof?',
+            choices: ['Close the shutters', 'Climb onto the roof', 'Fetch firewood'],
             answer: 2
         },
         {
             q: 'What met the wolf at the bottom of the chimney?',
-            choices: ['A pile of firewood', 'Hot steam', 'A barred door'],
+            choices: ['A big net', 'Hot steam', 'Cold water'],
             answer: 1
         },
         {
@@ -797,8 +797,8 @@ const EN = {
             choices: [
                 "The youngest studied which way the wind came across the hill — he looked at the ground before he built on it.",
                 "He lit a fire to see whether the chimney drew — he saw to the parts nobody would ever look at.",
-                "His brothers asked why he was fitting shutters and a bar — they still did not know what those were for.",
-                "The youngest showed his brothers how to lay bricks, course by course — that is how they built their own houses the next year."
+                "His brothers teased him that winter would come before he finished — they thought taking so long was foolish.",
+                "The eldest finished his house in half a day and lay down for a nap — he had built it strong enough to stand any wind."
             ],
             answer: 3
         }

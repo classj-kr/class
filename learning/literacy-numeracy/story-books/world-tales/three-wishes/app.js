@@ -409,55 +409,55 @@ function afterPage(spread, isFirst) {
 
 const QUIZ = [
     {
-        "q": "나무꾼이 도끼를 내려놓은 까닭은 무엇인가요?",
+        "q": "정령은 나무꾼에게 무엇을 부탁했나요?",
         "choices": [
-            "정령이 사는 나무라서",
-            "나무가 너무 커서",
-            "해가 저물어서"
+            "그 나무를 베지 말아 달라고",
+            "숲을 떠나 달라고",
+            "소원을 빌어 달라고"
         ],
         "answer": 0
     },
     {
-        "q": "정령이 나무꾼에게 준 것은 무엇인가요?",
+        "q": "집에 돌아온 나무꾼은 아내와 무엇을 하기로 했나요?",
         "choices": [
-            "금덩이",
-            "큰 집",
-            "소원 셋"
+            "그 자리에서 큰 집을 빌기로",
+            "우선 저녁부터 먹고 내일 찬찬히 정하기로",
+            "이웃을 불러 의논하기로"
         ],
-        "answer": 2
+        "answer": 1
     },
     {
         "q": "나무꾼이 무심코 중얼거린 것은 언제인가요?",
         "choices": [
             "나무를 벨 때",
             "묽은 죽을 먹을 때",
-            "집으로 달려갈 때"
+            "아내와 다툴 때"
         ],
         "answer": 1
     },
     {
         "q": "코에 붙은 소시지를 떼려고 무엇을 해 보았나요?",
         "choices": [
-            "버터를 발랐다",
-            "칼로 잘랐다",
-            "도끼로 쳤다"
-        ],
-        "answer": 0
-    },
-    {
-        "q": "마지막 소원으로 두 사람이 빈 것은 무엇인가요?",
-        "choices": [
-            "금덩이",
-            "큰 집",
-            "아내의 코"
+            "밧줄로 묶어 당겼다",
+            "정령을 찾아 숲으로 갔다",
+            "버터를 바르고 찬물을 끼얹었다"
         ],
         "answer": 2
     },
     {
-        "q": "나무꾼이 큰 집을 마다한 까닭은 무엇인가요?",
+        "q": "아내는 마지막 소원을 무엇에 쓰자고 했나요?",
+        "choices": [
+            "큰 집이나 금덩이",
+            "제 코를 되돌리는 것",
+            "소시지를 없애는 것"
+        ],
+        "answer": 0
+    },
+    {
+        "q": "저녁 밥상 앞에서 나무꾼이 큰 집은 소용없다고 한 까닭은 무엇인가요?",
         "choices": [
             "도둑이 들까 봐",
-            "장작이 없어서",
+            "데울 장작이 없어서",
             "아내가 싫다고 해서"
         ],
         "answer": 1
@@ -475,12 +475,12 @@ const QUIZ = [
         "q": "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
         "wide": true,
         "choices": [
-                "나무꾼이 정령의 말을 듣고 도끼를 내려놓은 것을 보면, 그 나무가 남의 집인 줄 알고 물러섰네.",
+                "나무꾼이 나뭇가지에 얼굴이 긁히는 줄도 모르고 달린 것을 보면, 어서 알리고 싶은 마음뿐이었네.",
+                "아내가 큰 집이냐 금덩이냐 하며 방 안을 이리저리 돈 것을 보면, 남편이 고를 때까지 잠자코 기다려 줬네.",
                 "첫 소원이 소시지가 된 것을 보면, 아껴 쓰려던 것이 아니라 무심코 나온 말이었구나.",
-                "마지막 하나로 큰 집도 금덩이도 아니라 아내의 코를 고른 것을 보면, 살림보다 아내 얼굴이 먼저였던 거지.",
-                "아내가 큰 집이냐 금덩이냐 하며 방 안을 이리저리 돈 것을 보면, 남편이 고를 때까지 잠자코 기다려 줬네."
+                "마지막 하나로 큰 집도 금덩이도 아니라 아내의 코를 고른 것을 보면, 살림보다 아내 얼굴이 먼저였던 거지."
             ],
-        "answer": 3
+        "answer": 1
     }
 ];
 
@@ -808,32 +808,32 @@ const EN = {
     ],
     quiz: [
         {
-            q: 'Why did the woodcutter put down his axe?',
-            choices: ['The spirit lived in that tree', 'The tree was too big', 'The sun was going down'],
+            q: 'What did the spirit ask of the woodcutter?',
+            choices: ['Not to cut down that tree', 'To leave the wood', 'To make a wish'],
             answer: 0
         },
         {
-            q: 'What did the spirit give the woodcutter?',
-            choices: ['A lump of gold', 'A big house', 'Three wishes'],
-            answer: 2
-        },
-        {
-            q: 'When did the woodcutter mutter without thinking?',
-            choices: ['While cutting the tree', 'While eating the thin porridge', 'While running home'],
+            q: 'What did the woodcutter and his wife decide to do once he got home?',
+            choices: ['Wish for a big house right away', 'Eat supper first and decide carefully in the morning', 'Call the neighbours in to talk it over'],
             answer: 1
         },
         {
-            q: 'What did they try in order to get the sausage off?',
-            choices: ['They rubbed butter on it', 'They cut it with a knife', 'They struck it with the axe'],
-            answer: 0
+            q: 'When did the woodcutter mutter without thinking?',
+            choices: ['While cutting the tree', 'While eating the thin porridge', 'While quarrelling with his wife'],
+            answer: 1
         },
         {
-            q: 'What did they ask for with the last wish?',
-            choices: ['Gold', 'A big house', "The wife's nose"],
+            q: 'What did they try in order to get the sausage off her nose?',
+            choices: ['They tied a rope round it and pulled', 'They went to the wood to find the spirit', 'They rubbed butter on it and threw cold water over it'],
             answer: 2
         },
         {
-            q: 'At supper, why did the woodcutter say no to a big house?',
+            q: 'What did the wife say the last wish should be spent on?',
+            choices: ['A big house or a lump of gold', 'Getting her nose back', 'Making the sausage disappear'],
+            answer: 0
+        },
+        {
+            q: 'At supper, why did the woodcutter say a big house was no use?',
             choices: ['Robbers might come', 'There was no wood to heat it', 'His wife did not want one'],
             answer: 1
         },
@@ -846,12 +846,12 @@ const EN = {
             q: 'Which reaction to this book does NOT fit?',
             wide: true,
             choices: [
-                "He put down his axe when the spirit spoke — he understood the tree was somebody's home and stepped back.",
+                "He ran home without noticing the branches scratching his face — all he wanted was to tell her.",
+                "The wife paced the room weighing a big house against a lump of gold — she was waiting quietly for her husband to choose.",
                 "The first wish went on a sausage — it was not thrift but a word said without thinking.",
-                "For the last one he chose neither a house nor gold but his wife's nose — her face came before the household.",
-                "The wife paced the room weighing a big house against a lump of gold — she was waiting quietly for her husband to choose."
+                "For the last one he chose neither a house nor gold but his wife's nose — her face came before the household."
             ],
-            answer: 3
+            answer: 1
         }
     ],
     afterword: {

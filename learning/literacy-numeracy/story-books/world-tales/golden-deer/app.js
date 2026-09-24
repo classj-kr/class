@@ -412,20 +412,20 @@ function afterPage(spread, isFirst) {
 
 const QUIZ = [
     {
-        "q": "황금 사슴은 무리에서 어떤 사슴이었나요?",
+        "q": "어린 사슴이 뒤처지면 황금 사슴은 어떻게 했나요?",
         "choices": [
-            "가장 어린 사슴",
-            "가장 늙은 사슴",
-            "우두머리"
+            "걸음을 늦추고 기다렸다",
+            "높은 바위에 올라 살폈다",
+            "앞장서 먼저 물길을 찾았다"
         ],
-        "answer": 2
+        "answer": 0
     },
     {
-        "q": "임금님이 숲에 온 까닭은 무엇인가요?",
+        "q": "사냥이 끝난 밤 황금 사슴은 무엇을 했나요?",
         "choices": [
-            "사슴을 만나러",
-            "사냥하러",
-            "나팔을 불러"
+            "무리를 이끌고 다른 숲으로 갔다",
+            "상처를 핥아 주며 밤을 새웠다",
+            "바위에 올라 사냥꾼을 살폈다"
         ],
         "answer": 1
     },
@@ -439,38 +439,38 @@ const QUIZ = [
         "answer": 0
     },
     {
-        "q": "차례가 된 어린 암사슴에게 있던 사정은 무엇인가요?",
+        "q": "차례가 된 어린 암사슴이 미뤄 달라고 한 까닭은 무엇인가요?",
         "choices": [
-            "상처가 있어서",
-            "어린 사슴이라서",
-            "새끼를 낳을 몸이라"
+            "다리를 다쳐 걷지 못해서",
+            "차례를 잘못 알아서",
+            "곧 새끼를 낳을 몸이라서"
         ],
         "answer": 2
     },
     {
-        "q": "그날 대신 궁궐로 간 것은 누구인가요?",
+        "q": "늙은 사슴이 안 된다고 나섰을 때 황금 사슴은 뭐라고 했나요?",
         "choices": [
-            "늙은 사슴",
-            "황금 사슴",
-            "어린 암사슴"
+            "임금님이 우두머리는 해치지 않을 것이다",
+            "내가 가지 않으면 저 아이가 가야 한다",
+            "너희 가운데 하나를 뽑아 보내겠다"
         ],
         "answer": 1
     },
     {
         "q": "임금님이 활을 내려놓으며 한 말은 무엇인가요?",
         "choices": [
-            "사람보다 낫다",
-            "사냥을 더 하겠다",
-            "숨을 떠나거라"
+            "짐승이 사람보다 낫구나",
+            "숲을 떠나 다른 곳으로 가거라",
+            "다른 사슴을 대신 보내거라"
         ],
         "answer": 0
     },
     {
-        "q": "마지막에 임금님이 지키겠다고 한 것은 무엇인가요?",
+        "q": "사슴을 잡지 않겠다는 말을 듣고 황금 사슴은 어떻게 했나요?",
         "choices": [
-            "사슴만",
-            "새와 물고기만",
-            "나라의 모든 목숨"
+            "깊이 절하고 곧장 숲으로 돌아갔다",
+            "무리를 데리고 궁궐로 왔다",
+            "새와 물고기는 어찌하느냐고 물었다"
         ],
         "answer": 2
     },
@@ -478,7 +478,7 @@ const QUIZ = [
         "q": "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
         "wide": true,
         "choices": [
-                "황금 사슴이 하루 한 마리씩 스스로 가겠다고 한 것을 보면, 쫓기다 여럿 다치는 것을 막으려 했어.",
+                "떠나는 사슴이 뒤를 돌아보지 않은 것을 보면, 차례가 온 사슴들도 그 약속을 제 것으로 받아들였구나.",
                 "대신 갈 사슴을 물었을 때 아무도 눈을 마주치지 않은 것을 보면, 선뜻 나설 수 있는 일이 아니었구나.",
                 "제가 우두머리이기 때문이라고 한 것을 보면, 착해서가 아니라 제 몫이라 여긴 거지.",
                 "임금님이 맨발로 달려 나온 것을 보면, 약속을 어긴 쪽이 저라고 여겨 미안했어."
@@ -887,45 +887,45 @@ const EN = {
     ],
     quiz: [
         {
-            q: "What was the Golden Deer in the herd?",
-            choices: ["The youngest deer", "The oldest deer", "The leader"],
-            answer: 2
-        },
-        {
-            q: "Why did the king come to the forest?",
-            choices: ["To meet the deer", "To hunt", "To blow his horns"],
-            answer: 1
-        },
-        {
-            q: "What did the Golden Deer say at the palace?",
-            choices: ["One of us will come each day", "Give up hunting", "Protect our herd"],
+            q: 'What did the Golden Deer do when a fawn fell behind?',
+            choices: ['He slowed down and waited', 'He climbed the high rock to keep watch', 'He went ahead to find water'],
             answer: 0
         },
         {
-            q: "What was the matter with the young doe whose turn came?",
-            choices: ["She was wounded", "She was only a fawn", "She was carrying a fawn"],
-            answer: 2
-        },
-        {
-            q: "Who went to the palace instead that day?",
-            choices: ["The old deer", "The Golden Deer", "The young doe"],
+            q: 'What did the Golden Deer do the night after the hunt?',
+            choices: ['He led the herd to another forest', 'He licked their wounds and stayed up with them', 'He watched the hunters from the rock'],
             answer: 1
         },
         {
-            q: "What did the king say as he put down his bow?",
-            choices: ["That the deer was better than a man", "That this was not what they agreed", "That the deer should have sent another deer"],
+            q: 'What did the Golden Deer say at the palace?',
+            choices: ['One of us will come each day', 'Give up hunting', 'Protect our herd'],
             answer: 0
         },
         {
-            q: "What did the king promise to protect at the end?",
-            choices: ["Only the deer", "Only birds and fish", "Every life in the land"],
+            q: 'Why did the young doe ask for her turn to be put off?',
+            choices: ['She had hurt a leg and could not walk', 'She had mistaken her turn', 'She was soon to have a fawn'],
             answer: 2
         },
         {
-            q: "Which reaction to this book does NOT fit?",
+            q: 'What did the Golden Deer answer when the old deer said he must not go?',
+            choices: ['The king will not harm a leader', 'If I do not go, that child must', 'I will choose one of you to send'],
+            answer: 1
+        },
+        {
+            q: 'What did the king say as he put down his bow?',
+            choices: ['That the deer was better than a man', 'That the deer should leave the forest', 'That the deer should have sent another'],
+            answer: 0
+        },
+        {
+            q: 'What did the Golden Deer do when the king said deer would no longer be hunted?',
+            choices: ['He bowed and went straight back to the forest', 'He brought the whole herd to the palace', 'He asked what would become of the birds and fish'],
+            answer: 2
+        },
+        {
+            q: 'Which reaction to this book does NOT fit?',
             wide: true,
             choices: [
-                "The golden deer offered one a day, going of their own accord — he was stopping the many who got hurt in the chase.",
+                "The deer whose turn came never looked back — they too had made the bargain their own.",
                 "When he asked who would go in her place, nobody would meet his eye — it was not a thing you could volunteer for lightly.",
                 "He said it was because he was the leader — not out of goodness but because the load was his.",
                 "The king came running out barefoot — he felt he was the one who had broken the bargain, and was sorry for it."

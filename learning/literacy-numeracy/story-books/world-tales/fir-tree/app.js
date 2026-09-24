@@ -423,7 +423,7 @@ const QUIZ = [
         "q": "어린 전나무의 바람은 무엇이었나요?",
         "choices": [
             "숲에 남는 것",
-            "새가 되는 것",
+            "토끼와 노는 것",
             "키가 크는 것"
         ],
         "answer": 2
@@ -438,49 +438,49 @@ const QUIZ = [
         "answer": 1
     },
     {
-        "q": "참새들이 전한 어린 나무들의 소식은 무엇인가요?",
+        "q": "겨울에 온 나무꾼들이 골라 간 것은 어떤 나무였나요?",
         "choices": [
-            "방 안에 섰다",
-            "바다로 갔다",
-            "다락에 있다"
+            "작고 어린 나무들",
+            "가장 크고 곧은 나무들",
+            "마르고 병든 나무들"
         ],
         "answer": 0
     },
     {
-        "q": "전나무가 방에서 받은 장식은 무엇인가요?",
+        "q": "방 안에 세워진 전나무의 가지에 달린 것은 무엇인가요?",
         "choices": [
-            "모래와 통",
-            "종이 배",
-            "사과와 촛불"
-        ],
-        "answer": 2
-    },
-    {
-        "q": "잔치가 끝난 뒤 전나무는 어디로 갔나요?",
-        "choices": [
-            "마당",
-            "다락방",
-            "숲"
+            "은방울과 리본",
+            "금색 사과와 촛불",
+            "솔방울과 열매"
         ],
         "answer": 1
     },
     {
-        "q": "다락방에서 전나무의 이야기를 들은 것은 누구인가요?",
+        "q": "잔치 이튿날 아침 사람들은 전나무를 어떻게 했나요?",
         "choices": [
-            "생쥐",
-            "참새",
-            "아이들"
+            "장식을 떼고 다락방에 두었다",
+            "마당에 심어 주었다",
+            "다시 꾸며 하룻밤 더 세워 두었다"
         ],
         "answer": 0
     },
     {
-        "q": "전나무가 뒤늦게 깨달은 것은 무엇인가요?",
+        "q": "마당에 나온 날 한 아이가 전나무에서 떼어 낸 것은 무엇인가요?",
         "choices": [
-            "촛불이 좋았다",
-            "돛대가 되고 싶다",
-            "그때가 좋았다"
+            "금색 사과 하나",
+            "마른 가지 하나",
+            "꼭대기의 별"
         ],
         "answer": 2
+    },
+    {
+        "q": "촛불이 켜진 저녁 전나무는 무슨 생각을 했나요?",
+        "choices": [
+            "장식이 너무 무거워 힘들다",
+            "내일도 모레도 이렇겠지",
+            "이제 숲으로 돌아가고 싶다"
+        ],
+        "answer": 1
     },
     {
         "q": "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
@@ -908,8 +908,8 @@ const EN = {
     ],
     quiz: [
         {
-            q: 'What did the sunlight and the wind tell the little fir tree?',
-            choices: ['That he would grow tallest of all', 'That he should go to the village', 'That being young now was the best of it'],
+            q: 'What did the little fir tree wish for?',
+            choices: ['To stay in the wood', 'To play with the hares', 'To grow tall'],
             answer: 2
         },
         {
@@ -918,29 +918,29 @@ const EN = {
             answer: 1
         },
         {
-            q: 'What did the sparrows say they had seen through a window?',
-            choices: ['Small trees hung with gold apples and candles', 'Trees being cut into planks', 'A ship in the harbour'],
+            q: 'Which trees did the woodcutters take when they came in winter?',
+            choices: ['The small young ones', 'The tallest and straightest', 'The dry and sickly ones'],
             answer: 0
         },
         {
-            q: 'What did the fir tree think while the candles were lit?',
-            choices: ['That he wanted to go back to the wood', 'That the candles were too heavy', 'That it would be the same tomorrow and the day after'],
-            answer: 2
-        },
-        {
-            q: 'Where was the fir tree put after that night?',
-            choices: ['Back in the wood', 'In a dark attic among dusty boxes', 'In the garden'],
+            q: 'What was hung on the fir tree in the room?',
+            choices: ['Silver bells and ribbons', 'Gold apples and candles', 'Pine cones and berries'],
             answer: 1
         },
         {
-            q: 'What made the fir tree remember the wood?',
-            choices: ['Two mice asked him to tell them about it', 'He saw it through the attic window', 'The sparrows came back'],
+            q: 'What did the people do with the tree the morning after the party?',
+            choices: ['Took off the ornaments and put it in the attic', 'Planted it in the garden', 'Dressed it again for one more night'],
             answer: 0
         },
         {
-            q: 'What did the fir tree see in the yard in spring?',
-            choices: ['The stork again', 'The star still on his top', 'A young tree coming up, like himself long ago'],
+            q: 'What did a child take off the tree out in the yard?',
+            choices: ['A gold apple', 'A dry twig', 'The star from its top'],
             answer: 2
+        },
+        {
+            q: 'What did the fir tree think while the candles were lit?',
+            choices: ['That the ornaments were too heavy', 'That it would be the same tomorrow and the day after', 'That he wanted to go back to the wood'],
+            answer: 1
         },
         {
             q: 'Which reaction to this book does NOT fit?',

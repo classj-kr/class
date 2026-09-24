@@ -407,11 +407,11 @@ function afterPage(spread, isFirst) {
 
 const QUIZ = [
     {
-        "q": "두꺼비가 엄지 공주를 데려간 곳은 어디인가요?",
+        "q": "두꺼비가 엄지 공주를 데려간 까닭은 무엇인가요?",
         "choices": [
-            "나무 위",
-            "개울의 잎",
-            "들쥐의 굴"
+            "부인에게 앙갚음하려고",
+            "아들의 신붓감으로 삼으려고",
+            "호두 침대가 탐나서"
         ],
         "answer": 1
     },
@@ -425,38 +425,38 @@ const QUIZ = [
         "answer": 0
     },
     {
-        "q": "엄지 공주를 낚아채 나무 위로 데려간 것은 무엇인가요?",
+        "q": "풍뎅이가 엄지 공주를 도로 내려놓은 까닭은 무엇인가요?",
         "choices": [
-            "두꺼비",
-            "제비",
-            "풍뎅이"
+            "엄지 공주가 자꾸 울어서",
+            "새들이 쫓아와서",
+            "친구들이 못생겼다고 해서"
         ],
         "answer": 2
     },
     {
-        "q": "겨울에 엄지 공주가 찾아간 집은 누구의 집인가요?",
+        "q": "들쥐 아주머니가 겨울 동안 엄지 공주에게 시킨 일은 무엇인가요?",
         "choices": [
-            "두더지",
-            "들쥐",
-            "제비"
+            "곡식을 날라 쌓기",
+            "집안일과 저녁 이야기",
+            "두더지 굴 청소"
         ],
         "answer": 1
     },
     {
-        "q": "굴 안에 쓰러져 있던 것은 무엇인가요?",
+        "q": "엄지 공주는 쓰러진 제비를 어떻게 돌봤나요?",
         "choices": [
-            "제비",
-            "나비",
-            "풍뎅이"
+            "건초를 덮어 주고 물을 적셔 주었다",
+            "두더지에게 데려가 보였다",
+            "햇볕 드는 밖으로 옮겼다"
         ],
         "answer": 0
     },
     {
-        "q": "엄지 공주가 혼인하기로 되어 있던 상대는 누구인가요?",
+        "q": "두더지가 엄지 공주와 혼인하고 싶다고 한 까닭은 무엇인가요?",
         "choices": [
-            "두꺼비 아들",
-            "꽃 나라 왕자",
-            "두더지"
+            "땅속을 좋아해서",
+            "들쥐 아주머니가 부탁해서",
+            "노래가 마음에 들어서"
         ],
         "answer": 2
     },
@@ -473,8 +473,8 @@ const QUIZ = [
         "q": "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
         "wide": true,
         "choices": [
-                "물고기들이 잎 줄기를 갉아 끊어 준 것을 보면, 울음소리를 물속에서 다 듣고 있었구나.",
-                "엄지 공주가 한밤에 건초를 안고 굴로 간 것을 보면, 아무도 시키지 않았는데 제 발로 간 거지.",
+                "두꺼비가 잠든 엄지 공주를 침대째 안고 나간 것을 보면, 깨우지 않고 데려가려 한 거지.",
+                "혼인 전날 해를 마지막으로 보려고 굴 밖으로 나간 것을 보면, 땅속에서 살 일이 그만큼 무거웠구나.",
                 "마지막에 날개를 달고 처음으로 스스로 날아오른 것을 보면, 그때까지는 늘 남이 옮겨 줬어.",
                 "엄지 공주가 떠나며 들쥐 아주머니께 겨울을 나게 해 줘 고맙다고 인사한 것을 보면, 신세 진 일을 잊지 않았구나."
             ],
@@ -800,46 +800,46 @@ const EN = {
     ],
     quiz: [
         {
-            q: 'Where did Thumbelina come from?',
-            choices: ['Out of a walnut shell', 'Out of a flower grown from a barley seed', 'Out of the brook'],
+            q: 'Why did the toad carry Thumbelina off?',
+            choices: ['To get back at the woman', 'To make her a bride for her son', 'She wanted the walnut-shell bed'],
             answer: 1
         },
         {
-            q: 'Why did the toad put Thumbelina on a leaf in the brook?',
-            choices: ['So that she could not run away', 'So that she could sleep there', 'To show her to the fish'],
+            q: 'Who set Thumbelina free from the leaf?',
+            choices: ['The fish', 'The butterfly', 'The beetle'],
             answer: 0
-        },
-        {
-            q: 'How did Thumbelina get free of the leaf?',
-            choices: ['The butterfly lifted it', 'The toad let her go', 'The fish gnawed through the stem'],
-            answer: 2
         },
         {
             q: 'Why did the beetle put Thumbelina down again?',
-            choices: ['She would not stop crying', 'His friends said she was ugly', 'The birds frightened him off'],
-            answer: 1
-        },
-        {
-            q: 'What did the mole say about the world above ground?',
-            choices: ['That sun and flowers were no use at all', 'That he missed it very much', 'That it was too far to walk'],
-            answer: 0
-        },
-        {
-            q: 'What did Thumbelina do for the swallow?',
-            choices: ['She carried him up out of the tunnel', 'She asked the mole to help him', 'She covered him with hay and brought him water for days'],
+            choices: ['She would not stop crying', 'The birds frightened him off', 'His friends said she was ugly'],
             answer: 2
         },
         {
-            q: 'What did Thumbelina receive in the country of flowers?',
-            choices: ['A small crown', 'A pair of wings of her own', 'A white flower'],
+            q: 'What did the field mouse ask Thumbelina to do through the winter?',
+            choices: ['Carry and stack the grain', 'Help with the housework and tell stories in the evening', 'Sweep out the mole’s tunnels'],
+            answer: 1
+        },
+        {
+            q: 'How did Thumbelina care for the fallen swallow?',
+            choices: ['She covered him with hay and wet his beak with water', 'She showed him to the mole', 'She carried him out into the sun'],
+            answer: 0
+        },
+        {
+            q: 'Why did the mole want to marry Thumbelina?',
+            choices: ['She liked the underground too', 'The field mouse asked him to', 'He liked her singing'],
+            answer: 2
+        },
+        {
+            q: 'Where did the swallow set Thumbelina down?',
+            choices: ['On the wide meadow', 'In a great field of flowers', 'At the woman’s house'],
             answer: 1
         },
         {
             q: 'Which reaction to this book does NOT fit?',
             wide: true,
             choices: [
-                "The fish gnawed through the stem of the leaf — they had heard her crying from under the water.",
-                "She went to the tunnel at night with an armful of hay — nobody had asked her to; she went on her own.",
+                "The toad carried her off asleep, bed and all — she meant to take her without waking her.",
+                "On the eve of the wedding she went out to look at the sun one last time — living underground weighed that heavily on her.",
                 "At the end, with her new wings, she flew for the first time by herself — until then she had always been carried.",
                 "Before she left she thanked the field mouse for the winter's shelter — she did not forget what she owed."
             ],

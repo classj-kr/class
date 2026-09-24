@@ -436,65 +436,65 @@ function afterPage(spread, isFirst) {
 
 const QUIZ = [
     {
-        "q": "음악 대결에서 심판이 손을 들어 준 쪽은 누구인가요?",
+        "q": "음악 대결의 심판을 맡은 것은 누구였나요?",
         "choices": [
-            "판",
-            "아폴론",
-            "임금님"
-        ],
-        "answer": 1
-    },
-    {
-        "q": "임금님의 귀가 당나귀 귀가 된 까닭은 무엇인가요?",
-        "choices": [
-            "판이 낫다고 해서",
-            "하프를 못 들어서",
-            "모자를 안 써서"
+            "그 산의 산신",
+            "미다스 임금님",
+            "숲의 짐승들"
         ],
         "answer": 0
     },
     {
-        "q": "임금님이 귀를 감추려고 한 일은 무엇인가요?",
+        "q": "심판이 결정을 내리자 임금님은 어떻게 했나요?",
         "choices": [
-            "머리를 길렀다",
-            "방문을 잠갔다",
-            "뾰족한 모자를 썼다"
+            "고개를 끄덕이며 축하했다",
+            "화가 나서 자리를 떴다",
+            "피리가 훨씬 신났다고 큰 소리로 외쳤다"
         ],
         "answer": 2
     },
     {
-        "q": "이발사가 비밀을 말한 곳은 어디인가요?",
+        "q": "신하들은 임금님이 늘 모자를 쓰는 것을 보고 무슨 생각을 했나요?",
         "choices": [
-            "친구 앞",
-            "갈대밭",
-            "임금님 방"
+            "귀를 감추시나 보다",
+            "모자가 마음에 드시나 보다",
+            "머리가 아프신가 보다"
         ],
         "answer": 1
     },
     {
-        "q": "그 소리를 들은 사람들은 어떻게 했나요?",
+        "q": "임금님은 이발사에게 뭐라고 했나요?",
         "choices": [
-            "몰려들었다",
-            "못 들은 척했다",
-            "임금님께 알렸다"
+            "모자를 하나 더 만들어 오라",
+            "누구에게든 말하면 큰일 난다",
+            "다시는 성에 오지 마라"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "구덩이에 소리친 뒤 이발사는 어떻게 했나요?",
+        "choices": [
+            "흙으로 덮고 발로 꼭꼭 밟았다",
+            "구덩이를 그대로 두고 돌아갔다",
+            "그 자리에 갈대를 심었다"
         ],
         "answer": 0
     },
     {
-        "q": "소문을 들은 임금님은 처음에 어떻게 했나요?",
+        "q": "사람들은 어떻게 임금님의 비밀을 알게 되었나요?",
         "choices": [
-            "모자를 벗었다",
-            "이발사를 불렀다",
-            "문을 닫았다"
+            "이발사가 술김에 친구에게 털어놓아서",
+            "이발사의 아내가 소문을 내서",
+            "바람에 흔들리는 갈대 소리를 듣고"
         ],
         "answer": 2
     },
     {
-        "q": "마지막에 임금님은 어떻게 했나요?",
+        "q": "마당에 나선 임금님이 귀를 만지며 한 말은 무엇인가요?",
         "choices": [
-            "갈대밭을 없앴다",
-            "모자를 벗고 나갔다",
-            "이발사를 불렀다"
+            "이발사를 잡아 오너라",
+            "보기보다 잘 들린다네",
+            "갈대밭을 모두 베어 버려라"
         ],
         "answer": 1
     },
@@ -905,38 +905,38 @@ const EN = {
     ],
     quiz: [
         {
-            q: 'Whose hand did the judge raise in the music contest?',
-            choices: ["Pan's", "Apollo's", "The king's"],
-            answer: 1
-        },
-        {
-            q: "Why did the king get donkey's ears?",
-            choices: ['He said the pipe was better', 'He could not hear the harp', 'He would not wear a hat'],
+            q: 'Who was the judge of the music contest?',
+            choices: ['The spirit of the mountain', 'King Midas', 'The beasts of the forest'],
             answer: 0
         },
         {
-            q: 'What did the king do to hide his ears?',
-            choices: ['He grew his hair long', 'He locked his door', 'He wore a pointed hat'],
+            q: 'What did the king do when the judge gave his decision?',
+            choices: ['Nodded and offered his congratulations', 'Left in a temper', 'Shouted that the pipe had been far livelier'],
             answer: 2
         },
         {
-            q: 'Where did the barber tell the secret?',
-            choices: ['To a friend', 'Into a hole in the reeds', "In the king's room"],
+            q: 'What did the courtiers make of the king wearing his hat all the time?',
+            choices: ['That he was hiding his ears', 'That he had grown very fond of the hat', 'That he had a headache'],
             answer: 1
         },
         {
-            q: 'What did the people do when they heard the sound?',
-            choices: ['They came crowding', 'They pretended not to hear', 'They told the king'],
+            q: 'What did the king say to the barber?',
+            choices: ['Make me another hat', 'Tell anyone and you will be sorry', 'Never come to the palace again'],
+            answer: 1
+        },
+        {
+            q: 'What did the barber do after shouting into the hole?',
+            choices: ['Filled it with earth and stamped it down', 'Left it open and went home', 'Planted reeds in it'],
             answer: 0
         },
         {
-            q: 'What did the king do first when he heard the rumour?',
-            choices: ['He took off his hat', 'He sent for the barber', 'He shut his door'],
+            q: "How did the people learn the king's secret?",
+            choices: ['The barber told a friend over a drink', "The barber's wife spread it about", 'They heard the reeds whispering it in the wind'],
             answer: 2
         },
         {
-            q: 'What did the king do at the end?',
-            choices: ['He cut down the reeds', 'He went out without his hat', 'He sent for the barber'],
+            q: 'What did the king say when he touched his ears out in the yard?',
+            choices: ['Fetch me the barber', 'They hear better than they look', 'Cut down every reed by the river'],
             answer: 1
         },
         {

@@ -467,11 +467,11 @@ const QUIZ = [
         "answer": 2
     },
     {
-        "q": "도로시가 서쪽 마녀를 없앤 것은 무엇인가요?",
+        "q": "마녀는 도로시의 은구두 한 짝을 어떻게 빼앗았나요?",
         "choices": [
-            "은구두",
-            "물",
-            "황금 모자"
+            "잠든 사이에 벗겨서",
+            "쇠막대를 놓아 넘어뜨려서",
+            "원숭이에게 시켜서"
         ],
         "answer": 1
     },
@@ -491,7 +491,7 @@ const QUIZ = [
                 "허수아비와 나무꾼이 둘을 들쳐 업고 들판을 내달린 것을 보면, 짚과 양철이라 잠이 오지 않았구나.",
                 "넷이 밖에서 서로 본 것을 말하자 이야기가 딴판이었던 것을 보면, 오즈가 저마다 다르게 나타난 거지.",
                 "글린다가 그랬다면 좋은 친구 셋을 못 만났겠지 한 것을 보면, 먼 길이 헛걸음은 아니었다는 뜻이야.",
-                "할아버지가 곡식 껍질과 비단과 물약을 나눠 준 것을 보면, 셋에게 없던 것을 마침내 채워 줬구나."
+                "오즈가 곡식 껍질과 비단과 물약을 나눠 준 것을 보면, 셋에게 없던 것을 마침내 채워 줬구나."
             ],
         "answer": 3
     }
@@ -896,7 +896,7 @@ const EN = {
                 "The Scarecrow and the Woodman hoisted the other two up and ran across the field — straw and tin cannot fall asleep.",
                 "That evening, no two of their stories matched — Oz had appeared to each of them differently.",
                 "Glinda said they would never have found three such friends — the long way round was not wasted.",
-                "The old man handed out bran, silk and a green drink — he finally supplied what the three had been missing."
+                "Oz handed out bran, silk and a green drink — he finally supplied what the three had been missing."
             ],
             answer: 3
         }

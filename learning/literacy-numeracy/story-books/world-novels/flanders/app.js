@@ -740,22 +740,22 @@ const EN = {
     },
     quiz: [
         { q: 'What work did Nello and his grandfather do?', choices: ['Selling vegetables in the city market', 'Changing the candles in the cathedral', "Carrying the village's milk into the city"], answer: 2 },
-        { q: 'Why was Patrasche lying by the roadside?', choices: ['He had collapsed pulling a heavy cart and been abandoned', 'He had been badly bitten by a wolf', 'He had lost his master and gone hungry for days'], answer: 0 },
+        { q: 'Why was Patrasche lying by the roadside?', choices: ['He had collapsed pulling a heavy cart and been abandoned', 'A passing cart had run over him and hurt his leg', 'He had lost his master and gone hungry for days'], answer: 0 },
         { q: 'What did the recovered Patrasche do of his own accord?', choices: ['Ran across the fields with Nello on his back', 'Went and stood between the shafts of the milk cart', 'Left the village to find his old master'], answer: 1 },
-        { q: "What kind of house was Alois's?", choices: ['The old inn beside the cathedral', 'The richest house, the mill', 'The old smithy at the end of the village'], answer: 1 },
+        { q: 'Why was it hard to live in the village if Mr Cogez took against you?', choices: ['Because he collected the rents for the village', 'Because everyone in the village had their wheat ground at his house', 'Because he handled the money given to the cathedral'], answer: 1 },
         { q: 'Why did Mr Cogez disapprove of Nello?', choices: ['He thought the boy only drew and never worked', 'Because he was a boy from a house with nothing', 'He thought the boy older than his daughter'], answer: 1 },
         { q: 'What did Nello draw on instead of paper?', choices: ["His grandfather's old notebook", 'Bits of wood, stones and the barn door', 'The cathedral wall and the canal bridge railings'], answer: 1 },
         { q: 'What did you need to see the picture in the cathedral?', choices: ['One silver coin', "The priest's permission", 'An introduction from someone at the cathedral'], answer: 0 },
-        { q: 'Who painted that picture?', choices: ['Rembrandt of Amsterdam', 'Rubens of Antwerp', 'Bruegel of Brussels'], answer: 1 },
-        { q: 'What happened to Nello after the fire at the mill?', choices: ['He was suspected of setting it', 'He was given a reward by the village', 'He was put in charge of the mill'], answer: 0 },
-        { q: 'Why did the villagers stop giving Nello their milk?', choices: ['Because he asked for a higher price', 'Because Patrasche was too old', 'Because a rumour of suspicion went round'], answer: 2 },
+        { q: 'Who painted that picture?', choices: ['Rembrandt', 'Rubens', 'Bruegel'], answer: 1 },
+        { q: 'What happened to Nello after the fire at the mill?', choices: ['He was suspected of setting it', 'Mr Cogez thanked him and took him into the house', 'The landlord let the rent wait until spring'], answer: 0 },
+        { q: 'What did Nello do on the night the mill burned?', choices: ["Stayed in the hut at his grandfather's side", 'Took Alois away out of the village to safety', 'Broke the ice and carried buckets of water all night'], answer: 2 },
         { q: 'What picture did Nello send to the competition?', choices: ['An old woodcutter sitting at the edge of the village', 'Antwerp cathedral under snow', 'Patrasche pulling the cart'], answer: 0 },
         { q: 'What was the result of the competition?', choices: ['He was not chosen', 'The judging was postponed', 'He came second'], answer: 0 },
-        { q: 'What did Patrasche find in the snow?', choices: ["The grandfather's old hat", 'The board Nello had dropped', "Mr Cogez's lost wallet"], answer: 2 },
-        { q: 'What did Nello do with the wallet?', choices: ['Returned it to that house the same night, just as it was', 'Left it at the police station the next morning', 'Took out only the overdue rent and returned the rest'], answer: 0 },
+        { q: 'How did Nello know whose wallet he had found in the snow?', choices: ['He had heard in the village that Mr Cogez had lost it', 'He had seen that wallet before in the mill-house yard', 'There was a name written inside it'], answer: 2 },
+        { q: "When Alois's mother took the wallet and told him to come in, what did Nello do?", choices: ['He stepped back and would not go in', 'He went in, warmed himself at the fire and ate', 'He asked to be taken to Mr Cogez'], answer: 0 },
         { q: 'Why did Nello leave Patrasche at the mill house?', choices: ['Because Mr Cogez offered to keep him', 'Because Patrasche was too old to walk', 'Because that house had warmth and food'], answer: 2 },
-        { q: 'Why was the picture revealed on Christmas night?', choices: ['Because Nello had found a silver coin', 'Because the verger drew back the cloth for him', 'Because the moon came out and the wind drew the cloth aside'], answer: 2 },
-        { q: 'Which of these is NOT a fair thing to say after reading this book?', wide: true, choices: ['Seeing how Nello left Patrasche at the Cogez house when he returned the wallet, the dog had become a burden and he cast him off.', 'Seeing how Nello took the wallet he found in the snow straight to the house that had turned him away, what belongs to others must be returned, whoever they are.', 'Seeing how Nello, who had lost the competition, still went to see the picture in the cathedral, it was the picture he wanted more than the prize.', 'Seeing how Patrasche never left Nello’s side to the end, a dog too remembers being lifted up from the roadside.'], answer: 0 }
+        { q: 'Why was the picture revealed on Christmas night?', choices: ['Because on Christmas night it was left open for anyone to see', 'Because the verger drew back the cloth for him one last time', 'Because the moon came out and the wind drew the cloth aside'], answer: 2 },
+        { q: 'Which of these is NOT a fair thing to say after reading this book?', wide: true, choices: ['Seeing how Mr Cogez never saw Nello carrying water on the night of the fire, he too simply did not know.', 'Seeing how Nello knocked at that door even though he knew whose money it was, what belongs to others must be returned, whoever they are.', 'Seeing how Alois told her father again and again that Nello had only come to leave the doll, there was one person in that house on Nello’s side.', 'Seeing how Patrasche never left Nello’s side to the end, a dog too remembers being lifted up from the roadside.'], answer: 0 }
     ]
 };
 
@@ -1234,22 +1234,22 @@ function chapterSpreadPage(spread) {
 
 const QUIZ = [
     { q: "넬로와 할아버지가 하던 일은 무엇입니까?", choices: ["시내 시장에서 채소를 파는 일", "성당에서 촛불을 갈아 주는 일", "마을 우유를 시내로 실어다 주는 일"], answer: 2 },
-    { q: "파트라슈가 길가에 쓰러져 있던 까닭은 무엇입니까?", choices: ["무거운 수레를 끌다 쓰러져 버려져서", "늑대에게 물려 크게 다쳤기 때문에", "주인을 잃고 여러 날 굶었기 때문에"], answer: 0 },
+    { q: "파트라슈가 길가에 쓰러져 있던 까닭은 무엇입니까?", choices: ["무거운 수레를 끌다 쓰러져 버려져서", "지나가는 짐수레에 치여 다리를 다쳐서", "주인을 잃고 여러 날 굶었기 때문에"], answer: 0 },
     { q: "건강해진 파트라슈가 스스로 한 일은 무엇입니까?", choices: ["넬로를 태우고 들판을 달렸다", "우유 수레 끌채 사이에 들어가 섰다", "옛 주인을 찾아 마을을 떠났다"], answer: 1 },
-    { q: "알로아네 집은 마을에서 어떤 집이었습니까?", choices: ["성당 옆의 오래된 여관", "제일 잘사는 방앗간 집", "마을 끝의 낡은 대장간"], answer: 1 },
+    { q: "코제츠 씨에게 밉보이면 마을에서 살기 어려웠던 까닭은 무엇입니까?", choices: ["마을의 집세를 그 사람이 거두었기 때문에", "마을 사람들이 다 그 집에서 밀을 빻았기 때문에", "성당에 내는 돈을 그 사람이 맡았기 때문에"], answer: 1 },
     { q: "코제츠 씨가 넬로를 못마땅해한 까닭은 무엇입니까?", choices: ["그림만 그리고 일을 안 한다고 여겨서", "가진 것이 아무것도 없는 집 아이라서", "제 딸보다 나이가 많다고 여겨서"], answer: 1 },
     { q: "넬로가 종이 대신 그림을 그린 것은 무엇입니까?", choices: ["할아버지가 쓰던 낡은 공책", "나뭇조각과 돌과 헛간 문짝", "성당 벽과 운하 다리 난간"], answer: 1 },
     { q: "성당의 그 그림을 보려면 무엇이 있어야 했습니까?", choices: ["은화 한 닢", "신부님의 허락", "성당 사람의 소개"], answer: 0 },
-    { q: "그 그림을 그린 화가는 누구입니까?", choices: ["암스테르담 사람 렘브란트", "안트베르펜 사람 루벤스", "브뤼셀 사람 브뤼헐"], answer: 1 },
-    { q: "방앗간에 불이 난 뒤 넬로에게 생긴 일은 무엇입니까?", choices: ["불을 질렀다는 의심을 받았다", "마을에서 상을 받게 되었다", "방앗간 일을 맡게 되었다"], answer: 0 },
-    { q: "마을 사람들이 넬로에게 우유를 맡기지 않은 까닭은 무엇입니까?", choices: ["값을 올려 달라고 했기 때문에", "파트라슈가 너무 늙었기 때문에", "의심하는 소문이 돌았기 때문에"], answer: 2 },
+    { q: "그 그림을 그린 화가는 누구입니까?", choices: ["렘브란트", "루벤스", "브뤼헐"], answer: 1 },
+    { q: "방앗간에 불이 난 뒤 넬로에게 생긴 일은 무엇입니까?", choices: ["불을 질렀다는 의심을 받았다", "코제츠 씨가 고맙다며 집에 들였다", "집주인이 집세를 봄까지 미뤄 주었다"], answer: 0 },
+    { q: "방앗간에 불이 난 밤 넬로가 한 일은 무엇입니까?", choices: ["오두막에서 할아버지 곁을 지켰다", "알로아를 데리고 마을 밖으로 피했다", "밤새 얼음을 깨고 물통을 날랐다"], answer: 2 },
     { q: "넬로가 그림 대회에 낸 그림은 무엇입니까?", choices: ["마을 어귀에 앉은 늙은 나무꾼", "눈 덮인 안트베르펜 성당", "수레를 끌고 가는 파트라슈"], answer: 0 },
     { q: "그림 대회 결과는 어떻게 되었습니까?", choices: ["뽑히지 못했다", "심사가 미뤄졌다", "이등으로 뽑혔다"], answer: 0 },
-    { q: "눈길에서 파트라슈가 찾아낸 것은 무엇입니까?", choices: ["할아버지가 쓰던 낡은 모자", "넬로가 떨어뜨린 그림 널빤지", "코제츠 씨가 잃어버린 지갑"], answer: 2 },
-    { q: "넬로가 그 지갑을 어떻게 했습니까?", choices: ["그날 밤 그 집에 그대로 돌려주었다", "이튿날 아침 경찰서에 맡겨 두었다", "밀린 집세만큼만 덜고 돌려주었다"], answer: 0 },
+    { q: "넬로가 눈 속에서 주운 지갑의 주인을 알아본 방법은 무엇입니까?", choices: ["코제츠 씨가 잃어버렸다는 말을 마을에서 들어서", "방앗간 집 마당에서 본 적이 있는 지갑이어서", "지갑 안쪽에 이름이 적혀 있어서"], answer: 2 },
+    { q: "지갑을 받은 알로아의 어머니가 들어오라고 하자 넬로는 어떻게 했습니까?", choices: ["한 걸음 물러서서 들어가지 않았다", "들어가 불을 쬐고 밥을 먹었다", "코제츠 씨를 만나게 해 달라고 했다"], answer: 0 },
     { q: "넬로가 파트라슈를 방앗간 집에 두고 간 까닭은 무엇입니까?", choices: ["코제츠 씨가 데리고 있겠다고 해서", "파트라슈가 늙어 걷지 못해서", "그 집에는 따뜻한 데와 먹을 것이 있어서"], answer: 2 },
-    { q: "성탄절 밤에 그림이 드러난 까닭은 무엇입니까?", choices: ["넬로가 은화 한 닢을 구해 와서", "성당 지기가 천을 걷어 주어서", "달빛이 들고 바람에 천이 걷혀서"], answer: 2 },
-    { q: "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?", wide: true, choices: ["넬로가 지갑을 돌려주면서 파트라슈를 코제츠 집에 두고 간 것을 보면, 개가 짐이 되어 떼어 놓은 거야.", "넬로가 눈길에서 주운 지갑을 자기를 내친 집에 그대로 갖다 준 것을 보면, 남의 것은 누구 것이든 돌려줘야 해.", "그림 대회에서 떨어진 넬로가 그래도 성당의 그림을 보러 간 것을 보면, 상보다 그 그림을 보고 싶었던 거야.", "파트라슈가 넬로 곁을 끝까지 떠나지 않은 것을 보면, 길가에서 일으켜 세워 준 것을 개도 잊지 않는구나."], answer: 0 }
+    { q: "성탄절 밤에 그림이 드러난 까닭은 무엇입니까?", choices: ["성탄절 밤에는 누구나 볼 수 있게 열어 두어서", "성당 지기가 마지막으로 천을 걷어 주어서", "달빛이 들고 바람에 천이 걷혀서"], answer: 2 },
+    { q: "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?", wide: true, choices: ["코제츠 씨가 불이 난 밤 넬로가 물을 나르는 것을 보지 못한 것을 보면, 그 사람도 몰라서 그랬던 거야.", "넬로가 그 돈이 누구 것인지 알고도 그 집 문을 두드린 것을 보면, 남의 것은 누구 것이든 돌려줘야 해.", "알로아가 아버지에게 넬로는 인형을 놓고 간 거라고 몇 번이나 말한 것을 보면, 그 집에도 넬로 편에 선 사람이 하나는 있었어.", "파트라슈가 넬로 곁을 끝까지 떠나지 않은 것을 보면, 길가에서 일으켜 세워 준 것을 개도 잊지 않는구나."], answer: 0 }
 ];
 
 // 선지를 세로로 쌓으니 한 쪽에 열여섯 문항이 다 들어가지 않는다. 몇 개씩 나눠 싣는다.

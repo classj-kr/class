@@ -425,69 +425,69 @@ const QUIZ = [
         "answer": 2
     },
     {
-        "q": "개구리가 바란 약속은 무엇인가요?",
+        "q": "개구리가 공을 꺼내 주는 대신 바란 것은 무엇인가요?",
         "choices": [
-            "보석을 달라",
-            "친구로 삼아 달라",
-            "연못을 지켜 달라"
+            "한 밥상에서 먹고 같은 방에서 자는 것",
+            "공을 저녁마다 빌려 달라는 것",
+            "연못가로 날마다 놀러 오는 것"
         ],
-        "answer": 1
+        "answer": 0
     },
     {
         "q": "공을 돌려받은 공주는 어떻게 했나요?",
         "choices": [
-            "그냥 달려갔다",
-            "개구리를 데려갔다",
-            "공을 다시 던졌다"
-        ],
-        "answer": 0
-    },
-    {
-        "q": "임금님은 공주에게 뭐라고 했나요?",
-        "choices": [
-            "거인이냐고 물었다",
-            "문을 잠그라고 했다",
-            "네가 한 말은 지켜라"
-        ],
-        "answer": 2
-    },
-    {
-        "q": "개구리는 그 방에서 어디에 있었나요?",
-        "choices": [
-            "공주의 잠자리",
-            "차가운 마룻바닥",
-            "연못"
+            "고맙다고 인사하고 개구리를 안고 갔다",
+            "뒤도 돌아보지 않고 궁궐로 달려갔다",
+            "개구리에게 내일 오라고 말하고 갔다"
         ],
         "answer": 1
     },
     {
-        "q": "개구리가 왕자로 돌아온 것은 언제인가요?",
+        "q": "공주의 이야기를 다 들은 임금님은 무어라 말했나요?",
         "choices": [
-            "공주가 감싸 안자",
-            "밥을 함께 먹자",
-            "공을 꺼내 오자"
+            "개구리에게 보석을 주어 돌려보내라",
+            "네가 한 약속이면 지켜야 한다",
+            "개구리는 하룻밤만 재워 주어라"
         ],
-        "answer": 0
+        "answer": 1
     },
     {
-        "q": "마차 뒤에서 툭툭 소리가 난 까닭은 무엇인가요?",
+        "q": "공주는 방에 들어와 개구리를 어디에 두었나요?",
         "choices": [
-            "마차의 문",
-            "백마 두 마리",
-            "하인리히의 쇠테"
+            "창가 탁자 위",
+            "구석 마룻바닥",
+            "제 잠자리 발치"
+        ],
+        "answer": 1
+    },
+    {
+        "q": "마법이 풀린 것은 공주가 무엇을 한 다음인가요?",
+        "choices": [
+            "개구리에게 입을 맞춘 다음",
+            "개구리와 한 밥상에서 밥을 먹은 다음",
+            "개구리를 감싸 안아 베개 옆에 놓은 다음"
         ],
         "answer": 2
+    },
+    {
+        "q": "하인리히가 가슴에 쇠테를 두른 까닭은 무엇인가요?",
+        "choices": [
+            "왕자가 개구리가 된 것이 너무 슬퍼서",
+            "마차를 몰 때 허리를 다치지 않으려고",
+            "왕자가 그렇게 하라고 시켜서"
+        ],
+        "answer": 0
     },
     {
         "q": "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
         "wide": true,
         "choices": [
                 "공주가 보석도 왕관도 주겠다고 한 것을 보면, 개구리가 그런 것을 바랄 줄로 여겼네.",
-                "공주가 개구리 부탁을 선뜻 받아들인 것을 보면, 개구리 걸음으로는 궁궐까지 못 올 줄 알았던 거지.",
-                "마차 뒤에서 툭툭 소리가 난 것을 보면, 하인리히가 두른 쇠테가 그제야 부러졌구나.",
-                "임금님이 개구리가 밥상에 오르는데도 아무렇지 않게 밥을 드신 것을 보면, 개구리가 왕자인 줄 진작 알고 계셨네."
+                "임금님이 개구리가 밥상에 오르는데도 아무렇지 않게 밥을 드신 것을 보면, 개구리가 왕자인 줄 진작 알고 계셨네.",
+                "공주가 건성으로 고개를 끄덕인 것을 보면, 개구리가 궁궐까지 오리라고는 생각지 않았던 거지.",
+                "언니들이 웃음을 참느라 애쓴 것을 보면, 막내가 곤란해하는 것이 우스웠던 거지."
             ],
-        "answer": 3
+        "answer": 1
     }
 ];
 
@@ -889,50 +889,50 @@ const EN = {
     ],
     quiz: [
         {
-            q: "What did the frog ask for in return?",
-            choices: ["Jewels and a crown", "The golden ball itself", "To be her friend, eat at her table and sleep in her room"],
+            q: "What did the princess treasure most?",
+            choices: ["Her crown", "Her jewels", "Her golden ball"],
             answer: 2
         },
         {
-            q: "Why did the princess promise so easily?",
-            choices: ["She liked the frog", "She thought a frog could never reach the palace", "Her father had told her to"],
-            answer: 1
+            q: "What did the frog ask for in return for fetching the ball?",
+            choices: ["To eat at her table and sleep in her room", "To borrow the ball every evening", "A visit to the pond every day"],
+            answer: 0
         },
         {
             q: "What did the princess do once she had the ball back?",
-            choices: ["She ran off without looking back", "She carried the frog home", "She thanked him and stayed"],
-            answer: 0
-        },
-        {
-            q: "What did the king say when he heard the story?",
-            choices: ["That she should send the frog away", "That the frog could stay one night only", "That a promise once given must be kept"],
-            answer: 2
-        },
-        {
-            q: "What happened at the dinner table?",
-            choices: ["The frog would not come in", "The frog ate from her plate and she could not eat at all", "Her sisters chased the frog out"],
+            choices: ["She thanked the frog and carried him home", "She ran back to the palace without looking round", "She told the frog to come the next day and left"],
             answer: 1
         },
         {
-            q: "Why did the princess get up in the night?",
-            choices: ["Her father’s words kept coming back to her", "The frog was calling her", "The candle had gone out"],
-            answer: 0
+            q: "What did the king say when he had heard the whole story?",
+            choices: ["Give the frog some jewels and send him away", "A promise once given must be kept", "The frog may stay for one night only"],
+            answer: 1
         },
         {
-            q: "What broke the spell?",
-            choices: ["A kiss", "The golden ball", "The princess keeping her promise"],
+            q: "Where did the princess put the frog when she got to her room?",
+            choices: ["On the table by the window", "On the bare floor in the corner", "At the foot of her bed"],
+            answer: 1
+        },
+        {
+            q: "What had the princess just done when the spell broke?",
+            choices: ["She had kissed the frog", "She had shared her plate with the frog", "She had gathered the frog up and laid him beside her pillow"],
             answer: 2
+        },
+        {
+            q: "Why had Henry put iron bands round his chest?",
+            choices: ["He was so sad when the prince was turned into a frog", "To protect his back while driving the carriage", "The prince had ordered him to"],
+            answer: 0
         },
         {
             q: "Which reaction to this book does NOT fit?",
             wide: true,
             choices: [
                 "She offered him jewels and a crown — she assumed that was the sort of thing he would want.",
-                "She agreed to his terms readily enough — she was sure a frog could never make it as far as the palace.",
-                "Something snapped behind the carriage — the iron bands round Henry's chest were giving way at last.",
-                "The king went on eating calmly while the frog climbed onto the table — he had known all along that it was a prince."
+                "The king went on eating calmly while the frog climbed onto the table — he had known all along that it was a prince.",
+                "She nodded without really listening — she never thought a frog could make it as far as the palace.",
+                "Her sisters struggled not to laugh — they found the youngest one's trouble funny."
             ],
-            answer: 3
+            answer: 1
         }
     ],
     afterword: {

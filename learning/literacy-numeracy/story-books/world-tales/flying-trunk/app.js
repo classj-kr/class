@@ -444,7 +444,7 @@ const QUIZ = [
         "choices": [
             "혼례를 앞두어서",
             "점쟁이의 점괘 때문에",
-            "하늘에서 온 사람 때문에"
+            "임금님이 벌을 주려고"
         ],
         "answer": 1
     },
@@ -453,7 +453,7 @@ const QUIZ = [
         "choices": [
             "구름을 타고 왔다",
             "장사꾼의 아들이다",
-            "점쟁이다"
+            "임금님의 사신이다"
         ],
         "answer": 0
     },
@@ -478,7 +478,7 @@ const QUIZ = [
     {
         "q": "아들이 탑으로 갈 수 없게 된 까닭은 무엇인가요?",
         "choices": [
-            "불꽃에 타 버려서",
+            "가방이 재가 되어서",
             "숲을 못 찾아서",
             "공주가 떠나서"
         ],
@@ -489,9 +489,9 @@ const QUIZ = [
         "wide": true,
         "choices": [
                 "친구가 낡은 가방을 주며 짐 쌀 때 필요할 거라고 한 것을 보면, 이제 떠나라는 뜻이었구나.",
-                "아들이 가방 안에 앉아 심심풀이로 자물쇠를 눌러 본 것을 보면, 아무 뜻 없이 한 일이 길을 열었어.",
-                "불꽃을 사느라 남은 돈을 다 털어 넣은 것을 보면, 사람들을 놀래 주고 싶은 마음이 앞섰나 봐.",
-                "공주가 지금도 탑 창가에서 하늘을 보는 것을 보면, 그 사람이 하늘에서 온 것이 아님을 진작 알아챘구나."
+                "공주가 탑에 갇힌 뒤 손님은 처음이라 무섭기보다 신기해한 것을 보면, 그만큼 외로웠던 거지.",
+                "남은 돈을 다 털어 넣은 것을 보면, 사람들을 놀래 주고 싶은 마음이 앞섰나 봐.",
+                "아들이 여기저기 떠돌며 이야기를 들려준 것을 보면, 공주를 금세 잊어버렸구나."
             ],
         "answer": 3
     }
@@ -931,7 +931,7 @@ const EN = {
         },
         {
             q: "What happened to the trunk?",
-            choices: ["Sparks left from his own fireworks set it alight", "Somebody stole it from the wood", "It flew away by itself"],
+            choices: ["It burned from a spark he had left inside it", "Somebody stole it from the wood", "It flew off without him"],
             answer: 0
         },
         {
@@ -939,9 +939,9 @@ const EN = {
             wide: true,
             choices: [
                 "His friend gave him an old trunk and said he would need it for packing — it meant it was time to go.",
-                "Sitting inside it he pressed the lock just for a joke — a thing done for no reason opened the road.",
-                "He spent every coin he had left on fireworks — wanting to surprise people came first.",
-                "The princess still watches the sky from her tower window — she had worked out long ago that he never came from the sky at all."
+                "The princess was more curious than frightened, since he was her first visitor in the tower — that is how lonely she had been.",
+                "He spent every coin he had left — wanting to surprise people came first.",
+                "He wandered from place to place telling stories — he soon forgot the princess."
             ],
             answer: 3
         }
