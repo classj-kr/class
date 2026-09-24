@@ -14,7 +14,7 @@ exports.load=async(page,game,original,file,root)=>{
    window.__fixtureOptions=options;
    const count=window.__fixtureMaxPlayers?(options.allowedPlayerCounts?.at(-1)||options.maxPlayers||options.minPlayers||2):(options.allowedPlayerCounts?.[0]||options.minPlayers||2);
    window.__fixtureSnapshot={myId:'a',role:'host',hostId:'a',connected:true,started:false,canStart:true,roomCode:'7199',players:Object.fromEntries(names.slice(0,count).map((name,i)=>[String.fromCharCode(97+i),{id:String.fromCharCode(97+i),name}]))};
-   return {playerAvatar:()=>"",mount(){return this},snapshot:()=>window.__fixtureSnapshot,send:noOp,broadcast:noOp,sendTo:noOp,sendServer:noOp,returnToLobby:noOp,createRoom:noOp,updateLocalPlayer(data){Object.assign(window.__fixtureSnapshot.players.a,data);return true}};
+   return {players:window.__fixtureSnapshot.players,render:noOp,playerAvatar:()=>"",mount(){return this},snapshot:()=>window.__fixtureSnapshot,send:noOp,broadcast:noOp,sendTo:noOp,sendServer:noOp,returnToLobby:noOp,createRoom:noOp,updateLocalPlayer(data){Object.assign(window.__fixtureSnapshot.players.a,data);return true}};
   }};
   window.ClassroomMultiplayerLobby.avatarUrl=()=>"";
   window.ClassroomFinisherBoard={create:()=>({load:()=>Promise.resolve(),register:()=>Promise.resolve()})};

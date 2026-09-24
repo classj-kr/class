@@ -9,6 +9,7 @@ const { createMetacognition } = require("./metacognition");
 const { createVoting } = require("./voting");
 const { createSchoolElection } = require("./school-election");
 const { createSeating } = require("./seating");
+const { createStudentCharacterStyleResolver } = require("./student-character-style");
 
 const SESSION_COOKIE = "class_session";
 const GUEST_ACCESS_COOKIE = "class_guest_access";
@@ -292,6 +293,7 @@ function createClassroomPlatform(options = {}) {
   const guestAccessSecret = crypto.randomBytes(32);
   const router = express.Router();
   const authFailureLimiter = createAuthenticationFailureLimiter();
+  const getStudentCharacterStyle = createStudentCharacterStyleResolver({ pool, sessionUser });
   let databaseReady = false;
   let initializationError = null;
   const travelSchoolCoordinateCache = new Map();
@@ -8206,6 +8208,7 @@ function createClassroomPlatform(options = {}) {
     isContentGloballyDisabled,
     canBypassGlobalContentLock,
     isTeacherRequest,
+    getStudentCharacterStyle,
     verifyMuseumPresenceTicket,
     // 152개 정식 키만 통과시키므로 클라이언트가 보낸 값을 그대로 검증하는 데 쓴다.
     listFinisherRecords,

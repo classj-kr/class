@@ -37,6 +37,7 @@ async function openPlayer(browser, game, name, errors) {
           const handler = options.onServerMessage;
           const instance = value.create({ ...options, onServerMessage: message => {
             if (message.state) window.__roomTestState = message.state;
+            if (message.type === "AVALON_ROLE") window.__roomTestRole = message.info;
             handler?.(message);
           } });
           window.__roomTestLobby = instance;
@@ -47,6 +48,10 @@ async function openPlayer(browser, game, name, errors) {
   }, name);
   await page.goto(`${origin}/learning/games/${game}/${game}`, { waitUntil: "domcontentloaded" });
   await page.waitForFunction(() => window.__roomTestLobby?.mounted, { timeout: 10000 });
+  if (game === "avalon") {
+    assert.equal(await page.$('.characterPicker, input[name="characterStyle"]'), null,
+      "Character styles should be selected automatically, with no picker");
+  }
   return { page, context };
 }
 
@@ -119,6 +124,13 @@ async function checkSharedScreenLifecycle(browser, game, code, result, players) 
   for (const { page } of players) {
     await page.waitForFunction(() => window.__roomTestState?.phase !== "lobby" && document.getElementById("roomShare").hidden);
     assert.equal((await roomCodeMetrics(page)).visible, false, "Room sharing should be hidden during play");
+    if (game === "avalon") {
+      await page.waitForFunction(() => {
+        const style = window.__roomTestRole?.characterStyle;
+        const image = document.getElementById("roleCardImage");
+        return ["male", "female"].includes(style) && image.src.includes("-" + style) && image.complete && image.naturalWidth > 0;
+      });
+    }
   }
   result.started = true;
   // A real departure triggers the server's existing return-to-lobby rule.

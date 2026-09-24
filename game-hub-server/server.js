@@ -586,6 +586,9 @@ async function restorePersistedRoom(gameId, roomCode) {
       if (rooms.has(key)) return rooms.get(key);
       const restored = restoreRoom(record.snapshot, { closedReadyState: WebSocket.CLOSED });
       if (!restored || restored.gameId !== gameId || restored.roomCode !== roomCode) return null;
+      if (restored.bomb77 && restored.bomb77.rulesVersion !== Bomb77.RULES_VERSION) {
+        Bomb77.resetToLobby(restored.bomb77, "게임 규칙이 업데이트되었습니다. 방장이 다시 시작해 주세요.");
+      }
       rooms.set(key, restored);
       roomSnapshotFingerprints.set(key, roomSnapshotFingerprint(record.snapshot));
       if (restored.expedition) expeditionSchedule(restored);
@@ -774,15 +777,18 @@ function bomb77Error(socket, message) {
 function scheduleBomb77Timeout(room) {
   clearTimeout(room?.bomb77Timer);
   const game = room?.bomb77;
-  if (!game || game.phase !== "playing" || !game.turnDeadline) return;
+  if (!game || !["playing", "roundEnd"].includes(game.phase)) return;
+  const deadline = game.phase === "roundEnd" ? game.roundDeadline : game.turnDeadline;
+  if (!deadline) return;
   const expectedAction = game.actionNumber;
-  const wait = Math.max(50, game.turnDeadline - Date.now());
+  const expectedPhase = game.phase;
   room.bomb77Timer = setTimeout(() => {
     if (rooms.get(roomKey(room.gameId, room.roomCode)) !== room) return;
-    if (game.phase !== "playing" || game.actionNumber !== expectedAction) return;
-    Bomb77.autoPlay(game);
+    if (game.phase !== expectedPhase || game.actionNumber !== expectedAction) return;
+    if (game.phase === "roundEnd") Bomb77.nextRound(game);
+    else Bomb77.autoPlay(game);
     bomb77Broadcast(room);
-  }, wait);
+  }, Math.max(50, deadline - Date.now()));
   room.bomb77Timer.unref?.();
 }
 
@@ -1897,6 +1903,13 @@ wss.on("connection", (socket, request) => {
     console.error("Failed to resolve WebSocket teacher session:", error);
     return false;
   });
+  // Only Avalon needs this lookup. Cache it for this authenticated connection.
+  let avalonCharacterStylePromise;
+  const getAvalonCharacterStyle = () => avalonCharacterStylePromise ||= classroomPlatform
+    .getStudentCharacterStyle(request).catch(error => {
+      console.error("Failed to resolve Avalon character style:", error);
+      return "random";
+    });
   socket.isAlive = true;
   socket.on("pong", () => { socket.isAlive = true; });
   socket.meta = {
@@ -2008,6 +2021,8 @@ wss.on("connection", (socket, request) => {
         return;
       }
 
+      const characterStyle = gameId === "avalon" ? await getAvalonCharacterStyle() : "random";
+      if (socket.readyState !== WebSocket.OPEN) return;
       const key = roomKey(gameId, roomCode);
       let existingRoom = rooms.get(key);
       if (!existingRoom) existingRoom = await restorePersistedRoom(gameId, roomCode);
@@ -2024,7 +2039,11 @@ wss.on("connection", (socket, request) => {
         socket.meta.clientToken = clientToken;
         existingRoom.clients.set(playerId, socket);
         safeSend(socket, { type: "ROOM_RESUMED", gameId, roomCode, playerId });
-        if (existingRoom.avalon) avalonBroadcast(existingRoom);
+        if (existingRoom.avalon) {
+          const player = existingRoom.avalon.players.find(player => player.id === playerId);
+          if (player && existingRoom.avalon.phase === "lobby") player.characterStyle = characterStyle;
+          avalonBroadcast(existingRoom);
+        }
         if (existingRoom.lastcard) lastCardBroadcast(existingRoom);
         if (existingRoom.bomb77) bomb77Broadcast(existingRoom);
         if (existingRoom.loveletter) loveLetterBroadcast(existingRoom);
@@ -2075,7 +2094,7 @@ wss.on("connection", (socket, request) => {
       };
       if (gameId === "avalon") {
         room.avalon = {
-          phase: "lobby", players: [{ id: playerId, name: cleanToken(message.name, 12) || "방장", characterStyle: normalizeAvalonCharacterStyle(message.characterStyle) }],
+          phase: "lobby", players: [{ id: playerId, name: cleanToken(message.name, 12) || "방장", characterStyle }],
           settings: recommendedAvalonSettings(1), settingsCustomized: false,
           leaderIndex: 0, quest: 0, selectedTeam: [], proposalVotes: {}, questVotes: {},
           rejects: 0, results: [], winner: null, assassinId: null, turnDeadline: null
@@ -2214,6 +2233,8 @@ wss.on("connection", (socket, request) => {
       const roomCode = cleanToken(message.roomCode, 10);
       const clientToken = cleanToken(message.clientToken, 80);
       const resumeOnly = message.resumeOnly === true;
+      const characterStyle = gameId === "avalon" ? await getAvalonCharacterStyle() : "random";
+      if (socket.readyState !== WebSocket.OPEN) return;
       const key = roomKey(gameId, roomCode);
       let room = rooms.get(key);
       if (!room) room = await restorePersistedRoom(gameId, roomCode);
@@ -2239,7 +2260,11 @@ wss.on("connection", (socket, request) => {
         socket.meta.clientToken = clientToken;
         room.clients.set(playerId, socket);
         safeSend(socket, { type: "ROOM_RESUMED", gameId, roomCode, playerId });
-        if (room.avalon) avalonBroadcast(room);
+        if (room.avalon) {
+          const player = room.avalon.players.find(player => player.id === playerId);
+          if (player && room.avalon.phase === "lobby") player.characterStyle = characterStyle;
+          avalonBroadcast(room);
+        }
         if (room.lastcard) lastCardBroadcast(room);
         if (room.bomb77) bomb77Broadcast(room);
         if (room.loveletter) loveLetterBroadcast(room);
@@ -2294,7 +2319,7 @@ wss.on("connection", (socket, request) => {
           safeSend(socket, { type: "ERROR", message: "이미 시작한 게임입니다." });
           return;
         }
-        room.avalon.players.push({ id: playerId, name: cleanToken(message.name, 12) || `플레이어 ${room.avalon.players.length + 1}`, characterStyle: normalizeAvalonCharacterStyle(message.characterStyle) });
+        room.avalon.players.push({ id: playerId, name: cleanToken(message.name, 12) || `플레이어 ${room.avalon.players.length + 1}`, characterStyle });
         if (!room.avalon.settingsCustomized) {
           room.avalon.settings = recommendedAvalonSettings(room.avalon.players.length);
         }
@@ -3792,7 +3817,7 @@ wss.on("connection", (socket, request) => {
           const variant = (roleVariantCounts.get(p.role) || 0) + 1;
           roleVariantCounts.set(p.role, variant);
           p.cardVariant = variant;
-          p.resolvedCharacterStyle = p.characterStyle === "random"
+          p.resolvedCharacterStyle = normalizeAvalonCharacterStyle(p.characterStyle) === "random"
             ? (crypto.randomInt(2) === 0 ? "male" : "female")
             : p.characterStyle;
         });

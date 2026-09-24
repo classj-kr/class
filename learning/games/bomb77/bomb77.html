@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="theme-color" content="#10151c">
-    <meta name="description" content="77을 넘기지 않도록 숫자 카드를 내는 전략 카드 게임">
+    <meta name="description" content="벌칙 숫자를 피하고 위험한 합계를 넘기는 전략 카드 게임">
     <title>77 폭탄</title>
     <link rel="stylesheet" href="../../../assets/network/multiplayer-lobby.css?v=20260917">
-    <link rel="stylesheet" href="game.css?v=20260921c">
-    <link rel="stylesheet" href="polish.css">
-    <link rel="stylesheet" href="../../../assets/device-game.css?v=20260921c">
+    <link rel="stylesheet" href="game.css?v=20260924-rules2">
+    <link rel="stylesheet" href="polish.css?v=20260924-rules2">
+    <link rel="stylesheet" href="../../../assets/device-game.css?v=20260924-rules2">
     <script src="../../../assets/network/game-network.js?v=20260821"></script>
-    <script src="../../../assets/network/multiplayer-lobby.js?v=20260906b"></script>
+    <script src="../../../assets/network/multiplayer-lobby.js?v=20260924-bomb77"></script>
     <script src="music.js" defer></script>
     <script src="../../../assets/sound/music-control.js?v=20260910-click-cache-1" defer></script>
 <script src="../../../assets/game-motion.js?v=20260921a"></script>
@@ -75,7 +75,7 @@
 
         <section id="gameScreen" class="hidden">
             <header class="game-header">
-                <div class="mini-brand"><span class="brand-bomb" aria-hidden="true"><i></i></span><div><p hidden>ROOM <b id="gameRoomCode">7712</b></p><h1><span>77</span> 폭탄</h1></div></div>
+                <div class="mini-brand"><span class="brand-bomb" aria-hidden="true"><i></i></span><div><p>ROOM <b id="gameRoomCode">7712</b></p><h1><span>77</span> 폭탄</h1></div></div>
                 <div class="game-stats" aria-label="게임 상태">
                     <div><small>현재 합계</small><strong id="totalText">43</strong></div>
                     <div><small>폭발선</small><strong>77</strong></div>
@@ -91,8 +91,10 @@
                 <div id="playerSeats" class="player-seats" aria-label="플레이어 상태"></div>
                 <div class="table-zone">
                     <div class="danger-meter" aria-label="77까지의 위험도">
-                        <div class="meter-heading"><span>안전</span><strong id="dangerLabel">34 남음</strong><span>폭발</span></div>
-                        <div class="meter-track"><div id="dangerFill" class="meter-fill" style="--danger:55.8%"></div><i class="checkpoint checkpoint-a">25</i><i class="checkpoint checkpoint-b">50</i></div>
+                        <div class="table-meta"><strong id="roundLabel">1라운드</strong><span id="directionLabel">↻ 정방향</span></div>
+                        <div class="meter-heading"><span>합계</span><strong id="dangerLabel">34 남음</strong><span>폭발</span></div>
+                        <div class="meter-track"><div id="dangerFill" class="meter-fill" style="--danger:55.8%"></div></div>
+                        <div class="penalty-strip" aria-label="벌칙 합계"><span>칩 −1</span><b data-penalty-total="11">11</b><b data-penalty-total="22">22</b><b data-penalty-total="33">33</b><b data-penalty-total="44">44</b><b data-penalty-total="55">55</b><b data-penalty-total="66">66</b><strong>77+ 폭발</strong></div>
                     </div>
                     <div class="reactor-row">
                         <div class="deck-zone"><div class="card-back" aria-hidden="true"><span>77</span></div><small><b id="deckCount">31</b>장</small></div>
@@ -100,7 +102,7 @@
                         <div id="lastCard" class="last-card" aria-label="마지막 카드"></div>
                     </div>
                     <div class="turn-panel">
-                        <div><strong id="turnBanner">내 차례입니다</strong><p id="actionLog">77을 넘지 않도록 카드 한 장을 선택하세요.</p></div>
+                        <div><strong id="turnBanner">내 차례입니다</strong><p id="actionLog" aria-live="polite">벌칙 합계를 피하고 위험한 숫자를 넘겨 보세요.</p></div>
                         <div id="turnClock" class="turn-clock"><span id="turnSeconds">24초</span><div class="turn-track"><div id="turnTimerBar" class="turn-bar"></div></div></div>
                     </div>
                 </div>
@@ -108,6 +110,7 @@
                 <section class="hand-zone" aria-labelledby="handTitle">
                     <div class="hand-heading"><div><p class="eyebrow">YOUR HAND</p><h2 id="handTitle">내 카드</h2></div><span id="handCount">5장</span></div>
                     <div id="hand" class="hand"></div>
+                    <p id="selectionHint" class="selection-hint" aria-live="polite">카드를 골라 결과를 확인하세요.</p>
                     <button id="playButton" class="primary-button play-button" type="button" disabled>카드를 선택하세요</button>
                 </section>
                 <section id="finishPanel" class="finish-panel hidden" aria-live="polite"><p class="eyebrow">MISSION COMPLETE</p><h2 id="winnerTitle">마지막 생존자!</h2><p id="winnerMessage"></p><div id="finishActions" class="button-row"></div></section>
@@ -119,18 +122,20 @@
         <div class="modal">
             <p class="eyebrow">HOW TO PLAY</p><h2 id="rulesTitle">77 폭탄 게임 방법</h2>
             <ol>
-                <li>차례마다 손에서 카드 한 장을 내고 카드 효과만큼 합계를 바꿉니다.</li>
-                <li>합계가 <strong>77 이상</strong>이 되면 폭탄이 터지고 퓨즈 하나를 잃습니다.</li>
-                <li>숫자를 낮추거나 흐름을 바꾸는 장비 카드를 전략적으로 사용하세요.</li>
-                <li>퓨즈를 모두 잃은 플레이어는 탈락합니다. 마지막 생존자가 승리합니다.</li>
+                <li>카드 5장과 칩 3개로 시작합니다. 차례에 한 장을 내고 합계를 더한 뒤 한 장을 보충합니다.</li>
+                <li>합계가 <strong>11·22·33·44·55·66</strong>이면 낸 사람이 칩 1개를 잃습니다. 0이나 특수 카드로 그 합계를 유지해도 벌칙입니다.</li>
+                <li><strong>77 이상이면 칩 1개를 잃고 라운드가 끝납니다.</strong> 칩은 유지하고 모두 새 카드 5장으로 시작합니다. 라운드 첫 차례는 정방향으로 돌아갑니다.</li>
+                <li><strong>×2</strong>를 받으면 두 장을 차례로 내고 각각 합계를 계산한 뒤 두 장을 보충합니다. 첫 장에는 ×2를 낼 수 없지만, 두 번째 장에는 낼 수 있습니다. 첫 장에 방향을 바꿔도 두 번째 장까지 내야 합니다.</li>
+                <li>칩이 0개가 되면 <strong>마지막 기회</strong>로 계속합니다. 한 번 더 벌칙을 받으면 탈락! 마지막 생존자가 승리합니다.</li>
             </ol>
-            <div class="rule-cards"><span><b>−10</b> 합계 낮추기</span><span><b>↺</b> 방향 전환</span><span><b>½</b> 합계 절반</span><span><b>0</b> 완전 해제</span></div>
+            <div class="rule-cards"><span><b>−10</b> 0 아래로도 가능</span><span><b>↺</b> 합계 유지·방향 반대</span><span><b>×2</b> 다음 사람 두 장</span><span><b>0</b> 현재 합계 유지</span></div>
+            <p class="rule-tip">28에 +11을 내면 39라서 벌칙이 없습니다. 0에서 +76을 내면 다음 사람을 몰아붙일 수 있어요! 제한 시간은 한 장마다 25초이며 시간이 지나면 자동으로 선택합니다.</p>
             <button id="closeRulesButton" class="primary-button" type="button">확인</button>
         </div>
     </section>
     <section id="abortOverlay" class="overlay hidden" role="dialog" aria-modal="true"><div class="modal"><h2 id="abortTitle">게임 중단</h2><p id="abortMessage"></p><button id="reloadButton" class="primary-button" type="button">처음부터</button></div></section>
     <div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
-    <script src="cards.js"></script>
-    <script src="game.js?v=20260921c"></script>
+    <script src="cards.js?v=20260924-rules2"></script>
+    <script src="game.js?v=20260924-rules2"></script>
 </body>
 </html>
