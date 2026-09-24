@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#101b17">
+<title>칠판 · ClassJ</title>
+<style>
+:root { color-scheme: dark; --mint:#a6e2bf; --ink:#eaf5ef; --muted:#9ab0a4; --panel:#19251f; --line:#395143; }
+* { box-sizing:border-box; }
+html,body { margin:0; width:100%; height:100%; overflow:hidden; }
+body { font-family:Inter,Pretendard,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; background:#101713; color:var(--ink); display:flex; flex-direction:column; }
+button,a { font:inherit; }
+button { cursor:pointer; }
+.topbar { min-height:70px; padding:12px 22px; display:flex; align-items:center; gap:16px; background:#111c17; border-bottom:1px solid #2d4437; }
+.back { color:var(--ink); text-decoration:none; border:1px solid var(--line); border-radius:11px; padding:10px 14px; white-space:nowrap; font-weight:700; }
+.back:hover,.back:focus-visible { border-color:var(--mint); }
+.brand { display:flex; align-items:center; gap:12px; min-width:0; }
+.brand-icon { width:42px; height:42px; border-radius:12px; background:#244c37; display:grid; place-items:center; font-size:24px; }
+.brand h1 { font-size:18px; line-height:1.1; margin:0; letter-spacing:-.04em; }
+.brand p { margin:4px 0 0; font-size:12px; color:var(--muted); white-space:nowrap; }
+.spacer { flex:1; }
+.action { border:1px solid var(--line); background:#1d2c23; color:var(--ink); border-radius:11px; padding:10px 13px; min-height:42px; font-weight:700; white-space:nowrap; }
+.action:hover,.action:focus-visible { background:#294432; border-color:var(--mint); }
+.action.primary { background:var(--mint); color:#12271b; border-color:var(--mint); }
+.action:disabled { opacity:.4; cursor:default; }
+.workspace { flex:1; display:flex; flex-direction:column; min-height:0; padding:15px 20px 20px; gap:12px; }
+.toolbar { display:flex; align-items:center; flex-wrap:wrap; gap:9px; background:var(--panel); padding:10px 12px; border:1px solid #33483b; border-radius:15px; }
+.tool { background:#22352a; border:1px solid #3c5746; color:var(--ink); border-radius:10px; padding:9px 14px; min-height:42px; font-weight:750; }
+.tool:hover,.tool:focus-visible { border-color:var(--mint); }
+.tool[aria-pressed="true"] { background:var(--mint); border-color:var(--mint); color:#10271a; }
+.divider { width:1px; height:30px; background:#45604d; margin:0 3px; }
+.swatch { width:35px; height:35px; background:var(--swatch); border:2px solid #ffffff55; border-radius:50%; padding:0; }
+.swatch[aria-pressed="true"] { outline:2px solid var(--mint); outline-offset:3px; }
+.size-control { display:flex; align-items:center; gap:7px; font-size:13px; font-weight:700; color:var(--muted); padding:0 5px; }
+.size-control input { width:108px; accent-color:var(--mint); }
+#sizeValue { color:var(--ink); min-width:27px; text-align:right; }
+.board-shell { flex:1; position:relative; min-height:180px; overflow:hidden; border:10px solid #79563a; border-radius:16px; box-shadow:inset 0 0 0 2px #112219,0 15px 35px #0007; background:radial-gradient(circle at 35% 15%,#24483a 0,#17382e 50%,#112a23 100%); }
+.board-shell::after { content:""; position:absolute; inset:0; pointer-events:none; background-image:linear-gradient(120deg,#ffffff06,transparent 42%,#0000000a); }
+#board { position:absolute; inset:0; display:block; width:100%; height:100%; touch-action:none; cursor:crosshair; }
+.board-shell.erasing #board { cursor:none; }
+.eraser-cursor { position:absolute; border:1.5px solid #fff; border-radius:50%; box-shadow:0 0 0 1px #0008; background:#ffffff0a; pointer-events:none; transform:translate(-50%,-50%); z-index:1; }
+.eraser-cursor[hidden] { display:none; }
+.gesture-status { position:absolute; top:16px; left:50%; transform:translateX(-50%); padding:8px 14px; border-radius:20px; background:#def3e8; color:#163827; font-size:13px; font-weight:700; pointer-events:none; z-index:2; }
+.gesture-status[hidden] { display:none; }
+.hint { position:absolute; left:20px; bottom:15px; pointer-events:none; color:#d6e8d99e; font-size:12px; letter-spacing:.02em; }
+.toast { position:fixed; bottom:30px; left:50%; transform:translateX(-50%); background:#e0f4e6; color:#13271a; border-radius:10px; padding:10px 16px; font-weight:750; opacity:0; transition:opacity .2s; pointer-events:none; }
+.toast.show { opacity:1; }
+@media(max-width:850px) { .topbar { padding:9px 12px; flex-wrap:wrap; gap:8px; } .brand p { display:none; } .brand h1 { font-size:16px; } .spacer { flex-basis:20%; } .workspace { padding:8px; } .toolbar { gap:7px; } .divider { display:none; } .board-shell { border-width:6px; } }
+@media(max-width:540px) { .topbar .action { padding:8px; font-size:13px; } .back { padding:8px; font-size:13px; } .brand-icon { display:none; } .tool { font-size:13px; padding:7px 10px; min-height:36px; } .size-control input { width:75px; } .hint { font-size:10px; } }
+</style>
+</head>
+<body>
+<header class="topbar">
+  <a class="back" id="backLink" href="/classtools/dashboard.html">← 대시보드</a>
+  <div class="brand"><div class="brand-icon" aria-hidden="true">🖌️</div><div><h1>칠판</h1><p>글씨 모양은 그대로, 획은 더 매끄럽게</p></div></div>
+  <div class="spacer"></div>
+  <button class="action" id="clearBtn" type="button">전체 지우기</button>
+  <button class="action primary" id="saveBtn" type="button">PNG 저장</button>
+</header>
+<main class="workspace">
+  <div class="toolbar" role="toolbar" aria-label="칠판 도구">
+    <button class="tool" id="penBtn" type="button" aria-pressed="true">✎ 펜</button>
+    <button class="tool" id="eraserBtn" type="button" aria-pressed="false">◻ 지우개</button>
+    <button class="tool" id="correctionBtn" type="button" aria-pressed="true" title="글씨 모양을 유지하며 획과 끝을 정돈합니다">글씨 보정 켜짐</button>
+    <span class="divider"></span>
+    <button class="swatch" type="button" data-color="#f4f5e9" style="--swatch:#f4f5e9" aria-label="흰색" aria-pressed="true"></button>
+    <button class="swatch" type="button" data-color="#ade6c3" style="--swatch:#ade6c3" aria-label="연두색" aria-pressed="false"></button>
+    <button class="swatch" type="button" data-color="#f7d98c" style="--swatch:#f7d98c" aria-label="노란색" aria-pressed="false"></button>
+    <button class="swatch" type="button" data-color="#fa9b8d" style="--swatch:#fa9b8d" aria-label="분홍색" aria-pressed="false"></button>
+    <button class="swatch" type="button" data-color="#9bd8f8" style="--swatch:#9bd8f8" aria-label="하늘색" aria-pressed="false"></button>
+    <span class="divider"></span>
+    <label class="size-control" for="sizeRange"><span id="sizeLabel">펜 굵기</span> <input id="sizeRange" type="range" min="2" max="40" value="8"><span id="sizeValue">8</span></label>
+    <span class="divider"></span>
+    <button class="tool" id="undoBtn" type="button" title="Ctrl+Z">↶ 되돌리기</button>
+    <button class="tool" id="redoBtn" type="button" title="Ctrl+Y">↷ 다시하기</button>
+  </div>
+  <div class="board-shell" id="boardShell">
+    <canvas id="board" aria-label="칠판 그림 영역"></canvas>
+    <div id="gestureStatus" class="gesture-status" role="status" hidden></div>
+    <div id="eraserCursor" class="eraser-cursor" hidden aria-hidden="true"></div>
+    <div class="hint">손바닥·두 손가락으로 쓸어 지우기 · 이 브라우저에 자동 저장</div>
+  </div>
+</main>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="assets/vendor/perfect-freehand.js"></script>
+<script src="assets/blackboard-brush.js"></script>
+<script src="assets/blackboard.js"></script>
+</body>
+</html>

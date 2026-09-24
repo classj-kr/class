@@ -297,6 +297,15 @@ window.SPELLING_QUESTIONS = Object.freeze([
         explanation: "기본형 ‘치르다’는 ‘치러, 치렀다’처럼 활용해요."
     },
     {
+        id: "haneureul_naneun",
+        category: "활용",
+        prompt: "빈칸에 들어갈 알맞은 말을 고르세요.",
+        sentence: "___ 새를 보았다.",
+        choices: ["하늘을 나는", "하늘을 날으는"],
+        answer: "하늘을 나는",
+        explanation: "날다에 -는이 붙으면 ㄹ이 탈락해 나는이 돼요."
+    },
+    {
         id: "jjigae",
         category: "표준어",
         prompt: "빈칸에 들어갈 알맞은 말을 고르세요.",

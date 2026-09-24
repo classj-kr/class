@@ -47,7 +47,7 @@
             "sseuldeeopsi", "hambureo", "biroso", "meojianha", "golatteoreojida", "nollada"
         ]),
         lesson("conjugation", "모양 바꿔 쓰기", "담갔다, 치렀다, 알맞은, 갰다", [
-            "seollem", "ssoeeotda", "damgatda", "jamgatda", "chireotda", "samga_juseyo", "kkakda",
+            "seollem", "ssoeeotda", "damgatda", "jamgatda", "chireotda", "haneureul_naneun", "samga_juseyo", "kkakda",
             "almajeun", "geolmajeun", "gaeda-weather", "mokmeda", "deopida", "kkieodeulda"
         ]),
         lesson("saisiot-1", "사이시옷 (1)", "나뭇잎, 찻잔, 하굣길, 혼잣말", [
