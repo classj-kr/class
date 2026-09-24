@@ -80,9 +80,9 @@
             this.started = false;
             this.mounted = false;
             this._boundBeforeUnload = () => {
-                // keepRoomOnReload: 교사 화면을 새로고침해도 방을 이어 쓴다. '떠남'(4000) 대신
+                // keepRoomOnReload: 방장은 true, 참가자까지 포함하려면 'all'. '떠남'(4000) 대신
                 // '잠깐 끊김'으로 닫아 두면 서버가 2분 동안 방을 남겨 두고, 새 화면이 같은 방 번호로 되찾는다.
-                if (this.options.keepRoomOnReload && this.role === "host" && this.connected && this.socket) {
+                if (this.options.keepRoomOnReload && (this.role === "host" || this.options.keepRoomOnReload === "all") && this.connected && this.socket) {
                     this.intentionalClose = true;
                     try { this.socket.close(4005, "PAGE_RELOAD"); } catch (_) {}
                     return;

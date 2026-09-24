@@ -1,13 +1,19 @@
 (() => {
     "use strict";
-    const LABELS = { reverse: "방향 전환", half: "합계 절반", defuse: "완전 해제", hold: "합계 유지" };
+    const LABELS = { reverse: "방향 전환", double: "다음 사람 2장" };
     function createCard(card) {
         const node = document.createElement("div");
         const numeric = card.kind === "number";
-        const reducing = numeric && card.value < 0;
-        node.className = `bomb-card ${card.kind === "defuse" || reducing ? "bomb-card--cool" : numeric ? "bomb-card--hot" : "bomb-card--gear"}`;
-        const value = numeric ? (card.value > 0 ? `+${card.value}` : String(card.value)) : ({ reverse: "↺", half: "½", defuse: "0", hold: "∥" }[card.kind] || "?");
-        node.innerHTML = `<span class="bomb-card__corner">${value}</span><strong class="bomb-card__value">${value}</strong><small class="bomb-card__label">${numeric ? (reducing ? "COOL DOWN" : "CHARGE") : LABELS[card.kind] || "GEAR"}</small>`;
+        const cool = numeric && card.value <= 0;
+        node.className = `bomb-card ${cool ? "bomb-card--cool" : numeric ? "bomb-card--hot" : card.kind === "double" ? "bomb-card--double" : "bomb-card--gear"}`;
+        const value = numeric ? (card.value > 0 ? `+${card.value}` : String(card.value)) : ({ reverse: "↺", double: "×2" }[card.kind] || "?");
+        const label = numeric ? (card.value === 0 ? "합계 유지" : cool ? "합계 낮추기" : card.value >= 11 ? "큰 수 더하기" : "더하기") : LABELS[card.kind];
+        for (const [tag, className, text] of [["span", "corner", value], ["strong", "value", value], ["small", "label", label]]) {
+            const part = document.createElement(tag);
+            part.className = `bomb-card__${className}`;
+            part.textContent = text;
+            node.append(part);
+        }
         return node;
     }
     window.Bomb77Cards = Object.freeze({ createCard });

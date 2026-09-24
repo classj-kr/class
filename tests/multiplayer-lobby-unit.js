@@ -66,7 +66,7 @@ class FakeSocket extends EventTarget {
         this.closed = false;
     }
     send(data) { this.sent.push(JSON.parse(data)); }
-    close() { this.closed = true; }
+    close(code, reason) { this.closed = true; this.closeCode = code; this.closeReason = reason; }
     receive(message) {
         this.dispatchEvent(new MessageEvent("message", { data: JSON.stringify(message) }));
     }
@@ -233,6 +233,16 @@ assert.strictEqual(serverOwned.sendServer({ type: "SERVER_ACTION", action: "STAR
 assert.deepStrictEqual(serverOwnedSocket.sent.at(-1), { type: "SERVER_ACTION", action: "START" });
 serverOwnedSocket.receive({ type: "SERVER_STATE", phase: "ready" });
 assert.deepStrictEqual(serverMessage, { type: "SERVER_STATE", phase: "ready" });
+
+// Reload preservation is opt-in; existing host-only behavior is retained.
+for (const [setting, role, preserved] of [[false,"host",false],[true,"host",true],[true,"guest",false],["all","host",true],["all","guest",true]]) {
+    const reloadLobby = window.ClassroomMultiplayerLobby.create({ gameId: "reload-check", keepRoomOnReload: setting });
+    const reloadSocket = new FakeSocket();
+    reloadLobby.role = role;reloadLobby.connected = true;reloadLobby.socket = reloadSocket;
+    reloadLobby._boundBeforeUnload();
+    assert.strictEqual(reloadSocket.closeCode === 4005, preserved);
+    reloadLobby.destroy();
+}
 
 host.destroy();
 guest.destroy();

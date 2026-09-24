@@ -16,3 +16,52 @@ body:has(#gameScreen:not(.hidden)) .game-shell{height:calc(100dvh - 16px)}
 #gameScreen .total-core{width:130px}
 #gameScreen .total-core strong{font-size:48px}
 }
+
+/* Show the decisions that make each pass matter. */
+.table-meta{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;font-size:12px}
+.table-meta strong{color:var(--lime)}.table-meta span{color:#c0ced8;text-align:right}
+.penalty-strip{display:flex;align-items:center;justify-content:space-between;gap:4px;margin-top:8px;font-size:11px;color:#e8b6aa}
+.penalty-strip b{padding:3px 6px;border:1px solid #8e5946;border-radius:5px;background:#38231d}
+.penalty-strip b.is-active{background:#ffb020;color:#19110a;border-color:#ffe096}
+.penalty-strip strong{color:#ffb0a0}.selection-hint{min-height:22px;margin:0 0 7px;text-align:center;font-size:13px;line-height:1.5;color:#c4d4dd}
+.selection-hint.is-risk{color:#ffad91;font-weight:800}.selection-hint.is-attack,.double-turn{color:#d7b0ff!important}
+.bomb-card--double{border-color:#c092ff;background:linear-gradient(145deg,#54277a,#21122d)}
+.player-seat__fuses{display:flex;align-items:center;gap:3px}.player-seat__fuses small{margin-left:auto;font-size:10px;letter-spacing:0;color:#adbcc8}
+.player-seat.is-swimming{border-color:#e99d35}.player-seat.is-swimming .player-seat__fuses small{color:#ffd785}
+.player-seat.is-hit{box-shadow:inset 3px 0 #ff7a54}.rule-tip{color:#c6d4de;font-size:14px;line-height:1.6}
+.bomb-card__value{font-size:31px}.total-core span{max-width:95%;font-size:12px;text-align:center}
+@media(min-width:700px) and (max-width:760px){
+#gameScreen .game-board{grid-template-columns:140px minmax(0,1fr);grid-template-areas:"players table" "hand hand"}
+#gameScreen .player-seats{grid-template-columns:1fr}
+#gameScreen .game-menu{position:static}
+#gameScreen .game-stats{order:initial}
+}
+@media(max-width:699px){
+#gameScreen .game-header{position:relative;padding:10px;gap:10px}
+#gameScreen .game-menu{position:static;justify-content:flex-end;grid-column:1/-1}
+#gameScreen .game-stats{order:initial;grid-column:1/-1}
+#gameScreen .game-board{padding:8px;gap:8px}
+#gameScreen .player-seats{display:flex;overflow-x:auto;gap:6px;padding-bottom:3px}
+#gameScreen .player-seat{min-width:145px;flex:0 0 auto}
+#gameScreen .table-zone{min-height:300px;padding:8px}
+#gameScreen .hand{justify-content:center;min-height:114px;gap:3px}
+#gameScreen .hand-zone{padding:8px}
+#gameScreen .hand .bomb-card{width:54px}
+#gameScreen .bomb-card__value{font-size:25px}
+#gameScreen .bomb-card__label{left:2px;right:2px;letter-spacing:0;font-size:8px}
+#gameScreen .turn-panel{flex-direction:row;padding:8px;gap:8px}
+#gameScreen .turn-clock{min-width:45px;width:45px;text-align:right;flex-shrink:0}
+#gameScreen .turn-panel p{font-size:11px}
+#gameScreen .selection-hint{font-size:12px}
+#gameScreen .penalty-strip{font-size:10px;gap:3px}
+#gameScreen .penalty-strip b{padding:3px 4px}
+}
+
+@media(min-width:700px){#gameScreen .game-header{padding-right:64px}}
+@media(max-width:699px){
+#gameScreen .game-header{grid-template-columns:minmax(0,1fr) auto}
+#gameScreen .game-menu{grid-column:2;grid-row:1;margin-right:42px}
+#gameScreen .game-stats{grid-row:2}
+#gameScreen .mini-brand{gap:10px}
+#gameScreen .mini-brand h1{font-size:24px}
+}
