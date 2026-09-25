@@ -38,7 +38,8 @@ for (const b of books) {
     if (!W || !Object.keys(W).length) { console.log(`## ${b} — 우리말 낱말이 비어 있다`); bad++; continue; }
     seenBooks++;
 
-    const CH = grab(src, 'CHAPTERS');
+    // 이솝 이야기는 장 대신 이야기 묶음(FABLES)으로 되어 있다. 둘 다 beats를 가진다.
+    const CH = grab(src, 'CHAPTERS') || grab(src, 'FABLES');
     const COVER = grab(src, 'COVER');
     const AFTER = grab(src, 'AFTERWORD');
     const EN = grab(src, 'EN');
