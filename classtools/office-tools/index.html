@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#ffffff">
   <title>업무툴 · 클래스제이</title>
   <link rel="icon" href="/favicon.ico">
-  <link rel="stylesheet" href="./style.css?v=20260926-stamp-proportions">
+  <link rel="stylesheet" href="./style.css?v=20260926-stamp-gallery">
 </head>
 <body>
   <a class="back-link" href="/classtools/" aria-label="교사 포털로 돌아가기">←</a>
@@ -18,7 +18,7 @@
     </div>
 
     <section class="tool-section" id="stamp" role="tabpanel" aria-labelledby="stamp-tool-tab">
-      <div class="workbench">
+      <div class="workbench stamp-workbench">
         <div class="controls">
           <div class="mode-switch" role="tablist" aria-label="도장 만들기 방식">
             <button type="button" id="stamp-text-tab" class="active" role="tab" aria-selected="true" aria-controls="stamp-text-controls">이름 입력</button>
@@ -30,40 +30,10 @@
               <input id="stamp-name" type="text" maxlength="30" placeholder="이름 입력" autocomplete="off" aria-describedby="stamp-name-status">
               <small id="stamp-name-status" class="field-note" role="status">로그인 이름 확인 중…</small>
             </label>
-            <div class="field">
-              <span>모양</span>
-              <div class="segmented shape-options" id="stamp-shapes">
-                <button type="button" data-shape="circle" aria-pressed="false">원형</button>
-                <button type="button" class="active" data-shape="oval" aria-pressed="true">타원형</button>
-                <button type="button" data-shape="square" aria-pressed="false">사각형</button>
-                <button type="button" data-shape="rounded" aria-pressed="false">둥근 사각</button>
-                <button type="button" data-shape="rectangle" aria-pressed="false">가로형</button>
-              </div>
+            <div id="stamp-presets-wrap">
+              <p class="preset-label">원하는 도장을 선택하세요</p>
+              <div id="stamp-presets" class="stamp-presets" aria-label="내 이름으로 만든 도장 견본"></div>
             </div>
-            <div class="option-pair">
-              <label class="field"><span>글씨체</span><select id="stamp-font"><option value="seal">전서형</option><option value="serif">명조</option><option value="brush">궁서</option><option value="pen">굵은 명조</option><option value="gothic">고딕</option></select></label>
-              <label class="field"><span>글자 배치</span><select id="stamp-layout"><option value="auto">자동</option><option value="vertical">세로</option><option value="horizontal">가로</option><option value="packed">도장식 배치</option><option value="grid">두 줄 가로</option></select></label>
-              <label class="field"><span>끝 글자 추가</span><select id="stamp-suffix"><option value="">없음</option><option value="auto">자동 ‘인’</option><option value="인">인</option><option value="印">印</option></select></label>
-              <label class="field"><span>테두리</span><select id="stamp-border"><option value="single">한 줄</option><option value="double">두 줄</option><option value="none">없음</option></select></label>
-            </div>
-            <div class="field">
-              <span>색상</span>
-              <div class="color-options" id="stamp-colors">
-                <button type="button" class="active" data-color="#e11d24" style="--swatch:#e11d24" aria-label="붉은색" aria-pressed="true"></button>
-                <button type="button" data-color="#275d82" style="--swatch:#275d82" aria-label="푸른색" aria-pressed="false"></button>
-                <button type="button" data-color="#282b31" style="--swatch:#282b31" aria-label="검은색" aria-pressed="false"></button>
-                <label class="custom-color"><input type="color" id="stamp-color" value="#e11d24" aria-label="직접 색상 선택"><span>직접 선택</span></label>
-              </div>
-            </div>
-            <details class="stamp-details">
-              <summary>세부 조정</summary>
-              <label class="field"><span>도장 표현</span><select id="stamp-impression"><option value="positive">글자에 잉크</option><option value="negative">바탕에 잉크 (음각)</option></select></label>
-              <label class="field range-field"><span>글자 굵기 <output id="stamp-weight-value">3</output></span><input id="stamp-weight" type="range" min="0" max="10" value="3"></label>
-              <label class="field range-field"><span>잉크 농도 <output id="stamp-opacity-value">100%</output></span><input id="stamp-opacity" type="range" min="40" max="100" value="100"></label>
-              <label class="field range-field"><span>테두리 두께 <output id="stamp-line-width-value">20</output></span><input id="stamp-line-width" type="range" min="6" max="36" value="20"></label>
-              <label class="field range-field"><span>글자 간격 <output id="stamp-spacing-value">8</output></span><input id="stamp-spacing" type="range" min="0" max="30" value="8"></label>
-              <label class="field range-field"><span>도장 찍힘 질감 <output id="stamp-texture-value">0%</output></span><input id="stamp-texture" type="range" min="0" max="70" value="0"></label>
-            </details>
           </div>
 
           <div id="stamp-photo-controls" role="tabpanel" aria-labelledby="stamp-photo-tab" hidden>
@@ -83,7 +53,6 @@
             </label>
             <p class="hint">흰 종이에 찍은 도장을 사용하세요. 강도를 올리면 밝은 배경이 더 많이 지워집니다.</p>
           </div>
-          <button type="button" class="button primary full" id="stamp-download">투명 PNG 저장</button>
         </div>
         <div class="preview-area">
           <div class="preview-header"><h3>미리보기</h3><span>800 × 800 · 투명 배경</span></div>
@@ -92,10 +61,8 @@
             <p id="stamp-placeholder" hidden>도장 사진을 선택해 주세요.</p>
           </div>
           <p class="preview-note" id="stamp-status" role="status"></p>
-          <div id="stamp-presets-wrap">
-            <p class="preset-label">내 이름으로 골라보기</p>
-            <div id="stamp-presets" class="stamp-presets" aria-label="도장 견본 선택"></div>
-          </div>
+          <button type="button" class="button primary full" id="stamp-download">투명 PNG 저장</button>
+
         </div>
       </div>
     </section>
@@ -152,7 +119,7 @@
     </section>
     <p class="privacy-note">선택한 사진은 서버에 전송되지 않고 이 기기에서 처리됩니다.</p>
   </main>
-  <script src="./stamp.js?v=20260926-stamp-proportions" defer></script>
-  <script src="./tools.js?v=20260926-stamp-proportions" defer></script>
+  <script src="./stamp.js?v=20260926-stamp-gallery" defer></script>
+  <script src="./tools.js?v=20260926-stamp-gallery" defer></script>
 </body>
 </html>

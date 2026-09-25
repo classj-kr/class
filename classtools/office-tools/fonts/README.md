@@ -7,4 +7,4 @@ Usage and redistribution terms are recorded in CHOSUN-LICENSE.txt.
 - ChosunKm.TTF — 조선굵은명조
 - ChosunSm.TTF — 조선신명조
 
-The geometric Hangul seal lettering is drawn by the application in stamp.js.
+All stamp presets use these original font files. No procedural seal lettering is used.
