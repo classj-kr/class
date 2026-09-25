@@ -4,8 +4,7 @@ html { box-sizing: border-box; }
 body { box-sizing: border-box; }
 body:has(#start-screen:not([style*="none"])), body:has(#startScreen:not([hidden])) { height: auto; min-height: 100dvh; }
 :is(#start-screen,#startScreen) { box-sizing: border-box; width: min(560px,100%); max-width: 100%; min-height: 0 !important; height: auto !important; margin: 64px auto 24px; padding: 24px 20px; border-radius: 16px; }
-:is(#start-screen,#startScreen) .start-title { font: 800 30px/1.3 system-ui,sans-serif; letter-spacing: -.03em; margin: 0 0 12px; }
-:is(#start-screen,#startScreen) .start-title span { display: inline; }
+:is(#start-screen,#startScreen) .start-title { margin: 0 0 12px; }
 :is(#start-screen,#startScreen) button { min-height: 44px; }
 :is(#start-screen,#startScreen) .finishers-panel { margin-top: 20px; }
 :is(#start-screen,#startScreen) .start-subtitle { margin-bottom: 20px; }
@@ -18,7 +17,7 @@ body:has(#start-screen:not([style*="none"])), body:has(#startScreen:not([hidden]
 .game-frame:has([data-difficulty-button]) .sphinx-name { display: none; }
 .game-frame:has([data-difficulty-button]) .sphinx-image { width: 120px; }
 .game-frame:has([data-difficulty-button]) .quiz-container { min-height: 0; padding: 0; border: 0; }
-.game-frame:has([data-difficulty-button]) .quiz-title { font: 800 28px/1.3 system-ui,sans-serif; margin: 8px 0 16px; }
+.game-frame:has([data-difficulty-button]) .quiz-title { margin: 8px 0 16px; }
 .game-frame:has([data-difficulty-button]) #display-area { min-height: 0; padding: 16px; }
 .game-frame:has([data-difficulty-button]) .question-text { min-height: 0; margin: 0 0 16px; }
 .game-frame:has([data-difficulty-button]) .quiz-btn { min-height: 44px; }

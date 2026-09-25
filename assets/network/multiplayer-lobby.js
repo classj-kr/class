@@ -197,13 +197,32 @@
             root.style.setProperty("--lobby-surface", opaqueBackground);
             root.style.setProperty("--lobby-ink", background === "#f5efdf" || brightness(background) > 160 ? "#20313b" : "#edf2f5");
             root.style.setProperty("--lobby-edge", skin.borderTopColor);
+            // Preserve each game's authored wordmark, including nested accent spans.
+            const originalTitle = root.querySelector("h1, .lobby-title")
+                || (this.gameId === "avalon" ? document.querySelector(".brand b") : null);
+            const title = originalTitle || document.createElement("h1");
+            if (originalTitle) {
+                const titleSize = parseFloat(getComputedStyle(title).fontSize);
+                const typography = ["font-family", "font-weight", "font-style", "letter-spacing", "text-transform", "color", "text-shadow", "-webkit-text-stroke", "-webkit-text-fill-color"];
+                const styles = [title, ...title.querySelectorAll("*")].map(node => {
+                    const style = getComputedStyle(node);
+                    return { node, values: typography.map(key => [key, style.getPropertyValue(key)]), size: parseFloat(style.fontSize) };
+                });
+                styles.forEach(({ node, values, size }) => {
+                    values.forEach(([key, value]) => node.style.setProperty(key, value));
+                    if (node !== title) node.style.fontSize = `${size / titleSize}em`;
+                });
+                title.style.setProperty("--lobby-title-size", `${titleSize}px`);
+            } else title.textContent = document.title;
             const oldNameContainer = e.savedName?.parentElement;
             root.querySelectorAll("header, h1, .lobby-title, .title-wrap, .hero-panel, .lobby-topline, .lobby-heading").forEach(node => node.classList.add("mp-ui-legacy-heading"));
             if (root.firstElementChild?.tagName === "H2") root.firstElementChild.classList.add("mp-ui-legacy-heading");
             const header = document.createElement("div");
             header.className = "mp-ui-header";
-            const title = document.createElement("h1");
-            title.textContent = document.title;
+            title.classList.remove("mp-ui-legacy-heading");
+            title.classList.add("mp-ui-title");
+            title.setAttribute("role", "heading");
+            title.setAttribute("aria-level", "1");
             header.appendChild(title);
             const help = (this.options.rulesButtonIds || []).map(getElement).find(button => root.contains(button));
             if (help) { help.textContent = "게임 방법"; help.classList.add("mp-ui-help"); header.appendChild(help); }
