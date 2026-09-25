@@ -4,21 +4,13 @@
   const canvas = $('stamp-canvas');
   const ctx = canvas.getContext('2d', { willReadFrequently: true });
   const fonts = {
-    serif: { family: '"OfficeStampMyeongjo"', weight: 400, state: 'loading' },
     brush: { family: '"OfficeStampGungseo"', weight: 400, state: 'loading' },
-    pen: { family: '"OfficeStampBoldMyeongjo"', weight: 400, state: 'loading' },
     gothic: { family: '"Malgun Gothic", "Apple SD Gothic Neo", sans-serif', weight: 700, state: 'ready' }
   };
-  const base = { shape: 'oval', font: 'serif', layout: 'vertical', suffix: '', border: 'single', color: '#e11d24', opacity: 100, lineWidth: 16, spacing: 10, texture: 0, weight: 3, impression: 'positive' };
+  const base = { shape: 'oval', font: 'brush', layout: 'vertical', suffix: '', border: 'single', color: '#e11d24', opacity: 100, lineWidth: 16, spacing: 10, texture: 0, weight: 3, impression: 'positive' };
   const presets = [
-    { id: 'oval-serif', label: '타원 명조', shape: 'oval', font: 'serif', layout: 'vertical', weight: 2 },
-    { id: 'oval-bold', label: '타원 굵은 명조', shape: 'oval', font: 'pen', layout: 'vertical', weight: 0 },
     { id: 'oval-brush', label: '타원 궁서', shape: 'oval', font: 'brush', layout: 'vertical', weight: 3 },
-    { id: 'circle-serif', label: '원형 명조', shape: 'circle', font: 'serif', layout: 'grid', suffix: 'auto', weight: 2 },
-    { id: 'circle-bold', label: '원형 굵은 명조', shape: 'circle', font: 'pen', layout: 'grid', suffix: 'auto', weight: 0 },
     { id: 'circle-brush', label: '원형 궁서', shape: 'circle', font: 'brush', layout: 'grid', suffix: 'auto', weight: 3 },
-    { id: 'square-serif', label: '사각 명조', shape: 'square', font: 'serif', layout: 'grid', suffix: 'auto', weight: 2 },
-    { id: 'square-bold', label: '사각 굵은 명조', shape: 'square', font: 'pen', layout: 'grid', suffix: 'auto', weight: 0 },
     { id: 'square-brush', label: '사각 궁서', shape: 'square', font: 'brush', layout: 'grid', suffix: 'auto', weight: 3 }
   ];
   let settings = { ...base, ...presets[0] };

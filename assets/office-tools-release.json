@@ -1,12 +1,10 @@
 {
-  "version": "20260926-stamp-gallery",
+  "version": "20260926-stamp-gungseo",
   "files": {
-    "classtools/office-tools/index.html": "9d5eb474ac0481056639341d0ee764bd6413bf3e2d5960f6bde487ee694fdfd5",
-    "classtools/office-tools/style.css": "77d0e7bfad43445adb07ded8f2920608bcd2d4a3d44e06c3381d0bb099a530e3",
-    "classtools/office-tools/stamp.js": "c2bca112adb3f5dab09d6219ae17253663f64baf8672cfc343b2b18e3ea3c880",
+    "classtools/office-tools/index.html": "1b21d68878f983529298fea7e1939fce179e9cc4b5845715ac8fce3d3330006f",
+    "classtools/office-tools/style.css": "8cf44afcef09edf5725e64a99cfa376431bd4734bbac16a974918eda843b4c41",
+    "classtools/office-tools/stamp.js": "420b1399da63b39834a093340be2439427d5d4c307d1bd3f005986dee25a8c8b",
     "classtools/office-tools/tools.js": "b47bfa08ec80573b0344937d8184da579ac7968dea83698d82780f4fb538b3c5",
-    "classtools/office-tools/fonts/ChosunGs.TTF": "4e191bc30d23ce34797dcaf7a0965dedd67a2d85cc5dd87325ee96626cba7bea",
-    "classtools/office-tools/fonts/ChosunKm.TTF": "303fa3f070e5c3d9001b2029a6d940c2b25470f3ebe67c104bf452505eecef4d",
-    "classtools/office-tools/fonts/ChosunSm.TTF": "1436bf70f8bc347ced09f9631827efd924db66c205aafb48b307dfb5293bd449"
+    "classtools/office-tools/fonts/ChosunGs.TTF": "4e191bc30d23ce34797dcaf7a0965dedd67a2d85cc5dd87325ee96626cba7bea"
   }
 }
