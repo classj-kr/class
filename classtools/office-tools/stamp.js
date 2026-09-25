@@ -162,6 +162,8 @@
     $('stamp-placeholder').hidden = Boolean(photo);
     $('stamp-placeholder').textContent = '도장 사진을 선택해 주세요.';
     $('stamp-download').disabled = !photo;
+    $('stamp-rotate-left').disabled = !photo;
+    $('stamp-rotate-right').disabled = !photo;
     if (!photo) { status(''); return; }
     const imageData = photo.getContext('2d').getImageData(0, 0, photo.width, photo.height);
     const pixels = imageData.data, threshold = Number($('stamp-threshold').value);
@@ -175,6 +177,21 @@
     ctx.drawImage(processed, Math.round((800 - photo.width) / 2), Math.round((800 - photo.height) / 2));
     status('밝은 배경을 제거했습니다. 강도를 조절해 확인하세요.');
   }
+  function rotatePhoto(direction) {
+    if (!photo) return;
+    const rotated = document.createElement('canvas');
+    rotated.width = photo.height;
+    rotated.height = photo.width;
+    const context = rotated.getContext('2d');
+    if (direction > 0) context.setTransform(0, 1, -1, 0, photo.height, 0);
+    else context.setTransform(0, -1, 1, 0, 0, photo.width);
+    context.drawImage(photo, 0, 0);
+    photo = rotated;
+    render();
+  }
+  $('stamp-rotate-left').addEventListener('click', () => rotatePhoto(-1));
+  $('stamp-rotate-right').addEventListener('click', () => rotatePhoto(1));
+
   function render() {
     $('stamp-presets-wrap').hidden = mode !== 'text';
     if (mode === 'photo') { renderPhoto(); return; }

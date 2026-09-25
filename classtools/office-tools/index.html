@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#ffffff">
   <title>업무툴 · 클래스제이</title>
   <link rel="icon" href="/favicon.ico">
-  <link rel="stylesheet" href="./style.css?v=20260925-image-drop">
+  <link rel="stylesheet" href="./style.css?v=20260925-image-rotation">
 </head>
 <body>
   <a class="back-link" href="/classtools/" aria-label="교사 포털로 돌아가기">←</a>
@@ -71,6 +71,10 @@
               <small>끌어놓거나 클릭 · JPG / PNG / WEBP</small>
             </button>
             <input id="stamp-file" type="file" accept="image/*" hidden>
+            <div class="rotation-controls" role="group" aria-label="도장 사진 회전">
+              <button type="button" class="button secondary" id="stamp-rotate-left" aria-label="도장 사진 반시계 방향으로 90도 회전" disabled><span class="rotation-icon" aria-hidden="true">↶</span>반시계 90°</button>
+              <button type="button" class="button secondary" id="stamp-rotate-right" aria-label="도장 사진 시계 방향으로 90도 회전" disabled><span class="rotation-icon" aria-hidden="true">↷</span>시계 90°</button>
+            </div>
             <label class="field range-field">
               <span>배경 제거 강도 <output id="stamp-threshold-value">70</output></span>
               <input id="stamp-threshold" type="range" min="20" max="140" value="70">
@@ -102,6 +106,10 @@
             <button type="button" class="upload-zone" id="camera-open"><span class="upload-icon" aria-hidden="true">◎</span><strong>카메라 촬영</strong></button>
           </div>
           <input id="scan-file" type="file" accept="image/*" hidden>
+          <div class="rotation-controls" role="group" aria-label="스캔 사진 회전">
+            <button type="button" class="button secondary" id="scan-rotate-left" aria-label="스캔 사진 반시계 방향으로 90도 회전" disabled><span class="rotation-icon" aria-hidden="true">↶</span>반시계 90°</button>
+            <button type="button" class="button secondary" id="scan-rotate-right" aria-label="스캔 사진 시계 방향으로 90도 회전" disabled><span class="rotation-icon" aria-hidden="true">↷</span>시계 90°</button>
+          </div>
           <div class="camera-panel" id="camera-panel" hidden>
             <video id="camera-video" autoplay playsinline muted></video>
             <div class="camera-actions">
@@ -142,7 +150,7 @@
     </section>
     <p class="privacy-note">선택한 사진은 서버에 전송되지 않고 이 기기에서 처리됩니다.</p>
   </main>
-  <script src="./stamp.js?v=20260925-image-drop" defer></script>
-  <script src="./tools.js?v=20260925-image-drop" defer></script>
+  <script src="./stamp.js?v=20260925-image-rotation" defer></script>
+  <script src="./tools.js?v=20260925-image-rotation" defer></script>
 </body>
 </html>

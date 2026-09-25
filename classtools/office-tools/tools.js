@@ -299,8 +299,32 @@
     window.clearTimeout(scanTimer);
     scanTimer = window.setTimeout(renderScan, 140);
   }
+  function rotateScan(direction) {
+    if (!scanImage) return;
+    const width = scanImage.width, height = scanImage.height;
+    const rotated = document.createElement('canvas');
+    rotated.width = height;
+    rotated.height = width;
+    const context = rotated.getContext('2d');
+    if (direction > 0) context.setTransform(0, 1, -1, 0, height, 0);
+    else context.setTransform(0, -1, 1, 0, 0, width);
+    context.drawImage(scanImage, 0, 0);
+    // Keep the selected document region, ordered top-left to bottom-left.
+    const points = scanCorners.map(([x, y]) => direction > 0 ? [height - y, x] : [y, width - x]);
+    scanCorners = direction > 0 ? [points[3], points[0], points[1], points[2]] : [points[1], points[2], points[3], points[0]];
+    scanImage = rotated;
+    endDrag();
+    window.clearTimeout(scanTimer);
+    renderSource();
+    renderScan();
+  }
+  $('scan-rotate-left').addEventListener('click', () => rotateScan(-1));
+  $('scan-rotate-right').addEventListener('click', () => rotateScan(1));
+
   function setScanImage(image) {
     scanImage = scaledCanvas(image, 1800);
+    $('scan-rotate-left').disabled = false;
+    $('scan-rotate-right').disabled = false;
     resetCorners();
     const detected = detectDocumentCorners();
     $('scan-empty').hidden = true;

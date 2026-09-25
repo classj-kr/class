@@ -1,10 +1,10 @@
 {
-  "version": "20260925-image-drop",
+  "version": "20260925-image-rotation",
   "files": {
-    "classtools/office-tools/index.html": "a52d8263f057314103d0e55f623167d38837fddf96f118654113345d40839fb3",
-    "classtools/office-tools/style.css": "39c7a2dd2e448cbe74d396ddbd5dfaa5b8fc9278a5029c7d55d32b6c667c1250",
-    "classtools/office-tools/stamp.js": "c6a3b269b91e9fd99a651f11f23c2d5d9fee5a6813ec1ab09a26281a783aed3b",
-    "classtools/office-tools/tools.js": "f39e286ae407596e5b7dc1a0dd4bb2cc04750997dd0397d848e372a9ea99e770",
+    "classtools/office-tools/index.html": "a12edc69ba0d15e40e44e6be3e80378af223dd6b39c54c8436095804fb462541",
+    "classtools/office-tools/style.css": "aadcbc8c17f0efc97b79e635b1af7f3877f6da3ec53c5c04cc165b312bb3e8d6",
+    "classtools/office-tools/stamp.js": "725f42f086e12f29266f4a2c0a5a9436285ed71da9a720f837c21ad06aae7d11",
+    "classtools/office-tools/tools.js": "b47bfa08ec80573b0344937d8184da579ac7968dea83698d82780f4fb538b3c5",
     "classtools/office-tools/fonts/NanumBrushScript-Regular.ttf": "27ceaf578c96f594cdf07fe0181b251790acbb746a164e45c1f6473f89911a31",
     "classtools/office-tools/fonts/NanumMyeongjo-ExtraBold.ttf": "60c0077fce069ba90ae97c0a3679f6eb3712e0ca637bdd0c15b72d335ec46db7",
     "classtools/office-tools/fonts/NanumPenScript-Regular.ttf": "6f0d1ab29c7894010dc88831fb7a0a51edb79136e450344183de5b1a8b52bd43"
