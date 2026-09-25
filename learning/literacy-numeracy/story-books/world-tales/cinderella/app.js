@@ -273,10 +273,11 @@ function coverPage() {
         <div class="page page-cover">
             <div class="story-page-left story-page-left-full">
                 ${artFrame('cover.webp', '👠')}
+                ${readBtnHtml()}
             </div>
             <div class="story-page-right">
-                <h1>${cv.title}</h1>
-                ${cv.intro.map(p => `<p>${p}</p>`).join('')}
+                <h1 data-say="0">${cv.title}</h1>
+                ${cv.intro.map((p, i) => `<p data-say="${i + 1}">${p}</p>`).join('')}
             </div>
         </div>`;
 }
@@ -337,8 +338,9 @@ function tocPage() {
 
 function spreadPage(chapter, beat, isFirst, isLast) {
     const badgeHtml = isFirst ? `<div class="spread-chapter-badge">${chapter.title}</div>` : '';
-    const leftHtml = beat.left.map(p => `<p>${p}</p>`).join('');
-    let rightHtml = beat.right.map(p => `<p>${p}</p>`).join('');
+    const n = beat.left.length;
+    const leftHtml = beat.left.map((p, i) => `<p data-say="${i}">${p}</p>`).join('');
+    let rightHtml = beat.right.map((p, i) => `<p data-say="${n + i}">${p}</p>`).join('');
     // 교훈은 오른쪽 칸이 아니라 두 칸 아래 제 자리에 놓는다. 칸 안에 밀어 넣으면 넘친다.
     const moralHtml = isLast && chapter.moral ? `<p class="fable-moral">${chapter.moral}</p>` : '';
     return `
@@ -346,6 +348,7 @@ function spreadPage(chapter, beat, isFirst, isLast) {
             <div class="spread-art">
                 ${badgeHtml}
                 ${artFrame(beat.art, beat.emoji)}
+                ${readBtnHtml()}
             </div>
             <div class="spread-text">
                 <div class="spread-text-left">${leftHtml}</div>
@@ -382,16 +385,17 @@ function afterPage(spread, isFirst) {
     const head = isFirst ? `<h2>${AF().title}</h2>` : '';
     // 그림은 오른쪽 위 모서리에 붙고, 글을 뺀 나머지 자리를 다 차지한다.
     const art = spread.art ? `<div class="after-art">${artFrame(spread.art, AF().emoji)}</div>` : '';
-    const col = (ps) => ps.map(t => `<p>${t}</p>`).join('');
+    const col = (ps, from) => ps.map((t, i) => `<p data-say="${from + i}">${t}</p>`).join('');
     return `
         <div class="page page-after">
             <div class="after-col after-col-left">
                 ${head}
-                ${col(spread.left)}
+                ${col(spread.left, 0)}
             </div>
             <div class="after-col after-col-right${spread.art ? ' after-col-image' : ''}">
                 ${art}
-                ${col(spread.right)}
+                ${readBtnHtml()}
+                ${col(spread.right, spread.left.length)}
                 <p class="after-home"><a class="home-btn" href="../../../../../">${T().home}</a></p>
             </div>
         </div>`;
@@ -950,17 +954,94 @@ const EN = {
 
 /* 글은 두 벌이다. 위쪽 단추를 누르면 EN 쪽으로 갈아 끼우고 쪽을 다시 짠다.
    영어 원고가 없는 책은 단추가 아예 뜨지 않는다. */
+/* ── 우리말 낱말 ────────────────────────────────────────────
+   쪽마다 아이가 막히는 우리말을 골라 둔다. 영어 낱말과는 고르는 잣대가 다르다.
+   영어는 숙어가 걸림돌이고, 우리말은 옛말이나 잘 안 쓰는 말이 걸림돌이다. */
+const WORDS_KO = {
+    "cover.webp": [
+        { w: "펴내다", k: "책이나 글을 만들어 세상에 내놓다.", s: "프랑스의 샤를 페로가 1697년에 펴낸 이야기로 널리 알려졌어요." },
+        { w: "별명", k: "본이름 말고 남들이 따로 부르는 이름.", s: "재를 뒤집어쓴 아이라는 뜻의 이름이 그대로 별명이 된 주인공이에요." }
+    ],
+    "story-01-chores.webp": [
+        { w: "맞다", k: "새 식구로 집에 들이다.", s: "아버지는 몇 해 뒤 새 부인을 맞았습니다." },
+        { w: "앓아눕다", k: "병이 들어 자리에 눕다.", s: "그런데 그해 겨울 아버지가 앓아누웠지요." },
+        { w: "장례", k: "세상을 떠난 사람을 보내 드리는 일.", s: "장례를 치른 이튿날, 새어머니가 말했지요." }
+    ],
+    "story-01-chores-2.webp": [
+        { w: "물을 긷다", k: "우물에서 물을 떠 오다.", s: "\"물 길어 와라!\"" },
+        { w: "지피다", k: "불을 붙여 타오르게 하다.", s: "\"불 지펴라!\"" },
+        { w: "부뚜막", k: "아궁이 위에 솥을 걸어 놓는 자리.", s: "잠자리는 부뚜막 옆, 재가 아직 따뜻한 자리였지요." },
+        { w: "재투성이", k: "온몸에 재가 잔뜩 묻은 모습.", s: "\"그럼 이름도 재투성이로 하자. 신데렐라!\"" }
+    ],
+    "story-02-invite.webp": [
+        { w: "무도회", k: "사람들이 모여 춤을 추는 잔치.", s: "보름날 무도회가 열립니다." },
+        { w: "신붓감", k: "신부가 될 만한 사람.", s: "왕자님이 신붓감을 고르신답니다!" },
+        { w: "심부름꾼", k: "남의 말을 전하거나 일을 대신 해 주는 사람.", s: "심부름꾼이 금빛 초대장을 놓고 갔지요." },
+        { w: "발칵 뒤집히다", k: "갑자기 온통 시끄러워지다.", s: "그 길로 집 안이 발칵 뒤집혔습니다." }
+    ],
+    "story-02-invite-2.webp": [
+        { w: "자루", k: "물건을 담는 크고 긴 주머니.", s: "그러고는 콩 자루를 와르르 쏟았지요." },
+        { w: "해가 기울다", k: "해가 서쪽으로 넘어가다.", s: "해가 기울 무렵 마차 바퀴 소리가 멀어졌습니다." }
+    ],
+    "story-03-magic.webp": [
+        { w: "얼얼하다", k: "아리고 저린 느낌이 들다.", s: "손끝이 얼얼하고 허리가 뻐근했지요." },
+        { w: "주저앉다", k: "서 있다가 힘없이 그 자리에 앉다.", s: "신데렐라는 그만 마당에 주저앉았지요." },
+        { w: "사정", k: "일이 그렇게 된 까닭과 형편.", s: "신데렐라가 훌쩍이며 사정을 말하자 할머니가 빙그레 웃었습니다." }
+    ],
+    "story-03-magic-2.webp": [
+        { w: "쥐덫", k: "쥐를 잡는 틀.", s: "\"이번에는 쥐덫을 가져오렴.\"" },
+        { w: "마부", k: "말을 부려 마차를 모는 사람.", s: "도마뱀은 마부가 되었습니다." },
+        { w: "해지다", k: "오래 써서 닳고 떨어지다.", s: "지팡이가 신데렐라를 가리키자 해진 옷이 눈부신 옷이 되고 유리 구두가 신겼지요." },
+        { w: "자정", k: "밤 열두 시.", s: "\"자정이 되면 마법이 풀린단다.\"" }
+    ],
+    "story-04-ball.webp": [
+        { w: "수군거리다", k: "남이 못 듣게 작은 소리로 말하다.", s: "사람들이 길을 비키며 수군거렸습니다." },
+        { w: "곧장", k: "옆으로 새지 않고 바로.", s: "그때 왕자가 사람들 사이를 지나 곧장 걸어왔지요." }
+    ],
+    "story-04-ball-2.webp": [
+        { w: "부엌데기", k: "부엌일만 하는 사람을 낮잡아 이르는 말.", s: "부엌데기라고 말할 수는 없었으니까요." },
+        { w: "짝", k: "둘이 한 벌을 이루는 것 가운데 하나.", s: "중간에서 유리 구두 한 짝이 벗겨졌지만 주울 틈이 없었지요." }
+    ],
+    "story-05-search.webp": [
+        { w: "발치", k: "발이 놓인 쪽.", s: "발치에 유리 구두 한 짝이 놓여 있었지요." },
+        { w: "나팔", k: "불어서 소리를 내는 쇠붙이 악기.", s: "이튿날 아침, 신하들이 나팔을 불며 마을로 나섰습니다." },
+        { w: "명", k: "윗사람이 내리는 시킴.", s: "\"왕자님의 명이오! 이 구두가 맞는 아가씨를 찾는다!\"" },
+        { w: "방석", k: "앉을 때 밑에 까는 깔개.", s: "구두는 비단 방석에 얹혀 집집마다 돌았지요." }
+    ],
+    "story-05-search-2.webp": [
+        { w: "오므리다", k: "벌어진 것을 안으로 모으다.", s: "발가락을 잔뜩 오므린 아가씨도 있었지요." },
+        { w: "뒤꿈치", k: "발의 뒤쪽 둥근 자리.", s: "뒤꿈치를 슬쩍 든 아가씨도 있었습니다." },
+        { w: "꿈쩍하다", k: "조금 움직이다.", s: "그래도 구두는 꿈쩍하지 않았지요." }
+    ],
+    "story-06-fit.webp": [
+        { w: "냉큼", k: "망설이지 않고 얼른.", s: "큰언니가 냉큼 의자에 앉았지요." },
+        { w: "발을 동동 구르다", k: "안타까워서 발을 자꾸 구르다.", s: "둘째가 발을 동동 굴렀습니다." }
+    ],
+    "story-06-fit-2.webp": [
+        { w: "손사래를 치다", k: "손을 내저어 아니라고 하다.", s: "새어머니가 얼른 손사래를 쳤습니다." },
+        { w: "질리다", k: "놀라서 낯빛이 하얗게 변하다.", s: "새어머니의 얼굴이 하얗게 질렸습니다." },
+        { w: "앞치마", k: "옷이 더러워지지 않게 앞에 두르는 천.", s: "그때 신데렐라가 앞치마 주머니에서 무언가를 꺼냈지요." }
+    ],
+    "story-07-wedding.webp": [
+        { w: "망설이다", k: "이럴까 저럴까 마음을 정하지 못하다.", s: "신데렐라가 잠깐 망설이다 말했습니다." },
+        { w: "혼례", k: "결혼식.", s: "그날 혼례 날짜가 정해졌습니다." }
+    ],
+    "story-07-wedding-2.webp": [
+        { w: "문가", k: "문이 있는 자리 언저리.", s: "그런데 문가에 두 사람이 서 있었습니다." }
+    ]
+};
+
 const UI = {
     ko: {
         toc: '차례', quiz: '이야기 문제', after: '읽고 나서',
         home: '학습 허브로 돌아가기', other: 'EN', otherAria: 'Read in English',
-        page: n => `${n}쪽`,
+        page: n => `${n}쪽`, wordsDown: '낱말 ⌄',
         done: (n, all) => `${n} / 총 ${all}문항 완료`
     },
     en: {
         toc: 'Contents', quiz: 'Story Questions', after: 'After Reading',
         home: 'Back to the learning hub', other: '한국어', otherAria: '한국어로 읽기',
-        page: n => `p. ${n}`,
+        page: n => `p. ${n}`, wordsDown: 'Words ⌄',
         done: (n, all) => `${n} of ${all} answered`
     }
 };
@@ -1070,6 +1151,19 @@ function paint() {
     if (PAGES[current].kind === 'quiz') {
         initQuiz();
     }
+
+    const readBtn = document.getElementById('readBtn');
+    if (readBtn) readBtn.addEventListener('click', () => (reading ? stopReading() : readPage(0)));
+
+    // 읽는 중일 때만 문단을 눌러 그 자리로 옮긴다.
+    if (LANG === 'en' && CAN_SPEAK) {
+        spreadEl.querySelectorAll('[data-say]').forEach(el => {
+            el.addEventListener('click', () => {
+                if (!reading) return;
+                readPage(Number(el.dataset.say));
+            });
+        });
+    }
     if (typeof renderVocab === 'function') renderVocab();
 }
 
@@ -1101,6 +1195,7 @@ function initQuiz() {
 
 function goTo(index) {
     if (animating || index === current || index < 0 || index >= PAGES.length) return;
+    stopReading();
     animating = true;
     const dir = index > current ? 'flip-next' : 'flip-prev';
     spreadEl.classList.add(dir);
@@ -1127,11 +1222,99 @@ document.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowLeft') goTo(current - 1);
 });
 
+/* ── 목소리 ────────────────────────────────────────────────────
+   기기에 있는 영어 목소리를 골라 쓴다. 없으면 기본 목소리로 읽는다. */
+const textOf = p => (typeof p === 'string' ? p : p.t);
+
+/* 읽기 단추 — 표지·펼침면·읽고 나서에 붙는다. 영어로 볼 때만 나온다. */
+function readBtnHtml() {
+    return (LANG === 'en' && CAN_SPEAK)
+        ? `<button type="button" class="read-btn" id="readBtn">${reading ? '■' : '▶'}</button>`
+        : '';
+}
+
+/* 그 쪽에서 읽어 줄 글. 화면에 보이는 차례 그대로다. */
+function pageParts(page) {
+    if (!page) return [];
+    if (page.kind === 'spread') return page.beat.left.concat(page.beat.right);
+    if (page.kind === 'cover') return [CV().title].concat(CV().intro);
+    if (page.kind === 'after') return page.spread.left.concat(page.spread.right);
+    return [];
+}
+
+const SAY_RATE = 0.85;
+const VOICES = { any: null };
+
+function pickVoices() {
+    if (typeof speechSynthesis === 'undefined') return;
+    const vs = speechSynthesis.getVoices().filter(v => /^en/i.test(v.lang));
+    if (!vs.length) return;
+    VOICES.any = vs.find(v => /^en[-_]US/i.test(v.lang)) || vs[0];
+}
+
+if (typeof speechSynthesis !== 'undefined') {
+    pickVoices();
+    speechSynthesis.onvoiceschanged = pickVoices;
+}
+
+function dressVoice(u) {
+    u.rate = SAY_RATE;
+    if (VOICES.any) u.voice = VOICES.any;
+}
+
+/* ── 읽어 주기 ─────────────────────────────────────────────────
+   펼침면 글을 왼쪽부터 차례로 읽는다. 읽는 문단에 표시가 따라간다.
+   다시 누르면 멈춘다. 쪽을 넘기거나 우리말로 돌아가면 저절로 멈춘다. */
+let reading = false;
+let readToken = 0;
+
+function stopReading() {
+    reading = false;
+    if (typeof spreadEl !== 'undefined' && spreadEl) spreadEl.classList.remove('is-reading');
+    readToken++;
+    if (CAN_SPEAK) { try { speechSynthesis.cancel(); } catch (e) {} }
+    document.querySelectorAll('.saying').forEach(el => el.classList.remove('saying'));
+    const b = document.getElementById('readBtn');
+    if (b) b.textContent = '▶';
+}
+
+function readPage(from) {
+    const page = PAGES[current];
+    if (!CAN_SPEAK || !page) return;
+    const parts = pageParts(page);
+    if (!parts.length) return;
+    try { speechSynthesis.cancel(); } catch (e) {}
+    reading = true;
+    if (spreadEl) spreadEl.classList.add('is-reading');
+    const mine = ++readToken;
+    const btn = document.getElementById('readBtn');
+    if (btn) btn.textContent = '■';
+
+    const step = (i) => {
+        if (mine !== readToken) return;
+        document.querySelectorAll('.saying').forEach(el => el.classList.remove('saying'));
+        if (i >= parts.length) { stopReading(); return; }
+        const here = document.querySelector(`[data-say="${i}"]`);
+        if (here) {
+            here.classList.add('saying');
+            here.scrollIntoView({ block: 'nearest' });
+        }
+        const u = new SpeechSynthesisUtterance(textOf(parts[i]).replace(/"/g, ''));
+        u.lang = 'en-US';
+        dressVoice(u);
+        u.onend = () => step(i + 1);
+        u.onerror = () => step(i + 1);
+        try { speechSynthesis.speak(u); } catch (e) { stopReading(); }
+    };
+    step(Math.max(0, Math.min(from | 0, parts.length - 1)));
+}
+
 /* ── 단어장 — 영어로 읽을 때만 책 아래에 깔린다 ──────────────────── */
 const vocabScreenEl = document.getElementById('vocabScreen');
 const vocabPanelEl = document.getElementById('vocabPanel');
 const scrollDownEl = document.getElementById('scrollDown');
 const HAS_WORDS = HAS_EN && EN.words && Object.keys(EN.words).length > 0;
+const HAS_WORDS_KO = typeof WORDS_KO !== 'undefined' && WORDS_KO && Object.keys(WORDS_KO).length > 0;
 
 /* 듣기 — 낱말을 먼저 읽고, 이어서 그 낱말이 나온 구절을 읽는다.
    목소리가 없는 기기에서는 단추 자체가 뜨지 않는다. */
@@ -1142,18 +1325,20 @@ function sayWord(item) {
     if (!CAN_SPEAK || !item) return;
     try {
         speechSynthesis.cancel();
-        const word = new SpeechSynthesisUtterance(item.word);
-        word.lang = 'en-US';
+        const bare = String(wOf(item)).replace(/\s*\([^)]*\)/g, '').trim();
+        const 말 = LANG === 'en' ? 'en-US' : 'ko-KR';
+        const word = new SpeechSynthesisUtterance(bare);
+        word.lang = 말;
         word.rate = 0.75;
-        const sent = new SpeechSynthesisUtterance(item.sentence);
-        sent.lang = 'en-US';
+        const sent = new SpeechSynthesisUtterance(sOf(item));
+        sent.lang = 말;
         speechSynthesis.speak(word);
         speechSynthesis.speak(sent);
     } catch (e) { /* 소리를 못 내는 기기도 있다 */ }
 }
 
 function vocabFor() {
-    const all = (HAS_WORDS && EN.words) || {};
+    const all = LANG === 'en' ? ((HAS_WORDS && EN.words) || {}) : ((HAS_WORDS_KO && WORDS_KO) || {});
     const page = PAGES[current];
     // 그 쪽에 실제로 있는 글의 낱말을, 글에 나온 차례대로 보여 준다.
     const key = !page ? null
@@ -1162,17 +1347,26 @@ function vocabFor() {
         : null;
     if (key && all[key]) return all[key];
     // 표지에도 소개글이 있다. 그 글에 나온 낱말만 보여 준다.
-    if (page && page.kind === 'cover') return all['cover.webp'] || [];
-    // 차례·문제 쪽에는 글이 없다. 온 책의 낱말을 쏟아 놓으면 아이가 눈앞의 글에서
-    // 찾을 수가 없으니, 보여 줄 것이 없을 때는 칸을 아예 접는다.
+    if (page && page.kind === 'cover') return all['cover.webp'] || all['cover'] || [];
+    // 차례·문제 쪽에는 글이 없다. 보여 줄 것이 없으면 칸을 접는다.
     return [];
 }
 
+/* 낱말 자료는 우리말과 영어가 적는 이름이 다르다. 우리말 쪽은 전래동화와 같은
+   {w, k, s}, 영어 쪽은 {word, meaning, sentence}다. 어느 쪽이 와도 읽게 한다. */
+const wOf = w => (w.word !== undefined ? w.word : w.w);
+const mOf = w => (w.meaning !== undefined ? w.meaning : w.k);
+const sOf = w => (w.sentence !== undefined ? w.sentence : w.s);
+
 function renderVocab() {
-    const list = HAS_WORDS && LANG === 'en' ? vocabFor() : [];
+    const has = LANG === 'en' ? HAS_WORDS : HAS_WORDS_KO;
+    const list = has ? vocabFor() : [];
     const on = list.length > 0;
     if (vocabScreenEl) vocabScreenEl.hidden = !on;
-    if (scrollDownEl) scrollDownEl.hidden = !on;
+    if (scrollDownEl) {
+        scrollDownEl.hidden = !on;
+        scrollDownEl.textContent = T().wordsDown || (LANG === 'en' ? 'Words ⌄' : '낱말 ⌄');
+    }
     if (!on) {
         if (window.scrollY) window.scrollTo({ top: 0 });
         return;
@@ -1183,11 +1377,11 @@ function renderVocab() {
             ${list.map((w, i) => `
             <li>
                 <div class="vocab-top">
-                    <p class="vocab-word">${w.word}</p>
-                    ${CAN_SPEAK ? `<button type="button" class="vocab-say" data-i="${i}" aria-label="Listen">🔊</button>` : ''}
+                    <p class="vocab-word">${wOf(w)}</p>
+                    ${(CAN_SPEAK && LANG === 'en') ? `<button type="button" class="vocab-say" data-i="${i}" aria-label="Listen">🔊</button>` : ''}
                 </div>
-                <p class="vocab-mean">${w.meaning}</p>
-                <p class="vocab-sent">${w.sentence}</p>
+                <p class="vocab-mean">${mOf(w)}</p>
+                <p class="vocab-sent">${sOf(w)}</p>
             </li>`).join('')}
         </ul>`;
     fitVocabScreen();
@@ -1243,6 +1437,7 @@ window.addEventListener('resize', () => { window.scrollTo(0, 0); fitVocabScreen(
 /* 말 바꾸기 — 보던 자리를 그대로 두고 글만 갈아 끼운다. */
 const langBtn = document.getElementById('langLink');
 function applyLang() {
+    if (typeof stopReading === 'function') stopReading();
     document.documentElement.lang = LANG;
     document.title = CV().title;
     if (langBtn) {

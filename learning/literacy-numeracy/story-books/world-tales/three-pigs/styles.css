@@ -930,3 +930,39 @@ html[lang="en"] .page-after p,
 html[lang="en"] .vocab-sent {
     font-weight: 400;
 }
+
+/* ── 읽어 주기 ─────────────────────────────────────────────── */
+.read-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 12;
+    min-width: 46px;
+    min-height: 46px;
+    padding: 0;
+    border: 1px solid rgba(215, 171, 95, 0.55);
+    border-radius: 50%;
+    background: rgba(27, 15, 16, 0.78);
+    color: var(--gold-bright);
+    font-size: 17px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.read-btn:hover,
+.read-btn:focus-visible {
+    border-color: var(--gold-bright);
+    background: rgba(92, 58, 34, 0.9);
+}
+
+/* 지금 읽고 있는 문단 */
+.spread-text p.saying,
+.page-cover p.saying,
+.page-cover h1.saying,
+.after-col p.saying {
+    background: rgba(215, 171, 95, 0.3);
+    border-radius: 6px;
+    box-shadow: 0 0 0 4px rgba(215, 171, 95, 0.3);
+}
+
+html[lang="en"] .is-reading [data-say] { cursor: pointer; }
