@@ -211,13 +211,14 @@ const CHAPTERS = [
                 "art": "07-morning.webp",
                 "emoji": "🌅",
                 "left": [
+                    "아이는 그 겨울밤을 넘기지 못했습니다.",
                     "새해 아침이 밝았습니다. 눈은 어느새 그쳐 있었지요. 햇살이 골목 안까지 들어왔습니다.",
                     "지나가던 사람들이 걸음을 멈췄지요. 두 집 사이 좁은 자리에 아이가 앉아 있었습니다. 무릎을 안고 벽에 기댄 채였지요."
                 ],
                 "right": [
-                    "얼굴에는 웃음이 그대로 남아 있었습니다. 옆에는 성냥개비가 잔뜩 흩어져 있었지요. 한 다발이 몽땅 타 버린 것이었습니다.",
+                    "얼굴에는 웃음이 그대로 남아 있었지요. 옆에는 타 버린 성냥개비가 흩어져 있었습니다.",
                     "\"이 아이가 왜 여기……\" 누군가 말하자 옆 사람이 대꾸했지요. \"몸을 녹이려 했나 보군.\"",
-                    "사람들은 그렇게만 말하고 지나갔지요."
+                    "사람들은 그렇게만 말하고 지나갔습니다. 어제도 이 골목을 지난 사람들이었지요."
                 ]
             },
             {
@@ -225,12 +226,12 @@ const CHAPTERS = [
                 "emoji": "🌅",
                 "left": [
                     "아이가 무엇을 보았는지는 아무도 알지 못했습니다. 난로도, 거위도, 반짝이던 나무도요. 무엇보다 할머니를 만난 것을요.",
-                    "그날 저녁 그 골목에 꽃이 한 다발 놓였습니다. 누가 두고 갔는지는 아무도 몰랐지요. 지나가던 아이들이 걸음을 늦추고 그 꽃을 보았습니다."
+                    "어제 이 골목을 지난 사람도, 성냥을 사지 않은 사람도 그것만은 알지 못했지요."
                 ],
                 "right": [
-                    "이듬해 겨울, 그날도 눈이 펑펑 내렸지요.",
-                    "길을 가던 한 아주머니가 문득 걸음을 멈췄습니다. 길가에 성냥을 든 아이가 서 있었거든요.",
-                    "\"얘야, 우리 집에 와서 몸 좀 녹이렴.\" 아주머니가 집 문을 활짝 열었습니다."
+                    "그날 저녁 그 골목에 꽃이 한 다발 놓였습니다. 누가 두고 갔는지는 아무도 몰랐지요.",
+                    "지나가던 아이들이 걸음을 늦추고 그 꽃을 보았습니다.",
+                    "골목은 다시 조용해졌지요. 그 겨울에도 눈은 며칠이나 더 내렸습니다."
                 ]
             }
         ],
@@ -356,12 +357,12 @@ const AFTERWORD = {
         {
             art: 'end.webp',
             left: [
-                "이 이야기는 안데르센이 지었습니다. 안데르센의 어머니는 어릴 적에 거리에서 구걸을 했다고 합니다. 그 이야기를 듣고 지은 것이라고 하지요.",
-                "소녀는 성냥을 네 번 켭니다. 그때마다 보이는 것이 달라지지요. 난로, 밥상, 크리스마스 나무, 그리고 할머니입니다.",
-                "앞의 셋은 몸이 바라던 것입니다. 따뜻함과 배부름이지요. 마지막 하나만 다릅니다. 할머니는 물건이 아니니까요.",
-                "소녀가 성냥을 아끼지 않고 한꺼번에 그은 것도 그 대목입니다. 팔 것을 다 태워서라도 붙잡고 싶었던 것이지요."
+                "안데르센이 백팔십 년쯤 전 덴마크에서 지은 이야기입니다. 그때는 가난한 집 아이가 학교에 가는 대신 거리로 나가 물건을 팔았습니다. 안데르센의 어머니도 어릴 적에 거리에서 구걸을 했다고 하지요.",
+                "성냥은 그 무렵에 막 나온 물건이었습니다. 그전에는 불을 붙이려면 부싯돌을 쳐야 했지요. 그어서 바로 불이 붙는 성냥은 신기한 물건이라, 아이들이 한 다발씩 들고 다니며 팔았습니다.",
+                "소녀가 밤늦도록 집에 못 간 까닭도 거기 있습니다. 하나도 팔지 못하고 돌아가면 혼이 날 것을 알았거든요. 그래서 팔아야 할 성냥을 제 몸을 녹이는 데 쓰는 일은 큰일이었습니다."
             ],
             right: [
+                "소녀는 성냥을 네 번 켭니다. 난로, 밥상, 크리스마스 나무, 그리고 할머니지요. 앞의 셋은 몸이 바라던 것이고 마지막 하나만 다릅니다. 할머니는 물건이 아니니까요.",
                 "거리에는 사람이 많았습니다. 아무도 걸음을 멈추지 않았을 뿐이지요. 안데르센이 적고 싶었던 것은 그 대목입니다.",
                 "소녀 곁을 지나간 사람은 무엇을 할 수 있었을까요?"
             ]
@@ -752,6 +753,7 @@ const EN = {
                     art: '07-morning.webp',
                     emoji: '🌅',
                     left: [
+                        "The child had not lived through that winter night.",
                         "New Year's morning came, and the snow had stopped. The sun reached right into the alley.",
                         "People going past stopped walking.",
                         "In the narrow space between two houses sat a child, her knees pulled up, leaning against the wall."
@@ -760,7 +762,7 @@ const EN = {
                         "The smile was still on her face.",
                         "Beside her lay a great scatter of matchsticks — a whole bundle of them, burned right down.",
                         "\"Why was this child out here…\" someone said. \"Trying to warm herself, I suppose,\" said another.",
-                        "That was all they said, and they went on."
+                        "That was all they said, and they went on. They were the same people who had walked past her the day before."
                     ]
                 },
                 {
@@ -769,12 +771,11 @@ const EN = {
                     left: [
                         "Nobody knew what she had seen — the stove, the goose, the shining tree.",
                         "And least of all that she had met her grandmother.",
-                        "That evening someone left a bunch of flowers in the alley. Children going past slowed down to look."
+                        "Not one of them knew it — not the people who had passed her the day before, not the ones who had not bought her matches."
                     ],
                     right: [
-                        "Next winter, the snow fell thick again.",
-                        "A woman on the road stopped. A child stood at the roadside, holding out matches.",
-                        "\"Come in and get warm, child,\" she said, opening her door wide."
+                        "That evening someone left a bunch of flowers in the alley. Nobody knew who had left them.",
+                        "Children going past slowed down to look at them, and then the alley was quiet again."
                     ]
                 }
             ]
@@ -835,13 +836,13 @@ const EN = {
             {
                 art: 'end.webp',
                 left: [
-                    "Andersen is said to have written this after hearing that his mother had begged in the streets as a child.",
-                    "The girl strikes matches four times and sees a stove, a table laid, a Christmas tree, and then her grandmother.",
-                    "The first three are what the body wants. Only the last is different, because a grandmother is not a thing.",
-                    "This is the part where she stops being careful with the matches and lights them all at once, just to hold on to her grandmother."
+                    "Andersen wrote this in Denmark about a hundred and eighty years ago. In those days a poor child went out to sell things in the street instead of going to school. His own mother had begged in the streets as a girl.",
+                    "Matches were a new thing then. Before that you had to strike a flint to make fire, so children carried bundles of the new matches about and sold them.",
+                    "That is why the girl could not go home. She knew what waited for her if she came back having sold nothing, and the matches she burned were the ones she was meant to sell."
                 ],
                 right: [
-                    "There were plenty of people in that street. Not one of them stopped.",
+                    "She strikes them four times: a stove, a table laid, a Christmas tree, and her grandmother. The first three are what the body wants. Only the last is different, because a grandmother is not a thing.",
+                    "There were plenty of people in that street. Not one of them stopped. That was the part Andersen wanted to write down.",
                     "What could the people who passed her have done?"
                 ]
             }
@@ -938,14 +939,14 @@ const EN = {
             { word: 'least of all', meaning: '무엇보다도 특히', sentence: 'And least of all that she had met her grandmother.' },
             { word: 'a bunch of', meaning: '한 다발의', sentence: 'Someone left a bunch of flowers in the alley.' },
             { word: 'slow down', meaning: '걸음을 늦추다', sentence: 'Children going past slowed down to look.' },
-            { word: 'hold out', meaning: '내밀다', sentence: "A child stood at the roadside, holding out matches." }
+            { word: 'not one of them', meaning: '그들 가운데 아무도', sentence: 'Not one of them knew it.' }
         ],
         'end.webp': [
-            { word: 'beg', meaning: '구걸하다', sentence: 'His mother is said to have begged in the streets.' },
-            { word: 'hold on to', meaning: '붙잡다', sentence: 'Just to hold on to her grandmother.' },
-            { word: 'be careful with', meaning: '아끼다', sentence: 'She stops being careful with the matches.' },
+            { word: 'beg', meaning: '구걸하다', sentence: 'His own mother had begged in the streets as a girl.' },
+            { word: 'flint', meaning: '부싯돌', sentence: 'Before that you had to strike a flint to make fire.' },
+            { word: 'instead of', meaning: '~하는 대신에', sentence: 'A poor child went out to sell things in the street instead of going to school.' },
             { word: 'plenty of', meaning: '많은', sentence: 'There were plenty of people in that street.' },
-            { word: 'write down', meaning: '적다', sentence: 'That is the part Andersen wanted to write down.' }
+            { word: 'write down', meaning: '적다', sentence: 'That was the part Andersen wanted to write down.' }
         ]
     }
 };
@@ -1032,17 +1033,17 @@ const WORDS_KO = {
     "07-morning.webp": [
         { w: "어느새", k: "모르는 사이에 벌써.", s: "눈은 어느새 그쳐 있었지요." },
         { w: "햇살", k: "해에서 내리쬐는 밝은 빛.", s: "햇살이 골목 안까지 들어왔습니다." },
-        { w: "몽땅", k: "남기지 않고 모두.", s: "한 다발이 몽땅 타 버린 것이었습니다." },
+        { w: "넘기지 못하다", k: "그때를 견디지 못하고 세상을 떠나다.", s: "아이는 그 겨울밤을 넘기지 못했습니다." },
         { w: "대꾸하다", k: "남의 말에 맞받아 말하다.", s: "\"이 아이가 왜 여기……\" 누군가 말하자 옆 사람이 대꾸했지요. \"몸을 녹이려 했나 보군.\"" }
     ],
     "07-morning-2.webp": [
-        { w: "이듬해", k: "그다음 해.", s: "이듬해 겨울, 그날도 눈이 펑펑 내렸지요." },
-        { w: "문득", k: "생각이나 움직임이 갑자기.", s: "길을 가던 한 아주머니가 문득 걸음을 멈췄습니다." },
-        { w: "활짝", k: "문이나 꽃이 크게 열리는 모습.", s: "아주머니가 집 문을 활짝 열었습니다." }
+        { w: "다발", k: "여럿을 한데 묶은 것.", s: "그날 저녁 그 골목에 꽃이 한 다발 놓였습니다." },
+        { w: "걸음을 늦추다", k: "가던 속도를 줄여 천천히 걷다.", s: "지나가던 아이들이 걸음을 늦추고 그 꽃을 보았습니다." },
+        { w: "조용해지다", k: "소리가 잦아들어 고요해지다.", s: "골목은 다시 조용해졌지요. 그 겨울에도 눈은 며칠이나 더 내렸습니다." }
     ],
     "end.webp": [
-        { w: "구걸", k: "남에게 돈이나 먹을 것을 달라고 비는 일.", s: "안데르센의 어머니는 어릴 적에 거리에서 구걸을 했다고 합니다." },
-        { w: "긋다", k: "성냥을 거친 데에 문질러 불을 내다.", s: "소녀가 성냥을 아끼지 않고 한꺼번에 그은 것도 그 대목입니다." },
+        { w: "구걸", k: "남에게 돈이나 먹을 것을 달라고 비는 일.", s: "안데르센의 어머니도 어릴 적에 거리에서 구걸을 했다고 하지요." },
+        { w: "부싯돌", k: "쳐서 불꽃을 내던 돌.", s: "그전에는 불을 붙이려면 부싯돌을 쳐야 했지요." },
         { w: "대목", k: "이야기나 글에서 어느 한 부분.", s: "안데르센이 적고 싶었던 것은 그 대목입니다." }
     ]
 };
