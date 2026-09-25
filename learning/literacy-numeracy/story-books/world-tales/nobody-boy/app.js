@@ -7,9 +7,10 @@ const CHAPTERS = [
                 "art": "01-home.webp",
                 "emoji": "🏡",
                 "left": [
-                    "프랑스의 작은 시골 마을에 레미가 살았습니다. 머리가 곱슬곱슬하고 눈이 큰 아이였지요.",
-                    "레미를 기르는 사람은 바르브랭 아주머니였습니다. 집은 아주 가난했지만 부엌은 늘 따뜻했지요.",
-                    "아궁이에는 구리 냄비가 걸려 있었습니다. 저녁이면 냄비에서 감자 삶는 냄새가 났지요."
+                    "아궁이에 걸린 구리 냄비에서 김이 폴폴 올랐습니다. 감자 삶는 냄새가 부엌에 가득했지요.",
+                    "\"레미야, 손 씻고 와 앉아라.\"",
+                    "바르브랭 아주머니가 국자를 들고 불렀습니다. 곱슬머리에 눈이 큰 아이가 뛰어 들어왔지요.",
+                    "가난해도 부엌만은 늘 따뜻한 집이었습니다."
                 ],
                 "right": [
                     "아주머니는 늘 제 몫을 레미 앞에 밀어 놓았습니다. \"오늘은 하나 더 먹으렴.\"",
@@ -568,9 +569,9 @@ const EN = {
                     art: '01-home.webp',
                     emoji: '🏡',
                     left: [
-                        "In a small village in France lived a boy called Rémi.",
-                        "He had curly hair and large eyes.",
-                        "Mother Barberin brought him up. She was always gentle with Rémi.",
+                        "Steam rose from the copper pot over the fire, and the kitchen smelled of boiling potatoes.",
+                        "\"Rémi, wash your hands and sit down.\"",
+                        "Mother Barberin called him with the ladle in her hand, and a boy with curly hair and large eyes came running in. She had brought him up, and she was always gentle with Rémi.",
                         "The house was very poor, but the kitchen was always warm.",
                         "A copper pot hung over the hearth, smelling of potatoes."
                     ],

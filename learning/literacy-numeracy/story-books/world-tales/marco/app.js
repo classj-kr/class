@@ -7,9 +7,10 @@ const CHAPTERS = [
                 "art": "01-letter.webp",
                 "emoji": "📮",
                 "left": [
-                    "이탈리아 제노바에 마르코라는 아이가 살았습니다. 열세 살 난 아이였지요.",
-                    "집안 형편이 몹시 어려웠습니다. 빚이 자꾸 늘어만 갔지요.",
-                    "그래서 어머니가 바다 건너 아르헨티나로 일하러 떠났습니다. 거기서 돈을 벌어 집에 부치기로 했지요."
+                    "\"어머니, 꼭 가셔야 해요?\"",
+                    "마르코가 어머니의 치맛자락을 붙잡았습니다. 제노바 항구에는 큰 배가 떠날 채비를 하고 있었지요.",
+                    "빚만 늘어 가던 때였습니다. 어머니는 바다 건너 아르헨티나로 일하러 가는 길이었지요.",
+                    "\"돈을 벌어 꼭 부치마.\""
                 ],
                 "right": [
                     "처음에는 다달이 편지가 왔습니다. \"모두 잘 지내고 있으니 걱정 말아라.\"",
@@ -563,8 +564,9 @@ const EN = {
                     art: '01-letter.webp',
                     emoji: '✉️',
                     left: [
-                        "In Genoa, in Italy, there lived a boy called Marco. He was thirteen years old.",
-                        "Things at home were very hard. The debts kept growing.",
+                        "\"Mother, do you really have to go?\"",
+                        "Marco held on to her skirt. Down in the harbour of Genoa a great ship was getting ready to sail.",
+                        "The debts at home kept growing, and she was going across the sea to Argentina to work.",
                         "So his mother went away to a distant country, Argentina, across the sea. She would work there and send money home."
                     ],
                     right: [

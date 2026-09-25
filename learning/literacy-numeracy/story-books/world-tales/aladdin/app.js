@@ -7,8 +7,9 @@ const CHAPTERS = [
                 "art": "01-stranger.webp",
                 "emoji": "🧿",
                 "left": [
-                    "옛날 어느 도시에 알라딘이라는 소년이 살았습니다. 아버지가 일찍 세상을 떠나서 어머니와 단둘이 살았지요.",
-                    "어머니는 밤늦도록 실을 자아 겨우 끼니를 이었습니다. 그런데도 알라딘은 날마다 골목에서 놀기만 했지요. 어머니는 그런 아들을 볼 때마다 한숨을 쉬었습니다."
+                    "\"알라딘! 또 골목이야?\"",
+                    "어머니가 실패를 놓고 문밖으로 목을 뺐습니다. 알라딘은 담 위에 걸터앉아 친구들과 웃고 있었지요.",
+                    "아버지가 세상을 떠난 뒤로 어머니는 밤늦도록 실을 자아 겨우 끼니를 이었습니다. 그런데도 아들은 날마다 놀기만 했지요."
                 ],
                 "right": [
                     "그러던 어느 날, 먼 나라 옷을 입은 낯선 아저씨가 알라딘을 불러 세웠습니다.",
@@ -556,8 +557,9 @@ const EN = {
                     art: '01-stranger.webp',
                     emoji: '🧿',
                     left: [
-                        "Long ago, in a certain city, there lived a boy called Aladdin. His father had died when he was small, so he lived alone with his mother.",
-                        "His mother spun thread late into the night just to buy bread.",
+                        "\"Aladdin! In the street again?\"",
+                        "His mother put down her spindle and leaned out of the door. Aladdin sat on the wall, laughing with his friends.",
+                        "Since his father died she had spun thread late into the night just to buy bread.",
                         "Still, Aladdin played in the streets all day, and his mother sighed over him every time."
                     ],
                     right: [

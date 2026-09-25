@@ -7,9 +7,10 @@ const CHAPTERS = [
                 "art": "01-field.webp",
                 "emoji": "🌾",
                 "left": [
-                    "러시아의 어느 마을에 농부가 살았습니다. 아들이 셋 있었지요.",
-                    "큰아들과 둘째는 게으르고 시끄러웠습니다. 막내 이반은 늘 헝클어진 머리로 다녔지요.",
-                    "집에는 밀밭이 하나 있었습니다. 온 식구가 그 밀로 먹고살았지요."
+                    "\"이반! 아직도 자고 있냐!\"",
+                    "형들이 막내를 흔들어 깨웠습니다. 이반은 헝클어진 머리로 부스스 일어났지요.",
+                    "러시아의 어느 마을, 농부의 세 아들이 사는 집이었습니다.",
+                    "집에는 밀밭 하나뿐이어서 온 식구가 그 밀로 먹고살았습니다."
                 ],
                 "right": [
                     "그런데 걱정거리가 생겼습니다. 밤마다 누가 밀밭을 짓밟고 가는 것이었지요.",
@@ -564,9 +565,9 @@ const EN = {
                     art: '01-field.webp',
                     emoji: '🌾',
                     left: [
-                        "In a Russian village there lived a farmer.",
-                        "He had three sons.",
-                        "The two elder ones were lazy and loud.",
+                        "\"Ivan! Still asleep?\"",
+                        "His brothers shook the youngest awake, and Ivan sat up with his hair all in a tangle.",
+                        "It was a farmer's house in a Russian village, and the two elder sons were lazy and loud.",
                         "The youngest, Ivan, went about with his hair all in a tangle.",
                         "The family had one field of wheat.",
                         "That wheat was what they all lived on."

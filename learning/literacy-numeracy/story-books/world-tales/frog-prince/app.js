@@ -7,8 +7,9 @@ const CHAPTERS = [
                 "art": "01-ball.webp",
                 "emoji": "🟡",
                 "left": [
-                    "임금님에게는 딸이 여럿 있었는데, 그 가운데 막내 공주가 가장 예뻤습니다. 해님도 공주의 얼굴을 볼 때면 잠시 걸음을 멈춘다고 할 정도였지요.",
-                    "막내 공주가 가장 아끼는 물건은 황금 공이었습니다. 햇빛을 받으면 눈이 부시게 빛났지요. 공주는 그 공을 잠잘 때도 머리맡에 두었습니다."
+                    "공주가 황금 공을 하늘로 톡 던졌습니다. 공이 햇빛을 받아 눈부시게 빛났지요.",
+                    "\"하나, 둘, 셋!\"",
+                    "임금님의 막내딸이었습니다. 해님도 공주 얼굴을 볼 때면 걸음을 멈춘다고 할 정도였지요. 공주는 그 공을 잠잘 때도 머리맡에 두었습니다."
                 ],
                 "right": [
                     "궁궐 뒤로 나가면 깊은 숲이 있었습니다. 그 숲 한가운데에 오래된 연못이 하나 있었지요. 물이 어찌나 깊은지 바닥이 보이지 않았습니다.",
@@ -558,8 +559,9 @@ const EN = {
                     art: '01-ball.webp',
                     emoji: '🟡',
                     left: [
-                        "The king had several daughters, and the youngest was the loveliest.",
-                        "People said even the sun paused a moment when he saw her face.",
+                        "The princess tossed her golden ball up into the air, and it flashed in the sunlight.",
+                        "\"One, two, three!\"",
+                        "She was the king's youngest daughter, and people said even the sun paused a moment when he saw her face.",
                         "Her dearest thing was a golden ball.",
                         "In the sunlight it shone until it dazzled you.",
                         "She even kept it beside her pillow when she slept."
