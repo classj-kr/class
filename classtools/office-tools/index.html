@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f4ef">
+  <title>사무용 도구 · 클래스제이</title>
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div class="site-shell">
+    <header class="topbar">
+      <a class="brand" href="/classtools/" aria-label="교사 포털로 돌아가기"><span class="brand-mark">J</span><span>CLASSJ <b>OFFICE</b></span></a>
+      <a class="back-link" href="/classtools/">← 교사 포털</a>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">EVERYDAY OFFICE TOOLS <span>01 / 02</span></p>
+          <h1>자잘한 사무 작업,<br><em>여기서 끝내세요.</em></h1>
+          <p class="hero-description">도장 이미지를 만들고, 휴대폰 사진을 깔끔한 문서 스캔본으로 바꿔보세요. 파일은 이 브라우저 안에서 처리됩니다.</p>
+          <div class="hero-actions"><a class="button primary" href="#stamp">도장 만들기 <span>↗</span></a><a class="button secondary" href="#scan">사진 스캔하기 <span>↗</span></a></div>
+        </div>
+        <div class="hero-art" aria-hidden="true"><div class="paper-stack back"></div><div class="paper-stack front"><span class="paper-line wide"></span><span class="paper-line"></span><span class="paper-line short"></span><span class="hero-seal">확인</span></div><div class="hero-spark">✳</div></div>
+      </section>
+
+      <section class="tool-section" id="stamp" aria-labelledby="stamp-title">
+        <div class="section-heading"><div><p class="eyebrow">TOOL 01 <span>/ 투명 배경 PNG</span></p><h2 id="stamp-title">도장 이미지 만들기</h2><p>직접 글자를 넣거나 도장 사진을 올려 흰 배경을 투명하게 만드세요.</p></div><span class="section-icon seal-icon">印</span></div>
+        <div class="workbench">
+          <div class="controls">
+            <div class="mode-switch" role="tablist" aria-label="도장 만들기 방식"><button type="button" class="active" id="stamp-text-tab" role="tab" aria-selected="true" aria-controls="stamp-text-controls">글자로 만들기</button><button type="button" id="stamp-photo-tab" role="tab" aria-selected="false" aria-controls="stamp-photo-controls">사진 배경 제거</button></div>
+            <div id="stamp-text-controls" role="tabpanel" aria-labelledby="stamp-text-tab">
+              <label class="field"><span>도장에 넣을 글자</span><input id="stamp-name" type="text" maxlength="8" value="홍길동" placeholder="이름 또는 문구"></label>
+              <div class="field"><span>모양</span><div class="segmented" id="stamp-shapes"><button type="button" class="active" data-shape="circle">원형</button><button type="button" data-shape="square">사각형</button></div></div>
+              <div class="field"><span>색상</span><div class="color-options" id="stamp-colors"><button type="button" class="active" data-color="#b63835" style="--swatch:#b63835" aria-label="붉은색"></button><button type="button" data-color="#275d82" style="--swatch:#275d82" aria-label="푸른색"></button><button type="button" data-color="#282b31" style="--swatch:#282b31" aria-label="검은색"></button></div></div>
+              <label class="field range-field"><span>잉크 농도 <output id="stamp-opacity-value">85%</output></span><input id="stamp-opacity" type="range" min="40" max="100" value="85"></label>
+            </div>
+            <div id="stamp-photo-controls" role="tabpanel" aria-labelledby="stamp-photo-tab" hidden>
+              <label class="upload-zone" for="stamp-file"><span class="upload-icon">↑</span><strong>도장 사진 선택</strong><small>JPG, PNG, WEBP · 흰 종이에 찍은 도장이 좋아요</small><input id="stamp-file" type="file" accept="image/*" hidden></label>
+              <label class="field range-field"><span>배경 제거 강도 <output id="stamp-threshold-value">70</output></span><input id="stamp-threshold" type="range" min="20" max="140" value="70"></label>
+              <p class="hint">흰색에 가까운 배경을 지웁니다. 진한 그림자나 색종이 위의 도장은 결과가 고르지 않을 수 있어요.</p>
+            </div>
+            <button type="button" class="button primary full" id="stamp-download">투명 PNG 다운로드 <span>↓</span></button>
+          </div>
+          <div class="preview-area"><div class="preview-header"><strong>미리보기</strong><span>투명 배경</span></div><div class="checkerboard"><canvas id="stamp-canvas" width="800" height="800" aria-label="도장 이미지 미리보기"></canvas><p id="stamp-placeholder" hidden>사진을 선택하면 결과가 여기에 나타납니다.</p></div><p class="preview-note" id="stamp-status" role="status">문서에 바로 붙여 넣을 수 있는 PNG로 저장됩니다.</p></div>
+        </div>
+      </section>
+
+      <section class="tool-section" id="scan" aria-labelledby="scan-title">
+        <div class="section-heading"><div><p class="eyebrow">TOOL 02 <span>/ 문서 이미지 보정</span></p><h2 id="scan-title">사진을 스캔본처럼</h2><p>문서 사진의 네 모서리를 맞추고 복사본 느낌으로 보정하세요.</p></div><span class="section-icon scan-icon">▤</span></div>
+        <div class="workbench scan-workbench">
+          <div class="controls">
+            <div class="input-choices"><label class="upload-zone" for="scan-file"><span class="upload-icon">↑</span><strong>사진 올리기</strong><small>JPG, PNG, WEBP</small><input id="scan-file" type="file" accept="image/*" hidden></label><button type="button" class="upload-zone camera-choice" id="camera-open"><span class="upload-icon">◎</span><strong>카메라로 촬영</strong><small>휴대폰 또는 웹캠</small></button></div><div class="camera-panel" id="camera-panel" hidden><video id="camera-video" autoplay playsinline muted></video><div class="camera-actions"><button type="button" class="button primary" id="camera-capture">사진 찍기</button><button type="button" class="button secondary" id="camera-close">닫기</button></div></div>
+            <div class="field"><span>보정 스타일</span><div class="segmented scan-presets" id="scan-presets"><button type="button" class="active" data-preset="copy">복사본</button><button type="button" data-preset="bw">흑백</button><button type="button" data-preset="color">컬러</button></div></div>
+            <label class="field range-field"><span>밝기 <output id="scan-brightness-value">0</output></span><input id="scan-brightness" type="range" min="-60" max="60" value="0"></label>
+            <label class="field range-field"><span>대비 <output id="scan-contrast-value">25</output></span><input id="scan-contrast" type="range" min="-50" max="100" value="25"></label>
+            <label class="field range-field"><span>흑백 기준 <output id="scan-threshold-value">165</output></span><input id="scan-threshold" type="range" min="80" max="230" value="165"></label>
+            <label class="checkbox-field"><input id="scan-crop" type="checkbox" checked><span>네 모서리로 문서 펼치기</span></label><button type="button" class="button secondary full" id="scan-auto">문서 모서리 자동 찾기 <span>⌕</span></button>
+            <p class="hint">사진을 올린 뒤 미리보기의 파란 점을 문서 모서리에 맞춰 드래그하세요. 점을 움직이면 결과가 바로 갱신됩니다.</p>
+            <button type="button" class="button primary full" id="scan-download" disabled>스캔 PNG 다운로드 <span>↓</span></button>
+          </div>
+          <div class="preview-area"><div class="preview-header"><strong>원본 · 모서리 지정</strong><span>파란 점을 드래그</span></div><div class="scan-source" id="scan-source"><canvas id="scan-source-canvas" aria-label="원본 사진과 이동 가능한 문서 모서리"></canvas><p id="scan-empty">문서 사진을 올리면 여기에 표시됩니다.</p></div><div class="preview-header result-heading"><strong>보정 결과</strong><span id="scan-size">PNG 이미지</span></div><div class="scan-result"><canvas id="scan-result-canvas" aria-label="스캔 보정 결과"></canvas><p id="scan-result-empty">보정된 문서를 미리 볼 수 있어요.</p></div><p class="preview-note" id="scan-status" role="status">이미지는 서버에 업로드되지 않습니다.</p></div>
+        </div>
+      </section>
+      <footer><span>CLASSJ OFFICE</span><span>작은 도구가 모여 가벼운 업무가 됩니다.</span><a href="/classtools/">교사 포털로 돌아가기 ↗</a></footer>
+    </main>
+  </div>
+  <script src="./tools.js" defer></script>
+</body>
+</html>
+
