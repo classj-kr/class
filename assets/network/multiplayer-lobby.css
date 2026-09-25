@@ -587,3 +587,6 @@ body:has(#game:not(.hide) > #lobby:not(.hide)) #game .row > div:has(> #roomShare
 .mp-ui-lobby :is(.eyebrow,.kicker) { letter-spacing: 0; font-size: 13px; }
 .mp-ui-lobby .mp-ui-extra :is(.players-card,.lobby-actions) { margin-top: 12px !important; }
 .mp-ui-lobby .card-title-row > span { display: none; }
+
+/* Retire the old two-column start/roster grid on desktop as well. */
+.mp-ui-lobby.mp-ui-connected > section.panel:not(.hidden) { display: block !important; }

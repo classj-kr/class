@@ -193,7 +193,8 @@
             const brightness = value => { const c = channels(value); return (c[0] || 0) * .299 + (c[1] || 0) * .587 + (c[2] || 0) * .114; };
             const background = skin.backgroundColor === "rgba(0, 0, 0, 0)"
                 ? (brightness(skin.color) < 140 ? "#f5efdf" : "#121b27") : skin.backgroundColor;
-            root.style.setProperty("--lobby-surface", background);
+            const opaqueBackground = background.startsWith("rgb") ? `rgb(${channels(background).join(", ")})` : background;
+            root.style.setProperty("--lobby-surface", opaqueBackground);
             root.style.setProperty("--lobby-ink", background === "#f5efdf" || brightness(background) > 160 ? "#20313b" : "#edf2f5");
             root.style.setProperty("--lobby-edge", skin.borderTopColor);
             const oldNameContainer = e.savedName?.parentElement;

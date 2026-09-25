@@ -17,4 +17,4 @@
 - 공통 로비 단위·적용 검사 및 방 복구 검사 통과.
 - 모든 게임의 입장·대기실·게임 방법 스크린샷을 직접 비교했다. 전체 게임의 경기 종료까지 진행한 검증은 아니다.
 
-결과와 스크린샷은 `outputs/game-entry-ui/`, 재검사는 `outputs/game-entry-ui-recheck/`에 저장한다. 운영 검증은 같은 UI 검사에 승인된 별도 게스트 세션을 사용하고 `outputs/game-entry-ui-production/`에 기록한다. 로컬의 싱글플레이 기록 서버 안내는 로컬 DB 미설정에 따른 것이므로 운영에서 별도 확인한다.
+최종 로컬 결과는 `outputs/game-entry-ui-release/`에 저장했다(32/32 통과). 실제 방 연결 검사는 `outputs/multiplayer-lobby-check/`에 저장했다(27/27 통과). 싱글플레이 5개 모두 시작 후 게임 화면 전환·가로 넘침·실행 오류도 확인했다. 운영 검증은 같은 UI 검사에 승인된 별도 게스트 세션을 사용하고 `outputs/game-entry-ui-production/`에 기록한다. 로컬의 싱글플레이 기록 서버 안내는 로컬 DB 미설정에 따른 것이므로 운영에서 별도 확인한다.
