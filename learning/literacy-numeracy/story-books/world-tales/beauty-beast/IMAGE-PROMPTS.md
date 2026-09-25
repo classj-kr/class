@@ -26,22 +26,23 @@
 ## 공통 스타일 지시문 (모든 프롬프트 앞에 붙여서 사용하세요)
 
 ```
-Children's picture book illustration, bright cheerful cartoon-animation style,
-bold clean outlines, saturated storybook colors, warm candlelight and snowy blue
-exteriors, ABSOLUTELY NO TEXT ANYWHERE IN THE IMAGE - no letters, no words, no speech bubbles, no captions, no subtitles (the story text below is only to tell you what the scene is; never draw it), a merchant's cottage, a snowy forest,
-an enchanted castle with a rose garden and a grand library, expressive faces,
-wide panoramic composition, warm and gentle; the Beast is drawn as large, shaggy
-and sad-eyed, never frightening or monstrous.
+Children's picture book illustration, bright cheerful 2D cartoon-animation style matching Puss in Boots (장화 신은 고양이),
+bold clean outlines, saturated storybook colors, flat cel shading with warm soft lighting,
+ABSOLUTELY NO TEXT ANYWHERE IN THE IMAGE - no letters, no words, no speech bubbles, no captions, no subtitles (the story text below is only to tell you what the scene is; never draw it),
+European fairytale settings (French port town stone houses, rustic country cottage with brick fireplace, snow-covered forest, enchanted gothic castle with rose gardens),
+very expressive comic cartoon faces, cute proportions, humorous and heartwarming acting,
+ABSOLUTELY NO realistic faces, NO handsome 8-head-tall anime/manhwa models, NO scary demonic monster.
 ```
 
 ## 인물 설명 (일관성을 위해 매번 붙여 넣으세요)
 
 ```
-Belle: a girl about 15 with dark braided hair, a blue cloak and always a book in
-hand. The merchant: a kindly greying father in a worn travelling coat. The two
-elder sisters: fashionable girls in bright ruffled dresses, vain and comic. The
-Beast: a large shaggy creature with horns, a velvet coat and gentle sad eyes,
-drawn like a big awkward animal rather than a monster.
+[CHARACTERS]
+- 벨 (Belle): A sweet and lively girl (around 12-14 years old, cute 3.5-4 head proportions), round rosy cheeks, big warm expressive brown eyes, wavy warm-brown hair tied with a sky-blue ribbon. Wears a cute sky-blue country dress with a white apron, brown ankle boots. When in the cold/traveling: wears a cozy hooded sky-blue winter cloak with soft white fur trim, carrying an open or closed leather-bound storybook. Loving, brave, cheerful.
+- 야수 (The Beast): A huge, fluffy, lovable bear-lion creature with cute rounded horns, thick shaggy brown fur, and big gentle sad puppy-dog eyes! Awkward, clumsy, and shy rather than scary, wearing an oversized regal blue velvet coat with gold braid embroidery and white lace cravat.
+- 아버지 (The Merchant Father): A plump, kindly European merchant father with silver-grey hair, fluffy round grey moustache, and kind crinkly smiling eyes. Wears a worn brown woolen travelling coat with fur collar and boots.
+- 두 언니 (The Two Elder Sisters): Comical, vain, spoiled older sisters with funny dramatic cartoon expressions (pouting, gasping, whining). Wearing ridiculously overdressed, ruffled European baroque gowns (one in lemon-yellow, one in pastel-pink) with fancy feathered hairbands.
+- 변신이 풀린 왕자 (The Transformed Prince): A cute, kind-hearted young boy prince (around 13-15 years old, NOT an 8-head tall adult romance model!). Round friendly face, wavy brown hair, warm gentle eyes identical to the Beast's kind eyes, humble grateful smile. Wears a handsome blue royal tunic with gold trim.
 ```
 
 ## 표지 · 마무리
