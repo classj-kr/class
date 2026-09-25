@@ -7,29 +7,30 @@ const CHAPTERS = [
                 "art": "story-01-chores.webp",
                 "emoji": "🧹",
                 "left": [
-                    "한 소녀가 살았습니다. 어머니를 일찍 여의었지요. 아버지는 얼마 뒤 새 부인을 맞았습니다.",
-                    "그 부인에게는 딸이 둘 있었지요. 처음에는 다들 상냥했습니다. 소녀도 그제야 마음을 놓았지요.",
-                    "그런데 아버지가 그만 병이 들었습니다. 약을 써 봐도 소용이 없었지요."
+                    "옛날 어느 마을에 한 소녀가 살았습니다. 어머니는 소녀가 아주 어릴 때 세상을 떠났지요.",
+                    "아버지는 몇 해 뒤 새 부인을 맞았습니다. 새어머니에게는 딸이 둘 있었지요.",
+                    "\"이제 우리는 한 식구란다.\" 처음에는 다들 웃는 얼굴이었습니다."
                 ],
                 "right": [
-                    "소녀는 밤마다 아버지 곁을 지켰습니다. 하지만 얼마 못 가 아버지마저 세상을 떠났지요.",
-                    "장례를 치른 바로 이튿날이었습니다. 새어머니가 소녀를 불렀지요.",
-                    "\"오늘부터 부엌에서 자거라. 네 방은 언니가 쓸 거란다.\""
+                    "그런데 그해 겨울 아버지가 앓아누웠지요. 소녀는 밤마다 곁을 지켰습니다.",
+                    "\"아버지, 봄이 오면 같이 언덕에 가요.\" 아버지는 고개만 끄덕였지요.",
+                    "아버지는 그 봄을 보지 못했지요.",
+                    "장례를 치른 이튿날, 새어머니가 말했지요. \"오늘부터 부엌에서 자거라.\""
                 ]
             },
             {
                 "art": "story-01-chores-2.webp",
                 "emoji": "🧹",
                 "left": [
-                    "그날부터 소녀의 하루가 아주 달라졌습니다. 새벽에 일어나 우물에서 물을 길었지요. 아침에는 아궁이에 불을 지폈습니다.",
-                    "낮에는 마루를 닦고 저녁에는 그릇을 씻었지요. 그동안 언니들은 빈둥빈둥 놀기만 했습니다.",
-                    "밤이 되어서야 겨우 자리에 앉을 수 있었지요. 잠자리는 벽난로 옆이었습니다."
+                    "\"물 길어 와라!\" \"불 지펴라!\" \"마루 닦아라!\"",
+                    "새벽부터 밤까지 소녀를 부르는 소리가 그치지 않았습니다. 언니들은 늦잠을 자고 일어나 하품만 했지요.",
+                    "소녀가 겨우 앉는 때는 밤이었습니다. 잠자리는 부뚜막 옆, 재가 아직 따뜻한 자리였지요."
                 ],
                 "right": [
-                    "집에서 따뜻한 곳이라고는 거기뿐이었거든요. 그러다 보니 옷자락에 늘 재가 묻었습니다.",
-                    "언니들은 그걸 보고 소녀를 '신데렐라'라고 불렀지요. 재투성이라는 뜻이었습니다.",
-                    "\"신데렐라, 물 좀 떠 와!\"",
-                    "이제 진짜 이름을 부르는 사람은 아무도 없었습니다."
+                    "그러다 보니 치마 자락에 늘 재가 묻었습니다.",
+                    "\"얘, 쟤 좀 봐. 온몸이 재투성이야!\"",
+                    "\"그럼 이름도 재투성이로 하자. 신데렐라!\"",
+                    "언니들이 깔깔 웃었지요. 그날부터 아무도 소녀의 진짜 이름을 부르지 않았습니다."
                 ]
             }
         ]
@@ -42,29 +43,29 @@ const CHAPTERS = [
                 "art": "story-02-invite.webp",
                 "emoji": "💌",
                 "left": [
-                    "어느 날 심부름꾼이 대문을 두드렸습니다. 손에 금빛 초대장을 들고 있었지요.",
-                    "\"궁궐에서 무도회를 엽니다! 왕자님이 신붓감을 찾으신대요. 이 집 아가씨들도 오십시오.\"",
-                    "그 말에 집 안이 발칵 뒤집혔습니다."
+                    "어느 날 아침, 대문이 쿵쿵 울렸습니다.",
+                    "\"궁궐에서 소식이오! 보름날 무도회가 열립니다. 왕자님이 신붓감을 고르신답니다!\"",
+                    "심부름꾼이 금빛 초대장을 놓고 갔지요. 그 길로 집 안이 발칵 뒤집혔습니다."
                 ],
                 "right": [
-                    "언니들은 그날로 새 옷을 맞췄지요. 그러고는 사흘 내내 거울 앞을 떠나지 않았습니다.",
-                    "\"얘, 이리 와서 내 리본부터 매 줘!\"",
-                    "\"아니야, 내 머리를 먼저 올려 줘야지!\"",
-                    "둘이 양쪽에서 신데렐라를 잡아끌었습니다. 신데렐라는 언니들 머리를 빗겨 주었지요. 등 뒤 단추도 하나하나 채워 주었습니다."
+                    "\"내 옷은 분홍 비단으로 맞출 거야!\"",
+                    "\"난 파랑! 신데렐라, 이리 와서 이것부터 매 줘!\"",
+                    "\"아니야, 내 머리가 먼저야!\"",
+                    "언니들이 양쪽에서 잡아당겼습니다. 신데렐라는 사흘 내내 머리를 빗기고 단추를 채웠지요."
                 ]
             },
             {
                 "art": "story-02-invite-2.webp",
                 "emoji": "💌",
                 "left": [
-                    "신데렐라도 무도회에 가고 싶었습니다. 무도회 날 아침, 용기를 내어 물었지요. \"저도 가 보면 안 될까요?\"",
-                    "언니들이 배를 잡고 깔깔 웃었습니다. \"네가? 그 재투성이 꼴로?\"",
-                    "새어머니는 잠시 신데렐라를 바라봤지요."
+                    "무도회 날 아침이었습니다. 신데렐라가 언니들 뒤에서 조그맣게 물었지요.",
+                    "\"저도… 가 보면 안 될까요?\"",
+                    "언니들이 배를 잡고 웃었습니다. \"재투성이가 궁궐에 간대!\" \"부뚜막이나 지키시지!\""
                 ],
                 "right": [
-                    "그러더니 말없이 마당으로 나가 콩 자루를 와르르 쏟았습니다.",
-                    "\"저녁까지 이걸 다 골라 놓아라. 그러면 생각해 보마.\"",
-                    "하지만 해가 기울자 새어머니와 언니들은 마차를 타고 떠나 버렸지요. 집에는 신데렐라 혼자만 남았습니다."
+                    "새어머니는 잠깐 신데렐라를 보더니 마당으로 나갔습니다. 그러고는 콩 자루를 와르르 쏟았지요.",
+                    "\"저녁까지 다 골라 놓으면 생각해 보마.\"",
+                    "해가 기울 무렵 마차 바퀴 소리가 멀어졌습니다. 마당에는 콩과 신데렐라만 남았지요."
                 ]
             }
         ]
@@ -77,27 +78,30 @@ const CHAPTERS = [
                 "art": "story-03-magic.webp",
                 "emoji": "🪄",
                 "left": [
-                    "콩은 아무리 골라도 좀처럼 줄지 않았습니다. 손끝이 얼얼하고 허리도 아팠지요. 그러는 사이 해가 뉘엿뉘엿 넘어갔습니다.",
-                    "마차 소리는 이미 멀어진 지 오래였지요. 신데렐라는 그만 마당에 주저앉았습니다. 눈물이 콩 위로 뚝뚝 떨어졌지요."
+                    "콩은 골라도 골라도 줄지 않았습니다. 손끝이 얼얼하고 허리가 뻐근했지요.",
+                    "어느새 하늘이 붉어졌습니다. 마차 소리는 이미 멀어진 뒤였지요.",
+                    "신데렐라는 그만 마당에 주저앉았지요. 눈물이 콩 위로 뚝뚝 떨어졌습니다."
                 ],
                 "right": [
-                    "그때 등 뒤에서 목소리가 들렸습니다. \"얘야, 왜 울고 있니?\"",
-                    "돌아보니 낯선 할머니가 서 있었지요. 보드라운 보랏빛 망토를 두른 할머니였습니다. 신데렐라는 사정을 하나하나 털어놓았지요.",
-                    "이야기를 다 들은 할머니가 빙그레 웃었습니다."
+                    "\"얘야, 왜 울고 있니?\"",
+                    "돌아보니 지팡이를 짚은 할머니가 서 있었습니다. 처음 보는 할머니였지요.",
+                    "신데렐라가 훌쩍이며 사정을 말하자 할머니가 빙그레 웃었습니다.",
+                    "\"울 시간이 없구나. 마당에서 제일 큰 호박을 가져오렴.\""
                 ]
             },
             {
                 "art": "story-03-magic-2.webp",
                 "emoji": "🪄",
                 "left": [
-                    "\"자, 마당의 호박을 하나 가져오렴.\"",
-                    "신데렐라가 호박을 가져오자 할머니의 지팡이가 휙 움직였습니다.",
-                    "그러자 호박이 부풀어 오르더니 반짝이는 마차가 되었지요. 쥐구멍에서 나온 생쥐 여섯 마리는 새하얀 말이 되었습니다. 담장 밑 도마뱀은 마부가 되었지요."
+                    "신데렐라가 호박을 데굴데굴 굴려 왔습니다. 할머니가 지팡이를 한 번 휘둘렀지요.",
+                    "펑!",
+                    "호박이 부풀고 또 부풀더니 반짝이는 마차가 되었습니다. 바퀴에서 금빛이 돌았지요. 신데렐라는 입을 다물지 못했습니다."
                 ],
                 "right": [
-                    "이번에는 지팡이가 신데렐라를 가리켰습니다. 해진 옷이 눈부신 옷으로 바뀌었지요. 발에는 유리 구두가 신겨졌습니다.",
-                    "\"참, 한 가지만 기억하렴. 자정이 되면 마법이 다 풀린단다.\"",
-                    "\"네, 꼭 지킬게요!\" 신데렐라는 마차에 올라 궁궐로 달려갔지요."
+                    "\"이번에는 쥐덫을 가져오렴.\"",
+                    "생쥐 여섯 마리가 튀어나오자 찍찍 소리가 히힝 소리로 바뀌었지요. 도마뱀은 마부가 되었습니다.",
+                    "지팡이가 신데렐라를 가리키자 해진 옷이 눈부신 옷이 되고 유리 구두가 신겼지요.",
+                    "\"자정이 되면 마법이 풀린단다.\""
                 ]
             }
         ]
@@ -110,28 +114,30 @@ const CHAPTERS = [
                 "art": "story-04-ball.webp",
                 "emoji": "💃",
                 "left": [
-                    "무도회장 문이 열렸습니다. 그 순간 음악이 뚝 그쳤지요. 사람들이 고개를 돌려 수군거렸습니다. \"어느 나라 공주님이시래?\"",
-                    "언니들도 신데렐라를 알아보지 못했지요. 바로 옆에 서서 수군거리기까지 했습니다. \"저런 옷은 어디서 맞췄을까?\""
+                    "무도회장 문이 활짝 열렸습니다. 그 순간 음악이 뚝 그쳤지요.",
+                    "\"저 아가씨는 누구지?\" \"어느 나라 공주님이신가?\"",
+                    "사람들이 길을 비키며 수군거렸습니다. 언니들도 바로 옆에서 목을 길게 뺐지요."
                 ],
                 "right": [
-                    "그때 왕자가 사람들 사이를 지나 곧장 걸어왔지요. \"저와 춤추시겠습니까?\"",
-                    "두 사람은 밤이 깊도록 춤을 췄습니다. 왕자가 어느 나라에서 왔는지, 이름이 무엇인지 물었지요.",
-                    "그때마다 신데렐라는 웃기만 했습니다. 부엌데기 신데렐라라고 밝힐 수는 없었으니까요."
+                    "\"저런 옷은 어디서 맞췄을까?\"",
+                    "언니들은 끝내 알아보지 못했습니다.",
+                    "그때 왕자가 사람들 사이를 지나 곧장 걸어왔지요.",
+                    "\"저와 춤추시겠습니까?\" 신데렐라는 숨을 한 번 고르고 손을 내밀었습니다."
                 ]
             },
             {
                 "art": "story-04-ball-2.webp",
                 "emoji": "💃",
                 "left": [
-                    "시간이 어찌나 빨리 가는지 몰랐습니다. 그때 궁궐 시계가 울리기 시작했지요.",
-                    "뎅— 뎅— 뎅—",
-                    "신데렐라의 얼굴이 하얘졌습니다. \"이런, 벌써 자정이에요!\"",
-                    "신데렐라는 잡고 있던 손을 놓았습니다."
+                    "두 사람은 춤을 추고 또 추었습니다.",
+                    "\"이름이 어떻게 되시나요?\" \"어느 댁에서 오셨습니까?\"",
+                    "왕자가 물을 때마다 신데렐라는 웃기만 했지요. 부엌데기라고 말할 수는 없었으니까요."
                 ],
                 "right": [
-                    "그러고는 그대로 계단을 뛰어 내려갔지요. 왕자가 뒤를 쫓았습니다. \"잠깐만요! 이름이라도!\"",
-                    "계단 중간쯤에서 구두 한 짝이 벗겨졌지만 주울 틈이 없었지요.",
-                    "문밖으로 나서니 마차는 이미 호박이 되어 있었습니다. 신데렐라는 남은 구두 한 짝을 품에 안고 집까지 달렸지요."
+                    "그때 궁궐 시계가 울렸습니다. 뎅— 뎅— 뎅—",
+                    "\"어머, 자정이에요!\"",
+                    "신데렐라는 계단을 뛰어 내려갔습니다. 중간에서 유리 구두 한 짝이 벗겨졌지만 주울 틈이 없었지요.",
+                    "문밖에는 마차 대신 호박이 굴러 있었지요. 신데렐라는 남은 한 짝을 품에 안고 달렸습니다."
                 ]
             }
         ]
@@ -144,28 +150,29 @@ const CHAPTERS = [
                 "art": "story-05-search.webp",
                 "emoji": "🔍",
                 "left": [
-                    "왕자가 계단에 멈춰 섰습니다. 발치에 구두 한 짝이 놓여 있었지요.",
-                    "유리로 만든 아주 작은 구두였습니다. 불빛에 비추자 안이 훤히 들여다보였지요.",
-                    "\"이름을 끝내 못 들었구나.\""
+                    "\"잠깐만요, 이름이라도!\" 왕자가 계단 중간에서 멈춰 섰습니다.",
+                    "발치에 유리 구두 한 짝이 놓여 있었지요. 손바닥에 올려 보니 어찌나 작은지요.",
+                    "왕자는 구두를 한참 들여다봤습니다. \"이름도 끝내 못 들었구나.\""
                 ],
                 "right": [
-                    "왕자는 신하들을 불러 모았지요. \"온 나라를 다 돌아라. 이 구두가 맞는 이를 찾아오너라.\"",
-                    "신하들이 그날로 구두를 비단 방석에 얹어 길을 나섰습니다. 집집마다 문을 두드리니 어느 집에서나 소동이 났지요.",
-                    "\"저요! 제 발이 딱 맞아요!\" 하지만 구두는 아무에게도 맞지 않았지요."
+                    "이튿날 아침, 신하들이 나팔을 불며 마을로 나섰습니다.",
+                    "\"왕자님의 명이오! 이 구두가 맞는 아가씨를 찾는다!\"",
+                    "구두는 비단 방석에 얹혀 집집마다 돌았지요. 대문마다 아가씨들이 우르르 몰려나왔습니다."
                 ]
             },
             {
                 "art": "story-05-search-2.webp",
                 "emoji": "🔍",
                 "left": [
-                    "발이 큰 사람도 신어 봤습니다. 발이 작은 사람도 신어 봤지요.",
-                    "억지로 밀어 넣는 사람도 있었습니다. 발가락을 잔뜩 오므린 사람도 있었지요.",
-                    "뒤꿈치를 슬쩍 든 사람도 있었습니다. 그래도 구두는 꿈쩍도 하지 않았지요."
+                    "\"저요! 제 발이 딱 맞아요!\"",
+                    "발이 큰 아가씨가 힘껏 밀어 넣었습니다. 발가락을 잔뜩 오므린 아가씨도 있었지요. 뒤꿈치를 슬쩍 든 아가씨도 있었습니다.",
+                    "그래도 구두는 꿈쩍하지 않았지요."
                 ],
                 "right": [
-                    "유리라서 억지로 밀면 깨질 것 같았습니다. 그렇게 여러 날이 지났지요. 신하들도 슬슬 지쳐 갔습니다.",
-                    "신하 하나가 말했습니다. \"이제 저 집이 마지막입니다.\"",
-                    "마차가 좁은 골목으로 들어섰습니다. 그러고는 낡은 대문 앞에 멈춰 섰지요. 바로 신데렐라의 집이었습니다."
+                    "유리라서 억지로 밀면 깨질 것 같았습니다.",
+                    "그렇게 여러 날이 지나자 신하들도 지쳐 갔지요.",
+                    "\"이제 저 집이 마지막입니다.\"",
+                    "마차가 좁은 골목으로 들어섰습니다. 낡은 대문 앞에 멈춰 섰지요. 바로 신데렐라의 집이었습니다."
                 ]
             }
         ]
@@ -178,28 +185,30 @@ const CHAPTERS = [
                 "art": "story-06-fit.webp",
                 "emoji": "👠",
                 "left": [
-                    "언니들이 소식을 듣고 먼저 달려 나왔습니다. 큰언니가 얼른 의자에 앉아 구두에 발을 넣었지요.",
-                    "그런데 발끝이 걸려 들어가지 않았습니다. 얼굴이 벌게지도록 밀어 넣었지요. \"조금만 더, 조금만 더!\"",
-                    "결국 큰언니는 포기하고 말았습니다."
+                    "언니들이 맨발로 달려 나왔습니다. 큰언니가 냉큼 의자에 앉았지요.",
+                    "\"조금만, 조금만 더!\"",
+                    "얼굴이 벌게지도록 밀어 넣었지만 발끝이 걸려 들어가지 않았습니다. 신하가 고개를 저었지요."
                 ],
                 "right": [
-                    "이번에는 둘째가 자리에 앉았지요. 앞은 들어갔는데 뒤꿈치가 도무지 들어가지 않았습니다.",
-                    "둘째가 발을 동동 굴렀지요. \"이 구두가 잘못 만들어졌어요!\"",
-                    "신하가 짐을 챙기다 말고 물었습니다. \"이 집에 또 없습니까?\""
+                    "이번에는 둘째가 앉았습니다. 앞은 들어갔는데 뒤꿈치가 남았지요.",
+                    "\"이 구두가 잘못 만들어졌어요!\"",
+                    "둘째가 발을 동동 굴렀습니다. 신하가 짐을 챙기다 말고 물었지요.",
+                    "\"이 집에 아가씨가 또 없습니까?\""
                 ]
             },
             {
                 "art": "story-06-fit-2.webp",
                 "emoji": "👠",
                 "left": [
-                    "새어머니가 얼른 손사래를 쳤습니다. \"부엌데기 하나뿐이지요.\"",
-                    "신하가 말했습니다. \"그 아이도 불러 주십시오.\"",
-                    "이윽고 신데렐라가 부엌에서 나왔습니다. 손에는 아직 재가 묻어 있었지요. 언니들은 도로 들어가라고 눈을 흘겼습니다."
+                    "새어머니가 얼른 손사래를 쳤습니다.",
+                    "\"부엌데기 하나뿐이에요. 부를 것 없습니다.\"",
+                    "\"한 사람도 빠뜨리지 말라 하셨습니다.\"",
+                    "이윽고 부엌문이 열렸습니다. 신데렐라의 손에는 아직 재가 묻어 있었지요."
                 ],
                 "right": [
-                    "신하가 의자를 내주었습니다. 신데렐라가 발을 넣자 구두가 쏙 들어갔지요. 꼭 맞춘 듯이 알맞았습니다.",
+                    "신데렐라가 의자에 앉아 발을 넣자 구두가 쏙 들어갔습니다.",
                     "방 안이 물을 끼얹은 듯 조용해졌지요. 새어머니의 얼굴이 하얗게 질렸습니다.",
-                    "그때 신데렐라가 품에서 무언가를 꺼냈습니다. 나머지 한 짝이었지요. 언니들은 서로 얼굴만 쳐다봤습니다."
+                    "그때 신데렐라가 앞치마 주머니에서 무언가를 꺼냈지요. 나머지 한 짝이었습니다."
                 ]
             }
         ]
@@ -212,26 +221,28 @@ const CHAPTERS = [
                 "art": "story-07-wedding.webp",
                 "emoji": "💍",
                 "left": [
-                    "신데렐라를 태운 마차가 궁궐로 향했습니다. 왕자가 문 앞에 나와 서 있었지요. \"그날 밤 이름을 못 들었네요.\"",
-                    "\"신데렐라예요. 재투성이라는 뜻이지요.\"",
-                    "왕자가 고개를 저었습니다. \"부끄러운 이름은 아닙니다.\""
+                    "마차가 궁궐 앞에 섰습니다. 왕자가 계단을 뛰어 내려왔지요.",
+                    "\"그날 밤 이름을 끝내 못 들었습니다.\"",
+                    "신데렐라가 잠깐 망설이다 말했습니다. \"신데렐라예요. 재투성이라는 뜻이지요.\""
                 ],
                 "right": [
-                    "\"저도 그렇게 생각해요. 이제는 부끄럽지 않아요.\"",
-                    "두 사람은 나란히 걸어 들어갔지요. 뜰에는 봄꽃이 한창이었습니다. 그날 혼례 날짜가 정해졌지요."
+                    "왕자가 고개를 저었습니다. \"부끄러운 이름이 아닙니다.\"",
+                    "\"저도 이제 그렇게 생각해요.\"",
+                    "두 사람은 나란히 뜰을 걸었습니다. 뜰에는 봄꽃이 한창이었지요. 그날 혼례 날짜가 정해졌습니다."
                 ]
             },
             {
                 "art": "story-07-wedding-2.webp",
                 "emoji": "💍",
                 "left": [
-                    "궁궐에서 혼례 잔치가 열렸습니다. 온 마을 사람이 초대를 받았지요.",
-                    "그런데 문가에 두 사람이 서 있었습니다. 들어오지도 가지도 못한 채였지요. 언니들이었습니다.",
-                    "둘은 고개를 푹 숙이고 있었지요. 차마 안으로 들어설 엄두가 나지 않았거든요."
+                    "혼례 날, 궁궐 마당에 온 마을 사람이 모였습니다. 북소리와 나팔 소리가 울렸지요.",
+                    "그런데 문가에 두 사람이 서 있었습니다. 들어오지도 가지도 못한 채였지요.",
+                    "언니들이었습니다. 둘은 고개를 푹 숙이고 있었습니다."
                 ],
                 "right": [
-                    "그때 신데렐라가 다가가 언니들의 손을 잡아 주었지요. \"지난 일은 그만해요. 오늘은 같이 웃어요.\"",
-                    "언니들의 눈이 붉어졌습니다. 그날 잔치의 웃음소리는 밤늦도록 이어졌지요."
+                    "그때 신데렐라가 다가가 언니들의 손을 잡았지요.",
+                    "\"지난 일은 그만해요. 오늘은 같이 웃어요.\"",
+                    "언니들의 눈이 붉어졌습니다. 북소리가 다시 울리고, 그날 궁궐의 웃음소리는 밤늦도록 이어졌지요."
                 ]
             }
         ],
@@ -532,29 +543,30 @@ const EN = {
                     emoji: '🧹',
                     left: [
                         "There was once a girl who lost her mother when she was very small. Before long her father married again.",
-                        "His new wife had two daughters of her own. At first everyone was kind, and the girl let herself feel safe.",
-                        "But then her father fell ill. No medicine did him any good."
+                        "His new wife had two daughters of her own.",
+                        "\"We are all one family now.\" At first everyone smiled."
                     ],
                     right: [
-                        "Night after night the girl sat beside him. But before long her father died too.",
-                        "The day after the funeral her stepmother called her in.",
-                        "\"From tonight you sleep in the kitchen. Your room is for your sister now.\""
+                        "But that winter her father fell ill. No medicine did him any good.",
+                        "Night after night the girl changed the cloth on his forehead. \"Father, when spring comes we will walk up the hill together.\"",
+                        "He only nodded, and he did not live to see that spring.",
+                        "The day after the funeral her stepmother called her in. \"From tonight you sleep in the kitchen.\""
                     ]
                 },
                 {
                     art: 'story-01-chores-2.webp',
                     emoji: '🧹',
                     left: [
-                        "From that day her life changed. She rose before dawn to draw water from the well.",
-                        "In the morning she lit the fire. By day she scrubbed the floors, and at night she washed the dishes.",
+                        "\"Fetch the water!\" \"Light the fire!\" \"Scrub the floors!\"",
+                        "From dawn till dark somebody was calling her. She rose before dawn to draw water from the well. By day she scrubbed the floors.",
                         "Her sisters just idled about.",
-                        "At last, at night, she could sit down. Her bed was beside the fireplace."
+                        "Only at night could she sit down, on the hearth where the ashes were still warm."
                     ],
                     right: [
-                        "It was the only warm place in the whole house, so there were always ashes on her skirts.",
-                        "So her sisters called her \"Cinderella\". It meant the girl in the ashes.",
-                        "\"Cinderella, fetch me some water!\"",
-                        "After that, no one used her real name at all."
+                        "There were always ashes on her skirts.",
+                        "\"Look at her! She is covered in cinders!\"",
+                        "\"Then let us call her Cinderella — the girl in the ashes!\"",
+                        "The sisters laughed and laughed. After that, no one used her real name at all."
                     ]
                 }
             ]
@@ -567,30 +579,29 @@ const EN = {
                     art: 'story-02-invite.webp',
                     emoji: '💌',
                     left: [
-                        "One day a messenger knocked at the gate. In his hand was a gold invitation.",
-                        "\"There is to be a ball at the palace! The prince is looking for a bride. The young ladies of this house are invited.\"",
-                        "At that the whole house turned upside down."
+                        "One day a messenger knocked at the gate, loud enough to shake it.",
+                        "\"There is to be a ball at the palace! The prince is looking for a bride!\"",
+                        "He left a gold invitation, and the whole house turned upside down."
                     ],
                     right: [
-                        "The sisters had new gowns made that very day. For three days they hardly left the mirror.",
-                        "\"You there, come and tie my ribbon first!\" cried one.",
-                        "\"No, do my hair first!\" cried the other.",
-                        "They pulled Cinderella from both sides. She combed their hair and did up every button down their backs."
+                        "\"Mine shall be pink silk!\"",
+                        "\"Mine blue! Cinderella, come and tie this first!\"",
+                        "\"No — my hair comes first!\"",
+                        "The sisters had new gowns made that very day. For three days Cinderella combed and buttoned and tied."
                     ]
                 },
                 {
                     art: 'story-02-invite-2.webp',
                     emoji: '💌',
                     left: [
-                        "Cinderella wanted to go to the ball too. On the morning of the ball, she gathered her courage and asked.",
-                        "\"Might I go too?\"",
-                        "Her sisters laughed till they held their sides. \"You? Covered in ash like that?\"",
-                        "Her stepmother looked at her for a moment."
+                        "On the morning of the ball she gathered her courage and asked.",
+                        "\"Could I... could I go too?\"",
+                        "Her sisters laughed till they held their sides. \"Cinderella at the palace!\""
                     ],
                     right: [
-                        "Then, without a word, she went out to the yard. She tipped a sack of beans all over the ground.",
-                        "\"Sort every one of these by evening. Then I shall think about it.\"",
-                        "But as the sun went down, the stepmother and the sisters rode away in the carriage. Cinderella was left alone in the house."
+                        "Her stepmother looked at her a moment, then went out to the yard. She tipped a sack of beans all over the ground.",
+                        "\"Sort every one of these by evening, and I will think about it.\"",
+                        "By sunset the wheels had rolled away down the road. Only the beans and Cinderella were left."
                     ]
                 }
             ]
@@ -603,29 +614,30 @@ const EN = {
                     art: 'story-03-magic.webp',
                     emoji: '🪄',
                     left: [
-                        "However long she sorted, the beans never seemed to grow fewer. Her fingertips stung and her back ached, and all the while the sun sank lower.",
-                        "The sound of the carriage had faded long ago. Cinderella sat down in the middle of the yard, and her tears fell on the beans."
+                        "However many she sorted, the pile hardly grew smaller. Her fingertips stung and her back ached.",
+                        "The sound of the carriage had faded long ago.",
+                        "The sky turned red, and Cinderella sat down in the middle of the yard. Her tears fell on the beans."
                     ],
                     right: [
-                        "Then a voice came from behind her.",
                         "\"Child, why are you crying?\"",
-                        "She turned and saw an old woman she did not know, wrapped in a soft purple cloak. Cinderella told her everything, from the beginning.",
-                        "When she had heard it all, the old woman smiled."
+                        "An old woman she did not know, wrapped in a soft purple cloak, stood leaning on a stick.",
+                        "Cinderella told her everything, and the old woman smiled.",
+                        "\"There is no time for tears. Fetch me the biggest pumpkin in the yard.\""
                     ]
                 },
                 {
                     art: 'story-03-magic-2.webp',
                     emoji: '🪄',
                     left: [
-                        "\"Now then, fetch me a pumpkin from the yard.\"",
-                        "Cinderella brought one, and the old woman's wand gave a flick.",
-                        "The pumpkin swelled and swelled into a shining carriage. Six mice from a mousehole became six white horses.",
-                        "A lizard from under the wall became a coachman."
+                        "Cinderella rolled a pumpkin over. The old woman's wand gave a flick.",
+                        "Pop!",
+                        "The pumpkin swelled and swelled until it stood there as a shining carriage. Cinderella could not shut her mouth."
                     ],
                     right: [
-                        "Then the wand pointed at Cinderella. Her rags became a dazzling gown, and on her feet were glass slippers.",
-                        "\"Remember one thing,\" said the old woman. \"At midnight all the magic ends.\"",
-                        "\"I will remember. I promise!\" Cinderella climbed into the carriage and rode off to the palace."
+                        "\"Now bring me the mousetrap.\"",
+                        "Six mice came out, and their squeaking turned to neighing. A lizard from under the wall became a coachman.",
+                        "Last of all the wand pointed at Cinderella. Her rags became a dazzling gown, and on her feet were glass slippers.",
+                        "\"At midnight the magic ends.\""
                     ]
                 }
             ]
@@ -638,30 +650,30 @@ const EN = {
                     art: 'story-04-ball.webp',
                     emoji: '💃',
                     left: [
-                        "The doors of the ballroom opened. The music stopped short, and every head in the room turned.",
-                        "\"Which country is that princess from?\"",
-                        "Even her sisters did not know her. They stood right beside her, whispering.",
-                        "\"Wherever did she have that gown made?\""
+                        "The doors of the ballroom opened. The music stopped short.",
+                        "\"Who is she?\" \"A princess from some other land?\"",
+                        "People stepped aside, and her own sisters craned their necks beside her."
                     ],
                     right: [
-                        "Then the prince came through the crowd and walked straight up to her. \"Will you dance with me?\"",
-                        "They danced far into the night. The prince asked where she came from and what her name was.",
-                        "Each time, Cinderella only smiled. She could not tell him she was only the kitchen girl."
+                        "\"Where did she have that gown made?\"",
+                        "They stood right beside her, whispering, and never knew her.",
+                        "Then the prince came through the crowd.",
+                        "\"Will you dance with me?\" Cinderella took a breath and gave him her hand."
                     ]
                 },
                 {
                     art: 'story-04-ball-2.webp',
                     emoji: '💃',
                     left: [
-                        "She had no idea how fast the hours were going. Then the palace clock began to strike.",
-                        "Dong — dong — dong —",
-                        "The colour went out of her face. \"Oh no, it's midnight already!\"",
-                        "Cinderella let go of the prince's hand."
+                        "They danced far into the night.",
+                        "\"What is your name?\" \"Whose house do you come from?\"",
+                        "Every time he asked, Cinderella only smiled. She could not say she was the girl from the kitchen."
                     ],
                     right: [
-                        "Away she ran, straight down the stairs. The prince ran after her. \"Wait! At least tell me your name!\"",
-                        "Halfway down, one slipper came off her foot, but there was no time to pick it up.",
-                        "Outside, the carriage was already a pumpkin. Holding the other slipper tight, she ran all the way home."
+                        "Then the palace clock began to strike. Dong — dong — dong —",
+                        "\"Oh no — it's midnight already!\"",
+                        "Cinderella let go of the prince's hand and ran down the steps. One slipper came off her foot, and there was no time to pick it up.",
+                        "Outside there was no carriage, only a pumpkin. She held the other slipper close and ran all the way home."
                     ]
                 }
             ]
@@ -674,29 +686,29 @@ const EN = {
                     art: 'story-05-search.webp',
                     emoji: '🔍',
                     left: [
-                        "The prince stopped on the stairs. There at his feet lay a single slipper.",
-                        "It was made of glass, and it was very small. When he held it up to the light, he could see clean through it.",
-                        "\"And I never did learn her name,\" he said."
+                        "\"Wait! Your name at least!\" The prince halted on the steps.",
+                        "A glass slipper lay at his feet. In his palm it was so small, and he could see clean through it.",
+                        "\"And I never even heard her name.\""
                     ],
                     right: [
-                        "He called his men together. \"Go through the whole kingdom. Find the one this slipper fits.\"",
-                        "That same day they set out with the slipper on a silk cushion.",
-                        "They knocked at every door, and at every house there was an uproar.",
-                        "\"Me! My foot fits it exactly!\" But the slipper fitted nobody at all."
+                        "Next morning his men went out with trumpets. \"By the prince's order! Go through the whole kingdom!\"",
+                        "They set out with the slipper on a silk cushion and knocked at every door.",
+                        "At every house there was an uproar, with young ladies crowding out into the street."
                     ]
                 },
                 {
                     art: 'story-05-search-2.webp',
                     emoji: '🔍',
                     left: [
-                        "Big feet tried it. Small feet tried it.",
-                        "Some pushed and forced. Some curled their toes up tight.",
-                        "Some lifted their heels a little, hoping no one would see. Still the slipper would not give."
+                        "\"Me! It fits me, I am sure of it!\"",
+                        "Some pushed and forced. Some curled their toes up tight. Some lifted their heels a little.",
+                        "Still the slipper would not go on."
                     ],
                     right: [
-                        "It was glass, after all, and it might crack if anyone pushed too hard.",
-                        "Days went by, and the men grew tired. At last one of them said, \"That house there is the last one.\"",
-                        "The carriage turned into a narrow lane and stopped in front of an old gate. It was Cinderella's house."
+                        "It might crack if anyone pushed too hard.",
+                        "Day after day went by, and the men grew tired.",
+                        "\"That house is the last one, sir.\"",
+                        "The carriage turned into a narrow lane and stopped at an old gate. It was Cinderella's house."
                     ]
                 }
             ]
@@ -709,29 +721,29 @@ const EN = {
                     art: 'story-06-fit.webp',
                     emoji: '👠',
                     left: [
-                        "The sisters heard the news and came running first. The elder one sat down and put her foot into the slipper.",
-                        "But her toes caught at the opening and would not go in. She pushed until her face went red.",
-                        "\"Just a little more, a little more!\"",
-                        "In the end she had to give it up."
+                        "The sisters heard the news and came running first. The eldest sat down at once.",
+                        "\"A little more — just a little more!\"",
+                        "She pushed till her face went red. Her toes caught at the opening. In the end she had to give it up."
                     ],
                     right: [
-                        "Then the younger sister sat down. The front of her foot went in, but her heel simply would not.",
-                        "She stamped her feet. \"This slipper was made wrong!\"",
-                        "The man was packing up when he stopped and asked, \"Is there no one else in this house?\""
+                        "Then the second sat down. The front went in, but her heel stayed out.",
+                        "\"This slipper was made wrong!\" she cried, stamping her foot.",
+                        "The man was packing up when he stopped and asked.",
+                        "\"Is there no other young lady in this house?\""
                     ]
                 },
                 {
                     art: 'story-06-fit-2.webp',
                     emoji: '👠',
                     left: [
-                        "Her stepmother waved her hands quickly. \"There is only the kitchen girl.\"",
-                        "\"Then please call her too,\" said the man.",
-                        "So Cinderella came out of the kitchen, with ashes still on her hands. Her sisters glared at her to go back in."
+                        "Her stepmother waved her hands quickly. \"Only the kitchen girl. There is no need to call her.\"",
+                        "\"We are to leave no one out.\"",
+                        "Then the kitchen door opened. There were still ashes on Cinderella's hands."
                     ],
                     right: [
-                        "The man set out the chair. Cinderella put in her foot, and the slipper slid on as if it had been made for her.",
-                        "The room went as quiet as still water. Her stepmother's face turned white.",
-                        "Then Cinderella took the other slipper out of her pocket. The sisters could only stare at each other."
+                        "She sat down and put in her foot. The slipper slid on as if it had been made for her.",
+                        "The room went as quiet as still water, and her stepmother's face turned white.",
+                        "Then Cinderella took something from her apron pocket — the other slipper. The sisters could only stare at each other."
                     ]
                 }
             ]
@@ -744,28 +756,28 @@ const EN = {
                     art: 'story-07-wedding.webp',
                     emoji: '💍',
                     left: [
-                        "The carriage took Cinderella to the palace. The prince was waiting at the door.",
-                        "\"That night I never learned your name.\"",
-                        "\"It is Cinderella. It means the girl in the ashes.\"",
-                        "The prince shook his head. \"There is nothing shameful in that name.\""
+                        "The carriage drew up at the palace, and the prince came running down the steps.",
+                        "\"That night I never heard your name.\"",
+                        "She hesitated, then said, \"Cinderella. It means the girl in the ashes.\""
                     ],
                     right: [
-                        "\"I think so too,\" said Cinderella. \"I am not ashamed of it any more.\"",
-                        "The two of them walked in side by side. The garden was full of spring flowers.",
-                        "And that day the wedding was set."
+                        "The prince shook his head. \"There is nothing shameful in that name.\"",
+                        "\"I think so too, now.\"",
+                        "The two of them walked in side by side, through a garden full of spring flowers. And that day the wedding was set."
                     ]
                 },
                 {
                     art: 'story-07-wedding-2.webp',
                     emoji: '💍',
                     left: [
-                        "There was a great feast at the palace for the whole village.",
-                        "But two people stood by the door. It was the sisters.",
-                        "Their heads were bowed low. They could not bring themselves to step inside."
+                        "There was a great feast at the palace, and the whole town came, with drums and trumpets.",
+                        "But two people stood at the gate, unable to come in or to go away.",
+                        "They were her sisters. Their heads were bowed low, and they could not bring themselves to step inside."
                     ],
                     right: [
-                        "Then Cinderella went over and took their hands. \"Let the past be past. Today let us laugh together.\"",
-                        "The sisters' eyes went red. The laughter at the feast went on late into the night."
+                        "Then Cinderella went over and took their hands.",
+                        "\"Let the past be past. Today let us laugh together.\"",
+                        "Their eyes reddened, and the laughter in the palace went on late into the night."
                     ]
                 }
             ]
@@ -884,7 +896,7 @@ const EN = {
             { word: 'stop short', meaning: '뚝 그치다', sentence: 'The music stopped short.' },
             { word: 'whisper', meaning: '수군거리다', sentence: 'They stood right beside her, whispering.' },
             { word: 'crowd', meaning: '사람들 무리', sentence: 'The prince came through the crowd.' },
-            { word: 'far into the night', meaning: '밤이 깊도록', sentence: 'They danced far into the night.' }
+            { word: 'crane one’s neck', meaning: '목을 길게 빼다', sentence: 'Her own sisters craned their necks beside her.' }
         ],
         'story-04-ball-2.webp': [
             { word: 'strike', meaning: '(시계가) 치다', sentence: 'The palace clock began to strike.' },
