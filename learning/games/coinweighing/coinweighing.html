@@ -1074,7 +1074,7 @@ body{align-items:center;padding:18px}
 <script src="../../../assets/network/finisher-board.js?v=20260727"></script>
 <script src="../../../assets/sound/music-control.js?v=20260910-click-cache-1" defer></script>
 <link rel="stylesheet" href="../../../assets/device-game.css?v=20260921c">
-<style>body:has(#game-board[style*="block"]){box-sizing:border-box;min-height:100dvh;height:auto;padding:8px;margin:0}#game-board[style*="block"]{max-width:100%;max-height:calc(100dvh - 16px);margin:auto}@media(min-width:700px){#game-board[style*="block"]{width:min(100%,1000px);height:calc(100dvh - 16px);min-height:0}.top-section{height:calc(100% - 170px);min-height:290px}.bottom-section-wrapper{position:absolute;bottom:10px;left:20px;right:20px;width:auto}}</style><link rel="stylesheet" href="../../../assets/network/single-player-entry.css?v=20260926-ui-review">
+<style>body:has(#game-board[style*="block"]){box-sizing:border-box;min-height:100dvh;height:auto;padding:8px;margin:0}#game-board[style*="block"]{max-width:100%;max-height:calc(100dvh - 16px);margin:auto}@media(min-width:700px){#game-board[style*="block"]{width:min(100%,1000px);height:calc(100dvh - 16px);min-height:0}.top-section{height:calc(100% - 170px);min-height:290px}.bottom-section-wrapper{position:absolute;bottom:10px;left:20px;right:20px;width:auto}}</style><link rel="stylesheet" href="../../../assets/network/single-player-entry.css?v=20260926-entry-final">
 </head>
 <body>
 
@@ -1122,7 +1122,7 @@ body{align-items:center;padding:18px}
     </div>
 
     <div class="finishers-panel">
-        <div class="finishers-title">🏆 TODAY’S FINISHERS</div>
+        <div class="finishers-title">오늘의 완료 기록</div>
         <div class="finishers-list" id="today-finishers-list"></div>
     </div>
 
@@ -1256,7 +1256,7 @@ body{align-items:center;padding:18px}
         if (playerName && entry) {
             entry.style.display = "none";
             const subtitle = document.querySelector(".start-subtitle");
-            if (subtitle) subtitle.textContent = `PLAYER · ${playerName} · COIN WEIGHING GAME`;
+            if (subtitle) subtitle.textContent = `${playerName}`;
         }
 
         if (startButton) {
@@ -1774,7 +1774,7 @@ body{align-items:center;padding:18px}
                     <strong class="text-success">판별에 성공했습니다!</strong>
                 </div>
                 <div class="finishers-panel result-finishers">
-                    <div class="finishers-title">🏆 TODAY’S FINISHERS</div>
+                    <div class="finishers-title">오늘의 완료 기록</div>
                     <div class="finishers-list" id="result-finishers-list"></div>
                 </div>
             `;

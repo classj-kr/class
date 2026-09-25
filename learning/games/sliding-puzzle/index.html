@@ -12,22 +12,22 @@
   <script src="../../../assets/network/finisher-board.js"></script>
   <script src="../../../assets/sound/music-control.js?v=20260910-click-cache-1" defer></script>
 <link rel="stylesheet" href="../puzzle-board-layout.css?v=20260921a">
-<link rel="stylesheet" href="../../../assets/network/single-player-entry.css?v=20260926-ui-review">
+<link rel="stylesheet" href="../../../assets/network/single-player-entry.css?v=20260926-entry-final">
 </head>
 <body>
   <audio id="bgm" src="assets/sound/bgm.ogg" loop preload="auto"></audio>
   <main class="page-shell">
     <section class="start-screen screen" id="startScreen" aria-labelledby="startTitle">
       <h1 class="start-title" id="startTitle">숫자 슬라이딩 퍼즐</h1>
-      <p class="start-subtitle">NUMBER SLIDING PUZZLE</p>
+
 
       <p class="player-line" id="playerLine"></p>
 
       <div class="difficulty-container">
-        <p class="setting-label">PUZZLE</p>
+        <p class="setting-label">퍼즐 크기</p>
         <div class="mode-switch" aria-label="퍼즐 크기 선택">
-          <button type="button" data-size="3" aria-pressed="true"><strong>8 PUZZLE</strong><span>3 × 3 · EASY</span></button>
-          <button type="button" data-size="4" aria-pressed="false"><strong>15 PUZZLE</strong><span>4 × 4 · HARD</span></button>
+          <button type="button" data-size="3" aria-pressed="true"><strong>8 퍼즐</strong><span>3 × 3 · 쉬움</span></button>
+          <button type="button" data-size="4" aria-pressed="false"><strong>15 퍼즐</strong><span>4 × 4 · 어려움</span></button>
         </div>
       </div>
 
@@ -37,7 +37,7 @@
       <a class="back-link start-back" href="../../../#puzzle-title">← MAIN MENU</a>
 
       <div class="finishers-panel">
-        <div class="finishers-title">🏆 TODAY’S FINISHERS</div>
+        <div class="finishers-title">오늘의 완료 기록</div>
         <div class="finishers-list" id="today-finishers-list"></div>
       </div>
     </section>
@@ -49,7 +49,7 @@
       </header>
       <div class="game-layout">
         <div class="play-column">
-          <h1 id="gameTitle" class="visually-hidden">8 PUZZLE</h1>
+          <h1 id="gameTitle" class="visually-hidden">8 퍼즐</h1>
 
           <div class="stats" aria-label="게임 기록">
             <div><span>MOVES</span><strong id="moveCount">0</strong></div>
@@ -220,13 +220,13 @@
       <h2 id="resultTitle">CONGRATULATIONS!</h2>
       <p id="resultSummary"></p>
       <div class="finishers-panel result-finishers">
-        <div class="finishers-title">🏆 TODAY’S FINISHERS</div>
+        <div class="finishers-title">오늘의 완료 기록</div>
         <div class="finishers-list" id="result-finishers-list"></div>
       </div>
       <button class="primary" id="playAgainButton" type="button">PLAY AGAIN</button>
     </div>
   </div>
 
-  <script src="app.js?v=20260926-ui-review"></script>
+  <script src="app.js?v=20260926-entry-final"></script>
 </body>
 </html>

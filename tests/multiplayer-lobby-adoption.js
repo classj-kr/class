@@ -34,12 +34,13 @@ const expectedMultiplayerGames = [
     "setgame",
     "traverse"
 ];
-const expectedSinglePlayerGames = ["coinweighing", "hanoitower", "sphinx"];
+const expectedSinglePlayerGames = ["coinweighing", "hanoitower", "nonogram", "sliding-puzzle", "sphinx"];
 
 const ordinaryGames = fs.readdirSync(gamesRoot, { withFileTypes: true })
     .filter(entry => entry.isDirectory())
     .map(entry => {
-        const file = path.join(gamesRoot, entry.name, `${entry.name}.html`);
+        const namedFile = path.join(gamesRoot, entry.name, `${entry.name}.html`);
+        const file = fs.existsSync(namedFile) ? namedFile : path.join(gamesRoot, entry.name, "index.html");
         return fs.existsSync(file) ? { id: entry.name, file } : null;
     })
     .filter(Boolean);

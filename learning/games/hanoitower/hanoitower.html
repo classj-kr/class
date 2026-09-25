@@ -798,7 +798,7 @@ body:has(#game-container[style*="flex"]){height:100dvh;min-height:0;box-sizing:b
 #game-container #info{grid-column:2;grid-row:2;position:static;margin:0;font-size:16px;letter-spacing:0;text-align:center}
 #game-container .tap-guide{grid-column:2;grid-row:3;margin:0}
 @media(orientation:portrait){#game-container[style*="flex"]{grid-template-columns:1fr;grid-template-rows:auto minmax(0,1fr) auto auto}#game-container .controls{grid-column:1;grid-row:1;flex-direction:row;flex-wrap:wrap;justify-content:center}#game-container .board-wrapper{grid-column:1;grid-row:2}#game-container #info{grid-column:1;grid-row:3}#game-container .tap-guide{grid-column:1;grid-row:4}}
-</style><style>#game-container .btn-container{display:flex;flex-wrap:wrap;justify-content:center;gap:4px}#game-container .option-group{max-width:100%;min-width:0}</style><style>#game-container .controls{gap:8px}#game-container .controls .option-group{margin:0}#game-container .controls>button{flex-shrink:0;margin:0!important}#game-container .legacy-music-control{display:none}</style><link rel="stylesheet" href="../../../assets/network/single-player-entry.css?v=20260926-ui-review">
+</style><style>#game-container .btn-container{display:flex;flex-wrap:wrap;justify-content:center;gap:4px}#game-container .option-group{max-width:100%;min-width:0}</style><style>#game-container .controls{gap:8px}#game-container .controls .option-group{margin:0}#game-container .controls>button{flex-shrink:0;margin:0!important}#game-container .legacy-music-control{display:none}</style><link rel="stylesheet" href="../../../assets/network/single-player-entry.css?v=20260926-entry-final">
 </head>
 <body>
 <audio id="bgm" src="/learning/games/hanoitower/assets/sound/bgm.ogg" loop preload="auto"></audio>
@@ -818,7 +818,7 @@ body:has(#game-container[style*="flex"]){height:100dvh;min-height:0;box-sizing:b
         <button class="action-btn btn-start-action" type="button" onclick="showRules()">게임 방법</button>
     </div>
     <div class="finishers-panel">
-        <div class="finishers-title">🏆 TODAY’S FINISHERS</div>
+        <div class="finishers-title">오늘의 완료 기록</div>
         <div class="finishers-list" id="today-finishers-list"></div>
     </div>
 </div>
@@ -941,7 +941,7 @@ body:has(#game-container[style*="flex"]){height:100dvh;min-height:0;box-sizing:b
         if (playerName && entry) {
             entry.style.display = "none";
             const subtitle = document.querySelector(".start-subtitle");
-            if (subtitle) subtitle.textContent = `PLAYER · ${playerName} · TOWER OF HANOI`;
+            if (subtitle) subtitle.textContent = `${playerName}`;
         }
 
         if (startButton) {
@@ -1276,7 +1276,7 @@ body:has(#game-container[style*="flex"]){height:100dvh;min-height:0;box-sizing:b
                     `현재 이동 횟수: ${moveCount}회`,
                     `이론상 최소 횟수: ${minMoves}회`,
                     `<div class="finishers-panel result-finishers">
-                        <div class="finishers-title">🏆 TODAY’S FINISHERS</div>
+                        <div class="finishers-title">오늘의 완료 기록</div>
                         <div class="finishers-list" id="result-finishers-list"></div>
                     </div>`
                 ]);

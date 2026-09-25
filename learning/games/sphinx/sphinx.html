@@ -611,7 +611,7 @@ body{align-items:center;padding:18px}
 <script src="../../../assets/network/finisher-board.js"></script>
 <script src="../../../assets/sound/music-control.js?v=20260910-click-cache-1" defer></script>
 <link rel="stylesheet" href="../../../assets/device-game.css?v=20260921c">
-<style>@media(min-width:700px){body{box-sizing:border-box;padding:12px;min-height:100dvh}.game-frame{height:calc(100dvh - 24px);min-height:0}.quiz-container{min-height:0;padding:14px;overflow:auto}#display-area{min-height:250px;padding:14px}}</style><link rel="stylesheet" href="../../../assets/network/single-player-entry.css?v=20260926-ui-review">
+<style>@media(min-width:700px){body{box-sizing:border-box;padding:12px;min-height:100dvh}.game-frame{height:calc(100dvh - 24px);min-height:0}.quiz-container{min-height:0;padding:14px;overflow:auto}#display-area{min-height:250px;padding:14px}}</style><link rel="stylesheet" href="../../../assets/network/single-player-entry.css?v=20260926-entry-final">
 </head>
 <body>
 <audio id="bgm" src="/learning/games/sphinx/assets/sound/bgm.ogg" loop preload="auto"></audio>
@@ -714,7 +714,7 @@ body{align-items:center;padding:18px}
     function loadQuestion() {
         if (currentStage === 0) {
             displayArea.innerHTML = `
-                <div class="question-text">${playerName ? `PLAYER · ${escapeFinisherHtml(playerName)}` : "<스핑크스> 도전할 자는 이름과 실력을 밝혀라."}</div>
+                <div class="question-text">${playerName ? `${escapeFinisherHtml(playerName)}` : "<스핑크스> 도전할 자는 이름과 실력을 밝혀라."}</div>
                 <div class="player-entry">
                     <div class="player-name-help" id="player-name-help">이름이 없습니다. 메인 화면에서 이름을 먼저 저장해 주세요.</div>
                     <button class="quiz-btn" type="button" onclick="location.href='../../../'">메인 화면으로</button>
@@ -725,7 +725,7 @@ body{align-items:center;padding:18px}
                     <button class="quiz-btn" type="button" onclick="showSphinxRules()">게임 방법</button>
                 </div>
                 <div class="finishers-panel">
-                    <div class="finishers-title">🏆 TODAY’S FINISHERS</div>
+                    <div class="finishers-title">오늘의 완료 기록</div>
                     <div class="finishers-list" id="today-finishers-list"></div>
                 </div>`;
             const playerEntry = document.querySelector(".player-entry");
@@ -802,7 +802,7 @@ body{align-items:center;padding:18px}
                 ${win ? "<스핑크스> 그대의 예지를 칭송하리라." : "<스핑크스> 성스러운 땅에 합당치 않은 자여! 물러가라!"}
             </div>
             ${win ? `<div class="finishers-panel result-finishers">
-                <div class="finishers-title">🏆 TODAY’S FINISHERS</div>
+                <div class="finishers-title">오늘의 완료 기록</div>
                 <div class="finishers-list" id="result-finishers-list"></div>
             </div>` : ""}
             <button class="quiz-btn confirm-btn" onclick="currentStage=0; loadQuestion();">처음으로</button>`;

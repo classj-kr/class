@@ -157,7 +157,7 @@
             (this.options.rulesButtonIds || []).forEach(id => {
                 getElement(id)?.addEventListener("click", () => {
                     this.options.onRules?.();
-                    document.querySelectorAll("[role=dialog], .rulesOverlay, .rules-overlay, .rulesModal, .rules-modal, .modal, .mp-modal, .popup-box, .modal-content").forEach(dialog => {
+                    document.querySelectorAll("[role=dialog], .rulesOverlay, .rules-overlay, .rulesModal, .rules-modal, .modal, .mp-modal, .popup-box, .modal-content, .modal-box").forEach(dialog => {
                         if (!dialog.checkVisibility?.()) return;
                         dialog.classList.add("mp-ui-rules");
                         const heading = dialog.querySelector("h2");

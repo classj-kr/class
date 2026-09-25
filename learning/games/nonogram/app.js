@@ -574,7 +574,7 @@
 
   playerName = normalizePlayerName(localStorage.getItem('classPlayerName'));
   const hasPlayer = isValidPlayerName(playerName);
-  playerLine.textContent = hasPlayer ? `PLAYER · ${playerName}` : 'SAVE YOUR NAME ON THE MAIN PAGE';
+  playerLine.textContent = hasPlayer ? `${playerName}` : '메인 화면에서 이름을 저장해 주세요';
   startButton.disabled = !hasPlayer;
   startButton.textContent = hasPlayer ? '게임 시작' : '메인 화면으로';
   finisherBoard.load('today-finishers-list');

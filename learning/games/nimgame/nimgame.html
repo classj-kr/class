@@ -982,9 +982,9 @@ body{align-items:flex-start;padding:8px}
 body{align-items:center;padding:18px}
 }
 </style>
-<link rel="stylesheet" href="../../../assets/network/multiplayer-lobby.css?v=20260926-unified-lobby">
+<link rel="stylesheet" href="../../../assets/network/multiplayer-lobby.css?v=20260926-lobby-review">
 <script src="../../../assets/network/game-network.js?v=20260821"></script>
-<script src="../../../assets/network/multiplayer-lobby.js?v=20260926-unified-lobby"></script>
+<script src="../../../assets/network/multiplayer-lobby.js?v=20260926-lobby-review"></script>
 <script src="../../../assets/sound/music-control.js?v=20260910-click-cache-1" defer></script>
 <link rel="stylesheet" href="../../../assets/device-game.css?v=20260921c">
 <style>
@@ -2103,14 +2103,14 @@ body:has(#game-screen:not(.hidden)) .app-shell{height:calc(100dvh - 16px);min-he
             : "<strong>마지막 물체를 가져간 사람이 승리</strong>합니다.";
 
         showModal(
-            "GAME RULES",
+            "게임 방법",
             `<ul>
                 ${modeRules}
                 <li>선택을 확인한 뒤 <strong>TAKE</strong> 버튼을 누릅니다.</li>
                 <li>${endingRule}</li>
                 <li><strong>첫 라운드는 방을 만든 PLAYER 1이 선공</strong>합니다. 이후 새 라운드에서는 PLAYER 1과 PLAYER 2가 번갈아 선공합니다.</li>
              </ul>`,
-            [{ label: "CLOSE", className: "secondary-btn", action: closeModal }]
+            [{ label: "닫기", className: "secondary-btn", action: closeModal }]
         );
     }
 
