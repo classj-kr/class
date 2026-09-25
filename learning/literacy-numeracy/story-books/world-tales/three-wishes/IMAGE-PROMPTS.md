@@ -35,10 +35,11 @@ good-natured.
 ## 인물 설명 (일관성을 위해 매번 붙여 넣으세요)
 
 ```
-The woodcutter: a stout cheerful man with a red nose, a leather apron and a big
-beard. His wife: a lively woman in a headscarf and apron with quick hands and a
-quicker tongue. The forest spirit: a small glowing figure with leafy hair and a
-kindly amused expression.
+The woodcutter: a lovable young man with thick tousled brown hair (full hair, not bald), cute friendly round face, expressive eyebrows, orange linen shirt, teal vest, brown trousers, and boots. Very expressive comic acting.
+His wife: a pretty young woman with a sweet round face, rosy cheeks, soft wavy auburn hair tied with a blue ribbon, wearing a lavender folk dress and clean white apron.
+The forest spirit: a tiny, adorable leaf fairy figure with emerald leaves for hair and a warm magical golden/green glow.
+The magic sausage: a plump, coiled, sizzling roasted link sausage with magical sparkling wisps.
+The cottage cat: a cute chubby orange tabby cat.
 ```
 
 ## 표지 · 마무리
