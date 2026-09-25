@@ -6,15 +6,10 @@
   <meta name="theme-color" content="#ffffff">
   <title>업무툴 · 클래스제이</title>
   <link rel="icon" href="/favicon.ico">
-  <link rel="stylesheet" href="./style.css?v=20260925-workspace">
+  <link rel="stylesheet" href="./style.css?v=20260925-controls-only">
 </head>
 <body>
-  <header class="topbar">
-    <div class="topbar-content">
-      <h1>업무툴</h1>
-      <a class="back-link" href="/classtools/"><span aria-hidden="true">←</span> 교사 포털</a>
-    </div>
-  </header>
+  <a class="back-link" href="/classtools/" aria-label="교사 포털로 돌아가기">←</a>
 
   <main class="workspace">
     <div class="tool-tabs" role="tablist" aria-label="업무 도구 선택">
@@ -23,10 +18,6 @@
     </div>
 
     <section class="tool-section" id="stamp" role="tabpanel" aria-labelledby="stamp-tool-tab">
-      <div class="section-heading">
-        <h2>도장 만들기</h2>
-        <p>이름을 입력하거나 기존 도장 사진을 올려 투명 PNG로 저장하세요.</p>
-      </div>
       <div class="workbench">
         <div class="controls">
           <div class="mode-switch" role="tablist" aria-label="도장 만들기 방식">
@@ -85,10 +76,6 @@
     </section>
 
     <section class="tool-section" id="scan" role="tabpanel" aria-labelledby="scan-tool-tab" hidden>
-      <div class="section-heading">
-        <h2>문서 스캔</h2>
-        <p>사진을 올리거나 촬영한 뒤, 문서 모서리와 밝기를 조절하세요.</p>
-      </div>
       <div class="workbench scan-workbench">
         <div class="controls">
           <div class="input-choices">
@@ -136,6 +123,6 @@
     </section>
     <p class="privacy-note">선택한 사진은 서버에 전송되지 않고 이 기기에서 처리됩니다.</p>
   </main>
-  <script src="./tools.js?v=20260925-workspace" defer></script>
+  <script src="./tools.js?v=20260925-controls-only" defer></script>
 </body>
 </html>
