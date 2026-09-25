@@ -1,0 +1,8 @@
+{
+  "version": "20260925-office-workspace",
+  "files": {
+    "classtools/office-tools/index.html": "3ccae32be85f5af824aae3196ee734a9055b873dd1ff81112f16e7abe1c4d877",
+    "classtools/office-tools/style.css": "6b8f893995f15b214ea6889939a1867bb9a529cea2ebb054f49a909f7e798f27",
+    "classtools/office-tools/tools.js": "870df90fa41730836da5d908b9d13d6822029b40976fe8c9c59179cd09902fef"
+  }
+}

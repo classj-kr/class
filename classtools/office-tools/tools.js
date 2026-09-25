@@ -15,7 +15,49 @@
   let scanCorners = null;
   let dragCorner = -1;
   let cameraStream = null;
+  let cameraRequestId = 0;
   let scanTimer = null;
+
+  const toolTabs = Array.from(document.querySelectorAll('[data-tool]'));
+  function selectTool(tool, updateUrl = false) {
+    const selected = tool === 'scan' ? 'scan' : 'stamp';
+    for (const tab of toolTabs) {
+      const active = tab.dataset.tool === selected;
+      tab.setAttribute('aria-selected', String(active));
+      tab.tabIndex = active ? 0 : -1;
+      $(tab.dataset.tool).hidden = !active;
+    }
+    if (selected !== 'scan') stopCamera();
+    if (updateUrl) window.history.replaceState(null, '', '#' + selected);
+  }
+  for (const tab of toolTabs) tab.addEventListener('click', () => selectTool(tab.dataset.tool, true));
+  window.addEventListener('hashchange', () => selectTool(window.location.hash.slice(1)));
+  for (const tablist of document.querySelectorAll('[role="tablist"]')) {
+    tablist.addEventListener('keydown', (event) => {
+      const tabs = Array.from(tablist.querySelectorAll('[role="tab"]'));
+      const index = tabs.indexOf(document.activeElement);
+      if (index < 0) return;
+      let next;
+      if (event.key === 'ArrowRight') next = (index + 1) % tabs.length;
+      else if (event.key === 'ArrowLeft') next = (index + tabs.length - 1) % tabs.length;
+      else if (event.key === 'Home') next = 0;
+      else if (event.key === 'End') next = tabs.length - 1;
+      else return;
+      event.preventDefault();
+      tabs[next].focus();
+      tabs[next].click();
+    });
+  }
+  function selectButton(selector, activeButton) {
+    for (const button of document.querySelectorAll(selector + ' button')) {
+      const active = button === activeButton;
+      button.classList.toggle('active', active);
+      button.setAttribute('aria-pressed', String(active));
+    }
+  }
+  $('stamp-upload').addEventListener('click', () => $('stamp-file').click());
+  $('scan-upload').addEventListener('click', () => $('scan-file').click());
+  selectTool(window.location.hash.slice(1));
 
   function setStatus(id, message) { $(id).textContent = message; }
   function downloadCanvas(canvas, filename) {
@@ -48,6 +90,8 @@
     return canvas;
   }
   function stampText() {
+    stampCanvas.hidden = false;
+    $('stamp-download').disabled = false;
     const text = $('stamp-name').value.trim() || '홍길동';
     stampCtx.clearRect(0, 0, 800, 800);
     stampCtx.save();
@@ -90,6 +134,8 @@
     setStatus('stamp-status', '투명 배경 PNG가 준비되었습니다.');
   }
   function stampPhoto() {
+    stampCanvas.hidden = !stampImage;
+    $('stamp-download').disabled = !stampImage;
     stampCtx.clearRect(0, 0, 800, 800);
     if (!stampImage) {
       $('stamp-placeholder').hidden = false;
@@ -122,6 +168,7 @@
         const active = tab === button;
         tab.classList.toggle('active', active);
         tab.setAttribute('aria-selected', String(active));
+        tab.tabIndex = active ? 0 : -1;
       }
       $('stamp-text-controls').hidden = stampMode !== 'text';
       $('stamp-photo-controls').hidden = stampMode !== 'photo';
@@ -130,12 +177,12 @@
   }
   for (const button of document.querySelectorAll('#stamp-shapes button')) button.addEventListener('click', () => {
     stampShape = button.dataset.shape;
-    document.querySelectorAll('#stamp-shapes button').forEach((item) => item.classList.toggle('active', item === button));
+    selectButton('#stamp-shapes', button);
     renderStamp();
   });
   for (const button of document.querySelectorAll('#stamp-colors button')) button.addEventListener('click', () => {
     stampColor = button.dataset.color;
-    document.querySelectorAll('#stamp-colors button').forEach((item) => item.classList.toggle('active', item === button));
+    selectButton('#stamp-colors', button);
     renderStamp();
   });
   $('stamp-name').addEventListener('input', renderStamp);
@@ -329,7 +376,7 @@
   });
   $('scan-file').addEventListener('change', (event) => loadImage(event.target.files[0], setScanImage, 'scan-status'));
   for (const button of document.querySelectorAll('#scan-presets button')) button.addEventListener('click', () => {
-    document.querySelectorAll('#scan-presets button').forEach((item) => item.classList.toggle('active', item === button));
+    selectButton('#scan-presets', button);
     scheduleScan();
   });
   for (const name of ['brightness', 'contrast', 'threshold']) {
@@ -340,6 +387,7 @@
   $('scan-download').addEventListener('click', () => { if (scanImage) downloadCanvas(scanResult, 'classj-document-scan.png'); });
 
   function stopCamera() {
+    cameraRequestId++;
     if (cameraStream) cameraStream.getTracks().forEach((track) => track.stop());
     cameraStream = null;
     $('camera-video').srcObject = null;
@@ -350,14 +398,21 @@
       setStatus('scan-status', '이 브라우저에서는 카메라를 사용할 수 없습니다. 사진을 올려 주세요.');
       return;
     }
+    stopCamera();
+    const requestId = cameraRequestId;
     try {
-      stopCamera();
-      cameraStream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: { ideal: 'environment' } }, audio: false });
-      $('camera-video').srcObject = cameraStream;
+      const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: { ideal: 'environment' } }, audio: false });
+      if (requestId !== cameraRequestId) {
+        stream.getTracks().forEach((track) => track.stop());
+        return;
+      }
+      cameraStream = stream;
+      $('camera-video').srcObject = stream;
       $('camera-panel').hidden = false;
       await $('camera-video').play();
-      setStatus('scan-status', '문서가 화면 안에 들어오도록 맞춘 뒤 사진 찍기를 누르세요.');
+      if (requestId === cameraRequestId) setStatus('scan-status', '문서가 화면 안에 들어오도록 맞춘 뒤 사진 찍기를 누르세요.');
     } catch (error) {
+      if (requestId !== cameraRequestId) return;
       stopCamera();
       setStatus('scan-status', '카메라를 열지 못했습니다. 브라우저의 카메라 권한을 확인하거나 사진을 올려 주세요.');
     }
