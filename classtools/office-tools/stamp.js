@@ -4,24 +4,26 @@
   const canvas = $('stamp-canvas');
   const ctx = canvas.getContext('2d', { willReadFrequently: true });
   const fonts = {
+    seal: { family: '"OfficeStampGungseo"', weight: 400, state: 'ready' },
     serif: { family: '"OfficeStampMyeongjo"', weight: 400, state: 'loading' },
     brush: { family: '"OfficeStampGungseo"', weight: 400, state: 'loading' },
     pen: { family: '"OfficeStampBoldMyeongjo"', weight: 400, state: 'loading' },
     gothic: { family: '"Malgun Gothic", "Apple SD Gothic Neo", sans-serif', weight: 700, state: 'ready' }
   };
-  const base = { shape: 'oval', font: 'brush', layout: 'vertical', suffix: '', border: 'single', color: '#b63835', opacity: 100, lineWidth: 20, spacing: 12, texture: 0, weight: 3, impression: 'positive' };
+  const base = { shape: 'oval', font: 'seal', layout: 'vertical', suffix: '', border: 'single', color: '#e11d24', opacity: 100, lineWidth: 20, spacing: 12, texture: 0, weight: 3, impression: 'positive' };
   const presets = [
-    { id: 'oval', label: '타원 궁서', shape: 'oval', font: 'brush', layout: 'vertical', border: 'single' },
-    { id: 'round', label: '원형 궁서', shape: 'circle', font: 'brush', layout: 'packed', suffix: '인', border: 'single' },
-    { id: 'square', label: '사각 궁서', shape: 'square', font: 'brush', layout: 'packed', suffix: '인', border: 'single', lineWidth: 22 },
-    { id: 'rounded', label: '둥근 명조', shape: 'rounded', font: 'pen', layout: 'packed', suffix: '인', border: 'single' },
-    { id: 'wide', label: '가로 결재', shape: 'rectangle', font: 'serif', layout: 'horizontal', border: 'single', lineWidth: 16 },
-    { id: 'pen', label: '원형 굵은 명조', shape: 'circle', font: 'pen', layout: 'packed', suffix: '인', border: 'double', weight: 1 },
-    { id: 'brush', label: '이중 타원', shape: 'oval', font: 'brush', layout: 'vertical', border: 'double', lineWidth: 14, weight: 5 },
-    { id: 'double', label: '사각 음각', shape: 'square', font: 'pen', layout: 'packed', suffix: '인', border: 'single', impression: 'negative', weight: 1 }
+    { id: 'oval-seal', label: '타원 전서형', shape: 'oval', font: 'seal', layout: 'vertical', border: 'single', weight: 1 },
+    { id: 'oval-serif', label: '타원 명조', shape: 'oval', font: 'serif', layout: 'vertical', border: 'single', weight: 2 },
+    { id: 'oval-brush', label: '타원 궁서', shape: 'oval', font: 'brush', layout: 'vertical', border: 'single', weight: 5 },
+    { id: 'circle-seal', label: '원형 전서형', shape: 'circle', font: 'seal', layout: 'grid', suffix: 'auto', border: 'single', weight: 1 },
+    { id: 'circle-serif', label: '원형 명조', shape: 'circle', font: 'pen', layout: 'grid', suffix: 'auto', border: 'single', weight: 0 },
+    { id: 'circle-brush', label: '원형 궁서', shape: 'circle', font: 'brush', layout: 'grid', suffix: 'auto', border: 'single', weight: 5 },
+    { id: 'square-seal', label: '사각 전서형', shape: 'square', font: 'seal', layout: 'grid', suffix: 'auto', border: 'single', weight: 1 },
+    { id: 'square-serif', label: '사각 명조', shape: 'square', font: 'pen', layout: 'grid', suffix: 'auto', border: 'single', weight: 0 },
+    { id: 'square-brush', label: '사각 궁서', shape: 'square', font: 'brush', layout: 'grid', suffix: 'auto', border: 'single', weight: 5 }
   ];
-  let settings = { ...base };
-  let selectedPreset = 'oval';
+  let settings = { ...base, ...presets[0] };
+  let selectedPreset = 'oval-seal';
   let mode = 'text';
   let photo = null;
   let photoRequestId = 0;
@@ -41,6 +43,8 @@
     markGroup('stamp-colors', 'color', settings.color);
     for (const key of ['font', 'layout', 'suffix', 'border', 'color', 'opacity', 'spacing', 'texture', 'weight', 'impression']) $('stamp-' + key).value = settings[key];
     $('stamp-line-width').value = settings.lineWidth;
+    $('stamp-border').disabled = settings.impression === 'negative';
+    $('stamp-line-width').disabled = settings.impression === 'negative';
     for (const key of ['opacity', 'spacing', 'texture', 'line-width', 'weight']) {
       $('stamp-' + key + '-value').value = $('stamp-' + key).value + (['opacity', 'texture'].includes(key) ? '%' : '');
     }
@@ -52,10 +56,85 @@
     else if (shape === 'rounded') context.roundRect(-x, -y, 2 * x, 2 * y, Math.min(55, x / 3, y / 3));
     else context.rect(-x, -y, 2 * x, 2 * y);
   }
+  function sealGlyph(character, weight) {
+    const code = character.codePointAt(0) - 0xac00;
+    if ((code < 0 || code >= 11172) && character !== '印') return null;
+    const leading = ['ㄱ','ㄲ','ㄴ','ㄷ','ㄸ','ㄹ','ㅁ','ㅂ','ㅃ','ㅅ','ㅆ','ㅇ','ㅈ','ㅉ','ㅊ','ㅋ','ㅌ','ㅍ','ㅎ'];
+    const trailing = ['','ㄱ','ㄲ','ㄳ','ㄴ','ㄵ','ㄶ','ㄷ','ㄹ','ㄺ','ㄻ','ㄼ','ㄽ','ㄾ','ㄿ','ㅀ','ㅁ','ㅂ','ㅄ','ㅅ','ㅆ','ㅇ','ㅈ','ㅊ','ㅋ','ㅌ','ㅍ','ㅎ'];
+    const pairs = { 'ㄲ':'ㄱㄱ','ㄸ':'ㄷㄷ','ㅃ':'ㅂㅂ','ㅆ':'ㅅㅅ','ㅉ':'ㅈㅈ','ㄳ':'ㄱㅅ','ㄵ':'ㄴㅈ','ㄶ':'ㄴㅎ','ㄺ':'ㄹㄱ','ㄻ':'ㄹㅁ','ㄼ':'ㄹㅂ','ㄽ':'ㄹㅅ','ㄾ':'ㄹㅌ','ㄿ':'ㄹㅍ','ㅀ':'ㄹㅎ','ㅄ':'ㅂㅅ' };
+    const initial = leading[Math.floor(code / 588)], vowel = Math.floor(code % 588 / 28), final = trailing[code % 28];
+    const glyph = document.createElement('canvas'); glyph.width = glyph.height = 256;
+    const context = glyph.getContext('2d');
+    context.strokeStyle = '#000'; context.lineWidth = 15 + weight;
+    context.lineCap = 'round'; context.lineJoin = 'round';
+    const line = (box, points) => {
+      const [x,y,w,h] = box; context.beginPath();
+      points.forEach(([px,py],i) => context[i ? 'lineTo' : 'moveTo'](x + px * w / 100, y + py * h / 100)); context.stroke();
+    };
+    if (character === '印') {
+      line([20,20,216,216],[[42,0],[0,16],[0,82],[43,82]]);
+      line([20,20,216,216],[[0,47],[43,47]]);
+      line([20,20,216,216],[[64,100],[64,10],[100,10],[100,72],[82,72]]);
+      return { canvas: glyph, x: 20 - context.lineWidth / 2, y: 20 - context.lineWidth / 2, width: 216 + context.lineWidth, height: 216 + context.lineWidth };
+    }
+    function consonant(letter, box) {
+      const [x,y,w,h] = box;
+      if (pairs[letter]) {
+        const gap = Math.max(16, context.lineWidth * 1.2), half = (w - gap) / 2;
+        consonant(pairs[letter][0], [x,y,half,h]); consonant(pairs[letter][1], [x+half+gap,y,half,h]); return;
+      }
+      const ring = (rx,ry,rw,rh,radius) => { context.beginPath(); context.roundRect(x+rx*w/100,y+ry*h/100,rw*w/100,rh*h/100,Math.min(w,h)*radius);context.stroke(); };
+      if (letter === 'ㄱ') line(box,[[0,0],[100,0],[100,100]]);
+      else if (letter === 'ㄴ') line(box,[[0,0],[0,100],[100,100]]);
+      else if (letter === 'ㄷ') line(box,[[100,0],[0,0],[0,100],[100,100]]);
+      else if (letter === 'ㄹ') line(box,[[0,0],[100,0],[100,50],[0,50],[0,100],[100,100]]);
+      else if (letter === 'ㅁ') ring(0,0,100,100,.12);
+      else if (letter === 'ㅂ') {line(box,[[0,0],[0,100],[100,100],[100,0]]);line(box,[[0,50],[100,50]]);}
+      else if (letter === 'ㅅ') {line(box,[[50,0],[50,35],[0,100]]);line(box,[[50,35],[100,100]]);}
+      else if (letter === 'ㅇ') ring(0,0,100,100,.32);
+      else if (letter === 'ㅈ') {line(box,[[0,0],[100,0]]);consonant('ㅅ',[x+w*.05,y+h*.23,w*.9,h*.77]);}
+      else if (letter === 'ㅊ') {line(box,[[30,0],[70,0]]);line(box,[[0,27],[100,27]]);consonant('ㅅ',[x+w*.05,y+h*.42,w*.9,h*.58]);}
+      else if (letter === 'ㅋ') {consonant('ㄱ',box);line(box,[[0,50],[100,50]]);}
+      else if (letter === 'ㅌ') {consonant('ㄷ',box);line(box,[[0,50],[100,50]]);}
+      else if (letter === 'ㅍ') {line(box,[[0,0],[100,0]]);line(box,[[0,100],[100,100]]);line(box,[[25,0],[25,100]]);line(box,[[75,0],[75,100]]);}
+      else if (letter === 'ㅎ') {line(box,[[30,0],[70,0]]);line(box,[[0,27],[100,27]]);ring(8,47,84,53,.18);}
+    }
+    function simpleVowel(v, box) {
+      if (v <= 7 || v === 20) {
+        const left = v <= 3, doubled = [2,3,6,7].includes(v), extra = [1,3,5,7].includes(v);
+        const stem = v === 20 ? 50 : left ? (extra ? 10 : 25) : (extra ? 55 : 75);
+        line(box,[[stem,0],[stem,100]]);
+        if (v !== 20) for (const y of doubled ? [32,68] : [50]) line(box,[[left ? stem : 0,y],[left ? (extra ? 58 : 100) : stem,y]]);
+        if (extra) line(box,[[100,0],[100,100]]);
+      } else {
+        const up = v === 8 || v === 12, doubled = v === 12 || v === 17;
+        const y = v === 18 ? 50 : up ? 85 : 15;
+        line(box,[[0,y],[100,y]]);
+        if (v !== 18) for (const x of doubled ? [30,70] : [50]) line(box,[[x,up ? 0 : y],[x,up ? y : 100]]);
+      }
+    }
+    const x=20,y=20,w=216,topHeight=final ? 126 : 216;
+    if ([0,1,2,3,4,5,6,7,20].includes(vowel)) {
+      consonant(initial,[x,y,w*.49,topHeight]); simpleVowel(vowel,[x+w*.64,y,w*.36,topHeight]);
+    } else if ([8,12,13,17,18].includes(vowel)) {
+      consonant(initial,[x,y,w,topHeight*.50]);simpleVowel(vowel,[x,y+topHeight*.73,w,topHeight*.27]);
+    } else {
+      const compound = {9:[8,0],10:[8,1],11:[8,20],14:[13,4],15:[13,5],16:[13,20],19:[18,20]}[vowel];
+      consonant(initial,[x,y,w*.48,topHeight*.50]);
+      simpleVowel(compound[0],[x,y+topHeight*.75,w*.60,topHeight*.25]);
+      simpleVowel(compound[1],[x+w*.72,y,w*.28,topHeight]);
+    }
+    if (final) consonant(final,[x,176,w,60]);
+    return { canvas: glyph, x: 20 - context.lineWidth / 2, y: 20 - context.lineWidth / 2, width: 216 + context.lineWidth, height: 216 + context.lineWidth };
+  }
   const glyphCache = new Map();
   function glyphImage(character, fontKey, weight) {
     const key = fontKey + ':' + weight + ':' + character;
     if (glyphCache.has(key)) return glyphCache.get(key);
+    if (fontKey === 'seal') {
+      const glyph = sealGlyph(character, weight);
+      if (glyph) { if (glyphCache.size >= 128) glyphCache.delete(glyphCache.keys().next().value); glyphCache.set(key, glyph); return glyph; }
+    }
     const font = fonts[fontKey] || fonts.gothic;
     const face = font.weight + ' 256px ' + font.family;
     const glyph = document.createElement('canvas');
@@ -94,11 +173,16 @@
     const w = (width - gap * (columns - 1)) / columns;
     const h = (height - gap * (rows - 1)) / rows;
     for (let i = 0; i < count; i++) {
-      const col = layout === 'horizontal' ? i : columns - 1 - Math.floor(i / rows);
-      const row = layout === 'horizontal' ? 0 : i % rows;
+      const col = layout === 'horizontal' ? i : layout === 'grid' ? i % columns : columns - 1 - Math.floor(i / rows);
+      const row = layout === 'horizontal' ? 0 : layout === 'grid' ? Math.floor(i / columns) : i % rows;
       cells.push([col * (w + gap), row * (h + gap), w, h]);
     }
     return cells;
+  }
+  function stampText(name, options) {
+    const compact = name.replace(/\s/g, '');
+    const suffix = options.suffix === 'auto' ? (Array.from(compact).length === 3 ? '인' : '') : options.suffix;
+    return compact ? compact + suffix : '';
   }
   function drawStamp(target, name, options) {
     const ink = document.createElement('canvas');
@@ -121,7 +205,7 @@
         context.stroke();
       }
     }
-    const characters = Array.from((name ? name + options.suffix : '').replace(/\s/g, ''));
+    const characters = Array.from(stampText(name, options));
     if (characters.length) {
       let layout = options.layout;
       if (layout === 'auto') layout = options.shape === 'rectangle' || /[a-z]/i.test(name) ? 'horizontal' : options.shape === 'oval' ? 'vertical' : 'packed';
@@ -196,11 +280,15 @@
     });
     $('stamp-presets').append(button);
   }
+  function fontReady(key, text) {
+    if (key === 'seal' && /[^가-힣印\s]/u.test(text)) return fonts.brush.state === 'ready';
+    return fonts[key].state === 'ready';
+  }
   function renderPresets() {
     for (const preset of presets) {
       const button = $('stamp-presets').querySelector('[data-preset="' + preset.id + '"]');
       const options = { ...base, ...preset, color: settings.color, opacity: settings.opacity };
-      button.disabled = fonts[options.font].state !== 'ready';
+      button.disabled = !fontReady(options.font, stampText(nameText(), options));
       button.setAttribute('aria-pressed', String(selectedPreset === preset.id));
       drawStamp(button.querySelector('canvas'), nameText(), options);
     }
@@ -245,7 +333,7 @@
     $('stamp-presets-wrap').hidden = mode !== 'text';
     if (mode === 'photo') { renderPhoto(); return; }
     const name = nameText();
-    const ready = fonts[settings.font].state === 'ready';
+    const ready = fontReady(settings.font, stampText(name, settings));
     canvas.hidden = !name || !ready;
     $('stamp-placeholder').hidden = Boolean(name && ready);
     $('stamp-placeholder').textContent = name ? '글씨체를 불러오는 중…' : '이름을 입력해 주세요.';
@@ -350,7 +438,7 @@
   syncControls(); render();
   void loadAccountName();
   for (const [key, font] of Object.entries(fonts)) {
-    if (key === 'gothic') continue;
+    if (key === 'gothic' || key === 'seal') continue;
     document.fonts.load(font.weight + ' 200px ' + font.family).then(faces => {
       if (!faces.length) throw new Error('Missing font');
       font.state = 'ready';

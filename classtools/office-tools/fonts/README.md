@@ -1,9 +1,10 @@
 # Stamp fonts
 
-Unmodified font files from the Google Fonts repository:
+Unmodified official TTF files from https://event.chosun.com/100/100font.html.
+Usage and redistribution terms are recorded in CHOSUN-LICENSE.txt.
 
-- Nanum Myeongjo ExtraBold: https://github.com/google/fonts/tree/main/ofl/nanummyeongjo
-- Nanum Brush Script: https://github.com/google/fonts/tree/main/ofl/nanumbrushscript
-- Nanum Pen Script: https://github.com/google/fonts/tree/main/ofl/nanumpenscript
+- ChosunGs.TTF — 조선궁서체
+- ChosunKm.TTF — 조선굵은명조
+- ChosunSm.TTF — 조선신명조
 
-Each font's SIL Open Font License is included in this directory.
+The geometric Hangul seal lettering is drawn by the application in stamp.js.

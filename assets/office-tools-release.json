@@ -1,12 +1,12 @@
 {
-  "version": "20260925-image-rotation",
+  "version": "20260926-stamp-engraving",
   "files": {
-    "classtools/office-tools/index.html": "a12edc69ba0d15e40e44e6be3e80378af223dd6b39c54c8436095804fb462541",
-    "classtools/office-tools/style.css": "aadcbc8c17f0efc97b79e635b1af7f3877f6da3ec53c5c04cc165b312bb3e8d6",
-    "classtools/office-tools/stamp.js": "725f42f086e12f29266f4a2c0a5a9436285ed71da9a720f837c21ad06aae7d11",
+    "classtools/office-tools/index.html": "ba8c50ed7ed80d1c453ae793b502b862dd9e553315980a74f1e899e3ec1b4d0d",
+    "classtools/office-tools/style.css": "ba1802ab4bb71bbd07284764d820f7b63363ac873a815806f78c2f77e90a5203",
+    "classtools/office-tools/stamp.js": "bc19809972915953da6bc37ed509ca840db5c5662693553fe9465f624315e62b",
     "classtools/office-tools/tools.js": "b47bfa08ec80573b0344937d8184da579ac7968dea83698d82780f4fb538b3c5",
-    "classtools/office-tools/fonts/NanumBrushScript-Regular.ttf": "27ceaf578c96f594cdf07fe0181b251790acbb746a164e45c1f6473f89911a31",
-    "classtools/office-tools/fonts/NanumMyeongjo-ExtraBold.ttf": "60c0077fce069ba90ae97c0a3679f6eb3712e0ca637bdd0c15b72d335ec46db7",
-    "classtools/office-tools/fonts/NanumPenScript-Regular.ttf": "6f0d1ab29c7894010dc88831fb7a0a51edb79136e450344183de5b1a8b52bd43"
+    "classtools/office-tools/fonts/ChosunGs.TTF": "4e191bc30d23ce34797dcaf7a0965dedd67a2d85cc5dd87325ee96626cba7bea",
+    "classtools/office-tools/fonts/ChosunKm.TTF": "303fa3f070e5c3d9001b2029a6d940c2b25470f3ebe67c104bf452505eecef4d",
+    "classtools/office-tools/fonts/ChosunSm.TTF": "1436bf70f8bc347ced09f9631827efd924db66c205aafb48b307dfb5293bd449"
   }
 }

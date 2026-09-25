@@ -146,7 +146,7 @@ select:focus-visible, summary:focus-visible { outline: 3px solid #6c9fdf; outlin
 #stamp .checkerboard { height: 290px; }
 #stamp .checkerboard canvas { width: min(100%,260px); }
 .preset-label { margin: 22px 0 10px; font-size: 13px; font-weight: 600; }
-.stamp-presets { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 10px; }
+.stamp-presets { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 10px; }
 .stamp-presets button { display: flex; flex-direction: column; align-items: center; gap: 4px; min-width: 0; padding: 6px 4px 10px; border: 1px solid #dfe4e8; border-radius: 6px; color: #54616b; background: #fff; }
 .stamp-presets button:hover:not(:disabled) { background: #f6f9f7; border-color: #9bb4a7; }
 .stamp-presets button[aria-pressed="true"] { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); background: #f2f7f4; color: var(--accent); }
@@ -169,3 +169,5 @@ select:focus-visible, summary:focus-visible { outline: 3px solid #6c9fdf; outlin
 .rotation-controls { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 8px; margin: 0 0 22px; }
 .rotation-controls .button { gap: 6px; padding: 9px 5px; font-size: 12px; white-space: nowrap; }
 .rotation-icon { font-family: system-ui, sans-serif; font-size: 20px; line-height: 1; }
+
+.stamp-presets canvas { width: min(100%,100px); }
