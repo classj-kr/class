@@ -1,8 +1,12 @@
 {
-  "version": "20260925-office-controls-only",
+  "version": "20260925-stamp-options",
   "files": {
-    "classtools/office-tools/index.html": "1fe56726fbc4b02a3b3231c63728a797d199260ca545b6e65472b4aece55aead",
-    "classtools/office-tools/style.css": "c4e21874a91bdb830e034d3788b8685c73bf60697d23c9c656ed43a4574cc2c4",
-    "classtools/office-tools/tools.js": "870df90fa41730836da5d908b9d13d6822029b40976fe8c9c59179cd09902fef"
+    "classtools/office-tools/index.html": "b16cc78a01afb107ddd47d68e4b4ce1e6387bf5065736d1f1f6ed00cef34cb64",
+    "classtools/office-tools/style.css": "e6f7615107b7306185a04a2a4510e9280a3e1048f911ed55d3e406106d3525cb",
+    "classtools/office-tools/stamp.js": "c6a3b269b91e9fd99a651f11f23c2d5d9fee5a6813ec1ab09a26281a783aed3b",
+    "classtools/office-tools/tools.js": "edba642a9ec30da035ac340464c1317c6d9a6e52ad2fc97efd3a0742f3cabab2",
+    "classtools/office-tools/fonts/NanumBrushScript-Regular.ttf": "27ceaf578c96f594cdf07fe0181b251790acbb746a164e45c1f6473f89911a31",
+    "classtools/office-tools/fonts/NanumMyeongjo-ExtraBold.ttf": "60c0077fce069ba90ae97c0a3679f6eb3712e0ca637bdd0c15b72d335ec46db7",
+    "classtools/office-tools/fonts/NanumPenScript-Regular.ttf": "6f0d1ab29c7894010dc88831fb7a0a51edb79136e450344183de5b1a8b52bd43"
   }
 }

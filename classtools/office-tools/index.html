@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#ffffff">
   <title>업무툴 · 클래스제이</title>
   <link rel="icon" href="/favicon.ico">
-  <link rel="stylesheet" href="./style.css?v=20260925-controls-only">
+  <link rel="stylesheet" href="./style.css?v=20260925-stamp-options">
 </head>
 <body>
   <a class="back-link" href="/classtools/" aria-label="교사 포털로 돌아가기">←</a>
@@ -26,15 +26,25 @@
           </div>
           <div id="stamp-text-controls" role="tabpanel" aria-labelledby="stamp-text-tab">
             <label class="field">
-              <span>이름·문구 <small>최대 8자</small></span>
-              <input id="stamp-name" type="text" maxlength="8" value="홍길동" placeholder="이름 또는 문구" autocomplete="off">
+              <span>이름·문구</span>
+              <input id="stamp-name" type="text" maxlength="30" placeholder="이름 입력" autocomplete="off" aria-describedby="stamp-name-status">
+              <small id="stamp-name-status" class="field-note" role="status">로그인 이름 확인 중…</small>
             </label>
             <div class="field">
               <span>모양</span>
-              <div class="segmented" id="stamp-shapes">
-                <button type="button" class="active" data-shape="circle" aria-pressed="true">원형</button>
+              <div class="segmented shape-options" id="stamp-shapes">
+                <button type="button" data-shape="circle" aria-pressed="false">원형</button>
+                <button type="button" class="active" data-shape="oval" aria-pressed="true">타원형</button>
                 <button type="button" data-shape="square" aria-pressed="false">사각형</button>
+                <button type="button" data-shape="rounded" aria-pressed="false">둥근 사각</button>
+                <button type="button" data-shape="rectangle" aria-pressed="false">가로형</button>
               </div>
+            </div>
+            <div class="option-pair">
+              <label class="field"><span>글씨체</span><select id="stamp-font"><option value="serif">명조</option><option value="brush">붓글씨</option><option value="pen">손글씨</option><option value="gothic">고딕</option></select></label>
+              <label class="field"><span>글자 배치</span><select id="stamp-layout"><option value="auto">자동</option><option value="vertical">세로</option><option value="horizontal">가로</option><option value="grid">두 줄 세로</option></select></label>
+              <label class="field"><span>끝 글자 추가</span><select id="stamp-suffix"><option value="">없음</option><option value="인">인</option><option value="印">印</option></select></label>
+              <label class="field"><span>테두리</span><select id="stamp-border"><option value="single">한 줄</option><option value="double">두 줄</option><option value="none">없음</option></select></label>
             </div>
             <div class="field">
               <span>색상</span>
@@ -42,13 +52,18 @@
                 <button type="button" class="active" data-color="#b63835" style="--swatch:#b63835" aria-label="붉은색" aria-pressed="true"></button>
                 <button type="button" data-color="#275d82" style="--swatch:#275d82" aria-label="푸른색" aria-pressed="false"></button>
                 <button type="button" data-color="#282b31" style="--swatch:#282b31" aria-label="검은색" aria-pressed="false"></button>
+                <label class="custom-color"><input type="color" id="stamp-color" value="#b63835" aria-label="직접 색상 선택"><span>직접 선택</span></label>
               </div>
             </div>
-            <label class="field range-field">
-              <span>잉크 농도 <output id="stamp-opacity-value">85%</output></span>
-              <input id="stamp-opacity" type="range" min="40" max="100" value="85">
-            </label>
+            <details class="stamp-details">
+              <summary>세부 조정</summary>
+              <label class="field range-field"><span>잉크 농도 <output id="stamp-opacity-value">100%</output></span><input id="stamp-opacity" type="range" min="40" max="100" value="100"></label>
+              <label class="field range-field"><span>테두리 두께 <output id="stamp-line-width-value">20</output></span><input id="stamp-line-width" type="range" min="6" max="36" value="20"></label>
+              <label class="field range-field"><span>글자 간격 <output id="stamp-spacing-value">8</output></span><input id="stamp-spacing" type="range" min="0" max="30" value="8"></label>
+              <label class="field range-field"><span>도장 찍힘 질감 <output id="stamp-texture-value">0%</output></span><input id="stamp-texture" type="range" min="0" max="70" value="0"></label>
+            </details>
           </div>
+
           <div id="stamp-photo-controls" role="tabpanel" aria-labelledby="stamp-photo-tab" hidden>
             <button type="button" class="upload-zone" id="stamp-upload">
               <span class="upload-icon" aria-hidden="true">＋</span>
@@ -70,7 +85,11 @@
             <canvas id="stamp-canvas" width="800" height="800" aria-label="도장 이미지 미리보기"></canvas>
             <p id="stamp-placeholder" hidden>도장 사진을 선택해 주세요.</p>
           </div>
-          <p class="preview-note" id="stamp-status" role="status">체크무늬 부분은 저장할 때 투명해집니다.</p>
+          <p class="preview-note" id="stamp-status" role="status"></p>
+          <div id="stamp-presets-wrap">
+            <p class="preset-label">내 이름으로 골라보기</p>
+            <div id="stamp-presets" class="stamp-presets" aria-label="도장 견본 선택"></div>
+          </div>
         </div>
       </div>
     </section>
@@ -123,6 +142,7 @@
     </section>
     <p class="privacy-note">선택한 사진은 서버에 전송되지 않고 이 기기에서 처리됩니다.</p>
   </main>
-  <script src="./tools.js?v=20260925-controls-only" defer></script>
+  <script src="./stamp.js?v=20260925-stamp-options" defer></script>
+  <script src="./tools.js?v=20260925-stamp-options" defer></script>
 </body>
 </html>

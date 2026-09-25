@@ -1,16 +1,9 @@
-
 (() => {
   'use strict';
   const $ = (id) => document.getElementById(id);
   const clamp = (n, lo, hi) => Math.max(lo, Math.min(hi, n));
-  const stampCanvas = $('stamp-canvas');
-  const stampCtx = stampCanvas.getContext('2d', { willReadFrequently: true });
   const scanSource = $('scan-source-canvas');
   const scanResult = $('scan-result-canvas');
-  let stampMode = 'text';
-  let stampShape = 'circle';
-  let stampColor = '#b63835';
-  let stampImage = null;
   let scanImage = null;
   let scanCorners = null;
   let dragCorner = -1;
@@ -55,7 +48,6 @@
       button.setAttribute('aria-pressed', String(active));
     }
   }
-  $('stamp-upload').addEventListener('click', () => $('stamp-file').click());
   $('scan-upload').addEventListener('click', () => $('scan-file').click());
   selectTool(window.location.hash.slice(1));
 
@@ -89,112 +81,6 @@
     canvas.getContext('2d', { willReadFrequently: true }).drawImage(image, 0, 0, canvas.width, canvas.height);
     return canvas;
   }
-  function stampText() {
-    stampCanvas.hidden = false;
-    $('stamp-download').disabled = false;
-    const text = $('stamp-name').value.trim() || '홍길동';
-    stampCtx.clearRect(0, 0, 800, 800);
-    stampCtx.save();
-    stampCtx.translate(400, 400);
-    stampCtx.globalAlpha = Number($('stamp-opacity').value) / 100;
-    stampCtx.strokeStyle = stampColor;
-    stampCtx.fillStyle = stampColor;
-    stampCtx.lineWidth = 27;
-    if (stampShape === 'circle') {
-      stampCtx.beginPath();
-      stampCtx.arc(0, 0, 292, 0, Math.PI * 2);
-      stampCtx.stroke();
-      stampCtx.lineWidth = 7;
-      stampCtx.beginPath();
-      stampCtx.arc(0, 0, 266, 0, Math.PI * 2);
-      stampCtx.stroke();
-    } else {
-      stampCtx.strokeRect(-292, -292, 584, 584);
-      stampCtx.lineWidth = 7;
-      stampCtx.strokeRect(-264, -264, 528, 528);
-    }
-    const chars = Array.from(text).slice(0, 8);
-    let rows;
-    if (chars.length <= 3) rows = chars.map((char) => [char]);
-    else if (chars.length === 4) rows = [chars.slice(0, 2), chars.slice(2, 4)];
-    else if (chars.length <= 6) rows = [chars.slice(0, 3), chars.slice(3, 6)];
-    else rows = [chars.slice(0, 4), chars.slice(4, 8)];
-    const size = chars.length === 3 ? 155 : chars.length <= 2 ? 190 : chars.length <= 6 ? 150 : 120;
-    stampCtx.font = '900 ' + size + 'px "Noto Serif KR", "Batang", serif';
-    stampCtx.textAlign = 'center';
-    stampCtx.textBaseline = 'middle';
-    const lineHeight = chars.length === 3 ? 150 : chars.length <= 2 ? 180 : 190;
-    rows.forEach((row, rowIndex) => row.forEach((char, colIndex) => {
-      const x = (colIndex - (row.length - 1) / 2) * (chars.length <= 3 ? 0 : size * 1.18);
-      const y = (rowIndex - (rows.length - 1) / 2) * lineHeight;
-      stampCtx.fillText(char, x, y, size * .95);
-    }));
-    stampCtx.restore();
-    $('stamp-placeholder').hidden = true;
-    setStatus('stamp-status', '투명 배경 PNG가 준비되었습니다.');
-  }
-  function stampPhoto() {
-    stampCanvas.hidden = !stampImage;
-    $('stamp-download').disabled = !stampImage;
-    stampCtx.clearRect(0, 0, 800, 800);
-    if (!stampImage) {
-      $('stamp-placeholder').hidden = false;
-      setStatus('stamp-status', '도장 사진을 선택해 주세요.');
-      return;
-    }
-    $('stamp-placeholder').hidden = true;
-    const source = scaledCanvas(stampImage, 760);
-    const x = Math.round((800 - source.width) / 2);
-    const y = Math.round((800 - source.height) / 2);
-    const data = source.getContext('2d', { willReadFrequently: true }).getImageData(0, 0, source.width, source.height);
-    const pixels = data.data;
-    const threshold = Number($('stamp-threshold').value);
-    for (let i = 0; i < pixels.length; i += 4) {
-      const distance = Math.hypot(255 - pixels[i], 255 - pixels[i + 1], 255 - pixels[i + 2]);
-      const alpha = clamp((distance - threshold) / 55, 0, 1);
-      pixels[i + 3] = Math.round(pixels[i + 3] * alpha);
-    }
-    const processed = document.createElement('canvas');
-    processed.width = source.width; processed.height = source.height;
-    processed.getContext('2d').putImageData(data, 0, 0);
-    stampCtx.drawImage(processed, x, y);
-    setStatus('stamp-status', '밝은 종이 배경을 제거했습니다. 강도를 조절해 확인하세요.');
-  }
-  function renderStamp() { stampMode === 'text' ? stampText() : stampPhoto(); }
-  for (const button of document.querySelectorAll('.mode-switch button')) {
-    button.addEventListener('click', () => {
-      stampMode = button.id === 'stamp-text-tab' ? 'text' : 'photo';
-      for (const tab of document.querySelectorAll('.mode-switch button')) {
-        const active = tab === button;
-        tab.classList.toggle('active', active);
-        tab.setAttribute('aria-selected', String(active));
-        tab.tabIndex = active ? 0 : -1;
-      }
-      $('stamp-text-controls').hidden = stampMode !== 'text';
-      $('stamp-photo-controls').hidden = stampMode !== 'photo';
-      renderStamp();
-    });
-  }
-  for (const button of document.querySelectorAll('#stamp-shapes button')) button.addEventListener('click', () => {
-    stampShape = button.dataset.shape;
-    selectButton('#stamp-shapes', button);
-    renderStamp();
-  });
-  for (const button of document.querySelectorAll('#stamp-colors button')) button.addEventListener('click', () => {
-    stampColor = button.dataset.color;
-    selectButton('#stamp-colors', button);
-    renderStamp();
-  });
-  $('stamp-name').addEventListener('input', renderStamp);
-  $('stamp-opacity').addEventListener('input', () => { $('stamp-opacity-value').value = $('stamp-opacity').value + '%'; renderStamp(); });
-  $('stamp-threshold').addEventListener('input', () => { $('stamp-threshold-value').value = $('stamp-threshold').value; renderStamp(); });
-  $('stamp-file').addEventListener('change', (event) => loadImage(event.target.files[0], (image) => { stampImage = image; stampPhoto(); }, 'stamp-status'));
-  $('stamp-download').addEventListener('click', () => {
-    if (stampMode === 'photo' && !stampImage) { setStatus('stamp-status', '도장 사진을 먼저 선택해 주세요.'); return; }
-    downloadCanvas(stampCanvas, 'classj-stamp.png');
-  });
-  renderStamp();
-
   function resetCorners() {
     const w = scanImage.width, h = scanImage.height;
     scanCorners = [[w * .06, h * .06], [w * .94, h * .06], [w * .94, h * .94], [w * .06, h * .94]];
@@ -429,4 +315,3 @@
   });
   window.addEventListener('pagehide', stopCamera);
 })();
-
