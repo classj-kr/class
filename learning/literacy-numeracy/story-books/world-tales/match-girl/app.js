@@ -230,8 +230,8 @@ const CHAPTERS = [
                 ],
                 "right": [
                     "그날 저녁 그 골목에 꽃이 한 다발 놓였습니다. 누가 두고 갔는지는 아무도 몰랐지요.",
-                    "지나가던 아이들이 걸음을 늦추고 그 꽃을 보았습니다.",
-                    "골목은 다시 조용해졌지요. 그 겨울에도 눈은 며칠이나 더 내렸습니다."
+                    "골목 안쪽 집에는 불이 켜졌습니다. 창 너머로 저녁상에 둘러앉은 식구들이 보였지요.",
+                    "골목은 다시 조용해졌습니다. 그 겨울에도 눈은 며칠이나 더 내렸지요."
                 ]
             }
         ],
@@ -242,7 +242,7 @@ const CHAPTERS = [
 function artFrame(src, emoji) {
     return `
         <div class="art-frame">
-            <img src="images/${src}?v=20260918" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <img src="images/${src}?v=20260926" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
             <div class="art-fallback" style="display:none">${emoji}</div>
         </div>`;
 }
@@ -775,7 +775,8 @@ const EN = {
                     ],
                     right: [
                         "That evening someone left a bunch of flowers in the alley. Nobody knew who had left them.",
-                        "Children going past slowed down to look at them, and then the alley was quiet again."
+                        "A lamp was lit in the house at the end of the alley, and through the window a family sat down to supper.",
+                        "Then the alley was quiet again, and the snow went on falling for days that winter."
                     ]
                 }
             ]
@@ -938,7 +939,7 @@ const EN = {
         '07-morning-2.webp': [
             { word: 'least of all', meaning: '무엇보다도 특히', sentence: 'And least of all that she had met her grandmother.' },
             { word: 'a bunch of', meaning: '한 다발의', sentence: 'Someone left a bunch of flowers in the alley.' },
-            { word: 'slow down', meaning: '걸음을 늦추다', sentence: 'Children going past slowed down to look.' },
+            { word: 'sit down to', meaning: '자리에 앉아 ~을 먹다', sentence: 'Through the window a family sat down to supper.' },
             { word: 'not one of them', meaning: '그들 가운데 아무도', sentence: 'Not one of them knew it.' }
         ],
         'end.webp': [
@@ -1038,8 +1039,8 @@ const WORDS_KO = {
     ],
     "07-morning-2.webp": [
         { w: "다발", k: "여럿을 한데 묶은 것.", s: "그날 저녁 그 골목에 꽃이 한 다발 놓였습니다." },
-        { w: "걸음을 늦추다", k: "가던 속도를 줄여 천천히 걷다.", s: "지나가던 아이들이 걸음을 늦추고 그 꽃을 보았습니다." },
-        { w: "조용해지다", k: "소리가 잦아들어 고요해지다.", s: "골목은 다시 조용해졌지요. 그 겨울에도 눈은 며칠이나 더 내렸습니다." }
+        { w: "둘러앉다", k: "여럿이 둥글게 모여 앉다.", s: "창 너머로 저녁상에 둘러앉은 식구들이 보였지요." },
+        { w: "조용해지다", k: "소리가 잦아들어 고요해지다.", s: "골목은 다시 조용해졌습니다. 그 겨울에도 눈은 며칠이나 더 내렸지요." }
     ],
     "end.webp": [
         { w: "구걸", k: "남에게 돈이나 먹을 것을 달라고 비는 일.", s: "안데르센의 어머니도 어릴 적에 거리에서 구걸을 했다고 하지요." },
