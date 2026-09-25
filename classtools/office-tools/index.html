@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#ffffff">
   <title>업무툴 · 클래스제이</title>
   <link rel="icon" href="/favicon.ico">
-  <link rel="stylesheet" href="./style.css?v=20260925-stamp-options">
+  <link rel="stylesheet" href="./style.css?v=20260925-image-drop">
 </head>
 <body>
   <a class="back-link" href="/classtools/" aria-label="교사 포털로 돌아가기">←</a>
@@ -68,7 +68,7 @@
             <button type="button" class="upload-zone" id="stamp-upload">
               <span class="upload-icon" aria-hidden="true">＋</span>
               <strong>도장 사진 선택</strong>
-              <small>JPG · PNG · WEBP</small>
+              <small>끌어놓거나 클릭 · JPG / PNG / WEBP</small>
             </button>
             <input id="stamp-file" type="file" accept="image/*" hidden>
             <label class="field range-field">
@@ -98,7 +98,7 @@
       <div class="workbench scan-workbench">
         <div class="controls">
           <div class="input-choices">
-            <button type="button" class="upload-zone" id="scan-upload"><span class="upload-icon" aria-hidden="true">＋</span><strong>사진 선택</strong></button>
+            <button type="button" class="upload-zone" id="scan-upload"><span class="upload-icon" aria-hidden="true">＋</span><strong>사진 선택</strong><small>끌어놓거나 클릭</small></button>
             <button type="button" class="upload-zone" id="camera-open"><span class="upload-icon" aria-hidden="true">◎</span><strong>카메라 촬영</strong></button>
           </div>
           <input id="scan-file" type="file" accept="image/*" hidden>
@@ -142,7 +142,7 @@
     </section>
     <p class="privacy-note">선택한 사진은 서버에 전송되지 않고 이 기기에서 처리됩니다.</p>
   </main>
-  <script src="./stamp.js?v=20260925-stamp-options" defer></script>
-  <script src="./tools.js?v=20260925-stamp-options" defer></script>
+  <script src="./stamp.js?v=20260925-image-drop" defer></script>
+  <script src="./tools.js?v=20260925-image-drop" defer></script>
 </body>
 </html>

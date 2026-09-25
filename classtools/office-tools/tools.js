@@ -49,6 +49,61 @@
     }
   }
   $('scan-upload').addEventListener('click', () => $('scan-file').click());
+  const fileDropZones = [
+    { zone: $('stamp-upload'), input: $('stamp-file'), status: 'stamp-status' },
+    { zone: $('scan-upload'), input: $('scan-file'), status: 'scan-status' }
+  ];
+  const isFileDrag = event => Array.from(event.dataTransfer?.types || []).includes('Files');
+  const fallbackImageTypes = { jpg: 'image/jpeg', jpeg: 'image/jpeg', png: 'image/png', webp: 'image/webp', gif: 'image/gif', bmp: 'image/bmp', avif: 'image/avif', svg: 'image/svg+xml' };
+  const droppedImageType = file => file.type || fallbackImageTypes[file.name.split('.').pop().toLowerCase()] || '';
+  const resetFileDrags = [];
+  for (const { zone, input, status } of fileDropZones) {
+    let depth = 0;
+    const reset = () => { depth = 0; zone.classList.remove('drag-over'); };
+    resetFileDrags.push(reset);
+    zone.addEventListener('dragenter', event => {
+      if (!isFileDrag(event)) return;
+      event.preventDefault();
+      depth++;
+      zone.classList.add('drag-over');
+    });
+    zone.addEventListener('dragover', event => {
+      if (!isFileDrag(event)) return;
+      event.preventDefault();
+      event.dataTransfer.dropEffect = 'copy';
+      zone.classList.add('drag-over');
+    });
+    zone.addEventListener('dragleave', event => {
+      if (!isFileDrag(event)) return;
+      depth = Math.max(0, depth - 1);
+      if (!depth) reset();
+    });
+    zone.addEventListener('drop', event => {
+      if (!isFileDrag(event)) return;
+      event.preventDefault();
+      reset();
+      const file = Array.from(event.dataTransfer.files).find(file => droppedImageType(file).startsWith('image/'));
+      if (!file) { setStatus(status, '이미지 파일을 놓아 주세요.'); return; }
+      // Feed dropped files through the same change handler used by the file picker.
+      const transfer = new DataTransfer();
+      transfer.items.add(file.type ? file : new File([file], file.name, { type: droppedImageType(file), lastModified: file.lastModified }));
+      input.files = transfer.files;
+      input.dispatchEvent(new Event('change', { bubbles: true }));
+    });
+  }
+  document.addEventListener('dragover', event => {
+    if (!isFileDrag(event) || event.defaultPrevented) return;
+    event.preventDefault();
+    event.dataTransfer.dropEffect = 'none';
+  });
+  document.addEventListener('drop', event => {
+    if (!isFileDrag(event)) return;
+    event.preventDefault();
+    resetFileDrags.forEach(reset => reset());
+  });
+  document.addEventListener('dragend', () => resetFileDrags.forEach(reset => reset()));
+  window.addEventListener('blur', () => resetFileDrags.forEach(reset => reset()));
+
   selectTool(window.location.hash.slice(1));
 
   function setStatus(id, message) { $(id).textContent = message; }
