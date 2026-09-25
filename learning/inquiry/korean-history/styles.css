@@ -89,25 +89,11 @@ body {
   transform: scale(1.08);
 }
 
-/* ── 상단 헤더 ── */
-.app-header {
-  padding: 12px 76px 10px;
-  text-align: center;
-}
-.header-title {
-  margin: 0;
-  font-size: clamp(1.35rem, 2vw, 1.65rem);
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  color: #ffffff;
-  white-space: nowrap;
-}
-
 /* ── 메인 컨테이너 ── */
 main {
   max-width: 1080px;
   margin: 0 auto;
-  padding: 4px 16px 60px;
+  padding: 0 16px 60px;
 }
 
 /* ── 고르기 필터 바 ── */
@@ -732,7 +718,6 @@ main {
 
 /* ── 반응형 최적화 ── */
 @media (max-width: 768px) {
-  .app-header { padding: 18px 12px 12px; }
   .picker { padding: 12px 14px; }
   .picker-label { flex-basis: 100%; margin-bottom: -4px; }
   .picker-row { flex-wrap: wrap; gap: 6px; }
@@ -745,7 +730,6 @@ main {
 }
 
 @media (max-width: 480px) {
-  .header-title { font-size: 1.5rem; }
   .era-tabs { gap: 4px; }
   .era-tab { padding: 5px 9px; font-size: 0.82rem; }
   .choices { gap: 5px; }
