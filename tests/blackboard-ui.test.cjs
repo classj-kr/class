@@ -309,3 +309,35 @@ test('two contacts erase without area data and remain erasing until both are lif
   assert.equal((await savedStrokes(page)).at(-1).tool,'pen');
   assert.deepEqual(errors,[]);await context.close();
 });
+
+test('finish narrows to the exact endpoint in horizontal, vertical and diagonal strokes',async()=>{
+  const {context,page,errors}=await setup();
+  const checks=await page.evaluate(()=>{
+    return [0,Math.PI/2,Math.PI/4,-Math.PI/4,Math.PI].map(angle=>{
+      const t=[Math.cos(angle),Math.sin(angle)],n=[-t[1],t[0]];
+      const end=[400,300],length=160;
+      const points=Array.from({length:81},(_,i)=>({x:(end[0]-t[0]*length*(1-i/80))/800,y:(end[1]-t[1]*length*(1-i/80))/600,time:i*9}));
+      const polygon=ClassJBrush.outline({width:18,points},800,600);
+      const section=distance=>{
+        const hits=[];
+        for(let i=0;i<polygon.length;i++){
+          const a=polygon[i],b=polygon[(i+1)%polygon.length];
+          const ax=(a[0]-end[0])*t[0]+(a[1]-end[1])*t[1];
+          const bx=(b[0]-end[0])*t[0]+(b[1]-end[1])*t[1];
+          if(Math.abs(bx-ax)<1e-8)continue;
+          const fraction=(-distance-ax)/(bx-ax);
+          if(fraction>=0&&fraction<=1)hits.push((a[0]+(b[0]-a[0])*fraction-end[0])*n[0]+(a[1]+(b[1]-a[1])*fraction-end[1])*n[1]);
+        }
+        return hits.length?Math.max(...hits)-Math.min(...hits):0;
+      };
+      const tip=polygon[polygon.tipIndex];
+      return {angle,hasTip:!!tip,error:tip?Math.hypot(tip[0]-end[0],tip[1]-end[1]):Infinity,body:section(35),nearTip:section(2)};
+    });
+  });
+  for(const result of checks) {
+    assert.equal(result.hasTip,true,JSON.stringify(result));
+    assert.ok(result.error<0.001,JSON.stringify(result));
+    assert.ok(result.body>1 && result.nearTip<result.body*0.4,JSON.stringify(result));
+  }
+  assert.deepEqual(errors,[]);await context.close();
+});
