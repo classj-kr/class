@@ -269,7 +269,9 @@
   }
   function updateCorrectionControl() {
     $('correctionBtn').setAttribute('aria-pressed', correction);
-    $('correctionBtn').textContent = '글씨 보정 ' + (correction ? '켜짐' : '꺼짐');
+    $('correctionBtn').textContent = '보정';
+    $('correctionBtn').title = '글씨 보정 ' + (correction ? '켜짐' : '꺼짐');
+    $('correctionBtn').setAttribute('aria-label', $('correctionBtn').title);
   }
   $('correctionBtn').onclick = () => {
     correction = !correction;
@@ -326,11 +328,7 @@
     output.width = canvas.width;
     output.height = canvas.height;
     const out = output.getContext('2d');
-    const gradient = out.createRadialGradient(output.width * .35, output.height * .15, 0, output.width * .35, output.height * .15, output.width);
-    gradient.addColorStop(0, '#24483a');
-    gradient.addColorStop(.5, '#17382e');
-    gradient.addColorStop(1, '#112a23');
-    out.fillStyle = gradient;
+    out.fillStyle = '#17382e';
     out.fillRect(0, 0, output.width, output.height);
     out.drawImage(canvas, 0, 0);
     output.toBlob(blob => {
@@ -351,6 +349,39 @@
       e.preventDefault();
       $(key === 'y' || e.shiftKey ? 'redoBtn' : 'undoBtn').click();
     }
+  });
+  function setToolsVisible(visible) {
+    finish();
+    $('moreMenu').open = false;
+    $('toolbar').hidden = !visible;
+    $('showToolsBtn').hidden = visible;
+    $('showToolsBtn').setAttribute('aria-expanded', visible);
+    (visible ? $('penBtn') : $('showToolsBtn')).focus({ preventScroll: true });
+  }
+  $('hideToolsBtn').onclick = () => setToolsVisible(false);
+  $('showToolsBtn').onclick = () => setToolsVisible(true);
+  $('moreMenu').addEventListener('click', e => {
+    if (e.target.closest('button')) $('moreMenu').open = false;
+  });
+  document.addEventListener('pointerdown', e => {
+    if (!$('moreMenu').contains(e.target)) $('moreMenu').open = false;
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && $('moreMenu').open) {
+      $('moreMenu').open = false;
+      $('moreBtn').focus();
+    }
+  });
+  $('fullscreenBtn').onclick = async () => {
+    finish();
+    try {
+      if (document.fullscreenElement) await document.exitFullscreen();
+      else if (document.documentElement.requestFullscreen) await document.documentElement.requestFullscreen();
+      else notice('이 브라우저에서는 전체 화면 전환을 지원하지 않습니다.');
+    } catch (_) { notice('전체 화면으로 전환하지 못했습니다.'); }
+  };
+  document.addEventListener('fullscreenchange', () => {
+    $('fullscreenLabel').textContent = document.fullscreenElement ? '전체 화면 종료' : '전체 화면';
   });
   updateSizeControl();
   updateCorrectionControl();

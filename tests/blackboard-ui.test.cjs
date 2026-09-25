@@ -20,6 +20,10 @@ async function setup() {
   await page.waitForFunction(()=>document.querySelector('#board').width > 500 && window.ClassJBrush);
   return {context,page,errors};
 }
+async function menuAction(page,id) {
+  if (!(await page.locator('#moreMenu').evaluate(el=>el.open))) await page.locator('#moreBtn').click();
+  await page.locator('#'+id).click();
+}
 async function simulate(page, pointerType, points, pressure=0.5) {
   return page.evaluate(({pointerType,points,pressure})=>{
     const c=document.querySelector('#board'),r=c.getBoundingClientRect();
@@ -80,11 +84,11 @@ test('real mouse, eraser, undo clear, reload, export and narrow layout',async()=
   await page.locator('#undoBtn').click();
   assert.equal(await page.locator('#board').evaluate(c=>c.toDataURL()),drawn);
   page.on('dialog',d=>d.accept());
-  await page.locator('#clearBtn').click();await page.locator('#undoBtn').click();
+  await menuAction(page,'clearBtn');await page.locator('#undoBtn').click();
   assert.equal(await page.locator('#board').evaluate(c=>c.toDataURL()),drawn);
   await page.reload();await page.waitForFunction(()=>document.querySelector('#board').width>500);
   assert.equal(await page.locator('#board').evaluate(c=>c.toDataURL()),drawn);
-  const downloadPromise=page.waitForEvent('download');await page.locator('#saveBtn').click();
+  const downloadPromise=page.waitForEvent('download');await menuAction(page,'saveBtn');
   await (await downloadPromise).saveAs(path.join(output,'export.png'));
   await page.setViewportSize({width:390,height:844});
   await page.waitForFunction(()=>document.querySelector('#board').width<500);
@@ -339,5 +343,40 @@ test('finish narrows to the exact endpoint in horizontal, vertical and diagonal 
     assert.ok(result.error<0.001,JSON.stringify(result));
     assert.ok(result.body>1 && result.nearTip<result.body*0.4,JSON.stringify(result));
   }
+  assert.deepEqual(errors,[]);await context.close();
+});
+
+test('canvas fills desktop and mobile viewports; floating tools collapse without moving ink',async()=>{
+  const {context,page,errors}=await setup();
+  for(const size of [{width:1280,height:900},{width:390,height:844}]){
+    await page.setViewportSize(size);
+    await page.waitForFunction(({width,height})=>{
+      const r=document.querySelector('#board').getBoundingClientRect();
+      return r.width===width&&r.height===height;
+    },size);
+    const box=await page.locator('#board').boundingBox();
+    assert.deepEqual(box,{x:0,y:0,...size});
+    assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth===innerWidth),true);
+    await simulate(page,'mouse',[[20,20,1000],[120,20,1100],[120,70,1150]]);
+    const ink=await inkImage(page);
+    await page.locator('#hideToolsBtn').click();
+    assert.equal(await page.locator('#toolbar').isVisible(),false);
+    assert.equal(await page.locator('#showToolsBtn').isVisible(),true);
+    assert.equal(await inkImage(page),ink);
+    assert.deepEqual(await page.locator('#board').boundingBox(),box);
+    await page.locator('#showToolsBtn').click();
+    assert.equal(await page.locator('#toolbar').isVisible(),true);
+    assert.equal(await inkImage(page),ink);
+    await page.locator('#moreBtn').click();
+    const menu=await page.locator('.menu-panel').boundingBox();
+    assert.ok(menu.x>=0&&menu.y>=0&&menu.x+menu.width<=size.width);
+    await page.keyboard.press('Escape');
+    assert.equal(await page.locator('.menu-panel').isVisible(),false);
+  }
+  await page.setViewportSize({width:1280,height:900});
+  await menuAction(page,'fullscreenBtn');
+  await page.waitForFunction(()=>!!document.fullscreenElement);
+  await menuAction(page,'fullscreenBtn');
+  await page.waitForFunction(()=>!document.fullscreenElement);
   assert.deepEqual(errors,[]);await context.close();
 });
