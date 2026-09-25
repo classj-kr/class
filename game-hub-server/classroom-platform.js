@@ -3067,8 +3067,10 @@ function createClassroomPlatform(options = {}) {
     const keyParam = process.env.NEIS_API_KEY ? `&KEY=${process.env.NEIS_API_KEY}` : "";
     const neisUrl = `https://open.neis.go.kr/hub/mealServiceDietInfo?Type=json${keyParam}&ATPT_OFCDC_SC_CODE=${officeCode}&SD_SCHUL_CODE=${schoolCode}&MLSV_YMD=${targetDate}`;
     try {
-      const response = await fetch(neisUrl);
+      const response = await fetch(neisUrl, { signal: AbortSignal.timeout(10000) });
+      if (!response.ok) throw new Error("Meal service request failed");
       const data = await response.json();
+      if (String(data?.RESULT?.CODE || "").startsWith("ERROR")) throw new Error("Meal service returned an error");
       const rows = data?.mealServiceDietInfo?.[1]?.row || [];
       const meals = rows.map((r) => {
         const rawDish = r.DDISH_NM || "";
@@ -3090,7 +3092,7 @@ function createClassroomPlatform(options = {}) {
       });
       res.json({ date: targetDate, meals });
     } catch (err) {
-      res.json({ date: targetDate, meals: [] });
+      throw new HttpError(502, "MEAL_SERVICE_UNAVAILABLE", "급식 정보를 불러오지 못했습니다. 잠시 후 다시 시도해 주세요.");
     }
   }));
 
@@ -3662,7 +3664,7 @@ function createClassroomPlatform(options = {}) {
 
     if (requestedClassId) {
       const classResult = await pool.query(
-        `SELECT c.*, sc.name AS school_name, sc.school_code, sc.location_name
+        `SELECT c.*, sc.name AS school_name, sc.school_code, sc.office_code, sc.location_name
          FROM classroom_classes c
          JOIN classroom_schools sc ON sc.id = c.school_id
          WHERE c.id = $1 AND c.school_id = $2`,
@@ -3673,7 +3675,7 @@ function createClassroomPlatform(options = {}) {
 
     if (!classroom) {
       const classResult = await pool.query(
-        `SELECT c.*, sc.name AS school_name, sc.school_code, sc.location_name
+        `SELECT c.*, sc.name AS school_name, sc.school_code, sc.office_code, sc.location_name
          FROM classroom_classes c
          JOIN classroom_schools sc ON sc.id = c.school_id
          WHERE c.teacher_user_id = $1
@@ -3687,7 +3689,7 @@ function createClassroomPlatform(options = {}) {
     if (!classroom && isSubjectTeacher) {
       // Fallback for subject teacher: grab first class in school
       const firstClassResult = await pool.query(
-        `SELECT c.*, sc.name AS school_name, sc.school_code, sc.location_name
+        `SELECT c.*, sc.name AS school_name, sc.school_code, sc.office_code, sc.location_name
          FROM classroom_classes c
          JOIN classroom_schools sc ON sc.id = c.school_id
          WHERE c.school_id = $1
@@ -3737,6 +3739,7 @@ function createClassroomPlatform(options = {}) {
         id: classroom.id,
         schoolName: classroom.school_name,
         schoolCode: classroom.school_code,
+        officeCode: classroom.office_code || "",
         locationName: classroom.location_name || "",
         academicYear: classroom.academic_year,
         grade: classroom.grade,

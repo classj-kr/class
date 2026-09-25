@@ -6,12 +6,12 @@
   <meta name="theme-color" content="#d8e8dc">
   <meta name="description" content="경찰팀과 도둑팀이 각자의 기기로 접속해 보석을 둘러싼 추격전을 벌이는 2~6인 실시간 보드게임">
   <title>경찰과 도둑</title>
-  <link rel="stylesheet" href="../../../assets/network/multiplayer-lobby.css?v=20260925-compact-join">
+  <link rel="stylesheet" href="../../../assets/network/multiplayer-lobby.css?v=20260926-unified-lobby">
   <link rel="stylesheet" href="../../../assets/device-game.css?v=20260921c">
   <link rel="stylesheet" href="citychase.css?v=20260921c">
   <script src="../../../assets/sound/music-control.js?v=20260910-click-cache-1" defer></script>
   <script src="../../../assets/network/game-network.js?v=20260821"></script>
-  <script src="../../../assets/network/multiplayer-lobby.js?v=20260925-compact-join"></script>
+  <script src="../../../assets/network/multiplayer-lobby.js?v=20260926-unified-lobby"></script>
   <script src="citychase-data.js?v=20260831b"></script>
 </head>
 <body>
@@ -86,7 +86,7 @@
           <p id="lobbyGuide" class="mp-lobby-guide">참가자를 기다리는 중입니다.</p>
           <button id="startBtn" class="primary startButton" type="button" disabled>참가자를 기다리는 중</button>
           <div class="lobbySecondaryActions">
-            <button id="rulesBtnLobby" class="secondary" type="button">HOW TO PLAY</button>
+            <button id="rulesBtnLobby" class="secondary" type="button">게임 방법</button>
             <button id="leaveBtnLobby" class="secondary" type="button">메인 화면</button>
           </div>
         </section>
@@ -175,7 +175,7 @@
 
   <section id="rulesOverlay" class="overlay hidden" role="dialog" aria-modal="true" aria-labelledby="rulesTitle">
     <div class="modal">
-      <div class="row spread"><div><div class="eyebrow">HOW TO PLAY</div><h2 id="rulesTitle">경찰과 도둑 게임 방법</h2></div><button id="closeRulesBtn" class="iconButton" type="button" aria-label="닫기">×</button></div>
+      <div class="row spread"><div><div class="eyebrow">게임 방법</div><h2 id="rulesTitle">경찰과 도둑 게임 방법</h2></div><button id="closeRulesBtn" class="iconButton" type="button" aria-label="닫기">×</button></div>
       <div class="rulesGrid">
         <article class="ruleBox"><h3>🌸 도둑팀</h3><ul><li>도시의 일곱 장소를 조사해 숨겨진 보석을 찾으세요.</li><li>찾은 보석을 하나씩 비밀기지까지 운반하면 확보됩니다.</li><li>경보 장치를 발견한 말은 현장에서 붙잡힙니다.</li><li>가짜 단서 카드를 놓아 경찰을 엉뚱한 방향으로 유도할 수 있습니다.</li></ul></article>
         <article class="ruleBox"><h3>🟣 경찰팀</h3><ul><li>추격 전에 보석 두 개와 경보 장치를 서로 다른 장소에 배치하세요.</li><li>이동 경로에서 도둑말과 마주치면 그 말을 구금합니다.</li><li>차단 표지를 활용해 도둑팀의 진로를 막을 수 있습니다.</li><li>도둑말 세 개를 모두 구금하면 경찰팀이 승리합니다.</li></ul></article>

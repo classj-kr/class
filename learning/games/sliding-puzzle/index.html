@@ -12,12 +12,13 @@
   <script src="../../../assets/network/finisher-board.js"></script>
   <script src="../../../assets/sound/music-control.js?v=20260910-click-cache-1" defer></script>
 <link rel="stylesheet" href="../puzzle-board-layout.css?v=20260921a">
+<link rel="stylesheet" href="../../../assets/network/single-player-entry.css?v=20260926-ui-review">
 </head>
 <body>
   <audio id="bgm" src="assets/sound/bgm.ogg" loop preload="auto"></audio>
   <main class="page-shell">
     <section class="start-screen screen" id="startScreen" aria-labelledby="startTitle">
-      <h1 class="start-title" id="startTitle"><span>8 PUZZLE</span><span>15 PUZZLE</span></h1>
+      <h1 class="start-title" id="startTitle">숫자 슬라이딩 퍼즐</h1>
       <p class="start-subtitle">NUMBER SLIDING PUZZLE</p>
 
       <p class="player-line" id="playerLine"></p>
@@ -31,7 +32,7 @@
       </div>
 
       <div class="start-actions">
-        <button class="primary start-button" id="startButton" type="button">START GAME</button>
+        <button class="primary start-button" id="startButton" type="button">게임 시작</button>
       </div>
       <a class="back-link start-back" href="../../../#puzzle-title">← MAIN MENU</a>
 
@@ -65,15 +66,15 @@
           <div class="actions">
             <button class="primary" id="newGameButton" type="button">NEW GAME</button>
             <button class="secondary" id="resetButton" type="button">RESET</button>
-            <button class="secondary" id="guideButton" type="button" aria-expanded="false" aria-controls="guidePanel">HOW TO PLAY</button>
+            <button class="secondary" id="guideButton" type="button" aria-expanded="false" aria-controls="guidePanel">게임 방법</button>
           </div>
         </div>
 
         <aside class="guide-panel" id="guidePanel" aria-labelledby="guideTitle" hidden>
           <header class="guide-header">
             <div>
-              <p class="eyebrow">PUZZLE GUIDE</p>
-              <h2 id="guideTitle">HOW TO PLAY</h2>
+
+              <h2 id="guideTitle">게임 방법</h2>
             </div>
             <button class="guide-close" id="guideCloseButton" type="button" aria-label="공략 닫기">×</button>
           </header>
@@ -226,6 +227,6 @@
     </div>
   </div>
 
-  <script src="app.js"></script>
+  <script src="app.js?v=20260926-ui-review"></script>
 </body>
 </html>

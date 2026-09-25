@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>낱말 암호</title>
-<link rel="stylesheet" href="../../../assets/network/multiplayer-lobby.css?v=20260925-compact-join">
+<link rel="stylesheet" href="../../../assets/network/multiplayer-lobby.css?v=20260926-unified-lobby">
 <style>
 :root{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;color:#eef0f5;background:#10121a;--accent:#d9a441;--accent-soft:#8a662a;--panel:#1b1f2b;--panel-edge:#3a3f52;--red:#b3453c;--red-soft:#7a2b26;--blue:#3468a6;--blue-soft:#20456f;--neutral:#c9bfa4;--bomb:#2a2a2f}
 *{box-sizing:border-box}
@@ -109,7 +109,7 @@ body:has(#boardArea:not(.hidden)) #game>.panel:first-child{margin-bottom:8px;pad
 #roomCode,#roomShare #gameRoomCode{font-size:clamp(36px,8vw,44px);line-height:1.15;font-variant-numeric:tabular-nums}
 </style>
 <script src="../../../assets/network/game-network.js?v=20260821"></script>
-<script src="../../../assets/network/multiplayer-lobby.js?v=20260925-compact-join"></script>
+<script src="../../../assets/network/multiplayer-lobby.js?v=20260926-unified-lobby"></script>
 <script src="../../../assets/sound/music-control.js?v=20260910-click-cache-1" defer></script>
 <link rel="stylesheet" href="../../../assets/device-game.css?v=20260921c">
 </head>
@@ -130,14 +130,14 @@ body:has(#boardArea:not(.hidden)) #game>.panel:first-child{margin-bottom:8px;pad
       <div class="entryActions">
         <button id="createTab" class="primary" type="button">CREATE ROOM</button>
         <button id="joinTab" class="secondary" type="button" aria-label="방 번호 입력 방식 선택" role="tab">JOIN ROOM</button>
-        <button id="rulesEntryBtn" class="secondary" type="button">HOW TO PLAY</button>
+        <button id="rulesEntryBtn" class="secondary" type="button">게임 방법</button>
         <button id="leaveEntryBtn" class="secondary" type="button">메인 화면으로</button>
       </div>
     </header>
 
     <section id="createPane" class="panel entryPane hidden">
       <div class="row spread">
-        <div><div class="eyebrow">ROOM CODE</div><div id="roomCode" class="code">----</div></div>
+        <div><div class="eyebrow">방 번호</div><div id="roomCode" class="code">----</div></div>
       </div>
       <div id="entryStatus" class="status">방을 만드는 중입니다.</div>
     </section>
@@ -151,21 +151,21 @@ body:has(#boardArea:not(.hidden)) #game>.panel:first-child{margin-bottom:8px;pad
     </section>
   </section>
 
-  <section id="game" class="hidden">
+  <section id="game" class="hidden mp-ui-separate-waiting">
     <div class="panel row spread">
       <div id="roomShare" hidden>
         <div class="eyebrow">방 번호</div>
         <div id="gameRoomCode" class="code" aria-live="polite">----</div>
       </div>
       <div class="row">
-        <button id="rulesGameBtn" class="secondary" type="button">RULES</button>
+        <button id="rulesGameBtn" class="secondary" type="button">게임 방법</button>
         <button id="leaveGameBtn" class="secondary" type="button">메인 화면</button>
       </div>
     </div>
 
     <section id="lobbySetup" class="panel hidden">
       <h2>팀과 역할 정하기</h2>
-      <div class="eyebrow">낱말 학년 범위 · 방장만 변경 가능</div>
+      <div class="eyebrow">낱말 학년</div>
       <div id="gradeRow" class="gradeRow"></div>
       <p id="gradeNote" class="note"></p>
 
@@ -186,7 +186,7 @@ body:has(#boardArea:not(.hidden)) #game>.panel:first-child{margin-bottom:8px;pad
       <div id="unassignedRow" class="unassignedRow"></div>
 
       <div class="row" style="margin-top:14px">
-        <button id="beginGameBtn" class="primary hidden" type="button" disabled>START GAME</button>
+        <button id="beginGameBtn" class="primary hidden" type="button" disabled>게임 시작</button>
       </div>
       <p id="startGuide" class="startGuide"></p>
       <p id="waitingHostNote" class="note hidden">방장이 게임을 시작할 때까지 기다려 주세요.</p>
@@ -254,7 +254,7 @@ body:has(#boardArea:not(.hidden)) #game>.panel:first-child{margin-bottom:8px;pad
 
 <section id="rulesOverlay" class="overlay hidden" role="dialog" aria-modal="true">
   <div class="modal">
-    <div class="eyebrow">HOW TO PLAY</div>
+    <div class="eyebrow">게임 방법</div>
     <h2>낱말 암호 규칙</h2>
     <ol>
       <li>레드팀·블루팀으로 나뉘고, 각 팀은 스파이마스터 1명과 대표 요원 1명, 딱 두 명만 화면에서 역할을 맡습니다. 나머지 반 친구들은 그 팀에 붙어서 교실에서 직접 의논에 참여합니다.</li>
@@ -265,7 +265,7 @@ body:has(#boardArea:not(.hidden)) #game>.panel:first-child{margin-bottom:8px;pad
       <li>자기 팀 낱말 9장(먼저 시작한 팀) 또는 8장(나중에 시작한 팀)을 모두 찾으면 승리합니다.</li>
       <li>방에는 두 팀 4명 외에 관전 화면 1개를 더 열 수 있습니다 — 교사가 이 화면을 프로젝터로 띄워 반 전체가 보드를 함께 볼 때 씁니다. 관전 화면도 낱말의 색은 보이지 않습니다.</li>
     </ol>
-    <button id="closeRulesBtn" class="primary" type="button">CLOSE</button>
+    <button id="closeRulesBtn" class="primary" type="button">닫기</button>
   </div>
 </section>
 

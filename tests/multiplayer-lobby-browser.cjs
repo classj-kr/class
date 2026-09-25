@@ -139,10 +139,14 @@ async function joinPlayer(browser, game, name, code, errors, players, result) {
       await guest.page.setViewport({ width, height });
       await guest.page.evaluate(() => window.__roomTestLobby.elements.joinCode.scrollIntoView({ block: "center", inline: "nearest" }));
       const metric = await guest.page.evaluate(() => {
-        const { joinCode, joinButton, joinPane } = window.__roomTestLobby.elements;
+        const { joinCode, joinButton, joinPane, lobbyScreen, startButton } = window.__roomTestLobby.elements;
+        const card = lobbyScreen.getBoundingClientRect();
+        const tabs = lobbyScreen.querySelector(".mp-ui-tabs").getBoundingClientRect();
         const input = joinCode.getBoundingClientRect(), button = joinButton.getBoundingClientRect();
         const onScreen = rect => rect.left >= 0 && rect.top >= 0 && rect.right <= innerWidth + 1 && rect.bottom <= innerHeight + 1;
         return {
+          unified: card.width <= 642 && input.left >= card.left && input.right <= card.right && tabs.bottom <= input.top,
+          startHidden: !startButton || !startButton.checkVisibility(),
           width: innerWidth, height: innerHeight, inputWidth: input.width, inputHeight: input.height,
           buttonWidth: button.width, buttonHeight: button.height, paneWidth: joinPane.getBoundingClientRect().width,
           sameRow: Math.abs(input.top + input.height / 2 - button.top - button.height / 2) <= 2 && button.left >= input.right,
@@ -151,6 +155,7 @@ async function joinPlayer(browser, game, name, code, errors, players, result) {
       });
       result.joinChecks.push(metric);
       await guest.page.screenshot({ path: path.join(output, `${game}-join-${width}.png`) });
+      assert.ok(metric.unified && metric.startHidden, "Entry must keep tabs and input in one card and hide the start action before joining: " + JSON.stringify(metric));
       assert.ok(metric.visible && metric.sameRow && metric.inputWidth >= 100 && metric.inputWidth <= 180 &&
         metric.buttonWidth >= 60 && metric.buttonWidth <= 160 && metric.inputHeight >= 44 && metric.buttonHeight >= 44,
         "The four-digit field and join button must stay compact, usable and on one row: " + JSON.stringify(metric));
@@ -236,7 +241,9 @@ async function main() {
             metric.lobbyUsesFullWidth = await host.page.evaluate(() => {
               const setup = document.getElementById("lobby").getBoundingClientRect();
               const game = document.getElementById("game").getBoundingClientRect();
-              return setup.width >= game.width - 2 && setup.left >= 0 && setup.right <= innerWidth;
+              const style = getComputedStyle(document.getElementById("game"));
+              const inset = parseFloat(style.paddingLeft) + parseFloat(style.paddingRight) + parseFloat(style.borderLeftWidth) + parseFloat(style.borderRightWidth);
+              return setup.width >= game.width - inset - 2 && setup.left >= 0 && setup.right <= innerWidth;
             });
             assert.ok(metric.lobbyUsesFullWidth, "The waiting room must not reserve a column for a hidden identity card");
           }

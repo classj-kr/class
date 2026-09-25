@@ -6,10 +6,10 @@
 <meta name="theme-color" content="#142238">
 <title>벌집 블록</title>
 <link rel="preload" as="image" href="/learning/games/honeycomb/assets/images/honeycomb-cover.webp">
-<link rel="stylesheet" href="../../../assets/network/multiplayer-lobby.css?v=20260925-compact-join">
+<link rel="stylesheet" href="../../../assets/network/multiplayer-lobby.css?v=20260926-unified-lobby">
 <link rel="stylesheet" href="styles.css?v=20260921c">
 <script src="../../../assets/network/game-network.js?v=20260821"></script>
-<script src="../../../assets/network/multiplayer-lobby.js?v=20260925-compact-join"></script>
+<script src="../../../assets/network/multiplayer-lobby.js?v=20260926-unified-lobby"></script>
 <script src="../../../assets/sound/music-control.js?v=20260910-click-cache-1" defer></script>
 <link rel="stylesheet" href="../../../assets/device-game.css?v=20260921c">
 <link rel="stylesheet" href="../block-board-layout.css?v=20260921a">
@@ -37,7 +37,7 @@
 
     <section id="hostPane" class="panel mp-lobby-card hidden">
       <div class="row spread">
-        <div><div class="eyebrow">ROOM CODE</div><div id="roomCode" class="code">----</div></div>
+        <div><div class="eyebrow">방 번호</div><div id="roomCode" class="code">----</div></div>
       </div>
       <div id="hostStatus" class="mp-lobby-status">방을 만드는 중입니다.</div>
     </section>
@@ -51,12 +51,12 @@
     </section>
 
     <section class="panel">
-      <h2>PLAYERS</h2>
+      <h2>참가자</h2>
       <div id="lobbyPlayers" class="mp-lobby-players"></div>
       <p id="lobbyGuide" class="mp-lobby-guide">2, 3, 4, 6명이 모이면 시작할 수 있습니다.</p>
       <button id="startBtn" class="primary" type="button" disabled>WAITING FOR PLAYERS</button>
       <div class="row" style="margin-top:10px">
-        <button id="rulesBtnLobby" class="secondary" type="button">HOW TO PLAY</button>
+        <button id="rulesBtnLobby" class="secondary" type="button">게임 방법</button>
         <button id="leaveBtnLobby" class="secondary" type="button">메인 화면</button>
       </div>
     </section>
@@ -149,7 +149,7 @@
 
 <section id="rulesOverlay" class="overlay hidden" role="dialog" aria-modal="true" aria-labelledby="rulesTitle">
   <div class="modal">
-    <div class="eyebrow">HOW TO PLAY</div>
+    <div class="eyebrow">게임 방법</div>
     <h2 id="rulesTitle">한 칸 간격으로 벌집을 채우는 게임</h2>
     <p class="rule-intro">내 조각을 가장 많이 보드에 내려놓으면 승리합니다. 규칙은 단순하지만, 같은 색끼리는 절대 붙을 수 없어요.</p>
     <div class="rule-grid">

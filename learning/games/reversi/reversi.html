@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>리버시</title>
-<link rel="stylesheet" href="../../../assets/network/multiplayer-lobby.css?v=20260925-compact-join">
+<link rel="stylesheet" href="../../../assets/network/multiplayer-lobby.css?v=20260926-unified-lobby">
 <style>
 :root{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;color:#f2f7f0;background:#0d1811}*{box-sizing:border-box}body{margin:0;min-height:100vh;padding:22px;background:linear-gradient(#08130d82,#060f09b8),url("/learning/games/reversi/assets/images/background.webp") center/cover fixed no-repeat,#0d1811}button,input{font:inherit}.shell{width:min(1180px,100%);margin:auto}#missingScreen,#lobbyScreen{max-width:700px;margin:auto}.panel{margin-bottom:15px;padding:20px;border:1px solid #2f6b45;border-radius:17px;background:#12241ae8;box-shadow:0 18px 50px #0007}.hidden{display:none!important}.eyebrow{margin-bottom:6px;color:#7fd99f;font-size:12px;font-weight:900;letter-spacing:.18em}.title{margin:0;font-family:Georgia,"Times New Roman",serif;font-size:clamp(38px,8vw,66px);letter-spacing:.08em}.subtitle{margin:3px 0 0;color:#b8d6c2}.row{display:flex;align-items:center;gap:9px;flex-wrap:wrap}.spread{justify-content:space-between}.primary,.secondary{min-height:42px;padding:9px 15px;border:1px solid #3f9463;border-radius:10px;font-weight:850;cursor:pointer}.primary{background:linear-gradient(#4fae74,#2a6b46);color:#06150c}.secondary{background:#1a3324;color:#e3f4e8}.primary:disabled,.secondary:disabled{cursor:not-allowed;opacity:.45}.code{font-size:28px;font-weight:950;letter-spacing:.16em}.playersLegend{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:13px 0}.playerCard{display:flex;align-items:center;gap:10px;padding:11px;border:1px solid #2c5b3c;border-radius:12px;background:#0e1c14}.playerCard.active{border-color:#7fd99f;box-shadow:0 0 0 2px #7fd99f38}.stoneSample{width:30px;height:30px;flex:0 0 auto;border-radius:50%}.stoneSample.black{background:radial-gradient(circle at 35% 30%,#595959,#171717 56%,#020202);box-shadow:0 4px 8px #000b}.stoneSample.white{background:radial-gradient(circle at 35% 28%,#fff,#e9e4da 58%,#a99f90);box-shadow:0 4px 8px #0008}.playerMeta{display:grid;flex:1}.playerMeta small{color:#9dc2ac}.playerScore{font-size:20px;font-weight:950;color:#dff5e6}.turnArea{display:grid;grid-template-columns:1fr auto;gap:9px;align-items:stretch;margin:12px 0}.turnBanner{display:grid;place-items:center;min-height:58px;padding:12px;border:1px solid #2f6b45;border-radius:11px;background:#0b1610;text-align:center;font-size:17px;font-weight:850}.turnClock{display:grid;place-items:center;min-width:68px;padding:8px 12px;border:2px solid #4fae74;border-radius:11px;background:#08120c;color:#c7f5d6;font-size:28px;font-weight:950;font-variant-numeric:tabular-nums}.turnClock.warning{border-color:#ff5d49;background:#3b0d08;color:#ff8b78;box-shadow:0 0 15px #ff3c2873}.gameLayout{display:flex;gap:15px;align-items:flex-start}.gameSidebar{flex:0 0 300px;display:flex;flex-direction:column;gap:15px;min-width:0}.gameSidebar>.panel{margin-bottom:0}.gameSidebar .playersLegend{display:flex;flex-direction:column;gap:10px}.gameSidebar .turnArea{display:flex;flex-direction:column;gap:9px;margin:0}.gameSidebar .turnClock{width:100%}.gameBoardPanel{flex:1;min-width:0;margin-bottom:0}@media(max-width:900px){.gameLayout{flex-direction:column}.gameSidebar{flex:0 0 auto;width:100%}}.boardFrame{width:min(760px,100%);margin:auto;padding:clamp(7px,2vw,14px);border:4px solid #2a2016;border-radius:8px;background:#2a2016;box-shadow:inset 0 0 22px #00000066,0 18px 38px #0008}.board{display:grid;grid-template-columns:repeat(8,1fr);aspect-ratio:1;gap:2px;background:#183d24;border:2px solid #0f2818;border-radius:4px;overflow:hidden}.cell{position:relative;min-width:0;aspect-ratio:1;padding:0;border:0;border-radius:0;background:#1c4a2c;cursor:default}.cell.legal{cursor:pointer}.cell.legal:hover{background:#235a35}.hint{position:absolute;z-index:1;left:50%;top:50%;width:22%;height:22%;border-radius:50%;background:#ffffff3d;transform:translate(-50%,-50%)}.disc{position:absolute;z-index:2;inset:9%;border-radius:50%}.disc.black{background:radial-gradient(circle at 34% 29%,#626262 0,#1e1e1e 45%,#030303 78%);box-shadow:0 2px 5px #000b}.disc.white{background:radial-gradient(circle at 34% 28%,#fff 0,#eee9df 54%,#b6ab99 82%);box-shadow:0 2px 5px #0008}.cell.last .disc{outline:2px solid #e14835;outline-offset:-4px}.cell.flipped .disc{box-shadow:0 0 0 2px #7fd99f88}.resultActions{display:flex;gap:9px;justify-content:center;flex-wrap:wrap;margin-top:13px}.overlay{position:fixed;inset:0;z-index:20;display:grid;place-items:center;padding:18px;background:#050a06dc}.modal{width:min(590px,100%);max-height:86vh;overflow:auto;padding:23px;border:1px solid #3f9463;border-radius:16px;background:#132318;color:#eaf7ee}.modal li{margin-bottom:8px}.toast{position:fixed;right:17px;bottom:17px;z-index:30;max-width:min(380px,calc(100vw - 34px));padding:12px 15px;border:1px solid #3f9463;border-radius:10px;background:#0d1a11;color:white;box-shadow:0 10px 30px #0009}.gameNote{color:#9dc2ac;text-align:center;font-size:13px}#lobbyScreen #lobbyGuide{padding:8px 10px;border-left:3px solid #7fd99f;background:#0e1c14;color:#c7f5d6;font-weight:800}.resultModal{text-align:center;width:min(420px,100%)}.resultModal .outcome{margin:4px 0 2px;font-size:clamp(30px,7vw,40px);font-weight:950}.resultModal .outcome.outcome-win{color:#7fd99f;text-shadow:0 0 24px #7fd99f66}.resultModal .outcome.outcome-lose{color:#ff8b78}.resultModal .outcome.outcome-draw{color:#e8bb72}.resultReason{margin:0 0 6px;color:#9dc2ac}.resultScoreRow{display:flex;justify-content:center;align-items:center;gap:26px;margin:16px 0 6px}.resultScoreItem{display:flex;flex-direction:column;align-items:center;gap:8px;font-size:34px;font-weight:950;font-variant-numeric:tabular-nums}.resultScoreItem .stoneSample{width:28px;height:28px}#resultWaitingNote{margin-top:10px}@media(max-width:560px){body{padding:10px}.panel{padding:14px}.playersLegend{grid-template-columns:1fr}.turnClock{min-width:59px;font-size:24px}.boardFrame{border-width:3px}.disc{inset:6%}.cell.last .disc{outline-width:1px;outline-offset:-3px}.title{font-size:42px}}
 
@@ -26,7 +26,7 @@ body:has(#gameScreen:not(.hidden)) .shell{height:calc(100dvh - 16px)}
 }
 </style>
 <script src="../../../assets/network/game-network.js?v=20260821"></script>
-<script src="../../../assets/network/multiplayer-lobby.js?v=20260925-compact-join"></script>
+<script src="../../../assets/network/multiplayer-lobby.js?v=20260926-unified-lobby"></script>
 <script src="../../../assets/sound/music-control.js?v=20260910-click-cache-1" defer></script>
 <link rel="stylesheet" href="../../../assets/device-game.css?v=20260921c">
 <script src="../../../assets/game-motion.js?v=20260921a"></script>
@@ -53,7 +53,7 @@ body:has(#gameScreen:not(.hidden)) .shell{height:calc(100dvh - 16px)}
 
     <section id="hostPane" class="panel mp-lobby-card hidden">
       <div class="row spread">
-        <div><div class="eyebrow">ROOM CODE</div><div id="roomCode" class="code">----</div></div>
+        <div><div class="eyebrow">방 번호</div><div id="roomCode" class="code">----</div></div>
       </div>
       <div id="hostStatus" class="mp-lobby-status">방을 만드는 중입니다.</div>
     </section>
@@ -67,12 +67,12 @@ body:has(#gameScreen:not(.hidden)) .shell{height:calc(100dvh - 16px)}
     </section>
 
     <section class="panel">
-      <h2>PLAYERS</h2>
+      <h2>참가자</h2>
       <div id="lobbyPlayers" class="mp-lobby-players"></div>
       <p id="lobbyGuide" class="mp-lobby-guide">첫 대국은 방장이 흑(선공)입니다. 리버시는 초기 배치가 대칭이라 선공 이점이 크지 않습니다.</p>
       <button id="startBtn" class="primary" type="button" disabled>WAITING FOR OPPONENT</button>
       <div class="row" style="margin-top:10px">
-        <button id="rulesBtnLobby" class="secondary" type="button">HOW TO PLAY</button>
+        <button id="rulesBtnLobby" class="secondary" type="button">게임 방법</button>
         <button id="leaveBtnLobby" class="secondary" type="button">메인 화면</button>
       </div>
     </section>
@@ -86,7 +86,7 @@ body:has(#gameScreen:not(.hidden)) .shell{height:calc(100dvh - 16px)}
             <div hidden><div id="gameRoomCode">----</div></div>
           </div>
           <div class="row" style="margin-top:10px">
-            <button id="rulesBtnGame" class="secondary" type="button">RULES</button>
+            <button id="rulesBtnGame" class="secondary" type="button">게임 방법</button>
             <button id="leaveBtnGame" class="secondary" type="button">메인 화면</button>
           </div>
         </div>
@@ -120,7 +120,7 @@ body:has(#gameScreen:not(.hidden)) .shell{height:calc(100dvh - 16px)}
 
 <section id="rulesOverlay" class="overlay hidden" role="dialog" aria-modal="true">
   <div class="modal">
-    <div class="eyebrow">HOW TO PLAY</div>
+    <div class="eyebrow">게임 방법</div>
     <h2>리버시 규칙</h2>
     <ol>
       <li>첫 대국은 방장이 흑을 맡아 먼저 둡니다. 이후 흑과 백이 한 번씩 번갈아 돌을 놓습니다.</li>
@@ -130,7 +130,7 @@ body:has(#gameScreen:not(.hidden)) .shell{height:calc(100dvh - 16px)}
       <li>한 수의 제한 시간은 20초이며 마지막 5초에는 빨간색 경고가 표시됩니다. 시간 초과 시 차례가 상대에게 넘어갑니다.</li>
       <li>재대국에서는 직전 대국의 패배자가 흑으로 먼저 둡니다. 무승부일 때만 흑백을 교대합니다.</li>
     </ol>
-    <button id="closeRulesBtn" class="primary" type="button">CLOSE</button>
+    <button id="closeRulesBtn" class="primary" type="button">닫기</button>
   </div>
 </section>
 

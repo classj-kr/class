@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>같은 그림 찾기</title>
-<link rel="stylesheet" href="../../../assets/network/multiplayer-lobby.css?v=20260925-compact-join">
+<link rel="stylesheet" href="../../../assets/network/multiplayer-lobby.css?v=20260926-unified-lobby">
 <style>
 :root{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;color:#eef0f5;background:#161221;--accent:#e0855a;--accent-soft:#8a4a2a;--panel:#211b30;--panel-edge:#453a5c}
 *{box-sizing:border-box}
@@ -94,7 +94,7 @@ h1,h2,h3,p{margin-top:0}
 #roomCode,#roomShare #gameRoomCode{font-size:clamp(36px,8vw,44px);line-height:1.15;font-variant-numeric:tabular-nums}
 </style>
 <script src="../../../assets/network/game-network.js?v=20260821"></script>
-<script src="../../../assets/network/multiplayer-lobby.js?v=20260925-compact-join"></script>
+<script src="../../../assets/network/multiplayer-lobby.js?v=20260926-unified-lobby"></script>
 <script src="../../../assets/sound/music-control.js?v=20260910-click-cache-1" defer></script>
 <link rel="stylesheet" href="../../../assets/device-game.css?v=20260921c">
 <style>
@@ -127,14 +127,14 @@ body:has(#playArea:not(.hidden)) .shell{width:min(1440px,100%)}
       <div class="entryActions">
         <button id="createTab" class="primary" type="button">CREATE ROOM</button>
         <button id="joinTab" class="secondary" type="button" aria-label="방 번호 입력 방식 선택" role="tab">JOIN ROOM</button>
-        <button id="rulesEntryBtn" class="secondary" type="button">HOW TO PLAY</button>
+        <button id="rulesEntryBtn" class="secondary" type="button">게임 방법</button>
         <button id="leaveEntryBtn" class="secondary" type="button">메인 화면으로</button>
       </div>
     </header>
 
     <section id="createPane" class="panel entryPane hidden">
       <div class="row spread">
-        <div><div class="eyebrow">ROOM CODE</div><div id="roomCode" class="code">----</div></div>
+        <div><div class="eyebrow">방 번호</div><div id="roomCode" class="code">----</div></div>
       </div>
       <div id="entryStatus" class="status">방을 만드는 중입니다.</div>
     </section>
@@ -148,25 +148,25 @@ body:has(#playArea:not(.hidden)) .shell{width:min(1440px,100%)}
     </section>
   </section>
 
-  <section id="game" class="hidden">
+  <section id="game" class="hidden mp-ui-separate-waiting">
     <div class="panel row spread">
       <div id="roomShare" hidden>
         <div class="eyebrow">방 번호</div>
         <div id="gameRoomCode" class="code" aria-live="polite">----</div>
       </div>
       <div class="row">
-        <button id="rulesGameBtn" class="secondary" type="button">RULES</button>
+        <button id="rulesGameBtn" class="secondary" type="button">게임 방법</button>
         <button id="leaveGameBtn" class="secondary" type="button">메인 화면</button>
       </div>
     </div>
 
     <section id="lobbySetup" class="panel hidden">
-      <div class="eyebrow">규칙 · 방장만 변경 가능</div>
+      <div class="eyebrow">게임 방식</div>
       <div id="modeRow" class="modeRow"></div>
-      <p id="modeNote" class="note"></p>
-      <h2>참가자</h2>
+
+      <h2>참가자 <span id="lobbyCount"></span></h2>
       <div id="playerList" class="playerList"></div>
-      <button id="beginGameBtn" class="primary hidden" type="button" disabled>START GAME</button>
+      <button id="beginGameBtn" class="primary hidden" type="button" disabled>게임 시작</button>
       <p id="startGuide" class="note"></p>
       <p id="waitingHostNote" class="note hidden">방장이 게임을 시작할 때까지 기다려 주세요.</p>
     </section>
@@ -231,7 +231,7 @@ body:has(#playArea:not(.hidden)) .shell{width:min(1440px,100%)}
 
 <section id="rulesOverlay" class="overlay hidden" role="dialog" aria-modal="true">
   <div class="modal">
-    <div class="eyebrow">HOW TO PLAY</div>
+    <div class="eyebrow">게임 방법</div>
     <h2>같은 그림 찾기 규칙</h2>
     <p>카드는 모두 8개의 그림을 담고 있고, 어떤 두 장을 비교해도 겹치는 그림은 정확히 하나뿐입니다. 방장이 대기실에서 규칙을 고를 수 있어요.</p>
     <p>틀린 그림을 누르면 몇 초 동안 못 눌러요. 아무거나 눌러보는 걸 막기 위한 규칙이니, 잘 보고 눌러야 합니다. 시간이 지나거나 누가 먼저 맞혀 다음 카드가 나오면 다시 도전할 수 있어요.</p>
@@ -249,7 +249,7 @@ body:has(#playArea:not(.hidden)) .shell{width:min(1440px,100%)}
       <li>맞히면 기준 카드를 내가 가져가고, 방금 뒤집힌 카드가 새로운 기준 카드가 됩니다.</li>
       <li>더미가 모두 소진되면 카드를 가장 많이 모은 사람이 승리합니다!</li>
     </ol>
-    <button id="closeRulesBtn" class="primary" type="button">CLOSE</button>
+    <button id="closeRulesBtn" class="primary" type="button">닫기</button>
   </div>
 </section>
 
@@ -412,12 +412,12 @@ function renderModeRow() {
   $("modeRow").querySelectorAll("button").forEach(button => {
     button.addEventListener("click", () => sendAction("SET_MODE", { mode: button.dataset.mode }));
   });
-  const current = MODES.find(mode => mode.id === state.mode) || MODES[0];
-  $("modeNote").textContent = `현재 규칙: ${current.label} · ${current.hint}`;
+
 }
 
 function renderLobbySetup() {
   renderModeRow();
+  $("lobbyCount").textContent = `${state.players.length}/8`;
   $("playerList").innerHTML = state.players.map(player =>
     `<span class="playerChip${player.id === myId ? " me" : ""}">${esc(player.name)}${player.id === myId ? " (나)" : ""}</span>`
   ).join("");
@@ -427,7 +427,7 @@ function renderLobbySetup() {
   $("beginGameBtn").disabled = !ready;
   $("startGuide").textContent = ready
     ? "시작할 준비가 되었습니다."
-    : "2~8명이 모여야 시작할 수 있습니다.";
+    : "한 명 더 들어오면 시작할 수 있습니다.";
   $("waitingHostNote").classList.toggle("hidden", isHost);
 }
 

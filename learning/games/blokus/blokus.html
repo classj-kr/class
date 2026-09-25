@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#142238">
   <title>코너 블록</title>
-  <link rel="stylesheet" href="../../../assets/network/multiplayer-lobby.css?v=20260925-compact-join">
+  <link rel="stylesheet" href="../../../assets/network/multiplayer-lobby.css?v=20260926-unified-lobby">
   <link rel="stylesheet" href="styles.css?v=20260925-room-code">
   <script src="../../../assets/network/game-network.js?v=20260821"></script>
-  <script src="../../../assets/network/multiplayer-lobby.js?v=20260925-compact-join"></script>
+  <script src="../../../assets/network/multiplayer-lobby.js?v=20260926-unified-lobby"></script>
   <script src="../../../assets/sound/music-control.js?v=20260910-click-cache-1" defer></script>
   <link rel="stylesheet" href="../../../assets/device-game.css?v=20260921c">
 <link rel="stylesheet" href="../block-board-layout.css?v=20260921a">
@@ -25,7 +25,7 @@
 
     <section id="lobbyScreen" class="hidden mp-lobby-compact mp-lobby-standard" data-multiplayer-lobby>
       <header class="panel">
-        <div class="eyebrow">CORNER STRATEGY</div>
+
         <h1 class="title">CORNER BLOCKS</h1>
         <p class="subtitle">코너 블록 · 2명 또는 4명</p>
         <p>PLAYER · <strong id="savedName">플레이어</strong></p>
@@ -37,7 +37,7 @@
 
       <section id="hostPane" class="panel mp-lobby-card hidden">
         <div class="row spread">
-          <div><div class="eyebrow">ROOM CODE</div><div id="roomCode" class="mp-lobby-room-code">----</div></div>
+          <div><div class="eyebrow">방 번호</div><div id="roomCode" class="mp-lobby-room-code">----</div></div>
         </div>
         <div id="hostStatus" class="mp-lobby-status">방을 만드는 중입니다.</div>
       </section>
@@ -51,12 +51,12 @@
       </section>
 
       <section class="panel">
-        <h2>PLAYERS</h2>
+        <h2>참가자</h2>
         <div id="lobbyPlayers" class="mp-lobby-players"></div>
         <p id="lobbyGuide" class="mp-lobby-guide">2명 또는 4명이 모이면 시작할 수 있습니다.</p>
         <button id="startBtn" class="primary" type="button" disabled>WAITING FOR PLAYERS</button>
         <div class="row lobby-links">
-          <button id="rulesBtnLobby" class="secondary" type="button">HOW TO PLAY</button>
+          <button id="rulesBtnLobby" class="secondary" type="button">게임 방법</button>
           <button id="leaveBtnLobby" class="quiet" type="button">메인 화면</button>
         </div>
       </section>
@@ -67,7 +67,7 @@
     <header class="panel game-header">
       <div class="brand-lockup">
         <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
-        <div><div class="eyebrow">CORNER STRATEGY</div><div class="brand-name">코너 블록</div></div>
+        <div><div class="brand-name">코너 블록</div></div>
       </div>
       <div class="room-lockup" hidden><div class="eyebrow">ROOM</div><div id="gameRoomCode" class="room-code">----</div></div>
       <nav class="header-actions" aria-label="게임 메뉴">
@@ -149,7 +149,7 @@
 
   <section id="rulesOverlay" class="overlay hidden" role="dialog" aria-modal="true" aria-labelledby="rulesTitle">
     <div class="modal">
-      <div class="eyebrow">HOW TO PLAY</div>
+      <div class="eyebrow">게임 방법</div>
       <h2 id="rulesTitle">모서리로 길을 잇는 게임</h2>
       <p class="rule-intro">내 조각을 가장 많이 보드에 내려놓으면 승리합니다. 규칙은 단순하지만, 한 번 막힌 길은 다시 열기 어렵습니다.</p>
       <div class="rule-grid">

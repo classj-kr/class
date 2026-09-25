@@ -329,7 +329,7 @@
             border-right: 2px solid #6c7a89;
             clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
         }
-        
+
         .plate {
             width: 160px;
             height: 55px;
@@ -407,7 +407,7 @@
             box-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
             cursor: pointer;
         }
-        
+
         .decide-mode .coin { cursor: pointer; animation: pulse 1s infinite alternate; }
         .decide-mode .coin:hover { transform: scale(1.15); box-shadow: 0 0 15px #fcec99; border-color: #fcec99; z-index: 40; }
 
@@ -434,7 +434,7 @@
             width: 680px; 
             margin-bottom: 10px;
         }
-        
+
         .log-monitor {
             background-color: #000;
             border: 4px inset #6a3614;
@@ -455,7 +455,7 @@
             justify-content: space-between;
         }
         .log-row span { white-space: pre; }
-        
+
         .status-msg { color: #fcec99; font-weight: bold; text-align: center; font-size: 20px; text-shadow: 0 0 5px #fcec99; display: none; }
         .decide-mode .status-msg { display: block; }
         .decide-mode .log-row { display: none; }
@@ -496,7 +496,7 @@
         }
         .text-success { color: #1e4620; }
         .text-danger { color: #8b0000; }
-    
+
 /* iPad·터치 기기 공통 보완 */
 button,
 input,
@@ -1074,7 +1074,8 @@ body{align-items:center;padding:18px}
 <script src="../../../assets/network/finisher-board.js?v=20260727"></script>
 <script src="../../../assets/sound/music-control.js?v=20260910-click-cache-1" defer></script>
 <link rel="stylesheet" href="../../../assets/device-game.css?v=20260921c">
-<style>body:has(#game-board[style*="block"]){box-sizing:border-box;min-height:100dvh;height:auto;padding:8px;margin:0}#game-board[style*="block"]{max-width:100%;max-height:calc(100dvh - 16px);margin:auto}@media(min-width:700px){#game-board[style*="block"]{width:min(100%,1000px);height:calc(100dvh - 16px);min-height:0}.top-section{height:calc(100% - 170px);min-height:290px}.bottom-section-wrapper{position:absolute;bottom:10px;left:20px;right:20px;width:auto}}</style></head>
+<style>body:has(#game-board[style*="block"]){box-sizing:border-box;min-height:100dvh;height:auto;padding:8px;margin:0}#game-board[style*="block"]{max-width:100%;max-height:calc(100dvh - 16px);margin:auto}@media(min-width:700px){#game-board[style*="block"]{width:min(100%,1000px);height:calc(100dvh - 16px);min-height:0}.top-section{height:calc(100% - 170px);min-height:290px}.bottom-section-wrapper{position:absolute;bottom:10px;left:20px;right:20px;width:auto}}</style><link rel="stylesheet" href="../../../assets/network/single-player-entry.css?v=20260926-ui-review">
+</head>
 <body>
 
 <audio id="bgm" src="/learning/games/coinweighing/assets/sound/bgm.ogg" loop></audio>
@@ -1087,9 +1088,9 @@ body{align-items:center;padding:18px}
         <div class="player-name-help" id="player-name-help">이름이 없습니다. 메인 화면에서 이름을 먼저 저장해 주세요.</div>
         <button class="action-btn" type="button" onclick="location.href='../../../'">메인 화면으로</button>
     </div>
-    
+
     <div class="difficulty-container">
-        <div class="difficulty-label">SELECT COINS COUNT</div>
+        <div class="difficulty-label">동전 개수</div>
         <div class="diff-btn-group">
             <button class="diff-btn" onclick="setGlobalDifficulty(8, true)">8</button>
             <button class="diff-btn" onclick="setGlobalDifficulty(9, true)">9</button>
@@ -1116,8 +1117,8 @@ body{align-items:center;padding:18px}
 
 
     <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
-        <button class="action-btn" id="start-game-button" onclick="startGame()" disabled>START GAME</button>
-        <button class="action-btn" type="button" onclick="openRules()">HOW TO PLAY</button>
+        <button class="action-btn" id="start-game-button" onclick="startGame()" disabled>게임 시작</button>
+        <button class="action-btn" type="button" onclick="openRules()">게임 방법</button>
     </div>
 
     <div class="finishers-panel">
@@ -1128,7 +1129,7 @@ body{align-items:center;padding:18px}
 </div>
 
 <div class="game-board" id="game-board">
-    
+
     <div class="ingame-controls-wrapper">
         <div class="volume-label">MUSIC VOLUME</div>
         <div class="volume-interface">
@@ -1142,7 +1143,7 @@ body{align-items:center;padding:18px}
             </div>
         </div>
     </div>
-    
+
     <div class="ingame-difficulty-panel">
         <div class="diff-explain-label">COINS:</div>
         <div class="diff-btn-group">
@@ -1162,12 +1163,12 @@ body{align-items:center;padding:18px}
             <div class="scale-beam-container" id="beam-container">
                 <div class="scale-beam"></div>
                 <div class="scale-pin"></div>
-                
+
                 <div class="plate-wrapper left" id="left-wrapper" onclick="handleZoneClick('left', event)" ondragover="allowDrop(event)" ondrop="dropToZone(event, 'left')">
                     <div class="plate-strings"></div>
                     <div class="plate" id="left-plate"></div>
                 </div>
-                
+
                 <div class="plate-wrapper right" id="right-wrapper" onclick="handleZoneClick('right', event)" ondragover="allowDrop(event)" ondrop="dropToZone(event, 'right')">
                     <div class="plate-strings"></div>
                     <div class="plate" id="right-plate"></div>
@@ -1183,7 +1184,7 @@ body{align-items:center;padding:18px}
             <button class="action-btn" id="weigh-btn" onclick="weighCoins()">WEIGH</button>
             <button class="action-btn" onclick="clearPlates()">CLEAR</button>
             <button class="action-btn btn-decide" id="decide-btn" onclick="toggleDecideMode()">DECIDE</button>
-            <button class="action-btn" onclick="openRules()">RULES</button>
+            <button class="action-btn" onclick="openRules()">게임 방법</button>
             <button class="action-btn" type="button" onclick="location.href='../../../'">메인 화면으로</button>
         </div>
 
@@ -1260,7 +1261,7 @@ body{align-items:center;padding:18px}
 
         if (startButton) {
             startButton.disabled = !playerName;
-            startButton.textContent = playerName ? "START GAME" : "메인 화면에서 이름을 저장하세요";
+            startButton.textContent = playerName ? "게임 시작" : "메인 화면에서 이름을 저장하세요";
         }
 
         loadTodayFinishers();
@@ -1271,24 +1272,24 @@ body{align-items:center;padding:18px}
         if(bgm) {
             bgm.volume = vol;
         }
-        
+
         for (let i = 1; i <= 5; i++) {
             const sBlock = document.getElementById(`start-vb-${i}`);
             const gBlock = document.getElementById(`game-vb-${i}`);
             if(sBlock) sBlock.className = 'vol-block';
             if(gBlock) gBlock.className = 'vol-block';
         }
-        
+
         const sMute = document.getElementById('startMuteBtn');
         const gMute = document.getElementById('gameMuteBtn');
-        
+
         if (vol === 0) {
             if(sMute) sMute.classList.add('active');
             if(gMute) gMute.classList.add('active');
         } else {
             if(sMute) sMute.classList.remove('active');
             if(gMute) gMute.classList.remove('active');
-            
+
             const activeCount = Math.round(vol * 5);
             for (let i = 1; i <= activeCount; i++) {
                 const sb = document.getElementById(`start-vb-${i}`);
@@ -1306,11 +1307,11 @@ body{align-items:center;padding:18px}
         }
 
         coinCount = count;
-        
+
         document.querySelectorAll('.diff-btn').forEach(btn => {
             btn.classList.remove('active');
         });
-        
+
         document.querySelectorAll(`.diff-btn`).forEach(btn => {
             if(btn.getAttribute('onclick').includes(`(${count},`)) {
                 btn.classList.add('active');
@@ -1349,27 +1350,27 @@ body{align-items:center;padding:18px}
     function playCoinSound() {
         try {
             if (!audioCtx) return;
-            
+
             const osc1 = audioCtx.createOscillator();
             const osc2 = audioCtx.createOscillator();
             const gainNode = audioCtx.createGain();
-            
+
             osc1.type = 'sine';
             osc1.frequency.setValueAtTime(987.77, audioCtx.currentTime);
-            
+
             osc2.type = 'triangle';
             osc2.frequency.setValueAtTime(1318.51, audioCtx.currentTime);
-            
+
             gainNode.gain.setValueAtTime(0.15, audioCtx.currentTime);
             gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.4);
-            
+
             osc1.connect(gainNode);
             osc2.connect(gainNode);
             gainNode.connect(audioCtx.destination);
-            
+
             osc1.start();
             osc2.start();
-            
+
             osc1.stop(audioCtx.currentTime + 0.4);
             osc2.stop(audioCtx.currentTime + 0.4);
         } catch (e) {
@@ -1388,18 +1389,18 @@ body{align-items:center;padding:18px}
         document.getElementById('log-1-content').innerText = "";
         document.getElementById('log-2-content').innerText = "";
         document.getElementById('log-3-content').innerText = "";
-        
+
         document.getElementById('game-board').classList.remove('decide-mode');
         document.getElementById('decide-btn').innerText = "DECIDE";
         document.getElementById('decide-btn').style.backgroundColor = "";
         document.getElementById('decide-btn').style.color = "#8b0000";
-        
+
         resetScaleAnimation();
-        
+
         const pool = document.getElementById('coin-pool');
         const leftPlate = document.getElementById('left-plate');
         const rightPlate = document.getElementById('right-plate');
-        
+
         pool.innerHTML = '';
         leftPlate.innerHTML = '';
         rightPlate.innerHTML = '';
@@ -1415,7 +1416,7 @@ body{align-items:center;padding:18px}
             coin.id = `coin-${i}`;
             coin.innerText = i + 1;
             coin.dataset.index = i;
-            
+
             // 탭/클릭 동작 바인딩
             coin.onclick = function(e) {
                 e.stopPropagation(); // 영역 전체 클릭 방지
@@ -1425,7 +1426,7 @@ body{align-items:center;padding:18px}
                     handleCoinSelection(this);
                 }
             };
-            
+
             coin.draggable = !window.matchMedia('(pointer: coarse)').matches;
             coin.ondragstart = function(ev) {
                 if (isDecideMode) { ev.preventDefault(); return; } 
@@ -1511,11 +1512,11 @@ body{align-items:center;padding:18px}
             if (isDecideMode) return;
             const touch = e.touches[0];
             const rect = coin.getBoundingClientRect();
-            
+
             offsetX = touch.clientX - rect.left;
             offsetY = touch.clientY - rect.top;
             originalParent = coin.parentElement;
-            
+
             coin.style.position = 'fixed';
             coin.style.zIndex = '1000';
             moveAt(touch.clientX, touch.clientY);
@@ -1541,7 +1542,7 @@ body{align-items:center;padding:18px}
             coin.style.top = '';
 
             const touch = e.changedTouches[0];
-            
+
             coin.style.display = 'none';
             const elementUnder = document.elementFromPoint(touch.clientX, touch.clientY);
             coin.style.display = 'flex';
@@ -1578,7 +1579,7 @@ body{align-items:center;padding:18px}
     }
 
     function allowDrop(ev) { ev.preventDefault(); }
-    
+
     function sortCoinsInPlate(plate) {
         const coins = Array.from(plate.querySelectorAll('.coin'));
         coins.sort((a, b) => parseInt(a.dataset.index) - parseInt(b.dataset.index));
@@ -1588,11 +1589,11 @@ body{align-items:center;padding:18px}
     function dropToZone(ev, zoneType) {
         if (isDecideMode) return;
         ev.preventDefault();
-        
+
         const data = ev.dataTransfer.getData("text");
         const coin = document.getElementById(data);
         if (!coin) return;
-        
+
         const coinIdx = parseInt(coin.dataset.index);
 
         if (zoneType === 'pool') {
@@ -1626,7 +1627,7 @@ body{align-items:center;padding:18px}
                 moved = true;
             }
         }
-        
+
         if (moved) {
             clearSelection();
             resetScaleAnimation();
@@ -1662,7 +1663,7 @@ body{align-items:center;padding:18px}
         const beam = document.getElementById('beam-container');
         const leftWrap = document.getElementById('left-wrapper');
         const rightWrap = document.getElementById('right-wrapper');
-        
+
         let resultSymbol = "";
 
         if (wL === wR) {
@@ -1684,7 +1685,7 @@ body{align-items:center;padding:18px}
 
         const leftStr = leftCoins.map(c => c.innerText).sort((a,b)=>a-b).join(' ');
         const rightStr = rightCoins.map(c => c.innerText).sort((a,b)=>a-b).join(' ');
-        
+
         const logContent = `${leftStr}     ${resultSymbol}     ${rightStr}`;
         document.getElementById(`log-${currentTurn}-content`).innerText = logContent;
 
@@ -1699,7 +1700,7 @@ body{align-items:center;padding:18px}
         const btn = document.getElementById('decide-btn');
         const board = document.getElementById('game-board');
         clearSelection();
-        
+
         if (isDecideMode) {
             board.classList.add('decide-mode');
             btn.innerText = "CANCEL";
@@ -1715,7 +1716,7 @@ body{align-items:center;padding:18px}
 
     function showModalLayout(title, innerHTML, isGameOver = false) {
         const wrapper = document.getElementById('popup-content-wrapper');
-        
+
         wrapper.innerHTML = `
             <h3 style="text-align: center;">${title}</h3>
             ${innerHTML}

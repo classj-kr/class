@@ -401,3 +401,189 @@
 .mp-lobby-join-status:empty {
     display: none;
 }
+
+/* One continuous lobby surface. Game-board styles remain outside this scope. */
+[data-multiplayer-lobby].mp-ui-lobby {
+    box-sizing: border-box !important;
+    display: block;
+    width: min(640px, 100%) !important;
+    max-width: 640px !important;
+    min-height: 0 !important;
+    height: auto !important;
+    margin: 56px auto 24px !important;
+    padding: 24px !important;
+    border: 1px solid var(--lobby-edge) !important;
+    border-radius: 18px !important;
+    background: var(--lobby-surface) !important;
+    color: var(--lobby-ink) !important;
+    box-shadow: 0 16px 40px #0003;
+    text-align: left;
+}
+.mp-ui-lobby .mp-ui-legacy-heading,
+.mp-ui-lobby:not(.mp-ui-connected) > .mp-ui-extra,
+.mp-ui-lobby .music-control,
+.mp-ui-lobby .entryActions:empty,
+.mp-ui-lobby .mp-lobby-tabs:empty,
+.mp-ui-lobby .mp-lobby-card:empty { display: none !important; }
+.mp-ui-lobby .mp-ui-header {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 8px 12px;
+    align-items: center;
+    margin-bottom: 20px;
+    text-align: left;
+}
+.mp-ui-lobby .mp-ui-header h1 {
+    font: 800 clamp(24px, 4vw, 30px)/1.3 system-ui, sans-serif !important;
+    letter-spacing: -.035em !important;
+    color: inherit !important;
+    margin: 0 !important;
+    text-shadow: none !important;
+    -webkit-text-stroke: 0 !important;
+}
+.mp-ui-lobby .mp-ui-meta { grid-column: 1 / -1; font: 500 14px/1.5 system-ui,sans-serif; opacity: .8; }
+.mp-ui-lobby button.mp-ui-help {
+    width: auto !important; min-width: 0; min-height: 44px;
+    padding: 8px 10px !important; margin: 0 !important;
+    background: transparent !important; color: inherit !important;
+    border: 1px solid currentColor !important; border-radius: 9px !important;
+    box-shadow: none !important; font: 600 13px/1.4 system-ui,sans-serif !important;
+    white-space: nowrap;
+}
+.mp-ui-lobby > .mp-ui-tabs[role=tablist] {
+    display: inline-flex !important; gap: 4px; margin: 0 0 12px !important;
+    max-width: 100%; width: auto; background: #80808012; border: 1px solid #80808040;
+}
+.mp-ui-lobby .mp-ui-tabs button[role=tab] {
+    width: auto !important; min-width: 108px; flex: 0 1 auto;
+    font: 700 15px/1.4 system-ui,sans-serif !important;
+    color: inherit !important; opacity: 1;
+}
+.mp-ui-lobby .mp-ui-tabs button[aria-selected=true] { background: #80808030 !important; box-shadow: inset 0 0 0 1px #80808050 !important; }
+.mp-ui-lobby .mp-ui-access { margin-bottom: 0; }
+.mp-ui-lobby :is(.panel,.screen-panel,.lobby-card,.mp-lobby-card,.lobbyPanel,.parchment-card,.paper-panel,.room-access-panel) {
+    width: 100% !important; max-width: none !important; min-height: 0 !important;
+    margin: 0 !important; padding: 0 !important;
+    border: 0 !important; border-radius: 0 !important; background: transparent !important;
+    box-shadow: none !important; color: inherit !important;
+}
+.mp-ui-lobby .mp-ui-access > .mp-lobby-join-pane {
+    width: 100% !important; max-width: none !important;
+    padding: 8px 0 0 !important; margin: 0 !important;
+    border: 0 !important; background: transparent !important;
+}
+.mp-ui-lobby .mp-lobby-join-controls { justify-content: flex-start !important; margin: 0 !important; }
+.mp-ui-lobby .mp-lobby-join-input { border-radius: 9px !important; }
+.mp-ui-lobby .mp-lobby-join-submit { border-radius: 9px !important; font: 700 15px/1.4 system-ui,sans-serif !important; }
+.mp-ui-lobby .mp-lobby-join-status:not(:empty) { margin: 10px 0 0 !important; text-align: left !important; }
+.mp-ui-lobby.mp-ui-connected > .mp-ui-extra { margin-top: 16px; }
+.mp-ui-lobby.mp-ui-connected .mp-ui-roster { min-height: 0 !important; margin: 12px 0 !important; justify-content: flex-start !important; }
+.mp-ui-lobby .mp-ui-guide { margin: 10px 0 !important; padding: 0 !important; text-align: left !important; font: 500 14px/1.6 system-ui,sans-serif !important; color: inherit !important; background: none !important; border: 0 !important; }
+.mp-ui-lobby .mp-ui-start {
+    min-height: 46px; width: 100% !important; margin: 8px 0 0 !important;
+    border-radius: 9px !important; font: 700 15px/1.4 system-ui,sans-serif !important;
+}
+.mp-ui-lobby button.mp-ui-start:disabled { opacity: 1 !important; color: var(--lobby-ink) !important; background: #80808025 !important; border: 1px solid #80808050 !important; box-shadow: none !important; }
+.mp-ui-lobby :is(h2,h3) { font-size: 16px !important; margin: 14px 0 8px !important; }
+.mp-ui-lobby .mp-lobby-status { color: inherit !important; text-align: left !important; margin: 8px 0 !important; font-size: 14px; }
+.mp-ui-lobby .mp-lobby-room-code { margin: 8px 0 !important; text-align: left !important; }
+.mp-ui-lobby :is(.lobby-grid,.lobby-layout,.lobbyGrid) { display: block !important; }
+.mp-ui-lobby .lobby-roster { margin-top: 16px; }
+.mp-ui-lobby .mp-ui-roster:empty { display: none; }
+.mp-ui-lobby .mp-ui-extra:empty { display: none; }
+.mp-ui-lobby .mp-lobby-join-pane > label { display: none; }
+.mp-ui-rules { font-size: 15px; line-height: 1.65; }
+.mp-ui-rules :is(h1,h2) { font-size: 20px !important; line-height: 1.4 !important; margin: 0 0 16px !important; }
+.mp-ui-rules button { min-height: 44px; }
+.mp-ui-rules :is(ol,ul) { padding-left: 24px; }
+@media(max-width:640px) {
+    [data-multiplayer-lobby].mp-ui-lobby { padding: 18px !important; margin-top: 56px !important; }
+    .mp-ui-lobby .mp-ui-header { gap: 6px 8px; }
+}
+
+.mp-ui-lobby .mp-ui-header h1 { text-align: left !important; }
+.mp-ui-lobby :is(.sub,.lobby-sub,.lobby-subtitle,.subtitle) { display: none !important; }
+.mp-ui-lobby .lobby-grid { gap: 0; }
+.mp-ui-lobby .players-card { min-height: 0 !important; }
+.mp-ui-lobby :is(.lobby-roster,.pack-section,.host-game-settings) { margin-block: 12px !important; }
+.mp-ui-lobby .mp-ui-roster { flex: none !important; }
+.mp-ui-lobby .mp-lobby-join-pane .input-group { margin: 0; }
+.mp-ui-lobby .mp-lobby-join-pane .input-group > label,
+.mp-ui-lobby .mp-lobby-join-pane > .room-share-status:not([id]),
+.mp-ui-lobby .room-code-actions { display: none !important; }
+.mp-ui-lobby .mp-ui-roster .mp-lobby-player { background: #80808018; color: inherit; border-color: #80808080; }
+.mp-ui-lobby .mp-ui-roster .mp-lobby-player.me { color: inherit; }
+.mp-ui-lobby :is(.code,.room-code,.roomcode,.room-code-display,.mp-lobby-code,.mp-lobby-room-code) {
+    color: inherit !important; font: 800 36px/1.2 ui-monospace,Consolas,monospace !important;
+    letter-spacing: .14em; text-align: left !important;
+    padding: 4px 0 !important; margin: 4px 0 !important; border: 0 !important; background: none !important;
+}
+.mp-ui-separate-waiting:has(#lobbySetup:not(.hidden)) {
+    width: min(640px,100%); margin: 56px auto 24px; padding: 22px;
+    background: var(--panel); border: 1px solid var(--panel-edge); border-radius: 18px;
+}
+.mp-ui-separate-waiting:has(#lobbySetup:not(.hidden)) > .panel {
+    padding: 0 !important; border: 0; background: transparent; box-shadow: none; margin: 0;
+}
+.mp-ui-separate-waiting:has(#lobbySetup:not(.hidden)) > .panel:first-child {
+    padding-bottom: 16px !important; margin-bottom: 16px; border-bottom: 1px solid var(--panel-edge);
+}
+.mp-ui-separate-waiting:has(#lobbySetup:not(.hidden)) #roomShare { padding-left: 0; }
+.mp-ui-separate-waiting #lobbySetup h2 { font-size: 16px; margin: 16px 0 8px; }
+.mp-ui-separate-waiting #lobbyCount { font-size: 13px; font-weight: 500; color: #c0bad0; }
+.mp-ui-separate-waiting #lobbySetup .modeRow { gap: 8px; margin: 8px 0 16px; }
+.mp-ui-separate-waiting #lobbySetup .modeBtn { flex: 1 1 180px; min-height: 52px; }
+.mp-ui-separate-waiting #lobbySetup #beginGameBtn { width: 100%; min-height: 46px; margin-top: 12px; }
+.mp-ui-separate-waiting #lobbySetup #beginGameBtn:disabled { opacity: 1; color: #dedbe5; background: #ffffff12; border-color: #ffffff30; }
+.mp-ui-separate-waiting #lobbySetup :is(#startGuide,#waitingHostNote) { margin: 8px 0 0; font-size: 14px; line-height: 1.5; }
+body:has(.mp-ui-lobby:not(.hidden)) > .shell > .brand { display: none; }
+@media(max-width:640px) {
+    .mp-ui-separate-waiting:has(#lobbySetup:not(.hidden)) { padding: 18px; }
+    .mp-ui-separate-waiting #lobbySetup .modeBtn { flex-basis: 100%; }
+}
+
+/* Avalon switches to a different server-driven lobby after connecting. */
+body:has(#game:not(.hide) > #lobby:not(.hide)) #game {
+    display: block !important; width: min(640px,100%); margin: 56px auto 24px;
+    padding: 22px; background: #141820f5; border: 1px solid #71643e; border-radius: 18px;
+}
+body:has(#game:not(.hide) > #lobby:not(.hide)) #game > .card {
+    padding: 0; margin: 0 0 16px; border: 0; background: none; box-shadow: none;
+}
+body:has(#game:not(.hide) > #lobby:not(.hide)) #game #missions,
+body:has(#game:not(.hide) > #lobby:not(.hide)) #phaseText,
+body:has(#game:not(.hide) > #lobby:not(.hide)) #phaseText + small { display: none; }
+body:has(#game:not(.hide) > #lobby:not(.hide)) #game h3 { font-size: 16px; }
+body:has(#game:not(.hide) > #lobby:not(.hide)) #game .checks { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+body:has(#game:not(.hide) > #lobby:not(.hide)) #game .checks label { min-height: 44px; font-size: 13px; }
+body:has(#game:not(.hide) > #lobby:not(.hide)) #game .lobbyButtons { display: flex; gap: 8px; }
+body:has(#game:not(.hide) > #lobby:not(.hide)) #game .lobbyButtons button { min-height: 46px; }
+body:has(#game:not(.hide) > #lobby:not(.hide)) #game #start:disabled { opacity: 1; color: #dbe0e6; background: #ffffff12; }
+.mp-ui-lobby details > summary { cursor: pointer; min-height: 44px; padding: 10px 0; font: 600 14px/1.5 system-ui,sans-serif; }
+.mp-ui-lobby details:not([open]) > :not(summary) { display: none !important; }
+.mp-ui-lobby .setup-panel { padding: 0; margin: 10px 0; }
+.mp-ui-lobby .room-help { font-size: 13px; line-height: 1.6; margin: 10px 0; }
+.mp-ui-lobby .mp-ui-header h1 { font-family: system-ui,sans-serif !important; }
+.mp-ui-lobby.lobbyShell::before { display: none; }
+body:has(.lobbyShell.mp-ui-lobby:not(.hidden)) { background: url('/learning/games/citychase/assets/lobby-city.jpg') center/cover fixed; }
+.mp-ui-lobby .lobbyWorkspace { display: block; }
+.mp-ui-lobby .lobbyConnect:empty { display: none; }
+
+:is(.shell,.app-shell,.game-shell,.container,.app):has(> .mp-ui-lobby:not(.hidden)) {
+    border: 0 !important; background: transparent !important; box-shadow: none !important;
+    min-height: 0 !important; padding: 0 !important; height: auto !important;
+}
+:is(.shell,.app-shell,.game-shell,.container,.app):has(> .mp-ui-lobby:not(.hidden))::before,
+:is(.shell,.app-shell,.game-shell,.container,.app):has(> .mp-ui-lobby:not(.hidden))::after { display: none !important; }
+.mp-ui-lobby .mp-ui-meta :is(strong,span) { display: inline !important; color: inherit !important; }
+.mp-ui-lobby .players-panel { display: block !important; }
+.mp-ui-lobby .players-card { display: block !important; }
+.mp-ui-lobby .lobby-actions:empty { display: none; }
+body:has(#game:not(.hide) > #lobby:not(.hide)) #game .row > div:has(> #phaseText) { display: none; }
+body:has(#game:not(.hide) > #lobby:not(.hide)) #game .row > div:has(> #roomShare) { display:flex; align-items:center; justify-content:space-between; gap:12px; width:100%; }
+.mp-ui-lobby .mp-ui-meta { letter-spacing: 0 !important; }
+.mp-ui-rules :is(h1,h2) { font-size: 16px !important; }
+.mp-ui-rules .eyebrow { display: none; }
+.mp-ui-lobby :is(.eyebrow,.kicker) { letter-spacing: 0; font-size: 13px; }
+.mp-ui-lobby .mp-ui-extra :is(.players-card,.lobby-actions) { margin-top: 12px !important; }
+.mp-ui-lobby .card-title-row > span { display: none; }

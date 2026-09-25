@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="theme-color" content="#090d18">
     <title>라스트 카드</title>
-    <link rel="stylesheet" href="../../../assets/network/multiplayer-lobby.css?v=20260925-compact-join">
+    <link rel="stylesheet" href="../../../assets/network/multiplayer-lobby.css?v=20260926-unified-lobby">
     <link rel="stylesheet" href="cards.css">
     <script src="../../../assets/sound/game-sfx.js?v=20260912-feedback-scope-1" defer></script>
     <script src="../../../assets/sound/music-control.js?v=20260910-click-cache-1" defer></script>
     <link rel="stylesheet" href="game.css?v=20260921c">
     <link rel="stylesheet" href="../../../assets/device-game.css?v=20260921c">
     <script src="../../../assets/network/game-network.js?v=20260821"></script>
-    <script src="../../../assets/network/multiplayer-lobby.js?v=20260925-compact-join"></script>
+    <script src="../../../assets/network/multiplayer-lobby.js?v=20260926-unified-lobby"></script>
 <script src="../../../assets/game-motion.js?v=20260921a"></script>
 </head>
 <body>
@@ -28,7 +28,7 @@
         <section id="lobbyScreen" class="hidden mp-lobby-compact" data-multiplayer-lobby>
             <header class="screen-panel lobby-hero">
                 <div>
-                    <p class="eyebrow">MATCH · TURN · SURVIVE</p>
+
                     <h1><span>LAST</span> CARD</h1>
                     <p class="subtitle">2~4명</p>
                 </div>
@@ -43,7 +43,7 @@
 
             <section id="hostPane" class="screen-panel lobby-card hidden">
                 <div>
-                    <p class="eyebrow">ROOM CODE</p>
+                    <p class="eyebrow">방 번호</p>
                     <strong id="roomCode" class="room-code">----</strong>
                 </div>
                 <p id="hostStatus" class="mp-lobby-status">방을 만드는 중입니다.</p>
@@ -59,14 +59,14 @@
 
             <section class="screen-panel players-panel">
                 <div>
-                    <p class="eyebrow">PLAYERS</p>
+                    <p class="eyebrow">참가자</p>
                     <div id="lobbyPlayers" class="mp-lobby-players"></div>
                     <p id="lobbyGuide" class="mp-lobby-guide">2~4명이 모이면 시작할 수 있습니다.</p>
                 </div>
                 <div class="lobby-actions">
                     <button id="startBtn" class="primary-button" type="button" disabled>WAITING FOR PLAYERS</button>
                     <div class="button-row">
-                        <button id="rulesBtnLobby" class="secondary-button" type="button">HOW TO PLAY</button>
+                        <button id="rulesBtnLobby" class="secondary-button" type="button">게임 방법</button>
                         <button id="leaveBtnLobby" class="secondary-button" type="button">메인 화면</button>
                     </div>
                 </div>
@@ -85,7 +85,7 @@
                     <div><small>FLOW</small><strong id="directionText">→</strong></div>
                 </div>
                 <div class="button-row game-menu">
-                    <button id="rulesBtnGame" class="secondary-button" type="button">RULES</button>
+                    <button id="rulesBtnGame" class="secondary-button" type="button">게임 방법</button>
                     <button id="leaveBtnGame" class="secondary-button" type="button">메인 화면</button>
                 </div>
             </header>
@@ -147,7 +147,7 @@
 
     <section id="rulesOverlay" class="overlay hidden" role="dialog" aria-modal="true" aria-labelledby="rulesTitle">
         <div class="modal">
-            <p id="rulesTitle" class="eyebrow">HOW TO PLAY</p>
+            <p id="rulesTitle" class="eyebrow">게임 방법</p>
             <ol>
                 <li>내 차례에는 공개 카드와 <strong>색상·숫자·기호</strong> 중 하나가 같은 카드를 냅니다.</li>
                 <li>낼 카드가 없거나 내고 싶지 않으면 한 장을 뽑습니다. 방금 뽑은 카드가 맞으면 바로 내거나, 보관하고 차례를 넘길 수 있습니다.</li>

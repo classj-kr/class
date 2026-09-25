@@ -32,7 +32,7 @@
                 radial-gradient(circle at center, rgba(255, 218, 150, 0.08), transparent 40%),
                 radial-gradient(circle at center, transparent 30%, rgba(26, 12, 6, 0.44) 100%);
         }
-        
+
         /* 스타트 화면 스타일 */
         .start-screen {
             background:
@@ -97,9 +97,9 @@
             font-size: 0.95em;
             letter-spacing: 1px;
         }
-        
+
         .btn-container { display: flex; gap: 6px; align-items: center; }
-        
+
         button { 
             cursor: pointer; 
             padding: 6px 14px;
@@ -121,7 +121,7 @@
             border-color: #8a5a36;
             box-shadow: inset 0 3px 5px rgba(0,0,0,0.8);
         }
-        
+
         .btn-start-action {
             background: linear-gradient(to bottom, #962d22 0%, #5c160f 100%) !important;
             color: #f7e1cd !important;
@@ -157,7 +157,7 @@
             padding: 4px 10px;
             font-size: 0.85em;
         }
-        
+
         /* 하노이탑 보드 구역 (수정: 기둥 간 간격을 60px에서 20px로 좁힘) */
         .board-wrapper { 
             display: flex; 
@@ -172,7 +172,7 @@
                 inset 0 0 26px rgba(0,0,0,0.58),
                 0 10px 24px rgba(0,0,0,0.38);
         }
-        
+
         /* 기둥 및 받침대 */
         .pole { 
             width: 240px; 
@@ -195,7 +195,7 @@
             border-radius: 4px 4px 0 0;
             z-index: 1;
         }
-        
+
         /* 원판 디자인 */
         .disk { 
             cursor: grab; 
@@ -207,16 +207,16 @@
             margin-bottom: -1px; 
             z-index: 10;
             box-sizing: border-box;
-            
+
             font-family: 'Times New Roman', Times, serif;
             font-size: 1.3em;
             text-shadow: 1px 2px 3px rgba(0, 0, 0, 0.9);
-            
+
             box-shadow: 
                 0 4px 5px rgba(0,0,0,0.3), 
                 inset 0 4px 4px rgba(255,255,255,0.3), 
                 inset 0 -4px 6px rgba(0,0,0,0.4);
-            
+
             transition: transform 0.1s;
 
             touch-action: none;
@@ -225,7 +225,7 @@
             -webkit-user-drag: element;
         }
         .disk:active { cursor: grabbing; transform: scale(1.03); }
-        
+
         #info { 
             margin-top: 30px; 
             font-size: 1.4em; 
@@ -278,7 +278,7 @@
             font-family: inherit;
         }
         .modal-content p { margin: 8px 0; }
-    
+
 /* iPad·터치 기기 공통 보완 */
 button,
 input,
@@ -798,7 +798,8 @@ body:has(#game-container[style*="flex"]){height:100dvh;min-height:0;box-sizing:b
 #game-container #info{grid-column:2;grid-row:2;position:static;margin:0;font-size:16px;letter-spacing:0;text-align:center}
 #game-container .tap-guide{grid-column:2;grid-row:3;margin:0}
 @media(orientation:portrait){#game-container[style*="flex"]{grid-template-columns:1fr;grid-template-rows:auto minmax(0,1fr) auto auto}#game-container .controls{grid-column:1;grid-row:1;flex-direction:row;flex-wrap:wrap;justify-content:center}#game-container .board-wrapper{grid-column:1;grid-row:2}#game-container #info{grid-column:1;grid-row:3}#game-container .tap-guide{grid-column:1;grid-row:4}}
-</style><style>#game-container .btn-container{display:flex;flex-wrap:wrap;justify-content:center;gap:4px}#game-container .option-group{max-width:100%;min-width:0}</style><style>#game-container .controls{gap:8px}#game-container .controls .option-group{margin:0}#game-container .controls>button{flex-shrink:0;margin:0!important}#game-container .legacy-music-control{display:none}</style></head>
+</style><style>#game-container .btn-container{display:flex;flex-wrap:wrap;justify-content:center;gap:4px}#game-container .option-group{max-width:100%;min-width:0}</style><style>#game-container .controls{gap:8px}#game-container .controls .option-group{margin:0}#game-container .controls>button{flex-shrink:0;margin:0!important}#game-container .legacy-music-control{display:none}</style><link rel="stylesheet" href="../../../assets/network/single-player-entry.css?v=20260926-ui-review">
+</head>
 <body>
 <audio id="bgm" src="/learning/games/hanoitower/assets/sound/bgm.ogg" loop preload="auto"></audio>
 <div class="tablet-landscape-hint" aria-hidden="true">화면이 좁으면 기기를 가로로 돌리면 더 편하게 플레이할 수 있습니다.</div>
@@ -813,8 +814,8 @@ body:has(#game-container[style*="flex"]){height:100dvh;min-height:0;box-sizing:b
         <button class="action-btn btn-start-action" type="button" onclick="location.href='../../../'">메인 화면으로</button>
     </div>
     <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
-        <button class="action-btn btn-start-action" id="start-game-button" onclick="startGameEnvironment()" disabled>START GAME</button>
-        <button class="action-btn btn-start-action" type="button" onclick="showRules()">HOW TO PLAY</button>
+        <button class="action-btn btn-start-action" id="start-game-button" onclick="startGameEnvironment()" disabled>게임 시작</button>
+        <button class="action-btn btn-start-action" type="button" onclick="showRules()">게임 방법</button>
     </div>
     <div class="finishers-panel">
         <div class="finishers-title">🏆 TODAY’S FINISHERS</div>
@@ -836,7 +837,7 @@ body:has(#game-container[style*="flex"]){height:100dvh;min-height:0;box-sizing:b
             MODE: 
             <div class="btn-container">
                 <button id="modeNormal" onclick="setMode('normal')" class="active">NORMAL</button>
-                <button id="modeRandom" onclick="setMode('random')">RANDOM</button>
+                <button id="modeRandom" onclick="setMode('random')">무작위</button>
             </div>
         </div>
         <div class="option-group legacy-music-control">
@@ -853,7 +854,7 @@ body:has(#game-container[style*="flex"]){height:100dvh;min-height:0;box-sizing:b
             </div>
         </div>
         <button onclick="initGame()" style="margin-top: 5px;">RESET GAME</button>
-        <button onclick="showRules()" style="margin-top: 5px;">RULES</button>
+        <button onclick="showRules()" style="margin-top: 5px;">게임 방법</button>
         <button type="button" style="margin-top: 5px;" onclick="location.href='../../../'">메인 화면으로</button>
     </div>
 
@@ -869,7 +870,7 @@ body:has(#game-container[style*="flex"]){height:100dvh;min-height:0;box-sizing:b
 
 <div class="modal-overlay" id="rulesModal">
     <div class="antique-modal">
-        <div class="modal-title">RULES</div>
+        <div class="modal-title">게임 방법</div>
         <div class="modal-content" id="modalText"></div>
         <button onclick="closeModal()" style="padding: 6px 25px; margin-top: 10px;">확인</button>
     </div>
@@ -893,7 +894,7 @@ body:has(#game-container[style*="flex"]){height:100dvh;min-height:0;box-sizing:b
     let totalDisks = 3;
     let mode = 'normal';
     let selectedPoleIndex = null;
-    
+
     const bgm = document.getElementById('bgm');
 
     const FINISHER_GAME_ID = "hanoitower";
@@ -945,7 +946,7 @@ body:has(#game-container[style*="flex"]){height:100dvh;min-height:0;box-sizing:b
 
         if (startButton) {
             startButton.disabled = !playerName;
-            startButton.textContent = playerName ? "START GAME" : "메인 화면에서 이름을 저장하세요";
+            startButton.textContent = playerName ? "게임 시작" : "메인 화면에서 이름을 저장하세요";
         }
 
         loadTodayFinishers();
@@ -955,12 +956,12 @@ body:has(#game-container[style*="flex"]){height:100dvh;min-height:0;box-sizing:b
 
     function setVolume(vol) {
         bgm.volume = vol;
-        
+
         for (let i = 1; i <= 5; i++) {
             const block = document.getElementById(`vb-${i}`);
             block.className = 'vol-block'; 
         }
-        
+
         const muteBtn = document.getElementById('muteBtn');
         if (vol === 0) {
             muteBtn.classList.add('active');
@@ -980,10 +981,10 @@ body:has(#game-container[style*="flex"]){height:100dvh;min-height:0;box-sizing:b
             return;
         }
         bgm.play().catch(e => console.log("배경음악 재생 차단: 파일 경로를 확인하세요."));
-        
+
         document.getElementById('start-screen').style.display = 'none';
         document.getElementById('game-container').style.display = 'flex';
-        
+
         setVolume(0.6);
         initGame();
     }
@@ -1025,10 +1026,10 @@ body:has(#game-container[style*="flex"]){height:100dvh;min-height:0;box-sizing:b
         const modal = document.getElementById('rulesModal');
         const titleEl = modal.querySelector('.modal-title');
         const contentEl = document.getElementById('modalText');
-        
+
         titleEl.textContent = title;
         contentEl.innerHTML = paragraphs.map(p => `<p>${p}</p>`).join('');
-        
+
         modal.classList.add('show');
     }
 

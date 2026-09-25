@@ -270,7 +270,7 @@
   const hasPlayer = isValidPlayerName(playerName);
   playerLine.textContent = hasPlayer ? `PLAYER · ${playerName}` : 'SAVE YOUR NAME ON THE MAIN PAGE';
   startButton.disabled = !hasPlayer;
-  startButton.textContent = hasPlayer ? 'START GAME' : 'GO TO MAIN PAGE';
+  startButton.textContent = hasPlayer ? '게임 시작' : '메인 화면으로';
   finisherBoard.load('today-finishers-list');
   selectMode(size);
   showSettings();

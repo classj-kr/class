@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
 <title>과일 종</title>
-<link rel="stylesheet" href="../../../assets/network/multiplayer-lobby.css?v=20260925-compact-join">
+<link rel="stylesheet" href="../../../assets/network/multiplayer-lobby.css?v=20260926-unified-lobby">
 <style>
 *{box-sizing:border-box}html,body{margin:0;width:100%;min-height:100%;font-family:"Malgun Gothic",sans-serif;color:#fff}
 body{
@@ -128,7 +128,7 @@ input{width:100%;min-height:44px;border:1px solid #987d42;border-radius:8px;back
 
 </style>
 <script src="../../../assets/network/game-network.js?v=20260821"></script>
-<script src="../../../assets/network/multiplayer-lobby.js?v=20260925-compact-join"></script>
+<script src="../../../assets/network/multiplayer-lobby.js?v=20260926-unified-lobby"></script>
 <script src="../../../assets/sound/music-control.js?v=20260910-click-cache-1" defer></script>
 <link rel="stylesheet" href="../../../assets/device-game.css?v=20260921c">
 <style>
@@ -190,7 +190,7 @@ input{width:100%;min-height:44px;border:1px solid #987d42;border-radius:8px;back
       </div>
     </div>
     <div class="mp-lobby-card"><div class="mp-lobby-status" id="lobbyGuide">참가 가능 인원: 2~4명</div><div class="mp-lobby-player-list" id="lobbyPlayers"></div><div id="teamPicker" class="team-picker hidden" aria-label="2 대 2 팀 선택"><div class="team-picker-board"><section class="team-picker-column a"><div class="team-picker-heading"><span>파랑팀</span><span id="teamACount">0 / 2</span></div><div id="teamASlots" class="team-picker-slots"></div></section><section class="team-picker-column b"><div class="team-picker-heading"><span>빨강팀</span><span id="teamBCount">0 / 2</span></div><div id="teamBSlots" class="team-picker-slots"></div></section></div><p id="teamPickerGuide" class="team-picker-guide">원하는 팀의 빈 자리를 누르세요.</p></div></div>
-    <div class="mp-lobby-actions"><button id="startBtn" class="primary" type="button" disabled>WAITING FOR PLAYERS</button><button id="rulesBtnLobby" class="small" type="button">HOW TO PLAY</button></div>
+    <div class="mp-lobby-actions"><button id="startBtn" class="primary" type="button" disabled>WAITING FOR PLAYERS</button><button id="rulesBtnLobby" class="small" type="button">게임 방법</button></div>
 
     <div class="music-control">
       <span class="music-label">MUSIC VOLUME</span>
@@ -209,7 +209,7 @@ input{width:100%;min-height:44px;border:1px solid #987d42;border-radius:8px;back
 <section id="gameScreen" class="screen hidden">
   <div class="game" id="game">
     <div id="teamScoreboard" class="team-scoreboard hidden"></div>
-    <div class="top"><div class="scoreboard" id="scoreboard"></div><div class="small">공개 카드 <span id="potCount">0</span>장</div><div class="small">종 조건 <strong id="bellTargetLabel">5개</strong></div><button id="rulesBtnGame" class="small" type="button">RULES</button><button id="leaveBtn" class="small" type="button">나가기</button></div>
+    <div class="top"><div class="scoreboard" id="scoreboard"></div><div class="small">공개 카드 <span id="potCount">0</span>장</div><div class="small">종 조건 <strong id="bellTargetLabel">5개</strong></div><button id="rulesBtnGame" class="small" type="button">게임 방법</button><button id="leaveBtn" class="small" type="button">나가기</button></div>
     <div class="message" id="message">게임 준비 중...</div><div class="turn-timer"><div id="turnTimerBar" class="turn-timer-bar"></div></div>
     <div class="board" id="board"></div>
     <button id="bellBtn" class="bell" type="button" data-sfx="none" aria-label="종 치기"><span class="knob"></span><span class="dome"></span><span class="base"></span></button>

@@ -360,7 +360,7 @@
                 flex-wrap: wrap;
             }
         }
-    
+
 /* iPad·터치 기기 공통 보완 */
 button,
 input,
@@ -611,7 +611,8 @@ body{align-items:center;padding:18px}
 <script src="../../../assets/network/finisher-board.js"></script>
 <script src="../../../assets/sound/music-control.js?v=20260910-click-cache-1" defer></script>
 <link rel="stylesheet" href="../../../assets/device-game.css?v=20260921c">
-<style>@media(min-width:700px){body{box-sizing:border-box;padding:12px;min-height:100dvh}.game-frame{height:calc(100dvh - 24px);min-height:0}.quiz-container{min-height:0;padding:14px;overflow:auto}#display-area{min-height:250px;padding:14px}}</style></head>
+<style>@media(min-width:700px){body{box-sizing:border-box;padding:12px;min-height:100dvh}.game-frame{height:calc(100dvh - 24px);min-height:0}.quiz-container{min-height:0;padding:14px;overflow:auto}#display-area{min-height:250px;padding:14px}}</style><link rel="stylesheet" href="../../../assets/network/single-player-entry.css?v=20260926-ui-review">
+</head>
 <body>
 <audio id="bgm" src="/learning/games/sphinx/assets/sound/bgm.ogg" loop preload="auto"></audio>
 
@@ -719,9 +720,9 @@ body{align-items:center;padding:18px}
                     <button class="quiz-btn" type="button" onclick="location.href='../../../'">메인 화면으로</button>
                 </div>
                 <div class="options-container">
-                    <button class="quiz-btn" data-difficulty-button onclick="setDiff(5)">START GAME · BEGINNER</button>
-                    <button class="quiz-btn" data-difficulty-button onclick="setDiff(10)">START GAME · ADVANCED</button>
-                    <button class="quiz-btn" type="button" onclick="showSphinxRules()">HOW TO PLAY</button>
+                    <button class="quiz-btn" data-difficulty-button onclick="setDiff(5)">초급 시작</button>
+                    <button class="quiz-btn" data-difficulty-button onclick="setDiff(10)">고급 시작</button>
+                    <button class="quiz-btn" type="button" onclick="showSphinxRules()">게임 방법</button>
                 </div>
                 <div class="finishers-panel">
                     <div class="finishers-title">🏆 TODAY’S FINISHERS</div>
@@ -748,7 +749,7 @@ body{align-items:center;padding:18px}
             displayArea.innerHTML = html + `</div>`;
             return;
         } 
-        
+
         if (currentStage === 2) {
             const x = getRandomInt(1, difficulty), y = getRandomInt(1, difficulty);
             qText = `<스핑크스> 그럼 그대에게 묻겠다.\n다리가 4개 있는 괴물과 2개 있는 괴물이 ${x + y}마리 있다. 그 다리는 합쳐서 ${4*x + 2*y}개가 있다.\n그러면 다리가 4개있는 괴물은 몇 마린가?`;
@@ -770,7 +771,7 @@ body{align-items:center;padding:18px}
 
     function showSphinxRules() {
         displayArea.innerHTML = `
-            <div class="question-text">HOW TO PLAY</div>
+            <div class="question-text">게임 방법</div>
             <div style="text-align:left;line-height:1.75;margin:12px auto;max-width:620px">
                 <p>스핑크스 수수께끼와 관련된 문제를 풀어봅니다.</p>
                 <ol>

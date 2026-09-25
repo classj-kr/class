@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>바둑</title>
-<link rel="stylesheet" href="../../../assets/network/multiplayer-lobby.css?v=20260925-compact-join">
+<link rel="stylesheet" href="../../../assets/network/multiplayer-lobby.css?v=20260926-unified-lobby">
 <link rel="stylesheet" href="baduk.css?v=20260923-scoring">
 <link rel="stylesheet" href="../../../assets/device-game.css?v=20260921c">
 <script src="../../../assets/network/game-network.js?v=20260821"></script>
-<script src="../../../assets/network/multiplayer-lobby.js?v=20260925-compact-join"></script>
+<script src="../../../assets/network/multiplayer-lobby.js?v=20260926-unified-lobby"></script>
 <script src="../../../assets/sound/music-control.js?v=20260910-click-cache-1" defer></script>
 <script src="../../../assets/game-motion.js?v=20260921a"></script>
 </head>
@@ -19,7 +19,7 @@
   <header class="panel"><h1 class="title">GO GAME</h1><p class="subtitle">바둑 · 2명</p><p>PLAYER · <strong id="savedName">-</strong></p><div class="mp-lobby-tabs"><button id="hostTab" class="primary" type="button">CREATE ROOM</button><button id="joinTab" class="secondary" type="button">JOIN ROOM</button></div></header>
   <section id="hostPane" class="panel mp-lobby-card hidden"><div class="code" id="roomCode">----</div><div id="hostStatus" class="mp-lobby-status">방을 만드는 중입니다.</div></section>
   <section id="joinPane" class="panel mp-lobby-card hidden"><div class="mp-lobby-row"><input id="joinCode" class="mp-lobby-code-input" inputmode="numeric" maxlength="4" placeholder="ROOM CODE · 4 DIGITS"><button id="joinBtn" class="primary" type="button">JOIN</button></div><div id="joinStatus" class="mp-lobby-status"></div></section>
-  <section class="panel"><h2>대국 방식</h2><div class="mode-grid"><button class="mode-button active" data-mode="capture" type="button">돌 따먹기<small>7×7 · 3개 선취</small></button><button class="mode-button" data-mode="territory" type="button">땅 따먹기<small>7×7 · 40수</small></button><button class="mode-button" data-mode="standard" type="button">정식 바둑<small>9×9 · 합의 계가</small></button></div><p id="modeSummary" class="mode-summary">돌 따먹기 · 7×7</p><div id="lobbyPlayers" class="mp-lobby-players"></div><p id="lobbyGuide" class="mp-lobby-guide">상대방을 기다리는 중입니다.</p><button id="startBtn" class="primary" type="button" disabled>WAITING FOR OPPONENT</button><div class="row" style="margin-top:10px"><button id="rulesBtnLobby" class="secondary" type="button">HOW TO PLAY</button><button id="leaveBtnLobby" class="secondary" type="button">메인 화면</button></div></section>
+  <section class="panel"><h2>대국 방식</h2><div class="mode-grid"><button class="mode-button active" data-mode="capture" type="button">돌 따먹기<small>7×7 · 3개 선취</small></button><button class="mode-button" data-mode="territory" type="button">땅 따먹기<small>7×7 · 40수</small></button><button class="mode-button" data-mode="standard" type="button">정식 바둑<small>9×9 · 합의 계가</small></button></div><p id="modeSummary" class="mode-summary">돌 따먹기 · 7×7</p><div id="lobbyPlayers" class="mp-lobby-players"></div><p id="lobbyGuide" class="mp-lobby-guide">상대방을 기다리는 중입니다.</p><button id="startBtn" class="primary" type="button" disabled>WAITING FOR OPPONENT</button><div class="row" style="margin-top:10px"><button id="rulesBtnLobby" class="secondary" type="button">게임 방법</button><button id="leaveBtnLobby" class="secondary" type="button">메인 화면</button></div></section>
 </section>
 
 <section id="gameScreen" class="hidden">

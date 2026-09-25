@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#173f45">
   <title>그림 릴레이</title>
-  <link rel="stylesheet" href="../../../assets/network/multiplayer-lobby.css?v=20260925-compact-join">
+  <link rel="stylesheet" href="../../../assets/network/multiplayer-lobby.css?v=20260926-unified-lobby">
   <link rel="stylesheet" href="styles.css?v=20260925-room-code">
   <script src="../../../assets/network/game-network.js?v=20260821"></script>
-  <script src="../../../assets/network/multiplayer-lobby.js?v=20260925-compact-join"></script>
+  <script src="../../../assets/network/multiplayer-lobby.js?v=20260926-unified-lobby"></script>
   <script src="../../../assets/sound/game-sfx.js?v=20260912-feedback-scope-1" defer></script>
   <script src="../../../assets/sound/music-control.js?v=20260910-click-cache-1" defer></script>
   <script src="drawrelay-bgm.js" defer></script>
@@ -41,7 +41,7 @@
 
       <article class="paper-panel lobby-panel">
         <div class="lobby-topline">
-          <div><div class="eyebrow">CLASSROOM EDITION</div><h2>DRAW RELAY</h2></div>
+          <div><h2>DRAW RELAY</h2></div>
           <span class="player-badge"><i></i>PLAYER · <span id="savedName">플레이어</span></span>
         </div>
         <p class="lobby-sub">그림 릴레이 · 4~8명</p>
@@ -53,13 +53,13 @@
 
         <section id="hostPane" class="mp-lobby-pane">
           <div class="room-row">
-            <div><div class="eyebrow">ROOM CODE</div><div id="roomCode" class="mp-lobby-code">----</div></div>
+            <div><div class="eyebrow">방 번호</div><div id="roomCode" class="mp-lobby-code">----</div></div>
           </div>
           <div id="hostStatus" class="mp-lobby-status">새 게임 방을 준비하고 있습니다.</div>
         </section>
 
         <section id="joinPane" class="mp-lobby-pane hidden">
-          <label class="eyebrow" for="joinCode">ROOM CODE</label>
+          <label class="eyebrow" for="joinCode">방 번호</label>
           <div class="mp-lobby-join-row">
             <input id="joinCode" class="mp-lobby-code-input" inputmode="numeric" maxlength="4" placeholder="ROOM CODE · 4 DIGITS" autocomplete="off">
             <button id="joinBtn" class="primary" type="button" aria-label="입력한 방 번호로 참가">JOIN</button>
@@ -68,7 +68,7 @@
         </section>
 
         <section class="pack-section">
-          <div class="pack-head"><div><div class="eyebrow">WORD PACK</div><strong>제시어 꾸러미</strong></div><span id="packOwnerHint">방장이 선택해요</span></div>
+          <div class="pack-head"><div><strong>제시어 꾸러미</strong></div></div>
           <select id="packSelect" aria-label="제시어 꾸러미">
             <option value="general">국어·속담</option>
             <option value="history">역사·인물</option>
@@ -78,14 +78,14 @@
         </section>
 
         <section class="lobby-roster">
-          <div class="roster-head"><div class="eyebrow">PLAYERS</div><span>모두에게 서로 다른 제시어가 가요</span></div>
+          <div class="roster-head"><div class="eyebrow">참가자</div></div>
           <div id="lobbyPlayers" class="mp-lobby-players"></div>
           <p id="lobbyGuide" class="mp-lobby-guide">4명부터 8명까지 시작할 수 있습니다.</p>
         </section>
 
         <div class="lobby-actions">
           <button id="startBtn" class="primary" type="button" disabled>WAITING FOR PLAYERS</button>
-          <button id="rulesBtnLobby" class="secondary" type="button">HOW TO PLAY</button>
+          <button id="rulesBtnLobby" class="secondary" type="button">게임 방법</button>
           <button id="leaveBtnLobby" class="quiet" type="button">메인 화면</button>
         </div>
       </article>
@@ -98,7 +98,7 @@
       <div class="brand-lockup"><span class="brand-pencil" aria-hidden="true"></span><div><div class="eyebrow">DRAW RELAY</div><strong>그림 릴레이</strong></div></div>
       <div class="session-meta"><span id="packBadge">국어·속담</span><span hidden>ROOM <b id="gameRoomCode">----</b></span></div>
       <nav class="header-actions" aria-label="게임 메뉴">
-        <button id="rulesBtnGame" class="quiet" type="button">RULES</button>
+        <button id="rulesBtnGame" class="quiet" type="button">게임 방법</button>
         <button id="leaveBtnGame" class="quiet" type="button">메인 화면</button>
       </nav>
     </header>
@@ -179,7 +179,7 @@
 
   <section id="rulesOverlay" class="overlay hidden" role="dialog" aria-modal="true" aria-labelledby="rulesTitle">
     <div class="modal paper-panel">
-      <div class="eyebrow">HOW TO PLAY</div><h2 id="rulesTitle">보고, 그리고, 추측하고, 넘기기</h2>
+      <div class="eyebrow">게임 방법</div><h2 id="rulesTitle">보고, 그리고, 추측하고, 넘기기</h2>
       <div class="rule-grid">
         <article><span>01</span><strong>나만의 제시어</strong><p>모두 서로 다른 제시어를 받고 동시에 첫 그림을 그립니다.</p></article>
         <article><span>02</span><strong>딱 한 장만 보기</strong><p>다음 사람은 앞사람의 그림만 보고 정답을 추측합니다.</p></article>
@@ -501,7 +501,6 @@
     $("savedName").textContent = savedName || "플레이어";
     $("gameRoomCode").textContent = snapshot.roomCode || "----";
     $("packSelect").disabled = snapshot.role !== "host" || snapshot.started;
-    $("packOwnerHint").textContent = snapshot.role === "host" ? "방장이 선택해요" : "방장이 선택합니다";
   }
 
   function startHostGame(data) {

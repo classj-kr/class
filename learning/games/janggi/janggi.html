@@ -99,9 +99,9 @@ body:has(#game:not(.hidden)) .shell{height:calc(100dvh - 16px);min-height:560px;
  #game .chat-title{margin:0}
 }
 </style>
-<link rel="stylesheet" href="../../../assets/network/multiplayer-lobby.css?v=20260925-compact-join">
+<link rel="stylesheet" href="../../../assets/network/multiplayer-lobby.css?v=20260926-unified-lobby">
 <script src="../../../assets/network/game-network.js?v=20260821"></script>
-<script src="../../../assets/network/multiplayer-lobby.js?v=20260925-compact-join"></script>
+<script src="../../../assets/network/multiplayer-lobby.js?v=20260926-unified-lobby"></script>
 <script src="../../../assets/network/room-call.js?v=20260822e"></script>
 <script src="../../../assets/sound/music-control.js?v=20260910-click-cache-1" defer></script>
 <link rel="stylesheet" href="../../../assets/device-game.css?v=20260921c">
@@ -134,9 +134,9 @@ body:has(#game:not(.hidden)) .shell{height:calc(100dvh - 16px);min-height:560px;
 </select></div></div>
 <div id="lobbyPlayers" class="mp-lobby-player-list"></div>
 <div id="lobbyGuide" class="lobby-guide">상대방을 기다리는 중입니다.</div>
-<div class="lobby-guide"><strong>방장은 초로 선공하고, 손님은 한으로 후공합니다.</strong><br>실력 차이가 있다면 장기를 덜 두는 사람이 방장을 맡아 초의 선공권을 가지세요. 차림은 각자 자기 진영만 직접 선택합니다.</div>
-<div class="lobby-chat"><div class="chat-title">채팅</div><div id="lobbyChatLog" class="chat-log">아직 메시지가 없습니다.</div><div class="chat-row"><input id="lobbyChatInput" class="chat-input" maxlength="100" autocomplete="off" placeholder="메시지 입력" disabled onkeydown="if(event.key==='Enter'){event.preventDefault();sendChat('lobbyChatInput')}"><button class="btn chat-send" onclick="sendChat('lobbyChatInput')">보내기</button></div></div>
-<div class="row mp-lobby-actions"><button id="startBtn" class="btn primary" type="button" disabled>WAITING FOR PLAYERS</button><button id="rulesBtnLobby" class="btn" type="button">HOW TO PLAY</button><button id="leaveBtn" class="btn" type="button">메인 화면으로</button></div>
+<p class="lobby-guide">방장은 초(선공), 참가자는 한(후공)입니다.</p>
+<details class="lobby-chat"><summary>채팅</summary><div id="lobbyChatLog" class="chat-log">아직 메시지가 없습니다.</div><div class="chat-row"><input id="lobbyChatInput" class="chat-input" maxlength="100" autocomplete="off" placeholder="메시지 입력" disabled onkeydown="if(event.key==='Enter'){event.preventDefault();sendChat('lobbyChatInput')}"><button class="btn chat-send" onclick="sendChat('lobbyChatInput')">보내기</button></div></details>
+<div class="row mp-lobby-actions"><button id="startBtn" class="btn primary" type="button" disabled>WAITING FOR PLAYERS</button><button id="rulesBtnLobby" class="btn" type="button">게임 방법</button><button id="leaveBtn" class="btn" type="button">메인 화면으로</button></div>
 <div class="music"><b>음악</b><button id="mute1" class="btn" onclick="toggleMute()">음소거</button><div class="segments"><button class="seg" onclick="setVolume(1)"></button><button class="seg" onclick="setVolume(2)"></button><button class="seg" onclick="setVolume(3)"></button><button class="seg" onclick="setVolume(4)"></button><button class="seg" onclick="setVolume(5)"></button></div></div>
 </section>
 <section id="game" class="hidden">

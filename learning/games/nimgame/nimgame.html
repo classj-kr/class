@@ -877,7 +877,7 @@
                 justify-content: space-between;
             }
         }
-    
+
 /* iPad·터치 기기 공통 보완 */
 button,
 input,
@@ -982,9 +982,9 @@ body{align-items:flex-start;padding:8px}
 body{align-items:center;padding:18px}
 }
 </style>
-<link rel="stylesheet" href="../../../assets/network/multiplayer-lobby.css?v=20260925-compact-join">
+<link rel="stylesheet" href="../../../assets/network/multiplayer-lobby.css?v=20260926-unified-lobby">
 <script src="../../../assets/network/game-network.js?v=20260821"></script>
-<script src="../../../assets/network/multiplayer-lobby.js?v=20260925-compact-join"></script>
+<script src="../../../assets/network/multiplayer-lobby.js?v=20260926-unified-lobby"></script>
 <script src="../../../assets/sound/music-control.js?v=20260910-click-cache-1" defer></script>
 <link rel="stylesheet" href="../../../assets/device-game.css?v=20260921c">
 <style>
@@ -1027,14 +1027,14 @@ body:has(#game-screen:not(.hidden)) .app-shell{height:calc(100dvh - 16px);min-he
             <div class="room-pane" id="host-room-pane">
                 <div class="room-code-line">
                     <div class="room-code-card">
-                        <span class="room-code-caption">ROOM CODE</span>
+                        <span class="room-code-caption">방 번호</span>
                         <strong class="room-code-value" id="room-code-display">----</strong>
                     </div>
                     <div class="room-code-actions">
-                        <button class="small-btn" id="new-code-btn" type="button">NEW CODE</button>
+                        <button class="small-btn" id="new-code-btn" type="button">새 방 만들기</button>
                     </div>
                 </div>
-                <div class="room-help"><strong style="color:var(--gold-bright)">방을 만든 사람이 PLAYER 1로 첫 라운드를 선공합니다.</strong><br>실력 차이가 있다면 님게임을 덜 해본 사람이 방을 만드세요.</div>
+                <div class="room-help">방장이 첫 라운드를 먼저 시작합니다.</div>
             </div>
 
             <div class="room-pane hidden" id="join-room-pane">
@@ -1051,25 +1051,25 @@ body:has(#game-screen:not(.hidden)) .app-shell{height:calc(100dvh - 16px);min-he
         <div class="mp-lobby-player-list" id="lobby-players"></div>
         <div class="foot-note" id="lobby-guide">상대방을 기다리는 중입니다.</div>
 
-        <div class="setup-panel" id="setup-panel">
+        <details class="setup-panel" id="setup-panel"><summary>게임 설정</summary>
             <div class="setup-row">
-                <div class="setup-label">GAME MODE</div>
+                <div class="setup-label">게임 방식</div>
                 <div class="option-group">
-                    <button class="option-btn active" id="mode-nim" data-setting onclick="setGameMode('nim')">CLASSIC NIM</button>
-                    <button class="option-btn" id="mode-coin" data-setting onclick="setGameMode('coin')">SUBTRACTION COINS</button>
+                    <button class="option-btn active" id="mode-nim" data-setting onclick="setGameMode('nim')">기본 님</button>
+                    <button class="option-btn" id="mode-coin" data-setting onclick="setGameMode('coin')">동전 빼기</button>
                 </div>
             </div>
 
             <div id="nim-options">
                 <div class="setup-row">
-                    <div class="setup-label">PILE LAYOUT</div>
+                    <div class="setup-label">더미 배치</div>
                     <div class="option-group">
-                        <button class="option-btn active" id="layout-classic" data-setting onclick="setNimLayout('classic')">CLASSIC</button>
-                        <button class="option-btn" id="layout-random" data-setting onclick="setNimLayout('random')">RANDOM</button>
+                        <button class="option-btn active" id="layout-classic" data-setting onclick="setNimLayout('classic')">기본</button>
+                        <button class="option-btn" id="layout-random" data-setting onclick="setNimLayout('random')">무작위</button>
                     </div>
                 </div>
                 <div class="setup-row">
-                    <div class="setup-label">PILE COUNT</div>
+                    <div class="setup-label">더미 수</div>
                     <div class="option-group">
                         <button class="option-btn" id="lines-3" data-setting onclick="setNimLines(3)">3</button>
                         <button class="option-btn active" id="lines-4" data-setting onclick="setNimLines(4)">4</button>
@@ -1100,23 +1100,21 @@ body:has(#game-screen:not(.hidden)) .app-shell{height:calc(100dvh - 16px);min-he
             </div>
 
             <div class="setup-row">
-                <div class="setup-label">LAST OBJECT</div>
+                <div class="setup-label">마지막 물건</div>
                 <div class="option-group">
-                    <button class="option-btn active" id="rule-misere" data-setting onclick="setWinRule('misere')">TAKER LOSES</button>
-                    <button class="option-btn" id="rule-normal" data-setting onclick="setWinRule('normal')">TAKER WINS</button>
+                    <button class="option-btn active" id="rule-misere" data-setting onclick="setWinRule('misere')">가져가면 패배</button>
+                    <button class="option-btn" id="rule-normal" data-setting onclick="setWinRule('normal')">가져가면 승리</button>
                 </div>
             </div>
-        </div>
+        </details>
 
         <div class="lobby-actions">
             <button class="primary-btn" id="start-btn" type="button" disabled>WAITING FOR PLAYERS</button>
-            <button class="secondary-btn" id="rules-btn-lobby" type="button">HOW TO PLAY</button>
+            <button class="secondary-btn" id="rules-btn-lobby" type="button">게임 방법</button>
             <button class="secondary-btn" id="leave-btn" type="button">메인 화면으로</button>
         </div>
 
-        <div class="foot-note" id="lobby-foot-note">
-            <strong style="color:var(--gold-bright)">방을 만든 사람이 PLAYER 1로 첫 라운드를 선공합니다.</strong><br>실력 차이가 있다면 님게임을 덜 해본 사람이 방을 만들고, 상대방은 방 번호로 입장하세요.
-        </div>
+
 
         <div class="music-control">
             <span class="music-label">MUSIC VOLUME</span>
@@ -1159,7 +1157,7 @@ body:has(#game-screen:not(.hidden)) .app-shell{height:calc(100dvh - 16px);min-he
         <div class="game-controls">
             <button class="primary-btn" id="take-btn" onclick="commitMove()" disabled>TAKE</button>
             <button class="secondary-btn" id="cancel-btn" onclick="clearSelection()" disabled>CANCEL</button>
-            <button class="secondary-btn" id="rules-btn-game" type="button">RULES</button>
+            <button class="secondary-btn" id="rules-btn-game" type="button">게임 방법</button>
             <button class="danger-btn" id="new-round-btn" onclick="requestNewRound()">NEW ROUND</button>
             <button class="secondary-btn" id="leave-btn-game" type="button">메인 화면으로</button>
         </div>

@@ -696,7 +696,7 @@
             box-shadow: 0 0 9px rgba(255,179,77,0.58);
         }
 
-    
+
 /* iPad·터치 기기 공통 보완 */
 button,
 input,
@@ -1005,9 +1005,9 @@ textarea,
 #lobby-guide { margin-top: 10px; }
 
 </style>
-<link rel="stylesheet" href="../../../assets/network/multiplayer-lobby.css?v=20260925-compact-join">
+<link rel="stylesheet" href="../../../assets/network/multiplayer-lobby.css?v=20260926-unified-lobby">
 <script src="../../../assets/network/game-network.js?v=20260821"></script>
-<script src="../../../assets/network/multiplayer-lobby.js?v=20260925-compact-join"></script>
+<script src="../../../assets/network/multiplayer-lobby.js?v=20260926-unified-lobby"></script>
 <script src="../../../assets/sound/music-control.js?v=20260910-click-cache-1" defer></script>
 <link rel="stylesheet" href="../../../assets/device-game.css?v=20260921c">
 <style>
@@ -1047,7 +1047,7 @@ body:has(#game-container[style*="flex"]){height:100dvh;min-height:0;box-sizing:b
             <div class="player-list-title">방 번호 · 최대 4명까지 참여할 수 있습니다.</div>
             <div class="room-code-display" id="lobby-room-code">----</div>
             <div class="room-code-actions">
-                <button class="action-btn" id="new-room-btn" type="button">NEW CODE</button>
+                <button class="action-btn" id="new-room-btn" type="button">새 방 만들기</button>
             </div>
             <div class="room-share-status" id="room-share-status"></div>
         </div>
@@ -1055,7 +1055,7 @@ body:has(#game-container[style*="flex"]){height:100dvh;min-height:0;box-sizing:b
 
     <div class="lobby-pane hidden" id="guest-join-panel">
         <div class="input-group">
-            <label for="join-room-code">ENTER 4-DIGIT ROOM CODE</label>
+            <label for="join-room-code">방 번호</label>
             <div class="mp-lobby-join-controls">
                 <input type="text" class="input-field room-code-input" id="join-room-code"
                        maxlength="4" inputmode="numeric" autocomplete="off"
@@ -1068,7 +1068,7 @@ body:has(#game-container[style*="flex"]){height:100dvh;min-height:0;box-sizing:b
     </div>
 
     <div class="host-game-settings">
-        <label for="winning-score-input">WINNING SCORE
+        <label for="winning-score-input">목표 점수
             <small>먼저 이 점수에 도달하면 게임이 종료됩니다.</small>
         </label>
         <input class="input-field target-score-input" id="winning-score-input"
@@ -1076,13 +1076,13 @@ body:has(#game-container[style*="flex"]){height:100dvh;min-height:0;box-sizing:b
     </div>
 
     <div class="player-list-container">
-        <div class="player-list-title">CONNECTED PLAYERS (<span id="player-count">0</span>/4)</div>
+        <div class="player-list-title">참가자 (<span id="player-count">0</span>/4)</div>
         <div id="lobby-player-list"></div>
         <div class="room-share-status" id="lobby-guide"></div>
     </div>
-    <button class="action-btn" style="margin-top: 10px;" id="start-game-btn" type="button" disabled>START GAME</button>
+    <button class="action-btn" style="margin-top: 10px;" id="start-game-btn" type="button" disabled>게임 시작</button>
     <div style="display:flex; gap:10px; margin-top:10px;">
-        <button class="action-btn" style="flex:1;" id="rules-btn-lobby" type="button">HOW TO PLAY</button>
+        <button class="action-btn" style="flex:1;" id="rules-btn-lobby" type="button">게임 방법</button>
         <button class="action-btn" style="flex:1;" id="leave-btn" type="button">메인 화면으로</button>
     </div>
 
@@ -1101,7 +1101,7 @@ body:has(#game-container[style*="flex"]){height:100dvh;min-height:0;box-sizing:b
 </div>
 
 <div class="game-container" id="game-container">
-    
+
     <div class="setter-timer-overlay" id="timer-overlay">
             <div class="setter-timer-text" id="timer-text">PATTERN CALL!</div>
         <div class="setter-timer-text" style="font-size: 50px; margin-top: 10px;" id="timer-countdown">3.0</div>
@@ -1123,9 +1123,9 @@ body:has(#game-container[style*="flex"]){height:100dvh;min-height:0;box-sizing:b
 
         <div class="side-panel">
             <button class="call-set-btn" id="call-set-btn" onclick="declareSet()">찾았다!</button>
-            <button class="action-btn" id="rules-btn-game" type="button">RULES</button>
+            <button class="action-btn" id="rules-btn-game" type="button">게임 방법</button>
             <button class="action-btn" id="leave-btn-game" type="button">메인 화면으로</button>
-            
+
             <div class="log-monitor" id="log-monitor">
                 <div>* System: Game started.</div>
             </div>
@@ -1695,7 +1695,7 @@ body:has(#game-container[style*="flex"]){height:100dvh;min-height:0;box-sizing:b
             if (timeLeft <= 0) {
                 clearInterval(setCountdownTimer);
                 countdownEl.innerText = "0.0";
-                
+
                 // 타임아웃 판정
                 if (setterId === myId) {
                     submitSelectedSet();
@@ -2130,7 +2130,7 @@ body:has(#game-container[style*="flex"]){height:100dvh;min-height:0;box-sizing:b
         wrapper.innerHTML = `
             <h3>${title}</h3>
             ${bodyHtml}
-            <button class="action-btn" style="margin-top: 15px;" onclick="closeModal()">CLOSE</button>
+            <button class="action-btn" style="margin-top: 15px;" onclick="closeModal()">닫기</button>
         `;
         document.getElementById("modal-overlay").classList.add("show");
     }

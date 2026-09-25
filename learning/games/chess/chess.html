@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>체스</title>
-<link rel="stylesheet" href="../../../assets/network/multiplayer-lobby.css?v=20260925-compact-join">
+<link rel="stylesheet" href="../../../assets/network/multiplayer-lobby.css?v=20260926-unified-lobby">
 <link rel="stylesheet" href="../../../assets/device-game.css?v=20260921c">
 <link rel="stylesheet" href="styles.css?v=20260921c">
 <script src="../../../assets/network/game-network.js?v=20260821"></script>
-<script src="../../../assets/network/multiplayer-lobby.js?v=20260925-compact-join"></script>
+<script src="../../../assets/network/multiplayer-lobby.js?v=20260926-unified-lobby"></script>
 <script src="../../../assets/sound/music-control.js?v=20260910-click-cache-1" defer></script>
 <script src="chess-rules.js?v=20260923-learning"></script>
 <script src="chess-ui.js?v=20260923-learning" defer></script>
@@ -45,14 +45,14 @@
     </section>
     <div id="lobbyPlayers" class="player-list"></div>
     <p id="lobbyGuide" class="lobby-guide">상대방을 기다리는 중입니다.</p>
-    <section class="chat-card lobby-chat">
-      <div class="section-title">채팅</div>
+    <details class="chat-card lobby-chat">
+      <summary>채팅</summary>
       <div id="lobbyChatLog" class="chat-log" aria-live="polite"><div class="chat-empty">아직 메시지가 없습니다.</div></div>
       <div class="chat-row"><input id="lobbyChatInput" class="chat-input" maxlength="100" autocomplete="off" placeholder="메시지 입력"><button class="btn chat-send" type="button" data-chat-source="lobbyChatInput">보내기</button></div>
-    </section>
+    </details>
     <div class="lobby-actions">
       <button id="startBtn" class="btn primary" type="button" disabled>WAITING FOR PLAYERS</button>
-      <button id="rulesBtnLobby" class="btn" type="button">HOW TO PLAY</button>
+      <button id="rulesBtnLobby" class="btn" type="button">게임 방법</button>
       <button id="leaveBtn" class="btn" type="button">메인 화면으로</button>
     </div>
   </section>

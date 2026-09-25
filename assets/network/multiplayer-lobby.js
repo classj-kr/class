@@ -105,17 +105,18 @@
             tabList?.setAttribute("role", "tablist");
             tabList?.setAttribute("aria-label", "방 참여 방식");
             if (hostTab) {
+                hostTab.textContent = "방 만들기";
                 hostTab.setAttribute("role", "tab");
                 if (hostPane?.id) hostTab.setAttribute("aria-controls", hostPane.id);
             }
             if (joinTab) {
-                joinTab.textContent = "JOIN ROOM";
+                joinTab.textContent = "방 참가";
                 joinTab.setAttribute("aria-label", "방 번호 입력 방식 선택");
                 joinTab.setAttribute("role", "tab");
                 if (joinPane?.id) joinTab.setAttribute("aria-controls", joinPane.id);
             }
             if (joinButton) {
-                joinButton.textContent = "JOIN";
+                joinButton.textContent = "참가";
                 joinButton.setAttribute("aria-label", "입력한 방 번호로 참가");
             }
 
@@ -127,7 +128,7 @@
                 joinButton.classList.add("mp-lobby-join-submit");
                 joinPane?.classList.add("mp-lobby-join-pane");
                 this.elements.joinStatus?.classList.add("mp-lobby-join-status");
-                if (joinInput.parentElement === joinButton.parentElement) {
+                if (joinInput.parentElement && joinInput.parentElement === joinButton.parentElement) {
                     joinInput.parentElement.classList.add("mp-lobby-join-controls");
                 }
             }
@@ -139,6 +140,7 @@
             }
 
             if (this.elements.savedName) this.elements.savedName.textContent = name;
+            this._prepareLayout();
             this.elements.lobbyScreen?.classList.remove("hidden");
             this.elements.hostTab?.addEventListener("click", () => this.setMode("host"));
             this.elements.joinTab?.addEventListener("click", () => this.setMode("guest"));
@@ -153,7 +155,15 @@
             });
 
             (this.options.rulesButtonIds || []).forEach(id => {
-                getElement(id)?.addEventListener("click", () => this.options.onRules?.());
+                getElement(id)?.addEventListener("click", () => {
+                    this.options.onRules?.();
+                    document.querySelectorAll("[role=dialog], .rulesOverlay, .rules-overlay, .rulesModal, .rules-modal, .modal, .mp-modal, .popup-box, .modal-content").forEach(dialog => {
+                        if (!dialog.checkVisibility?.()) return;
+                        dialog.classList.add("mp-ui-rules");
+                        const heading = dialog.querySelector("h2");
+                        if (heading) heading.textContent = "게임 방법";
+                    });
+                });
             });
             (this.options.leaveButtonIds || []).forEach(id => {
                 const leaveButton = getElement(id);
@@ -171,6 +181,62 @@
             window.addEventListener("sitebackrequest", this._boundSiteBack);
             this.setMode(this.options.initialMode === "guest" ? "guest" : "host");
             return this;
+        }
+
+        // Keep the existing controls and their listeners; only arrange the lobby shell.
+        _prepareLayout() {
+            const e = this.elements, root = e.lobbyScreen;
+            if (!root?.querySelector) return;
+            const surface = root.querySelector(".lobby-panel, .lobbyPanel, .panel, .parchment-card, .screen-panel") || root;
+            const skin = getComputedStyle(surface);
+            const channels = value => (value.match(/[\d.]+/g) || []).slice(0, 3).map(Number);
+            const brightness = value => { const c = channels(value); return (c[0] || 0) * .299 + (c[1] || 0) * .587 + (c[2] || 0) * .114; };
+            const background = skin.backgroundColor === "rgba(0, 0, 0, 0)"
+                ? (brightness(skin.color) < 140 ? "#f5efdf" : "#121b27") : skin.backgroundColor;
+            root.style.setProperty("--lobby-surface", background);
+            root.style.setProperty("--lobby-ink", background === "#f5efdf" || brightness(background) > 160 ? "#20313b" : "#edf2f5");
+            root.style.setProperty("--lobby-edge", skin.borderTopColor);
+            const oldNameContainer = e.savedName?.parentElement;
+            root.querySelectorAll("header, h1, .lobby-title, .title-wrap, .hero-panel, .lobby-topline, .lobby-heading").forEach(node => node.classList.add("mp-ui-legacy-heading"));
+            if (root.firstElementChild?.tagName === "H2") root.firstElementChild.classList.add("mp-ui-legacy-heading");
+            const header = document.createElement("div");
+            header.className = "mp-ui-header";
+            const title = document.createElement("h1");
+            title.textContent = document.title;
+            header.appendChild(title);
+            const help = (this.options.rulesButtonIds || []).map(getElement).find(button => root.contains(button));
+            if (help) { help.textContent = "게임 방법"; help.classList.add("mp-ui-help"); header.appendChild(help); }
+            const meta = document.createElement("div");
+            meta.className = "mp-ui-meta";
+            const counts = this.allowedPlayerCounts;
+            const range = counts && counts.some((count, index) => index > 0 && count !== counts[index - 1] + 1)
+                ? counts.join("·") + "명"
+                : this.minPlayers === this.maxPlayers ? `${this.minPlayers}명` : `${this.minPlayers}~${this.maxPlayers}명`;
+            meta.append(document.createTextNode(range + " · "));
+            if (e.savedName) meta.appendChild(e.savedName);
+            else meta.append(document.createTextNode(this.playerName));
+            header.appendChild(meta);
+            if (oldNameContainer && oldNameContainer !== root && !oldNameContainer.querySelector("button, input, select")) oldNameContainer.classList.add("mp-ui-legacy-heading");
+            const tabs = document.createElement("div");
+            tabs.className = "mp-ui-tabs mp-lobby-tabs";
+            tabs.setAttribute("role", "tablist");
+            tabs.setAttribute("aria-label", "방 참여 방식");
+            if (e.hostTab) tabs.appendChild(e.hostTab);
+            if (e.joinTab) tabs.appendChild(e.joinTab);
+            // The former tab wrapper can also contain help/leave buttons. It is no longer a tablist.
+            root.querySelectorAll('[role="tablist"]').forEach(node => node.removeAttribute("role"));
+            const access = document.createElement("div");
+            access.className = "mp-ui-access";
+            if (e.hostPane) access.appendChild(e.hostPane);
+            if (e.joinPane) access.appendChild(e.joinPane);
+            [...root.children].forEach(node => node.classList.add("mp-ui-extra"));
+            root.prepend(header, tabs, access);
+            root.classList.add("mp-ui-lobby");
+            root.setAttribute("data-multiplayer-lobby", "");
+            e.playerList?.classList.add("mp-ui-roster");
+            e.guide?.classList.add("mp-ui-guide");
+            e.startButton?.classList.add("mp-ui-start");
+            (this.options.rulesButtonIds || []).forEach(id => { const button = getElement(id); if (button && button.textContent.trim() !== "?") button.textContent = "게임 방법"; });
         }
 
         get playerName() {
@@ -201,6 +267,7 @@
         }
 
         _emitState() {
+            this.elements?.lobbyScreen?.classList.toggle("mp-ui-connected", this.connected);
             this.options.onStateChange?.(this.snapshot());
         }
 
@@ -227,7 +294,7 @@
 
             if (isHost) {
                 if (this.options.autoCreate !== false) this.createRoom();
-                else this._setStatus("방을 만들려면 CREATE ROOM을 누르세요.");
+                else this._setStatus("방 만들기를 눌러 주세요.");
             } else {
                 this._setStatus("");
                 setTimeout(() => this.elements.joinCode?.focus({ preventScroll: true }), 50);
@@ -570,7 +637,7 @@
             }) || this._defaultPresentation(ids.length);
             if (this.elements.startButton) {
                 this.elements.startButton.disabled = this.role !== "host" || !presentation.canStart;
-                this.elements.startButton.textContent = presentation.startText;
+                this.elements.startButton.textContent = this.role === "host" ? "게임 시작" : "방장 시작 대기";
             }
             if (this.elements.guide) {
                 this.elements.guide.textContent = presentation.guideText;

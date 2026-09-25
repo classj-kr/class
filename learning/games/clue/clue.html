@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>저택 추리</title>
 <link rel="preload" as="image" href="/learning/games/clue/assets/images/board-v5.webp">
-<link rel="stylesheet" href="../../../assets/network/multiplayer-lobby.css?v=20260925-compact-join">
+<link rel="stylesheet" href="../../../assets/network/multiplayer-lobby.css?v=20260926-unified-lobby">
 <style>
 :root{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;color:#eef0f5;background:#10121a;--accent:#d9a441;--accent-soft:#8a662a;--panel:#1b1f2b;--panel-edge:#3a3f52;--danger:#c8544a;--safe:#3f9e6c}
 *{box-sizing:border-box}
@@ -181,7 +181,7 @@ h1,h2,h3,p{margin-top:0}
 #roomCode{font-size:clamp(36px,8vw,44px);line-height:1.15;font-variant-numeric:tabular-nums}
 </style>
 <script src="../../../assets/network/game-network.js?v=20260821"></script>
-<script src="../../../assets/network/multiplayer-lobby.js?v=20260925-compact-join"></script>
+<script src="../../../assets/network/multiplayer-lobby.js?v=20260926-unified-lobby"></script>
 <script src="../../../assets/sound/music-control.js?v=20260910-click-cache-1" defer></script>
 <link rel="stylesheet" href="../../../assets/device-game.css?v=20260921c">
 <style>
@@ -233,7 +233,7 @@ body:has(#gameScreen:not(.hidden)) .shell{width:100%;max-width:1440px}
 
     <section id="hostPane" class="panel mp-lobby-card hidden">
       <div class="row spread">
-        <div><div class="eyebrow">ROOM CODE</div><div id="roomCode" class="code">----</div></div>
+        <div><div class="eyebrow">방 번호</div><div id="roomCode" class="code">----</div></div>
       </div>
       <div id="hostStatus" class="mp-lobby-status">방을 만드는 중입니다.</div>
     </section>
@@ -247,12 +247,12 @@ body:has(#gameScreen:not(.hidden)) .shell{width:100%;max-width:1440px}
     </section>
 
     <section class="panel">
-      <h2>PLAYERS</h2>
+      <h2>참가자</h2>
       <div id="lobbyPlayers" class="mp-lobby-players"></div>
       <p id="lobbyGuide" class="mp-lobby-guide">3~6명이 모이면 방장이 시작할 수 있습니다.</p>
       <button id="startBtn" class="primary" type="button" disabled>WAITING FOR PLAYERS</button>
       <div class="row" style="margin-top:10px">
-        <button id="rulesBtnLobby" class="secondary" type="button">HOW TO PLAY</button>
+        <button id="rulesBtnLobby" class="secondary" type="button">게임 방법</button>
         <button id="leaveBtnLobby" class="secondary" type="button">메인 화면</button>
       </div>
     </section>
@@ -266,7 +266,7 @@ body:has(#gameScreen:not(.hidden)) .shell{width:100%;max-width:1440px}
             <div hidden><div id="gameRoomCode">----</div></div>
           </div>
           <div class="row" style="margin-top:10px">
-            <button id="rulesBtnGame" class="secondary" type="button">RULES</button>
+            <button id="rulesBtnGame" class="secondary" type="button">게임 방법</button>
             <button id="leaveBtnGame" class="secondary" type="button">메인 화면</button>
           </div>
         </div>
@@ -343,7 +343,7 @@ body:has(#gameScreen:not(.hidden)) .shell{width:100%;max-width:1440px}
 
 <section id="rulesOverlay" class="overlay hidden" role="dialog" aria-modal="true">
   <div class="modal">
-    <div class="eyebrow">HOW TO PLAY</div>
+    <div class="eyebrow">게임 방법</div>
     <h2>저택 추리 규칙</h2>
     <ol>
       <li>저택의 가보를 훔친 도둑(용의자 1명) · 사용한 도구(1개) · 범행 장소(방 1곳) 카드가 각 1장씩 몰래 빠져 뒤집혀 놓입니다. 나머지 18장은 참가자에게 고르게 나눠집니다.</li>
@@ -353,7 +353,7 @@ body:has(#gameScreen:not(.hidden)) .shell{width:100%;max-width:1440px}
       <li>확신이 서면 거실로 돌아와 "고발"로 도둑·도구·장소를 모두 지목할 수 있습니다(고발은 거실에 있을 때만 가능). 정답이면 즉시 승리! 틀리면 그 사람은 더 이상 이동·추리·고발을 할 수 없지만, 다른 사람의 추리를 반박하는 데는 계속 참여합니다.</li>
       <li>모두가 틀린 고발로 탈락하면 미제 사건으로 종료됩니다.</li>
     </ol>
-    <button id="closeRulesBtn" class="primary" type="button">CLOSE</button>
+    <button id="closeRulesBtn" class="primary" type="button">닫기</button>
   </div>
 </section>
 
@@ -402,7 +402,7 @@ body:has(#gameScreen:not(.hidden)) .shell{width:100%;max-width:1440px}
     <h2 id="revealTitle">카드 확인</h2>
     <img id="revealImage" src="" alt="" style="width:min(220px,60%);aspect-ratio:3/4;object-fit:cover;border-radius:12px;border:3px solid var(--accent-soft);box-shadow:0 10px 30px #0008;margin:10px 0">
     <p id="revealMessage" class="logLine"></p>
-    <button id="closeRevealBtn" class="primary" type="button">CLOSE</button>
+    <button id="closeRevealBtn" class="primary" type="button">닫기</button>
   </div>
 </section>
 

@@ -6,12 +6,12 @@
     <meta name="theme-color" content="#10151c">
     <meta name="description" content="벌칙 숫자를 피하고 위험한 합계를 넘기는 전략 카드 게임">
     <title>77 폭탄</title>
-    <link rel="stylesheet" href="../../../assets/network/multiplayer-lobby.css?v=20260925-compact-join">
+    <link rel="stylesheet" href="../../../assets/network/multiplayer-lobby.css?v=20260926-unified-lobby">
     <link rel="stylesheet" href="game.css?v=20260925-room-code">
     <link rel="stylesheet" href="polish.css?v=20260924-rules2">
     <link rel="stylesheet" href="../../../assets/device-game.css?v=20260924-rules2">
     <script src="../../../assets/network/game-network.js?v=20260821"></script>
-    <script src="../../../assets/network/multiplayer-lobby.js?v=20260925-compact-join"></script>
+    <script src="../../../assets/network/multiplayer-lobby.js?v=20260926-unified-lobby"></script>
     <script src="music.js" defer></script>
     <script src="../../../assets/sound/music-control.js?v=20260910-click-cache-1" defer></script>
 <script src="../../../assets/game-motion.js?v=20260921a"></script>
@@ -30,7 +30,7 @@
                 <div class="brand-lockup">
                     <span class="brand-bomb" aria-hidden="true"><i></i></span>
                     <div>
-                        <p class="eyebrow">ADD · RISK · SURVIVE</p>
+
                         <h1>BOMB <span>77</span></h1>
                         <p class="subtitle">2~8명 숫자 카드 게임</p>
                     </div>
@@ -45,7 +45,7 @@
             </header>
 
             <section id="hostPane" class="screen-panel lobby-card hidden">
-                <div><p class="eyebrow">ROOM CODE</p><strong id="roomCode" class="room-code">----</strong></div>
+                <div><p class="eyebrow">방 번호</p><strong id="roomCode" class="room-code">----</strong></div>
                 <p id="hostStatus" class="mp-lobby-status">방을 만드는 중입니다.</p>
             </section>
 
@@ -59,14 +59,14 @@
 
             <section class="screen-panel players-panel">
                 <div>
-                    <p class="eyebrow">PLAYERS</p>
+                    <p class="eyebrow">참가자</p>
                     <div id="lobbyPlayers" class="mp-lobby-players"></div>
                     <p id="lobbyGuide" class="mp-lobby-guide">2~8명이 모이면 시작할 수 있습니다.</p>
                 </div>
                 <div class="lobby-actions">
                     <button id="startBtn" class="primary-button" type="button" disabled>플레이어 기다리는 중</button>
                     <div class="button-row">
-                        <button id="rulesBtnLobby" class="secondary-button" type="button">HOW TO PLAY</button>
+                        <button id="rulesBtnLobby" class="secondary-button" type="button">게임 방법</button>
                         <button id="leaveBtnLobby" class="secondary-button" type="button">메인 화면</button>
                     </div>
                 </div>
@@ -120,7 +120,7 @@
 
     <section id="rulesOverlay" class="overlay hidden" role="dialog" aria-modal="true" aria-labelledby="rulesTitle">
         <div class="modal">
-            <p class="eyebrow">HOW TO PLAY</p><h2 id="rulesTitle">77 폭탄 게임 방법</h2>
+            <p class="eyebrow">게임 방법</p><h2 id="rulesTitle">77 폭탄 게임 방법</h2>
             <ol>
                 <li>카드 5장과 칩 3개로 시작합니다. 차례에 한 장을 내고 합계를 더한 뒤 한 장을 보충합니다.</li>
                 <li>합계가 <strong>11·22·33·44·55·66</strong>이면 낸 사람이 칩 1개를 잃습니다. 0이나 특수 카드로 그 합계를 유지해도 벌칙입니다.</li>

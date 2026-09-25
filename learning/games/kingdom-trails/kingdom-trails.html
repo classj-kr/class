@@ -6,10 +6,10 @@
   <meta name="theme-color" content="#273f24">
   <title>왕국의 길</title>
   <link rel="stylesheet" href="../../../assets/device-game.css?v=20260921c">
-  <link rel="stylesheet" href="../../../assets/network/multiplayer-lobby.css?v=20260925-compact-join">
+  <link rel="stylesheet" href="../../../assets/network/multiplayer-lobby.css?v=20260926-unified-lobby">
   <link rel="stylesheet" href="kingdom-trails.css?v=20260921c">
   <script src="../../../assets/network/game-network.js?v=20260821"></script>
-  <script src="../../../assets/network/multiplayer-lobby.js?v=20260925-compact-join"></script>
+  <script src="../../../assets/network/multiplayer-lobby.js?v=20260926-unified-lobby"></script>
   <script src="../../../assets/sound/music-control.js?v=20260910-click-cache-1" defer></script>
 </head>
 <body>
@@ -26,11 +26,11 @@
     <section id="lobbyScreen" class="lobby-screen hidden">
       <header class="lobby-heading parchment-card">
         <div>
-          <span class="kicker">KINGDOM TRAILS</span>
+
           <h1>KINGDOM TRAILS</h1>
           <p>타일을 돌려 길과 마을을 잇는 2~4인 공간 전략 게임</p>
         </div>
-        <button id="rulesBtnLobby" class="button ghost" type="button">HOW TO PLAY</button>
+        <button id="rulesBtnLobby" class="button ghost" type="button">게임 방법</button>
       </header>
 
       <div class="lobby-grid">
@@ -41,7 +41,7 @@
             <button id="joinTab" class="button secondary" type="button" aria-label="방 번호 입력 방식 선택" role="tab">JOIN ROOM</button>
           </div>
           <div id="hostPane" class="mp-lobby-card hidden">
-            <span class="kicker">ROOM CODE</span>
+            <span class="kicker">방 번호</span>
             <div id="roomCode" class="room-code">----</div>
             <div id="hostStatus" class="mp-lobby-status">방을 만드는 중입니다.</div>
           </div>
@@ -66,7 +66,7 @@
 
     <section id="gameScreen" class="game-screen hidden">
       <header class="game-topbar">
-        <div class="brand-lockup"><span class="crest" aria-hidden="true">♜</span><div><span class="kicker">KINGDOM TRAILS</span><strong>왕국의 길</strong></div></div>
+        <div class="brand-lockup"><span class="crest" aria-hidden="true">♜</span><div><strong>왕국의 길</strong></div></div>
         <div class="turn-summary">
           <span id="turnBadge" class="turn-badge">준비 중</span>
           <strong id="turnTitle">왕국을 펼치는 중입니다</strong>
@@ -87,7 +87,7 @@
 
       <div id="playArea" class="game-layout">
         <aside class="turn-panel parchment-card">
-          <div class="panel-heading"><div><span class="kicker">CURRENT TILE</span><h2>이번 타일</h2></div><span id="deckCount" class="deck-count">0장</span></div>
+          <div class="panel-heading"><div><h2>이번 타일</h2></div><span id="deckCount" class="deck-count">0장</span></div>
           <div id="currentTilePreview" class="tile-preview" aria-label="현재 타일"></div>
           <button id="rotateBtn" class="button rotate-button" type="button" data-sfx="card"><span aria-hidden="true">↻</span> 타일 회전</button>
 
@@ -117,7 +117,7 @@
 
         <aside class="info-panel">
           <section class="parchment-card action-card">
-            <span class="kicker">LAST ACTION</span>
+
             <p id="lastAction">게임을 준비하고 있습니다.</p>
           </section>
           <section class="parchment-card score-guide">
@@ -148,7 +148,7 @@
 
   <section id="rulesOverlay" class="overlay hidden" role="dialog" aria-modal="true" aria-labelledby="rulesTitle">
     <div class="rules-modal parchment-card">
-      <div class="rules-heading"><div><span class="kicker">HOW TO PLAY</span><h2 id="rulesTitle">왕국의 길 게임 방법</h2></div><button id="closeRulesBtn" class="icon-button" type="button" aria-label="닫기">×</button></div>
+      <div class="rules-heading"><div><span class="kicker">게임 방법</span><h2 id="rulesTitle">왕국의 길 게임 방법</h2></div><button id="closeRulesBtn" class="icon-button" type="button" aria-label="닫기">×</button></div>
       <div class="rule-steps">
         <article><span>1</span><div><strong>타일을 돌려요</strong><p>길은 길끼리, 마을은 마을끼리, 들판은 들판끼리 맞아야 합니다.</p></div></article>
         <article><span>2</span><div><strong>빛나는 자리에 놓아요</strong><p>기존 왕국과 한 변 이상 맞닿는 빈칸을 선택합니다.</p></div></article>
