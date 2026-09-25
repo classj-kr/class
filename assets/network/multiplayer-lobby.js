@@ -209,7 +209,8 @@
                     return { node, values: typography.map(key => [key, style.getPropertyValue(key)]), size: parseFloat(style.fontSize) };
                 });
                 styles.forEach(({ node, values, size }) => {
-                    values.forEach(([key, value]) => node.style.setProperty(key, value));
+                    values.forEach(([key, value]) => node.style.setProperty(key,
+                        key === "letter-spacing" && value !== "normal" ? `${parseFloat(value) / size}em` : value));
                     if (node !== title) node.style.fontSize = `${size / titleSize}em`;
                 });
                 title.style.setProperty("--lobby-title-size", `${titleSize}px`);
