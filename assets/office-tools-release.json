@@ -1,9 +1,9 @@
 {
-  "version": "20260926-stamp-engraving",
+  "version": "20260926-stamp-proportions",
   "files": {
-    "classtools/office-tools/index.html": "ba8c50ed7ed80d1c453ae793b502b862dd9e553315980a74f1e899e3ec1b4d0d",
+    "classtools/office-tools/index.html": "9c0cd3ac95a7e4652bbe4b7e14ea5d7b9b0cc77c34f1fb79d9b7aacb6fb628e4",
     "classtools/office-tools/style.css": "ba1802ab4bb71bbd07284764d820f7b63363ac873a815806f78c2f77e90a5203",
-    "classtools/office-tools/stamp.js": "bc19809972915953da6bc37ed509ca840db5c5662693553fe9465f624315e62b",
+    "classtools/office-tools/stamp.js": "c0321efa16d4594677275ea8b00fad974c0eef40ec837a2aff470b6f5a2779ec",
     "classtools/office-tools/tools.js": "b47bfa08ec80573b0344937d8184da579ac7968dea83698d82780f4fb538b3c5",
     "classtools/office-tools/fonts/ChosunGs.TTF": "4e191bc30d23ce34797dcaf7a0965dedd67a2d85cc5dd87325ee96626cba7bea",
     "classtools/office-tools/fonts/ChosunKm.TTF": "303fa3f070e5c3d9001b2029a6d940c2b25470f3ebe67c104bf452505eecef4d",

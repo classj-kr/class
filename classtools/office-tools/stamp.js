@@ -215,24 +215,27 @@
       const circularGrid = (options.shape === 'oval' || options.shape === 'circle') && !contour;
       const width = Math.round(2 * innerX * (circularGrid ? .70 : .98));
       const height = Math.round(2 * innerY * (contour ? .90 : circularGrid ? .70 : .98));
-      const text = document.createElement('canvas');
-      text.width = width; text.height = height;
-      const textContext = text.getContext('2d');
       const cells = stampCells(characters.length, layout, width, height, options.spacing);
-      characters.forEach((character, index) => {
+      const glyphs = characters.map((character, index) => {
         const glyph = glyphImage(character, options.font, options.weight);
         const [x, y, w, h] = cells[index];
-        textContext.drawImage(glyph.canvas, glyph.x, glyph.y, glyph.width, glyph.height, x, y, w, h);
-      });
-      context.globalCompositeOperation = options.impression === 'negative' ? 'destination-out' : 'source-over';
-      if (contour) {
-        // Fit the name to the inner oval, without clipping its strokes at the rim.
-        for (let y = 0; y < height; y++) {
-          const offset = y + .5 - height / 2;
-          const rowWidth = width * Math.sqrt(Math.max(0, 1 - (offset / innerY) ** 2));
-          context.drawImage(text, 0, y, width, 1, -rowWidth / 2, y - height / 2, rowWidth, 1);
+        let availableWidth = w;
+        if (contour) {
+          // Keep the whole glyph inside the oval without bending its strokes.
+          const furthestY = Math.max(Math.abs(y - height / 2), Math.abs(y + h - height / 2));
+          availableWidth = Math.min(w, 2 * innerX * Math.sqrt(Math.max(0, 1 - (furthestY / innerY) ** 2)) * .98);
         }
-      } else context.drawImage(text, -width / 2, -height / 2);
+        return { glyph, x, y, w, h, scale: Math.min(availableWidth / glyph.width, h / glyph.height) };
+      });
+      // A vertical name uses one type size, including the narrower ends of an oval.
+      const verticalScale = layout === 'vertical' ? Math.min(...glyphs.map(item => item.scale)) : null;
+      context.globalCompositeOperation = options.impression === 'negative' ? 'destination-out' : 'source-over';
+      for (const { glyph, x, y, w, h, scale } of glyphs) {
+        const size = verticalScale ?? scale;
+        const drawWidth = glyph.width * size, drawHeight = glyph.height * size;
+        context.drawImage(glyph.canvas, glyph.x, glyph.y, glyph.width, glyph.height,
+          x - width / 2 + (w - drawWidth) / 2, y - height / 2 + (h - drawHeight) / 2, drawWidth, drawHeight);
+      }
       context.globalCompositeOperation = 'source-over';
       if (options.impression !== 'negative') {
         // Colour the complete ink layer once, so overlap never darkens the opacity.
