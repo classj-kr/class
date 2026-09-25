@@ -258,7 +258,44 @@
             border-color: var(--accent-green);
         }
 
+        #widget-timetable,
+        #widget-boards {
+            min-height: 0;
+            padding: 16px;
+            gap: 12px;
+        }
+
+        .widget-edit {
+            align-self: flex-end;
+            min-height: 30px;
+            padding: 3px 6px;
+            background: transparent;
+            border: 0;
+            border-radius: 5px;
+            color: var(--text-muted);
+            font: inherit;
+            font-size: 0.8rem;
+            cursor: pointer;
+        }
+
+        .widget-edit:hover { background: rgba(255, 255, 255, 0.07); color: var(--text-main); }
+        .widget-edit:focus-visible { outline: 2px solid var(--accent-green); outline-offset: 2px; }
+
+        .checklist-controls {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 6px;
+        }
+
+        .checklist-controls select { min-width: 0; max-width: 100%; }
+        .checklist-status { font-size: 0.8rem; color: var(--text-muted); white-space: nowrap; }
+
         /* 1. Timetable Widget */
+        .today-events-banner[hidden],
+        .today-events-banner:empty { display: none; }
+
         .today-events-banner {
             display: flex;
             flex-direction: column;
@@ -450,15 +487,6 @@
             gap: 12px;
         }
 
-        #widget-checklist .widget-header {
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-
-        #widget-checklist .widget-title {
-            font-size: 1.08rem;
-        }
-
         #widget-checklist .icon-btn {
             min-height: 38px;
         }
@@ -536,9 +564,6 @@
             display: flex;
             flex-direction: column;
             gap: 8px;
-            flex: 1;
-            overflow-y: auto;
-            max-height: 180px;
         }
 
         .board-item {
@@ -1042,21 +1067,7 @@
             min-height: 44px;
         }
 
-        /* Picker & Timer */
-        .picker-result {
-            font-size: 3.2rem;
-            font-weight: 900;
-            text-align: center;
-            color: var(--accent-amber);
-            min-height: 90px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(240, 189, 100, 0.1);
-            border-radius: 16px;
-            border: 1px dashed var(--accent-amber);
-        }
-
+        /* Timer */
         .timer-display {
             font-family: 'Outfit', sans-serif;
             font-size: 4.5rem;
@@ -1191,30 +1202,22 @@
     <main class="dashboard-grid" id="dashboardGrid">
 
         <!-- Widget 1: Timetable -->
-        <section class="widget-card" id="widget-timetable" draggable="true">
-            <div class="widget-header">
-                <h2 class="widget-title"><span class="widget-icon">📅</span> 오늘의 시간표</h2>
-                <div style="display: flex; gap: 6px; align-items: center;">
-                    <span class="widget-badge" id="currentDayLabel">목요일</span>
-                    <button class="icon-btn" id="editTimetableBtn">수정</button>
-                </div>
-            </div>
+        <section class="widget-card" id="widget-timetable" draggable="true" aria-label="오늘의 시간표">
+            <span id="currentDayLabel" hidden></span>
             <div class="today-events-banner" id="todayEventsBanner" hidden></div>
             <div class="timetable-list" id="timetableList">
                 <!-- 1 ~ 8 periods loaded by JS -->
             </div>
+            <button class="widget-edit" id="editTimetableBtn" type="button">시간표 수정</button>
         </section>
 
         <!-- Widget 2: Student Checklist (Linked with Roster) -->
-        <section class="widget-card" id="widget-checklist" draggable="true">
-            <div class="widget-header">
-                <h2 class="widget-title"><span class="widget-icon">✅</span> 학생 명단 점검</h2>
-                <div style="display: flex; gap: 6px; align-items: center;">
-                    <select id="classSwitcherSelect" class="icon-btn" style="background: rgba(117,214,159,0.15); border-color: rgba(117,214,159,0.3); color: var(--accent-green); font-weight: 700; cursor: pointer; outline: none; padding: 4px 8px;" hidden>
+        <section class="widget-card" id="widget-checklist" draggable="true" aria-label="학생 명단 점검">
+            <div class="checklist-controls">
+                    <select id="classSwitcherSelect" aria-label="학급 선택" class="icon-btn" style="background: rgba(117,214,159,0.15); border-color: rgba(117,214,159,0.3); color: var(--accent-green); font-weight: 700; cursor: pointer; outline: none; padding: 4px 8px;" hidden>
                         <option value="">학급 선택...</option>
                     </select>
-                    <span class="widget-badge" id="missingBadge">미완료: 0명</span>
-                </div>
+                    <span class="checklist-status" id="missingBadge">미완료: 0명</span>
             </div>
             <div class="checklist-grid" id="checklistGrid">
                 <!-- Roster student chips generated by JS -->
@@ -1222,11 +1225,8 @@
         </section>
 
         <!-- Widget 3: Important schedule -->
-        <section class="widget-card" id="widget-boards" draggable="true">
-            <div class="widget-header">
-                <h2 class="widget-title"><span class="widget-icon">📌</span> 주요일정</h2>
-                <span class="widget-badge" id="scheduleCountBadge">예정 0개</span>
-            </div>
+        <section class="widget-card" id="widget-boards" draggable="true" aria-label="주요일정">
+            <span id="scheduleCountBadge" hidden></span>
             <div class="calendar-status" id="scheduleLoadStatus" role="status" hidden></div>
             <div class="card-item-list" id="scheduleList"></div>
             <div class="schedule-editor" id="scheduleEditor" hidden>
@@ -1265,8 +1265,7 @@
     <!-- Toolbar Footer -->
     <footer class="toolbar">
         <div class="toolbar-group">
-            <button class="tool-btn" id="pickerModalBtn">🎲 1명 뽑기</button>
-            <button class="tool-btn" id="multiPickerModalBtn" style="background: rgba(46, 196, 182, 0.18); border-color: var(--brand-light); color: #7ce4ff; font-weight: 800;">🎯 발표자 뽑기(다수)</button>
+            <button class="tool-btn" id="multiPickerModalBtn" style="background: rgba(46, 196, 182, 0.18); border-color: var(--brand-light); color: #7ce4ff; font-weight: 800;">🎯 학생 추첨</button>
             <button class="tool-btn" id="timerModalBtn">⏱️ 집중 타이머</button>
             <a class="tool-btn" id="blackboardLink" href="/classtools/blackboard.html">🖌️ 칠판</a>
             <a class="tool-btn" href="/classboard/">📢 알림장</a>
@@ -1305,23 +1304,11 @@
         </div>
     </div>
 
-    <!-- Modal 2: Random Picker Modal -->
-    <div class="modal-overlay" id="pickerModal" hidden>
-        <div class="modal-box">
-            <div class="modal-title">
-                <span>🎲 3D 룰렛 1명 발표자 뽑기</span>
-                <button class="modal-close" id="closePickerModal">&times;</button>
-            </div>
-            <div class="picker-result" id="pickerResult">클릭하여 뽑기!</div>
-            <button class="btn btn-primary" id="startPickBtn" style="width: 100%; margin-top: 16px; padding: 14px; font-size: 1.2rem; font-weight: 900;">🎲 1명 뽑기 시작!</button>
-        </div>
-    </div>
-
-    <!-- Modal 4: Multi-Student Bubble Touch Picker Modal -->
+    <!-- Presenter Picker Modal -->
     <div class="modal-overlay" id="multiPickerModal" hidden>
         <div class="modal-box" style="width: min(94vw, 1100px); max-height: 90vh; background: #111619; border: 2px solid #2ec4b6; border-radius: 24px; box-shadow: 0 25px 60px rgba(0,0,0,0.6); display: flex; flex-direction: column; padding: 20px 24px;">
             <div class="modal-title" style="border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 14px; margin-bottom: 10px;">
-                <span style="font-size: 1.35rem; font-weight: 900; color: #7ce4ff; display: flex; align-items: center; gap: 8px;">🎯 발표자 뽑기 (다수 터치)</span>
+                <span style="font-size: 1.35rem; font-weight: 900; color: #7ce4ff; display: flex; align-items: center; gap: 8px;">🎯 학생 추첨</span>
                 <div style="display: flex; gap: 10px; align-items: center;">
                     <button class="btn" id="shuffleBubblesBtn" type="button" style="background: #ffe600; color: #111111; font-weight: 900; font-size: 1rem; padding: 8px 18px; border-radius: 12px; border: none; cursor: pointer; box-shadow: 0 4px 14px rgba(255, 230, 0, 0.4);">🎲 학생 섞기</button>
                     <button class="btn" id="resetBubblesBtn" type="button" style="background: rgba(255,255,255,0.12); color: #ffffff; font-weight: 800; font-size: 0.95rem; padding: 8px 16px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.25); cursor: pointer;">🔄 전부 뒤집기</button>
@@ -2764,50 +2751,7 @@
             }
         }
 
-        // 8. Class123 Style 3D Spin Random Picker Modal
-        const pickerModalBtn = document.getElementById("pickerModalBtn");
-        const pickerModal = document.getElementById("pickerModal");
-        const closePickerModal = document.getElementById("closePickerModal");
-        const startPickBtn = document.getElementById("startPickBtn");
-        const pickerResult = document.getElementById("pickerResult");
-
-        pickerModalBtn.addEventListener("click", () => { pickerModal.hidden = false; });
-        closePickerModal.addEventListener("click", () => { pickerModal.hidden = true; });
-
-        let isPicking = false;
-        startPickBtn.addEventListener("click", () => {
-            if (isPicking) return;
-            isPicking = true;
-            let counter = 0;
-            const maxCycles = 30;
-
-            const interval = setInterval(() => {
-                const randomStudent = rosterStudents[Math.floor(Math.random() * rosterStudents.length)] || { number: "1", name: "1번" };
-                const avatar = getAvatarForStudent(randomStudent.number);
-
-                pickerResult.innerHTML = `
-                    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;">
-                        <div style="font-size: 3.5rem; transform: scale(1.1); transition: transform 0.08s;">${avatar.icon}</div>
-                        <div style="font-size: 1.8rem; color: #fff; font-weight: 800;">${randomStudent.number}번 ${randomStudent.name}</div>
-                    </div>
-                `;
-                counter++;
-
-                if (counter >= maxCycles) {
-                    clearInterval(interval);
-                    isPicking = false;
-                    const finalAvatar = getAvatarForStudent(randomStudent.number);
-                    pickerResult.innerHTML = `
-                        <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; padding: 10px;">
-                            <div style="font-size: 5.5rem; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.6));">${finalAvatar.icon}</div>
-                            <div style="font-size: 2.8rem; color: #ffffff; font-weight: 900; text-shadow: 0 4px 10px rgba(0,0,0,0.5);">${randomStudent.number}번 ${randomStudent.name}</div>
-                        </div>
-                    `;
-                }
-            }, 60);
-        });
-
-        // 8-2. Class123 Style Multi-Student Bubble Touch Picker JS & Web Audio API Ting Sound
+        // 8. Presenter Picker & Web Audio Feedback
         const multiPickerModalBtn = document.getElementById("multiPickerModalBtn");
         const multiPickerModal = document.getElementById("multiPickerModal");
         const closeMultiPickerModal = document.getElementById("closeMultiPickerModal");
@@ -2875,7 +2819,7 @@
                 const avatar = getAvatarForStudent(student.number);
                 const card = document.createElement("div");
                 card.className = "bubble-card";
-                card.title = "손가락으로 터치하여 발표자를 뽑아보세요!";
+                card.title = "터치하여 학생을 추첨하세요!";
                 card.innerHTML = `<span style="font-size: 2.2rem; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));">❓</span>`;
 
                 card.addEventListener("click", () => {

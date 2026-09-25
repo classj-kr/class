@@ -3714,7 +3714,7 @@ function createClassroomPlatform(options = {}) {
       `SELECT * FROM (
          SELECT s.student_number::TEXT AS student_number, s.roster_name, COALESCE(s.gender, '여') AS gender,
                 NULL AS birthday_mmdd, TRUE AS birthday_visible,
-                NULL AS avatar_key,
+                s.avatar_key,
                 s.student_email, s.guardian1_email, s.guardian2_email,
                 s.user_id IS NOT NULL AS student_linked,
                 EXISTS(SELECT 1 FROM classroom_users u WHERE LOWER(u.email) = LOWER(s.guardian1_email)) AS guardian1_linked,
