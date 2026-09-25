@@ -3429,14 +3429,22 @@ function createClassroomPlatform(options = {}) {
     const user = await requireUser(req);
     const classId = await readableScheduleClassId(user, req.query.classId);
     if (!classId) throw new HttpError(403, "CLASS_ACCESS_REQUIRED", "No classroom schedule is available for this account.");
+    const month = String(req.query.month || "");
+    if (month && !/^[12]\d{3}-(0[1-9]|1[0-2])$/.test(month)) {
+      throw new HttpError(400, "INVALID_MONTH", "조회할 달을 확인해 주세요.");
+    }
+    const monthStart = month ? month + "-01" : null;
+    const monthEnd = month
+      ? new Date(Date.UTC(Number(month.slice(0, 4)), Number(month.slice(5, 7)), 1)).toISOString().slice(0, 10)
+      : null;
     const result = await pool.query(
       `SELECT id, event_date::TEXT AS event_date, title, details
        FROM classroom_schedules
        WHERE class_id = $1
-         AND event_date >= CURRENT_DATE - 31
-         AND event_date < CURRENT_DATE + 370
+         AND event_date >= COALESCE($2::date, CURRENT_DATE - 31)
+         AND event_date < COALESCE($3::date, CURRENT_DATE + 370)
        ORDER BY event_date, id`,
-      [classId]
+      [classId, monthStart, monthEnd]
     );
     const birthdaysResult = await pool.query(
       `SELECT id, roster_name, birthday_mmdd
@@ -3455,11 +3463,11 @@ function createClassroomPlatform(options = {}) {
         `SELECT id, event_date::TEXT AS event_date, title, details, category, target_scope, target_grades, event_type
          FROM school_annual_schedules
          WHERE school_id = $1
-           AND event_date >= CURRENT_DATE - 31
-           AND event_date < CURRENT_DATE + 370
+           AND event_date >= COALESCE($3::date, CURRENT_DATE - 31)
+           AND event_date < COALESCE($4::date, CURRENT_DATE + 370)
            AND (target_scope = 'ALL' OR (target_scope = 'GRADE' AND $2 = ANY(target_grades)))
          ORDER BY event_date, id`,
-        [classMeta.school_id, classMeta.grade]
+        [classMeta.school_id, classMeta.grade, monthStart, monthEnd]
       );
       annualSchedules = annualRes.rows.map((row) => ({
         id: `annual_${row.id}`,
@@ -4300,7 +4308,7 @@ function createClassroomPlatform(options = {}) {
     const month = /^\d{4}-\d{2}$/.test(req.query.month) ? req.query.month : new Date().toISOString().slice(0, 7);
     const [monthYear, monthNum] = month.split("-").map(Number);
     const monthStart = `${month}-01`;
-    const monthEnd = new Date(monthYear, monthNum, 0).toISOString().slice(0, 10); // last day of month
+    const monthEnd = new Date(Date.UTC(monthYear, monthNum, 0)).toISOString().slice(0, 10); // last day of month
     const result = await pool.query(
       `SELECT id, event_date::TEXT AS event_date, end_date::TEXT AS end_date, title, location, event_time, period,
               target_scope, target_grades, organizer_name, created_by
@@ -4399,6 +4407,7 @@ function createClassroomPlatform(options = {}) {
         );
       } catch (err) {
         console.error("Failed to fetch live public holidays:", err.message);
+        throw new HttpError(502, "HOLIDAYS_UNAVAILABLE", "공휴일 정보를 불러오지 못했습니다.");
       }
     }
 
@@ -4415,7 +4424,8 @@ function createClassroomPlatform(options = {}) {
     const result = await pool.query(
       `SELECT is_integrated, summer_start::TEXT AS summer_start, summer_end::TEXT AS summer_end,
               winter_start::TEXT AS winter_start, winter_end::TEXT AS winter_end,
-              spring_start::TEXT AS spring_start, spring_end::TEXT AS spring_end
+              spring_start::TEXT AS spring_start, spring_end::TEXT AS spring_end,
+              entrance_ceremony_date::TEXT AS entrance_ceremony_date, graduation_ceremony_date::TEXT AS graduation_ceremony_date
        FROM school_vacation_settings
        WHERE school_id = $1 AND academic_year = $2`,
       [ctx.school_id, year]
@@ -6547,7 +6557,7 @@ function createClassroomPlatform(options = {}) {
   // ── Public Holidays: DB-cached + admin-correctable ──
   // Cache is per-school so a school admin's manual corrections never affect other schools.
   async function fetchNagerHolidays(year) {
-    const resp = await fetch(`https://date.nager.at/api/v3/PublicHolidays/${year}/KR`);
+    const resp = await fetch(`https://date.nager.at/api/v3/PublicHolidays/${year}/KR`, { signal: AbortSignal.timeout(10000) });
     if (!resp.ok) throw new Error(`Nager.Date API responded ${resp.status}`);
     const data = await resp.json();
     return data.map(h => ({ date: h.date, name: h.localName || h.name }));

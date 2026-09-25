@@ -4,21 +4,21 @@
   const canvas = $('stamp-canvas');
   const ctx = canvas.getContext('2d', { willReadFrequently: true });
   const fonts = {
-    serif: { family: '"OfficeStampMyeongjo"', weight: 800, state: 'loading' },
-    brush: { family: '"OfficeStampBrush"', weight: 400, state: 'loading' },
-    pen: { family: '"OfficeStampPen"', weight: 400, state: 'loading' },
+    serif: { family: '"OfficeStampMyeongjo"', weight: 400, state: 'loading' },
+    brush: { family: '"OfficeStampGungseo"', weight: 400, state: 'loading' },
+    pen: { family: '"OfficeStampBoldMyeongjo"', weight: 400, state: 'loading' },
     gothic: { family: '"Malgun Gothic", "Apple SD Gothic Neo", sans-serif', weight: 700, state: 'ready' }
   };
-  const base = { shape: 'oval', font: 'serif', layout: 'vertical', suffix: '', border: 'single', color: '#b63835', opacity: 100, lineWidth: 20, spacing: 8, texture: 0 };
+  const base = { shape: 'oval', font: 'brush', layout: 'vertical', suffix: '', border: 'single', color: '#b63835', opacity: 100, lineWidth: 20, spacing: 12, texture: 0, weight: 3, impression: 'positive' };
   const presets = [
-    { id: 'oval', label: '타원 명조', shape: 'oval', font: 'serif', layout: 'vertical', border: 'single' },
-    { id: 'round', label: '원형 인', shape: 'circle', font: 'serif', layout: 'grid', suffix: '인', border: 'double' },
-    { id: 'square', label: '사각 붓글씨', shape: 'square', font: 'brush', layout: 'grid', suffix: '印', border: 'single' },
-    { id: 'rounded', label: '둥근 사각', shape: 'rounded', font: 'serif', layout: 'grid', suffix: '인', border: 'single' },
-    { id: 'wide', label: '가로 결재', shape: 'rectangle', font: 'gothic', layout: 'horizontal', border: 'single' },
-    { id: 'pen', label: '원형 손글씨', shape: 'circle', font: 'pen', layout: 'grid', suffix: '인', border: 'single' },
-    { id: 'brush', label: '타원 붓글씨', shape: 'oval', font: 'brush', layout: 'vertical', border: 'double', texture: 30 },
-    { id: 'double', label: '이중 사각', shape: 'square', font: 'serif', layout: 'grid', suffix: '印', border: 'double' }
+    { id: 'oval', label: '타원 궁서', shape: 'oval', font: 'brush', layout: 'vertical', border: 'single' },
+    { id: 'round', label: '원형 궁서', shape: 'circle', font: 'brush', layout: 'packed', suffix: '인', border: 'single' },
+    { id: 'square', label: '사각 궁서', shape: 'square', font: 'brush', layout: 'packed', suffix: '인', border: 'single', lineWidth: 22 },
+    { id: 'rounded', label: '둥근 명조', shape: 'rounded', font: 'pen', layout: 'packed', suffix: '인', border: 'single' },
+    { id: 'wide', label: '가로 결재', shape: 'rectangle', font: 'serif', layout: 'horizontal', border: 'single', lineWidth: 16 },
+    { id: 'pen', label: '원형 굵은 명조', shape: 'circle', font: 'pen', layout: 'packed', suffix: '인', border: 'double', weight: 1 },
+    { id: 'brush', label: '이중 타원', shape: 'oval', font: 'brush', layout: 'vertical', border: 'double', lineWidth: 14, weight: 5 },
+    { id: 'double', label: '사각 음각', shape: 'square', font: 'pen', layout: 'packed', suffix: '인', border: 'single', impression: 'negative', weight: 1 }
   ];
   let settings = { ...base };
   let selectedPreset = 'oval';
@@ -39,9 +39,9 @@
   function syncControls() {
     markGroup('stamp-shapes', 'shape', settings.shape);
     markGroup('stamp-colors', 'color', settings.color);
-    for (const key of ['font', 'layout', 'suffix', 'border', 'color', 'opacity', 'spacing', 'texture']) $('stamp-' + key).value = settings[key];
+    for (const key of ['font', 'layout', 'suffix', 'border', 'color', 'opacity', 'spacing', 'texture', 'weight', 'impression']) $('stamp-' + key).value = settings[key];
     $('stamp-line-width').value = settings.lineWidth;
-    for (const key of ['opacity', 'spacing', 'texture', 'line-width']) {
+    for (const key of ['opacity', 'spacing', 'texture', 'line-width', 'weight']) {
       $('stamp-' + key + '-value').value = $('stamp-' + key).value + (['opacity', 'texture'].includes(key) ? '%' : '');
     }
   }
@@ -52,80 +52,129 @@
     else if (shape === 'rounded') context.roundRect(-x, -y, 2 * x, 2 * y, Math.min(55, x / 3, y / 3));
     else context.rect(-x, -y, 2 * x, 2 * y);
   }
+  const glyphCache = new Map();
+  function glyphImage(character, fontKey, weight) {
+    const key = fontKey + ':' + weight + ':' + character;
+    if (glyphCache.has(key)) return glyphCache.get(key);
+    const font = fonts[fontKey] || fonts.gothic;
+    const face = font.weight + ' 256px ' + font.family;
+    const glyph = document.createElement('canvas');
+    let context = glyph.getContext('2d');
+    context.font = face;
+    const metrics = context.measureText(character);
+    const padding = 3 + weight;
+    const width = Math.max(1, metrics.actualBoundingBoxLeft + metrics.actualBoundingBoxRight);
+    const height = Math.max(1, metrics.actualBoundingBoxAscent + metrics.actualBoundingBoxDescent);
+    glyph.width = Math.ceil(width + padding * 2);
+    glyph.height = Math.ceil(height + padding * 2);
+    context = glyph.getContext('2d');
+    context.font = face;
+    context.textBaseline = 'alphabetic';
+    context.fillStyle = context.strokeStyle = '#000';
+    context.lineJoin = 'round';
+    const x = metrics.actualBoundingBoxLeft + padding;
+    const y = metrics.actualBoundingBoxAscent + padding;
+    context.fillText(character, x, y);
+    if (weight > 0) { context.lineWidth = weight; context.strokeText(character, x, y); }
+    // Crop each glyph to its own ink bounds, including the extra stroke.
+    const result = { canvas: glyph, x: padding - weight / 2, y: padding - weight / 2, width: width + weight, height: height + weight };
+    if (glyphCache.size >= 128) glyphCache.delete(glyphCache.keys().next().value);
+    glyphCache.set(key, result);
+    return result;
+  }
+  function stampCells(count, layout, width, height, spacing) {
+    const cells = [];
+    const gap = Math.min(spacing, width / Math.max(1, count) * .3, height / Math.max(1, count) * .3);
+    if (layout === 'packed' && count === 3) {
+      const w = (width - gap) / 2, h = (height - gap) / 2;
+      return [[w + gap, 0, w, height], [0, 0, w, h], [0, h + gap, w, h]];
+    }
+    const columns = layout === 'horizontal' ? count : ['grid', 'packed'].includes(layout) ? Math.min(2, count) : 1;
+    const rows = Math.ceil(count / columns);
+    const w = (width - gap * (columns - 1)) / columns;
+    const h = (height - gap * (rows - 1)) / rows;
+    for (let i = 0; i < count; i++) {
+      const col = layout === 'horizontal' ? i : columns - 1 - Math.floor(i / rows);
+      const row = layout === 'horizontal' ? 0 : i % rows;
+      cells.push([col * (w + gap), row * (h + gap), w, h]);
+    }
+    return cells;
+  }
   function drawStamp(target, name, options) {
-    const context = target.getContext('2d', { willReadFrequently: true });
-    context.clearRect(0, 0, target.width, target.height);
-    const rx = options.shape === 'oval' ? 188 : options.shape === 'rectangle' ? 325 : 290;
-    const ry = options.shape === 'rectangle' ? 145 : options.shape === 'oval' ? 295 : 290;
-    context.save();
-    context.scale(target.width / 800, target.height / 800);
+    const ink = document.createElement('canvas');
+    ink.width = ink.height = 800;
+    const context = ink.getContext('2d');
+    const rx = options.shape === 'oval' ? 205 : options.shape === 'rectangle' ? 330 : 305;
+    const ry = options.shape === 'rectangle' ? 145 : 305;
     context.translate(400, 400);
-    context.globalAlpha = options.opacity / 100;
     context.strokeStyle = context.fillStyle = options.color;
-    if (options.border !== 'none') {
+    if (options.impression === 'negative') {
+      shapePath(context, options.shape, rx, ry, 0);
+      context.fill();
+    } else if (options.border !== 'none') {
       context.lineWidth = options.lineWidth;
       shapePath(context, options.shape, rx, ry, 0);
       context.stroke();
       if (options.border === 'double') {
-        context.lineWidth = Math.max(5, options.lineWidth * .42);
-        shapePath(context, options.shape, rx, ry, options.lineWidth + 13);
+        context.lineWidth = Math.max(4, options.lineWidth * .38);
+        shapePath(context, options.shape, rx, ry, options.lineWidth + 10);
         context.stroke();
       }
     }
-    const text = name ? name + options.suffix : '';
-    if (text) {
-      const characters = Array.from(text);
-      const ellipse = options.shape === 'circle' || options.shape === 'oval';
-      const padding = options.border === 'none' ? 16 : options.lineWidth / 2 + 26 + (options.border === 'double' ? options.lineWidth + 13 : 0);
-      const width = 2 * (rx - padding) * (ellipse ? .70 : 1);
-      const height = 2 * (ry - padding) * (ellipse ? .70 : 1);
+    const characters = Array.from((name ? name + options.suffix : '').replace(/\s/g, ''));
+    if (characters.length) {
       let layout = options.layout;
-      if (layout === 'auto') layout = options.shape === 'rectangle' || /[a-z]/i.test(text) ? 'horizontal' : characters.length > 4 ? 'grid' : 'vertical';
-      const columns = layout === 'horizontal' ? characters.length : layout === 'grid' ? Math.min(2, characters.length) : 1;
-      const rows = layout === 'horizontal' ? 1 : Math.ceil(characters.length / columns);
-      const gap = Math.min(options.spacing, width / columns * .35, height / rows * .35);
-      const cellW = Math.max(2, (width - (columns - 1) * gap) / columns);
-      const cellH = Math.max(2, (height - (rows - 1) * gap) / rows);
-      const font = fonts[options.font] || fonts.gothic;
-      context.font = font.weight + ' 200px ' + font.family;
-      context.textBaseline = 'alphabetic';
-      context.textAlign = 'left';
-      const metrics = characters.map(char => context.measureText(char));
-      let scaleX = Infinity, scaleY = Infinity;
-      for (const metric of metrics) {
-        const w = metric.actualBoundingBoxLeft + metric.actualBoundingBoxRight || metric.width || 100;
-        const h = metric.actualBoundingBoxAscent + metric.actualBoundingBoxDescent || 180;
-        scaleX = Math.min(scaleX, cellW * .94 / w);
-        scaleY = Math.min(scaleY, cellH * .94 / h);
-      }
-      scaleX = Math.min(scaleX, scaleY * 1.8);
-      scaleY = Math.min(scaleY, scaleX * 1.35);
-      characters.forEach((char, index) => {
-        const col = layout === 'horizontal' ? index : layout === 'grid' ? columns - 1 - Math.floor(index / rows) : 0;
-        const row = layout === 'horizontal' ? 0 : index % rows;
-        const x = (col - (columns - 1) / 2) * (cellW + gap);
-        const y = (row - (rows - 1) / 2) * (cellH + gap);
-        const metric = metrics[index];
-        context.save();
-        context.translate(x, y);
-        context.scale(scaleX, scaleY);
-        context.fillText(char, (metric.actualBoundingBoxLeft - metric.actualBoundingBoxRight) / 2, (metric.actualBoundingBoxAscent - metric.actualBoundingBoxDescent) / 2);
-        context.restore();
+      if (layout === 'auto') layout = options.shape === 'rectangle' || /[a-z]/i.test(name) ? 'horizontal' : options.shape === 'oval' ? 'vertical' : 'packed';
+      const inset = options.impression === 'negative' ? 24 : options.border === 'none' ? 8 : options.lineWidth / 2 + 14 + (options.border === 'double' ? options.lineWidth + 10 : 0);
+      const innerX = rx - inset, innerY = ry - inset;
+      const contour = (options.shape === 'oval' || options.shape === 'circle') && layout === 'vertical';
+      const circularGrid = (options.shape === 'oval' || options.shape === 'circle') && !contour;
+      const width = Math.round(2 * innerX * (circularGrid ? .70 : .98));
+      const height = Math.round(2 * innerY * (contour ? .90 : circularGrid ? .70 : .98));
+      const text = document.createElement('canvas');
+      text.width = width; text.height = height;
+      const textContext = text.getContext('2d');
+      const cells = stampCells(characters.length, layout, width, height, options.spacing);
+      characters.forEach((character, index) => {
+        const glyph = glyphImage(character, options.font, options.weight);
+        const [x, y, w, h] = cells[index];
+        textContext.drawImage(glyph.canvas, glyph.x, glyph.y, glyph.width, glyph.height, x, y, w, h);
       });
+      context.globalCompositeOperation = options.impression === 'negative' ? 'destination-out' : 'source-over';
+      if (contour) {
+        // Fit the name to the inner oval, without clipping its strokes at the rim.
+        for (let y = 0; y < height; y++) {
+          const offset = y + .5 - height / 2;
+          const rowWidth = width * Math.sqrt(Math.max(0, 1 - (offset / innerY) ** 2));
+          context.drawImage(text, 0, y, width, 1, -rowWidth / 2, y - height / 2, rowWidth, 1);
+        }
+      } else context.drawImage(text, -width / 2, -height / 2);
+      context.globalCompositeOperation = 'source-over';
+      if (options.impression !== 'negative') {
+        // Colour the complete ink layer once, so overlap never darkens the opacity.
+        context.globalCompositeOperation = 'source-in';
+        context.fillRect(-400, -400, 800, 800);
+        context.globalCompositeOperation = 'source-over';
+      }
     }
     if (options.texture > 0) {
       let seed = 2166136261;
       for (const character of name) seed = Math.imul(seed ^ character.codePointAt(0), 16777619);
       const random = () => { seed = (Math.imul(seed, 1664525) + 1013904223) >>> 0; return seed / 4294967296; };
       context.globalCompositeOperation = 'destination-out';
-      context.globalAlpha = .85;
-      for (let i = 0; i < options.texture * 55; i++) {
+      context.globalAlpha = .65;
+      for (let i = 0; i < options.texture * 35; i++) {
         context.beginPath();
-        context.ellipse((random() * 2 - 1) * (rx + 25), (random() * 2 - 1) * (ry + 25), 1 + random() * 3, .6 + random() * 1.8, random() * Math.PI, 0, Math.PI * 2);
+        context.ellipse((random() * 2 - 1) * (rx + 20), (random() * 2 - 1) * (ry + 20), .6 + random() * 2, .5 + random(), random() * Math.PI, 0, Math.PI * 2);
         context.fill();
       }
     }
-    context.restore();
+    const output = target.getContext('2d', { willReadFrequently: true });
+    output.clearRect(0, 0, target.width, target.height);
+    output.save();
+    output.globalAlpha = options.opacity / 100;
+    output.drawImage(ink, 0, 0, target.width, target.height);
+    output.restore();
   }
 
   for (const preset of presets) {
@@ -228,12 +277,12 @@
     selectedPreset = '';
     syncControls(); render();
   });
-  for (const key of ['font', 'layout', 'suffix', 'border', 'color']) $('stamp-' + key).addEventListener('input', () => {
+  for (const key of ['font', 'layout', 'suffix', 'border', 'color', 'impression']) $('stamp-' + key).addEventListener('input', () => {
     settings[key] = $('stamp-' + key).value;
     selectedPreset = '';
     syncControls(); render();
   });
-  for (const [id, key] of [['opacity','opacity'], ['line-width','lineWidth'], ['spacing','spacing'], ['texture','texture']]) {
+  for (const [id, key] of [['opacity','opacity'], ['line-width','lineWidth'], ['spacing','spacing'], ['texture','texture'], ['weight','weight']]) {
     $('stamp-' + id).addEventListener('input', () => {
       settings[key] = Number($('stamp-' + id).value);
       selectedPreset = '';
@@ -305,6 +354,7 @@
     document.fonts.load(font.weight + ' 200px ' + font.family).then(faces => {
       if (!faces.length) throw new Error('Missing font');
       font.state = 'ready';
+      glyphCache.clear();
     }).catch(() => {
       font.state = 'failed';
       $('stamp-font').querySelector('option[value="' + key + '"]').disabled = true;

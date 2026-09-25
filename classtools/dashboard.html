@@ -587,6 +587,9 @@
             margin-right: 6px;
             vertical-align: middle;
         }
+        .schedule-badge.scope-holiday { background: rgba(255, 139, 130, 0.15); color: var(--accent-danger); }
+        .schedule-badge.scope-vacation { background: rgba(196, 181, 253, 0.15); color: #c4b5fd; }
+        .schedule-date-range { display: block; margin-top: 3px; font-size: 0.68rem; color: var(--text-muted); white-space: nowrap; }
         .schedule-badge.scope-all { background: rgba(16, 185, 129, 0.2); color: #34d399; }
         .schedule-badge.scope-grade { background: rgba(245, 158, 11, 0.2); color: #fbbf24; }
 
@@ -788,8 +791,31 @@
             background: rgba(255, 255, 255, 0.08);
         }
 
+        .cal-day.has-label { gap: 2px; padding: 3px 1px 4px; }
+        .cal-day.has-label::after { display: none; }
+        .cal-event-label {
+            max-width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            font-size: 0.62rem;
+            line-height: 1.2;
+            color: var(--accent-amber);
+        }
+        .cal-day.holiday, .cal-day.holiday .cal-event-label { color: var(--accent-danger); }
+        .cal-day.today .cal-event-label { color: #0b0f0c; }
+        .calendar-status { color: var(--text-muted); font-size: 0.78rem; }
+        .calendar-status button { margin-left: 6px; color: var(--accent-green); background: none; border: 0; cursor: pointer; text-decoration: underline; }
+        .calendar-agenda { border-top: 1px solid var(--card-border); padding-top: 8px; font-size: 0.82rem; }
+        .calendar-agenda-date { font-weight: 800; margin-bottom: 5px; }
+        .calendar-agenda-item { padding: 3px 0; overflow-wrap: anywhere; }
+        .calendar-agenda-kind { color: var(--accent-green); font-size: 0.7rem; margin-right: 6px; }
+        .calendar-agenda-meta { color: var(--text-muted); font-size: 0.74rem; margin-top: 2px; }
+
         .cal-day.sun, .cal-head.sun { color: var(--accent-danger); }
         .cal-day.sat, .cal-head.sat { color: var(--accent-blue); }
+
+        .cal-day.holiday { color: var(--accent-danger); }
 
         .cal-day.today {
             background: var(--accent-blue);
@@ -1201,6 +1227,7 @@
                 <h2 class="widget-title"><span class="widget-icon">📌</span> 주요일정</h2>
                 <span class="widget-badge" id="scheduleCountBadge">예정 0개</span>
             </div>
+            <div class="calendar-status" id="scheduleLoadStatus" role="status" hidden></div>
             <div class="card-item-list" id="scheduleList"></div>
             <div class="schedule-editor" id="scheduleEditor" hidden>
                 <input class="board-input schedule-date-input" id="scheduleDateInput" type="date" aria-label="일정 날짜">
@@ -1222,6 +1249,8 @@
                 </div>
             </div>
             <div class="calendar-mini" id="calendarMini"></div>
+            <div class="calendar-status" id="calendarStatus" role="status" hidden></div>
+            <div class="calendar-agenda" id="calendarAgenda" aria-live="polite" hidden></div>
 
             <div class="widget-header" style="margin-top: 6px;">
                 <h2 class="widget-title" style="font-size: 1.05rem;"><span class="widget-icon">🍱</span> 오늘의 급식</h2>
@@ -1332,6 +1361,10 @@
         let sloganAlign = localStorage.getItem("sloganAlign") || "center";
         let sloganFontSize = parseInt(localStorage.getItem("sloganFontSize") || "42", 10);
         let schedules = [];
+        let schoolSchedules = [];
+        let schedulesLoading = true;
+        let scheduleLoadErrors = [];
+        let scheduleLoadVersion = 0;
         let activeScheduleClassId = null;
         let canEditSchedules = false;
         let missingStudents = new Set(JSON.parse(localStorage.getItem("dashboardMissingStudents") || '[]'));
@@ -1835,6 +1868,7 @@
             }
             renderChecklist();
             await loadSchedules(activeScheduleClassId);
+            await loadCalendarData();
         }
 
         const classSwitcherSelectEl = document.getElementById("classSwitcherSelect");
@@ -2018,10 +2052,95 @@
             return payload;
         }
 
+        function upcomingDateWindow() {
+            const today = localDateKey();
+            const end = new Date(today + "T00:00:00");
+            end.setDate(end.getDate() + 30);
+            return { today, end: localDateKey(end) };
+        }
+
+        function schoolEventMatchesGrade(event, grade) {
+            return event.target_scope === "ALL" || (event.target_scope === "GRADE"
+                && (event.target_grades || []).some(value => Number(value) === Number(grade)));
+        }
+
+        async function loadUpcomingSchoolSchedules(grade) {
+            const window = upcomingDateWindow();
+            const cursor = new Date(window.today.slice(0, 7) + "-01T00:00:00");
+            const months = [];
+            while (localDateKey(cursor) <= window.end) {
+                months.push(localDateKey(cursor).slice(0, 7));
+                cursor.setMonth(cursor.getMonth() + 1);
+            }
+            const years = [...new Set(months.map(month => Number(month.slice(0, 4))))];
+            const academicYears = [...new Set(months.map(month =>
+                Number(month.slice(0, 4)) - (Number(month.slice(5, 7)) < 3 ? 1 : 0)))];
+            const sources = [
+                ...months.map(month => ({ kind: "events", label: "학교 행사", path: "/api/teacher/general-events?month=" + month })),
+                ...years.map(year => ({ kind: "holidays", label: "공휴일", path: "/api/teacher/public-holidays?year=" + year })),
+                ...academicYears.map(year => ({ kind: "vacation", label: "방학·학사일정", path: "/api/teacher/vacation-settings?academicYear=" + year }))
+            ];
+            const results = await Promise.allSettled(sources.map(source => scheduleApi(source.path)));
+            const items = [];
+            const errors = [];
+            results.forEach((result, index) => {
+                const source = sources[index];
+                if (result.status === "rejected") {
+                    errors.push(source.label);
+                    return;
+                }
+                const data = result.value;
+                if (source.kind === "events") {
+                    (data.events || []).filter(event => schoolEventMatchesGrade(event, grade)).forEach(event =>
+                        items.push({
+                            id: "school_event_" + event.id, date: event.event_date,
+                            endDate: event.end_date || event.event_date, title: event.title,
+                            details: [event.event_time, event.period, event.location].filter(Boolean).join(" · "),
+                            scope: event.target_scope, type: "school_event", canDelete: false
+                        }));
+                } else if (source.kind === "holidays") {
+                    (data.holidays || []).forEach(holiday => items.push({
+                        id: "holiday_" + holiday.date + "_" + holiday.name, date: holiday.date,
+                        title: holiday.name, type: "public_holiday", canDelete: false
+                    }));
+                } else if (data.settings) {
+                    const settings = data.settings;
+                    [
+                        ["summer", "여름방학", settings.summer_start, settings.summer_end],
+                        ["winter", settings.is_integrated ? "겨울/학년말방학" : "겨울방학", settings.winter_start, settings.winter_end],
+                        ...(!settings.is_integrated ? [["spring", "학년말방학", settings.spring_start, settings.spring_end]] : [])
+                    ].forEach(([kind, title, start, end]) => {
+                        if (start && end) items.push({
+                            id: "vacation_" + kind + "_" + start, date: start, endDate: end,
+                            title, type: "vacation", canDelete: false
+                        });
+                    });
+                    [[settings.entrance_ceremony_date, "입학식"], [settings.graduation_ceremony_date, "졸업식"]]
+                        .forEach(([date, title]) => {
+                            if (date) items.push({ id: "ceremony_" + date + title, date, title,
+                                type: "annual_schedule", scope: "ALL", canDelete: false });
+                        });
+                }
+            });
+            return { items, errors: [...new Set(errors)] };
+        }
+
         async function loadSchedules(classId = null) {
-            const query = classId ? `?classId=${encodeURIComponent(classId)}` : "";
-            try {
-                const data = await scheduleApi(`/api/class/schedules${query}`);
+            const version = ++scheduleLoadVersion;
+            schedules = [];
+            schoolSchedules = [];
+            schedulesLoading = true;
+            scheduleLoadErrors = [];
+            renderSchedules();
+            const query = classId ? "?classId=" + encodeURIComponent(classId) : "";
+            const grade = activeRosterClass?.grade;
+            const results = await Promise.allSettled([
+                scheduleApi("/api/class/schedules" + query),
+                loadUpcomingSchoolSchedules(grade)
+            ]);
+            if (version !== scheduleLoadVersion) return;
+            if (results[0].status === "fulfilled") {
+                const data = results[0].value;
                 activeScheduleClassId = data.classId;
                 canEditSchedules = Boolean(data.canEdit);
                 schedules = Array.isArray(data.schedules) ? data.schedules : [];
@@ -2031,11 +2150,19 @@
                 } catch (migrationError) {
                     console.warn("기기 저장 일정을 아직 이전하지 못했습니다.", migrationError);
                 }
-            } catch (error) {
-                schedules = [];
+            } else {
                 canEditSchedules = false;
                 scheduleEditor.hidden = true;
+                scheduleLoadErrors.push("학급·학사일정");
             }
+            if (version !== scheduleLoadVersion) return;
+            if (results[1].status === "fulfilled") {
+                schoolSchedules = results[1].value.items;
+                scheduleLoadErrors.push(...results[1].value.errors);
+            } else {
+                scheduleLoadErrors.push("학교 일정·공휴일");
+            }
+            schedulesLoading = false;
             renderSchedules();
             renderCalendar();
         }
@@ -2073,24 +2200,51 @@
             const scheduleWindowEnd = new Date(now);
             scheduleWindowEnd.setDate(now.getDate() + 30);
             const scheduleWindowEndKey = localDateKey(scheduleWindowEnd);
-            const upcoming = schedules
-                .filter((item) => item.date >= today && item.date <= scheduleWindowEndKey)
-                .sort((a, b) => a.date.localeCompare(b.date) || a.title.localeCompare(b.title));
-            scheduleCountBadge.textContent = `예정 ${upcoming.length}개`;
+            const seen = new Set();
+            const upcoming = [...schedules, ...schoolSchedules]
+                .filter(item => {
+                    if (item.date > scheduleWindowEndKey || (item.endDate || item.date) < today) return false;
+                    // Overlapping month queries return a multi-day school event more than once.
+                    const key = item.canDelete === false
+                        ? [item.date, item.endDate || item.date, item.title].join("|")
+                        : [item.type, item.id].join("|");
+                    if (seen.has(key)) return false;
+                    seen.add(key);
+                    return true;
+                })
+                .sort((a, b) => (a.date < today ? today : a.date).localeCompare(b.date < today ? today : b.date)
+                    || a.title.localeCompare(b.title));
+            scheduleCountBadge.textContent = schedulesLoading ? "불러오는 중"
+                : scheduleLoadErrors.length ? "확인된 " + upcoming.length + "개"
+                : "예정 " + upcoming.length + "개";
+            const status = document.getElementById("scheduleLoadStatus");
+            status.replaceChildren();
+            status.hidden = scheduleLoadErrors.length === 0;
+            if (scheduleLoadErrors.length) {
+                status.textContent = scheduleLoadErrors.join("·") + " 정보를 불러오지 못했습니다.";
+                const retry = document.createElement("button");
+                retry.type = "button";
+                retry.textContent = "다시 불러오기";
+                retry.addEventListener("click", () => loadSchedules(activeScheduleClassId));
+                status.append(retry);
+            }
 
             if (!upcoming.length) {
                 const empty = document.createElement("div");
                 empty.className = "schedule-empty";
-                empty.textContent = "오늘부터 30일 이내에 예정된 주요일정이 없습니다.";
+                empty.textContent = schedulesLoading ? "학교 일정과 공휴일을 불러오는 중입니다."
+                    : scheduleLoadErrors.length ? "일정을 모두 확인하지 못했습니다. 다시 불러와 주세요."
+                    : "오늘부터 30일 이내에 예정된 주요일정이 없습니다.";
                 scheduleList.append(empty);
                 return;
             }
 
-            upcoming.slice(0, 8).forEach((item) => {
+            upcoming.forEach((item) => {
                 const div = document.createElement("div");
                 div.className = "board-item";
-                if (item.date === today) div.classList.add("schedule-today");
-                else if (item.date <= weekEndKey) div.classList.add("schedule-this-week");
+                const displayDate = item.date < today ? today : item.date;
+                if (displayDate === today) div.classList.add("schedule-today");
+                else if (displayDate <= weekEndKey) div.classList.add("schedule-this-week");
                 const date = new Date(`${item.date}T00:00:00`);
                 const isThisWeek = item.date > today && item.date <= weekEndKey;
                 const weekday = ["일", "월", "화", "수", "목", "금", "토"][date.getDay()];
@@ -2098,10 +2252,22 @@
                 const dateSpan = document.createElement("span");
                 dateSpan.className = "schedule-date";
                 if (isThisWeek) dateSpan.classList.add("this-week");
-                dateSpan.textContent = label;
+                dateSpan.textContent = item.date < today ? "진행 중" : label;
+                if (item.endDate && item.endDate !== item.date) {
+                    const range = document.createElement("span");
+                    range.className = "schedule-date-range";
+                    range.textContent = Number(item.date.slice(5, 7)) + "/" + Number(item.date.slice(8, 10))
+                        + "–" + Number(item.endDate.slice(5, 7)) + "/" + Number(item.endDate.slice(8, 10));
+                    dateSpan.append(range);
+                }
                 const copy = document.createElement("span");
                 copy.className = "schedule-copy";
-                if (item.scope === "ALL") {
+                if (item.type === "public_holiday" || item.type === "vacation") {
+                    const badge = document.createElement("span");
+                    badge.className = "schedule-badge " + (item.type === "public_holiday" ? "scope-holiday" : "scope-vacation");
+                    badge.textContent = item.type === "public_holiday" ? "공휴일" : "방학";
+                    copy.append(badge);
+                } else if (item.scope === "ALL") {
                     const badge = document.createElement("span");
                     badge.className = "schedule-badge scope-all";
                     badge.textContent = "전교";
@@ -2151,7 +2317,7 @@
                             schedules = schedules.filter((schedule) => schedule.id !== item.id);
                             if (editingScheduleId === item.id) resetScheduleEditor();
                             renderSchedules();
-                            renderCalendar();
+                            await loadCalendarData();
                         } catch (error) {
                             alert(error.message);
                         }
@@ -2183,7 +2349,7 @@
                 }
                 resetScheduleEditor();
                 renderSchedules();
-                renderCalendar();
+                await loadCalendarData();
                 scheduleTitleInput.focus();
             } catch (error) {
                 alert(error.message);
@@ -2225,6 +2391,111 @@
         // 6. Mini Calendar
         let calendarCursor = new Date();
         calendarCursor.setDate(1);
+        let calendarRequestVersion = 0;
+        let calendarData = { schedules: [], events: [], holidays: [], vacation: null };
+
+        async function loadCalendarData() {
+            const version = ++calendarRequestVersion;
+            const status = document.getElementById("calendarStatus");
+            calendarData = { schedules: [], events: [], holidays: [], vacation: null };
+            renderCalendar();
+            if (!activeRosterClass) {
+                status.hidden = false;
+                status.textContent = "학급을 선택하면 학교 일정이 표시됩니다.";
+                return;
+            }
+            status.hidden = false;
+            status.textContent = "학교 일정 불러오는 중...";
+            const year = calendarCursor.getFullYear();
+            const month = localDateKey(calendarCursor).slice(0, 7);
+            const academicYear = calendarCursor.getMonth() >= 2 ? year : year - 1;
+            const grade = Number(activeRosterClass.grade);
+            const classId = activeRosterClass.id;
+            const results = await Promise.allSettled([
+                scheduleApi("/api/class/schedules?" + new URLSearchParams({ classId, month })),
+                scheduleApi("/api/teacher/general-events?month=" + month),
+                scheduleApi("/api/teacher/public-holidays?year=" + year),
+                scheduleApi("/api/teacher/vacation-settings?academicYear=" + academicYear)
+            ]);
+            if (version !== calendarRequestVersion) return;
+            const values = results.map(result => result.status === "fulfilled" ? result.value : {});
+            calendarData = {
+                schedules: values[0].schedules || [],
+                events: (values[1].events || []).filter(event => schoolEventMatchesGrade(event, grade)),
+                holidays: values[2].holidays || [],
+                vacation: values[3].settings || null
+            };
+            const failed = results.map((result, index) => result.status === "rejected"
+                ? ["학사·학급 일정", "학교 행사", "공휴일", "방학"][index] : "").filter(Boolean);
+            status.replaceChildren();
+            status.hidden = failed.length === 0;
+            if (failed.length) {
+                status.textContent = failed.join("·") + " 정보를 불러오지 못했습니다.";
+                const retry = document.createElement("button");
+                retry.type = "button";
+                retry.textContent = "다시 불러오기";
+                retry.addEventListener("click", loadCalendarData);
+                status.append(retry);
+            }
+            renderCalendar();
+        }
+
+        function calendarEntries(dateKey) {
+            const entries = [];
+            calendarData.holidays.filter(item => item.date === dateKey).forEach(item =>
+                entries.push({ title: item.name, kind: "공휴일", holiday: true }));
+            calendarData.schedules.filter(item => item.date === dateKey).forEach(item =>
+                entries.push({ title: item.title, details: item.details,
+                    kind: item.type === "annual_schedule" ? "학사" : item.type === "birthday" ? "생일" : "학급",
+                    holiday: ["HOLIDAY", "DISCRETIONARY"].includes(item.category) }));
+            calendarData.events.filter(item => item.event_date <= dateKey && (item.end_date || item.event_date) >= dateKey)
+                .forEach(item => entries.push({ title: item.title, kind: "학교",
+                    details: [item.event_time, item.period, item.location].filter(Boolean).join(" · ") }));
+            const settings = calendarData.vacation;
+            if (settings) {
+                const periods = [
+                    [settings.summer_start, settings.summer_end, "여름방학"],
+                    [settings.winter_start, settings.winter_end, settings.is_integrated ? "겨울/학년말방학" : "겨울방학"],
+                    ...(!settings.is_integrated ? [[settings.spring_start, settings.spring_end, "학년말방학"]] : [])
+                ];
+                periods.forEach(([start, end, title]) => {
+                    if (start && end && start <= dateKey && end >= dateKey) entries.push({ title, kind: "방학" });
+                });
+                if (settings.entrance_ceremony_date === dateKey && !entries.some(item => item.title === "입학식"))
+                    entries.push({ title: "입학식", kind: "학사" });
+                if (settings.graduation_ceremony_date === dateKey && !entries.some(item => item.title === "졸업식"))
+                    entries.push({ title: "졸업식", kind: "학사" });
+            }
+            return entries;
+        }
+
+        function renderCalendarAgenda() {
+            const agenda = document.getElementById("calendarAgenda");
+            const dateKey = scheduleDateInput.value;
+            const entries = dateKey.startsWith(localDateKey(calendarCursor).slice(0, 7)) ? calendarEntries(dateKey) : [];
+            agenda.replaceChildren();
+            agenda.hidden = entries.length === 0;
+            if (!entries.length) return;
+            const heading = document.createElement("div");
+            heading.className = "calendar-agenda-date";
+            heading.textContent = Number(dateKey.slice(5, 7)) + "월 " + Number(dateKey.slice(8, 10)) + "일";
+            agenda.append(heading);
+            entries.forEach(entry => {
+                const row = document.createElement("div");
+                row.className = "calendar-agenda-item";
+                const kind = document.createElement("span");
+                kind.className = "calendar-agenda-kind";
+                kind.textContent = entry.kind;
+                row.append(kind, document.createTextNode(entry.title));
+                if (entry.details) {
+                    const detail = document.createElement("div");
+                    detail.className = "calendar-agenda-meta";
+                    detail.textContent = entry.details;
+                    row.append(detail);
+                }
+                agenda.append(row);
+            });
+        }
 
         function renderCalendar() {
             const calendarMini = document.getElementById("calendarMini");
@@ -2267,16 +2538,26 @@
                 const isSelected = dateKey === scheduleDateInput.value;
                 if (isSelected) dayEl.classList.add("selected");
                 dayEl.setAttribute("aria-pressed", String(isSelected));
-                if (schedules.some((item) => item.date === dateKey)) dayEl.classList.add("has-event");
+                const entries = calendarEntries(dateKey);
+                if (entries.some(entry => entry.holiday)) dayEl.classList.add("holiday");
                 dayEl.textContent = date;
+                if (entries.length) {
+                    dayEl.classList.add("has-event", "has-label");
+                    const label = document.createElement("span");
+                    label.className = "cal-event-label";
+                    label.textContent = entries[0].title + (entries.length > 1 ? " +" + (entries.length - 1) : "");
+                    dayEl.append(label);
+                    dayEl.title = entries.map(entry => entry.title).join(" · ");
+                }
                 dayEl.tabIndex = 0;
                 dayEl.setAttribute("role", "button");
                 dayEl.setAttribute("aria-label", `${year}년 ${month + 1}월 ${date}일 일정 선택`);
                 const selectDate = () => {
                     scheduleDateInput.value = dateKey;
                     renderCalendar();
-                    scheduleTitleInput.focus();
+                    calendarMini.querySelector(".cal-day.selected")?.focus({ preventScroll: true });
                 };
+                if (entries.length) dayEl.setAttribute("aria-label", dayEl.getAttribute("aria-label") + ": " + dayEl.title);
                 dayEl.addEventListener("click", selectDate);
                 dayEl.addEventListener("keydown", (event) => {
                     if (event.key === "Enter" || event.key === " ") {
@@ -2286,20 +2567,21 @@
                 });
                 calendarMini.append(dayEl);
             }
+            renderCalendarAgenda();
         }
         document.getElementById("prevMonthBtn").addEventListener("click", () => {
             calendarCursor.setMonth(calendarCursor.getMonth() - 1);
-            renderCalendar();
+            loadCalendarData();
         });
         document.getElementById("nextMonthBtn").addEventListener("click", () => {
             calendarCursor.setMonth(calendarCursor.getMonth() + 1);
-            renderCalendar();
+            loadCalendarData();
         });
         document.getElementById("todayMonthBtn").addEventListener("click", () => {
             calendarCursor = new Date();
             calendarCursor.setDate(1);
             scheduleDateInput.value = localDateKey();
-            renderCalendar();
+            loadCalendarData();
         });
         renderCalendar();
 
