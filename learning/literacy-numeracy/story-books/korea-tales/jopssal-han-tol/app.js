@@ -85,7 +85,7 @@ const CHAPTERS = [
                     "주인이 껄껄 웃으며 고양이를 받아 주었어요."
                 ],
                 right: [
-                    "그런데 아침에 보니 그 집 개가 고양이를 담 밖으로 쫓아내 버렸지 뭐예요. 고양이는 그길로 어디론가 사라졌지요.",
+                    "그런데 아침에 보니 그 집 개가 고양이를 담 밖으로 쫓아내 버렸지 뭐예요. 고양이는 그길로 달아나 아무리 불러도 돌아오지 않았어요.",
                     "주인은 머리를 긁적이다가 개의 목줄을 풀었습니다.",
                     "\"이걸 어쩐다.\"",
                     "\"할 수 없구먼. 이 개를 가져가게.\""
@@ -95,10 +95,10 @@ const CHAPTERS = [
                 art: "06-horse.webp",
                 emoji: "🐴",
                 left: [
-                    "이번에는 개를 맡겼어요.",
-                    "주인은 개를 마구간 옆 기둥에 매어 두었지요.",
-                    "그런데 밤중에 말이 뒷발질을 하는 바람에 개가 깜짝 놀라 줄을 끊고 달아나 버렸답니다. 아무리 불러도 돌아오지 않았어요.",
-                    "주인은 밤새 온 동네를 찾아다녔지만 헛일이었지요."
+                    "이번에는 개를 맡겼어요. 주인은 개를 마구간 옆 기둥에 매어 두었지요.",
+                    "밤중에 말이 뒷발질을 했지 뭐예요. 퍽! 개가 줄을 끊고 달아났답니다.",
+                    "\"이놈아, 거기 서라!\"",
+                    "주인이 불러도 소용없었어요. 겁먹은 개는 끝내 돌아오지 않았지요."
                 ],
                 right: [
                     "아침이 되자 주인이 두 손으로 얼굴을 감쌌습니다. 소년의 얼굴을 차마 볼 수가 없었거든요.",
@@ -298,7 +298,7 @@ const EN = {
                         "The owner laughed out loud and took the cat in."
                     ],
                     right: [
-                        "But in the morning the house dog had chased the cat over the wall. The cat ran off and was never seen again.",
+                        "But in the morning the house dog had chased the cat over the wall. The cat ran off, and however much they called, it did not come back.",
                         "The owner scratched his head, then untied the dog.",
                         { t: "\"What do I do now.\"", v: "man" },
                         { t: "\"Well, then. Take the dog.\"", v: "man" }
@@ -309,8 +309,9 @@ const EN = {
                     emoji: "🐴",
                     left: [
                         "This time he left the dog. The owner tied it to a post beside the stable.",
-                        "But in the night the horse kicked out, and the dog was so startled that it snapped its rope and ran. Nobody could call it back.",
-                        "The owner searched the whole village all night, but it was no use."
+                        "In the night the horse kicked out. Thump! The dog snapped its rope and ran.",
+                        { t: "\"Hey! Come back here!\"", v: "man" },
+                        "Nobody could call it back. The dog had had such a fright that it never came back."
                     ],
                     right: [
                         "In the morning he buried his face in his hands. He couldn't look the boy in the eye.",
@@ -569,7 +570,7 @@ const EN = {
             { w: "had chased (chase)", k: "쫓아냈다", s: "the house dog had chased the cat" },
             { w: "over the wall", k: "담 너머로", s: "chased the cat over the wall" },
             { w: "ran off (run off)", k: "달아나 버렸다", s: "The cat ran off" },
-            { w: "was never seen again (see)", k: "다시는 보이지 않았다", s: "and was never seen again" },
+            { w: "however much they called (call)", k: "아무리 불러도", s: "however much they called, it did not come back" },
             { w: "scratched his head (scratch)", k: "머리를 긁적였다", s: "The owner scratched his head" },
             { w: "untied (untie)", k: "풀었다, 끌렀다", s: "then untied the dog" },
             { w: "What do I do now.", k: "이걸 어쩐다.", s: "What do I do now." }
@@ -581,14 +582,14 @@ const EN = {
             { w: "beside", k: "~ 옆에", s: "a post beside the stable" },
             { w: "stable", k: "마구간", s: "a post beside the stable" },
             { w: "kicked out (kick out)", k: "뒷발질했다", s: "the horse kicked out" },
-            { w: "startled", k: "깜짝 놀란", s: "the dog was so startled" },
-            { w: "snapped (snap)", k: "뚝 끊었다", s: "it snapped its rope and ran" },
-            { w: "rope", k: "줄, 밧줄", s: "it snapped its rope and ran" },
+            { w: "Come back here!", k: "거기 서!", s: "Come back here!" },
+            { w: "snapped (snap)", k: "뚝 끊었다", s: "The dog snapped its rope and ran." },
+            { w: "rope", k: "줄, 밧줄", s: "The dog snapped its rope and ran." },
             { w: "nobody", k: "아무도 ~ 않다", s: "Nobody could call it back." },
             { w: "call it back", k: "그것을 불러들이다", s: "Nobody could call it back." },
-            { w: "searched (search)", k: "뒤졌다, 찾아다녔다", s: "The owner searched the whole village" },
-            { w: "all night", k: "밤새도록", s: "searched the whole village all night" },
-            { w: "it was no use", k: "헛일이었다", s: "all night, but it was no use" },
+            { w: "such a fright", k: "그렇게나 크게 놀란 것", s: "The dog had had such a fright" },
+            { w: "never came back", k: "다시는 돌아오지 않았다", s: "it never came back" },
+            { w: "Thump!", k: "퍽!", s: "Thump!" },
             { w: "buried his face in his hands (bury)", k: "두 손으로 얼굴을 감쌌다", s: "he buried his face in his hands" },
             { w: "look ~ in the eye", k: "~의 눈을 마주 보다", s: "He couldn't look the boy in the eye." },
             { w: "you'd better ~ (you had better)", k: "~하는 편이 낫겠다", s: "you'd better take the horse" },
@@ -772,12 +773,12 @@ const WORDS_KO = {
     "05-dog.webp": [
         { w: "긁적이다", k: "손톱으로 슬슬 긁다.", s: "주인은 머리를 긁적이다가 개의 목줄을 풀었습니다." },
         { w: "목줄", k: "짐승 목에 매어 두는 줄.", s: "주인은 머리를 긁적이다가 개의 목줄을 풀었습니다." },
-        { w: "그길로", k: "그 자리에서 곧바로.", s: "고양이는 그길로 어디론가 사라졌지요." }
+        { w: "그길로", k: "그 자리에서 곧바로.", s: "고양이는 그길로 달아나 아무리 불러도 돌아오지 않았어요." }
     ],
     "06-horse.webp": [
         { w: "마구간", k: "말을 기르는 집.", s: "주인은 개를 마구간 옆 기둥에 매어 두었지요." },
-        { w: "뒷발질", k: "뒷발로 뻥 차는 짓.", s: "그런데 밤중에 말이 뒷발질을 하는 바람에 개가 깜짝 놀라 줄을 끊고 달아나 버렸답니다." },
-        { w: "헛일", k: "해도 아무 소용 없는 일.", s: "주인은 밤새 온 동네를 찾아다녔지만 헛일이었지요." },
+        { w: "뒷발질", k: "뒷발로 뻥 차는 짓.", s: "밤중에 말이 뒷발질을 했지 뭐예요." },
+        { w: "소용없다", k: "해 보아도 아무 보람이 없다.", s: "주인이 불러도 소용없었어요." },
         { w: "차마", k: "안타까워서 도저히.", s: "소년의 얼굴을 차마 볼 수가 없었거든요." },
         { w: "고삐", k: "소나 말을 끌려고 매단 줄.", s: "소년은 두 손으로 고삐를 받았답니다." }
     ],
@@ -845,7 +846,7 @@ const bareTitle = t => t.replace(/^(\d+장|Chapter \d+) · /, '');
 function artFrame(src, emoji) {
     return `
         <div class="art-frame">
-            <img src="images/${src}?v=20260918" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <img src="images/${src}?v=20260926" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
             <div class="art-fallback" style="display:none">${emoji}</div>
         </div>`;
 }
