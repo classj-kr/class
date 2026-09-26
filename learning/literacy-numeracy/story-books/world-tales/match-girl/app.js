@@ -216,9 +216,8 @@ const CHAPTERS = [
                     "지나가던 사람들이 걸음을 멈췄지요. 두 집 사이 좁은 자리에 아이가 앉아 있었습니다. 무릎을 안고 벽에 기댄 채였지요."
                 ],
                 "right": [
-                    "얼굴에는 웃음이 그대로 남아 있었지요. 옆에는 타 버린 성냥개비가 흩어져 있었습니다.",
-                    "\"이 아이가 왜 여기……\" 누군가 말하자 옆 사람이 대꾸했지요. \"몸을 녹이려 했나 보군.\"",
-                    "사람들은 그렇게만 말하고 지나갔습니다. 어제도 이 골목을 지난 사람들이었지요."
+                    "온몸에 눈이 쌓여 있었습니다. 얼굴에는 웃음이 그대로 남아 있었지요. 옆에는 타 버린 성냥개비가 흩어져 있었습니다.",
+                    "\"몸을 녹이려 했나 보군.\" 누군가 말하자 옆 사람이 고개를 숙였지요. \"어제저녁 나한테도 성냥을 내밀었는데……\""
                 ]
             },
             {
@@ -226,7 +225,7 @@ const CHAPTERS = [
                 "emoji": "🌅",
                 "left": [
                     "아이가 무엇을 보았는지는 아무도 알지 못했습니다. 난로도, 거위도, 반짝이던 나무도요. 무엇보다 할머니를 만난 것을요.",
-                    "어제 이 골목을 지난 사람도, 성냥을 사지 않은 사람도 그것만은 알지 못했지요."
+                    "어제저녁 이 골목을 지나며 성냥을 사지 않은 사람들은 이제야 마음이 아팠습니다. 하지만 늦은 뒤였지요."
                 ],
                 "right": [
                     "그날 저녁 그 골목에 꽃이 한 다발 놓였습니다. 누가 두고 갔는지는 아무도 몰랐지요.",
@@ -461,7 +460,7 @@ const QUIZ = [
                 "지나가던 아주머니가 소녀에게 슬리퍼 한 켤레를 새로 사 준 것을 보면, 그날도 도와준 사람이 있었구나.",
                 "아이가 밝은 창가에서 물러나 다시 걸은 것을 보면, 성냥을 한 갑도 못 팔아 집에 갈 수 없었구나.",
                 "아이가 팔 성냥이지만 하나쯤은 켜 봐도 되겠지 한 것을 보면, 성냥 하나를 켜는 것도 조심스러웠던 거야.",
-                "사람들이 몸을 녹이려 했나 보다고만 말하고 지나간 것을 보면, 아이가 무엇을 보았는지는 아무도 몰랐던 거지."
+                "사람들이 몸을 녹이려 했나 보다고만 말한 것을 보면, 아이가 무엇을 보았는지는 아무도 몰랐던 거지."
             ],
         "answer": 0
     }
@@ -759,10 +758,9 @@ const EN = {
                         "In the narrow space between two houses sat a child, her knees pulled up, leaning against the wall."
                     ],
                     right: [
-                        "The smile was still on her face.",
+                        "The snow had settled all over her, and the smile was still on her face.",
                         "Beside her lay a great scatter of matchsticks — a whole bundle of them, burned right down.",
-                        "\"Why was this child out here…\" someone said. \"Trying to warm herself, I suppose,\" said another.",
-                        "That was all they said, and they went on. They were the same people who had walked past her the day before."
+                        "\"Trying to warm herself, I suppose,\" someone said. The man beside him looked at the ground. \"She held her matches out to me last night.\""
                     ]
                 },
                 {
@@ -771,7 +769,7 @@ const EN = {
                     left: [
                         "Nobody knew what she had seen — the stove, the goose, the shining tree.",
                         "And least of all that she had met her grandmother.",
-                        "Not one of them knew it — not the people who had passed her the day before, not the ones who had not bought her matches."
+                        "The people who had walked past her the night before, and had not bought her matches, were sorry now. It was too late to be sorry."
                     ],
                     right: [
                         "That evening someone left a bunch of flowers in the alley. Nobody knew who had left them.",
@@ -825,7 +823,7 @@ const EN = {
                 "A woman passing by bought her a new pair of slippers — somebody did help her that day after all.",
                 "She stepped back from the bright window and walked on — she had not sold a single box and could not go home.",
                 "She told herself that one match out of all she had to sell would do no harm — even striking one felt like something she had to excuse.",
-                "People only said she must have been trying to warm herself, and walked on — nobody knew what she had seen."
+                "People only said she must have been trying to warm herself — nobody knew what she had seen."
             ],
             answer: 0
         }
@@ -940,7 +938,7 @@ const EN = {
             { word: 'least of all', meaning: '무엇보다도 특히', sentence: 'And least of all that she had met her grandmother.' },
             { word: 'a bunch of', meaning: '한 다발의', sentence: 'Someone left a bunch of flowers in the alley.' },
             { word: 'sit down to', meaning: '자리에 앉아 ~을 먹다', sentence: 'Through the window a family sat down to supper.' },
-            { word: 'not one of them', meaning: '그들 가운데 아무도', sentence: 'Not one of them knew it.' }
+            { word: 'too late', meaning: '이미 늦은', sentence: 'It was too late to be sorry.' }
         ],
         'end.webp': [
             { word: 'beg', meaning: '구걸하다', sentence: 'His own mother had begged in the streets as a girl.' },
@@ -1035,7 +1033,7 @@ const WORDS_KO = {
         { w: "어느새", k: "모르는 사이에 벌써.", s: "눈은 어느새 그쳐 있었지요." },
         { w: "햇살", k: "해에서 내리쬐는 밝은 빛.", s: "햇살이 골목 안까지 들어왔습니다." },
         { w: "넘기지 못하다", k: "그때를 견디지 못하고 세상을 떠나다.", s: "아이는 그 겨울밤을 넘기지 못했습니다." },
-        { w: "대꾸하다", k: "남의 말에 맞받아 말하다.", s: "\"이 아이가 왜 여기……\" 누군가 말하자 옆 사람이 대꾸했지요. \"몸을 녹이려 했나 보군.\"" }
+        { w: "고개를 숙이다", k: "부끄럽거나 미안해서 얼굴을 아래로 내리다.", s: "누군가 말하자 옆 사람이 고개를 숙였지요." }
     ],
     "07-morning-2.webp": [
         { w: "다발", k: "여럿을 한데 묶은 것.", s: "그날 저녁 그 골목에 꽃이 한 다발 놓였습니다." },
