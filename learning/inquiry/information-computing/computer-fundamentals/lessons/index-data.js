@@ -20,15 +20,15 @@
             "code": "A01",
             "number": 1,
             "domain": "컴퓨터의 기본 원리",
-            "title": "컴퓨터는 무슨 일을 할까?",
-            "english": "What Does a Computer Do?"
+            "title": "컴퓨터의 역할",
+            "english": "Functions of a Computer"
         },
         {
             "id": "a02",
             "code": "A02",
             "number": 2,
             "domain": "",
-            "title": "하드웨어와 소프트웨어는 어떻게 다를까?",
+            "title": "하드웨어와 소프트웨어",
             "english": "Hardware and Software"
         },
         {
@@ -36,7 +36,7 @@
             "code": "A03",
             "number": 3,
             "domain": "",
-            "title": "기기·운영체제·앱은 무엇이 다를까?",
+            "title": "기기·운영체제·앱",
             "english": "Device, Operating System, and App"
         },
         {
@@ -44,7 +44,7 @@
             "code": "A04",
             "number": 4,
             "domain": "",
-            "title": "아날로그와 디지털은 무엇이 다를까?",
+            "title": "아날로그와 디지털",
             "english": "Analog and Digital"
         },
         {
@@ -52,79 +52,79 @@
             "code": "A05",
             "number": 5,
             "domain": "",
-            "title": "현실의 소리는 어떻게 숫자 데이터가 될까?",
-            "english": "From Sound to Digital Data"
+            "title": "소리의 디지털 변환",
+            "english": "Sound Digitization"
         },
         {
             "id": "b01",
             "code": "B01",
             "number": 6,
             "domain": "컴퓨터 안의 하드웨어",
-            "title": "본체 안에는 어떤 부품이 있을까?",
-            "english": "Inside a Desktop Computer"
+            "title": "컴퓨터의 내부 부품",
+            "english": "Computer Components"
         },
         {
             "id": "b02",
             "code": "B02",
             "number": 7,
             "domain": "하드웨어와 기기",
-            "title": "휴대전화와 태블릿 안에도 컴퓨터가 있을까?",
-            "english": "Inside Phones and Tablets"
+            "title": "스마트폰과 태블릿의 구조",
+            "english": "Inside Smartphones and Tablets"
         },
         {
             "id": "b03",
             "code": "B03",
             "number": 8,
             "domain": "하드웨어와 기기",
-            "title": "주변 기기와 단자는 어떻게 연결될까?",
-            "english": "Peripherals, Ports, and Connections"
+            "title": "주변 기기와 연결",
+            "english": "Peripheral Devices and Connections"
         },
         {
             "id": "c01",
             "code": "C01",
             "number": 9,
             "domain": "운영체제와 앱",
-            "title": "하드웨어·운영체제·앱은 어떻게 이어질까?",
-            "english": "Hardware, Operating System, and Apps"
+            "title": "앱과 하드웨어의 연결",
+            "english": "Apps and Hardware"
         },
         {
             "id": "c02",
             "code": "C02",
             "number": 10,
             "domain": "운영체제와 앱",
-            "title": "Windows·ChromeOS·Android·iOS·iPadOS는 무엇이 다를까?",
-            "english": "Comparing Operating Systems"
+            "title": "운영체제의 종류",
+            "english": "Types of Operating Systems"
         },
         {
             "id": "c03",
             "code": "C03",
             "number": 11,
             "domain": "운영체제와 앱",
-            "title": "앱·프로그램·프로세스·창은 같은 말일까?",
-            "english": "Apps, Programs, Processes, and Windows"
+            "title": "프로그램의 실행과 창",
+            "english": "Programs, Processes, and Windows"
         },
         {
             "id": "c04",
             "code": "C04",
             "number": 12,
             "domain": "운영체제와 앱",
-            "title": "설정에서 무엇을 바꾸고 관리할까?",
-            "english": "What Can You Change and Manage in Settings?"
+            "title": "설정과 기기 관리",
+            "english": "Settings and Device Management"
         },
         {
             "id": "d01",
             "code": "D01",
             "number": 13,
             "domain": "포인터·터치·키보드",
-            "title": "포인터·텍스트 커서·클릭·드래그는 어떻게 다를까?",
-            "english": "How Are the Pointer, Text Cursor, Click, and Drag Different?"
+            "title": "포인터와 커서",
+            "english": "Pointers and Cursors"
         },
         {
             "id": "d02",
             "code": "D02",
             "number": 14,
             "domain": "포인터·터치·키보드",
-            "title": "터치·탭·길게 누르기·스크롤·확대는 어떻게 작동할까?",
+            "title": "터치 조작",
             "english": "Touch Gestures"
         },
         {
@@ -132,7 +132,7 @@
             "code": "D03",
             "number": 15,
             "domain": "포인터·터치·키보드",
-            "title": "키보드·단축키·클립보드는 어떻게 이어질까?",
+            "title": "키보드·단축키·클립보드",
             "english": "Keyboard, Shortcuts, and Clipboard"
         },
         {
@@ -140,159 +140,159 @@
             "code": "E01",
             "number": 16,
             "domain": "파일과 저장 공간",
-            "title": "드라이브·폴더·파일·경로는 어떤 관계일까?",
-            "english": "Drives, Folders, Files, and Paths"
+            "title": "파일·폴더·경로",
+            "english": "Files, Folders, and Paths"
         },
         {
             "id": "e02",
             "code": "E02",
             "number": 17,
             "domain": "파일과 저장 공간",
-            "title": "파일 이름·확장자·형식·앱은 어떻게 연결될까?",
-            "english": "File Names, Extensions, Formats, and Apps"
+            "title": "파일 이름과 형식",
+            "english": "File Names and Formats"
         },
         {
             "id": "e03",
             "code": "E03",
             "number": 18,
             "domain": "파일과 저장 공간",
-            "title": "저장·다른 이름으로 저장·복사·이동·삭제는 무엇이 다를까?",
-            "english": "Save, Save As, Copy, Move, and Delete"
+            "title": "파일 저장과 정리",
+            "english": "Saving and Organizing Files"
         },
         {
             "id": "e04",
             "code": "E04",
             "number": 19,
             "domain": "파일과 저장 공간",
-            "title": "아이콘·원본·바로가기·북마크·즐겨찾기는 같은 것일까?",
-            "english": "Icons, Originals, Shortcuts, and Bookmarks"
+            "title": "아이콘·바로가기·북마크",
+            "english": "Icons, Shortcuts, and Bookmarks"
         },
         {
             "id": "e05",
             "code": "E05",
             "number": 20,
             "domain": "파일과 저장 공간",
-            "title": "USB·클라우드·동기화·백업·ZIP은 어떻게 다를까?",
-            "english": "USB, Cloud, Sync, Backup, and ZIP"
+            "title": "저장·동기화·백업",
+            "english": "Storage, Sync, and Backup"
         },
         {
             "id": "f01",
             "code": "F01",
             "number": 21,
             "domain": "화면과 디지털 미디어",
-            "title": "픽셀·해상도·화면 크기·배율은 어떻게 다를까?",
-            "english": "Pixels, Resolution, Screen Size, and Scaling"
+            "title": "픽셀·해상도·화면 크기",
+            "english": "Pixels, Resolution, and Screen Size"
         },
         {
             "id": "f02",
             "code": "F02",
             "number": 22,
             "domain": "화면과 디지털 미디어",
-            "title": "RGB 색과 래스터·벡터·JPG·PNG·WebP는 어떤 관계일까?",
-            "english": "Color, Raster, Vector, and Image Formats"
+            "title": "디지털 그림과 색",
+            "english": "Digital Images and Color"
         },
         {
             "id": "f03",
             "code": "F03",
             "number": 23,
             "domain": "화면과 디지털 미디어",
-            "title": "소리 샘플·영상 프레임·스크린샷·화면 녹화는 무엇일까?",
-            "english": "Audio Samples, Video Frames, Screenshots, and Screen Recording"
+            "title": "소리·영상·화면 기록",
+            "english": "Sound, Video, and Screen Capture"
         },
         {
             "id": "g01",
             "code": "G01",
             "number": 24,
             "domain": "0과 1·데이터 크기",
-            "title": "아날로그와 디지털, 0과 1은 어떤 관계일까?",
-            "english": "Analog, Digital, and Binary"
+            "title": "0과 1의 이진 표현",
+            "english": "Binary Representation"
         },
         {
             "id": "g02",
             "code": "G02",
             "number": 25,
             "domain": "0과 1·데이터 크기",
-            "title": "bit·byte·KB·MB·GB·TB는 어떻게 커질까?",
-            "english": "Bits, Bytes, KB, MB, GB, and TB"
+            "title": "비트·바이트·데이터 크기",
+            "english": "Bits, Bytes, and Data Size"
         },
         {
             "id": "g03",
             "code": "G03",
             "number": 26,
             "domain": "0과 1·데이터 크기",
-            "title": "인코딩·압축·파일 크기·전송 속도는 어떤 관계일까?",
-            "english": "Encoding, Compression, File Size, and Transfer Speed"
+            "title": "인코딩·압축·전송",
+            "english": "Encoding, Compression, and Transfer"
         },
         {
             "id": "h01",
             "code": "H01",
             "number": 27,
             "domain": "네트워크와 웹",
-            "title": "네트워크·Wi-Fi·공유기·인터넷은 어떻게 이어질까?",
-            "english": "Networks, Wi-Fi, Routers, and the Internet"
+            "title": "네트워크와 인터넷",
+            "english": "Networks and the Internet"
         },
         {
             "id": "h02",
             "code": "H02",
             "number": 28,
             "domain": "네트워크와 웹",
-            "title": "클라이언트·서버·요청·응답·URL·DNS는 어떻게 이어질까?",
-            "english": "Clients, Servers, Requests, Responses, URLs, and DNS"
+            "title": "웹 주소와 서버 요청",
+            "english": "Web Addresses and Server Requests"
         },
         {
             "id": "h03",
             "code": "H03",
             "number": 29,
             "domain": "네트워크와 웹",
-            "title": "브라우저·검색 엔진·웹사이트·탭·링크는 무엇이 다를까?",
-            "english": "Browsers, Search Engines, Websites, Tabs, and Links"
+            "title": "브라우저와 검색",
+            "english": "Browsers and Search"
         },
         {
             "id": "h04",
             "code": "H04",
             "number": 30,
             "domain": "네트워크와 웹",
-            "title": "온라인 문제를 제출하면 어디에서 채점할까?",
-            "english": "What Happens After You Submit an Online Answer?"
+            "title": "온라인 문제의 제출과 채점",
+            "english": "Online Answer Submission and Scoring"
         },
         {
             "id": "h05",
             "code": "H05",
             "number": 31,
             "domain": "네트워크와 웹",
-            "title": "다운로드·업로드·쿠키·캐시·배포는 어떤 역할일까?",
-            "english": "Downloads, Uploads, Cookies, Caches, and Deployment"
+            "title": "데이터 전송과 웹사이트 공개",
+            "english": "Data Transfer and Website Publishing"
         },
         {
             "id": "i01",
             "code": "I01",
             "number": 32,
             "domain": "계정·보안·디지털 시민성",
-            "title": "계정·프로필·로그인·권한·2단계 인증은 어떻게 이어질까?",
-            "english": "Accounts, Profiles, Login, Permissions, and Two-Factor Authentication"
+            "title": "계정·인증·권한",
+            "english": "Accounts, Authentication, and Permissions"
         },
         {
             "id": "i02",
             "code": "I02",
             "number": 33,
             "domain": "계정·보안·디지털 시민성",
-            "title": "피싱·개인정보·저작권·디지털 발자국·기기 건강은 어떻게 판단할까?",
-            "english": "Phishing, Privacy, Copyright, Digital Footprints, and Digital Well-being"
+            "title": "온라인 안전과 디지털 시민성",
+            "english": "Online Safety and Digital Citizenship"
         },
         {
             "id": "j01",
             "code": "J01",
             "number": 34,
             "domain": "알고리즘과 코딩 논리",
-            "title": "문제를 분해하고 순서가 분명한 알고리즘으로 만들려면?",
-            "english": "Decomposition, Sequences, and Algorithms"
+            "title": "문제 분해와 알고리즘",
+            "english": "Decomposition and Algorithms"
         },
         {
             "id": "j02",
             "code": "J02",
             "number": 35,
             "domain": "알고리즘과 코딩 논리",
-            "title": "이벤트·조건·반복은 프로그램의 흐름을 어떻게 바꿀까?",
+            "title": "이벤트·조건·반복",
             "english": "Events, Conditions, and Loops"
         },
         {
@@ -300,8 +300,8 @@
             "code": "J03",
             "number": 36,
             "domain": "알고리즘과 코딩 논리",
-            "title": "사진이 보이지 않는 프로그램을 입력·처리·출력·저장으로 점검하려면?",
-            "english": "Debugging a Photo Program with Input, Processing, Output, and Storage"
+            "title": "프로그램 오류와 디버깅",
+            "english": "Program Errors and Debugging"
         }
     ];
 })();

@@ -5,8 +5,8 @@
         {
             id: "a05",
             number: 5,
-            title: "현실의 소리는 어떻게 숫자 데이터가 될까?",
-            english: "From Sound to Digital Data",
+            title: "소리의 디지털 변환",
+            english: "Sound Digitization",
             conceptTitle: "마이크 신호를 일정한 시간 간격으로 재고, 각 값을 정해진 높이 단계와 비트로 기록합니다.",
             visual: window.COMPUTER_A05.markup("concept"),
             details: [

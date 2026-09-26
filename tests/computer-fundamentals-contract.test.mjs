@@ -362,9 +362,9 @@ test("the curriculum presents ten progressive modules instead of an unimplemente
   for (const moduleCode of ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"]) {
     assert.match(curriculum, new RegExp(`### ${moduleCode}\\.`));
   }
-  assert.match(curriculum, /B02 \| 휴대전화와 태블릿 안에도 컴퓨터가 있을까/);
-  assert.match(curriculum, /H04 \| 온라인 문제를 제출하면 어디에서 채점할까/);
-  assert.match(curriculum, /J03 \| 사진이 보이지 않는 프로그램을 입력·처리·출력·저장으로 점검하려면/);
+  assert.match(curriculum, /B02 \| 스마트폰과 태블릿의 구조/);
+  assert.match(curriculum, /H04 \| 온라인 문제의 제출과 채점/);
+  assert.match(curriculum, /J03 \| 프로그램 오류와 디버깅/);
   assert.match(lessonPage, /id="lessonList" class="course-modules"/);
   assert.match(lessonSource, /<details class="course-module"/);
   assert.match(lessonStyles, /\.course-module summary/);

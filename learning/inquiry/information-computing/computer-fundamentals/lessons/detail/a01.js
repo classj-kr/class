@@ -7,8 +7,8 @@
             code: "A01",
             number: 1,
             domain: "컴퓨터의 기본 원리",
-            title: "컴퓨터는 무슨 일을 할까?",
-            english: "What Does a Computer Do?",
+            title: "컴퓨터의 역할",
+            english: "Functions of a Computer",
             conceptTitle: "컴퓨터는 정보를 받아 계산하고, 결과를 보여 주거나 저장합니다.",
             visual: `
                 <section class="foundation-direct-lab a01-signal-lab" data-a01-lab data-input="camera" data-route="preview" data-run-state="idle" aria-labelledby="a01LabTitle">

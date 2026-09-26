@@ -7,8 +7,8 @@
             code: "B01",
             number: 6,
             domain: "컴퓨터 안의 하드웨어",
-            title: "본체 안에는 어떤 부품이 있을까?",
-            english: "Inside a Desktop Computer",
+            title: "컴퓨터의 내부 부품",
+            english: "Computer Components",
             conceptTitle: "부품은 맡은 일이 다르고, 메인보드에 연결되어 한 컴퓨터로 움직입니다.",
             visual: `
                 <div class="system-visual hardware-cutaway-grid">

@@ -32,7 +32,7 @@ const KEY = 'classj:textbook:a01:v1';
         await page.setViewport({ width: 1440, height: 1000 });
         await page.goto(url, { waitUntil: 'networkidle0' });
         await page.waitForFunction(() => !document.getElementById('runPhoto').disabled);
-        assert.equal(await page.title(), '1차시. 컴퓨터는 무슨 일을 할까?');
+        assert.equal(await page.title(), '1차시. 컴퓨터의 역할');
         const goto = async name => {
             await page.click('[data-page="' + name + '"]');
             assert.equal(await page.$eval('#page-' + name, el => el.hidden), false);

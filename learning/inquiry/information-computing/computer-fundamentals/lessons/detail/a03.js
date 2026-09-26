@@ -5,7 +5,7 @@
         {
             id: "a03",
             number: 3,
-            title: "기기·운영체제·앱은 무엇이 다를까?",
+            title: "기기·운영체제·앱",
             english: "Device, Operating System, and App",
             conceptTitle: "기기는 실제 물건이고, 운영체제는 기기를 관리하며, 앱은 필요한 일을 합니다.",
             visual: `

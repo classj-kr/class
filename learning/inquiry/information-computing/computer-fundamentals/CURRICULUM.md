@@ -4,7 +4,7 @@
 
 ## 수업 구조
 
-기존 36차시의 제목과 순서를 유지하고, 각 차시의 설명 범위와 과제를 조정했다. 초등 고학년 입문자를 대상으로 한다.
+기존 36차시의 순서와 학습 범위를 유지하고, 제목은 핵심 개념을 나타내는 짧은 명사구로 통일했다. 초등 고학년 입문자를 대상으로 한다.
 
 1. 본문: 한 상황을 통해 역할과 관계를 설명하고 필수 용어의 영어 원어를 병기한다.
 2. 실습: 실제로 조건을 바꾸고 결과를 관찰한다. 조작 모형과 실제 기기의 차이는 표시한다.
@@ -21,87 +21,87 @@
 
 | 차시 | 제목 | 핵심 관계 |
 | --- | --- | --- |
-| A01 | 컴퓨터는 무슨 일을 할까? / What Does a Computer Do? | 입력 → 처리 → 출력·저장 |
-| A02 | 하드웨어와 소프트웨어는 어떻게 다를까? / Hardware and Software | 물리 장치 ↔ 실행 명령 |
-| A03 | 기기·운영체제·앱은 무엇이 다를까? / Device, Operating System, and App | 기기 → 운영체제 → 앱 |
-| A04 | 아날로그와 디지털은 무엇이 다를까? / Analog and Digital | 연속 값 → 측정 순간 → ADC → 숫자 단계 |
-| A05 | 현실의 소리는 어떻게 숫자 데이터가 될까? / From Sound to Digital Data | 파형 → 샘플링 레이트 → 양자화 → 비트 깊이·부호화 |
+| A01 | 컴퓨터의 역할 / Functions of a Computer | 입력 → 처리 → 출력·저장 |
+| A02 | 하드웨어와 소프트웨어 / Hardware and Software | 물리 장치 ↔ 실행 명령 |
+| A03 | 기기·운영체제·앱 / Device, Operating System, and App | 기기 → 운영체제 → 앱 |
+| A04 | 아날로그와 디지털 / Analog and Digital | 연속 값 → 측정 순간 → ADC → 숫자 단계 |
+| A05 | 소리의 디지털 변환 / Sound Digitization | 파형 → 샘플링 레이트 → 양자화 → 비트 깊이·부호화 |
 
 ### B. 하드웨어와 기기 / Hardware and Devices
 
 | 차시 | 제목 | 핵심 관계 |
 | --- | --- | --- |
-| B01 | 본체 안에는 어떤 부품이 있을까? / Inside a Desktop Computer | CPU·GPU·RAM·SSD·메인보드·전원·냉각 |
-| B02 | 휴대전화와 태블릿 안에도 컴퓨터가 있을까? / Inside Phones and Tablets | SoC·RAM·플래시·센서·통신·배터리 |
-| B03 | 주변 기기와 단자는 어떻게 연결될까? / Peripherals, Ports, and Connections | 주변 기기·단자·규격·드라이버 |
+| B01 | 컴퓨터의 내부 부품 / Computer Components | CPU·GPU·RAM·SSD·메인보드·전원·냉각 |
+| B02 | 스마트폰과 태블릿의 구조 / Inside Smartphones and Tablets | SoC·RAM·플래시·센서·통신·배터리 |
+| B03 | 주변 기기와 연결 / Peripheral Devices and Connections | 주변 기기·단자·규격·드라이버 |
 
 ### C. 운영체제와 앱 / Operating Systems and Apps
 
 | 차시 | 제목 | 핵심 관계 |
 | --- | --- | --- |
-| C01 | 하드웨어·운영체제·앱은 어떻게 이어질까? / Hardware, Operating System, and Apps | 사용자 → 앱 → OS → 하드웨어 |
-| C02 | Windows·ChromeOS·Android·iOS·iPadOS는 무엇이 다를까? / Comparing Operating Systems | 같은 역할, 다른 인터페이스와 호환 환경 |
-| C03 | 앱·프로그램·프로세스·창은 같은 말일까? / Apps, Programs, Processes, and Windows | 저장된 프로그램 → 실행 프로세스 → 창·탭 |
-| C04 | 설정에서 무엇을 바꾸고 관리할까? / What Can You Change and Manage in Settings? | 설정·제어판·권한·관리자·업데이트·전원 상태 |
+| C01 | 앱과 하드웨어의 연결 / Apps and Hardware | 사용자 → 앱 → OS → 하드웨어 |
+| C02 | 운영체제의 종류 / Types of Operating Systems | 같은 역할, 다른 인터페이스와 호환 환경 |
+| C03 | 프로그램의 실행과 창 / Programs, Processes, and Windows | 저장된 프로그램 → 실행 프로세스 → 창·탭 |
+| C04 | 설정과 기기 관리 / Settings and Device Management | 설정·제어판·권한·관리자·업데이트·전원 상태 |
 
 ### D. 포인터·터치·키보드 / Pointer, Touch, and Keyboard
 
 | 차시 | 제목 | 핵심 관계 |
 | --- | --- | --- |
-| D01 | 포인터·텍스트 커서·클릭·드래그는 어떻게 다를까? / Pointer, Text Cursor, Click, and Drag | 가리키기·선택·실행·이동 |
-| D02 | 터치·탭·길게 누르기·스크롤·확대는 어떻게 작동할까? / Touch Gestures | 접촉 위치·시간·이동·손가락 수 |
-| D03 | 키보드·단축키·클립보드는 어떻게 이어질까? / Keyboard, Shortcuts, and Clipboard | 문자·기능 키·단축키·임시 데이터 |
+| D01 | 포인터와 커서 / Pointers and Cursors | 가리키기·선택·실행·이동 |
+| D02 | 터치 조작 / Touch Gestures | 접촉 위치·시간·이동·손가락 수 |
+| D03 | 키보드·단축키·클립보드 / Keyboard, Shortcuts, and Clipboard | 문자·기능 키·단축키·임시 데이터 |
 
 ### E. 파일과 저장 공간 / Files and Storage
 
 | 차시 | 제목 | 핵심 관계 |
 | --- | --- | --- |
-| E01 | 드라이브·폴더·파일·경로는 어떤 관계일까? / Drives, Folders, Files, and Paths | 저장 공간의 계층과 주소 |
-| E02 | 파일 이름·확장자·형식·앱은 어떻게 연결될까? / File Names, Extensions, Formats, and Apps | 이름의 표시 ↔ 실제 데이터 형식 ↔ 연결 앱 |
-| E03 | 저장·다른 이름으로 저장·복사·이동·삭제는 무엇이 다를까? / Save, Save As, Copy, Move, and Delete | 원본 위치·개수·복구 가능성 |
-| E04 | 아이콘·원본·바로가기·북마크·즐겨찾기는 같은 것일까? / Icons, Originals, Shortcuts, and Bookmarks | 보이는 표지 ↔ 실제 대상 ↔ 위치 연결 |
-| E05 | USB·클라우드·동기화·백업·ZIP은 어떻게 다를까? / USB, Cloud, Sync, Backup, and ZIP | 저장 위치·상태 맞춤·복구 사본·묶음 |
+| E01 | 파일·폴더·경로 / Files, Folders, and Paths | 저장 공간의 계층과 주소 |
+| E02 | 파일 이름과 형식 / File Names and Formats | 이름의 표시 ↔ 실제 데이터 형식 ↔ 연결 앱 |
+| E03 | 파일 저장과 정리 / Saving and Organizing Files | 원본 위치·개수·복구 가능성 |
+| E04 | 아이콘·바로가기·북마크 / Icons, Shortcuts, and Bookmarks | 보이는 표지 ↔ 실제 대상 ↔ 위치 연결 |
+| E05 | 저장·동기화·백업 / Storage, Sync, and Backup | 저장 위치·상태 맞춤·복구 사본·묶음 |
 
 ### F. 화면과 디지털 미디어 / Displays and Digital Media
 
 | 차시 | 제목 | 핵심 관계 |
 | --- | --- | --- |
-| F01 | 픽셀·해상도·화면 크기·배율은 어떻게 다를까? / Pixels, Resolution, Screen Size, and Scaling | 픽셀 수·물리 크기·밀도·표시 크기 |
-| F02 | RGB 색과 래스터·벡터·JPG·PNG·WebP는 어떤 관계일까? / Color, Raster, Vector, and Image Formats | 색 표현·그림 구조·파일 형식 |
-| F03 | 소리 샘플·영상 프레임·스크린샷·화면 녹화는 무엇일까? / Audio Samples, Video Frames, Screenshots, and Screen Recording | 순간 측정·시간 순서·한 장·연속 기록 |
+| F01 | 픽셀·해상도·화면 크기 / Pixels, Resolution, and Screen Size | 픽셀 수·물리 크기·밀도·표시 크기 |
+| F02 | 디지털 그림과 색 / Digital Images and Color | 색 표현·그림 구조·파일 형식 |
+| F03 | 소리·영상·화면 기록 / Sound, Video, and Screen Capture | 순간 측정·시간 순서·한 장·연속 기록 |
 
 ### G. 0과 1·데이터 크기 / Binary and Data Size
 
 | 차시 | 제목 | 핵심 관계 |
 | --- | --- | --- |
-| G01 | 아날로그와 디지털, 0과 1은 어떤 관계일까? / Analog, Digital, and Binary | 물리 변화 → 측정 → 이진 상태 |
-| G02 | bit·byte·KB·MB·GB·TB는 어떻게 커질까? / Bits, Bytes, KB, MB, GB, and TB | 8 bit = 1 byte, 데이터 크기 단위 |
-| G03 | 인코딩·압축·파일 크기·전송 속도는 어떤 관계일까? / Encoding, Compression, File Size, and Transfer Speed | 표현 규칙 → 압축 → 크기 ÷ 속도 |
+| G01 | 0과 1의 이진 표현 / Binary Representation | 물리 변화 → 측정 → 이진 상태 |
+| G02 | 비트·바이트·데이터 크기 / Bits, Bytes, and Data Size | 8 bit = 1 byte, 데이터 크기 단위 |
+| G03 | 인코딩·압축·전송 / Encoding, Compression, and Transfer | 표현 규칙 → 압축 → 크기 ÷ 속도 |
 
 ### H. 네트워크와 웹 / Networks and the Web
 
 | 차시 | 제목 | 핵심 관계 |
 | --- | --- | --- |
-| H01 | 네트워크·Wi-Fi·공유기·인터넷은 어떻게 이어질까? / Networks, Wi-Fi, Routers, and the Internet | 기기 → Wi-Fi → 공유기 → 인터넷 |
-| H02 | 클라이언트·서버·요청·응답·URL·DNS는 어떻게 이어질까? / Clients, Servers, Requests, Responses, URLs, and DNS | URL → DNS → 서버 요청·응답 |
-| H03 | 브라우저·검색 엔진·웹사이트·탭·링크는 무엇이 다를까? / Browsers, Search Engines, Websites, Tabs, and Links | 여는 앱·찾는 서비스·문서·이동 요소 |
-| H04 | 온라인 문제를 제출하면 어디에서 채점할까? / What Happens After You Submit an Online Answer? | 답 선택 → 제출 → 서버 채점 → 점수 저장 → 결과 표시 |
-| H05 | 다운로드·업로드·쿠키·캐시·배포는 어떤 역할일까? / Downloads, Uploads, Cookies, Caches, and Deployment | 데이터 이동·상태·임시 저장·공개 버전 |
+| H01 | 네트워크와 인터넷 / Networks and the Internet | 기기 → Wi-Fi → 공유기 → 인터넷 |
+| H02 | 웹 주소와 서버 요청 / Web Addresses and Server Requests | URL → DNS → 서버 요청·응답 |
+| H03 | 브라우저와 검색 / Browsers and Search | 여는 앱·찾는 서비스·문서·이동 요소 |
+| H04 | 온라인 문제의 제출과 채점 / Online Answer Submission and Scoring | 답 선택 → 제출 → 서버 채점 → 점수 저장 → 결과 표시 |
+| H05 | 데이터 전송과 웹사이트 공개 / Data Transfer and Website Publishing | 데이터 이동·상태·임시 저장·공개 버전 |
 
 ### I. 계정·보안·디지털 시민성 / Accounts, Security, and Digital Citizenship
 
 | 차시 | 제목 | 핵심 관계 |
 | --- | --- | --- |
-| I01 | 계정·프로필·로그인·권한·2단계 인증은 어떻게 이어질까? / Accounts, Profiles, Permissions, and Two-Factor Authentication | 식별 → 인증 → 추가 증거 → 권한 |
-| I02 | 피싱·개인정보·저작권·디지털 발자국·기기 건강은 어떻게 판단할까? / Phishing, Privacy, Copyright, Digital Footprints, and Digital Well-being | 주소·요구 행동·공개 범위·사용 허락·사용 환경의 증거 |
+| I01 | 계정·인증·권한 / Accounts, Authentication, and Permissions | 식별 → 인증 → 추가 증거 → 권한 |
+| I02 | 온라인 안전과 디지털 시민성 / Online Safety and Digital Citizenship | 주소·요구 행동·공개 범위·사용 허락·사용 환경의 증거 |
 
 ### J. 알고리즘과 코딩 논리 / Algorithms and Coding Logic
 
 | 차시 | 제목 | 핵심 관계 |
 | --- | --- | --- |
-| J01 | 문제를 분해하고 순서가 분명한 알고리즘으로 만들려면? / Decomposition, Sequences, and Algorithms | 분해 → 순서 → 절차 → 검증 |
-| J02 | 이벤트·조건·반복은 프로그램의 흐름을 어떻게 바꿀까? / Events, Conditions, and Loops | 사건 → 판단 → 분기 → 반복 |
-| J03 | 사진이 보이지 않는 프로그램을 입력·처리·출력·저장으로 점검하려면? / Debugging a Photo Program with Input, Processing, Output, and Storage | 재현 → 관찰 → 수정 → 재시험 |
+| J01 | 문제 분해와 알고리즘 / Decomposition and Algorithms | 분해 → 순서 → 절차 → 검증 |
+| J02 | 이벤트·조건·반복 / Events, Conditions, and Loops | 사건 → 판단 → 분기 → 반복 |
+| J03 | 프로그램 오류와 디버깅 / Program Errors and Debugging | 재현 → 관찰 → 수정 → 재시험 |
 
 ## 구현·검수 기준
 

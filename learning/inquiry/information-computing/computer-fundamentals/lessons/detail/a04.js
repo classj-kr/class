@@ -5,7 +5,7 @@
         {
             id: "a04",
             number: 4,
-            title: "아날로그와 디지털은 무엇이 다를까?",
+            title: "아날로그와 디지털",
             english: "Analog and Digital",
             conceptTitle: "현실의 값은 이어져 변하지만, 디지털 장치는 특정 순간의 값을 정해진 숫자 칸에 기록합니다.",
             visual: window.COMPUTER_A04.markup("concept"),

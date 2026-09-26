@@ -5,7 +5,7 @@
         {
             id: "a02",
             number: 2,
-            title: "하드웨어와 소프트웨어는 어떻게 다를까?",
+            title: "하드웨어와 소프트웨어",
             english: "Hardware and Software",
             conceptTitle: "손으로 만질 수 있는 부품을 하드웨어라고 하고, 그 부품에 일을 시키는 프로그램을 소프트웨어라고 합니다.",
             visual: `
