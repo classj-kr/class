@@ -226,6 +226,7 @@ const SITE_BACK_PENDING_TAG = '<script>if(window.self===window.top&&!["/","/inde
   + '<style>.site-back-pending :is(a.back,a.back-button,a.back-link,a.home,a.home-link,a.counting-back,a.catalog-back){visibility:hidden!important}</style>';
 const SITE_BACK_SCRIPT_TAG = `${SITE_BACK_PENDING_TAG}<script data-site-back-navigation="true" src="/assets/site-back-navigation.js?v=20260926-game-flow" defer></script>`;
 const SITE_SFX_SCRIPT_TAG = '<script data-class-game-sfx="true" src="/assets/sound/game-sfx.js?v=20260912-feedback-scope-1" defer></script>';
+const SITE_EXAM_TYPOGRAPHY_TAG = '<link rel="stylesheet" href="/assets/exam-typography.css?v=20260926-1">';
 
 function sendSiteHtml(req, res, filepath, next) {
   fs.readFile(filepath, "utf8", (error, htmlSource) => {
@@ -236,11 +237,19 @@ function sendSiteHtml(req, res, filepath, next) {
       : /<\/head>/i.test(htmlSource)
         ? htmlSource.replace(/<\/head>/i, `  ${SITE_BACK_SCRIPT_TAG}\n</head>`)
         : `${SITE_BACK_SCRIPT_TAG}\n${htmlSource}`;
-    const html = htmlWithBackNavigation.includes("/assets/sound/game-sfx.js")
+    const htmlWithSound = htmlWithBackNavigation.includes("/assets/sound/game-sfx.js")
       ? htmlWithBackNavigation
       : /<\/head>/i.test(htmlWithBackNavigation)
         ? htmlWithBackNavigation.replace(/<\/head>/i, `  ${SITE_SFX_SCRIPT_TAG}\n</head>`)
         : `${SITE_SFX_SCRIPT_TAG}\n${htmlWithBackNavigation}`;
+
+
+    const isLearningPage = filepath.startsWith(path.join(SITE_ROOT, "learning") + path.sep);
+    const html = isLearningPage && !htmlWithSound.includes("/assets/exam-typography.css")
+      ? /<\/head>/i.test(htmlWithSound)
+        ? htmlWithSound.replace(/<\/head>/i, `  ${SITE_EXAM_TYPOGRAPHY_TAG}\n</head>`)
+        : `${SITE_EXAM_TYPOGRAPHY_TAG}\n${htmlWithSound}`
+      : htmlWithSound;
 
     res.setHeader("Cache-Control", "no-cache");
     res.type("html");

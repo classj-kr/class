@@ -1,0 +1,69 @@
+/* Shared typography for learning questions. Keep notation and code fonts local. */
+@font-face {
+  font-family: "Class Exam Batang";
+  src: url("./fonts/kopub-world/KoPubWorld-Batang-Medium.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+:root {
+  --class-exam-font: "Class Exam Batang", "Batang", "Times New Roman", serif;
+  --science-reading-font: var(--class-exam-font) !important;
+}
+
+/* Question sheets also supply the face to dynamically inserted text. */
+body :is(
+  .reading-sheet, .quiz, .quiz-card, .quiz-item, .quiz-panel, .quiz-area,
+  .quiz-box, .quiz-container, .quiz-stage, .question-card, .question-panel,
+  .question-body, .exam-question, .page-quiz, .mission-card,
+  .lesson-quiz-panel, .game-panel, .sim-quiz-container, .atlas-quiz,
+  .edition-question, .mini-quiz-question, .finale-question,
+  .supplement-check, .required-check, .prediction-field, .prediction-options
+) {
+  font-family: var(--class-exam-font) !important;
+  font-synthesis: weight;
+}
+
+/* Legacy sheets set their own heading and button fonts; cover those explicitly.
+   Do not select every descendant: KaTeX, MathML, SVG notation and code keep
+   their dedicated typefaces. */
+body :is(
+  .reading-sheet, .quiz, .quiz-card, .quiz-item, .quiz-panel, .quiz-area,
+  .quiz-box, .quiz-container, .quiz-stage, .question-card, .question-panel,
+  .question-body, .exam-question, .page-quiz, .mission-card,
+  .lesson-quiz-panel, .game-panel, .sim-quiz-container, .atlas-quiz,
+  .edition-question, .mini-quiz-question, .finale-question,
+  .supplement-check, .required-check, .prediction-field, .prediction-options
+) :is(h1, h2, h3, h4, p, button, label, textarea, input, li, td, th, dt, dd) {
+  font-family: var(--class-exam-font) !important;
+}
+
+/* Questions, answer choices and explanations that live outside a sheet. */
+body :is(
+  .student-passage, .student-prompt, .student-choice, .choice-number,
+  .question, .question-text, .question-prompt, .question-copy, .q-prompt,
+  .quiz-question, .quiz-question-text, .quiz-intro-text, .quiz-copy,
+  .sim-quiz-question, .mini-quiz-question, .integrated-question,
+  .sp-question, .task-scene, .reflection-question,
+  #questionPrompt, #questionTitle, #questionStimulus, #placeStudyQuestion,
+  .choice, .choice-btn, .choice-button, .quiz-choice, .quiz-opt-btn,
+  .sim-quiz-opt-btn, .answer-button, .answer-option, .game-choice,
+  .lesson-quiz-choice, .worksheet-question-prompt, .edition-option,
+  .prediction-result, #predictionLegend,
+  .choices button, .choices label, .answer-options button,
+  .quiz-options button, .quiz-options label, .question-options button,
+  .exam-answers button, .mini-quiz-choices button, .quiz-choices button,
+  .model-answers button, .bronze-choices button, .history-order-choices button,
+  .sound-choice-label, .quiz-meaning, .game-instruction,
+  .feedback, #feedback, .answer-feedback, #answerFeedback,
+  .answer-explanation, .answer-result, .explanation, .explanation-panel,
+  .review-explanation, .missed-explanation, .quiz-expl-box,
+  .quiz-feedback, .game-feedback, .exam-feedback, .sim-quiz-explanation,
+  .edition-feedback, .finale-feedback, .history-order-explanation,
+  .supplement-check-feedback, .sound-feedback,
+  .exam-data, .question-table, .question-map-caption
+) {
+  font-family: var(--class-exam-font) !important;
+  font-synthesis: weight;
+}

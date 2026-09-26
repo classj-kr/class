@@ -160,9 +160,10 @@
         const list = document.createElement("div");
         list.className = "choice-list";
         if (allowMultiple) {
+            list.classList.add("is-multi");
             const guide = document.createElement("p");
             guide.className = "multi-guide";
-            guide.textContent = "정답을 모두 선택하세요.";
+            guide.textContent = `보기 · 정답 ${task.answers.length}개를 선택하세요.`;
             list.append(guide);
         }
         const indexedOptions = task.options.map((option, optionIndex) => ({ option, optionIndex }));

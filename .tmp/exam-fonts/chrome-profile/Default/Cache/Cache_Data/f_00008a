@@ -1,0 +1,967 @@
+:root {
+    --night: #1b0f10;
+    --night-soft: #2a1512;
+    --wood: #5c3a22;
+    --wood-dark: #3c2314;
+    --gold: #d7ab5f;
+    --gold-bright: #ffce7a;
+    --parchment: #fbf1de;
+    --parchment-shade: #efdfc0;
+    --ink: #241407;
+    --muted: #7a6249;
+    --moral-bg: #fff3d6;
+    --moral-border: #c98a2e;
+    --shadow: 0 30px 70px rgba(0, 0, 0, 0.55);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    color: var(--parchment);
+    font-family: "Noto Serif KR", "Apple SD Gothic Neo", Georgia, serif;
+    font-weight: 500;
+    background:
+        radial-gradient(circle at 20% 15%, rgba(215, 171, 95, 0.14), transparent 40rem),
+        radial-gradient(circle at 85% 80%, rgba(92, 58, 34, 0.35), transparent 38rem),
+        linear-gradient(160deg, var(--night) 0%, var(--night-soft) 55%, #170c0e 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.top-bar {
+    position: fixed;
+    top: 14px;
+    left: 14px;
+    z-index: 50;
+    display: flex;
+    gap: 8px;
+}
+
+.back-link,
+.toc-link {
+    padding: 8px 14px;
+    border: 1px solid rgba(215, 171, 95, 0.5);
+    border-radius: 8px;
+    background: rgba(27, 15, 16, 0.75);
+    color: var(--gold-bright);
+    text-decoration: none;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    backdrop-filter: blur(4px);
+    cursor: pointer;
+}
+
+.back-link:hover,
+.back-link:focus-visible,
+.toc-link:hover,
+.toc-link:focus-visible {
+    border-color: var(--gold-bright);
+    background: rgba(92, 58, 34, 0.85);
+}
+
+.book-stage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+}
+
+.book {
+    position: relative;
+    /* 크롬북·아이패드에 딱 맞게: 화면 높이에서 위아래 여백과 쪽번호 자리(46px)를
+       뺀 만큼이 책 높이다. dvh라서 아이패드 사파리 주소창이 접혀도 어긋나지 않는다. */
+    width: min(1300px, 96vw, calc((100dvh - 46px) * 4 / 3));
+    aspect-ratio: 4 / 3;
+    /* 글상자 글씨가 화면이 아니라 책 크기를 따라가게 한다 */
+    container-type: size;
+}
+
+.book-spread {
+    position: absolute;
+    inset: 0;
+    background: var(--parchment);
+    border: 10px solid var(--wood);
+    border-radius: 10px;
+    box-shadow: var(--shadow), inset 0 0 0 2px rgba(255, 255, 255, 0.4);
+    overflow: hidden;
+}
+
+.folio {
+    position: absolute;
+    bottom: 20px;
+    font-family: "Noto Serif KR", Georgia, serif;
+    font-size: 12px;
+    color: var(--muted);
+    opacity: 0.85;
+    pointer-events: none;
+    z-index: 6;
+}
+
+.folio-left { left: 30px; }
+.folio-right { right: 30px; }
+
+.folio-center {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.book-spread.flip-next { animation: flipNext 480ms ease; }
+.book-spread.flip-prev { animation: flipPrev 480ms ease; }
+
+@keyframes flipNext {
+    0%   { transform: translateX(0); opacity: 1; }
+    45%  { transform: translateX(-4%); opacity: 0; }
+    55%  { transform: translateX(4%); opacity: 0; }
+    100% { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes flipPrev {
+    0%   { transform: translateX(0); opacity: 1; }
+    45%  { transform: translateX(4%); opacity: 0; }
+    55%  { transform: translateX(-4%); opacity: 0; }
+    100% { transform: translateX(0); opacity: 1; }
+}
+
+.page {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: clamp(16px, 5.789cqh, 60px);
+    overflow: hidden;
+    color: var(--ink);
+    min-height: 0;
+    /* 한글은 기본값이면 낱말 가운데서도 줄이 넘어간다.
+       '먹지 못했습 / 니다'처럼 끊기지 않도록 띄어쓰기에서만 넘긴다. */
+    word-break: keep-all;
+    /* 다만 한 낱말이 칸보다 길면 그때는 끊는다. 안 그러면 옥으로 샐져나간다. */
+    overflow-wrap: break-word;
+}
+
+.page h1,
+.page h2 {
+    font-family: "Gowun Batang", "Noto Serif KR", Georgia, serif;
+    font-weight: 700;
+    color: var(--ink);
+}
+
+.art-frame {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 6px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: inset 0 0 0 1px rgba(92, 58, 34, 0.25);
+}
+
+.art-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.art-fallback {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: clamp(48px, 13.893cqh, 144px);
+    background:
+        radial-gradient(circle at 30% 30%, rgba(215, 171, 95, 0.5), transparent 60%),
+        linear-gradient(160deg, #e8cf9c, #c9a25f);
+}
+
+.story-page-left,
+.story-page-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: safe center;
+    min-width: 0;
+    min-height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    padding: clamp(16px, 5.789cqh, 60px);
+}
+
+.story-page-left {
+    border-right: 1px solid rgba(92, 58, 34, 0.22);
+}
+
+/* story spread: full-width scene art on top, dialogue text split left/right below */
+.page-story {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    background: var(--parchment);
+}
+
+.spread-art {
+    position: relative;
+    /* 그림 62.5% / 글 37.5%. 책이 4:3이라 그림칸은 대략 2.15:1이 된다.
+       2:1로 만든 그림은 object-fit이 위아래를 조금 자를 뿐이다. */
+    flex: 0 0 62.5%;
+    min-height: 0;
+    overflow: hidden;
+}
+
+.spread-art .art-frame {
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+}
+
+/* 그림이 복잡할수록 제목이 묻힌다. 글씨를 키우고 바탕을 진하게 깔아
+   그림 위에서도 한눈에 읽히게 한다. 아이들이 읽는 글씨다. */
+.spread-chapter-badge {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 5;
+    max-width: 72%;
+    padding: 5px 14px 6px;
+    border-radius: 0 0 14px 0;
+    background: rgba(24, 13, 14, 0.88);
+    color: #fff;
+    font-size: clamp(12px, 1.9cqh, 19px);
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(3px);
+}
+
+.spread-text {
+    flex: 1 1 auto;
+    min-height: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: minmax(0, 1fr) auto;
+    border-top: 3px solid var(--wood);
+}
+
+.spread-text-left,
+.spread-text-right {
+    min-width: 0;
+    min-height: 0;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    /* 위아래 여백을 조금 덜어 둔다. 작은 화면에서 마지막 줄이
+       2px쯤 모자라 잘리는 일이 있었다. */
+    padding: clamp(6px, 1.0cqw, 14px) clamp(10px, 2cqw, 28px);
+    display: flex;
+    flex-direction: column;
+    justify-content: safe center;
+}
+
+.spread-text-left {
+    border-right: 1px solid rgba(92, 58, 34, 0.22);
+}
+
+.spread-text p {
+    margin: 0 0 4px;
+    font-size: clamp(14px, 2.315cqh, 24px);
+    /* 줄 끝을 오른쪽까지 맞춘다. keep-all로 띄어쓰기에서만 끊기게 된
+       뒤로 줄 끝이 들쎄들쎄해졌다. 마지막 줄은 저절로 왼쪽에 붙는다. */
+    text-align: justify;
+    font-weight: 500;
+    line-height: 1.65;
+    color: var(--ink);
+    text-indent: 1em;
+}
+
+.spread-text p:last-child { margin-bottom: 0; }
+
+/* reflection page (moral, final chapter only) */
+.page-reflection {
+    align-items: center;
+    text-align: center;
+    gap: 14px;
+    background: var(--parchment-shade);
+}
+
+.page-reflection h2 {
+    margin: 0;
+    font-size: clamp(20px, 4.342cqh, 45px);
+}
+
+.page-reflection .reflection-moral {
+    max-width: 560px;
+    font-size: clamp(14px, 2.315cqh, 24px);
+    line-height: 1.75;
+    color: var(--ink);
+}
+
+.page-reflection .reflection-question {
+    max-width: 520px;
+    font-style: italic;
+    color: var(--muted);
+    font-size: clamp(14px, 2.315cqh, 24px);
+}
+
+.moral-box {
+    margin-top: 10px;
+    padding: 12px 14px;
+    border-left: 4px solid var(--moral-border);
+    background: var(--moral-bg);
+    border-radius: 4px;
+}
+
+.moral-box strong {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 13px;
+    color: #8a5a12;
+}
+
+.moral-box p {
+    margin: 0;
+    font-size: clamp(14px, 2.315cqh, 24px);
+    /* 줄 끝을 오른쪽까지 맞춘다. keep-all로 띄어쓰기에서만 끊기게 된
+       뒤로 줄 끝이 들쎄들쎄해졌다. 마지막 줄은 저절로 왼쪽에 붙는다. */
+    text-align: justify;
+    font-weight: 500;
+    color: #4a3009;
+    text-indent: 0;
+}
+
+/* cover */
+.page-cover {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 0;
+    background: var(--parchment);
+}
+
+.page-cover .story-page-left-full {
+    padding: 0;
+    background: var(--parchment-shade);
+}
+
+.page-cover .story-page-left-full .art-frame {
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+}
+
+.page-cover h1 {
+    margin: 0 0 2px;
+    font-size: clamp(24px, 5.499cqh, 57px);
+    color: var(--ink);
+}
+
+.page-cover .cover-tag {
+    margin: 0 0 6px;
+    color: var(--muted);
+    font-size: clamp(12px, 2.171cqh, 23px);
+    text-indent: 0;
+}
+
+.page-cover .story-page-right {
+    justify-content: flex-start;
+}
+
+.page-cover .story-page-right p {
+    margin: 0 0 10px;
+    font-size: clamp(14px, 2.315cqh, 24px);
+    /* 줄 끝을 오른쪽까지 맞춘다. keep-all로 띄어쓰기에서만 끊기게 된
+       뒤로 줄 끝이 들쎄들쎄해졌다. 마지막 줄은 저절로 왼쪽에 붙는다. */
+    text-align: justify;
+    font-weight: 500;
+    line-height: 1.7;
+    color: var(--ink);
+    text-indent: 1em;
+}
+
+/* toc */
+.page-toc {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 0;
+    background: var(--parchment);
+}
+
+.page-toc h2 {
+    margin: 0 0 16px;
+    font-size: clamp(18px, 3.763cqh, 39px);
+}
+
+.toc-h2-ghost { visibility: hidden; }
+
+.page-toc .story-page-left,
+.page-toc .story-page-right {
+    justify-content: flex-start;
+}
+
+.toc-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 10px;
+}
+
+.toc-list button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 14px;
+    border: 1px solid var(--parchment-shade);
+    border-radius: 8px;
+    background: #fffaf0;
+    color: var(--ink);
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+}
+
+.toc-list button:hover,
+.toc-list button:focus-visible {
+    border-color: var(--moral-border);
+    background: var(--moral-bg);
+}
+
+.toc-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    flex: 0 0 auto;
+    border-radius: 50%;
+    background: var(--wood);
+    color: var(--parchment);
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.toc-list strong { font-size: clamp(14px, 2.315cqh, 24px); }
+.toc-list small { color: var(--muted); font-size: clamp(11px, 1.7cqh, 15px); flex: 0 0 auto; }
+
+.toc-list button > span:last-child {
+    flex: 1 1 auto;
+    min-width: 0;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+/* 읽고 나서 — 그림 없이 글만 두 칸으로 놓는다. 글씨는 본문과 같은 크기다. */
+.page-after {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 0;
+    background: var(--parchment);
+}
+
+.after-col {
+    --after-pad-y: clamp(10px, 2.2cqh, 24px);
+    --after-pad-x: clamp(10px, 2cqw, 28px);
+    min-width: 0;
+    min-height: 0;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: var(--after-pad-y) var(--after-pad-x);
+    display: flex;
+    flex-direction: column;
+    justify-content: safe center;
+}
+
+.after-col-left {
+    border-right: 1px solid rgba(92, 58, 34, 0.22);
+}
+
+/* 그림이 얹힌 칸은 글을 가운데 모으지 않고 위에서부터 채운다. */
+.after-col-image {
+    justify-content: flex-start;
+}
+
+/* 그림은 쪽 오른쪽 위 모서리에 딱 붙인다. 칸 안쪽 여백만큼 밖으로 끌어낸다.
+   비율은 3:2로 못 박는다. 마무리 그림을 그 비율로 그리기 때문이다.
+   칸을 채우겠다고 늘리면 그림이 좌우로 잘려 나간다. */
+.after-art {
+    flex: 0 0 auto;
+    aspect-ratio: 3 / 2;
+    /* 쪽 왼쪽 끝(가운데 접히는 선)부터 오른쪽 끝까지 꽉 나간다. 진짜 책이 그렇게 한다. */
+    width: calc(100% + var(--after-pad-x) * 2);
+    margin: calc(-1 * var(--after-pad-y)) calc(-1 * var(--after-pad-x)) clamp(8px, 1.8cqh, 18px);
+    min-height: 0;
+    overflow: hidden;
+}
+
+.after-art .art-frame {
+    width: 100%;
+    height: 100%;
+}
+
+.page-after h2 {
+    margin: 0 0 8px;
+    font-size: clamp(17px, 3.183cqh, 33px);
+    text-align: center;
+}
+
+.page-after p {
+    margin: 0 0 6px;
+    font-size: clamp(14px, 2.315cqh, 24px);
+    text-align: justify;
+    font-weight: 500;
+    line-height: 1.65;
+    color: var(--ink);
+    text-indent: 1em;
+}
+
+.page-after p:last-child { margin-bottom: 0; }
+
+/* 읽고 나서가 마지막 쪽이므로 학습 허브로 가는 단추가 여기 붙는다. */
+.after-home {
+    margin: clamp(8px, 1.6cqh, 16px) 0 0;
+    text-align: center;
+    text-indent: 0;
+}
+
+.after-home .home-btn { margin-top: 0; }
+
+
+/* quiz */
+.page-quiz {
+    justify-content: flex-start;
+    background: var(--parchment);
+    overflow-y: auto;
+    gap: 10px;
+}
+
+.page-quiz h2 {
+    margin: 0 0 2px;
+    font-size: clamp(19px, 3.907cqh, 41px);
+}
+
+.quiz-intro-text {
+    margin: 0 0 4px;
+    color: var(--muted);
+    font-size: clamp(13px, 2.171cqh, 23px);
+}
+
+.quiz-list {
+    display: grid;
+    gap: 14px;
+}
+
+.quiz-item {
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--parchment-shade);
+}
+
+.quiz-question {
+    margin: 0 0 8px;
+    font-weight: 700;
+    font-size: clamp(14px, 2.315cqh, 24px);
+    color: var(--ink);
+}
+
+.quiz-choices {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+/* 보기가 문장인 문제는 알약 대신 세로로 쌓는다. */
+.quiz-choices-stack {
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.quiz-choices-stack .quiz-choice {
+    width: 100%;
+    text-align: left;
+    border-radius: 12px;
+    line-height: 1.5;
+}
+
+.quiz-choice {
+    padding: 8px 14px;
+    border: 1px solid var(--parchment-shade);
+    border-radius: 999px;
+    background: #fffaf0;
+    color: var(--ink);
+    font: inherit;
+    font-size: clamp(12px, 2.026cqh, 21px);
+    cursor: pointer;
+}
+
+.quiz-choice:hover,
+.quiz-choice:focus-visible {
+    border-color: var(--moral-border);
+}
+
+.quiz-item.graded .quiz-choice {
+    cursor: default;
+}
+
+.quiz-choice.correct {
+    background: #d9f2d9;
+    border-color: #4caf50;
+    color: #1b5e20;
+    font-weight: 700;
+}
+
+.quiz-choice.incorrect {
+    background: #fbdede;
+    border-color: #e57373;
+    color: #b71c1c;
+}
+
+/* end page */
+.page-end {
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+    background: var(--parchment-shade);
+}
+
+.page-end h2 { margin: 0; font-size: clamp(20px, 4.342cqh, 45px); }
+.page-end p { margin: 0; color: var(--muted); font-size: 13px; }
+
+.home-btn {
+    margin-top: 10px;
+    padding: 10px 22px;
+    border-radius: 999px;
+    background: var(--wood);
+    color: var(--parchment);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 13px;
+}
+
+.home-btn:hover,
+.home-btn:focus-visible {
+    background: var(--wood-dark);
+}
+
+/* nav */
+.nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 2px solid var(--gold);
+    background: rgba(27, 15, 16, 0.75);
+    color: var(--gold-bright);
+    font-size: 24px;
+    line-height: 1;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.nav-btn:hover,
+.nav-btn:focus-visible {
+    background: var(--wood);
+}
+
+.nav-btn:disabled {
+    opacity: 0.25;
+    cursor: default;
+}
+
+.nav-prev { left: -22px; }
+.nav-next { right: -22px; }
+
+.page-indicator {
+    color: var(--gold);
+    font-size: 13px;
+    letter-spacing: 0.06em;
+}
+
+/* 세로로 세운 태블릿과 손전화는 한 쪽씩 본다. 아이패드를 세로로 들면
+   화면이 길어서, 가로 기준(820px)만으로는 큰 아이패드를 놓친다. */
+@media (max-width: 820px), (orientation: portrait) and (max-width: 1100px) {
+    /* 세로에서는 소개글이 길어진다. 그림칸을 조금 줄이고 표지 여백을
+       좁혀 글자리를 넓힌다. */
+    .page-cover .story-page-right { padding: clamp(12px, 2.6cqh, 27px) clamp(14px, 3.4cqh, 36px); }
+    .cover-toc { margin-top: clamp(6px, 1.3cqh, 14px); padding-top: clamp(5px, 1cqh, 10px); }
+    .book { width: min(900px, 96vw, calc((100dvh - 46px) * 3 / 4)); aspect-ratio: 3 / 4; }
+    .nav-prev { left: 6px; }
+    .nav-next { right: 6px; }
+    .page-cover { grid-template-columns: 1fr; grid-template-rows: 26% 74%; }
+    .page-toc { grid-template-columns: 1fr; grid-template-rows: 1fr 1fr; }
+    .page-toc .story-page-left { border-right: none; border-bottom: 1px solid rgba(92, 58, 34, 0.22); }
+    /* 차례는 글씨가 px로 고정이라 세로 화면에서 한 칸에 다 안 들어간다.
+       사이 간격만 조금 좁힌다. */
+    .page-toc h2 { margin-bottom: 10px; }
+    .toc-list { gap: 3px; }
+    .toc-list button { padding: 5px 11px; gap: 8px; }
+    /* 세로 화면은 한 쪽만 보이므로 두 칸을 나란히 두면 글줄이 너무 짧아진다.
+       위아래로 쌓고, 그림을 조금 줄여 글자리를 넓힌다. */
+    .spread-art { flex: 0 0 35%; aspect-ratio: auto; }
+    /* 세로에서도 마지막 펼침면 그림칸 비율이 앞쪽과 같아야 한다.
+       가로용 규칙이 이 블록보다 아래에 있어 .book을 앞에 붙여 세기를 올린다. */
+    .book .page-story.spread-final .spread-art { flex-basis: 35%; }
+    .spread-text { flex: 1 1 55%; display: flex; flex-direction: column; }
+    .spread-text-left, .spread-text-right { flex: 0 1 auto; }
+    .spread-text-left { border-right: none; border-bottom: 1px solid rgba(92, 58, 34, 0.22); }
+    /* 세로에서는 칸이 좁아 양쪽맞춤이 낱말 사이를 크게 벌린다. 본문처럼 위아래로 쌓는다. */
+    .page-after { display: flex; flex-direction: column; }
+    .after-col { flex: 0 1 auto; }
+    .after-col-left { border-right: none; border-bottom: 1px solid rgba(92, 58, 34, 0.22); }
+    /* 세로에서는 글이 위아래로 쌓이므로 그림이 자리를 늘리면 윗칸이 밀린다.
+       높이는 고정하고 너비만 칸 끝까지 채운다. */
+    /* 세로에서도 비율은 3:2 그대로다. 대신 너비를 줄여 칸 안에 들어가게 한다.
+       오른쪽 끝에는 그대로 붙인다. */
+    .after-art {
+        flex: 0 0 auto;
+        aspect-ratio: 3 / 2;
+        height: auto;
+        width: calc(46% + var(--after-pad-x));
+        min-height: 0;
+        align-self: flex-end;
+        margin: 0 calc(-1 * var(--after-pad-x)) 6px 0;
+    }
+
+}
+
+/* 마지막 펼침면의 교훈 — 두 칸을 가로질러 한 줄로 놓는다.
+   오른쪽 칸에 밀어 넣으면 그 칸만 글이 넘쳐서 잘린다. */
+.spread-text > p.fable-moral {
+    grid-column: 1 / -1;
+    margin: 0;
+    /* 그림칸을 앞쪽과 같은 비율로 맞추면서 글칸이 좁아졌다. 교훈 줄 위아래
+       여백을 줄여 그만큼을 글에 돌려준다. */
+    padding: 2px clamp(10px, 2cqw, 28px) 3px;
+    border-top: 1px solid rgba(92, 58, 34, 0.25);
+    color: #6b4a1e;
+    font-family: inherit;
+    font-size: clamp(14px, 2.315cqh, 24px);
+    font-weight: 500;
+    line-height: 1.65;
+    font-style: italic;
+    text-indent: 0;
+    text-align: center;
+}
+
+/* 마지막 펼침면도 그림칸 비율이 앞쪽과 똑같아야 한다. 넘길 때 그림틀이 튀면
+   안 되고, 그림을 2:1 하나로 만들어 어느 쪽에나 쓸 수 있어야 하기 때문이다.
+   교훈 줄은 글칸 안에서 자리를 잡는다. */
+.page-story.spread-final .spread-art {
+    flex-basis: 62.5%;
+}
+
+/* 손가락으로 누르는 자리는 44x44 아래로 내려가지 않는다 (AGENTS.md). */
+.back-link,
+.toc-link,
+.home-btn {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.quiz-choice {
+    min-height: 44px;
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+}
+/* 책 한 장만 있을 때는 body 가운데 정렬이 맞았다. 화면이 두 장 쌓이면
+   가운데 정렬이 둘을 겹쳐 버려 아래 화면이 문서 높이를 못 늘린다. */
+body {
+    display: block;
+    padding: 0;
+}
+
+/* ── 영어로 읽을 때만 나오는 단어장 ────────────────────────────────
+   책은 손대지 않는다. 크기도 자리도 글씨도 그대로다.
+   책 아래에 화면을 한 장 더 두고, 볼 때만 밀어 내린다. */
+.screen {
+    min-height: 100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    box-sizing: border-box;
+    position: relative;
+}
+
+/* display:flex 가 [hidden] 을 이겨 버린다. 우리말로 읽을 때는 아예 없애야 한다. */
+.screen[hidden] { display: none; }
+
+/* 아래 화면은 한 화면을 다 차지하지 않는다. 높이는 JS가 그림선에 맞춰 준다.
+   그래야 더 내려갈 데가 없어 딱 그 자리에 걸린다. */
+.screen-vocab {
+    min-height: 0;
+    align-items: flex-start;
+    padding-top: 14px;
+}
+
+.vocab-panel {
+    width: min(1300px, 96vw, calc((100dvh - 46px) * 4 / 3));
+    box-sizing: border-box;
+    padding: 20px 24px 26px;
+    background: var(--parchment);
+    border: 10px solid var(--wood);
+    border-radius: 10px;
+    box-shadow: var(--shadow), inset 0 0 0 2px rgba(255, 255, 255, 0.4);
+    color: var(--ink);
+}
+
+.vocab-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 8px 12px;
+}
+
+.vocab-list li {
+    padding: 8px 12px;
+    background: #fffaf0;
+    border: 1px solid var(--parchment-shade);
+    border-radius: 9px;
+}
+
+.vocab-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+/* 듣기 단추 — 손가락 규칙대로 44x44 아래로 내려가지 않는다 (AGENTS.md). */
+.vocab-say {
+    flex: none;
+    min-width: 44px;
+    min-height: 44px;
+    margin: -4px -4px 0 0;
+    padding: 0;
+    border: 1px solid var(--parchment-shade);
+    border-radius: 10px;
+    background: #fff;
+    font-size: 18px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.vocab-say:hover,
+.vocab-say:focus-visible {
+    border-color: var(--wood);
+    background: #fff4e0;
+}
+
+.vocab-say:active { transform: scale(0.94); }
+
+.vocab-word {
+    margin: 0;
+    font-weight: 700;
+    font-size: clamp(14px, 2vh, 21px);
+}
+
+.vocab-mean {
+    margin: 1px 0 0;
+    font-size: clamp(13px, 1.8vh, 19px);
+}
+
+.vocab-sent {
+    margin: 4px 0 0;
+    color: var(--muted);
+    font-size: clamp(12px, 1.6vh, 17px);
+    font-style: italic;
+}
+
+/* 아래에 무엇이 더 있는지 알려 주는 단추. 책이 화면에 딱 맞아
+   아래가 있는 줄 모르기 쉽다. */
+.scroll-down {
+    position: absolute;
+    left: 50%;
+    bottom: 8px;
+    transform: translateX(-50%);
+    z-index: 40;
+    min-width: 96px;
+    min-height: 44px;
+    padding: 6px 18px;
+    border: 1px solid rgba(215, 171, 95, 0.5);
+    border-radius: 999px;
+    background: rgba(27, 15, 16, 0.78);
+    color: var(--gold-bright);
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    backdrop-filter: blur(4px);
+}
+
+.scroll-down:hover,
+.scroll-down:focus-visible {
+    border-color: var(--gold-bright);
+    background: rgba(92, 58, 34, 0.85);
+}
+
+/* 영어로 읽을 때만 글꼴을 바꾼다. 한글 명조의 알파벳은 영어 읽기용이 아니다.
+   Roboto Slab 은 슬래브 명조라 지금 결을 크게 흔들지 않는다. */
+html[lang="en"] body {
+    font-family: "Roboto Slab", "Noto Serif KR", "Apple SD Gothic Neo", Georgia, serif;
+}
+
+/* 한글 명조는 500이 보통으로 보이지만 슬래브 명조는 500이면 확 두꺼워진다.
+   글 요소마다 500이 따로 걸려 있어 body 만 내려서는 안 먹는다. */
+html[lang="en"] .spread-text p,
+html[lang="en"] .page-cover .story-page-right p,
+html[lang="en"] .page-after p,
+html[lang="en"] .vocab-sent {
+    font-weight: 400;
+}
+
+/* ── 읽어 주기 ─────────────────────────────────────────────── */
+.read-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 12;
+    min-width: 46px;
+    min-height: 46px;
+    padding: 0;
+    border: 1px solid rgba(215, 171, 95, 0.55);
+    border-radius: 50%;
+    background: rgba(27, 15, 16, 0.78);
+    color: var(--gold-bright);
+    font-size: 17px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.read-btn:hover,
+.read-btn:focus-visible {
+    border-color: var(--gold-bright);
+    background: rgba(92, 58, 34, 0.9);
+}
+
+/* 지금 읽고 있는 문단 */
+.spread-text p.saying,
+.page-cover p.saying,
+.page-cover h1.saying,
+.after-col p.saying {
+    background: rgba(215, 171, 95, 0.3);
+    border-radius: 6px;
+    box-shadow: 0 0 0 4px rgba(215, 171, 95, 0.3);
+}
+
+html[lang="en"] .is-reading [data-say] { cursor: pointer; }
