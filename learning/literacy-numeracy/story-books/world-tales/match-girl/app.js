@@ -225,8 +225,8 @@ const CHAPTERS = [
                 "emoji": "🌅",
                 "left": [
                     "아이가 무엇을 보았는지는 아무도 알지 못했습니다. 난로도, 거위도, 반짝이던 나무도요. 무엇보다 할머니를 만난 것을요.",
-                    "아침에 걸음을 멈춘 사람들은 어제저녁에도 그 앞을 지나갔습니다. 그때는 눈길도 주지 않았지요.",
-                    "이제야 후회했지만 이미 늦었지요."
+                    "사람들은 그 자리에 서 있었습니다. 아무도 말을 잇지 못했지요.",
+                    "어제 눈길 한 번만 주었더라면. 다들 그 생각뿐이었지만 이미 늦었습니다."
                 ],
                 "right": [
                     "그날 저녁 그 골목에 꽃이 한 다발 놓였습니다. 누가 두고 갔는지는 아무도 몰랐지요.",
@@ -770,8 +770,8 @@ const EN = {
                     left: [
                         "Nobody knew what she had seen — the stove, the goose, the shining tree.",
                         "And least of all that she had met her grandmother.",
-                        "The people who had stopped that morning had walked past her the evening before. Not one of them had so much as looked at her.",
-                        "They were sorry now. It was too late to be sorry."
+                        "The people stood where they were. Not one of them could think of anything to say.",
+                        "If only they had looked at her yesterday. That was all any of them could think, and it was too late."
                     ],
                     right: [
                         "That evening someone left a bunch of flowers in the alley. Nobody knew who had left them.",
@@ -940,7 +940,7 @@ const EN = {
             { word: 'least of all', meaning: '무엇보다도 특히', sentence: 'And least of all that she had met her grandmother.' },
             { word: 'a bunch of', meaning: '한 다발의', sentence: 'Someone left a bunch of flowers in the alley.' },
             { word: 'sit down to', meaning: '자리에 앉아 ~을 먹다', sentence: 'Through the window a family sat down to supper.' },
-            { word: 'too late', meaning: '이미 늦은', sentence: 'It was too late to be sorry.' }
+            { word: 'if only', meaning: '~했더라면 좋았을 텐데', sentence: 'If only they had looked at her yesterday.' }
         ],
         'end.webp': [
             { word: 'beg', meaning: '구걸하다', sentence: 'His own mother had begged in the streets as a girl.' },
@@ -1038,7 +1038,7 @@ const WORDS_KO = {
         { w: "고개를 숙이다", k: "부끄럽거나 미안해서 얼굴을 아래로 내리다.", s: "누군가 말하자 옆 사람이 고개를 숙였지요." }
     ],
     "07-morning-2.webp": [
-        { w: "후회", k: "지난 일을 뉘우치며 안타까워하는 마음.", s: "이제야 후회했지만 이미 늦었지요." },
+        { w: "말을 잇지 못하다", k: "놀라거나 마음이 아파 말이 나오지 않다.", s: "아무도 말을 잇지 못했지요." },
         { w: "다발", k: "여럿을 한데 묶은 것.", s: "그날 저녁 그 골목에 꽃이 한 다발 놓였습니다." },
         { w: "둘러앉다", k: "여럿이 둥글게 모여 앉다.", s: "창 너머로 저녁상에 둘러앉은 식구들이 보였지요." },
         { w: "조용해지다", k: "소리가 잦아들어 고요해지다.", s: "골목은 다시 조용해졌습니다. 그 겨울에도 눈은 며칠이나 더 내렸지요." }
