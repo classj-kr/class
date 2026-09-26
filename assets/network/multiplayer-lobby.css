@@ -566,7 +566,8 @@ body:has(#game:not(.hide) > #lobby:not(.hide)) #game #start:disabled { opacity: 
 .mp-ui-lobby .setup-panel { padding: 0; margin: 10px 0; }
 .mp-ui-lobby .room-help { font-size: 13px; line-height: 1.6; margin: 10px 0; }
 .mp-ui-lobby.lobbyShell::before { display: none; }
-body:has(.lobbyShell.mp-ui-lobby:not(.hidden)) { background: url('/learning/games/citychase/assets/lobby-city.jpg') center/cover fixed; }
+/* Contain the lobby margin so the page background also covers the top edge. */
+body:has(.lobbyShell.mp-ui-lobby:not(.hidden)) { display: flow-root; background: url('/learning/games/citychase/assets/lobby-city.jpg') center/cover fixed; }
 .mp-ui-lobby .lobbyWorkspace { display: block; }
 .mp-ui-lobby .lobbyConnect:empty { display: none; }
 
