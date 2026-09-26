@@ -26,25 +26,27 @@
 ## 공통 스타일 지시문 (모든 프롬프트 앞에 붙여서 사용하세요)
 
 ```
-Children's picture book illustration, classic 1970s-80s World Masterpiece Theater (세계명작극장) 2D cel animation style,
-bold clean outlines, saturated storybook colors, flat cel shading with warm soft lighting,
-ABSOLUTELY NO TEXT ANYWHERE IN THE IMAGE - no letters, no words, no speech bubbles, no captions, no subtitles,
-European fairytale settings (French port town stone houses, rustic country cottage with brick fireplace, snow-covered forest, enchanted gothic castle with rose gardens),
-very expressive comic cartoon faces, cute proportions, humorous and heartwarming acting,
-ABSOLUTELY NO REALISTIC PHOTOREALISM, NO 3D CGI RENDER, NO HANDSOME 8-HEAD-TALL ROMANCE NOVEL MANHWA.
-CRITICAL MANDATE: ABSOLUTELY NO REALISTIC LION, NO NATIONAL GEOGRAPHIC SAFARI ANIMAL DOCUMENTARY!
-The Beast MUST be a 100% charming, whimsical, funny, and lovable 2D cartoon fairytale creature!
+Children's picture book illustration, classic 1970s-80s World Masterpiece Theater (세계명작극장 - 빨강머리 앤, 플란다스의 개 스타일) 2D cel animation style,
+bold clean outlines, warm gouache storybook colors, flat cel shading with soft natural lighting,
+ABSOLUTELY NO TEXT ANYWHERE IN THE IMAGE - no letters, no words, no speech bubbles, no captions,
+European fairytale settings (rustic stone cottage, snow-covered forest, enchanted gothic castle with rose gardens),
+cute, humble, heartwarming storybook proportions, expressive animation acting,
+STRICT NEGATIVE PROMPT:
+- ABSOLUTELY NO SHOJO MANGA (순정만화 절대 금지), NO SPARKLY ROMANCE MANHWA, NO POINTY CHINS, NO SPARKLY EYES, NO BISHONEN IDOL FACES!
+- ABSOLUTELY NO REALISTIC PHOTOREALISM, NO 3D CGI RENDER!
+- ABSOLUTELY NO REALISTIC SAFARI LION DOCUMENTARY (다큐멘터리 실사 사자 절대 금지)!
+- ABSOLUTELY NO BORING TEDDY BEAR (밋밋한 인형 곰돌이 절대 금지)!
 ```
 
 ## 인물 설명 (일관성을 위해 매번 붙여 넣으세요)
 
 ```
-[CHARACTERS - 02-rose.webp 기준 완벽 일치]
-- 벨 (Belle): Exact design from 02-rose.webp. A sweet, humble young girl (around 12-14 years old), dark brown hair braided in neat twin braids with small red ribbon ties, sweet innocent round face with big expressive cartoon eyes. Wears a forest-green dress with white pinafore apron (or warm deep-blue hooded cloak when traveling in the snow). Loves books, courageous and gentle.
-- 야수 (The Beast): A pure 2D cartoon fairytale character! (NEVER a realistic documentary lion!). An oversized, clumsy, fluffy bear-lion magical creature with cute rounded horns, warm golden-brown fur, a comical fluffy mane, and big, gentle, expressive cartoon puppy-dog eyes! Very human-like comic acting (shy, flustered, awkward, tenderhearted, holding a tiny teacup delicately). Wears a royal blue velvet coat with gold embroidery and white lace cravat.
+[CHARACTERS - 02-rose.webp 세계명작극장 스타일 완벽 일치]
+- 벨 (Belle): Exact design from 02-rose.webp. A sweet, humble storybook girl (around 12-14 years old), dark brown hair braided in neat twin braids with small red ribbon ties, sweet innocent round face with simple cartoon eyes (NEVER a sparkly shojo manga heroine!). Forest-green dress with white pinafore apron (or deep-blue hooded cloak in snow).
+- 야수 (The Beast): A true 2D fairytale Chimera creature! (NEVER a realistic safari lion, and NEVER a boring teddy bear!). An imposing yet cartoonish fairytale beast with a wild shaggy mane, curved goat/ram horns, small boar tusks peeking from his mouth, expressive animated eyes, wearing an ornate royal blue Renaissance coat with gold embroidery. Dramatic, expressive, fairytale animation acting.
 - 아버지 (The Merchant Father): Exact design from 02-rose.webp. Dapper European gentleman wearing a brown fedora hat, neatly trimmed grey beard and moustache, kind smiling eyes, warm brown trench overcoat with a leather crossbody messenger bag.
 - 두 언니 (The Two Elder Sisters): Exact design from 02-rose.webp. Older sister 1: wine-red hair with pink hair ribbon, wearing a frilly pink rococo dress. Older sister 2: wavy ginger-orange hair with blue hair ribbon, wearing a frilly sky-blue rococo dress. Comical, vain, overdramatic cartoon expressions.
-- 변신이 풀린 왕자 (The Transformed Prince): A humble, sweet-faced young boy prince (around 13-15 years old, NOT an 8-head tall adult romance model!). Round friendly face, wavy brown hair, warm gentle eyes identical to the Beast's kind eyes, humble grateful smile. Wears a handsome blue royal tunic with gold trim.
+- 변신이 풀린 왕자 (The Transformed Prince): A humble, sweet-faced young boy prince (around 13-15 years old, STRICTLY NO 8-head tall sparkly shojo manga idol / manhwa bishonen!). Round friendly face, wavy brown hair, warm gentle eyes identical to the Beast's kind eyes, humble grateful smile. Wears a neat blue royal tunic with gold trim, matching Belle's warm, humble, classic storybook art style.
 ```
 
 ## 표지 · 마무리
