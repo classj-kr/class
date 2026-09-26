@@ -1090,7 +1090,7 @@ body{align-items:center;padding:18px}
     </div>
 
     <div class="difficulty-container">
-        <div class="difficulty-label">동전 개수</div>
+        <div class="difficulty-label">SELECT COINS COUNT</div>
         <div class="diff-btn-group">
             <button class="diff-btn" onclick="setGlobalDifficulty(8, true)">8</button>
             <button class="diff-btn" onclick="setGlobalDifficulty(9, true)">9</button>
@@ -1117,12 +1117,12 @@ body{align-items:center;padding:18px}
 
 
     <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
-        <button class="action-btn" id="start-game-button" onclick="startGame()" disabled>게임 시작</button>
-        <button class="action-btn" type="button" onclick="openRules()">게임 방법</button>
+        <button class="action-btn" id="start-game-button" onclick="startGame()" disabled>START GAME</button>
+        <button class="action-btn" type="button" onclick="openRules()">HOW TO PLAY</button>
     </div>
 
     <div class="finishers-panel">
-        <div class="finishers-title">오늘의 완료 기록</div>
+        <div class="finishers-title">🏆 TODAY’S FINISHERS</div>
         <div class="finishers-list" id="today-finishers-list"></div>
     </div>
 
@@ -1184,7 +1184,7 @@ body{align-items:center;padding:18px}
             <button class="action-btn" id="weigh-btn" onclick="weighCoins()">WEIGH</button>
             <button class="action-btn" onclick="clearPlates()">CLEAR</button>
             <button class="action-btn btn-decide" id="decide-btn" onclick="toggleDecideMode()">DECIDE</button>
-            <button class="action-btn" onclick="openRules()">게임 방법</button>
+            <button class="action-btn" onclick="openRules()">RULES</button>
             <button class="action-btn" type="button" onclick="location.href='../../../'">메인 화면으로</button>
         </div>
 
@@ -1256,12 +1256,12 @@ body{align-items:center;padding:18px}
         if (playerName && entry) {
             entry.style.display = "none";
             const subtitle = document.querySelector(".start-subtitle");
-            if (subtitle) subtitle.textContent = `${playerName}`;
+            if (subtitle) subtitle.textContent = `PLAYER · ${playerName} · COIN WEIGHING GAME`;
         }
 
         if (startButton) {
             startButton.disabled = !playerName;
-            startButton.textContent = playerName ? "게임 시작" : "메인 화면에서 이름을 저장하세요";
+            startButton.textContent = playerName ? "START GAME" : "메인 화면에서 이름을 저장하세요";
         }
 
         loadTodayFinishers();
@@ -1774,7 +1774,7 @@ body{align-items:center;padding:18px}
                     <strong class="text-success">판별에 성공했습니다!</strong>
                 </div>
                 <div class="finishers-panel result-finishers">
-                    <div class="finishers-title">오늘의 완료 기록</div>
+                    <div class="finishers-title">🏆 TODAY’S FINISHERS</div>
                     <div class="finishers-list" id="result-finishers-list"></div>
                 </div>
             `;

@@ -26,18 +26,18 @@
       <div class="difficulty-container">
         <p class="setting-label">난이도</p>
         <div class="mode-switch" aria-label="퍼즐 크기 선택">
-          <button type="button" data-n="5" aria-pressed="true"><strong>5 × 5</strong><span>쉬움</span></button>
-          <button type="button" data-n="10" aria-pressed="false"><strong>10 × 10</strong><span>어려움</span></button>
+          <button type="button" data-n="5" aria-pressed="true"><strong>5 × 5</strong><span>EASY</span></button>
+          <button type="button" data-n="10" aria-pressed="false"><strong>10 × 10</strong><span>HARD</span></button>
         </div>
       </div>
 
       <div class="start-actions">
-        <button class="primary start-button" id="startButton" type="button">게임 시작</button>
+        <button class="primary start-button" id="startButton" type="button">START GAME</button>
       </div>
       <a class="back-link start-back" href="../../../#puzzle-title">← MAIN MENU</a>
 
       <div class="finishers-panel">
-        <div class="finishers-title">오늘의 완료 기록</div>
+        <div class="finishers-title">🏆 TODAY’S FINISHERS</div>
         <div class="finishers-list" id="today-finishers-list"></div>
       </div>
     </section>
@@ -70,7 +70,7 @@
           <div class="actions">
             <button class="primary" id="newGameButton" type="button">NEW PUZZLE</button>
             <button class="secondary" id="resetButton" type="button">RESET</button>
-            <button class="secondary" id="guideButton" type="button" aria-expanded="false" aria-controls="guidePanel">게임 방법</button>
+            <button class="secondary" id="guideButton" type="button" aria-expanded="false" aria-controls="guidePanel">HOW TO PLAY</button>
           </div>
         </div>
 
@@ -78,7 +78,7 @@
           <header class="guide-header">
             <div>
 
-              <h2 id="guideTitle">게임 방법</h2>
+              <h2 id="guideTitle">HOW TO PLAY</h2>
             </div>
             <button class="guide-close" id="guideCloseButton" type="button" aria-label="공략 닫기">×</button>
           </header>
@@ -111,13 +111,13 @@
       <h2 id="resultTitle">CONGRATULATIONS!</h2>
       <p id="resultSummary"></p>
       <div class="finishers-panel result-finishers">
-        <div class="finishers-title">오늘의 완료 기록</div>
+        <div class="finishers-title">🏆 TODAY’S FINISHERS</div>
         <div class="finishers-list" id="result-finishers-list"></div>
       </div>
       <button class="primary" id="playAgainButton" type="button">PLAY AGAIN</button>
     </div>
   </div>
 
-  <script src="app.js?v=20260926-title-restore2"></script>
+  <script src="app.js?v=20260926-puzzle-labels"></script>
 </body>
 </html>

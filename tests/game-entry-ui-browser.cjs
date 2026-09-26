@@ -47,8 +47,8 @@ const games=fs.readdirSync('learning/games',{withFileTypes:true}).filter(e=>e.is
     await capture('rules');
    }else{
     await capture('entry');
-    const button=await page.evaluate(()=>[...document.querySelectorAll('button')].find(e=>e.checkVisibility()&&/게임 방법/.test(e.textContent))?.getAttribute('onclick'));
-    if(button){await page.evaluate(()=>[...document.querySelectorAll('button')].find(e=>e.checkVisibility()&&/게임 방법/.test(e.textContent)).click());await capture('rules');}
+    const button=await page.evaluate(()=>[...document.querySelectorAll('button')].find(e=>e.checkVisibility()&&/게임 방법|HOW TO PLAY/.test(e.textContent))?.getAttribute('onclick'));
+    if(button){await page.evaluate(()=>[...document.querySelectorAll('button')].find(e=>e.checkVisibility()&&/게임 방법|HOW TO PLAY/.test(e.textContent)).click());await capture('rules');}
     else {await page.click('#startButton');await page.waitForFunction(()=>document.getElementById('gameScreen').checkVisibility());await capture('play');await page.click('#guideButton');await capture('rules');}
    }
    assert.deepEqual(result.errors,[],'Unexpected page error');

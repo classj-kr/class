@@ -714,18 +714,18 @@ body{align-items:center;padding:18px}
     function loadQuestion() {
         if (currentStage === 0) {
             displayArea.innerHTML = `
-                <div class="question-text">${playerName ? `${escapeFinisherHtml(playerName)}` : "<스핑크스> 도전할 자는 이름과 실력을 밝혀라."}</div>
+                <div class="question-text">${playerName ? `PLAYER · ${escapeFinisherHtml(playerName)}` : "<스핑크스> 도전할 자는 이름과 실력을 밝혀라."}</div>
                 <div class="player-entry">
                     <div class="player-name-help" id="player-name-help">이름이 없습니다. 메인 화면에서 이름을 먼저 저장해 주세요.</div>
                     <button class="quiz-btn" type="button" onclick="location.href='../../../'">메인 화면으로</button>
                 </div>
                 <div class="options-container">
-                    <button class="quiz-btn" data-difficulty-button onclick="setDiff(5)">초급 시작</button>
-                    <button class="quiz-btn" data-difficulty-button onclick="setDiff(10)">고급 시작</button>
-                    <button class="quiz-btn" type="button" onclick="showSphinxRules()">게임 방법</button>
+                    <button class="quiz-btn" data-difficulty-button onclick="setDiff(5)">START GAME · BEGINNER</button>
+                    <button class="quiz-btn" data-difficulty-button onclick="setDiff(10)">START GAME · ADVANCED</button>
+                    <button class="quiz-btn" type="button" onclick="showSphinxRules()">HOW TO PLAY</button>
                 </div>
                 <div class="finishers-panel">
-                    <div class="finishers-title">오늘의 완료 기록</div>
+                    <div class="finishers-title">🏆 TODAY’S FINISHERS</div>
                     <div class="finishers-list" id="today-finishers-list"></div>
                 </div>`;
             const playerEntry = document.querySelector(".player-entry");
@@ -771,7 +771,7 @@ body{align-items:center;padding:18px}
 
     function showSphinxRules() {
         displayArea.innerHTML = `
-            <div class="question-text">게임 방법</div>
+            <div class="question-text">HOW TO PLAY</div>
             <div style="text-align:left;line-height:1.75;margin:12px auto;max-width:620px">
                 <p>스핑크스 수수께끼와 관련된 문제를 풀어봅니다.</p>
                 <ol>
@@ -802,7 +802,7 @@ body{align-items:center;padding:18px}
                 ${win ? "<스핑크스> 그대의 예지를 칭송하리라." : "<스핑크스> 성스러운 땅에 합당치 않은 자여! 물러가라!"}
             </div>
             ${win ? `<div class="finishers-panel result-finishers">
-                <div class="finishers-title">오늘의 완료 기록</div>
+                <div class="finishers-title">🏆 TODAY’S FINISHERS</div>
                 <div class="finishers-list" id="result-finishers-list"></div>
             </div>` : ""}
             <button class="quiz-btn confirm-btn" onclick="currentStage=0; loadQuestion();">처음으로</button>`;

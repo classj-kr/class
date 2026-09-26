@@ -24,20 +24,20 @@
       <p class="player-line" id="playerLine"></p>
 
       <div class="difficulty-container">
-        <p class="setting-label">퍼즐 크기</p>
+        <p class="setting-label">PUZZLE</p>
         <div class="mode-switch" aria-label="퍼즐 크기 선택">
-          <button type="button" data-size="3" aria-pressed="true"><strong>8 퍼즐</strong><span>3 × 3 · 쉬움</span></button>
-          <button type="button" data-size="4" aria-pressed="false"><strong>15 퍼즐</strong><span>4 × 4 · 어려움</span></button>
+          <button type="button" data-size="3" aria-pressed="true"><strong>8 PUZZLE</strong><span>3 × 3 · EASY</span></button>
+          <button type="button" data-size="4" aria-pressed="false"><strong>15 PUZZLE</strong><span>4 × 4 · HARD</span></button>
         </div>
       </div>
 
       <div class="start-actions">
-        <button class="primary start-button" id="startButton" type="button">게임 시작</button>
+        <button class="primary start-button" id="startButton" type="button">START GAME</button>
       </div>
       <a class="back-link start-back" href="../../../#puzzle-title">← MAIN MENU</a>
 
       <div class="finishers-panel">
-        <div class="finishers-title">오늘의 완료 기록</div>
+        <div class="finishers-title">🏆 TODAY’S FINISHERS</div>
         <div class="finishers-list" id="today-finishers-list"></div>
       </div>
     </section>
@@ -49,7 +49,7 @@
       </header>
       <div class="game-layout">
         <div class="play-column">
-          <h1 id="gameTitle" class="visually-hidden">8 퍼즐</h1>
+          <h1 id="gameTitle" class="visually-hidden">8 PUZZLE</h1>
 
           <div class="stats" aria-label="게임 기록">
             <div><span>MOVES</span><strong id="moveCount">0</strong></div>
@@ -66,7 +66,7 @@
           <div class="actions">
             <button class="primary" id="newGameButton" type="button">NEW GAME</button>
             <button class="secondary" id="resetButton" type="button">RESET</button>
-            <button class="secondary" id="guideButton" type="button" aria-expanded="false" aria-controls="guidePanel">게임 방법</button>
+            <button class="secondary" id="guideButton" type="button" aria-expanded="false" aria-controls="guidePanel">HOW TO PLAY</button>
           </div>
         </div>
 
@@ -74,7 +74,7 @@
           <header class="guide-header">
             <div>
 
-              <h2 id="guideTitle">게임 방법</h2>
+              <h2 id="guideTitle">HOW TO PLAY</h2>
             </div>
             <button class="guide-close" id="guideCloseButton" type="button" aria-label="공략 닫기">×</button>
           </header>
@@ -220,13 +220,13 @@
       <h2 id="resultTitle">CONGRATULATIONS!</h2>
       <p id="resultSummary"></p>
       <div class="finishers-panel result-finishers">
-        <div class="finishers-title">오늘의 완료 기록</div>
+        <div class="finishers-title">🏆 TODAY’S FINISHERS</div>
         <div class="finishers-list" id="result-finishers-list"></div>
       </div>
       <button class="primary" id="playAgainButton" type="button">PLAY AGAIN</button>
     </div>
   </div>
 
-  <script src="app.js?v=20260926-title-restore2"></script>
+  <script src="app.js?v=20260926-puzzle-labels"></script>
 </body>
 </html>
