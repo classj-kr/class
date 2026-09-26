@@ -109,7 +109,7 @@ body:has(#boardArea:not(.hidden)) #game>.panel:first-child{margin-bottom:8px;pad
 #roomCode,#roomShare #gameRoomCode{font-size:clamp(36px,8vw,44px);line-height:1.15;font-variant-numeric:tabular-nums}
 </style>
 <script src="../../../assets/network/game-network.js?v=20260821"></script>
-<script src="../../../assets/network/multiplayer-lobby.js?v=20260926-title-restore2"></script>
+<script src="../../../assets/network/multiplayer-lobby.js?v=20260926-back-flow"></script>
 <script src="../../../assets/sound/music-control.js?v=20260910-click-cache-1" defer></script>
 <link rel="stylesheet" href="../../../assets/device-game.css?v=20260921c">
 </head>
@@ -483,7 +483,7 @@ function init() {
     onLeave: () => location.href = "../../../",
     onNotice: notice,
     onStateChange: syncLobbyTransport,
-    onServerMessage: handleServerMessage,
+    isGameActive:()=>Boolean(state && state.phase!=="lobby"),onServerMessage: handleServerMessage,
     onPlayerLeftDuringGame: () => notice("플레이어가 나가 대기실로 돌아갑니다."),
     onAbort: ({ message }) => notice(message)
   }).mount();

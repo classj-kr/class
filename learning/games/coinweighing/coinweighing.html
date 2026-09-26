@@ -1076,11 +1076,11 @@ body{align-items:center;padding:18px}
 <link rel="stylesheet" href="../../../assets/device-game.css?v=20260921c">
 <style>body:has(#game-board[style*="block"]){box-sizing:border-box;min-height:100dvh;height:auto;padding:8px;margin:0}#game-board[style*="block"]{max-width:100%;max-height:calc(100dvh - 16px);margin:auto}@media(min-width:700px){#game-board[style*="block"]{width:min(100%,1000px);height:calc(100dvh - 16px);min-height:0}.top-section{height:calc(100% - 170px);min-height:290px}.bottom-section-wrapper{position:absolute;bottom:10px;left:20px;right:20px;width:auto}}</style><link rel="stylesheet" href="../../../assets/network/single-player-entry.css?v=20260926-title-restore2">
 </head>
-<body>
+<body data-game-navigation="single-player">
 
 <audio id="bgm" src="/learning/games/coinweighing/assets/sound/bgm.ogg" loop></audio>
 
-<div class="start-screen" id="start-screen">
+<div class="start-screen" id="start-screen" data-game-entry>
     <div class="start-title">동전 무게 찾기</div>
     <div class="start-subtitle">COIN WEIGHING GAME</div>
 

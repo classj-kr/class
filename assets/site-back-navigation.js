@@ -188,19 +188,16 @@
     return style.display !== "none" && style.visibility !== "hidden" && element.getClientRects().length > 0;
   };
 
-  const isGameLayerOpen = () => {
-    if (!location.pathname.startsWith("/learning/games/")) return false;
-    if (document.body.classList.contains("game-active")) return true;
-    const game = document.querySelector("#gameScreen, #game-screen, #game-screen-container, #game");
-    const lobby = document.querySelector("#lobbyScreen, #lobby-screen, #lobby-card, #lobby, #entry");
-    return isVisible(game) && lobby && !isVisible(lobby);
-  };
-
   shadow.querySelector("button").addEventListener("click", () => {
     const request = new CustomEvent("sitebackrequest", { bubbles: true, cancelable: true });
     if (!window.dispatchEvent(request)) return;
-    if (isGameLayerOpen()) {
-      location.reload();
+    if (location.pathname.startsWith("/learning/games/")) {
+      // Multiplayer instances handle their authoritative phase through the event above.
+      // Single-player entries are explicitly marked, rather than guessed from game-specific IDs.
+      const singlePlayer = document.body.dataset.gameNavigation === "single-player";
+      const entryVisible = [...document.querySelectorAll("[data-game-entry]")].some(isVisible);
+      if (singlePlayer && !entryVisible) location.reload();
+      else location.href = "/";
       return;
     }
 

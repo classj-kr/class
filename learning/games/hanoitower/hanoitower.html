@@ -800,12 +800,12 @@ body:has(#game-container[style*="flex"]){height:100dvh;min-height:0;box-sizing:b
 @media(orientation:portrait){#game-container[style*="flex"]{grid-template-columns:1fr;grid-template-rows:auto minmax(0,1fr) auto auto}#game-container .controls{grid-column:1;grid-row:1;flex-direction:row;flex-wrap:wrap;justify-content:center}#game-container .board-wrapper{grid-column:1;grid-row:2}#game-container #info{grid-column:1;grid-row:3}#game-container .tap-guide{grid-column:1;grid-row:4}}
 </style><style>#game-container .btn-container{display:flex;flex-wrap:wrap;justify-content:center;gap:4px}#game-container .option-group{max-width:100%;min-width:0}</style><style>#game-container .controls{gap:8px}#game-container .controls .option-group{margin:0}#game-container .controls>button{flex-shrink:0;margin:0!important}#game-container .legacy-music-control{display:none}</style><link rel="stylesheet" href="../../../assets/network/single-player-entry.css?v=20260926-title-restore2">
 </head>
-<body>
+<body data-game-navigation="single-player">
 <audio id="bgm" src="/learning/games/hanoitower/assets/sound/bgm.ogg" loop preload="auto"></audio>
 <div class="tablet-landscape-hint" aria-hidden="true">화면이 좁으면 기기를 가로로 돌리면 더 편하게 플레이할 수 있습니다.</div>
 
 
-<div class="start-screen" id="start-screen">
+<div class="start-screen" id="start-screen" data-game-entry>
     <div class="start-title">하노이의 탑</div>
     <div class="start-subtitle">Antique Tower of Hanoi</div>
 

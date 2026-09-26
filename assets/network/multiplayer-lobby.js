@@ -89,10 +89,12 @@
                 this.destroy();
             };
             this._boundSiteBack = event => {
-                if (!this.started) return;
+                const playing = typeof this.options.isGameActive === "function"
+                    ? this.options.isGameActive() : this.started;
                 event.preventDefault();
                 this.destroy();
-                location.reload();
+                if (playing) location.reload();
+                else location.href = "/";
             };
         }
 
@@ -405,11 +407,11 @@
             });
         }
 
-        _closeTransport() {
+        _closeTransport(closeCode) {
             this.pendingAction = null;
             this.intentionalClose = true;
             if (this.socket) {
-                try { this.socket.close(); } catch (_) {}
+                try { this.socket.close(closeCode); } catch (_) {}
             }
             this.socket = null;
             setTimeout(() => { this.intentionalClose = false; }, 0);
@@ -724,7 +726,7 @@
 
         destroy() {
             this._notifyGuestLeft();
-            this._closeTransport();
+            this._closeTransport(4000);
             window.removeEventListener("beforeunload", this._boundBeforeUnload);
             window.removeEventListener("sitebackrequest", this._boundSiteBack);
         }

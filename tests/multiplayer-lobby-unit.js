@@ -244,6 +244,25 @@ for (const [setting, role, preserved] of [[false,"host",false],[true,"host",true
     reloadLobby.destroy();
 }
 
+// Explicit back navigation leaves the room even when ordinary reloads preserve it.
+for (const role of ["host", "guest"]) for (const playing of [false, true]) {
+    let reloads = 0;
+    location.reload = () => { reloads += 1; };
+    location.href = "unchanged";
+    const backLobby = window.ClassroomMultiplayerLobby.create({
+        gameId: "back-check", keepRoomOnReload: "all", isGameActive: () => playing
+    });
+    const backSocket = new FakeSocket();
+    backLobby.role = role; backLobby.connected = true; backLobby.socket = backSocket;
+    backLobby.started = !playing; // Server-owned phase must take precedence.
+    const event = new Event("sitebackrequest", { cancelable: true });
+    backLobby._boundSiteBack(event);
+    assert.strictEqual(event.defaultPrevented, true);
+    assert.strictEqual(backSocket.closeCode, 4000);
+    assert.strictEqual(reloads, playing ? 1 : 0);
+    assert.strictEqual(location.href, playing ? "unchanged" : "/");
+}
+
 host.destroy();
 guest.destroy();
 unnamed.destroy();

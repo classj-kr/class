@@ -613,7 +613,7 @@ body{align-items:center;padding:18px}
 <link rel="stylesheet" href="../../../assets/device-game.css?v=20260921c">
 <style>@media(min-width:700px){body{box-sizing:border-box;padding:12px;min-height:100dvh}.game-frame{height:calc(100dvh - 24px);min-height:0}.quiz-container{min-height:0;padding:14px;overflow:auto}#display-area{min-height:250px;padding:14px}}</style><link rel="stylesheet" href="../../../assets/network/single-player-entry.css?v=20260926-title-restore2">
 </head>
-<body>
+<body data-game-navigation="single-player">
 <audio id="bgm" src="/learning/games/sphinx/assets/sound/bgm.ogg" loop preload="auto"></audio>
 
 <div class="game-frame">
@@ -719,7 +719,7 @@ body{align-items:center;padding:18px}
                     <div class="player-name-help" id="player-name-help">이름이 없습니다. 메인 화면에서 이름을 먼저 저장해 주세요.</div>
                     <button class="quiz-btn" type="button" onclick="location.href='../../../'">메인 화면으로</button>
                 </div>
-                <div class="options-container">
+                <div class="options-container" data-game-entry>
                     <button class="quiz-btn" data-difficulty-button onclick="setDiff(5)">START GAME · BEGINNER</button>
                     <button class="quiz-btn" data-difficulty-button onclick="setDiff(10)">START GAME · ADVANCED</button>
                     <button class="quiz-btn" type="button" onclick="showSphinxRules()">HOW TO PLAY</button>
