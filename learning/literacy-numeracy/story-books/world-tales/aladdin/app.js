@@ -7,14 +7,14 @@ const CHAPTERS = [
                 "art": "01-stranger.webp",
                 "emoji": "🧿",
                 "left": [
-                    "어머니가 물레를 멈추고 문밖으로 목을 뺐습니다. 알라딘은 담 위에 걸터앉아 친구들과 웃고 있었지요.",
-                    "\"알라딘! 또 골목이야?\"",
-                    "아버지가 세상을 떠난 뒤로 어머니는 밤늦도록 물레를 돌려 실을 만들었습니다. 그 실을 팔아 겨우 끼니를 이었지요. 그런데도 아들은 날마다 놀기만 했습니다."
+                    "먼 나라 옷을 입은 아저씨가 골목 입구에 서 있었습니다. 지나가는 아이들을 하나하나 뜯어보았지요.",
+                    "그러다 담 위에 걸터앉은 아이에게 성큼 다가갔습니다. \"네가 알라딘이냐?\"",
+                    "알라딘은 눈이 동그래졌습니다. 처음 보는 아저씨가 제 이름을 알고 있었거든요."
                 ],
                 "right": [
-                    "그러던 어느 날, 먼 나라 옷을 입은 낯선 아저씨가 알라딘을 불러 세웠습니다.",
-                    "\"네가 알라딘이로구나. 내가 바로 네 삼촌이란다. 오랜만에 고향에 와 보았지.\"",
-                    "알라딘은 아저씨를 집으로 데려갔지요. 하지만 어머니는 고개를 갸웃했습니다. 죽은 남편에게는 형제가 없었거든요."
+                    "\"내가 바로 네 삼촌이란다. 오랜만에 고향에 와 보았지.\"",
+                    "알라딘은 아저씨를 집으로 데려갔지요. 어머니는 물레를 돌려 실을 만들고 있었습니다. 아버지가 세상을 떠난 뒤로 늘 그랬지요.",
+                    "하지만 어머니는 고개를 갸웃했습니다. 죽은 남편에게는 형제가 없었거든요."
                 ]
             },
             {
@@ -561,16 +561,14 @@ const EN = {
                     art: '01-stranger.webp',
                     emoji: '🧿',
                     left: [
-                        "\"Aladdin! In the street again?\"",
-                        "His mother put down her spindle and leaned out of the door. Aladdin sat on the wall, laughing with his friends.",
-                        "Since his father died she had spun thread late into the night just to buy bread.",
-                        "Still, Aladdin played in the streets all day, and his mother sighed over him every time."
+                        "A man in the clothes of a far country stood at the mouth of the alley, looking hard at every boy who went by.",
+                        "Then he strode up to a boy sitting on a wall. \"Are you Aladdin?\"",
+                        "Aladdin's eyes went round. A man he had never seen before knew his name."
                     ],
                     right: [
-                        "Then one day a stranger stopped Aladdin in the street. He wore the clothes of a far country.",
-                        "\"You must be Aladdin,\" said the man. \"I am your uncle. I have come home after many years.\"",
-                        "Aladdin took the man home. But Aladdin's mother tilted her head.",
-                        "Her husband had never had a brother."
+                        "\"I am your uncle,\" said the stranger. \"I have come home after many years.\"",
+                        "Aladdin took the man home. His mother was at her spinning wheel, making thread, as she had been every day since his father died.",
+                        "But she tilted her head. Her husband had never had a brother."
                     ]
                 },
                 {
@@ -913,9 +911,11 @@ const EN = {
             { word: 'best known', meaning: '가장 널리 알려진', sentence: 'Aladdin is among the best known of them all.' }
         ],
         '01-stranger.webp': [
-            { word: 'sigh over', meaning: '한숨 쉬다', sentence: 'His mother sighed over him every time.' },
-            { word: 'stranger', meaning: '낯선 사람', sentence: 'One day a stranger stopped Aladdin in the street.' },
-            { word: 'tilt one’s head', meaning: '고개를 갸웃하다', sentence: "Aladdin's mother tilted her head." }
+            { word: 'look hard at', meaning: '뜯어보다', sentence: 'looking hard at every boy who went by' },
+            { word: 'stride up to', meaning: '성큼 다가가다', sentence: 'Then he strode up to a boy sitting on a wall.' },
+            { word: 'eyes go round', meaning: '눈이 동그래지다', sentence: "Aladdin's eyes went round." },
+            { word: 'spinning wheel', meaning: '물레', sentence: 'His mother was at her spinning wheel.' },
+            { word: 'tilt one’s head', meaning: '고개를 갸웃하다', sentence: 'But she tilted her head.' }
         ],
         '01-stranger-2.webp': [
             { word: 'without blinking', meaning: '척척, 망설임 없이', sentence: 'The man paid for everything without blinking.' },
@@ -1032,10 +1032,10 @@ const WORDS_KO = {
         { w: "뱃사람", k: "배를 타고 일하는 사람.", s: "왕비가 천 하루 동안 밤마다 이야기를 이어 간다는 액자 구성 안에, 뱃사람 신드바드와 알리바바 같은 인물들의 모험담이 줄줄이 담겨 있어요." }
     ],
     "01-stranger.webp": [
-        { w: "물레", k: "솜에서 실을 뽑아내는 옛날 기계.", s: "어머니가 물레를 멈추고 문밖으로 목을 뺐습니다." },
-        { w: "걸터앉다", k: "높은 데에 엉덩이만 붙이고 다리를 늘어뜨려 앉다.", s: "알라딘은 담 위에 걸터앉아 친구들과 웃고 있었지요." },
-        { w: "끼니를 잇다", k: "굶지 않고 겨우 먹고 살아가다.", s: "그 실을 팔아 겨우 끼니를 이었지요." },
-        { w: "불러 세우다", k: "가는 사람을 불러서 멈추게 하다.", s: "그러던 어느 날, 먼 나라 옷을 입은 낯선 아저씨가 알라딘을 불러 세웠습니다." }
+        { w: "뜯어보다", k: "하나하나 자세히 살펴보다.", s: "지나가는 아이들을 하나하나 뜯어보았지요." },
+        { w: "걸터앉다", k: "높은 데에 엉덩이만 붙이고 다리를 늘어뜨려 앉다.", s: "그러다 담 위에 걸터앉은 아이에게 성큼 다가갔습니다." },
+        { w: "눈이 동그래지다", k: "놀라서 눈을 크게 뜨다.", s: "알라딘은 눈이 동그래졌습니다." },
+        { w: "물레", k: "솜에서 실을 뽑아내는 옛날 기계.", s: "어머니는 물레를 돌려 실을 만들고 있었습니다." }
     ],
     "01-stranger-2.webp": [
         { w: "아낌없이", k: "조금도 아까워하지 않고.", s: "그래도 아저씨는 돈을 아낌없이 썼습니다." },
