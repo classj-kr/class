@@ -26,7 +26,7 @@ const games=fs.readdirSync('learning/games',{withFileTypes:true}).filter(e=>e.is
       const visible=e=>e.checkVisibility({checkOpacity:true,checkVisibilityCSS:true});
       const result={stage,width:innerWidth,overflow:document.documentElement.scrollWidth>innerWidth+1,decorativeCopy:/CLASSROOM EDITION|방장이 선택해요|방장이 선택합니다/.test(document.body.innerText)};
       if(stage==='entry'&&document.querySelector('.lobbyShell.mp-ui-lobby'))result.pageBackgroundStartsAtTop=document.body.getBoundingClientRect().top===0;
-      if(stage==='entry'&&window.__uiLobby){const title=document.querySelector('.mp-ui-title');result.titleSpacing=!!title&&[title,...title.querySelectorAll('span')].every(node=>{const style=getComputedStyle(node);return style.letterSpacing==='normal'||parseFloat(style.letterSpacing)/parseFloat(style.fontSize)>-.12;});result.authoredTitle=!!title&&visible(title)&&title.textContent.trim()===window.__authoredTitle?.text&&getComputedStyle(title).fontFamily===window.__authoredTitle?.font&&/[A-Z]/.test(title.textContent);const e=window.__uiLobby.elements,r=e.lobbyScreen.getBoundingClientRect(),input=e.joinCode.getBoundingClientRect(),tabs=e.hostTab.getBoundingClientRect();result.continuousCard=r.width<=642&&input.left>=r.left&&input.right<=r.right&&input.top>=tabs.bottom;result.noPrematureStart=!e.startButton||!visible(e.startButton);result.noDetachedWaiting=!['avalon','codenames','dobble'].includes(window.__uiLobby.gameId)||!visible(document.getElementById('game'));}
+      if(stage==='entry'&&window.__uiLobby){const title=document.querySelector('.mp-ui-title');result.titleSpacing=!!title&&[title,...title.querySelectorAll('span')].every(node=>{const style=getComputedStyle(node);return style.letterSpacing==='normal'||parseFloat(style.letterSpacing)/parseFloat(style.fontSize)>-.12;});result.authoredTitle=!!title&&visible(title)&&title.textContent.trim()===window.__authoredTitle?.text&&getComputedStyle(title).fontFamily===window.__authoredTitle?.font&&/[A-Z]/.test(title.textContent);const e=window.__uiLobby.elements;result.entryLabels=e.hostTab.textContent==='Create Room'&&e.joinTab.textContent==='Join Room'&&e.joinButton.textContent==='Join'&&e.joinCode.placeholder==='Room Code'&&document.querySelector('.mp-ui-help')?.textContent==='Rules';const r=e.lobbyScreen.getBoundingClientRect(),input=e.joinCode.getBoundingClientRect(),tabs=e.hostTab.getBoundingClientRect();result.continuousCard=r.width<=642&&input.left>=r.left&&input.right<=r.right&&input.top>=tabs.bottom;result.noPrematureStart=!e.startButton||!visible(e.startButton);result.noDetachedWaiting=!['avalon','codenames','dobble'].includes(window.__uiLobby.gameId)||!visible(document.getElementById('game'));}
       if(stage==='host'&&window.__uiLobby){const e=window.__uiLobby.elements;if(e.lobbyScreen.checkVisibility()&&e.lobbyScreen.classList.contains('mp-lobby-standard')){const card=e.lobbyScreen.getBoundingClientRect(),style=getComputedStyle(e.lobbyScreen);result.fullWidthStart=e.startButton.getBoundingClientRect().width>=card.width-parseFloat(style.paddingLeft)-parseFloat(style.paddingRight)-4;}}
       if(stage==='rules'&&window.__uiLobby){result.rulesVisible=[...document.querySelectorAll('.mp-ui-rules')].some(visible);result.largeHeading=[...document.querySelectorAll('.mp-ui-rules h2')].some(e=>visible(e)&&parseFloat(getComputedStyle(e).fontSize)>20);}
       return result;
@@ -36,7 +36,7 @@ const games=fs.readdirSync('learning/games',{withFileTypes:true}).filter(e=>e.is
      assert.equal(check.overflow,false,`${stage} has horizontal overflow at ${width}`);
      assert.equal(check.decorativeCopy,false,'Unnecessary lobby copy is visible');
      if(check.fullWidthStart!==undefined)assert.ok(check.fullWidthStart,'Desktop start action should follow the roster at full content width');
-     if(stage==='entry'&&multiplayer)assert.ok(check.titleSpacing&&check.authoredTitle&&check.continuousCard&&check.noPrematureStart&&check.noDetachedWaiting,JSON.stringify(check));
+     if(stage==='entry'&&multiplayer)assert.ok(check.entryLabels&&check.titleSpacing&&check.authoredTitle&&check.continuousCard&&check.noPrematureStart&&check.noDetachedWaiting,JSON.stringify(check));
      if(stage==='rules'&&multiplayer)assert.ok(check.rulesVisible&&!check.largeHeading,JSON.stringify(check));
      await page.screenshot({path:path.join(out,`${game}-${stage}-${width}.png`),fullPage:true});
     }
@@ -50,8 +50,8 @@ const games=fs.readdirSync('learning/games',{withFileTypes:true}).filter(e=>e.is
     await capture('rules');
    }else{
     await capture('entry');
-    const button=await page.evaluate(()=>[...document.querySelectorAll('button')].find(e=>e.checkVisibility()&&/게임 방법|HOW TO PLAY/.test(e.textContent))?.getAttribute('onclick'));
-    if(button){await page.evaluate(()=>[...document.querySelectorAll('button')].find(e=>e.checkVisibility()&&/게임 방법|HOW TO PLAY/.test(e.textContent)).click());await capture('rules');}
+    const button=await page.evaluate(()=>[...document.querySelectorAll('button')].find(e=>e.checkVisibility()&&/게임 방법|HOW TO PLAY|Rules/.test(e.textContent))?.getAttribute('onclick'));
+    if(button){await page.evaluate(()=>[...document.querySelectorAll('button')].find(e=>e.checkVisibility()&&/게임 방법|HOW TO PLAY|Rules/.test(e.textContent)).click());await capture('rules');}
     else {await page.click('#startButton');await page.waitForFunction(()=>document.getElementById('gameScreen').checkVisibility());await capture('play');await page.click('#guideButton');await capture('rules');}
    }
    assert.deepEqual(result.errors,[],'Unexpected page error');

@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="game.css?v=20260921c">
     <link rel="stylesheet" href="../../../assets/device-game.css?v=20260921c">
     <script src="../../../assets/network/game-network.js?v=20260821"></script>
-    <script src="../../../assets/network/multiplayer-lobby.js?v=20260926-back-flow"></script>
+    <script src="../../../assets/network/multiplayer-lobby.js?v=20260926-button-labels"></script>
 <script src="../../../assets/game-motion.js?v=20260921a"></script>
 </head>
 <body>
@@ -35,8 +35,8 @@
                 <div class="lobby-entry">
                     <p>PLAYER · <strong id="savedName">-</strong></p>
                     <div class="mp-lobby-tabs">
-                        <button id="hostTab" class="primary-button" type="button">CREATE ROOM</button>
-                        <button id="joinTab" class="secondary-button" type="button" aria-label="방 번호 입력 방식 선택" role="tab">JOIN ROOM</button>
+                        <button id="hostTab" class="primary-button" type="button">Create Room</button>
+                        <button id="joinTab" class="secondary-button" type="button" aria-label="방 번호 입력 방식 선택" role="tab">Join Room</button>
                     </div>
                 </div>
             </header>
@@ -51,8 +51,8 @@
 
             <section id="joinPane" class="screen-panel lobby-card hidden">
                 <div class="mp-lobby-row">
-                    <input id="joinCode" class="mp-lobby-code-input" inputmode="numeric" maxlength="4" placeholder="ROOM CODE · 4 DIGITS">
-                    <button id="joinBtn" class="primary-button" type="button" aria-label="입력한 방 번호로 참가">JOIN</button>
+                    <input id="joinCode" class="mp-lobby-code-input" inputmode="numeric" maxlength="4" placeholder="Room Code">
+                    <button id="joinBtn" class="primary-button" type="button" aria-label="입력한 방 번호로 참가">Join</button>
                 </div>
                 <p id="joinStatus" class="mp-lobby-status"></p>
             </section>
@@ -66,7 +66,7 @@
                 <div class="lobby-actions">
                     <button id="startBtn" class="primary-button" type="button" disabled>WAITING FOR PLAYERS</button>
                     <div class="button-row">
-                        <button id="rulesBtnLobby" class="secondary-button" type="button">게임 방법</button>
+                        <button id="rulesBtnLobby" class="secondary-button" type="button">Rules</button>
                         <button id="leaveBtnLobby" class="secondary-button" type="button">메인 화면</button>
                     </div>
                 </div>
@@ -85,7 +85,7 @@
                     <div><small>FLOW</small><strong id="directionText">→</strong></div>
                 </div>
                 <div class="button-row game-menu">
-                    <button id="rulesBtnGame" class="secondary-button" type="button">게임 방법</button>
+                    <button id="rulesBtnGame" class="secondary-button" type="button">Rules</button>
                     <button id="leaveBtnGame" class="secondary-button" type="button">메인 화면</button>
                 </div>
             </header>

@@ -107,25 +107,25 @@
             tabList?.setAttribute("role", "tablist");
             tabList?.setAttribute("aria-label", "방 참여 방식");
             if (hostTab) {
-                hostTab.textContent = "방 만들기";
+                hostTab.textContent = "Create Room";
                 hostTab.setAttribute("role", "tab");
                 if (hostPane?.id) hostTab.setAttribute("aria-controls", hostPane.id);
             }
             if (joinTab) {
-                joinTab.textContent = "방 참가";
+                joinTab.textContent = "Join Room";
                 joinTab.setAttribute("aria-label", "방 번호 입력 방식 선택");
                 joinTab.setAttribute("role", "tab");
                 if (joinPane?.id) joinTab.setAttribute("aria-controls", joinPane.id);
             }
             if (joinButton) {
-                joinButton.textContent = "참가";
+                joinButton.textContent = "Join";
                 joinButton.setAttribute("aria-label", "입력한 방 번호로 참가");
             }
 
             const joinInput = this.elements.joinCode;
             if (joinInput && joinButton) {
                 joinInput.classList.add("mp-lobby-join-input");
-                joinInput.placeholder = "방 번호 4자리";
+                joinInput.placeholder = "Room Code";
                 joinInput.setAttribute("aria-label", "네 자리 방 번호");
                 joinButton.classList.add("mp-lobby-join-submit");
                 joinPane?.classList.add("mp-lobby-join-pane");
@@ -163,7 +163,7 @@
                         if (!dialog.checkVisibility?.()) return;
                         dialog.classList.add("mp-ui-rules");
                         const heading = dialog.querySelector("h2");
-                        if (heading) heading.textContent = "게임 방법";
+                        if (heading) heading.textContent = "Rules";
                     });
                 });
             });
@@ -228,7 +228,7 @@
             title.setAttribute("aria-level", "1");
             header.appendChild(title);
             const help = (this.options.rulesButtonIds || []).map(getElement).find(button => root.contains(button));
-            if (help) { help.textContent = "게임 방법"; help.classList.add("mp-ui-help"); header.appendChild(help); }
+            if (help) { help.textContent = "Rules"; help.classList.add("mp-ui-help"); header.appendChild(help); }
             const meta = document.createElement("div");
             meta.className = "mp-ui-meta";
             const counts = this.allowedPlayerCounts;
@@ -259,7 +259,7 @@
             e.playerList?.classList.add("mp-ui-roster");
             e.guide?.classList.add("mp-ui-guide");
             e.startButton?.classList.add("mp-ui-start");
-            (this.options.rulesButtonIds || []).forEach(id => { const button = getElement(id); if (button && button.textContent.trim() !== "?") button.textContent = "게임 방법"; });
+            (this.options.rulesButtonIds || []).forEach(id => { const button = getElement(id); if (button) button.textContent = "Rules"; });
         }
 
         get playerName() {
@@ -660,7 +660,7 @@
             }) || this._defaultPresentation(ids.length);
             if (this.elements.startButton) {
                 this.elements.startButton.disabled = this.role !== "host" || !presentation.canStart;
-                this.elements.startButton.textContent = this.role === "host" ? "게임 시작" : "방장 시작 대기";
+                this.elements.startButton.textContent = "Start";
             }
             if (this.elements.guide) {
                 this.elements.guide.textContent = presentation.guideText;

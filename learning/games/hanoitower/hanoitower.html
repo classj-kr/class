@@ -814,8 +814,8 @@ body:has(#game-container[style*="flex"]){height:100dvh;min-height:0;box-sizing:b
         <button class="action-btn btn-start-action" type="button" onclick="location.href='../../../'">메인 화면으로</button>
     </div>
     <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
-        <button class="action-btn btn-start-action" id="start-game-button" onclick="startGameEnvironment()" disabled>START GAME</button>
-        <button class="action-btn btn-start-action" type="button" onclick="showRules()">HOW TO PLAY</button>
+        <button class="action-btn btn-start-action" id="start-game-button" onclick="startGameEnvironment()" disabled>Start</button>
+        <button class="action-btn btn-start-action" type="button" onclick="showRules()">Rules</button>
     </div>
     <div class="finishers-panel">
         <div class="finishers-title">🏆 TODAY’S FINISHERS</div>
@@ -854,7 +854,7 @@ body:has(#game-container[style*="flex"]){height:100dvh;min-height:0;box-sizing:b
             </div>
         </div>
         <button onclick="initGame()" style="margin-top: 5px;">RESET GAME</button>
-        <button onclick="showRules()" style="margin-top: 5px;">RULES</button>
+        <button onclick="showRules()" style="margin-top: 5px;">Rules</button>
         <button type="button" style="margin-top: 5px;" onclick="location.href='../../../'">메인 화면으로</button>
     </div>
 
@@ -946,7 +946,7 @@ body:has(#game-container[style*="flex"]){height:100dvh;min-height:0;box-sizing:b
 
         if (startButton) {
             startButton.disabled = !playerName;
-            startButton.textContent = playerName ? "START GAME" : "메인 화면에서 이름을 저장하세요";
+            startButton.textContent = playerName ? "Start" : "메인 화면에서 이름을 저장하세요";
         }
 
         loadTodayFinishers();

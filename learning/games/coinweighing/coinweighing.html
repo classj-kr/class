@@ -1117,8 +1117,8 @@ body{align-items:center;padding:18px}
 
 
     <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
-        <button class="action-btn" id="start-game-button" onclick="startGame()" disabled>START GAME</button>
-        <button class="action-btn" type="button" onclick="openRules()">HOW TO PLAY</button>
+        <button class="action-btn" id="start-game-button" onclick="startGame()" disabled>Start</button>
+        <button class="action-btn" type="button" onclick="openRules()">Rules</button>
     </div>
 
     <div class="finishers-panel">
@@ -1184,7 +1184,7 @@ body{align-items:center;padding:18px}
             <button class="action-btn" id="weigh-btn" onclick="weighCoins()">WEIGH</button>
             <button class="action-btn" onclick="clearPlates()">CLEAR</button>
             <button class="action-btn btn-decide" id="decide-btn" onclick="toggleDecideMode()">DECIDE</button>
-            <button class="action-btn" onclick="openRules()">RULES</button>
+            <button class="action-btn" onclick="openRules()">Rules</button>
             <button class="action-btn" type="button" onclick="location.href='../../../'">메인 화면으로</button>
         </div>
 
@@ -1261,7 +1261,7 @@ body{align-items:center;padding:18px}
 
         if (startButton) {
             startButton.disabled = !playerName;
-            startButton.textContent = playerName ? "START GAME" : "메인 화면에서 이름을 저장하세요";
+            startButton.textContent = playerName ? "Start" : "메인 화면에서 이름을 저장하세요";
         }
 
         loadTodayFinishers();

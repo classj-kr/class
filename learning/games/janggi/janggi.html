@@ -101,7 +101,7 @@ body:has(#game:not(.hidden)) .shell{height:calc(100dvh - 16px);min-height:560px;
 </style>
 <link rel="stylesheet" href="../../../assets/network/multiplayer-lobby.css?v=20260926-title-restore2">
 <script src="../../../assets/network/game-network.js?v=20260821"></script>
-<script src="../../../assets/network/multiplayer-lobby.js?v=20260926-back-flow"></script>
+<script src="../../../assets/network/multiplayer-lobby.js?v=20260926-button-labels"></script>
 <script src="../../../assets/network/room-call.js?v=20260822e"></script>
 <script src="../../../assets/sound/music-control.js?v=20260910-click-cache-1" defer></script>
 <link rel="stylesheet" href="../../../assets/device-game.css?v=20260921c">
@@ -113,7 +113,7 @@ body:has(#game:not(.hidden)) .shell{height:calc(100dvh - 16px);min-height:560px;
 <section id="lobby" class="hidden mp-lobby-compact" data-multiplayer-lobby>
 <h1 class="title">KOREAN CHESS</h1><div class="sub">장기 · 2명</div>
 <div class="mp-lobby-player-name">PLAYER · <strong id="savedName">-</strong></div>
-<div class="tabs mp-lobby-tabs"><button id="hostTab" class="tab active" type="button">CREATE ROOM</button><button id="joinTab" class="tab" type="button" aria-label="방 번호 입력 방식 선택" role="tab">JOIN ROOM</button></div>
+<div class="tabs mp-lobby-tabs"><button id="hostTab" class="tab active" type="button">Create Room</button><button id="joinTab" class="tab" type="button" aria-label="방 번호 입력 방식 선택" role="tab">Join Room</button></div>
 <div id="hostPane" class="panel mp-lobby-card"><div class="roomcode mp-lobby-room-code" id="roomCode">----</div><div id="hostStatus" class="status mp-lobby-status">방을 만드는 중입니다.</div><div class="setup"><label>내 초 차림</label><select id="choFormation">
 <option value="HEHE" selected>마상마상 (기본)</option>
 <option value="EHEH">상마상마</option>
@@ -126,7 +126,7 @@ body:has(#game:not(.hidden)) .shell{height:calc(100dvh - 16px);min-height:560px;
 <option value="60">60초</option>
 <option value="90">90초</option>
 </select></div></div>
-<div id="joinPane" class="panel mp-lobby-card hidden"><div class="row mp-lobby-row"><input id="joinCode" class="codeinput" maxlength="4" inputmode="numeric" placeholder="ROOM CODE · 4 DIGITS"><button id="joinBtn" class="btn primary" type="button" aria-label="입력한 방 번호로 참가">JOIN</button></div><div id="joinStatus" class="status mp-lobby-status"></div><div class="setup"><label>내 한 차림</label><select id="hanFormation">
+<div id="joinPane" class="panel mp-lobby-card hidden"><div class="row mp-lobby-row"><input id="joinCode" class="codeinput" maxlength="4" inputmode="numeric" placeholder="Room Code"><button id="joinBtn" class="btn primary" type="button" aria-label="입력한 방 번호로 참가">Join</button></div><div id="joinStatus" class="status mp-lobby-status"></div><div class="setup"><label>내 한 차림</label><select id="hanFormation">
 <option value="HEHE" selected>마상마상 (기본)</option>
 <option value="EHEH">상마상마</option>
 <option value="HEEH">마상상마</option>
@@ -136,7 +136,7 @@ body:has(#game:not(.hidden)) .shell{height:calc(100dvh - 16px);min-height:560px;
 <div id="lobbyGuide" class="lobby-guide">상대방을 기다리는 중입니다.</div>
 <p class="lobby-guide">방장은 초(선공), 참가자는 한(후공)입니다.</p>
 <details class="lobby-chat"><summary>채팅</summary><div id="lobbyChatLog" class="chat-log">아직 메시지가 없습니다.</div><div class="chat-row"><input id="lobbyChatInput" class="chat-input" maxlength="100" autocomplete="off" placeholder="메시지 입력" disabled onkeydown="if(event.key==='Enter'){event.preventDefault();sendChat('lobbyChatInput')}"><button class="btn chat-send" onclick="sendChat('lobbyChatInput')">보내기</button></div></details>
-<div class="row mp-lobby-actions"><button id="startBtn" class="btn primary" type="button" disabled>WAITING FOR PLAYERS</button><button id="rulesBtnLobby" class="btn" type="button">게임 방법</button><button id="leaveBtn" class="btn" type="button">메인 화면으로</button></div>
+<div class="row mp-lobby-actions"><button id="startBtn" class="btn primary" type="button" disabled>WAITING FOR PLAYERS</button><button id="rulesBtnLobby" class="btn" type="button">Rules</button><button id="leaveBtn" class="btn" type="button">메인 화면으로</button></div>
 <div class="music"><b>음악</b><button id="mute1" class="btn" onclick="toggleMute()">음소거</button><div class="segments"><button class="seg" onclick="setVolume(1)"></button><button class="seg" onclick="setVolume(2)"></button><button class="seg" onclick="setVolume(3)"></button><button class="seg" onclick="setVolume(4)"></button><button class="seg" onclick="setVolume(5)"></button></div></div>
 </section>
 <section id="game" class="hidden">

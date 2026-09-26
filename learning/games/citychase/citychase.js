@@ -292,7 +292,7 @@
         : `${unseated}명이 아직 팀 자리를 고르지 않았습니다.`;
     const canStart = role === "host" && !!state.lobbyReady;
     $("startBtn").disabled = !canStart;
-    $("startBtn").textContent = canStart ? `게임 시작 · ${state.players.length}명` : role === "host" ? "팀 자리를 모두 채워주세요" : "방장이 게임을 시작합니다";
+    $("startBtn").textContent = "Start";
   }
 
   const SCENERY = Object.freeze([

@@ -109,7 +109,7 @@ body:has(#boardArea:not(.hidden)) #game>.panel:first-child{margin-bottom:8px;pad
 #roomCode,#roomShare #gameRoomCode{font-size:clamp(36px,8vw,44px);line-height:1.15;font-variant-numeric:tabular-nums}
 </style>
 <script src="../../../assets/network/game-network.js?v=20260821"></script>
-<script src="../../../assets/network/multiplayer-lobby.js?v=20260926-back-flow"></script>
+<script src="../../../assets/network/multiplayer-lobby.js?v=20260926-button-labels"></script>
 <script src="../../../assets/sound/music-control.js?v=20260910-click-cache-1" defer></script>
 <link rel="stylesheet" href="../../../assets/device-game.css?v=20260921c">
 </head>
@@ -128,9 +128,9 @@ body:has(#boardArea:not(.hidden)) #game>.panel:first-child{margin-bottom:8px;pad
       <p class="subtitle">낱말 암호 · 4~5명 · 2팀</p>
       <p>PLAYER · <strong id="savedPlayerName">-</strong></p>
       <div class="entryActions">
-        <button id="createTab" class="primary" type="button">CREATE ROOM</button>
-        <button id="joinTab" class="secondary" type="button" aria-label="방 번호 입력 방식 선택" role="tab">JOIN ROOM</button>
-        <button id="rulesEntryBtn" class="secondary" type="button">게임 방법</button>
+        <button id="createTab" class="primary" type="button">Create Room</button>
+        <button id="joinTab" class="secondary" type="button" aria-label="방 번호 입력 방식 선택" role="tab">Join Room</button>
+        <button id="rulesEntryBtn" class="secondary" type="button">Rules</button>
         <button id="leaveEntryBtn" class="secondary" type="button">메인 화면으로</button>
       </div>
     </header>
@@ -144,8 +144,8 @@ body:has(#boardArea:not(.hidden)) #game>.panel:first-child{margin-bottom:8px;pad
 
     <section id="joinPane" class="panel entryPane hidden">
       <div class="row">
-        <input id="joinCode" inputmode="numeric" maxlength="4" placeholder="ROOM CODE · 4 DIGITS">
-        <button id="joinBtn" class="primary" type="button" aria-label="입력한 방 번호로 참가">JOIN</button>
+        <input id="joinCode" inputmode="numeric" maxlength="4" placeholder="Room Code">
+        <button id="joinBtn" class="primary" type="button" aria-label="입력한 방 번호로 참가">Join</button>
       </div>
       <div class="status" id="joinStatusText"></div>
     </section>
@@ -158,7 +158,7 @@ body:has(#boardArea:not(.hidden)) #game>.panel:first-child{margin-bottom:8px;pad
         <div id="gameRoomCode" class="code" aria-live="polite">----</div>
       </div>
       <div class="row">
-        <button id="rulesGameBtn" class="secondary" type="button">게임 방법</button>
+        <button id="rulesGameBtn" class="secondary" type="button">Rules</button>
         <button id="leaveGameBtn" class="secondary" type="button">메인 화면</button>
       </div>
     </div>
@@ -186,7 +186,7 @@ body:has(#boardArea:not(.hidden)) #game>.panel:first-child{margin-bottom:8px;pad
       <div id="unassignedRow" class="unassignedRow"></div>
 
       <div class="row" style="margin-top:14px">
-        <button id="beginGameBtn" class="primary hidden" type="button" disabled>게임 시작</button>
+        <button id="beginGameBtn" class="primary hidden" type="button" disabled>Start</button>
       </div>
       <p id="startGuide" class="startGuide"></p>
       <p id="waitingHostNote" class="note hidden">방장이 게임을 시작할 때까지 기다려 주세요.</p>

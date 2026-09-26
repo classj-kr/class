@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="citychase.css?v=20260921c">
   <script src="../../../assets/sound/music-control.js?v=20260910-click-cache-1" defer></script>
   <script src="../../../assets/network/game-network.js?v=20260821"></script>
-  <script src="../../../assets/network/multiplayer-lobby.js?v=20260926-back-flow"></script>
+  <script src="../../../assets/network/multiplayer-lobby.js?v=20260926-button-labels"></script>
   <script src="citychase-data.js?v=20260831b"></script>
 </head>
 <body>
@@ -36,8 +36,8 @@
         </div>
         <p class="lobbyIdentity"><strong id="savedName">-</strong>님</p>
         <div class="mp-lobby-tabs" role="tablist" aria-label="방 참여 방법">
-          <button id="hostTab" class="primary" type="button" role="tab">CREATE ROOM</button>
-          <button id="joinTab" class="secondary" type="button" aria-label="방 번호 입력 방식 선택" role="tab">JOIN ROOM</button>
+          <button id="hostTab" class="primary" type="button" role="tab">Create Room</button>
+          <button id="joinTab" class="secondary" type="button" aria-label="방 번호 입력 방식 선택" role="tab">Join Room</button>
         </div>
       </header>
 
@@ -52,8 +52,8 @@
 
           <section id="joinPane" class="lobbyPanel mp-lobby-card hidden">
             <div class="mp-lobby-row">
-              <input id="joinCode" class="mp-lobby-code-input" inputmode="numeric" maxlength="4" autocomplete="one-time-code" placeholder="ROOM CODE · 4 DIGITS" aria-label="방 번호">
-              <button id="joinBtn" class="primary" type="button" aria-label="입력한 방 번호로 참가">JOIN</button>
+              <input id="joinCode" class="mp-lobby-code-input" inputmode="numeric" maxlength="4" autocomplete="one-time-code" placeholder="Room Code" aria-label="방 번호">
+              <button id="joinBtn" class="primary" type="button" aria-label="입력한 방 번호로 참가">Join</button>
             </div>
             <div id="joinStatus" class="mp-lobby-status"></div>
           </section>
@@ -86,7 +86,7 @@
           <p id="lobbyGuide" class="mp-lobby-guide">참가자를 기다리는 중입니다.</p>
           <button id="startBtn" class="primary startButton" type="button" disabled>참가자를 기다리는 중</button>
           <div class="lobbySecondaryActions">
-            <button id="rulesBtnLobby" class="secondary" type="button">게임 방법</button>
+            <button id="rulesBtnLobby" class="secondary" type="button">Rules</button>
             <button id="leaveBtnLobby" class="secondary" type="button">메인 화면</button>
           </div>
         </section>
@@ -206,6 +206,6 @@
 
   <div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
   <audio id="bgm" preload="auto"></audio>
-  <script src="citychase.js?v=20260920-citychase-bgm-1"></script>
+  <script src="citychase.js?v=20260926-button-labels"></script>
 </body>
 </html>

@@ -48,7 +48,7 @@ const ordinaryGames = fs.readdirSync(gamesRoot, { withFileTypes: true })
 const multiplayerGames = ordinaryGames.filter(({ file }) => {
     const html = fs.readFileSync(file, "utf8");
     return html.includes("ClassroomMultiplayerLobby.create") ||
-        (html.includes("CREATE ROOM") && html.includes("JOIN ROOM"));
+        (/CREATE ROOM/i.test(html) && /JOIN ROOM/i.test(html));
 });
 const singlePlayerGames = ordinaryGames.filter(game => !multiplayerGames.includes(game));
 

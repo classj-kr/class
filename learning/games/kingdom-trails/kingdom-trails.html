@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="../../../assets/network/multiplayer-lobby.css?v=20260926-title-restore2">
   <link rel="stylesheet" href="kingdom-trails.css?v=20260921c">
   <script src="../../../assets/network/game-network.js?v=20260821"></script>
-  <script src="../../../assets/network/multiplayer-lobby.js?v=20260926-back-flow"></script>
+  <script src="../../../assets/network/multiplayer-lobby.js?v=20260926-button-labels"></script>
   <script src="../../../assets/sound/music-control.js?v=20260910-click-cache-1" defer></script>
 </head>
 <body>
@@ -30,15 +30,15 @@
           <h1>KINGDOM TRAILS</h1>
           <p>타일을 돌려 길과 마을을 잇는 2~4인 공간 전략 게임</p>
         </div>
-        <button id="rulesBtnLobby" class="button ghost" type="button">게임 방법</button>
+        <button id="rulesBtnLobby" class="button ghost" type="button">Rules</button>
       </header>
 
       <div class="lobby-grid">
         <section class="parchment-card lobby-actions">
           <div class="saved-player"><span>플레이어</span><strong id="savedName">-</strong></div>
           <div class="mp-lobby-tabs">
-            <button id="hostTab" class="button primary" type="button">CREATE ROOM</button>
-            <button id="joinTab" class="button secondary" type="button" aria-label="방 번호 입력 방식 선택" role="tab">JOIN ROOM</button>
+            <button id="hostTab" class="button primary" type="button">Create Room</button>
+            <button id="joinTab" class="button secondary" type="button" aria-label="방 번호 입력 방식 선택" role="tab">Join Room</button>
           </div>
           <div id="hostPane" class="mp-lobby-card hidden">
             <span class="kicker">방 번호</span>
@@ -47,8 +47,8 @@
           </div>
           <div id="joinPane" class="mp-lobby-card hidden">
             <div class="join-row">
-              <input id="joinCode" class="code-input" inputmode="numeric" maxlength="4" aria-label="네 자리 방 번호" placeholder="ROOM CODE · 4 DIGITS">
-              <button id="joinBtn" class="button primary" type="button" aria-label="입력한 방 번호로 참가">JOIN</button>
+              <input id="joinCode" class="code-input" inputmode="numeric" maxlength="4" aria-label="네 자리 방 번호" placeholder="Room Code">
+              <button id="joinBtn" class="button primary" type="button" aria-label="입력한 방 번호로 참가">Join</button>
             </div>
             <div id="joinStatus" class="mp-lobby-status"></div>
           </div>

@@ -10,7 +10,7 @@
 
 </style>
 <script src="../../../assets/network/game-network.js?v=20260821"></script>
-<script src="../../../assets/network/multiplayer-lobby.js?v=20260926-back-flow"></script>
+<script src="../../../assets/network/multiplayer-lobby.js?v=20260926-button-labels"></script>
 <script src="../../../assets/sound/music-control.js?v=20260910-click-cache-1" defer></script>
 <link rel="stylesheet" href="../../../assets/device-game.css?v=20260921c">
 <link rel="stylesheet" href="../stone-board-layout.css?v=20260921a">
@@ -31,8 +31,8 @@
       <p class="subtitle">오목 · 2명</p>
       <p>PLAYER · <strong id="savedName">-</strong></p>
       <div class="mp-lobby-tabs">
-        <button id="hostTab" class="primary" type="button">CREATE ROOM</button>
-        <button id="joinTab" class="secondary" type="button" aria-label="방 번호 입력 방식 선택" role="tab">JOIN ROOM</button>
+        <button id="hostTab" class="primary" type="button">Create Room</button>
+        <button id="joinTab" class="secondary" type="button" aria-label="방 번호 입력 방식 선택" role="tab">Join Room</button>
       </div>
     </header>
 
@@ -45,8 +45,8 @@
 
     <section id="joinPane" class="panel mp-lobby-card hidden">
       <div class="mp-lobby-row">
-        <input id="joinCode" class="mp-lobby-code-input" inputmode="numeric" maxlength="4" placeholder="ROOM CODE · 4 DIGITS">
-        <button id="joinBtn" class="primary" type="button" aria-label="입력한 방 번호로 참가">JOIN</button>
+        <input id="joinCode" class="mp-lobby-code-input" inputmode="numeric" maxlength="4" placeholder="Room Code">
+        <button id="joinBtn" class="primary" type="button" aria-label="입력한 방 번호로 참가">Join</button>
       </div>
       <div id="joinStatus" class="mp-lobby-status"></div>
     </section>
@@ -57,7 +57,7 @@
       <p id="lobbyGuide" class="mp-lobby-guide">첫 대국은 방장이 흑(선공)입니다. 금수 없는 규칙이라 선공이 유리합니다.</p>
       <button id="startBtn" class="primary" type="button" disabled>WAITING FOR OPPONENT</button>
       <div class="row" style="margin-top:10px">
-        <button id="rulesBtnLobby" class="secondary" type="button">게임 방법</button>
+        <button id="rulesBtnLobby" class="secondary" type="button">Rules</button>
         <button id="leaveBtnLobby" class="secondary" type="button">메인 화면</button>
       </div>
     </section>
@@ -68,7 +68,7 @@
       <div class="row spread">
         <div hidden><div id="gameRoomCode">----</div></div>
         <div class="row">
-          <button id="rulesBtnGame" class="secondary" type="button">게임 방법</button>
+          <button id="rulesBtnGame" class="secondary" type="button">Rules</button>
           <button id="leaveBtnGame" class="secondary" type="button">메인 화면</button>
         </div>
       </div>

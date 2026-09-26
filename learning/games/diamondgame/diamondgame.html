@@ -40,7 +40,7 @@ body:has(#gameScreen:not(.hidden)) .shell{width:min(1320px,100%)}
 #lobbyScreen{--mp-card-background:#211912}
 </style>
 <script src="../../../assets/network/game-network.js?v=20260821"></script>
-<script src="../../../assets/network/multiplayer-lobby.js?v=20260926-back-flow"></script>
+<script src="../../../assets/network/multiplayer-lobby.js?v=20260926-button-labels"></script>
 <script src="../../../assets/sound/music-control.js?v=20260910-click-cache-1" defer></script>
 <link rel="stylesheet" href="../../../assets/device-game.css?v=20260921c">
 </head>
@@ -56,11 +56,11 @@ body:has(#gameScreen:not(.hidden)) .shell{width:min(1320px,100%)}
     <header class="panel">
       <h1 class="title">DIAMOND GAME</h1>
       <p class="subtitle">다이아몬드 게임 · 2~3명</p><p>PLAYER · <strong id="savedName">-</strong></p>
-      <div class="mp-lobby-tabs"><button id="hostTab" class="primary" type="button">CREATE ROOM</button><button id="joinTab" class="secondary" type="button" aria-label="방 번호 입력 방식 선택" role="tab">JOIN ROOM</button></div>
+      <div class="mp-lobby-tabs"><button id="hostTab" class="primary" type="button">Create Room</button><button id="joinTab" class="secondary" type="button" aria-label="방 번호 입력 방식 선택" role="tab">Join Room</button></div>
     </header>
     <section id="hostPane" class="panel mp-lobby-card hidden"><div class="row spread"><div><div class="eyebrow">방 번호</div><div id="roomCode" class="code">----</div></div></div><div id="hostStatus" class="mp-lobby-status">방을 만드는 중입니다.</div></section>
-    <section id="joinPane" class="panel mp-lobby-card hidden"><div class="mp-lobby-row"><input id="joinCode" class="mp-lobby-code-input" inputmode="numeric" maxlength="4" placeholder="ROOM CODE · 4 DIGITS"><button id="joinBtn" class="primary" type="button" aria-label="입력한 방 번호로 참가">JOIN</button></div><div id="joinStatus" class="mp-lobby-status"></div></section>
-    <section class="panel"><h2>참가자</h2><div id="lobbyPlayers" class="mp-lobby-players"></div><p id="lobbyGuide" class="mp-lobby-guide">참가자를 기다리는 중입니다.</p><button id="startBtn" class="primary" type="button" disabled>WAITING FOR PLAYERS</button><div class="row" style="margin-top:10px"><button id="rulesBtnLobby" class="secondary" type="button">게임 방법</button><button id="leaveBtnLobby" class="secondary" type="button">메인 화면</button></div></section>
+    <section id="joinPane" class="panel mp-lobby-card hidden"><div class="mp-lobby-row"><input id="joinCode" class="mp-lobby-code-input" inputmode="numeric" maxlength="4" placeholder="Room Code"><button id="joinBtn" class="primary" type="button" aria-label="입력한 방 번호로 참가">Join</button></div><div id="joinStatus" class="mp-lobby-status"></div></section>
+    <section class="panel"><h2>참가자</h2><div id="lobbyPlayers" class="mp-lobby-players"></div><p id="lobbyGuide" class="mp-lobby-guide">참가자를 기다리는 중입니다.</p><button id="startBtn" class="primary" type="button" disabled>WAITING FOR PLAYERS</button><div class="row" style="margin-top:10px"><button id="rulesBtnLobby" class="secondary" type="button">Rules</button><button id="leaveBtnLobby" class="secondary" type="button">메인 화면</button></div></section>
   </section>
 
   <section id="gameScreen" class="hidden">
@@ -68,7 +68,7 @@ body:has(#gameScreen:not(.hidden)) .shell{width:min(1320px,100%)}
     <div class="game-layout">
       <section class="panel board-panel"><div class="board-frame"><span class="orientation goal">내 도착 진영</span><svg id="board" class="board" viewBox="0 0 560 560" role="grid" aria-label="내 진영이 아래쪽에 배치된 다이아몬드 게임판"></svg><span class="orientation home">내 출발 진영</span></div></section>
       <aside class="side">
-    <header class="panel"><div class="row spread"><div hidden><div id="gameRoomCode">----</div></div><div class="row"><button id="rulesBtnGame" class="secondary" type="button">게임 방법</button><button id="leaveBtnGame" class="secondary" type="button">메인 화면</button></div></div></header>
+    <header class="panel"><div class="row spread"><div hidden><div id="gameRoomCode">----</div></div><div class="row"><button id="rulesBtnGame" class="secondary" type="button">Rules</button><button id="leaveBtnGame" class="secondary" type="button">메인 화면</button></div></div></header>
         <section class="info"><h2 id="turnText">게임 준비 중</h2><div id="turnClock" class="turn-clock"><span>TURN TIME</span><span id="turnSeconds" class="turn-clock-label">30초</span><div class="turn-track"><div id="turnTimerBar" class="turn-bar"></div></div></div><div id="message" class="message"></div><div id="resultBox" class="result hidden"></div></section>
         <section class="info"><h3>참가자</h3><div id="playerStatus"></div></section>
         <section class="info"><h3>TURN ACTION</h3><div class="actions"><button id="endJumpBtn" class="primary" type="button" disabled>점프 종료</button><button id="cancelBtn" class="secondary" type="button" disabled>선택 취소</button><button id="rematchBtn" class="primary hidden" type="button">다시 하기</button><button id="returnLobbyBtn" class="secondary hidden" type="button">대기실로</button></div></section>

@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="../../../assets/device-game.css?v=20260921c">
 <link rel="stylesheet" href="styles.css?v=20260921c">
 <script src="../../../assets/network/game-network.js?v=20260821"></script>
-<script src="../../../assets/network/multiplayer-lobby.js?v=20260926-back-flow"></script>
+<script src="../../../assets/network/multiplayer-lobby.js?v=20260926-button-labels"></script>
 <script src="../../../assets/sound/music-control.js?v=20260910-click-cache-1" defer></script>
 <script src="chess-rules.js?v=20260923-learning"></script>
 <script src="chess-ui.js?v=20260923-learning" defer></script>
@@ -25,8 +25,8 @@
     <div class="subtitle">체스 · 2명</div>
     <div class="player-name">PLAYER · <strong id="savedName">-</strong></div>
     <div class="tabs mp-lobby-tabs">
-      <button id="hostTab" class="tab" type="button">CREATE ROOM</button>
-      <button id="joinTab" class="tab" type="button">JOIN ROOM</button>
+      <button id="hostTab" class="tab" type="button">Create Room</button>
+      <button id="joinTab" class="tab" type="button">Join Room</button>
     </div>
     <section id="hostPane" class="panel mp-lobby-card hidden">
       <div id="roomCode" class="room-code">----</div>
@@ -39,7 +39,7 @@
       </select></label>
     </section>
     <section id="joinPane" class="panel mp-lobby-card hidden">
-      <div class="join-row mp-lobby-row"><input id="joinCode" class="code-input" inputmode="numeric" maxlength="4" placeholder="ROOM CODE · 4 DIGITS"><button id="joinBtn" class="btn primary" type="button">JOIN</button></div>
+      <div class="join-row mp-lobby-row"><input id="joinCode" class="code-input" inputmode="numeric" maxlength="4" placeholder="Room Code"><button id="joinBtn" class="btn primary" type="button">Join</button></div>
       <div id="joinStatus" class="status"></div>
       <p id="guestTimeLabel" class="guest-time">방장이 선택한 시간을 불러오는 중입니다.</p>
     </section>
@@ -52,7 +52,7 @@
     </details>
     <div class="lobby-actions">
       <button id="startBtn" class="btn primary" type="button" disabled>WAITING FOR PLAYERS</button>
-      <button id="rulesBtnLobby" class="btn" type="button">게임 방법</button>
+      <button id="rulesBtnLobby" class="btn" type="button">Rules</button>
       <button id="leaveBtn" class="btn" type="button">메인 화면으로</button>
     </div>
   </section>
