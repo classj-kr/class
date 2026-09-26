@@ -243,7 +243,6 @@ function sendSiteHtml(req, res, filepath, next) {
         ? htmlWithBackNavigation.replace(/<\/head>/i, `  ${SITE_SFX_SCRIPT_TAG}\n</head>`)
         : `${SITE_SFX_SCRIPT_TAG}\n${htmlWithBackNavigation}`;
 
-
     const isLearningPage = filepath.startsWith(path.join(SITE_ROOT, "learning") + path.sep);
     const html = isLearningPage && !htmlWithSound.includes("/assets/exam-typography.css")
       ? /<\/head>/i.test(htmlWithSound)

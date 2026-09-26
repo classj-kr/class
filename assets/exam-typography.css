@@ -14,7 +14,7 @@
 
 /* Question sheets also supply the face to dynamically inserted text. */
 body :is(
-  .reading-sheet, .quiz, .quiz-card, .quiz-item, .quiz-panel, .quiz-area,
+  .reading-sheet, .quiz, .question, .quiz-card, .quiz-item, .quiz-panel, .quiz-area,
   .quiz-box, .quiz-container, .quiz-stage, .question-card, .question-panel,
   .question-body, .exam-question, .page-quiz, .mission-card,
   .lesson-quiz-panel, .game-panel, .sim-quiz-container, .atlas-quiz,
@@ -29,25 +29,26 @@ body :is(
    Do not select every descendant: KaTeX, MathML, SVG notation and code keep
    their dedicated typefaces. */
 body :is(
-  .reading-sheet, .quiz, .quiz-card, .quiz-item, .quiz-panel, .quiz-area,
+  .reading-sheet, .quiz, .question, .quiz-card, .quiz-item, .quiz-panel, .quiz-area,
   .quiz-box, .quiz-container, .quiz-stage, .question-card, .question-panel,
   .question-body, .exam-question, .page-quiz, .mission-card,
   .lesson-quiz-panel, .game-panel, .sim-quiz-container, .atlas-quiz,
   .edition-question, .mini-quiz-question, .finale-question,
   .supplement-check, .required-check, .prediction-field, .prediction-options
-) :is(h1, h2, h3, h4, p, button, label, textarea, input, li, td, th, dt, dd) {
+) :is(h1, h2, h3, h4, p, button, label, textarea, input, legend, li, td, th, dt, dd) {
   font-family: var(--class-exam-font) !important;
 }
 
 /* Questions, answer choices and explanations that live outside a sheet. */
 body :is(
-  .student-passage, .student-prompt, .student-choice, .choice-number,
+  .student-passage, .student-prompt, .student-choice, .choice-number, .choice-n,
+  .item .body, .item .note-box, .item .note-title, .item .proof-box, .aid-body,
   .question, .question-text, .question-prompt, .question-copy, .q-prompt,
   .quiz-question, .quiz-question-text, .quiz-intro-text, .quiz-copy,
   .sim-quiz-question, .mini-quiz-question, .integrated-question,
   .sp-question, .task-scene, .reflection-question,
   #questionPrompt, #questionTitle, #questionStimulus, #placeStudyQuestion,
-  .choice, .choice-btn, .choice-button, .quiz-choice, .quiz-opt-btn,
+  .choice-btn, .choice-button, .quiz-choice, .quiz-opt-btn,
   .sim-quiz-opt-btn, .answer-button, .answer-option, .game-choice,
   .lesson-quiz-choice, .worksheet-question-prompt, .edition-option,
   .prediction-result, #predictionLegend,
