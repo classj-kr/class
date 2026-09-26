@@ -20,7 +20,7 @@ const CHAPTERS = [
                 "emoji": "🤍",
                 "left": [
                     "아버지는 고개를 저었습니다. \"그럴 순 없소.\" 그러나 목소리에 힘이 하나도 없었지요. 끝내 아버지는 새어머니의 말을 꺾지 못했습니다.",
-                    "그레텔이 이불 속에서 울먹였습니다. \"오빠, 우리 어떻게 해.\""
+                    "그레텔이 이불 속에서 울먹였습니다. \"오빠, 우리 어떻게 해?\""
                 ],
                 "right": [
                     "헨젤이 동생의 손을 꼭 잡아 주었지요. \"걱정 마. 방법이 있어.\"",
@@ -54,7 +54,7 @@ const CHAPTERS = [
                 "emoji": "🌙",
                 "left": [
                     "눈을 뜨니 주위가 온통 캄캄했습니다. 불은 이미 꺼져 재만 남았지요.",
-                    "아무리 기다려도 아무도 오지 않았습니다. 그레텔이 그만 울음을 터뜨렸지요. \"오빠, 이제 어떡해.\"",
+                    "아무리 기다려도 아무도 오지 않았습니다. 그레텔이 그만 울음을 터뜨렸지요. \"오빠, 이제 어떡해?\"",
                     "헨젤이 동생을 달랬습니다. \"달이 뜰 때까지 조금만 기다려 봐.\""
                 ],
                 "right": [
@@ -131,7 +131,7 @@ const CHAPTERS = [
                 "right": [
                     "둘은 사흘 굶은 배를 채우느라 정신이 없었습니다. 헨젤이 외쳤지요. \"이 창문 좀 먹어 봐!\"",
                     "그때 문이 삐걱 열렸지요. 작고 등이 굽은 할머니가 나왔습니다. 커다란 안경을 쓰고 있었지요.",
-                    "\"어서 오렴, 배고픈 아이들아.\""
+                    "\"어서 오렴, 배고픈 아이들아!\""
                 ]
             }
         ]
@@ -144,12 +144,12 @@ const CHAPTERS = [
                 "art": "05-cage.webp",
                 "emoji": "🦴",
                 "left": [
-                    "할머니는 상을 잔뜩 차려 주었습니다. 우유와 과자와 사과가 놓였지요. 남매는 배가 부르도록 실컷 먹었습니다.",
+                    "할머니는 상에 맛있는 것을 잔뜩 차려 주었습니다. 우유와 과자와 사과가 놓였지요. 남매는 배가 부르도록 실컷 먹었습니다.",
                     "잠자리로는 푹신한 침대까지 내주었지요. 남매는 오랜만에 편히 잠들었습니다.",
                     "그런데 새벽에 일이 벌어졌지요."
                 ],
                 "right": [
-                    "할머니가 자고 있던 헨젤을 거칠게 끌어내 마당의 우리에 가두었습니다. 그러고는 입맛을 쩝 다셨지요. \"살이 통통하게 오르면 그때 보자꾸나.\"",
+                    "할머니가 자고 있던 헨젤을 거칠게 끌어내 마당의 우리에 가두었습니다. 그러고는 입맛을 쩝쩝 다셨지요. \"살이 통통하게 오르면 그때 보자꾸나.\"",
                     "그레텔에게는 일을 시켰지요. \"물을 긷고 밥을 지어라. 네 오빠를 잘 먹여 살찌워야 하니까.\""
                 ]
             },
@@ -183,7 +183,7 @@ const CHAPTERS = [
                 "right": [
                     "할머니가 화덕을 가리켰지요. \"안이 뜨거운지 네가 들어가 보렴.\"",
                     "그레텔은 흠칫 놀랐습니다. 할머니의 눈이 이상하게 반짝였거든요. 등에 소름이 쭉 돋았지요.",
-                    "'저기 들어가면 안 돼.' 그레텔은 시치미를 뚝 뗐습니다. \"어떻게 들어가는지 모르겠어요.\""
+                    "'저기 들어가면 안 돼!' 그레텔은 시치미를 뚝 뗐습니다. \"어떻게 들어가는지 모르겠어요.\""
                 ]
             },
             {
@@ -195,7 +195,7 @@ const CHAPTERS = [
                     "할머니는 화덕 아궁이에 코를 박았습니다. 그 순간 시커먼 연기가 확 뿜어져 나왔지요. \"아이고, 매워라! 눈이 안 보여!\""
                 ],
                 "right": [
-                    "할머니가 눈을 비비는 사이 그레텔은 부엌 밖으로 뛰쳐나와 문에 빗장을 걸었습니다.",
+                    "할머니가 눈을 비비는 사이 그레텔은 빗장을 붙잡고 부엌 밖으로 빠져나와 문을 걸어 잠갔습니다.",
                     "그러고는 마당으로 달려가 우리 문을 열어젖혔지요. \"오빠, 이제 나와!\"",
                     "헨젤이 데굴데굴 굴러 나왔습니다. 다리가 굳어 잘 서지도 못했지요. 남매는 서로를 끌어안고 한참을 그러고 있었습니다."
                 ]
@@ -738,7 +738,7 @@ const EN = {
                         "\"Ow, it stings! I can't see!\""
                     ],
                     right: [
-                        "While the old woman rubbed her eyes, Gretel ran out of the kitchen and slid the bolt across the door.",
+                        "While the old woman rubbed her eyes, Gretel caught hold of the bolt, slipped out of the kitchen and barred the door behind her.",
                         "She ran to the yard and threw the cage door open. \"Hansel, come out!\"",
                         "Hansel came tumbling out. His legs had gone so stiff he could hardly stand.",
                         "The two held each other for a long time."
@@ -931,7 +931,7 @@ const EN = {
         '06-oven-2.webp': [
             { word: 'hopeless', meaning: '답답한, 어쩔 수 없는', sentence: 'What a hopeless child you are!' },
             { word: 'shove', meaning: '탁 밀다', sentence: "Gretel gave her a hard shove in the back." },
-            { word: 'bolt', meaning: '빗장', sentence: 'She slid the bolt across.' },
+            { word: 'bolt', meaning: '빗장', sentence: 'Gretel caught hold of the bolt.' },
             { word: 'tumble out', meaning: '데굴데굴 굴러 나오다', sentence: 'Hansel came tumbling out.' },
             { word: 'stiff', meaning: '뻣뻣하게 굳은', sentence: 'His legs had gone so stiff he could hardly stand.' }
         ],
@@ -1016,7 +1016,7 @@ const WORDS_KO = {
     "05-cage.webp": [
         { w: "실컷", k: "하고 싶은 만큼 마음껏.", s: "남매는 배가 부르도록 실컷 먹었습니다." },
         { w: "내주다", k: "자기 것을 남에게 주다.", s: "잠자리로는 푹신한 침대까지 내주었지요." },
-        { w: "입맛을 다시다", k: "먹고 싶어 입을 쩝쩝거리다.", s: "그러고는 입맛을 쩝 다셨지요." },
+        { w: "입맛을 다시다", k: "먹고 싶어 입을 쩝쩝거리다.", s: "그러고는 입맛을 쩝쩝 다셨지요." },
         { w: "밥을 짓다", k: "쌀로 밥을 만들다.", s: "\"물을 긷고 밥을 지어라. 네 오빠를 잘 먹여 살찌워야 하니까.\"" }
     ],
     "05-cage-2.webp": [
