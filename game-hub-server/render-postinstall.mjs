@@ -137,7 +137,10 @@ function main() {
   ]);
 
   if (process.env.RENDER === "true") {
-    const { removedBytes, removedTargets } = pruneRenderArtifact();
+    const { removedBytes, removedTargets, removed } = pruneRenderArtifact();
+    for (const { target, bytes } of removed) {
+      console.log(`[deploy]   removed ${target} (${(bytes / 1024 / 1024).toFixed(1)} MB)`);
+    }
     console.log(`[deploy] Removed ${removedTargets} development-only paths (${(removedBytes / 1024 / 1024).toFixed(1)} MB) before upload.`);
   }
 }

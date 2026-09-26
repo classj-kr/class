@@ -6,6 +6,9 @@ const SCRIPT_DIR = path.dirname(fileURLToPath(import.meta.url));
 const REPOSITORY_ROOT = path.resolve(SCRIPT_DIR, "..");
 
 export const RENDER_PRUNE_TARGETS = Object.freeze([
+  // The server never reads git history at runtime; Render already knows the commit.
+  ".git",
+  ".tmp",
   ".agents",
   ".claude",
   ".codex",
@@ -17,7 +20,10 @@ export const RENDER_PRUNE_TARGETS = Object.freeze([
   "clean-profile.js",
   "clean-roster-2.js",
   "clean-roster.js",
+  // Audit screenshots and QA captures; the server has no /docs route.
+  "docs",
   "pisa-reference.jpg",
+  "references",
   "scratch_all_poems_text.txt",
   "scratch_grades_list.txt",
   "scratch_missing_words.txt",
@@ -46,20 +52,24 @@ function byteSize(target) {
 export function pruneRenderArtifact(repositoryRoot = REPOSITORY_ROOT) {
   let removedBytes = 0;
   let removedTargets = 0;
+  const removed = [];
   for (const relativeTarget of RENDER_PRUNE_TARGETS) {
     const absoluteTarget = path.resolve(repositoryRoot, relativeTarget);
     const relativeCheck = path.relative(repositoryRoot, absoluteTarget);
     if (!relativeCheck || relativeCheck.startsWith("..") || path.isAbsolute(relativeCheck)) {
       throw new Error(`Unsafe Render prune target: ${relativeTarget}`);
     }
+    let bytes;
     try {
-      removedBytes += byteSize(absoluteTarget);
+      bytes = byteSize(absoluteTarget);
     } catch (error) {
       if (error.code === "ENOENT") continue;
       throw error;
     }
+    removedBytes += bytes;
     rmSync(absoluteTarget, { recursive: true, force: true });
+    removed.push({ target: relativeTarget, bytes });
     removedTargets += 1;
   }
-  return { removedBytes, removedTargets };
+  return { removedBytes, removedTargets, removed };
 }
