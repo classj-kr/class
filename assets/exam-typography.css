@@ -1,4 +1,4 @@
-/* Shared typography for learning questions. Keep notation and code fonts local. */
+/* Shared textbook typography for learning questions and reading prose. */
 @font-face {
   font-family: "Class Exam Batang";
   src: url("./fonts/kopub-world/KoPubWorld-Batang-Medium.woff2") format("woff2");
@@ -65,6 +65,13 @@ body :is(
   .supplement-check-feedback, .sound-feedback,
   .exam-data, .question-table, .question-map-caption
 ) {
+  font-family: var(--class-exam-font) !important;
+  font-synthesis: weight;
+}
+
+/* Reading prose across lessons, concept panels and interactive explanations.
+   Navigation and controls keep their own UI typography. */
+body :is(p, blockquote, figcaption, dd, li, .sl-remnant small):not(:is(nav *, button *, [role="button"] *, .menu *, .toolbar *, .controls *)) {
   font-family: var(--class-exam-font) !important;
   font-synthesis: weight;
 }

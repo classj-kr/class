@@ -224,6 +224,12 @@ body {
   word-break: keep-all;
 }
 
+/* KaTeX shrinks inline fraction numerals; keep them legible beside the question text. */
+.q-prompt .katex:has(.mfrac),
+.exp-content .katex:has(.mfrac) {
+  font-size: 1.5em;
+}
+
 /* OX Button Group */
 .ox-btn-group {
   display: grid;

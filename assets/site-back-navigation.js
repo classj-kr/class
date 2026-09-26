@@ -96,11 +96,26 @@
     control.setAttribute("tabindex", "-1");
   };
 
+  const ignoredHeaderContent = "[data-site-back-legacy], " + LEGACY_AUDIO_SELECTOR + ", script, style, template, [hidden]";
+  const visibleHeaderControls = "a, button, input, select, textarea, img, svg, canvas, video, iframe, [data-site-back-keep]";
   const hasMeaningfulContainerContent = container => {
-    const copy = container.cloneNode(true);
-    copy.querySelectorAll(`[data-site-back-legacy], ${LEGACY_AUDIO_SELECTOR}, script, style, template, [hidden]`).forEach(node => node.remove());
-    if (normalizeLabel(copy.textContent)) return true;
-    return Boolean(copy.querySelector("a, button, input, select, textarea, img, svg, canvas, video, iframe, [data-site-back-keep]"));
+    const visit = node => {
+      if (node.nodeType === Node.TEXT_NODE) {
+        if (!normalizeLabel(node.textContent)) return false;
+        const range = document.createRange();
+        range.selectNodeContents(node);
+        return [...range.getClientRects()].some(rect => rect.width > 0 && rect.height > 0);
+      }
+      if (!(node instanceof Element)) return false;
+      if (node !== container && node.matches(ignoredHeaderContent)) return false;
+      const style = getComputedStyle(node);
+      if (style.display === "none" || style.visibility !== "visible" || Number(style.opacity) === 0) return false;
+      if (style.clip !== "auto" || style.clipPath !== "none") return false;
+      if (node !== container && node.matches(visibleHeaderControls) &&
+          [...node.getClientRects()].some(rect => rect.width > 0 && rect.height > 0)) return true;
+      return [...node.childNodes].some(visit);
+    };
+    return visit(container);
   };
 
   const refreshLegacyContainers = () => {
@@ -109,6 +124,9 @@
         legacyContainers.delete(container);
         continue;
       }
+      // Check the rendered contents; page CSS may hide them without a hidden attribute.
+      // Remove our own hiding rule temporarily so later content can revive the header.
+      container.removeAttribute("data-site-back-empty");
       container.toggleAttribute("data-site-back-empty", !hasMeaningfulContainerContent(container));
     }
   };
@@ -121,6 +139,13 @@
   };
 
   hideLegacyControls(document.documentElement);
+  // Some pages leave a full-width header with no own back link at all.
+  // Track those top bars too, so the floating back button does not reserve a row.
+  document.querySelectorAll(LEGACY_CONTAINER_SELECTOR).forEach(container => {
+    const rect = container.getBoundingClientRect();
+    if (rect.top >= -1 && rect.top < 88 && rect.height >= 24 && rect.height <= 100 &&
+        rect.width >= window.innerWidth * 0.75) legacyContainers.add(container);
+  });
   refreshLegacyContainers();
 
   const legacyObserver = new MutationObserver(mutations => {
@@ -138,10 +163,11 @@
     subtree: true,
     characterData: true,
     attributes: true,
-    attributeFilter: ["aria-label", "hidden"]
+    attributeFilter: ["aria-label", "hidden", "class", "style"]
   });
 
   const legacyStyle = document.createElement("style");
+  window.addEventListener("resize", refreshLegacyContainers);
   legacyStyle.textContent = "[data-site-back-legacy]{display:none!important}[data-site-back-empty]{display:none!important}[data-site-back-spacer]{display:inline-block!important;visibility:hidden!important;pointer-events:none!important;width:44px!important;min-width:44px!important;height:44px!important;margin:0!important;padding:0!important;flex:0 0 44px!important}";
   document.head.append(legacyStyle);
   document.documentElement.classList.remove("site-back-pending");
