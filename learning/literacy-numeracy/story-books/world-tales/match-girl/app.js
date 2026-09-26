@@ -225,7 +225,8 @@ const CHAPTERS = [
                 "emoji": "🌅",
                 "left": [
                     "아이가 무엇을 보았는지는 아무도 알지 못했습니다. 난로도, 거위도, 반짝이던 나무도요. 무엇보다 할머니를 만난 것을요.",
-                    "어제저녁 이 골목을 지나며 성냥을 사지 않은 사람들은 이제야 마음이 아팠습니다. 하지만 늦은 뒤였지요."
+                    "어제저녁 아이 앞을 지나면서도 못 본 척한 사람들이었습니다. 이제야 후회되었지요. 눈길 한 번 주지 않은 것을요.",
+                    "이미 늦은 뒤였지요."
                 ],
                 "right": [
                     "그날 저녁 그 골목에 꽃이 한 다발 놓였습니다. 누가 두고 갔는지는 아무도 몰랐지요.",
@@ -769,7 +770,8 @@ const EN = {
                     left: [
                         "Nobody knew what she had seen — the stove, the goose, the shining tree.",
                         "And least of all that she had met her grandmother.",
-                        "The people who had walked past her the night before, and had not bought her matches, were sorry now. It was too late to be sorry."
+                        "The people who had walked past her the night before were sorry now. Not one of them had so much as looked at her.",
+                        "It was too late to be sorry."
                     ],
                     right: [
                         "That evening someone left a bunch of flowers in the alley. Nobody knew who had left them.",
@@ -1036,6 +1038,7 @@ const WORDS_KO = {
         { w: "고개를 숙이다", k: "부끄럽거나 미안해서 얼굴을 아래로 내리다.", s: "누군가 말하자 옆 사람이 고개를 숙였지요." }
     ],
     "07-morning-2.webp": [
+        { w: "후회", k: "지난 일을 뉘우치며 안타까워하는 마음.", s: "이제야 후회되었지요." },
         { w: "다발", k: "여럿을 한데 묶은 것.", s: "그날 저녁 그 골목에 꽃이 한 다발 놓였습니다." },
         { w: "둘러앉다", k: "여럿이 둥글게 모여 앉다.", s: "창 너머로 저녁상에 둘러앉은 식구들이 보였지요." },
         { w: "조용해지다", k: "소리가 잦아들어 고요해지다.", s: "골목은 다시 조용해졌습니다. 그 겨울에도 눈은 며칠이나 더 내렸지요." }
