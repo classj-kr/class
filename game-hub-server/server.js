@@ -295,6 +295,10 @@ app.get("/naverc953171c2ff3a730580e7ed2be00700d.html", (_req, res) => {
   res.setHeader("Cache-Control", "no-cache, must-revalidate");
   res.type("text/plain").send("naver-site-verification: naverc953171c2ff3a730580e7ed2be00700d.html\n");
 });
+app.get("/naver5fab431f6334045f5b69668ad71fc3c8.html", (_req, res) => {
+  res.setHeader("Cache-Control", "no-cache, must-revalidate");
+  res.type("text/plain").send("naver-site-verification: naver5fab431f6334045f5b69668ad71fc3c8.html\n");
+});
 app.get("/favicon.png", (_req, res) => {
   res.setHeader("Cache-Control", "no-cache, must-revalidate");
   res.sendFile(path.join(SITE_ROOT, "favicon.png"));
