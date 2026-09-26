@@ -155,8 +155,9 @@ select:focus-visible, summary:focus-visible { outline: 3px solid #6c9fdf; outlin
 #stamp .stamp-presets button[aria-pressed="true"]::after { content: "✓"; position: absolute; right: 3px; top: 3px; display: grid; place-items: center; width: 15px; height: 15px; border-radius: 50%; background: var(--accent); color: white; font-size: 10px; }
 #stamp .stamp-presets canvas { width: auto; height: auto; max-width: min(100%,58px); max-height: 64px; aspect-ratio: auto; }
 #stamp .preview-header { margin-bottom: 8px; }
-#stamp .checkerboard { width: fit-content; min-width: 88px; max-width: 100%; height: auto; min-height: 144px; padding: 8px; margin-inline: auto; }
-#stamp .checkerboard canvas { width: auto; height: auto; max-width: 128px; max-height: 128px; }
+#stamp .checkerboard { width: fit-content; min-width: 0; max-width: 100%; height: auto; min-height: 0; padding: 8px; margin-inline: auto; }
+#stamp .checkerboard canvas { width: var(--stamp-print-width); height: auto; max-width: 100%; max-height: none; }
+#stamp .checkerboard:has(#stamp-placeholder:not([hidden])) { min-width: 144px; min-height: 88px; }
 #stamp .preview-note { margin-top: 8px; }
 #stamp .preview-note:empty { display: none; }
 #stamp-download { margin-top: 10px; }

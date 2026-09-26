@@ -2,6 +2,8 @@
   'use strict';
   const $ = id => document.getElementById(id);
   const canvas = $('stamp-canvas');
+  const stampDpi = 300, stampEdgeMm = 18;
+  const stampEdgePixels = Math.round(stampEdgeMm / 25.4 * stampDpi);
   const fonts = {
     brush: { family: '"OfficeStampGungseo"', weight: 400, state: 'loading' },
     gothic: { family: '"Malgun Gothic", "Apple SD Gothic Neo", sans-serif', weight: 700, state: 'ready' }
@@ -91,12 +93,17 @@
       top = Math.min(top, y); bottom = Math.max(bottom, y);
     }
     if (right < left) { target.width = target.height = 1; return; }
-    const padding = 4, maxSize = 256;
+    const padding = 4;
     const cropWidth = right - left + 1, cropHeight = bottom - top + 1;
-    const scale = Math.min(1, (maxSize - padding * 2) / Math.max(cropWidth, cropHeight));
+    const scale = stampEdgePixels / Math.max(cropWidth, cropHeight);
     const drawWidth = cropWidth * scale, drawHeight = cropHeight * scale;
     target.width = Math.ceil(drawWidth) + padding * 2;
     target.height = Math.ceil(drawHeight) + padding * 2;
+    target.style.setProperty('--stamp-print-width', (target.width / stampDpi * 25.4) + 'mm');
+    if (target === canvas) {
+      const mm = value => (value / stampDpi * 25.4).toFixed(1).replace(/\.0$/, '');
+      $('stamp-size').textContent = '약 ' + mm(drawWidth) + ' × ' + mm(drawHeight) + 'mm';
+    }
     const output = target.getContext('2d', { willReadFrequently: true });
     output.imageSmoothingQuality = 'high';
     output.globalAlpha = opacity;
@@ -297,12 +304,43 @@
     $('stamp-threshold-value').value = $('stamp-threshold').value;
     render();
   });
+  async function withPrintResolution(blob) {
+    const bytes = new Uint8Array(await blob.arrayBuffer());
+    const view = new DataView(bytes.buffer);
+    const chunk = new Uint8Array(21), chunkView = new DataView(chunk.buffer);
+    chunkView.setUint32(0, 9);
+    chunk.set([112, 72, 89, 115], 4); // pHYs: pixels per metre, before IDAT.
+    const pixelsPerMetre = Math.round(stampDpi / .0254);
+    chunkView.setUint32(8, pixelsPerMetre);
+    chunkView.setUint32(12, pixelsPerMetre);
+    chunk[16] = 1;
+    let crc = 0xffffffff;
+    for (const byte of chunk.subarray(4, 17)) {
+      crc ^= byte;
+      for (let bit = 0; bit < 8; bit++) crc = (crc >>> 1) ^ (crc & 1 ? 0xedb88320 : 0);
+    }
+    chunkView.setUint32(17, (crc ^ 0xffffffff) >>> 0);
+    const parts = [bytes.subarray(0, 8)];
+    for (let offset = 8; offset < bytes.length;) {
+      if (offset + 12 > bytes.length) throw new Error('Invalid PNG');
+      const end = offset + 12 + view.getUint32(offset);
+      if (end > bytes.length) throw new Error('Invalid PNG chunk');
+      const type = String.fromCharCode(...bytes.subarray(offset + 4, offset + 8));
+      if (type !== 'pHYs') parts.push(bytes.subarray(offset, end));
+      if (type === 'IHDR') parts.push(chunk);
+      offset = end;
+    }
+    return new Blob(parts, { type: 'image/png' });
+  }
   $('stamp-download').addEventListener('click', () => {
     if ($('stamp-download').disabled) return;
     render();
-    canvas.toBlob(blob => {
+    canvas.toBlob(async blob => {
       if (!blob) { status('이미지를 저장하지 못했습니다. 다시 시도해 주세요.'); return; }
-      const url = URL.createObjectURL(blob), link = document.createElement('a');
+      let output;
+      try { output = await withPrintResolution(blob); }
+      catch (_) { status('이미지를 저장하지 못했습니다. 다시 시도해 주세요.'); return; }
+      const url = URL.createObjectURL(output), link = document.createElement('a');
       link.href = url; link.download = 'stamp.png';
       document.body.append(link); link.click(); link.remove();
       setTimeout(() => URL.revokeObjectURL(url), 60000);

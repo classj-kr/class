@@ -1,9 +1,9 @@
 {
-  "version": "20260926-stamp-compact",
+  "version": "20260926-stamp-print-size",
   "files": {
-    "classtools/office-tools/index.html": "eb2aef888dddebbeb579a927a8beb3f083a52ecd949b70d67a38d90125e84654",
-    "classtools/office-tools/style.css": "ff86493d94b263088bc2c78dd9155406c40769d6cd4a514d8b5ae0954ba89d9e",
-    "classtools/office-tools/stamp.js": "be0d384ff1cad2ed4eb4690c55be04f3d99586727d2127eef7eccc23f83297cb",
+    "classtools/office-tools/index.html": "9b0d95d349d52f03f74b63f83fc55c444387e480d6d355de286f35e1c088072a",
+    "classtools/office-tools/style.css": "08021ea9692a5a1d046100638047980650e549aa7d6f9cf9a448795aa02360c7",
+    "classtools/office-tools/stamp.js": "ccedf7ac61d8a3a977fa6b31be21a92c1d0c7d28d6c0f0056595a1a369f13b20",
     "classtools/office-tools/tools.js": "b47bfa08ec80573b0344937d8184da579ac7968dea83698d82780f4fb538b3c5",
     "classtools/office-tools/fonts/ChosunGs.TTF": "4e191bc30d23ce34797dcaf7a0965dedd67a2d85cc5dd87325ee96626cba7bea"
   }
