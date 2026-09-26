@@ -2,7 +2,6 @@
   'use strict';
   const $ = id => document.getElementById(id);
   const canvas = $('stamp-canvas');
-  const ctx = canvas.getContext('2d', { willReadFrequently: true });
   const fonts = {
     brush: { family: '"OfficeStampGungseo"', weight: 400, state: 'loading' },
     gothic: { family: '"Malgun Gothic", "Apple SD Gothic Neo", sans-serif', weight: 700, state: 'ready' }
@@ -82,6 +81,28 @@
     const suffix = options.suffix === 'auto' ? (Array.from(compact).length === 3 ? '인' : '') : options.suffix;
     return compact ? compact + suffix : '';
   }
+  function fitStampCanvas(source, target, opacity = 1) {
+    const { width, height } = source;
+    const pixels = source.getContext('2d', { willReadFrequently: true }).getImageData(0, 0, width, height).data;
+    let left = width, top = height, right = -1, bottom = -1;
+    for (let y = 0; y < height; y++) for (let x = 0; x < width; x++) {
+      if (!pixels[(y * width + x) * 4 + 3]) continue;
+      left = Math.min(left, x); right = Math.max(right, x);
+      top = Math.min(top, y); bottom = Math.max(bottom, y);
+    }
+    if (right < left) { target.width = target.height = 1; return; }
+    const padding = 4, maxSize = 256;
+    const cropWidth = right - left + 1, cropHeight = bottom - top + 1;
+    const scale = Math.min(1, (maxSize - padding * 2) / Math.max(cropWidth, cropHeight));
+    const drawWidth = cropWidth * scale, drawHeight = cropHeight * scale;
+    target.width = Math.ceil(drawWidth) + padding * 2;
+    target.height = Math.ceil(drawHeight) + padding * 2;
+    const output = target.getContext('2d', { willReadFrequently: true });
+    output.imageSmoothingQuality = 'high';
+    output.globalAlpha = opacity;
+    output.drawImage(source, left, top, cropWidth, cropHeight, padding, padding, drawWidth, drawHeight);
+    output.globalAlpha = 1;
+  }
   function drawStamp(target, name, options) {
     const ink = document.createElement('canvas');
     ink.width = ink.height = 800;
@@ -154,12 +175,7 @@
         context.fill();
       }
     }
-    const output = target.getContext('2d', { willReadFrequently: true });
-    output.clearRect(0, 0, target.width, target.height);
-    output.save();
-    output.globalAlpha = options.opacity / 100;
-    output.drawImage(ink, 0, 0, target.width, target.height);
-    output.restore();
+    fitStampCanvas(ink, target, options.opacity / 100);
   }
 
   for (const preset of presets) {
@@ -192,7 +208,7 @@
     }
   }
   function renderPhoto() {
-    ctx.clearRect(0, 0, 800, 800);
+    canvas.width = canvas.height = 1;
     canvas.hidden = !photo;
     $('stamp-placeholder').hidden = Boolean(photo);
     $('stamp-placeholder').textContent = '도장 사진을 선택해 주세요.';
@@ -209,7 +225,7 @@
     const processed = document.createElement('canvas');
     processed.width = photo.width; processed.height = photo.height;
     processed.getContext('2d').putImageData(imageData, 0, 0);
-    ctx.drawImage(processed, Math.round((800 - photo.width) / 2), Math.round((800 - photo.height) / 2));
+    fitStampCanvas(processed, canvas);
     status('밝은 배경을 제거했습니다. 강도를 조절해 확인하세요.');
   }
   function rotatePhoto(direction) {
@@ -237,7 +253,7 @@
     $('stamp-download').disabled = !name || !ready;
     drawStamp(canvas, name, settings);
     renderPresets();
-    status(name && ready ? '투명 PNG로 저장됩니다.' : '');
+    status('');
   }
 
   for (const button of document.querySelectorAll('.mode-switch button')) button.addEventListener('click', () => {
