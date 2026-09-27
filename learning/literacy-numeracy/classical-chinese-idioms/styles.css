@@ -563,8 +563,7 @@ kbd {
     background: #f8f1df;
 }
 
-.story-block p,
-.source-block p {
+.story-block p {
     margin: 0;
     font-size: 15px;
     line-height: 1.82;
@@ -587,13 +586,6 @@ kbd {
 .lesson-block > span { font-size: 34px; line-height: 1; }
 .lesson-block p { margin: 0; }
 
-.source-block {
-    padding-top: 24px;
-    border-top: 1px solid var(--line);
-}
-
-.source-block strong { font-family: "Batang", serif; font-size: 16px; }
-.source-block p { margin-top: 8px; color: var(--muted); font-size: 12px; }
 
 .card-navigation,
 .memory-actions > div,

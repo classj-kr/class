@@ -182,9 +182,10 @@ body.lesson-active .idiom-card::before { display: none; }
 
 body.lesson-active .idiom-card.revealed .idiom-face {
     display: flex;
+    flex-wrap: wrap;
     align-items: baseline;
     justify-content: flex-start;
-    gap: 16px;
+    gap: 8px 16px;
     min-height: 0;
     padding: 4px 0 10px;
     text-align: left;
@@ -203,8 +204,15 @@ body.lesson-active .idiom-card.revealed .idiom-face h3 {
     white-space: nowrap;
 }
 
-/* 삽화는 오른쪽 위에 3:2 그대로(자르지 않음) 두고, 한자 풀이·뜻·유래 글이
-   그 왼쪽을 채운다. 글이 길거나 화면이 좁으면 삽화 아래로 넓게 이어진다. */
+body.lesson-active .idiom-face .hanja-expl-block {
+    align-self: center;
+    margin: 0;
+}
+
+body.lesson-active .idiom-face .hanja-chips { margin: 0; }
+
+/* 삽화는 오른쪽 위에 3:2 그대로(자르지 않음) 크게 두고, 뜻·유래 글이 그 왼쪽을
+   채운 뒤 삽화 아래로 넓게 이어진다. 폭은 화면 높이에도 맞춰 한 화면에 들어오게 한다. */
 body.lesson-active .card-details {
     display: flow-root;
     padding-top: 14px;
@@ -215,7 +223,7 @@ body.lesson-active .card-media {
     display: flex;
     flex-direction: column;
     gap: 8px;
-    width: min(36%, 420px);
+    width: min(54%, 680px, calc((100vh - 300px) * 1.5));
     min-width: 280px;
     margin: 0 0 12px 24px;
 }
@@ -232,23 +240,7 @@ body.lesson-active .idiom-illustration img {
     object-fit: contain;
 }
 
-body.lesson-active .source-block {
-    padding: 9px 12px;
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    background: rgba(247, 243, 233, 0.7);
-}
-
-body.lesson-active .source-block strong { font-size: 15px; }
-body.lesson-active .source-block p { margin-top: 3px; font-size: 13px; line-height: 1.5; }
-
-body.lesson-active .card-summary {
-    display: grid;
-    gap: 12px;
-    margin-bottom: 14px;
-}
-
-body.lesson-active .hanja-expl-block,
+body.lesson-active .card-summary { margin-bottom: 12px; }
 body.lesson-active .meaning-block { margin: 0; }
 
 body.lesson-active .meaning-block p {
@@ -272,6 +264,11 @@ body.lesson-active .story-block p {
     body.lesson-active .story-block p { font-size: 17px; line-height: 1.75; }
 }
 
+/* 아이패드 가로처럼 폭이 좁으면 글 칸이 좁아 줄 수가 늘어난다 */
+@media (max-width: 1100px) and (min-width: 681px) and (orientation: landscape) {
+    body.lesson-active .story-block p { font-size: 16px; line-height: 1.66; }
+}
+
 @media (max-height: 680px) and (min-width: 681px) {
     body.lesson-active .story-block p { font-size: 16px; line-height: 1.72; }
     body.lesson-active .idiom-card.revealed .idiom-hanja { font-size: 34px; }
@@ -291,9 +288,22 @@ body.lesson-active .question-illustration img {
     max-height: clamp(180px, calc(100vh - 430px), 440px);
 }
 
-/* 세로로 긴 태블릿은 높이가 남으니 삽화를 키운다 */
+/* 세로로 든 태블릿: 글 옆 삽화를 넓히고, 높이가 넉넉하면 글 위에 크게 둔다 */
 @media (orientation: portrait) and (min-width: 681px) {
-    body.lesson-active .card-media { width: 48%; }
+    body.lesson-active .card-media { width: 60%; }
+}
+
+@media (orientation: portrait) and (min-width: 681px) and (min-height: 1100px) {
+    body.lesson-active .card-details { display: flex; flex-direction: column; }
+    body.lesson-active .card-summary { order: 1; }
+    body.lesson-active .card-media {
+        order: 2;
+        float: none;
+        width: min(100%, calc((100vh - 760px) * 1.5));
+        min-width: 0;
+        margin: 0 auto 14px;
+    }
+    body.lesson-active .story-block { order: 3; }
 }
 
 /* 사이트가 화면 모서리에 띄우는 둥근 뒤로가기(왼쪽 위)와 소리 단추(오른쪽 위)
