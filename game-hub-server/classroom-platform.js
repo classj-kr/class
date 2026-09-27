@@ -3314,27 +3314,45 @@ function createClassroomPlatform(options = {}) {
     }
 
     const existing = await pool.query(
-      `SELECT id FROM classroom_teachers
+      `SELECT id, google_email, user_id FROM classroom_teachers
        WHERE school_id = $1
          AND (teacher_type IN ('관리자', '교장', '교감') OR teacher_name IN ('학교관리자', '학교 관리자', '관리자'))
+       ORDER BY (teacher_type = '관리자') DESC, id
        LIMIT 1`,
       [schoolId]
     );
+    const current = existing.rows[0];
 
     const conflict = await pool.query(
       `SELECT id FROM classroom_teachers WHERE LOWER(google_email) = LOWER($1) AND id != $2`,
-      [email, existing.rows[0]?.id || -1]
+      [email, current?.id || -1]
     );
     if (conflict.rows[0]) {
       throw new HttpError(400, "DUPLICATE_EMAIL", "이미 다른 교사가 사용 중인 이메일입니다.");
     }
 
-    if (existing.rows[0]) {
+    if (current && normalizeEmail(current.google_email) === email) {
+      // 같은 계정을 다시 적었다. 관리자가 겸임으로 적어 둔 성명·담임 반은 그대로 둔다.
+      await pool.query(
+        "UPDATE classroom_teachers SET teacher_type = '관리자', updated_at = NOW() WHERE id = $1",
+        [current.id]
+      );
+    } else if (current) {
+      // 관리자가 다른 사람으로 바뀐다. 앞사람이 겸임하던 이름·담임 반·과목과
+      // 로그인 연결은 넘겨주지 않는다. 앞사람이 계속 담임이면 교사 명단에 새 줄로 적는다.
+      if (current.user_id) {
+        await pool.query(
+          "UPDATE classroom_classes SET teacher_user_id = NULL, updated_at = NOW() WHERE school_id = $1 AND teacher_user_id = $2",
+          [schoolId, current.user_id]
+        );
+      }
       await pool.query(
         `UPDATE classroom_teachers
-         SET google_email = $1, teacher_type = '관리자', teacher_name = '학교 관리자', updated_at = NOW()
+         SET google_email = $1, teacher_type = '관리자', teacher_name = '학교 관리자',
+             grade = NULL, class_number = NULL, subject_name = NULL, room_name = NULL,
+             user_id = NULL, updated_at = NOW()
          WHERE id = $2`,
-        [email, existing.rows[0].id]
+        [email, current.id]
       );
     } else {
       await pool.query(
@@ -7865,19 +7883,32 @@ function createClassroomPlatform(options = {}) {
       roomName: t?.roomName ? String(t.roomName).trim().slice(0, 50) : null
     })).filter(t => t.name);
 
+    // 한 계정은 한 줄. 관리자 계정을 다른 교사 줄에 또 적으면 두 줄이 관리자 줄 하나로
+    // 겹쳐 저장되고 그 교사 줄은 지워진다. 겸임은 관리자 줄에 학년·반을 적는 것이다.
+    const seenEmails = new Set();
     for (const t of cleanTeachers) {
       if (!t.name || t.name.length > 30) throw new HttpError(400, "INVALID_TEACHER_NAME", "성명을 확인해 주세요.");
       if (t.email && !t.email.includes("@")) throw new HttpError(400, "INVALID_TEACHER_EMAIL", `${t.name}의 이메일 주소를 확인해 주세요.`);
       if ((t.grade && !t.classNumber) || (!t.grade && t.classNumber)) {
         throw new HttpError(400, "INVALID_GRADE_CLASS", `'${t.name}' 교사의 학년과 반을 모두 입력하거나, 전담인 경우 둘 다 비워두세요.`);
       }
+      if (t.email && seenEmails.has(t.email)) {
+        throw new HttpError(400, "DUPLICATE_TEACHER_EMAIL",
+          `${t.email} 계정이 두 줄에 있습니다. 한 사람은 한 줄에만 적어 주세요. 학교 관리자가 담임을 맡으면 관리자 줄에 학년·반을 적고 다른 줄은 지웁니다.`);
+      }
+      if (t.email) seenEmails.add(t.email);
     }
+
+    const isPlaceholderAdminName = (name) => ["학교관리자", "관리자"].includes(String(name || "").replace(/\s+/g, ""));
 
     const client = await pool.connect();
     try {
       await client.query("BEGIN");
 
-      const savedIds = [];
+      // 줄마다 기존 등록부터 찾는다. 고치기 전에 빠진 줄을 지우고 남는 줄의 학년·반을
+      // 비워 둬야, 한 반을 다른 줄로 옮길 때(관리자 겸임 등) 옛 줄에 걸려
+      // '같은 반 담임 둘'이나 '같은 이름 둘'로 막히지 않는다.
+      const plans = [];
       for (const t of cleanTeachers) {
         let existing = null;
         if (t.email) {
@@ -7894,48 +7925,56 @@ function createClassroomPlatform(options = {}) {
           );
           existing = exName.rows[0];
         }
-
-        if (existing) {
-          const isAdminRow = ["관리자", "교장", "교감"].includes(existing.teacher_type) || existing.teacher_name === "학교관리자" || existing.teacher_name === "관리자";
-          const finalName = isAdminRow ? existing.teacher_name : t.name;
-          const finalEmail = isAdminRow ? existing.google_email : t.email;
-          const finalType = isAdminRow ? "관리자" : t.type;
-          const finalGrade = isAdminRow ? null : t.grade;
-          const finalClass = isAdminRow ? null : t.classNumber;
-          const finalSubject = isAdminRow ? null : t.subjectName;
-          const finalRoom = isAdminRow ? null : t.roomName;
-
-          const updated = await client.query(
-            `UPDATE classroom_teachers
-             SET teacher_name = $1, teacher_type = $2, google_email = $3, grade = $4, class_number = $5,
-                 subject_name = $6, room_name = $7, academic_year = $9, updated_at = NOW()
-             WHERE id = $8 RETURNING id`,
-            [finalName, finalType, finalEmail, finalGrade, finalClass, finalSubject, finalRoom, existing.id, academicYear]
-          );
-          savedIds.push(updated.rows[0].id);
-        } else {
-          const inserted = await client.query(
-            `INSERT INTO classroom_teachers
-               (school_id, teacher_name, grade, class_number, teacher_type, google_email, subject_name, room_name, academic_year)
-             VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING id`,
-            [schoolId, t.name, t.grade, t.classNumber, t.type, t.email, t.subjectName, t.roomName, academicYear]
-          );
-          savedIds.push(inserted.rows[0].id);
+        const isAdminRow = Boolean(existing) && (["관리자", "교장", "교감"].includes(existing.teacher_type) || existing.teacher_name === "학교관리자" || existing.teacher_name === "관리자");
+        // 담임 이름은 학생 화면에 그대로 나온다. '학교 관리자'라는 이름으로 반을 맡게 두지 않는다.
+        if (isAdminRow && t.grade && isPlaceholderAdminName(t.name)) {
+          throw new HttpError(400, "ADMIN_HOMEROOM_NEEDS_NAME", "학교 관리자가 담임을 맡으려면 관리자 줄의 성명을 실제 이름으로 바꿔 주세요.");
         }
+        plans.push({ t, existing, isAdminRow });
       }
+      const keptIds = plans.filter((p) => p.existing).map((p) => p.existing.id);
 
-      // Delete any teacher records in this school that are no longer in savedIds (NEVER delete admin rows!)
-      if (savedIds.length > 0) {
+      // Delete any teacher records in this school that are not in the list (NEVER delete admin rows!)
+      if (keptIds.length > 0) {
         await client.query(
           `DELETE FROM classroom_teachers
            WHERE school_id = $1 AND NOT (id = ANY($2::BIGINT[])) AND teacher_type NOT IN ('관리자', '교장', '교감') AND teacher_name NOT IN ('학교관리자', '관리자')`,
-          [schoolId, savedIds]
+          [schoolId, keptIds]
+        );
+        await client.query(
+          "UPDATE classroom_teachers SET grade = NULL, class_number = NULL WHERE id = ANY($1::BIGINT[])",
+          [keptIds]
         );
       } else {
         await client.query(
           "DELETE FROM classroom_teachers WHERE school_id = $1 AND teacher_type NOT IN ('관리자', '교장', '교감') AND teacher_name NOT IN ('학교관리자', '관리자')",
           [schoolId]
         );
+      }
+
+      for (const { t, existing, isAdminRow } of plans) {
+        if (existing) {
+          // 학교 관리자도 담임·교과를 겸할 수 있다. 관리자 줄에서 지키는 것은 계정(이메일)과
+          // 직책뿐이다. 성명을 '학교 관리자' 그대로 두었으면 원래 적힌 모양을 살린다.
+          const finalName = isAdminRow && isPlaceholderAdminName(t.name) ? existing.teacher_name : t.name;
+          const finalEmail = isAdminRow ? existing.google_email : t.email;
+          const finalType = isAdminRow ? "관리자" : t.type;
+
+          await client.query(
+            `UPDATE classroom_teachers
+             SET teacher_name = $1, teacher_type = $2, google_email = $3, grade = $4, class_number = $5,
+                 subject_name = $6, room_name = $7, academic_year = $9, updated_at = NOW()
+             WHERE id = $8`,
+            [finalName, finalType, finalEmail, t.grade, t.classNumber, t.subjectName, t.roomName, existing.id, academicYear]
+          );
+        } else {
+          await client.query(
+            `INSERT INTO classroom_teachers
+               (school_id, teacher_name, grade, class_number, teacher_type, google_email, subject_name, room_name, academic_year)
+             VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)`,
+            [schoolId, t.name, t.grade, t.classNumber, t.type, t.email, t.subjectName, t.roomName, academicYear]
+          );
+        }
       }
 
       // A teacher reassigned to a different grade/class, or removed as
@@ -7967,6 +8006,10 @@ function createClassroomPlatform(options = {}) {
       if (err?.code === "23505" && String(err.constraint || "").includes("class_assignment")) {
         throw new HttpError(400, "DUPLICATE_CLASS_ASSIGNMENT",
           "같은 학년·반에 담임이 둘입니다. 학년과 반을 확인해 주세요.");
+      }
+      if (err?.code === "23505" && String(err.constraint || "").includes("teacher_name")) {
+        throw new HttpError(400, "DUPLICATE_TEACHER_NAME",
+          "같은 성명이 두 줄에 있습니다. 한 사람이 두 줄에 있으면 한 줄을 지워 주세요.");
       }
       throw err;
     } finally {

@@ -2034,7 +2034,11 @@
                     btn.className = isSchoolAdmin ? 'profile-btn school-admin' : 'profile-btn teacher';
                     btn.href = '/classtools/';
 
-                    const roleLabel = isSchoolAdmin ? '학교 관리자 계정' : '교직원 계정';
+                    // 학교 관리자가 담임을 겸하면 카드는 한 장 그대로, 맡은 반을 이어 적는다.
+                    const hasHomeroom = Boolean(teacherProfileData.grade && teacherProfileData.classNumber);
+                    const roleLabel = isSchoolAdmin
+                        ? (hasHomeroom ? `학교 관리자 · ${teacherProfileData.grade}학년 ${teacherProfileData.classNumber}반 담임` : '학교 관리자 계정')
+                        : '교직원 계정';
                     const icon = isSchoolAdmin ? '🏫' : '👨‍🏫';
                     btn.innerHTML = `<span class="profile-title">${icon} ${teacherProfileData.name}</span><span class="profile-desc">${teacherProfileData.schoolName} · ${roleLabel}</span>`;
                     profileList.appendChild(btn);

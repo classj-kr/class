@@ -21,17 +21,18 @@ test("GET /school/teachers returns each teacher's subject/room so the specialist
   assert.match(body, /roomName: r\.room_name/);
 });
 
-test("PUT /school/teachers persists subjectName/roomName on both the update and insert branches, and blanks them for admin rows", () => {
+test("PUT /school/teachers persists subjectName/roomName on both the update and insert branches, admin rows included (a school admin may double as a teacher)", () => {
   const body = handlerBody(serverSource, `router.put("/school/teachers"`);
   assert.match(body, /subjectName: t\?\.subjectName \? String\(t\.subjectName\)/);
   assert.match(body, /subject_name = \$6, room_name = \$7/);
-  assert.match(body, /finalSubject = isAdminRow \? null : t\.subjectName/);
-  assert.match(body, /\(school_id, teacher_name, grade, class_number, teacher_type, google_email, subject_name, room_name\)/);
+  assert.match(body, /t\.grade, t\.classNumber, t\.subjectName, t\.roomName, existing\.id/);
+  assert.doesNotMatch(body, /isAdminRow \? null/);
+  assert.match(body, /\(school_id, teacher_name, grade, class_number, teacher_type, google_email, subject_name, room_name, academic_year\)/);
   assert.doesNotMatch(body, /OAUTH_ONLY/);
 });
 
 test("school-roster.html's teacher table lets an admin type each teacher's subject and default special room", () => {
-  assert.match(schoolRosterSource, /담당 과목 \(전담\)/);
+  assert.match(schoolRosterSource, /담당 과목 \(교과\)/);
   assert.match(schoolRosterSource, /기본 특별실/);
   assert.match(schoolRosterSource, /updateTeacherField\(\$\{idx\}, 'subjectName', this\.value\)/);
   assert.match(schoolRosterSource, /updateTeacherField\(\$\{idx\}, 'roomName', this\.value\)/);
