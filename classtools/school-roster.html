@@ -748,27 +748,34 @@
             const linkedBadge = t.linked ? `<span class="linked-badge">✓ 연동</span>` : `<span style="color:#9ca3af;font-size:11px;">미연동</span>`;
             
             if (isAdminRow) {
+                // 학교 관리자도 담임·교과를 겸할 수 있다. 잠그는 것은 구글 계정과 삭제뿐이다.
+                // 담임을 맡으면 성명이 학생 화면에 나오므로 실제 이름으로 바꿔 적는다.
+                const homeroomBadge = (t.grade && t.classNumber)
+                    ? `<span style="background:#e0f2fe;color:#0284c7;padding:3px 8px;border-radius:12px;font-size:11px;font-weight:bold;">담임 (${t.grade}-${t.classNumber})</span>`
+                    : '';
                 return `
                     <tr style="background:rgba(254,243,199,0.2);">
                         <td>
-                            <input class="roster-cell-input" style="width:100%;border:1px solid #e5e7eb;background:#f3f4f6;color:#374151;font-weight:bold;cursor:not-allowed;border-radius:4px;padding:3px 6px;" value="${esc(t.name || '')}" readonly title="학교 관리자 이름은 변경할 수 없습니다">
+                            <input class="roster-cell-input" style="width:100%;border:1px solid #d1d5db;border-radius:4px;padding:3px 6px;font-weight:bold;" value="${esc(t.name || '')}" placeholder="성명" onchange="updateTeacherField(${idx}, 'name', this.value)">
                         </td>
                         <td>
                             <input class="roster-cell-input" style="width:100%;border:1px solid #e5e7eb;background:#f3f4f6;color:#374151;font-weight:bold;cursor:not-allowed;border-radius:4px;padding:3px 6px;" value="${esc(t.email || '')}" readonly title="학교 관리자 구글 계정은 변경할 수 없습니다">
                         </td>
                         <td>
-                            <input class="roster-cell-input" style="width:100%;border:1px solid #e5e7eb;background:#f3f4f6;color:#9ca3af;cursor:not-allowed;border-radius:4px;padding:3px 6px;text-align:center;" value="" placeholder="-" readonly title="학교 관리자는 담임 지정을 할 수 없습니다">
+                            <input class="roster-cell-input" style="width:100%;border:1px solid #d1d5db;border-radius:4px;padding:3px 6px;" value="${esc(t.grade ?? '')}" placeholder="학년" onchange="updateTeacherField(${idx}, 'grade', this.value)">
                         </td>
                         <td>
-                            <input class="roster-cell-input" style="width:100%;border:1px solid #e5e7eb;background:#f3f4f6;color:#9ca3af;cursor:not-allowed;border-radius:4px;padding:3px 6px;text-align:center;" value="" placeholder="-" readonly title="학교 관리자는 담임 지정을 할 수 없습니다">
+                            <input class="roster-cell-input" style="width:100%;border:1px solid #d1d5db;border-radius:4px;padding:3px 6px;" value="${esc(t.classNumber ?? '')}" placeholder="반" onchange="updateTeacherField(${idx}, 'classNumber', this.value)">
                         </td>
                         <td>
-                            <input class="roster-cell-input" style="width:100%;border:1px solid #e5e7eb;background:#f3f4f6;color:#9ca3af;cursor:not-allowed;border-radius:4px;padding:3px 6px;text-align:center;" value="" placeholder="-" readonly title="학교 관리자는 과목을 지정할 수 없습니다">
+                            <input class="roster-cell-input" style="width:100%;border:1px solid #d1d5db;border-radius:4px;padding:3px 6px;" value="${esc(t.subjectName ?? '')}" placeholder="예: 음악" onchange="updateTeacherField(${idx}, 'subjectName', this.value)">
                         </td>
                         <td>
-                            <input class="roster-cell-input" style="width:100%;border:1px solid #e5e7eb;background:#f3f4f6;color:#9ca3af;cursor:not-allowed;border-radius:4px;padding:3px 6px;text-align:center;" value="" placeholder="-" readonly title="학교 관리자는 특별실을 지정할 수 없습니다">
+                            <input class="roster-cell-input" style="width:100%;border:1px solid #d1d5db;border-radius:4px;padding:3px 6px;" value="${esc(t.roomName ?? '')}" placeholder="예: 음악실" onchange="updateTeacherField(${idx}, 'roomName', this.value)">
                         </td>
-                        <td style="text-align:center;">${roleBadge}</td>
+                        <td style="text-align:center;">
+                            <div style="display:flex;flex-direction:column;align-items:center;gap:4px;">${roleBadge}${homeroomBadge}</div>
+                        </td>
                         <td style="text-align:center;">${linkedBadge}</td>
                         <td style="text-align:center;">
                             <span style="color:#9ca3af;font-size:11px;" title="학교 관리자 계정은 삭제할 수 없습니다">🔒 보호됨</span>
