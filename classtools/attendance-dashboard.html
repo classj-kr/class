@@ -29,7 +29,8 @@
             color: var(--ink);
             background: radial-gradient(circle at top left, rgba(255,255,255,0.9), transparent 34rem), var(--canvas);
             font-family: Pretendard, "Noto Sans KR", "Apple SD Gothic Neo", system-ui, sans-serif;
-            font-size: 14px;
+            font-size: 16px;
+            line-height: 1.5;
         }
         button, input, select { font: inherit; }
 
@@ -102,7 +103,7 @@
             display: inline-flex; align-items: center; justify-content: center; gap: 6px;
             min-height: 40px; padding: 0 16px;
             border: none; border-radius: 10px;
-            font-weight: 800; font-size: 13px;
+            font-weight: 700; font-size: 16px;
             cursor: pointer;
             white-space: nowrap;
             background: var(--brand); color: #fff;
@@ -123,8 +124,8 @@
         }
         .summary-card.warning { background: var(--danger-soft); border-color: #f0b8b5; }
         .summary-card.info { background: var(--info-soft); border-color: #b9d6ef; }
-        .card-title { font-size: 12px; color: var(--muted); font-weight: 700; }
-        .card-value { font-size: 26px; font-weight: 800; margin-top: 4px; }
+        .card-title { font-size: 15px; color: var(--muted); font-weight: 700; }
+        .card-value { font-size: 32px; font-weight: 800; margin-top: 4px; font-variant-numeric: tabular-nums; }
 
         .table-wrap {
             overflow: auto;
@@ -132,25 +133,32 @@
             border-radius: 12px;
             background: var(--paper);
         }
-        table { width: 100%; border-collapse: collapse; font-size: 13px; }
+        table { width: 100%; min-width: 540px; border-collapse: collapse; font-size: 16px; font-variant-numeric: tabular-nums; }
         th {
             background: var(--canvas);
-            color: var(--muted);
+            color: var(--ink);
             font-weight: 700;
-            font-size: 11px;
+            font-size: 14px;
             text-align: left;
-            padding: 8px 10px;
+            padding: 12px 16px;
             border-bottom: 1px solid var(--line);
             white-space: nowrap;
         }
-        td { padding: 8px 10px; border-bottom: 1px solid var(--line); }
+        td { padding: 12px 16px; border-bottom: 1px solid var(--line); }
+        th:not(:first-child), td:not(:first-child) { text-align: right; }
+        td:first-child { white-space: nowrap; }
         tfoot td { font-weight: 800; background: var(--canvas); }
         .status-warning { color: var(--danger); font-weight: 800; }
         .status-info { color: var(--info); font-weight: 800; }
         .status-normal { color: var(--muted); }
 
-        .status-msg { font-size: 13px; color: var(--muted); min-height: 20px; }
+        .status-msg { font-size: 14px; color: var(--muted); min-height: 20px; }
         .status-msg.error { color: var(--danger); }
+        @media (max-width: 600px) {
+            .main { padding: 12px; }
+            .card { padding: 16px; }
+            .summary-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        }
     </style>
 </head>
 <body>
@@ -178,15 +186,15 @@
                 <div class="card-title">총 현원</div>
                 <div class="card-value" id="totalStudentsCount">0</div>
             </div>
-            <div class="summary-card warning">
+            <div class="summary-card">
                 <div class="card-title">결석</div>
                 <div class="card-value" id="totalAbsenceCount">0</div>
             </div>
-            <div class="summary-card info">
+            <div class="summary-card">
                 <div class="card-title">지각</div>
                 <div class="card-value" id="totalTardyCount">0</div>
             </div>
-            <div class="summary-card info">
+            <div class="summary-card">
                 <div class="card-title">조퇴</div>
                 <div class="card-value" id="totalEarlyCount">0</div>
             </div>
@@ -330,6 +338,9 @@
         document.getElementById("totalAbsenceCount").textContent = sumAbsence;
         document.getElementById("totalTardyCount").textContent = sumTardy;
         document.getElementById("totalEarlyCount").textContent = sumEarly;
+        document.getElementById("totalAbsenceCount").closest(".summary-card").classList.toggle("warning", sumAbsence > 0);
+        document.getElementById("totalTardyCount").closest(".summary-card").classList.toggle("info", sumTardy > 0);
+        document.getElementById("totalEarlyCount").closest(".summary-card").classList.toggle("info", sumEarly > 0);
     }
 
     async function loadDashboard() {

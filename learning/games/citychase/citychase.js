@@ -31,7 +31,10 @@
   let inspectedNode = null;
   let inspectorReturnFocus = null;
   let boardZoom = 1;
-  let boardSize = 0;
+  let boardWidth = 0;
+  let boardHeight = 0;
+  let boardDrawFrame = 0;
+  let suppressBoardClickUntil = 0;
 
   function myId() { return lobby?.snapshot().myId || ""; }
   function me() { return state?.players.find(player => player.id === myId()) || null; }
@@ -135,7 +138,7 @@
   function showRules() { $("rulesOverlay").classList.remove("hidden"); }
   function hideRules() { $("rulesOverlay").classList.add("hidden"); }
 
-  function drawArrow(ctx, from, to, color) {
+  function drawArrow(ctx, from, to, color, scale) {
     const dx = to.x - from.x;
     const dy = to.y - from.y;
     const length = Math.hypot(dx, dy) || 1;
@@ -145,24 +148,33 @@
     const cy = from.y + dy * .58;
     ctx.fillStyle = color;
     ctx.beginPath();
-    ctx.moveTo(cx + ux * 9, cy + uy * 9);
-    ctx.lineTo(cx - ux * 8 - uy * 7, cy - uy * 8 + ux * 7);
-    ctx.lineTo(cx - ux * 8 + uy * 7, cy - uy * 8 - ux * 7);
+    ctx.moveTo(cx + ux * 9 * scale, cy + uy * 9 * scale);
+    ctx.lineTo(cx - ux * 8 * scale - uy * 7 * scale, cy - uy * 8 * scale + ux * 7 * scale);
+    ctx.lineTo(cx - ux * 8 * scale + uy * 7 * scale, cy - uy * 8 * scale - ux * 7 * scale);
     ctx.closePath();
     ctx.fill();
   }
 
   function drawBoard() {
     const canvas = $("boardCanvas");
+    const width = $("boardStage").clientWidth;
+    const height = $("boardStage").clientHeight;
+    if (!width || !height) return;
+    const density = Math.min(window.devicePixelRatio || 1, 2);
+    canvas.width = Math.round(width * density);
+    canvas.height = Math.round(height * density);
     const ctx = canvas.getContext("2d");
-    ctx.clearRect(0, 0, Board.WIDTH, Board.HEIGHT);
+    ctx.setTransform(density, 0, 0, density, 0, 0);
+    ctx.clearRect(0, 0, width, height);
+    const scale = Math.min(width / Board.WIDTH, height / Board.HEIGHT);
+    const project = node => ({ x: node.x / Board.WIDTH * width, y: node.y / Board.HEIGHT * height });
     ctx.lineCap = "round";
     ctx.lineJoin = "round";
 
     for (const edge of Board.EDGES) {
-      const a = nodeMeta(edge.a);
-      const b = nodeMeta(edge.b);
-      if (!a || !b) continue;
+      if (!nodeMeta(edge.a) || !nodeMeta(edge.b)) continue;
+      const a = project(nodeMeta(edge.a));
+      const b = project(nodeMeta(edge.b));
       const isRail = edge.kind === "rail";
       const isRound = edge.kind === "round-zone";
       const isBuildingLane = edge.kind === "building-lane";
@@ -172,13 +184,13 @@
       const inner = isRail ? "#d99c45" : isRound ? "#ffe0a0" : isThief ? "#ee5e78" : isPolice ? "#5d9fe5" : "#fff8df";
       ctx.globalAlpha = isRail || isThief || isPolice ? .96 : .86;
       ctx.strokeStyle = accent;
-      ctx.lineWidth = isRail ? 18 : isRound ? 38 : isBuildingLane ? 34 : isThief || isPolice ? 30 : 32;
+      ctx.lineWidth = (isRail ? 18 : isRound ? 38 : isBuildingLane ? 34 : isThief || isPolice ? 30 : 32) * scale;
       ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
       ctx.strokeStyle = inner;
-      ctx.lineWidth = isRail ? 9 : isRound ? 28 : isBuildingLane ? 24 : isThief || isPolice ? 20 : 22;
+      ctx.lineWidth = (isRail ? 9 : isRound ? 28 : isBuildingLane ? 24 : isThief || isPolice ? 20 : 22) * scale;
       ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
       ctx.globalAlpha = 1;
-      if (edge.oneWay || edge.displayArrow) drawArrow(ctx, a, b, accent);
+      if (edge.oneWay || edge.displayArrow) drawArrow(ctx, a, b, accent, scale);
     }
   }
 
@@ -281,25 +293,6 @@
     $("startBtn").textContent = "Start";
   }
 
-  const SCENERY = Object.freeze([
-    { src: "assets/city-kid-dog.svg", x: 205, y: 475, width: 58 },
-    { src: "assets/city-girl-kite.svg", x: 805, y: 470, width: 54 },
-    { src: "assets/city-animal-friends.svg", x: 285, y: 595, width: 52 },
-    { src: "assets/city-bike-kid.svg", x: 720, y: 600, width: 56 }
-  ]);
-
-  function renderScenery() {
-    const layer = $("sceneryLayer");
-    const fragment = document.createDocumentFragment();
-    for (const item of SCENERY) {
-      const image = document.createElement("img");
-      image.src = item.src;
-      image.alt = "";
-      image.style.cssText = `${positionStyle(item.x, item.y)};width:${(item.width / Board.WIDTH) * 100}%`;
-      fragment.appendChild(image);
-    }
-    layer.replaceChildren(fragment);
-  }
 
   function renderLots() {
     const layer = $("lotsLayer");
@@ -621,23 +614,6 @@
 
   function teamName(team) { return team === "police" ? "경찰팀" : team === "thief" ? "도둑팀" : "팀 배정 전"; }
 
-  function renderHeader() {
-    const pawn = currentPawn();
-    $("gameRoomCode").textContent = lobby.snapshot().roomCode || "----";
-    if (state.phase === "setup") {
-      $("turnHeadline").textContent = "경찰팀 비밀 배치";
-      $("turnSubline").textContent = state.lastAction;
-      return;
-    }
-    if (state.phase === "ended") {
-      $("turnHeadline").textContent = `${teamName(state.winnerTeam)} 승리`;
-      $("turnSubline").textContent = state.lastAction;
-      return;
-    }
-    const controllers = state.turnControllers.map(id => playerById(id)?.name).filter(Boolean).join(" · ");
-    $("turnHeadline").textContent = state.canAct ? `내 차례 · ${teamName(pawn.team)} ${pawn.number}번` : `${controllers || "플레이어"} 차례 · ${teamName(pawn.team)} ${pawn.number}번`;
-    $("turnSubline").textContent = state.lastAction;
-  }
 
   function renderIdentity() {
     const team = state.myTeam;
@@ -792,7 +768,6 @@
     if (!state || state.phase === "lobby") return;
     $("lobbyScreen").classList.add("hidden");
     $("gameScreen").classList.remove("hidden");
-    renderHeader();
     renderIdentity();
     renderProgress();
     renderSetup();
@@ -897,7 +872,6 @@
   }
 
   function syncLobby(snapshot) {
-    $("gameRoomCode").textContent = snapshot.roomCode || "----";
     if (state?.phase === "lobby") renderTeamSeats();
   }
 
@@ -910,42 +884,121 @@
   function resizeBoard() {
     const viewport = $("boardViewport");
     if (!viewport.clientWidth || !viewport.clientHeight) return;
-    boardSize = Math.min(viewport.clientWidth, viewport.clientHeight);
-    const size = Math.round(boardSize * boardZoom);
-    $("boardStage").style.width = size + "px";
-    $("boardStage").style.height = size + "px";
-    $("boardStage").style.marginTop = Math.max(0, (viewport.clientHeight - size) / 2) + "px";
+    boardWidth = viewport.clientWidth;
+    boardHeight = viewport.clientHeight;
+    const width = Math.round(boardWidth * boardZoom);
+    const height = Math.round(boardHeight * boardZoom);
+    const stage = $("boardStage");
+    const changed = stage.style.width !== width + "px" || stage.style.height !== height + "px";
+    stage.style.width = width + "px";
+    stage.style.height = height + "px";
+    stage.style.setProperty("--board-unit", Math.min(width, height) / 100 + "px");
+    viewport.classList.toggle("zoomed", boardZoom > 1);
     $("boardZoomOut").disabled = boardZoom <= 1;
     $("boardZoomIn").disabled = boardZoom >= 2.5;
-    $("boardZoomReset").textContent = boardZoom === 1 ? "전체 보기" : Math.round(boardZoom * 100) + "% · 전체";
+    $("boardZoomReset").textContent = boardZoom === 1 ? "전체" : Math.round(boardZoom * 100) + "%";
+    if (changed && !boardDrawFrame) {
+      boardDrawFrame = requestAnimationFrame(() => {
+        boardDrawFrame = 0;
+        drawBoard();
+      });
+    }
   }
 
   function setBoardZoom(zoom) {
     const viewport = $("boardViewport");
-    const previousSize = boardSize * boardZoom;
+    if (!boardWidth || !boardHeight) return;
     const focal = boardZoom === 1 ? nodeMeta(currentPawn()?.position) : null;
-    const x = focal ? focal.x / Board.WIDTH : (viewport.scrollLeft + viewport.clientWidth / 2) / previousSize;
-    const y = focal ? focal.y / Board.HEIGHT : (viewport.scrollTop + viewport.clientHeight / 2) / previousSize;
+    const x = focal ? focal.x / Board.WIDTH : (viewport.scrollLeft + boardWidth / 2) / (boardWidth * boardZoom);
+    const y = focal ? focal.y / Board.HEIGHT : (viewport.scrollTop + boardHeight / 2) / (boardHeight * boardZoom);
     boardZoom = Math.max(1, Math.min(2.5, zoom));
     resizeBoard();
-    viewport.scrollTo({ left: x * boardSize * boardZoom - viewport.clientWidth / 2,
-      top: y * boardSize * boardZoom - viewport.clientHeight / 2 });
+    viewport.scrollTo({ left: x * boardWidth * boardZoom - boardWidth / 2,
+      top: y * boardHeight * boardZoom - boardHeight / 2 });
+  }
+
+  function initBoardGestures() {
+    const viewport = $("boardViewport");
+    const pointers = new Map();
+    let gesture = null;
+    let dragged = false;
+    const begin = () => {
+      const points = [...pointers.values()];
+      if (!points.length) { gesture = null; return; }
+      const bounds = viewport.getBoundingClientRect();
+      const x = points.reduce((sum, point) => sum + point.x, 0) / points.length - bounds.left;
+      const y = points.reduce((sum, point) => sum + point.y, 0) / points.length - bounds.top;
+      gesture = { x, y, left: viewport.scrollLeft, top: viewport.scrollTop, zoom: boardZoom,
+        distance: points.length > 1 ? Math.hypot(points[1].x - points[0].x, points[1].y - points[0].y) : 0,
+        anchorX: (viewport.scrollLeft + x) / (boardWidth * boardZoom),
+        anchorY: (viewport.scrollTop + y) / (boardHeight * boardZoom) };
+    };
+    viewport.addEventListener("pointerdown", event => {
+      if (event.button !== 0 || pointers.size >= 2) return;
+      if (!pointers.size) dragged = false;
+      pointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
+      begin();
+    });
+    viewport.addEventListener("pointermove", event => {
+      if (!pointers.has(event.pointerId) || !gesture) return;
+      pointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
+      const points = [...pointers.values()];
+      const bounds = viewport.getBoundingClientRect();
+      const x = points.reduce((sum, point) => sum + point.x, 0) / points.length - bounds.left;
+      const y = points.reduce((sum, point) => sum + point.y, 0) / points.length - bounds.top;
+      if (points.length > 1) {
+        dragged = true;
+        const distance = Math.hypot(points[1].x - points[0].x, points[1].y - points[0].y);
+        boardZoom = Math.max(1, Math.min(2.5, gesture.zoom * distance / Math.max(gesture.distance, 1)));
+        resizeBoard();
+        viewport.scrollLeft = gesture.anchorX * boardWidth * boardZoom - x;
+        viewport.scrollTop = gesture.anchorY * boardHeight * boardZoom - y;
+      } else if (dragged || Math.hypot(x - gesture.x, y - gesture.y) > 6) {
+        dragged = true;
+        viewport.scrollLeft = gesture.left - (x - gesture.x);
+        viewport.scrollTop = gesture.top - (y - gesture.y);
+      }
+      if (dragged) {
+        viewport.classList.add("dragging");
+        viewport.setPointerCapture(event.pointerId);
+      }
+    });
+    const finish = event => {
+      if (!pointers.has(event.pointerId)) return;
+      if (dragged) suppressBoardClickUntil = performance.now() + 350;
+      pointers.delete(event.pointerId);
+      if (viewport.hasPointerCapture(event.pointerId)) viewport.releasePointerCapture(event.pointerId);
+      if (!pointers.size) viewport.classList.remove("dragging");
+      begin();
+    };
+    window.addEventListener("pointerup", finish);
+    window.addEventListener("pointercancel", finish);
+    viewport.addEventListener("lostpointercapture", event => {
+      // Taking capture from a child button must not end the board gesture.
+      if (event.target === viewport) finish(event);
+    });
+    viewport.addEventListener("click", event => {
+      if (performance.now() < suppressBoardClickUntil) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
+    }, true);
   }
 
   function init() {
     $("actionDock").append($("setupCard"), $("turnCard"), $("actionCard"));
-    const compact = matchMedia("(max-width: 900px), (orientation: portrait)");
+    const compact = matchMedia("(orientation: portrait)");
     const syncInfo = () => { $("gameInfoDetails").open = !compact.matches; };
     syncInfo();
     compact.addEventListener("change", syncInfo);
     new ResizeObserver(resizeBoard).observe($("boardViewport"));
+    initBoardGestures();
     $("boardZoomIn").addEventListener("click", () => setBoardZoom(boardZoom + .5));
     $("boardZoomOut").addEventListener("click", () => setBoardZoom(boardZoom - .5));
     $("boardZoomReset").addEventListener("click", () => setBoardZoom(1));
     $("closeBoardInspector").addEventListener("click", closeInspector);
     document.addEventListener("keydown", event => { if (event.key === "Escape") closeInspector(); });
     $("bgm").addEventListener("ended", advanceGameMusic);
-    renderScenery();
     renderLots();
     drawBoard();
     lobby = window.ClassroomMultiplayerLobby.create({

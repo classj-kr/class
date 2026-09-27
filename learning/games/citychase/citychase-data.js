@@ -113,13 +113,13 @@
   addEdge("jail", "g6");
 
   const buildings = [
-    { id: "market", name: "별밤 마트", icon: "▦", x: 175, y: 235, doorNode: "e1", color: "#f4b942", lot: { width: 148, height: 132, style: "stone" }, blurb: "밤에도 환한 동네 마트" },
-    { id: "air", name: "구름 항공", icon: "✦", x: 385, y: 235, doorNode: "e2", color: "#58a6d8", lot: { width: 126, height: 148, style: "fence" }, blurb: "도시를 잇는 작은 터미널" },
-    { id: "electro", name: "번개 전자", icon: "ϟ", x: 625, y: 235, doorNode: "e3", color: "#7b6fd0", lot: { width: 146, height: 120, style: "oval" }, blurb: "빛나는 전자 상가" },
-    { id: "pizza", name: "달빛 피자", icon: "◒", x: 825, y: 235, doorNode: "e4", color: "#f08b4d", lot: { width: 158, height: 138, style: "stone" }, blurb: "둥근 화덕 피자 가게" },
-    { id: "snack", name: "골목 분식", icon: "♨", x: 205, y: 785, doorNode: "e5", color: "#e85c79", lot: { width: 118, height: 96, style: "round" }, blurb: "원형 구역 안의 분식집" },
-    { id: "burger", name: "왕관 버거", icon: "≋", x: 415, y: 790, doorNode: "e6", color: "#ef765d", lot: { width: 124, height: 146, style: "fence" }, blurb: "왕관 모양 간판의 식당" },
-    { id: "cafe", name: "초록 카페", icon: "♣", x: 800, y: 790, doorNode: "e7", color: "#55a96f", lot: { width: 164, height: 142, style: "stone" }, blurb: "공원 옆 조용한 카페" }
+    { id: "market", name: "스타박스", icon: "▦", x: 175, y: 235, doorNode: "e1", color: "#f4b942", lot: { width: 148, height: 132, style: "stone" }, blurb: "카페" },
+    { id: "air", name: "이다야", icon: "✦", x: 385, y: 235, doorNode: "e2", color: "#58a6d8", lot: { width: 126, height: 148, style: "fence" }, blurb: "카페" },
+    { id: "electro", name: "기가커피", icon: "ϟ", x: 625, y: 235, doorNode: "e3", color: "#7b6fd0", lot: { width: 146, height: 120, style: "oval" }, blurb: "카페" },
+    { id: "pizza", name: "백다방", icon: "◒", x: 825, y: 235, doorNode: "e4", color: "#f08b4d", lot: { width: 158, height: 138, style: "stone" }, blurb: "카페" },
+    { id: "snack", name: "투썸플레이트", icon: "♨", x: 205, y: 785, doorNode: "e5", color: "#e85c79", lot: { width: 118, height: 96, style: "round" }, blurb: "카페" },
+    { id: "burger", name: "맥도날도", icon: "≋", x: 415, y: 790, doorNode: "e6", color: "#ef765d", lot: { width: 124, height: 146, style: "fence" }, blurb: "햄버거 가게" },
+    { id: "cafe", name: "놋데리아", icon: "♣", x: 800, y: 790, doorNode: "e7", color: "#55a96f", lot: { width: 164, height: 142, style: "stone" }, blurb: "햄버거 가게" }
   ];
 
   // 모든 건물 입구는 사진처럼 굵은 빨간 진입 레인으로 표시한다.
