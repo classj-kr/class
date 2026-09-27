@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>스마트 학급 대시보드</title>
+    <title>학급</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
@@ -39,77 +39,31 @@
             overflow-x: hidden;
         }
 
-        /* Top Banner Header */
-        header.dashboard-header {
-            display: grid;
-            grid-template-columns: 1fr auto auto;
-            gap: 20px;
-            align-items: center;
-        }
-
-        .weather-card {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 20px;
-            padding: 16px 22px;
-            backdrop-filter: blur(16px);
-            box-shadow: var(--glass-shadow);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 16px;
-            min-width: 300px;
-        }
-
-        .slogan-card {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 20px;
-            padding: 24px 32px;
-            backdrop-filter: blur(16px);
-            box-shadow: var(--glass-shadow);
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 120px;
-            transition: all 0.3s ease;
-        }
-
-        .slogan-text {
-            font-size: clamp(1.8rem, 3.5vw, 3rem);
-            font-weight: 900;
-            letter-spacing: -0.02em;
-            background: linear-gradient(135deg, #ffffff 30%, var(--accent-green) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-align: center;
-            outline: none;
-            width: 100%;
-        }
-
-        .slogan-text[contenteditable="true"] {
-            border-bottom: 2px dashed var(--accent-green);
-            padding: 4px 8px;
-        }
-
-        .clock-card {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 20px;
-            padding: 20px 32px;
-            backdrop-filter: blur(16px);
-            box-shadow: var(--glass-shadow);
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-            justify-content: center;
-            min-width: 280px;
-        }
+        /* Clock, current weather, and today's forecast. */
+        header.dashboard-header { display: grid; grid-template-columns: 218px 205px minmax(0, 1fr); gap: 12px; align-items: stretch; }
+        .clock-card, .weather-card, .forecast-card { min-width: 0; background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 16px; padding: 12px 16px; }
+        .clock-card { display: flex; flex-direction: column; justify-content: center; align-items: flex-start; }
+        .weather-card { display: flex; flex-direction: column; justify-content: center; gap: 5px; }
+        .weather-condition { font-size: 0.95rem; color: var(--accent-amber); font-weight: 700; }
+        #weatherHumidity { font-size: 0.85rem; color: #7ce4ff; }
+        #dustBadge { align-self: flex-start; font-size: 0.72rem; padding: 3px 7px; border-radius: 5px; }
+        .forecast-card { display: flex; flex-direction: column; justify-content: center; gap: 6px; }
+        .forecast-meta { display: flex; align-items: center; justify-content: space-between; gap: 8px; font-size: 0.7rem; color: var(--text-muted); }
+        #forecastCaption { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .forecast-meta a { color: var(--text-muted); font-size: 0.65rem; white-space: nowrap; text-decoration: none; }
+        .hourly-forecast { display: grid; grid-template-columns: repeat(var(--forecast-columns, 1), minmax(0, 1fr)); gap: 2px; min-width: 0; }
+        .forecast-hour { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; padding: 4px 1px; min-width: 0; border-radius: 7px; }
+        .forecast-hour.is-current { background: rgba(117,214,159,0.14); outline: 1px solid rgba(117,214,159,0.3); outline-offset: -1px; }
+        .forecast-time { color: var(--text-muted); font-size: 0.73rem; }
+        .forecast-icon { font-size: 1.25rem; line-height: 1.2; }
+        .forecast-temperature { font-size: 1.05rem; font-weight: 800; }
+        .forecast-rain { color: #7ce4ff; font-size: 0.66rem; white-space: nowrap; }
+        .forecast-message { grid-column: 1 / -1; padding: 18px 0; font-size: 0.85rem; color: var(--text-muted); }
+        #forecastRetry { align-self: flex-start; color: var(--accent-green); border: 0; background: none; font: inherit; font-size: 0.8rem; cursor: pointer; text-decoration: underline; }
 
         .clock-time {
             font-family: 'Outfit', sans-serif;
-            font-size: 3.4rem;
+            font-size: 2.8rem;
             font-weight: 800;
             line-height: 1;
             letter-spacing: -0.03em;
@@ -119,7 +73,7 @@
         }
 
         .clock-seconds {
-            font-size: 1.8rem;
+            font-size: 1.25rem;
             color: var(--accent-green);
             margin-left: 4px;
             font-weight: 700;
@@ -127,7 +81,7 @@
 
         .clock-date {
             margin-top: 6px;
-            font-size: 1.15rem;
+            font-size: 0.9rem;
             font-weight: 700;
             color: var(--text-muted);
         }
@@ -160,7 +114,6 @@
             transition: border-color 0.2s ease, transform 0.2s ease;
         }
 
-        .slogan-card,
         .clock-card,
         .widget-card {
             background-color: #101010;
@@ -531,6 +484,18 @@
             outline: 2px solid transparent;
             background: rgba(117, 214, 159, 0.21);
         }
+
+        .attendance-tags {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2px;
+        }
+
+        #attendanceStatus, #attendanceConnectionStatus { color: #ffe3a1; font-size: 0.75rem; }
+        #attendanceSound { padding: 4px 8px; margin-left: auto; }
+        #attendanceArrival { padding: 8px; border-radius: 8px; background: #244b3a; color: #d4ffe4; font-size: 0.85rem; }
+        #attendanceRetry { color: inherit; background: transparent; border: 0; text-decoration: underline; cursor: pointer; }
 
         .attendance-tag {
             display: inline-block;
@@ -1079,90 +1044,132 @@
             padding: 10px;
         }
 
-        /* Multi-Student Bubble Touch Picker (Class123 Style) */
+        /* Fit the full class into the available picker area. */
+        #multiPickerModal .modal-box {
+            width: min(96vw, 1400px);
+            height: min(94vh, 960px);
+            height: min(94dvh, 960px);
+            max-height: none;
+            min-height: 0;
+            overflow: hidden;
+            padding: clamp(12px, 2vw, 20px);
+            gap: 10px;
+            background: #111619;
+            border: 2px solid #2ec4b6;
+            border-radius: 20px;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.6);
+        }
+
+        #multiPickerModal .modal-title {
+            flex-shrink: 0;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 0;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .student-picker-title { font-size: 1.2rem; font-weight: 800; color: #7ce4ff; }
+        .student-picker-actions { display: flex; align-items: center; gap: 6px; margin-left: auto; }
+        .student-picker-actions .btn { min-height: 36px; padding: 6px 10px; font-size: 0.85rem; font-weight: 800; border-radius: 9px; }
+        #shuffleBubblesBtn { background: #ffe600; color: #111; border: none; }
+        #resetBubblesBtn { background: rgba(255,255,255,0.12); color: #fff; border: none; }
+        #closeMultiPickerModal { width: 34px; min-height: 36px; font-size: 1.8rem; background: none; border: none; color: #fff; }
+
         .bubble-picker-grid {
+            --bubble-size: 100px;
+            --bubble-columns: 6;
+            --bubble-rows: 4;
+            --bubble-gap: 10px;
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(142px, 1fr));
-            gap: 20px;
-            padding: 24px 14px;
-            overflow-y: auto;
-            max-height: 60vh;
+            grid-template-columns: repeat(var(--bubble-columns), minmax(0, 1fr));
+            grid-template-rows: repeat(var(--bubble-rows), minmax(0, 1fr));
+            gap: var(--bubble-gap);
+            padding: 8px;
+            flex: 1;
+            min-width: 0;
+            min-height: 0;
             justify-items: center;
             align-items: center;
         }
 
         .bubble-card {
             position: relative;
-            width: 126px;
-            height: 126px;
+            width: var(--bubble-size);
+            height: var(--bubble-size);
+            min-width: 0;
             border-radius: 50%;
             background: radial-gradient(circle at 35% 35%, #4a5863 0%, #22292f 70%, #151a1e 100%);
             border: 3px solid #5a6a77;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.4), inset 0 3px 6px rgba(255,255,255,0.2);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.35), inset 0 3px 6px rgba(255,255,255,0.2);
             cursor: pointer;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: transform 0.2s ease, border-color 0.2s ease;
             user-select: none;
         }
 
         .bubble-card:hover:not(.revealed) {
-            transform: scale(1.1);
+            transform: scale(1.04);
             border-color: #2ec4b6;
-            box-shadow: 0 12px 25px rgba(46, 196, 182, 0.5), inset 0 4px 8px rgba(255,255,255,0.3);
         }
 
+        .bubble-question { font-size: calc(var(--bubble-size) * 0.27); filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5)); }
+
         .bubble-card.revealed {
-            width: 134px;
-            height: 142px;
             background: none;
-            border: none;
+            border-color: transparent;
             box-shadow: none;
-            animation: pop-bounce 0.45s ease-out forwards;
+            animation: pop-bounce 0.35s ease-out forwards;
             cursor: default;
         }
 
         @keyframes pop-bounce {
             0% { transform: scale(0.3) rotate(-15deg); opacity: 0; }
-            65% { transform: scale(1.16) rotate(6deg); opacity: 1; }
+            65% { transform: scale(1.04) rotate(4deg); opacity: 1; }
             100% { transform: scale(1) rotate(0deg); opacity: 1; }
         }
 
         .bubble-avatar {
-            font-size: 4.4rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: calc(var(--bubble-size) * 0.43);
             line-height: 1;
-            filter: drop-shadow(0 8px 14px rgba(0,0,0,0.55));
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.45));
         }
 
         .bubble-name {
-            font-size: 1.18rem;
-            font-weight: 900;
-            color: #ffffff;
+            max-width: 100%;
+            font-size: clamp(10px, calc(var(--bubble-size) * 0.14), 20px);
+            font-weight: 800;
+            line-height: 1.2;
+            color: #fff;
             margin-top: 3px;
             text-align: center;
             white-space: nowrap;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         @media (max-width: 1280px) {
-            header.dashboard-header {
-                grid-template-columns: 1fr auto;
-            }
-            .weather-card {
-                grid-column: 1 / -1;
-                min-width: 0;
-            }
             .dashboard-grid {
                 grid-template-columns: 1fr 1fr;
             }
         }
 
         @media (max-width: 768px) {
-            header.dashboard-header {
-                grid-template-columns: 1fr;
-            }
+            header.dashboard-header { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+            .forecast-card { grid-column: 1 / -1; }
+            .clock-card, .weather-card { padding: 10px; }
+            .clock-time { font-size: clamp(1.9rem, 6vw, 2.8rem); }
+            .clock-seconds { font-size: 1rem; }
+            .clock-date { font-size: 0.75rem; }
+            .weather-card .weather-temp { font-size: 1.35rem; }
+            .weather-condition { font-size: 0.8rem; }
             .dashboard-grid {
                 grid-template-columns: 1fr;
             }
@@ -1171,30 +1178,23 @@
 </head>
 <body>
 
-    <!-- Header / Banner Slogan & Clock -->
     <header class="dashboard-header">
-        <div class="slogan-card" id="sloganCard">
-            <div class="slogan-text" id="sloganText" contenteditable="true">-</div>
-        </div>
         <div class="clock-card">
-            <div class="clock-time">
-                <span id="clockHM">11:15</span>
-                <span class="clock-seconds" id="clockSec">:07</span>
-            </div>
-            <div class="clock-date" id="clockDate">2026년 5월 14일 (목)</div>
+            <div class="clock-time"><span id="clockHM">--:--</span><span class="clock-seconds" id="clockSec">:--</span></div>
+            <div class="clock-date" id="clockDate"></div>
         </div>
-        <div class="weather-card">
-            <div style="display: flex; flex-direction: column; gap: 3px;">
-                <div class="weather-temp" id="weatherTemp" style="font-size: 1.4rem; font-weight: 900; color: #ffffff; display: flex; align-items: center; gap: 8px;">
-                    --° <span style="font-size: 1.15rem; color: var(--accent-amber);">☀️ 불러오는 중</span>
-                </div>
-                <div id="weatherHumidity" style="color: #7ce4ff; font-size: 1.05rem; font-weight: 800; display: flex; align-items: center; gap: 4px;">
-                    💧 습도 --%
-                </div>
+        <div class="weather-card" aria-label="현재 날씨">
+            <div class="weather-temp" id="weatherTemp">--°</div>
+            <div id="weatherHumidity">습도 --%</div>
+            <div id="dustBadge" class="dust-pill">미세먼지 불러오는 중</div>
+        </div>
+        <div class="forecast-card" aria-label="오늘 시간대별 일기예보">
+            <div class="forecast-meta">
+                <span id="forecastCaption">오늘의 시간대별 예보</span>
+                <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Open-Meteo</a>
             </div>
-            <div id="dustBadge" class="dust-pill" style="background: #3a86ff; color: #ffffff; padding: 6px 14px; border-radius: 24px; font-size: 0.98rem; font-weight: 800; display: inline-block; box-shadow: 0 4px 12px rgba(58, 134, 255, 0.3);">
-                미세먼지 <span id="dustStatus">로딩 중</span>
-            </div>
+            <div class="hourly-forecast" id="hourlyForecast"><span class="forecast-message">시간대별 예보 불러오는 중...</span></div>
+            <button id="forecastRetry" type="button" hidden>다시 불러오기</button>
         </div>
     </header>
 
@@ -1217,8 +1217,12 @@
                     <select id="classSwitcherSelect" aria-label="학급 선택" class="icon-btn" style="background: rgba(117,214,159,0.15); border-color: rgba(117,214,159,0.3); color: var(--accent-green); font-weight: 700; cursor: pointer; outline: none; padding: 4px 8px;" hidden>
                         <option value="">학급 선택...</option>
                     </select>
+                    <button type="button" id="attendanceSound" class="icon-btn" aria-label="학부모 알림 소리">🔔</button>
                     <span class="checklist-status" id="missingBadge">미완료: 0명</span>
             </div>
+            <div id="attendanceConnectionStatus" role="status" hidden>학부모 알림 연결 중…</div>
+            <div id="attendanceArrival" role="status" hidden></div>
+            <div id="attendanceStatus" role="status" hidden>출결 표시를 불러오지 못했습니다. <button type="button" id="attendanceRetry">다시 확인</button></div>
             <div class="checklist-grid" id="checklistGrid">
                 <!-- Roster student chips generated by JS -->
             </div>
@@ -1272,14 +1276,6 @@
             <a class="tool-btn" href="seating">🪑 자리 배치</a>
             <button class="tool-btn" id="resetBtn">배치 초기화</button>
         </div>
-        <div class="toolbar-group">
-            <span style="color: var(--text-muted); font-size: 0.85rem; font-weight: 700;">배너 서식:</span>
-            <button class="tool-btn" id="alignLeftBtn">왼쪽</button>
-            <button class="tool-btn" id="alignCenterBtn">가운데</button>
-            <button class="tool-btn" id="alignRightBtn">오른쪽</button>
-            <button class="tool-btn" id="fontSizeMinusBtn">글자 -</button>
-            <button class="tool-btn" id="fontSizePlusBtn">글자 +</button>
-        </div>
     </footer>
     <script>document.getElementById("blackboardLink").search = location.search;</script>
 
@@ -1306,13 +1302,13 @@
 
     <!-- Presenter Picker Modal -->
     <div class="modal-overlay" id="multiPickerModal" hidden>
-        <div class="modal-box" style="width: min(94vw, 1100px); max-height: 90vh; background: #111619; border: 2px solid #2ec4b6; border-radius: 24px; box-shadow: 0 25px 60px rgba(0,0,0,0.6); display: flex; flex-direction: column; padding: 20px 24px;">
-            <div class="modal-title" style="border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 14px; margin-bottom: 10px;">
-                <span style="font-size: 1.35rem; font-weight: 900; color: #7ce4ff; display: flex; align-items: center; gap: 8px;">🎯 학생 추첨</span>
-                <div style="display: flex; gap: 10px; align-items: center;">
-                    <button class="btn" id="shuffleBubblesBtn" type="button" style="background: #ffe600; color: #111111; font-weight: 900; font-size: 1rem; padding: 8px 18px; border-radius: 12px; border: none; cursor: pointer; box-shadow: 0 4px 14px rgba(255, 230, 0, 0.4);">🎲 학생 섞기</button>
-                    <button class="btn" id="resetBubblesBtn" type="button" style="background: rgba(255,255,255,0.12); color: #ffffff; font-weight: 800; font-size: 0.95rem; padding: 8px 16px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.25); cursor: pointer;">🔄 전부 뒤집기</button>
-                    <button class="modal-close" id="closeMultiPickerModal" type="button" style="font-size: 2rem; background: none; border: none; color: #fff; cursor: pointer; margin-left: 6px;">&times;</button>
+        <div class="modal-box">
+            <div class="modal-title">
+                <span class="student-picker-title">🎯 학생 추첨</span>
+                <div class="student-picker-actions">
+                    <button class="btn" id="shuffleBubblesBtn" type="button">🎲 학생 섞기</button>
+                    <button class="btn" id="resetBubblesBtn" type="button">🔄 전부 뒤집기</button>
+                    <button class="modal-close" id="closeMultiPickerModal" type="button" aria-label="학생 추첨 닫기">&times;</button>
                 </div>
             </div>
 
@@ -1343,10 +1339,9 @@
     </div>
 
     <script src="./avatar-assignment.js"></script>
+    <script src="./dashboard-attendance-live.js"></script>
     <script>
         // State & LocalStorage
-        let sloganAlign = localStorage.getItem("sloganAlign") || "center";
-        let sloganFontSize = parseInt(localStorage.getItem("sloganFontSize") || "42", 10);
         let schedules = [];
         let schoolSchedules = [];
         let schedulesLoading = true;
@@ -1370,13 +1365,7 @@
         let selectedDayTab = "목";
 
         // Elements
-        const sloganText = document.getElementById("sloganText");
         const resetBtn = document.getElementById("resetBtn");
-        const alignLeftBtn = document.getElementById("alignLeftBtn");
-        const alignCenterBtn = document.getElementById("alignCenterBtn");
-        const alignRightBtn = document.getElementById("alignRightBtn");
-        const fontSizeMinusBtn = document.getElementById("fontSizeMinusBtn");
-        const fontSizePlusBtn = document.getElementById("fontSizePlusBtn");
 
         const clockHM = document.getElementById("clockHM");
         const clockSec = document.getElementById("clockSec");
@@ -1645,9 +1634,6 @@
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({
                         timetable: customTimetable,
-                        sloganText: sloganText.textContent,
-                        sloganAlign: sloganAlign,
-                        sloganFontSize: sloganFontSize,
                         cardOrder: cardOrder
                     }),
                     credentials: "include"
@@ -1664,17 +1650,6 @@
                     if (s.timetable && Object.keys(s.timetable).length > 0) {
                         customTimetable = s.timetable;
                     }
-                    if (s.sloganText !== undefined && s.sloganText !== null && s.sloganText.trim() !== "" && s.sloganText !== "-") {
-                        sloganText.textContent = s.sloganText;
-                    } else {
-                        sloganText.textContent = "-";
-                    }
-                    if (s.sloganAlign) {
-                        sloganAlign = s.sloganAlign;
-                    }
-                    if (s.sloganFontSize) {
-                        sloganFontSize = s.sloganFontSize;
-                    }
                     if (Array.isArray(s.cardOrder) && s.cardOrder.length > 0) {
                         const grid = document.getElementById("dashboardGrid");
                         if (grid) {
@@ -1684,36 +1659,11 @@
                             });
                         }
                     }
-                    applySloganStyle();
                     renderTimetable(selectedDayTab);
-                } else if (data.settings === null) {
-                    // New user or reset account: default clean state directly from DB
-                    sloganText.textContent = "-";
-                    sloganAlign = "center";
-                    sloganFontSize = 42;
-                    applySloganStyle();
                 }
             } catch (e) {}
         }
         loadDashboardSettingsFromDB();
-
-        // 3. Slogan & Formatting
-        function applySloganStyle() {
-            sloganText.style.textAlign = sloganAlign;
-            sloganText.style.fontSize = sloganFontSize + "px";
-        }
-        applySloganStyle();
-
-        sloganText.addEventListener("blur", () => {
-            syncDashboardSettingsToDB();
-        });
-
-        alignLeftBtn.addEventListener("click", () => { sloganAlign = "left"; applySloganStyle(); syncDashboardSettingsToDB(); });
-        alignCenterBtn.addEventListener("click", () => { sloganAlign = "center"; applySloganStyle(); syncDashboardSettingsToDB(); });
-        alignRightBtn.addEventListener("click", () => { sloganAlign = "right"; applySloganStyle(); syncDashboardSettingsToDB(); });
-
-        fontSizePlusBtn.addEventListener("click", () => { sloganFontSize = Math.min(64, sloganFontSize + 4); applySloganStyle(); syncDashboardSettingsToDB(); });
-        fontSizeMinusBtn.addEventListener("click", () => { sloganFontSize = Math.max(20, sloganFontSize - 4); applySloganStyle(); syncDashboardSettingsToDB(); });
 
         resetBtn.addEventListener("click", async () => {
             if (confirm("대시보드 설정을 초기화하시겠습니까?")) {
@@ -1723,9 +1673,6 @@
                         headers: { "Content-Type": "application/json" },
                         body: JSON.stringify({
                             timetable: {},
-                            sloganText: "-",
-                            sloganAlign: "center",
-                            sloganFontSize: 42,
                             cardOrder: []
                         }),
                         credentials: "include"
@@ -1853,7 +1800,12 @@
                 rosterLoadMessage = "담임 학급 정보를 불러오지 못했습니다. 학교 관리자에게 학급 배정을 확인해 주세요.";
                 fetchRealtimeWeatherAndAirQuality();
             }
-            renderChecklist();
+            document.title = activeRosterClass?.grade && activeRosterClass?.classNumber
+                ? String(activeRosterClass.grade) + "학년 " + String(activeRosterClass.classNumber) + "반"
+                : "학급";
+            fetchQuickAlertsForDashboard();
+            document.getElementById("attendanceArrival").hidden = true;
+            attendanceLive.selectClass(activeRosterClass?.id);
             await loadSchedules(activeScheduleClassId);
             await loadCalendarData();
         }
@@ -1877,74 +1829,57 @@
 
         let todayQuickAlerts = new Map();
         let activeRosterClass = null;
+        let attendanceRequestVersion = 0;
+        let attendanceSnapshotKey = "";
+        let attendanceLoadFailed = false;
 
         function attendanceKey(grade, classNumber, studentNumber) {
             return [grade, classNumber, studentNumber].map(String).join(":");
         }
 
-        function normalizeAttendanceType(value) {
-            const type = String(value || "");
-            if (type.includes("지각")) return "지각";
-            if (type.includes("조퇴")) return "조퇴";
-            if (type.includes("체험학습")) return "체험학습";
-            return "결석";
-        }
-
-        function putTodayAlert(row, noticeType, reason, source, priority) {
-            if (row.grade == null || row.classNumber == null || row.studentNumber == null) return;
-            const key = attendanceKey(row.grade, row.classNumber, row.studentNumber);
-            const current = todayQuickAlerts.get(key);
-            if (current && current.priority >= priority) return;
-            todayQuickAlerts.set(key, {
-                noticeType: normalizeAttendanceType(noticeType),
-                reason: String(reason || ""),
-                source,
-                priority
-            });
-        }
-
         async function fetchQuickAlertsForDashboard() {
-            const todayStr = localDateKey();
-            todayQuickAlerts.clear();
-
+            const requestVersion = ++attendanceRequestVersion;
+            const classroom = activeRosterClass;
+            const today = koreanWeatherClock().date;
+            const snapshotKey = classroom ? classroom.id + ":" + today : "";
+            if (snapshotKey !== attendanceSnapshotKey) {
+                todayQuickAlerts = new Map();
+                attendanceSnapshotKey = snapshotKey;
+            }
+            attendanceLoadFailed = false;
+            renderChecklist();
+            if (!classroom?.id) return;
             try {
-                const res = await fetch("/api/teacher/quick-absences");
-                if (res.ok) {
-                    const data = await res.json();
-                    (data.alerts || []).forEach(a => {
-                        if (a.expectedDate === todayStr || String(a.expectedDate).startsWith(todayStr)) {
-                            putTodayAlert(a, a.noticeType, a.reason, "학부모 출결 알림", 1);
-                        }
-                    });
+                const res = await fetch("/api/teacher/class-attendance?classId=" + encodeURIComponent(classroom.id), {
+                    cache: "no-store",
+                    signal: AbortSignal.timeout(10000)
+                });
+                if (!res.ok) throw new Error("Attendance fetch failed");
+                const data = await res.json();
+                if (requestVersion !== attendanceRequestVersion || activeRosterClass?.id !== classroom.id) return;
+                if (String(data.classId) !== String(classroom.id) || data.date !== koreanWeatherClock().date
+                    || !Array.isArray(data.alerts)) throw new Error("Attendance response does not match the class/date");
+                const nextAlerts = new Map();
+                for (const row of data.alerts) {
+                    if (row.studentNumber == null || !["결석", "지각", "조퇴", "체험학습"].includes(row.noticeType)) continue;
+                    const key = attendanceKey(classroom.grade, classroom.classNumber, row.studentNumber);
+                    const alerts = nextAlerts.get(key) || [];
+                    if (!alerts.some(alert => alert.noticeType === row.noticeType)) {
+                        alerts.push({ noticeType: row.noticeType, source: row.source });
+                    }
+                    nextAlerts.set(key, alerts);
                 }
-            } catch (e) {}
-
-            try {
-                const res = await fetch("/api/teacher/absence-notes");
-                if (res.ok) {
-                    const data = await res.json();
-                    (data.notes || []).forEach(n => {
-                        if (n.status === "approved" && n.startDate <= todayStr && n.endDate >= todayStr) {
-                            putTodayAlert(n, n.reasonType, n.reasonDetail, "승인된 결석계", 2);
-                        }
-                    });
-                }
-            } catch (e) {}
-
-            try {
-                const res = await fetch("/api/teacher/experiential-apps");
-                if (res.ok) {
-                    const data = await res.json();
-                    (data.applications || []).forEach(a => {
-                        if (a.status === "approved" && a.startDate <= todayStr && a.endDate >= todayStr) {
-                            putTodayAlert(a, "체험학습", a.location || a.planDetail, "승인된 체험학습", 2);
-                        }
-                    });
-                }
-            } catch (e) {}
+                todayQuickAlerts = nextAlerts;
+                attendanceSnapshotKey = classroom.id + ":" + data.date;
+            } catch (error) {
+                if (requestVersion !== attendanceRequestVersion || activeRosterClass?.id !== classroom.id) return;
+                attendanceLoadFailed = true;
+            }
+            renderChecklist();
         }
 
         function renderChecklist() {
+            document.getElementById("attendanceStatus").hidden = !attendanceLoadFailed;
             checklistGrid.replaceChildren();
             if (rosterStudents.length === 0) {
                 const notice = document.createElement("div");
@@ -1964,9 +1899,10 @@
                 if (isMissing) chip.classList.add("missing");
                 chip.setAttribute("aria-pressed", String(isMissing));
 
-                const alertInfo = activeRosterClass
-                    ? todayQuickAlerts.get(attendanceKey(activeRosterClass.grade, activeRosterClass.classNumber, num))
-                    : null;
+                const alerts = activeRosterClass
+                    ? todayQuickAlerts.get(attendanceKey(activeRosterClass.grade, activeRosterClass.classNumber, num)) || []
+                    : [];
+                const attendanceLabel = alerts.map(alert => alert.source + " " + alert.noticeType).join(", ");
                 const name = document.createElement("span");
                 name.className = "roster-student-copy";
                 const numberLabel = document.createElement("span");
@@ -1978,14 +1914,18 @@
                 name.append(numberLabel, studentName);
                 chip.append(name);
 
-                if (alertInfo) {
-                    const tag = document.createElement("span");
-                    tag.className = "attendance-tag";
-                    tag.dataset.kind = alertInfo.noticeType;
-                    tag.textContent = alertInfo.noticeType;
-                    chip.append(tag);
-                    chip.title = alertInfo.source + ": " + alertInfo.noticeType
-                        + (alertInfo.reason ? " · " + alertInfo.reason : "");
+                if (alerts.length) {
+                    const tags = document.createElement("span");
+                    tags.className = "attendance-tags";
+                    for (const alert of alerts) {
+                        const tag = document.createElement("span");
+                        tag.className = "attendance-tag";
+                        tag.dataset.kind = alert.noticeType;
+                        tag.textContent = alert.noticeType;
+                        tags.append(tag);
+                    }
+                    chip.append(tags);
+                    chip.title = attendanceLabel;
                 }
                 if (isTodayBirthday(student)) {
                     const birthday = document.createElement("span");
@@ -1994,7 +1934,7 @@
                     chip.append(birthday);
                 }
                 chip.setAttribute("aria-label", num + "번 " + (student.name || "")
-                    + (alertInfo ? ", " + alertInfo.source + " " + alertInfo.noticeType : "")
+                    + (attendanceLabel ? ", " + attendanceLabel : "")
                     + (isMissing ? ", 미완료" : ", 완료"));
 
                 chip.addEventListener("click", () => {
@@ -2005,7 +1945,7 @@
                     chip.classList.toggle("missing", nextMissing);
                     chip.setAttribute("aria-pressed", String(nextMissing));
                     chip.setAttribute("aria-label", num + "번 " + (student.name || "")
-                        + (alertInfo ? ", " + alertInfo.source + " " + alertInfo.noticeType : "")
+                        + (attendanceLabel ? ", " + attendanceLabel : "")
                         + (nextMissing ? ", 미완료" : ", 완료"));
                     missingBadge.textContent = "미완료: " + missingStudents.size + "명";
                 });
@@ -2014,10 +1954,43 @@
             missingBadge.textContent = "미완료: " + missingStudents.size + "명";
         }
 
-        (async () => {
-            await fetchQuickAlertsForDashboard();
-            await fetchRosterAndRenderChecklist();
-        })();
+        let attendanceArrivalTimer;
+        const attendanceLive = createDashboardAttendanceLive({
+            soundButton: document.getElementById("attendanceSound"),
+            onChange: fetchQuickAlertsForDashboard,
+            onConnectionChange: failed => {
+                document.getElementById("attendanceConnectionStatus").hidden = !failed;
+            },
+            onArrival: (event, soundNeedsInteraction) => {
+                const notice = document.getElementById("attendanceArrival");
+                const student = rosterStudents.find(row => String(row.number) === String(event.studentNumber));
+                notice.textContent = (student?.name || event.studentNumber + "번") + " · " + event.noticeType + " 알림 도착"
+                    + (soundNeedsInteraction ? " · 소리를 켜려면 화면을 눌러 주세요" : "");
+                notice.hidden = false;
+                clearTimeout(attendanceArrivalTimer);
+                attendanceArrivalTimer = setTimeout(() => { notice.hidden = true; }, 8000);
+            }
+        });
+        document.getElementById("attendanceRetry").addEventListener("click", fetchQuickAlertsForDashboard);
+        // One rollover refresh per day; attendance itself is updated by incoming events.
+        let attendanceMidnightTimer;
+        function scheduleAttendanceRollover() {
+            clearTimeout(attendanceMidnightTimer);
+            const nextMidnight = new Date(koreanWeatherClock().date + "T00:00:00+09:00").getTime() + 86400000;
+            attendanceMidnightTimer = setTimeout(() => {
+                fetchQuickAlertsForDashboard();
+                scheduleAttendanceRollover();
+            }, Math.max(1000, nextMidnight - Date.now() + 100));
+        }
+        scheduleAttendanceRollover();
+        document.addEventListener("visibilitychange", () => {
+            if (!document.hidden && attendanceSnapshotKey
+                && !attendanceSnapshotKey.endsWith(":" + koreanWeatherClock().date)) {
+                fetchQuickAlertsForDashboard();
+                scheduleAttendanceRollover();
+            }
+        });
+        fetchRosterAndRenderChecklist();
 
         // 5. Important schedules
         function localDateKey(date = new Date()) {
@@ -2692,64 +2665,157 @@
             }
         }
 
-        // isEstimated: true when neither the school's location nor the
-        // browser's geolocation could be resolved, so these coordinates are
-        // just a hardcoded fallback point -- the reading shown is not
-        // actually the school's weather, and the UI must say so rather than
-        // presenting a guess as fact.
-        async function fetchWeatherWithCoords(lat, lon, isEstimated = false) {
-            try {
-                const weatherRes = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true&hourly=relativehumidity_2m`);
-                const weatherData = await weatherRes.json();
-                
-                const airRes = await fetch(`https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${lat}&longitude=${lon}&current=pm10`);
-                const airData = await airRes.json();
+        let hourlyWeather = [];
+        let forecastDate = "";
+        let forecastEstimated = false;
+        let latestWeatherCoordinates = null;
+        let forecastRequestVersion = 0;
+        let weatherLastRequestedAt = 0;
 
-                if (weatherData && weatherData.current_weather) {
-                    const temp = Math.round(weatherData.current_weather.temperature);
-                    const code = weatherData.current_weather.weathercode;
-                    const humidity = weatherData.hourly?.relativehumidity_2m?.[0] || 55;
-                    
-                    let cond = "☀️ 맑음";
-                    if (code >= 1 && code <= 3) cond = "⛅ 구름조금";
-                    else if (code >= 45 && code <= 48) cond = "🌫️ 안개";
-                    else if (code >= 51 && code <= 67) cond = "🌧️ 비";
-                    else if (code >= 71) cond = "❄️ 눈";
-
-                    const weatherTempEl = document.getElementById("weatherTemp");
-                    const weatherHumidityEl = document.getElementById("weatherHumidity");
-                    const estimatedNote = isEstimated
-                        ? ` <span style="font-size: 0.7rem; color: var(--muted, #9ca3af);" title="학교 위치를 확인하지 못해 정확하지 않을 수 있습니다.">(위치 추정)</span>`
-                        : "";
-                    if (weatherTempEl) weatherTempEl.innerHTML = `${temp}° <span style="font-size: 1.15rem; color: var(--accent-amber);">${cond}</span>${estimatedNote}`;
-                    if (weatherHumidityEl) weatherHumidityEl.innerHTML = `💧 습도 <strong style="color: #7ce4ff; font-weight: 900;">${humidity}%</strong>`;
-                }
-
-                if (airData && airData.current && airData.current.pm10 !== undefined) {
-                    const pm10 = Math.round(airData.current.pm10);
-                    const dustBadge = document.getElementById("dustBadge");
-                    if (dustBadge) {
-                        let label = "좋음";
-                        let bg = "#3a86ff";
-                        let color = "#ffffff";
-
-                        if (pm10 > 150) {
-                            label = "매우나쁨"; bg = "#e63946"; color = "#ffffff";
-                        } else if (pm10 > 80) {
-                            label = "나쁨"; bg = "#ffb703"; color = "#000000"; // 주황/노랑
-                        } else if (pm10 > 30) {
-                            label = "보통"; bg = "#2ec4b6"; color = "#0b0f0c"; // 초록
-                        }
-
-                        dustBadge.style.background = bg;
-                        dustBadge.style.color = color;
-                        dustBadge.innerHTML = `미세먼지 <strong>${label}</strong> (${pm10}㎍/㎥)`;
-                    }
-                }
-            } catch (err) {
-                console.error("날씨/미세먼지 API 호출 오류:", err);
-            }
+        function koreanWeatherClock() {
+            const parts = new Intl.DateTimeFormat("en-GB", {
+                timeZone: "Asia/Seoul", year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", hourCycle: "h23"
+            }).formatToParts(new Date());
+            const value = type => parts.find(part => part.type === type).value;
+            return { date: value("year") + "-" + value("month") + "-" + value("day"), hour: Number(value("hour")) };
         }
+
+        function describeWeather(code, isDay = 1) {
+            if (code === 0) return { icon: isDay ? "☀️" : "🌙", name: "맑음" };
+            if (code === 1 || code === 2) return { icon: isDay ? "🌤️" : "☁️", name: "구름조금" };
+            if (code === 3) return { icon: "☁️", name: "흐림" };
+            if ([45, 48].includes(code)) return { icon: "🌫️", name: "안개" };
+            if ([51, 53, 55, 56, 57].includes(code)) return { icon: "🌦️", name: "이슬비" };
+            if ([61, 63, 65, 66, 67].includes(code)) return { icon: "🌧️", name: "비" };
+            if ([71, 73, 75, 77, 85, 86].includes(code)) return { icon: "🌨️", name: "눈" };
+            if ([80, 81, 82].includes(code)) return { icon: "🌦️", name: "소나기" };
+            if ([95, 96, 97, 99].includes(code)) return { icon: "⛈️", name: "뇌우" };
+            return { icon: "—", name: "날씨 정보 없음" };
+        }
+
+        function showForecastMessage(message, retry = false) {
+            const grid = document.getElementById("hourlyForecast");
+            grid.replaceChildren();
+            const text = document.createElement("span");
+            text.className = "forecast-message";
+            text.textContent = message;
+            grid.append(text);
+            document.getElementById("forecastRetry").hidden = !retry;
+        }
+
+        function renderHourlyForecast() {
+            if (!hourlyWeather.length) return;
+            const grid = document.getElementById("hourlyForecast");
+            const capacity = Math.max(1, Math.floor(grid.clientWidth / 48));
+            const step = [1, 2, 3, 4, 6, 12, 24].find(value => Math.ceil(hourlyWeather.length / value) <= capacity) || 24;
+            const hours = hourlyWeather.filter(item => item.hour % step === 0);
+            const now = koreanWeatherClock();
+            grid.style.setProperty("--forecast-columns", hours.length);
+            grid.replaceChildren();
+            document.getElementById("forecastCaption").textContent = "오늘 · " + step + "시간 간격 · 강수확률"
+                + (forecastEstimated ? " · 위치 추정" : "");
+            hours.forEach(item => {
+                const condition = describeWeather(item.code, item.isDay);
+                const cell = document.createElement("div");
+                cell.className = "forecast-hour";
+                if (forecastDate === now.date && now.hour >= item.hour && now.hour < item.hour + step) cell.classList.add("is-current");
+                const temperature = Number.isFinite(item.temperature) ? Math.round(item.temperature) + "°" : "--°";
+                const probability = Number.isFinite(item.rain) ? Math.round(item.rain) + "%" : "--%";
+                cell.title = item.hour + "시 · " + condition.name + " · " + temperature + " · 강수확률 " + probability;
+                cell.setAttribute("aria-label", cell.title);
+                [["forecast-time", String(item.hour).padStart(2, "0") + "시"], ["forecast-icon", condition.icon],
+                 ["forecast-temperature", temperature], ["forecast-rain", "💧 " + probability]].forEach(([className, value]) => {
+                    const span = document.createElement("span");
+                    span.className = className;
+                    span.textContent = value;
+                    cell.append(span);
+                });
+                grid.append(cell);
+            });
+        }
+
+        const forecastResizeObserver = new ResizeObserver(renderHourlyForecast);
+        forecastResizeObserver.observe(document.getElementById("hourlyForecast"));
+
+        async function weatherJson(url) {
+            const response = await fetch(url, { signal: AbortSignal.timeout(10000) });
+            if (!response.ok) throw new Error("Weather request failed");
+            return response.json();
+        }
+
+        // Reuse the same coordinates and providers as the current-weather request.
+        async function fetchWeatherWithCoords(lat, lon, isEstimated = false) {
+            const version = ++forecastRequestVersion;
+            latestWeatherCoordinates = { lat, lon, isEstimated };
+            weatherLastRequestedAt = Date.now();
+            forecastEstimated = isEstimated;
+            hourlyWeather = [];
+            showForecastMessage("시간대별 예보 불러오는 중...");
+            document.getElementById("weatherTemp").textContent = "--°";
+            document.getElementById("weatherHumidity").textContent = "습도 --%";
+            const dust = document.getElementById("dustBadge");
+            dust.textContent = "미세먼지 불러오는 중";
+            dust.style.background = "";
+            dust.style.color = "";
+            const query = new URLSearchParams({
+                latitude: lat, longitude: lon, timezone: "Asia/Seoul", forecast_days: "1",
+                current_weather: "true",
+                hourly: "temperature_2m,relative_humidity_2m,precipitation_probability,weather_code,is_day"
+            });
+            const airQuery = new URLSearchParams({ latitude: lat, longitude: lon, current: "pm10" });
+            const results = await Promise.allSettled([
+                weatherJson("https://api.open-meteo.com/v1/forecast?" + query),
+                weatherJson("https://air-quality-api.open-meteo.com/v1/air-quality?" + airQuery)
+            ]);
+            if (version !== forecastRequestVersion) return;
+            if (results[0].status === "fulfilled") {
+                const data = results[0].value;
+                const current = data.current_weather || {};
+                const hourly = data.hourly || {};
+                const condition = describeWeather(current.weathercode, current.is_day);
+                const temp = document.getElementById("weatherTemp");
+                temp.textContent = Number.isFinite(current.temperature) ? Math.round(current.temperature) + "° " : "--° ";
+                const conditionText = document.createElement("span");
+                conditionText.className = "weather-condition";
+                conditionText.textContent = condition.icon + " " + condition.name + (isEstimated ? " (위치 추정)" : "");
+                temp.append(conditionText);
+                const currentIndex = (hourly.time || []).findIndex(time => time.slice(0, 13) === String(current.time || "").slice(0, 13));
+                const humidity = hourly.relative_humidity_2m?.[currentIndex];
+                document.getElementById("weatherHumidity").textContent = "습도 " + (Number.isFinite(humidity) ? Math.round(humidity) + "%" : "--%");
+                forecastDate = koreanWeatherClock().date;
+                hourlyWeather = (hourly.time || []).map((time, index) => ({
+                    time, hour: Number(time.slice(11, 13)), temperature: hourly.temperature_2m?.[index],
+                    rain: hourly.precipitation_probability?.[index], code: hourly.weather_code?.[index], isDay: hourly.is_day?.[index]
+                })).filter(item => item.time.startsWith(forecastDate + "T"));
+                if (hourlyWeather.length) {
+                    document.getElementById("forecastRetry").hidden = true;
+                    renderHourlyForecast();
+                } else showForecastMessage("오늘의 시간대별 예보를 불러오지 못했습니다.", true);
+            } else showForecastMessage("일기예보를 불러오지 못했습니다.", true);
+
+            const pm10 = results[1].status === "fulfilled" ? results[1].value.current?.pm10 : null;
+            if (Number.isFinite(pm10)) {
+                const value = Math.round(pm10);
+                const [label, color] = value > 150 ? ["매우나쁨", "#ff8b82"]
+                    : value > 80 ? ["나쁨", "#f0bd64"] : value > 30 ? ["보통", "#75d69f"] : ["좋음", "#7ce4ff"];
+                dust.textContent = "미세먼지 " + label + " " + value + "㎍/㎥";
+                dust.style.background = "rgba(255,255,255,0.05)";
+                dust.style.color = color;
+            } else dust.textContent = "미세먼지 조회 실패";
+        }
+
+        function refreshWeather() {
+            if (!latestWeatherCoordinates) return;
+            const { lat, lon, isEstimated } = latestWeatherCoordinates;
+            fetchWeatherWithCoords(lat, lon, isEstimated);
+        }
+        document.getElementById("forecastRetry").addEventListener("click", refreshWeather);
+        setInterval(() => {
+            if (!latestWeatherCoordinates) return;
+            if (Date.now() - weatherLastRequestedAt >= 30 * 60 * 1000
+                || (forecastDate && forecastDate !== koreanWeatherClock().date)) refreshWeather();
+            else renderHourlyForecast();
+        }, 60000);
 
         // 8. Presenter Picker & Web Audio Feedback
         const multiPickerModalBtn = document.getElementById("multiPickerModalBtn");
@@ -2760,6 +2826,29 @@
         const bubblePickerGrid = document.getElementById("bubblePickerGrid");
 
         let bubbleList = [];
+
+        function fitBubblePicker() {
+            if (multiPickerModal.hidden || !bubblePickerGrid.children.length) return;
+            const count = bubblePickerGrid.children.length;
+            const width = bubblePickerGrid.clientWidth - 16;
+            const height = bubblePickerGrid.clientHeight - 16;
+            if (width <= 0 || height <= 0) return;
+            const gap = width < 600 ? 6 : 10;
+            let best = { size: 0, columns: 1, rows: count };
+            for (let columns = 1; columns <= count; columns++) {
+                const rows = Math.ceil(count / columns);
+                const size = Math.min((width - gap * (columns - 1)) / columns,
+                    (height - gap * (rows - 1)) / rows);
+                if (size > best.size) best = { size, columns, rows };
+            }
+            bubblePickerGrid.style.setProperty("--bubble-columns", best.columns);
+            bubblePickerGrid.style.setProperty("--bubble-rows", best.rows);
+            bubblePickerGrid.style.setProperty("--bubble-gap", gap + "px");
+            bubblePickerGrid.style.setProperty("--bubble-size", Math.max(1, Math.floor(Math.min(146, best.size))) + "px");
+        }
+
+        const bubbleResizeObserver = new ResizeObserver(fitBubblePicker);
+        bubbleResizeObserver.observe(bubblePickerGrid);
 
         function playTingSound() {
             try {
@@ -2820,7 +2909,7 @@
                 const card = document.createElement("div");
                 card.className = "bubble-card";
                 card.title = "터치하여 학생을 추첨하세요!";
-                card.innerHTML = `<span style="font-size: 2.2rem; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));">❓</span>`;
+                card.innerHTML = '<span class="bubble-question">❓</span>';
 
                 card.addEventListener("click", () => {
                     if (card.classList.contains("revealed")) return;
@@ -2834,6 +2923,7 @@
 
                 bubblePickerGrid.append(card);
             });
+            fitBubblePicker();
         }
 
         multiPickerModalBtn.addEventListener("click", () => {

@@ -28,6 +28,10 @@
   let movementAnimating = false;
   let movementAnimationToken = 0;
   let gameMusicTrack = 0;
+  let inspectedNode = null;
+  let inspectorReturnFocus = null;
+  let boardZoom = 1;
+  let boardSize = 0;
 
   function myId() { return lobby?.snapshot().myId || ""; }
   function me() { return state?.players.find(player => player.id === myId()) || null; }
@@ -209,24 +213,6 @@
     return `<span class="pawnFaces${controllers.length > 1 ? " shared" : ""}">${faces || '<span class="pawnInitial">?</span>'}</span>`;
   }
 
-  function pawnClusterOffset(node, index, count) {
-    if (count <= 1) return { x: 0, y: 0 };
-    const row = Math.floor(index / 3);
-    const rows = Math.ceil(count / 3);
-    const rowStart = row * 3;
-    const rowCount = Math.min(3, count - rowStart);
-    const column = index - rowStart;
-    const halfSpan = ((rowCount - 1) / 2) * 72;
-    let x = (column - (rowCount - 1) / 2) * 72;
-    let y = (row - (rows - 1) / 2) * 82;
-
-    // 가장자리에서는 첫 말을 원래 칸에 두고 나머지 말과 이름표를 보드 안쪽으로 펼칩니다.
-    if (node.x < 130) x += halfSpan;
-    else if (node.x > 870) x -= halfSpan;
-    if (node.y < 120 && rows > 1) y += ((rows - 1) / 2) * 82;
-    else if (node.y > 880 && rows > 1) y -= ((rows - 1) / 2) * 82;
-    return { x, y };
-  }
 
   function seatDuty(slot, teamSize) {
     if (teamSize === 1) return "말 1·2·3 담당";
@@ -342,7 +328,7 @@
       button.type = "button";
       button.className = "building";
       button.style.cssText = `${positionStyle(building.x, building.y)};--building:${building.color}`;
-      button.disabled = !captainSetup;
+      button.disabled = movementAnimating;
       button.setAttribute("aria-label", `${building.name}${knowledge.content === "hidden" ? "" : `, ${contentLabel(knowledge.content)}`}`);
       const selectedKey = Object.entries(setupSelection).find(([, value]) => value === building.id)?.[0];
       if (captainSetup) button.classList.add("setupTarget");
@@ -352,7 +338,7 @@
       if (occupied) button.classList.add("occupied");
       if (captainSetup) button.dataset.sfx = "stone";
       button.innerHTML = `<img class="buildingPiece" src="${ASSET.shop}" alt=""><span class="buildingIcon">${building.icon}</span><span class="buildingName">${escapeHtml(building.name)}</span><span class="buildingStatus">${searchable ? "수색 가능" : occupied ? "수색 중" : ""}</span><span class="buildingKnowledge">${selectedKey ? contentBadge(selectedKey === "undercover" ? "undercover" : "gem") : contentBadge(knowledge.content)}</span>`;
-      button.addEventListener("click", () => selectSetupBuilding(building.id));
+      button.addEventListener("click", () => captainSetup ? selectSetupBuilding(building.id) : inspectNode(entrance.id));
       fragment.appendChild(button);
     }
     layer.replaceChildren(fragment);
@@ -391,15 +377,13 @@
       if (node.dense) button.dataset.dense = "true";
       if (node.start) button.dataset.start = node.start;
       if (node.station) button.dataset.station = String(node.station);
-      button.disabled = !targetClass || actionPending || movementAnimating;
+      button.disabled = (!targetClass && !node.effect && !node.start && node.kind !== "building") || actionPending || movementAnimating;
+      button.dataset.nodeId = node.id;
+      button.classList.toggle("special", !!node.effect);
       const targetLabel = targetClass === "valid" ? `${node.label} · 최종 목적지` : node.label;
       button.title = targetLabel;
       button.setAttribute("aria-label", targetLabel);
-      button.textContent = node.start === "thief"
-        ? "도둑팀 비밀기지"
-        : node.start === "police"
-          ? "경찰팀 구금 구역"
-          : node.station ? String(node.station) : node.kind === "building" ? "수색" : node.effect ? "!" : "";
+      button.innerHTML = nodeSymbol(node);
       button.addEventListener("click", () => handleNodeClick(node.id));
       fragment.appendChild(button);
     }
@@ -435,34 +419,136 @@
     const fragment = document.createDocumentFragment();
     const groups = new Map();
     for (const pawn of state.pawns) {
-      if (!groups.has(pawn.position)) groups.set(pawn.position, []);
-      groups.get(pawn.position).push(pawn);
+      // A travelling pawn stays separate until it reaches an occupied square.
+      const key = movementAnimating && pawn.id === state.lastMove?.pawnId ? "moving:" + pawn.id : pawn.position;
+      if (!groups.has(key)) groups.set(key, []);
+      groups.get(key).push(pawn);
     }
-    for (const [position, pawns] of groups) {
+    for (const pawns of groups.values()) {
+      const position = pawns[0].position;
       const node = nodeMeta(position);
       if (!node) continue;
-      pawns.forEach((pawn, index) => {
-        const button = document.createElement("button");
-        button.type = "button";
-        const choice = state.pending && ["transfer", "rescue"].includes(state.pending.type) && state.pending.options.includes(pawn.id);
-        const offset = pawnClusterOffset(node, index, pawns.length);
-        button.className = `pawn ${pawn.team}${pawn.carryingGem ? " carrying" : ""}${pawn.status === "jailed" ? " jailed" : ""}${pawn.id === state.turnPawnId ? " current" : ""}${choice ? " choice" : ""}`;
-        button.dataset.pawnId = pawn.id;
-        button.style.cssText = positionStyle(node.x + offset.x, node.y + offset.y);
-        const controllers = pawnControllers(pawn.id);
-        const names = controllers.map(player => player.name).join("·") || `${teamName(pawn.team)}팀`;
-        button.innerHTML = `<span class="pawnName">${escapeHtml(names)}</span>${pawnFaceMarkup(controllers)}<span class="pawnNumber">${pawn.number}</span>`;
-        button.setAttribute("aria-label", `${names}, ${pawn.team === "police" ? "경찰" : "도둑"} ${pawn.number}번${pawn.carryingGem ? ", 보석 소지" : ""}`);
-        button.disabled = !choice || actionPending || movementAnimating;
-        if (choice) button.addEventListener("click", () => sendAction("CHOOSE", { choiceId: pawn.id }));
-        fragment.appendChild(button);
-      });
+      const pawn = pawns.find(item => movementAnimating && item.id === state.lastMove?.pawnId)
+        || pawns.find(item => item.id === state.turnPawnId) || pawns[0];
+      const button = document.createElement("button");
+      const mixed = new Set(pawns.map(item => item.team)).size > 1;
+      const choice = state.canAct && state.pending
+        && ["transfer", "rescue"].includes(state.pending.type)
+        && pawns.some(item => state.pending.options.includes(item.id));
+      button.type = "button";
+      button.className = "pawn " + pawn.team
+        + (mixed ? " mixed" : "")
+        + (pawns.some(item => item.carryingGem) ? " carrying" : "")
+        + (pawns.every(item => item.status === "jailed") ? " jailed" : "")
+        + (pawns.some(item => item.id === state.turnPawnId) ? " current" : "")
+        + (choice ? " choice" : "");
+      button.dataset.pawnId = pawn.id;
+      button.dataset.nodeId = position;
+      button.style.cssText = positionStyle(node.x, node.y);
+      button.innerHTML = pawnFaceMarkup(pawnControllers(pawn.id))
+        + '<span class="pawnNumber">' + pawn.number + '</span>'
+        + (pawns.length > 1 ? '<span class="pawnGroupCount">' + pawns.length + '말</span>' : "");
+      const label = pawns.map(item => pawnControllers(item.id).map(player => player.name).join("·")
+        + " " + teamName(item.team) + " " + item.number + "번"
+        + (item.carryingGem ? " 보석 소지" : "")
+        + (item.status === "jailed" ? " 구금 중" : "")).join(", ");
+      button.setAttribute("aria-label", label + " · 눌러서 자세히 보기");
+      button.disabled = movementAnimating;
+      button.addEventListener("click", () => inspectNode(position));
+      fragment.appendChild(button);
     }
     layer.replaceChildren(fragment);
   }
 
+  function nodeSymbol(node) {
+    if (node.station) return '<span class="stationNumber">' + node.station + '</span><small>↔' + nodeMeta(node.effectTarget).station + '</small>';
+    if (node.start) return node.start === "thief" ? "⌂" : "▦";
+    if (node.kind === "building") return "수색";
+    const symbols = { thiefTeleport: "↔", policeTeleport: "↔", stop: "■", reset: "↩",
+      reveal: "◉", transfer: "💎⇄", dropGem: "💎↓" };
+    if (node.effect === "jump") {
+      const steps = node.label.match(/(\d+)칸/);
+      return steps ? (node.label.includes("뒤로") ? "−" : "+") + steps[1] : "⇥";
+    }
+    return symbols[node.effect] || "";
+  }
+
+  function inspectNode(nodeId) {
+    if (movementAnimating || !nodeMeta(nodeId)) return;
+    inspectorReturnFocus = document.activeElement;
+    inspectedNode = nodeId;
+    renderInspector();
+    $("closeBoardInspector").focus({ preventScroll: true });
+  }
+
+  function closeInspector() {
+    inspectedNode = null;
+    $("boardInspector").classList.add("hidden");
+    if (inspectorReturnFocus?.isConnected) inspectorReturnFocus.focus({ preventScroll: true });
+  }
+
+  function renderInspector() {
+    const node = nodeMeta(inspectedNode);
+    $("boardInspector").classList.toggle("hidden", !node || !state);
+    if (!node || !state) return;
+    $("boardInspectorTitle").textContent = node.label;
+    const descriptions = {
+      thiefTeleport: "도둑이 도착하면 다른 도둑 이동 칸으로 옮길 수 있습니다.",
+      policeTeleport: "경찰이 도착하면 다른 경찰 이동 칸으로 옮길 수 있습니다.",
+      stop: "도착하면 남은 이동을 멈춥니다.",
+      reset: "도착하면 자기 팀의 시작 구역으로 돌아갑니다.",
+      reveal: "도착하면 도둑팀이 보석이 숨겨진 건물 한 곳을 알아냅니다.",
+      transfer: "도둑이 가진 보석을 동료에게 전달할 수 있습니다.",
+      dropGem: "도둑이 가진 보석을 잃게 됩니다."
+    };
+    let description = descriptions[node.effect] || (node.kind === "building"
+      ? "도둑이 들어가 숨겨진 물건을 수색하는 장소입니다."
+      : node.start === "thief" ? "찾은 보석을 이곳으로 가져오면 확보됩니다."
+      : node.start === "police" ? "붙잡힌 도둑이 머무는 구금 구역입니다."
+      : node.zone === "circle" ? "화살표 방향으로만 이동하는 구역입니다." : "길을 따라 이동하는 칸입니다.");
+    if (node.effect === "train") description = node.station + "번 역에 도착하면 " + nodeMeta(node.effectTarget).station + "번 역으로 이동합니다.";
+    if (node.effect === "jump") description = "도착하면 " + nodeMeta(node.effectTarget).label + " 칸으로 이동합니다.";
+    $("boardInspectorText").textContent = description;
+    const pawns = $("boardInspectorPawns");
+    pawns.replaceChildren();
+    for (const pawn of state.pawns.filter(item => item.position === inspectedNode)) {
+      const controllers = pawnControllers(pawn.id);
+      const names = controllers.map(player => player.name).join("·");
+      const selectable = state.canAct && state.pending && ["transfer", "rescue"].includes(state.pending.type)
+        && state.pending.options.includes(pawn.id);
+      const row = document.createElement(selectable ? "button" : "div");
+      row.className = "inspectorPawn " + pawn.team;
+      if (selectable) {
+        row.type = "button";
+        row.disabled = actionPending;
+        row.addEventListener("click", () => { sendAction("CHOOSE", { choiceId: pawn.id }); closeInspector(); });
+      }
+      row.innerHTML = pawnFaceMarkup(controllers) + '<span><strong>' + escapeHtml(names)
+        + '</strong><small>' + teamName(pawn.team) + " " + pawn.number + "번"
+        + (pawn.carryingGem ? " · 💎 보석 소지" : "")
+        + (pawn.status === "jailed" ? " · 구금 중" : "")
+        + '</small></span>' + (selectable ? '<b>선택</b>' : "");
+      pawns.appendChild(row);
+    }
+    const actions = $("boardInspectorActions");
+    actions.replaceChildren();
+    if (state.canAct && (state.validMoves.includes(inspectedNode) || state.pending?.type === "teleport"
+      && state.pending.options.includes(inspectedNode))) {
+      const target = inspectedNode;
+      actions.appendChild(makeAction("여기로 이동", "roll", () => {
+        commitNodeAction(target);
+        closeInspector();
+      }));
+    }
+  }
+
   function handleNodeClick(nodeId) {
-    if (actionPending || !state) return;
+    if (placementMode) return commitNodeAction(nodeId);
+    inspectNode(nodeId);
+  }
+
+  function commitNodeAction(nodeId) {
+    if (actionPending || movementAnimating || !state) return;
     if (state.turnMode === "moving" && state.validMoves.includes(nodeId)) {
       sendAction("MOVE", { nodeId });
       return;
@@ -496,6 +582,7 @@
     renderNodes();
     renderCards();
     renderPawns();
+    renderInspector();
   }
 
   function selectedName(key) {
@@ -565,6 +652,7 @@
     $("gemProgress").textContent = `${state.resources.thief.securedGems} / 2`;
     const arrested = state.pawns.filter(pawn => pawn.team === "thief" && pawn.status === "jailed").length;
     $("arrestProgress").textContent = `${arrested} / 3`;
+    $("compactProgress").textContent = "💎 " + state.resources.thief.securedGems + "/2 · 구금 " + arrested + "/3";
     $("roundText").textContent = `${state.turnNumber || 1}라운드`;
   }
 
@@ -587,7 +675,7 @@
           : state.canAct ? "내 행동 선택" : `${actorLabel} 행동 중`;
     $("movementHint").textContent = movementAnimating
       ? "말이 목적지까지 이동하는 중입니다."
-      : state.turnMode === "moving" ? "빛나는 최종 목적지를 한 번 누르세요."
+      : state.turnMode === "moving" ? "목적지를 선택하고 이동하세요."
       : state.canAct ? "아래에서 행동을 선택하세요." : `${actorLabel}님의 행동을 기다립니다.`;
   }
 
@@ -620,13 +708,13 @@
         hint = text;
       } else if (state.actions.roll) {
         const pawn = currentPawn();
-        fragment.appendChild(makeAction(pawn.status === "jailed" ? "🎲 탈출 주사위" : "🎲 주사위 던지기", "roll", () => sendAction("ROLL")));
-        if (state.actions.hide) fragment.appendChild(makeAction(`안전지대에서 숨기 (${pawn.hidingTurns}/3)`, "thief", () => sendAction("HIDE")));
-        if (state.actions.trick) fragment.appendChild(makeAction(`가짜 단서 카드 · ${state.resources.thief.trickCards}장`, "thief", () => { placementMode = "trick-node"; renderActions(); renderBoardState(); }));
-        if (state.actions.check) fragment.appendChild(makeAction(`차단 표지 · ${state.resources.police.checkCards}개`, "police", () => { placementMode = "check"; renderActions(); renderBoardState(); }));
+        fragment.appendChild(makeAction(pawn.status === "jailed" ? "🎲 탈출 주사위" : "🎲 주사위", "roll", () => sendAction("ROLL")));
+        if (state.actions.hide) fragment.appendChild(makeAction(`숨기 (${pawn.hidingTurns}/3)`, "thief", () => sendAction("HIDE")));
+        if (state.actions.trick) fragment.appendChild(makeAction(`가짜 단서 ${state.resources.thief.trickCards}장`, "thief", () => { placementMode = "trick-node"; renderActions(); renderBoardState(); }));
+        if (state.actions.check) fragment.appendChild(makeAction(`차단 표지 ${state.resources.police.checkCards}개`, "police", () => { placementMode = "check"; renderActions(); renderBoardState(); }));
         hint = pawn.status === "jailed" ? "1이 나오면 즉시 탈출해 다시 이동합니다." : "주사위를 쓰는 대신 카드나 숨기를 선택할 수 있습니다.";
       } else if (state.turnMode === "moving") {
-        hint = `주사위 ${state.die}칸 뒤의 노란빛 최종 목적지를 선택하세요.`;
+        hint = `노란 목적지를 누르면 칸 정보와 이동 버튼이 나옵니다.`;
       } else if (state.turnMode === "pending") {
         hint = state.pending?.type === "teleport" ? "초록빛 위치 이동 칸을 선택하세요." : "말판에서 빛나는 도둑말을 선택하세요.";
       }
@@ -714,6 +802,7 @@
     renderPlayers();
     renderBoardState();
     renderResult();
+    requestAnimationFrame(resizeBoard);
   }
 
   function shouldAnimateMove(previousState, nextState) {
@@ -788,6 +877,7 @@
       setupSelection = { gem1: null, gem2: null, undercover: null };
       activeSecret = "gem1";
     }
+    closeInspector();
     renderGame();
     scheduleStateEffect(previousState, state);
     if (animateMove) window.requestAnimationFrame(() => animateMovement(state.lastMove));
@@ -817,7 +907,43 @@
     $("abortOverlay").classList.remove("hidden");
   }
 
+  function resizeBoard() {
+    const viewport = $("boardViewport");
+    if (!viewport.clientWidth || !viewport.clientHeight) return;
+    boardSize = Math.min(viewport.clientWidth, viewport.clientHeight);
+    const size = Math.round(boardSize * boardZoom);
+    $("boardStage").style.width = size + "px";
+    $("boardStage").style.height = size + "px";
+    $("boardStage").style.marginTop = Math.max(0, (viewport.clientHeight - size) / 2) + "px";
+    $("boardZoomOut").disabled = boardZoom <= 1;
+    $("boardZoomIn").disabled = boardZoom >= 2.5;
+    $("boardZoomReset").textContent = boardZoom === 1 ? "전체 보기" : Math.round(boardZoom * 100) + "% · 전체";
+  }
+
+  function setBoardZoom(zoom) {
+    const viewport = $("boardViewport");
+    const previousSize = boardSize * boardZoom;
+    const focal = boardZoom === 1 ? nodeMeta(currentPawn()?.position) : null;
+    const x = focal ? focal.x / Board.WIDTH : (viewport.scrollLeft + viewport.clientWidth / 2) / previousSize;
+    const y = focal ? focal.y / Board.HEIGHT : (viewport.scrollTop + viewport.clientHeight / 2) / previousSize;
+    boardZoom = Math.max(1, Math.min(2.5, zoom));
+    resizeBoard();
+    viewport.scrollTo({ left: x * boardSize * boardZoom - viewport.clientWidth / 2,
+      top: y * boardSize * boardZoom - viewport.clientHeight / 2 });
+  }
+
   function init() {
+    $("actionDock").append($("setupCard"), $("turnCard"), $("actionCard"));
+    const compact = matchMedia("(max-width: 900px), (orientation: portrait)");
+    const syncInfo = () => { $("gameInfoDetails").open = !compact.matches; };
+    syncInfo();
+    compact.addEventListener("change", syncInfo);
+    new ResizeObserver(resizeBoard).observe($("boardViewport"));
+    $("boardZoomIn").addEventListener("click", () => setBoardZoom(boardZoom + .5));
+    $("boardZoomOut").addEventListener("click", () => setBoardZoom(boardZoom - .5));
+    $("boardZoomReset").addEventListener("click", () => setBoardZoom(1));
+    $("closeBoardInspector").addEventListener("click", closeInspector);
+    document.addEventListener("keydown", event => { if (event.key === "Escape") closeInspector(); });
     $("bgm").addEventListener("ended", advanceGameMusic);
     renderScenery();
     renderLots();

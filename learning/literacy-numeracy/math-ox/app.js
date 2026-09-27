@@ -185,10 +185,17 @@
           { left: "$", right: "$", display: false },
         ],
         preProcess: function (math) {
-          if (/\\(int|iint|iiint|oint|sum|prod|lim|bigcap|bigcup)(?![a-zA-Z])/.test(math) && !math.includes("\\displaystyle") && !math.includes("\\textstyle")) {
-            return "\\displaystyle " + math;
+          let processed = math;
+          // Inline fractions make their numerator and denominator much smaller
+          // than the Korean sentence on phones. In elementary questions, use
+          // display-style fractions without enlarging the whole expression.
+          if (currentSubject.startsWith("초")) {
+            processed = processed.replace(/\\frac(?![a-zA-Z])/g, "\\dfrac");
           }
-          return math;
+          if (/\\(int|iint|iiint|oint|sum|prod|lim|bigcap|bigcup)(?![a-zA-Z])/.test(processed) && !processed.includes("\\displaystyle") && !processed.includes("\\textstyle")) {
+            return "\\displaystyle " + processed;
+          }
+          return processed;
         },
         throwOnError: false,
       });

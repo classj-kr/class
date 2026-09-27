@@ -224,10 +224,13 @@ body {
   word-break: keep-all;
 }
 
-/* KaTeX shrinks inline fraction numerals; keep them legible beside the question text. */
-.q-prompt .katex:has(.mfrac),
-.exp-content .katex:has(.mfrac) {
-  font-size: 1.5em;
+/* Keep inline mathematics on the same visual baseline and scale as Korean text.
+   Scaling the whole KaTeX expression when it contains a fraction makes mixed
+   numbers and the rest of the equation jump to 150% of the sentence size. */
+.q-prompt .katex,
+.exp-content .katex {
+  font-size: 1em;
+  line-height: 1.2;
 }
 
 /* OX Button Group */
