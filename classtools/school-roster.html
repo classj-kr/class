@@ -712,8 +712,10 @@
     let allTeachers = [];
 
     // 분류 칸. 'auto'(교·강사)는 저장할 때 학년·반이 있으면 담임, 없으면 전담이 된다.
-    const TEACHER_KINDS = [["교장", "교장"], ["교감", "교감"], ["교무부장", "교무부장"], ["auto", "교·강사"], ["교직원", "교직원"]];
-    const PICKED_KINDS = ["교장", "교감", "교무부장", "교직원"];
+    const TEACHER_KINDS = [["교장", "교장"], ["교감", "교감"], ["행정실장", "행정실장"], ["교무부장", "교무부장"], ["auto", "교·강사"], ["일반직", "일반직"]];
+    const PICKED_KINDS = ["교장", "교감", "행정실장", "교무부장", "일반직"];
+    // 반을 맡지 않는 분류. 학년·반을 적으면 그 반 담임이 되어 버린다.
+    const NO_CLASS_KINDS = ["행정실장", "일반직"];
     const teacherKind = (t) => PICKED_KINDS.includes(t.role || t.type) ? (t.role || t.type) : "auto";
 
     async function loadTeachers() {
@@ -742,7 +744,8 @@
         }
 
         tbody.innerHTML = allTeachers.map((t, idx) => {
-            const isAdminRow = t.type === '관리자' || t.type === '교장' || t.type === '교감' || t.name === '학교관리자' || t.name === '관리자';
+            // 잠그는 줄은 학교 관리자 줄 하나뿐이다. 교장·교감은 분류를 고를 수 있는 보통 줄이다.
+            const isAdminRow = t.type === '관리자' || t.name === '학교관리자' || t.name === '관리자';
             
             const linkedBadge = t.linked ? `<span class="linked-badge">✓ 연동</span>` : `<span style="color:#9ca3af;font-size:11px;">미연동</span>`;
 
@@ -850,9 +853,9 @@
                     if (btn) btn.disabled = false;
                     return;
                 }
-                // 학년·반이 있으면 그 반 담임이 된다. 교직원이 반을 맡는 일은 없다.
-                if (teacherKind(t) === "교직원" && hasG) {
-                    setStatus("teacherRosterStatus", `⚠️ '${t.name || "선택한"}' 교직원은 학년·반을 비워 두세요. 반을 맡으면 분류를 교·강사로 고릅니다.`, "error");
+                // 학년·반이 있으면 그 반 담임이 된다. 행정실장·일반직이 반을 맡는 일은 없다.
+                if (NO_CLASS_KINDS.includes(teacherKind(t)) && hasG) {
+                    setStatus("teacherRosterStatus", `⚠️ '${t.name || "선택한"}' ${teacherKind(t)}은 학년·반을 비워 두세요. 반을 맡으면 분류를 교·강사로 고릅니다.`, "error");
                     if (btn) btn.disabled = false;
                     return;
                 }
@@ -903,6 +906,14 @@
             setStatus("teacherPasteStatus", "붙여넣은 텍스트가 없습니다.", "error");
             return;
         }
+        // 붙여넣은 글에는 분류가 없다. 이미 있던 사람이면 고른 분류(교장·교감 등)를 이어받는다.
+        const previousKind = new Map();
+        for (const t of allTeachers) {
+            const kind = teacherKind(t);
+            if (kind === "auto") continue;
+            if (t.email) previousKind.set(String(t.email).trim().toLowerCase(), kind);
+            if (t.name) previousKind.set(String(t.name).replace(/\s+/g, ""), kind);
+        }
         const parsed = parseTsv(text).map(cells => {
             const parts = cells.map(p => p.trim());
             if (parts.length < 1) return null;
@@ -914,6 +925,7 @@
             const classNumber = parts[3] ? Number(parts[3]) : (parts[2] && !parts[1]?.includes("@") ? Number(parts[2]) : null);
 
             return {
+                role: previousKind.get(String(email).toLowerCase()) || previousKind.get(name),
                 type: (grade && classNumber) ? "담임" : "전담",
                 name,
                 email,

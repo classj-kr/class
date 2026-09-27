@@ -209,17 +209,44 @@ test("renaming the admin to a name another kept row uses gives a readable error 
   });
 });
 
-test("a 교직원 row keeps its 분류 across saves and cannot take a class", async () => {
+for (const kind of ["행정실장", "일반직"]) {
+  test(`a ${kind} row keeps its 분류 across saves and cannot take a class`, async () => {
+    await withSchool(async ({ pool, teachers }) => {
+      const base = [row("학교 관리자", "admin@school.test"), row("가교사", "teacher-a@school.test", 6, 2), row("나교사", "teacher-b@school.test", 6, 3)];
+      await save(pool, [...base, row("라직원", "staff@school.test", null, null, { type: kind })]);
+      assert.equal((await teachers())[3].teacher_type, kind);
+      const before = await teachers();
+      await assert.rejects(
+        save(pool, [...base, row("라직원", "staff@school.test", 6, 5, { type: kind })]),
+        { code: "STAFF_NO_CLASS" }
+      );
+      assert.deepEqual(await teachers(), before);
+    });
+  });
+}
+
+test("교장·교감 rows keep their 분류 across saves, can change their account, and can be removed", async () => {
   await withSchool(async ({ pool, teachers }) => {
     const base = [row("학교 관리자", "admin@school.test"), row("가교사", "teacher-a@school.test", 6, 2), row("나교사", "teacher-b@school.test", 6, 3)];
-    await save(pool, [...base, row("라직원", "staff@school.test", null, null, { type: "교직원" })]);
-    assert.equal((await teachers())[3].teacher_type, "교직원");
-    const before = await teachers();
-    await assert.rejects(
-      save(pool, [...base, row("라직원", "staff@school.test", 6, 5, { type: "교직원" })]),
-      { code: "STAFF_NO_CLASS" }
-    );
-    assert.deepEqual(await teachers(), before);
+    const heads = [row("바교장", "principal@school.test", null, null, { type: "교장" }), row("사교감", "vice@school.test", null, null, { type: "교감" })];
+    await save(pool, [...base, ...heads]);
+    await save(pool, [...base, row("바교장", "principal-new@school.test", null, null, { type: "교장" }), heads[1]]);
+    const list = await teachers();
+    assert.deepEqual(list.slice(3).map((t) => [t.teacher_name, t.teacher_type, t.google_email]), [
+      ["바교장", "교장", "principal-new@school.test"],
+      ["사교감", "교감", "vice@school.test"],
+    ]);
+    assert.equal(list[0].teacher_type, "관리자");
+
+    await save(pool, [...base, heads[1]]);
+    assert.deepEqual((await teachers()).map((t) => t.teacher_name), ["학교 관리자", "가교사", "나교사", "사교감"]);
+  });
+});
+
+test("the school admin row still survives being left out of the list", async () => {
+  await withSchool(async ({ pool, teachers }) => {
+    await save(pool, [row("가교사", "teacher-a@school.test", 6, 2)]);
+    assert.deepEqual((await teachers()).map((t) => t.teacher_name), ["학교 관리자", "가교사"]);
   });
 });
 
@@ -241,6 +268,22 @@ test("re-entering the same master email keeps the admin's dual-role name and cla
     assert.equal(admin.teacher_name, "다교사");
     assert.equal(admin.grade, 6);
     assert.equal(admin.user_id, 1);
+  });
+});
+
+test("setting the master email never takes over the 교장's own row when the school has no admin row yet", async () => {
+  await withSchool(async ({ db, pool, teachers }) => {
+    await db.exec(`
+      DELETE FROM classroom_teachers WHERE teacher_type = '관리자';
+      INSERT INTO classroom_teachers (school_id, teacher_name, google_email, user_id, teacher_type)
+        VALUES (1, '바교장', 'principal@school.test', 7, '교장');
+    `);
+    await setMaster(pool, "new-admin@school.test");
+    const list = await teachers();
+    const principal = list.find((t) => t.teacher_name === "바교장");
+    assert.deepEqual([principal.teacher_type, principal.google_email, principal.user_id], ["교장", "principal@school.test", 7]);
+    const admin = list.find((t) => t.teacher_type === "관리자");
+    assert.deepEqual([admin.teacher_name, admin.google_email], ["학교 관리자", "new-admin@school.test"]);
   });
 });
 

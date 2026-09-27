@@ -3104,7 +3104,7 @@ function createClassroomPlatform(options = {}) {
     const schoolsResult = await pool.query(
       `SELECT s.id, s.name, s.google_domain, s.office_code, s.school_code, s.location_name,
               s.organization_type, s.institution_code, s.enabled,
-              (SELECT google_email FROM classroom_teachers WHERE school_id = s.id AND (teacher_type IN ('관리자', '교장', '교감') OR teacher_name IN ('학교관리자', '학교 관리자', '관리자')) LIMIT 1) AS master_email
+              (SELECT google_email FROM classroom_teachers WHERE school_id = s.id AND (teacher_type = '관리자' OR teacher_name IN ('학교관리자', '학교 관리자', '관리자')) ORDER BY (teacher_type = '관리자') DESC, id LIMIT 1) AS master_email
        FROM classroom_schools s
        ORDER BY s.name, s.id`
     );
@@ -3313,10 +3313,12 @@ function createClassroomPlatform(options = {}) {
       throw new HttpError(404, "SCHOOL_NOT_FOUND", "School not found.");
     }
 
+    // 학교 관리자 줄은 teacher_type '관리자' 하나뿐이다. 교장·교감 줄은 그 사람의 등록이라
+    // 여기서 이메일을 갈아 끼우면 교장의 줄을 남에게 넘겨주게 된다.
     const existing = await pool.query(
       `SELECT id, google_email, user_id FROM classroom_teachers
        WHERE school_id = $1
-         AND (teacher_type IN ('관리자', '교장', '교감') OR teacher_name IN ('학교관리자', '학교 관리자', '관리자'))
+         AND (teacher_type = '관리자' OR teacher_name IN ('학교관리자', '학교 관리자', '관리자'))
        ORDER BY (teacher_type = '관리자') DESC, id
        LIMIT 1`,
       [schoolId]
@@ -7893,8 +7895,8 @@ function createClassroomPlatform(options = {}) {
         throw new HttpError(400, "INVALID_GRADE_CLASS", `'${t.name}' 교사의 학년과 반을 모두 입력하거나, 전담인 경우 둘 다 비워두세요.`);
       }
       // 학년·반이 있으면 그 반 담임이 된다(userClassId 는 분류를 보지 않는다).
-      if (t.type === "교직원" && t.grade) {
-        throw new HttpError(400, "STAFF_NO_CLASS", `'${t.name}' 교직원은 학년·반을 비워 두세요. 반을 맡으면 분류를 교·강사로 고릅니다.`);
+      if (["행정실장", "일반직"].includes(t.type) && t.grade) {
+        throw new HttpError(400, "STAFF_NO_CLASS", `'${t.name}' ${t.type}은 학년·반을 비워 두세요. 반을 맡으면 분류를 교·강사로 고릅니다.`);
       }
       if (t.email && seenEmails.has(t.email)) {
         throw new HttpError(400, "DUPLICATE_TEACHER_EMAIL",
@@ -7929,7 +7931,10 @@ function createClassroomPlatform(options = {}) {
           );
           existing = exName.rows[0];
         }
-        const isAdminRow = Boolean(existing) && (["관리자", "교장", "교감"].includes(existing.teacher_type) || existing.teacher_name === "학교관리자" || existing.teacher_name === "관리자");
+        // 계정과 분류를 잠그는 줄은 학교 관리자 줄 하나뿐이다. 교장·교감은 권한은 같아도
+        // 보통 줄이다. 예전에는 이 둘도 잠가서 저장할 때마다 '관리자'로 바뀌었고,
+        // 그러면 결재선의 교장·교감 차례에서 빠졌다.
+        const isAdminRow = Boolean(existing) && (existing.teacher_type === "관리자" || isPlaceholderAdminName(existing.teacher_name));
         // 담임 이름은 학생 화면에 그대로 나온다. '학교 관리자'라는 이름으로 반을 맡게 두지 않는다.
         if (isAdminRow && t.grade && isPlaceholderAdminName(t.name)) {
           throw new HttpError(400, "ADMIN_HOMEROOM_NEEDS_NAME", "학교 관리자가 담임을 맡으려면 관리자 줄의 성명을 실제 이름으로 바꿔 주세요.");
@@ -7938,11 +7943,12 @@ function createClassroomPlatform(options = {}) {
       }
       const keptIds = plans.filter((p) => p.existing).map((p) => p.existing.id);
 
-      // Delete any teacher records in this school that are not in the list (NEVER delete admin rows!)
+      // Delete any teacher records in this school that are not in the list (NEVER delete the school admin row!)
+      // 교장·교감은 지울 수 있어야 한다. 전근 가면 명단에서 빼야 한다.
       if (keptIds.length > 0) {
         await client.query(
           `DELETE FROM classroom_teachers
-           WHERE school_id = $1 AND NOT (id = ANY($2::BIGINT[])) AND teacher_type NOT IN ('관리자', '교장', '교감') AND teacher_name NOT IN ('학교관리자', '관리자')`,
+           WHERE school_id = $1 AND NOT (id = ANY($2::BIGINT[])) AND teacher_type <> '관리자' AND teacher_name NOT IN ('학교관리자', '학교 관리자', '관리자')`,
           [schoolId, keptIds]
         );
         await client.query(
@@ -7951,7 +7957,7 @@ function createClassroomPlatform(options = {}) {
         );
       } else {
         await client.query(
-          "DELETE FROM classroom_teachers WHERE school_id = $1 AND teacher_type NOT IN ('관리자', '교장', '교감') AND teacher_name NOT IN ('학교관리자', '관리자')",
+          "DELETE FROM classroom_teachers WHERE school_id = $1 AND teacher_type <> '관리자' AND teacher_name NOT IN ('학교관리자', '학교 관리자', '관리자')",
           [schoolId]
         );
       }
