@@ -75,7 +75,7 @@
     "test:ship-designs:smoke": "node tests/ship-designs-smoke.js",
     "test:view-motion": "node tests/view-motion-unit.js",
     "test:ice-visual": "node tests/ice-visual-unit.js",
-    "test:interactions:smoke": "node tests/interaction-recovery-smoke.js",
+    "test:interactions:smoke": "node tests/connection-recovery-ui.js && node tests/interaction-recovery-smoke.js",
     "test:place-study": "node tests/place-study-unit.js && node tests/study-question-quality-unit.js && node tests/discovery-regions-unit.js && node tests/caspian-discovery-unit.js && node tests/place-study-recovery-ui.js && node tests/place-study-smoke.js"
   },
   "engines": {

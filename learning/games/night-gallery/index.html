@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#152d29">
+  <meta name="robots" content="noindex,nofollow">
+  <title>밤의 미술관 · 카드 게임</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../../../assets/network/multiplayer-lobby.css">
+  <script type="module" src="app.mjs"></script>
+</head>
+<body>
+  <div class="shell">
+    <header class="topbar">
+      <a class="brand" href="./" aria-label="밤의 미술관 처음 화면"><span class="brand-mark" aria-hidden="true">▧</span><span>밤의 미술관</span></a>
+      <nav aria-label="게임 메뉴"><span class="local-badge">로컬 플레이</span><button id="rules-button" data-open-rules class="quiet">게임 방법 <span aria-hidden="true">↗</span></button><button id="home-button" class="quiet" hidden>처음으로</button></nav>
+    </header>
+    <main id="app"></main>
+  </div>
+  <dialog id="rules-dialog" aria-labelledby="rules-title">
+    <div class="dialog-head"><span>게임 방법</span><button class="quiet" data-close="rules-dialog" aria-label="게임 방법 닫기">닫기 ✕</button></div>
+    <h2 id="rules-title">기본 규칙</h2>
+    <p>손에 든 카드 5장 중 1장을 내고 전리품을 가져온 뒤, 카드 1장을 뽑아요. 가운데 전리품 9개가 모두 사라지면 라운드가 끝나요.</p>
+    <div class="rules-grid">
+      <article><b>01 · 숫자 카드</b><p>같은 숫자 전리품 1개를 가져와요. 가운데에 있으면 반드시 가운데에서! 없으면 다른 사람에게서 뺏어요. 가져올 게 없어도 카드를 내고 새 카드를 뽑을 수 있어요.</p></article>
+      <article><b>02 · 도둑 카드</b><p>가운데 전리품 중 원하는 1개를 가져와요. 보스도 가능하지만 다른 사람에게서 뺏지는 못해요.</p></article>
+      <article><b>03 · 경비견 카드</b><p>경비견을 데려와요. 내 전리품을 누가 뺏으려 하면, 전리품 대신 경비견을 넘겨서 한 번 막을 수 있어요. 전리품을 주고 경비견을 남겨도 돼요.</p></article>
+      <article><b>04 · 보스 카드</b><p>보스 전리품 1개를 가져오거나 뺏어요. 라운드가 끝날 때 같은 라운드의 숫자 4 또는 5가 있어야 보스의 5점을 챙길 수 있어요. 보스끼리는 조건을 채워주지 않아요.</p></article>
+    </div>
+    <h3>라운드가 끝나면</h3><p>챙긴 전리품을 뒤집어 보관해요. 이제 뺏기지 않아요. 손패와 경비견은 이어지고, 경비견을 가진 사람이 다음 라운드를 시작해요. 경비견이 아직 가운데에 있다면 원래 다음 차례부터 시작해요.</p>
+    <h3>4라운드 뒤, 누가 이길까요?</h3><p>전리품에 표시된 알리바이를 모두 세어요. <strong>3~5명은 가장 적은 사람이 탈락</strong>하고, 동점이면 함께 탈락해요. 남은 사람 중 전리품 점수가 가장 높은 사람이 승리! 점수도 같으면 알리바이가 많은 사람이, 그것도 같으면 공동 승리예요.</p><p><strong>2명일 때는 탈락 대신 10점 감점.</strong> 알리바이가 같으면 둘 다 감점하지 않아요.</p>
+    <details><summary>규칙 출처와 시제품 안내</summary><p>Art Robbery · 게임 설계 Reiner Knizia · 출판 Helvetiq의 규칙을 참고한 비공식 로컬 시제품이에요. 화면·도형·코드·한국어 설명은 새로 제작했어요. 원작 이미지나 설명서 파일을 포함하지 않으며, 이용허락을 받은 공식 디지털판은 아니에요.</p><p>초판 구성 기준으로 3라운드는 보스 2개, 숫자 5 전리품은 없어요. 공개 사진에서 가려진 2·4라운드의 중복 숫자 개수는 아직 실물 대조 전이며, 현재는 임시 배치로 플레이해요. 첫 차례는 시작 화면에서 최근 미술관 방문자를 선택해요. 보관한 전리품은 원작처럼 뒤집어 두고 최종 결과에서 공개해요.</p><a href="https://helvetiq.com/media/hexaattachment/products/attachments/art-robbery_rules_EN.pdf" target="_blank" rel="noopener">출판사 공식 규칙서 ↗</a></details>
+    <button class="primary dialog-done" data-close="rules-dialog">알겠어요</button>
+  </dialog>
+  <dialog id="confirm-dialog" aria-labelledby="confirm-title"><h2 id="confirm-title">지금 게임을 끝낼까요?</h2><p>진행 중인 게임의 기록이 지워져요.</p><div class="button-row"><button class="quiet" data-close="confirm-dialog">계속하기</button><button id="confirm-reset" class="primary">처음으로</button></div></dialog>
+  <div id="announcement" class="sr-only" aria-live="polite"></div>
+</body>
+</html>
