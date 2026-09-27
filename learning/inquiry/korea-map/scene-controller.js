@@ -25,7 +25,9 @@
     const observer = new MutationObserver(syncSuspension);
     document.querySelectorAll("dialog").forEach(dialog => observer.observe(dialog,{attributes:true,attributeFilter:["open"]}));
     observer.observe(map.getContainer(),{attributes:true,attributeFilter:["class"]});
-    function active() { return state.theme === "terrain" || state.theme === "climate"; }
+    function active() {
+      return state.theme === "terrain" || (state.theme === "climate" && (!state.lesson || ["temperature", "monsoon"].includes(state.lesson.id)));
+    }
     function updateFlow() {
       let visibleTracks = [];
       if (state.theme === "terrain") {
@@ -56,6 +58,7 @@
     }
     function renderMarks() {
       marks.clearLayers();
+      if (!active()) return;
       if(state.theme === "terrain" && state.river !== "all") {
         const river = data.rivers[state.river];
         marker([river.downstream[1],river.downstream[0]], ["남한강","북한강"].includes(state.river)?"두물머리 · 한강으로":"임진강"===state.river?"한강 하류로":"하류 방향", "#087eaf");
