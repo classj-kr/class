@@ -542,6 +542,7 @@ window.KOREA_HISTORY = {
             37.63
           ],
           "label": "북한산 순수비",
+          "relicId": "s08",
           "side": "left",
           "kind": "point"
         },

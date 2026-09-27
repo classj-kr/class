@@ -258,6 +258,15 @@
   // ───────────── 유물 설명 창 ─────────────
   const $ = (id) => document.getElementById(id);
 
+  window.KoreaHeritage = {
+    open(id) {
+      const relic = relics.find(item => item.id === id);
+      if (!relic) return false;
+      openRelic(relic);
+      return true;
+    }
+  };
+
   function openRelic(relic) {
     const dialog = $("relicDialog");
     if (!dialog) return;

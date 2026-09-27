@@ -152,6 +152,11 @@
         L.popup().setLatLng(latLng(mark.xy)).setContent(el("strong", "", mark.label)).openOn(panelApi.map);
         if (matchMedia("(max-width: 1050px)").matches) document.querySelector(".map-stage").scrollIntoView({ block: "start" });
       }));
+      if (mark.relicId) {
+        const photo = button("사진·설명", `${mark.label} 사진과 설명 보기`, () => window.KoreaHeritage?.open(mark.relicId));
+        photo.dataset.historyRelic = mark.relicId;
+        li.append(photo);
+      }
       list.append(li);
     });
     places.append(list, button("지도 전체 보기", null, () => fit(panelApi)));
@@ -248,7 +253,9 @@
     scene.marks.forEach((mark, index) => {
       if (mark.kind === "area" && scene.id !== "early-states") L.circle(latLng(mark.xy), { renderer:zoneRenderer, pane: "themeZones", radius: 28000, color: "#74592f", weight: 1.5, dashArray: "5 5", fillColor: "#e8b65d", fillOpacity: 0.16, interactive: false }).addTo(group);
       const marker = L.marker(latLng(mark.xy), { pane: "studyMarkers", title: mark.label, riseOnHover: true, icon: L.divIcon({ className: "history-point-wrap", html: el("span", "history-point", index + 1), iconSize: [22, 22], iconAnchor: [11, 11] }) });
-      marker.bindPopup(el("strong", "", mark.label)).addTo(group);
+      if (mark.relicId) marker.on("click", () => window.KoreaHeritage?.open(mark.relicId));
+      else marker.bindPopup(el("strong", "", mark.label));
+      marker.addTo(group);
       pointMarkers.push(marker);
     });
     // Overlapping pins are offset with a leader; their stored coordinates stay unchanged.

@@ -418,7 +418,7 @@
   ],
   [
     "city",
-    "A에 낮에는 사람이 많고 밤의 상주인구가 줄어드는 현상은?",
+    "업무·상업 기능이 확대되면서 도심 A의 거주 인구가 지속적으로 감소하는 현상은?",
     [
       "인구 공동화",
       "교통 결절",
@@ -526,15 +526,15 @@
   ],
   [
     "division",
-    "그림처럼 서울·인천·경기가 연결되어 있어도 유지되는 것은?",
+    "서울·인천·경기 사이에 통근이 활발하다. 이 지역들의 행정구역과 생활권에 대한 설명으로 옳은 것은?",
     [
-      "서로 다른 행정구역이라는 구분",
-      "세 지역이 모두 같은 특별시라는 지위",
-      "세 지역의 인구와 면적이 같다는 조건",
-      "하나의 하천 유역이라는 조건"
+      "서로 다른 행정구역이지만 하나의 생활권으로 연결될 수 있다.",
+      "통근이 활발해지면 세 지역은 하나의 행정구역으로 합쳐진다.",
+      "행정구역이 다르면 같은 생활권에 속할 수 없다.",
+      "생활권은 통근·통학과 관계없이 행정 경계로만 정해진다."
     ],
     0,
-    "수도권 생활권은 통근·서비스 등으로 연결된 범위다. 생활권이 연결되어도 서울·인천·경기의 행정구역 구분은 유지된다."
+    "서울특별시·인천광역시·경기도는 서로 다른 행정구역이다. 통근·통학·서비스 이용으로 하나의 생활권을 이루더라도 행정구역이 합쳐지는 것은 아니다."
   ],
   [
     "north",
@@ -562,7 +562,7 @@
     if (!question) throw new Error(`Missing study question: ${id}`);
     if (!question.lesson) question.lesson = lesson.id;
   }
-  const visualEvidenceAreas = {"visual-transport-mode-01":[390,132,105,64],"visual-relief-02":[228,148,142,39],"visual-floodplain-02":[97,146,78,32],"visual-coast-02":[78,120,34,49],"visual-volcano-02":null,"visual-karst-02":null,"visual-basin-02":null,"visual-temperature-02":[477,113,20,87],"visual-monsoon-02":[261,115,94,22],"visual-foehn-02":null,"visual-local-climate-02":null,"visual-oldmaps-02":[392,130,91,80],"visual-map-data-02":[109,118,85,71],"visual-age-02":null,"visual-port-industry-02":[394,142,79,69],"visual-tech-02":[399,154,79,63],"visual-energy-02":[134,128,119,71],"visual-transport-mode-02":[130,160,108,48],"visual-transport-axis-02":[399,144,87,84],"visual-regions-02":[392,153,98,63],"visual-north-02":[389,136,100,70]};
+  const visualEvidenceAreas = {"visual-division-02":[260,100,242,46],"visual-transport-mode-01":[390,132,105,64],"visual-relief-02":[228,148,142,39],"visual-floodplain-02":[97,146,78,32],"visual-coast-02":[78,120,34,49],"visual-volcano-02":null,"visual-karst-02":null,"visual-basin-02":null,"visual-temperature-02":[477,113,20,87],"visual-monsoon-02":[261,115,94,22],"visual-foehn-02":null,"visual-local-climate-02":null,"visual-oldmaps-02":[392,130,91,80],"visual-map-data-02":[109,118,85,71],"visual-age-02":null,"visual-port-industry-02":[394,142,79,69],"visual-tech-02":[399,154,79,63],"visual-energy-02":[134,128,119,71],"visual-transport-mode-02":[130,160,108,48],"visual-transport-axis-02":[399,144,87,84],"visual-regions-02":[392,153,98,63],"visual-north-02":[389,136,100,70]};
   for (const q of d.questions) if (Object.hasOwn(visualEvidenceAreas,q.id)) q.evidenceArea=visualEvidenceAreas[q.id];
   d.lessons = lessons;
 })();

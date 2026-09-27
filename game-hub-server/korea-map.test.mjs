@@ -27,6 +27,8 @@ const sources = {
   principles: read("data/principles.js"),
   heritageData: read("data/heritage-data.js"),
   heritage: read("heritage.js"),
+  historyData: read("data/history-data.js"),
+  history: read("history.js"),
   travelData: read("data/travel-data.js"),
   travel: read("travel.js"),
 };
@@ -34,10 +36,10 @@ const server = fs.readFileSync(new URL("game-hub-server/server.js", root), "utf8
 const riverData = JSON.parse(read("data/major-rivers.geojson"));
 
 // 화면: 주제 탭은 사회과부도 차례대로, 광고 같은 머리글(kicker) 없이.
-const THEME_KEYS = ["territory", "terrain", "climate", "population", "industry", "transport", "region", "heritage", "travel"];
-const TAB_LABELS = ["국토", "지형", "기후", "인구·도시", "산업", "교통", "행정구역", "유물·유적", "체험·관광"];
+const THEME_KEYS = ["territory", "terrain", "climate", "population", "industry", "transport", "region", "heritage", "history", "travel"];
+const TAB_LABELS = ["국토", "지형", "기후", "인구·도시", "산업", "교통", "행정구역", "유물·유적", "역사", "체험·관광"];
 // 지리 문제은행(questions.js)을 쓰는 주제. 유물·유적은 문제를 그때그때 만들고, 체험·관광은 문제가 없다.
-const BANK_KEYS = THEME_KEYS.filter((key) => !["heritage", "travel"].includes(key));
+const BANK_KEYS = THEME_KEYS.filter((key) => !["heritage", "history", "travel"].includes(key));
 const tabs = [...html.matchAll(/data-theme="([a-z]+)"[^>]*><span>[^<]*<\/span> ([^<]+)<\/button>/g)].map((match) => [match[1], match[2]]);
 assert.deepEqual(tabs, THEME_KEYS.map((key, index) => [key, TAB_LABELS[index]]));
 assert.match(html, /<title>국내 지도<\/title>/);
@@ -62,7 +64,7 @@ assert.doesNotMatch(sources.geo, /kicker:/);
 assert.doesNotMatch(html, /id="practiceTopic"|id="practiceDifficulty"|id="practiceCount"/);
 // 로컬 js/css는 캐시를 넘도록 버전을 붙인다.
 for (const match of html.matchAll(/(?:src|href)="((?:data\/|app|styles|climate-graph)[^"]*)"/g)) {
-  assert.match(match[1], /\?v=\d{8}-\d+$/, `${match[1]}에 버전이 없습니다.`);
+  assert.match(match[1], /\?v=\d{8}-[a-z0-9-]+$/, `${match[1]}에 버전이 없습니다.`);
 }
 
 // 바탕: 우리 서버의 지형 조각만 쓴다. 바깥 지도 서버에 기대지 않는다.
@@ -124,8 +126,8 @@ assert.match(app, /const PROGRESS_KEY = "classj-korea-geography-progress-v2"/);
 assert.match(styles, /@media \(max-width: 1050px\)[\s\S]*?\.study-layout \{ display: flex; flex-direction: column; \}/);
 assert.match(styles, /\.principle-button \{[^}]*min-height:\s*44px/s);
 
-const sandbox = { window: {}, document: { addEventListener() {} } };
-for (const key of ["terrain", "transport", "regions", "geo", "questions", "principles", "heritageData", "heritage", "travelData", "travel"]) vm.runInNewContext(sources[key], sandbox);
+const sandbox = { window: {}, location: {search: ""}, URLSearchParams, document: { addEventListener() {} } };
+for (const key of ["terrain", "transport", "regions", "geo", "questions", "principles", "heritageData", "heritage", "historyData", "history", "travelData", "travel"]) vm.runInNewContext(sources[key], sandbox);
 const dataset = sandbox.window.KOREA_GEOGRAPHY;
 // 범례: 지도에 칠한 색은 모두 범례에 있고, 범례의 색(과 모양)은 서로 다르며, 지도에 없는 색은 범례에 없다.
 // 선마다 이름이 붙은 경선, 글자가 곧 설명인 이름표(신도시·혁신 도시)는 범례에 넣지 않는다.
