@@ -47,104 +47,11 @@
             pointer-events: none;
         }
 
+        /* 위쪽은 사이트 공용 뒤로 가기(왼쪽 위 고정, 아래 끝 50px) 자리를 비운다. */
         main {
             width: min(100% - 32px, 1040px);
             margin: 0 auto;
-            padding: 48px 0 80px;
-        }
-
-        .account-bar {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 16px;
-            margin-bottom: 32px;
-            color: var(--muted);
-            font-size: 0.9rem;
-        }
-
-        .account-info {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-weight: 700;
-        }
-
-        .account-actions {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .btn-link {
-            border: 1px solid var(--line);
-            border-radius: 10px;
-            padding: 7px 14px;
-            color: var(--brand-dark);
-            background: var(--paper);
-            font-size: 0.85rem;
-            font-weight: 800;
-            text-decoration: none;
-            cursor: pointer;
-            transition: all 0.15s ease;
-        }
-
-        .btn-link:hover {
-            background: #ede6d8;
-            transform: translateY(-1px);
-        }
-
-        .btn-signout {
-            border: 1px solid #e2b4b4;
-            color: #b43c36;
-            background: #fff5f5;
-        }
-
-        .btn-signout:hover {
-            background: #ffe3e3;
-        }
-
-        /* Profile Banner */
-        .profile-card {
-            position: relative;
-            overflow: hidden;
-            border: 1px solid rgba(23, 32, 51, 0.14);
-            border-radius: 26px;
-            padding: clamp(28px, 5vw, 42px);
-            background: linear-gradient(135deg, #173f45 0%, #0d272b 100%);
-            color: white;
-            box-shadow: var(--shadow);
-        }
-
-        .profile-card::before {
-            content: "";
-            position: absolute;
-            right: -60px;
-            top: -60px;
-            width: 240px;
-            height: 240px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(46, 196, 182, 0.22), transparent 70%);
-            pointer-events: none;
-        }
-
-        .teacher-title {
-            margin: 0 0 20px;
-            font-size: clamp(1.8rem, 4.5vw, 2.8rem);
-            font-weight: 900;
-            line-height: 1.15;
-            letter-spacing: -0.04em;
-        }
-
-        .teacher-title span {
-            color: #ffd166;
-        }
-
-        .meta-chips {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 24px;
+            padding: 60px 0 80px;
         }
 
         .chip {
@@ -161,18 +68,16 @@
             backdrop-filter: blur(8px);
         }
 
-        .chip-highlight {
-            border-color: rgba(255, 209, 102, 0.4);
-            background: rgba(255, 209, 102, 0.15);
-            color: #ffe8b3;
-        }
-
         /* Tools Grid */
         .section-title {
             margin: 48px 0 20px;
             font-size: 1.35rem;
             font-weight: 900;
             letter-spacing: -0.03em;
+        }
+
+        main > .section-title:first-of-type {
+            margin-top: 0;
         }
 
         .tools-grid {
@@ -229,12 +134,7 @@
 
         @media (max-width: 600px) {
             main {
-                padding: 24px 0 50px;
-            }
-            .account-bar {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 10px;
+                padding: 60px 0 50px;
             }
             .tools-grid {
                 grid-template-columns: 1fr;
@@ -243,28 +143,10 @@
     </style>
 </head>
 <body>
+    <!-- 머리줄(제목·계정·메인으로·로그아웃)과 '○학년 ○반 · 이름' 큰 띠는 없다.
+         누구인지는 첫 화면 프로필 카드가, 나가기는 사이트 공용 뒤로 가기가, 로그아웃은
+         첫 화면이 맡는다. -->
     <main>
-        <div class="account-bar">
-            <div class="account-info">
-                <span>🏫 교사 관리 포털</span>
-                <span id="user-email-badge" style="color: var(--muted); font-weight: 500;">(확인 중…)</span>
-            </div>
-            <div class="account-actions">
-                <a class="btn-link" href="../">🏠 메인 화면으로</a>
-                <button class="btn-link btn-signout" id="sign-out-btn" type="button">로그아웃</button>
-            </div>
-        </div>
-
-        <!-- 교사 정보 대시보드 배너 -->
-        <section class="profile-card">
-            <h1 class="teacher-title" id="teacher-greeting">
-                <span id="class-disp">학급 정보</span> · <span id="teacher-disp">교사명</span>
-            </h1>
-            <div class="meta-chips">
-                <div class="chip">📅 <span id="chip-year">2026학년도</span></div>
-            </div>
-        </section>
-
         <!-- 내 학급 · 동아리 · 전담 그룹 관리 섹션 (개별 대시보드 바로가기) -->
         <h2 class="section-title">🏫 내 학급 · 그룹 (개별 대시보드 바로가기)</h2>
         <div class="groups-grid" id="main-groups-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; margin-bottom: 36px;">
@@ -372,15 +254,8 @@
         (() => {
             'use strict';
 
-            const classDisp = document.getElementById('class-disp');
-            const teacherDisp = document.getElementById('teacher-disp');
-            const chipYear = document.getElementById('chip-year');
-            const chipClass = document.getElementById('chip-class');
-            const chipTeacher = document.getElementById('chip-teacher');
-            const userEmailBadge = document.getElementById('user-email-badge');
             const statusInfo = document.getElementById('status-info');
             const studentCountInfo = document.getElementById('student-count-info');
-            const signOutBtn = document.getElementById('sign-out-btn');
 
             async function api(path, options = {}) {
                 const response = await fetch(path, {
@@ -396,27 +271,9 @@
             // 고를 학급이 없는 것처럼 보인다. 교사 프로필의 학년도를 함께 쓴다.
             let portalYear = new Date().getFullYear();
 
+            // 이름·학급을 보이던 큰 띠는 없앴다. 여기서는 학년도만 이어받는다.
             function applyProfileData(data) {
-                const year = data.academicYear || portalYear;
-                portalYear = year;
-                const grade = data.grade || '';
-                const classNum = data.classNumber || '';
-                const teacher = data.name || data.teacherName || '선생님';
-
-                const classStr = grade && classNum ? `${grade}학년 ${classNum}반` : '학급 미설정';
-
-                // 머리말 칩은 화면에서 빠질 수 있는 장식이다. chip-class/chip-teacher는
-                // 실제로 없어진 상태였고, 그대로 값을 넣다가 예외가 나서 이 함수 뒤의
-                // loadTeacherGroups()까지 통째로 건너뛰었다. 그래서 '새 그룹 개설' 칸이
-                // 아예 그려지지 않았다.
-                const setText = (el, value) => { if (el) el.textContent = value; };
-
-                setText(classDisp, classStr);
-                setText(teacherDisp, teacher);
-
-                setText(chipYear, `${year}학년도`);
-                setText(chipClass, classStr);
-                setText(chipTeacher, `${teacher} 선생님`);
+                portalYear = data.academicYear || portalYear;
             }
 
             const activeGroupSelect = document.getElementById('active-group-select');
@@ -669,8 +526,6 @@
                         location.replace('/');
                         return;
                     }
-                    userEmailBadge.textContent = `(${session.user.email})`;
-
                     // 관리자 설정 교사 프로필 조회
                     const teacherProfile = await api('/api/teacher/profile').catch(() => null);
 
@@ -700,9 +555,17 @@
                 }
             }
 
-            signOutBtn.addEventListener('click', async () => {
-                await api('/api/auth/logout', { method: 'POST', body: '{}' }).catch(() => {});
-                location.replace('../index.html');
+            // 교사 도구의 첫 화면이다. 아래 도구들은 여기로 링크를 타고 돌아오므로
+            // 뒤로 가기가 history.back()이면 방금 나온 도구로 되돌아가 왕복한다.
+            // 가져오기 창이 열려 있으면 그 창만 닫고, 아니면 사이트 첫 화면으로 간다.
+            window.addEventListener('sitebackrequest', (event) => {
+                event.preventDefault();
+                const modal = document.getElementById('create-group-modal');
+                if (modal && modal.style.display !== 'none') {
+                    closeCreateGroupModal();
+                    return;
+                }
+                location.assign('/');
             });
 
 
