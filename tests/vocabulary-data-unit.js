@@ -88,7 +88,8 @@ const imageManifestPath = path.join(vocabularyAssets, "data", "vocabulary-word-i
 const imageManifest = JSON.parse(fs.readFileSync(imageManifestPath, "utf8"));
 const imageEntries = Object.entries(imageManifest.images);
 assert.strictEqual(imageManifest.version, 1);
-assert.strictEqual(imageManifest.totalImages, 214);
+// 그림 수는 못 박지 않는다. 목록에 적힌 수와 실제 항목 수, 실제 파일이 서로 맞는지만 본다.
+assert.ok(imageEntries.length > 0);
 assert.strictEqual(imageEntries.length, imageManifest.totalImages);
 imageEntries.forEach(([id, image]) => {
     const word = payload.words.find((entry) => String(entry.id) === id);
@@ -127,18 +128,18 @@ payload.words.forEach((word) => {
 
 const imageCandidatesPath = path.join(vocabularyAssets, "data", "vocabulary-image-candidates-v1.json");
 const imageCandidates = JSON.parse(fs.readFileSync(imageCandidatesPath, "utf8"));
+// 후보 목록은 초등 명사에서 자동으로 고른 그림 후보 기록이다. 그림 목록에는 이 밖에 손으로 더한 그림
+// (2026-09-08 catch·climb·eat 같은 동작 낱말)도 있으니, 후보는 모두 그림 목록에 있어야 하지만 그 반대는 아니다.
 assert.strictEqual(imageCandidates.elementaryWords, 800);
-assert.strictEqual(imageCandidates.targetImages, 214);
-assert.strictEqual(imageCandidates.existingImages, 214);
-assert.strictEqual(imageCandidates.pendingImages, 0);
-assert.strictEqual(imageCandidates.meaningReviewCount, 0);
-assert.strictEqual(imageCandidates.potentialImagesAfterMeaningReview, 214);
 assert.strictEqual(imageCandidates.candidates.length, imageCandidates.targetImages);
 assert.strictEqual(imageCandidates.meaningReview.length, imageCandidates.meaningReviewCount);
+assert.strictEqual(imageCandidates.existingImages + imageCandidates.pendingImages, imageCandidates.targetImages);
+assert.strictEqual(imageCandidates.potentialImagesAfterMeaningReview, imageCandidates.targetImages + imageCandidates.meaningReviewCount);
 
 const candidateIds = new Set(imageCandidates.candidates.map((candidate) => String(candidate.id)));
 assert.strictEqual(candidateIds.size, imageCandidates.candidates.length);
-imageEntries.forEach(([id]) => assert.ok(candidateIds.has(id), `existing image ${id} must remain selected`));
+const candidatesWithImage = [...candidateIds].filter((id) => imageManifest.images[id]);
+assert.strictEqual(candidatesWithImage.length, imageCandidates.existingImages, "후보 가운데 그림이 있는 수가 existingImages와 맞아야 합니다.");
 imageCandidates.candidates.forEach((candidate) => {
     const word = payload.words.find((entry) => entry.id === candidate.id);
     assert.ok(word);
