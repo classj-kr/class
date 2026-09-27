@@ -6,15 +6,22 @@
     <title>교사 전용 업무 공간 - 가정통신문 및 출결 결재</title>
     <style>
         :root {
-            color-scheme: dark;
-            --bg: #0f1411;
-            --panel: #17221b;
-            --line: #29382e;
-            --ink: #f0f4f1;
-            --muted: #9ba89f;
-            --green: #75d69f;
-            --amber: #f0bd64;
-            --danger: #ff7b72;
+            color-scheme: light;
+            --bg: #f4f6f8;
+            --panel: #ffffff;
+            --surface: #f1f4f6;
+            --line: #dde3e8;
+            --ink: #1c2329;
+            --muted: #5c6873;
+            --green: #17804a;
+            /* 옅은 바탕(회색·연초록) 위 초록 글씨. #17804a 는 거기서 4.5:1 이 안 된다. */
+            --green-strong: #11683c;
+            --green-soft: #e6f4ec;
+            --amber: #a35a00;
+            --amber-soft: #fff4e0;
+            --danger: #d0342c;
+            --danger-soft: #fdecea;
+            --shadow: 0 1px 3px rgba(16,24,40,.08);
         }
 
         * { box-sizing: border-box; }
@@ -24,6 +31,7 @@
             padding: 30px 20px;
             background: var(--bg);
             color: var(--ink);
+            accent-color: var(--green);
             font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
         }
 
@@ -70,7 +78,7 @@
 
         .tab-btn.active {
             background: var(--green);
-            color: #0c140e;
+            color: #fff;
             border-color: var(--green);
         }
 
@@ -80,6 +88,7 @@
             border-radius: 16px;
             padding: 24px;
             margin-bottom: 20px;
+            box-shadow: var(--shadow);
         }
 
         .form-group {
@@ -97,20 +106,26 @@
         input[type="text"], select, textarea {
             width: 100%;
             padding: 12px 14px;
-            background: #0a0e0b;
+            background: #fff;
             border: 1px solid var(--line);
             border-radius: 10px;
-            color: #fff;
+            color: var(--ink);
             font-family: inherit;
             font-size: 14px;
         }
 
         textarea { min-height: 110px; resize: vertical; }
 
+        input[type="text"]:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--green);
+            box-shadow: 0 0 0 3px rgba(23,128,74,.18);
+        }
+
         .btn-action {
             padding: 12px 24px;
             background: var(--green);
-            color: #0c140e;
+            color: #fff;
             border: none;
             border-radius: 10px;
             font-weight: 800;
@@ -118,10 +133,12 @@
             cursor: pointer;
         }
 
+        .btn-action:hover { background: var(--green-strong); }
+
         .btn-secondary {
             padding: 8px 14px;
-            background: #233328;
-            color: var(--green);
+            background: var(--surface);
+            color: var(--green-strong);
             border: 1px solid var(--line);
             border-radius: 8px;
             cursor: pointer;
@@ -137,7 +154,7 @@
             border: 1px solid var(--line);
             border-radius: 12px;
             margin-bottom: 12px;
-            background: rgba(0,0,0,0.25);
+            background: var(--panel);
         }
 
         .badge {
@@ -147,8 +164,8 @@
             font-weight: 700;
         }
 
-        .badge.pending { background: var(--amber); color: #000; }
-        .badge.approved { background: var(--green); color: #000; }
+        .badge.pending { background: var(--amber-soft); color: var(--amber); }
+        .badge.approved { background: var(--green-soft); color: var(--green-strong); }
 
         .hidden { display: none !important; }
 
@@ -200,17 +217,17 @@
                 <div style="border-bottom: 2px solid var(--line); margin-bottom: 20px; padding-bottom: 14px;">
                     <label style="margin-bottom:8px;">이 통신문에서 받을 것</label>
                     <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:10px;">
-                        <button type="button" class="tab-type active" data-reply="none" onclick="switchNoticeCategory('none', this)" style="padding:10px 18px; border-radius:8px; border:1px solid var(--line); background:#1f4730; color:#fff; font-weight:800; font-size:14px; cursor:pointer;">
+                        <button type="button" class="tab-type active" data-reply="none" onclick="switchNoticeCategory('none', this)" style="padding:10px 18px; border-radius:8px; border:1px solid var(--green); background:var(--green-soft); color:var(--green-strong); font-weight:800; font-size:14px; cursor:pointer;">
                             📣 회신 없음
                         </button>
-                        <button type="button" class="tab-type" data-reply="confirm" onclick="switchNoticeCategory('confirm', this)" style="padding:10px 18px; border-radius:8px; border:1px solid var(--line); background:#141b16; color:var(--muted); font-weight:800; font-size:14px; cursor:pointer;">
+                        <button type="button" class="tab-type" data-reply="confirm" onclick="switchNoticeCategory('confirm', this)" style="padding:10px 18px; border-radius:8px; border:1px solid var(--line); background:var(--surface); color:var(--muted); font-weight:800; font-size:14px; cursor:pointer;">
                             👀 확인 회신
                         </button>
-                        <button type="button" class="tab-type" data-reply="agree" onclick="switchNoticeCategory('agree', this)" style="padding:10px 18px; border-radius:8px; border:1px solid var(--line); background:#141b16; color:var(--muted); font-weight:800; font-size:14px; cursor:pointer;">
+                        <button type="button" class="tab-type" data-reply="agree" onclick="switchNoticeCategory('agree', this)" style="padding:10px 18px; border-radius:8px; border:1px solid var(--line); background:var(--surface); color:var(--muted); font-weight:800; font-size:14px; cursor:pointer;">
                             ✍️ 동의 / 미동의
                         </button>
                     </div>
-                    <label style="display:inline-flex; align-items:center; gap:8px; margin:0; cursor:pointer; color:#fff; font-weight:700; font-size:14px;">
+                    <label style="display:inline-flex; align-items:center; gap:8px; margin:0; cursor:pointer; color:var(--ink); font-weight:700; font-size:14px;">
                         <input type="checkbox" id="nWantSurvey" onchange="toggleSurveyBuilder(this.checked)" style="width:18px; height:18px;">
                         📝 물어볼 문항도 넣기 <span style="color:var(--muted); font-weight:600; font-size:12px;">(설문·신청·투표)</span>
                     </label>
@@ -226,17 +243,17 @@
                     <div style="display:flex; gap:16px; flex-wrap:wrap; margin-bottom: 16px;">
                         <div style="flex:2; min-width: 280px;">
                             <label>수신 대상 선택</label>
-                            <div style="display:flex; gap:10px; align-items:center;">
-                                <button type="button" class="btn-secondary" style="height:44px; font-weight:800; font-size:14px; background:#1b3d2b; border-color:#75d69f;" onclick="openAddressBookModal()">
+                            <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+                                <button type="button" class="btn-secondary" style="min-height:44px; font-weight:800; font-size:14px; background:var(--green-soft); border-color:var(--green);" onclick="openAddressBookModal()">
                                     📖 주소록에서 대상 선택...
                                 </button>
-                                <label style="display:inline-flex; align-items:center; gap:6px; margin:0; cursor:pointer; font-size:13px; color:#fff; font-weight:700;">
+                                <label style="display:inline-flex; align-items:center; gap:6px; margin:0; cursor:pointer; font-size:13px; color:var(--ink); font-weight:700;">
                                     <input type="checkbox" id="nDeduplicateGuardians" checked style="width:18px; height:18px;">
                                     다계정(다자녀) 1건만 보내기
                                 </label>
                             </div>
                             <div id="selectedTargetChips" style="display:flex; flex-wrap:wrap; gap:6px; margin-top:10px;">
-                                <span class="badge pending" style="background:#1f4730; color:#fff; padding:6px 12px; font-size:13px;">🌐 전교생 학부모 전체 (기본)</span>
+                                <span class="badge pending" style="background:var(--green-soft); color:var(--green-strong); padding:6px 12px; font-size:13px;">🌐 전교생 학부모 전체 (기본)</span>
                             </div>
                         </div>
                     </div>
@@ -261,28 +278,28 @@
         </section>
 
         <!-- e-알리미 3단 주소록 모달 -->
-        <div id="addressBookModal" class="modal-overlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:9999; align-items:center; justify-content:center; backdrop-filter:blur(5px);">
-            <div style="background:#141b16; border:1px solid var(--line); border-radius:18px; width:min(94%, 900px); max-height:90vh; display:flex; flex-direction:column; box-shadow:0 20px 50px rgba(0,0,0,0.8); color:#fff; overflow:hidden;">
+        <div id="addressBookModal" class="modal-overlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(16,24,40,0.45); z-index:9999; align-items:center; justify-content:center; backdrop-filter:blur(5px);">
+            <div style="background:var(--panel); border:1px solid var(--line); border-radius:18px; width:min(94%, 900px); max-height:90vh; display:flex; flex-direction:column; box-shadow:0 12px 32px rgba(16,24,40,0.18); color:var(--ink); overflow:hidden;">
                 <!-- Modal Header -->
-                <div style="padding:16px 24px; border-bottom:1px solid var(--line); display:flex; justify-content:space-between; align-items:center; background:#0e1410;">
+                <div style="padding:16px 24px; border-bottom:1px solid var(--line); display:flex; justify-content:space-between; align-items:center; background:var(--surface);">
                     <h3 style="margin:0; font-size:18px; color:var(--green); display:flex; align-items:center; gap:8px;">
-                        📖 주소록 <span style="font-size:13px; color:var(--muted); font-weight:normal;">(전체 회원: <strong id="abTotalCount" style="color:#fff;">0</strong>명)</span>
+                        📖 주소록 <span style="font-size:13px; color:var(--muted); font-weight:normal;">(전체 회원: <strong id="abTotalCount" style="color:var(--ink);">0</strong>명)</span>
                     </h3>
-                    <button type="button" onclick="closeAddressBookModal()" style="background:none; border:none; color:#fff; font-size:24px; cursor:pointer;">✕</button>
+                    <button type="button" onclick="closeAddressBookModal()" style="background:none; border:none; color:var(--ink); font-size:24px; cursor:pointer;">✕</button>
                 </div>
 
                 <!-- Modal 3-Pane Body -->
                 <div class="ab-grid">
                     <!-- Pane 1: 회원그룹 트리 -->
-                    <div style="background:#111713; padding:14px; overflow-y:auto;">
-                        <h4 style="margin:0 0 10px; font-size:13px; color:var(--green);">📁 회원 그룹</h4>
+                    <div style="background:var(--surface); padding:14px; overflow-y:auto;">
+                        <h4 style="margin:0 0 10px; font-size:13px; color:var(--green-strong);">📁 회원 그룹</h4>
                         <div id="abGroupTreeList" style="display:flex; flex-direction:column; gap:6px; font-size:13px;">
                             <!-- Tree loaded by JS -->
                         </div>
                     </div>
 
                     <!-- Pane 2: 회원 목록 & 검색 -->
-                    <div style="background:#141b16; padding:14px; display:flex; flex-direction:column; overflow:hidden;">
+                    <div style="background:var(--panel); padding:14px; display:flex; flex-direction:column; overflow:hidden;">
                         <div class="ab-toolbar">
                             <input type="text" id="abSearchInput" placeholder="이름 / 학부모 검색..." style="height:38px; font-size:13px; flex:1;" oninput="filterAddressBookStudents()">
                             <select id="abSortSelect" onchange="filterAddressBookStudents()" style="height:38px; font-size:13px; width:auto;">
@@ -297,10 +314,10 @@
                     </div>
 
                     <!-- Pane 3: 선택된 수신 대상 바구니 -->
-                    <div style="background:#0e1410; padding:14px; display:flex; flex-direction:column; overflow:hidden;">
+                    <div style="background:var(--surface); padding:14px; display:flex; flex-direction:column; overflow:hidden;">
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; border-bottom:1px solid var(--line); padding-bottom:8px;">
-                            <span style="font-size:13px; font-weight:bold; color:var(--green);">
-                                👤 총 <strong id="abSelectedCount" style="color:#fff;">0</strong>건 선택
+                            <span style="font-size:13px; font-weight:bold; color:var(--green-strong);">
+                                👤 총 <strong id="abSelectedCount" style="color:var(--ink);">0</strong>건 선택
                             </span>
                             <button type="button" style="background:none; border:none; color:var(--muted); font-size:12px; cursor:pointer; text-decoration:underline;" onclick="clearAllSelectedTargets()">전체취소</button>
                         </div>
@@ -311,7 +328,7 @@
                 </div>
 
                 <!-- Modal Footer -->
-                <div style="padding:14px 24px; border-top:1px solid var(--line); display:flex; justify-content:flex-end; gap:12px; background:#0e1410;">
+                <div style="padding:14px 24px; border-top:1px solid var(--line); display:flex; justify-content:flex-end; gap:12px; background:var(--surface);">
                     <button type="button" class="btn-secondary" onclick="closeAddressBookModal()">취소</button>
                     <button type="button" class="btn-action" style="padding:10px 24px;" onclick="confirmAddressBookSelection()">확인 (선택 완료)</button>
                 </div>
@@ -341,7 +358,7 @@
             <div class="panel-card">
                 <h2 style="font-size:18px; margin:0 0 16px; color:var(--green);">📝 결석계 및 교외체험학습 전자 결재함</h2>
                 <!-- 내 서명. 승인할 때 결재란에 이 그림이 찍힌다. -->
-                <div id="signatureCard" style="border:1px solid var(--line); border-radius:12px; padding:14px; margin-bottom:16px; background:#111713;">
+                <div id="signatureCard" style="border:1px solid var(--line); border-radius:12px; padding:14px; margin-bottom:16px; background:var(--surface);">
                     <div style="display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap;">
                         <div>
                             <strong style="font-size:15px;">✍️ 내 결재 서명</strong>
@@ -352,7 +369,7 @@
                     <div id="signatureCurrent" style="margin-top:10px; display:none;">
                         <img id="signatureCurrentImg" alt="등록된 서명" style="max-height:60px; background:#fff; border-radius:6px; padding:4px;">
                     </div>
-                    <p id="signatureMissing" style="margin:10px 0 0; color:#ffcf7c; font-size:13px; display:none;">아직 서명이 없습니다. 승인하려면 먼저 등록해 주세요.</p>
+                    <p id="signatureMissing" style="margin:10px 0 0; color:var(--amber); font-size:13px; display:none;">아직 서명이 없습니다. 승인하려면 먼저 등록해 주세요.</p>
                     <div id="signatureEditor" style="display:none; margin-top:12px;">
                         <!-- 서명은 결재란 한 칸에 들어간다. 종이 결재란과 같은 가로세로
                              비율(5:2)로 두어야 그려 본 대로 찍힌다. -->
@@ -413,7 +430,7 @@
                 if (q.type === 'text') {
                     const answers = (q.textAnswers || []).map(a => `
                         <li style="margin-bottom:6px;">
-                            <strong style="color:#fff;">${escapeHtml(a.studentName)}</strong>
+                            <strong style="color:var(--ink);">${escapeHtml(a.studentName)}</strong>
                             <span style="color:var(--muted);"> — ${escapeHtml(a.text)}</span>
                         </li>`).join('');
                     return `
@@ -433,7 +450,7 @@
                                 <span>${escapeHtml(o.label)}</span>
                                 <span style="color:var(--muted);">${o.count}명 (${pct}%)</span>
                             </div>
-                            <div style="height:8px; background:#1c2620; border-radius:4px; overflow:hidden;">
+                            <div style="height:8px; background:var(--line); border-radius:4px; overflow:hidden;">
                                 <div style="height:100%; width:${pct}%; background:var(--green);"></div>
                             </div>
                         </div>`;
@@ -448,7 +465,7 @@
             }).join('');
 
             return `<div style="margin-top:16px; padding-top:16px; border-top:1px solid var(--line);">
-                <h4 style="margin:0 0 12px; color:var(--green); font-size:15px;">📈 문항별 집계</h4>
+                <h4 style="margin:0 0 12px; color:var(--green-strong); font-size:15px;">📈 문항별 집계</h4>
                 ${blocks}
             </div>`;
         }
@@ -471,7 +488,7 @@
 
                 listEl.innerHTML = notices.map(n => {
                     const tally = n.replyType === 'agree'
-                        ? `동의 <strong style="color:var(--green);">${n.agreeCount}</strong> · 미동의 <strong style="color:#ff7b72;">${n.disagreeCount}</strong>`
+                        ? `동의 <strong style="color:var(--green);">${n.agreeCount}</strong> · 미동의 <strong style="color:var(--danger);">${n.disagreeCount}</strong>`
                         : n.replyType === 'confirm'
                             ? `확인 <strong style="color:var(--green);">${n.confirmedCount}</strong>명`
                             : '<span style="color:var(--muted);">회신을 받지 않는 통신문</span>';
@@ -488,7 +505,7 @@
                         </div>`;
                 }).join('');
             } catch (err) {
-                listEl.innerHTML = `<div class="item-row" style="justify-content:center; color:#ff7b72;">${escapeHtml(err.message)}</div>`;
+                listEl.innerHTML = `<div class="item-row" style="justify-content:center; color:var(--danger);">${escapeHtml(err.message)}</div>`;
             }
         }
 
@@ -505,7 +522,7 @@
                     <tr>
                         <td style="padding:6px 8px;">${r.grade}-${r.classNumber} ${escapeHtml(r.studentNumber)}번</td>
                         <td style="padding:6px 8px; font-weight:700;">${escapeHtml(r.studentName)}</td>
-                        <td style="padding:6px 8px; color:${r.choice ? 'var(--green)' : '#ff7b72'}; font-weight:700;">
+                        <td style="padding:6px 8px; color:${!r.choice || r.choice === 'disagree' ? 'var(--danger)' : 'var(--green-strong)'}; font-weight:700;">
                             ${r.choice ? escapeHtml(REPLY_CHOICE_LABELS[r.choice] || r.choice) : '미회신'}
                         </td>
                         <td style="padding:6px 8px; color:var(--muted); font-size:12px;">
@@ -514,15 +531,15 @@
                     </tr>`).join('');
 
                 detailEl.innerHTML = `
-                    <div style="border:1px solid var(--line); border-radius:12px; padding:16px; background:#111713;">
-                        <h3 style="margin:0 0 6px; color:var(--green); font-size:16px;">${escapeHtml(data.notice.title)}</h3>
+                    <div style="border:1px solid var(--line); border-radius:12px; padding:16px; background:var(--surface);">
+                        <h3 style="margin:0 0 6px; color:var(--green-strong); font-size:16px;">${escapeHtml(data.notice.title)}</h3>
                         <p style="margin:0 0 12px; color:var(--muted); font-size:13px;">
-                            회신 <strong style="color:#fff;">${data.repliedCount}</strong> / 대상 <strong style="color:#fff;">${data.total}</strong>명
-                            ${pending.length > 0 ? ` · 미회신 <strong style="color:#ff7b72;">${pending.length}</strong>명` : ' · <span style="color:var(--green);">전원 회신 완료</span>'}
+                            회신 <strong style="color:var(--ink);">${data.repliedCount}</strong> / 대상 <strong style="color:var(--ink);">${data.total}</strong>명
+                            ${pending.length > 0 ? ` · 미회신 <strong style="color:var(--danger);">${pending.length}</strong>명` : ' · <span style="color:var(--green-strong);">전원 회신 완료</span>'}
                         </p>
                         <div style="max-height:360px; overflow-y:auto;">
                             <table style="width:100%; border-collapse:collapse; font-size:14px;">
-                                <thead><tr style="text-align:left; color:var(--green); border-bottom:1px solid var(--line);">
+                                <thead><tr style="text-align:left; color:var(--green-strong); border-bottom:1px solid var(--line);">
                                     <th style="padding:6px 8px;">학반/번호</th><th style="padding:6px 8px;">이름</th>
                                     <th style="padding:6px 8px;">회신</th><th style="padding:6px 8px;">시각</th>
                                 </tr></thead>
@@ -532,7 +549,7 @@
                         ${renderSurveyStats(data.survey)}
                     </div>`;
             } catch (err) {
-                detailEl.innerHTML = `<div class="item-row" style="justify-content:center; color:#ff7b72;">${escapeHtml(err.message)}</div>`;
+                detailEl.innerHTML = `<div class="item-row" style="justify-content:center; color:var(--danger);">${escapeHtml(err.message)}</div>`;
             }
         }
 
@@ -552,11 +569,13 @@
         function switchNoticeCategory(cat, btn) {
             noticeReplyType = cat;
             document.querySelectorAll('.tab-type').forEach(b => {
-                b.style.background = '#141b16';
+                b.style.background = 'var(--surface)';
                 b.style.color = 'var(--muted)';
+                b.style.borderColor = 'var(--line)';
             });
-            btn.style.background = '#1f4730';
-            btn.style.color = '#fff';
+            btn.style.background = 'var(--green-soft)';
+            btn.style.color = 'var(--green-strong)';
+            btn.style.borderColor = 'var(--green)';
         }
 
         // 문항은 회신 방법과 따로 논다. 확인만 받으면서 물어볼 수도, 동의를 받으면서
@@ -577,17 +596,17 @@
             const box = document.createElement('div');
             box.className = 'survey-item';
             box.dataset.qid = String(id);
-            box.style.cssText = 'border:1px solid var(--line); border-radius:10px; padding:12px; margin-bottom:10px; background:#111713;';
+            box.style.cssText = 'border:1px solid var(--line); border-radius:10px; padding:12px; margin-bottom:10px; background:var(--surface);';
             box.innerHTML = `
                 <div style="display:flex; gap:8px; align-items:center; margin-bottom:8px;">
-                    <span style="color:var(--green); font-weight:800;">문항</span>
+                    <span style="color:var(--green-strong); font-weight:800;">문항</span>
                     <input type="text" class="sq-text" placeholder="예: 급식 만족도는 어떠신가요?" style="flex:1;">
                     <select class="sq-type" onchange="onSurveyTypeChange(this)" style="width:130px;">
                         <option value="single">객관식(하나)</option>
                         <option value="multiple">객관식(복수)</option>
                         <option value="text">서술형</option>
                     </select>
-                    <label style="display:inline-flex; align-items:center; gap:4px; margin:0; font-size:13px; color:#fff; white-space:nowrap;">
+                    <label style="display:inline-flex; align-items:center; gap:4px; margin:0; font-size:13px; color:var(--ink); white-space:nowrap;">
                         <input type="checkbox" class="sq-required" checked style="width:16px; height:16px;"> 필수
                     </label>
                     <button type="button" class="btn-secondary" onclick="this.closest('.survey-item').remove()">🗑️</button>
@@ -716,7 +735,7 @@
             const state = nodeState(key);
             const active = activeFilterType === key;
             return `
-                <div style="display:flex; align-items:center; gap:7px; padding:3px 6px 3px ${indent}px; border-radius:6px; ${active ? 'background:#1b3d2b;' : ''}">
+                <div style="display:flex; align-items:center; gap:7px; padding:3px 6px 3px ${indent}px; border-radius:6px; ${active ? 'background:var(--green-soft);' : ''}">
                     <input type="checkbox" ${state === 'all' ? 'checked' : ''}
                            data-indeterminate="${state === 'some'}"
                            onchange="toggleNode('${key}', this.checked)"
@@ -731,8 +750,8 @@
             const totalCount = (rawAddressBook.students || []).length;
             document.getElementById('abTotalCount').textContent = totalCount;
 
-            let html = treeRow('ALL', `🌐 전교생 (${totalCount}명)`, 6, '#fff');
-            html += `<div style="font-weight:bold; color:var(--green); margin:8px 0 4px; font-size:12px;">🏫 학년 / 반</div>`;
+            let html = treeRow('ALL', `🌐 전교생 (${totalCount}명)`, 6, 'var(--ink)');
+            html += `<div style="font-weight:bold; color:var(--green-strong); margin:8px 0 4px; font-size:12px;">🏫 학년 / 반</div>`;
 
             const gradeMap = {};
             (rawAddressBook.classes || []).forEach(c => {
@@ -743,24 +762,24 @@
             Object.keys(gradeMap).sort((a, b) => Number(a) - Number(b)).forEach(g => {
                 const classes = gradeMap[g];
                 const gradeCount = classes.reduce((sum, cl) => sum + (cl.student_count || 0), 0);
-                html += treeRow(`GRADE_${g}`, `📁 ${g}학년 (${gradeCount}명)`, 6, '#7ce4ff');
+                html += treeRow(`GRADE_${g}`, `📁 ${g}학년 (${gradeCount}명)`, 6, '#0b6e8e');
                 classes.forEach(cl => {
                     html += treeRow(`CLASS_${cl.grade}_${cl.class_number}`,
-                        `└ ${cl.class_number}반 (${cl.student_count}명)`, 20, '#ccc');
+                        `└ ${cl.class_number}반 (${cl.student_count}명)`, 20, 'var(--ink)');
                 });
             });
 
             // 추가 그룹은 학교 관리자가 전교생 명단에 만든 열에서 온다.
             const columns = rawAddressBook.columns || [];
             if (columns.length > 0) {
-                html += `<div style="font-weight:bold; color:var(--green); margin:10px 0 4px; font-size:12px;">📌 추가 그룹 (명단 열)</div>`;
+                html += `<div style="font-weight:bold; color:var(--green-strong); margin:10px 0 4px; font-size:12px;">📌 추가 그룹 (명단 열)</div>`;
                 columns.forEach((col, ci) => {
                     const total = col.options.reduce((sum, o) => sum + (o.studentCount || 0), 0);
-                    html += treeRow(`OPTCOL_${ci}`, `📁 ${col.name} (${total}명)`, 6, '#ffe8b3');
+                    html += treeRow(`OPTCOL_${ci}`, `📁 ${col.name} (${total}명)`, 6, 'var(--amber)');
                     col.options.forEach(o => {
                         const idx = abOptions.findIndex(x => x.column === col.name && x.name === o.name);
                         html += treeRow(`OPT_${idx}`,
-                            `└ ${o.name} (${o.studentCount || 0}명)`, 20, '#ccc');
+                            `└ ${o.name} (${o.studentCount || 0}명)`, 20, 'var(--ink)');
                     });
                 });
             }
@@ -818,11 +837,11 @@
             listEl.innerHTML = filtered.map(s => {
                 const isSelected = isPicked(s.student_id);
                 return `
-                    <label style="display:flex; align-items:center; justify-content:space-between; padding:8px 10px; background:#0e1410; border:1px solid var(--line); border-radius:8px; cursor:pointer; margin:0;">
+                    <label style="display:flex; align-items:center; justify-content:space-between; padding:8px 10px; background:var(--panel); border:1px solid var(--line); border-radius:8px; cursor:pointer; margin:0;">
                         <div style="display:flex; align-items:center; gap:8px;">
                             <input type="checkbox" ${isSelected ? 'checked' : ''} onchange="toggleStudentTarget('${s.student_id}', '${s.grade}학년 ${s.class_number}반 ${s.student_number}번 ${s.name}', this.checked)" style="width:16px; height:16px;">
                             <div>
-                                <strong style="font-size:13px; color:#fff;">${s.grade}-${s.class_number}-${s.student_number} ${s.name}</strong>
+                                <strong style="font-size:13px; color:var(--ink);">${s.grade}-${s.class_number}-${s.student_number} ${s.name}</strong>
                                 <div style="font-size:11px; color:var(--muted);">보호자: ${s.guardian1_email || '미등록'}</div>
                             </div>
                         </div>
@@ -882,9 +901,9 @@
             }
 
             basketEl.innerHTML = selectedTargets.map((t, idx) => `
-                <div style="display:flex; justify-content:space-between; align-items:center; padding:6px 10px; background:#18241c; border-radius:6px; font-size:12px;">
-                    <span style="color:#77ffb3; font-weight:bold;">${t.label}</span>
-                    <button type="button" onclick="removeSelectedTarget(${idx})" style="background:none; border:none; color:#ff7b72; font-weight:bold; cursor:pointer;">✕</button>
+                <div style="display:flex; justify-content:space-between; align-items:center; padding:6px 10px; background:var(--panel); border-radius:6px; font-size:12px;">
+                    <span style="color:var(--green); font-weight:bold;">${t.label}</span>
+                    <button type="button" onclick="removeSelectedTarget(${idx})" style="background:none; border:none; color:var(--danger); font-weight:bold; cursor:pointer;">✕</button>
                 </div>
             `).join('');
         }
@@ -900,12 +919,12 @@
             if (!chipsEl) return;
 
             if (selectedTargets.length === 0) {
-                chipsEl.innerHTML = '<span class="badge pending" style="background:#1f4730; color:#fff; padding:6px 12px; font-size:13px;">🌐 전교생 학부모 전체 (기본)</span>';
+                chipsEl.innerHTML = '<span class="badge pending" style="background:var(--green-soft); color:var(--green-strong); padding:6px 12px; font-size:13px;">🌐 전교생 학부모 전체 (기본)</span>';
                 return;
             }
 
             chipsEl.innerHTML = selectedTargets.map(t => `
-                <span class="badge pending" style="background:#1f4730; color:#fff; padding:6px 12px; font-size:13px; display:inline-flex; align-items:center; gap:6px;">
+                <span class="badge pending" style="background:var(--green-soft); color:var(--green-strong); padding:6px 12px; font-size:13px; display:inline-flex; align-items:center; gap:6px;">
                     ${t.label}
                 </span>
             `).join('');
@@ -1002,7 +1021,7 @@
             if (!Array.isArray(steps) || steps.length === 0) return '';
             return `<div style="display:flex; gap:6px; flex-wrap:wrap; align-items:center; margin-top:8px;">${
                 steps.map(st => {
-                    const color = st.status === 'approved' ? 'var(--green)' : st.status === 'rejected' ? '#ff7b72' : 'var(--muted)';
+                    const color = st.status === 'approved' ? 'var(--green)' : st.status === 'rejected' ? 'var(--danger)' : 'var(--muted)';
                     const mark = st.status === 'approved' ? '✓' : st.status === 'rejected' ? '✕' : '·';
                     const who = st.approverName ? ` ${escapeHtml(st.approverName)}` : '';
                     return `<span style="font-size:12px; color:${color}; border:1px solid ${color}; border-radius:999px; padding:2px 8px;">${mark} ${escapeHtml(st.roleLabel)}${who}</span>`;
@@ -1046,13 +1065,13 @@
                             <div style="display:flex; gap:8px; align-items:flex-start; flex-wrap:wrap;">
                                 <button class="btn-secondary" onclick="openPrintForm('${PRINT_TYPE[it.docType]}', '${it.docId}')">🖨️ 서식 인쇄</button>
                                 <button class="btn-action" style="padding:8px 16px; font-size:14px;" onclick="decideDoc('${it.docType}', '${it.docId}', 'approve', this)">승인</button>
-                                <button class="btn-secondary" style="color:#ff7b72; border-color:#ff7b72;" onclick="decideDoc('${it.docType}', '${it.docId}', 'reject', this)">반려</button>
+                                <button class="btn-secondary" style="color:var(--danger); border-color:var(--danger);" onclick="decideDoc('${it.docType}', '${it.docId}', 'reject', this)">반려</button>
                             </div>
                         </div>
                     </div>
                 `).join('');
             } catch (err) {
-                listEl.innerHTML = `<div class="item-row" style="justify-content:center; color:#ff7b72;">${escapeHtml(err.message)}</div>`;
+                listEl.innerHTML = `<div class="item-row" style="justify-content:center; color:var(--danger);">${escapeHtml(err.message)}</div>`;
             }
         }
 
@@ -1175,9 +1194,9 @@
         async function saveTeacherSignature() {
             const cv = document.getElementById('teacherSignatureCanvas');
             const status = document.getElementById('signatureStatus');
-            if (!cv || !canvasHasInk(cv)) { status.style.color = '#ff7b72'; status.textContent = '먼저 서명을 그려 주세요.'; return; }
+            if (!cv || !canvasHasInk(cv)) { status.style.color = 'var(--danger)'; status.textContent = '먼저 서명을 그려 주세요.'; return; }
             const signature = trimmedSignature(cv);
-            if (!signature) { status.style.color = '#ff7b72'; status.textContent = '먼저 서명을 그려 주세요.'; return; }
+            if (!signature) { status.style.color = 'var(--danger)'; status.textContent = '먼저 서명을 그려 주세요.'; return; }
             try {
                 const res = await fetch('/api/me/signature', {
                     method: 'PUT', headers: { 'Content-Type': 'application/json' },
@@ -1185,10 +1204,10 @@
                 });
                 const data = await res.json();
                 if (!res.ok) throw new Error(data.message || '등록 실패');
-                status.style.color = 'var(--green)'; status.textContent = '서명을 등록했습니다.';
+                status.style.color = 'var(--green-strong)'; status.textContent = '서명을 등록했습니다.';
                 clearTeacherSignature();
                 await loadTeacherSignature();
-            } catch (e) { status.style.color = '#ff7b72'; status.textContent = e.message || '등록하지 못했습니다.'; }
+            } catch (e) { status.style.color = 'var(--danger)'; status.textContent = e.message || '등록하지 못했습니다.'; }
         }
 
         loadTeacherSignature();
