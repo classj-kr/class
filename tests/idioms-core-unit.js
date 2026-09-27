@@ -57,4 +57,17 @@ assert.ok(
     "군계일학 삽화 문제에서 뜻이 같은 백미를 오답으로 제시하면 안 됩니다."
 );
 
+const mosujacheon = data.find((item) => item.id === "mosujacheon");
+assert.ok(
+    !core.selectDistractors(mosujacheon, data, "story", () => 0.42).some((item) => item.id === "nangjungjichu"),
+    "모수자천 유래 문제에서 같은 이야기의 낭중지추를 오답으로 제시하면 안 됩니다."
+);
+assert.ok(core.hasAmbiguousMeaning("jaeopjadeuk", "ingwaeungbo"), "자업자득과 인과응보는 서로의 오답이 되면 안 됩니다.");
+
+// 네 개뿐인 차시에서 헷갈리는 짝을 빼도 보기는 네 개가 되어야 한다(모자라면 전체에서 채움).
+const smallLesson = ["myeonggyeongjisu", "dumunbulchul", "anhamuin", "huanmuchi"].map((id) => data.find((item) => item.id === id));
+const anhamuin = core.createQuestion(smallLesson[2], smallLesson, "meaning", () => 0.42);
+assert.strictEqual(new Set(anhamuin.options.map((option) => option.id)).size, 4);
+assert.ok(!anhamuin.options.some((option) => option.id === "huanmuchi"), "안하무인 문제에 후안무치가 오답으로 나오면 안 됩니다.");
+
 console.log(`idioms core unit tests: ok (${data.length} entries)`);

@@ -130,7 +130,8 @@
             subject: "국어",
             scripts: [
                 "/learning/literacy-numeracy/proverbs/proverbs-data.js",
-                "/learning/literacy-numeracy/proverbs/proverbs-essential-additions.js"
+                "/learning/literacy-numeracy/proverbs/proverbs-essential-additions.js",
+                "/learning/literacy-numeracy/proverbs/proverbs-lookalikes.js"
             ],
             getBank() {
                 // 자료는 배열 모양([속담, 뜻, 예문, 상황])과 객체 모양({proverb, meaning, example, question}) 둘 다 있다.
@@ -147,7 +148,8 @@
                         category: "속담",
                         prompt: "이 상황에 어울리는 속담을 고르세요.",
                         sentence: situation || example,
-                        choices: withDistractors(proverb, allProverbs),
+                        // 뜻이 비슷해 이 상황에도 맞는 속담(자료의 lookalikes)은 오답으로 내지 않는다.
+                        choices: withDistractors(proverb, allProverbs.filter((text) => !(entry.lookalikes || []).includes(text))),
                         answer: proverb,
                         explanation: `${proverb}: ${meaning}`
                     });
@@ -208,17 +210,21 @@
             subject: "국어",
             scripts: [
                 "/learning/literacy-numeracy/classical-chinese-idioms/idioms-data.js",
-                "/learning/literacy-numeracy/classical-chinese-idioms/idioms-lessons-data.js"
+                "/learning/literacy-numeracy/classical-chinese-idioms/idioms-lessons-data.js",
+                "/learning/literacy-numeracy/classical-chinese-idioms/idioms-core.js"
             ],
             getBank() {
                 const entries = Array.isArray(window.IDIOM_DATA) ? window.IDIOM_DATA : [];
-                const allWords = entries.map((entry) => entry.word);
+                // 뜻이 같거나 같은 이야기에서 나온 성어(idioms-core.js의 묶음)는 오답으로 내지 않는다.
+                const ambiguous = window.IdiomCore?.hasAmbiguousMeaning || (() => false);
                 const questions = new Map(entries.map((entry) => [entry.id, {
                     id: entry.id,
                     category: entry.theme || "한자성어",
                     prompt: "이 뜻에 맞는 한자성어를 고르세요.",
                     sentence: entry.meaning,
-                    choices: withDistractors(entry.word, allWords),
+                    choices: withDistractors(entry.word, entries
+                        .filter((other) => !ambiguous(entry.id, other.id))
+                        .map((other) => other.word)),
                     answer: entry.word,
                     explanation: `${entry.word}(${entry.hanja}) · ${entry.hanjaExpl || ""}`.trim()
                 }]));
