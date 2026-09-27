@@ -24,7 +24,7 @@ test("GET /school/settings and GET /school/teachers compute isAdmin from teacher
 test("PUT /school/teachers rejects non-admin callers -- it used to have no permission check at all, letting any teacher rewrite the whole school's teacher roster (grade/class reassignment, email changes, deleting teachers not in the payload)", () => {
   const body = handlerBody(serverSource, `router.put("/school/teachers"`);
   assert.match(body, /if \(!\["관리자", "교장", "교감"\]\.includes\(tp\.rows\[0\]\.teacher_type\)\) \{/);
-  assert.match(body, /HttpError\(403, "ADMIN_ONLY", "교사 명단 편집 권한은 학교 관리자만 갖고 있습니다\."\)/);
+  assert.match(body, /HttpError\(403, "ADMIN_ONLY", "교직원 명단 편집 권한은 학교 관리자만 갖고 있습니다\."\)/);
 });
 
 test("the dashboard's class switcher defaults to an explicit placeholder instead of silently falling back to the browser's first-option selection (which used to display an unrelated teacher's class as if it belonged to the current account, e.g. for a school admin with no homeroom of their own)", () => {

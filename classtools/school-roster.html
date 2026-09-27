@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#f6f3ec">
-    <title>전교생 명단 관리</title>
+    <title>학교 명단 관리</title>
     <style>
         :root {
             color-scheme: light;
@@ -137,7 +137,7 @@
         .status-msg.error { color: var(--danger); }
         .status-msg.ok { color: var(--brand); }
 
-        /* ── 전교생 명단 그리드 ── */
+        /* ── 학생·학부모 명단 그리드 ── */
         .roster-toolbar {
             display: flex;
             align-items: center;
@@ -438,8 +438,8 @@
 <div class="top-bar">
     <a href="/classtools/" class="back-btn" title="뒤로">←</a>
     <nav class="tabs">
-        <button class="tab-btn active" id="tab-roster" onclick="switchTab('roster')">📋 전교생 명단</button>
-        <button class="tab-btn" id="tab-teachers" onclick="switchTab('teachers')">👩‍🏫 교사 명단</button>
+        <button class="tab-btn active" id="tab-roster" onclick="switchTab('roster')">📋 학생·학부모 명단</button>
+        <button class="tab-btn" id="tab-teachers" onclick="switchTab('teachers')">👩‍🏫 교직원 명단</button>
         <button class="tab-btn" id="tab-settings" onclick="switchTab('settings')">⚙️ 학교 설정</button>
     </nav>
     <!-- 탭마다의 필터·버튼. 상단 바와 한 줄에 두어 명단이 한 화면에 더 들어오게 한다 -->
@@ -454,7 +454,7 @@
                 <option value="">전체 반</option>
             </select>
             <span class="status-msg" id="rosterStatus"></span>
-            <span class="card-desc toolbar-desc" id="rosterDesc">전교생 통합 명단 (수정은 학교 관리자만 가능)</span>
+            <span class="card-desc toolbar-desc" id="rosterDesc">학생·학부모 통합 명단 (수정은 학교 관리자만 가능)</span>
             <div class="toolbar-buttons" id="rosterAdminActions">
                 <button class="btn btn-secondary btn-sm" id="downloadTemplateBtn" onclick="downloadExcelTemplate()">📊 엑셀 양식 다운로드</button>
                 <button class="btn btn-secondary btn-sm" id="pasteSectionBtn" onclick="togglePasteSection()">📥 붙여넣기로 입력</button>
@@ -467,7 +467,7 @@
             <span class="status-msg" id="teacherRosterStatus"></span>
             <div class="toolbar-buttons" id="teacherAdminActions">
                 <button class="btn btn-secondary btn-sm" id="toggleTeacherPasteBtn" onclick="toggleTeacherPasteSection()">📥 붙여넣기로 입력</button>
-                <button class="btn btn-secondary btn-sm" id="addTeacherBtn" onclick="addTeacherRow()">+ 교사 추가</button>
+                <button class="btn btn-secondary btn-sm" id="addTeacherBtn" onclick="addTeacherRow()">+ 교직원 추가</button>
                 <button class="btn btn-primary btn-sm" id="saveTeacherRosterBtn" onclick="saveTeacherRoster()">💾 저장</button>
             </div>
         </div>
@@ -488,7 +488,7 @@
 <!-- 메인 -->
 <div class="main">
 
-    <!-- 탭 1: 전교생 명단 -->
+    <!-- 탭 1: 학생·학부모 명단 -->
     <div class="panel active" id="panel-roster">
         <div class="card">
             <!-- 명단 테이블 -->
@@ -525,7 +525,7 @@
         </div>
     </div>
 
-    <!-- 탭 2: 교사 명단 -->
+    <!-- 탭 2: 교직원 명단 -->
     <div class="panel" id="panel-teachers">
         <div class="card">
             <!-- 붙여넣기 섹션 -->
@@ -572,7 +572,7 @@
                 <!-- 명단 소속 열 -->
                 <div class="card" style="margin:0;grid-column:1/-1;">
                     <div class="card-title" style="font-size:14px;">🧩 명단 소속 열</div>
-                    <div class="card-desc">전교생 명단에 어떤 열을 둘지 학교가 정합니다. 동아리·방과후·돌봄반·통학버스·자치임원처럼 필요한 것만 만들어 쓰세요. 여기 적은 항목이 명단 칸의 선택지가 되고, 그룹을 개설할 때 고르는 이름도 이 목록에서 나옵니다.</div>
+                    <div class="card-desc">학생·학부모 명단에 어떤 열을 둘지 학교가 정합니다. 동아리·방과후·돌봄반·통학버스·자치임원처럼 필요한 것만 만들어 쓰세요. 여기 적은 항목이 명단 칸의 선택지가 되고, 그룹을 개설할 때 고르는 이름도 이 목록에서 나옵니다.</div>
                     <div id="rosterColumnList"></div>
                     <div class="add-item-row">
                         <input class="add-item-input" id="newColumnInput" placeholder="열 이름 (예: 동아리, 걸스카우트)" maxlength="30" onkeydown="if(event.key===&quot;Enter&quot;)addRosterColumn()">
@@ -607,7 +607,7 @@
     <div class="panel" id="panel-groups">
         <div class="card">
             <div class="card-title">내 학급·그룹</div>
-            <div class="card-desc">담임반, 동아리, 교과반, 방과후반 등 자유롭게 개설하여 전교생 명단에서 학생을 끌어다 구성하세요.</div>
+            <div class="card-desc">담임반, 동아리, 교과반, 방과후반 등 자유롭게 개설하여 학생·학부모 명단에서 학생을 끌어다 구성하세요.</div>
             <p class="status-msg" id="groupStatus"></p>
             <div class="groups-grid" id="groupsGrid">
                 <div style="padding:40px;text-align:center;color:var(--muted);">불러오는 중…</div>
@@ -640,7 +640,7 @@
             <select class="form-control" id="newGroupNameSelect" style="display:none;"></select>
             <input class="form-control" id="newGroupName" placeholder="예: 5학년 1반" maxlength="60">
             <p id="newGroupNameHint" style="margin:6px 0 0; font-size:12px; color:var(--muted); line-height:1.5; display:none;">
-                학교 설정에 등록된 이름에서 고르면 전교생 명단의 해당 열이 채워진 학생을
+                학교 설정에 등록된 이름에서 고르면 학생·학부모 명단의 해당 열이 채워진 학생을
                 자동으로 찾아옵니다.
             </p>
         </div>
@@ -708,7 +708,7 @@
         if (tab === "groups") loadGroups();
     };
 
-    // ─── 교사 명단 ───────────────────────────────────────────
+    // ─── 교직원 명단 ───────────────────────────────────────────
     let allTeachers = [];
 
     // 분류 칸. 'auto'(교·강사)는 저장할 때 학년·반이 있으면 담임, 없으면 전담이 된다.
@@ -719,7 +719,7 @@
     const teacherKind = (t) => PICKED_KINDS.includes(t.role || t.type) ? (t.role || t.type) : "auto";
 
     async function loadTeachers() {
-        setStatus("teacherRosterStatus", "교사 명단 불러오는 중…");
+        setStatus("teacherRosterStatus", "교직원 명단 불러오는 중…");
         try {
             const data = await api("/api/school/teachers");
             allTeachers = data.teachers || [];
@@ -739,7 +739,7 @@
         if (!tbody) return;
 
         if (allTeachers.length === 0) {
-            tbody.innerHTML = `<tr><td colspan="9" class="no-data">등록된 교사 명단이 없습니다. '📥 붙여넣기로 입력' 또는 '+ 교사 추가'로 등록하세요.</td></tr>`;
+            tbody.innerHTML = `<tr><td colspan="9" class="no-data">등록된 교직원이 없습니다. '📥 붙여넣기로 입력' 또는 '+ 교직원 추가'로 등록하세요.</td></tr>`;
             return;
         }
 
@@ -828,11 +828,11 @@
     window.addTeacherRow = function() {
         allTeachers.push({ name: "", email: "", grade: "", classNumber: "", subjectName: "", roomName: "", linked: false });
         renderTeacherRosterTable();
-        setStatus("teacherRosterStatus", "새 교사 행이 추가되었습니다. 내용을 작성 후 '💾 저장' 버튼을 누르세요.");
+        setStatus("teacherRosterStatus", "새 줄이 추가되었습니다. 내용을 작성 후 '💾 저장' 버튼을 누르세요.");
     };
 
     window.deleteTeacherRow = function(idx) {
-        if (!confirm(`'${allTeachers[idx]?.name || '선택한'}' 교사를 삭제하시겠습니까?`)) return;
+        if (!confirm(`'${allTeachers[idx]?.name || '선택한'}' 교직원을 삭제하시겠습니까?`)) return;
         allTeachers.splice(idx, 1);
         renderTeacherRosterTable();
         setStatus("teacherRosterStatus", "삭제되었습니다. 저장하려면 '💾 저장' 버튼을 누르세요.");
@@ -841,7 +841,7 @@
     window.saveTeacherRoster = async function() {
         const btn = document.getElementById("saveTeacherRosterBtn");
         if (btn) btn.disabled = true;
-        setStatus("teacherRosterStatus", "교사 명단 저장 중…");
+        setStatus("teacherRosterStatus", "교직원 명단 저장 중…");
         try {
             // 학년/반 유효성 검증: 학년과 반 중 하나만 입력된 경우 차단
             for (const t of allTeachers) {
@@ -885,7 +885,7 @@
                 method: "PUT",
                 body: JSON.stringify({ teachers: clean, year: currentYear })
             });
-            setStatus("teacherRosterStatus", `✅ 교사 명단 ${result.saved}명 저장 완료`, "ok");
+            setStatus("teacherRosterStatus", `✅ 교직원 명단 ${result.saved}명 저장 완료`, "ok");
             await loadTeachers();
         } catch (e) {
             setStatus("teacherRosterStatus", e.message, "error");
@@ -939,7 +939,7 @@
             allTeachers = parsed;
             renderTeacherRosterTable();
             document.getElementById("teacherPasteSection").style.display = "none";
-            setStatus("teacherRosterStatus", `✅ ${parsed.length}명의 교사 정보가 반영되었습니다. '💾 저장' 버튼을 누르세요.`, "ok");
+            setStatus("teacherRosterStatus", `✅ ${parsed.length}명의 교직원 정보가 반영되었습니다. '💾 저장' 버튼을 누르세요.`, "ok");
         } else {
             setStatus("teacherPasteStatus", "올바른 탭 구분 형식이 아닙니다.", "error");
         }
@@ -961,7 +961,7 @@
         });
     }
 
-    // ─── 전교생 명단 ───────────────────────────────────────────
+    // ─── 학생·학부모 명단 ───────────────────────────────────────────
     async function loadRoster() {
         setStatus("rosterStatus", "불러오는 중…");
         try {
@@ -1327,7 +1327,7 @@
         const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
         const link = document.createElement("a");
         link.href = URL.createObjectURL(blob);
-        link.download = `전교생명단_기본양식_${currentYear}.csv`;
+        link.download = `학생학부모명단_기본양식_${currentYear}.csv`;
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
@@ -1724,7 +1724,7 @@
         }));
         select.style.display = "";
         input.style.display = "none";
-        hint.textContent = "학교 설정에 등록된 이름에서 고르면 전교생 명단의 해당 열이 채워진 학생을 자동으로 찾아옵니다.";
+        hint.textContent = "학교 설정에 등록된 이름에서 고르면 학생·학부모 명단의 해당 열이 채워진 학생을 자동으로 찾아옵니다.";
         hint.style.display = "";
     };
 
