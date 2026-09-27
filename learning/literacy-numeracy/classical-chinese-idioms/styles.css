@@ -1,7 +1,17 @@
+/* 한자 앱과 같은 Klee One. 자료에 나오는 한자만 담은 작은 파일을 먼저 쓰고
+   (scripts/build_idioms_hanja_font.py), 거기 없는 한자만 원본 8.9MB에서 받는다. */
 @font-face {
     font-family: "KleeHanja";
     src: url("../../../assets/fonts/klee-one/KleeOne-SemiBold.ttf") format("truetype");
+    unicode-range: U+3400-4DBF, U+4E00-9FFF, U+F900-FAFF;
     font-display: swap;
+}
+
+@font-face {
+    font-family: "KleeHanja";
+    src: url("assets/fonts/klee-hanja-idioms.woff2?v=20260927-1") format("woff2");
+    unicode-range: U+4E00, U+4E03, U+4E09-4E0B, U+4E0D, U+4E18, U+4E2D, U+4E4B, U+4E59, U+4E5D, U+4E8B-4E8C, U+4E94, U+4EA1, U+4EA4, U+4EAD, U+4EBA, U+4ECA, U+4ED6, U+4EE3, U+4EE5, U+4F2F, U+4F50, U+4F5C, U+4F86, U+4FAF, U+4FD7, U+5047, U+5099, U+50B3, U+50F9, U+5109, U+5148, U+5154, U+5169, U+516B-516C, U+5175, U+518A, U+51B6, U+51FA, U+5207, U+520E, U+5217, U+521D, U+5229, U+522E, U+523B, U+524D, U+5289, U+528D, U+529B, U+529F-52A0, U+52AD, U+52E2, U+52E4, U+52F8, U+5317, U+5341, U+5343, U+5353-5354, U+5357, U+5371, U+5375, U+537F, U+539A, U+539F, U+53CA-53CB, U+53EF, U+53F2, U+540C-540D, U+541B, U+5433, U+5442, U+5468, U+5473, U+547D, U+548C, U+554F, U+5584, U+5609, U+5617, U+5668, U+56CA, U+56DB, U+56E0, U+570B, U+571F, U+5730, U+5805, U+5831, U+585E, U+591A, U+5922, U+5927, U+5929-592A, U+5967, U+596A, U+596E, U+5973, U+597D, U+5982, U+59CB, U+5A01, U+5B50, U+5B57, U+5B5F, U+5B64, U+5B6B, U+5B78, U+5B88, U+5B8C, U+5BD2, U+5BDF, U+5BE6, U+5C0D, U+5C0F, U+5C39, U+5C3E, U+5C71, U+5DA0, U+5DE6, U+5E02, U+5E73, U+5E8A, U+5EC9, U+5EEC, U+5F13, U+5F15, U+5F71, U+5F85, U+5F8C, U+5F97, U+5F9E, U+5FC3, U+5FC5, U+5FD7-5FD8, U+601D, U+6065, U+6069, U+60A3, U+60E0, U+611A, U+6182, U+6190, U+61C9, U+6210-6211, U+6230, U+6234, U+62FE, U+6307, U+6372, U+638C, U+63A8, U+63DB, U+6539, U+653F, U+6545, U+6572, U+6582, U+6587, U+65B0, U+65B9, U+65BC, U+65E5, U+660E, U+6613, U+6625, U+6649, U+664F, U+6669, U+667A, U+66AE, U+66C4, U+66F8, U+6709, U+671D, U+6728, U+672C, U+674E, U+675C, U+675E, U+676F, U+6771, U+6797, U+679C, U+67EF, U+682A, U+6881, U+695A, U+696D, U+6A5F, U+6A80, U+6B4C, U+6B62-6B63, U+6B65, U+6B77-6B78, U+6B7B, U+6BBA, U+6BCD, U+6BDB, U+6C0F, U+6C34, U+6C42, U+6C5F, U+6CBB, U+6D1B, U+6DC7, U+6DEE, U+6DFB, U+6E6F, U+6EAB, U+6F01, U+6F22, U+70CF, U+70F9, U+7121, U+7167, U+71B1, U+71D5, U+7232, U+7236, U+7259, U+725B, U+7262, U+7267, U+7269, U+72D0, U+72D7, U+7336, U+738B, U+7422, U+745E, U+74A7, U+7518, U+751F, U+7530, U+7532, U+756B, U+7570, U+75C5, U+767B-767E, U+7686-7687, U+76CA, U+76DC, U+76E1, U+76EE, U+76F8, U+76FE, U+7709, U+773C, U+775B, U+77DB, U+77E5, U+77ED, U+77EF, U+77F3, U+7834, U+78CB, U+78E8, U+798D, U+798F, U+79AE, U+79CB, U+79E6, U+79FB, U+7A7A, U+7AF9, U+7B11, U+7B54, U+7B56, U+7BA1, U+7BC0, U+7D00, U+7D04, U+7D19, U+7D2F, U+7D43, U+7D50, U+7D76, U+7D93, U+7DE3, U+7E1B, U+7E69, U+7F8A, U+7FA4, U+7FA9, U+7FBD, U+7FC1, U+8001, U+8005, U+808B, U+809D, U+80CC, U+80CE, U+8123, U+81BA, U+81BD, U+81E5, U+81E8, U+81EA, U+821F, U+826F, U+8272, U+82B1, U+82DB, U+82E6, U+82FB, U+8340, U+8349, U+838A, U+83AB, U+83EF, U+842C, U+85A6, U+85AA, U+85CD, U+85FA, U+8607, U+864E, U+8655, U+865B, U+865E, U+86C7, U+87A2, U+8839, U+885B, U+88DC, U+897F, U+898B, U+89D2, U+89E3, U+8A00, U+8A13, U+8A18, U+8A69, U+8A71, U+8A85, U+8A9E, U+8AAA, U+8AD6, U+8B8A, U+8D70, U+8D77, U+8D8A, U+8D99, U+8DB3, U+8ECD, U+8EF8, U+8F09, U+8F49, U+8F9B, U+8FAD, U+9000, U+901A, U+9032, U+9035, U+9042, U+9047, U+904E, U+9077, U+907A, U+91CC-91CD, U+91D1, U+9304, U+9310, U+9326, U+93E1, U+9577, U+9580, U+9593, U+9644, U+9663, U+9670, U+967D, U+96C5, U+96E3, U+96EA, U+96F7, U+971C, U+9727, U+9739, U+9742, U+9751, U+975E, U+9762, U+97AD, U+97CB, U+97D3, U+9805, U+9810, U+9817, U+982D, U+9838, U+984C, U+9854, U+985A, U+985E, U+9867, U+98A8, U+9996, U+99AC, U+99C1, U+9AA8, U+9B2A, U+9B54, U+9B5A, U+9B91, U+9CE5, U+9CF4, U+9DB4, U+9DC4, U+9E7F, U+9EDE, U+9F4A, U+9F52, U+9F8D;
+    font-display: block;
 }
 
 :root {
@@ -496,7 +506,8 @@ kbd {
 .hanja-chip {
     display: inline-flex;
     align-items: center;
-    padding: 6px 12px;
+    gap: 7px;
+    padding: 4px 12px 4px 10px;
     border: 1px solid rgba(21, 79, 66, 0.18);
     border-radius: 8px;
     background: rgba(255, 255, 255, 0.95);
@@ -504,6 +515,20 @@ kbd {
     font-size: 14px;
     font-weight: 700;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.hanja-chip .hanja-inline {
+    color: var(--green);
+    font-size: 22px;
+    line-height: 1.2;
+}
+
+/* 한자는 어디서나 한자 앱과 같은 Klee One. 사이트 공용 읽기 글꼴이 p·li·단추를
+   바탕체로 덮으므로, 한자는 따로 감싼 요소에 글꼴을 준다. */
+.hanja-inline {
+    font-family: "KleeHanja", serif;
+    font-weight: 600;
+    font-synthesis: none;
 }
 
 .meaning-block p {

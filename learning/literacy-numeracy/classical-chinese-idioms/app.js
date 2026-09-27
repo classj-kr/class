@@ -296,7 +296,17 @@
         parts.forEach((part) => {
             const chip = document.createElement("span");
             chip.className = "hanja-chip";
-            chip.textContent = part;
+            const [, character, reading] = part.match(/^(\S+)\s*\((.+)\)$/) || [];
+            if (character) {
+                const hanja = document.createElement("b");
+                hanja.className = "hanja-inline";
+                hanja.textContent = character;
+                const sound = document.createElement("span");
+                sound.textContent = reading;
+                chip.append(hanja, sound);
+            } else {
+                chip.textContent = part;
+            }
             container.append(chip);
         });
     }
@@ -436,7 +446,8 @@
             button.type = "button";
             button.className = "answer-option";
             button.dataset.answerId = option.id;
-            button.innerHTML = `<span>${index + 1}</span>${option.label}`;
+            const [word, hanja] = option.label.split(" · ");
+            button.innerHTML = `<span>${index + 1}</span>${word}${hanja ? ` · <b class="hanja-inline">${hanja}</b>` : ""}`;
             button.addEventListener("click", () => chooseAnswer(option.id));
             elements.answerOptions.append(button);
         });
@@ -517,7 +528,10 @@
             const idiom = data.find((item) => item.id === id);
             if (!idiom) return;
             const item = document.createElement("li");
-            item.textContent = `${idiom.word} · ${idiom.hanja}`;
+            const hanja = document.createElement("b");
+            hanja.className = "hanja-inline";
+            hanja.textContent = idiom.hanja;
+            item.append(`${idiom.word} · `, hanja);
             elements.resultMistakeList.append(item);
         });
         elements.resultMistakeList.hidden = mistakeIds.length === 0;
