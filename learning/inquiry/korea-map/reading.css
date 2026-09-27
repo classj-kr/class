@@ -11,7 +11,7 @@
 
 :is(.place-description, .place-mission, #relicDocent, #relicContext,
   .concept-points, #focusBody, .reading-steps, .concept-trap,
-  .visual-comparison, .visual-evidence, .concept-visual, .model-location-note,
+  .visual-comparison, .visual-evidence, .concept-visual,
   #questionTitle, #questionStimulus, .answer-button, .answer-feedback,
   .question-map-caption, .question-graph, .note-popup p) {
   font-family: var(--reading-font);

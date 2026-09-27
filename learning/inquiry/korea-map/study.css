@@ -23,18 +23,18 @@
 .comparison-cell p:empty { display: none; }
 .comparison-cell small { color: #617377; font-size: 12px; line-height: 1.5; }
 .reading-steps { margin-top: 14px; }
-.reading-steps h3, .practice-heading h3 { margin: 0; font-size: 14px; color: #294b54; }
+.practice-heading h3 { margin: 0; font-size: 14px; color: #294b54; }
 .reading-steps ol { list-style: none; counter-reset: reading; padding: 0; margin: 8px 0; display: grid; gap: 5px; }
 .reading-steps li { position: relative; padding-left: 30px; font-size: 13px; color: #36535b; line-height: 1.6; counter-increment: reading; }
 .reading-steps li::before { content: counter(reading); position: absolute; left: 0; top: 0; width: 21px; height: 21px; border-radius: 6px; background: #e1ebe6; color: #28565c; display: grid; place-items: center; font-weight: 800; font-size: 11px; }
-.concept-trap { margin: 15px 0; padding: 12px 14px; background: #f4ecdb; border-left: 3px solid #b68d45; border-radius: 0 8px 8px 0; color: #6f5837; font-size: 12px; line-height: 1.7; }
-.concept-trap strong { display: block; margin-bottom: 2px; font-size: 11px; }
+.concept-trap { margin: 12px 0; color: #36535b; font-size: 13px; line-height: 1.7; }
+
 .lesson-locations { display: flex; gap: 7px; flex-wrap: wrap; align-items: center; }
-.lesson-locations > span { color: #6b7e80; font-size: 11px; margin-right: 4px; }
+
 .lesson-locations button { min-height: 38px; border: 1px solid #cbd9d3; background: #fffefa; padding: 5px 9px; border-radius: 8px; color: #2a565f; font-size: 12px; }
 .lesson-locations b { color: #9a582f; margin-right: 4px; }
 .lesson-locations button[aria-pressed="true"] { border-color: #176c78; background: #dcece8; }
-.model-location-note { font-size: 10px; color: #718183; margin: 8px 0 0; }
+
 .lesson-practice { margin-top: 20px; padding: 16px; border: 1px solid #ceddd6; border-radius: 12px; background: #ebf0e9; }
 .practice-heading { display: flex; justify-content: space-between; gap: 8px; align-items: center; margin-bottom: 12px; }
 .practice-heading span { color: #62776d; font-size: 11px; }

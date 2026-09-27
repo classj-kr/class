@@ -8,10 +8,10 @@
   <title>경찰과 도둑</title>
   <link rel="stylesheet" href="../../../assets/network/multiplayer-lobby.css?v=20260926-city-background">
   <link rel="stylesheet" href="../../../assets/device-game.css?v=20260921c">
-  <link rel="stylesheet" href="citychase.css?v=20260927-no-header">
+  <link rel="stylesheet" href="citychase.css?v=20260927-gem-search">
   <script src="../../../assets/sound/music-control.js?v=20260910-click-cache-1" defer></script>
   <script src="../../../assets/network/game-network.js?v=20260821"></script>
-  <script src="../../../assets/network/multiplayer-lobby.js?v=20260926-button-labels"></script>
+  <script src="../../../assets/network/multiplayer-lobby.js?v=20260927-custom-rules"></script>
   <script src="citychase-data.js?v=20260927-shop-names"></script>
 </head>
 <body>
@@ -86,7 +86,7 @@
           <p id="lobbyGuide" class="mp-lobby-guide">참가자를 기다리는 중입니다.</p>
           <button id="startBtn" class="primary startButton" type="button" disabled>참가자를 기다리는 중</button>
           <div class="lobbySecondaryActions">
-            <button id="rulesBtnLobby" class="secondary" type="button">Rules</button>
+            <button id="rulesBtnLobby" class="secondary" type="button">게임 방법</button>
             <button id="leaveBtnLobby" class="secondary" type="button">메인 화면</button>
           </div>
         </section>
@@ -134,14 +134,16 @@
           <details id="gameInfoDetails" open>
             <summary>팀 정보 · 참가자 <span id="compactProgress"></span></summary>
             <div class="gameInfoBody">
-          <section id="identityCard" class="sideCard identityCard">
-            <div id="teamCrest" class="teamCrest">?</div>
-            <div><h2 id="teamTitle">팀 배정 전</h2><p id="teamMission">게임이 시작되면 역할이 정해집니다.</p></div>
+          <section class="progressSummary" aria-label="내 팀과 승리 목표">
+            <span id="teamTitle" class="teamTag">팀 배정 전</span>
+            <span title="구금된 도둑">구금 <strong id="arrestProgress">0 / 3</strong></span>
           </section>
-
-          <section class="progressRow" aria-label="승리 목표">
-            <div class="progressBox"><span>비밀기지의 보석</span><strong id="gemProgress">0 / 2</strong></div>
-            <div class="progressBox"><span>체포된 도둑</span><strong id="arrestProgress">0 / 3</strong></div>
+          <section class="gemSummary" aria-label="보석 현황">
+            <div class="gemCounts">
+              <span>운반 중 <strong id="carriedGemCount">0개</strong></span>
+              <span>기지 확보 <strong id="gemProgress">0 / 2</strong></span>
+            </div>
+            <div id="gemCarriers" class="gemCarriers" hidden></div>
           </section>
 
           <section id="setupCard" class="sideCard setupTools hidden">
@@ -171,14 +173,14 @@
           </section>
 
           <section id="intelCard" class="sideCard hidden">
-            <div class="row spread"><strong>팀 정보</strong><span id="cardCount"></span></div>
+            <strong>알아낸 장소</strong>
             <div id="intelList" class="intelList"></div>
           </section>
 
-          <section class="sideCard">
-            <div class="row spread"><strong>참가자</strong><span id="roundText">1라운드</span></div>
+          <details id="playersDetails" class="playersDetails">
+            <summary><strong>참가자 <span id="playerCount"></span></strong><span id="roundText">1라운드</span></summary>
             <div id="playerList" class="playerList"></div>
-          </section>
+          </details>
             </div>
           </details>
         </aside>
@@ -187,15 +189,37 @@
   </main>
 
   <section id="rulesOverlay" class="overlay hidden" role="dialog" aria-modal="true" aria-labelledby="rulesTitle">
-    <div class="modal">
-      <div class="row spread"><div><div class="eyebrow">게임 방법</div><h2 id="rulesTitle">경찰과 도둑 게임 방법</h2></div><button id="closeRulesBtn" class="iconButton" type="button" aria-label="닫기">×</button></div>
-      <div class="rulesGrid">
-        <article class="ruleBox"><h3>🌸 도둑팀</h3><ul><li>도시의 일곱 장소를 조사해 숨겨진 보석을 찾으세요.</li><li>찾은 보석을 하나씩 비밀기지까지 운반하면 확보됩니다.</li><li>경보 장치를 발견한 말은 현장에서 붙잡힙니다.</li><li>가짜 단서 카드를 놓아 경찰을 엉뚱한 방향으로 유도할 수 있습니다.</li></ul></article>
-        <article class="ruleBox"><h3>🟣 경찰팀</h3><ul><li>추격 전에 보석 두 개와 경보 장치를 서로 다른 장소에 배치하세요.</li><li>이동 경로에서 도둑말과 마주치면 그 말을 구금합니다.</li><li>차단 표지를 활용해 도둑팀의 진로를 막을 수 있습니다.</li><li>도둑말 세 개를 모두 구금하면 경찰팀이 승리합니다.</li></ul></article>
-        <article class="ruleBox"><h3>🎲 이동</h3><ul><li>도둑팀 세 말과 경찰팀 세 말이 번호 순서대로 번갈아 행동합니다.</li><li>주사위를 던지면 이동 가능한 최종 목적지가 노란빛으로 표시됩니다.</li><li>목적지를 한 번 누르면 말이 선택된 길을 따라 한 칸씩 이동합니다.</li><li>현재 말을 담당하는 학생만 이동을 결정할 수 있습니다.</li></ul></article>
-        <article class="ruleBox"><h3>🔓 구금과 안전구역</h3><ul><li>구금된 도둑말은 자기 차례에 탈출 주사위를 시도합니다.</li><li>경찰말이 없을 때 동료가 구금 구역에 도착하면 함께 빠져나옵니다.</li><li>경찰말은 비밀기지와 수색 장소 안으로 들어갈 수 없습니다.</li><li>도둑말은 안전구역에서 최대 세 차례까지 모습을 감출 수 있습니다.</li></ul></article>
+    <div class="modal rulesModal">
+      <header class="rulesHeader"><h2 id="rulesTitle">게임 방법</h2><button id="closeRulesBtn" class="iconButton" type="button" aria-label="게임 방법 닫기">×</button></header>
+      <div class="rulesBody">
+        <div class="rulesGoals">
+          <section class="thief"><h3>도둑팀</h3><p><strong>보석 2개</strong>를 찾아<br>비밀기지로 가져오면 승리</p></section>
+          <section class="police"><h3>경찰팀</h3><p><strong>도둑말 3개</strong>를<br>모두 구금하면 승리</p></section>
+        </div>
+        <p class="rulesSetup">시작 전, 경찰팀 대표가 서로 다른 건물에 보석 2개와 경보 장치 1개를 숨깁니다.</p>
+        <section class="rulesSteps">
+          <h3>내 차례에는</h3>
+          <ol>
+            <li><strong>주사위를 던집니다.</strong></li>
+            <li><strong>노란 목적지를 누릅니다.</strong><br>칸 설명을 읽고 <b>‘여기로 이동’</b>을 누르세요.</li>
+          </ol>
+          <p>주사위 대신, 표시된 <b>숨기·카드</b> 버튼을 선택할 수도 있습니다.</p>
+        </section>
+        <details class="rulesMore">
+          <summary>체포·탈출·특수 칸 자세히 보기</summary>
+          <ul>
+            <li>건물의 수색 칸에 도착하면 남은 이동 칸 수와 관계없이 수색합니다. 찾은 보석은 말 하나에 한 개씩 운반하며, 비밀기지에 가져와야 확보됩니다.</li>
+            <li>도둑이 경보 장치를 찾으면 구금됩니다. 경찰도 이동 중 안전구역 밖의 도둑을 잡을 수 있습니다.</li>
+            <li>구금된 도둑은 자기 차례에 주사위 <b>1</b>이 나오면 탈출해 다시 이동합니다.</li>
+            <li>경찰이 없는 구금 구역에 동료 도둑이 도착하면 한 명을 구출할 수 있습니다.</li>
+            <li>도둑은 안전구역에서 최대 세 차례 연속 숨을 수 있습니다.</li>
+            <li>경찰은 비밀기지와 건물의 수색 칸에 들어갈 수 없습니다.</li>
+            <li>가짜 단서로 경찰을 다른 길로 보내고, 차단 표지로 보석을 가진 도둑의 길을 막을 수 있습니다.</li>
+            <li>역과 특수 칸은 눌러서 효과를 확인하세요. 현재 말을 맡은 학생이 행동을 결정합니다.</li>
+          </ul>
+        </details>
       </div>
-      <button id="closeRulesBottomBtn" class="primary" type="button">확인</button>
+      <footer class="rulesFooter"><button id="closeRulesBottomBtn" class="primary" type="button">알겠어요</button></footer>
     </div>
   </section>
 
@@ -217,8 +241,15 @@
     </div>
   </section>
 
+  <dialog id="eventDialog" class="eventDialog" aria-labelledby="eventTitle" aria-describedby="eventMessage">
+    <h2 id="eventTitle"></h2>
+    <p id="eventMessage"></p>
+    <p id="eventDetail" hidden></p>
+    <form method="dialog"><button id="confirmEventBtn" class="primary" autofocus>확인</button></form>
+  </dialog>
+
   <div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
   <audio id="bgm" preload="auto"></audio>
-  <script src="citychase.js?v=20260927-no-header"></script>
+  <script src="citychase.js?v=20260927-gem-search"></script>
 </body>
 </html>

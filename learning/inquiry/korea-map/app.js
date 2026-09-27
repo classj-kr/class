@@ -7,6 +7,7 @@
   const stations = dataset.stations || {};
   const questions = Array.isArray(dataset.questions) ? dataset.questions : [];
   const cityLabels = dataset.cityLabels || [];
+  const countyLabels = window.KOREA_REGIONS?.counties || [];
   const provinceLabels = dataset.provinceLabels || [];
   const regionOfProvince = dataset.regionOfProvince || [];
   const borders = window.KOREA_BORDERS || { mdl: [], national: [] };
@@ -372,11 +373,11 @@
     renderFeatureButtons(theme.features || []);
     renderPrinciples(theme.principles || []);
     renderLegend(theme.legend || []);
-    mapDetailsVisible = false;
+    mapDetailsVisible = themeKey === "travel" || themeKey === "heritage";
     syncMapDetailsButton();
     setReliefTone(mainMap, theme);
     drawThemeOnMap(mainMap, mainThemeLayer, theme, { interactive: true });
-    drawLabels(mainMap, mainLabelLayer, { admin: !theme.provinceNames && !theme.historical, city: !theme.provinceNames && !theme.historical, annotations: theme.annotations || [] });
+    drawLabels(mainMap, mainLabelLayer, { admin: !theme.provinceNames && !theme.historical, city: !theme.provinceNames && !theme.historical, county: themeKey === "travel" || themeKey === "heritage", annotations: theme.annotations || [] });
     drawBoundaries(mainMap, mainBoundaryLayer, true);
     fitKorea(mainMap);
     updatePracticeButton();
@@ -389,7 +390,9 @@
     if (!lesson) { scene.setContext(currentTheme, null); return; }
     renderLegend((themes[currentTheme].legend || []).filter(item=>item.type === "relief"));
     drawThemeOnMap(mainMap, mainThemeLayer, themes[currentTheme], { interactive: true, skipFeatures: true, baseOnly: true });
-    drawLabels(mainMap, mainLabelLayer, { admin: true, city: true, annotations: [] });
+    // 행정구역 학습에서도 시·도·시·군 이름표를 유지한다.
+    const theme = themes[currentTheme];
+    drawLabels(mainMap, mainLabelLayer, { admin: !theme.provinceNames, city: !theme.provinceNames, annotations: theme.provinceNames ? theme.annotations || [] : [] });
     lesson.spots.forEach((spot, index) => {
       // The temperature scene already places A/B at the observed stations; do not stack duplicate pins.
       if (currentTheme === "climate" && lesson.id === "temperature") return;
@@ -761,7 +764,15 @@
     if (opts.city) {
       cityLabels.forEach(([name, lat, lng, minZoom]) => {
         if (hide.has(name) || namedByTheme(name, lat, lng)) return;
-        entries.push({ marker: L.marker([lat, lng], { icon: textIcon("city-label", name), pane: "adminLabels", interactive: false }), minZoom: minZoom || 7, detailOnly: true });
+        const county = opts.county && countyLabels.find(([fullName, y, x]) => fullName === name + "시" && Math.abs(y - lat) < 0.2 && Math.abs(x - lng) < 0.2);
+        entries.push({ marker: L.marker([lat, lng], { icon: textIcon("city-label", county ? county[0] : name), pane: "adminLabels", interactive: false }), minZoom: minZoom || 7, detailOnly: true });
+      });
+    }
+    if (opts.county) {
+      countyLabels.forEach(([name, lat, lng]) => {
+        const alreadyNamed = opts.city && cityLabels.some(([city, y, x]) => name === city + "시" && Math.abs(y - lat) < 0.2 && Math.abs(x - lng) < 0.2);
+        if (alreadyNamed || hide.has(name) || namedByTheme(name, lat, lng)) return;
+        entries.push({ marker: L.marker([lat, lng], { icon: textIcon("city-label county-label", name), pane: "adminLabels", interactive: false }), minZoom: 8, detailOnly: true });
       });
     }
     // 겹치면 앞선 것이 남으므로 중요한 이름(작은 배율부터 보이는 것, 바다·산맥·높은 산)을 앞에 둔다.

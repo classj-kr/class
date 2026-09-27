@@ -2,9 +2,10 @@
 'use strict';
 const data=Obangsaek,$=id=>document.getElementById(id),order=['east','south','center','west','north'];
 let selected=Object.hasOwn(data,location.hash.slice(1))?location.hash.slice(1):'east',compare=false,zoom=1,baseWidth=0,openRequest=0;
-const swatch=key=>({east:'#28636b',south:'#ae3f35',center:'#d8b34e',west:'#fff',north:'#323d45'}[key]);
-function style(button,key){button.style.setProperty('--tone',data[key].tint);button.style.setProperty('--wash',data[key].pale);button.style.setProperty('--swatch',swatch(key));button.dataset.key=key;}
+const swatch=key=>data[key].swatch;
+function style(button,key){button.style.setProperty('--tone',data[key].tint);button.style.setProperty('--wash',data[key].pale);button.style.setProperty('--swatch',swatch(key));button.style.setProperty('--ink',data[key].ink);button.dataset.key=key;}
 for(const key of order){const item=data[key],button=document.createElement('button');style(button,key);button.innerHTML=`<i aria-hidden="true"></i><div><strong>${item.name}</strong><span>${item.color} · ${item.direction}</span></div>`;button.addEventListener('click',()=>select(key));$('colorChoices').append(button);
+ const sample=document.createElement('span');style(sample,key);sample.textContent=item.color;$('colorStrip').append(sample);
  for(const id of ['compass','largeCompass']){const position=document.createElement('button');style(position,key);position.className=key;position.innerHTML=`<strong>${item.direction} · ${item.color}</strong><span>${key==='center'?'토(土)':item.name}</span>`;position.addEventListener('click',()=>select(key));$(id).append(position);}
  const row=document.createElement('tr');row.dataset.key=key;row.innerHTML=`<td><i style="background:${swatch(key)}" aria-hidden="true"></i>${item.color}(${item.colorHanja})</td><td>${item.direction}</td><td>${item.element} · ${item.material}</td><td>${item.season}</td><td>${key==='center'?'—':item.name}</td>`;$('mappingRows').append(row);
 }
