@@ -41,28 +41,6 @@
             padding-bottom: 75px;
         }
 
-        header {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(8px);
-            border-bottom: 1px solid var(--panel-border);
-            padding: 14px 18px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .brand-title {
-            font-size: 18px;
-            font-weight: 800;
-            color: var(--green);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
         .student-chip {
             font-size: 12px;
             background: var(--green-soft);
@@ -76,6 +54,21 @@
             padding: 16px;
             max-width: 600px;
             margin: 0 auto;
+        }
+
+        .child-bar { gap: 6px; flex-wrap: wrap; margin-bottom: 14px; }
+
+        /* 사이트 공통 뒤로 가기 단추(왼쪽 위 고정)가 맨 위 글줄에 겹치는 좁은 화면에서는 그 옆으로 비킨다. */
+        @media (max-width: 720px) {
+            main > section > :first-child,
+            .child-bar {
+                min-height: 36px;
+                padding-left: 46px;
+                align-items: center;
+            }
+            main > section > h2:first-child { display: flex; }
+            /* 아이 고르는 줄이 맨 위에 서면 비키는 것은 그 줄이다. */
+            .child-bar[style*="flex"] ~ section > :first-child { padding-left: 0; }
         }
 
         /* Bottom Nav */
@@ -228,6 +221,20 @@
             touch-action: none;
         }
 
+        /* 등록해 둔 서명. 그리는 칸과 같은 크기로 그 자리에 보인다. */
+        .sig-stored {
+            display: grid;
+            place-items: center;
+            width: min(100%, 320px);
+            height: 128px;
+            background: #fff;
+            border: 1px solid var(--panel-border);
+            border-radius: 10px;
+        }
+        .sig-stored img { max-width: 92%; max-height: 88%; object-fit: contain; }
+        .sig-canvas[hidden], .sig-stored[hidden], .sig-missing[hidden] { display: none; }
+        .sig-missing { margin: 0; font-size: 13px; color: var(--danger); font-weight: 700; }
+
         /* Modal Popup */
         .modal-overlay {
             position: fixed;
@@ -288,15 +295,12 @@
 </head>
 <body>
 
-    <header style="flex-wrap: wrap;">
-        <div class="brand-title">
-            <span>📄</span> 서류 내기
-        </div>
-        <div id="studentChip" class="student-chip">보호자 계정 확인 중…</div>
-        <div id="childSelectorBar" style="display:none; gap:6px; flex-wrap:wrap; margin-top:8px; width:100%;"></div>
-    </header>
+    <!-- 맨 위 제목 줄은 두지 않는다. 어느 칸인지는 아래 단추 줄과 칸 제목이 이미 말한다.
+         아이가 둘 이상일 때만 누구 서류인지 고르는 줄이 맨 위에 선다. -->
+    <div id="studentChip" class="student-chip" hidden></div>
 
     <main>
+        <div id="childSelectorBar" class="child-bar" style="display:none;"></div>
         <!-- 처음 보이는 칸. 가정통신문 읽기는 알림장(/classboard/)으로 옮겼다. -->
         <section id="tab-quick-absence">
             <h2 style="font-size:18px; margin:0 0 14px;">🤒 당일 출결 예고 (사전 알림)</h2>
@@ -387,9 +391,10 @@
                     </div>
                     <div class="form-group">
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
-                            <label style="margin:0;">학부모 전자 서명 ✍️ (마우스/손가락 서명)</label>
-                            <button type="button" class="btn-secondary" style="padding:4px 10px; font-size:12px;" onclick="clearCanvas()">🧹 서명 지우기</button>
+                            <label style="margin:0;">보호자 서명</label>
+                            <button type="button" id="abSigAction" class="btn-secondary" style="padding:4px 10px; font-size:12px; white-space:nowrap;" onclick="absenceSignatureAction()">🧹 서명 지우기</button>
                         </div>
+                        <div id="abStoredSig" class="sig-stored" hidden><img alt="등록된 서명"></div>
                         <canvas id="sigCanvas" class="sig-canvas" width="640" height="256"></canvas>
                     </div>
                     <button type="submit" class="btn-primary">📤 결석계 서명 및 제출하기</button>
@@ -436,6 +441,7 @@
                     <div class="form-group"><label>활동 계획</label><textarea id="eaPlan" placeholder="상세 활동 계획 작성" required></textarea></div>
                     <div class="form-group"><label>보호자 성명</label><input type="text" id="eaParentName" placeholder="보호자 성명" required></div>
                     <div class="form-group"><label>보호자 연락처</label><input type="text" id="eaPhone" placeholder="010-0000-0000" required></div>
+                    <div class="form-group"><label>보호자 서명</label><div class="sig-stored" data-stored-sig hidden><img alt="등록된 서명"></div><p class="sig-missing" data-sig-missing hidden>등록된 서명이 없습니다. ✍️ 내 서명에서 먼저 등록해 주세요.</p></div>
                     <button type="submit" class="btn-primary">📤 신청서 제출</button>
                 </form>
 
@@ -454,6 +460,7 @@
                     <div class="form-group"><label>현장학습 실천 내용 및 효과</label><textarea id="erContent" placeholder="실제 학습 내용 및 소감" required></textarea></div>
                     <div class="form-group"><label>보호자 성명</label><input type="text" id="erParentName" placeholder="보호자 성명" required></div>
                     <div class="form-group"><label>현장 사진 첨부</label><input type="file" id="erPhoto" accept="image/*"></div>
+                    <div class="form-group"><label>보호자 서명</label><div class="sig-stored" data-stored-sig hidden><img alt="등록된 서명"></div><p class="sig-missing" data-sig-missing hidden>등록된 서명이 없습니다. ✍️ 내 서명에서 먼저 등록해 주세요.</p></div>
                     <button type="submit" class="btn-primary">📤 결과 보고서 제출</button>
                 </form>
             </div>
@@ -693,6 +700,39 @@
 
         let storedSignatureData = null;
         let signatureSetupCtx = null;
+        let signatureLoaded = false;
+        // 결석계에서 등록해 둔 서명을 그대로 쓰는 중인지. '새로 서명하기'를 누르면 그 자리에서 그린다.
+        let absenceUsesStored = true;
+
+        // 등록해 둔 서명이 있으면 결석계 서명 칸 자리와 체험학습 서명 칸에 그대로 보인다.
+        // (예전에는 '내 서명' 칸을 열어야만 서명을 불러와서, 다른 칸의 서명란은 늘 비어 보였다.)
+        function renderStoredSignature() {
+            const has = Boolean(storedSignatureData);
+            const showStored = has && absenceUsesStored;
+            const box = document.getElementById('abStoredSig');
+            if (box) {
+                box.hidden = !showStored;
+                if (showStored) box.querySelector('img').src = storedSignatureData;
+            }
+            if (canvas) canvas.hidden = showStored;
+            const action = document.getElementById('abSigAction');
+            if (action) action.textContent = showStored ? '✍️ 새로 서명하기' : '🧹 서명 지우기';
+            document.querySelectorAll('[data-stored-sig]').forEach(el => {
+                el.hidden = !has;
+                if (has) el.querySelector('img').src = storedSignatureData;
+            });
+            document.querySelectorAll('[data-sig-missing]').forEach(el => { el.hidden = has || !signatureLoaded; });
+        }
+
+        function absenceSignatureAction() {
+            if (storedSignatureData && absenceUsesStored) {
+                absenceUsesStored = false;
+                clearCanvas();
+                renderStoredSignature();
+                return;
+            }
+            clearCanvas();
+        }
 
         function clearSignatureSetupCanvas() {
             const cv = document.getElementById('signatureSetupCanvas');
@@ -707,6 +747,8 @@
                 if (!res.ok) return;
                 const data = await res.json();
                 storedSignatureData = data.signature || null;
+                signatureLoaded = true;
+                renderStoredSignature();
                 const box = document.getElementById('mySignaturePreview');
                 const img = document.getElementById('mySignatureImg');
                 if (box && img) {
@@ -907,7 +949,7 @@
 
             const parentSignature = signatureForSubmit();
             if (!parentSignature) {
-                alert('결석계 탭의 서명란에 서명하거나, ✍️ 내 서명 탭에서 서명을 먼저 등록해 주세요.');
+                alert('✍️ 내 서명 탭에서 서명을 먼저 등록해 주세요.');
                 return;
             }
 
@@ -954,7 +996,7 @@
 
             const parentSignature = signatureForSubmit();
             if (!parentSignature) {
-                alert('결석계 탭의 서명란에 서명하거나, ✍️ 내 서명 탭에서 서명을 먼저 등록해 주세요.');
+                alert('✍️ 내 서명 탭에서 서명을 먼저 등록해 주세요.');
                 return;
             }
 
@@ -1288,6 +1330,7 @@
                         if (data.guardianChildren && data.guardianChildren.length > 0) {
                             childrenList = data.guardianChildren;
                             selectChild(0);
+                            loadMySignature();
                             document.getElementById('parentAuthModal').classList.remove('active');
                             return;
                         }
@@ -1302,6 +1345,7 @@
                                 studentName: m.name
                             }];
                             selectChild(0);
+                            loadMySignature();
                             document.getElementById('parentAuthModal').classList.remove('active');
                             return;
                         }

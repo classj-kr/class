@@ -47,21 +47,25 @@
             align-items: center;
             gap: 12px;
             min-height: 52px;
+            margin-bottom: 12px;
         }
 
-        .top h1 {
-            margin: 0;
-            font-size: 1.2rem;
-            font-weight: 800;
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+            clip: rect(0 0 0 0);
+            white-space: nowrap;
         }
 
         .push-slot { margin-left: auto; }
 
         .children {
-            margin: 4px 0 20px;
-            color: var(--muted);
-            font-size: 0.92rem;
-            font-weight: 600;
+            margin: 0;
+            color: var(--ink);
+            font-size: 0.95rem;
+            font-weight: 700;
         }
 
         .tiles {
@@ -130,7 +134,7 @@
         /* 사이트 공통 뒤로 가기 단추(왼쪽 위 고정, 오른쪽 끝 50px)가 제목에 겹치는 좁은 화면에서만
            그 자리를 비운다. 넓은 화면에서는 단추가 본문 바깥 왼쪽에 떠 있다. */
         @media (max-width: 880px) {
-            .top, .children { padding-left: 50px; }
+            .top { padding-left: 50px; }
         }
 
         /* 알림 받기 단추. 알림장 화면의 것과 같은 모양. */
@@ -158,11 +162,12 @@
 </head>
 <body>
     <main>
+        <!-- 제목은 보이지 않게 둔다. 맨 위 한 줄은 누구 학부모인지와 알림 단추만. -->
         <header class="top">
-            <h1>학부모</h1>
+            <h1 class="visually-hidden">학부모</h1>
+            <p class="children" id="children"></p>
             <div class="push-slot" id="pushSlot"></div>
         </header>
-        <p class="children" id="children"></p>
 
         <nav class="tiles" aria-label="학부모 메뉴">
             <a class="tile" id="tileBoard" href="/classboard/?as=guardian">
