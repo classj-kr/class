@@ -30,6 +30,7 @@ async function screenshot(name){if(!process.env.OBANGSAEK_SCREENSHOTS)return;awa
    ok(await evaluate(`document.documentElement.scrollWidth<=innerWidth`),'guardian layout fits');
   }
   await click('#compass [data-key="center"]');ok(await evaluate(`document.getElementById('artworks').hidden&&!document.getElementById('centerPanel').hidden&&document.getElementById('relationships').textContent.includes('토(土)')`),'center is shown separately without a fabricated fifth guardian');
+  await evaluate('scrollTo(0,0);document.activeElement.blur()');await screenshot(`obangsaek-center-${width}`);
   await click('#largeCompass [data-key="east"]');ok(await evaluate(`!document.getElementById('artworks').hidden&&document.getElementById('centerPanel').hidden`),'large diagram navigates to guardian');
   const layout=await evaluate(`(()=>{const pos=k=>{const r=document.querySelector('#compass [data-key="'+k+'"]').getBoundingClientRect();return {x:r.x,y:r.y}};return {n:pos('north'),e:pos('east'),s:pos('south'),w:pos('west'),c:pos('center')}})()`);ok(layout.n.y<layout.c.y&&layout.s.y>layout.c.y&&layout.e.x>layout.c.x&&layout.w.x<layout.c.x,'cardinal positions accurate');
   ok(await evaluate(`getComputedStyle(document.querySelector('h1')).fontSize==='22px'&&getComputedStyle(document.querySelector('h2')).fontSize==='18px'&&getComputedStyle(document.querySelector('#compareEditions')).fontSize==='16px'`),'restrained type sizes');

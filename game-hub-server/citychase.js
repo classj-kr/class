@@ -627,8 +627,9 @@ function moveStep(game, playerId, targetNodeId) {
     }
   }
 
-  if (game.remaining === 0) resolveLanding(game, pawn);
-  else if (!availableNeighbors(game, pawn).length) advanceTurn(game, "되돌아갈 수 없는 막다른 길이라 이동을 마쳤습니다.");
+  // A dead end is a final destination even when the die has steps left.
+  // Resolve its search/deposit effect before advancing to the next pawn.
+  if (game.remaining === 0 || !availableNeighbors(game, pawn).length) resolveLanding(game, pawn);
   game.revision += 1;
   return { ok: true };
 }

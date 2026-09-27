@@ -35,6 +35,8 @@
   let boardHeight = 0;
   let boardDrawFrame = 0;
   let suppressBoardClickUntil = 0;
+  let rulesReturnFocus = null;
+  const noticeQueue = [];
 
   function myId() { return lobby?.snapshot().myId || ""; }
   function me() { return state?.players.find(player => player.id === myId()) || null; }
@@ -120,8 +122,44 @@
 
   function scheduleStateEffect(previousState, nextState) {
     if (!previousState) return;
+    const notice = criticalNotice(nextState.lastAction);
+    if (previousState.phase === "playing" && nextState.phase === "playing" && notice
+      && nextState.lastAction !== previousState.lastAction) {
+      noticeQueue.push({ ...notice, message: nextState.lastAction });
+      showNextNotice();
+      return;
+    }
     const effect = actionEffect(nextState.lastAction, previousState, nextState);
     if (effect) window.requestAnimationFrame(() => showBoardEffect(effect));
+  }
+
+  function criticalNotice(message) {
+    if (/경보 장치.*작동/.test(message)) return { title: "경보! 체포되었습니다", tone: "alarm", sound: "error" };
+    if (/체포되었습니다|체포했습니다/.test(message)) return { title: "도둑이 체포되었습니다", tone: "alarm", sound: "error" };
+    if (/보석을 찾았습니다/.test(message)) return { title: "보석 획득!", tone: "gem", sound: "success", detail: "찾은 도둑이 보석을 운반합니다. 비밀기지에 도착해야 확보한 보석으로 계산됩니다." };
+    if (/비어 있었습니다/.test(message)) return { title: "수색 완료 · 보석 없음", tone: "empty", sound: "stone" };
+    if (/건물을 더 수색하지 않았습니다/.test(message)) return { title: "이미 보석을 운반 중입니다", tone: "empty", sound: "stone", detail: "말 하나는 보석을 한 개만 운반할 수 있습니다. 비밀기지에 먼저 가져가세요." };
+    if (/보석을 비밀기지에 보관/.test(message)) return { title: "보석을 확보했습니다!", tone: "gem", sound: "success" };
+    if (/보석을 떨어뜨렸습니다/.test(message)) return { title: "보석을 떨어뜨렸습니다", tone: "alarm", sound: "error" };
+    if (/정보 누설!/.test(message)) return { title: "보석 위치를 알아냈습니다", tone: "gem", sound: "success", detail: "위치만 확인한 상태입니다. 해당 건물의 수색 칸에 들어가야 이 보석을 얻을 수 있습니다." };
+    if (/탈출에 실패/.test(message)) return { title: "이번에는 탈출하지 못했습니다", tone: "alarm", sound: "error" };
+    if (/탈출했습니다/.test(message)) return { title: "탈출에 성공했습니다!", tone: "gem", sound: "success" };
+    if (/구출해/.test(message)) return { title: "동료를 구출했습니다!", tone: "gem", sound: "success" };
+    if (/보석을 넘겼습니다/.test(message)) return { title: "보석을 전달했습니다", tone: "gem", sound: "success" };
+    return null;
+  }
+
+  function showNextNotice() {
+    const dialog = $("eventDialog");
+    if (state?.phase !== "playing" || movementAnimating || dialog.open || !noticeQueue.length) return;
+    const notice = noticeQueue.shift();
+    dialog.dataset.tone = notice.tone;
+    $("eventTitle").textContent = notice.title;
+    $("eventMessage").textContent = notice.message;
+    $("eventDetail").textContent = notice.detail || "";
+    $("eventDetail").hidden = !notice.detail;
+    dialog.showModal();
+    playSfx(notice.sound);
   }
   function sendAction(action, data = {}) {
     if (actionPending || movementAnimating) return false;
@@ -135,8 +173,15 @@
     return true;
   }
 
-  function showRules() { $("rulesOverlay").classList.remove("hidden"); }
-  function hideRules() { $("rulesOverlay").classList.add("hidden"); }
+  function showRules() {
+    rulesReturnFocus = document.activeElement;
+    $("rulesOverlay").classList.remove("hidden");
+    $("closeRulesBtn").focus({ preventScroll: true });
+  }
+  function hideRules() {
+    $("rulesOverlay").classList.add("hidden");
+    if (rulesReturnFocus?.isConnected) rulesReturnFocus.focus({ preventScroll: true });
+  }
 
   function drawArrow(ctx, from, to, color, scale) {
     const dx = to.x - from.x;
@@ -198,8 +243,11 @@
     return `left:${(x / Board.WIDTH) * 100}%;top:${(y / Board.HEIGHT) * 100}%`;
   }
 
-  function contentLabel(content) {
-    return content === "gem" ? "보석" : content === "undercover" ? "경보 장치" : content === "empty" ? "비어 있음" : "확인 전";
+  function searchLabel(knowledge) {
+    if (knowledge.searched) return "수색 완료";
+    return knowledge.content === "gem" ? "보석 있음"
+      : knowledge.content === "undercover" ? "경보 있음"
+      : knowledge.content === "empty" ? "빈 건물" : "미수색";
   }
 
   function contentBadge(content) {
@@ -315,22 +363,23 @@
     for (const building of Board.BUILDINGS) {
       const entrance = Object.values(Board.NODES).find(node => node.building === building.id);
       const searchable = !!entrance && (state?.validMoves || []).includes(entrance.id);
-      const occupied = !!entrance && !!state?.pawns.some(pawn => pawn.position === entrance.id);
       const knowledge = state?.buildings.find(item => item.id === building.id) || { content: "hidden" };
       const button = document.createElement("button");
       button.type = "button";
       button.className = "building";
       button.style.cssText = `${positionStyle(building.x, building.y)};--building:${building.color}`;
       button.disabled = movementAnimating;
-      button.setAttribute("aria-label", `${building.name}${knowledge.content === "hidden" ? "" : `, ${contentLabel(knowledge.content)}`}`);
+      button.dataset.buildingId = building.id;
+      button.dataset.searchState = knowledge.searched ? "searched" : knowledge.content;
+      button.setAttribute("aria-label", `${building.name}, ${searchLabel(knowledge)}${searchable ? ", 이동 가능" : ""}`);
       const selectedKey = Object.entries(setupSelection).find(([, value]) => value === building.id)?.[0];
       if (captainSetup) button.classList.add("setupTarget");
       if (selectedKey?.startsWith("gem")) button.classList.add("selectedGem");
       if (selectedKey === "undercover") button.classList.add("selectedUndercover");
       if (searchable) button.classList.add("searchable");
-      if (occupied) button.classList.add("occupied");
+      if (state?.phase === "playing" || state?.phase === "ended") button.classList.add("showSearchState");
       if (captainSetup) button.dataset.sfx = "stone";
-      button.innerHTML = `<img class="buildingPiece" src="${ASSET.shop}" alt=""><span class="buildingIcon">${building.icon}</span><span class="buildingName">${escapeHtml(building.name)}</span><span class="buildingStatus">${searchable ? "수색 가능" : occupied ? "수색 중" : ""}</span><span class="buildingKnowledge">${selectedKey ? contentBadge(selectedKey === "undercover" ? "undercover" : "gem") : contentBadge(knowledge.content)}</span>`;
+      button.innerHTML = `<img class="buildingPiece" src="${ASSET.shop}" alt=""><span class="buildingIcon">${building.icon}</span><span class="buildingName">${escapeHtml(building.name)}</span><span class="buildingStatus">${searchLabel(knowledge)}</span><span class="buildingKnowledge">${selectedKey ? contentBadge(selectedKey === "undercover" ? "undercover" : "gem") : contentBadge(knowledge.content)}</span>`;
       button.addEventListener("click", () => captainSetup ? selectSetupBuilding(building.id) : inspectNode(entrance.id));
       fragment.appendChild(button);
     }
@@ -425,13 +474,14 @@
         || pawns.find(item => item.id === state.turnPawnId) || pawns[0];
       const button = document.createElement("button");
       const mixed = new Set(pawns.map(item => item.team)).size > 1;
+      const carriers = pawns.filter(item => item.carryingGem);
       const choice = state.canAct && state.pending
         && ["transfer", "rescue"].includes(state.pending.type)
         && pawns.some(item => state.pending.options.includes(item.id));
       button.type = "button";
       button.className = "pawn " + pawn.team
         + (mixed ? " mixed" : "")
-        + (pawns.some(item => item.carryingGem) ? " carrying" : "")
+        + (carriers.length ? " carrying" : "")
         + (pawns.every(item => item.status === "jailed") ? " jailed" : "")
         + (pawns.some(item => item.id === state.turnPawnId) ? " current" : "")
         + (choice ? " choice" : "");
@@ -440,7 +490,9 @@
       button.style.cssText = positionStyle(node.x, node.y);
       button.innerHTML = pawnFaceMarkup(pawnControllers(pawn.id))
         + '<span class="pawnNumber">' + pawn.number + '</span>'
-        + (pawns.length > 1 ? '<span class="pawnGroupCount">' + pawns.length + '말</span>' : "");
+        + (pawns.length > 1 ? '<span class="pawnGroupCount">' + pawns.length + '말</span>' : "")
+        + (carriers.length ? '<span class="pawnGem"><img src="' + ASSET.gem + '" alt="">'
+          + carriers.map(item => item.number + "번").join("·") + ' 소지</span>' : "");
       const label = pawns.map(item => pawnControllers(item.id).map(player => player.name).join("·")
         + " " + teamName(item.team) + " " + item.number + "번"
         + (item.carryingGem ? " 보석 소지" : "")
@@ -501,6 +553,15 @@
       : node.zone === "circle" ? "화살표 방향으로만 이동하는 구역입니다." : "길을 따라 이동하는 칸입니다.");
     if (node.effect === "train") description = node.station + "번 역에 도착하면 " + nodeMeta(node.effectTarget).station + "번 역으로 이동합니다.";
     if (node.effect === "jump") description = "도착하면 " + nodeMeta(node.effectTarget).label + " 칸으로 이동합니다.";
+    if (node.kind === "building") {
+      const knowledge = state.buildings.find(item => item.id === node.building) || { content: "hidden" };
+      description = knowledge.searched ? "수색 완료. 현재 이 건물에는 보석이 없습니다."
+        : knowledge.content === "gem" ? "보석이 남아 있습니다. 수색 칸에 도착하면 보석을 가져옵니다."
+        : knowledge.content === "undercover" ? "경보 장치가 남아 있습니다. 수색한 도둑은 체포됩니다."
+        : knowledge.content === "empty" ? "비어 있는 건물입니다. 수색해도 보석을 얻을 수 없습니다."
+        : "아직 수색하지 않았습니다. 수색 칸에 도착하면 숨겨진 물건을 확인합니다.";
+      if (state.canAct && currentPawn()?.carryingGem) description += " 현재 말은 보석을 운반 중이므로 추가 수색할 수 없습니다.";
+    }
     $("boardInspectorText").textContent = description;
     const pawns = $("boardInspectorPawns");
     pawns.replaceChildren();
@@ -528,7 +589,8 @@
     if (state.canAct && (state.validMoves.includes(inspectedNode) || state.pending?.type === "teleport"
       && state.pending.options.includes(inspectedNode))) {
       const target = inspectedNode;
-      actions.appendChild(makeAction("여기로 이동", "roll", () => {
+      const canSearch = node.kind === "building" && currentPawn()?.team === "thief" && !currentPawn().carryingGem;
+      actions.appendChild(makeAction(canSearch ? "들어가서 수색" : "여기로 이동", "roll", () => {
         commitNodeAction(target);
         closeInspector();
       }));
@@ -616,19 +678,27 @@
 
 
   function renderIdentity() {
-    const team = state.myTeam;
-    const crest = $("teamCrest");
-    crest.className = `teamCrest ${team || ""}`;
-    crest.textContent = team === "police" ? "♜" : team === "thief" ? "♟" : "?";
-    $("teamTitle").textContent = teamName(team);
-    $("teamMission").textContent = team === "police" ? "도둑말 3개를 모두 구금하세요." : team === "thief" ? "보석 2개를 비밀기지로 운반하세요." : "게임이 시작되면 역할이 정해집니다.";
+    $("teamTitle").textContent = state.myTeam ? "내 팀 · " + teamName(state.myTeam).replace("팀", "") : "관전";
+    $("teamTitle").className = "teamTag " + (state.myTeam || "");
   }
 
   function renderProgress() {
     $("gemProgress").textContent = `${state.resources.thief.securedGems} / 2`;
     const arrested = state.pawns.filter(pawn => pawn.team === "thief" && pawn.status === "jailed").length;
     $("arrestProgress").textContent = `${arrested} / 3`;
-    $("compactProgress").textContent = "💎 " + state.resources.thief.securedGems + "/2 · 구금 " + arrested + "/3";
+    const carriers = state.pawns.filter(pawn => pawn.team === "thief" && pawn.carryingGem);
+    $("carriedGemCount").textContent = carriers.length + "개";
+    $("gemCarriers").replaceChildren(...carriers.map(pawn => {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "gemCarrier";
+      button.textContent = "💎 도둑 " + pawn.number + "번 · " + pawnControllers(pawn.id).map(player => player.name).join("·");
+      button.setAttribute("aria-label", button.textContent + " · 보석 운반 중, 눌러서 말 확인");
+      button.addEventListener("click", () => inspectNode(pawn.position));
+      return button;
+    }));
+    $("gemCarriers").hidden = !carriers.length;
+    $("compactProgress").textContent = "💎 운반 " + carriers.length + " · 확보 " + state.resources.thief.securedGems + "/2";
     $("roundText").textContent = `${state.turnNumber || 1}라운드`;
   }
 
@@ -640,15 +710,17 @@
     const pawn = currentPawn();
     const controllerNames = state.turnControllers.map(id => playerById(id)?.name).filter(Boolean).join(" · ");
     const actorLabel = controllerNames || teamName(pawn.team);
-    $("pawnTitle").textContent = `${teamName(pawn.team)} ${pawn.number}번 차례${state.canAct ? " · 나" : ""}`;
+    $("pawnTitle").textContent = teamName(pawn.team).replace("팀", "") + " " + pawn.number + "번 · " + (state.canAct ? "내 차례" : actorLabel);
     $("turnMessage").textContent = state.lastAction;
+    $("turnMessage").classList.toggle("hidden", !!criticalNotice(state.lastAction));
     $("dieFace").textContent = state.die || "·";
+    $("dieFace").parentElement.classList.toggle("hidden", !state.die && !movementAnimating && state.turnMode !== "pending" && pawn.status !== "jailed");
     $("remainingText").textContent = movementAnimating
       ? "이동 중"
       : state.turnMode === "moving" ? `${state.remaining}칸 남음`
       : state.turnMode === "pending" ? "선택 대기"
         : pawn.status === "jailed" ? (state.canAct ? "탈출 주사위" : `${actorLabel} 탈출 차례`)
-          : state.canAct ? "내 행동 선택" : `${actorLabel} 행동 중`;
+          : state.canAct ? "행동 선택" : "상대 차례";
     $("movementHint").textContent = movementAnimating
       ? "말이 목적지까지 이동하는 중입니다."
       : state.turnMode === "moving" ? "목적지를 선택하고 이동하세요."
@@ -676,7 +748,7 @@
     if (state.phase !== "playing") return;
     const stack = $("actionStack");
     const fragment = document.createDocumentFragment();
-    let hint = "현재 플레이어의 행동을 기다리는 중입니다.";
+    let hint = movementAnimating ? "말이 이동하고 있습니다." : "";
     if (state.canAct) {
       if (placementMode) {
         const text = placementMode === "trick-node" ? "가짜 단서 카드를 놓을 분홍 칸을 선택하세요." : placementMode === "trick-direction" ? "경찰을 유도할 다음 칸을 선택하세요." : "차단 표지를 놓을 파란 칸을 선택하세요.";
@@ -688,9 +760,9 @@
         if (state.actions.hide) fragment.appendChild(makeAction(`숨기 (${pawn.hidingTurns}/3)`, "thief", () => sendAction("HIDE")));
         if (state.actions.trick) fragment.appendChild(makeAction(`가짜 단서 ${state.resources.thief.trickCards}장`, "thief", () => { placementMode = "trick-node"; renderActions(); renderBoardState(); }));
         if (state.actions.check) fragment.appendChild(makeAction(`차단 표지 ${state.resources.police.checkCards}개`, "police", () => { placementMode = "check"; renderActions(); renderBoardState(); }));
-        hint = pawn.status === "jailed" ? "1이 나오면 즉시 탈출해 다시 이동합니다." : "주사위를 쓰는 대신 카드나 숨기를 선택할 수 있습니다.";
+        hint = movementAnimating ? "말이 이동하고 있습니다." : pawn.status === "jailed" ? "1이 나오면 탈출합니다." : "";
       } else if (state.turnMode === "moving") {
-        hint = `노란 목적지를 누르면 칸 정보와 이동 버튼이 나옵니다.`;
+        hint = "노란 목적지를 눌러 이동을 확인하세요.";
       } else if (state.turnMode === "pending") {
         hint = state.pending?.type === "teleport" ? "초록빛 위치 이동 칸을 선택하세요." : "말판에서 빛나는 도둑말을 선택하세요.";
       }
@@ -709,7 +781,6 @@
     const team = state.myTeam;
     $("intelCard").classList.toggle("hidden", !team || state.phase === "lobby");
     if (!team) return;
-    $("cardCount").textContent = team === "thief" ? `가짜 단서 카드 ${state.resources.thief.trickCards}장` : `차단 표지 ${state.resources.police.checkCards}개`;
     const list = $("intelList");
     const fragment = document.createDocumentFragment();
     const knownBuildings = state.buildings.filter(building => building.known);
@@ -723,7 +794,7 @@
       const building = buildingMeta(knowledge.id);
       const item = document.createElement("div");
       item.className = "intelItem";
-      const label = contentLabel(knowledge.content);
+      const label = searchLabel(knowledge);
       item.innerHTML = `<span>${building.icon} ${escapeHtml(building.name)}</span><strong class="intelSecret">${contentBadge(knowledge.content)}${label}</strong>`;
       fragment.appendChild(item);
     }
@@ -731,6 +802,7 @@
   }
 
   function renderPlayers() {
+    $("playerCount").textContent = state.players.length + "명";
     const list = $("playerList");
     const fragment = document.createDocumentFragment();
     for (const player of state.players) {
@@ -791,8 +863,10 @@
     const route = move.path.map(nodeMeta).filter(Boolean);
     if (!pawn || route.length < 2 || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       movementAnimating = false;
+      renderTurnCard();
       renderActions();
       renderBoardState();
+      showNextNotice();
       return;
     }
 
@@ -818,8 +892,10 @@
       window.setTimeout(() => {
         if (token !== movementAnimationToken) return;
         movementAnimating = false;
+        renderTurnCard();
         renderActions();
         renderBoardState();
+        showNextNotice();
       }, 300);
     };
     window.requestAnimationFrame(advance);
@@ -832,6 +908,10 @@
     movementAnimationToken += 1;
     movementAnimating = animateMove;
     state = nextState;
+    if (state.phase !== "playing") {
+      noticeQueue.length = 0;
+      if ($("eventDialog").open) $("eventDialog").close();
+    }
     actionPending = false;
     placementMode = null;
     trickNode = null;
@@ -855,6 +935,7 @@
     closeInspector();
     renderGame();
     scheduleStateEffect(previousState, state);
+    showNextNotice();
     if (animateMove) window.requestAnimationFrame(() => animateMovement(state.lastMove));
   }
 
@@ -876,6 +957,8 @@
   }
 
   function showAbort({ title, message }) {
+    noticeQueue.length = 0;
+    if ($("eventDialog").open) $("eventDialog").close();
     $("abortTitle").textContent = title;
     $("abortMessage").textContent = message;
     $("abortOverlay").classList.remove("hidden");
@@ -997,8 +1080,14 @@
     $("boardZoomOut").addEventListener("click", () => setBoardZoom(boardZoom - .5));
     $("boardZoomReset").addEventListener("click", () => setBoardZoom(1));
     $("closeBoardInspector").addEventListener("click", closeInspector);
-    document.addEventListener("keydown", event => { if (event.key === "Escape") closeInspector(); });
+    document.addEventListener("keydown", event => {
+      if (event.key !== "Escape") return;
+      if ($("eventDialog").open) return;
+      if (!$("rulesOverlay").classList.contains("hidden")) hideRules();
+      else closeInspector();
+    });
     $("bgm").addEventListener("ended", advanceGameMusic);
+    $("eventDialog").addEventListener("close", showNextNotice);
     renderLots();
     drawBoard();
     lobby = window.ClassroomMultiplayerLobby.create({
@@ -1009,6 +1098,7 @@
       maxPlayers: 6,
       canStart: () => !!state?.lobbyReady,
       rulesButtonIds: ["rulesBtnLobby", "rulesBtnGame"],
+      preserveRulesUi: true,
       leaveButtonIds: ["leaveBtnLobby", "leaveBtnGame"],
       onRules: showRules,
       onLeave: () => location.href = "../../../",

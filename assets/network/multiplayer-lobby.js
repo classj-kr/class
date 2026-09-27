@@ -159,6 +159,7 @@
             (this.options.rulesButtonIds || []).forEach(id => {
                 getElement(id)?.addEventListener("click", () => {
                     this.options.onRules?.();
+                    if (this.options.preserveRulesUi) return;
                     document.querySelectorAll("[role=dialog], .rulesOverlay, .rules-overlay, .rulesModal, .rules-modal, .modal, .mp-modal, .popup-box, .modal-content, .modal-box").forEach(dialog => {
                         if (!dialog.checkVisibility?.()) return;
                         dialog.classList.add("mp-ui-rules");
@@ -228,7 +229,7 @@
             title.setAttribute("aria-level", "1");
             header.appendChild(title);
             const help = (this.options.rulesButtonIds || []).map(getElement).find(button => root.contains(button));
-            if (help) { help.textContent = "Rules"; help.classList.add("mp-ui-help"); header.appendChild(help); }
+            if (help) { if (!this.options.preserveRulesUi) help.textContent = "Rules"; help.classList.add("mp-ui-help"); header.appendChild(help); }
             const meta = document.createElement("div");
             meta.className = "mp-ui-meta";
             const counts = this.allowedPlayerCounts;
@@ -259,7 +260,7 @@
             e.playerList?.classList.add("mp-ui-roster");
             e.guide?.classList.add("mp-ui-guide");
             e.startButton?.classList.add("mp-ui-start");
-            (this.options.rulesButtonIds || []).forEach(id => { const button = getElement(id); if (button) button.textContent = "Rules"; });
+            if (!this.options.preserveRulesUi) (this.options.rulesButtonIds || []).forEach(id => { const button = getElement(id); if (button) button.textContent = "Rules"; });
         }
 
         get playerName() {
