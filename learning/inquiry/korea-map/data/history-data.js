@@ -47,7 +47,7 @@ window.KOREA_HISTORY = {
             127.44361,
             39.15278
           ],
-          "label": "동예",
+          "label": "동예 · 동해안",
           "side": "right",
           "kind": "area"
         },
@@ -108,6 +108,7 @@ window.KOREA_HISTORY = {
       ],
       "note": "대표 생활 권역을 표시한 개략 위치도. 표지는 수도나 확정 국경을 뜻하지 않음.",
       "id": "early-states",
+      "locationOnly": true,
       "era": "여러 나라",
       "startYear": 1,
       "endYear": 300

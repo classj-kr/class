@@ -989,7 +989,7 @@ body{align-items:center;padding:18px}
 <link rel="stylesheet" href="../../../assets/device-game.css?v=20260921c">
 <style>
 body:has(#game-screen:not(.hidden)){padding:8px;box-sizing:border-box;height:100dvh;min-height:0}
-body:has(#game-screen:not(.hidden)) .app-shell{height:calc(100dvh - 16px);min-height:0}
+body:has(#game-screen:not(.hidden)) .app-shell{height:min(720px,calc(100dvh - 16px));min-height:0}
 #game-screen:not(.hidden){height:100%;min-height:0;padding:12px;gap:6px}
 #game-screen .stage-card{flex:1;min-height:0;display:flex;flex-direction:column;margin:0}
 #game-screen .stage-viewport{flex:1;min-height:0;overflow:auto}

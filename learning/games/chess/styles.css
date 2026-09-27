@@ -27,7 +27,7 @@ body:has(.game-screen:not(.hidden)) .shell{width:100%;max-width:1200px;min-heigh
 #gameScreen{height:100%;grid-template-columns:minmax(0,1fr) 250px;grid-template-rows:minmax(0,1fr);gap:10px}
 #gameScreen .board-column{min-height:0}
 #gameScreen .board-wrap{container-type:size;min-width:0}
-#gameScreen .chessboard{width:min(100cqw,100cqh);max-width:none}
+#gameScreen .chessboard{width:min(720px,100cqw,100cqh);max-width:720px}
 #gameScreen .player-bar{width:100%;max-width:none;min-width:0}
 #gameScreen .game-side{width:100%;min-width:0;margin:0;overflow:auto}
 #gameScreen .game-side>*{flex-shrink:0}

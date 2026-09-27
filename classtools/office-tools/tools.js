@@ -330,7 +330,7 @@
     $('scan-empty').hidden = true;
     renderSource();
     renderScan();
-    if (detected) setStatus('scan-status', '문서 영역을 자동으로 찾았습니다. 파란 점을 실제 모서리에 맞게 확인해 주세요.');
+    if (detected) setStatus('scan-status', '문서 영역을 찾았습니다. 파란 점을 실제 모서리에 맞게 확인해 주세요.');
   }
   $('scan-auto').addEventListener('click', () => {
     if (!scanImage) { setStatus('scan-status', '먼저 사진을 찍거나 올려 주세요.'); return; }

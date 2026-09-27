@@ -72,5 +72,18 @@ body:has(#gameScreen:not([hidden])) .page-shell {
 #gameScreen .nb-row-clue { gap: 4px; }
 @media (min-width: 900px) {
   #gameScreen .board-wrap { width: min(100%, 470px, max(320px, calc(100dvh - 370px))); }
-  #gameScreen .board-wrap:has(.nono-board) { width: min(100%, 480px, max(340px, calc(100dvh - 380px))); }
+  #gameScreen .board-wrap:has(.nono-board) { width: min(100%, 480px, max(300px, calc(100dvh - 420px))); }
+}
+
+@media (min-width: 900px) and (max-height: 700px) {
+  #gameScreen:not([hidden]) { width: min(840px, 100%); display: grid; grid-template-columns: minmax(0,1fr) 230px; grid-template-rows: auto auto auto minmax(0,1fr) auto; gap: 10px 18px; }
+  #gameScreen .game-layout, #gameScreen .play-column { display: contents; }
+  #gameScreen .game-topbar { grid-column: 2; grid-row: 1; }
+  #gameScreen .stats { grid-column: 2; grid-row: 2; width: 100%; }
+  #gameScreen .tool-switch { grid-column: 2; grid-row: 3; }
+  #gameScreen .status { grid-column: 2; grid-row: 4; }
+  #gameScreen .actions { grid-column: 2; grid-row: 5; }
+  #gameScreen .actions button { flex: 1 1 100%; }
+  #gameScreen .board-wrap, #gameScreen .board-wrap:has(.nono-board) { grid-column: 1; grid-row: 1/6; width: min(100%,420px,calc(100dvh - 130px)); margin: auto; }
+  #gameScreen .guide-panel { position: fixed; inset: 64px 12px 12px auto; width: min(430px,90vw); z-index: 51; max-height: none; }
 }

@@ -28,7 +28,7 @@
   };
   const STATUS_LABELS = {
     draft: "초안",
-    auto_checked: "자동검사 완료",
+    auto_checked: "문항 검사 완료",
     review_pending: "검수 대기",
     changes_requested: "수정 필요",
     approved_for_pilot: "파일럿 승인",
@@ -640,7 +640,7 @@
     byId("checkState").className = "count-pill neutral";
     byId("checkState").textContent = "실행 전";
     const results = byId("checkResults");
-    results.replaceChildren(node("p", "", "초안을 저장한 뒤 자동검사를 실행하세요."));
+    results.replaceChildren(node("p", "", "초안을 저장한 뒤 문항 검사를 실행하세요."));
   }
 
   function renderCheck(check) {
@@ -818,7 +818,7 @@
       renderCheck({ passed: payload.check.passed, results: payload.check.results });
       await Promise.all([refreshItems(), refreshSummary()]);
       await openItem(state.selectedItemId);
-      showToast(payload.check.passed ? "자동검사를 통과했습니다." : "수정할 항목이 있습니다.", !payload.check.passed);
+      showToast(payload.check.passed ? "문항 검사를 통과했습니다." : "수정할 항목이 있습니다.", !payload.check.passed);
     } catch (error) {
       showToast(error.message, true);
     } finally {

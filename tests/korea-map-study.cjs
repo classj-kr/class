@@ -54,7 +54,7 @@ const server=http.createServer((req,res)=>{
     const overflows=[];
     for(const lesson of dataset.lessons){
       await select(lesson);
-      assert.equal(await page.$$eval('#lessonDiagram svg',e=>e.length),1);
+      assert.equal(await page.$$eval('#lessonDiagram svg, #lessonDiagram .concept-table',e=>e.length),1);
       const overflow=await page.$$eval('#lessonDiagram svg text',nodes=>nodes.filter(n=>{const b=n.getBBox();return b.x < -1 || b.x+b.width > 521 || b.y < -1 || b.y+b.height > 251;}).map(n=>n.textContent));
       if(overflow.length)overflows.push({id:lesson.id,overflow});
       await page.evaluate(()=>document.querySelector('#practiceLesson').click());

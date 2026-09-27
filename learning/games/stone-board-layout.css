@@ -6,14 +6,14 @@ body:has(#gameScreen:not(.hidden)){
 .shell:has(#gameScreen:not(.hidden)){width:min(1200px,100%)}
 #gameScreen{
   display:grid;grid-template-rows:auto minmax(0,1fr);gap:10px;
-  height:calc(100vh - 20px);
-  height:calc(100dvh - max(var(--game-inset),env(safe-area-inset-top)) - max(var(--game-inset),env(safe-area-inset-bottom)));
-  min-height:480px;
+  height:min(820px,calc(100vh - 20px));
+  height:min(820px,calc(100dvh - max(var(--game-inset),env(safe-area-inset-top)) - max(var(--game-inset),env(safe-area-inset-bottom))));
+  min-height:0;
 }
 #gameScreen>.panel{min-width:0;margin:0;padding:10px}
 #gameScreen>section.panel{display:flex;flex-direction:column;gap:8px;min-height:0}
 #gameScreen .boardStage{container-type:size;flex:1;min-height:0;min-width:0;display:grid;place-items:center}
-#gameScreen .boardFrame{width:min(100cqw,100cqh);aspect-ratio:1;margin:0;padding:7px}
+#gameScreen .boardFrame{width:min(720px,100cqw,100cqh);aspect-ratio:1;margin:0;padding:7px}
 #gameScreen .playersLegend{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:8px 0}
 #gameScreen .playerCard{min-width:0;padding:8px;gap:8px}
 #gameScreen .playerMeta{min-width:0;overflow-wrap:anywhere}

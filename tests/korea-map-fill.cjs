@@ -9,6 +9,7 @@ const ctx = {window:{}};
 for (const file of ['history-data.js','history-territories.js','history-war.js']) vm.runInNewContext(fs.readFileSync(path.join(app,'data',file),'utf8'),ctx);
 const variants = ctx.window.KOREA_HISTORY_TERRITORIES.scenes;
 for (const [id,states] of Object.entries(variants)) for (const state of states) {
+  if(state.locationOnly) { assert.equal(state.overlay,undefined); continue; }
   const [w,s,e,n]=state.overlayBounds;
   assert.ok(w<90 && s<15 && e>155 && n>60,`${id}: paint must extend beyond the entire pan range, not scene fit bounds`);
 }

@@ -728,7 +728,7 @@
       "maximumMercatorMetres": 32000,
       "stepMercatorMetres": 1000,
       "coastalLandAddedMercatorKm2": 31697.269,
-      "remainingEligibleMercatorKm2": 0.0,
+      "remainingEligibleMercatorKm2": 0,
       "regions": [
         {
           "addedMercatorKm2": 22241.359
@@ -749,7 +749,7 @@
       "maximumMercatorMetres": 32000,
       "stepMercatorMetres": 1000,
       "coastalLandAddedMercatorKm2": 10742.736,
-      "remainingEligibleMercatorKm2": 0.0,
+      "remainingEligibleMercatorKm2": 0,
       "regions": [
         {
           "addedMercatorKm2": 5066.595
@@ -764,7 +764,7 @@
       "maximumMercatorMetres": 32000,
       "stepMercatorMetres": 1000,
       "coastalLandAddedMercatorKm2": 43849.425,
-      "remainingEligibleMercatorKm2": 0.0,
+      "remainingEligibleMercatorKm2": 0,
       "regions": [
         {
           "addedMercatorKm2": 32798.142
@@ -791,44 +791,9 @@
   "coverage": {
     "early-states": [
       {
-        "date": "삼국 성립 전 · 대략적인 세력권",
-        "regions": [
-          {
-            "name": "부여",
-            "area": 8.2095,
-            "visibleArea": 8.2095
-          },
-          {
-            "name": "고구려",
-            "area": 6.5037,
-            "visibleArea": 6.5037
-          },
-          {
-            "name": "옥저",
-            "area": 3.2114,
-            "visibleArea": 3.2114
-          },
-          {
-            "name": "동예",
-            "area": 1.5744,
-            "visibleArea": 1.5744
-          },
-          {
-            "name": "마한",
-            "area": 3.5709,
-            "visibleArea": 3.5709
-          },
-          {
-            "name": "진한",
-            "area": 2.4368,
-            "visibleArea": 2.4368
-          },
-          {
-            "name": "변한",
-            "area": 1.3645,
-            "visibleArea": 1.3645
-          }
-        ]
+        "date": "삼국 성립 전 · 여러 나라의 위치",
+        "regions": [],
+        "representation": "source-backed locations; no territorial boundaries"
       }
     ],
     "baekje-fourth": [
@@ -932,7 +897,7 @@
           {
             "name": "진흥왕 때 진출했다가 이후 상실한 북방",
             "area": 1.2919,
-            "visibleArea": 0.0
+            "visibleArea": 0
           }
         ]
       }
@@ -1060,7 +1025,7 @@
           {
             "name": "거란·말갈 등",
             "area": 1919.7909,
-            "visibleArea": 0.0
+            "visibleArea": 0
           }
         ]
       }
@@ -1180,7 +1145,7 @@
           {
             "name": "원 직할지",
             "area": 2645.7239,
-            "visibleArea": 0.0
+            "visibleArea": 0
           }
         ]
       },
@@ -1318,7 +1283,7 @@
           {
             "name": "러시아",
             "area": 1549.7334,
-            "visibleArea": 0.0
+            "visibleArea": 0
           }
         ]
       }
@@ -1345,7 +1310,7 @@
           {
             "name": "러시아",
             "area": 1549.7334,
-            "visibleArea": 0.0
+            "visibleArea": 0
           }
         ]
       }
@@ -1362,17 +1327,17 @@
           {
             "name": "청",
             "area": 917.1639,
-            "visibleArea": 0.0
+            "visibleArea": 0
           },
           {
             "name": "일본",
             "area": 38.1696,
-            "visibleArea": 0.0
+            "visibleArea": 0
           },
           {
             "name": "러시아",
             "area": 1549.7334,
-            "visibleArea": 0.0
+            "visibleArea": 0
           }
         ]
       }
@@ -1399,12 +1364,12 @@
           {
             "name": "러시아 제국",
             "area": 1549.7334,
-            "visibleArea": 0.0
+            "visibleArea": 0
           },
           {
             "name": "일본",
             "area": 38.1696,
-            "visibleArea": 0.0
+            "visibleArea": 0
           }
         ]
       }
@@ -1426,7 +1391,7 @@
           {
             "name": "일본",
             "area": 38.1696,
-            "visibleArea": 0.0
+            "visibleArea": 0
           },
           {
             "name": "러시아 제국",
@@ -1453,12 +1418,12 @@
           {
             "name": "일본",
             "area": 38.1696,
-            "visibleArea": 0.0
+            "visibleArea": 0
           },
           {
             "name": "러시아 내전기",
             "area": 1549.7334,
-            "visibleArea": 0.0
+            "visibleArea": 0
           }
         ]
       }
@@ -1480,7 +1445,7 @@
           {
             "name": "일본",
             "area": 38.1696,
-            "visibleArea": 0.0
+            "visibleArea": 0
           },
           {
             "name": "러시아 내전기",
@@ -1512,7 +1477,7 @@
           {
             "name": "소련",
             "area": 1549.7334,
-            "visibleArea": 0.0
+            "visibleArea": 0
           }
         ]
       }
@@ -1524,7 +1489,7 @@
           {
             "name": "중화민국",
             "area": 770.6348,
-            "visibleArea": 0.0
+            "visibleArea": 0
           },
           {
             "name": "만주국 · 일본 괴뢰국",
@@ -1539,7 +1504,7 @@
           {
             "name": "일본",
             "area": 38.1696,
-            "visibleArea": 0.0
+            "visibleArea": 0
           },
           {
             "name": "소련",
@@ -1556,27 +1521,27 @@
           {
             "name": "중화민국",
             "area": 770.6348,
-            "visibleArea": 80.0
+            "visibleArea": 80
           },
           {
             "name": "만주국 · 일본 괴뢰국",
             "area": 146.529,
-            "visibleArea": 0.0
+            "visibleArea": 0
           },
           {
             "name": "조선 · 일제강점기",
             "area": 22.832,
-            "visibleArea": 0.0
+            "visibleArea": 0
           },
           {
             "name": "일본",
             "area": 38.1696,
-            "visibleArea": 0.0
+            "visibleArea": 0
           },
           {
             "name": "소련",
             "area": 1549.7334,
-            "visibleArea": 0.0
+            "visibleArea": 0
           }
         ]
       }
@@ -1588,27 +1553,27 @@
           {
             "name": "중화민국",
             "area": 770.6348,
-            "visibleArea": 88.0
+            "visibleArea": 88
           },
           {
             "name": "만주국 · 일본 괴뢰국",
             "area": 146.529,
-            "visibleArea": 0.0
+            "visibleArea": 0
           },
           {
             "name": "조선 · 일제강점기",
             "area": 22.832,
-            "visibleArea": 0.0
+            "visibleArea": 0
           },
           {
             "name": "일본",
             "area": 38.1696,
-            "visibleArea": 0.0
+            "visibleArea": 0
           },
           {
             "name": "소련",
             "area": 1549.7334,
-            "visibleArea": 0.0
+            "visibleArea": 0
           }
         ]
       }

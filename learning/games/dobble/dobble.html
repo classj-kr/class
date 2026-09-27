@@ -109,6 +109,42 @@ body:has(#playArea:not(.hidden)) .shell{width:min(1440px,100%)}
 #playArea .dobbleCard{width:min(100%,calc(100dvh - 160px))}
 #playArea .standings{overflow:auto;min-height:0}
 @media(orientation:portrait){#playArea .playLayout{grid-template-columns:1fr;grid-template-rows:minmax(0,1fr) 240px}#playArea .standings{display:flex;flex-direction:column}#playArea #standingsList{display:grid;grid-template-columns:1fr 1fr;gap:6px}}
+
+/* Keep the play cards prominent and put controls beside the score, not in an empty bar. */
+body:has(#playArea:not(.hidden)) { padding: 60px 16px 16px; }
+#game:has(#playArea:not(.hidden)) { height: calc(100dvh - 76px); grid-template-rows: minmax(0,1fr); }
+#game:has(#playArea:not(.hidden)) > .panel.row { display: none; }
+#playArea { padding: 16px; }
+#playArea .playLayout { grid-template-columns: minmax(0,1fr) 280px; gap: 20px; }
+#playArea .cardLabel { font-size: 18px; line-height: 1.5; letter-spacing: 0; margin-bottom: 12px; }
+#centerLabel { color: #dfd4ff; }
+#myLabel { color: #ffccaa; }
+#playArea .dobbleCard { width: min(100%, calc(100dvh - 200px)); }
+#playArea .standings { align-self: start; max-height: 100%; padding: 14px; background: #191425; }
+.standingsHeader { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 14px; }
+#playArea .standings h3 { margin: 0; font-size: 18px; color: #fff0ca; letter-spacing: 0; }
+.standingsHeader button { min-height: 44px; padding: 8px 10px; font-size: 14px; }
+.standingsRow { display: grid; grid-template-columns: 34px minmax(0,1fr) auto; align-items: center; gap: 10px; padding: 10px 8px; margin-bottom: 6px; border: 1px solid #4b405e; border-radius: 12px; background: #292136; font-size: 16px; }
+.standingsRow .rank { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: #41354f; color: #fff0ca; font-size: 19px; }
+.standingsRow.leader .rank { background: #f1cc75; color: #392500; }
+.standingsRow.me { border: 2px solid #eea475; background: #3b2936; color: #fff6ee; }
+.standingPlayer { display: flex; align-items: center; flex-wrap: wrap; gap: 5px; min-width: 0; overflow-wrap: anywhere; }
+.meBadge { font-size: 11px; border-radius: 5px; padding: 2px 5px; background: #efac7b; color: #372113; }
+.standingScore { display: grid; justify-items: center; gap: 2px; font-variant-numeric: tabular-nums; }
+.standingScore strong { font-size: 28px; line-height: 1; color: #fff7e5; }
+.standingScore small { font-size: 12px; color: #d1c5df; white-space: nowrap; }
+@media (orientation: portrait) {
+  #playArea .playLayout { grid-template-columns: 1fr; grid-template-rows: minmax(0,1fr) auto; }
+  #playArea .standings { max-height: 32dvh; }
+  #playArea #standingsList { grid-template-columns: repeat(2,minmax(0,1fr)); }
+}
+@media (max-width: 600px) {
+  body:has(#playArea:not(.hidden)) { padding-inline: 8px; }
+  #playArea .boards { grid-template-columns: 1fr 1fr; }
+  #playArea .cardLabel { font-size: 15px; }
+  #playArea .playLayout { gap: 12px; }
+  #playArea #standingsList { grid-template-columns: 1fr; }
+}
 </style></head>
 <body>
 <main class="shell">
@@ -188,7 +224,7 @@ body:has(#playArea:not(.hidden)) .shell{width:min(1440px,100%)}
           </div>
         </div>
         <div class="standings">
-          <h3>순위</h3>
+          <div class="standingsHeader"><h3>🏆 순위</h3><button id="rulesPlayBtn" class="secondary" type="button">Rules</button></div>
           <div id="standingsList"></div>
         </div>
       </div>
@@ -439,9 +475,10 @@ function renderStandings(target) {
     return a.cardsLeft - b.cardsLeft;
   });
   target.innerHTML = ranked.map((player, index) => `
-    <div class="standingsRow${player.id === myId ? " me" : ""}">
-      <span><span class="rank">${player.finishedAt || index + 1}</span>${esc(player.name)}${player.id === myId ? " (나)" : ""}</span>
-      <span>${isCatalog ? `모은 카드 ${player.collectedCount}장` : (player.finishedAt ? "완주!" : `남은 카드 ${player.cardsLeft}장`)}</span>
+    <div class="standingsRow${player.id === myId ? " me" : ""}${index === 0 ? " leader" : ""}">
+      <span class="rank" aria-label="${player.finishedAt || index + 1}위">${player.finishedAt || index + 1}</span>
+      <span class="standingPlayer"><strong>${esc(player.name)}</strong>${player.id === myId ? '<small class="meBadge">나</small>' : ''}</span>
+      <span class="standingScore"><strong>${isCatalog ? player.collectedCount : (player.finishedAt ? '✓' : player.cardsLeft)}</strong><small>${isCatalog ? '모은 카드' : (player.finishedAt ? '완주' : '남은 카드')}</small></span>
     </div>`).join("");
 }
 
@@ -574,7 +611,7 @@ function init() {
     getPlayerName: () => /^[가-힣]{2,6}$/.test(savedName) ? savedName : "",
     allowedPlayerCounts: [2, 3, 4, 5, 6, 7, 8],
     maxPlayers: 8,
-    rulesButtonIds: ["rulesEntryBtn", "rulesGameBtn"],
+    rulesButtonIds: ["rulesEntryBtn", "rulesGameBtn", "rulesPlayBtn"],
     leaveButtonIds: ["leaveEntryBtn", "leaveGameBtn"],
     onRules: showRules,
     onLeave: () => location.href = "../../../",

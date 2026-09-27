@@ -24,6 +24,19 @@ body:has(#gameScreen:not(.hidden)) .shell{height:calc(100dvh - 16px)}
 #gameScreen .boardFrame{width:min(760px,calc(100dvh - 46px),calc(100dvw - 294px));padding:7px}
 #gameScreen .gameNote{display:none}
 }
+
+@media (min-width: 700px) and (orientation: portrait) {
+  body:has(#gameScreen:not(.hidden)) { padding: 60px 12px 12px; }
+  body:has(#gameScreen:not(.hidden)) .shell { height: calc(100dvh - 72px); }
+  #gameScreen .gameLayout { grid-template-columns: minmax(0,1fr); grid-template-rows: auto minmax(0,1fr); }
+  #gameScreen .gameSidebar { display: grid; grid-template-columns: 1fr; gap: 6px; }
+  #gameScreen .gameSidebar .playersLegend { display: grid; grid-template-columns: 1fr 1fr; margin: 0; }
+  #gameScreen .gameSidebar .turnArea { display: grid; grid-template-columns: minmax(0,1fr) 72px; align-items: center; }
+  #gameScreen .gameSidebar .turnClock { min-width: 0; padding: 4px; font-size: 24px; }
+  #gameScreen .gameSidebar > .panel:first-child .row { margin-top: 0 !important; }
+  #gameScreen .gameBoardPanel { height: 100%; display: grid; place-items: center; container-type: size; }
+  #gameScreen .boardFrame { width: min(760px,100cqw,100cqh); }
+}
 </style>
 <script src="../../../assets/network/game-network.js?v=20260821"></script>
 <script src="../../../assets/network/multiplayer-lobby.js?v=20260926-button-labels"></script>
