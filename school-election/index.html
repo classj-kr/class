@@ -23,7 +23,7 @@
       <form id="createForm" class="panel create-form">
         <label>선거 제목<input id="title" maxlength="80" placeholder="예: 2026학년도 전교 임원선거" required></label>
         <div class="scope-grid"><label>명단 학년도<input id="year" type="number" min="2000" max="2100" required></label><fieldset class="grades"><legend>투표 대상 학년</legend><div id="grades"></div></fieldset></div>
-        <p class="muted form-note">선택한 학년의 모든 반이 참여합니다. 학생 계정은 <a href="/classtools/school-roster">전교생 명단</a>에서 미리 등록해 주세요.</p>
+        <p class="muted form-note">선택한 학년의 모든 반이 참여합니다. 학생 계정은 <a href="/classtools/school-roster">학생·학부모 명단</a>에서 미리 등록해 주세요.</p>
         <div class="section-head"><h3>선출 직책과 후보</h3><button id="addPosition" class="secondary small" type="button">+ 직책 추가</button></div>
         <p class="muted form-note">직책별 후보 2~20명 · 모든 유권자가 각 직책에서 1명씩 선택합니다. 후보의 학년·반은 이름과 함께 적을 수 있습니다.</p>
         <div id="positions" class="position-list"></div>
@@ -36,6 +36,6 @@
       <div id="detail"></div>
     </section>
   </main>
-  <script src="/school-election/app.js"></script>
+  <script src="/school-election/app.js?v=20260927"></script>
 </body>
 </html>

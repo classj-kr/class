@@ -2802,7 +2802,7 @@ function createClassroomPlatform(options = {}) {
     const teacher = await requireTeacher(req);
     const classId = await userClassId(teacher);
     if (!classId) {
-      throw new HttpError(403, "HOMEROOM_TEACHER_REQUIRED", "담임교사만 자기 반의 학급 메뉴/게임 잠금을 설정할 수 있습니다. 교사 명단에서 담당 학년과 반을 지정해 주세요.");
+      throw new HttpError(403, "HOMEROOM_TEACHER_REQUIRED", "담임교사만 자기 반의 학급 메뉴/게임 잠금을 설정할 수 있습니다. 교직원 명단에서 담당 학년과 반을 지정해 주세요.");
     }
     const contentPath = normalizeContentPath(req.body?.path);
     const enabled = req.body?.enabled === true;
@@ -3341,7 +3341,7 @@ function createClassroomPlatform(options = {}) {
       );
     } else if (current) {
       // 관리자가 다른 사람으로 바뀐다. 앞사람이 겸임하던 이름·담임 반·과목과
-      // 로그인 연결은 넘겨주지 않는다. 앞사람이 계속 담임이면 교사 명단에 새 줄로 적는다.
+      // 로그인 연결은 넘겨주지 않는다. 앞사람이 계속 담임이면 교직원 명단에 새 줄로 적는다.
       if (current.user_id) {
         await pool.query(
           "UPDATE classroom_classes SET teacher_user_id = NULL, updated_at = NOW() WHERE school_id = $1 AND teacher_user_id = $2",
@@ -7491,7 +7491,7 @@ function createClassroomPlatform(options = {}) {
     if (!teacherProfile.rows[0]) throw new HttpError(403, "TEACHER_REQUIRED", "교사 계정이 필요합니다.");
     const { school_id: schoolId, teacher_type: teacherType } = teacherProfile.rows[0];
     if (!["관리자", "교장", "교감"].includes(teacherType)) {
-      throw new HttpError(403, "ADMIN_ONLY", "전교생 명단 편집 권한은 학교 관리자만 갖고 있습니다.");
+      throw new HttpError(403, "ADMIN_ONLY", "학생·학부모 명단 편집 권한은 학교 관리자만 갖고 있습니다.");
     }
 
     const { students, year } = req.body;
@@ -7867,7 +7867,7 @@ function createClassroomPlatform(options = {}) {
     const tp = { rows: [await teacherRegistration(teacher)].filter(Boolean) };
     if (!tp.rows[0]) throw new HttpError(403, "TEACHER_REQUIRED", "교사 계정이 필요합니다.");
     if (!["관리자", "교장", "교감"].includes(tp.rows[0].teacher_type)) {
-      throw new HttpError(403, "ADMIN_ONLY", "교사 명단 편집 권한은 학교 관리자만 갖고 있습니다.");
+      throw new HttpError(403, "ADMIN_ONLY", "교직원 명단 편집 권한은 학교 관리자만 갖고 있습니다.");
     }
     const schoolId = tp.rows[0].school_id;
     // 학년도를 적지 않으면 이 교사의 학급 그룹이 만들어지지 않는다
@@ -8186,7 +8186,7 @@ function createClassroomPlatform(options = {}) {
     const canonicalName = await rosterGroupName(schoolId, year, groupType, groupName, grade, classNumber);
     if (!canonicalName) {
       throw new HttpError(400, "GROUP_NOT_IN_ROSTER",
-        "전교생 명단에 있는 학급과 항목만 가져올 수 있습니다. 학교 관리자가 명단에 먼저 만들어야 합니다.");
+        "학생·학부모 명단에 있는 학급과 항목만 가져올 수 있습니다. 학교 관리자가 명단에 먼저 만들어야 합니다.");
     }
 
     // 같은 이름으로 두 번 누르면 같은 그룹이 둘 생긴다. 이미 있으면 그것을 준다.

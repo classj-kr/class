@@ -136,7 +136,7 @@
     container.append(el("h3", "선거인 명부 확인"), el("p", "대상 " + r.total + "명 · 명부를 확정하면 투표가 바로 시작됩니다.", "muted"));
     container.append(table(["학년", "반", "선거인"], r.classes.map((c) => [c.grade + "학년", c.classNumber + "반", c.total + "명"])));
     if (!r.ready) {
-      container.append(el("p", r.total === 0 ? "대상 학생이 없습니다. 학년도와 전교생 명단을 확인해 주세요." : r.total > 2000 ? "한 선거의 명부는 2,000명까지 등록할 수 있습니다." : "다음 학생의 계정 정보를 명단에서 수정한 뒤 새로고침해 주세요.", "notice"));
+      container.append(el("p", r.total === 0 ? "대상 학생이 없습니다. 학년도와 학생·학부모 명단을 확인해 주세요." : r.total > 2000 ? "한 선거의 명부는 2,000명까지 등록할 수 있습니다." : "다음 학생의 계정 정보를 명단에서 수정한 뒤 새로고침해 주세요.", "notice"));
       const issues = el("ul", null, "issues"); for (const i of r.issues) issues.append(el("li", i.grade + "학년 " + i.classNumber + "반 " + i.number + "번 " + i.name + " — " + i.reason)); container.append(issues);
     } else container.append(el("p", "명부 확인 완료 · " + r.total + "명의 학생 계정이 준비되었습니다.", "notice ready"));
     container.append(previewPositions(e));
