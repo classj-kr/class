@@ -552,7 +552,7 @@
                             <th style="width:80px;">담당 반</th>
                             <th style="width:110px;">담당 과목 (교과)</th>
                             <th style="width:110px;">기본 특별실</th>
-                            <th style="width:120px;">직책</th>
+                            <th style="width:120px;">분류</th>
                             <th style="width:90px;">연동 상태</th>
                             <th style="width:120px;">관리</th>
                         </tr>
@@ -711,6 +711,11 @@
     // ─── 교사 명단 ───────────────────────────────────────────
     let allTeachers = [];
 
+    // 분류 칸. 'auto'(교·강사)는 저장할 때 학년·반이 있으면 담임, 없으면 전담이 된다.
+    const TEACHER_KINDS = [["교장", "교장"], ["교감", "교감"], ["교무부장", "교무부장"], ["auto", "교·강사"], ["교직원", "교직원"]];
+    const PICKED_KINDS = ["교장", "교감", "교무부장", "교직원"];
+    const teacherKind = (t) => PICKED_KINDS.includes(t.role || t.type) ? (t.role || t.type) : "auto";
+
     async function loadTeachers() {
         setStatus("teacherRosterStatus", "교사 명단 불러오는 중…");
         try {
@@ -795,13 +800,10 @@
                         <input class="roster-cell-input" style="width:100%;border:1px solid #d1d5db;border-radius:4px;padding:3px 6px;" value="${esc(t.roomName ?? '')}" placeholder="예: 음악실" onchange="updateTeacherField(${idx}, 'roomName', this.value)">
                     </td>
                     <td style="text-align:center;">
-                        <!-- 담임·교과는 학년·반으로 자동. 교무부장·교감·교장은 여기서 고른다.
-                             결재선의 '교무부장·교감·교장' 차례는 이 직책으로 정해진다. -->
+                        <!-- 교·강사는 따로 적지 않고 학년·반으로 담임·교과를 가른다.
+                             결재선의 '교무부장·교감·교장' 차례는 이 분류로 정해진다. -->
                         <select class="roster-cell-input" style="width:100%;border:1px solid #d1d5db;border-radius:4px;padding:3px 4px;" onchange="updateTeacherField(${idx}, 'role', this.value)">
-                            <option value="auto" ${!['교무부장','교감','교장'].includes(t.role || t.type) ? 'selected' : ''}>-</option>
-                            <option value="교장" ${(t.role || t.type) === '교장' ? 'selected' : ''}>교장</option>
-                            <option value="교감" ${(t.role || t.type) === '교감' ? 'selected' : ''}>교감</option>
-                            <option value="교무부장" ${(t.role || t.type) === '교무부장' ? 'selected' : ''}>교무부장</option>
+                            ${TEACHER_KINDS.map(([value, label]) => `<option value="${value}" ${teacherKind(t) === value ? 'selected' : ''}>${label}</option>`).join('')}
                         </select>
                     </td>
                     <td style="text-align:center;">${linkedBadge}</td>
@@ -848,6 +850,12 @@
                     if (btn) btn.disabled = false;
                     return;
                 }
+                // 학년·반이 있으면 그 반 담임이 된다. 교직원이 반을 맡는 일은 없다.
+                if (teacherKind(t) === "교직원" && hasG) {
+                    setStatus("teacherRosterStatus", `⚠️ '${t.name || "선택한"}' 교직원은 학년·반을 비워 두세요. 반을 맡으면 분류를 교·강사로 고릅니다.`, "error");
+                    if (btn) btn.disabled = false;
+                    return;
+                }
             }
 
             const clean = allTeachers.map(t => {
@@ -857,11 +865,10 @@
                 const cleanName = String(t.name || "").replace(/\s+/g, "");
                 const cleanEmail = t.email ? String(t.email).trim() : null;
 
-                // 직책 칸에서 고른 것이 있으면 그것이 우선, 없으면 학년·반으로 자동.
-                const pickedRole = (t.role || t.type);
-                const explicitType = ['교무부장', '교감', '교장'].includes(pickedRole) ? pickedRole : null;
+                // 분류 칸에서 고른 것이 있으면 그것이 우선, 교·강사면 학년·반으로 자동.
+                const kind = teacherKind(t);
                 return {
-                    type: explicitType || calculatedType,
+                    type: kind === "auto" ? calculatedType : kind,
                     name: cleanName,
                     email: cleanEmail,
                     grade: g,

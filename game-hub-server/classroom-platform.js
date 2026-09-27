@@ -7892,6 +7892,10 @@ function createClassroomPlatform(options = {}) {
       if ((t.grade && !t.classNumber) || (!t.grade && t.classNumber)) {
         throw new HttpError(400, "INVALID_GRADE_CLASS", `'${t.name}' 교사의 학년과 반을 모두 입력하거나, 전담인 경우 둘 다 비워두세요.`);
       }
+      // 학년·반이 있으면 그 반 담임이 된다(userClassId 는 분류를 보지 않는다).
+      if (t.type === "교직원" && t.grade) {
+        throw new HttpError(400, "STAFF_NO_CLASS", `'${t.name}' 교직원은 학년·반을 비워 두세요. 반을 맡으면 분류를 교·강사로 고릅니다.`);
+      }
       if (t.email && seenEmails.has(t.email)) {
         throw new HttpError(400, "DUPLICATE_TEACHER_EMAIL",
           `${t.email} 계정이 두 줄에 있습니다. 한 사람은 한 줄에만 적어 주세요. 학교 관리자가 담임을 맡으면 관리자 줄에 학년·반을 적고 다른 줄은 지웁니다.`);
