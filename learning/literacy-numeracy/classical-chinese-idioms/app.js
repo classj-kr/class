@@ -162,7 +162,6 @@
         idiomHanja: byId("idiomHanja"), idiomWord: byId("idiomWord"), cardDetails: byId("cardDetails"),
         idiomHanjaExpl: byId("idiomHanjaExpl"), idiomMeaning: byId("idiomMeaning"), idiomStory: byId("idiomStory"),
         idiomIllustration: byId("idiomIllustration"), idiomIllustrationImage: byId("idiomIllustrationImage"),
-        idiomSource: byId("idiomSource"), sourceNote: byId("sourceNote"),
         previousCard: byId("previousCard"), nextCard: byId("nextCard"),
         memoryActions: byId("memoryActions"), markReview: byId("markReview"), markKnown: byId("markKnown"),
         gameIntro: byId("gameIntro"), quizStage: byId("quizStage"), quizResult: byId("quizResult"),
@@ -337,8 +336,6 @@
             elements.idiomIllustrationImage.removeAttribute("src");
             elements.idiomIllustrationImage.alt = "";
         }
-        elements.idiomSource.textContent = idiom.source;
-        elements.sourceNote.textContent = idiom.sourceNote;
         elements.previousCard.disabled = deck.length < 2;
         elements.nextCard.disabled = deck.length < 2;
         renderMemoryStatus(idiom);
@@ -492,7 +489,7 @@
             else if (button.dataset.answerId === answerId) button.classList.add("wrong");
         });
         elements.feedbackTitle.textContent = "정답";
-        elements.feedbackCopy.textContent = `${answerIdiom.meaning} · ${question.source}`;
+        elements.feedbackCopy.textContent = answerIdiom.meaning;
         elements.feedbackStoryCopy.textContent = answerIdiom.story;
         elements.feedbackStory.open = !correct;
         elements.answerFeedback.classList.toggle("wrong", !correct);
