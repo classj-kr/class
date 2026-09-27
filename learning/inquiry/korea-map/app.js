@@ -162,6 +162,20 @@
 
   function initMaps() {
     mainMap = createBaseMap("map", { zoomControl: true });
+    const overview = L.control({ position: "topleft" });
+    overview.onAdd = () => {
+      const box = L.DomUtil.create("div", "leaflet-bar map-overview");
+      const button = element("button", "", "전체");
+      button.type = "button";
+      button.id = "mapOverview";
+      button.setAttribute("aria-label", "지도 전체 보기");
+      button.title = "지도 전체 보기";
+      button.addEventListener("click", () => fitKorea(mainMap));
+      box.append(button);
+      L.DomEvent.disableClickPropagation(box);
+      return box;
+    };
+    overview.addTo(mainMap);
     mainBoundaryLayer = L.layerGroup().addTo(mainMap);
     mainThemeLayer = L.layerGroup().addTo(mainMap);
     mainLabelLayer = L.layerGroup().addTo(mainMap);
@@ -256,7 +270,7 @@
       scene.setRivers(majorRivers);
       if (themes[currentTheme] && (themes[currentTheme].rivers || study.current)) {
         // Late data must also reach a direct #climate visit, without resetting the selected lesson/view.
-        drawThemeOnMap(mainMap, mainThemeLayer, themes[currentTheme], {interactive:true,baseOnly:!!study.current});
+        drawThemeOnMap(mainMap, mainThemeLayer, themes[currentTheme], {interactive:true,excludeFeatures:study.current?.spots});
       }
     } catch (error) {
       console.warn("주요 하천 선형을 불러오지 못했습니다.", error);
@@ -373,7 +387,7 @@
     renderFeatureButtons(theme.features || []);
     renderPrinciples(theme.principles || []);
     renderLegend(theme.legend || []);
-    mapDetailsVisible = themeKey === "travel" || themeKey === "heritage";
+    mapDetailsVisible = !theme.historical;
     syncMapDetailsButton();
     setReliefTone(mainMap, theme);
     drawThemeOnMap(mainMap, mainThemeLayer, theme, { interactive: true });
@@ -388,11 +402,11 @@
     mainMap.invalidateSize({ pan: false });
     lessonMapLayer.clearLayers();
     if (!lesson) { scene.setContext(currentTheme, null); return; }
-    renderLegend((themes[currentTheme].legend || []).filter(item=>item.type === "relief"));
-    drawThemeOnMap(mainMap, mainThemeLayer, themes[currentTheme], { interactive: true, skipFeatures: true, baseOnly: true });
-    // 행정구역 학습에서도 시·도·시·군 이름표를 유지한다.
+    renderLegend(themes[currentTheme].legend || []);
+    drawThemeOnMap(mainMap, mainThemeLayer, themes[currentTheme], { interactive: true, excludeFeatures: lesson.spots });
+    // 학습 지도에는 주제 정보와 이름표를 유지한다. 정답을 가리는 바탕 전용 지도는 문제 창에서만 쓴다.
     const theme = themes[currentTheme];
-    drawLabels(mainMap, mainLabelLayer, { admin: !theme.provinceNames, city: !theme.provinceNames, annotations: theme.provinceNames ? theme.annotations || [] : [] });
+    drawLabels(mainMap, mainLabelLayer, { admin: !theme.provinceNames, city: !theme.provinceNames, annotations: theme.annotations || [] });
     lesson.spots.forEach((spot, index) => {
       // The temperature scene already places A/B at the observed stations; do not stack duplicate pins.
       if (currentTheme === "climate" && lesson.id === "temperature") return;
@@ -472,6 +486,7 @@
   function setReliefTone(map, theme) {
     map.getContainer().classList.toggle("relief-muted", !theme.relief);
     map.getContainer().classList.toggle("history-map", !!theme.historical);
+    map.getContainer().classList.toggle("transport-map", !!theme.network);
     map.getPane("borderLines").hidden = !!theme.historical;
   }
 
@@ -683,7 +698,7 @@
     group.clearLayers();
     if (theme.draw && map === mainMap && !opts.baseOnly) theme.draw(map, group, themeApi);
     // 문제 지도는 답하기 전에는 바탕(지형·하천)만 그린다. 구역·등온선·교통축이 답을 드러내기 때문이다.
-    if ((theme.rivers || opts.baseOnly) && majorRivers) drawMajorRivers(map, group, interactive);
+    if ((theme.rivers || theme === themes.climate || opts.baseOnly) && majorRivers) drawMajorRivers(map, group, interactive);
     if (theme.minorRivers && !opts.baseOnly) drawMinorRivers(map, group, interactive);
     if (theme.network && !opts.baseOnly) drawTransportNetwork(group, interactive);
     if (opts.baseOnly) return;
@@ -737,6 +752,7 @@
 
     if (theme.featureMarkers !== false && !opts.skipFeatures) {
       (theme.features || []).forEach((feature) => {
+        if ((opts.excludeFeatures || []).some(spot => Math.abs(spot.lat - feature.lat) < 0.03 && Math.abs(spot.lng - feature.lng) < 0.03)) return;
         const marker = createStudyMarker(feature, false, interactive).addTo(group);
         if (interactive) {
           marker.bindTooltip(`${feature.name} · ${feature.note}`, { direction: "top", offset: [0, -15], className: "study-tooltip" });

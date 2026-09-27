@@ -13,7 +13,7 @@ const original=dataset.questions.filter(q=>!q.diagram);
 assert.equal(original.length,139);
 assert.equal(dataset.lessons.length,28);
 assert.equal(new Set(dataset.questions.map(q=>q.id)).size,dataset.questions.length);
-for(const q of dataset.questions) { assert.ok(q.lesson,q.id+' not mapped');assert.ok(q.options[q.answer]); }
+for(const q of dataset.questions) { assert.ok(q.lesson,q.id+' not mapped');assert.ok(q.options[q.answer]); assert.equal(new Set(q.options).size,q.options.length,q.id+' duplicate options'); if(q.stimulus?.type==='pyramid') assert.equal(q.stimulus.groups.reduce((sum,g)=>sum+g.male+g.female,0),100,q.id+' population proportions must total 100%'); }
 for(const lesson of dataset.lessons) {
   for(const qid of lesson.questionIds) assert.ok(dataset.questions.some(q=>q.id===qid&&q.topic===lesson.topic));
   const pools=['essential','basic','advanced'].map(level=>sandbox.window.KoreaStudy.questionsFor(lesson,level));
@@ -91,7 +91,7 @@ const server=http.createServer((req,res)=>{
     await select(dataset.lessons.find(l=>l.id==='floodplain'));
     assert.ok(!await page.$eval('#reviewLesson',el=>el.disabled));
     // Existing graph, map and text question paths are still accessible from each lesson.
-    for(const id of ['temperature','coast','transport-axis']){
+    for(const id of dataset.lessons.map(lesson=>lesson.id)){
       await select(dataset.lessons.find(l=>l.id===id));
       await page.evaluate(()=>document.querySelector('[data-study-level="all"]').click());
       await page.evaluate(()=>document.querySelector('#practiceLesson').click());

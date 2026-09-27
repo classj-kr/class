@@ -397,3 +397,9 @@ button:focus-visible, a:focus-visible, select:focus-visible, summary:focus-visib
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; animation: none !important; }
 }
+
+/* Keep transport routes legible over the relief, and provide a way back from a lesson close-up. */
+.transport-map .leaflet-tile-pane { filter: saturate(.2) brightness(1.16) contrast(.64); }
+.map-overview button { display: block; min-width: 32px; min-height: 36px; padding: 4px; border: 0; border-radius: 3px; background: #fff; color: #143f48; font-family: inherit; font-size: 12px; font-weight: 700; cursor: pointer; }
+.map-overview button:focus-visible { outline: 3px solid #087eaf; outline-offset: 2px; }
+.history-places [data-history-relic] { width: auto; margin: 4px 0 8px 12px; color: #086c7c; }
