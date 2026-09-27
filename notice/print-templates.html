@@ -27,8 +27,10 @@
             max-width: 210mm;
             margin: 0 auto 20px;
             padding: 12px 20px;
-            background: #171f1a;
-            color: #fff;
+            background: #fff;
+            color: #1c2329;
+            /* 테두리 대신 그림자 고리. 테두리를 달면 막대 높이가 2px 늘어난다. */
+            box-shadow: 0 0 0 1px #dde3e8, 0 1px 3px rgba(16,24,40,.08);
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -37,12 +39,15 @@
 
         .no-print-bar button {
             padding: 8px 16px;
-            background: #75d69f;
+            background: #17804a;
+            color: #fff;
             border: none;
             border-radius: 6px;
             font-weight: bold;
             cursor: pointer;
         }
+
+        .no-print-bar button:hover { background: #11683c; }
 
         .a4-page {
             width: 210mm;

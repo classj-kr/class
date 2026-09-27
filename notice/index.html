@@ -5,18 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>서류 내기</title>
     <link rel="manifest" href="/notice/manifest.json">
-    <meta name="theme-color" content="#101512">
+    <meta name="theme-color" content="#ffffff">
     <style>
         :root {
-            --bg: #0f1411;
-            --panel: #18221b;
-            --panel-border: #29382e;
-            --green: #75d69f;
-            --green-dark: #1b4d32;
-            --text: #f0f4f1;
-            --muted: #9ba89f;
-            --danger: #ff7b72;
-            --gold: #f0bd64;
+            color-scheme: light;
+            --bg: #f4f6f8;
+            --panel: #ffffff;
+            --surface: #f1f4f6;
+            --panel-border: #dde3e8;
+            --green: #17804a;
+            /* 옅은 바탕(회색·연초록) 위 초록 글씨. #17804a 는 거기서 4.5:1 이 안 된다. */
+            --green-strong: #11683c;
+            --green-soft: #e6f4ec;
+            --text: #1c2329;
+            --muted: #5c6873;
+            --danger: #d0342c;
+            /* 연분홍 바탕 위 빨간 글씨. #d0342c 는 거기서 4.5:1 이 안 된다. */
+            --danger-strong: #b42318;
+            --danger-soft: #fdecea;
+            --gold: #a35a00;
+            --gold-soft: #fff4e0;
+            --shadow: 0 1px 3px rgba(16,24,40,.08);
         }
 
         * { box-sizing: border-box; }
@@ -26,6 +35,7 @@
             padding: 0;
             background: var(--bg);
             color: var(--text);
+            accent-color: var(--green);
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             min-height: 100vh;
             padding-bottom: 75px;
@@ -35,7 +45,7 @@
             position: sticky;
             top: 0;
             z-index: 100;
-            background: rgba(24, 34, 27, 0.95);
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(8px);
             border-bottom: 1px solid var(--panel-border);
             padding: 14px 18px;
@@ -55,11 +65,11 @@
 
         .student-chip {
             font-size: 12px;
-            background: var(--green-dark);
-            color: var(--green);
+            background: var(--green-soft);
+            color: var(--green-strong);
             padding: 4px 10px;
             border-radius: 99px;
-            border: 1px solid rgba(117, 214, 159, 0.3);
+            border: 1px solid rgba(23, 128, 74, 0.3);
         }
 
         main {
@@ -75,7 +85,7 @@
             left: 0;
             right: 0;
             height: 65px;
-            background: #141c16;
+            background: var(--panel);
             border-top: 1px solid var(--panel-border);
             display: flex;
             z-index: 100;
@@ -95,6 +105,7 @@
             font-weight: 600;
             cursor: pointer;
             min-height: 44px;
+            text-decoration: none;
         }
 
         .nav-item.active {
@@ -112,6 +123,7 @@
             border-radius: 16px;
             padding: 18px;
             margin-bottom: 16px;
+            box-shadow: var(--shadow);
         }
 
         .card-title {
@@ -127,15 +139,17 @@
             font-size: 11px;
             padding: 3px 8px;
             border-radius: 4px;
-            background: rgba(255, 255, 255, 0.1);
+            background: var(--surface);
         }
 
-        .tag.approved { background: rgba(117, 214, 159, 0.2); color: var(--green); }
-        .tag.pending { background: rgba(240, 189, 100, 0.2); color: var(--gold); }
+        .tag.approved { background: var(--green-soft); color: var(--green-strong); }
+        .tag.pending { background: var(--gold-soft); color: var(--gold); }
 
         /* Form elements */
         .form-group {
             margin-bottom: 14px;
+            /* 날짜 칸 둘이 한 줄에 설 때, 날짜 칸의 기본 너비 때문에 좁은 화면에서 카드 밖으로 밀려나지 않게. */
+            min-width: 0;
         }
 
         label {
@@ -148,12 +162,13 @@
 
         input[type="text"], input[type="date"], input[type="number"], select, textarea {
             width: 100%;
+            min-width: 0;
             min-height: 46px;
             padding: 10px 14px;
-            background: #111813;
+            background: #fff;
             border: 1px solid var(--panel-border);
             border-radius: 10px;
-            color: #fff;
+            color: var(--text);
             font-size: 14px;
             font-family: inherit;
         }
@@ -163,11 +178,17 @@
             resize: vertical;
         }
 
+        input[type="text"]:focus, input[type="date"]:focus, input[type="number"]:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--green);
+            box-shadow: 0 0 0 3px rgba(23,128,74,.18);
+        }
+
         .btn-primary {
             width: 100%;
             min-height: 48px;
             background: var(--green);
-            color: #0c140e;
+            color: #fff;
             font-weight: 800;
             font-size: 15px;
             border: none;
@@ -180,9 +201,11 @@
             margin-top: 10px;
         }
 
+        .btn-primary:hover { background: var(--green-strong); }
+
         .btn-secondary {
-            background: #253329;
-            color: var(--green);
+            background: var(--surface);
+            color: var(--green-strong);
             border: 1px solid var(--panel-border);
             min-height: 40px;
             padding: 0 14px;
@@ -209,7 +232,7 @@
         .modal-overlay {
             position: fixed;
             inset: 0;
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(16, 24, 40, 0.45);
             z-index: 200;
             display: flex;
             align-items: center;
@@ -258,7 +281,7 @@
             text-align: left;
         }
 
-        .guide-table th { background: rgba(255,255,255,0.05); color: var(--green); }
+        .guide-table th { background: var(--surface); color: var(--green-strong); }
 
         .hidden { display: none !important; }
     </style>
@@ -281,7 +304,7 @@
                 <form id="quickAbsenceForm" onsubmit="submitQuickAbsence(event)">
                     <div class="form-group">
                         <label>구분 선택</label>
-                        <select id="qaType" style="width: 100%; height: 44px; background: #0f1411; border: 1px solid var(--panel-border); color: var(--text); border-radius: 8px; padding: 0 12px; font-size: 15px; font-weight: 700;">
+                        <select id="qaType" style="width: 100%; height: 44px; background: #fff; border: 1px solid var(--panel-border); color: var(--text); border-radius: 8px; padding: 0 12px; font-size: 15px; font-weight: 700;">
                             <option value="지각">지각</option>
                             <option value="결석">결석</option>
                             <option value="조퇴">조퇴</option>
@@ -289,7 +312,7 @@
                     </div>
                     <div class="form-group">
                         <label>날짜 선택 (달력)</label>
-                        <input type="date" id="qaDate" required style="width: 100%; height: 44px; background: #0f1411; border: 1px solid var(--panel-border); color: var(--text); border-radius: 8px; padding: 0 12px; font-size: 15px; font-weight: 700; cursor: pointer;">
+                        <input type="date" id="qaDate" required style="width: 100%; height: 44px; background: #fff; border: 1px solid var(--panel-border); color: var(--text); border-radius: 8px; padding: 0 12px; font-size: 15px; font-weight: 700; cursor: pointer;">
                     </div>
                     <div class="form-group">
                         <label>사유 전달 (담임선생님 전달용)</label>
@@ -308,7 +331,7 @@
             </div>
 
             <!-- 쓰기 전에 알아야 할 것. 자세한 표는 위 단추로. -->
-            <div class="card" style="padding:14px 16px; border-color:rgba(240,189,100,0.35);">
+            <div class="card" style="padding:14px 16px; border-color:rgba(163,90,0,0.3);">
                 <p style="margin:0 0 8px; font-weight:700; color:var(--gold); font-size:14px;">결석계는 결석한 날부터 5일 이내에 내 주세요.</p>
                 <p style="margin:0 0 6px; font-size:13px; color:var(--text); line-height:1.6;">
                     결석이지만 <strong>출석으로 인정</strong>되는 경우가 있습니다. 해당하면 결석 구분에서 <strong>출석인정결석</strong>을 고르고 증빙서류 사진을 붙여 주세요.
@@ -330,20 +353,20 @@
                     <div style="display:flex; gap:10px;">
                         <div class="form-group" style="flex:1;">
                             <label>시작일</label>
-                            <input type="date" id="abStart" required onchange="calcAbsenceDays()" style="width: 100%; height: 44px; background: #0f1411; border: 1px solid var(--panel-border); color: var(--text); border-radius: 8px; padding: 0 12px; font-size: 15px; font-weight: 700; cursor: pointer;">
+                            <input type="date" id="abStart" required onchange="calcAbsenceDays()" style="width: 100%; height: 44px; background: #fff; border: 1px solid var(--panel-border); color: var(--text); border-radius: 8px; padding: 0 12px; font-size: 15px; font-weight: 700; cursor: pointer;">
                         </div>
                         <div class="form-group" style="flex:1;">
                             <label>종료일</label>
-                            <input type="date" id="abEnd" required onchange="calcAbsenceDays()" style="width: 100%; height: 44px; background: #0f1411; border: 1px solid var(--panel-border); color: var(--text); border-radius: 8px; padding: 0 12px; font-size: 15px; font-weight: 700; cursor: pointer;">
+                            <input type="date" id="abEnd" required onchange="calcAbsenceDays()" style="width: 100%; height: 44px; background: #fff; border: 1px solid var(--panel-border); color: var(--text); border-radius: 8px; padding: 0 12px; font-size: 15px; font-weight: 700; cursor: pointer;">
                         </div>
                     </div>
                     <div class="form-group">
                         <label>총 결석 일수</label>
-                        <input type="number" id="abDays" value="1" min="1" readonly style="width: 100%; height: 44px; background: #0f1411; border: 1px solid var(--panel-border); color: var(--text); border-radius: 8px; padding: 0 12px; font-size: 15px; font-weight: 700;">
+                        <input type="number" id="abDays" value="1" min="1" readonly style="width: 100%; height: 44px; background: #fff; border: 1px solid var(--panel-border); color: var(--text); border-radius: 8px; padding: 0 12px; font-size: 15px; font-weight: 700;">
                     </div>
                     <div class="form-group">
                         <label>결석 구분 (증빙서류 기준)</label>
-                        <select id="abReasonType" style="width: 100%; height: 44px; background: #0f1411; border: 1px solid var(--panel-border); color: var(--text); border-radius: 8px; padding: 0 12px; font-size: 15px; font-weight: 700;">
+                        <select id="abReasonType" style="width: 100%; height: 44px; background: #fff; border: 1px solid var(--panel-border); color: var(--text); border-radius: 8px; padding: 0 12px; font-size: 15px; font-weight: 700;">
                             <option value="질병결석">질병결석 (처방전/진단서/약봉지 사진 첨부)</option>
                             <option value="출석인정결석">출석인정결석 (경조사/감염병 등)</option>
                             <option value="미세먼지결석">미세먼지 민감군 학생 결석</option>
@@ -356,11 +379,11 @@
                     </div>
                     <div class="form-group">
                         <label>증빙서류 사진 첨부 (처방전/진단서/청첩장 등)</label>
-                        <input type="file" id="abFile" accept="image/*" style="width: 100%; background: #0f1411; border: 1px solid var(--panel-border); color: var(--text); border-radius: 8px; padding: 8px 12px;">
+                        <input type="file" id="abFile" accept="image/*" style="width: 100%; background: #fff; border: 1px solid var(--panel-border); color: var(--text); border-radius: 8px; padding: 8px 12px;">
                     </div>
                     <div class="form-group">
                         <label>보호자 성명</label>
-                        <input type="text" id="abParentName" placeholder="학부모 성명" required style="width: 100%; height: 44px; background: #0f1411; border: 1px solid var(--panel-border); color: var(--text); border-radius: 8px; padding: 0 12px; font-size: 15px; font-weight: 700;">
+                        <input type="text" id="abParentName" placeholder="학부모 성명" required style="width: 100%; height: 44px; background: #fff; border: 1px solid var(--panel-border); color: var(--text); border-radius: 8px; padding: 0 12px; font-size: 15px; font-weight: 700;">
                     </div>
                     <div class="form-group">
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
@@ -378,7 +401,7 @@
         <section id="tab-exp-learning" class="hidden">
             <h2 style="font-size:18px; margin:0 0 14px;">✈️ 교외체험학습 신청 및 보고서</h2>
             <!-- 언제까지 내야 하는지. 신청서는 가기 전, 보고서는 다녀온 뒤. -->
-            <div class="card" style="padding:12px 16px; border-color:rgba(240,189,100,0.35);">
+            <div class="card" style="padding:12px 16px; border-color:rgba(163,90,0,0.3);">
                 <p style="margin:0; font-size:13px; line-height:1.7;">
                     <strong style="color:var(--gold);">신청서</strong>는 체험학습 <strong>실시 3일 전까지</strong>,
                     <strong style="color:var(--gold);">결과 보고서</strong>는 <strong>다녀온 뒤 7일 이내</strong>에 내 주세요.
@@ -505,7 +528,7 @@
             </div>
             <p style="font-size: 14px; color: var(--muted); line-height: 1.6; margin-bottom: 20px;">
                 담임선생님이 학생 명단에 등록하신<br>
-                <strong style="color:#fff;">보호자 구글 계정 이메일</strong>로 로그인하세요.
+                <strong style="color:var(--text);">보호자 구글 계정 이메일</strong>로 로그인하세요.
             </p>
             <div style="display: flex; flex-direction: column; gap: 10px; align-items: center;">
                 <a href="/index.html" class="btn-primary" style="display: inline-flex; align-items: center; justify-content: center; width: 100%; height: 48px; font-size: 15px; font-weight: 800; text-decoration: none;">
@@ -1070,8 +1093,8 @@
             if (n.myReply) {
                 const when = new Date(n.myReply.repliedAt).toLocaleString();
                 return `
-                    <div style="margin-top:12px; padding:10px 12px; border-radius:8px; background:rgba(117,214,159,0.12); border:1px solid rgba(117,214,159,0.35);">
-                        <strong style="color:var(--green);">✅ ${escapeHtml(REPLY_LABELS[n.myReply.choice] || n.myReply.choice)}</strong>
+                    <div style="margin-top:12px; padding:10px 12px; border-radius:8px; background:var(--green-soft); border:1px solid rgba(23,128,74,0.35);">
+                        <strong style="color:var(--green-strong);">✅ ${escapeHtml(REPLY_LABELS[n.myReply.choice] || n.myReply.choice)}</strong>
                         <span style="color:var(--muted); font-size:12px; margin-left:6px;">${escapeHtml(when)} 회신함</span>
                         <button class="btn-secondary" style="margin-left:8px; padding:4px 10px; font-size:12px;"
                                 onclick="resetNoticeReply('${n.id}')">회신 바꾸기</button>
@@ -1153,7 +1176,7 @@
                             <span class="tag">${escapeHtml(String(n.contentType || '').toUpperCase())}</span>
                         </div>
                         <p style="color:var(--muted); font-size:13px;">발송: ${escapeHtml(new Date(n.createdAt).toLocaleDateString())} | ${escapeHtml(n.senderName)}</p>
-                        <div style="margin-top:10px; font-size:14px; line-height:1.5; white-space:pre-wrap; background:rgba(0,0,0,0.2); padding:10px; border-radius:6px;">${escapeHtml(n.contentBody)}</div>
+                        <div style="margin-top:10px; font-size:14px; line-height:1.5; white-space:pre-wrap; background:var(--surface); padding:10px; border-radius:6px;">${escapeHtml(n.contentBody)}</div>
                         <div class="reply-slot">${renderReplyBox(n)}</div>
                     </div>
                 `).join('');
@@ -1178,7 +1201,7 @@
             const chip = document.getElementById('studentChip');
             if (chip) {
                 chip.textContent = `${c.grade}학년 ${c.classNumber}반 ${c.studentNumber}번 ${c.studentName} 학부모님`;
-                chip.style.background = '#1f4730';
+                chip.style.background = 'var(--green-soft)';
             }
 
             const bar = document.getElementById('childSelectorBar');
@@ -1186,7 +1209,7 @@
                 if (childrenList.length > 1) {
                     bar.style.display = 'flex';
                     bar.innerHTML = childrenList.map((ch, idx) => `
-                        <button type="button" class="btn-secondary" style="padding:6px 12px; font-size:12px; ${idx === index ? 'background:var(--green); color:#000; font-weight:800;' : ''}" onclick="selectChild(${idx})">
+                        <button type="button" class="btn-secondary" style="padding:6px 12px; font-size:12px; ${idx === index ? 'background:var(--green); color:#fff; font-weight:800;' : ''}" onclick="selectChild(${idx})">
                             👧 ${ch.grade}학년 ${ch.classNumber}반 ${ch.studentName}
                         </button>
                     `).join('');
@@ -1222,10 +1245,10 @@
                     // 결재선 진행. 담임 → 교무부장 → 교감 → 교장 순으로 어디까지 왔는지.
                     const steps = Array.isArray(s.approvals) ? s.approvals : [];
                     const statusBadge = s.status === 'approved'
-                        ? '<span class="tag" style="background:#1f4730; color:#7CFFB2;">✅ 결재 완료</span>'
+                        ? '<span class="tag" style="background:var(--green-soft); color:var(--green-strong);">✅ 결재 완료</span>'
                         : s.status === 'rejected'
-                            ? '<span class="tag" style="background:#4a1f1f; color:#ff9b9b;">❌ 반려</span>'
-                            : `<span class="tag" style="background:#4a3a1f; color:#ffcf7c;">⏳ ${escNoticeHtml(s.currentStep || '검토')} 결재 중</span>`;
+                            ? '<span class="tag" style="background:var(--danger-soft); color:var(--danger-strong);">❌ 반려</span>'
+                            : `<span class="tag" style="background:var(--gold-soft); color:var(--gold);">⏳ ${escNoticeHtml(s.currentStep || '검토')} 결재 중</span>`;
                     const chain = steps.length === 0 ? '' : `
                         <div style="display:flex; gap:6px; flex-wrap:wrap; margin-top:8px;">
                             ${steps.map(st => {
