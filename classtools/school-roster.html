@@ -554,7 +554,7 @@
                             <th style="width:110px;">기본 특별실</th>
                             <th style="width:120px;">직책</th>
                             <th style="width:90px;">연동 상태</th>
-                            <th style="width:60px;">관리</th>
+                            <th style="width:120px;">관리</th>
                         </tr>
                     </thead>
                     <tbody id="teacherRosterBody"></tbody>
@@ -739,20 +739,12 @@
         tbody.innerHTML = allTeachers.map((t, idx) => {
             const isAdminRow = t.type === '관리자' || t.type === '교장' || t.type === '교감' || t.name === '학교관리자' || t.name === '관리자';
             
-            const roleBadge = isAdminRow
-                ? `<span style="background:#fef3c7;color:#d97706;padding:3px 8px;border-radius:12px;font-size:11px;font-weight:bold;">👑 학교 관리자</span>`
-                : (Boolean(t.grade && t.classNumber)
-                    ? `<span style="background:#e0f2fe;color:#0284c7;padding:3px 8px;border-radius:12px;font-size:11px;font-weight:bold;">담임 (${t.grade}-${t.classNumber})</span>`
-                    : `<span style="background:#f3f4f6;color:#4b5563;padding:3px 8px;border-radius:12px;font-size:11px;">교과/교직원</span>`);
-            
             const linkedBadge = t.linked ? `<span class="linked-badge">✓ 연동</span>` : `<span style="color:#9ca3af;font-size:11px;">미연동</span>`;
-            
+
             if (isAdminRow) {
                 // 학교 관리자도 담임·교과를 겸할 수 있다. 잠그는 것은 구글 계정과 삭제뿐이다.
                 // 담임을 맡으면 성명이 학생 화면에 나오므로 실제 이름으로 바꿔 적는다.
-                const homeroomBadge = (t.grade && t.classNumber)
-                    ? `<span style="background:#e0f2fe;color:#0284c7;padding:3px 8px;border-radius:12px;font-size:11px;font-weight:bold;">담임 (${t.grade}-${t.classNumber})</span>`
-                    : '';
+                // 관리자라는 표시는 삭제 단추 자리에 둔다. 지울 수 없는 까닭이 곧 그것이라서다.
                 return `
                     <tr style="background:rgba(254,243,199,0.2);">
                         <td>
@@ -773,12 +765,10 @@
                         <td>
                             <input class="roster-cell-input" style="width:100%;border:1px solid #d1d5db;border-radius:4px;padding:3px 6px;" value="${esc(t.roomName ?? '')}" placeholder="예: 음악실" onchange="updateTeacherField(${idx}, 'roomName', this.value)">
                         </td>
-                        <td style="text-align:center;">
-                            <div style="display:flex;flex-direction:column;align-items:center;gap:4px;">${roleBadge}${homeroomBadge}</div>
-                        </td>
+                        <td style="text-align:center;color:#9ca3af;">-</td>
                         <td style="text-align:center;">${linkedBadge}</td>
                         <td style="text-align:center;">
-                            <span style="color:#9ca3af;font-size:11px;" title="학교 관리자 계정은 삭제할 수 없습니다">🔒 보호됨</span>
+                            <span style="background:#fef3c7;color:#d97706;padding:3px 8px;border-radius:12px;font-size:11px;font-weight:bold;white-space:nowrap;" title="학교 관리자 계정은 삭제할 수 없습니다">👑 학교 관리자</span>
                         </td>
                     </tr>
                 `;
