@@ -8,11 +8,11 @@
   <title>경찰과 도둑</title>
   <link rel="stylesheet" href="../../../assets/network/multiplayer-lobby.css?v=20260926-city-background">
   <link rel="stylesheet" href="../../../assets/device-game.css?v=20260921c">
-  <link rel="stylesheet" href="citychase.css?v=20260927-board-readability">
+  <link rel="stylesheet" href="citychase.css?v=20260927-no-header">
   <script src="../../../assets/sound/music-control.js?v=20260910-click-cache-1" defer></script>
   <script src="../../../assets/network/game-network.js?v=20260821"></script>
   <script src="../../../assets/network/multiplayer-lobby.js?v=20260926-button-labels"></script>
-  <script src="citychase-data.js?v=20260831b"></script>
+  <script src="citychase-data.js?v=20260927-shop-names"></script>
 </head>
 <body>
   <main>
@@ -94,26 +94,11 @@
     </section>
 
     <section id="gameScreen" class="gameShell hidden">
-      <header class="gameHeader">
-        <div class="miniBrand"><span class="miniBrandMark" aria-hidden="true">🚨</span><div><strong>경찰과 도둑</strong><small>COPS AND ROBBERS</small></div></div>
-        <div class="turnHeadline"><strong id="turnHeadline">게임 준비 중</strong><span id="turnSubline">잠시 기다려 주세요.</span></div>
-        <div class="headerMeta">
-          <div hidden class="roomMini"><span>ROOM</span><strong id="gameRoomCode">----</strong></div>
-          <button id="rulesBtnGame" class="iconButton" type="button" aria-label="게임 방법">?</button>
-          <button id="leaveBtnGame" class="iconButton" type="button" aria-label="게임 나가기">×</button>
-        </div>
-      </header>
 
       <div class="gameLayout">
         <section class="boardPanel" aria-label="도시 게임판">
-          <div class="boardTools" aria-label="게임판 크기">
-            <button id="boardZoomOut" type="button" aria-label="게임판 축소">−</button>
-            <button id="boardZoomReset" type="button">전체 보기</button>
-            <button id="boardZoomIn" type="button" aria-label="게임판 확대">＋</button>
-          </div>
           <div id="boardViewport" class="boardViewport">
             <div id="boardStage" class="boardStage">
-              <div id="sceneryLayer" class="sceneryLayer" aria-hidden="true"></div>
               <div id="lotsLayer" class="lotsLayer" aria-hidden="true"></div>
               <canvas id="boardCanvas" class="boardCanvas" width="1000" height="1000" aria-hidden="true"></canvas>
               <div class="boardShade" aria-hidden="true"></div>
@@ -134,6 +119,18 @@
         </section>
 
         <aside class="controlPanel" aria-label="내 정보와 행동">
+          <div class="gameUtilities">
+            <div class="boardTools" aria-label="게임판 크기">
+              <button id="boardZoomOut" type="button" aria-label="게임판 축소">−</button>
+              <button id="boardZoomReset" type="button" aria-label="게임판 전체 보기">전체</button>
+              <button id="boardZoomIn" type="button" aria-label="게임판 확대">＋</button>
+            </div>
+            <div class="headerMeta">
+              <button id="rulesBtnGame" class="iconButton" type="button" aria-label="게임 방법">?</button>
+              <button id="leaveBtnGame" class="iconButton" type="button" aria-label="게임 나가기">×</button>
+            </div>
+          </div>
+          <section id="actionDock" class="actionDock" aria-label="현재 차례와 행동"></section>
           <details id="gameInfoDetails" open>
             <summary>팀 정보 · 참가자 <span id="compactProgress"></span></summary>
             <div class="gameInfoBody">
@@ -186,7 +183,6 @@
           </details>
         </aside>
       </div>
-      <section id="actionDock" class="actionDock" aria-label="현재 차례와 행동"></section>
     </section>
   </main>
 
@@ -223,6 +219,6 @@
 
   <div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
   <audio id="bgm" preload="auto"></audio>
-  <script src="citychase.js?v=20260927-board-readability"></script>
+  <script src="citychase.js?v=20260927-no-header"></script>
 </body>
 </html>

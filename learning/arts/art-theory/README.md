@@ -52,16 +52,24 @@
 - 한 작업판은 도형 40개, 저장 구성은 30개, 실행 중 되돌리기 이력은 60단계까지입니다. 되돌리기 이력은 새로고침 후 유지되지 않습니다.
 - 자유롭게 조형 관계를 탐색하는 편집 도구입니다. 시각적 균형이나 미적 완성도를 물리량처럼 계산하지 않습니다.
 
+### 오방색과 사신 — `obangsaek/`
+
+- 실제 의궤의 청룡·주작·백호·현무 그림을 확대해 형태를 살펴봅니다.
+- 선택한 사신의 색·방위·오행·계절과 방위도를 함께 보여줍니다. 중앙의 황색은 네 사신과 구분합니다.
+- 1674년과 1757년 자료를 나란히 비교하고, 시대별 형태의 차이를 설명합니다.
+- 고분벽화·왕실 장례·처용무의 쓰임을 짧게 설명합니다. 예상 작성이나 채점 절차는 없습니다.
+- 원본 자료의 출처·이용 조건·구현 범위는 [오방색 문서](obangsaek/README.md)에 정리했습니다.
+
 ## 화면 원칙
 
 - 본문·버튼·수치 16px, 소제목 18px, 제목 22px.
 - 조작과 관찰을 중심으로 구성하고 장황한 설명을 먼저 읽도록 하지 않습니다.
-- 출처는 이 문서에서 관리합니다. 학생 화면에 출처 링크를 넣지 않습니다.
+- 근거 자료는 문서에서 관리합니다. 원본 그림을 사용하는 오방색 화면에는 하단의 접힌 자료 정보에 출처와 이용 조건을 표시합니다.
 - 앞선 비교 차시의 실험 기록은 현재 페이지에서만 유지됩니다. 조형 원리 작업실은 브라우저에 자동 저장합니다.
 
 ## 남은 순서
 
-조형 원리 작업실의 사용성을 먼저 검토합니다. 이후 공간과 구도·실제 작품 적용을 확장하며, 오방색은 문화 자료를 중심으로 별도 구성합니다. 검토되지 않은 빈 차시를 미리 노출하지 않습니다.
+오방색과 사신의 시각 자료와 설명을 검토합니다. 조형 원리 작업실은 자유 편집 기능만 구현된 상태이며 학습 목적과 실제 작품 적용은 추가 검토가 필요합니다. 필요한 내용만 남기며, 검토되지 않은 빈 차시를 미리 노출하지 않습니다.
 
 ## 검증
 
@@ -74,9 +82,10 @@ node --test tests/visual-elements-model.test.cjs
 node tests/visual-elements-browser-smoke.cjs
 node --test tests/design-principles-model.test.cjs
 node tests/design-principles-browser-smoke.cjs
+node tests/obangsaek-browser-smoke.cjs
 ```
 
-Chrome 또는 Edge를 사용합니다. 실행 파일을 찾지 못하면 `CHROME_PATH`를 설정합니다. 스크린샷 출력 폴더는 `COLOR_MIXING_SCREENSHOTS`, `COLOR_PROPERTIES_SCREENSHOTS`, `COLOR_HARMONY_SCREENSHOTS`, `VISUAL_ELEMENTS_SCREENSHOTS`, `DESIGN_PRINCIPLES_SCREENSHOTS`로 지정합니다. 임시 브라우저 프로필은 시스템 임시 폴더에서 만들고 검사 종료 시 삭제합니다. 조형 원리 검사는 Chrome DevTools Protocol을 통해 실제 마우스·터치 드래그와 키보드 이동, 저장 후 새로고침 복원을 검증합니다.
+Chrome 또는 Edge를 사용합니다. 실행 파일을 찾지 못하면 `CHROME_PATH`를 설정합니다. 스크린샷 출력 폴더는 `COLOR_MIXING_SCREENSHOTS`, `COLOR_PROPERTIES_SCREENSHOTS`, `COLOR_HARMONY_SCREENSHOTS`, `VISUAL_ELEMENTS_SCREENSHOTS`, `DESIGN_PRINCIPLES_SCREENSHOTS`, `OBANGSAEK_SCREENSHOTS`로 지정합니다. 임시 브라우저 프로필은 시스템 임시 폴더에서 만들고 검사 종료 시 삭제합니다. 조형 원리 검사는 Chrome DevTools Protocol을 통해 실제 마우스·터치 드래그와 키보드 이동, 저장 후 새로고침 복원을 검증합니다.
 
 ## 근거 자료
 
