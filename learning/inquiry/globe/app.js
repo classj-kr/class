@@ -18,7 +18,7 @@ const flowTracks = [...windModel.tracks, ...currentModel.tracks];
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 let flowSeconds = 0;
 const BASE = new URL(".", import.meta.url).href;
-const TILE_VERSION = 2;
+const TILE_VERSION = "20260927-color85";
 const FLAG_VERSION = 2;
 // 모양(shapes.json)·설명(info.json)·사진을 바꾸면 올린다.
 const DATA_VERSION = "20260920-39";
@@ -300,7 +300,7 @@ function buildStyle() {
     sources: {
       relief: {
         type: "raster",
-        tiles: [`${BASE}tiles/{z}/{x}/{y}.webp?v=${TILE_VERSION}`],
+        tiles: [`${BASE}tiles-colored/{z}/{x}/{y}.webp?v=${TILE_VERSION}`],
         tileSize: 512,
         minzoom: 0,
         maxzoom: 5,

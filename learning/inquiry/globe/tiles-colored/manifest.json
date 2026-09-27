@@ -1,0 +1,15 @@
+{
+  "version": "20260927-color85",
+  "strength": 85,
+  "count": 1365,
+  "tileSize": 512,
+  "minZoom": 0,
+  "maxZoom": 5,
+  "format": "WebP",
+  "quality": 0.95,
+  "textureSource": "../tiles",
+  "colorSource": "Natural Earth HYP_LR_SR_W_DR v3.2.0",
+  "sourceUrl": "https://naturalearth.s3.amazonaws.com/10m_raster/HYP_LR_SR_W_DR.zip",
+  "license": "Public domain",
+  "method": "Low-frequency RGB gain transfer with green-land and water masks. Not an elevation classification."
+}

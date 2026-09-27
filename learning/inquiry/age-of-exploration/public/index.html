@@ -1133,17 +1133,18 @@ function drawFinishedUfoAt(p,isMine,cw,ch){
   ctx.restore();
   drawNameLabel(s.x,s.y-r+18,p.name,isMine,completionSuffix(p));drawMedalBadge(s.x,s.y-r-43,p.finishRank);
 }
+const SHIP_DRAW_SCALE=.75;
 function drawShipAt(p,isMine,cw,ch){
   if(roomType==='race'&&VoyageShips.validType(p.shipType)){
     const s=screenPoint(p.x,p.y,cw,ch);if(s.x<-90||s.x>cw+90||s.y<-90||s.y>ch+90)return;
-    const scale=Math.max(.65,Math.min(1.08,zoom*.68))*(p.shipScale||1);
+    const scale=SHIP_DRAW_SCALE*Math.max(.65,Math.min(1.08,zoom*.68))*(p.shipScale||1);
     ctx.save();VoyageShips.draw(ctx,p.shipType,p.dir,s.x,s.y,scale,{mine:isMine,moving:p.moving&&!p.shipAnchoredAtShore});
     drawNameLabel(s.x,s.y-54*scale+30,p.name,isMine,completionSuffix(p));
     drawMedalBadge(s.x,s.y-54*scale-12,p.finishRank);ctx.restore();return;
   }
   drawOriginalShipAt(p,isMine,cw,ch);
 }
-function drawOriginalShipAt(p,isMine,cw,ch){const s=screenPoint(p.x,p.y,cw,ch);if(s.x<-80||s.x>cw+80||s.y<-80||s.y>ch+80)return;const scale=Math.max(.64,Math.min(1.25,zoom*.69)),size=48*scale;ctx.save();ctx.imageSmoothingEnabled=false;ctx.shadowColor='#000';ctx.shadowBlur=5;ctx.drawImage(shipAtlas,p.dir*48,0,48,48,Math.round(s.x-size/2),Math.round(s.y-size/2),Math.round(size),Math.round(size));ctx.shadowBlur=0;drawNameLabel(s.x,s.y-size/2+18,p.name,isMine,completionSuffix(p));drawMedalBadge(s.x,s.y-size/2-42,p.finishRank);ctx.restore()}
+function drawOriginalShipAt(p,isMine,cw,ch){const s=screenPoint(p.x,p.y,cw,ch);if(s.x<-80||s.x>cw+80||s.y<-80||s.y>ch+80)return;const scale=SHIP_DRAW_SCALE*Math.max(.64,Math.min(1.25,zoom*.69)),size=48*scale;ctx.save();ctx.imageSmoothingEnabled=false;ctx.shadowColor='#000';ctx.shadowBlur=5;ctx.drawImage(shipAtlas,p.dir*48,0,48,48,Math.round(s.x-size/2),Math.round(s.y-size/2),Math.round(size),Math.round(size));ctx.shadowBlur=0;drawNameLabel(s.x,s.y-size/2+18,p.name,isMine,completionSuffix(p));drawMedalBadge(s.x,s.y-size/2-42,p.finishRank);ctx.restore()}
 function drawAnchoredShipAt(p,isMine,cw,ch){if(!p?.shipAnchoredAtShore||!Number.isFinite(p.shipAnchorX)||!Number.isFinite(p.shipAnchorY))return;drawShipAt({...p,x:p.shipAnchorX,y:p.shipAnchorY,dir:Number.isInteger(p.shipAnchorDir)?p.shipAnchorDir:0,name:`⚓ ${p.name}의 배`,finishRank:null,missionCompleted:false},isMine,cw,ch)}
 function drawExplorerAt(p,isMine,cw,ch){const s=screenPoint(p.x,p.y,cw,ch);if(s.x<-60||s.x>cw+60||s.y<-60||s.y>ch+60)return;const size=Math.max(13,Math.min(23,zoom*11));ctx.save();ctx.translate(Math.round(s.x),Math.round(s.y));ctx.shadowColor='#000';ctx.shadowBlur=4;ctx.fillStyle=isMine?'#f2cf78':'#d9eef5';ctx.beginPath();ctx.arc(0,-size*.62,size*.24,0,Math.PI*2);ctx.fill();ctx.fillRect(-size*.22,-size*.38,size*.44,size*.62);ctx.fillStyle=isMine?'#7f5426':'#42616c';ctx.fillRect(size*.18,-size*.30,size*.22,size*.42);ctx.strokeStyle='#1a2528';ctx.lineWidth=Math.max(2,size*.10);ctx.beginPath();ctx.moveTo(-size*.12,size*.22);ctx.lineTo(-size*.28,size*.60);ctx.moveTo(size*.12,size*.22);ctx.lineTo(size*.28,size*.60);ctx.stroke();ctx.shadowBlur=0;ctx.restore();drawNameLabel(s.x,s.y-size*.65,p.name,isMine,completionSuffix(p)||'탐험대');drawMedalBadge(s.x,s.y-size*.65-55,p.finishRank)}
 function drawCityMarker(p,isMine,cw,ch){const s=screenPoint(p.x,p.y,cw,ch);ctx.save();ctx.fillStyle=isMine?'#ffe49a':'#fff';ctx.strokeStyle='#4b321c';ctx.lineWidth=2;ctx.beginPath();ctx.arc(s.x,s.y,7,0,Math.PI*2);ctx.fill();ctx.stroke();ctx.restore();drawNameLabel(s.x,s.y-2,p.name,isMine,'입항 중')}

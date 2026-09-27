@@ -29,11 +29,15 @@ assert.match(app, /touchPitch:\s*false/);
 assert.match(app, /touchZoomRotate\.disableRotation\(\)/);
 assert.match(app, /keyboard\.disableRotation\(\)/);
 
-// 지도 조각은 0~5단이 빠짐없이 있어야 한다.
+// 실제 표시하는 보정 지도 조각은 0~5단이 빠짐없이 있어야 한다.
+assert.ok(app.includes('tiles-colored/'));
+const terrainManifest = JSON.parse(read('tiles-colored/manifest.json'));
+assert.equal(terrainManifest.strength, 85);
+assert.equal(terrainManifest.count, 1365);
 for (let z = 0; z <= 5; z += 1) {
   for (let x = 0; x < 2 ** z; x += 1) {
     for (let y = 0; y < 2 ** z; y += 1) {
-      assert.ok(fs.existsSync(new URL(`tiles/${z}/${x}/${y}.webp`, root)), `Missing tile ${z}/${x}/${y}.`);
+      assert.ok(fs.existsSync(new URL(`tiles-colored/${z}/${x}/${y}.webp`, root)), `Missing tile ${z}/${x}/${y}.`);
     }
   }
 }
