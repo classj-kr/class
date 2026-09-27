@@ -22,3 +22,8 @@ body:has(#start-screen:not([style*="none"])), body:has(#startScreen:not([hidden]
 .game-frame:has([data-difficulty-button]) .question-text { min-height: 0; margin: 0 0 16px; }
 .game-frame:has([data-difficulty-button]) .quiz-btn { min-height: 44px; }
 .game-frame:has([data-difficulty-button]) { height: auto !important; max-height: none !important; }
+
+:is(#start-screen,#startScreen) .start-title { max-width: 100%; overflow-wrap: normal; }
+@media (max-width: 600px) {
+  :is(#start-screen,#startScreen) .start-title { font-size: clamp(24px, 7vw, 36px); letter-spacing: .03em; }
+}
