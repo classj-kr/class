@@ -123,6 +123,7 @@
         lessonQuizStreak: 0,
         lessonQuizBestStreak: 0,
         lessonQuizAnswered: false,
+        lessonQuizHadWrong: false,
         lessonQuizWrongWords: [],
         gameLevel: 0,
         gamePool: [],
@@ -619,35 +620,44 @@
         state.lessonQuizChoices = createLessonQuizChoices(state.lessonQuizTarget);
         state.lessonQuizQuestionNumber += 1;
         state.lessonQuizAnswered = false;
+        state.lessonQuizHadWrong = false;
         renderLessonQuizQuestion();
     }
 
     function answerLessonQuiz(selectedButton) {
         if (state.lessonQuizAnswered || !state.lessonQuizTarget) return;
-        state.lessonQuizAnswered = true;
         const isCorrect = selectedButton.dataset.correct === "true";
         const targetMeaning = primaryMeaning(state.lessonQuizTarget);
+        // 틀리면 정답을 알려 주지 않고 그 보기만 잠근 뒤 다시 고르게 한다. 점수는 첫 번에 맞힌 것만 센다.
+        if (!isCorrect) {
+            selectedButton.classList.add("incorrect");
+            selectedButton.disabled = true;
+            state.lessonQuizStreak = 0;
+            if (!state.lessonQuizHadWrong) {
+                state.lessonQuizHadWrong = true;
+                state.lessonQuizWrongWords.push(state.lessonQuizTarget);
+                state.progress[String(state.lessonQuizTarget.id)] = { status: "unknown", updatedAt: new Date().toISOString() };
+                saveProgress();
+                renderOverallProgress();
+            }
+            elements.lessonQuizFeedback.textContent = "다시 생각하고 다른 답을 골라보세요.";
+            elements.lessonQuizFeedback.className = "game-feedback incorrect";
+            updateLessonQuizStats();
+            return;
+        }
+        state.lessonQuizAnswered = true;
         elements.lessonQuizChoices.querySelectorAll(".lesson-quiz-choice").forEach((button) => {
             button.disabled = true;
             if (button.dataset.correct === "true") button.classList.add("correct");
         });
-        if (isCorrect) {
+        if (!state.lessonQuizHadWrong) {
             state.progress[String(state.lessonQuizTarget.id)] = { status: "known", updatedAt: new Date().toISOString() };
             state.lessonQuizScore += 1;
             state.lessonQuizStreak += 1;
             state.lessonQuizBestStreak = Math.max(state.lessonQuizBestStreak, state.lessonQuizStreak);
-            elements.lessonQuizFeedback.textContent = `정답! ${state.lessonQuizTarget.word} — ${targetMeaning}`;
-            elements.lessonQuizFeedback.className = "game-feedback correct";
-        } else {
-            selectedButton.classList.add("incorrect");
-            state.lessonQuizStreak = 0;
-            if (!state.lessonQuizWrongWords.some((word) => String(word.id) === String(state.lessonQuizTarget.id))) {
-                state.lessonQuizWrongWords.push(state.lessonQuizTarget);
-            }
-            state.progress[String(state.lessonQuizTarget.id)] = { status: "unknown", updatedAt: new Date().toISOString() };
-            elements.lessonQuizFeedback.textContent = `아쉬워요. ${state.lessonQuizTarget.word} — ${targetMeaning}`;
-            elements.lessonQuizFeedback.className = "game-feedback incorrect";
         }
+        elements.lessonQuizFeedback.textContent = `정답! ${state.lessonQuizTarget.word} — ${targetMeaning}`;
+        elements.lessonQuizFeedback.className = "game-feedback correct";
         saveProgress();
         renderOverallProgress();
         elements.lessonQuizNextButton.disabled = false;
@@ -711,6 +721,7 @@
         state.lessonQuizStreak = 0;
         state.lessonQuizBestStreak = 0;
         state.lessonQuizAnswered = false;
+        state.lessonQuizHadWrong = false;
         state.lessonQuizWrongWords = [];
         elements.studyScreen.hidden = true;
         elements.lessonScreen.hidden = true;
