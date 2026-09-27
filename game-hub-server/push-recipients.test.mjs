@@ -90,11 +90,25 @@ async function candidates(db, schoolId, excludeUserId) {
   return res.rows.map(r => Number(r.id)).sort((a, b) => a - b);
 }
 
-test("a school's students and guardians with a device are candidates; teachers, other schools, and the author are not", async () => {
+test("a school's students and guardians with a device are candidates; other schools and the author are not", async () => {
   await withSchools(async (db) => {
+    // 교직원도 자기 아이가 이 학교에 있으면 후보다(학부모로서 받는다).
     assert.deepEqual(await candidates(db, 1, PEOPLE.author), [
-      PEOPLE.studentById, PEOPLE.studentByEmail, PEOPLE.guardian2, PEOPLE.oldRosterGuardian
+      PEOPLE.studentById, PEOPLE.studentByEmail, PEOPLE.guardian2, PEOPLE.oldRosterGuardian,
+      PEOPLE.teacherById, PEOPLE.teacherByEmail, PEOPLE.retiredTeacher
     ]);
+  });
+});
+
+test("every staff registration, by id or email and even when inactive, is flagged so it is only read as a guardian", async () => {
+  await withSchools(async (db) => {
+    const res = await db.query(candidatesSql(), [1, null]);
+    const flags = Object.fromEntries(res.rows.map(r => [Number(r.id), r.is_staff]));
+    assert.equal(flags[PEOPLE.teacherById], true);
+    assert.equal(flags[PEOPLE.teacherByEmail], true);
+    assert.equal(flags[PEOPLE.retiredTeacher], true);
+    assert.equal(flags[PEOPLE.studentById], false);
+    assert.equal(flags[PEOPLE.guardian2], false);
   });
 });
 
@@ -104,9 +118,9 @@ test("the other school only reaches its own families", async () => {
   });
 });
 
-test("a notice with no school reaches every non-teacher with a device", async () => {
+test("a notice with no school reaches everyone with a device", async () => {
   await withSchools(async (db) => {
-    assert.deepEqual(await candidates(db, null, null), [1, 2, 3, 4, 8, 10]);
+    assert.deepEqual(await candidates(db, null, null), [1, 2, 3, 4, 5, 6, 7, 8, 10]);
   });
 });
 
@@ -118,9 +132,28 @@ test("posting answers first and only then queues the notification", () => {
 });
 
 test("who sees the board is decided by the same rule that builds the board list", () => {
+  const visit = /async function forEachPushCandidate[\s\S]*?\r?\n  }\r?\n/.exec(source)[0];
+  // 교직원은 아이가 없으면 건너뛰고, 있으면 학부모 범위로만 본다. 교사 범위로 보면
+  // 학급 행을 고쳐 쓰는 일이 알림 보내는 길에서 돈다.
+  assert.match(visit, /if \(staff && \(await getGuardianChildren\(user\)\)\.length === 0\) continue;/);
+  assert.match(visit, /classboardBoards\(user, \{ asGuardian: staff \}\)/);
+  assert.match(visit, /staff \? "&as=guardian" : ""/);
   const post = /async function notifyClassboardPost[\s\S]*?\r?\n  }\r?\n/.exec(source)[0];
-  assert.match(post, /\(await classboardBoards\(user\)\)\.find\(b => b\.key === boardKey\)/);
+  assert.match(post, /boards\.find\(b => b\.key === boardKey\)/);
   const notice = /async function notifyNotice[\s\S]*?\r?\n  }\r?\n/.exec(source)[0];
-  assert.match(notice, /classboardBoards\(user\)/);
+  assert.match(notice, /boards\.filter\(b => b\.kind === "notice"\)/);
   assert.match(notice, /NOTICE_TARGET_SQL/);
+});
+
+test("the guardian view is decided before any teacher lookup", () => {
+  const scope = /async function classboardScope\(user, \{ asGuardian = false \} = \{\}\)[\s\S]*?const teacherRes/.exec(source);
+  assert.ok(scope, "classboardScope must check asGuardian before looking up the teacher registration");
+  assert.match(scope[0], /if \(children\.length > 0\) return guardianClassboardScope\(children\);/);
+  assert.doesNotMatch(scope[0], /await userClassId\(/);
+});
+
+test("the board list and posts honour the guardian view", () => {
+  for (const signature of ['router.get("/classboard/boards"', 'router.get("/classboard/posts"']) {
+    assert.match(routeBody(signature), /classboardBoards\(user, \{ asGuardian: req\.query\.as === "guardian" \}\)/);
+  }
 });

@@ -2077,7 +2077,9 @@
                     state.guardianChildren.forEach(child => {
                         const btn = document.createElement('a');
                         btn.className = 'profile-btn guardian';
-                        btn.href = '/classboard/';
+                        // 교사에게 교사 메인이 있듯 학부모는 학부모 메인으로. 교사이면서
+                        // 학부모인 사람도 거기서는 학부모로 본다.
+                        btn.href = '/parent/';
                         btn.innerHTML = `<span class="profile-title">📱 ${child.studentName}</span><span class="profile-desc">${child.schoolName} · 보호자 계정</span>`;
                         profileList.appendChild(btn);
                     });
