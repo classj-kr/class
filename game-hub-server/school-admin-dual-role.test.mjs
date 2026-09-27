@@ -209,6 +209,20 @@ test("renaming the admin to a name another kept row uses gives a readable error 
   });
 });
 
+test("a 교직원 row keeps its 분류 across saves and cannot take a class", async () => {
+  await withSchool(async ({ pool, teachers }) => {
+    const base = [row("학교 관리자", "admin@school.test"), row("가교사", "teacher-a@school.test", 6, 2), row("나교사", "teacher-b@school.test", 6, 3)];
+    await save(pool, [...base, row("라직원", "staff@school.test", null, null, { type: "교직원" })]);
+    assert.equal((await teachers())[3].teacher_type, "교직원");
+    const before = await teachers();
+    await assert.rejects(
+      save(pool, [...base, row("라직원", "staff@school.test", 6, 5, { type: "교직원" })]),
+      { code: "STAFF_NO_CLASS" }
+    );
+    assert.deepEqual(await teachers(), before);
+  });
+});
+
 async function setMaster(pool, email) {
   const res = { json(value) { this.body = value; } };
   await setMasterEmail({ params: { schoolId: "1" }, body: { email } }, res, async () => ({ id: 99 }), HttpError, normalizeEmail, pool);
