@@ -18,7 +18,8 @@ const missingIds = [...new Set(referencedIds.filter((id) => !idSet.has(id)))];
 assert.deepStrictEqual(missingIds, [], `app.js에서 참조하지만 HTML에 없는 id: ${missingIds.join(", ")}`);
 
 ["idioms-bgm.js", "../../../assets/sound/music-control.js", "idioms-data.js", "idioms-core.js", "app.js"].forEach((file) => {
-    assert.ok(html.includes(`src="${file}"`), `${file} 스크립트 연결이 필요합니다.`);
+    const source = file.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    assert.ok(new RegExp(`src="${source}(\\?v=[^"]+)?"`).test(html), `${file} 스크립트 연결이 필요합니다.`);
 });
 assert.ok(html.includes('id="bgm"'), "한자성어 화면에 공용 배경 음악 요소가 필요합니다.");
 assert.ok(html.includes('assets/audio/paper-lantern-drift.ogg'), "첫 한자성어 배경 음악 연결이 필요합니다.");
