@@ -1,8 +1,8 @@
 {
-  "name": "알림장",
+  "name": "학부모 알림장",
   "short_name": "알림장",
-  "description": "학급 알림장과 가정통신문을 한곳에서",
-  "start_url": "/classboard/",
+  "description": "알림장, 가정통신문, 출결 알리기를 한곳에서",
+  "start_url": "/parent/",
   "scope": "/",
   "display": "standalone",
   "background_color": "#f4f6f8",

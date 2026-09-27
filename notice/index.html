@@ -494,7 +494,7 @@
 
     <!-- Bottom Navigation Bar -->
     <nav class="bottom-nav">
-        <a class="nav-item" href="/classboard/">
+        <a class="nav-item" href="/classboard/?as=guardian">
             <span class="icon">📬</span>
             <span>알림장</span>
         </a>
@@ -1316,7 +1316,17 @@
             }
         }
 
+        // 학부모 메인에서 칸을 골라 들어오면 주소 끝에 그 칸이 붙어 온다(#absence-note).
+        function openTabFromHash() {
+            const tabId = location.hash.slice(1);
+            if (!tabId || !document.getElementById('tab-' + tabId)) return;
+            const button = [...document.querySelectorAll('button.nav-item')]
+                .find(b => (b.getAttribute('onclick') || '').includes(`'${tabId}'`));
+            if (button) button.click();
+        }
+
         checkAuthSession();
+        openTabFromHash();
     </script>
 </body>
 </html>

@@ -36,11 +36,11 @@ body {
     padding-bottom: 60px;
 }
 
+/* 제목 줄은 바탕과 같은 색. 흰 띠와 밑줄을 두면 쓸데없는 선이 한 줄 생긴다. */
 .header {
-    background: rgba(255, 255, 255, 0.94);
+    background: rgba(244, 246, 248, 0.94);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border-color);
     position: sticky;
     top: 0;
     z-index: 100;
@@ -125,14 +125,14 @@ body {
     font-weight: 700;
     cursor: pointer;
 }
-.push-toggle .material-symbols-outlined { font-size: 19px; color: var(--text-muted); }
+.push-toggle-icon { width: 18px; height: 18px; flex: none; color: var(--text-muted); }
 .push-toggle:hover { border-color: var(--border-highlight); }
 .push-toggle.on {
     background: var(--accent-soft);
     border-color: var(--accent);
     color: var(--accent-strong);
 }
-.push-toggle.on .material-symbols-outlined { color: var(--accent-strong); }
+.push-toggle.on .push-toggle-icon { color: var(--accent-strong); }
 .push-toggle:disabled { opacity: 0.6; cursor: wait; }
 
 .container {

@@ -5974,7 +5974,49 @@ function createClassroomPlatform(options = {}) {
     return res.rows[0] ? String(res.rows[0].id) : null;
   }
 
-  async function classboardScope(user) {
+  // 학부모 범위. 자녀가 있는 학급 게시판을 읽을 수 있어야 한다. 쓰기와 댓글은 안
+  // 된다 -- 반 전체가 보는 곳이라 학부모 글이 쌓이면 아이들이 부담스럽다.
+  async function guardianClassboardScope(children) {
+    // 가정통신문은 학급 게시판이 아니라 자기 칸으로 간다. 학급이 아직
+    // 안 열린 아이라도 통신문은 받으므로, 아이 목록은 따로 들고 간다.
+    const readers = children.map(c => ({
+      schoolId: c.schoolId,
+      grade: c.grade,
+      classNumber: c.classNumber,
+      studentNumber: c.studentNumber,
+      name: c.studentName
+    }));
+    const classes = [];
+    for (const c of children) {
+      const id = await existingClassId(c.schoolId, c.academicYear, c.grade, c.classNumber);
+      if (!id) continue;
+      if (classes.some(x => x.id === id)) continue;
+      classes.push({
+        id, grade: c.grade, classNumber: c.classNumber, teaching: false,
+        // 가정통신문은 학급이 아니라 '이 아이'에게 온 것이라, 게시판이
+        // 어느 아이 것인지 화면이 알아야 그 아이의 통신문을 부를 수 있다.
+        child: {
+          schoolId: c.schoolId,
+          grade: c.grade,
+          classNumber: c.classNumber,
+          studentNumber: c.studentNumber,
+          name: c.studentName
+        },
+        childName: c.studentName
+      });
+    }
+    return { canPost: false, viewerRole: "guardian", children, classes, readers };
+  }
+
+  // asGuardian: 첫 화면의 '보호자' 프로필로 들어왔다(?as=guardian). 교사이면서 학부모인
+  // 사람은 교사 규칙부터 타면 자기 아이 반이 안 보이고 교사 화면이 뜬다. 그래서 교사
+  // 규칙을 건너뛰고 학부모 범위로 간다. 교사 쪽 쓰기(userClassId)도 돌지 않는다.
+  async function classboardScope(user, { asGuardian = false } = {}) {
+    if (asGuardian) {
+      const children = await getGuardianChildren(user);
+      if (children.length > 0) return guardianClassboardScope(children);
+    }
+
     // 교사 등록은 user_id 로도, 관리자가 미리 적어 둔 구글 이메일로도 연결된다.
     // userClassId 와 같은 규칙으로 찾는다. 여기만 user_id 로 좁히면 이메일로 연결된
     // 담임에게 게시판은 보이는데 글쓰기 칸은 안 보이는 상태가 된다.
@@ -6001,42 +6043,10 @@ function createClassroomPlatform(options = {}) {
         classId = await classIdFromHomeroomGroup(user, info);
       }
 
-      // 학부모. 알림장을 학생만 보면 집에서는 아무것도 모른다. 자녀가 있는 학급
-      // 게시판을 읽을 수 있어야 한다. 쓰기와 댓글은 안 된다 -- 반 전체가 보는
-      // 곳이라 학부모 글이 쌓이면 아이들이 부담스럽다.
+      // 학부모. 알림장을 학생만 보면 집에서는 아무것도 모른다.
       if (!classId && !info) {
         const children = await getGuardianChildren(user);
-        if (children.length > 0) {
-          // 가정통신문은 학급 게시판이 아니라 자기 칸으로 간다. 학급이 아직
-          // 안 열린 아이라도 통신문은 받으므로, 아이 목록은 따로 들고 간다.
-          const readers = children.map(c => ({
-            schoolId: c.schoolId,
-            grade: c.grade,
-            classNumber: c.classNumber,
-            studentNumber: c.studentNumber,
-            name: c.studentName
-          }));
-          const classes = [];
-          for (const c of children) {
-            const id = await existingClassId(c.schoolId, c.academicYear, c.grade, c.classNumber);
-            if (!id) continue;
-            if (classes.some(x => x.id === id)) continue;
-            classes.push({
-              id, grade: c.grade, classNumber: c.classNumber, teaching: false,
-              // 가정통신문은 학급이 아니라 '이 아이'에게 온 것이라, 게시판이
-              // 어느 아이 것인지 화면이 알아야 그 아이의 통신문을 부를 수 있다.
-              child: {
-                schoolId: c.schoolId,
-                grade: c.grade,
-                classNumber: c.classNumber,
-                studentNumber: c.studentNumber,
-                name: c.studentName
-              },
-              childName: c.studentName
-            });
-          }
-          return { canPost: false, viewerRole: "guardian", children, classes, readers };
-        }
+        if (children.length > 0) return guardianClassboardScope(children);
       }
 
       // 학급이 안 잡혀도 등록된 교사면 글은 쓸 수 있어야 한다. 자기가 연 그룹
@@ -6114,8 +6124,8 @@ function createClassroomPlatform(options = {}) {
   // Every board this user can open: their class board plus each club /
   // after-school group they belong to (students) or run (teachers). A board is
   // addressed by a single key -- "class:100" or "group:5".
-  async function classboardBoardsWithScope(user) {
-    const scope = await classboardScope(user);
+  async function classboardBoardsWithScope(user, options = {}) {
+    const scope = await classboardScope(user, options);
 
     // 가정통신문 칸.
     //
@@ -6231,8 +6241,8 @@ function createClassroomPlatform(options = {}) {
     return { scope, boards };
   }
 
-  async function classboardBoards(user) {
-    const { boards } = await classboardBoardsWithScope(user);
+  async function classboardBoards(user, options = {}) {
+    const { boards } = await classboardBoardsWithScope(user, options);
     return boards;
   }
 
@@ -6297,7 +6307,7 @@ function createClassroomPlatform(options = {}) {
   // Which boards this user may switch between, with unread counts.
   router.get("/classboard/boards", asyncRoute(async (req, res) => {
     const user = await requireUser(req);
-    const boards = await classboardBoards(user);
+    const boards = await classboardBoards(user, { asGuardian: req.query.as === "guardian" });
     const unread = await classboardUnreadCounts(user, boards);
     res.json({
       boards: boards.map(b => ({ ...b, unreadCount: unread.get(b.key) || 0 }))
@@ -6313,7 +6323,7 @@ function createClassroomPlatform(options = {}) {
 
   router.get("/classboard/posts", asyncRoute(async (req, res) => {
     const user = await requireUser(req);
-    const boards = await classboardBoards(user);
+    const boards = await classboardBoards(user, { asGuardian: req.query.as === "guardian" });
     const target = pickBoard(boards, req.query.board || req.query.classId);
     if (!target) return res.json({ posts: [], board: null, canPost: false });
 
@@ -6543,17 +6553,19 @@ function createClassroomPlatform(options = {}) {
   // 그대로 쓴다. 여기 한 번 더 적으면 언젠가 둘이 어긋나, 못 보는 글의 알림이 가거나
   // 보는 사람이 못 받는다. 아래 SQL 은 그 규칙을 돌려 볼 사람을 같은 학교로 좁힐 뿐이다.
   //
-  // 교사는 받지 않는다. 알림장을 쓰는 쪽이고, 교사 계정으로 게시판 목록을 만들면
+  // 교사로서는 받지 않는다. 알림장을 쓰는 쪽이고, 교사 계정으로 게시판 목록을 만들면
   // 학급 행을 맞춰 두는 쓰기(userClassId)가 함께 돌아서 남의 글 올리는 길에 부를 수
-  // 없다. 교직원 등록이 한 줄이라도 있으면(쉬는 중이어도) 뺀다.
+  // 없다. 다만 자기 아이가 이 학교에 다니는 교사는 학부모로서 받는다 -- 학부모 범위
+  // (asGuardian)는 쓰기가 없다. 교직원 등록이 한 줄이라도 있으면(쉬는 중이어도) is_staff.
   const PUSH_CANDIDATES_SQL = `
-    SELECT u.* FROM classroom_users u
+    SELECT u.*, EXISTS (
+             SELECT 1 FROM classroom_teachers t
+             WHERE t.user_id = u.id
+                OR (t.google_email IS NOT NULL AND LOWER(t.google_email) = LOWER(u.email))
+           ) AS is_staff
+    FROM classroom_users u
     WHERE u.id IS DISTINCT FROM $2::BIGINT
       AND EXISTS (SELECT 1 FROM classroom_push_subscriptions p WHERE p.user_id = u.id)
-      AND NOT EXISTS (
-        SELECT 1 FROM classroom_teachers t
-        WHERE t.user_id = u.id
-           OR (t.google_email IS NOT NULL AND LOWER(t.google_email) = LOWER(u.email)))
       AND (
         $1::BIGINT IS NULL
         OR EXISTS (
@@ -6584,11 +6596,16 @@ function createClassroomPlatform(options = {}) {
       .catch((error) => console.error("Push notification job failed:", error));
   }
 
+  // visit(user, boards, viewQuery): 그 사람이 알림장에서 보는 게시판 목록과, 알림을 눌렀을 때
+  // 같은 목록이 뜨게 할 주소 꼬리. 교직원은 아이가 있을 때만, 학부모 범위로만 본다.
   async function forEachPushCandidate(schoolId, excludeUserId, visit) {
     const candidates = await pool.query(PUSH_CANDIDATES_SQL, [schoolId, excludeUserId]);
     for (const user of candidates.rows) {
       try {
-        await visit(user);
+        const staff = user.is_staff === true;
+        if (staff && (await getGuardianChildren(user)).length === 0) continue;
+        const boards = await classboardBoards(user, { asGuardian: staff });
+        await visit(user, boards, staff ? "&as=guardian" : "");
       } catch (error) {
         // 한 사람 명단이 꼬여도 나머지는 받아야 한다.
         console.error(`Push recipient check failed for user ${user.id}:`, error.message);
@@ -6607,13 +6624,13 @@ function createClassroomPlatform(options = {}) {
     if (!schoolId) return;
 
     const messages = new Map();
-    await forEachPushCandidate(schoolId, authorUserId, async (user) => {
-      const board = (await classboardBoards(user)).find(b => b.key === boardKey);
+    await forEachPushCandidate(schoolId, authorUserId, async (user, boards, viewQuery) => {
+      const board = boards.find(b => b.key === boardKey);
       if (!board) return;
       messages.set(String(user.id), {
         title: `알림장 · ${board.label}`,
         body: clipText(content, 120),
-        url: `/classboard/?board=${encodeURIComponent(boardKey)}`
+        url: `/classboard/?board=${encodeURIComponent(boardKey)}${viewQuery}`
       });
     });
     await webPush.sendToUsers(messages);
@@ -6621,11 +6638,11 @@ function createClassroomPlatform(options = {}) {
 
   async function notifyNotice(noticeId, schoolId, senderUserId, title, needsReply) {
     const messages = new Map();
-    await forEachPushCandidate(schoolId || null, senderUserId, async (user) => {
+    await forEachPushCandidate(schoolId || null, senderUserId, async (user, boards, viewQuery) => {
       // 가정통신문 칸은 아이마다 하나. 받는 아이의 칸만 고른다(알림장 안 읽은 수를
       // 세는 것과 같은 조건).
       const hits = [];
-      for (const board of (await classboardBoards(user)).filter(b => b.kind === "notice")) {
+      for (const board of boards.filter(b => b.kind === "notice")) {
         const c = board.child || {};
         const match = await pool.query(
           `SELECT 1 FROM classroom_notices n WHERE n.id = $5 AND ${NOTICE_TARGET_SQL}`,
@@ -6637,7 +6654,7 @@ function createClassroomPlatform(options = {}) {
       messages.set(String(user.id), {
         title: hits.length === 1 ? hits[0].label : `가정통신문 · ${hits.map(b => b.child.name).join(", ")}`,
         body: clipText(needsReply ? `${title} (회신 필요)` : title, 120),
-        url: `/classboard/?board=${encodeURIComponent(hits[0].key)}`
+        url: `/classboard/?board=${encodeURIComponent(hits[0].key)}${viewQuery}`
       });
     });
     await webPush.sendToUsers(messages);

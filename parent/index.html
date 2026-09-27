@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f4f6f8">
+    <title>학부모</title>
+    <link rel="manifest" href="/parent/manifest.json">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <style>
+        /* 알림장 계열과 같은 밝은 바탕. e알리미·학교종이처럼 흰 종이에 짙은 글씨. */
+        :root {
+            color-scheme: light;
+            --bg: #f4f6f8;
+            --card: #ffffff;
+            --line: #dde3e8;
+            --ink: #1c2329;
+            --muted: #5c6873;
+            --accent: #2563eb;
+            --accent-strong: #1d4fd8;
+            --accent-soft: #e8f0fe;
+            --danger: #d0342c;
+            --amber: #a35a00;
+            --amber-soft: #fff4e0;
+            --shadow: 0 1px 3px rgba(16, 24, 40, 0.08);
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: var(--bg);
+            color: var(--ink);
+            font-family: Pretendard, "Malgun Gothic", "Apple SD Gothic Neo", system-ui, sans-serif;
+            line-height: 1.5;
+        }
+
+        main {
+            width: min(100% - 32px, 760px);
+            margin: 0 auto;
+            padding: 10px 0 48px;
+        }
+
+        .top {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            min-height: 52px;
+        }
+
+        .top h1 {
+            margin: 0;
+            font-size: 1.2rem;
+            font-weight: 800;
+        }
+
+        .push-slot { margin-left: auto; }
+
+        .children {
+            margin: 4px 0 20px;
+            color: var(--muted);
+            font-size: 0.92rem;
+            font-weight: 600;
+        }
+
+        .tiles {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 12px;
+        }
+
+        .tile {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 14px;
+            min-height: 104px;
+            padding: 16px 18px;
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            background: var(--card);
+            box-shadow: var(--shadow);
+            color: var(--ink);
+            text-decoration: none;
+            transition: border-color 0.15s ease, transform 0.15s ease;
+        }
+
+        .tile:hover,
+        .tile:focus-visible {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .tile:focus-visible { outline: 3px solid var(--accent-soft); outline-offset: 2px; }
+
+        .tile-icon { font-size: 1.6rem; line-height: 1; }
+
+        .tile-name {
+            font-size: 1.05rem;
+            font-weight: 800;
+        }
+
+        /* 새 글 수, 회신할 것 수. 없으면 숨는다. */
+        .tile-marks {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            display: flex;
+            gap: 6px;
+        }
+
+        .mark {
+            min-width: 22px;
+            height: 22px;
+            padding: 0 7px;
+            border-radius: 999px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.78rem;
+            font-weight: 800;
+        }
+
+        .mark-new { background: var(--danger); color: #fff; }
+        .mark-reply { background: var(--amber-soft); color: var(--amber); }
+
+        /* 사이트 공통 뒤로 가기 단추(왼쪽 위 고정, 오른쪽 끝 50px)가 제목에 겹치는 좁은 화면에서만
+           그 자리를 비운다. 넓은 화면에서는 단추가 본문 바깥 왼쪽에 떠 있다. */
+        @media (max-width: 880px) {
+            .top, .children { padding-left: 50px; }
+        }
+
+        /* 알림 받기 단추. 알림장 화면의 것과 같은 모양. */
+        .push-toggle {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            height: 36px;
+            padding: 0 13px 0 10px;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            background: var(--card);
+            color: var(--ink);
+            font-family: inherit;
+            font-size: 0.88rem;
+            font-weight: 700;
+            cursor: pointer;
+        }
+        .push-toggle-icon { width: 18px; height: 18px; flex: none; color: var(--muted); }
+        .push-toggle:hover { border-color: var(--accent); }
+        .push-toggle.on { background: var(--accent-soft); border-color: var(--accent); color: var(--accent-strong); }
+        .push-toggle.on .push-toggle-icon { color: var(--accent-strong); }
+        .push-toggle:disabled { opacity: 0.6; cursor: wait; }
+    </style>
+</head>
+<body>
+    <main>
+        <header class="top">
+            <h1>학부모</h1>
+            <div class="push-slot" id="pushSlot"></div>
+        </header>
+        <p class="children" id="children"></p>
+
+        <nav class="tiles" aria-label="학부모 메뉴">
+            <a class="tile" id="tileBoard" href="/classboard/?as=guardian">
+                <span class="tile-icon" aria-hidden="true">📢</span>
+                <span class="tile-name">알림장</span>
+                <span class="tile-marks"></span>
+            </a>
+            <a class="tile" id="tileNotice" href="/classboard/?as=guardian">
+                <span class="tile-icon" aria-hidden="true">📬</span>
+                <span class="tile-name">가정통신문</span>
+                <span class="tile-marks"></span>
+            </a>
+            <a class="tile" href="/notice/#quick-absence">
+                <span class="tile-icon" aria-hidden="true">🙋</span>
+                <span class="tile-name">출결 알리기</span>
+            </a>
+            <a class="tile" href="/notice/#absence-note">
+                <span class="tile-icon" aria-hidden="true">📝</span>
+                <span class="tile-name">결석계</span>
+            </a>
+            <a class="tile" href="/notice/#exp-learning">
+                <span class="tile-icon" aria-hidden="true">🚌</span>
+                <span class="tile-name">체험학습</span>
+            </a>
+            <a class="tile" href="/notice/#my-submissions">
+                <span class="tile-icon" aria-hidden="true">📂</span>
+                <span class="tile-name">낸 서류</span>
+            </a>
+            <a class="tile" href="/notice/#signature">
+                <span class="tile-icon" aria-hidden="true">✍️</span>
+                <span class="tile-name">내 서명</span>
+            </a>
+        </nav>
+    </main>
+
+    <script src="/classboard/notice-card.js?v=3"></script>
+    <script src="/classboard/push-toggle.js?v=1"></script>
+    <script src="app.js?v=1"></script>
+</body>
+</html>

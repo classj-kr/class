@@ -3,13 +3,14 @@
 // 이 앱은 화면마다 서버에 물어봐야 하는 것뿐이라 오프라인으로 쓸 수는 없다.
 // 그래도 껍데기를 캐시에 넣어 두면, 지하철에서 앱을 열었을 때 흰 화면 대신
 // 최소한 틀이라도 뜬다. 늘 서버 것을 먼저 쓰고 실패할 때만 캐시를 꺼낸다.
-const CACHE_NAME = 'classboard-v2';
+const CACHE_NAME = 'classboard-v3';
 const SHELL = [
   '/classboard/',
   '/classboard/index.html',
   '/classboard/style.css',
   '/classboard/app.js',
   '/classboard/notice-card.js',
+  '/classboard/push-toggle.js',
   '/classboard/manifest.json',
   '/favicon.png'
 ];
