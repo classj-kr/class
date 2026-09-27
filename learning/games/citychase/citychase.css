@@ -580,13 +580,124 @@ button.building { cursor: pointer; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; }
 }
 
-.gameShell{height:100dvh;min-height:560px;display:flex;flex-direction:column}
-.gameShell.hidden{display:none}
-.gameHeader{flex-shrink:0}
-.gameLayout{flex:1;min-height:0;height:auto}
-.boardPanel{min-height:0;aspect-ratio:auto}
-.boardViewport{container-type:size;min-height:0}
-.boardStage{width:min(100cqw,100cqh);height:auto;aspect-ratio:1}
-@media(orientation:portrait){.gameLayout{grid-template-rows:minmax(0,1fr) 280px}.boardPanel{height:100%;aspect-ratio:auto}.controlPanel{min-height:0;overflow:auto}.boardStage{width:min(100cqw,100cqh)}}
+/* Keep the board and current actions in the viewport; secondary information can fold. */
+.gameShell { height: 100dvh; min-height: 0; display: flex; flex-direction: column; overflow: hidden; gap: 4px; }
+.gameHeader { flex-shrink: 0; margin-bottom: 0; }
+.gameLayout { flex: 1; min-height: 0; height: auto; grid-template-columns: minmax(0, 1fr) 264px; grid-template-rows: minmax(0, 1fr); gap: 6px; }
+.boardPanel { min-height: 0; height: 100%; aspect-ratio: auto; display: block; }
+.boardViewport { min-height: 0; display: block; overflow: auto; touch-action: pan-x pan-y; scrollbar-width: thin; }
+.boardStage { container-type: inline-size; margin-inline: auto; max-width: none; }
+.boardTools { position: absolute; z-index: 25; top: 7px; left: 7px; display: flex; gap: 3px; padding: 3px; border: 1px solid #52665b; border-radius: 10px; background: #fffdf7f5; box-shadow: 0 2px 6px #17253633; }
+.boardTools button { min-width: 36px; height: 36px; padding: 0 9px; border: 0; border-radius: 7px; background: #e8eee7; color: var(--ink); font-size: 17px; font-weight: 900; cursor: pointer; }
+.boardTools #boardZoomReset { font-size: 12px; }
+.boardTools button:disabled { opacity: .4; }
+.controlPanel { min-height: 0; display: block; padding: 7px; overflow: auto; }
+#gameInfoDetails > summary { display: none; }
+.gameInfoBody { min-width: 0; }
+.gameInfoBody .sideCard { padding: 9px; }
+.gameInfoBody .sideCard:last-child { margin-bottom: 0; }
 
-.boardStage .node[data-start]{width:min(94px,14cqw,14cqh)}
+.boardStage .node { width: clamp(12px, 2.7cqw, 27px); height: clamp(10px, 2.1cqw, 21px); }
+.boardStage .node::after { inset: -4px; }
+.boardStage .node.special { width: clamp(21px, 3.3cqw, 33px); height: clamp(20px, 2.8cqw, 28px); font-size: clamp(10px, 1.6cqw, 14px); font-weight: 950; white-space: nowrap; cursor: pointer; }
+.boardStage .node[data-station] { width: clamp(25px, 4cqw, 38px); height: clamp(30px, 4.8cqw, 44px); display: grid; align-content: center; line-height: 1; gap: 2px; }
+.node[data-station] small { font-size: 10px; font-weight: 800; }
+.boardStage .node[data-kind="building"] { width: clamp(27px, 4.8cqw, 44px); height: clamp(21px, 3cqw, 28px); font-size: 10px; border-width: 2px; cursor: pointer; }
+.boardStage .node[data-start] { width: clamp(29px, 4.4cqw, 42px); height: clamp(29px, 4.4cqw, 42px); padding: 0; font-size: 24px; }
+.boardStage .node[data-start]::before { display: none; }
+.boardStage .node.valid, .boardStage .node.cardTarget, .boardStage .node.pendingTarget { width: clamp(25px, 4cqw, 38px); height: clamp(25px, 4cqw, 38px); box-shadow: 0 0 0 4px #ffdf55c9, 0 3px 0 #203246; }
+.boardStage .node.cardTarget { box-shadow: 0 0 0 4px #ef5f78b8, 0 3px 0 #203246; }
+.boardStage .node.cardDirection { box-shadow: 0 0 0 4px #7c62d4b8, 0 3px 0 #203246; }
+.boardStage .node.pendingTarget { box-shadow: 0 0 0 4px #4ebf8fb8, 0 3px 0 #203246; }
+.boardStage .pawn { width: clamp(29px, 5cqw, 48px); height: clamp(29px, 5cqw, 48px); border-width: 3px; pointer-events: auto; cursor: pointer; }
+.boardStage .pawn.moving { pointer-events: none; }
+.pawn.mixed { background: linear-gradient(135deg, var(--thief) 0 50%, var(--police) 50%); }
+.pawn.current { animation: none; box-shadow: 0 0 0 2px #fff, 0 0 0 5px #f6bd3c, 0 3px 0 #172536; }
+.pawnFaces { inset: 2px; border-width: 1px; }
+.pawnNumber { right: -5px; bottom: -5px; width: 19px; height: 19px; font-size: 11px; }
+.pawnGroupCount { position: absolute; z-index: 5; top: -12px; right: -13px; padding: 2px 5px; border: 1px solid var(--line); border-radius: 10px; background: #fff; color: var(--ink); font-size: 11px; line-height: 1.1; white-space: nowrap; }
+.pawn.carrying::after { width: 22px; height: 22px; left: -12px; top: -10px; }
+.building { width: clamp(43px, 9cqw, 90px); height: clamp(44px, 9.4cqw, 94px); }
+.buildingName { bottom: 10px; padding: 2px 4px; font-size: clamp(10px, 1.5cqw, 13px); }
+.roundZoneCaption { top: 68%; }
+.buildingIcon { width: 19px; height: 19px; font-size: 10px; left: 0; }
+.buildingKnowledge { min-width: 20px; height: 20px; right: -3px; top: -5px; padding: 0 2px; }
+.buildingKnowledge .secretIcon { width: 16px; height: 16px; }
+.buildingStatus { font-size: 10px; bottom: -22px; }
+.boardCard { width: clamp(18px, 3cqw, 30px); height: clamp(18px, 3cqw, 30px); font-size: clamp(10px, 1.5cqw, 15px); }
+
+.boardInspector { position: absolute; z-index: 30; left: 8px; right: 8px; bottom: 8px; max-height: min(75%, 360px); overflow: auto; padding: 10px; border: 2px solid var(--line); border-radius: 13px; background: #fffdf7; box-shadow: 0 4px 20px #132a2855; }
+.boardInspector > .row { flex-wrap: nowrap; }
+.boardInspector .iconButton { flex: 0 0 36px; width: 36px; min-height: 36px; font-size: 22px; }
+.boardInspector p { margin: 4px 0 8px; color: #43544c; font-size: 13px; line-height: 1.45; }
+.inspectorPawns { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 5px; }
+.inspectorPawn { display: flex; align-items: center; gap: 9px; min-height: 48px; padding: 5px 8px; border: 2px solid #b4c1b8; border-left: 5px solid var(--police); border-radius: 9px; background: #eff6fd; color: var(--ink); text-align: left; }
+.inspectorPawn.thief { border-left-color: var(--thief); background: #fff0f2; }
+button.inspectorPawn { cursor: pointer; }
+.inspectorPawn .pawnFaces { position: static; flex: 0 0 34px; width: 34px; height: 34px; }
+.inspectorPawn strong { font-size: 14px; overflow-wrap: anywhere; }
+.inspectorPawn small { display: block; margin-top: 2px; font-size: 12px; }
+.inspectorPawn b { margin-left: auto; white-space: nowrap; font-size: 13px; }
+#boardInspectorActions:not(:empty) { margin-top: 8px; }
+#boardInspectorActions .teamAction { min-height: 44px; }
+
+.actionDock { flex-shrink: 0; display: grid; grid-template-columns: minmax(180px, .28fr) minmax(0, 1fr); align-items: center; gap: 10px; padding: 8px 10px; border: 2px solid var(--line); border-radius: 13px; background: #fffdf7; }
+.actionDock:not(:has(> section:not(.hidden))) { display: none; }
+.actionDock .sideCard { margin: 0; padding: 0; border: 0; background: transparent; box-shadow: none; min-width: 0; }
+.actionDock .turnCard h3 { font-size: 13px; margin: 0 0 4px; }
+.actionDock #turnMessage, .actionDock #movementHint { display: none; }
+.actionDock .dieLine { margin: 0; gap: 8px; }
+.actionDock .die { width: 40px; height: 40px; font-size: 23px; border-width: 2px; border-radius: 9px; box-shadow: none; }
+.actionDock .dieMeta strong { font-size: 14px; }
+.actionDock .actionStack { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.actionDock .teamAction { width: auto; flex: 1 1 auto; min-height: 44px; padding: 8px 12px; font-size: 14px; box-shadow: none; }
+.actionDock .actionHint { font-size: 12px; text-align: left; margin-top: 5px; }
+.actionDock .actionStack > .actionHint { display: none; }
+.actionDock .setupTools { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 5px 12px; }
+.actionDock .setupTools h3 { margin: 0; font-size: 15px; }
+.actionDock .setupTools p { margin: 0; font-size: 12px; }
+.actionDock .secretTabs { grid-column: 1; display: flex; gap: 6px; margin: 0; }
+.actionDock .secretTab { flex: 1; min-height: 44px; }
+.actionDock .setupSummary { grid-column: 1; display: flex; gap: 10px; flex-wrap: wrap; margin: 0; font-size: 11px; }
+.actionDock #confirmSetupBtn { grid-column: 2; grid-row: 2 / 5; align-self: center; }
+.toast { bottom: 110px; }
+
+@media (max-width: 900px), (orientation: portrait) {
+  .gameLayout { grid-template-columns: 1fr; grid-template-rows: minmax(0, 1fr) auto; gap: 4px; }
+  .controlPanel { padding: 0; overflow: visible; border-radius: 10px; }
+  #gameInfoDetails > summary { display: flex; align-items: center; gap: 8px; min-height: 38px; padding: 6px 10px; font-size: 12px; font-weight: 850; cursor: pointer; }
+  #gameInfoDetails > summary::before { content: "▸"; }
+  #gameInfoDetails[open] > summary::before { content: "▾"; }
+  #compactProgress { margin-left: auto; }
+  .gameInfoBody { max-height: 28dvh; overflow: auto; padding: 6px; }
+  .actionDock { grid-template-columns: minmax(0, 1fr); gap: 5px; padding: 6px 8px; }
+  .actionDock .turnCard { display: flex; align-items: center; gap: 12px; }
+  .actionDock .die { width: 30px; height: 30px; font-size: 19px; }
+  .actionDock .actionStack { flex-wrap: nowrap; }
+  .actionDock .actionStack .teamAction { flex: 1; min-width: 0; }
+  .actionDock .turnCard h3 { font-size: 11px; }
+  .actionDock .teamAction { font-size: 12px; padding: 6px; }
+  .actionDock .dieMeta strong { font-size: 12px; }
+  .actionDock .actionHint { font-size: 11px; margin-top: 3px; }
+  .miniBrand small, .roomMini { display: none; }
+  .actionDock .setupTools { grid-template-columns: minmax(0, 1fr) auto; gap: 4px 7px; }
+  .actionDock .setupTools p { grid-column: 1 / -1; }
+  .actionDock .secretTab { font-size: 11px; padding: 3px; }
+  .actionDock .secretTabIcon { width: 20px; height: 20px; }
+  .actionDock .setupSummary { gap: 4px; font-size: 10px; }
+  .actionDock #confirmSetupBtn { grid-row: 3 / 5; padding: 8px; font-size: 12px; }
+}
+
+@media (max-width: 900px) and (orientation: landscape) {
+  .gameShell { display: grid; grid-template-columns: minmax(0, 1fr) 214px; grid-template-rows: 48px minmax(0, 1fr); }
+  .gameHeader { grid-column: 1 / -1; }
+  .gameLayout { grid-column: 1; grid-row: 2; }
+  .actionDock { grid-column: 2; grid-row: 2; display: flex; flex-direction: column; justify-content: center; align-items: stretch; }
+  .actionDock .actionStack { flex-direction: column; align-items: stretch; }
+  .actionDock .turnCard { display: block; }
+  .actionDock .setupTools { display: flex; flex-direction: column; }
+  .actionDock .secretTabs { flex-wrap: wrap; }
+  .actionDock .secretTab { min-width: 44px; }
+  .actionDock #confirmSetupBtn { align-self: stretch; }
+  .actionDock .setupSummary { display: none; }
+}

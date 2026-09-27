@@ -4,6 +4,7 @@ const fs = require("fs");
 const path = require("path");
 const { OAuth2Client } = require("google-auth-library");
 const { Pool } = require("pg");
+const { attendanceEventSchema, createAttendanceEventHub } = require("./attendance-events");
 const { createReadingBank } = require("./reading-bank");
 const { createMetacognition } = require("./metacognition");
 const { createVoting } = require("./voting");
@@ -292,6 +293,7 @@ function createClassroomPlatform(options = {}) {
   const museumPresenceSecret = crypto.randomBytes(32);
   const guestAccessSecret = crypto.randomBytes(32);
   const router = express.Router();
+  const attendanceEvents = pool ? createAttendanceEventHub(pool) : null;
   const authFailureLimiter = createAuthenticationFailureLimiter();
   const getStudentCharacterStyle = createStudentCharacterStyleResolver({ pool, sessionUser });
   let databaseReady = false;
@@ -1329,6 +1331,7 @@ function createClassroomPlatform(options = {}) {
 
     try {
       for (const statement of statements) await pool.query(statement);
+      for (const statement of attendanceEventSchema) await pool.query(statement);
       await pool.query("DELETE FROM classroom_sessions WHERE expires_at <= NOW()");
       await pool.query("DELETE FROM privacy_requests WHERE created_at < NOW() - INTERVAL '1 year'");
       await pool.query("DELETE FROM multiplayer_room_snapshots WHERE expires_at <= NOW()");
@@ -5068,6 +5071,118 @@ function createClassroomPlatform(options = {}) {
         expectedDate: r.expected_date,
         reason: r.reason,
         createdAt: r.created_at
+      }))
+    });
+  }));
+
+
+  router.get("/teacher/class-attendance/events", asyncRoute(async (req, res) => {
+    const teacher = await requireTeacher(req);
+    const classId = Number(req.query.classId);
+    if (!Number.isSafeInteger(classId) || classId < 1) {
+      throw new HttpError(400, "INVALID_CLASS", "학급을 선택하세요.");
+    }
+    const result = await pool.query(
+      `SELECT c.school_id, c.grade, c.class_number
+       FROM classroom_classes c
+       JOIN classroom_schools sc ON sc.id = c.school_id AND sc.enabled = TRUE
+       WHERE c.id = $1 AND EXISTS (
+         SELECT 1 FROM classroom_teachers t
+         WHERE t.school_id = c.school_id AND t.user_id = $2 AND t.active = TRUE
+       )`,
+      [classId, teacher.id]
+    );
+    const classroom = result.rows[0];
+    if (!classroom) throw new HttpError(403, "CLASS_ACCESS_REQUIRED", "학급을 조회할 권한이 없습니다.");
+    let unsubscribe;
+    let heartbeat;
+    let expiry;
+    let closed = false;
+    const cleanup = () => {
+      closed = true;
+      clearInterval(heartbeat);
+      clearTimeout(expiry);
+      unsubscribe?.();
+    };
+    res.on("close", cleanup);
+    unsubscribe = await attendanceEvents.subscribe({
+      schoolId: classroom.school_id, grade: classroom.grade, classNumber: classroom.class_number
+    }, event => {
+      if (!closed && !res.write("event: attendance\ndata: " + JSON.stringify(event) + "\n\n")) {
+        cleanup();
+        res.end();
+      }
+    }, () => { cleanup(); res.end(); });
+    if (closed || res.destroyed) { cleanup(); return; }
+    res.set({
+      "Content-Type": "text/event-stream",
+      "Cache-Control": "no-cache, no-transform",
+      "Connection": "keep-alive",
+      "X-Accel-Buffering": "no"
+    });
+    res.flushHeaders();
+    res.write('retry: 5000\nevent: ready\ndata: {}\n\n');
+    // Keep-alive comments do not query attendance. Reopen periodically to recheck authorization.
+    heartbeat = setInterval(() => {
+      if (!res.write(": keep-alive\n\n")) { cleanup(); res.end(); }
+    }, 25000);
+    expiry = setTimeout(() => { cleanup(); res.end(); }, 10 * 60 * 1000);
+    heartbeat.unref?.();
+    expiry.unref?.();
+  }));
+
+  // Today's badges for the selected class; no private reasons or historical inbox limit.
+  router.get("/teacher/class-attendance", asyncRoute(async (req, res) => {
+    const teacher = await requireTeacher(req);
+    const classId = Number(req.query.classId);
+    if (!Number.isSafeInteger(classId) || classId < 1) {
+      throw new HttpError(400, "INVALID_CLASS", "학급을 선택하세요.");
+    }
+    const classResult = await pool.query(
+      `SELECT c.school_id, c.grade, c.class_number,
+              TO_CHAR(NOW() AT TIME ZONE 'Asia/Seoul', 'YYYY-MM-DD') AS today
+       FROM classroom_classes c
+       JOIN classroom_schools sc ON sc.id = c.school_id AND sc.enabled = TRUE
+       WHERE c.id = $1 AND EXISTS (
+         SELECT 1 FROM classroom_teachers t
+         WHERE t.school_id = c.school_id AND t.user_id = $2 AND t.active = TRUE
+       )`,
+      [classId, teacher.id]
+    );
+    const classroom = classResult.rows[0];
+    if (!classroom) throw new HttpError(403, "CLASS_ACCESS_REQUIRED", "학급을 조회할 권한이 없습니다.");
+    const result = await pool.query(
+      `SELECT DISTINCT student_number::TEXT AS student_number, notice_type, source
+       FROM (
+         SELECT student_number, notice_type, '학부모 출결 알림' AS source
+         FROM classroom_absence_notices
+         WHERE school_id = $1 AND grade = $2 AND class_number = $3
+           AND expected_date = $4::DATE AND notice_type IN ('결석', '지각', '조퇴')
+         UNION ALL
+         SELECT student_number,
+                CASE WHEN reason_type LIKE '%지각%' THEN '지각'
+                     WHEN reason_type LIKE '%조퇴%' THEN '조퇴' ELSE '결석' END,
+                '승인된 결석계'
+         FROM classroom_absence_notes
+         WHERE school_id = $1 AND grade = $2 AND class_number = $3
+           AND status = 'approved' AND $4::DATE BETWEEN start_date AND end_date
+         UNION ALL
+         SELECT student_number, '체험학습', '승인된 체험학습'
+         FROM classroom_experiential_apps
+         WHERE school_id = $1 AND grade = $2 AND class_number = $3
+           AND status = 'approved' AND $4::DATE BETWEEN start_date AND end_date
+       ) today_notices
+       ORDER BY student_number, notice_type, source`,
+      [classroom.school_id, classroom.grade, classroom.class_number, classroom.today]
+    );
+    res.set("Cache-Control", "no-store");
+    res.json({
+      date: classroom.today,
+      classId,
+      alerts: result.rows.map(row => ({
+        studentNumber: row.student_number,
+        noticeType: row.notice_type,
+        source: row.source
       }))
     });
   }));

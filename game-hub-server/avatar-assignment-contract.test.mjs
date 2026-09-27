@@ -24,7 +24,7 @@ const sandbox = {
   clearTimeout,
   require(specifier) {
     if (["crypto", "fs", "path"].includes(specifier)) return nodeRequire(`node:${specifier}`);
-    if (specifier === "./student-character-style") return nodeRequire(specifier);
+    if (["./student-character-style", "./attendance-events"].includes(specifier)) return nodeRequire(specifier);
     if (specifier === "express") return {};
     if (specifier === "google-auth-library") return { OAuth2Client: class {} };
     if (specifier === "pg") return { Pool: class {} };
