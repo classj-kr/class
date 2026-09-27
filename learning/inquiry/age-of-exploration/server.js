@@ -2054,7 +2054,18 @@ io.on('connection', (socket) => {
     const current = playerForSocket(socket);
     if (current && current.resumeToken === token) return ack(joinedVoyagerState(current, teachers.get(socket.id) === current.roomCode));
     if (current) return ack({ok:false, error:'현재 접속과 일치하지 않는 복구 요청입니다.'});
-    const session = disconnectedVoyagers.get(token);
+    // The client can reconnect before the old transport's disconnect/timeout.
+    // Recover by the private token from either live or disconnected state.
+    let session = disconnectedVoyagers.get(token);
+    if (!session && token) {
+      for (const room of rooms.values()) {
+        const player = [...room.values()].find(p => p.resumeToken === token);
+        if (player) {
+          session = {player, host:teachers.get(player.id) === player.roomCode, expiresAt:Infinity};
+          break;
+        }
+      }
+    }
     if (!session || session.expiresAt <= Date.now()) return ack({ok:false, error:'연결 복구 시간이 지났습니다. 방에 다시 입장하세요.'});
     const player = session.player, roomCode = player.roomCode;
     if (!roomExists(roomCode) || (store.room(roomCode).activeMission?.id || null) !== player.activeMissionId) {
@@ -2062,13 +2073,25 @@ io.on('connection', (socket) => {
       return ack({ok:false, error:'방이나 미션이 변경되었습니다. 다시 입장하세요.'});
     }
     let room = rooms.get(roomCode);
-    if (room && (room.size >= MAX_ROOM_PLAYERS || [...room.values()].some(p => p.name === player.name))) return ack({ok:false, error:'같은 이름으로 이미 접속 중이거나 방이 가득 찼습니다.'});
+    if (room && ((!room.has(player.id) && room.size >= MAX_ROOM_PLAYERS) || [...room.values()].some(p => p !== player && p.name === player.name))) return ack({ok:false, error:'같은 이름으로 이미 접속 중이거나 방이 가득 찼습니다.'});
     if (!room) { room = new Map(); rooms.set(roomCode, room); if (isFreeRoom(roomCode)) clockForRoom(roomCode).baseServerMs = Date.now(); }
+    const previousId = player.id;
+    const previousSocket = io.sockets.sockets.get(previousId);
+    releaseTeacherClock(previousId);
+    teachers.delete(previousId);
+    room.delete(previousId);
+    if (previousSocket) {
+      // Detach first: its delayed disconnect must not save/remove the new session.
+      previousSocket.data.roomCode = null;
+      previousSocket.leave(`class:${roomCode}`);
+      previousSocket.leave(`teacher:${roomCode}`);
+    }
     player.id = socket.id; player.lastSeen = Date.now(); player.lastInputAt = Date.now(); stopPlayer(player);
     room.set(socket.id, player); socket.data.roomCode = roomCode; socket.data.sessionMode = 'competition';
     socket.join(`class:${roomCode}`);
     if (session.host) becomeHost(socket, roomCode);
     disconnectedVoyagers.delete(token); touchRoom(roomCode);
+    previousSocket?.disconnect(true);
     ack(joinedVoyagerState(player, session.host));
   });
   socket.on('joinClass', (payload, ack = () => {}) => {

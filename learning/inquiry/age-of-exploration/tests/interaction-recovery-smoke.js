@@ -37,13 +37,31 @@ process.on('message',message=>{try{
    const caspian=await place({lat:40.90,lon:52.87});assert.equal(caspian.state.discoveryInteraction?.id,'caspian-sea');assert.equal(caspian.state.discoveryInteraction.canUse,true);assert.ok(caspian.state.discoveryInteraction.markerPoint);assert.equal((await ack(socket,'inspectDiscovery',{id:'caspian-sea'})).ok,true);
    await place({lat:40.9,lon:57});assert.equal((await ack(socket,'inspectDiscovery',{id:'caspian-sea'})).ok,false,'remote inspection must be rejected by the server');
    const anchor=await place({lat:-1.64,lon:-48.99,anchor:true});assert.equal(anchor.state.portInteraction?.kind,'shore','standing by the visible ship must permit reboarding even away from the original landing point');
-   const before=anchor.player;socket.disconnect();await delay(150);const reconnected=once(socket,'connect');socket.connect();await reconnected;
+   const before=anchor.player;
+   // A new transport may connect before the server times out the old transport.
+   const previous=socket;
+   attacker=io(base,{autoConnect:false,transports:['polling'],reconnection:false});
+   const replacementConnected=once(attacker,'connect');attacker.connect();await replacementConnected;
+   assert.equal((await ack(attacker,'resumeVoyager',{resumeToken:'wrong-token'})).ok,false);
+   const replaced=await ack(attacker,'resumeVoyager',{resumeToken:joined.resumeToken});
+   assert.equal(replaced.ok,true,'reconnect before old disconnect must preserve the voyage: '+replaced.error);
+   assert.equal(replaced.isHost,true);
+   for(const key of ['x','y','mode','shipAnchorX','shipAnchorY','shipAnchorDir'])assert.equal(replaced.self[key],before[key],key);
+   socket=attacker;attacker=previous;previous.disconnect();await delay(150);
+   const afterReplacement=await once(socket,'snapshot');assert.equal(afterReplacement.online,1,'only the replacement remains in the room');
+   assert.equal((await ack(socket,'hostStartFree')).ok,true,'host authority survives takeover and old disconnect');
+   assert.equal((await ack(socket,'resumeVoyager',{resumeToken:joined.resumeToken})).ok,true,'resume is idempotent');
+   socket.disconnect();await delay(150);const reconnected=once(socket,'connect');socket.connect();await reconnected;
    const rejected=await ack(socket,'resumeVoyager',{resumeToken:'wrong-token'});assert.equal(rejected.ok,false);
    const resumed=await ack(socket,'resumeVoyager',{resumeToken:joined.resumeToken});assert.equal(resumed.ok,true,resumed.error);assert.equal(resumed.isHost,true);for(const key of ['x','y','mode','shipAnchorX','shipAnchorY','shipAnchorDir'])assert.equal(resumed.self[key],before[key],key);
    const snapshot=await once(socket,'snapshot');assert.equal(snapshot.portInteraction?.kind,'shore');assert.equal(snapshot.you.resumeToken,undefined,'private recovery token must not appear in snapshots');
    const embark=await ack(socket,'useShoreTransfer');assert.equal(embark.ok,true,embark.error);const atSea=await once(socket,'snapshot',s=>s.you.mode==='sea'&&!s.you.transition);assert.ok(Math.abs(atSea.you.x-before.shipAnchorX)<0.1);assert.ok(Math.abs(atSea.you.y-before.shipAnchorY)<0.1);
    const city=await place({lat:-8.20,lon:-78.97});assert.equal(city.state.cityInteraction?.placeName,'찬찬');const entered=await ack(socket,'enterCity',{placeId:city.state.cityInteraction.placeId});assert.equal(entered.ok,true,entered.error);assert.equal(entered.self.mode,'city');
    socket.disconnect();await delay(100);const again=once(socket,'connect');socket.connect();await again;const resumedCity=await ack(socket,'resumeVoyager',{resumeToken:joined.resumeToken});assert.equal(resumedCity.self.currentCityId,entered.self.currentCityId);assert.equal(resumedCity.self.mode,'city');assert.equal((await ack(socket,'leaveCity')).ok,true);
-   console.log(JSON.stringify({ok:true,amazonOnLand:true,caspianFromShore:true,remoteDiscoveryRejected:true,reboardByShip:true,reconnectKeepsPositionAndShip:true,hostRestored:true,chanChanEntry:true,cityReconnect:true}));
+   const sea=await place({mode:'sea',city:'리스본',fatigue:0});
+   socket.emit('input',{left:true});
+   const moving=await once(socket,'snapshot',s=>s.you.moving&&Math.hypot(s.you.x-sea.player.x,s.you.y-sea.player.y)>0.1);
+   assert.ok(moving.you.speedKmh>0,'ship must move after recovery');socket.emit('input',{});
+   console.log(JSON.stringify({ok:true,reconnectBeforeDisconnect:true,movementAfterRecovery:true,amazonOnLand:true,caspianFromShore:true,remoteDiscoveryRejected:true,reboardByShip:true,reconnectKeepsPositionAndShip:true,hostRestored:true,chanChanEntry:true,cityReconnect:true}));
  }finally{socket?.disconnect();attacker?.disconnect();server.kill()}})().catch(e=>{console.error(e);console.error(logs);process.exitCode=1});
 }
