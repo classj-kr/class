@@ -11,6 +11,8 @@ const { createVoting } = require("./voting");
 const { createSchoolElection } = require("./school-election");
 const { createSeating } = require("./seating");
 const { createStudentCharacterStyleResolver } = require("./student-character-style");
+const { pushSchema, createWebPush, clipText } = require("./web-push");
+const { CANONICAL_ORIGIN } = require("./canonical-host");
 
 const SESSION_COOKIE = "class_session";
 const GUEST_ACCESS_COOKIE = "class_guest_access";
@@ -294,6 +296,7 @@ function createClassroomPlatform(options = {}) {
   const guestAccessSecret = crypto.randomBytes(32);
   const router = express.Router();
   const attendanceEvents = pool ? createAttendanceEventHub(pool) : null;
+  const webPush = pool ? createWebPush({ pool, subject: CANONICAL_ORIGIN }) : null;
   const authFailureLimiter = createAuthenticationFailureLimiter();
   const getStudentCharacterStyle = createStudentCharacterStyleResolver({ pool, sessionUser });
   let databaseReady = false;
@@ -1332,6 +1335,7 @@ function createClassroomPlatform(options = {}) {
     try {
       for (const statement of statements) await pool.query(statement);
       for (const statement of attendanceEventSchema) await pool.query(statement);
+      for (const statement of pushSchema) await pool.query(statement);
       await pool.query("DELETE FROM classroom_sessions WHERE expires_at <= NOW()");
       await pool.query("DELETE FROM privacy_requests WHERE created_at < NOW() - INTERVAL '1 year'");
       await pool.query("DELETE FROM multiplayer_room_snapshots WHERE expires_at <= NOW()");
@@ -4307,6 +4311,8 @@ function createClassroomPlatform(options = {}) {
       questionCount: questions.length,
       recipientCount
     });
+    const needsReply = storedReplyType !== "none" || questions.length > 0;
+    queuePush(() => notifyNotice(noticeId, schoolId, teacher.id, title, needsReply));
   }));
 
   // ── General School Events (일반 행사) ──
@@ -6422,6 +6428,7 @@ function createClassroomPlatform(options = {}) {
       ]
     );
     res.json({ ok: true, id: String(result.rows[0].id), board: target.key });
+    queuePush(() => notifyClassboardPost(target.key, user.id, content));
   }));
 
   router.delete("/classboard/posts/:postId", asyncRoute(async (req, res) => {
@@ -6526,6 +6533,135 @@ function createClassroomPlatform(options = {}) {
     if (result.rowCount === 0) {
       throw new HttpError(403, "NOT_ALLOWED", "삭제 권한이 없습니다.");
     }
+    res.json({ ok: true });
+  }));
+
+  // ── 휴대폰 알림 ──
+  //
+  // 알림장에 새 글이, 또는 새 가정통신문이 오면 그걸 볼 수 있는 학생·보호자에게
+  // 알린다. 누가 볼 수 있는지는 알림장 게시판 목록을 만드는 규칙(classboardBoards)을
+  // 그대로 쓴다. 여기 한 번 더 적으면 언젠가 둘이 어긋나, 못 보는 글의 알림이 가거나
+  // 보는 사람이 못 받는다. 아래 SQL 은 그 규칙을 돌려 볼 사람을 같은 학교로 좁힐 뿐이다.
+  //
+  // 교사는 받지 않는다. 알림장을 쓰는 쪽이고, 교사 계정으로 게시판 목록을 만들면
+  // 학급 행을 맞춰 두는 쓰기(userClassId)가 함께 돌아서 남의 글 올리는 길에 부를 수
+  // 없다. 교직원 등록이 한 줄이라도 있으면(쉬는 중이어도) 뺀다.
+  const PUSH_CANDIDATES_SQL = `
+    SELECT u.* FROM classroom_users u
+    WHERE u.id IS DISTINCT FROM $2::BIGINT
+      AND EXISTS (SELECT 1 FROM classroom_push_subscriptions p WHERE p.user_id = u.id)
+      AND NOT EXISTS (
+        SELECT 1 FROM classroom_teachers t
+        WHERE t.user_id = u.id
+           OR (t.google_email IS NOT NULL AND LOWER(t.google_email) = LOWER(u.email)))
+      AND (
+        $1::BIGINT IS NULL
+        OR EXISTS (
+          SELECT 1 FROM school_students s
+          WHERE s.school_id = $1::BIGINT
+            AND (s.user_id = u.id
+                 OR LOWER(s.student_email) = LOWER(u.email)
+                 OR LOWER(s.guardian1_email) = LOWER(u.email)
+                 OR LOWER(s.guardian2_email) = LOWER(u.email)))
+        OR EXISTS (
+          SELECT 1 FROM classroom_students s
+          JOIN classroom_classes c ON c.id = s.class_id
+          WHERE c.school_id = $1::BIGINT
+            AND (s.user_id = u.id
+                 OR LOWER(s.student_email) = LOWER(u.email)
+                 OR LOWER(s.guardian1_email) = LOWER(u.email)
+                 OR LOWER(s.guardian2_email) = LOWER(u.email)))
+      )`;
+
+  // 알림 보내기는 응답을 붙잡지 않는다. 글은 이미 올라갔고, 알림은 뒤에서 차례로 간다.
+  // 한 줄로 세워 두는 까닭: 데이터베이스 연결이 다섯 개뿐이라 한꺼번에 몰리면 다른
+  // 화면이 기다린다.
+  let pushChain = Promise.resolve();
+  function queuePush(job) {
+    if (!webPush) return;
+    pushChain = pushChain
+      .then(job)
+      .catch((error) => console.error("Push notification job failed:", error));
+  }
+
+  async function forEachPushCandidate(schoolId, excludeUserId, visit) {
+    const candidates = await pool.query(PUSH_CANDIDATES_SQL, [schoolId, excludeUserId]);
+    for (const user of candidates.rows) {
+      try {
+        await visit(user);
+      } catch (error) {
+        // 한 사람 명단이 꼬여도 나머지는 받아야 한다.
+        console.error(`Push recipient check failed for user ${user.id}:`, error.message);
+      }
+    }
+  }
+
+  async function notifyClassboardPost(boardKey, authorUserId, content) {
+    const [kind, id] = String(boardKey).split(":");
+    const schoolRes = kind === "class"
+      ? await pool.query("SELECT school_id FROM classroom_classes WHERE id = $1", [id])
+      : kind === "group"
+        ? await pool.query("SELECT school_id FROM teacher_groups WHERE id = $1", [id])
+        : { rows: [] };
+    const schoolId = schoolRes.rows[0]?.school_id;
+    if (!schoolId) return;
+
+    const messages = new Map();
+    await forEachPushCandidate(schoolId, authorUserId, async (user) => {
+      const board = (await classboardBoards(user)).find(b => b.key === boardKey);
+      if (!board) return;
+      messages.set(String(user.id), {
+        title: `알림장 · ${board.label}`,
+        body: clipText(content, 120),
+        url: `/classboard/?board=${encodeURIComponent(boardKey)}`
+      });
+    });
+    await webPush.sendToUsers(messages);
+  }
+
+  async function notifyNotice(noticeId, schoolId, senderUserId, title, needsReply) {
+    const messages = new Map();
+    await forEachPushCandidate(schoolId || null, senderUserId, async (user) => {
+      // 가정통신문 칸은 아이마다 하나. 받는 아이의 칸만 고른다(알림장 안 읽은 수를
+      // 세는 것과 같은 조건).
+      const hits = [];
+      for (const board of (await classboardBoards(user)).filter(b => b.kind === "notice")) {
+        const c = board.child || {};
+        const match = await pool.query(
+          `SELECT 1 FROM classroom_notices n WHERE n.id = $5 AND ${NOTICE_TARGET_SQL}`,
+          [c.schoolId, c.grade, c.classNumber, c.studentNumber, noticeId]
+        );
+        if (match.rows.length > 0) hits.push(board);
+      }
+      if (hits.length === 0) return;
+      messages.set(String(user.id), {
+        title: hits.length === 1 ? hits[0].label : `가정통신문 · ${hits.map(b => b.child.name).join(", ")}`,
+        body: clipText(needsReply ? `${title} (회신 필요)` : title, 120),
+        url: `/classboard/?board=${encodeURIComponent(hits[0].key)}`
+      });
+    });
+    await webPush.sendToUsers(messages);
+  }
+
+  // 기기가 알림을 받을 주소를 만들 때 쓰는 우리 서버의 공개 열쇠.
+  router.get("/push/key", asyncRoute(async (req, res) => {
+    requireDatabase();
+    if (!webPush) throw new HttpError(503, "PUSH_UNAVAILABLE", "알림을 보낼 수 없는 서버입니다.");
+    res.json({ publicKey: await webPush.publicKey() });
+  }));
+
+  // 이 기기에서 알림 받기. 같은 기기를 다시 알려 오면 주인을 지금 로그인한 사람으로 바꾼다.
+  router.post("/push/subscriptions", asyncRoute(async (req, res) => {
+    const user = await requireUser(req);
+    if (!webPush) throw new HttpError(503, "PUSH_UNAVAILABLE", "알림을 보낼 수 없는 서버입니다.");
+    const saved = await webPush.saveSubscription(user.id, req.body, req.get("user-agent"));
+    if (!saved) throw new HttpError(400, "INVALID_SUBSCRIPTION", "이 기기의 알림 주소를 쓸 수 없습니다.");
+    res.json({ ok: true });
+  }));
+
+  router.delete("/push/subscriptions", asyncRoute(async (req, res) => {
+    const user = await requireUser(req);
+    if (webPush) await webPush.removeSubscription(user.id, req.body?.endpoint);
     res.json({ ok: true });
   }));
 

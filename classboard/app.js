@@ -21,7 +21,8 @@ const composerTargetEl = document.getElementById('composerTarget');
 
 let currentUser = null;
 let boards = [];
-let activeBoardKey = null;
+// 알림을 눌러 들어오면 주소에 그 게시판이 적혀 있다(?board=class:12).
+let activeBoardKey = new URLSearchParams(location.search).get('board');
 let canPost = false;
 // 과목별 보기. null이면 전체.
 let activeSubjectFilter = null;
@@ -102,6 +103,7 @@ async function initApp() {
             sendLink.innerHTML = '<span class="material-symbols-outlined" style="font-size: 18px; vertical-align: middle;">send</span> 가정통신문 보내기';
             userInfoEl.appendChild(sendLink);
         }
+        setupPushToggle();
 
         await loadBoards();
         loadPosts();
@@ -109,6 +111,119 @@ async function initApp() {
         console.error('Failed to init app', e);
         feedSection.innerHTML = '<div class="loader">오류가 발생했습니다.</div>';
     }
+}
+
+// ── 휴대폰 알림 켜기·끄기 ──
+// 학생·보호자만 받는다. 교사는 알림장을 쓰는 쪽이다.
+// 아이폰·아이패드는 이 화면을 홈 화면에 깔아야만 알림을 받을 수 있다(사파리 탭에서는
+// 알림 기능 자체가 없다). 그래서 단추는 두고, 누르면 까는 법을 알려 준다.
+const PUSH_SUPPORTED = 'serviceWorker' in navigator && 'PushManager' in window && 'Notification' in window;
+const IS_APPLE_MOBILE = /iPad|iPhone|iPod/.test(navigator.userAgent)
+    || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+
+function base64UrlToBytes(value) {
+    const padded = (value + '==='.slice((value.length + 3) % 4)).replace(/-/g, '+').replace(/_/g, '/');
+    return Uint8Array.from(atob(padded), c => c.charCodeAt(0));
+}
+
+async function sendSubscription(sub) {
+    const res = await fetch(`${API_BASE}/push/subscriptions`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(sub)
+    });
+    if (!res.ok) throw new Error('구독 저장 실패');
+}
+
+function setupPushToggle() {
+    if (viewerRole === 'teacher') return;
+    if (!PUSH_SUPPORTED && !IS_APPLE_MOBILE) return;
+
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'push-toggle';
+    let subscribed = false;
+    const render = () => {
+        btn.classList.toggle('on', subscribed);
+        btn.setAttribute('aria-pressed', String(subscribed));
+        const label = subscribed ? '알림 받는 중' : '알림 받기';
+        btn.title = subscribed ? '이 기기로 알림장 알림을 받고 있습니다. 누르면 끕니다.' : '새 알림장이 오면 이 기기로 알려 줍니다.';
+        btn.innerHTML = `<span class="material-symbols-outlined" aria-hidden="true">${subscribed ? 'notifications_active' : 'notifications'}</span><span class="push-toggle-text">${label}</span>`;
+        btn.setAttribute('aria-label', label);
+    };
+    render();
+    userInfoEl.appendChild(btn);
+
+    // 이미 켜 둔 기기면 주소를 서버에 다시 알린다. 같은 기기에 다른 식구가 로그인했으면
+    // 이때 받는 사람이 지금 사람으로 바뀐다.
+    if (PUSH_SUPPORTED && Notification.permission === 'granted') {
+        navigator.serviceWorker.ready
+            .then(reg => reg.pushManager.getSubscription())
+            .then(sub => {
+                if (!sub) return;
+                subscribed = true;
+                render();
+                return sendSubscription(sub);
+            })
+            .catch(e => console.error('알림 상태 확인 실패', e));
+    }
+
+    btn.addEventListener('click', async () => {
+        if (!PUSH_SUPPORTED) {
+            alert(navigator.standalone
+                // 홈 화면에서 열었는데도 없다면 iOS 가 16.4 보다 옛것이다.
+                ? '이 아이폰·아이패드는 알림을 받으려면 소프트웨어 업데이트가 필요합니다. (설정 → 일반 → 소프트웨어 업데이트)'
+                : '아이폰·아이패드는 이 화면을 홈 화면에 추가한 뒤, 홈 화면의 알림장에서 알림을 켤 수 있습니다.\n\n사파리 아래쪽 공유 단추 → 홈 화면에 추가');
+            return;
+        }
+        btn.disabled = true;
+        try {
+            if (subscribed) {
+                if (!confirm('이 기기에서 알림장 알림을 끌까요?')) return;
+                const reg = await navigator.serviceWorker.ready;
+                const sub = await reg.pushManager.getSubscription();
+                if (sub) {
+                    await fetch(`${API_BASE}/push/subscriptions`, {
+                        method: 'DELETE',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ endpoint: sub.endpoint })
+                    });
+                    await sub.unsubscribe();
+                }
+                subscribed = false;
+                render();
+                return;
+            }
+
+            // 허락 묻기는 누른 그 순간에 해야 한다. 앞에서 다른 걸 기다리면 사파리가 막는다.
+            const permission = Notification.permission === 'granted'
+                ? 'granted'
+                : await Notification.requestPermission();
+            if (permission !== 'granted') {
+                alert('알림이 꺼져 있습니다. 휴대폰이나 브라우저 설정에서 이 사이트의 알림을 허용한 뒤 다시 눌러 주세요.');
+                return;
+            }
+            const reg = await navigator.serviceWorker.ready;
+            let sub = await reg.pushManager.getSubscription();
+            if (!sub) {
+                const keyRes = await fetch(`${API_BASE}/push/key`);
+                if (!keyRes.ok) throw new Error('서버 열쇠를 받지 못함');
+                const { publicKey } = await keyRes.json();
+                sub = await reg.pushManager.subscribe({
+                    userVisibleOnly: true,
+                    applicationServerKey: base64UrlToBytes(publicKey)
+                });
+            }
+            await sendSubscription(sub);
+            subscribed = true;
+            render();
+        } catch (e) {
+            console.error('알림 설정 실패', e);
+            alert('알림을 켜지 못했습니다. 잠시 뒤 다시 눌러 주세요.');
+        } finally {
+            btn.disabled = false;
+        }
+    });
 }
 
 // 우리 반, 동아리, 방과후… 내가 볼 수 있는 게시판들. 안 읽은 글이 있으면 표시한다.
@@ -120,7 +235,7 @@ async function loadBoards() {
         boards = data.boards || [];
         canPost = boards.some(b => b.canPost);
 
-        if (boards.length > 0 && !activeBoardKey) activeBoardKey = boards[0].key;
+        if (!boards.some(b => b.key === activeBoardKey)) activeBoardKey = boards.length > 0 ? boards[0].key : null;
         if (canPost) composerSection.classList.remove('hidden');
 
         renderBoardPicker();
@@ -164,6 +279,8 @@ function renderBoardPicker() {
         btn.addEventListener('click', () => {
             if (activeBoardKey === b.key) return;
             activeBoardKey = b.key;
+            // 새로고침해도 고른 게시판에 머물게. 알림으로 들어온 주소가 남아 있으면 그리로 돌아간다.
+            if (location.search) history.replaceState(history.state, '', `?board=${encodeURIComponent(b.key)}`);
             activeSubjectFilter = null;
             renderBoardPicker();
             updateComposerTarget();
@@ -244,7 +361,7 @@ async function loadPosts() {
         }
     } catch (e) {
         console.error(e);
-        feedSection.innerHTML = '<div class="loader" style="color: #ff5252;">게시물을 불러오지 못했습니다.</div>';
+        feedSection.innerHTML = '<div class="loader" style="color: var(--danger);">게시물을 불러오지 못했습니다.</div>';
     }
 }
 
@@ -304,7 +421,7 @@ function renderFeed() {
         const nothingAtAll = (loadedPosts.length + loadedNotices.length) === 0;
         const empty = !nothingAtAll ? '고른 조건에 맞는 글이 없습니다.'
             : (board && board.kind === 'notice' ? '아직 받은 가정통신문이 없습니다.' : '아직 올라온 글이 없습니다.');
-        feedSection.innerHTML = `<div class="loader" style="color: #666;">${empty}</div>`;
+        feedSection.innerHTML = `<div class="loader">${empty}</div>`;
         return;
     }
 
@@ -492,7 +609,7 @@ async function deletePost(postId, articleElement) {
         articleElement.remove();
         
         if (feedSection.children.length === 0) {
-            feedSection.innerHTML = '<div class="loader" style="color: #666;">아직 게시물이 없습니다.</div>';
+            feedSection.innerHTML = '<div class="loader">아직 게시물이 없습니다.</div>';
         }
     } catch (e) {
         alert(e.message);
