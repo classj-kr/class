@@ -230,18 +230,10 @@ def build(countries_path, coast_path=None):
         states[key].append(dict(id=state_id or str(len(states[key])),date=date,regions=regions,
           sources=[SOURCE[s] for s in sources],note=note,lines=list(lines)))
 
-    # Early polities are approximate spheres, NOT precisely delimited borders.
-    early = [
-      ('부여',[(124.8,44.3),(125.5,45.5),(127.4,46),(129,45.1),(128.3,43.4),(126.9,43),(125.2,43.5)],'north'),
-      ('고구려',[(124.5,40.7),(124.8,42),(125.7,43.05),(127.4,42.8),(128,41.7),(126.9,40.5),(125.5,40.2)],'china'),
-      ('옥저',[(127.7,39.9),(127.4,40.5),(128.1,41.7),(129.3,42.1),(131,42.2),(130.7,40),(128.5,39.7)],'gaya'),
-      ('동예',[(127.3,37.7),(127.35,38.7),(127.5,39.8),(129.1,39.8),(130,38.4),(129.5,37.7)],'tribes'),
-      ('마한',[(125.3,34),(125.3,37.5),(126.6,38),(127.3,37.7),(127.7,36.5),(127.6,35.6),(127.6,34)],'baekje'),
-      ('진한',[(127.75,35.9),(127.7,36.7),(128.2,37.3),(130,37.4),(130,35.65),(128.7,35.75)],'korea'),
-      ('변한',[(127.6,34),(127.6,35.6),(128.2,35.9),(128.7,35.75),(130,35.65),(130,34)],'japan')]
-    add('early-states','삼국 성립 전 · 대략적인 세력권',
-        [region(n,poly(smooth(p+[p[0]])).intersection(land),c,True) for n,p,c in early],
-        note='여러 나라가 성장한 대표 권역입니다. 점선은 확정된 국경선이 아니며, 각 나라의 최대 영역이 같은 시점에 존재했다는 뜻도 아닙니다.')
+    # The cited textbook is a location map and supplies no territorial outlines.
+    # Do not manufacture borders from arbitrary latitude/longitude vertices.
+    add('early-states','삼국 성립 전 · 여러 나라의 위치', [],
+        note='교과서 위치도에 근거한 대표 위치입니다. 표지는 수도나 확정된 국경을 뜻하지 않습니다.')
     for key in ['baekje-fourth','goguryeo-fifth']:
         add(key,scenes[key]['period'],ancient(key),note='교과서 도판에서 재구성한 개략 영역선입니다.')
     add('silla-sixth','6세기 후반 · 진흥왕의 진출',sixth,
@@ -350,6 +342,16 @@ def build(countries_path, coast_path=None):
     for key,variants in states.items():
         scene = scenes[key]
         assert variants, key
+        if scene.get('locationOnly'):
+            manifest['scenes'][key] = [dict(id=state['id'], date=state['date'],
+                locationOnly=True, legend=[], labels=[], lines=[],
+                sources=[['우리역사넷 · 여러 나라의 성장 위치도', scene['source']]],
+                note=state['note']) for state in variants]
+            audit['coverage'][key] = [dict(date=state['date'], regions=[],
+                representation='source-backed locations; no territorial boundaries') for state in variants]
+            for state in variants:
+                (OUT/f'{key}-{state["id"]}.svg').unlink(missing_ok=True)
+            continue
         w,s,e,n = scene['bounds']
         # Fit bounds concern the camera only. Never crop a historical country
         # or its neighbouring context to that camera rectangle.

@@ -11,7 +11,46 @@
   const path = (d,fill='#c9d5b1',stroke='#6f8666') => `<path d="${d}" fill="${fill}" stroke="${stroke}" stroke-width="2"/>`;
   const box = (x,y,w,h,fill='#e3eef0') => `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="10" fill="${fill}"/>`;
   const house = (x,y) => `${path(`M${x} ${y}h20v20h-20z`,'#fff8e5','#916a4d')}${path(`M${x-4} ${y}l14 -12 14 12z`,'#b66f51','#916a4d')}`;
+  // 비교 항목과 근거를 직접 읽는 자료. 사물의 축약 그림으로 개념을 대신하지 않는다.
+  const comparisonTables = {
+    transport: { title: '장거리 국제 화물 운송', rows: [
+      ['이동 속도', '느림', '빠름'],
+      ['대량 화물 운송비', '낮음', '높음'],
+      ['한 번에 싣는 양', '많음', '적음']
+    ] },
+    port: { title: '산업별 입지 조건', rows: [
+      ['주요 투입 요소', '철광석·원유', '전문 인력·정보'],
+      ['연결되는 시설', '항만·수입 원료', '기업 본사·고객'],
+      ['입지의 이점', '대량 운송비 절감', '대면 접촉·정보 교류']
+    ] },
+    farming: { title: '농업 지역의 생산·출하 조건', rows: [
+      ['입지', '높은 해발 고도', '대도시 주변'],
+      ['활용하는 조건', '여름의 서늘한 기온', '소비 시장 접근성'],
+      ['생산·출하', '여름철 채소 출하', '신선한 농산물 공급']
+    ] },
+    energy: { title: '공업·발전 시설의 입지 조건', rows: [
+      ['시설', '시멘트 공장', '원자력 발전소'],
+      ['입지', '석회석 산지 주변', '해안'],
+      ['필요한 조건', '무거운 원료 확보', '풍부한 냉각수']
+    ] },
+    regions: { title: '권역별 산업 분포', rows: [
+      ['농업 지역', '호남평야·나주평야', '낙동강 유역 평야'],
+      ['해안 공업', '광양 제철·여수 석유화학', '포항 제철·울산 자동차'],
+      ['내륙 산업', '광주 자동차', '구미 전자·대구 섬유']
+    ] },
+    compare: { title: '고지도와 지리지의 자료 특징', rows: [
+      ['표현 방식', '지도', '글로 쓴 지리지'],
+      ['제작·구성', '목판 인쇄·분첩', '살기 좋은 곳의 조건'],
+      ['자료의 단서', '10리마다 방점', '지리·생리·인심·산수']
+    ] }
+  };
+  function comparisonTable(kind, highlight) {
+    const data = comparisonTables[kind];
+    const cellClass = index => index === highlight ? ' class="table-evidence"' : '';
+    return `<table class="concept-table"><caption>${esc(data.title)}</caption><colgroup><col class="criteria"><col><col></colgroup><thead><tr><th scope="col">비교 기준</th><th scope="col">A</th><th scope="col">B</th></tr></thead><tbody>${data.rows.map(row=>`<tr><th scope="row">${esc(row[0])}</th><td${cellClass(1)}>${esc(row[1])}</td><td${cellClass(2)}>${esc(row[2])}</td></tr>`).join('')}</tbody></table>`;
+  }
   function art(kind) {
+
     switch (kind) {
       case 'relief': return `${box(12,173,496,44,'#cce6ee')}${path('M40 173L90 166 150 149 215 145 275 119 332 106 390 51 434 147 465 173Z')}${text(24,228,'서해')}${text(455,228,'동해')}${text(344,28,'산맥·분수계')}${arrow(345,122,150,164)}${arrow(412,93,455,161,colors[1])}${badge(185,107,'A')}${badge(455,99,'B',1)}`;
       case 'river': return `${path('M20 196L86 39 147 106 196 78 266 148 350 190 490 205Z')}${path('M91 83Q129 93 128 128T199 151T248 165T321 187L390 211','none','#2586b1')}${box(352,195,156,43,'#cce6ee')}${path('M328 184L439 231 367 231Z','#e1c98e','#c1a671')}${arrow(188,103,315,160)}${badge(142,80,'A')}${badge(403,171,'B',1)}${text(22,232,'산지')}${text(454,223,'바다')}`;
@@ -39,16 +78,10 @@
       }
       case 'city': return `${box(30,76,160,135)}${[55,92,129].map((x,i)=>box(x,144-i*16,28,67+i*16,'#7e9da4')).join('')}${house(358,145)}${house(401,145)}${house(444,145)}${arrow(338,115,206,115)}${badge(110,38,'A')}${badge(403,38,'B',1)}${text(214,90,'낮의 통근')}${text(73,236,'업무·상업')}${text(378,205,'주거')}`;
       case 'village': return `${path('M15 153L75 50 143 153Z')}${path('M110 153L150 85 200 153Z')}${path('M20 219Q140 174 239 216','none','#3186aa')}${house(93,161)}${house(132,164)}${[0,1,2,3,4].map(i=>house(321+i%3*40,113+Math.floor(i/3)*45)).join('')}${badge(235,83,'A')}${badge(405,50,'B',1)}${text(30,239,'산·마을·하천')}${text(336,220,'가옥 분포')}`;
-      case 'port': return `${box(15,140,220,70,'#cce6ee')}${path('M35 156h134l-23 29H61Z','#537786','#537786')}${box(90,126,50,29,'#d9ae77')}${arrow(168,135,218,90)}${box(194,54,60,50,'#b5c3c5')}${badge(90,40,'A')}${box(327,80,137,119)}${[342,381,420].map(x=>box(x,106,25,70,'#829da6')).join('')}${badge(394,40,'B',1)}${text(25,236,'원료 → 항만 → 공장')}${text(331,231,'기업·고객 연결')}`;
       case 'network': return `${[[82,75],[190,75],[135,177]].map(([x,y],i)=>`${box(x-47,y-23,94,46)}${text(x,y+5,['대학','연구소','기업'][i],'text-anchor="middle"')}`).join('')}${arrow(104,111,120,145)}${arrow(174,111,150,145)}${badge(30,30,'A')}${box(318,60,165,55)}${text(345,94,'수도권 공장')}${arrow(399,122,399,168,colors[1])}${text(363,204,'충청권')}${badge(485,30,'B',1)}`;
-      case 'farming': return `${path('M15 210L70 124H197L249 210Z')}${path('M75 155h108m-95 17h113m-106 17h127','none','#5b956c')}${badge(132,72,'A')}${[330,370,410].map(x=>box(x,100,28,75,'#7c9ba2')).join('')}${path('M301 220Q338 146 376 220Z','#d9e8cb','#8fac82')}${arrow(374,199,438,170,colors[1])}${badge(408,50,'B',1)}${text(60,236,'높은 땅')}${text(318,90,'대도시 시장')}`;
-      case 'energy': return `${path('M20 152L90 55 166 152Z','#d7d1c2','#9d978b')}${arrow(108,173,215,173)}${box(192,80,65,67,'#b4c6c9')}${text(24,220,'원료 산지 → 공장')}${box(290,158,212,65,'#cce6ee')}${path('M339 158Q332 95 369 95Q403 95 398 158Z','#c3d1d1','#7c969b')}${arrow(445,194,399,139,colors[1])}${badge(40,30,'A')}${badge(460,60,'B',1)}${text(424,231,'냉각수')}`;
-      case 'transport': return `${box(20,157,220,55,'#cce6ee')}${path('M42 149H217L181 185H71Z','#72959e','#476d76')}${[70,105,140,175].map(x=>box(x,120,30,27,'#d7b280')).join('')}${path('M295 135L470 93 442 123 485 151 466 161 409 138 333 169Z','#b2c7d0','#557e8b')}${badge(130,65,'A')}${badge(391,50,'B',1)}${text(60,236,'대량 운송')}${text(337,215,'긴급 운송')}`;
       case 'route': return `${path('M35 50L158 130 245 50M158 130L60 220M158 130L249 220','none','#5a8e99')}${badge(158,130,'A')}${box(310,50,180,60)}${text(340,88,'이동 시간 감소')}${arrow(400,118,400,165,colors[1])}${text(341,201,'생활권 확대')}${badge(490,30,'B',1)}`;
-      case 'regions': return `${path('M66 45L180 55 211 119 171 199 65 214 37 121Z')}${path('M334 45L444 39 490 120 449 207 334 214 299 134Z','#ead7bc','#b5a07d')}${[80,110,140].map(x=>path(`M${x} 116v48m-8 -42h16m-16 17h16`,'none','#779359')).join('')}${box(152,160,30,30,'#7e969b')}${box(355,140,30,50,'#82999d')}${box(401,129,30,60,'#82999d')}${badge(121,75,'A')}${badge(392,75,'B',1)}${text(73,239,'평야 + 공업')}${text(336,239,'해안·내륙 공업')}`;
       case 'division': return `${box(25,65,145,140)}${box(187,65,145,140,'#efe5d4')}${box(349,65,145,140,'#e6dff1')}${text(70,116,'서울')}${text(232,116,'인천')}${text(396,116,'경기')}${arrow(320,159,80,159,colors[1])}${arrow(379,184,139,184,colors[1])}${path('M25 58V48H494V58','none',colors[0])}${badge(260,25,'A')}${badge(165,228,'B',1)}${text(193,237,'경계를 넘는 통근')}`;
       case 'north': return `${box(25,60,205,150)}${path('M200 90Q145 103 161 141T50 184','none','#3487a8')}${arrow(127,164,70,182)}${box(287,60,205,150,'#eae4d5')}${path('M303 179L350 82 376 134 415 80 480 179Z','#c1c9ac','#829070')}${badge(126,30,'A')}${badge(389,30,'B',1)}${text(45,235,'서해로 흐르는 하천')}${text(321,235,'북동부 산지·고원')}`;
-      case 'compare': return `${box(30,50,190,160,'#ece4cf')}${path('M55 170L80 95 119 157 157 70 191 182','none','#8a986e')}${path('M67 62Q160 111 91 200','none','#5393a3')}${box(298,50,190,160,'#f0e8d8')}${[80,110,140,170].map(y=>path(`M325 ${y}h136`,'none','#ac9c7d')).join('')}${badge(125,25,'A')}${badge(392,25,'B',1)}`;
       default: throw new Error(`Unknown study visual: ${kind}`);
     }
   }
@@ -56,16 +89,20 @@
     temperature: '월평균 기온 모형 · 두 선은 같은 ℃ 눈금 · 실제 관측값 아님',
     pyramid: '연령 3구간 비교 모형 · 왼쪽 남자 / 오른쪽 여자 · 전체 인구 중 비율(%) · 실제 통계 아님',
     heat: '밤의 상대적인 기온 분포 모형 · 높이·거리·기온의 실측값 아님',
-    regions: '권역 특징을 비교하는 모형 · 실제 행정 경계 모양 아님'
+
   };
   const evidenceAreas = {"relief":[435,135,47,55],"river":[392,213,63,24],"floodplain":[228,123,46,40],"coast":[259,131,69,83],"volcano":[133,164,110,40],"karst":[282,177,195,28],"basin":[369,141,57,22],"temperature":[477,113,20,87],"monsoon":[261,164,94,22],"foehn":[387,102,85,64],"heat":[262,60,90,28],"waters":[355,125,124,61],"longitude":[366,124,87,62],"statmaps":[395,117,93,77],"flow":[265,129,70,27],"pyramid":[396,83,51,25],"city":[268,115,79,27],"village":[372,139,74,63],"port":[127,154,111,42],"network":[136,124,110,84],"farming":[355,181,61,53],"energy":[438,169,60,53],"transport":[130,160,108,48],"route":[158,130,45,45],"regions":[157,170,47,41],"division":[260,172,193,28],"north":[130,135,91,67],"compare":[126,130,91,80]};
   function render(host, lesson, options={}) {
     const hidden = options.quiz && !options.revealed;
     const note = chartNotes[lesson.kind] || '';
-    const area = options.area === null ? null : options.area || evidenceAreas[lesson.kind];
+    const table = comparisonTables[lesson.kind];
+    const requestedArea = options.area === null ? null : options.area || evidenceAreas[lesson.kind];
+    const area = requestedArea;
     const emphasis = options.revealed && area ? `<ellipse cx="${area[0]}" cy="${area[1]}" rx="${area[2]}" ry="${area[3]}" fill="none" stroke="#24844c" stroke-width="3" stroke-dasharray="7 5"/>` : "";
     const caption = note || emphasis ? `<figcaption>${note}${note && emphasis ? " · " : ""}${emphasis ? "녹색 점선: 핵심 관찰 부분" : ""}</figcaption>` : "";
-    host.innerHTML = `<figure class="concept-visual ${options.revealed?'is-revealed':''}"><svg viewBox="0 0 520 250" role="img" aria-label="${hidden?'A·B 비교 자료':esc(lesson.title)}"><title>${hidden?'A·B의 모양과 화살표, 아래 자료를 비교하세요.':esc(lesson.title)}</title>${art(lesson.kind)}${emphasis}</svg>${caption}</figure><div class="visual-comparison">${lesson.slots.map((s,i)=>`<div class="comparison-cell" style="--slot-color:${colors[i]}"><span class="comparison-letter">${String.fromCharCode(65+i)}</span><div><strong>${esc(hidden?s.clue:s.name)}</strong><p>${esc(hidden?'':s.clue)}</p>${hidden?'':`<small>${esc(s.detail)}</small>`}</div></div>`).join('')}</div>${options.revealed?`<div class="visual-evidence"><strong>그림에서 찾은 근거</strong><p>${esc(options.evidence || lesson.evidence)}</p></div>`:''}`;
+    host.classList.toggle("has-comparison-table", !!table);
+    const figure = table ? comparisonTable(lesson.kind, options.revealed && area ? (area[0] < 260 ? 1 : 2) : 0) : `<svg viewBox="0 0 520 250" role="img" aria-label="${hidden?'A·B 비교 자료':esc(lesson.title)}"><title>${hidden?'A·B의 모양과 화살표, 아래 자료를 비교하세요.':esc(lesson.title)}</title>${art(lesson.kind)}${emphasis}</svg>${caption}`;
+    host.innerHTML = `<figure class="concept-visual ${options.revealed?'is-revealed':''}">${figure}</figure>${hidden && table ? '' : `<div class="visual-comparison">${lesson.slots.map((s,i)=>`<div class="comparison-cell" style="--slot-color:${colors[i]}"><span class="comparison-letter">${String.fromCharCode(65+i)}</span><div><strong>${esc(hidden?s.clue:s.name)}</strong><p>${esc(hidden?'':s.clue)}</p>${hidden?'':`<small>${esc(s.detail)}</small>`}</div></div>`).join('')}</div>`}${options.revealed?`<div class="visual-evidence"><strong>${table?'자료에서 찾은 근거':'그림에서 찾은 근거'}</strong><p>${esc(options.evidence || lesson.evidence)}</p></div>`:''}`;
   }
   window.KoreaVisuals = { render, art, esc };
 })();

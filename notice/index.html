@@ -469,7 +469,7 @@
         <!-- Tab 5: 내가 낸 신청 내역 -->
         <!-- 내 서명: 한 번 등록해 두면 결석계·체험학습에 자동으로 찍힌다 -->
         <section id="tab-signature" class="hidden">
-            <h2 style="font-size:18px; margin:0 0 14px;">✍️ 내 전자서명</h2>
+            <h2 style="font-size:18px; margin:0 0 14px;">✍️ 내 서명</h2>
             <div class="card">
                 <p style="color:var(--muted); font-size:13px; margin:0 0 10px; line-height:1.5;">
                     여기 한 번 서명해 두면 결석계·체험학습 신청서에 자동으로 찍힙니다.
@@ -929,7 +929,7 @@
                 });
                 const data = await res.json();
                 if (!res.ok) throw new Error(data.message || '제출 실패');
-                alert('결석계가 전자서명과 함께 담임선생님께 성공적으로 제출되었습니다.');
+                alert('결석계가 서명과 함께 담임선생님께 제출되었습니다.');
                 clearCanvas();
                 e.target.reset();
             } catch (err) {

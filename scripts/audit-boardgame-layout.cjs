@@ -6,11 +6,15 @@ const path = require("node:path");
 const puppeteer = require("puppeteer-core");
 const http = require("node:http");
 const root = path.resolve(__dirname, "..");
-const sizes = [[1366,768],[1280,600],[1024,768],[768,1024],[1180,820],[820,1180]];
+const sizes = [[1366,768],[1280,600],[1024,768],[768,1024],[1180,820],[820,1180], ...(process.env.AUDIT_LARGE_SCREENS === "1" ? [[1920,1080],[2560,1440]] : [])];
 const seeded = new Set(["baduk", "omok", "connect6", "chess", "traverse", "diamondgame", "honeycomb"]);
 const output = path.resolve(process.argv[2] || path.join(root, "docs/qa/boardgame-layout-20260921/boardgame-layout-audit.json"));
 const fixtures = require("./lib/boardgame-fixtures.cjs");
 const read = file => fs.readFileSync(file, "utf8");
+// Natural dimensions before the viewport-filling change. These are upper bounds,
+// not sizes to force onto a smaller screen.
+const naturalBoardWidths={baduk:680,omok:720,connect6:720,chess:720,janggi:600,reversi:760,diamondgame:720,traverse:690};
+
 
 async function main() {
   const server=http.createServer((req,res)=>{
@@ -117,23 +121,28 @@ async function main() {
             const buttonsOutside=candidates.filter(el=>out(el)&&!scrollContainer(el)).map(name);
             const scrollableButtons=candidates.filter(el=>out(el)&&scrollContainer(el)).map(name);
             const visibleRoomCodes=[...area.querySelectorAll('[id*="roomCode" i],[id*="room-code" i]')].filter(visible).map(el=>el.id);
-            return {visibleRoomCodes,pageOverflow:document.documentElement.scrollHeight>innerHeight+1||document.documentElement.scrollWidth>innerWidth+1,boards,buttonsOutside,scrollableButtons};
+            const textReview=[...area.querySelectorAll('*')].filter(el=>visible(el)&&[...el.childNodes].some(n=>n.nodeType===3&&n.textContent.trim())).map(el=>{const c=getComputedStyle(el);return {selector:el.id||el.className,text:el.textContent.trim().slice(0,80),font:parseFloat(c.fontSize),cut:el.scrollWidth>el.clientWidth+2&&/hidden|clip/.test(c.overflowX)||el.scrollHeight>el.clientHeight+2&&/hidden|clip/.test(c.overflowY)};}).filter(v=>v.font<13||v.cut);
+            const imageReview=[...area.querySelectorAll('img')].filter(visible).filter(el=>el.naturalWidth&&getComputedStyle(el).objectFit==='cover'&&Math.abs(el.clientWidth/el.clientHeight-el.naturalWidth/el.naturalHeight)>.06).map(el=>({src:el.getAttribute('src'),alt:el.alt,width:el.clientWidth,height:el.clientHeight}));
+            return {textReview,imageReview,visibleRoomCodes,pageOverflow:document.documentElement.scrollHeight>innerHeight+1||document.documentElement.scrollWidth>innerWidth+1,boards,buttonsOutside,scrollableButtons};
           },screen);
-          result.checks.push({width,height,state,...metrics});
+          const boardLimit=naturalBoardWidths[game];
+          const enlargedBoards=boardLimit?metrics.boards.filter(board=>board.width>boardLimit+2).map(board=>board.selector):[];
+          result.checks.push({width,height,state,...metrics,enlargedBoards});
         }
       }
       results.push(result);
       if(rendered) {
         if(seeded.has(game)) await page.evaluate(game=>{if(game==="traverse"||game==="diamondgame"){state.winner=null;renderAll();}else{gameState.winner=0;gameState.phase="playing";renderGame();}},game);
+        await page.setViewport({width:820,height:1180,hasTouch:true});
         await page.screenshot({path:path.join(path.dirname(output),game+"-portrait-check.png")});
         await page.setViewport({width:1024,height:768,hasTouch:true});
         await page.screenshot({path:path.join(path.dirname(output),game+"-layout-check.png")});
       }
-      console.log(game+": "+result.coverage+"; "+result.checks.filter(c=>c.pageOverflow||c.boards.some(b=>b.outside||b.collapsed||b.clipped)||c.buttonsOutside.length).length+" flagged checks");
+      console.log(game+": "+result.coverage+"; "+result.checks.filter(c=>c.pageOverflow||c.enlargedBoards.length||c.boards.some(b=>b.outside||b.collapsed||b.clipped)||c.buttonsOutside.length).length+" flagged checks");
       await page.close();
     }
   } finally {Math.random=random;await browser.close();server.close();}
   fs.writeFileSync(output,JSON.stringify({generatedAt:new Date().toISOString(),playerMode:process.env.AUDIT_MAX_PLAYERS==="1"?"maximum configured":"minimum configured",note:"Static shells are triage, not gameplay certification. Match fixtures use local render functions with mocked network state. No real iPad/Safari or multiplayer session was tested.",results},null,2));
-  if(results.some(r=>r.fixtureError||r.errors.length||r.checks.some(c=>c.pageOverflow||c.boards.some(b=>b.outside||b.collapsed||b.clipped)||c.buttonsOutside.length))) process.exitCode=1;
+  if(results.some(r=>r.fixtureError||r.errors.length||r.checks.some(c=>c.pageOverflow||c.enlargedBoards.length||c.boards.some(b=>b.outside||b.collapsed||b.clipped)||c.buttonsOutside.length))) process.exitCode=1;
 }
 main().catch(e=>{console.error(e);process.exitCode=1;});

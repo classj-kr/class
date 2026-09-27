@@ -645,7 +645,7 @@
         ctx.fillStyle = '#ffffff';
         ctx.font = 'bold 15px Pretendard, sans-serif';
         ctx.textAlign = 'left';
-        ctx.fillText('📈 항체 농도 변화 곡선 (1차 vs 2차 면역 반응 실시간 비교)', gx + 20, gy + 28);
+        ctx.fillText('📈 항체 농도 변화 곡선 (1차 vs 2차 면역 반응 비교)', gx + 20, gy + 28);
 
         // Subtitle
         ctx.fillStyle = '#94a3b8';

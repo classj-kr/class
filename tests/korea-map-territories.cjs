@@ -12,7 +12,15 @@ const scenes = ctx.window.KOREA_HISTORY.scenes.filter(scene=>!scene.distribution
 const territories = ctx.window.KOREA_HISTORY_TERRITORIES.scenes;
 assert.equal(Object.keys(territories).length,scenes.length);
 for (const scene of scenes) for (const state of territories[scene.id]) {
-  assert.ok(state.date && state.sources.length && state.legend.length,scene.id);
+  assert.ok(state.date && state.sources.length,scene.id);
+  if (state.locationOnly) {
+    assert.equal(scene.id,"early-states"); assert.equal(scene.locationOnly,true);
+    assert.equal(state.overlay,undefined); assert.equal(state.legend.length,0);
+    assert.equal(scene.marks.length,7);
+    assert.ok(!fs.existsSync(path.join(app,"history/territories/early-states-0.svg")),"unsupported polygon artifact must not return");
+    continue;
+  }
+  assert.ok(state.legend.length,scene.id);
   assert.ok(state.labels.length,`${scene.id}: country labels absent`);
   const svg = fs.readFileSync(path.join(app,state.overlay.split('?')[0]),'utf8');
   assert.ok(svg.includes('<path ') && !svg.includes('NaN'),scene.id);
@@ -39,10 +47,20 @@ assert.notEqual(territories['korean-war'][0].overlay,territories['korean-war'][1
         await page.goto(`${base}?v=territories&historyScene=${id}#history`,{waitUntil:'networkidle0'});
         const result=await page.evaluate(()=>({
           overlays:[...document.querySelectorAll('.leaflet-image-layer')].filter(i=>/territories/.test(i.src)).map(i=>({loaded:i.complete && i.naturalWidth>0,src:i.src})),
+          points:[...document.querySelectorAll('.history-map-label')].map(n=>n.textContent),
+          legendHidden:document.querySelector('#mapKey').hidden,
           legend:document.querySelector('#mapKey').innerText,
           labels:[...document.querySelectorAll('.history-country')].map(n=>n.textContent),
           overflow:document.documentElement.scrollWidth>innerWidth
         }));
+        if (territories[id][0].locationOnly) {
+          assert.equal(result.overlays.length,0,'location maps must not invent territorial outlines');
+          assert.ok(result.legendHidden);
+          assert.equal(result.points.length,7);
+          assert.ok(result.points.some(label=>label.includes('동예')));
+          assert.equal(result.overflow,false);
+          continue;
+        }
         assert.equal(result.overlays.length,1,`${id}: exactly one dated territory overlay`);
         assert.ok(result.overlays[0].loaded,`${id}: territory SVG failed to decode`);
         assert.ok(result.legend && result.labels.length);
@@ -59,6 +77,6 @@ assert.notEqual(territories['korean-war'][0].overlay,territories['korean-war'][1
       }
     }
     assert.deepEqual(errors,[]);
-    console.log(`Territories passed: ${scenes.length} scenes / ${Object.values(territories).flat().length} dated overlays; labels, legends, image decoding, chronology distinctions, state changes, desktop/mobile.`);
+    console.log(`Territories passed: ${scenes.length} scenes / ${Object.values(territories).flat().filter(state=>state.overlay).length} dated overlays; labels, legends, image decoding, chronology distinctions, state changes, desktop/mobile.`);
   } finally {await browser.close();}
 })().catch(e=>{console.error(e);process.exitCode=1;});

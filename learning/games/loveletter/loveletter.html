@@ -55,10 +55,79 @@ body:has(#gameScreen:not(.hidden)) .shell{height:calc(100dvh - 16px)}
 #gameScreen .choiceRow{margin:5px 0}
 #gameScreen .playButton{margin-top:7px}
 }
+
+
+/* Card rules are readable text; the illustration is not the only explanation. */
+#gameScreen .hand { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); width: 100%; max-width: 800px; height: auto; min-height: 0; align-items: stretch; gap: 12px; margin: 14px auto; }
+#gameScreen .handCard { display: grid; grid-template-columns: 96px minmax(0,1fr); align-items: start; gap: 12px; width: 100%; padding: 10px; border: 2px solid #a87854; text-align: left; color: #fff6e3; border-radius: 12px; }
+#gameScreen .handCard img { width: 96px; border-radius: 7px; }
+#gameScreen .handCard .cardValue { display: none; }
+#gameScreen .handCard.selected { transform: none; border-color: #ffe28d; background: #492027; box-shadow: 0 0 0 2px #ffe28d66; }
+#gameScreen .handCard:hover:not(:disabled) { transform: none; border-color: #ffe28d; }
+#gameScreen .handCard.forcedOut { opacity: .8; }
+.handCardCopy { display: grid; gap: 8px; }
+.handCardCopy > strong { font-size: 19px; color: #ffe5a4; }
+.handCardEffect { font-size: 16px; line-height: 1.65; font-weight: 400; word-break: keep-all; overflow-wrap: anywhere; }
+.handCardHint { font-size: 13px; line-height: 1.5; color: #f4c68d; }
+#gameScreen .turnNotice { font-size: 17px; line-height: 1.5; }
+#gameScreen .tableCenter { grid-template-columns: minmax(0,1fr); }
+#gameScreen .tableCenter > div:first-child { display: none; }
+#gameScreen .actionLog { min-height: 40px; padding: 8px 12px; }
+#gameScreen .actionLog strong, #gameScreen .controlTitle { display: none; }
+#gameScreen .myArea { margin-top: 8px; padding-top: 8px; }
+#gameScreen .hand { margin-top: 8px; margin-bottom: 8px; }
+#gameScreen .controls { padding: 10px; }
+
+#gameScreen .controlTitle { font-size: 17px; margin-bottom: 10px; }
+.choicePrompt { font-size: 16px; line-height: 1.5; margin: 12px 0 6px; text-align: center; color: #ffedc5; font-weight: 700; }
+.playReadiness { font-size: 15px; line-height: 1.5; text-align: center; margin: 10px 0; color: #e8dbc8; }
+.playReadiness.warning { color: #ffb1a1; font-weight: 700; }
+#gameScreen .targetButton, #gameScreen .guessButton, #gameScreen .playButton { min-height: 44px; font-size: 16px; }
+#gameScreen .playButton:disabled { opacity: 1; background: #4c3930; color: #d2c1af; border-color: #7b6551; }
+#gameScreen .rulesGrid small { font-size: 16px; }
+@media (min-width: 700px) {
+ body:has(#gameScreen:not(.hidden)) { padding-top: 60px; }
+ body:has(#gameScreen:not(.hidden)) .shell { height: calc(100dvh - 68px); }
+ #gameScreen > section.panel { grid-template-columns: 180px minmax(0,1fr); }
+ #gameScreen .gameHeader .scoreGuide { font-size: 14px; }
+ #gameScreen .tableCenter { grid-template-columns: minmax(0,1fr); }
+ #gameScreen .deckStack { width: 40px; }
+ #gameScreen .deckCount { margin-top: 6px; font-size: 14px; }
+}
+@media (max-width: 1050px) {
+ #gameScreen .handCard { grid-template-columns: 70px minmax(0,1fr); gap: 8px; padding: 8px; }
+ #gameScreen .handCard img { width: 70px; }
+}
+@media (orientation: portrait) and (min-width: 700px) {
+ #gameScreen > section.panel { grid-template-columns: 1fr; grid-template-rows: auto minmax(0,1fr); }
+ #gameScreen .playerGrid { grid-template-columns: repeat(4,minmax(0,1fr)); }
+ #gameScreen .playerSeat { min-height: 72px; }
+}
+@media (max-width: 699px) {
+ #gameScreen .hand { grid-template-columns: 1fr; }
+ #gameScreen .handCard { grid-template-columns: 86px minmax(0,1fr); }
+ #gameScreen .handCard img { width: 86px; }
+}
 </style>
 <script src="../../../assets/network/game-network.js?v=20260821"></script>
 <script src="../../../assets/network/multiplayer-lobby.js?v=20260926-button-labels"></script>
 <link rel="stylesheet" href="../../../assets/device-game.css?v=20260921c">
+<style>
+@media (min-width:1000px) and (max-height:750px) {
+ #gameScreen .myArea { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:6px 12px; }
+ #gameScreen .turn-clock { grid-column:1; grid-row:1; align-items:flex-start; margin:0; }
+ #gameScreen .turnNotice { grid-column:2; grid-row:1; margin:0; font-size:16px; text-align:left; }
+ #gameScreen .hand { grid-column:1; grid-row:2; grid-template-columns:1fr; margin:0; align-content:start; }
+ #gameScreen .handCard { grid-template-columns:70px minmax(0,1fr); padding:8px; gap:10px; }
+ #gameScreen .handCard img { width:70px; }
+ #gameScreen .controls { grid-column:2; grid-row:2; margin:0; padding:8px; align-self:start; }
+ #gameScreen .choicePrompt { margin:4px 0; }
+ #gameScreen .choiceRow { gap:6px; margin:6px 0; }
+ #gameScreen .guessButton { padding:6px 10px; }
+ #gameScreen .playReadiness { margin:4px 0; font-size:14px; }
+ #gameScreen .playButton { margin-top:6px; }
+}
+</style>
 </head>
 <body>
 <main class="shell">
@@ -147,8 +216,8 @@ body:has(#gameScreen:not(.hidden)) .shell{height:calc(100dvh - 16px)}
           <div id="hand" class="hand"></div>
           <div id="controls" class="controls hidden">
             <div id="controlTitle" class="controlTitle"></div>
-            <div id="targetChoices" class="choiceRow"></div>
-            <div id="guessChoices" class="choiceRow"></div>
+            <p id="targetPrompt" class="choicePrompt"></p><div id="targetChoices" class="choiceRow" role="group" aria-labelledby="targetPrompt"></div>
+            <p id="guessPrompt" class="choicePrompt"></p><div id="guessChoices" class="choiceRow" role="group" aria-labelledby="guessPrompt"></div><p id="playReadiness" class="playReadiness" role="status"></p>
             <button id="playBtn" class="primary playButton" type="button">카드 내기</button>
           </div>
         </div>
@@ -318,10 +387,17 @@ function renderHand(){
   (gameState?.hand||[]).forEach(value=>{
     const button=document.createElement("button");button.type="button";button.className=`handCard${selectedCard===value?" selected":""}${forced&&value!==7?" forcedOut":""}`;
     button.disabled=!myTurn||actionPending||(forced&&value!==7);
-    button.setAttribute("aria-label",`${value} ${CARD_META[value].name} 선택`);
+    button.setAttribute("aria-label",`${value} ${CARD_META[value].name} 선택. ${CARD_META[value].effect}`);
+    button.setAttribute("aria-pressed",String(selectedCard===value));
     const image=document.createElement("img");image.src=imagePath(value);image.alt=`${value} ${CARD_META[value].name}`;
     const badge=document.createElement("span");badge.className="cardValue";badge.textContent=String(value);
-    button.append(image,badge);button.addEventListener("click",()=>selectCard(value));fragment.appendChild(button);
+    const copy=document.createElement("span");copy.className="handCardCopy";
+    const title=document.createElement("strong");title.textContent=`${value} · ${CARD_META[value].name}`;
+    const effect=document.createElement("span");effect.className="handCardEffect";effect.textContent=CARD_META[value].effect;
+    const hint=document.createElement("small");hint.className="handCardHint";
+    hint.textContent=forced&&value!==7?"왕비를 내야 합니다":value===8?"주의 · 내면 내가 탈락합니다":selectedCard===value?"선택됨":myTurn?"눌러서 선택":"내 손의 카드";
+    copy.append(title,effect,hint);
+    button.append(image,badge,copy);button.addEventListener("click",()=>selectCard(value));fragment.appendChild(button);
   });
   $("hand").replaceChildren(fragment);
 }
@@ -333,30 +409,36 @@ function selectCard(value){
 }
 
 function makeChoiceButton(text,active,onClick,className){
-  const button=document.createElement("button");button.type="button";button.className=`${className}${active?" active":""}`;button.textContent=text;button.addEventListener("click",onClick);return button;
+  const button=document.createElement("button");button.type="button";button.className=`${className}${active?" active":""}`;button.textContent=text;button.setAttribute("aria-pressed",String(active));button.addEventListener("click",onClick);return button;
 }
 
 function renderControls(){
   const controls=$("controls");
   if(!selectedCard||gameState?.turnPlayerId!==lobby.snapshot().myId||!myPlayer()?.alive){controls.classList.add("hidden");return}
   controls.classList.remove("hidden");
-  $("controlTitle").textContent=`${selectedCard} ${CARD_META[selectedCard].name} · ${CARD_META[selectedCard].effect}`;
+  $("controlTitle").textContent=`선택한 카드 · ${selectedCard} ${CARD_META[selectedCard].name}`;
   const targetFragment=document.createDocumentFragment();
   const targets=validTargets(selectedCard);
   targets.forEach(player=>targetFragment.appendChild(makeChoiceButton(player.id===lobby.snapshot().myId?`${player.name} · 나`:player.name,selectedTarget===player.id,()=>{selectedTarget=player.id;renderControls()},"targetButton")));
   $("targetChoices").replaceChildren(targetFragment);
   $("targetChoices").classList.toggle("hidden",!targets.length);
+  $("targetPrompt").classList.toggle("hidden",!targets.length);
+  $("targetPrompt").textContent=selectedTarget?`대상 · ${playerById(selectedTarget)?.name}`:"② 누구에게 사용할까요?";
 
   const guessFragment=document.createDocumentFragment();
   if(selectedCard===1&&targets.length){
-    for(let value=2;value<=8;value+=1){guessFragment.appendChild(makeChoiceButton(`${value} ${CARD_META[value].name}`,selectedGuess===value,()=>{selectedGuess=value;renderControls()},"guessButton"))}
+    for(let value=2;value<=8;value+=1){const choice=makeChoiceButton(`${value} ${CARD_META[value].name}`,selectedGuess===value,()=>{selectedGuess=value;renderControls()},"guessButton");choice.disabled=!selectedTarget;guessFragment.appendChild(choice)}
   }
   $("guessChoices").replaceChildren(guessFragment);
   $("guessChoices").classList.toggle("hidden",selectedCard!==1||!targets.length);
+  $("guessPrompt").classList.toggle("hidden",selectedCard!==1||!targets.length);
+  $("guessPrompt").textContent="③ 상대가 가진 카드를 추측하세요. 근위병(1)은 고를 수 없습니다.";
   const targetReady=!requiresTarget(selectedCard)||Boolean(selectedTarget);
   const guessReady=selectedCard!==1||!targets.length||Number.isInteger(selectedGuess);
   $("playBtn").disabled=actionPending||!targetReady||!guessReady;
-  $("playBtn").textContent=actionPending?"처리 중...":`${CARD_META[selectedCard].name} 카드 내기`;
+  $("playReadiness").textContent=actionPending?"카드를 내고 있습니다.":!targetReady?"먼저 대상을 선택하세요.":!guessReady?"상대가 가진 카드를 하나 고르세요.":selectedCard===8?"공주를 내면 이번 라운드에서 내가 탈락합니다.":selectedTarget?`${playerById(selectedTarget)?.name}에게 ${CARD_META[selectedCard].name} 사용${selectedGuess?` · ${CARD_META[selectedGuess].name}(으)로 추측`:""}`:[1,2,3,6].includes(selectedCard)?"대상으로 고를 수 있는 사람이 없어 효과 없이 카드를 냅니다.":"아래 버튼을 누르면 선택한 카드를 냅니다.";
+  $("playBtn").textContent=actionPending?"처리 중...":`${CARD_META[selectedCard].name} 내기`;
+  $("playReadiness").classList.toggle("warning",selectedCard===8);
 }
 
 function submitPlay(){
@@ -410,7 +492,7 @@ function renderGame(){
   if(gameState.phase==="playing"){
     $("playingArea").classList.remove("hidden");
     const mine=myPlayer();
-    $("turnNotice").textContent=!mine?.alive?"이번 라운드에서 탈락했습니다. 남은 플레이를 지켜보세요.":gameState.turnPlayerId===lobby.snapshot().myId?"내 차례입니다. 카드 한 장을 선택하세요.":`${active?.name||"다른 플레이어"}님의 행동을 기다리는 중입니다.`;
+    $("turnNotice").textContent=!mine?.alive?"이번 라운드에서 탈락했습니다. 남은 플레이를 지켜보세요.":gameState.turnPlayerId===lobby.snapshot().myId?(isForcedQueen()?"왕자 또는 왕과 함께 들고 있으므로 왕비를 내야 합니다.":"① 두 카드의 효과를 읽고, 이번에 낼 카드를 선택하세요."):`${active?.name||"다른 플레이어"}님의 행동을 기다리는 중입니다.`;
     renderHand();renderControls();
   }
   renderTurnClock();

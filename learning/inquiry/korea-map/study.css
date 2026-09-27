@@ -75,3 +75,18 @@ button:focus-visible, select:focus-visible, summary:focus-visible { outline: 3px
   #lessonDiagram .visual-comparison { grid-template-columns: 1fr; margin-top: 0; }
   #lessonDiagram .comparison-cell { padding: 9px; gap: 7px; }
 }
+
+/* 비교표는 옆 칸 때문에 압축하지 않는다. 이름과 해설은 표 아래에 둔다. */
+#lessonDiagram.has-comparison-table { display: block; }
+.has-comparison-table .concept-visual { background: #fff; border-radius: 4px; }
+.concept-table { width: 100%; table-layout: fixed; border-collapse: collapse; color: #233e48; font-size: 15px; line-height: 1.6; }
+.concept-table caption { text-align: left; padding: 8px 4px 18px; font-size: 18px; font-weight: 700; }
+.concept-table .criteria { width: 30%; }
+.concept-table th, .concept-table td { padding: 17px 10px; border-bottom: 1px solid #ccd7da; text-align: center; word-break: keep-all; overflow-wrap: anywhere; }
+.concept-table thead { background: #edf2f3; }
+.concept-table thead th { border-top: 2px solid #607d85; }
+.concept-table thead th:nth-child(2) { color: #176c78; }
+.concept-table thead th:nth-child(3) { color: #a74e30; }
+.concept-table tbody th { font-weight: 500; background: #f8faf9; }
+.concept-table .table-evidence { background: #e5efe3; box-shadow: inset 3px 0 #24844c; }
+@media (max-width: 480px) { .concept-table { font-size: 14px; } .concept-table th, .concept-table td { padding: 13px 7px; } .concept-table caption { font-size: 16px; } }

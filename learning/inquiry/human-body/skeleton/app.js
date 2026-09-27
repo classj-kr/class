@@ -642,8 +642,8 @@
 
                 if (skeletonHudText) {
                     skeletonHudText.innerHTML = currentSceneKey === 'sarcomere' ?
-                        '손잡이나 단추로 팔을 움직이면 <strong>근절 길이(X)와 I대·H대가 실시간으로 줄어들고 A대(1.60μm)는 불변</strong>하는 것을 확인하세요.' :
-                        '화면의 <strong>[✋ 잡고 당기기]</strong> 핸들을 마우스로 잡고 당겨 이두근과 삼두근의 실시간 수축을 확인하세요.';
+                        '손잡이나 단추로 팔을 움직이면 <strong>근절 길이(X)와 I대·H대가 줄어들고 A대(1.60μm)는 불변</strong>하는 것을 확인하세요.' :
+                        '화면의 <strong>[✋ 잡고 당기기]</strong> 핸들을 마우스로 잡고 당겨 이두근과 삼두근의 수축을 확인하세요.';
                 }
 
                 if (typeof SimEngine !== 'undefined' && SimEngine.SoundFX) SimEngine.SoundFX.playClick();

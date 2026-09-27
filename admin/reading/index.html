@@ -37,7 +37,7 @@
 
     <section class="stats" aria-label="문제은행 현황">
       <div class="stat"><span>초안</span><strong id="statDraft">0</strong></div>
-      <div class="stat"><span>자동검사 완료</span><strong id="statChecked">0</strong></div>
+      <div class="stat"><span>문항 검사 완료</span><strong id="statChecked">0</strong></div>
       <div class="stat"><span>검수 대기</span><strong id="statReview">0</strong></div>
       <div class="stat"><span>출처 만료</span><strong id="statExpired">0</strong></div>
       <div class="stat"><span>공개</span><strong id="statPublished">0</strong></div>
@@ -49,7 +49,7 @@
         <p class="section-kicker">REVIEW FIRST</p>
         <strong>문항은 일괄 생성하고, 이곳에서는 검수와 예외 수정만 합니다.</strong>
       </div>
-      <p>자동검사를 통과한 문항을 확인하고 승인하세요. 새 문항을 하나씩 만드는 기능은 예외 관리 도구 안에 보관했습니다.</p>
+      <p>문항 검사를 통과한 문항을 확인하고 승인하세요. 새 문항을 하나씩 만드는 기능은 예외 관리 도구 안에 보관했습니다.</p>
     </section>
 
     <main class="workbench">
@@ -90,7 +90,7 @@
             <select id="statusFilter">
               <option value="">전체</option>
               <option value="draft">초안</option>
-              <option value="auto_checked">자동검사 완료</option>
+              <option value="auto_checked">문항 검사 완료</option>
               <option value="review_pending">검수 대기</option>
               <option value="published">공개</option>
             </select>
@@ -124,7 +124,7 @@
         <div id="emptyState" class="empty-state">
           <div class="empty-mark">Aa</div>
           <h2>검수할 문항을 선택하세요</h2>
-          <p>왼쪽 대기열에서 문항을 선택해 자동검사 결과와 정답 근거를 확인하세요.</p>
+          <p>왼쪽 대기열에서 문항을 선택해 문항 검사 결과와 정답 근거를 확인하세요.</p>
         </div>
 
         <section id="topicEditor" hidden>
@@ -253,7 +253,7 @@
                   <label class="field"><span>레벨</span><select id="itemLevel"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option></select></label>
                   <label class="field"><span>유형</span><select id="questionType"></select></label>
                 </div>
-                <label class="field"><span>문항 키 <small>선택</small></span><input id="itemKey" placeholder="비우면 자동 생성"></label>
+                <label class="field"><span>문항 키 <small>선택</small></span><input id="itemKey" placeholder="비워 두면 생성됩니다"></label>
               </div>
 
               <label class="field">
@@ -277,7 +277,7 @@
 
               <div class="action-row sticky-actions">
                 <button id="saveItemButton" class="button primary" type="submit">초안 저장</button>
-                <button id="runCheckButton" class="button accent" type="button" hidden>자동검사</button>
+                <button id="runCheckButton" class="button accent" type="button" hidden>문항 검사</button>
                 <button id="submitForReviewButton" class="button accent" type="button" hidden>검수 제출</button>
                 <span id="itemSaveStatus" class="save-status" role="status"></span>
               </div>
@@ -296,11 +296,11 @@
 
               <section class="check-card">
                 <div class="preview-head">
-                  <span>자동검사</span>
+                  <span>문항 검사</span>
                   <span id="checkState" class="count-pill neutral">실행 전</span>
                 </div>
                 <div id="checkResults" class="check-results">
-                  <p>초안을 저장한 뒤 자동검사를 실행하세요.</p>
+                  <p>초안을 저장한 뒤 문항 검사를 실행하세요.</p>
                 </div>
               </section>
 

@@ -207,6 +207,7 @@
     const caption = document.querySelector("#historyMapCaption");
     caption.replaceChildren(el("strong", "", state.date || scene.period), el("span", "", state.stageTitle || scene.title));
     const legend = document.querySelector("#mapKey");
+    legend.hidden = !!state.locationOnly;
     legend.replaceChildren(...(state.legend || []).map(item => {
       const row = el("span", "key-item");
       const swatch = el("span", `key-swatch${item.pattern ? " history-hatch" : ""}`);
