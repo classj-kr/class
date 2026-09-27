@@ -255,13 +255,19 @@
     for (let r = 0; r < n; r += 1) {
       const rowClue = document.createElement('div');
       rowClue.className = 'nb-row-clue';
-      rowClue.textContent = clues.rows[r].join(' ');
+      clues.rows[r].forEach(num => {
+        const span = document.createElement('span');
+        span.textContent = num;
+        rowClue.append(span);
+      });
       boardElement.append(rowClue);
 
       for (let c = 0; c < n; c += 1) {
         const cell = document.createElement('button');
         cell.type = 'button';
         cell.className = 'nb-cell';
+        if ((c + 1) % 5 === 0 && c < n - 1) cell.classList.add('group-right');
+        if ((r + 1) % 5 === 0 && r < n - 1) cell.classList.add('group-bottom');
         if (filled[r][c]) cell.classList.add('filled');
         if (marked[r][c] && !filled[r][c]) cell.classList.add('marked');
         cell.dataset.r = String(r);

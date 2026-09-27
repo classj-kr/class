@@ -1,27 +1,76 @@
-
-/* The puzzle occupies the full available height; controls form a separate column. */
-body:has(#gameScreen:not([hidden])) .page-shell{height:100dvh;min-height:0;box-sizing:border-box;padding:8px;width:100%}
-#gameScreen:not([hidden]){display:grid;width:100%;height:100%;min-height:0;box-sizing:border-box;padding:12px;grid-template-columns:minmax(0,1fr) 240px;grid-template-rows:auto auto auto minmax(0,1fr) auto;gap:10px;container-type:size}
-#gameScreen .game-layout,#gameScreen .play-column{display:contents}
-#gameScreen .game-topbar{grid-column:2;grid-row:1;margin:0}
-#gameScreen .stats{grid-column:2;grid-row:2;margin:0}
-#gameScreen .tool-switch{grid-column:2;grid-row:3;margin:0}
-#gameScreen .status{grid-column:2;grid-row:4;align-self:start;margin:0}
-#gameScreen .actions{grid-column:2;grid-row:5;display:flex;flex-direction:column;margin:0}
-#gameScreen .board-wrap{grid-column:1;grid-row:1/6;width:min(calc(100cqw - 250px),100cqh);max-width:none;aspect-ratio:1;box-sizing:border-box;margin:auto;padding:10px;container-type:inline-size;overflow:visible}
-#gameScreen #board{width:100%;height:100%;min-height:0}
-#gameScreen .guide-panel{position:fixed;inset:12px 12px 12px auto;width:min(420px,90vw);max-height:none;z-index:51;overflow:auto}
-#gameScreen .nono-board.size-5{--cell:calc((100cqw - 10px)/6);--clue:var(--cell)}
-#gameScreen .nono-board.size-10{--cell:calc((100cqw - 20px)/11);--clue:var(--cell)}
-#gameScreen .nono-board.size-15{--cell:calc((100cqw - 30px)/16);--clue:var(--cell)}
-@media(orientation:portrait){
- #gameScreen:not([hidden]){grid-template-columns:1fr 1fr;grid-template-rows:auto auto minmax(0,1fr) auto auto}
- #gameScreen .game-topbar{grid-column:1/-1;grid-row:1}
- #gameScreen .stats{grid-column:1;grid-row:2}
- #gameScreen .tool-switch{grid-column:2;grid-row:2}
- #gameScreen .board-wrap{grid-column:1/-1;grid-row:3;width:min(100cqw,calc(100cqh - 220px))}
- #gameScreen .status{grid-column:1/-1;grid-row:4}
- #gameScreen .actions{grid-column:1/-1;grid-row:5;flex-direction:row;justify-content:center}
+/* Preserve the games' compact, centered board and surrounding controls. */
+body:has(#gameScreen:not([hidden])) .page-shell {
+  width: min(100% - 24px, 1200px);
+  min-height: 100dvh;
+  padding: 64px 0 24px;
+  align-items: start;
+}
+#gameScreen {
+  font-family: "Noto Sans KR", "Malgun Gothic", system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  padding: 20px 24px;
+}
+#gameScreen .game-topbar { margin-bottom: 12px; gap: 16px; }
+#gameScreen .text-button {
+  min-height: 44px;
+  padding: 8px 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(0,0,0,.18);
+  color: var(--ink);
+  font: 600 16px/1.5 "Noto Sans KR", "Malgun Gothic", system-ui, sans-serif;
+  text-shadow: none;
+  letter-spacing: 0;
+}
+#gameScreen .game-topbar span { font-size: 15px; }
+#gameScreen .stats { max-width: 470px; margin-bottom: 12px; }
+#gameScreen .stats span { font-size: 13px; }
+#gameScreen .stats strong { font-size: 20px; }
+#gameScreen .stats div { padding: 6px; }
+#gameScreen .actions button { font-size: 16px; font-weight: 700; }
+#gameScreen .status { margin: 10px 0; }
+#gameScreen .board-wrap:has(.nono-board) {
+  width: min(100%, 560px);
+  container-type: inline-size;
+  padding: 10px;
+}
+#gameScreen .nono-board.size-5 { --clue: 80px; --cell: calc((100cqw - var(--clue) - 10px) / 5); }
+#gameScreen .nono-board.size-10 { --clue: 90px; --cell: calc((100cqw - var(--clue) - 20px) / 10); }
+#gameScreen .nono-board.size-15 { --clue: 110px; --cell: calc((100cqw - var(--clue) - 30px) / 15); }
+#gameScreen .nb-row-clue, #gameScreen .nb-col-clue {
+  color: #fff8e8;
+  font-size: 20px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.15;
+  gap: 3px;
+  text-shadow: none;
+}
+#gameScreen .size-5 .nb-row-clue, #gameScreen .size-5 .nb-col-clue { font-size: 26px; }
+#gameScreen .nb-row-clue span { min-width: .65em; text-align: center; }
+#gameScreen .nb-cell { background: #f4e2be; border-color: #b49160; color: #653422; font-size: 20px; }
+#gameScreen .nb-cell.filled { background: #603819; border-color: #e8b66e; box-shadow: inset 0 0 0 2px #e8b66e; }
+#gameScreen .nb-cell.marked { color: #653422; }
+#gameScreen .nb-cell.group-right { border-right: 3px solid #22150c; }
+#gameScreen .nb-cell.group-bottom { border-bottom: 3px solid #22150c; }
+@media (max-width: 600px) {
+  #gameScreen { padding: 14px 10px 20px; }
+  #gameScreen .game-topbar { gap: 8px; }
+  #gameScreen .nono-board.size-5 { --clue: 64px; }
+  #gameScreen .nono-board.size-10 { --clue: 74px; }
+  #gameScreen .nono-board.size-15 { --clue: 92px; }
+  #gameScreen .nb-row-clue, #gameScreen .nb-col-clue { font-size: 16px; gap: 2px; }
+  #gameScreen .size-5 .nb-row-clue, #gameScreen .size-5 .nb-col-clue { font-size: 22px; }
+  #gameScreen .nb-cell { font-size: 16px; }
 }
 
-#gameScreen .nb-cell{border-color:rgba(255,240,199,.32)}
+@media (max-width: 899px) {
+  #gameScreen .guide-panel { top: 64px; }
+}
+
+#gameScreen .nb-row-clue { gap: 4px; }
+@media (min-width: 900px) {
+  #gameScreen .board-wrap { width: min(100%, 470px, max(320px, calc(100dvh - 370px))); }
+  #gameScreen .board-wrap:has(.nono-board) { width: min(100%, 480px, max(340px, calc(100dvh - 380px))); }
+}

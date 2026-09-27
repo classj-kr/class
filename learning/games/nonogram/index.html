@@ -11,8 +11,8 @@
   <script src="../../../assets/network/finisher-api.js"></script>
   <script src="../../../assets/network/finisher-board.js"></script>
   <script src="../../../assets/sound/music-control.js?v=20260910-click-cache-1" defer></script>
-<link rel="stylesheet" href="../puzzle-board-layout.css?v=20260921a">
-<link rel="stylesheet" href="../../../assets/network/single-player-entry.css?v=20260926-title-restore2">
+<link rel="stylesheet" href="../puzzle-board-layout.css?v=20260927-readability">
+<link rel="stylesheet" href="../../../assets/network/single-player-entry.css?v=20260927-titles">
 </head>
 <body data-game-navigation="single-player">
   <audio id="bgm" src="assets/sound/bgm.ogg" loop preload="auto"></audio>
@@ -44,7 +44,7 @@
 
     <section class="game-panel screen" id="gameScreen" aria-labelledby="gameTitle" hidden>
       <header class="game-topbar">
-        <button class="text-button" id="settingsButton" type="button">← SETTINGS</button>
+        <button class="text-button" id="settingsButton" type="button" aria-label="설정 화면으로 돌아가기">← SETTINGS</button>
         <span id="modeLabel">5 × 5</span>
       </header>
       <div class="game-layout">
@@ -118,6 +118,6 @@
     </div>
   </div>
 
-  <script src="app.js?v=20260926-button-labels"></script>
+  <script src="app.js?v=20260927-readability"></script>
 </body>
 </html>
