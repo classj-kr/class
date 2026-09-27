@@ -13,6 +13,7 @@ const retryBanks = [
   ['한자성어', 'learning/literacy-numeracy/classical-chinese-idioms/app.js', /다른 답을 골라보세요/],
   // 어휘 앱 화면 글은 쉬운 영어로 바뀌었다(2026-08-02).
   ['어휘', 'learning/literacy-numeracy/vocabulary/app.js', /Try again\. Pick a different picture\./],
+  ['어휘 차시 확인 문제', 'learning/literacy-numeracy/vocabulary/app.js', /lessonQuizHadWrong = true;[\s\S]*?다시 생각하고 다른 답을 골라보세요/],
   ['국내 지도(지리·유물·유적)', 'learning/inquiry/korea-map/app.js', /다시 생각하고 다른 답을 골라보세요/],
   ['주기율표', 'learning/inquiry/periodic-table/app.js', /다시 생각하고 다른 답을 골라보세요/],
   ['지진파와 진앙', 'learning/inquiry/science-lab/earthquake/app.js', /다시 생각하고 다른 답을 골라보세요/],
@@ -42,6 +43,11 @@ assert.doesNotMatch(
   read('learning/inquiry/space/solar-system/app.js'),
   /오답입니다\. 정답은/,
   '태양계 문제는 첫 오답에 정답을 공개하면 안 됩니다.'
+);
+assert.doesNotMatch(
+  read('learning/literacy-numeracy/vocabulary/app.js'),
+  /아쉬워요\. \$\{state\.lessonQuizTarget\.word\}/,
+  '어휘 차시 확인 문제는 첫 오답에 정답을 공개하면 안 됩니다.'
 );
 
 console.log(`non-math choice retry contract: ${retryBanks.length} banks validated`);
