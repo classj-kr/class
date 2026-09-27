@@ -11,14 +11,14 @@ const retryBanks = [
   ['맞춤법', 'learning/literacy-numeracy/spelling/app.js', /다시 생각하고 다른 답을 골라보세요/],
   ['속담', 'learning/literacy-numeracy/proverbs/app.js', /다시 생각하고 다른 답을 골라보세요/],
   ['한자성어', 'learning/literacy-numeracy/classical-chinese-idioms/app.js', /다른 답을 골라보세요/],
-  ['어휘', 'learning/literacy-numeracy/vocabulary/app.js', /다시 생각하고 다른 그림을 골라보세요/],
+  // 어휘 앱 화면 글은 쉬운 영어로 바뀌었다(2026-08-02).
+  ['어휘', 'learning/literacy-numeracy/vocabulary/app.js', /Try again\. Pick a different picture\./],
   ['국내 지도(지리·유물·유적)', 'learning/inquiry/korea-map/app.js', /다시 생각하고 다른 답을 골라보세요/],
   ['주기율표', 'learning/inquiry/periodic-table/app.js', /다시 생각하고 다른 답을 골라보세요/],
   ['지진파와 진앙', 'learning/inquiry/science-lab/earthquake/app.js', /다시 생각하고 다른 답을 골라보세요/],
   ['용해도', 'learning/inquiry/science-lab/solubility/app.js', /다시 생각하고 다른 답을 골라보세요/],
-  ['별과 별자리', 'learning/inquiry/space/constellations/app.js', /다시 생각하고 다른 답을 골라보세요/],
-  ['지구와 달', 'learning/inquiry/space/earth-moon/app.js', /다시 생각하고 다른 답을 골라보세요/],
-  ['태양계', 'learning/inquiry/space/solar-system/app.js', /다시 생각하고 다른 답을 골라보세요/],
+  // 별과 별자리·지구와 달·태양계는 공용 quiz-board.js로 문제를 푼다(세 앱이 이것을 쓰는지는 shuffle 계약이 본다).
+  ['우주관찰 확인 문제', 'learning/inquiry/space/quiz-board.js', /다시 생각하고 다른 답을 골라보세요/],
   ['클래식 음악', 'learning/arts/classical-music/app.js', /다시 생각하고 다른 답을 골라보세요/],
   ['음악', 'learning/arts/music-studio/app.js', /다시 들어보세요/],
   ['미술 감상', 'learning/arts/art-appreciation/museum/museum.js', /다시 생각하고 다른 답을 골라보세요/]
