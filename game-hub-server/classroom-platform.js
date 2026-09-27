@@ -6683,61 +6683,79 @@ function createClassroomPlatform(options = {}) {
   }));
 
   // School Admin (Principal / Vice Principal) APIs
+  // 전교 출결 현황판. 숫자를 누르면 누구인지 나오도록 셈이 아니라 학생 한 명 한 줄로 준다.
+  // 셈은 화면이 학생 단위로 한다(한 학생에게 알림과 결석계가 함께 있어도 한 번).
+  // 담임 화면(/teacher/class-attendance)과 같은 까닭으로 사유는 보내지 않는다.
   router.get("/school-admin/dashboard", asyncRoute(async (req, res) => {
     const { profile } = await requireSchoolAdmin(req);
-    const date = String(req.query.date || new Date().toISOString().split('T')[0]);
-    
-    // Total students per class
+    const date = String(req.query.date || new Intl.DateTimeFormat("sv-SE", { timeZone: "Asia/Seoul" }).format(new Date()));
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(date) || Number.isNaN(Date.parse(date))) {
+      throw new HttpError(400, "INVALID_DATE", "날짜를 확인해 주세요.");
+    }
+
+    // 재적: 그 날짜 해의 명단 하나만 센다. 학년도가 여럿 쌓이면 예전에는 모두 더했다.
+    // 아직 새 학년도 명단이 없으면 가장 가까운 앞 해의 명단을 쓴다. 예전 학급 명단
+    // (classroom_students)은 전교 명단에 같은 번호가 없을 때만 보탠다.
     const rosterRes = await pool.query(
-      `SELECT g.grade, g.class_number, COUNT(DISTINCT g.st_id) as total_students
-       FROM (
-         SELECT grade, class_number, id::TEXT as st_id FROM school_students WHERE school_id = $1
+      `WITH yr AS (
+         SELECT COALESCE(
+           (SELECT MAX(academic_year) FROM school_students WHERE school_id = $1 AND academic_year <= $2),
+           $2) AS y
+       )
+       SELECT grade, class_number, student_number, name FROM (
+         SELECT ss.grade, ss.class_number, ss.student_number, ss.roster_name AS name
+         FROM school_students ss, yr
+         WHERE ss.school_id = $1 AND ss.academic_year = yr.y
          UNION ALL
-         SELECT c.grade, c.class_number, s.id::TEXT as st_id
-         FROM classroom_classes c
-         JOIN classroom_students s ON s.class_id = c.id
-         WHERE c.school_id = $1
-       ) g
-       WHERE g.grade IS NOT NULL AND g.class_number IS NOT NULL
-       GROUP BY g.grade, g.class_number
-       ORDER BY g.grade, g.class_number`,
-      [profile.school_id]
+         SELECT c.grade, c.class_number, s.student_number, s.roster_name AS name
+         FROM classroom_students s
+         JOIN classroom_classes c ON c.id = s.class_id, yr
+         WHERE c.school_id = $1 AND c.academic_year = yr.y
+           AND NOT EXISTS (
+             SELECT 1 FROM school_students ss
+             WHERE ss.school_id = $1 AND ss.academic_year = yr.y
+               AND ss.grade = c.grade AND ss.class_number = c.class_number
+               AND ss.student_number = s.student_number
+           )
+       ) r
+       WHERE grade IS NOT NULL AND class_number IS NOT NULL
+       ORDER BY grade, class_number, NULLIF(regexp_replace(student_number, '\\D', '', 'g'), '')::int, student_number`,
+      [profile.school_id, Number(date.slice(0, 4))]
     );
 
-    // Absence notices for the date
-    const absenceRes = await pool.query(
-      `SELECT grade, class_number, notice_type, COUNT(*) as count
-       FROM classroom_absence_notices
-       WHERE school_id = $1 AND expected_date = $2
-       GROUP BY grade, class_number, notice_type`,
+    // 그날의 결석·지각·조퇴. 결석계는 담임 화면처럼 사유 종류로 지각·조퇴를 가르고,
+    // 승인된 체험학습은 학교에 없으니 결석 칸에 넣되 어디서 왔는지 적는다.
+    const eventsRes = await pool.query(
+      `SELECT grade, class_number, student_number::TEXT AS student_number, student_name AS name, kind, source
+       FROM (
+         SELECT grade, class_number, student_number, student_name, notice_type AS kind, '출결 알림' AS source
+         FROM classroom_absence_notices
+         WHERE school_id = $1 AND expected_date = $2::DATE AND notice_type IN ('결석', '지각', '조퇴')
+         UNION ALL
+         SELECT grade, class_number, student_number, student_name,
+                CASE WHEN reason_type LIKE '%지각%' THEN '지각'
+                     WHEN reason_type LIKE '%조퇴%' THEN '조퇴' ELSE '결석' END,
+                '결석계'
+         FROM classroom_absence_notes
+         WHERE school_id = $1 AND status = 'approved' AND $2::DATE BETWEEN start_date AND end_date
+         UNION ALL
+         SELECT grade, class_number, student_number, student_name, '결석', '체험학습'
+         FROM classroom_experiential_apps
+         WHERE school_id = $1 AND status = 'approved' AND $2::DATE BETWEEN start_date AND end_date
+       ) e
+       ORDER BY grade, class_number, NULLIF(regexp_replace(student_number::TEXT, '\\D', '', 'g'), '')::int, kind, source`,
       [profile.school_id, date]
     );
 
-    // Formal absence notes for the date (spanning start_date to end_date)
-    const formalNotesRes = await pool.query(
-      `SELECT grade, class_number, COUNT(*) as count
-       FROM classroom_absence_notes
-       WHERE school_id = $1 AND start_date <= $2 AND end_date >= $2 AND status = 'approved'
-       GROUP BY grade, class_number`,
-      [profile.school_id, date]
-    );
-
-    // Approved experiential learning applications for the date (spanning start_date to end_date)
-    const experientialAppsRes = await pool.query(
-      `SELECT grade, class_number, COUNT(*) as count
-       FROM classroom_experiential_apps
-       WHERE school_id = $1 AND start_date <= $2 AND end_date >= $2 AND status = 'approved'
-       GROUP BY grade, class_number`,
-      [profile.school_id, date]
-    );
-
+    res.set("Cache-Control", "no-store");
     res.json({
-      schoolName: profile.school_name,
       date,
-      roster: rosterRes.rows,
-      notices: absenceRes.rows,
-      formalNotes: formalNotesRes.rows,
-      experientialApps: experientialAppsRes.rows
+      students: rosterRes.rows.map((r) => ({
+        grade: r.grade, classNumber: r.class_number, number: String(r.student_number), name: r.name
+      })),
+      events: eventsRes.rows.map((r) => ({
+        grade: r.grade, classNumber: r.class_number, number: r.student_number, name: r.name, kind: r.kind, source: r.source
+      }))
     });
   }));
 

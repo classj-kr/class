@@ -124,6 +124,49 @@
         }
         .summary-card.warning { background: var(--danger-soft); border-color: #f0b8b5; }
         .summary-card.info { background: var(--info-soft); border-color: #b9d6ef; }
+        button.summary-card { font: inherit; color: inherit; text-align: left; width: 100%; cursor: pointer; }
+        button.summary-card:hover:not(:disabled), button.summary-card:focus-visible { border-color: var(--brand); }
+        button.summary-card:disabled { cursor: default; }
+
+        /* 숫자를 누르면 그 학생들이 나온다 */
+        .num-btn {
+            font: inherit; color: inherit;
+            background: none; border: none;
+            padding: 2px 6px; margin: -2px -6px;
+            border-radius: 6px;
+            cursor: pointer;
+            text-decoration: underline dotted;
+            text-underline-offset: 4px;
+        }
+        .num-btn:hover, .num-btn:focus-visible { background: var(--brand-soft); text-decoration-style: solid; }
+
+        .list-dialog {
+            width: min(460px, calc(100vw - 32px));
+            max-height: min(80vh, 680px);
+            padding: 0;
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            background: var(--paper);
+            color: var(--ink);
+            box-shadow: var(--shadow);
+        }
+        .list-dialog[open] { display: flex; flex-direction: column; }
+        .list-dialog::backdrop { background: rgba(24, 33, 29, 0.35); }
+        .dialog-head {
+            display: flex; align-items: center; justify-content: space-between; gap: 12px;
+            padding: 14px 16px;
+            border-bottom: 1px solid var(--line);
+        }
+        .dialog-head h2 { margin: 0; font-size: 18px; }
+        .name-list { list-style: none; margin: 0; padding: 4px 0; overflow: auto; font-variant-numeric: tabular-nums; }
+        .name-list li {
+            display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 2px 12px;
+            padding: 10px 16px;
+            border-bottom: 1px solid var(--canvas);
+        }
+        .name-list li:last-child { border-bottom: none; }
+        .name-list .who { word-break: keep-all; }
+        .name-list .src { color: var(--muted); font-size: 14px; white-space: nowrap; margin-left: auto; }
         .card-title { font-size: 15px; color: var(--muted); font-weight: 700; }
         .card-value { font-size: 32px; font-weight: 800; margin-top: 4px; font-variant-numeric: tabular-nums; }
 
@@ -182,22 +225,22 @@
         </div>
 
         <div class="summary-cards">
-            <div class="summary-card">
+            <button type="button" class="summary-card" data-class="all" data-list="total" disabled>
                 <div class="card-title">총 현원</div>
                 <div class="card-value" id="totalStudentsCount">0</div>
-            </div>
-            <div class="summary-card">
+            </button>
+            <button type="button" class="summary-card" data-class="all" data-list="absent" disabled>
                 <div class="card-title">결석</div>
                 <div class="card-value" id="totalAbsenceCount">0</div>
-            </div>
-            <div class="summary-card">
+            </button>
+            <button type="button" class="summary-card" data-class="all" data-list="tardy" disabled>
                 <div class="card-title">지각</div>
                 <div class="card-value" id="totalTardyCount">0</div>
-            </div>
-            <div class="summary-card">
+            </button>
+            <button type="button" class="summary-card" data-class="all" data-list="early" disabled>
                 <div class="card-title">조퇴</div>
                 <div class="card-value" id="totalEarlyCount">0</div>
-            </div>
+            </button>
         </div>
 
         <div class="table-wrap">
@@ -218,6 +261,14 @@
         </div>
     </div>
 </div>
+
+<dialog class="list-dialog" id="listDialog" aria-labelledby="listTitle">
+    <div class="dialog-head">
+        <h2 id="listTitle"></h2>
+        <button type="button" class="icon-btn" id="listClose" aria-label="닫기">✕</button>
+    </div>
+    <ol class="name-list" id="listBody"></ol>
+</dialog>
 
 <script>
 (() => {
@@ -255,100 +306,137 @@
         el.className = "status-msg" + (isError ? " error" : "");
     }
 
-    function renderDashboard(roster, notices, formalNotes, experientialApps) {
+    function esc(str) {
+        return String(str ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+    }
+
+    // 서버는 학생 한 명 한 줄로 준다. 셈은 여기서 학생 단위로 한다. 한 학생에게 출결 알림과
+    // 결석계가 함께 있어도 결석 한 명이다(예전에는 둘로 셌다).
+    const KIND_LIST = { "결석": "absent", "지각": "tardy", "조퇴": "early" };
+    const LIST_LABEL = { total: "재적", present: "출석", absent: "결석", tardy: "지각", early: "조퇴" };
+    let board = { classes: [], byKey: new Map() };
+
+    function buildBoard(students, events) {
+        const byKey = new Map();
+        const classOf = (grade, classNumber) => {
+            const key = `${grade}-${classNumber}`;
+            if (!byKey.has(key)) {
+                byKey.set(key, { key, grade, classNumber, total: [], absent: new Map(), tardy: new Map(), early: new Map() });
+            }
+            return byKey.get(key);
+        };
+        const rosterName = new Map();
+        for (const s of students) {
+            classOf(s.grade, s.classNumber).total.push(s);
+            rosterName.set(`${s.grade}-${s.classNumber}-${s.number}`, s.name);
+        }
+        for (const e of events) {
+            const list = KIND_LIST[e.kind];
+            if (!list) continue;
+            const bucket = classOf(e.grade, e.classNumber)[list];
+            const who = `${e.grade}-${e.classNumber}-${e.number}`;
+            const entry = bucket.get(who) || {
+                grade: e.grade, classNumber: e.classNumber, number: e.number,
+                name: rosterName.get(who) || e.name, sources: []
+            };
+            if (!entry.sources.includes(e.source)) entry.sources.push(e.source);
+            bucket.set(who, entry);
+        }
+        const classes = Array.from(byKey.values()).sort((a, b) => a.grade - b.grade || a.classNumber - b.classNumber);
+        for (const c of classes) {
+            c.present = c.total.filter((s) => !c.absent.has(`${s.grade}-${s.classNumber}-${s.number}`));
+            for (const list of ["absent", "tardy", "early"]) c[list] = Array.from(c[list].values());
+        }
+        return { classes, byKey };
+    }
+
+    function listOf(classKey, list) {
+        const scope = classKey === "all" ? board.classes : [board.byKey.get(classKey)].filter(Boolean);
+        return scope.flatMap((c) => c[list]);
+    }
+
+    function numCell(classKey, list, count, tone) {
+        const cls = count > 0 ? tone : "status-normal";
+        const inner = count > 0 ? `<button type="button" class="num-btn" data-class="${classKey}" data-list="${list}">${count}</button>` : count;
+        return `<td class="${cls || ""}">${inner}</td>`;
+    }
+
+    function renderDashboard(students, events) {
+        board = buildBoard(students, events);
         const tbody = document.getElementById("dashboardTableBody");
-        tbody.innerHTML = "";
-        let sumTotal = 0, sumPresent = 0, sumAbsence = 0, sumTardy = 0, sumEarly = 0;
-        const classMap = new Map();
+        tbody.innerHTML = board.classes.map((c) => `
+            <tr>
+                <td>${c.grade}학년 ${c.classNumber}반</td>
+                ${numCell(c.key, "total", c.total.length, "")}
+                ${numCell(c.key, "present", c.present.length, "")}
+                ${numCell(c.key, "absent", c.absent.length, "status-warning")}
+                ${numCell(c.key, "tardy", c.tardy.length, "status-info")}
+                ${numCell(c.key, "early", c.early.length, "status-info")}
+            </tr>
+        `).join("");
 
-        roster.forEach(r => {
-            const key = `${r.grade}-${r.class_number}`;
-            classMap.set(key, {
-                grade: r.grade,
-                classNum: r.class_number,
-                total: parseInt(r.total_students, 10),
-                absence: 0, tardy: 0, early: 0
-            });
-        });
-
-        notices.forEach(n => {
-            const key = `${n.grade}-${n.class_number}`;
-            if (!classMap.has(key)) {
-                classMap.set(key, { grade: n.grade, classNum: n.class_number, total: 0, absence: 0, tardy: 0, early: 0 });
-            }
-            const c = classMap.get(key);
-            if (n.notice_type === "결석") c.absence += parseInt(n.count, 10);
-            else if (n.notice_type === "지각") c.tardy += parseInt(n.count, 10);
-            else if (n.notice_type === "조퇴") c.early += parseInt(n.count, 10);
-        });
-
-        formalNotes.forEach(fn => {
-            const key = `${fn.grade}-${fn.class_number}`;
-            if (!classMap.has(key)) {
-                classMap.set(key, { grade: fn.grade, classNum: fn.class_number, total: 0, absence: 0, tardy: 0, early: 0 });
-            }
-            classMap.get(key).absence += parseInt(fn.count, 10);
-        });
-
-        (experientialApps || []).forEach(ea => {
-            const key = `${ea.grade}-${ea.class_number}`;
-            if (!classMap.has(key)) {
-                classMap.set(key, { grade: ea.grade, classNum: ea.class_number, total: 0, absence: 0, tardy: 0, early: 0 });
-            }
-            classMap.get(key).absence += parseInt(ea.count, 10);
-        });
-
-        const sortedClasses = Array.from(classMap.values()).sort((a, b) => {
-            if (a.grade !== b.grade) return a.grade - b.grade;
-            return a.classNum - b.classNum;
-        });
-
-        sortedClasses.forEach(c => {
-            const present = Math.max(0, c.total - c.absence);
-            sumTotal += c.total;
-            sumPresent += present;
-            sumAbsence += c.absence;
-            sumTardy += c.tardy;
-            sumEarly += c.early;
-
-            const tr = document.createElement("tr");
-            tr.innerHTML = `
-                <td>${c.grade}학년 ${c.classNum}반</td>
-                <td>${c.total}</td>
-                <td>${present}</td>
-                <td class="${c.absence > 0 ? "status-warning" : "status-normal"}">${c.absence}</td>
-                <td class="${c.tardy > 0 ? "status-info" : "status-normal"}">${c.tardy}</td>
-                <td class="${c.early > 0 ? "status-info" : "status-normal"}">${c.early}</td>
-            `;
-            tbody.appendChild(tr);
-        });
-
+        const sum = (list) => listOf("all", list).length;
+        const sumAbsence = sum("absent"), sumTardy = sum("tardy"), sumEarly = sum("early");
         document.getElementById("dashboardTableFoot").innerHTML = `
             <tr>
                 <td>총계</td>
-                <td>${sumTotal}</td>
-                <td>${sumPresent}</td>
-                <td class="${sumAbsence > 0 ? "status-warning" : ""}">${sumAbsence}</td>
-                <td class="${sumTardy > 0 ? "status-info" : ""}">${sumTardy}</td>
-                <td class="${sumEarly > 0 ? "status-info" : ""}">${sumEarly}</td>
+                ${numCell("all", "total", sum("total"), "")}
+                ${numCell("all", "present", sum("present"), "")}
+                ${numCell("all", "absent", sumAbsence, "status-warning")}
+                ${numCell("all", "tardy", sumTardy, "status-info")}
+                ${numCell("all", "early", sumEarly, "status-info")}
             </tr>
         `;
 
-        document.getElementById("totalStudentsCount").textContent = sumTotal;
-        document.getElementById("totalAbsenceCount").textContent = sumAbsence;
-        document.getElementById("totalTardyCount").textContent = sumTardy;
-        document.getElementById("totalEarlyCount").textContent = sumEarly;
-        document.getElementById("totalAbsenceCount").closest(".summary-card").classList.toggle("warning", sumAbsence > 0);
-        document.getElementById("totalTardyCount").closest(".summary-card").classList.toggle("info", sumTardy > 0);
-        document.getElementById("totalEarlyCount").closest(".summary-card").classList.toggle("info", sumEarly > 0);
+        const cards = [["totalStudentsCount", sum("total"), null], ["totalAbsenceCount", sumAbsence, "warning"],
+            ["totalTardyCount", sumTardy, "info"], ["totalEarlyCount", sumEarly, "info"]];
+        for (const [id, count, tone] of cards) {
+            const el = document.getElementById(id);
+            el.textContent = count;
+            const card = el.closest(".summary-card");
+            card.disabled = count === 0;
+            if (tone) card.classList.toggle(tone, count > 0);
+        }
     }
+
+    // ─── 명단 창 ───
+    const listDialog = document.getElementById("listDialog");
+
+    function openList(classKey, list) {
+        const rows = listOf(classKey, list);
+        const c = board.byKey.get(classKey);
+        const scopeLabel = classKey === "all"
+            ? (list === "total" ? "총 현원" : `전교 ${LIST_LABEL[list]}`)
+            : `${c.grade}학년 ${c.classNumber}반 ${LIST_LABEL[list]}`;
+        document.getElementById("listTitle").textContent = `${scopeLabel} ${rows.length}명`;
+        document.getElementById("listBody").innerHTML = rows.map((s) => `
+            <li>
+                <span class="who">${s.grade}학년 ${s.classNumber}반 ${esc(s.number)}번 ${esc(s.name)}</span>
+                ${s.sources ? `<span class="src">${esc(s.sources.join(" · "))}</span>` : ""}
+            </li>
+        `).join("");
+        listDialog.showModal();
+        document.getElementById("listBody").scrollTop = 0;
+    }
+
+    document.addEventListener("click", (event) => {
+        const target = event.target.closest("[data-list]");
+        if (target && !target.disabled) openList(target.dataset.class, target.dataset.list);
+    });
+    document.getElementById("listClose").addEventListener("click", () => listDialog.close());
+    // 창 바깥 어두운 곳을 누르면 닫는다.
+    listDialog.addEventListener("click", (event) => { if (event.target === listDialog) listDialog.close(); });
+    // 사이트 공용 뒤로가기는 명단 창부터 닫는다.
+    window.addEventListener("sitebackrequest", (event) => {
+        if (listDialog.open) { event.preventDefault(); listDialog.close(); }
+    });
 
     async function loadDashboard() {
         setStatus("불러오는 중…");
         try {
             const dateStr = document.getElementById("dashboardDate").value;
             const res = await api(`/api/school-admin/dashboard?date=${dateStr}`);
-            renderDashboard(res.roster, res.notices, res.formalNotes, res.experientialApps);
+            renderDashboard(res.students || [], res.events || []);
             setStatus("");
         } catch (error) {
             setStatus(error.message || "불러오지 못했습니다.", true);
