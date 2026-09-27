@@ -80,19 +80,29 @@ function renderStudy() {
 
 function buildChoices(correctIndex) {
   const correctItem = bank[correctIndex];
-  const sameCategory = shuffle(
-    Array.from({ length: bank.length }, (_, index) => index)
-      .filter((index) => index !== correctIndex && bank[index].category === correctItem.category)
-  );
-  const others = shuffle(
-    Array.from({ length: bank.length }, (_, index) => index)
-      .filter((index) => index !== correctIndex && bank[index].category !== correctItem.category)
-  );
+  // 뜻이 비슷해 이 상황에도 들어맞는 표현은 오답으로 내지 않는다(자료 파일의 헷갈리는 표현 묶음).
+  const lookalikes = correctItem.lookalikes || [];
+  const candidates = Array.from({ length: bank.length }, (_, index) => index)
+    .filter((index) => index !== correctIndex && !lookalikes.includes(bank[index].expression));
+  const sameCategory = shuffle(candidates.filter((index) => bank[index].category === correctItem.category));
+  const others = shuffle(candidates.filter((index) => bank[index].category !== correctItem.category));
   const choiceIndices = shuffle([correctIndex, ...sameCategory, ...others].slice(0, 3));
   return {
     answer: choiceIndices.indexOf(correctIndex),
     texts: choiceIndices.map((index) => bank[index].expression)
   };
+}
+
+// 마지막 글자에 받침이 있는지 보고 조사(은/는, 이라는/라는)를 고른다.
+function hasFinalConsonant(text) {
+  const code = text.charCodeAt(text.length - 1) - 0xac00;
+  return code >= 0 && code < 11172 && code % 28 !== 0;
+}
+
+function meaningSentence(item) {
+  const meaning = item.meaning.replace(/\.$/, "");
+  return "‘" + item.expression + "’" + (hasFinalConsonant(item.expression) ? "은" : "는") +
+    " ‘" + meaning + "’" + (hasFinalConsonant(meaning) ? "이라는" : "라는") + " 뜻이에요.";
 }
 
 function renderQuiz() {
@@ -136,7 +146,7 @@ function answer(choiceIndex, selectedButton) {
   });
   attempts += 1;
   if (!questionHadWrong) correct += 1;
-  byId("feedback").textContent = "정답! ‘" + item.expression + "’은 " + item.meaning;
+  byId("feedback").textContent = "정답! " + meaningSentence(item);
   byId("score").textContent = "정답 " + correct + " / " + attempts;
   byId("nextQuestion").disabled = false;
   byId("nextQuestion").textContent = quizPosition === BATCH_SIZE - 1 ? "결과 보기" : "다음 문제";

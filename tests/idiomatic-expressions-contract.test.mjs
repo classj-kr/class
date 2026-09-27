@@ -29,6 +29,22 @@ test("관용구 핵심 학습 은행은 선별된 완성형 자료다", () => {
   assert.doesNotMatch(expressions, /누워서 떡 먹기|가뭄에 콩 나듯|갈수록 태산|천 리 길도/);
 });
 
+test("뜻이 비슷한 관용어는 서로의 오답으로 나오지 않는다", () => {
+  const byExpression = new Map(data.map((item) => [item.expression, item]));
+  for (const item of data) {
+    assert.ok(Array.isArray(item.lookalikes), item.expression);
+    for (const other of item.lookalikes) {
+      assert.ok(byExpression.get(other).lookalikes.includes(item.expression), item.expression + " ↔ " + other);
+    }
+  }
+  assert.ok(byExpression.get("골머리를 썩이다").lookalikes.includes("머리를 굴리다"));
+  assert.ok(byExpression.get("기가 막히다").lookalikes.includes("기가 차다"));
+  assert.match(app, /lookalikes\.includes\(bank\[index\]\.expression\)/);
+  // 정답 풀이는 조사를 받침에 맞추고 "~라는 뜻이에요"로 끝낸다.
+  assert.doesNotMatch(app, /"’은 " \+ item\.meaning/);
+  assert.match(app, /뜻이에요/);
+});
+
 test("관용구 화면과 메인 메뉴가 내용별 차시 학습에 연결된다", () => {
   assert.match(menu, /href="learning\/literacy-numeracy\/idiomatic-expressions\/"/);
   assert.match(menu, /<strong>관용어<\/strong>/);

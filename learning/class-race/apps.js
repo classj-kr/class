@@ -179,11 +179,13 @@
                         category: category || "관용어",
                         prompt: "이 상황에 어울리는 관용어를 고르세요.",
                         sentence: situation || example,
-                        choices: withDistractors(expression, allExpressions),
+                        // 뜻이 비슷해 이 상황에도 맞는 표현(자료의 lookalikes)은 오답으로 내지 않는다.
+                        choices: withDistractors(expression, allExpressions.filter((text) => !(entry.lookalikes || []).includes(text))),
                         answer: expression,
                         explanation: `${expression}: ${meaning}`
                     });
-                    const lessonNumber = Number(entry.lesson);
+                    // 자료의 lesson은 0부터 센다(0 = 1차시).
+                    const lessonNumber = Number(entry.lesson) + 1;
                     if (Number.isInteger(lessonNumber) && lessonNumber > 0) {
                         if (!lessonMap.has(lessonNumber)) lessonMap.set(lessonNumber, []);
                         lessonMap.get(lessonNumber).push(id);
