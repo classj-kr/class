@@ -1946,6 +1946,1944 @@
      "en": "No thanks."
     }
    ]
+  },
+  "1836": {
+   "word": "once",
+   "overview": [
+    "once는 '한 번', '예전에'라는 뜻의 부사입니다. 어떤 일이 딱 한 번 일어났거나 옛날에 있었던 일을 말할 때 씁니다.",
+    "once a week(일주일에 한 번), once upon a time(옛날 옛적에)처럼 씁니다.",
+    "접속사로는 '일단 ~하면'이라는 뜻입니다. Once you learn to ride a bike, you never forget.(자전거 타는 법을 한번 배우면 절대 잊지 않아요.)",
+    "at once는 '즉시', '동시에'라는 뜻의 표현입니다."
+   ],
+   "easy": [
+    {
+     "word": "one time",
+     "en": "One time only.",
+     "ko": "딱 한 번."
+    },
+    {
+     "word": "before",
+     "en": "Long before.",
+     "ko": "오래전에."
+    }
+   ],
+   "etymology": [
+    "once는 고대 영어 ānes(하나의, 한 번의)에서 온 단어입니다.",
+    "one(하나)에 소유격을 나타내는 -s가 붙은 옛 형태입니다.",
+    "'한 번'이라는 뜻이 '예전 한때'로도 넓어졌습니다.",
+    "twice(두 번)도 two에 비슷한 방식으로 -s가 붙어 만들어진 오래된 말입니다.",
+    "once의 핵심 이미지는 '옛날이야기의 시작, 옛날 옛적에 📖'입니다."
+   ],
+   "meanings": [
+    "한 번",
+    "예전에, 한때",
+    "(접속사) 일단 ~하면"
+   ],
+   "examples": [
+    {
+     "en": "Once upon a time, there was a little girl.",
+     "ko": "옛날 옛적에, 한 어린 소녀가 있었어요."
+    },
+    {
+     "en": "We go to the dentist once a year.",
+     "ko": "우리는 1년에 한 번 치과에 가요."
+    },
+    {
+     "en": "I once lived in Busan.",
+     "ko": "나는 예전에 부산에 살았어요."
+    },
+    {
+     "en": "Once you finish, you can go play.",
+     "ko": "일단 끝내면 놀러 가도 돼."
+    },
+    {
+     "en": "Call me at once if you need help.",
+     "ko": "도움이 필요하면 즉시 전화해."
+    },
+    {
+     "en": "I've only met him once.",
+     "ko": "나는 그를 딱 한 번 만났어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "twice",
+     "ko": "두 번",
+     "en": "Twice a day."
+    },
+    {
+     "type": "연관어",
+     "word": "before",
+     "ko": "전에",
+     "en": "Never before."
+    },
+    {
+     "type": "연관어",
+     "word": "time",
+     "ko": "번, 횟수",
+     "en": "This time."
+    },
+    {
+     "type": "연관어",
+     "word": "again",
+     "ko": "다시",
+     "en": "Try again."
+    },
+    {
+     "type": "연관어",
+     "word": "when",
+     "ko": "~할 때",
+     "en": "When I arrive."
+    },
+    {
+     "type": "연관어",
+     "word": "immediately",
+     "ko": "즉시",
+     "en": "Leave immediately."
+    }
+   ]
+  },
+  "2584": {
+   "word": "such",
+   "overview": [
+    "such는 '그러한', '그렇게나'라는 뜻입니다. 앞에서 말한 것과 비슷한 것을 가리키거나, 놀라움을 강조할 때 씁니다.",
+    "such a good idea(정말 좋은 생각), such nice weather(정말 좋은 날씨)처럼 감탄하며 씁니다.",
+    "such as는 '~와 같은', '예를 들어'라는 뜻으로 예를 들 때 씁니다. animals such as cats and dogs(고양이나 개 같은 동물)",
+    "such a/an + 형용사 + 명사 순서로, so + 형용사와 순서가 다르니 주의하세요."
+   ],
+   "easy": [
+    {
+     "word": "so",
+     "en": "So nice!",
+     "ko": "정말 멋져!"
+    },
+    {
+     "word": "like",
+     "en": "Like this.",
+     "ko": "이렇게."
+    }
+   ],
+   "etymology": [
+    "such는 고대 영어 swylc(그러한)에서 온 단어입니다.",
+    "swā(그렇게)와 līc(모습, 같은)가 합쳐진 말로, '그와 같은 모습의'라는 뜻입니다.",
+    "each, which처럼 -lic가 붙은 옛 단어 가족의 한 단어입니다.",
+    "천 년 넘게 거의 같은 뜻으로 쓰여 온 오래된 단어입니다.",
+    "such의 핵심 이미지는 '와, 정말 그렇구나 하고 감탄하는 순간 😲'입니다."
+   ],
+   "meanings": [
+    "그러한, 그런",
+    "그렇게나, 정말 (강조)",
+    "(such as) ~와 같은"
+   ],
+   "examples": [
+    {
+     "en": "I've never seen such a big dog!",
+     "ko": "이렇게 큰 개는 처음 봐요!"
+    },
+    {
+     "en": "It was such a fun trip.",
+     "ko": "정말 재미있는 여행이었어요."
+    },
+    {
+     "en": "We need tools such as a hammer and nails.",
+     "ko": "우리는 망치나 못 같은 도구가 필요해요."
+    },
+    {
+     "en": "She is such a kind person.",
+     "ko": "그녀는 정말 친절한 사람이에요."
+    },
+    {
+     "en": "I don't know why he did such a thing.",
+     "ko": "그가 왜 그런 일을 했는지 모르겠어요."
+    },
+    {
+     "en": "It was such a hot day.",
+     "ko": "정말 더운 날이었어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "so",
+     "ko": "정말, 그렇게",
+     "en": "So kind."
+    },
+    {
+     "type": "연관어",
+     "word": "like",
+     "ko": "~와 같은",
+     "en": "Fruits like apples."
+    },
+    {
+     "type": "연관어",
+     "word": "as",
+     "ko": "~처럼, ~로서",
+     "en": "As a friend."
+    },
+    {
+     "type": "연관어",
+     "word": "this",
+     "ko": "이것",
+     "en": "This kind."
+    },
+    {
+     "type": "연관어",
+     "word": "kind",
+     "ko": "종류",
+     "en": "What kind?"
+    },
+    {
+     "type": "연관어",
+     "word": "amazing",
+     "ko": "놀라운",
+     "en": "Amazing news."
+    }
+   ]
+  },
+  "287": {
+   "word": "bit",
+   "overview": [
+    "bit은 '조금', '약간'이라는 뜻의 명사입니다. a bit 형태로 아주 자주 씁니다.",
+    "a bit tired(좀 피곤한), a little bit(아주 조금)처럼 씁니다.",
+    "'조각', '부분'이라는 뜻도 있습니다. a bit of paper(종이 한 조각)",
+    "컴퓨터 정보의 최소 단위 '비트'도 bit이라고 하고, bite(물다)의 과거형도 bit입니다."
+   ],
+   "easy": [
+    {
+     "word": "little",
+     "en": "A little water.",
+     "ko": "물 조금."
+    },
+    {
+     "word": "piece",
+     "en": "A piece of cake.",
+     "ko": "케이크 한 조각."
+    }
+   ],
+   "etymology": [
+    "bit은 고대 영어 bita(물어뜯은 조각)에서 온 단어입니다.",
+    "bite(물다)와 같은 뿌리로, '한 입 베어 문 조각'이라는 뜻이었습니다.",
+    "'베어 문 작은 조각'이 '조금', '약간'이라는 뜻으로 넓어졌습니다.",
+    "컴퓨터 용어 bit(비트)는 이와 달리 binary digit(이진 숫자)을 줄인 전혀 다른 새 단어입니다.",
+    "bit의 핵심 이미지는 '한 입만큼의 작은 양 🍪'입니다."
+   ],
+   "meanings": [
+    "조금, 약간 (a bit)",
+    "조각, 일부",
+    "(컴퓨터) 비트",
+    "물었다 (bite의 과거형)"
+   ],
+   "examples": [
+    {
+     "en": "I'm a bit tired today.",
+     "ko": "나는 오늘 좀 피곤해요."
+    },
+    {
+     "en": "Can I have a bit more rice?",
+     "ko": "밥 좀 더 먹어도 돼요?"
+    },
+    {
+     "en": "There's a bit of dust on the table.",
+     "ko": "탁자에 먼지가 조금 있어요."
+    },
+    {
+     "en": "Wait a bit, please.",
+     "ko": "잠깐만 기다려 주세요."
+    },
+    {
+     "en": "The puzzle is missing a few bits.",
+     "ko": "그 퍼즐은 몇 조각이 빠졌어요."
+    },
+    {
+     "en": "The dog bit the ball.",
+     "ko": "개가 공을 물었어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "little",
+     "ko": "조금의",
+     "en": "A little sugar."
+    },
+    {
+     "type": "유의어",
+     "word": "piece",
+     "ko": "조각",
+     "en": "A piece of bread."
+    },
+    {
+     "type": "연관어",
+     "word": "bite",
+     "ko": "물다",
+     "en": "Take a bite."
+    },
+    {
+     "type": "연관어",
+     "word": "some",
+     "ko": "약간의",
+     "en": "Some water."
+    },
+    {
+     "type": "연관어",
+     "word": "part",
+     "ko": "부분",
+     "en": "A part of the plan."
+    },
+    {
+     "type": "연관어",
+     "word": "moment",
+     "ko": "잠깐, 순간",
+     "en": "Wait a moment."
+    }
+   ]
+  },
+  "2993": {
+   "word": "yet",
+   "overview": [
+    "yet은 '아직'이라는 뜻의 부사입니다. 주로 부정문과 의문문에서 씁니다.",
+    "Not yet.(아직 아니야.), Have you finished yet?(벌써 끝냈어요?)처럼 씁니다.",
+    "'하지만', '그런데도'라는 뜻의 접속사로도 씁니다. small yet strong(작지만 강한)",
+    "'지금까지 중에서'라는 뜻으로 최상급과 함께 쓰기도 합니다. her best work yet(지금까지 그녀의 최고 작품)"
+   ],
+   "easy": [
+    {
+     "word": "still",
+     "en": "Still waiting.",
+     "ko": "아직 기다리고 있어."
+    },
+    {
+     "word": "already",
+     "en": "Already done.",
+     "ko": "이미 다 했어."
+    }
+   ],
+   "etymology": [
+    "yet은 고대 영어 gīet(아직, 이제까지)에서 온 단어입니다.",
+    "정확한 더 옛 뿌리는 잘 알려져 있지 않습니다.",
+    "천 년 넘게 '시간이 아직 이르지 않음'을 나타내는 말로 쓰여 왔습니다.",
+    "'아직 그렇지만'이라는 뜻에서 '그러나'라는 접속사 뜻도 자연스럽게 생겼습니다.",
+    "yet의 핵심 이미지는 '아직 오지 않은 순간을 기다리는 마음 ⏳'입니다."
+   ],
+   "meanings": [
+    "아직 (부정문·의문문)",
+    "이제까지 중에서 (최상급과 함께)",
+    "그러나, 그런데도 (접속사)"
+   ],
+   "examples": [
+    {
+     "en": "I haven't eaten breakfast yet.",
+     "ko": "나는 아직 아침을 안 먹었어요."
+    },
+    {
+     "en": "Is dinner ready yet?",
+     "ko": "저녁 벌써 다 됐어요?"
+    },
+    {
+     "en": "This is her best painting yet.",
+     "ko": "이건 지금까지 그녀의 최고 그림이에요."
+    },
+    {
+     "en": "The puppy is small yet very strong.",
+     "ko": "그 강아지는 작지만 아주 힘이 세요."
+    },
+    {
+     "en": "I don't know yet.",
+     "ko": "아직 모르겠어요."
+    },
+    {
+     "en": "We haven't decided yet.",
+     "ko": "우리는 아직 결정하지 않았어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "still",
+     "ko": "여전히",
+     "en": "Still thinking."
+    },
+    {
+     "type": "반의어",
+     "word": "already",
+     "ko": "이미",
+     "en": "Already there."
+    },
+    {
+     "type": "연관어",
+     "word": "but",
+     "ko": "그러나",
+     "en": "Small but strong."
+    },
+    {
+     "type": "연관어",
+     "word": "however",
+     "ko": "그러나",
+     "en": "However, it's true."
+    },
+    {
+     "type": "연관어",
+     "word": "now",
+     "ko": "지금",
+     "en": "Right now."
+    },
+    {
+     "type": "연관어",
+     "word": "soon",
+     "ko": "곧",
+     "en": "Soon after."
+    }
+   ]
+  },
+  "2949": {
+   "word": "whole",
+   "overview": [
+    "whole은 '전체의', '모든'이라는 뜻의 형용사입니다. 무엇을 빠짐없이 다 가리킬 때 씁니다.",
+    "the whole world(온 세계), the whole day(하루 종일)처럼 씁니다.",
+    "명사로는 '전체'라는 뜻으로 as a whole(전체적으로)처럼 씁니다.",
+    "whole은 h로 쓰지만 발음은 h를 하지 않고 hole(구멍)과 똑같이 발음됩니다."
+   ],
+   "easy": [
+    {
+     "word": "all",
+     "en": "All the students.",
+     "ko": "모든 학생들."
+    },
+    {
+     "word": "entire",
+     "en": "The entire class.",
+     "ko": "학급 전체."
+    }
+   ],
+   "etymology": [
+    "whole은 고대 영어 hāl(온전한, 다치지 않은, 건강한)에서 온 단어입니다.",
+    "health(건강), heal(치유하다), holy(거룩한)와 모두 같은 뿌리를 가진 형제 단어입니다.",
+    "'다치지 않고 온전한'이라는 뜻이 '전체의', '빠짐없는'으로 넓어졌습니다.",
+    "1500년대쯤 철자 앞에 w가 붙어 지금의 whole 모양이 되었습니다.",
+    "whole의 핵심 이미지는 '한 조각도 빠짐없는 온전한 하나 🥧'입니다."
+   ],
+   "meanings": [
+    "전체의, 모든 (형용사)",
+    "온전한, 상하지 않은 (형용사)",
+    "전체 (명사)"
+   ],
+   "examples": [
+    {
+     "en": "I read the whole book in one day.",
+     "ko": "나는 하루 만에 책 전체를 다 읽었어요."
+    },
+    {
+     "en": "The whole class went on a field trip.",
+     "ko": "반 전체가 소풍을 갔어요."
+    },
+    {
+     "en": "She ate the whole apple, even the seeds.",
+     "ko": "그녀는 사과를 씨까지 통째로 먹었어요."
+    },
+    {
+     "en": "It rained the whole weekend.",
+     "ko": "주말 내내 비가 왔어요."
+    },
+    {
+     "en": "Looking at it as a whole, the plan is good.",
+     "ko": "전체적으로 보면 그 계획은 좋아요."
+    },
+    {
+     "en": "The whole team worked together.",
+     "ko": "팀 전체가 함께 협력했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "entire",
+     "ko": "전체의",
+     "en": "The entire trip."
+    },
+    {
+     "type": "유의어",
+     "word": "all",
+     "ko": "모든",
+     "en": "All night."
+    },
+    {
+     "type": "반의어",
+     "word": "part",
+     "ko": "부분",
+     "en": "Part of the story."
+    },
+    {
+     "type": "파생어",
+     "word": "wholly",
+     "ko": "완전히",
+     "en": "Wholly true."
+    },
+    {
+     "type": "연관어",
+     "word": "complete",
+     "ko": "완전한",
+     "en": "A complete set."
+    },
+    {
+     "type": "연관어",
+     "word": "healthy",
+     "ko": "건강한",
+     "en": "A healthy body."
+    }
+   ]
+  },
+  "2943": {
+   "word": "while",
+   "overview": [
+    "while은 '~하는 동안', '~인데 반해'라는 뜻의 접속사입니다. 두 가지 일이 동시에 일어나거나 대조될 때 씁니다.",
+    "while I was sleeping(내가 자는 동안)처럼 시간을 나타냅니다.",
+    "I like tea, while my sister likes coffee.(나는 차를 좋아하는데, 언니는 커피를 좋아해요.)처럼 대조할 때도 씁니다.",
+    "명사로는 '잠깐 동안'이라는 뜻이 있습니다. for a while(잠시 동안), once in a while(가끔)"
+   ],
+   "easy": [
+    {
+     "word": "during",
+     "en": "During class.",
+     "ko": "수업 시간 동안."
+    },
+    {
+     "word": "as",
+     "en": "As I walk.",
+     "ko": "걸으면서."
+    }
+   ],
+   "etymology": [
+    "while은 고대 영어 hwīl(시간, 동안)에서 온 단어입니다.",
+    "'쉬다', '고요하다'라는 뜻의 아주 옛말과 이어진다고 봅니다.",
+    "처음에는 '한동안의 시간'을 뜻하는 명사였다가, 접속사로도 쓰이게 되었습니다.",
+    "meanwhile(그동안에)도 mean(중간)과 while이 합쳐진 말입니다.",
+    "while의 핵심 이미지는 '두 가지 일이 겹쳐 흐르는 시간 ⏱️'입니다."
+   ],
+   "meanings": [
+    "~하는 동안 (접속사)",
+    "~인데 반해, 그런데 (접속사)",
+    "잠깐, 얼마간의 시간 (명사)"
+   ],
+   "examples": [
+    {
+     "en": "I read a book while I waited.",
+     "ko": "나는 기다리는 동안 책을 읽었어요."
+    },
+    {
+     "en": "She called me while I was cooking.",
+     "ko": "내가 요리하는 동안 그녀가 전화했어요."
+    },
+    {
+     "en": "I love summer, while my brother loves winter.",
+     "ko": "나는 여름을 좋아하는데, 오빠는 겨울을 좋아해요."
+    },
+    {
+     "en": "Let's rest for a while.",
+     "ko": "잠깐 쉬자."
+    },
+    {
+     "en": "We haven't met in a while.",
+     "ko": "우리 한동안 못 만났네요."
+    },
+    {
+     "en": "He whistled while he worked.",
+     "ko": "그는 일하면서 휘파람을 불었어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "during",
+     "ko": "~ 동안",
+     "en": "During the trip."
+    },
+    {
+     "type": "유의어",
+     "word": "as",
+     "ko": "~하면서",
+     "en": "As she spoke."
+    },
+    {
+     "type": "파생어",
+     "word": "meanwhile",
+     "ko": "그동안에",
+     "en": "Meanwhile, at home."
+    },
+    {
+     "type": "연관어",
+     "word": "when",
+     "ko": "~할 때",
+     "en": "When I arrive."
+    },
+    {
+     "type": "연관어",
+     "word": "moment",
+     "ko": "순간",
+     "en": "A quiet moment."
+    },
+    {
+     "type": "연관어",
+     "word": "but",
+     "ko": "그러나",
+     "en": "Small but mighty."
+    }
+   ]
+  },
+  "2409": {
+   "word": "since",
+   "overview": [
+    "since는 '~ 이래로', '~부터'라는 뜻의 전치사·접속사입니다. 어떤 시점부터 지금까지 계속됨을 나타냅니다.",
+    "since 2020(2020년부터), since I was young(내가 어렸을 때부터)처럼 현재완료와 자주 씁니다.",
+    "'~이므로', '~이기 때문에'라는 뜻의 이유를 나타내는 접속사로도 씁니다. Since it's raining, let's stay home.(비가 오니까 집에 있자.)",
+    "부사로는 '그 후로'라는 뜻입니다. ever since(그때 이후로 계속)"
+   ],
+   "easy": [
+    {
+     "word": "from",
+     "en": "From today.",
+     "ko": "오늘부터."
+    },
+    {
+     "word": "because",
+     "en": "Because it's cold.",
+     "ko": "추우니까."
+    }
+   ],
+   "etymology": [
+    "since는 고대 영어 siththan(그 후에)이 줄어든 말입니다.",
+    "sīth(늦은, 나중의)와 than(그때)이 합쳐진 말로, '그 나중 때부터'라는 뜻이었습니다.",
+    "처음에는 시간을 나타내다가, 나중에 '~이므로'라는 이유의 뜻도 생겼습니다.",
+    "'그때부터 지금까지 이어져 왔다'라는 느낌이 이유를 말할 때도 자연스럽게 이어졌다고 봅니다.",
+    "since의 핵심 이미지는 '한 시점부터 지금까지 이어지는 화살표 ➡️'입니다."
+   ],
+   "meanings": [
+    "~ 이래로, ~부터 (전치사·접속사)",
+    "~이므로, ~이기 때문에 (접속사)",
+    "그 후로 (부사)"
+   ],
+   "examples": [
+    {
+     "en": "I've lived here since 2019.",
+     "ko": "나는 2019년부터 여기 살고 있어요."
+    },
+    {
+     "en": "She has been sick since Monday.",
+     "ko": "그녀는 월요일부터 아팠어요."
+    },
+    {
+     "en": "Since it's late, let's go home.",
+     "ko": "늦었으니까 집에 가자."
+    },
+    {
+     "en": "We haven't seen each other since then.",
+     "ko": "우리는 그 후로 서로 못 만났어요."
+    },
+    {
+     "en": "Since you're here, can you help me?",
+     "ko": "여기 온 김에 나 좀 도와줄래?"
+    },
+    {
+     "en": "How long has it been since we last met?",
+     "ko": "우리 마지막으로 만난 지 얼마나 됐죠?"
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "because",
+     "ko": "~ 때문에",
+     "en": "Because I'm late."
+    },
+    {
+     "type": "연관어",
+     "word": "from",
+     "ko": "~부터",
+     "en": "From now on."
+    },
+    {
+     "type": "연관어",
+     "word": "ago",
+     "ko": "~ 전에",
+     "en": "Two years ago."
+    },
+    {
+     "type": "연관어",
+     "word": "for",
+     "ko": "~ 동안",
+     "en": "For three years."
+    },
+    {
+     "type": "연관어",
+     "word": "until",
+     "ko": "~까지",
+     "en": "Until tomorrow."
+    },
+    {
+     "type": "연관어",
+     "word": "then",
+     "ko": "그때",
+     "en": "Since then."
+    }
+   ]
+  },
+  "1643": {
+   "word": "matter",
+   "overview": [
+    "matter는 '문제', '일'이라는 뜻의 명사이자 '중요하다'라는 뜻의 동사입니다.",
+    "What's the matter?(무슨 일이야?, 왜 그래?)처럼 자주 씁니다.",
+    "It doesn't matter.(그건 중요하지 않아요.), Money doesn't matter.(돈은 중요하지 않아요.)처럼 동사로 씁니다.",
+    "과학에서는 '물질'이라는 뜻으로도 씁니다. solid matter(고체 물질)"
+   ],
+   "easy": [
+    {
+     "word": "problem",
+     "en": "A small problem.",
+     "ko": "작은 문제."
+    },
+    {
+     "word": "important",
+     "en": "It's important.",
+     "ko": "그건 중요해."
+    }
+   ],
+   "etymology": [
+    "matter는 라틴어 materia(재료, 물질)에서 온 단어입니다.",
+    "materia는 mater(어머니)와 이어진다고 보는데, '모든 것을 만드는 근원'이라는 뜻이었습니다.",
+    "처음에는 물건을 만드는 '재료'를 뜻하다가, '다뤄야 할 일', '문제'로 뜻이 넓어졌습니다.",
+    "'중요하다'라는 동사 뜻은 '무게가 있다', '의미가 있다'라는 느낌에서 나왔습니다.",
+    "matter의 핵심 이미지는 '마음에 걸려 신경 쓰이는 일 ⚠️'입니다."
+   ],
+   "meanings": [
+    "일, 문제, 사안 (명사)",
+    "물질 (명사)",
+    "중요하다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "What's the matter with you?",
+     "ko": "너 왜 그래?"
+    },
+    {
+     "en": "It doesn't matter what you wear.",
+     "ko": "뭘 입든 상관없어요."
+    },
+    {
+     "en": "This is a serious matter.",
+     "ko": "이건 심각한 문제예요."
+    },
+    {
+     "en": "Your opinion matters to us.",
+     "ko": "당신의 의견이 우리에게 중요해요."
+    },
+    {
+     "en": "Everything is made of matter.",
+     "ko": "모든 것은 물질로 이루어져 있어요."
+    },
+    {
+     "en": "No matter what happens, I'll be here.",
+     "ko": "무슨 일이 있어도 나는 여기 있을게요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "problem",
+     "ko": "문제",
+     "en": "Solve the problem."
+    },
+    {
+     "type": "유의어",
+     "word": "issue",
+     "ko": "문제, 사안",
+     "en": "A big issue."
+    },
+    {
+     "type": "연관어",
+     "word": "important",
+     "ko": "중요한",
+     "en": "An important day."
+    },
+    {
+     "type": "연관어",
+     "word": "material",
+     "ko": "재료, 물질",
+     "en": "Raw material."
+    },
+    {
+     "type": "연관어",
+     "word": "count",
+     "ko": "중요하다, 세다",
+     "en": "Every vote counts."
+    },
+    {
+     "type": "연관어",
+     "word": "subject",
+     "ko": "주제",
+     "en": "A tricky subject."
+    }
+   ]
+  },
+  "1063": {
+   "word": "few",
+   "overview": [
+    "few는 '몇몇의', '소수의'라는 뜻입니다. 셀 수 있는 명사와 함께 쓰며, 수가 적음을 강조합니다.",
+    "few friends(친구가 거의 없음)처럼 부정적인 느낌으로, a few friends(친구가 몇 명 있음)처럼 a를 붙이면 긍정적인 느낌이 됩니다.",
+    "이 작은 a 하나로 뜻이 완전히 달라지니 주의해야 합니다.",
+    "many(많은)의 반대말이고, little(적은, 셀 수 없는 것)과 짝을 이룹니다."
+   ],
+   "easy": [
+    {
+     "word": "some",
+     "en": "Some apples.",
+     "ko": "사과 몇 개."
+    },
+    {
+     "word": "not many",
+     "en": "Not many people.",
+     "ko": "사람이 많지 않아."
+    }
+   ],
+   "etymology": [
+    "few는 고대 영어 fēawe(적은, 소수의)에서 온 단어입니다.",
+    "라틴어 paucus(적은)와 먼 친척이라고 봅니다. paucus에서 poor(가난한)라는 말도 나왔습니다.",
+    "천 년 넘게 '수가 적음'을 나타내는 뜻으로 쓰여 온 단어입니다.",
+    "a few와 few의 뜻 차이는 화자가 그 수를 '많다고' 느끼는지 '적다고' 느끼는지에 달려 있습니다.",
+    "few의 핵심 이미지는 '손가락으로 셀 수 있을 만큼 적은 수 🤏'입니다."
+   ],
+   "meanings": [
+    "몇몇의, 소수의 (부정적)",
+    "(a few) 몇 개의, 약간의 (긍정적)",
+    "소수 (명사)"
+   ],
+   "examples": [
+    {
+     "en": "Few people came to the meeting.",
+     "ko": "회의에 온 사람이 거의 없었어요."
+    },
+    {
+     "en": "I have a few friends coming over.",
+     "ko": "친구 몇 명이 놀러 올 거예요."
+    },
+    {
+     "en": "There are very few apples left.",
+     "ko": "사과가 거의 안 남았어요."
+    },
+    {
+     "en": "Let's wait a few minutes.",
+     "ko": "몇 분만 기다리자."
+    },
+    {
+     "en": "Only a few students finished on time.",
+     "ko": "몇몇 학생만 제시간에 끝냈어요."
+    },
+    {
+     "en": "I need a few more days.",
+     "ko": "며칠 더 필요해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "반의어",
+     "word": "many",
+     "ko": "많은",
+     "en": "Many people."
+    },
+    {
+     "type": "연관어",
+     "word": "little",
+     "ko": "적은 (셀 수 없는 것)",
+     "en": "Little time."
+    },
+    {
+     "type": "연관어",
+     "word": "some",
+     "ko": "몇몇의",
+     "en": "Some students."
+    },
+    {
+     "type": "연관어",
+     "word": "several",
+     "ko": "몇몇의, 여럿의",
+     "en": "Several times."
+    },
+    {
+     "type": "연관어",
+     "word": "amount",
+     "ko": "양",
+     "en": "A small amount."
+    },
+    {
+     "type": "연관어",
+     "word": "number",
+     "ko": "수",
+     "en": "A small number."
+    }
+   ]
+  },
+  "2834": {
+   "word": "until",
+   "overview": [
+    "until은 '~까지'라는 뜻의 전치사·접속사입니다. 어떤 일이 계속되다가 멈추는 시점을 나타냅니다.",
+    "until Friday(금요일까지), until it stops raining(비가 그칠 때까지)처럼 씁니다.",
+    "till과 뜻이 같은데, until이 좀 더 격식 있는 말투입니다.",
+    "'~까지 계속'을 나타내서, 도착점을 나타내는 by(~까지는)와는 다르게 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "till",
+     "en": "Till Sunday.",
+     "ko": "일요일까지."
+    },
+    {
+     "word": "before",
+     "en": "Before dinner.",
+     "ko": "저녁 전에."
+    }
+   ],
+   "etymology": [
+    "until은 옛 노르드어(바이킹의 말) und(~까지)와 til(~까지)이 합쳐진 말입니다.",
+    "두 말이 비슷한 뜻이었는데 함께 붙어 강조된 형태로 굳어졌습니다.",
+    "til만 남은 짧은 형태가 till이고, until은 이 둘이 합쳐진 좀 더 완전한 형태입니다.",
+    "1200년대쯤부터 영어에서 널리 쓰이기 시작했습니다.",
+    "until의 핵심 이미지는 '정해진 그 순간까지 쭉 이어지기 ⏰'입니다."
+   ],
+   "meanings": [
+    "~까지 (계속)"
+   ],
+   "examples": [
+    {
+     "en": "Wait here until I come back.",
+     "ko": "내가 돌아올 때까지 여기서 기다려."
+    },
+    {
+     "en": "The store is open until nine.",
+     "ko": "그 가게는 9시까지 열려 있어요."
+    },
+    {
+     "en": "I won't leave until I finish this.",
+     "ko": "이걸 끝낼 때까지 안 갈 거예요."
+    },
+    {
+     "en": "We played outside until it got dark.",
+     "ko": "우리는 어두워질 때까지 밖에서 놀았어요."
+    },
+    {
+     "en": "Nothing happened until noon.",
+     "ko": "정오까지 아무 일도 일어나지 않았어요."
+    },
+    {
+     "en": "Until now, I didn't know that.",
+     "ko": "지금까지 그건 몰랐어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "till",
+     "ko": "~까지",
+     "en": "Till Monday."
+    },
+    {
+     "type": "연관어",
+     "word": "by",
+     "ko": "~까지는 (기한)",
+     "en": "By Friday."
+    },
+    {
+     "type": "연관어",
+     "word": "since",
+     "ko": "~ 이래로",
+     "en": "Since 2020."
+    },
+    {
+     "type": "연관어",
+     "word": "before",
+     "ko": "~ 전에",
+     "en": "Before noon."
+    },
+    {
+     "type": "연관어",
+     "word": "wait",
+     "ko": "기다리다",
+     "en": "Wait a moment."
+    },
+    {
+     "type": "연관어",
+     "word": "during",
+     "ko": "~ 동안",
+     "en": "During class."
+    }
+   ]
+  },
+  "984": {
+   "word": "excuse",
+   "overview": [
+    "excuse는 동사로 '용서하다', '실례하다', 명사로는 '변명', '핑계'라는 뜻입니다.",
+    "Excuse me.(실례합니다.)는 사람에게 말을 걸거나 지나갈 때 쓰는 정중한 표현입니다.",
+    "명사일 때 발음이 조금 달라져서 '익스큐스(동사)'와 '익스큐스(명사, 끝을 약하게)'로 구별됩니다.",
+    "make an excuse(핑계를 대다)처럼 명사로 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "sorry",
+     "en": "I'm sorry.",
+     "ko": "죄송해요."
+    },
+    {
+     "word": "reason",
+     "en": "A good reason.",
+     "ko": "좋은 이유."
+    }
+   ],
+   "etymology": [
+    "excuse는 라틴어 excusare(변명하다, 벗어나게 하다)에서 온 단어입니다.",
+    "ex(밖으로)와 causa(원인, 이유)가 합쳐진 말입니다.",
+    "'원인에서 벗어나게 하다', 곧 '잘못에서 벗어나게 해 주다'라는 뜻에서 '용서하다'가 되었습니다.",
+    "because(왜냐하면)도 causa와 같은 뿌리를 가진 단어입니다.",
+    "excuse의 핵심 이미지는 '실수를 봐 달라고 부드럽게 부탁하기 🙏'입니다."
+   ],
+   "meanings": [
+    "용서하다, 봐주다 (동사)",
+    "실례하다 (동사, Excuse me)",
+    "변명, 핑계 (명사)"
+   ],
+   "examples": [
+    {
+     "en": "Excuse me, where is the library?",
+     "ko": "실례합니다, 도서관이 어디예요?"
+    },
+    {
+     "en": "Please excuse my late reply.",
+     "ko": "답이 늦은 것을 양해해 주세요."
+    },
+    {
+     "en": "Don't make excuses. Just try your best.",
+     "ko": "핑계 대지 말고 최선을 다해."
+    },
+    {
+     "en": "That's not a good excuse for being late.",
+     "ko": "그건 늦은 것에 대한 좋은 변명이 아니에요."
+    },
+    {
+     "en": "Excuse me for interrupting.",
+     "ko": "방해해서 죄송해요."
+    },
+    {
+     "en": "He was excused from class early.",
+     "ko": "그는 일찍 수업에서 나가도 된다고 허락받았어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "sorry",
+     "ko": "미안한",
+     "en": "I'm so sorry."
+    },
+    {
+     "type": "유의어",
+     "word": "reason",
+     "ko": "이유",
+     "en": "A valid reason."
+    },
+    {
+     "type": "연관어",
+     "word": "forgive",
+     "ko": "용서하다",
+     "en": "Forgive me."
+    },
+    {
+     "type": "연관어",
+     "word": "pardon",
+     "ko": "용서하다, 실례합니다",
+     "en": "Pardon me."
+    },
+    {
+     "type": "연관어",
+     "word": "apologize",
+     "ko": "사과하다",
+     "en": "Apologize to her."
+    },
+    {
+     "type": "연관어",
+     "word": "allow",
+     "ko": "허락하다",
+     "en": "Allow entry."
+    }
+   ]
+  },
+  "2466": {
+   "word": "soon",
+   "overview": [
+    "soon은 '곧', '머지않아'라는 뜻의 부사입니다. 시간이 조금만 지나면 일어날 일을 말할 때 씁니다.",
+    "See you soon!(곧 만나요!), soon after(그 직후에)처럼 씁니다.",
+    "as soon as는 '~하자마자'라는 뜻의 표현입니다. as soon as possible(가능한 한 빨리, 줄여서 ASAP)",
+    "sooner or later는 '조만간', '언젠가는'이라는 뜻입니다."
+   ],
+   "easy": [
+    {
+     "word": "quickly",
+     "en": "Come quickly.",
+     "ko": "빨리 와."
+    },
+    {
+     "word": "later",
+     "en": "See you later.",
+     "ko": "나중에 봐."
+    }
+   ],
+   "etymology": [
+    "soon은 고대 영어 sōna(곧, 즉시)에서 온 단어입니다.",
+    "옛날에는 지금보다 더 강한 뜻으로 '바로 지금', '즉시'를 뜻했습니다.",
+    "시간이 지나면서 뜻이 조금 약해져 '머지않아'라는 지금의 뜻이 되었습니다.",
+    "as soon as는 두 일이 거의 동시에 일어남을 강조하는 표현입니다.",
+    "soon의 핵심 이미지는 '조금만 있으면 다가올 순간 ⏳'입니다."
+   ],
+   "meanings": [
+    "곧, 머지않아",
+    "빨리, 이르게",
+    "(as soon as) ~하자마자"
+   ],
+   "examples": [
+    {
+     "en": "I'll be there soon.",
+     "ko": "곧 갈게요."
+    },
+    {
+     "en": "Get well soon!",
+     "ko": "빨리 나으세요!"
+    },
+    {
+     "en": "As soon as I got home, it started to rain.",
+     "ko": "내가 집에 도착하자마자 비가 내리기 시작했어요."
+    },
+    {
+     "en": "We should leave as soon as possible.",
+     "ko": "우리는 가능한 한 빨리 떠나야 해요."
+    },
+    {
+     "en": "Winter will be here soon.",
+     "ko": "곧 겨울이 올 거예요."
+    },
+    {
+     "en": "The bus arrived sooner than we expected.",
+     "ko": "버스가 예상보다 일찍 도착했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "shortly",
+     "ko": "곧",
+     "en": "Shortly after."
+    },
+    {
+     "type": "연관어",
+     "word": "early",
+     "ko": "일찍",
+     "en": "Wake up early."
+    },
+    {
+     "type": "연관어",
+     "word": "quickly",
+     "ko": "빨리",
+     "en": "Run quickly."
+    },
+    {
+     "type": "연관어",
+     "word": "later",
+     "ko": "나중에",
+     "en": "Talk later."
+    },
+    {
+     "type": "연관어",
+     "word": "immediately",
+     "ko": "즉시",
+     "en": "Respond immediately."
+    },
+    {
+     "type": "연관어",
+     "word": "now",
+     "ko": "지금",
+     "en": "Right now."
+    }
+   ]
+  },
+  "883": {
+   "word": "each",
+   "overview": [
+    "each는 '각각의', '저마다'라는 뜻입니다. 여러 개 중 하나하나를 따로따로 가리킬 때 씁니다.",
+    "each student(각각의 학생), each of us(우리 각자)처럼 씁니다.",
+    "each 뒤에는 단수 명사와 단수 동사를 씁니다. Each student has a book.(각 학생은 책이 한 권씩 있어요.)",
+    "each other는 '서로'라는 뜻의 표현입니다. We help each other.(우리는 서로 도와요.)"
+   ],
+   "easy": [
+    {
+     "word": "every",
+     "en": "Every day.",
+     "ko": "매일."
+    },
+    {
+     "word": "one by one",
+     "en": "One by one.",
+     "ko": "하나씩."
+    }
+   ],
+   "etymology": [
+    "each는 고대 영어 ǣlc(늘 그러한, 각각의)에서 온 단어입니다.",
+    "ā(늘)와 gelīc(같은)이 합쳐진 말로, '늘 똑같이 그러한'이라는 뜻이었습니다.",
+    "'모두 다 똑같이 하나하나'라는 뜻에서 '각각의'라는 지금의 뜻이 나왔습니다.",
+    "every(모든)도 비슷한 시기에 비슷한 방식으로 만들어진 형제 단어입니다.",
+    "each의 핵심 이미지는 '한 명 한 명 빠짐없이 짚어 보기 👉👉👉'입니다."
+   ],
+   "meanings": [
+    "각각의, 각자의 (형용사)",
+    "각자, 각각 (대명사)",
+    "각각 ~씩 (부사)"
+   ],
+   "examples": [
+    {
+     "en": "Each student gets a book.",
+     "ko": "학생들은 각자 책을 한 권씩 받아요."
+    },
+    {
+     "en": "Each of us has a different favorite color.",
+     "ko": "우리는 각자 좋아하는 색깔이 달라요."
+    },
+    {
+     "en": "The apples cost 500 won each.",
+     "ko": "사과는 한 개에 500원이에요."
+    },
+    {
+     "en": "We should help each other.",
+     "ko": "우리는 서로 도와야 해요."
+    },
+    {
+     "en": "Each day is a new chance.",
+     "ko": "하루하루가 새로운 기회예요."
+    },
+    {
+     "en": "Each answer must be written clearly.",
+     "ko": "각 답은 또렷하게 써야 해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "every",
+     "ko": "모든, 매~",
+     "en": "Every child."
+    },
+    {
+     "type": "연관어",
+     "word": "each other",
+     "ko": "서로",
+     "en": "Look at each other."
+    },
+    {
+     "type": "연관어",
+     "word": "all",
+     "ko": "모든",
+     "en": "All students."
+    },
+    {
+     "type": "연관어",
+     "word": "both",
+     "ko": "둘 다",
+     "en": "Both hands."
+    },
+    {
+     "type": "연관어",
+     "word": "individual",
+     "ko": "개개인의",
+     "en": "Individual work."
+    },
+    {
+     "type": "연관어",
+     "word": "separate",
+     "ko": "따로따로의",
+     "en": "Separate rooms."
+    }
+   ]
+  },
+  "1941": {
+   "word": "person",
+   "overview": [
+    "person은 '사람'이라는 뜻의 명사입니다. 한 명의 인간을 가리킵니다.",
+    "a kind person(친절한 사람), in person(직접, 몸소)처럼 씁니다.",
+    "여러 명일 때는 people을 훨씬 많이 쓰고, persons는 법률 문서 같은 격식 있는 글에서만 씁니다.",
+    "personal(개인적인), personality(성격)가 같은 가족 단어입니다."
+   ],
+   "easy": [
+    {
+     "word": "people",
+     "en": "Many people.",
+     "ko": "많은 사람들."
+    },
+    {
+     "word": "someone",
+     "en": "Someone is here.",
+     "ko": "누군가 여기 있어."
+    }
+   ],
+   "etymology": [
+    "person은 라틴어 persona(가면, 배우가 맡은 역할)에서 온 단어입니다.",
+    "옛 로마 연극에서 배우들은 얼굴에 가면을 쓰고 인물을 연기했는데, 그 가면을 persona라고 불렀습니다.",
+    "'가면을 쓴 인물'이라는 뜻이 점점 '한 사람 자체'를 뜻하게 되었습니다.",
+    "personality(성격)는 그 사람이 겉으로 드러내는 '모습'이라는 뜻과 이어집니다.",
+    "person의 핵심 이미지는 '이 세상에 하나뿐인 한 사람 🧑'입니다."
+   ],
+   "meanings": [
+    "사람, 인물",
+    "(법률) 인(人)"
+   ],
+   "examples": [
+    {
+     "en": "She is a very kind person.",
+     "ko": "그녀는 아주 친절한 사람이에요."
+    },
+    {
+     "en": "I need to speak to you in person.",
+     "ko": "직접 만나서 얘기하고 싶어요."
+    },
+    {
+     "en": "Each person has their own story.",
+     "ko": "사람마다 자기만의 이야기가 있어요."
+    },
+    {
+     "en": "He is the tallest person in our class.",
+     "ko": "그는 우리 반에서 가장 키가 큰 사람이에요."
+    },
+    {
+     "en": "A good person always tells the truth.",
+     "ko": "좋은 사람은 항상 진실을 말해요."
+    },
+    {
+     "en": "Only one person can enter at a time.",
+     "ko": "한 번에 한 사람만 들어갈 수 있어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "변화형",
+     "word": "people",
+     "ko": "사람들",
+     "en": "Many people."
+    },
+    {
+     "type": "파생어",
+     "word": "personal",
+     "ko": "개인적인",
+     "en": "A personal question."
+    },
+    {
+     "type": "파생어",
+     "word": "personality",
+     "ko": "성격",
+     "en": "A cheerful personality."
+    },
+    {
+     "type": "연관어",
+     "word": "human",
+     "ko": "인간",
+     "en": "Human beings."
+    },
+    {
+     "type": "연관어",
+     "word": "someone",
+     "ko": "누군가",
+     "en": "Someone called."
+    },
+    {
+     "type": "연관어",
+     "word": "individual",
+     "ko": "개인",
+     "en": "Each individual."
+    }
+   ]
+  },
+  "2571": {
+   "word": "stuff",
+   "overview": [
+    "stuff는 '물건', '것'이라는 뜻의 명사입니다. 딱 이름 붙이기 애매한 여러 물건이나 것들을 두루 가리킬 때 씁니다.",
+    "my stuff(내 물건들), some stuff(어떤 것들)처럼 씁니다. 셀 수 없는 명사입니다.",
+    "동사로는 '속을 채우다', '쑤셔 넣다'라는 뜻입니다. stuff a bag(가방에 쑤셔 넣다)",
+    "구어에서 아주 자주 쓰는 편한 말투의 단어입니다."
+   ],
+   "easy": [
+    {
+     "word": "things",
+     "en": "My things.",
+     "ko": "내 물건들."
+    },
+    {
+     "word": "stuff it in",
+     "en": "Stuff it in the bag.",
+     "ko": "가방에 쑤셔 넣어."
+    }
+   ],
+   "etymology": [
+    "stuff는 옛 프랑스어 estoffe(재료, 옷감)에서 온 단어입니다.",
+    "estoffer(갖추다, 채우다)에서 나온 말입니다.",
+    "처음에는 옷을 만드는 '천 재료'를 뜻했습니다.",
+    "점점 뜻이 넓어져 '아무 물건', '아무 것'을 두루 가리키는 편한 말이 되었습니다.",
+    "stuff의 핵심 이미지는 '이것저것 잔뜩 담긴 물건 더미 🎒'입니다."
+   ],
+   "meanings": [
+    "물건, 것 (명사)",
+    "재료, 소재 (명사)",
+    "(속을) 채우다, 쑤셔 넣다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "Put your stuff in your locker.",
+     "ko": "네 물건은 사물함에 넣어."
+    },
+    {
+     "en": "I have a lot of stuff to do today.",
+     "ko": "나는 오늘 할 일이 많아요."
+    },
+    {
+     "en": "What's all this stuff on the table?",
+     "ko": "탁자 위에 있는 이게 다 뭐야?"
+    },
+    {
+     "en": "We stuffed the pillow with soft cotton.",
+     "ko": "우리는 베개에 부드러운 솜을 채웠어요."
+    },
+    {
+     "en": "He stuffed his backpack with books.",
+     "ko": "그는 배낭에 책을 잔뜩 쑤셔 넣었어요."
+    },
+    {
+     "en": "Clean up your stuff before dinner.",
+     "ko": "저녁 먹기 전에 네 물건들을 치워."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "things",
+     "ko": "물건들",
+     "en": "Pack your things."
+    },
+    {
+     "type": "연관어",
+     "word": "belongings",
+     "ko": "소지품",
+     "en": "Personal belongings."
+    },
+    {
+     "type": "연관어",
+     "word": "fill",
+     "ko": "채우다",
+     "en": "Fill the cup."
+    },
+    {
+     "type": "연관어",
+     "word": "material",
+     "ko": "재료",
+     "en": "Raw material."
+    },
+    {
+     "type": "연관어",
+     "word": "junk",
+     "ko": "잡동사니",
+     "en": "A pile of junk."
+    },
+    {
+     "type": "연관어",
+     "word": "pack",
+     "ko": "짐을 싸다",
+     "en": "Pack a bag."
+    }
+   ]
+  },
+  "1696": {
+   "word": "minute",
+   "overview": [
+    "minute은 시간의 단위 '분'이라는 뜻의 명사입니다. 1시간은 60분으로 이루어져 있습니다.",
+    "five minutes(5분), Wait a minute.(잠깐만 기다려.)처럼 씁니다.",
+    "'잠깐', '순간'이라는 가벼운 뜻으로도 많이 씁니다. in a minute(곧, 금방)",
+    "철자가 같은 minute[마이뉴트]는 '아주 작은', '세세한'이라는 뜻의 다른 형용사입니다."
+   ],
+   "easy": [
+    {
+     "word": "second",
+     "en": "One second.",
+     "ko": "1초."
+    },
+    {
+     "word": "moment",
+     "en": "Just a moment.",
+     "ko": "잠깐만."
+    }
+   ],
+   "etymology": [
+    "minute은 라틴어 minutus(작게 만들어진, 잘게 나뉜)에서 온 단어입니다.",
+    "minuere(줄이다, 작게 하다)에서 나온 말입니다.",
+    "옛날 사람들이 한 시간을 60등분으로 잘게 나눈 것을 pars minuta prima(첫 번째 작은 부분)라고 불렀습니다.",
+    "이 '작은 부분'이 그대로 '분'이라는 시간 단위 이름이 되었습니다.",
+    "minute의 핵심 이미지는 '시계 큰바늘이 한 칸 움직이는 시간 ⏱️'입니다."
+   ],
+   "meanings": [
+    "분 (시간의 단위)",
+    "잠깐, 순간",
+    "아주 작은, 세세한 (형용사, 다른 발음)"
+   ],
+   "examples": [
+    {
+     "en": "Wait a minute, please.",
+     "ko": "잠깐만 기다려 주세요."
+    },
+    {
+     "en": "It takes ten minutes to walk to school.",
+     "ko": "학교까지 걸어서 10분 걸려요."
+    },
+    {
+     "en": "I'll be ready in a minute.",
+     "ko": "금방 준비할게요."
+    },
+    {
+     "en": "The meeting lasted thirty minutes.",
+     "ko": "회의는 30분 동안 계속됐어요."
+    },
+    {
+     "en": "Every minute counts.",
+     "ko": "1분 1분이 중요해요."
+    },
+    {
+     "en": "He noticed the minute details in the picture.",
+     "ko": "그는 그림 속 아주 작은 부분까지 알아챘어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "second",
+     "ko": "초",
+     "en": "Ten seconds."
+    },
+    {
+     "type": "연관어",
+     "word": "hour",
+     "ko": "시간",
+     "en": "One hour."
+    },
+    {
+     "type": "유의어",
+     "word": "moment",
+     "ko": "순간",
+     "en": "A special moment."
+    },
+    {
+     "type": "연관어",
+     "word": "clock",
+     "ko": "시계",
+     "en": "Look at the clock."
+    },
+    {
+     "type": "연관어",
+     "word": "time",
+     "ko": "시간",
+     "en": "What time is it?"
+    },
+    {
+     "type": "연관어",
+     "word": "detail",
+     "ko": "세부 사항",
+     "en": "Small details."
+    }
+   ]
+  },
+  "1280": {
+   "word": "happen",
+   "overview": [
+    "happen은 '일어나다', '발생하다'라는 뜻의 동사입니다. 어떤 일이 생기는 것을 말합니다.",
+    "What happened?(무슨 일이야?), It happened yesterday.(그건 어제 일어났어요.)처럼 씁니다.",
+    "happen to는 '우연히 ~하다'라는 뜻도 있습니다. I happened to meet her.(나는 우연히 그녀를 만났어요.)",
+    "명사 happening은 '사건', '벌어지는 일'이라는 뜻입니다."
+   ],
+   "easy": [
+    {
+     "word": "occur",
+     "en": "Occur suddenly.",
+     "ko": "갑자기 일어나다."
+    },
+    {
+     "word": "take place",
+     "en": "Take place today.",
+     "ko": "오늘 열려."
+    }
+   ],
+   "etymology": [
+    "happen은 hap(운, 우연)에 '~하다'를 뜻하는 -en이 붙은 말입니다.",
+    "hap은 옛 노르드어(바이킹의 말) happ(운, 행운)에서 왔습니다.",
+    "'우연히 운이 닿아 벌어지다'라는 뜻에서 '일어나다'라는 지금의 뜻이 나왔습니다.",
+    "happy(행복한)도 원래 '운이 좋은'이라는 뜻에서 나온, hap과 같은 가족 단어입니다.",
+    "happen의 핵심 이미지는 '뜻하지 않게 짠 하고 벌어지는 일 ✨'입니다."
+   ],
+   "meanings": [
+    "일어나다, 발생하다",
+    "우연히 ~하다 (happen to)"
+   ],
+   "examples": [
+    {
+     "en": "What happened at school today?",
+     "ko": "오늘 학교에서 무슨 일이 있었어?"
+    },
+    {
+     "en": "Accidents can happen anywhere.",
+     "ko": "사고는 어디서든 일어날 수 있어요."
+    },
+    {
+     "en": "I happened to see him at the store.",
+     "ko": "나는 가게에서 우연히 그를 봤어요."
+    },
+    {
+     "en": "It happens all the time.",
+     "ko": "그런 일은 늘 있어요."
+    },
+    {
+     "en": "Nothing bad will happen.",
+     "ko": "나쁜 일은 일어나지 않을 거예요."
+    },
+    {
+     "en": "Tell me what happened next.",
+     "ko": "다음에 무슨 일이 있었는지 말해 줘."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "occur",
+     "ko": "발생하다",
+     "en": "Errors occur."
+    },
+    {
+     "type": "연관어",
+     "word": "happening",
+     "ko": "일어나는 일, 사건",
+     "en": "A strange happening."
+    },
+    {
+     "type": "연관어",
+     "word": "event",
+     "ko": "사건, 행사",
+     "en": "A special event."
+    },
+    {
+     "type": "연관어",
+     "word": "accident",
+     "ko": "사고",
+     "en": "A car accident."
+    },
+    {
+     "type": "연관어",
+     "word": "happy",
+     "ko": "행복한",
+     "en": "A happy day."
+    },
+    {
+     "type": "연관어",
+     "word": "situation",
+     "ko": "상황",
+     "en": "A tricky situation."
+    }
+   ]
+  },
+  "2394": {
+   "word": "shut",
+   "overview": [
+    "shut은 '닫다', '(눈을) 감다'라는 뜻의 동사입니다. close와 비슷한 뜻이지만 조금 더 세게 닫는 느낌입니다.",
+    "shut the door(문을 닫다), shut your eyes(눈을 감다)처럼 씁니다.",
+    "과거형과 과거분사도 모두 shut으로 형태가 바뀌지 않는 불규칙 동사입니다.",
+    "형용사로 '닫힌'이라는 뜻도 있습니다. The store is shut.(그 가게는 닫혀 있어요.)"
+   ],
+   "easy": [
+    {
+     "word": "close",
+     "en": "Close the door.",
+     "ko": "문을 닫아."
+    },
+    {
+     "word": "open",
+     "en": "Open the window.",
+     "ko": "창문을 열어."
+    }
+   ],
+   "etymology": [
+    "shut은 고대 영어 scyttan(빗장을 걸다, 닫다)에서 온 단어입니다.",
+    "shoot(쏘다)과 같은 뿌리로, 빗장을 '휙 밀어 넣어' 문을 잠그던 모습에서 나왔다고 봅니다.",
+    "close보다 좀 더 힘차고 빠르게 닫는 느낌이 남아 있습니다.",
+    "shut up(입 다물어)이라는 표현은 무례하게 들릴 수 있어 조심해서 써야 합니다.",
+    "shut의 핵심 이미지는 '쾅 하고 세게 닫히는 문 🚪'입니다."
+   ],
+   "meanings": [
+    "닫다, 잠그다 (동사)",
+    "(눈 등을) 감다 (동사)",
+    "닫힌 (형용사)"
+   ],
+   "examples": [
+    {
+     "en": "Please shut the window. It's cold.",
+     "ko": "창문 좀 닫아 줘. 추워."
+    },
+    {
+     "en": "Shut your eyes and make a wish.",
+     "ko": "눈을 감고 소원을 빌어."
+    },
+    {
+     "en": "The shop is shut on Sundays.",
+     "ko": "그 가게는 일요일에는 닫혀 있어요."
+    },
+    {
+     "en": "The door shut suddenly with a bang.",
+     "ko": "문이 쾅 하고 갑자기 닫혔어요."
+    },
+    {
+     "en": "Shut the box tightly.",
+     "ko": "상자를 꽉 닫아."
+    },
+    {
+     "en": "She shut her book and stood up.",
+     "ko": "그녀는 책을 덮고 일어섰어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "close",
+     "ko": "닫다",
+     "en": "Close the box."
+    },
+    {
+     "type": "반의어",
+     "word": "open",
+     "ko": "열다",
+     "en": "Open the door."
+    },
+    {
+     "type": "연관어",
+     "word": "lock",
+     "ko": "잠그다",
+     "en": "Lock the door."
+    },
+    {
+     "type": "연관어",
+     "word": "shut down",
+     "ko": "완전히 닫다, 종료하다",
+     "en": "Shut down the store."
+    },
+    {
+     "type": "연관어",
+     "word": "eyes",
+     "ko": "눈",
+     "en": "Close your eyes."
+    },
+    {
+     "type": "연관어",
+     "word": "quiet",
+     "ko": "조용한",
+     "en": "Be quiet."
+    }
+   ]
+  },
+  "724": {
+   "word": "deal",
+   "overview": [
+    "deal은 '거래', '약속'이라는 뜻의 명사이자 '거래하다', '다루다'라는 뜻의 동사입니다.",
+    "make a deal(거래를 하다), a good deal(좋은 거래, 저렴한 가격)처럼 씁니다.",
+    "deal with는 '~을 다루다', '~을 처리하다'라는 아주 중요한 표현입니다. I'll deal with it.(내가 처리할게요.)",
+    "과거형과 과거분사는 모두 dealt입니다."
+   ],
+   "easy": [
+    {
+     "word": "agreement",
+     "en": "Make an agreement.",
+     "ko": "합의를 하다."
+    },
+    {
+     "word": "handle",
+     "en": "Handle the problem.",
+     "ko": "문제를 처리해."
+    }
+   ],
+   "etymology": [
+    "deal은 고대 영어 dǣlan(나누다)에서 온 단어입니다.",
+    "'몫으로 나누다'라는 뜻에서 카드 게임에서 카드를 '나눠 주다'라는 뜻이 생겼습니다.",
+    "'사람들 사이에 물건이나 조건을 나누는 일'이라는 뜻에서 '거래'라는 명사 뜻이 나왔습니다.",
+    "deal with(~을 다루다)는 '어떤 일을 처리하려고 나누어 손대다'라는 느낌과 이어집니다.",
+    "deal의 핵심 이미지는 '서로 손을 맞잡고 약속하는 거래 🤝'입니다."
+   ],
+   "meanings": [
+    "거래, 약속 (명사)",
+    "(카드를) 나눠 주다 (동사)",
+    "거래하다 (동사)",
+    "다루다, 처리하다 (deal with)"
+   ],
+   "examples": [
+    {
+     "en": "We made a deal to share the toys.",
+     "ko": "우리는 장난감을 나눠 쓰기로 약속했어요."
+    },
+    {
+     "en": "This shirt was a great deal.",
+     "ko": "이 셔츠는 아주 싸게 잘 산 거예요."
+    },
+    {
+     "en": "I need to deal with this problem now.",
+     "ko": "나는 지금 이 문제를 처리해야 해요."
+    },
+    {
+     "en": "She dealt the cards to everyone.",
+     "ko": "그녀는 모두에게 카드를 나눠 줬어요."
+    },
+    {
+     "en": "It's a big deal to me.",
+     "ko": "그건 나에게 중요한 일이에요."
+    },
+    {
+     "en": "He knows how to deal with difficult people.",
+     "ko": "그는 까다로운 사람을 다루는 법을 알아요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "agreement",
+     "ko": "합의",
+     "en": "Reach an agreement."
+    },
+    {
+     "type": "연관어",
+     "word": "handle",
+     "ko": "다루다",
+     "en": "Handle carefully."
+    },
+    {
+     "type": "연관어",
+     "word": "trade",
+     "ko": "거래하다",
+     "en": "Trade goods."
+    },
+    {
+     "type": "변화형",
+     "word": "dealt",
+     "ko": "다뤘다 (과거형)",
+     "en": "She dealt with it."
+    },
+    {
+     "type": "연관어",
+     "word": "problem",
+     "ko": "문제",
+     "en": "A tricky problem."
+    },
+    {
+     "type": "연관어",
+     "word": "share",
+     "ko": "나누다",
+     "en": "Share equally."
+    }
+   ]
+  },
+  "2122": {
+   "word": "quite",
+   "overview": [
+    "quite는 '꽤', '아주'라는 뜻의 부사입니다. 정도를 나타내며, 얼마나 그러한지를 말할 때 씁니다.",
+    "quite good(꽤 좋은), quite a lot(꽤 많이)처럼 씁니다.",
+    "very보다 조금 약할 수도, 강조할 때는 오히려 '아주'라는 강한 뜻이 될 수도 있어서 문맥에 따라 다릅니다.",
+    "not quite는 '완전히 ~은 아닌'이라는 뜻입니다. I'm not quite ready.(아직 완전히 준비되지는 않았어요.)"
+   ],
+   "easy": [
+    {
+     "word": "very",
+     "en": "Very good.",
+     "ko": "아주 좋은."
+    },
+    {
+     "word": "pretty",
+     "en": "Pretty tired.",
+     "ko": "꽤 피곤한."
+    }
+   ],
+   "etymology": [
+    "quite는 quiet(조용한)와 같은 뿌리에서 나온 말입니다.",
+    "라틴어 quietus(고요한, 완전히 끝난)에서 왔습니다.",
+    "'완전히 끝난', '완전히'라는 뜻에서 정도를 나타내는 부사 quite가 생겼습니다.",
+    "그래서 quite는 원래 '완전히', '아주'라는 강한 뜻이었다가, 지금은 '꽤'라는 부드러운 뜻으로도 많이 쓰입니다.",
+    "quite의 핵심 이미지는 '생각보다 꽤 그러하다는 느낌 👍'입니다."
+   ],
+   "meanings": [
+    "꽤, 상당히",
+    "아주, 완전히",
+    "(not quite) 완전히 ~은 아닌"
+   ],
+   "examples": [
+    {
+     "en": "This soup is quite spicy.",
+     "ko": "이 국은 꽤 매워요."
+    },
+    {
+     "en": "I'm quite tired after the trip.",
+     "ko": "나는 여행 후에 꽤 피곤해요."
+    },
+    {
+     "en": "That's quite a good idea.",
+     "ko": "그거 꽤 좋은 생각이네요."
+    },
+    {
+     "en": "I'm not quite sure about the answer.",
+     "ko": "답을 완전히 확신하지는 못하겠어요."
+    },
+    {
+     "en": "It's quite far from here.",
+     "ko": "여기서 꽤 멀어요."
+    },
+    {
+     "en": "She is quite talented at painting.",
+     "ko": "그녀는 그림에 꽤 재능이 있어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "very",
+     "ko": "아주",
+     "en": "Very happy."
+    },
+    {
+     "type": "유의어",
+     "word": "pretty",
+     "ko": "꽤 (구어)",
+     "en": "Pretty good."
+    },
+    {
+     "type": "연관어",
+     "word": "quiet",
+     "ko": "조용한",
+     "en": "A quiet street."
+    },
+    {
+     "type": "연관어",
+     "word": "rather",
+     "ko": "꽤, 다소",
+     "en": "Rather cold."
+    },
+    {
+     "type": "연관어",
+     "word": "really",
+     "ko": "정말",
+     "en": "Really fun."
+    },
+    {
+     "type": "연관어",
+     "word": "so",
+     "ko": "정말",
+     "en": "So kind."
+    }
+   ]
   }
  }
 }
