@@ -1,0 +1,1951 @@
+{
+ "version": "v1",
+ "level": 5,
+ "description": "Level 5 상세설명. 개요 · 어원 · 뜻 · 예문 · 함께 익히기 구조.",
+ "entries": {
+  "1561": {
+   "word": "let",
+   "overview": [
+    "let은 '~하게 하다', '~하게 놔두다'라는 뜻의 동사입니다. 누군가 무엇을 하도록 허락하거나 막지 않는 것을 말합니다.",
+    "let + 사람/사물 + 동사원형 순서로 씁니다. Let me go.(나 가게 해 줘.), Let it be.(그냥 놔둬.)",
+    "Let's + 동사원형은 '~하자'라는 뜻으로, Let us를 줄인 말입니다. Let's play!(놀자!)",
+    "과거형과 과거분사도 모두 let으로 똑같은 불규칙 동사입니다."
+   ],
+   "easy": [
+    {
+     "word": "allow",
+     "en": "Allow me to help.",
+     "ko": "제가 돕게 해 주세요."
+    },
+    {
+     "word": "help",
+     "en": "Let me help you.",
+     "ko": "내가 도와줄게."
+    }
+   ],
+   "etymology": [
+    "let은 고대 영어 lǣtan(놓아두다, 하게 하다)에서 온 단어입니다.",
+    "'놓아 보내다', '막지 않다'라는 뜻의 아주 옛말과 이어집니다.",
+    "독일어 lassen(하게 하다)과 같은 뿌리입니다.",
+    "재미있게도 옛날에는 반대로 '막다', '방해하다'라는 뜻의 let도 따로 있었는데, 지금은 without let or hindrance(아무 방해 없이)라는 옛 표현에만 남아 있습니다.",
+    "let의 핵심 이미지는 '문을 활짝 열어 지나가게 해 주기 🚪'입니다."
+   ],
+   "meanings": [
+    "~하게 하다, ~하도록 허락하다",
+    "(Let's) ~하자",
+    "(집·방 등을) 세놓다, 임대하다 (영국)"
+   ],
+   "examples": [
+    {
+     "en": "Let me carry your bag.",
+     "ko": "내가 가방 들어 줄게."
+    },
+    {
+     "en": "My mom let me stay up late.",
+     "ko": "엄마가 늦게까지 안 자게 해 주셨어요."
+    },
+    {
+     "en": "Let's go to the park.",
+     "ko": "공원에 가자."
+    },
+    {
+     "en": "Please let me know if you need help.",
+     "ko": "도움이 필요하면 알려 주세요."
+    },
+    {
+     "en": "Don't let the dog out.",
+     "ko": "개를 밖으로 나가게 하지 마."
+    },
+    {
+     "en": "They let the room to a student.",
+     "ko": "그들은 그 방을 학생에게 세놓았어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "allow",
+     "ko": "허락하다",
+     "en": "Allow entry."
+    },
+    {
+     "type": "유의어",
+     "word": "permit",
+     "ko": "허락하다",
+     "en": "Permit smoking."
+    },
+    {
+     "type": "연관어",
+     "word": "let's",
+     "ko": "~하자",
+     "en": "Let's eat!"
+    },
+    {
+     "type": "반의어",
+     "word": "forbid",
+     "ko": "금지하다",
+     "en": "Forbid it."
+    },
+    {
+     "type": "연관어",
+     "word": "rent",
+     "ko": "세놓다, 세내다",
+     "en": "Rent an apartment."
+    },
+    {
+     "type": "연관어",
+     "word": "free",
+     "ko": "자유로운, 풀어 주다",
+     "en": "Set it free."
+    }
+   ]
+  },
+  "2982": {
+   "word": "would",
+   "overview": [
+    "would는 will의 과거형이자, 상상이나 공손한 표현에 쓰는 조동사입니다.",
+    "과거에서 본 미래를 말할 때 씁니다. She said she would come.(그녀는 오겠다고 말했어요.)",
+    "실제로는 안 일어난 일을 상상할 때도 씁니다. If I had wings, I would fly.(날개가 있다면 날아갈 텐데.)",
+    "공손하게 부탁할 때도 씁니다. Would you help me?(도와주시겠어요?) I would like some water.(물 좀 주세요.)"
+   ],
+   "easy": [
+    {
+     "word": "will",
+     "en": "I will go.",
+     "ko": "나는 갈 거야."
+    },
+    {
+     "word": "could",
+     "en": "Could you help?",
+     "ko": "도와주실 수 있나요?"
+    }
+   ],
+   "etymology": [
+    "would는 will의 옛 과거형 wolde에서 온 단어입니다.",
+    "will은 '원하다', '바라다'라는 뜻의 아주 옛말에서 나왔습니다.",
+    "would는 과거 시제로 쓰이다가, 점점 '만약 ~라면'이라는 상상이나 공손한 표현에도 쓰이게 되었습니다.",
+    "지금은 오히려 will보다 정중하고 부드러운 느낌을 낼 때 더 자주 쓰입니다.",
+    "would의 핵심 이미지는 '만약에 그렇다면 하고 싶은 마음 💭'입니다."
+   ],
+   "meanings": [
+    "(will의 과거형) ~일[할] 것이었다",
+    "(가정) ~일 것이다, ~하겠다",
+    "(공손한 부탁·제안) ~해 주시겠어요, ~하시겠어요",
+    "(과거의 습관) ~하곤 했다"
+   ],
+   "examples": [
+    {
+     "en": "I thought it would rain today.",
+     "ko": "나는 오늘 비가 올 거라고 생각했어요."
+    },
+    {
+     "en": "If I won the lottery, I would travel the world.",
+     "ko": "복권에 당첨된다면 나는 세계를 여행할 거예요."
+    },
+    {
+     "en": "Would you like some tea?",
+     "ko": "차 좀 드시겠어요?"
+    },
+    {
+     "en": "Would you close the window, please?",
+     "ko": "창문 좀 닫아 주시겠어요?"
+    },
+    {
+     "en": "We would play outside every day when we were young.",
+     "ko": "우리는 어렸을 때 매일 밖에서 놀곤 했어요."
+    },
+    {
+     "en": "I would like to visit Jeju someday.",
+     "ko": "나는 언젠가 제주도를 가 보고 싶어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "will",
+     "ko": "~일 것이다",
+     "en": "I will try."
+    },
+    {
+     "type": "연관어",
+     "word": "could",
+     "ko": "~할 수 있을 것이다",
+     "en": "Could you wait?"
+    },
+    {
+     "type": "연관어",
+     "word": "should",
+     "ko": "~해야 한다",
+     "en": "You should rest."
+    },
+    {
+     "type": "연관어",
+     "word": "wish",
+     "ko": "바라다",
+     "en": "I wish I could fly."
+    },
+    {
+     "type": "연관어",
+     "word": "if",
+     "ko": "만약 ~라면",
+     "en": "If it rains."
+    },
+    {
+     "type": "연관어",
+     "word": "like",
+     "ko": "좋아하다, 원하다",
+     "en": "I'd like to help."
+    }
+   ]
+  },
+  "2691": {
+   "word": "then",
+   "overview": [
+    "then은 '그때', '그다음에'라는 뜻의 부사입니다. 시간의 흐름을 나타냅니다.",
+    "back then(그때는), from then on(그때부터), and then(그러고 나서)처럼 씁니다.",
+    "이야기를 순서대로 말할 때 자주 씁니다. First..., then..., finally...(먼저..., 그다음에..., 마지막으로...)",
+    "'그렇다면'이라는 뜻으로 결론을 말할 때도 씁니다. If you're tired, then rest.(피곤하면 그럼 쉬어.)"
+   ],
+   "easy": [
+    {
+     "word": "next",
+     "en": "What's next?",
+     "ko": "다음은 뭐야?"
+    },
+    {
+     "word": "after that",
+     "en": "After that, we left.",
+     "ko": "그 후에 우리는 떠났어요."
+    }
+   ],
+   "etymology": [
+    "then은 고대 영어 thanne(그때)에서 온 단어입니다.",
+    "than(~보다)과 같은 뿌리에서 나온 말로, 옛날에는 두 단어를 거의 같은 철자로 썼습니다.",
+    "시간이 지나면서 철자가 갈라져, then은 '그때', than은 '~보다'라는 뜻으로 나뉘었습니다.",
+    "지금도 발음이 비슷해서 두 단어를 헷갈리기 쉽습니다.",
+    "then의 핵심 이미지는 '이야기 속 다음 순간으로 넘어가기 ⏭️'입니다."
+   ],
+   "meanings": [
+    "그때, 그 당시 (부사)",
+    "그다음에, 그러고 나서 (부사)",
+    "그렇다면, 그러면 (부사)",
+    "그때의 (형용사)"
+   ],
+   "examples": [
+    {
+     "en": "We lived in Busan back then.",
+     "ko": "우리는 그때 부산에 살았어요."
+    },
+    {
+     "en": "First wash your hands, then eat.",
+     "ko": "먼저 손을 씻고, 그다음에 밥 먹어."
+    },
+    {
+     "en": "If you're hungry, then let's eat now.",
+     "ko": "배고프면 그럼 지금 먹자."
+    },
+    {
+     "en": "I was younger then.",
+     "ko": "그때 나는 더 어렸어요."
+    },
+    {
+     "en": "We finished our homework and then watched TV.",
+     "ko": "우리는 숙제를 끝내고 그다음에 TV를 봤어요."
+    },
+    {
+     "en": "See you then!",
+     "ko": "그때 보자!"
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "next",
+     "ko": "다음",
+     "en": "The next step."
+    },
+    {
+     "type": "연관어",
+     "word": "after",
+     "ko": "~ 후에",
+     "en": "After school."
+    },
+    {
+     "type": "연관어",
+     "word": "before",
+     "ko": "~ 전에",
+     "en": "Before dinner."
+    },
+    {
+     "type": "연관어",
+     "word": "now",
+     "ko": "지금",
+     "en": "Right now."
+    },
+    {
+     "type": "연관어",
+     "word": "finally",
+     "ko": "마침내",
+     "en": "Finally, we won."
+    },
+    {
+     "type": "연관어",
+     "word": "than",
+     "ko": "~보다 (비교)",
+     "en": "Bigger than me."
+    }
+   ]
+  },
+  "1650": {
+   "word": "mean",
+   "overview": [
+    "mean은 '의미하다', '뜻하다'라는 뜻의 동사입니다. 말이나 행동이 무엇을 나타내는지 말할 때 씁니다.",
+    "What does this word mean?(이 단어는 무슨 뜻이에요?)처럼 씁니다.",
+    "형용사로는 '못된', '심술궂은'이라는 뜻이 있습니다. Don't be mean to your sister.(동생한테 못되게 굴지 마.)",
+    "'평균'이라는 뜻의 명사로도 씁니다. 과거형은 meant입니다."
+   ],
+   "easy": [
+    {
+     "word": "meaning",
+     "en": "The word's meaning.",
+     "ko": "단어의 뜻."
+    },
+    {
+     "word": "unkind",
+     "en": "That was unkind.",
+     "ko": "그건 못됐어."
+    }
+   ],
+   "etymology": [
+    "'의미하다'라는 mean은 고대 영어 mǣnan(말하다, 뜻하다)에서 온 단어입니다.",
+    "'못된'이라는 mean은 고대 영어 gemǣne(공동의, 흔한)에서 온 다른 단어입니다.",
+    "'흔한, 보통의'라는 뜻이 '천한', '보잘것없는'을 거쳐 '못된'이라는 뜻이 되었습니다.",
+    "'평균'이라는 mean은 라틴어 medianus(가운데의)에서 온 또 다른 단어로, median과 같은 가족입니다.",
+    "mean의 핵심 이미지는 '말 속에 담긴 진짜 뜻 💭'입니다."
+   ],
+   "meanings": [
+    "의미하다, 뜻하다 (동사)",
+    "의도하다, ~할 작정이다 (동사)",
+    "못된, 심술궂은 (형용사)",
+    "평균 (명사)"
+   ],
+   "examples": [
+    {
+     "en": "What does \"hobby\" mean?",
+     "ko": "'hobby'가 무슨 뜻이에요?"
+    },
+    {
+     "en": "I didn't mean to hurt your feelings.",
+     "ko": "네 기분을 상하게 하려던 건 아니었어."
+    },
+    {
+     "en": "This red light means stop.",
+     "ko": "이 빨간불은 멈추라는 뜻이에요."
+    },
+    {
+     "en": "Don't be mean to your little brother.",
+     "ko": "네 남동생에게 못되게 굴지 마."
+    },
+    {
+     "en": "She meant well.",
+     "ko": "그녀는 좋은 뜻으로 그런 거예요."
+    },
+    {
+     "en": "Find the mean of these numbers.",
+     "ko": "이 숫자들의 평균을 구해."
+    }
+   ],
+   "together": [
+    {
+     "type": "파생어",
+     "word": "meaning",
+     "ko": "의미, 뜻",
+     "en": "The meaning of life."
+    },
+    {
+     "type": "반의어",
+     "word": "kind",
+     "ko": "친절한",
+     "en": "A kind friend."
+    },
+    {
+     "type": "유의어",
+     "word": "unkind",
+     "ko": "불친절한",
+     "en": "An unkind word."
+    },
+    {
+     "type": "연관어",
+     "word": "intend",
+     "ko": "의도하다",
+     "en": "I intend to help."
+    },
+    {
+     "type": "연관어",
+     "word": "average",
+     "ko": "평균",
+     "en": "The average score."
+    },
+    {
+     "type": "변화형",
+     "word": "meant",
+     "ko": "의미했다 (과거형)",
+     "en": "I meant it."
+    }
+   ]
+  },
+  "963": {
+   "word": "even",
+   "overview": [
+    "even은 '~조차도', '심지어'라는 뜻의 부사입니다. 놀라운 일을 강조할 때 씁니다.",
+    "Even a baby can do it.(아기조차도 할 수 있어요.)처럼 씁니다.",
+    "숫자에서는 '짝수의'라는 뜻의 형용사입니다. 2, 4, 6은 even number(짝수)입니다.",
+    "표면이 '평평한', 상황이 '고른', '똑같은'이라는 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "also",
+     "en": "I also came.",
+     "ko": "나도 왔어."
+    },
+    {
+     "word": "flat",
+     "en": "A flat road.",
+     "ko": "평평한 길."
+    }
+   ],
+   "etymology": [
+    "even은 고대 영어 efn(평평한, 고른, 똑같은)에서 온 단어입니다.",
+    "독일어 eben(평평한)과 같은 뿌리입니다.",
+    "'평평하고 고르다'라는 뜻에서 '똑같이 나뉘는' 숫자, 곧 짝수라는 뜻이 나왔습니다.",
+    "'놀랍게도 그것조차'라는 부사 뜻은 '차이 없이 똑같이'라는 느낌에서 발전했다고 봅니다.",
+    "even의 핵심 이미지는 '한쪽으로 기울지 않고 고른 저울 ⚖️'입니다."
+   ],
+   "meanings": [
+    "~조차도, 심지어 (부사)",
+    "(비교급 강조) 더욱, 훨씬 (부사)",
+    "짝수의 (형용사)",
+    "평평한, 고른 (형용사)"
+   ],
+   "examples": [
+    {
+     "en": "Even my little sister can read this.",
+     "ko": "내 여동생조차도 이걸 읽을 수 있어요."
+    },
+    {
+     "en": "It's even colder today than yesterday.",
+     "ko": "오늘은 어제보다 훨씬 더 추워요."
+    },
+    {
+     "en": "Two and four are even numbers.",
+     "ko": "2와 4는 짝수예요."
+    },
+    {
+     "en": "Make sure the table is even.",
+     "ko": "탁자가 평평한지 확인해."
+    },
+    {
+     "en": "She didn't even say hello.",
+     "ko": "그녀는 인사조차 하지 않았어요."
+    },
+    {
+     "en": "He can even speak three languages.",
+     "ko": "그는 심지어 세 개 언어를 할 줄 알아요."
+    }
+   ],
+   "together": [
+    {
+     "type": "반의어",
+     "word": "odd",
+     "ko": "홀수의",
+     "en": "Odd numbers."
+    },
+    {
+     "type": "연관어",
+     "word": "flat",
+     "ko": "평평한",
+     "en": "Flat ground."
+    },
+    {
+     "type": "연관어",
+     "word": "equal",
+     "ko": "동등한",
+     "en": "Equal parts."
+    },
+    {
+     "type": "연관어",
+     "word": "still",
+     "ko": "그런데도",
+     "en": "Still, I tried."
+    },
+    {
+     "type": "연관어",
+     "word": "also",
+     "ko": "또한",
+     "en": "I also like it."
+    },
+    {
+     "type": "연관어",
+     "word": "smooth",
+     "ko": "매끄러운",
+     "en": "A smooth surface."
+    }
+   ]
+  },
+  "2539": {
+   "word": "still",
+   "overview": [
+    "still은 '아직도', '여전히'라는 뜻의 부사입니다. 어떤 상태가 계속되고 있음을 말합니다.",
+    "I'm still hungry.(나는 아직도 배고파요.)처럼 씁니다.",
+    "형용사로는 '가만히 있는', '조용한'이라는 뜻입니다. Sit still.(가만히 앉아 있어.)",
+    "'그런데도', '그렇지만'이라는 뜻으로 문장 앞에서 접속사처럼도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "yet",
+     "en": "Not yet.",
+     "ko": "아직 아니야."
+    },
+    {
+     "word": "quiet",
+     "en": "Be quiet.",
+     "ko": "조용히 해."
+    }
+   ],
+   "etymology": [
+    "still은 고대 영어 stille(가만히 있는, 움직이지 않는)에서 온 단어입니다.",
+    "'서다', '고정되다'라는 뜻의 아주 옛말과 이어진다고 봅니다. stand(서다)와 먼 친척입니다.",
+    "'움직이지 않고 그대로 있다'라는 뜻에서 '여전히 그대로'라는 부사 뜻이 나왔습니다.",
+    "술을 만드는 '증류기'도 still이라고 하는데, 이는 다른 뿌리에서 온 말입니다.",
+    "still의 핵심 이미지는 '시간이 지나도 그대로 멈춰 있는 상태 🧊'입니다."
+   ],
+   "meanings": [
+    "아직도, 여전히 (부사)",
+    "그런데도, 그렇지만 (부사)",
+    "가만히 있는, 고요한 (형용사)",
+    "정지 사진 (명사)"
+   ],
+   "examples": [
+    {
+     "en": "Is it still raining outside?",
+     "ko": "밖에 아직도 비가 와요?"
+    },
+    {
+     "en": "My grandma still lives in the countryside.",
+     "ko": "우리 할머니는 여전히 시골에 사세요."
+    },
+    {
+     "en": "He was tired, but he still finished the race.",
+     "ko": "그는 지쳤지만 그래도 경주를 끝까지 마쳤어요."
+    },
+    {
+     "en": "Please stand still.",
+     "ko": "가만히 서 있어 줘."
+    },
+    {
+     "en": "The lake was completely still.",
+     "ko": "호수는 아주 고요했어요."
+    },
+    {
+     "en": "I still don't understand this problem.",
+     "ko": "나는 이 문제를 여전히 이해하지 못하겠어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "yet",
+     "ko": "아직",
+     "en": "Not finished yet."
+    },
+    {
+     "type": "반의어",
+     "word": "already",
+     "ko": "이미",
+     "en": "Already done."
+    },
+    {
+     "type": "연관어",
+     "word": "quiet",
+     "ko": "조용한",
+     "en": "A quiet room."
+    },
+    {
+     "type": "연관어",
+     "word": "calm",
+     "ko": "차분한, 고요한",
+     "en": "A calm sea."
+    },
+    {
+     "type": "연관어",
+     "word": "however",
+     "ko": "그러나",
+     "en": "However, it's late."
+    },
+    {
+     "type": "연관어",
+     "word": "stay",
+     "ko": "머무르다, 그대로 있다",
+     "en": "Stay still."
+    }
+   ]
+  },
+  "1647": {
+   "word": "maybe",
+   "overview": [
+    "maybe는 '아마', '어쩌면'이라는 뜻의 부사입니다. 확실하지 않은 일을 말할 때 씁니다.",
+    "Maybe it will rain tomorrow.(어쩌면 내일 비가 올지도 몰라요.)처럼 문장 앞에 자주 씁니다.",
+    "질문에 확실하지 않게 대답할 때도 씁니다. Are you coming? Maybe.(올 거야? 아마도.)",
+    "perhaps도 비슷한 뜻이지만, maybe가 더 편하고 일상적인 말투입니다."
+   ],
+   "easy": [
+    {
+     "word": "perhaps",
+     "en": "Perhaps later.",
+     "ko": "아마 나중에."
+    },
+    {
+     "word": "probably",
+     "en": "It will probably rain.",
+     "ko": "아마 비가 올 거야."
+    }
+   ],
+   "etymology": [
+    "maybe는 it may be(그것은 ~일 수도 있다)를 줄여서 한 단어로 만든 말입니다.",
+    "may(~일지도 모른다)와 be(~이다)가 합쳐졌습니다.",
+    "1300년대쯤부터 이렇게 줄여 쓰기 시작해, 결국 하나의 단어 maybe가 되었습니다.",
+    "may는 '할 수 있다', '힘이 있다'라는 뜻의 아주 옛말에서 왔습니다.",
+    "maybe의 핵심 이미지는 '확실하지 않아 고개를 갸웃하는 마음 🤔'입니다."
+   ],
+   "meanings": [
+    "아마, 어쩌면",
+    "(대답으로) 아마도"
+   ],
+   "examples": [
+    {
+     "en": "Maybe we can go to the movies tonight.",
+     "ko": "어쩌면 오늘 밤에 영화 보러 갈 수도 있어요."
+    },
+    {
+     "en": "Maybe she forgot about the meeting.",
+     "ko": "어쩌면 그녀가 회의를 잊었을지도 몰라요."
+    },
+    {
+     "en": "\"Do you like it?\" \"Maybe.\"",
+     "ko": "\"그거 마음에 들어?\" \"아마도.\""
+    },
+    {
+     "en": "Maybe I'm wrong.",
+     "ko": "어쩌면 내가 틀렸을지도 몰라요."
+    },
+    {
+     "en": "Maybe next time we'll win.",
+     "ko": "다음번엔 아마 우리가 이길 거예요."
+    },
+    {
+     "en": "Maybe you should ask your teacher.",
+     "ko": "선생님께 여쭤보는 게 좋을지도 몰라요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "perhaps",
+     "ko": "아마도",
+     "en": "Perhaps not."
+    },
+    {
+     "type": "유의어",
+     "word": "probably",
+     "ko": "아마",
+     "en": "Probably true."
+    },
+    {
+     "type": "연관어",
+     "word": "maybe not",
+     "ko": "아마 아닐 거야",
+     "en": "Maybe not today."
+    },
+    {
+     "type": "연관어",
+     "word": "possibly",
+     "ko": "아마, 어쩌면",
+     "en": "Possibly true."
+    },
+    {
+     "type": "연관어",
+     "word": "sure",
+     "ko": "확실한",
+     "en": "I'm sure."
+    },
+    {
+     "type": "연관어",
+     "word": "guess",
+     "ko": "추측하다",
+     "en": "I guess so."
+    }
+   ]
+  },
+  "1857": {
+   "word": "other",
+   "overview": [
+    "other는 '다른', '그 밖의'라는 뜻입니다. 이미 말한 것 말고 다른 것을 가리킵니다.",
+    "the other hand(다른 손), other people(다른 사람들)처럼 씁니다.",
+    "둘 중 나머지 하나를 말할 때는 the other(다른 하나)라고 합니다. One is red, the other is blue.(하나는 빨갛고, 다른 하나는 파래요.)",
+    "여러 개 중 몇 개는 some, 나머지는 others라고 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "another",
+     "en": "Another one.",
+     "ko": "또 다른 하나."
+    },
+    {
+     "word": "different",
+     "en": "A different color.",
+     "ko": "다른 색."
+    }
+   ],
+   "etymology": [
+    "other는 고대 영어 other(둘 중 하나, 다른 것)에서 온 단어입니다.",
+    "'두 번째'라는 아주 옛날 말과 이어진다고 봅니다. 원래 '둘째'라는 서수 뜻도 있었습니다.",
+    "second(두 번째)라는 말이 들어오면서, other는 '둘째'라는 뜻을 잃고 '다른 것'이라는 뜻만 남았습니다.",
+    "another는 an(하나)과 other가 합쳐진 말입니다.",
+    "other의 핵심 이미지는 '이것 말고 저쪽에 있는 것 👉'입니다."
+   ],
+   "meanings": [
+    "(그것 말고) 다른, 그 밖의",
+    "(둘 중) 나머지의, 다른 하나의",
+    "다른 사람, 다른 것 (대명사)"
+   ],
+   "examples": [
+    {
+     "en": "I have two dogs. One is black, the other is white.",
+     "ko": "나는 개가 두 마리 있어요. 하나는 검고, 다른 하나는 하얘요."
+    },
+    {
+     "en": "Do you have any other questions?",
+     "ko": "다른 질문 있어요?"
+    },
+    {
+     "en": "Some kids like soccer, others like basketball.",
+     "ko": "어떤 아이들은 축구를 좋아하고, 다른 아이들은 농구를 좋아해요."
+    },
+    {
+     "en": "Hold the ball with your other hand.",
+     "ko": "다른 손으로 공을 잡아."
+    },
+    {
+     "en": "We can meet some other time.",
+     "ko": "우리 다른 때 만나도 돼요."
+    },
+    {
+     "en": "There's no other way.",
+     "ko": "다른 방법이 없어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "파생어",
+     "word": "another",
+     "ko": "또 다른 하나",
+     "en": "Have another cookie."
+    },
+    {
+     "type": "유의어",
+     "word": "different",
+     "ko": "다른",
+     "en": "A different idea."
+    },
+    {
+     "type": "연관어",
+     "word": "others",
+     "ko": "다른 사람들, 다른 것들",
+     "en": "Help others."
+    },
+    {
+     "type": "연관어",
+     "word": "each other",
+     "ko": "서로",
+     "en": "Help each other."
+    },
+    {
+     "type": "연관어",
+     "word": "same",
+     "ko": "같은",
+     "en": "The same size."
+    },
+    {
+     "type": "연관어",
+     "word": "second",
+     "ko": "두 번째의",
+     "en": "The second try."
+    }
+   ]
+  },
+  "1549": {
+   "word": "leave",
+   "overview": [
+    "leave는 '떠나다', '남기다'라는 뜻의 동사입니다. 있던 곳을 벗어나거나, 무엇을 그대로 두는 것을 말합니다.",
+    "leave home(집을 떠나다), leave a message(메시지를 남기다)처럼 씁니다.",
+    "명사로는 '휴가', '허락'이라는 뜻도 있습니다. sick leave(병가)",
+    "과거형과 과거분사는 모두 left입니다."
+   ],
+   "easy": [
+    {
+     "word": "go",
+     "en": "I have to go.",
+     "ko": "나 가야 해."
+    },
+    {
+     "word": "keep",
+     "en": "Keep it here.",
+     "ko": "여기 둬."
+    }
+   ],
+   "etymology": [
+    "leave는 고대 영어 lǣfan(남겨 두다, 뒤에 남기다)에서 온 단어입니다.",
+    "'남다', '나머지'를 뜻하는 아주 옛말과 이어집니다.",
+    "'남겨 두고 떠나다'라는 뜻에서 '떠나다'와 '남기다' 두 가지 뜻이 함께 생겼습니다.",
+    "명사 leave(휴가)는 뿌리가 다른 말로, '허락'이라는 뜻의 옛말에서 왔습니다.",
+    "leave의 핵심 이미지는 '뒤에 흔적을 남기고 떠나는 발걸음 🚶'입니다."
+   ],
+   "meanings": [
+    "떠나다, 출발하다 (동사)",
+    "(그대로) 남기다, 두다 (동사)",
+    "그만두다 (동사)",
+    "휴가, 허락 (명사)"
+   ],
+   "examples": [
+    {
+     "en": "The train leaves at nine.",
+     "ko": "기차는 9시에 떠나요."
+    },
+    {
+     "en": "Don't leave your books on the floor.",
+     "ko": "책을 바닥에 두지 마."
+    },
+    {
+     "en": "I left my umbrella at school.",
+     "ko": "나는 학교에 우산을 두고 왔어요."
+    },
+    {
+     "en": "She left her job last month.",
+     "ko": "그녀는 지난달에 일을 그만두었어요."
+    },
+    {
+     "en": "Leave a message after the beep.",
+     "ko": "삐 소리 후에 메시지를 남겨 주세요."
+    },
+    {
+     "en": "My dad is on leave this week.",
+     "ko": "우리 아빠는 이번 주 휴가예요."
+    }
+   ],
+   "together": [
+    {
+     "type": "변화형",
+     "word": "left",
+     "ko": "떠났다 (과거형)",
+     "en": "She left early."
+    },
+    {
+     "type": "유의어",
+     "word": "go",
+     "ko": "가다",
+     "en": "Go home."
+    },
+    {
+     "type": "반의어",
+     "word": "arrive",
+     "ko": "도착하다",
+     "en": "Arrive on time."
+    },
+    {
+     "type": "반의어",
+     "word": "stay",
+     "ko": "머무르다",
+     "en": "Stay here."
+    },
+    {
+     "type": "연관어",
+     "word": "depart",
+     "ko": "출발하다",
+     "en": "Depart at noon."
+    },
+    {
+     "type": "연관어",
+     "word": "vacation",
+     "ko": "휴가",
+     "en": "Summer vacation."
+    }
+   ]
+  },
+  "966": {
+   "word": "ever",
+   "overview": [
+    "ever는 '지금까지', '언젠가'라는 뜻의 부사입니다. 어떤 일이 있었던 적이 있는지 말할 때 씁니다.",
+    "Have you ever been to Japan?(일본에 가 본 적 있어요?)처럼 의문문에서 자주 씁니다.",
+    "부정문에서는 '전혀 ~않다'라는 뜻이 됩니다. I never ever want to see it again.(다시는 절대 보고 싶지 않아요.)",
+    "the best movie ever(역대 최고의 영화)처럼 '이제까지 중에서'라는 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "always",
+     "en": "Always smile.",
+     "ko": "항상 웃어."
+    },
+    {
+     "word": "never",
+     "en": "Never give up.",
+     "ko": "절대 포기하지 마."
+    }
+   ],
+   "etymology": [
+    "ever는 고대 영어 ǣfre(늘, 언제나)에서 온 단어입니다.",
+    "정확한 더 옛 뿌리는 잘 알려져 있지 않은데, '나이', '시대'를 뜻하는 age와 이어진다는 설이 있습니다.",
+    "'모든 시대에 걸쳐'라는 뜻에서 '언제든지', '지금까지'라는 뜻이 나왔습니다.",
+    "never는 not(아니다)과 ever가 합쳐진 말입니다.",
+    "ever의 핵심 이미지는 '시간을 통틀어 어느 때라도 🕰️'입니다."
+   ],
+   "meanings": [
+    "지금까지, 여지껏",
+    "언젠가, 이제까지 중에서 (최상급과 함께)",
+    "(부정문에서) 전혀"
+   ],
+   "examples": [
+    {
+     "en": "Have you ever tried Korean food?",
+     "ko": "한국 음식 먹어 본 적 있어요?"
+    },
+    {
+     "en": "This is the best day ever!",
+     "ko": "이건 역대 최고의 하루야!"
+    },
+    {
+     "en": "I don't ever want to be late again.",
+     "ko": "나는 다시는 절대 늦고 싶지 않아요."
+    },
+    {
+     "en": "If you ever need help, call me.",
+     "ko": "언제든 도움이 필요하면 나한테 전화해."
+    },
+    {
+     "en": "She is the kindest teacher ever.",
+     "ko": "그녀는 역대 가장 친절한 선생님이에요."
+    },
+    {
+     "en": "Has anyone ever climbed that mountain?",
+     "ko": "저 산을 오른 사람이 지금까지 있었나요?"
+    }
+   ],
+   "together": [
+    {
+     "type": "파생어",
+     "word": "never",
+     "ko": "절대 ~않다",
+     "en": "Never say never."
+    },
+    {
+     "type": "파생어",
+     "word": "however",
+     "ko": "그러나, 아무리 ~해도",
+     "en": "However hard."
+    },
+    {
+     "type": "연관어",
+     "word": "always",
+     "ko": "항상",
+     "en": "Always try."
+    },
+    {
+     "type": "연관어",
+     "word": "forever",
+     "ko": "영원히",
+     "en": "Forever young."
+    },
+    {
+     "type": "연관어",
+     "word": "once",
+     "ko": "한 번, 언젠가",
+     "en": "Once upon a time."
+    },
+    {
+     "type": "연관어",
+     "word": "before",
+     "ko": "전에",
+     "en": "Never before."
+    }
+   ]
+  },
+  "2942": {
+   "word": "which",
+   "overview": [
+    "which는 '어느 것', '어느'라는 뜻의 의문사이자 관계대명사입니다.",
+    "Which color do you like?(어느 색깔이 좋아요?)처럼 여러 개 중에서 고를 때 씁니다.",
+    "문장을 이어 주는 관계대명사로도 씁니다. This is the book which I read.(이건 내가 읽은 책이야.)",
+    "사람에게는 who를 쓰고, which는 보통 사물이나 동물을 가리킬 때 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "what",
+     "en": "What is it?",
+     "ko": "그게 뭐야?"
+    },
+    {
+     "word": "choose",
+     "en": "Choose one.",
+     "ko": "하나를 골라."
+    }
+   ],
+   "etymology": [
+    "which는 고대 영어 hwilc(어느 것)에서 온 단어입니다.",
+    "hwā(누구)와 līc(모양, 몸)이 합쳐진 말로, '어떤 모양의 것'이라는 뜻이었습니다.",
+    "who(누구), what(무엇)과 같은 wh- 의문사 가족의 한 단어입니다.",
+    "옛날에는 지금보다 더 자주 사람에게도 썼는데, 지금은 who가 그 자리를 대신합니다.",
+    "which의 핵심 이미지는 '여러 개 중에서 손가락으로 콕 짚어 고르기 👆'입니다."
+   ],
+   "meanings": [
+    "어느, 어느 것 (의문)",
+    "(관계대명사) ~하는, ~인 (사물)"
+   ],
+   "examples": [
+    {
+     "en": "Which bag is yours?",
+     "ko": "어느 가방이 네 거야?"
+    },
+    {
+     "en": "Which do you like better, tea or coffee?",
+     "ko": "차랑 커피 중 어느 쪽이 더 좋아요?"
+    },
+    {
+     "en": "I don't know which train to take.",
+     "ko": "어느 기차를 타야 할지 모르겠어요."
+    },
+    {
+     "en": "This is the movie which I told you about.",
+     "ko": "이게 내가 너한테 말했던 영화야."
+    },
+    {
+     "en": "Which season do you like the most?",
+     "ko": "어느 계절을 가장 좋아해요?"
+    },
+    {
+     "en": "Tell me which one you want.",
+     "ko": "어느 것을 원하는지 말해 줘."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "what",
+     "ko": "무엇",
+     "en": "What time is it?"
+    },
+    {
+     "type": "연관어",
+     "word": "who",
+     "ko": "누구",
+     "en": "Who is that?"
+    },
+    {
+     "type": "연관어",
+     "word": "choose",
+     "ko": "고르다",
+     "en": "Choose carefully."
+    },
+    {
+     "type": "연관어",
+     "word": "either",
+     "ko": "둘 중 어느 것이든",
+     "en": "Either one is fine."
+    },
+    {
+     "type": "연관어",
+     "word": "one",
+     "ko": "하나",
+     "en": "This one."
+    },
+    {
+     "type": "연관어",
+     "word": "that",
+     "ko": "저것, 그것",
+     "en": "That one."
+    }
+   ]
+  },
+  "1601": {
+   "word": "lot",
+   "overview": [
+    "lot은 '많음'이라는 뜻으로, a lot of 또는 lots of 형태로 아주 자주 씁니다. '많은 ~'이라는 뜻입니다.",
+    "a lot of friends(많은 친구들), I like it a lot.(나는 그게 정말 좋아요.)처럼 씁니다.",
+    "'땅 한 구역'이라는 뜻도 있습니다. a parking lot(주차장)",
+    "제비뽑기의 '제비'라는 뜻도 있어서 draw lots(제비를 뽑다)처럼 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "many",
+     "en": "Many books.",
+     "ko": "많은 책."
+    },
+    {
+     "word": "much",
+     "en": "So much fun.",
+     "ko": "정말 재미있어."
+    }
+   ],
+   "etymology": [
+    "lot은 고대 영어 hlot(제비, 몫)에서 온 단어입니다.",
+    "옛날에 무엇을 나눌 때 막대기나 돌 같은 물건으로 제비를 뽑아 정했습니다.",
+    "'제비를 뽑아 정해진 몫'이라는 뜻에서 '몫', '운명'이라는 뜻이 나왔습니다.",
+    "미국에서는 나눠진 '땅 한 구역'을 lot이라고 부르게 되었습니다.",
+    "a lot(많음)은 '한 몫'이 '수북한 양'이라는 뜻으로 넓어진 것입니다.",
+    "lot의 핵심 이미지는 '수북하게 쌓인 많은 양 📦'입니다."
+   ],
+   "meanings": [
+    "(a lot of) 많은 ~ (명사)",
+    "(a lot) 많이, 정말 (부사)",
+    "(땅의) 한 구역, 부지 (명사)",
+    "제비, 운명 (명사)"
+   ],
+   "examples": [
+    {
+     "en": "I have a lot of homework today.",
+     "ko": "나는 오늘 숙제가 많아요."
+    },
+    {
+     "en": "Thanks a lot for your help!",
+     "ko": "도와줘서 정말 고마워!"
+    },
+    {
+     "en": "There are lots of stars tonight.",
+     "ko": "오늘 밤에는 별이 많아요."
+    },
+    {
+     "en": "We parked the car in the parking lot.",
+     "ko": "우리는 주차장에 차를 세웠어요."
+    },
+    {
+     "en": "They drew lots to decide who goes first.",
+     "ko": "그들은 누가 먼저 할지 정하려고 제비를 뽑았어요."
+    },
+    {
+     "en": "I like this song a lot.",
+     "ko": "나는 이 노래가 정말 좋아요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "many",
+     "ko": "많은 (셀 수 있는 것)",
+     "en": "Many people."
+    },
+    {
+     "type": "유의어",
+     "word": "much",
+     "ko": "많은 (셀 수 없는 것)",
+     "en": "Much time."
+    },
+    {
+     "type": "연관어",
+     "word": "few",
+     "ko": "적은 수의",
+     "en": "A few apples."
+    },
+    {
+     "type": "연관어",
+     "word": "plenty",
+     "ko": "풍부함",
+     "en": "Plenty of time."
+    },
+    {
+     "type": "연관어",
+     "word": "land",
+     "ko": "땅",
+     "en": "A piece of land."
+    },
+    {
+     "type": "연관어",
+     "word": "luck",
+     "ko": "운",
+     "en": "Good luck."
+    }
+   ]
+  },
+  "2715": {
+   "word": "through",
+   "overview": [
+    "through는 '~을 통과하여', '~을 지나서'라는 뜻의 전치사입니다. 한쪽에서 반대쪽으로 지나가는 것을 말합니다.",
+    "walk through the park(공원을 지나 걷다), look through the window(창문 너머로 보다)처럼 씁니다.",
+    "'끝까지', '~하는 동안 내내'라는 뜻도 있습니다. all through the night(밤새 내내)",
+    "'~을 끝낸', '다 된'이라는 형용사로도 씁니다. I'm through with my homework.(숙제 다 끝냈어요.)"
+   ],
+   "easy": [
+    {
+     "word": "across",
+     "en": "Across the street.",
+     "ko": "길 건너."
+    },
+    {
+     "word": "past",
+     "en": "Walk past the shop.",
+     "ko": "가게를 지나 걸어가."
+    }
+   ],
+   "etymology": [
+    "through는 고대 영어 thurh(~을 통과하여)에서 온 단어입니다.",
+    "라틴어 trans(가로질러)와 먼 친척으로 보는 아주 옛날 뿌리에서 왔습니다.",
+    "옛날에는 철자가 여러 가지였는데(thurgh, thruch 등), 지금의 through로 정착했습니다.",
+    "thorough(철저한)도 같은 뿌리에서 나온 단어로, '끝까지 지나가는'이라는 뜻과 이어집니다.",
+    "through의 핵심 이미지는 '터널을 뚫고 반대편으로 나가기 🚇'입니다."
+   ],
+   "meanings": [
+    "~을 통과하여, ~을 뚫고",
+    "(시간) ~ 내내, ~ 동안 죽",
+    "(수단) ~을 통해서",
+    "다 끝난, 마친 (형용사)"
+   ],
+   "examples": [
+    {
+     "en": "We walked through the forest.",
+     "ko": "우리는 숲을 지나 걸었어요."
+    },
+    {
+     "en": "Sunlight came through the window.",
+     "ko": "햇빛이 창문을 통해 들어왔어요."
+    },
+    {
+     "en": "I stayed up through the whole night.",
+     "ko": "나는 밤새 내내 깨어 있었어요."
+    },
+    {
+     "en": "She learned it through practice.",
+     "ko": "그녀는 연습을 통해 그것을 배웠어요."
+    },
+    {
+     "en": "Are you through with the computer?",
+     "ko": "컴퓨터 다 썼어?"
+    },
+    {
+     "en": "The train goes through the tunnel.",
+     "ko": "기차가 터널을 통과해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "across",
+     "ko": "가로질러",
+     "en": "Swim across."
+    },
+    {
+     "type": "연관어",
+     "word": "into",
+     "ko": "~ 안으로",
+     "en": "Go into the room."
+    },
+    {
+     "type": "연관어",
+     "word": "out",
+     "ko": "밖으로",
+     "en": "Go out."
+    },
+    {
+     "type": "연관어",
+     "word": "past",
+     "ko": "지나서",
+     "en": "Drive past."
+    },
+    {
+     "type": "연관어",
+     "word": "along",
+     "ko": "~을 따라",
+     "en": "Walk along the beach."
+    },
+    {
+     "type": "연관어",
+     "word": "thorough",
+     "ko": "철저한",
+     "en": "A thorough check."
+    }
+   ]
+  },
+  "1298": {
+   "word": "hear",
+   "overview": [
+    "hear는 '듣다', '들리다'라는 뜻의 동사입니다. 귀로 소리를 알아채는 것을 말합니다.",
+    "Can you hear me?(내 말 들려요?)처럼 씁니다. listen이 '귀 기울여 듣다'라면, hear는 애쓰지 않아도 '저절로 들리다'라는 느낌입니다.",
+    "hear about/of는 '~에 대해 (소식으로) 듣다'라는 뜻입니다. I heard about the news.(그 소식 들었어요.)",
+    "과거형과 과거분사는 모두 heard입니다."
+   ],
+   "easy": [
+    {
+     "word": "listen",
+     "en": "Listen carefully.",
+     "ko": "잘 들어."
+    },
+    {
+     "word": "sound",
+     "en": "A loud sound.",
+     "ko": "큰 소리."
+    }
+   ],
+   "etymology": [
+    "hear는 고대 영어 hēran(듣다)에서 온 단어입니다.",
+    "독일어 hören(듣다)과 같은 뿌리입니다.",
+    "'귀'를 뜻하는 옛말과 가까이 이어져 있다고 봅니다.",
+    "hearing(청각)은 hear에서 나온 명사입니다.",
+    "hear의 핵심 이미지는 '소리가 귀에 저절로 들어오기 👂'입니다."
+   ],
+   "meanings": [
+    "듣다, 들리다",
+    "(소식을) 듣다, 전해 듣다",
+    "(법정에서) 심리하다"
+   ],
+   "examples": [
+    {
+     "en": "I can't hear you. Speak louder.",
+     "ko": "안 들려. 더 크게 말해."
+    },
+    {
+     "en": "Did you hear that noise?",
+     "ko": "그 소리 들었어요?"
+    },
+    {
+     "en": "I heard the good news!",
+     "ko": "좋은 소식 들었어요!"
+    },
+    {
+     "en": "We heard birds singing outside.",
+     "ko": "우리는 밖에서 새가 노래하는 소리를 들었어요."
+    },
+    {
+     "en": "Have you heard from her lately?",
+     "ko": "최근에 그녀한테서 연락 들었어요?"
+    },
+    {
+     "en": "I couldn't hear the teacher clearly.",
+     "ko": "나는 선생님 말씀이 잘 안 들렸어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "listen",
+     "ko": "귀 기울여 듣다",
+     "en": "Listen to music."
+    },
+    {
+     "type": "변화형",
+     "word": "heard",
+     "ko": "들었다 (과거형)",
+     "en": "I heard it."
+    },
+    {
+     "type": "파생어",
+     "word": "hearing",
+     "ko": "청각, 청문회",
+     "en": "Good hearing."
+    },
+    {
+     "type": "연관어",
+     "word": "sound",
+     "ko": "소리",
+     "en": "A strange sound."
+    },
+    {
+     "type": "연관어",
+     "word": "ear",
+     "ko": "귀",
+     "en": "My ears hurt."
+    },
+    {
+     "type": "연관어",
+     "word": "loud",
+     "ko": "시끄러운, 큰 소리의",
+     "en": "A loud noise."
+    }
+   ]
+  },
+  "1877": {
+   "word": "own",
+   "overview": [
+    "own은 '자신의'라는 뜻의 형용사이자 '소유하다'라는 뜻의 동사입니다.",
+    "my own room(내 방, 내 소유의 방)처럼 소유 형용사 뒤에 own을 붙여 강조합니다.",
+    "Does she own a car?(그녀는 차가 있어요?)처럼 동사로도 씁니다.",
+    "on one's own은 '혼자서', '스스로'라는 뜻의 표현입니다."
+   ],
+   "easy": [
+    {
+     "word": "have",
+     "en": "I have a bike.",
+     "ko": "나는 자전거가 있어."
+    },
+    {
+     "word": "myself",
+     "en": "By myself.",
+     "ko": "나 혼자서."
+    }
+   ],
+   "etymology": [
+    "own은 고대 영어 āgen(자신의, 소유한)에서 온 단어입니다.",
+    "owe(빚지다, 신세 지다)와 같은 뿌리에서 나온 말입니다.",
+    "옛날에는 '가지고 있는', '빚진'이 비슷한 뜻으로 쓰였다가, 나중에 두 단어로 갈라졌습니다.",
+    "'자신만의 것을 가지다'라는 뜻이 지금의 own에 남아 있습니다.",
+    "own의 핵심 이미지는 '누구와도 나누지 않는 오롯이 나만의 것 🔑'입니다."
+   ],
+   "meanings": [
+    "자신의, ~ 소유의 (형용사)",
+    "소유하다, 가지고 있다 (동사)",
+    "(잘못 등을) 인정하다 (동사, own up)"
+   ],
+   "examples": [
+    {
+     "en": "I have my own room now.",
+     "ko": "나는 이제 내 방이 있어요."
+    },
+    {
+     "en": "Do you own a smartphone?",
+     "ko": "스마트폰 있어요?"
+    },
+    {
+     "en": "She made it on her own.",
+     "ko": "그녀는 그것을 혼자서 만들었어요."
+    },
+    {
+     "en": "Every kid should have their own dream.",
+     "ko": "모든 아이는 자기만의 꿈이 있어야 해요."
+    },
+    {
+     "en": "He owns a small bakery.",
+     "ko": "그는 작은 빵집을 소유하고 있어요."
+    },
+    {
+     "en": "She owned up to her mistake.",
+     "ko": "그녀는 자기 잘못을 인정했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "파생어",
+     "word": "owner",
+     "ko": "주인, 소유자",
+     "en": "The dog's owner."
+    },
+    {
+     "type": "유의어",
+     "word": "have",
+     "ko": "가지고 있다",
+     "en": "Have a pet."
+    },
+    {
+     "type": "유의어",
+     "word": "possess",
+     "ko": "소유하다",
+     "en": "Possess a skill."
+    },
+    {
+     "type": "연관어",
+     "word": "alone",
+     "ko": "혼자",
+     "en": "Live alone."
+    },
+    {
+     "type": "연관어",
+     "word": "self",
+     "ko": "자기 자신",
+     "en": "Believe in yourself."
+    },
+    {
+     "type": "연관어",
+     "word": "belong",
+     "ko": "속하다",
+     "en": "This belongs to me."
+    }
+   ]
+  },
+  "913": {
+   "word": "else",
+   "overview": [
+    "else는 '그 밖의', '다른'이라는 뜻의 부사입니다. something, anyone, where 같은 말 뒤에 붙어 씁니다.",
+    "Anything else?(다른 건 없어요?), somewhere else(다른 어딘가)처럼 씁니다.",
+    "or else는 '그렇지 않으면'이라는 뜻으로, 경고할 때 자주 씁니다. Hurry up, or else we'll be late.(서둘러, 안 그러면 늦어.)",
+    "혼자서는 쓰지 않고 항상 다른 의문사나 부정대명사 뒤에 붙여 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "other",
+     "en": "Something other.",
+     "ko": "다른 어떤 것."
+    },
+    {
+     "word": "different",
+     "en": "A different place.",
+     "ko": "다른 곳."
+    }
+   ],
+   "etymology": [
+    "else는 고대 영어 elles(다르게, 그 밖에)에서 온 단어입니다.",
+    "'다른'을 뜻하는 아주 옛날 말의 격 변화 형태가 굳어져 지금의 else가 되었다고 봅니다.",
+    "other와 뿌리가 이어지는 먼 친척 단어라고 봅니다.",
+    "혼자 쓰이지 않고 늘 who, what, where, anyone 같은 말 뒤에 붙는 특이한 단어입니다.",
+    "else의 핵심 이미지는 '이것 말고 또 다른 무언가 ➕'입니다."
+   ],
+   "meanings": [
+    "그 밖의, 다른",
+    "(or else) 그렇지 않으면"
+   ],
+   "examples": [
+    {
+     "en": "Is there anything else I can help with?",
+     "ko": "제가 더 도와드릴 게 있을까요?"
+    },
+    {
+     "en": "Who else is coming to the party?",
+     "ko": "파티에 또 누가 와?"
+    },
+    {
+     "en": "Let's go somewhere else for lunch.",
+     "ko": "점심은 다른 곳에서 먹자."
+    },
+    {
+     "en": "Finish your homework, or else you can't play.",
+     "ko": "숙제를 끝내, 안 그러면 놀 수 없어."
+    },
+    {
+     "en": "I have nothing else to say.",
+     "ko": "더 할 말이 없어요."
+    },
+    {
+     "en": "What else do you need?",
+     "ko": "다른 뭐가 더 필요해요?"
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "other",
+     "ko": "다른",
+     "en": "The other side."
+    },
+    {
+     "type": "연관어",
+     "word": "anyone",
+     "ko": "누구든",
+     "en": "Anyone can join."
+    },
+    {
+     "type": "연관어",
+     "word": "something",
+     "ko": "무언가",
+     "en": "Something new."
+    },
+    {
+     "type": "연관어",
+     "word": "otherwise",
+     "ko": "그렇지 않으면",
+     "en": "Otherwise, we'll leave."
+    },
+    {
+     "type": "연관어",
+     "word": "anywhere",
+     "ko": "어디든",
+     "en": "Sit anywhere."
+    },
+    {
+     "type": "연관어",
+     "word": "more",
+     "ko": "더",
+     "en": "One more thing."
+    }
+   ]
+  },
+  "1138": {
+   "word": "found",
+   "overview": [
+    "found에는 두 가지 쓰임이 있습니다. 하나는 find(찾다)의 과거형이고, 다른 하나는 '세우다', '설립하다'라는 뜻의 동사입니다.",
+    "I found my keys.(나는 열쇠를 찾았어요.)처럼 find의 과거형으로 아주 자주 씁니다.",
+    "found a school(학교를 세우다), found a company(회사를 설립하다)처럼도 씁니다.",
+    "'설립하다'의 과거형은 founded로, find의 과거형 found와는 다릅니다."
+   ],
+   "easy": [
+    {
+     "word": "find",
+     "en": "Find your book.",
+     "ko": "네 책을 찾아."
+    },
+    {
+     "word": "start",
+     "en": "Start a club.",
+     "ko": "동아리를 시작해."
+    }
+   ],
+   "etymology": [
+    "'찾다'의 과거형 found는 find의 고대 영어 fand에서 온 불규칙 변화입니다.",
+    "'세우다'라는 found는 라틴어 fundare(바닥을 놓다, 기초를 세우다)에서 온 다른 단어입니다.",
+    "fundare는 fundus(바닥, 밑)에서 나왔고, foundation(기초, 재단)과 같은 가족입니다.",
+    "우연히 두 단어가 같은 모양이 되었지만, 뿌리는 전혀 다릅니다.",
+    "found의 핵심 이미지는 '잃어버린 것을 찾은 기쁨 🔍'과 '땅에 튼튼한 기초 놓기 🏛️'입니다."
+   ],
+   "meanings": [
+    "찾았다 (find의 과거형·과거분사)",
+    "세우다, 설립하다 (동사)",
+    "(과거분사) 설립된"
+   ],
+   "examples": [
+    {
+     "en": "I found my lost pencil case.",
+     "ko": "나는 잃어버린 필통을 찾았어요."
+    },
+    {
+     "en": "We found a puppy on the street.",
+     "ko": "우리는 길에서 강아지를 발견했어요."
+    },
+    {
+     "en": "This school was founded in 1950.",
+     "ko": "이 학교는 1950년에 설립되었어요."
+    },
+    {
+     "en": "They plan to found a new company.",
+     "ko": "그들은 새 회사를 세울 계획이에요."
+    },
+    {
+     "en": "She found the answer by herself.",
+     "ko": "그녀는 혼자서 답을 찾았어요."
+    },
+    {
+     "en": "The city was founded long ago.",
+     "ko": "그 도시는 아주 오래전에 세워졌어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "find",
+     "ko": "찾다",
+     "en": "Find a way."
+    },
+    {
+     "type": "파생어",
+     "word": "founder",
+     "ko": "설립자",
+     "en": "The school's founder."
+    },
+    {
+     "type": "파생어",
+     "word": "foundation",
+     "ko": "기초, 재단",
+     "en": "A strong foundation."
+    },
+    {
+     "type": "연관어",
+     "word": "build",
+     "ko": "짓다, 세우다",
+     "en": "Build a house."
+    },
+    {
+     "type": "연관어",
+     "word": "start",
+     "ko": "시작하다",
+     "en": "Start a business."
+    },
+    {
+     "type": "연관어",
+     "word": "discover",
+     "ko": "발견하다",
+     "en": "Discover a new place."
+    }
+   ]
+  },
+  "1307": {
+   "word": "hell",
+   "overview": [
+    "hell은 종교에서 말하는 '지옥'이라는 뜻의 명사입니다. 나쁜 일을 한 사람이 죽어서 벌을 받는다고 여겨지는 곳입니다.",
+    "go to hell(지옥에 가다)처럼 종교 이야기에서 씁니다.",
+    "'아주 힘든 일이나 상황'을 비유해서 쓰기도 합니다. a hell of a week(정말 힘든 한 주)",
+    "가벼운 놀람이나 화를 나타내는 감탄사로도 쓰이는데, 무례하게 들릴 수 있어서 정중한 자리에서는 피하는 것이 좋습니다."
+   ],
+   "easy": [
+    {
+     "word": "heaven",
+     "en": "Heaven and earth.",
+     "ko": "천국과 땅."
+    },
+    {
+     "word": "terrible",
+     "en": "A terrible day.",
+     "ko": "끔찍한 하루."
+    }
+   ],
+   "etymology": [
+    "hell은 고대 영어 hel(지하 세계, 죽은 자들의 땅)에서 온 단어입니다.",
+    "'덮다', '숨기다'라는 뜻의 아주 옛날 게르만 말과 이어진다고 봅니다. '땅속에 감춰진 곳'이라는 뜻이었습니다.",
+    "옛 북유럽 신화에서 죽은 자들이 가는 세계의 이름 Hel과도 이어집니다.",
+    "기독교가 퍼지면서 hell은 '벌 받는 지옥'이라는 뜻으로 굳어졌습니다.",
+    "hell의 핵심 이미지는 '벌을 받는다고 여겨지는 어둡고 뜨거운 곳 🔥'입니다."
+   ],
+   "meanings": [
+    "지옥 (명사)",
+    "(비유) 아주 힘든 일, 끔찍한 상황 (명사)"
+   ],
+   "examples": [
+    {
+     "en": "In the story, bad people go to hell.",
+     "ko": "그 이야기에서 나쁜 사람들은 지옥에 가요."
+    },
+    {
+     "en": "Many old paintings show heaven and hell.",
+     "ko": "많은 옛날 그림이 천국과 지옥을 보여 줘요."
+    },
+    {
+     "en": "It was a hell of a difficult exam.",
+     "ko": "그건 정말 어려운 시험이었어요."
+    },
+    {
+     "en": "Waiting in that long line felt like hell.",
+     "ko": "그 긴 줄에서 기다리는 건 정말 힘들었어요."
+    },
+    {
+     "en": "The movie is about heaven and hell.",
+     "ko": "그 영화는 천국과 지옥에 관한 이야기예요."
+    },
+    {
+     "en": "This word appears in many old stories about the underworld.",
+     "ko": "이 단어는 저승에 관한 옛이야기에 많이 나와요."
+    }
+   ],
+   "together": [
+    {
+     "type": "반의어",
+     "word": "heaven",
+     "ko": "천국",
+     "en": "Go to heaven."
+    },
+    {
+     "type": "연관어",
+     "word": "devil",
+     "ko": "악마",
+     "en": "The devil's tail."
+    },
+    {
+     "type": "연관어",
+     "word": "underworld",
+     "ko": "저승, 지하 세계",
+     "en": "The underworld."
+    },
+    {
+     "type": "연관어",
+     "word": "punishment",
+     "ko": "벌",
+     "en": "A harsh punishment."
+    },
+    {
+     "type": "연관어",
+     "word": "fire",
+     "ko": "불",
+     "en": "A raging fire."
+    },
+    {
+     "type": "연관어",
+     "word": "terrible",
+     "ko": "끔찍한",
+     "en": "A terrible mistake."
+    }
+   ]
+  },
+  "2148": {
+   "word": "real",
+   "overview": [
+    "real은 '진짜의', '실제의'라는 뜻의 형용사입니다. 상상이나 거짓이 아니라 실제로 있는 것을 말합니다.",
+    "a real dog(진짜 개), Is this real?(이거 진짜예요?)처럼 씁니다.",
+    "real life(실생활), in real time(실시간으로)처럼 다른 말과 함께 자주 씁니다.",
+    "명사 reality(현실)와 부사 really(정말로)가 같은 가족 단어입니다."
+   ],
+   "easy": [
+    {
+     "word": "true",
+     "en": "A true story.",
+     "ko": "실화."
+    },
+    {
+     "word": "fake",
+     "en": "A fake diamond.",
+     "ko": "가짜 다이아몬드."
+    }
+   ],
+   "etymology": [
+    "real은 라틴어 realis(사물의, 실제의)에서 온 단어입니다.",
+    "realis는 res(물건, 사물)에서 나온 말입니다.",
+    "'실제로 있는 사물과 관련된'이라는 뜻에서 '진짜의', '실제의'가 되었습니다.",
+    "reality(현실), realize(깨닫다, 실현하다)도 같은 뿌리에서 나온 단어입니다.",
+    "real의 핵심 이미지는 '상상이 아니라 손에 잡히는 진짜 ✅'입니다."
+   ],
+   "meanings": [
+    "진짜의, 실제의",
+    "정말의, 참된",
+    "현실적인"
+   ],
+   "examples": [
+    {
+     "en": "Is this a real diamond?",
+     "ko": "이거 진짜 다이아몬드예요?"
+    },
+    {
+     "en": "This is based on a real story.",
+     "ko": "이건 실화를 바탕으로 했어요."
+    },
+    {
+     "en": "She is a real friend.",
+     "ko": "그녀는 진정한 친구예요."
+    },
+    {
+     "en": "In real life, things are not always easy.",
+     "ko": "실생활에서 일이 항상 쉬운 건 아니에요."
+    },
+    {
+     "en": "That's a real problem we need to solve.",
+     "ko": "그건 우리가 풀어야 할 진짜 문제예요."
+    },
+    {
+     "en": "He showed real courage.",
+     "ko": "그는 진짜 용기를 보여 줬어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "파생어",
+     "word": "really",
+     "ko": "정말로",
+     "en": "I really like it."
+    },
+    {
+     "type": "파생어",
+     "word": "reality",
+     "ko": "현실",
+     "en": "Face reality."
+    },
+    {
+     "type": "반의어",
+     "word": "fake",
+     "ko": "가짜의",
+     "en": "A fake smile."
+    },
+    {
+     "type": "유의어",
+     "word": "true",
+     "ko": "사실인",
+     "en": "A true fact."
+    },
+    {
+     "type": "연관어",
+     "word": "actual",
+     "ko": "실제의",
+     "en": "The actual price."
+    },
+    {
+     "type": "연관어",
+     "word": "imaginary",
+     "ko": "상상의",
+     "en": "An imaginary friend."
+    }
+   ]
+  },
+  "2970": {
+   "word": "without",
+   "overview": [
+    "without은 '~ 없이'라는 뜻의 전치사입니다. 무엇이 없는 상태를 말합니다.",
+    "without water(물 없이), without saying a word(한마디도 없이)처럼 씁니다.",
+    "do without은 '~ 없이 지내다', '~ 없이도 견디다'라는 뜻의 표현입니다.",
+    "with(~과 함께)의 반대말입니다."
+   ],
+   "easy": [
+    {
+     "word": "with",
+     "en": "With my friend.",
+     "ko": "내 친구와 함께."
+    },
+    {
+     "word": "no",
+     "en": "No sugar.",
+     "ko": "설탕 없이."
+    }
+   ],
+   "etymology": [
+    "without은 with(~과 함께, ~을 가지고)와 out(밖에, 없이)이 합쳐진 말입니다.",
+    "고대 영어 withūtan(~의 밖에)에서 왔습니다.",
+    "옛날에는 with가 '반대편에'라는 뜻도 가지고 있어서, with와 out이 합쳐져 '~의 바깥쪽'이라는 뜻이 되었습니다.",
+    "나중에 뜻이 좁혀져 '~이 없이'라는 지금의 뜻으로 굳어졌습니다.",
+    "without의 핵심 이미지는 '있어야 할 것이 빠진 빈자리 ➖'입니다."
+   ],
+   "meanings": [
+    "~ 없이",
+    "~하지 않고"
+   ],
+   "examples": [
+    {
+     "en": "I can't live without my phone.",
+     "ko": "나는 휴대폰 없이는 못 살아요."
+    },
+    {
+     "en": "She left without saying goodbye.",
+     "ko": "그녀는 인사도 없이 떠났어요."
+    },
+    {
+     "en": "We walked home without an umbrella.",
+     "ko": "우리는 우산도 없이 집까지 걸었어요."
+    },
+    {
+     "en": "He finished the puzzle without any help.",
+     "ko": "그는 아무 도움 없이 퍼즐을 완성했어요."
+    },
+    {
+     "en": "You can't make bread without flour.",
+     "ko": "밀가루 없이는 빵을 만들 수 없어요."
+    },
+    {
+     "en": "She smiled without saying a word.",
+     "ko": "그녀는 한마디도 없이 미소 지었어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "반의어",
+     "word": "with",
+     "ko": "~과 함께",
+     "en": "With my family."
+    },
+    {
+     "type": "연관어",
+     "word": "unless",
+     "ko": "~하지 않는다면",
+     "en": "Unless you try."
+    },
+    {
+     "type": "연관어",
+     "word": "lack",
+     "ko": "부족, 부족하다",
+     "en": "A lack of water."
+    },
+    {
+     "type": "연관어",
+     "word": "outside",
+     "ko": "밖에",
+     "en": "Play outside."
+    },
+    {
+     "type": "연관어",
+     "word": "empty",
+     "ko": "빈, 비어 있는",
+     "en": "An empty box."
+    },
+    {
+     "type": "연관어",
+     "word": "no",
+     "ko": "없는, 아니오",
+     "en": "No thanks."
+    }
+   ]
+  }
+ }
+}
