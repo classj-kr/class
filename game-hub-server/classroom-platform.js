@@ -1074,6 +1074,21 @@ function createClassroomPlatform(options = {}) {
         CHECK (group_type IN ('homeroom', 'subject', 'club', 'afterschool', 'care', 'shuttle', 'other'))`,
       `CREATE INDEX IF NOT EXISTS teacher_groups_teacher_idx
         ON teacher_groups (teacher_user_id, academic_year)`,
+      // 교직원 명단의 담임 배정으로 저절로 만든 학급 그룹인지. 배정이 바뀌면
+      // 이 표시가 붙은 옛 그룹을 치워 '내 학급'이 명단을 따라가게 한다.
+      `ALTER TABLE teacher_groups
+        ADD COLUMN IF NOT EXISTS auto_homeroom BOOLEAN`,
+      // 이 칸이 생기기 전의 줄은 어느 쪽인지 적혀 있지 않다. 담임 배정이 있는
+      // 교사의 학급 그룹은 그 배정에서 온 것으로 본다 — 그래야 예전에 배정했다
+      // 바꾼 반(6-4 → 6-2)의 카드가 남지 않는다. 한 번만 채운다(IS NULL).
+      `UPDATE teacher_groups g
+          SET auto_homeroom = (g.group_type = 'homeroom' AND EXISTS (
+                SELECT 1 FROM classroom_teachers t
+                WHERE t.user_id = g.teacher_user_id AND t.school_id = g.school_id
+                  AND t.grade IS NOT NULL AND t.class_number IS NOT NULL))
+        WHERE g.auto_homeroom IS NULL`,
+      `ALTER TABLE teacher_groups ALTER COLUMN auto_homeroom SET DEFAULT FALSE`,
+      `ALTER TABLE teacher_groups ALTER COLUMN auto_homeroom SET NOT NULL`,
       `CREATE TABLE IF NOT EXISTS teacher_group_students (
         group_id BIGINT NOT NULL REFERENCES teacher_groups(id) ON DELETE CASCADE,
         student_id BIGINT NOT NULL REFERENCES school_students(id) ON DELETE CASCADE,
@@ -8266,10 +8281,23 @@ function createClassroomPlatform(options = {}) {
     // school_id로 만들어지고, /teacher/class가 보는 진짜 담임 학급과 어긋나서
     // 학생이 실제로 있는데도 0명으로 보인다.
     const registration = await teacherRegistration(teacher);
+    const homeroomName = registration && registration.grade && registration.class_number
+      ? `${registration.grade}-${registration.class_number}`
+      : null;
 
-    if (registration && registration.grade && registration.class_number) {
+    // 담임 배정이 바뀌면(6-4 → 6-2) 새 반 그룹은 만들어지지만 옛 반 그룹이
+    // 그대로 남아 '내 학급'에 두 반이 떴다. 저절로 만든 옛 그룹은 치운다.
+    await pool.query(
+      `DELETE FROM teacher_groups
+       WHERE teacher_user_id = $1 AND academic_year = $2
+         AND group_type = 'homeroom' AND auto_homeroom
+         AND ($3::text IS NULL OR group_name <> $3)`,
+      [teacher.id, year, homeroomName]
+    ).catch((error) => console.error("stale homeroom group cleanup failed:", error.message));
+
+    if (homeroomName) {
       const tc = registration;
-      const gName = `${tc.grade}-${tc.class_number}`;
+      const gName = homeroomName;
       // ON CONFLICT (teacher_user_id, academic_year, group_name) 을 쓰고 있었는데
       // 그 세 칸에 걸린 UNIQUE 가 없다. Postgres 는 그런 ON CONFLICT 를 오류로
       // 돌려보내고, 그 오류를 catch 로 삼키고 있었다. 그래서 담임 학급 그룹이
@@ -8282,8 +8310,8 @@ function createClassroomPlatform(options = {}) {
       );
       if (already.rowCount === 0) {
         await pool.query(
-          `INSERT INTO teacher_groups (school_id, teacher_user_id, academic_year, group_name, group_type, grade, class_number)
-           VALUES ($1, $2, $3, $4, 'homeroom', $5, $6)`,
+          `INSERT INTO teacher_groups (school_id, teacher_user_id, academic_year, group_name, group_type, grade, class_number, auto_homeroom)
+           VALUES ($1, $2, $3, $4, 'homeroom', $5, $6, TRUE)`,
           [tc.school_id, teacher.id, year, gName, tc.grade, tc.class_number]
         ).catch((error) => console.error("homeroom group provisioning failed:", error.message));
       } else {
@@ -8291,15 +8319,16 @@ function createClassroomPlatform(options = {}) {
         // 있을 수 있다 -- 있는지만 보고 넘어가면 그 잘못된 줄이 영영 고쳐지지
         // 않는다. 정본(teacherRegistration) 값으로 매번 맞춰 둔다.
         await pool.query(
-          `UPDATE teacher_groups SET school_id = $1, grade = $2, class_number = $3, updated_at = NOW()
-           WHERE id = $4 AND (school_id IS DISTINCT FROM $1 OR grade IS DISTINCT FROM $2 OR class_number IS DISTINCT FROM $3)`,
+          `UPDATE teacher_groups SET school_id = $1, grade = $2, class_number = $3, auto_homeroom = TRUE, updated_at = NOW()
+           WHERE id = $4 AND (school_id IS DISTINCT FROM $1 OR grade IS DISTINCT FROM $2 OR class_number IS DISTINCT FROM $3
+                              OR NOT auto_homeroom)`,
           [tc.school_id, tc.grade, tc.class_number, already.rows[0].id]
         ).catch((error) => console.error("homeroom group repair failed:", error.message));
       }
     }
 
     const result = await pool.query(
-      `SELECT g.id, g.group_name, g.group_type, g.grade, g.class_number, g.sort_order,
+      `SELECT g.id, g.group_name, g.group_type, g.grade, g.class_number, g.sort_order, g.auto_homeroom,
               (
                 SELECT COUNT(*)
                 FROM (
