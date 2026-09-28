@@ -1,0 +1,3826 @@
+{
+ "version": "v1",
+ "level": 4,
+ "description": "Level 4 상세설명. 개요 · 어원 · 뜻 · 예문 · 함께 익히기 구조.",
+ "entries": {
+  "1196": {
+   "word": "gentleman",
+   "overview": [
+    "gentleman은 '신사'라는 뜻의 명사입니다. 예의 바르고 친절한 남자를 말합니다. 여러 명은 gentlemen입니다.",
+    "Ladies and gentlemen!(신사 숙녀 여러분!)은 여러 사람 앞에서 말을 시작할 때 씁니다.",
+    "man보다 공손한 말입니다. (This gentleman is waiting. = 이 신사분이 기다리고 계세요.) 화장실 표지판의 Gentlemen은 '남자 화장실'입니다."
+   ],
+   "easy": [
+    {
+     "word": "man",
+     "en": "A kind man.",
+     "ko": "친절한 남자."
+    },
+    {
+     "word": "sir",
+     "en": "Thank you, sir.",
+     "ko": "감사합니다, 선생님."
+    }
+   ],
+   "etymology": [
+    "gentleman은 gentle(점잖은, 좋은 집안의)과 man(남자)이 합쳐진 말입니다.",
+    "gentle은 라틴어 gentīlis(좋은 가문의)에서 왔습니다.",
+    "원래는 '좋은 가문에서 태어난 남자', 즉 '귀족 남자'라는 뜻이었습니다.",
+    "나중에 '예의 바르고 점잖은 남자'라는 뜻이 되었습니다.",
+    "gentleman의 핵심 이미지는 '모자 벗고 인사하는 예의 바른 신사 🎩'입니다."
+   ],
+   "meanings": [
+    "신사",
+    "(공손하게) 남자분",
+    "(Gentlemen) 남자 화장실"
+   ],
+   "examples": [
+    {
+     "en": "Ladies and gentlemen, welcome!",
+     "ko": "신사 숙녀 여러분, 환영합니다!"
+    },
+    {
+     "en": "He is a real gentleman.",
+     "ko": "그는 진정한 신사예요."
+    },
+    {
+     "en": "The gentleman held the door for me.",
+     "ko": "그 신사분이 나를 위해 문을 잡아 주셨어요."
+    },
+    {
+     "en": "A gentleman is always polite.",
+     "ko": "신사는 항상 예의 바르다."
+    },
+    {
+     "en": "This gentleman wants to see you.",
+     "ko": "이 남자분이 당신을 만나고 싶어 하세요."
+    },
+    {
+     "en": "Be a gentleman and help her.",
+     "ko": "신사답게 그녀를 도와줘."
+    }
+   ],
+   "together": [
+    {
+     "type": "반의어",
+     "word": "lady",
+     "ko": "숙녀",
+     "en": "A kind lady."
+    },
+    {
+     "type": "변화형",
+     "word": "gentlemen",
+     "ko": "신사들",
+     "en": "Two gentlemen."
+    },
+    {
+     "type": "유의어",
+     "word": "man",
+     "ko": "남자",
+     "en": "A tall man."
+    },
+    {
+     "type": "연관어",
+     "word": "gentle",
+     "ko": "점잖은, 부드러운",
+     "en": "A gentle voice."
+    },
+    {
+     "type": "연관어",
+     "word": "polite",
+     "ko": "예의 바른",
+     "en": "Be polite."
+    },
+    {
+     "type": "연관어",
+     "word": "kind",
+     "ko": "친절한",
+     "en": "A kind heart."
+    }
+   ]
+  },
+  "1459": {
+   "word": "introduce",
+   "overview": [
+    "introduce는 '소개하다'라는 뜻의 동사입니다.",
+    "introduce myself(나를 소개하다), introduce A to B(A를 B에게 소개하다)처럼 씁니다. (Let me introduce myself. = 제 소개를 할게요.)",
+    "새로운 것을 '도입하다', '처음 선보이다'라는 뜻도 있습니다. introduction은 '소개', '서론'입니다."
+   ],
+   "easy": [
+    {
+     "word": "present",
+     "en": "Let me present my friend.",
+     "ko": "내 친구를 소개할게."
+    },
+    {
+     "word": "show",
+     "en": "Show us your pet.",
+     "ko": "너의 애완동물을 보여 줘."
+    }
+   ],
+   "etymology": [
+    "introduce는 라틴어 intrōdūcere에서 온 단어로, 원래 뜻은 '안으로 이끌어 들이다'였습니다.",
+    "intrō(안으로)와 dūcere(이끌다)가 합쳐진 말입니다.",
+    "'모르는 사람을 모임 안으로 데려와 알리다'가 '소개하다'가 되었습니다.",
+    "introduction(소개)은 introduce에서 나온 명사입니다.",
+    "introduce의 핵심 이미지는 '이 사람은 ○○이야! 하고 알려 주기 🙋'입니다."
+   ],
+   "meanings": [
+    "소개하다",
+    "(새로운 것을) 도입하다, 처음 선보이다",
+    "(처음으로) 접하게 하다"
+   ],
+   "examples": [
+    {
+     "en": "Let me introduce myself.",
+     "ko": "제 소개를 할게요."
+    },
+    {
+     "en": "I introduced my friend to my mom.",
+     "ko": "나는 친구를 엄마께 소개했어요."
+    },
+    {
+     "en": "Can you introduce your family?",
+     "ko": "가족을 소개해 줄래요?"
+    },
+    {
+     "en": "The school introduced a new lunch menu.",
+     "ko": "학교에서 새 급식 메뉴를 도입했어요."
+    },
+    {
+     "en": "My dad introduced me to chess.",
+     "ko": "아빠가 나에게 체스를 처음 알려 주셨어요."
+    },
+    {
+     "en": "Write a short introduction about yourself.",
+     "ko": "자기소개를 짧게 쓰세요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "present",
+     "ko": "소개하다",
+     "en": "Present your friend."
+    },
+    {
+     "type": "파생어",
+     "word": "introduction",
+     "ko": "소개, 서론",
+     "en": "A short introduction."
+    },
+    {
+     "type": "연관어",
+     "word": "meet",
+     "ko": "만나다",
+     "en": "Nice to meet you."
+    },
+    {
+     "type": "연관어",
+     "word": "name",
+     "ko": "이름",
+     "en": "My name is Jun."
+    },
+    {
+     "type": "연관어",
+     "word": "new",
+     "ko": "새로운",
+     "en": "A new student."
+    },
+    {
+     "type": "연관어",
+     "word": "friend",
+     "ko": "친구",
+     "en": "My best friend."
+    }
+   ]
+  },
+  "39": {
+   "word": "add",
+   "overview": [
+    "add는 '더하다', '추가하다', '넣다'라는 뜻의 동사입니다.",
+    "add sugar(설탕을 넣다), add A to B(B에 A를 더하다)처럼 씁니다. 수학에서 '더하기'입니다. (Add 2 and 3. = 2와 3을 더해.)",
+    "'덧붙여 말하다'라는 뜻도 있습니다. addition은 '덧셈', '추가'입니다."
+   ],
+   "easy": [
+    {
+     "word": "put in",
+     "en": "Put in some salt.",
+     "ko": "소금을 좀 넣어."
+    },
+    {
+     "word": "plus",
+     "en": "Two plus two is four.",
+     "ko": "2 더하기 2는 4예요."
+    }
+   ],
+   "etymology": [
+    "add는 라틴어 addere에서 온 단어로, '~에 더 놓다'라는 뜻이었습니다.",
+    "ad(~에)와 dare(주다, 놓다)가 합쳐진 말입니다.",
+    "'이미 있는 것에 더 놓다'가 '더하다', '추가하다'가 되었습니다.",
+    "addition(덧셈, 추가)은 add에서 나온 명사입니다.",
+    "add의 핵심 이미지는 '하나 더 얹기 ➕'입니다."
+   ],
+   "meanings": [
+    "더하다 (수학)",
+    "추가하다, 넣다",
+    "덧붙여 말하다"
+   ],
+   "examples": [
+    {
+     "en": "Add two and five.",
+     "ko": "2와 5를 더해."
+    },
+    {
+     "en": "Add some sugar to the tea.",
+     "ko": "차에 설탕을 좀 넣어."
+    },
+    {
+     "en": "Can I add my name to the list?",
+     "ko": "명단에 내 이름을 추가해도 돼요?"
+    },
+    {
+     "en": "We learned addition in math class.",
+     "ko": "우리는 수학 시간에 덧셈을 배웠어요."
+    },
+    {
+     "en": "\"And bring a jacket,\" she added.",
+     "ko": "\"그리고 재킷도 가져와.\"라고 그녀가 덧붙였어요."
+    },
+    {
+     "en": "Add a friend on the app.",
+     "ko": "앱에서 친구를 추가해."
+    }
+   ],
+   "together": [
+    {
+     "type": "반의어",
+     "word": "subtract",
+     "ko": "빼다",
+     "en": "Subtract 3 from 5."
+    },
+    {
+     "type": "반의어",
+     "word": "remove",
+     "ko": "없애다",
+     "en": "Remove it."
+    },
+    {
+     "type": "유의어",
+     "word": "plus",
+     "ko": "더하기",
+     "en": "One plus one."
+    },
+    {
+     "type": "파생어",
+     "word": "addition",
+     "ko": "덧셈, 추가",
+     "en": "Addition and subtraction."
+    },
+    {
+     "type": "연관어",
+     "word": "number",
+     "ko": "숫자",
+     "en": "Big numbers."
+    },
+    {
+     "type": "연관어",
+     "word": "more",
+     "ko": "더",
+     "en": "One more."
+    }
+   ]
+  },
+  "1665": {
+   "word": "member",
+   "overview": [
+    "member는 '회원', '구성원', '멤버'라는 뜻의 명사입니다.",
+    "a family member(가족 구성원), a club member(동아리 회원), a team member(팀원)처럼 씁니다.",
+    "membership은 '회원 자격', '회원 수'입니다."
+   ],
+   "easy": [
+    {
+     "word": "part",
+     "en": "Part of the team.",
+     "ko": "팀의 일원."
+    },
+    {
+     "word": "player",
+     "en": "A good player.",
+     "ko": "좋은 선수."
+    }
+   ],
+   "etymology": [
+    "member는 라틴어 membrum에서 온 단어로, 원래 뜻은 '몸의 일부', '팔다리'였습니다.",
+    "'몸의 한 부분'처럼 '모임의 한 부분이 되는 사람'이라는 뜻이 되었습니다.",
+    "remember(기억하다)의 member는 이 단어와 관련이 없는, 모양만 비슷한 다른 뿌리입니다.",
+    "membership(회원 자격)은 member에서 나온 단어입니다.",
+    "member의 핵심 이미지는 '모임을 이루는 한 사람 👤'입니다."
+   ],
+   "meanings": [
+    "회원, 구성원",
+    "(팀, 모임의) 일원, 멤버"
+   ],
+   "examples": [
+    {
+     "en": "I'm a member of the science club.",
+     "ko": "나는 과학 동아리 회원이에요."
+    },
+    {
+     "en": "There are four members in my family.",
+     "ko": "우리 가족은 네 명이에요."
+    },
+    {
+     "en": "Every team member worked hard.",
+     "ko": "팀원 모두가 열심히 했어요."
+    },
+    {
+     "en": "Only members can come in.",
+     "ko": "회원만 들어올 수 있어요."
+    },
+    {
+     "en": "She is the newest member of our class.",
+     "ko": "그녀는 우리 반에 가장 최근에 온 친구예요."
+    },
+    {
+     "en": "My favorite member of the band is the drummer.",
+     "ko": "그 밴드에서 내가 제일 좋아하는 멤버는 드러머예요."
+    }
+   ],
+   "together": [
+    {
+     "type": "파생어",
+     "word": "membership",
+     "ko": "회원 자격",
+     "en": "A membership card."
+    },
+    {
+     "type": "연관어",
+     "word": "club",
+     "ko": "동아리",
+     "en": "Join a club."
+    },
+    {
+     "type": "연관어",
+     "word": "team",
+     "ko": "팀",
+     "en": "A soccer team."
+    },
+    {
+     "type": "연관어",
+     "word": "group",
+     "ko": "무리",
+     "en": "A small group."
+    },
+    {
+     "type": "연관어",
+     "word": "family",
+     "ko": "가족",
+     "en": "My family."
+    },
+    {
+     "type": "연관어",
+     "word": "join",
+     "ko": "가입하다",
+     "en": "Join us."
+    }
+   ]
+  },
+  "937": {
+   "word": "enter",
+   "overview": [
+    "enter는 '들어가다', '들어오다'라는 뜻의 동사입니다.",
+    "enter the room(방에 들어가다)처럼 씁니다. enter into라고 하지 않고 바로 장소를 씁니다.",
+    "'(대회에) 참가하다', '(학교에) 입학하다', '(정보를) 입력하다'라는 뜻도 있습니다. 키보드의 Enter 키도 이 단어입니다. entrance는 '입구'입니다."
+   ],
+   "easy": [
+    {
+     "word": "go in",
+     "en": "Go in, please.",
+     "ko": "들어가세요."
+    },
+    {
+     "word": "come in",
+     "en": "Come in!",
+     "ko": "들어와!"
+    },
+    {
+     "word": "type",
+     "en": "Type your name.",
+     "ko": "이름을 입력해."
+    }
+   ],
+   "etymology": [
+    "enter는 라틴어 intrāre에서 온 단어로, '안으로 들어가다'라는 뜻이었습니다.",
+    "intrā(안에)에서 나온 말입니다.",
+    "프랑스어 entrer를 거쳐 영어에 들어왔습니다.",
+    "entrance(입구), entry(입장, 참가)는 enter에서 나온 단어입니다.",
+    "enter의 핵심 이미지는 '문을 열고 안으로 들어가기 🚪'입니다."
+   ],
+   "meanings": [
+    "들어가다, 들어오다",
+    "(대회에) 참가하다",
+    "(학교에) 입학하다",
+    "(정보를) 입력하다"
+   ],
+   "examples": [
+    {
+     "en": "Knock before you enter the room.",
+     "ko": "방에 들어가기 전에 노크해."
+    },
+    {
+     "en": "Please enter through the front door.",
+     "ko": "정문으로 들어오세요."
+    },
+    {
+     "en": "I entered a drawing contest.",
+     "ko": "나는 그림 대회에 참가했어요."
+    },
+    {
+     "en": "My brother will enter middle school next year.",
+     "ko": "내 동생은 내년에 중학교에 입학해요."
+    },
+    {
+     "en": "Enter your password.",
+     "ko": "비밀번호를 입력하세요."
+    },
+    {
+     "en": "Press the Enter key.",
+     "ko": "엔터 키를 누르세요."
+    }
+   ],
+   "together": [
+    {
+     "type": "반의어",
+     "word": "exit",
+     "ko": "나가다, 출구",
+     "en": "Exit here."
+    },
+    {
+     "type": "반의어",
+     "word": "leave",
+     "ko": "떠나다",
+     "en": "Leave the room."
+    },
+    {
+     "type": "유의어",
+     "word": "go in",
+     "ko": "들어가다",
+     "en": "Go in now."
+    },
+    {
+     "type": "파생어",
+     "word": "entrance",
+     "ko": "입구",
+     "en": "The main entrance."
+    },
+    {
+     "type": "연관어",
+     "word": "door",
+     "ko": "문",
+     "en": "Open the door."
+    },
+    {
+     "type": "연관어",
+     "word": "contest",
+     "ko": "대회",
+     "en": "A singing contest."
+    }
+   ]
+  },
+  "1182": {
+   "word": "garden",
+   "overview": [
+    "garden은 '정원', '뜰', '텃밭'이라는 뜻의 명사입니다.",
+    "a flower garden(꽃밭), a vegetable garden(텃밭), work in the garden(정원을 가꾸다)처럼 씁니다.",
+    "동사로는 '정원을 가꾸다'라는 뜻입니다. gardener는 '정원사', gardening은 '정원 가꾸기'입니다."
+   ],
+   "easy": [
+    {
+     "word": "yard",
+     "en": "Play in the yard.",
+     "ko": "마당에서 놀아."
+    },
+    {
+     "word": "park",
+     "en": "Go to the park.",
+     "ko": "공원에 가."
+    }
+   ],
+   "etymology": [
+    "garden은 옛 프랑스어 gardin에서 온 단어로, 원래 뜻은 '울타리를 친 곳'이었습니다.",
+    "게르만족의 말 gard(울타리)에서 나왔습니다. yard(마당)도 같은 뿌리입니다.",
+    "'울타리로 둘러싼 땅'에서 꽃과 채소를 길렀기 때문에 '정원', '텃밭'이 되었습니다.",
+    "kindergarten(유치원)은 독일어로 '아이들의 정원'이라는 뜻입니다.",
+    "garden의 핵심 이미지는 '꽃과 채소가 자라는 뜰 🌷'입니다."
+   ],
+   "meanings": [
+    "정원, 뜰",
+    "텃밭, 밭",
+    "(gardens) 공원, 식물원",
+    "정원을 가꾸다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "My grandma has a beautiful garden.",
+     "ko": "우리 할머니는 아름다운 정원을 가지고 계세요."
+    },
+    {
+     "en": "We grow tomatoes in our garden.",
+     "ko": "우리는 텃밭에서 토마토를 길러요."
+    },
+    {
+     "en": "The kids are playing in the garden.",
+     "ko": "아이들이 정원에서 놀고 있어요."
+    },
+    {
+     "en": "There are roses in the garden.",
+     "ko": "정원에 장미가 있어요."
+    },
+    {
+     "en": "My mom likes gardening.",
+     "ko": "우리 엄마는 정원 가꾸기를 좋아하세요."
+    },
+    {
+     "en": "We visited a botanical garden.",
+     "ko": "우리는 식물원에 갔어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "yard",
+     "ko": "마당",
+     "en": "A big yard."
+    },
+    {
+     "type": "연관어",
+     "word": "flower",
+     "ko": "꽃",
+     "en": "Pretty flowers."
+    },
+    {
+     "type": "연관어",
+     "word": "plant",
+     "ko": "식물",
+     "en": "Water the plants."
+    },
+    {
+     "type": "연관어",
+     "word": "tree",
+     "ko": "나무",
+     "en": "An apple tree."
+    },
+    {
+     "type": "파생어",
+     "word": "gardener",
+     "ko": "정원사",
+     "en": "A busy gardener."
+    },
+    {
+     "type": "연관어",
+     "word": "vegetable",
+     "ko": "채소",
+     "en": "Fresh vegetables."
+    }
+   ]
+  },
+  "336": {
+   "word": "brave",
+   "overview": [
+    "brave는 '용감한', '씩씩한'이라는 뜻의 형용사입니다. 반대는 afraid(두려워하는), scared(겁먹은)입니다.",
+    "a brave firefighter(용감한 소방관), Be brave!(용기를 내!)처럼 씁니다.",
+    "bravery는 '용기'라는 명사입니다. 동사로는 '(위험을) 용감하게 맞서다'라는 뜻입니다."
+   ],
+   "easy": [
+    {
+     "word": "strong",
+     "en": "Be strong.",
+     "ko": "힘내."
+    },
+    {
+     "word": "bold",
+     "en": "A bold idea.",
+     "ko": "대담한 생각."
+    }
+   ],
+   "etymology": [
+    "brave는 이탈리아어 bravo에서 온 단어로, 원래 뜻은 '용감한', '거친'이었습니다.",
+    "공연이 끝나고 외치는 Bravo!(브라보!, 잘했어!)도 같은 단어입니다.",
+    "프랑스어 brave를 거쳐 영어에 들어왔습니다.",
+    "bravery(용기)는 brave에서 나온 명사입니다.",
+    "brave의 핵심 이미지는 '무서워도 앞으로 나아가는 용기 🦁'입니다."
+   ],
+   "meanings": [
+    "용감한, 씩씩한",
+    "(위험, 어려움에) 용감하게 맞서다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "The brave boy saved the puppy.",
+     "ko": "용감한 소년이 강아지를 구했어요."
+    },
+    {
+     "en": "Be brave! You can do it.",
+     "ko": "용기를 내! 너는 할 수 있어."
+    },
+    {
+     "en": "Firefighters are very brave.",
+     "ko": "소방관들은 아주 용감해요."
+    },
+    {
+     "en": "It was brave of you to tell the truth.",
+     "ko": "사실대로 말하다니 정말 용감했어."
+    },
+    {
+     "en": "She was brave at the doctor's.",
+     "ko": "그녀는 병원에서 씩씩했어요."
+    },
+    {
+     "en": "They braved the cold to see the sunrise.",
+     "ko": "그들은 해돋이를 보려고 추위를 무릅썼어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "반의어",
+     "word": "afraid",
+     "ko": "두려워하는",
+     "en": "I'm afraid."
+    },
+    {
+     "type": "반의어",
+     "word": "scared",
+     "ko": "겁먹은",
+     "en": "A scared cat."
+    },
+    {
+     "type": "유의어",
+     "word": "bold",
+     "ko": "대담한",
+     "en": "A bold move."
+    },
+    {
+     "type": "파생어",
+     "word": "bravery",
+     "ko": "용기",
+     "en": "Great bravery."
+    },
+    {
+     "type": "연관어",
+     "word": "hero",
+     "ko": "영웅",
+     "en": "A true hero."
+    },
+    {
+     "type": "연관어",
+     "word": "courage",
+     "ko": "용기",
+     "en": "Have courage."
+    }
+   ]
+  },
+  "1958": {
+   "word": "pig",
+   "overview": [
+    "pig는 '돼지'라는 뜻의 명사입니다.",
+    "새끼 돼지는 piglet, 돼지고기는 pork라고 합니다. 돼지 울음소리는 oink(꿀꿀)입니다.",
+    "욕심 많거나 지저분하게 먹는 사람을 놀릴 때 쓰기도 해서 조심해야 합니다. piggy bank는 '돼지 저금통'입니다."
+   ],
+   "easy": [
+    {
+     "word": "piglet",
+     "en": "A cute piglet.",
+     "ko": "귀여운 새끼 돼지."
+    }
+   ],
+   "etymology": [
+    "pig는 고대 영어 picga에서 온 단어로, 원래 뜻은 '새끼 돼지'였다고 봅니다.",
+    "정확한 뿌리는 잘 알려져 있지 않습니다.",
+    "옛날에 '다 큰 돼지'는 swine이라고 불렀는데, 지금은 pig가 더 널리 쓰입니다.",
+    "piggy(돼지, 아기 말)는 pig에서 나온 귀여운 말입니다.",
+    "pig의 핵심 이미지는 '꿀꿀 분홍 돼지 🐷'입니다."
+   ],
+   "meanings": [
+    "돼지",
+    "욕심쟁이, 먹보 (놀리는 말)"
+   ],
+   "examples": [
+    {
+     "en": "The pig is rolling in the mud.",
+     "ko": "돼지가 진흙탕에서 뒹굴고 있어요."
+    },
+    {
+     "en": "There are many pigs on the farm.",
+     "ko": "농장에 돼지가 많아요."
+    },
+    {
+     "en": "Pigs say oink.",
+     "ko": "돼지는 꿀꿀 하고 울어요."
+    },
+    {
+     "en": "The Three Little Pigs is a famous story.",
+     "ko": "「아기 돼지 삼 형제」는 유명한 이야기예요."
+    },
+    {
+     "en": "I save coins in my piggy bank.",
+     "ko": "나는 돼지 저금통에 동전을 모아요."
+    },
+    {
+     "en": "Pigs are actually very smart.",
+     "ko": "돼지는 사실 아주 똑똑해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "pork",
+     "ko": "돼지고기",
+     "en": "Grilled pork."
+    },
+    {
+     "type": "연관어",
+     "word": "farm",
+     "ko": "농장",
+     "en": "On the farm."
+    },
+    {
+     "type": "연관어",
+     "word": "cow",
+     "ko": "소",
+     "en": "A big cow."
+    },
+    {
+     "type": "연관어",
+     "word": "mud",
+     "ko": "진흙",
+     "en": "Muddy shoes."
+    },
+    {
+     "type": "연관어",
+     "word": "pink",
+     "ko": "분홍",
+     "en": "Pink cheeks."
+    },
+    {
+     "type": "연관어",
+     "word": "animal",
+     "ko": "동물",
+     "en": "Farm animals."
+    }
+   ]
+  },
+  "1707": {
+   "word": "model",
+   "overview": [
+    "model은 '모형', '모델'이라는 뜻의 명사입니다.",
+    "a model airplane(모형 비행기), a fashion model(패션모델), the new model(신형 모델)처럼 씁니다.",
+    "'본보기', '모범'이라는 뜻도 있습니다. (a role model = 본받고 싶은 사람) 동사로는 '모형을 만들다', '모델을 하다'라는 뜻입니다."
+   ],
+   "easy": [
+    {
+     "word": "copy",
+     "en": "A copy of the tower.",
+     "ko": "탑을 본뜬 것."
+    },
+    {
+     "word": "example",
+     "en": "A good example.",
+     "ko": "좋은 본보기."
+    }
+   ],
+   "etymology": [
+    "model은 이탈리아어 modello에서 온 단어로, 원래 뜻은 '작은 틀', '본'이었습니다.",
+    "라틴어 modus(치수, 방법)에서 나왔습니다. mode(방식)도 같은 뿌리입니다.",
+    "'무언가를 만들 때 따라 하는 본'이 '모형', '본보기'가 되었습니다.",
+    "옷을 입고 보여 주는 사람도 '보기가 되는 사람'이라서 model이라고 부릅니다.",
+    "model의 핵심 이미지는 '따라 만들 수 있는 본보기 🏗'입니다."
+   ],
+   "meanings": [
+    "모형",
+    "(패션) 모델",
+    "본보기, 모범",
+    "(자동차, 기계의) 모델, 형",
+    "모형을 만들다, 모델을 하다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "I made a model of the solar system.",
+     "ko": "나는 태양계 모형을 만들었어요."
+    },
+    {
+     "en": "She wants to be a fashion model.",
+     "ko": "그녀는 패션모델이 되고 싶어 해요."
+    },
+    {
+     "en": "My mom is my role model.",
+     "ko": "우리 엄마는 나의 롤 모델이에요."
+    },
+    {
+     "en": "This is the newest model.",
+     "ko": "이게 최신 모델이에요."
+    },
+    {
+     "en": "He built a model ship.",
+     "ko": "그는 모형 배를 만들었어요."
+    },
+    {
+     "en": "Use this sentence as a model.",
+     "ko": "이 문장을 본보기로 삼으세요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "example",
+     "ko": "본보기",
+     "en": "Set an example."
+    },
+    {
+     "type": "유의어",
+     "word": "copy",
+     "ko": "복제품",
+     "en": "Make a copy."
+    },
+    {
+     "type": "연관어",
+     "word": "build",
+     "ko": "만들다",
+     "en": "Build a model."
+    },
+    {
+     "type": "연관어",
+     "word": "fashion",
+     "ko": "패션",
+     "en": "A fashion show."
+    },
+    {
+     "type": "연관어",
+     "word": "type",
+     "ko": "종류",
+     "en": "A new type."
+    },
+    {
+     "type": "연관어",
+     "word": "toy",
+     "ko": "장난감",
+     "en": "A toy car."
+    }
+   ]
+  },
+  "1078": {
+   "word": "finger",
+   "overview": [
+    "finger는 '손가락'이라는 뜻의 명사입니다. 한 손에 다섯 개가 있습니다.",
+    "엄지는 thumb, 검지는 index finger, 새끼손가락은 little finger입니다. 발가락은 toe입니다.",
+    "cross your fingers는 '행운을 빌다'라는 뜻입니다. fingerprint는 '지문'입니다."
+   ],
+   "easy": [
+    {
+     "word": "thumb",
+     "en": "Thumbs up!",
+     "ko": "엄지척!"
+    }
+   ],
+   "etymology": [
+    "finger는 고대 영어 finger에서 온 단어로, '손가락'이라는 뜻이었습니다.",
+    "five(다섯)와 같은 뿌리라고 보는 학자가 많습니다. 한 손에 손가락이 다섯 개이기 때문입니다.",
+    "fingerprint(지문)는 finger와 print(자국)가 합쳐진 말입니다.",
+    "finger의 핵심 이미지는 '손끝의 다섯 손가락 🖐'입니다."
+   ],
+   "meanings": [
+    "손가락",
+    "(장갑의) 손가락 부분"
+   ],
+   "examples": [
+    {
+     "en": "I have ten fingers.",
+     "ko": "나는 손가락이 열 개예요."
+    },
+    {
+     "en": "I cut my finger.",
+     "ko": "손가락을 베였어요."
+    },
+    {
+     "en": "Count with your fingers.",
+     "ko": "손가락으로 세어 봐."
+    },
+    {
+     "en": "Don't point your finger at people.",
+     "ko": "사람을 손가락질하지 마."
+    },
+    {
+     "en": "Cross your fingers for me!",
+     "ko": "나를 위해 행운을 빌어 줘!"
+    },
+    {
+     "en": "She wears a ring on her finger.",
+     "ko": "그녀는 손가락에 반지를 끼고 있어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "hand",
+     "ko": "손",
+     "en": "Wash your hands."
+    },
+    {
+     "type": "연관어",
+     "word": "thumb",
+     "ko": "엄지",
+     "en": "Thumbs up."
+    },
+    {
+     "type": "연관어",
+     "word": "toe",
+     "ko": "발가락",
+     "en": "Ten toes."
+    },
+    {
+     "type": "연관어",
+     "word": "nail",
+     "ko": "손톱",
+     "en": "Cut your nails."
+    },
+    {
+     "type": "연관어",
+     "word": "ring",
+     "ko": "반지",
+     "en": "A gold ring."
+    },
+    {
+     "type": "파생어",
+     "word": "fingerprint",
+     "ko": "지문",
+     "en": "Check the fingerprint."
+    }
+   ]
+  },
+  "2919": {
+   "word": "weather",
+   "overview": [
+    "weather는 '날씨'라는 뜻의 명사입니다. 셀 수 없어서 a weather라고 하지 않습니다.",
+    "How's the weather?(날씨 어때?), nice weather(좋은 날씨), the weather forecast(일기 예보)처럼 씁니다.",
+    "under the weather는 '몸이 좀 안 좋은'이라는 뜻입니다. whether(~인지 아닌지)와 발음이 같습니다."
+   ],
+   "easy": [
+    {
+     "word": "sky",
+     "en": "The sky is clear.",
+     "ko": "하늘이 맑아요."
+    },
+    {
+     "word": "climate",
+     "en": "A warm climate.",
+     "ko": "따뜻한 기후."
+    }
+   ],
+   "etymology": [
+    "weather는 고대 영어 weder에서 온 단어로, 원래 뜻은 '바람', '공기', '폭풍'이었습니다.",
+    "'불다'라는 뜻의 아주 오래된 말에서 나왔다고 봅니다. wind(바람)와 먼 친척입니다.",
+    "'하늘의 공기 상태'가 '날씨'라는 뜻이 되었습니다.",
+    "weather의 핵심 이미지는 '맑음, 비, 눈, 바람 같은 하늘 상태 🌦'입니다."
+   ],
+   "meanings": [
+    "날씨",
+    "(under the weather) 몸이 안 좋은",
+    "(어려움을) 견뎌 내다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "How's the weather today?",
+     "ko": "오늘 날씨 어때?"
+    },
+    {
+     "en": "The weather is nice and sunny.",
+     "ko": "날씨가 좋고 화창해요."
+    },
+    {
+     "en": "Let's check the weather forecast.",
+     "ko": "일기 예보를 확인해 보자."
+    },
+    {
+     "en": "We stayed inside because of the bad weather.",
+     "ko": "날씨가 안 좋아서 우리는 안에 있었어요."
+    },
+    {
+     "en": "The weather changes a lot in spring.",
+     "ko": "봄에는 날씨가 많이 변해요."
+    },
+    {
+     "en": "I'm feeling a bit under the weather.",
+     "ko": "나 몸이 좀 안 좋아."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "climate",
+     "ko": "기후",
+     "en": "A cold climate."
+    },
+    {
+     "type": "연관어",
+     "word": "sunny",
+     "ko": "화창한",
+     "en": "A sunny day."
+    },
+    {
+     "type": "연관어",
+     "word": "rain",
+     "ko": "비",
+     "en": "Heavy rain."
+    },
+    {
+     "type": "연관어",
+     "word": "snow",
+     "ko": "눈",
+     "en": "White snow."
+    },
+    {
+     "type": "연관어",
+     "word": "cloudy",
+     "ko": "흐린",
+     "en": "A cloudy sky."
+    },
+    {
+     "type": "연관어",
+     "word": "season",
+     "ko": "계절",
+     "en": "Four seasons."
+    }
+   ]
+  },
+  "2455": {
+   "word": "soft",
+   "overview": [
+    "soft는 '부드러운', '푹신한', '말랑한'이라는 뜻의 형용사입니다. 반대는 hard(딱딱한)입니다.",
+    "a soft pillow(푹신한 베개), soft skin(부드러운 피부)처럼 씁니다.",
+    "소리가 '조용한', 빛이 '은은한', 마음이 '여린'이라는 뜻도 있습니다. (a soft voice = 부드러운 목소리) soft drink는 '탄산음료'입니다."
+   ],
+   "easy": [
+    {
+     "word": "gentle",
+     "en": "A gentle touch.",
+     "ko": "부드러운 손길."
+    },
+    {
+     "word": "quiet",
+     "en": "A quiet voice.",
+     "ko": "조용한 목소리."
+    },
+    {
+     "word": "smooth",
+     "en": "Smooth skin.",
+     "ko": "매끄러운 피부."
+    }
+   ],
+   "etymology": [
+    "soft는 고대 영어 sōfte에서 온 단어로, '편안한', '부드러운'이라는 뜻이었습니다.",
+    "원래는 '평화로운', '조용한'이라는 뜻의 옛말과 관련 있다고 봅니다.",
+    "software(소프트웨어)는 딱딱한 기계(hardware)와 달리 '부드러운', 즉 눈에 안 보이는 프로그램이라는 뜻입니다.",
+    "softly(부드럽게)는 soft에서 나온 부사입니다.",
+    "soft의 핵심 이미지는 '구름처럼 폭신폭신 ☁'입니다."
+   ],
+   "meanings": [
+    "부드러운, 푹신한, 말랑한",
+    "(소리가) 조용한, 작은",
+    "(빛, 색이) 은은한",
+    "(마음이) 여린, 다정한"
+   ],
+   "examples": [
+    {
+     "en": "This pillow is so soft.",
+     "ko": "이 베개는 정말 푹신해요."
+    },
+    {
+     "en": "The kitten has soft fur.",
+     "ko": "새끼 고양이는 털이 부드러워요."
+    },
+    {
+     "en": "She spoke in a soft voice.",
+     "ko": "그녀는 부드러운 목소리로 말했어요."
+    },
+    {
+     "en": "I like soft music before bed.",
+     "ko": "나는 자기 전에 잔잔한 음악을 좋아해요."
+    },
+    {
+     "en": "The bread is soft and warm.",
+     "ko": "빵이 말랑하고 따뜻해요."
+    },
+    {
+     "en": "He has a soft heart.",
+     "ko": "그는 마음이 여려요."
+    }
+   ],
+   "together": [
+    {
+     "type": "반의어",
+     "word": "hard",
+     "ko": "딱딱한",
+     "en": "A hard rock."
+    },
+    {
+     "type": "반의어",
+     "word": "loud",
+     "ko": "시끄러운",
+     "en": "Loud music."
+    },
+    {
+     "type": "유의어",
+     "word": "gentle",
+     "ko": "부드러운",
+     "en": "A gentle wind."
+    },
+    {
+     "type": "파생어",
+     "word": "softly",
+     "ko": "부드럽게",
+     "en": "Speak softly."
+    },
+    {
+     "type": "파생어",
+     "word": "software",
+     "ko": "소프트웨어",
+     "en": "New software."
+    },
+    {
+     "type": "연관어",
+     "word": "smooth",
+     "ko": "매끄러운",
+     "en": "Smooth skin."
+    }
+   ]
+  },
+  "2572": {
+   "word": "style",
+   "overview": [
+    "style은 '스타일', '방식', '모양'이라는 뜻의 명사입니다.",
+    "hair style(머리 모양), a new style(새로운 스타일), my style(내 스타일, 내 방식)처럼 씁니다.",
+    "'멋', '품격'이라는 뜻도 있습니다. (She has style. = 그녀는 멋이 있어.) stylish는 '멋진', '세련된'입니다."
+   ],
+   "easy": [
+    {
+     "word": "way",
+     "en": "My own way.",
+     "ko": "나만의 방식."
+    },
+    {
+     "word": "fashion",
+     "en": "The latest fashion.",
+     "ko": "최신 유행."
+    },
+    {
+     "word": "look",
+     "en": "A new look.",
+     "ko": "새로운 모습."
+    }
+   ],
+   "etymology": [
+    "style은 라틴어 stilus에서 온 단어로, 원래 뜻은 '뾰족한 글 쓰는 막대'였습니다.",
+    "옛 로마 사람들은 밀랍판에 뾰족한 막대로 글을 썼습니다.",
+    "'글 쓰는 막대'가 '글 쓰는 방식', 그리고 '무언가를 하는 방식', '멋'으로 넓어졌습니다.",
+    "stylish(세련된)는 style에서 나온 형용사입니다.",
+    "style의 핵심 이미지는 '나만의 멋과 방식 😎'입니다."
+   ],
+   "meanings": [
+    "스타일, 모양",
+    "방식, 양식",
+    "멋, 세련됨",
+    "(옷, 머리를) 꾸미다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "I like your new hair style.",
+     "ko": "네 새 머리 모양 멋지다."
+    },
+    {
+     "en": "This dress is in style now.",
+     "ko": "이 원피스는 지금 유행이에요."
+    },
+    {
+     "en": "Everyone has a different style of learning.",
+     "ko": "사람마다 공부하는 방식이 달라요."
+    },
+    {
+     "en": "That's not my style.",
+     "ko": "그건 내 스타일이 아니야."
+    },
+    {
+     "en": "The house is built in Korean style.",
+     "ko": "그 집은 한옥 양식으로 지어졌어요."
+    },
+    {
+     "en": "She always dresses with style.",
+     "ko": "그녀는 항상 멋지게 옷을 입어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "fashion",
+     "ko": "패션, 유행",
+     "en": "New fashion."
+    },
+    {
+     "type": "유의어",
+     "word": "way",
+     "ko": "방식",
+     "en": "The best way."
+    },
+    {
+     "type": "파생어",
+     "word": "stylish",
+     "ko": "세련된",
+     "en": "A stylish hat."
+    },
+    {
+     "type": "연관어",
+     "word": "hair",
+     "ko": "머리카락",
+     "en": "Short hair."
+    },
+    {
+     "type": "연관어",
+     "word": "clothes",
+     "ko": "옷",
+     "en": "Nice clothes."
+    },
+    {
+     "type": "연관어",
+     "word": "design",
+     "ko": "디자인",
+     "en": "A cool design."
+    }
+   ]
+  },
+  "2446": {
+   "word": "snow",
+   "overview": [
+    "snow는 '눈'이라는 뜻의 명사이자 '눈이 오다'라는 동사입니다.",
+    "It's snowing.(눈이 와요.), play in the snow(눈 속에서 놀다)처럼 씁니다. 셀 수 없는 명사입니다.",
+    "snowman은 '눈사람', snowball은 '눈덩이', snowy는 '눈이 오는', '눈 덮인'입니다."
+   ],
+   "easy": [
+    {
+     "word": "ice",
+     "en": "Ice is cold.",
+     "ko": "얼음은 차가워요."
+    },
+    {
+     "word": "white",
+     "en": "Everything is white.",
+     "ko": "온통 하얘요."
+    }
+   ],
+   "etymology": [
+    "snow는 고대 영어 snāw에서 온 단어로, '눈'이라는 뜻이었습니다.",
+    "라틴어 nix(눈), 독일어 Schnee(눈)와 같은 아주 오래된 뿌리입니다.",
+    "snowman(눈사람), snowflake(눈송이)는 snow가 들어간 단어입니다.",
+    "snowy(눈 오는)는 snow에서 나온 형용사입니다.",
+    "snow의 핵심 이미지는 '하늘에서 펑펑 내리는 하얀 눈 ❄'입니다."
+   ],
+   "meanings": [
+    "눈 (명사)",
+    "눈이 오다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "It's snowing outside!",
+     "ko": "밖에 눈이 와요!"
+    },
+    {
+     "en": "Let's build a snowman.",
+     "ko": "눈사람 만들자."
+    },
+    {
+     "en": "We had a snowball fight.",
+     "ko": "우리는 눈싸움을 했어요."
+    },
+    {
+     "en": "The mountain is covered with snow.",
+     "ko": "산이 눈으로 덮였어요."
+    },
+    {
+     "en": "It snowed a lot last night.",
+     "ko": "어젯밤에 눈이 많이 왔어요."
+    },
+    {
+     "en": "I love snowy days.",
+     "ko": "나는 눈 오는 날이 정말 좋아요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "winter",
+     "ko": "겨울",
+     "en": "Cold winter."
+    },
+    {
+     "type": "연관어",
+     "word": "cold",
+     "ko": "추운",
+     "en": "Very cold."
+    },
+    {
+     "type": "연관어",
+     "word": "ice",
+     "ko": "얼음",
+     "en": "Thin ice."
+    },
+    {
+     "type": "연관어",
+     "word": "rain",
+     "ko": "비",
+     "en": "Rain and snow."
+    },
+    {
+     "type": "파생어",
+     "word": "snowman",
+     "ko": "눈사람",
+     "en": "A big snowman."
+    },
+    {
+     "type": "파생어",
+     "word": "snowy",
+     "ko": "눈 오는",
+     "en": "A snowy day."
+    }
+   ]
+  },
+  "1519": {
+   "word": "lake",
+   "overview": [
+    "lake는 '호수'라는 뜻의 명사입니다. 땅으로 둘러싸인 큰 물입니다.",
+    "swim in the lake(호수에서 수영하다), a boat on the lake(호수 위의 배)처럼 씁니다.",
+    "호수 이름 앞에는 Lake를 붙입니다. (Lake Baikal = 바이칼호) pond는 '연못'으로 호수보다 작습니다."
+   ],
+   "easy": [
+    {
+     "word": "pond",
+     "en": "A small pond.",
+     "ko": "작은 연못."
+    },
+    {
+     "word": "water",
+     "en": "Clear water.",
+     "ko": "맑은 물."
+    }
+   ],
+   "etymology": [
+    "lake는 라틴어 lacus에서 온 단어로, '호수', '웅덩이'라는 뜻이었습니다.",
+    "옛 프랑스어 lac를 거쳐 영어에 들어왔습니다.",
+    "lagoon(석호, 바닷가의 얕은 호수)도 같은 뿌리의 단어입니다.",
+    "lake의 핵심 이미지는 '땅에 둘러싸인 잔잔한 호수 🏞'입니다."
+   ],
+   "meanings": [
+    "호수"
+   ],
+   "examples": [
+    {
+     "en": "We went fishing at the lake.",
+     "ko": "우리는 호수로 낚시하러 갔어요."
+    },
+    {
+     "en": "The lake is very calm.",
+     "ko": "호수가 아주 잔잔해요."
+    },
+    {
+     "en": "Ducks are swimming in the lake.",
+     "ko": "오리들이 호수에서 헤엄치고 있어요."
+    },
+    {
+     "en": "We rode a boat on the lake.",
+     "ko": "우리는 호수에서 배를 탔어요."
+    },
+    {
+     "en": "The lake froze in winter.",
+     "ko": "겨울에 호수가 얼었어요."
+    },
+    {
+     "en": "There's a park around the lake.",
+     "ko": "호수 둘레에 공원이 있어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "pond",
+     "ko": "연못",
+     "en": "A fish pond."
+    },
+    {
+     "type": "연관어",
+     "word": "river",
+     "ko": "강",
+     "en": "A long river."
+    },
+    {
+     "type": "연관어",
+     "word": "sea",
+     "ko": "바다",
+     "en": "The deep sea."
+    },
+    {
+     "type": "연관어",
+     "word": "water",
+     "ko": "물",
+     "en": "Cold water."
+    },
+    {
+     "type": "연관어",
+     "word": "boat",
+     "ko": "배",
+     "en": "A small boat."
+    },
+    {
+     "type": "연관어",
+     "word": "fish",
+     "ko": "물고기",
+     "en": "Catch fish."
+    }
+   ]
+  },
+  "348": {
+   "word": "bright",
+   "overview": [
+    "bright는 '밝은', '빛나는'이라는 뜻의 형용사입니다. 반대는 dark(어두운), dim(흐릿한)입니다.",
+    "bright light(밝은 빛), bright colors(선명한 색)처럼 씁니다.",
+    "사람이 '영리한', '똑똑한'이라는 뜻도 있습니다. (a bright student = 똑똑한 학생) a bright future는 '밝은 미래'입니다."
+   ],
+   "easy": [
+    {
+     "word": "shiny",
+     "en": "A shiny coin.",
+     "ko": "반짝이는 동전."
+    },
+    {
+     "word": "smart",
+     "en": "A smart girl.",
+     "ko": "똑똑한 소녀."
+    },
+    {
+     "word": "light",
+     "en": "A light room.",
+     "ko": "밝은 방."
+    }
+   ],
+   "etymology": [
+    "bright는 고대 영어 beorht에서 온 단어로, '빛나는', '맑은'이라는 뜻이었습니다.",
+    "'하얗게 빛나다'라는 뜻의 아주 오래된 말에서 나왔습니다.",
+    "'머리가 밝게 빛나는'이라는 느낌에서 '영리한'이라는 뜻이 생겼습니다.",
+    "brightly(밝게), brightness(밝기)는 bright에서 나온 단어입니다.",
+    "bright의 핵심 이미지는 '반짝반짝 환하게 빛나는 ✨'입니다."
+   ],
+   "meanings": [
+    "밝은, 빛나는",
+    "(색이) 선명한, 밝은",
+    "영리한, 똑똑한",
+    "(미래가) 밝은, 희망찬"
+   ],
+   "examples": [
+    {
+     "en": "The sun is very bright today.",
+     "ko": "오늘은 햇빛이 아주 밝아요."
+    },
+    {
+     "en": "She likes bright colors.",
+     "ko": "그녀는 밝은 색을 좋아해요."
+    },
+    {
+     "en": "The room is bright and clean.",
+     "ko": "방이 밝고 깨끗해요."
+    },
+    {
+     "en": "He is a bright student.",
+     "ko": "그는 똑똑한 학생이에요."
+    },
+    {
+     "en": "You have a bright future.",
+     "ko": "너에게는 밝은 미래가 있어."
+    },
+    {
+     "en": "The stars are bright tonight.",
+     "ko": "오늘 밤 별들이 밝아요."
+    }
+   ],
+   "together": [
+    {
+     "type": "반의어",
+     "word": "dark",
+     "ko": "어두운",
+     "en": "A dark night."
+    },
+    {
+     "type": "반의어",
+     "word": "dim",
+     "ko": "흐릿한",
+     "en": "Dim light."
+    },
+    {
+     "type": "유의어",
+     "word": "shiny",
+     "ko": "반짝이는",
+     "en": "Shiny shoes."
+    },
+    {
+     "type": "유의어",
+     "word": "smart",
+     "ko": "똑똑한",
+     "en": "A smart kid."
+    },
+    {
+     "type": "파생어",
+     "word": "brightly",
+     "ko": "밝게",
+     "en": "Smile brightly."
+    },
+    {
+     "type": "연관어",
+     "word": "sun",
+     "ko": "해",
+     "en": "The shining sun."
+    }
+   ]
+  },
+  "1883": {
+   "word": "paint",
+   "overview": [
+    "paint는 '페인트', '물감'이라는 뜻의 명사이자 '칠하다', '(물감으로) 그리다'라는 동사입니다.",
+    "paint a picture(그림을 그리다), paint the wall(벽을 칠하다)처럼 씁니다.",
+    "연필로 선을 그리는 건 draw, 물감으로 칠하는 건 paint입니다. painter는 '화가', painting은 '그림'입니다."
+   ],
+   "easy": [
+    {
+     "word": "color",
+     "en": "Color the picture.",
+     "ko": "그림에 색칠해."
+    },
+    {
+     "word": "draw",
+     "en": "Draw a cat.",
+     "ko": "고양이를 그려."
+    }
+   ],
+   "etymology": [
+    "paint는 라틴어 pingere(칠하다, 그리다)에서 온 단어입니다.",
+    "옛 프랑스어 peint(칠해진)를 거쳐 영어에 들어왔습니다.",
+    "picture(그림), pigment(색소)도 같은 pingere에서 온 가족 단어입니다.",
+    "painter(화가), painting(그림)은 paint에서 나온 단어입니다.",
+    "paint의 핵심 이미지는 '붓에 물감을 묻혀 칠하기 🖌'입니다."
+   ],
+   "meanings": [
+    "페인트, 물감 (명사)",
+    "칠하다, 페인트칠하다 (동사)",
+    "(물감으로) 그림을 그리다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "Let's paint a picture.",
+     "ko": "그림을 그리자."
+    },
+    {
+     "en": "We painted the fence white.",
+     "ko": "우리는 울타리를 하얗게 칠했어요."
+    },
+    {
+     "en": "Wet paint! Don't touch.",
+     "ko": "페인트 칠함! 만지지 마세요."
+    },
+    {
+     "en": "I have a box of paints.",
+     "ko": "나는 물감 한 상자가 있어요."
+    },
+    {
+     "en": "She painted a flower.",
+     "ko": "그녀는 꽃을 그렸어요."
+    },
+    {
+     "en": "My dream is to be a painter.",
+     "ko": "내 꿈은 화가가 되는 거예요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "color",
+     "ko": "색칠하다",
+     "en": "Color it red."
+    },
+    {
+     "type": "유의어",
+     "word": "draw",
+     "ko": "그리다",
+     "en": "Draw a line."
+    },
+    {
+     "type": "파생어",
+     "word": "painter",
+     "ko": "화가",
+     "en": "A famous painter."
+    },
+    {
+     "type": "파생어",
+     "word": "painting",
+     "ko": "그림",
+     "en": "A beautiful painting."
+    },
+    {
+     "type": "연관어",
+     "word": "brush",
+     "ko": "붓",
+     "en": "A paint brush."
+    },
+    {
+     "type": "연관어",
+     "word": "art",
+     "ko": "미술",
+     "en": "Art class."
+    }
+   ]
+  },
+  "2589": {
+   "word": "sugar",
+   "overview": [
+    "sugar는 '설탕'이라는 뜻의 명사입니다. 셀 수 없는 명사입니다.",
+    "a spoonful of sugar(설탕 한 숟가락), sugar-free(무설탕)처럼 씁니다.",
+    "음식에 든 '당분'도 sugar입니다. (Too much sugar is bad for your teeth. = 당분을 너무 많이 먹으면 이에 안 좋아요.)"
+   ],
+   "easy": [
+    {
+     "word": "sweet",
+     "en": "It's sweet.",
+     "ko": "달아요."
+    },
+    {
+     "word": "candy",
+     "en": "A piece of candy.",
+     "ko": "사탕 하나."
+    }
+   ],
+   "etymology": [
+    "sugar는 산스크리트어(옛 인도 말) śarkarā에서 온 단어로, 원래 뜻은 '모래', '자갈'이었습니다.",
+    "설탕 알갱이가 모래처럼 생겼기 때문에 이런 이름이 붙었습니다.",
+    "페르시아어, 아랍어 sukkar, 라틴어 succarum을 거쳐 영어 sugar가 되었습니다.",
+    "인도에서 처음 사탕수수로 설탕을 만들어서 이렇게 먼 길을 거쳐 이름이 전해졌습니다.",
+    "sugar의 핵심 이미지는 '하얗고 달콤한 설탕 🍬'입니다."
+   ],
+   "meanings": [
+    "설탕",
+    "당분, 당"
+   ],
+   "examples": [
+    {
+     "en": "Do you want sugar in your tea?",
+     "ko": "차에 설탕 넣을래?"
+    },
+    {
+     "en": "Add two spoons of sugar.",
+     "ko": "설탕 두 숟가락을 넣어."
+    },
+    {
+     "en": "Too much sugar is bad for you.",
+     "ko": "설탕을 너무 많이 먹으면 몸에 안 좋아요."
+    },
+    {
+     "en": "This gum is sugar-free.",
+     "ko": "이 껌은 무설탕이에요."
+    },
+    {
+     "en": "Fruit has natural sugar.",
+     "ko": "과일에는 천연 당분이 있어요."
+    },
+    {
+     "en": "Sugar comes from sugar cane.",
+     "ko": "설탕은 사탕수수에서 나와요."
+    }
+   ],
+   "together": [
+    {
+     "type": "반의어",
+     "word": "salt",
+     "ko": "소금",
+     "en": "Add salt."
+    },
+    {
+     "type": "연관어",
+     "word": "sweet",
+     "ko": "달콤한",
+     "en": "Sweet candy."
+    },
+    {
+     "type": "연관어",
+     "word": "candy",
+     "ko": "사탕",
+     "en": "Too much candy."
+    },
+    {
+     "type": "연관어",
+     "word": "cake",
+     "ko": "케이크",
+     "en": "A sweet cake."
+    },
+    {
+     "type": "연관어",
+     "word": "honey",
+     "ko": "꿀",
+     "en": "Sweet honey."
+    },
+    {
+     "type": "연관어",
+     "word": "teeth",
+     "ko": "이",
+     "en": "Brush your teeth."
+    }
+   ]
+  },
+  "2933": {
+   "word": "wet",
+   "overview": [
+    "wet은 '젖은', '축축한'이라는 뜻의 형용사입니다. 반대는 dry(마른)입니다.",
+    "wet clothes(젖은 옷), get wet(젖다)처럼 씁니다. 비 오는 날씨에도 씁니다. (a wet day = 비 오는 날)",
+    "페인트가 '마르지 않은'이라는 뜻도 있습니다. (Wet Paint = 칠 주의) 동사로는 '적시다'입니다."
+   ],
+   "easy": [
+    {
+     "word": "damp",
+     "en": "The towel is damp.",
+     "ko": "수건이 축축해요."
+    },
+    {
+     "word": "rainy",
+     "en": "A rainy day.",
+     "ko": "비 오는 날."
+    }
+   ],
+   "etymology": [
+    "wet은 고대 영어 wǣt에서 온 단어로, '물에 젖은'이라는 뜻이었습니다.",
+    "water(물)와 같은 뿌리입니다.",
+    "'물이 묻은'이 '젖은', '축축한'이 되었습니다.",
+    "wet의 핵심 이미지는 '물에 흠뻑 젖은 💦'입니다."
+   ],
+   "meanings": [
+    "젖은, 축축한",
+    "비가 오는, 비 오는",
+    "(페인트가) 마르지 않은",
+    "적시다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "My shoes are wet.",
+     "ko": "내 신발이 젖었어요."
+    },
+    {
+     "en": "I got wet in the rain.",
+     "ko": "나는 비에 젖었어요."
+    },
+    {
+     "en": "Don't sit on the wet grass.",
+     "ko": "젖은 풀밭에 앉지 마."
+    },
+    {
+     "en": "Dry your wet hair.",
+     "ko": "젖은 머리를 말려."
+    },
+    {
+     "en": "It was a cold, wet day.",
+     "ko": "춥고 비 오는 날이었어요."
+    },
+    {
+     "en": "Wet paint! Don't touch.",
+     "ko": "칠 주의! 만지지 마세요."
+    }
+   ],
+   "together": [
+    {
+     "type": "반의어",
+     "word": "dry",
+     "ko": "마른",
+     "en": "Dry clothes."
+    },
+    {
+     "type": "유의어",
+     "word": "damp",
+     "ko": "축축한",
+     "en": "A damp cloth."
+    },
+    {
+     "type": "연관어",
+     "word": "water",
+     "ko": "물",
+     "en": "Clean water."
+    },
+    {
+     "type": "연관어",
+     "word": "rain",
+     "ko": "비",
+     "en": "Heavy rain."
+    },
+    {
+     "type": "연관어",
+     "word": "towel",
+     "ko": "수건",
+     "en": "A dry towel."
+    },
+    {
+     "type": "연관어",
+     "word": "umbrella",
+     "ko": "우산",
+     "en": "Take an umbrella."
+    }
+   ]
+  },
+  "1117": {
+   "word": "football",
+   "overview": [
+    "football은 영국과 대부분의 나라에서 '축구'라는 뜻입니다. 미국에서는 축구를 soccer라고 합니다.",
+    "미국에서 football은 공을 들고 달리는 '미식축구'를 말합니다.",
+    "play football(축구를 하다), a football team(축구팀)처럼 씁니다. 경기에 쓰는 '공'도 football입니다."
+   ],
+   "easy": [
+    {
+     "word": "soccer",
+     "en": "Let's play soccer.",
+     "ko": "축구하자."
+    }
+   ],
+   "etymology": [
+    "football은 foot(발)과 ball(공)이 합쳐진 말입니다.",
+    "글자 그대로 '발로 차는 공', 또는 '말을 타지 않고 발로 뛰며 하는 공놀이'라는 뜻입니다.",
+    "영국에서 여러 공놀이가 있었는데, 손을 쓰지 않는 쪽을 association football이라고 불렀고, 이것이 줄어 soccer가 되었습니다.",
+    "football의 핵심 이미지는 '발로 공을 차는 경기 ⚽'입니다."
+   ],
+   "meanings": [
+    "축구 (영국 등)",
+    "미식축구 (미국)",
+    "축구공"
+   ],
+   "examples": [
+    {
+     "en": "I play football after school.",
+     "ko": "나는 방과 후에 축구를 해요."
+    },
+    {
+     "en": "Football is popular in England.",
+     "ko": "영국에서는 축구가 인기가 많아요."
+    },
+    {
+     "en": "My brother is on the football team.",
+     "ko": "우리 형은 축구부예요."
+    },
+    {
+     "en": "Let's watch the football game on TV.",
+     "ko": "텔레비전으로 축구 경기를 보자."
+    },
+    {
+     "en": "American football uses an oval ball.",
+     "ko": "미식축구는 타원형 공을 써요."
+    },
+    {
+     "en": "Kick the football to me!",
+     "ko": "축구공을 나한테 차 줘!"
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "soccer",
+     "ko": "축구",
+     "en": "A soccer ball."
+    },
+    {
+     "type": "연관어",
+     "word": "ball",
+     "ko": "공",
+     "en": "Throw the ball."
+    },
+    {
+     "type": "연관어",
+     "word": "goal",
+     "ko": "골",
+     "en": "Score a goal."
+    },
+    {
+     "type": "연관어",
+     "word": "team",
+     "ko": "팀",
+     "en": "Our team won."
+    },
+    {
+     "type": "연관어",
+     "word": "kick",
+     "ko": "차다",
+     "en": "Kick hard."
+    },
+    {
+     "type": "연관어",
+     "word": "player",
+     "ko": "선수",
+     "en": "A great player."
+    }
+   ]
+  },
+  "514": {
+   "word": "coat",
+   "overview": [
+    "coat는 '외투', '코트'라는 뜻의 명사입니다. 옷 위에 입는 긴 겉옷입니다.",
+    "put on a coat(코트를 입다), a winter coat(겨울 코트), a raincoat(비옷)처럼 씁니다.",
+    "동물의 '털'(a dog's coat), 페인트의 '한 번 칠한 층'(a coat of paint)도 coat입니다."
+   ],
+   "easy": [
+    {
+     "word": "jacket",
+     "en": "A warm jacket.",
+     "ko": "따뜻한 재킷."
+    },
+    {
+     "word": "fur",
+     "en": "Soft fur.",
+     "ko": "부드러운 털."
+    }
+   ],
+   "etymology": [
+    "coat는 옛 프랑스어 cote(겉옷)에서 온 단어입니다.",
+    "게르만족의 말에서 왔다고 보지만 정확한 뿌리는 잘 알려져 있지 않습니다.",
+    "'몸을 덮는 겉옷'이 '동물의 털', '겉을 덮는 칠'로 넓어졌습니다.",
+    "raincoat(비옷)는 rain과 coat가 합쳐진 말입니다.",
+    "coat의 핵심 이미지는 '겉에 덮어 입는 따뜻한 외투 🧥'입니다."
+   ],
+   "meanings": [
+    "외투, 코트",
+    "(동물의) 털",
+    "(페인트 등의) 칠, 층",
+    "(겉을) 덮다, 바르다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "Wear your coat. It's cold.",
+     "ko": "코트 입어. 추워."
+    },
+    {
+     "en": "I got a new winter coat.",
+     "ko": "나는 새 겨울 코트가 생겼어요."
+    },
+    {
+     "en": "Hang your coat on the hook.",
+     "ko": "코트를 옷걸이에 걸어."
+    },
+    {
+     "en": "My dog has a thick coat.",
+     "ko": "우리 개는 털이 두꺼워요."
+    },
+    {
+     "en": "Put on your raincoat.",
+     "ko": "비옷 입어."
+    },
+    {
+     "en": "The wall needs another coat of paint.",
+     "ko": "벽에 페인트를 한 번 더 칠해야 해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "jacket",
+     "ko": "재킷",
+     "en": "A denim jacket."
+    },
+    {
+     "type": "연관어",
+     "word": "wear",
+     "ko": "입다",
+     "en": "Wear a hat."
+    },
+    {
+     "type": "연관어",
+     "word": "winter",
+     "ko": "겨울",
+     "en": "Cold winter."
+    },
+    {
+     "type": "연관어",
+     "word": "warm",
+     "ko": "따뜻한",
+     "en": "Keep warm."
+    },
+    {
+     "type": "연관어",
+     "word": "scarf",
+     "ko": "목도리",
+     "en": "A red scarf."
+    },
+    {
+     "type": "파생어",
+     "word": "raincoat",
+     "ko": "비옷",
+     "en": "A yellow raincoat."
+    }
+   ]
+  },
+  "458": {
+   "word": "cheese",
+   "overview": [
+    "cheese는 '치즈'라는 뜻의 명사입니다. 우유로 만든 음식이며 보통 셀 수 없습니다.",
+    "a piece of cheese(치즈 한 조각), cheese pizza(치즈 피자)처럼 씁니다.",
+    "사진을 찍을 때 Say cheese!(치즈 해!)라고 하면 웃는 입 모양이 됩니다."
+   ],
+   "easy": [
+    {
+     "word": "milk",
+     "en": "A glass of milk.",
+     "ko": "우유 한 잔."
+    },
+    {
+     "word": "butter",
+     "en": "Bread and butter.",
+     "ko": "빵과 버터."
+    }
+   ],
+   "etymology": [
+    "cheese는 라틴어 cāseus(치즈)에서 온 단어입니다.",
+    "고대 영어 cēse를 거쳐 cheese가 되었습니다.",
+    "옛 로마 사람들이 유럽 곳곳에 치즈 만드는 법을 퍼뜨리면서 이 말도 함께 퍼졌습니다.",
+    "스페인어 queso, 독일어 Käse도 같은 뿌리입니다.",
+    "cheese의 핵심 이미지는 '구멍 숭숭 노란 치즈 🧀'입니다."
+   ],
+   "meanings": [
+    "치즈",
+    "(Say cheese!) 사진 찍을 때 웃게 하는 말"
+   ],
+   "examples": [
+    {
+     "en": "I love cheese pizza.",
+     "ko": "나는 치즈 피자를 정말 좋아해요."
+    },
+    {
+     "en": "Put some cheese on the bread.",
+     "ko": "빵 위에 치즈를 좀 올려."
+    },
+    {
+     "en": "Cheese is made from milk.",
+     "ko": "치즈는 우유로 만들어요."
+    },
+    {
+     "en": "Mice love cheese.",
+     "ko": "쥐는 치즈를 좋아해요."
+    },
+    {
+     "en": "Say cheese!",
+     "ko": "치즈~! (사진 찍을 때)"
+    },
+    {
+     "en": "I had a cheese sandwich for lunch.",
+     "ko": "나는 점심으로 치즈 샌드위치를 먹었어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "milk",
+     "ko": "우유",
+     "en": "Fresh milk."
+    },
+    {
+     "type": "연관어",
+     "word": "butter",
+     "ko": "버터",
+     "en": "Soft butter."
+    },
+    {
+     "type": "연관어",
+     "word": "pizza",
+     "ko": "피자",
+     "en": "Hot pizza."
+    },
+    {
+     "type": "연관어",
+     "word": "bread",
+     "ko": "빵",
+     "en": "White bread."
+    },
+    {
+     "type": "연관어",
+     "word": "sandwich",
+     "ko": "샌드위치",
+     "en": "A ham sandwich."
+    },
+    {
+     "type": "연관어",
+     "word": "mouse",
+     "ko": "쥐",
+     "en": "A little mouse."
+    }
+   ]
+  },
+  "2506": {
+   "word": "spring",
+   "overview": [
+    "spring은 '봄'이라는 뜻의 명사입니다. (in spring = 봄에)",
+    "'용수철', '스프링'이라는 뜻도 있습니다. 땅에서 물이 솟는 '샘'(hot spring = 온천)도 spring입니다.",
+    "동사로는 '뛰어오르다', '튀어나오다'라는 뜻입니다. 과거형은 sprang입니다."
+   ],
+   "easy": [
+    {
+     "word": "jump",
+     "en": "Jump up!",
+     "ko": "뛰어올라!"
+    },
+    {
+     "word": "well",
+     "en": "Water from the well.",
+     "ko": "우물물."
+    }
+   ],
+   "etymology": [
+    "spring은 고대 영어 springan에서 온 단어로, '뛰어오르다', '솟아나다'라는 뜻이었습니다.",
+    "'물이 땅에서 솟아나는 곳'이 '샘', '톡 튀어 오르는 쇠줄'이 '용수철'이 되었습니다.",
+    "'새싹이 땅에서 솟아나는 계절'이 '봄'이 되었습니다. 원래는 spring of the year(한 해가 솟아나는 때)였습니다.",
+    "springtime(봄철)은 spring과 time이 합쳐진 말입니다.",
+    "spring의 핵심 이미지는 '새싹이 톡 솟아오르는 봄 🌱'입니다."
+   ],
+   "meanings": [
+    "봄",
+    "용수철, 스프링",
+    "샘 (hot spring = 온천)",
+    "뛰어오르다, 튀어나오다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "Flowers bloom in spring.",
+     "ko": "봄에는 꽃이 피어요."
+    },
+    {
+     "en": "Spring is my favorite season.",
+     "ko": "봄은 내가 가장 좋아하는 계절이에요."
+    },
+    {
+     "en": "School starts in spring.",
+     "ko": "학교는 봄에 시작해요."
+    },
+    {
+     "en": "The bed has springs inside.",
+     "ko": "침대 안에는 스프링이 들어 있어요."
+    },
+    {
+     "en": "We went to a hot spring.",
+     "ko": "우리는 온천에 갔어요."
+    },
+    {
+     "en": "The cat sprang onto the table.",
+     "ko": "고양이가 식탁 위로 펄쩍 뛰어올랐어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "summer",
+     "ko": "여름",
+     "en": "Hot summer."
+    },
+    {
+     "type": "연관어",
+     "word": "fall",
+     "ko": "가을",
+     "en": "In the fall."
+    },
+    {
+     "type": "연관어",
+     "word": "winter",
+     "ko": "겨울",
+     "en": "Snowy winter."
+    },
+    {
+     "type": "연관어",
+     "word": "flower",
+     "ko": "꽃",
+     "en": "Spring flowers."
+    },
+    {
+     "type": "연관어",
+     "word": "jump",
+     "ko": "뛰다",
+     "en": "Jump high."
+    },
+    {
+     "type": "연관어",
+     "word": "season",
+     "ko": "계절",
+     "en": "My favorite season."
+    }
+   ]
+  },
+  "1881": {
+   "word": "page",
+   "overview": [
+    "page는 '쪽', '페이지'라는 뜻의 명사입니다.",
+    "on page 10(10쪽에), turn the page(책장을 넘기다), Open to page 5.(5쪽을 펴세요.)처럼 씁니다.",
+    "인터넷의 '웹 페이지'(a web page)도 page입니다. 옛날 왕궁의 '시동'이라는 뜻도 있습니다."
+   ],
+   "easy": [
+    {
+     "word": "sheet",
+     "en": "A sheet of paper.",
+     "ko": "종이 한 장."
+    }
+   ],
+   "etymology": [
+    "page는 라틴어 pāgina에서 온 단어로, 원래 뜻은 '묶어 놓은 것', '포도나무를 묶는 틀'이었습니다.",
+    "pangere(묶다, 고정하다)에서 나온 말입니다.",
+    "'여러 줄의 글을 묶어 놓은 한 면'이 '쪽', '페이지'가 되었습니다.",
+    "page의 핵심 이미지는 '책의 한 쪽 📄'입니다."
+   ],
+   "meanings": [
+    "쪽, 페이지",
+    "(인터넷) 웹 페이지",
+    "(옛날 왕궁의) 시동, 심부름꾼"
+   ],
+   "examples": [
+    {
+     "en": "Open your book to page 25.",
+     "ko": "책 25쪽을 펴세요."
+    },
+    {
+     "en": "The answer is on the next page.",
+     "ko": "답은 다음 쪽에 있어요."
+    },
+    {
+     "en": "Turn the page, please.",
+     "ko": "책장을 넘기세요."
+    },
+    {
+     "en": "This book has 200 pages.",
+     "ko": "이 책은 200쪽이에요."
+    },
+    {
+     "en": "I read ten pages every night.",
+     "ko": "나는 매일 밤 열 쪽씩 읽어요."
+    },
+    {
+     "en": "Visit our web page for more information.",
+     "ko": "더 많은 정보는 우리 웹 페이지를 방문하세요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "book",
+     "ko": "책",
+     "en": "A thick book."
+    },
+    {
+     "type": "연관어",
+     "word": "paper",
+     "ko": "종이",
+     "en": "White paper."
+    },
+    {
+     "type": "연관어",
+     "word": "read",
+     "ko": "읽다",
+     "en": "Read the page."
+    },
+    {
+     "type": "연관어",
+     "word": "number",
+     "ko": "숫자, 번호",
+     "en": "Page number."
+    },
+    {
+     "type": "연관어",
+     "word": "turn",
+     "ko": "넘기다",
+     "en": "Turn the page."
+    },
+    {
+     "type": "연관어",
+     "word": "website",
+     "ko": "웹사이트",
+     "en": "Visit the website."
+    }
+   ]
+  },
+  "1322": {
+   "word": "hill",
+   "overview": [
+    "hill은 '언덕', '작은 산'이라는 뜻의 명사입니다. mountain(산)보다 낮습니다.",
+    "go up the hill(언덕을 오르다), on the hill(언덕 위에)처럼 씁니다.",
+    "길의 '오르막'도 hill이라고 합니다. (The road goes up a steep hill. = 길이 가파른 오르막으로 이어져요.)"
+   ],
+   "easy": [
+    {
+     "word": "mountain",
+     "en": "A high mountain.",
+     "ko": "높은 산."
+    },
+    {
+     "word": "slope",
+     "en": "A steep slope.",
+     "ko": "가파른 비탈."
+    }
+   ],
+   "etymology": [
+    "hill은 고대 영어 hyll에서 온 단어로, '언덕'이라는 뜻이었습니다.",
+    "'높이 솟다'라는 뜻의 아주 오래된 말에서 나왔습니다.",
+    "라틴어 collis(언덕)와 먼 친척이라고 봅니다.",
+    "hillside(언덕 비탈)는 hill과 side가 합쳐진 말입니다.",
+    "hill의 핵심 이미지는 '나지막하게 솟은 언덕 ⛰'입니다."
+   ],
+   "meanings": [
+    "언덕, 작은 산",
+    "오르막, 비탈길"
+   ],
+   "examples": [
+    {
+     "en": "Our school is on a hill.",
+     "ko": "우리 학교는 언덕 위에 있어요."
+    },
+    {
+     "en": "We ran down the hill.",
+     "ko": "우리는 언덕을 뛰어 내려갔어요."
+    },
+    {
+     "en": "The house on the hill is big.",
+     "ko": "언덕 위의 집은 커요."
+    },
+    {
+     "en": "It's hard to ride a bike up the hill.",
+     "ko": "자전거를 타고 언덕을 오르기는 힘들어요."
+    },
+    {
+     "en": "Sheep are eating grass on the hill.",
+     "ko": "양들이 언덕에서 풀을 먹고 있어요."
+    },
+    {
+     "en": "We watched the sunset from the hill.",
+     "ko": "우리는 언덕에서 해 지는 걸 봤어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "반의어",
+     "word": "valley",
+     "ko": "골짜기",
+     "en": "A deep valley."
+    },
+    {
+     "type": "유의어",
+     "word": "mountain",
+     "ko": "산",
+     "en": "Climb a mountain."
+    },
+    {
+     "type": "연관어",
+     "word": "top",
+     "ko": "꼭대기",
+     "en": "The top of the hill."
+    },
+    {
+     "type": "연관어",
+     "word": "up",
+     "ko": "위로",
+     "en": "Go up."
+    },
+    {
+     "type": "연관어",
+     "word": "down",
+     "ko": "아래로",
+     "en": "Run down."
+    },
+    {
+     "type": "연관어",
+     "word": "climb",
+     "ko": "오르다",
+     "en": "Climb up."
+    }
+   ]
+  },
+  "1124": {
+   "word": "forest",
+   "overview": [
+    "forest는 '숲', '삼림'이라는 뜻의 명사입니다. 나무가 아주 많이 모여 있는 넓은 곳입니다.",
+    "in the forest(숲속에), a rain forest(열대 우림)처럼 씁니다.",
+    "woods도 '숲'이지만 forest보다 작은 숲을 말합니다."
+   ],
+   "easy": [
+    {
+     "word": "woods",
+     "en": "Walk in the woods.",
+     "ko": "숲속을 걸어."
+    },
+    {
+     "word": "trees",
+     "en": "Many tall trees.",
+     "ko": "키 큰 나무가 많아요."
+    }
+   ],
+   "etymology": [
+    "forest는 라틴어 forestis silva에서 온 말로, 원래 뜻은 '바깥의 숲'이었습니다.",
+    "forīs(바깥에)에서 나온 말입니다.",
+    "옛날에는 마을 울타리 바깥에 있는, 왕이 사냥하던 넓은 숲을 forest라고 불렀습니다.",
+    "foreign(외국의, 바깥의)도 같은 뿌리의 단어입니다.",
+    "forest의 핵심 이미지는 '나무가 빽빽한 넓은 숲 🌲'입니다."
+   ],
+   "meanings": [
+    "숲, 삼림",
+    "(a forest of) 수많은 (빽빽한 것)"
+   ],
+   "examples": [
+    {
+     "en": "Many animals live in the forest.",
+     "ko": "숲에는 많은 동물이 살아요."
+    },
+    {
+     "en": "We went hiking in the forest.",
+     "ko": "우리는 숲으로 하이킹을 갔어요."
+    },
+    {
+     "en": "Don't get lost in the forest.",
+     "ko": "숲에서 길을 잃지 마."
+    },
+    {
+     "en": "Rain forests are very important.",
+     "ko": "열대 우림은 아주 중요해요."
+    },
+    {
+     "en": "The forest is quiet and green.",
+     "ko": "숲은 조용하고 푸르러요."
+    },
+    {
+     "en": "Little Red Riding Hood walked through the forest.",
+     "ko": "빨간 모자는 숲을 지나 걸어갔어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "woods",
+     "ko": "숲",
+     "en": "Into the woods."
+    },
+    {
+     "type": "연관어",
+     "word": "tree",
+     "ko": "나무",
+     "en": "Tall trees."
+    },
+    {
+     "type": "연관어",
+     "word": "animal",
+     "ko": "동물",
+     "en": "Wild animals."
+    },
+    {
+     "type": "연관어",
+     "word": "jungle",
+     "ko": "정글",
+     "en": "A thick jungle."
+    },
+    {
+     "type": "연관어",
+     "word": "nature",
+     "ko": "자연",
+     "en": "Love nature."
+    },
+    {
+     "type": "연관어",
+     "word": "mountain",
+     "ko": "산",
+     "en": "High mountains."
+    }
+   ]
+  },
+  "1560": {
+   "word": "lesson",
+   "overview": [
+    "lesson은 '수업', '교습'이라는 뜻의 명사입니다.",
+    "a piano lesson(피아노 수업), take swimming lessons(수영 강습을 받다)처럼 씁니다.",
+    "교과서의 '과'(Lesson 3 = 3과), 경험에서 얻은 '교훈'이라는 뜻도 있습니다. (learn a lesson = 교훈을 얻다)"
+   ],
+   "easy": [
+    {
+     "word": "class",
+     "en": "English class.",
+     "ko": "영어 수업."
+    },
+    {
+     "word": "course",
+     "en": "A cooking course.",
+     "ko": "요리 강좌."
+    }
+   ],
+   "etymology": [
+    "lesson은 라틴어 lectiō(읽기)에서 온 단어입니다.",
+    "legere(읽다)에서 나온 말입니다.",
+    "옛날에는 선생님이 책을 소리 내어 읽어 주는 것이 수업이었기 때문에 '읽기'가 '수업'이 되었습니다.",
+    "lecture(강의)도 같은 뿌리의 단어입니다.",
+    "lesson의 핵심 이미지는 '배우는 시간, 그리고 얻은 교훈 📚'입니다."
+   ],
+   "meanings": [
+    "수업, 교습, 강습",
+    "(교과서의) 과",
+    "교훈"
+   ],
+   "examples": [
+    {
+     "en": "I have a piano lesson today.",
+     "ko": "나는 오늘 피아노 수업이 있어요."
+    },
+    {
+     "en": "She takes swimming lessons.",
+     "ko": "그녀는 수영 강습을 받아요."
+    },
+    {
+     "en": "Open your book to Lesson 4.",
+     "ko": "책 4과를 펴세요."
+    },
+    {
+     "en": "The lesson starts at nine.",
+     "ko": "수업은 9시에 시작해요."
+    },
+    {
+     "en": "I learned my lesson.",
+     "ko": "교훈을 얻었어요. (다시는 안 그럴게요.)"
+    },
+    {
+     "en": "What's the lesson of this story?",
+     "ko": "이 이야기의 교훈은 뭐예요?"
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "class",
+     "ko": "수업",
+     "en": "Math class."
+    },
+    {
+     "type": "연관어",
+     "word": "teacher",
+     "ko": "선생님",
+     "en": "My teacher."
+    },
+    {
+     "type": "연관어",
+     "word": "learn",
+     "ko": "배우다",
+     "en": "Learn fast."
+    },
+    {
+     "type": "연관어",
+     "word": "teach",
+     "ko": "가르치다",
+     "en": "Teach me."
+    },
+    {
+     "type": "연관어",
+     "word": "study",
+     "ko": "공부하다",
+     "en": "Study hard."
+    },
+    {
+     "type": "연관어",
+     "word": "school",
+     "ko": "학교",
+     "en": "At school."
+    }
+   ]
+  },
+  "337": {
+   "word": "bread",
+   "overview": [
+    "bread는 '빵'이라는 뜻의 명사입니다. 셀 수 없어서 a bread라고 하지 않습니다.",
+    "a piece of bread(빵 한 조각), a slice of bread(빵 한 쪽), a loaf of bread(빵 한 덩어리)처럼 씁니다.",
+    "bread and butter는 '버터 바른 빵', 그리고 '생계', '밥벌이'라는 뜻도 됩니다. bakery는 '빵집'입니다."
+   ],
+   "easy": [
+    {
+     "word": "toast",
+     "en": "Butter toast.",
+     "ko": "버터 토스트."
+    },
+    {
+     "word": "roll",
+     "en": "A bread roll.",
+     "ko": "모닝빵."
+    }
+   ],
+   "etymology": [
+    "bread는 고대 영어 brēad에서 온 단어로, 원래 뜻은 '빵 조각', '한 입'이었습니다.",
+    "'발효시키다', '부풀리다'라는 뜻의 옛말과 관련 있다고 봅니다. 빵은 반죽을 부풀려 굽기 때문입니다.",
+    "원래 '빵'을 뜻하던 말은 hlāf였는데, 지금의 loaf(빵 한 덩어리)가 되었습니다.",
+    "bread의 핵심 이미지는 '갓 구운 폭신한 빵 🍞'입니다."
+   ],
+   "meanings": [
+    "빵",
+    "양식, 생계"
+   ],
+   "examples": [
+    {
+     "en": "I eat bread for breakfast.",
+     "ko": "나는 아침으로 빵을 먹어요."
+    },
+    {
+     "en": "Can I have a slice of bread?",
+     "ko": "빵 한 쪽 먹어도 돼요?"
+    },
+    {
+     "en": "My mom bakes bread at home.",
+     "ko": "우리 엄마는 집에서 빵을 구우세요."
+    },
+    {
+     "en": "We bought bread at the bakery.",
+     "ko": "우리는 빵집에서 빵을 샀어요."
+    },
+    {
+     "en": "This bread is soft and warm.",
+     "ko": "이 빵은 말랑하고 따뜻해요."
+    },
+    {
+     "en": "Put butter on your bread.",
+     "ko": "빵에 버터를 발라."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "butter",
+     "ko": "버터",
+     "en": "Bread and butter."
+    },
+    {
+     "type": "연관어",
+     "word": "bake",
+     "ko": "굽다",
+     "en": "Bake a cake."
+    },
+    {
+     "type": "연관어",
+     "word": "bakery",
+     "ko": "빵집",
+     "en": "A small bakery."
+    },
+    {
+     "type": "연관어",
+     "word": "toast",
+     "ko": "토스트",
+     "en": "Hot toast."
+    },
+    {
+     "type": "연관어",
+     "word": "sandwich",
+     "ko": "샌드위치",
+     "en": "A big sandwich."
+    },
+    {
+     "type": "연관어",
+     "word": "jam",
+     "ko": "잼",
+     "en": "Strawberry jam."
+    }
+   ]
+  },
+  "1039": {
+   "word": "farm",
+   "overview": [
+    "farm은 '농장'이라는 뜻의 명사입니다. 곡식을 기르거나 동물을 키우는 곳입니다.",
+    "live on a farm(농장에서 살다), farm animals(농장 동물)처럼 씁니다. 농장은 on을 써서 on the farm이라고 합니다.",
+    "동사로는 '농사짓다'라는 뜻입니다. farmer는 '농부', farming은 '농업'입니다."
+   ],
+   "easy": [
+    {
+     "word": "field",
+     "en": "A rice field.",
+     "ko": "논."
+    },
+    {
+     "word": "garden",
+     "en": "A vegetable garden.",
+     "ko": "텃밭."
+    }
+   ],
+   "etymology": [
+    "farm은 옛 프랑스어 ferme에서 온 단어로, 원래 뜻은 '빌린 땅에 내는 일정한 돈'이었습니다.",
+    "라틴어 firmus(단단한, 정해진)에서 나왔습니다. firm(단단한)도 같은 뿌리입니다.",
+    "'정해진 돈을 내고 빌려서 농사짓는 땅'이 '농장'이 되었습니다.",
+    "farmer(농부)는 farm에서 나온 단어입니다.",
+    "farm의 핵심 이미지는 '소와 닭이 사는 시골 농장 🚜'입니다."
+   ],
+   "meanings": [
+    "농장",
+    "(동물을 기르는) 사육장, 양식장",
+    "농사짓다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "My grandparents live on a farm.",
+     "ko": "우리 조부모님은 농장에서 사세요."
+    },
+    {
+     "en": "There are cows and pigs on the farm.",
+     "ko": "농장에 소와 돼지가 있어요."
+    },
+    {
+     "en": "We picked apples at the farm.",
+     "ko": "우리는 농장에서 사과를 땄어요."
+    },
+    {
+     "en": "The farmer works hard every day.",
+     "ko": "농부는 매일 열심히 일해요."
+    },
+    {
+     "en": "They farm rice and corn.",
+     "ko": "그들은 쌀과 옥수수를 농사지어요."
+    },
+    {
+     "en": "We visited a fish farm.",
+     "ko": "우리는 양식장에 가 봤어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "파생어",
+     "word": "farmer",
+     "ko": "농부",
+     "en": "A busy farmer."
+    },
+    {
+     "type": "연관어",
+     "word": "field",
+     "ko": "들판, 밭",
+     "en": "A green field."
+    },
+    {
+     "type": "연관어",
+     "word": "cow",
+     "ko": "소",
+     "en": "A big cow."
+    },
+    {
+     "type": "연관어",
+     "word": "pig",
+     "ko": "돼지",
+     "en": "A pink pig."
+    },
+    {
+     "type": "연관어",
+     "word": "chicken",
+     "ko": "닭",
+     "en": "Five chickens."
+    },
+    {
+     "type": "연관어",
+     "word": "country",
+     "ko": "시골",
+     "en": "Live in the country."
+    }
+   ]
+  },
+  "277": {
+   "word": "bike",
+   "overview": [
+    "bike는 '자전거'라는 뜻의 명사입니다. bicycle을 짧게 부르는 말입니다.",
+    "ride a bike(자전거를 타다), by bike(자전거로)처럼 씁니다.",
+    "오토바이(motorbike)를 bike라고 부르기도 합니다. biker는 '자전거나 오토바이를 타는 사람'입니다."
+   ],
+   "easy": [
+    {
+     "word": "bicycle",
+     "en": "A red bicycle.",
+     "ko": "빨간 자전거."
+    },
+    {
+     "word": "cycle",
+     "en": "Let's cycle to school.",
+     "ko": "자전거 타고 학교 가자."
+    }
+   ],
+   "etymology": [
+    "bike는 bicycle(자전거)을 짧게 줄인 말입니다.",
+    "bicycle은 bi-(둘)와 cycle(바퀴, 원)이 합쳐져 '바퀴가 두 개인 것'이라는 뜻입니다.",
+    "cycle은 그리스어 kyklos(원, 바퀴)에서 왔습니다.",
+    "tricycle(세발자전거)은 tri-(셋)와 cycle이 합쳐진 말입니다.",
+    "bike의 핵심 이미지는 '바퀴 두 개로 씽씽 달리는 자전거 🚲'입니다."
+   ],
+   "meanings": [
+    "자전거",
+    "오토바이 (구어)",
+    "자전거를 타다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "I ride my bike to school.",
+     "ko": "나는 자전거를 타고 학교에 가요."
+    },
+    {
+     "en": "Can you ride a bike?",
+     "ko": "자전거 탈 줄 알아?"
+    },
+    {
+     "en": "I got a new bike for my birthday.",
+     "ko": "나는 생일 선물로 새 자전거를 받았어요."
+    },
+    {
+     "en": "Wear a helmet on your bike.",
+     "ko": "자전거 탈 때는 헬멧을 써."
+    },
+    {
+     "en": "Let's go for a bike ride.",
+     "ko": "자전거 타러 가자."
+    },
+    {
+     "en": "My bike has a flat tire.",
+     "ko": "내 자전거 바퀴에 바람이 빠졌어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "bicycle",
+     "ko": "자전거",
+     "en": "Ride a bicycle."
+    },
+    {
+     "type": "연관어",
+     "word": "ride",
+     "ko": "타다",
+     "en": "Ride fast."
+    },
+    {
+     "type": "연관어",
+     "word": "wheel",
+     "ko": "바퀴",
+     "en": "Two wheels."
+    },
+    {
+     "type": "연관어",
+     "word": "helmet",
+     "ko": "헬멧",
+     "en": "Wear a helmet."
+    },
+    {
+     "type": "연관어",
+     "word": "tire",
+     "ko": "타이어",
+     "en": "A flat tire."
+    },
+    {
+     "type": "연관어",
+     "word": "motorbike",
+     "ko": "오토바이",
+     "en": "A fast motorbike."
+    }
+   ]
+  },
+  "1233": {
+   "word": "grandfather",
+   "overview": [
+    "grandfather는 '할아버지'라는 뜻의 명사입니다. 아빠의 아버지와 엄마의 아버지를 모두 grandfather라고 합니다.",
+    "편하게 부를 때는 grandpa, granddad라고 합니다.",
+    "할머니는 grandmother(grandma), 조부모님은 grandparents, 손자는 grandson, 손녀는 granddaughter입니다."
+   ],
+   "easy": [
+    {
+     "word": "grandpa",
+     "en": "I love my grandpa.",
+     "ko": "나는 할아버지를 사랑해요."
+    }
+   ],
+   "etymology": [
+    "grandfather는 grand(큰, 윗대의)와 father(아버지)가 합쳐진 말입니다.",
+    "grand는 라틴어 grandis(큰)에서 왔습니다.",
+    "'한 대 위의 아버지', 즉 '아버지의 아버지'라는 뜻입니다.",
+    "grandmother, grandchild도 같은 방식으로 만들어진 단어입니다.",
+    "grandfather의 핵심 이미지는 '엄마 아빠의 아버지 👴'입니다."
+   ],
+   "meanings": [
+    "할아버지"
+   ],
+   "examples": [
+    {
+     "en": "My grandfather is 75 years old.",
+     "ko": "우리 할아버지는 75세세요."
+    },
+    {
+     "en": "I visit my grandfather every weekend.",
+     "ko": "나는 주말마다 할아버지 댁에 가요."
+    },
+    {
+     "en": "My grandfather tells funny stories.",
+     "ko": "우리 할아버지는 재미있는 이야기를 해 주세요."
+    },
+    {
+     "en": "Grandpa taught me how to fish.",
+     "ko": "할아버지가 낚시하는 법을 가르쳐 주셨어요."
+    },
+    {
+     "en": "My grandfather was a teacher.",
+     "ko": "우리 할아버지는 선생님이셨어요."
+    },
+    {
+     "en": "This is my grandfather's old watch.",
+     "ko": "이건 우리 할아버지의 오래된 시계예요."
+    }
+   ],
+   "together": [
+    {
+     "type": "반의어",
+     "word": "grandmother",
+     "ko": "할머니",
+     "en": "My grandmother."
+    },
+    {
+     "type": "유의어",
+     "word": "grandpa",
+     "ko": "할아버지 (편한 말)",
+     "en": "Hi, Grandpa!"
+    },
+    {
+     "type": "연관어",
+     "word": "grandparents",
+     "ko": "조부모님",
+     "en": "Visit your grandparents."
+    },
+    {
+     "type": "연관어",
+     "word": "grandson",
+     "ko": "손자",
+     "en": "His grandson."
+    },
+    {
+     "type": "연관어",
+     "word": "father",
+     "ko": "아버지",
+     "en": "My father."
+    },
+    {
+     "type": "연관어",
+     "word": "family",
+     "ko": "가족",
+     "en": "My family."
+    }
+   ]
+  },
+  "2961": {
+   "word": "winter",
+   "overview": [
+    "winter는 '겨울'이라는 뜻의 명사입니다.",
+    "in winter(겨울에), this winter(올겨울), winter vacation(겨울 방학)처럼 씁니다.",
+    "winter sports(겨울 스포츠)에는 스키, 스케이트 같은 것이 있습니다. 사계절은 spring, summer, fall/autumn, winter입니다."
+   ],
+   "easy": [
+    {
+     "word": "cold season",
+     "en": "It's the cold season.",
+     "ko": "추운 계절이에요."
+    }
+   ],
+   "etymology": [
+    "winter는 고대 영어 winter에서 온 단어로, '겨울'이라는 뜻이었습니다.",
+    "'물이 많은', '젖은'이라는 뜻의 아주 오래된 말과 관련 있다고 봅니다. 겨울은 눈과 비가 많은 계절이기 때문입니다.",
+    "water(물), wet(젖은)와 먼 친척이라는 설이 있습니다.",
+    "wintertime(겨울철)은 winter와 time이 합쳐진 말입니다.",
+    "winter의 핵심 이미지는 '눈 내리는 추운 겨울 ⛄'입니다."
+   ],
+   "meanings": [
+    "겨울",
+    "겨울의 (형용사처럼) (winter clothes)"
+   ],
+   "examples": [
+    {
+     "en": "It snows a lot in winter.",
+     "ko": "겨울에는 눈이 많이 와요."
+    },
+    {
+     "en": "Winter vacation starts in December.",
+     "ko": "겨울 방학은 12월에 시작해요."
+    },
+    {
+     "en": "I like skiing in winter.",
+     "ko": "나는 겨울에 스키 타는 걸 좋아해요."
+    },
+    {
+     "en": "Bears sleep all winter.",
+     "ko": "곰은 겨울 내내 잠을 자요."
+    },
+    {
+     "en": "Wear warm clothes in winter.",
+     "ko": "겨울에는 따뜻한 옷을 입어."
+    },
+    {
+     "en": "This winter was very cold.",
+     "ko": "올겨울은 아주 추웠어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "반의어",
+     "word": "summer",
+     "ko": "여름",
+     "en": "Hot summer."
+    },
+    {
+     "type": "연관어",
+     "word": "cold",
+     "ko": "추운",
+     "en": "Very cold."
+    },
+    {
+     "type": "연관어",
+     "word": "snow",
+     "ko": "눈",
+     "en": "White snow."
+    },
+    {
+     "type": "연관어",
+     "word": "ice",
+     "ko": "얼음",
+     "en": "Thin ice."
+    },
+    {
+     "type": "연관어",
+     "word": "coat",
+     "ko": "코트",
+     "en": "A warm coat."
+    },
+    {
+     "type": "연관어",
+     "word": "season",
+     "ko": "계절",
+     "en": "Four seasons."
+    }
+   ]
+  },
+  "504": {
+   "word": "clock",
+   "overview": [
+    "clock은 '시계'라는 뜻의 명사입니다. 벽이나 책상에 두는 시계를 말합니다.",
+    "손목에 차는 시계는 watch입니다. alarm clock은 '자명종', '알람 시계'입니다.",
+    "o'clock은 '~시 정각'입니다. (It's three o'clock. = 3시 정각이에요.) around the clock은 '24시간 내내'입니다."
+   ],
+   "easy": [
+    {
+     "word": "watch",
+     "en": "My new watch.",
+     "ko": "내 새 손목시계."
+    },
+    {
+     "word": "time",
+     "en": "What time is it?",
+     "ko": "몇 시예요?"
+    }
+   ],
+   "etymology": [
+    "clock은 라틴어 clocca(종)에서 온 단어입니다.",
+    "옛날 시계는 정해진 시간마다 종을 울려서 시간을 알렸기 때문에 '종'이 '시계'가 되었습니다.",
+    "o'clock은 of the clock(시계에 따르면)이 줄어든 말입니다.",
+    "clockwise(시계 방향으로)는 clock이 들어간 단어입니다.",
+    "clock의 핵심 이미지는 '째깍째깍 벽시계 🕰'입니다."
+   ],
+   "meanings": [
+    "시계 (벽시계, 탁상시계)",
+    "(o'clock) ~시 정각",
+    "(속도, 시간을) 재다, 기록하다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "Look at the clock on the wall.",
+     "ko": "벽에 있는 시계를 봐."
+    },
+    {
+     "en": "My alarm clock rang at seven.",
+     "ko": "내 알람 시계가 7시에 울렸어요."
+    },
+    {
+     "en": "It's five o'clock.",
+     "ko": "5시 정각이에요."
+    },
+    {
+     "en": "The clock is ten minutes fast.",
+     "ko": "그 시계는 10분 빨라요."
+    },
+    {
+     "en": "Can you read an old clock?",
+     "ko": "옛날 시계 볼 줄 알아?"
+    },
+    {
+     "en": "Doctors work around the clock.",
+     "ko": "의사들은 24시간 내내 일해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "watch",
+     "ko": "손목시계",
+     "en": "A gold watch."
+    },
+    {
+     "type": "연관어",
+     "word": "time",
+     "ko": "시간",
+     "en": "Time flies."
+    },
+    {
+     "type": "연관어",
+     "word": "hour",
+     "ko": "시간",
+     "en": "One hour."
+    },
+    {
+     "type": "연관어",
+     "word": "minute",
+     "ko": "분",
+     "en": "Five minutes."
+    },
+    {
+     "type": "연관어",
+     "word": "alarm",
+     "ko": "알람",
+     "en": "Set the alarm."
+    },
+    {
+     "type": "연관어",
+     "word": "wall",
+     "ko": "벽",
+     "en": "On the wall."
+    }
+   ]
+  },
+  "454": {
+   "word": "cheap",
+   "overview": [
+    "cheap은 '값이 싼'이라는 뜻의 형용사입니다. 반대는 expensive(비싼)입니다.",
+    "a cheap toy(싼 장난감), It's cheap.(그거 싸.)처럼 씁니다.",
+    "'값싸고 질이 낮은', '인색한'이라는 나쁜 뜻으로도 씁니다. 그래서 좋은 뜻으로 '저렴한'을 말할 때는 inexpensive, low-priced도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "low-priced",
+     "en": "Low-priced shoes.",
+     "ko": "저렴한 신발."
+    },
+    {
+     "word": "on sale",
+     "en": "It's on sale.",
+     "ko": "할인 중이에요."
+    }
+   ],
+   "etymology": [
+    "cheap은 고대 영어 cēap에서 온 단어로, 원래 뜻은 '장사', '시장', '거래'였습니다.",
+    "good cheap(좋은 거래)이라는 표현이 줄어서 '싼'이라는 뜻이 되었습니다.",
+    "영국 런던의 Cheapside라는 거리 이름은 '시장 옆'이라는 뜻입니다.",
+    "cheap의 핵심 이미지는 '값이 싼 🏷'입니다."
+   ],
+   "meanings": [
+    "값이 싼",
+    "싸구려의, 질이 낮은",
+    "인색한, 쩨쩨한 (구어)"
+   ],
+   "examples": [
+    {
+     "en": "This pen is cheap.",
+     "ko": "이 펜은 싸요."
+    },
+    {
+     "en": "Food is cheap at this market.",
+     "ko": "이 시장은 음식이 싸요."
+    },
+    {
+     "en": "I bought a cheap umbrella.",
+     "ko": "나는 싼 우산을 샀어요."
+    },
+    {
+     "en": "Cheap toys break easily.",
+     "ko": "싸구려 장난감은 쉽게 망가져요."
+    },
+    {
+     "en": "Is there a cheaper one?",
+     "ko": "더 싼 거 있어요?"
+    },
+    {
+     "en": "The bus is cheaper than a taxi.",
+     "ko": "버스가 택시보다 싸요."
+    }
+   ],
+   "together": [
+    {
+     "type": "반의어",
+     "word": "expensive",
+     "ko": "비싼",
+     "en": "Too expensive."
+    },
+    {
+     "type": "연관어",
+     "word": "price",
+     "ko": "가격",
+     "en": "A low price."
+    },
+    {
+     "type": "연관어",
+     "word": "money",
+     "ko": "돈",
+     "en": "Save money."
+    },
+    {
+     "type": "연관어",
+     "word": "sale",
+     "ko": "할인 판매",
+     "en": "On sale."
+    },
+    {
+     "type": "연관어",
+     "word": "buy",
+     "ko": "사다",
+     "en": "Buy it."
+    },
+    {
+     "type": "연관어",
+     "word": "cost",
+     "ko": "비용",
+     "en": "Low cost."
+    }
+   ]
+  },
+  "1464": {
+   "word": "invite",
+   "overview": [
+    "invite는 '초대하다'라는 뜻의 동사입니다.",
+    "invite A to B(A를 B에 초대하다)처럼 씁니다. (I invited my friends to my party. = 나는 친구들을 파티에 초대했어.)",
+    "invitation은 '초대', '초대장'입니다. 구어로 invite를 '초대장'이라는 명사로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "ask",
+     "en": "Ask him to come.",
+     "ko": "그에게 오라고 해."
+    },
+    {
+     "word": "welcome",
+     "en": "Welcome to my home.",
+     "ko": "우리 집에 온 걸 환영해."
+    }
+   ],
+   "etymology": [
+    "invite는 라틴어 invītāre에서 온 단어로, '초대하다', '마음을 끌다'라는 뜻이었습니다.",
+    "정확한 뿌리는 잘 알려져 있지 않지만, '원하게 하다'라는 뜻과 관련 있다고 봅니다.",
+    "프랑스어 inviter를 거쳐 영어에 들어왔습니다.",
+    "invitation(초대장)은 invite에서 나온 명사입니다.",
+    "invite의 핵심 이미지는 '우리 집에 놀러 와! 하고 부르기 💌'입니다."
+   ],
+   "meanings": [
+    "초대하다",
+    "(정중하게) 요청하다, 권하다",
+    "(나쁜 일을) 불러오다",
+    "초대장 (명사, 구어)"
+   ],
+   "examples": [
+    {
+     "en": "I invited ten friends to my birthday party.",
+     "ko": "나는 생일 파티에 친구 열 명을 초대했어요."
+    },
+    {
+     "en": "Thank you for inviting me.",
+     "ko": "초대해 줘서 고마워요."
+    },
+    {
+     "en": "She invited us for dinner.",
+     "ko": "그녀가 우리를 저녁 식사에 초대했어요."
+    },
+    {
+     "en": "Can I invite my cousin?",
+     "ko": "내 사촌도 초대해도 돼요?"
+    },
+    {
+     "en": "I got an invitation to the wedding.",
+     "ko": "나는 결혼식 초대장을 받았어요."
+    },
+    {
+     "en": "The teacher invited questions.",
+     "ko": "선생님이 질문하라고 하셨어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "파생어",
+     "word": "invitation",
+     "ko": "초대, 초대장",
+     "en": "A party invitation."
+    },
+    {
+     "type": "연관어",
+     "word": "party",
+     "ko": "파티",
+     "en": "A birthday party."
+    },
+    {
+     "type": "연관어",
+     "word": "guest",
+     "ko": "손님",
+     "en": "Our guests."
+    },
+    {
+     "type": "연관어",
+     "word": "welcome",
+     "ko": "환영하다",
+     "en": "Welcome!"
+    },
+    {
+     "type": "연관어",
+     "word": "visit",
+     "ko": "방문하다",
+     "en": "Come visit us."
+    },
+    {
+     "type": "연관어",
+     "word": "friend",
+     "ko": "친구",
+     "en": "My friends."
+    }
+   ]
+  },
+  "2660": {
+   "word": "telephone",
+   "overview": [
+    "telephone은 '전화', '전화기'라는 뜻의 명사입니다. 짧게 phone이라고 많이 부릅니다.",
+    "answer the telephone(전화를 받다), a telephone number(전화번호), on the telephone(통화 중인)처럼 씁니다.",
+    "동사로는 '전화하다'라는 뜻입니다. 요즘은 call을 더 많이 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "phone",
+     "en": "My phone is ringing.",
+     "ko": "내 전화가 울려요."
+    },
+    {
+     "word": "call",
+     "en": "Call me later.",
+     "ko": "나중에 전화해."
+    }
+   ],
+   "etymology": [
+    "telephone은 그리스어 tēle(멀리)와 phōnē(소리, 목소리)가 합쳐진 말입니다.",
+    "글자 그대로 '멀리까지 소리를 보내는 것'이라는 뜻입니다.",
+    "1876년 벨이 전화기를 만든 뒤 널리 쓰이게 되었습니다.",
+    "television(텔레비전, 멀리서 보는 것), telescope(망원경, 멀리 보는 것)도 tele-가 들어간 단어입니다.",
+    "telephone의 핵심 이미지는 '멀리 있는 사람과 통화하는 전화기 ☎'입니다."
+   ],
+   "meanings": [
+    "전화, 전화기",
+    "전화하다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "The telephone is ringing.",
+     "ko": "전화가 울리고 있어요."
+    },
+    {
+     "en": "What's your telephone number?",
+     "ko": "전화번호가 뭐예요?"
+    },
+    {
+     "en": "Can you answer the telephone?",
+     "ko": "전화 좀 받아 줄래?"
+    },
+    {
+     "en": "My dad is on the telephone.",
+     "ko": "아빠는 통화 중이세요."
+    },
+    {
+     "en": "Bell invented the telephone.",
+     "ko": "벨이 전화기를 발명했어요."
+    },
+    {
+     "en": "I telephoned my grandma.",
+     "ko": "나는 할머니께 전화드렸어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "phone",
+     "ko": "전화기",
+     "en": "A smartphone."
+    },
+    {
+     "type": "연관어",
+     "word": "call",
+     "ko": "전화하다",
+     "en": "Call me."
+    },
+    {
+     "type": "연관어",
+     "word": "number",
+     "ko": "번호",
+     "en": "Phone number."
+    },
+    {
+     "type": "연관어",
+     "word": "ring",
+     "ko": "울리다",
+     "en": "It's ringing."
+    },
+    {
+     "type": "연관어",
+     "word": "answer",
+     "ko": "받다",
+     "en": "Answer it."
+    },
+    {
+     "type": "연관어",
+     "word": "television",
+     "ko": "텔레비전",
+     "en": "Watch television."
+    }
+   ]
+  },
+  "752": {
+   "word": "delicious",
+   "overview": [
+    "delicious는 '아주 맛있는'이라는 뜻의 형용사입니다.",
+    "This cake is delicious!(이 케이크 정말 맛있어!)처럼 씁니다. good, tasty보다 더 강한 칭찬입니다.",
+    "delicious 자체에 '아주'라는 뜻이 있어서 very delicious보다 really delicious, so delicious를 더 자연스럽게 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "tasty",
+     "en": "Tasty food.",
+     "ko": "맛있는 음식."
+    },
+    {
+     "word": "yummy",
+     "en": "Yummy!",
+     "ko": "냠냠, 맛있어!"
+    },
+    {
+     "word": "good",
+     "en": "It tastes good.",
+     "ko": "맛있어요."
+    }
+   ],
+   "etymology": [
+    "delicious는 라틴어 dēliciōsus에서 온 단어로, '즐거움을 주는'이라는 뜻이었습니다.",
+    "dēliciae(즐거움, 기쁨)에서 나온 말입니다.",
+    "'먹으면 기쁨을 주는'이 '아주 맛있는'이 되었습니다.",
+    "delight(큰 기쁨)도 같은 뿌리의 단어입니다.",
+    "delicious의 핵심 이미지는 '한입 먹고 눈이 번쩍 😋'입니다."
+   ],
+   "meanings": [
+    "아주 맛있는",
+    "(냄새가) 아주 좋은"
+   ],
+   "examples": [
+    {
+     "en": "This pizza is delicious!",
+     "ko": "이 피자 정말 맛있어!"
+    },
+    {
+     "en": "Mom made a delicious dinner.",
+     "ko": "엄마가 맛있는 저녁을 만들어 주셨어요."
+    },
+    {
+     "en": "The soup smells delicious.",
+     "ko": "수프 냄새가 정말 좋아요."
+    },
+    {
+     "en": "Korean food is delicious.",
+     "ko": "한국 음식은 맛있어요."
+    },
+    {
+     "en": "Thank you for the delicious meal.",
+     "ko": "맛있는 식사 고마워요."
+    },
+    {
+     "en": "These strawberries are so delicious.",
+     "ko": "이 딸기 정말 맛있어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "반의어",
+     "word": "terrible",
+     "ko": "끔찍한",
+     "en": "It tastes terrible."
+    },
+    {
+     "type": "유의어",
+     "word": "tasty",
+     "ko": "맛있는",
+     "en": "A tasty snack."
+    },
+    {
+     "type": "유의어",
+     "word": "yummy",
+     "ko": "맛있는",
+     "en": "Yummy cookies."
+    },
+    {
+     "type": "연관어",
+     "word": "taste",
+     "ko": "맛",
+     "en": "Taste it."
+    },
+    {
+     "type": "연관어",
+     "word": "food",
+     "ko": "음식",
+     "en": "Good food."
+    },
+    {
+     "type": "연관어",
+     "word": "eat",
+     "ko": "먹다",
+     "en": "Let's eat."
+    }
+   ]
+  },
+  "235": {
+   "word": "bath",
+   "overview": [
+    "bath는 '목욕', '욕조'라는 뜻의 명사입니다.",
+    "take a bath(목욕하다), a hot bath(뜨거운 목욕), bath time(목욕 시간)처럼 씁니다.",
+    "bathroom은 '욕실', '화장실', bathtub은 '욕조', bathe(베이드)는 '목욕시키다'라는 동사입니다."
+   ],
+   "easy": [
+    {
+     "word": "shower",
+     "en": "Take a shower.",
+     "ko": "샤워해."
+    },
+    {
+     "word": "wash",
+     "en": "Wash your body.",
+     "ko": "몸을 씻어."
+    }
+   ],
+   "etymology": [
+    "bath는 고대 영어 bæþ에서 온 단어로, '목욕', '씻기'라는 뜻이었습니다.",
+    "'따뜻하게 하다', '데우다'라는 뜻의 아주 오래된 말과 관련 있다고 봅니다. 따뜻한 물로 씻었기 때문입니다.",
+    "영국의 Bath라는 도시는 옛 로마 사람들이 만든 온천 목욕탕으로 유명해서 붙은 이름입니다.",
+    "bathroom(욕실)은 bath와 room이 합쳐진 말입니다.",
+    "bath의 핵심 이미지는 '따뜻한 물에 몸을 담그는 목욕 🛁'입니다."
+   ],
+   "meanings": [
+    "목욕",
+    "욕조 (bathtub)",
+    "목욕물"
+   ],
+   "examples": [
+    {
+     "en": "I take a bath every night.",
+     "ko": "나는 매일 밤 목욕해요."
+    },
+    {
+     "en": "The baby loves bath time.",
+     "ko": "아기는 목욕 시간을 정말 좋아해요."
+    },
+    {
+     "en": "Mom is running a bath for me.",
+     "ko": "엄마가 목욕물을 받아 주고 계세요."
+    },
+    {
+     "en": "A hot bath helps you relax.",
+     "ko": "따뜻한 목욕은 긴장을 풀어 줘요."
+    },
+    {
+     "en": "Our dog hates baths.",
+     "ko": "우리 개는 목욕을 싫어해요."
+    },
+    {
+     "en": "Where's the bathroom?",
+     "ko": "화장실이 어디예요?"
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "shower",
+     "ko": "샤워",
+     "en": "A quick shower."
+    },
+    {
+     "type": "파생어",
+     "word": "bathroom",
+     "ko": "욕실, 화장실",
+     "en": "A clean bathroom."
+    },
+    {
+     "type": "파생어",
+     "word": "bathtub",
+     "ko": "욕조",
+     "en": "A big bathtub."
+    },
+    {
+     "type": "연관어",
+     "word": "soap",
+     "ko": "비누",
+     "en": "Use soap."
+    },
+    {
+     "type": "연관어",
+     "word": "towel",
+     "ko": "수건",
+     "en": "A soft towel."
+    },
+    {
+     "type": "연관어",
+     "word": "wash",
+     "ko": "씻다",
+     "en": "Wash your face."
+    }
+   ]
+  },
+  "1629": {
+   "word": "map",
+   "overview": [
+    "map은 '지도'라는 뜻의 명사입니다.",
+    "a world map(세계 지도), read a map(지도를 보다), on the map(지도에)처럼 씁니다.",
+    "동사로는 '지도를 만들다'라는 뜻입니다. 휴대폰의 지도 앱도 map이라고 합니다."
+   ],
+   "easy": [
+    {
+     "word": "guide",
+     "en": "A city guide.",
+     "ko": "도시 안내서."
+    },
+    {
+     "word": "plan",
+     "en": "A floor plan.",
+     "ko": "평면도."
+    }
+   ],
+   "etymology": [
+    "map은 라틴어 mappa mundī에서 온 말로, 원래 뜻은 '세상을 그린 천'이었습니다.",
+    "mappa는 '천 조각', '냅킨'이라는 뜻이었고, mundī는 '세상의'라는 뜻이었습니다.",
+    "옛날에는 천에 세상 모습을 그렸기 때문에 '천'이 '지도'가 되었습니다.",
+    "napkin(냅킨)도 mappa에서 나온 먼 친척 단어입니다.",
+    "map의 핵심 이미지는 '길과 땅을 그려 놓은 지도 🗺'입니다."
+   ],
+   "meanings": [
+    "지도",
+    "지도를 만들다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "Look at the map.",
+     "ko": "지도를 봐."
+    },
+    {
+     "en": "Can you find Korea on the map?",
+     "ko": "지도에서 한국을 찾을 수 있어?"
+    },
+    {
+     "en": "We used a map to find the museum.",
+     "ko": "우리는 지도를 보고 박물관을 찾았어요."
+    },
+    {
+     "en": "There's a world map on the wall.",
+     "ko": "벽에 세계 지도가 붙어 있어요."
+    },
+    {
+     "en": "I drew a map of my town.",
+     "ko": "나는 우리 동네 지도를 그렸어요."
+    },
+    {
+     "en": "The pirate had a treasure map.",
+     "ko": "해적은 보물 지도를 가지고 있었어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "world",
+     "ko": "세계",
+     "en": "Around the world."
+    },
+    {
+     "type": "연관어",
+     "word": "country",
+     "ko": "나라",
+     "en": "My country."
+    },
+    {
+     "type": "연관어",
+     "word": "city",
+     "ko": "도시",
+     "en": "A big city."
+    },
+    {
+     "type": "연관어",
+     "word": "road",
+     "ko": "길",
+     "en": "The main road."
+    },
+    {
+     "type": "연관어",
+     "word": "north",
+     "ko": "북쪽",
+     "en": "Go north."
+    },
+    {
+     "type": "연관어",
+     "word": "compass",
+     "ko": "나침반",
+     "en": "Use a compass."
+    }
+   ]
+  },
+  "1474": {
+   "word": "jacket",
+   "overview": [
+    "jacket은 '재킷', '짧은 윗옷'이라는 뜻의 명사입니다. coat(코트)보다 짧고 가벼운 겉옷입니다.",
+    "put on a jacket(재킷을 입다), a denim jacket(청재킷), a life jacket(구명조끼)처럼 씁니다.",
+    "책의 '겉표지'(book jacket)도 jacket이라고 합니다."
+   ],
+   "easy": [
+    {
+     "word": "coat",
+     "en": "A long coat.",
+     "ko": "긴 코트."
+    },
+    {
+     "word": "top",
+     "en": "A warm top.",
+     "ko": "따뜻한 윗옷."
+    }
+   ],
+   "etymology": [
+    "jacket은 옛 프랑스어 jaquet(짧은 윗옷)에서 온 단어입니다.",
+    "jaque(농부들이 입던 짧은 윗옷)에 '작은'이라는 뜻의 꼬리가 붙은 말입니다.",
+    "jaque는 옛날 프랑스 농부들을 부르던 이름 Jacques(자크)에서 왔다는 설이 있습니다.",
+    "jacket의 핵심 이미지는 '가볍게 걸치는 짧은 겉옷 🧥'입니다."
+   ],
+   "meanings": [
+    "재킷, 짧은 윗옷",
+    "(life jacket) 구명조끼",
+    "(책의) 겉표지"
+   ],
+   "examples": [
+    {
+     "en": "Take a jacket. It's cool outside.",
+     "ko": "재킷 가져가. 밖이 쌀쌀해."
+    },
+    {
+     "en": "I like your leather jacket.",
+     "ko": "네 가죽 재킷 멋지다."
+    },
+    {
+     "en": "He hung his jacket on the chair.",
+     "ko": "그는 재킷을 의자에 걸었어요."
+    },
+    {
+     "en": "Wear a life jacket on the boat.",
+     "ko": "배에서는 구명조끼를 입어."
+    },
+    {
+     "en": "This jacket has two pockets.",
+     "ko": "이 재킷에는 주머니가 두 개 있어요."
+    },
+    {
+     "en": "Zip up your jacket.",
+     "ko": "재킷 지퍼를 올려."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "coat",
+     "ko": "코트",
+     "en": "A winter coat."
+    },
+    {
+     "type": "연관어",
+     "word": "shirt",
+     "ko": "셔츠",
+     "en": "A white shirt."
+    },
+    {
+     "type": "연관어",
+     "word": "pocket",
+     "ko": "주머니",
+     "en": "In my pocket."
+    },
+    {
+     "type": "연관어",
+     "word": "zipper",
+     "ko": "지퍼",
+     "en": "Pull the zipper."
+    },
+    {
+     "type": "연관어",
+     "word": "wear",
+     "ko": "입다",
+     "en": "Wear it."
+    },
+    {
+     "type": "연관어",
+     "word": "clothes",
+     "ko": "옷",
+     "en": "New clothes."
+    }
+   ]
+  }
+ }
+}
