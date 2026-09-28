@@ -65,9 +65,19 @@ function answer(sql, params) {
     error.code = "42P10";
     throw error;
   }
+  // 담임 배정이 바뀌어 저절로 만든 옛 학급 그룹 치우기
+  if (text.includes("DELETE FROM teacher_groups") && text.includes("auto_homeroom")) {
+    const stale = (row) => row.academic_year === params[1] && row.group_type === "homeroom"
+      && row.auto_homeroom && (params[2] == null || row.group_name !== params[2]);
+    const before = groupRows.length;
+    groupRows = groupRows.filter((row) => !stale(row));
+    return { rows: [], rowCount: before - groupRows.length };
+  }
   if (text.includes("INSERT INTO teacher_groups")) {
-    inserted.push({ school_id: params[0], teacher_user_id: params[1], academic_year: params[2], group_name: params[3], group_type: params[4], grade: params[5], class_number: params[6] });
-    groupRows.push({ id: inserted.length, group_name: params[3], group_type: params[4], grade: params[5], class_number: params[6], academic_year: params[2], sort_order: 0, student_count: 0 });
+    const auto = text.includes("auto_homeroom");
+    inserted.push({ school_id: params[0], teacher_user_id: params[1], academic_year: params[2], group_name: params[3], group_type: auto ? "homeroom" : params[4], grade: auto ? params[4] : params[5], class_number: auto ? params[5] : params[6] });
+    const row = inserted[inserted.length - 1];
+    groupRows.push({ id: inserted.length, group_name: row.group_name, group_type: row.group_type, grade: row.grade, class_number: row.class_number, academic_year: row.academic_year, sort_order: 0, student_count: 0, auto_homeroom: auto });
     return { rows: [{ id: inserted.length }], rowCount: 1 };
   }
   if (text.includes("FROM teacher_groups") && text.includes("group_name = $3")) {
@@ -148,6 +158,14 @@ app.use((error, _req, res, _next) => res.status(error.status || 500).json({ code
     assert.equal(inserted.length, 1, "학년도가 비어 있어도 담임 학급 그룹은 만들어져야 한다.");
     assert.equal(inserted[0].group_name, "6-4");
     assert.equal(inserted[0].academic_year, THIS_YEAR, "그룹은 지금 보고 있는 해로 만들어야 한다.");
+
+    // 4-1. 담임 배정을 6-4 → 6-2 로 바꾸면 저절로 만든 6-4 카드는 사라져야 한다.
+    //      교사가 직접 가져온 학급(자동 표시 없음)은 남아야 한다.
+    groupRows.push({ id: 99, group_name: "6-1", group_type: "homeroom", grade: 6, class_number: 1, academic_year: THIS_YEAR, sort_order: 0, student_count: 0, auto_homeroom: false });
+    teacherRows = [{ user_id: 7, school_id: SCHOOL_ID, active: true, grade: 6, class_number: 2, academic_year: THIS_YEAR }];
+    const switched = await (await get(`/api/teacher/groups?year=${THIS_YEAR}`)).json();
+    const names = switched.groups.map((g) => g.group_name).sort().join(" ");
+    assert.equal(names, "6-1 6-2", "옛 담임 반 그룹은 치우고, 새 반과 직접 가져온 반만 남아야 한다.");
 
     // 5. 개설할 때 보낸 학년·반과 학년도가 그대로 저장돼야 한다.
     groupRows = [];

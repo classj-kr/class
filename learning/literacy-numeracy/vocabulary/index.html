@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="2022 개정 교육과정 영어 단어 3,000개 학습">
     <title>교육부 지정 단어</title>
-    <link rel="stylesheet" href="styles.css?v=20260908a">
+    <link rel="stylesheet" href="styles.css?v=20260928a">
     <script src="vocabulary-core.js?v=20260803a" defer></script>
-    <script src="app.js?v=20260927a" defer></script>
+    <script src="app.js?v=20260928b" defer></script>
 </head>
 <body>
     <main>
@@ -155,6 +155,15 @@
                 <button id="unknownButton" class="unknown-button" type="button"><span>아직 어려워요</span><small>1</small></button>
                 <button id="knownButton" class="known-button" type="button"><span>외웠어요</span><small>2</small></button>
             </div>
+
+            <section id="detailPanel" class="detail-panel" hidden aria-labelledby="detailToggle">
+                <button id="detailToggle" class="detail-toggle" type="button" aria-expanded="false" aria-controls="detailBody">
+                    <span class="detail-toggle-title">자세히 알아보기</span>
+                    <span id="detailToggleWord" class="detail-toggle-word"></span>
+                    <span class="detail-toggle-icon" aria-hidden="true">▾</span>
+                </button>
+                <div id="detailBody" class="detail-body" hidden></div>
+            </section>
 
             <button id="reviewUnknownButton" class="review-button" type="button">‘아직 어려워요’ 단어 복습하기</button>
             <p id="studyMessage" class="study-message" role="status"></p>

@@ -346,6 +346,28 @@ main { width: min(1180px, calc(100% - 32px)); margin: 0 auto; padding: 16px 0 48
 .flashcard.revealed .example-block, .flashcard.revealed .related-block { opacity: 1; visibility: visible; transform: none; }
 .reveal-hint { position: absolute; bottom: 8px; color: #8c8069; font-size: 12px; font-weight: 800; }
 
+.detail-panel { margin-top: 10px; border: 1px solid var(--line); border-radius: 16px; background: rgba(255,253,247,.94); overflow: hidden; }
+.detail-toggle { display: flex; align-items: center; gap: 10px; width: 100%; min-height: 48px; padding: 10px 16px; border: 0; background: transparent; color: var(--ink); text-align: left; cursor: pointer; }
+.detail-toggle-title { font-size: 15px; font-weight: 900; color: var(--navy); }
+.detail-toggle-word { flex: 1; font: 700 15px/1 "Klee One Learning", "Klee One", cursive; color: var(--blue); }
+.detail-toggle-icon { font-size: 16px; color: var(--muted); transition: transform .18s ease; }
+.detail-toggle[aria-expanded="true"] .detail-toggle-icon { transform: rotate(180deg); }
+.detail-body { padding: 4px 16px 16px; border-top: 1px dashed var(--line); text-align: left; }
+.detail-section { margin-top: 14px; }
+.detail-section h3 { display: flex; align-items: center; gap: 8px; margin: 0 0 8px; color: var(--red-dark); font-size: 15px; font-weight: 900; }
+.detail-section h3::after { content: ""; flex: 1; height: 1px; background: rgba(158,65,50,.22); }
+.detail-section ul { margin: 0; padding-left: 18px; }
+.detail-section li { margin: 5px 0; color: var(--ink); font-size: 15px; line-height: 1.55; }
+.detail-section li b { color: var(--navy); font-weight: 900; }
+.detail-en { font-family: "Klee One Learning", "Klee One", cursive; font-weight: 600; color: var(--navy); }
+.detail-ko { color: #44524c; font-weight: 700; }
+.detail-ko::before { content: " / "; color: var(--muted); font-weight: 400; }
+.detail-tag { display: inline-block; margin-right: 6px; padding: 1px 7px; border-radius: 999px; background: rgba(69,108,133,.12); color: var(--blue); font-size: 12px; font-weight: 800; vertical-align: 1px; }
+.detail-tag.antonym { background: rgba(158,65,50,.12); color: var(--red); }
+.detail-tag.form { background: rgba(72,114,90,.14); color: var(--green); }
+.detail-easy li b::after { content: " → "; color: var(--muted); font-weight: 400; }
+.detail-meanings li { font-weight: 800; }
+.detail-empty { margin: 12px 0 4px; color: var(--muted); font-size: 14px; }
 .utility-actions { display: grid; grid-template-columns: 1fr 1.15fr 1.15fr 1fr; gap: 8px; margin-top: 10px; }
 .utility-actions button, .review-button { min-height: 44px; border: 1px solid var(--line); border-radius: 12px; background: rgba(255,253,247,.85); color: var(--ink); font-size: 15px; font-weight: 900; cursor: pointer; }
 .utility-actions .speak-button { border-color: #b9cbd5; color: var(--navy); }

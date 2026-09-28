@@ -5,6 +5,8 @@
     const CURATED_EXAMPLES_URL = "assets/data/curated-examples-v1.json?v=20260910a";
     const IMAGE_MANIFEST_URL = "assets/data/vocabulary-word-images-v1.json?v=20260908a";
     const SPELLING_GAME_URL = "assets/data/vocabulary-spelling-game-v1.json";
+    const DETAIL_URL_TEMPLATE = "assets/data/details/level-{level}.json?v=20260928a";
+    const DETAIL_OPEN_KEY = "englishVocabularyDetailOpenV1";
     const IMAGE_BASE_URL = "assets/images/";
     const PROGRESS_KEY = "englishVocabulary3000ProgressV1";
     const SHUFFLE_PREFERENCE_KEY = "englishVocabularyShuffleEnabledV1";
@@ -77,6 +79,7 @@
         "shuffleButton", "lessonQuizStartButton", "studyStage", "studyTitle", "cardPosition", "levelStatus", "sessionBar",
         "flashcard", "cardBadge", "wordText", "posText", "meaningText", "exampleBlock", "exampleLabel", "exampleText",
         "exampleKo", "relatedBlock", "relatedWords", "answerLayout", "wordImageBlock", "wordImage",
+        "detailPanel", "detailToggle", "detailToggleWord", "detailBody",
         "previousButton", "speakButton", "exampleSpeakButton",
         "nextButton", "unknownButton", "knownButton", "reviewUnknownButton", "studyMessage",
         "lessonQuizScreen", "backFromLessonQuiz", "lessonQuizStage", "lessonQuizTitle", "lessonQuizRestartButton",
@@ -115,6 +118,9 @@
         revealed: false,
         unknownOnly: false,
         shuffleEnabled: localStorage.getItem(SHUFFLE_PREFERENCE_KEY) === "true",
+        detailOpen: localStorage.getItem(DETAIL_OPEN_KEY) !== "false",
+        detailCache: new Map(),
+        detailLoading: new Map(),
         lessonQuizPool: [],
         lessonQuizTarget: null,
         lessonQuizChoices: [],
@@ -443,6 +449,7 @@
         const word = currentWord();
         if (!word) return;
         elements.flashcard.classList.toggle("revealed", state.revealed);
+        elements.detailPanel.hidden = !state.revealed || !detailFor(word);
         elements.flashcard.setAttribute("aria-pressed", String(state.revealed));
         elements.flashcard.setAttribute(
             "aria-label",
@@ -458,6 +465,126 @@
     function updateShuffleToggle() {
         elements.shuffleButton.setAttribute("aria-checked", String(state.shuffleEnabled));
         elements.shuffleButton.setAttribute("aria-label", `순서 섞기 ${state.shuffleEnabled ? "켜짐" : "꺼짐"}`);
+    }
+
+    function loadDetailLevel(level) {
+        const key = Number(level);
+        if (state.detailCache.has(key)) return Promise.resolve(state.detailCache.get(key));
+        if (state.detailLoading.has(key)) return state.detailLoading.get(key);
+        const url = DETAIL_URL_TEMPLATE.replace("{level}", String(key).padStart(2, "0"));
+        const request = fetch(url)
+            .then((response) => (response.ok ? response.json() : null))
+            .then((payload) => {
+                const entries = payload && typeof payload.entries === "object" ? payload.entries : {};
+                const map = new Map(Object.entries(entries));
+                state.detailCache.set(key, map);
+                return map;
+            })
+            .catch(() => {
+                const map = new Map();
+                state.detailCache.set(key, map);
+                return map;
+            })
+            .finally(() => state.detailLoading.delete(key));
+        state.detailLoading.set(key, request);
+        return request;
+    }
+
+    function detailFor(word) {
+        if (!word) return null;
+        const map = state.detailCache.get(Number(word.globalLevel));
+        return map?.get(String(word.id)) || null;
+    }
+
+    const DETAIL_TAG_CLASS = { "반의어": "antonym", "변화형": "form", "파생어": "form" };
+
+    function detailSection(title, items, buildItem) {
+        const list = (Array.isArray(items) ? items : []).filter(Boolean);
+        if (!list.length) return null;
+        const section = document.createElement("section");
+        section.className = "detail-section";
+        const heading = document.createElement("h3");
+        heading.textContent = title;
+        const ul = document.createElement("ul");
+        list.forEach((item) => {
+            const li = document.createElement("li");
+            buildItem(li, item);
+            ul.append(li);
+        });
+        section.append(heading, ul);
+        return section;
+    }
+
+    function appendPair(li, en, ko) {
+        if (en) {
+            const enNode = document.createElement("span");
+            enNode.className = "detail-en";
+            enNode.textContent = en;
+            li.append(enNode);
+        }
+        if (ko) {
+            const koNode = document.createElement("span");
+            koNode.className = "detail-ko";
+            koNode.textContent = ko;
+            li.append(koNode);
+        }
+    }
+
+    function buildDetailBody(detail) {
+        const fragment = document.createDocumentFragment();
+        const sections = [
+            detailSection("개요", detail.overview, (li, text) => { li.textContent = text; }),
+            detailSection("다른 쉬운 표현", detail.easy, (li, item) => {
+                const label = document.createElement("b");
+                label.textContent = item.word;
+                li.append(label);
+                appendPair(li, item.en, item.ko);
+            }),
+            detailSection("어원", detail.etymology, (li, text) => { li.textContent = text; }),
+            detailSection("뜻", detail.meanings, (li, text) => { li.textContent = text; }),
+            detailSection("예문", detail.examples, (li, item) => appendPair(li, item.en, item.ko)),
+            detailSection("함께 익히기", detail.together, (li, item) => {
+                const tag = document.createElement("span");
+                tag.className = `detail-tag ${DETAIL_TAG_CLASS[item.type] || ""}`.trim();
+                tag.textContent = item.type || "연관어";
+                const label = document.createElement("b");
+                label.textContent = item.word;
+                li.append(tag, label);
+                if (item.ko) li.append(document.createTextNode(` - ${item.ko}`));
+                if (item.en) {
+                    const enNode = document.createElement("span");
+                    enNode.className = "detail-en";
+                    enNode.textContent = item.en;
+                    li.append(document.createTextNode(" / "), enNode);
+                }
+            }),
+        ].filter(Boolean);
+        sections.forEach((section) => {
+            if (section.querySelector("h3").textContent === "뜻") section.classList.add("detail-meanings");
+            if (section.querySelector("h3").textContent === "다른 쉬운 표현") section.classList.add("detail-easy");
+        });
+        sections.forEach((section) => fragment.append(section));
+        return fragment;
+    }
+
+    function renderDetailPanel(word) {
+        const detail = detailFor(word);
+        elements.detailPanel.hidden = !detail || !state.revealed;
+        if (!detail) {
+            elements.detailBody.replaceChildren();
+            return;
+        }
+        elements.detailToggleWord.textContent = word.word;
+        elements.detailToggle.setAttribute("aria-expanded", String(state.detailOpen));
+        elements.detailBody.hidden = !state.detailOpen;
+        elements.detailBody.replaceChildren(buildDetailBody(detail));
+    }
+
+    function toggleDetailPanel() {
+        state.detailOpen = !state.detailOpen;
+        localStorage.setItem(DETAIL_OPEN_KEY, String(state.detailOpen));
+        elements.detailToggle.setAttribute("aria-expanded", String(state.detailOpen));
+        elements.detailBody.hidden = !state.detailOpen;
     }
 
     function renderWordImage(word) {
@@ -517,7 +644,14 @@
             chip.append(label, meaning, type);
             return chip;
         }));
-        elements.relatedBlock.hidden = related.length === 0;
+        const detail = detailFor(word);
+        elements.relatedBlock.hidden = related.length === 0 || Boolean(detail);
+        renderDetailPanel(word);
+        if (!state.detailCache.has(Number(word.globalLevel))) {
+            loadDetailLevel(word.globalLevel).then(() => {
+                if (currentWord() === word) renderStudyCard();
+            });
+        }
         elements.cardBadge.textContent = status === "known" ? "외웠어요" : status === "unknown" ? "다시 보기" : "새 단어";
         elements.cardBadge.className = `card-badge ${status === "unseen" ? "" : status}`.trim();
         updateRevealState();
@@ -1296,6 +1430,7 @@
         elements.backFromBandList.addEventListener("click", backFromBandList);
         elements.bandSearchInput.addEventListener("input", () => renderBandList(elements.bandSearchInput.value));
         elements.flashcard.addEventListener("click", toggleMeaning);
+        elements.detailToggle.addEventListener("click", toggleDetailPanel);
         elements.previousButton.addEventListener("click", () => moveCard(-1));
         elements.nextButton.addEventListener("click", () => moveCard(1));
         elements.unknownButton.addEventListener("click", () => markWord("unknown"));
