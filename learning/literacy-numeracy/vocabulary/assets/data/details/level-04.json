@@ -5760,6 +5760,1955 @@
      "en": "A happy dog."
     }
    ]
+  },
+  "1330": {
+   "word": "holiday",
+   "overview": [
+    "holiday는 '휴일', '공휴일'이라는 뜻의 명사입니다. 학교나 회사에 가지 않고 쉬는 날을 말합니다.",
+    "a national holiday(국경일), the Christmas holidays(크리스마스 연휴)처럼 씁니다.",
+    "영국에서는 '방학', '휴가'도 holiday라고 해서 go on holiday(휴가를 가다)처럼 씁니다. 미국에서는 이럴 때 vacation을 더 많이 씁니다.",
+    "a holiday mood(휴일 기분)처럼 다른 말 앞에서 '휴일의'라는 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "vacation",
+     "en": "Summer vacation.",
+     "ko": "여름 방학."
+    },
+    {
+     "word": "day off",
+     "en": "I have a day off.",
+     "ko": "나는 쉬는 날이야."
+    }
+   ],
+   "etymology": [
+    "holiday는 고대 영어 hāligdæg에서 온 단어로, holy(거룩한)와 day(날)가 합쳐진 말입니다.",
+    "처음에는 '종교적으로 거룩한 날', 곧 축일을 뜻했습니다.",
+    "축일에는 일을 쉬었기 때문에 점점 '쉬는 날'이라는 뜻이 되었습니다.",
+    "holy의 발음이 '할리'로 바뀌면서 철자도 holiday가 되었습니다.",
+    "holiday의 핵심 이미지는 '일과 공부를 멈추고 쉬는 즐거운 날 🎉'입니다."
+   ],
+   "meanings": [
+    "휴일, 공휴일, 명절",
+    "(영국) 방학, 휴가",
+    "휴일의 (형용사처럼)",
+    "휴가를 보내다 (동사, 영국)"
+   ],
+   "examples": [
+    {
+     "en": "Tomorrow is a holiday.",
+     "ko": "내일은 휴일이에요."
+    },
+    {
+     "en": "Christmas is my favorite holiday.",
+     "ko": "크리스마스는 내가 제일 좋아하는 명절이에요."
+    },
+    {
+     "en": "We went to the beach for the holidays.",
+     "ko": "우리는 연휴에 바닷가에 갔어요."
+    },
+    {
+     "en": "The school is closed for the holiday.",
+     "ko": "휴일이라 학교가 문을 닫았어요."
+    },
+    {
+     "en": "Happy holidays!",
+     "ko": "즐거운 연휴 보내세요!"
+    },
+    {
+     "en": "They are on holiday in Jeju.",
+     "ko": "그들은 제주도에서 휴가 중이에요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "vacation",
+     "ko": "방학, 휴가",
+     "en": "A long vacation."
+    },
+    {
+     "type": "연관어",
+     "word": "festival",
+     "ko": "축제",
+     "en": "A music festival."
+    },
+    {
+     "type": "연관어",
+     "word": "weekend",
+     "ko": "주말",
+     "en": "Have a nice weekend."
+    },
+    {
+     "type": "연관어",
+     "word": "rest",
+     "ko": "쉬다",
+     "en": "Take a rest."
+    },
+    {
+     "type": "연관어",
+     "word": "travel",
+     "ko": "여행하다",
+     "en": "Travel by train."
+    },
+    {
+     "type": "연관어",
+     "word": "holy",
+     "ko": "거룩한",
+     "en": "A holy place."
+    }
+   ]
+  },
+  "156": {
+   "word": "arrive",
+   "overview": [
+    "arrive는 '도착하다'라는 뜻의 동사입니다. 어디로 가다가 그곳에 닿는 것을 말합니다.",
+    "좁은 장소에는 arrive at(arrive at school, 학교에 도착하다), 도시나 나라 같은 넓은 곳에는 arrive in(arrive in Seoul, 서울에 도착하다)을 씁니다.",
+    "home, here, there 앞에는 전치사를 쓰지 않아서 arrive home(집에 도착하다)이라고 합니다.",
+    "명사는 arrival(도착)입니다."
+   ],
+   "easy": [
+    {
+     "word": "get to",
+     "en": "Get to school early.",
+     "ko": "학교에 일찍 도착해."
+    },
+    {
+     "word": "come",
+     "en": "Come here.",
+     "ko": "이리 와."
+    }
+   ],
+   "etymology": [
+    "arrive는 옛 프랑스어 ariver(물가에 닿다)에서 온 단어입니다.",
+    "라틴어 ad(~로)와 ripa(강가, 물가)가 합쳐진 말이 뿌리입니다.",
+    "배를 타고 가다가 '강가에 닿다'라는 뜻이었는데, 나중에 어디든 '도착하다'라는 뜻이 되었습니다.",
+    "river(강)도 ripa와 먼 친척인 단어입니다.",
+    "arrive의 핵심 이미지는 '긴 여행 끝에 목적지에 닿기 🚩'입니다."
+   ],
+   "meanings": [
+    "도착하다",
+    "(물건·편지 등이) 오다, 배달되다",
+    "(때가) 오다, 찾아오다"
+   ],
+   "examples": [
+    {
+     "en": "We arrived at the station at noon.",
+     "ko": "우리는 정오에 역에 도착했어요."
+    },
+    {
+     "en": "When did you arrive in Busan?",
+     "ko": "부산에는 언제 도착했어?"
+    },
+    {
+     "en": "The bus arrived late.",
+     "ko": "버스가 늦게 도착했어요."
+    },
+    {
+     "en": "Your package will arrive tomorrow.",
+     "ko": "택배는 내일 도착할 거예요."
+    },
+    {
+     "en": "Call me when you arrive home.",
+     "ko": "집에 도착하면 전화해."
+    },
+    {
+     "en": "Spring has arrived!",
+     "ko": "봄이 왔어요!"
+    }
+   ],
+   "together": [
+    {
+     "type": "반의어",
+     "word": "leave",
+     "ko": "떠나다",
+     "en": "Leave at seven."
+    },
+    {
+     "type": "반의어",
+     "word": "depart",
+     "ko": "출발하다",
+     "en": "The train departs soon."
+    },
+    {
+     "type": "파생어",
+     "word": "arrival",
+     "ko": "도착",
+     "en": "Arrival time."
+    },
+    {
+     "type": "유의어",
+     "word": "reach",
+     "ko": "~에 닿다",
+     "en": "Reach the top."
+    },
+    {
+     "type": "연관어",
+     "word": "late",
+     "ko": "늦은",
+     "en": "Don't be late."
+    },
+    {
+     "type": "연관어",
+     "word": "station",
+     "ko": "역",
+     "en": "A train station."
+    }
+   ]
+  },
+  "1025": {
+   "word": "fail",
+   "overview": [
+    "fail은 '실패하다', '(시험에) 떨어지다'라는 뜻의 동사입니다. 하려던 일을 이루지 못하는 것을 말합니다.",
+    "fail a test(시험에 떨어지다), fail to win(이기지 못하다)처럼 씁니다.",
+    "기계나 몸의 한 부분이 '제대로 작동하지 않다'라는 뜻도 있습니다. The brakes failed.(브레이크가 말을 안 들었어요.)",
+    "명사는 failure(실패)이고, 반대말은 pass(합격하다), succeed(성공하다)입니다."
+   ],
+   "easy": [
+    {
+     "word": "lose",
+     "en": "We lost the game.",
+     "ko": "우리는 경기에서 졌어요."
+    },
+    {
+     "word": "miss",
+     "en": "I missed the ball.",
+     "ko": "나는 공을 놓쳤어요."
+    }
+   ],
+   "etymology": [
+    "fail은 옛 프랑스어 faillir(모자라다, 실수하다)에서 온 단어입니다.",
+    "뿌리는 라틴어 fallere(속이다, 실망시키다)입니다.",
+    "false(거짓의), fault(잘못)도 fallere에서 나온 같은 가족입니다.",
+    "'기대를 저버리다'라는 뜻이 '해내지 못하다', '실패하다'로 이어졌습니다.",
+    "fail의 핵심 이미지는 '목표에 한 뼘 모자라 닿지 못하기 ❌'입니다."
+   ],
+   "meanings": [
+    "실패하다, ~하지 못하다",
+    "(시험에) 떨어지다, 낙제하다",
+    "(기계·몸 등이) 고장 나다, 약해지다",
+    "(기대를) 저버리다"
+   ],
+   "examples": [
+    {
+     "en": "Don't be afraid to fail.",
+     "ko": "실패하는 걸 두려워하지 마."
+    },
+    {
+     "en": "He failed the driving test.",
+     "ko": "그는 운전 시험에 떨어졌어요."
+    },
+    {
+     "en": "I tried, but I failed.",
+     "ko": "해 봤지만 실패했어요."
+    },
+    {
+     "en": "The plan failed.",
+     "ko": "그 계획은 실패했어요."
+    },
+    {
+     "en": "She never fails to say thank you.",
+     "ko": "그 애는 고맙다는 말을 꼭 해요."
+    },
+    {
+     "en": "The power failed during the storm.",
+     "ko": "폭풍우 때 전기가 나갔어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "반의어",
+     "word": "pass",
+     "ko": "합격하다",
+     "en": "Pass the exam."
+    },
+    {
+     "type": "반의어",
+     "word": "succeed",
+     "ko": "성공하다",
+     "en": "Try and succeed."
+    },
+    {
+     "type": "파생어",
+     "word": "failure",
+     "ko": "실패",
+     "en": "Learn from failure."
+    },
+    {
+     "type": "연관어",
+     "word": "try",
+     "ko": "시도하다",
+     "en": "Try again."
+    },
+    {
+     "type": "연관어",
+     "word": "test",
+     "ko": "시험",
+     "en": "A math test."
+    },
+    {
+     "type": "연관어",
+     "word": "mistake",
+     "ko": "실수",
+     "en": "A small mistake."
+    }
+   ]
+  },
+  "1105": {
+   "word": "flower",
+   "overview": [
+    "flower는 '꽃'이라는 뜻의 명사입니다. 식물에서 피어나는 알록달록하고 향기로운 부분입니다.",
+    "a red flower(빨간 꽃), pick flowers(꽃을 꺾다), water the flowers(꽃에 물을 주다)처럼 씁니다.",
+    "'꽃이 피다'라는 동사로도 씁니다. The roses flowered in May.(장미가 5월에 피었어요.)",
+    "나무에 피는 꽃, 특히 과일나무의 꽃은 blossom이라고도 합니다."
+   ],
+   "easy": [
+    {
+     "word": "plant",
+     "en": "Water the plant.",
+     "ko": "식물에 물을 줘."
+    },
+    {
+     "word": "rose",
+     "en": "A red rose.",
+     "ko": "빨간 장미."
+    }
+   ],
+   "etymology": [
+    "flower는 옛 프랑스어 flour(꽃)에서 온 단어입니다.",
+    "뿌리는 라틴어 flos, floris(꽃)입니다.",
+    "밀가루를 뜻하는 flour도 원래 같은 단어로, '곡식 가루 중 가장 좋은 부분(꽃)'이라는 뜻이었습니다.",
+    "florist(꽃집 주인)도 floris에서 나온 말입니다.",
+    "flower의 핵심 이미지는 '활짝 피어난 예쁜 꽃 🌸'입니다."
+   ],
+   "meanings": [
+    "꽃",
+    "화초, 꽃이 피는 식물",
+    "꽃이 피다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "These flowers smell sweet.",
+     "ko": "이 꽃들은 향기가 좋아요."
+    },
+    {
+     "en": "I gave my mom some flowers.",
+     "ko": "나는 엄마께 꽃을 드렸어요."
+    },
+    {
+     "en": "Don't pick the flowers in the park.",
+     "ko": "공원에 있는 꽃을 꺾지 마."
+    },
+    {
+     "en": "Bees love flowers.",
+     "ko": "벌은 꽃을 좋아해요."
+    },
+    {
+     "en": "Grandpa waters the flowers every morning.",
+     "ko": "할아버지는 매일 아침 꽃에 물을 주세요."
+    },
+    {
+     "en": "What's your favorite flower?",
+     "ko": "제일 좋아하는 꽃이 뭐야?"
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "blossom",
+     "ko": "(나무의) 꽃",
+     "en": "Cherry blossoms."
+    },
+    {
+     "type": "연관어",
+     "word": "rose",
+     "ko": "장미",
+     "en": "A white rose."
+    },
+    {
+     "type": "연관어",
+     "word": "garden",
+     "ko": "정원",
+     "en": "A flower garden."
+    },
+    {
+     "type": "연관어",
+     "word": "bee",
+     "ko": "벌",
+     "en": "A busy bee."
+    },
+    {
+     "type": "연관어",
+     "word": "bloom",
+     "ko": "꽃이 피다",
+     "en": "Flowers bloom in spring."
+    },
+    {
+     "type": "연관어",
+     "word": "leaf",
+     "ko": "잎",
+     "en": "A green leaf."
+    }
+   ]
+  },
+  "899": {
+   "word": "egg",
+   "overview": [
+    "egg는 '알', '달걀'이라는 뜻의 명사입니다. 닭이나 새, 물고기 등이 낳는 동그란 알입니다.",
+    "a boiled egg(삶은 달걀), a fried egg(달걀 프라이), lay an egg(알을 낳다)처럼 씁니다.",
+    "egg는 모음 e로 시작해서 a가 아니라 an을 붙여 an egg라고 합니다.",
+    "egg on은 '부추기다'라는 뜻의 동사 표현으로, 원래 egg와는 다른 말에서 왔습니다."
+   ],
+   "easy": [
+    {
+     "word": "chicken",
+     "en": "A little chicken.",
+     "ko": "작은 병아리."
+    },
+    {
+     "word": "bird",
+     "en": "A bird's nest.",
+     "ko": "새 둥지."
+    }
+   ],
+   "etymology": [
+    "egg는 옛 노르드어(바이킹의 말) egg에서 온 단어입니다.",
+    "고대 영어에서는 달걀을 ǣg(에이)라고 불렀습니다.",
+    "바이킹이 영국에 살면서 그들의 말 egg가 퍼졌고, 결국 옛 말을 밀어냈습니다.",
+    "독일어 Ei(알)도 같은 뿌리에서 나온 말입니다.",
+    "egg의 핵심 이미지는 '새 생명이 들어 있는 둥근 알 🥚'입니다."
+   ],
+   "meanings": [
+    "달걀",
+    "(새·물고기·곤충 등의) 알",
+    "난자"
+   ],
+   "examples": [
+    {
+     "en": "I had eggs for breakfast.",
+     "ko": "나는 아침으로 달걀을 먹었어요."
+    },
+    {
+     "en": "The hen laid an egg.",
+     "ko": "암탉이 알을 낳았어요."
+    },
+    {
+     "en": "Can you boil an egg?",
+     "ko": "달걀 삶을 줄 알아?"
+    },
+    {
+     "en": "Be careful. Eggs break easily.",
+     "ko": "조심해. 달걀은 잘 깨져."
+    },
+    {
+     "en": "The baby bird came out of the egg.",
+     "ko": "아기 새가 알에서 나왔어요."
+    },
+    {
+     "en": "Mom made egg sandwiches.",
+     "ko": "엄마가 달걀 샌드위치를 만드셨어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "hen",
+     "ko": "암탉",
+     "en": "A hen and her chicks."
+    },
+    {
+     "type": "연관어",
+     "word": "nest",
+     "ko": "둥지",
+     "en": "A nest in the tree."
+    },
+    {
+     "type": "연관어",
+     "word": "shell",
+     "ko": "껍데기",
+     "en": "An eggshell."
+    },
+    {
+     "type": "연관어",
+     "word": "yolk",
+     "ko": "노른자",
+     "en": "A yellow yolk."
+    },
+    {
+     "type": "연관어",
+     "word": "boil",
+     "ko": "삶다",
+     "en": "Boil the eggs."
+    },
+    {
+     "type": "연관어",
+     "word": "lay",
+     "ko": "(알을) 낳다",
+     "en": "Birds lay eggs."
+    }
+   ]
+  },
+  "320": {
+   "word": "borrow",
+   "overview": [
+    "borrow는 '빌리다'라는 뜻의 동사입니다. 남의 물건을 잠깐 쓰고 돌려주는 것을 말합니다.",
+    "borrow a pen from a friend(친구에게서 펜을 빌리다)처럼 '누구에게서'는 from을 씁니다.",
+    "Can I borrow your eraser?(지우개 좀 빌려도 돼?)처럼 부탁할 때 자주 씁니다.",
+    "반대로 '빌려주다'는 lend입니다. 내가 가져오면 borrow, 내가 주면 lend라고 기억하세요."
+   ],
+   "easy": [
+    {
+     "word": "use",
+     "en": "Can I use it?",
+     "ko": "그거 써도 돼?"
+    },
+    {
+     "word": "take",
+     "en": "Take one.",
+     "ko": "하나 가져가."
+    }
+   ],
+   "etymology": [
+    "borrow는 고대 영어 borgian(빌리다, 담보를 잡다)에서 온 단어입니다.",
+    "borg는 '약속', '담보'라는 뜻이었습니다.",
+    "'꼭 돌려주겠다고 약속하고 가져가다'라는 뜻에서 '빌리다'가 되었습니다.",
+    "영어가 다른 나라 말에서 가져온 단어를 borrowed word(차용어)라고 부르기도 합니다.",
+    "borrow의 핵심 이미지는 '돌려주기로 약속하고 잠깐 가져오기 🤝'입니다."
+   ],
+   "meanings": [
+    "빌리다",
+    "(돈을) 꾸다",
+    "(말·생각 등을) 빌려 오다, 따오다"
+   ],
+   "examples": [
+    {
+     "en": "Can I borrow your pencil?",
+     "ko": "연필 좀 빌려도 돼?"
+    },
+    {
+     "en": "I borrowed three books from the library.",
+     "ko": "나는 도서관에서 책 세 권을 빌렸어요."
+    },
+    {
+     "en": "She borrowed some money from her sister.",
+     "ko": "그 애는 언니한테 돈을 좀 꿨어요."
+    },
+    {
+     "en": "You can borrow my umbrella.",
+     "ko": "내 우산 빌려 가도 돼."
+    },
+    {
+     "en": "Don't forget to return what you borrow.",
+     "ko": "빌린 건 잊지 말고 돌려줘."
+    },
+    {
+     "en": "The word \"pizza\" is borrowed from Italian.",
+     "ko": "pizza라는 단어는 이탈리아어에서 빌려 왔어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "반의어",
+     "word": "lend",
+     "ko": "빌려주다",
+     "en": "Lend me a pen."
+    },
+    {
+     "type": "연관어",
+     "word": "return",
+     "ko": "돌려주다",
+     "en": "Return the book."
+    },
+    {
+     "type": "연관어",
+     "word": "library",
+     "ko": "도서관",
+     "en": "Go to the library."
+    },
+    {
+     "type": "연관어",
+     "word": "share",
+     "ko": "나누다, 같이 쓰다",
+     "en": "Share your toys."
+    },
+    {
+     "type": "파생어",
+     "word": "borrower",
+     "ko": "빌리는 사람",
+     "en": "A book borrower."
+    },
+    {
+     "type": "연관어",
+     "word": "owe",
+     "ko": "빚지다",
+     "en": "I owe you one."
+    }
+   ]
+  },
+  "1451": {
+   "word": "internet",
+   "overview": [
+    "internet은 '인터넷'이라는 뜻의 명사입니다. 전 세계 컴퓨터와 휴대폰을 이어 주는 거대한 통신망입니다.",
+    "보통 the를 붙여 the internet이라고 하고, on the internet(인터넷에서), use the internet(인터넷을 쓰다)처럼 씁니다.",
+    "예전에는 Internet처럼 대문자로 많이 썼지만, 요즘은 소문자로도 많이 씁니다.",
+    "'인터넷에서 찾아보다'는 look it up online, search the internet이라고 합니다."
+   ],
+   "easy": [
+    {
+     "word": "online",
+     "en": "Play online.",
+     "ko": "온라인으로 놀아."
+    },
+    {
+     "word": "computer",
+     "en": "Use the computer.",
+     "ko": "컴퓨터를 써."
+    }
+   ],
+   "etymology": [
+    "internet은 inter(서로, 사이에)와 net(그물, 망)이 합쳐진 말입니다.",
+    "여러 개의 컴퓨터 통신망을 '서로 이어 준 망'이라는 뜻입니다.",
+    "1970년대에 컴퓨터 연구자들이 만든 새 단어입니다.",
+    "international(국제적인)의 inter도 '사이'라는 같은 뜻입니다.",
+    "internet의 핵심 이미지는 '온 세상을 잇는 거대한 그물 🌐'입니다."
+   ],
+   "meanings": [
+    "인터넷",
+    "인터넷 서비스, 인터넷 연결"
+   ],
+   "examples": [
+    {
+     "en": "I found the answer on the internet.",
+     "ko": "나는 인터넷에서 답을 찾았어요."
+    },
+    {
+     "en": "The internet is not working.",
+     "ko": "인터넷이 안 돼요."
+    },
+    {
+     "en": "Don't spend too much time on the internet.",
+     "ko": "인터넷에 너무 오래 있지 마."
+    },
+    {
+     "en": "We can watch videos on the internet.",
+     "ko": "우리는 인터넷으로 영상을 볼 수 있어요."
+    },
+    {
+     "en": "Be careful what you share on the internet.",
+     "ko": "인터넷에 무엇을 올리는지 조심해."
+    },
+    {
+     "en": "Does this hotel have internet?",
+     "ko": "이 호텔은 인터넷 되나요?"
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "online",
+     "ko": "온라인의",
+     "en": "An online game."
+    },
+    {
+     "type": "연관어",
+     "word": "website",
+     "ko": "웹사이트",
+     "en": "Visit our website."
+    },
+    {
+     "type": "연관어",
+     "word": "search",
+     "ko": "검색하다",
+     "en": "Search for pictures."
+    },
+    {
+     "type": "연관어",
+     "word": "computer",
+     "ko": "컴퓨터",
+     "en": "Turn off the computer."
+    },
+    {
+     "type": "연관어",
+     "word": "email",
+     "ko": "이메일",
+     "en": "Send an email."
+    },
+    {
+     "type": "연관어",
+     "word": "net",
+     "ko": "그물, 망",
+     "en": "A fishing net."
+    }
+   ]
+  },
+  "660": {
+   "word": "cow",
+   "overview": [
+    "cow는 '암소', '젖소'라는 뜻의 명사입니다. 우유를 주는 큰 동물입니다.",
+    "엄밀히 말하면 cow는 다 자란 암소이고, 수소는 bull, 송아지는 calf라고 합니다.",
+    "하지만 일상에서는 소를 두루 cow라고 부르는 경우가 많습니다.",
+    "소고기는 cow가 아니라 beef라고 합니다. 여러 마리 소는 cows 또는 cattle이라고 합니다."
+   ],
+   "easy": [
+    {
+     "word": "animal",
+     "en": "A farm animal.",
+     "ko": "농장 동물."
+    },
+    {
+     "word": "milk",
+     "en": "Fresh milk.",
+     "ko": "신선한 우유."
+    }
+   ],
+   "etymology": [
+    "cow는 고대 영어 cū(암소)에서 온 단어입니다.",
+    "아주 옛날부터 '소'를 뜻하던 오래된 뿌리 말에서 나왔습니다.",
+    "독일어 Kuh(소)도 같은 뿌리입니다.",
+    "cowboy(카우보이)는 '소를 돌보는 사람'이라는 뜻으로, 소 떼를 몰던 사람들을 부르던 말입니다.",
+    "cow의 핵심 이미지는 '음매 하고 우는 얼룩 젖소 🐄'입니다."
+   ],
+   "meanings": [
+    "암소, 젖소",
+    "(일반적으로) 소",
+    "(코끼리·고래 등 큰 동물의) 암컷"
+   ],
+   "examples": [
+    {
+     "en": "Cows give us milk.",
+     "ko": "소는 우리에게 우유를 줘요."
+    },
+    {
+     "en": "The cow is eating grass.",
+     "ko": "소가 풀을 먹고 있어요."
+    },
+    {
+     "en": "There are ten cows on the farm.",
+     "ko": "농장에 소가 열 마리 있어요."
+    },
+    {
+     "en": "Cows say \"moo.\"",
+     "ko": "소는 '음매' 하고 울어요."
+    },
+    {
+     "en": "The farmer milks the cows every morning.",
+     "ko": "농부는 매일 아침 소젖을 짜요."
+    },
+    {
+     "en": "That cow has black and white spots.",
+     "ko": "저 소는 검은 점과 흰 점이 있어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "bull",
+     "ko": "수소",
+     "en": "A strong bull."
+    },
+    {
+     "type": "연관어",
+     "word": "calf",
+     "ko": "송아지",
+     "en": "A baby calf."
+    },
+    {
+     "type": "연관어",
+     "word": "beef",
+     "ko": "소고기",
+     "en": "Beef soup."
+    },
+    {
+     "type": "연관어",
+     "word": "milk",
+     "ko": "우유",
+     "en": "Drink your milk."
+    },
+    {
+     "type": "연관어",
+     "word": "farm",
+     "ko": "농장",
+     "en": "Life on a farm."
+    },
+    {
+     "type": "파생어",
+     "word": "cowboy",
+     "ko": "카우보이",
+     "en": "A cowboy hat."
+    }
+   ]
+  },
+  "1218": {
+   "word": "goal",
+   "overview": [
+    "goal은 '목표'라는 뜻의 명사입니다. 이루고 싶은 일이나 가고 싶은 곳을 말합니다.",
+    "set a goal(목표를 세우다), reach a goal(목표를 이루다)처럼 씁니다.",
+    "축구나 하키에서는 '골대'와 '골(득점)'을 뜻해서 score a goal(골을 넣다)이라고 합니다.",
+    "골문을 지키는 선수는 goalkeeper(골키퍼)입니다."
+   ],
+   "easy": [
+    {
+     "word": "aim",
+     "en": "My aim is to win.",
+     "ko": "내 목표는 이기는 거야."
+    },
+    {
+     "word": "dream",
+     "en": "Follow your dream.",
+     "ko": "꿈을 따라가."
+    }
+   ],
+   "etymology": [
+    "goal은 1500년대쯤부터 쓰인 말로, 뿌리가 확실하지 않습니다.",
+    "처음에는 달리기 경주의 '결승점', '끝 지점'을 뜻했습니다.",
+    "'경계', '끝'을 뜻하던 옛 영어 gal에서 왔다는 설이 있습니다.",
+    "결승점이 '이루고 싶은 목표'로, 또 공을 넣는 '골대'로 뜻이 넓어졌습니다.",
+    "goal의 핵심 이미지는 '달려가서 닿고 싶은 끝 지점 🥅'입니다."
+   ],
+   "meanings": [
+    "목표, 목적",
+    "(축구 등의) 골대, 골문",
+    "(득점) 골",
+    "결승점, 도착 지점"
+   ],
+   "examples": [
+    {
+     "en": "My goal is to read 50 books this year.",
+     "ko": "내 목표는 올해 책 50권을 읽는 거예요."
+    },
+    {
+     "en": "He scored a goal!",
+     "ko": "그가 골을 넣었어요!"
+    },
+    {
+     "en": "We won by two goals.",
+     "ko": "우리는 두 골 차이로 이겼어요."
+    },
+    {
+     "en": "Set a small goal every day.",
+     "ko": "매일 작은 목표를 세워 봐."
+    },
+    {
+     "en": "The ball went into the goal.",
+     "ko": "공이 골대 안으로 들어갔어요."
+    },
+    {
+     "en": "She worked hard to reach her goal.",
+     "ko": "그 애는 목표를 이루려고 열심히 노력했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "aim",
+     "ko": "목표",
+     "en": "Take aim."
+    },
+    {
+     "type": "유의어",
+     "word": "target",
+     "ko": "목표, 과녁",
+     "en": "Hit the target."
+    },
+    {
+     "type": "파생어",
+     "word": "goalkeeper",
+     "ko": "골키퍼",
+     "en": "A great goalkeeper."
+    },
+    {
+     "type": "연관어",
+     "word": "score",
+     "ko": "득점하다",
+     "en": "Score a point."
+    },
+    {
+     "type": "연관어",
+     "word": "soccer",
+     "ko": "축구",
+     "en": "Play soccer."
+    },
+    {
+     "type": "연관어",
+     "word": "dream",
+     "ko": "꿈",
+     "en": "My dream came true."
+    }
+   ]
+  },
+  "2317": {
+   "word": "score",
+   "overview": [
+    "score는 '점수', '득점'이라는 뜻의 명사이자 '점수를 따다'라는 뜻의 동사입니다.",
+    "What's the score?(몇 대 몇이야?), a high score(높은 점수)처럼 명사로 씁니다.",
+    "score a goal(골을 넣다), score 90 on a test(시험에서 90점을 받다)처럼 동사로도 씁니다.",
+    "음악에서는 '악보'라는 뜻도 있습니다."
+   ],
+   "easy": [
+    {
+     "word": "point",
+     "en": "One point.",
+     "ko": "1점."
+    },
+    {
+     "word": "grade",
+     "en": "A good grade.",
+     "ko": "좋은 성적."
+    }
+   ],
+   "etymology": [
+    "score는 옛 노르드어(바이킹의 말) skor(금, 새김 자국)에서 온 단어입니다.",
+    "옛날에는 막대기에 칼로 금을 그어 숫자를 셌습니다.",
+    "특히 20개마다 큰 금을 그어서 score가 '20'이라는 뜻도 가지게 되었습니다.",
+    "금을 그어 '세다'가 경기의 '점수를 매기다'로 이어졌습니다.",
+    "score의 핵심 이미지는 '하나씩 금을 그어 세는 점수판 🔢'입니다."
+   ],
+   "meanings": [
+    "(경기의) 점수, 스코어 (명사)",
+    "(시험의) 점수, 성적 (명사)",
+    "득점하다, 점수를 따다 (동사)",
+    "악보 (명사)",
+    "20, 스물 (옛말)"
+   ],
+   "examples": [
+    {
+     "en": "The final score was 3 to 1.",
+     "ko": "최종 점수는 3 대 1이었어요."
+    },
+    {
+     "en": "I got a perfect score on the quiz.",
+     "ko": "나는 쪽지 시험에서 만점을 받았어요."
+    },
+    {
+     "en": "She scored two goals in the game.",
+     "ko": "그 아이는 경기에서 두 골을 넣었어요."
+    },
+    {
+     "en": "What's the score now?",
+     "ko": "지금 몇 대 몇이야?"
+    },
+    {
+     "en": "Who keeps score?",
+     "ko": "누가 점수를 기록해?"
+    },
+    {
+     "en": "My score is higher than last time.",
+     "ko": "내 점수가 지난번보다 높아요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "point",
+     "ko": "점수, 점",
+     "en": "Win by one point."
+    },
+    {
+     "type": "연관어",
+     "word": "goal",
+     "ko": "골, 득점",
+     "en": "Score a goal."
+    },
+    {
+     "type": "연관어",
+     "word": "test",
+     "ko": "시험",
+     "en": "An English test."
+    },
+    {
+     "type": "연관어",
+     "word": "win",
+     "ko": "이기다",
+     "en": "Win the game."
+    },
+    {
+     "type": "파생어",
+     "word": "scoreboard",
+     "ko": "점수판",
+     "en": "Look at the scoreboard."
+    },
+    {
+     "type": "연관어",
+     "word": "record",
+     "ko": "기록",
+     "en": "A new record."
+    }
+   ]
+  },
+  "2807": {
+   "word": "twenty",
+   "overview": [
+    "twenty는 숫자 '20', '스물'이라는 뜻입니다.",
+    "twenty students(학생 스무 명), twenty dollars(20달러)처럼 씁니다.",
+    "21부터는 twenty-one, twenty-two처럼 하이픈(-)으로 이어서 씁니다.",
+    "'스무 번째'는 twentieth이고, 1920년대 같은 '20년대'는 the twenties라고 합니다."
+   ],
+   "easy": [
+    {
+     "word": "ten",
+     "en": "Ten fingers.",
+     "ko": "손가락 열 개."
+    },
+    {
+     "word": "two",
+     "en": "Two eyes.",
+     "ko": "눈 두 개."
+    }
+   ],
+   "etymology": [
+    "twenty는 고대 영어 twentig에서 온 단어입니다.",
+    "twen(둘)과 tig(열 묶음)가 합쳐져 '열이 두 개'라는 뜻입니다.",
+    "thirty(30), forty(40)의 -ty도 모두 '열 묶음'이라는 뜻입니다.",
+    "thirteen처럼 -teen으로 끝나는 말과 헷갈리지 않도록 -ty 부분을 또렷하게 읽어야 합니다.",
+    "twenty의 핵심 이미지는 '열 손가락 두 번, 스물 🔟🔟'입니다."
+   ],
+   "meanings": [
+    "20, 스물",
+    "스무 개, 스무 명",
+    "20대, 20년대 (the twenties)"
+   ],
+   "examples": [
+    {
+     "en": "There are twenty kids in my class.",
+     "ko": "우리 반에는 아이들이 스무 명 있어요."
+    },
+    {
+     "en": "Ten plus ten is twenty.",
+     "ko": "10 더하기 10은 20이에요."
+    },
+    {
+     "en": "It costs twenty dollars.",
+     "ko": "그건 20달러예요."
+    },
+    {
+     "en": "I'll be back in twenty minutes.",
+     "ko": "20분 뒤에 돌아올게."
+    },
+    {
+     "en": "My aunt is in her twenties.",
+     "ko": "우리 이모는 20대예요."
+    },
+    {
+     "en": "Count from one to twenty.",
+     "ko": "1부터 20까지 세어 봐."
+    }
+   ],
+   "together": [
+    {
+     "type": "파생어",
+     "word": "twentieth",
+     "ko": "스무 번째",
+     "en": "The twentieth day."
+    },
+    {
+     "type": "연관어",
+     "word": "twenty-one",
+     "ko": "21",
+     "en": "Twenty-one candles."
+    },
+    {
+     "type": "연관어",
+     "word": "ten",
+     "ko": "10",
+     "en": "Ten apples."
+    },
+    {
+     "type": "연관어",
+     "word": "thirty",
+     "ko": "30",
+     "en": "Thirty days."
+    },
+    {
+     "type": "연관어",
+     "word": "twelve",
+     "ko": "12",
+     "en": "Twelve months."
+    },
+    {
+     "type": "연관어",
+     "word": "number",
+     "ko": "숫자",
+     "en": "Pick a number."
+    }
+   ]
+  },
+  "1961": {
+   "word": "pilot",
+   "overview": [
+    "pilot은 '조종사', '비행사'라는 뜻의 명사입니다. 비행기나 헬리콥터를 운전하는 사람입니다.",
+    "a pilot of a plane(비행기 조종사), want to be a pilot(조종사가 되고 싶다)처럼 씁니다.",
+    "동사로는 '(비행기를) 조종하다', '(배를) 안내하다'라는 뜻입니다.",
+    "a pilot program(시범 프로그램)처럼 '미리 해 보는', '시험적인'이라는 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "driver",
+     "en": "A bus driver.",
+     "ko": "버스 기사."
+    },
+    {
+     "word": "plane",
+     "en": "A big plane.",
+     "ko": "큰 비행기."
+    }
+   ],
+   "etymology": [
+    "pilot은 프랑스어 pilote를 거쳐 이탈리아어 pilota에서 온 단어입니다.",
+    "처음에는 항구에서 큰 배를 안전하게 안내하는 '뱃길 안내인'을 뜻했습니다.",
+    "비행기가 발명되자 비행기를 모는 사람도 pilot이라고 부르게 되었습니다.",
+    "autopilot(자동 조종 장치)은 '스스로 조종하는 장치'라는 뜻입니다.",
+    "pilot의 핵심 이미지는 '조종석에서 하늘길을 이끄는 사람 👨‍✈️'입니다."
+   ],
+   "meanings": [
+    "(비행기) 조종사 (명사)",
+    "(배의) 수로 안내인 (명사)",
+    "조종하다, 안내하다 (동사)",
+    "시험적인, 시범의 (형용사처럼)"
+   ],
+   "examples": [
+    {
+     "en": "My uncle is a pilot.",
+     "ko": "우리 삼촌은 비행기 조종사예요."
+    },
+    {
+     "en": "I want to be a pilot someday.",
+     "ko": "나는 언젠가 조종사가 되고 싶어요."
+    },
+    {
+     "en": "The pilot landed the plane safely.",
+     "ko": "조종사가 비행기를 안전하게 착륙시켰어요."
+    },
+    {
+     "en": "The pilot spoke to the passengers.",
+     "ko": "조종사가 승객들에게 안내 방송을 했어요."
+    },
+    {
+     "en": "She piloted the helicopter.",
+     "ko": "그녀가 헬리콥터를 조종했어요."
+    },
+    {
+     "en": "Our school started a pilot program.",
+     "ko": "우리 학교는 시범 프로그램을 시작했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "plane",
+     "ko": "비행기",
+     "en": "Get on the plane."
+    },
+    {
+     "type": "연관어",
+     "word": "airport",
+     "ko": "공항",
+     "en": "Go to the airport."
+    },
+    {
+     "type": "연관어",
+     "word": "fly",
+     "ko": "날다, 비행하다",
+     "en": "Fly high."
+    },
+    {
+     "type": "연관어",
+     "word": "captain",
+     "ko": "기장, 선장",
+     "en": "The captain said hello."
+    },
+    {
+     "type": "파생어",
+     "word": "autopilot",
+     "ko": "자동 조종 장치",
+     "en": "Turn on autopilot."
+    },
+    {
+     "type": "연관어",
+     "word": "passenger",
+     "ko": "승객",
+     "en": "Many passengers."
+    }
+   ]
+  },
+  "2291": {
+   "word": "sale",
+   "overview": [
+    "sale은 '판매'라는 뜻의 명사입니다. 물건을 파는 일을 말합니다.",
+    "for sale은 '팔려고 내놓은', on sale은 '할인 중인'이라는 뜻이라서 조금 다릅니다.",
+    "a big sale(대할인 행사), a garage sale(차고 앞 중고 물건 판매)처럼 '할인 판매 행사'라는 뜻도 있습니다.",
+    "동사는 sell(팔다)이고, sales(판매량, 매출)처럼 복수로도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "sell",
+     "en": "Sell old toys.",
+     "ko": "오래된 장난감을 팔아."
+    },
+    {
+     "word": "cheap",
+     "en": "It's cheap.",
+     "ko": "그거 싸."
+    }
+   ],
+   "etymology": [
+    "sale은 고대 영어 sala(팔기)에서 온 단어입니다.",
+    "옛 노르드어 sala(판매)의 영향을 받았다고 봅니다.",
+    "sell(팔다)과 같은 뿌리를 가진 말입니다.",
+    "salesperson(판매원)은 sale에서 나온 말입니다.",
+    "sale의 핵심 이미지는 '가격표에 빨간 줄 긋고 파는 날 🏷️'입니다."
+   ],
+   "meanings": [
+    "판매, 팔기",
+    "할인 판매, 세일",
+    "판매량, 매출 (sales)"
+   ],
+   "examples": [
+    {
+     "en": "This house is for sale.",
+     "ko": "이 집은 팔려고 내놓은 집이에요."
+    },
+    {
+     "en": "These shoes are on sale.",
+     "ko": "이 신발은 할인 중이에요."
+    },
+    {
+     "en": "The store is having a big sale.",
+     "ko": "그 가게는 대할인 행사를 하고 있어요."
+    },
+    {
+     "en": "We bought a bike at a garage sale.",
+     "ko": "우리는 중고 물건 판매에서 자전거를 샀어요."
+    },
+    {
+     "en": "The sale ends on Sunday.",
+     "ko": "세일은 일요일에 끝나요."
+    },
+    {
+     "en": "Sales of ice cream go up in summer.",
+     "ko": "여름에는 아이스크림 판매량이 늘어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "sell",
+     "ko": "팔다",
+     "en": "Sell lemonade."
+    },
+    {
+     "type": "연관어",
+     "word": "buy",
+     "ko": "사다",
+     "en": "Buy a new bag."
+    },
+    {
+     "type": "연관어",
+     "word": "discount",
+     "ko": "할인",
+     "en": "A 10% discount."
+    },
+    {
+     "type": "연관어",
+     "word": "price",
+     "ko": "가격",
+     "en": "A low price."
+    },
+    {
+     "type": "파생어",
+     "word": "salesperson",
+     "ko": "판매원",
+     "en": "A kind salesperson."
+    },
+    {
+     "type": "연관어",
+     "word": "store",
+     "ko": "가게",
+     "en": "A toy store."
+    }
+   ]
+  },
+  "1489": {
+   "word": "juice",
+   "overview": [
+    "juice는 '주스', '즙'이라는 뜻의 명사입니다. 과일이나 채소를 짜서 만든 음료입니다.",
+    "orange juice(오렌지 주스), a glass of juice(주스 한 잔)처럼 씁니다. 보통 셀 수 없습니다.",
+    "고기를 구울 때 나오는 '육즙'도 juice라고 합니다.",
+    "형용사 juicy는 '즙이 많은', '촉촉한'이라는 뜻입니다."
+   ],
+   "easy": [
+    {
+     "word": "drink",
+     "en": "A cold drink.",
+     "ko": "시원한 음료."
+    },
+    {
+     "word": "fruit",
+     "en": "Fresh fruit.",
+     "ko": "신선한 과일."
+    }
+   ],
+   "etymology": [
+    "juice는 옛 프랑스어 jus(즙, 국물)에서 온 단어입니다.",
+    "뿌리는 라틴어 jus(국물, 수프)입니다.",
+    "처음에는 식물이나 고기에서 나오는 '즙'을 뜻했습니다.",
+    "그러다가 과일을 짜서 만든 '주스'라는 뜻으로 가장 많이 쓰이게 되었습니다.",
+    "juice의 핵심 이미지는 '과일을 꾹 짜서 나온 달콤한 즙 🧃'입니다."
+   ],
+   "meanings": [
+    "주스",
+    "(과일·채소의) 즙",
+    "(고기의) 육즙"
+   ],
+   "examples": [
+    {
+     "en": "I'd like some apple juice, please.",
+     "ko": "사과 주스 주세요."
+    },
+    {
+     "en": "Mom made fresh orange juice.",
+     "ko": "엄마가 신선한 오렌지 주스를 만드셨어요."
+    },
+    {
+     "en": "Don't spill your juice.",
+     "ko": "주스 흘리지 마."
+    },
+    {
+     "en": "This peach is full of juice.",
+     "ko": "이 복숭아는 즙이 가득해요."
+    },
+    {
+     "en": "Squeeze the juice from the lemon.",
+     "ko": "레몬즙을 짜."
+    },
+    {
+     "en": "Can I have a glass of juice?",
+     "ko": "주스 한 잔 마셔도 돼요?"
+    }
+   ],
+   "together": [
+    {
+     "type": "파생어",
+     "word": "juicy",
+     "ko": "즙이 많은",
+     "en": "A juicy apple."
+    },
+    {
+     "type": "연관어",
+     "word": "orange",
+     "ko": "오렌지",
+     "en": "Peel an orange."
+    },
+    {
+     "type": "연관어",
+     "word": "squeeze",
+     "ko": "짜다",
+     "en": "Squeeze a lemon."
+    },
+    {
+     "type": "연관어",
+     "word": "glass",
+     "ko": "유리잔",
+     "en": "A glass of water."
+    },
+    {
+     "type": "연관어",
+     "word": "fruit",
+     "ko": "과일",
+     "en": "Eat more fruit."
+    },
+    {
+     "type": "연관어",
+     "word": "drink",
+     "ko": "마시다, 음료",
+     "en": "Drink some water."
+    }
+   ]
+  },
+  "1157": {
+   "word": "fruit",
+   "overview": [
+    "fruit는 '과일', '열매'라는 뜻의 명사입니다. 사과, 바나나, 포도처럼 식물에 열리는 달콤한 먹을거리입니다.",
+    "과일을 통틀어 말할 때는 셀 수 없어서 I eat a lot of fruit.처럼 씁니다.",
+    "여러 종류의 과일을 말할 때는 fruits처럼 복수로도 씁니다.",
+    "'노력의 결실'처럼 좋은 결과를 비유적으로 fruit라고 하기도 합니다."
+   ],
+   "easy": [
+    {
+     "word": "apple",
+     "en": "A red apple.",
+     "ko": "빨간 사과."
+    },
+    {
+     "word": "berry",
+     "en": "Sweet berries.",
+     "ko": "달콤한 산딸기."
+    }
+   ],
+   "etymology": [
+    "fruit는 옛 프랑스어 fruit를 거쳐 라틴어 fructus(열매, 즐김)에서 온 단어입니다.",
+    "fructus는 frui(즐기다, 누리다)에서 나온 말입니다.",
+    "'땅에서 얻어 즐기는 것'이라는 뜻이 '열매', '과일'이 되었습니다.",
+    "과일에 들어 있는 당분 fructose(과당)도 같은 뿌리입니다.",
+    "fruit의 핵심 이미지는 '나무에 주렁주렁 열린 열매 🍎'입니다."
+   ],
+   "meanings": [
+    "과일",
+    "(식물의) 열매",
+    "결실, 성과"
+   ],
+   "examples": [
+    {
+     "en": "Fruit is good for your health.",
+     "ko": "과일은 건강에 좋아요."
+    },
+    {
+     "en": "What's your favorite fruit?",
+     "ko": "제일 좋아하는 과일이 뭐야?"
+    },
+    {
+     "en": "We bought some fruit at the market.",
+     "ko": "우리는 시장에서 과일을 샀어요."
+    },
+    {
+     "en": "This tree bears fruit in summer.",
+     "ko": "이 나무는 여름에 열매를 맺어요."
+    },
+    {
+     "en": "I had fruit for dessert.",
+     "ko": "나는 후식으로 과일을 먹었어요."
+    },
+    {
+     "en": "Her hard work bore fruit.",
+     "ko": "그녀의 노력이 결실을 맺었어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "vegetable",
+     "ko": "채소",
+     "en": "Fresh vegetables."
+    },
+    {
+     "type": "연관어",
+     "word": "apple",
+     "ko": "사과",
+     "en": "An apple a day."
+    },
+    {
+     "type": "연관어",
+     "word": "banana",
+     "ko": "바나나",
+     "en": "A yellow banana."
+    },
+    {
+     "type": "연관어",
+     "word": "grape",
+     "ko": "포도",
+     "en": "A bunch of grapes."
+    },
+    {
+     "type": "파생어",
+     "word": "fruity",
+     "ko": "과일 맛이 나는",
+     "en": "A fruity drink."
+    },
+    {
+     "type": "연관어",
+     "word": "seed",
+     "ko": "씨",
+     "en": "Plant a seed."
+    }
+   ]
+  },
+  "378": {
+   "word": "button",
+   "overview": [
+    "button은 '단추'라는 뜻의 명사입니다. 옷을 여미는 동그란 단추를 말합니다.",
+    "기계에서 누르는 '버튼'도 button이라서 press the button(버튼을 누르다)처럼 씁니다.",
+    "'단추를 채우다'라는 동사로도 씁니다. Button your coat.(코트 단추를 채워.)",
+    "단추를 푸는 것은 unbutton이라고 합니다."
+   ],
+   "easy": [
+    {
+     "word": "press",
+     "en": "Press here.",
+     "ko": "여기를 눌러."
+    },
+    {
+     "word": "switch",
+     "en": "Turn on the switch.",
+     "ko": "스위치를 켜."
+    }
+   ],
+   "etymology": [
+    "button은 옛 프랑스어 bouton(꽃봉오리, 단추)에서 온 단어입니다.",
+    "bouton은 bouter(밀다, 불쑥 나오다)에서 나온 말입니다.",
+    "작고 볼록 튀어나온 모양이 꽃봉오리와 단추를 닮아서 같은 이름을 썼습니다.",
+    "나중에 기계에 볼록 튀어나온 '누르는 버튼'도 button이 되었습니다.",
+    "button의 핵심 이미지는 '작고 동그랗게 볼록 나온 단추 🔘'입니다."
+   ],
+   "meanings": [
+    "(옷의) 단추 (명사)",
+    "(기계의) 버튼 (명사)",
+    "단추를 채우다 (동사)",
+    "배지 (미국)"
+   ],
+   "examples": [
+    {
+     "en": "A button fell off my shirt.",
+     "ko": "내 셔츠에서 단추 하나가 떨어졌어요."
+    },
+    {
+     "en": "Press the red button to start.",
+     "ko": "시작하려면 빨간 버튼을 눌러."
+    },
+    {
+     "en": "Button up your coat. It's cold.",
+     "ko": "코트 단추 채워. 추워."
+    },
+    {
+     "en": "Grandma sewed on a new button.",
+     "ko": "할머니가 새 단추를 달아 주셨어요."
+    },
+    {
+     "en": "Click the button below.",
+     "ko": "아래 버튼을 클릭하세요."
+    },
+    {
+     "en": "This jacket has big buttons.",
+     "ko": "이 재킷에는 큰 단추가 달려 있어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "반의어",
+     "word": "unbutton",
+     "ko": "단추를 풀다",
+     "en": "Unbutton your shirt."
+    },
+    {
+     "type": "연관어",
+     "word": "press",
+     "ko": "누르다",
+     "en": "Press the key."
+    },
+    {
+     "type": "연관어",
+     "word": "shirt",
+     "ko": "셔츠",
+     "en": "A white shirt."
+    },
+    {
+     "type": "연관어",
+     "word": "zipper",
+     "ko": "지퍼",
+     "en": "Pull up the zipper."
+    },
+    {
+     "type": "연관어",
+     "word": "sew",
+     "ko": "바느질하다",
+     "en": "Sew a button."
+    },
+    {
+     "type": "연관어",
+     "word": "click",
+     "ko": "클릭하다",
+     "en": "Click here."
+    }
+   ]
+  },
+  "391": {
+   "word": "campaign",
+   "overview": [
+    "campaign은 '캠페인', '(사회적) 운동'이라는 뜻의 명사입니다. 어떤 목표를 이루려고 여러 사람이 계획을 세워 함께 벌이는 활동을 말합니다.",
+    "a campaign to save water(물 절약 캠페인), an anti-smoking campaign(금연 운동)처럼 씁니다.",
+    "선거에서 표를 얻기 위한 '선거 운동'도 campaign이라고 합니다.",
+    "동사로는 '운동을 벌이다'라는 뜻으로 campaign for(~을 위해 운동하다)처럼 씁니다. 발음은 끝의 g를 읽지 않고 '캠페인'입니다."
+   ],
+   "easy": [
+    {
+     "word": "plan",
+     "en": "A big plan.",
+     "ko": "큰 계획."
+    },
+    {
+     "word": "event",
+     "en": "A school event.",
+     "ko": "학교 행사."
+    }
+   ],
+   "etymology": [
+    "campaign은 프랑스어 campagne(넓은 들판)에서 온 단어입니다.",
+    "뿌리는 라틴어 campus(들판)이고, 대학교 캠퍼스(campus)도 같은 가족입니다.",
+    "옛날 군대는 여름이면 들판에 나가 싸움을 벌였는데, 이것을 campaign이라고 했습니다.",
+    "'들판에서 벌이는 작전'이 '목표를 위해 계획적으로 벌이는 활동'이라는 뜻으로 넓어졌습니다.",
+    "campaign의 핵심 이미지는 '한 가지 목표를 향해 함께 외치는 활동 📢'입니다."
+   ],
+   "meanings": [
+    "(사회적·정치적) 운동, 캠페인",
+    "선거 운동, 유세",
+    "(군사) 작전, 전투",
+    "운동을 벌이다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "Our school started a campaign to save energy.",
+     "ko": "우리 학교는 에너지 절약 캠페인을 시작했어요."
+    },
+    {
+     "en": "They joined a campaign to clean the beach.",
+     "ko": "그들은 해변 청소 운동에 참여했어요."
+    },
+    {
+     "en": "The election campaign starts next week.",
+     "ko": "선거 운동은 다음 주에 시작해요."
+    },
+    {
+     "en": "She campaigned for children's rights.",
+     "ko": "그녀는 어린이 권리를 위해 운동을 벌였어요."
+    },
+    {
+     "en": "The campaign was a big success.",
+     "ko": "그 캠페인은 크게 성공했어요."
+    },
+    {
+     "en": "We made posters for the campaign.",
+     "ko": "우리는 캠페인 포스터를 만들었어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "movement",
+     "ko": "(사회) 운동",
+     "en": "A peace movement."
+    },
+    {
+     "type": "연관어",
+     "word": "election",
+     "ko": "선거",
+     "en": "A class election."
+    },
+    {
+     "type": "연관어",
+     "word": "vote",
+     "ko": "투표하다",
+     "en": "Vote for me."
+    },
+    {
+     "type": "연관어",
+     "word": "poster",
+     "ko": "포스터",
+     "en": "Put up a poster."
+    },
+    {
+     "type": "연관어",
+     "word": "campus",
+     "ko": "캠퍼스",
+     "en": "A big campus."
+    },
+    {
+     "type": "연관어",
+     "word": "support",
+     "ko": "지지하다",
+     "en": "Support the team."
+    }
+   ]
+  },
+  "1780": {
+   "word": "newspaper",
+   "overview": [
+    "newspaper는 '신문'이라는 뜻의 명사입니다. 새로운 소식을 종이에 인쇄해서 날마다 펴내는 것입니다.",
+    "read the newspaper(신문을 읽다), in the newspaper(신문에)처럼 씁니다.",
+    "줄여서 paper라고만 해도 신문을 뜻할 때가 많습니다. the morning paper(조간신문)",
+    "신문을 만드는 회사도 newspaper라고 합니다."
+   ],
+   "easy": [
+    {
+     "word": "news",
+     "en": "Good news!",
+     "ko": "좋은 소식!"
+    },
+    {
+     "word": "paper",
+     "en": "A sheet of paper.",
+     "ko": "종이 한 장."
+    }
+   ],
+   "etymology": [
+    "newspaper는 news(소식)와 paper(종이)가 합쳐진 말입니다.",
+    "'소식을 적은 종이'라는 뜻으로 1600년대쯤부터 쓰였습니다.",
+    "news는 new(새로운)에 s가 붙어 '새로운 것들', 곧 '새 소식'이 된 말입니다.",
+    "paper는 옛날 이집트의 종이 papyrus(파피루스)에서 온 말입니다.",
+    "newspaper의 핵심 이미지는 '새 소식이 빼곡한 종이 📰'입니다."
+   ],
+   "meanings": [
+    "신문",
+    "신문사",
+    "신문지"
+   ],
+   "examples": [
+    {
+     "en": "Grandpa reads the newspaper every morning.",
+     "ko": "할아버지는 매일 아침 신문을 읽으세요."
+    },
+    {
+     "en": "Our school was in the newspaper.",
+     "ko": "우리 학교가 신문에 나왔어요."
+    },
+    {
+     "en": "I read about it in the newspaper.",
+     "ko": "나는 그 일을 신문에서 읽었어요."
+    },
+    {
+     "en": "Wrap the plates in newspaper.",
+     "ko": "접시를 신문지로 싸."
+    },
+    {
+     "en": "She writes for a local newspaper.",
+     "ko": "그녀는 지역 신문에 기사를 써요."
+    },
+    {
+     "en": "We made a class newspaper.",
+     "ko": "우리는 학급 신문을 만들었어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "paper",
+     "ko": "신문 (줄임말)",
+     "en": "Today's paper."
+    },
+    {
+     "type": "연관어",
+     "word": "news",
+     "ko": "뉴스, 소식",
+     "en": "Watch the news."
+    },
+    {
+     "type": "연관어",
+     "word": "article",
+     "ko": "기사",
+     "en": "A short article."
+    },
+    {
+     "type": "연관어",
+     "word": "reporter",
+     "ko": "기자",
+     "en": "A TV reporter."
+    },
+    {
+     "type": "연관어",
+     "word": "magazine",
+     "ko": "잡지",
+     "en": "A fashion magazine."
+    },
+    {
+     "type": "연관어",
+     "word": "headline",
+     "ko": "헤드라인, 표제",
+     "en": "Big headlines."
+    }
+   ]
+  },
+  "524": {
+   "word": "collect",
+   "overview": [
+    "collect는 '모으다', '수집하다'라는 뜻의 동사입니다. 여기저기 있는 것을 한곳에 모으는 것을 말합니다.",
+    "collect stamps(우표를 수집하다), collect trash(쓰레기를 모으다)처럼 씁니다.",
+    "누군가를 '데리러 가다', 물건을 '찾아오다'라는 뜻도 있습니다. collect the kids from school(학교에서 아이들을 데려오다)",
+    "명사 collection은 '모음', '수집품'이고, collector는 '수집가'입니다."
+   ],
+   "easy": [
+    {
+     "word": "gather",
+     "en": "Gather the leaves.",
+     "ko": "나뭇잎을 모아."
+    },
+    {
+     "word": "pick up",
+     "en": "Pick up the toys.",
+     "ko": "장난감을 주워."
+    }
+   ],
+   "etymology": [
+    "collect는 라틴어 colligere(함께 모으다)에서 온 단어입니다.",
+    "col(함께)과 legere(골라 모으다)가 합쳐진 말입니다.",
+    "legere는 '읽다'라는 뜻도 있어서, lecture(강의), select(고르다)도 같은 가족입니다.",
+    "'여러 개를 골라 한데 모으다'라는 뜻이 그대로 이어져 왔습니다.",
+    "collect의 핵심 이미지는 '하나씩 골라 상자에 모으기 🗃️'입니다."
+   ],
+   "meanings": [
+    "모으다, 수집하다",
+    "(돈·세금 등을) 걷다",
+    "데리러 가다, 찾아오다",
+    "(사람이) 모이다"
+   ],
+   "examples": [
+    {
+     "en": "I collect cute stickers.",
+     "ko": "나는 귀여운 스티커를 모아요."
+    },
+    {
+     "en": "The teacher collected our homework.",
+     "ko": "선생님이 우리 숙제를 걷으셨어요."
+    },
+    {
+     "en": "We collected trash on the beach.",
+     "ko": "우리는 해변에서 쓰레기를 주웠어요."
+    },
+    {
+     "en": "Dad will collect you after school.",
+     "ko": "아빠가 방과 후에 너를 데리러 가실 거야."
+    },
+    {
+     "en": "My brother collects coins from other countries.",
+     "ko": "우리 형은 다른 나라 동전을 모아요."
+    },
+    {
+     "en": "Bees collect nectar from flowers.",
+     "ko": "벌은 꽃에서 꿀을 모아요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "gather",
+     "ko": "모으다",
+     "en": "Gather together."
+    },
+    {
+     "type": "파생어",
+     "word": "collection",
+     "ko": "수집품, 모음",
+     "en": "A stamp collection."
+    },
+    {
+     "type": "파생어",
+     "word": "collector",
+     "ko": "수집가",
+     "en": "A toy collector."
+    },
+    {
+     "type": "연관어",
+     "word": "stamp",
+     "ko": "우표",
+     "en": "An old stamp."
+    },
+    {
+     "type": "연관어",
+     "word": "hobby",
+     "ko": "취미",
+     "en": "My hobby is reading."
+    },
+    {
+     "type": "연관어",
+     "word": "select",
+     "ko": "고르다",
+     "en": "Select one."
+    }
+   ]
+  },
+  "774": {
+   "word": "design",
+   "overview": [
+    "design은 '디자인', '설계', '도안'이라는 뜻의 명사이자 '디자인하다', '설계하다'라는 뜻의 동사입니다.",
+    "a nice design(멋진 디자인), the design of a car(자동차 설계)처럼 씁니다.",
+    "design a poster(포스터를 디자인하다), design a house(집을 설계하다)처럼 동사로도 씁니다.",
+    "어떤 목적을 위해 '계획하다', '만들다'라는 뜻도 있어서 be designed for(~을 위해 만들어지다)처럼 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "draw",
+     "en": "Draw a house.",
+     "ko": "집을 그려."
+    },
+    {
+     "word": "plan",
+     "en": "Make a plan.",
+     "ko": "계획을 세워."
+    }
+   ],
+   "etymology": [
+    "design은 라틴어 designare(표시하다, 그려서 정하다)에서 온 단어입니다.",
+    "de(아래로, 완전히)와 signare(표시하다)가 합쳐진 말입니다.",
+    "signare는 sign(표시, 신호)과 같은 뿌리입니다.",
+    "'무엇을 만들기 전에 그림으로 표시해 두다'라는 뜻에서 '설계', '디자인'이 되었습니다.",
+    "design의 핵심 이미지는 '만들기 전에 먼저 그리는 설계도 ✏️'입니다."
+   ],
+   "meanings": [
+    "디자인, 도안, 무늬 (명사)",
+    "설계, 설계도 (명사)",
+    "디자인하다, 설계하다 (동사)",
+    "(목적을 위해) 계획하다, 고안하다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "I like the design of this T-shirt.",
+     "ko": "나는 이 티셔츠 디자인이 마음에 들어요."
+    },
+    {
+     "en": "She designed her own dress.",
+     "ko": "그녀는 자기 드레스를 직접 디자인했어요."
+    },
+    {
+     "en": "Let's design a poster for the event.",
+     "ko": "행사 포스터를 디자인해 보자."
+    },
+    {
+     "en": "The cup has a flower design.",
+     "ko": "그 컵에는 꽃무늬가 있어요."
+    },
+    {
+     "en": "This book is designed for children.",
+     "ko": "이 책은 어린이를 위해 만들어졌어요."
+    },
+    {
+     "en": "An engineer designed this bridge.",
+     "ko": "한 기술자가 이 다리를 설계했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "파생어",
+     "word": "designer",
+     "ko": "디자이너",
+     "en": "A fashion designer."
+    },
+    {
+     "type": "유의어",
+     "word": "pattern",
+     "ko": "무늬",
+     "en": "A dot pattern."
+    },
+    {
+     "type": "유의어",
+     "word": "plan",
+     "ko": "계획, 설계도",
+     "en": "A house plan."
+    },
+    {
+     "type": "연관어",
+     "word": "draw",
+     "ko": "그리다",
+     "en": "Draw a line."
+    },
+    {
+     "type": "연관어",
+     "word": "create",
+     "ko": "만들다, 창조하다",
+     "en": "Create art."
+    },
+    {
+     "type": "연관어",
+     "word": "sign",
+     "ko": "표시, 기호",
+     "en": "A stop sign."
+    }
+   ]
   }
  }
 }
