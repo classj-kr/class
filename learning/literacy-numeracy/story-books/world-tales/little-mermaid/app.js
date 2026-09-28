@@ -7,9 +7,9 @@ const CHAPTERS = [
                 "art": "01-palace.webp",
                 "emoji": "🏰",
                 "left": [
-                    "바다 깊은 곳에 궁전이 하나 있었습니다. 산호로 지은 궁전이었지요.",
-                    "바다 임금님이 그곳을 다스렸습니다. 임금님에게는 딸이 다섯 있었지요.",
-                    "그중 막내는 제일 어렸지만 노래는 다섯 가운데 가장 잘했습니다."
+                    "바다 깊은 곳에 산호로 지은 궁전이 있었습니다. 바다 임금님의 궁전이었지요.",
+                    "임금님에게는 딸이 다섯 있었습니다. 모두 인어였지요. 허리 위는 사람이고, 허리 아래는 반짝이는 물고기 꼬리였습니다.",
+                    "막내 인어공주는 제일 어렸지만 노래는 누구보다 잘했습니다."
                 ],
                 "right": [
                     "저녁이면 공주들의 할머니가 바다 위 세상 이야기를 들려주었습니다.",
@@ -558,7 +558,7 @@ const EN = {
         title: 'The Little Mermaid',
         intro: [
             "Written by the Danish author Hans Christian Andersen and published in 1837.",
-            "In the harbour at Copenhagen, the capital of Denmark, a statue made in honour of this story has sat looking out to sea for more than a hundred years."
+            "In the harbour at Copenhagen, the capital of Denmark, a bronze mermaid made in honour of this story has sat looking out to sea for more than a hundred years."
         ]
     },
     chapters: [
@@ -570,10 +570,10 @@ const EN = {
                     art: '01-palace.webp',
                     emoji: '🐚',
                     left: [
-                        "Deep down in the sea there stood a palace built of coral.",
-                        "The sea king ruled there, and he had five daughters.",
-                        "The youngest of them was the smallest.",
-                        "And of all five, she sang the best."
+                        "Deep down in the sea there stood a palace built of coral. It was the palace of the sea king.",
+                        "The sea king had five daughters, and all of them were mermaids.",
+                        "Above the waist they were like people, but below it they had shining fish tails instead of legs.",
+                        "The youngest, the little mermaid, was the smallest of them all. And of all five, she sang the best."
                     ],
                     right: [
                         "In the evenings their grandmother told them stories about the world above the water.",
@@ -927,12 +927,14 @@ const EN = {
         'cover.webp': [
             { word: 'harbour', meaning: '항구', sentence: 'In the harbour at Copenhagen.' },
             { word: 'capital', meaning: '수도', sentence: 'Copenhagen, the capital of Denmark.' },
-            { word: 'in honour of', meaning: '~을 기리는', sentence: 'A statue made in honour of this story.' },
+            { word: 'mermaid', meaning: '인어 (허리 아래가 물고기 꼬리인 사람)', sentence: 'A bronze mermaid made in honour of this story.' },
+            { word: 'in honour of', meaning: '~을 기리는', sentence: 'Made in honour of this story.' },
             { word: 'look out to', meaning: '~를 바라보다', sentence: 'Has sat looking out to sea for more than a hundred years.' }
         ],
         '01-palace.webp': [
             { word: 'coral', meaning: '산호', sentence: 'A palace built of coral.' },
-            { word: 'rule', meaning: '다스리다', sentence: 'The sea king ruled there.' },
+            { word: 'waist', meaning: '허리', sentence: 'Above the waist they were like people.' },
+            { word: 'instead of', meaning: '~ 대신에', sentence: 'Shining fish tails instead of legs.' },
             { word: 'above', meaning: '위쪽의', sentence: 'Stories about the world above the water.' }
         ],
         '01-palace-2.webp': [
@@ -1035,11 +1037,12 @@ const EN = {
 const WORDS_KO = {
     "cover.webp": [
         { w: "발표하다", k: "글이나 작품을 세상에 내놓다.", s: "덴마크의 작가 한스 크리스티안 안데르센이 1837년에 발표한 이야기예요." },
-        { w: "동상", k: "사람이나 짐승을 쇠붙이로 만들어 세운 것.", s: "덴마크의 수도 코펜하겐 항구에는 이 이야기를 기념해 만든 인어공주 동상이 백 년 넘게 바다를 바라보고 앉아 있답니다." }
+        { w: "동상", k: "사람이나 짐승을 쇠붙이로 만들어 세운 것.", s: "덴마크의 수도 코펜하겐 항구에는 이 이야기를 기념해 만든 인어공주 동상이 백 년 넘게 바다를 바라보고 앉아 있답니다." },
+        { w: "인어", k: "허리 위는 사람이고 허리 아래는 물고기 꼬리인, 바다에 산다는 사람.", s: "덴마크의 수도 코펜하겐 항구에는 이 이야기를 기념해 만든 인어공주 동상이 백 년 넘게 바다를 바라보고 앉아 있답니다." }
     ],
     "01-palace.webp": [
-        { w: "궁전", k: "임금이 사는 큰 집.", s: "바다 깊은 곳에 궁전이 하나 있었습니다." },
-        { w: "막내", k: "여러 형제 가운데 맨 아래.", s: "그중 막내는 제일 어렸지만 노래는 다섯 가운데 가장 잘했습니다." },
+        { w: "궁전", k: "임금이 사는 큰 집.", s: "바다 깊은 곳에 산호로 지은 궁전이 있었습니다." },
+        { w: "막내", k: "여러 형제 가운데 맨 아래.", s: "막내 인어공주는 제일 어렸지만 노래는 누구보다 잘했습니다." },
         { w: "눈을 반짝이다", k: "궁금하고 신나서 눈이 빛나다.", s: "막내는 그때마다 눈을 반짝였습니다." }
     ],
     "01-palace-2.webp": [
