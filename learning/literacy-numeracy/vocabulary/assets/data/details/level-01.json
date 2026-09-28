@@ -17833,6 +17833,1560 @@
      "en": "Imagine that!"
     }
    ]
+  },
+  "1328": {
+   "word": "hold",
+   "overview": [
+    "hold는 '잡다', '들고 있다'라는 뜻의 동사입니다.",
+    "Hold my hand.(내 손 잡아.), Hold on.(잠깐만, 꽉 잡아.)처럼 씁니다.",
+    "'(행사를) 열다'(hold a party), '담다'(This cup holds 200ml.)라는 뜻도 있습니다. 과거형은 held입니다."
+   ],
+   "easy": [
+    {
+     "word": "grab",
+     "en": "Grab the rope!",
+     "ko": "밧줄 잡아!"
+    },
+    {
+     "word": "keep",
+     "en": "Keep it for me.",
+     "ko": "그거 나 대신 가지고 있어 줘."
+    },
+    {
+     "word": "carry",
+     "en": "I carry my bag.",
+     "ko": "나는 가방을 들고 있어요."
+    }
+   ],
+   "etymology": [
+    "hold는 고대 영어 healdan에서 온 단어로, '지키다', '붙잡아 두다'라는 뜻이었습니다.",
+    "독일어 halten(잡다, 멈추다)과 같은 뿌리입니다.",
+    "'손으로 붙잡다'가 '어떤 상태를 유지하다', '안에 담다', '(모임을) 열다'로 넓어졌습니다.",
+    "holder(담는 것, 꽂이)는 '잡아 주는 것'이라는 뜻입니다. (a pencil holder = 연필꽂이)",
+    "hold의 핵심 이미지는 '손으로 꽉 붙잡고 있기'입니다."
+   ],
+   "meanings": [
+    "잡다, 쥐다, 들고 있다",
+    "(자세, 상태를) 유지하다",
+    "(행사를) 열다, 개최하다",
+    "담다, 수용하다",
+    "(Hold on.) 잠깐 기다려"
+   ],
+   "examples": [
+    {
+     "en": "Hold my hand.",
+     "ko": "내 손 잡아."
+    },
+    {
+     "en": "Can you hold this for a second?",
+     "ko": "이것 좀 잠깐 들고 있어 줄래?"
+    },
+    {
+     "en": "Hold on, please.",
+     "ko": "잠시만 기다려 주세요."
+    },
+    {
+     "en": "Hold your breath.",
+     "ko": "숨을 참아."
+    },
+    {
+     "en": "We will hold a party on Friday.",
+     "ko": "우리는 금요일에 파티를 열 거예요."
+    },
+    {
+     "en": "She held the baby in her arms.",
+     "ko": "그녀는 아기를 품에 안았어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "변화형",
+     "word": "held",
+     "ko": "잡았다 (과거)",
+     "en": "He held my hand."
+    },
+    {
+     "type": "반의어",
+     "word": "drop",
+     "ko": "떨어뜨리다",
+     "en": "Don't drop it."
+    },
+    {
+     "type": "반의어",
+     "word": "let go",
+     "ko": "놓다",
+     "en": "Let go of my arm."
+    },
+    {
+     "type": "유의어",
+     "word": "grab",
+     "ko": "움켜잡다",
+     "en": "Grab a seat."
+    },
+    {
+     "type": "유의어",
+     "word": "keep",
+     "ko": "간직하다",
+     "en": "Keep it safe."
+    },
+    {
+     "type": "연관어",
+     "word": "hand",
+     "ko": "손",
+     "en": "Raise your hand."
+    }
+   ]
+  },
+  "1281": {
+   "word": "happy",
+   "overview": [
+    "happy는 '행복한', '기쁜'이라는 뜻의 형용사입니다. 반대는 sad(슬픈), unhappy(불행한)입니다.",
+    "Happy birthday!(생일 축하해!), Happy New Year!(새해 복 많이 받아!)처럼 축하 인사에 자주 씁니다.",
+    "be happy with는 '~에 만족하다'라는 뜻입니다. (I'm happy with my grade. = 내 성적에 만족해요.)"
+   ],
+   "easy": [
+    {
+     "word": "glad",
+     "en": "I'm glad to see you.",
+     "ko": "만나서 반가워."
+    },
+    {
+     "word": "joyful",
+     "en": "It was a joyful day.",
+     "ko": "기쁜 날이었어요."
+    },
+    {
+     "word": "pleased",
+     "en": "Mom was pleased.",
+     "ko": "엄마가 기뻐하셨어요."
+    }
+   ],
+   "etymology": [
+    "happy는 옛 영어 hap(운, 우연히 일어난 일)에 -y가 붙은 말입니다.",
+    "원래 뜻은 '운이 좋은'이었습니다.",
+    "happen(일어나다), perhaps(아마도)도 같은 hap에서 나온 가족 단어입니다.",
+    "'운이 좋은'이 '기분이 좋은', '행복한'으로 바뀌었습니다.",
+    "happy의 핵심 이미지는 '운이 좋아 웃음이 나는 😊'입니다."
+   ],
+   "meanings": [
+    "행복한, 기쁜",
+    "(be happy with) ~에 만족하는",
+    "(be happy to) 기꺼이 ~하는",
+    "(축하 인사) 즐거운 ~"
+   ],
+   "examples": [
+    {
+     "en": "I'm so happy today!",
+     "ko": "나 오늘 정말 행복해!"
+    },
+    {
+     "en": "Happy birthday to you!",
+     "ko": "생일 축하해!"
+    },
+    {
+     "en": "She looks happy.",
+     "ko": "그녀는 행복해 보여요."
+    },
+    {
+     "en": "I'm happy to help.",
+     "ko": "기꺼이 도와줄게."
+    },
+    {
+     "en": "Are you happy with your new bike?",
+     "ko": "새 자전거 마음에 들어?"
+    },
+    {
+     "en": "They lived happily ever after.",
+     "ko": "그들은 오래오래 행복하게 살았어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "반의어",
+     "word": "sad",
+     "ko": "슬픈",
+     "en": "Don't be sad."
+    },
+    {
+     "type": "반의어",
+     "word": "unhappy",
+     "ko": "불행한",
+     "en": "He looks unhappy."
+    },
+    {
+     "type": "유의어",
+     "word": "glad",
+     "ko": "기쁜",
+     "en": "I'm glad."
+    },
+    {
+     "type": "파생어",
+     "word": "happiness",
+     "ko": "행복",
+     "en": "Money can't buy happiness."
+    },
+    {
+     "type": "파생어",
+     "word": "happily",
+     "ko": "행복하게",
+     "en": "She smiled happily."
+    },
+    {
+     "type": "연관어",
+     "word": "smile",
+     "ko": "웃다",
+     "en": "Smile!"
+    }
+   ]
+  },
+  "849": {
+   "word": "door",
+   "overview": [
+    "door는 '문'이라는 뜻의 명사입니다.",
+    "open the door(문을 열다), close the door(문을 닫다), knock on the door(문을 두드리다)처럼 씁니다.",
+    "next door는 '옆집'입니다. (She lives next door. = 그녀는 옆집에 살아요.) oo를 '오어'처럼 읽는 드문 단어입니다."
+   ],
+   "easy": [
+    {
+     "word": "gate",
+     "en": "Meet me at the school gate.",
+     "ko": "학교 정문에서 만나."
+    },
+    {
+     "word": "entrance",
+     "en": "Where is the entrance?",
+     "ko": "입구가 어디예요?"
+    }
+   ],
+   "etymology": [
+    "door는 고대 영어 duru에서 온 단어로, '문'이라는 뜻이었습니다.",
+    "라틴어 forēs(문), 그리스어 thyra(문)와 같은 아주 오래된 뿌리입니다.",
+    "옛날에는 양쪽으로 여닫는 큰 문을 뜻하는 말도 따로 있었지만 하나로 합쳐졌습니다.",
+    "door의 핵심 이미지는 '안과 밖을 잇는 문'입니다."
+   ],
+   "meanings": [
+    "문",
+    "출입구",
+    "(next door) 옆집",
+    "(비유) 길, 기회 (open doors)"
+   ],
+   "examples": [
+    {
+     "en": "Please close the door.",
+     "ko": "문 좀 닫아 주세요."
+    },
+    {
+     "en": "Someone is knocking on the door.",
+     "ko": "누가 문을 두드리고 있어요."
+    },
+    {
+     "en": "Open the door, please.",
+     "ko": "문 좀 열어 주세요."
+    },
+    {
+     "en": "My friend lives next door.",
+     "ko": "내 친구는 옆집에 살아요."
+    },
+    {
+     "en": "Lock the front door.",
+     "ko": "현관문을 잠가."
+    },
+    {
+     "en": "Wait at the door.",
+     "ko": "문 앞에서 기다려."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "gate",
+     "ko": "대문, 출입문",
+     "en": "Open the gate."
+    },
+    {
+     "type": "연관어",
+     "word": "window",
+     "ko": "창문",
+     "en": "Open the window."
+    },
+    {
+     "type": "연관어",
+     "word": "key",
+     "ko": "열쇠",
+     "en": "Where is the key?"
+    },
+    {
+     "type": "연관어",
+     "word": "knock",
+     "ko": "두드리다",
+     "en": "Knock twice."
+    },
+    {
+     "type": "연관어",
+     "word": "lock",
+     "ko": "잠그다",
+     "en": "Lock the door."
+    },
+    {
+     "type": "연관어",
+     "word": "room",
+     "ko": "방",
+     "en": "Enter the room."
+    }
+   ]
+  },
+  "353": {
+   "word": "brother",
+   "overview": [
+    "brother는 '형', '오빠', '남동생'을 모두 뜻하는 명사입니다. 영어는 나이로 구별하지 않습니다.",
+    "나이를 구별하고 싶으면 big brother, older brother(형, 오빠), little brother, younger brother(남동생)라고 합니다.",
+    "여자 형제는 sister입니다. 남녀 모두를 합쳐 형제자매는 siblings라고 합니다."
+   ],
+   "easy": [
+    {
+     "word": "sibling",
+     "en": "I have two siblings.",
+     "ko": "나는 형제자매가 둘 있어요."
+    },
+    {
+     "word": "bro",
+     "en": "Thanks, bro!",
+     "ko": "고마워, 형!"
+    }
+   ],
+   "etymology": [
+    "brother는 고대 영어 brōþor에서 온 단어입니다.",
+    "라틴어 frāter(형제)와 같은 뿌리입니다. 영어의 b는 라틴어의 f와 짝을 이루는 경우가 있습니다.",
+    "fraternity(형제애, 남학생 모임)도 frāter에서 온 먼 친척 단어입니다.",
+    "father, mother와 끝이 -ther로 같은 가족 단어입니다.",
+    "brother의 핵심 이미지는 '같은 부모에게서 태어난 남자 형제'입니다."
+   ],
+   "meanings": [
+    "형, 오빠, 남동생 (남자 형제)",
+    "(친한) 동료, 형제 같은 사람"
+   ],
+   "examples": [
+    {
+     "en": "I have one brother.",
+     "ko": "나는 남자 형제가 한 명 있어요."
+    },
+    {
+     "en": "My big brother is in high school.",
+     "ko": "우리 형은 고등학생이에요."
+    },
+    {
+     "en": "My little brother is five.",
+     "ko": "내 남동생은 다섯 살이에요."
+    },
+    {
+     "en": "My brother and I play games together.",
+     "ko": "형과 나는 같이 게임을 해요."
+    },
+    {
+     "en": "He is like a brother to me.",
+     "ko": "그는 나에게 친형 같아요."
+    },
+    {
+     "en": "Do you have any brothers or sisters?",
+     "ko": "형제자매 있어요?"
+    }
+   ],
+   "together": [
+    {
+     "type": "반의어",
+     "word": "sister",
+     "ko": "자매",
+     "en": "My sister is kind."
+    },
+    {
+     "type": "연관어",
+     "word": "sibling",
+     "ko": "형제자매",
+     "en": "Do you have siblings?"
+    },
+    {
+     "type": "연관어",
+     "word": "family",
+     "ko": "가족",
+     "en": "A big family."
+    },
+    {
+     "type": "연관어",
+     "word": "son",
+     "ko": "아들",
+     "en": "Their son."
+    },
+    {
+     "type": "연관어",
+     "word": "twin",
+     "ko": "쌍둥이",
+     "en": "My twin brother."
+    },
+    {
+     "type": "연관어",
+     "word": "cousin",
+     "ko": "사촌",
+     "en": "My cousin is ten."
+    }
+   ]
+  },
+  "100": {
+   "word": "also",
+   "overview": [
+    "also는 '또한', '~도'라는 뜻의 부사입니다.",
+    "보통 일반 동사 앞, be동사 뒤에 씁니다. (I also like it. / She is also kind.)",
+    "too는 문장 끝에, also는 문장 가운데 오는 경우가 많습니다. 뜻은 비슷합니다."
+   ],
+   "easy": [
+    {
+     "word": "too",
+     "en": "I like it too.",
+     "ko": "나도 그거 좋아해."
+    },
+    {
+     "word": "as well",
+     "en": "Bring a pen as well.",
+     "ko": "펜도 가져와."
+    }
+   ],
+   "etymology": [
+    "also는 고대 영어 ealswā에서 온 말입니다. eall(완전히)과 swā(그렇게)가 합쳐졌습니다.",
+    "원래 뜻은 '완전히 그렇게', '똑같이'였습니다.",
+    "'똑같이 그렇다'가 '그것도 그렇다', 즉 '또한'이라는 뜻이 되었습니다.",
+    "as(~처럼)는 also가 더 짧아진 말입니다.",
+    "also의 핵심 이미지는 '그것도 추가 ➕'입니다."
+   ],
+   "meanings": [
+    "또한, 게다가",
+    "~도 역시"
+   ],
+   "examples": [
+    {
+     "en": "I also play the piano.",
+     "ko": "나는 피아노도 쳐요."
+    },
+    {
+     "en": "She is smart. She is also kind.",
+     "ko": "그녀는 똑똑해요. 친절하기도 해요."
+    },
+    {
+     "en": "I like apples. I also like grapes.",
+     "ko": "나는 사과를 좋아해요. 포도도 좋아해요."
+    },
+    {
+     "en": "He can speak English and also Chinese.",
+     "ko": "그는 영어와 중국어도 할 수 있어요."
+    },
+    {
+     "en": "Also, don't forget your hat.",
+     "ko": "그리고 모자도 잊지 마."
+    },
+    {
+     "en": "Not only you but also I was late.",
+     "ko": "너뿐만 아니라 나도 늦었어."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "too",
+     "ko": "~도",
+     "en": "Me too."
+    },
+    {
+     "type": "유의어",
+     "word": "as well",
+     "ko": "~도",
+     "en": "Me as well."
+    },
+    {
+     "type": "연관어",
+     "word": "and",
+     "ko": "그리고",
+     "en": "You and me."
+    },
+    {
+     "type": "연관어",
+     "word": "either",
+     "ko": "~도 (부정문)",
+     "en": "I can't either."
+    },
+    {
+     "type": "연관어",
+     "word": "plus",
+     "ko": "게다가",
+     "en": "Plus, it's free."
+    },
+    {
+     "type": "연관어",
+     "word": "as",
+     "ko": "~처럼",
+     "en": "As you know."
+    }
+   ]
+  },
+  "2041": {
+   "word": "pretty",
+   "overview": [
+    "pretty는 형용사로 '예쁜', '귀여운'이라는 뜻입니다. (a pretty flower = 예쁜 꽃)",
+    "부사로는 '꽤', '상당히'라는 뜻입니다. (It's pretty cold. = 꽤 추워.) 대화에서 이 뜻으로도 아주 많이 씁니다.",
+    "beautiful보다 가볍고 귀여운 느낌의 '예쁜'입니다."
+   ],
+   "easy": [
+    {
+     "word": "cute",
+     "en": "What a cute puppy!",
+     "ko": "정말 귀여운 강아지다!"
+    },
+    {
+     "word": "beautiful",
+     "en": "The sunset is beautiful.",
+     "ko": "노을이 아름다워요."
+    },
+    {
+     "word": "quite",
+     "en": "It's quite easy.",
+     "ko": "꽤 쉬워요."
+    }
+   ],
+   "etymology": [
+    "pretty는 고대 영어 prættig에서 온 단어로, 원래 뜻은 놀랍게도 '꾀가 많은', '약삭빠른'이었습니다.",
+    "'꾀가 많은'이 '솜씨 좋은', '멋지게 만든'으로 바뀌었습니다.",
+    "'멋진'이 다시 '예쁜', '귀여운'으로 바뀌었고, '꽤'라는 부사 뜻도 생겼습니다.",
+    "뜻이 여러 번 크게 바뀐 재미있는 단어입니다.",
+    "pretty의 핵심 이미지는 '보기 좋게 예쁜, 꽤'입니다."
+   ],
+   "meanings": [
+    "예쁜, 귀여운 (형용사)",
+    "꽤, 상당히 (부사)",
+    "(pretty much) 거의"
+   ],
+   "examples": [
+    {
+     "en": "What a pretty dress!",
+     "ko": "정말 예쁜 드레스다!"
+    },
+    {
+     "en": "She has a pretty smile.",
+     "ko": "그녀는 미소가 예뻐요."
+    },
+    {
+     "en": "The garden is very pretty.",
+     "ko": "정원이 아주 예뻐요."
+    },
+    {
+     "en": "It's pretty hot today.",
+     "ko": "오늘 꽤 덥다."
+    },
+    {
+     "en": "I'm pretty sure.",
+     "ko": "꽤 확실해."
+    },
+    {
+     "en": "I'm pretty much done.",
+     "ko": "거의 다 했어."
+    }
+   ],
+   "together": [
+    {
+     "type": "반의어",
+     "word": "ugly",
+     "ko": "못생긴",
+     "en": "An ugly duckling."
+    },
+    {
+     "type": "유의어",
+     "word": "beautiful",
+     "ko": "아름다운",
+     "en": "A beautiful song."
+    },
+    {
+     "type": "유의어",
+     "word": "cute",
+     "ko": "귀여운",
+     "en": "A cute baby."
+    },
+    {
+     "type": "유의어",
+     "word": "lovely",
+     "ko": "사랑스러운",
+     "en": "A lovely day."
+    },
+    {
+     "type": "연관어",
+     "word": "quite",
+     "ko": "꽤",
+     "en": "Quite good."
+    },
+    {
+     "type": "연관어",
+     "word": "very",
+     "ko": "아주",
+     "en": "Very nice."
+    }
+   ]
+  },
+  "2521": {
+   "word": "start",
+   "overview": [
+    "start는 '시작하다', '출발하다'라는 뜻의 동사이자 '시작'이라는 명사입니다. 반대는 stop, finish입니다.",
+    "start + -ing나 start to + 동사로 '~하기 시작하다'를 말합니다. (It started raining. = 비가 오기 시작했어요.)",
+    "자동차나 기계를 '켜다', '시동을 걸다'라는 뜻도 있습니다. (start the car = 차 시동을 걸다)"
+   ],
+   "easy": [
+    {
+     "word": "begin",
+     "en": "Let's begin the class.",
+     "ko": "수업을 시작합시다."
+    },
+    {
+     "word": "open",
+     "en": "The shop opens at nine.",
+     "ko": "가게는 9시에 문을 열어요."
+    }
+   ],
+   "etymology": [
+    "start는 고대 영어 styrtan에서 온 단어로, 원래 뜻은 '펄쩍 뛰다', '움찔하다'였습니다.",
+    "지금도 '깜짝 놀라다'라는 뜻이 남아 있습니다. (The noise made me start. = 소리에 깜짝 놀랐어.)",
+    "'갑자기 튀어 나가다'가 '출발하다', '시작하다'로 바뀌었습니다.",
+    "start의 핵심 이미지는 '출발선에서 튀어 나가기'입니다."
+   ],
+   "meanings": [
+    "시작하다, 시작되다",
+    "출발하다",
+    "(기계를) 켜다, 시동을 걸다",
+    "시작, 출발 (명사)",
+    "깜짝 놀라다"
+   ],
+   "examples": [
+    {
+     "en": "The class starts at nine.",
+     "ko": "수업은 9시에 시작해요."
+    },
+    {
+     "en": "Let's start!",
+     "ko": "시작하자!"
+    },
+    {
+     "en": "It started to snow.",
+     "ko": "눈이 오기 시작했어요."
+    },
+    {
+     "en": "Dad started the car.",
+     "ko": "아빠가 차 시동을 거셨어요."
+    },
+    {
+     "en": "What time does the movie start?",
+     "ko": "영화 몇 시에 시작해요?"
+    },
+    {
+     "en": "It was a good start.",
+     "ko": "좋은 출발이었어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "반의어",
+     "word": "finish",
+     "ko": "끝내다",
+     "en": "Finish your work."
+    },
+    {
+     "type": "반의어",
+     "word": "stop",
+     "ko": "멈추다",
+     "en": "Stop here."
+    },
+    {
+     "type": "반의어",
+     "word": "end",
+     "ko": "끝",
+     "en": "The end."
+    },
+    {
+     "type": "유의어",
+     "word": "begin",
+     "ko": "시작하다",
+     "en": "Begin now."
+    },
+    {
+     "type": "연관어",
+     "word": "first",
+     "ko": "처음",
+     "en": "First step."
+    },
+    {
+     "type": "연관어",
+     "word": "ready",
+     "ko": "준비된",
+     "en": "Get ready."
+    }
+   ]
+  },
+  "2843": {
+   "word": "use",
+   "overview": [
+    "use는 '사용하다', '쓰다'라는 뜻의 동사이자 '사용', '쓸모'라는 명사입니다.",
+    "동사일 때는 '유즈', 명사일 때는 '유스'처럼 끝소리가 조금 다릅니다.",
+    "used to + 동사는 '예전에는 ~했다'라는 뜻입니다. (I used to live here. = 나는 예전에 여기 살았어.)"
+   ],
+   "easy": [
+    {
+     "word": "try",
+     "en": "Try this pen.",
+     "ko": "이 펜 써 봐."
+    },
+    {
+     "word": "spend",
+     "en": "Don't spend all your money.",
+     "ko": "돈을 다 써 버리지 마."
+    }
+   ],
+   "etymology": [
+    "use는 라틴어 ūsus(사용)와 ūtī(사용하다)에서 온 단어입니다.",
+    "프랑스어 user를 거쳐 영어에 들어왔습니다.",
+    "useful(쓸모 있는)은 '쓸모가 가득한', useless(쓸모없는)는 '쓸모가 없는'이라는 뜻입니다.",
+    "usual(보통의, 늘 쓰는)도 같은 뿌리입니다.",
+    "use의 핵심 이미지는 '손에 들고 필요한 곳에 쓰기'입니다."
+   ],
+   "meanings": [
+    "사용하다, 쓰다",
+    "(연료, 돈을) 쓰다, 소비하다",
+    "사용, 이용 (명사)",
+    "쓸모, 소용 (명사)",
+    "(used to) 예전에는 ~했다"
+   ],
+   "examples": [
+    {
+     "en": "Can I use your phone?",
+     "ko": "휴대폰 좀 써도 돼요?"
+    },
+    {
+     "en": "Use a pencil, not a pen.",
+     "ko": "펜 말고 연필을 쓰세요."
+    },
+    {
+     "en": "We use water every day.",
+     "ko": "우리는 매일 물을 써요."
+    },
+    {
+     "en": "This box is for kitchen use.",
+     "ko": "이 상자는 부엌에서 쓰는 거예요."
+    },
+    {
+     "en": "It's no use crying.",
+     "ko": "울어 봐야 소용없어."
+    },
+    {
+     "en": "I used to be afraid of dogs.",
+     "ko": "나는 예전에 개를 무서워했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "파생어",
+     "word": "useful",
+     "ko": "쓸모 있는",
+     "en": "A useful tool."
+    },
+    {
+     "type": "파생어",
+     "word": "useless",
+     "ko": "쓸모없는",
+     "en": "It's useless."
+    },
+    {
+     "type": "파생어",
+     "word": "user",
+     "ko": "사용자",
+     "en": "A new user."
+    },
+    {
+     "type": "연관어",
+     "word": "tool",
+     "ko": "도구",
+     "en": "Use the right tool."
+    },
+    {
+     "type": "연관어",
+     "word": "usual",
+     "ko": "보통의",
+     "en": "As usual."
+    },
+    {
+     "type": "연관어",
+     "word": "need",
+     "ko": "필요하다",
+     "en": "I need it."
+    }
+   ]
+  },
+  "2953": {
+   "word": "wife",
+   "overview": [
+    "wife는 '아내', '부인'이라는 뜻의 명사입니다. 반대는 husband(남편)입니다.",
+    "여러 명은 wives입니다. f가 v로 바뀝니다. (knife → knives, life → lives도 같습니다.)",
+    "husband and wife는 '부부'라는 뜻입니다."
+   ],
+   "easy": [
+    {
+     "word": "partner",
+     "en": "He came with his partner.",
+     "ko": "그는 배우자와 함께 왔어요."
+    }
+   ],
+   "etymology": [
+    "wife는 고대 영어 wīf에서 온 단어로, 원래 뜻은 '여자'였습니다.",
+    "woman(여자)은 wīf와 man(사람)이 합쳐진 말입니다.",
+    "시간이 지나며 wīf는 '결혼한 여자', 즉 '아내'라는 뜻으로 좁아졌습니다.",
+    "midwife(산파, 아기 낳는 것을 돕는 사람)에는 '여자'라는 옛 뜻이 남아 있습니다.",
+    "wife의 핵심 이미지는 '결혼한 부부 중 아내'입니다."
+   ],
+   "meanings": [
+    "아내, 부인",
+    "(wives) 아내들"
+   ],
+   "examples": [
+    {
+     "en": "This is my wife, Jiyoung.",
+     "ko": "이쪽은 제 아내 지영이에요."
+    },
+    {
+     "en": "His wife is a doctor.",
+     "ko": "그의 아내는 의사예요."
+    },
+    {
+     "en": "They are husband and wife.",
+     "ko": "그들은 부부예요."
+    },
+    {
+     "en": "The king and his wife lived in a castle.",
+     "ko": "왕과 왕비는 성에 살았어요."
+    },
+    {
+     "en": "He loves his wife very much.",
+     "ko": "그는 아내를 아주 사랑해요."
+    },
+    {
+     "en": "My uncle and his wife visited us.",
+     "ko": "삼촌 부부가 우리 집에 오셨어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "반의어",
+     "word": "husband",
+     "ko": "남편",
+     "en": "Her husband is tall."
+    },
+    {
+     "type": "변화형",
+     "word": "wives",
+     "ko": "아내들",
+     "en": "Their wives came."
+    },
+    {
+     "type": "연관어",
+     "word": "woman",
+     "ko": "여자",
+     "en": "A young woman."
+    },
+    {
+     "type": "연관어",
+     "word": "marry",
+     "ko": "결혼하다",
+     "en": "They got married."
+    },
+    {
+     "type": "연관어",
+     "word": "wedding",
+     "ko": "결혼식",
+     "en": "A beautiful wedding."
+    },
+    {
+     "type": "연관어",
+     "word": "family",
+     "ko": "가족",
+     "en": "A happy family."
+    }
+   ]
+  },
+  "1256": {
+   "word": "guess",
+   "overview": [
+    "guess는 '추측하다', '짐작하다', '알아맞히다'라는 뜻의 동사이자 '추측'이라는 명사입니다.",
+    "Guess what!(있잖아!, 맞혀 봐!)은 새 소식을 말하기 전에 쓰는 표현입니다.",
+    "I guess ~는 '~인 것 같아'라는 뜻으로 대화에서 자주 씁니다. (I guess so. = 그런 것 같아.) u는 소리 내지 않습니다."
+   ],
+   "easy": [
+    {
+     "word": "think",
+     "en": "I think it's right.",
+     "ko": "그게 맞는 것 같아."
+    },
+    {
+     "word": "suppose",
+     "en": "I suppose you're right.",
+     "ko": "네 말이 맞겠지."
+    }
+   ],
+   "etymology": [
+    "guess는 13세기쯤 쓰이기 시작한 단어로, 바이킹의 말이나 네덜란드어에서 들어왔다고 봅니다.",
+    "get(얻다)과 관련 있는 옛말에서 나왔다는 설이 있습니다. '답을 얻으려고 해 보다'라는 느낌입니다.",
+    "g 뒤의 u는 g를 '그' 소리로 읽게 하려고 넣은 글자입니다. guest(손님), guitar(기타)도 같습니다.",
+    "guess의 핵심 이미지는 '확실하지 않지만 짐작해 보기 🤔'입니다."
+   ],
+   "meanings": [
+    "추측하다, 짐작하다",
+    "알아맞히다",
+    "(I guess) ~인 것 같다",
+    "추측, 짐작 (명사)"
+   ],
+   "examples": [
+    {
+     "en": "Guess what I have in my hand.",
+     "ko": "내 손에 뭐가 있게."
+    },
+    {
+     "en": "Guess what! I won!",
+     "ko": "있잖아! 내가 이겼어!"
+    },
+    {
+     "en": "Can you guess my age?",
+     "ko": "내 나이 맞혀 볼래?"
+    },
+    {
+     "en": "I guess you're right.",
+     "ko": "네 말이 맞는 것 같아."
+    },
+    {
+     "en": "Good guess!",
+     "ko": "잘 맞혔어!"
+    },
+    {
+     "en": "I don't know. Just guess.",
+     "ko": "몰라도 괜찮아. 그냥 짐작해 봐."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "think",
+     "ko": "생각하다",
+     "en": "I think so."
+    },
+    {
+     "type": "유의어",
+     "word": "suppose",
+     "ko": "생각하다, 가정하다",
+     "en": "I suppose so."
+    },
+    {
+     "type": "연관어",
+     "word": "know",
+     "ko": "알다",
+     "en": "I know it."
+    },
+    {
+     "type": "연관어",
+     "word": "answer",
+     "ko": "답",
+     "en": "The right answer."
+    },
+    {
+     "type": "연관어",
+     "word": "quiz",
+     "ko": "퀴즈",
+     "en": "A fun quiz."
+    },
+    {
+     "type": "연관어",
+     "word": "maybe",
+     "ko": "아마",
+     "en": "Maybe it's blue."
+    }
+   ]
+  },
+  "2741": {
+   "word": "tomorrow",
+   "overview": [
+    "tomorrow는 '내일'이라는 뜻입니다. 명사로도, 부사로도 씁니다.",
+    "tomorrow 앞에는 on이나 in을 붙이지 않습니다. (See you tomorrow! = 내일 봐!)",
+    "tomorrow morning(내일 아침), the day after tomorrow(모레)처럼 씁니다. r이 두 개인 철자에 주의하세요."
+   ],
+   "easy": [
+    {
+     "word": "next day",
+     "en": "The next day, it rained.",
+     "ko": "다음 날 비가 왔어요."
+    },
+    {
+     "word": "future",
+     "en": "Think about the future.",
+     "ko": "미래를 생각해 봐."
+    }
+   ],
+   "etymology": [
+    "tomorrow는 고대 영어 tō morgenne에서 온 말입니다. tō(~에)와 morgen(아침)이 합쳐졌습니다.",
+    "원래 뜻은 '(다음 날) 아침에'였습니다.",
+    "morgen은 morning(아침), morrow(다음 날)와 같은 뿌리입니다.",
+    "today, tonight와 같은 방식으로 만들어진 단어입니다.",
+    "tomorrow의 핵심 이미지는 '자고 일어나면 오는 다음 날 아침'입니다."
+   ],
+   "meanings": [
+    "내일 (명사, 부사)",
+    "미래, 장래"
+   ],
+   "examples": [
+    {
+     "en": "See you tomorrow!",
+     "ko": "내일 봐!"
+    },
+    {
+     "en": "Tomorrow is Saturday.",
+     "ko": "내일은 토요일이에요."
+    },
+    {
+     "en": "I have a test tomorrow.",
+     "ko": "나는 내일 시험이 있어요."
+    },
+    {
+     "en": "It will be sunny tomorrow.",
+     "ko": "내일은 날씨가 맑을 거예요."
+    },
+    {
+     "en": "What are you doing tomorrow morning?",
+     "ko": "내일 아침에 뭐 해?"
+    },
+    {
+     "en": "We are going to Busan the day after tomorrow.",
+     "ko": "우리는 모레 부산에 가요."
+    }
+   ],
+   "together": [
+    {
+     "type": "반의어",
+     "word": "yesterday",
+     "ko": "어제",
+     "en": "It was yesterday."
+    },
+    {
+     "type": "연관어",
+     "word": "today",
+     "ko": "오늘",
+     "en": "Not today."
+    },
+    {
+     "type": "연관어",
+     "word": "tonight",
+     "ko": "오늘 밤",
+     "en": "See you tonight."
+    },
+    {
+     "type": "연관어",
+     "word": "morning",
+     "ko": "아침",
+     "en": "Good morning."
+    },
+    {
+     "type": "연관어",
+     "word": "next",
+     "ko": "다음의",
+     "en": "Next week."
+    },
+    {
+     "type": "연관어",
+     "word": "future",
+     "ko": "미래",
+     "en": "In the future."
+    }
+   ]
+  },
+  "1662": {
+   "word": "meet",
+   "overview": [
+    "meet는 '만나다'라는 뜻의 동사입니다.",
+    "Nice to meet you.(만나서 반가워요.)는 처음 만났을 때 쓰는 인사입니다. 다시 만날 때는 Nice to see you.라고 합니다.",
+    "약속해서 모일 때도 씁니다. (Let's meet at two. = 2시에 만나자.) 과거형은 met입니다. meat(고기)와 발음이 같습니다."
+   ],
+   "easy": [
+    {
+     "word": "see",
+     "en": "See you later.",
+     "ko": "나중에 봐."
+    },
+    {
+     "word": "join",
+     "en": "Join us for lunch.",
+     "ko": "점심 같이 먹자."
+    }
+   ],
+   "etymology": [
+    "meet는 고대 영어 mētan에서 온 단어로, '만나다', '마주치다'라는 뜻이었습니다.",
+    "mōt(모임)이라는 옛말과 같은 뿌리입니다.",
+    "meeting(회의, 모임)은 meet에서 나온 명사입니다.",
+    "meet의 핵심 이미지는 '두 사람이 마주치기 🤝'입니다."
+   ],
+   "meanings": [
+    "만나다",
+    "(처음) 알게 되다, 소개받다",
+    "모이다",
+    "(요구, 기준을) 충족하다",
+    "(길, 강이) 만나다, 합쳐지다"
+   ],
+   "examples": [
+    {
+     "en": "Nice to meet you.",
+     "ko": "만나서 반가워요."
+    },
+    {
+     "en": "Let's meet at the park.",
+     "ko": "공원에서 만나자."
+    },
+    {
+     "en": "I met my friend at the library.",
+     "ko": "나는 도서관에서 친구를 만났어요."
+    },
+    {
+     "en": "When did you first meet her?",
+     "ko": "그녀를 처음 언제 만났어?"
+    },
+    {
+     "en": "Our club meets every Friday.",
+     "ko": "우리 동아리는 매주 금요일에 모여요."
+    },
+    {
+     "en": "The two rivers meet here.",
+     "ko": "두 강이 여기서 만나요."
+    }
+   ],
+   "together": [
+    {
+     "type": "변화형",
+     "word": "met",
+     "ko": "만났다 (과거)",
+     "en": "We met yesterday."
+    },
+    {
+     "type": "파생어",
+     "word": "meeting",
+     "ko": "회의, 모임",
+     "en": "A class meeting."
+    },
+    {
+     "type": "반의어",
+     "word": "leave",
+     "ko": "떠나다",
+     "en": "Don't leave yet."
+    },
+    {
+     "type": "유의어",
+     "word": "see",
+     "ko": "만나다",
+     "en": "See you!"
+    },
+    {
+     "type": "연관어",
+     "word": "meat",
+     "ko": "고기 (발음 같음)",
+     "en": "I don't eat meat."
+    },
+    {
+     "type": "연관어",
+     "word": "friend",
+     "ko": "친구",
+     "en": "Meet my friend."
+    }
+   ]
+  },
+  "350": {
+   "word": "bring",
+   "overview": [
+    "bring은 '가져오다', '데려오다'라는 뜻의 동사입니다.",
+    "말하는 사람 쪽으로 가져올 때 씁니다. 반대로 저쪽으로 가져갈 때는 take를 씁니다.",
+    "bring 사람 물건 순서로 씁니다. (Bring me a cup. = 나한테 컵 좀 가져다줘.) 과거형은 brought입니다."
+   ],
+   "easy": [
+    {
+     "word": "carry",
+     "en": "Carry this to the kitchen.",
+     "ko": "이거 부엌으로 옮겨 줘."
+    },
+    {
+     "word": "get",
+     "en": "Get me some water.",
+     "ko": "물 좀 가져다줘."
+    }
+   ],
+   "etymology": [
+    "bring은 고대 영어 bringan에서 온 단어로, '가져오다'라는 뜻이었습니다.",
+    "독일어 bringen과 같은 뿌리입니다.",
+    "과거형 brought는 bring과 모양이 많이 달라서 따로 외워야 합니다.",
+    "bring의 핵심 이미지는 '이쪽으로 가지고 오기 ←'입니다."
+   ],
+   "meanings": [
+    "가져오다",
+    "데려오다",
+    "(결과를) 가져오다, 일으키다"
+   ],
+   "examples": [
+    {
+     "en": "Bring your book tomorrow.",
+     "ko": "내일 책을 가져와."
+    },
+    {
+     "en": "Can you bring me a pencil?",
+     "ko": "연필 좀 가져다줄래?"
+    },
+    {
+     "en": "I brought my lunch.",
+     "ko": "나는 도시락을 싸 왔어요."
+    },
+    {
+     "en": "You can bring your friend.",
+     "ko": "친구 데려와도 돼."
+    },
+    {
+     "en": "Don't forget to bring an umbrella.",
+     "ko": "우산 가져오는 거 잊지 마."
+    },
+    {
+     "en": "Spring brings flowers.",
+     "ko": "봄은 꽃을 가져와요."
+    }
+   ],
+   "together": [
+    {
+     "type": "변화형",
+     "word": "brought",
+     "ko": "가져왔다 (과거)",
+     "en": "She brought cake."
+    },
+    {
+     "type": "반의어",
+     "word": "take",
+     "ko": "가져가다",
+     "en": "Take it home."
+    },
+    {
+     "type": "유의어",
+     "word": "carry",
+     "ko": "나르다",
+     "en": "Carry the bag."
+    },
+    {
+     "type": "유의어",
+     "word": "get",
+     "ko": "가져오다",
+     "en": "Get the ball."
+    },
+    {
+     "type": "연관어",
+     "word": "come",
+     "ko": "오다",
+     "en": "Come with me."
+    },
+    {
+     "type": "연관어",
+     "word": "give",
+     "ko": "주다",
+     "en": "Give it to me."
+    }
+   ]
+  },
+  "2744": {
+   "word": "tonight",
+   "overview": [
+    "tonight는 '오늘 밤', '오늘 저녁'이라는 뜻입니다. 명사로도, 부사로도 씁니다.",
+    "tonight 앞에는 on이나 in을 붙이지 않습니다. (See you tonight. = 오늘 밤에 봐.)",
+    "last night는 '어젯밤', tomorrow night는 '내일 밤'입니다."
+   ],
+   "easy": [
+    {
+     "word": "this evening",
+     "en": "Call me this evening.",
+     "ko": "오늘 저녁에 전화해."
+    }
+   ],
+   "etymology": [
+    "tonight는 고대 영어 tō niht에서 온 말입니다. tō(~에)와 niht(밤)가 합쳐졌습니다.",
+    "글자 그대로 '이 밤에'라는 뜻입니다.",
+    "today, tomorrow와 같은 방식으로 만들어진 단어입니다.",
+    "gh는 소리 내지 않고 '투나이트'라고 읽습니다.",
+    "tonight의 핵심 이미지는 '오늘 해가 진 뒤의 밤'입니다."
+   ],
+   "meanings": [
+    "오늘 밤, 오늘 저녁 (명사, 부사)"
+   ],
+   "examples": [
+    {
+     "en": "What are you doing tonight?",
+     "ko": "오늘 밤에 뭐 해?"
+    },
+    {
+     "en": "See you tonight!",
+     "ko": "오늘 밤에 봐!"
+    },
+    {
+     "en": "It will be cold tonight.",
+     "ko": "오늘 밤은 추울 거예요."
+    },
+    {
+     "en": "We're having pizza tonight.",
+     "ko": "우리 오늘 저녁에 피자 먹어."
+    },
+    {
+     "en": "The moon is bright tonight.",
+     "ko": "오늘 밤 달이 밝아요."
+    },
+    {
+     "en": "Tonight's show starts at eight.",
+     "ko": "오늘 밤 공연은 8시에 시작해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "night",
+     "ko": "밤",
+     "en": "Good night."
+    },
+    {
+     "type": "연관어",
+     "word": "today",
+     "ko": "오늘",
+     "en": "Today is fun."
+    },
+    {
+     "type": "연관어",
+     "word": "tomorrow",
+     "ko": "내일",
+     "en": "See you tomorrow."
+    },
+    {
+     "type": "연관어",
+     "word": "evening",
+     "ko": "저녁",
+     "en": "In the evening."
+    },
+    {
+     "type": "연관어",
+     "word": "dinner",
+     "ko": "저녁 식사",
+     "en": "Dinner is ready."
+    },
+    {
+     "type": "연관어",
+     "word": "sleep",
+     "ko": "자다",
+     "en": "Sleep tight."
+    }
+   ]
+  },
+  "2280": {
+   "word": "run",
+   "overview": [
+    "run은 '달리다', '뛰다'라는 뜻의 동사입니다.",
+    "'(가게, 회사를) 운영하다', '(기계가) 돌아가다', '(물이) 흐르다'라는 뜻도 있습니다. (My mom runs a café. = 엄마는 카페를 운영하세요.)",
+    "run out of는 '~이 다 떨어지다'입니다. (We ran out of milk. = 우유가 다 떨어졌어.) 과거형은 ran입니다."
+   ],
+   "easy": [
+    {
+     "word": "jog",
+     "en": "I jog every morning.",
+     "ko": "나는 매일 아침 조깅해요."
+    },
+    {
+     "word": "hurry",
+     "en": "Hurry up!",
+     "ko": "서둘러!"
+    },
+    {
+     "word": "dash",
+     "en": "He dashed to the door.",
+     "ko": "그는 문으로 달려갔어요."
+    }
+   ],
+   "etymology": [
+    "run은 고대 영어 rinnan과 바이킹의 말 renna가 합쳐진 단어로, '달리다', '흐르다'라는 뜻이었습니다.",
+    "처음부터 '물이 흐르다'라는 뜻도 함께 있었습니다. 그래서 runny nose는 '콧물이 흐르는 코'입니다.",
+    "'멈추지 않고 계속 움직이다'라는 뜻에서 '기계가 돌아가다', '가게를 운영하다'가 나왔습니다.",
+    "runner는 '달리는 사람'입니다.",
+    "run의 핵심 이미지는 '멈추지 않고 빠르게 계속 움직이기'입니다."
+   ],
+   "meanings": [
+    "달리다, 뛰다",
+    "(가게, 회사를) 운영하다",
+    "(기계가) 작동하다, 돌아가다",
+    "(물, 코가) 흐르다",
+    "(run out of) ~이 다 떨어지다"
+   ],
+   "examples": [
+    {
+     "en": "Don't run in the hallway.",
+     "ko": "복도에서 뛰지 마."
+    },
+    {
+     "en": "I can run very fast.",
+     "ko": "나는 아주 빨리 달릴 수 있어요."
+    },
+    {
+     "en": "The dog ran after the ball.",
+     "ko": "개가 공을 쫓아 뛰어갔어요."
+    },
+    {
+     "en": "My uncle runs a bakery.",
+     "ko": "삼촌은 빵집을 운영하세요."
+    },
+    {
+     "en": "The water is running.",
+     "ko": "물이 흐르고 있어요."
+    },
+    {
+     "en": "We ran out of time.",
+     "ko": "우리는 시간이 다 떨어졌어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "변화형",
+     "word": "ran",
+     "ko": "달렸다 (과거)",
+     "en": "I ran home."
+    },
+    {
+     "type": "반의어",
+     "word": "walk",
+     "ko": "걷다",
+     "en": "Walk slowly."
+    },
+    {
+     "type": "유의어",
+     "word": "jog",
+     "ko": "조깅하다",
+     "en": "Let's jog."
+    },
+    {
+     "type": "파생어",
+     "word": "runner",
+     "ko": "달리는 사람",
+     "en": "A fast runner."
+    },
+    {
+     "type": "연관어",
+     "word": "race",
+     "ko": "경주",
+     "en": "Win the race."
+    },
+    {
+     "type": "연관어",
+     "word": "fast",
+     "ko": "빠르게",
+     "en": "Run fast."
+    }
+   ]
+  },
+  "1283": {
+   "word": "hard",
+   "overview": [
+    "hard는 '딱딱한', '단단한'이라는 뜻과 '어려운', '힘든'이라는 뜻을 가진 형용사입니다.",
+    "a hard rock(단단한 돌), a hard question(어려운 질문)처럼 씁니다.",
+    "부사로는 '열심히', '세게'라는 뜻입니다. (study hard = 열심히 공부하다) hardly는 '거의 ~않다'로 뜻이 전혀 다르니 주의하세요."
+   ],
+   "easy": [
+    {
+     "word": "difficult",
+     "en": "This puzzle is difficult.",
+     "ko": "이 퍼즐은 어려워요."
+    },
+    {
+     "word": "solid",
+     "en": "Ice is solid.",
+     "ko": "얼음은 고체예요."
+    },
+    {
+     "word": "tough",
+     "en": "It was a tough game.",
+     "ko": "힘든 경기였어요."
+    }
+   ],
+   "etymology": [
+    "hard는 고대 영어 heard에서 온 단어로, '단단한', '강한'이라는 뜻이었습니다.",
+    "그리스어 kratos(힘)와 같은 뿌리라고 봅니다. democracy(민주주의, 국민의 힘)의 -cracy도 먼 친척입니다.",
+    "'단단해서 잘 안 부서지는'이 '잘 안 풀리는', 즉 '어려운'이 되었습니다.",
+    "'힘을 세게 들이는'에서 '열심히'라는 뜻이 나왔습니다.",
+    "hard의 핵심 이미지는 '딱딱하고 힘이 드는'입니다."
+   ],
+   "meanings": [
+    "딱딱한, 단단한",
+    "어려운, 힘든",
+    "열심히 (부사)",
+    "세게, 심하게 (부사)"
+   ],
+   "examples": [
+    {
+     "en": "This bread is too hard.",
+     "ko": "이 빵은 너무 딱딱해요."
+    },
+    {
+     "en": "The test was very hard.",
+     "ko": "시험이 아주 어려웠어요."
+    },
+    {
+     "en": "Study hard!",
+     "ko": "열심히 공부해!"
+    },
+    {
+     "en": "It's raining hard.",
+     "ko": "비가 세차게 와요."
+    },
+    {
+     "en": "It's hard to wake up early.",
+     "ko": "일찍 일어나는 건 힘들어요."
+    },
+    {
+     "en": "She works hard every day.",
+     "ko": "그녀는 매일 열심히 일해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "반의어",
+     "word": "soft",
+     "ko": "부드러운",
+     "en": "A soft pillow."
+    },
+    {
+     "type": "반의어",
+     "word": "easy",
+     "ko": "쉬운",
+     "en": "An easy test."
+    },
+    {
+     "type": "유의어",
+     "word": "difficult",
+     "ko": "어려운",
+     "en": "A difficult job."
+    },
+    {
+     "type": "유의어",
+     "word": "tough",
+     "ko": "힘든, 질긴",
+     "en": "Tough meat."
+    },
+    {
+     "type": "파생어",
+     "word": "hardly",
+     "ko": "거의 ~않다",
+     "en": "I can hardly see."
+    },
+    {
+     "type": "연관어",
+     "word": "work",
+     "ko": "일하다",
+     "en": "Work hard."
+    }
+   ]
   }
  }
 }

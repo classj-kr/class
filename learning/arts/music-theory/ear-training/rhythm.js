@@ -30,6 +30,8 @@
     const STEM_TOP = 28;
     const HEAD_RX = 6.4;
     const HEAD_RY = 4.6;
+    /* 박이 시작하는 자리에서 음표머리 한가운데까지 */
+    const ONSET_PAD = 12;
 
     function make(tag, attrs, text) {
         const node = document.createElementNS(SVG_NS, tag);
@@ -261,10 +263,16 @@
             svg.append(make("text", { class: "rhythm-meter", x: 26, y: LINE_Y + 17 }, parts[1]));
         }
 
+        /*
+         * 음표와 쉼표는 제 길이의 한가운데가 아니라 시작하는 자리에 놓는다. 그래야
+         * 박 자리가 눈에 보이고, 긴 음표 뒤로는 그 길이만큼 빈자리가 남는다.
+         * 마디 전체를 쉬는 온쉼표만 마디 한가운데에 둔다.
+         */
         const xs = [];
         let position = 0;
         bar.forEach(event => {
-            xs.push(LEFT + position * BEAT_W + BEAT_W * VALUES[event.v].beats / 2);
+            const whole = bar.length === 1 && event.rest;
+            xs.push(whole ? LEFT + beats * BEAT_W / 2 : LEFT + position * BEAT_W + ONSET_PAD);
             position += VALUES[event.v].beats;
         });
 
