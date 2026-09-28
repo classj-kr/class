@@ -24,8 +24,8 @@ test("teacher and student school-election browser flow", { skip: process.env.RUN
   const screenshots = await mkdtemp(path.join(os.tmpdir(),"school-election-ui-"));
   const menu = await browser.newPage({ javaScriptEnabled:false, viewport:{width:1280,height:960} });
   await menu.goto(base+"/classtools/");
-  assert.equal(await menu.getByRole("link",{name:"🗳️ 학급선거",exact:true}).getAttribute("href"),"/vote/?mode=teacher");
-  assert.equal(await menu.getByRole("link",{name:"🏫 전교 임원선거",exact:true}).getAttribute("href"),"/school-election/?mode=teacher");
+  assert.equal(await menu.getByRole("link",{name:"투표",exact:true}).getAttribute("href"),"/vote/?mode=teacher");
+  assert.equal(await menu.getByRole("link",{name:"전교 임원선거",exact:true}).getAttribute("href"),"/school-election/?mode=teacher");
   await menu.locator(".teaching-tools-grid").screenshot({path:path.join(screenshots,"election-buttons.png")});
   await menu.close();
   const teacher=await browser.newPage({viewport:{width:1280,height:1000}});
@@ -49,7 +49,7 @@ test("teacher and student school-election browser flow", { skip: process.env.RUN
   const admin=await browser.newPage({viewport:{width:1280,height:1000}});
   admin.on("pageerror",(e)=>errors.push(e.message));
   await admin.goto(base+"/preview/as/11");
-  await admin.getByRole("heading",{name:"학교 전교선거",exact:true}).waitFor();
+  await admin.getByRole("heading",{name:"선거 목록",exact:true}).waitFor();
   await admin.getByRole("button",{name:"참여 현황 보기",exact:true}).waitFor();
   assert.equal(await admin.locator("#electionList .room-card").count(),1);
   assert.equal(await admin.getByRole("button",{name:"선거 데이터 삭제",exact:true}).count(),0);

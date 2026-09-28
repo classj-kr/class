@@ -43,6 +43,11 @@ h1,h2,h3,p{margin-top:0}
 .modeBtn.active{background:linear-gradient(#f0a878,#b6592c);color:#2a1204;border-color:var(--accent)}
 .modeBtn.active small{color:#4a2408}
 .modeBtn:disabled{cursor:not-allowed;opacity:.55}
+.spinToggle{display:flex;align-items:center;gap:10px;margin:4px 0 12px;font-weight:800;font-size:14px;cursor:pointer}
+.spinToggle input{width:20px;height:20px;accent-color:var(--accent);cursor:pointer}
+.spinToggle input:disabled{cursor:not-allowed}
+.spinToggle input:disabled + span{opacity:.7}
+.spinToggle small{color:#b7bcca;font-weight:600;font-size:11.5px}
 
 .playLayout{display:grid;grid-template-columns:1fr 230px;gap:16px;align-items:start}
 .playMain{min-width:0}
@@ -64,7 +69,8 @@ h1,h2,h3,p{margin-top:0}
 .spinLayer.ccw{animation-direction:reverse}
 @keyframes dobbleOrbit{to{transform:rotate(360deg)}}
 .symbol{position:absolute;width:29%;aspect-ratio:1/1;transform:translate(-50%,-50%);filter:drop-shadow(0 2px 3px #00000080)}
-.symbol img{width:100%;height:100%;object-fit:contain;display:block;transform:rotate(var(--rotate,0deg));animation:dobbleUpright var(--spin,56s) linear infinite}
+.symbol img{width:100%;height:100%;object-fit:contain;display:block;transform:rotate(var(--rotate,0deg))}
+.spinLayer .symbol img{animation:dobbleUpright var(--spin,56s) linear infinite}
 .spinLayer.ccw .symbol img{animation-direction:reverse}
 @keyframes dobbleUpright{from{transform:rotate(var(--rotate,0deg))}to{transform:rotate(calc(var(--rotate,0deg) - 360deg))}}
 .rock{width:100%;height:100%;animation:dobbleRock var(--rockTime,3.4s) ease-in-out infinite alternate}
@@ -199,6 +205,10 @@ body:has(#playArea:not(.hidden)) { padding: 60px 16px 16px; }
     <section id="lobbySetup" class="panel hidden">
       <div class="eyebrow">게임 방식</div>
       <div id="modeRow" class="modeRow"></div>
+      <label class="spinToggle">
+        <input id="spinToggle" type="checkbox" checked>
+        <span>그림 돌리기 <small id="spinHint">카드 판이 천천히 돌아갑니다</small></span>
+      </label>
 
       <h2>참가자 <span id="lobbyCount"></span></h2>
       <div id="playerList" class="playerList"></div>
@@ -411,7 +421,7 @@ function renderCard(container, symbols, clickable, spin) {
       const img = `<img src="${avatarUrl(symbol)}" alt="">`;
       return `<div class="symbol" data-symbol="${esc(symbol)}"
         style="top:${slot.top};left:${slot.left};width:${size}%;--rotate:${rotate}deg">
-        ${middle ? `<div class="rock" style="--rock:${rock}deg;--rockTime:${rockTime}s">${img}</div>` : img}</div>`;
+        ${middle && spin ? `<div class="rock" style="--rock:${rock}deg;--rockTime:${rockTime}s">${img}</div>` : img}</div>`;
     }).join("");
     container.innerHTML = spin
       ? `<div class="spinLayer${spin.ccw ? " ccw" : ""}" style="--spin:${spin.seconds}s">${inner}</div>`
@@ -449,6 +459,10 @@ function renderModeRow() {
     button.addEventListener("click", () => sendAction("SET_MODE", { mode: button.dataset.mode }));
   });
 
+  const spinOn = state.spin !== false;
+  $("spinToggle").checked = spinOn;
+  $("spinToggle").disabled = !isHost;
+  $("spinHint").textContent = spinOn ? "카드 판이 천천히 돌아갑니다" : "그림이 멈춘 채로 나옵니다";
 }
 
 function renderLobbySetup() {
@@ -519,8 +533,10 @@ function renderPlayArea() {
   $("centerLabel").textContent = isCatalog ? "기준 카드" : "중앙 카드";
   $("myLabel").textContent = isCatalog ? "새로 뒤집힌 카드 · 겹치는 그림을 찾아 누르세요" : "내 카드 · 겹치는 그림을 찾아 누르세요";
   // 어느 쪽이 시계 방향일지는 중앙 카드에서 뽑고, 내 카드는 늘 그 반대로 돌린다.
-  const centerSpin = spinStyle(state.centerCard, seededUnit((state.centerCard || []).join(",") + ":dir") < 0.5);
-  const mySpin = (cardSymbols) => spinStyle(cardSymbols, !centerSpin.ccw);
+  // 방장이 "그림 돌리기"를 끄면 spin 없이 그려 판과 그림이 모두 멈춰 있다.
+  const spinOn = state.spin !== false;
+  const centerSpin = spinOn ? spinStyle(state.centerCard, seededUnit((state.centerCard || []).join(",") + ":dir") < 0.5) : null;
+  const mySpin = (cardSymbols) => (spinOn ? spinStyle(cardSymbols, !centerSpin.ccw) : null);
   renderCard($("centerCard"), state.centerCard, false, centerSpin);
   const cooldownActive = updateCooldownUi();
   if (isCatalog) {
@@ -628,6 +644,7 @@ function init() {
   $("rulesOverlay").addEventListener("click", event => { if (event.target === $("rulesOverlay")) hideRules(); });
 
   $("beginGameBtn").addEventListener("click", () => sendAction("START"));
+  $("spinToggle").addEventListener("change", event => sendAction("SET_SPIN", { spin: event.target.checked }));
   $("rematchBtn").addEventListener("click", () => sendAction("NEW_GAME"));
   $("returnLobbyBtn").addEventListener("click", () => sendAction("RETURN_LOBBY"));
 }

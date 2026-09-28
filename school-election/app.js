@@ -65,7 +65,7 @@
   }
   async function loadList() {
     const data = await api("/mine"); $("electionList").replaceChildren();
-    $("electionListTitle").textContent = "학교 전교선거";
+    $("electionListTitle").textContent = "선거 목록";
     if (!data.elections.length) $("electionList").append(el("p", "표시할 전교선거가 없습니다.", "empty"));
     for (const e of data.elections) {
       const card = el("article", null, "room-card"), head = el("div", null, "room-card-head");

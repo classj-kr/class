@@ -95,6 +95,7 @@ function createGame(hostId, hostName) {
   return {
     phase: "lobby",
     mode: DEFAULT_MODE,
+    spin: true, // 카드 판이 빙글빙글 도는지. false면 그림이 멈춘 채로 나온다.
     players: [createPlayer(hostId, hostName || "방장")],
     centerPile: [], // (타워) 맨 끝이 현재 중앙 카드
     drawPile: [], // (카탈로그) 아직 안 뒤집은 카드 더미
@@ -112,6 +113,15 @@ function setMode(game, mode) {
   if (!MODES.includes(mode)) return { ok: false, error: "알 수 없는 규칙입니다." };
   game.mode = mode;
   game.log = `규칙이 "${MODE_LABELS[mode]}"(으)로 설정되었습니다.`;
+  return { ok: true };
+}
+
+// 그림 회전(동적)/고정도 대기실에서만 방장이 고른다.
+function setSpin(game, spin) {
+  if (game.phase !== "lobby") return { ok: false, error: "대기실에서만 설정을 바꿀 수 있습니다." };
+  if (typeof spin !== "boolean") return { ok: false, error: "알 수 없는 설정입니다." };
+  game.spin = spin;
+  game.log = spin ? "그림이 돌아가는 카드로 설정되었습니다." : "그림이 멈춘 카드로 설정되었습니다.";
   return { ok: true };
 }
 
@@ -303,6 +313,7 @@ function stateFor(game, viewerId, now = Date.now) {
   return {
     phase: game.phase,
     mode: game.mode,
+    spin: game.spin !== false,
     players: game.players.map(player => ({
       id: player.id,
       name: player.name,
@@ -339,6 +350,7 @@ module.exports = {
   removePlayer,
   canStart,
   setMode,
+  setSpin,
   startGame,
   claim,
   nextPenaltyEndsAt,

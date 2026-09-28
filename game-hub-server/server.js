@@ -3771,6 +3771,10 @@ wss.on("connection", (socket, request) => {
         result = playerId === room.hostId
           ? Dobble.setMode(game, message.mode)
           : { ok: false, error: "방장만 규칙을 바꿀 수 있습니다." };
+      } else if (action === "SET_SPIN") {
+        result = playerId === room.hostId
+          ? Dobble.setSpin(game, message.spin)
+          : { ok: false, error: "방장만 설정을 바꿀 수 있습니다." };
       } else if (action === "START") {
         result = playerId === room.hostId
           ? Dobble.startGame(game)
