@@ -15697,6 +15697,1964 @@
      "en": "The water drips."
     }
    ]
+  },
+  "1546": {
+   "word": "learn",
+   "overview": [
+    "learn은 '배우다', '익히다'라는 뜻의 동사입니다.",
+    "learn English(영어를 배우다), learn to swim(수영을 배우다)처럼 씁니다. 과거형은 learned 또는 learnt입니다.",
+    "'알게 되다'라는 뜻도 있습니다. (I learned the news today. = 오늘 그 소식을 알게 됐어.) study는 책을 보며 공부하는 것, learn은 새로 알게 되거나 익히는 것입니다."
+   ],
+   "easy": [
+    {
+     "word": "study",
+     "en": "I study math.",
+     "ko": "나는 수학을 공부해요."
+    },
+    {
+     "word": "find out",
+     "en": "I found out the truth.",
+     "ko": "나는 사실을 알아냈어요."
+    }
+   ],
+   "etymology": [
+    "learn은 고대 영어 leornian에서 온 단어로, '배우다', '공부하다'라는 뜻이었습니다.",
+    "'발자국을 따라가다'라는 뜻의 아주 오래된 말과 관련 있다고 봅니다. 선생님이 간 길을 따라가며 배우는 모습입니다.",
+    "lore(전해 오는 지식)도 같은 뿌리입니다.",
+    "learner(배우는 사람), learning(배움)은 learn에서 나온 단어입니다.",
+    "learn의 핵심 이미지는 '몰랐던 것을 새로 익히기 📚'입니다."
+   ],
+   "meanings": [
+    "배우다, 익히다",
+    "(learn to) ~하는 법을 배우다",
+    "알게 되다, 듣다",
+    "외우다"
+   ],
+   "examples": [
+    {
+     "en": "I'm learning English.",
+     "ko": "나는 영어를 배우고 있어요."
+    },
+    {
+     "en": "I learned to ride a bike at seven.",
+     "ko": "나는 일곱 살 때 자전거 타는 법을 배웠어요."
+    },
+    {
+     "en": "What did you learn at school today?",
+     "ko": "오늘 학교에서 뭐 배웠어?"
+    },
+    {
+     "en": "We learn from our mistakes.",
+     "ko": "우리는 실수를 통해 배워요."
+    },
+    {
+     "en": "Learn these words by heart.",
+     "ko": "이 단어들을 외우세요."
+    },
+    {
+     "en": "It's never too late to learn.",
+     "ko": "배우기에 너무 늦은 때는 없어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "반의어",
+     "word": "teach",
+     "ko": "가르치다",
+     "en": "Teach me."
+    },
+    {
+     "type": "반의어",
+     "word": "forget",
+     "ko": "잊다",
+     "en": "Don't forget."
+    },
+    {
+     "type": "유의어",
+     "word": "study",
+     "ko": "공부하다",
+     "en": "Study hard."
+    },
+    {
+     "type": "파생어",
+     "word": "learner",
+     "ko": "배우는 사람",
+     "en": "A fast learner."
+    },
+    {
+     "type": "연관어",
+     "word": "school",
+     "ko": "학교",
+     "en": "Go to school."
+    },
+    {
+     "type": "연관어",
+     "word": "know",
+     "ko": "알다",
+     "en": "I know it."
+    }
+   ]
+  },
+  "886": {
+   "word": "early",
+   "overview": [
+    "early는 '이른', '일찍'이라는 뜻입니다. 형용사와 부사가 모양이 같습니다. 반대는 late(늦은, 늦게)입니다.",
+    "get up early(일찍 일어나다), early morning(이른 아침)처럼 씁니다.",
+    "'초기의'라는 뜻도 있습니다. (in early spring = 초봄에) The early bird catches the worm.(일찍 일어나는 새가 벌레를 잡는다.)이라는 속담이 있습니다."
+   ],
+   "easy": [
+    {
+     "word": "soon",
+     "en": "Come back soon.",
+     "ko": "빨리 돌아와."
+    },
+    {
+     "word": "before",
+     "en": "Come before nine.",
+     "ko": "9시 전에 와."
+    }
+   ],
+   "etymology": [
+    "early는 고대 영어 ǣrlīce에서 온 단어입니다. ǣr(전에)와 -līce(~하게)가 합쳐졌습니다.",
+    "ǣr는 지금의 ere(~전에, 옛말)가 되었습니다.",
+    "그래서 early의 원래 뜻은 '앞서서', '먼저'입니다.",
+    "비교급은 earlier(더 일찍, 아까), 최상급은 earliest입니다.",
+    "early의 핵심 이미지는 '해 뜨자마자, 남보다 먼저 🌅'입니다."
+   ],
+   "meanings": [
+    "이른, 빠른 (형용사)",
+    "일찍 (부사)",
+    "초기의, 처음의",
+    "(earlier) 아까, 전에"
+   ],
+   "examples": [
+    {
+     "en": "I get up early every day.",
+     "ko": "나는 매일 일찍 일어나요."
+    },
+    {
+     "en": "You're early!",
+     "ko": "일찍 왔네!"
+    },
+    {
+     "en": "Let's go to bed early tonight.",
+     "ko": "오늘 밤엔 일찍 자자."
+    },
+    {
+     "en": "The flowers bloom in early spring.",
+     "ko": "그 꽃은 초봄에 피어요."
+    },
+    {
+     "en": "I called you earlier.",
+     "ko": "아까 너한테 전화했어."
+    },
+    {
+     "en": "The early bird catches the worm.",
+     "ko": "일찍 일어나는 새가 벌레를 잡는다."
+    }
+   ],
+   "together": [
+    {
+     "type": "반의어",
+     "word": "late",
+     "ko": "늦은",
+     "en": "Don't be late."
+    },
+    {
+     "type": "유의어",
+     "word": "soon",
+     "ko": "곧",
+     "en": "See you soon."
+    },
+    {
+     "type": "연관어",
+     "word": "morning",
+     "ko": "아침",
+     "en": "Early morning."
+    },
+    {
+     "type": "연관어",
+     "word": "before",
+     "ko": "~전에",
+     "en": "Before school."
+    },
+    {
+     "type": "연관어",
+     "word": "first",
+     "ko": "처음",
+     "en": "The first day."
+    },
+    {
+     "type": "연관어",
+     "word": "fast",
+     "ko": "빨리",
+     "en": "Run fast."
+    }
+   ]
+  },
+  "492": {
+   "word": "clean",
+   "overview": [
+    "clean은 '깨끗한'이라는 뜻의 형용사이자 '청소하다', '닦다'라는 동사입니다. 반대는 dirty(더러운)입니다.",
+    "clean hands(깨끗한 손), clean your room(방을 청소하다), clean up(말끔히 치우다)처럼 씁니다.",
+    "'공정한', '깨끗한(반칙 없는)'이라는 뜻도 있습니다. (a clean game = 반칙 없는 경기)"
+   ],
+   "easy": [
+    {
+     "word": "wash",
+     "en": "Wash your hands.",
+     "ko": "손 씻어."
+    },
+    {
+     "word": "tidy",
+     "en": "Tidy your desk.",
+     "ko": "책상 정리해."
+    },
+    {
+     "word": "clear",
+     "en": "The water is clear.",
+     "ko": "물이 맑아요."
+    }
+   ],
+   "etymology": [
+    "clean은 고대 영어 clǣne에서 온 단어로, '깨끗한', '순수한'이라는 뜻이었습니다.",
+    "원래는 '맑고 밝은'이라는 뜻의 옛말과 관련 있다고 봅니다.",
+    "cleaner(청소기, 청소부), cleaning(청소)은 clean에서 나온 단어입니다.",
+    "clean의 핵심 이미지는 '먼지 하나 없이 반짝이는 ✨'입니다."
+   ],
+   "meanings": [
+    "깨끗한 (형용사)",
+    "청소하다, 닦다 (동사)",
+    "(clean up) 말끔히 치우다",
+    "공정한, 반칙 없는",
+    "새것의, 쓰지 않은 (a clean sheet of paper)"
+   ],
+   "examples": [
+    {
+     "en": "Please clean your room.",
+     "ko": "방 좀 청소해."
+    },
+    {
+     "en": "My hands are clean.",
+     "ko": "내 손은 깨끗해요."
+    },
+    {
+     "en": "We cleaned the classroom together.",
+     "ko": "우리는 함께 교실을 청소했어요."
+    },
+    {
+     "en": "Let's clean up after lunch.",
+     "ko": "점심 먹고 치우자."
+    },
+    {
+     "en": "Drink clean water.",
+     "ko": "깨끗한 물을 마셔."
+    },
+    {
+     "en": "Take a clean sheet of paper.",
+     "ko": "새 종이 한 장을 가져가."
+    }
+   ],
+   "together": [
+    {
+     "type": "반의어",
+     "word": "dirty",
+     "ko": "더러운",
+     "en": "Dirty shoes."
+    },
+    {
+     "type": "유의어",
+     "word": "wash",
+     "ko": "씻다",
+     "en": "Wash the dishes."
+    },
+    {
+     "type": "유의어",
+     "word": "tidy",
+     "ko": "정돈된",
+     "en": "A tidy room."
+    },
+    {
+     "type": "파생어",
+     "word": "cleaner",
+     "ko": "청소기, 청소부",
+     "en": "A vacuum cleaner."
+    },
+    {
+     "type": "연관어",
+     "word": "clear",
+     "ko": "맑은",
+     "en": "Clear sky."
+    },
+    {
+     "type": "연관어",
+     "word": "soap",
+     "ko": "비누",
+     "en": "Use soap."
+    }
+   ]
+  },
+  "2992": {
+   "word": "yesterday",
+   "overview": [
+    "yesterday는 '어제'라는 뜻입니다. 명사로도, 부사로도 씁니다.",
+    "yesterday 앞에는 on이나 in을 붙이지 않습니다. (I saw him yesterday. = 어제 그를 봤어.) 과거 이야기라서 동사도 과거형을 씁니다.",
+    "yesterday morning(어제 아침), the day before yesterday(그저께)처럼 씁니다. 어젯밤은 last night입니다."
+   ],
+   "easy": [
+    {
+     "word": "the day before",
+     "en": "The day before, it rained.",
+     "ko": "그 전날 비가 왔어요."
+    }
+   ],
+   "etymology": [
+    "yesterday는 고대 영어 geostran dæg에서 온 말입니다. geostran(어제의)과 dæg(날)가 합쳐졌습니다.",
+    "geostran은 라틴어 heri(어제), 그리스어 khthes(어제)와 같은 아주 오래된 뿌리입니다.",
+    "today, tomorrow처럼 day가 들어간 시간 단어 가족입니다.",
+    "yesterday의 핵심 이미지는 '달력에서 오늘 바로 앞 칸'입니다."
+   ],
+   "meanings": [
+    "어제 (명사, 부사)",
+    "지난날, 과거"
+   ],
+   "examples": [
+    {
+     "en": "I went to the park yesterday.",
+     "ko": "나는 어제 공원에 갔어요."
+    },
+    {
+     "en": "Yesterday was my birthday.",
+     "ko": "어제는 내 생일이었어요."
+    },
+    {
+     "en": "It rained all day yesterday.",
+     "ko": "어제 하루 종일 비가 왔어요."
+    },
+    {
+     "en": "What did you do yesterday?",
+     "ko": "어제 뭐 했어?"
+    },
+    {
+     "en": "I met her the day before yesterday.",
+     "ko": "나는 그저께 그녀를 만났어요."
+    },
+    {
+     "en": "I remember it like it was yesterday.",
+     "ko": "그 일이 어제 일처럼 생생해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "반의어",
+     "word": "tomorrow",
+     "ko": "내일",
+     "en": "See you tomorrow."
+    },
+    {
+     "type": "연관어",
+     "word": "today",
+     "ko": "오늘",
+     "en": "Today is sunny."
+    },
+    {
+     "type": "연관어",
+     "word": "last",
+     "ko": "지난",
+     "en": "Last night."
+    },
+    {
+     "type": "연관어",
+     "word": "ago",
+     "ko": "~전에",
+     "en": "Two days ago."
+    },
+    {
+     "type": "연관어",
+     "word": "past",
+     "ko": "과거",
+     "en": "In the past."
+    },
+    {
+     "type": "연관어",
+     "word": "day",
+     "ko": "날",
+     "en": "A long day."
+    }
+   ]
+  },
+  "1955": {
+   "word": "picture",
+   "overview": [
+    "picture는 '그림', '사진'이라는 뜻의 명사입니다.",
+    "draw a picture(그림을 그리다), take a picture(사진을 찍다)처럼 씁니다.",
+    "'상상하다', '마음속에 그려 보다'라는 동사로도 씁니다. (Picture a sunny beach. = 햇살 가득한 해변을 떠올려 봐.)"
+   ],
+   "easy": [
+    {
+     "word": "photo",
+     "en": "Let's take a photo.",
+     "ko": "사진 찍자."
+    },
+    {
+     "word": "drawing",
+     "en": "What a nice drawing!",
+     "ko": "정말 멋진 그림이다!"
+    },
+    {
+     "word": "image",
+     "en": "Look at this image.",
+     "ko": "이 이미지를 봐."
+    }
+   ],
+   "etymology": [
+    "picture는 라틴어 pictūra에서 온 단어로, '그림 그리기', '그림'이라는 뜻이었습니다.",
+    "pingere(칠하다, 그리다)에서 나온 말입니다.",
+    "paint(칠하다), pigment(물감, 색소)도 같은 뿌리입니다.",
+    "사진기가 생긴 뒤에는 '사진'이라는 뜻도 생겼습니다.",
+    "picture의 핵심 이미지는 '종이에 담긴 그림이나 사진 🖼'입니다."
+   ],
+   "meanings": [
+    "그림",
+    "사진",
+    "(마음속의) 모습, 이미지",
+    "상상하다, 마음속에 그리다 (동사)",
+    "영화 (옛 표현)"
+   ],
+   "examples": [
+    {
+     "en": "Draw a picture of your family.",
+     "ko": "가족 그림을 그려 보세요."
+    },
+    {
+     "en": "Can I take a picture?",
+     "ko": "사진 찍어도 돼요?"
+    },
+    {
+     "en": "There's a picture on the wall.",
+     "ko": "벽에 그림이 걸려 있어요."
+    },
+    {
+     "en": "This book has lots of pictures.",
+     "ko": "이 책에는 그림이 많아요."
+    },
+    {
+     "en": "Picture yourself on the moon.",
+     "ko": "달 위에 있는 네 모습을 상상해 봐."
+    },
+    {
+     "en": "She is in the picture.",
+     "ko": "그녀가 사진 속에 있어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "photo",
+     "ko": "사진",
+     "en": "A family photo."
+    },
+    {
+     "type": "유의어",
+     "word": "image",
+     "ko": "이미지",
+     "en": "A clear image."
+    },
+    {
+     "type": "연관어",
+     "word": "draw",
+     "ko": "그리다",
+     "en": "Draw a cat."
+    },
+    {
+     "type": "연관어",
+     "word": "paint",
+     "ko": "색칠하다",
+     "en": "Paint the wall."
+    },
+    {
+     "type": "연관어",
+     "word": "camera",
+     "ko": "카메라",
+     "en": "A new camera."
+    },
+    {
+     "type": "연관어",
+     "word": "imagine",
+     "ko": "상상하다",
+     "en": "Imagine that."
+    }
+   ]
+  },
+  "1522": {
+   "word": "land",
+   "overview": [
+    "land는 '땅', '육지'라는 뜻의 명사입니다. 바다(sea)와 반대되는 곳입니다.",
+    "'나라', '지역'이라는 뜻도 있습니다. (a faraway land = 먼 나라)",
+    "동사로는 비행기가 '착륙하다'라는 뜻입니다. 반대는 take off(이륙하다)입니다. (The plane landed. = 비행기가 착륙했어요.)"
+   ],
+   "easy": [
+    {
+     "word": "ground",
+     "en": "Sit on the ground.",
+     "ko": "땅에 앉아."
+    },
+    {
+     "word": "earth",
+     "en": "The earth is soft.",
+     "ko": "땅이 부드러워요."
+    },
+    {
+     "word": "country",
+     "en": "A big country.",
+     "ko": "큰 나라."
+    }
+   ],
+   "etymology": [
+    "land는 고대 영어 land에서 온 단어로, '땅', '나라'라는 뜻이었습니다.",
+    "독일어 Land(땅, 나라)와 같은 뿌리입니다.",
+    "England(잉글랜드)는 '앵글족의 땅', Finland(핀란드)는 '핀족의 땅'이라는 뜻입니다.",
+    "'땅에 내려앉다'에서 '착륙하다'라는 동사 뜻이 생겼습니다.",
+    "land의 핵심 이미지는 '바다가 아닌 단단한 땅 🏝'입니다."
+   ],
+   "meanings": [
+    "땅, 육지",
+    "토지, 땅 (소유)",
+    "나라, 지역",
+    "착륙하다 (동사)",
+    "(땅에) 떨어지다, 내려앉다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "Frogs live on land and in water.",
+     "ko": "개구리는 땅과 물에서 살아요."
+    },
+    {
+     "en": "The plane will land soon.",
+     "ko": "비행기가 곧 착륙할 거예요."
+    },
+    {
+     "en": "My grandpa has a lot of land.",
+     "ko": "우리 할아버지는 땅이 많으세요."
+    },
+    {
+     "en": "They traveled to a faraway land.",
+     "ko": "그들은 먼 나라로 여행을 떠났어요."
+    },
+    {
+     "en": "The bird landed on the roof.",
+     "ko": "새가 지붕 위에 내려앉았어요."
+    },
+    {
+     "en": "After a long trip, we saw land.",
+     "ko": "긴 항해 끝에 우리는 육지를 봤어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "반의어",
+     "word": "sea",
+     "ko": "바다",
+     "en": "The deep sea."
+    },
+    {
+     "type": "반의어",
+     "word": "take off",
+     "ko": "이륙하다",
+     "en": "The plane took off."
+    },
+    {
+     "type": "유의어",
+     "word": "ground",
+     "ko": "땅",
+     "en": "On the ground."
+    },
+    {
+     "type": "유의어",
+     "word": "earth",
+     "ko": "땅, 흙",
+     "en": "Dig the earth."
+    },
+    {
+     "type": "연관어",
+     "word": "island",
+     "ko": "섬",
+     "en": "A small island."
+    },
+    {
+     "type": "연관어",
+     "word": "airplane",
+     "ko": "비행기",
+     "en": "A big airplane."
+    }
+   ]
+  },
+  "1014": {
+   "word": "eye",
+   "overview": [
+    "eye는 '눈'이라는 뜻의 명사입니다. 두 눈은 eyes입니다.",
+    "open your eyes(눈을 뜨다), close your eyes(눈을 감다), blue eyes(파란 눈)처럼 씁니다.",
+    "keep an eye on ~은 '~을 잘 지켜보다'라는 뜻입니다. eyebrow는 '눈썹', eyelash는 '속눈썹'입니다."
+   ],
+   "easy": [
+    {
+     "word": "sight",
+     "en": "He lost his sight.",
+     "ko": "그는 시력을 잃었어요."
+    },
+    {
+     "word": "look",
+     "en": "Take a look.",
+     "ko": "한번 봐."
+    }
+   ],
+   "etymology": [
+    "eye는 고대 영어 ēage에서 온 단어로, '눈'이라는 뜻이었습니다.",
+    "라틴어 oculus(눈)와 같은 아주 오래된 뿌리입니다. 안경을 뜻하는 ocular(눈의)도 먼 친척입니다.",
+    "모양은 바뀌었지만 뜻은 수천 년 동안 거의 그대로입니다.",
+    "eyebrow(눈썹), eyeball(눈알)은 eye가 들어간 단어입니다.",
+    "eye의 핵심 이미지는 '세상을 보는 눈 👀'입니다."
+   ],
+   "meanings": [
+    "눈",
+    "시력, 보는 힘",
+    "보는 눈, 안목",
+    "(바늘의) 귀, (태풍의) 눈"
+   ],
+   "examples": [
+    {
+     "en": "Close your eyes and make a wish.",
+     "ko": "눈을 감고 소원을 빌어."
+    },
+    {
+     "en": "She has big brown eyes.",
+     "ko": "그녀는 크고 갈색인 눈을 가졌어요."
+    },
+    {
+     "en": "Open your eyes.",
+     "ko": "눈을 떠."
+    },
+    {
+     "en": "Can you keep an eye on my bag?",
+     "ko": "내 가방 좀 지켜봐 줄래?"
+    },
+    {
+     "en": "I have something in my eye.",
+     "ko": "눈에 뭐가 들어갔어."
+    },
+    {
+     "en": "The eye of the storm is calm.",
+     "ko": "태풍의 눈은 고요해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "see",
+     "ko": "보다",
+     "en": "I can see."
+    },
+    {
+     "type": "연관어",
+     "word": "look",
+     "ko": "보다",
+     "en": "Look at me."
+    },
+    {
+     "type": "연관어",
+     "word": "face",
+     "ko": "얼굴",
+     "en": "A round face."
+    },
+    {
+     "type": "파생어",
+     "word": "eyebrow",
+     "ko": "눈썹",
+     "en": "Thick eyebrows."
+    },
+    {
+     "type": "연관어",
+     "word": "glasses",
+     "ko": "안경",
+     "en": "Wear glasses."
+    },
+    {
+     "type": "연관어",
+     "word": "tear",
+     "ko": "눈물",
+     "en": "Tears of joy."
+    }
+   ]
+  },
+  "2119": {
+   "word": "quick",
+   "overview": [
+    "quick은 '빠른', '재빠른'이라는 뜻의 형용사입니다. 반대는 slow(느린)입니다.",
+    "a quick lunch(간단한 점심), a quick question(짧은 질문 하나)처럼 '짧은 시간에 끝나는'이라는 느낌이 있습니다.",
+    "Be quick!(빨리 해!)처럼 씁니다. quickly는 '빨리'라는 부사입니다."
+   ],
+   "easy": [
+    {
+     "word": "fast",
+     "en": "He runs fast.",
+     "ko": "그는 빨리 달려요."
+    },
+    {
+     "word": "short",
+     "en": "It was a short trip.",
+     "ko": "짧은 여행이었어요."
+    }
+   ],
+   "etymology": [
+    "quick은 고대 영어 cwic에서 온 단어로, 원래 뜻은 놀랍게도 '살아 있는'이었습니다.",
+    "살아 있는 것은 움직이고, 움직이는 것은 빠르다는 생각에서 '재빠른'이라는 뜻이 생겼습니다.",
+    "지금도 quicksand(흘러내리는 모래, 살아 있는 듯 움직이는 모래)에 옛 뜻이 남아 있습니다.",
+    "quickly(빨리)는 quick에서 나온 부사입니다.",
+    "quick의 핵심 이미지는 '재빠르게 휙 ⚡'입니다."
+   ],
+   "meanings": [
+    "빠른, 재빠른",
+    "짧은, 잠깐의",
+    "눈치 빠른, 영리한"
+   ],
+   "examples": [
+    {
+     "en": "Be quick! The bus is here.",
+     "ko": "빨리 해! 버스 왔어."
+    },
+    {
+     "en": "Can I ask a quick question?",
+     "ko": "짧게 질문 하나 해도 돼요?"
+    },
+    {
+     "en": "We had a quick lunch.",
+     "ko": "우리는 점심을 간단히 먹었어요."
+    },
+    {
+     "en": "She is a quick learner.",
+     "ko": "그녀는 배우는 게 빨라요."
+    },
+    {
+     "en": "He gave a quick answer.",
+     "ko": "그는 재빨리 대답했어요."
+    },
+    {
+     "en": "Come here quickly!",
+     "ko": "빨리 이리 와!"
+    }
+   ],
+   "together": [
+    {
+     "type": "반의어",
+     "word": "slow",
+     "ko": "느린",
+     "en": "A slow snail."
+    },
+    {
+     "type": "유의어",
+     "word": "fast",
+     "ko": "빠른",
+     "en": "A fast car."
+    },
+    {
+     "type": "파생어",
+     "word": "quickly",
+     "ko": "빨리",
+     "en": "Eat quickly."
+    },
+    {
+     "type": "연관어",
+     "word": "hurry",
+     "ko": "서두르다",
+     "en": "Hurry up."
+    },
+    {
+     "type": "연관어",
+     "word": "speed",
+     "ko": "속도",
+     "en": "Full speed."
+    },
+    {
+     "type": "연관어",
+     "word": "short",
+     "ko": "짧은",
+     "en": "A short break."
+    }
+   ]
+  },
+  "2566": {
+   "word": "strong",
+   "overview": [
+    "strong은 '강한', '힘센', '튼튼한'이라는 뜻의 형용사입니다. 반대는 weak(약한)입니다.",
+    "a strong man(힘센 남자), strong wind(강한 바람), a strong box(튼튼한 상자)처럼 씁니다.",
+    "맛이나 냄새가 '진한'이라는 뜻도 있습니다. (strong coffee = 진한 커피) strength는 '힘'이라는 명사입니다."
+   ],
+   "easy": [
+    {
+     "word": "powerful",
+     "en": "A powerful engine.",
+     "ko": "강력한 엔진."
+    },
+    {
+     "word": "tough",
+     "en": "She is tough.",
+     "ko": "그녀는 강인해요."
+    },
+    {
+     "word": "healthy",
+     "en": "Stay healthy.",
+     "ko": "건강하게 지내."
+    }
+   ],
+   "etymology": [
+    "strong은 고대 영어 strang에서 온 단어로, '힘센', '단단한'이라는 뜻이었습니다.",
+    "'팽팽하게 당겨진'이라는 뜻의 아주 오래된 말과 관련 있다고 봅니다. string(끈)도 같은 뿌리입니다.",
+    "strength(힘)는 strong에서 나온 명사입니다. long - length와 같은 방식입니다.",
+    "strong의 핵심 이미지는 '팔에 힘이 불끈 💪'입니다."
+   ],
+   "meanings": [
+    "강한, 힘센",
+    "튼튼한, 단단한",
+    "(맛, 냄새가) 진한, 독한",
+    "(바람, 비가) 센",
+    "(마음이) 굳센, 강한"
+   ],
+   "examples": [
+    {
+     "en": "My dad is very strong.",
+     "ko": "우리 아빠는 힘이 아주 세요."
+    },
+    {
+     "en": "Eat vegetables to be strong.",
+     "ko": "튼튼해지려면 채소를 먹어."
+    },
+    {
+     "en": "The wind is strong today.",
+     "ko": "오늘은 바람이 세요."
+    },
+    {
+     "en": "This coffee is too strong.",
+     "ko": "이 커피는 너무 진해요."
+    },
+    {
+     "en": "She is a strong swimmer.",
+     "ko": "그녀는 수영을 잘해요."
+    },
+    {
+     "en": "Be strong. You can do it.",
+     "ko": "힘내. 너는 할 수 있어."
+    }
+   ],
+   "together": [
+    {
+     "type": "반의어",
+     "word": "weak",
+     "ko": "약한",
+     "en": "I feel weak."
+    },
+    {
+     "type": "유의어",
+     "word": "powerful",
+     "ko": "강력한",
+     "en": "A powerful storm."
+    },
+    {
+     "type": "유의어",
+     "word": "tough",
+     "ko": "강인한",
+     "en": "A tough job."
+    },
+    {
+     "type": "파생어",
+     "word": "strength",
+     "ko": "힘",
+     "en": "Great strength."
+    },
+    {
+     "type": "연관어",
+     "word": "power",
+     "ko": "힘",
+     "en": "Solar power."
+    },
+    {
+     "type": "연관어",
+     "word": "muscle",
+     "ko": "근육",
+     "en": "Strong muscles."
+    }
+   ]
+  },
+  "37": {
+   "word": "act",
+   "overview": [
+    "act는 '행동하다'라는 뜻의 동사이자 '행동', '행위'라는 명사입니다.",
+    "'연기하다'라는 뜻도 있습니다. (act in a play = 연극에서 연기하다) actor는 '배우'입니다.",
+    "'(연극의) 막'이나 '법률'이라는 뜻의 명사로도 씁니다. (Act 1 = 1막) act like ~는 '~처럼 행동하다'입니다."
+   ],
+   "easy": [
+    {
+     "word": "do",
+     "en": "What should I do?",
+     "ko": "나 뭘 해야 해?"
+    },
+    {
+     "word": "behave",
+     "en": "Behave yourself.",
+     "ko": "얌전히 굴어."
+    },
+    {
+     "word": "play",
+     "en": "She played Snow White.",
+     "ko": "그녀는 백설공주 역을 맡았어요."
+    }
+   ],
+   "etymology": [
+    "act는 라틴어 āctum에서 온 단어로, '행해진 것', '한 일'이라는 뜻이었습니다.",
+    "agere(움직이다, 하다)에서 나온 말입니다.",
+    "action(행동), active(활동적인), actor(배우, 행동하는 사람)도 같은 뿌리입니다.",
+    "'무대 위에서 움직이며 행동하다'에서 '연기하다'라는 뜻이 생겼습니다.",
+    "act의 핵심 이미지는 '실제로 움직여 해 보이기 🎭'입니다."
+   ],
+   "meanings": [
+    "행동하다, 움직이다 (동사)",
+    "연기하다 (동사)",
+    "~처럼 굴다 (act like)",
+    "행동, 행위 (명사)",
+    "(연극의) 막, 법률 (명사)"
+   ],
+   "examples": [
+    {
+     "en": "We must act now.",
+     "ko": "우리는 지금 행동해야 해요."
+    },
+    {
+     "en": "She acts in the school play.",
+     "ko": "그녀는 학교 연극에서 연기해요."
+    },
+    {
+     "en": "Don't act like a baby.",
+     "ko": "아기처럼 굴지 마."
+    },
+    {
+     "en": "Helping others is a kind act.",
+     "ko": "남을 돕는 건 친절한 행동이에요."
+    },
+    {
+     "en": "My brother wants to be an actor.",
+     "ko": "내 동생은 배우가 되고 싶어 해요."
+    },
+    {
+     "en": "The play has three acts.",
+     "ko": "그 연극은 3막으로 되어 있어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "do",
+     "ko": "하다",
+     "en": "Do something."
+    },
+    {
+     "type": "유의어",
+     "word": "behave",
+     "ko": "행동하다",
+     "en": "Behave well."
+    },
+    {
+     "type": "파생어",
+     "word": "actor",
+     "ko": "배우",
+     "en": "A famous actor."
+    },
+    {
+     "type": "파생어",
+     "word": "action",
+     "ko": "행동",
+     "en": "Take action."
+    },
+    {
+     "type": "파생어",
+     "word": "active",
+     "ko": "활동적인",
+     "en": "An active kid."
+    },
+    {
+     "type": "연관어",
+     "word": "play",
+     "ko": "연극",
+     "en": "A school play."
+    }
+   ]
+  },
+  "1224": {
+   "word": "goodbye",
+   "overview": [
+    "goodbye는 '안녕', '잘 가'라는 뜻의 헤어질 때 인사입니다. 반대는 hello(만날 때 인사)입니다.",
+    "say goodbye(작별 인사를 하다)처럼 씁니다. 짧게 bye, bye-bye라고도 합니다.",
+    "See you!(또 봐!), See you later!(나중에 봐!)도 헤어질 때 자주 쓰는 인사입니다."
+   ],
+   "easy": [
+    {
+     "word": "bye",
+     "en": "Bye! See you.",
+     "ko": "안녕! 또 봐."
+    },
+    {
+     "word": "see you",
+     "en": "See you tomorrow!",
+     "ko": "내일 봐!"
+    }
+   ],
+   "etymology": [
+    "goodbye는 16세기의 인사말 God be with you(신이 당신과 함께하기를)가 줄어든 말입니다.",
+    "빨리 말하다 보니 God be wy you → godbwye → goodbye처럼 짧아졌습니다.",
+    "good day, good night 같은 인사의 영향으로 God이 good으로 바뀌었습니다.",
+    "goodbye의 핵심 이미지는 '손 흔들며 헤어지기 👋'입니다."
+   ],
+   "meanings": [
+    "안녕, 잘 가 (헤어질 때 인사)",
+    "작별, 작별 인사 (명사)"
+   ],
+   "examples": [
+    {
+     "en": "Goodbye, see you tomorrow!",
+     "ko": "안녕, 내일 봐!"
+    },
+    {
+     "en": "Say goodbye to your friends.",
+     "ko": "친구들에게 작별 인사해."
+    },
+    {
+     "en": "He left without saying goodbye.",
+     "ko": "그는 인사도 없이 떠났어요."
+    },
+    {
+     "en": "We waved goodbye.",
+     "ko": "우리는 손을 흔들며 작별했어요."
+    },
+    {
+     "en": "It's hard to say goodbye.",
+     "ko": "작별 인사를 하기가 힘들어요."
+    },
+    {
+     "en": "Goodbye, everyone!",
+     "ko": "모두 안녕히 계세요!"
+    }
+   ],
+   "together": [
+    {
+     "type": "반의어",
+     "word": "hello",
+     "ko": "안녕 (만날 때)",
+     "en": "Hello, friends!"
+    },
+    {
+     "type": "유의어",
+     "word": "bye",
+     "ko": "안녕",
+     "en": "Bye for now."
+    },
+    {
+     "type": "연관어",
+     "word": "leave",
+     "ko": "떠나다",
+     "en": "Time to leave."
+    },
+    {
+     "type": "연관어",
+     "word": "wave",
+     "ko": "손을 흔들다",
+     "en": "Wave your hand."
+    },
+    {
+     "type": "연관어",
+     "word": "see you",
+     "ko": "또 봐",
+     "en": "See you later."
+    },
+    {
+     "type": "연관어",
+     "word": "farewell",
+     "ko": "작별",
+     "en": "A farewell party."
+    }
+   ]
+  },
+  "2922": {
+   "word": "wedding",
+   "overview": [
+    "wedding은 '결혼식'이라는 뜻의 명사입니다.",
+    "go to a wedding(결혼식에 가다), a wedding dress(웨딩드레스), a wedding ring(결혼반지)처럼 씁니다.",
+    "marry는 '결혼하다'라는 동사, marriage는 '결혼(생활)', wedding은 '결혼식'입니다."
+   ],
+   "easy": [
+    {
+     "word": "marriage",
+     "en": "A happy marriage.",
+     "ko": "행복한 결혼 생활."
+    },
+    {
+     "word": "party",
+     "en": "It was a big party.",
+     "ko": "큰 잔치였어요."
+    }
+   ],
+   "etymology": [
+    "wedding은 고대 영어 weddung에서 온 단어로, 원래 뜻은 '약속', '서약'이었습니다.",
+    "wed(결혼하다, 약속하다)에 -ing가 붙은 말입니다.",
+    "옛날에는 결혼할 때 두 집안이 서로 약속을 하고 증표를 주고받았습니다.",
+    "'약속의 의식'이 '결혼식'이 되었습니다.",
+    "wedding의 핵심 이미지는 '신랑 신부가 약속하는 날 💒'입니다."
+   ],
+   "meanings": [
+    "결혼식, 혼례",
+    "결혼의 (형용사처럼) (wedding cake)"
+   ],
+   "examples": [
+    {
+     "en": "My aunt's wedding is next month.",
+     "ko": "우리 이모 결혼식이 다음 달이에요."
+    },
+    {
+     "en": "We went to a wedding on Saturday.",
+     "ko": "우리는 토요일에 결혼식에 갔어요."
+    },
+    {
+     "en": "The bride wore a white wedding dress.",
+     "ko": "신부는 하얀 웨딩드레스를 입었어요."
+    },
+    {
+     "en": "The wedding cake was huge.",
+     "ko": "웨딩 케이크가 엄청 컸어요."
+    },
+    {
+     "en": "Today is my parents' wedding anniversary.",
+     "ko": "오늘은 우리 부모님 결혼기념일이에요."
+    },
+    {
+     "en": "She showed me her wedding ring.",
+     "ko": "그녀는 나에게 결혼반지를 보여 줬어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "marry",
+     "ko": "결혼하다",
+     "en": "Marry me."
+    },
+    {
+     "type": "연관어",
+     "word": "bride",
+     "ko": "신부",
+     "en": "A happy bride."
+    },
+    {
+     "type": "연관어",
+     "word": "husband",
+     "ko": "남편",
+     "en": "Her husband."
+    },
+    {
+     "type": "연관어",
+     "word": "wife",
+     "ko": "아내",
+     "en": "His wife."
+    },
+    {
+     "type": "연관어",
+     "word": "ring",
+     "ko": "반지",
+     "en": "A gold ring."
+    },
+    {
+     "type": "연관어",
+     "word": "party",
+     "ko": "파티",
+     "en": "A big party."
+    }
+   ]
+  },
+  "1906": {
+   "word": "pass",
+   "overview": [
+    "pass는 '지나가다', '통과하다'라는 뜻의 동사입니다.",
+    "시험에 '합격하다'(pass the test), 물건을 '건네주다'(Pass me the salt. = 소금 좀 건네줘.)라는 뜻으로도 씁니다.",
+    "시간이 '흐르다'(Time passes fast.), 공을 '패스하다'라는 뜻도 있습니다. 명사로는 '통행증', '패스'입니다."
+   ],
+   "easy": [
+    {
+     "word": "go by",
+     "en": "Time goes by.",
+     "ko": "시간이 흘러가요."
+    },
+    {
+     "word": "hand",
+     "en": "Hand me the book.",
+     "ko": "책 좀 건네줘."
+    },
+    {
+     "word": "succeed",
+     "en": "I succeeded!",
+     "ko": "나 성공했어!"
+    }
+   ],
+   "etymology": [
+    "pass는 라틴어 passus(걸음)에서 온 단어입니다.",
+    "프랑스어 passer(지나가다)를 거쳐 영어에 들어왔습니다.",
+    "'한 걸음씩 걸어서 지나가다'가 '통과하다', '(시험을) 넘어가다', '건네다'로 넓어졌습니다.",
+    "passport(여권, 항구를 지나가는 증명서), passenger(승객, 지나가는 사람)도 같은 뿌리입니다.",
+    "pass의 핵심 이미지는 '옆을 휙 지나가거나 넘겨주기 ➡'입니다."
+   ],
+   "meanings": [
+    "지나가다, 통과하다",
+    "(시험에) 합격하다",
+    "건네주다, (공을) 패스하다",
+    "(시간이) 흐르다",
+    "통행증, 패스 (명사)"
+   ],
+   "examples": [
+    {
+     "en": "I passed the test!",
+     "ko": "나 시험에 합격했어!"
+    },
+    {
+     "en": "Can you pass me the salt?",
+     "ko": "소금 좀 건네줄래?"
+    },
+    {
+     "en": "A bus passed by.",
+     "ko": "버스 한 대가 지나갔어요."
+    },
+    {
+     "en": "Time passes quickly.",
+     "ko": "시간이 빨리 흘러요."
+    },
+    {
+     "en": "He passed the ball to me.",
+     "ko": "그가 나에게 공을 패스했어요."
+    },
+    {
+     "en": "Show your pass at the gate.",
+     "ko": "입구에서 출입증을 보여 주세요."
+    }
+   ],
+   "together": [
+    {
+     "type": "반의어",
+     "word": "fail",
+     "ko": "떨어지다, 실패하다",
+     "en": "Don't fail."
+    },
+    {
+     "type": "유의어",
+     "word": "go by",
+     "ko": "지나가다",
+     "en": "Days go by."
+    },
+    {
+     "type": "유의어",
+     "word": "hand",
+     "ko": "건네주다",
+     "en": "Hand it over."
+    },
+    {
+     "type": "파생어",
+     "word": "passenger",
+     "ko": "승객",
+     "en": "Bus passengers."
+    },
+    {
+     "type": "파생어",
+     "word": "passport",
+     "ko": "여권",
+     "en": "My passport."
+    },
+    {
+     "type": "연관어",
+     "word": "test",
+     "ko": "시험",
+     "en": "A hard test."
+    }
+   ]
+  },
+  "489": {
+   "word": "class",
+   "overview": [
+    "class는 '수업', '반', '학급'이라는 뜻의 명사입니다. 여러 개는 classes입니다.",
+    "English class(영어 수업), in class(수업 중에), my class(우리 반)처럼 씁니다. classmate는 '반 친구'입니다.",
+    "'등급', '계층'이라는 뜻도 있습니다. (first class = 1등석)"
+   ],
+   "easy": [
+    {
+     "word": "lesson",
+     "en": "I have a piano lesson.",
+     "ko": "나는 피아노 수업이 있어요."
+    },
+    {
+     "word": "group",
+     "en": "Work in groups.",
+     "ko": "모둠으로 활동하세요."
+    },
+    {
+     "word": "grade",
+     "en": "I'm in fifth grade.",
+     "ko": "나는 5학년이에요."
+    }
+   ],
+   "etymology": [
+    "class는 라틴어 classis에서 온 단어로, 원래 뜻은 '(시민을 나눈) 무리', '등급'이었습니다.",
+    "옛 로마에서는 시민을 재산에 따라 몇 개의 무리로 나누었는데, 그 무리를 classis라고 했습니다.",
+    "'나뉜 무리'가 '학생들의 무리', 즉 '반', '수업'이 되었습니다.",
+    "classroom(교실), classmate(반 친구), classify(분류하다)는 class가 들어간 단어입니다.",
+    "class의 핵심 이미지는 '같은 교실에서 함께 배우는 무리 🏫'입니다."
+   ],
+   "meanings": [
+    "수업, 강좌",
+    "반, 학급",
+    "(반의) 학생들",
+    "등급, 계층",
+    "(생물의) 강 (분류 단위)"
+   ],
+   "examples": [
+    {
+     "en": "We have English class today.",
+     "ko": "오늘 영어 수업이 있어요."
+    },
+    {
+     "en": "There are 25 students in my class.",
+     "ko": "우리 반은 25명이에요."
+    },
+    {
+     "en": "Don't talk in class.",
+     "ko": "수업 시간에 떠들지 마."
+    },
+    {
+     "en": "She is my classmate.",
+     "ko": "그녀는 우리 반 친구예요."
+    },
+    {
+     "en": "Our classroom is on the second floor.",
+     "ko": "우리 교실은 2층에 있어요."
+    },
+    {
+     "en": "They flew first class.",
+     "ko": "그들은 1등석을 타고 갔어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "lesson",
+     "ko": "수업",
+     "en": "A swimming lesson."
+    },
+    {
+     "type": "파생어",
+     "word": "classroom",
+     "ko": "교실",
+     "en": "A bright classroom."
+    },
+    {
+     "type": "파생어",
+     "word": "classmate",
+     "ko": "반 친구",
+     "en": "My classmates."
+    },
+    {
+     "type": "연관어",
+     "word": "teacher",
+     "ko": "선생님",
+     "en": "My teacher."
+    },
+    {
+     "type": "연관어",
+     "word": "student",
+     "ko": "학생",
+     "en": "A new student."
+    },
+    {
+     "type": "연관어",
+     "word": "school",
+     "ko": "학교",
+     "en": "After school."
+    }
+   ]
+  },
+  "2897": {
+   "word": "wake",
+   "overview": [
+    "wake는 '깨다', '깨우다'라는 뜻의 동사입니다. 과거형은 woke입니다.",
+    "보통 up과 함께 씁니다. (wake up = 일어나다, 깨다 / Wake me up at seven. = 7시에 나 깨워 줘.)",
+    "awake는 '깨어 있는'이라는 형용사입니다. (I'm awake. = 나 깨어 있어.)"
+   ],
+   "easy": [
+    {
+     "word": "get up",
+     "en": "I get up at seven.",
+     "ko": "나는 7시에 일어나요."
+    },
+    {
+     "word": "rise",
+     "en": "Rise and shine!",
+     "ko": "일어나, 아침이야!"
+    }
+   ],
+   "etymology": [
+    "wake는 고대 영어 wacian에서 온 단어로, '깨어 있다', '잠들지 않다'라는 뜻이었습니다.",
+    "watch(지켜보다)와 같은 뿌리입니다. 깨어서 지켜보는 모습입니다.",
+    "awake(깨어 있는), awaken(깨우다)도 같은 가족 단어입니다.",
+    "wake의 핵심 이미지는 '눈을 번쩍 뜨고 일어나기 ⏰'입니다."
+   ],
+   "meanings": [
+    "(wake up) 깨다, 일어나다",
+    "깨우다",
+    "정신이 들다, 깨닫다"
+   ],
+   "examples": [
+    {
+     "en": "I wake up at seven every day.",
+     "ko": "나는 매일 7시에 깨요."
+    },
+    {
+     "en": "Wake up! It's late.",
+     "ko": "일어나! 늦었어."
+    },
+    {
+     "en": "Don't wake the baby.",
+     "ko": "아기 깨우지 마."
+    },
+    {
+     "en": "Please wake me up at six.",
+     "ko": "6시에 나 좀 깨워 줘."
+    },
+    {
+     "en": "The noise woke me up.",
+     "ko": "시끄러운 소리에 잠이 깼어요."
+    },
+    {
+     "en": "Are you still awake?",
+     "ko": "아직 안 자?"
+    }
+   ],
+   "together": [
+    {
+     "type": "변화형",
+     "word": "woke",
+     "ko": "깼다 (과거)",
+     "en": "I woke up early."
+    },
+    {
+     "type": "반의어",
+     "word": "sleep",
+     "ko": "자다",
+     "en": "Go to sleep."
+    },
+    {
+     "type": "유의어",
+     "word": "get up",
+     "ko": "일어나다",
+     "en": "Get up now."
+    },
+    {
+     "type": "파생어",
+     "word": "awake",
+     "ko": "깨어 있는",
+     "en": "Stay awake."
+    },
+    {
+     "type": "연관어",
+     "word": "morning",
+     "ko": "아침",
+     "en": "Good morning."
+    },
+    {
+     "type": "연관어",
+     "word": "alarm",
+     "ko": "알람",
+     "en": "Set the alarm."
+    }
+   ]
+  },
+  "374": {
+   "word": "busy",
+   "overview": [
+    "busy는 '바쁜'이라는 뜻의 형용사입니다. 반대는 free(한가한)입니다.",
+    "I'm busy.(나 바빠.), a busy day(바쁜 하루), be busy with ~(~으로 바쁘다)처럼 씁니다.",
+    "장소가 '붐비는'이라는 뜻도 있습니다. (a busy street = 붐비는 거리) 전화가 '통화 중인'이라는 뜻도 됩니다."
+   ],
+   "easy": [
+    {
+     "word": "crowded",
+     "en": "The bus is crowded.",
+     "ko": "버스가 붐벼요."
+    },
+    {
+     "word": "full",
+     "en": "My day is full.",
+     "ko": "오늘 일정이 꽉 찼어요."
+    }
+   ],
+   "etymology": [
+    "busy는 고대 영어 bisig에서 온 단어로, '열심히 하는', '분주한'이라는 뜻이었습니다.",
+    "정확히 어디에서 왔는지는 잘 알려져 있지 않습니다.",
+    "business(사업, 일)는 busy에 -ness가 붙은 말입니다. '바쁜 상태'가 '일', '사업'이 되었습니다.",
+    "그래서 busy와 business 모두 u를 '이'처럼 읽습니다.",
+    "busy의 핵심 이미지는 '할 일이 많아 정신없는 🐝'입니다."
+   ],
+   "meanings": [
+    "바쁜",
+    "(장소가) 붐비는, 번화한",
+    "(전화가) 통화 중인",
+    "(be busy with) ~으로 바쁜"
+   ],
+   "examples": [
+    {
+     "en": "I'm busy today.",
+     "ko": "나 오늘 바빠."
+    },
+    {
+     "en": "Mom is busy cooking dinner.",
+     "ko": "엄마는 저녁 준비하느라 바쁘세요."
+    },
+    {
+     "en": "It was a busy week.",
+     "ko": "바쁜 한 주였어요."
+    },
+    {
+     "en": "This street is always busy.",
+     "ko": "이 거리는 항상 붐벼요."
+    },
+    {
+     "en": "The line is busy.",
+     "ko": "통화 중이에요."
+    },
+    {
+     "en": "Bees are busy in spring.",
+     "ko": "봄에는 벌들이 바빠요."
+    }
+   ],
+   "together": [
+    {
+     "type": "반의어",
+     "word": "free",
+     "ko": "한가한",
+     "en": "Are you free?"
+    },
+    {
+     "type": "반의어",
+     "word": "quiet",
+     "ko": "한적한",
+     "en": "A quiet street."
+    },
+    {
+     "type": "유의어",
+     "word": "crowded",
+     "ko": "붐비는",
+     "en": "A crowded bus."
+    },
+    {
+     "type": "파생어",
+     "word": "business",
+     "ko": "사업, 일",
+     "en": "Family business."
+    },
+    {
+     "type": "연관어",
+     "word": "work",
+     "ko": "일",
+     "en": "Lots of work."
+    },
+    {
+     "type": "연관어",
+     "word": "hurry",
+     "ko": "서두르다",
+     "en": "In a hurry."
+    }
+   ]
+  },
+  "1503": {
+   "word": "kiss",
+   "overview": [
+    "kiss는 '입을 맞추다', '뽀뽀하다'라는 뜻의 동사이자 '키스', '뽀뽀'라는 명사입니다.",
+    "kiss goodnight(잘 자라고 뽀뽀하다), give a kiss(뽀뽀해 주다)처럼 씁니다.",
+    "편지 끝에 XOXO라고 쓰면 X는 kiss, O는 hug(포옹)를 뜻합니다."
+   ],
+   "easy": [
+    {
+     "word": "hug",
+     "en": "Give me a hug.",
+     "ko": "나 안아 줘."
+    }
+   ],
+   "etymology": [
+    "kiss는 고대 영어 cyssan에서 온 단어로, '입을 맞추다'라는 뜻이었습니다.",
+    "독일어 küssen과 같은 뿌리입니다.",
+    "입을 맞출 때 나는 소리를 흉내 낸 말에서 나왔다고 보는 학자가 많습니다.",
+    "kiss의 핵심 이미지는 '사랑을 담은 뽀뽀 😘'입니다."
+   ],
+   "meanings": [
+    "입을 맞추다, 뽀뽀하다 (동사)",
+    "키스, 뽀뽀 (명사)"
+   ],
+   "examples": [
+    {
+     "en": "Mom kissed me goodnight.",
+     "ko": "엄마가 잘 자라고 뽀뽀해 주셨어요."
+    },
+    {
+     "en": "Give Grandma a kiss.",
+     "ko": "할머니께 뽀뽀해 드려."
+    },
+    {
+     "en": "The prince kissed the princess.",
+     "ko": "왕자가 공주에게 입을 맞췄어요."
+    },
+    {
+     "en": "She kissed the baby on the cheek.",
+     "ko": "그녀는 아기 볼에 뽀뽀했어요."
+    },
+    {
+     "en": "He blew me a kiss.",
+     "ko": "그가 나에게 손 키스를 보냈어요."
+    },
+    {
+     "en": "Hugs and kisses!",
+     "ko": "사랑해! (포옹과 뽀뽀를 보내!)"
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "hug",
+     "ko": "안다, 포옹",
+     "en": "A big hug."
+    },
+    {
+     "type": "연관어",
+     "word": "love",
+     "ko": "사랑",
+     "en": "I love you."
+    },
+    {
+     "type": "연관어",
+     "word": "cheek",
+     "ko": "볼",
+     "en": "Red cheeks."
+    },
+    {
+     "type": "연관어",
+     "word": "lips",
+     "ko": "입술",
+     "en": "Soft lips."
+    },
+    {
+     "type": "연관어",
+     "word": "goodnight",
+     "ko": "잘 자",
+     "en": "Say goodnight."
+    },
+    {
+     "type": "연관어",
+     "word": "baby",
+     "ko": "아기",
+     "en": "A sweet baby."
+    }
+   ]
+  },
+  "657": {
+   "word": "court",
+   "overview": [
+    "court는 '법정', '재판소'라는 뜻의 명사입니다. (go to court = 재판을 받다)",
+    "운동 경기를 하는 '코트', '경기장'이라는 뜻도 있습니다. (a tennis court = 테니스장, a basketball court = 농구장)",
+    "'궁정', '궁궐'이라는 뜻도 있습니다. (the king's court = 왕의 궁정)"
+   ],
+   "easy": [
+    {
+     "word": "field",
+     "en": "Play on the field.",
+     "ko": "경기장에서 놀아."
+    },
+    {
+     "word": "palace",
+     "en": "The king's palace.",
+     "ko": "왕의 궁전."
+    }
+   ],
+   "etymology": [
+    "court는 라틴어 cohors에서 온 단어로, 원래 뜻은 '울타리를 친 마당'이었습니다.",
+    "'울타리 안의 마당'이 '왕이 사는 궁전의 뜰', 그리고 '왕이 재판하던 곳'이 되었습니다.",
+    "그래서 '궁정', '법정', '(마당처럼 네모난) 경기장'이라는 뜻이 모두 생겼습니다.",
+    "courtyard(안뜰), courtesy(예의, 궁정의 예절)도 같은 뿌리입니다.",
+    "court의 핵심 이미지는 '울타리 쳐진 네모난 마당 🏟'입니다."
+   ],
+   "meanings": [
+    "법정, 재판소",
+    "(테니스, 농구 등의) 코트, 경기장",
+    "궁정, 왕실",
+    "안마당, 뜰"
+   ],
+   "examples": [
+    {
+     "en": "The judge sits in the court.",
+     "ko": "판사는 법정에 앉아 있어요."
+    },
+    {
+     "en": "They played on the tennis court.",
+     "ko": "그들은 테니스장에서 경기했어요."
+    },
+    {
+     "en": "Our school has a basketball court.",
+     "ko": "우리 학교에는 농구장이 있어요."
+    },
+    {
+     "en": "The case went to court.",
+     "ko": "그 사건은 재판에 넘겨졌어요."
+    },
+    {
+     "en": "The king's court was full of people.",
+     "ko": "왕의 궁정은 사람들로 가득했어요."
+    },
+    {
+     "en": "The players ran onto the court.",
+     "ko": "선수들이 코트로 달려 나왔어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "judge",
+     "ko": "판사",
+     "en": "A fair judge."
+    },
+    {
+     "type": "연관어",
+     "word": "law",
+     "ko": "법",
+     "en": "Obey the law."
+    },
+    {
+     "type": "연관어",
+     "word": "tennis",
+     "ko": "테니스",
+     "en": "Play tennis."
+    },
+    {
+     "type": "연관어",
+     "word": "king",
+     "ko": "왕",
+     "en": "The king."
+    },
+    {
+     "type": "연관어",
+     "word": "palace",
+     "ko": "궁전",
+     "en": "A royal palace."
+    },
+    {
+     "type": "연관어",
+     "word": "field",
+     "ko": "경기장, 들판",
+     "en": "A soccer field."
+    }
+   ]
+  },
+  "1079": {
+   "word": "finish",
+   "overview": [
+    "finish는 '끝내다', '끝나다'라는 뜻의 동사입니다. 반대는 start(시작하다)입니다.",
+    "finish homework(숙제를 끝내다), finish + -ing(~하는 것을 끝내다)처럼 씁니다. (I finished eating. = 다 먹었어.)",
+    "명사로는 '끝', '결승점'이라는 뜻입니다. (the finish line = 결승선)"
+   ],
+   "easy": [
+    {
+     "word": "end",
+     "en": "The movie ended.",
+     "ko": "영화가 끝났어요."
+    },
+    {
+     "word": "complete",
+     "en": "Complete the form.",
+     "ko": "양식을 다 채우세요."
+    },
+    {
+     "word": "be done",
+     "en": "I'm done!",
+     "ko": "다 했어!"
+    }
+   ],
+   "etymology": [
+    "finish는 라틴어 fīnīre에서 온 단어로, '끝내다', '경계를 정하다'라는 뜻이었습니다.",
+    "fīnis(끝, 경계)에서 나온 말입니다.",
+    "final(마지막의), fine(좋은, 끝까지 다듬은)도 같은 뿌리입니다.",
+    "finish의 핵심 이미지는 '결승선을 통과하기 🏁'입니다."
+   ],
+   "meanings": [
+    "끝내다, 마치다",
+    "끝나다",
+    "(음식을) 다 먹다",
+    "끝, 결승점 (명사)"
+   ],
+   "examples": [
+    {
+     "en": "Did you finish your homework?",
+     "ko": "숙제 다 했어?"
+    },
+    {
+     "en": "School finishes at three.",
+     "ko": "학교는 3시에 끝나요."
+    },
+    {
+     "en": "I finished reading the book.",
+     "ko": "나는 그 책을 다 읽었어요."
+    },
+    {
+     "en": "Finish your milk.",
+     "ko": "우유 다 마셔."
+    },
+    {
+     "en": "He crossed the finish line first.",
+     "ko": "그가 결승선을 가장 먼저 통과했어요."
+    },
+    {
+     "en": "Let's finish this later.",
+     "ko": "이건 나중에 마저 하자."
+    }
+   ],
+   "together": [
+    {
+     "type": "반의어",
+     "word": "start",
+     "ko": "시작하다",
+     "en": "Start now."
+    },
+    {
+     "type": "반의어",
+     "word": "begin",
+     "ko": "시작하다",
+     "en": "Let's begin."
+    },
+    {
+     "type": "유의어",
+     "word": "end",
+     "ko": "끝나다",
+     "en": "The end."
+    },
+    {
+     "type": "유의어",
+     "word": "complete",
+     "ko": "완성하다",
+     "en": "Complete it."
+    },
+    {
+     "type": "연관어",
+     "word": "final",
+     "ko": "마지막의",
+     "en": "The final game."
+    },
+    {
+     "type": "연관어",
+     "word": "done",
+     "ko": "다 끝난",
+     "en": "All done!"
+    }
+   ]
+  },
+  "878": {
+   "word": "during",
+   "overview": [
+    "during은 '~동안', '~중에'라는 뜻의 전치사입니다.",
+    "during + 명사로 씁니다. (during the movie = 영화 보는 동안, during summer vacation = 여름 방학 동안)",
+    "for는 '얼마 동안'(for two hours), during은 '언제 동안'(during lunch)을 말합니다."
+   ],
+   "easy": [
+    {
+     "word": "while",
+     "en": "I sang while I walked.",
+     "ko": "나는 걸으면서 노래했어요."
+    },
+    {
+     "word": "in",
+     "en": "I swim in summer.",
+     "ko": "나는 여름에 수영해요."
+    }
+   ],
+   "etymology": [
+    "during은 옛 영어 동사 dure(계속되다)의 -ing 모양입니다.",
+    "dure는 라틴어 dūrāre(계속되다, 견디다)에서 왔습니다.",
+    "그래서 during은 '~이 계속되는 동안'이라는 뜻입니다.",
+    "duration(지속 기간), endure(견디다)도 같은 뿌리입니다.",
+    "during의 핵심 이미지는 '어떤 일이 이어지는 그 시간 안에 ⏳'입니다."
+   ],
+   "meanings": [
+    "~동안, ~내내",
+    "~중에, ~하는 사이에"
+   ],
+   "examples": [
+    {
+     "en": "Don't talk during class.",
+     "ko": "수업 중에 떠들지 마."
+    },
+    {
+     "en": "I fell asleep during the movie.",
+     "ko": "나는 영화 보는 동안 잠들었어요."
+    },
+    {
+     "en": "We went to Jeju during summer vacation.",
+     "ko": "우리는 여름 방학 동안 제주에 갔어요."
+    },
+    {
+     "en": "It rained during the night.",
+     "ko": "밤사이에 비가 왔어요."
+    },
+    {
+     "en": "Turn off your phone during the test.",
+     "ko": "시험 중에는 휴대폰을 꺼."
+    },
+    {
+     "en": "Bears sleep during the winter.",
+     "ko": "곰은 겨울 동안 잠을 자요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "while",
+     "ko": "~하는 동안",
+     "en": "While I wait."
+    },
+    {
+     "type": "연관어",
+     "word": "for",
+     "ko": "~동안 (기간)",
+     "en": "For an hour."
+    },
+    {
+     "type": "연관어",
+     "word": "when",
+     "ko": "~할 때",
+     "en": "When I was young."
+    },
+    {
+     "type": "연관어",
+     "word": "time",
+     "ko": "시간",
+     "en": "Free time."
+    },
+    {
+     "type": "연관어",
+     "word": "vacation",
+     "ko": "방학",
+     "en": "Summer vacation."
+    },
+    {
+     "type": "연관어",
+     "word": "between",
+     "ko": "~사이에",
+     "en": "Between two and three."
+    }
+   ]
   }
  }
 }
