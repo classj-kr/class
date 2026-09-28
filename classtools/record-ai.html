@@ -53,8 +53,8 @@
         .card {
             background: var(--paper);
             border: 1px solid var(--line);
-            border-radius: 20px;
-            padding: 20px 24px;
+            border-radius: 18px;
+            padding: 18px 22px;
             margin-bottom: 14px;
             box-shadow: var(--shadow);
         }
@@ -65,9 +65,20 @@
         }
 
         /* 접히는 칸. 키를 넣어 두면 닫아 두어 화면을 비워 준다. */
+        details.card:not([open]) {
+            padding: 10px 18px;
+            margin-bottom: 12px;
+            border-radius: 14px;
+            box-shadow: 0 4px 14px rgba(41, 50, 45, 0.05);
+        }
+        details.card:not([open]) > summary {
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 0;
+        }
         details.card > summary {
             cursor: pointer;
-            font-size: 1.25rem;
+            font-size: 1.15rem;
             font-weight: 700;
             list-style: none;
             display: flex;
@@ -85,9 +96,36 @@
         details.card[open] > summary::after { transform: rotate(180deg); }
         details.card[open] > summary { margin-bottom: 16px; }
         details.card > summary .sub {
-            font-size: 0.9rem;
+            font-size: 0.88rem;
             font-weight: 400;
             color: var(--muted);
+        }
+
+        .controls-row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            gap: 12px 14px;
+            margin-bottom: 12px;
+        }
+        .controls-row .form-group {
+            margin-bottom: 0;
+        }
+        #scope-group {
+            flex: 1 1 180px;
+        }
+        #area-group {
+            flex: 1.5 1 200px;
+        }
+        #semester-group {
+            flex: 0 0 100px;
+        }
+        #sub-group {
+            flex: 1 1 130px;
+            min-width: 120px;
+        }
+        #length-group {
+            flex: 1 1 150px;
         }
 
         .form-group {
@@ -96,15 +134,16 @@
 
         .form-group label {
             display: block;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             font-weight: 600;
+            font-size: 0.92rem;
         }
 
         .form-control {
             width: 100%;
-            padding: 12px 16px;
+            padding: 10px 14px;
             border: 1px solid var(--line);
-            border-radius: 12px;
+            border-radius: 10px;
             background: #fff;
             transition: border-color 0.2s;
         }
@@ -112,6 +151,83 @@
         .form-control:focus {
             outline: none;
             border-color: var(--brand);
+        }
+
+        .card-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            margin-top: 16px;
+            padding-top: 14px;
+            border-top: 1px solid var(--line);
+            flex-wrap: wrap;
+        }
+
+        .roster-meta {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        #roster-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--ink);
+            margin: 0;
+            background: var(--canvas);
+            padding: 6px 14px;
+            border-radius: 20px;
+            border: 1px solid var(--line);
+        }
+        #roster-status:empty {
+            display: none;
+        }
+        #roster-status::before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--brand);
+            flex-shrink: 0;
+        }
+        #roster-status.error::before {
+            background: var(--danger);
+        }
+
+        #manual-count-group {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin: 0;
+        }
+        #manual-count-group label {
+            margin: 0;
+            font-size: 0.9rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        #manual-count-group input {
+            width: 5.5em;
+            padding: 6px 10px;
+        }
+
+        @media (max-width: 560px) {
+            .card-footer {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .card-footer .btn {
+                width: 100%;
+            }
+            .roster-meta {
+                justify-content: space-between;
+            }
         }
 
         .btn {
@@ -220,8 +336,8 @@
         }
 
         .status {
-            margin-top: 10px;
-            font-size: 0.9rem;
+            margin-top: 6px;
+            font-size: 0.86rem;
             color: var(--muted);
         }
 
@@ -287,51 +403,51 @@
 
         <!-- 생성 양식 -->
         <section class="card">
-            <!-- 담임 학급, 전담으로 들어가는 반의 과목, 맡은 동아리. 고른 대상에 따라
-                 아래의 기록할 칸과 과목이 정해진다. -->
-            <div class="form-group" id="scope-group" style="display: none;">
-                <label for="scope-select">대상</label>
-                <select id="scope-select" class="form-control"></select>
-            </div>
-
-            <div class="form-group" id="area-group">
-                <label for="area-select">기록할 칸</label>
-                <select id="area-select" class="form-control">
-                    <option value="subject">과목별 학기말 종합의견</option>
-                    <option value="activity">창의적 체험활동 특기사항</option>
-                    <option value="behavior">행동특성 및 종합의견</option>
-                </select>
-            </div>
-
-            <!-- 몇 자로 쓸지는 학년이 맞춰야 한다. 한 반은 500자, 옆 반은 200자면 들쭉날쭉해진다.
-                 길이에 따라 문장 수도 달라진다. -->
-            <div class="form-group" id="length-group">
-                <label for="char-target">한 학생 분량</label>
-                <div style="display: flex; align-items: center; gap: 8px;">
-                    <input type="number" id="char-target" class="form-control" min="20" max="2000" step="10" style="width: 8em;">
-                    <span class="muted" style="color: var(--muted); font-size: 0.9rem;">자 안팎</span>
+            <!-- 고른 대상에 따라 아래의 기록할 칸과 과목이 정해진다. -->
+            <div class="controls-row">
+                <div class="form-group" id="scope-group" style="display: none;">
+                    <label for="scope-select">대상</label>
+                    <select id="scope-select" class="form-control"></select>
                 </div>
-                <div class="status" id="length-status"></div>
-            </div>
 
-            <!-- 과목별 종합의견은 학기마다 따로 쓴다. 학년말에 쓰는 창체·행발에는 없다. -->
-            <div class="form-group" id="semester-group" style="display: none;">
-                <label for="semester-select">학기</label>
-                <select id="semester-select" class="form-control">
-                    <option value="1학기">1학기</option>
-                    <option value="2학기">2학기</option>
-                </select>
-            </div>
+                <div class="form-group" id="area-group">
+                    <label for="area-select">기록할 칸</label>
+                    <select id="area-select" class="form-control">
+                        <option value="subject">과목별 학기말 종합의견</option>
+                        <option value="activity">창의적 체험활동 특기사항</option>
+                        <option value="behavior">행동특성 및 종합의견</option>
+                    </select>
+                </div>
 
-            <!-- 교과면 과목을, 창체면 영역을 하나 더 묻는다. -->
-            <div class="form-group" id="sub-group" style="display: none;">
-                <label for="sub-input" id="sub-label">과목</label>
-                <select id="sub-input" class="form-control"></select>
+                <!-- 과목별 종합의견은 학기마다 따로 쓴다. 학년말에 쓰는 창체·행발에는 없다. -->
+                <div class="form-group" id="semester-group" style="display: none;">
+                    <label for="semester-select">학기</label>
+                    <select id="semester-select" class="form-control">
+                        <option value="1학기">1학기</option>
+                        <option value="2학기">2학기</option>
+                    </select>
+                </div>
+
+                <!-- 교과면 과목을, 창체면 영역을 하나 더 묻는다. -->
+                <div class="form-group" id="sub-group" style="display: none;">
+                    <label for="sub-input" id="sub-label">과목</label>
+                    <select id="sub-input" class="form-control"></select>
+                </div>
+
+                <!-- 몇 자로 쓸지는 학년이 맞춰야 한다. -->
+                <div class="form-group" id="length-group" style="display: none;">
+                    <label for="char-target">한 학생 분량</label>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <input type="number" id="char-target" class="form-control" min="20" max="2000" step="10" style="width: 7em;">
+                        <span class="muted" style="color: var(--muted); font-size: 0.9rem; white-space: nowrap;">자 안팎</span>
+                    </div>
+                    <div class="status" id="length-status"></div>
+                </div>
             </div>
 
             <div class="form-group" id="topics-group">
                 <label for="topics-input" id="topics-label">활동·특성 (한 줄에 하나씩)</label>
-                <textarea id="topics-input" class="form-control" rows="5"></textarea>
+                <textarea id="topics-input" class="form-control" rows="3" style="resize: vertical; min-height: 72px;"></textarea>
                 <div class="status" id="plan-status"></div>
             </div>
 
@@ -348,21 +464,19 @@
                 <div class="status" id="traits-status"></div>
             </div>
 
-        </section>
-
-        <!-- 우리 반 -->
-        <section class="card">
-            <div id="roster-status" class="status"></div>
-
-            <!-- 명단을 못 불러오는 경우에만 쓴다. 인원수만 있으면 문장은 만들 수 있다. -->
-            <div class="form-group" id="manual-count-group" style="display: none; margin-top: 14px;">
-                <label for="count-input">인원수</label>
-                <input type="number" id="count-input" class="form-control" min="1" max="40" value="30">
+            <!-- 우리 반 정보 및 생성 실행 단추 -->
+            <div class="card-footer">
+                <div class="roster-meta">
+                    <span id="roster-status" class="status"></span>
+                    <div class="form-group" id="manual-count-group" style="display: none;">
+                        <label for="count-input">인원수</label>
+                        <input type="number" id="count-input" class="form-control" min="1" max="40" value="30">
+                    </div>
+                </div>
+                <button type="button" id="generate-btn" class="btn" style="gap: 8px;">✨ 초안 만들기</button>
             </div>
-
-            <button type="button" id="generate-btn" class="btn" style="width: 100%; margin-top: 18px; gap: 8px;">✨ 초안 만들기</button>
             <div class="progress" id="gen-progress" hidden><i id="gen-bar"></i></div>
-            <div id="gen-status" class="status" style="text-align: center; margin-top: 12px;"></div>
+            <div id="gen-status" class="status" style="text-align: right; margin-top: 8px;"></div>
         </section>
 
         <!-- 결과 -->
