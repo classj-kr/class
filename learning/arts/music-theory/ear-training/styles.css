@@ -1168,8 +1168,7 @@ button:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
 .rhythm { display: block; max-width: 100%; height: auto; }
 .rhythm-line { stroke: #64748b; stroke-width: 1.2; }
 .rhythm-bar { stroke: #475569; stroke-width: 1.5; }
-.rhythm-bar.is-end { stroke-width: 2.8; }
-.rhythm-meter { fill: #1e293b; stroke: none; font-family: Georgia, serif; font-size: 17px; font-weight: 800; text-anchor: middle; }
+.rhythm-bar.is-end { stroke-width: 2.8; }.rhythm-meter { fill: #1e293b; stroke: none; font-family: Georgia, serif; font-size: 17px; font-weight: 800; text-anchor: middle; }
 .rhythm-ink { stroke: #1e293b; fill: #1e293b; }
 .rhythm-ink.is-right { stroke: #15803d; fill: #15803d; }
 .rhythm-ink.is-wrong { stroke: #b91c1c; fill: #b91c1c; }

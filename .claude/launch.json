@@ -24,6 +24,16 @@
       "autoPort": true
     },
     {
+      "name": "site-static-2",
+      "runtimeExecutable": "python",
+      "runtimeArgs": [
+        "-m",
+        "http.server",
+        "4191"
+      ],
+      "port": 4191
+    },
+    {
       "name": "game-hub",
       "runtimeExecutable": "node",
       "runtimeArgs": [
