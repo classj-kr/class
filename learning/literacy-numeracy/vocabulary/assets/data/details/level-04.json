@@ -17382,6 +17382,1923 @@
      "en": "Twelve eggs."
     }
    ]
+  },
+  "409": {
+   "word": "carrot",
+   "overview": [
+    "carrot은 '당근'이라는 뜻의 명사입니다. 땅속에서 자라는 주황색 채소입니다.",
+    "a carrot(당근 한 개), carrot juice(당근 주스), carrot cake(당근 케이크)처럼 씁니다.",
+    "토끼가 당근을 좋아하는 모습이 만화에 자주 나옵니다.",
+    "carrot and stick은 '당근과 채찍'이라는 뜻으로, 상과 벌을 함께 쓰는 방법을 말하는 표현입니다."
+   ],
+   "easy": [
+    {
+     "word": "vegetable",
+     "en": "Orange vegetable.",
+     "ko": "주황색 채소."
+    },
+    {
+     "word": "rabbit",
+     "en": "A hungry rabbit.",
+     "ko": "배고픈 토끼."
+    }
+   ],
+   "etymology": [
+    "carrot은 프랑스어 carotte를 거쳐 라틴어 carota에서 온 단어입니다.",
+    "더 멀리는 그리스어 karōton에서 왔다고 봅니다.",
+    "karōton은 '뿔'을 뜻하는 말과 이어지는데, 당근의 뾰족한 모양 때문이라고 봅니다.",
+    "1600년대에 영어에 들어와 널리 쓰이게 되었습니다.",
+    "carrot의 핵심 이미지는 '땅속에서 쑥 뽑아낸 주황 당근 🥕'입니다."
+   ],
+   "meanings": [
+    "당근",
+    "(비유) 상, 미끼"
+   ],
+   "examples": [
+    {
+     "en": "Rabbits love carrots.",
+     "ko": "토끼는 당근을 좋아해요."
+    },
+    {
+     "en": "I put carrots in the soup.",
+     "ko": "나는 수프에 당근을 넣었어요."
+    },
+    {
+     "en": "Peel the carrot before you cut it.",
+     "ko": "자르기 전에 당근 껍질을 벗겨."
+    },
+    {
+     "en": "Carrots are good for your eyes.",
+     "ko": "당근은 눈에 좋아요."
+    },
+    {
+     "en": "She grew carrots in her garden.",
+     "ko": "그녀는 텃밭에서 당근을 길렀어요."
+    },
+    {
+     "en": "Can I have some carrot juice?",
+     "ko": "당근 주스 좀 마셔도 돼요?"
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "vegetable",
+     "ko": "채소",
+     "en": "Fresh vegetables."
+    },
+    {
+     "type": "연관어",
+     "word": "potato",
+     "ko": "감자",
+     "en": "A big potato."
+    },
+    {
+     "type": "연관어",
+     "word": "rabbit",
+     "ko": "토끼",
+     "en": "A white rabbit."
+    },
+    {
+     "type": "연관어",
+     "word": "orange",
+     "ko": "주황색",
+     "en": "An orange hat."
+    },
+    {
+     "type": "연관어",
+     "word": "soup",
+     "ko": "수프",
+     "en": "Hot soup."
+    },
+    {
+     "type": "연관어",
+     "word": "peel",
+     "ko": "껍질을 벗기다",
+     "en": "Peel an apple."
+    }
+   ]
+  },
+  "2123": {
+   "word": "quiz",
+   "overview": [
+    "quiz는 '퀴즈', '쪽지 시험'이라는 뜻의 명사입니다. 짧게 보는 작은 시험이나 재미로 푸는 문제를 말합니다.",
+    "take a quiz(퀴즈를 풀다), a pop quiz(예고 없는 쪽지 시험)처럼 씁니다.",
+    "여러 개일 때는 quizzes처럼 z를 하나 더 붙입니다.",
+    "동사로는 '(가볍게) 질문하다', '퀴즈를 내다'라는 뜻입니다."
+   ],
+   "easy": [
+    {
+     "word": "test",
+     "en": "A math test.",
+     "ko": "수학 시험."
+    },
+    {
+     "word": "question",
+     "en": "Ask a question.",
+     "ko": "질문해."
+    }
+   ],
+   "etymology": [
+    "quiz는 1800년대쯤부터 쓰인 말로, 정확한 뿌리는 잘 알려져 있지 않습니다.",
+    "더블린의 극장 주인이 하룻밤 사이에 아무 뜻 없는 말을 도시 곳곳에 써 붙여 사람들을 놀라게 했다는 재미있는 이야기가 전해지지만 사실인지는 확실하지 않습니다.",
+    "처음에는 '이상한 사람', '놀리다'라는 뜻으로 쓰였습니다.",
+    "1900년대에 '가볍게 묻는 시험'이라는 뜻으로 굳어졌습니다.",
+    "quiz의 핵심 이미지는 '연필 들고 후다닥 푸는 쪽지 시험 📝'입니다."
+   ],
+   "meanings": [
+    "퀴즈, 쪽지 시험 (명사)",
+    "(가볍게) 질문하다, 퀴즈를 내다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "We have a quiz tomorrow.",
+     "ko": "우리 내일 쪽지 시험 봐요."
+    },
+    {
+     "en": "I got a perfect score on the quiz.",
+     "ko": "나는 퀴즈에서 만점을 받았어요."
+    },
+    {
+     "en": "Let's play a quiz game.",
+     "ko": "퀴즈 게임 하자."
+    },
+    {
+     "en": "The teacher quizzed us on the new words.",
+     "ko": "선생님이 새 단어로 우리에게 퀴즈를 냈어요."
+    },
+    {
+     "en": "This quiz has ten questions.",
+     "ko": "이 퀴즈는 질문이 열 개예요."
+    },
+    {
+     "en": "She studied hard for the science quiz.",
+     "ko": "그 아이는 과학 쪽지 시험을 위해 열심히 공부했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "test",
+     "ko": "시험",
+     "en": "A spelling test."
+    },
+    {
+     "type": "연관어",
+     "word": "question",
+     "ko": "질문",
+     "en": "Answer the question."
+    },
+    {
+     "type": "연관어",
+     "word": "answer",
+     "ko": "답, 답하다",
+     "en": "The right answer."
+    },
+    {
+     "type": "연관어",
+     "word": "exam",
+     "ko": "시험",
+     "en": "A final exam."
+    },
+    {
+     "type": "연관어",
+     "word": "study",
+     "ko": "공부하다",
+     "en": "Study for the quiz."
+    },
+    {
+     "type": "연관어",
+     "word": "score",
+     "ko": "점수",
+     "en": "A high score."
+    }
+   ]
+  },
+  "1630": {
+   "word": "marathon",
+   "overview": [
+    "marathon은 '마라톤'이라는 뜻의 명사입니다. 아주 먼 거리(약 42.195km)를 달리는 경기입니다.",
+    "run a marathon(마라톤을 뛰다), a marathon runner(마라톤 선수)처럼 씁니다.",
+    "'오래 걸리는 힘든 일'을 비유해서 a marathon meeting(마라톤 회의)처럼도 씁니다.",
+    "책이나 영화를 쉬지 않고 몰아서 보는 것을 요즘은 흔히 marathon이라고 부르기도 합니다."
+   ],
+   "easy": [
+    {
+     "word": "run",
+     "en": "Run fast.",
+     "ko": "빨리 달려."
+    },
+    {
+     "word": "race",
+     "en": "Win the race.",
+     "ko": "경주에서 이겨."
+    }
+   ],
+   "etymology": [
+    "marathon은 그리스의 마을 이름 Marathon(마라톤)에서 왔습니다.",
+    "옛날 그리스에서 마라톤 전투가 끝난 뒤, 한 병사가 승리 소식을 전하려고 아테네까지 먼 길을 쉬지 않고 달렸다는 이야기가 전해집니다.",
+    "이 이야기를 기려 1896년 첫 근대 올림픽에서 이 거리를 달리는 경기가 만들어졌습니다.",
+    "그래서 지명이 그대로 운동 종목의 이름이 되었습니다.",
+    "marathon의 핵심 이미지는 '42.195킬로미터를 끝까지 달리는 인내 🏃'입니다."
+   ],
+   "meanings": [
+    "마라톤 (경기)",
+    "(비유) 오래 계속되는 힘든 일"
+   ],
+   "examples": [
+    {
+     "en": "My uncle ran his first marathon last year.",
+     "ko": "우리 삼촌은 작년에 첫 마라톤을 뛰었어요."
+    },
+    {
+     "en": "The marathon route goes through the city.",
+     "ko": "마라톤 코스는 도시를 지나가요."
+    },
+    {
+     "en": "She trains every day for the marathon.",
+     "ko": "그녀는 마라톤을 위해 매일 훈련해요."
+    },
+    {
+     "en": "Finishing a marathon takes a lot of energy.",
+     "ko": "마라톤을 완주하려면 힘이 많이 필요해요."
+    },
+    {
+     "en": "The meeting felt like a marathon.",
+     "ko": "그 회의는 마라톤처럼 길게 느껴졌어요."
+    },
+    {
+     "en": "We watched a movie marathon all weekend.",
+     "ko": "우리는 주말 내내 영화를 몰아서 봤어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "run",
+     "ko": "달리다",
+     "en": "Run every morning."
+    },
+    {
+     "type": "연관어",
+     "word": "race",
+     "ko": "경주",
+     "en": "A running race."
+    },
+    {
+     "type": "파생어",
+     "word": "marathoner",
+     "ko": "마라톤 선수",
+     "en": "A skilled marathoner."
+    },
+    {
+     "type": "연관어",
+     "word": "finish line",
+     "ko": "결승선",
+     "en": "Cross the finish line."
+    },
+    {
+     "type": "연관어",
+     "word": "train",
+     "ko": "훈련하다",
+     "en": "Train for months."
+    },
+    {
+     "type": "연관어",
+     "word": "Olympics",
+     "ko": "올림픽",
+     "en": "The Olympics."
+    }
+   ]
+  },
+  "2239": {
+   "word": "ribbon",
+   "overview": [
+    "ribbon은 '리본'이라는 뜻의 명사입니다. 좁고 긴 예쁜 천이나 끈으로, 선물이나 머리를 꾸미는 데 씁니다.",
+    "tie a ribbon(리본을 묶다), a hair ribbon(머리 리본)처럼 씁니다.",
+    "대회에서 잘한 사람에게 주는 상장용 띠도 ribbon이라고 합니다. a blue ribbon(우승 리본)",
+    "타자기나 옛날 프린터에 쓰던 잉크 띠도 ribbon이라고 합니다."
+   ],
+   "easy": [
+    {
+     "word": "bow",
+     "en": "Tie a bow.",
+     "ko": "리본 매듭을 지어."
+    },
+    {
+     "word": "string",
+     "en": "A long string.",
+     "ko": "긴 끈."
+    }
+   ],
+   "etymology": [
+    "ribbon은 옛 프랑스어 riban(띠, 끈)에서 온 단어입니다.",
+    "정확한 더 옛 뿌리는 잘 알려져 있지 않습니다.",
+    "옛날부터 옷이나 선물을 예쁘게 꾸미는 데 좁고 긴 천을 썼습니다.",
+    "대회에서 상으로 주는 리본도 이 장식용 리본에서 나온 뜻입니다.",
+    "ribbon의 핵심 이미지는 '선물 위에 예쁘게 묶인 리본 🎀'입니다."
+   ],
+   "meanings": [
+    "리본, 띠",
+    "(상장용) 리본, 수상 띠",
+    "(가늘고 긴) 조각, 오라기"
+   ],
+   "examples": [
+    {
+     "en": "She tied a red ribbon in her hair.",
+     "ko": "그 아이는 머리에 빨간 리본을 묶었어요."
+    },
+    {
+     "en": "Wrap the gift with a nice ribbon.",
+     "ko": "선물을 예쁜 리본으로 포장해."
+    },
+    {
+     "en": "He won a blue ribbon at the fair.",
+     "ko": "그는 박람회에서 우승 리본을 받았어요."
+    },
+    {
+     "en": "The box has a pink ribbon on it.",
+     "ko": "그 상자에는 분홍 리본이 달려 있어요."
+    },
+    {
+     "en": "Cut the ribbon into small pieces.",
+     "ko": "리본을 작게 잘라."
+    },
+    {
+     "en": "The mayor cut the ribbon to open the park.",
+     "ko": "시장님이 공원을 열려고 리본을 잘랐어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "bow",
+     "ko": "나비매듭",
+     "en": "Tie a bow."
+    },
+    {
+     "type": "연관어",
+     "word": "gift",
+     "ko": "선물",
+     "en": "Wrap a gift."
+    },
+    {
+     "type": "연관어",
+     "word": "hair",
+     "ko": "머리카락",
+     "en": "Long hair."
+    },
+    {
+     "type": "연관어",
+     "word": "prize",
+     "ko": "상",
+     "en": "Win a prize."
+    },
+    {
+     "type": "연관어",
+     "word": "wrap",
+     "ko": "포장하다, 싸다",
+     "en": "Wrap it up."
+    },
+    {
+     "type": "연관어",
+     "word": "medal",
+     "ko": "메달",
+     "en": "A gold medal."
+    }
+   ]
+  },
+  "1273": {
+   "word": "hamburger",
+   "overview": [
+    "hamburger는 '햄버거'라는 뜻의 명사입니다. 둥근 빵 사이에 고기 패티를 끼운 음식입니다.",
+    "a cheeseburger(치즈버거)처럼 짧게 burger라고도 많이 씁니다.",
+    "order a hamburger(햄버거를 주문하다), a hamburger and fries(햄버거와 감자튀김)처럼 씁니다.",
+    "미국에서는 다진 소고기 자체도 hamburger 또는 ground beef라고 부릅니다."
+   ],
+   "easy": [
+    {
+     "word": "burger",
+     "en": "A cheese burger.",
+     "ko": "치즈 버거."
+    },
+    {
+     "word": "bread",
+     "en": "A soft bun.",
+     "ko": "부드러운 빵."
+    }
+   ],
+   "etymology": [
+    "hamburger는 독일 도시 이름 Hamburg(함부르크)에서 왔습니다.",
+    "함부르크식 다진 고기 스테이크(Hamburg steak)가 독일 이민자들과 함께 미국으로 건너갔습니다.",
+    "이 고기를 빵 사이에 끼워 먹으면서 hamburger라는 이름이 붙었습니다.",
+    "재미있게도 ham(햄, 돼지고기)이 들어 있는 것처럼 보이지만, hamburger에는 원래 햄이 들어가지 않습니다.",
+    "hamburger의 핵심 이미지는 '두 빵 사이에 낀 두툼한 고기 패티 🍔'입니다."
+   ],
+   "meanings": [
+    "햄버거",
+    "다진 소고기 (미국)"
+   ],
+   "examples": [
+    {
+     "en": "I'd like a hamburger and fries, please.",
+     "ko": "햄버거와 감자튀김 주세요."
+    },
+    {
+     "en": "We made hamburgers on the grill.",
+     "ko": "우리는 그릴에 햄버거를 구웠어요."
+    },
+    {
+     "en": "This hamburger has cheese and lettuce.",
+     "ko": "이 햄버거에는 치즈와 양상추가 들어 있어요."
+    },
+    {
+     "en": "My favorite restaurant makes great hamburgers.",
+     "ko": "내가 좋아하는 식당은 햄버거를 정말 맛있게 만들어요."
+    },
+    {
+     "en": "Can I get a hamburger without onions?",
+     "ko": "양파 빼고 햄버거 주실 수 있어요?"
+    },
+    {
+     "en": "He ate two hamburgers for lunch.",
+     "ko": "그는 점심으로 햄버거를 두 개 먹었어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "burger",
+     "ko": "버거",
+     "en": "A veggie burger."
+    },
+    {
+     "type": "연관어",
+     "word": "cheeseburger",
+     "ko": "치즈버거",
+     "en": "A double cheeseburger."
+    },
+    {
+     "type": "연관어",
+     "word": "bun",
+     "ko": "빵, 번",
+     "en": "A soft bun."
+    },
+    {
+     "type": "연관어",
+     "word": "fries",
+     "ko": "감자튀김",
+     "en": "Ketchup and fries."
+    },
+    {
+     "type": "연관어",
+     "word": "beef",
+     "ko": "소고기",
+     "en": "Ground beef."
+    },
+    {
+     "type": "연관어",
+     "word": "lettuce",
+     "ko": "양상추",
+     "en": "Fresh lettuce."
+    }
+   ]
+  },
+  "286": {
+   "word": "biscuit",
+   "overview": [
+    "biscuit은 영국에서 '비스킷', '쿠키'라는 뜻으로 쓰는 명사입니다. 밀가루로 만들어 바삭하게 구운 작은 과자입니다.",
+    "tea and biscuits(차와 비스킷)처럼 씁니다. 영국에서는 미국의 cookie와 비슷한 뜻으로 씁니다.",
+    "미국에서 biscuit은 다른 뜻으로, 부드럽고 폭신한 작은 빵을 가리킵니다.",
+    "같은 단어가 나라마다 다른 음식을 가리키니 헷갈리기 쉬운 단어입니다."
+   ],
+   "easy": [
+    {
+     "word": "cookie",
+     "en": "A sweet cookie.",
+     "ko": "달콤한 쿠키."
+    },
+    {
+     "word": "cracker",
+     "en": "A salty cracker.",
+     "ko": "짭짤한 크래커."
+    }
+   ],
+   "etymology": [
+    "biscuit은 라틴어 bis(두 번)와 coctus(구워진)가 합쳐진 말입니다.",
+    "'두 번 구운 것'이라는 뜻으로, 옛날에는 오래 두고 먹으려고 두 번 구워 바짝 말렸습니다.",
+    "뱃사람이나 군인들이 오래 가는 딱딱한 비스킷을 배에 싣고 다녔습니다.",
+    "biscuit은 옛 프랑스어를 거쳐 영어에 들어왔습니다.",
+    "biscuit의 핵심 이미지는 '차와 함께 먹는 바삭한 과자 🍪'입니다."
+   ],
+   "meanings": [
+    "비스킷, 쿠키 (영국)",
+    "(폭신한) 작은 빵 (미국)"
+   ],
+   "examples": [
+    {
+     "en": "Grandma had tea and biscuits.",
+     "ko": "할머니는 차와 비스킷을 드셨어요."
+    },
+    {
+     "en": "These biscuits are crunchy.",
+     "ko": "이 비스킷은 바삭바삭해요."
+    },
+    {
+     "en": "I dipped the biscuit in my tea.",
+     "ko": "나는 비스킷을 차에 찍어 먹었어요."
+    },
+    {
+     "en": "We had warm biscuits with butter.",
+     "ko": "우리는 버터를 바른 따뜻한 빵을 먹었어요."
+    },
+    {
+     "en": "The dog got a biscuit for being good.",
+     "ko": "개는 얌전히 있어서 비스킷을 받았어요."
+    },
+    {
+     "en": "She baked a box of biscuits.",
+     "ko": "그녀는 비스킷을 한 상자 구웠어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "cookie",
+     "ko": "쿠키 (미국)",
+     "en": "Chocolate chip cookies."
+    },
+    {
+     "type": "연관어",
+     "word": "cracker",
+     "ko": "크래커",
+     "en": "Cheese and crackers."
+    },
+    {
+     "type": "연관어",
+     "word": "tea",
+     "ko": "차",
+     "en": "A cup of tea."
+    },
+    {
+     "type": "연관어",
+     "word": "bake",
+     "ko": "굽다",
+     "en": "Bake some bread."
+    },
+    {
+     "type": "연관어",
+     "word": "bread",
+     "ko": "빵",
+     "en": "Fresh bread."
+    },
+    {
+     "type": "연관어",
+     "word": "snack",
+     "ko": "간식",
+     "en": "A quick snack."
+    }
+   ]
+  },
+  "1642": {
+   "word": "mathematics",
+   "overview": [
+    "mathematics는 '수학'이라는 뜻의 명사입니다. 숫자, 도형, 계산을 다루는 학문입니다.",
+    "학교에서는 짧게 math(미국) 또는 maths(영국)라고 훨씬 많이 씁니다.",
+    "형태는 복수처럼 s로 끝나지만, 학문 이름이라서 단수로 취급합니다. Mathematics is fun.(수학은 재미있어요.)",
+    "형용사는 mathematical(수학의)입니다."
+   ],
+   "easy": [
+    {
+     "word": "math",
+     "en": "I like math.",
+     "ko": "나는 수학을 좋아해."
+    },
+    {
+     "word": "number",
+     "en": "Count the numbers.",
+     "ko": "숫자를 세."
+    }
+   ],
+   "etymology": [
+    "mathematics는 그리스어 mathēma(배움, 배운 것)에서 온 단어입니다.",
+    "manthanein(배우다)에서 나온 말입니다.",
+    "옛 그리스에서는 mathēma가 배움 전체를 가리켰는데, 특히 숫자와 도형을 다루는 학문에 이 이름이 남았습니다.",
+    "라틴어와 프랑스어를 거쳐 영어에 들어왔습니다.",
+    "mathematics의 핵심 이미지는 '숫자와 도형으로 세상을 설명하는 학문 🔢'입니다."
+   ],
+   "meanings": [
+    "수학"
+   ],
+   "examples": [
+    {
+     "en": "Mathematics is my favorite subject.",
+     "ko": "수학은 내가 제일 좋아하는 과목이에요."
+    },
+    {
+     "en": "We study mathematics every day at school.",
+     "ko": "우리는 학교에서 매일 수학을 공부해요."
+    },
+    {
+     "en": "She is good at mathematics.",
+     "ko": "그 아이는 수학을 잘해요."
+    },
+    {
+     "en": "I need help with my mathematics homework.",
+     "ko": "나는 수학 숙제에 도움이 필요해요."
+    },
+    {
+     "en": "Mathematics helps us solve everyday problems.",
+     "ko": "수학은 우리가 일상의 문제를 푸는 데 도움을 줘요."
+    },
+    {
+     "en": "He teaches mathematics at our school.",
+     "ko": "그분은 우리 학교에서 수학을 가르치세요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "math",
+     "ko": "수학 (줄임말)",
+     "en": "A math test."
+    },
+    {
+     "type": "파생어",
+     "word": "mathematical",
+     "ko": "수학적인, 수학의",
+     "en": "A mathematical problem."
+    },
+    {
+     "type": "파생어",
+     "word": "mathematician",
+     "ko": "수학자",
+     "en": "A famous mathematician."
+    },
+    {
+     "type": "연관어",
+     "word": "number",
+     "ko": "숫자",
+     "en": "A big number."
+    },
+    {
+     "type": "연관어",
+     "word": "calculate",
+     "ko": "계산하다",
+     "en": "Calculate the answer."
+    },
+    {
+     "type": "연관어",
+     "word": "science",
+     "ko": "과학",
+     "en": "Science and math."
+    }
+   ]
+  },
+  "2419": {
+   "word": "skate",
+   "overview": [
+    "skate는 '스케이트'라는 뜻의 명사이자 '스케이트를 타다'라는 뜻의 동사입니다.",
+    "얼음 위를 지치는 ice skate와 바퀴로 타는 roller skate가 있습니다.",
+    "go skating(스케이트 타러 가다), skate on the ice(얼음 위에서 스케이트를 타다)처럼 씁니다.",
+    "스케이트보드를 타는 것은 skateboard라고 따로 부릅니다."
+   ],
+   "easy": [
+    {
+     "word": "ice",
+     "en": "Slippery ice.",
+     "ko": "미끄러운 얼음."
+    },
+    {
+     "word": "slide",
+     "en": "Slide on the ice.",
+     "ko": "얼음 위에서 미끄러져."
+    }
+   ],
+   "etymology": [
+    "skate는 네덜란드어 schaats(스케이트)에서 온 단어입니다.",
+    "네덜란드는 겨울에 운하가 얼어서 옛날부터 스케이트를 즐겨 탔습니다.",
+    "1600년대에 영어로 들어오면서 끝의 s가 복수처럼 보여, 하나를 가리킬 때 skate라는 새 단수형이 생겼습니다.",
+    "이런 식으로 생긴 단어를 '거꾸로 만든 말'이라고 합니다.",
+    "skate의 핵심 이미지는 '얼음 위를 쓱쓱 지치는 스케이트 ⛸️'입니다."
+   ],
+   "meanings": [
+    "스케이트 (명사)",
+    "스케이트를 타다 (동사)",
+    "(물고기) 홍어, 가오리류"
+   ],
+   "examples": [
+    {
+     "en": "Can you skate?",
+     "ko": "너 스케이트 탈 줄 알아?"
+    },
+    {
+     "en": "We go ice skating every winter.",
+     "ko": "우리는 겨울마다 아이스 스케이트를 타러 가요."
+    },
+    {
+     "en": "I got new skates for Christmas.",
+     "ko": "나는 크리스마스에 새 스케이트를 받았어요."
+    },
+    {
+     "en": "She skated gracefully across the ice.",
+     "ko": "그녀는 얼음 위를 우아하게 지쳤어요."
+    },
+    {
+     "en": "He fell while skating.",
+     "ko": "그는 스케이트를 타다가 넘어졌어요."
+    },
+    {
+     "en": "The pond froze, so we could skate on it.",
+     "ko": "연못이 얼어서 우리는 그 위에서 스케이트를 탈 수 있었어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "파생어",
+     "word": "skater",
+     "ko": "스케이트 타는 사람",
+     "en": "A figure skater."
+    },
+    {
+     "type": "파생어",
+     "word": "skateboard",
+     "ko": "스케이트보드",
+     "en": "Ride a skateboard."
+    },
+    {
+     "type": "연관어",
+     "word": "ice",
+     "ko": "얼음",
+     "en": "Thin ice."
+    },
+    {
+     "type": "연관어",
+     "word": "ski",
+     "ko": "스키",
+     "en": "Go skiing."
+    },
+    {
+     "type": "연관어",
+     "word": "rink",
+     "ko": "스케이트장",
+     "en": "An ice rink."
+    },
+    {
+     "type": "연관어",
+     "word": "slip",
+     "ko": "미끄러지다",
+     "en": "Slip on the ice."
+    }
+   ]
+  },
+  "2223": {
+   "word": "restroom",
+   "overview": [
+    "restroom은 '화장실'이라는 뜻의 명사입니다. 미국 영어에서 공공장소의 화장실을 정중하게 부르는 말입니다.",
+    "Where is the restroom?(화장실이 어디예요?), use the restroom(화장실을 쓰다)처럼 씁니다.",
+    "학교나 집 화장실은 보통 bathroom이라고 하고, restroom은 식당, 공항, 가게 같은 공공장소에서 더 많이 씁니다.",
+    "영국에서는 toilet이나 loo라는 말을 더 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "bathroom",
+     "en": "Clean the bathroom.",
+     "ko": "화장실을 청소해."
+    },
+    {
+     "word": "toilet",
+     "en": "Flush the toilet.",
+     "ko": "변기 물을 내려."
+    }
+   ],
+   "etymology": [
+    "restroom은 rest(쉬다)와 room(방)이 합쳐진 말입니다.",
+    "'잠시 쉬는 방'이라는 뜻으로, 직접적인 표현을 피하려고 만든 완곡한 말입니다.",
+    "1900년대 초 미국에서 공공장소에 화장실을 가리키는 정중한 말로 쓰이기 시작했습니다.",
+    "toilet, bathroom, restroom처럼 화장실을 부르는 말이 여럿 있는 것은 직접 말하기를 꺼려서 생긴 문화입니다.",
+    "restroom의 핵심 이미지는 '공공장소의 깨끗한 화장실 🚻'입니다."
+   ],
+   "meanings": [
+    "(공공장소의) 화장실"
+   ],
+   "examples": [
+    {
+     "en": "Excuse me, where is the restroom?",
+     "ko": "실례합니다, 화장실이 어디인가요?"
+    },
+    {
+     "en": "May I use the restroom?",
+     "ko": "화장실 좀 써도 될까요?"
+    },
+    {
+     "en": "The restroom is down the hall.",
+     "ko": "화장실은 복도 끝에 있어요."
+    },
+    {
+     "en": "This restaurant has a clean restroom.",
+     "ko": "이 식당은 화장실이 깨끗해요."
+    },
+    {
+     "en": "Please wash your hands in the restroom.",
+     "ko": "화장실에서 손을 씻으세요."
+    },
+    {
+     "en": "The restroom sign is on the door.",
+     "ko": "화장실 표시가 문에 붙어 있어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "bathroom",
+     "ko": "화장실",
+     "en": "A big bathroom."
+    },
+    {
+     "type": "유의어",
+     "word": "toilet",
+     "ko": "화장실, 변기",
+     "en": "Flush the toilet."
+    },
+    {
+     "type": "연관어",
+     "word": "sink",
+     "ko": "세면대",
+     "en": "Wash at the sink."
+    },
+    {
+     "type": "연관어",
+     "word": "soap",
+     "ko": "비누",
+     "en": "Use soap."
+    },
+    {
+     "type": "연관어",
+     "word": "towel",
+     "ko": "수건",
+     "en": "A dry towel."
+    },
+    {
+     "type": "연관어",
+     "word": "mirror",
+     "ko": "거울",
+     "en": "Look in the mirror."
+    }
+   ]
+  },
+  "1235": {
+   "word": "grape",
+   "overview": [
+    "grape는 '포도'라는 뜻의 명사입니다. 작고 동글동글한 알갱이가 송이로 열리는 과일입니다.",
+    "a bunch of grapes(포도 한 송이), grape juice(포도 주스)처럼 씁니다.",
+    "포도알 하나하나는 셀 수 있어서 grapes처럼 복수로 자주 씁니다.",
+    "포도로 만든 술은 wine(와인), 말린 포도는 raisin(건포도)이라고 합니다."
+   ],
+   "easy": [
+    {
+     "word": "fruit",
+     "en": "Purple fruit.",
+     "ko": "보라색 과일."
+    },
+    {
+     "word": "juice",
+     "en": "Sweet juice.",
+     "ko": "달콤한 주스."
+    }
+   ],
+   "etymology": [
+    "grape는 옛 프랑스어 grape(포도 한 송이)에서 온 단어입니다.",
+    "원래는 '갈고리'를 뜻하는 말과 이어지는데, 포도를 딸 때 쓰던 갈고리 모양 도구에서 이름이 왔다고 봅니다.",
+    "재미있게도 원래는 '포도알 하나'가 아니라 '포도 따는 도구'나 '송이'를 뜻했습니다.",
+    "영어에 들어오면서 뜻이 바뀌어 '포도알'을 가리키게 되었습니다.",
+    "grape의 핵심 이미지는 '탱글탱글 송이송이 열린 포도 🍇'입니다."
+   ],
+   "meanings": [
+    "포도",
+    "포도나무"
+   ],
+   "examples": [
+    {
+     "en": "I washed the grapes before eating them.",
+     "ko": "나는 포도를 먹기 전에 씻었어요."
+    },
+    {
+     "en": "These grapes are sweet and juicy.",
+     "ko": "이 포도는 달고 즙이 많아요."
+    },
+    {
+     "en": "We picked grapes at the farm.",
+     "ko": "우리는 농장에서 포도를 땄어요."
+    },
+    {
+     "en": "Would you like some grape juice?",
+     "ko": "포도 주스 좀 드실래요?"
+    },
+    {
+     "en": "She ate a whole bunch of grapes.",
+     "ko": "그녀는 포도 한 송이를 다 먹었어요."
+    },
+    {
+     "en": "Grapes grow on vines.",
+     "ko": "포도는 덩굴에서 자라요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "raisin",
+     "ko": "건포도",
+     "en": "A box of raisins."
+    },
+    {
+     "type": "연관어",
+     "word": "wine",
+     "ko": "포도주, 와인",
+     "en": "Red wine."
+    },
+    {
+     "type": "연관어",
+     "word": "fruit",
+     "ko": "과일",
+     "en": "Fresh fruit."
+    },
+    {
+     "type": "연관어",
+     "word": "vine",
+     "ko": "덩굴",
+     "en": "A grape vine."
+    },
+    {
+     "type": "연관어",
+     "word": "juice",
+     "ko": "주스",
+     "en": "Apple juice."
+    },
+    {
+     "type": "연관어",
+     "word": "purple",
+     "ko": "보라색",
+     "en": "A purple grape."
+    }
+   ]
+  },
+  "854": {
+   "word": "doughnut",
+   "overview": [
+    "doughnut은 '도넛'이라는 뜻의 명사입니다. 밀가루 반죽을 고리 모양이나 동그란 모양으로 튀긴 달콤한 빵입니다.",
+    "a chocolate doughnut(초콜릿 도넛)처럼 씁니다. 미국에서는 donut이라고도 씁니다.",
+    "가운데 구멍이 뚫린 모양이 고리 같아서 a donut shape(도넛 모양)이라는 표현도 씁니다.",
+    "도넛 가게는 doughnut shop이라고 합니다."
+   ],
+   "easy": [
+    {
+     "word": "cake",
+     "en": "A sweet cake.",
+     "ko": "달콤한 케이크."
+    },
+    {
+     "word": "sugar",
+     "en": "Sugar on top.",
+     "ko": "위에 뿌린 설탕."
+    }
+   ],
+   "etymology": [
+    "doughnut은 dough(반죽)와 nut(견과, 작고 동그란 덩어리)이 합쳐진 말입니다.",
+    "처음에는 반죽을 작고 동그랗게 튀긴 덩어리를 nut처럼 불렀다고 봅니다.",
+    "1800년대 미국에서 지금의 이름으로 굳어졌습니다.",
+    "가운데에 구멍을 뚫는 모양은 1800년대 중반부터 널리 퍼졌다고 합니다.",
+    "doughnut의 핵심 이미지는 '가운데 구멍이 뚫린 달콤한 튀김 빵 🍩'입니다."
+   ],
+   "meanings": [
+    "도넛"
+   ],
+   "examples": [
+    {
+     "en": "I had a doughnut for breakfast.",
+     "ko": "나는 아침으로 도넛을 먹었어요."
+    },
+    {
+     "en": "This doughnut has pink icing.",
+     "ko": "이 도넛에는 분홍 설탕 옷이 입혀져 있어요."
+    },
+    {
+     "en": "We bought a box of doughnuts.",
+     "ko": "우리는 도넛 한 상자를 샀어요."
+    },
+    {
+     "en": "My favorite doughnut has chocolate on top.",
+     "ko": "내가 좋아하는 도넛은 위에 초콜릿이 올라가 있어요."
+    },
+    {
+     "en": "The doughnut shop smells so good.",
+     "ko": "도넛 가게에서 정말 좋은 냄새가 나요."
+    },
+    {
+     "en": "She dunked her doughnut in milk.",
+     "ko": "그녀는 도넛을 우유에 찍어 먹었어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "변화형",
+     "word": "donut",
+     "ko": "도넛 (미국식 철자)",
+     "en": "A glazed donut."
+    },
+    {
+     "type": "연관어",
+     "word": "cake",
+     "ko": "케이크",
+     "en": "A birthday cake."
+    },
+    {
+     "type": "연관어",
+     "word": "icing",
+     "ko": "설탕 옷, 아이싱",
+     "en": "Pink icing."
+    },
+    {
+     "type": "연관어",
+     "word": "sugar",
+     "ko": "설탕",
+     "en": "Sprinkle sugar."
+    },
+    {
+     "type": "연관어",
+     "word": "sweet",
+     "ko": "달콤한",
+     "en": "A sweet treat."
+    },
+    {
+     "type": "연관어",
+     "word": "bakery",
+     "ko": "빵집",
+     "en": "A cozy bakery."
+    }
+   ]
+  },
+  "2911": {
+   "word": "watermelon",
+   "overview": [
+    "watermelon은 '수박'이라는 뜻의 명사입니다. 크고 둥글며 안이 빨갛고 즙이 많은 여름 과일입니다.",
+    "a slice of watermelon(수박 한 조각), eat watermelon(수박을 먹다)처럼 씁니다.",
+    "water(물)와 melon(멜론)이 합쳐진 말로, 물이 아주 많은 과일이라는 뜻을 그대로 담고 있습니다.",
+    "여름 더위를 식히는 대표적인 과일로, 씨를 뱉으며 먹는 재미도 있습니다."
+   ],
+   "easy": [
+    {
+     "word": "melon",
+     "en": "A sweet melon.",
+     "ko": "달콤한 멜론."
+    },
+    {
+     "word": "summer",
+     "en": "Hot summer.",
+     "ko": "더운 여름."
+    }
+   ],
+   "etymology": [
+    "watermelon은 water(물)와 melon(멜론)이 합쳐진 말입니다.",
+    "수박은 살이 90% 넘게 물로 이루어져 있어서 이런 이름이 붙었습니다.",
+    "melon은 그리스어 mēlon(사과, 둥근 열매)에서 온 말입니다.",
+    "1600년대에 영어에서 이 이름을 그대로 붙여 썼습니다.",
+    "watermelon의 핵심 이미지는 '한입 베어 물면 즙이 뚝뚝 떨어지는 여름 과일 🍉'입니다."
+   ],
+   "meanings": [
+    "수박"
+   ],
+   "examples": [
+    {
+     "en": "Watermelon tastes great on a hot day.",
+     "ko": "더운 날에는 수박이 정말 맛있어요."
+    },
+    {
+     "en": "We had watermelon at the picnic.",
+     "ko": "우리는 소풍에서 수박을 먹었어요."
+    },
+    {
+     "en": "Cut the watermelon into slices.",
+     "ko": "수박을 조각으로 잘라."
+    },
+    {
+     "en": "Don't swallow the watermelon seeds.",
+     "ko": "수박씨를 삼키지 마."
+    },
+    {
+     "en": "This watermelon is big and sweet.",
+     "ko": "이 수박은 크고 달아요."
+    },
+    {
+     "en": "We grew watermelons in our garden.",
+     "ko": "우리는 텃밭에서 수박을 길렀어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "melon",
+     "ko": "멜론",
+     "en": "A ripe melon."
+    },
+    {
+     "type": "연관어",
+     "word": "summer",
+     "ko": "여름",
+     "en": "A hot summer day."
+    },
+    {
+     "type": "연관어",
+     "word": "seed",
+     "ko": "씨",
+     "en": "Spit out the seed."
+    },
+    {
+     "type": "연관어",
+     "word": "juicy",
+     "ko": "즙이 많은",
+     "en": "A juicy peach."
+    },
+    {
+     "type": "연관어",
+     "word": "slice",
+     "ko": "조각",
+     "en": "A slice of pizza."
+    },
+    {
+     "type": "연관어",
+     "word": "fruit",
+     "ko": "과일",
+     "en": "Cold fruit."
+    }
+   ]
+  },
+  "2684": {
+   "word": "textbook",
+   "overview": [
+    "textbook은 '교과서'라는 뜻의 명사입니다. 학교에서 공부할 때 쓰는 책입니다.",
+    "an English textbook(영어 교과서), open your textbook(교과서를 펴다)처럼 씁니다.",
+    "'전형적인', '아주 좋은 본보기의'라는 형용사로도 씁니다. a textbook example(교과서적인 예)",
+    "text(글)와 book(책)이 합쳐진 말이라서 뜻을 쉽게 짐작할 수 있습니다."
+   ],
+   "easy": [
+    {
+     "word": "book",
+     "en": "A thick book.",
+     "ko": "두꺼운 책."
+    },
+    {
+     "word": "study",
+     "en": "Study English.",
+     "ko": "영어를 공부해."
+    }
+   ],
+   "etymology": [
+    "textbook은 text(본문, 글)와 book(책)이 합쳐진 말입니다.",
+    "text는 라틴어 textus(짜인 것, 직물)에서 온 말입니다.",
+    "글을 '엮어서' 짠 것이라는 뜻에서 '본문'이 되었습니다.",
+    "1700년대쯤 '학생이 공부하려고 보는 본문 책'이라는 뜻으로 textbook이 생겼습니다.",
+    "textbook의 핵심 이미지는 '책상 위에 펼쳐 놓은 학습 교과서 📘'입니다."
+   ],
+   "meanings": [
+    "교과서 (명사)",
+    "전형적인, 본보기가 되는 (형용사)"
+   ],
+   "examples": [
+    {
+     "en": "Open your textbook to page ten.",
+     "ko": "교과서 10쪽을 펴세요."
+    },
+    {
+     "en": "I forgot my math textbook at school.",
+     "ko": "나는 수학 교과서를 학교에 두고 왔어요."
+    },
+    {
+     "en": "This textbook has many pictures.",
+     "ko": "이 교과서에는 그림이 많아요."
+    },
+    {
+     "en": "We use a new English textbook this year.",
+     "ko": "우리는 올해 새 영어 교과서를 써요."
+    },
+    {
+     "en": "The teacher explained it using the textbook.",
+     "ko": "선생님이 교과서를 이용해 설명해 주셨어요."
+    },
+    {
+     "en": "It was a textbook case of good teamwork.",
+     "ko": "그것은 협동의 좋은 본보기였어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "book",
+     "ko": "책",
+     "en": "A story book."
+    },
+    {
+     "type": "연관어",
+     "word": "notebook",
+     "ko": "공책",
+     "en": "A math notebook."
+    },
+    {
+     "type": "연관어",
+     "word": "study",
+     "ko": "공부하다",
+     "en": "Study hard."
+    },
+    {
+     "type": "연관어",
+     "word": "chapter",
+     "ko": "장, 챕터",
+     "en": "Read the chapter."
+    },
+    {
+     "type": "연관어",
+     "word": "page",
+     "ko": "페이지",
+     "en": "Turn the page."
+    },
+    {
+     "type": "연관어",
+     "word": "school",
+     "ko": "학교",
+     "en": "Go to school."
+    }
+   ]
+  },
+  "2160": {
+   "word": "recreation",
+   "overview": [
+    "recreation은 '오락', '여가 활동'이라는 뜻의 명사입니다. 쉬면서 즐겁게 하는 활동을 말합니다.",
+    "outdoor recreation(야외 여가 활동), a recreation center(문화 체육 센터)처럼 씁니다.",
+    "공부나 일을 마친 뒤 몸과 마음을 쉬게 하는 놀이나 취미 활동을 두루 가리킵니다.",
+    "형용사 recreational은 '오락의', '여가의'라는 뜻입니다."
+   ],
+   "easy": [
+    {
+     "word": "fun",
+     "en": "Have some fun.",
+     "ko": "재미있게 놀아."
+    },
+    {
+     "word": "hobby",
+     "en": "My hobby.",
+     "ko": "내 취미."
+    }
+   ],
+   "etymology": [
+    "recreation은 라틴어 recreatio(다시 생기를 얻음)에서 온 단어입니다.",
+    "re(다시)와 creare(만들다, 낳다)가 합쳐진 말입니다.",
+    "'몸과 마음을 다시 새롭게 만들다'라는 뜻에서 '기분 전환', '오락'이 되었습니다.",
+    "create(만들다)와 같은 뿌리를 가진 단어입니다.",
+    "recreation의 핵심 이미지는 '쉬면서 다시 기운을 채우는 활동 🎳'입니다."
+   ],
+   "meanings": [
+    "오락, 여가 활동",
+    "휴양, 기분 전환"
+   ],
+   "examples": [
+    {
+     "en": "Swimming is a good form of recreation.",
+     "ko": "수영은 좋은 여가 활동이에요."
+    },
+    {
+     "en": "The park is a place for recreation.",
+     "ko": "그 공원은 여가를 즐기는 곳이에요."
+    },
+    {
+     "en": "We visited the new recreation center.",
+     "ko": "우리는 새로 생긴 문화 체육 센터에 갔어요."
+    },
+    {
+     "en": "Kids need time for recreation after school.",
+     "ko": "아이들은 방과 후에 놀 시간이 필요해요."
+    },
+    {
+     "en": "Hiking is my favorite outdoor recreation.",
+     "ko": "하이킹은 내가 가장 좋아하는 야외 여가 활동이에요."
+    },
+    {
+     "en": "The town built a recreation area by the river.",
+     "ko": "그 마을은 강가에 여가 공간을 만들었어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "파생어",
+     "word": "recreational",
+     "ko": "오락의, 여가의",
+     "en": "A recreational area."
+    },
+    {
+     "type": "연관어",
+     "word": "hobby",
+     "ko": "취미",
+     "en": "A fun hobby."
+    },
+    {
+     "type": "연관어",
+     "word": "leisure",
+     "ko": "여가",
+     "en": "Leisure time."
+    },
+    {
+     "type": "연관어",
+     "word": "fun",
+     "ko": "재미",
+     "en": "Have fun."
+    },
+    {
+     "type": "연관어",
+     "word": "sport",
+     "ko": "스포츠",
+     "en": "Play a sport."
+    },
+    {
+     "type": "연관어",
+     "word": "relax",
+     "ko": "쉬다, 편히 쉬다",
+     "en": "Relax at home."
+    }
+   ]
+  },
+  "564": {
+   "word": "compute",
+   "overview": [
+    "compute는 '계산하다'라는 뜻의 동사입니다. 숫자를 이용해서 답을 구하는 것을 말합니다.",
+    "compute the total(합계를 계산하다), compute the distance(거리를 계산하다)처럼 씁니다.",
+    "calculate(계산하다)와 뜻이 비슷하지만, compute는 특히 복잡한 계산을 기계나 컴퓨터로 하는 느낌이 있습니다.",
+    "명사 computer(컴퓨터)는 원래 '계산하는 것'이라는 뜻에서 나온 말입니다."
+   ],
+   "easy": [
+    {
+     "word": "calculate",
+     "en": "Calculate the sum.",
+     "ko": "합을 계산해."
+    },
+    {
+     "word": "add",
+     "en": "Add the numbers.",
+     "ko": "숫자를 더해."
+    }
+   ],
+   "etymology": [
+    "compute는 라틴어 computare(함께 세다, 계산하다)에서 온 단어입니다.",
+    "com(함께)과 putare(세다, 생각하다)가 합쳐진 말입니다.",
+    "'여러 수를 함께 모아 세다'라는 뜻에서 '계산하다'가 되었습니다.",
+    "computer(컴퓨터)는 '계산하는 기계'라는 뜻으로, 처음에는 계산을 하는 '사람'을 가리키는 말이었습니다.",
+    "compute의 핵심 이미지는 '숫자를 하나하나 더해 답을 찾는 계산 🖩'입니다."
+   ],
+   "meanings": [
+    "계산하다",
+    "산출하다, 추정하다"
+   ],
+   "examples": [
+    {
+     "en": "The machine computes the answer quickly.",
+     "ko": "그 기계는 답을 빨리 계산해요."
+    },
+    {
+     "en": "Let's compute the total cost.",
+     "ko": "총비용을 계산해 보자."
+    },
+    {
+     "en": "The computer computes millions of numbers per second.",
+     "ko": "컴퓨터는 1초에 수백만 개의 숫자를 계산해요."
+    },
+    {
+     "en": "It's hard to compute how much time we saved.",
+     "ko": "우리가 얼마나 시간을 아꼈는지 계산하기 어려워요."
+    },
+    {
+     "en": "She computed the distance between the two cities.",
+     "ko": "그녀는 두 도시 사이의 거리를 계산했어요."
+    },
+    {
+     "en": "We computed our scores at the end of the game.",
+     "ko": "우리는 게임이 끝나고 점수를 계산했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "calculate",
+     "ko": "계산하다",
+     "en": "Calculate the area."
+    },
+    {
+     "type": "파생어",
+     "word": "computer",
+     "ko": "컴퓨터",
+     "en": "A new computer."
+    },
+    {
+     "type": "파생어",
+     "word": "computation",
+     "ko": "계산",
+     "en": "A quick computation."
+    },
+    {
+     "type": "연관어",
+     "word": "number",
+     "ko": "숫자",
+     "en": "A big number."
+    },
+    {
+     "type": "연관어",
+     "word": "add",
+     "ko": "더하다",
+     "en": "Add two numbers."
+    },
+    {
+     "type": "연관어",
+     "word": "total",
+     "ko": "합계",
+     "en": "The total is ten."
+    }
+   ]
+  },
+  "212": {
+   "word": "badminton",
+   "overview": [
+    "badminton은 '배드민턴'이라는 뜻의 명사입니다. 라켓으로 셔틀콕을 쳐서 네트 너머로 주고받는 운동입니다.",
+    "play badminton(배드민턴을 치다)처럼 운동 이름 앞에는 the를 붙이지 않습니다.",
+    "a badminton racket(배드민턴 라켓), a shuttlecock(셔틀콕)처럼 씁니다.",
+    "테니스공과 달리 배드민턴은 깃털 달린 셔틀콕을 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "tennis",
+     "en": "Play tennis.",
+     "ko": "테니스를 쳐."
+    },
+    {
+     "word": "net",
+     "en": "Over the net.",
+     "ko": "네트 너머로."
+    }
+   ],
+   "etymology": [
+    "badminton은 영국의 마을 이름 Badminton(배드민턴)에서 왔습니다.",
+    "1800년대에 이 마을의 저택에서 손님들이 이 운동을 즐기면서 이름이 붙었다고 전해집니다.",
+    "원래는 인도에서 하던 놀이가 영국으로 전해져 새 규칙이 만들어졌다고 봅니다.",
+    "지명이 운동 종목 이름이 된 marathon과 비슷한 경우입니다.",
+    "badminton의 핵심 이미지는 '가벼운 셔틀콕을 통통 주고받는 운동 🏸'입니다."
+   ],
+   "meanings": [
+    "배드민턴"
+   ],
+   "examples": [
+    {
+     "en": "Let's play badminton in the park.",
+     "ko": "공원에서 배드민턴 치자."
+    },
+    {
+     "en": "I need a new badminton racket.",
+     "ko": "나는 새 배드민턴 라켓이 필요해요."
+    },
+    {
+     "en": "The shuttlecock flew over the net.",
+     "ko": "셔틀콕이 네트 너머로 날아갔어요."
+    },
+    {
+     "en": "My family plays badminton on weekends.",
+     "ko": "우리 가족은 주말마다 배드민턴을 쳐요."
+    },
+    {
+     "en": "Badminton is a fast and fun sport.",
+     "ko": "배드민턴은 빠르고 재미있는 운동이에요."
+    },
+    {
+     "en": "We had a badminton match after school.",
+     "ko": "우리는 방과 후에 배드민턴 시합을 했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "racket",
+     "ko": "라켓",
+     "en": "Swing the racket."
+    },
+    {
+     "type": "연관어",
+     "word": "shuttlecock",
+     "ko": "셔틀콕",
+     "en": "Hit the shuttlecock."
+    },
+    {
+     "type": "연관어",
+     "word": "net",
+     "ko": "네트, 그물",
+     "en": "The ball hit the net."
+    },
+    {
+     "type": "연관어",
+     "word": "tennis",
+     "ko": "테니스",
+     "en": "A tennis court."
+    },
+    {
+     "type": "연관어",
+     "word": "court",
+     "ko": "코트",
+     "en": "An indoor court."
+    },
+    {
+     "type": "연관어",
+     "word": "serve",
+     "ko": "서브하다",
+     "en": "Serve the shuttlecock."
+    }
+   ]
+  },
+  "665": {
+   "word": "crayon",
+   "overview": [
+    "crayon은 '크레용'이라는 뜻의 명사입니다. 색깔이 있는 왁스로 만든, 그림 그리는 막대 도구입니다.",
+    "a box of crayons(크레용 한 통), draw with crayons(크레용으로 그리다)처럼 씁니다.",
+    "물감(paint)이나 색연필(colored pencil)보다 어린아이들이 쓰기 쉬운 도구로 잘 알려져 있습니다.",
+    "동사로는 '크레용으로 그리다'라는 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "color",
+     "en": "Bright colors.",
+     "ko": "밝은 색깔들."
+    },
+    {
+     "word": "draw",
+     "en": "Draw a picture.",
+     "ko": "그림을 그려."
+    }
+   ],
+   "etymology": [
+    "crayon은 프랑스어 crayon(연필, 크레용)에서 온 단어입니다.",
+    "craie(분필)에 '작은'을 뜻하는 -on이 붙은 말입니다.",
+    "craie는 라틴어 creta(분필, 흰 흙)에서 왔습니다.",
+    "옛날에는 크레용이 지금처럼 알록달록하지 않고 분필 같은 재료로 만들었습니다.",
+    "crayon의 핵심 이미지는 '알록달록 통에 담긴 그림 도구 🖍️'입니다."
+   ],
+   "meanings": [
+    "크레용",
+    "크레용으로 그리다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "The kids drew pictures with crayons.",
+     "ko": "아이들이 크레용으로 그림을 그렸어요."
+    },
+    {
+     "en": "I have a big box of crayons.",
+     "ko": "나는 커다란 크레용 한 통이 있어요."
+    },
+    {
+     "en": "Which crayon color do you want?",
+     "ko": "무슨 색깔 크레용을 쓰고 싶어?"
+    },
+    {
+     "en": "She crayoned a rainbow on the paper.",
+     "ko": "그녀는 종이에 크레용으로 무지개를 그렸어요."
+    },
+    {
+     "en": "My crayon broke in half.",
+     "ko": "내 크레용이 반으로 부러졌어요."
+    },
+    {
+     "en": "Kindergarten kids love crayons.",
+     "ko": "유치원 아이들은 크레용을 정말 좋아해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "pencil",
+     "ko": "연필",
+     "en": "A colored pencil."
+    },
+    {
+     "type": "연관어",
+     "word": "paint",
+     "ko": "물감",
+     "en": "Watercolor paint."
+    },
+    {
+     "type": "연관어",
+     "word": "draw",
+     "ko": "그리다",
+     "en": "Draw a house."
+    },
+    {
+     "type": "연관어",
+     "word": "color",
+     "ko": "색칠하다, 색깔",
+     "en": "Color the sky blue."
+    },
+    {
+     "type": "연관어",
+     "word": "paper",
+     "ko": "종이",
+     "en": "Draw on paper."
+    },
+    {
+     "type": "연관어",
+     "word": "marker",
+     "ko": "마커",
+     "en": "A red marker."
+    }
+   ]
+  },
+  "2808": {
+   "word": "twenty-first",
+   "overview": [
+    "twenty-first는 '스물한 번째의'라는 뜻의 서수(순서를 나타내는 수)입니다.",
+    "the twenty-first day(21번째 날), the twenty-first century(21세기)처럼 씁니다.",
+    "twenty-one(21)에 first(첫 번째)를 붙여 만든 말이라서, 뒤쪽 자리만 서수 모양으로 바뀝니다.",
+    "숫자로 쓸 때는 21st처럼 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "first",
+     "en": "The first day.",
+     "ko": "첫째 날."
+    },
+    {
+     "word": "twenty-one",
+     "en": "Twenty-one people.",
+     "ko": "스물한 명."
+    }
+   ],
+   "etymology": [
+    "twenty-first는 twenty(스물)와 first(첫 번째)가 합쳐진 말입니다.",
+    "영어 서수는 twenty-one, twenty-two처럼 뒤쪽 한 자리만 서수(first, second, third...)로 바꾸는 규칙이 있습니다.",
+    "그래서 twenty-first, twenty-second, twenty-third처럼 만듭니다.",
+    "first는 '앞서 가는'이라는 뜻의 아주 옛말에서 온, 영어에서 가장 오래된 서수입니다.",
+    "twenty-first의 핵심 이미지는 '스물을 지나 맞이하는 첫 번째 자리 21️⃣'입니다."
+   ],
+   "meanings": [
+    "스물한 번째의",
+    "21일(날짜)"
+   ],
+   "examples": [
+    {
+     "en": "My birthday is the twenty-first of May.",
+     "ko": "내 생일은 5월 21일이에요."
+    },
+    {
+     "en": "We live in the twenty-first century.",
+     "ko": "우리는 21세기에 살고 있어요."
+    },
+    {
+     "en": "This is his twenty-first game this season.",
+     "ko": "이번이 그의 이번 시즌 21번째 경기예요."
+    },
+    {
+     "en": "She finished in twenty-first place.",
+     "ko": "그녀는 21등으로 들어왔어요."
+    },
+    {
+     "en": "The meeting is on the twenty-first.",
+     "ko": "회의는 21일에 있어요."
+    },
+    {
+     "en": "Read the twenty-first chapter tonight.",
+     "ko": "오늘 밤에 21장을 읽어."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "twenty-second",
+     "ko": "스물두 번째의",
+     "en": "The twenty-second floor."
+    },
+    {
+     "type": "연관어",
+     "word": "first",
+     "ko": "첫 번째의",
+     "en": "The first place."
+    },
+    {
+     "type": "연관어",
+     "word": "century",
+     "ko": "세기",
+     "en": "A new century."
+    },
+    {
+     "type": "연관어",
+     "word": "twenty-one",
+     "ko": "21",
+     "en": "Twenty-one years old."
+    },
+    {
+     "type": "연관어",
+     "word": "date",
+     "ko": "날짜",
+     "en": "What's the date?"
+    },
+    {
+     "type": "연관어",
+     "word": "birthday",
+     "ko": "생일",
+     "en": "Happy birthday."
+    }
+   ]
+  },
+  "2809": {
+   "word": "twenty-second",
+   "overview": [
+    "twenty-second는 '스물두 번째의'라는 뜻의 서수입니다.",
+    "the twenty-second day(22번째 날), the twenty-second floor(22층)처럼 씁니다.",
+    "twenty-two(22)에 second(두 번째)를 붙여 만든 말입니다.",
+    "숫자로 쓸 때는 22nd처럼 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "second",
+     "en": "The second time.",
+     "ko": "두 번째."
+    },
+    {
+     "word": "twenty-two",
+     "en": "Twenty-two students.",
+     "ko": "학생 스물두 명."
+    }
+   ],
+   "etymology": [
+    "twenty-second는 twenty(스물)와 second(두 번째)가 합쳐진 말입니다.",
+    "second은 라틴어 secundus(따라오는, 다음의)에서 온 말입니다.",
+    "secundus는 sequi(따르다)에서 나왔는데, 이는 follow(따라가다)와도 먼 친척입니다.",
+    "twenty-one부터 twenty-nine까지 뒤쪽 자리만 서수 모양으로 바뀌는 규칙을 따릅니다.",
+    "twenty-second의 핵심 이미지는 '스물하나 다음으로 오는 자리 22️⃣'입니다."
+   ],
+   "meanings": [
+    "스물두 번째의",
+    "22일(날짜)"
+   ],
+   "examples": [
+    {
+     "en": "My uncle lives on the twenty-second floor.",
+     "ko": "우리 삼촌은 22층에 사세요."
+    },
+    {
+     "en": "The trip starts on the twenty-second of July.",
+     "ko": "여행은 7월 22일에 시작해요."
+    },
+    {
+     "en": "This is the twenty-second time I've watched this movie.",
+     "ko": "이 영화를 보는 건 이번이 22번째예요."
+    },
+    {
+     "en": "He came in twenty-second place.",
+     "ko": "그는 22등으로 들어왔어요."
+    },
+    {
+     "en": "We celebrated on the twenty-second.",
+     "ko": "우리는 22일에 축하했어요."
+    },
+    {
+     "en": "Turn to the twenty-second page.",
+     "ko": "22쪽을 펴세요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "twenty-first",
+     "ko": "스물한 번째의",
+     "en": "The twenty-first day."
+    },
+    {
+     "type": "연관어",
+     "word": "second",
+     "ko": "두 번째의",
+     "en": "Second place."
+    },
+    {
+     "type": "연관어",
+     "word": "twenty-two",
+     "ko": "22",
+     "en": "Twenty-two years."
+    },
+    {
+     "type": "연관어",
+     "word": "floor",
+     "ko": "층",
+     "en": "The top floor."
+    },
+    {
+     "type": "연관어",
+     "word": "date",
+     "ko": "날짜",
+     "en": "Today's date."
+    },
+    {
+     "type": "연관어",
+     "word": "month",
+     "ko": "달",
+     "en": "This month."
+    }
+   ]
+  },
+  "2810": {
+   "word": "twenty-third",
+   "overview": [
+    "twenty-third는 '스물세 번째의'라는 뜻의 서수입니다.",
+    "the twenty-third day(23번째 날), the twenty-third of August(8월 23일)처럼 씁니다.",
+    "twenty-three(23)에 third(세 번째)를 붙여 만든 말입니다.",
+    "숫자로 쓸 때는 23rd처럼 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "third",
+     "en": "The third floor.",
+     "ko": "3층."
+    },
+    {
+     "word": "twenty-three",
+     "en": "Twenty-three days.",
+     "ko": "23일."
+    }
+   ],
+   "etymology": [
+    "twenty-third는 twenty(스물)와 third(세 번째)가 합쳐진 말입니다.",
+    "third는 원래 thrid였는데, thirty처럼 r과 i의 자리가 바뀌어 지금의 모양이 되었습니다.",
+    "three(셋)와 뿌리가 같은 오래된 서수입니다.",
+    "twenty-one, twenty-two, twenty-three까지가 first, second, third로 끝나는 특별한 모양을 갖고, 그 뒤로는 twenty-fourth처럼 규칙적으로 -th가 붙습니다.",
+    "twenty-third의 핵심 이미지는 '스물둘 다음으로 오는 자리 23️⃣'입니다."
+   ],
+   "meanings": [
+    "스물세 번째의",
+    "23일(날짜)"
+   ],
+   "examples": [
+    {
+     "en": "The concert is on the twenty-third of June.",
+     "ko": "그 콘서트는 6월 23일에 열려요."
+    },
+    {
+     "en": "This is my twenty-third book this year.",
+     "ko": "이번이 올해 내가 읽은 23번째 책이에요."
+    },
+    {
+     "en": "She was born on the twenty-third of March.",
+     "ko": "그녀는 3월 23일에 태어났어요."
+    },
+    {
+     "en": "He finished the race in twenty-third place.",
+     "ko": "그는 경주에서 23등으로 들어왔어요."
+    },
+    {
+     "en": "We meet again on the twenty-third.",
+     "ko": "우리는 23일에 다시 만나요."
+    },
+    {
+     "en": "Look at the twenty-third question.",
+     "ko": "23번 문제를 봐."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "twenty-second",
+     "ko": "스물두 번째의",
+     "en": "The twenty-second row."
+    },
+    {
+     "type": "연관어",
+     "word": "third",
+     "ko": "세 번째의",
+     "en": "The third prize."
+    },
+    {
+     "type": "연관어",
+     "word": "twenty-three",
+     "ko": "23",
+     "en": "Twenty-three players."
+    },
+    {
+     "type": "연관어",
+     "word": "date",
+     "ko": "날짜",
+     "en": "Mark the date."
+    },
+    {
+     "type": "연관어",
+     "word": "birthday",
+     "ko": "생일",
+     "en": "A birthday party."
+    },
+    {
+     "type": "연관어",
+     "word": "calendar",
+     "ko": "달력",
+     "en": "Check the calendar."
+    }
+   ]
   }
  }
 }
