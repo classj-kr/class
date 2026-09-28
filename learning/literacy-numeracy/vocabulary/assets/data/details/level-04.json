@@ -3821,6 +3821,1945 @@
      "en": "New clothes."
     }
    ]
+  },
+  "2642": {
+   "word": "tall",
+   "overview": [
+    "tall은 '키가 큰', '높은'이라는 뜻의 형용사입니다. 사람이나 나무, 건물처럼 위로 길쭉한 것에 씁니다.",
+    "a tall boy(키 큰 남자아이), a tall tree(높은 나무), a tall building(높은 건물)처럼 씁니다.",
+    "키를 말할 때는 I am 150 centimeters tall.(나는 키가 150센티미터예요.)처럼 숫자 뒤에 tall을 붙입니다.",
+    "비교할 때는 taller(더 큰), tallest(가장 큰)로 바뀝니다."
+   ],
+   "easy": [
+    {
+     "word": "high",
+     "en": "A high wall.",
+     "ko": "높은 벽."
+    },
+    {
+     "word": "big",
+     "en": "A big man.",
+     "ko": "덩치 큰 남자."
+    }
+   ],
+   "etymology": [
+    "tall은 고대 영어 getæl(재빠른, 알맞은)에서 온 것으로 봅니다.",
+    "처음에는 '용감한', '잘생긴'이라는 뜻으로 쓰였습니다.",
+    "시간이 지나면서 '멋지게 큰 사람'을 가리키다가 '키가 큰'이라는 뜻이 되었습니다.",
+    "high는 땅에서 멀리 떨어진 '높이'에, tall은 아래에서 위까지 '길쭉한 키'에 주로 씁니다.",
+    "tall의 핵심 이미지는 '위로 쭉 뻗은 키다리 🦒'입니다."
+   ],
+   "meanings": [
+    "키가 큰",
+    "(건물·나무 등이) 높은",
+    "키가 ~인 (숫자 뒤에서)"
+   ],
+   "examples": [
+    {
+     "en": "My brother is very tall.",
+     "ko": "우리 형은 키가 아주 커요."
+    },
+    {
+     "en": "How tall are you?",
+     "ko": "너는 키가 몇이야?"
+    },
+    {
+     "en": "I'm taller than my mom now.",
+     "ko": "나는 이제 엄마보다 키가 커요."
+    },
+    {
+     "en": "Giraffes are the tallest animals.",
+     "ko": "기린은 키가 가장 큰 동물이에요."
+    },
+    {
+     "en": "There is a tall tree in the park.",
+     "ko": "공원에 높은 나무가 한 그루 있어요."
+    },
+    {
+     "en": "She is 140 centimeters tall.",
+     "ko": "그 아이는 키가 140센티미터예요."
+    }
+   ],
+   "together": [
+    {
+     "type": "반의어",
+     "word": "short",
+     "ko": "키가 작은",
+     "en": "A short girl."
+    },
+    {
+     "type": "유의어",
+     "word": "high",
+     "ko": "높은",
+     "en": "A high mountain."
+    },
+    {
+     "type": "변화형",
+     "word": "taller",
+     "ko": "더 키가 큰",
+     "en": "He is taller than me."
+    },
+    {
+     "type": "변화형",
+     "word": "tallest",
+     "ko": "가장 키가 큰",
+     "en": "The tallest boy."
+    },
+    {
+     "type": "연관어",
+     "word": "height",
+     "ko": "키, 높이",
+     "en": "Check your height."
+    },
+    {
+     "type": "연관어",
+     "word": "grow",
+     "ko": "자라다",
+     "en": "Kids grow fast."
+    }
+   ]
+  },
+  "2661": {
+   "word": "television",
+   "overview": [
+    "television은 '텔레비전'이라는 뜻의 명사입니다. 줄여서 TV라고 많이 부릅니다.",
+    "watch television(텔레비전을 보다), on television(텔레비전에 나오는)처럼 씁니다.",
+    "텔레비전 기계를 말할 때도, 텔레비전 방송을 말할 때도 television을 씁니다.",
+    "'TV를 보다'는 watch TV라고 하고, see TV라고는 잘 하지 않습니다."
+   ],
+   "easy": [
+    {
+     "word": "TV",
+     "en": "Turn on the TV.",
+     "ko": "TV 켜."
+    },
+    {
+     "word": "screen",
+     "en": "A big screen.",
+     "ko": "큰 화면."
+    }
+   ],
+   "etymology": [
+    "television은 그리스어 tele(멀리)와 라틴어 visio(보기)가 합쳐진 말입니다.",
+    "'멀리 있는 것을 보는 기계'라는 뜻입니다.",
+    "1900년대 초에 텔레비전이 발명되면서 새로 만들어진 단어입니다.",
+    "telephone(전화, 멀리서 들리는 소리), telescope(망원경, 멀리 보는 도구)도 tele가 들어간 형제 단어입니다.",
+    "television의 핵심 이미지는 '멀리서 오는 화면을 보는 상자 📺'입니다."
+   ],
+   "meanings": [
+    "텔레비전 (기계)",
+    "텔레비전 방송",
+    "텔레비전 업계"
+   ],
+   "examples": [
+    {
+     "en": "We watch television after dinner.",
+     "ko": "우리는 저녁 먹고 텔레비전을 봐요."
+    },
+    {
+     "en": "Can I turn on the television?",
+     "ko": "텔레비전 켜도 돼요?"
+    },
+    {
+     "en": "What's on television tonight?",
+     "ko": "오늘 밤 텔레비전에서 뭐 해?"
+    },
+    {
+     "en": "My favorite singer was on TV.",
+     "ko": "내가 좋아하는 가수가 TV에 나왔어요."
+    },
+    {
+     "en": "Don't sit too close to the TV.",
+     "ko": "TV에 너무 가까이 앉지 마."
+    },
+    {
+     "en": "We bought a new television.",
+     "ko": "우리는 새 텔레비전을 샀어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "TV",
+     "ko": "텔레비전 (줄임말)",
+     "en": "Watch TV."
+    },
+    {
+     "type": "연관어",
+     "word": "watch",
+     "ko": "보다",
+     "en": "Watch a movie."
+    },
+    {
+     "type": "연관어",
+     "word": "channel",
+     "ko": "채널",
+     "en": "Change the channel."
+    },
+    {
+     "type": "연관어",
+     "word": "remote",
+     "ko": "리모컨",
+     "en": "Where is the remote?"
+    },
+    {
+     "type": "연관어",
+     "word": "show",
+     "ko": "프로그램, 쇼",
+     "en": "A funny show."
+    },
+    {
+     "type": "연관어",
+     "word": "screen",
+     "ko": "화면",
+     "en": "The screen is dark."
+    }
+   ]
+  },
+  "1970": {
+   "word": "pizza",
+   "overview": [
+    "pizza는 '피자'라는 뜻의 명사입니다. 둥글고 납작한 빵 위에 치즈와 토핑을 올려 구운 음식입니다.",
+    "a pizza(피자 한 판), a slice of pizza(피자 한 조각)처럼 씁니다.",
+    "cheese pizza(치즈 피자), order a pizza(피자를 주문하다)처럼 함께 쓰는 말도 많습니다.",
+    "피자 음식 자체를 말할 때는 I like pizza.처럼 a 없이 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "bread",
+     "en": "Fresh bread.",
+     "ko": "갓 구운 빵."
+    },
+    {
+     "word": "cheese",
+     "en": "Melted cheese.",
+     "ko": "녹은 치즈."
+    }
+   ],
+   "etymology": [
+    "pizza는 이탈리아어 pizza에서 그대로 들어온 단어입니다.",
+    "이탈리아의 나폴리 지방에서 먹던 납작한 빵 요리의 이름이었습니다.",
+    "이탈리아 사람들이 미국으로 건너가면서 피자가 세계로 퍼졌고, 이름도 그대로 쓰이게 되었습니다.",
+    "spaghetti(스파게티), pasta(파스타)도 이탈리아에서 온 음식 이름입니다.",
+    "pizza의 핵심 이미지는 '치즈가 쭉 늘어나는 둥근 피자 🍕'입니다."
+   ],
+   "meanings": [
+    "피자",
+    "피자 한 판"
+   ],
+   "examples": [
+    {
+     "en": "Let's order a pizza tonight.",
+     "ko": "오늘 밤에 피자 시켜 먹자."
+    },
+    {
+     "en": "I ate two slices of pizza.",
+     "ko": "나는 피자를 두 조각 먹었어요."
+    },
+    {
+     "en": "Pizza is my favorite food.",
+     "ko": "피자는 내가 제일 좋아하는 음식이에요."
+    },
+    {
+     "en": "This pizza is still hot.",
+     "ko": "이 피자는 아직 뜨거워요."
+    },
+    {
+     "en": "We had pizza for lunch.",
+     "ko": "우리는 점심으로 피자를 먹었어요."
+    },
+    {
+     "en": "Do you want cheese pizza?",
+     "ko": "치즈 피자 먹을래?"
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "cheese",
+     "ko": "치즈",
+     "en": "Extra cheese, please."
+    },
+    {
+     "type": "연관어",
+     "word": "slice",
+     "ko": "조각",
+     "en": "A slice of cake."
+    },
+    {
+     "type": "연관어",
+     "word": "order",
+     "ko": "주문하다",
+     "en": "Order food."
+    },
+    {
+     "type": "연관어",
+     "word": "oven",
+     "ko": "오븐",
+     "en": "A hot oven."
+    },
+    {
+     "type": "연관어",
+     "word": "hamburger",
+     "ko": "햄버거",
+     "en": "A big hamburger."
+    },
+    {
+     "type": "연관어",
+     "word": "delivery",
+     "ko": "배달",
+     "en": "Fast delivery."
+    }
+   ]
+  },
+  "1376": {
+   "word": "image",
+   "overview": [
+    "image는 '모습', '그림', '이미지'라는 뜻의 명사입니다. 눈에 보이는 모습이나 머릿속에 떠오르는 그림을 말합니다.",
+    "an image on the screen(화면 속 이미지), a clear image(선명한 모습)처럼 씁니다.",
+    "사람이나 회사가 남에게 주는 '인상', '이미지'라는 뜻도 있습니다.",
+    "발음은 '이미지'가 아니라 '이미쥐[ímidʒ]'에 가깝고, 앞부분 i를 세게 읽습니다."
+   ],
+   "easy": [
+    {
+     "word": "picture",
+     "en": "Draw a picture.",
+     "ko": "그림을 그려."
+    },
+    {
+     "word": "photo",
+     "en": "Take a photo.",
+     "ko": "사진을 찍어."
+    }
+   ],
+   "etymology": [
+    "image는 라틴어 imago(모습, 닮은 모양)에서 온 단어입니다.",
+    "imitate(흉내 내다)와 같은 뿌리로, '무엇을 닮게 만든 것'이라는 뜻이었습니다.",
+    "옛 프랑스어 image를 거쳐 영어로 들어왔습니다.",
+    "imagine(상상하다)은 '머릿속에 image를 그리다'라는 뜻이고, imagination(상상력)도 같은 가족입니다.",
+    "image의 핵심 이미지는 '눈이나 마음에 비친 모습 🖼️'입니다."
+   ],
+   "meanings": [
+    "(눈에 보이는) 모습, 상",
+    "그림, 사진, 영상 이미지",
+    "(마음속) 이미지, 인상",
+    "(남에게 보이는) 이미지, 평판"
+   ],
+   "examples": [
+    {
+     "en": "I saw my image in the mirror.",
+     "ko": "나는 거울에 비친 내 모습을 봤어요."
+    },
+    {
+     "en": "Click the image to make it bigger.",
+     "ko": "이미지를 누르면 커져요."
+    },
+    {
+     "en": "This picture has a clear image.",
+     "ko": "이 사진은 모습이 선명해요."
+    },
+    {
+     "en": "The book has many images of animals.",
+     "ko": "그 책에는 동물 그림이 많아요."
+    },
+    {
+     "en": "I still have an image of that day.",
+     "ko": "나는 아직도 그날의 모습이 떠올라요."
+    },
+    {
+     "en": "The team wants a good image.",
+     "ko": "그 팀은 좋은 이미지를 원해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "picture",
+     "ko": "그림, 사진",
+     "en": "A nice picture."
+    },
+    {
+     "type": "파생어",
+     "word": "imagine",
+     "ko": "상상하다",
+     "en": "Imagine a dragon."
+    },
+    {
+     "type": "파생어",
+     "word": "imagination",
+     "ko": "상상력",
+     "en": "Use your imagination."
+    },
+    {
+     "type": "연관어",
+     "word": "mirror",
+     "ko": "거울",
+     "en": "Look in the mirror."
+    },
+    {
+     "type": "연관어",
+     "word": "screen",
+     "ko": "화면",
+     "en": "A phone screen."
+    },
+    {
+     "type": "연관어",
+     "word": "photo",
+     "ko": "사진",
+     "en": "An old photo."
+    }
+   ]
+  },
+  "469": {
+   "word": "chocolate",
+   "overview": [
+    "chocolate은 '초콜릿'이라는 뜻의 명사입니다. 카카오 콩으로 만든 달콤한 간식입니다.",
+    "a bar of chocolate(초콜릿 한 개), chocolate cake(초콜릿 케이크), hot chocolate(핫초코)처럼 씁니다.",
+    "초콜릿 자체는 셀 수 없지만, 상자에 든 초콜릿 한 알 한 알은 chocolates라고 셀 수 있습니다.",
+    "'초콜릿색(짙은 갈색)'이라는 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "candy",
+     "en": "Sweet candy.",
+     "ko": "달콤한 사탕."
+    },
+    {
+     "word": "sweet",
+     "en": "It tastes sweet.",
+     "ko": "달콤한 맛이 나요."
+    }
+   ],
+   "etymology": [
+    "chocolate은 멕시코 원주민 아즈텍 사람들의 말 xocolatl에서 온 것으로 봅니다.",
+    "아즈텍 사람들은 카카오 콩을 갈아 쓴맛 나는 음료로 마셨습니다.",
+    "스페인 사람들이 이 음료를 유럽에 가져가면서 스페인어 chocolate가 되었습니다.",
+    "나중에 설탕과 우유를 넣어 지금처럼 달콤한 초콜릿이 되었습니다.",
+    "chocolate의 핵심 이미지는 '카카오로 만든 달콤한 갈색 간식 🍫'입니다."
+   ],
+   "meanings": [
+    "초콜릿",
+    "(한 알씩 된) 초콜릿 과자",
+    "핫초코, 초콜릿 음료",
+    "초콜릿색, 짙은 갈색"
+   ],
+   "examples": [
+    {
+     "en": "I love chocolate ice cream.",
+     "ko": "나는 초콜릿 아이스크림을 정말 좋아해요."
+    },
+    {
+     "en": "Can I have a piece of chocolate?",
+     "ko": "초콜릿 한 조각 먹어도 돼요?"
+    },
+    {
+     "en": "Mom made a chocolate cake.",
+     "ko": "엄마가 초콜릿 케이크를 만드셨어요."
+    },
+    {
+     "en": "Let's drink hot chocolate.",
+     "ko": "핫초코 마시자."
+    },
+    {
+     "en": "Don't eat too much chocolate.",
+     "ko": "초콜릿을 너무 많이 먹지 마."
+    },
+    {
+     "en": "She gave me a box of chocolates.",
+     "ko": "그 애가 나에게 초콜릿 한 상자를 줬어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "candy",
+     "ko": "사탕",
+     "en": "A bag of candy."
+    },
+    {
+     "type": "연관어",
+     "word": "sweet",
+     "ko": "달콤한",
+     "en": "A sweet cake."
+    },
+    {
+     "type": "연관어",
+     "word": "cookie",
+     "ko": "쿠키",
+     "en": "A chocolate cookie."
+    },
+    {
+     "type": "연관어",
+     "word": "milk",
+     "ko": "우유",
+     "en": "Chocolate milk."
+    },
+    {
+     "type": "연관어",
+     "word": "brown",
+     "ko": "갈색",
+     "en": "A brown bag."
+    },
+    {
+     "type": "연관어",
+     "word": "dessert",
+     "ko": "디저트, 후식",
+     "en": "Dessert time!"
+    }
+   ]
+  },
+  "495": {
+   "word": "clever",
+   "overview": [
+    "clever는 '영리한', '똑똑한'이라는 뜻의 형용사입니다. 머리가 좋아서 빨리 알아듣고 좋은 방법을 잘 찾는 모습을 말합니다.",
+    "a clever girl(영리한 여자아이), a clever idea(기발한 생각)처럼 사람에게도, 생각이나 물건에도 씁니다.",
+    "It's clever of you.(너 참 똑똑하구나.)처럼 칭찬할 때도 씁니다.",
+    "비교할 때는 cleverer(더 영리한), cleverest(가장 영리한)로 바뀝니다."
+   ],
+   "easy": [
+    {
+     "word": "smart",
+     "en": "A smart boy.",
+     "ko": "똑똑한 남자아이."
+    },
+    {
+     "word": "wise",
+     "en": "A wise old man.",
+     "ko": "지혜로운 할아버지."
+    }
+   ],
+   "etymology": [
+    "clever는 1200년대쯤부터 쓰인 말로, 정확한 뿌리는 잘 알려져 있지 않습니다.",
+    "처음에는 '손이 재빠른', '손재주가 좋은'이라는 뜻으로 쓰였다고 봅니다.",
+    "'손이 재빠르다'에서 '머리가 재빠르다', 곧 '영리하다'로 뜻이 넓어졌습니다.",
+    "smart는 공부를 잘하는 똑똑함에, clever는 재치 있고 꾀가 많은 똑똑함에 더 자주 씁니다.",
+    "clever의 핵심 이미지는 '번뜩이는 아이디어가 떠오르는 머리 💡'입니다."
+   ],
+   "meanings": [
+    "영리한, 똑똑한",
+    "(생각·방법이) 기발한, 재치 있는",
+    "손재주가 좋은, 솜씨 있는"
+   ],
+   "examples": [
+    {
+     "en": "My dog is very clever.",
+     "ko": "우리 개는 아주 영리해요."
+    },
+    {
+     "en": "That's a clever idea!",
+     "ko": "그거 기발한 생각이다!"
+    },
+    {
+     "en": "She is clever at math.",
+     "ko": "그 아이는 수학을 잘해요."
+    },
+    {
+     "en": "The fox was clever and fast.",
+     "ko": "그 여우는 꾀가 많고 빨랐어요."
+    },
+    {
+     "en": "How clever of you!",
+     "ko": "너 정말 똑똑하구나!"
+    },
+    {
+     "en": "He found a clever way to fix it.",
+     "ko": "그는 그걸 고칠 재치 있는 방법을 찾았어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "smart",
+     "ko": "똑똑한",
+     "en": "You are so smart."
+    },
+    {
+     "type": "유의어",
+     "word": "bright",
+     "ko": "총명한",
+     "en": "A bright student."
+    },
+    {
+     "type": "반의어",
+     "word": "stupid",
+     "ko": "어리석은",
+     "en": "A stupid mistake."
+    },
+    {
+     "type": "파생어",
+     "word": "cleverly",
+     "ko": "영리하게",
+     "en": "She answered cleverly."
+    },
+    {
+     "type": "변화형",
+     "word": "cleverer",
+     "ko": "더 영리한",
+     "en": "He is cleverer than me."
+    },
+    {
+     "type": "연관어",
+     "word": "idea",
+     "ko": "생각, 아이디어",
+     "en": "A good idea."
+    }
+   ]
+  },
+  "2990": {
+   "word": "yellow",
+   "overview": [
+    "yellow는 '노란색', '노란'이라는 뜻입니다. 바나나, 병아리, 해바라기의 색입니다.",
+    "a yellow hat(노란 모자)처럼 형용사로, Yellow is my favorite color.(노란색은 내가 좋아하는 색이에요.)처럼 명사로 씁니다.",
+    "종이나 나뭇잎이 오래되어 '노랗게 되다'라는 동사로도 씁니다.",
+    "신호등의 노란불은 yellow light라고 합니다."
+   ],
+   "easy": [
+    {
+     "word": "gold",
+     "en": "A gold ring.",
+     "ko": "금반지."
+    },
+    {
+     "word": "color",
+     "en": "What color is it?",
+     "ko": "그건 무슨 색이야?"
+    }
+   ],
+   "etymology": [
+    "yellow는 고대 영어 geolu(노란)에서 온 단어입니다.",
+    "아주 옛날 인도·유럽 말에서 '빛나다', '노랗다', '초록빛이 돌다'를 뜻하던 뿌리와 이어져 있습니다.",
+    "gold(금), glow(빛나다)와 먼 친척이라고 봅니다.",
+    "독일어 gelb도 같은 뿌리에서 나온 '노란'이라는 말입니다.",
+    "yellow의 핵심 이미지는 '햇살처럼 밝은 노란색 🌻'입니다."
+   ],
+   "meanings": [
+    "노란색 (명사)",
+    "노란 (형용사)",
+    "노랗게 되다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "Bananas are yellow.",
+     "ko": "바나나는 노란색이에요."
+    },
+    {
+     "en": "She is wearing a yellow dress.",
+     "ko": "그 아이는 노란 원피스를 입고 있어요."
+    },
+    {
+     "en": "I painted the sun yellow.",
+     "ko": "나는 해를 노랗게 칠했어요."
+    },
+    {
+     "en": "The light turned yellow.",
+     "ko": "신호등이 노란불로 바뀌었어요."
+    },
+    {
+     "en": "The leaves turn yellow in fall.",
+     "ko": "가을에는 나뭇잎이 노랗게 변해요."
+    },
+    {
+     "en": "Mix yellow and blue to make green.",
+     "ko": "노랑과 파랑을 섞으면 초록이 돼요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "color",
+     "ko": "색깔",
+     "en": "My favorite color."
+    },
+    {
+     "type": "연관어",
+     "word": "banana",
+     "ko": "바나나",
+     "en": "A ripe banana."
+    },
+    {
+     "type": "연관어",
+     "word": "lemon",
+     "ko": "레몬",
+     "en": "A sour lemon."
+    },
+    {
+     "type": "연관어",
+     "word": "orange",
+     "ko": "주황색",
+     "en": "An orange ball."
+    },
+    {
+     "type": "연관어",
+     "word": "gold",
+     "ko": "금색",
+     "en": "A gold medal."
+    },
+    {
+     "type": "파생어",
+     "word": "yellowish",
+     "ko": "노르스름한",
+     "en": "Yellowish paper."
+    }
+   ]
+  },
+  "2473": {
+   "word": "soup",
+   "overview": [
+    "soup는 '수프', '국'이라는 뜻의 명사입니다. 채소나 고기를 물에 넣고 끓인 국물 음식입니다.",
+    "a bowl of soup(수프 한 그릇), hot soup(뜨거운 수프), vegetable soup(채소 수프)처럼 씁니다.",
+    "영어에서는 수프를 숟가락으로 떠먹기 때문에 eat soup라고 하는 경우가 많습니다. 컵째 마실 때는 drink soup라고도 합니다.",
+    "우리나라의 국이나 탕도 영어로 설명할 때 soup라고 부를 수 있습니다."
+   ],
+   "easy": [
+    {
+     "word": "stew",
+     "en": "Beef stew.",
+     "ko": "소고기 스튜."
+    },
+    {
+     "word": "water",
+     "en": "Boil the water.",
+     "ko": "물을 끓여."
+    }
+   ],
+   "etymology": [
+    "soup는 프랑스어 soupe에서 온 단어입니다.",
+    "원래는 국물에 적셔 먹는 빵 조각, 또는 빵을 적신 국물을 가리켰습니다.",
+    "sip(홀짝이다), sup(조금씩 마시다)과 먼 친척인 게르만 말에서 왔다고 봅니다.",
+    "빵을 국물에 적셔 먹던 식사가 '국물 음식' 전체의 이름이 되었습니다.",
+    "soup의 핵심 이미지는 '김이 모락모락 나는 따뜻한 국물 🍲'입니다."
+   ],
+   "meanings": [
+    "수프",
+    "국, 탕"
+   ],
+   "examples": [
+    {
+     "en": "I had chicken soup for lunch.",
+     "ko": "나는 점심으로 치킨 수프를 먹었어요."
+    },
+    {
+     "en": "This soup is too hot.",
+     "ko": "이 수프는 너무 뜨거워요."
+    },
+    {
+     "en": "Mom made vegetable soup.",
+     "ko": "엄마가 채소 수프를 만드셨어요."
+    },
+    {
+     "en": "Would you like some soup?",
+     "ko": "수프 좀 드실래요?"
+    },
+    {
+     "en": "Blow on the soup before you eat it.",
+     "ko": "먹기 전에 수프를 호호 불어."
+    },
+    {
+     "en": "Hot soup is good on a cold day.",
+     "ko": "추운 날에는 뜨거운 국이 좋아요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "bowl",
+     "ko": "그릇",
+     "en": "A bowl of rice."
+    },
+    {
+     "type": "연관어",
+     "word": "spoon",
+     "ko": "숟가락",
+     "en": "Use a spoon."
+    },
+    {
+     "type": "연관어",
+     "word": "hot",
+     "ko": "뜨거운",
+     "en": "Hot tea."
+    },
+    {
+     "type": "연관어",
+     "word": "vegetable",
+     "ko": "채소",
+     "en": "Eat your vegetables."
+    },
+    {
+     "type": "연관어",
+     "word": "boil",
+     "ko": "끓이다",
+     "en": "Boil an egg."
+    },
+    {
+     "type": "유의어",
+     "word": "stew",
+     "ko": "스튜",
+     "en": "A warm stew."
+    }
+   ]
+  },
+  "1358": {
+   "word": "hunt",
+   "overview": [
+    "hunt는 '사냥하다'라는 뜻의 동사이자 '사냥'이라는 뜻의 명사입니다. 동물을 쫓아가서 잡는 것을 말합니다.",
+    "Lions hunt zebras.(사자는 얼룩말을 사냥해요.)처럼 씁니다.",
+    "무엇을 열심히 '찾아다니다'라는 뜻도 있어서 hunt for my keys(열쇠를 찾아 헤매다)처럼 씁니다.",
+    "treasure hunt(보물찾기), egg hunt(달걀 찾기 놀이)도 hunt를 쓴 말입니다."
+   ],
+   "easy": [
+    {
+     "word": "catch",
+     "en": "Catch the fish.",
+     "ko": "물고기를 잡아."
+    },
+    {
+     "word": "look for",
+     "en": "Look for the ball.",
+     "ko": "공을 찾아봐."
+    }
+   ],
+   "etymology": [
+    "hunt는 고대 영어 huntian(사냥하다)에서 온 단어입니다.",
+    "'붙잡다', '손에 넣다'라는 뜻의 옛 게르만 말과 이어진다고 봅니다.",
+    "먹을 것을 얻기 위해 동물을 쫓던 일이 '열심히 찾아다니다'라는 뜻으로 넓어졌습니다.",
+    "hunter(사냥꾼), hunting(사냥)이 같은 가족 단어입니다.",
+    "hunt의 핵심 이미지는 '살금살금 쫓아가서 잡는 사냥 🏹'입니다."
+   ],
+   "meanings": [
+    "사냥하다 (동사)",
+    "(열심히) 찾다, 뒤지다 (동사)",
+    "사냥 (명사)",
+    "찾기, 수색 (명사)"
+   ],
+   "examples": [
+    {
+     "en": "Cats hunt mice at night.",
+     "ko": "고양이는 밤에 쥐를 사냥해요."
+    },
+    {
+     "en": "Wolves hunt in groups.",
+     "ko": "늑대는 무리 지어 사냥해요."
+    },
+    {
+     "en": "I hunted for my pencil everywhere.",
+     "ko": "나는 연필을 찾으려고 여기저기 뒤졌어요."
+    },
+    {
+     "en": "We had an Easter egg hunt.",
+     "ko": "우리는 부활절 달걀 찾기 놀이를 했어요."
+    },
+    {
+     "en": "The treasure hunt was fun.",
+     "ko": "보물찾기는 재미있었어요."
+    },
+    {
+     "en": "Owls hunt with their sharp eyes.",
+     "ko": "올빼미는 날카로운 눈으로 사냥해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "파생어",
+     "word": "hunter",
+     "ko": "사냥꾼",
+     "en": "A brave hunter."
+    },
+    {
+     "type": "파생어",
+     "word": "hunting",
+     "ko": "사냥",
+     "en": "Go hunting."
+    },
+    {
+     "type": "유의어",
+     "word": "chase",
+     "ko": "쫓다",
+     "en": "Chase the ball."
+    },
+    {
+     "type": "유의어",
+     "word": "search",
+     "ko": "찾다, 수색하다",
+     "en": "Search the room."
+    },
+    {
+     "type": "연관어",
+     "word": "animal",
+     "ko": "동물",
+     "en": "A wild animal."
+    },
+    {
+     "type": "연관어",
+     "word": "treasure",
+     "ko": "보물",
+     "en": "Find the treasure."
+    }
+   ]
+  },
+  "1755": {
+   "word": "nation",
+   "overview": [
+    "nation은 '나라', '국가'라는 뜻의 명사입니다. 같은 땅에서 같은 정부 아래 사는 사람들 전체를 말합니다.",
+    "a small nation(작은 나라), the whole nation(온 국민)처럼 씁니다.",
+    "country는 땅과 나라를 두루 가리키고, nation은 '그 나라의 국민들'이라는 느낌이 더 강합니다.",
+    "형용사는 national(국가의, 전국적인)로, national flag(국기), national park(국립공원)처럼 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "country",
+     "en": "A big country.",
+     "ko": "큰 나라."
+    },
+    {
+     "word": "people",
+     "en": "Kind people.",
+     "ko": "친절한 사람들."
+    }
+   ],
+   "etymology": [
+    "nation은 라틴어 natio(태어남, 민족)에서 온 단어입니다.",
+    "natio는 nasci(태어나다)에서 나온 말로, '같은 곳에서 태어난 사람들'이라는 뜻이었습니다.",
+    "native(태어난 곳의), nature(자연, 타고난 성질)도 '태어나다'라는 같은 뿌리를 가집니다.",
+    "'같이 태어난 무리'가 '민족'을 거쳐 '국가'라는 뜻이 되었습니다.",
+    "nation의 핵심 이미지는 '한 깃발 아래 모인 사람들 🏳️'입니다."
+   ],
+   "meanings": [
+    "나라, 국가",
+    "국민 (전체)",
+    "민족"
+   ],
+   "examples": [
+    {
+     "en": "Korea is a beautiful nation.",
+     "ko": "한국은 아름다운 나라예요."
+    },
+    {
+     "en": "The whole nation watched the game.",
+     "ko": "온 국민이 그 경기를 봤어요."
+    },
+    {
+     "en": "Many nations joined the Olympics.",
+     "ko": "많은 나라가 올림픽에 참가했어요."
+    },
+    {
+     "en": "The president spoke to the nation.",
+     "ko": "대통령이 국민에게 연설했어요."
+    },
+    {
+     "en": "Each nation has its own flag.",
+     "ko": "나라마다 자기 국기가 있어요."
+    },
+    {
+     "en": "The United Nations helps many countries.",
+     "ko": "국제 연합(UN)은 많은 나라를 도와요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "country",
+     "ko": "나라",
+     "en": "Which country?"
+    },
+    {
+     "type": "파생어",
+     "word": "national",
+     "ko": "국가의, 전국의",
+     "en": "A national park."
+    },
+    {
+     "type": "파생어",
+     "word": "nationality",
+     "ko": "국적",
+     "en": "What is your nationality?"
+    },
+    {
+     "type": "파생어",
+     "word": "international",
+     "ko": "국제적인",
+     "en": "An international school."
+    },
+    {
+     "type": "연관어",
+     "word": "flag",
+     "ko": "깃발, 국기",
+     "en": "Wave the flag."
+    },
+    {
+     "type": "연관어",
+     "word": "native",
+     "ko": "태어난 곳의",
+     "en": "My native language."
+    }
+   ]
+  },
+  "264": {
+   "word": "below",
+   "overview": [
+    "below는 '~ 아래에', '아래로'라는 뜻입니다. 어떤 것보다 낮은 곳에 있을 때 씁니다.",
+    "below the window(창문 아래에)처럼 전치사로, Look below.(아래를 봐.)처럼 부사로 씁니다.",
+    "숫자나 기준보다 '낮은', '미만'이라는 뜻도 있어서 below zero(영하), below 10(10 미만)처럼 씁니다.",
+    "under는 바로 밑에 덮이듯 있을 때, below는 그냥 더 낮은 위치에 있을 때 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "under",
+     "en": "Under the bed.",
+     "ko": "침대 밑에."
+    },
+    {
+     "word": "down",
+     "en": "Look down.",
+     "ko": "아래를 봐."
+    }
+   ],
+   "etymology": [
+    "below는 be(~에)와 low(낮은)가 합쳐진 말입니다.",
+    "'낮은 곳에'라는 뜻으로 1300년대쯤부터 쓰였습니다.",
+    "before(앞에), beside(옆에), behind(뒤에)처럼 be가 앞에 붙어 위치를 나타내는 단어들과 같은 모양입니다.",
+    "반대말 above(~ 위에)와 짝을 지어 외우면 좋습니다.",
+    "below의 핵심 이미지는 '기준선보다 아래쪽 ⬇️'입니다."
+   ],
+   "meanings": [
+    "~보다 아래에 (전치사)",
+    "아래로, 아래쪽에 (부사)",
+    "(숫자·기준) ~ 미만, ~보다 낮은"
+   ],
+   "examples": [
+    {
+     "en": "Write your name below the line.",
+     "ko": "선 아래에 이름을 써."
+    },
+    {
+     "en": "It was below zero this morning.",
+     "ko": "오늘 아침은 영하였어요."
+    },
+    {
+     "en": "The fish swam below the boat.",
+     "ko": "물고기가 배 아래로 헤엄쳤어요."
+    },
+    {
+     "en": "See the picture below.",
+     "ko": "아래 그림을 보세요."
+    },
+    {
+     "en": "Children below seven are free.",
+     "ko": "일곱 살 미만 어린이는 무료예요."
+    },
+    {
+     "en": "We looked at the town below.",
+     "ko": "우리는 아래에 있는 마을을 내려다봤어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "반의어",
+     "word": "above",
+     "ko": "~ 위에",
+     "en": "Above the clouds."
+    },
+    {
+     "type": "유의어",
+     "word": "under",
+     "ko": "~ 밑에",
+     "en": "Under the table."
+    },
+    {
+     "type": "유의어",
+     "word": "beneath",
+     "ko": "~ 아래에",
+     "en": "Beneath the tree."
+    },
+    {
+     "type": "연관어",
+     "word": "low",
+     "ko": "낮은",
+     "en": "A low wall."
+    },
+    {
+     "type": "연관어",
+     "word": "zero",
+     "ko": "영, 0",
+     "en": "Below zero."
+    },
+    {
+     "type": "연관어",
+     "word": "down",
+     "ko": "아래로",
+     "en": "Sit down."
+    }
+   ]
+  },
+  "1616": {
+   "word": "mail",
+   "overview": [
+    "mail은 '우편', '우편물'이라는 뜻의 명사이자 '우편으로 보내다'라는 뜻의 동사입니다.",
+    "get mail(우편물을 받다), check the mail(우편물을 확인하다)처럼 씁니다. 우편물은 셀 수 없어서 a mail이라고 하지 않습니다.",
+    "요즘은 email(이메일)을 줄여서 mail이라고도 합니다.",
+    "mail a letter(편지를 부치다)처럼 동사로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "letter",
+     "en": "Write a letter.",
+     "ko": "편지를 써."
+    },
+    {
+     "word": "send",
+     "en": "Send a card.",
+     "ko": "카드를 보내."
+    }
+   ],
+   "etymology": [
+    "mail은 옛 프랑스어 male(가방, 자루)에서 온 단어입니다.",
+    "처음에는 여행할 때 짐을 넣는 '자루'를 뜻했습니다.",
+    "편지를 자루에 담아 나르면서 '우편물'이라는 뜻이 되었습니다.",
+    "electronic mail(전자 우편)을 줄인 email도 여기서 나왔습니다.",
+    "mail의 핵심 이미지는 '우편 가방에 담아 나르는 편지 📬'입니다."
+   ],
+   "meanings": [
+    "우편, 우편물 (명사)",
+    "이메일 (명사)",
+    "우편으로 보내다, 부치다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "Did we get any mail today?",
+     "ko": "오늘 우편물 온 거 있어?"
+    },
+    {
+     "en": "I'll mail the letter tomorrow.",
+     "ko": "내일 편지를 부칠게요."
+    },
+    {
+     "en": "Dad is checking the mail.",
+     "ko": "아빠가 우편물을 확인하고 계세요."
+    },
+    {
+     "en": "The mail comes at noon.",
+     "ko": "우편물은 정오에 와요."
+    },
+    {
+     "en": "I sent you an email.",
+     "ko": "너에게 이메일을 보냈어."
+    },
+    {
+     "en": "She mailed a card to her grandma.",
+     "ko": "그 애는 할머니께 카드를 부쳤어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "파생어",
+     "word": "email",
+     "ko": "이메일",
+     "en": "Check your email."
+    },
+    {
+     "type": "파생어",
+     "word": "mailbox",
+     "ko": "우편함",
+     "en": "Open the mailbox."
+    },
+    {
+     "type": "연관어",
+     "word": "letter",
+     "ko": "편지",
+     "en": "A long letter."
+    },
+    {
+     "type": "연관어",
+     "word": "stamp",
+     "ko": "우표",
+     "en": "Put on a stamp."
+    },
+    {
+     "type": "연관어",
+     "word": "post office",
+     "ko": "우체국",
+     "en": "Go to the post office."
+    },
+    {
+     "type": "유의어",
+     "word": "send",
+     "ko": "보내다",
+     "en": "Send a gift."
+    }
+   ]
+  },
+  "2974": {
+   "word": "wood",
+   "overview": [
+    "wood는 '나무', '목재'라는 뜻의 명사입니다. 살아 있는 나무(tree)가 아니라 베어서 쓰는 나무 재료를 말합니다.",
+    "made of wood(나무로 만든), a piece of wood(나무 한 조각)처럼 씁니다. 재료일 때는 셀 수 없습니다.",
+    "woods처럼 s를 붙이면 '숲'이라는 뜻이 됩니다. walk in the woods(숲속을 걷다)처럼 씁니다.",
+    "형용사 wooden(나무로 된)은 a wooden chair(나무 의자)처럼 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "tree",
+     "en": "A tall tree.",
+     "ko": "키 큰 나무."
+    },
+    {
+     "word": "stick",
+     "en": "A long stick.",
+     "ko": "긴 막대기."
+    }
+   ],
+   "etymology": [
+    "wood는 고대 영어 wudu(나무, 숲)에서 온 단어입니다.",
+    "옛날에는 '숲'이라는 뜻과 '나무 재료'라는 뜻을 함께 가지고 있었습니다.",
+    "지금도 woods(숲)라는 말에 그 뜻이 남아 있습니다.",
+    "woodpecker(딱따구리)는 '나무를 쪼는 새'라는 뜻입니다.",
+    "wood의 핵심 이미지는 '베어서 쓰는 나무 재료 🪵'입니다."
+   ],
+   "meanings": [
+    "나무, 목재",
+    "땔나무, 장작",
+    "숲 (woods)"
+   ],
+   "examples": [
+    {
+     "en": "This table is made of wood.",
+     "ko": "이 탁자는 나무로 만들었어요."
+    },
+    {
+     "en": "We need more wood for the fire.",
+     "ko": "불을 피우려면 나무가 더 필요해요."
+    },
+    {
+     "en": "The house is built of wood.",
+     "ko": "그 집은 나무로 지었어요."
+    },
+    {
+     "en": "Let's take a walk in the woods.",
+     "ko": "숲속을 산책하자."
+    },
+    {
+     "en": "He cut the wood with a saw.",
+     "ko": "그는 톱으로 나무를 잘랐어요."
+    },
+    {
+     "en": "I found a piece of wood on the beach.",
+     "ko": "나는 바닷가에서 나무 조각을 찾았어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "파생어",
+     "word": "wooden",
+     "ko": "나무로 된",
+     "en": "A wooden box."
+    },
+    {
+     "type": "파생어",
+     "word": "woods",
+     "ko": "숲",
+     "en": "Deep in the woods."
+    },
+    {
+     "type": "연관어",
+     "word": "tree",
+     "ko": "나무",
+     "en": "Climb a tree."
+    },
+    {
+     "type": "연관어",
+     "word": "forest",
+     "ko": "숲",
+     "en": "A green forest."
+    },
+    {
+     "type": "연관어",
+     "word": "fire",
+     "ko": "불",
+     "en": "Make a fire."
+    },
+    {
+     "type": "파생어",
+     "word": "woodpecker",
+     "ko": "딱따구리",
+     "en": "A woodpecker in the tree."
+    }
+   ]
+  },
+  "1952": {
+   "word": "piano",
+   "overview": [
+    "piano는 '피아노'라는 뜻의 명사입니다. 건반을 눌러 소리를 내는 악기입니다.",
+    "play the piano(피아노를 치다)처럼 악기 이름 앞에 보통 the를 붙입니다.",
+    "a piano lesson(피아노 수업), a piano teacher(피아노 선생님)처럼 다른 말 앞에서도 씁니다.",
+    "음악에서 piano는 '여리게, 작게'라는 뜻의 기호(p)로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "music",
+     "en": "Listen to music.",
+     "ko": "음악을 들어."
+    },
+    {
+     "word": "keyboard",
+     "en": "Play the keyboard.",
+     "ko": "키보드를 연주해."
+    }
+   ],
+   "etymology": [
+    "piano는 이탈리아어 pianoforte를 줄인 말입니다.",
+    "piano는 '여리게', forte는 '세게'라는 뜻입니다.",
+    "건반을 누르는 힘에 따라 소리를 여리게도 세게도 낼 수 있는 악기라서 이런 이름이 붙었습니다.",
+    "piano의 뿌리는 라틴어 planus(평평한, 부드러운)로, plain(평평한, 평범한)과 같은 가족입니다.",
+    "piano의 핵심 이미지는 '흰 건반 검은 건반이 줄지어 있는 악기 🎹'입니다."
+   ],
+   "meanings": [
+    "피아노",
+    "(음악) 여리게 (부사)"
+   ],
+   "examples": [
+    {
+     "en": "I can play the piano.",
+     "ko": "나는 피아노를 칠 수 있어요."
+    },
+    {
+     "en": "She has piano lessons on Mondays.",
+     "ko": "그 아이는 월요일마다 피아노 수업이 있어요."
+    },
+    {
+     "en": "There is a piano in the music room.",
+     "ko": "음악실에 피아노가 있어요."
+    },
+    {
+     "en": "He practices the piano every day.",
+     "ko": "그는 매일 피아노를 연습해요."
+    },
+    {
+     "en": "My mom is a piano teacher.",
+     "ko": "우리 엄마는 피아노 선생님이에요."
+    },
+    {
+     "en": "The piano sounds beautiful.",
+     "ko": "피아노 소리가 아름다워요."
+    }
+   ],
+   "together": [
+    {
+     "type": "파생어",
+     "word": "pianist",
+     "ko": "피아니스트",
+     "en": "A famous pianist."
+    },
+    {
+     "type": "연관어",
+     "word": "play",
+     "ko": "연주하다",
+     "en": "Play the violin."
+    },
+    {
+     "type": "연관어",
+     "word": "music",
+     "ko": "음악",
+     "en": "I love music."
+    },
+    {
+     "type": "연관어",
+     "word": "key",
+     "ko": "건반",
+     "en": "Press the white key."
+    },
+    {
+     "type": "연관어",
+     "word": "guitar",
+     "ko": "기타",
+     "en": "Play the guitar."
+    },
+    {
+     "type": "연관어",
+     "word": "practice",
+     "ko": "연습하다",
+     "en": "Practice every day."
+    }
+   ]
+  },
+  "2650": {
+   "word": "taxi",
+   "overview": [
+    "taxi는 '택시'라는 뜻의 명사입니다. 돈을 내고 원하는 곳까지 타고 가는 자동차입니다.",
+    "take a taxi(택시를 타다), call a taxi(택시를 부르다), by taxi(택시로)처럼 씁니다.",
+    "미국에서는 cab, taxicab이라고도 부릅니다.",
+    "동사로는 비행기가 이륙하기 전이나 착륙한 뒤에 활주로를 '천천히 달리다'라는 뜻도 있습니다."
+   ],
+   "easy": [
+    {
+     "word": "car",
+     "en": "A red car.",
+     "ko": "빨간 자동차."
+    },
+    {
+     "word": "bus",
+     "en": "Take the bus.",
+     "ko": "버스를 타."
+    }
+   ],
+   "etymology": [
+    "taxi는 taximeter cab을 줄인 말입니다.",
+    "taximeter는 '요금을 재는 기계'라는 뜻으로, 프랑스어 taxe(요금)와 meter(재는 기계)가 합쳐졌습니다.",
+    "요금 미터기를 단 차라서 taxi라는 이름이 붙었습니다.",
+    "tax(세금)도 '값을 매기다'라는 같은 뿌리에서 나온 말입니다.",
+    "taxi의 핵심 이미지는 '미터기를 켜고 달리는 택시 🚕'입니다."
+   ],
+   "meanings": [
+    "택시 (명사)",
+    "택시로 가다 (동사)",
+    "(비행기가) 활주로를 천천히 달리다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "Let's take a taxi home.",
+     "ko": "택시 타고 집에 가자."
+    },
+    {
+     "en": "Can you call a taxi for me?",
+     "ko": "택시 좀 불러 줄 수 있어요?"
+    },
+    {
+     "en": "We went to the station by taxi.",
+     "ko": "우리는 택시로 역에 갔어요."
+    },
+    {
+     "en": "The taxi driver was very kind.",
+     "ko": "택시 기사님이 아주 친절했어요."
+    },
+    {
+     "en": "There's a taxi stand over there.",
+     "ko": "저기에 택시 승강장이 있어요."
+    },
+    {
+     "en": "The plane taxied to the gate.",
+     "ko": "비행기가 탑승구 쪽으로 천천히 이동했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "cab",
+     "ko": "택시",
+     "en": "Get a cab."
+    },
+    {
+     "type": "연관어",
+     "word": "driver",
+     "ko": "운전기사",
+     "en": "A bus driver."
+    },
+    {
+     "type": "연관어",
+     "word": "ride",
+     "ko": "타다, 타고 가기",
+     "en": "A short ride."
+    },
+    {
+     "type": "연관어",
+     "word": "bus",
+     "ko": "버스",
+     "en": "Miss the bus."
+    },
+    {
+     "type": "연관어",
+     "word": "fare",
+     "ko": "요금",
+     "en": "Pay the fare."
+    },
+    {
+     "type": "연관어",
+     "word": "station",
+     "ko": "역",
+     "en": "Meet at the station."
+    }
+   ]
+  },
+  "1716": {
+   "word": "monkey",
+   "overview": [
+    "monkey는 '원숭이'라는 뜻의 명사입니다. 나무를 잘 타고 꼬리가 긴 동물입니다.",
+    "a cute monkey(귀여운 원숭이), monkeys in the zoo(동물원의 원숭이들)처럼 씁니다.",
+    "장난이 심한 아이를 귀엽게 little monkey(꼬마 개구쟁이)라고 부르기도 합니다.",
+    "꼬리 없는 고릴라, 침팬지 같은 큰 유인원은 ape라고 해서 monkey와 구별합니다."
+   ],
+   "easy": [
+    {
+     "word": "animal",
+     "en": "A small animal.",
+     "ko": "작은 동물."
+    },
+    {
+     "word": "ape",
+     "en": "A big ape.",
+     "ko": "큰 유인원."
+    }
+   ],
+   "etymology": [
+    "monkey는 1500년대에 영어에 나타난 말로, 정확한 뿌리는 잘 알려져 있지 않습니다.",
+    "옛 독일 지방 이야기에 나오는 원숭이 이름 Moneke에서 왔다는 설이 있습니다.",
+    "이탈리아어 monna(원숭이)에 '작은'을 뜻하는 말이 붙었다는 설도 있습니다.",
+    "monkey bars(구름사다리)는 원숭이처럼 매달려 노는 놀이 기구라서 붙은 이름입니다.",
+    "monkey의 핵심 이미지는 '나무에 매달려 노는 장난꾸러기 🐒'입니다."
+   ],
+   "meanings": [
+    "원숭이",
+    "장난꾸러기, 개구쟁이 (아이를 부를 때)"
+   ],
+   "examples": [
+    {
+     "en": "Monkeys love bananas.",
+     "ko": "원숭이는 바나나를 정말 좋아해요."
+    },
+    {
+     "en": "The monkey is climbing a tree.",
+     "ko": "원숭이가 나무를 오르고 있어요."
+    },
+    {
+     "en": "We saw monkeys at the zoo.",
+     "ko": "우리는 동물원에서 원숭이를 봤어요."
+    },
+    {
+     "en": "That monkey has a long tail.",
+     "ko": "저 원숭이는 꼬리가 길어요."
+    },
+    {
+     "en": "Come here, you little monkey!",
+     "ko": "이리 와, 이 꼬마 개구쟁이야!"
+    },
+    {
+     "en": "The kids played on the monkey bars.",
+     "ko": "아이들이 구름사다리에서 놀았어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "ape",
+     "ko": "유인원",
+     "en": "Apes are smart."
+    },
+    {
+     "type": "연관어",
+     "word": "banana",
+     "ko": "바나나",
+     "en": "Peel a banana."
+    },
+    {
+     "type": "연관어",
+     "word": "tail",
+     "ko": "꼬리",
+     "en": "A long tail."
+    },
+    {
+     "type": "연관어",
+     "word": "zoo",
+     "ko": "동물원",
+     "en": "Go to the zoo."
+    },
+    {
+     "type": "연관어",
+     "word": "climb",
+     "ko": "오르다",
+     "en": "Climb the hill."
+    },
+    {
+     "type": "연관어",
+     "word": "jungle",
+     "ko": "정글, 밀림",
+     "en": "Deep in the jungle."
+    }
+   ]
+  },
+  "2626": {
+   "word": "swim",
+   "overview": [
+    "swim은 '수영하다', '헤엄치다'라는 뜻의 동사입니다. 물속에서 팔과 다리를 움직여 나아가는 것을 말합니다.",
+    "I can swim.(나는 수영할 수 있어요.), go swimming(수영하러 가다)처럼 씁니다.",
+    "과거형은 swam, 과거분사는 swum으로 모양이 바뀌는 불규칙 동사입니다.",
+    "go for a swim(한번 수영하다)처럼 명사로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "water",
+     "en": "Cold water.",
+     "ko": "차가운 물."
+    },
+    {
+     "word": "float",
+     "en": "Float on the water.",
+     "ko": "물에 둥둥 떠."
+    }
+   ],
+   "etymology": [
+    "swim은 고대 영어 swimman(헤엄치다, 뜨다)에서 온 단어입니다.",
+    "독일어 schwimmen, 네덜란드어 zwemmen과 같은 뿌리입니다.",
+    "천 년 넘게 거의 같은 뜻과 모양으로 쓰여 온 오래된 단어입니다.",
+    "swim-swam-swum처럼 가운데 모음이 바뀌는 것은 sing-sang-sung, drink-drank-drunk와 같은 규칙입니다.",
+    "swim의 핵심 이미지는 '물속에서 팔다리를 저어 나아가기 🏊'입니다."
+   ],
+   "meanings": [
+    "수영하다, 헤엄치다",
+    "(물고기 등이) 헤엄쳐 다니다",
+    "수영, 헤엄치기 (명사)"
+   ],
+   "examples": [
+    {
+     "en": "Can you swim?",
+     "ko": "너 수영할 줄 알아?"
+    },
+    {
+     "en": "We go swimming every summer.",
+     "ko": "우리는 여름마다 수영하러 가요."
+    },
+    {
+     "en": "Fish swim in the river.",
+     "ko": "물고기가 강에서 헤엄쳐요."
+    },
+    {
+     "en": "He swam across the pool.",
+     "ko": "그는 수영장을 헤엄쳐 건넜어요."
+    },
+    {
+     "en": "I learned to swim when I was six.",
+     "ko": "나는 여섯 살 때 수영을 배웠어요."
+    },
+    {
+     "en": "Let's go for a swim.",
+     "ko": "수영하러 가자."
+    }
+   ],
+   "together": [
+    {
+     "type": "변화형",
+     "word": "swam",
+     "ko": "수영했다 (과거형)",
+     "en": "I swam yesterday."
+    },
+    {
+     "type": "변화형",
+     "word": "swum",
+     "ko": "수영한 (과거분사)",
+     "en": "I have swum here."
+    },
+    {
+     "type": "파생어",
+     "word": "swimmer",
+     "ko": "수영하는 사람",
+     "en": "A fast swimmer."
+    },
+    {
+     "type": "파생어",
+     "word": "swimming",
+     "ko": "수영",
+     "en": "Swimming is fun."
+    },
+    {
+     "type": "연관어",
+     "word": "pool",
+     "ko": "수영장",
+     "en": "Jump in the pool."
+    },
+    {
+     "type": "연관어",
+     "word": "dive",
+     "ko": "다이빙하다",
+     "en": "Dive into the water."
+    }
+   ]
+  },
+  "885": {
+   "word": "ear",
+   "overview": [
+    "ear는 '귀'라는 뜻의 명사입니다. 소리를 듣는 몸의 부분입니다.",
+    "귀는 두 개라서 my ears(내 두 귀)처럼 복수로 자주 씁니다.",
+    "'음악을 잘 알아듣는 귀'라는 뜻도 있어서 She has a good ear for music.(그 애는 음감이 좋아요.)처럼 씁니다.",
+    "옥수수나 밀 같은 곡식의 '이삭'도 ear라고 합니다. an ear of corn은 옥수수 한 자루입니다."
+   ],
+   "easy": [
+    {
+     "word": "hear",
+     "en": "I hear a bird.",
+     "ko": "새소리가 들려."
+    },
+    {
+     "word": "listen",
+     "en": "Listen to me.",
+     "ko": "내 말 들어."
+    }
+   ],
+   "etymology": [
+    "ear는 고대 영어 ēare(귀)에서 온 단어입니다.",
+    "라틴어 auris(귀), 독일어 Ohr(귀)와 같은 아주 오래된 뿌리를 가집니다.",
+    "곡식의 이삭을 뜻하는 ear는 뿌리가 다른 말인데, 우연히 모양이 같아졌습니다.",
+    "earring(귀걸이)은 ear와 ring(고리)이 합쳐진 말입니다.",
+    "ear의 핵심 이미지는 '소리를 모으는 귀 👂'입니다."
+   ],
+   "meanings": [
+    "귀",
+    "청각, 듣는 능력",
+    "(음악 등을) 알아듣는 귀, 음감",
+    "(곡식의) 이삭"
+   ],
+   "examples": [
+    {
+     "en": "Rabbits have long ears.",
+     "ko": "토끼는 귀가 길어요."
+    },
+    {
+     "en": "My ears hurt.",
+     "ko": "귀가 아파요."
+    },
+    {
+     "en": "Cover your ears. It's loud!",
+     "ko": "귀 막아. 시끄러워!"
+    },
+    {
+     "en": "She whispered in my ear.",
+     "ko": "그 애가 내 귀에 속삭였어요."
+    },
+    {
+     "en": "He has a good ear for music.",
+     "ko": "그는 음감이 좋아요."
+    },
+    {
+     "en": "I ate an ear of corn.",
+     "ko": "나는 옥수수 한 자루를 먹었어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "hear",
+     "ko": "듣다, 들리다",
+     "en": "I can't hear you."
+    },
+    {
+     "type": "연관어",
+     "word": "listen",
+     "ko": "귀 기울여 듣다",
+     "en": "Listen carefully."
+    },
+    {
+     "type": "파생어",
+     "word": "earring",
+     "ko": "귀걸이",
+     "en": "Gold earrings."
+    },
+    {
+     "type": "연관어",
+     "word": "eye",
+     "ko": "눈",
+     "en": "Close your eyes."
+    },
+    {
+     "type": "연관어",
+     "word": "nose",
+     "ko": "코",
+     "en": "A red nose."
+    },
+    {
+     "type": "연관어",
+     "word": "sound",
+     "ko": "소리",
+     "en": "A loud sound."
+    }
+   ]
+  },
+  "396": {
+   "word": "candy",
+   "overview": [
+    "candy는 '사탕', '과자'라는 뜻의 명사입니다. 설탕으로 만든 달콤한 간식을 말합니다.",
+    "a piece of candy(사탕 한 개), a bag of candy(사탕 한 봉지)처럼 씁니다.",
+    "미국에서는 초콜릿이나 젤리까지 달콤한 간식을 두루 candy라고 부릅니다. 영국에서는 sweets라고 합니다.",
+    "여러 종류의 사탕을 말할 때는 candies처럼 복수로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "sweet",
+     "en": "A sweet apple.",
+     "ko": "달콤한 사과."
+    },
+    {
+     "word": "snack",
+     "en": "An afternoon snack.",
+     "ko": "오후 간식."
+    }
+   ],
+   "etymology": [
+    "candy는 옛 프랑스어 sucre candi(굳힌 설탕)에서 온 단어입니다.",
+    "이 말은 아랍어 qandi(설탕으로 만든)를 거쳐, 더 멀리 인도의 옛말 khanda(설탕 조각)에서 왔다고 봅니다.",
+    "설탕을 끓여 굳힌 덩어리를 가리키다가 '사탕'이라는 뜻이 되었습니다.",
+    "cotton candy(솜사탕)는 솜(cotton)처럼 생긴 사탕이라는 뜻입니다.",
+    "candy의 핵심 이미지는 '알록달록 달콤한 사탕 🍬'입니다."
+   ],
+   "meanings": [
+    "사탕",
+    "(초콜릿·젤리 등) 달콤한 과자"
+   ],
+   "examples": [
+    {
+     "en": "Can I have a piece of candy?",
+     "ko": "사탕 하나 먹어도 돼요?"
+    },
+    {
+     "en": "Too much candy is bad for your teeth.",
+     "ko": "사탕을 너무 많이 먹으면 이에 안 좋아요."
+    },
+    {
+     "en": "Kids get candy on Halloween.",
+     "ko": "아이들은 핼러윈에 사탕을 받아요."
+    },
+    {
+     "en": "I bought cotton candy at the park.",
+     "ko": "나는 공원에서 솜사탕을 샀어요."
+    },
+    {
+     "en": "This candy tastes like strawberry.",
+     "ko": "이 사탕은 딸기 맛이 나요."
+    },
+    {
+     "en": "Grandma always has candy in her bag.",
+     "ko": "할머니 가방에는 항상 사탕이 있어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "sweets",
+     "ko": "사탕, 단것 (영국)",
+     "en": "I love sweets."
+    },
+    {
+     "type": "연관어",
+     "word": "chocolate",
+     "ko": "초콜릿",
+     "en": "Dark chocolate."
+    },
+    {
+     "type": "연관어",
+     "word": "sugar",
+     "ko": "설탕",
+     "en": "No sugar, please."
+    },
+    {
+     "type": "연관어",
+     "word": "sweet",
+     "ko": "달콤한",
+     "en": "It's too sweet."
+    },
+    {
+     "type": "연관어",
+     "word": "lollipop",
+     "ko": "막대사탕",
+     "en": "A big lollipop."
+    },
+    {
+     "type": "연관어",
+     "word": "tooth",
+     "ko": "이, 치아",
+     "en": "Brush your teeth."
+    }
+   ]
+  },
+  "313": {
+   "word": "bone",
+   "overview": [
+    "bone은 '뼈'라는 뜻의 명사입니다. 몸을 받쳐 주는 딱딱한 부분입니다.",
+    "break a bone(뼈가 부러지다), a dog bone(개 뼈다귀)처럼 씁니다.",
+    "생선의 '가시'도 fish bone이라고 합니다.",
+    "형용사 bony는 '뼈가 앙상한', '가시가 많은'이라는 뜻입니다."
+   ],
+   "easy": [
+    {
+     "word": "body",
+     "en": "A strong body.",
+     "ko": "튼튼한 몸."
+    },
+    {
+     "word": "hard",
+     "en": "Hard as a rock.",
+     "ko": "돌처럼 딱딱한."
+    }
+   ],
+   "etymology": [
+    "bone은 고대 영어 bān(뼈)에서 온 단어입니다.",
+    "독일어 Bein(다리), 네덜란드어 been(뼈, 다리)과 같은 뿌리입니다.",
+    "옛 게르만 말에서는 '뼈'와 '다리'를 같은 말로 부르기도 했습니다.",
+    "backbone(등뼈)은 back(등)과 bone이 합쳐진 말입니다.",
+    "bone의 핵심 이미지는 '몸을 받치는 딱딱한 뼈 🦴'입니다."
+   ],
+   "meanings": [
+    "뼈",
+    "(생선의) 가시",
+    "뼈다귀, 뼈 조각"
+   ],
+   "examples": [
+    {
+     "en": "The dog is chewing a bone.",
+     "ko": "개가 뼈다귀를 씹고 있어요."
+    },
+    {
+     "en": "He broke a bone in his arm.",
+     "ko": "그는 팔뼈가 부러졌어요."
+    },
+    {
+     "en": "Milk makes your bones strong.",
+     "ko": "우유는 뼈를 튼튼하게 해 줘요."
+    },
+    {
+     "en": "Be careful. This fish has bones.",
+     "ko": "조심해. 이 생선에는 가시가 있어."
+    },
+    {
+     "en": "We saw dinosaur bones at the museum.",
+     "ko": "우리는 박물관에서 공룡 뼈를 봤어요."
+    },
+    {
+     "en": "Our body has many bones.",
+     "ko": "우리 몸에는 뼈가 많아요."
+    }
+   ],
+   "together": [
+    {
+     "type": "파생어",
+     "word": "bony",
+     "ko": "뼈가 앙상한, 가시가 많은",
+     "en": "A bony fish."
+    },
+    {
+     "type": "파생어",
+     "word": "backbone",
+     "ko": "등뼈",
+     "en": "A strong backbone."
+    },
+    {
+     "type": "연관어",
+     "word": "skeleton",
+     "ko": "해골, 뼈대",
+     "en": "A dinosaur skeleton."
+    },
+    {
+     "type": "연관어",
+     "word": "body",
+     "ko": "몸",
+     "en": "Move your body."
+    },
+    {
+     "type": "연관어",
+     "word": "break",
+     "ko": "부러지다",
+     "en": "Don't break it."
+    },
+    {
+     "type": "연관어",
+     "word": "dog",
+     "ko": "개",
+     "en": "A happy dog."
+    }
+   ]
   }
  }
 }

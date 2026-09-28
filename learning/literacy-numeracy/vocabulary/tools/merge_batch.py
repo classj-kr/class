@@ -37,4 +37,12 @@ with open(target, "w", encoding="utf-8") as f:
     json.dump(doc, f, ensure_ascii=False, indent=1)
     f.write("\n")
 total = sum(1 for w in vocab["words"] if w["globalLevel"] == level)
-print(f"merged {len(batch)} -> level {level}: {len(doc['entries'])}/{total}")
+nos = sorted((by_id[wid]["globalLevel"] - 1) * 200 + by_id[wid]["order"] for wid in batch)
+print(f"merged #{nos[0]}-#{nos[-1]} ({len(batch)}) -> level {level}: {len(doc['entries'])}/{total}")
+done = set()
+for lv in range(1, 16):
+    p = os.path.join(base, "details", f"level-{lv:02d}.json")
+    if os.path.exists(p):
+        done.update(json.load(open(p, encoding="utf-8"))["entries"])
+next_no = next((i + 1 for i, w in enumerate(vocab["words"]) if str(w["id"]) not in done), None)
+print(f"done {len(done)}/3000, next: #{next_no}")
