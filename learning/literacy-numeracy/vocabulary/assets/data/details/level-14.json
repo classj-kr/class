@@ -1,0 +1,1929 @@
+{
+ "version": "v1",
+ "level": 14,
+ "description": "Level 14 상세설명. 개요 · 어원 · 뜻 · 예문 · 함께 익히기 구조.",
+ "entries": {
+  "882": {
+   "word": "dynamic",
+   "overview": [
+    "dynamic은 '활발한, 역동적인'이라는 뜻의 형용사입니다.",
+    "a dynamic leader(활력 넘치는 지도자)처럼 씁니다.",
+    "'끊임없이 변화하는, 동적인'이라는 뜻으로도 씁니다.",
+    "명사로는 '(관계의) 역학, 원동력'이라는 뜻이고, dynamics(역학)도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "energetic",
+     "en": "An energetic teacher.",
+     "ko": "활기찬 선생님."
+    },
+    {
+     "word": "active",
+     "en": "An active city.",
+     "ko": "활발한 도시."
+    }
+   ],
+   "etymology": [
+    "dynamic은 그리스어 dynamikos(힘 있는)에서 온 단어입니다.",
+    "dynamis(힘)에서 나온 말로, dynamite(다이너마이트), dynasty(왕조)와 같은 가족입니다.",
+    "'힘이 넘쳐 움직이는'이라는 뜻에서 시작되었습니다.",
+    "에너지가 넘치는 사람, 끊임없이 변화하며 움직이는 상황을 가리키게 되었습니다.",
+    "dynamic의 핵심 이미지는 '힘이 넘쳐 쉬지 않고 움직이는 에너지 ⚡'입니다."
+   ],
+   "meanings": [
+    "강력한, 역동적인",
+    "동적인, 끊임없이 변하는"
+   ],
+   "examples": [
+    {
+     "en": "She is a dynamic and creative leader.",
+     "ko": "그녀는 역동적이고 창의적인 지도자예요."
+    },
+    {
+     "en": "Seoul is a dynamic city.",
+     "ko": "서울은 활기찬 도시예요."
+    },
+    {
+     "en": "The market is dynamic and always changing.",
+     "ko": "시장은 역동적이고 늘 변해요."
+    },
+    {
+     "en": "The team has a good dynamic.",
+     "ko": "그 팀은 분위기가 좋아요."
+    },
+    {
+     "en": "His dynamic performance excited the crowd.",
+     "ko": "그의 역동적인 공연이 관객을 열광시켰어요."
+    },
+    {
+     "en": "The website uses dynamic content.",
+     "ko": "그 웹사이트는 동적인 콘텐츠를 사용해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "energetic",
+     "ko": "활기찬",
+     "en": "An energetic dog."
+    },
+    {
+     "type": "반의어",
+     "word": "static",
+     "ko": "정적인",
+     "en": "A static image."
+    },
+    {
+     "type": "파생어",
+     "word": "dynamics",
+     "ko": "역학",
+     "en": "Group dynamics."
+    },
+    {
+     "type": "연관어",
+     "word": "active",
+     "ko": "활동적인",
+     "en": "Stay active."
+    },
+    {
+     "type": "연관어",
+     "word": "powerful",
+     "ko": "강력한",
+     "en": "A powerful engine."
+    },
+    {
+     "type": "연관어",
+     "word": "change",
+     "ko": "변화",
+     "en": "Constant change."
+    }
+   ]
+  },
+  "2793": {
+   "word": "troop",
+   "overview": [
+    "troop은 '(사람·동물의) 무리, 떼'라는 뜻의 명사입니다.",
+    "a troop of monkeys(원숭이 무리)처럼 씁니다.",
+    "복수형 troops는 '군대, 병력'이라는 뜻으로 아주 자주 씁니다. (send troops, 군대를 보내다)",
+    "동사로는 '떼 지어 가다'라는 뜻입니다."
+   ],
+   "easy": [
+    {
+     "word": "group",
+     "en": "A group of scouts.",
+     "ko": "스카우트 단원들."
+    },
+    {
+     "word": "soldiers",
+     "en": "Brave soldiers.",
+     "ko": "용감한 군인들."
+    }
+   ],
+   "etymology": [
+    "troop은 프랑스어 troupe(무리, 떼)에서 온 단어입니다.",
+    "공연단을 뜻하는 troupe(극단)와 같은 뿌리입니다.",
+    "'함께 몰려다니는 무리'라는 뜻이 그대로 이어져 왔습니다.",
+    "특히 군인들의 무리, 즉 '군대, 병력'을 가리킬 때 많이 씁니다.",
+    "troop의 핵심 이미지는 '발맞춰 함께 움직이는 무리 🪖'입니다."
+   ],
+   "meanings": [
+    "대, 무리, 떼, 단",
+    "(troops) 군대, 병력",
+    "떼 지어 가다"
+   ],
+   "examples": [
+    {
+     "en": "The government sent troops to help after the flood.",
+     "ko": "정부는 홍수 뒤 도움을 주려고 군대를 보냈어요."
+    },
+    {
+     "en": "A troop of monkeys lives in the forest.",
+     "ko": "원숭이 무리가 그 숲에 살아요."
+    },
+    {
+     "en": "The troops marched through the town.",
+     "ko": "군대가 마을을 행진해 지나갔어요."
+    },
+    {
+     "en": "My brother joined a Boy Scout troop.",
+     "ko": "제 동생은 보이스카우트 단에 들어갔어요."
+    },
+    {
+     "en": "The children trooped into the classroom.",
+     "ko": "아이들이 줄지어 교실로 들어갔어요."
+    },
+    {
+     "en": "The troops returned home after the war.",
+     "ko": "전쟁이 끝나고 군인들이 집으로 돌아왔어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "army",
+     "ko": "군대",
+     "en": "Join the army."
+    },
+    {
+     "type": "유의어",
+     "word": "group",
+     "ko": "무리",
+     "en": "A small group."
+    },
+    {
+     "type": "연관어",
+     "word": "soldier",
+     "ko": "군인",
+     "en": "A brave soldier."
+    },
+    {
+     "type": "연관어",
+     "word": "march",
+     "ko": "행진하다",
+     "en": "March forward."
+    },
+    {
+     "type": "연관어",
+     "word": "unit",
+     "ko": "부대",
+     "en": "A military unit."
+    },
+    {
+     "type": "연관어",
+     "word": "troupe",
+     "ko": "극단",
+     "en": "A dance troupe."
+    }
+   ]
+  },
+  "136": {
+   "word": "apparent",
+   "overview": [
+    "apparent는 '분명한, 명백한'이라는 뜻의 형용사입니다.",
+    "It became apparent that ~(~이라는 것이 분명해졌다)처럼 씁니다.",
+    "'겉보기에 ~인 듯한'이라는 뜻으로도 씁니다. (his apparent calm, 겉으로는 차분해 보이는 모습)",
+    "부사 apparently(보아하니, 듣자 하니)도 아주 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "clear",
+     "en": "A clear reason.",
+     "ko": "분명한 이유."
+    },
+    {
+     "word": "obvious",
+     "en": "An obvious mistake.",
+     "ko": "뻔한 실수."
+    }
+   ],
+   "etymology": [
+    "apparent는 라틴어 apparere(나타나다, 보이다)에서 온 단어입니다.",
+    "ad(~쪽으로)와 parere(보이다)가 합쳐진 말로, appear(나타나다)와 같은 가족입니다.",
+    "'눈앞에 뚜렷이 나타난'이라는 뜻에서 '분명한'이 되었습니다.",
+    "눈에 보이는 것이 실제와 다를 수도 있어서 '겉보기에 ~인'이라는 뜻도 생겼습니다.",
+    "apparent의 핵심 이미지는 '눈앞에 뚜렷하게 드러난 모습 👁️'입니다."
+   ],
+   "meanings": [
+    "뚜렷한, 명백한",
+    "겉보기의, ~인 듯한"
+   ],
+   "examples": [
+    {
+     "en": "It was apparent that she was tired.",
+     "ko": "그녀가 피곤하다는 게 분명했어요."
+    },
+    {
+     "en": "For no apparent reason, the dog started barking.",
+     "ko": "뚜렷한 이유 없이 개가 짖기 시작했어요."
+    },
+    {
+     "en": "The problem became apparent after a week.",
+     "ko": "일주일 뒤에 그 문제가 분명해졌어요."
+    },
+    {
+     "en": "Apparently, the concert has been canceled.",
+     "ko": "듣자 하니 콘서트가 취소됐대요."
+    },
+    {
+     "en": "Despite his apparent calm, he was nervous.",
+     "ko": "겉으로는 차분해 보였지만 그는 긴장했어요."
+    },
+    {
+     "en": "Her talent was apparent from a young age.",
+     "ko": "그녀의 재능은 어릴 때부터 분명히 드러났어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "obvious",
+     "ko": "명백한",
+     "en": "An obvious answer."
+    },
+    {
+     "type": "유의어",
+     "word": "clear",
+     "ko": "분명한",
+     "en": "Crystal clear."
+    },
+    {
+     "type": "반의어",
+     "word": "hidden",
+     "ko": "숨겨진",
+     "en": "A hidden cost."
+    },
+    {
+     "type": "파생어",
+     "word": "apparently",
+     "ko": "보아하니",
+     "en": "Apparently not."
+    },
+    {
+     "type": "연관어",
+     "word": "appear",
+     "ko": "나타나다",
+     "en": "Appear suddenly."
+    },
+    {
+     "type": "연관어",
+     "word": "visible",
+     "ko": "보이는",
+     "en": "Clearly visible."
+    }
+   ]
+  },
+  "1660": {
+   "word": "medieval",
+   "overview": [
+    "medieval은 '중세의, 중세 시대의'라는 뜻의 형용사입니다.",
+    "a medieval castle(중세의 성)처럼 씁니다.",
+    "유럽 역사에서 대략 5세기부터 15세기까지의 시대를 가리킵니다.",
+    "구어에서는 '아주 구식의, 낡은'이라는 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "of the Middle Ages",
+     "en": "From the Middle Ages.",
+     "ko": "중세 시대의."
+    },
+    {
+     "word": "very old",
+     "en": "A very old castle.",
+     "ko": "아주 오래된 성."
+    }
+   ],
+   "etymology": [
+    "medieval은 라틴어 medium(가운데)과 aevum(시대)이 합쳐진 단어입니다.",
+    "middle(가운데), medium(중간)과 뿌리가 같습니다.",
+    "고대와 근대 '사이에 낀 가운데 시대'라는 뜻에서 나왔습니다.",
+    "영어로는 the Middle Ages(중세)라고도 부릅니다.",
+    "medieval의 핵심 이미지는 '기사와 성이 있던 고대와 근대 사이의 시대 🏰'입니다."
+   ],
+   "meanings": [
+    "중세의, 중세 시대의"
+   ],
+   "examples": [
+    {
+     "en": "We visited a medieval castle in England.",
+     "ko": "우리는 영국에서 중세의 성을 방문했어요."
+    },
+    {
+     "en": "Knights lived in medieval times.",
+     "ko": "기사들은 중세 시대에 살았어요."
+    },
+    {
+     "en": "The town still has medieval streets.",
+     "ko": "그 마을에는 아직도 중세의 거리가 남아 있어요."
+    },
+    {
+     "en": "She is studying medieval history.",
+     "ko": "그녀는 중세사를 공부하고 있어요."
+    },
+    {
+     "en": "The museum shows medieval weapons.",
+     "ko": "그 박물관은 중세 무기를 전시해요."
+    },
+    {
+     "en": "His ideas about school are almost medieval.",
+     "ko": "학교에 대한 그의 생각은 거의 구시대적이에요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "the Middle Ages",
+     "ko": "중세",
+     "en": "In the Middle Ages."
+    },
+    {
+     "type": "연관어",
+     "word": "castle",
+     "ko": "성",
+     "en": "A stone castle."
+    },
+    {
+     "type": "연관어",
+     "word": "knight",
+     "ko": "기사",
+     "en": "A brave knight."
+    },
+    {
+     "type": "연관어",
+     "word": "ancient",
+     "ko": "고대의",
+     "en": "Ancient Greece."
+    },
+    {
+     "type": "연관어",
+     "word": "modern",
+     "ko": "현대의",
+     "en": "Modern art."
+    },
+    {
+     "type": "연관어",
+     "word": "history",
+     "ko": "역사",
+     "en": "World history."
+    }
+   ]
+  },
+  "397": {
+   "word": "canvas",
+   "overview": [
+    "canvas는 '(튼튼한) 캔버스 천, 범포'라는 뜻의 명사입니다.",
+    "a canvas bag(캔버스 천 가방)처럼 씁니다.",
+    "미술에서는 '(유화를 그리는) 캔버스, 유화 작품'이라는 뜻입니다.",
+    "'(비유) 배경, 무대'라는 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "strong cloth",
+     "en": "Strong cloth.",
+     "ko": "튼튼한 천."
+    },
+    {
+     "word": "painting",
+     "en": "An oil painting.",
+     "ko": "유화."
+    }
+   ],
+   "etymology": [
+    "canvas는 라틴어 cannabis(삼, 대마)에서 온 단어입니다.",
+    "옛날에는 이 식물의 섬유로 튼튼한 천을 짰습니다.",
+    "그렇게 짠 두꺼운 천, 특히 돛이나 천막에 쓰던 천을 canvas라고 불렀습니다.",
+    "화가들이 그 천을 틀에 씌워 그림을 그리면서 '캔버스, 유화'라는 뜻이 생겼습니다.",
+    "canvas의 핵심 이미지는 '그림을 기다리는 하얗고 튼튼한 천 🖼️'입니다."
+   ],
+   "meanings": [
+    "베로 짠 천, 범포",
+    "(미술) 캔버스, 화포, 유화",
+    "(비유) 배경, 상황"
+   ],
+   "examples": [
+    {
+     "en": "The artist painted on a large canvas.",
+     "ko": "그 화가는 큰 캔버스에 그림을 그렸어요."
+    },
+    {
+     "en": "I bought a canvas bag for shopping.",
+     "ko": "저는 장보기용 캔버스 천 가방을 샀어요."
+    },
+    {
+     "en": "The tent is made of waterproof canvas.",
+     "ko": "그 텐트는 방수 캔버스 천으로 만들어졌어요."
+    },
+    {
+     "en": "Several of her canvases are in the museum.",
+     "ko": "그녀의 유화 작품 몇 점이 박물관에 있어요."
+    },
+    {
+     "en": "She wore white canvas shoes.",
+     "ko": "그녀는 흰색 캔버스화를 신었어요."
+    },
+    {
+     "en": "The city was a blank canvas for new ideas.",
+     "ko": "그 도시는 새로운 아이디어를 펼칠 빈 도화지 같았어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "paint",
+     "ko": "물감, 칠하다",
+     "en": "Oil paint."
+    },
+    {
+     "type": "연관어",
+     "word": "artist",
+     "ko": "화가",
+     "en": "A young artist."
+    },
+    {
+     "type": "연관어",
+     "word": "brush",
+     "ko": "붓",
+     "en": "A paint brush."
+    },
+    {
+     "type": "연관어",
+     "word": "cloth",
+     "ko": "천",
+     "en": "A piece of cloth."
+    },
+    {
+     "type": "연관어",
+     "word": "tent",
+     "ko": "텐트",
+     "en": "Pitch a tent."
+    },
+    {
+     "type": "연관어",
+     "word": "easel",
+     "ko": "이젤",
+     "en": "Set up an easel."
+    }
+   ]
+  },
+  "700": {
+   "word": "curve",
+   "overview": [
+    "curve는 '곡선, 굽은 곳'이라는 뜻의 명사입니다.",
+    "a sharp curve in the road(도로의 급커브)처럼 씁니다.",
+    "동사로는 '구부러지다, 곡선을 그리다'라는 뜻입니다.",
+    "형용사 curved(구부러진)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "bend",
+     "en": "A bend in the river.",
+     "ko": "강의 굽이."
+    },
+    {
+     "word": "turn",
+     "en": "A sharp turn.",
+     "ko": "급회전."
+    }
+   ],
+   "etymology": [
+    "curve는 라틴어 curvus(굽은)에서 온 단어입니다.",
+    "curb(연석), curvature(곡률)와 같은 가족입니다.",
+    "'곧지 않고 둥글게 휘어진'이라는 뜻이 그대로 이어져 왔습니다.",
+    "도로의 굽은 곳, 그래프의 곡선, 몸의 곡선 등에 두루 씁니다.",
+    "curve의 핵심 이미지는 '곧게 가지 않고 부드럽게 휘어지는 선 〰️'입니다."
+   ],
+   "meanings": [
+    "곡선, 굽은 것",
+    "굴곡",
+    "구부러지다, 곡선을 그리다"
+   ],
+   "examples": [
+    {
+     "en": "Slow down before the curve.",
+     "ko": "커브 앞에서는 속도를 줄이세요."
+    },
+    {
+     "en": "The road curves to the left.",
+     "ko": "도로가 왼쪽으로 굽어져요."
+    },
+    {
+     "en": "Draw a smooth curve on the paper.",
+     "ko": "종이에 부드러운 곡선을 그리세요."
+    },
+    {
+     "en": "The ball curved into the goal.",
+     "ko": "공이 휘어지며 골대로 들어갔어요."
+    },
+    {
+     "en": "The graph shows a rising curve.",
+     "ko": "그래프가 올라가는 곡선을 보여 줘요."
+    },
+    {
+     "en": "The river makes a big curve near the village.",
+     "ko": "강은 마을 근처에서 크게 굽이쳐요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "bend",
+     "ko": "굽이",
+     "en": "A bend in the road."
+    },
+    {
+     "type": "반의어",
+     "word": "straight line",
+     "ko": "직선",
+     "en": "Draw a straight line."
+    },
+    {
+     "type": "파생어",
+     "word": "curved",
+     "ko": "구부러진",
+     "en": "A curved wall."
+    },
+    {
+     "type": "연관어",
+     "word": "circle",
+     "ko": "원",
+     "en": "A perfect circle."
+    },
+    {
+     "type": "연관어",
+     "word": "arc",
+     "ko": "호",
+     "en": "An arc of light."
+    },
+    {
+     "type": "연관어",
+     "word": "graph",
+     "ko": "그래프",
+     "en": "Read the graph."
+    }
+   ]
+  },
+  "1313": {
+   "word": "heritage",
+   "overview": [
+    "heritage는 '(국가·사회의) 유산, 전통'이라는 뜻의 명사입니다.",
+    "cultural heritage(문화유산)처럼 씁니다.",
+    "앞 세대로부터 물려받아 소중히 지켜 가는 문화, 전통, 건축물 등을 뜻합니다.",
+    "a World Heritage Site(세계 문화유산)라는 표현도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "tradition",
+     "en": "An old tradition.",
+     "ko": "오래된 전통."
+    },
+    {
+     "word": "legacy",
+     "en": "A family legacy.",
+     "ko": "가문의 유산."
+    }
+   ],
+   "etymology": [
+    "heritage는 옛 프랑스어 heritage(물려받은 것)에서 온 단어입니다.",
+    "라틴어 heres(상속인)에서 나온 말로, heir(상속인), inherit(물려받다)와 같은 가족입니다.",
+    "'앞 세대에게서 물려받은 것'이라는 뜻이 그대로 이어져 왔습니다.",
+    "특히 한 나라나 민족이 물려받은 문화와 전통을 가리킵니다.",
+    "heritage의 핵심 이미지는 '조상에게서 대대로 물려받은 소중한 보물 🏯'입니다."
+   ],
+   "meanings": [
+    "(국가·사회의) 유산, 전통"
+   ],
+   "examples": [
+    {
+     "en": "Hanok is part of Korea's cultural heritage.",
+     "ko": "한옥은 한국 문화유산의 일부예요."
+    },
+    {
+     "en": "Bulguksa Temple is a World Heritage Site.",
+     "ko": "불국사는 세계 문화유산이에요."
+    },
+    {
+     "en": "We must protect our natural heritage.",
+     "ko": "우리는 자연유산을 보호해야 해요."
+    },
+    {
+     "en": "She is proud of her Korean heritage.",
+     "ko": "그녀는 자신의 한국 혈통을 자랑스러워해요."
+    },
+    {
+     "en": "The museum shows the city's heritage.",
+     "ko": "그 박물관은 도시의 유산을 보여 줘요."
+    },
+    {
+     "en": "Music is an important part of our heritage.",
+     "ko": "음악은 우리 전통의 중요한 부분이에요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "tradition",
+     "ko": "전통",
+     "en": "Keep a tradition."
+    },
+    {
+     "type": "유의어",
+     "word": "legacy",
+     "ko": "유산",
+     "en": "Leave a legacy."
+    },
+    {
+     "type": "연관어",
+     "word": "culture",
+     "ko": "문화",
+     "en": "Local culture."
+    },
+    {
+     "type": "연관어",
+     "word": "inherit",
+     "ko": "물려받다",
+     "en": "Inherit a house."
+    },
+    {
+     "type": "연관어",
+     "word": "history",
+     "ko": "역사",
+     "en": "Korean history."
+    },
+    {
+     "type": "연관어",
+     "word": "preserve",
+     "ko": "보존하다",
+     "en": "Preserve old buildings."
+    }
+   ]
+  },
+  "2850": {
+   "word": "valid",
+   "overview": [
+    "valid는 '유효한, 효력이 있는'이라는 뜻의 형용사입니다.",
+    "a valid passport(유효한 여권)처럼 씁니다.",
+    "'(이유·주장이) 타당한, 근거 있는'이라는 뜻으로도 자주 씁니다. (a valid point)",
+    "반의어는 invalid(무효한)이고, 동사 validate(입증하다)도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "usable",
+     "en": "A usable ticket.",
+     "ko": "쓸 수 있는 표."
+    },
+    {
+     "word": "reasonable",
+     "en": "A reasonable excuse.",
+     "ko": "납득할 만한 변명."
+    }
+   ],
+   "etymology": [
+    "valid는 라틴어 validus(강한, 힘 있는)에서 온 단어입니다.",
+    "valere(힘이 있다, 가치가 있다)에서 나온 말로, value(가치)와 같은 가족입니다.",
+    "'힘이 있어 효과를 내는'이라는 뜻에서 시작되었습니다.",
+    "법적으로 효력이 있는 것, 논리적으로 힘 있는 타당한 주장을 가리키게 되었습니다.",
+    "valid의 핵심 이미지는 '힘이 살아 있어 제대로 통하는 것 ✅'입니다."
+   ],
+   "meanings": [
+    "유효한, 효력이 있는",
+    "타당한"
+   ],
+   "examples": [
+    {
+     "en": "Your ticket is valid for one month.",
+     "ko": "표는 한 달 동안 유효해요."
+    },
+    {
+     "en": "You need a valid passport to travel abroad.",
+     "ko": "해외여행을 하려면 유효한 여권이 필요해요."
+    },
+    {
+     "en": "That's a valid point.",
+     "ko": "그건 타당한 지적이에요."
+    },
+    {
+     "en": "The coupon is no longer valid.",
+     "ko": "그 쿠폰은 더 이상 사용할 수 없어요."
+    },
+    {
+     "en": "She had a valid reason for being late.",
+     "ko": "그녀에게는 늦을 만한 타당한 이유가 있었어요."
+    },
+    {
+     "en": "Please enter a valid email address.",
+     "ko": "올바른 이메일 주소를 입력하세요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "legitimate",
+     "ko": "타당한",
+     "en": "A legitimate reason."
+    },
+    {
+     "type": "반의어",
+     "word": "invalid",
+     "ko": "무효한",
+     "en": "An invalid password."
+    },
+    {
+     "type": "반의어",
+     "word": "expired",
+     "ko": "만료된",
+     "en": "An expired card."
+    },
+    {
+     "type": "파생어",
+     "word": "validate",
+     "ko": "입증하다",
+     "en": "Validate the data."
+    },
+    {
+     "type": "연관어",
+     "word": "reasonable",
+     "ko": "합리적인",
+     "en": "A reasonable price."
+    },
+    {
+     "type": "연관어",
+     "word": "value",
+     "ko": "가치",
+     "en": "Great value."
+    }
+   ]
+  },
+  "1423": {
+   "word": "insect",
+   "overview": [
+    "insect는 '곤충'이라는 뜻의 명사입니다.",
+    "insect bites(벌레 물린 자국)처럼 씁니다.",
+    "몸이 머리·가슴·배 세 부분으로 나뉘고 다리가 여섯 개인 작은 동물을 뜻합니다.",
+    "구어에서는 bug라고도 합니다."
+   ],
+   "easy": [
+    {
+     "word": "bug",
+     "en": "A tiny bug.",
+     "ko": "작은 벌레."
+    },
+    {
+     "word": "small creature",
+     "en": "A small creature.",
+     "ko": "작은 생물."
+    }
+   ],
+   "etymology": [
+    "insect는 라틴어 insectum(마디로 잘린 것)에서 온 단어입니다.",
+    "in(안으로)과 secare(자르다)가 합쳐진 말로, section(부분), sector(부문)와 같은 가족입니다.",
+    "곤충의 몸이 마디마디 잘린 것처럼 나뉘어 있어서 붙은 이름입니다.",
+    "머리·가슴·배로 나뉜 몸과 여섯 다리를 가진 작은 동물을 가리킵니다.",
+    "insect의 핵심 이미지는 '몸이 마디로 나뉜 작은 곤충 🐞'입니다."
+   ],
+   "meanings": [
+    "(동물) 곤충"
+   ],
+   "examples": [
+    {
+     "en": "Ants and bees are insects.",
+     "ko": "개미와 벌은 곤충이에요."
+    },
+    {
+     "en": "Insects have six legs.",
+     "ko": "곤충은 다리가 여섯 개예요."
+    },
+    {
+     "en": "Use insect spray when you go camping.",
+     "ko": "캠핑 갈 때는 벌레 퇴치 스프레이를 쓰세요."
+    },
+    {
+     "en": "Some birds eat insects.",
+     "ko": "어떤 새들은 곤충을 먹어요."
+    },
+    {
+     "en": "My arm is itchy from an insect bite.",
+     "ko": "벌레에 물려서 팔이 가려워요."
+    },
+    {
+     "en": "He has a large insect collection.",
+     "ko": "그는 곤충을 많이 모았어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "bug",
+     "ko": "벌레",
+     "en": "A small bug."
+    },
+    {
+     "type": "연관어",
+     "word": "ant",
+     "ko": "개미",
+     "en": "A black ant."
+    },
+    {
+     "type": "연관어",
+     "word": "bee",
+     "ko": "벌",
+     "en": "A busy bee."
+    },
+    {
+     "type": "연관어",
+     "word": "butterfly",
+     "ko": "나비",
+     "en": "A pretty butterfly."
+    },
+    {
+     "type": "연관어",
+     "word": "wing",
+     "ko": "날개",
+     "en": "Thin wings."
+    },
+    {
+     "type": "연관어",
+     "word": "spider",
+     "ko": "거미",
+     "en": "A big spider."
+    }
+   ]
+  },
+  "10": {
+   "word": "absent",
+   "overview": [
+    "absent는 '결석한, 자리에 없는'이라는 뜻의 형용사입니다.",
+    "be absent from school(학교에 결석하다)처럼 씁니다.",
+    "'없는, 결여된'이라는 뜻으로도 씁니다. (Rain was absent this summer.)",
+    "'멍한, 넋 나간'이라는 뜻도 있으며, 명사 absence(결석, 부재)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "away",
+     "en": "He is away today.",
+     "ko": "그는 오늘 자리에 없어요."
+    },
+    {
+     "word": "missing",
+     "en": "A missing student.",
+     "ko": "안 온 학생."
+    }
+   ],
+   "etymology": [
+    "absent는 라틴어 absens(떨어져 있는)에서 온 단어입니다.",
+    "ab(떨어져)과 esse(있다)가 합쳐진 말로, present(출석한, '앞에 있는')와 짝을 이루는 말입니다.",
+    "'있어야 할 곳에서 떨어져 있는'이라는 뜻이 그대로 이어져 왔습니다.",
+    "몸이 없는 것뿐 아니라 마음이 딴 데 가 있는 '멍한' 상태에도 씁니다.",
+    "absent의 핵심 이미지는 '있어야 할 자리가 텅 빈 모습 🪑'입니다."
+   ],
+   "meanings": [
+    "자리에 없는, 부재의, 결석의",
+    "결여된",
+    "방심한, 멍한"
+   ],
+   "examples": [
+    {
+     "en": "Three students were absent today.",
+     "ko": "오늘 학생 세 명이 결석했어요."
+    },
+    {
+     "en": "He was absent from work because he was sick.",
+     "ko": "그는 아파서 회사에 나오지 않았어요."
+    },
+    {
+     "en": "Her father was often absent on business trips.",
+     "ko": "그녀의 아버지는 출장 때문에 자주 집을 비웠어요."
+    },
+    {
+     "en": "She gave me an absent look.",
+     "ko": "그녀는 저를 멍하니 바라봤어요."
+    },
+    {
+     "en": "Any sign of fear was absent from his face.",
+     "ko": "그의 얼굴에는 두려운 기색이 전혀 없었어요."
+    },
+    {
+     "en": "Who is absent today?",
+     "ko": "오늘 누가 결석했나요?"
+    }
+   ],
+   "together": [
+    {
+     "type": "반의어",
+     "word": "present",
+     "ko": "출석한",
+     "en": "All present."
+    },
+    {
+     "type": "파생어",
+     "word": "absence",
+     "ko": "결석, 부재",
+     "en": "A long absence."
+    },
+    {
+     "type": "연관어",
+     "word": "missing",
+     "ko": "빠진, 없어진",
+     "en": "A missing piece."
+    },
+    {
+     "type": "연관어",
+     "word": "away",
+     "ko": "떨어져",
+     "en": "Far away."
+    },
+    {
+     "type": "연관어",
+     "word": "attendance",
+     "ko": "출석",
+     "en": "Check attendance."
+    },
+    {
+     "type": "연관어",
+     "word": "absent-minded",
+     "ko": "건망증 있는",
+     "en": "An absent-minded professor."
+    }
+   ]
+  },
+  "2312": {
+   "word": "scholar",
+   "overview": [
+    "scholar는 '학자'라는 뜻의 명사입니다.",
+    "a famous scholar(유명한 학자)처럼 씁니다.",
+    "'장학생'이라는 뜻으로도 씁니다. (a Rhodes Scholar)",
+    "명사 scholarship(장학금, 학문)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "expert",
+     "en": "A history expert.",
+     "ko": "역사 전문가."
+    },
+    {
+     "word": "learned person",
+     "en": "A learned person.",
+     "ko": "학식 있는 사람."
+    }
+   ],
+   "etymology": [
+    "scholar는 라틴어 scholaris(학교의)에서 온 단어입니다.",
+    "schola(학교)에서 나온 말로, school(학교)과 같은 가족입니다.",
+    "school은 원래 그리스어 skhole(여가, 한가한 시간)에서 왔는데, 여가에 배우고 토론했기 때문입니다.",
+    "'학교에서 배우는 사람'에서 '깊이 공부하는 학자'라는 뜻이 되었습니다.",
+    "scholar의 핵심 이미지는 '책에 파묻혀 깊이 연구하는 학자 📚🎓'입니다."
+   ],
+   "meanings": [
+    "학자",
+    "장학생",
+    "학생"
+   ],
+   "examples": [
+    {
+     "en": "He is a well-known scholar of Korean history.",
+     "ko": "그는 한국사에 정통한 유명 학자예요."
+    },
+    {
+     "en": "Scholars from many countries attended the meeting.",
+     "ko": "여러 나라의 학자들이 그 회의에 참석했어요."
+    },
+    {
+     "en": "She won a scholarship to study abroad.",
+     "ko": "그녀는 유학 장학금을 받았어요."
+    },
+    {
+     "en": "King Sejong worked with many scholars.",
+     "ko": "세종대왕은 많은 학자들과 함께 일했어요."
+    },
+    {
+     "en": "The old scholar spent his life writing books.",
+     "ko": "그 노학자는 평생 책을 쓰며 보냈어요."
+    },
+    {
+     "en": "Scholars disagree about the meaning of the poem.",
+     "ko": "학자들은 그 시의 의미에 대해 의견이 엇갈려요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "academic",
+     "ko": "학자",
+     "en": "A leading academic."
+    },
+    {
+     "type": "파생어",
+     "word": "scholarship",
+     "ko": "장학금",
+     "en": "Win a scholarship."
+    },
+    {
+     "type": "연관어",
+     "word": "professor",
+     "ko": "교수",
+     "en": "A history professor."
+    },
+    {
+     "type": "연관어",
+     "word": "research",
+     "ko": "연구",
+     "en": "Do research."
+    },
+    {
+     "type": "연관어",
+     "word": "student",
+     "ko": "학생",
+     "en": "A good student."
+    },
+    {
+     "type": "연관어",
+     "word": "school",
+     "ko": "학교",
+     "en": "Go to school."
+    }
+   ]
+  },
+  "998": {
+   "word": "expertise",
+   "overview": [
+    "expertise는 '전문 지식, 전문 기술'이라는 뜻의 명사입니다.",
+    "technical expertise(기술적 전문성)처럼 씁니다.",
+    "특정 분야에서 오랜 경험과 공부로 얻은 높은 수준의 능력을 뜻합니다.",
+    "셀 수 없는 명사로 쓰고, 발음은 [엑스퍼티즈]입니다."
+   ],
+   "easy": [
+    {
+     "word": "skill",
+     "en": "Special skill.",
+     "ko": "특별한 기술."
+    },
+    {
+     "word": "knowledge",
+     "en": "Deep knowledge.",
+     "ko": "깊은 지식."
+    }
+   ],
+   "etymology": [
+    "expertise는 expert(전문가)에 프랑스어식 끝말 -ise가 붙은 단어입니다.",
+    "expert는 라틴어 expertus(경험해 본)에서 왔고, experience(경험)와 같은 가족입니다.",
+    "'직접 많이 경험해 보아 잘 아는 것'이라는 뜻에서 시작되었습니다.",
+    "오랜 경험과 공부로 얻은 깊은 지식과 기술을 가리키게 되었습니다.",
+    "expertise의 핵심 이미지는 '오랜 경험이 쌓여 만든 깊은 전문 실력 🛠️'입니다."
+   ],
+   "meanings": [
+    "높은 수준의 지식이나 기술, 전문 지식"
+   ],
+   "examples": [
+    {
+     "en": "We need someone with computer expertise.",
+     "ko": "우리는 컴퓨터 전문 지식이 있는 사람이 필요해요."
+    },
+    {
+     "en": "Her expertise in science helped the team.",
+     "ko": "그녀의 과학 지식이 팀에 도움이 됐어요."
+    },
+    {
+     "en": "The doctor has great expertise in heart surgery.",
+     "ko": "그 의사는 심장 수술에 뛰어난 전문성이 있어요."
+    },
+    {
+     "en": "This job requires legal expertise.",
+     "ko": "이 일에는 법률 전문 지식이 필요해요."
+    },
+    {
+     "en": "He shared his expertise with young players.",
+     "ko": "그는 어린 선수들에게 자신의 노하우를 나눠 줬어요."
+    },
+    {
+     "en": "Cooking is not my area of expertise.",
+     "ko": "요리는 제 전문 분야가 아니에요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "skill",
+     "ko": "기술",
+     "en": "A useful skill."
+    },
+    {
+     "type": "유의어",
+     "word": "know-how",
+     "ko": "노하우",
+     "en": "Technical know-how."
+    },
+    {
+     "type": "파생어",
+     "word": "expert",
+     "ko": "전문가",
+     "en": "Ask an expert."
+    },
+    {
+     "type": "연관어",
+     "word": "experience",
+     "ko": "경험",
+     "en": "Years of experience."
+    },
+    {
+     "type": "연관어",
+     "word": "knowledge",
+     "ko": "지식",
+     "en": "General knowledge."
+    },
+    {
+     "type": "연관어",
+     "word": "professional",
+     "ko": "전문가",
+     "en": "A true professional."
+    }
+   ]
+  },
+  "2026": {
+   "word": "predator",
+   "overview": [
+    "predator는 '포식자, 육식 동물'이라는 뜻의 명사입니다.",
+    "a top predator(최상위 포식자)처럼 씁니다.",
+    "다른 동물을 사냥해 잡아먹는 동물을 뜻합니다.",
+    "'(약한 사람을 노리는) 약탈자'라는 비유적인 뜻도 있고, 형용사 predatory(약탈하는)도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "hunter",
+     "en": "A skilled hunter.",
+     "ko": "노련한 사냥꾼."
+    },
+    {
+     "word": "meat eater",
+     "en": "A meat eater.",
+     "ko": "고기를 먹는 동물."
+    }
+   ],
+   "etymology": [
+    "predator는 라틴어 praedator(약탈자)에서 온 단어입니다.",
+    "praeda(전리품, 먹잇감)에서 나온 말로, prey(먹잇감)와 같은 뿌리입니다.",
+    "'먹잇감을 빼앗아 가는 자'라는 뜻에서 시작되었습니다.",
+    "다른 동물을 사냥해 먹는 동물, 그리고 약한 사람을 노리는 사람을 가리키게 되었습니다.",
+    "predator의 핵심 이미지는 '먹잇감을 노리는 날카로운 눈의 사냥꾼 🦈'입니다."
+   ],
+   "meanings": [
+    "포식자",
+    "약탈자"
+   ],
+   "examples": [
+    {
+     "en": "Lions are powerful predators.",
+     "ko": "사자는 강력한 포식자예요."
+    },
+    {
+     "en": "Sharks are top predators in the ocean.",
+     "ko": "상어는 바다의 최상위 포식자예요."
+    },
+    {
+     "en": "Rabbits hide from predators in holes.",
+     "ko": "토끼는 포식자를 피해 굴에 숨어요."
+    },
+    {
+     "en": "Some insects use color to scare predators.",
+     "ko": "어떤 곤충은 색깔로 포식자를 겁줘요."
+    },
+    {
+     "en": "The island has no natural predators.",
+     "ko": "그 섬에는 천적이 없어요."
+    },
+    {
+     "en": "Be careful of online predators.",
+     "ko": "온라인에서 나쁜 의도로 접근하는 사람을 조심하세요."
+    }
+   ],
+   "together": [
+    {
+     "type": "반의어",
+     "word": "prey",
+     "ko": "먹잇감",
+     "en": "Hunt for prey."
+    },
+    {
+     "type": "유의어",
+     "word": "hunter",
+     "ko": "사냥꾼",
+     "en": "A night hunter."
+    },
+    {
+     "type": "파생어",
+     "word": "predatory",
+     "ko": "포식성의",
+     "en": "Predatory animals."
+    },
+    {
+     "type": "연관어",
+     "word": "food chain",
+     "ko": "먹이 사슬",
+     "en": "The food chain."
+    },
+    {
+     "type": "연관어",
+     "word": "wild",
+     "ko": "야생의",
+     "en": "Wild animals."
+    },
+    {
+     "type": "연관어",
+     "word": "attack",
+     "ko": "공격하다",
+     "en": "Attack suddenly."
+    }
+   ]
+  },
+  "2773": {
+   "word": "transition",
+   "overview": [
+    "transition은 '전환, 이행, 변천'이라는 뜻의 명사입니다.",
+    "the transition from child to adult(아이에서 어른으로의 전환)처럼 씁니다.",
+    "한 상태에서 다른 상태로 넘어가는 과정을 뜻합니다.",
+    "동사로는 '전환하다, 옮겨 가다'라는 뜻이고, a transition period(과도기)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "change",
+     "en": "A big change.",
+     "ko": "큰 변화."
+    },
+    {
+     "word": "move",
+     "en": "Move to a new school.",
+     "ko": "새 학교로 옮기다."
+    }
+   ],
+   "etymology": [
+    "transition은 라틴어 transitio(건너감)에서 온 단어입니다.",
+    "trans(건너)와 ire(가다)가 합쳐진 말로, transit(통과), exit(출구)와 같은 가족입니다.",
+    "'한쪽에서 다른 쪽으로 건너가는 것'이라는 뜻이 그대로 이어져 왔습니다.",
+    "하나의 상태나 단계에서 다음 단계로 넘어가는 변화를 가리킵니다.",
+    "transition의 핵심 이미지는 '다리를 건너 다음 단계로 넘어가는 과정 🌉'입니다."
+   ],
+   "meanings": [
+    "전환, 이행",
+    "전환하다"
+   ],
+   "examples": [
+    {
+     "en": "The transition to middle school was hard for me.",
+     "ko": "중학교로 올라가는 전환기가 저에게는 힘들었어요."
+    },
+    {
+     "en": "The country made a peaceful transition to democracy.",
+     "ko": "그 나라는 민주주의로 평화롭게 이행했어요."
+    },
+    {
+     "en": "Spring is a transition between winter and summer.",
+     "ko": "봄은 겨울과 여름 사이의 전환기예요."
+    },
+    {
+     "en": "The company is in a period of transition.",
+     "ko": "그 회사는 과도기에 있어요."
+    },
+    {
+     "en": "Use smooth transitions between your paragraphs.",
+     "ko": "문단 사이를 자연스럽게 연결하세요."
+    },
+    {
+     "en": "She transitioned from player to coach.",
+     "ko": "그녀는 선수에서 코치로 전환했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "change",
+     "ko": "변화",
+     "en": "Sudden change."
+    },
+    {
+     "type": "유의어",
+     "word": "shift",
+     "ko": "이동, 변화",
+     "en": "A shift in thinking."
+    },
+    {
+     "type": "파생어",
+     "word": "transitional",
+     "ko": "과도기의",
+     "en": "A transitional period."
+    },
+    {
+     "type": "연관어",
+     "word": "stage",
+     "ko": "단계",
+     "en": "The next stage."
+    },
+    {
+     "type": "연관어",
+     "word": "process",
+     "ko": "과정",
+     "en": "A slow process."
+    },
+    {
+     "type": "연관어",
+     "word": "transform",
+     "ko": "변형시키다",
+     "en": "Transform the room."
+    }
+   ]
+  },
+  "1290": {
+   "word": "haunt",
+   "overview": [
+    "haunt는 '(유령이) 출몰하다, 나타나다'라는 뜻의 동사입니다.",
+    "a haunted house(유령의 집)처럼 씁니다.",
+    "'(기억·생각이) 계속 떠올라 괴롭히다'라는 뜻으로도 자주 씁니다.",
+    "'(장소에) 자주 가다'라는 뜻도 있고, 명사로는 '자주 가는 곳'이라는 뜻입니다."
+   ],
+   "easy": [
+    {
+     "word": "trouble",
+     "en": "The memory troubles me.",
+     "ko": "그 기억이 나를 괴롭혀요."
+    },
+    {
+     "word": "visit often",
+     "en": "Visit the café often.",
+     "ko": "그 카페에 자주 가다."
+    }
+   ],
+   "etymology": [
+    "haunt는 옛 프랑스어 hanter(자주 드나들다)에서 온 단어입니다.",
+    "게르만 말 뿌리에서 온 것으로, home(집)과 관련이 있다고 봅니다.",
+    "원래는 '어떤 곳에 자주 머무르다'라는 뜻이었습니다.",
+    "유령이 한 장소에 자꾸 나타나는 것, 기억이 머릿속에 자꾸 찾아와 괴롭히는 것으로 뜻이 넓어졌습니다.",
+    "haunt의 핵심 이미지는 '떠나지 않고 자꾸 되돌아와 맴도는 것 👻'입니다."
+   ],
+   "meanings": [
+    "자주 가다, 들르다",
+    "(생각이) 쉴 새 없이 떠오르다",
+    "(유령이) 나타나다, 출몰하다"
+   ],
+   "examples": [
+    {
+     "en": "People say the old house is haunted.",
+     "ko": "사람들은 그 오래된 집에 유령이 나온다고 해요."
+    },
+    {
+     "en": "The sad memory haunted him for years.",
+     "ko": "그 슬픈 기억이 몇 년 동안 그를 괴롭혔어요."
+    },
+    {
+     "en": "This café is a favorite haunt of students.",
+     "ko": "이 카페는 학생들이 즐겨 찾는 곳이에요."
+    },
+    {
+     "en": "A ghost is said to haunt the castle.",
+     "ko": "그 성에는 유령이 나타난다고 해요."
+    },
+    {
+     "en": "His words still haunt me.",
+     "ko": "그의 말이 아직도 머릿속을 떠나지 않아요."
+    },
+    {
+     "en": "We went to a haunted house at the amusement park.",
+     "ko": "우리는 놀이공원에서 귀신의 집에 갔어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "파생어",
+     "word": "haunted",
+     "ko": "유령이 나오는",
+     "en": "A haunted castle."
+    },
+    {
+     "type": "파생어",
+     "word": "haunting",
+     "ko": "잊히지 않는",
+     "en": "A haunting song."
+    },
+    {
+     "type": "연관어",
+     "word": "ghost",
+     "ko": "유령",
+     "en": "A friendly ghost."
+    },
+    {
+     "type": "연관어",
+     "word": "memory",
+     "ko": "기억",
+     "en": "A bad memory."
+    },
+    {
+     "type": "연관어",
+     "word": "trouble",
+     "ko": "괴롭히다",
+     "en": "Trouble your mind."
+    },
+    {
+     "type": "연관어",
+     "word": "spooky",
+     "ko": "으스스한",
+     "en": "A spooky night."
+    }
+   ]
+  },
+  "807": {
+   "word": "dine",
+   "overview": [
+    "dine은 '(격식 있게) 식사하다, 저녁을 먹다'라는 뜻의 동사입니다.",
+    "dine at a restaurant(식당에서 식사하다)처럼 씁니다.",
+    "dine out(외식하다), dine in(집에서 식사하다)이라는 표현도 자주 씁니다.",
+    "명사 dinner(저녁 식사), diner(식사하는 손님, 간이식당)도 같은 가족입니다."
+   ],
+   "easy": [
+    {
+     "word": "eat",
+     "en": "Eat dinner.",
+     "ko": "저녁을 먹다."
+    },
+    {
+     "word": "have a meal",
+     "en": "Have a meal together.",
+     "ko": "함께 식사하다."
+    }
+   ],
+   "etymology": [
+    "dine은 옛 프랑스어 disner(식사하다)에서 온 단어입니다.",
+    "라틴어 disieiunare(단식을 끝내다)에서 나온 것으로 봅니다.",
+    "원래는 '굶은 뒤 처음 먹는 식사'를 뜻했고, breakfast(아침, '단식을 깸')와 비슷한 생각에서 나왔습니다.",
+    "지금은 격식 있게 식사하는 것, 특히 저녁 식사를 가리킵니다.",
+    "dine의 핵심 이미지는 '식탁에 둘러앉아 여유롭게 즐기는 식사 🍽️'입니다."
+   ],
+   "meanings": [
+    "저녁을 먹다, 식사하다"
+   ],
+   "examples": [
+    {
+     "en": "We dined at a fancy restaurant.",
+     "ko": "우리는 고급 식당에서 식사했어요."
+    },
+    {
+     "en": "Let's dine out tonight.",
+     "ko": "오늘 밤에 외식해요."
+    },
+    {
+     "en": "The family dines together every Sunday.",
+     "ko": "그 가족은 매주 일요일에 함께 식사해요."
+    },
+    {
+     "en": "Guests can dine on the terrace.",
+     "ko": "손님들은 테라스에서 식사할 수 있어요."
+    },
+    {
+     "en": "The king dined with his ministers.",
+     "ko": "왕은 신하들과 함께 식사했어요."
+    },
+    {
+     "en": "The dining room seats twenty people.",
+     "ko": "그 식당 방에는 스무 명이 앉을 수 있어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "eat",
+     "ko": "먹다",
+     "en": "Eat lunch."
+    },
+    {
+     "type": "파생어",
+     "word": "dinner",
+     "ko": "저녁 식사",
+     "en": "Cook dinner."
+    },
+    {
+     "type": "파생어",
+     "word": "diner",
+     "ko": "식사하는 사람, 간이식당",
+     "en": "A small diner."
+    },
+    {
+     "type": "연관어",
+     "word": "meal",
+     "ko": "식사",
+     "en": "A healthy meal."
+    },
+    {
+     "type": "연관어",
+     "word": "restaurant",
+     "ko": "식당",
+     "en": "A nice restaurant."
+    },
+    {
+     "type": "연관어",
+     "word": "feast",
+     "ko": "잔치",
+     "en": "A big feast."
+    }
+   ]
+  },
+  "1429": {
+   "word": "inspire",
+   "overview": [
+    "inspire는 '영감을 주다, 고무하다'라는 뜻의 동사입니다.",
+    "inspire students(학생들에게 영감을 주다)처럼 씁니다.",
+    "inspire someone to do(누군가가 ~하도록 북돋우다)처럼도 씁니다.",
+    "명사 inspiration(영감), 형용사 inspiring(영감을 주는)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "encourage",
+     "en": "Encourage others.",
+     "ko": "다른 사람을 격려하다."
+    },
+    {
+     "word": "motivate",
+     "en": "Motivate the team.",
+     "ko": "팀에 동기를 부여하다."
+    }
+   ],
+   "etymology": [
+    "inspire는 라틴어 inspirare(숨을 불어넣다)에서 온 단어입니다.",
+    "in(안으로)과 spirare(숨 쉬다)가 합쳐진 말로, spirit(정신), respire(호흡하다)와 같은 가족입니다.",
+    "원래는 신이 사람에게 생명의 숨이나 생각을 불어넣는다는 뜻이었습니다.",
+    "누군가의 마음에 새로운 힘과 아이디어를 불어넣는 것을 가리키게 되었습니다.",
+    "inspire의 핵심 이미지는 '마음속에 새로운 숨결과 불꽃을 불어넣는 것 💡'입니다."
+   ],
+   "meanings": [
+    "고무하다, 격려하다",
+    "영감을 주다"
+   ],
+   "examples": [
+    {
+     "en": "Her story inspired me to work harder.",
+     "ko": "그녀의 이야기는 제가 더 열심히 하도록 힘을 줬어요."
+    },
+    {
+     "en": "The teacher inspired her students to love reading.",
+     "ko": "그 선생님은 학생들이 독서를 좋아하게 이끌었어요."
+    },
+    {
+     "en": "Nature inspires many artists.",
+     "ko": "자연은 많은 예술가에게 영감을 줘요."
+    },
+    {
+     "en": "The movie was inspired by a true story.",
+     "ko": "그 영화는 실화에서 영감을 받았어요."
+    },
+    {
+     "en": "His speech inspired hope in the crowd.",
+     "ko": "그의 연설은 군중에게 희망을 불어넣었어요."
+    },
+    {
+     "en": "What inspired you to become a doctor?",
+     "ko": "무엇 때문에 의사가 되고 싶었나요?"
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "motivate",
+     "ko": "동기를 부여하다",
+     "en": "Motivate yourself."
+    },
+    {
+     "type": "유의어",
+     "word": "encourage",
+     "ko": "격려하다",
+     "en": "Encourage a friend."
+    },
+    {
+     "type": "파생어",
+     "word": "inspiration",
+     "ko": "영감",
+     "en": "A source of inspiration."
+    },
+    {
+     "type": "파생어",
+     "word": "inspiring",
+     "ko": "영감을 주는",
+     "en": "An inspiring story."
+    },
+    {
+     "type": "연관어",
+     "word": "creative",
+     "ko": "창의적인",
+     "en": "A creative idea."
+    },
+    {
+     "type": "연관어",
+     "word": "discourage",
+     "ko": "낙담시키다",
+     "en": "Don't discourage him."
+    }
+   ]
+  },
+  "2849": {
+   "word": "vague",
+   "overview": [
+    "vague는 '모호한, 애매한'이라는 뜻의 형용사입니다.",
+    "a vague answer(애매한 대답)처럼 씁니다.",
+    "'(모습·기억이) 흐릿한, 희미한'이라는 뜻으로도 씁니다. (a vague memory)",
+    "부사 vaguely(어렴풋이)도 자주 씁니다. 발음은 [베이그]입니다."
+   ],
+   "easy": [
+    {
+     "word": "unclear",
+     "en": "An unclear message.",
+     "ko": "불분명한 메시지."
+    },
+    {
+     "word": "blurry",
+     "en": "A blurry photo.",
+     "ko": "흐릿한 사진."
+    }
+   ],
+   "etymology": [
+    "vague는 라틴어 vagus(떠도는, 방랑하는)에서 온 단어입니다.",
+    "vagabond(방랑자)와 같은 가족입니다.",
+    "'한곳에 머물지 않고 이리저리 떠도는'이라는 뜻에서 시작되었습니다.",
+    "생각이나 말이 한곳에 딱 정해지지 않아 분명하지 않은 것을 가리키게 되었습니다.",
+    "vague의 핵심 이미지는 '안개 속처럼 뚜렷하지 않고 흐릿한 것 🌫️'입니다."
+   ],
+   "meanings": [
+    "흐릿한, 애매모호한"
+   ],
+   "examples": [
+    {
+     "en": "His answer was too vague.",
+     "ko": "그의 대답은 너무 애매했어요."
+    },
+    {
+     "en": "I have a vague memory of my first birthday.",
+     "ko": "저는 첫 생일이 어렴풋이 기억나요."
+    },
+    {
+     "en": "She gave only vague directions.",
+     "ko": "그녀는 모호하게만 길을 알려 줬어요."
+    },
+    {
+     "en": "I have a vague idea of what he means.",
+     "ko": "그가 무슨 뜻인지 대충은 알 것 같아요."
+    },
+    {
+     "en": "A vague shape appeared in the fog.",
+     "ko": "안개 속에 흐릿한 형체가 나타났어요."
+    },
+    {
+     "en": "Please don't be vague—tell me exactly.",
+     "ko": "애매하게 말하지 말고 정확히 말해 주세요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "unclear",
+     "ko": "불분명한",
+     "en": "Unclear rules."
+    },
+    {
+     "type": "반의어",
+     "word": "clear",
+     "ko": "명확한",
+     "en": "A clear answer."
+    },
+    {
+     "type": "반의어",
+     "word": "precise",
+     "ko": "정확한",
+     "en": "Precise details."
+    },
+    {
+     "type": "파생어",
+     "word": "vaguely",
+     "ko": "어렴풋이",
+     "en": "Vaguely familiar."
+    },
+    {
+     "type": "연관어",
+     "word": "blurry",
+     "ko": "흐릿한",
+     "en": "Blurry vision."
+    },
+    {
+     "type": "연관어",
+     "word": "uncertain",
+     "ko": "불확실한",
+     "en": "An uncertain future."
+    }
+   ]
+  },
+  "1426": {
+   "word": "insight",
+   "overview": [
+    "insight는 '통찰력, 이해'라는 뜻의 명사입니다.",
+    "gain insight into(~을 깊이 이해하게 되다)처럼 씁니다.",
+    "겉만이 아니라 속까지 꿰뚫어 보는 깊은 이해를 뜻합니다.",
+    "셀 수 있는 명사로 '(새로운) 깨달음'이라는 뜻으로도 씁니다. (useful insights)"
+   ],
+   "easy": [
+    {
+     "word": "understanding",
+     "en": "Deep understanding.",
+     "ko": "깊은 이해."
+    },
+    {
+     "word": "wisdom",
+     "en": "Words of wisdom.",
+     "ko": "지혜로운 말."
+    }
+   ],
+   "etymology": [
+    "insight는 in(안으로)과 sight(봄, 시력)가 합쳐진 단어입니다.",
+    "'눈으로 사물의 안쪽을 들여다보는 것'이라는 뜻입니다.",
+    "겉모습 너머 본질을 꿰뚫어 보는 능력을 가리키게 되었습니다.",
+    "그렇게 얻은 새로운 깨달음 하나하나도 insight라고 합니다.",
+    "insight의 핵심 이미지는 '겉을 뚫고 속까지 들여다보는 눈 🔍'입니다."
+   ],
+   "meanings": [
+    "통찰력",
+    "깨달음, 이해"
+   ],
+   "examples": [
+    {
+     "en": "The book gives insight into life in North Korea.",
+     "ko": "그 책은 북한의 삶을 깊이 이해하게 해 줘요."
+    },
+    {
+     "en": "She has great insight into people's feelings.",
+     "ko": "그녀는 사람들의 감정을 꿰뚫어 보는 통찰력이 있어요."
+    },
+    {
+     "en": "The trip gave me new insights about myself.",
+     "ko": "그 여행으로 저 자신에 대해 새로운 깨달음을 얻었어요."
+    },
+    {
+     "en": "Thank you for sharing your insights.",
+     "ko": "통찰력 있는 의견을 나눠 주셔서 감사해요."
+    },
+    {
+     "en": "Scientists gained insight into how the brain works.",
+     "ko": "과학자들은 뇌가 작동하는 방식을 더 깊이 이해하게 되었어요."
+    },
+    {
+     "en": "His comment showed real insight.",
+     "ko": "그의 말은 진정한 통찰력을 보여 줬어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "understanding",
+     "ko": "이해",
+     "en": "A good understanding."
+    },
+    {
+     "type": "유의어",
+     "word": "wisdom",
+     "ko": "지혜",
+     "en": "Ancient wisdom."
+    },
+    {
+     "type": "파생어",
+     "word": "insightful",
+     "ko": "통찰력 있는",
+     "en": "An insightful comment."
+    },
+    {
+     "type": "연관어",
+     "word": "perspective",
+     "ko": "관점",
+     "en": "A new perspective."
+    },
+    {
+     "type": "연관어",
+     "word": "knowledge",
+     "ko": "지식",
+     "en": "Deep knowledge."
+    },
+    {
+     "type": "연관어",
+     "word": "sight",
+     "ko": "시력",
+     "en": "Good sight."
+    }
+   ]
+  },
+  "734": {
+   "word": "decline",
+   "overview": [
+    "decline은 '감소하다, 줄어들다'라는 뜻의 동사입니다.",
+    "Sales declined.(판매량이 줄었다)처럼 씁니다.",
+    "'쇠퇴하다, 기울다', '(정중히) 거절하다'라는 뜻으로도 자주 씁니다. (decline an invitation)",
+    "명사로는 '감소, 쇠퇴'라는 뜻입니다. (a decline in birth rates)"
+   ],
+   "easy": [
+    {
+     "word": "drop",
+     "en": "Prices dropped.",
+     "ko": "가격이 떨어졌어요."
+    },
+    {
+     "word": "say no",
+     "en": "Say no politely.",
+     "ko": "정중히 거절하다."
+    }
+   ],
+   "etymology": [
+    "decline은 라틴어 declinare(아래로 기울다, 비켜 가다)에서 온 단어입니다.",
+    "de(아래로)와 clinare(기울다)가 합쳐진 말로, incline(기울다)과 같은 가족입니다.",
+    "'아래쪽으로 기울어 내려가다'라는 뜻에서 '감소하다, 쇠퇴하다'가 되었습니다.",
+    "몸을 비켜 받지 않는다는 뜻에서 '정중히 거절하다'라는 뜻도 생겼습니다.",
+    "decline의 핵심 이미지는 '그래프가 아래로 기울어 내려가는 것 📉'입니다."
+   ],
+   "meanings": [
+    "감소하다",
+    "기울다, 쇠퇴하다",
+    "(정중히) 거절하다, 사양하다",
+    "감소, 쇠퇴"
+   ],
+   "examples": [
+    {
+     "en": "The number of students has declined.",
+     "ko": "학생 수가 줄었어요."
+    },
+    {
+     "en": "She politely declined the invitation.",
+     "ko": "그녀는 초대를 정중히 거절했어요."
+    },
+    {
+     "en": "There has been a decline in bee populations.",
+     "ko": "벌 개체 수가 감소했어요."
+    },
+    {
+     "en": "His health began to decline as he got older.",
+     "ko": "나이가 들면서 그의 건강이 쇠약해지기 시작했어요."
+    },
+    {
+     "en": "The empire declined after many wars.",
+     "ko": "그 제국은 여러 전쟁 뒤 쇠퇴했어요."
+    },
+    {
+     "en": "He declined to answer the question.",
+     "ko": "그는 그 질문에 답하기를 사양했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "decrease",
+     "ko": "감소하다",
+     "en": "Decrease slowly."
+    },
+    {
+     "type": "유의어",
+     "word": "refuse",
+     "ko": "거절하다",
+     "en": "Refuse an offer."
+    },
+    {
+     "type": "반의어",
+     "word": "increase",
+     "ko": "증가하다",
+     "en": "Increase quickly."
+    },
+    {
+     "type": "반의어",
+     "word": "accept",
+     "ko": "받아들이다",
+     "en": "Accept a gift."
+    },
+    {
+     "type": "연관어",
+     "word": "drop",
+     "ko": "떨어지다",
+     "en": "Sales dropped."
+    },
+    {
+     "type": "연관어",
+     "word": "fall",
+     "ko": "하락",
+     "en": "A sharp fall."
+    }
+   ]
+  }
+ }
+}
