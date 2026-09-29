@@ -1931,6 +1931,1935 @@
      "en": "Visit a place."
     }
    ]
+  },
+  "2698": {
+   "word": "thief",
+   "overview": [
+    "thief는 '도둑'이라는 뜻의 명사입니다. 남의 물건을 몰래 훔치는 사람입니다.",
+    "catch a thief(도둑을 잡다)처럼 씁니다.",
+    "여러 명일 때는 thieves처럼 f를 v로 바꿉니다.",
+    "동사 steal(훔치다)에서 나온 명사입니다."
+   ],
+   "easy": [
+    {
+     "word": "robber",
+     "en": "A bank robber.",
+     "ko": "은행 강도."
+    },
+    {
+     "word": "burglar",
+     "en": "A house burglar.",
+     "ko": "빈집털이범."
+    }
+   ],
+   "etymology": [
+    "thief는 고대 영어 theof(도둑)에서 온 단어입니다.",
+    "steal(훔치다)과도 이어지는 뿌리라고 봅니다.",
+    "천 년 넘게 '몰래 훔치는 사람'이라는 뜻으로 쓰여 온 단어입니다.",
+    "thieves처럼 f-v 변화는 leaf-leaves, wolf-wolves와 같은 오래된 규칙입니다.",
+    "thief의 핵심 이미지는 '그림자처럼 몰래 물건을 훔쳐 가는 사람 🥷'입니다."
+   ],
+   "meanings": [
+    "도둑"
+   ],
+   "examples": [
+    {
+     "en": "The thief ran away with the money.",
+     "ko": "도둑이 돈을 가지고 도망갔어요."
+    },
+    {
+     "en": "Police caught the thief quickly.",
+     "ko": "경찰이 도둑을 빠르게 잡았어요."
+    },
+    {
+     "en": "A thief broke into our house last night.",
+     "ko": "어젯밤에 도둑이 우리 집에 침입했어요."
+    },
+    {
+     "en": "The story is about a clever thief.",
+     "ko": "그 이야기는 영리한 도둑에 관한 것이에요."
+    },
+    {
+     "en": "Lock your door to keep thieves away.",
+     "ko": "도둑을 막으려면 문을 잠가."
+    },
+    {
+     "en": "Two thieves were arrested this morning.",
+     "ko": "오늘 아침에 도둑 두 명이 체포됐어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "robber",
+     "ko": "강도",
+     "en": "A bank robber."
+    },
+    {
+     "type": "유의어",
+     "word": "burglar",
+     "ko": "빈집털이범",
+     "en": "A sneaky burglar."
+    },
+    {
+     "type": "연관어",
+     "word": "steal",
+     "ko": "훔치다",
+     "en": "Steal money."
+    },
+    {
+     "type": "연관어",
+     "word": "crime",
+     "ko": "범죄",
+     "en": "Commit a crime."
+    },
+    {
+     "type": "연관어",
+     "word": "police",
+     "ko": "경찰",
+     "en": "Call the police."
+    },
+    {
+     "type": "연관어",
+     "word": "catch",
+     "ko": "잡다",
+     "en": "Catch him."
+    }
+   ]
+  },
+  "1976": {
+   "word": "plant",
+   "overview": [
+    "plant는 '식물'이라는 뜻의 명사이자 '심다'라는 뜻의 동사입니다.",
+    "water a plant(식물에 물을 주다), plant a seed(씨앗을 심다)처럼 씁니다.",
+    "'공장', '발전소'라는 뜻으로도 씁니다. a power plant(발전소)",
+    "'몰래 숨겨 놓다'라는 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "flower",
+     "en": "A pretty flower.",
+     "ko": "예쁜 꽃."
+    },
+    {
+     "word": "grow",
+     "en": "Grow a garden.",
+     "ko": "정원을 가꾸다."
+    }
+   ],
+   "etymology": [
+    "plant는 라틴어 planta(어린싹, 묘목)에서 온 단어입니다.",
+    "plantare(심다)에서 나온 말입니다.",
+    "'땅에 심어 기르는 어린싹'이라는 뜻이 '식물' 전체로 넓어졌습니다.",
+    "'공장'이라는 뜻은 '기계를 심어 놓은 곳'이라는 느낌에서 나왔다고 봅니다.",
+    "plant의 핵심 이미지는 '땅에 심어 쑥쑥 자라나는 초록빛 식물 🌱'입니다."
+   ],
+   "meanings": [
+    "식물 (명사)",
+    "공장, 발전소 (명사)",
+    "심다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "We planted flowers in the garden.",
+     "ko": "우리는 정원에 꽃을 심었어요."
+    },
+    {
+     "en": "This plant needs sunlight to grow.",
+     "ko": "이 식물은 자라려면 햇빛이 필요해요."
+    },
+    {
+     "en": "My dad works at a car plant.",
+     "ko": "우리 아빠는 자동차 공장에서 일하세요."
+    },
+    {
+     "en": "She planted a tree for Arbor Day.",
+     "ko": "그녀는 식목일을 맞아 나무를 심었어요."
+    },
+    {
+     "en": "Water your plants every morning.",
+     "ko": "매일 아침 식물에 물을 줘."
+    },
+    {
+     "en": "The power plant provides electricity.",
+     "ko": "그 발전소는 전기를 공급해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "flower",
+     "ko": "꽃",
+     "en": "A red flower."
+    },
+    {
+     "type": "연관어",
+     "word": "tree",
+     "ko": "나무",
+     "en": "A tall tree."
+    },
+    {
+     "type": "연관어",
+     "word": "seed",
+     "ko": "씨앗",
+     "en": "Plant a seed."
+    },
+    {
+     "type": "연관어",
+     "word": "grow",
+     "ko": "자라다",
+     "en": "Grow fast."
+    },
+    {
+     "type": "연관어",
+     "word": "factory",
+     "ko": "공장",
+     "en": "A busy factory."
+    },
+    {
+     "type": "연관어",
+     "word": "garden",
+     "ko": "정원",
+     "en": "A flower garden."
+    }
+   ]
+  },
+  "296": {
+   "word": "bless",
+   "overview": [
+    "bless는 '축복하다'라는 뜻의 동사입니다.",
+    "God bless you.(신의 축복이 있기를.), bless the food(음식을 축복하다)처럼 씁니다.",
+    "Bless you!는 누군가 재채기했을 때 하는 인사말로도 아주 자주 씁니다.",
+    "명사 blessing(축복)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "wish good",
+     "en": "Wish good luck.",
+     "ko": "행운을 빌다."
+    },
+    {
+     "word": "protect",
+     "en": "Protect from harm.",
+     "ko": "해로움에서 보호하다."
+    }
+   ],
+   "etymology": [
+    "bless는 고대 영어 bletsian(피로 성스럽게 하다)에서 온 단어입니다.",
+    "blod(피)와 이어지는 뿌리로, 옛날 종교 의식에서 제단에 피를 뿌려 성스럽게 하던 데서 나왔다고 봅니다.",
+    "시간이 지나며 '신의 축복을 내리다'라는 지금의 뜻으로 부드러워졌습니다.",
+    "blessing(축복)도 같은 가족 단어입니다.",
+    "bless의 핵심 이미지는 '따뜻한 마음을 담아 축복을 빌어 주는 것 🙏'입니다."
+   ],
+   "meanings": [
+    "축복하다",
+    "(재난 등으로부터) 보호하다"
+   ],
+   "examples": [
+    {
+     "en": "The priest blessed the couple.",
+     "ko": "신부님이 그 부부를 축복해 주셨어요."
+    },
+    {
+     "en": "Bless you! Did you catch a cold?",
+     "ko": "몸조심해! 감기 걸렸어?"
+    },
+    {
+     "en": "May God bless your journey.",
+     "ko": "당신의 여정에 신의 축복이 있기를."
+    },
+    {
+     "en": "We are blessed with good friends.",
+     "ko": "우리는 좋은 친구들이 있어서 축복받았어요."
+    },
+    {
+     "en": "She counted her blessings every day.",
+     "ko": "그녀는 매일 감사할 일을 헤아렸어요."
+    },
+    {
+     "en": "The grandmother blessed her grandchildren.",
+     "ko": "할머니가 손주들을 축복해 주셨어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "파생어",
+     "word": "blessing",
+     "ko": "축복",
+     "en": "Count your blessings."
+    },
+    {
+     "type": "연관어",
+     "word": "pray",
+     "ko": "기도하다",
+     "en": "Pray for peace."
+    },
+    {
+     "type": "연관어",
+     "word": "protect",
+     "ko": "보호하다",
+     "en": "Protect us."
+    },
+    {
+     "type": "연관어",
+     "word": "grateful",
+     "ko": "고마워하는",
+     "en": "Feel grateful."
+    },
+    {
+     "type": "연관어",
+     "word": "lucky",
+     "ko": "운이 좋은",
+     "en": "Feel lucky."
+    },
+    {
+     "type": "연관어",
+     "word": "holy",
+     "ko": "거룩한",
+     "en": "A holy place."
+    }
+   ]
+  },
+  "663": {
+   "word": "crash",
+   "overview": [
+    "crash는 '충돌하다', '부딪치다'라는 뜻의 동사이자 '충돌', '추락'이라는 뜻의 명사입니다.",
+    "a car crash(자동차 충돌), the plane crashed(비행기가 추락했다)처럼 씁니다.",
+    "컴퓨터가 '다운되다'라는 뜻으로도 아주 자주 씁니다. My computer crashed.(내 컴퓨터가 다운됐어요.)",
+    "경제의 '폭락'이라는 뜻으로도 씁니다. a stock market crash(주식 시장 폭락)"
+   ],
+   "easy": [
+    {
+     "word": "collision",
+     "en": "A car collision.",
+     "ko": "자동차 충돌."
+    },
+    {
+     "word": "smash",
+     "en": "Smash into it.",
+     "ko": "그것에 부딪치다."
+    }
+   ],
+   "etymology": [
+    "crash는 1400년대쯤 영어에서 쓰인 말로, '와장창' 하는 소리를 흉내 낸 의성어라고 봅니다.",
+    "부딪치는 소리와 그 소리가 나는 사건을 함께 나타냈습니다.",
+    "지금은 자동차, 비행기 사고뿐 아니라 컴퓨터가 멈추는 것까지 두루 crash라고 합니다.",
+    "경제의 '폭락'도 갑자기 와르르 무너지는 느낌에서 이어졌습니다.",
+    "crash의 핵심 이미지는 '쾅! 하고 부딪치는 순간 💥'입니다."
+   ],
+   "meanings": [
+    "충돌하다, 부딪치다 (동사)",
+    "(컴퓨터가) 다운되다 (동사)",
+    "충돌, 추락 (명사)",
+    "(경제의) 폭락 (명사)"
+   ],
+   "examples": [
+    {
+     "en": "The car crashed into a tree.",
+     "ko": "그 차는 나무에 충돌했어요."
+    },
+    {
+     "en": "My computer crashed while I was working.",
+     "ko": "일하는 중에 내 컴퓨터가 다운됐어요."
+    },
+    {
+     "en": "The plane crash was reported on the news.",
+     "ko": "그 비행기 추락 사고가 뉴스에 보도됐어요."
+    },
+    {
+     "en": "There was a loud crash in the kitchen.",
+     "ko": "부엌에서 쿵 하는 큰 소리가 났어요."
+    },
+    {
+     "en": "The stock market crashed suddenly.",
+     "ko": "주식 시장이 갑자기 폭락했어요."
+    },
+    {
+     "en": "Two cars crashed at the intersection.",
+     "ko": "교차로에서 차 두 대가 충돌했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "collision",
+     "ko": "충돌",
+     "en": "A head-on collision."
+    },
+    {
+     "type": "연관어",
+     "word": "accident",
+     "ko": "사고",
+     "en": "A car accident."
+    },
+    {
+     "type": "연관어",
+     "word": "smash",
+     "ko": "부딪치다",
+     "en": "Smash the glass."
+    },
+    {
+     "type": "연관어",
+     "word": "wreck",
+     "ko": "잔해, 망가뜨리다",
+     "en": "A shipwreck."
+    },
+    {
+     "type": "연관어",
+     "word": "computer",
+     "ko": "컴퓨터",
+     "en": "A slow computer."
+    },
+    {
+     "type": "연관어",
+     "word": "loud",
+     "ko": "시끄러운",
+     "en": "A loud noise."
+    }
+   ]
+  },
+  "2403": {
+   "word": "silver",
+   "overview": [
+    "silver는 '은'이라는 뜻의 명사이자 '은빛의'라는 뜻의 형용사입니다.",
+    "a silver ring(은반지), silver hair(은발)처럼 씁니다.",
+    "'은메달'이라는 뜻으로도 씁니다. win silver(은메달을 따다)",
+    "silverware(은식기, 식기류)처럼 다른 말과 함께도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "gray",
+     "en": "Gray hair.",
+     "ko": "회색 머리."
+    },
+    {
+     "word": "gold",
+     "en": "Gold and silver.",
+     "ko": "금과 은."
+    }
+   ],
+   "etymology": [
+    "silver는 고대 영어 seolfor(은)에서 온 단어입니다.",
+    "독일어 Silber(은)와 같은 뿌리입니다.",
+    "정확한 더 옛 뿌리는 잘 알려져 있지 않은, 아주 오래된 게르만 말입니다.",
+    "라틴어 argentum(은)과는 뿌리가 다른데, 아르헨티나(Argentina)라는 나라 이름은 이 라틴어에서 왔습니다.",
+    "silver의 핵심 이미지는 '달빛처럼 은은하게 빛나는 은색 🥈'입니다."
+   ],
+   "meanings": [
+    "은 (명사)",
+    "은빛의, 은색의 (형용사)",
+    "은메달 (명사)"
+   ],
+   "examples": [
+    {
+     "en": "She wore a beautiful silver necklace.",
+     "ko": "그녀는 아름다운 은목걸이를 하고 있었어요."
+    },
+    {
+     "en": "He has silver hair now.",
+     "ko": "그는 이제 은발이에요."
+    },
+    {
+     "en": "The team won a silver medal.",
+     "ko": "그 팀은 은메달을 땄어요."
+    },
+    {
+     "en": "Silver is a precious metal.",
+     "ko": "은은 귀금속이에요."
+    },
+    {
+     "en": "The car was painted a shiny silver.",
+     "ko": "그 차는 반짝이는 은색으로 칠해졌어요."
+    },
+    {
+     "en": "Grandma's spoons are made of silver.",
+     "ko": "할머니의 숟가락은 은으로 만들어졌어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "gold",
+     "ko": "금",
+     "en": "A gold ring."
+    },
+    {
+     "type": "연관어",
+     "word": "metal",
+     "ko": "금속",
+     "en": "A shiny metal."
+    },
+    {
+     "type": "연관어",
+     "word": "medal",
+     "ko": "메달",
+     "en": "Win a medal."
+    },
+    {
+     "type": "연관어",
+     "word": "gray",
+     "ko": "회색",
+     "en": "Gray clouds."
+    },
+    {
+     "type": "연관어",
+     "word": "jewelry",
+     "ko": "보석류",
+     "en": "Fine jewelry."
+    },
+    {
+     "type": "연관어",
+     "word": "shine",
+     "ko": "빛나다",
+     "en": "Shine bright."
+    }
+   ]
+  },
+  "741": {
+   "word": "defense",
+   "overview": [
+    "defense는 '방어', '수비'라는 뜻의 명사입니다.",
+    "the country's defense(나라의 방위), play good defense(수비를 잘하다)처럼 씁니다.",
+    "법정에서 '변론', '피고 측'이라는 뜻으로도 씁니다.",
+    "동사 defend(방어하다)에서 나온 명사입니다. 영국식 철자는 defence입니다."
+   ],
+   "easy": [
+    {
+     "word": "protection",
+     "en": "Provide protection.",
+     "ko": "보호를 제공하다."
+    },
+    {
+     "word": "guard",
+     "en": "A strong guard.",
+     "ko": "강한 수비."
+    }
+   ],
+   "etymology": [
+    "defense는 라틴어 defensa(막아 냄, 방어)에서 온 단어입니다.",
+    "de(멀리, 아래로)와 fendere(치다, 밀어내다)가 합쳐진 말입니다.",
+    "offense(공격, '앞을 향해 치다')와 짝을 이루는 반대말입니다.",
+    "'적을 밀어내 자신을 지키다'라는 뜻이 그대로 이어져 왔습니다.",
+    "defense의 핵심 이미지는 '공격을 막아 내는 튼튼한 방어벽 🛡️'입니다."
+   ],
+   "meanings": [
+    "방어, 수비",
+    "(법정) 변론, 피고 측"
+   ],
+   "examples": [
+    {
+     "en": "Our team played strong defense.",
+     "ko": "우리 팀은 강한 수비를 펼쳤어요."
+    },
+    {
+     "en": "The country spends a lot on defense.",
+     "ko": "그 나라는 방위에 많은 돈을 써요."
+    },
+    {
+     "en": "The lawyer prepared a strong defense.",
+     "ko": "변호사는 강력한 변론을 준비했어요."
+    },
+    {
+     "en": "She raised her hands in self-defense.",
+     "ko": "그녀는 자기방어로 손을 들었어요."
+    },
+    {
+     "en": "The castle walls were built for defense.",
+     "ko": "그 성벽은 방어를 위해 지어졌어요."
+    },
+    {
+     "en": "The soldiers defended the border with skill.",
+     "ko": "군인들은 능숙하게 국경을 방어했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "파생어",
+     "word": "defend",
+     "ko": "방어하다",
+     "en": "Defend the goal."
+    },
+    {
+     "type": "반의어",
+     "word": "offense",
+     "ko": "공격",
+     "en": "A strong offense."
+    },
+    {
+     "type": "연관어",
+     "word": "protect",
+     "ko": "보호하다",
+     "en": "Protect the city."
+    },
+    {
+     "type": "연관어",
+     "word": "attack",
+     "ko": "공격",
+     "en": "A sudden attack."
+    },
+    {
+     "type": "연관어",
+     "word": "army",
+     "ko": "군대",
+     "en": "The whole army."
+    },
+    {
+     "type": "연관어",
+     "word": "lawyer",
+     "ko": "변호사",
+     "en": "Hire a lawyer."
+    }
+   ]
+  },
+  "2739": {
+   "word": "toilet",
+   "overview": [
+    "toilet은 '화장실', '변기'라는 뜻의 명사입니다.",
+    "use the toilet(화장실을 쓰다), flush the toilet(변기 물을 내리다)처럼 씁니다.",
+    "영국에서 주로 쓰고, 미국에서는 bathroom, restroom을 더 자주 씁니다.",
+    "toilet paper(화장지)처럼 다른 말과 함께도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "bathroom",
+     "en": "Clean the bathroom.",
+     "ko": "화장실을 청소해."
+    },
+    {
+     "word": "restroom",
+     "en": "Use the restroom.",
+     "ko": "화장실을 쓰다."
+    }
+   ],
+   "etymology": [
+    "toilet은 프랑스어 toilette(작은 천, 화장대)에서 온 단어입니다.",
+    "옷을 입고 몸단장할 때 쓰던 작은 천을 뜻했습니다.",
+    "몸단장하던 방이 나중에 씻고 볼일 보는 방을 뜻하게 되었습니다.",
+    "toiletries(세면도구)도 같은 뿌리에서 나온 말입니다.",
+    "toilet의 핵심 이미지는 '급할 때 찾게 되는 화장실 🚻'입니다."
+   ],
+   "meanings": [
+    "화장실",
+    "변기"
+   ],
+   "examples": [
+    {
+     "en": "Where is the toilet, please?",
+     "ko": "화장실이 어디예요?"
+    },
+    {
+     "en": "Please flush the toilet after use.",
+     "ko": "사용 후 변기 물을 내려 주세요."
+    },
+    {
+     "en": "The toilet in this hotel is very clean.",
+     "ko": "이 호텔의 화장실은 아주 깨끗해요."
+    },
+    {
+     "en": "There's no toilet paper left.",
+     "ko": "화장지가 다 떨어졌어요."
+    },
+    {
+     "en": "He fixed the leaking toilet.",
+     "ko": "그는 물이 새는 변기를 고쳤어요."
+    },
+    {
+     "en": "Wash your hands after using the toilet.",
+     "ko": "화장실을 사용한 후에 손을 씻어."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "bathroom",
+     "ko": "화장실 (미국)",
+     "en": "A clean bathroom."
+    },
+    {
+     "type": "유의어",
+     "word": "restroom",
+     "ko": "화장실",
+     "en": "Public restroom."
+    },
+    {
+     "type": "연관어",
+     "word": "sink",
+     "ko": "세면대",
+     "en": "Wash at the sink."
+    },
+    {
+     "type": "연관어",
+     "word": "soap",
+     "ko": "비누",
+     "en": "Use soap."
+    },
+    {
+     "type": "연관어",
+     "word": "flush",
+     "ko": "물을 내리다",
+     "en": "Flush it."
+    },
+    {
+     "type": "연관어",
+     "word": "clean",
+     "ko": "청소하다",
+     "en": "Clean well."
+    }
+   ]
+  },
+  "965": {
+   "word": "event",
+   "overview": [
+    "event는 '사건', '행사'라는 뜻의 명사입니다.",
+    "a special event(특별한 행사), a historic event(역사적인 사건)처럼 씁니다.",
+    "스포츠의 '종목'이라는 뜻으로도 씁니다. a track and field event(육상 종목)",
+    "in the event of는 '~의 경우에는'이라는 뜻의 표현입니다."
+   ],
+   "easy": [
+    {
+     "word": "happening",
+     "en": "A strange happening.",
+     "ko": "이상한 일."
+    },
+    {
+     "word": "occasion",
+     "en": "A special occasion.",
+     "ko": "특별한 경우."
+    }
+   ],
+   "etymology": [
+    "event는 라틴어 eventus(결과, 일어난 일)에서 온 단어입니다.",
+    "e(밖으로)와 venire(오다)가 합쳐진 말입니다.",
+    "adventure(모험), convention(관습, 협약)도 venire에서 나온 같은 가족입니다.",
+    "'일어나서 밖으로 드러난 일'이라는 뜻이 '사건', '행사'로 이어졌습니다.",
+    "event의 핵심 이미지는 '기억에 남는 특별한 일이 일어나는 순간 🎉'입니다."
+   ],
+   "meanings": [
+    "사건, 일",
+    "행사",
+    "(스포츠) 종목"
+   ],
+   "examples": [
+    {
+     "en": "The school held a special event today.",
+     "ko": "학교에서 오늘 특별한 행사가 열렸어요."
+    },
+    {
+     "en": "It was a historic event for our country.",
+     "ko": "그건 우리나라에 역사적인 사건이었어요."
+    },
+    {
+     "en": "Swimming is my favorite event.",
+     "ko": "수영은 내가 가장 좋아하는 종목이에요."
+    },
+    {
+     "en": "We are planning a charity event.",
+     "ko": "우리는 자선 행사를 계획하고 있어요."
+    },
+    {
+     "en": "In the event of rain, we'll move inside.",
+     "ko": "비가 올 경우에는 안으로 옮길 거예요."
+    },
+    {
+     "en": "The wedding was a joyful event.",
+     "ko": "그 결혼식은 기쁨 넘치는 행사였어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "occasion",
+     "ko": "경우, 행사",
+     "en": "A special occasion."
+    },
+    {
+     "type": "유의어",
+     "word": "happening",
+     "ko": "사건",
+     "en": "A strange happening."
+    },
+    {
+     "type": "연관어",
+     "word": "celebrate",
+     "ko": "축하하다",
+     "en": "Celebrate the win."
+    },
+    {
+     "type": "연관어",
+     "word": "party",
+     "ko": "파티",
+     "en": "A birthday party."
+    },
+    {
+     "type": "연관어",
+     "word": "history",
+     "ko": "역사",
+     "en": "World history."
+    },
+    {
+     "type": "연관어",
+     "word": "schedule",
+     "ko": "일정",
+     "en": "A busy schedule."
+    }
+   ]
+  },
+  "2369": {
+   "word": "shape",
+   "overview": [
+    "shape는 '모양'이라는 뜻의 명사이자 '모양을 만들다'라는 뜻의 동사입니다.",
+    "a round shape(둥근 모양), the shape of a heart(하트 모양)처럼 씁니다.",
+    "get in shape(몸 상태를 좋게 만들다)처럼 '건강 상태'를 뜻하기도 합니다.",
+    "동사로는 '형성하다', '만들어 가다'라는 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "form",
+     "en": "Take form.",
+     "ko": "형태를 갖추다."
+    },
+    {
+     "word": "figure",
+     "en": "A round figure.",
+     "ko": "둥근 형태."
+    }
+   ],
+   "etymology": [
+    "shape는 고대 영어 sceapan(만들다, 형성하다)에서 온 단어입니다.",
+    "'무언가를 빚어 만드는 행위'를 뜻하던 말이었습니다.",
+    "만들어진 결과인 '모양'이라는 명사 뜻도 함께 이어졌습니다.",
+    "landscape(풍경, '땅의 모양')도 같은 가족 단어입니다.",
+    "shape의 핵심 이미지는 '점토를 빚어 만드는 다양한 모양 🔺'입니다."
+   ],
+   "meanings": [
+    "모양, 형태 (명사)",
+    "몸매, 건강 상태 (명사)",
+    "모양을 만들다, 형성하다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "What shape is this cookie?",
+     "ko": "이 쿠키는 무슨 모양이에요?"
+    },
+    {
+     "en": "Clouds can take many shapes.",
+     "ko": "구름은 여러 모양을 취할 수 있어요."
+    },
+    {
+     "en": "He exercises to stay in shape.",
+     "ko": "그는 몸 상태를 좋게 유지하려고 운동해요."
+    },
+    {
+     "en": "Her ideas shaped the whole project.",
+     "ko": "그녀의 생각이 프로젝트 전체를 형성했어요."
+    },
+    {
+     "en": "The clay was shaped into a pot.",
+     "ko": "그 점토는 항아리 모양으로 빚어졌어요."
+    },
+    {
+     "en": "This box has a square shape.",
+     "ko": "이 상자는 정사각형 모양이에요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "form",
+     "ko": "형태",
+     "en": "Take shape."
+    },
+    {
+     "type": "연관어",
+     "word": "circle",
+     "ko": "원",
+     "en": "A perfect circle."
+    },
+    {
+     "type": "연관어",
+     "word": "square",
+     "ko": "정사각형",
+     "en": "A blue square."
+    },
+    {
+     "type": "연관어",
+     "word": "figure",
+     "ko": "형태, 몸매",
+     "en": "A slim figure."
+    },
+    {
+     "type": "연관어",
+     "word": "form",
+     "ko": "형성하다",
+     "en": "Form a group."
+    },
+    {
+     "type": "연관어",
+     "word": "healthy",
+     "ko": "건강한",
+     "en": "Stay healthy."
+    }
+   ]
+  },
+  "2274": {
+   "word": "royal",
+   "overview": [
+    "royal은 '왕실의', '왕족의'라는 뜻의 형용사입니다.",
+    "the royal family(왕실 가족), a royal palace(왕궁)처럼 씁니다.",
+    "'위엄 있는', '멋진'이라는 비유적인 뜻으로도 씁니다.",
+    "명사 royalty(왕족, 저작권 사용료)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "king",
+     "en": "A wise king.",
+     "ko": "지혜로운 왕."
+    },
+    {
+     "word": "queen",
+     "en": "The queen's crown.",
+     "ko": "여왕의 왕관."
+    }
+   ],
+   "etymology": [
+    "royal은 옛 프랑스어 roial(왕의)에서 온 단어입니다.",
+    "라틴어 regalis(왕에 관한)에서 나온 말로, regal(위엄 있는), rex(왕)와 같은 가족입니다.",
+    "'왕에게 속하는', '왕에 관련된'이라는 뜻이 그대로 이어져 왔습니다.",
+    "royalty(왕족), regal(위엄 있는)도 같은 뿌리에서 나온 단어들입니다.",
+    "royal의 핵심 이미지는 '금빛 왕관을 쓴 왕실의 위엄 👑'입니다."
+   ],
+   "meanings": [
+    "왕실의, 왕족의",
+    "위엄 있는, 성대한"
+   ],
+   "examples": [
+    {
+     "en": "The royal family lives in the palace.",
+     "ko": "왕실 가족은 궁전에 살아요."
+    },
+    {
+     "en": "We saw the royal guards at the castle.",
+     "ko": "우리는 성에서 왕실 근위병을 봤어요."
+    },
+    {
+     "en": "She wore a royal blue dress.",
+     "ko": "그녀는 짙은 파란색 드레스를 입었어요."
+    },
+    {
+     "en": "The wedding was a royal celebration.",
+     "ko": "그 결혼식은 성대한 축하 행사였어요."
+    },
+    {
+     "en": "He belongs to the royal family of the country.",
+     "ko": "그는 그 나라의 왕족에 속해요."
+    },
+    {
+     "en": "The crown is a symbol of royal power.",
+     "ko": "왕관은 왕권의 상징이에요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "king",
+     "ko": "왕",
+     "en": "A powerful king."
+    },
+    {
+     "type": "연관어",
+     "word": "queen",
+     "ko": "여왕",
+     "en": "The queen's palace."
+    },
+    {
+     "type": "연관어",
+     "word": "prince",
+     "ko": "왕자",
+     "en": "A brave prince."
+    },
+    {
+     "type": "연관어",
+     "word": "crown",
+     "ko": "왕관",
+     "en": "Wear a crown."
+    },
+    {
+     "type": "연관어",
+     "word": "palace",
+     "ko": "궁전",
+     "en": "A grand palace."
+    },
+    {
+     "type": "연관어",
+     "word": "throne",
+     "ko": "왕좌",
+     "en": "Sit on the throne."
+    }
+   ]
+  },
+  "1135": {
+   "word": "fortune",
+   "overview": [
+    "fortune은 '행운', '운명'이라는 뜻의 명사입니다.",
+    "have good fortune(행운을 얻다), tell your fortune(운세를 봐 주다)처럼 씁니다.",
+    "'재산', '큰돈'이라는 뜻으로도 씁니다. make a fortune(큰돈을 벌다)",
+    "형용사 fortunate(운이 좋은)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "luck",
+     "en": "Good luck!",
+     "ko": "행운을 빌어!"
+    },
+    {
+     "word": "wealth",
+     "en": "Great wealth.",
+     "ko": "엄청난 재산."
+    }
+   ],
+   "etymology": [
+    "fortune은 라틴어 fortuna(운, 운명)에서 온 단어입니다.",
+    "옛 로마 사람들은 운명의 여신 Fortuna를 믿었습니다.",
+    "그 여신의 이름에서 '운, 운명'이라는 뜻의 단어가 나왔습니다.",
+    "fortunate(운이 좋은), misfortune(불운)도 같은 가족 단어입니다.",
+    "fortune의 핵심 이미지는 '운명의 수레바퀴가 가져다주는 행운 🍀'입니다."
+   ],
+   "meanings": [
+    "행운, 운",
+    "재산, 큰돈",
+    "운명"
+   ],
+   "examples": [
+    {
+     "en": "We had good fortune on our trip.",
+     "ko": "우리는 여행에서 행운이 따랐어요."
+    },
+    {
+     "en": "She made a fortune selling handmade crafts.",
+     "ko": "그녀는 수제 공예품을 팔아 큰돈을 벌었어요."
+    },
+    {
+     "en": "The fortune teller predicted a happy future.",
+     "ko": "그 점쟁이는 행복한 미래를 예언했어요."
+    },
+    {
+     "en": "His family has a large fortune.",
+     "ko": "그의 가족은 많은 재산을 가지고 있어요."
+    },
+    {
+     "en": "Fortune smiled on us that day.",
+     "ko": "그날 우리에게 행운이 따랐어요."
+    },
+    {
+     "en": "By good fortune, we found the missing dog.",
+     "ko": "운 좋게도 우리는 잃어버린 개를 찾았어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "luck",
+     "ko": "행운",
+     "en": "Good luck."
+    },
+    {
+     "type": "파생어",
+     "word": "fortunate",
+     "ko": "운이 좋은",
+     "en": "A fortunate event."
+    },
+    {
+     "type": "반의어",
+     "word": "misfortune",
+     "ko": "불운",
+     "en": "A great misfortune."
+    },
+    {
+     "type": "연관어",
+     "word": "wealth",
+     "ko": "부, 재산",
+     "en": "Great wealth."
+    },
+    {
+     "type": "연관어",
+     "word": "destiny",
+     "ko": "운명",
+     "en": "Believe in destiny."
+    },
+    {
+     "type": "연관어",
+     "word": "rich",
+     "ko": "부유한",
+     "en": "A rich family."
+    }
+   ]
+  },
+  "199": {
+   "word": "avoid",
+   "overview": [
+    "avoid는 '피하다', '회피하다'라는 뜻의 동사입니다.",
+    "avoid danger(위험을 피하다), avoid eye contact(눈을 마주치는 것을 피하다)처럼 씁니다.",
+    "avoid + ~ing 형태로 씁니다. avoid making mistakes(실수하는 것을 피하다)",
+    "명사 avoidance(회피)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "stay away from",
+     "en": "Stay away from danger.",
+     "ko": "위험에서 멀리하다."
+    },
+    {
+     "word": "dodge",
+     "en": "Dodge a ball.",
+     "ko": "공을 피하다."
+    }
+   ],
+   "etymology": [
+    "avoid는 옛 프랑스어 evuider(비우다, 없애다)에서 온 단어입니다.",
+    "e(밖으로)와 vuider(비우다)가 합쳐진 말입니다.",
+    "void(빈, 무효의)와도 같은 뿌리를 가진 단어입니다.",
+    "'무언가를 자신의 길에서 비워 없애다'라는 뜻이 '피하다'로 이어졌습니다.",
+    "avoid의 핵심 이미지는 '위험을 슬쩍 돌아서 피해 가는 것 🚧'입니다."
+   ],
+   "meanings": [
+    "피하다, 회피하다"
+   ],
+   "examples": [
+    {
+     "en": "Try to avoid making the same mistake.",
+     "ko": "같은 실수를 피하려고 노력해."
+    },
+    {
+     "en": "We should avoid crowded places these days.",
+     "ko": "우리는 요즘 사람 많은 곳을 피해야 해요."
+    },
+    {
+     "en": "He avoided answering the question.",
+     "ko": "그는 그 질문에 답하는 것을 피했어요."
+    },
+    {
+     "en": "She avoided eye contact with the stranger.",
+     "ko": "그녀는 낯선 사람과 눈을 마주치는 것을 피했어요."
+    },
+    {
+     "en": "Drive carefully to avoid an accident.",
+     "ko": "사고를 피하려면 조심해서 운전해."
+    },
+    {
+     "en": "It's hard to avoid all risks in life.",
+     "ko": "인생의 모든 위험을 피하기는 어려워요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "dodge",
+     "ko": "피하다",
+     "en": "Dodge the ball."
+    },
+    {
+     "type": "연관어",
+     "word": "danger",
+     "ko": "위험",
+     "en": "In danger."
+    },
+    {
+     "type": "연관어",
+     "word": "prevent",
+     "ko": "예방하다",
+     "en": "Prevent an accident."
+    },
+    {
+     "type": "연관어",
+     "word": "escape",
+     "ko": "탈출하다",
+     "en": "Escape danger."
+    },
+    {
+     "type": "연관어",
+     "word": "risk",
+     "ko": "위험",
+     "en": "Take a risk."
+    },
+    {
+     "type": "연관어",
+     "word": "careful",
+     "ko": "조심스러운",
+     "en": "Be careful."
+    }
+   ]
+  },
+  "1032": {
+   "word": "familiar",
+   "overview": [
+    "familiar는 '익숙한', '낯익은'이라는 뜻의 형용사입니다.",
+    "a familiar face(낯익은 얼굴), be familiar with(~에 익숙하다)처럼 씁니다.",
+    "'흔한', '평범한'이라는 뜻으로도 씁니다.",
+    "명사 family(가족)와 같은 뿌리를 가진 단어입니다."
+   ],
+   "easy": [
+    {
+     "word": "known",
+     "en": "A known place.",
+     "ko": "알려진 장소."
+    },
+    {
+     "word": "usual",
+     "en": "The usual routine.",
+     "ko": "평소의 일과."
+    }
+   ],
+   "etymology": [
+    "familiar는 라틴어 familiaris(가족의, 친한)에서 온 단어입니다.",
+    "familia(가족, 가정)에서 나온 말로, family(가족)와 같은 가족 단어입니다.",
+    "'가족처럼 가깝고 편안한'이라는 뜻이 '익숙한'으로 넓어졌습니다.",
+    "familiarize(익숙하게 하다)도 같은 뿌리에서 나온 단어입니다.",
+    "familiar의 핵심 이미지는 '오래 봐 와서 낯설지 않은 익숙한 얼굴 👋'입니다."
+   ],
+   "meanings": [
+    "익숙한, 낯익은",
+    "흔한, 잘 알려진"
+   ],
+   "examples": [
+    {
+     "en": "That song sounds familiar.",
+     "ko": "그 노래는 낯익게 들려요."
+    },
+    {
+     "en": "I'm familiar with this neighborhood.",
+     "ko": "나는 이 동네에 익숙해요."
+    },
+    {
+     "en": "She saw a familiar face in the crowd.",
+     "ko": "그녀는 인파 속에서 낯익은 얼굴을 봤어요."
+    },
+    {
+     "en": "This is a familiar problem for many students.",
+     "ko": "이건 많은 학생들에게 익숙한 문제예요."
+    },
+    {
+     "en": "Are you familiar with this software?",
+     "ko": "이 소프트웨어에 익숙해요?"
+    },
+    {
+     "en": "The old house felt warm and familiar.",
+     "ko": "그 오래된 집은 따뜻하고 익숙하게 느껴졌어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "known",
+     "ko": "알려진",
+     "en": "A known fact."
+    },
+    {
+     "type": "반의어",
+     "word": "strange",
+     "ko": "낯선",
+     "en": "A strange place."
+    },
+    {
+     "type": "연관어",
+     "word": "familiar with",
+     "ko": "~에 익숙한",
+     "en": "Familiar with rules."
+    },
+    {
+     "type": "연관어",
+     "word": "usual",
+     "ko": "평소의",
+     "en": "The usual place."
+    },
+    {
+     "type": "연관어",
+     "word": "know",
+     "ko": "알다",
+     "en": "Know well."
+    },
+    {
+     "type": "연관어",
+     "word": "recognize",
+     "ko": "알아보다",
+     "en": "Recognize a face."
+    }
+   ]
+  },
+  "81": {
+   "word": "airport",
+   "overview": [
+    "airport는 '공항'이라는 뜻의 명사입니다. 비행기가 뜨고 내리는 곳입니다.",
+    "at the airport(공항에서), go to the airport(공항에 가다)처럼 씁니다.",
+    "air(공기, 항공)와 port(항구)가 합쳐진 말이라서 뜻을 짐작하기 쉽습니다.",
+    "국제공항은 international airport라고 합니다."
+   ],
+   "easy": [
+    {
+     "word": "airplane",
+     "en": "A big airplane.",
+     "ko": "큰 비행기."
+    },
+    {
+     "word": "flight",
+     "en": "A long flight.",
+     "ko": "긴 비행."
+    }
+   ],
+   "etymology": [
+    "airport는 air(공기, 항공)와 port(항구)가 합쳐진 말입니다.",
+    "port는 라틴어 portus(항구)에서 온 말로, 배가 드나드는 곳이었습니다.",
+    "비행기가 발명되자, 하늘길의 배가 드나드는 곳이라는 뜻에서 airport라는 이름이 생겼습니다.",
+    "1900년대 초에 만들어진 비교적 새로운 합성어입니다.",
+    "airport의 핵심 이미지는 '비행기가 바쁘게 뜨고 내리는 커다란 공항 ✈️'입니다."
+   ],
+   "meanings": [
+    "공항"
+   ],
+   "examples": [
+    {
+     "en": "We need to be at the airport two hours early.",
+     "ko": "우리는 공항에 두 시간 일찍 도착해야 해요."
+    },
+    {
+     "en": "The airport was very crowded today.",
+     "ko": "오늘 공항은 아주 붐볐어요."
+    },
+    {
+     "en": "My uncle works at the airport.",
+     "ko": "우리 삼촌은 공항에서 일하세요."
+    },
+    {
+     "en": "We took a taxi to the airport.",
+     "ko": "우리는 택시를 타고 공항에 갔어요."
+    },
+    {
+     "en": "The airport has many shops and restaurants.",
+     "ko": "그 공항에는 상점과 식당이 많아요."
+    },
+    {
+     "en": "They picked us up at the airport.",
+     "ko": "그들은 공항으로 우리를 데리러 왔어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "airplane",
+     "ko": "비행기",
+     "en": "Board the airplane."
+    },
+    {
+     "type": "연관어",
+     "word": "flight",
+     "ko": "항공편",
+     "en": "Book a flight."
+    },
+    {
+     "type": "연관어",
+     "word": "gate",
+     "ko": "탑승구",
+     "en": "Gate number five."
+    },
+    {
+     "type": "연관어",
+     "word": "pilot",
+     "ko": "조종사",
+     "en": "The airplane pilot."
+    },
+    {
+     "type": "연관어",
+     "word": "luggage",
+     "ko": "짐",
+     "en": "Heavy luggage."
+    },
+    {
+     "type": "연관어",
+     "word": "passport",
+     "ko": "여권",
+     "en": "Show your passport."
+    }
+   ]
+  },
+  "1203": {
+   "word": "giant",
+   "overview": [
+    "giant는 '거대한'이라는 뜻의 형용사이자 '거인'이라는 뜻의 명사입니다.",
+    "a giant tree(거대한 나무)처럼 씁니다.",
+    "동화에 나오는 '거인'이라는 뜻으로도 씁니다.",
+    "'업계의 큰손'을 비유해서도 씁니다. a tech giant(거대 기술 기업)"
+   ],
+   "easy": [
+    {
+     "word": "huge",
+     "en": "A huge whale.",
+     "ko": "거대한 고래."
+    },
+    {
+     "word": "big",
+     "en": "A very big house.",
+     "ko": "아주 큰 집."
+    }
+   ],
+   "etymology": [
+    "giant는 그리스어 gigas(거인)에서 온 단어입니다.",
+    "옛 그리스 신화에는 신들과 싸운 거대한 거인들이 나옵니다.",
+    "gigantic(거대한)도 같은 뿌리에서 나온 단어입니다.",
+    "'신화 속 거인처럼 아주 큰'이라는 뜻이 그대로 이어져 왔습니다.",
+    "giant의 핵심 이미지는 '동화 속에 나오는 커다란 거인 🗻'입니다."
+   ],
+   "meanings": [
+    "거대한 (형용사)",
+    "거인 (명사)",
+    "(업계의) 대기업, 강자 (명사)"
+   ],
+   "examples": [
+    {
+     "en": "There was a giant tree in the forest.",
+     "ko": "숲속에 거대한 나무가 있었어요."
+    },
+    {
+     "en": "In the story, the giant lived in the mountains.",
+     "ko": "이야기에서 그 거인은 산속에 살았어요."
+    },
+    {
+     "en": "This is one of the giant companies in tech.",
+     "ko": "이건 기술 업계의 대기업 중 하나예요."
+    },
+    {
+     "en": "We saw a giant statue in the city square.",
+     "ko": "우리는 도시 광장에서 거대한 조각상을 봤어요."
+    },
+    {
+     "en": "The giant panda is a famous animal in China.",
+     "ko": "자이언트 판다는 중국의 유명한 동물이에요."
+    },
+    {
+     "en": "Jack climbed the beanstalk and met a giant.",
+     "ko": "잭은 콩나무를 올라가 거인을 만났어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "huge",
+     "ko": "거대한",
+     "en": "A huge whale."
+    },
+    {
+     "type": "유의어",
+     "word": "enormous",
+     "ko": "엄청난",
+     "en": "An enormous rock."
+    },
+    {
+     "type": "반의어",
+     "word": "tiny",
+     "ko": "아주 작은",
+     "en": "A tiny ant."
+    },
+    {
+     "type": "연관어",
+     "word": "monster",
+     "ko": "괴물",
+     "en": "A scary monster."
+    },
+    {
+     "type": "연관어",
+     "word": "huge",
+     "ko": "거대한",
+     "en": "A huge building."
+    },
+    {
+     "type": "연관어",
+     "word": "tall",
+     "ko": "키가 큰",
+     "en": "A tall tower."
+    }
+   ]
+  },
+  "2306": {
+   "word": "scare",
+   "overview": [
+    "scare는 '겁주다', '무섭게 하다'라는 뜻의 동사이자 '놀람', '공포'라는 뜻의 명사입니다.",
+    "scare someone(누군가를 겁주다), a big scare(큰 놀람)처럼 씁니다.",
+    "형용사 scared(무서워하는), scary(무서운)를 구별해서 써야 합니다.",
+    "scare away/off는 '겁줘서 쫓아내다'라는 뜻입니다."
+   ],
+   "easy": [
+    {
+     "word": "frighten",
+     "en": "Frighten easily.",
+     "ko": "쉽게 겁먹다."
+    },
+    {
+     "word": "afraid",
+     "en": "I'm afraid.",
+     "ko": "나는 무서워."
+    }
+   ],
+   "etymology": [
+    "scare는 옛 노르드어(바이킹의 말) skirra(겁먹게 하다, 놀라게 하다)에서 온 단어입니다.",
+    "'갑작스러운 위험에 놀라게 하다'라는 뜻이 그대로 이어져 왔습니다.",
+    "scared(무서워하는)와 scary(무서운)는 각각 사람의 느낌과 무섭게 만드는 것에 씁니다.",
+    "scarecrow(허수아비)는 '까마귀(crow)를 겁주는 것'이라는 뜻입니다.",
+    "scare의 핵심 이미지는 '깜짝 놀라 소름이 돋는 순간 😱'입니다."
+   ],
+   "meanings": [
+    "겁주다, 무섭게 하다 (동사)",
+    "(scare away) 겁줘서 쫓아내다",
+    "놀람, 공포 (명사)"
+   ],
+   "examples": [
+    {
+     "en": "The loud noise scared me.",
+     "ko": "그 큰 소리가 나를 놀라게 했어요."
+    },
+    {
+     "en": "Don't scare your little sister.",
+     "ko": "네 여동생을 겁주지 마."
+    },
+    {
+     "en": "We had quite a scare last night.",
+     "ko": "우리는 어젯밤에 꽤 놀랐어요."
+    },
+    {
+     "en": "The dog scared away the birds.",
+     "ko": "개가 새들을 겁줘서 쫓아냈어요."
+    },
+    {
+     "en": "That movie is really scary.",
+     "ko": "그 영화는 정말 무서워요."
+    },
+    {
+     "en": "She looked scared when the lights went out.",
+     "ko": "불이 꺼지자 그녀는 무서워 보였어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "frighten",
+     "ko": "무섭게 하다",
+     "en": "Frighten a child."
+    },
+    {
+     "type": "파생어",
+     "word": "scary",
+     "ko": "무서운",
+     "en": "A scary story."
+    },
+    {
+     "type": "파생어",
+     "word": "scared",
+     "ko": "무서워하는",
+     "en": "Feel scared."
+    },
+    {
+     "type": "연관어",
+     "word": "afraid",
+     "ko": "두려워하는",
+     "en": "Afraid of dogs."
+    },
+    {
+     "type": "연관어",
+     "word": "fear",
+     "ko": "두려움",
+     "en": "Fear of heights."
+    },
+    {
+     "type": "연관어",
+     "word": "surprise",
+     "ko": "놀람",
+     "en": "A big surprise."
+    }
+   ]
+  },
+  "1937": {
+   "word": "period",
+   "overview": [
+    "period는 '시기', '기간'이라는 뜻의 명사입니다.",
+    "a long period of time(오랜 기간), the Joseon period(조선 시대)처럼 씁니다.",
+    "학교의 '교시'라는 뜻으로도 씁니다. math period(수학 시간)",
+    "미국식 영어에서 문장 끝의 '마침표'라는 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "time",
+     "en": "A short time.",
+     "ko": "짧은 시간."
+    },
+    {
+     "word": "era",
+     "en": "A new era.",
+     "ko": "새로운 시대."
+    }
+   ],
+   "etymology": [
+    "period는 그리스어 periodos(주위를 도는 길, 순환)에서 온 단어입니다.",
+    "peri(주위에)와 hodos(길)가 합쳐진 말입니다.",
+    "'한 바퀴 돌아서 끝나는 시간의 흐름'이라는 뜻에서 '기간', '시기'가 되었습니다.",
+    "문장의 '마침표'도 한 문장이 '끝나는 지점'이라는 뜻과 이어집니다.",
+    "period의 핵심 이미지는 '시작과 끝이 있는 하나의 시간 덩어리 ⏳'입니다."
+   ],
+   "meanings": [
+    "시기, 기간",
+    "(학교) 교시",
+    "(미국) 마침표"
+   ],
+   "examples": [
+    {
+     "en": "We studied the Joseon period in history class.",
+     "ko": "우리는 역사 수업에서 조선 시대를 공부했어요."
+    },
+    {
+     "en": "There was a long period of rain last month.",
+     "ko": "지난달에 오랜 비 오는 기간이 있었어요."
+    },
+    {
+     "en": "My favorite period is science, right after lunch.",
+     "ko": "내가 가장 좋아하는 시간은 점심 직후 과학 시간이에요."
+    },
+    {
+     "en": "Put a period at the end of the sentence.",
+     "ko": "문장 끝에 마침표를 찍어."
+    },
+    {
+     "en": "This was a difficult period for our family.",
+     "ko": "이건 우리 가족에게 힘든 시기였어요."
+    },
+    {
+     "en": "The company grew a lot during this period.",
+     "ko": "그 회사는 이 기간 동안 많이 성장했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "time",
+     "ko": "시간",
+     "en": "A long time."
+    },
+    {
+     "type": "유의어",
+     "word": "era",
+     "ko": "시대",
+     "en": "A golden era."
+    },
+    {
+     "type": "연관어",
+     "word": "century",
+     "ko": "세기",
+     "en": "The last century."
+    },
+    {
+     "type": "연관어",
+     "word": "history",
+     "ko": "역사",
+     "en": "Ancient history."
+    },
+    {
+     "type": "연관어",
+     "word": "class",
+     "ko": "수업",
+     "en": "A math class."
+    },
+    {
+     "type": "연관어",
+     "word": "sentence",
+     "ko": "문장",
+     "en": "A short sentence."
+    }
+   ]
+  },
+  "2196": {
+   "word": "repeat",
+   "overview": [
+    "repeat은 '반복하다', '되풀이하다'라는 뜻의 동사입니다.",
+    "repeat after me(따라 말하다), repeat a mistake(실수를 반복하다)처럼 씁니다.",
+    "명사 repetition(반복)도 자주 씁니다.",
+    "형용사 repeated는 '반복된', '되풀이되는'이라는 뜻입니다."
+   ],
+   "easy": [
+    {
+     "word": "say again",
+     "en": "Say it again.",
+     "ko": "다시 말해."
+    },
+    {
+     "word": "do again",
+     "en": "Do it again.",
+     "ko": "다시 해."
+    }
+   ],
+   "etymology": [
+    "repeat은 라틴어 repetere(다시 청하다, 다시 시도하다)에서 온 단어입니다.",
+    "re(다시)와 petere(향해 가다, 추구하다)가 합쳐진 말입니다.",
+    "compete(경쟁하다), appetite(식욕)도 petere에서 나온 같은 가족입니다.",
+    "'같은 것을 다시 향해 가다'라는 뜻이 '반복하다'로 이어졌습니다.",
+    "repeat의 핵심 이미지는 '똑같은 동작을 계속 되풀이하는 것 🔁'입니다."
+   ],
+   "meanings": [
+    "반복하다, 되풀이하다"
+   ],
+   "examples": [
+    {
+     "en": "Please repeat what you just said.",
+     "ko": "방금 말한 것을 다시 말해 주세요."
+    },
+    {
+     "en": "Repeat after me: hello, how are you?",
+     "ko": "저를 따라 말하세요: 안녕하세요, 어떻게 지내세요?"
+    },
+    {
+     "en": "Don't repeat the same mistake again.",
+     "ko": "같은 실수를 또 반복하지 마."
+    },
+    {
+     "en": "History tends to repeat itself.",
+     "ko": "역사는 되풀이되는 경향이 있어요."
+    },
+    {
+     "en": "She repeated the instructions clearly.",
+     "ko": "그녀는 설명을 명확하게 반복했어요."
+    },
+    {
+     "en": "The song's chorus repeats three times.",
+     "ko": "그 노래의 후렴구는 세 번 반복돼요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "say again",
+     "ko": "다시 말하다",
+     "en": "Say it again."
+    },
+    {
+     "type": "파생어",
+     "word": "repetition",
+     "ko": "반복",
+     "en": "Constant repetition."
+    },
+    {
+     "type": "연관어",
+     "word": "practice",
+     "ko": "연습하다",
+     "en": "Practice repeatedly."
+    },
+    {
+     "type": "연관어",
+     "word": "again",
+     "ko": "다시",
+     "en": "Try again."
+    },
+    {
+     "type": "연관어",
+     "word": "copy",
+     "ko": "베끼다",
+     "en": "Copy exactly."
+    },
+    {
+     "type": "연관어",
+     "word": "mistake",
+     "ko": "실수",
+     "en": "A common mistake."
+    }
+   ]
+  },
+  "1903": {
+   "word": "particular",
+   "overview": [
+    "particular는 '특정한', '특별한'이라는 뜻의 형용사입니다.",
+    "a particular reason(특정한 이유), in particular(특히)처럼 씁니다.",
+    "'까다로운', '유별난'이라는 뜻으로도 씁니다. He's very particular about food.(그는 음식에 아주 까다로워요.)",
+    "부사 particularly(특히)도 아주 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "specific",
+     "en": "A specific answer.",
+     "ko": "구체적인 답."
+    },
+    {
+     "word": "special",
+     "en": "A special day.",
+     "ko": "특별한 날."
+    }
+   ],
+   "etymology": [
+    "particular는 라틴어 particularis(부분에 관한)에서 온 단어입니다.",
+    "particula(작은 부분)에서 나온 말로, part(부분), particle(입자)과 같은 가족입니다.",
+    "'전체가 아니라 딱 그 한 부분에 관련된'이라는 뜻에서 '특정한'이 되었습니다.",
+    "'그 특정한 것에만 신경 쓰는'이라는 뜻에서 '까다로운'이라는 뜻도 나왔습니다.",
+    "particular의 핵심 이미지는 '전체 중 콕 집어 가리키는 바로 그것 👆'입니다."
+   ],
+   "meanings": [
+    "특정한 (형용사)",
+    "특별한 (형용사)",
+    "까다로운, 유별난 (형용사)",
+    "(in particular) 특히"
+   ],
+   "examples": [
+    {
+     "en": "Is there a particular reason you're late?",
+     "ko": "늦은 특별한 이유가 있어요?"
+    },
+    {
+     "en": "I liked this movie in particular.",
+     "ko": "나는 특히 이 영화가 좋았어요."
+    },
+    {
+     "en": "She is particular about her handwriting.",
+     "ko": "그녀는 자기 글씨체에 까다로워요."
+    },
+    {
+     "en": "This particular flower blooms only in spring.",
+     "ko": "이 특정한 꽃은 봄에만 피어요."
+    },
+    {
+     "en": "He gave particular attention to the details.",
+     "ko": "그는 세부 사항에 특별한 주의를 기울였어요."
+    },
+    {
+     "en": "Nothing in particular happened today.",
+     "ko": "오늘은 특별한 일이 아무것도 없었어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "specific",
+     "ko": "구체적인",
+     "en": "A specific plan."
+    },
+    {
+     "type": "파생어",
+     "word": "particularly",
+     "ko": "특히",
+     "en": "Particularly hot."
+    },
+    {
+     "type": "연관어",
+     "word": "special",
+     "ko": "특별한",
+     "en": "A special gift."
+    },
+    {
+     "type": "연관어",
+     "word": "certain",
+     "ko": "특정한, 어떤",
+     "en": "A certain place."
+    },
+    {
+     "type": "연관어",
+     "word": "detail",
+     "ko": "세부 사항",
+     "en": "Small details."
+    },
+    {
+     "type": "연관어",
+     "word": "picky",
+     "ko": "까다로운",
+     "en": "A picky eater."
+    }
+   ]
+  },
+  "2081": {
+   "word": "proper",
+   "overview": [
+    "proper는 '적절한', '올바른'이라는 뜻의 형용사입니다.",
+    "the proper way(올바른 방법), proper clothes(적절한 옷차림)처럼 씁니다.",
+    "'제대로 된', '진짜의'라는 뜻으로도 씁니다. a proper meal(제대로 된 식사)",
+    "부사 properly(제대로, 올바르게)도 아주 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "right",
+     "en": "The right way.",
+     "ko": "올바른 방법."
+    },
+    {
+     "word": "correct",
+     "en": "A correct method.",
+     "ko": "정확한 방법."
+    }
+   ],
+   "etymology": [
+    "proper는 라틴어 proprius(자기 자신의, 고유한)에서 온 단어입니다.",
+    "property(재산), appropriate(적절한)와 같은 가족입니다.",
+    "'자기 자신에게 딱 맞는'이라는 뜻에서 '적절한', '올바른'이 되었습니다.",
+    "'고유한'이라는 뜻도 여기서 남아 있습니다. proper noun(고유 명사)",
+    "proper의 핵심 이미지는 '상황에 딱 알맞게 맞아떨어지는 것 ✅'입니다."
+   ],
+   "meanings": [
+    "적절한, 올바른",
+    "제대로 된, 진짜의",
+    "고유의"
+   ],
+   "examples": [
+    {
+     "en": "Please wear proper shoes for hiking.",
+     "ko": "하이킹을 위해 적절한 신발을 신어 주세요."
+    },
+    {
+     "en": "This is not the proper way to hold a pencil.",
+     "ko": "이건 연필을 잡는 올바른 방법이 아니에요."
+    },
+    {
+     "en": "We need a proper meal after this long day.",
+     "ko": "이렇게 긴 하루를 보낸 후 제대로 된 식사가 필요해요."
+    },
+    {
+     "en": "Capitalize proper nouns, like names of people.",
+     "ko": "사람 이름 같은 고유 명사는 대문자로 써."
+    },
+    {
+     "en": "Do it properly, or don't do it at all.",
+     "ko": "제대로 하든지 아니면 아예 하지 마."
+    },
+    {
+     "en": "She gave a proper introduction at the meeting.",
+     "ko": "그녀는 회의에서 제대로 된 소개를 했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "right",
+     "ko": "올바른",
+     "en": "The right choice."
+    },
+    {
+     "type": "유의어",
+     "word": "correct",
+     "ko": "정확한",
+     "en": "A correct answer."
+    },
+    {
+     "type": "파생어",
+     "word": "properly",
+     "ko": "제대로, 올바르게",
+     "en": "Behave properly."
+    },
+    {
+     "type": "연관어",
+     "word": "suitable",
+     "ko": "적합한",
+     "en": "Suitable clothes."
+    },
+    {
+     "type": "연관어",
+     "word": "appropriate",
+     "ko": "적절한",
+     "en": "An appropriate time."
+    },
+    {
+     "type": "연관어",
+     "word": "manners",
+     "ko": "예의",
+     "en": "Good manners."
+    }
+   ]
   }
  }
 }
