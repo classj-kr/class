@@ -7718,6 +7718,1936 @@
      "en": "Fully conscious."
     }
    ]
+  },
+  "1709": {
+   "word": "modern",
+   "overview": [
+    "modern은 '현대의', '최신의'라는 뜻의 형용사입니다.",
+    "modern technology(현대 기술), modern art(현대 미술)처럼 씁니다.",
+    "'유행하는', '세련된'이라는 뜻으로도 씁니다.",
+    "명사 modernity(현대성)도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "new",
+     "en": "A new style.",
+     "ko": "새로운 스타일."
+    },
+    {
+     "word": "up-to-date",
+     "en": "Up-to-date news.",
+     "ko": "최신 뉴스."
+    }
+   ],
+   "etymology": [
+    "modern은 라틴어 modernus(요즘의, 방금의)에서 온 단어입니다.",
+    "modo(방금, 지금)에서 나온 말입니다.",
+    "'바로 지금 이 시대에 속하는'이라는 뜻이 그대로 이어져 왔습니다.",
+    "mode(방식), model(모형)도 같은 뿌리와 이어지는 단어라고 봅니다.",
+    "modern의 핵심 이미지는 '최신 기술로 반짝이는 현대 도시 🏙️'입니다."
+   ],
+   "meanings": [
+    "현대의, 최신의",
+    "유행하는, 세련된"
+   ],
+   "examples": [
+    {
+     "en": "Modern technology has changed our lives.",
+     "ko": "현대 기술은 우리 삶을 바꿔 놓았어요."
+    },
+    {
+     "en": "This museum has a modern art collection.",
+     "ko": "이 박물관에는 현대 미술 소장품이 있어요."
+    },
+    {
+     "en": "We live in a modern apartment.",
+     "ko": "우리는 현대식 아파트에 살아요."
+    },
+    {
+     "en": "Modern life can be very busy.",
+     "ko": "현대 생활은 아주 바쁠 수 있어요."
+    },
+    {
+     "en": "The building has a modern design.",
+     "ko": "그 건물은 현대적인 디자인을 가지고 있어요."
+    },
+    {
+     "en": "She prefers modern furniture over old styles.",
+     "ko": "그녀는 옛날 스타일보다 현대적인 가구를 선호해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "new",
+     "ko": "새로운",
+     "en": "A new phone."
+    },
+    {
+     "type": "반의어",
+     "word": "ancient",
+     "ko": "고대의",
+     "en": "Ancient history."
+    },
+    {
+     "type": "연관어",
+     "word": "technology",
+     "ko": "기술",
+     "en": "New technology."
+    },
+    {
+     "type": "연관어",
+     "word": "future",
+     "ko": "미래",
+     "en": "The future world."
+    },
+    {
+     "type": "연관어",
+     "word": "style",
+     "ko": "스타일",
+     "en": "A cool style."
+    },
+    {
+     "type": "연관어",
+     "word": "contemporary",
+     "ko": "동시대의",
+     "en": "Contemporary art."
+    }
+   ]
+  },
+  "1082": {
+   "word": "firm",
+   "overview": [
+    "firm은 '단단한', '확고한'이라는 뜻의 형용사이자 '회사'라는 뜻의 명사입니다.",
+    "a firm handshake(단단한 악수), a firm decision(확고한 결정)처럼 씁니다.",
+    "'회사', '기업'이라는 뜻으로도 아주 자주 씁니다. a law firm(법률 회사)",
+    "부사 firmly(확고하게, 단단히)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "solid",
+     "en": "A solid wall.",
+     "ko": "단단한 벽."
+    },
+    {
+     "word": "company",
+     "en": "A big company.",
+     "ko": "큰 회사."
+    }
+   ],
+   "etymology": [
+    "firm은 라틴어 firmus(단단한, 확고한)에서 온 단어입니다.",
+    "confirm(확인하다, '완전히 확고하게 하다')도 같은 뿌리에서 나온 단어입니다.",
+    "'회사'라는 명사 뜻은 이탈리아어 firma(서명)에서 왔습니다.",
+    "옛날 회사 이름 아래 대표가 서명한 데서 '회사' 자체를 뜻하게 되었습니다.",
+    "firm의 핵심 이미지는 '흔들리지 않는 단단한 결심 💪'입니다."
+   ],
+   "meanings": [
+    "단단한, 확고한 (형용사)",
+    "회사, 기업 (명사)"
+   ],
+   "examples": [
+    {
+     "en": "She gave a firm handshake.",
+     "ko": "그녀는 단단하게 악수했어요."
+    },
+    {
+     "en": "He made a firm decision to quit smoking.",
+     "ko": "그는 담배를 끊겠다는 확고한 결심을 했어요."
+    },
+    {
+     "en": "My mom works at a law firm.",
+     "ko": "우리 엄마는 법률 회사에서 일하세요."
+    },
+    {
+     "en": "The ground felt firm under our feet.",
+     "ko": "땅이 발밑에서 단단하게 느껴졌어요."
+    },
+    {
+     "en": "Please speak in a firm voice.",
+     "ko": "확고한 목소리로 말해 주세요."
+    },
+    {
+     "en": "The firm hired ten new employees.",
+     "ko": "그 회사는 새 직원 열 명을 고용했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "solid",
+     "ko": "단단한",
+     "en": "A solid rock."
+    },
+    {
+     "type": "유의어",
+     "word": "company",
+     "ko": "회사",
+     "en": "A tech company."
+    },
+    {
+     "type": "파생어",
+     "word": "firmly",
+     "ko": "확고하게",
+     "en": "Believe firmly."
+    },
+    {
+     "type": "파생어",
+     "word": "confirm",
+     "ko": "확인하다",
+     "en": "Confirm the plan."
+    },
+    {
+     "type": "연관어",
+     "word": "steady",
+     "ko": "안정된",
+     "en": "A steady hand."
+    },
+    {
+     "type": "연관어",
+     "word": "business",
+     "ko": "사업",
+     "en": "A small business."
+    }
+   ]
+  },
+  "2049": {
+   "word": "prime",
+   "overview": [
+    "prime은 '주요한', '최고의'라는 뜻의 형용사입니다.",
+    "prime example(대표적인 예), prime time(황금 시간대)처럼 씁니다.",
+    "수학에서 '소수'라는 뜻으로도 씁니다. a prime number(소수)",
+    "prime minister(총리)처럼 다른 말과 함께도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "main",
+     "en": "The main reason.",
+     "ko": "주된 이유."
+    },
+    {
+     "word": "best",
+     "en": "The best time.",
+     "ko": "가장 좋은 시간."
+    }
+   ],
+   "etymology": [
+    "prime은 라틴어 primus(첫 번째의, 으뜸가는)에서 온 단어입니다.",
+    "primary(주요한, 최초의), prince(왕자, '으뜸가는 사람')와 같은 가족입니다.",
+    "'가장 먼저이자 가장 중요한'이라는 뜻이 '최고의', '주요한'으로 이어졌습니다.",
+    "소수(prime number)는 '1과 자기 자신으로만 나뉘는 으뜸가는 수'라는 뜻입니다.",
+    "prime의 핵심 이미지는 '무엇보다 으뜸가는 최고의 상태 🥇'입니다."
+   ],
+   "meanings": [
+    "주요한, 최고의 (형용사)",
+    "(수학) 소수의 (형용사)",
+    "준비시키다, 미리 알려 주다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "This is a prime example of good teamwork.",
+     "ko": "이건 좋은 협동의 대표적인 예예요."
+    },
+    {
+     "en": "Seven is a prime number.",
+     "ko": "7은 소수예요."
+    },
+    {
+     "en": "This restaurant is in a prime location.",
+     "ko": "이 식당은 최고의 위치에 있어요."
+    },
+    {
+     "en": "She is in her prime as an athlete.",
+     "ko": "그녀는 선수로서 전성기에 있어요."
+    },
+    {
+     "en": "We primed the walls before painting.",
+     "ko": "우리는 페인트칠 전에 벽을 미리 손질했어요."
+    },
+    {
+     "en": "This movie will air during prime time.",
+     "ko": "이 영화는 황금 시간대에 방영될 거예요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "main",
+     "ko": "주된",
+     "en": "The main point."
+    },
+    {
+     "type": "유의어",
+     "word": "best",
+     "ko": "최고의",
+     "en": "The best choice."
+    },
+    {
+     "type": "연관어",
+     "word": "number",
+     "ko": "숫자",
+     "en": "A prime number."
+    },
+    {
+     "type": "연관어",
+     "word": "important",
+     "ko": "중요한",
+     "en": "Very important."
+    },
+    {
+     "type": "연관어",
+     "word": "minister",
+     "ko": "장관",
+     "en": "Prime minister."
+    },
+    {
+     "type": "연관어",
+     "word": "prepare",
+     "ko": "준비하다",
+     "en": "Prepare well."
+    }
+   ]
+  },
+  "1567": {
+   "word": "license",
+   "overview": [
+    "license는 '면허', '허가증'이라는 뜻의 명사이자 '허가하다'라는 뜻의 동사입니다.",
+    "a driver's license(운전면허), get a license(면허를 따다)처럼 씁니다.",
+    "영국식 철자는 licence(명사), license(동사)로 나뉘기도 합니다.",
+    "'허가', '자유'라는 넓은 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "permit",
+     "en": "A parking permit.",
+     "ko": "주차 허가증."
+    },
+    {
+     "word": "permission",
+     "en": "Get permission.",
+     "ko": "허락을 받다."
+    }
+   ],
+   "etymology": [
+    "license는 라틴어 licentia(자유, 허가)에서 온 단어입니다.",
+    "licere(허용되다)에서 나온 말입니다.",
+    "illicit(불법의, '허용되지 않은')도 같은 뿌리에서 나온 단어입니다.",
+    "'공식적으로 허용된 자유'라는 뜻에서 '면허', '허가증'이 되었습니다.",
+    "license의 핵심 이미지는 '공식적으로 인정받은 자격증 📄'입니다."
+   ],
+   "meanings": [
+    "면허, 허가증 (명사)",
+    "허가하다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "My brother just got his driver's license.",
+     "ko": "우리 형은 방금 운전면허를 땄어요."
+    },
+    {
+     "en": "You need a license to fish here.",
+     "ko": "여기서 낚시하려면 면허가 필요해요."
+    },
+    {
+     "en": "The restaurant has a license to sell alcohol.",
+     "ko": "그 식당은 주류 판매 허가를 가지고 있어요."
+    },
+    {
+     "en": "She studied hard for her license exam.",
+     "ko": "그녀는 면허 시험을 위해 열심히 공부했어요."
+    },
+    {
+     "en": "The company licensed the software for use.",
+     "ko": "그 회사는 소프트웨어 사용을 허가했어요."
+    },
+    {
+     "en": "His license was suspended for speeding.",
+     "ko": "그의 면허는 과속으로 정지되었어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "permit",
+     "ko": "허가증",
+     "en": "A building permit."
+    },
+    {
+     "type": "연관어",
+     "word": "permission",
+     "ko": "허락",
+     "en": "Ask permission."
+    },
+    {
+     "type": "연관어",
+     "word": "driver",
+     "ko": "운전자",
+     "en": "A careful driver."
+    },
+    {
+     "type": "연관어",
+     "word": "exam",
+     "ko": "시험",
+     "en": "Pass the exam."
+    },
+    {
+     "type": "연관어",
+     "word": "legal",
+     "ko": "합법적인",
+     "en": "A legal document."
+    },
+    {
+     "type": "연관어",
+     "word": "certificate",
+     "ko": "증명서",
+     "en": "A birth certificate."
+    }
+   ]
+  },
+  "569": {
+   "word": "concern",
+   "overview": [
+    "concern은 '걱정', '관심사'라는 뜻의 명사이자 '걱정시키다', '관련되다'라는 뜻의 동사입니다.",
+    "a major concern(주요 걱정거리), be concerned about(~에 대해 걱정하다)처럼 씁니다.",
+    "as far as I'm concerned는 '내가 보기에는'이라는 뜻의 표현입니다.",
+    "'~에 관련되다'라는 동사 뜻으로도 씁니다. This concerns you.(이건 너와 관련이 있어.)"
+   ],
+   "easy": [
+    {
+     "word": "worry",
+     "en": "Don't worry.",
+     "ko": "걱정하지 마."
+    },
+    {
+     "word": "matter",
+     "en": "A serious matter.",
+     "ko": "심각한 문제."
+    }
+   ],
+   "etymology": [
+    "concern은 라틴어 concernere(관련되다, 섞이다)에서 온 단어입니다.",
+    "com(함께)과 cernere(가리다, 구별하다)가 합쳐진 말입니다.",
+    "discern(분별하다), certain(확실한)도 같은 뿌리에서 나온 단어들입니다.",
+    "'함께 관련되어 신경 쓰이는 일'이라는 뜻에서 '걱정', '관심사'가 되었습니다.",
+    "concern의 핵심 이미지는 '마음에 걸려 계속 신경 쓰이는 걱정거리 😟'입니다."
+   ],
+   "meanings": [
+    "걱정, 우려 (명사)",
+    "관심사, 관련된 일 (명사)",
+    "걱정시키다 (동사)",
+    "~에 관련되다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "Safety is our main concern.",
+     "ko": "안전이 우리의 주된 걱정거리예요."
+    },
+    {
+     "en": "I'm concerned about your health.",
+     "ko": "저는 당신의 건강이 걱정돼요."
+    },
+    {
+     "en": "This news concerns the whole town.",
+     "ko": "이 소식은 마을 전체와 관련이 있어요."
+    },
+    {
+     "en": "There's no need for concern.",
+     "ko": "걱정할 필요 없어요."
+    },
+    {
+     "en": "Her concern for others is admirable.",
+     "ko": "다른 사람들에 대한 그녀의 관심은 존경스러워요."
+    },
+    {
+     "en": "As far as I'm concerned, the plan is good.",
+     "ko": "제가 보기에는 그 계획은 좋아요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "worry",
+     "ko": "걱정",
+     "en": "A small worry."
+    },
+    {
+     "type": "연관어",
+     "word": "matter",
+     "ko": "문제, 일",
+     "en": "A serious matter."
+    },
+    {
+     "type": "연관어",
+     "word": "care",
+     "ko": "신경 쓰다",
+     "en": "Care deeply."
+    },
+    {
+     "type": "연관어",
+     "word": "anxiety",
+     "ko": "불안",
+     "en": "Feel anxiety."
+    },
+    {
+     "type": "연관어",
+     "word": "related",
+     "ko": "관련된",
+     "en": "A related topic."
+    },
+    {
+     "type": "연관어",
+     "word": "interest",
+     "ko": "관심",
+     "en": "Show interest."
+    }
+   ]
+  },
+  "1022": {
+   "word": "factory",
+   "overview": [
+    "factory는 '공장'이라는 뜻의 명사입니다.",
+    "a car factory(자동차 공장), work at a factory(공장에서 일하다)처럼 씁니다.",
+    "물건을 대량으로 만들어 내는 곳을 가리킵니다.",
+    "동사 fact(사실), effect(효과)와 같은 뿌리에서 나온 단어입니다."
+   ],
+   "easy": [
+    {
+     "word": "plant",
+     "en": "A power plant.",
+     "ko": "발전소."
+    },
+    {
+     "word": "workshop",
+     "en": "A small workshop.",
+     "ko": "작은 작업장."
+    }
+   ],
+   "etymology": [
+    "factory는 라틴어 factorium(만드는 곳)에서 온 단어입니다.",
+    "facere(만들다, 하다)에서 나온 말로, perfect(완벽한), effect(효과)와 같은 가족입니다.",
+    "'물건을 만드는 곳'이라는 뜻이 그대로 이어져 왔습니다.",
+    "산업혁명 시기에 큰 공장들이 생기면서 이 단어가 널리 쓰이게 되었습니다.",
+    "factory의 핵심 이미지는 '기계 소리가 울리는 커다란 공장 🏭'입니다."
+   ],
+   "meanings": [
+    "공장"
+   ],
+   "examples": [
+    {
+     "en": "My uncle works at a car factory.",
+     "ko": "우리 삼촌은 자동차 공장에서 일하세요."
+    },
+    {
+     "en": "The factory produces thousands of toys a day.",
+     "ko": "그 공장은 하루에 수천 개의 장난감을 생산해요."
+    },
+    {
+     "en": "We visited a chocolate factory on our trip.",
+     "ko": "우리는 여행에서 초콜릿 공장을 방문했어요."
+    },
+    {
+     "en": "The factory closed down last year.",
+     "ko": "그 공장은 작년에 문을 닫았어요."
+    },
+    {
+     "en": "Factories create many jobs in this town.",
+     "ko": "공장들은 이 마을에 많은 일자리를 만들어요."
+    },
+    {
+     "en": "Robots help work faster in the factory.",
+     "ko": "로봇은 공장에서 더 빠르게 일하는 데 도움을 줘요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "plant",
+     "ko": "공장",
+     "en": "A power plant."
+    },
+    {
+     "type": "연관어",
+     "word": "machine",
+     "ko": "기계",
+     "en": "A big machine."
+    },
+    {
+     "type": "연관어",
+     "word": "produce",
+     "ko": "생산하다",
+     "en": "Produce goods."
+    },
+    {
+     "type": "연관어",
+     "word": "worker",
+     "ko": "노동자",
+     "en": "A factory worker."
+    },
+    {
+     "type": "연관어",
+     "word": "product",
+     "ko": "제품",
+     "en": "A new product."
+    },
+    {
+     "type": "연관어",
+     "word": "industry",
+     "ko": "산업",
+     "en": "The car industry."
+    }
+   ]
+  },
+  "2852": {
+   "word": "value",
+   "overview": [
+    "value는 '가치'라는 뜻의 명사이자 '가치를 두다', '평가하다'라는 뜻의 동사입니다.",
+    "the value of money(돈의 가치), value your time(시간을 소중히 여기다)처럼 씁니다.",
+    "values는 '가치관'이라는 뜻으로도 자주 씁니다.",
+    "형용사 valuable(귀중한)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "worth",
+     "en": "Worth a lot.",
+     "ko": "가치가 많은."
+    },
+    {
+     "word": "importance",
+     "en": "Great importance.",
+     "ko": "큰 중요성."
+    }
+   ],
+   "etymology": [
+    "value는 라틴어 valere(강하다, 가치가 있다)에서 온 단어입니다.",
+    "valid(유효한), prevail(만연하다, '더 강하다')도 같은 뿌리에서 나온 단어들입니다.",
+    "'힘과 가치가 있는 것'이라는 뜻이 그대로 '가치'로 이어졌습니다.",
+    "'소중히 여기다'라는 동사 뜻도 자연스럽게 넓어졌습니다.",
+    "value의 핵심 이미지는 '무엇과도 바꿀 수 없는 소중한 가치 💎'입니다."
+   ],
+   "meanings": [
+    "가치 (명사)",
+    "가치관 (values, 명사)",
+    "가치를 두다, 소중히 여기다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "This ring has great value.",
+     "ko": "이 반지는 큰 가치가 있어요."
+    },
+    {
+     "en": "I value your friendship a lot.",
+     "ko": "나는 네 우정을 아주 소중히 여겨."
+    },
+    {
+     "en": "Family values are important to us.",
+     "ko": "가족의 가치관은 우리에게 중요해요."
+    },
+    {
+     "en": "The value of the painting increased over time.",
+     "ko": "그 그림의 가치는 시간이 지나며 올랐어요."
+    },
+    {
+     "en": "He values honesty above everything else.",
+     "ko": "그는 무엇보다 정직을 소중히 여겨요."
+    },
+    {
+     "en": "This experience has great educational value.",
+     "ko": "이 경험은 큰 교육적 가치가 있어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "worth",
+     "ko": "가치",
+     "en": "Worth a fortune."
+    },
+    {
+     "type": "파생어",
+     "word": "valuable",
+     "ko": "귀중한",
+     "en": "A valuable gift."
+    },
+    {
+     "type": "연관어",
+     "word": "important",
+     "ko": "중요한",
+     "en": "Truly important."
+    },
+    {
+     "type": "연관어",
+     "word": "price",
+     "ko": "가격",
+     "en": "A high price."
+    },
+    {
+     "type": "연관어",
+     "word": "appreciate",
+     "ko": "고마워하다, 진가를 알다",
+     "en": "Appreciate kindness."
+    },
+    {
+     "type": "연관어",
+     "word": "treasure",
+     "ko": "소중히 여기다",
+     "en": "Treasure memories."
+    }
+   ]
+  },
+  "1698": {
+   "word": "mirror",
+   "overview": [
+    "mirror는 '거울'이라는 뜻의 명사이자 '비추다', '반영하다'라는 뜻의 동사입니다.",
+    "look in the mirror(거울을 보다)처럼 씁니다.",
+    "'~을 그대로 반영하다'라는 비유적인 뜻으로도 씁니다. mirror society(사회를 그대로 반영하다)",
+    "자동차의 '백미러'도 mirror라고 합니다."
+   ],
+   "easy": [
+    {
+     "word": "reflection",
+     "en": "See a reflection.",
+     "ko": "반영된 모습을 보다."
+    },
+    {
+     "word": "glass",
+     "en": "A piece of glass.",
+     "ko": "유리 조각."
+    }
+   ],
+   "etymology": [
+    "mirror는 옛 프랑스어 mireor(거울, 보는 도구)에서 온 단어입니다.",
+    "라틴어 mirare(바라보다, 놀라다)에서 나온 말로, admire(감탄하다), miracle(기적)과 같은 가족입니다.",
+    "'놀라며 비춰 보는 도구'라는 뜻이 '거울'로 이어졌습니다.",
+    "'있는 그대로 비추다'라는 뜻에서 '반영하다'라는 동사 뜻도 나왔습니다.",
+    "mirror의 핵심 이미지는 '내 모습을 그대로 비춰 주는 거울 🪞'입니다."
+   ],
+   "meanings": [
+    "거울 (명사)",
+    "비추다, 반영하다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "She looked at herself in the mirror.",
+     "ko": "그녀는 거울로 자신을 봤어요."
+    },
+    {
+     "en": "Check the side mirror before you turn.",
+     "ko": "돌기 전에 사이드미러를 확인해."
+    },
+    {
+     "en": "The lake mirrored the mountains perfectly.",
+     "ko": "호수가 산을 완벽하게 비췄어요."
+    },
+    {
+     "en": "This book mirrors real events in history.",
+     "ko": "이 책은 역사 속 실제 사건을 그대로 반영해요."
+    },
+    {
+     "en": "The mirror was cracked in one corner.",
+     "ko": "그 거울은 한쪽 구석이 금이 가 있었어요."
+    },
+    {
+     "en": "Her actions mirrored her mother's kindness.",
+     "ko": "그녀의 행동은 어머니의 친절함을 그대로 반영했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "reflection",
+     "ko": "반영, 비친 모습",
+     "en": "A clear reflection."
+    },
+    {
+     "type": "연관어",
+     "word": "glass",
+     "ko": "유리",
+     "en": "A glass window."
+    },
+    {
+     "type": "연관어",
+     "word": "reflect",
+     "ko": "반사하다, 반영하다",
+     "en": "Reflect light."
+    },
+    {
+     "type": "연관어",
+     "word": "image",
+     "ko": "모습, 이미지",
+     "en": "A clear image."
+    },
+    {
+     "type": "연관어",
+     "word": "look",
+     "ko": "보다",
+     "en": "Look closely."
+    },
+    {
+     "type": "연관어",
+     "word": "bathroom",
+     "ko": "화장실",
+     "en": "A bathroom mirror."
+    }
+   ]
+  },
+  "2569": {
+   "word": "studio",
+   "overview": [
+    "studio는 '작업실', '스튜디오'라는 뜻의 명사입니다.",
+    "an art studio(미술 작업실), a recording studio(녹음 스튜디오)처럼 씁니다.",
+    "방 하나로 된 '원룸'이라는 뜻으로도 씁니다. a studio apartment(원룸)",
+    "영화를 만드는 '영화사'라는 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "workshop",
+     "en": "An art workshop.",
+     "ko": "미술 작업실."
+    },
+    {
+     "word": "room",
+     "en": "A small room.",
+     "ko": "작은 방."
+    }
+   ],
+   "etymology": [
+    "studio는 이탈리아어 studio(공부하는 곳, 서재)에서 온 단어입니다.",
+    "라틴어 studium(공부, 열정)에서 나온 말로, study(공부하다)와 같은 가족입니다.",
+    "'열심히 파고들어 작업하는 방'이라는 뜻이 '작업실'로 이어졌습니다.",
+    "이탈리아 화가들이 그림을 그리던 방을 studio라고 부른 데서 널리 퍼졌습니다.",
+    "studio의 핵심 이미지는 '예술가가 열정을 쏟는 창작의 방 🎨'입니다."
+   ],
+   "meanings": [
+    "작업실, 스튜디오",
+    "(방 하나짜리) 원룸",
+    "영화사, 제작사"
+   ],
+   "examples": [
+    {
+     "en": "The artist paints in her studio.",
+     "ko": "그 화가는 자신의 작업실에서 그림을 그려요."
+    },
+    {
+     "en": "We recorded the song in a music studio.",
+     "ko": "우리는 음악 스튜디오에서 그 노래를 녹음했어요."
+    },
+    {
+     "en": "He lives in a small studio apartment.",
+     "ko": "그는 작은 원룸에 살아요."
+    },
+    {
+     "en": "The movie was made by a famous studio.",
+     "ko": "그 영화는 유명한 영화사가 만들었어요."
+    },
+    {
+     "en": "The dance studio was full of mirrors.",
+     "ko": "그 무용 스튜디오는 거울로 가득했어요."
+    },
+    {
+     "en": "She rented a studio to practice yoga.",
+     "ko": "그녀는 요가를 연습하려고 스튜디오를 빌렸어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "art",
+     "ko": "예술, 미술",
+     "en": "A piece of art."
+    },
+    {
+     "type": "연관어",
+     "word": "artist",
+     "ko": "예술가",
+     "en": "A talented artist."
+    },
+    {
+     "type": "연관어",
+     "word": "record",
+     "ko": "녹음하다",
+     "en": "Record a song."
+    },
+    {
+     "type": "연관어",
+     "word": "movie",
+     "ko": "영화",
+     "en": "A new movie."
+    },
+    {
+     "type": "연관어",
+     "word": "apartment",
+     "ko": "아파트",
+     "en": "A small apartment."
+    },
+    {
+     "type": "연관어",
+     "word": "dance",
+     "ko": "춤",
+     "en": "A dance class."
+    }
+   ]
+  },
+  "1466": {
+   "word": "iron",
+   "overview": [
+    "iron은 '철'이라는 뜻의 명사이자 '다림질하다'라는 뜻의 동사입니다.",
+    "made of iron(철로 만든), iron a shirt(셔츠를 다리다)처럼 씁니다.",
+    "'다리미'라는 명사 뜻으로도 씁니다.",
+    "'강철 같은', '단호한'이라는 비유적인 뜻으로도 씁니다. an iron will(강철 같은 의지)"
+   ],
+   "easy": [
+    {
+     "word": "metal",
+     "en": "Made of metal.",
+     "ko": "금속으로 만든."
+    },
+    {
+     "word": "press",
+     "en": "Press the shirt.",
+     "ko": "셔츠를 다리다."
+    }
+   ],
+   "etymology": [
+    "iron은 고대 영어 īsern(철)에서 온 단어입니다.",
+    "게르만 말 뿌리로, 켈트족의 말에서 왔다는 설도 있습니다.",
+    "천 년 넘게 '철'이라는 금속을 가리키는 뜻으로 쓰여 온 단어입니다.",
+    "옷을 다리는 도구도 철로 만들어서 같은 이름이 붙었습니다.",
+    "iron의 핵심 이미지는 '단단하고 강한 철과 뜨거운 다리미 🔨'입니다."
+   ],
+   "meanings": [
+    "철 (명사)",
+    "다리미 (명사)",
+    "다림질하다 (동사)",
+    "강철 같은, 단호한 (형용사)"
+   ],
+   "examples": [
+    {
+     "en": "This gate is made of iron.",
+     "ko": "이 대문은 철로 만들어졌어요."
+    },
+    {
+     "en": "Please iron my shirt for tomorrow.",
+     "ko": "내일 입을 셔츠 좀 다려 주세요."
+    },
+    {
+     "en": "Be careful, the iron is hot.",
+     "ko": "조심해, 다리미가 뜨거워."
+    },
+    {
+     "en": "Spinach is a good source of iron.",
+     "ko": "시금치는 철분의 좋은 공급원이에요."
+    },
+    {
+     "en": "She has an iron will to succeed.",
+     "ko": "그녀는 성공하겠다는 강철 같은 의지가 있어요."
+    },
+    {
+     "en": "The old iron fence was rusty.",
+     "ko": "그 오래된 철 울타리는 녹슬어 있었어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "metal",
+     "ko": "금속",
+     "en": "Cold metal."
+    },
+    {
+     "type": "연관어",
+     "word": "steel",
+     "ko": "강철",
+     "en": "A steel beam."
+    },
+    {
+     "type": "연관어",
+     "word": "press",
+     "ko": "다리다, 누르다",
+     "en": "Press it flat."
+    },
+    {
+     "type": "연관어",
+     "word": "strong",
+     "ko": "강한",
+     "en": "Very strong."
+    },
+    {
+     "type": "연관어",
+     "word": "gate",
+     "ko": "대문",
+     "en": "An iron gate."
+    },
+    {
+     "type": "연관어",
+     "word": "clothes",
+     "ko": "옷",
+     "en": "Clean clothes."
+    }
+   ]
+  },
+  "776": {
+   "word": "desire",
+   "overview": [
+    "desire는 '바람', '욕구'라는 뜻의 명사이자 '바라다', '원하다'라는 뜻의 동사입니다.",
+    "a strong desire to succeed(성공하고 싶은 강한 바람)처럼 씁니다.",
+    "want보다 조금 더 격식 있고 강한 바람을 나타낼 때 씁니다.",
+    "형용사 desirable(바람직한, 탐나는)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "want",
+     "en": "Want a new toy.",
+     "ko": "새 장난감을 원하다."
+    },
+    {
+     "word": "wish",
+     "en": "Wish for peace.",
+     "ko": "평화를 바라다."
+    }
+   ],
+   "etymology": [
+    "desire는 라틴어 desiderare(간절히 바라다)에서 온 단어입니다.",
+    "de(~로부터)와 sidus, sideris(별)가 합쳐진 말이라고 봅니다.",
+    "'별에서 원하는 것이 떨어지기를 바라다'라는 옛날 점성술의 느낌에서 나왔다는 설이 있습니다.",
+    "consider(고려하다)도 같은 별 관련 뿌리에서 나온 단어라고 봅니다.",
+    "desire의 핵심 이미지는 '마음속 깊이 간절히 바라는 소망 ⭐'입니다."
+   ],
+   "meanings": [
+    "바람, 욕구 (명사)",
+    "바라다, 원하다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "She has a strong desire to become a doctor.",
+     "ko": "그녀는 의사가 되고 싶은 강한 바람이 있어요."
+    },
+    {
+     "en": "I desire nothing more than peace.",
+     "ko": "나는 평화 말고는 아무것도 바라지 않아요."
+    },
+    {
+     "en": "His desire to learn never fades.",
+     "ko": "배우고 싶은 그의 열망은 절대 사라지지 않아요."
+    },
+    {
+     "en": "Everyone has a desire to be loved.",
+     "ko": "모두는 사랑받고 싶은 욕구가 있어요."
+    },
+    {
+     "en": "She desired to see the world.",
+     "ko": "그녀는 세상을 보고 싶어 했어요."
+    },
+    {
+     "en": "This is a desirable location for a house.",
+     "ko": "이곳은 집을 짓기에 바람직한 위치예요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "want",
+     "ko": "원하다",
+     "en": "Want a break."
+    },
+    {
+     "type": "유의어",
+     "word": "wish",
+     "ko": "바라다",
+     "en": "Wish upon a star."
+    },
+    {
+     "type": "파생어",
+     "word": "desirable",
+     "ko": "바람직한",
+     "en": "A desirable job."
+    },
+    {
+     "type": "연관어",
+     "word": "hope",
+     "ko": "희망하다",
+     "en": "Hope for the best."
+    },
+    {
+     "type": "연관어",
+     "word": "dream",
+     "ko": "꿈",
+     "en": "Follow your dream."
+    },
+    {
+     "type": "연관어",
+     "word": "goal",
+     "ko": "목표",
+     "en": "Reach a goal."
+    }
+   ]
+  },
+  "2255": {
+   "word": "rob",
+   "overview": [
+    "rob은 '강탈하다', '털다'라는 뜻의 동사입니다.",
+    "rob a bank(은행을 털다)처럼 씁니다.",
+    "steal이 '물건을 훔치다'라면, rob은 '사람이나 장소에서 강제로 빼앗다'라는 뜻입니다.",
+    "명사 robbery(강도), robber(강도)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "steal from",
+     "en": "Steal from a store.",
+     "ko": "가게에서 훔치다."
+    },
+    {
+     "word": "burglar",
+     "en": "A sneaky burglar.",
+     "ko": "몰래 침입하는 도둑."
+    }
+   ],
+   "etymology": [
+    "rob은 옛 프랑스어 rober(빼앗다, 강탈하다)에서 온 단어입니다.",
+    "게르만 말 뿌리 raub(빼앗은 물건, 노획물)에서 나왔습니다.",
+    "'힘으로 빼앗다'라는 뜻이 그대로 이어져 왔습니다.",
+    "robe(옷, 예복)도 원래 '빼앗은 옷'이라는 뜻에서 나온 먼 친척이라고 봅니다.",
+    "rob의 핵심 이미지는 '은행에서 돈을 강탈해 가는 강도 🏦'입니다."
+   ],
+   "meanings": [
+    "강탈하다, 털다"
+   ],
+   "examples": [
+    {
+     "en": "Someone tried to rob the bank.",
+     "ko": "누군가 은행을 털려고 했어요."
+    },
+    {
+     "en": "The thief robbed an old woman on the street.",
+     "ko": "그 도둑은 길에서 한 노인을 강탈했어요."
+    },
+    {
+     "en": "They robbed the store last night.",
+     "ko": "그들은 어젯밤에 그 가게를 털었어요."
+    },
+    {
+     "en": "He was robbed of his wallet on the bus.",
+     "ko": "그는 버스에서 지갑을 도둑맞았어요."
+    },
+    {
+     "en": "The injury robbed her of a chance to play.",
+     "ko": "그 부상은 그녀에게서 경기할 기회를 빼앗았어요."
+    },
+    {
+     "en": "Police caught the man who robbed the shop.",
+     "ko": "경찰이 그 가게를 턴 남자를 잡았어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "steal",
+     "ko": "훔치다",
+     "en": "Steal money."
+    },
+    {
+     "type": "파생어",
+     "word": "robbery",
+     "ko": "강도",
+     "en": "A bank robbery."
+    },
+    {
+     "type": "파생어",
+     "word": "robber",
+     "ko": "강도",
+     "en": "A masked robber."
+    },
+    {
+     "type": "연관어",
+     "word": "thief",
+     "ko": "도둑",
+     "en": "Catch the thief."
+    },
+    {
+     "type": "연관어",
+     "word": "crime",
+     "ko": "범죄",
+     "en": "A serious crime."
+    },
+    {
+     "type": "연관어",
+     "word": "police",
+     "ko": "경찰",
+     "en": "Call the police."
+    }
+   ]
+  },
+  "2047": {
+   "word": "pride",
+   "overview": [
+    "pride는 '자랑스러움', '자부심'이라는 뜻의 명사입니다.",
+    "take pride in(~을 자랑스러워하다), a sense of pride(자부심)처럼 씁니다.",
+    "'교만', '오만'이라는 부정적인 뜻으로도 씁니다.",
+    "형용사 proud(자랑스러운)에서 나온 명사입니다. 사자 무리도 a pride of lions라고 부릅니다."
+   ],
+   "easy": [
+    {
+     "word": "confidence",
+     "en": "Show confidence.",
+     "ko": "자신감을 보이다."
+    },
+    {
+     "word": "dignity",
+     "en": "Keep your dignity.",
+     "ko": "품위를 지키다."
+    }
+   ],
+   "etymology": [
+    "pride는 고대 영어 pryto(자랑스러움, 교만)에서 온 단어입니다.",
+    "proud(자랑스러운)와 같은 뿌리를 가진 명사입니다.",
+    "'스스로 뛰어나다고 느끼는 마음'이라는 뜻이 좋은 뜻과 나쁜 뜻 둘 다로 이어졌습니다.",
+    "'사자 무리'를 a pride라고 부르는 것은 사자의 위풍당당한 모습에서 나온 표현이라고 봅니다.",
+    "pride의 핵심 이미지는 '가슴을 활짝 펴고 느끼는 자랑스러움 🦁'입니다."
+   ],
+   "meanings": [
+    "자랑스러움, 자부심",
+    "교만, 오만",
+    "(a pride of) 사자 무리"
+   ],
+   "examples": [
+    {
+     "en": "She takes pride in her hard work.",
+     "ko": "그녀는 자신의 노력을 자랑스러워해요."
+    },
+    {
+     "en": "We felt great pride when our team won.",
+     "ko": "우리 팀이 이겼을 때 우리는 큰 자부심을 느꼈어요."
+    },
+    {
+     "en": "His pride kept him from asking for help.",
+     "ko": "그의 교만이 그가 도움을 청하지 못하게 했어요."
+    },
+    {
+     "en": "Parents feel pride watching their kids succeed.",
+     "ko": "부모는 아이가 성공하는 것을 보며 자랑스러워해요."
+    },
+    {
+     "en": "A pride of lions rested under the tree.",
+     "ko": "사자 무리가 나무 아래서 쉬고 있었어요."
+    },
+    {
+     "en": "She swallowed her pride and apologized.",
+     "ko": "그녀는 자존심을 접고 사과했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "파생어",
+     "word": "proud",
+     "ko": "자랑스러운",
+     "en": "Feel proud."
+    },
+    {
+     "type": "연관어",
+     "word": "confidence",
+     "ko": "자신감",
+     "en": "Full of confidence."
+    },
+    {
+     "type": "연관어",
+     "word": "dignity",
+     "ko": "품위",
+     "en": "With dignity."
+    },
+    {
+     "type": "연관어",
+     "word": "achievement",
+     "ko": "성취",
+     "en": "A great achievement."
+    },
+    {
+     "type": "연관어",
+     "word": "arrogant",
+     "ko": "거만한",
+     "en": "An arrogant tone."
+    },
+    {
+     "type": "연관어",
+     "word": "honor",
+     "ko": "명예",
+     "en": "A great honor."
+    }
+   ]
+  },
+  "1676": {
+   "word": "metal",
+   "overview": [
+    "metal은 '금속'이라는 뜻의 명사입니다.",
+    "made of metal(금속으로 만든), a metal spoon(금속 숟가락)처럼 씁니다.",
+    "음악 장르 '메탈'이라는 뜻으로도 씁니다. heavy metal(헤비메탈)",
+    "형용사 metallic(금속의, 금속성의)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "iron",
+     "en": "Made of iron.",
+     "ko": "철로 만든."
+    },
+    {
+     "word": "steel",
+     "en": "A steel bar.",
+     "ko": "강철 막대."
+    }
+   ],
+   "etymology": [
+    "metal은 그리스어 metallon(광산, 채굴)에서 온 단어입니다.",
+    "'땅에서 캐낸 것'이라는 뜻이 '금속'으로 좁혀졌습니다.",
+    "라틴어와 옛 프랑스어를 거쳐 영어에 들어왔습니다.",
+    "metallic(금속성의)도 같은 가족 단어입니다.",
+    "metal의 핵심 이미지는 '땅에서 캐내 반짝반짝 빛나는 금속 🔩'입니다."
+   ],
+   "meanings": [
+    "금속",
+    "(음악 장르) 메탈"
+   ],
+   "examples": [
+    {
+     "en": "This bridge is made of strong metal.",
+     "ko": "이 다리는 튼튼한 금속으로 만들어졌어요."
+    },
+    {
+     "en": "The spoon is made of metal, not plastic.",
+     "ko": "그 숟가락은 플라스틱이 아니라 금속으로 만들어졌어요."
+    },
+    {
+     "en": "Recycle metal cans separately.",
+     "ko": "금속 캔은 따로 재활용해."
+    },
+    {
+     "en": "Gold and silver are precious metals.",
+     "ko": "금과 은은 귀금속이에요."
+    },
+    {
+     "en": "He likes listening to heavy metal music.",
+     "ko": "그는 헤비메탈 음악 듣는 것을 좋아해요."
+    },
+    {
+     "en": "The metal gate was cold to the touch.",
+     "ko": "그 금속 대문은 만지면 차가웠어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "iron",
+     "ko": "철",
+     "en": "A piece of iron."
+    },
+    {
+     "type": "연관어",
+     "word": "gold",
+     "ko": "금",
+     "en": "Pure gold."
+    },
+    {
+     "type": "연관어",
+     "word": "silver",
+     "ko": "은",
+     "en": "A silver spoon."
+    },
+    {
+     "type": "연관어",
+     "word": "steel",
+     "ko": "강철",
+     "en": "Strong steel."
+    },
+    {
+     "type": "연관어",
+     "word": "recycle",
+     "ko": "재활용하다",
+     "en": "Recycle cans."
+    },
+    {
+     "type": "연관어",
+     "word": "hard",
+     "ko": "단단한",
+     "en": "A hard surface."
+    }
+   ]
+  },
+  "399": {
+   "word": "capable",
+   "overview": [
+    "capable은 '유능한', '~할 수 있는'이라는 뜻의 형용사입니다.",
+    "be capable of(~을 할 수 있다), a capable leader(유능한 지도자)처럼 씁니다.",
+    "명사 capability(능력)도 자주 씁니다.",
+    "able과 비슷하지만, capable of는 뒤에 명사나 동명사가 옵니다."
+   ],
+   "easy": [
+    {
+     "word": "able",
+     "en": "Able to swim.",
+     "ko": "수영할 수 있는."
+    },
+    {
+     "word": "skilled",
+     "en": "A skilled worker.",
+     "ko": "숙련된 노동자."
+    }
+   ],
+   "etymology": [
+    "capable은 라틴어 capabilis(붙잡을 수 있는, 담을 수 있는)에서 온 단어입니다.",
+    "capere(잡다, 담다)에서 나온 말로, capture(붙잡다), capacity(수용력)와 같은 가족입니다.",
+    "'무언가를 해낼 힘을 담고 있는'이라는 뜻이 '유능한', '~할 수 있는'으로 이어졌습니다.",
+    "capacity(용량, 능력)도 같은 뿌리에서 나온 단어입니다.",
+    "capable의 핵심 이미지는 '주어진 일을 거뜬히 해내는 능력 💪'입니다."
+   ],
+   "meanings": [
+    "유능한",
+    "(capable of) ~을 할 수 있는"
+   ],
+   "examples": [
+    {
+     "en": "She is a very capable teacher.",
+     "ko": "그녀는 아주 유능한 선생님이에요."
+    },
+    {
+     "en": "This machine is capable of great speed.",
+     "ko": "이 기계는 아주 빠른 속도를 낼 수 있어요."
+    },
+    {
+     "en": "He is capable of solving difficult problems.",
+     "ko": "그는 어려운 문제를 풀 수 있는 능력이 있어요."
+    },
+    {
+     "en": "A capable team can handle any challenge.",
+     "ko": "유능한 팀은 어떤 도전이든 다룰 수 있어요."
+    },
+    {
+     "en": "I believe you're capable of great things.",
+     "ko": "나는 네가 대단한 일을 해낼 수 있다고 믿어."
+    },
+    {
+     "en": "She proved herself capable under pressure.",
+     "ko": "그녀는 압박 속에서도 자신의 능력을 증명했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "able",
+     "ko": "할 수 있는",
+     "en": "Able to try."
+    },
+    {
+     "type": "유의어",
+     "word": "skilled",
+     "ko": "숙련된",
+     "en": "A skilled artist."
+    },
+    {
+     "type": "파생어",
+     "word": "capability",
+     "ko": "능력",
+     "en": "A special capability."
+    },
+    {
+     "type": "연관어",
+     "word": "talent",
+     "ko": "재능",
+     "en": "A natural talent."
+    },
+    {
+     "type": "연관어",
+     "word": "competent",
+     "ko": "능숙한",
+     "en": "A competent worker."
+    },
+    {
+     "type": "연관어",
+     "word": "skill",
+     "ko": "기술",
+     "en": "A useful skill."
+    }
+   ]
+  },
+  "2224": {
+   "word": "result",
+   "overview": [
+    "result는 '결과'라는 뜻의 명사이자 '~의 결과로 생기다'라는 뜻의 동사입니다.",
+    "as a result(그 결과로), get good results(좋은 결과를 얻다)처럼 씁니다.",
+    "result in은 '~라는 결과를 낳다', result from은 '~에서 비롯되다'라는 뜻입니다.",
+    "시험 '성적'이라는 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "outcome",
+     "en": "A good outcome.",
+     "ko": "좋은 결과."
+    },
+    {
+     "word": "score",
+     "en": "Check the score.",
+     "ko": "점수를 확인해."
+    }
+   ],
+   "etymology": [
+    "result는 라틴어 resultare(튀어나오다, 되돌아 튀다)에서 온 단어입니다.",
+    "re(다시)와 salire(뛰다)가 합쳐진 말입니다.",
+    "insult(모욕하다, '뛰어들다'), salient(두드러진, '튀어나온')도 salire에서 나온 단어들입니다.",
+    "'원인에서 튀어나온 것'이라는 뜻이 '결과'로 이어졌습니다.",
+    "result의 핵심 이미지는 '원인에서 자연스럽게 튀어나온 결과 📊'입니다."
+   ],
+   "meanings": [
+    "결과 (명사)",
+    "성적 (명사)",
+    "~의 결과로 생기다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "We got good results on the test.",
+     "ko": "우리는 시험에서 좋은 성적을 받았어요."
+    },
+    {
+     "en": "As a result, the game was canceled.",
+     "ko": "그 결과로 경기가 취소되었어요."
+    },
+    {
+     "en": "Hard work results in success.",
+     "ko": "노력은 성공이라는 결과를 낳아요."
+    },
+    {
+     "en": "The accident resulted from careless driving.",
+     "ko": "그 사고는 부주의한 운전에서 비롯됐어요."
+    },
+    {
+     "en": "The experiment gave surprising results.",
+     "ko": "그 실험은 놀라운 결과를 보여 줬어요."
+    },
+    {
+     "en": "Check the results of the election online.",
+     "ko": "선거 결과를 온라인으로 확인해."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "outcome",
+     "ko": "결과",
+     "en": "A positive outcome."
+    },
+    {
+     "type": "연관어",
+     "word": "effect",
+     "ko": "효과, 결과",
+     "en": "A good effect."
+    },
+    {
+     "type": "연관어",
+     "word": "cause",
+     "ko": "원인",
+     "en": "The main cause."
+    },
+    {
+     "type": "연관어",
+     "word": "score",
+     "ko": "점수",
+     "en": "A high score."
+    },
+    {
+     "type": "연관어",
+     "word": "success",
+     "ko": "성공",
+     "en": "Great success."
+    },
+    {
+     "type": "연관어",
+     "word": "test",
+     "ko": "시험",
+     "en": "A hard test."
+    }
+   ]
+  },
+  "2683": {
+   "word": "text",
+   "overview": [
+    "text는 '글', '본문'이라는 뜻의 명사이자 '문자 메시지를 보내다'라는 뜻의 동사입니다.",
+    "the text of the book(책의 본문)처럼 씁니다.",
+    "'문자 메시지'라는 뜻으로도 아주 자주 씁니다. send a text(문자를 보내다)",
+    "text me(나에게 문자해)처럼 동사로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "message",
+     "en": "Send a message.",
+     "ko": "메시지를 보내."
+    },
+    {
+     "word": "writing",
+     "en": "Written text.",
+     "ko": "쓰인 글."
+    }
+   ],
+   "etymology": [
+    "text는 라틴어 textus(짜인 것, 직물)에서 온 단어입니다.",
+    "texere(짜다, 엮다)에서 나온 말로, textile(직물), context(문맥)와 같은 가족입니다.",
+    "'실을 짜듯 글자를 엮어 만든 글'이라는 뜻이 '본문', '글'로 이어졌습니다.",
+    "'문자 메시지'라는 뜻은 이 '글'이라는 뜻이 휴대폰 시대에 좁혀진 것입니다.",
+    "text의 핵심 이미지는 '한 자 한 자 짜여 만들어진 글 📱'입니다."
+   ],
+   "meanings": [
+    "글, 본문 (명사)",
+    "문자 메시지 (명사)",
+    "문자 메시지를 보내다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "Read the text carefully before you answer.",
+     "ko": "답하기 전에 본문을 신중하게 읽어."
+    },
+    {
+     "en": "Can you text me when you arrive?",
+     "ko": "도착하면 나한테 문자 보내 줄래?"
+    },
+    {
+     "en": "I sent her a quick text.",
+     "ko": "나는 그녀에게 짧은 문자를 보냈어요."
+    },
+    {
+     "en": "The text of the speech was very moving.",
+     "ko": "그 연설의 내용은 아주 감동적이었어요."
+    },
+    {
+     "en": "He never replies to my texts.",
+     "ko": "그는 내 문자에 절대 답하지 않아요."
+    },
+    {
+     "en": "Please highlight the important text.",
+     "ko": "중요한 글에 표시해 줘."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "message",
+     "ko": "메시지",
+     "en": "A short message."
+    },
+    {
+     "type": "연관어",
+     "word": "write",
+     "ko": "쓰다",
+     "en": "Write clearly."
+    },
+    {
+     "type": "연관어",
+     "word": "phone",
+     "ko": "전화, 휴대폰",
+     "en": "Use your phone."
+    },
+    {
+     "type": "연관어",
+     "word": "book",
+     "ko": "책",
+     "en": "A thick book."
+    },
+    {
+     "type": "연관어",
+     "word": "reply",
+     "ko": "답장하다",
+     "en": "Reply quickly."
+    },
+    {
+     "type": "연관어",
+     "word": "context",
+     "ko": "맥락",
+     "en": "The right context."
+    }
+   ]
+  },
+  "2193": {
+   "word": "remove",
+   "overview": [
+    "remove는 '제거하다', '없애다'라는 뜻의 동사입니다.",
+    "remove your shoes(신발을 벗다), remove a stain(얼룩을 제거하다)처럼 씁니다.",
+    "직책에서 '쫓아내다', '해고하다'라는 뜻으로도 씁니다.",
+    "명사 removal(제거)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "take off",
+     "en": "Take off your coat.",
+     "ko": "코트를 벗어."
+    },
+    {
+     "word": "get rid of",
+     "en": "Get rid of trash.",
+     "ko": "쓰레기를 없애다."
+    }
+   ],
+   "etymology": [
+    "remove는 라틴어 removere(뒤로 옮기다, 치우다)에서 온 단어입니다.",
+    "re(다시, 뒤로)와 movere(움직이다)가 합쳐진 말입니다.",
+    "move(움직이다), motion(움직임)과 같은 가족입니다.",
+    "'무언가를 원래 자리에서 다른 곳으로 옮겨 없애다'라는 뜻이 그대로 이어져 왔습니다.",
+    "remove의 핵심 이미지는 '거슬리는 것을 깔끔하게 치워 버리기 🧹'입니다."
+   ],
+   "meanings": [
+    "제거하다, 없애다",
+    "(옷 등을) 벗다",
+    "(직책에서) 해고하다"
+   ],
+   "examples": [
+    {
+     "en": "Please remove your shoes at the door.",
+     "ko": "문 앞에서 신발을 벗어 주세요."
+    },
+    {
+     "en": "She removed the stain from her shirt.",
+     "ko": "그녀는 셔츠에서 얼룩을 제거했어요."
+    },
+    {
+     "en": "The teacher removed the poster from the wall.",
+     "ko": "선생님이 벽에서 포스터를 떼어 냈어요."
+    },
+    {
+     "en": "He was removed from his position.",
+     "ko": "그는 자리에서 해고됐어요."
+    },
+    {
+     "en": "Remove all the seeds before cooking.",
+     "ko": "요리하기 전에 씨앗을 전부 제거해."
+    },
+    {
+     "en": "Use this cream to remove makeup easily.",
+     "ko": "이 크림을 써서 화장을 쉽게 지워."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "take off",
+     "ko": "벗다, 제거하다",
+     "en": "Take off a lid."
+    },
+    {
+     "type": "유의어",
+     "word": "get rid of",
+     "ko": "없애다",
+     "en": "Get rid of it."
+    },
+    {
+     "type": "파생어",
+     "word": "removal",
+     "ko": "제거",
+     "en": "Stain removal."
+    },
+    {
+     "type": "연관어",
+     "word": "delete",
+     "ko": "삭제하다",
+     "en": "Delete a file."
+    },
+    {
+     "type": "연관어",
+     "word": "clean",
+     "ko": "청소하다",
+     "en": "Clean thoroughly."
+    },
+    {
+     "type": "연관어",
+     "word": "erase",
+     "ko": "지우다",
+     "en": "Erase the board."
+    }
+   ]
+  },
+  "2140": {
+   "word": "rate",
+   "overview": [
+    "rate는 '비율', '속도'라는 뜻의 명사이자 '평가하다'라는 뜻의 동사입니다.",
+    "a growth rate(성장률), an interest rate(이자율)처럼 씁니다.",
+    "at any rate는 '어쨌든'이라는 뜻의 표현입니다.",
+    "동사로는 '~을 평가하다'라는 뜻입니다. rate a movie(영화를 평가하다)"
+   ],
+   "easy": [
+    {
+     "word": "speed",
+     "en": "A fast speed.",
+     "ko": "빠른 속도."
+    },
+    {
+     "word": "grade",
+     "en": "Give a grade.",
+     "ko": "등급을 매기다."
+    }
+   ],
+   "etymology": [
+    "rate는 라틴어 rata(정해진 몫, 계산된 것)에서 온 단어입니다.",
+    "reri(계산하다, 생각하다)에서 나온 말로, reason(이유, 이성)과 같은 가족입니다.",
+    "'정해진 비율에 따라 계산된 것'이라는 뜻이 '비율', '속도'로 이어졌습니다.",
+    "'등급을 매기다'라는 동사 뜻도 여기서 자연스럽게 넓어졌습니다.",
+    "rate의 핵심 이미지는 '얼마나 빠르고 얼마만큼인지 나타내는 비율 📈'입니다."
+   ],
+   "meanings": [
+    "비율, 속도 (명사)",
+    "요금 (명사)",
+    "평가하다, 등급을 매기다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "The country's growth rate increased.",
+     "ko": "그 나라의 성장률이 증가했어요."
+    },
+    {
+     "en": "At this rate, we'll finish by noon.",
+     "ko": "이 속도라면 정오까지 끝낼 거예요."
+    },
+    {
+     "en": "What's the interest rate on this account?",
+     "ko": "이 계좌의 이자율이 어떻게 돼요?"
+    },
+    {
+     "en": "How would you rate this movie?",
+     "ko": "이 영화를 어떻게 평가하시겠어요?"
+    },
+    {
+     "en": "The hotel offers a special rate for students.",
+     "ko": "그 호텔은 학생들에게 특별 요금을 제공해요."
+    },
+    {
+     "en": "At any rate, we should try our best.",
+     "ko": "어쨌든, 우리는 최선을 다해야 해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "speed",
+     "ko": "속도",
+     "en": "Full speed."
+    },
+    {
+     "type": "연관어",
+     "word": "percent",
+     "ko": "퍼센트",
+     "en": "Fifty percent."
+    },
+    {
+     "type": "연관어",
+     "word": "grade",
+     "ko": "등급",
+     "en": "A high grade."
+    },
+    {
+     "type": "연관어",
+     "word": "fee",
+     "ko": "요금",
+     "en": "An entry fee."
+    },
+    {
+     "type": "연관어",
+     "word": "review",
+     "ko": "평가하다, 검토하다",
+     "en": "Review the plan."
+    },
+    {
+     "type": "연관어",
+     "word": "average",
+     "ko": "평균",
+     "en": "The average rate."
+    }
+   ]
+  },
+  "2320": {
+   "word": "scream",
+   "overview": [
+    "scream은 '비명을 지르다'라는 뜻의 동사이자 '비명'이라는 뜻의 명사입니다.",
+    "scream in fear(무서워서 비명을 지르다)처럼 씁니다.",
+    "shout보다 더 높고 날카로운 소리를 나타냅니다.",
+    "'크게 웃다'라는 뜻으로도 씁니다. scream with laughter(자지러지게 웃다)"
+   ],
+   "easy": [
+    {
+     "word": "shout",
+     "en": "Shout loudly.",
+     "ko": "크게 소리치다."
+    },
+    {
+     "word": "yell",
+     "en": "Yell for help.",
+     "ko": "도와달라고 외치다."
+    }
+   ],
+   "etymology": [
+    "scream은 옛 노르드어(바이킹의 말) skrikja(날카로운 소리를 내다)와 이어지는 말에서 온 단어입니다.",
+    "'날카롭고 높은 소리'를 흉내 낸 의성어라고 봅니다.",
+    "shriek(끼익 소리 지르다)도 같은 뿌리에서 나온 형제 단어라고 봅니다.",
+    "천 년 가까이 '두려움이나 고통에 지르는 높은 소리'라는 뜻으로 쓰여 왔습니다.",
+    "scream의 핵심 이미지는 '온몸으로 내지르는 날카로운 비명 😱'입니다."
+   ],
+   "meanings": [
+    "비명을 지르다, 소리치다 (동사)",
+    "비명, 절규 (명사)"
+   ],
+   "examples": [
+    {
+     "en": "She screamed when she saw the spider.",
+     "ko": "그녀는 거미를 보고 비명을 질렀어요."
+    },
+    {
+     "en": "We heard a scream from the next room.",
+     "ko": "우리는 옆방에서 비명을 들었어요."
+    },
+    {
+     "en": "The kids screamed with excitement on the ride.",
+     "ko": "아이들은 놀이 기구에서 신나서 소리 질렀어요."
+    },
+    {
+     "en": "He screamed for help in the water.",
+     "ko": "그는 물속에서 도와달라고 소리쳤어요."
+    },
+    {
+     "en": "They screamed with laughter at the joke.",
+     "ko": "그들은 그 농담에 자지러지게 웃었어요."
+    },
+    {
+     "en": "The horror movie made everyone scream.",
+     "ko": "그 공포 영화는 모두를 비명 지르게 만들었어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "shout",
+     "ko": "소리치다",
+     "en": "Shout loudly."
+    },
+    {
+     "type": "유의어",
+     "word": "yell",
+     "ko": "외치다",
+     "en": "Yell out loud."
+    },
+    {
+     "type": "연관어",
+     "word": "cry",
+     "ko": "울다, 외치다",
+     "en": "Cry out."
+    },
+    {
+     "type": "연관어",
+     "word": "loud",
+     "ko": "시끄러운",
+     "en": "A loud voice."
+    },
+    {
+     "type": "연관어",
+     "word": "fear",
+     "ko": "두려움",
+     "en": "Fear of heights."
+    },
+    {
+     "type": "연관어",
+     "word": "laugh",
+     "ko": "웃다",
+     "en": "Laugh out loud."
+    }
+   ]
   }
  }
 }
