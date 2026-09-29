@@ -80,7 +80,7 @@ const CHAPTERS = [
                 ],
                 "right": [
                     "왕자가 빙그레 웃었지요. 제비는 부리로 루비를 톡 뽑아 물고 힘껏 날아올랐습니다. 지붕들이 발밑으로 지나갔지요.",
-                    "굴뚝에서 하얀 김이 몽글몽글 올라왔습니다. 제비는 열린 창으로 쏙 들어가 루비를 손가락에 끼는 골무 옆에 놓았지요. 아주머니는 바느질감을 안은 채 잠들어 있었습니다."
+                    "굴뚝에서 하얀 연기가 몽글몽글 올라왔습니다. 제비는 열린 창으로 쏙 들어가 루비를 손가락에 끼는 골무 옆에 놓았지요. 아주머니는 바느질감을 안은 채 잠들어 있었습니다."
                 ]
             },
             {
@@ -212,8 +212,8 @@ const CHAPTERS = [
                 "art": "07-ending.webp",
                 "emoji": "✨",
                 "left": [
-                    "납으로 된 심장이 두 쪽으로 갈라진 것이었습니다. 그만큼 추운 밤이었지요.",
-                    "이튿날 아침 시장이 신하들을 데리고 광장을 지나갔습니다. 기둥을 올려다보던 시장이 걸음을 뚝 멈췄지요.",
+                    "제비가 죽자 왕자는 슬픔을 견디지 못했습니다. 납으로 된 심장이 두 쪽으로 갈라진 것이었지요.",
+                    "이튿날 아침 도시를 다스리는 시장이 신하들을 데리고 광장을 지나갔습니다. 기둥을 올려다보던 시장이 걸음을 뚝 멈췄지요.",
                     "\"저게 무슨 꼴인가! 루비도 없고 눈도 없구먼.\"",
                     "신하 하나가 거들었지요. \"금박도 다 벗겨졌습니다.\""
                 ],
@@ -232,14 +232,14 @@ const CHAPTERS = [
                     "일꾼들은 결국 그것을 쓰레기 더미에 내다 버렸습니다. 죽은 제비가 먼저 버려진 곳이었지요."
                 ],
                 "right": [
-                    "그 도시에서 가장 귀한 것 둘이 그렇게 나란히 놓이게 된 것이지요.",
+                    "남을 위해 모든 것을 내준 왕자의 심장과, 끝까지 곁을 지킨 제비. 그 도시에서 가장 귀한 것 둘이 그렇게 나란히 놓였지요.",
                     "세월이 흐른 뒤 누가 물었습니다. \"그 많던 금박은 다 어디 갔을까?\"",
                     "\"저 골목 아이들 손으로 갔지.\"",
                     "사람들은 그제야 고개를 끄덕였지요."
                 ]
             }
         ],
-        "moral": "가진 것을 나눌수록 겉모습은 초라해질지 몰라도, 정말 귀한 것은 끝까지 남는답니다."
+        "moral": "가진 것을 다 나누어 겉모습은 초라해져도, 남을 아끼는 마음은 불에도 녹지 않고 남는답니다."
     }
 ];
 
@@ -620,7 +620,7 @@ const EN = {
                     ],
                     right: [
                         "The prince smiled. The swallow pulled out the ruby with his beak and flew up hard.",
-                        "The roofs went by beneath him, and white steam puffed out of the chimneys.",
+                        "The roofs went by beneath him, and white smoke puffed out of the chimneys.",
                         "He slipped in through the open window and laid the ruby beside the thimble.",
                         "The woman had fallen asleep over her sewing."
                     ]
@@ -908,7 +908,7 @@ const EN = {
         '03-ruby.webp': [
             { word: 'ache', meaning: '시리다, 아프다', sentence: 'His beak ached with it.' },
             { word: 'sheepishly', meaning: '슬그머니, 멋쩍게', sentence: 'He asked, a little sheepishly.' },
-            { word: 'chimney', meaning: '굴뚝', sentence: "White steam puffed out of the chimneys." },
+            { word: 'chimney', meaning: '굴뚝', sentence: "White smoke puffed out of the chimneys." },
             { word: 'thimble', meaning: '골무', sentence: "He laid the ruby beside the thimble." }
         ],
         '03-ruby-2.webp': [
@@ -956,7 +956,7 @@ const EN = {
         ],
         '07-ending.webp': [
             { word: 'leaden', meaning: '납으로 된', sentence: 'The leaden heart had broken in two.' },
-            { word: 'mayor', meaning: '시장', sentence: "The mayor crossed the square." },
+            { word: 'mayor', meaning: '도시를 다스리는 사람, 시장', sentence: "The mayor crossed the square." },
             { word: 'councillor', meaning: '신하, 의원', sentence: "The mayor crossed the square with his councillors." },
             { word: 'beggar', meaning: '거지', sentence: 'He is little better than a beggar.' },
             { word: 'melt down', meaning: '녹이다', sentence: 'We might melt him down.' }
@@ -1013,7 +1013,7 @@ const WORDS_KO = {
     "03-ruby.webp": [
         { w: "부리", k: "새의 뾰족한 입.", s: "밤바람이 차가워 부리가 다 시렸지요." },
         { w: "빙그레", k: "소리 없이 부드럽게 웃는 모습.", s: "왕자가 빙그레 웃었지요." },
-        { w: "몽글몽글", k: "김이나 연기가 동글동글 피어오르는 모습.", s: "굴뚝에서 하얀 김이 몽글몽글 올라왔습니다." },
+        { w: "몽글몽글", k: "김이나 연기가 동글동글 피어오르는 모습.", s: "굴뚝에서 하얀 연기가 몽글몽글 올라왔습니다." },
         { w: "바느질감", k: "바느질을 하려고 마련해 둔 천.", s: "아주머니는 바느질감을 안은 채 잠들어 있었습니다." }
     ],
     "03-ruby-2.webp": [
