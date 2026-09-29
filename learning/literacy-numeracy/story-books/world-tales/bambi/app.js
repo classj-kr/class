@@ -8,7 +8,7 @@ const CHAPTERS = [
                 "emoji": "🌿",
                 "left": [
                     "깊은 숲 한가운데 덤불이 우거진 곳이 있었습니다. 고사리가 무성해서 아무도 들여다볼 수 없었지요.",
-                    "어느 여름날 아침 그곳에서 새끼 노루가 태어났습니다. 이름은 밤비였지요. 온몸에 하얀 점이 박혀 있었습니다.",
+                    "어느 여름날 아침 그곳에서 아기 사슴이 태어났습니다. 이름은 밤비였지요. 온몸에 하얀 점이 박혀 있었습니다.",
                     "눈이 크고 까맸지요. 코끝은 까맣고 촉촉했습니다."
                 ],
                 "right": [
@@ -21,7 +21,7 @@ const CHAPTERS = [
                 "art": "01-birth-2.webp",
                 "emoji": "🌿",
                 "left": [
-                    "소문은 금세 숲에 퍼졌습니다. 이웃들이 하나둘 구경을 왔지요.",
+                    "밤비가 태어났다는 소문은 금세 숲에 퍼졌습니다. 이웃들이 하나둘 구경을 왔지요.",
                     "토끼 아저씨가 제일 먼저 왔습니다. 코를 씰룩거리며 밤비를 들여다보았지요. \"허허, 벌써 눈을 떴네!\"",
                     "까치도 나뭇가지에 앉아 재잘거렸습니다."
                 ],
@@ -42,7 +42,7 @@ const CHAPTERS = [
                 "emoji": "🌼",
                 "left": [
                     "며칠이 지나자 밤비는 제법 잘 걸었습니다. 어느 아침 어미가 말했지요. \"오늘은 풀밭에 가 보자꾸나.\"",
-                    "두 사슴은 좁은 숲길을 걸었습니다. 나무가 점점 성글어졌지요. 이윽고 눈앞이 환하게 트였습니다."
+                    "두 사슴은 좁은 숲길을 걸었습니다. 나무 사이가 점점 넓어졌지요. 이윽고 눈앞이 환하게 트였습니다."
                 ],
                 "right": [
                     "끝없는 풀밭이 펼쳐져 있었지요. 하늘이 통째로 내려앉은 것 같았습니다.",
@@ -73,7 +73,7 @@ const CHAPTERS = [
                 "emoji": "🐇",
                 "left": [
                     "풀밭에는 다른 사슴들도 나와 있었습니다. 밤비 또래도 있었지요.",
-                    "팔리네라는 어린 노루였습니다. 목에 하얀 무늬가 있었지요.",
+                    "팔리네라는 어린 사슴이었습니다. 목에 하얀 무늬가 있었지요.",
                     "\"안녕! 너도 오늘 처음 왔니?\"",
                     "밤비와 팔리네는 금세 친해졌습니다."
                 ],
@@ -89,7 +89,7 @@ const CHAPTERS = [
                 "left": [
                     "풀밭에는 이웃이 많았습니다. 토끼는 늘 귀를 쫑긋 세우고 있었지요.",
                     "조금만 소리가 나도 벌떡 일어섰습니다. 다람쥐는 나무 위에서 수다를 떨었지요. \"오늘은 도토리가 잘 여물었어!\"",
-                    "고보라는 어린 노루도 있었습니다. 몸이 약해 금방 숨이 찼지요."
+                    "고보라는 어린 사슴도 있었습니다. 몸이 약해 금방 숨이 찼지요."
                 ],
                 "right": [
                     "고보가 헉헉거리며 말했습니다. \"조금만 쉬었다 하자, 응?\"",
@@ -183,7 +183,7 @@ const CHAPTERS = [
                 "right": [
                     "어미가 다급하게 외쳤습니다. \"달려라! 뒤돌아보지 말고 달려라!\"",
                     "밤비는 그대로 내달렸지요. 숨이 턱에 닿도록 달렸습니다.",
-                    "뒤에서 무슨 소리가 났지만 돌아보지 않았지요. 어머니가 그러라고 했으니까요."
+                    "뒤에서 탕! 탕! 소리가 났지만 돌아보지 않았지요. 어머니가 그러라고 했으니까요."
                 ]
             },
             {
@@ -196,7 +196,7 @@ const CHAPTERS = [
                 ],
                 "right": [
                     "어미가 보이지 않았지요. 밤비는 어미를 불렀습니다. 하지만 아무 대답도 없었지요.",
-                    "눈이 조용히 내리고 있었지요. 둘레가 온통 하얗기만 했습니다. 밤비는 그 자리에 오래 서 있었지요.",
+                    "어미는 끝내 돌아오지 않았습니다. 사냥꾼들에게 목숨을 잃은 것이었지요. 밤비는 그 자리에 오래 서 있었습니다.",
                     "그날 밤비는 처음으로 혼자 밤을 보냈습니다. 덤불 속에서 몸을 웅크렸지요."
                 ]
             }
@@ -252,7 +252,7 @@ const CHAPTERS = [
                 "right": [
                     "늙은 사슴은 숲 깊은 곳으로 걸어갔습니다. 밤비도 뒤를 따랐지요. 좁은 길이 하나 나 있었습니다.",
                     "이윽고 늙은 사슴이 멈춰 서서 낮게 말했지요. \"잘 보아라.\"",
-                    "발밑에서 사람 냄새가 훅 끼쳤지요."
+                    "발밑에 사람 발자국이 찍혀 있었지요. 사냥꾼들이 다니는 길이었습니다."
                 ]
             },
             {
@@ -286,7 +286,7 @@ const COVER = {
     title: '아기 사슴 이야기',
     intro: [
         '오스트리아의 작가 펠릭스 잘텐이 1923년에 펴낸 작품이에요. 원래 제목은 밤비, 숲속의 삶이라는 뜻이랍니다.',
-        '숲에서 태어난 새끼 노루가 계절을 여러 번 겪으며 자라는 이야기예요. 사슴의 눈으로 본 숲을 그리다 보니, 사람은 늘 멀리서 다가오는 낯선 존재로 그려진답니다.'
+        '숲에서 태어난 아기 사슴이 계절을 여러 번 겪으며 자라는 이야기예요. 사슴의 눈으로 본 숲이라, 사람은 늘 멀리서 다가오는 무서운 손님으로 나온답니다.'
     ]
 };
 
@@ -394,7 +394,7 @@ const AFTERWORD = {
                 "펠릭스 잘텐이 백 년쯤 전에 쓴 이야기입니다. 원래는 어른이 읽는 책이었지요.",
                 "어미가 밤비에게 가르친 것은 달리는 법이 아니었습니다. 먼저 멈춰 서서 귀를 기울이는 것이었지요.",
                 "풀밭에 나갈 때도 어미는 바로 나가지 않습니다. 한참을 서서 듣고 냄새를 맡은 뒤에야 발을 내딛지요. 숲에서 사는 법이 그것입니다.",
-                "밤비가 늙은 사슴을 처음 봤을 때 어미는 아무 말도 하지 않습니다. 다만 고개를 숙이지요. 그것으로 그가 누구인지 알 수 있었습니다."
+                "밤비가 늙은 사슴을 처음 봤을 때 어미는 아무 말도 하지 않습니다. 다만 고개를 숙이지요. 그것만 보고도 그가 숲의 사슴들이 모두 어려워하는 사슴이라는 것을 알 수 있었지요."
             ],
             right: [
                 "겨울에 사슴들은 나무껍질을 먹습니다. 잘텐은 숲을 오래 다닌 사람이라 이런 대목이 정확합니다.",
@@ -748,7 +748,7 @@ const EN = {
                     right: [
                         "\"Run!\" cried his mother. \"Run, and don't look back!\"",
                         "Bambi ran. He ran until he could hardly breathe.",
-                        "There were sounds behind him, but he did not look round, because his mother had told him not to."
+                        "Bang! Bang! went something behind him, but he did not look round, because his mother had told him not to."
                     ]
                 },
                 {
@@ -761,7 +761,7 @@ const EN = {
                     ],
                     right: [
                         "His mother was not there. Bambi called for her, but there was no answer.",
-                        "The snow came down quietly. Everything around him was white. Bambi stood there a long time.",
+                        "His mother never came back. The hunters had taken her life. Bambi stood there a long time.",
                         "That night, for the first time, he slept alone, curled up in a thicket."
                     ]
                 }
@@ -818,7 +818,7 @@ const EN = {
                     right: [
                         "The old stag walked into the deep part of the wood, and Bambi followed. A narrow path ran through it.",
                         "At last the old stag stopped. \"Look closely,\" he said, low.",
-                        "The smell of a person came up from the ground at their feet."
+                        "There were human footprints in the earth at their feet. It was a path the hunters used."
                     ]
                 },
                 {
@@ -915,7 +915,7 @@ const EN = {
         '01-birth.webp': [
             { word: 'undergrowth', meaning: '덤불', sentence: 'A place thick with undergrowth.' },
             { word: 'fern', meaning: '고사리', sentence: 'So overgrown with fern that nobody could see in.' },
-            { word: 'fawn', meaning: '새끼 노루', sentence: 'One summer morning a fawn was born there.' },
+            { word: 'fawn', meaning: '새끼 사슴', sentence: 'One summer morning a fawn was born there.' },
             { word: 'twig', meaning: '잔가지', sentence: 'His legs were as thin as twigs.' },
             { word: 'lick', meaning: '핥다', sentence: 'His mother licked him all over.' }
         ],
@@ -928,7 +928,7 @@ const EN = {
         ],
         '02-meadow.webp': [
             { word: 'meadow', meaning: '풀밭', sentence: 'Let us go to the meadow today.' },
-            { word: 'thin', meaning: '성글어지다', sentence: 'The trees grew thinner and thinner.' },
+            { word: 'thin', meaning: '듬성듬성해지다', sentence: 'The trees grew thinner and thinner.' },
             { word: 'open out', meaning: '트이다', sentence: 'And then it opened out bright in front of them.' },
             { word: 'stand in one’s way', meaning: '앞을 막다', sentence: 'But his mother stood in his way.' }
         ],
@@ -940,7 +940,7 @@ const EN = {
             { word: 'not easy in one’s mind', meaning: '마음이 놓이지 않는', sentence: 'She was not easy in her mind.' }
         ],
         '03-friends.webp': [
-            { word: 'doe', meaning: '암노루', sentence: 'One was a young doe called Faline.' },
+            { word: 'doe', meaning: '암사슴', sentence: 'One was a young doe called Faline.' },
             { word: 'throat', meaning: '목', sentence: 'With a white mark on her throat.' },
             { word: 'in no time', meaning: '금세', sentence: 'The two of them were friends in no time.' },
             { word: 'part', meaning: '갈라지다', sentence: 'It parted like water as they ran through it.' },
@@ -1028,8 +1028,8 @@ const EN = {
    영어는 숙어가 걸림돌이고, 우리말은 옛말이나 잘 안 쓰는 말이 걸림돌이다. */
 const WORDS_KO = {
     "cover.webp": [
-        { w: "겪다", k: "어떤 일을 몸으로 지나 보내다.", s: "숲에서 태어난 새끼 노루가 계절을 여러 번 겪으며 자라는 이야기예요." },
-        { w: "존재", k: "이 세상에 있는 것.", s: "사슴의 눈으로 본 숲을 그리다 보니, 사람은 늘 멀리서 다가오는 낯선 존재로 그려진답니다." }
+        { w: "겪다", k: "어떤 일을 몸으로 지나 보내다.", s: "숲에서 태어난 아기 사슴이 계절을 여러 번 겪으며 자라는 이야기예요." },
+        { w: "계절", k: "봄·여름·가을·겨울 가운데 하나.", s: "숲에서 태어난 아기 사슴이 계절을 여러 번 겪으며 자라는 이야기예요." }
     ],
     "01-birth.webp": [
         { w: "우거지다", k: "풀과 나무가 빽빽하게 자라다.", s: "깊은 숲 한가운데 덤불이 우거진 곳이 있었습니다." },
@@ -1108,7 +1108,7 @@ const WORDS_KO = {
     "08-ending.webp": [
         { w: "뒤를 따르다", k: "앞선 이의 뒤를 좇아가다.", s: "밤비도 뒤를 따랐지요." },
         { w: "나다", k: "길이나 자리가 생기다.", s: "좁은 길이 하나 나 있었습니다." },
-        { w: "끼치다", k: "냄새나 기운이 확 덮쳐 오다.", s: "발밑에서 사람 냄새가 훅 끼쳤지요." }
+        { w: "찍히다", k: "눌려서 자국이 남다.", s: "발밑에 사람 발자국이 찍혀 있었지요." }
     ],
     "08-ending-2.webp": [
         { w: "섞이다", k: "여러 가지가 한데 어울리다.", s: "바람에 낯선 냄새가 섞여 있었지요." },
