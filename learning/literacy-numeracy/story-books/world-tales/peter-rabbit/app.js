@@ -21,11 +21,11 @@ const CHAPTERS = [
                 "emoji": "🏠",
                 "left": [
                     "플롭시가 물었습니다. \"왜요, 엄마?\"",
-                    "어머니의 얼굴이 조금 어두워졌지요. \"거기서 너희 아버지가 크게 혼이 났단다. 다시는 돌아오지 못했지.\"",
+                    "어머니의 얼굴이 조금 어두워졌지요. \"너희 아버지가 거기서 맥그리거 아저씨한테 붙잡혔단다. 그 뒤로 다시는 집에 돌아오지 못했지.\"",
                     "아기 토끼들은 숨을 죽였습니다. 어머니가 다짐을 받았지요. \"알겠니? 절대 가면 안 된다.\""
                 ],
                 "right": [
-                    "세 남매는 얌전히 고개를 끄덕였지요. 그런데 피터는 딴 데를 보고 있었습니다.",
+                    "세 자매는 얌전히 고개를 끄덕였지요. 그런데 피터는 딴 데를 보고 있었습니다.",
                     "어머니가 나가자 피터의 눈이 자꾸 밭 쪽으로 갔지요. 가지 말라니까 오히려 더 궁금해졌거든요."
                 ]
             }
@@ -39,7 +39,7 @@ const CHAPTERS = [
                 "art": "02-gate.webp",
                 "emoji": "🚪",
                 "left": [
-                    "세 남매는 들판으로 나갔습니다. 길가에서 입가가 새까매지도록 검은딸기를 따 먹었지요.",
+                    "세 자매는 들판으로 나갔습니다. 길가에서 입가가 새까매지도록 검은딸기를 따 먹었지요.",
                     "그동안 피터는 반대쪽으로 달렸습니다. 곧장 맥그리거 아저씨네 밭으로 갔지요. 밭은 나무 대문으로 막혀 있었습니다."
                 ],
                 "right": [
@@ -256,7 +256,7 @@ const CHAPTERS = [
                 "art": "08-ending-2.webp",
                 "emoji": "🍵",
                 "left": [
-                    "그동안 세 남매는 저녁을 먹었습니다. 빵과 우유와 검은딸기가 나왔지요. 셋은 배불리 먹었습니다.",
+                    "그동안 세 자매는 저녁을 먹었습니다. 빵과 우유와 검은딸기가 나왔지요. 셋은 배불리 먹었습니다.",
                     "피터는 그 냄새만 맡았지요. 이불 밖으로 코만 내밀었습니다. 딸기 냄새가 참 달았지요.",
                     "조금 억울했지만 어쩔 수 없었지요. 말을 안 들은 값이었으니까요."
                 ],
@@ -266,7 +266,7 @@ const CHAPTERS = [
                 ]
             }
         ],
-        "moral": "하지 말라는 데는 대개 그럴 만한 까닭이 있는 법이랍니다."
+        "moral": "엄마가 하지 말라고 하는 일에는 다 그럴 만한 까닭이 있답니다."
     }
 ];
 
@@ -391,7 +391,7 @@ const AFTERWORD = {
                 "베아트릭스 포터가 아픈 아이에게 보낸 편지에서 이 이야기가 시작되었습니다. 백이십 년쯤 전이지요.",
                 "포터는 글만 쓴 것이 아니라 그림도 손수 그렸습니다. 토끼를 오래 기르며 살펴본 사람이라 몸짓이 정확합니다.",
                 "피터는 밭에서 상추와 강낭콩과 무를 먹습니다. 그러고는 배가 아파 파슬리를 찾지요. 그 파슬리를 찾다 아저씨와 마주칩니다.",
-                "많이 먹은 것이 걸음을 늦추고, 늦은 걸음이 들키게 한 것입니다."
+                "배가 터지도록 먹지만 않았어도 아저씨와 마주치지 않았을지 모릅니다."
             ],
             right: [
                 "피터는 웃옷과 신발을 다 잃고 돌아옵니다. 어머니는 나무라지 않고 자리에 눕히지요.",
@@ -587,7 +587,7 @@ const EN = {
                     left: [
                         "\"Why not, Mother?\" asked Flopsy.",
                         "Their mother's face grew sad.",
-                        "\"Your father came to grief in that garden. He never came home again.\"",
+                        "\"Your father was caught by Mr. McGregor in that garden. He never came home again.\"",
                         "The young rabbits held their breath.",
                         "\"Do you understand? You are never to go there.\""
                     ],
@@ -977,7 +977,7 @@ const EN = {
             { word: 'lane', meaning: '길가, 좁은 길', sentence: 'Or along the lane, if you like.' }
         ],
         '01-warning-2.webp': [
-            { word: 'come to grief', meaning: '크게 혼나다, 화를 당하다', sentence: 'Your father came to grief in that garden.' },
+            { word: 'be caught', meaning: '붙잡히다', sentence: 'Your father was caught by Mr. McGregor.' },
             { word: 'hold one’s breath', meaning: '숨을 죽이다', sentence: 'The young rabbits held their breath.' },
             { word: 'obediently', meaning: '얌전히', sentence: 'The three of them nodded obediently.' },
             { word: 'curious', meaning: '궁금해하는', sentence: "Being told not to go had only made him more curious." }
@@ -1104,7 +1104,7 @@ const WORDS_KO = {
     ],
     "01-warning-2.webp": [
         { w: "다짐을 받다", k: "꼭 그러겠다는 약속을 받다.", s: "어머니가 다짐을 받았지요." },
-        { w: "남매", k: "남자와 여자로 이루어진 형제.", s: "세 남매는 얌전히 고개를 끄덕였지요." },
+        { w: "자매", k: "여자끼리인 형제. 언니와 여동생 같은 사이.", s: "세 자매는 얌전히 고개를 끄덕였지요." },
         { w: "딴 데", k: "여기가 아닌 다른 곳.", s: "그런데 피터는 딴 데를 보고 있었습니다." },
         { w: "오히려", k: "생각과는 거꾸로.", s: "가지 말라니까 오히려 더 궁금해졌거든요." }
     ],
