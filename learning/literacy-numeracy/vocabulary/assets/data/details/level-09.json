@@ -17293,6 +17293,1925 @@
      "en": "A short delay."
     }
    ]
+  },
+  "1159": {
+   "word": "fry",
+   "overview": [
+    "fry는 '튀기다, 볶다'라는 뜻의 동사이자 '튀김'이라는 뜻의 명사입니다.",
+    "fry an egg(달걀을 부치다)처럼 씁니다.",
+    "복수형 fries는 '감자튀김'이라는 뜻으로 아주 자주 씁니다.",
+    "stir-fry는 '(채소 등을) 센 불에 빠르게 볶다'라는 뜻으로 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "cook in oil",
+     "en": "Cook in oil.",
+     "ko": "기름에 요리하다."
+    },
+    {
+     "word": "sauté",
+     "en": "Sauté the onions.",
+     "ko": "양파를 볶다."
+    }
+   ],
+   "etymology": [
+    "fry는 라틴어 frigere(볶다, 튀기다)에서 온 단어입니다.",
+    "'기름을 두르고 뜨겁게 지지다'라는 뜻이 그대로 이어져 왔습니다.",
+    "지글지글 기름 위에서 익히는 요리 방법을 널리 가리킵니다.",
+    "감자튀김을 뜻하는 fries도 이 조리법에서 이름을 얻었습니다.",
+    "fry의 핵심 이미지는 '뜨거운 기름 위에서 지글지글 익어 가는 튀김 🍟'입니다."
+   ],
+   "meanings": [
+    "튀기다, 볶다 (동사)",
+    "튀김 (명사)"
+   ],
+   "examples": [
+    {
+     "en": "She fried an egg for breakfast.",
+     "ko": "그녀는 아침으로 달걀을 부쳤어요."
+    },
+    {
+     "en": "He ordered a burger and fries.",
+     "ko": "그는 버거와 감자튀김을 주문했어요."
+    },
+    {
+     "en": "Fry the onions until golden brown.",
+     "ko": "양파가 노릇노릇해질 때까지 볶아."
+    },
+    {
+     "en": "The smell of frying chicken filled the kitchen.",
+     "ko": "닭을 튀기는 냄새가 부엌을 가득 채웠어요."
+    },
+    {
+     "en": "She stir-fried the vegetables quickly.",
+     "ko": "그녀는 채소를 빠르게 볶았어요."
+    },
+    {
+     "en": "Fried food can be tasty but unhealthy.",
+     "ko": "튀긴 음식은 맛있지만 건강에 좋지 않을 수 있어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "cook",
+     "ko": "요리하다",
+     "en": "Cook dinner."
+    },
+    {
+     "type": "연관어",
+     "word": "oil",
+     "ko": "기름",
+     "en": "Cooking oil."
+    },
+    {
+     "type": "연관어",
+     "word": "pan",
+     "ko": "팬",
+     "en": "A hot pan."
+    },
+    {
+     "type": "연관어",
+     "word": "chicken",
+     "ko": "닭고기",
+     "en": "Fried chicken."
+    },
+    {
+     "type": "연관어",
+     "word": "potato",
+     "ko": "감자",
+     "en": "A baked potato."
+    },
+    {
+     "type": "연관어",
+     "word": "crispy",
+     "ko": "바삭한",
+     "en": "Crispy chips."
+    }
+   ]
+  },
+  "427": {
+   "word": "ceiling",
+   "overview": [
+    "ceiling은 '천장'이라는 뜻의 명사입니다.",
+    "a high ceiling(높은 천장)처럼 씁니다.",
+    "'최고치, 최고 한도'라는 비유적인 뜻으로도 씁니다. a price ceiling(가격 상한선)",
+    "hit the ceiling은 '몹시 화내다'라는 뜻의 관용 표현입니다."
+   ],
+   "easy": [
+    {
+     "word": "roof of room",
+     "en": "The roof of a room.",
+     "ko": "방의 위쪽 덮개."
+    },
+    {
+     "word": "upper limit",
+     "en": "An upper limit.",
+     "ko": "상한선."
+    }
+   ],
+   "etymology": [
+    "ceiling은 옛 프랑스어 celer(덮다, 감추다)와 관련이 있는 단어입니다.",
+    "라틴어 caelum(하늘)과도 관련이 있다는 설이 있습니다.",
+    "'방을 위에서 덮어 주는 안쪽 면'이라는 뜻이 그대로 이어져 왔습니다.",
+    "'더 이상 올라갈 수 없는 위쪽 한계'라는 뜻에서 '최고 한도'라는 비유적인 뜻도 나왔습니다.",
+    "ceiling의 핵심 이미지는 '방 위를 덮고 있는 천장, 그리고 더 이상 넘을 수 없는 한계 🏠'입니다."
+   ],
+   "meanings": [
+    "천장 (명사)",
+    "최고치, 최고 한도 (명사)"
+   ],
+   "examples": [
+    {
+     "en": "The room has a very high ceiling.",
+     "ko": "그 방은 아주 높은 천장을 가지고 있어요."
+    },
+    {
+     "en": "There is a spider on the ceiling.",
+     "ko": "천장에 거미 한 마리가 있어요."
+    },
+    {
+     "en": "The government set a price ceiling on rent.",
+     "ko": "정부는 임대료에 대한 가격 상한선을 정했어요."
+    },
+    {
+     "en": "He hit the ceiling when he heard the news.",
+     "ko": "그는 그 소식을 듣고 몹시 화를 냈어요."
+    },
+    {
+     "en": "Water leaked from a crack in the ceiling.",
+     "ko": "물이 천장의 갈라진 틈에서 새어 나왔어요."
+    },
+    {
+     "en": "There's a ceiling on how much you can borrow.",
+     "ko": "당신이 얼마나 빌릴 수 있는지에 대한 상한선이 있어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "반의어",
+     "word": "floor",
+     "ko": "바닥",
+     "en": "The wooden floor."
+    },
+    {
+     "type": "연관어",
+     "word": "roof",
+     "ko": "지붕",
+     "en": "A leaking roof."
+    },
+    {
+     "type": "연관어",
+     "word": "limit",
+     "ko": "한계",
+     "en": "Reach the limit."
+    },
+    {
+     "type": "연관어",
+     "word": "high",
+     "ko": "높은",
+     "en": "A high building."
+    },
+    {
+     "type": "연관어",
+     "word": "room",
+     "ko": "방",
+     "en": "A large room."
+    },
+    {
+     "type": "연관어",
+     "word": "maximum",
+     "ko": "최대치",
+     "en": "The maximum amount."
+    }
+   ]
+  },
+  "2463": {
+   "word": "somewhat",
+   "overview": [
+    "somewhat은 '어느 정도, 다소'라는 뜻의 부사입니다.",
+    "somewhat difficult(다소 어려운)처럼 씁니다.",
+    "정확히 정도를 말하지 않고 짐작으로 어느 정도라는 뜻을 나타냅니다.",
+    "rather와 비슷한 뜻으로 격식체 글에서 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "a little",
+     "en": "A little tired.",
+     "ko": "약간 피곤한."
+    },
+    {
+     "word": "rather",
+     "en": "Rather surprising.",
+     "ko": "다소 놀라운."
+    }
+   ],
+   "etymology": [
+    "somewhat은 some(어느 정도의)과 what(무엇)이 합쳐진 오래된 단어입니다.",
+    "'무엇인가 어느 정도'라는 뜻에서 시작되었습니다.",
+    "'많지도 적지도 않은 애매한 정도'를 나타내는 부사로 굳어졌습니다.",
+    "정확한 수치보다는 대략적인 느낌을 전달할 때 씁니다.",
+    "somewhat의 핵심 이미지는 '딱 잘라 말하기 애매한 어느 정도의 상태 🤏'입니다."
+   ],
+   "meanings": [
+    "어느 정도, 다소"
+   ],
+   "examples": [
+    {
+     "en": "The test was somewhat harder than expected.",
+     "ko": "그 시험은 예상보다 다소 어려웠어요."
+    },
+    {
+     "en": "She felt somewhat better after resting.",
+     "ko": "그녀는 쉬고 난 후 다소 나아짐을 느꼈어요."
+    },
+    {
+     "en": "His answer was somewhat confusing.",
+     "ko": "그의 대답은 다소 혼란스러웠어요."
+    },
+    {
+     "en": "The weather has been somewhat unpredictable lately.",
+     "ko": "요즘 날씨가 다소 예측하기 어려웠어요."
+    },
+    {
+     "en": "I'm somewhat familiar with this topic.",
+     "ko": "저는 이 주제에 어느 정도 익숙해요."
+    },
+    {
+     "en": "The results were somewhat surprising to everyone.",
+     "ko": "그 결과는 모두에게 다소 놀라웠어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "rather",
+     "ko": "다소",
+     "en": "Rather difficult."
+    },
+    {
+     "type": "유의어",
+     "word": "a little",
+     "ko": "약간",
+     "en": "A little worried."
+    },
+    {
+     "type": "연관어",
+     "word": "partly",
+     "ko": "부분적으로",
+     "en": "Partly true."
+    },
+    {
+     "type": "연관어",
+     "word": "moderately",
+     "ko": "적당히",
+     "en": "Moderately warm."
+    },
+    {
+     "type": "연관어",
+     "word": "fairly",
+     "ko": "꽤",
+     "en": "Fairly simple."
+    },
+    {
+     "type": "연관어",
+     "word": "slightly",
+     "ko": "약간",
+     "en": "Slightly late."
+    }
+   ]
+  },
+  "764": {
+   "word": "depend",
+   "overview": [
+    "depend는 '의존하다'라는 뜻의 동사입니다.",
+    "depend on your parents(부모님에게 의존하다)처럼 씁니다.",
+    "'~에 따라 달라지다'라는 뜻으로도 씁니다. It depends on the weather.(그건 날씨에 따라 달라요.)",
+    "형용사 dependent(의존하는), 명사 dependence(의존)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "rely on",
+     "en": "Rely on help.",
+     "ko": "도움에 의지하다."
+    },
+    {
+     "word": "vary",
+     "en": "Vary by situation.",
+     "ko": "상황에 따라 다르다."
+    }
+   ],
+   "etymology": [
+    "depend는 라틴어 dependere(매달리다, ~에서 늘어지다)에서 온 단어입니다.",
+    "de(아래로)와 pendere(매달리다)가 합쳐진 말로, pendant(펜던트, '매달린 것')와 같은 가족입니다.",
+    "'다른 무언가에 매달려 있는 상태'라는 뜻이 '의존하다'로 이어졌습니다.",
+    "'결과가 다른 조건에 매달려 있어 그에 따라 달라지다'라는 뜻으로도 넓어졌습니다.",
+    "depend의 핵심 이미지는 '다른 무언가에 매달려 있는 의존적인 상태 🪢'입니다."
+   ],
+   "meanings": [
+    "의존하다",
+    "~에 따라 달라지다"
+   ],
+   "examples": [
+    {
+     "en": "She depends on public transport to get to work.",
+     "ko": "그녀는 출근하는 데 대중교통에 의존해요."
+    },
+    {
+     "en": "Whether we go depends on the weather.",
+     "ko": "우리가 갈지는 날씨에 따라 달라져요."
+    },
+    {
+     "en": "Young children depend on their parents for food.",
+     "ko": "어린아이들은 음식을 위해 부모님께 의존해요."
+    },
+    {
+     "en": "The result depends on how hard you try.",
+     "ko": "그 결과는 당신이 얼마나 열심히 노력하느냐에 따라 달라져요."
+    },
+    {
+     "en": "Many countries depend on tourism for income.",
+     "ko": "많은 나라들이 수입을 위해 관광업에 의존해요."
+    },
+    {
+     "en": "You can depend on her to keep her promise.",
+     "ko": "당신은 그녀가 약속을 지킬 거라고 믿어도 돼요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "rely",
+     "ko": "의지하다",
+     "en": "Rely on family."
+    },
+    {
+     "type": "파생어",
+     "word": "dependent",
+     "ko": "의존적인",
+     "en": "A dependent child."
+    },
+    {
+     "type": "연관어",
+     "word": "trust",
+     "ko": "신뢰하다",
+     "en": "Trust a friend."
+    },
+    {
+     "type": "연관어",
+     "word": "vary",
+     "ko": "달라지다",
+     "en": "Vary widely."
+    },
+    {
+     "type": "연관어",
+     "word": "support",
+     "ko": "지원",
+     "en": "Financial support."
+    },
+    {
+     "type": "연관어",
+     "word": "condition",
+     "ko": "조건",
+     "en": "A key condition."
+    }
+   ]
+  },
+  "2053": {
+   "word": "principle",
+   "overview": [
+    "principle은 '원리, 원칙'이라는 뜻의 명사입니다.",
+    "a basic principle(기본 원리)처럼 씁니다.",
+    "'주의, 신조'라는 뜻으로도 씁니다. a person of principle(신념 있는 사람)",
+    "principal(주요한, 교장)과 철자가 비슷해 혼동하기 쉬우니 주의해야 합니다."
+   ],
+   "easy": [
+    {
+     "word": "rule",
+     "en": "A basic rule.",
+     "ko": "기본 규칙."
+    },
+    {
+     "word": "belief",
+     "en": "A core belief.",
+     "ko": "핵심 신념."
+    }
+   ],
+   "etymology": [
+    "principle은 라틴어 principium(시작, 기원)에서 온 단어입니다.",
+    "princeps(첫째가는 자, 지도자)에서 나온 말로, prince(왕자)와 같은 가족입니다.",
+    "'모든 것의 맨 처음에 자리한 근본적인 것'이라는 뜻이 그대로 이어져 왔습니다.",
+    "'무언가가 작동하는 근본적인 법칙'과 '행동의 기준이 되는 신조' 모두를 가리킵니다.",
+    "principle의 핵심 이미지는 '모든 것의 바탕이 되는 근본적인 원리와 신념 🧭'입니다."
+   ],
+   "meanings": [
+    "원리, 원칙, 법칙",
+    "주의, 신조"
+   ],
+   "examples": [
+    {
+     "en": "This machine works on a simple principle.",
+     "ko": "이 기계는 단순한 원리로 작동해요."
+    },
+    {
+     "en": "She refused the bribe on principle.",
+     "ko": "그녀는 신념에 따라 그 뇌물을 거절했어요."
+    },
+    {
+     "en": "Honesty is one of his core principles.",
+     "ko": "정직함은 그의 핵심 신조 중 하나예요."
+    },
+    {
+     "en": "The teacher explained the basic principles of physics.",
+     "ko": "선생님은 물리학의 기본 원리를 설명하셨어요."
+    },
+    {
+     "en": "He lives by strong moral principles.",
+     "ko": "그는 강한 도덕적 신조에 따라 살아요."
+    },
+    {
+     "en": "The company follows fair business principles.",
+     "ko": "그 회사는 공정한 사업 원칙을 따라요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "rule",
+     "ko": "규칙",
+     "en": "Follow the rule."
+    },
+    {
+     "type": "연관어",
+     "word": "belief",
+     "ko": "신념",
+     "en": "A strong belief."
+    },
+    {
+     "type": "연관어",
+     "word": "value",
+     "ko": "가치관",
+     "en": "Core values."
+    },
+    {
+     "type": "연관어",
+     "word": "law",
+     "ko": "법칙",
+     "en": "A scientific law."
+    },
+    {
+     "type": "연관어",
+     "word": "ethics",
+     "ko": "윤리",
+     "en": "Business ethics."
+    },
+    {
+     "type": "연관어",
+     "word": "foundation",
+     "ko": "토대",
+     "en": "A solid foundation."
+    }
+   ]
+  },
+  "2228": {
+   "word": "retire",
+   "overview": [
+    "retire는 '은퇴하다, 퇴직하다'라는 뜻의 동사입니다.",
+    "retire from work(직장에서 은퇴하다)처럼 씁니다.",
+    "'물러나다, 잠자리에 들다'라는 옛 용법으로도 씁니다.",
+    "명사 retirement(은퇴)도 아주 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "stop working",
+     "en": "Stop working.",
+     "ko": "일을 그만두다."
+    },
+    {
+     "word": "leave a job",
+     "en": "Leave a job.",
+     "ko": "직장을 떠나다."
+    }
+   ],
+   "etymology": [
+    "retire는 프랑스어 retirer(뒤로 물러나다)에서 온 단어입니다.",
+    "re(뒤로)와 tirer(끌다, 당기다)가 합쳐진 말입니다.",
+    "'활동의 최전선에서 뒤로 물러나다'라는 뜻이 그대로 이어져 왔습니다.",
+    "'평생 일하던 직장에서 물러나 쉬다'라는 뜻으로 좁혀져 지금의 '은퇴하다'가 되었습니다.",
+    "retire의 핵심 이미지는 '오랜 활동을 마치고 조용히 뒤로 물러나는 은퇴 🏖️'입니다."
+   ],
+   "meanings": [
+    "은퇴하다, 퇴직하다",
+    "물러나다"
+   ],
+   "examples": [
+    {
+     "en": "He retired from teaching after thirty years.",
+     "ko": "그는 30년 후 교직에서 은퇴했어요."
+    },
+    {
+     "en": "She plans to retire next year.",
+     "ko": "그녀는 내년에 은퇴할 계획이에요."
+    },
+    {
+     "en": "Many people travel after they retire.",
+     "ko": "많은 사람이 은퇴 후 여행을 해요."
+    },
+    {
+     "en": "The soldiers retired to their quarters for the night.",
+     "ko": "군인들은 밤을 위해 자신들의 숙소로 물러났어요."
+    },
+    {
+     "en": "He retired early due to health problems.",
+     "ko": "그는 건강 문제로 일찍 은퇴했어요."
+    },
+    {
+     "en": "She saved money carefully before she retired.",
+     "ko": "그녀는 은퇴하기 전에 신중하게 돈을 모았어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "파생어",
+     "word": "retirement",
+     "ko": "은퇴",
+     "en": "A happy retirement."
+    },
+    {
+     "type": "연관어",
+     "word": "career",
+     "ko": "경력",
+     "en": "A long career."
+    },
+    {
+     "type": "연관어",
+     "word": "pension",
+     "ko": "연금",
+     "en": "A monthly pension."
+    },
+    {
+     "type": "연관어",
+     "word": "job",
+     "ko": "직업",
+     "en": "A stable job."
+    },
+    {
+     "type": "연관어",
+     "word": "quit",
+     "ko": "그만두다",
+     "en": "Quit smoking."
+    },
+    {
+     "type": "연관어",
+     "word": "age",
+     "ko": "나이",
+     "en": "Retirement age."
+    }
+   ]
+  },
+  "1954": {
+   "word": "picnic",
+   "overview": [
+    "picnic은 '소풍, 피크닉'이라는 뜻의 명사입니다.",
+    "go on a picnic(소풍을 가다)처럼 씁니다.",
+    "야외에서 간단한 음식을 먹으며 즐기는 나들이를 뜻합니다.",
+    "구어에서 '쉬운 일'이라는 반어적인 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "outdoor meal",
+     "en": "An outdoor meal.",
+     "ko": "야외 식사."
+    },
+    {
+     "word": "outing",
+     "en": "A fun outing.",
+     "ko": "즐거운 나들이."
+    }
+   ],
+   "etymology": [
+    "picnic은 프랑스어 pique-nique(각자 조금씩 가져와 나누는 식사)에서 온 단어입니다.",
+    "piquer(콕 집다, 조금씩 고르다)에서 나온 말로, 정확한 유래는 확실하지 않습니다.",
+    "'각자 음식을 조금씩 가져와 야외에서 함께 나눠 먹는 식사'라는 뜻이 그대로 이어져 왔습니다.",
+    "지금은 담요를 깔고 자연 속에서 즐기는 편안한 야외 식사 전체를 가리킵니다.",
+    "picnic의 핵심 이미지는 '푸른 잔디밭에 돗자리를 깔고 즐기는 소풍 🧺'입니다."
+   ],
+   "meanings": [
+    "피크닉, 소풍"
+   ],
+   "examples": [
+    {
+     "en": "We had a picnic in the park on Sunday.",
+     "ko": "우리는 일요일에 공원에서 소풍을 했어요."
+    },
+    {
+     "en": "They packed sandwiches for the picnic.",
+     "ko": "그들은 그 소풍을 위해 샌드위치를 챙겼어요."
+    },
+    {
+     "en": "The weather was perfect for a picnic.",
+     "ko": "날씨는 소풍하기에 완벽했어요."
+    },
+    {
+     "en": "We spread a blanket for our picnic lunch.",
+     "ko": "우리는 소풍 점심을 위해 담요를 펼쳤어요."
+    },
+    {
+     "en": "Organizing this event was no picnic.",
+     "ko": "이 행사를 준비하는 것은 결코 쉬운 일이 아니었어요."
+    },
+    {
+     "en": "The family enjoys picnics by the lake.",
+     "ko": "그 가족은 호숫가에서 소풍을 즐겨요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "outing",
+     "ko": "나들이",
+     "en": "A family outing."
+    },
+    {
+     "type": "연관어",
+     "word": "basket",
+     "ko": "바구니",
+     "en": "A picnic basket."
+    },
+    {
+     "type": "연관어",
+     "word": "blanket",
+     "ko": "담요",
+     "en": "A picnic blanket."
+    },
+    {
+     "type": "연관어",
+     "word": "park",
+     "ko": "공원",
+     "en": "A sunny park."
+    },
+    {
+     "type": "연관어",
+     "word": "outdoor",
+     "ko": "야외의",
+     "en": "An outdoor activity."
+    },
+    {
+     "type": "연관어",
+     "word": "sandwich",
+     "ko": "샌드위치",
+     "en": "A tasty sandwich."
+    }
+   ]
+  },
+  "494": {
+   "word": "clerk",
+   "overview": [
+    "clerk는 '사무원, 서기'라는 뜻의 명사입니다.",
+    "a bank clerk(은행 직원)처럼 씁니다.",
+    "미국식으로는 소매점의 '판매원, 점원'이라는 뜻으로도 씁니다.",
+    "사무를 보거나 기록을 관리하는 직원을 폭넓게 가리킵니다."
+   ],
+   "easy": [
+    {
+     "word": "office worker",
+     "en": "An office worker.",
+     "ko": "사무직 직원."
+    },
+    {
+     "word": "shop assistant",
+     "en": "A shop assistant.",
+     "ko": "가게 점원."
+    }
+   ],
+   "etymology": [
+    "clerk는 라틴어 clericus(성직자)에서 온 단어입니다.",
+    "그리스어 kleros(제비뽑기로 정해진 몫, 성직)에서 나온 말입니다.",
+    "중세에는 글을 읽고 쓸 줄 아는 사람이 대개 성직자였기에, 기록을 담당하는 사람을 clerk라고 불렀습니다.",
+    "'문서와 기록을 다루는 사무 담당자'라는 뜻으로 넓어졌습니다.",
+    "clerk의 핵심 이미지는 '문서와 계산을 정확하게 처리하는 사무원 📋'입니다."
+   ],
+   "meanings": [
+    "서기, 사무관",
+    "(은행·회사의) 사무원, 행원",
+    "(미국) 판매원, 점원"
+   ],
+   "examples": [
+    {
+     "en": "The bank clerk helped her open an account.",
+     "ko": "그 은행 직원은 그녀가 계좌를 개설하도록 도왔어요."
+    },
+    {
+     "en": "He works as a clerk at the courthouse.",
+     "ko": "그는 법원에서 서기로 일해요."
+    },
+    {
+     "en": "The store clerk was very friendly and helpful.",
+     "ko": "그 가게 점원은 아주 친절하고 도움이 되었어요."
+    },
+    {
+     "en": "She asked the clerk for a receipt.",
+     "ko": "그녀는 그 점원에게 영수증을 요청했어요."
+    },
+    {
+     "en": "Clerks keep records of all official documents.",
+     "ko": "사무원들은 모든 공식 문서의 기록을 관리해요."
+    },
+    {
+     "en": "The clerk checked out her groceries quickly.",
+     "ko": "그 점원은 그녀의 식료품을 빠르게 계산해 줬어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "office",
+     "ko": "사무실",
+     "en": "A busy office."
+    },
+    {
+     "type": "연관어",
+     "word": "bank",
+     "ko": "은행",
+     "en": "Visit the bank."
+    },
+    {
+     "type": "연관어",
+     "word": "store",
+     "ko": "가게",
+     "en": "A local store."
+    },
+    {
+     "type": "연관어",
+     "word": "record",
+     "ko": "기록",
+     "en": "Keep a record."
+    },
+    {
+     "type": "연관어",
+     "word": "receipt",
+     "ko": "영수증",
+     "en": "Keep the receipt."
+    },
+    {
+     "type": "연관어",
+     "word": "customer",
+     "ko": "고객",
+     "en": "A happy customer."
+    }
+   ]
+  },
+  "225": {
+   "word": "bare",
+   "overview": [
+    "bare는 '벌거벗은, 맨~'이라는 뜻의 형용사이자 '드러내다'라는 뜻의 동사입니다.",
+    "bare feet(맨발)처럼 씁니다.",
+    "'꾸미지 않은, 텅 빈'이라는 뜻으로도 씁니다. bare walls(텅 빈 벽)",
+    "'최소한의'라는 뜻으로도 씁니다. the bare minimum(최소한)"
+   ],
+   "easy": [
+    {
+     "word": "naked",
+     "en": "Bare skin.",
+     "ko": "맨살."
+    },
+    {
+     "word": "empty",
+     "en": "An empty shelf.",
+     "ko": "텅 빈 선반."
+    }
+   ],
+   "etymology": [
+    "bare는 고대 영어 bær(벌거벗은, 덮이지 않은)에서 온 단어입니다.",
+    "'아무것도 덮이지 않은 맨몸 상태'를 뜻하는 아주 옛 게르만 말과 이어진다고 봅니다.",
+    "'가리개나 덮개 없이 그대로 드러난'이라는 뜻이 그대로 이어져 왔습니다.",
+    "'꾸밈이나 장식 없이 최소한만 남은'이라는 뜻으로도 폭넓게 씁니다.",
+    "bare의 핵심 이미지는 '아무것도 걸치지 않은 채 그대로 드러난 맨몸 🦶'입니다."
+   ],
+   "meanings": [
+    "벌거벗은, 맨~ (형용사)",
+    "꾸미지 않은, 텅 빈 (형용사)",
+    "드러내다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "She walked on the beach with bare feet.",
+     "ko": "그녀는 맨발로 해변을 걸었어요."
+    },
+    {
+     "en": "The room was bare except for a single chair.",
+     "ko": "그 방은 의자 하나를 빼고는 텅 비어 있었어요."
+    },
+    {
+     "en": "The dog bared its teeth at the stranger.",
+     "ko": "그 개는 낯선 사람에게 이빨을 드러냈어요."
+    },
+    {
+     "en": "He wore a shirt that left his arms bare.",
+     "ko": "그는 팔이 드러나는 셔츠를 입었어요."
+    },
+    {
+     "en": "They had the bare minimum of supplies.",
+     "ko": "그들은 최소한의 물품만 가지고 있었어요."
+    },
+    {
+     "en": "The tree's bare branches showed it was winter.",
+     "ko": "그 나무의 헐벗은 가지들은 겨울임을 보여줬어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "naked",
+     "ko": "벌거벗은",
+     "en": "A naked wire."
+    },
+    {
+     "type": "연관어",
+     "word": "empty",
+     "ko": "빈",
+     "en": "An empty box."
+    },
+    {
+     "type": "연관어",
+     "word": "minimum",
+     "ko": "최소한",
+     "en": "The minimum wage."
+    },
+    {
+     "type": "연관어",
+     "word": "reveal",
+     "ko": "드러내다",
+     "en": "Reveal the truth."
+    },
+    {
+     "type": "연관어",
+     "word": "uncover",
+     "ko": "덮개를 벗기다",
+     "en": "Uncover a fact."
+    },
+    {
+     "type": "연관어",
+     "word": "plain",
+     "ko": "꾸미지 않은",
+     "en": "A plain wall."
+    }
+   ]
+  },
+  "2621": {
+   "word": "sweater",
+   "overview": [
+    "sweater는 '스웨터'라는 뜻의 명사입니다.",
+    "wear a sweater(스웨터를 입다)처럼 씁니다.",
+    "실로 짠 두껍고 따뜻한 상의를 뜻합니다.",
+    "영국식으로는 jumper를 더 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "knit top",
+     "en": "A warm knit top.",
+     "ko": "따뜻한 니트 상의."
+    },
+    {
+     "word": "warm shirt",
+     "en": "A warm shirt.",
+     "ko": "따뜻한 옷."
+    }
+   ],
+   "etymology": [
+    "sweater는 동사 sweat(땀 흘리다)에서 나온 단어입니다.",
+    "19세기 처음에는 운동선수들이 땀을 빼기 위해 입던 두꺼운 옷을 가리켰습니다.",
+    "'몸을 따뜻하게 감싸 땀을 흘리게 하는 두꺼운 옷'이라는 뜻이 그대로 이어져 왔습니다.",
+    "지금은 운동용이 아니라 일상적으로 입는 니트 상의 전체를 가리킵니다.",
+    "sweater의 핵심 이미지는 '몸을 포근하게 감싸 주는 두꺼운 니트 스웨터 🧶'입니다."
+   ],
+   "meanings": [
+    "스웨터"
+   ],
+   "examples": [
+    {
+     "en": "She wore a warm sweater in the cold weather.",
+     "ko": "그녀는 추운 날씨에 따뜻한 스웨터를 입었어요."
+    },
+    {
+     "en": "He knitted a sweater for his grandson.",
+     "ko": "그는 자기 손자를 위해 스웨터를 짰어요."
+    },
+    {
+     "en": "This wool sweater keeps me very warm.",
+     "ko": "이 울 스웨터는 저를 아주 따뜻하게 유지해 줘요."
+    },
+    {
+     "en": "She bought a new sweater for winter.",
+     "ko": "그녀는 겨울을 위해 새 스웨터를 샀어요."
+    },
+    {
+     "en": "The sweater shrank after being washed in hot water.",
+     "ko": "그 스웨터는 뜨거운 물에 세탁된 후 줄어들었어요."
+    },
+    {
+     "en": "He pulled on a gray sweater before going outside.",
+     "ko": "그는 밖에 나가기 전에 회색 스웨터를 걸쳤어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "wool",
+     "ko": "양털, 모직",
+     "en": "A wool blanket."
+    },
+    {
+     "type": "연관어",
+     "word": "knit",
+     "ko": "뜨개질하다",
+     "en": "Knit a scarf."
+    },
+    {
+     "type": "연관어",
+     "word": "warm",
+     "ko": "따뜻한",
+     "en": "A warm coat."
+    },
+    {
+     "type": "연관어",
+     "word": "clothes",
+     "ko": "옷",
+     "en": "New clothes."
+    },
+    {
+     "type": "연관어",
+     "word": "winter",
+     "ko": "겨울",
+     "en": "A cold winter."
+    },
+    {
+     "type": "연관어",
+     "word": "cotton",
+     "ko": "면",
+     "en": "A cotton shirt."
+    }
+   ]
+  },
+  "1591": {
+   "word": "locate",
+   "overview": [
+    "locate는 '위치하다, 위치를 찾아내다'라는 뜻의 동사입니다.",
+    "locate the nearest store(가장 가까운 가게를 찾다)처럼 씁니다.",
+    "'자리 잡다, 정착하다'라는 뜻으로도 씁니다.",
+    "명사 location(위치, 장소)도 아주 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "find",
+     "en": "Find the address.",
+     "ko": "주소를 찾다."
+    },
+    {
+     "word": "be positioned",
+     "en": "Be positioned nearby.",
+     "ko": "근처에 위치하다."
+    }
+   ],
+   "etymology": [
+    "locate는 라틴어 locare(자리를 잡다, 놓다)에서 온 단어입니다.",
+    "locus(장소, 위치)에서 나온 말로, local(지역의), location(위치)과 같은 가족입니다.",
+    "'특정한 장소에 자리를 잡아 놓다'라는 뜻이 그대로 이어져 왔습니다.",
+    "'무언가가 어디에 있는지 찾아내다'라는 뜻으로도 폭넓게 씁니다.",
+    "locate의 핵심 이미지는 '지도 위에서 정확한 위치를 찾아 자리 잡는 것 📍'입니다."
+   ],
+   "meanings": [
+    "위치하다",
+    "위치를 찾아내다",
+    "자리 잡다, 정착하다"
+   ],
+   "examples": [
+    {
+     "en": "The hospital is located near the train station.",
+     "ko": "그 병원은 기차역 근처에 위치해 있어요."
+    },
+    {
+     "en": "We used a map to locate the restaurant.",
+     "ko": "우리는 그 식당의 위치를 찾으려고 지도를 이용했어요."
+    },
+    {
+     "en": "The company decided to locate its office downtown.",
+     "ko": "그 회사는 자기 사무실을 시내에 두기로 결정했어요."
+    },
+    {
+     "en": "Rescuers located the missing hikers by nightfall.",
+     "ko": "구조대원들은 날이 저물기 전에 그 실종된 등산객들을 찾아냈어요."
+    },
+    {
+     "en": "This app helps you locate your lost phone.",
+     "ko": "이 앱은 당신이 잃어버린 휴대폰의 위치를 찾도록 도와줘요."
+    },
+    {
+     "en": "They chose to locate their new home in the suburbs.",
+     "ko": "그들은 교외에 새집을 두기로 선택했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "find",
+     "ko": "찾다",
+     "en": "Find the source."
+    },
+    {
+     "type": "파생어",
+     "word": "location",
+     "ko": "위치",
+     "en": "A great location."
+    },
+    {
+     "type": "연관어",
+     "word": "position",
+     "ko": "위치",
+     "en": "A central position."
+    },
+    {
+     "type": "연관어",
+     "word": "search",
+     "ko": "찾다",
+     "en": "Search for it."
+    },
+    {
+     "type": "연관어",
+     "word": "site",
+     "ko": "장소",
+     "en": "A construction site."
+    },
+    {
+     "type": "연관어",
+     "word": "map",
+     "ko": "지도",
+     "en": "Use a map."
+    }
+   ]
+  },
+  "975": {
+   "word": "examine",
+   "overview": [
+    "examine은 '조사하다, 검사하다'라는 뜻의 동사입니다.",
+    "examine the evidence(증거를 조사하다)처럼 씁니다.",
+    "의사가 환자를 '진찰하다'라는 뜻으로도 씁니다.",
+    "명사 examination(검사, 시험)도 아주 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "inspect",
+     "en": "Inspect closely.",
+     "ko": "면밀히 살펴보다."
+    },
+    {
+     "word": "check",
+     "en": "Check thoroughly.",
+     "ko": "철저하게 확인하다."
+    }
+   ],
+   "etymology": [
+    "examine은 라틴어 examinare(저울로 재다, 시험하다)에서 온 단어입니다.",
+    "examen(저울 바늘)에서 나온 말로, 정확하게 무게를 재던 저울과 관련이 있습니다.",
+    "'저울로 정확하게 재듯 신중하게 살펴보다'라는 뜻이 그대로 이어져 왔습니다.",
+    "의사가 환자를 자세히 살피는 '진찰'이라는 뜻으로도 폭넓게 씁니다.",
+    "examine의 핵심 이미지는 '저울로 재듯 꼼꼼하고 신중하게 살펴보는 조사 🔍'입니다."
+   ],
+   "meanings": [
+    "조사하다, 검사하다",
+    "(의사가) 진찰하다"
+   ],
+   "examples": [
+    {
+     "en": "The doctor examined her carefully.",
+     "ko": "의사는 그녀를 신중하게 진찰했어요."
+    },
+    {
+     "en": "Detectives examined the crime scene closely.",
+     "ko": "형사들은 그 범죄 현장을 면밀히 조사했어요."
+    },
+    {
+     "en": "Scientists examined the samples under a microscope.",
+     "ko": "과학자들은 현미경으로 그 표본들을 조사했어요."
+    },
+    {
+     "en": "She examined the contract before signing it.",
+     "ko": "그녀는 그 계약서에 서명하기 전에 검토했어요."
+    },
+    {
+     "en": "The teacher examined the students' essays.",
+     "ko": "선생님은 학생들의 에세이를 검토하셨어요."
+    },
+    {
+     "en": "He had his eyes examined at the clinic.",
+     "ko": "그는 병원에서 눈을 검사받았어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "inspect",
+     "ko": "검사하다",
+     "en": "Inspect the goods."
+    },
+    {
+     "type": "파생어",
+     "word": "examination",
+     "ko": "검사, 시험",
+     "en": "A medical examination."
+    },
+    {
+     "type": "연관어",
+     "word": "check",
+     "ko": "확인하다",
+     "en": "Check the details."
+    },
+    {
+     "type": "연관어",
+     "word": "investigate",
+     "ko": "조사하다",
+     "en": "Investigate a case."
+    },
+    {
+     "type": "연관어",
+     "word": "review",
+     "ko": "검토하다",
+     "en": "Review the document."
+    },
+    {
+     "type": "연관어",
+     "word": "test",
+     "ko": "검사",
+     "en": "A blood test."
+    }
+   ]
+  },
+  "2556": {
+   "word": "stream",
+   "overview": [
+    "stream은 '개울, 시내'라는 뜻의 명사이자 '흐르다'라는 뜻의 동사입니다.",
+    "a small stream(작은 개울)처럼 씁니다.",
+    "'(빛·연기 등의) 줄기, 흐름'이라는 뜻으로도 씁니다.",
+    "요즘은 영상을 '스트리밍하다'라는 뜻으로도 아주 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "creek",
+     "en": "A small creek.",
+     "ko": "작은 시내."
+    },
+    {
+     "word": "flow",
+     "en": "Flow steadily.",
+     "ko": "꾸준히 흐르다."
+    }
+   ],
+   "etymology": [
+    "stream은 고대 영어 stream(흐름, 시내)에서 온 단어입니다.",
+    "'끊임없이 흘러가다'를 뜻하는 아주 옛 게르만 말과 이어진다고 봅니다.",
+    "'산에서 흘러내리는 작은 물줄기'라는 뜻이 그대로 이어져 왔습니다.",
+    "'끊임없이 이어지는 흐름'이라는 이미지에서 인터넷 '스트리밍'이라는 새로운 뜻도 나왔습니다.",
+    "stream의 핵심 이미지는 '산에서 졸졸졸 끊임없이 흘러내리는 시냇물 🏞️'입니다."
+   ],
+   "meanings": [
+    "개울, 시내 (명사)",
+    "흐르다 (동사)",
+    "스트리밍하다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "A clear stream ran through the forest.",
+     "ko": "맑은 개울이 그 숲을 관통해 흘렀어요."
+    },
+    {
+     "en": "Tears streamed down her face.",
+     "ko": "눈물이 그녀의 얼굴을 타고 흘러내렸어요."
+    },
+    {
+     "en": "We watched fish swim in the stream.",
+     "ko": "우리는 개울에서 헤엄치는 물고기를 봤어요."
+    },
+    {
+     "en": "She streams her favorite shows every night.",
+     "ko": "그녀는 매일 밤 자신이 가장 좋아하는 프로그램을 스트리밍해요."
+    },
+    {
+     "en": "Sunlight streamed through the window.",
+     "ko": "햇빛이 창문을 통해 쏟아져 들어왔어요."
+    },
+    {
+     "en": "The concert was streamed live online.",
+     "ko": "그 콘서트는 온라인으로 생중계 스트리밍되었어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "creek",
+     "ko": "시내",
+     "en": "A rocky creek."
+    },
+    {
+     "type": "연관어",
+     "word": "river",
+     "ko": "강",
+     "en": "A wide river."
+    },
+    {
+     "type": "연관어",
+     "word": "flow",
+     "ko": "흐름",
+     "en": "A steady flow."
+    },
+    {
+     "type": "연관어",
+     "word": "current",
+     "ko": "흐름",
+     "en": "A strong current."
+    },
+    {
+     "type": "연관어",
+     "word": "online",
+     "ko": "온라인의",
+     "en": "Watch online."
+    },
+    {
+     "type": "연관어",
+     "word": "water",
+     "ko": "물",
+     "en": "Clean water."
+    }
+   ]
+  },
+  "907": {
+   "word": "element",
+   "overview": [
+    "element는 '요소, 성분'이라는 뜻의 명사입니다.",
+    "a key element(핵심 요소)처럼 씁니다.",
+    "화학에서 '원소'라는 뜻으로도 아주 자주 씁니다.",
+    "in one's element는 '물 만난 고기처럼 편안한'이라는 뜻의 표현입니다."
+   ],
+   "easy": [
+    {
+     "word": "part",
+     "en": "A key part.",
+     "ko": "핵심 부분."
+    },
+    {
+     "word": "ingredient",
+     "en": "A main ingredient.",
+     "ko": "주된 재료."
+    }
+   ],
+   "etymology": [
+    "element는 라틴어 elementum(기본 원리, 구성 요소)에서 온 단어입니다.",
+    "고대에는 물, 불, 공기, 흙을 세상을 이루는 네 가지 근본 원소라고 믿었습니다.",
+    "'전체를 이루는 가장 기본적인 구성 요소'라는 뜻이 그대로 이어져 왔습니다.",
+    "화학에서는 더 이상 나눌 수 없는 물질의 기본 단위를 '원소'라고 부릅니다.",
+    "element의 핵심 이미지는 '전체를 이루는 가장 근본적인 구성 조각 ⚛️'입니다."
+   ],
+   "meanings": [
+    "요소, 성분",
+    "(화학) 원소"
+   ],
+   "examples": [
+    {
+     "en": "Trust is a key element of any relationship.",
+     "ko": "신뢰는 모든 관계의 핵심 요소예요."
+    },
+    {
+     "en": "Oxygen is a basic chemical element.",
+     "ko": "산소는 기본적인 화학 원소예요."
+    },
+    {
+     "en": "The story has all the elements of a great mystery.",
+     "ko": "그 이야기는 훌륭한 미스터리의 모든 요소를 가지고 있어요."
+    },
+    {
+     "en": "This recipe includes several important elements.",
+     "ko": "이 요리법은 여러 중요한 요소를 포함해요."
+    },
+    {
+     "en": "She felt in her element while teaching.",
+     "ko": "그녀는 가르치는 동안 물 만난 고기 같았어요."
+    },
+    {
+     "en": "Gold and silver are both metallic elements.",
+     "ko": "금과 은은 둘 다 금속 원소예요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "part",
+     "ko": "부분",
+     "en": "A key part."
+    },
+    {
+     "type": "연관어",
+     "word": "component",
+     "ko": "구성 요소",
+     "en": "A vital component."
+    },
+    {
+     "type": "연관어",
+     "word": "ingredient",
+     "ko": "재료",
+     "en": "A secret ingredient."
+    },
+    {
+     "type": "연관어",
+     "word": "factor",
+     "ko": "요인",
+     "en": "A major factor."
+    },
+    {
+     "type": "연관어",
+     "word": "chemistry",
+     "ko": "화학",
+     "en": "Study chemistry."
+    },
+    {
+     "type": "연관어",
+     "word": "basic",
+     "ko": "기본적인",
+     "en": "A basic need."
+    }
+   ]
+  },
+  "217": {
+   "word": "balloon",
+   "overview": [
+    "balloon은 '풍선, 기구'라는 뜻의 명사입니다.",
+    "blow up a balloon(풍선을 불다)처럼 씁니다.",
+    "'열기구'라는 뜻으로도 씁니다. a hot air balloon(열기구)",
+    "동사로는 '풍선처럼 부풀다'라는 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "inflatable",
+     "en": "An inflatable toy.",
+     "ko": "바람을 넣는 장난감."
+    },
+    {
+     "word": "air-filled ball",
+     "en": "An air-filled ball.",
+     "ko": "공기가 채워진 공."
+    }
+   ],
+   "etymology": [
+    "balloon은 이탈리아어 pallone(큰 공)에서 온 단어입니다.",
+    "palla(공)에서 나온 말로, ball(공)과도 이어지는 뿌리입니다.",
+    "'공기나 가스로 채워 둥글게 부풀린 물건'이라는 뜻이 그대로 이어져 왔습니다.",
+    "18세기에 사람을 태우고 하늘을 나는 '열기구'가 발명되면서 뜻이 넓어졌습니다.",
+    "balloon의 핵심 이미지는 '공기를 가득 채워 둥실 떠오르는 풍선 🎈'입니다."
+   ],
+   "meanings": [
+    "풍선, 기구"
+   ],
+   "examples": [
+    {
+     "en": "She blew up balloons for the birthday party.",
+     "ko": "그녀는 생일 파티를 위해 풍선을 불었어요."
+    },
+    {
+     "en": "The balloon popped with a loud bang.",
+     "ko": "그 풍선은 큰 소리와 함께 터졌어요."
+    },
+    {
+     "en": "We watched a hot air balloon float across the sky.",
+     "ko": "우리는 열기구가 하늘을 가로질러 떠가는 것을 봤어요."
+    },
+    {
+     "en": "The child cried when his balloon flew away.",
+     "ko": "그 아이는 자기 풍선이 날아가 버리자 울었어요."
+    },
+    {
+     "en": "Colorful balloons decorated the room.",
+     "ko": "알록달록한 풍선들이 그 방을 장식했어요."
+    },
+    {
+     "en": "The company's costs ballooned last year.",
+     "ko": "그 회사의 비용은 작년에 크게 늘어났어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "party",
+     "ko": "파티",
+     "en": "A birthday party."
+    },
+    {
+     "type": "연관어",
+     "word": "air",
+     "ko": "공기",
+     "en": "Fresh air."
+    },
+    {
+     "type": "연관어",
+     "word": "float",
+     "ko": "떠다니다",
+     "en": "Float gently."
+    },
+    {
+     "type": "연관어",
+     "word": "pop",
+     "ko": "터지다",
+     "en": "Pop with a bang."
+    },
+    {
+     "type": "연관어",
+     "word": "inflate",
+     "ko": "부풀리다",
+     "en": "Inflate a tire."
+    },
+    {
+     "type": "연관어",
+     "word": "celebration",
+     "ko": "축하 행사",
+     "en": "A joyful celebration."
+    }
+   ]
+  },
+  "2504": {
+   "word": "spray",
+   "overview": [
+    "spray는 '물보라, 분무액'이라는 뜻의 명사이자 '뿌리다, 분사하다'라는 뜻의 동사입니다.",
+    "spray water(물을 뿌리다)처럼 씁니다.",
+    "a can of spray paint(스프레이 페인트 캔)처럼 씁니다.",
+    "파도가 부딪히며 생기는 '물보라'라는 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "mist",
+     "en": "A cool mist.",
+     "ko": "시원한 안개비."
+    },
+    {
+     "word": "spritz",
+     "en": "Spritz perfume.",
+     "ko": "향수를 뿌리다."
+    }
+   ],
+   "etymology": [
+    "spray는 중세 네덜란드어 sprayen(뿌리다)과 관련이 있는 단어로 봅니다.",
+    "'작은 물방울들이 흩날리며 퍼지는 것'이라는 뜻이 그대로 이어져 왔습니다.",
+    "파도가 바위에 부딪혀 튀는 작은 물방울들을 '물보라'라고 부르게 되었습니다.",
+    "향수, 페인트 등을 안개처럼 뿜어내는 용기와 그 행위 모두를 가리킵니다.",
+    "spray의 핵심 이미지는 '작은 물방울이 안개처럼 흩날리며 퍼지는 분사 💦'입니다."
+   ],
+   "meanings": [
+    "물보라, 분무액 (명사)",
+    "뿌리다, 분사하다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "Ocean spray covered her face at the beach.",
+     "ko": "바다의 물보라가 해변에서 그녀의 얼굴을 덮었어요."
+    },
+    {
+     "en": "She sprayed perfume on her wrist.",
+     "ko": "그녀는 손목에 향수를 뿌렸어요."
+    },
+    {
+     "en": "He used a spray to clean the windows.",
+     "ko": "그는 창문을 닦으려고 분무액을 사용했어요."
+    },
+    {
+     "en": "Firefighters sprayed water on the flames.",
+     "ko": "소방관들은 그 불길에 물을 뿌렸어요."
+    },
+    {
+     "en": "The gardener sprayed the plants to keep bugs away.",
+     "ko": "그 정원사는 벌레를 쫓으려고 식물에 약을 뿌렸어요."
+    },
+    {
+     "en": "Don't forget to spray sunscreen before going out.",
+     "ko": "밖에 나가기 전에 자외선 차단제를 뿌리는 것을 잊지 마."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "mist",
+     "ko": "안개비",
+     "en": "A fine mist."
+    },
+    {
+     "type": "연관어",
+     "word": "water",
+     "ko": "물",
+     "en": "Sprinkle water."
+    },
+    {
+     "type": "연관어",
+     "word": "perfume",
+     "ko": "향수",
+     "en": "A sweet perfume."
+    },
+    {
+     "type": "연관어",
+     "word": "paint",
+     "ko": "페인트",
+     "en": "Spray paint."
+    },
+    {
+     "type": "연관어",
+     "word": "sprinkle",
+     "ko": "뿌리다",
+     "en": "Sprinkle sugar."
+    },
+    {
+     "type": "연관어",
+     "word": "clean",
+     "ko": "청소하다",
+     "en": "Clean the glass."
+    }
+   ]
+  },
+  "664": {
+   "word": "crawl",
+   "overview": [
+    "crawl은 '기다, 기어가다'라는 뜻의 동사입니다.",
+    "The baby crawled across the floor.(아기가 바닥을 기어갔어요.)처럼 씁니다.",
+    "차가 '엉금엉금 가다'라는 뜻으로도 씁니다.",
+    "명사로는 수영의 '자유형'을 가리키는 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "creep",
+     "en": "Creep slowly.",
+     "ko": "천천히 기어가다."
+    },
+    {
+     "word": "move slowly",
+     "en": "Move slowly.",
+     "ko": "천천히 움직이다."
+    }
+   ],
+   "etymology": [
+    "crawl은 고대 노르드어 krafla(손발로 기다)에서 온 단어입니다.",
+    "'손과 무릎을 이용해 바닥에 낮게 붙어 움직이다'라는 뜻이 그대로 이어져 왔습니다.",
+    "아기, 벌레뿐 아니라 교통이 아주 느리게 움직이는 것에도 비유적으로 씁니다.",
+    "수영 영법 이름 '크롤(자유형)'도 팔다리를 저어 나가는 이 동작에서 이름을 얻었습니다.",
+    "crawl의 핵심 이미지는 '몸을 낮추고 손발로 천천히 기어가는 움직임 🐛'입니다."
+   ],
+   "meanings": [
+    "기다, 기어가다",
+    "(교통이) 엉금엉금 가다"
+   ],
+   "examples": [
+    {
+     "en": "The baby crawled toward her mother.",
+     "ko": "그 아기는 자기 엄마를 향해 기어갔어요."
+    },
+    {
+     "en": "Traffic crawled through the busy street.",
+     "ko": "교통은 그 붐비는 거리를 엉금엉금 지나갔어요."
+    },
+    {
+     "en": "A spider crawled across the wall.",
+     "ko": "거미 한 마리가 벽을 가로질러 기어갔어요."
+    },
+    {
+     "en": "He crawled under the fence to retrieve the ball.",
+     "ko": "그는 공을 되찾으려고 울타리 밑으로 기어갔어요."
+    },
+    {
+     "en": "The soldiers crawled through the mud.",
+     "ko": "군인들은 진흙을 헤치며 기어갔어요."
+    },
+    {
+     "en": "Time seemed to crawl during the boring lecture.",
+     "ko": "그 지루한 강의 동안 시간이 느릿느릿 가는 것 같았어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "creep",
+     "ko": "기다",
+     "en": "Creep along quietly."
+    },
+    {
+     "type": "연관어",
+     "word": "baby",
+     "ko": "아기",
+     "en": "A crawling baby."
+    },
+    {
+     "type": "연관어",
+     "word": "slow",
+     "ko": "느린",
+     "en": "A slow pace."
+    },
+    {
+     "type": "연관어",
+     "word": "insect",
+     "ko": "곤충",
+     "en": "A tiny insect."
+    },
+    {
+     "type": "연관어",
+     "word": "traffic",
+     "ko": "교통",
+     "en": "Heavy traffic."
+    },
+    {
+     "type": "연관어",
+     "word": "swim",
+     "ko": "수영하다",
+     "en": "Swim laps."
+    }
+   ]
+  },
+  "816": {
+   "word": "discipline",
+   "overview": [
+    "discipline은 '규율, 훈육'이라는 뜻의 명사이자 '훈육하다'라는 뜻의 동사입니다.",
+    "self-discipline(자기 절제)처럼 씁니다.",
+    "'(학문의) 분야'라는 뜻으로도 씁니다.",
+    "형용사 disciplined(자기 절제가 있는)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "self-control",
+     "en": "Show self-control.",
+     "ko": "자제력을 보이다."
+    },
+    {
+     "word": "field of study",
+     "en": "A field of study.",
+     "ko": "학문 분야."
+    }
+   ],
+   "etymology": [
+    "discipline은 라틴어 disciplina(가르침, 훈련)에서 온 단어입니다.",
+    "discipulus(제자, 배우는 사람)에서 나온 말로, disciple(제자)과 같은 가족입니다.",
+    "'스승에게서 배우고 훈련받는 과정'이라는 뜻이 그대로 이어져 왔습니다.",
+    "'스스로를 통제하는 훈련된 태도'라는 뜻과 '체계적으로 배우는 학문 분야'라는 뜻 모두로 넓어졌습니다.",
+    "discipline의 핵심 이미지는 '오랜 훈련을 통해 몸에 밴 절제와 규율 🎯'입니다."
+   ],
+   "meanings": [
+    "규율, 훈육",
+    "(학문의) 분야"
+   ],
+   "examples": [
+    {
+     "en": "Self-discipline helped her achieve her goals.",
+     "ko": "자기 절제는 그녀가 목표를 이루는 데 도움을 줬어요."
+    },
+    {
+     "en": "The teacher used discipline to manage the classroom.",
+     "ko": "그 선생님은 교실을 관리하기 위해 규율을 사용했어요."
+    },
+    {
+     "en": "History is a discipline that studies the past.",
+     "ko": "역사학은 과거를 연구하는 학문 분야예요."
+    },
+    {
+     "en": "Parents should discipline their children with love.",
+     "ko": "부모들은 사랑으로 자녀들을 훈육해야 해요."
+    },
+    {
+     "en": "Athletes need great discipline to succeed.",
+     "ko": "운동선수들은 성공하기 위해 대단한 절제가 필요해요."
+    },
+    {
+     "en": "Each academic discipline has its own methods.",
+     "ko": "각 학문 분야는 자체적인 방법을 가지고 있어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "self-control",
+     "ko": "자제력",
+     "en": "Great self-control."
+    },
+    {
+     "type": "파생어",
+     "word": "disciplined",
+     "ko": "절제된",
+     "en": "A disciplined athlete."
+    },
+    {
+     "type": "연관어",
+     "word": "training",
+     "ko": "훈련",
+     "en": "Rigorous training."
+    },
+    {
+     "type": "연관어",
+     "word": "rule",
+     "ko": "규칙",
+     "en": "Follow the rule."
+    },
+    {
+     "type": "연관어",
+     "word": "field",
+     "ko": "분야",
+     "en": "A field of study."
+    },
+    {
+     "type": "연관어",
+     "word": "control",
+     "ko": "통제",
+     "en": "Self-control."
+    }
+   ]
+  },
+  "2112": {
+   "word": "puzzle",
+   "overview": [
+    "puzzle은 '수수께끼, 퍼즐'이라는 뜻의 명사이자 '당황하게 하다'라는 뜻의 동사입니다.",
+    "solve a puzzle(퍼즐을 풀다)처럼 씁니다.",
+    "'풀기 어려운 문제'라는 뜻으로도 씁니다.",
+    "형용사 puzzled(어리둥절한), puzzling(당혹스러운)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "riddle",
+     "en": "Solve a riddle.",
+     "ko": "수수께끼를 풀다."
+    },
+    {
+     "word": "confuse",
+     "en": "Confuse everyone.",
+     "ko": "모두를 헷갈리게 하다."
+    }
+   ],
+   "etymology": [
+    "puzzle은 16세기쯤 영어에서 쓰이기 시작한 말로, 정확한 뿌리는 확실하지 않습니다.",
+    "'어리둥절하게 만들다'라는 동사 뜻이 먼저 쓰였다고 봅니다.",
+    "'풀기 위해 머리를 써야 하는 어려운 문제나 놀이'라는 명사 뜻으로 넓어졌습니다.",
+    "지금은 조각을 맞추는 직소 퍼즐부터 추리 문제까지 폭넓게 가리킵니다.",
+    "puzzle의 핵심 이미지는 '머리를 갸우뚱하게 만드는 수수께끼와 퍼즐 🧩'입니다."
+   ],
+   "meanings": [
+    "수수께끼, 퍼즐 (명사)",
+    "당황하게 하다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "She solved the puzzle in ten minutes.",
+     "ko": "그녀는 그 퍼즐을 10분 만에 풀었어요."
+    },
+    {
+     "en": "His strange behavior puzzled everyone.",
+     "ko": "그의 이상한 행동은 모두를 당황하게 했어요."
+    },
+    {
+     "en": "This math problem is a real puzzle.",
+     "ko": "이 수학 문제는 정말 어려운 수수께끼예요."
+    },
+    {
+     "en": "They spent hours putting together the jigsaw puzzle.",
+     "ko": "그들은 그 직소 퍼즐을 맞추는 데 몇 시간을 보냈어요."
+    },
+    {
+     "en": "I'm puzzled by his sudden change of plans.",
+     "ko": "저는 그의 갑작스러운 계획 변경에 어리둥절해요."
+    },
+    {
+     "en": "The detective faced a difficult puzzle to solve.",
+     "ko": "그 탐정은 풀어야 할 어려운 수수께끼에 직면했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "riddle",
+     "ko": "수수께끼",
+     "en": "A clever riddle."
+    },
+    {
+     "type": "파생어",
+     "word": "puzzled",
+     "ko": "어리둥절한",
+     "en": "A puzzled expression."
+    },
+    {
+     "type": "연관어",
+     "word": "confuse",
+     "ko": "혼란스럽게 하다",
+     "en": "Confuse the reader."
+    },
+    {
+     "type": "연관어",
+     "word": "solve",
+     "ko": "풀다",
+     "en": "Solve a mystery."
+    },
+    {
+     "type": "연관어",
+     "word": "mystery",
+     "ko": "미스터리",
+     "en": "A deep mystery."
+    },
+    {
+     "type": "연관어",
+     "word": "clue",
+     "ko": "단서",
+     "en": "A helpful clue."
+    }
+   ]
+  },
+  "1396": {
+   "word": "income",
+   "overview": [
+    "income은 '수입, 소득'이라는 뜻의 명사입니다.",
+    "a monthly income(월 수입)처럼 씁니다.",
+    "일이나 투자를 통해 정기적으로 얻는 돈을 뜻합니다.",
+    "income tax(소득세)처럼 다른 말과 자주 합쳐 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "earnings",
+     "en": "Monthly earnings.",
+     "ko": "월 수입."
+    },
+    {
+     "word": "money earned",
+     "en": "Money earned.",
+     "ko": "번 돈."
+    }
+   ],
+   "etymology": [
+    "income은 in(안으로)과 come(오다)이 합쳐진 오래된 단어입니다.",
+    "'집으로 흘러 들어오는 돈'이라는 뜻에서 시작되었습니다.",
+    "'일을 해서 자신에게 들어오는 돈'이라는 뜻이 그대로 이어져 왔습니다.",
+    "outcome(결과, '밖으로 나오는 것')과는 반대되는 방향의 뜻을 담은 단어입니다.",
+    "income의 핵심 이미지는 '노력의 대가로 집으로 흘러 들어오는 돈, 소득 💵'입니다."
+   ],
+   "meanings": [
+    "수입, 소득"
+   ],
+   "examples": [
+    {
+     "en": "Her monthly income covers all her expenses.",
+     "ko": "그녀의 월 수입은 모든 지출을 감당해요."
+    },
+    {
+     "en": "The family relies on a single income.",
+     "ko": "그 가족은 단일 수입에 의존해요."
+    },
+    {
+     "en": "He earns a good income from his business.",
+     "ko": "그는 자신의 사업에서 좋은 수입을 얻어요."
+    },
+    {
+     "en": "Higher income does not always mean more happiness.",
+     "ko": "더 높은 수입이 항상 더 큰 행복을 의미하지는 않아요."
+    },
+    {
+     "en": "She pays income tax every year.",
+     "ko": "그녀는 매년 소득세를 내요."
+    },
+    {
+     "en": "The company's income increased this quarter.",
+     "ko": "그 회사의 수입은 이번 분기에 증가했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "earnings",
+     "ko": "소득",
+     "en": "Annual earnings."
+    },
+    {
+     "type": "연관어",
+     "word": "salary",
+     "ko": "월급",
+     "en": "A fixed salary."
+    },
+    {
+     "type": "연관어",
+     "word": "money",
+     "ko": "돈",
+     "en": "Save money."
+    },
+    {
+     "type": "연관어",
+     "word": "wage",
+     "ko": "임금",
+     "en": "A minimum wage."
+    },
+    {
+     "type": "연관어",
+     "word": "tax",
+     "ko": "세금",
+     "en": "Pay tax."
+    },
+    {
+     "type": "연관어",
+     "word": "profit",
+     "ko": "이윤",
+     "en": "Make a profit."
+    }
+   ]
   }
  }
 }
