@@ -840,10 +840,9 @@ const EN = {
                         "The cloud road shook with every step."
                     ],
                     right: [
-                        "At last Jack reached the top of the beanstalk and slid straight down the stem.",
-                        "But the giant grabbed the stem and came climbing down after him. The whole beanstalk swayed. Leaves came showering down.",
-                        "\"Mother — the axe!\" Jack shouted as loud as he could.",
-                        "His mother came running out with two axes in her arms."
+                        "At last Jack reached the beanstalk and slid down the stem.",
+                        "But the giant came climbing down after him. The whole beanstalk swayed. Leaves came showering down.",
+                        "\"Mother — the axe!\" Jack shouted. His mother came running out with two axes in her arms."
                     ]
                 },
                 {
