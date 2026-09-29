@@ -8,7 +8,7 @@ const CHAPTERS = [
                 "emoji": "📦",
                 "left": [
                     "바그다드에 하시드라는 임금님이 살았습니다. 마음씨가 좋고 웃기를 잘했지요. 무엇보다 신기한 물건을 좋아했습니다.",
-                    "오후가 되면 뜰에 나와 쉬곤 했지요. 그날도 뜰에서 커피를 마시던 참이었습니다. 대신 만소르가 곁에 앉아 있었지요."
+                    "오후가 되면 뜰에 나와 쉬곤 했지요. 그날도 뜰에서 커피를 마시던 참이었습니다. 임금님을 돕는 신하 만소르가 곁에 앉아 있었지요."
                 ],
                 "right": [
                     "그때 등짐장수 하나가 찾아왔습니다. 등이 굽고 웃음이 이상한 사람이었지요.",
@@ -58,7 +58,7 @@ const CHAPTERS = [
                 "right": [
                     "마침 황새 두 마리가 물가를 거닐고 있었지요. 긴 다리로 성큼성큼 걸었습니다.",
                     "임금님이 속삭였습니다. \"저것으로 해 봅시다.\"",
-                    "임금님이 상자를 열었지요. 검은 가루가 아침 햇빛에 반짝였습니다. 코가 알싸한 냄새에 만소르가 슬쩍 뒤로 물러섰지요."
+                    "임금님이 상자를 열었지요. 검은 가루가 아침 햇빛에 반짝였습니다. 코를 톡 쏘는 냄새에 만소르가 슬쩍 뒤로 물러섰지요."
                 ]
             }
         ]
@@ -132,7 +132,7 @@ const CHAPTERS = [
     },
     {
         "num": 5,
-        "title": "5장 · 폐허의 올빼미",
+        "title": "5장 · 무너진 집의 올빼미",
         "beats": [
             {
                 "art": "05-owl.webp",
@@ -156,7 +156,7 @@ const CHAPTERS = [
                 ],
                 "right": [
                     "두 황새는 딱한 마음이 들었지요. 그때 올빼미가 목소리를 낮췄습니다.",
-                    "\"그런데 좋은 소식이 있어요. 그 마법사가 오늘 밤 패거리와 이 집에 모인답니다. 그자는 모이면 제가 한 일을 자랑하거든요. 주문도 흘릴지 몰라요.\"",
+                    "\"그런데 좋은 소식이 있어요. 그 마법사가 오늘 밤 패거리와 이 집에 모인답니다. 그자는 모이면 제가 한 일을 자랑하거든요. 주문을 입 밖에 낼지도 몰라요.\"",
                     "두 황새는 서로를 돌아보았지요."
                 ]
             }
@@ -222,7 +222,7 @@ const CHAPTERS = [
                 "right": [
                     "아가씨가 제 손을 한참 들여다봤습니다. \"몇 해 만인지 몰라요.\"",
                     "세 사람은 카슈누어가 자는 안쪽 방으로 갔습니다. 그자는 여전히 곤히 잠들어 있었지요. 세 사람이 그자를 꽁꽁 묶었습니다.",
-                    "카슈누어는 그길로 벌을 받았지요. 다시는 남을 해치지 못하게 되었습니다."
+                    "세 사람은 카슈누어를 바그다드로 끌고 가 감옥에 가두었지요. 다시는 남을 해치지 못하게 되었습니다."
                 ]
             }
         ]
@@ -382,8 +382,8 @@ const AFTERWORD = {
             left: [
                 "독일 사람 하우프가 아라비아를 무대로 삼아 지은 이야기입니다. 이백 년쯤 전에 나왔지요.",
                 "임금님은 신기한 물건을 좋아했습니다. 검은 가루를 사 들인 것도 그래서지요.",
-                "주문에는 조건이 하나 붙어 있었습니다. 황새가 된 동안 웃으면 안 된다는 것이었지요. 임금님은 그것을 대수롭지 않게 여겼습니다.",
-                "그런데 황새의 우스운 춤 한 번에 그만 웃음을 터뜨리고 맙니다. 어려운 것은 큰일을 참는 것이 아니라 작은 것을 참는 것이었지요."
+                "주문에는 조건이 하나 붙어 있었습니다. 황새가 된 동안 웃으면 안 된다는 것이었지요. 임금님은 그것쯤이야 별것 아니라고 여겼습니다.",
+                "그런데 황새의 우스운 춤 한 번에 그만 웃음을 터뜨리고 맙니다. 가장 어려운 일은 웃음 한 번을 참는 것이었지요."
             ],
             right: [
                 "돌아갈 말을 알아낸 곳은 마법사들이 모인 자리였습니다. 숨어서 들은 것이지요.",
@@ -792,7 +792,7 @@ const EN = {
                         "She looked at her own hands for a long time. \"It has been so many years!\"",
                         "Then the three of them went to the inner room. Kaschnur was still sound asleep.",
                         "They tied him up tightly.",
-                        "Kaschnur was punished then and there. He could never harm anybody again."
+                        "The three of them took Kaschnur back to Baghdad and shut him up in prison. He could never harm anybody again."
                     ]
                 }
             ]
@@ -908,7 +908,7 @@ const EN = {
         '01-powder.webp': [
             { word: 'caliph', meaning: '임금님', sentence: 'There lived a caliph named Chasid.' },
             { word: 'curious', meaning: '신기한', sentence: 'Above all he loved curious things.' },
-            { word: 'vizier', meaning: '대신', sentence: 'His vizier Mansor sat beside him.' },
+            { word: 'vizier', meaning: '임금을 돕는 높은 신하', sentence: 'His vizier Mansor sat beside him.' },
             { word: 'pedlar', meaning: '등짐장수', sentence: 'A pedlar came to the gate.' },
             { word: 'precious', meaning: '귀한', sentence: 'I have brought something precious.' }
         ],
@@ -995,7 +995,7 @@ const EN = {
             { word: 'spell', meaning: '마법', sentence: 'The word had no power over her spell.' },
             { word: 'break', meaning: '풀다', sentence: 'If you take me for your wife, the spell will be broken.' },
             { word: 'sound asleep', meaning: '곤히 잠든', sentence: 'Kaschnur was still sound asleep.' },
-            { word: 'punish', meaning: '벌하다', sentence: 'Kaschnur was punished then and there.' },
+            { word: 'shut up in prison', meaning: '감옥에 가두다', sentence: 'Shut him up in prison.' },
             { word: 'harm', meaning: '해치다', sentence: 'He could never harm anybody again.' }
         ],
         '08-ending.webp': [
@@ -1013,7 +1013,7 @@ const EN = {
         'end.webp': [
             { word: 'set in', meaning: '무대로 삼다', sentence: 'Hauff set this story in Arabia.' },
             { word: 'condition', meaning: '조건', sentence: 'The word came with one condition.' },
-            { word: 'think nothing of', meaning: '대수롭지 않게 여기다', sentence: 'The caliph thought nothing of it.' },
+            { word: 'think nothing of', meaning: '별것 아니라고 여기다', sentence: 'The caliph thought nothing of it.' },
             { word: 'hold back from', meaning: '참다', sentence: 'It was holding back from something small.' }
         ]
     }
@@ -1080,7 +1080,7 @@ const WORDS_KO = {
     "05-owl-2.webp": [
         { w: "그자", k: "그 사람을 낮춰 부르는 말.", s: "그자에게 시집가지 않겠다고 했거든요." },
         { w: "딱하다", k: "안됐고 가엾다.", s: "두 황새는 딱한 마음이 들었지요." },
-        { w: "흘리다", k: "감춰야 할 말을 실수로 내보내다.", s: "주문도 흘릴지 몰라요." }
+        { w: "흘리다", k: "감춰야 할 말을 실수로 내보내다.", s: "주문을 입 밖에 낼지도 몰라요." }
     ],
     "06-eavesdrop.webp": [
         { w: "매섭다", k: "무섭도록 날카롭다.", s: "수염이 뾰족하고 눈이 매서웠지요." },
@@ -1102,7 +1102,7 @@ const WORDS_KO = {
         { w: "아내로 맞다", k: "아내로 삼아 함께 살다.", s: "\"저를 아내로 맞아 주면 풀린답니다.\"" },
         { w: "곱다", k: "보기에 아주 예쁘다.", s: "깃털이 사라지고 고운 아가씨가 되었지요." },
         { w: "여전히", k: "전과 똑같이.", s: "그자는 여전히 곤히 잠들어 있었지요." },
-        { w: "그길로", k: "그 일이 있고 바로.", s: "카슈누어는 그길로 벌을 받았지요." }
+        { w: "감옥", k: "죄를 지은 사람을 가두어 두는 곳.", s: "세 사람은 카슈누어를 바그다드로 끌고 가 감옥에 가두었지요." }
     ],
     "08-ending.webp": [
         { w: "금세", k: "아주 빠르게.", s: "소식은 금세 온 도시에 퍼졌습니다." },
@@ -1117,7 +1117,7 @@ const WORDS_KO = {
     "end.webp": [
         { w: "무대", k: "이야기가 벌어지는 곳.", s: "독일 사람 하우프가 아라비아를 무대로 삼아 지은 이야기입니다." },
         { w: "조건", k: "무엇을 하려면 반드시 지켜야 할 것.", s: "주문에는 조건이 하나 붙어 있었습니다." },
-        { w: "대수롭지 않다", k: "그리 중요하지 않다.", s: "임금님은 그것을 대수롭지 않게 여겼습니다." },
+        { w: "대수롭지 않다", k: "그리 중요하지 않다.", s: "임금님은 그것쯤이야 별것 아니라고 여겼습니다." },
         { w: "아예", k: "처음부터 전혀.", s: "임금님은 그 가루를 아예 사지 말았어야 할까요?" }
     ]
 };
