@@ -1930,6 +1930,1934 @@
      "en": "A special request."
     }
    ]
+  },
+  "1161": {
+   "word": "fulfil",
+   "overview": [
+    "fulfil은 '(의무·약속을) 다하다, 이행하다'라는 뜻의 동사로, 미국식 철자 fulfill의 영국식 표기입니다.",
+    "fulfil a promise(약속을 지키다)처럼 씁니다.",
+    "'(꿈·희망을) 실현하다', '(조건·필요를) 충족시키다'라는 뜻으로도 씁니다.",
+    "명사 fulfilment(성취, 이행), 형용사 fulfilling(성취감을 주는)도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "keep",
+     "en": "Keep a promise.",
+     "ko": "약속을 지키다."
+    },
+    {
+     "word": "achieve",
+     "en": "Achieve a dream.",
+     "ko": "꿈을 이루다."
+    }
+   ],
+   "etymology": [
+    "fulfil은 고대 영어 fullfyllan(가득 채우다)에서 온 단어입니다.",
+    "full(가득 찬)과 fill(채우다)이 합쳐진 말입니다.",
+    "'끝까지 가득 채우다'라는 뜻에서 시작되었습니다.",
+    "약속이나 의무를 빈틈없이 다하는 것, 꿈을 온전히 이루는 것을 가리키게 되었습니다.",
+    "fulfil의 핵심 이미지는 '빈 그릇을 끝까지 가득 채우는 것 🫙✅'입니다."
+   ],
+   "meanings": [
+    "(의무·역할 등을) 완수하다, 다하다",
+    "(꿈 등을) 실현시키다, 달성하다",
+    "(조건을) 충족시키다"
+   ],
+   "examples": [
+    {
+     "en": "He fulfilled his promise to help me.",
+     "ko": "그는 나를 돕겠다는 약속을 지켰어요."
+    },
+    {
+     "en": "She fulfilled her dream of becoming a pilot.",
+     "ko": "그녀는 조종사가 되겠다는 꿈을 이뤘어요."
+    },
+    {
+     "en": "Every student must fulfil these requirements.",
+     "ko": "모든 학생은 이 요건을 충족해야 해요."
+    },
+    {
+     "en": "Parents fulfil an important role in a child's life.",
+     "ko": "부모는 아이의 삶에서 중요한 역할을 해요."
+    },
+    {
+     "en": "Teaching is a fulfilling job.",
+     "ko": "가르치는 일은 보람 있는 직업이에요."
+    },
+    {
+     "en": "The new park fulfils the needs of the community.",
+     "ko": "새 공원은 지역 사회의 필요를 채워 줘요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "achieve",
+     "ko": "이루다",
+     "en": "Achieve a goal."
+    },
+    {
+     "type": "유의어",
+     "word": "carry out",
+     "ko": "수행하다",
+     "en": "Carry out a plan."
+    },
+    {
+     "type": "반의어",
+     "word": "neglect",
+     "ko": "소홀히 하다",
+     "en": "Neglect your duties."
+    },
+    {
+     "type": "변화형",
+     "word": "fulfill",
+     "ko": "완수하다(미국식)",
+     "en": "Fulfill a wish."
+    },
+    {
+     "type": "파생어",
+     "word": "fulfilment",
+     "ko": "성취, 이행",
+     "en": "A sense of fulfilment."
+    },
+    {
+     "type": "파생어",
+     "word": "fulfilling",
+     "ko": "성취감을 주는",
+     "en": "A fulfilling life."
+    }
+   ]
+  },
+  "1156": {
+   "word": "frown",
+   "overview": [
+    "frown은 '(눈살을) 찌푸림, 찡그린 얼굴'이라는 뜻의 명사입니다.",
+    "동사로는 '얼굴을 찌푸리다, 눈살을 찌푸리다'라는 뜻입니다. (frown at, ~을 보고 얼굴을 찌푸리다)",
+    "화가 나거나, 걱정되거나, 집중할 때 이마를 찡그리는 모습입니다.",
+    "frown on/upon(~을 못마땅하게 여기다)이라는 표현도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "angry face",
+     "en": "Make an angry face.",
+     "ko": "화난 표정을 짓다."
+    },
+    {
+     "word": "scowl",
+     "en": "Scowl at him.",
+     "ko": "그를 노려보다."
+    }
+   ],
+   "etymology": [
+    "frown은 옛 프랑스어 froignier(얼굴을 찡그리다)에서 온 단어입니다.",
+    "켈트어에서 '코'를 뜻하던 말과 관련이 있다고 보기도 합니다.",
+    "'코와 이마를 찡그리다'라는 뜻에서 시작되었습니다.",
+    "불만, 걱정, 집중으로 이맛살을 찌푸리는 표정을 가리키게 되었습니다.",
+    "frown의 핵심 이미지는 '미간에 주름이 잡힌 찡그린 얼굴 😠'입니다."
+   ],
+   "meanings": [
+    "찌푸린 얼굴",
+    "얼굴을 찌푸리다"
+   ],
+   "examples": [
+    {
+     "en": "She looked at the bill with a frown.",
+     "ko": "그녀는 얼굴을 찌푸린 채 계산서를 봤어요."
+    },
+    {
+     "en": "Why are you frowning?",
+     "ko": "왜 얼굴을 찌푸리고 있어요?"
+    },
+    {
+     "en": "He frowned at the loud music.",
+     "ko": "그는 시끄러운 음악 소리에 인상을 썼어요."
+    },
+    {
+     "en": "Turn that frown upside down!",
+     "ko": "찡그린 얼굴을 활짝 펴 봐요!"
+    },
+    {
+     "en": "The teacher frowns on cheating.",
+     "ko": "선생님은 부정행위를 매우 못마땅하게 여기세요."
+    },
+    {
+     "en": "She frowned as she tried to solve the puzzle.",
+     "ko": "그녀는 퍼즐을 풀려고 애쓰며 미간을 찌푸렸어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "scowl",
+     "ko": "노려보다",
+     "en": "Scowl angrily."
+    },
+    {
+     "type": "유의어",
+     "word": "grimace",
+     "ko": "얼굴을 찡그리다",
+     "en": "Grimace in pain."
+    },
+    {
+     "type": "반의어",
+     "word": "smile",
+     "ko": "미소",
+     "en": "A big smile."
+    },
+    {
+     "type": "연관어",
+     "word": "forehead",
+     "ko": "이마",
+     "en": "Touch your forehead."
+    },
+    {
+     "type": "연관어",
+     "word": "disapprove",
+     "ko": "못마땅해하다",
+     "en": "Disapprove of the plan."
+    },
+    {
+     "type": "연관어",
+     "word": "expression",
+     "ko": "표정",
+     "en": "A sad expression."
+    }
+   ]
+  },
+  "2846": {
+   "word": "vacate",
+   "overview": [
+    "vacate는 '(방·자리를) 비우다, 떠나다'라는 뜻의 동사입니다.",
+    "vacate the room(방을 비우다)처럼 씁니다.",
+    "'(직위를) 물러나다', 법률에서 '(판결 등을) 무효로 하다'라는 뜻으로도 씁니다.",
+    "형용사 vacant(비어 있는), 명사 vacancy(빈방, 빈자리), vacation(휴가)과 같은 가족입니다."
+   ],
+   "easy": [
+    {
+     "word": "leave",
+     "en": "Leave the room.",
+     "ko": "방을 떠나다."
+    },
+    {
+     "word": "empty",
+     "en": "Empty the seat.",
+     "ko": "자리를 비우다."
+    }
+   ],
+   "etymology": [
+    "vacate는 라틴어 vacare(비어 있다)에서 온 단어입니다.",
+    "vacant(빈), vacuum(진공), vacation(휴가)과 같은 가족입니다.",
+    "'비어 있게 만들다'라는 뜻에서 시작되었습니다.",
+    "머물던 곳이나 자리를 떠나 비워 주는 것, 효력을 없애는 것을 가리키게 되었습니다.",
+    "vacate의 핵심 이미지는 '짐을 싸고 나가 텅 비워진 방 🚪🧳'입니다."
+   ],
+   "meanings": [
+    "(방·자리를) 비우다, 떠나다",
+    "(직위에서) 물러나다",
+    "(법) 무효로 하다"
+   ],
+   "examples": [
+    {
+     "en": "Guests must vacate their rooms by 11 a.m.",
+     "ko": "투숙객은 오전 11시까지 방을 비워야 해요."
+    },
+    {
+     "en": "Please vacate the building during the fire drill.",
+     "ko": "소방 훈련 동안 건물 밖으로 나가 주세요."
+    },
+    {
+     "en": "He vacated his seat for an old woman.",
+     "ko": "그는 할머니께 자리를 비켜 드렸어요."
+    },
+    {
+     "en": "She vacated the position after ten years.",
+     "ko": "그녀는 10년 만에 그 자리에서 물러났어요."
+    },
+    {
+     "en": "The court vacated the earlier decision.",
+     "ko": "법원은 이전 판결을 무효로 했어요."
+    },
+    {
+     "en": "The house has been vacant for years.",
+     "ko": "그 집은 몇 년째 비어 있어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "leave",
+     "ko": "떠나다",
+     "en": "Leave the office."
+    },
+    {
+     "type": "유의어",
+     "word": "evacuate",
+     "ko": "대피하다",
+     "en": "Evacuate the area."
+    },
+    {
+     "type": "반의어",
+     "word": "occupy",
+     "ko": "차지하다",
+     "en": "Occupy a seat."
+    },
+    {
+     "type": "파생어",
+     "word": "vacant",
+     "ko": "비어 있는",
+     "en": "A vacant seat."
+    },
+    {
+     "type": "파생어",
+     "word": "vacancy",
+     "ko": "빈방, 빈자리",
+     "en": "No vacancy."
+    },
+    {
+     "type": "연관어",
+     "word": "vacation",
+     "ko": "휴가",
+     "en": "Summer vacation."
+    }
+   ]
+  },
+  "2632": {
+   "word": "symptom",
+   "overview": [
+    "symptom은 '(병의) 증상'이라는 뜻의 명사입니다.",
+    "cold symptoms(감기 증상)처럼 씁니다.",
+    "'(나쁜 일의) 징후, 조짐'이라는 뜻으로도 씁니다.",
+    "a symptom of(~의 증상, 징후)처럼 of와 함께 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "sign",
+     "en": "A sign of a cold.",
+     "ko": "감기 기운."
+    },
+    {
+     "word": "warning",
+     "en": "An early warning.",
+     "ko": "이른 경고."
+    }
+   ],
+   "etymology": [
+    "symptom은 그리스어 symptoma(일어난 일, 우연한 일)에서 온 단어입니다.",
+    "syn(함께)과 piptein(떨어지다)이 합쳐진 말입니다.",
+    "'병과 함께 떨어져 나타나는 것'이라는 뜻에서 시작되었습니다.",
+    "몸에 병이 생겼을 때 함께 나타나는 신호, 그리고 문제가 있다는 징후를 가리킵니다.",
+    "symptom의 핵심 이미지는 '몸이 보내는 경고 신호 🤒🚨'입니다."
+   ],
+   "meanings": [
+    "증상",
+    "징후, 조짐"
+   ],
+   "examples": [
+    {
+     "en": "Fever and cough are symptoms of the flu.",
+     "ko": "열과 기침은 독감 증상이에요."
+    },
+    {
+     "en": "What are your symptoms?",
+     "ko": "어떤 증상이 있으세요?"
+    },
+    {
+     "en": "If symptoms continue, see a doctor.",
+     "ko": "증상이 계속되면 병원에 가 보세요."
+    },
+    {
+     "en": "His tiredness was a symptom of stress.",
+     "ko": "그의 피로는 스트레스의 증상이었어요."
+    },
+    {
+     "en": "Rising prices are a symptom of a bigger problem.",
+     "ko": "물가 상승은 더 큰 문제의 징후예요."
+    },
+    {
+     "en": "She had no symptoms at all.",
+     "ko": "그녀는 아무 증상도 없었어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "sign",
+     "ko": "징후",
+     "en": "Signs of spring."
+    },
+    {
+     "type": "유의어",
+     "word": "indication",
+     "ko": "조짐",
+     "en": "An indication of trouble."
+    },
+    {
+     "type": "연관어",
+     "word": "disease",
+     "ko": "질병",
+     "en": "Heart disease."
+    },
+    {
+     "type": "연관어",
+     "word": "fever",
+     "ko": "열",
+     "en": "A high fever."
+    },
+    {
+     "type": "연관어",
+     "word": "diagnosis",
+     "ko": "진단",
+     "en": "A quick diagnosis."
+    },
+    {
+     "type": "연관어",
+     "word": "treatment",
+     "ko": "치료",
+     "en": "Medical treatment."
+    }
+   ]
+  },
+  "578": {
+   "word": "confide",
+   "overview": [
+    "confide는 '(비밀을) 털어놓다'라는 뜻의 동사입니다.",
+    "confide in someone(~에게 속마음을 털어놓다)처럼 씁니다.",
+    "믿을 수 있는 사람에게 개인적인 이야기를 말하는 것을 뜻합니다.",
+    "'(일을) 맡기다'라는 뜻도 있고, 명사 confidence(신뢰, 자신감), 형용사 confidential(기밀의)과 같은 가족입니다."
+   ],
+   "easy": [
+    {
+     "word": "tell a secret",
+     "en": "Tell a secret.",
+     "ko": "비밀을 말하다."
+    },
+    {
+     "word": "trust",
+     "en": "Trust a friend.",
+     "ko": "친구를 믿다."
+    }
+   ],
+   "etymology": [
+    "confide는 라틴어 confidere(완전히 믿다)에서 온 단어입니다.",
+    "con(완전히)과 fidere(믿다)가 합쳐진 말로, confident(자신 있는), faith(믿음)와 뿌리가 이어집니다.",
+    "'누군가를 완전히 믿다'라는 뜻에서 시작되었습니다.",
+    "완전히 믿는 사람에게 비밀이나 속마음을 맡기듯 털어놓는 것을 가리키게 되었습니다.",
+    "confide의 핵심 이미지는 '믿는 친구 귀에 조용히 속마음을 속삭이는 것 🤫👂'입니다."
+   ],
+   "meanings": [
+    "비밀을 털어놓다",
+    "맡기다",
+    "신임하다"
+   ],
+   "examples": [
+    {
+     "en": "She confided in her best friend.",
+     "ko": "그녀는 가장 친한 친구에게 속마음을 털어놓았어요."
+    },
+    {
+     "en": "He confided that he was afraid of the dark.",
+     "ko": "그는 어둠을 무서워한다고 털어놓았어요."
+    },
+    {
+     "en": "You can confide in me.",
+     "ko": "나한테는 뭐든 털어놔도 돼요."
+    },
+    {
+     "en": "I don't have anyone to confide in.",
+     "ko": "나에게는 속마음을 털어놓을 사람이 없어요."
+    },
+    {
+     "en": "She confided her worries to her mother.",
+     "ko": "그녀는 엄마에게 걱정거리를 털어놓았어요."
+    },
+    {
+     "en": "Please keep this information confidential.",
+     "ko": "이 정보는 비밀로 해 주세요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "reveal",
+     "ko": "밝히다",
+     "en": "Reveal a secret."
+    },
+    {
+     "type": "유의어",
+     "word": "trust",
+     "ko": "믿다",
+     "en": "Trust each other."
+    },
+    {
+     "type": "반의어",
+     "word": "conceal",
+     "ko": "숨기다",
+     "en": "Conceal the truth."
+    },
+    {
+     "type": "파생어",
+     "word": "confidant",
+     "ko": "절친한 친구",
+     "en": "A close confidant."
+    },
+    {
+     "type": "파생어",
+     "word": "confidential",
+     "ko": "기밀의",
+     "en": "Confidential files."
+    },
+    {
+     "type": "연관어",
+     "word": "secret",
+     "ko": "비밀",
+     "en": "Keep a secret."
+    }
+   ]
+  },
+  "1378": {
+   "word": "imitate",
+   "overview": [
+    "imitate는 '흉내 내다, 모방하다'라는 뜻의 동사입니다.",
+    "imitate a teacher's voice(선생님 목소리를 흉내 내다)처럼 씁니다.",
+    "'(무언가를 본떠) 모조하다, 본뜨다'라는 뜻으로도 씁니다.",
+    "명사 imitation(모방, 모조품)도 자주 씁니다. (imitation leather, 인조 가죽)"
+   ],
+   "easy": [
+    {
+     "word": "copy",
+     "en": "Copy his moves.",
+     "ko": "그의 동작을 따라 하다."
+    },
+    {
+     "word": "mimic",
+     "en": "Mimic a bird.",
+     "ko": "새를 흉내 내다."
+    }
+   ],
+   "etymology": [
+    "imitate는 라틴어 imitari(따라 하다, 본뜨다)에서 온 단어입니다.",
+    "image(이미지, 모습)와 같은 뿌리를 가진 말로 봅니다.",
+    "'어떤 모습을 그대로 본뜨다'라는 뜻에서 시작되었습니다.",
+    "다른 사람의 말, 행동, 모양을 똑같이 따라 하는 것을 가리키게 되었습니다.",
+    "imitate의 핵심 이미지는 '거울처럼 똑같이 따라 하는 앵무새 🦜🪞'입니다."
+   ],
+   "meanings": [
+    "흉내 내다, 모방하다",
+    "모조하다, 본뜨다",
+    "~인 체하다"
+   ],
+   "examples": [
+    {
+     "en": "Babies learn by imitating their parents.",
+     "ko": "아기들은 부모를 따라 하며 배워요."
+    },
+    {
+     "en": "He can imitate a cat perfectly.",
+     "ko": "그는 고양이 소리를 완벽하게 흉내 낼 수 있어요."
+    },
+    {
+     "en": "Parrots can imitate human speech.",
+     "ko": "앵무새는 사람의 말을 흉내 낼 수 있어요."
+    },
+    {
+     "en": "The material imitates real wood.",
+     "ko": "그 재료는 진짜 나무를 본뜬 거예요."
+    },
+    {
+     "en": "Many companies tried to imitate the product.",
+     "ko": "많은 회사가 그 제품을 모방하려고 했어요."
+    },
+    {
+     "en": "This bag is a cheap imitation.",
+     "ko": "이 가방은 싸구려 모조품이에요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "copy",
+     "ko": "따라 하다",
+     "en": "Copy the drawing."
+    },
+    {
+     "type": "유의어",
+     "word": "mimic",
+     "ko": "흉내 내다",
+     "en": "Mimic a voice."
+    },
+    {
+     "type": "반의어",
+     "word": "create",
+     "ko": "창작하다",
+     "en": "Create something new."
+    },
+    {
+     "type": "파생어",
+     "word": "imitation",
+     "ko": "모방, 모조품",
+     "en": "A cheap imitation."
+    },
+    {
+     "type": "연관어",
+     "word": "original",
+     "ko": "원본",
+     "en": "The original painting."
+    },
+    {
+     "type": "연관어",
+     "word": "fake",
+     "ko": "가짜의",
+     "en": "A fake watch."
+    }
+   ]
+  },
+  "1385": {
+   "word": "implement",
+   "overview": [
+    "implement는 동사로 '(계획·정책을) 실행하다, 시행하다'라는 뜻입니다. (발음: IM-ple-ment)",
+    "implement a plan(계획을 실행하다)처럼 씁니다.",
+    "명사로는 '도구, 기구'라는 뜻입니다. (farm implements, 농기구)",
+    "명사 implementation(실행, 시행)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "carry out",
+     "en": "Carry out the plan.",
+     "ko": "계획을 실행하다."
+    },
+    {
+     "word": "tool",
+     "en": "A garden tool.",
+     "ko": "정원 도구."
+    }
+   ],
+   "etymology": [
+    "implement는 라틴어 implere(가득 채우다)에서 온 단어입니다.",
+    "in(안에)과 plere(채우다)가 합쳐진 말로, complete(완성하다), plenty(풍부함)와 같은 가족입니다.",
+    "처음에는 '일을 채워 완성하는 데 쓰는 것', 즉 도구를 뜻했습니다.",
+    "나중에 계획이나 약속을 실제로 채워 넣어 '실행하다'라는 동사 뜻이 생겼습니다.",
+    "implement의 핵심 이미지는 '종이 위의 계획을 도구를 들고 실제로 해내는 것 📋➡️🛠️'입니다."
+   ],
+   "meanings": [
+    "도구, 기구",
+    "수단, 방법",
+    "실행하다, 시행하다"
+   ],
+   "examples": [
+    {
+     "en": "The school will implement a new rule next month.",
+     "ko": "학교는 다음 달에 새 규칙을 시행할 거예요."
+    },
+    {
+     "en": "It's time to implement our plan.",
+     "ko": "이제 우리 계획을 실행할 때예요."
+    },
+    {
+     "en": "The government implemented new safety laws.",
+     "ko": "정부는 새로운 안전법을 시행했어요."
+    },
+    {
+     "en": "Farmers used simple implements in the past.",
+     "ko": "옛날 농부들은 단순한 농기구를 사용했어요."
+    },
+    {
+     "en": "Kitchen implements hang on the wall.",
+     "ko": "주방 도구들이 벽에 걸려 있어요."
+    },
+    {
+     "en": "The implementation of the project took two years.",
+     "ko": "그 프로젝트를 실행하는 데 2년이 걸렸어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "carry out",
+     "ko": "실행하다",
+     "en": "Carry out orders."
+    },
+    {
+     "type": "유의어",
+     "word": "tool",
+     "ko": "도구",
+     "en": "Power tools."
+    },
+    {
+     "type": "반의어",
+     "word": "abandon",
+     "ko": "그만두다",
+     "en": "Abandon the plan."
+    },
+    {
+     "type": "파생어",
+     "word": "implementation",
+     "ko": "실행, 시행",
+     "en": "Policy implementation."
+    },
+    {
+     "type": "연관어",
+     "word": "policy",
+     "ko": "정책",
+     "en": "A new policy."
+    },
+    {
+     "type": "연관어",
+     "word": "execute",
+     "ko": "실행하다",
+     "en": "Execute a plan."
+    }
+   ]
+  },
+  "2601": {
+   "word": "supervise",
+   "overview": [
+    "supervise는 '감독하다, 관리하다'라는 뜻의 동사입니다.",
+    "supervise the workers(일꾼들을 감독하다)처럼 씁니다.",
+    "일이나 사람이 올바르게 진행되는지 지켜보며 책임지는 것을 뜻합니다.",
+    "명사 supervisor(감독관, 관리자), supervision(감독)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "watch over",
+     "en": "Watch over the kids.",
+     "ko": "아이들을 돌보다."
+    },
+    {
+     "word": "manage",
+     "en": "Manage a team.",
+     "ko": "팀을 관리하다."
+    }
+   ],
+   "etymology": [
+    "supervise는 라틴어 super(위에서)와 videre(보다)가 합쳐진 단어입니다.",
+    "videre는 video(비디오), vision(시력), visit(방문하다)과 같은 가족입니다.",
+    "'위에서 내려다보다'라는 뜻에서 시작되었습니다.",
+    "위에서 전체를 살피며 일이나 사람을 지도하고 관리하는 것을 가리키게 되었습니다.",
+    "supervise의 핵심 이미지는 '높은 곳에서 전체를 지켜보는 감독관의 눈 👀📋'입니다."
+   ],
+   "meanings": [
+    "감독하다, 지휘하다"
+   ],
+   "examples": [
+    {
+     "en": "A teacher supervises the students during lunch.",
+     "ko": "점심시간에는 선생님 한 분이 학생들을 감독하세요."
+    },
+    {
+     "en": "Young children should be supervised near water.",
+     "ko": "어린아이들은 물가에서 보호자의 감독을 받아야 해요."
+    },
+    {
+     "en": "She supervises a team of ten people.",
+     "ko": "그녀는 열 명으로 된 팀을 관리해요."
+    },
+    {
+     "en": "Who is supervising this project?",
+     "ko": "이 프로젝트는 누가 감독하고 있나요?"
+    },
+    {
+     "en": "My supervisor gave me good feedback.",
+     "ko": "제 상사가 좋은 피드백을 줬어요."
+    },
+    {
+     "en": "Students worked under the supervision of a scientist.",
+     "ko": "학생들은 과학자의 지도 아래 작업했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "oversee",
+     "ko": "감독하다",
+     "en": "Oversee the work."
+    },
+    {
+     "type": "유의어",
+     "word": "manage",
+     "ko": "관리하다",
+     "en": "Manage a store."
+    },
+    {
+     "type": "파생어",
+     "word": "supervisor",
+     "ko": "감독관, 관리자",
+     "en": "Ask your supervisor."
+    },
+    {
+     "type": "파생어",
+     "word": "supervision",
+     "ko": "감독",
+     "en": "Adult supervision."
+    },
+    {
+     "type": "연관어",
+     "word": "monitor",
+     "ko": "지켜보다",
+     "en": "Monitor progress."
+    },
+    {
+     "type": "연관어",
+     "word": "responsible",
+     "ko": "책임 있는",
+     "en": "Be responsible."
+    }
+   ]
+  },
+  "1862": {
+   "word": "outline",
+   "overview": [
+    "outline은 '윤곽, 테두리 선'이라는 뜻의 명사입니다.",
+    "the outline of a mountain(산의 윤곽)처럼 씁니다.",
+    "'(글·계획의) 개요, 요점'이라는 뜻으로도 자주 씁니다. (an outline of the essay, 에세이 개요)",
+    "동사로는 '윤곽을 그리다', '개요를 말하다'라는 뜻입니다."
+   ],
+   "easy": [
+    {
+     "word": "shape",
+     "en": "The shape of a tree.",
+     "ko": "나무의 모양."
+    },
+    {
+     "word": "summary",
+     "en": "Give a summary.",
+     "ko": "요약을 말하다."
+    }
+   ],
+   "etymology": [
+    "outline은 out(바깥)과 line(선)이 합쳐진 단어입니다.",
+    "원래는 그림에서 사물의 바깥 테두리를 따라 그린 선을 뜻했습니다.",
+    "'바깥쪽을 두른 선'이라는 뜻에서 시작되었습니다.",
+    "자세한 내용 없이 큰 틀만 보여 주는 개요라는 뜻으로 넓어졌습니다.",
+    "outline의 핵심 이미지는 '속은 비워 두고 바깥 테두리만 그린 밑그림 ✏️⬜'입니다."
+   ],
+   "meanings": [
+    "테두리 선, 윤곽",
+    "(글이나 계획의) 개요, 대강",
+    "윤곽을 그리다, 개요를 말하다"
+   ],
+   "examples": [
+    {
+     "en": "We could see the outline of the mountains.",
+     "ko": "우리는 산의 윤곽을 볼 수 있었어요."
+    },
+    {
+     "en": "Write an outline before you write the essay.",
+     "ko": "에세이를 쓰기 전에 개요를 먼저 쓰세요."
+    },
+    {
+     "en": "The teacher outlined the plan for the trip.",
+     "ko": "선생님께서 여행 계획을 간략히 설명해 주셨어요."
+    },
+    {
+     "en": "Draw the outline of your hand on the paper.",
+     "ko": "종이에 손의 윤곽을 따라 그려 보세요."
+    },
+    {
+     "en": "Here is a brief outline of the story.",
+     "ko": "이것이 그 이야기의 간단한 줄거리예요."
+    },
+    {
+     "en": "The report outlines three main problems.",
+     "ko": "그 보고서는 세 가지 주요 문제를 개괄해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "summary",
+     "ko": "요약",
+     "en": "A short summary."
+    },
+    {
+     "type": "유의어",
+     "word": "sketch",
+     "ko": "밑그림, 개요",
+     "en": "A quick sketch."
+    },
+    {
+     "type": "유의어",
+     "word": "shape",
+     "ko": "모양",
+     "en": "A round shape."
+    },
+    {
+     "type": "반의어",
+     "word": "detail",
+     "ko": "세부 사항",
+     "en": "Every detail."
+    },
+    {
+     "type": "연관어",
+     "word": "draft",
+     "ko": "초안",
+     "en": "The first draft."
+    },
+    {
+     "type": "연관어",
+     "word": "border",
+     "ko": "테두리",
+     "en": "A red border."
+    }
+   ]
+  },
+  "654": {
+   "word": "coupon",
+   "overview": [
+    "coupon은 '쿠폰, 할인권'이라는 뜻의 명사입니다.",
+    "a discount coupon(할인 쿠폰)처럼 씁니다.",
+    "물건을 싸게 사거나 무료로 받을 수 있게 해 주는 종이나 표를 뜻합니다.",
+    "'(잡지 등의) 신청 용지, 응모권'이라는 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "voucher",
+     "en": "A gift voucher.",
+     "ko": "상품권."
+    },
+    {
+     "word": "ticket",
+     "en": "A free ticket.",
+     "ko": "무료 표."
+    }
+   ],
+   "etymology": [
+    "coupon은 프랑스어 couper(자르다)에서 온 단어입니다.",
+    "'잘라 낸 조각'이라는 뜻으로 시작되었습니다.",
+    "옛날에는 채권에서 이자를 받을 때 한 장씩 잘라 내던 표를 가리켰습니다.",
+    "지금은 잘라서 쓰는 할인권, 교환권을 가리키게 되었습니다.",
+    "coupon의 핵심 이미지는 '가위로 점선을 따라 오려 낸 할인권 ✂️🎟️'입니다."
+   ],
+   "meanings": [
+    "쿠폰, 할인권",
+    "교환권",
+    "응모권"
+   ],
+   "examples": [
+    {
+     "en": "I have a coupon for a free drink.",
+     "ko": "나한테 음료 무료 쿠폰이 있어요."
+    },
+    {
+     "en": "Use this coupon to get 20% off.",
+     "ko": "이 쿠폰을 쓰면 20% 할인받을 수 있어요."
+    },
+    {
+     "en": "My mom cuts coupons from the newspaper.",
+     "ko": "우리 엄마는 신문에서 쿠폰을 오려 두세요."
+    },
+    {
+     "en": "The coupon expires next week.",
+     "ko": "그 쿠폰은 다음 주에 만료돼요."
+    },
+    {
+     "en": "Fill out the coupon to enter the contest.",
+     "ko": "응모권을 작성해서 대회에 참가하세요."
+    },
+    {
+     "en": "Can I use two coupons at once?",
+     "ko": "쿠폰 두 장을 한 번에 쓸 수 있나요?"
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "voucher",
+     "ko": "상품권",
+     "en": "A meal voucher."
+    },
+    {
+     "type": "연관어",
+     "word": "discount",
+     "ko": "할인",
+     "en": "A big discount."
+    },
+    {
+     "type": "연관어",
+     "word": "sale",
+     "ko": "할인 판매",
+     "en": "On sale."
+    },
+    {
+     "type": "연관어",
+     "word": "expire",
+     "ko": "만료되다",
+     "en": "The card expired."
+    },
+    {
+     "type": "연관어",
+     "word": "receipt",
+     "ko": "영수증",
+     "en": "Keep the receipt."
+    },
+    {
+     "type": "연관어",
+     "word": "free",
+     "ko": "무료의",
+     "en": "A free gift."
+    }
+   ]
+  },
+  "2033": {
+   "word": "prescribe",
+   "overview": [
+    "prescribe는 '(약을) 처방하다'라는 뜻의 동사입니다.",
+    "prescribe medicine(약을 처방하다)처럼 씁니다.",
+    "'(규칙·방법을) 규정하다, 정하다'라는 뜻으로도 씁니다.",
+    "명사 prescription(처방전, 처방)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "order medicine",
+     "en": "The doctor orders medicine.",
+     "ko": "의사가 약을 지어 주다."
+    },
+    {
+     "word": "set",
+     "en": "Set the rules.",
+     "ko": "규칙을 정하다."
+    }
+   ],
+   "etymology": [
+    "prescribe는 라틴어 praescribere(미리 쓰다)에서 온 단어입니다.",
+    "prae(미리)와 scribere(쓰다)가 합쳐진 말로, describe(묘사하다), script(대본)와 같은 가족입니다.",
+    "'미리 써서 정해 두다'라는 뜻에서 시작되었습니다.",
+    "의사가 환자에게 필요한 약을 적어 주는 것, 규칙을 미리 정해 두는 것을 가리키게 되었습니다.",
+    "prescribe의 핵심 이미지는 '의사가 처방전에 약 이름을 적어 주는 것 🩺📝'입니다."
+   ],
+   "meanings": [
+    "(미리) 규정하다, 정하다",
+    "처방하다"
+   ],
+   "examples": [
+    {
+     "en": "The doctor prescribed some medicine for my cough.",
+     "ko": "의사가 기침약을 처방해 주었어요."
+    },
+    {
+     "en": "Take the pills as prescribed.",
+     "ko": "처방받은 대로 약을 드세요."
+    },
+    {
+     "en": "The doctor prescribed plenty of rest.",
+     "ko": "의사는 충분히 쉬라고 처방했어요."
+    },
+    {
+     "en": "The rules prescribe what students must wear.",
+     "ko": "그 규칙은 학생들이 무엇을 입어야 하는지 정하고 있어요."
+    },
+    {
+     "en": "You need a prescription for this medicine.",
+     "ko": "이 약을 사려면 처방전이 필요해요."
+    },
+    {
+     "en": "Follow the prescribed steps carefully.",
+     "ko": "정해진 절차를 신중히 따르세요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "recommend",
+     "ko": "권하다",
+     "en": "Recommend rest."
+    },
+    {
+     "type": "유의어",
+     "word": "order",
+     "ko": "지시하다",
+     "en": "Order a test."
+    },
+    {
+     "type": "파생어",
+     "word": "prescription",
+     "ko": "처방전",
+     "en": "Fill a prescription."
+    },
+    {
+     "type": "연관어",
+     "word": "medicine",
+     "ko": "약",
+     "en": "Take medicine."
+    },
+    {
+     "type": "연관어",
+     "word": "pharmacy",
+     "ko": "약국",
+     "en": "Go to the pharmacy."
+    },
+    {
+     "type": "연관어",
+     "word": "dose",
+     "ko": "복용량",
+     "en": "A daily dose."
+    }
+   ]
+  },
+  "1392": {
+   "word": "incentive",
+   "overview": [
+    "incentive는 '장려책, 동기, 인센티브'라는 뜻의 명사입니다.",
+    "an incentive to study(공부할 동기)처럼 씁니다.",
+    "어떤 행동을 하도록 부추기는 보상이나 이유를 뜻합니다.",
+    "회사에서 성과에 따라 주는 추가 보상도 incentive라고 하고, 반대 개념은 disincentive(의욕을 꺾는 것)입니다."
+   ],
+   "easy": [
+    {
+     "word": "reason",
+     "en": "A good reason.",
+     "ko": "좋은 이유."
+    },
+    {
+     "word": "reward",
+     "en": "Get a reward.",
+     "ko": "보상을 받다."
+    }
+   ],
+   "etymology": [
+    "incentive는 라틴어 incentivus(곡조를 시작하는, 부추기는)에서 온 단어입니다.",
+    "in(안에)과 canere(노래하다)가 합쳐진 말로, chant(노래)와 뿌리가 이어집니다.",
+    "원래는 노래의 첫 음을 불러 모두가 따라 부르게 이끄는 것을 뜻했습니다.",
+    "사람들이 행동하도록 이끌고 부추기는 자극을 가리키게 되었습니다.",
+    "incentive의 핵심 이미지는 '달려가게 만드는 앞에 놓인 보상 🥕🏃'입니다."
+   ],
+   "meanings": [
+    "장려책, 유인",
+    "동기, 자극"
+   ],
+   "examples": [
+    {
+     "en": "Prizes are an incentive for students to read more.",
+     "ko": "상품은 학생들이 책을 더 읽게 하는 동기가 돼요."
+    },
+    {
+     "en": "The company offers incentives to good workers.",
+     "ko": "그 회사는 우수한 직원들에게 인센티브를 줘요."
+    },
+    {
+     "en": "There is no incentive to save money.",
+     "ko": "돈을 모을 동기가 없어요."
+    },
+    {
+     "en": "Tax incentives help small businesses.",
+     "ko": "세금 혜택은 작은 기업들에 도움이 돼요."
+    },
+    {
+     "en": "A free gift is a good incentive to buy.",
+     "ko": "사은품은 구매를 부추기는 좋은 유인책이에요."
+    },
+    {
+     "en": "What incentive do they have to change?",
+     "ko": "그들이 변화할 이유가 뭐가 있겠어요?"
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "motivation",
+     "ko": "동기 부여",
+     "en": "Lack of motivation."
+    },
+    {
+     "type": "유의어",
+     "word": "encouragement",
+     "ko": "격려",
+     "en": "Words of encouragement."
+    },
+    {
+     "type": "반의어",
+     "word": "disincentive",
+     "ko": "의욕을 꺾는 것",
+     "en": "A disincentive to work."
+    },
+    {
+     "type": "연관어",
+     "word": "reward",
+     "ko": "보상",
+     "en": "A small reward."
+    },
+    {
+     "type": "연관어",
+     "word": "bonus",
+     "ko": "보너스",
+     "en": "A year-end bonus."
+    },
+    {
+     "type": "연관어",
+     "word": "motive",
+     "ko": "동기",
+     "en": "The motive for the crime."
+    }
+   ]
+  },
+  "1370": {
+   "word": "ideology",
+   "overview": [
+    "ideology는 '이념, 이데올로기'라는 뜻의 명사입니다.",
+    "political ideology(정치 이념)처럼 씁니다.",
+    "한 집단이나 사회가 공유하는 생각과 가치의 체계를 뜻합니다.",
+    "형용사 ideological(이념적인)도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "beliefs",
+     "en": "Strong beliefs.",
+     "ko": "강한 신념."
+    },
+    {
+     "word": "ideas",
+     "en": "Political ideas.",
+     "ko": "정치적 생각들."
+    }
+   ],
+   "etymology": [
+    "ideology는 그리스어 idea(생각, 모양)와 logia(학문, 이야기)가 합쳐진 단어입니다.",
+    "18세기 말 프랑스에서 '생각에 관한 학문'이라는 뜻으로 처음 만들어졌습니다.",
+    "idea(생각), biology(생물학)처럼 -logy가 붙은 말들과 같은 구조입니다.",
+    "나중에는 사회나 집단이 따르는 생각의 체계를 가리키게 되었습니다.",
+    "ideology의 핵심 이미지는 '사람들이 함께 믿고 따르는 생각의 지도 🗺️💭'입니다."
+   ],
+   "meanings": [
+    "이념, 이데올로기"
+   ],
+   "examples": [
+    {
+     "en": "The two countries had different ideologies.",
+     "ko": "두 나라는 서로 다른 이념을 가지고 있었어요."
+    },
+    {
+     "en": "The party's ideology focuses on freedom.",
+     "ko": "그 정당의 이념은 자유에 초점을 두고 있어요."
+    },
+    {
+     "en": "The war was partly about ideology.",
+     "ko": "그 전쟁은 어느 정도 이념 때문이었어요."
+    },
+    {
+     "en": "People should respect different ideologies.",
+     "ko": "사람들은 서로 다른 이념을 존중해야 해요."
+    },
+    {
+     "en": "The book explains the ideology of the Cold War.",
+     "ko": "그 책은 냉전 시대의 이념을 설명해요."
+    },
+    {
+     "en": "They had deep ideological differences.",
+     "ko": "그들 사이에는 깊은 이념적 차이가 있었어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "belief",
+     "ko": "신념",
+     "en": "Religious belief."
+    },
+    {
+     "type": "유의어",
+     "word": "philosophy",
+     "ko": "철학",
+     "en": "A life philosophy."
+    },
+    {
+     "type": "파생어",
+     "word": "ideological",
+     "ko": "이념적인",
+     "en": "Ideological conflict."
+    },
+    {
+     "type": "연관어",
+     "word": "politics",
+     "ko": "정치",
+     "en": "Local politics."
+    },
+    {
+     "type": "연관어",
+     "word": "value",
+     "ko": "가치",
+     "en": "Family values."
+    },
+    {
+     "type": "연관어",
+     "word": "idea",
+     "ko": "생각",
+     "en": "A new idea."
+    }
+   ]
+  },
+  "44": {
+   "word": "administer",
+   "overview": [
+    "administer는 '(조직·일을) 관리하다, 운영하다'라는 뜻의 동사입니다.",
+    "administer a school(학교를 운영하다)처럼 씁니다.",
+    "'(약을) 투여하다', '(시험을) 실시하다', '(법을) 집행하다'라는 뜻으로도 씁니다.",
+    "명사 administration(행정, 관리), administrator(관리자)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "manage",
+     "en": "Manage the office.",
+     "ko": "사무실을 관리하다."
+    },
+    {
+     "word": "give",
+     "en": "Give medicine.",
+     "ko": "약을 주다."
+    }
+   ],
+   "etymology": [
+    "administer는 라틴어 administrare(돕다, 관리하다)에서 온 단어입니다.",
+    "ad(~에)와 ministrare(시중들다, 봉사하다)가 합쳐진 말로, minister(장관, 목사)와 같은 가족입니다.",
+    "'누군가를 위해 시중들고 일을 돌보다'라는 뜻에서 시작되었습니다.",
+    "조직의 일을 맡아 관리하는 것, 약이나 시험을 사람들에게 주는 것을 가리키게 되었습니다.",
+    "administer의 핵심 이미지는 '여러 일을 맡아 챙기고 돌보는 관리자 🗂️🧑‍💼'입니다."
+   ],
+   "meanings": [
+    "관리하다, 운영하다",
+    "(약을) 투여하다, (시험을) 실시하다",
+    "(법을) 집행하다"
+   ],
+   "examples": [
+    {
+     "en": "She administers the school's library.",
+     "ko": "그녀는 학교 도서관을 관리해요."
+    },
+    {
+     "en": "The nurse administered the medicine.",
+     "ko": "간호사가 약을 투여했어요."
+    },
+    {
+     "en": "The test will be administered on Monday.",
+     "ko": "시험은 월요일에 실시될 거예요."
+    },
+    {
+     "en": "The city administers the public parks.",
+     "ko": "시에서 공원들을 관리해요."
+    },
+    {
+     "en": "Judges administer the law fairly.",
+     "ko": "판사들은 법을 공정하게 집행해요."
+    },
+    {
+     "en": "He works in the school administration.",
+     "ko": "그는 학교 행정실에서 일해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "manage",
+     "ko": "관리하다",
+     "en": "Manage money."
+    },
+    {
+     "type": "유의어",
+     "word": "run",
+     "ko": "운영하다",
+     "en": "Run a business."
+    },
+    {
+     "type": "파생어",
+     "word": "administration",
+     "ko": "행정, 관리",
+     "en": "The school administration."
+    },
+    {
+     "type": "파생어",
+     "word": "administrator",
+     "ko": "관리자",
+     "en": "A system administrator."
+    },
+    {
+     "type": "연관어",
+     "word": "minister",
+     "ko": "장관",
+     "en": "The prime minister."
+    },
+    {
+     "type": "연관어",
+     "word": "dose",
+     "ko": "복용량",
+     "en": "The right dose."
+    }
+   ]
+  },
+  "2821": {
+   "word": "undergo",
+   "overview": [
+    "undergo는 '(변화·수술·시험 등을) 겪다, 받다'라는 뜻의 동사입니다.",
+    "undergo surgery(수술을 받다)처럼 씁니다.",
+    "힘들거나 중요한 과정을 거치는 것을 뜻합니다.",
+    "과거형은 underwent, 과거분사는 undergone입니다."
+   ],
+   "easy": [
+    {
+     "word": "go through",
+     "en": "Go through changes.",
+     "ko": "변화를 겪다."
+    },
+    {
+     "word": "experience",
+     "en": "Experience a problem.",
+     "ko": "문제를 겪다."
+    }
+   ],
+   "etymology": [
+    "undergo는 고대 영어 undergan에서 온 단어로, under(아래)와 go(가다)가 합쳐졌습니다.",
+    "'무언가의 아래로 들어가다'라는 뜻에서 시작되었습니다.",
+    "무거운 짐이나 힘든 일 아래로 들어가 그것을 견딘다는 느낌이 생겼습니다.",
+    "변화, 수술, 시험처럼 거쳐야 하는 과정을 겪는 것을 가리키게 되었습니다.",
+    "undergo의 핵심 이미지는 '터널을 지나가듯 한 과정을 통과하는 것 🚇➡️'입니다."
+   ],
+   "meanings": [
+    "(수술·검사 등을) 받다",
+    "(변화 등을) 겪다"
+   ],
+   "examples": [
+    {
+     "en": "My grandfather underwent heart surgery.",
+     "ko": "우리 할아버지는 심장 수술을 받으셨어요."
+    },
+    {
+     "en": "The city has undergone many changes.",
+     "ko": "그 도시는 많은 변화를 겪었어요."
+    },
+    {
+     "en": "A caterpillar undergoes a big change to become a butterfly.",
+     "ko": "애벌레는 나비가 되려고 큰 변화를 겪어요."
+    },
+    {
+     "en": "All new cars undergo safety tests.",
+     "ko": "모든 신차는 안전 검사를 거쳐요."
+    },
+    {
+     "en": "The building is undergoing repairs.",
+     "ko": "그 건물은 수리 중이에요."
+    },
+    {
+     "en": "She underwent training for six months.",
+     "ko": "그녀는 6개월 동안 훈련을 받았어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "experience",
+     "ko": "경험하다",
+     "en": "Experience pain."
+    },
+    {
+     "type": "유의어",
+     "word": "go through",
+     "ko": "겪다",
+     "en": "Go through a hard time."
+    },
+    {
+     "type": "변화형",
+     "word": "underwent",
+     "ko": "겪었다(과거형)",
+     "en": "He underwent tests."
+    },
+    {
+     "type": "변화형",
+     "word": "undergone",
+     "ko": "겪은(과거분사)",
+     "en": "It has undergone changes."
+    },
+    {
+     "type": "연관어",
+     "word": "surgery",
+     "ko": "수술",
+     "en": "Minor surgery."
+    },
+    {
+     "type": "연관어",
+     "word": "endure",
+     "ko": "견디다",
+     "en": "Endure the cold."
+    }
+   ]
+  },
+  "962": {
+   "word": "evaluate",
+   "overview": [
+    "evaluate는 '평가하다'라는 뜻의 동사입니다.",
+    "evaluate a student's work(학생의 과제를 평가하다)처럼 씁니다.",
+    "무언가의 가치, 품질, 수준을 꼼꼼히 따져서 판단하는 것을 뜻합니다.",
+    "명사 evaluation(평가)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "judge",
+     "en": "Judge the contest.",
+     "ko": "대회를 심사하다."
+    },
+    {
+     "word": "check",
+     "en": "Check the quality.",
+     "ko": "품질을 확인하다."
+    }
+   ],
+   "etymology": [
+    "evaluate는 프랑스어 évaluer(값을 매기다)에서 온 단어입니다.",
+    "e(밖으로)와 value(가치)가 합쳐진 말로, value(가치), valuable(귀중한)과 같은 가족입니다.",
+    "'가치를 밖으로 끌어내어 매기다'라는 뜻에서 시작되었습니다.",
+    "무언가가 얼마나 좋은지, 얼마나 가치 있는지 따져 보는 것을 가리키게 되었습니다.",
+    "evaluate의 핵심 이미지는 '저울에 올려 가치를 꼼꼼히 재는 것 ⚖️📊'입니다."
+   ],
+   "meanings": [
+    "평가하다",
+    "판단하다"
+   ],
+   "examples": [
+    {
+     "en": "Teachers evaluate students' progress.",
+     "ko": "선생님들은 학생들의 발전 정도를 평가해요."
+    },
+    {
+     "en": "We need to evaluate the results carefully.",
+     "ko": "우리는 결과를 신중하게 평가해야 해요."
+    },
+    {
+     "en": "How do you evaluate a good book?",
+     "ko": "좋은 책은 어떻게 판단하나요?"
+    },
+    {
+     "en": "The judges evaluated each dancer.",
+     "ko": "심사위원들은 무용수 한 명 한 명을 평가했어요."
+    },
+    {
+     "en": "Evaluate the pros and cons before you decide.",
+     "ko": "결정하기 전에 장단점을 따져 보세요."
+    },
+    {
+     "en": "Every worker gets a yearly evaluation.",
+     "ko": "모든 직원은 매년 평가를 받아요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "assess",
+     "ko": "평가하다",
+     "en": "Assess the damage."
+    },
+    {
+     "type": "유의어",
+     "word": "judge",
+     "ko": "판단하다",
+     "en": "Judge fairly."
+    },
+    {
+     "type": "파생어",
+     "word": "evaluation",
+     "ko": "평가",
+     "en": "A fair evaluation."
+    },
+    {
+     "type": "연관어",
+     "word": "value",
+     "ko": "가치",
+     "en": "Great value."
+    },
+    {
+     "type": "연관어",
+     "word": "grade",
+     "ko": "성적을 매기다",
+     "en": "Grade the tests."
+    },
+    {
+     "type": "연관어",
+     "word": "review",
+     "ko": "검토하다",
+     "en": "Review the report."
+    }
+   ]
+  },
+  "757": {
+   "word": "democrat",
+   "overview": [
+    "democrat은 '민주주의자'라는 뜻의 명사입니다.",
+    "a true democrat(진정한 민주주의자)처럼 씁니다.",
+    "대문자로 쓴 Democrat은 미국 '민주당원'을 뜻합니다. (반대 정당은 Republican, 공화당원)",
+    "democracy(민주주의), democratic(민주적인)과 같은 가족입니다."
+   ],
+   "easy": [
+    {
+     "word": "supporter of democracy",
+     "en": "A supporter of democracy.",
+     "ko": "민주주의 지지자."
+    },
+    {
+     "word": "party member",
+     "en": "A party member.",
+     "ko": "정당원."
+    }
+   ],
+   "etymology": [
+    "democrat은 그리스어 demos(민중)와 kratos(힘, 지배)가 합쳐진 democracy에서 온 단어입니다.",
+    "democracy는 '국민이 힘을 가지고 다스리는 것'이라는 뜻입니다.",
+    "18세기 프랑스 혁명 무렵 '민주주의를 지지하는 사람'이라는 뜻으로 쓰이기 시작했습니다.",
+    "미국에서는 19세기부터 민주당 당원을 가리키는 말로도 쓰였습니다.",
+    "democrat의 핵심 이미지는 '국민이 주인이라고 믿고 투표함 앞에 선 사람 🗳️🙋'입니다."
+   ],
+   "meanings": [
+    "민주주의자",
+    "(미국) 민주당원"
+   ],
+   "examples": [
+    {
+     "en": "He was a strong democrat who believed in equal rights.",
+     "ko": "그는 평등한 권리를 믿는 굳건한 민주주의자였어요."
+    },
+    {
+     "en": "She is a Democrat, and her brother is a Republican.",
+     "ko": "그녀는 민주당원이고, 그녀의 오빠는 공화당원이에요."
+    },
+    {
+     "en": "The Democrats won the election.",
+     "ko": "민주당이 선거에서 이겼어요."
+    },
+    {
+     "en": "True democrats respect other people's votes.",
+     "ko": "진정한 민주주의자는 다른 사람의 표를 존중해요."
+    },
+    {
+     "en": "Korea is a democracy.",
+     "ko": "한국은 민주주의 국가예요."
+    },
+    {
+     "en": "The class made a democratic decision.",
+     "ko": "반 친구들은 민주적으로 결정을 내렸어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "반의어",
+     "word": "dictator",
+     "ko": "독재자",
+     "en": "A cruel dictator."
+    },
+    {
+     "type": "연관어",
+     "word": "Republican",
+     "ko": "(미국) 공화당원",
+     "en": "A Republican senator."
+    },
+    {
+     "type": "파생어",
+     "word": "democracy",
+     "ko": "민주주의",
+     "en": "Freedom and democracy."
+    },
+    {
+     "type": "파생어",
+     "word": "democratic",
+     "ko": "민주적인",
+     "en": "A democratic vote."
+    },
+    {
+     "type": "연관어",
+     "word": "election",
+     "ko": "선거",
+     "en": "A fair election."
+    },
+    {
+     "type": "연관어",
+     "word": "vote",
+     "ko": "투표하다",
+     "en": "Vote for her."
+    }
+   ]
+  },
+  "17": {
+   "word": "accelerate",
+   "overview": [
+    "accelerate는 '가속하다, 속도를 높이다'라는 뜻의 동사입니다.",
+    "The car accelerated.(차가 속도를 높였다)처럼 씁니다.",
+    "'(일의 진행을) 빨라지게 하다, 촉진하다'라는 뜻으로도 씁니다.",
+    "명사 acceleration(가속), 자동차 가속 페달은 accelerator라고 합니다."
+   ],
+   "easy": [
+    {
+     "word": "speed up",
+     "en": "Speed up the car.",
+     "ko": "차 속도를 높이다."
+    },
+    {
+     "word": "go faster",
+     "en": "Go faster.",
+     "ko": "더 빨리 가다."
+    }
+   ],
+   "etymology": [
+    "accelerate는 라틴어 accelerare(서두르다)에서 온 단어입니다.",
+    "ad(~에)와 celer(빠른)가 합쳐진 말입니다.",
+    "'더 빠르게 만들다'라는 뜻이 그대로 이어져 왔습니다.",
+    "탈것의 속도를 높이는 것, 일의 진행을 앞당기는 것을 가리킵니다.",
+    "accelerate의 핵심 이미지는 '가속 페달을 꾹 밟아 쭉 치고 나가는 것 🏎️💨'입니다."
+   ],
+   "meanings": [
+    "가속하다, 속도를 높이다",
+    "촉진하다"
+   ],
+   "examples": [
+    {
+     "en": "The car accelerated onto the highway.",
+     "ko": "차가 속도를 높이며 고속도로로 들어섰어요."
+    },
+    {
+     "en": "Heat accelerates the chemical reaction.",
+     "ko": "열은 화학 반응을 빠르게 해요."
+    },
+    {
+     "en": "The runner accelerated near the finish line.",
+     "ko": "그 선수는 결승선 근처에서 속도를 높였어요."
+    },
+    {
+     "en": "Technology has accelerated change in our lives.",
+     "ko": "기술은 우리 삶의 변화를 가속시켰어요."
+    },
+    {
+     "en": "Don't accelerate on icy roads.",
+     "ko": "빙판길에서는 속도를 높이지 마세요."
+    },
+    {
+     "en": "Press the accelerator gently.",
+     "ko": "가속 페달을 부드럽게 밟으세요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "speed up",
+     "ko": "속도를 높이다",
+     "en": "Speed up the process."
+    },
+    {
+     "type": "유의어",
+     "word": "hasten",
+     "ko": "재촉하다",
+     "en": "Hasten the end."
+    },
+    {
+     "type": "반의어",
+     "word": "decelerate",
+     "ko": "감속하다",
+     "en": "Decelerate slowly."
+    },
+    {
+     "type": "반의어",
+     "word": "slow down",
+     "ko": "속도를 줄이다",
+     "en": "Slow down, please."
+    },
+    {
+     "type": "파생어",
+     "word": "acceleration",
+     "ko": "가속",
+     "en": "Fast acceleration."
+    },
+    {
+     "type": "파생어",
+     "word": "accelerator",
+     "ko": "가속 페달",
+     "en": "Step on the accelerator."
+    }
+   ]
+  },
+  "559": {
+   "word": "compose",
+   "overview": [
+    "compose는 '(음악을) 작곡하다, (글을) 짓다'라는 뜻의 동사입니다.",
+    "compose a song(노래를 작곡하다)처럼 씁니다.",
+    "'구성하다'라는 뜻으로 be composed of(~로 구성되다)라는 표현을 자주 씁니다.",
+    "compose oneself(마음을 가라앉히다)라는 뜻도 있고, composer(작곡가), composition(작곡, 구성)도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "write",
+     "en": "Write music.",
+     "ko": "음악을 쓰다."
+    },
+    {
+     "word": "make up",
+     "en": "Ten players make up a team.",
+     "ko": "선수 열 명이 한 팀을 이루다."
+    }
+   ],
+   "etymology": [
+    "compose는 옛 프랑스어 composer(함께 놓다)에서 온 단어입니다.",
+    "com(함께)과 poser(놓다)가 합쳐진 말로, component(구성 요소), position(위치)과 가까운 가족입니다.",
+    "'여러 부분을 함께 놓아 하나로 만들다'라는 뜻에서 시작되었습니다.",
+    "음표를 모아 곡을 짓는 것, 흐트러진 마음을 가지런히 정리하는 것까지 뜻이 넓어졌습니다.",
+    "compose의 핵심 이미지는 '음표들을 하나하나 배치해 곡을 완성하는 것 🎼✍️'입니다."
+   ],
+   "meanings": [
+    "구성하다",
+    "(글을) 짓다, 작곡하다",
+    "(마음을) 가라앉히다"
+   ],
+   "examples": [
+    {
+     "en": "Mozart composed his first song at age five.",
+     "ko": "모차르트는 다섯 살에 첫 곡을 작곡했어요."
+    },
+    {
+     "en": "Water is composed of hydrogen and oxygen.",
+     "ko": "물은 수소와 산소로 이루어져 있어요."
+    },
+    {
+     "en": "She composed a poem for her mother.",
+     "ko": "그녀는 엄마를 위해 시를 지었어요."
+    },
+    {
+     "en": "Take a deep breath and compose yourself.",
+     "ko": "심호흡하고 마음을 가라앉혀요."
+    },
+    {
+     "en": "The committee is composed of ten members.",
+     "ko": "그 위원회는 열 명의 위원으로 구성되어 있어요."
+    },
+    {
+     "en": "Beethoven is a famous composer.",
+     "ko": "베토벤은 유명한 작곡가예요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "write",
+     "ko": "쓰다",
+     "en": "Write a letter."
+    },
+    {
+     "type": "유의어",
+     "word": "make up",
+     "ko": "구성하다",
+     "en": "Women make up half the class."
+    },
+    {
+     "type": "파생어",
+     "word": "composer",
+     "ko": "작곡가",
+     "en": "A great composer."
+    },
+    {
+     "type": "파생어",
+     "word": "composition",
+     "ko": "작곡, 구성",
+     "en": "A piano composition."
+    },
+    {
+     "type": "파생어",
+     "word": "composure",
+     "ko": "침착",
+     "en": "Keep your composure."
+    },
+    {
+     "type": "연관어",
+     "word": "consist",
+     "ko": "구성되다",
+     "en": "Consist of three parts."
+    }
+   ]
+  },
+  "1406": {
+   "word": "infect",
+   "overview": [
+    "infect는 '감염시키다, 전염시키다'라는 뜻의 동사입니다.",
+    "be infected with a virus(바이러스에 감염되다)처럼 수동태로 자주 씁니다.",
+    "'(컴퓨터에 바이러스를) 감염시키다', '(기분 등을) 옮기다'라는 뜻으로도 씁니다.",
+    "명사 infection(감염), 형용사 infectious(전염성의)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "make sick",
+     "en": "It makes people sick.",
+     "ko": "사람들을 아프게 하다."
+    },
+    {
+     "word": "spread",
+     "en": "Spread a cold.",
+     "ko": "감기를 옮기다."
+    }
+   ],
+   "etymology": [
+    "infect는 라틴어 inficere(물들이다, 더럽히다)에서 온 단어입니다.",
+    "in(안에)과 facere(만들다, 하다)가 합쳐진 말로, fact(사실), effect(효과)와 같은 가족입니다.",
+    "'안에 무언가를 넣어 물들이다'라는 뜻에서 시작되었습니다.",
+    "병균이 몸에 들어가 병이 옮는 것, 기분이 다른 사람에게 번지는 것을 가리키게 되었습니다.",
+    "infect의 핵심 이미지는 '작은 병균이 몸속으로 스며들어 퍼지는 것 🦠➡️🧍'입니다."
+   ],
+   "meanings": [
+    "감염시키다",
+    "(컴퓨터 바이러스가) 감염시키다",
+    "(기분 등을) 옮기다"
+   ],
+   "examples": [
+    {
+     "en": "The virus infected thousands of people.",
+     "ko": "그 바이러스는 수천 명을 감염시켰어요."
+    },
+    {
+     "en": "Wash the cut so it doesn't get infected.",
+     "ko": "상처가 덧나지 않도록 씻으세요."
+    },
+    {
+     "en": "My computer was infected with a virus.",
+     "ko": "내 컴퓨터가 바이러스에 감염되었어요."
+    },
+    {
+     "en": "Her laughter infected everyone in the room.",
+     "ko": "그녀의 웃음이 방 안 모두에게 번졌어요."
+    },
+    {
+     "en": "He has an ear infection.",
+     "ko": "그는 귀에 염증이 생겼어요."
+    },
+    {
+     "en": "Colds are very infectious.",
+     "ko": "감기는 전염성이 아주 강해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "contaminate",
+     "ko": "오염시키다",
+     "en": "Contaminate the water."
+    },
+    {
+     "type": "유의어",
+     "word": "spread",
+     "ko": "퍼뜨리다",
+     "en": "Spread germs."
+    },
+    {
+     "type": "반의어",
+     "word": "disinfect",
+     "ko": "소독하다",
+     "en": "Disinfect the table."
+    },
+    {
+     "type": "파생어",
+     "word": "infection",
+     "ko": "감염",
+     "en": "A throat infection."
+    },
+    {
+     "type": "파생어",
+     "word": "infectious",
+     "ko": "전염성의",
+     "en": "An infectious disease."
+    },
+    {
+     "type": "연관어",
+     "word": "virus",
+     "ko": "바이러스",
+     "en": "A flu virus."
+    }
+   ]
   }
  }
 }
