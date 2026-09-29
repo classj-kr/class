@@ -60,7 +60,7 @@ const CHAPTERS = [
                     "북쪽 마녀는 고깔모자를 벗어 코 위에 얹었습니다. 모자가 스르르 석판으로 바뀌더니 글씨가 나타났지요."
                 ],
                 "right": [
-                    "마녀가 석판의 글씨를 읽어 주었습니다. \"에메랄드 시로 가거라. 거기 사는 오즈라는 마법사가 무엇이든 들어준단다. 노란 벽돌길만 따라가면 돼.\"",
+                    "마녀가 석판의 글씨를 읽어 주었습니다. \"에메랄드 시로 가거라. 거기 사는 오즈라는 마법사가 어떤 소원이든 들어준단다. 노란 벽돌길만 따라가면 돼.\"",
                     "도로시는 빵을 챙기고 토토를 안았습니다. 노란 벽돌이 햇빛을 받아 반짝반짝 빛났지요."
                 ]
             }
@@ -80,8 +80,8 @@ const CHAPTERS = [
                 ],
                 "right": [
                     "허수아비는 일어서다 또 넘어졌습니다. 다리가 짚이라 흐물흐물했거든요. 도로시가 물었지요. \"괜찮니?\"",
-                    "\"괜찮아. 아파도 아픈 줄을 모르거든. 그런데 머리에도 짚만 들어서 지혜가 없어.\"",
-                    "\"그럼 나랑 오즈에게 가자! 무엇이든 들어주는 마법사래.\" 허수아비는 휘청휘청 걸으면서도 신이 나서 팔을 흔들었지요."
+                    "\"괜찮아. 아파도 아픈 줄을 모르거든. 그런데 머리에도 짚만 들어서 생각을 잘 못 해. 나도 똑똑한 머리를 갖고 싶어.\"",
+                    "\"그럼 나랑 오즈에게 가자! 어떤 소원이든 들어주는 마법사래.\" 허수아비는 휘청휘청 걸으면서도 신이 나서 팔을 흔들었지요."
                 ]
             },
             {
@@ -94,7 +94,7 @@ const CHAPTERS = [
                 ],
                 "right": [
                     "양철 나무꾼은 팔을 번쩍 들고 목을 이리저리 돌려 보았습니다.",
-                    "\"아이고, 일 년 만에 움직이네요! 요술에 걸려 몸이 양철이 됐는데, 가슴 안이 텅 비었지 뭐예요. 따뜻한 마음을 얻고 싶어요.\"",
+                    "\"아이고, 일 년 만에 움직이네요! 요술에 걸려 몸이 양철이 됐는데, 가슴 안에 심장이 없지 뭐예요. 심장이 있어야 누구를 아끼는 마음도 생길 텐데요.\"",
                     "\"그럼 아저씨도 우리랑 같이 오즈에게 가요!\""
                 ]
             }
@@ -161,7 +161,7 @@ const CHAPTERS = [
                 ],
                 "right": [
                     "서쪽 마녀는 눈이 어찌나 밝은지 멀리까지 다 보았습니다. 넷이 오는 것을 보자 마녀는 짐승들을 보냈지요.",
-                    "먼저 늑대 떼가 몰려왔습니다. 양철 나무꾼이 도끼를 빙빙 돌리자 꽁무니를 뺐지요.",
+                    "먼저 늑대 떼가 몰려왔습니다. 양철 나무꾼이 도끼를 빙빙 돌리자 늑대들은 슬금슬금 달아났지요.",
                     "다음은 까마귀 떼였지요. 허수아비가 팔을 휘휘 젓자 까악까악 흩어졌습니다."
                 ]
             }
@@ -246,11 +246,11 @@ const CHAPTERS = [
                 "left": [
                     "도로시가 물었습니다. \"저는 어떡하죠? 캔자스로 가야 하는데요.\"",
                     "\"내 열기구를 고쳐 봅시다. 나도 고향에 가고 싶소.\"",
-                    "둘은 비단을 이어 붙여 커다란 기구를 만들었습니다. 떠나는 날, 온 도시 사람들이 몰려나왔지요."
+                    "둘은 찢어진 곳마다 비단을 대고 꿰매어 열기구를 고쳤습니다. 떠나는 날, 온 도시 사람들이 몰려나왔지요."
                 ],
                 "right": [
                     "할아버지가 사람들에게 외쳤습니다. \"허수아비를 임금으로 삼으시오!\"",
-                    "할아버지가 바구니에 올라탔지요. 도로시도 타려는데 토토가 놀라 품에서 뛰쳐나갔습니다. 도로시가 토토를 다시 안고 돌아섰을 때, 줄이 툭 끊어졌습니다. 기구는 할아버지만 태운 채 하늘로 올라가 버렸지요.",
+                    "할아버지가 바구니에 올라탔지요. 도로시도 타려는데 토토가 놀라 품에서 뛰쳐나갔습니다. 도로시가 토토를 다시 안고 돌아섰을 때, 줄이 툭 끊어졌습니다. 열기구는 할아버지만 태운 채 하늘로 올라가 버렸지요.",
                     "\"도로시! 나는 멈추는 법을 모른다오—\""
                 ]
             },
@@ -664,7 +664,7 @@ const EN = {
                     right: [
                         "His joints came loose. He threw both arms up and turned his head this way and that.",
                         "\"I can move for the first time in a year!\"",
-                        "\"An enchantment turned every bit of me to tin, and my chest is empty. I want a heart.\"",
+                        "\"An enchantment turned every bit of me to tin, and there is no heart in my chest. Without a heart I cannot love anyone.\"",
                         "\"Then come to Oz with us!\" said Dorothy."
                     ]
                 }
@@ -829,7 +829,7 @@ const EN = {
                     left: [
                         "\"But what about me?\" asked Dorothy. \"I have to get to Kansas.\"",
                         "\"Let us mend my balloon. I should like to go home myself.\"",
-                        "The two of them sewed pieces of silk together into an enormous balloon.",
+                        "The two of them sewed pieces of silk over the torn places and mended the balloon.",
                         "On the day of the launch the whole city came out to watch."
                     ],
                     right: [
@@ -985,7 +985,7 @@ const EN = {
             { word: 'compare', meaning: '서로 견주어 보다', sentence: 'They compared what they had seen.' }
         ],
         '05-order.webp': [
-            { word: 'slink off', meaning: '꽁무니를 빼다', sentence: "The Woodman swung his axe, and off they slunk." },
+            { word: 'slink off', meaning: '슬금슬금 달아나다', sentence: "The Woodman swung his axe, and off they slunk." },
             { word: 'flock', meaning: '떼', sentence: 'Then came a flock of crows.' },
             { word: 'caw', meaning: '까악까악 울다', sentence: 'They scattered, cawing.' }
         ],
