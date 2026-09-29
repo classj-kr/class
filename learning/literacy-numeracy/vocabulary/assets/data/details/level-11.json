@@ -7669,6 +7669,1927 @@
      "en": "Disaster relief."
     }
    ]
+  },
+  "2236": {
+   "word": "revolution",
+   "overview": [
+    "revolution은 '혁명'이라는 뜻의 명사입니다.",
+    "the French Revolution(프랑스 혁명)처럼 씁니다.",
+    "정치, 사회 체제를 완전히 뒤바꾸는 커다란 변화를 뜻합니다.",
+    "천문학에서는 '공전, 회전'이라는 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "big change",
+     "en": "A big change.",
+     "ko": "커다란 변화."
+    },
+    {
+     "word": "uprising",
+     "en": "A popular uprising.",
+     "ko": "대중 봉기."
+    }
+   ],
+   "etymology": [
+    "revolution은 라틴어 revolvere(뒤로 굴러가다, 회전하다)에서 온 단어입니다.",
+    "re(다시)와 volvere(구르다)가 합쳐진 말로, revolve(회전하다)와 같은 가족입니다.",
+    "원래는 천체가 원을 그리며 도는 '회전'이라는 뜻이었습니다.",
+    "'사회 전체가 완전히 뒤바뀌는 큰 변화'라는 뜻으로 정치적 의미가 더해졌습니다.",
+    "revolution의 핵심 이미지는 '세상을 완전히 뒤집어엎는 거대한 변혁 ⚡'입니다."
+   ],
+   "meanings": [
+    "커다란 변화, 변혁",
+    "(정치) 혁명",
+    "(천문) 공전, 회전"
+   ],
+   "examples": [
+    {
+     "en": "The French Revolution changed European history forever.",
+     "ko": "프랑스 혁명은 유럽 역사를 영원히 바꿔 놓았어요."
+    },
+    {
+     "en": "The internet caused a revolution in communication.",
+     "ko": "인터넷은 의사소통에 있어 혁명을 일으켰어요."
+    },
+    {
+     "en": "The country experienced a violent revolution.",
+     "ko": "그 나라는 폭력적인 혁명을 겪었어요."
+    },
+    {
+     "en": "This invention started a technological revolution.",
+     "ko": "이 발명품은 기술 혁명을 시작시켰어요."
+    },
+    {
+     "en": "The earth completes one revolution around the sun yearly.",
+     "ko": "지구는 매년 태양 주위를 한 바퀴 공전해요."
+    },
+    {
+     "en": "The revolution brought new freedoms to the people.",
+     "ko": "그 혁명은 사람들에게 새로운 자유를 가져다주었어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "uprising",
+     "ko": "봉기",
+     "en": "A popular uprising."
+    },
+    {
+     "type": "파생어",
+     "word": "revolutionary",
+     "ko": "혁명적인",
+     "en": "A revolutionary idea."
+    },
+    {
+     "type": "연관어",
+     "word": "rebellion",
+     "ko": "반란",
+     "en": "A violent rebellion."
+    },
+    {
+     "type": "연관어",
+     "word": "change",
+     "ko": "변화",
+     "en": "A major change."
+    },
+    {
+     "type": "연관어",
+     "word": "government",
+     "ko": "정부",
+     "en": "Overthrow a government."
+    },
+    {
+     "type": "연관어",
+     "word": "reform",
+     "ko": "개혁",
+     "en": "Social reform."
+    }
+   ]
+  },
+  "758": {
+   "word": "demon",
+   "overview": [
+    "demon은 '악마, 귀신'이라는 뜻의 명사입니다.",
+    "fight a demon(악마와 싸우다)처럼 씁니다.",
+    "'매우 능숙하거나 열성적인 사람'이라는 비유적인 뜻으로도 씁니다.",
+    "형용사 demonic(악마 같은)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "evil spirit",
+     "en": "An evil spirit.",
+     "ko": "사악한 영혼."
+    },
+    {
+     "word": "devil",
+     "en": "A tiny devil.",
+     "ko": "작은 악마."
+    }
+   ],
+   "etymology": [
+    "demon은 그리스어 daimon(신령, 수호신)에서 온 단어입니다.",
+    "원래는 좋고 나쁨을 가리지 않는 '초자연적인 영적 존재'라는 뜻이었습니다.",
+    "기독교의 영향으로 '악한 영적 존재'라는 부정적인 뜻으로 굳어졌습니다.",
+    "비유적으로는 어떤 일에 '지나칠 만큼 열성적이고 능숙한 사람'을 가리키는 데도 씁니다.",
+    "demon의 핵심 이미지는 '어둠 속에서 나타나는 사악한 영적 존재 😈'입니다."
+   ],
+   "meanings": [
+    "악마, 귀신",
+    "(비유) 매우 능숙하거나 열성적인 사람"
+   ],
+   "examples": [
+    {
+     "en": "The story described a fearsome demon.",
+     "ko": "그 이야기는 무시무시한 악마를 묘사했어요."
+    },
+    {
+     "en": "He is a demon on the tennis court.",
+     "ko": "그는 그 테니스 코트에서 아주 뛰어난 사람이에요."
+    },
+    {
+     "en": "Villagers believed a demon haunted the old house.",
+     "ko": "마을 사람들은 악마가 그 오래된 집에 출몰한다고 믿었어요."
+    },
+    {
+     "en": "She fought her inner demons after the accident.",
+     "ko": "그녀는 그 사고 후 자신의 내면의 악마들과 싸웠어요."
+    },
+    {
+     "en": "The movie featured a terrifying demon.",
+     "ko": "그 영화는 무서운 악마를 등장시켰어요."
+    },
+    {
+     "en": "He worked like a demon to finish the project.",
+     "ko": "그는 그 프로젝트를 끝내려고 악착같이 일했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "devil",
+     "ko": "악마",
+     "en": "A little devil."
+    },
+    {
+     "type": "파생어",
+     "word": "demonic",
+     "ko": "악마 같은",
+     "en": "A demonic laugh."
+    },
+    {
+     "type": "연관어",
+     "word": "evil",
+     "ko": "악한",
+     "en": "An evil plan."
+    },
+    {
+     "type": "연관어",
+     "word": "spirit",
+     "ko": "영혼",
+     "en": "An evil spirit."
+    },
+    {
+     "type": "연관어",
+     "word": "ghost",
+     "ko": "유령",
+     "en": "A scary ghost."
+    },
+    {
+     "type": "연관어",
+     "word": "monster",
+     "ko": "괴물",
+     "en": "A terrifying monster."
+    }
+   ]
+  },
+  "2679": {
+   "word": "terrific",
+   "overview": [
+    "terrific은 '아주 훌륭한, 대단한'이라는 뜻의 형용사입니다.",
+    "a terrific idea(아주 훌륭한 아이디어)처럼 씁니다.",
+    "'매우 심한, 엄청난'이라는 뜻으로도 씁니다.",
+    "원래는 '무서운'이라는 뜻이었지만 지금은 긍정적인 뜻으로 훨씬 더 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "wonderful",
+     "en": "A wonderful trip.",
+     "ko": "멋진 여행."
+    },
+    {
+     "word": "great",
+     "en": "A great performance.",
+     "ko": "훌륭한 공연."
+    }
+   ],
+   "etymology": [
+    "terrific은 라틴어 terrere(겁먹게 하다)에서 온 단어입니다.",
+    "terror(공포), terrify(겁먹게 하다)와 같은 가족입니다.",
+    "원래는 '공포심을 불러일으킬 만큼 엄청난'이라는 뜻이었습니다.",
+    "시간이 지나며 '너무나 엄청나서 감탄스러운'이라는 긍정적인 뜻으로 바뀌었습니다.",
+    "terrific의 핵심 이미지는 '감탄이 절로 나올 만큼 엄청나고 훌륭한 것 🤩'입니다."
+   ],
+   "meanings": [
+    "아주 훌륭한",
+    "매우 심한, 무서운"
+   ],
+   "examples": [
+    {
+     "en": "She did a terrific job on the project.",
+     "ko": "그녀는 그 프로젝트에서 아주 훌륭한 성과를 냈어요."
+    },
+    {
+     "en": "We had a terrific time at the beach.",
+     "ko": "우리는 그 해변에서 아주 즐거운 시간을 보냈어요."
+    },
+    {
+     "en": "There was a terrific storm last night.",
+     "ko": "어젯밤에 매우 심한 폭풍이 있었어요."
+    },
+    {
+     "en": "The view from the mountain was terrific.",
+     "ko": "그 산에서 보이는 경치는 아주 훌륭했어요."
+    },
+    {
+     "en": "He felt a terrific pain in his back.",
+     "ko": "그는 자신의 등에서 엄청난 통증을 느꼈어요."
+    },
+    {
+     "en": "That was a terrific movie we watched together.",
+     "ko": "그건 우리가 함께 본 아주 훌륭한 영화였어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "wonderful",
+     "ko": "멋진",
+     "en": "A wonderful gift."
+    },
+    {
+     "type": "연관어",
+     "word": "great",
+     "ko": "훌륭한",
+     "en": "A great idea."
+    },
+    {
+     "type": "연관어",
+     "word": "amazing",
+     "ko": "놀라운",
+     "en": "An amazing show."
+    },
+    {
+     "type": "연관어",
+     "word": "severe",
+     "ko": "심한",
+     "en": "A severe storm."
+    },
+    {
+     "type": "연관어",
+     "word": "excellent",
+     "ko": "훌륭한",
+     "en": "Excellent work."
+    },
+    {
+     "type": "연관어",
+     "word": "fantastic",
+     "ko": "환상적인",
+     "en": "A fantastic view."
+    }
+   ]
+  },
+  "2880": {
+   "word": "virgin",
+   "overview": [
+    "virgin은 '처녀, 동정인 사람'이라는 뜻의 명사이자 형용사입니다.",
+    "a virgin forest(원시림)처럼 '손 닿지 않은, 순수한'이라는 뜻으로도 씁니다.",
+    "종교적으로 the Virgin Mary(성모 마리아)처럼 씁니다.",
+    "'경험이 전혀 없는 상태'라는 비유적인 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "untouched",
+     "en": "Untouched nature.",
+     "ko": "손 닿지 않은 자연."
+    },
+    {
+     "word": "pure",
+     "en": "Pure and unspoiled.",
+     "ko": "순수하고 훼손되지 않은."
+    }
+   ],
+   "etymology": [
+    "virgin은 라틴어 virgo(처녀)에서 온 단어입니다.",
+    "정확한 더 옛 뿌리는 확실하지 않지만, '아직 남자를 경험하지 않은 젊은 여성'이라는 뜻이었습니다.",
+    "종교적 맥락에서 성모 마리아를 가리키는 존칭으로도 쓰였습니다.",
+    "'아직 손대지 않아 순수한 상태'라는 뜻으로 넓어져 자연, 경험 등에도 씁니다.",
+    "virgin의 핵심 이미지는 '아직 아무도 손대지 않은 순수하고 깨끗한 상태 🌱'입니다."
+   ],
+   "meanings": [
+    "미혼의 젊은 여자, 처녀",
+    "(기독교) 수녀, 성모",
+    "(비유) 손 닿지 않은, 경험이 없는"
+   ],
+   "examples": [
+    {
+     "en": "The explorers reached a virgin forest untouched by humans.",
+     "ko": "그 탐험가들은 인간의 손이 닿지 않은 원시림에 도달했어요."
+    },
+    {
+     "en": "The painting depicts the Virgin Mary and baby Jesus.",
+     "ko": "그 그림은 성모 마리아와 아기 예수를 그려요."
+    },
+    {
+     "en": "This was her virgin attempt at cooking.",
+     "ko": "이것은 그녀의 요리에 대한 첫 시도였어요."
+    },
+    {
+     "en": "They discovered virgin snow on the mountain slope.",
+     "ko": "그들은 그 산비탈에서 손 닿지 않은 눈을 발견했어요."
+    },
+    {
+     "en": "The land remained virgin territory for centuries.",
+     "ko": "그 땅은 수 세기 동안 손 닿지 않은 영토로 남아 있었어요."
+    },
+    {
+     "en": "He took his virgin flight to Europe last year.",
+     "ko": "그는 작년에 유럽으로 첫 비행을 했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "pure",
+     "ko": "순수한",
+     "en": "Pure water."
+    },
+    {
+     "type": "연관어",
+     "word": "untouched",
+     "ko": "손대지 않은",
+     "en": "Untouched land."
+    },
+    {
+     "type": "연관어",
+     "word": "nature",
+     "ko": "자연",
+     "en": "Wild nature."
+    },
+    {
+     "type": "연관어",
+     "word": "forest",
+     "ko": "숲",
+     "en": "A dense forest."
+    },
+    {
+     "type": "연관어",
+     "word": "first",
+     "ko": "첫 번째의",
+     "en": "The first time."
+    },
+    {
+     "type": "연관어",
+     "word": "innocent",
+     "ko": "순진한",
+     "en": "An innocent child."
+    }
+   ]
+  },
+  "176": {
+   "word": "assure",
+   "overview": [
+    "assure는 '보증하다, 확언하다'라는 뜻의 동사입니다.",
+    "assure someone that ~(누군가에게 ~라고 확언하다)처럼 씁니다.",
+    "누군가를 안심시키기 위해 확실히 말하는 것을 뜻합니다.",
+    "명사 assurance(확언, 보증)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "promise",
+     "en": "Promise sincerely.",
+     "ko": "진심으로 약속하다."
+    },
+    {
+     "word": "guarantee",
+     "en": "Guarantee safety.",
+     "ko": "안전을 보장하다."
+    }
+   ],
+   "etymology": [
+    "assure는 라틴어 securus(안전한, 확실한)에서 온 단어입니다.",
+    "se(~없이)와 cura(걱정)가 합쳐진 말로, secure(안전한), sure(확실한)와 같은 가족입니다.",
+    "'상대방의 걱정을 없애 주어 확신을 갖게 만들다'라는 뜻이 그대로 이어져 왔습니다.",
+    "누군가를 안심시키려고 강하게 확언하는 상황에서 폭넓게 씁니다.",
+    "assure의 핵심 이미지는 '상대방의 걱정을 씻어 주는 확실한 다짐 🤝'입니다."
+   ],
+   "meanings": [
+    "보증하다, 보장하다",
+    "확언하다, 안심시키다"
+   ],
+   "examples": [
+    {
+     "en": "I assure you everything will be fine.",
+     "ko": "저는 당신에게 모든 것이 괜찮을 거라고 확언해요."
+    },
+    {
+     "en": "The doctor assured the family of a full recovery.",
+     "ko": "그 의사는 그 가족에게 완전한 회복을 확언했어요."
+    },
+    {
+     "en": "She assured her boss that the report was accurate.",
+     "ko": "그녀는 자신의 상사에게 그 보고서가 정확하다고 확언했어요."
+    },
+    {
+     "en": "He assured us that the flight would not be delayed.",
+     "ko": "그는 우리에게 그 비행기가 지연되지 않을 거라고 확언했어요."
+    },
+    {
+     "en": "The manager assured the team of extra support.",
+     "ko": "그 매니저는 그 팀에게 추가 지원을 보증했어요."
+    },
+    {
+     "en": "I can assure you the product is safe.",
+     "ko": "저는 당신에게 그 제품이 안전하다고 확언할 수 있어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "guarantee",
+     "ko": "보장하다",
+     "en": "Guarantee results."
+    },
+    {
+     "type": "파생어",
+     "word": "assurance",
+     "ko": "확언, 보증",
+     "en": "Give assurance."
+    },
+    {
+     "type": "연관어",
+     "word": "promise",
+     "ko": "약속하다",
+     "en": "Promise firmly."
+    },
+    {
+     "type": "연관어",
+     "word": "confirm",
+     "ko": "확인하다",
+     "en": "Confirm the plan."
+    },
+    {
+     "type": "연관어",
+     "word": "reassure",
+     "ko": "안심시키다",
+     "en": "Reassure the patient."
+    },
+    {
+     "type": "연관어",
+     "word": "confident",
+     "ko": "확신하는",
+     "en": "Feel confident."
+    }
+   ]
+  },
+  "2828": {
+   "word": "unique",
+   "overview": [
+    "unique는 '독특한, 유일무이한'이라는 뜻의 형용사입니다.",
+    "a unique opportunity(둘도 없는 기회)처럼 씁니다.",
+    "다른 것과 완전히 다른 유일한 특성을 뜻합니다.",
+    "정도를 나타내는 수식어(very, more 등)와 함께 잘 쓰지 않는 절대적인 표현입니다."
+   ],
+   "easy": [
+    {
+     "word": "one of a kind",
+     "en": "One of a kind.",
+     "ko": "유일무이한 것."
+    },
+    {
+     "word": "special",
+     "en": "A special gift.",
+     "ko": "특별한 선물."
+    }
+   ],
+   "etymology": [
+    "unique는 라틴어 unicus(유일한)에서 온 단어입니다.",
+    "unus(하나)에서 나온 말로, unit(단위), union(연합)과 같은 가족입니다.",
+    "'세상에 오직 하나밖에 없는'이라는 뜻이 그대로 이어져 왔습니다.",
+    "지금은 다른 것과 확연히 구별되는 독특한 특성을 강조하는 데 폭넓게 씁니다.",
+    "unique의 핵심 이미지는 '세상에 오직 하나뿐인 독특함 🦄'입니다."
+   ],
+   "meanings": [
+    "독특한, 유일무이한"
+   ],
+   "examples": [
+    {
+     "en": "Every snowflake has a unique pattern.",
+     "ko": "모든 눈송이는 독특한 무늬를 가지고 있어요."
+    },
+    {
+     "en": "She has a unique talent for painting.",
+     "ko": "그녀는 그림에 독특한 재능을 가지고 있어요."
+    },
+    {
+     "en": "This museum offers a unique experience.",
+     "ko": "이 박물관은 독특한 경험을 제공해요."
+    },
+    {
+     "en": "His unique perspective impressed the audience.",
+     "ko": "그의 독특한 관점은 그 청중에게 깊은 인상을 남겼어요."
+    },
+    {
+     "en": "Each culture has its own unique traditions.",
+     "ko": "각 문화는 자신만의 독특한 전통을 가지고 있어요."
+    },
+    {
+     "en": "This is a unique opportunity you shouldn't miss.",
+     "ko": "이건 당신이 놓쳐서는 안 될 둘도 없는 기회예요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "special",
+     "ko": "특별한",
+     "en": "A special place."
+    },
+    {
+     "type": "연관어",
+     "word": "distinct",
+     "ko": "뚜렷이 다른",
+     "en": "A distinct style."
+    },
+    {
+     "type": "연관어",
+     "word": "original",
+     "ko": "독창적인",
+     "en": "An original idea."
+    },
+    {
+     "type": "연관어",
+     "word": "rare",
+     "ko": "희귀한",
+     "en": "A rare species."
+    },
+    {
+     "type": "연관어",
+     "word": "individual",
+     "ko": "개별의",
+     "en": "An individual style."
+    },
+    {
+     "type": "연관어",
+     "word": "one-of-a-kind",
+     "ko": "유일무이한",
+     "en": "A one-of-a-kind piece."
+    }
+   ]
+  },
+  "258": {
+   "word": "behave",
+   "overview": [
+    "behave는 '행동하다, 처신하다'라는 뜻의 동사입니다.",
+    "behave well(잘 행동하다)처럼 씁니다.",
+    "예의 바르게 행동하다, 얌전하게 굴다라는 뜻으로도 씁니다.",
+    "명사 behavior(행동)도 아주 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "act",
+     "en": "Act politely.",
+     "ko": "예의 바르게 행동하다."
+    },
+    {
+     "word": "be good",
+     "en": "Be good, kids!",
+     "ko": "얘들아, 얌전히 있어!"
+    }
+   ],
+   "etymology": [
+    "behave는 be(완전히)와 have(가지다, 다루다)가 합쳐진 단어입니다.",
+    "옛 영어에서 have는 '자신을 다루다, 처신하다'라는 뜻으로도 쓰였습니다.",
+    "'자기 자신을 완전히 특정한 방식으로 다루다'라는 뜻이 그대로 이어져 왔습니다.",
+    "지금은 사람이 특정 상황에서 취하는 행동 전반을 가리키는 데 폭넓게 씁니다.",
+    "behave의 핵심 이미지는 '상황에 맞게 자신을 다루어 행동하는 모습 🙋'입니다."
+   ],
+   "meanings": [
+    "행동하다, 처신하다",
+    "예의 바르게 행동하다, 얌전하다"
+   ],
+   "examples": [
+    {
+     "en": "The children behaved well during the trip.",
+     "ko": "그 아이들은 그 여행 동안 잘 행동했어요."
+    },
+    {
+     "en": "Please behave yourself at the party.",
+     "ko": "그 파티에서 예의 바르게 행동해 주세요."
+    },
+    {
+     "en": "He behaved strangely after hearing the news.",
+     "ko": "그는 그 소식을 듣고 이상하게 행동했어요."
+    },
+    {
+     "en": "The dog behaved calmly around strangers.",
+     "ko": "그 개는 낯선 사람들 주위에서 침착하게 행동했어요."
+    },
+    {
+     "en": "She always behaves professionally at work.",
+     "ko": "그녀는 항상 직장에서 전문적으로 처신해요."
+    },
+    {
+     "en": "The students were told to behave in class.",
+     "ko": "그 학생들은 수업 시간에 얌전히 있으라는 말을 들었어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "파생어",
+     "word": "behavior",
+     "ko": "행동",
+     "en": "Strange behavior."
+    },
+    {
+     "type": "연관어",
+     "word": "act",
+     "ko": "행동하다",
+     "en": "Act quickly."
+    },
+    {
+     "type": "연관어",
+     "word": "manner",
+     "ko": "태도",
+     "en": "A polite manner."
+    },
+    {
+     "type": "연관어",
+     "word": "conduct",
+     "ko": "품행",
+     "en": "Good conduct."
+    },
+    {
+     "type": "연관어",
+     "word": "obedient",
+     "ko": "순종적인",
+     "en": "An obedient child."
+    },
+    {
+     "type": "연관어",
+     "word": "attitude",
+     "ko": "태도",
+     "en": "A positive attitude."
+    }
+   ]
+  },
+  "577": {
+   "word": "confess",
+   "overview": [
+    "confess는 '고백하다, 자백하다'라는 뜻의 동사입니다.",
+    "confess to a crime(범죄를 자백하다)처럼 씁니다.",
+    "숨겼던 잘못이나 비밀을 솔직하게 인정하는 것을 뜻합니다.",
+    "명사 confession(고백, 자백)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "admit",
+     "en": "Admit a mistake.",
+     "ko": "실수를 인정하다."
+    },
+    {
+     "word": "own up",
+     "en": "Own up to it.",
+     "ko": "그것을 인정하다."
+    }
+   ],
+   "etymology": [
+    "confess는 라틴어 confiteri(완전히 인정하다)에서 온 단어입니다.",
+    "con(완전히)과 fateri(인정하다)가 합쳐진 말로, fact(사실)와도 이어지는 뿌리입니다.",
+    "'숨겼던 사실을 완전히 인정하고 드러내다'라는 뜻이 그대로 이어져 왔습니다.",
+    "종교에서 죄를 신부에게 고백하는 것에서 시작해 일반적인 자백으로 넓어졌습니다.",
+    "confess의 핵심 이미지는 '숨겼던 진실을 마침내 솔직히 털어놓는 고백 🙏'입니다."
+   ],
+   "meanings": [
+    "고백하다, 자백하다"
+   ],
+   "examples": [
+    {
+     "en": "He confessed to stealing the money.",
+     "ko": "그는 그 돈을 훔쳤다고 자백했어요."
+    },
+    {
+     "en": "She confessed her true feelings to him.",
+     "ko": "그녀는 그에게 자신의 진짜 감정을 고백했어요."
+    },
+    {
+     "en": "The suspect confessed during the interrogation.",
+     "ko": "그 용의자는 그 심문 동안 자백했어요."
+    },
+    {
+     "en": "I must confess I forgot your birthday.",
+     "ko": "저는 당신의 생일을 잊어버렸다고 고백해야겠어요."
+    },
+    {
+     "en": "He confessed his mistake to the teacher.",
+     "ko": "그는 자신의 실수를 그 선생님께 고백했어요."
+    },
+    {
+     "en": "She confessed that she was afraid of the dark.",
+     "ko": "그녀는 자신이 어둠을 무서워한다고 고백했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "admit",
+     "ko": "인정하다",
+     "en": "Admit the truth."
+    },
+    {
+     "type": "파생어",
+     "word": "confession",
+     "ko": "고백, 자백",
+     "en": "A full confession."
+    },
+    {
+     "type": "반의어",
+     "word": "deny",
+     "ko": "부인하다",
+     "en": "Deny the charge."
+    },
+    {
+     "type": "연관어",
+     "word": "guilt",
+     "ko": "죄책감",
+     "en": "Feel guilt."
+    },
+    {
+     "type": "연관어",
+     "word": "reveal",
+     "ko": "드러내다",
+     "en": "Reveal a secret."
+    },
+    {
+     "type": "연관어",
+     "word": "truth",
+     "ko": "진실",
+     "en": "Tell the truth."
+    }
+   ]
+  },
+  "1483": {
+   "word": "joint",
+   "overview": [
+    "joint는 '공동의, 합동의'라는 뜻의 형용사입니다.",
+    "a joint venture(합작 사업)처럼 씁니다.",
+    "명사로는 신체의 '관절'이라는 뜻으로 씁니다.",
+    "'두 부분이 만나는 이음매, 접합 부분'이라는 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "shared",
+     "en": "A shared project.",
+     "ko": "공동 프로젝트."
+    },
+    {
+     "word": "combined",
+     "en": "A combined effort.",
+     "ko": "합쳐진 노력."
+    }
+   ],
+   "etymology": [
+    "joint는 라틴어 jungere(연결하다, 결합하다)에서 온 단어입니다.",
+    "join(연결하다), junction(접합점)과 같은 가족입니다.",
+    "'두 개 이상이 하나로 연결된 것'이라는 뜻이 그대로 이어져 왔습니다.",
+    "신체의 관절, 두 물체가 만나는 이음매, 함께하는 활동 모두에 폭넓게 씁니다.",
+    "joint의 핵심 이미지는 '두 부분을 하나로 이어 주는 연결점과 공동 참여 🦴'입니다."
+   ],
+   "meanings": [
+    "공동의, 합동의",
+    "(신체) 관절",
+    "이음매, 접합 부분"
+   ],
+   "examples": [
+    {
+     "en": "They started a joint business venture together.",
+     "ko": "그들은 함께 합작 사업을 시작했어요."
+    },
+    {
+     "en": "Her knee joint was injured during the game.",
+     "ko": "그녀의 무릎 관절은 그 경기 동안 다쳤어요."
+    },
+    {
+     "en": "The two countries issued a joint statement.",
+     "ko": "그 두 나라는 공동 성명을 발표했어요."
+    },
+    {
+     "en": "The carpenter checked every joint in the wood.",
+     "ko": "그 목수는 그 나무의 모든 이음매를 확인했어요."
+    },
+    {
+     "en": "They share joint custody of their son.",
+     "ko": "그들은 자신들의 아들에 대한 공동 양육권을 공유해요."
+    },
+    {
+     "en": "The joint effort of the whole team led to success.",
+     "ko": "그 팀 전체의 공동 노력은 성공으로 이어졌어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "shared",
+     "ko": "공유된",
+     "en": "A shared goal."
+    },
+    {
+     "type": "연관어",
+     "word": "combined",
+     "ko": "결합된",
+     "en": "A combined force."
+    },
+    {
+     "type": "연관어",
+     "word": "cooperation",
+     "ko": "협력",
+     "en": "Close cooperation."
+    },
+    {
+     "type": "연관어",
+     "word": "knee",
+     "ko": "무릎",
+     "en": "A sore knee."
+    },
+    {
+     "type": "연관어",
+     "word": "connection",
+     "ko": "연결",
+     "en": "A strong connection."
+    },
+    {
+     "type": "연관어",
+     "word": "partner",
+     "ko": "동반자",
+     "en": "A business partner."
+    }
+   ]
+  },
+  "167": {
+   "word": "assault",
+   "overview": [
+    "assault는 '공격, 폭행'이라는 뜻의 명사이자 동사입니다.",
+    "assault someone(누군가를 폭행하다)처럼 씁니다.",
+    "물리적인 공격이나 법적으로는 '폭행죄'를 뜻합니다.",
+    "군사적인 '공격, 습격'이라는 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "attack",
+     "en": "A sudden attack.",
+     "ko": "갑작스러운 공격."
+    },
+    {
+     "word": "strike",
+     "en": "A physical strike.",
+     "ko": "물리적인 타격."
+    }
+   ],
+   "etymology": [
+    "assault는 라틴어 assilire(뛰어들다, 덤벼들다)에서 온 단어입니다.",
+    "ad(~쪽으로)와 salire(뛰다)가 합쳐진 말로, insult(모욕하다)와도 이어지는 뿌리입니다.",
+    "'상대방에게 갑자기 뛰어들어 덮치다'라는 뜻이 그대로 이어져 왔습니다.",
+    "물리적인 폭력 공격뿐 아니라 군사적인 습격에도 폭넓게 씁니다.",
+    "assault의 핵심 이미지는 '갑자기 상대에게 덤벼드는 격렬한 공격 ⚔️'입니다."
+   ],
+   "meanings": [
+    "공격, 폭력",
+    "폭행, 폭행죄"
+   ],
+   "examples": [
+    {
+     "en": "He was charged with assault after the fight.",
+     "ko": "그는 그 싸움 후 폭행죄로 기소되었어요."
+    },
+    {
+     "en": "The soldiers launched an assault on the enemy base.",
+     "ko": "그 군인들은 적의 기지에 대한 공격을 개시했어요."
+    },
+    {
+     "en": "She reported the assault to the police immediately.",
+     "ko": "그녀는 그 폭행을 즉시 경찰에 신고했어요."
+    },
+    {
+     "en": "The victim suffered a violent assault last night.",
+     "ko": "그 피해자는 어젯밤 폭력적인 폭행을 당했어요."
+    },
+    {
+     "en": "The article was seen as an assault on free speech.",
+     "ko": "그 기사는 언론 자유에 대한 공격으로 여겨졌어요."
+    },
+    {
+     "en": "The city fell after a fierce assault.",
+     "ko": "그 도시는 격렬한 공격 후 함락되었어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "attack",
+     "ko": "공격",
+     "en": "A verbal attack."
+    },
+    {
+     "type": "연관어",
+     "word": "violence",
+     "ko": "폭력",
+     "en": "Domestic violence."
+    },
+    {
+     "type": "연관어",
+     "word": "strike",
+     "ko": "타격",
+     "en": "A surprise strike."
+    },
+    {
+     "type": "연관어",
+     "word": "charge",
+     "ko": "기소하다",
+     "en": "Charge with a crime."
+    },
+    {
+     "type": "연관어",
+     "word": "victim",
+     "ko": "피해자",
+     "en": "The crime victim."
+    },
+    {
+     "type": "연관어",
+     "word": "battle",
+     "ko": "전투",
+     "en": "A fierce battle."
+    }
+   ]
+  },
+  "2768": {
+   "word": "trail",
+   "overview": [
+    "trail은 '자국, 흔적' 또는 '오솔길'이라는 뜻의 명사입니다.",
+    "a hiking trail(등산로)처럼 씁니다.",
+    "동사로는 '뒤따르다, 질질 끌리다'라는 뜻으로 씁니다.",
+    "경주 등에서 '뒤처지다'라는 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "path",
+     "en": "A forest path.",
+     "ko": "숲길."
+    },
+    {
+     "word": "track",
+     "en": "Follow a track.",
+     "ko": "자취를 따라가다."
+    }
+   ],
+   "etymology": [
+    "trail은 옛 프랑스어 trailler(끌다, 늘어뜨리다)에서 온 단어입니다.",
+    "무언가를 땅에 끌면서 이동할 때 남는 자국을 뜻하는 말에서 시작되었습니다.",
+    "'무언가가 지나가며 남긴 흔적'이라는 뜻에서 '그 흔적을 따라가는 길'이라는 뜻으로 넓어졌습니다.",
+    "지금은 걷거나 하이킹하는 오솔길, 그리고 뒤에서 따라가는 행동 모두를 가리킵니다.",
+    "trail의 핵심 이미지는 '지나간 자리에 남는 흔적을 따라가는 오솔길 🥾'입니다."
+   ],
+   "meanings": [
+    "자국, 흔적",
+    "오솔길",
+    "뒤따르다, 뒤처지다"
+   ],
+   "examples": [
+    {
+     "en": "They followed a trail through the forest.",
+     "ko": "그들은 그 숲을 통과하는 오솔길을 따라갔어요."
+    },
+    {
+     "en": "The comet left a bright trail across the sky.",
+     "ko": "그 혜성은 하늘을 가로질러 밝은 흔적을 남겼어요."
+    },
+    {
+     "en": "Her team was trailing by ten points.",
+     "ko": "그녀의 팀은 10점 차로 뒤처지고 있었어요."
+    },
+    {
+     "en": "The dog followed the animal's trail closely.",
+     "ko": "그 개는 그 동물의 자국을 가까이 따라갔어요."
+    },
+    {
+     "en": "Smoke trailed behind the departing train.",
+     "ko": "연기가 그 떠나는 기차 뒤로 자국을 남겼어요."
+    },
+    {
+     "en": "We hiked a scenic mountain trail last weekend.",
+     "ko": "우리는 지난 주말에 경치 좋은 산길을 하이킹했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "path",
+     "ko": "길",
+     "en": "A narrow path."
+    },
+    {
+     "type": "연관어",
+     "word": "track",
+     "ko": "자취",
+     "en": "Track an animal."
+    },
+    {
+     "type": "연관어",
+     "word": "footprint",
+     "ko": "발자국",
+     "en": "A footprint in mud."
+    },
+    {
+     "type": "연관어",
+     "word": "hike",
+     "ko": "도보 여행",
+     "en": "A long hike."
+    },
+    {
+     "type": "연관어",
+     "word": "follow",
+     "ko": "따라가다",
+     "en": "Follow closely."
+    },
+    {
+     "type": "연관어",
+     "word": "behind",
+     "ko": "뒤에",
+     "en": "Fall behind."
+    }
+   ]
+  },
+  "1703": {
+   "word": "mobile",
+   "overview": [
+    "mobile은 '휴대폰'이라는 뜻의 명사이자 '이동식의, 움직이는'이라는 뜻의 형용사입니다.",
+    "a mobile phone(휴대폰)처럼 씁니다.",
+    "쉽게 이동할 수 있는 성질을 뜻합니다.",
+    "mobility(이동성)라는 명사도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "cellphone",
+     "en": "A new cellphone.",
+     "ko": "새 휴대폰."
+    },
+    {
+     "word": "movable",
+     "en": "A movable device.",
+     "ko": "이동 가능한 기기."
+    }
+   ],
+   "etymology": [
+    "mobile은 라틴어 mobilis(움직일 수 있는)에서 온 단어입니다.",
+    "movere(움직이다)에서 나온 말로, move(움직이다), motion(움직임)과 같은 가족입니다.",
+    "'쉽게 자리를 옮길 수 있는'이라는 뜻이 그대로 이어져 왔습니다.",
+    "휴대할 수 있는 전화기라는 뜻에서 오늘날 '휴대폰' 자체를 가리키는 말이 되었습니다.",
+    "mobile의 핵심 이미지는 '자유롭게 들고 다니며 움직일 수 있는 이동성 📱'입니다."
+   ],
+   "meanings": [
+    "핸드폰, 휴대폰",
+    "이동식의, 움직이는"
+   ],
+   "examples": [
+    {
+     "en": "She left her mobile at home this morning.",
+     "ko": "그녀는 오늘 아침 자신의 휴대폰을 집에 두고 왔어요."
+    },
+    {
+     "en": "Modern hospitals use mobile medical units.",
+     "ko": "현대 병원들은 이동식 의료 부대를 사용해요."
+    },
+    {
+     "en": "He called me on his mobile last night.",
+     "ko": "그는 어젯밤 자신의 휴대폰으로 저에게 전화했어요."
+    },
+    {
+     "en": "The elderly woman was no longer very mobile.",
+     "ko": "그 나이 든 여성은 더 이상 그다지 잘 움직이지 못했어요."
+    },
+    {
+     "en": "Mobile technology has changed how we communicate.",
+     "ko": "휴대폰 기술은 우리가 소통하는 방식을 바꿔 놓았어요."
+    },
+    {
+     "en": "She checked her mobile for new messages.",
+     "ko": "그녀는 새로운 메시지가 있는지 자신의 휴대폰을 확인했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "cellphone",
+     "ko": "휴대폰",
+     "en": "Charge the cellphone."
+    },
+    {
+     "type": "파생어",
+     "word": "mobility",
+     "ko": "이동성",
+     "en": "Limited mobility."
+    },
+    {
+     "type": "연관어",
+     "word": "movable",
+     "ko": "이동 가능한",
+     "en": "A movable wall."
+    },
+    {
+     "type": "연관어",
+     "word": "device",
+     "ko": "기기",
+     "en": "A smart device."
+    },
+    {
+     "type": "연관어",
+     "word": "portable",
+     "ko": "휴대용의",
+     "en": "A portable speaker."
+    },
+    {
+     "type": "연관어",
+     "word": "network",
+     "ko": "통신망",
+     "en": "A mobile network."
+    }
+   ]
+  },
+  "449": {
+   "word": "charity",
+   "overview": [
+    "charity는 '자선'이라는 뜻의 명사입니다.",
+    "give to charity(자선 단체에 기부하다)처럼 씁니다.",
+    "어려운 사람들을 돕기 위해 돈이나 물건을 베푸는 것을 뜻합니다.",
+    "'자선 단체' 자체를 가리키는 명사로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "donation",
+     "en": "A generous donation.",
+     "ko": "너그러운 기부."
+    },
+    {
+     "word": "kindness",
+     "en": "Show kindness.",
+     "ko": "친절을 베풀다."
+    }
+   ],
+   "etymology": [
+    "charity는 라틴어 caritas(소중히 여김, 사랑)에서 온 단어입니다.",
+    "carus(소중한, 사랑스러운)에서 나온 말로, cherish(소중히 여기다)와 같은 가족입니다.",
+    "'다른 사람을 진심으로 아끼는 사랑'이라는 뜻에서 시작되었습니다.",
+    "그 사랑을 실천하는 방법으로 '자선, 기부'라는 뜻이 굳어졌습니다.",
+    "charity의 핵심 이미지는 '마음속 사랑을 실천으로 베푸는 자선 ❤️'입니다."
+   ],
+   "meanings": [
+    "자선",
+    "자선 단체"
+   ],
+   "examples": [
+    {
+     "en": "She donates money to charity every month.",
+     "ko": "그녀는 매달 자선 단체에 돈을 기부해요."
+    },
+    {
+     "en": "The event raised funds for local charities.",
+     "ko": "그 행사는 지역 자선 단체들을 위한 기금을 모금했어요."
+    },
+    {
+     "en": "He volunteers his time for charity work.",
+     "ko": "그는 자신의 시간을 자선 활동에 자원해요."
+    },
+    {
+     "en": "The company supports many charities around the world.",
+     "ko": "그 회사는 전 세계의 많은 자선 단체를 지원해요."
+    },
+    {
+     "en": "They organized a charity concert to help refugees.",
+     "ko": "그들은 난민들을 돕기 위해 자선 콘서트를 열었어요."
+    },
+    {
+     "en": "Charity begins with small acts of kindness.",
+     "ko": "자선은 작은 친절의 실천에서 시작돼요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "donation",
+     "ko": "기부",
+     "en": "Make a donation."
+    },
+    {
+     "type": "연관어",
+     "word": "kindness",
+     "ko": "친절",
+     "en": "Random kindness."
+    },
+    {
+     "type": "연관어",
+     "word": "volunteer",
+     "ko": "자원봉사자",
+     "en": "A dedicated volunteer."
+    },
+    {
+     "type": "연관어",
+     "word": "fundraiser",
+     "ko": "모금 행사",
+     "en": "A school fundraiser."
+    },
+    {
+     "type": "연관어",
+     "word": "generous",
+     "ko": "너그러운",
+     "en": "A generous gift."
+    },
+    {
+     "type": "연관어",
+     "word": "help",
+     "ko": "돕다",
+     "en": "Help the needy."
+    }
+   ]
+  },
+  "1807": {
+   "word": "nuclear",
+   "overview": [
+    "nuclear는 '원자핵의'라는 뜻의 형용사입니다.",
+    "nuclear energy(원자력 에너지)처럼 씁니다.",
+    "생물학에서는 세포의 '핵'과 관련된 것을 뜻합니다.",
+    "'핵무기'와 관련된 뜻으로도 아주 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "atomic",
+     "en": "Atomic energy.",
+     "ko": "원자력 에너지."
+    },
+    {
+     "word": "core-related",
+     "en": "Related to the core.",
+     "ko": "핵과 관련된."
+    }
+   ],
+   "etymology": [
+    "nuclear는 라틴어 nucleus(견과의 알맹이, 핵)에서 온 단어입니다.",
+    "nux(견과)에서 나온 말로, 물체 중심의 단단한 알맹이를 뜻했습니다.",
+    "'원자나 세포의 중심에 있는 핵'이라는 과학적인 뜻으로 발전했습니다.",
+    "20세기 들어 원자핵에서 나오는 강력한 에너지, 무기를 가리키는 데 널리 쓰이게 되었습니다.",
+    "nuclear의 핵심 이미지는 '원자의 중심에서 나오는 강력한 힘, 핵 ☢️'입니다."
+   ],
+   "meanings": [
+    "(물리) 원자핵의",
+    "(생물) 세포핵의"
+   ],
+   "examples": [
+    {
+     "en": "The country built a new nuclear power plant.",
+     "ko": "그 나라는 새로운 원자력 발전소를 지었어요."
+    },
+    {
+     "en": "Scientists study the structure of the cell's nuclear material.",
+     "ko": "과학자들은 세포의 핵 물질 구조를 연구해요."
+    },
+    {
+     "en": "Many nations agreed to reduce nuclear weapons.",
+     "ko": "많은 나라들은 핵무기를 줄이기로 합의했어요."
+    },
+    {
+     "en": "Nuclear energy provides electricity to millions of homes.",
+     "ko": "원자력 에너지는 수백만 가구에 전기를 공급해요."
+    },
+    {
+     "en": "The disaster raised concerns about nuclear safety.",
+     "ko": "그 참사는 원자력 안전에 대한 우려를 불러일으켰어요."
+    },
+    {
+     "en": "The treaty limits the spread of nuclear technology.",
+     "ko": "그 조약은 원자력 기술의 확산을 제한해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "atomic",
+     "ko": "원자의",
+     "en": "An atomic bomb."
+    },
+    {
+     "type": "연관어",
+     "word": "energy",
+     "ko": "에너지",
+     "en": "Clean energy."
+    },
+    {
+     "type": "연관어",
+     "word": "reactor",
+     "ko": "원자로",
+     "en": "A power reactor."
+    },
+    {
+     "type": "연관어",
+     "word": "weapon",
+     "ko": "무기",
+     "en": "A dangerous weapon."
+    },
+    {
+     "type": "연관어",
+     "word": "radiation",
+     "ko": "방사선",
+     "en": "Harmful radiation."
+    },
+    {
+     "type": "연관어",
+     "word": "power plant",
+     "ko": "발전소",
+     "en": "A power plant."
+    }
+   ]
+  },
+  "1774": {
+   "word": "network",
+   "overview": [
+    "network는 '망, 그물, 네트워크'라는 뜻의 명사입니다.",
+    "a computer network(컴퓨터 네트워크)처럼 씁니다.",
+    "여러 장소나 사람을 서로 연결하는 시스템을 뜻합니다.",
+    "동사로는 '인맥을 쌓다, 관계를 형성하다'라는 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "system",
+     "en": "A computer system.",
+     "ko": "컴퓨터 시스템."
+    },
+    {
+     "word": "connections",
+     "en": "Business connections.",
+     "ko": "사업 인맥."
+    }
+   ],
+   "etymology": [
+    "network는 net(그물)과 work(짜임)이 합쳐진 단어입니다.",
+    "원래는 실제로 실을 엮어 만든 '그물 모양의 짜임새'를 뜻했습니다.",
+    "'서로 연결된 여러 지점이 그물처럼 얽힌 구조'라는 뜻으로 넓어졌습니다.",
+    "지금은 컴퓨터망, 방송망, 인맥 등 다양한 연결 구조를 가리키는 데 폭넓게 씁니다.",
+    "network의 핵심 이미지는 '여러 지점을 그물처럼 서로 잇는 연결망 🕸️'입니다."
+   ],
+   "meanings": [
+    "망, 그물",
+    "(방송·통신) 망, 네트워크",
+    "인맥을 쌓다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "The company built a strong computer network.",
+     "ko": "그 회사는 견고한 컴퓨터 네트워크를 구축했어요."
+    },
+    {
+     "en": "She has a wide network of professional contacts.",
+     "ko": "그녀는 넓은 전문적인 인맥망을 가지고 있어요."
+    },
+    {
+     "en": "The subway network covers the entire city.",
+     "ko": "그 지하철망은 그 도시 전체를 아울러요."
+    },
+    {
+     "en": "He attended the event to network with colleagues.",
+     "ko": "그는 동료들과 인맥을 쌓으려고 그 행사에 참석했어요."
+    },
+    {
+     "en": "A television network broadcast the game live.",
+     "ko": "한 방송 네트워크가 그 경기를 생중계했어요."
+    },
+    {
+     "en": "The road network connects all major cities.",
+     "ko": "그 도로망은 모든 주요 도시를 연결해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "system",
+     "ko": "시스템",
+     "en": "A complex system."
+    },
+    {
+     "type": "연관어",
+     "word": "connection",
+     "ko": "연결",
+     "en": "A wireless connection."
+    },
+    {
+     "type": "연관어",
+     "word": "internet",
+     "ko": "인터넷",
+     "en": "Access the internet."
+    },
+    {
+     "type": "연관어",
+     "word": "link",
+     "ko": "링크",
+     "en": "Click the link."
+    },
+    {
+     "type": "연관어",
+     "word": "contact",
+     "ko": "연락처",
+     "en": "A business contact."
+    },
+    {
+     "type": "연관어",
+     "word": "web",
+     "ko": "망",
+     "en": "A web of roads."
+    }
+   ]
+  },
+  "739": {
+   "word": "defeat",
+   "overview": [
+    "defeat는 '패배시키다, 무찌르다'라는 뜻의 동사입니다.",
+    "defeat an opponent(상대를 무찌르다)처럼 씁니다.",
+    "명사로는 '패배'라는 뜻으로도 씁니다.",
+    "전쟁, 선거, 경기 등 경쟁 상황에서 상대를 이기는 것을 뜻합니다."
+   ],
+   "easy": [
+    {
+     "word": "beat",
+     "en": "Beat the champion.",
+     "ko": "챔피언을 이기다."
+    },
+    {
+     "word": "overcome",
+     "en": "Overcome a rival.",
+     "ko": "경쟁자를 이겨내다."
+    }
+   ],
+   "etymology": [
+    "defeat는 라틴어 disfacere(파괴하다, 무너뜨리다)에서 온 단어입니다.",
+    "dis(반대로)와 facere(만들다)가 합쳐진 말로, fact(사실), factory(공장)와 같은 가족입니다.",
+    "'상대방이 만든 것을 무너뜨리다'라는 뜻에서 시작되었습니다.",
+    "'경쟁 상대를 완전히 무너뜨려 승리를 거두다'라는 뜻으로 굳어졌습니다.",
+    "defeat의 핵심 이미지는 '상대를 완전히 무너뜨리는 결정적인 승리 🏆'입니다."
+   ],
+   "meanings": [
+    "(전쟁·선거) 패배시키다, 무찌르다, 이기다"
+   ],
+   "examples": [
+    {
+     "en": "Our team defeated the rivals in the final match.",
+     "ko": "우리 팀은 그 결승전에서 그 경쟁 팀을 무찔렀어요."
+    },
+    {
+     "en": "The general defeated the enemy army decisively.",
+     "ko": "그 장군은 그 적군을 결정적으로 패배시켰어요."
+    },
+    {
+     "en": "She defeated her opponent in the election.",
+     "ko": "그녀는 그 선거에서 자신의 상대를 이겼어요."
+    },
+    {
+     "en": "The champion was finally defeated after ten wins.",
+     "ko": "그 챔피언은 10승 후 마침내 패배했어요."
+    },
+    {
+     "en": "His plan was defeated by unexpected obstacles.",
+     "ko": "그의 계획은 예상치 못한 장애물들로 인해 좌절되었어요."
+    },
+    {
+     "en": "They defeated the disease through years of research.",
+     "ko": "그들은 여러 해의 연구를 통해 그 질병을 물리쳤어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "beat",
+     "ko": "이기다",
+     "en": "Beat the record."
+    },
+    {
+     "type": "반의어",
+     "word": "lose",
+     "ko": "지다",
+     "en": "Lose the game."
+    },
+    {
+     "type": "연관어",
+     "word": "victory",
+     "ko": "승리",
+     "en": "A great victory."
+    },
+    {
+     "type": "연관어",
+     "word": "opponent",
+     "ko": "상대",
+     "en": "A tough opponent."
+    },
+    {
+     "type": "연관어",
+     "word": "overcome",
+     "ko": "극복하다",
+     "en": "Overcome a challenge."
+    },
+    {
+     "type": "연관어",
+     "word": "conquer",
+     "ko": "정복하다",
+     "en": "Conquer a nation."
+    }
+   ]
+  },
+  "294": {
+   "word": "blast",
+   "overview": [
+    "blast는 '폭발'이라는 뜻의 명사입니다.",
+    "a huge blast(엄청난 폭발)처럼 씁니다.",
+    "'돌풍, 강한 바람'이라는 뜻으로도 씁니다.",
+    "have a blast는 '아주 즐거운 시간을 보내다'라는 관용 표현으로 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "explosion",
+     "en": "A loud explosion.",
+     "ko": "큰 폭발."
+    },
+    {
+     "word": "gust",
+     "en": "A gust of wind.",
+     "ko": "돌풍."
+    }
+   ],
+   "etymology": [
+    "blast는 고대 영어 blæst(강한 바람, 숨결)에서 온 단어입니다.",
+    "게르만 말 뿌리로, blow(불다)와도 이어지는 뿌리입니다.",
+    "'강하게 불어오는 바람'이라는 뜻에서 시작되었습니다.",
+    "'폭발할 때 나오는 강한 공기의 힘'이라는 뜻으로 넓어졌습니다.",
+    "blast의 핵심 이미지는 '순식간에 터져 나오는 강력한 폭발과 돌풍 💥'입니다."
+   ],
+   "meanings": [
+    "돌풍",
+    "폭발"
+   ],
+   "examples": [
+    {
+     "en": "The explosion caused a massive blast.",
+     "ko": "그 폭발은 엄청난 폭풍을 일으켰어요."
+    },
+    {
+     "en": "A cold blast of air hit them as the door opened.",
+     "ko": "차가운 바람이 그 문이 열리자 그들을 강타했어요."
+    },
+    {
+     "en": "The bomb blast destroyed the entire building.",
+     "ko": "그 폭탄 폭발은 그 건물 전체를 파괴했어요."
+    },
+    {
+     "en": "We had a blast at the amusement park.",
+     "ko": "우리는 그 놀이공원에서 아주 즐거운 시간을 보냈어요."
+    },
+    {
+     "en": "The construction site echoed with a loud blast.",
+     "ko": "그 공사장은 큰 폭발음으로 울려 퍼졌어요."
+    },
+    {
+     "en": "The party last night was a total blast.",
+     "ko": "어젯밤의 파티는 완전히 신났어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "explosion",
+     "ko": "폭발",
+     "en": "A gas explosion."
+    },
+    {
+     "type": "연관어",
+     "word": "gust",
+     "ko": "돌풍",
+     "en": "A sudden gust."
+    },
+    {
+     "type": "연관어",
+     "word": "wind",
+     "ko": "바람",
+     "en": "A strong wind."
+    },
+    {
+     "type": "연관어",
+     "word": "bomb",
+     "ko": "폭탄",
+     "en": "Defuse a bomb."
+    },
+    {
+     "type": "연관어",
+     "word": "boom",
+     "ko": "쾅 하는 소리",
+     "en": "A sudden boom."
+    },
+    {
+     "type": "연관어",
+     "word": "fun",
+     "ko": "재미",
+     "en": "So much fun."
+    }
+   ]
+  },
+  "2803": {
+   "word": "tunnel",
+   "overview": [
+    "tunnel은 '터널, 굴'이라는 뜻의 명사입니다.",
+    "drive through a tunnel(터널을 통과해 운전하다)처럼 씁니다.",
+    "동사로는 '터널을 파다, 뚫고 나아가다'라는 뜻으로 씁니다.",
+    "산이나 땅 밑을 뚫어 만든 통로를 뜻합니다."
+   ],
+   "easy": [
+    {
+     "word": "underground passage",
+     "en": "An underground passage.",
+     "ko": "지하 통로."
+    },
+    {
+     "word": "dig through",
+     "en": "Dig through the rock.",
+     "ko": "바위를 뚫고 파다."
+    }
+   ],
+   "etymology": [
+    "tunnel은 옛 프랑스어 tonel(작은 통, 관 모양의 것)에서 온 단어입니다.",
+    "원래는 원통형의 그물이나 관을 가리키는 말이었습니다.",
+    "그 원통 모양에서 '땅속을 뚫어 만든 길고 좁은 통로'라는 뜻으로 넓어졌습니다.",
+    "지금은 산이나 강 밑을 뚫어 만든 통로를 가리키는 데 폭넓게 씁니다.",
+    "tunnel의 핵심 이미지는 '땅속을 곧게 뚫고 지나가는 길고 어두운 통로 🚇'입니다."
+   ],
+   "meanings": [
+    "터널, 굴 (명사)",
+    "터널을 파다, 뚫고 나아가다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "The train passed through a long tunnel.",
+     "ko": "그 기차는 긴 터널을 통과했어요."
+    },
+    {
+     "en": "Workers tunneled through solid rock for months.",
+     "ko": "노동자들은 여러 달 동안 단단한 바위를 뚫었어요."
+    },
+    {
+     "en": "The tunnel connects the two cities under the sea.",
+     "ko": "그 터널은 바다 밑으로 그 두 도시를 연결해요."
+    },
+    {
+     "en": "Rescuers tunneled toward the trapped miners.",
+     "ko": "구조대원들은 갇힌 광부들 쪽으로 뚫고 나아갔어요."
+    },
+    {
+     "en": "The tunnel was dark and echoed with every sound.",
+     "ko": "그 터널은 어두웠고 모든 소리가 메아리쳤어요."
+    },
+    {
+     "en": "They built a tunnel beneath the mountain range.",
+     "ko": "그들은 그 산맥 밑에 터널을 지었어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "underground",
+     "ko": "지하의",
+     "en": "An underground path."
+    },
+    {
+     "type": "연관어",
+     "word": "dig",
+     "ko": "파다",
+     "en": "Dig a hole."
+    },
+    {
+     "type": "연관어",
+     "word": "passage",
+     "ko": "통로",
+     "en": "A narrow passage."
+    },
+    {
+     "type": "연관어",
+     "word": "cave",
+     "ko": "동굴",
+     "en": "A deep cave."
+    },
+    {
+     "type": "연관어",
+     "word": "subway",
+     "ko": "지하철",
+     "en": "Take the subway."
+    },
+    {
+     "type": "연관어",
+     "word": "bridge",
+     "ko": "다리",
+     "en": "Cross a bridge."
+    }
+   ]
+  },
+  "4": {
+   "word": "aboard",
+   "overview": [
+    "aboard는 '(배·열차·버스·비행기에) 타고'라는 뜻의 부사이자 전치사입니다.",
+    "go aboard the ship(배에 타다)처럼 씁니다.",
+    "All aboard!(모두 승차하세요!)처럼 관용 표현으로도 씁니다.",
+    "탈것에 이미 올라탄 상태를 강조할 때 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "on board",
+     "en": "On board the plane.",
+     "ko": "비행기에 탑승한."
+    },
+    {
+     "word": "on a ship/train",
+     "en": "On the ship.",
+     "ko": "배에 탄."
+    }
+   ],
+   "etymology": [
+    "aboard는 a(~위에)와 board(판자, 갑판)가 합쳐진 단어입니다.",
+    "옛날 배는 갑판이 나무 판자로 이루어져 있었습니다.",
+    "'배의 갑판 위에 올라 있는 상태'라는 뜻에서 시작되었습니다.",
+    "지금은 배뿐 아니라 기차, 버스, 비행기 등 모든 탈것에 탄 상태를 가리킵니다.",
+    "aboard의 핵심 이미지는 '탈것의 갑판 위에 올라서 있는 승선 상태 🚢'입니다."
+   ],
+   "meanings": [
+    "(배·열차·버스·비행기에) 타고"
+   ],
+   "examples": [
+    {
+     "en": "All passengers are now aboard the plane.",
+     "ko": "모든 승객이 이제 그 비행기에 타고 있어요."
+    },
+    {
+     "en": "She welcomed the new members aboard the team.",
+     "ko": "그녀는 새로운 팀원들을 팀에 환영했어요."
+    },
+    {
+     "en": "We climbed aboard the ship early in the morning.",
+     "ko": "우리는 아침 일찍 그 배에 올라탔어요."
+    },
+    {
+     "en": "The captain announced, \"All aboard!\"",
+     "ko": "그 선장은 \"모두 승선하세요!\"라고 발표했어요."
+    },
+    {
+     "en": "He went aboard the train just before it left.",
+     "ko": "그는 그 기차가 떠나기 직전에 탔어요."
+    },
+    {
+     "en": "Everyone aboard felt the ship rocking gently.",
+     "ko": "탑승한 모두는 그 배가 부드럽게 흔들리는 것을 느꼈어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "on board",
+     "ko": "탑승한",
+     "en": "Welcome on board."
+    },
+    {
+     "type": "연관어",
+     "word": "ship",
+     "ko": "배",
+     "en": "Board a ship."
+    },
+    {
+     "type": "연관어",
+     "word": "passenger",
+     "ko": "승객",
+     "en": "A patient passenger."
+    },
+    {
+     "type": "연관어",
+     "word": "depart",
+     "ko": "출발하다",
+     "en": "Depart on time."
+    },
+    {
+     "type": "연관어",
+     "word": "crew",
+     "ko": "승무원",
+     "en": "The ship's crew."
+    },
+    {
+     "type": "연관어",
+     "word": "voyage",
+     "ko": "항해",
+     "en": "A long voyage."
+    }
+   ]
+  },
+  "2620": {
+   "word": "sweat",
+   "overview": [
+    "sweat는 '땀'이라는 뜻의 명사이자 '땀을 흘리다'라는 뜻의 동사입니다.",
+    "sweat a lot(땀을 많이 흘리다)처럼 씁니다.",
+    "더위나 운동, 긴장으로 인해 피부에서 나오는 액체를 뜻합니다.",
+    "비유적으로 '노력, 수고'라는 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "perspiration",
+     "en": "Cold perspiration.",
+     "ko": "식은땀."
+    },
+    {
+     "word": "hard work",
+     "en": "Hard work pays off.",
+     "ko": "노력은 보답받는다."
+    }
+   ],
+   "etymology": [
+    "sweat는 고대 영어 swat(땀)에서 온 단어입니다.",
+    "게르만과 인도유럽 말 뿌리에서 온 아주 오래된 단어로, 전 세계 여러 언어의 '땀'과 뿌리가 이어집니다.",
+    "'몸이 뜨거워지거나 힘들 때 피부에서 나오는 액체'라는 뜻이 그대로 이어져 왔습니다.",
+    "비유적으로 '땀 흘려 하는 힘든 노력'을 가리키는 데도 폭넓게 씁니다.",
+    "sweat의 핵심 이미지는 '몸이 힘들게 애쓸 때 흘러내리는 땀방울 💦'입니다."
+   ],
+   "meanings": [
+    "땀 (명사)",
+    "땀을 흘리다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "Sweat dripped down his face during the run.",
+     "ko": "땀이 그 달리기 동안 그의 얼굴을 타고 흘러내렸어요."
+    },
+    {
+     "en": "She was sweating from the summer heat.",
+     "ko": "그녀는 그 여름 더위로 인해 땀을 흘리고 있었어요."
+    },
+    {
+     "en": "He worked up a sweat lifting the boxes.",
+     "ko": "그는 그 상자들을 들어 올리며 땀을 흘렸어요."
+    },
+    {
+     "en": "Nervous sweat covered her palms before the interview.",
+     "ko": "긴장한 땀이 그 면접 전 그녀의 손바닥을 덮었어요."
+    },
+    {
+     "en": "The success came from years of hard sweat.",
+     "ko": "그 성공은 여러 해의 고된 노력에서 나왔어요."
+    },
+    {
+     "en": "The gym was hot, and everyone was sweating.",
+     "ko": "그 체육관은 더웠고, 모두가 땀을 흘리고 있었어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "perspiration",
+     "ko": "땀",
+     "en": "Heavy perspiration."
+    },
+    {
+     "type": "연관어",
+     "word": "heat",
+     "ko": "더위",
+     "en": "Summer heat."
+    },
+    {
+     "type": "연관어",
+     "word": "effort",
+     "ko": "노력",
+     "en": "Great effort."
+    },
+    {
+     "type": "연관어",
+     "word": "exercise",
+     "ko": "운동",
+     "en": "Daily exercise."
+    },
+    {
+     "type": "연관어",
+     "word": "nervous",
+     "ko": "긴장한",
+     "en": "Feel nervous."
+    },
+    {
+     "type": "연관어",
+     "word": "workout",
+     "ko": "운동",
+     "en": "A tough workout."
+    }
+   ]
   }
  }
 }
