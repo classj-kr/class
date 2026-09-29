@@ -7,7 +7,7 @@ const CHAPTERS = [
                 "art": "01-barefoot.webp",
                 "emoji": "🦶",
                 "left": [
-                    "카렌은 여름 내내 맨발로 다녔습니다. 신발을 살 돈이 없는 집이었지요. 그래도 카렌은 잘 웃는 아이였습니다.",
+                    "카렌은 여름 내내 맨발로 다녔습니다. 어머니와 단둘이 사는 가난한 집이라 신발을 살 돈이 없었지요.",
                     "흙길을 걸으면 발바닥이 따끔거렸지요. 겨울에는 나무로 깎은 나막신을 신었습니다.",
                     "나막신은 딱딱해서 발뒤꿈치가 벌겋게 부었습니다. 카렌은 그래도 내색하지 않았지요."
                 ],
@@ -21,14 +21,14 @@ const CHAPTERS = [
                 "art": "01-barefoot-2.webp",
                 "emoji": "🦶",
                 "left": [
-                    "카렌은 그 신을 아주 아꼈습니다. 흙이 묻을까 봐 조심조심 걷고, 자기 전에는 머리맡에 두고 보았지요.",
-                    "그런데 얼마 뒤 어머니가 몸져누웠습니다. 카렌은 곁에서 밤을 새웠지요.",
-                    "하지만 어머니는 끝내 일어나지 못했습니다. 카렌은 그만 혼자가 되었지요."
+                    "카렌은 그 신을 아주 아꼈습니다. 밤에는 머리맡에 두고 잤지요.",
+                    "그런데 어머니가 그만 몸져누웠습니다. 카렌은 빨간 신을 신고 어머니 앞에서 빙그르르 돌아 보였지요.",
+                    "\"엄마, 예쁘지요?\" 어머니는 힘없이 웃었습니다. 그것이 마지막 웃음이었지요."
                 ],
                 "right": [
-                    "어머니를 묻는 날이었습니다. 카렌은 그 빨간 헝겊 신을 신고 갔지요.",
-                    "가진 신이 그것뿐이었으니까요. 사람들이 수군거렸습니다.",
-                    "\"저런 날에 빨간 신이라니.\" 카렌은 고개를 푹 숙였습니다."
+                    "며칠 뒤 어머니는 세상을 떠났습니다. 카렌은 이제 혼자였지요.",
+                    "어머니의 장례를 치르는 날, 카렌은 그 빨간 헝겊 신을 신고 갔습니다. 가진 신이 그것뿐이었으니까요.",
+                    "사람들이 수군거렸습니다. \"저런 날에 빨간 신이라니.\" 카렌은 고개를 푹 숙였습니다."
                 ]
             }
         ]
@@ -428,7 +428,7 @@ const QUIZ = [
         "q": "부인은 어디에서 카렌을 처음 만났나요?",
         "choices": [
             "구둣방에서",
-            "어머니를 묻는 날 그 앞을 지나다가",
+            "어머니의 장례를 치르는 날 그 앞을 지나다가",
             "예배당에서"
         ],
         "answer": 1
@@ -494,7 +494,7 @@ const QUIZ = [
                 "부인이 검은 구두인 줄 알고 값을 치른 것을 보면, 눈이 어두워 빛깔을 보지 못했구나.",
                 "예배당에서 앞에서 하는 말이 하나도 들리지 않은 것을 보면, 머릿속이 온통 구두 생각이었던 거지.",
                 "아주머니가 붙잡아 앉히자 발이 잠시 멈춘 것을 보면, 곁에 누가 있어야 멈출 수 있었어.",
-                "카렌이 어머니를 묻는 날에도 빨간 헝겊 신을 신고 간 것을 보면, 그 신을 신고 가면 어머니가 기뻐하실 것 같았구나."
+                "카렌이 어머니의 장례를 치르는 날에도 빨간 헝겊 신을 신고 간 것을 보면, 그 신을 신고 가면 어머니가 기뻐하실 것 같았구나."
             ],
         "answer": 3
     }
@@ -567,7 +567,7 @@ const EN = {
                     art: '01-barefoot.webp',
                     emoji: '👣',
                     left: [
-                        "Karen went barefoot all summer long. Her family had no money for shoes, but Karen still laughed easily.",
+                        "Karen went barefoot all summer long. She lived alone with her mother, and they had no money for shoes.",
                         "The dirt road pricked at the soles of her feet. In winter she wore wooden clogs.",
                         "The clogs were hard, and her heels went red and swollen. But Karen never let it show."
                     ],
@@ -581,14 +581,14 @@ const EN = {
                     art: '01-barefoot-2.webp',
                     emoji: '👣',
                     left: [
-                        "Karen loved those shoes. She walked carefully so as not to get dirt on them, and kept them by her pillow at night.",
-                        "Then her mother took to her bed. Karen sat up with her through the nights.",
-                        "But her mother never got better, and Karen was left all alone."
+                        "Karen loved those shoes. At night she kept them by her pillow.",
+                        "Then her mother fell ill and took to her bed. Karen put on the red shoes and twirled round in front of her.",
+                        "\"Look, Mother, aren't they pretty?\" Her mother gave a weak smile. It was the last time she smiled."
                     ],
                     right: [
-                        "On the day of her mother's burial, Karen wore the red rag shoes. They were the only shoes she had.",
-                        "People murmured about it. \"Red shoes, on a day like this!\"",
-                        "Karen hung her head."
+                        "A few days later her mother died, and Karen was left all alone.",
+                        "On the day of her mother's funeral, Karen wore the red rag shoes. They were the only shoes she had.",
+                        "People murmured about it. \"Red shoes, on a day like this!\" Karen hung her head."
                     ]
                 }
             ]
@@ -913,10 +913,10 @@ const EN = {
             { word: 'rag', meaning: '헝겊', sentence: 'Shoes out of old red rags.' }
         ],
         '01-barefoot-2.webp': [
-            { word: 'so as not to', meaning: '~하지 않도록', sentence: 'She walked carefully so as not to get dirt on them.' },
-            { word: 'take to one’s bed', meaning: '몸져눕다', sentence: 'Her mother took to her bed.' },
-            { word: 'sit up with', meaning: '곁에서 밤을 새우다', sentence: 'Karen sat up with her through the nights.' },
-            { word: 'burial', meaning: '장례', sentence: "On the day of her mother's burial." },
+            { word: 'take to one’s bed', meaning: '몸져눕다', sentence: 'Her mother fell ill and took to her bed.' },
+            { word: 'twirl round', meaning: '빙그르르 돌다', sentence: 'Karen put on the red shoes and twirled round in front of her.' },
+            { word: 'weak smile', meaning: '힘없는 웃음', sentence: 'Her mother gave a weak smile.' },
+            { word: 'funeral', meaning: '장례식', sentence: "On the day of her mother's funeral." },
             { word: 'murmur', meaning: '수군거리다', sentence: 'People murmured about it.' }
         ],
         '02-adopted.webp': [
@@ -1035,9 +1035,9 @@ const WORDS_KO = {
     ],
     "01-barefoot-2.webp": [
         { w: "아끼다", k: "귀하게 여겨 조심해서 쓰다.", s: "카렌은 그 신을 아주 아꼈습니다." },
-        { w: "머리맡", k: "누울 때 머리가 놓이는 쪽.", s: "흙이 묻을까 봐 조심조심 걷고, 자기 전에는 머리맡에 두고 보았지요." },
-        { w: "끝내", k: "마지막까지 결국.", s: "하지만 어머니는 끝내 일어나지 못했습니다." },
-        { w: "묻다", k: "땅을 파서 그 속에 넣다.", s: "어머니를 묻는 날이었습니다." }
+        { w: "머리맡", k: "누울 때 머리가 놓이는 쪽.", s: "밤에는 머리맡에 두고 잤지요." },
+        { w: "몸져눕다", k: "병이 들어 자리에 눕다.", s: "그런데 어머니가 그만 몸져누웠습니다." },
+        { w: "장례를 치르다", k: "세상을 떠난 사람을 땅에 모시고 마지막 인사를 하다.", s: "어머니의 장례를 치르는 날, 카렌은 그 빨간 헝겊 신을 신고 갔습니다." }
     ],
     "02-adopted.webp": [
         { w: "부인", k: "결혼한 여자를 높여 부르는 말.", s: "그날 그 앞을 지나던 부인이 있었습니다." },
