@@ -370,6 +370,9 @@
         const words = state.levels.get(Number(level)) || [];
         const lessons = lessonsForLevel(level);
         const recommended = findRecommendedLesson(level);
+        const levelOffset = [...state.levels.keys()]
+            .filter((key) => key < Number(level))
+            .reduce((sum, key) => sum + state.levels.get(key).length, 0);
         elements.lessonStage.textContent = STAGE_CARD_LABELS[words[0]?.stageCode] || "Official 2022 List";
         elements.lessonScreenTitle.textContent = levelName(level);
         elements.lessonGrid.replaceChildren(...lessons.map((lessonWords, lessonIndex) => {
@@ -385,7 +388,7 @@
             studyButton.setAttribute("aria-label", `${lessonIndex + 1}차시 단어 학습, ${lessonWords.length}단어, ${touched}개 확인`);
             studyButton.innerHTML = `
                 <span class="lesson-number">${lessonIndex + 1}차시 ${isRecommended ? '<b>추천</b>' : ''}</span>
-                <strong>${lessonIndex * LESSON_SIZE + 1}–${lessonIndex * LESSON_SIZE + lessonWords.length}번 단어</strong>
+                <strong>${levelOffset + lessonIndex * LESSON_SIZE + 1}–${levelOffset + lessonIndex * LESSON_SIZE + lessonWords.length}번 단어</strong>
                 <span class="lesson-progress" aria-hidden="true"><span style="width:${percent}%"></span></span>
                 <small>${summary.unseen === 0 ? "완료" : `${touched}/${lessonWords.length} 확인`} · 복습 ${summary.unknown}</small>
             `;
