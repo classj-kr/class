@@ -40,3 +40,4 @@ ClassJ(classj.kr) 생활기록부 도우미에서 만든 학생별 문장을 NEI
 ## 배포
 
 미등록(Unlisted)으로 제출. 스토어 주소 `https://chromewebstore.google.com/detail/nfpcffopnkolcpgpfbkaelofdeamddpa` 는 `index.html` 의 `#store-link` 에 넣어 두었고, 통과하면 그 단추의 `pending` 클래스만 뗀다.
+2026-09-29 대시보드에서 「게시됨 - 미등록」 확인. `#store-link` 의 `pending` 을 떼고, 검색에는 안 나오니 단추로 들어가라는 안내로 바꿨다.
