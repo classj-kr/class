@@ -1191,7 +1191,7 @@
         <div class="forecast-card" aria-label="오늘 시간대별 일기예보">
             <div class="forecast-meta">
                 <span id="forecastCaption">오늘의 시간대별 예보</span>
-                <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Open-Meteo</a>
+                <a id="weatherSource" href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Open-Meteo</a>
             </div>
             <div class="hourly-forecast" id="hourlyForecast"><span class="forecast-message">시간대별 예보 불러오는 중...</span></div>
             <button id="forecastRetry" type="button" hidden>다시 불러오기</button>
@@ -2715,7 +2715,7 @@
             document.getElementById("forecastCaption").textContent = "오늘 · " + step + "시간 간격 · 강수확률"
                 + (forecastEstimated ? " · 위치 추정" : "");
             hours.forEach(item => {
-                const condition = describeWeather(item.code, item.isDay);
+                const condition = describeWeatherItem(item);
                 const cell = document.createElement("div");
                 cell.className = "forecast-hour";
                 if (forecastDate === now.date && now.hour >= item.hour && now.hour < item.hour + step) cell.classList.add("is-current");
@@ -2743,6 +2743,41 @@
             return response.json();
         }
 
+        // 기상청 자료(서버의 /api/weather)가 네이버 등과 같은 값이라 우선 쓰고,
+        // 서버에 인증키가 없거나 기상청이 응답하지 않으면 Open-Meteo로 대신한다.
+        async function loadKmaWeather(lat, lon) {
+            const data = await weatherJson("/api/weather?" + new URLSearchParams({ lat, lon }));
+            return { source: "kma", current: data.current || {}, hourly: data.hourly || [] };
+        }
+
+        async function loadOpenMeteoWeather(lat, lon) {
+            const query = new URLSearchParams({
+                latitude: lat, longitude: lon, timezone: "Asia/Seoul", forecast_days: "1",
+                current: "temperature_2m,relative_humidity_2m,weather_code,is_day",
+                hourly: "temperature_2m,relative_humidity_2m,precipitation_probability,weather_code,is_day"
+            });
+            const data = await weatherJson("https://api.open-meteo.com/v1/forecast?" + query);
+            const current = data.current || {};
+            const hourly = data.hourly || {};
+            return {
+                source: "open-meteo",
+                current: {
+                    temperature: current.temperature_2m, humidity: current.relative_humidity_2m,
+                    code: current.weather_code, isDay: current.is_day
+                },
+                hourly: (hourly.time || []).map((time, index) => ({
+                    time, hour: Number(time.slice(11, 13)), temperature: hourly.temperature_2m?.[index],
+                    rain: hourly.precipitation_probability?.[index], code: hourly.weather_code?.[index], isDay: hourly.is_day?.[index]
+                }))
+            };
+        }
+
+        function describeWeatherItem(item) {
+            const condition = describeWeather(item.code, item.isDay);
+            if (item.label) condition.name = item.label;
+            return condition;
+        }
+
         // Reuse the same coordinates and providers as the current-weather request.
         async function fetchWeatherWithCoords(lat, lon, isEstimated = false) {
             const version = ++forecastRequestVersion;
@@ -2757,36 +2792,28 @@
             dust.textContent = "미세먼지 불러오는 중";
             dust.style.background = "";
             dust.style.color = "";
-            const query = new URLSearchParams({
-                latitude: lat, longitude: lon, timezone: "Asia/Seoul", forecast_days: "1",
-                current_weather: "true",
-                hourly: "temperature_2m,relative_humidity_2m,precipitation_probability,weather_code,is_day"
-            });
             const airQuery = new URLSearchParams({ latitude: lat, longitude: lon, current: "pm10" });
             const results = await Promise.allSettled([
-                weatherJson("https://api.open-meteo.com/v1/forecast?" + query),
+                loadKmaWeather(lat, lon).catch(() => loadOpenMeteoWeather(lat, lon)),
                 weatherJson("https://air-quality-api.open-meteo.com/v1/air-quality?" + airQuery)
             ]);
             if (version !== forecastRequestVersion) return;
             if (results[0].status === "fulfilled") {
-                const data = results[0].value;
-                const current = data.current_weather || {};
-                const hourly = data.hourly || {};
-                const condition = describeWeather(current.weathercode, current.is_day);
+                const { source, current, hourly } = results[0].value;
+                const sourceLink = document.getElementById("weatherSource");
+                sourceLink.textContent = source === "kma" ? "기상청" : "Open-Meteo";
+                sourceLink.href = source === "kma" ? "https://www.weather.go.kr/" : "https://open-meteo.com/";
+                const condition = describeWeatherItem(current);
                 const temp = document.getElementById("weatherTemp");
                 temp.textContent = Number.isFinite(current.temperature) ? Math.round(current.temperature) + "° " : "--° ";
                 const conditionText = document.createElement("span");
                 conditionText.className = "weather-condition";
                 conditionText.textContent = condition.icon + " " + condition.name + (isEstimated ? " (위치 추정)" : "");
                 temp.append(conditionText);
-                const currentIndex = (hourly.time || []).findIndex(time => time.slice(0, 13) === String(current.time || "").slice(0, 13));
-                const humidity = hourly.relative_humidity_2m?.[currentIndex];
+                const humidity = current.humidity;
                 document.getElementById("weatherHumidity").textContent = "습도 " + (Number.isFinite(humidity) ? Math.round(humidity) + "%" : "--%");
                 forecastDate = koreanWeatherClock().date;
-                hourlyWeather = (hourly.time || []).map((time, index) => ({
-                    time, hour: Number(time.slice(11, 13)), temperature: hourly.temperature_2m?.[index],
-                    rain: hourly.precipitation_probability?.[index], code: hourly.weather_code?.[index], isDay: hourly.is_day?.[index]
-                })).filter(item => item.time.startsWith(forecastDate + "T"));
+                hourlyWeather = hourly.filter(item => item.time.startsWith(forecastDate + "T"));
                 if (hourlyWeather.length) {
                     document.getElementById("forecastRetry").hidden = true;
                     renderHourlyForecast();

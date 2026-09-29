@@ -23,6 +23,7 @@ const Dobble = require("./dobble");
 const Quizrace = require("./quizrace");
 const { createClassroomPlatform } = require("./classroom-platform");
 const { redirectLegacyHosts } = require("./canonical-host");
+const { createKmaWeather } = require("./kma-weather");
 const {
   clientMatchesToken,
   restoreRoom,
@@ -43,6 +44,7 @@ const classroomPlatform = createClassroomPlatform({
   nodeEnv: process.env.NODE_ENV,
   isLiveQuizRaceCode: (code) => rooms.has(`quizrace:${code}`)
 });
+const kmaWeather = createKmaWeather({ serviceKey: process.env.KMA_API_KEY });
 
 const PORT = Number(process.env.PORT) || 10000;
 const ARITHMETIC_PORT = Number(process.env.ARITHMETIC_PORT) || 10001;
@@ -465,6 +467,7 @@ for (const [legacyPath, currentPath] of LEGACY_LEARNING_PATHS) {
 }
 
 app.use(express.json({ limit: "32kb" }));
+app.get("/api/weather", kmaWeather.handler);
 app.use("/api", (_req, res, next) => {
   res.setHeader("Cache-Control", "no-store");
   next();
