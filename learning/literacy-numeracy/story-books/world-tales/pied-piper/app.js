@@ -55,7 +55,7 @@ const CHAPTERS = [
                 "art": "02-piper-2.webp",
                 "emoji": "🪈",
                 "left": [
-                    "그러다 얼른 고개를 끄덕였지요. \"좋네, 천 닢을 주지. 쥐만 없애 준다면 이만 닢인들 못 주겠나.\"",
+                    "그러다 얼른 고개를 끄덕였지요. \"좋네, 천 닢을 주지. 쥐만 없애 준다면 천 닢이 아니라 만 닢이라도 주겠네.\"",
                     "의원들도 손뼉을 쳤습니다.",
                     "사나이가 조용히 말했지요. \"약속하신 겁니다.\""
                 ],
@@ -142,7 +142,7 @@ const CHAPTERS = [
                 "art": "05-children.webp",
                 "emoji": "🚸",
                 "left": [
-                    "이튿날 아침이었습니다. 어른들은 창가에서 내다보기만 했지요. 골목에는 아이들이 쏟아져 나왔습니다.",
+                    "이튿날 아침이었습니다. 골목에는 아이들이 쏟아져 나왔습니다.",
                     "다들 공놀이를 하고 있었지요. 공이 담벼락에 통통 튀었습니다.",
                     "그때 광장 쪽에서 소리가 났습니다. 어제 그 피리였지요.",
                     "그런데 소리가 어제와 달랐습니다."
@@ -150,7 +150,7 @@ const CHAPTERS = [
                 "right": [
                     "아주 밝고 신나는 가락이었지요. 발이 저절로 들썩이는 소리였습니다.",
                     "아이들이 하던 놀이를 뚝 멈추고 귀를 기울였습니다. \"저 소리 뭐야? 엄청 재밌겠는데!\"",
-                    "아이들은 하나둘 광장으로 달려갔지요."
+                    "아이들은 하나둘 광장으로 달려갔지요. 어른들도 창문을 열고 웃으며 내다보았습니다. 또 무슨 재주를 부리나 싶었거든요."
                 ]
             },
             {
@@ -164,8 +164,8 @@ const CHAPTERS = [
                 "right": [
                     "\"같이 가! 기다려!\"",
                     "하지만 아무도 듣지 못했습니다. 다들 피리 소리에만 귀를 기울였거든요.",
-                    "줄은 그대로 마을 밖으로 나갔지요.",
-                    "그때 교회에서 종이 뎅뎅 울렸습니다. 어른들이 하나둘 밖으로 나왔지요."
+                    "줄은 그대로 마을 밖으로 나갔지요. 어른들은 그제야 놀라 소리치려 했지만 목소리가 나오지 않았습니다. 발도 땅에 붙은 듯 꼼짝하지 않았지요.",
+                    "그때 교회에서 종이 뎅뎅 울렸습니다. 그 소리에 어른들의 몸이 겨우 풀렸지요."
                 ]
             }
         ]
@@ -178,13 +178,13 @@ const CHAPTERS = [
                 "art": "06-mountain.webp",
                 "emoji": "⛰️",
                 "left": [
-                    "거리가 텅 비어 있었습니다. 어른들은 그 자리에 얼어붙었지요.",
-                    "\"우리 아이들 어디 갔어요?\"",
+                    "어른들이 허둥지둥 거리로 뛰어나왔습니다. 거리에는 아이가 하나도 없었지요.",
+                    "\"우리 아이들을 어디로 데려가는 거야!\"",
                     "누군가 먼 언덕을 가리켰습니다. \"저기, 저 언덕으로!\"",
                     "사람들이 한꺼번에 뛰기 시작했지요. 그러나 아이들은 이미 너무 멀리 있었습니다."
                 ],
                 "right": [
-                    "줄은 어느새 산 앞에 이르렀습니다. 풀이 파랗게 덮인 언덕이었지요.",
+                    "줄은 어느새 커다란 산 앞에 이르렀습니다. 산비탈에는 풀이 파랗게 덮여 있었지요.",
                     "사나이가 피리를 멈췄습니다. 아이들도 따라서 걸음을 멈췄지요.",
                     "한 아이가 물었습니다. \"여기가 어디예요?\"",
                     "\"조금 더 가면 알게 된단다.\""
@@ -202,7 +202,7 @@ const CHAPTERS = [
                     "사나이는 그 아이를 한참 내려다보았습니다. 그러고는 천천히 무릎을 굽혔지요.",
                     "\"여기까지 혼자 왔구나.\"",
                     "\"네, 다들 가 버려서요.\"",
-                    "사나이의 얼굴이 달라졌지요. 피리를 천천히 내렸습니다."
+                    "사나이의 굳은 얼굴이 조금씩 풀렸지요. 피리를 천천히 내렸습니다."
                 ]
             }
         ]
@@ -220,7 +220,7 @@ const CHAPTERS = [
                     "사나이가 긴 한숨을 쉬었습니다. \"그럴 생각이었지.\""
                 ],
                 "right": [
-                    "\"그런데 네가 여기까지 오는 걸 보니, 내가 뭘 하려던 건가 싶구나.\"",
+                    "\"그런데 네가 그 다리로 여기까지 오는 걸 보니, 아이들을 데려가려던 내가 부끄럽구나.\"",
                     "바로 그때 멀리서 사람들이 달려왔지요. 시장이 맨 앞이었습니다. 숨이 턱에 닿아 말도 제대로 못 했지요.",
                     "시장이 무릎을 꿇었습니다. \"제발, 제발 아이들을 돌려주시오!\""
                 ]
@@ -230,7 +230,7 @@ const CHAPTERS = [
                 "emoji": "🏘️",
                 "left": [
                     "시장은 금화를 챙겨 들고 달려온 참이었지요. 사나이가 말없이 자루를 내밀자, 시장이 금화 천 닢을 세어 담았습니다. 손이 덜덜 떨렸지요.",
-                    "시장이 고개를 떨구었습니다. \"진작 이럴 것을.\"",
+                    "시장이 고개를 떨구었습니다. \"처음부터 약속대로 줄 것을.\"",
                     "사나이는 자루를 받아 어깨에 멨지요. 그러고는 아이들을 모두 돌려보냈습니다."
                 ],
                 "right": [
@@ -239,7 +239,7 @@ const CHAPTERS = [
                 ]
             }
         ],
-        "moral": "약속은 지키기로 한 순간부터 나의 책임이에요. 가볍게 어기면 훨씬 큰 대가를 치르게 된답니다."
+        "moral": "한 번 한 약속은 꼭 지켜야 해요. 약속을 어기면 아끼려던 것보다 훨씬 소중한 것을 잃을 수 있답니다."
     }
 ];
 
@@ -362,12 +362,12 @@ const AFTERWORD = {
             art: 'end.webp',
             left: [
                 "이 이야기는 독일 하멜른이라는 마을에 실제로 전해 오는 것입니다. 마을 교회 창에 그림으로 남아 있었다고 하지요.",
-                "칠백 년도 더 전에 하멜른에서 아이들이 사라졌다는 기록이 있습니다. 무슨 일이 있었는지는 아무도 모릅니다. 그 빈자리를 이야기가 채운 셈입니다.",
+                "칠백 년도 더 전에 하멜른에서 아이들이 사라졌다는 기록이 있습니다. 무슨 일이 있었는지는 아무도 모릅니다. 그래서 사람들이 그 일을 두고 이런 이야기를 지어낸 것입니다.",
                 "사나이가 쥐를 몰아낸 것은 사실입니다. 마을은 그 값을 치르지 않았고요. 다투었던 것은 값이 비싸다는 것이었지요.",
-                "쥐가 사라진 뒤에야 값이 아까워진 것입니다. 곤란할 때와 곤란이 끝난 뒤의 셈이 달라진 것이지요."
+                "쥐가 들끓을 때는 만 닢이라도 주겠다던 시장이, 쥐가 사라지자 천 닢도 아까워한 것입니다."
             ],
             right: [
-                "뒤처진 아이가 따라왔을 때 사나이는 무릎을 굽힙니다. 거기서 마음이 바뀌지요. 값을 받으러 온 사람도 사람이었던 것입니다.",
+                "뒤처진 아이가 따라왔을 때 사나이는 무릎을 굽힙니다. 거기서 마음이 바뀌지요. 사나이도 아이를 가엾게 여길 줄 아는 사람이었던 것입니다.",
                 "시장은 어디서부터 잘못한 것일까요?"
             ]
         }
@@ -408,7 +408,7 @@ const QUIZ = [
         "q": "시장이 사나이에게 주기로 한 것은 얼마인가요?",
         "choices": [
             "천 닢",
-            "이만 닢",
+            "만 닢",
             "백 닢"
         ],
         "answer": 0
@@ -462,7 +462,7 @@ const QUIZ = [
         "q": "이 책을 읽고 난 반응으로 알맞지 않은 것은 무엇인가요?",
         "wide": true,
         "choices": [
-                "시장이 이만 닢인들 주겠다더니 쥐가 사라지자 오십 닢을 민 것을 보면, 곤란이 끝나자 셈이 달라졌구나.",
+                "시장이 만 닢이라도 주겠다더니 쥐가 사라지자 오십 닢을 민 것을 보면, 쥐가 없어지자 돈이 아까워졌구나.",
                 "사나이가 값을 두 번 청하지 않는다고 한 것을 보면, 그 자리에서 이미 다른 것을 받기로 마음먹은 거지.",
                 "뒤처졌던 아이 앞에서 무릎을 굽히고 피리를 내린 것을 보면, 제가 무엇을 하려던 것인지 그제야 돌아봤어.",
                 "사나이가 아이들을 돌려보낸 뒤 뒤처졌던 아이를 업고 마을까지 데려다준 것을 보면, 끝까지 마음을 썼구나."
@@ -599,7 +599,7 @@ const EN = {
                     emoji: '🎺',
                     left: [
                         "Then he nodded quickly.",
-                        "\"Very well. A thousand it is. If you clear the rats, I would give you twenty thousand!\"",
+                        "\"Very well. A thousand it is. If you clear the rats, I would give you ten thousand!\"",
                         "The councillors clapped as well.",
                         "\"You have given your word,\" the man said quietly."
                     ],
@@ -703,8 +703,7 @@ const EN = {
                     art: '05-children.webp',
                     emoji: '🧒',
                     left: [
-                        "It was the next morning. The grown-ups only watched from their windows,",
-                        "and only the children were left in the streets,",
+                        "It was the next morning. The children came pouring into the streets,",
                         "playing ball. The ball went bouncing off the walls.",
                         "Then a sound came from the square. It was yesterday's pipe,",
                         "but it did not sound the same."
@@ -714,7 +713,7 @@ const EN = {
                         "The children stopped their game dead and listened.",
                         "\"What's that noise?\"",
                         "\"It sounds like the best fun!\"",
-                        "One after another they went running to the square."
+                        "One after another they went running to the square. The grown-ups opened their windows and watched, smiling. What trick would he play now?"
                     ]
                 },
                 {
@@ -730,9 +729,8 @@ const EN = {
                     right: [
                         "\"Wait for me! Wait!\" he called.",
                         "But nobody heard him. Every one of them was listening to the pipe.",
-                        "The line went straight out of the town.",
-                        "Just then the church bell rang,",
-                        "and the grown-ups began to come outside."
+                        "The line went straight out of the town. Now the grown-ups tried to shout, but no sound came. Their feet would not move, as if they were stuck to the ground.",
+                        "Just then the church bell rang, and at last they could move again."
                     ]
                 }
             ]
@@ -745,8 +743,8 @@ const EN = {
                     art: '06-mountain.webp',
                     emoji: '⛰️',
                     left: [
-                        "The grown-ups stood frozen where they were. The streets were empty.",
-                        "\"Where have our children gone?\"",
+                        "The grown-ups rushed out into the streets. There was not a child to be seen.",
+                        "\"Where is he taking our children?\"",
                         "Someone pointed. \"There — over that hill!\"",
                         "Everyone began to run at once.",
                         "But the children were already far away."
@@ -955,7 +953,7 @@ const EN = {
             { word: 'crutch', meaning: '목발', sentence: 'And had to work hard on his crutch.' }
         ],
         '06-mountain.webp': [
-            { word: 'frozen', meaning: '얼어붙은', sentence: 'The grown-ups stood frozen where they were.' },
+            { word: 'rush out', meaning: '허둥지둥 뛰어나오다', sentence: 'The grown-ups rushed out into the streets.' },
             { word: 'at the foot of', meaning: '~ 아래에', sentence: 'The line had come to the foot of a hill.' },
             { word: 'further', meaning: '더 멀리', sentence: 'A little further and you will know.' }
         ],
@@ -1009,7 +1007,9 @@ const WORDS_KO = {
         { w: "시청", k: "시의 일을 맡아보는 곳.", s: "참다못한 사람들이 시청으로 몰려갔습니다." },
         { w: "뻘뻘", k: "땀을 몹시 흘리는 모습.", s: "시장은 땀을 뻘뻘 흘렸지요." },
         { w: "소용", k: "쓸 데가 있어 도움이 되는 것.", s: "그래도 아무 소용이 없었습니다." },
-        { w: "머리를 맞대다", k: "여럿이 모여 함께 의논하다.", s: "의원들이 머리를 맞대고 앉았지요." }
+        { w: "머리를 맞대다", k: "여럿이 모여 함께 의논하다.", s: "의원들이 머리를 맞대고 앉았지요." },
+        { w: "의원", k: "시장과 함께 마을 일을 의논해 정하는 사람.", s: "의원들이 머리를 맞대고 앉았지요." },
+        { w: "시장", k: "도시를 맡아 다스리는 가장 높은 사람. 물건을 사고파는 곳과는 소리만 같은 다른 말.", s: "\"시장님, 어떻게 좀 해 주세요!\"" }
     ],
     "02-piper.webp": [
         { w: "껑충하다", k: "키가 아주 길쭉하다.", s: "키가 껑충한 사람이 들어왔습니다." },
@@ -1052,12 +1052,12 @@ const WORDS_KO = {
     "05-children-2.webp": [
         { w: "어느새", k: "어느 틈에 벌써.", s: "어느새 온 마을 아이들이 되었지요." },
         { w: "짚다", k: "몸을 기대어 받치다.", s: "아이는 목발을 짚고 애를 썼지요." },
-        { w: "뎅뎅", k: "종이 크게 울리는 소리.", s: "그때 교회에서 종이 뎅뎅 울렸습니다." }
+        { w: "뎅뎅", k: "종이 크게 울리는 소리.", s: "그때 교회에서 종이 뎅뎅 울렸습니다. 그 소리에 어른들의 몸이 겨우 풀렸지요." }
     ],
     "06-mountain.webp": [
-        { w: "거리", k: "집과 집 사이로 난 길.", s: "거리가 텅 비어 있었습니다." },
+        { w: "거리", k: "집과 집 사이로 난 길.", s: "어른들이 허둥지둥 거리로 뛰어나왔습니다. 거리에는 아이가 하나도 없었지요." },
         { w: "한꺼번에", k: "여럿이 한 번에 몰아서.", s: "사람들이 한꺼번에 뛰기 시작했지요." },
-        { w: "언덕", k: "땅이 조금 높이 솟은 곳.", s: "풀이 파랗게 덮인 언덕이었지요." }
+        { w: "언덕", k: "땅이 조금 높이 솟은 곳.", s: "누군가 먼 언덕을 가리켰습니다." }
     ],
     "06-mountain-2.webp": [
         { w: "또각또각", k: "단단한 것이 바닥에 닿는 소리.", s: "그때 뒤에서 또각, 또각 소리가 났습니다." },
@@ -1072,7 +1072,7 @@ const WORDS_KO = {
     "07-return-2.webp": [
         { w: "덜덜", k: "무섭거나 추워서 몸이 떨리는 모습.", s: "손이 덜덜 떨렸지요." },
         { w: "고개를 떨구다", k: "부끄러워 고개를 아래로 숙이다.", s: "시장이 고개를 떨구었습니다." },
-        { w: "진작", k: "좀 더 일찍이.", s: "\"진작 이럴 것을.\"" },
+        { w: "처음부터", k: "맨 처음 그때부터.", s: "\"처음부터 약속대로 줄 것을.\"" },
         { w: "얼싸안다", k: "두 팔을 벌려 꼭 껴안다.", s: "부모와 아이들이 얼싸안았습니다." }
     ],
     "end.webp": [
