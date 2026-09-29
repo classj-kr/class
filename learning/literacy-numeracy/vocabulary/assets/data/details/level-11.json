@@ -11510,6 +11510,1923 @@
      "en": "Political corruption."
     }
    ]
+  },
+  "1193": {
+   "word": "generous",
+   "overview": [
+    "generous는 '관대한, 후한'이라는 뜻의 형용사입니다.",
+    "a generous gift(후한 선물)처럼 씁니다.",
+    "'풍부한, 넉넉한'이라는 뜻으로도 씁니다.",
+    "명사 generosity(관대함, 너그러움)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "giving",
+     "en": "A giving person.",
+     "ko": "베푸는 사람."
+    },
+    {
+     "word": "kind",
+     "en": "A kind gesture.",
+     "ko": "친절한 행동."
+    }
+   ],
+   "etymology": [
+    "generous는 라틴어 generosus(고귀한 태생의)에서 온 단어입니다.",
+    "genus(태생, 종류)에서 나온 말로, generate(만들어 내다)와 같은 가족입니다.",
+    "원래는 '귀족 가문 태생의 고귀한 성품을 지닌'이라는 뜻이었습니다.",
+    "그런 사람이 베푸는 너그러운 태도에서 '관대한, 후한'이라는 뜻으로 굳어졌습니다.",
+    "generous의 핵심 이미지는 '아낌없이 넉넉하게 베푸는 너그러운 마음 🎁'입니다."
+   ],
+   "meanings": [
+    "풍부하다",
+    "관대하다"
+   ],
+   "examples": [
+    {
+     "en": "She made a generous donation to the school.",
+     "ko": "그녀는 그 학교에 후한 기부를 했어요."
+    },
+    {
+     "en": "He is always generous with his time and money.",
+     "ko": "그는 항상 자신의 시간과 돈에 관대해요."
+    },
+    {
+     "en": "The restaurant serves generous portions of food.",
+     "ko": "그 식당은 넉넉한 양의 음식을 제공해요."
+    },
+    {
+     "en": "Their generous hospitality impressed the visitors.",
+     "ko": "그들의 후한 환대는 그 방문객들에게 깊은 인상을 남겼어요."
+    },
+    {
+     "en": "He offered a generous discount to loyal customers.",
+     "ko": "그는 충성 고객들에게 후한 할인을 제공했어요."
+    },
+    {
+     "en": "She has a generous heart and helps everyone.",
+     "ko": "그녀는 너그러운 마음을 가지고 있고 모두를 도와요."
+    }
+   ],
+   "together": [
+    {
+     "type": "파생어",
+     "word": "generosity",
+     "ko": "너그러움",
+     "en": "Show generosity."
+    },
+    {
+     "type": "반의어",
+     "word": "stingy",
+     "ko": "인색한",
+     "en": "A stingy man."
+    },
+    {
+     "type": "연관어",
+     "word": "giving",
+     "ko": "베푸는",
+     "en": "A giving spirit."
+    },
+    {
+     "type": "연관어",
+     "word": "kind",
+     "ko": "친절한",
+     "en": "A kind offer."
+    },
+    {
+     "type": "연관어",
+     "word": "charity",
+     "ko": "자선",
+     "en": "Donate to charity."
+    },
+    {
+     "type": "연관어",
+     "word": "abundant",
+     "ko": "풍부한",
+     "en": "An abundant harvest."
+    }
+   ]
+  },
+  "2272": {
+   "word": "routine",
+   "overview": [
+    "routine은 '일상, 정해진 일과'라는 뜻의 명사이자 '일상적인'이라는 뜻의 형용사입니다.",
+    "a daily routine(일상적인 일과)처럼 씁니다.",
+    "매일 반복되는 정해진 순서나 과정을 뜻합니다.",
+    "'통상적인, 흔한'이라는 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "daily habit",
+     "en": "A daily habit.",
+     "ko": "매일의 습관."
+    },
+    {
+     "word": "usual",
+     "en": "Usual practice.",
+     "ko": "통상적인 관행."
+    }
+   ],
+   "etymology": [
+    "routine은 프랑스어 route(길, 경로)에서 온 단어입니다.",
+    "route(경로), road(길)와 같은 가족입니다.",
+    "'매일 다니는 정해진 길'이라는 뜻에서 시작되었습니다.",
+    "'매일 정해진 순서대로 반복하는 일과'라는 뜻으로 넓어졌습니다.",
+    "routine의 핵심 이미지는 '매일 같은 길을 따라 반복되는 일상 🔄'입니다."
+   ],
+   "meanings": [
+    "보통으로 하는 일, 일상사, 정해진 일, 과정",
+    "일상적인, 통상적인"
+   ],
+   "examples": [
+    {
+     "en": "Exercise is part of her daily routine.",
+     "ko": "운동은 그녀의 일상적인 일과의 일부예요."
+    },
+    {
+     "en": "The doctor performed a routine checkup.",
+     "ko": "그 의사는 통상적인 검진을 실시했어요."
+    },
+    {
+     "en": "He follows the same morning routine every day.",
+     "ko": "그는 매일 같은 아침 일과를 따라요."
+    },
+    {
+     "en": "Airport security is now a routine procedure.",
+     "ko": "공항 보안 검사는 이제 일상적인 절차예요."
+    },
+    {
+     "en": "Her routine includes reading before bed.",
+     "ko": "그녀의 일과는 자기 전 독서를 포함해요."
+    },
+    {
+     "en": "This test is just a routine formality.",
+     "ko": "이 검사는 그저 통상적인 절차일 뿐이에요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "habit",
+     "ko": "습관",
+     "en": "A daily habit."
+    },
+    {
+     "type": "연관어",
+     "word": "schedule",
+     "ko": "일정",
+     "en": "A busy schedule."
+    },
+    {
+     "type": "연관어",
+     "word": "usual",
+     "ko": "평소의",
+     "en": "The usual time."
+    },
+    {
+     "type": "연관어",
+     "word": "regular",
+     "ko": "규칙적인",
+     "en": "A regular pattern."
+    },
+    {
+     "type": "연관어",
+     "word": "procedure",
+     "ko": "절차",
+     "en": "A standard procedure."
+    },
+    {
+     "type": "연관어",
+     "word": "pattern",
+     "ko": "패턴",
+     "en": "A daily pattern."
+    }
+   ]
+  },
+  "2787": {
+   "word": "tribe",
+   "overview": [
+    "tribe는 '부족, 씨족'이라는 뜻의 명사입니다.",
+    "an ancient tribe(고대 부족)처럼 씁니다.",
+    "같은 조상, 언어, 문화를 공유하는 사람들의 집단을 뜻합니다.",
+    "생물학에서는 같은 특성을 가진 분류군을 가리키는 데도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "clan",
+     "en": "An old clan.",
+     "ko": "오래된 씨족."
+    },
+    {
+     "word": "group of people",
+     "en": "A group of people.",
+     "ko": "사람들의 무리."
+    }
+   ],
+   "etymology": [
+    "tribe는 라틴어 tribus(로마의 세 부족 중 하나)에서 온 단어입니다.",
+    "고대 로마는 시민들을 세 개의 큰 부족으로 나누어 관리했습니다.",
+    "'같은 뿌리를 공유하는 사람들의 큰 집단'이라는 뜻으로 넓어졌습니다.",
+    "지금은 공통의 조상과 문화를 지닌 사람들의 집단 전반을 가리킵니다.",
+    "tribe의 핵심 이미지는 '같은 뿌리와 전통을 공유하는 사람들의 공동체 🏕️'입니다."
+   ],
+   "meanings": [
+    "부족, 씨족",
+    "(생물학) 같은 특성을 가진 족"
+   ],
+   "examples": [
+    {
+     "en": "The tribe has lived in this forest for centuries.",
+     "ko": "그 부족은 수 세기 동안 이 숲에서 살아왔어요."
+    },
+    {
+     "en": "Each tribe has its own unique traditions.",
+     "ko": "각 부족은 자신만의 독특한 전통을 가지고 있어요."
+    },
+    {
+     "en": "Anthropologists studied the customs of the tribe.",
+     "ko": "인류학자들은 그 부족의 관습을 연구했어요."
+    },
+    {
+     "en": "The tribe gathered to celebrate the harvest.",
+     "ko": "그 부족은 그 수확을 축하하려고 모였어요."
+    },
+    {
+     "en": "Members of the tribe speak a unique language.",
+     "ko": "그 부족의 구성원들은 독특한 언어를 말해요."
+    },
+    {
+     "en": "The tribe's chief led important ceremonies.",
+     "ko": "그 부족의 족장은 중요한 의식들을 이끌었어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "clan",
+     "ko": "씨족",
+     "en": "A Scottish clan."
+    },
+    {
+     "type": "연관어",
+     "word": "community",
+     "ko": "공동체",
+     "en": "A tight community."
+    },
+    {
+     "type": "연관어",
+     "word": "chief",
+     "ko": "족장",
+     "en": "The tribal chief."
+    },
+    {
+     "type": "연관어",
+     "word": "culture",
+     "ko": "문화",
+     "en": "Preserve culture."
+    },
+    {
+     "type": "연관어",
+     "word": "ancestor",
+     "ko": "조상",
+     "en": "Honor ancestors."
+    },
+    {
+     "type": "연관어",
+     "word": "tradition",
+     "ko": "전통",
+     "en": "A sacred tradition."
+    }
+   ]
+  },
+  "1295": {
+   "word": "headquarters",
+   "overview": [
+    "headquarters는 '본부, 사령부'라는 뜻의 명사입니다.",
+    "company headquarters(회사 본부)처럼 씁니다.",
+    "군대의 최고 지휘 본부를 뜻하기도 합니다.",
+    "단수와 복수 형태가 같은 명사입니다."
+   ],
+   "easy": [
+    {
+     "word": "main office",
+     "en": "The main office.",
+     "ko": "본사 사무실."
+    },
+    {
+     "word": "base",
+     "en": "A military base.",
+     "ko": "군사 기지."
+    }
+   ],
+   "etymology": [
+    "headquarters는 head(머리, 우두머리)와 quarters(숙소, 주둔지)가 합쳐진 단어입니다.",
+    "군사 용어에서 지휘관이 머무는 '우두머리의 숙소'라는 뜻으로 시작되었습니다.",
+    "그곳에서 모든 명령과 결정이 이루어지므로 '지휘 본부'라는 뜻으로 굳어졌습니다.",
+    "지금은 군대뿐 아니라 회사나 조직의 중심 사무소를 가리키는 데 폭넓게 씁니다.",
+    "headquarters의 핵심 이미지는 '모든 명령과 결정이 시작되는 중심 본부 🏢'입니다."
+   ],
+   "meanings": [
+    "(군대) 사령부, 본부",
+    "(회사의) 본부"
+   ],
+   "examples": [
+    {
+     "en": "The company's headquarters is located in Seoul.",
+     "ko": "그 회사의 본부는 서울에 위치해 있어요."
+    },
+    {
+     "en": "The army set up headquarters near the border.",
+     "ko": "그 군대는 그 국경 근처에 사령부를 설치했어요."
+    },
+    {
+     "en": "She works at the corporate headquarters downtown.",
+     "ko": "그녀는 시내의 본사에서 일해요."
+    },
+    {
+     "en": "The general commanded troops from headquarters.",
+     "ko": "그 장군은 사령부에서 부대를 지휘했어요."
+    },
+    {
+     "en": "The organization moved its headquarters last year.",
+     "ko": "그 조직은 작년에 자신의 본부를 옮겼어요."
+    },
+    {
+     "en": "Police headquarters coordinated the search operation.",
+     "ko": "경찰 본부는 그 수색 작전을 조율했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "office",
+     "ko": "사무소",
+     "en": "A branch office."
+    },
+    {
+     "type": "연관어",
+     "word": "base",
+     "ko": "기지",
+     "en": "A military base."
+    },
+    {
+     "type": "연관어",
+     "word": "command",
+     "ko": "지휘",
+     "en": "Chain of command."
+    },
+    {
+     "type": "연관어",
+     "word": "company",
+     "ko": "회사",
+     "en": "A global company."
+    },
+    {
+     "type": "연관어",
+     "word": "central",
+     "ko": "중앙의",
+     "en": "A central location."
+    },
+    {
+     "type": "연관어",
+     "word": "branch",
+     "ko": "지점",
+     "en": "A local branch."
+    }
+   ]
+  },
+  "466": {
+   "word": "chill",
+   "overview": [
+    "chill은 '차가운 느낌, 한기'라는 뜻의 명사이자 '차게 하다'라는 뜻의 동사입니다.",
+    "feel a chill(한기를 느끼다)처럼 씁니다.",
+    "형용사로는 chilly(쌀쌀한)의 형태로도 씁니다.",
+    "구어에서 chill out은 '느긋하게 쉬다, 진정하다'라는 뜻으로 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "coldness",
+     "en": "A slight coldness.",
+     "ko": "약간의 서늘함."
+    },
+    {
+     "word": "relax",
+     "en": "Just relax.",
+     "ko": "그냥 편히 쉬다."
+    }
+   ],
+   "etymology": [
+    "chill은 고대 영어 cele/ciele(추위, 서늘함)에서 온 단어입니다.",
+    "cool(시원한)과도 같은 게르만 뿌리에서 나온 단어입니다.",
+    "'몸에 느껴지는 서늘하고 차가운 기운'이라는 뜻이 그대로 이어져 왔습니다.",
+    "구어에서는 '마음을 차갑게 가라앉히고 느긋해지다'라는 뜻으로도 널리 쓰이게 되었습니다.",
+    "chill의 핵심 이미지는 '몸과 마음을 서늘하게 가라앉히는 한기와 여유 ❄️'입니다."
+   ],
+   "meanings": [
+    "차가운 느낌, 한기 (명사)",
+    "차갑게 느끼다, 식다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "A cold chill ran down her spine.",
+     "ko": "차가운 한기가 그녀의 등골을 타고 흘렀어요."
+    },
+    {
+     "en": "Please chill the drinks before the party.",
+     "ko": "그 파티 전에 그 음료를 차게 해 주세요."
+    },
+    {
+     "en": "There was a chill in the autumn air.",
+     "ko": "그 가을 공기 속에는 서늘함이 있었어요."
+    },
+    {
+     "en": "He told his friend to just chill out.",
+     "ko": "그는 자신의 친구에게 그냥 진정하라고 말했어요."
+    },
+    {
+     "en": "The soup needs to chill in the fridge overnight.",
+     "ko": "그 수프는 냉장고에서 밤새 식혀야 해요."
+    },
+    {
+     "en": "She wore a jacket to fight off the chill.",
+     "ko": "그녀는 그 한기를 물리치려고 재킷을 입었어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "파생어",
+     "word": "chilly",
+     "ko": "쌀쌀한",
+     "en": "A chilly morning."
+    },
+    {
+     "type": "연관어",
+     "word": "cold",
+     "ko": "추운",
+     "en": "A cold winter."
+    },
+    {
+     "type": "연관어",
+     "word": "cool",
+     "ko": "시원한",
+     "en": "A cool breeze."
+    },
+    {
+     "type": "연관어",
+     "word": "relax",
+     "ko": "쉬다",
+     "en": "Relax at home."
+    },
+    {
+     "type": "연관어",
+     "word": "freeze",
+     "ko": "얼다",
+     "en": "Freeze solid."
+    },
+    {
+     "type": "연관어",
+     "word": "shiver",
+     "ko": "떨다",
+     "en": "Shiver in the cold."
+    }
+   ]
+  },
+  "2495": {
+   "word": "spit",
+   "overview": [
+    "spit은 '침을 뱉다'라는 뜻의 동사이자 '침, 타액'이라는 뜻의 명사입니다.",
+    "spit on the ground(땅에 침을 뱉다)처럼 씁니다.",
+    "빗방울이 '후두둑 떨어지다'라는 비유적인 뜻으로도 씁니다.",
+    "무례하거나 경멸을 나타내는 행동으로 여겨지는 경우가 많습니다."
+   ],
+   "easy": [
+    {
+     "word": "saliva",
+     "en": "Human saliva.",
+     "ko": "인간의 침."
+    },
+    {
+     "word": "expel",
+     "en": "Expel water.",
+     "ko": "물을 내뿜다."
+    }
+   ],
+   "etymology": [
+    "spit은 고대 영어 spittan(침을 뱉다)에서 온 단어입니다.",
+    "게르만 말 뿌리의 의성어로, 침을 뱉는 소리를 흉내 낸 것으로 봅니다.",
+    "'입안의 액체를 힘차게 밖으로 내뱉는 행동'이라는 뜻이 그대로 이어져 왔습니다.",
+    "그 행동에서 나오는 액체 자체를 가리키는 명사로도 자연스럽게 쓰이게 되었습니다.",
+    "spit의 핵심 이미지는 '입에서 힘차게 밖으로 내뱉는 침 💦'입니다."
+   ],
+   "meanings": [
+    "침을 뱉다 (동사)",
+    "침, 타액 (명사)"
+   ],
+   "examples": [
+    {
+     "en": "He spat on the ground in disgust.",
+     "ko": "그는 역겨움에 땅에 침을 뱉었어요."
+    },
+    {
+     "en": "It is rude to spit in public places.",
+     "ko": "공공장소에서 침을 뱉는 것은 무례한 행동이에요."
+    },
+    {
+     "en": "The camel spat at the tourists.",
+     "ko": "그 낙타는 그 관광객들에게 침을 뱉었어요."
+    },
+    {
+     "en": "Wipe the spit off your chin.",
+     "ko": "당신의 턱에서 그 침을 닦으세요."
+    },
+    {
+     "en": "Rain began to spit as they left the house.",
+     "ko": "그들이 그 집을 떠날 때 비가 후두둑 내리기 시작했어요."
+    },
+    {
+     "en": "The angry man spat out harsh words.",
+     "ko": "그 화난 남자는 거친 말들을 내뱉었어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "saliva",
+     "ko": "침",
+     "en": "Excess saliva."
+    },
+    {
+     "type": "연관어",
+     "word": "mouth",
+     "ko": "입",
+     "en": "Open your mouth."
+    },
+    {
+     "type": "연관어",
+     "word": "disgust",
+     "ko": "혐오",
+     "en": "A look of disgust."
+    },
+    {
+     "type": "연관어",
+     "word": "rude",
+     "ko": "무례한",
+     "en": "A rude gesture."
+    },
+    {
+     "type": "연관어",
+     "word": "drizzle",
+     "ko": "이슬비",
+     "en": "A light drizzle."
+    },
+    {
+     "type": "연관어",
+     "word": "out",
+     "ko": "밖으로",
+     "en": "Spit it out."
+    }
+   ]
+  },
+  "1770": {
+   "word": "nephew",
+   "overview": [
+    "nephew는 '조카'라는 뜻의 명사입니다.",
+    "my nephew(내 조카)처럼 씁니다.",
+    "형제자매의 아들을 가리킵니다.",
+    "조카딸은 niece라고 부릅니다."
+   ],
+   "easy": [
+    {
+     "word": "sister's/brother's son",
+     "en": "My sister's son.",
+     "ko": "내 언니의 아들."
+    },
+    {
+     "word": "young relative",
+     "en": "A young relative.",
+     "ko": "어린 친척."
+    }
+   ],
+   "etymology": [
+    "nephew는 라틴어 nepos(손자, 조카)에서 온 단어입니다.",
+    "인도유럽 말 뿌리로 여러 유럽 언어에서 비슷한 형태로 이어져 온 오래된 친족 단어입니다.",
+    "원래는 '손자'라는 뜻도 포함했지만, 시간이 지나며 '조카'로 뜻이 좁혀졌습니다.",
+    "지금은 형제자매의 아들을 가리키는 데 정확하게 씁니다.",
+    "nephew의 핵심 이미지는 '형제자매를 통해 이어지는 소중한 조카 👦'입니다."
+   ],
+   "meanings": [
+    "조카"
+   ],
+   "examples": [
+    {
+     "en": "My nephew just turned ten years old.",
+     "ko": "제 조카는 이제 막 열 살이 되었어요."
+    },
+    {
+     "en": "She bought a gift for her nephew's birthday.",
+     "ko": "그녀는 자신의 조카의 생일을 위해 선물을 샀어요."
+    },
+    {
+     "en": "His nephew visits him every summer.",
+     "ko": "그의 조카는 매년 여름 그를 방문해요."
+    },
+    {
+     "en": "The nephew inherited the family business.",
+     "ko": "그 조카는 그 가족 사업을 물려받았어요."
+    },
+    {
+     "en": "I took my nephew to the zoo last weekend.",
+     "ko": "저는 지난 주말에 제 조카를 그 동물원에 데려갔어요."
+    },
+    {
+     "en": "Her nephew loves playing video games.",
+     "ko": "그녀의 조카는 비디오 게임을 하는 것을 아주 좋아해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "반의어",
+     "word": "niece",
+     "ko": "조카딸",
+     "en": "My favorite niece."
+    },
+    {
+     "type": "연관어",
+     "word": "uncle",
+     "ko": "삼촌",
+     "en": "A kind uncle."
+    },
+    {
+     "type": "연관어",
+     "word": "aunt",
+     "ko": "이모, 고모",
+     "en": "A loving aunt."
+    },
+    {
+     "type": "연관어",
+     "word": "family",
+     "ko": "가족",
+     "en": "A close family."
+    },
+    {
+     "type": "연관어",
+     "word": "cousin",
+     "ko": "사촌",
+     "en": "A distant cousin."
+    },
+    {
+     "type": "연관어",
+     "word": "relative",
+     "ko": "친척",
+     "en": "A close relative."
+    }
+   ]
+  },
+  "641": {
+   "word": "costume",
+   "overview": [
+    "costume은 '의상, 복장'이라는 뜻의 명사입니다.",
+    "a Halloween costume(할로윈 의상)처럼 씁니다.",
+    "특정 시대, 문화, 인물을 나타내기 위해 입는 옷을 뜻합니다.",
+    "동사로는 '의상을 입히다'라는 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "outfit",
+     "en": "A fancy outfit.",
+     "ko": "화려한 옷차림."
+    },
+    {
+     "word": "disguise",
+     "en": "A clever disguise.",
+     "ko": "영리한 변장."
+    }
+   ],
+   "etymology": [
+    "costume은 이탈리아어 costume(관습, 풍습)에서 온 단어입니다.",
+    "라틴어 consuetudo(습관, 관례)에서 나온 말로, custom(관습)과 같은 가족입니다.",
+    "원래는 특정 시대나 지역의 '관습에 맞는 옷차림'이라는 뜻이었습니다.",
+    "지금은 공연, 축제 등에서 특정 인물이나 캐릭터를 표현하기 위해 입는 옷을 가리킵니다.",
+    "costume의 핵심 이미지는 '특정 인물이나 시대를 표현하는 특별한 의상 🎭'입니다."
+   ],
+   "meanings": [
+    "의상, 복장 (명사)",
+    "의상을 입히다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "She wore a witch costume for Halloween.",
+     "ko": "그녀는 할로윈을 위해 마녀 의상을 입었어요."
+    },
+    {
+     "en": "The actors changed costumes between scenes.",
+     "ko": "그 배우들은 장면들 사이에 의상을 갈아입었어요."
+    },
+    {
+     "en": "The museum displayed traditional Korean costumes.",
+     "ko": "그 박물관은 전통 한국 의상들을 전시했어요."
+    },
+    {
+     "en": "He designed the costumes for the school play.",
+     "ko": "그는 그 학교 연극을 위한 의상들을 디자인했어요."
+    },
+    {
+     "en": "Kids competed in a costume contest at the party.",
+     "ko": "아이들은 그 파티에서 의상 경연 대회에 참가했어요."
+    },
+    {
+     "en": "The dancers were costumed in bright, colorful outfits.",
+     "ko": "그 무용수들은 밝고 화려한 옷차림으로 의상을 입었어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "outfit",
+     "ko": "옷차림",
+     "en": "A stylish outfit."
+    },
+    {
+     "type": "연관어",
+     "word": "disguise",
+     "ko": "변장",
+     "en": "A perfect disguise."
+    },
+    {
+     "type": "연관어",
+     "word": "dress up",
+     "ko": "차려입다",
+     "en": "Dress up as a hero."
+    },
+    {
+     "type": "연관어",
+     "word": "mask",
+     "ko": "가면",
+     "en": "Wear a mask."
+    },
+    {
+     "type": "연관어",
+     "word": "traditional",
+     "ko": "전통적인",
+     "en": "Traditional clothing."
+    },
+    {
+     "type": "연관어",
+     "word": "actor",
+     "ko": "배우",
+     "en": "A talented actor."
+    }
+   ]
+  },
+  "122": {
+   "word": "anniversary",
+   "overview": [
+    "anniversary는 '기념일'이라는 뜻의 명사입니다.",
+    "a wedding anniversary(결혼기념일)처럼 씁니다.",
+    "매년 돌아오는 특별한 사건이 일어난 날을 뜻합니다.",
+    "celebrate an anniversary(기념일을 축하하다)처럼 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "yearly celebration",
+     "en": "A yearly celebration.",
+     "ko": "매년 있는 축하 행사."
+    },
+    {
+     "word": "special day",
+     "en": "A special day.",
+     "ko": "특별한 날."
+    }
+   ],
+   "etymology": [
+    "anniversary는 라틴어 annus(해, 년)와 versus(돌아오는)가 합쳐진 단어입니다.",
+    "annual(매년의), anniversary는 같은 annus 뿌리를 공유합니다.",
+    "'매년 정확히 같은 날에 다시 돌아오는 것'이라는 뜻이 그대로 이어져 왔습니다.",
+    "결혼, 창립 등 중요한 사건이 일어난 날을 해마다 기념하는 데 폭넓게 씁니다.",
+    "anniversary의 핵심 이미지는 '해마다 어김없이 돌아와 특별한 날을 기념하는 것 🎉'입니다."
+   ],
+   "meanings": [
+    "기념일"
+   ],
+   "examples": [
+    {
+     "en": "They celebrated their tenth wedding anniversary.",
+     "ko": "그들은 자신들의 10주년 결혼기념일을 축하했어요."
+    },
+    {
+     "en": "The company marked its fiftieth anniversary this year.",
+     "ko": "그 회사는 올해 자신의 50주년 기념일을 맞았어요."
+    },
+    {
+     "en": "She gave her husband flowers on their anniversary.",
+     "ko": "그녀는 자신들의 기념일에 자신의 남편에게 꽃을 주었어요."
+    },
+    {
+     "en": "The school held an event for its founding anniversary.",
+     "ko": "그 학교는 자신의 창립 기념일을 위한 행사를 열었어요."
+    },
+    {
+     "en": "Today marks the anniversary of the historic treaty.",
+     "ko": "오늘은 그 역사적인 조약의 기념일이에요."
+    },
+    {
+     "en": "They planned a trip for their anniversary next month.",
+     "ko": "그들은 다음 달 자신들의 기념일을 위한 여행을 계획했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "celebrate",
+     "ko": "축하하다",
+     "en": "Celebrate together."
+    },
+    {
+     "type": "연관어",
+     "word": "wedding",
+     "ko": "결혼식",
+     "en": "A beautiful wedding."
+    },
+    {
+     "type": "연관어",
+     "word": "annual",
+     "ko": "매년의",
+     "en": "An annual event."
+    },
+    {
+     "type": "연관어",
+     "word": "occasion",
+     "ko": "행사, 경우",
+     "en": "A special occasion."
+    },
+    {
+     "type": "연관어",
+     "word": "milestone",
+     "ko": "이정표",
+     "en": "A major milestone."
+    },
+    {
+     "type": "연관어",
+     "word": "commemorate",
+     "ko": "기념하다",
+     "en": "Commemorate the event."
+    }
+   ]
+  },
+  "2423": {
+   "word": "skip",
+   "overview": [
+    "skip은 '가볍게 뛰다, 깡충깡충 뛰다'라는 뜻의 동사입니다.",
+    "skip down the street(거리를 깡충깡충 뛰어가다)처럼 씁니다.",
+    "'건너뛰다, 생략하다'라는 뜻으로도 아주 자주 씁니다.",
+    "skip school(학교를 빼먹다)처럼 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "hop",
+     "en": "Hop and skip.",
+     "ko": "깡충깡충 뛰다."
+    },
+    {
+     "word": "miss",
+     "en": "Miss a step.",
+     "ko": "단계를 건너뛰다."
+    }
+   ],
+   "etymology": [
+    "skip은 중세 영어 skippen(가볍게 뛰다)에서 온 단어입니다.",
+    "스칸디나비아 말 뿌리와 관련이 있다고 봅니다.",
+    "'가볍고 경쾌하게 뛰어오르며 나아가다'라는 뜻에서 시작되었습니다.",
+    "'중간의 단계를 뛰어넘어 건너뛰다'라는 뜻으로 자연스럽게 넓어졌습니다.",
+    "skip의 핵심 이미지는 '가볍게 뛰어 중간 단계를 건너뛰는 동작 🦘'입니다."
+   ],
+   "meanings": [
+    "가볍게 뛰다, 뛰어다니다",
+    "건너뛰다, 건너뛰며 읽다",
+    "빠뜨리다, 빼먹다"
+   ],
+   "examples": [
+    {
+     "en": "The children skipped happily down the road.",
+     "ko": "그 아이들은 그 길을 즐겁게 깡충깡충 뛰어갔어요."
+    },
+    {
+     "en": "He decided to skip breakfast this morning.",
+     "ko": "그는 오늘 아침 아침 식사를 거르기로 했어요."
+    },
+    {
+     "en": "She skipped the boring chapter and moved on.",
+     "ko": "그녀는 그 지루한 장을 건너뛰고 다음으로 넘어갔어요."
+    },
+    {
+     "en": "Don't skip your homework tonight.",
+     "ko": "오늘 밤 당신의 숙제를 빼먹지 마세요."
+    },
+    {
+     "en": "He skipped school to go to the concert.",
+     "ko": "그는 그 콘서트에 가려고 학교를 빼먹었어요."
+    },
+    {
+     "en": "The stone skipped across the calm lake.",
+     "ko": "그 돌은 그 잔잔한 호수를 가로질러 통통 튀었어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "hop",
+     "ko": "깡충 뛰다",
+     "en": "Hop over a fence."
+    },
+    {
+     "type": "연관어",
+     "word": "miss",
+     "ko": "놓치다",
+     "en": "Miss a class."
+    },
+    {
+     "type": "연관어",
+     "word": "omit",
+     "ko": "생략하다",
+     "en": "Omit a detail."
+    },
+    {
+     "type": "연관어",
+     "word": "jump",
+     "ko": "뛰다",
+     "en": "Jump rope."
+    },
+    {
+     "type": "연관어",
+     "word": "bounce",
+     "ko": "튀다",
+     "en": "Bounce a ball."
+    },
+    {
+     "type": "연관어",
+     "word": "avoid",
+     "ko": "피하다",
+     "en": "Avoid the topic."
+    }
+   ]
+  },
+  "588": {
+   "word": "conscience",
+   "overview": [
+    "conscience는 '양심'이라는 뜻의 명사입니다.",
+    "have a clear conscience(떳떳한 양심을 가지다)처럼 씁니다.",
+    "옳고 그름을 판단하는 내면의 도덕적 감각을 뜻합니다.",
+    "'의식'이라는 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "inner voice",
+     "en": "An inner voice.",
+     "ko": "내면의 목소리."
+    },
+    {
+     "word": "moral sense",
+     "en": "A moral sense.",
+     "ko": "도덕적 감각."
+    }
+   ],
+   "etymology": [
+    "conscience는 라틴어 conscientia(함께 아는 것, 자각)에서 온 단어입니다.",
+    "con(함께)과 scire(알다)가 합쳐진 말로, science(과학, '아는 것')와 같은 가족입니다.",
+    "'자기 자신의 행동에 대해 스스로 함께 알고 판단하는 내면'이라는 뜻에서 시작되었습니다.",
+    "옳고 그름을 스스로 판단하는 도덕적 자각으로 뜻이 굳어졌습니다.",
+    "conscience의 핵심 이미지는 '옳고 그름을 스스로 알아채는 내면의 목소리 💭'입니다."
+   ],
+   "meanings": [
+    "양심",
+    "의식"
+   ],
+   "examples": [
+    {
+     "en": "Her conscience wouldn't let her lie.",
+     "ko": "그녀의 양심은 그녀가 거짓말하는 것을 허락하지 않았어요."
+    },
+    {
+     "en": "He acted according to his conscience.",
+     "ko": "그는 자신의 양심에 따라 행동했어요."
+    },
+    {
+     "en": "She had a guilty conscience after the argument.",
+     "ko": "그녀는 그 말다툼 후 죄책감 어린 양심을 가졌어요."
+    },
+    {
+     "en": "A clear conscience helped him sleep well.",
+     "ko": "떳떳한 양심은 그가 잘 자도록 도왔어요."
+    },
+    {
+     "en": "His conscience told him to return the money.",
+     "ko": "그의 양심은 그에게 그 돈을 돌려주라고 말했어요."
+    },
+    {
+     "en": "The decision troubled his conscience for years.",
+     "ko": "그 결정은 여러 해 동안 그의 양심을 괴롭혔어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "guilt",
+     "ko": "죄책감",
+     "en": "Feel guilt."
+    },
+    {
+     "type": "연관어",
+     "word": "moral",
+     "ko": "도덕적인",
+     "en": "A moral duty."
+    },
+    {
+     "type": "연관어",
+     "word": "honesty",
+     "ko": "정직함",
+     "en": "Value honesty."
+    },
+    {
+     "type": "연관어",
+     "word": "ethics",
+     "ko": "윤리",
+     "en": "Professional ethics."
+    },
+    {
+     "type": "연관어",
+     "word": "values",
+     "ko": "가치관",
+     "en": "Strong values."
+    },
+    {
+     "type": "연관어",
+     "word": "regret",
+     "ko": "후회",
+     "en": "Deep regret."
+    }
+   ]
+  },
+  "257": {
+   "word": "behalf",
+   "overview": [
+    "behalf는 '이익, 원조'라는 뜻의 명사입니다.",
+    "on behalf of(~을 대신하여, ~을 위하여)라는 표현으로 아주 자주 씁니다.",
+    "다른 사람을 대신하거나 그 사람을 위해 무언가를 할 때 씁니다.",
+    "이 단어는 거의 항상 on behalf of 형태로만 쓰입니다."
+   ],
+   "easy": [
+    {
+     "word": "for someone",
+     "en": "For someone else.",
+     "ko": "다른 누군가를 위해."
+    },
+    {
+     "word": "in someone's place",
+     "en": "In her place.",
+     "ko": "그녀를 대신해서."
+    }
+   ],
+   "etymology": [
+    "behalf는 고대 영어 be healfe(~쪽에, ~을 대신하여)에서 온 단어입니다.",
+    "half(반쪽, 편)와 관련된 말로, '누군가의 편에 서다'라는 뜻에서 시작되었습니다.",
+    "'그 사람의 편에 서서 그를 대신하거나 그를 위해 행동하다'라는 뜻으로 굳어졌습니다.",
+    "지금은 거의 항상 on behalf of라는 고정된 표현으로만 쓰입니다.",
+    "behalf의 핵심 이미지는 '누군가의 편에 서서 그를 대신하는 것 🤝'입니다."
+   ],
+   "meanings": [
+    "원조, 이익"
+   ],
+   "examples": [
+    {
+     "en": "She spoke on behalf of the entire team.",
+     "ko": "그녀는 그 팀 전체를 대신하여 말했어요."
+    },
+    {
+     "en": "He signed the document on behalf of his company.",
+     "ko": "그는 자신의 회사를 대신하여 그 문서에 서명했어요."
+    },
+    {
+     "en": "The lawyer acted on behalf of his client.",
+     "ko": "그 변호사는 자신의 의뢰인을 위하여 행동했어요."
+    },
+    {
+     "en": "On behalf of my family, I thank you all.",
+     "ko": "저의 가족을 대신하여, 저는 여러분 모두에게 감사드려요."
+    },
+    {
+     "en": "She accepted the award on behalf of the group.",
+     "ko": "그녀는 그 그룹을 대신하여 그 상을 받았어요."
+    },
+    {
+     "en": "The volunteer worked on behalf of the community.",
+     "ko": "그 자원봉사자는 그 지역 사회를 위하여 일했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "represent",
+     "ko": "대표하다",
+     "en": "Represent the class."
+    },
+    {
+     "type": "연관어",
+     "word": "for",
+     "ko": "~을 위해",
+     "en": "For your sake."
+    },
+    {
+     "type": "연관어",
+     "word": "support",
+     "ko": "지지",
+     "en": "Show support."
+    },
+    {
+     "type": "연관어",
+     "word": "interest",
+     "ko": "이익",
+     "en": "Public interest."
+    },
+    {
+     "type": "연관어",
+     "word": "represent",
+     "ko": "대변하다",
+     "en": "Represent a cause."
+    },
+    {
+     "type": "연관어",
+     "word": "agent",
+     "ko": "대리인",
+     "en": "A legal agent."
+    }
+   ]
+  },
+  "1728": {
+   "word": "motive",
+   "overview": [
+    "motive는 '동기, 이유'라는 뜻의 명사입니다.",
+    "a hidden motive(숨겨진 동기)처럼 씁니다.",
+    "사람이 특정 행동을 하게 만드는 내적 이유를 뜻합니다.",
+    "범죄 수사에서 '범행 동기'를 가리키는 데도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "reason",
+     "en": "A good reason.",
+     "ko": "타당한 이유."
+    },
+    {
+     "word": "purpose",
+     "en": "A clear purpose.",
+     "ko": "명확한 목적."
+    }
+   ],
+   "etymology": [
+    "motive는 라틴어 movere(움직이다)에서 온 단어입니다.",
+    "move(움직이다), motion(움직임)과 같은 가족입니다.",
+    "'사람을 어떤 행동으로 움직이게 만드는 힘'이라는 뜻이 그대로 이어져 왔습니다.",
+    "지금은 특정 행동의 배경에 있는 내적 이유나 목적을 가리키는 데 폭넓게 씁니다.",
+    "motive의 핵심 이미지는 '사람을 특정 행동으로 밀어 움직이게 하는 내면의 동기 🎯'입니다."
+   ],
+   "meanings": [
+    "동기, 이유"
+   ],
+   "examples": [
+    {
+     "en": "Police searched for a motive behind the crime.",
+     "ko": "경찰은 그 범죄 뒤의 동기를 찾았어요."
+    },
+    {
+     "en": "Her motive for helping was purely kindness.",
+     "ko": "그녀가 도운 동기는 순전히 친절함이었어요."
+    },
+    {
+     "en": "He questioned her true motives for the trip.",
+     "ko": "그는 그 여행에 대한 그녀의 진짜 동기를 의심했어요."
+    },
+    {
+     "en": "Greed was the main motive for the robbery.",
+     "ko": "탐욕이 그 강도 사건의 주된 동기였어요."
+    },
+    {
+     "en": "The detective uncovered the killer's motive.",
+     "ko": "그 형사는 그 살인자의 동기를 밝혀냈어요."
+    },
+    {
+     "en": "His motives remained unclear throughout the story.",
+     "ko": "그의 동기는 그 이야기 내내 불분명한 채로 남아 있었어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "reason",
+     "ko": "이유",
+     "en": "A valid reason."
+    },
+    {
+     "type": "연관어",
+     "word": "purpose",
+     "ko": "목적",
+     "en": "A clear purpose."
+    },
+    {
+     "type": "연관어",
+     "word": "intention",
+     "ko": "의도",
+     "en": "A good intention."
+    },
+    {
+     "type": "연관어",
+     "word": "cause",
+     "ko": "원인",
+     "en": "The root cause."
+    },
+    {
+     "type": "연관어",
+     "word": "incentive",
+     "ko": "유인, 동기",
+     "en": "A financial incentive."
+    },
+    {
+     "type": "연관어",
+     "word": "crime",
+     "ko": "범죄",
+     "en": "Solve a crime."
+    }
+   ]
+  },
+  "2680": {
+   "word": "territory",
+   "overview": [
+    "territory는 '영토, 지역'이라는 뜻의 명사입니다.",
+    "foreign territory(외국 영토)처럼 씁니다.",
+    "특정 나라나 사람이 소유하거나 관할하는 땅을 뜻합니다.",
+    "동물의 '세력권'이라는 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "land",
+     "en": "Foreign land.",
+     "ko": "외국 땅."
+    },
+    {
+     "word": "area",
+     "en": "A restricted area.",
+     "ko": "제한 구역."
+    }
+   ],
+   "etymology": [
+    "territory는 라틴어 terra(땅)에서 온 단어입니다.",
+    "terrain(지형), terrestrial(지구의)과 같은 가족입니다.",
+    "'특정 경계 안에 속한 땅'이라는 뜻이 그대로 이어져 왔습니다.",
+    "나라의 영토, 동물의 세력권 등 소유나 관할이 명확한 영역을 가리키는 데 폭넓게 씁니다.",
+    "territory의 핵심 이미지는 '경계로 나뉘어 소유되고 지켜지는 땅 🗺️'입니다."
+   ],
+   "meanings": [
+    "울타리 안의 지역, 영역, 주거지",
+    "나라의 영토"
+   ],
+   "examples": [
+    {
+     "en": "The soldiers crossed into enemy territory.",
+     "ko": "그 군인들은 적의 영토로 넘어갔어요."
+    },
+    {
+     "en": "Wolves defend their territory fiercely.",
+     "ko": "늑대들은 자신들의 세력권을 격렬하게 방어해요."
+    },
+    {
+     "en": "The company expanded into new sales territory.",
+     "ko": "그 회사는 새로운 판매 지역으로 확장했어요."
+    },
+    {
+     "en": "The island remains a disputed territory.",
+     "ko": "그 섬은 여전히 분쟁 중인 영토로 남아 있어요."
+    },
+    {
+     "en": "This region was once Spanish territory.",
+     "ko": "이 지역은 한때 스페인의 영토였어요."
+    },
+    {
+     "en": "Cats mark their territory with scent.",
+     "ko": "고양이들은 냄새로 자신들의 영역을 표시해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "land",
+     "ko": "땅",
+     "en": "Foreign land."
+    },
+    {
+     "type": "연관어",
+     "word": "border",
+     "ko": "경계",
+     "en": "Cross the border."
+    },
+    {
+     "type": "연관어",
+     "word": "region",
+     "ko": "지역",
+     "en": "A mountain region."
+    },
+    {
+     "type": "연관어",
+     "word": "domain",
+     "ko": "영역",
+     "en": "A private domain."
+    },
+    {
+     "type": "연관어",
+     "word": "boundary",
+     "ko": "경계선",
+     "en": "A clear boundary."
+    },
+    {
+     "type": "연관어",
+     "word": "zone",
+     "ko": "구역",
+     "en": "A danger zone."
+    }
+   ]
+  },
+  "135": {
+   "word": "apology",
+   "overview": [
+    "apology는 '사과'라는 뜻의 명사입니다.",
+    "offer an apology(사과하다)처럼 씁니다.",
+    "잘못을 인정하고 미안함을 표현하는 말을 뜻합니다.",
+    "동사 apologize(사과하다)도 아주 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "sorry",
+     "en": "Say you're sorry.",
+     "ko": "미안하다고 말하다."
+    },
+    {
+     "word": "regret",
+     "en": "Express regret.",
+     "ko": "유감을 표하다."
+    }
+   ],
+   "etymology": [
+    "apology는 그리스어 apologia(변호, 해명)에서 온 단어입니다.",
+    "apo(멀리)와 logos(말)가 합쳐진 말로, dialogue(대화)와 같은 가족입니다.",
+    "원래는 자신의 잘못이 아니라는 것을 '말로 변호하는 것'이라는 뜻이었습니다.",
+    "시간이 지나며 잘못을 인정하고 미안함을 표현하는 '사과'라는 뜻으로 바뀌었습니다.",
+    "apology의 핵심 이미지는 '잘못을 인정하며 진심을 담아 건네는 사과의 말 🙇'입니다."
+   ],
+   "meanings": [
+    "변명, 변론, 변호",
+    "사과"
+   ],
+   "examples": [
+    {
+     "en": "He offered a sincere apology for his mistake.",
+     "ko": "그는 자신의 실수에 대해 진심 어린 사과를 했어요."
+    },
+    {
+     "en": "She accepted his apology graciously.",
+     "ko": "그녀는 그의 사과를 정중히 받아들였어요."
+    },
+    {
+     "en": "The company issued a public apology to customers.",
+     "ko": "그 회사는 고객들에게 공개 사과문을 발표했어요."
+    },
+    {
+     "en": "No apology could undo the damage done.",
+     "ko": "어떤 사과도 그 이미 일어난 피해를 되돌릴 수 없었어요."
+    },
+    {
+     "en": "He wrote a letter of apology to his teacher.",
+     "ko": "그는 자신의 선생님께 사과 편지를 썼어요."
+    },
+    {
+     "en": "A simple apology healed their friendship.",
+     "ko": "간단한 사과가 그들의 우정을 치유했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "파생어",
+     "word": "apologize",
+     "ko": "사과하다",
+     "en": "Apologize sincerely."
+    },
+    {
+     "type": "연관어",
+     "word": "sorry",
+     "ko": "미안한",
+     "en": "Feel sorry."
+    },
+    {
+     "type": "연관어",
+     "word": "forgive",
+     "ko": "용서하다",
+     "en": "Forgive a mistake."
+    },
+    {
+     "type": "연관어",
+     "word": "regret",
+     "ko": "후회",
+     "en": "A deep regret."
+    },
+    {
+     "type": "연관어",
+     "word": "excuse",
+     "ko": "변명",
+     "en": "Make an excuse."
+    },
+    {
+     "type": "연관어",
+     "word": "mistake",
+     "ko": "실수",
+     "en": "A costly mistake."
+    }
+   ]
+  },
+  "491": {
+   "word": "clay",
+   "overview": [
+    "clay는 '찰흙, 점토'라는 뜻의 명사입니다.",
+    "mold clay(찰흙을 빚다)처럼 씁니다.",
+    "물을 섞으면 원하는 모양으로 만들 수 있는 부드러운 흙을 뜻합니다.",
+    "도자기나 조각의 재료로 널리 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "soft earth",
+     "en": "Soft, moldable earth.",
+     "ko": "부드럽고 빚기 좋은 흙."
+    },
+    {
+     "word": "pottery material",
+     "en": "Pottery material.",
+     "ko": "도자기 재료."
+    }
+   ],
+   "etymology": [
+    "clay는 고대 영어 clæg(끈적한 흙)에서 온 단어입니다.",
+    "게르만 말 뿌리로, 무언가에 '달라붙는' 성질과 관련이 있다고 봅니다.",
+    "'물을 섞으면 끈적하게 달라붙어 모양을 빚을 수 있는 흙'이라는 뜻이 그대로 이어져 왔습니다.",
+    "도자기, 벽돌, 조각 등 다양한 용도로 오랫동안 쓰여 온 재료입니다.",
+    "clay의 핵심 이미지는 '손으로 자유롭게 빚어 모양을 만들 수 있는 부드러운 찰흙 🏺'입니다."
+   ],
+   "meanings": [
+    "찰흙"
+   ],
+   "examples": [
+    {
+     "en": "She molded the clay into a small pot.",
+     "ko": "그녀는 그 찰흙을 작은 항아리로 빚었어요."
+    },
+    {
+     "en": "Children love playing with soft clay.",
+     "ko": "아이들은 부드러운 찰흙을 가지고 노는 것을 아주 좋아해요."
+    },
+    {
+     "en": "The artist shaped the sculpture from wet clay.",
+     "ko": "그 예술가는 젖은 찰흙으로 그 조각상을 빚었어요."
+    },
+    {
+     "en": "This region has rich deposits of clay soil.",
+     "ko": "이 지역은 풍부한 점토 토양 매장지를 가지고 있어요."
+    },
+    {
+     "en": "The bricks are made from baked clay.",
+     "ko": "그 벽돌들은 구운 점토로 만들어져요."
+    },
+    {
+     "en": "She fired the clay pot in a hot kiln.",
+     "ko": "그녀는 그 점토 항아리를 뜨거운 가마에서 구웠어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "pottery",
+     "ko": "도자기",
+     "en": "Handmade pottery."
+    },
+    {
+     "type": "연관어",
+     "word": "mold",
+     "ko": "빚다",
+     "en": "Mold a shape."
+    },
+    {
+     "type": "연관어",
+     "word": "sculpture",
+     "ko": "조각",
+     "en": "A clay sculpture."
+    },
+    {
+     "type": "연관어",
+     "word": "soil",
+     "ko": "흙",
+     "en": "Fertile soil."
+    },
+    {
+     "type": "연관어",
+     "word": "brick",
+     "ko": "벽돌",
+     "en": "A red brick."
+    },
+    {
+     "type": "연관어",
+     "word": "shape",
+     "ko": "모양",
+     "en": "A round shape."
+    }
+   ]
+  },
+  "1605": {
+   "word": "loyal",
+   "overview": [
+    "loyal은 '충성스러운, 의리 있는'이라는 뜻의 형용사입니다.",
+    "a loyal friend(의리 있는 친구)처럼 씁니다.",
+    "누군가나 무언가에 변함없이 헌신하는 태도를 뜻합니다.",
+    "명사 loyalty(충성심)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "faithful",
+     "en": "A faithful friend.",
+     "ko": "신의 있는 친구."
+    },
+    {
+     "word": "devoted",
+     "en": "A devoted fan.",
+     "ko": "헌신적인 팬."
+    }
+   ],
+   "etymology": [
+    "loyal은 라틴어 legalis(법에 따르는)에서 온 단어입니다.",
+    "lex(법)에서 나온 말로, legal(합법적인)과 같은 가족입니다.",
+    "원래는 '법과 약속을 충실히 지키는'이라는 뜻이었습니다.",
+    "지금은 사람이나 조직에 변함없이 신의를 지키는 태도를 가리키는 데 폭넓게 씁니다.",
+    "loyal의 핵심 이미지는 '어떤 상황에서도 변하지 않는 굳건한 의리 🤝'입니다."
+   ],
+   "meanings": [
+    "충성스럽다"
+   ],
+   "examples": [
+    {
+     "en": "The dog remained loyal to its owner for years.",
+     "ko": "그 개는 여러 해 동안 자신의 주인에게 충성스러웠어요."
+    },
+    {
+     "en": "She has always been a loyal friend to me.",
+     "ko": "그녀는 항상 저에게 의리 있는 친구였어요."
+    },
+    {
+     "en": "Loyal customers received a special discount.",
+     "ko": "충성 고객들은 특별 할인을 받았어요."
+    },
+    {
+     "en": "He stayed loyal to the company through hard times.",
+     "ko": "그는 힘든 시기 동안 그 회사에 충성했어요."
+    },
+    {
+     "en": "The soldiers were loyal to their country.",
+     "ko": "그 군인들은 자신들의 나라에 충성스러웠어요."
+    },
+    {
+     "en": "Her loyal support never wavered.",
+     "ko": "그녀의 변함없는 지지는 결코 흔들리지 않았어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "faithful",
+     "ko": "충실한",
+     "en": "A faithful servant."
+    },
+    {
+     "type": "파생어",
+     "word": "loyalty",
+     "ko": "충성심",
+     "en": "Show loyalty."
+    },
+    {
+     "type": "반의어",
+     "word": "disloyal",
+     "ko": "불충한",
+     "en": "A disloyal act."
+    },
+    {
+     "type": "연관어",
+     "word": "devoted",
+     "ko": "헌신적인",
+     "en": "A devoted husband."
+    },
+    {
+     "type": "연관어",
+     "word": "faithfulness",
+     "ko": "충실함",
+     "en": "Constant faithfulness."
+    },
+    {
+     "type": "연관어",
+     "word": "trust",
+     "ko": "신뢰",
+     "en": "Earn trust."
+    }
+   ]
+  },
+  "1508": {
+   "word": "knight",
+   "overview": [
+    "knight는 중세의 '기사'라는 뜻의 명사입니다.",
+    "a brave knight(용감한 기사)처럼 씁니다.",
+    "영국에서는 공로를 세운 사람에게 주는 작위를 뜻하기도 합니다.",
+    "동사로는 '기사 작위를 주다'라는 뜻으로 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "warrior",
+     "en": "A brave warrior.",
+     "ko": "용감한 전사."
+    },
+    {
+     "word": "medieval soldier",
+     "en": "A medieval soldier.",
+     "ko": "중세의 군인."
+    }
+   ],
+   "etymology": [
+    "knight는 고대 영어 cniht(소년, 시종)에서 온 단어입니다.",
+    "원래는 귀족을 섬기는 젊은 시종이나 하인을 뜻하는 말이었습니다.",
+    "중세 시대에 말을 타고 싸우는 무장한 전사 계급을 가리키는 뜻으로 발전했습니다.",
+    "지금은 영국 왕실이 공로자에게 내리는 명예로운 작위도 뜻합니다.",
+    "knight의 핵심 이미지는 '갑옷을 입고 명예를 위해 싸우는 중세의 기사 ⚔️'입니다."
+   ],
+   "meanings": [
+    "기사 작위를 주다 (동사)",
+    "기사 (명사)"
+   ],
+   "examples": [
+    {
+     "en": "The knight fought bravely to protect the castle.",
+     "ko": "그 기사는 그 성을 지키려고 용감하게 싸웠어요."
+    },
+    {
+     "en": "He was knighted for his contribution to science.",
+     "ko": "그는 과학에 대한 자신의 기여로 기사 작위를 받았어요."
+    },
+    {
+     "en": "Legends tell of a knight who slayed a dragon.",
+     "ko": "전설들은 용을 무찌른 기사에 대해 이야기해요."
+    },
+    {
+     "en": "The queen knighted the loyal soldier.",
+     "ko": "그 여왕은 그 충성스러운 군인에게 기사 작위를 수여했어요."
+    },
+    {
+     "en": "Children dressed up as knights for the festival.",
+     "ko": "아이들은 그 축제를 위해 기사로 분장했어요."
+    },
+    {
+     "en": "The knight rode into battle on his horse.",
+     "ko": "그 기사는 자신의 말을 타고 전투에 나섰어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "warrior",
+     "ko": "전사",
+     "en": "A fierce warrior."
+    },
+    {
+     "type": "연관어",
+     "word": "castle",
+     "ko": "성",
+     "en": "A stone castle."
+    },
+    {
+     "type": "연관어",
+     "word": "armor",
+     "ko": "갑옷",
+     "en": "Shining armor."
+    },
+    {
+     "type": "연관어",
+     "word": "sword",
+     "ko": "검",
+     "en": "A sharp sword."
+    },
+    {
+     "type": "연관어",
+     "word": "medieval",
+     "ko": "중세의",
+     "en": "Medieval times."
+    },
+    {
+     "type": "연관어",
+     "word": "honor",
+     "ko": "명예",
+     "en": "Fight with honor."
+    }
+   ]
+  },
+  "2563": {
+   "word": "strip",
+   "overview": [
+    "strip은 '(껍질, 옷 등을) 벗기다'라는 뜻의 동사입니다.",
+    "strip off clothes(옷을 벗다)처럼 씁니다.",
+    "'제거하다, 빼앗다'라는 뜻으로도 씁니다.",
+    "명사로는 좁고 긴 '조각, 띠'라는 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "remove",
+     "en": "Remove the cover.",
+     "ko": "덮개를 제거하다."
+    },
+    {
+     "word": "peel off",
+     "en": "Peel off the label.",
+     "ko": "라벨을 벗겨내다."
+    }
+   ],
+   "etymology": [
+    "strip은 고대 영어 strypan(벗기다, 약탈하다)에서 온 단어입니다.",
+    "게르만 말 뿌리로, 겉을 덮은 것을 벗겨 내는 행동과 관련이 있습니다.",
+    "'표면을 덮고 있는 것을 완전히 벗겨 내다'라는 뜻이 그대로 이어져 왔습니다.",
+    "옷, 페인트, 권리 등 겉을 덮거나 부여된 것을 제거하는 상황에 폭넓게 씁니다.",
+    "strip의 핵심 이미지는 '겉을 감싼 것을 남김없이 벗겨 내는 행동 🧴'입니다."
+   ],
+   "meanings": [
+    "(껍질, 옷) 벗기다",
+    "벗다, 벌거벗다",
+    "제거하다"
+   ],
+   "examples": [
+    {
+     "en": "He stripped the old paint off the wall.",
+     "ko": "그는 그 낡은 페인트를 그 벽에서 벗겨냈어요."
+    },
+    {
+     "en": "She stripped the bed sheets for washing.",
+     "ko": "그녀는 세탁을 위해 그 침대 시트들을 벗겼어요."
+    },
+    {
+     "en": "The court stripped him of his title.",
+     "ko": "그 법원은 그에게서 그의 직함을 박탈했어요."
+    },
+    {
+     "en": "They stripped the branches of their leaves.",
+     "ko": "그들은 그 나뭇가지들에서 잎사귀들을 벗겨 냈어요."
+    },
+    {
+     "en": "He stripped down before jumping into the pool.",
+     "ko": "그는 그 수영장으로 뛰어들기 전에 옷을 벗었어요."
+    },
+    {
+     "en": "Workers stripped the wires before connecting them.",
+     "ko": "작업자들은 그 전선들을 연결하기 전에 그것들을 벗겼어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "peel",
+     "ko": "벗기다",
+     "en": "Peel an orange."
+    },
+    {
+     "type": "연관어",
+     "word": "remove",
+     "ko": "제거하다",
+     "en": "Remove a layer."
+    },
+    {
+     "type": "연관어",
+     "word": "undress",
+     "ko": "옷을 벗다",
+     "en": "Undress quickly."
+    },
+    {
+     "type": "연관어",
+     "word": "expose",
+     "ko": "노출시키다",
+     "en": "Expose the truth."
+    },
+    {
+     "type": "연관어",
+     "word": "bare",
+     "ko": "벌거벗은",
+     "en": "Bare feet."
+    },
+    {
+     "type": "연관어",
+     "word": "deprive",
+     "ko": "박탈하다",
+     "en": "Deprive of rights."
+    }
+   ]
+  },
+  "1534": {
+   "word": "laundry",
+   "overview": [
+    "laundry는 '세탁, 세탁물'이라는 뜻의 명사입니다.",
+    "do the laundry(빨래를 하다)처럼 씁니다.",
+    "빨아야 할 옷가지들 또는 세탁이라는 행위 자체를 뜻합니다.",
+    "'세탁소'라는 장소를 가리키는 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "washing",
+     "en": "Do the washing.",
+     "ko": "빨래를 하다."
+    },
+    {
+     "word": "dirty clothes",
+     "en": "A pile of dirty clothes.",
+     "ko": "더러운 빨랫감 더미."
+    }
+   ],
+   "etymology": [
+    "laundry는 라틴어 lavare(씻다)에서 온 단어입니다.",
+    "launder(세탁하다), lavatory(세면실)와 같은 가족입니다.",
+    "'옷을 물로 씻어 깨끗이 하는 일'이라는 뜻이 그대로 이어져 왔습니다.",
+    "그 대상이 되는 옷가지, 그리고 그 일을 하는 장소까지 뜻이 넓어졌습니다.",
+    "laundry의 핵심 이미지는 '더러운 옷을 깨끗이 씻어 내는 세탁 🧺'입니다."
+   ],
+   "meanings": [
+    "세탁소",
+    "세탁",
+    "세탁물, 빨랫감"
+   ],
+   "examples": [
+    {
+     "en": "She does the laundry every Sunday.",
+     "ko": "그녀는 매주 일요일마다 빨래를 해요."
+    },
+    {
+     "en": "He dropped off his shirts at the laundry.",
+     "ko": "그는 자신의 셔츠들을 그 세탁소에 맡겼어요."
+    },
+    {
+     "en": "A basket of dirty laundry sat by the door.",
+     "ko": "더러운 빨랫감 바구니가 그 문 옆에 놓여 있었어요."
+    },
+    {
+     "en": "The hotel offers a laundry service for guests.",
+     "ko": "그 호텔은 투숙객들을 위한 세탁 서비스를 제공해요."
+    },
+    {
+     "en": "She folded the clean laundry neatly.",
+     "ko": "그녀는 그 깨끗한 빨래를 단정하게 개었어요."
+    },
+    {
+     "en": "He forgot to pick up the laundry from the shop.",
+     "ko": "그는 그 가게에서 세탁물을 찾아오는 것을 잊어버렸어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "washing",
+     "ko": "세탁",
+     "en": "A washing machine."
+    },
+    {
+     "type": "연관어",
+     "word": "clothes",
+     "ko": "옷",
+     "en": "Clean clothes."
+    },
+    {
+     "type": "연관어",
+     "word": "detergent",
+     "ko": "세제",
+     "en": "Liquid detergent."
+    },
+    {
+     "type": "연관어",
+     "word": "dryer",
+     "ko": "건조기",
+     "en": "A clothes dryer."
+    },
+    {
+     "type": "연관어",
+     "word": "fold",
+     "ko": "개다",
+     "en": "Fold the towels."
+    },
+    {
+     "type": "연관어",
+     "word": "basket",
+     "ko": "바구니",
+     "en": "A laundry basket."
+    }
+   ]
   }
  }
 }
