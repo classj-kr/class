@@ -5824,6 +5824,1941 @@
      "en": "Solve a problem."
     }
    ]
+  },
+  "321": {
+   "word": "boss",
+   "overview": [
+    "boss는 '상사', '두목'이라는 뜻의 명사입니다. 일이나 조직을 책임지고 이끄는 사람을 말합니다.",
+    "my boss(내 상사), the boss of the company(회사의 대표)처럼 씁니다.",
+    "동사로는 '이래라저래라 명령하다'라는 뜻도 있습니다. Stop bossing me around.(나한테 이래라저래라 하지 마.)",
+    "형용사 bossy는 '명령하기 좋아하는', '으스대는'이라는 뜻입니다."
+   ],
+   "easy": [
+    {
+     "word": "leader",
+     "en": "A good leader.",
+     "ko": "좋은 리더."
+    },
+    {
+     "word": "manager",
+     "en": "The store manager.",
+     "ko": "가게 관리자."
+    }
+   ],
+   "etymology": [
+    "boss는 네덜란드어 baas(주인, 우두머리)에서 온 단어입니다.",
+    "미국에 살던 네덜란드 사람들이 쓰던 말이 미국 영어에 퍼졌습니다.",
+    "처음에는 '주인'이라는 뜻이었다가, 지금은 회사나 일터의 '상사'를 두루 가리키는 말이 되었습니다.",
+    "bossy(으스대는)는 boss에서 나온 형용사입니다.",
+    "boss의 핵심 이미지는 '일을 지시하고 책임지는 우두머리 💼'입니다."
+   ],
+   "meanings": [
+    "상사, 사장, 우두머리 (명사)",
+    "이래라저래라 명령하다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "My boss is very kind.",
+     "ko": "내 상사는 아주 친절해요."
+    },
+    {
+     "en": "She is the boss of this company.",
+     "ko": "그녀는 이 회사의 대표예요."
+    },
+    {
+     "en": "I need to ask my boss for a day off.",
+     "ko": "나는 상사에게 휴가를 요청해야 해요."
+    },
+    {
+     "en": "Don't boss your little brother around.",
+     "ko": "동생한테 이래라저래라 하지 마."
+    },
+    {
+     "en": "The boss praised our teamwork.",
+     "ko": "사장님이 우리의 협동심을 칭찬하셨어요."
+    },
+    {
+     "en": "She's a bit bossy, but she's kind too.",
+     "ko": "그녀는 좀 으스대지만 친절하기도 해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "leader",
+     "ko": "지도자",
+     "en": "Our team leader."
+    },
+    {
+     "type": "연관어",
+     "word": "manager",
+     "ko": "관리자",
+     "en": "The office manager."
+    },
+    {
+     "type": "연관어",
+     "word": "employee",
+     "ko": "직원",
+     "en": "A new employee."
+    },
+    {
+     "type": "파생어",
+     "word": "bossy",
+     "ko": "으스대는",
+     "en": "A bossy classmate."
+    },
+    {
+     "type": "연관어",
+     "word": "company",
+     "ko": "회사",
+     "en": "A big company."
+    },
+    {
+     "type": "연관어",
+     "word": "in charge",
+     "ko": "책임을 맡은",
+     "en": "Who's in charge?"
+    }
+   ]
+  },
+  "2076": {
+   "word": "promise",
+   "overview": [
+    "promise는 '약속'이라는 뜻의 명사이자 '약속하다'라는 뜻의 동사입니다.",
+    "make a promise(약속을 하다), keep a promise(약속을 지키다), break a promise(약속을 어기다)처럼 씁니다.",
+    "I promise.(약속해요.)처럼 확실하게 다짐할 때 자주 씁니다.",
+    "'가능성이 보이는'이라는 뜻으로도 씁니다. a promising young artist(전망이 밝은 젊은 예술가)"
+   ],
+   "easy": [
+    {
+     "word": "swear",
+     "en": "I swear.",
+     "ko": "맹세해."
+    },
+    {
+     "word": "word",
+     "en": "Give your word.",
+     "ko": "약속을 하다."
+    }
+   ],
+   "etymology": [
+    "promise는 라틴어 promissum(약속된 것)에서 온 단어입니다.",
+    "pro(앞으로)와 mittere(보내다)가 합쳐진 말로, '앞으로 그렇게 하겠다고 내보내는 말'이라는 뜻입니다.",
+    "mittere는 mission(임무), permit(허락하다)과도 같은 가족입니다.",
+    "'앞서 말해 둔 것을 꼭 지키겠다'라는 뜻이 그대로 남아 있습니다.",
+    "promise의 핵심 이미지는 '새끼손가락을 걸고 다짐하는 약속 🤙'입니다."
+   ],
+   "meanings": [
+    "약속 (명사)",
+    "약속하다 (동사)",
+    "가능성, 전망 (명사)"
+   ],
+   "examples": [
+    {
+     "en": "I promise I'll be there on time.",
+     "ko": "제시간에 갈 거라고 약속해요."
+    },
+    {
+     "en": "Please keep your promise.",
+     "ko": "약속을 지켜 주세요."
+    },
+    {
+     "en": "She never breaks her promises.",
+     "ko": "그녀는 절대 약속을 어기지 않아요."
+    },
+    {
+     "en": "Do you promise to help me?",
+     "ko": "나를 도와주기로 약속할 수 있어?"
+    },
+    {
+     "en": "This young player shows great promise.",
+     "ko": "이 젊은 선수는 큰 가능성을 보여 줘요."
+    },
+    {
+     "en": "I made a promise to study harder.",
+     "ko": "나는 더 열심히 공부하겠다고 약속했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "swear",
+     "ko": "맹세하다",
+     "en": "Swear an oath."
+    },
+    {
+     "type": "파생어",
+     "word": "promising",
+     "ko": "전망이 밝은",
+     "en": "A promising student."
+    },
+    {
+     "type": "연관어",
+     "word": "trust",
+     "ko": "믿음",
+     "en": "Build trust."
+    },
+    {
+     "type": "연관어",
+     "word": "agreement",
+     "ko": "합의",
+     "en": "Reach an agreement."
+    },
+    {
+     "type": "연관어",
+     "word": "keep",
+     "ko": "지키다",
+     "en": "Keep your word."
+    },
+    {
+     "type": "연관어",
+     "word": "break",
+     "ko": "어기다, 깨다",
+     "en": "Break a rule."
+    }
+   ]
+  },
+  "1934": {
+   "word": "perfect",
+   "overview": [
+    "perfect는 '완벽한', '완전한'이라는 뜻의 형용사입니다. 아무런 흠이나 실수가 없는 상태를 말합니다.",
+    "a perfect score(완벽한 점수, 만점), perfect timing(완벽한 시간)처럼 씁니다.",
+    "동사로는 '완성하다', '완벽하게 다듬다'라는 뜻입니다. perfect your skills(기술을 완벽하게 다듬다)",
+    "문법에서는 '완료 시제'를 나타내는 말로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "flawless",
+     "en": "A flawless plan.",
+     "ko": "완벽한 계획."
+    },
+    {
+     "word": "great",
+     "en": "Great job!",
+     "ko": "잘했어!"
+    }
+   ],
+   "etymology": [
+    "perfect는 라틴어 perfectus(완전히 이루어진)에서 온 단어입니다.",
+    "per(완전히, 끝까지)와 facere(만들다, 하다)가 합쳐진 말입니다.",
+    "'끝까지 완전히 만들어진'이라는 뜻이 '완벽한'이 되었습니다.",
+    "factory(공장), fact(사실)도 facere에서 나온 같은 가족입니다.",
+    "perfect의 핵심 이미지는 '한 점의 흠도 없이 꼭 맞아떨어지는 상태 💯'입니다."
+   ],
+   "meanings": [
+    "완벽한, 흠 없는 (형용사)",
+    "딱 맞는, 적절한 (형용사)",
+    "완성하다, 완벽하게 하다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "She got a perfect score on the test.",
+     "ko": "그녀는 시험에서 만점을 받았어요."
+    },
+    {
+     "en": "It was a perfect day for a picnic.",
+     "ko": "소풍 가기에 완벽한 날이었어요."
+    },
+    {
+     "en": "Nobody is perfect.",
+     "ko": "완벽한 사람은 없어요."
+    },
+    {
+     "en": "This is the perfect gift for her.",
+     "ko": "이건 그녀에게 딱 맞는 선물이에요."
+    },
+    {
+     "en": "He practices every day to perfect his skills.",
+     "ko": "그는 실력을 완벽하게 다듬으려고 매일 연습해요."
+    },
+    {
+     "en": "The weather is perfect today.",
+     "ko": "오늘 날씨가 완벽해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "파생어",
+     "word": "perfectly",
+     "ko": "완벽하게",
+     "en": "Fit perfectly."
+    },
+    {
+     "type": "연관어",
+     "word": "flawless",
+     "ko": "흠 없는",
+     "en": "A flawless gem."
+    },
+    {
+     "type": "반의어",
+     "word": "imperfect",
+     "ko": "불완전한",
+     "en": "An imperfect world."
+    },
+    {
+     "type": "연관어",
+     "word": "complete",
+     "ko": "완전한",
+     "en": "A complete set."
+    },
+    {
+     "type": "연관어",
+     "word": "excellent",
+     "ko": "훌륭한",
+     "en": "Excellent work."
+    },
+    {
+     "type": "연관어",
+     "word": "correct",
+     "ko": "정확한",
+     "en": "A correct answer."
+    }
+   ]
+  },
+  "1936": {
+   "word": "perhaps",
+   "overview": [
+    "perhaps는 '아마', '어쩌면'이라는 뜻의 부사입니다. 확실하지 않은 일을 말할 때 씁니다.",
+    "Perhaps we should ask him.(어쩌면 우리는 그에게 물어봐야 할지도 몰라요.)처럼 씁니다.",
+    "maybe와 뜻이 같지만, perhaps가 조금 더 격식 있는 말투입니다.",
+    "글이나 정중한 대화에서 더 자주 쓰입니다."
+   ],
+   "easy": [
+    {
+     "word": "maybe",
+     "en": "Maybe later.",
+     "ko": "아마 나중에."
+    },
+    {
+     "word": "possibly",
+     "en": "Possibly true.",
+     "ko": "아마 사실일지도."
+    }
+   ],
+   "etymology": [
+    "perhaps는 per(~에 따라)와 옛말 haps(운, 우연)가 합쳐진 말입니다.",
+    "happen(일어나다)의 hap과 같은 뿌리입니다.",
+    "'운에 따라', '우연에 따라'라는 뜻에서 '아마'라는 지금의 뜻이 나왔습니다.",
+    "1500년대쯤부터 지금과 같은 형태로 쓰이기 시작했습니다.",
+    "perhaps의 핵심 이미지는 '확신할 수 없어 조심스럽게 짐작하는 마음 🤔'입니다."
+   ],
+   "meanings": [
+    "아마, 어쩌면"
+   ],
+   "examples": [
+    {
+     "en": "Perhaps you are right.",
+     "ko": "어쩌면 네가 맞을지도 몰라."
+    },
+    {
+     "en": "Perhaps we should try a different way.",
+     "ko": "어쩌면 다른 방법을 시도해 봐야 할지도 몰라요."
+    },
+    {
+     "en": "Perhaps it will be sunny tomorrow.",
+     "ko": "어쩌면 내일은 화창할지도 몰라요."
+    },
+    {
+     "en": "Perhaps she forgot to call.",
+     "ko": "어쩌면 그녀가 전화하는 걸 잊었을지도 몰라요."
+    },
+    {
+     "en": "Perhaps I should apologize first.",
+     "ko": "어쩌면 내가 먼저 사과해야 할지도 몰라요."
+    },
+    {
+     "en": "Perhaps, but I'm not sure.",
+     "ko": "아마 그럴 거예요. 근데 확실하지는 않아요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "maybe",
+     "ko": "아마도",
+     "en": "Maybe not."
+    },
+    {
+     "type": "유의어",
+     "word": "possibly",
+     "ko": "아마, 어쩌면",
+     "en": "Possibly late."
+    },
+    {
+     "type": "연관어",
+     "word": "probably",
+     "ko": "아마",
+     "en": "Probably yes."
+    },
+    {
+     "type": "연관어",
+     "word": "likely",
+     "ko": "~할 것 같은",
+     "en": "Likely to rain."
+    },
+    {
+     "type": "연관어",
+     "word": "guess",
+     "ko": "추측하다",
+     "en": "I guess so."
+    },
+    {
+     "type": "연관어",
+     "word": "sure",
+     "ko": "확실한",
+     "en": "Not sure."
+    }
+   ]
+  },
+  "2352": {
+   "word": "serious",
+   "overview": [
+    "serious는 '심각한', '진지한'이라는 뜻의 형용사입니다.",
+    "a serious problem(심각한 문제), a serious face(진지한 표정)처럼 씁니다.",
+    "'진심인', '농담이 아닌'이라는 뜻으로도 씁니다. Are you serious?(진심이야?)",
+    "부사 seriously(진지하게, 심각하게)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "important",
+     "en": "Very important.",
+     "ko": "아주 중요한."
+    },
+    {
+     "word": "not funny",
+     "en": "This is not funny.",
+     "ko": "이건 웃긴 게 아니야."
+    }
+   ],
+   "etymology": [
+    "serious는 라틴어 serius(진지한, 무게 있는)에서 온 단어입니다.",
+    "정확한 더 옛 뿌리는 잘 알려져 있지 않습니다.",
+    "옛 프랑스어를 거쳐 영어에 들어오면서 '가볍지 않은', '중요한'이라는 뜻으로 자리 잡았습니다.",
+    "seriously(심각하게), seriousness(심각함)가 같은 가족입니다.",
+    "serious의 핵심 이미지는 '웃지 않고 무겁게 다뤄야 할 일 😐'입니다."
+   ],
+   "meanings": [
+    "심각한, 중대한 (형용사)",
+    "진지한, 진심인 (형용사)"
+   ],
+   "examples": [
+    {
+     "en": "This is a serious problem.",
+     "ko": "이건 심각한 문제예요."
+    },
+    {
+     "en": "Are you serious about quitting?",
+     "ko": "그만두겠다는 거 진심이야?"
+    },
+    {
+     "en": "She looked serious during the meeting.",
+     "ko": "그녀는 회의 중에 진지해 보였어요."
+    },
+    {
+     "en": "He suffered a serious injury.",
+     "ko": "그는 심각한 부상을 입었어요."
+    },
+    {
+     "en": "Let's have a serious talk about this.",
+     "ko": "이것에 대해 진지하게 이야기해 보자."
+    },
+    {
+     "en": "No joking, I'm serious.",
+     "ko": "장난 아니야, 나 진심이야."
+    }
+   ],
+   "together": [
+    {
+     "type": "파생어",
+     "word": "seriously",
+     "ko": "심각하게, 진지하게",
+     "en": "Take it seriously."
+    },
+    {
+     "type": "반의어",
+     "word": "funny",
+     "ko": "웃긴",
+     "en": "A funny joke."
+    },
+    {
+     "type": "연관어",
+     "word": "important",
+     "ko": "중요한",
+     "en": "An important test."
+    },
+    {
+     "type": "연관어",
+     "word": "serious tone",
+     "ko": "진지한 어조",
+     "en": "A serious tone."
+    },
+    {
+     "type": "연관어",
+     "word": "problem",
+     "ko": "문제",
+     "en": "A big problem."
+    },
+    {
+     "type": "연관어",
+     "word": "worried",
+     "ko": "걱정하는",
+     "en": "Look worried."
+    }
+   ]
+  },
+  "1911": {
+   "word": "past",
+   "overview": [
+    "past는 '과거', '지나간'이라는 뜻입니다. 이미 지나가 버린 시간을 말합니다.",
+    "in the past(과거에), the past few years(지난 몇 년)처럼 씁니다.",
+    "전치사로는 '~을 지나서'라는 뜻입니다. walk past the store(가게를 지나서 걷다)",
+    "시간을 말할 때도 씁니다. half past three(3시 반)"
+   ],
+   "easy": [
+    {
+     "word": "before",
+     "en": "Long before.",
+     "ko": "오래전에."
+    },
+    {
+     "word": "history",
+     "en": "Ancient history.",
+     "ko": "고대 역사."
+    }
+   ],
+   "etymology": [
+    "past는 pass(지나가다)의 옛 과거분사에서 온 단어입니다.",
+    "'지나가 버린'이라는 뜻이 그대로 명사와 형용사로 굳어졌습니다.",
+    "passage(통로, 지나감), passenger(승객)도 pass와 같은 가족입니다.",
+    "half past three(3시 반)는 '3시를 지나 30분'이라는 뜻에서 나온 표현입니다.",
+    "past의 핵심 이미지는 '이미 지나가 버린 시간의 뒷모습 🕰️'입니다."
+   ],
+   "meanings": [
+    "과거 (명사)",
+    "지난, 예전의 (형용사)",
+    "~을 지나서 (전치사)",
+    "(시간) ~을 지나서 (전치사)"
+   ],
+   "examples": [
+    {
+     "en": "In the past, this town was very small.",
+     "ko": "예전에는 이 동네가 아주 작았어요."
+    },
+    {
+     "en": "The past few days have been busy.",
+     "ko": "지난 며칠 동안 바빴어요."
+    },
+    {
+     "en": "Walk past the bakery and turn right.",
+     "ko": "빵집을 지나서 우회전해."
+    },
+    {
+     "en": "It's ten past nine.",
+     "ko": "9시 10분이에요."
+    },
+    {
+     "en": "We can't change the past.",
+     "ko": "우리는 과거를 바꿀 수 없어요."
+    },
+    {
+     "en": "She has a past experience with this.",
+     "ko": "그녀는 이것에 대한 과거 경험이 있어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "반의어",
+     "word": "future",
+     "ko": "미래",
+     "en": "In the future."
+    },
+    {
+     "type": "연관어",
+     "word": "present",
+     "ko": "현재",
+     "en": "Live in the present."
+    },
+    {
+     "type": "연관어",
+     "word": "history",
+     "ko": "역사",
+     "en": "World history."
+    },
+    {
+     "type": "연관어",
+     "word": "before",
+     "ko": "전에",
+     "en": "Long before."
+    },
+    {
+     "type": "연관어",
+     "word": "pass",
+     "ko": "지나가다",
+     "en": "Pass by."
+    },
+    {
+     "type": "연관어",
+     "word": "memory",
+     "ko": "기억",
+     "en": "A happy memory."
+    }
+   ]
+  },
+  "2011": {
+   "word": "possible",
+   "overview": [
+    "possible은 '가능한'이라는 뜻의 형용사입니다. 할 수 있거나 일어날 수 있는 것을 말합니다.",
+    "as soon as possible(가능한 한 빨리), Is it possible?(그게 가능해요?)처럼 씁니다.",
+    "It is possible for someone to do something(누군가가 무엇을 하는 것이 가능하다) 구조로 자주 씁니다.",
+    "반대말은 impossible(불가능한)입니다."
+   ],
+   "easy": [
+    {
+     "word": "can be done",
+     "en": "It can be done.",
+     "ko": "그건 할 수 있어."
+    },
+    {
+     "word": "maybe",
+     "en": "Maybe true.",
+     "ko": "아마 사실일 거야."
+    }
+   ],
+   "etymology": [
+    "possible은 라틴어 possibilis(할 수 있는)에서 온 단어입니다.",
+    "posse(할 수 있다, 힘이 있다)에서 나온 말입니다.",
+    "power(힘, 권력)도 같은 뿌리를 가진 형제 단어입니다.",
+    "'힘이 닿아 할 수 있는'이라는 뜻이 그대로 이어져 왔습니다.",
+    "possible의 핵심 이미지는 '문이 활짝 열려 있어 해낼 수 있는 길 🚪'입니다."
+   ],
+   "meanings": [
+    "가능한",
+    "있을 수 있는, 사실일 수도 있는"
+   ],
+   "examples": [
+    {
+     "en": "Please reply as soon as possible.",
+     "ko": "가능한 한 빨리 답장해 주세요."
+    },
+    {
+     "en": "Is it possible to change the date?",
+     "ko": "날짜를 바꾸는 게 가능해요?"
+    },
+    {
+     "en": "Anything is possible if you try.",
+     "ko": "노력하면 무엇이든 가능해요."
+    },
+    {
+     "en": "It's possible that she forgot.",
+     "ko": "그녀가 잊었을 수도 있어요."
+    },
+    {
+     "en": "We did everything possible to help.",
+     "ko": "우리는 도우려고 가능한 모든 걸 했어요."
+    },
+    {
+     "en": "Is it possible for you to come earlier?",
+     "ko": "더 일찍 오는 게 가능해요?"
+    }
+   ],
+   "together": [
+    {
+     "type": "반의어",
+     "word": "impossible",
+     "ko": "불가능한",
+     "en": "An impossible task."
+    },
+    {
+     "type": "파생어",
+     "word": "possibly",
+     "ko": "아마도",
+     "en": "Possibly true."
+    },
+    {
+     "type": "연관어",
+     "word": "able",
+     "ko": "~할 수 있는",
+     "en": "Able to swim."
+    },
+    {
+     "type": "연관어",
+     "word": "can",
+     "ko": "~할 수 있다",
+     "en": "Can you help?"
+    },
+    {
+     "type": "연관어",
+     "word": "chance",
+     "ko": "가능성, 기회",
+     "en": "A good chance."
+    },
+    {
+     "type": "연관어",
+     "word": "likely",
+     "ko": "~할 것 같은",
+     "en": "Likely to happen."
+    }
+   ]
+  },
+  "2385": {
+   "word": "shoot",
+   "overview": [
+    "shoot은 '(총을) 쏘다', '(영화를) 촬영하다'라는 뜻의 동사입니다.",
+    "shoot an arrow(화살을 쏘다), shoot a movie(영화를 촬영하다)처럼 씁니다.",
+    "농구나 축구에서 '슛하다', '득점을 노리다'라는 뜻으로도 씁니다.",
+    "과거형과 과거분사는 모두 shot입니다."
+   ],
+   "easy": [
+    {
+     "word": "fire",
+     "en": "Fire an arrow.",
+     "ko": "화살을 쏘다."
+    },
+    {
+     "word": "film",
+     "en": "Film a movie.",
+     "ko": "영화를 촬영해."
+    }
+   ],
+   "etymology": [
+    "shoot은 고대 영어 scēotan(빠르게 나아가다, 쏘다)에서 온 단어입니다.",
+    "shut(닫다)과 같은 뿌리로, '휙 밀어내다'라는 뜻과 이어집니다.",
+    "화살이나 탄환을 휙 쏘아 보내는 모습에서 '쏘다'라는 뜻이 되었습니다.",
+    "사진이나 영화를 '찍다'라는 뜻은 카메라 셔터를 '쏘듯' 누른다는 느낌에서 나왔습니다.",
+    "shoot의 핵심 이미지는 '목표를 향해 재빠르게 날아가는 것 🎯'입니다."
+   ],
+   "meanings": [
+    "(총·화살을) 쏘다",
+    "(영화·사진을) 촬영하다",
+    "(농구·축구) 슛하다",
+    "(식물이) 싹을 내다 (명사: 새싹)"
+   ],
+   "examples": [
+    {
+     "en": "The hunter shot an arrow at the target.",
+     "ko": "사냥꾼은 목표물에 화살을 쐈어요."
+    },
+    {
+     "en": "They are shooting a movie in our town.",
+     "ko": "그들은 우리 동네에서 영화를 촬영하고 있어요."
+    },
+    {
+     "en": "Shoot the ball into the basket!",
+     "ko": "공을 바스켓에 슛해!"
+    },
+    {
+     "en": "He shot a great photo of the sunset.",
+     "ko": "그는 멋진 일몰 사진을 찍었어요."
+    },
+    {
+     "en": "New shoots appeared on the tree.",
+     "ko": "나무에 새싹이 돋았어요."
+    },
+    {
+     "en": "She shot the winning goal.",
+     "ko": "그녀는 결승 골을 넣었어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "변화형",
+     "word": "shot",
+     "ko": "쐈다 (과거형)",
+     "en": "He shot the ball."
+    },
+    {
+     "type": "연관어",
+     "word": "gun",
+     "ko": "총",
+     "en": "A loaded gun."
+    },
+    {
+     "type": "연관어",
+     "word": "arrow",
+     "ko": "화살",
+     "en": "A sharp arrow."
+    },
+    {
+     "type": "연관어",
+     "word": "film",
+     "ko": "촬영하다, 영화",
+     "en": "Film a scene."
+    },
+    {
+     "type": "연관어",
+     "word": "goal",
+     "ko": "골",
+     "en": "Score a goal."
+    },
+    {
+     "type": "연관어",
+     "word": "target",
+     "ko": "목표, 표적",
+     "en": "Hit the target."
+    }
+   ]
+  },
+  "2338": {
+   "word": "seem",
+   "overview": [
+    "seem은 '~인 것 같다', '~처럼 보이다'라는 뜻의 동사입니다. 겉으로 보이는 느낌을 말할 때 씁니다.",
+    "seem + 형용사, seem to + 동사원형 형태로 씁니다. She seems happy.(그녀는 행복해 보여요.)",
+    "look과 비슷하지만, seem은 눈으로만 판단하는 게 아니라 전체적인 느낌으로 판단할 때도 씁니다.",
+    "It seems that...(~인 것 같다)도 자주 쓰는 표현입니다."
+   ],
+   "easy": [
+    {
+     "word": "look like",
+     "en": "Look like rain.",
+     "ko": "비가 올 것 같아 보여."
+    },
+    {
+     "word": "appear",
+     "en": "Appear happy.",
+     "ko": "행복해 보이다."
+    }
+   ],
+   "etymology": [
+    "seem은 옛 노르드어(바이킹의 말) sœma(어울리다, 알맞다)에서 온 단어입니다.",
+    "'적절해 보이다', '알맞아 보이다'라는 뜻에서 '~처럼 보이다'라는 지금의 뜻이 나왔습니다.",
+    "same(같은)과 먼 친척이라고 봅니다. '같은 모습으로 보인다'라는 느낌과 이어집니다.",
+    "1200년대쯤부터 영어에서 지금과 비슷한 뜻으로 쓰였습니다.",
+    "seem의 핵심 이미지는 '확실하진 않지만 그렇게 보이는 느낌 👀'입니다."
+   ],
+   "meanings": [
+    "~인 것 같다, ~처럼 보이다"
+   ],
+   "examples": [
+    {
+     "en": "You seem tired today.",
+     "ko": "너 오늘 피곤해 보여."
+    },
+    {
+     "en": "It seems like it's going to rain.",
+     "ko": "비가 올 것 같아요."
+    },
+    {
+     "en": "She seems to know the answer.",
+     "ko": "그녀는 답을 아는 것 같아요."
+    },
+    {
+     "en": "This problem seems difficult.",
+     "ko": "이 문제는 어려워 보여요."
+    },
+    {
+     "en": "He seemed happy with the results.",
+     "ko": "그는 결과에 만족한 것 같았어요."
+    },
+    {
+     "en": "It seems that everyone agrees.",
+     "ko": "모두가 동의하는 것 같아요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "look",
+     "ko": "~처럼 보이다",
+     "en": "Look tired."
+    },
+    {
+     "type": "유의어",
+     "word": "appear",
+     "ko": "~인 것처럼 보이다",
+     "en": "Appear calm."
+    },
+    {
+     "type": "연관어",
+     "word": "seem like",
+     "ko": "~인 것 같다",
+     "en": "Seem like fun."
+    },
+    {
+     "type": "연관어",
+     "word": "guess",
+     "ko": "추측하다",
+     "en": "I guess so."
+    },
+    {
+     "type": "연관어",
+     "word": "sound",
+     "ko": "~인 것처럼 들리다",
+     "en": "Sound familiar."
+    },
+    {
+     "type": "연관어",
+     "word": "probably",
+     "ko": "아마",
+     "en": "Probably right."
+    }
+   ]
+  },
+  "2725": {
+   "word": "till",
+   "overview": [
+    "till은 '~까지'라는 뜻의 전치사·접속사입니다. until과 뜻이 같은데, 좀 더 편한 말투에서 씁니다.",
+    "wait till Friday(금요일까지 기다리다), till late at night(밤늦게까지)처럼 씁니다.",
+    "구어에서는 until보다 till을 훨씬 자주 씁니다.",
+    "농사짓기 위해 '밭을 갈다'라는 뜻의 다른 동사 till도 있습니다."
+   ],
+   "easy": [
+    {
+     "word": "until",
+     "en": "Until tomorrow.",
+     "ko": "내일까지."
+    },
+    {
+     "word": "before",
+     "en": "Before lunch.",
+     "ko": "점심 전에."
+    }
+   ],
+   "etymology": [
+    "till은 옛 노르드어(바이킹의 말) til(~까지, ~에게)에서 온 단어입니다.",
+    "until의 뒤쪽 부분과 같은 뿌리입니다.",
+    "until은 여기에 und(~까지)를 앞에 붙여 만든, 조금 더 격식 있는 형태입니다.",
+    "'밭을 갈다'라는 till은 고대 영어 tilian(경작하다, 애쓰다)에서 온 전혀 다른 단어입니다.",
+    "till의 핵심 이미지는 '그 시점까지 쭉 이어지는 시간 ⏰'입니다."
+   ],
+   "meanings": [
+    "~까지 (전치사·접속사)",
+    "(밭을) 갈다, 경작하다 (동사, 다른 단어)"
+   ],
+   "examples": [
+    {
+     "en": "Let's wait till the rain stops.",
+     "ko": "비가 그칠 때까지 기다리자."
+    },
+    {
+     "en": "The shop is open till 8 pm.",
+     "ko": "가게는 밤 8시까지 열어요."
+    },
+    {
+     "en": "I won't leave till you get here.",
+     "ko": "네가 여기 올 때까지 안 갈 거야."
+    },
+    {
+     "en": "We played till it got dark.",
+     "ko": "우리는 어두워질 때까지 놀았어요."
+    },
+    {
+     "en": "Till next time, take care!",
+     "ko": "다음에 볼 때까지 잘 지내!"
+    },
+    {
+     "en": "The farmer tills the soil in spring.",
+     "ko": "농부는 봄에 땅을 갈아요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "until",
+     "ko": "~까지",
+     "en": "Until Monday."
+    },
+    {
+     "type": "연관어",
+     "word": "wait",
+     "ko": "기다리다",
+     "en": "Wait a bit."
+    },
+    {
+     "type": "연관어",
+     "word": "since",
+     "ko": "~ 이래로",
+     "en": "Since 2020."
+    },
+    {
+     "type": "연관어",
+     "word": "before",
+     "ko": "~ 전에",
+     "en": "Before noon."
+    },
+    {
+     "type": "연관어",
+     "word": "when",
+     "ko": "~할 때",
+     "en": "When it's ready."
+    },
+    {
+     "type": "연관어",
+     "word": "farm",
+     "ko": "농장",
+     "en": "Work on a farm."
+    }
+   ]
+  },
+  "1112": {
+   "word": "follow",
+   "overview": [
+    "follow는 '따라가다', '따르다'라는 뜻의 동사입니다.",
+    "follow me(나를 따라와), follow the rules(규칙을 따르다)처럼 씁니다.",
+    "SNS에서 누군가를 '팔로우하다'라는 뜻으로도 아주 자주 씁니다.",
+    "'이해하다'라는 뜻도 있습니다. Do you follow?(이해돼요?)"
+   ],
+   "easy": [
+    {
+     "word": "go after",
+     "en": "Go after him.",
+     "ko": "그를 따라가다."
+    },
+    {
+     "word": "obey",
+     "en": "Obey the law.",
+     "ko": "법을 따르다."
+    }
+   ],
+   "etymology": [
+    "follow는 고대 영어 folgian(따르다, 뒤에서 가다)에서 온 단어입니다.",
+    "'무리, 사람들'을 뜻하는 아주 옛말과 이어진다고 봅니다.",
+    "'사람들 무리 뒤에서 함께 가다'라는 뜻에서 '따라가다'가 되었다고 봅니다.",
+    "follower(팔로워, 따르는 사람)도 여기서 나온 말입니다.",
+    "follow의 핵심 이미지는 '앞선 발자국을 그대로 따라 걷기 👣'입니다."
+   ],
+   "meanings": [
+    "따라가다, 뒤따르다",
+    "(규칙 등을) 따르다",
+    "(SNS에서) 팔로우하다",
+    "이해하다"
+   ],
+   "examples": [
+    {
+     "en": "Please follow me this way.",
+     "ko": "이쪽으로 저를 따라오세요."
+    },
+    {
+     "en": "You must follow the safety rules.",
+     "ko": "안전 규칙을 따라야 해요."
+    },
+    {
+     "en": "I follow her on social media.",
+     "ko": "나는 그녀를 SNS에서 팔로우해요."
+    },
+    {
+     "en": "Follow the instructions carefully.",
+     "ko": "설명을 잘 따라서 해."
+    },
+    {
+     "en": "The dog followed him all day.",
+     "ko": "그 개는 하루 종일 그를 따라다녔어요."
+    },
+    {
+     "en": "Sorry, I don't quite follow.",
+     "ko": "죄송해요, 잘 이해가 안 돼요."
+    }
+   ],
+   "together": [
+    {
+     "type": "파생어",
+     "word": "follower",
+     "ko": "팔로워, 따르는 사람",
+     "en": "Many followers."
+    },
+    {
+     "type": "연관어",
+     "word": "lead",
+     "ko": "이끌다",
+     "en": "Lead the way."
+    },
+    {
+     "type": "연관어",
+     "word": "obey",
+     "ko": "따르다, 복종하다",
+     "en": "Obey your parents."
+    },
+    {
+     "type": "연관어",
+     "word": "rule",
+     "ko": "규칙",
+     "en": "Follow the rule."
+    },
+    {
+     "type": "연관어",
+     "word": "chase",
+     "ko": "쫓다",
+     "en": "Chase the cat."
+    },
+    {
+     "type": "연관어",
+     "word": "next",
+     "ko": "다음의",
+     "en": "The following day."
+    }
+   ]
+  },
+  "2345": {
+   "word": "sense",
+   "overview": [
+    "sense는 '감각', '느낌'이라는 뜻의 명사이자 '느끼다'라는 뜻의 동사입니다.",
+    "the five senses(오감: 시각, 청각, 후각, 미각, 촉각)처럼 씁니다.",
+    "a sense of humor(유머 감각), common sense(상식)처럼 다른 말과 함께 자주 씁니다.",
+    "make sense는 '이해가 되다', '타당하다'라는 뜻의 아주 자주 쓰는 표현입니다."
+   ],
+   "easy": [
+    {
+     "word": "feeling",
+     "en": "A good feeling.",
+     "ko": "좋은 느낌."
+    },
+    {
+     "word": "smell",
+     "en": "A strong smell.",
+     "ko": "강한 냄새."
+    }
+   ],
+   "etymology": [
+    "sense는 라틴어 sensus(느낌, 감각)에서 온 단어입니다.",
+    "sentire(느끼다)에서 나온 말입니다.",
+    "sentiment(감정), sensitive(민감한)도 같은 뿌리를 가진 형제 단어입니다.",
+    "몸으로 느끼는 '감각'에서 마음으로 '이해하는 뜻', '분별력'으로 뜻이 넓어졌습니다.",
+    "sense의 핵심 이미지는 '몸과 마음으로 세상을 느끼는 창 🌟'입니다."
+   ],
+   "meanings": [
+    "감각 (명사)",
+    "느낌, 인식 (명사)",
+    "분별력, 상식 (명사)",
+    "느끼다, 감지하다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "Dogs have a great sense of smell.",
+     "ko": "개는 후각이 아주 좋아요."
+    },
+    {
+     "en": "This doesn't make sense to me.",
+     "ko": "이건 나에게 이해가 안 돼요."
+    },
+    {
+     "en": "She has a good sense of humor.",
+     "ko": "그녀는 유머 감각이 좋아요."
+    },
+    {
+     "en": "I sensed something was wrong.",
+     "ko": "나는 뭔가 잘못됐다는 걸 느꼈어요."
+    },
+    {
+     "en": "Use common sense when crossing the street.",
+     "ko": "길을 건널 때는 상식을 이용해."
+    },
+    {
+     "en": "He has a strong sense of responsibility.",
+     "ko": "그는 책임감이 강해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "파생어",
+     "word": "sensible",
+     "ko": "분별 있는",
+     "en": "A sensible choice."
+    },
+    {
+     "type": "파생어",
+     "word": "sensitive",
+     "ko": "민감한",
+     "en": "Sensitive skin."
+    },
+    {
+     "type": "연관어",
+     "word": "feel",
+     "ko": "느끼다",
+     "en": "Feel happy."
+    },
+    {
+     "type": "연관어",
+     "word": "smell",
+     "ko": "냄새 맡다",
+     "en": "Smell the flower."
+    },
+    {
+     "type": "연관어",
+     "word": "taste",
+     "ko": "맛보다",
+     "en": "Taste the soup."
+    },
+    {
+     "type": "연관어",
+     "word": "meaning",
+     "ko": "의미",
+     "en": "The meaning of life."
+    }
+   ]
+  },
+  "2362": {
+   "word": "sex",
+   "overview": [
+    "sex는 사람이나 동물을 남성과 여성으로 나누는 '성(性)'이라는 뜻의 명사입니다.",
+    "학교나 병원 서류에서 이름, 나이와 함께 sex(성별)를 적는 칸이 있습니다. male(남성)과 female(여성)로 나눕니다.",
+    "형용사 sexual은 '성(性)에 관련된'이라는 뜻입니다.",
+    "이 단어에는 다른 뜻도 있지만, 학교에서 쓰는 서류나 사전 정의에서는 주로 '성별'이라는 뜻으로 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "gender",
+     "en": "Fill in gender.",
+     "ko": "성별을 적어."
+    },
+    {
+     "word": "male/female",
+     "en": "Male or female.",
+     "ko": "남성 또는 여성."
+    }
+   ],
+   "etymology": [
+    "sex는 라틴어 sexus(성, 성별)에서 온 단어입니다.",
+    "secare(자르다, 나누다)에서 나왔다는 설이 있는데, 사람을 남녀 두 부류로 '나눈다'는 뜻과 이어집니다.",
+    "section(구획), sector(부문)도 같은 뿌리에서 나온 것으로 보는 단어입니다.",
+    "1300년대쯤 영어에 들어와 '성별'을 나타내는 말로 쓰이기 시작했습니다.",
+    "sex의 핵심 이미지는 '서류의 성별 칸에 적는 분류 🚻'입니다."
+   ],
+   "meanings": [
+    "성, 성별 (남성/여성)",
+    "(형용사 sexual) 성(性)에 관련된"
+   ],
+   "examples": [
+    {
+     "en": "Please write your name, age, and sex on the form.",
+     "ko": "서류에 이름, 나이, 성별을 적어 주세요."
+    },
+    {
+     "en": "The doctor asked about the baby's sex.",
+     "ko": "의사가 아기의 성별에 대해 물었어요."
+    },
+    {
+     "en": "Both sexes can join this club.",
+     "ko": "이 동아리는 남녀 모두 가입할 수 있어요."
+    },
+    {
+     "en": "The form has a box for sex: male or female.",
+     "ko": "그 서류에는 성별을 남성 또는 여성으로 적는 칸이 있어요."
+    },
+    {
+     "en": "This school does not separate students by sex.",
+     "ko": "이 학교는 학생들을 성별로 나누지 않아요."
+    },
+    {
+     "en": "Scientists study the sex of animals to understand their behavior.",
+     "ko": "과학자들은 동물의 행동을 이해하려고 성별을 연구해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "gender",
+     "ko": "성별",
+     "en": "Gender equality."
+    },
+    {
+     "type": "연관어",
+     "word": "male",
+     "ko": "남성의",
+     "en": "A male lion."
+    },
+    {
+     "type": "연관어",
+     "word": "female",
+     "ko": "여성의",
+     "en": "A female bird."
+    },
+    {
+     "type": "파생어",
+     "word": "sexual",
+     "ko": "성(性)에 관련된",
+     "en": "Sexual education."
+    },
+    {
+     "type": "연관어",
+     "word": "equality",
+     "ko": "평등",
+     "en": "Equal rights."
+    },
+    {
+     "type": "연관어",
+     "word": "biology",
+     "ko": "생물학",
+     "en": "A biology class."
+    }
+   ]
+  },
+  "1639": {
+   "word": "master",
+   "overview": [
+    "master는 '주인', '달인'이라는 뜻의 명사이자 '완전히 익히다'라는 뜻의 동사입니다.",
+    "a master chef(요리의 달인), be a master of(~의 달인이다)처럼 씁니다.",
+    "동사로는 '완전히 익히다', '정복하다'라는 뜻입니다. master a skill(기술을 완전히 익히다)",
+    "옛날에는 반려동물이나 하인의 '주인'이라는 뜻으로도 흔히 썼습니다."
+   ],
+   "easy": [
+    {
+     "word": "expert",
+     "en": "A skilled expert.",
+     "ko": "숙련된 전문가."
+    },
+    {
+     "word": "learn well",
+     "en": "Learn it well.",
+     "ko": "그것을 완전히 배워."
+    }
+   ],
+   "etymology": [
+    "master는 라틴어 magister(우두머리, 선생)에서 온 단어입니다.",
+    "magis(더, 더 큰)에서 나온 말로, '남들보다 더 뛰어난 사람'이라는 뜻입니다.",
+    "major(주요한), magnificent(멋진, 웅대한)도 같은 뿌리에서 나온 단어들입니다.",
+    "'뛰어난 사람'이라는 뜻에서 '주인'과 '달인'이라는 두 뜻이 함께 자연스럽게 생겼습니다.",
+    "master의 핵심 이미지는 '오랜 연습으로 완전히 통달한 솜씨 🏆'입니다."
+   ],
+   "meanings": [
+    "주인 (명사)",
+    "달인, 전문가 (명사)",
+    "완전히 익히다, 통달하다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "He is a master of martial arts.",
+     "ko": "그는 무술의 달인이에요."
+    },
+    {
+     "en": "It takes years to master a language.",
+     "ko": "언어를 완전히 익히려면 몇 년이 걸려요."
+    },
+    {
+     "en": "The dog obeys its master.",
+     "ko": "그 개는 주인의 말을 잘 들어요."
+    },
+    {
+     "en": "She mastered the piano at a young age.",
+     "ko": "그녀는 어린 나이에 피아노를 완전히 익혔어요."
+    },
+    {
+     "en": "He is a master chef in this restaurant.",
+     "ko": "그는 이 식당의 요리 달인이에요."
+    },
+    {
+     "en": "Practice every day to master a new skill.",
+     "ko": "새로운 기술을 완전히 익히려면 매일 연습해."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "expert",
+     "ko": "전문가",
+     "en": "A computer expert."
+    },
+    {
+     "type": "연관어",
+     "word": "skill",
+     "ko": "기술",
+     "en": "A useful skill."
+    },
+    {
+     "type": "연관어",
+     "word": "learn",
+     "ko": "배우다",
+     "en": "Learn to swim."
+    },
+    {
+     "type": "연관어",
+     "word": "teacher",
+     "ko": "선생님",
+     "en": "A wise teacher."
+    },
+    {
+     "type": "연관어",
+     "word": "owner",
+     "ko": "주인, 소유자",
+     "en": "The dog's owner."
+    },
+    {
+     "type": "연관어",
+     "word": "practice",
+     "ko": "연습하다",
+     "en": "Practice daily."
+    }
+   ]
+  },
+  "2623": {
+   "word": "sweet",
+   "overview": [
+    "sweet은 '달콤한'이라는 뜻의 형용사입니다. 설탕처럼 단맛이 나는 것을 말합니다.",
+    "sweet candy(달콤한 사탕), a sweet smell(달콤한 향)처럼 씁니다.",
+    "'상냥한', '다정한'이라는 뜻으로도 아주 자주 씁니다. That's so sweet of you.(정말 다정하네요.)",
+    "명사로는 영국에서 '사탕', '단 과자'를 뜻합니다."
+   ],
+   "easy": [
+    {
+     "word": "sugary",
+     "en": "A sugary drink.",
+     "ko": "달콤한 음료."
+    },
+    {
+     "word": "kind",
+     "en": "A kind gesture.",
+     "ko": "다정한 행동."
+    }
+   ],
+   "etymology": [
+    "sweet은 고대 영어 swēte(단, 즐거운)에서 온 단어입니다.",
+    "라틴어 suavis(달콤한, 즐거운)와 먼 친척으로 이어지는 아주 오래된 뿌리입니다.",
+    "'입에 즐거운 맛'이라는 뜻에서 '마음을 즐겁게 하는 성격', 곧 '다정한'이라는 뜻도 생겼습니다.",
+    "candy를 대신해 영국에서는 sweet을 '사탕'이라는 뜻의 명사로도 씁니다.",
+    "sweet의 핵심 이미지는 '입안에 퍼지는 달콤함과 다정한 마음 🍬'입니다."
+   ],
+   "meanings": [
+    "달콤한, 단 (형용사)",
+    "상냥한, 다정한 (형용사)",
+    "사탕, 단 과자 (명사, 영국)"
+   ],
+   "examples": [
+    {
+     "en": "This cake is very sweet.",
+     "ko": "이 케이크는 아주 달아요."
+    },
+    {
+     "en": "That's so sweet of you to help.",
+     "ko": "도와줘서 정말 다정하네요."
+    },
+    {
+     "en": "She has a sweet smile.",
+     "ko": "그녀는 다정한 미소를 지어요."
+    },
+    {
+     "en": "I love the sweet smell of flowers.",
+     "ko": "나는 꽃의 달콤한 향기를 정말 좋아해요."
+    },
+    {
+     "en": "Can I have some sweets?",
+     "ko": "사탕 좀 먹어도 돼요?"
+    },
+    {
+     "en": "He wrote a sweet letter to his mom.",
+     "ko": "그는 엄마께 다정한 편지를 썼어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "반의어",
+     "word": "bitter",
+     "ko": "쓴",
+     "en": "A bitter taste."
+    },
+    {
+     "type": "반의어",
+     "word": "sour",
+     "ko": "신",
+     "en": "A sour lemon."
+    },
+    {
+     "type": "연관어",
+     "word": "sugar",
+     "ko": "설탕",
+     "en": "White sugar."
+    },
+    {
+     "type": "연관어",
+     "word": "candy",
+     "ko": "사탕",
+     "en": "Colorful candy."
+    },
+    {
+     "type": "연관어",
+     "word": "kind",
+     "ko": "친절한",
+     "en": "A kind heart."
+    },
+    {
+     "type": "파생어",
+     "word": "sweetness",
+     "ko": "달콤함",
+     "en": "Natural sweetness."
+    }
+   ]
+  },
+  "2141": {
+   "word": "rather",
+   "overview": [
+    "rather는 '오히려', '차라리'라는 뜻의 부사입니다. 더 좋아하는 것을 나타낼 때 씁니다.",
+    "would rather + 동사원형은 '차라리 ~하고 싶다'라는 뜻입니다. I'd rather stay home.(차라리 집에 있고 싶어요.)",
+    "'꽤', '다소'라는 뜻으로 정도를 나타내기도 합니다. rather cold(꽤 추운)",
+    "rather than은 '~보다는'이라는 뜻으로 비교할 때 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "instead",
+     "en": "Instead of that.",
+     "ko": "그거 대신에."
+    },
+    {
+     "word": "pretty",
+     "en": "Pretty cold.",
+     "ko": "꽤 추운."
+    }
+   ],
+   "etymology": [
+    "rather는 고대 영어 hrathor(더 빨리, 더 일찍)에서 온 단어입니다.",
+    "'빠르다'를 뜻하는 rathe라는 옛말의 비교급이었습니다.",
+    "'더 빨리 그것을 하고 싶다'라는 뜻이 '오히려 그것을 더 좋아한다'로 넓어졌습니다.",
+    "지금은 원래 '빠르다'라는 뜻은 거의 사라지고 '오히려'라는 뜻만 남았습니다.",
+    "rather의 핵심 이미지는 '이것보다는 저것을 고르는 마음 ⚖️'입니다."
+   ],
+   "meanings": [
+    "오히려, 차라리",
+    "꽤, 다소",
+    "(rather than) ~보다는"
+   ],
+   "examples": [
+    {
+     "en": "I'd rather walk than take the bus.",
+     "ko": "나는 버스를 타는 것보다는 걷고 싶어요."
+    },
+    {
+     "en": "It's rather cold today.",
+     "ko": "오늘은 꽤 추워요."
+    },
+    {
+     "en": "She would rather stay quiet.",
+     "ko": "그녀는 차라리 조용히 있고 싶어 해요."
+    },
+    {
+     "en": "Rather than complain, let's find a solution.",
+     "ko": "불평하기보다는 해결책을 찾아보자."
+    },
+    {
+     "en": "The movie was rather boring.",
+     "ko": "그 영화는 꽤 지루했어요."
+    },
+    {
+     "en": "I'd rather have tea than coffee.",
+     "ko": "나는 커피보다는 차를 마시고 싶어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "instead",
+     "ko": "대신에",
+     "en": "Instead of this."
+    },
+    {
+     "type": "연관어",
+     "word": "prefer",
+     "ko": "선호하다",
+     "en": "Prefer tea."
+    },
+    {
+     "type": "유의어",
+     "word": "quite",
+     "ko": "꽤",
+     "en": "Quite good."
+    },
+    {
+     "type": "연관어",
+     "word": "pretty",
+     "ko": "꽤 (구어)",
+     "en": "Pretty tired."
+    },
+    {
+     "type": "연관어",
+     "word": "than",
+     "ko": "~보다",
+     "en": "Bigger than that."
+    },
+    {
+     "type": "연관어",
+     "word": "choice",
+     "ko": "선택",
+     "en": "A hard choice."
+    }
+   ]
+  },
+  "2400": {
+   "word": "sign",
+   "overview": [
+    "sign은 '표지판', '신호'라는 뜻의 명사이자 '서명하다'라는 뜻의 동사입니다.",
+    "a stop sign(정지 표지판), a sign of good luck(좋은 조짐)처럼 씁니다.",
+    "sign your name(이름에 서명하다)처럼 서류에 이름을 쓰는 것도 sign이라고 합니다.",
+    "sign language는 '수화'라는 뜻입니다."
+   ],
+   "easy": [
+    {
+     "word": "signal",
+     "en": "A traffic signal.",
+     "ko": "교통 신호."
+    },
+    {
+     "word": "signature",
+     "en": "A neat signature.",
+     "ko": "깔끔한 서명."
+    }
+   ],
+   "etymology": [
+    "sign은 라틴어 signum(표시, 기호)에서 온 단어입니다.",
+    "signal(신호), design(디자인, '표시해 정하다')도 같은 뿌리를 가진 형제 단어입니다.",
+    "'무엇을 나타내는 표시'라는 뜻이 그대로 명사와 동사에 모두 이어졌습니다.",
+    "'서명하다'라는 동사 뜻은 '자기만의 표시를 남기다'라는 뜻에서 나왔습니다.",
+    "sign의 핵심 이미지는 '길가에 세워진 표지판과 서류 위의 서명 🚸'입니다."
+   ],
+   "meanings": [
+    "표지판, 표시 (명사)",
+    "신호, 징조 (명사)",
+    "서명하다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "Follow the road sign.",
+     "ko": "도로 표지판을 따라가."
+    },
+    {
+     "en": "There's no sign of rain today.",
+     "ko": "오늘은 비가 올 조짐이 없어요."
+    },
+    {
+     "en": "Please sign your name here.",
+     "ko": "여기에 서명해 주세요."
+    },
+    {
+     "en": "A red light is a sign to stop.",
+     "ko": "빨간불은 멈추라는 신호예요."
+    },
+    {
+     "en": "She learned some sign language.",
+     "ko": "그녀는 수화를 조금 배웠어요."
+    },
+    {
+     "en": "This is a good sign!",
+     "ko": "이건 좋은 조짐이야!"
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "signal",
+     "ko": "신호",
+     "en": "A hand signal."
+    },
+    {
+     "type": "연관어",
+     "word": "signature",
+     "ko": "서명",
+     "en": "Your signature."
+    },
+    {
+     "type": "연관어",
+     "word": "symbol",
+     "ko": "기호, 상징",
+     "en": "A peace symbol."
+    },
+    {
+     "type": "연관어",
+     "word": "warning",
+     "ko": "경고",
+     "en": "A warning sign."
+    },
+    {
+     "type": "연관어",
+     "word": "notice",
+     "ko": "공지, 안내문",
+     "en": "Read the notice."
+    },
+    {
+     "type": "연관어",
+     "word": "signature",
+     "ko": "서명",
+     "en": "Sign here."
+    }
+   ]
+  },
+  "271": {
+   "word": "bet",
+   "overview": [
+    "bet은 '내기'라는 뜻의 명사이자 '내기하다', '장담하다'라는 뜻의 동사입니다.",
+    "make a bet(내기를 하다), I bet you're right.(네가 맞다고 장담해.)처럼 씁니다.",
+    "구어에서 '확신하다'라는 뜻으로 아주 자주 씁니다. I bet it will rain.(비가 올 게 분명해.)",
+    "과거형과 과거분사도 모두 bet으로 형태가 바뀌지 않습니다."
+   ],
+   "easy": [
+    {
+     "word": "wager",
+     "en": "Place a wager.",
+     "ko": "내기를 걸다."
+    },
+    {
+     "word": "sure",
+     "en": "I'm sure.",
+     "ko": "확신해."
+    }
+   ],
+   "etymology": [
+    "bet은 1500년대쯤부터 쓰인 말로, be(존재하다)와 set(정하다)이 합쳐졌다는 설이 있습니다.",
+    "정확한 뿌리는 확실하지 않지만, '결과를 걸고 정해 두다'라는 뜻으로 시작되었다고 봅니다.",
+    "처음에는 도박에서 돈을 걸 때 쓰던 말이었습니다.",
+    "지금은 '확신하다'라는 가벼운 뜻으로도 아주 자주 씁니다.",
+    "bet의 핵심 이미지는 '결과를 두고 손을 맞대며 거는 내기 🎲'입니다."
+   ],
+   "meanings": [
+    "내기 (명사)",
+    "내기하다 (동사)",
+    "장담하다, 확신하다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "Let's make a bet on who wins.",
+     "ko": "누가 이길지 내기하자."
+    },
+    {
+     "en": "I bet you can't eat this whole pizza.",
+     "ko": "네가 이 피자를 다 못 먹을 거라고 장담해."
+    },
+    {
+     "en": "He lost the bet and had to sing.",
+     "ko": "그는 내기에 져서 노래를 불러야 했어요."
+    },
+    {
+     "en": "I bet it's going to be sunny tomorrow.",
+     "ko": "내일은 분명 화창할 거예요."
+    },
+    {
+     "en": "She bet five candies on the game.",
+     "ko": "그녀는 사탕 다섯 개를 걸고 내기했어요."
+    },
+    {
+     "en": "You bet!",
+     "ko": "당연하지!"
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "wager",
+     "ko": "내기",
+     "en": "Place a wager."
+    },
+    {
+     "type": "연관어",
+     "word": "sure",
+     "ko": "확신하는",
+     "en": "I'm sure."
+    },
+    {
+     "type": "연관어",
+     "word": "guess",
+     "ko": "추측하다",
+     "en": "Guess the answer."
+    },
+    {
+     "type": "연관어",
+     "word": "gamble",
+     "ko": "도박하다",
+     "en": "Don't gamble."
+    },
+    {
+     "type": "연관어",
+     "word": "risk",
+     "ko": "위험을 감수하다",
+     "en": "Take a risk."
+    },
+    {
+     "type": "연관어",
+     "word": "predict",
+     "ko": "예측하다",
+     "en": "Predict the winner."
+    }
+   ]
+  },
+  "2099": {
+   "word": "pull",
+   "overview": [
+    "pull은 '끌다', '당기다'라는 뜻의 동사입니다. 무엇을 자기 쪽으로 힘을 주어 움직이는 것을 말합니다.",
+    "pull the rope(줄을 당기다), pull a door open(문을 당겨서 열다)처럼 씁니다.",
+    "'끌어당기다'라는 명사로도 씁니다. give it a pull(그것을 한번 당겨 봐)",
+    "push(밀다)의 반대말로, 문에 붙어 있는 표지판에서도 자주 봅니다."
+   ],
+   "easy": [
+    {
+     "word": "drag",
+     "en": "Drag the box.",
+     "ko": "상자를 끌어."
+    },
+    {
+     "word": "push",
+     "en": "Push the door.",
+     "ko": "문을 밀어."
+    }
+   ],
+   "etymology": [
+    "pull은 고대 영어 pullian(뜯다, 잡아당기다)에서 온 단어입니다.",
+    "정확한 더 옛 뿌리는 잘 알려져 있지 않습니다.",
+    "처음에는 머리카락이나 깃털을 '뜯다'라는 뜻이었다가, '끌어당기다'로 뜻이 넓어졌습니다.",
+    "천 년 가까이 비슷한 뜻으로 쓰여 온 아주 오래된 단어입니다.",
+    "pull의 핵심 이미지는 '힘차게 잡고 자기 쪽으로 끌어당기기 🪢'입니다."
+   ],
+   "meanings": [
+    "끌다, 당기다 (동사)",
+    "(이·치아 등을) 뽑다 (동사)",
+    "끌어당김, 당기기 (명사)"
+   ],
+   "examples": [
+    {
+     "en": "Pull the door to open it.",
+     "ko": "문을 당겨서 열어."
+    },
+    {
+     "en": "The horse pulled the cart.",
+     "ko": "말이 수레를 끌었어요."
+    },
+    {
+     "en": "She pulled the rope with all her strength.",
+     "ko": "그녀는 온 힘을 다해 줄을 당겼어요."
+    },
+    {
+     "en": "The dentist pulled out my tooth.",
+     "ko": "치과 의사가 내 이를 뽑았어요."
+    },
+    {
+     "en": "Give the string a gentle pull.",
+     "ko": "줄을 살짝 당겨 봐."
+    },
+    {
+     "en": "He pulled his hat down over his eyes.",
+     "ko": "그는 모자를 눈까지 내려썼어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "반의어",
+     "word": "push",
+     "ko": "밀다",
+     "en": "Push the cart."
+    },
+    {
+     "type": "연관어",
+     "word": "drag",
+     "ko": "끌다, 끌고 가다",
+     "en": "Drag the chair."
+    },
+    {
+     "type": "연관어",
+     "word": "rope",
+     "ko": "밧줄",
+     "en": "A thick rope."
+    },
+    {
+     "type": "연관어",
+     "word": "tug",
+     "ko": "세게 당기다",
+     "en": "Tug on the leash."
+    },
+    {
+     "type": "연관어",
+     "word": "grab",
+     "ko": "붙잡다",
+     "en": "Grab the handle."
+    },
+    {
+     "type": "연관어",
+     "word": "strength",
+     "ko": "힘",
+     "en": "Use your strength."
+    }
+   ]
+  },
+  "246": {
+   "word": "beat",
+   "overview": [
+    "beat은 '치다', '이기다'라는 뜻의 동사입니다.",
+    "beat a drum(드럼을 치다), beat the other team(다른 팀을 이기다)처럼 씁니다.",
+    "명사로는 '박자', '심장 박동'이라는 뜻입니다. a strong heartbeat(강한 심장 박동)",
+    "과거형은 beat, 과거분사는 beaten으로 형태가 다릅니다."
+   ],
+   "easy": [
+    {
+     "word": "hit",
+     "en": "Hit the drum.",
+     "ko": "드럼을 쳐."
+    },
+    {
+     "word": "win",
+     "en": "Win the game.",
+     "ko": "경기에서 이겨."
+    }
+   ],
+   "etymology": [
+    "beat은 고대 영어 bēatan(치다, 두드리다)에서 온 단어입니다.",
+    "'세게 두드리다'라는 뜻의 아주 옛말에서 그대로 이어져 왔습니다.",
+    "'상대를 두드려 이기다'라는 뜻에서 '경기에서 이기다'라는 뜻이 나왔습니다.",
+    "심장이 규칙적으로 '뛰는' 것도 beat이라고 하는데, 여기서 '박자'라는 뜻도 생겼습니다.",
+    "beat의 핵심 이미지는 '둥, 둥 규칙적으로 울리는 두드림 🥁'입니다."
+   ],
+   "meanings": [
+    "치다, 두드리다 (동사)",
+    "이기다, 물리치다 (동사)",
+    "박자, 심장 박동 (명사)"
+   ],
+   "examples": [
+    {
+     "en": "He beat the drum loudly.",
+     "ko": "그는 드럼을 크게 쳤어요."
+    },
+    {
+     "en": "Our team beat theirs 3 to 1.",
+     "ko": "우리 팀은 3대 1로 그들을 이겼어요."
+    },
+    {
+     "en": "I can feel my heart beat fast.",
+     "ko": "심장이 빨리 뛰는 게 느껴져요."
+    },
+    {
+     "en": "Beat the eggs before you add the sugar.",
+     "ko": "설탕을 넣기 전에 달걀을 잘 저어."
+    },
+    {
+     "en": "The song has a strong beat.",
+     "ko": "그 노래는 박자가 강해요."
+    },
+    {
+     "en": "She was afraid of getting beaten in the race.",
+     "ko": "그녀는 경주에서 지는 것을 두려워했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "변화형",
+     "word": "beaten",
+     "ko": "이겨진, 진 (과거분사)",
+     "en": "The beaten team."
+    },
+    {
+     "type": "유의어",
+     "word": "hit",
+     "ko": "치다",
+     "en": "Hit the ball."
+    },
+    {
+     "type": "유의어",
+     "word": "defeat",
+     "ko": "패배시키다",
+     "en": "Defeat the enemy."
+    },
+    {
+     "type": "연관어",
+     "word": "heartbeat",
+     "ko": "심장 박동",
+     "en": "A steady heartbeat."
+    },
+    {
+     "type": "연관어",
+     "word": "rhythm",
+     "ko": "리듬",
+     "en": "Feel the rhythm."
+    },
+    {
+     "type": "연관어",
+     "word": "win",
+     "ko": "이기다",
+     "en": "Win the match."
+    }
+   ]
   }
  }
 }
