@@ -50,7 +50,7 @@ const FABLES = [
                 ]
             }
         ],
-        "moral": "느리더라도 멈추지 않는 것이 진짜 힘이랍니다."
+        "moral": "느려도 쉬지 않고 걸은 거북이가, 낮잠을 잔 토끼를 이겼답니다."
     },
     {
         "num": 2,
@@ -147,7 +147,7 @@ const FABLES = [
                 ]
             }
         ],
-        "moral": "거짓말이 쌓이면 진실을 말해도 믿어 주지 않는답니다."
+        "moral": "거짓말을 자꾸 하면, 정말 급할 때 참말을 해도 아무도 믿어 주지 않는답니다."
     },
     {
         "num": 4,
@@ -199,7 +199,7 @@ const FABLES = [
                 ]
             }
         ],
-        "moral": "오늘의 즐거움만큼 내일의 준비도 중요하답니다."
+        "moral": "여름에 놀기만 한 베짱이는 겨울에 먹을 것이 없었답니다. 추운 날은 미리 준비해야 해요."
     },
     {
         "num": 5,
@@ -302,7 +302,7 @@ const FABLES = [
                 ]
             }
         ],
-        "moral": "조급한 욕심이 가진 것마저 잃게 만든답니다."
+        "moral": "황금을 한꺼번에 가지려다 황금알을 낳는 거위까지 잃었답니다."
     },
     {
         "num": 7,
@@ -329,7 +329,7 @@ const FABLES = [
                 "left": [
                     "\"나랑 도시로 가자. 진짜 맛있는 걸 보여 줄게!\"",
                     "호기심이 생긴 시골 쥐는 사촌을 따라나섰습니다. 둘은 밤새 걸어 반짝이는 도시에 닿았지요. 도시에 도착한 시골 쥐는 눈이 휘둥그레졌습니다.",
-                    "커다란 식탁 위에 정말 진귀한 음식이 가득했기 때문이지요."
+                    "커다란 식탁 위에 처음 보는 귀하고 맛있는 음식이 가득했기 때문이지요."
                 ],
                 "right": [
                     "\"우와, 이런 건 태어나서 처음 봐!\"",
@@ -354,7 +354,7 @@ const FABLES = [
                 ]
             }
         ],
-        "moral": "불안한 풍족함보다 마음 편한 소박함이 낫답니다."
+        "moral": "맛있는 음식을 벌벌 떨며 먹는 것보다, 소박한 음식을 마음 편히 먹는 것이 낫답니다."
     },
     {
         "num": 8,
@@ -396,7 +396,7 @@ const FABLES = [
                 "left": [
                     "며칠 뒤 사자가 사냥꾼의 그물에 걸리고 말았지요. 아무리 몸부림쳐도 풀리지 않았습니다.",
                     "\"으르렁!\"",
-                    "사자의 절망스러운 포효가 온 숲을 울렸지요. 그 소리를 들은 생쥐가 쪼르르 달려왔습니다.",
+                    "살려 달라는 사자의 포효가 온 숲을 울렸지요. 그 소리를 들은 생쥐가 쪼르르 달려왔습니다.",
                     "\"사자님, 제가 왔어요!\""
                 ],
                 "right": [
@@ -407,7 +407,7 @@ const FABLES = [
                 ]
             }
         ],
-        "moral": "작아 보이는 친절도 큰 도움으로 돌아온답니다."
+        "moral": "사자가 살려 준 작은 생쥐가, 그물에 걸린 사자를 구해 주었답니다."
     },
     {
         "num": 9,
@@ -438,7 +438,7 @@ const FABLES = [
                 ],
                 "right": [
                     "까마귀는 어깨가 으쓱해져 견딜 수가 없었습니다. 나뭇가지가 흔들릴 만큼 몸을 들썩였지요.",
-                    "목을 가다듬어 보았지요. 치즈만 아니었다면 벌써 노래했을 텐데 말입니다. 여우는 시치미를 뚝 뗐지요.",
+                    "목을 가다듬어 보았지요. 치즈만 아니었다면 벌써 노래했을 텐데 말입니다. 여우는 아무것도 모르는 척 기다렸지요.",
                     "그러면서도 눈은 치즈에서 떨어지지 않았습니다. 앞발을 살며시 앞으로 내밀었지요."
                 ]
             },
@@ -455,7 +455,7 @@ const FABLES = [
                     "까마귀는 빈 부리로 멍하니 앉아 있었습니다.",
                     "\"잘 먹겠습니다.\"",
                     "\"그리고 하나만 알려 드리자면,\"",
-                    "\"아부하는 말은 절대 다 믿으면 안 된답니다.\"",
+                    "\"듣기 좋게 꾸민 칭찬은 절대 다 믿으면 안 된답니다.\"",
                     "여우는 콧노래를 부르며 사라졌지요. 까마귀는 그제야 제 부리를 내려다봤습니다."
                 ]
             }
@@ -511,7 +511,7 @@ const FABLES = [
                 ]
             }
         ],
-        "moral": "때로는 부드러움이 강함보다 큰 힘을 낸답니다."
+        "moral": "세찬 바람은 외투를 벗기지 못했지만, 따뜻한 햇살은 벗겼답니다."
     },
     {
         "num": 11,
@@ -584,7 +584,7 @@ const FABLES = [
             {
                 "art": "story-12-bat-2.webp",
                 "left": [
-                    "그런데 얼마 뒤 전세가 뒤집혔습니다. 이번에는 짐승들이 우세해졌지요. 박쥐는 그것을 나무 위에서 가만히 지켜보았습니다.",
+                    "그런데 얼마 뒤 전세가 뒤집혔습니다. 이번에는 짐승들이 이기기 시작했지요. 박쥐는 그것을 나무 위에서 가만히 지켜보았습니다.",
                     "박쥐는 얼른 말을 바꾸었지요. 이번에는 입을 벌려 이빨을 드러냈습니다. 그러고는 곧장 짐승들에게 달려갔지요."
                 ],
                 "right": [
@@ -598,8 +598,8 @@ const FABLES = [
                 "art": "story-12-bat-3.webp",
                 "left": [
                     "마침내 전쟁이 끝나고 화해를 축하하는 잔치가 열렸습니다. 박쥐가 슬쩍 끼어들려 하자 양쪽 모두 등을 돌렸지요.",
-                    "\"너는 우리가 불리할 때 짐승 편에 붙었잖아.\"",
-                    "\"너는 우리가 불리할 때 새 편에 붙었잖아.\""
+                    "새들이 말했습니다. \"너는 우리가 불리할 때 짐승 편에 붙었잖아.\"",
+                    "짐승들도 말했지요. \"너는 우리가 불리할 때 새 편에 붙었잖아.\""
                 ],
                 "right": [
                     "박쥐는 어느 쪽에도 끼지 못했지요. 잔칫상 한구석에 우두커니 서 있다가 돌아섰습니다. 아무도 붙잡지 않았지요.",
@@ -608,7 +608,7 @@ const FABLES = [
                 ]
             }
         ],
-        "moral": "이익만 좇아 말을 바꾸면 어느 쪽에도 남지 못한답니다."
+        "moral": "이길 것 같은 쪽으로만 편을 바꾸던 박쥐는, 결국 어느 편에도 끼지 못했답니다."
     },
     {
         "num": 13,
@@ -870,7 +870,7 @@ const QUIZ = [
     { q: "거위 배 속에는 무엇이 있었나요?", choices: ["황금이 가득했다", "텅 비어 있었다", "알이 하나 있었다"], answer: 1 },
     { q: "시골 쥐가 도시를 떠나기로 한 까닭은 무엇인가요?", choices: ["음식이 입에 맞지 않아서", "사촌이 돌아가라고 해서", "사람과 고양이에게 쫓겨 무서워서"], answer: 2 },
     { q: "사자는 붙잡은 생쥐를 왜 놓아주었나요?", choices: ["은혜를 갚겠다는 말에 감동해서", "생쥐의 말에 웃다 보니 화가 풀려서", "너무 작아 먹을 것이 없어서"], answer: 1 },
-    { q: "치즈를 얻은 여우가 까마귀에게 남긴 말은 무엇인가요?", choices: ["아부하는 말은 다 믿으면 안 된다", "다음에는 노래를 꼭 들려 달라", "깃털이 정말 아름답다"], answer: 0 },
+    { q: "치즈를 얻은 여우가 까마귀에게 남긴 말은 무엇인가요?", choices: ["듣기 좋게 꾸민 칭찬은 다 믿으면 안 된다", "다음에는 노래를 꼭 들려 달라", "깃털이 정말 아름답다"], answer: 0 },
     { q: "나그네의 외투로 내기를 하자고 말한 것은 누구인가요?", choices: ["북풍", "나그네", "해님"], answer: 2 },
     { q: "개는 물속의 개를 보고 무슨 생각을 했나요?", choices: ["저 개가 내 고기를 빼앗으러 온다", "물에 비친 내 모습이구나", "저 고기가 내 것보다 훨씬 크다"], answer: 2 },
     { q: "박쥐가 처음 편을 든 쪽은 어느 쪽이었나요?", choices: ["짐승들", "새들", "어느 쪽에도 붙지 않았다"], answer: 1 },
@@ -1548,8 +1548,8 @@ const EN = {
                     art: 'story-12-bat-3.webp',
                     left: [
                         "At last the war ended, and there was a feast to celebrate the peace. When the bat tried to slip in among them, both sides turned their backs.",
-                        "\"You went over to the beasts when we were losing.\"",
-                        "\"You went over to the birds when we were losing.\""
+                        "The birds said, \"You went over to the beasts when we were losing.\"",
+                        "The beasts said, \"You went over to the birds when we were losing.\""
                     ],
                     right: [
                         "There was no place for the bat on either side. He stood about in a corner of the feast for a while and then turned away. Nobody called him back.",
@@ -1832,7 +1832,7 @@ const EN = {
         'story-07-mice-2.webp': [
             { word: 'curious', meaning: '호기심이 생긴', sentence: 'The country mouse was curious.' },
             { word: 'glitter', meaning: '반짝이다', sentence: 'They came to the glittering town.' },
-            { word: 'extraordinary', meaning: '진귀한', sentence: 'A table covered in extraordinary food.' },
+            { word: 'extraordinary', meaning: '아주 귀한, 보기 드문', sentence: 'A table covered in extraordinary food.' },
             { word: 'get one’s teeth into', meaning: '갉아먹기 시작하다', sentence: 'They were about to get their teeth into the cheese.' }
         ],
         'story-07-mice-3.webp': [
@@ -1878,7 +1878,7 @@ const EN = {
             { word: 'snap up', meaning: '잽싸게 낚아채다', sentence: 'The fox snapped it up in a flash.' },
             { word: 'grin', meaning: '씩 웃다', sentence: 'And he grinned.' },
             { word: 'much obliged', meaning: '잘 먹겠습니다', sentence: 'Much obliged.' },
-            { word: 'flatterer', meaning: '아부하는 사람', sentence: 'Never believe everything a flatterer says.' }
+            { word: 'flatterer', meaning: '듣기 좋은 말로 남의 마음을 사려는 사람', sentence: 'Never believe everything a flatterer says.' }
         ],
         'story-10-sun.webp': [
             { word: 'argument', meaning: '다툼', sentence: 'The argument went on and on.' },
@@ -2127,7 +2127,7 @@ const WORDS_KO = {
     ],
     "story-08-lion-3.webp": [
         { w: "몸부림치다", k: "빠져나오려고 온몸을 마구 흔들다.", s: "아무리 몸부림쳐도 풀리지 않았습니다." },
-        { w: "포효", k: "짐승이 크게 우는 소리.", s: "사자의 절망스러운 포효가 온 숲을 울렸지요." },
+        { w: "포효", k: "짐승이 크게 우는 소리.", s: "살려 달라는 사자의 포효가 온 숲을 울렸지요." },
         { w: "날카롭다", k: "끝이 뾰족하고 잘 베이다.", s: "생쥐는 작고 날카로운 이빨로 밤새 밧줄을 갉았지요." },
         { w: "밧줄", k: "굵고 튼튼하게 꼰 줄.", s: "생쥐는 작고 날카로운 이빨로 밤새 밧줄을 갉았지요." }
     ],
@@ -2146,7 +2146,7 @@ const WORDS_KO = {
     "story-09-crow-3.webp": [
         { w: "툭", k: "무엇이 떨어지거나 끊어지는 소리.", s: "그 순간 툭!" },
         { w: "그제야", k: "그때에야 비로소.", s: "까마귀는 그제야 제 부리를 내려다봤습니다." },
-        { w: "절대", k: "어떤 경우에도 결코.", s: "\"아부하는 말은 절대 다 믿으면 안 된답니다.\"" }
+        { w: "절대", k: "어떤 경우에도 결코.", s: "\"듣기 좋게 꾸민 칭찬은 절대 다 믿으면 안 된답니다.\"" }
     ],
     "story-10-sun.webp": [
         { w: "북풍", k: "북쪽에서 불어오는 찬 바람.", s: "북풍과 해님이 하늘에서 마주쳤습니다." },
