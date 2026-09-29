@@ -15345,6 +15345,1918 @@
      "en": "Follow a command."
     }
    ]
+  },
+  "2192": {
+   "word": "remote",
+   "overview": [
+    "remote는 '멀리 떨어진, 외딴'이라는 뜻의 형용사입니다.",
+    "a remote village(외딴 마을)처럼 씁니다.",
+    "'(비유) 관계가 적은, 희박한'이라는 뜻으로도 씁니다.",
+    "명사로는 '리모컨'이라는 뜻으로도 아주 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "far away",
+     "en": "A far-away island.",
+     "ko": "멀리 떨어진 섬."
+    },
+    {
+     "word": "isolated",
+     "en": "An isolated cabin.",
+     "ko": "외딴 오두막."
+    }
+   ],
+   "etymology": [
+    "remote는 라틴어 removere(뒤로 옮기다, 치우다)에서 온 단어입니다.",
+    "re(뒤로)와 movere(움직이다)가 합쳐진 말로, remove(제거하다)와 같은 가족입니다.",
+    "'중심에서 멀리 뒤로 옮겨져 있는'이라는 뜻이 그대로 이어져 왔습니다.",
+    "물리적 거리뿐 아니라 가능성이나 관계가 희박한 것을 가리키는 데도 씁니다.",
+    "remote의 핵심 이미지는 '중심에서 멀리 떨어져 손이 닿지 않는 거리감 🏝️'입니다."
+   ],
+   "meanings": [
+    "거리가 떨어진, 먼, 소원한",
+    "(비유) 관계가 적은, 희박한"
+   ],
+   "examples": [
+    {
+     "en": "They live in a remote village in the mountains.",
+     "ko": "그들은 그 산속의 외딴 마을에 살아요."
+    },
+    {
+     "en": "There is only a remote chance of rain today.",
+     "ko": "오늘 비가 올 가능성은 희박해요."
+    },
+    {
+     "en": "He works remotely from a small island.",
+     "ko": "그는 작은 섬에서 원격으로 일해요."
+    },
+    {
+     "en": "The remote control was hidden under the couch.",
+     "ko": "그 리모컨은 그 소파 밑에 숨겨져 있었어요."
+    },
+    {
+     "en": "She felt a remote connection to her ancestors.",
+     "ko": "그녀는 자신의 조상들과 희미한 연결감을 느꼈어요."
+    },
+    {
+     "en": "The station is in a remote area with few roads.",
+     "ko": "그 기지는 도로가 거의 없는 외딴 지역에 있어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "isolated",
+     "ko": "고립된",
+     "en": "An isolated town."
+    },
+    {
+     "type": "반의어",
+     "word": "nearby",
+     "ko": "가까운",
+     "en": "A nearby city."
+    },
+    {
+     "type": "연관어",
+     "word": "distant",
+     "ko": "먼",
+     "en": "A distant land."
+    },
+    {
+     "type": "연관어",
+     "word": "remote control",
+     "ko": "리모컨",
+     "en": "Find the remote control."
+    },
+    {
+     "type": "연관어",
+     "word": "wilderness",
+     "ko": "황야",
+     "en": "A vast wilderness."
+    },
+    {
+     "type": "연관어",
+     "word": "unlikely",
+     "ko": "가능성이 낮은",
+     "en": "An unlikely event."
+    }
+   ]
+  },
+  "1565": {
+   "word": "liberty",
+   "overview": [
+    "liberty는 '자유'라는 뜻의 명사입니다.",
+    "fight for liberty(자유를 위해 싸우다)처럼 씁니다.",
+    "억압이나 구속 없이 원하는 대로 행동할 수 있는 상태를 뜻합니다.",
+    "take liberties는 '함부로 굴다, 마음대로 하다'라는 관용 표현으로 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "freedom",
+     "en": "True freedom.",
+     "ko": "진정한 자유."
+    },
+    {
+     "word": "independence",
+     "en": "National independence.",
+     "ko": "국가의 독립."
+    }
+   ],
+   "etymology": [
+    "liberty는 라틴어 libertas(자유)에서 온 단어입니다.",
+    "liber(자유로운)에서 나온 말로, liberate(해방시키다)와 같은 가족입니다.",
+    "'구속받지 않고 자유롭게 살 수 있는 상태'라는 뜻이 그대로 이어져 왔습니다.",
+    "정치적 자유, 개인의 자유 모두를 아우르는 폭넓은 개념으로 씁니다.",
+    "liberty의 핵심 이미지는 '구속에서 벗어나 자유롭게 서 있는 자유의 여신상 🗽'입니다."
+   ],
+   "meanings": [
+    "자유"
+   ],
+   "examples": [
+    {
+     "en": "The revolution was fought for liberty and equality.",
+     "ko": "그 혁명은 자유와 평등을 위해 벌어졌어요."
+    },
+    {
+     "en": "The prisoner was finally granted his liberty.",
+     "ko": "그 죄수는 마침내 자신의 자유를 부여받았어요."
+    },
+    {
+     "en": "Freedom of speech is a fundamental liberty.",
+     "ko": "언론의 자유는 근본적인 자유예요."
+    },
+    {
+     "en": "She took the liberty of rearranging the furniture.",
+     "ko": "그녀는 그 가구를 마음대로 재배치했어요."
+    },
+    {
+     "en": "The Statue of Liberty stands in New York Harbor.",
+     "ko": "그 자유의 여신상은 뉴욕 항구에 서 있어요."
+    },
+    {
+     "en": "Citizens value their political liberty greatly.",
+     "ko": "시민들은 자신들의 정치적 자유를 크게 소중히 여겨요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "freedom",
+     "ko": "자유",
+     "en": "Personal freedom."
+    },
+    {
+     "type": "연관어",
+     "word": "independence",
+     "ko": "독립",
+     "en": "Declare independence."
+    },
+    {
+     "type": "연관어",
+     "word": "rights",
+     "ko": "권리",
+     "en": "Human rights."
+    },
+    {
+     "type": "연관어",
+     "word": "democracy",
+     "ko": "민주주의",
+     "en": "Modern democracy."
+    },
+    {
+     "type": "연관어",
+     "word": "release",
+     "ko": "석방",
+     "en": "Grant release."
+    },
+    {
+     "type": "연관어",
+     "word": "equality",
+     "ko": "평등",
+     "en": "Fight for equality."
+    }
+   ]
+  },
+  "1246": {
+   "word": "grief",
+   "overview": [
+    "grief는 '깊은 슬픔, 비통'이라는 뜻의 명사입니다.",
+    "overcome with grief(비통함에 압도되다)처럼 씁니다.",
+    "특히 사랑하는 사람을 잃었을 때 느끼는 극심한 슬픔을 뜻합니다.",
+    "동사 grieve(슬퍼하다)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "deep sadness",
+     "en": "Deep sadness.",
+     "ko": "깊은 슬픔."
+    },
+    {
+     "word": "sorrow",
+     "en": "Great sorrow.",
+     "ko": "큰 비애."
+    }
+   ],
+   "etymology": [
+    "grief는 라틴어 gravis(무거운)에서 온 단어입니다.",
+    "grave(무덤, 심각한), gravity(중력)와 같은 가족입니다.",
+    "'마음을 무겁게 짓누르는 감정'이라는 뜻에서 시작되었습니다.",
+    "특히 소중한 사람을 잃었을 때 느끼는 무겁고 깊은 슬픔을 가리키는 데 굳어졌습니다.",
+    "grief의 핵심 이미지는 '마음을 무겁게 짓누르는 깊은 슬픔 😢'입니다."
+   ],
+   "meanings": [
+    "깊은 슬픔, 비통"
+   ],
+   "examples": [
+    {
+     "en": "She was overwhelmed with grief after the loss.",
+     "ko": "그녀는 그 상실 후 비통함에 압도되었어요."
+    },
+    {
+     "en": "He struggled to cope with his grief.",
+     "ko": "그는 자신의 슬픔에 대처하려고 애썼어요."
+    },
+    {
+     "en": "The family shared their grief at the funeral.",
+     "ko": "그 가족은 그 장례식에서 자신들의 슬픔을 나눴어요."
+    },
+    {
+     "en": "Time helped ease her grief slowly.",
+     "ko": "시간은 그녀의 슬픔을 서서히 덜어 주었어요."
+    },
+    {
+     "en": "His grief was evident in every word he spoke.",
+     "ko": "그의 비통함은 그가 하는 모든 말에서 뚜렷했어요."
+    },
+    {
+     "en": "Support groups help people process their grief.",
+     "ko": "지지 모임들은 사람들이 자신들의 슬픔을 다스리도록 도와요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "sorrow",
+     "ko": "비애",
+     "en": "Deep sorrow."
+    },
+    {
+     "type": "파생어",
+     "word": "grieve",
+     "ko": "슬퍼하다",
+     "en": "Grieve quietly."
+    },
+    {
+     "type": "연관어",
+     "word": "sadness",
+     "ko": "슬픔",
+     "en": "Overwhelming sadness."
+    },
+    {
+     "type": "연관어",
+     "word": "loss",
+     "ko": "상실",
+     "en": "A great loss."
+    },
+    {
+     "type": "연관어",
+     "word": "mourn",
+     "ko": "애도하다",
+     "en": "Mourn a loved one."
+    },
+    {
+     "type": "연관어",
+     "word": "comfort",
+     "ko": "위로",
+     "en": "Offer comfort."
+    }
+   ]
+  },
+  "2134": {
+   "word": "random",
+   "overview": [
+    "random은 '무작위의, 임의의'라는 뜻의 형용사입니다.",
+    "a random selection(무작위 선택)처럼 씁니다.",
+    "특정한 순서나 패턴 없이 이루어지는 것을 뜻합니다.",
+    "at random은 '무작위로'라는 부사구 표현으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "arbitrary",
+     "en": "An arbitrary choice.",
+     "ko": "임의의 선택."
+    },
+    {
+     "word": "unplanned",
+     "en": "An unplanned event.",
+     "ko": "계획되지 않은 일."
+    }
+   ],
+   "etymology": [
+    "random은 옛 프랑스어 randon(빠른 속도, 무모함)에서 온 단어입니다.",
+    "'통제 없이 빠르고 무모하게 나아가는 움직임'이라는 뜻에서 시작되었습니다.",
+    "그 무모하고 예측할 수 없는 움직임에서 '패턴 없는, 무작위의'라는 뜻으로 굳어졌습니다.",
+    "지금은 수학, 통계뿐 아니라 일상에서도 순서 없이 일어나는 일을 가리킵니다.",
+    "random의 핵심 이미지는 '어떤 규칙도 없이 제멋대로 일어나는 무작위성 🎲'입니다."
+   ],
+   "meanings": [
+    "마구잡이의, 임의의"
+   ],
+   "examples": [
+    {
+     "en": "The teacher chose students at random for the quiz.",
+     "ko": "그 선생님은 그 퀴즈를 위해 학생들을 무작위로 선택했어요."
+    },
+    {
+     "en": "A random error caused the program to crash.",
+     "ko": "무작위 오류가 그 프로그램을 고장 나게 했어요."
+    },
+    {
+     "en": "She met him by a random chance at the airport.",
+     "ko": "그녀는 그 공항에서 우연한 기회로 그를 만났어요."
+    },
+    {
+     "en": "The survey used a random sample of the population.",
+     "ko": "그 설문 조사는 그 인구의 무작위 표본을 사용했어요."
+    },
+    {
+     "en": "He made a random comment during the meeting.",
+     "ko": "그는 그 회의 동안 뜬금없는 말을 했어요."
+    },
+    {
+     "en": "The numbers were generated randomly by the computer.",
+     "ko": "그 숫자들은 그 컴퓨터에 의해 무작위로 생성되었어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "arbitrary",
+     "ko": "임의의",
+     "en": "An arbitrary rule."
+    },
+    {
+     "type": "반의어",
+     "word": "systematic",
+     "ko": "체계적인",
+     "en": "A systematic approach."
+    },
+    {
+     "type": "연관어",
+     "word": "chance",
+     "ko": "우연",
+     "en": "By pure chance."
+    },
+    {
+     "type": "연관어",
+     "word": "sample",
+     "ko": "표본",
+     "en": "A large sample."
+    },
+    {
+     "type": "연관어",
+     "word": "unpredictable",
+     "ko": "예측할 수 없는",
+     "en": "An unpredictable result."
+    },
+    {
+     "type": "연관어",
+     "word": "selection",
+     "ko": "선택",
+     "en": "A careful selection."
+    }
+   ]
+  },
+  "1803": {
+   "word": "novel",
+   "overview": [
+    "novel은 형용사로 '새로운, 참신한'이라는 뜻입니다.",
+    "a novel idea(참신한 아이디어)처럼 씁니다.",
+    "명사로는 훨씬 더 자주 '(장편) 소설'이라는 뜻으로 씁니다.",
+    "기존에 없던 독창적이고 기발한 것을 뜻합니다."
+   ],
+   "easy": [
+    {
+     "word": "new",
+     "en": "A new approach.",
+     "ko": "새로운 접근법."
+    },
+    {
+     "word": "original",
+     "en": "An original design.",
+     "ko": "독창적인 디자인."
+    }
+   ],
+   "etymology": [
+    "novel은 라틴어 novellus(새로운)에서 온 단어입니다.",
+    "novus(새로운)에서 나온 말로, innovate(혁신하다)와 같은 가족입니다.",
+    "'지금까지 없었던 완전히 새로운 것'이라는 뜻이 그대로 이어져 왔습니다.",
+    "그 새롭고 긴 이야기 형식의 글이라는 뜻에서 '소설'이라는 명사도 나왔습니다.",
+    "novel의 핵심 이미지는 '이전에 없던 참신하고 새로운 것 💡'입니다."
+   ],
+   "meanings": [
+    "새로운, 신기한, 참신한, 진기한, 기발한, 독창적인"
+   ],
+   "examples": [
+    {
+     "en": "The scientist proposed a novel solution to the problem.",
+     "ko": "그 과학자는 그 문제에 대한 참신한 해결책을 제안했어요."
+    },
+    {
+     "en": "She wrote her first novel at the age of twenty.",
+     "ko": "그녀는 스무 살의 나이에 자신의 첫 소설을 썼어요."
+    },
+    {
+     "en": "The design featured a novel approach to lighting.",
+     "ko": "그 디자인은 조명에 대한 참신한 접근법을 특징으로 했어요."
+    },
+    {
+     "en": "His novel idea impressed the entire team.",
+     "ko": "그의 참신한 아이디어는 그 팀 전체에게 깊은 인상을 남겼어요."
+    },
+    {
+     "en": "The library added several new novels this month.",
+     "ko": "그 도서관은 이번 달 여러 편의 새로운 소설들을 추가했어요."
+    },
+    {
+     "en": "This novel technique reduces production costs.",
+     "ko": "이 참신한 기법은 생산 비용을 줄여요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "new",
+     "ko": "새로운",
+     "en": "A new invention."
+    },
+    {
+     "type": "연관어",
+     "word": "original",
+     "ko": "독창적인",
+     "en": "An original thought."
+    },
+    {
+     "type": "연관어",
+     "word": "unique",
+     "ko": "독특한",
+     "en": "A unique feature."
+    },
+    {
+     "type": "연관어",
+     "word": "fiction",
+     "ko": "소설",
+     "en": "Read fiction."
+    },
+    {
+     "type": "연관어",
+     "word": "innovative",
+     "ko": "혁신적인",
+     "en": "An innovative product."
+    },
+    {
+     "type": "연관어",
+     "word": "creative",
+     "ko": "창의적인",
+     "en": "A creative solution."
+    }
+   ]
+  },
+  "632": {
+   "word": "core",
+   "overview": [
+    "core는 '(과일의) 속, 심'이라는 뜻의 명사이자 동사입니다.",
+    "the core of an apple(사과의 속)처럼 씁니다.",
+    "'핵심, 중심부'라는 비유적인 뜻으로도 아주 자주 씁니다.",
+    "동사로는 '과일의 속을 빼다'라는 뜻으로 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "center",
+     "en": "The very center.",
+     "ko": "바로 그 중심부."
+    },
+    {
+     "word": "heart",
+     "en": "The heart of the issue.",
+     "ko": "그 문제의 핵심."
+    }
+   ],
+   "etymology": [
+    "core는 라틴어 cor(심장)에서 온 단어로 추정됩니다.",
+    "courage(용기, '심장의 힘')와도 이어지는 뿌리라고 봅니다.",
+    "'사물의 한가운데 있는 심장 같은 중심부'라는 뜻에서 시작되었습니다.",
+    "과일의 씨가 있는 속뿐 아니라 문제의 본질, 지구의 핵까지 폭넓게 씁니다.",
+    "core의 핵심 이미지는 '모든 것의 한가운데 자리한 진짜 중심 🍎'입니다."
+   ],
+   "meanings": [
+    "(과일) 속, 심",
+    "핵심, 중심부",
+    "속이나 씨를 빼다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "She cored the apple before slicing it.",
+     "ko": "그녀는 그 사과를 자르기 전에 속을 뺐어요."
+    },
+    {
+     "en": "Trust is at the core of every relationship.",
+     "ko": "신뢰는 모든 관계의 핵심에 있어요."
+    },
+    {
+     "en": "The earth's core is extremely hot.",
+     "ko": "지구의 핵은 극도로 뜨거워요."
+    },
+    {
+     "en": "He identified the core problem right away.",
+     "ko": "그는 그 핵심 문제를 즉시 파악했어요."
+    },
+    {
+     "en": "Their core values include honesty and respect.",
+     "ko": "그들의 핵심 가치는 정직함과 존중을 포함해요."
+    },
+    {
+     "en": "The pear's core contains several small seeds.",
+     "ko": "그 배의 속은 여러 개의 작은 씨앗들을 포함해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "center",
+     "ko": "중심",
+     "en": "The city center."
+    },
+    {
+     "type": "연관어",
+     "word": "heart",
+     "ko": "핵심",
+     "en": "The heart of the matter."
+    },
+    {
+     "type": "연관어",
+     "word": "essence",
+     "ko": "본질",
+     "en": "The essence of art."
+    },
+    {
+     "type": "연관어",
+     "word": "seed",
+     "ko": "씨앗",
+     "en": "A tiny seed."
+    },
+    {
+     "type": "연관어",
+     "word": "fundamental",
+     "ko": "근본적인",
+     "en": "A fundamental truth."
+    },
+    {
+     "type": "연관어",
+     "word": "central",
+     "ko": "중심의",
+     "en": "A central idea."
+    }
+   ]
+  },
+  "837": {
+   "word": "divine",
+   "overview": [
+    "divine은 '신의, 신성한'이라는 뜻의 형용사입니다.",
+    "divine power(신성한 힘)처럼 씁니다.",
+    "'(비유) 매우 훌륭한, 성스러운'이라는 뜻으로도 씁니다.",
+    "동사로는 '(초자연적으로) 알아내다, 예측하다'라는 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "godly",
+     "en": "A godly presence.",
+     "ko": "신과 같은 존재."
+    },
+    {
+     "word": "heavenly",
+     "en": "A heavenly voice.",
+     "ko": "천상의 목소리."
+    }
+   ],
+   "etymology": [
+    "divine은 라틴어 divinus(신에게 속하는)에서 온 단어입니다.",
+    "deus(신)에서 나온 말로, deity(신)와 같은 가족입니다.",
+    "'신에게서 비롯되거나 신과 관련된 것'이라는 뜻이 그대로 이어져 왔습니다.",
+    "그 신성함에 비유해 매우 훌륭하고 아름다운 것을 가리키는 데도 씁니다.",
+    "divine의 핵심 이미지는 '신에게서 비롯된 성스럽고 초월적인 힘 ✨'입니다."
+   ],
+   "meanings": [
+    "신의, 신성하다",
+    "(비유) 성스럽다"
+   ],
+   "examples": [
+    {
+     "en": "Many cultures believe in divine intervention.",
+     "ko": "많은 문화들은 신의 개입을 믿어요."
+    },
+    {
+     "en": "The temple was built to honor a divine being.",
+     "ko": "그 사원은 신성한 존재를 기리기 위해 지어졌어요."
+    },
+    {
+     "en": "She sang with an almost divine voice.",
+     "ko": "그녀는 거의 성스러운 목소리로 노래했어요."
+    },
+    {
+     "en": "The king claimed to rule by divine right.",
+     "ko": "그 왕은 신성한 권리로 통치한다고 주장했어요."
+    },
+    {
+     "en": "The sunset over the ocean was simply divine.",
+     "ko": "그 바다 위의 일몰은 그야말로 성스러웠어요."
+    },
+    {
+     "en": "They prayed for divine guidance during the crisis.",
+     "ko": "그들은 그 위기 동안 신의 인도를 위해 기도했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "holy",
+     "ko": "신성한",
+     "en": "A holy site."
+    },
+    {
+     "type": "연관어",
+     "word": "sacred",
+     "ko": "성스러운",
+     "en": "A sacred temple."
+    },
+    {
+     "type": "연관어",
+     "word": "heavenly",
+     "ko": "천상의",
+     "en": "A heavenly sight."
+    },
+    {
+     "type": "연관어",
+     "word": "god",
+     "ko": "신",
+     "en": "Worship a god."
+    },
+    {
+     "type": "연관어",
+     "word": "spiritual",
+     "ko": "영적인",
+     "en": "A spiritual journey."
+    },
+    {
+     "type": "연관어",
+     "word": "miracle",
+     "ko": "기적",
+     "en": "A true miracle."
+    }
+   ]
+  },
+  "1219": {
+   "word": "goat",
+   "overview": [
+    "goat는 '염소'라는 뜻의 명사입니다.",
+    "raise goats(염소를 기르다)처럼 씁니다.",
+    "산이나 언덕에서도 잘 오르내리는 동물로 알려져 있습니다.",
+    "우유와 치즈를 얻기 위해 널리 사육됩니다."
+   ],
+   "easy": [
+    {
+     "word": "farm animal",
+     "en": "A horned farm animal.",
+     "ko": "뿔 달린 농장 동물."
+    },
+    {
+     "word": "livestock",
+     "en": "Raise livestock.",
+     "ko": "가축을 기르다."
+    }
+   ],
+   "etymology": [
+    "goat는 고대 영어 gat(염소)에서 온 단어입니다.",
+    "게르만 말 뿌리에서 온 아주 오래된 동물 이름으로, 수천 년간 크게 형태가 바뀌지 않았습니다.",
+    "'뿔이 나고 산을 잘 오르는 가축화된 동물'이라는 뜻이 그대로 이어져 왔습니다.",
+    "고집이 세다는 이미지에서 get someone's goat(누군가를 화나게 하다)라는 표현도 생겼습니다.",
+    "goat의 핵심 이미지는 '뿔을 세우고 바위산을 가볍게 오르는 염소 🐐'입니다."
+   ],
+   "meanings": [
+    "(동물) 염소"
+   ],
+   "examples": [
+    {
+     "en": "The farmer keeps a herd of goats.",
+     "ko": "그 농부는 염소 떼를 기르고 있어요."
+    },
+    {
+     "en": "Goats can climb steep rocky hills easily.",
+     "ko": "염소들은 가파른 바위투성이 언덕을 쉽게 오를 수 있어요."
+    },
+    {
+     "en": "They make cheese from goat's milk.",
+     "ko": "그들은 염소 젖으로 치즈를 만들어요."
+    },
+    {
+     "en": "The children fed the goats at the petting zoo.",
+     "ko": "그 아이들은 그 체험 동물원에서 그 염소들에게 먹이를 줬어요."
+    },
+    {
+     "en": "A wild goat stood on the edge of the cliff.",
+     "ko": "야생 염소 한 마리가 그 절벽 가장자리에 서 있었어요."
+    },
+    {
+     "en": "The goat chewed on the grass all afternoon.",
+     "ko": "그 염소는 오후 내내 그 풀을 씹었어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "sheep",
+     "ko": "양",
+     "en": "A flock of sheep."
+    },
+    {
+     "type": "연관어",
+     "word": "farm",
+     "ko": "농장",
+     "en": "A family farm."
+    },
+    {
+     "type": "연관어",
+     "word": "milk",
+     "ko": "우유",
+     "en": "Fresh milk."
+    },
+    {
+     "type": "연관어",
+     "word": "horn",
+     "ko": "뿔",
+     "en": "Sharp horns."
+    },
+    {
+     "type": "연관어",
+     "word": "livestock",
+     "ko": "가축",
+     "en": "Raise livestock."
+    },
+    {
+     "type": "연관어",
+     "word": "cliff",
+     "ko": "절벽",
+     "en": "A rocky cliff."
+    }
+   ]
+  },
+  "2449": {
+   "word": "soap",
+   "overview": [
+    "soap는 '비누'라는 뜻의 명사입니다.",
+    "wash with soap(비누로 씻다)처럼 씁니다.",
+    "때와 기름기를 씻어 내는 데 쓰는 세정제를 뜻합니다.",
+    "soap opera(연속극)라는 표현으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "cleanser",
+     "en": "A gentle cleanser.",
+     "ko": "순한 세정제."
+    },
+    {
+     "word": "bar of soap",
+     "en": "A bar of soap.",
+     "ko": "비누 한 개."
+    }
+   ],
+   "etymology": [
+    "soap는 고대 영어 sape(비누)에서 온 단어입니다.",
+    "게르만 말 뿌리에서 온 오래된 단어로, 로마인들이 처음 만난 게르만 부족에게서 배운 것으로 전해집니다.",
+    "'기름과 재를 섞어 만든 몸을 씻는 물질'이라는 뜻이 그대로 이어져 왔습니다.",
+    "20세기 초 라디오 드라마가 비누 회사의 광고를 후원받으면서 soap opera라는 표현도 생겼습니다.",
+    "soap의 핵심 이미지는 '거품을 내어 몸과 마음의 때를 씻어 주는 비누 🧼'입니다."
+   ],
+   "meanings": [
+    "비누"
+   ],
+   "examples": [
+    {
+     "en": "Wash your hands with soap and water.",
+     "ko": "비누와 물로 당신의 손을 씻으세요."
+    },
+    {
+     "en": "The hotel provided a small bar of soap.",
+     "ko": "그 호텔은 작은 비누 한 개를 제공했어요."
+    },
+    {
+     "en": "She makes homemade soap using natural oils.",
+     "ko": "그녀는 천연 오일을 사용해 수제 비누를 만들어요."
+    },
+    {
+     "en": "The soap left a pleasant lavender scent.",
+     "ko": "그 비누는 기분 좋은 라벤더 향을 남겼어요."
+    },
+    {
+     "en": "He lathered his hands with soap before dinner.",
+     "ko": "그는 저녁 식사 전에 자신의 손에 비누 거품을 냈어요."
+    },
+    {
+     "en": "My grandmother loves watching soap operas.",
+     "ko": "제 할머니는 연속극을 보는 것을 아주 좋아하세요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "wash",
+     "ko": "씻다",
+     "en": "Wash your face."
+    },
+    {
+     "type": "연관어",
+     "word": "clean",
+     "ko": "깨끗한",
+     "en": "A clean towel."
+    },
+    {
+     "type": "연관어",
+     "word": "bubble",
+     "ko": "거품",
+     "en": "Soap bubbles."
+    },
+    {
+     "type": "연관어",
+     "word": "shampoo",
+     "ko": "샴푸",
+     "en": "Use shampoo."
+    },
+    {
+     "type": "연관어",
+     "word": "hygiene",
+     "ko": "위생",
+     "en": "Personal hygiene."
+    },
+    {
+     "type": "연관어",
+     "word": "scent",
+     "ko": "향기",
+     "en": "A pleasant scent."
+    }
+   ]
+  },
+  "633": {
+   "word": "corn",
+   "overview": [
+    "corn은 '옥수수'라는 뜻의 명사로 가장 널리 쓰입니다.",
+    "grow corn(옥수수를 재배하다)처럼 씁니다.",
+    "영국 영어에서는 밀 등의 '곡물' 전반을 가리키기도 합니다.",
+    "동사로는 '가루로 만들다, 소금에 절이다'라는 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "maize",
+     "en": "A field of maize.",
+     "ko": "옥수수 밭."
+    },
+    {
+     "word": "grain",
+     "en": "A grain crop.",
+     "ko": "곡물 작물."
+    }
+   ],
+   "etymology": [
+    "corn은 고대 영어 corn(낟알, 곡식)에서 온 단어입니다.",
+    "게르만 말 뿌리에서 온 단어로, 원래는 특정 곡물이 아니라 '낟알' 전반을 뜻했습니다.",
+    "영국에서는 지금도 밀 등 주요 곡물을 가리키는 데 쓰입니다.",
+    "미국에서는 아메리카 원주민이 재배하던 옥수수를 가리키는 말로 굳어졌습니다.",
+    "corn의 핵심 이미지는 '들판에서 노랗게 여문 낟알과 곡물 🌽'입니다."
+   ],
+   "meanings": [
+    "가루로 만들다"
+   ],
+   "examples": [
+    {
+     "en": "Farmers harvested the corn in early autumn.",
+     "ko": "농부들은 이른 가을에 그 옥수수를 수확했어요."
+    },
+    {
+     "en": "She grilled fresh corn for the barbecue.",
+     "ko": "그녀는 그 바비큐를 위해 신선한 옥수수를 구웠어요."
+    },
+    {
+     "en": "The field was full of tall corn stalks.",
+     "ko": "그 밭은 키 큰 옥수수 줄기들로 가득했어요."
+    },
+    {
+     "en": "Corn is a staple crop in many countries.",
+     "ko": "옥수수는 많은 나라들에서 주요 작물이에요."
+    },
+    {
+     "en": "They popped corn kernels for a movie night.",
+     "ko": "그들은 영화 보는 밤을 위해 옥수수 알을 튀겼어요."
+    },
+    {
+     "en": "The meat was corned with coarse salt.",
+     "ko": "그 고기는 굵은 소금으로 절여졌어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "maize",
+     "ko": "옥수수",
+     "en": "Golden maize."
+    },
+    {
+     "type": "연관어",
+     "word": "crop",
+     "ko": "작물",
+     "en": "A summer crop."
+    },
+    {
+     "type": "연관어",
+     "word": "field",
+     "ko": "밭",
+     "en": "A wide field."
+    },
+    {
+     "type": "연관어",
+     "word": "harvest",
+     "ko": "수확",
+     "en": "A rich harvest."
+    },
+    {
+     "type": "연관어",
+     "word": "grain",
+     "ko": "곡물",
+     "en": "Whole grain."
+    },
+    {
+     "type": "연관어",
+     "word": "farm",
+     "ko": "농장",
+     "en": "A corn farm."
+    }
+   ]
+  },
+  "15": {
+   "word": "abuse",
+   "overview": [
+    "abuse는 '오용, 남용'이라는 뜻의 명사이자 동사입니다.",
+    "abuse power(권력을 남용하다)처럼 씁니다.",
+    "'학대, 혹사'라는 뜻으로도 씁니다.",
+    "'욕설, 비방'이라는 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "misuse",
+     "en": "Misuse of funds.",
+     "ko": "자금의 남용."
+    },
+    {
+     "word": "mistreat",
+     "en": "Mistreat an animal.",
+     "ko": "동물을 학대하다."
+    }
+   ],
+   "etymology": [
+    "abuse는 라틴어 abuti(잘못 사용하다)에서 온 단어입니다.",
+    "ab(멀리, 벗어나서)와 uti(사용하다)가 합쳐진 말로, use(사용하다)와 같은 가족입니다.",
+    "'올바른 사용법에서 벗어나 잘못 사용하다'라는 뜻이 그대로 이어져 왔습니다.",
+    "권력, 약물의 오용부터 사람에 대한 학대, 말로 하는 비방까지 폭넓게 씁니다.",
+    "abuse의 핵심 이미지는 '올바른 쓰임에서 벗어나 잘못되게 사용하거나 대하는 것 ⚠️'입니다."
+   ],
+   "meanings": [
+    "오용, 남용",
+    "학대, 혹사",
+    "비난, 비방, 욕"
+   ],
+   "examples": [
+    {
+     "en": "The official was accused of abusing his power.",
+     "ko": "그 공무원은 자신의 권력을 남용했다는 혐의를 받았어요."
+    },
+    {
+     "en": "The organization protects children from abuse.",
+     "ko": "그 조직은 아이들을 학대로부터 보호해요."
+    },
+    {
+     "en": "He shouted verbal abuse at the referee.",
+     "ko": "그는 그 심판에게 언어폭력을 쏟아냈어요."
+    },
+    {
+     "en": "Drug abuse can seriously harm health.",
+     "ko": "약물 남용은 건강을 심각하게 해칠 수 있어요."
+    },
+    {
+     "en": "She reported the abuse to the authorities.",
+     "ko": "그녀는 그 학대를 당국에 신고했어요."
+    },
+    {
+     "en": "The system was abused by a few dishonest users.",
+     "ko": "그 시스템은 몇몇 부정직한 사용자들에 의해 악용되었어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "misuse",
+     "ko": "오용",
+     "en": "Prevent misuse."
+    },
+    {
+     "type": "연관어",
+     "word": "mistreat",
+     "ko": "학대하다",
+     "en": "Mistreat a pet."
+    },
+    {
+     "type": "연관어",
+     "word": "harm",
+     "ko": "해치다",
+     "en": "Cause harm."
+    },
+    {
+     "type": "연관어",
+     "word": "insult",
+     "ko": "모욕",
+     "en": "A verbal insult."
+    },
+    {
+     "type": "연관어",
+     "word": "violence",
+     "ko": "폭력",
+     "en": "Domestic violence."
+    },
+    {
+     "type": "연관어",
+     "word": "victim",
+     "ko": "피해자",
+     "en": "Protect the victim."
+    }
+   ]
+  },
+  "244": {
+   "word": "beard",
+   "overview": [
+    "beard는 '수염, 턱수염'이라는 뜻의 명사입니다.",
+    "grow a beard(수염을 기르다)처럼 씁니다.",
+    "남자의 턱과 뺨에 자라는 털을 뜻합니다.",
+    "형용사 bearded(수염이 있는)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "facial hair",
+     "en": "Thick facial hair.",
+     "ko": "숱이 많은 얼굴 털."
+    },
+    {
+     "word": "whiskers",
+     "en": "Gray whiskers.",
+     "ko": "희끗희끗한 수염."
+    }
+   ],
+   "etymology": [
+    "beard는 고대 영어 beard(수염)에서 온 단어입니다.",
+    "게르만과 인도유럽 말 뿌리에서 온 아주 오래된 단어로, 여러 언어에서 비슷한 형태로 이어집니다.",
+    "'턱과 뺨에 자라는 털'이라는 뜻이 형태를 거의 그대로 유지하며 이어져 왔습니다.",
+    "지금까지도 남성의 수염을 가리키는 가장 기본적인 단어로 널리 씁니다.",
+    "beard의 핵심 이미지는 '턱을 뒤덮으며 자라난 풍성한 수염 🧔'입니다."
+   ],
+   "meanings": [
+    "수염, 턱수염"
+   ],
+   "examples": [
+    {
+     "en": "He decided to grow a beard over the winter.",
+     "ko": "그는 그 겨울 동안 수염을 기르기로 결정했어요."
+    },
+    {
+     "en": "The old man had a long white beard.",
+     "ko": "그 노인은 길고 하얀 수염을 가지고 있었어요."
+    },
+    {
+     "en": "She trimmed her husband's beard carefully.",
+     "ko": "그녀는 자신의 남편의 수염을 조심스럽게 다듬었어요."
+    },
+    {
+     "en": "His thick beard covered most of his chin.",
+     "ko": "그의 두꺼운 수염은 그의 턱 대부분을 덮었어요."
+    },
+    {
+     "en": "The pirate in the story wore a fake beard.",
+     "ko": "그 이야기 속 해적은 가짜 수염을 착용했어요."
+    },
+    {
+     "en": "He shaved off his beard before the interview.",
+     "ko": "그는 그 면접 전에 자신의 수염을 밀었어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "파생어",
+     "word": "bearded",
+     "ko": "수염이 있는",
+     "en": "A bearded man."
+    },
+    {
+     "type": "연관어",
+     "word": "mustache",
+     "ko": "콧수염",
+     "en": "A thin mustache."
+    },
+    {
+     "type": "연관어",
+     "word": "shave",
+     "ko": "면도하다",
+     "en": "Shave every morning."
+    },
+    {
+     "type": "연관어",
+     "word": "hair",
+     "ko": "털",
+     "en": "Thick hair."
+    },
+    {
+     "type": "연관어",
+     "word": "chin",
+     "ko": "턱",
+     "en": "A pointed chin."
+    },
+    {
+     "type": "연관어",
+     "word": "trim",
+     "ko": "다듬다",
+     "en": "Trim the edges."
+    }
+   ]
+  },
+  "2916": {
+   "word": "wealth",
+   "overview": [
+    "wealth는 '부, 재산'이라는 뜻의 명사입니다.",
+    "accumulate wealth(부를 축적하다)처럼 씁니다.",
+    "많은 돈이나 자원을 가진 상태를 뜻합니다.",
+    "'풍부함, 다량'이라는 비유적인 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "riches",
+     "en": "Great riches.",
+     "ko": "큰 재산."
+    },
+    {
+     "word": "fortune",
+     "en": "A family fortune.",
+     "ko": "가문의 재산."
+    }
+   ],
+   "etymology": [
+    "wealth는 고대 영어 wela(행복, 안녕)에서 온 단어입니다.",
+    "well(잘, 좋게)과도 이어지는 뿌리로, '잘 지내는 상태'라는 뜻에서 시작되었습니다.",
+    "'경제적으로 풍족하게 잘 사는 상태'라는 뜻으로 좁혀지며 굳어졌습니다.",
+    "지금은 돈뿐 아니라 지식, 경험 등이 풍부한 것을 가리키는 데도 씁니다.",
+    "wealth의 핵심 이미지는 '풍족하고 넉넉하게 쌓인 부와 자원 💰'입니다."
+   ],
+   "meanings": [
+    "국가, 회사, 살림이 부유함, 복지",
+    "재산, 부"
+   ],
+   "examples": [
+    {
+     "en": "The family built their wealth over generations.",
+     "ko": "그 가족은 여러 세대에 걸쳐 자신들의 부를 쌓았어요."
+    },
+    {
+     "en": "Natural resources bring wealth to the country.",
+     "ko": "천연자원은 그 나라에 부를 가져다줘요."
+    },
+    {
+     "en": "She has a wealth of experience in teaching.",
+     "ko": "그녀는 가르치는 일에 있어 풍부한 경험을 가지고 있어요."
+    },
+    {
+     "en": "Great wealth does not always bring happiness.",
+     "ko": "큰 부가 항상 행복을 가져다주지는 않아요."
+    },
+    {
+     "en": "The nation's wealth comes mainly from trade.",
+     "ko": "그 나라의 부는 주로 무역에서 나와요."
+    },
+    {
+     "en": "He inherited his family's considerable wealth.",
+     "ko": "그는 자신의 가족의 상당한 재산을 물려받았어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "riches",
+     "ko": "재산",
+     "en": "Vast riches."
+    },
+    {
+     "type": "연관어",
+     "word": "fortune",
+     "ko": "행운, 재산",
+     "en": "Make a fortune."
+    },
+    {
+     "type": "연관어",
+     "word": "money",
+     "ko": "돈",
+     "en": "Save money."
+    },
+    {
+     "type": "연관어",
+     "word": "abundance",
+     "ko": "풍부함",
+     "en": "An abundance of food."
+    },
+    {
+     "type": "연관어",
+     "word": "rich",
+     "ko": "부유한",
+     "en": "A rich family."
+    },
+    {
+     "type": "연관어",
+     "word": "prosperity",
+     "ko": "번영",
+     "en": "Economic prosperity."
+    }
+   ]
+  },
+  "523": {
+   "word": "colleague",
+   "overview": [
+    "colleague는 '동료'라는 뜻의 명사입니다.",
+    "a close colleague(친한 동료)처럼 씁니다.",
+    "같은 직장이나 직업에서 함께 일하는 사람을 뜻합니다.",
+    "격식 있는 상황에서 friend보다 자주 쓰입니다."
+   ],
+   "easy": [
+    {
+     "word": "coworker",
+     "en": "A helpful coworker.",
+     "ko": "도움이 되는 동료 직원."
+    },
+    {
+     "word": "workmate",
+     "en": "A friendly workmate.",
+     "ko": "친근한 직장 동료."
+    }
+   ],
+   "etymology": [
+    "colleague는 라틴어 collega(함께 선출된 사람, 동료)에서 온 단어입니다.",
+    "com(함께)과 legare(임명하다, 선택하다)가 합쳐진 말입니다.",
+    "'같은 직위에 함께 임명되어 함께 일하는 사람'이라는 뜻에서 시작되었습니다.",
+    "지금은 같은 직장이나 분야에서 함께 일하는 모든 동료를 가리킵니다.",
+    "colleague의 핵심 이미지는 '같은 자리에서 함께 힘을 모으는 직장 동료 🤝'입니다."
+   ],
+   "meanings": [
+    "동료, 동지"
+   ],
+   "examples": [
+    {
+     "en": "She discussed the project with her colleagues.",
+     "ko": "그녀는 자신의 동료들과 그 프로젝트를 논의했어요."
+    },
+    {
+     "en": "He respects his colleagues at the office.",
+     "ko": "그는 그 사무실에서 자신의 동료들을 존중해요."
+    },
+    {
+     "en": "My colleagues helped me finish the report on time.",
+     "ko": "제 동료들은 제가 그 보고서를 제시간에 끝내도록 도와줬어요."
+    },
+    {
+     "en": "The two colleagues collaborated on the research paper.",
+     "ko": "그 두 동료는 그 연구 논문에 함께 협력했어요."
+    },
+    {
+     "en": "She introduced her colleague to the new client.",
+     "ko": "그녀는 자신의 동료를 그 새로운 고객에게 소개했어요."
+    },
+    {
+     "en": "He became close friends with his colleagues over time.",
+     "ko": "그는 시간이 지나면서 자신의 동료들과 친한 친구가 되었어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "coworker",
+     "ko": "동료 직원",
+     "en": "A helpful coworker."
+    },
+    {
+     "type": "연관어",
+     "word": "teammate",
+     "ko": "팀원",
+     "en": "A supportive teammate."
+    },
+    {
+     "type": "연관어",
+     "word": "partner",
+     "ko": "동업자",
+     "en": "A business partner."
+    },
+    {
+     "type": "연관어",
+     "word": "collaborate",
+     "ko": "협력하다",
+     "en": "Collaborate closely."
+    },
+    {
+     "type": "연관어",
+     "word": "office",
+     "ko": "사무실",
+     "en": "A busy office."
+    },
+    {
+     "type": "연관어",
+     "word": "professional",
+     "ko": "전문적인",
+     "en": "A true professional."
+    }
+   ]
+  },
+  "2903": {
+   "word": "warehouse",
+   "overview": [
+    "warehouse는 '창고, 저장소'라는 뜻의 명사입니다.",
+    "store goods in a warehouse(창고에 물건을 보관하다)처럼 씁니다.",
+    "대량의 물품을 보관하기 위한 대형 건물을 뜻합니다.",
+    "온라인 쇼핑 시대에 물류 창고를 가리키는 뜻으로도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "storage building",
+     "en": "A large storage building.",
+     "ko": "큰 저장 건물."
+    },
+    {
+     "word": "depot",
+     "en": "A shipping depot.",
+     "ko": "배송 창고."
+    }
+   ],
+   "etymology": [
+    "warehouse는 ware(상품, 물건)와 house(집)가 합쳐진 단어입니다.",
+    "ware는 hardware(철물), software(소프트웨어)에서도 볼 수 있는 '물건'이라는 뜻의 말입니다.",
+    "'상품을 보관하기 위해 지은 집'이라는 뜻이 그대로 이어져 왔습니다.",
+    "지금은 물류, 유통 산업에서 대량의 제품을 보관하는 대형 시설을 가리킵니다.",
+    "warehouse의 핵심 이미지는 '수많은 상품을 가지런히 쌓아 보관하는 거대한 창고 📦'입니다."
+   ],
+   "meanings": [
+    "창고, 저장소"
+   ],
+   "examples": [
+    {
+     "en": "The company stores its products in a large warehouse.",
+     "ko": "그 회사는 자신의 제품들을 큰 창고에 보관해요."
+    },
+    {
+     "en": "Workers loaded boxes onto trucks at the warehouse.",
+     "ko": "노동자들은 그 창고에서 상자들을 트럭에 실었어요."
+    },
+    {
+     "en": "The warehouse was filled with rows of shelves.",
+     "ko": "그 창고는 줄지어 선 선반들로 가득했어요."
+    },
+    {
+     "en": "She works as a manager at a distribution warehouse.",
+     "ko": "그녀는 물류 창고에서 관리자로 일해요."
+    },
+    {
+     "en": "The old warehouse was converted into apartments.",
+     "ko": "그 오래된 창고는 아파트들로 개조되었어요."
+    },
+    {
+     "en": "The fire spread quickly through the warehouse.",
+     "ko": "그 화재는 그 창고를 통해 빠르게 번졌어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "storage",
+     "ko": "저장",
+     "en": "Extra storage."
+    },
+    {
+     "type": "연관어",
+     "word": "depot",
+     "ko": "창고",
+     "en": "A freight depot."
+    },
+    {
+     "type": "연관어",
+     "word": "goods",
+     "ko": "상품",
+     "en": "Deliver goods."
+    },
+    {
+     "type": "연관어",
+     "word": "inventory",
+     "ko": "재고",
+     "en": "Check inventory."
+    },
+    {
+     "type": "연관어",
+     "word": "shipping",
+     "ko": "배송",
+     "en": "Fast shipping."
+    },
+    {
+     "type": "연관어",
+     "word": "factory",
+     "ko": "공장",
+     "en": "A large factory."
+    }
+   ]
+  },
+  "1438": {
+   "word": "insult",
+   "overview": [
+    "insult는 '모욕하다'라는 뜻의 동사이자 '모욕'이라는 뜻의 명사입니다.",
+    "insult someone(누군가를 모욕하다)처럼 씁니다.",
+    "상대방에게 무례하게 말하거나 행동하여 기분을 상하게 하는 것을 뜻합니다.",
+    "형용사 insulting(모욕적인)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "offend",
+     "en": "Offend someone.",
+     "ko": "누군가의 기분을 상하게 하다."
+    },
+    {
+     "word": "put-down",
+     "en": "A rude put-down.",
+     "ko": "무례한 비하 발언."
+    }
+   ],
+   "etymology": [
+    "insult는 라틴어 insultare(위로 뛰어오르다, 조롱하다)에서 온 단어입니다.",
+    "in(안으로)과 salire(뛰다)가 합쳐진 말로, assault(공격)와도 이어지는 뿌리입니다.",
+    "'상대방에게 뛰어들어 경멸하듯 조롱하다'라는 뜻에서 시작되었습니다.",
+    "말이나 행동으로 상대를 무시하고 기분 상하게 하는 것을 가리키는 데 굳어졌습니다.",
+    "insult의 핵심 이미지는 '경멸하듯 상대에게 던지는 무례한 말 😠'입니다."
+   ],
+   "meanings": [
+    "모욕하다, 욕보이다, 무례한 짓을 하다",
+    "모욕(적 언동), 무례"
+   ],
+   "examples": [
+    {
+     "en": "He apologized for insulting his friend.",
+     "ko": "그는 자신의 친구를 모욕한 것에 대해 사과했어요."
+    },
+    {
+     "en": "She felt deeply hurt by the insult.",
+     "ko": "그녀는 그 모욕에 깊이 상처받았어요."
+    },
+    {
+     "en": "The comment was seen as a personal insult.",
+     "ko": "그 발언은 개인적인 모욕으로 여겨졌어요."
+    },
+    {
+     "en": "It's rude to insult someone in public.",
+     "ko": "공개적으로 누군가를 모욕하는 것은 무례해요."
+    },
+    {
+     "en": "The low pay was an insult to his hard work.",
+     "ko": "그 낮은 급여는 그의 열심히 한 일에 대한 모욕이었어요."
+    },
+    {
+     "en": "He never meant to insult her intelligence.",
+     "ko": "그는 결코 그녀의 지성을 모욕할 의도가 없었어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "offend",
+     "ko": "기분 상하게 하다",
+     "en": "Offend a guest."
+    },
+    {
+     "type": "파생어",
+     "word": "insulting",
+     "ko": "모욕적인",
+     "en": "An insulting remark."
+    },
+    {
+     "type": "연관어",
+     "word": "mock",
+     "ko": "조롱하다",
+     "en": "Mock a rival."
+    },
+    {
+     "type": "연관어",
+     "word": "disrespect",
+     "ko": "무례",
+     "en": "Show disrespect."
+    },
+    {
+     "type": "연관어",
+     "word": "offense",
+     "ko": "불쾌감",
+     "en": "Take offense."
+    },
+    {
+     "type": "연관어",
+     "word": "rude",
+     "ko": "무례한",
+     "en": "A rude comment."
+    }
+   ]
+  },
+  "1296": {
+   "word": "heal",
+   "overview": [
+    "heal은 '치료하다, (병이) 낫다'라는 뜻의 동사입니다.",
+    "heal a wound(상처를 치료하다)처럼 씁니다.",
+    "신체적 상처뿐 아니라 정서적 아픔이 회복되는 것을 뜻하기도 합니다.",
+    "명사 healing(치유)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "recover",
+     "en": "Recover from illness.",
+     "ko": "질병에서 회복하다."
+    },
+    {
+     "word": "get better",
+     "en": "Get better soon.",
+     "ko": "곧 나아지다."
+    }
+   ],
+   "etymology": [
+    "heal은 고대 영어 hælan(온전하게 만들다)에서 온 단어입니다.",
+    "whole(완전한, 온전한), health(건강)와 같은 게르만 말 뿌리에서 나온 단어입니다.",
+    "'상처나 병으로 깨졌던 몸을 다시 온전하게 만들다'라는 뜻이 그대로 이어져 왔습니다.",
+    "몸의 상처뿐 아니라 마음의 상처가 회복되는 것을 가리키는 데도 폭넓게 씁니다.",
+    "heal의 핵심 이미지는 '깨지고 다친 것을 다시 온전하게 되돌리는 치유 🩹'입니다."
+   ],
+   "meanings": [
+    "(병이) 낫다",
+    "(병을) 고치다, 치료하다"
+   ],
+   "examples": [
+    {
+     "en": "The wound healed completely within two weeks.",
+     "ko": "그 상처는 2주 이내에 완전히 나았어요."
+    },
+    {
+     "en": "Time helps heal emotional pain.",
+     "ko": "시간은 정서적 고통을 치유하는 것을 도와요."
+    },
+    {
+     "en": "The doctor helped heal her broken arm.",
+     "ko": "그 의사는 그녀의 부러진 팔을 치료하는 것을 도왔어요."
+    },
+    {
+     "en": "Their friendship slowly healed after the argument.",
+     "ko": "그들의 우정은 그 말다툼 후 서서히 회복되었어요."
+    },
+    {
+     "en": "She used herbal remedies to heal the infection.",
+     "ko": "그녀는 그 감염을 치료하려고 약초 요법을 사용했어요."
+    },
+    {
+     "en": "His confidence healed after months of therapy.",
+     "ko": "그의 자신감은 여러 달의 치료 후 회복되었어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "recover",
+     "ko": "회복하다",
+     "en": "Recover fully."
+    },
+    {
+     "type": "파생어",
+     "word": "healing",
+     "ko": "치유",
+     "en": "A healing process."
+    },
+    {
+     "type": "연관어",
+     "word": "cure",
+     "ko": "치료하다",
+     "en": "Cure a disease."
+    },
+    {
+     "type": "연관어",
+     "word": "recovery",
+     "ko": "회복",
+     "en": "A full recovery."
+    },
+    {
+     "type": "연관어",
+     "word": "wound",
+     "ko": "상처",
+     "en": "A deep wound."
+    },
+    {
+     "type": "연관어",
+     "word": "health",
+     "ko": "건강",
+     "en": "Good health."
+    }
+   ]
+  },
+  "2021": {
+   "word": "praise",
+   "overview": [
+    "praise는 '칭찬하다, 찬양하다'라는 뜻의 동사이자 '칭찬'이라는 뜻의 명사입니다.",
+    "praise a child(아이를 칭찬하다)처럼 씁니다.",
+    "누군가의 성취나 좋은 점을 인정하며 긍정적으로 말하는 것을 뜻합니다.",
+    "종교적으로 신을 '찬양하다'라는 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "compliment",
+     "en": "Give a compliment.",
+     "ko": "칭찬의 말을 하다."
+    },
+    {
+     "word": "admire",
+     "en": "Admire her work.",
+     "ko": "그녀의 작업을 높이 평가하다."
+    }
+   ],
+   "etymology": [
+    "praise는 라틴어 pretiare(가치를 매기다)에서 온 단어입니다.",
+    "pretium(가격, 가치)에서 나온 말로, price(가격), precious(귀중한)와 같은 가족입니다.",
+    "'누군가의 가치를 높이 평가하여 말로 표현하다'라는 뜻이 그대로 이어져 왔습니다.",
+    "지금은 사람의 성취나 신의 위대함을 칭송하는 모든 상황에 폭넓게 씁니다.",
+    "praise의 핵심 이미지는 '높은 가치를 인정하며 아낌없이 건네는 칭찬 👏'입니다."
+   ],
+   "meanings": [
+    "칭찬하다, 찬양하다, 찬미하다"
+   ],
+   "examples": [
+    {
+     "en": "The teacher praised her students for their hard work.",
+     "ko": "그 선생님은 자신의 학생들을 그들의 노력에 대해 칭찬했어요."
+    },
+    {
+     "en": "He received praise for his outstanding performance.",
+     "ko": "그는 자신의 뛰어난 공연에 대해 칭찬을 받았어요."
+    },
+    {
+     "en": "Critics praised the movie for its stunning visuals.",
+     "ko": "평론가들은 그 영화를 자신의 멋진 시각 효과로 칭찬했어요."
+    },
+    {
+     "en": "She always praises her team for their effort.",
+     "ko": "그녀는 항상 자신의 팀을 그들의 노력에 대해 칭찬해요."
+    },
+    {
+     "en": "The song is a hymn of praise to nature.",
+     "ko": "그 노래는 자연에 대한 찬양의 찬가예요."
+    },
+    {
+     "en": "His parents praised him for winning the award.",
+     "ko": "그의 부모님은 그가 그 상을 받은 것에 대해 그를 칭찬했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "compliment",
+     "ko": "칭찬",
+     "en": "A sincere compliment."
+    },
+    {
+     "type": "반의어",
+     "word": "criticize",
+     "ko": "비판하다",
+     "en": "Criticize harshly."
+    },
+    {
+     "type": "연관어",
+     "word": "admire",
+     "ko": "칭찬하다",
+     "en": "Admire her courage."
+    },
+    {
+     "type": "연관어",
+     "word": "commend",
+     "ko": "칭찬하다",
+     "en": "Commend the effort."
+    },
+    {
+     "type": "연관어",
+     "word": "applaud",
+     "ko": "박수 치다",
+     "en": "Applaud loudly."
+    },
+    {
+     "type": "연관어",
+     "word": "encourage",
+     "ko": "격려하다",
+     "en": "Encourage growth."
+    }
+   ]
+  },
+  "2143": {
+   "word": "raw",
+   "overview": [
+    "raw는 '조리되지 않은, 날것의'라는 뜻의 형용사입니다.",
+    "raw fish(회, 날생선)처럼 씁니다.",
+    "'가공하지 않은, 원료 그대로의'라는 뜻으로도 씁니다.",
+    "감정이나 상처가 '생생한, 아물지 않은'이라는 비유적인 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "uncooked",
+     "en": "Uncooked meat.",
+     "ko": "익히지 않은 고기."
+    },
+    {
+     "word": "unprocessed",
+     "en": "Unprocessed material.",
+     "ko": "가공하지 않은 재료."
+    }
+   ],
+   "etymology": [
+    "raw는 고대 영어 hreaw(익히지 않은)에서 온 단어입니다.",
+    "게르만 말 뿌리에서 온 아주 오래된 단어로, cru(생것)를 뜻하는 여러 유럽어와도 이어집니다.",
+    "'불을 거치지 않아 원래 상태 그대로인'이라는 뜻이 그대로 이어져 왔습니다.",
+    "지금은 음식뿐 아니라 가공되지 않은 재료, 다듬어지지 않은 감정까지 폭넓게 씁니다.",
+    "raw의 핵심 이미지는 '아무 손도 대지 않아 원래 그대로인 날것의 상태 🥩'입니다."
+   ],
+   "meanings": [
+    "(음식이) 조리되지 않은",
+    "가공하지 않은, 처리되지 않은, 원료 그대로의"
+   ],
+   "examples": [
+    {
+     "en": "She prefers eating raw vegetables for lunch.",
+     "ko": "그녀는 점심으로 생채소를 먹는 것을 선호해요."
+    },
+    {
+     "en": "The factory processes raw materials into products.",
+     "ko": "그 공장은 원자재를 제품으로 가공해요."
+    },
+    {
+     "en": "Raw fish is a common ingredient in sushi.",
+     "ko": "회는 초밥의 흔한 재료예요."
+    },
+    {
+     "en": "His raw emotions were evident on his face.",
+     "ko": "그의 생생한 감정들은 그의 얼굴에 뚜렷했어요."
+    },
+    {
+     "en": "The wound was still raw and painful.",
+     "ko": "그 상처는 여전히 생생하고 아팠어요."
+    },
+    {
+     "en": "Cotton is a raw material used to make clothes.",
+     "ko": "면화는 옷을 만드는 데 사용되는 원료예요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "uncooked",
+     "ko": "익히지 않은",
+     "en": "Uncooked rice."
+    },
+    {
+     "type": "반의어",
+     "word": "cooked",
+     "ko": "조리된",
+     "en": "Fully cooked meat."
+    },
+    {
+     "type": "연관어",
+     "word": "material",
+     "ko": "재료",
+     "en": "Building material."
+    },
+    {
+     "type": "연관어",
+     "word": "fresh",
+     "ko": "신선한",
+     "en": "Fresh produce."
+    },
+    {
+     "type": "연관어",
+     "word": "natural",
+     "ko": "자연 그대로의",
+     "en": "A natural state."
+    },
+    {
+     "type": "연관어",
+     "word": "unprocessed",
+     "ko": "가공되지 않은",
+     "en": "Unprocessed grain."
+    }
+   ]
+  },
+  "2565": {
+   "word": "stroke",
+   "overview": [
+    "stroke는 '쓰다듬다'라는 뜻의 동사이자 '치기, 획'이라는 뜻의 명사입니다.",
+    "stroke a cat(고양이를 쓰다듬다)처럼 씁니다.",
+    "골프, 수영에서 '타격, 동작'을 뜻하는 데도 씁니다.",
+    "의학에서는 '뇌졸중'이라는 뜻으로도 아주 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "caress",
+     "en": "Caress gently.",
+     "ko": "부드럽게 어루만지다."
+    },
+    {
+     "word": "swing",
+     "en": "A golf swing.",
+     "ko": "골프 스윙."
+    }
+   ],
+   "etymology": [
+    "stroke는 고대 영어 strac(쓰다듬는 동작)에서 온 단어입니다.",
+    "strike(치다)와도 관련된 게르만 말 뿌리를 공유한다고 봅니다.",
+    "'손이나 도구로 표면을 부드럽게 훑거나 힘차게 내려치는 동작'이라는 뜻이 그대로 이어져 왔습니다.",
+    "붓의 획, 수영 동작, 그리고 뇌에 갑자기 가해지는 충격인 '뇌졸중'까지 뜻이 넓어졌습니다.",
+    "stroke의 핵심 이미지는 '부드럽게 훑거나 순간적으로 가해지는 하나의 동작 🖌️'입니다."
+   ],
+   "meanings": [
+    "쓰다듬다 (동사)",
+    "치기 (명사)",
+    "획 (명사)"
+   ],
+   "examples": [
+    {
+     "en": "She gently stroked the cat's soft fur.",
+     "ko": "그녀는 그 고양이의 부드러운 털을 부드럽게 쓰다듬었어요."
+    },
+    {
+     "en": "He practiced his golf stroke every weekend.",
+     "ko": "그는 매 주말 자신의 골프 스윙을 연습했어요."
+    },
+    {
+     "en": "The painting was made with bold, thick strokes.",
+     "ko": "그 그림은 대담하고 굵은 획들로 그려졌어요."
+    },
+    {
+     "en": "Her grandfather suffered a stroke last year.",
+     "ko": "그녀의 할아버지는 작년에 뇌졸중을 겪었어요."
+    },
+    {
+     "en": "The swimmer improved her freestyle stroke.",
+     "ko": "그 수영 선수는 자신의 자유형 동작을 개선했어요."
+    },
+    {
+     "en": "He stroked his beard while thinking deeply.",
+     "ko": "그는 깊이 생각하며 자신의 수염을 쓰다듬었어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "caress",
+     "ko": "어루만지다",
+     "en": "Caress softly."
+    },
+    {
+     "type": "연관어",
+     "word": "pat",
+     "ko": "토닥이다",
+     "en": "Pat a dog."
+    },
+    {
+     "type": "연관어",
+     "word": "swing",
+     "ko": "스윙",
+     "en": "A smooth swing."
+    },
+    {
+     "type": "연관어",
+     "word": "brush",
+     "ko": "붓",
+     "en": "A wide brush."
+    },
+    {
+     "type": "연관어",
+     "word": "swim",
+     "ko": "수영하다",
+     "en": "Swim laps."
+    },
+    {
+     "type": "연관어",
+     "word": "gesture",
+     "ko": "몸짓",
+     "en": "A kind gesture."
+    }
+   ]
   }
  }
 }
